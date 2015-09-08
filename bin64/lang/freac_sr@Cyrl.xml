@@ -657,43 +657,43 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">Подржи овај пројекат</entry>
-	<entry id="50001" string="Please support this project!">Молимо подржите овај пројекат!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Молимо помозите да овај програм остане бесплатан&#10;подржавајући %1 пројекат донацијом.&#10;&#10;Кликните на једно од дугмића испод да донирате преко PayPal-а:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Такође, можете изравно послати новац %1 путем PayPal-а.&#10;&#10;Молимо пишите %1 ако желите да донирате преко електронског трансфера,&#10;пошаљете чек поштом, или да пошаљете новац поштом.</entry>
-	<entry id="50004" string="usd">eur</entry>
-	<entry id="50005" string="en">en</entry>
-	<entry id="50006" string="Thank you very much!">Хвала Вам пуно!</entry>
-	<entry id="50007" string="Remind me later">Подсети ме касније</entry>
+	<entry id="100000" string="Support this project">Подржи овај пројекат</entry>
+	<entry id="100001" string="Please support this project!">Молимо подржите овај пројекат!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Молимо помозите да овај програм остане бесплатан&#10;подржавајући %1 пројекат донацијом.&#10;&#10;Кликните на једно од дугмића испод да донирате преко PayPal-а:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Такође, можете изравно послати новац %1 путем PayPal-а.&#10;&#10;Молимо пишите %1 ако желите да донирате преко електронског трансфера,&#10;пошаљете чек поштом, или да пошаљете новац поштом.</entry>
+	<entry id="100004" string="usd">eur</entry>
+	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="Thank you very much!">Хвала Вам пуно!</entry>
+	<entry id="100007" string="Remind me later">Подсети ме касније</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">Подеси</entry>
-	<entry id="51001" string="About">Нешто о ...</entry>
+	<entry id="101000" string="Configure">Подеси</entry>
+	<entry id="101001" string="About">Нешто о ...</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52014" string="Length">Дужина</entry>
-	<entry id="52015" string="Size">Величина</entry>
+	<entry id="102014" string="Length">Дужина</entry>
+	<entry id="102015" string="Size">Величина</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">Аутоматизација</entry>
-	  <entry id="52103" string="Browse">Претражи</entry>
+	  <entry id="102101" string="Automatization">Аутоматизација</entry>
+	  <entry id="102103" string="Browse">Претражи</entry>
 	</section>
 
 	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">Инфо тагови</entry>
-	<entry id="53001" string="Length">Дужина</entry>
-	<entry id="53002" string="Size">Величина</entry>
-	<entry id="53005" string="File">Фајл</entry>
+	<entry id="103000" string="Tags">Инфо тагови</entry>
+	<entry id="103001" string="Length">Дужина</entry>
+	<entry id="103002" string="Size">Величина</entry>
+	<entry id="103005" string="File">Фајл</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">Основно</entry>
-	  <entry id="53107" string="Add">Додај</entry>
-	  <entry id="53108" string="Remove">Уклони</entry>
+	  <entry id="103100" string="Basic">Основно</entry>
+	  <entry id="103107" string="Add">Додај</entry>
+	  <entry id="103108" string="Remove">Уклони</entry>
 	</section>
 
 	<section name="Details"/>
@@ -701,7 +701,7 @@
 	<section name="Other"/>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Немогуће отворити фајл: %1&#10;&#10;%2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Немогуће отворити фајл: %1&#10;&#10;%2</entry>
 	</section>
       </section>
     </section>

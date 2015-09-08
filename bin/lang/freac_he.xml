@@ -475,36 +475,36 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50004" string="usd">usd</entry>
-	<entry id="50005" string="en">en</entry>
+	<entry id="100004" string="usd">usd</entry>
+	<entry id="100005" string="en">en</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">הגדרות</entry>
-	<entry id="51001" string="About">על...</entry>
+	<entry id="101000" string="Configure">הגדרות</entry>
+	<entry id="101001" string="About">על...</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52014" string="Length">אורך</entry>
-	<entry id="52015" string="Size">גודל</entry>
+	<entry id="102014" string="Length">אורך</entry>
+	<entry id="102015" string="Size">גודל</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">אוטומטיזציה</entry>
-	  <entry id="52103" string="Browse">דפדף</entry>
+	  <entry id="102101" string="Automatization">אוטומטיזציה</entry>
+	  <entry id="102103" string="Browse">דפדף</entry>
 	</section>
 
 	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">תגיות מידע</entry>
-	<entry id="53001" string="Length">אורך</entry>
-	<entry id="53002" string="Size">גודל</entry>
-	<entry id="53005" string="File">קובץ</entry>
+	<entry id="103000" string="Tags">תגיות מידע</entry>
+	<entry id="103001" string="Length">אורך</entry>
+	<entry id="103002" string="Size">גודל</entry>
+	<entry id="103005" string="File">קובץ</entry>
 
 	<section name="Basic">
-	  <entry id="53107" string="Add">הוסף</entry>
-	  <entry id="53108" string="Remove">הסר</entry>
+	  <entry id="103107" string="Add">הוסף</entry>
+	  <entry id="103108" string="Remove">הסר</entry>
 	</section>
 
 	<section name="Details"/>
@@ -512,7 +512,7 @@
 	<section name="Other"/>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>
 	</section>
       </section>
     </section>

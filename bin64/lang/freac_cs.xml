@@ -734,109 +734,109 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">Podpořte tento projekt</entry>
-	<entry id="50001" string="Please support this project!">Prosím, podpořte tento projekt!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Prosím, pomozte zachovat tento software zdarma (free) podporou %1 projektu&#10;libovolným darem.&#10;&#10;Klikněte na jedno z tlačítek níže - darovat nyní přes PayPal:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Můžete také poslat peníze přímo na %1 s použitím PayPalu.&#10;&#10;Prosím napište nám na %1, pokud chcete darovat pomocí e-bankovnictví&#10;nebo chcete-li zaslat peníze poštovní poukázkou nebo jiným způsobem.</entry>
-	<entry id="50004" string="usd">eur</entry>
-	<entry id="50005" string="en">en</entry>
-	<entry id="50006" string="Thank you very much!">Děkujeme moc!</entry>
-	<entry id="50007" string="Remind me later">Připomenout později</entry>
+	<entry id="100000" string="Support this project">Podpořte tento projekt</entry>
+	<entry id="100001" string="Please support this project!">Prosím, podpořte tento projekt!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Prosím, pomozte zachovat tento software zdarma (free) podporou %1 projektu&#10;libovolným darem.&#10;&#10;Klikněte na jedno z tlačítek níže - darovat nyní přes PayPal:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Můžete také poslat peníze přímo na %1 s použitím PayPalu.&#10;&#10;Prosím napište nám na %1, pokud chcete darovat pomocí e-bankovnictví&#10;nebo chcete-li zaslat peníze poštovní poukázkou nebo jiným způsobem.</entry>
+	<entry id="100004" string="usd">eur</entry>
+	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="Thank you very much!">Děkujeme moc!</entry>
+	<entry id="100007" string="Remind me later">Připomenout později</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">Konfigurace</entry>
-	<entry id="51001" string="About">O pluginu...</entry>
+	<entry id="101000" string="Configure">Konfigurace</entry>
+	<entry id="101001" string="About">O pluginu...</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52001" string="Enter video URL here">Zde zadejte Video-URL</entry>
-	<entry id="52002" string="Download">Stahovat</entry>
-	<entry id="52003" string="Automatically download URLs copied to clipboard">Automaticky stahovat URL do schránky</entry>
-	<entry id="52004" string="Save downloaded video files">Uložit stažený video soubor</entry>
-	<entry id="52005" string="Video downloads">Video-stahování</entry>
-	<entry id="52006" string="Downloaded tracks">Stažené skladby</entry>
-	<entry id="52007" string="Uploader">Uploader</entry>
-	<entry id="52008" string="Video URL">Video URL</entry>
-	<entry id="52009" string="Video title">Video titul</entry>
-	<entry id="52010" string="Video description">Video popis</entry>
-	<entry id="52011" string="Site name">Web stránka</entry>
-	<entry id="52012" string="Uploaded by">Nahráno od</entry>
-	<entry id="52013" string="Uploaded on">Nahráno za</entry>
-	<entry id="52014" string="Length">Délka</entry>
-	<entry id="52015" string="Size">Velikost</entry>
-	<entry id="52016" string="Cancel download">Storno stahování</entry>
-	<entry id="52017" string="unknown">neznámý</entry>
+	<entry id="102001" string="Enter video URL here">Zde zadejte Video-URL</entry>
+	<entry id="102002" string="Download">Stahovat</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">Automaticky stahovat URL do schránky</entry>
+	<entry id="102004" string="Save downloaded video files">Uložit stažený video soubor</entry>
+	<entry id="102005" string="Video downloads">Video-stahování</entry>
+	<entry id="102006" string="Downloaded tracks">Stažené skladby</entry>
+	<entry id="102007" string="Uploader">Uploader</entry>
+	<entry id="102008" string="Video URL">Video URL</entry>
+	<entry id="102009" string="Video title">Video titul</entry>
+	<entry id="102010" string="Video description">Video popis</entry>
+	<entry id="102011" string="Site name">Web stránka</entry>
+	<entry id="102012" string="Uploaded by">Nahráno od</entry>
+	<entry id="102013" string="Uploaded on">Nahráno za</entry>
+	<entry id="102014" string="Length">Délka</entry>
+	<entry id="102015" string="Size">Velikost</entry>
+	<entry id="102016" string="Cancel download">Storno stahování</entry>
+	<entry id="102017" string="unknown">neznámý</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">Automatizace</entry>
-	  <entry id="52102" string="Video files">Video soubory</entry>
-	  <entry id="52103" string="Browse">Vyhledat</entry>
-	  <entry id="52104" string="Select the folder to save downloaded video files to">Vyberte složku pro uložení stažených video souborů</entry>
+	  <entry id="102101" string="Automatization">Automatizace</entry>
+	  <entry id="102102" string="Video files">Video soubory</entry>
+	  <entry id="102103" string="Browse">Vyhledat</entry>
+	  <entry id="102104" string="Select the folder to save downloaded video files to">Vyberte složku pro uložení stažených video souborů</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="52201" string="This URL is not supported or not a video page URL!">Tato adresa URL není podporována nebo to není URL video-stránky!</entry>
-	  <entry id="52202" string="Error downloading video!">Chyba při stahování videa!</entry>
-	  <entry id="52203" string="You are already downloading this video!">Toto video bylo již staženo!</entry>
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">Tato adresa URL není podporována nebo to není URL video-stránky!</entry>
+	  <entry id="102202" string="Error downloading video!">Chyba při stahování videa!</entry>
+	  <entry id="102203" string="You are already downloading this video!">Toto video bylo již staženo!</entry>
 	</section>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">Tagy</entry>
-	<entry id="53001" string="Length">Délka</entry>
-	<entry id="53002" string="Size">Velikost</entry>
-	<entry id="53003" string="Albums">Album</entry>
-	<entry id="53004" string="Files">Soubory</entry>
-	<entry id="53005" string="File">Soubor</entry>
-	<entry id="53006" string="Tracks">Stopa</entry>
-	<entry id="53007" string="Save">Uložit</entry>
-	<entry id="53008" string="Save all">Uložit vše</entry>
-	<entry id="53009" string="no audio files found">audio soubory nenalezeny</entry>
+	<entry id="103000" string="Tags">Tagy</entry>
+	<entry id="103001" string="Length">Délka</entry>
+	<entry id="103002" string="Size">Velikost</entry>
+	<entry id="103003" string="Albums">Album</entry>
+	<entry id="103004" string="Files">Soubory</entry>
+	<entry id="103005" string="File">Soubor</entry>
+	<entry id="103006" string="Tracks">Stopa</entry>
+	<entry id="103007" string="Save">Uložit</entry>
+	<entry id="103008" string="Save all">Uložit vše</entry>
+	<entry id="103009" string="no audio files found">audio soubory nenalezeny</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">Standard</entry>
-	  <entry id="53101" string="Title information">Titul informace</entry>
-	  <entry id="53102" string="Disc">Disk</entry>
-	  <entry id="53103" string="Cover art">Obal alba</entry>
-	  <entry id="53104" string="Covers">Obaly</entry>
-	  <entry id="53105" string="Type">Typ</entry>
-	  <entry id="53106" string="Description">Popis</entry>
-	  <entry id="53107" string="Add">Přidat</entry>
-	  <entry id="53108" string="Remove">Odstranit</entry>
+	  <entry id="103100" string="Basic">Standard</entry>
+	  <entry id="103101" string="Title information">Titul informace</entry>
+	  <entry id="103102" string="Disc">Disk</entry>
+	  <entry id="103103" string="Cover art">Obal alba</entry>
+	  <entry id="103104" string="Covers">Obaly</entry>
+	  <entry id="103105" string="Type">Typ</entry>
+	  <entry id="103106" string="Description">Popis</entry>
+	  <entry id="103107" string="Add">Přidat</entry>
+	  <entry id="103108" string="Remove">Odstranit</entry>
 	</section>
 
 	<section name="Details">
-	  <entry id="53200" string="Details">Detaily</entry>
-	  <entry id="53201" string="Detailed information">Detailní informace</entry>
-	  <entry id="53202" string="Band / orchestra">Skupina / Orchestr</entry>
-	  <entry id="53203" string="Performer refinement">Další umělci</entry>
-	  <entry id="53204" string="Modified / remixed by">Upraveno / remix od</entry>
-	  <entry id="53205" string="Composer">Skladatel</entry>
-	  <entry id="53206" string="Lyrics writer">Textař</entry>
-	  <entry id="53207" string="Publisher information">Informace o vydavateli</entry>
-	  <entry id="53208" string="Publisher / label">Vydavatel / jmenovka</entry>
-	  <entry id="53209" string="ISRC">ISRC</entry>
+	  <entry id="103200" string="Details">Detaily</entry>
+	  <entry id="103201" string="Detailed information">Detailní informace</entry>
+	  <entry id="103202" string="Band / orchestra">Skupina / Orchestr</entry>
+	  <entry id="103203" string="Performer refinement">Další umělci</entry>
+	  <entry id="103204" string="Modified / remixed by">Upraveno / remix od</entry>
+	  <entry id="103205" string="Composer">Skladatel</entry>
+	  <entry id="103206" string="Lyrics writer">Textař</entry>
+	  <entry id="103207" string="Publisher information">Informace o vydavateli</entry>
+	  <entry id="103208" string="Publisher / label">Vydavatel / jmenovka</entry>
+	  <entry id="103209" string="ISRC">ISRC</entry>
 	</section>
 
 	<section name="Other">
-	  <entry id="53300" string="Other">Další</entry>
-	  <entry id="53301" string="Original information">Původní informace</entry>
-	  <entry id="53302" string="Original artist">Původní interpret</entry>
-	  <entry id="53303" string="Original album">Původní album</entry>
-	  <entry id="53304" string="Original lyrics writer">Původní textař</entry>
-	  <entry id="53305" string="Original release year">Původní rok vydání</entry>
-	  <entry id="53306" string="Webpage URLs">URL web stránky</entry>
-	  <entry id="53307" string="Artist webpage">Umělec web stránky</entry>
-	  <entry id="53308" string="Publisher webpage">Vydavatel web stránky</entry>
-	  <entry id="53309" string="Internet radio station">Internetové rádio</entry>
-	  <entry id="53310" string="Audio source webpage">Audio zdroje web stránky</entry>
-	  <entry id="53311" string="Copyright information">Copyright informace</entry>
-	  <entry id="53312" string="Commercial information">Obchodní informace</entry>
+	  <entry id="103300" string="Other">Další</entry>
+	  <entry id="103301" string="Original information">Původní informace</entry>
+	  <entry id="103302" string="Original artist">Původní interpret</entry>
+	  <entry id="103303" string="Original album">Původní album</entry>
+	  <entry id="103304" string="Original lyrics writer">Původní textař</entry>
+	  <entry id="103305" string="Original release year">Původní rok vydání</entry>
+	  <entry id="103306" string="Webpage URLs">URL web stránky</entry>
+	  <entry id="103307" string="Artist webpage">Umělec web stránky</entry>
+	  <entry id="103308" string="Publisher webpage">Vydavatel web stránky</entry>
+	  <entry id="103309" string="Internet radio station">Internetové rádio</entry>
+	  <entry id="103310" string="Audio source webpage">Audio zdroje web stránky</entry>
+	  <entry id="103311" string="Copyright information">Copyright informace</entry>
+	  <entry id="103312" string="Commercial information">Obchodní informace</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Nemohu otevřít soubor: %1&#10;&#10;Chyba: %2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Nemohu otevřít soubor: %1&#10;&#10;Chyba: %2</entry>
 	</section>
       </section>
     </section>

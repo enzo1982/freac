@@ -660,44 +660,44 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">Sostengatu egitasmo hau</entry>
-	<entry id="50001" string="Please support this project!">Mesedez sostengatu egitasmo hau!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Mesedez lagundu software hau dohainik izaten %1 egitasmoa&#10;dirulaguntza batekin sostengatuz.&#10;&#10;Klikatu beheko botoietako bat dirulaguntza bat emateko PayPal bidez:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Dirua ere bidali dezakezu %1-ra zuzenean Paypal erabiliz.&#10;&#10;Mesedez idatzi %1-ra dirulaguntza bat ematea nahi&#10;baduzu eskualdaketa elektronikoz, posta txeke batez edo dirua postaz&#10;bidaltzeko.</entry>
-	<entry id="50004" string="usd">eur</entry>
-	<entry id="50005" string="en">en</entry>
-	<entry id="50006" string="Thank you very much!">Mila esker!</entry>
-	<entry id="50007" string="Remind me later">Gogoratu geroago</entry>
+	<entry id="100000" string="Support this project">Sostengatu egitasmo hau</entry>
+	<entry id="100001" string="Please support this project!">Mesedez sostengatu egitasmo hau!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Mesedez lagundu software hau dohainik izaten %1 egitasmoa&#10;dirulaguntza batekin sostengatuz.&#10;&#10;Klikatu beheko botoietako bat dirulaguntza bat emateko PayPal bidez:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Dirua ere bidali dezakezu %1-ra zuzenean Paypal erabiliz.&#10;&#10;Mesedez idatzi %1-ra dirulaguntza bat ematea nahi&#10;baduzu eskualdaketa elektronikoz, posta txeke batez edo dirua postaz&#10;bidaltzeko.</entry>
+	<entry id="100004" string="usd">eur</entry>
+	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="Thank you very much!">Mila esker!</entry>
+	<entry id="100007" string="Remind me later">Gogoratu geroago</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">Itxuratu</entry>
-	<entry id="51001" string="About">Honi buruz</entry>
+	<entry id="101000" string="Configure">Itxuratu</entry>
+	<entry id="101001" string="About">Honi buruz</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52014" string="Length">Luzera</entry>
-	<entry id="52015" string="Size">Neurria</entry>
-	<entry id="52018" string="Note">Oharra</entry>
+	<entry id="102014" string="Length">Luzera</entry>
+	<entry id="102015" string="Size">Neurria</entry>
+	<entry id="102018" string="Note">Oharra</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">Berezgaitasuna</entry>
-	  <entry id="52103" string="Browse">Bilatu</entry>
+	  <entry id="102101" string="Automatization">Berezgaitasuna</entry>
+	  <entry id="102103" string="Browse">Bilatu</entry>
 	</section>
 
 	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">Etiketak</entry>
-	<entry id="53001" string="Length">Luzera</entry>
-	<entry id="53002" string="Size">Neurria</entry>
-	<entry id="53005" string="File">Agiria</entry>
+	<entry id="103000" string="Tags">Etiketak</entry>
+	<entry id="103001" string="Length">Luzera</entry>
+	<entry id="103002" string="Size">Neurria</entry>
+	<entry id="103005" string="File">Agiria</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">Ohinarrizkoa</entry>
-	  <entry id="53107" string="Add">Gehitu</entry>
-	  <entry id="53108" string="Remove">Kendu</entry>
+	  <entry id="103100" string="Basic">Ohinarrizkoa</entry>
+	  <entry id="103107" string="Add">Gehitu</entry>
+	  <entry id="103108" string="Remove">Kendu</entry>
 	</section>
 
 	<section name="Details"/>
@@ -705,7 +705,7 @@
 	<section name="Other"/>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Ezinezkoa agiria irekitzea: %1&#10;&#10;Akatsa: %2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Ezinezkoa agiria irekitzea: %1&#10;&#10;Akatsa: %2</entry>
 	</section>
       </section>
     </section>

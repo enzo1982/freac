@@ -759,117 +759,117 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">Подкрепете този проект</entry>
-	<entry id="50001" string="Please support this project!">Моля подкрепете този проект!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Моля помогнете за запазването на този софтуер безплатен като&#10;подкрепите проекта %1 с дарение.&#10;&#10;Щракнете един от бутоните по-долу за да направите дарение през PayPal:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Можете също да пратите пари директно до %1 през PayPal.&#10;&#10;Моля пишете до %1 ако бихте желали да направите&#10;дарение използвайки електронно разплащане, изпратите&#10;чек или пари по пощата.</entry>
-	<entry id="50004" string="usd">usd</entry>
-	<entry id="50005" string="en">en</entry>
-	<entry id="50006" string="Thank you very much!">Благодаря ви много!</entry>
-	<entry id="50007" string="Remind me later">Напомни ми по-късно</entry>
+	<entry id="100000" string="Support this project">Подкрепете този проект</entry>
+	<entry id="100001" string="Please support this project!">Моля подкрепете този проект!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Моля помогнете за запазването на този софтуер безплатен като&#10;подкрепите проекта %1 с дарение.&#10;&#10;Щракнете един от бутоните по-долу за да направите дарение през PayPal:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Можете също да пратите пари директно до %1 през PayPal.&#10;&#10;Моля пишете до %1 ако бихте желали да направите&#10;дарение използвайки електронно разплащане, изпратите&#10;чек или пари по пощата.</entry>
+	<entry id="100004" string="usd">usd</entry>
+	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="Thank you very much!">Благодаря ви много!</entry>
+	<entry id="100007" string="Remind me later">Напомни ми по-късно</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">Конфигурация</entry>
-	<entry id="51001" string="About">Относно</entry>
+	<entry id="101000" string="Configure">Конфигурация</entry>
+	<entry id="101001" string="About">Относно</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52000" string="Video">Видео</entry>
-	<entry id="52001" string="Enter video URL here">Въведете адреса на видеото тук</entry>
-	<entry id="52002" string="Download">Изтегляне</entry>
-	<entry id="52003" string="Automatically download URLs copied to clipboard">Автоматично изтегляне на адресите копирани в буфера</entry>
-	<entry id="52004" string="Save downloaded video files">Запазване на изтеглените видео файлове</entry>
-	<entry id="52005" string="Video downloads">Видео изтегляния</entry>
-	<entry id="52006" string="Downloaded tracks">Свалени файлове</entry>
-	<entry id="52007" string="Uploader">Качил</entry>
-	<entry id="52008" string="Video URL">Адрес на видеото</entry>
-	<entry id="52009" string="Video title">Заглавие на видеото</entry>
-	<entry id="52010" string="Video description">Описание на видеото</entry>
-	<entry id="52011" string="Site name">Име на сайта</entry>
-	<entry id="52012" string="Uploaded by">Качено от</entry>
-	<entry id="52013" string="Uploaded on">Качено на</entry>
-	<entry id="52014" string="Length">Времетраене</entry>
-	<entry id="52015" string="Size">Размер</entry>
-	<entry id="52016" string="Cancel download">Отмяна на изтеглянето</entry>
-	<entry id="52017" string="unknown">неизвестно</entry>
-	<entry id="52018" string="Note">Забележка</entry>
+	<entry id="102000" string="Video">Видео</entry>
+	<entry id="102001" string="Enter video URL here">Въведете адреса на видеото тук</entry>
+	<entry id="102002" string="Download">Изтегляне</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">Автоматично изтегляне на адресите копирани в буфера</entry>
+	<entry id="102004" string="Save downloaded video files">Запазване на изтеглените видео файлове</entry>
+	<entry id="102005" string="Video downloads">Видео изтегляния</entry>
+	<entry id="102006" string="Downloaded tracks">Свалени файлове</entry>
+	<entry id="102007" string="Uploader">Качил</entry>
+	<entry id="102008" string="Video URL">Адрес на видеото</entry>
+	<entry id="102009" string="Video title">Заглавие на видеото</entry>
+	<entry id="102010" string="Video description">Описание на видеото</entry>
+	<entry id="102011" string="Site name">Име на сайта</entry>
+	<entry id="102012" string="Uploaded by">Качено от</entry>
+	<entry id="102013" string="Uploaded on">Качено на</entry>
+	<entry id="102014" string="Length">Времетраене</entry>
+	<entry id="102015" string="Size">Размер</entry>
+	<entry id="102016" string="Cancel download">Отмяна на изтеглянето</entry>
+	<entry id="102017" string="unknown">неизвестно</entry>
+	<entry id="102018" string="Note">Забележка</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">Автоматизация</entry>
-	  <entry id="52102" string="Video files">Видео файлове</entry>
-	  <entry id="52103" string="Browse">Разглеждане</entry>
-	  <entry id="52104" string="Select the folder to save downloaded video files to">Изберете папка където да бъдат запазени изтеглените файлове</entry>
-	  <entry id="52105" string="Downloads">Изтегляния</entry>
-	  <entry id="52106" string="Maximum number of simultaneous downloads">Максимален брой на паралелните изтегляния</entry>
-	  <entry id="52107" string="Output format">Изходен формат</entry>
-	  <entry id="52108" string="keep original format">запазване на оригиналния формат</entry>
+	  <entry id="102101" string="Automatization">Автоматизация</entry>
+	  <entry id="102102" string="Video files">Видео файлове</entry>
+	  <entry id="102103" string="Browse">Разглеждане</entry>
+	  <entry id="102104" string="Select the folder to save downloaded video files to">Изберете папка където да бъдат запазени изтеглените файлове</entry>
+	  <entry id="102105" string="Downloads">Изтегляния</entry>
+	  <entry id="102106" string="Maximum number of simultaneous downloads">Максимален брой на паралелните изтегляния</entry>
+	  <entry id="102107" string="Output format">Изходен формат</entry>
+	  <entry id="102108" string="keep original format">запазване на оригиналния формат</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="52201" string="This URL is not supported or not a video page URL!">Този адрес не е поддържан или не е адрес на видео страница!</entry>
-	  <entry id="52202" string="Error downloading video!">Грешка при изтегляне на видеото!</entry>
-	  <entry id="52203" string="You are already downloading this video!">Вече изтегляте това видео!</entry>
-	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Някои нужни видео декодери не могат да бъдат открити. Видео&#10;файловете не могат да бъдат добавени към списъка със задачи&#10;за конвертиране към аудио файлове.&#10;&#10;Моля инсталирайте avconv или FFmpeg за да отстраните този проблем!</entry>
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">Този адрес не е поддържан или не е адрес на видео страница!</entry>
+	  <entry id="102202" string="Error downloading video!">Грешка при изтегляне на видеото!</entry>
+	  <entry id="102203" string="You are already downloading this video!">Вече изтегляте това видео!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Някои нужни видео декодери не могат да бъдат открити. Видео&#10;файловете не могат да бъдат добавени към списъка със задачи&#10;за конвертиране към аудио файлове.&#10;&#10;Моля инсталирайте avconv или FFmpeg за да отстраните този проблем!</entry>
 	</section>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">Тагове</entry>
-	<entry id="53001" string="Length">Времетраене</entry>
-	<entry id="53002" string="Size">Размер</entry>
-	<entry id="53003" string="Albums">Албуми</entry>
-	<entry id="53004" string="Files">Файлове</entry>
-	<entry id="53005" string="File">Файл</entry>
-	<entry id="53006" string="Tracks">Песни</entry>
-	<entry id="53007" string="Save">Запазване</entry>
-	<entry id="53008" string="Save all">Запазване на вс.</entry>
-	<entry id="53009" string="no audio files found">няма открити аудио файлове</entry>
+	<entry id="103000" string="Tags">Тагове</entry>
+	<entry id="103001" string="Length">Времетраене</entry>
+	<entry id="103002" string="Size">Размер</entry>
+	<entry id="103003" string="Albums">Албуми</entry>
+	<entry id="103004" string="Files">Файлове</entry>
+	<entry id="103005" string="File">Файл</entry>
+	<entry id="103006" string="Tracks">Песни</entry>
+	<entry id="103007" string="Save">Запазване</entry>
+	<entry id="103008" string="Save all">Запазване на вс.</entry>
+	<entry id="103009" string="no audio files found">няма открити аудио файлове</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">Основни</entry>
-	  <entry id="53101" string="Title information">Информация за заглавието</entry>
-	  <entry id="53102" string="Disc">Диск</entry>
-	  <entry id="53103" string="Cover art">Обложка</entry>
-	  <entry id="53104" string="Covers">Обложки</entry>
-	  <entry id="53105" string="Type">Тип</entry>
-	  <entry id="53106" string="Description">Описание</entry>
-	  <entry id="53107" string="Add">Добавяне</entry>
-	  <entry id="53108" string="Remove">Премахване</entry>
+	  <entry id="103100" string="Basic">Основни</entry>
+	  <entry id="103101" string="Title information">Информация за заглавието</entry>
+	  <entry id="103102" string="Disc">Диск</entry>
+	  <entry id="103103" string="Cover art">Обложка</entry>
+	  <entry id="103104" string="Covers">Обложки</entry>
+	  <entry id="103105" string="Type">Тип</entry>
+	  <entry id="103106" string="Description">Описание</entry>
+	  <entry id="103107" string="Add">Добавяне</entry>
+	  <entry id="103108" string="Remove">Премахване</entry>
 	</section>
 
 	<section name="Details">
-	  <entry id="53200" string="Details">Детайли</entry>
-	  <entry id="53201" string="Detailed information">Детайлна информация</entry>
-	  <entry id="53202" string="Band / orchestra">Група / Оркестър</entry>
-	  <entry id="53203" string="Performer refinement">Аранжимент</entry>
-	  <entry id="53204" string="Modified / remixed by">Преработено / ремиксирано от</entry>
-	  <entry id="53205" string="Composer">Композитор</entry>
-	  <entry id="53206" string="Lyrics writer">Текстописец</entry>
-	  <entry id="53207" string="Publisher information">Информация за издателя</entry>
-	  <entry id="53208" string="Publisher / label">Издател / лейбъл</entry>
-	  <entry id="53209" string="ISRC">ISRC</entry>
+	  <entry id="103200" string="Details">Детайли</entry>
+	  <entry id="103201" string="Detailed information">Детайлна информация</entry>
+	  <entry id="103202" string="Band / orchestra">Група / Оркестър</entry>
+	  <entry id="103203" string="Performer refinement">Аранжимент</entry>
+	  <entry id="103204" string="Modified / remixed by">Преработено / ремиксирано от</entry>
+	  <entry id="103205" string="Composer">Композитор</entry>
+	  <entry id="103206" string="Lyrics writer">Текстописец</entry>
+	  <entry id="103207" string="Publisher information">Информация за издателя</entry>
+	  <entry id="103208" string="Publisher / label">Издател / лейбъл</entry>
+	  <entry id="103209" string="ISRC">ISRC</entry>
 	</section>
 
 	<section name="Other">
-	  <entry id="53300" string="Other">Друго</entry>
-	  <entry id="53301" string="Original information">Информация за оригинала</entry>
-	  <entry id="53302" string="Original artist">Оригинален изпълнител</entry>
-	  <entry id="53303" string="Original album">Оригинален албум</entry>
-	  <entry id="53304" string="Original lyrics writer">Оригинален текстописец</entry>
-	  <entry id="53305" string="Original release year">Оригинална година на издаване</entry>
-	  <entry id="53306" string="Webpage URLs">Адрес на уебстраници</entry>
-	  <entry id="53307" string="Artist webpage">Уебстраница на изпълнителя</entry>
-	  <entry id="53308" string="Publisher webpage">Уебстраница на издателя</entry>
-	  <entry id="53309" string="Internet radio station">Интернет радиостанция</entry>
-	  <entry id="53310" string="Audio source webpage">Уебстраница на аудио източник</entry>
-	  <entry id="53311" string="Copyright information">Информация за авторски права</entry>
-	  <entry id="53312" string="Commercial information">Търговска информация</entry>
+	  <entry id="103300" string="Other">Друго</entry>
+	  <entry id="103301" string="Original information">Информация за оригинала</entry>
+	  <entry id="103302" string="Original artist">Оригинален изпълнител</entry>
+	  <entry id="103303" string="Original album">Оригинален албум</entry>
+	  <entry id="103304" string="Original lyrics writer">Оригинален текстописец</entry>
+	  <entry id="103305" string="Original release year">Оригинална година на издаване</entry>
+	  <entry id="103306" string="Webpage URLs">Адрес на уебстраници</entry>
+	  <entry id="103307" string="Artist webpage">Уебстраница на изпълнителя</entry>
+	  <entry id="103308" string="Publisher webpage">Уебстраница на издателя</entry>
+	  <entry id="103309" string="Internet radio station">Интернет радиостанция</entry>
+	  <entry id="103310" string="Audio source webpage">Уебстраница на аудио източник</entry>
+	  <entry id="103311" string="Copyright information">Информация за авторски права</entry>
+	  <entry id="103312" string="Commercial information">Търговска информация</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Невъзможност за отваряне на файл: %1&#10;&#10;Грешка: %2</entry>
-	  <entry id="53401" string="Unable to update tag: %1&#10;&#10;Error: %2">Невъзможност за обновяване на таг: %1&#10;&#10;Грешка: %2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Невъзможност за отваряне на файл: %1&#10;&#10;Грешка: %2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Невъзможност за обновяване на таг: %1&#10;&#10;Грешка: %2</entry>
 	</section>
       </section>
     </section>

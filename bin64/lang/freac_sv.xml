@@ -868,117 +868,117 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">Stöd det här projektet</entry>
-	<entry id="50001" string="Please support this project!">Det här projektet behöver ditt stöd!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Hjälp oss att även i framtiden kunna erbjuda detta program helt&#10;gratis genom att donera en slant till projektet %1.&#10;&#10;Klicka på en av knapparna nedan för att donera via PayPal:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Du kan även skicka pengar direkt till %1 via PayPal.&#10;&#10;Skriv till %1 om du önskar göra en donation via&#10;elektronisk överföring, eller en check/pengar via posten.</entry>
-	<entry id="50004" string="usd">eur</entry>
-	<entry id="50005" string="en">en</entry>
-	<entry id="50006" string="Thank you very much!">Tusen tack!</entry>
-	<entry id="50007" string="Remind me later">Påminn mig senare</entry>
+	<entry id="100000" string="Support this project">Stöd det här projektet</entry>
+	<entry id="100001" string="Please support this project!">Det här projektet behöver ditt stöd!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Hjälp oss att även i framtiden kunna erbjuda detta program helt&#10;gratis genom att donera en slant till projektet %1.&#10;&#10;Klicka på en av knapparna nedan för att donera via PayPal:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Du kan även skicka pengar direkt till %1 via PayPal.&#10;&#10;Skriv till %1 om du önskar göra en donation via&#10;elektronisk överföring, eller en check/pengar via posten.</entry>
+	<entry id="100004" string="usd">eur</entry>
+	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="Thank you very much!">Tusen tack!</entry>
+	<entry id="100007" string="Remind me later">Påminn mig senare</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">Konfigurera</entry>
-	<entry id="51001" string="About">Om</entry>
+	<entry id="101000" string="Configure">Konfigurera</entry>
+	<entry id="101001" string="About">Om</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52000" string="Video">Video</entry>
-	<entry id="52001" string="Enter video URL here">Ange videons URL här</entry>
-	<entry id="52002" string="Download">Hämta</entry>
-	<entry id="52003" string="Automatically download URLs copied to clipboard">Hämta automatiskt URL:er som kopieras till Urklipp</entry>
-	<entry id="52004" string="Save downloaded video files">Spara hämtade videofiler</entry>
-	<entry id="52005" string="Video downloads">Videohämtningar</entry>
-	<entry id="52006" string="Downloaded tracks">Hämtade spår</entry>
-	<entry id="52007" string="Uploader">Uppladdare</entry>
-	<entry id="52008" string="Video URL">Video-URL</entry>
-	<entry id="52009" string="Video title">Titel</entry>
-	<entry id="52010" string="Video description">Beskrivning</entry>
-	<entry id="52011" string="Site name">Webbplatsens namn</entry>
-	<entry id="52012" string="Uploaded by">Uppladdad av</entry>
-	<entry id="52013" string="Uploaded on">Uppladdad på</entry>
-	<entry id="52014" string="Length">Längd</entry>
-	<entry id="52015" string="Size">Storlek</entry>
-	<entry id="52016" string="Cancel download">Avbryt hämtning</entry>
-	<entry id="52017" string="unknown">i.u.</entry>
-	<entry id="52018" string="Note">Kommentar</entry>
+	<entry id="102000" string="Video">Video</entry>
+	<entry id="102001" string="Enter video URL here">Ange videons URL här</entry>
+	<entry id="102002" string="Download">Hämta</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">Hämta automatiskt URL:er som kopieras till Urklipp</entry>
+	<entry id="102004" string="Save downloaded video files">Spara hämtade videofiler</entry>
+	<entry id="102005" string="Video downloads">Videohämtningar</entry>
+	<entry id="102006" string="Downloaded tracks">Hämtade spår</entry>
+	<entry id="102007" string="Uploader">Uppladdare</entry>
+	<entry id="102008" string="Video URL">Video-URL</entry>
+	<entry id="102009" string="Video title">Titel</entry>
+	<entry id="102010" string="Video description">Beskrivning</entry>
+	<entry id="102011" string="Site name">Webbplatsens namn</entry>
+	<entry id="102012" string="Uploaded by">Uppladdad av</entry>
+	<entry id="102013" string="Uploaded on">Uppladdad på</entry>
+	<entry id="102014" string="Length">Längd</entry>
+	<entry id="102015" string="Size">Storlek</entry>
+	<entry id="102016" string="Cancel download">Avbryt hämtning</entry>
+	<entry id="102017" string="unknown">i.u.</entry>
+	<entry id="102018" string="Note">Kommentar</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">Automatisering</entry>
-	  <entry id="52102" string="Video files">Videofiler</entry>
-	  <entry id="52103" string="Browse">Bläddra …</entry>
-	  <entry id="52104" string="Select the folder to save downloaded video files to">Välj den mapp där videofilerna skall sparas</entry>
-	  <entry id="52105" string="Downloads">Hämtningar</entry>
-	  <entry id="52106" string="Maximum number of simultaneous downloads">Största antal samtidiga hämtningar</entry>
-	  <entry id="52107" string="Output format">Utdataformat</entry>
-	  <entry id="52108" string="keep original format">Behåll originalets format</entry>
+	  <entry id="102101" string="Automatization">Automatisering</entry>
+	  <entry id="102102" string="Video files">Videofiler</entry>
+	  <entry id="102103" string="Browse">Bläddra …</entry>
+	  <entry id="102104" string="Select the folder to save downloaded video files to">Välj den mapp där videofilerna skall sparas</entry>
+	  <entry id="102105" string="Downloads">Hämtningar</entry>
+	  <entry id="102106" string="Maximum number of simultaneous downloads">Största antal samtidiga hämtningar</entry>
+	  <entry id="102107" string="Output format">Utdataformat</entry>
+	  <entry id="102108" string="keep original format">Behåll originalets format</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="52201" string="This URL is not supported or not a video page URL!">Denna URL stöds inte eller är ingen URL till en videosida!</entry>
-	  <entry id="52202" string="Error downloading video!">Fel vid hämtning av video!</entry>
-	  <entry id="52203" string="You are already downloading this video!">Du hämtar redan denna video!</entry>
-	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Det gick inte att hitta vissa nödvändiga videoavkodare. Videofiler&#10;kan inte läggas till i jobblistan för konvertering till ljudfiler.&#10;&#10;Installera avconv eller FFmpeg för att åtgärda detta problem!</entry>
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">Denna URL stöds inte eller är ingen URL till en videosida!</entry>
+	  <entry id="102202" string="Error downloading video!">Fel vid hämtning av video!</entry>
+	  <entry id="102203" string="You are already downloading this video!">Du hämtar redan denna video!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Det gick inte att hitta vissa nödvändiga videoavkodare. Videofiler&#10;kan inte läggas till i jobblistan för konvertering till ljudfiler.&#10;&#10;Installera avconv eller FFmpeg för att åtgärda detta problem!</entry>
 	</section>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">Informationstaggar</entry>
-	<entry id="53001" string="Length">Längd</entry>
-	<entry id="53002" string="Size">Storlek</entry>
-	<entry id="53003" string="Albums">Album</entry>
-	<entry id="53004" string="Files">Filer</entry>
-	<entry id="53005" string="File">Filsökväg</entry>
-	<entry id="53006" string="Tracks">Spår</entry>
-	<entry id="53007" string="Save">Spara</entry>
-	<entry id="53008" string="Save all">Spara alla</entry>
-	<entry id="53009" string="no audio files found">inga ljudfiler hittades</entry>
+	<entry id="103000" string="Tags">Informationstaggar</entry>
+	<entry id="103001" string="Length">Längd</entry>
+	<entry id="103002" string="Size">Storlek</entry>
+	<entry id="103003" string="Albums">Album</entry>
+	<entry id="103004" string="Files">Filer</entry>
+	<entry id="103005" string="File">Filsökväg</entry>
+	<entry id="103006" string="Tracks">Spår</entry>
+	<entry id="103007" string="Save">Spara</entry>
+	<entry id="103008" string="Save all">Spara alla</entry>
+	<entry id="103009" string="no audio files found">inga ljudfiler hittades</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">Allmänt</entry>
-	  <entry id="53101" string="Title information">Titelinformation</entry>
-	  <entry id="53102" string="Disc">Skiva</entry>
-	  <entry id="53103" string="Cover art">Skivomslag</entry>
-	  <entry id="53104" string="Covers">Omslag</entry>
-	  <entry id="53105" string="Type">Typ</entry>
-	  <entry id="53106" string="Description">Beskrivning</entry>
-	  <entry id="53107" string="Add">Lägg till</entry>
-	  <entry id="53108" string="Remove">Ta bort</entry>
+	  <entry id="103100" string="Basic">Allmänt</entry>
+	  <entry id="103101" string="Title information">Titelinformation</entry>
+	  <entry id="103102" string="Disc">Skiva</entry>
+	  <entry id="103103" string="Cover art">Skivomslag</entry>
+	  <entry id="103104" string="Covers">Omslag</entry>
+	  <entry id="103105" string="Type">Typ</entry>
+	  <entry id="103106" string="Description">Beskrivning</entry>
+	  <entry id="103107" string="Add">Lägg till</entry>
+	  <entry id="103108" string="Remove">Ta bort</entry>
 	</section>
 
 	<section name="Details">
-	  <entry id="53200" string="Details">Information</entry>
-	  <entry id="53201" string="Detailed information">Detaljerad information</entry>
-	  <entry id="53202" string="Band / orchestra">Band/orkester</entry>
-	  <entry id="53203" string="Performer refinement">Artistinformation</entry>
-	  <entry id="53204" string="Modified / remixed by">Modifierad/ommixad av</entry>
-	  <entry id="53205" string="Composer">Kompositör</entry>
-	  <entry id="53206" string="Lyrics writer">Textförfattare/librettist</entry>
-	  <entry id="53207" string="Publisher information">Information om utgivare</entry>
-	  <entry id="53208" string="Publisher / label">Utgivare/skivmärke</entry>
-	  <entry id="53209" string="ISRC">ISRC</entry>
+	  <entry id="103200" string="Details">Information</entry>
+	  <entry id="103201" string="Detailed information">Detaljerad information</entry>
+	  <entry id="103202" string="Band / orchestra">Band/orkester</entry>
+	  <entry id="103203" string="Performer refinement">Artistinformation</entry>
+	  <entry id="103204" string="Modified / remixed by">Modifierad/ommixad av</entry>
+	  <entry id="103205" string="Composer">Kompositör</entry>
+	  <entry id="103206" string="Lyrics writer">Textförfattare/librettist</entry>
+	  <entry id="103207" string="Publisher information">Information om utgivare</entry>
+	  <entry id="103208" string="Publisher / label">Utgivare/skivmärke</entry>
+	  <entry id="103209" string="ISRC">ISRC</entry>
 	</section>
 
 	<section name="Other">
-	  <entry id="53300" string="Other">Övrigt</entry>
-	  <entry id="53301" string="Original information">Ursprunglig information</entry>
-	  <entry id="53302" string="Original artist">Ursprunglig artist</entry>
-	  <entry id="53303" string="Original album">Ursprungligt album</entry>
-	  <entry id="53304" string="Original lyrics writer">Ursprunglig textförfattare</entry>
-	  <entry id="53305" string="Original release year">Ursprungligt utgivningsår</entry>
-	  <entry id="53306" string="Webpage URLs">Webbside-URL:er</entry>
-	  <entry id="53307" string="Artist webpage">Artistens webbsida</entry>
-	  <entry id="53308" string="Publisher webpage">Utgivarens webbsida</entry>
-	  <entry id="53309" string="Internet radio station">Internetradiostation</entry>
-	  <entry id="53310" string="Audio source webpage">Källwebbsida för ljudfil</entry>
-	  <entry id="53311" string="Copyright information">Upphovsrättsinformation</entry>
-	  <entry id="53312" string="Commercial information">Verksamhetsinformation</entry>
+	  <entry id="103300" string="Other">Övrigt</entry>
+	  <entry id="103301" string="Original information">Ursprunglig information</entry>
+	  <entry id="103302" string="Original artist">Ursprunglig artist</entry>
+	  <entry id="103303" string="Original album">Ursprungligt album</entry>
+	  <entry id="103304" string="Original lyrics writer">Ursprunglig textförfattare</entry>
+	  <entry id="103305" string="Original release year">Ursprungligt utgivningsår</entry>
+	  <entry id="103306" string="Webpage URLs">Webbside-URL:er</entry>
+	  <entry id="103307" string="Artist webpage">Artistens webbsida</entry>
+	  <entry id="103308" string="Publisher webpage">Utgivarens webbsida</entry>
+	  <entry id="103309" string="Internet radio station">Internetradiostation</entry>
+	  <entry id="103310" string="Audio source webpage">Källwebbsida för ljudfil</entry>
+	  <entry id="103311" string="Copyright information">Upphovsrättsinformation</entry>
+	  <entry id="103312" string="Commercial information">Verksamhetsinformation</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Det gick inte att öppna fil: %1&#10;&#10;Fel: %2</entry>
-	  <entry id="53401" string="Unable to update tag: %1&#10;&#10;Error: %2">Det gick inte att uppdatera tagg: %1&#10;&#10;Fel: %2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Det gick inte att öppna fil: %1&#10;&#10;Fel: %2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Det gick inte att uppdatera tagg: %1&#10;&#10;Fel: %2</entry>
 	</section>
       </section>
     </section>

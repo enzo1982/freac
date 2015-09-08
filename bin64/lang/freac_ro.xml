@@ -655,43 +655,43 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">Ajută acest proiect</entry>
-	<entry id="50001" string="Please support this project!">Vă rog ajutaţi acest proiect!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Vă rog să ajutaţi păstrarea acestui proiect gratuit prin suportarea&#10;%1 cu o donaţie.&#10;&#10;Da-ţi click pe unul dintre butoanele de mai jos pentru a face o&#10;donaţie utilizând PayPal:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Puteţi deasemenea trimite bani direct la %1 cu PayPal.&#10;&#10;Scrie te rog către %1 dacă te-ai decis să faci o donaţie&#10;folosind transfer electronic, cec sau bani prin poştă.</entry>
-	<entry id="50004" string="usd">eur</entry>
-	<entry id="50005" string="en">en</entry>
-	<entry id="50006" string="Thank you very much!">Mulţumesc foarte mult!</entry>
-	<entry id="50007" string="Remind me later">Adu-mi aminte mai târziu</entry>
+	<entry id="100000" string="Support this project">Ajută acest proiect</entry>
+	<entry id="100001" string="Please support this project!">Vă rog ajutaţi acest proiect!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Vă rog să ajutaţi păstrarea acestui proiect gratuit prin suportarea&#10;%1 cu o donaţie.&#10;&#10;Da-ţi click pe unul dintre butoanele de mai jos pentru a face o&#10;donaţie utilizând PayPal:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Puteţi deasemenea trimite bani direct la %1 cu PayPal.&#10;&#10;Scrie te rog către %1 dacă te-ai decis să faci o donaţie&#10;folosind transfer electronic, cec sau bani prin poştă.</entry>
+	<entry id="100004" string="usd">eur</entry>
+	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="Thank you very much!">Mulţumesc foarte mult!</entry>
+	<entry id="100007" string="Remind me later">Adu-mi aminte mai târziu</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">Configurare</entry>
-	<entry id="51001" string="About">Despre</entry>
+	<entry id="101000" string="Configure">Configurare</entry>
+	<entry id="101001" string="About">Despre</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52014" string="Length">Lungime</entry>
-	<entry id="52015" string="Size">Mărime</entry>
+	<entry id="102014" string="Length">Lungime</entry>
+	<entry id="102015" string="Size">Mărime</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">Automatizare</entry>
-	  <entry id="52103" string="Browse">Răsfoire</entry>
+	  <entry id="102101" string="Automatization">Automatizare</entry>
+	  <entry id="102103" string="Browse">Răsfoire</entry>
 	</section>
 
 	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">Tag-uri Info</entry>
-	<entry id="53001" string="Length">Lungime</entry>
-	<entry id="53002" string="Size">Mărime</entry>
-	<entry id="53005" string="File">Fişier</entry>
+	<entry id="103000" string="Tags">Tag-uri Info</entry>
+	<entry id="103001" string="Length">Lungime</entry>
+	<entry id="103002" string="Size">Mărime</entry>
+	<entry id="103005" string="File">Fişier</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">Setări de bază</entry>
-	  <entry id="53107" string="Add">Adăugare</entry>
-	  <entry id="53108" string="Remove">Ştergere</entry>
+	  <entry id="103100" string="Basic">Setări de bază</entry>
+	  <entry id="103107" string="Add">Adăugare</entry>
+	  <entry id="103108" string="Remove">Ştergere</entry>
 	</section>
 
 	<section name="Details"/>
@@ -699,7 +699,7 @@
 	<section name="Other"/>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Nu pot deschide fişierul: %1&#10;&#10;%2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Nu pot deschide fişierul: %1&#10;&#10;%2</entry>
 	</section>
       </section>
     </section>

@@ -655,43 +655,43 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">Paremti projektą</entry>
-	<entry id="50001" string="Please support this project!">Prašome paremti šį projektą dabar!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Prašome padėti išlaikyti šią programinę įrangą nemokama paremdami %1 projektą.&#10;&#10;Spustelėkite vieną iš žemiau esančių mygtukų, kad atlikti PayPal pervedimą:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Naudodamiesi PayPal taip pat galite nusiųsti pinigų tiesiai %1.&#10;&#10;Prašome susisiekti %1 jei norite paaukoti&#10;elektroniniu pavedimu, atsiųsti čekį ar pinigų paštu.</entry>
-	<entry id="50004" string="usd">eur</entry>
-	<entry id="50005" string="en">en</entry>
-	<entry id="50006" string="Thank you very much!">Labai ačiū!</entry>
-	<entry id="50007" string="Remind me later">Priminti vėliau</entry>
+	<entry id="100000" string="Support this project">Paremti projektą</entry>
+	<entry id="100001" string="Please support this project!">Prašome paremti šį projektą dabar!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Prašome padėti išlaikyti šią programinę įrangą nemokama paremdami %1 projektą.&#10;&#10;Spustelėkite vieną iš žemiau esančių mygtukų, kad atlikti PayPal pervedimą:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Naudodamiesi PayPal taip pat galite nusiųsti pinigų tiesiai %1.&#10;&#10;Prašome susisiekti %1 jei norite paaukoti&#10;elektroniniu pavedimu, atsiųsti čekį ar pinigų paštu.</entry>
+	<entry id="100004" string="usd">eur</entry>
+	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="Thank you very much!">Labai ačiū!</entry>
+	<entry id="100007" string="Remind me later">Priminti vėliau</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">Konfigūruoti</entry>
-	<entry id="51001" string="About">Apie</entry>
+	<entry id="101000" string="Configure">Konfigūruoti</entry>
+	<entry id="101001" string="About">Apie</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52014" string="Length">Trukmė</entry>
-	<entry id="52015" string="Size">Dydis</entry>
+	<entry id="102014" string="Length">Trukmė</entry>
+	<entry id="102015" string="Size">Dydis</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">Automatizavimas</entry>
-	  <entry id="52103" string="Browse">Naršyti</entry>
+	  <entry id="102101" string="Automatization">Automatizavimas</entry>
+	  <entry id="102103" string="Browse">Naršyti</entry>
 	</section>
 
 	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">Informacinės žymos</entry>
-	<entry id="53001" string="Length">Trukmė</entry>
-	<entry id="53002" string="Size">Dydis</entry>
-	<entry id="53005" string="File">Failas</entry>
+	<entry id="103000" string="Tags">Informacinės žymos</entry>
+	<entry id="103001" string="Length">Trukmė</entry>
+	<entry id="103002" string="Size">Dydis</entry>
+	<entry id="103005" string="File">Failas</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">Pagrindinis</entry>
-	  <entry id="53107" string="Add">Pridėti</entry>
-	  <entry id="53108" string="Remove">Pašalinti</entry>
+	  <entry id="103100" string="Basic">Pagrindinis</entry>
+	  <entry id="103107" string="Add">Pridėti</entry>
+	  <entry id="103108" string="Remove">Pašalinti</entry>
 	</section>
 
 	<section name="Details"/>
@@ -699,7 +699,7 @@
 	<section name="Other"/>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Nepavyksta atidaryti failo: %1&#10;&#10;Klaida: %2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Nepavyksta atidaryti failo: %1&#10;&#10;Klaida: %2</entry>
 	</section>
       </section>
     </section>

@@ -873,117 +873,117 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">Unterstützen Sie dieses Projekt</entry>
-	<entry id="50001" string="Please support this project!">Bitte unterstützen Sie dieses Projekt!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Bitte helfen Sie, diese Software weiterhin frei und kostenlos zu erhalten,&#10;indem Sie das %1-Projekt mit einer Spende unterstützen.&#10;&#10;Klicken Sie auf einen dieser Knöpfe, um jetzt per PayPal zu spenden:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Sie können per PayPal auch direkt Geld an %1 senden.&#10;&#10;Bitte schreiben Sie an %1, wenn Sie per Überweisung oder&#10;Scheck spenden oder Geld per Post senden möchten.</entry>
-	<entry id="50004" string="usd">eur</entry>
-	<entry id="50005" string="en">de</entry>
-	<entry id="50006" string="Thank you very much!">Vielen Dank!</entry>
-	<entry id="50007" string="Remind me later">Später erneut erinnern</entry>
+	<entry id="100000" string="Support this project">Unterstützen Sie dieses Projekt</entry>
+	<entry id="100001" string="Please support this project!">Bitte unterstützen Sie dieses Projekt!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Bitte helfen Sie, diese Software weiterhin frei und kostenlos zu erhalten,&#10;indem Sie das %1-Projekt mit einer Spende unterstützen.&#10;&#10;Klicken Sie auf einen dieser Knöpfe, um jetzt per PayPal zu spenden:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Sie können per PayPal auch direkt Geld an %1 senden.&#10;&#10;Bitte schreiben Sie an %1, wenn Sie per Überweisung oder&#10;Scheck spenden oder Geld per Post senden möchten.</entry>
+	<entry id="100004" string="usd">eur</entry>
+	<entry id="100005" string="en">de</entry>
+	<entry id="100006" string="Thank you very much!">Vielen Dank!</entry>
+	<entry id="100007" string="Remind me later">Später erneut erinnern</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">Konfigurieren</entry>
-	<entry id="51001" string="About">Über</entry>
+	<entry id="101000" string="Configure">Konfigurieren</entry>
+	<entry id="101001" string="About">Über</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52000" string="Video">Video</entry>
-	<entry id="52001" string="Enter video URL here">Video-URL hier eingeben</entry>
-	<entry id="52002" string="Download">Herunterladen</entry>
-	<entry id="52003" string="Automatically download URLs copied to clipboard">URLs in der Zwischenablage automatisch herunterladen</entry>
-	<entry id="52004" string="Save downloaded video files">Heruntergeladene Videodateien speichern</entry>
-	<entry id="52005" string="Video downloads">Videodownloads</entry>
-	<entry id="52006" string="Downloaded tracks">Heruntergeladene Tracks</entry>
-	<entry id="52007" string="Uploader">Uploader</entry>
-	<entry id="52008" string="Video URL">Video-URL</entry>
-	<entry id="52009" string="Video title">Videotitel</entry>
-	<entry id="52010" string="Video description">Videobeschreibung</entry>
-	<entry id="52011" string="Site name">Webseite</entry>
-	<entry id="52012" string="Uploaded by">Hochgeladen von</entry>
-	<entry id="52013" string="Uploaded on">Hochgeladen am</entry>
-	<entry id="52014" string="Length">Länge</entry>
-	<entry id="52015" string="Size">Größe</entry>
-	<entry id="52016" string="Cancel download">Download abbrechen</entry>
-	<entry id="52017" string="unknown">unbekannt</entry>
-	<entry id="52018" string="Note">Hinweis</entry>
+	<entry id="102000" string="Video">Video</entry>
+	<entry id="102001" string="Enter video URL here">Video-URL hier eingeben</entry>
+	<entry id="102002" string="Download">Herunterladen</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">URLs in der Zwischenablage automatisch herunterladen</entry>
+	<entry id="102004" string="Save downloaded video files">Heruntergeladene Videodateien speichern</entry>
+	<entry id="102005" string="Video downloads">Videodownloads</entry>
+	<entry id="102006" string="Downloaded tracks">Heruntergeladene Tracks</entry>
+	<entry id="102007" string="Uploader">Uploader</entry>
+	<entry id="102008" string="Video URL">Video-URL</entry>
+	<entry id="102009" string="Video title">Videotitel</entry>
+	<entry id="102010" string="Video description">Videobeschreibung</entry>
+	<entry id="102011" string="Site name">Webseite</entry>
+	<entry id="102012" string="Uploaded by">Hochgeladen von</entry>
+	<entry id="102013" string="Uploaded on">Hochgeladen am</entry>
+	<entry id="102014" string="Length">Länge</entry>
+	<entry id="102015" string="Size">Größe</entry>
+	<entry id="102016" string="Cancel download">Download abbrechen</entry>
+	<entry id="102017" string="unknown">unbekannt</entry>
+	<entry id="102018" string="Note">Hinweis</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">Automatisierung</entry>
-	  <entry id="52102" string="Video files">Videodateien</entry>
-	  <entry id="52103" string="Browse">Suchen</entry>
-	  <entry id="52104" string="Select the folder to save downloaded video files to">Wählen Sie einen Ordner für heruntergeladene Videodateien</entry>
-	  <entry id="52105" string="Downloads">Downloads</entry>
-	  <entry id="52106" string="Maximum number of simultaneous downloads">Maximale Anzahl gleichzeitiger Downloads</entry>
-	  <entry id="52107" string="Output format">Ausgabeformat</entry>
-	  <entry id="52108" string="keep original format">ursprüngliches Format beibehalten</entry>
+	  <entry id="102101" string="Automatization">Automatisierung</entry>
+	  <entry id="102102" string="Video files">Videodateien</entry>
+	  <entry id="102103" string="Browse">Suchen</entry>
+	  <entry id="102104" string="Select the folder to save downloaded video files to">Wählen Sie einen Ordner für heruntergeladene Videodateien</entry>
+	  <entry id="102105" string="Downloads">Downloads</entry>
+	  <entry id="102106" string="Maximum number of simultaneous downloads">Maximale Anzahl gleichzeitiger Downloads</entry>
+	  <entry id="102107" string="Output format">Ausgabeformat</entry>
+	  <entry id="102108" string="keep original format">ursprüngliches Format beibehalten</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="52201" string="This URL is not supported or not a video page URL!">Diese URL wird nicht unterstützt oder ist keine URL einer Videoseite!</entry>
-	  <entry id="52202" string="Error downloading video!">Fehler beim Herunterladen des Videos!</entry>
-	  <entry id="52203" string="You are already downloading this video!">Dieses Video wird bereits heruntergeladen!</entry>
-	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Einige benötigte Videodekodierer konnten nicht gefunden werden. Videodateien&#10;können daher nicht zur Konvertierung in Audiodateien zur Jobliste hinzugefügt werden.&#10;&#10;Bitte installieren Sie avconv oder FFmpeg, um dieses Problem zu beheben!</entry>
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">Diese URL wird nicht unterstützt oder ist keine URL einer Videoseite!</entry>
+	  <entry id="102202" string="Error downloading video!">Fehler beim Herunterladen des Videos!</entry>
+	  <entry id="102203" string="You are already downloading this video!">Dieses Video wird bereits heruntergeladen!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Einige benötigte Videodekodierer konnten nicht gefunden werden. Videodateien&#10;können daher nicht zur Konvertierung in Audiodateien zur Jobliste hinzugefügt werden.&#10;&#10;Bitte installieren Sie avconv oder FFmpeg, um dieses Problem zu beheben!</entry>
 	</section>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">Tags</entry>
-	<entry id="53001" string="Length">Länge</entry>
-	<entry id="53002" string="Size">Größe</entry>
-	<entry id="53003" string="Albums">Alben</entry>
-	<entry id="53004" string="Files">Dateien</entry>
-	<entry id="53005" string="File">Datei</entry>
-	<entry id="53006" string="Tracks">Tracks</entry>
-	<entry id="53007" string="Save">Sichern</entry>
-	<entry id="53008" string="Save all">Alle sichern</entry>
-	<entry id="53009" string="no audio files found">keine Audiodateien gefunden</entry>
+	<entry id="103000" string="Tags">Tags</entry>
+	<entry id="103001" string="Length">Länge</entry>
+	<entry id="103002" string="Size">Größe</entry>
+	<entry id="103003" string="Albums">Alben</entry>
+	<entry id="103004" string="Files">Dateien</entry>
+	<entry id="103005" string="File">Datei</entry>
+	<entry id="103006" string="Tracks">Tracks</entry>
+	<entry id="103007" string="Save">Sichern</entry>
+	<entry id="103008" string="Save all">Alle sichern</entry>
+	<entry id="103009" string="no audio files found">keine Audiodateien gefunden</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">Standard</entry>
-	  <entry id="53101" string="Title information">Titelinformationen</entry>
-	  <entry id="53102" string="Disc">Disk</entry>
-	  <entry id="53103" string="Cover art">Cover-Bilder</entry>
-	  <entry id="53104" string="Covers">Cover</entry>
-	  <entry id="53105" string="Type">Art</entry>
-	  <entry id="53106" string="Description">Beschreibung</entry>
-	  <entry id="53107" string="Add">Hinzufügen</entry>
-	  <entry id="53108" string="Remove">Entfernen</entry>
+	  <entry id="103100" string="Basic">Standard</entry>
+	  <entry id="103101" string="Title information">Titelinformationen</entry>
+	  <entry id="103102" string="Disc">Disk</entry>
+	  <entry id="103103" string="Cover art">Cover-Bilder</entry>
+	  <entry id="103104" string="Covers">Cover</entry>
+	  <entry id="103105" string="Type">Art</entry>
+	  <entry id="103106" string="Description">Beschreibung</entry>
+	  <entry id="103107" string="Add">Hinzufügen</entry>
+	  <entry id="103108" string="Remove">Entfernen</entry>
 	</section>
 
 	<section name="Details">
-	  <entry id="53200" string="Details">Details</entry>
-	  <entry id="53201" string="Detailed information">Detaillierte Informationen</entry>
-	  <entry id="53202" string="Band / orchestra">Band / Orchester</entry>
-	  <entry id="53203" string="Performer refinement">Weitere Künstler</entry>
-	  <entry id="53204" string="Modified / remixed by">Bearbeitet / remixed von</entry>
-	  <entry id="53205" string="Composer">Komponist</entry>
-	  <entry id="53206" string="Lyrics writer">Texter</entry>
-	  <entry id="53207" string="Publisher information">Verlegerinformationen</entry>
-	  <entry id="53208" string="Publisher / label">Verleger / Label</entry>
-	  <entry id="53209" string="ISRC">ISRC</entry>
+	  <entry id="103200" string="Details">Details</entry>
+	  <entry id="103201" string="Detailed information">Detaillierte Informationen</entry>
+	  <entry id="103202" string="Band / orchestra">Band / Orchester</entry>
+	  <entry id="103203" string="Performer refinement">Weitere Künstler</entry>
+	  <entry id="103204" string="Modified / remixed by">Bearbeitet / remixed von</entry>
+	  <entry id="103205" string="Composer">Komponist</entry>
+	  <entry id="103206" string="Lyrics writer">Texter</entry>
+	  <entry id="103207" string="Publisher information">Verlegerinformationen</entry>
+	  <entry id="103208" string="Publisher / label">Verleger / Label</entry>
+	  <entry id="103209" string="ISRC">ISRC</entry>
 	</section>
 
 	<section name="Other">
-	  <entry id="53300" string="Other">Weitere</entry>
-	  <entry id="53301" string="Original information">Original</entry>
-	  <entry id="53302" string="Original artist">Originalkünstler</entry>
-	  <entry id="53303" string="Original album">Originalalbum</entry>
-	  <entry id="53304" string="Original lyrics writer">Originaltexter</entry>
-	  <entry id="53305" string="Original release year">Originalerscheinungsjahr</entry>
-	  <entry id="53306" string="Webpage URLs">Webseiten-URLs</entry>
-	  <entry id="53307" string="Artist webpage">Künstler Webseite</entry>
-	  <entry id="53308" string="Publisher webpage">Verleger Webseite</entry>
-	  <entry id="53309" string="Internet radio station">Internet-Radiostation</entry>
-	  <entry id="53310" string="Audio source webpage">Audioquelle</entry>
-	  <entry id="53311" string="Copyright information">Copyright-Informationen</entry>
-	  <entry id="53312" string="Commercial information">Verkaufsinformationen</entry>
+	  <entry id="103300" string="Other">Weitere</entry>
+	  <entry id="103301" string="Original information">Original</entry>
+	  <entry id="103302" string="Original artist">Originalkünstler</entry>
+	  <entry id="103303" string="Original album">Originalalbum</entry>
+	  <entry id="103304" string="Original lyrics writer">Originaltexter</entry>
+	  <entry id="103305" string="Original release year">Originalerscheinungsjahr</entry>
+	  <entry id="103306" string="Webpage URLs">Webseiten-URLs</entry>
+	  <entry id="103307" string="Artist webpage">Künstler Webseite</entry>
+	  <entry id="103308" string="Publisher webpage">Verleger Webseite</entry>
+	  <entry id="103309" string="Internet radio station">Internet-Radiostation</entry>
+	  <entry id="103310" string="Audio source webpage">Audioquelle</entry>
+	  <entry id="103311" string="Copyright information">Copyright-Informationen</entry>
+	  <entry id="103312" string="Commercial information">Verkaufsinformationen</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Kann Datei nicht öffnen: %1&#10;&#10;Fehler: %2</entry>
-	  <entry id="53401" string="Unable to update tag: %1&#10;&#10;Error: %2">Kann Tag nicht aktualisieren: %1&#10;&#10;Fehler: %2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Kann Datei nicht öffnen: %1&#10;&#10;Fehler: %2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Kann Tag nicht aktualisieren: %1&#10;&#10;Fehler: %2</entry>
 	</section>
       </section>
     </section>

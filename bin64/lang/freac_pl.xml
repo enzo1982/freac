@@ -658,43 +658,43 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">Wesprzyj ten projekt</entry>
-	<entry id="50001" string="Please support this project!">Prosimy o wsparcie tego projektu!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Pomóż w utrzymaniu bezpłatnego statusu programu %1,&#10;dokonując wpłaty.&#10;&#10;Kliknij jeden z poniższych przycisków, by dokonać wpłaty przez PayPal:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Pieniądze możesz także wysłać bezpośrednio do %1 przez PayPal.&#10;&#10;Napisz do %1, jeśli chcesz wesprzeć projekt przelewem&#10;bankowym albo wysłać czek lub pieniądze pocztą.</entry>
-	<entry id="50004" string="usd">eur</entry>
-	<entry id="50005" string="en">en</entry>
-	<entry id="50006" string="Thank you very much!">Dziękujemy!</entry>
-	<entry id="50007" string="Remind me later">Przypomnij później</entry>
+	<entry id="100000" string="Support this project">Wesprzyj ten projekt</entry>
+	<entry id="100001" string="Please support this project!">Prosimy o wsparcie tego projektu!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Pomóż w utrzymaniu bezpłatnego statusu programu %1,&#10;dokonując wpłaty.&#10;&#10;Kliknij jeden z poniższych przycisków, by dokonać wpłaty przez PayPal:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Pieniądze możesz także wysłać bezpośrednio do %1 przez PayPal.&#10;&#10;Napisz do %1, jeśli chcesz wesprzeć projekt przelewem&#10;bankowym albo wysłać czek lub pieniądze pocztą.</entry>
+	<entry id="100004" string="usd">eur</entry>
+	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="Thank you very much!">Dziękujemy!</entry>
+	<entry id="100007" string="Remind me later">Przypomnij później</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">Konfiguracja</entry>
-	<entry id="51001" string="About">O rozszerzeniu</entry>
+	<entry id="101000" string="Configure">Konfiguracja</entry>
+	<entry id="101001" string="About">O rozszerzeniu</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52014" string="Length">Długość</entry>
-	<entry id="52015" string="Size">Rozmiar</entry>
+	<entry id="102014" string="Length">Długość</entry>
+	<entry id="102015" string="Size">Rozmiar</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">Automatyzacja</entry>
-	  <entry id="52103" string="Browse">Przeglądaj</entry>
+	  <entry id="102101" string="Automatization">Automatyzacja</entry>
+	  <entry id="102103" string="Browse">Przeglądaj</entry>
 	</section>
 
 	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">Identyfikatory</entry>
-	<entry id="53001" string="Length">Długość</entry>
-	<entry id="53002" string="Size">Rozmiar</entry>
-	<entry id="53005" string="File">Plik</entry>
+	<entry id="103000" string="Tags">Identyfikatory</entry>
+	<entry id="103001" string="Length">Długość</entry>
+	<entry id="103002" string="Size">Rozmiar</entry>
+	<entry id="103005" string="File">Plik</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">Podstawowe</entry>
-	  <entry id="53107" string="Add">Dodaj</entry>
-	  <entry id="53108" string="Remove">Usuń z listy</entry>
+	  <entry id="103100" string="Basic">Podstawowe</entry>
+	  <entry id="103107" string="Add">Dodaj</entry>
+	  <entry id="103108" string="Remove">Usuń z listy</entry>
 	</section>
 
 	<section name="Details"/>
@@ -702,7 +702,7 @@
 	<section name="Other"/>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Nie można otworzyć pliku %1&#10;&#10;Błąd %2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Nie można otworzyć pliku %1&#10;&#10;Błąd %2</entry>
 	</section>
       </section>
     </section>

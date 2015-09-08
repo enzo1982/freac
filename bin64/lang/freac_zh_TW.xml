@@ -657,43 +657,43 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">支援本專案</entry>
-	<entry id="50001" string="Please support this project!">請支援本專案！</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">請藉由捐助來支援 %1 專案繼續維持免費軟體形式。&#10;&#10;請點選下列任一按鈕來使用 PayPal 進行捐助：</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">您也可以使用 PayPal 直接轉帳給我。&#10;&#10;若您想使用電子轉帳、郵寄支票或郵寄金錢&#10;來進行捐助，請寫信給 %1。</entry>
-	<entry id="50004" string="usd">usd</entry>
-	<entry id="50005" string="en">en</entry>
-	<entry id="50006" string="Thank you very much!">非常感謝！</entry>
-	<entry id="50007" string="Remind me later">稍後再提醒我</entry>
+	<entry id="100000" string="Support this project">支援本專案</entry>
+	<entry id="100001" string="Please support this project!">請支援本專案！</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">請藉由捐助來支援 %1 專案繼續維持免費軟體形式。&#10;&#10;請點選下列任一按鈕來使用 PayPal 進行捐助：</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">您也可以使用 PayPal 直接轉帳給我。&#10;&#10;若您想使用電子轉帳、郵寄支票或郵寄金錢&#10;來進行捐助，請寫信給 %1。</entry>
+	<entry id="100004" string="usd">usd</entry>
+	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="Thank you very much!">非常感謝！</entry>
+	<entry id="100007" string="Remind me later">稍後再提醒我</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">組態</entry>
-	<entry id="51001" string="About">關於</entry>
+	<entry id="101000" string="Configure">組態</entry>
+	<entry id="101001" string="About">關於</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52014" string="Length">長度</entry>
-	<entry id="52015" string="Size">大小</entry>
+	<entry id="102014" string="Length">長度</entry>
+	<entry id="102015" string="Size">大小</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">自動化</entry>
-	  <entry id="52103" string="Browse">瀏覽</entry>
+	  <entry id="102101" string="Automatization">自動化</entry>
+	  <entry id="102103" string="Browse">瀏覽</entry>
 	</section>
 
 	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">訊息標籤</entry>
-	<entry id="53001" string="Length">長度</entry>
-	<entry id="53002" string="Size">大小</entry>
-	<entry id="53005" string="File">檔案</entry>
+	<entry id="103000" string="Tags">訊息標籤</entry>
+	<entry id="103001" string="Length">長度</entry>
+	<entry id="103002" string="Size">大小</entry>
+	<entry id="103005" string="File">檔案</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">基本</entry>
-	  <entry id="53107" string="Add">加入</entry>
-	  <entry id="53108" string="Remove">移除</entry>
+	  <entry id="103100" string="Basic">基本</entry>
+	  <entry id="103107" string="Add">加入</entry>
+	  <entry id="103108" string="Remove">移除</entry>
 	</section>
 
 	<section name="Details"/>
@@ -701,7 +701,7 @@
 	<section name="Other"/>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案： %1&#10;&#10;%2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案： %1&#10;&#10;%2</entry>
 	</section>
       </section>
     </section>

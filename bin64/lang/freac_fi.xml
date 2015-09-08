@@ -656,43 +656,43 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">Tue tätä projektia</entry>
-	<entry id="50001" string="Please support this project!">Ole hyvä ja tue tätä projektia!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Ole hyvä ja auta tätä ohjelman tukemista lahjoittamalla %1-projektille.&#10;&#10;Paina tästä napista tehdäkseen lahjoituksen PayPal-käytännöllä:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Voit myös lahjoittaa rahaa projektille&#10;käyttämällä PayPal-käytäntöä.&#10;&#10;Ole hyvä ja kysy lisätetoa kirjoittamalla englanninkielellä osoitteeseen&#10;%1, jos haluat lahjoittaa&#10;sähköisesti, shekillä tai lähettämällä suoraan rahaa postitse.</entry>
-	<entry id="50004" string="usd">eur</entry>
-	<entry id="50005" string="en">en</entry>
-	<entry id="50006" string="Thank you very much!">Erittäin paljon kiitoksia!</entry>
-	<entry id="50007" string="Remind me later">Muistuta minua myöhemmin</entry>
+	<entry id="100000" string="Support this project">Tue tätä projektia</entry>
+	<entry id="100001" string="Please support this project!">Ole hyvä ja tue tätä projektia!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Ole hyvä ja auta tätä ohjelman tukemista lahjoittamalla %1-projektille.&#10;&#10;Paina tästä napista tehdäkseen lahjoituksen PayPal-käytännöllä:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Voit myös lahjoittaa rahaa projektille&#10;käyttämällä PayPal-käytäntöä.&#10;&#10;Ole hyvä ja kysy lisätetoa kirjoittamalla englanninkielellä osoitteeseen&#10;%1, jos haluat lahjoittaa&#10;sähköisesti, shekillä tai lähettämällä suoraan rahaa postitse.</entry>
+	<entry id="100004" string="usd">eur</entry>
+	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="Thank you very much!">Erittäin paljon kiitoksia!</entry>
+	<entry id="100007" string="Remind me later">Muistuta minua myöhemmin</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">Määritä</entry>
-	<entry id="51001" string="About">Tietoja</entry>
+	<entry id="101000" string="Configure">Määritä</entry>
+	<entry id="101001" string="About">Tietoja</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52014" string="Length">Pituus</entry>
-	<entry id="52015" string="Size">Koko</entry>
+	<entry id="102014" string="Length">Pituus</entry>
+	<entry id="102015" string="Size">Koko</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">Automaattinen</entry>
-	  <entry id="52103" string="Browse">Selaa</entry>
+	  <entry id="102101" string="Automatization">Automaattinen</entry>
+	  <entry id="102103" string="Browse">Selaa</entry>
 	</section>
 
 	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">Info-tagit</entry>
-	<entry id="53001" string="Length">Pituus</entry>
-	<entry id="53002" string="Size">Koko</entry>
-	<entry id="53005" string="File">Tiedosto</entry>
+	<entry id="103000" string="Tags">Info-tagit</entry>
+	<entry id="103001" string="Length">Pituus</entry>
+	<entry id="103002" string="Size">Koko</entry>
+	<entry id="103005" string="File">Tiedosto</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">Perus</entry>
-	  <entry id="53107" string="Add">Lisää</entry>
-	  <entry id="53108" string="Remove">Posta</entry>
+	  <entry id="103100" string="Basic">Perus</entry>
+	  <entry id="103107" string="Add">Lisää</entry>
+	  <entry id="103108" string="Remove">Posta</entry>
 	</section>
 
 	<section name="Details"/>
@@ -700,7 +700,7 @@
 	<section name="Other"/>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Ei voida avata tiedostoa: %1&#10;&#10;Virhe: %2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Ei voida avata tiedostoa: %1&#10;&#10;Virhe: %2</entry>
 	</section>
       </section>
     </section>

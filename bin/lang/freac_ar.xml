@@ -652,43 +652,43 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">دعم هذا المشروع</entry>
-	<entry id="50001" string="Please support this project!">يرجى دعم هذا المشروع!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">الرجاء المساعدة على جعل هذا البرنامج مجانا من خلال دعم المشروع %1 بتبرع.&#10;&#10;انقر فوق أحد الأزرار الموجودة أدناه للتبرع به باي بال:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">يمكنك أيضا إرسال المال مباشرة إلى %1 باستخدام باي بال.&#10;&#10;يرجى الكتابة إلى %1 إذا كنت ترغب في التبرع به&#10;التحويل الالكتروني والبريد الاختيار أو إرسال المال عن طريق البريد.</entry>
-	<entry id="50004" string="usd">usd</entry>
-	<entry id="50005" string="en">en</entry>
-	<entry id="50006" string="Thank you very much!">شكرا جزيلا لكم!</entry>
-	<entry id="50007" string="Remind me later">ذكرني لاحقا</entry>
+	<entry id="100000" string="Support this project">دعم هذا المشروع</entry>
+	<entry id="100001" string="Please support this project!">يرجى دعم هذا المشروع!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">الرجاء المساعدة على جعل هذا البرنامج مجانا من خلال دعم المشروع %1 بتبرع.&#10;&#10;انقر فوق أحد الأزرار الموجودة أدناه للتبرع به باي بال:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">يمكنك أيضا إرسال المال مباشرة إلى %1 باستخدام باي بال.&#10;&#10;يرجى الكتابة إلى %1 إذا كنت ترغب في التبرع به&#10;التحويل الالكتروني والبريد الاختيار أو إرسال المال عن طريق البريد.</entry>
+	<entry id="100004" string="usd">usd</entry>
+	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="Thank you very much!">شكرا جزيلا لكم!</entry>
+	<entry id="100007" string="Remind me later">ذكرني لاحقا</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">تهيئة</entry>
-	<entry id="51001" string="About">بخصوص</entry>
+	<entry id="101000" string="Configure">تهيئة</entry>
+	<entry id="101001" string="About">بخصوص</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52014" string="Length">المدة</entry>
-	<entry id="52015" string="Size">الحجم</entry>
+	<entry id="102014" string="Length">المدة</entry>
+	<entry id="102015" string="Size">الحجم</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">التلقائية</entry>
-	  <entry id="52103" string="Browse">تصفح</entry>
+	  <entry id="102101" string="Automatization">التلقائية</entry>
+	  <entry id="102103" string="Browse">تصفح</entry>
 	</section>
 
 	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">معلومات بطاقة</entry>
-	<entry id="53001" string="Length">المدة</entry>
-	<entry id="53002" string="Size">الحجم</entry>
-	<entry id="53005" string="File">ملف</entry>
+	<entry id="103000" string="Tags">معلومات بطاقة</entry>
+	<entry id="103001" string="Length">المدة</entry>
+	<entry id="103002" string="Size">الحجم</entry>
+	<entry id="103005" string="File">ملف</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">أساسي</entry>
-	  <entry id="53107" string="Add">إضافة</entry>
-	  <entry id="53108" string="Remove">إزالة</entry>
+	  <entry id="103100" string="Basic">أساسي</entry>
+	  <entry id="103107" string="Add">إضافة</entry>
+	  <entry id="103108" string="Remove">إزالة</entry>
 	</section>
 
 	<section name="Details"/>
@@ -696,7 +696,7 @@
 	<section name="Other"/>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">غير قادر على فتح الملف: %1&#10;&#10;خطأ: %2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">غير قادر على فتح الملف: %1&#10;&#10;خطأ: %2</entry>
 	</section>
       </section>
     </section>

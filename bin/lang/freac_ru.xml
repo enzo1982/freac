@@ -854,117 +854,117 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">Поддержать этот проект</entry>
-	<entry id="50001" string="Please support this project!">Пожалуйста поддержите этот проект!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Помогите пожалуйста сохранить эту программу свободной&#10;поддержав проект %1&#10;&#10;Нажмите одну из кнопок ниже для помощи через PayPal:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Также вы можете отправить деньги %1 через PayPal напрямую&#10;&#10;Пожалуйста напишите %1 если вы хотите помочь через&#10;электронный перевод, прислать чек или деньги письмом</entry>
-	<entry id="50004" string="usd">usd</entry>
-	<entry id="50005" string="en">en</entry>
-	<entry id="50006" string="Thank you very much!">Большое спасибо!</entry>
-	<entry id="50007" string="Remind me later">Напомнить позже</entry>
+	<entry id="100000" string="Support this project">Поддержать этот проект</entry>
+	<entry id="100001" string="Please support this project!">Пожалуйста поддержите этот проект!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Помогите пожалуйста сохранить эту программу свободной&#10;поддержав проект %1&#10;&#10;Нажмите одну из кнопок ниже для помощи через PayPal:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Также вы можете отправить деньги %1 через PayPal напрямую&#10;&#10;Пожалуйста напишите %1 если вы хотите помочь через&#10;электронный перевод, прислать чек или деньги письмом</entry>
+	<entry id="100004" string="usd">usd</entry>
+	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="Thank you very much!">Большое спасибо!</entry>
+	<entry id="100007" string="Remind me later">Напомнить позже</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">Настройка</entry>
-	<entry id="51001" string="About">О плагине</entry>
+	<entry id="101000" string="Configure">Настройка</entry>
+	<entry id="101001" string="About">О плагине</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52000" string="Video">Видео</entry>
-	<entry id="52001" string="Enter video URL here">Введите здесь URL видео</entry>
-	<entry id="52002" string="Download">Загрузить</entry>
-	<entry id="52003" string="Automatically download URLs copied to clipboard">Автоматически загружать URLы, скопированные в буфер</entry>
-	<entry id="52004" string="Save downloaded video files">Сохранять загруженные видео файлы</entry>
-	<entry id="52005" string="Video downloads">Видео загрузки</entry>
-	<entry id="52006" string="Downloaded tracks">Загруженные дорожки</entry>
-	<entry id="52007" string="Uploader">Выгрузчик</entry>
-	<entry id="52008" string="Video URL">URL видео</entry>
-	<entry id="52009" string="Video title">Название видео</entry>
-	<entry id="52010" string="Video description">Описание видео</entry>
-	<entry id="52011" string="Site name">Имя сайта</entry>
-	<entry id="52012" string="Uploaded by">Загружено</entry>
-	<entry id="52013" string="Uploaded on">Загружено</entry>
-	<entry id="52014" string="Length">Длительность</entry>
-	<entry id="52015" string="Size">Размер</entry>
-	<entry id="52016" string="Cancel download">Отменить загрузку</entry>
-	<entry id="52017" string="unknown">неизвестно</entry>
-	<entry id="52018" string="Note">Предупреждение</entry>
+	<entry id="102000" string="Video">Видео</entry>
+	<entry id="102001" string="Enter video URL here">Введите здесь URL видео</entry>
+	<entry id="102002" string="Download">Загрузить</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">Автоматически загружать URLы, скопированные в буфер</entry>
+	<entry id="102004" string="Save downloaded video files">Сохранять загруженные видео файлы</entry>
+	<entry id="102005" string="Video downloads">Видео загрузки</entry>
+	<entry id="102006" string="Downloaded tracks">Загруженные дорожки</entry>
+	<entry id="102007" string="Uploader">Выгрузчик</entry>
+	<entry id="102008" string="Video URL">URL видео</entry>
+	<entry id="102009" string="Video title">Название видео</entry>
+	<entry id="102010" string="Video description">Описание видео</entry>
+	<entry id="102011" string="Site name">Имя сайта</entry>
+	<entry id="102012" string="Uploaded by">Загружено</entry>
+	<entry id="102013" string="Uploaded on">Загружено</entry>
+	<entry id="102014" string="Length">Длительность</entry>
+	<entry id="102015" string="Size">Размер</entry>
+	<entry id="102016" string="Cancel download">Отменить загрузку</entry>
+	<entry id="102017" string="unknown">неизвестно</entry>
+	<entry id="102018" string="Note">Предупреждение</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">Автоматизация</entry>
-	  <entry id="52102" string="Video files">Видео файлы</entry>
-	  <entry id="52103" string="Browse">Выбрать</entry>
-	  <entry id="52104" string="Select the folder to save downloaded video files to">Выбор папки для сохранения видео файлов</entry>
-	  <entry id="52105" string="Downloads">Загрузки</entry>
-	  <entry id="52106" string="Maximum number of simultaneous downloads">Максимальное количество одновременных загрузок</entry>
-	  <entry id="52107" string="Output format">Выходной формат</entry>
-	  <entry id="52108" string="keep original format">сохранить оригинальный формат</entry>
+	  <entry id="102101" string="Automatization">Автоматизация</entry>
+	  <entry id="102102" string="Video files">Видео файлы</entry>
+	  <entry id="102103" string="Browse">Выбрать</entry>
+	  <entry id="102104" string="Select the folder to save downloaded video files to">Выбор папки для сохранения видео файлов</entry>
+	  <entry id="102105" string="Downloads">Загрузки</entry>
+	  <entry id="102106" string="Maximum number of simultaneous downloads">Максимальное количество одновременных загрузок</entry>
+	  <entry id="102107" string="Output format">Выходной формат</entry>
+	  <entry id="102108" string="keep original format">сохранить оригинальный формат</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="52201" string="This URL is not supported or not a video page URL!">Этот URL не поддерживается или не ГКД страницы видео!</entry>
-	  <entry id="52202" string="Error downloading video!">Ошибка загрузки видео!</entry>
-	  <entry id="52203" string="You are already downloading this video!">Вы уже загрузили это видео!</entry>
-	  <entry id="52204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Некоторые необходимые видеодекодеры не могут быть найдены. Видеофайлы&#10;не могут быть добавлены в список задач для конверсии в аудиофайлы.&#10;&#10;Для решения этой проблемы пожалуйста установите avconv или FFmpeg!</entry>
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">Этот URL не поддерживается или не ГКД страницы видео!</entry>
+	  <entry id="102202" string="Error downloading video!">Ошибка загрузки видео!</entry>
+	  <entry id="102203" string="You are already downloading this video!">Вы уже загрузили это видео!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Некоторые необходимые видеодекодеры не могут быть найдены. Видеофайлы&#10;не могут быть добавлены в список задач для конверсии в аудиофайлы.&#10;&#10;Для решения этой проблемы пожалуйста установите avconv или FFmpeg!</entry>
 	</section>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">Теги</entry>
-	<entry id="53001" string="Length">Длительность</entry>
-	<entry id="53002" string="Size">Размер</entry>
-	<entry id="53003" string="Albums">Альбомы</entry>
-	<entry id="53004" string="Files">Файлы</entry>
-	<entry id="53005" string="File">Файл</entry>
-	<entry id="53006" string="Tracks">Дорожки</entry>
-	<entry id="53007" string="Save">Сохранить</entry>
-	<entry id="53008" string="Save all">Сохранить все</entry>
-	<entry id="53009" string="no audio files found">аудиофайлы не найдены</entry>
+	<entry id="103000" string="Tags">Теги</entry>
+	<entry id="103001" string="Length">Длительность</entry>
+	<entry id="103002" string="Size">Размер</entry>
+	<entry id="103003" string="Albums">Альбомы</entry>
+	<entry id="103004" string="Files">Файлы</entry>
+	<entry id="103005" string="File">Файл</entry>
+	<entry id="103006" string="Tracks">Дорожки</entry>
+	<entry id="103007" string="Save">Сохранить</entry>
+	<entry id="103008" string="Save all">Сохранить все</entry>
+	<entry id="103009" string="no audio files found">аудиофайлы не найдены</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">Основное</entry>
-	  <entry id="53101" string="Title information">Информация о названии</entry>
-	  <entry id="53102" string="Disc">Диск</entry>
-	  <entry id="53103" string="Cover art">Обложка</entry>
-	  <entry id="53104" string="Covers">Обложки</entry>
-	  <entry id="53105" string="Type">Тип</entry>
-	  <entry id="53106" string="Description">Описание</entry>
-	  <entry id="53107" string="Add">Добавить</entry>
-	  <entry id="53108" string="Remove">Удалить</entry>
+	  <entry id="103100" string="Basic">Основное</entry>
+	  <entry id="103101" string="Title information">Информация о названии</entry>
+	  <entry id="103102" string="Disc">Диск</entry>
+	  <entry id="103103" string="Cover art">Обложка</entry>
+	  <entry id="103104" string="Covers">Обложки</entry>
+	  <entry id="103105" string="Type">Тип</entry>
+	  <entry id="103106" string="Description">Описание</entry>
+	  <entry id="103107" string="Add">Добавить</entry>
+	  <entry id="103108" string="Remove">Удалить</entry>
 	</section>
 
 	<section name="Details">
-	  <entry id="53200" string="Details">Подробно</entry>
-	  <entry id="53201" string="Detailed information">Подробная информация</entry>
-	  <entry id="53202" string="Band / orchestra">Группа / ансамбль</entry>
-	  <entry id="53203" string="Performer refinement">Исполнитель</entry>
-	  <entry id="53204" string="Modified / remixed by">Изменено / микшировано</entry>
-	  <entry id="53205" string="Composer">Композитор</entry>
-	  <entry id="53206" string="Lyrics writer">Автор текста</entry>
-	  <entry id="53207" string="Publisher information">Информация об издателе</entry>
-	  <entry id="53208" string="Publisher / label">Издатель / лэйбл</entry>
-	  <entry id="53209" string="ISRC">ISRC</entry>
+	  <entry id="103200" string="Details">Подробно</entry>
+	  <entry id="103201" string="Detailed information">Подробная информация</entry>
+	  <entry id="103202" string="Band / orchestra">Группа / ансамбль</entry>
+	  <entry id="103203" string="Performer refinement">Исполнитель</entry>
+	  <entry id="103204" string="Modified / remixed by">Изменено / микшировано</entry>
+	  <entry id="103205" string="Composer">Композитор</entry>
+	  <entry id="103206" string="Lyrics writer">Автор текста</entry>
+	  <entry id="103207" string="Publisher information">Информация об издателе</entry>
+	  <entry id="103208" string="Publisher / label">Издатель / лэйбл</entry>
+	  <entry id="103209" string="ISRC">ISRC</entry>
 	</section>
 
 	<section name="Other">
-	  <entry id="53300" string="Other">Другое</entry>
-	  <entry id="53301" string="Original information">Исходная информация</entry>
-	  <entry id="53302" string="Original artist">Исходный артист</entry>
-	  <entry id="53303" string="Original album">Исходный альбом</entry>
-	  <entry id="53304" string="Original lyrics writer">Исходный автор текста</entry>
-	  <entry id="53305" string="Original release year">Исходный год выхода</entry>
-	  <entry id="53306" string="Webpage URLs">URLы вебстраниц</entry>
-	  <entry id="53307" string="Artist webpage">Вебстраница артиста</entry>
-	  <entry id="53308" string="Publisher webpage">Вебстраница издателя</entry>
-	  <entry id="53309" string="Internet radio station">Интернет радиостанция</entry>
-	  <entry id="53310" string="Audio source webpage">Вебстраница источника аудио</entry>
-	  <entry id="53311" string="Copyright information">Информация об авторских правах</entry>
-	  <entry id="53312" string="Commercial information">Коммерческая информация</entry>
+	  <entry id="103300" string="Other">Другое</entry>
+	  <entry id="103301" string="Original information">Исходная информация</entry>
+	  <entry id="103302" string="Original artist">Исходный артист</entry>
+	  <entry id="103303" string="Original album">Исходный альбом</entry>
+	  <entry id="103304" string="Original lyrics writer">Исходный автор текста</entry>
+	  <entry id="103305" string="Original release year">Исходный год выхода</entry>
+	  <entry id="103306" string="Webpage URLs">URLы вебстраниц</entry>
+	  <entry id="103307" string="Artist webpage">Вебстраница артиста</entry>
+	  <entry id="103308" string="Publisher webpage">Вебстраница издателя</entry>
+	  <entry id="103309" string="Internet radio station">Интернет радиостанция</entry>
+	  <entry id="103310" string="Audio source webpage">Вебстраница источника аудио</entry>
+	  <entry id="103311" string="Copyright information">Информация об авторских правах</entry>
+	  <entry id="103312" string="Commercial information">Коммерческая информация</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Не могу открыть файл: %1&#10;&#10;%2</entry>
-	  <entry id="53401" string="Unable to update tag: %1&#10;&#10;Error: %2">Невозможно обновить тег: %1&#10;&#10;Ошибка: %2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Не могу открыть файл: %1&#10;&#10;%2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Невозможно обновить тег: %1&#10;&#10;Ошибка: %2</entry>
 	</section>
       </section>
     </section>

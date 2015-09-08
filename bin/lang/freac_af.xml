@@ -648,44 +648,44 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">Help hierdie projek</entry>
-	<entry id="50001" string="Please support this project!">Help asseblief hierdie projek!</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Help asseblief om hierdie sagteware gratis te hou deur die %1 projek&#10;met 'n donasie te ondersteun.&#10;&#10;Klik op een van die knoppies hieronder om 'n donasie te maak via PayPal:</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Jy kan ook 'n donasie direk aan %1 stuur deur PayPal te gebruik.&#10;&#10;Skryf asseblief aan %1 as jy graag 'n donasie wil maak via&#10;elektroniese oordrag, of 'n tjek wil pos, of geld per pos wil stuur.</entry>
-	<entry id="50004" string="usd">usd</entry>
-	<entry id="50005" string="en">en</entry>
-	<entry id="50006" string="Thank you very much!">Baie dankie!</entry>
-	<entry id="50007" string="Remind me later">Herinner my later</entry>
+	<entry id="100000" string="Support this project">Help hierdie projek</entry>
+	<entry id="100001" string="Please support this project!">Help asseblief hierdie projek!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Help asseblief om hierdie sagteware gratis te hou deur die %1 projek&#10;met 'n donasie te ondersteun.&#10;&#10;Klik op een van die knoppies hieronder om 'n donasie te maak via PayPal:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Jy kan ook 'n donasie direk aan %1 stuur deur PayPal te gebruik.&#10;&#10;Skryf asseblief aan %1 as jy graag 'n donasie wil maak via&#10;elektroniese oordrag, of 'n tjek wil pos, of geld per pos wil stuur.</entry>
+	<entry id="100004" string="usd">usd</entry>
+	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="Thank you very much!">Baie dankie!</entry>
+	<entry id="100007" string="Remind me later">Herinner my later</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">Konfigureer</entry>
-	<entry id="51001" string="About">Betreffende</entry>
+	<entry id="101000" string="Configure">Konfigureer</entry>
+	<entry id="101001" string="About">Betreffende</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52014" string="Length">Lengte</entry>
-	<entry id="52015" string="Size">Grootte</entry>
+	<entry id="102014" string="Length">Lengte</entry>
+	<entry id="102015" string="Size">Grootte</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">Outomatisasie</entry>
-	  <entry id="52103" string="Browse">Rondlees</entry>
+	  <entry id="102101" string="Automatization">Outomatisasie</entry>
+	  <entry id="102103" string="Browse">Rondlees</entry>
 	</section>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53001" string="Length">Lengte</entry>
-	<entry id="53002" string="Size">Grootte</entry>
-	<entry id="53005" string="File">Lêer</entry>
+	<entry id="103001" string="Length">Lengte</entry>
+	<entry id="103002" string="Size">Grootte</entry>
+	<entry id="103005" string="File">Lêer</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">Basies</entry>
-	  <entry id="53107" string="Add">Voeg by</entry>
-	  <entry id="53108" string="Remove">Verwyder</entry>
+	  <entry id="103100" string="Basic">Basies</entry>
+	  <entry id="103107" string="Add">Voeg by</entry>
+	  <entry id="103108" string="Remove">Verwyder</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Kan nie lêer open nie: %1</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Kan nie lêer open nie: %1</entry>
 	</section>
       </section>
     </section>

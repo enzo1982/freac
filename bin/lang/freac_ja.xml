@@ -706,62 +706,62 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50000" string="Support this project">このプロジェクトの応援</entry>
-	<entry id="50001" string="Please support this project!">このプロジェクトを応援してください！</entry>
-	<entry id="50002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">%1 プロジェクトを寄付で応援することで、このソフトがフリーで存続&#10;出来るよう助力してください。&#10;&#10;PayPal を使って寄付するには下記ボタンの１つをクリックしてください：</entry>
-	<entry id="50003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">PayPal を使って %1 へ直接送金することも可能です。&#10;&#10;もし電子振り込み、小切手の郵送、或いは現金の郵送をご希望なら、&#10;%1 へメールしてください。</entry>
-	<entry id="50004" string="usd">jpy</entry>
-	<entry id="50005" string="en">ja</entry>
-	<entry id="50006" string="Thank you very much!">どうも有難うございます！</entry>
-	<entry id="50007" string="Remind me later">後でまた見る</entry>
+	<entry id="100000" string="Support this project">このプロジェクトの応援</entry>
+	<entry id="100001" string="Please support this project!">このプロジェクトを応援してください！</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">%1 プロジェクトを寄付で応援することで、このソフトがフリーで存続&#10;出来るよう助力してください。&#10;&#10;PayPal を使って寄付するには下記ボタンの１つをクリックしてください：</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">PayPal を使って %1 へ直接送金することも可能です。&#10;&#10;もし電子振り込み、小切手の郵送、或いは現金の郵送をご希望なら、&#10;%1 へメールしてください。</entry>
+	<entry id="100004" string="usd">jpy</entry>
+	<entry id="100005" string="en">ja</entry>
+	<entry id="100006" string="Thank you very much!">どうも有難うございます！</entry>
+	<entry id="100007" string="Remind me later">後でまた見る</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">設定</entry>
-	<entry id="51001" string="About">プラグイン情報</entry>
+	<entry id="101000" string="Configure">設定</entry>
+	<entry id="101001" string="About">プラグイン情報</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52000" string="Video">ビデオ</entry>
-	<entry id="52002" string="Download">ダウンロード</entry>
-	<entry id="52014" string="Length">時間</entry>
-	<entry id="52015" string="Size">サイズ</entry>
-	<entry id="52018" string="Note">注意</entry>
+	<entry id="102000" string="Video">ビデオ</entry>
+	<entry id="102002" string="Download">ダウンロード</entry>
+	<entry id="102014" string="Length">時間</entry>
+	<entry id="102015" string="Size">サイズ</entry>
+	<entry id="102018" string="Note">注意</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">自動化</entry>
-	  <entry id="52102" string="Video files">ビデオファイル</entry>
-	  <entry id="52103" string="Browse">参照</entry>
-	  <entry id="52105" string="Downloads">ダウンロード</entry>
+	  <entry id="102101" string="Automatization">自動化</entry>
+	  <entry id="102102" string="Video files">ビデオファイル</entry>
+	  <entry id="102103" string="Browse">参照</entry>
+	  <entry id="102105" string="Downloads">ダウンロード</entry>
 	</section>
 
 	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">タグ</entry>
-	<entry id="53001" string="Length">時間</entry>
-	<entry id="53002" string="Size">サイズ</entry>
-	<entry id="53003" string="Albums">アルバム</entry>
-	<entry id="53004" string="Files">ファイル</entry>
-	<entry id="53005" string="File">ファイル</entry>
-	<entry id="53006" string="Tracks">トラック</entry>
+	<entry id="103000" string="Tags">タグ</entry>
+	<entry id="103001" string="Length">時間</entry>
+	<entry id="103002" string="Size">サイズ</entry>
+	<entry id="103003" string="Albums">アルバム</entry>
+	<entry id="103004" string="Files">ファイル</entry>
+	<entry id="103005" string="File">ファイル</entry>
+	<entry id="103006" string="Tracks">トラック</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">基本</entry>
-	  <entry id="53102" string="Disc">ディスク</entry>
-	  <entry id="53107" string="Add">追加</entry>
-	  <entry id="53108" string="Remove">削除</entry>
+	  <entry id="103100" string="Basic">基本</entry>
+	  <entry id="103102" string="Disc">ディスク</entry>
+	  <entry id="103107" string="Add">追加</entry>
+	  <entry id="103108" string="Remove">削除</entry>
 	</section>
 
 	<section name="Details">
-	  <entry id="53209" string="ISRC">ISRC</entry>
+	  <entry id="103209" string="ISRC">ISRC</entry>
 	</section>
 
 	<section name="Other"/>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
 	</section>
       </section>
     </section>

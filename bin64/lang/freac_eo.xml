@@ -635,37 +635,37 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="50004" string="usd">eur</entry>
-	<entry id="50005" string="en">en</entry>
+	<entry id="100004" string="usd">eur</entry>
+	<entry id="100005" string="en">en</entry>
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="51000" string="Configure">Konfiguri</entry>
-	<entry id="51001" string="About">Pri</entry>
+	<entry id="101000" string="Configure">Konfiguri</entry>
+	<entry id="101001" string="About">Pri</entry>
       </section>
 
       <section name="Video Downloader">
-	<entry id="52014" string="Length">Daŭro</entry>
-	<entry id="52015" string="Size">Grandeco</entry>
+	<entry id="102014" string="Length">Daŭro</entry>
+	<entry id="102015" string="Size">Grandeco</entry>
 
 	<section name="Configuration">
-	  <entry id="52101" string="Automatization">Aŭtomatigo</entry>
-	  <entry id="52103" string="Browse">Elekti ujon</entry>
+	  <entry id="102101" string="Automatization">Aŭtomatigo</entry>
+	  <entry id="102103" string="Browse">Elekti ujon</entry>
 	</section>
 
 	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
-	<entry id="53000" string="Tags">Informetiketo</entry>
-	<entry id="53001" string="Length">Daŭro</entry>
-	<entry id="53002" string="Size">Grandeco</entry>
-	<entry id="53005" string="File">Dosiero</entry>
+	<entry id="103000" string="Tags">Informetiketo</entry>
+	<entry id="103001" string="Length">Daŭro</entry>
+	<entry id="103002" string="Size">Grandeco</entry>
+	<entry id="103005" string="File">Dosiero</entry>
 
 	<section name="Basic">
-	  <entry id="53100" string="Basic">Simpla</entry>
-	  <entry id="53107" string="Add">Aldoni</entry>
-	  <entry id="53108" string="Remove">Forigi</entry>
+	  <entry id="103100" string="Basic">Simpla</entry>
+	  <entry id="103107" string="Add">Aldoni</entry>
+	  <entry id="103108" string="Remove">Forigi</entry>
 	</section>
 
 	<section name="Details"/>
@@ -673,7 +673,7 @@
 	<section name="Other"/>
 
 	<section name="Errors">
-	  <entry id="53400" string="Unable to open file: %1&#10;&#10;Error: %2">Ne eblas malfermi la dosieron: %1&#10;&#10;%2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Ne eblas malfermi la dosieron: %1&#10;&#10;%2</entry>
 	</section>
       </section>
     </section>
