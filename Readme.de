@@ -205,6 +205,7 @@ Geschichte
 		- Warnung beim Konvertieren von verlustbehafteten in verlustfreie Formate hinzugefügt
 		- Möglichkeit zur Sortierung der Jobliste durch Klick auf Überschriften hinzugefügt
 		- Grundlegende Untersützung für Mehrkanal-Audio hinzugefügt
+		- Speichere Playlisten und Cue Sheets im Eine-Datei-Modus zusammen mit Ausgabedatei
 		- Die Restzeitanzeige zeigt falls notwendig nun auch Stunden an
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
 		- Groß-/Kleinschreibungs-Konvertierungsfunktionen stark verbessert

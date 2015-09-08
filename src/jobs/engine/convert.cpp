@@ -310,6 +310,10 @@ Error BonkEnc::JobConvert::Perform()
 		{
 			singleOutFile = Utilities::NormalizeFileName(singleOutFile);
 
+			/* Set playlist filename so it is written to the same place.
+			 */
+			playlist_filename = singleOutFile.Head(singleOutFile.FindLast("."));
+
 			/* Set output file name and add track to playlist.
 			 */
 			singleTrack.origFilename = singleOutFile;
