@@ -512,11 +512,10 @@ Void BonkEnc::BonkEncGUI::OnChangeConfiguration()
 
 	/* Show/hide Jobs tab.
 	 */
-	tabs_main->Remove(tab_layer_threads);
-
 	if (config->GetIntValue(Config::CategorySettingsID,
 				Config::SettingsShowJobsTabID,
 				Config::SettingsShowJobsTabDefault)) tabs_main->Add(tab_layer_threads);
+	else							     tabs_main->Remove(tab_layer_threads);
 
 	tabs_main->Paint(SP_PAINT);
 
