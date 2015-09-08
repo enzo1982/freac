@@ -100,6 +100,7 @@ History
 		- updated Italian, Swedish, Basque and Valencian translations
 		- added MP4/AAC and Ogg Vorbis cover art support
 		- fixed existing files being overwritten in "Output to input folder" mode
+		- fixed LAME encoder not accepting arbitrary sample rates in auto resampling mode
 		- fixed crashes in MAD and FLAC decoder components
 		- fixed crash when trying to decode WMA files without duration field set
 		- fixed cover art not being written to WMA files without a description present

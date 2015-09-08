@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,82 +14,84 @@
 
 BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFilter(config, format)
 {
-	int	 effrate;
-
-	if (currentConfig->lame_resample > 0)	effrate = currentConfig->lame_resample;
-	else					effrate = format->rate;
-
-	switch (effrate)
+	if (currentConfig->lame_resample >= 0)
 	{
-		case 8000:
-		case 11025:
-		case 12000:
-		case 16000:
-		case 22050:
-		case 24000:
-			if (currentConfig->lame_set_bitrate && currentConfig->lame_vbrmode == vbr_off && (currentConfig->lame_bitrate == 192 || currentConfig->lame_bitrate == 224 || currentConfig->lame_bitrate == 256 || currentConfig->lame_bitrate == 320))
-			{
-				Utilities::ErrorMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.");
+		Int	 effectiveRate = currentConfig->lame_resample;
+
+		if (effectiveRate == 0) effectiveRate = format->rate;
+
+		switch (effectiveRate)
+		{
+			case 8000:
+			case 11025:
+			case 12000:
+			case 16000:
+			case 22050:
+			case 24000:
+				if (currentConfig->lame_set_bitrate && currentConfig->lame_vbrmode == vbr_off && (currentConfig->lame_bitrate == 192 || currentConfig->lame_bitrate == 224 || currentConfig->lame_bitrate == 256 || currentConfig->lame_bitrate == 320))
+				{
+					Utilities::ErrorMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.");
+
+					errorState = True;
+
+					return;
+				}
+
+				if (currentConfig->lame_set_min_vbr_bitrate && currentConfig->lame_vbrmode != vbr_off && (currentConfig->lame_min_vbr_bitrate == 192 || currentConfig->lame_min_vbr_bitrate == 224 || currentConfig->lame_min_vbr_bitrate == 256 || currentConfig->lame_min_vbr_bitrate == 320))
+				{
+					Utilities::ErrorMessage("Bad minimum VBR bitrate! The selected minimum VBR bitrate is not supported for this sampling rate.");
+
+					errorState = True;
+
+					return;
+				}
+
+				if (currentConfig->lame_set_max_vbr_bitrate && currentConfig->lame_vbrmode != vbr_off && (currentConfig->lame_max_vbr_bitrate == 192 || currentConfig->lame_max_vbr_bitrate == 224 || currentConfig->lame_max_vbr_bitrate == 256 || currentConfig->lame_max_vbr_bitrate == 320))
+				{
+					Utilities::ErrorMessage("Bad maximum VBR bitrate! The selected maximum VBR bitrate is not supported for this sampling rate.");
+
+					errorState = True;
+
+					return;
+				}
+				break;
+			case 32000:
+			case 44100:
+			case 48000:
+				if (currentConfig->lame_set_bitrate && currentConfig->lame_vbrmode == vbr_off && (currentConfig->lame_bitrate == 8 || currentConfig->lame_bitrate == 16 || currentConfig->lame_bitrate == 24 || currentConfig->lame_bitrate == 144))
+				{
+					Utilities::ErrorMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.");
+
+					errorState = True;
+
+					return;
+				}
+
+				if (currentConfig->lame_set_min_vbr_bitrate && currentConfig->lame_vbrmode != vbr_off && (currentConfig->lame_min_vbr_bitrate == 8 || currentConfig->lame_min_vbr_bitrate == 16 || currentConfig->lame_min_vbr_bitrate == 24 || currentConfig->lame_min_vbr_bitrate == 144))
+				{
+					Utilities::ErrorMessage("Bad minimum VBR bitrate! The selected minimum VBR bitrate is not supported for this sampling rate.");
+
+					errorState = True;
+
+					return;
+				}
+
+				if (currentConfig->lame_set_max_vbr_bitrate && currentConfig->lame_vbrmode != vbr_off && (currentConfig->lame_max_vbr_bitrate == 8 || currentConfig->lame_max_vbr_bitrate == 16 || currentConfig->lame_max_vbr_bitrate == 24 || currentConfig->lame_max_vbr_bitrate == 144))
+				{
+					Utilities::ErrorMessage("Bad maximum VBR bitrate! The selected maximum VBR bitrate is not supported for this sampling rate.");
+
+					errorState = True;
+
+					return;
+				}
+				break;
+			default:
+				Utilities::ErrorMessage("Bad sampling rate! The selected sampling rate is not supported.");
 
 				errorState = True;
 
 				return;
-			}
-
-			if (currentConfig->lame_set_min_vbr_bitrate && currentConfig->lame_vbrmode != vbr_off && (currentConfig->lame_min_vbr_bitrate == 192 || currentConfig->lame_min_vbr_bitrate == 224 || currentConfig->lame_min_vbr_bitrate == 256 || currentConfig->lame_min_vbr_bitrate == 320))
-			{
-				Utilities::ErrorMessage("Bad minimum VBR bitrate! The selected minimum VBR bitrate is not supported for this sampling rate.");
-
-				errorState = True;
-
-				return;
-			}
-
-			if (currentConfig->lame_set_max_vbr_bitrate && currentConfig->lame_vbrmode != vbr_off && (currentConfig->lame_max_vbr_bitrate == 192 || currentConfig->lame_max_vbr_bitrate == 224 || currentConfig->lame_max_vbr_bitrate == 256 || currentConfig->lame_max_vbr_bitrate == 320))
-			{
-				Utilities::ErrorMessage("Bad maximum VBR bitrate! The selected maximum VBR bitrate is not supported for this sampling rate.");
-
-				errorState = True;
-
-				return;
-			}
-			break;
-		case 32000:
-		case 44100:
-		case 48000:
-			if (currentConfig->lame_set_bitrate && currentConfig->lame_vbrmode == vbr_off && (currentConfig->lame_bitrate == 8 || currentConfig->lame_bitrate == 16 || currentConfig->lame_bitrate == 24 || currentConfig->lame_bitrate == 144))
-			{
-				Utilities::ErrorMessage("Bad bitrate! The selected bitrate is not supported for this sampling rate.");
-
-				errorState = True;
-
-				return;
-			}
-
-			if (currentConfig->lame_set_min_vbr_bitrate && currentConfig->lame_vbrmode != vbr_off && (currentConfig->lame_min_vbr_bitrate == 8 || currentConfig->lame_min_vbr_bitrate == 16 || currentConfig->lame_min_vbr_bitrate == 24 || currentConfig->lame_min_vbr_bitrate == 144))
-			{
-				Utilities::ErrorMessage("Bad minimum VBR bitrate! The selected minimum VBR bitrate is not supported for this sampling rate.");
-
-				errorState = True;
-
-				return;
-			}
-
-			if (currentConfig->lame_set_max_vbr_bitrate && currentConfig->lame_vbrmode != vbr_off && (currentConfig->lame_max_vbr_bitrate == 8 || currentConfig->lame_max_vbr_bitrate == 16 || currentConfig->lame_max_vbr_bitrate == 24 || currentConfig->lame_max_vbr_bitrate == 144))
-			{
-				Utilities::ErrorMessage("Bad maximum VBR bitrate! The selected maximum VBR bitrate is not supported for this sampling rate.");
-
-				errorState = True;
-
-				return;
-			}
-			break;
-		default:
-			Utilities::ErrorMessage("Bad sampling rate! The selected sampling rate is not supported.");
-
-			errorState = True;
-
-			return;
+		}
 	}
 
 	if (format->channels > 2)

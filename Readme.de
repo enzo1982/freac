@@ -101,6 +101,7 @@ Geschichte
 		- Italienische, schwedische, baskische und valencianische Übersetzungen aktualisiert
 		- Unterstützung für Coverbilder in MP4/AAC- und Ogg Vorbis-Dateien hinzugefügt
 		- Überschreiben vorhandener Dateien im "Ausgabe in Eingabeordner"-Modus behoben
+		- Problem behoben, durch das LAME im Auto-Resampling-Modus keine beliebigen Sampleraten akzeptierte
 		- Abstürze in den MAD- und FLAC-Decoder-Komponenten behoben
 		- Absturz beim Versuch, WMA-Dateien ohne gesetzte Abspieldauer abzuspielen, behoben
 		- Fehler behoben, durch den keine Coverbilder ohne Beschreibung in WMA-Dateien geschrieben wurden
