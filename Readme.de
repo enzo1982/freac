@@ -104,6 +104,7 @@ Geschichte
 		- Speichere Playlisten und Cue Sheets im Eine-Datei-Modus zusammen mit Ausgabedatei
 		- Überschreiben vorhandener Dateien im "Ausgabe in Eingabeordner"-Modus behoben
 		- Problem behoben, durch das LAME im Auto-Resampling-Modus keine beliebigen Sampleraten akzeptierte
+		- Möglichen Absturz bei CDDB-Abfragen behoben
 		- Abstürze in den MAD- und FLAC-Decoder-Komponenten behoben
 		- Absturz beim Versuch, WMA-Dateien ohne gesetzte Abspieldauer abzuspielen, behoben
 		- Fehler behoben, durch den keine Coverbilder ohne Beschreibung in WMA-Dateien geschrieben wurden

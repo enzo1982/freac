@@ -21,13 +21,15 @@
 #include <cddb/cddbbatch.h>
 
 using namespace smooth::GUI::Dialogs;
-using namespace smooth::Threads;
 
 BonkEnc::cddbQueryDlg::cddbQueryDlg()
 {
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig	= BonkEnc::currentConfig;
 
 	allowAddToBatch = False;
+
+	queryThread	= NIL;
+	stopQueryThread	= False;
 
 	Point	 pos;
 	Size	 size;
@@ -80,15 +82,11 @@ const Error &BonkEnc::cddbQueryDlg::ShowDialog()
 {
 	mainWnd->Show();
 
-	queryThread = new Thread();
-	queryThread->threadMain.Connect(&cddbQueryDlg::QueryThread, this);
-	queryThread->Start();
+	queryThread = NonBlocking0<>(&cddbQueryDlg::QueryThread, this).Call();
 
 	mainWnd->Stay();
 
-	queryThread->Stop();
-
-	DeleteObject(queryThread);
+	queryThread->Wait();
 
 	return error;
 }
@@ -106,17 +104,32 @@ const BonkEnc::CDDBInfo &BonkEnc::cddbQueryDlg::QueryCDDB(Bool iAllowAddToBatch)
 
 	ShowDialog();
 
-	return rCDDBInfo;
+	return cddbInfo;
 }
 
 Void BonkEnc::cddbQueryDlg::Cancel()
 {
-	queryThread->Stop();
+	if (queryThread == NIL) return;
 
 	mainWnd->Close();
+
+	stopQueryThread = True;
+
+	/* Wait up to one second for thread to finish.
+	 */
+	for (Int i = 0; i < 100; i++)
+	{
+		if (queryThread->GetStatus() != Threads::THREAD_RUNNING) return;
+
+		S::System::System::Sleep(10);
+	}
+
+	/* Kill thead if it did not finish after one second.
+	 */
+	queryThread->Stop();
 }
 
-Int BonkEnc::cddbQueryDlg::QueryThread(Thread *myThread)
+Int BonkEnc::cddbQueryDlg::QueryThread()
 {
 	Bool	 result = False;
 
@@ -149,11 +162,15 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 
 	cddb.ConnectToServer();
 
+	if (stopQueryThread) { cddb.CloseConnection(); return False; }
+
 	prog_status->SetValue(20);
 	text_status->SetText(String(BonkEnc::i18n->TranslateString("Requesting CD information")).Append("..."));
 
 	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
 
+	/* Perform query using query string.
+	 */
 	if (queryString == NIL)
 	{
 		/* Query by disc ID of inserted disc.
@@ -171,6 +188,10 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 		result = cddb.Query(queryString);
 	}
 
+	if (stopQueryThread) { cddb.CloseConnection(); return False; }
+
+	/* Process result.
+	 */
 	String	 category;
 	Int	 discID	= 0;
 	Bool	 fuzzy	= False;
@@ -208,17 +229,25 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 		DeleteObject(dlg);
 	}
 
+	if (stopQueryThread) { cddb.CloseConnection(); return False; }
+
+	/* Read actual CDDB data.
+	 */
 	Bool	 readError = False;
 
 	if (category != NIL && discID != 0)
 	{
 		prog_status->SetValue(60);
 
-		if (!cddb.Read(category, discID, rCDDBInfo)) readError = True;
+		if (!cddb.Read(category, discID, cddbInfo)) readError = True;
 
-		if (fuzzy) rCDDBInfo.revision = -1;
+		if (fuzzy) cddbInfo.revision = -1;
 	}
 
+	if (stopQueryThread) { cddbInfo = NIL; cddb.CloseConnection(); return False; }
+
+	/* Process read errors.
+	 */
 	if (readError || result == QUERY_RESULT_ERROR)
 	{
 		if (allowAddToBatch)
