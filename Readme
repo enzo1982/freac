@@ -99,6 +99,7 @@ History
 
 		- updated Italian, Swedish, Basque and Valencian translations
 		- added MP4/AAC and Ogg Vorbis cover art support
+		- recognize decimal VBR quality values in LAME settings
 		- save playlists and cuesheets along with output file in single file mode
 		- fixed existing files being overwritten in "Output to input folder" mode
 		- fixed LAME encoder not accepting arbitrary sample rates in auto resampling mode

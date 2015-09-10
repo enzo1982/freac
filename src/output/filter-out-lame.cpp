@@ -132,7 +132,7 @@ Bool BonkEnc::FilterOutLAME::Activate()
 			if (currentConfig->lame_vbrmode == vbr_off)
 			{
 				if (currentConfig->lame_set_bitrate)	ex_lame_set_brate(lameFlags, currentConfig->lame_bitrate);
-				else					ex_lame_set_compression_ratio(lameFlags, ((double)currentConfig->lame_ratio) / 100);
+				else					ex_lame_set_compression_ratio(lameFlags, currentConfig->lame_ratio / 100.0);
 			}
 
 			if (currentConfig->lame_set_quality)	ex_lame_set_quality(lameFlags, currentConfig->lame_quality);
@@ -181,11 +181,11 @@ Bool BonkEnc::FilterOutLAME::Activate()
 					break;
 				case vbr_rh:
 					ex_lame_set_VBR(lameFlags, vbr_rh);
-					ex_lame_set_VBR_quality(lameFlags, currentConfig->lame_vbrquality / 10);
+					ex_lame_set_VBR_quality(lameFlags, currentConfig->lame_vbrquality / 10.0);
 					break;
 				case vbr_mtrh:
 					ex_lame_set_VBR(lameFlags, vbr_mtrh);
-					ex_lame_set_VBR_quality(lameFlags, currentConfig->lame_vbrquality / 10);
+					ex_lame_set_VBR_quality(lameFlags, currentConfig->lame_vbrquality / 10.0);
 					break;
 			}
 
