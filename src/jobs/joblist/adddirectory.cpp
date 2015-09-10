@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,6 +12,7 @@
 
 #include <cddb/cddbremote.h>
 
+#include <config.h>
 #include <utilities.h>
 
 #include <boca.h>
@@ -30,46 +31,39 @@ BonkEnc::JobAddDirectory::~JobAddDirectory()
 
 Void BonkEnc::JobAddDirectory::AddDirectory(const Directory &directory)
 {
-	if (directory.Exists())
+	if (!directory.Exists()) return;
+
+	/* Recurse into subdirectories.
+	 */
+	const Array<Directory>	&myDirectories = directory.GetDirectories();
+	const Array<File>	&myFiles       = directory.GetFiles();
+
+	foreach (const Directory &directory, myDirectories) AddDirectory(directory);
+
+	/* Find extensions to exclude and add files.
+	 */
+	String			 configString  = configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsExcludeExtensionsID, Config::SettingsExcludeExtensionsDefault).ToLower();
+	const Array<String>	&extensions    = configString.Explode("|");
+
+	foreach (const File &file, myFiles)
 	{
-		const Array<Directory>	&myDirectories = directory.GetDirectories();
-		const Array<File>	&myFiles       = directory.GetFiles();
+		String	 fileString = String(file).ToLower();
+		Bool	 add	    = True;
 
-		foreach (const Directory &directory, myDirectories) AddDirectory(directory);
-
-		foreach (const File &file, myFiles)
+		foreach (const String &extension, extensions)
 		{
-			String	 fileString = String(file).ToLower();
+			if (fileString.EndsWith(extension))
+			{
+				add = False;
 
-			if (fileString.EndsWith(".jpg")	    || // Exclude image files.
-			    fileString.EndsWith(".gif")	    || // ...
-			    fileString.EndsWith(".png")	    || // ...
-			    fileString.EndsWith(".bmp")	    || // ...
-			    fileString.EndsWith(".txt")	    || // Exclude text files.
-			    fileString.EndsWith(".pdf")	    || // ...
-			    fileString.EndsWith(".nfo")	    || // ...
-			    fileString.EndsWith(".sfv")	    || // ...
-			    fileString.EndsWith(".log")	    || // ...
-			    fileString.EndsWith(".url")	    || // ...
-			    fileString.EndsWith(".m3u")	    || // Exclude playlists.
-			    fileString.EndsWith(".m3u8")    || // ...
-			    fileString.EndsWith(".pls")	    || // ...
-			    fileString.EndsWith(".wpl")	    || // ...
-			    fileString.EndsWith(".xspf")    || // ...
-			    fileString.EndsWith(".exe")	    || // Exclude executables.
-			    fileString.EndsWith(".dll")	    || // ...
-			    fileString.EndsWith(".zip")	    || // Exclude archives.
-			    fileString.EndsWith(".rar")	    || // ...
-			    fileString.EndsWith(".gz")	    || // ...
-			    fileString.EndsWith(".bz2")	    || // ...
-			    fileString.EndsWith(".xz")	    || // ...
-			    fileString.EndsWith(".7z")	    || // ...
-			    fileString.EndsWith(".torrent") || // Exclude other files.
-			    fileString.EndsWith("thumbs.db")) continue;
-
-			files.Add(file);
+				break;
+			}
 		}
+
+		if (add) files.Add(file);
 	}
+
+	String::ExplodeFinish();
 }
 
 Void BonkEnc::JobAddDirectory::RemoveReferencedFiles()

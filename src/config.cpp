@@ -133,6 +133,20 @@ const Bool	 BonkEnc::Config::SettingsShowJobsTabDefault			= False;
 const String	 BonkEnc::Config::SettingsWarnLossyToLosslessID			= "WarnLossyToLossless";
 const Bool	 BonkEnc::Config::SettingsWarnLossyToLosslessDefault		= True;
 
+const String	 BonkEnc::Config::SettingsExcludeExtensionsID			= "ExcludeExtensions";
+const String	 BonkEnc::Config::SettingsExcludeExtensionsDefault		= String(".jpg|.jpeg|.gif|.png|.bmp|")		  // pictures
+										 .Append(".txt|.asc|.log|.nfo|.url|")		  // plain text
+										 .Append(".crc|.md5|.sha1|.sha256|.sha512|.sfv|") // checksums
+										 .Append(".m3u|.m3u8|.pls|.wpl|.xspf|")		  // playlists
+										 .Append(".exe|.dll|")				  // executables
+										 .Append(".zip|.rar|.gz|.bz2|.xz|.7z|")		  // archives
+										 .Append(".htm|.html|.svg|.xml|")		  // HTML/SVG/XML
+										 .Append(".pdf|.ps|.xps|")			  // PDF etc.
+										 .Append(".doc|.docx|.odt|")			  // text documents
+										 .Append(".ppt|.pptx|.odp|")			  // presentations
+										 .Append(".xls|.xlsx|.ods|.odc|")		  // spreadsheets
+										 .Append(".torrent|thumbs.db|.DS_Store");	  // other files
+
 /* Category Verification
  */
 const String	 BonkEnc::Config::VerificationVerifyInputID			= "VerifyInput";

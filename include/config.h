@@ -134,6 +134,9 @@ namespace BonkEnc
 			static const String	 SettingsWarnLossyToLosslessID;
 			static const Bool	 SettingsWarnLossyToLosslessDefault;
 
+			static const String	 SettingsExcludeExtensionsID;
+			static const String	 SettingsExcludeExtensionsDefault;
+
 			/* Category Verification
 			 */
 			static const String	 VerificationVerifyInputID;
