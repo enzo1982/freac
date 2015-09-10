@@ -407,16 +407,16 @@
     <entry id="403" string="Use 2-pass encoding">Usa codifica a 2 passi</entry>
     <entry id="404" string="Target bitrate">Bitrate</entry>
     <entry id="405" string="Set drive speed limit:">Limita velocità dell'unità:</entry>
-    <entry id="406" string="Support this project"/>Suppota questo progetto</entry>
-    <entry id="407" string="Please support this project!"/>Per favore supporta questo progetto!</entry>
-    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>Aiutaci a mantenere questo sofwtare gratuito supportando il progetto %1&#10;con una donazione&#10;&#10;Fai clic su uno dei pulsanti sottostanti per fare una donazione con PayPal:</entry>
-    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>Puoi inviare anche direttamente del denaro a %1 usando PayPal.&#10;&#10;Per favore scrivi a %1 se vuoi donare usando&#10;un pagamento elettronico, inviarci un cheque o inviarci denaro via mail.</entry>
+    <entry id="406" string="Support this project">Suppota questo progetto</entry>
+    <entry id="407" string="Please support this project!">Per favore supporta questo progetto!</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Aiutaci a mantenere questo sofwtare gratuito supportando il progetto %1&#10;con una donazione&#10;&#10;Fai clic su uno dei pulsanti sottostanti per fare una donazione con PayPal:</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Puoi inviare anche direttamente del denaro a %1 usando PayPal.&#10;&#10;Per favore scrivi a %1 se vuoi donare usando&#10;un pagamento elettronico, inviarci un cheque o inviarci denaro via mail.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en"/>en</entry>
-    <entry id="412" string="Thank you very much!"/>Molte grazie!</entry>
-    <entry id="413" string="Remind me later"/>Ricordamelo più tardi</entry>
+    <entry id="411" string="en">en</entry>
+    <entry id="412" string="Thank you very much!">Molte grazie!</entry>
+    <entry id="413" string="Remind me later">Ricordamelo più tardi</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">CDRip</entry>
-    <entry id="416" string="Default"/>Predefinito</entry>
+    <entry id="416" string="Default">Predefinito</entry>
   </data>
 </LangFile>
