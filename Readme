@@ -107,6 +107,7 @@ History
 		- fixed crashes in MAD and FLAC decoder components
 		- fixed crash when trying to decode WMA files without duration field set
 		- fixed cover art not being written to WMA files without a description present
+		- upgraded CDRip to version 1.25 to fix drive detection issues
 
 	Version 1.0.24 (July 2015)
 

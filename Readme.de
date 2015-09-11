@@ -108,6 +108,7 @@ Geschichte
 		- Abstürze in den MAD- und FLAC-Decoder-Komponenten behoben
 		- Absturz beim Versuch, WMA-Dateien ohne gesetzte Abspieldauer abzuspielen, behoben
 		- Fehler behoben, durch den keine Coverbilder ohne Beschreibung in WMA-Dateien geschrieben wurden
+		- CDRip auf Version 1.25 aktualisiert um Probleme bei der Laufwerkserkennung zu beheben
 
 	Version 1.0.24 (Juli 2015)
 
