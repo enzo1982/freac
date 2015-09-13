@@ -161,7 +161,7 @@ Error BonkEnc::JobAddTracks::Perform()
 						{
 							/* Ask whether to perform this query later.
 							 */
-							if (QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Hand) == Message::Button::Yes)
+							if (QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
 							{
 								CDDBBatch	*queries = new CDDBBatch();
 

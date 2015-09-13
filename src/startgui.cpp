@@ -698,11 +698,11 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 					 */
 					CDDBBatch	*queries = new CDDBBatch();
 
-					if (i == queryStrings.Length() - 1 && QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Hand) == Message::Button::Yes)
+					if (i == queryStrings.Length() - 1 && QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
 					{
 						queries->AddQuery(queryString);
 					}
-					else if (i < queryStrings.Length() - 1 && QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform the remaining queries again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Hand) == Message::Button::Yes)
+					else if (i < queryStrings.Length() - 1 && QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform the remaining queries again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
 					{
 						for (Int j = i; j < queryStrings.Length(); j++) queries->AddQuery(queryStrings.GetNth(j));
 					}
