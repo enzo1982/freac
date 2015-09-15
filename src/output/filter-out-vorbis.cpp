@@ -35,16 +35,27 @@ Bool BonkEnc::FilterOutVORBIS::Activate()
 {
 	srand(clock());
 
+	int	 error = -1;
+
 	ex_vorbis_info_init(&vi);
 
 	switch (currentConfig->vorbis_mode)
 	{
 		case 0:
-			ex_vorbis_encode_init_vbr(&vi, format->channels, format->rate, ((double) currentConfig->vorbis_quality) / 100);
+			error = ex_vorbis_encode_init_vbr(&vi, format->channels, format->rate, ((double) currentConfig->vorbis_quality) / 100);
 			break;
 		case 1:
-			ex_vorbis_encode_init(&vi, format->channels, format->rate, -1, currentConfig->vorbis_bitrate * 1000, -1);
+			error = ex_vorbis_encode_init(&vi, format->channels, format->rate, -1, currentConfig->vorbis_bitrate * 1000, -1);
 			break;
+	}
+
+	if (error != 0)
+	{
+		Utilities::ErrorMessage("Could not initialize %1 encoder! Please check the configuration!", "Vorbis");
+
+		ex_vorbis_info_clear(&vi);
+
+		return false;
 	}
 
 	ex_vorbis_comment_init(&vc);
