@@ -184,6 +184,7 @@
       <entry id="3047" string="unknown">неизвестно</entry>
       <entry id="3048" string="Other">Другое</entry>
       <entry id="3049" string="Output file name">Имя выходного файла</entry>
+      <entry id="3050" string="verifying">проверяется</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Папка</entry>
@@ -464,6 +465,14 @@
 	<entry id="5702" string="Number of conversion threads">Количество потоков преобразования</entry>
 	<entry id="5703" string="auto">авто</entry>
       </section>
+
+      <section name="Verification">
+	<entry id="5800" string="Verification">Проверка</entry>
+	<entry id="5801" string="Enable input verification">Разрешить входную проверку</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Проверяет чтобы декодированные данные из входа&#10;без потерь точно соответствовали источнику.</entry>
+	<entry id="5803" string="Enable output verification">Включить входную проверку</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Проверяет чтобы декодированные данные выхода&#10;без потерь точно соответствовали источнику.</entry>
+      </section>
     </section>
 
     <section name="About">
@@ -512,6 +521,10 @@
       <entry id="7019" string="Unknown error">Неизвестная ошибка</entry>
       <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Выбранные файлы не могут быть объединены в один&#10;выходной файл из-за разного разрешения.&#10;&#10;Пожалуйста, преобразуйте сначала все файлы к одинаковому разрешению.</entry>
       <entry id="7021" string="No configuration dialog available for:&#10;&#10;%1">Нет доступного диалога настроек для:&#10;&#10;%1</entry>
+      <entry id="7022" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Вы собираетесь преобразовывать из формата с потерями в формат без потерь.&#10;&#10;Имейте в виду, что потеря качества необратима, поэтому этот процесс&#10;никак не улучшит качество и скорее всего увеличит размер файла.&#10;&#10;Вы все равно хотите продолжить?</entry>
+      <entry id="7023" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?">Процесс преобразования уже активен!&#10;&#10;Хотите добавить это преобразование в очередь?</entry>
+      <entry id="7024" string="Failed to verify input file: %1">Ошибка проверки входного файла: %1</entry>
+      <entry id="7025" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Несоответствие контрольной суммы при проверке выходного файла: %1&#10;&#10;Контрольная сумма кодирования: %2&#10;Контрольная сумма проверки: %3</entry>
     </section>
 
     <section name="Dialogs">
