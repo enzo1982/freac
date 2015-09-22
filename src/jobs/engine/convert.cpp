@@ -1028,6 +1028,12 @@ Track BonkEnc::JobConvert::ConsolidateTrackInfo()
 	singleTrackInfo.label	   = firstTrackInfo.label;
 	singleTrackInfo.comment	   = firstTrackInfo.comment;
 
+	singleTrackInfo.track	   = firstTrackInfo.track;
+	singleTrackInfo.numTracks  = firstTrackInfo.numTracks;
+
+	singleTrackInfo.disc	   = firstTrackInfo.disc;
+	singleTrackInfo.numDiscs   = firstTrackInfo.numDiscs;
+
 	singleTrackInfo.mcdi	   = firstTrackInfo.mcdi;
 	singleTrackInfo.offsets	   = firstTrackInfo.offsets;
 
@@ -1053,6 +1059,12 @@ Track BonkEnc::JobConvert::ConsolidateTrackInfo()
 		if (chapterInfo.genre	   != singleTrackInfo.genre)	  singleTrackInfo.genre	     = NIL;
 		if (chapterInfo.label	   != singleTrackInfo.label)	  singleTrackInfo.label	     = NIL;
 		if (chapterInfo.comment	   != singleTrackInfo.comment)	  singleTrackInfo.comment    = NIL;
+
+		if (chapterInfo.track	   != singleTrackInfo.track)	  singleTrackInfo.track	     = NIL;
+		if (chapterInfo.numTracks  != singleTrackInfo.numTracks)  singleTrackInfo.numTracks  = NIL;
+
+		if (chapterInfo.disc	   != singleTrackInfo.disc)	  singleTrackInfo.disc	     = NIL;
+		if (chapterInfo.numDiscs   != singleTrackInfo.numDiscs)	  singleTrackInfo.numDiscs   = NIL;
 
 		if (chapterInfo.mcdi	   != singleTrackInfo.mcdi)	  singleTrackInfo.mcdi	     = MCDI(Buffer<UnsignedByte>());
 		if (chapterInfo.offsets	   != singleTrackInfo.offsets)	  singleTrackInfo.offsets    = NIL;
@@ -1106,6 +1118,9 @@ Track BonkEnc::JobConvert::ConsolidateTrackInfo()
 		if (chapterInfo.genre	   == singleTrackInfo.genre)	  chapterInfo.genre	 = NIL;
 		if (chapterInfo.label	   == singleTrackInfo.label)	  chapterInfo.label	 = NIL;
 		if (chapterInfo.comment	   == singleTrackInfo.comment)	  chapterInfo.comment	 = NIL;
+
+		if (chapterInfo.track	   == singleTrackInfo.track)	  chapterInfo.track	 = NIL;
+		if (chapterInfo.disc	   == singleTrackInfo.disc)	  chapterInfo.disc	 = NIL;
 
 		if (chapterInfo.mcdi	   == singleTrackInfo.mcdi)	  chapterInfo.mcdi	 = MCDI(Buffer<UnsignedByte>());
 		if (chapterInfo.offsets	   == singleTrackInfo.offsets)	  chapterInfo.offsets	 = NIL;
