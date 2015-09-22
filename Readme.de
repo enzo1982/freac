@@ -100,6 +100,8 @@ Geschichte
 
 		- Öffnen von Ogg Vorbis-Dateien mit Coverbildern beschleunigt
 		- Absturz behoben, wenn Vorbis-Kodierer nicht initialisiert werden kann
+		- Absturz beim Scrollen der Joblist mit sichtbarem Tooltip behoben
+		- Fehler beim Parsen von Xing/LAME MP3-Informationstags behoben
 		- Fehler behoben, durch den Text in Eingabefeldern im skalierten Modus u.U. verschwand
 
 	Version 1.0.25 (September 2015)

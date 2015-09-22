@@ -168,17 +168,26 @@ Bool BonkEnc::FilterInMAD::SkipID3v2Tag(InStream *in)
 
 Bool BonkEnc::FilterInMAD::ReadXingAndLAMETag(InStream *in)
 {
-	/* Check for a Xing header and extract
-	 * the number of samples if it exists.
+	/* Read MPEG header and get frame size.
 	 */
-	Buffer<UnsignedByte>	 buffer(228);
+	Buffer<UnsignedByte>	 header(3);
 
-	/* Read data and seek back to before
-	 * the Xing header.
+	in->InputData(header, 3);
+	in->RelSeek(-3);
+
+	Int	 frameSize = GetMPEGFrameSize(header);
+
+	if (frameSize < 156) return False;
+
+	/* Read frame.
 	 */
-	in->InputData(buffer, 156);
+	Buffer<UnsignedByte>	 buffer(frameSize);
 
-	XHEADDATA		 data;
+	in->InputData(buffer, frameSize);
+
+	/* Check for a Xing header and extract the number of frames.
+	 */
+	XHEADDATA	 data;
 
 	data.toc = NIL;
 
@@ -186,12 +195,12 @@ Bool BonkEnc::FilterInMAD::ReadXingAndLAMETag(InStream *in)
 	{
 		numFrames = data.frames;
 
-		in->InputData(buffer, 228);
-
-		if (buffer[0] == 'L' && buffer[1] == 'A' && buffer[2] == 'M' && buffer[3] == 'E')
+		/* Check for a LAME header and extract length information.
+		 */
+		if (frameSize >= 192 && buffer[0x9C] == 'L' && buffer[0x9D] == 'A' && buffer[0x9E] == 'M' && buffer[0x9F] == 'E')
 		{
-			delaySamples = ( buffer[21]	    << 4) | ((buffer[22] & 0xF0) >> 4);
-			padSamples   = ((buffer[22] & 0x0F) << 8) | ( buffer[23]	     );
+			delaySamples = ( buffer[0xB1]	      << 4) | ((buffer[0xB2] & 0xF0) >> 4);
+			padSamples   = ((buffer[0xB2] & 0x0F) << 8) | ( buffer[0xB3]		 );
 
 			delaySamplesLeft += delaySamples;
 		}
@@ -199,9 +208,85 @@ Bool BonkEnc::FilterInMAD::ReadXingAndLAMETag(InStream *in)
 		return True;
 	}
 
-	in->RelSeek(-156);
+	/* Seek back to before the frame if no Xing header was found.
+	 */
+	in->RelSeek(-frameSize);
 
 	return False;
+}
+
+Int BonkEnc::FilterInMAD::GetMPEGFrameSize(const Buffer<UnsignedByte> &header)
+{
+	/* MPEG bitrate table - [version][layer][bitrate]
+	 */
+	const UnsignedInt16	 mpegBitrate[4][4][16] = {
+		{ // Version 2.5
+			{ 0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, 0 }, // Reserved
+			{ 0,   8,  16,  24,  32,  40,  48,  56,  64,  80,  96, 112, 128, 144, 160, 0 }, // Layer 3
+			{ 0,   8,  16,  24,  32,  40,  48,  56,  64,  80,  96, 112, 128, 144, 160, 0 }, // Layer 2
+			{ 0,  32,  48,  56,  64,  80,  96, 112, 128, 144, 160, 176, 192, 224, 256, 0 }  // Layer 1
+		},
+		{ // Reserved
+			{ 0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, 0 }, // Invalid
+			{ 0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, 0 }, // Invalid
+			{ 0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, 0 }, // Invalid
+			{ 0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, 0 }  // Invalid
+		},
+		{ // Version 2
+			{ 0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, 0 }, // Reserved
+			{ 0,   8,  16,  24,  32,  40,  48,  56,  64,  80,  96, 112, 128, 144, 160, 0 }, // Layer 3
+			{ 0,   8,  16,  24,  32,  40,  48,  56,  64,  80,  96, 112, 128, 144, 160, 0 }, // Layer 2
+			{ 0,  32,  48,  56,  64,  80,  96, 112, 128, 144, 160, 176, 192, 224, 256, 0 }  // Layer 1
+		},
+		{ // Version 1
+			{ 0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0, 0 }, // Reserved
+			{ 0,  32,  40,  48,  56,  64,  80,  96, 112, 128, 160, 192, 224, 256, 320, 0 }, // Layer 3
+			{ 0,  32,  48,  56,  64,  80,  96, 112, 128, 160, 192, 224, 256, 320, 384, 0 }, // Layer 2
+			{ 0,  32,  64,  96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448, 0 }, // Layer 1
+		}
+	};
+
+	/* MPEG sample rate table - [version][srate]
+	 */
+	const UnsignedInt16	 mpegSampleRate[4][4] = {
+		{ 11025, 12000,  8000, 0 }, // MPEG 2.5
+		{     0,     0,     0, 0 }, // Reserved
+		{ 22050, 24000, 16000, 0 }, // MPEG 2
+		{ 44100, 48000, 32000, 0 }  // MPEG 1
+	};
+
+	/* MPEG samples per frame table - [version][layer]
+	 */
+	const UnsignedInt16	 mpegFrameSamples[4][4] = {
+		{    0,  576, 1152,  384 }, // MPEG 2.5
+		{    0,    0,    0,    0 }, // Reserved
+		{    0,  576, 1152,  384 }, // MPEG 2
+		{    0, 1152, 1152,  384 }  // MPEG 1
+	};
+
+	/* MPEG unit size - [layer]
+	 */
+	const UnsignedInt8	 mpegUnitSize[4] = { 0, 1, 1, 4 }; // Reserved, 3, 2, 1
+
+	/* Check header validity.
+	 */
+	if ((header[0] & 0xFF) != 0xFF ||	  // 8 synchronization bits
+	    (header[1] & 0xE0) != 0xE0 ||	  // 3 synchronization bits
+	    (header[1] & 0x18) == 0x08 ||	  // reserved version
+	    (header[1] & 0x06) == 0x00 ||	  // reserved layer
+	    (header[2] & 0xF0) == 0xF0) return 0; // reserved bitrate
+
+	/* Get header values.
+	 */
+	Int	 version    = (header[1] & 0x18) >> 3; // version
+	Int	 layer	    = (header[1] & 0x06) >> 1; // layer
+	Int	 padding    = (header[2] & 0x02) >> 1; // padding
+	Int	 bitrate    = (header[2] & 0xf0) >> 4; // bitrate
+	Int	 sampleRate = (header[2] & 0x0c) >> 2; // samplerate
+    
+	/* Return frame size.
+	 */
+	return (((Float) mpegFrameSamples[version][layer] / 8.0 * (Float) (mpegBitrate[version][layer][bitrate] * 1000)) / (Float) mpegSampleRate[version][sampleRate]) + ((padding) ? mpegUnitSize[layer] : 0);
 }
 
 BonkEnc::Track *BonkEnc::FilterInMAD::GetFileInfo(const String &inFile)

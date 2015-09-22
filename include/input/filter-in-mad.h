@@ -49,6 +49,8 @@ namespace BonkEnc
 			Bool			 SkipID3v2Tag(InStream *);
 			Bool			 ReadXingAndLAMETag(InStream *);
 
+			Int			 GetMPEGFrameSize(const Buffer<UnsignedByte> &);
+
 			Int			 ReadMADData();
 			Int			 ReadMADMetadata();
 		public:

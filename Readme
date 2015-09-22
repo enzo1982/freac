@@ -99,6 +99,8 @@ History
 
 		- sped up opening Ogg Vorbis files with cover art
 		- do not crash when Vorbis encoder fails to initialize
+		- fixed crash when scrolling joblist while a tooltip is visible
+		- fixed Xing/LAME MP3 information tag parsing
 		- fixed edit box text disappearing in some cases in scaled mode
 
 	Version 1.0.25 (September 2015)
