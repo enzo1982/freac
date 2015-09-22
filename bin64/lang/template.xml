@@ -324,6 +324,8 @@
       <entry id="5021" string="Ripper"/>
       <entry id="5022" string="Settings"/>
       <entry id="5023" string="Resources"/>
+      <entry id="5024" string="Verifiers"/>
+      <entry id="5025" string="Taggers"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder"/>
@@ -589,8 +591,13 @@
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Alternative files"/>
-	<entry id="12001" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
+	<entry id="12000" string="Title information"/>
+	<entry id="12001" string="Read tags from referenced files"/>
+	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags"/>
+	<entry id="12003" string="Alternative files"/>
+	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
+	<entry id="12005" string="Error handling"/>
+	<entry id="12006" string="Ignore errors during cue sheet processing"/>
       </section>
     </section>
 
