@@ -97,11 +97,14 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 	tree_components		= new Tree(i18n->TranslateString("Components"));
 
+	tree_extension		= new Tree(i18n->TranslateString("Extensions"));
 	tree_encoders		= new Tree(i18n->TranslateString("Encoders"));
 	tree_decoders		= new Tree(i18n->TranslateString("Decoders"));
-	tree_output		= new Tree(i18n->TranslateString("Output"));
+	tree_verifiers		= new Tree(i18n->TranslateString("Verifiers"));
+	tree_taggers		= new Tree(i18n->TranslateString("Taggers"));
+	tree_playlists		= new Tree(i18n->TranslateString("Playlists"));
 	tree_dsp		= new Tree(i18n->TranslateString("DSP"));
-	tree_extension		= new Tree(i18n->TranslateString("Extensions"));
+	tree_output		= new Tree(i18n->TranslateString("Output"));
 	tree_other		= new Tree(i18n->TranslateString("Other"));
 
 	OnSelectConfiguration();
@@ -109,6 +112,9 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	if (tree_extension->Length() > 0) tree_components->Add(tree_extension);
 	if (tree_encoders->Length()  > 0) tree_components->Add(tree_encoders);
 	if (tree_decoders->Length()  > 0) tree_components->Add(tree_decoders);
+	if (tree_verifiers->Length() > 0) tree_components->Add(tree_verifiers);
+	if (tree_taggers->Length()   > 0) tree_components->Add(tree_taggers);
+	if (tree_playlists->Length() > 0) tree_components->Add(tree_playlists);
 	if (tree_dsp->Length()	     > 0) tree_components->Add(tree_dsp);
 	if (tree_output->Length()    > 0) tree_components->Add(tree_output);
 	if (tree_other->Length()     > 0) tree_components->Add(tree_other);
@@ -161,11 +167,14 @@ BonkEnc::ConfigDialog::~ConfigDialog()
 
 	DeleteObject(tree_components);
 
+	DeleteObject(tree_extension);
 	DeleteObject(tree_encoders);
 	DeleteObject(tree_decoders);
-	DeleteObject(tree_output);
+	DeleteObject(tree_verifiers);
+	DeleteObject(tree_taggers);
+	DeleteObject(tree_playlists);
 	DeleteObject(tree_dsp);
-	DeleteObject(tree_extension);
+	DeleteObject(tree_output);
 	DeleteObject(tree_other);
 }
 
@@ -296,11 +305,14 @@ Void BonkEnc::ConfigDialog::AddLayers()
 
 			switch (component->GetType())
 			{
+				case BoCA::COMPONENT_TYPE_EXTENSION: tree = tree_extension; break;
 				case BoCA::COMPONENT_TYPE_DECODER:   tree = tree_decoders;  break;
 				case BoCA::COMPONENT_TYPE_ENCODER:   tree = tree_encoders;  break;
-				case BoCA::COMPONENT_TYPE_OUTPUT:    tree = tree_output;    break;
+				case BoCA::COMPONENT_TYPE_VERIFIER:  tree = tree_verifiers; break;
+				case BoCA::COMPONENT_TYPE_TAGGER:    tree = tree_taggers;   break;
+				case BoCA::COMPONENT_TYPE_PLAYLIST:  tree = tree_playlists; break;
 				case BoCA::COMPONENT_TYPE_DSP:	     tree = tree_dsp;	    break;
-				case BoCA::COMPONENT_TYPE_EXTENSION: tree = tree_extension; break;
+				case BoCA::COMPONENT_TYPE_OUTPUT:    tree = tree_output;    break;
 				default:
 				case BoCA::COMPONENT_TYPE_UNKNOWN:   tree = tree_other;	    break;
 			}

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -54,11 +54,14 @@ namespace BonkEnc
 			Tree				*tree_interface;
 
 			Tree				*tree_components;
+			Tree				*tree_extension;
 			Tree				*tree_encoders;
 			Tree				*tree_decoders;
-			Tree				*tree_output;
+			Tree				*tree_verifiers;
+			Tree				*tree_taggers;
+			Tree				*tree_playlists;
 			Tree				*tree_dsp;
-			Tree				*tree_extension;
+			Tree				*tree_output;
 			Tree				*tree_other;
 
 			Void				 AddLayers();
