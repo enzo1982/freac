@@ -35,6 +35,7 @@ namespace BonkEnc
 
 			Track			*infoFormat;
 
+			Int			 numBytes;
 			Int			 numFrames;
 
 			Int			 delaySamples;

@@ -50,6 +50,7 @@ BonkEnc::FilterInMAD::FilterInMAD(Config *config, Track *format) : InputFilter(c
 
 	infoFormat	 = NIL;
 
+	numBytes	 = 0;
 	numFrames	 = 0;
 
 	delaySamples	 = 0;
@@ -193,6 +194,7 @@ Bool BonkEnc::FilterInMAD::ReadXingAndLAMETag(InStream *in)
 
 	if (GetXingHeader(&data, buffer))
 	{
+		numBytes  = data.bytes - frameSize;
 		numFrames = data.frames;
 
 		/* Check for a LAME header and extract length information.
@@ -204,15 +206,27 @@ Bool BonkEnc::FilterInMAD::ReadXingAndLAMETag(InStream *in)
 
 			delaySamplesLeft += delaySamples;
 		}
+	}
+	else
+	{
+		/* Seek back to before the frame if no Xing header was found.
+		 */
+		in->RelSeek(-frameSize);
 
-		return True;
+		return False;
 	}
 
-	/* Seek back to before the frame if no Xing header was found.
+	/* Sanity check for header vs. actual file size (account
+	 * for possible ID3v1 and addtional 4kB of other tags).
 	 */
-	in->RelSeek(-frameSize);
+	if (numBytes > 0 && in->Size() - in->GetPos() > numBytes * 1.01 + 128 + 4096)
+	{
+		numFrames  = 0;
 
-	return False;
+		padSamples = 0;
+	}
+
+	return True;
 }
 
 Int BonkEnc::FilterInMAD::GetMPEGFrameSize(const Buffer<UnsignedByte> &header)
