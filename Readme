@@ -100,6 +100,7 @@ History
 		- improved detection of concatenated MP3 files
 		- sped up opening Ogg Vorbis files with cover art
 		- do not crash when Vorbis encoder fails to initialize
+		- fixed crash when trying to open invalid Ogg Vorbis files
 		- fixed crash when scrolling joblist while a tooltip is visible
 		- fixed Xing/LAME MP3 information tag parsing
 		- fixed edit box text disappearing in some cases in scaled mode

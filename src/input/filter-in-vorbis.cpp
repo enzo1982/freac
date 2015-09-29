@@ -175,8 +175,21 @@ Int BonkEnc::FilterInVORBIS::ReadData(Buffer<UnsignedByte> &data, Int size)
 
 BonkEnc::Track *BonkEnc::FilterInVORBIS::GetFileInfo(const String &inFile)
 {
-	Track		*nFormat = new Track;
 	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READ);
+
+	if (f_in->InputString(4) != "OggS")
+	{
+		delete f_in;
+
+		errorState = True;
+		errorString = "Not a valid Ogg Vorbis file";
+
+		return NIL;
+	}
+
+	f_in->Seek(0);
+
+	Track	*nFormat = new Track;
 
 	nFormat->order = BYTE_INTEL;
 	nFormat->bits = 16;
@@ -199,10 +212,8 @@ BonkEnc::Track *BonkEnc::FilterInVORBIS::GetFileInfo(const String &inFile)
 
 	ex_ogg_sync_wrote(&foy, size);
 
-	if (foy.data != NIL)
+	if (foy.data != NIL && ex_ogg_sync_pageout(&foy, &fog) == 1)
 	{
-		ex_ogg_sync_pageout(&foy, &fog);
-
 		ex_ogg_stream_init(&fos, ex_ogg_page_serialno(&fog)); 
 
 		ex_vorbis_info_init(&fvi);
@@ -351,6 +362,9 @@ BonkEnc::Track *BonkEnc::FilterInVORBIS::GetFileInfo(const String &inFile)
 	else
 	{
 		delete nFormat;
+
+		errorState = True;
+		errorString = "Could not initialize decoder";
 
 		nFormat = NIL;
 	}
