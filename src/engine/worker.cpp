@@ -440,7 +440,7 @@ Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder
 
 		/* Check for ripper timeout.
 		 */
-		if (trackToConvert.isCDTrack && ripperTimeout > 0 && S::System::System::Clock() - trackStartTicks > (UnsignedInt) ripperTimeout * 1000)
+		if (trackToConvert.isCDTrack && ripperTimeout > 0 && S::System::System::Clock() - trackStartTicks > (UnsignedInt64) ripperTimeout * 1000)
 		{
 			BoCA::Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(ripperTimeout));
 
