@@ -81,6 +81,8 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 		ex_eUpdate_SetLanguage(context, String("internal"));
 	}
 
+	i18n->ActivateLanguage(language);
+
 	SetText("Contacting update server...");
 	SetProgress(100);
 
