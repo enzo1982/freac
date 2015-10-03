@@ -16,8 +16,10 @@
     <entry id="102" string="Close">Cerrar</entry>
 
     <entry id="200" string="Error">Error</entry>
+    <entry id="201" string="Warning">Aviso</entry>
     <entry id="202" string="Info">Info</entry>
 
+    <entry id="210" string="Do not display this warning again">No mostrar este aviso de nuevo</entry>
     <entry id="211" string="Do not display this note again">No mostrar esta nota de nuevo</entry>
 
     <entry id="300" string="Artist">Artista</entry>
@@ -37,6 +39,7 @@
     <entry id="352" string="unknown album">álbum desconocido</entry>
     <entry id="353" string="unknown genre">género desconocido</entry>
     <entry id="354" string="unknown year">año desconocido</entry>
+    <entry id="355" string="hidden track">pista oculta</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -181,6 +184,8 @@
       <entry id="3046" string="Joblist">Lista de tareas</entry>
       <entry id="3047" string="unknown">ninguno</entry>
       <entry id="3048" string="Other">Otro</entry>
+      <entry id="3049" string="Output file name">Nombre de archivo de salida</entry>
+      <entry id="3050" string="verifying">comprobando</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Carpeta</entry>
@@ -194,6 +199,7 @@
 	<entry id="3201" string="Pattern">Patrón</entry>
 	<entry id="3202" string="Start folder">Carpeta de inicio</entry>
 	<entry id="3203" string="Filename pattern">Patrón de nombre de archivo</entry>
+	<entry id="3204" string="Search subfolders">Buscar en subcarpetas</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">Seleccione la carpeta para agregar a la lista de tareas</entry>
       </section>
 
@@ -203,9 +209,18 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="You did not select a track!">¡No ha selecionado ninguna pista!</entry>
+	<entry id="3400" string="You did not select a track!">¡No ha seleccionado ninguna pista!</entry>
 	<entry id="3401" string="No files found matching pattern: %1">No se encontraron archivos correspondientes al patrón: %1</entry>
       </section>
+    </section>
+
+    <section name="Jobs">
+      <entry id="3500" string="Jobs">Tareas</entry>
+      <entry id="3501" string="Progress">Progreso</entry>
+      <entry id="3502" string="Errors / Warnings">Errores / Avisos</entry>
+      <entry id="3503" string="Details">Detalles</entry>
+      <entry id="3504" string="Error details">Detalles del error</entry>
+      <entry id="3505" string="Time left">Tiempo restante</entry>
     </section>
 
     <section name="CDDB">
@@ -220,9 +235,9 @@
 	<entry id="4006" string="Successfully read CD!">¡CD leído satisfactoriamente!</entry>
 	<entry id="4007" string="Save entry">Guardar</entry>
 	<entry id="4008" string="Various artists">Artistas varios</entry>
-	<entry id="4010" string="Data track">Pista de datos</entry>
-	<entry id="4011" string="Submit to online database later">Enviar más tarde a base de datos remota</entry>
-	<entry id="4012" string="Active CD-ROM drive">Unidad CD-ROM activa</entry>
+	<entry id="4009" string="Data track">Pista de datos</entry>
+	<entry id="4010" string="Submit to online database later">Enviar más tarde a base de datos remota</entry>
+	<entry id="4011" string="Active CD-ROM drive">Unidad CD-ROM activa</entry>
 
 	<section name="Errors">
 	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Hubo un error al intentar conectar con el servidor freedb.</entry>
@@ -240,9 +255,10 @@
 	<entry id="4106" string="Matches">Resultados</entry>
 	<entry id="4107" string="Select the entry that best fits your CD">Seleccione el registro que coincide con su CD</entry>
 	<entry id="4108" string="Would you like to perform this query again later?">¿Desea repetir esta consulta más tarde?</entry>
-	<entry id="4109" string="none">ninguno</entry>
-	<entry id="4110" string="Preview">Vista previa</entry>
-	<entry id="4111" string="loading preview">cargando vista previa</entry>
+	<entry id="4109" string="Would you like to perform the remaining queries again later?">¿Quiere hacer las consultas restantes más tarde?</entry>
+	<entry id="4110" string="none">ninguno</entry>
+	<entry id="4111" string="Preview">Vista previa</entry>
+	<entry id="4112" string="loading preview">cargando vista previa</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Ha ocurrido un error al intentar conectar con el servidor freedb.</entry>
@@ -307,6 +323,7 @@
       <entry id="5020" string="New configuration">Nueva configuración</entry>
       <entry id="5021" string="Ripper">Extractor</entry>
       <entry id="5022" string="Settings">Opciones</entry>
+      <entry id="5023" string="Resources">Recursos</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar compresor</entry>
@@ -420,8 +437,42 @@
       <section name="Joblist">
 	<entry id="5600" string="Joblist">Lista de tareas</entry>
 	<entry id="5601" string="Columns">Columnas</entry>
+	<entry id="5602" string="Name">Nombre</entry>
+	<entry id="5603" string="Description">Descripción</entry>
 	<entry id="5604" string="Up">Subir</entry>
 	<entry id="5605" string="Down">Bajar</entry>
+	<entry id="5606" string="Jobs">Tareas</entry>
+	<entry id="5607" string="Show Jobs tab">Mostrar pestaña de tareas</entry>
+
+	<section name="Columns">
+	  <entry id="5650" string="Track artist">Intérprete</entry>
+	  <entry id="5651" string="Track title">Título</entry>
+	  <entry id="5652" string="Track genre">Género</entry>
+	  <entry id="5653" string="Album title">Título del álbum</entry>
+	  <entry id="5654" string="Disc number">Nº disco</entry>
+	  <entry id="5655" string="Track number">Pista</entry>
+	  <entry id="5656" string="Track rating">Puntuación</entry>
+	  <entry id="5657" string="Track length">Duración</entry>
+	  <entry id="5658" string="Track size">Tamaño</entry>
+	  <entry id="5659" string="File name">Nombre de archivo</entry>
+	  <entry id="5660" string="File type">Tipo de archivo</entry>
+	  <entry id="5661" string="Output file name">Nombre de archivo de salida</entry>
+	</section>
+      </section>
+
+      <section name="Resources">
+	<entry id="5700" string="Parallel processing">Proceso paralelo</entry>
+	<entry id="5701" string="Enable parallel processing">Habilitar proceso paralelo</entry>
+	<entry id="5702" string="Number of conversion threads">Número de hilos de conversión</entry>
+	<entry id="5703" string="auto">automático</entry>
+      </section>
+
+      <section name="Verification">
+	<entry id="5800" string="Verification">Verificación</entry>
+	<entry id="5801" string="Enable input verification">Habilitar verificación de la entrada</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Verificar que las entradas sin pérdida corresponden&#10;exactamente con sus originales.</entry>
+	<entry id="5803" string="Enable output verification">Habilitar verificación de la salida</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Verificar que las salidas sin pérdida corresponden&#10;exactamente con los datos codificados.</entry>
       </section>
     </section>
 
@@ -471,6 +522,10 @@
       <entry id="7019" string="Unknown error">Error desconocido</entry>
       <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Los archivos elegidos no pueden unirse en uno solo&#10;por su distinto formato de muestreo.&#10;&#10;Por favor, unifíquelos primero.</entry>
       <entry id="7021" string="No configuration dialog available for:&#10;&#10;%1">No hay diálogo de configuración para:&#10;&#10;%1</entry>
+      <entry id="7022" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Parece que quiere convertir un formato con pérdida en uno sin ella.&#10;&#10;Por favor, compruebe si puede deshacer la pérdida de calidad, porque este&#10;proceso no puede mejorar la calidad pero sí aumentará el tamaño del archivo.</entry>
+      <entry id="7023" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?">¡Ya hay un proceso de conversión en marcha!&#10;&#10;¿Quiere poner éste en cola?</entry>
+      <entry id="7024" string="Failed to verify input file: %1">Fallo al verificar el archivo de entrada:  %1</entry>
+      <entry id="7025" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">La suma de verificación difiere en el archivo de salida: %1&#10;&#10;Suma de codificación: %2&#10;Suma de verificación: %3</entry>
     </section>
 
     <section name="Dialogs">
@@ -516,6 +571,8 @@
       <entry id="9020" string="Use read offset">Usar lectura offset</entry>
       <entry id="9021" string="samples">muestras</entry>
       <entry id="9022" string="Read ISRC when adding tracks to joblist">Leer ISRC al añadir entradas a la lista de tareas</entry>
+      <entry id="9023" string="Spin up before ripping">Acelerar antes de extraer</entry>
+      <entry id="9024" string="%1 seconds">%1 segundos</entry>
     </section>
 
     <section name="Decoders">
@@ -528,7 +585,7 @@
       <section name="mpg123">
 	<entry id="11000" string="Decoder">Decodificador</entry>
 	<entry id="11001" string="Active decoder">Decodificador activo</entry>
- 	<entry id="11002" string="auto select">autoselección</entry>
+	<entry id="11002" string="auto select">autoselección</entry>
       </section>
     </section>
 
@@ -627,8 +684,13 @@
       </section>
 
       <section name="AAC">
+	<entry id="33000" string="Codec">Códec</entry>
 	<entry id="33001" string="Quality">Calidad</entry>
 	<entry id="33002" string="Format">Formato</entry>
+
+	<section name="Codec">
+	  <entry id="33100" string="Audio codec">Códec de audio</entry>
+	</section>
 
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">Bitrate</entry>
@@ -795,6 +857,11 @@
 	<entry id="41002" string="Audio format">Formato de audio</entry>
 	<entry id="41003" string="mono">mono</entry>
 	<entry id="41004" string="auto select">autoselección</entry>
+
+	<section name="Errors">
+	  <entry id="41100" string="Could not find suitable audio format.">No se encuentra el formato de audio adecuado.</entry>
+	  <entry id="41101" string="Unable to use selected audio format.">Imposible usar el formato de audio elegido.</entry>
+	</section>
       </section>
     </section>
 
