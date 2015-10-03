@@ -96,8 +96,9 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.0.26 CVS (September 2015)
+	Version 1.0.26 CVS (Oktober 2015)
 
+		- Serbische (Latein und Kyrillisch) Übersetzungen aktualisiert
 		- Erkennung von zusammengefügten MP3-Dateien verbessert
 		- Öffnen von Ogg Vorbis-Dateien mit Coverbildern beschleunigt
 		- Absturz behoben, wenn Vorbis-Kodierer nicht initialisiert werden kann

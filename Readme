@@ -95,8 +95,9 @@ Known problems
 History
 -------
 
-	Version 1.0.26 CVS (September 2015)
+	Version 1.0.26 CVS (October 2015)
 
+		- updated Serbian (Latin and Cyrillic) translations
 		- improved detection of concatenated MP3 files
 		- sped up opening Ogg Vorbis files with cover art
 		- do not crash when Vorbis encoder fails to initialize
