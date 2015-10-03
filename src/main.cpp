@@ -2339,6 +2339,8 @@ Int BonkEnc::BonkEncGUI::CheckForUpdatesThread(Thread *self)
 		ex_eUpdate_SetLanguage(context, "internal");
 	}
 
+	i18n->ActivateLanguage(currentConfig->language);
+
 	if (ex_eUpdate_CheckForNewUpdates(context, (self == NIL)) > 0)
 	{
 		MessageDlg	*msgBox = new MessageDlg(String(i18n->TranslateString("There are new updates for %1 available online!\nWould you like to see a list of available updates now?")).Replace("%1", BonkEnc::appName), String(BonkEnc::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question, i18n->TranslateString("Check for updates at startup"), &currentConfig->checkUpdatesAtStartup);
