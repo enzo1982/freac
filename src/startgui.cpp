@@ -1349,7 +1349,11 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 
 	dialog->AddTip(i18n->TranslateString("%1 is available in %2 languages. If your language is\nnot available, you can easily translate %1 using the\n\'smooth Translator\' application.").Replace("%1", BonkEnc::appName).Replace("%2", String::FromInt(Math::Max(36, i18n->GetNOfLanguages()))));
 	dialog->AddTip(i18n->TranslateString("%1 comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the %1 website: %2").Replace("%1", BonkEnc::appName).Replace("%2", BonkEnc::website));
+
+#ifdef __WIN32__
 	dialog->AddTip(i18n->TranslateString("%1 can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the %1/plugins directory to\nenable %1 to read these formats.").Replace("%1", BonkEnc::appName));
+#endif
+
 	dialog->AddTip(i18n->TranslateString("With %1 you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with %1.").Replace("%1", BonkEnc::appName));
 	dialog->AddTip(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the Ripper tab of %1's configuration\ndialog. If that does not help, try using one of the Paranoia modes.").Replace("%1", BonkEnc::appName));
 	dialog->AddTip(i18n->TranslateString("Do you have any suggestions on how to improve %1?\nYou can submit any ideas through the Tracker on the %1\nSourceForge project page - %2\nor send an eMail to %3.").Replace("%1", BonkEnc::appName).Replace("%2", "http://sf.net/projects/bonkenc").Replace("%3", "suggestions@freac.org"));
