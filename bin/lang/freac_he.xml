@@ -82,7 +82,7 @@
 	<entry id="1402" string="Pause/resume encoding">השהה / חדש המרה</entry>
 	<entry id="1403" string="Stop encoding">עצור המרה</entry>
 	<entry id="1404" string="Encoder options">אפשרויות המרה</entry>
-	<entry id="1405" string="Encode to single file">המר לקובץ אחד</entry>
+	<entry id="1405" string="Encode to a single file">המר לקובץ אחד</entry>
 	<entry id="1407" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
 	<entry id="1408" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
 	<entry id="1409" string="Shutdown after encoding">כבה מחשב לאחר המרה</entry>
@@ -129,7 +129,7 @@
       <entry id="3015" string="Create playlist">צור רשימת השמעה</entry>
       <entry id="3017" string="Browse">דפדף</entry>
       <entry id="3018" string="Skip">דלג</entry>
-      <entry id="3019" string="Encode to single file">המר לקובץ אחד</entry>
+      <entry id="3019" string="Encode to a single file">המר לקובץ אחד</entry>
       <entry id="3020" string="Remove">הסר</entry>
       <entry id="3021" string="Clear joblist">נקה רשימת מטלות</entry>
       <entry id="3022" string="Use for all selected tracks">השתמש בכל הנבחרים</entry>
@@ -219,7 +219,7 @@
 	<entry id="5106" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
 	<entry id="5107" string="Options">אפשרויות</entry>
 	<entry id="5108" string="Filename pattern">צורת שם קובץ</entry>
-	<entry id="5111" string="Encode to single file">המר לקובץ אחד</entry>
+	<entry id="5111" string="Encode to a single file">המר לקובץ אחד</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">תקית היעד אינה קיימת, האם ליצור אותה?</entry>

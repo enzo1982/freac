@@ -92,7 +92,7 @@
 	<entry id="1402" string="Pause/resume encoding">Puaza/Pokračovať kódovanie</entry>
 	<entry id="1403" string="Stop encoding">Zastaviť kódovanie</entry>
 	<entry id="1404" string="Encoder options">Možnosti kodeku</entry>
-	<entry id="1405" string="Encode to single file">Kódovať do jedného súboru</entry>
+	<entry id="1405" string="Encode to a single file">Kódovať do jedného súboru</entry>
 	<entry id="1406" string="Encode to input file folder if possible">Kódovať do vstupného adresára ak je to možné</entry>
 	<entry id="1407" string="Allow overwriting input file">Povoliť prepisovanie vstupného súboru</entry>
 	<entry id="1408" string="Delete original files after encoding">Po kódovaní zmazať pôvodné súbory</entry>
@@ -143,7 +143,7 @@
       <entry id="3016" string="Create cue sheet">Vytvoriť .cue hárok</entry>
       <entry id="3017" string="Browse">Prehľadať</entry>
       <entry id="3018" string="Skip">Preskočiť</entry>
-      <entry id="3019" string="Encode to single file">Kódovať do jedného súboru</entry>
+      <entry id="3019" string="Encode to a single file">Kódovať do jedného súboru</entry>
       <entry id="3020" string="Remove">Odstrániť</entry>
       <entry id="3021" string="Clear joblist">Vyprázdniť zoznam</entry>
       <entry id="3022" string="Use for all selected tracks">Použiť pre všetky označené skladby</entry>
@@ -285,7 +285,7 @@
 	<entry id="5108" string="Filename pattern">Vzor súborovej cesty</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Kódovať &quot;On-The-Fly&quot;</entry>
 	<entry id="5110" string="Keep ripped Wave files">Uchovať rippnuté Wave súbory</entry>
-	<entry id="5111" string="Encode to single file">Kódovať do jedného súboru</entry>
+	<entry id="5111" string="Encode to a single file">Kódovať do jedného súboru</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Výstupný adresár neexistuje! Chcete ho vytvoriť?</entry>

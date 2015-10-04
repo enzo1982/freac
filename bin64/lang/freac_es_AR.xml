@@ -88,7 +88,7 @@
 	<entry id="1402" string="Pause/resume encoding">Pausar/Resumir codificación</entry>
 	<entry id="1403" string="Stop encoding">Detener codificación</entry>
 	<entry id="1404" string="Encoder options">Opciones de codificación</entry>
-	<entry id="1405" string="Encode to single file">Codificar a un solo archivo</entry>
+	<entry id="1405" string="Encode to a single file">Codificar a un solo archivo</entry>
 	<entry id="1406" string="Encode to input file folder if possible">Codificar al directorio origien si es posible</entry>
 	<entry id="1407" string="Allow overwriting input file">Permitir sobreescribir el archivo de origen</entry>
 	<entry id="1408" string="Delete original files after encoding">Eliminar archivos originales luego de codificar</entry>
@@ -139,7 +139,7 @@
       <entry id="3016" string="Create cue sheet">Crear lista de distribución de pistas</entry>
       <entry id="3017" string="Browse">Examinar</entry>
       <entry id="3018" string="Skip">Saltear</entry>
-      <entry id="3019" string="Encode to single file">Codificar a un solo archivo</entry>
+      <entry id="3019" string="Encode to a single file">Codificar a un solo archivo</entry>
       <entry id="3020" string="Remove">Quitar</entry>
       <entry id="3021" string="Clear joblist">Limpiar lista de trabajo</entry>
       <entry id="3022" string="Use for all selected tracks">Utilizar para todas las pistas seleccionadas</entry>
@@ -280,7 +280,7 @@
 	<entry id="5108" string="Filename pattern">Patrón de nombre de archivo</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Codificar 'Al vuelo'</entry>
 	<entry id="5110" string="Keep ripped Wave files">Mantener archs wav extraídos</entry>
-	<entry id="5111" string="Encode to single file">Codificar a un solo archivo</entry>
+	<entry id="5111" string="Encode to a single file">Codificar a un solo archivo</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">La carpeta de destino no existe. ¿Desea crearla?</entry>

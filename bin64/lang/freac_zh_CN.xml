@@ -93,7 +93,7 @@
 	<entry id="1402" string="Pause/resume encoding">暂停/继续编码</entry>
 	<entry id="1403" string="Stop encoding">停止编码</entry>
 	<entry id="1404" string="Encoder options">编码器选项</entry>
-	<entry id="1405" string="Encode to single file">编码为单独文件</entry>
+	<entry id="1405" string="Encode to a single file">编码为单独文件</entry>
 	<entry id="1406" string="Encode to input file folder if possible">如果存在则将编码后的文件存放于输入文件目录</entry>
 	<entry id="1407" string="Allow overwriting input file">允许覆盖输入文件</entry>
 	<entry id="1408" string="Delete original files after encoding">编码完成后删除源文件</entry>
@@ -144,7 +144,7 @@
       <entry id="3016" string="Create cue sheet">创建 cue 表单</entry>
       <entry id="3017" string="Browse">浏览</entry>
       <entry id="3018" string="Skip">跳过</entry>
-      <entry id="3019" string="Encode to single file">编码为单独文件</entry>
+      <entry id="3019" string="Encode to a single file">编码为单独文件</entry>
       <entry id="3020" string="Remove">删除</entry>
       <entry id="3021" string="Clear joblist">清除任务列表</entry>
       <entry id="3022" string="Use for all selected tracks">应用到所有选择的音轨</entry>
@@ -289,7 +289,7 @@
 	<entry id="5108" string="Filename pattern">文件名样式</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">使用即时编码</entry>
 	<entry id="5110" string="Keep ripped Wave files">保留翻录的 WAVE 文件</entry>
-	<entry id="5111" string="Encode to single file">编码为单独文件</entry>
+	<entry id="5111" string="Encode to a single file">编码为单独文件</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">输出目录不存在！您要创建此目录吗？</entry>

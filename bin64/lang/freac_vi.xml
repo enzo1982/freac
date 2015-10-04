@@ -92,7 +92,7 @@
 	<entry id="1402" string="Pause/resume encoding">Tạm dừng/làm lại chuyển mã</entry>
 	<entry id="1403" string="Stop encoding">Dừng chuyển mã</entry>
 	<entry id="1404" string="Encoder options">Tùy chọn chuyển mã</entry>
-	<entry id="1405" string="Encode to single file">Chuyển mã thành 1 file</entry>
+	<entry id="1405" string="Encode to a single file">Chuyển mã thành 1 file</entry>
 	<entry id="1406" string="Encode to input file folder if possible">Chuyển mã lưu ở phần thư mục nhập vào nếu được</entry>
 	<entry id="1407" string="Allow overwriting input file">Cho phép ghi đè lên tập tin nhập vào</entry>
 	<entry id="1408" string="Delete original files after encoding">Xóa file gốc sau khi chuyển mã</entry>
@@ -143,7 +143,7 @@
       <entry id="3016" string="Create cue sheet">Tạo cue sheet</entry>
       <entry id="3017" string="Browse">Duyệt</entry>
       <entry id="3018" string="Skip">Bỏ qua</entry>
-      <entry id="3019" string="Encode to single file">Chuyển mã thành 1 file</entry>
+      <entry id="3019" string="Encode to a single file">Chuyển mã thành 1 file</entry>
       <entry id="3020" string="Remove">Loại bỏ</entry>
       <entry id="3021" string="Clear joblist">Xóa danh sách công việc</entry>
       <entry id="3022" string="Use for all selected tracks">Áp dụng cho tất cả các track được chọn</entry>
@@ -285,7 +285,7 @@
 	<entry id="5108" string="Filename pattern">Tên file mẫu</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Chuyển mã 'On-The-Fly'</entry>
 	<entry id="5110" string="Keep ripped Wave files">Giữ các tập tin wave đã rip</entry>
-	<entry id="5111" string="Encode to single file">Chuyển mã thành 1 file</entry>
+	<entry id="5111" string="Encode to a single file">Chuyển mã thành 1 file</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Thư mục xuất ra không tồn tại! Bạn có muốn tạo thư mục đó không?</entry>

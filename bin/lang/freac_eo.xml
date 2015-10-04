@@ -92,7 +92,7 @@
 	<entry id="1402" string="Pause/resume encoding">Paŭzigi/daŭrigi la kodadon</entry>
 	<entry id="1403" string="Stop encoding">Stopi la kodadon</entry>
 	<entry id="1404" string="Encoder options">Kodil-opcioj</entry>
-	<entry id="1405" string="Encode to single file">Kodi al solaj dosieroj</entry>
+	<entry id="1405" string="Encode to a single file">Kodi al solaj dosieroj</entry>
 	<entry id="1406" string="Encode to input file folder if possible">Kodi al eniga dosierujo se eblas</entry>
 	<entry id="1407" string="Allow overwriting input file">Permesi anstataŭigi la enigan dosieron</entry>
 	<entry id="1408" string="Delete original files after encoding">Forigi originalajn dosierojn post la kodado</entry>
@@ -143,7 +143,7 @@
       <entry id="3016" string="Create cue sheet">Krei replikfolion</entry>
       <entry id="3017" string="Browse">Elekti ujon</entry>
       <entry id="3018" string="Skip">Transsalti</entry>
-      <entry id="3019" string="Encode to single file">Kodi al solaj dosieroj</entry>
+      <entry id="3019" string="Encode to a single file">Kodi al solaj dosieroj</entry>
       <entry id="3020" string="Remove">Forigi</entry>
       <entry id="3021" string="Clear joblist">Ĉiuj forigi</entry>
       <entry id="3022" string="Use for all selected tracks">Uzi por ĉiuj elektitaj trakoj</entry>
@@ -285,7 +285,7 @@
 	<entry id="5108" string="Filename pattern">Modelo por dosiernomo</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Kodi 'On-The-Fly'</entry>
 	<entry id="5110" string="Keep ripped Wave files">Konservi la wave-dosierojn</entry>
-	<entry id="5111" string="Encode to single file">Kodi al solaj dosieroj</entry>
+	<entry id="5111" string="Encode to a single file">Kodi al solaj dosieroj</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">La eliga dosierujo ne ekzistas! Ĉu vi volas krei ĝin?</entry>

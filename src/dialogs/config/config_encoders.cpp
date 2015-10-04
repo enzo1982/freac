@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -72,7 +72,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 
 	ToggleOnTheFly();
 
-	check_singleFile	= new CheckBox(i18n->TranslateString("Encode to single file"), Point(10, 14), Size(261, 0), &singleFile);
+	check_singleFile	= new CheckBox(i18n->TranslateString("Encode to a single file"), Point(10, 14), Size(261, 0), &singleFile);
 	check_singleFile->onAction.Connect(&ConfigureEncoders::ToggleEncodeToSingleFile, this);
 
 	ToggleEncodeToSingleFile();

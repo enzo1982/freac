@@ -92,7 +92,7 @@
 	<entry id="1402" string="Pause/resume encoding">Pauziraj/nastavi enkodovanje</entry>
 	<entry id="1403" string="Stop encoding">Prekini enkodovanje</entry>
 	<entry id="1404" string="Encoder options">Opcije enkodera</entry>
-	<entry id="1405" string="Encode to single file">Enkoduj u jedan fajl</entry>
+	<entry id="1405" string="Encode to a single file">Enkoduj u jedan fajl</entry>
 	<entry id="1406" string="Encode to input file folder if possible">Ako je moguće, enkoduj u ulazni folder</entry>
 	<entry id="1407" string="Allow overwriting input file">Dozvoli prepisivanje ulaznih fajlova</entry>
 	<entry id="1408" string="Delete original files after encoding">Obriši izvorni fajl nakon enkodovanja</entry>
@@ -143,7 +143,7 @@
       <entry id="3016" string="Create cue sheet">Kreiraj cue list</entry>
       <entry id="3017" string="Browse">Pretraži</entry>
       <entry id="3018" string="Skip">Preskoči</entry>
-      <entry id="3019" string="Encode to single file">Enkoduj u jedan fajl</entry>
+      <entry id="3019" string="Encode to a single file">Enkoduj u jedan fajl</entry>
       <entry id="3020" string="Remove">Ukloni</entry>
       <entry id="3021" string="Clear joblist">Očisti listu zadataka</entry>
       <entry id="3022" string="Use for all selected tracks">Koristi za sve izabrane stavke</entry>
@@ -286,7 +286,7 @@
 	<entry id="5108" string="Filename pattern">Šablon naziva</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Enkoduj &quot;U-Letu&quot;</entry>
 	<entry id="5110" string="Keep ripped Wave files">Zadrži ripovane Wave fajlove</entry>
-	<entry id="5111" string="Encode to single file">Enkoduj u jedan fajl</entry>
+	<entry id="5111" string="Encode to a single file">Enkoduj u jedan fajl</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Izlazni folder ne postoji! Da li ga želite kreirati?</entry>

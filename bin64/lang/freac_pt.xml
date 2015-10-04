@@ -92,7 +92,7 @@
 	<entry id="1402" string="Pause/resume encoding">Parar/recomeçar a codificação</entry>
 	<entry id="1403" string="Stop encoding">Parar codificação</entry>
 	<entry id="1404" string="Encoder options">Opções do codificador</entry>
-	<entry id="1405" string="Encode to single file">Codificar num ficheiro único</entry>
+	<entry id="1405" string="Encode to a single file">Codificar num ficheiro único</entry>
 	<entry id="1406" string="Encode to input file folder if possible">Codificar para a pasta do ficheiro de entrada, se possível</entry>
 	<entry id="1407" string="Allow overwriting input file">Permitir sobrescrever o ficheiro de entrada</entry>
 	<entry id="1408" string="Delete original files after encoding">Apagar ficheiros originais após codificação</entry>
@@ -143,7 +143,7 @@
       <entry id="3016" string="Create cue sheet">Criar lista das pistas (cue sheet)</entry>
       <entry id="3017" string="Browse">Escolher</entry>
       <entry id="3018" string="Skip">Pular</entry>
-      <entry id="3019" string="Encode to single file">Codificar num ficheiro único</entry>
+      <entry id="3019" string="Encode to a single file">Codificar num ficheiro único</entry>
       <entry id="3020" string="Remove">Remover</entry>
       <entry id="3021" string="Clear joblist">Limpar a listagem de trabalho</entry>
       <entry id="3022" string="Use for all selected tracks">Use em todas as pistas seleccionadas</entry>
@@ -285,7 +285,7 @@
 	<entry id="5108" string="Filename pattern">Sintaxe do nome do ficheiro</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Codificar 'On-The-Fly'</entry>
 	<entry id="5110" string="Keep ripped Wave files">Manter os ficheiros wav</entry>
-	<entry id="5111" string="Encode to single file">Codificar num ficheiro único</entry>
+	<entry id="5111" string="Encode to a single file">Codificar num ficheiro único</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">A pasta de saída não existe! Deseja criá-la?</entry>

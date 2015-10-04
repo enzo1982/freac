@@ -96,7 +96,7 @@
 	<entry id="1402" string="Pause/resume encoding">エンコードを中断/再開</entry>
 	<entry id="1403" string="Stop encoding">エンコード停止</entry>
 	<entry id="1404" string="Encoder options">エンコーダの設定</entry>
-	<entry id="1405" string="Encode to single file">一つのファイルにエンコード</entry>
+	<entry id="1405" string="Encode to a single file">一つのファイルにエンコード</entry>
 	<entry id="1406" string="Encode to input file folder if possible">可能なら入力ファイルのディレクトリにエンコード</entry>
 	<entry id="1407" string="Allow overwriting input file">入力ファイルへ上書きを許可</entry>
 	<entry id="1408" string="Delete original files after encoding">エンコード後に元ファイルを削除</entry>
@@ -147,7 +147,7 @@
       <entry id="3016" string="Create cue sheet">cue シート作成</entry>
       <entry id="3017" string="Browse">参照</entry>
       <entry id="3018" string="Skip">スキップ</entry>
-      <entry id="3019" string="Encode to single file">一つのファイルにエンコード</entry>
+      <entry id="3019" string="Encode to a single file">一つのファイルにエンコード</entry>
       <entry id="3020" string="Remove">削除</entry>
       <entry id="3021" string="Clear joblist">リストのクリア</entry>
       <entry id="3022" string="Use for all selected tracks">すべての選択トラックに適用</entry>
@@ -304,7 +304,7 @@
 	<entry id="5108" string="Filename pattern">ファイル名パターン</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">オン ザ フライでエンコード</entry>
 	<entry id="5110" string="Keep ripped Wave files">リップした Wave ファイルを保持</entry>
-	<entry id="5111" string="Encode to single file">一つのファイルにエンコード</entry>
+	<entry id="5111" string="Encode to a single file">一つのファイルにエンコード</entry>
 	<entry id="5112" string="Output filenames">出力ファイル名</entry>
 
 	<section name="Errors">

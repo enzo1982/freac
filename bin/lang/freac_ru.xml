@@ -102,7 +102,7 @@
 	<entry id="1402" string="Pause/resume encoding">Пауза/Возобновить кодирование</entry>
 	<entry id="1403" string="Stop encoding">Остановить кодирование</entry>
 	<entry id="1404" string="Encoder options">Настройки кодека</entry>
-	<entry id="1405" string="Encode to single file">Кодировать в один файл</entry>
+	<entry id="1405" string="Encode to a single file">Кодировать в один файл</entry>
 	<entry id="1406" string="Encode to input file folder if possible">Кодировать в папку входного файла если возможно</entry>
 	<entry id="1407" string="Allow overwriting input file">Перезаписать входной файл</entry>
 	<entry id="1408" string="Delete original files after encoding">Удалать исходные файлы после кодирования</entry>
@@ -153,7 +153,7 @@
       <entry id="3016" string="Create cue sheet">Создать cue sheet</entry>
       <entry id="3017" string="Browse">Выбрать</entry>
       <entry id="3018" string="Skip">Пропустить</entry>
-      <entry id="3019" string="Encode to single file">Кодировать в один файл</entry>
+      <entry id="3019" string="Encode to a single file">Кодировать в один файл</entry>
       <entry id="3020" string="Remove">Удалить</entry>
       <entry id="3021" string="Clear joblist">Очистить список задач</entry>
       <entry id="3022" string="Use for all selected tracks">Использовать для всех выбранных треков</entry>
@@ -336,7 +336,7 @@
 	<entry id="5108" string="Filename pattern">Формирование названия файла</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Кодирование &quot;На лету&quot;</entry>
 	<entry id="5110" string="Keep ripped Wave files">Оставлять Wave файлы</entry>
-	<entry id="5111" string="Encode to single file">Кодировать в один файл</entry>
+	<entry id="5111" string="Encode to a single file">Кодировать в один файл</entry>
 	<entry id="5112" string="Output filenames">Имена выходных файлов</entry>
 	<entry id="5113" string="Allow Unicode characters">Разрешить символы Юникод</entry>
 	<entry id="5114" string="Replace spaces">Заменить пробелы</entry>

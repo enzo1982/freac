@@ -92,7 +92,7 @@
 	<entry id="1402" string="Pause/resume encoding">Pausar/continuar conversión</entry>
 	<entry id="1403" string="Stop encoding">Deter conversión</entry>
 	<entry id="1404" string="Encoder options">Opcións do conversor</entry>
-	<entry id="1405" string="Encode to single file">Extraer nun só arquivo</entry>
+	<entry id="1405" string="Encode to a single file">Extraer nun só arquivo</entry>
 	<entry id="1406" string="Encode to input file folder if possible">Codificar no directorio de entrada, se é posíbel</entry>
 	<entry id="1407" string="Allow overwriting input file">Permitir sobreescribir o arquivo de entrada</entry>
 	<entry id="1408" string="Delete original files after encoding">Eliminar os arquivos orixinais ao rematar a codificación</entry>
@@ -143,7 +143,7 @@
       <entry id="3016" string="Create cue sheet">Crear cue sheet</entry>
       <entry id="3017" string="Browse">Procurar</entry>
       <entry id="3018" string="Skip">Omitir</entry>
-      <entry id="3019" string="Encode to single file">Extraer nun só arquivo</entry>
+      <entry id="3019" string="Encode to a single file">Extraer nun só arquivo</entry>
       <entry id="3020" string="Remove">Eliminar</entry>
       <entry id="3021" string="Clear joblist">Eliminar listaxe</entry>
       <entry id="3022" string="Use for all selected tracks">Utilizar para todas as pistas seleccionadas</entry>
@@ -285,7 +285,7 @@
 	<entry id="5108" string="Filename pattern">Patrón de nome de arquivo</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Codificar 'Ao-Voo'</entry>
 	<entry id="5110" string="Keep ripped Wave files">Manter arquivos wav extraídos</entry>
-	<entry id="5111" string="Encode to single file">Extraer nun só arquivo</entry>
+	<entry id="5111" string="Encode to a single file">Extraer nun só arquivo</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">O directorio de destino non existe. Desexa crealo?</entry>

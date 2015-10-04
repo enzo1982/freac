@@ -97,7 +97,7 @@
 	<entry id="1402" string="Pause/resume encoding">Пауза/продължаване на кодирането</entry>
 	<entry id="1403" string="Stop encoding">Спиране на кодирането</entry>
 	<entry id="1404" string="Encoder options">Настройки на енкодера</entry>
-	<entry id="1405" string="Encode to single file">Кодиране в един файл</entry>
+	<entry id="1405" string="Encode to a single file">Кодиране в един файл</entry>
 	<entry id="1406" string="Encode to input file folder if possible">Кодиране в папката на входния файл ако е възможно</entry>
 	<entry id="1407" string="Allow overwriting input file">Разрешаване на презаписването на входния файл</entry>
 	<entry id="1408" string="Delete original files after encoding">Изтриване на оригиналните файлове след кодирането</entry>
@@ -148,7 +148,7 @@
       <entry id="3016" string="Create cue sheet">Създаване на cue лист</entry>
       <entry id="3017" string="Browse">Разглеждане</entry>
       <entry id="3018" string="Skip">Пропускане</entry>
-      <entry id="3019" string="Encode to single file">Кодиране в един файл</entry>
+      <entry id="3019" string="Encode to a single file">Кодиране в един файл</entry>
       <entry id="3020" string="Remove">Премахване</entry>
       <entry id="3021" string="Clear joblist">Изчистване на списъка със задачи</entry>
       <entry id="3022" string="Use for all selected tracks">Използвай за всички избрани песни</entry>
@@ -317,7 +317,7 @@
 	<entry id="5108" string="Filename pattern">Шаблон за име на файла</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Паралелно Кодиране</entry>
 	<entry id="5110" string="Keep ripped Wave files">Запазване на Wave файловете</entry>
-	<entry id="5111" string="Encode to single file">Кодиране в един файл</entry>
+	<entry id="5111" string="Encode to a single file">Кодиране в един файл</entry>
 	<entry id="5112" string="Output filenames">Имена на изходните файлове</entry>
 	<entry id="5113" string="Allow Unicode characters">Разр. на Уникод символи</entry>
 	<entry id="5114" string="Replace spaces">Заменяне на интервалите</entry>

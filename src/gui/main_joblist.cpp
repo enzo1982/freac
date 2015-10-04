@@ -736,7 +736,7 @@ Void BonkEnc::LayerJoblist::OnChangeLanguageSettings()
 	btn_outdir->SetText(i18n->TranslateString("Browse"));
 	btn_skip->SetText(i18n->TranslateString("Skip"));
 
-	check_single->SetText(i18n->TranslateString("Encode to single file"));
+	check_single->SetText(i18n->TranslateString("Encode to a single file"));
 	check_cuesheet->SetText(i18n->TranslateString("Create cue sheet"));
 	check_playlist->SetText(i18n->TranslateString("Create playlist"));
 

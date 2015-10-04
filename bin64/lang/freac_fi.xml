@@ -92,7 +92,7 @@
 	<entry id="1402" string="Pause/resume encoding">Tauko/jatka muuntamista</entry>
 	<entry id="1403" string="Stop encoding">Pysäytä muuntaminen</entry>
 	<entry id="1404" string="Encoder options">Muuntimen asetukset</entry>
-	<entry id="1405" string="Encode to single file">Muunna yksittäinen tiedosto</entry>
+	<entry id="1405" string="Encode to a single file">Muunna yksittäinen tiedosto</entry>
 	<entry id="1406" string="Encode to input file folder if possible">Muunna syötetiedostokansio jos mahdollista</entry>
 	<entry id="1407" string="Allow overwriting input file">Salli syötetiedoston korvaaminen</entry>
 	<entry id="1408" string="Delete original files after encoding">Poista alkuperäiset tiedostot muuntamisen jälkeen</entry>
@@ -143,7 +143,7 @@
       <entry id="3016" string="Create cue sheet">Luo vihjetaso</entry>
       <entry id="3017" string="Browse">Selaa</entry>
       <entry id="3018" string="Skip">Ohita</entry>
-      <entry id="3019" string="Encode to single file">Muunna yksittäinen tiedosto</entry>
+      <entry id="3019" string="Encode to a single file">Muunna yksittäinen tiedosto</entry>
       <entry id="3020" string="Remove">Posta</entry>
       <entry id="3021" string="Clear joblist">Tyhjennä työlista</entry>
       <entry id="3022" string="Use for all selected tracks">Käytä kaikkia valittuja raitoja</entry>
@@ -286,7 +286,7 @@
 	<entry id="5108" string="Filename pattern">Mallitiedosto</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Muunna &quot;lennossa&quot;</entry>
 	<entry id="5110" string="Keep ripped Wave files">Pidä kopioidut aaltotiedostot</entry>
-	<entry id="5111" string="Encode to single file">Muunna yksittäinen tiedosto</entry>
+	<entry id="5111" string="Encode to a single file">Muunna yksittäinen tiedosto</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Tulostekansiota ei ole olemassa! Haluatko luoda sellaisen?</entry>
