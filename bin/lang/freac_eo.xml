@@ -351,7 +351,7 @@
     <entry id="347" string="Use input file folder if possible">Uzi enigan dosierujon se eblas</entry>
     <entry id="348" string="Encode to input file folder if possible">Kodi al eniga dosierujo se eblas</entry>
     <entry id="349" string="Allow overwriting input file">Permesi anstataŭigi la enigan dosieron</entry>
-    <entry id="350" string="Encode to single file">Kodi al solaj dosieroj</entry>
+    <entry id="350" string="Encode to a single file">Kodi al solaj dosieroj</entry>
     <entry id="351" string="Encoder options">Kodil-opcioj</entry>
     <entry id="352" string="Skip">Transsalti</entry>
     <entry id="353" string="Enable local CDDB database">Uzi lokan CDDB-datumbankon</entry>

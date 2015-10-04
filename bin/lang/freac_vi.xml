@@ -351,7 +351,7 @@
     <entry id="347" string="Use input file folder if possible">Sử dụng thư mục của tập tin nhập vào nếu được</entry>
     <entry id="348" string="Encode to input file folder if possible">Chuyển mã lưu ở phần thư mục nhập vào nếu được</entry>
     <entry id="349" string="Allow overwriting input file">Cho phép ghi đè lên tập tin nhập vào</entry>
-    <entry id="350" string="Encode to single file">Chuyển mã thành 1 file</entry>
+    <entry id="350" string="Encode to a single file">Chuyển mã thành 1 file</entry>
     <entry id="351" string="Encoder options">Tùy chọn chuyển mã</entry>
     <entry id="352" string="Skip">Bỏ qua</entry>
     <entry id="353" string="Enable local CDDB database">Cho cơ sở dữ liệu CDDB</entry>

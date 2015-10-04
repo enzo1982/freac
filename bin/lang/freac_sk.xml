@@ -351,7 +351,7 @@
     <entry id="347" string="Use input file folder if possible">Použiť vstupný adresár ak je to možné</entry>
     <entry id="348" string="Encode to input file folder if possible">Kódovať do vstupného adresára ak je to možné</entry>
     <entry id="349" string="Allow overwriting input file">Povoliť prepisovanie vstupného súboru</entry>
-    <entry id="350" string="Encode to single file">Kódovať do jedného súboru</entry>
+    <entry id="350" string="Encode to a single file">Kódovať do jedného súboru</entry>
     <entry id="351" string="Encoder options">Možnosti kodeku</entry>
     <entry id="352" string="Skip">Preskočiť</entry>
     <entry id="353" string="Enable local CDDB database">Povoliť lokálnu CDDB databázu</entry>

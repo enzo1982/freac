@@ -351,7 +351,7 @@
     <entry id="347" string="Use input file folder if possible"/>
     <entry id="348" string="Encode to input file folder if possible"/>
     <entry id="349" string="Allow overwriting input file"/>
-    <entry id="350" string="Encode to single file"/>
+    <entry id="350" string="Encode to a single file"/>
     <entry id="351" string="Encoder options"/>
     <entry id="352" string="Skip"/>
     <entry id="353" string="Enable local CDDB database"/>

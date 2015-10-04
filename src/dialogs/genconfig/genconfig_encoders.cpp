@@ -207,7 +207,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 
 	pos.y += 26;
 
-	check_singleFile	= new CheckBox(BonkEnc::i18n->TranslateString("Encode to single file"), pos, size, &singleFile);
+	check_singleFile	= new CheckBox(BonkEnc::i18n->TranslateString("Encode to a single file"), pos, size, &singleFile);
 	check_singleFile->onAction.Connect(&GeneralSettingsLayerEncoders::ToggleEncodeToSingleFile, this);
 
 	ToggleEncodeToSingleFile();

@@ -239,7 +239,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	size.cx = 90;
 	size.cy = 0;
 
-	check_single		= new CheckBox("Encode to single file", pos, size, &currentConfig->encodeToSingleFile);
+	check_single		= new CheckBox("Encode to a single file", pos, size, &currentConfig->encodeToSingleFile);
 	check_single->SetOrientation(OR_UPPERRIGHT);
 
 	pos.x -= 100;
@@ -1437,7 +1437,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	check_cuesheet->Hide();
 	check_playlist->Hide();
 
-	check_single->SetText(i18n->TranslateString("Encode to single file"));
+	check_single->SetText(i18n->TranslateString("Encode to a single file"));
 	check_cuesheet->SetText(i18n->TranslateString("Create cue sheet"));
 	check_playlist->SetText(i18n->TranslateString("Create playlist"));
 
@@ -1616,7 +1616,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 		menu_encode->AddEntry(i18n->TranslateString("Start encoding"), NIL, menu_encoders);
 	}
 
-	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to single file"), NIL, NIL, &currentConfig->encodeToSingleFile);
+	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to a single file"), NIL, NIL, &currentConfig->encodeToSingleFile);
 
 	menu_encoder_options->AddEntry();
 	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file folder if possible"), NIL, NIL, &currentConfig->writeToInputDir)->onAction.Connect(&BonkEncGUI::ToggleUseInputDirectory, this);

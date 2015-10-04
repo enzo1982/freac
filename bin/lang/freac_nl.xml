@@ -351,7 +351,7 @@
     <entry id="347" string="Use input file folder if possible">Map van invoerbestand gebruiken indien mogelijk</entry>
     <entry id="348" string="Encode to input file folder if possible">Naar map van invoerbestand coderen indien mogelijk</entry>
     <entry id="349" string="Allow overwriting input file">Overschijven van invoerbestand toestaan</entry>
-    <entry id="350" string="Encode to single file">Coderen naar enkel bestand</entry>
+    <entry id="350" string="Encode to a single file">Coderen naar enkel bestand</entry>
     <entry id="351" string="Encoder options">Encoder-opties</entry>
     <entry id="352" string="Skip">Overslaan</entry>
     <entry id="353" string="Enable local CDDB database">Lokale CDDB-database activeren</entry>

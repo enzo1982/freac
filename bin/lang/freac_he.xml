@@ -212,7 +212,7 @@
     <entry id="345" string="Data track">דיסק מידע</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">בחר תיקייה לרשימת השמעה:</entry>
     <entry id="349" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
-    <entry id="350" string="Encode to single file">המר לקובץ אחד</entry>
+    <entry id="350" string="Encode to a single file">המר לקובץ אחד</entry>
     <entry id="351" string="Encoder options">אפשרויות המרה</entry>
     <entry id="352" string="Skip">דלג</entry>
     <entry id="355" string="Select the folder of the CDDB database:">בחר תיקייה למידע הדיסק:</entry>

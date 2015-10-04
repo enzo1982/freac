@@ -351,7 +351,7 @@
     <entry id="347" string="Use input file folder if possible">Исп. папку входного файла если возможно</entry>
     <entry id="348" string="Encode to input file folder if possible">Кодировать в папку входного файла если возможно</entry>
     <entry id="349" string="Allow overwriting input file">Перезаписать входной файл</entry>
-    <entry id="350" string="Encode to single file">Кодировать в один файл</entry>
+    <entry id="350" string="Encode to a single file">Кодировать в один файл</entry>
     <entry id="351" string="Encoder options">Настройки кодека</entry>
     <entry id="352" string="Skip">Пропустить</entry>
     <entry id="353" string="Enable local CDDB database">Местная база данных CDDB</entry>

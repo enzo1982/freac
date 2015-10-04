@@ -351,7 +351,7 @@
     <entry id="347" string="Use input file folder if possible">Orjinal dosyaların bulunduğu dizini kullan</entry>
     <entry id="348" string="Encode to input file folder if possible">Çevrilen dosyaları orjinal dosyaların bulunduğu dizine çıkart</entry>
     <entry id="349" string="Allow overwriting input file">Orjinal dosyaların üstüne yazmaya izin ver</entry>
-    <entry id="350" string="Encode to single file">Tek dosya haline getir</entry>
+    <entry id="350" string="Encode to a single file">Tek dosya haline getir</entry>
     <entry id="351" string="Encoder options">Çevirici ayarları</entry>
     <entry id="352" string="Skip">Atla</entry>
     <entry id="353" string="Enable local CDDB database">Yerel CDDB veritabanını kullan</entry>

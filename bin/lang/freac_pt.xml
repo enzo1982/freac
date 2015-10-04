@@ -351,7 +351,7 @@
     <entry id="347" string="Use input file folder if possible">Usar a pasta do ficheiro de entrada, se possível</entry>
     <entry id="348" string="Encode to input file folder if possible">Codificar para a pasta do ficheiro de entrada, se possível</entry>
     <entry id="349" string="Allow overwriting input file">Permitir sobrescrever o ficheiro de entrada</entry>
-    <entry id="350" string="Encode to single file">Codificar num ficheiro único</entry>
+    <entry id="350" string="Encode to a single file">Codificar num ficheiro único</entry>
     <entry id="351" string="Encoder options">Opções do codificador</entry>
     <entry id="352" string="Skip">Pular</entry>
     <entry id="353" string="Enable local CDDB database">Activar base de dados local do CDDB</entry>

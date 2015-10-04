@@ -351,7 +351,7 @@
     <entry id="347" string="Use input file folder if possible">Ако је могуће, користи улазни фолдер</entry>
     <entry id="348" string="Encode to input file folder if possible">Ако је могуће, енкодуј у улазни фолдер</entry>
     <entry id="349" string="Allow overwriting input file">Дозволи преписивање улазних фајлова</entry>
-    <entry id="350" string="Encode to single file">Енкодуј у један фајл</entry>
+    <entry id="350" string="Encode to a single file">Енкодуј у један фајл</entry>
     <entry id="351" string="Encoder options">Опције енкодера</entry>
     <entry id="352" string="Skip">Прескочи</entry>
     <entry id="353" string="Enable local CDDB database">Омогући локалну CDDB базу</entry>
