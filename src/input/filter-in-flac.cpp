@@ -303,8 +303,10 @@ void BonkEnc::FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decod
 				else if (id == "DATE")		filter->infoFormat->year      = comment.Tail(comment.Length() - 5).ToInt();
 				else if (id == "TRACKNUMBER")	filter->infoFormat->track     = comment.Tail(comment.Length() - 12).ToInt();
 				else if (id == "TRACKTOTAL")	filter->infoFormat->numTracks = comment.Tail(comment.Length() - 11).ToInt();
+				else if (id == "TOTALTRACKS")	filter->infoFormat->numTracks = comment.Tail(comment.Length() - 12).ToInt();
 				else if (id == "DISCNUMBER")	filter->infoFormat->disc      = comment.Tail(comment.Length() - 11).ToInt();
 				else if (id == "DISCTOTAL")	filter->infoFormat->numDiscs  = comment.Tail(comment.Length() - 10).ToInt();
+				else if (id == "TOTALDISCS")	filter->infoFormat->numDiscs  = comment.Tail(comment.Length() - 11).ToInt();
 				else if (id == "COMMENT")	filter->infoFormat->comment   = comment.Tail(comment.Length() - 8);
 				else if (id == "ORGANIZATION")	filter->infoFormat->label     = comment.Tail(comment.Length() - 13);
 				else if (id == "ISRC")		filter->infoFormat->isrc      = comment.Tail(comment.Length() - 5);

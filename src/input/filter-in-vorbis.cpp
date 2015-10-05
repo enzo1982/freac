@@ -285,8 +285,10 @@ BonkEnc::Track *BonkEnc::FilterInVORBIS::GetFileInfo(const String &inFile)
 				else if (id == "DATE")		nFormat->year	   = comment.Tail(comment.Length() - 5).ToInt();
 				else if (id == "TRACKNUMBER")	nFormat->track	   = comment.Tail(comment.Length() - 12).ToInt();
 				else if (id == "TRACKTOTAL")	nFormat->numTracks = comment.Tail(comment.Length() - 11).ToInt();
+				else if (id == "TOTALTRACKS")	nFormat->numTracks = comment.Tail(comment.Length() - 12).ToInt();
 				else if (id == "DISCNUMBER")	nFormat->disc	   = comment.Tail(comment.Length() - 11).ToInt();
 				else if (id == "DISCTOTAL")	nFormat->numDiscs  = comment.Tail(comment.Length() - 10).ToInt();
+				else if (id == "TOTALDISCS")	nFormat->numDiscs  = comment.Tail(comment.Length() - 11).ToInt();
 				else if (id == "COMMENT")	nFormat->comment   = comment.Tail(comment.Length() - 8);
 				else if (id == "ORGANIZATION")	nFormat->label	   = comment.Tail(comment.Length() - 13);
 				else if (id == "ISRC")		nFormat->isrc	   = comment.Tail(comment.Length() - 5);

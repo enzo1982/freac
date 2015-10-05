@@ -101,6 +101,7 @@ Geschichte
 		- Serbische (Latein und Kyrillisch) Übersetzungen aktualisiert
 		- Erkennung von zusammengefügten MP3-Dateien verbessert
 		- Öffnen von Ogg Vorbis-Dateien mit Coverbildern beschleunigt
+		- Lese nicht-Standardfelder TOTALTRACKS und TOTALDISCS aus Vorbis Comments
 		- Schreibe beim Rippen von Audio CDs Anzahl der Tracks in Tags
 		- Absturz behoben, wenn Vorbis-Kodierer nicht initialisiert werden kann
 		- Absturz beim Versuch, ungültige Ogg Vorbis-Dateien zu öffnen, behoben
