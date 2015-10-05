@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -213,6 +213,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 	Int	 trackNumber = 0;
 	Int	 trackLength = 0;
 	Int	 audiodrive = 0;
+	Int	 numTracks = 0;
 
 	if (inFile.StartsWith("/cda"))
 	{
@@ -230,6 +231,14 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 
 		TOCENTRY	 entry;
 		TOCENTRY	 nextentry;
+
+		for (Int i = 0; i < numTocEntries; i++)
+		{
+			entry = ex_CR_GetTocEntry(i);
+			nextentry = ex_CR_GetTocEntry(i + 1);
+
+			if (!(entry.btFlag & CDROMDATAFLAG) && (nextentry.dwStartSector - entry.dwStartSector > 0)) numTracks++;
+		}
 
 		entry.btTrackNumber = 0;
 
@@ -299,6 +308,14 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 
 			TOCENTRY	 entry;
 			TOCENTRY	 nextentry;
+
+			for (Int i = 0; i < numTocEntries; i++)
+			{
+				entry = ex_CR_GetTocEntry(i);
+				nextentry = ex_CR_GetTocEntry(i + 1);
+
+				if (!(entry.btFlag & CDROMDATAFLAG) && (nextentry.dwStartSector - entry.dwStartSector > 0)) numTracks++;
+			}
 
 			entry.btTrackNumber = 0;
 
@@ -375,50 +392,34 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 		}
 	}
 
+	nFormat->track		= trackNumber;
+	nFormat->numTracks	= numTracks;
+	nFormat->cdTrack	= trackNumber;
+	nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
+	nFormat->drive		= audiodrive;
+	nFormat->outfile	= NIL;
+
 	if (cdInfo != NIL)
 	{
-		nFormat->track		= trackNumber;
-		nFormat->cdTrack	= trackNumber;
-		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
-		nFormat->drive		= audiodrive;
-		nFormat->outfile	= NIL;
-		nFormat->artist		= (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(trackNumber - 1) : cdInfo.dArtist);
-		nFormat->title		= cdInfo.trackTitles.GetNth(trackNumber - 1);
-		nFormat->album		= cdInfo.dTitle;
-		nFormat->genre		= cdInfo.dGenre;
-		nFormat->year		= cdInfo.dYear;
+		nFormat->artist	= (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(trackNumber - 1) : cdInfo.dArtist);
+		nFormat->title	= cdInfo.trackTitles.GetNth(trackNumber - 1);
+		nFormat->album	= cdInfo.dTitle;
+		nFormat->genre	= cdInfo.dGenre;
+		nFormat->year	= cdInfo.dYear;
 	}
 	else if (cdText.GetCDInfo().GetTrackTitle(trackNumber) != NIL)
 	{
-		nFormat->track		= trackNumber;
-		nFormat->cdTrack	= trackNumber;
-		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
-		nFormat->drive		= audiodrive;
-		nFormat->outfile	= NIL;
-		nFormat->artist		= cdText.GetCDInfo().GetTrackArtist(trackNumber);
-		nFormat->title		= cdText.GetCDInfo().GetTrackTitle(trackNumber);
-		nFormat->album		= cdText.GetCDInfo().GetTitle();
+		nFormat->artist	= cdText.GetCDInfo().GetTrackArtist(trackNumber);
+		nFormat->title	= cdText.GetCDInfo().GetTrackTitle(trackNumber);
+		nFormat->album	= cdText.GetCDInfo().GetTitle();
 
 		if (nFormat->artist == NIL) nFormat->artist = cdText.GetCDInfo().GetArtist();
 	}
 	else if (cdPlayer.GetCDInfo().GetTrackTitle(trackNumber) != NIL)
 	{
-		nFormat->track		= trackNumber;
-		nFormat->cdTrack	= trackNumber;
-		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
-		nFormat->drive		= audiodrive;
-		nFormat->outfile	= NIL;
-		nFormat->artist		= cdPlayer.GetCDInfo().GetArtist();
-		nFormat->title		= cdPlayer.GetCDInfo().GetTrackTitle(trackNumber);
-		nFormat->album		= cdPlayer.GetCDInfo().GetTitle();
-	}
-	else
-	{
-		nFormat->track		= trackNumber;
-		nFormat->cdTrack	= trackNumber;
-		nFormat->discid		= CDDB::DiscIDToString(cddb.ComputeDiscID());
-		nFormat->drive		= audiodrive;
-		nFormat->outfile	= NIL;
+		nFormat->artist	= cdPlayer.GetCDInfo().GetArtist();
+		nFormat->title	= cdPlayer.GetCDInfo().GetTrackTitle(trackNumber);
+		nFormat->album	= cdPlayer.GetCDInfo().GetTitle();
 	}
 
 	nFormat->isCDTrack	= True;
