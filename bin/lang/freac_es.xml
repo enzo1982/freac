@@ -324,6 +324,8 @@
       <entry id="5021" string="Ripper">Extractor</entry>
       <entry id="5022" string="Settings">Opciones</entry>
       <entry id="5023" string="Resources">Recursos</entry>
+      <entry id="5024" string="Verifiers">Verificadores</entry>
+      <entry id="5025" string="Taggers">Etiquetadores</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar compresor</entry>
@@ -586,6 +588,16 @@
 	<entry id="11000" string="Decoder">Decodificador</entry>
 	<entry id="11001" string="Active decoder">Decodificador activo</entry>
 	<entry id="11002" string="auto select">autoselección</entry>
+      </section>
+
+      <section name="CueSheet">
+	<entry id="12000" string="Title information">Información del título</entry>
+	<entry id="12001" string="Read tags from referenced files">Leer etiquetas de los archivos de referencia</entry>
+	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">Preferir metadatos de cue sheet sobre los archivos de referencia</entry>
+	<entry id="12003" string="Alternative files">Archivos alternativos</entry>
+	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">Buscar alternativas de compresión si los archivos Wave de referencia no pueden localizarse</entry>
+	<entry id="12005" string="Error handling">Error en proceso</entry>
+	<entry id="12006" string="Ignore errors during cue sheet processing">Ignorar errores al procesar cue sheet</entry>
       </section>
     </section>
 
@@ -865,13 +877,22 @@
       </section>
     </section>
 
+    <section name="DSP">
+
+      <section name="Resample">
+        <entry id="50000" string="Converter">Conversor</entry>
+        <entry id="50001" string="Sampling rate">Tasa de muestreo</entry>
+        <entry id="50002" string="Output sampling rate">Muestreo de salida</entry>
+      </section>
+    </section>
+
     <section name="Extensions">
 
       <section name="Donate">
 	<entry id="100000" string="Support this project">Apoye este proyecto</entry>
 	<entry id="100001" string="Please support this project!">¡Por favor, apoye este proyecto!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Por favor, ayude a mantener este software gratuito&#10;apoyando el proyecto %1 con una donación.&#10;&#10;Pulse uno de los botones de abajo para donar usando PayPal:</entry>
-	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">También puede enviar dinero directamente a %1 usando PayPal.&#10;&#10;Por favor, escriba a %1 si desea donar usando una&#10;transferencia electrónica o enviando un cheque o dinero por correo.</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Por favor, ayude a mantener este software gratuito apoyando el&#10;proyecto %1 con una donación.&#10;&#10;Pulse uno de los botones de abajo para donar usando PayPal:</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">También puede enviar dinero directamente a %1&#10;usando PayPal.&#10;&#10;Por favor, escriba a %1 si desea donar usando una&#10;transferencia electrónica o enviando un cheque o dinero por correo.</entry>
 	<entry id="100004" string="usd">eur</entry>
 	<entry id="100005" string="en">en</entry>
 	<entry id="100006" string="Thank you very much!">¡Muchas gracias!</entry>
