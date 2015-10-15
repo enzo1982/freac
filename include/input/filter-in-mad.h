@@ -17,7 +17,7 @@
 
 namespace BonkEnc
 {
-	class BEEXPORT FilterInMAD : public InputFilter
+	class FilterInMAD : public InputFilter
 	{
 		friend mad_flow	 MADInputCallback(void *, mad_stream *);
 		friend mad_flow	 MADOutputCallback(void *, const mad_header *, mad_pcm *);

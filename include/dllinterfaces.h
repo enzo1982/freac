@@ -123,22 +123,22 @@ namespace BonkEnc
 	typedef BOOL					(_stdcall *CR_EJECTCD)				(BOOL);
 	typedef CDEX_ERR				(_stdcall *CR_READCDTEXT)			(BYTE *, int, LPINT);
 
-	extern BEEXPORT CR_INIT				 ex_CR_Init;
-	extern BEEXPORT CR_DEINIT			 ex_CR_DeInit;
+	extern		CR_INIT				 ex_CR_Init;
+	extern		CR_DEINIT			 ex_CR_DeInit;
 	extern BEEXPORT CR_READTOC			 ex_CR_ReadToc;
 	extern BEEXPORT CR_GETNUMTOCENTRIES		 ex_CR_GetNumTocEntries;
 	extern BEEXPORT CR_GETTOCENTRY			 ex_CR_GetTocEntry;
-	extern BEEXPORT CR_OPENRIPPER			 ex_CR_OpenRipper;
-	extern BEEXPORT CR_CLOSERIPPER			 ex_CR_CloseRipper;
-	extern BEEXPORT CR_RIPCHUNK			 ex_CR_RipChunk;
+	extern		CR_OPENRIPPER			 ex_CR_OpenRipper;
+	extern		CR_CLOSERIPPER			 ex_CR_CloseRipper;
+	extern		CR_RIPCHUNK			 ex_CR_RipChunk;
 	extern BEEXPORT CR_GETNUMCDROM			 ex_CR_GetNumCDROM;
-	extern BEEXPORT CR_GETACTIVECDROM		 ex_CR_GetActiveCDROM;
+	extern		CR_GETACTIVECDROM		 ex_CR_GetActiveCDROM;
 	extern BEEXPORT CR_SETACTIVECDROM		 ex_CR_SetActiveCDROM;
-	extern BEEXPORT CR_GETCDROMPARAMETERS		 ex_CR_GetCDROMParameters;
-	extern BEEXPORT CR_SETCDROMPARAMETERS		 ex_CR_SetCDROMParameters;
-	extern BEEXPORT CR_LOCKCD			 ex_CR_LockCD;
+	extern		CR_GETCDROMPARAMETERS		 ex_CR_GetCDROMParameters;
+	extern		CR_SETCDROMPARAMETERS		 ex_CR_SetCDROMParameters;
+	extern		CR_LOCKCD			 ex_CR_LockCD;
 	extern BEEXPORT CR_EJECTCD			 ex_CR_EjectCD;
-	extern BEEXPORT CR_READCDTEXT			 ex_CR_ReadCDText;
+	extern		CR_READCDTEXT			 ex_CR_ReadCDText;
 #endif
 
 // Bonk DLL API
@@ -161,22 +161,22 @@ namespace BonkEnc
 	typedef bool					(BONKCONV *BONKDECODERSEEKTO)			(void *, int);
 	typedef const char *				(BONKCONV *BONKGETVERSIONSTRING)		();
 
-	extern BEEXPORT BONKENCODERCREATE		 ex_bonk_encoder_create;
-	extern BEEXPORT BONKENCODERINIT			 ex_bonk_encoder_init;
-	extern BEEXPORT BONKENCODERENCODEPACKET		 ex_bonk_encoder_encode_packet;
-	extern BEEXPORT BONKENCODERFINISH		 ex_bonk_encoder_finish;
-	extern BEEXPORT BONKENCODERCLOSE		 ex_bonk_encoder_close;
-	extern BEEXPORT BONKENCODERGETSAMPLECOUNT	 ex_bonk_encoder_get_sample_count;
-	extern BEEXPORT BONKENCODERGETSAMPLECOUNTOFFSET	 ex_bonk_encoder_get_sample_count_offset;
-	extern BEEXPORT BONKENCODERSETID3DATA		 ex_bonk_encoder_set_id3_data;
-	extern BEEXPORT BONKDECODERCREATE		 ex_bonk_decoder_create;
-	extern BEEXPORT BONKDECODERINIT			 ex_bonk_decoder_init;
-	extern BEEXPORT BONKDECODERDECODEPACKET		 ex_bonk_decoder_decode_packet;
-	extern BEEXPORT BONKDECODERFINISH		 ex_bonk_decoder_finish;
-	extern BEEXPORT BONKDECODERCLOSE		 ex_bonk_decoder_close;
-	extern BEEXPORT BONKDECODERGETID3DATA		 ex_bonk_decoder_get_id3_data;
-	extern BEEXPORT BONKDECODERINITSEEKTABLE	 ex_bonk_decoder_init_seektable;
-	extern BEEXPORT BONKDECODERSEEKTO		 ex_bonk_decoder_seek_to;
+	extern		BONKENCODERCREATE		 ex_bonk_encoder_create;
+	extern		BONKENCODERINIT			 ex_bonk_encoder_init;
+	extern		BONKENCODERENCODEPACKET		 ex_bonk_encoder_encode_packet;
+	extern		BONKENCODERFINISH		 ex_bonk_encoder_finish;
+	extern		BONKENCODERCLOSE		 ex_bonk_encoder_close;
+	extern		BONKENCODERGETSAMPLECOUNT	 ex_bonk_encoder_get_sample_count;
+	extern		BONKENCODERGETSAMPLECOUNTOFFSET	 ex_bonk_encoder_get_sample_count_offset;
+	extern		BONKENCODERSETID3DATA		 ex_bonk_encoder_set_id3_data;
+	extern		BONKDECODERCREATE		 ex_bonk_decoder_create;
+	extern		BONKDECODERINIT			 ex_bonk_decoder_init;
+	extern		BONKDECODERDECODEPACKET		 ex_bonk_decoder_decode_packet;
+	extern		BONKDECODERFINISH		 ex_bonk_decoder_finish;
+	extern		BONKDECODERCLOSE		 ex_bonk_decoder_close;
+	extern		BONKDECODERGETID3DATA		 ex_bonk_decoder_get_id3_data;
+	extern		BONKDECODERINITSEEKTABLE	 ex_bonk_decoder_init_seektable;
+	extern		BONKDECODERSEEKTO		 ex_bonk_decoder_seek_to;
 	extern BEEXPORT BONKGETVERSIONSTRING		 ex_bonk_get_version_string;
 
 // BladeEnc DLL API
@@ -188,10 +188,10 @@ namespace BonkEnc
 	typedef BE_ERR					(*BECLOSESTREAM)				(HBE_STREAM);
 	typedef VOID					(*BEVERSION)					(PBE_VERSION);
 
-	extern BEEXPORT BEINITSTREAM			 ex_beInitStream;
-	extern BEEXPORT BEENCODECHUNK			 ex_beEncodeChunk;
-	extern BEEXPORT BEDEINITSTREAM			 ex_beDeinitStream;
-	extern BEEXPORT BECLOSESTREAM			 ex_beCloseStream;
+	extern		BEINITSTREAM			 ex_beInitStream;
+	extern		BEENCODECHUNK			 ex_beEncodeChunk;
+	extern		BEDEINITSTREAM			 ex_beDeinitStream;
+	extern		BECLOSESTREAM			 ex_beCloseStream;
 	extern BEEXPORT BEVERSION			 ex_beVersion;
 #endif
 
@@ -233,41 +233,41 @@ namespace BonkEnc
 	typedef size_t					(*LAME_GET_LAMETAG_FRAME)			(lame_global_flags *, unsigned char *, size_t);
 	typedef int					(*LAME_SET_BWRITEVBRTAG)			(lame_global_flags *, int);
 
-	extern BEEXPORT LAME_INIT			 ex_lame_init;
-	extern BEEXPORT LAME_SET_PRESET			 ex_lame_set_preset;
-	extern BEEXPORT LAME_SET_IN_SAMPLERATE		 ex_lame_set_in_samplerate;
-	extern BEEXPORT LAME_SET_NUM_CHANNELS		 ex_lame_set_num_channels;
-	extern BEEXPORT LAME_SET_COPYRIGHT		 ex_lame_set_copyright;
-	extern BEEXPORT LAME_SET_ORIGINAL		 ex_lame_set_original;
-	extern BEEXPORT LAME_SET_EXTENSION		 ex_lame_set_extension;
-	extern BEEXPORT LAME_SET_ERROR_PROTECTION	 ex_lame_set_error_protection;
-	extern BEEXPORT LAME_SET_STRICT_ISO		 ex_lame_set_strict_ISO;
-	extern BEEXPORT LAME_SET_OUT_SAMPLERATE		 ex_lame_set_out_samplerate;
-	extern BEEXPORT LAME_SET_BRATE			 ex_lame_set_brate;
-	extern BEEXPORT LAME_SET_COMPRESSION_RATIO	 ex_lame_set_compression_ratio;
-	extern BEEXPORT LAME_SET_QUALITY		 ex_lame_set_quality;
-	extern BEEXPORT LAME_SET_LOWPASSFREQ		 ex_lame_set_lowpassfreq;
-	extern BEEXPORT LAME_SET_HIGHPASSFREQ		 ex_lame_set_highpassfreq;
-	extern BEEXPORT LAME_SET_LOWPASSWIDTH		 ex_lame_set_lowpasswidth;
-	extern BEEXPORT LAME_SET_HIGHPASSWIDTH		 ex_lame_set_highpasswidth;
-	extern BEEXPORT LAME_SET_MODE			 ex_lame_set_mode;
-	extern BEEXPORT LAME_SET_FORCE_MS		 ex_lame_set_force_ms;
-	extern BEEXPORT LAME_CLOSE			 ex_lame_close;
-	extern BEEXPORT LAME_SET_VBR			 ex_lame_set_VBR;
-	extern BEEXPORT LAME_SET_VBR_QUALITY		 ex_lame_set_VBR_quality;
-	extern BEEXPORT LAME_SET_VBR_MEAN_BITRATE_KBPS	 ex_lame_set_VBR_mean_bitrate_kbps;
-	extern BEEXPORT LAME_SET_VBR_MIN_BITRATE_KBPS	 ex_lame_set_VBR_min_bitrate_kbps;
-	extern BEEXPORT LAME_SET_VBR_MAX_BITRATE_KBPS	 ex_lame_set_VBR_max_bitrate_kbps;
-	extern BEEXPORT LAME_SET_NOATH			 ex_lame_set_noATH;
-	extern BEEXPORT LAME_SET_ATHTYPE		 ex_lame_set_ATHtype;
-	extern BEEXPORT LAME_SET_USETEMPORAL		 ex_lame_set_useTemporal;
-	extern BEEXPORT LAME_INIT_PARAMS		 ex_lame_init_params;
-	extern BEEXPORT LAME_ENCODE_BUFFER		 ex_lame_encode_buffer;
-	extern BEEXPORT LAME_ENCODE_BUFFER_INTERLEAVED	 ex_lame_encode_buffer_interleaved;
-	extern BEEXPORT LAME_ENCODE_FLUSH		 ex_lame_encode_flush;
+	extern		LAME_INIT			 ex_lame_init;
+	extern		LAME_SET_PRESET			 ex_lame_set_preset;
+	extern		LAME_SET_IN_SAMPLERATE		 ex_lame_set_in_samplerate;
+	extern		LAME_SET_NUM_CHANNELS		 ex_lame_set_num_channels;
+	extern		LAME_SET_COPYRIGHT		 ex_lame_set_copyright;
+	extern		LAME_SET_ORIGINAL		 ex_lame_set_original;
+	extern		LAME_SET_EXTENSION		 ex_lame_set_extension;
+	extern		LAME_SET_ERROR_PROTECTION	 ex_lame_set_error_protection;
+	extern		LAME_SET_STRICT_ISO		 ex_lame_set_strict_ISO;
+	extern		LAME_SET_OUT_SAMPLERATE		 ex_lame_set_out_samplerate;
+	extern		LAME_SET_BRATE			 ex_lame_set_brate;
+	extern		LAME_SET_COMPRESSION_RATIO	 ex_lame_set_compression_ratio;
+	extern		LAME_SET_QUALITY		 ex_lame_set_quality;
+	extern		LAME_SET_LOWPASSFREQ		 ex_lame_set_lowpassfreq;
+	extern		LAME_SET_HIGHPASSFREQ		 ex_lame_set_highpassfreq;
+	extern		LAME_SET_LOWPASSWIDTH		 ex_lame_set_lowpasswidth;
+	extern		LAME_SET_HIGHPASSWIDTH		 ex_lame_set_highpasswidth;
+	extern		LAME_SET_MODE			 ex_lame_set_mode;
+	extern		LAME_SET_FORCE_MS		 ex_lame_set_force_ms;
+	extern		LAME_CLOSE			 ex_lame_close;
+	extern		LAME_SET_VBR			 ex_lame_set_VBR;
+	extern		LAME_SET_VBR_QUALITY		 ex_lame_set_VBR_quality;
+	extern		LAME_SET_VBR_MEAN_BITRATE_KBPS	 ex_lame_set_VBR_mean_bitrate_kbps;
+	extern		LAME_SET_VBR_MIN_BITRATE_KBPS	 ex_lame_set_VBR_min_bitrate_kbps;
+	extern		LAME_SET_VBR_MAX_BITRATE_KBPS	 ex_lame_set_VBR_max_bitrate_kbps;
+	extern		LAME_SET_NOATH			 ex_lame_set_noATH;
+	extern		LAME_SET_ATHTYPE		 ex_lame_set_ATHtype;
+	extern		LAME_SET_USETEMPORAL		 ex_lame_set_useTemporal;
+	extern		LAME_INIT_PARAMS		 ex_lame_init_params;
+	extern		LAME_ENCODE_BUFFER		 ex_lame_encode_buffer;
+	extern		LAME_ENCODE_BUFFER_INTERLEAVED	 ex_lame_encode_buffer_interleaved;
+	extern		LAME_ENCODE_FLUSH		 ex_lame_encode_flush;
 	extern BEEXPORT GET_LAME_SHORT_VERSION		 ex_get_lame_short_version;
-	extern BEEXPORT LAME_GET_LAMETAG_FRAME		 ex_lame_get_lametag_frame;
-	extern BEEXPORT LAME_SET_BWRITEVBRTAG		 ex_lame_set_bWriteVbrTag;
+	extern		LAME_GET_LAMETAG_FRAME		 ex_lame_get_lametag_frame;
+	extern		LAME_SET_BWRITEVBRTAG		 ex_lame_set_bWriteVbrTag;
 
 // Ogg Vorbis API
 
@@ -310,44 +310,44 @@ namespace BonkEnc
 	typedef int					(*OGGSYNCPAGEOUT)				 (ogg_sync_state *, ogg_page *);
 	typedef int					(*OGGSYNCCLEAR)					 (ogg_sync_state *);
 
-	extern BEEXPORT VORBISINFOINIT			 ex_vorbis_info_init;
-	extern BEEXPORT VORBISENCODEINIT		 ex_vorbis_encode_init;
-	extern BEEXPORT VORBISENCODEINITVBR		 ex_vorbis_encode_init_vbr;
-	extern BEEXPORT VORBISCOMMENTINIT		 ex_vorbis_comment_init;
-	extern BEEXPORT VORBISCOMMENTADDTAG		 ex_vorbis_comment_add_tag;
-	extern BEEXPORT VORBISANALYSISINIT		 ex_vorbis_analysis_init;
-	extern BEEXPORT VORBISBLOCKINIT			 ex_vorbis_block_init;
-	extern BEEXPORT VORBISANALYSISHEADEROUT		 ex_vorbis_analysis_headerout;
-	extern BEEXPORT VORBISANALYSISBUFFER		 ex_vorbis_analysis_buffer;
-	extern BEEXPORT VORBISANALYSISWROTE		 ex_vorbis_analysis_wrote;
-	extern BEEXPORT VORBISANALYSISBLOCKOUT		 ex_vorbis_analysis_blockout;
-	extern BEEXPORT VORBISANALYSIS			 ex_vorbis_analysis;
-	extern BEEXPORT VORBISBITRATEADDBLOCK		 ex_vorbis_bitrate_addblock;
-	extern BEEXPORT VORBISBITRATEFLUSHPACKET	 ex_vorbis_bitrate_flushpacket;
-	extern BEEXPORT VORBISSYNTHESISINIT		 ex_vorbis_synthesis_init;
-	extern BEEXPORT VORBISSYNTHESIS			 ex_vorbis_synthesis;
-	extern BEEXPORT VORBISSYNTHESISBLOCKIN		 ex_vorbis_synthesis_blockin;
-	extern BEEXPORT VORBISSYNTHESISPCMOUT		 ex_vorbis_synthesis_pcmout;
-	extern BEEXPORT VORBISSYNTHESISREAD		 ex_vorbis_synthesis_read;
-	extern BEEXPORT VORBISSYNTHESISHEADERIN		 ex_vorbis_synthesis_headerin;
-	extern BEEXPORT VORBISBLOCKCLEAR		 ex_vorbis_block_clear;
-	extern BEEXPORT VORBISDSPCLEAR			 ex_vorbis_dsp_clear;
-	extern BEEXPORT VORBISCOMMENTCLEAR		 ex_vorbis_comment_clear;
-	extern BEEXPORT VORBISINFOCLEAR			 ex_vorbis_info_clear;
-	extern BEEXPORT OGGSTREAMINIT			 ex_ogg_stream_init;
-	extern BEEXPORT OGGSTREAMPACKETIN		 ex_ogg_stream_packetin;
-	extern BEEXPORT OGGSTREAMPACKETOUT		 ex_ogg_stream_packetout;
-	extern BEEXPORT OGGSTREAMFLUSH			 ex_ogg_stream_flush;
-	extern BEEXPORT OGGSTREAMPAGEIN			 ex_ogg_stream_pagein;
-	extern BEEXPORT OGGSTREAMPAGEOUT		 ex_ogg_stream_pageout;
-	extern BEEXPORT OGGPAGEEOS			 ex_ogg_page_eos;
-	extern BEEXPORT OGGPAGESERIALNO			 ex_ogg_page_serialno;
-	extern BEEXPORT OGGSTREAMCLEAR			 ex_ogg_stream_clear;
-	extern BEEXPORT OGGSYNCINIT			 ex_ogg_sync_init;
-	extern BEEXPORT OGGSYNCBUFFER			 ex_ogg_sync_buffer;
-	extern BEEXPORT OGGSYNCWROTE			 ex_ogg_sync_wrote;
-	extern BEEXPORT OGGSYNCPAGEOUT			 ex_ogg_sync_pageout;
-	extern BEEXPORT OGGSYNCCLEAR			 ex_ogg_sync_clear;
+	extern		VORBISINFOINIT			 ex_vorbis_info_init;
+	extern		VORBISENCODEINIT		 ex_vorbis_encode_init;
+	extern		VORBISENCODEINITVBR		 ex_vorbis_encode_init_vbr;
+	extern		VORBISCOMMENTINIT		 ex_vorbis_comment_init;
+	extern		VORBISCOMMENTADDTAG		 ex_vorbis_comment_add_tag;
+	extern		VORBISANALYSISINIT		 ex_vorbis_analysis_init;
+	extern		VORBISBLOCKINIT			 ex_vorbis_block_init;
+	extern		VORBISANALYSISHEADEROUT		 ex_vorbis_analysis_headerout;
+	extern		VORBISANALYSISBUFFER		 ex_vorbis_analysis_buffer;
+	extern		VORBISANALYSISWROTE		 ex_vorbis_analysis_wrote;
+	extern		VORBISANALYSISBLOCKOUT		 ex_vorbis_analysis_blockout;
+	extern		VORBISANALYSIS			 ex_vorbis_analysis;
+	extern		VORBISBITRATEADDBLOCK		 ex_vorbis_bitrate_addblock;
+	extern		VORBISBITRATEFLUSHPACKET	 ex_vorbis_bitrate_flushpacket;
+	extern		VORBISSYNTHESISINIT		 ex_vorbis_synthesis_init;
+	extern		VORBISSYNTHESIS			 ex_vorbis_synthesis;
+	extern		VORBISSYNTHESISBLOCKIN		 ex_vorbis_synthesis_blockin;
+	extern		VORBISSYNTHESISPCMOUT		 ex_vorbis_synthesis_pcmout;
+	extern		VORBISSYNTHESISREAD		 ex_vorbis_synthesis_read;
+	extern		VORBISSYNTHESISHEADERIN		 ex_vorbis_synthesis_headerin;
+	extern		VORBISBLOCKCLEAR		 ex_vorbis_block_clear;
+	extern		VORBISDSPCLEAR			 ex_vorbis_dsp_clear;
+	extern		VORBISCOMMENTCLEAR		 ex_vorbis_comment_clear;
+	extern		VORBISINFOCLEAR			 ex_vorbis_info_clear;
+	extern		OGGSTREAMINIT			 ex_ogg_stream_init;
+	extern		OGGSTREAMPACKETIN		 ex_ogg_stream_packetin;
+	extern		OGGSTREAMPACKETOUT		 ex_ogg_stream_packetout;
+	extern		OGGSTREAMFLUSH			 ex_ogg_stream_flush;
+	extern		OGGSTREAMPAGEIN			 ex_ogg_stream_pagein;
+	extern		OGGSTREAMPAGEOUT		 ex_ogg_stream_pageout;
+	extern		OGGPAGEEOS			 ex_ogg_page_eos;
+	extern		OGGPAGESERIALNO			 ex_ogg_page_serialno;
+	extern		OGGSTREAMCLEAR			 ex_ogg_stream_clear;
+	extern		OGGSYNCINIT			 ex_ogg_sync_init;
+	extern		OGGSYNCBUFFER			 ex_ogg_sync_buffer;
+	extern		OGGSYNCWROTE			 ex_ogg_sync_wrote;
+	extern		OGGSYNCPAGEOUT			 ex_ogg_sync_pageout;
+	extern		OGGSYNCCLEAR			 ex_ogg_sync_clear;
 
 // FAAC DLL API
 
@@ -360,9 +360,9 @@ namespace BonkEnc
 
 	extern BEEXPORT FAACENCOPEN			 ex_faacEncOpen;
 	extern BEEXPORT FAACENCGETCURRENTCONFIGURATION	 ex_faacEncGetCurrentConfiguration;
-	extern BEEXPORT FAACENCSETCONFIGURATION		 ex_faacEncSetConfiguration;
-	extern BEEXPORT FAACENCGETDECODERSPECIFICINFO	 ex_faacEncGetDecoderSpecificInfo;
-	extern BEEXPORT FAACENCENCODE			 ex_faacEncEncode;
+	extern		FAACENCSETCONFIGURATION		 ex_faacEncSetConfiguration;
+	extern		FAACENCGETDECODERSPECIFICINFO	 ex_faacEncGetDecoderSpecificInfo;
+	extern		FAACENCENCODE			 ex_faacEncEncode;
 	extern BEEXPORT FAACENCCLOSE			 ex_faacEncClose;
 
 // FAAD2 DLL API
@@ -376,14 +376,14 @@ namespace BonkEnc
 	typedef void					(NEAACDECAPI *NEAACDECCLOSE)			(NeAACDecHandle);
 	typedef char *					(NEAACDECAPI *NEAACDECGETERRORMESSAGE)		(unsigned char);
 
-	extern BEEXPORT NEAACDECOPEN			 ex_NeAACDecOpen;
-	extern BEEXPORT NEAACDECINIT			 ex_NeAACDecInit;
-	extern BEEXPORT NEAACDECINIT2			 ex_NeAACDecInit2;
-	extern BEEXPORT NEAACDECGETCURRENTCONFIGURATION	 ex_NeAACDecGetCurrentConfiguration;
-	extern BEEXPORT NEAACDECSETCONFIGURATION	 ex_NeAACDecSetConfiguration;
-	extern BEEXPORT NEAACDECDECODE			 ex_NeAACDecDecode;
-	extern BEEXPORT NEAACDECCLOSE			 ex_NeAACDecClose;
-	extern BEEXPORT NEAACDECGETERRORMESSAGE		 ex_NeAACDecGetErrorMessage;
+	extern		NEAACDECOPEN			 ex_NeAACDecOpen;
+	extern		NEAACDECINIT			 ex_NeAACDecInit;
+	extern		NEAACDECINIT2			 ex_NeAACDecInit2;
+	extern		NEAACDECGETCURRENTCONFIGURATION	 ex_NeAACDecGetCurrentConfiguration;
+	extern		NEAACDECSETCONFIGURATION	 ex_NeAACDecSetConfiguration;
+	extern		NEAACDECDECODE			 ex_NeAACDecDecode;
+	extern		NEAACDECCLOSE			 ex_NeAACDecClose;
+	extern		NEAACDECGETERRORMESSAGE		 ex_NeAACDecGetErrorMessage;
 
 // TwinVQ DLL API
 
@@ -399,14 +399,14 @@ namespace BonkEnc
 	typedef void					(*TVQENCODEFRAME)				(float [], INDEX *);
 
 	extern BEEXPORT TVQGETVERSIONID			 ex_TvqGetVersionID;
-	extern BEEXPORT TVQENCINITIALIZE		 ex_TvqEncInitialize;
-	extern BEEXPORT TVQENCTERMINATE			 ex_TvqEncTerminate;
-	extern BEEXPORT TVQENCGETFRAMESIZE		 ex_TvqEncGetFrameSize;
-	extern BEEXPORT TVQENCGETNUMCHANNELS		 ex_TvqEncGetNumChannels;
-	extern BEEXPORT TVQENCGETCONFINFO		 ex_TvqEncGetConfInfo;
-	extern BEEXPORT TVQENCGETVECTORINFO		 ex_TvqEncGetVectorInfo;
-	extern BEEXPORT TVQENCUPDATEVECTORINFO		 ex_TvqEncUpdateVectorInfo;
-	extern BEEXPORT TVQENCODEFRAME			 ex_TvqEncodeFrame;
+	extern		TVQENCINITIALIZE		 ex_TvqEncInitialize;
+	extern		TVQENCTERMINATE			 ex_TvqEncTerminate;
+	extern		TVQENCGETFRAMESIZE		 ex_TvqEncGetFrameSize;
+	extern		TVQENCGETNUMCHANNELS		 ex_TvqEncGetNumChannels;
+	extern		TVQENCGETCONFINFO		 ex_TvqEncGetConfInfo;
+	extern		TVQENCGETVECTORINFO		 ex_TvqEncGetVectorInfo;
+	extern		TVQENCUPDATEVECTORINFO		 ex_TvqEncUpdateVectorInfo;
+	extern		TVQENCODEFRAME			 ex_TvqEncodeFrame;
 #endif
 
 // eUpdate DLL API
@@ -471,41 +471,41 @@ namespace BonkEnc
 	typedef bool					(*MP4READSAMPLE)				(MP4FileHandle, MP4TrackId, MP4SampleId, uint8_t **, uint32_t *, MP4Timestamp *, MP4Duration *, MP4Duration *, bool *);
 	typedef bool					(*MP4WRITESAMPLE)				(MP4FileHandle, MP4TrackId, const uint8_t *, uint32_t, MP4Duration, MP4Duration, bool);
 
-	extern BEEXPORT MP4READ				 ex_MP4Read;
-	extern BEEXPORT MP4CREATEEX			 ex_MP4CreateEx;
-	extern BEEXPORT MP4CLOSE			 ex_MP4Close;
-	extern BEEXPORT MP4FREE				 ex_MP4Free;
-	extern BEEXPORT MP4OPTIMIZE			 ex_MP4Optimize;
-	extern BEEXPORT MP4SETMETADATANAME		 ex_MP4SetMetadataName;
-	extern BEEXPORT MP4GETMETADATANAME		 ex_MP4GetMetadataName;
-	extern BEEXPORT MP4SETMETADATAARTIST		 ex_MP4SetMetadataArtist;
-	extern BEEXPORT MP4GETMETADATAARTIST		 ex_MP4GetMetadataArtist;
-	extern BEEXPORT MP4SETMETADATACOMMENT		 ex_MP4SetMetadataComment;
-	extern BEEXPORT MP4GETMETADATACOMMENT		 ex_MP4GetMetadataComment;
-	extern BEEXPORT MP4SETMETADATAYEAR		 ex_MP4SetMetadataYear;
-	extern BEEXPORT MP4GETMETADATAYEAR		 ex_MP4GetMetadataYear;
-	extern BEEXPORT MP4SETMETADATAALBUM		 ex_MP4SetMetadataAlbum;
-	extern BEEXPORT MP4GETMETADATAALBUM		 ex_MP4GetMetadataAlbum;
-	extern BEEXPORT MP4SETMETADATAGENRE		 ex_MP4SetMetadataGenre;
-	extern BEEXPORT MP4GETMETADATAGENRE		 ex_MP4GetMetadataGenre;
-	extern BEEXPORT MP4SETMETADATATRACK		 ex_MP4SetMetadataTrack;
-	extern BEEXPORT MP4GETMETADATATRACK		 ex_MP4GetMetadataTrack;
-	extern BEEXPORT MP4SETMETADATADISK		 ex_MP4SetMetadataDisk;
-	extern BEEXPORT MP4GETMETADATADISK		 ex_MP4GetMetadataDisk;
-	extern BEEXPORT MP4GETMETADATACOVERARTCOUNT	 ex_MP4GetMetadataCoverArtCount;
-	extern BEEXPORT MP4SETMETADATACOVERART		 ex_MP4SetMetadataCoverArt;
-	extern BEEXPORT MP4GETMETADATACOVERART		 ex_MP4GetMetadataCoverArt;
-	extern BEEXPORT MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks;
-	extern BEEXPORT MP4FINDTRACKID			 ex_MP4FindTrackId;
-	extern BEEXPORT MP4GETTRACKTYPE			 ex_MP4GetTrackType;
-	extern BEEXPORT MP4GETTRACKESCONFIGURATION	 ex_MP4GetTrackESConfiguration;
-	extern BEEXPORT MP4SETTRACKESCONFIGURATION	 ex_MP4SetTrackESConfiguration;
-	extern BEEXPORT MP4GETTRACKDURATION		 ex_MP4GetTrackDuration;
-	extern BEEXPORT MP4GETTRACKTIMESCALE		 ex_MP4GetTrackTimeScale;
-	extern BEEXPORT MP4SETAUDIOPROFILELEVEL		 ex_MP4SetAudioProfileLevel;
-	extern BEEXPORT MP4ADDAUDIOTRACK		 ex_MP4AddAudioTrack;
-	extern BEEXPORT MP4READSAMPLE			 ex_MP4ReadSample;
-	extern BEEXPORT MP4WRITESAMPLE			 ex_MP4WriteSample;
+	extern		MP4READ				 ex_MP4Read;
+	extern		MP4CREATEEX			 ex_MP4CreateEx;
+	extern		MP4CLOSE			 ex_MP4Close;
+	extern		MP4FREE				 ex_MP4Free;
+	extern		MP4OPTIMIZE			 ex_MP4Optimize;
+	extern		MP4SETMETADATANAME		 ex_MP4SetMetadataName;
+	extern		MP4GETMETADATANAME		 ex_MP4GetMetadataName;
+	extern		MP4SETMETADATAARTIST		 ex_MP4SetMetadataArtist;
+	extern		MP4GETMETADATAARTIST		 ex_MP4GetMetadataArtist;
+	extern		MP4SETMETADATACOMMENT		 ex_MP4SetMetadataComment;
+	extern		MP4GETMETADATACOMMENT		 ex_MP4GetMetadataComment;
+	extern		MP4SETMETADATAYEAR		 ex_MP4SetMetadataYear;
+	extern		MP4GETMETADATAYEAR		 ex_MP4GetMetadataYear;
+	extern		MP4SETMETADATAALBUM		 ex_MP4SetMetadataAlbum;
+	extern		MP4GETMETADATAALBUM		 ex_MP4GetMetadataAlbum;
+	extern		MP4SETMETADATAGENRE		 ex_MP4SetMetadataGenre;
+	extern		MP4GETMETADATAGENRE		 ex_MP4GetMetadataGenre;
+	extern		MP4SETMETADATATRACK		 ex_MP4SetMetadataTrack;
+	extern		MP4GETMETADATATRACK		 ex_MP4GetMetadataTrack;
+	extern		MP4SETMETADATADISK		 ex_MP4SetMetadataDisk;
+	extern		MP4GETMETADATADISK		 ex_MP4GetMetadataDisk;
+	extern		MP4GETMETADATACOVERARTCOUNT	 ex_MP4GetMetadataCoverArtCount;
+	extern		MP4SETMETADATACOVERART		 ex_MP4SetMetadataCoverArt;
+	extern		MP4GETMETADATACOVERART		 ex_MP4GetMetadataCoverArt;
+	extern		MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks;
+	extern		MP4FINDTRACKID			 ex_MP4FindTrackId;
+	extern		MP4GETTRACKTYPE			 ex_MP4GetTrackType;
+	extern		MP4GETTRACKESCONFIGURATION	 ex_MP4GetTrackESConfiguration;
+	extern		MP4SETTRACKESCONFIGURATION	 ex_MP4SetTrackESConfiguration;
+	extern		MP4GETTRACKDURATION		 ex_MP4GetTrackDuration;
+	extern		MP4GETTRACKTIMESCALE		 ex_MP4GetTrackTimeScale;
+	extern		MP4SETAUDIOPROFILELEVEL		 ex_MP4SetAudioProfileLevel;
+	extern		MP4ADDAUDIOTRACK		 ex_MP4AddAudioTrack;
+	extern		MP4READSAMPLE			 ex_MP4ReadSample;
+	extern		MP4WRITESAMPLE			 ex_MP4WriteSample;
 
 // FLAC DLL API
 
@@ -549,44 +549,44 @@ namespace BonkEnc
 	typedef FLAC__bool 				(*FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR)	(FLAC__StreamMetadata_VorbisComment_Entry *, const char *, const char *);
 	typedef char *					 *FLAC__VERSION_STRING_TYPE;
 
-	extern BEEXPORT FLAC__STREAM_ENCODER_NEW					 ex_FLAC__stream_encoder_new;
-	extern BEEXPORT FLAC__STREAM_ENCODER_DELETE					 ex_FLAC__stream_encoder_delete;
-	extern BEEXPORT FLAC__STREAM_ENCODER_INIT_STREAM				 ex_FLAC__stream_encoder_init_stream;
-	extern BEEXPORT FLAC__STREAM_ENCODER_FINISH					 ex_FLAC__stream_encoder_finish;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_CHANNELS				 ex_FLAC__stream_encoder_set_channels;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_BITS_PER_SAMPLE			 ex_FLAC__stream_encoder_set_bits_per_sample;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_SAMPLE_RATE				 ex_FLAC__stream_encoder_set_sample_rate;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_STREAMABLE_SUBSET			 ex_FLAC__stream_encoder_set_streamable_subset;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_DO_MID_SIDE_STEREO			 ex_FLAC__stream_encoder_set_do_mid_side_stereo;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_LOOSE_MID_SIDE_STEREO			 ex_FLAC__stream_encoder_set_loose_mid_side_stereo;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_BLOCKSIZE				 ex_FLAC__stream_encoder_set_blocksize;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_MAX_LPC_ORDER				 ex_FLAC__stream_encoder_set_max_lpc_order;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_QLP_COEFF_PRECISION			 ex_FLAC__stream_encoder_set_qlp_coeff_precision;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_DO_QLP_COEFF_PREC_SEARCH		 ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_DO_EXHAUSTIVE_MODEL_SEARCH		 ex_FLAC__stream_encoder_set_do_exhaustive_model_search;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER		 ex_FLAC__stream_encoder_set_min_residual_partition_order;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER		 ex_FLAC__stream_encoder_set_max_residual_partition_order;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_METADATA				 ex_FLAC__stream_encoder_set_metadata;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_COMPRESSION_LEVEL			 ex_FLAC__stream_encoder_set_compression_level;
-	extern BEEXPORT FLAC__STREAM_ENCODER_SET_APODIZATION				 ex_FLAC__stream_encoder_set_apodization;
-	extern BEEXPORT FLAC__STREAM_ENCODER_PROCESS_INTERLEAVED			 ex_FLAC__stream_encoder_process_interleaved;
-	extern BEEXPORT FLAC__STREAM_DECODER_NEW					 ex_FLAC__stream_decoder_new;
-	extern BEEXPORT FLAC__STREAM_DECODER_DELETE					 ex_FLAC__stream_decoder_delete;
-	extern BEEXPORT FLAC__STREAM_DECODER_SET_METADATA_RESPOND			 ex_FLAC__stream_decoder_set_metadata_respond;
-	extern BEEXPORT FLAC__STREAM_DECODER_INIT_STREAM				 ex_FLAC__stream_decoder_init_stream;
-	extern BEEXPORT FLAC__STREAM_DECODER_FINISH					 ex_FLAC__stream_decoder_finish;
-	extern BEEXPORT FLAC__STREAM_DECODER_GET_CHANNELS				 ex_FLAC__stream_decoder_get_channels;
-	extern BEEXPORT FLAC__STREAM_DECODER_GET_BITS_PER_SAMPLE			 ex_FLAC__stream_decoder_get_bits_per_sample;
-	extern BEEXPORT FLAC__STREAM_DECODER_GET_SAMPLE_RATE				 ex_FLAC__stream_decoder_get_sample_rate;
-	extern BEEXPORT FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA		 ex_FLAC__stream_decoder_process_until_end_of_metadata;
-	extern BEEXPORT FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM		 ex_FLAC__stream_decoder_process_until_end_of_stream;
-	extern BEEXPORT FLAC__METADATA_OBJECT_NEW					 ex_FLAC__metadata_object_new;
-	extern BEEXPORT FLAC__METADATA_OBJECT_DELETE					 ex_FLAC__metadata_object_delete;
-	extern BEEXPORT FLAC__METADATA_OBJECT_PICTURE_SET_MIME_TYPE			 ex_FLAC__metadata_object_picture_set_mime_type;
-	extern BEEXPORT FLAC__METADATA_OBJECT_PICTURE_SET_DESCRIPTION			 ex_FLAC__metadata_object_picture_set_description;
-	extern BEEXPORT FLAC__METADATA_OBJECT_PICTURE_SET_DATA				 ex_FLAC__metadata_object_picture_set_data;
-	extern BEEXPORT FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT		 ex_FLAC__metadata_object_vorbiscomment_append_comment;
-	extern BEEXPORT FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR	 ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair;
+	extern		FLAC__STREAM_ENCODER_NEW					 ex_FLAC__stream_encoder_new;
+	extern		FLAC__STREAM_ENCODER_DELETE					 ex_FLAC__stream_encoder_delete;
+	extern		FLAC__STREAM_ENCODER_INIT_STREAM				 ex_FLAC__stream_encoder_init_stream;
+	extern		FLAC__STREAM_ENCODER_FINISH					 ex_FLAC__stream_encoder_finish;
+	extern		FLAC__STREAM_ENCODER_SET_CHANNELS				 ex_FLAC__stream_encoder_set_channels;
+	extern		FLAC__STREAM_ENCODER_SET_BITS_PER_SAMPLE			 ex_FLAC__stream_encoder_set_bits_per_sample;
+	extern		FLAC__STREAM_ENCODER_SET_SAMPLE_RATE				 ex_FLAC__stream_encoder_set_sample_rate;
+	extern		FLAC__STREAM_ENCODER_SET_STREAMABLE_SUBSET			 ex_FLAC__stream_encoder_set_streamable_subset;
+	extern		FLAC__STREAM_ENCODER_SET_DO_MID_SIDE_STEREO			 ex_FLAC__stream_encoder_set_do_mid_side_stereo;
+	extern		FLAC__STREAM_ENCODER_SET_LOOSE_MID_SIDE_STEREO			 ex_FLAC__stream_encoder_set_loose_mid_side_stereo;
+	extern		FLAC__STREAM_ENCODER_SET_BLOCKSIZE				 ex_FLAC__stream_encoder_set_blocksize;
+	extern		FLAC__STREAM_ENCODER_SET_MAX_LPC_ORDER				 ex_FLAC__stream_encoder_set_max_lpc_order;
+	extern		FLAC__STREAM_ENCODER_SET_QLP_COEFF_PRECISION			 ex_FLAC__stream_encoder_set_qlp_coeff_precision;
+	extern		FLAC__STREAM_ENCODER_SET_DO_QLP_COEFF_PREC_SEARCH		 ex_FLAC__stream_encoder_set_do_qlp_coeff_prec_search;
+	extern		FLAC__STREAM_ENCODER_SET_DO_EXHAUSTIVE_MODEL_SEARCH		 ex_FLAC__stream_encoder_set_do_exhaustive_model_search;
+	extern		FLAC__STREAM_ENCODER_SET_MIN_RESIDUAL_PARTITION_ORDER		 ex_FLAC__stream_encoder_set_min_residual_partition_order;
+	extern		FLAC__STREAM_ENCODER_SET_MAX_RESIDUAL_PARTITION_ORDER		 ex_FLAC__stream_encoder_set_max_residual_partition_order;
+	extern		FLAC__STREAM_ENCODER_SET_METADATA				 ex_FLAC__stream_encoder_set_metadata;
+	extern		FLAC__STREAM_ENCODER_SET_COMPRESSION_LEVEL			 ex_FLAC__stream_encoder_set_compression_level;
+	extern		FLAC__STREAM_ENCODER_SET_APODIZATION				 ex_FLAC__stream_encoder_set_apodization;
+	extern		FLAC__STREAM_ENCODER_PROCESS_INTERLEAVED			 ex_FLAC__stream_encoder_process_interleaved;
+	extern		FLAC__STREAM_DECODER_NEW					 ex_FLAC__stream_decoder_new;
+	extern		FLAC__STREAM_DECODER_DELETE					 ex_FLAC__stream_decoder_delete;
+	extern		FLAC__STREAM_DECODER_SET_METADATA_RESPOND			 ex_FLAC__stream_decoder_set_metadata_respond;
+	extern		FLAC__STREAM_DECODER_INIT_STREAM				 ex_FLAC__stream_decoder_init_stream;
+	extern		FLAC__STREAM_DECODER_FINISH					 ex_FLAC__stream_decoder_finish;
+	extern		FLAC__STREAM_DECODER_GET_CHANNELS				 ex_FLAC__stream_decoder_get_channels;
+	extern		FLAC__STREAM_DECODER_GET_BITS_PER_SAMPLE			 ex_FLAC__stream_decoder_get_bits_per_sample;
+	extern		FLAC__STREAM_DECODER_GET_SAMPLE_RATE				 ex_FLAC__stream_decoder_get_sample_rate;
+	extern		FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_METADATA		 ex_FLAC__stream_decoder_process_until_end_of_metadata;
+	extern		FLAC__STREAM_DECODER_PROCESS_UNTIL_END_OF_STREAM		 ex_FLAC__stream_decoder_process_until_end_of_stream;
+	extern		FLAC__METADATA_OBJECT_NEW					 ex_FLAC__metadata_object_new;
+	extern		FLAC__METADATA_OBJECT_DELETE					 ex_FLAC__metadata_object_delete;
+	extern		FLAC__METADATA_OBJECT_PICTURE_SET_MIME_TYPE			 ex_FLAC__metadata_object_picture_set_mime_type;
+	extern		FLAC__METADATA_OBJECT_PICTURE_SET_DESCRIPTION			 ex_FLAC__metadata_object_picture_set_description;
+	extern		FLAC__METADATA_OBJECT_PICTURE_SET_DATA				 ex_FLAC__metadata_object_picture_set_data;
+	extern		FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT		 ex_FLAC__metadata_object_vorbiscomment_append_comment;
+	extern		FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR	 ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair;
 	extern BEEXPORT FLAC__VERSION_STRING_TYPE					 ex_FLAC__VERSION_STRING;
 
 // MAD DLL API
@@ -596,10 +596,10 @@ namespace BonkEnc
 	typedef int					(*MAD_DECODER_FINISH)				(mad_decoder *);
 	typedef void					(*MAD_STREAM_BUFFER)				(mad_stream *, unsigned char const *, unsigned long);
 
-	extern MAD_DECODER_INIT				 ex_mad_decoder_init;
-	extern MAD_DECODER_RUN				 ex_mad_decoder_run;
-	extern MAD_DECODER_FINISH			 ex_mad_decoder_finish;
-	extern MAD_STREAM_BUFFER			 ex_mad_stream_buffer;
+	extern		MAD_DECODER_INIT		 ex_mad_decoder_init;
+	extern		MAD_DECODER_RUN			 ex_mad_decoder_run;
+	extern		MAD_DECODER_FINISH		 ex_mad_decoder_finish;
+	extern		MAD_STREAM_BUFFER		 ex_mad_stream_buffer;
 
 // ID3Lib DLL API
 
@@ -631,33 +631,33 @@ namespace BonkEnc
 	typedef void					(*ID3FIELDSETUNICODE)				(ID3Field *, unicode_t *);
 	typedef size_t					(*ID3FIELDGETUNICODE)				(const ID3Field *, unicode_t *, size_t);
 
-	extern BEEXPORT ID3TAGNEW			 ex_ID3Tag_New;
-	extern BEEXPORT ID3TAGDELETE			 ex_ID3Tag_Delete;
-	extern BEEXPORT ID3TAGSETPADDING		 ex_ID3Tag_SetPadding;
-	extern BEEXPORT ID3TAGADDFRAME			 ex_ID3Tag_AddFrame;
-	extern BEEXPORT ID3TAGLINK			 ex_ID3Tag_Link;
-	extern BEEXPORT ID3TAGNUMFRAMES			 ex_ID3Tag_NumFrames;
-	extern BEEXPORT ID3TAGFINDFRAMEWITHID		 ex_ID3Tag_FindFrameWithID;
-	extern BEEXPORT ID3TAGPARSEBUFFER		 ex_ID3Tag_ParseBuffer;
-	extern BEEXPORT ID3TAGSIZE			 ex_ID3Tag_Size;
-	extern BEEXPORT ID3TAGRENDER			 ex_ID3Tag_Render;
-	extern BEEXPORT ID3TAGCREATEITERATOR		 ex_ID3Tag_CreateIterator;
-	extern BEEXPORT ID3TAGITERATORGETNEXT		 ex_ID3TagIterator_GetNext;
-	extern BEEXPORT ID3TAGITERATORDELETE		 ex_ID3TagIterator_Delete;
-	extern BEEXPORT ID3FRAMEGETID			 ex_ID3Frame_GetID;
-	extern BEEXPORT ID3FRAMENEWID			 ex_ID3Frame_NewID;
-	extern BEEXPORT ID3FRAMEDELETE			 ex_ID3Frame_Delete;
-	extern BEEXPORT ID3FRAMEGETFIELD		 ex_ID3Frame_GetField;
-	extern BEEXPORT ID3FIELDSIZE			 ex_ID3Field_Size;
-	extern BEEXPORT ID3FIELDSETBINARY		 ex_ID3Field_SetBINARY;
-	extern BEEXPORT ID3FIELDGETBINARY		 ex_ID3Field_GetBINARY;
-	extern BEEXPORT ID3FIELDSETINT			 ex_ID3Field_SetINT;
-	extern BEEXPORT ID3FIELDGETINT			 ex_ID3Field_GetINT;
-	extern BEEXPORT ID3FIELDSETENCODING		 ex_ID3Field_SetEncoding;
-	extern BEEXPORT ID3FIELDSETASCII		 ex_ID3Field_SetASCII;
-	extern BEEXPORT ID3FIELDGETASCII		 ex_ID3Field_GetASCII;
-	extern BEEXPORT ID3FIELDSETUNICODE		 ex_ID3Field_SetUNICODE;
-	extern BEEXPORT ID3FIELDGETUNICODE		 ex_ID3Field_GetUNICODE;
+	extern		ID3TAGNEW			 ex_ID3Tag_New;
+	extern		ID3TAGDELETE			 ex_ID3Tag_Delete;
+	extern		ID3TAGSETPADDING		 ex_ID3Tag_SetPadding;
+	extern		ID3TAGADDFRAME			 ex_ID3Tag_AddFrame;
+	extern		ID3TAGLINK			 ex_ID3Tag_Link;
+	extern		ID3TAGNUMFRAMES			 ex_ID3Tag_NumFrames;
+	extern		ID3TAGFINDFRAMEWITHID		 ex_ID3Tag_FindFrameWithID;
+	extern		ID3TAGPARSEBUFFER		 ex_ID3Tag_ParseBuffer;
+	extern		ID3TAGSIZE			 ex_ID3Tag_Size;
+	extern		ID3TAGRENDER			 ex_ID3Tag_Render;
+	extern		ID3TAGCREATEITERATOR		 ex_ID3Tag_CreateIterator;
+	extern		ID3TAGITERATORGETNEXT		 ex_ID3TagIterator_GetNext;
+	extern		ID3TAGITERATORDELETE		 ex_ID3TagIterator_Delete;
+	extern		ID3FRAMEGETID			 ex_ID3Frame_GetID;
+	extern		ID3FRAMENEWID			 ex_ID3Frame_NewID;
+	extern		ID3FRAMEDELETE			 ex_ID3Frame_Delete;
+	extern		ID3FRAMEGETFIELD		 ex_ID3Frame_GetField;
+	extern		ID3FIELDSIZE			 ex_ID3Field_Size;
+	extern		ID3FIELDSETBINARY		 ex_ID3Field_SetBINARY;
+	extern		ID3FIELDGETBINARY		 ex_ID3Field_GetBINARY;
+	extern		ID3FIELDSETINT			 ex_ID3Field_SetINT;
+	extern		ID3FIELDGETINT			 ex_ID3Field_GetINT;
+	extern		ID3FIELDSETENCODING		 ex_ID3Field_SetEncoding;
+	extern		ID3FIELDSETASCII		 ex_ID3Field_SetASCII;
+	extern		ID3FIELDGETASCII		 ex_ID3Field_GetASCII;
+	extern		ID3FIELDSETUNICODE		 ex_ID3Field_SetUNICODE;
+	extern		ID3FIELDGETUNICODE		 ex_ID3Field_GetUNICODE;
 
 // WMVCore DLL API
 

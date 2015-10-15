@@ -17,7 +17,7 @@
 
 namespace BonkEnc
 {
-	class BEEXPORT FilterInFLAC : public InputFilter
+	class FilterInFLAC : public InputFilter
 	{
 		friend FLAC__StreamDecoderReadStatus	 FLACStreamDecoderReadCallback(const FLAC__StreamDecoder *, FLAC__byte [], size_t *, void *);
 		friend FLAC__StreamDecoderWriteStatus	 FLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *, const FLAC__Frame *, const FLAC__int32 * const [], void *);
