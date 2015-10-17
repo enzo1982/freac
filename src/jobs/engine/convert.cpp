@@ -230,6 +230,8 @@ Error BonkEnc::JobConvert::Perform()
 
 	/* Get config values.
 	 */
+	String	 selectedEncoderID	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+
 	Bool	 enableParallel		= configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
 	Int	 numberOfThreads	= configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault);
 
@@ -248,6 +250,19 @@ Error BonkEnc::JobConvert::Perform()
 
 	Bool	 createPlaylist		= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
 	Bool	 createCueSheet		= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
+
+	/* Check if encoder is thread safe.
+	 */
+	EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(selectedEncoderID);
+
+	if (encoder != NIL)
+	{
+		encoder->SetConfiguration(configuration);
+
+		if (!encoder->IsThreadSafe()) enableParallel = False;
+
+		boca.DeleteComponent(encoder);
+	}
 
 	/* Set number of threads if set to automatic mode.
 	 */
@@ -289,9 +304,6 @@ Error BonkEnc::JobConvert::Perform()
 
 	/* Setup single file encoder.
 	 */
-	String	 selectedEncoderID = configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
-	String	 activeEncoderID   = selectedEncoderID;
-
 	Track	 singleTrack;
 	String	 singleOutFile;
 	Encoder	*singleFileEncoder = NIL;
@@ -327,7 +339,7 @@ Error BonkEnc::JobConvert::Perform()
 			 */
 			singleFileEncoder = new Encoder(configuration);
 
-			if (!singleFileEncoder->Create(activeEncoderID, singleOutFile, singleTrack))
+			if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrack))
 			{
 				delete singleFileEncoder;
 
