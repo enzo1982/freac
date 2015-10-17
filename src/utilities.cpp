@@ -545,7 +545,7 @@ String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 
 		/* Append file extension.
 		 */
-		outputFileName.Append(".").Append(fileExtension);
+		if (fileExtension != NIL) outputFileName.Append(".").Append(fileExtension);
 	}
 	else
 	{
@@ -601,7 +601,7 @@ String BonkEnc::Utilities::GetSingleOutputFileName(const Track &track)
 			if (j < format_extensions.Length() - 1) extension.Append("; ");
 		}
 
-		dialog->AddFilter(formats.GetNth(i)->GetName().Append(" (").Append(extension).Append(")"), extension);
+		dialog->AddFilter(formats.GetNth(i)->GetName().Append(extension != NIL ? String(" (").Append(extension).Append(")") : String()), extension);
 	}
 
 	boca.DeleteComponent(encoder);
@@ -609,9 +609,17 @@ String BonkEnc::Utilities::GetSingleOutputFileName(const Track &track)
 	dialog->AddFilter(i18n->TranslateString("All Files", "Joblist"), "*.*");
 
 	dialog->SetDefaultExtension(defaultExtension);
-	dialog->SetFileName(Utilities::ReplaceIncompatibleChars(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist"), True).Append(" - ").Append(Utilities::ReplaceIncompatibleChars(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album"), True)).Append(".").Append(defaultExtension));
+	dialog->SetFileName(Utilities::ReplaceIncompatibleChars(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist"), True).Append(" - ").Append(Utilities::ReplaceIncompatibleChars(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album"), True)).Append(defaultExtension != NIL ? "." : NIL).Append(defaultExtension));
+	dialog->SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedSaveDirID, NIL));
 
-	if (dialog->ShowDialog() == Success()) singleOutputFileName = dialog->GetFileName();
+	if (dialog->ShowDialog() == Success())
+	{
+		singleOutputFileName = dialog->GetFileName();
+
+		/* Save selected path.
+		 */
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedSaveDirID, File(singleOutputFileName).GetFilePath());
+	}
 
 	Object::DeleteObject(dialog);
 

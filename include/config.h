@@ -137,6 +137,12 @@ namespace BonkEnc
 			static const String	 SettingsExcludeExtensionsID;
 			static const String	 SettingsExcludeExtensionsDefault;
 
+			static const String	 SettingsLastSelectedOpenDirID;
+
+			static const String	 SettingsLastSelectedSaveDirID;
+
+			static const String	 SettingsLastSelectedJoblistDirID;
+
 			/* Category Verification
 			 */
 			static const String	 VerificationVerifyInputID;

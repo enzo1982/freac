@@ -147,6 +147,12 @@ const String	 BonkEnc::Config::SettingsExcludeExtensionsDefault		= String(".jpg|
 										 .Append(".xls|.xlsx|.ods|.odc|")		  // spreadsheets
 										 .Append(".torrent|thumbs.db|.DS_Store");	  // other files
 
+const String	 BonkEnc::Config::SettingsLastSelectedOpenDirID			= "LastSelectedOpenDir";
+
+const String	 BonkEnc::Config::SettingsLastSelectedSaveDirID			= "LastSelectedSaveDir";
+
+const String	 BonkEnc::Config::SettingsLastSelectedJoblistDirID		= "LastSelectedJoblistDir";
+
 /* Category Verification
  */
 const String	 BonkEnc::Config::VerificationVerifyInputID			= "VerifyInput";

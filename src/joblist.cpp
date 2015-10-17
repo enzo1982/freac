@@ -275,6 +275,7 @@ Int BonkEnc::JobList::SetMetrics(const Point &nPos, const Size &nSize)
 
 Void BonkEnc::JobList::AddTrackByDialog()
 {
+	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Joblist");
@@ -283,6 +284,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 
 	dialog->SetParentWindow(container->GetContainerWindow());
 	dialog->SetFlags(SFD_ALLOWMULTISELECT);
+	dialog->SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedOpenDirID, NIL));
 
 	Array<String>	 types;
 	Array<String>	 extensions;
@@ -335,6 +337,10 @@ Void BonkEnc::JobList::AddTrackByDialog()
 		}
 
 		if (files.Length() > 0) (new JobAddFiles(files))->Schedule();
+
+		/* Save selected path.
+		 */
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedOpenDirID, File(dialog->GetFileName()).GetFilePath());
 	}
 
 	DeleteObject(dialog);
@@ -506,6 +512,7 @@ Void BonkEnc::JobList::ToggleSelection()
 
 Void BonkEnc::JobList::LoadList()
 {
+	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Joblist");
@@ -513,6 +520,7 @@ Void BonkEnc::JobList::LoadList()
 	FileSelection	*dialog = new FileSelection();
 
 	dialog->SetParentWindow(container->GetContainerWindow());
+	dialog->SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, NIL));
 
 	/* Add available formats to dialog.
 	 */
@@ -594,6 +602,10 @@ Void BonkEnc::JobList::LoadList()
 
 			boca.DeleteComponent(playlist);
 		}
+
+		/* Save selected path.
+		 */
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, File(dialog->GetFileName()).GetFilePath());
 	}
 
 	DeleteObject(dialog);
@@ -601,6 +613,7 @@ Void BonkEnc::JobList::LoadList()
 
 Void BonkEnc::JobList::SaveList()
 {
+	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Joblist");
@@ -610,10 +623,13 @@ Void BonkEnc::JobList::SaveList()
 	dialog->SetParentWindow(container->GetContainerWindow());
 	dialog->SetMode(SFM_SAVE);
 	dialog->SetFlags(SFD_CONFIRMOVERWRITE);
+	dialog->SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, NIL));
 
 	/* Add available formats to dialog.
 	 */
-	Registry	&boca = Registry::Get();
+	Registry	&boca  = Registry::Get();
+	Bool		 first = True;
+	String		 defaultExtension;
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 	{
@@ -628,11 +644,13 @@ Void BonkEnc::JobList::SaveList()
 
 			for (Int k = 0; k < format_extensions.Length(); k++)
 			{
-				if (format_extensions.GetNth(k) == "m3u8") dialog->SetDefaultExtension("m3u8");
+				if (first || format_extensions.GetNth(k) == "m3u8") defaultExtension = format_extensions.GetNth(k);
 
 				extension.Append("*.").Append(format_extensions.GetNth(k));
 
 				if (k < format_extensions.Length() - 1) extension.Append("; ");
+
+				first = False;
 			}
 
 			dialog->AddFilter(formats.GetNth(j)->GetName().Append(" (").Append(extension).Append(")"), extension);
@@ -640,6 +658,9 @@ Void BonkEnc::JobList::SaveList()
 	}
 
 	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
+
+	dialog->SetDefaultExtension(defaultExtension);
+	dialog->SetFileName(String(i18n->TranslateString("Joblist")).Append(".").Append(defaultExtension));
 
 	/* Display save file dialog.
 	 */
@@ -691,6 +712,10 @@ Void BonkEnc::JobList::SaveList()
 
 			boca.DeleteComponent(playlist);
 		}
+
+		/* Save selected path.
+		 */
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, File(dialog->GetFileName()).GetFilePath());
 	}
 
 	DeleteObject(dialog);
