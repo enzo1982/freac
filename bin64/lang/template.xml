@@ -875,6 +875,16 @@
 	  <entry id="41101" string="Unable to use selected audio format."/>
 	</section>
       </section>
+
+      <section name="meh!">
+	<entry id="42000" string="Encoders"/>
+	<entry id="42001" string="Available"/>
+	<entry id="42002" string="Selected"/>
+	<entry id="42003" string="Configure encoder"/>
+	<entry id="42004" string="Encoder configuration"/>
+	<entry id="42005" string="Options"/>
+	<entry id="42006" string="Create a separate folder for each output format"/>
+      </section>
     </section>
 
     <section name="DSP">

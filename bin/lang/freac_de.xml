@@ -875,6 +875,16 @@
 	  <entry id="41101" string="Unable to use selected audio format.">Ausgewähltes Audioformat kann nicht verwendet werden.</entry>
 	</section>
       </section>
+
+      <section name="meh!">
+	<entry id="42000" string="Encoders">Kodierer</entry>
+	<entry id="42001" string="Available">Verfügbar</entry>
+	<entry id="42002" string="Selected">Ausgewählt</entry>
+	<entry id="42003" string="Configure encoder">Kodierer konfigurieren</entry>
+	<entry id="42004" string="Encoder configuration">Kodiererkonfiguration</entry>
+	<entry id="42005" string="Options">Optionen</entry>
+	<entry id="42006" string="Create a separate folder for each output format">Für jedes Ausgabeformat einen separaten Ordner erstellen</entry>
+      </section>
     </section>
 
     <section name="DSP">
