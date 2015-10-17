@@ -149,10 +149,14 @@ Void BonkEnc::Progress::StartTrack(const Track &track)
 
 	/* Add to internal track list.
 	 */
+	mutex.Lock();
+
 	trackList.Add(track);
 
 	trackStartTicks.Add(S::System::System::Clock());
 	trackPositions.Add(0);
+
+	mutex.Release();
 }
 
 Void BonkEnc::Progress::UpdateTrack(const Track &track, Int64 position)
@@ -161,15 +165,19 @@ Void BonkEnc::Progress::UpdateTrack(const Track &track, Int64 position)
 
 	/* Update internal track list.
 	 */
+	mutex.Lock();
+
 	for (Int i = 0; i < trackList.Length(); i++)
 	{
 		if (trackList.GetNth(i).GetTrackID() != track.GetTrackID()) continue;
 
 		trackPositions.SetNth(i, position);
 
-		if (i > 0) return;
-		else	   break;
+		if (i > 0) { mutex.Release(); return; }
+		else			      break;
 	}
+
+	mutex.Release();
 
 	/* Perform updates every 25ms only.
 	 */
@@ -228,6 +236,8 @@ Void BonkEnc::Progress::FinishTrack(const Track &track, Bool stepsLeft)
 
 	/* Remove from internal track list.
 	 */
+	mutex.Lock();
+
 	for (Int i = 0; i < trackList.Length(); i++)
 	{
 		if (trackList.GetNth(i).GetTrackID() != track.GetTrackID()) continue;
@@ -246,6 +256,8 @@ Void BonkEnc::Progress::FinishTrack(const Track &track, Bool stepsLeft)
 
 		break;
 	}
+
+	mutex.Release();
 
 	/* Update total number of samples done.
 	 */
