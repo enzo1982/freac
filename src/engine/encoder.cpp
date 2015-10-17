@@ -55,6 +55,7 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 		BoCA::Utilities::ErrorMessage("Cannot create output file: %1", File(fileName).GetFileName());
 
 		delete stream;
+
 		stream = NIL;
 
 		return False;
@@ -69,6 +70,7 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 		BoCA::Utilities::ErrorMessage("Cannot create encoder component: %1", encoderID);
 
 		delete stream;
+
 		stream = NIL;
 
 		return False;
@@ -98,12 +100,12 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 
 		if (!encoder->IsThreadSafe()) mutexes.Get(encoder->GetID().ComputeCRC32())->Release();
 
+		delete stream;
+
 		boca.DeleteComponent(encoder);
 
 		encoder = NIL;
-
-		delete stream;
-		stream = NIL;
+		stream	= NIL;
 
 		return False;
 	}
@@ -125,9 +127,9 @@ Bool BonkEnc::Encoder::Destroy()
 
 	if (!encoder->IsThreadSafe()) mutexes.Get(encoder->GetID().ComputeCRC32())->Release();
 
-	boca.DeleteComponent(encoder);
-
 	delete stream;
+
+	boca.DeleteComponent(encoder);
 
 	encoder = NIL;
 	stream	= NIL;

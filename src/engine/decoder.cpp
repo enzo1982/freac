@@ -55,6 +55,7 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 		BoCA::Utilities::ErrorMessage("Cannot access input file: %1", nFileName);
 
 		delete stream;
+
 		stream = NIL;
 
 		return False;
@@ -69,6 +70,7 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 		BoCA::Utilities::ErrorMessage("Cannot create decoder component for input file: %1", nFileName);
 
 		delete stream;
+
 		stream = NIL;
 
 		return False;
@@ -102,12 +104,12 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 
 		if (!decoder->IsThreadSafe()) mutexes.Get(decoder->GetID().ComputeCRC32())->Release();
 
+		delete stream;
+
 		boca.DeleteComponent(decoder);
 
 		decoder = NIL;
-
-		delete stream;
-		stream = NIL;
+		stream	= NIL;
 
 		return False;
 	}
@@ -145,9 +147,9 @@ Bool BonkEnc::Decoder::Destroy()
 
 	if (!decoder->IsThreadSafe()) mutexes.Get(decoder->GetID().ComputeCRC32())->Release();
 
-	boca.DeleteComponent(decoder);
-
 	delete stream;
+
+	boca.DeleteComponent(decoder);
 
 	decoder	     = NIL;
 	stream	     = NIL;
