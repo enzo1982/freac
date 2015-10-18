@@ -388,6 +388,10 @@ Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder
 	 */
 	Int	 ripperTimeout	 = configuration->GetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
 
+	/* Inform components about starting conversion.
+	 */
+	BoCA::Engine::Get()->onStartConversion.Emit(trackToConvert);
+
 	/* Enter conversion loop.
 	 */
 	Format		 format	     = trackToConvert.GetFormat();
@@ -451,6 +455,11 @@ Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder
 		 */
 		while (pause && !cancel) S::System::System::Sleep(50);
 	}
+
+	/* Inform components about finished/cancelled conversion.
+	 */
+	if (cancel) BoCA::Engine::Get()->onCancelConversion.Emit(trackToConvert);
+	else	    BoCA::Engine::Get()->onFinishConversion.Emit(trackToConvert);
 
 	return trackLength;
 }
