@@ -674,11 +674,8 @@ Error BonkEnc::JobConvert::Perform()
 			progress->SetY(54 + i * 20);
 			progress->SetWidth(GetWidth() - 16);
 
-			if (conversionProgress > 0)
-			{
-				if (workerTrack.length > 0) progress->SetValue(1000.0 / workerTrack.length * conversionProgress);
-				else			    progress->SetValue(1000.0 / workerTrack.fileSize * conversionProgress);
-			}
+			if (workerTrack.length > 0) progress->SetValue(1000.0 / workerTrack.length * conversionProgress);
+			else			    progress->SetValue(1000.0 / workerTrack.fileSize * conversionProgress);
 
 			progress->Show();
 		}
