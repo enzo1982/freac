@@ -143,11 +143,9 @@ Void BonkEnc::ConfigureLanguage::EditLanguageFile()
 	else 													command = String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("translator.app/Contents/MacOS/translator\"");
 #endif
 
-	if (!fork())
-	{
-		execl("/bin/sh", "sh", "-c", (char *) command.Append(" \"").Append(GUI::Application::GetApplicationDirectory().Append(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Replace(" ", "\\ ")).Append("\""), NULL);
-		exit(0);
-	}
+	const char	*cmd = command.Append(" \"").Append(GUI::Application::GetApplicationDirectory().Append(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Replace(" ", "\\ ")).Append("\"");
+
+	if (!fork()) { execl("/bin/sh", "sh", "-c", cmd, NULL); exit(0); }
 #endif
 }
 
