@@ -3,6 +3,24 @@
 SMOOTHVER = 0.8.72
 BOCAVER	  = 1.0
 
+# Find source folder and set vpath
+SRCDIR = $(abspath $(dir $(firstword $(MAKEFILE_LIST))))
+
+vpath %.cpp $(SRCDIR)
+vpath %.mm  $(SRCDIR)
+vpath %.rc  $(SRCDIR)
+vpath %.ico $(SRCDIR)
+
+# Define makein and cleanin macros
+ifeq ($(SRCDIR),$(CURDIR))
+	makein  = cd $(1) && $(MAKE) $(2) && cd ..
+	cleanin = cd $(1) && $(MAKE) clean && cd ..
+else
+	makein  = mkdir -p $(1) && cd $(1) && $(MAKE) -f $(SRCDIR)/$(1)/Makefile $(2) && cd ..
+	cleanin = mkdir -p $(1) && cd $(1) && $(MAKE) -f $(SRCDIR)/$(1)/Makefile clean && cd .. && (rmdir $(1) || true)
+endif
+
+# Find architecture and system
 UNAME = $(shell uname)
 MACHINE = $(shell gcc -dumpmachine)
 
@@ -58,10 +76,10 @@ else
 		BUILD_OPENBSD = True
 	else ifeq ($(UNAME),NetBSD)
 		BUILD_NETBSD = True
-	else ifeq ($(UNAME),SunOS)
-		BUILD_SOLARIS = True
 	else ifeq ($(UNAME),Haiku)
 		BUILD_HAIKU = True
+	else ifeq ($(UNAME),SunOS)
+		BUILD_SOLARIS = True
 	else ifeq ($(UNAME),GNU)
 		BUILD_GNU = True
 	else ifeq ($(UNAME),QNX)
@@ -83,22 +101,112 @@ else
 	endif
 endif
 
-LIB = lib
+# Set default commands
+INSTALL		= install
+INSTALL_PROGRAM = $(INSTALL)
+INSTALL_DATA	= $(INSTALL) -m 644
 
-ifeq ($(BUILD_X86_64),True)
-	ifneq ($(wildcard /usr/lib64),)
-		LIB = lib64
+# Set output folders
+BINDIR = bin
+LIBDIR = lib
+
+ifeq ($(BUILD_WIN32),True)
+	ifeq ($(BUILD_X86_64),True)
+		BINDIR = bin64
+		LIBDIR = lib64
+	endif
+else ifeq ($(BUILD_OSX),True)
+	ifeq ($(BUILD_X86_64),True)
+		BINDIR = bin64
+		LIBDIR = lib64
+	else ifeq ($(BUILD_PPC64),True)
+		BINDIR = bin64
+		LIBDIR = lib64
 	endif
 endif
 
-ifeq ($(PREFIX),)
-	PREFIX = /usr/local
+# Set install folders
+ifeq ($(prefix),)
+	prefix = /usr/local
 
 	ifeq ($(BUILD_OSX),True)
-		PREFIX = /usr
+		prefix = /usr
 	endif
 
 	ifeq ($(BUILD_HAIKU),True)
-		PREFIX = /boot/common
+		prefix = /boot/common
+	endif
+endif
+
+bindir	   = $(prefix)/bin
+libdir	   = $(prefix)/lib
+includedir = $(prefix)/include
+datadir	   = $(prefix)/share
+
+ifeq ($(BUILD_X86_64),True)
+	ifneq ($(wildcard $(DESTDIR)$(prefix)/lib64),)
+		libdir = $(prefix)/lib64
+	endif
+endif
+
+ifeq ($(BUILD_HAIKU),True)
+	includedir = $(prefix)/develop/headers
+endif
+
+# Set release specific options
+ifeq ($(config),release)
+	config =
+
+	override CFLAGS	     = -pipe -g0 -Wall -Os
+	override CXXFLAGS    =
+	override OBJCFLAGS   =
+	override OBJCXXFLAGS =
+	override LDFLAGS     = -pipe
+
+	ifneq ($(EXCEPTION),True)
+		override CFLAGS += -fno-exceptions
+	endif
+
+	ifeq ($(BUILD_OSX),True)
+		override LDFLAGS += -Wl,-x
+
+		ifeq ($(BUILD_X86),True)
+			override CFLAGS	 += -arch i386 -Xarch_i386 -march=prescott
+			override LDFLAGS += -arch i386
+		endif
+		ifeq ($(BUILD_X86_64),True)
+			override CFLAGS	 += -arch x86_64 -Xarch_x86_64 -march=core2
+			override LDFLAGS += -arch x86_64
+		endif
+		ifeq ($(BUILD_PPC),True)
+			override CFLAGS	 += -arch ppc -Xarch_ppc -mcpu=G4
+			override LDFLAGS += -arch ppc
+		endif
+		ifeq ($(BUILD_PPC64),True)
+			override CFLAGS	 += -arch ppc64 -Xarch_ppc64 -mcpu=G5
+			override LDFLAGS += -arch ppc64
+		endif
+	else
+		override LDFLAGS += -s
+
+		ifeq ($(BUILD_X86),True)
+			override CFLAGS	 += -m32
+			override LDFLAGS += -m32
+		else ifeq ($(BUILD_X86_64),True)
+			override CFLAGS	 += -m64
+			override LDFLAGS += -m64
+		endif
+	endif
+
+	override CXXFLAGS    += $(CFLAGS)
+	override OBJCFLAGS   += $(CFLAGS)
+	override OBJCXXFLAGS += $(CFLAGS)
+
+	ifneq ($(BUILD_WIN32),True)
+	ifneq ($(BUILD_OSX),True)
+	ifneq ($(BUILD_LINUX),True)
+		override LDFLAGS += -Wl,-rpath,.
+	endif
+	endif
 	endif
 endif
