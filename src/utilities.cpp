@@ -13,6 +13,10 @@
 #include <utilities.h>
 #include <config.h>
 
+#ifdef __WIN32__
+#	include <windows.h>
+#endif
+
 using namespace BoCA;
 using namespace BoCA::AS;
 
@@ -668,4 +672,27 @@ String BonkEnc::Utilities::GetPlaylistFileName(const Track &track)
 String BonkEnc::Utilities::GetInstallDrive()
 {
 	return GUI::Application::GetApplicationDirectory().Head(2);
+}
+
+Bool BonkEnc::Utilities::SetProcessPriority()
+{
+	BoCA::Config	*config	= BoCA::Config::Get();
+
+#ifdef __WIN32__
+	HANDLE	 currentProcess = GetCurrentProcess();
+	DWORD	 priorityClass  = NORMAL_PRIORITY_CLASS;
+
+	switch (config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesPriorityID, Config::ResourcesPriorityDefault))
+	{
+		case -2: priorityClass = IDLE_PRIORITY_CLASS;	      break;
+		case -1: priorityClass = BELOW_NORMAL_PRIORITY_CLASS; break;
+		case  0: priorityClass = NORMAL_PRIORITY_CLASS;       break;
+		case  1: priorityClass = ABOVE_NORMAL_PRIORITY_CLASS; break;
+		case  2: priorityClass = HIGH_PRIORITY_CLASS;	      break;
+	}
+
+	return SetPriorityClass(currentProcess, priorityClass);
+#endif
+
+	return False;
 }

@@ -27,11 +27,17 @@ namespace BonkEnc
 			Slider		*slider_threads;
 			Text		*text_threads_value;
 
+			GroupBox	*group_priority;
+			Text		*text_priority;
+			Slider		*slider_priority;
+			Text		*text_priority_value;
+
 			Bool		 enableParallel;
  		slots:
 			Void		 ToggleParallel();
 
 			Void		 ChangeConversionThreads();
+			Void		 ChangePriority();
 		public:
 					 ConfigureResources();
 					~ConfigureResources();

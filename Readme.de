@@ -10,7 +10,7 @@ sowie Video-Downloads und konvertiert folgende Audioformate:
 		- mit dem MAD MP3-Decoder		(http://www.underbit.com/)
 
 	- MP4/M4A AAC
-		- mit dem CoreAudio AAC-Encoder		(http://www.apple.com/)
+		- mit dem Core Audio AAC-Encoder	(http://www.apple.com/)
 		- mit dem FAAC/FAAD2-Codec		(http://www.audiocoding.com/)
 
 	- Windows Media Audio				(http://www.microsoft.com/)
@@ -22,7 +22,7 @@ sowie Video-Downloads und konvertiert folgende Audioformate:
 		- FLAC					(http://flac.sourceforge.net/)
 
 	- Apple Lossless (ALAC)
-		- mit dem CoreAudio ALAC-Encoder	(http://www.apple.com/)
+		- mit dem Core Audio ALAC-Encoder	(http://www.apple.com/)
 		- mit dem libav ALAC-Encoder		(http://www.libav.org/)
 		- mit David Hammertons ALAC-Decoder	(http://www.craz.net/)
 
@@ -90,7 +90,7 @@ Voraussetzungen
 
 		Windows:
 
-			- MinGW GCC v4.0+ (http://www.mingw.org/) oder Microsoft Visual C++ v10.0
+			- MinGW GCC v4.0+ (http://www.mingw.org/) oder Visual Studio 2015
 
 		Alle Linux- und Unix-Systeme:
 
@@ -109,7 +109,7 @@ Voraussetzungen
 
 	Zusätzliche optionale Software:
 
-		- Unter Windows können Winamp-Plugins verwendet werden, wenn sie im "plugins"-Verzeichnis vorhanden sind
+		- Die 32 Bit Version für Windows kann Winamp-Plugins verwenden, wenn diese im "plugins"-Verzeichnis abgelegt werden.
 
 		- Einige externe Codecs können von fre:ac verwendet werden. Mehr Informationen dazu finden Sie im Benutzerhandbuch.
 
@@ -137,7 +137,7 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.1 CVS (September 2015)
+	Version 1.1 CVS (November 2015)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, Mac OS X, Solaris, FreeBSD, OpenBSD und NetBSD portiert
@@ -160,7 +160,7 @@ Geschichte
 		- Speex Sprachkodierer/-dekodierer hinzugefügt
 		- Windows Media Audio Codierer/Dekodierer hinzugefügt
 		- Opus Audiokodierer/-dekodierer hinzugefügt
-		- CoreAudio AAC-/ALAC-Kodierer hinzugefügt
+		- Core Audio AAC-/ALAC-Kodierer hinzugefügt
 		- Unterstützung für Kommandozeilenkodierer/-dekodierer hinzugefügt
 		- Unterstützung für den mpg123 MP3-Dekodierer hinzugefügt
 		- Unterstützung für den MAD MP3-Dekodierer hinzugefügt
@@ -205,6 +205,7 @@ Geschichte
 		- Warnung beim Konvertieren von verlustbehafteten in verlustfreie Formate hinzugefügt
 		- Möglichkeit zur Sortierung der Jobliste durch Klick auf Überschriften hinzugefügt
 		- Grundlegende Untersützung für Mehrkanal-Audio hinzugefügt
+		- Möglichkeit zur Einstellung der Prozesspriorität unter Windows hinzugefügt
 		- Speichere Playlisten und Cue Sheets im Eine-Datei-Modus zusammen mit Ausgabedatei
 		- Die Restzeitanzeige zeigt falls notwendig nun auch Stunden an
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert

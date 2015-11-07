@@ -161,6 +161,9 @@ namespace BonkEnc
 			static const String	 ResourcesNumberOfConversionThreadsID;
 			static const Int	 ResourcesNumberOfConversionThreadsDefault;
 
+			static const String	 ResourcesPriorityID;
+			static const Int	 ResourcesPriorityDefault;
+
 			/* Category Joblist
 			 */
 			static const String	 JoblistFieldsID;

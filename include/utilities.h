@@ -33,6 +33,8 @@ namespace BonkEnc
 			static String	 GetPlaylistFileName(const BoCA::Track &);
 
 			static String	 GetInstallDrive();
+
+			static Bool	 SetProcessPriority();
 	};
 };
 

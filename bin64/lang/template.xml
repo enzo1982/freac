@@ -467,6 +467,12 @@
 	<entry id="5701" string="Enable parallel processing"/>
 	<entry id="5702" string="Number of conversion threads"/>
 	<entry id="5703" string="auto"/>
+	<entry id="5704" string="Process priority"/>
+	<entry id="5705" string="lowest"/>
+	<entry id="5706" string="lower"/>
+	<entry id="5707" string="normal"/>
+	<entry id="5708" string="higher"/>
+	<entry id="5709" string="highest"/>
       </section>
 
       <section name="Verification">

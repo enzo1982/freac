@@ -15,6 +15,7 @@
 
 #include <bonkenc.h>
 #include <config.h>
+#include <utilities.h>
 
 using namespace BoCA::AS;
 
@@ -50,9 +51,35 @@ BonkEnc::ConfigureResources::ConfigureResources()
 	ToggleParallel();
 	ChangeConversionThreads();
 
+	group_priority		= new GroupBox(i18n->TranslateString("Process priority"), Point(7, 87), Size(350, 40));
+
+	text_priority		= new Text(i18n->AddColon(i18n->TranslateString("Process priority")), Point(10, 15));
+	text_priority_value	= new Text(NIL, Point(350, 15));
+
+	Font	 font	     = text_priority_value->GetFont();
+	Int	 maxTextSize = Math::Max(Math::Max(font.GetUnscaledTextSizeX(i18n->TranslateString("lowest")), font.GetUnscaledTextSizeX(i18n->TranslateString("lower"))), Math::Max(font.GetUnscaledTextSizeX(i18n->TranslateString("normal")), Math::Max(font.GetUnscaledTextSizeX(i18n->TranslateString("higher")), font.GetUnscaledTextSizeX(i18n->TranslateString("highest")))));
+
+	text_priority_value->SetX(group_priority->GetWidth() - maxTextSize - 10);
+
+	slider_priority		= new Slider(Point(17 + text_priority->GetUnscaledTextWidth(), 13), Size(group_priority->GetWidth() - 35 - text_priority->GetUnscaledTextWidth() - maxTextSize, 0), OR_HORZ, NIL, -2, 2);
+	slider_priority->SetValue(config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesPriorityID, Config::ResourcesPriorityDefault));
+	slider_priority->onAction.Connect(&ConfigureResources::ChangePriority, this);
+
+	group_priority->Add(text_priority);
+	group_priority->Add(text_priority_value);
+	group_priority->Add(slider_priority);
+
+	ChangePriority();
+
 	Add(group_cpu);
 
+#ifdef __WIN32__
+	Add(group_priority);
+
+	SetSize(Size(364, 134));
+#else
 	SetSize(Size(364, 83));
+#endif
 }
 
 BonkEnc::ConfigureResources::~ConfigureResources()
@@ -62,6 +89,11 @@ BonkEnc::ConfigureResources::~ConfigureResources()
 	DeleteObject(text_threads);
 	DeleteObject(text_threads_value);
 	DeleteObject(slider_threads);
+
+	DeleteObject(group_priority);
+	DeleteObject(text_priority);
+	DeleteObject(text_priority_value);
+	DeleteObject(slider_priority);
 }
 
 Void BonkEnc::ConfigureResources::ToggleParallel()
@@ -90,12 +122,32 @@ Void BonkEnc::ConfigureResources::ChangeConversionThreads()
 	else				     text_threads_value->SetText(String::FromInt(slider_threads->GetValue()));
 }
 
+Void BonkEnc::ConfigureResources::ChangePriority()
+{
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Configuration::Resources");
+
+	switch (slider_priority->GetValue())
+	{
+		case -2: text_priority_value->SetText(i18n->TranslateString("lowest"));	 break;
+		case -1: text_priority_value->SetText(i18n->TranslateString("lower"));	 break;
+		case  0: text_priority_value->SetText(i18n->TranslateString("normal"));	 break;
+		case  1: text_priority_value->SetText(i18n->TranslateString("higher"));	 break;
+		case  2: text_priority_value->SetText(i18n->TranslateString("highest")); break;
+	}
+}
+
 Int BonkEnc::ConfigureResources::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, enableParallel);
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, slider_threads->GetValue());
+
+	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesPriorityID, slider_priority->GetValue());
+
+	Utilities::SetProcessPriority();
 
 	return Success();
 }

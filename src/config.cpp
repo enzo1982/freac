@@ -171,6 +171,9 @@ const Bool	 BonkEnc::Config::ResourcesEnableParallelConversionsDefault	= True;
 const String	 BonkEnc::Config::ResourcesNumberOfConversionThreadsID		= "NumberOfConversionThreads";
 const Int	 BonkEnc::Config::ResourcesNumberOfConversionThreadsDefault	= 0;
 
+const String	 BonkEnc::Config::ResourcesPriorityID				= "Priority";
+const Int	 BonkEnc::Config::ResourcesPriorityDefault			= 0;
+
 /* Category Joblist
  */
 const String	 BonkEnc::Config::JoblistFieldsID				= "Fields";

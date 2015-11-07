@@ -32,6 +32,7 @@ Void smooth::DetachDLL()
 #include <bonkenc.h>
 #include <playback.h>
 #include <config.h>
+#include <utilities.h>
 #include <dllinterfaces.h>
 
 #include <jobs/jobmanager.h>
@@ -94,17 +95,25 @@ BonkEnc::BonkEnc::BonkEnc()
 
 	instance = this;
 
+	/* Load configuration.
+	 */
 	debug->Write("  Loading config...");
 
-	currentConfig	= Config::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
+
+	currentConfig = Config::Get();
 
 	/* Increment start count.
 	 */
-	BoCA::Config::Get()->SetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) + 1);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) + 1);
+
+	/* Set process priority.
+	 */
+	Utilities::SetProcessPriority();
 
 	/* Set default comment unless already set.
 	 */
-	BoCA::Config::Get()->SetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, BoCA::Config::Get()->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, String(appLongName).Append(" <").Append(website).Append(">")));
+	config->SetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, BoCA::Config::Get()->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, String(appLongName).Append(" <").Append(website).Append(">")));
 
 	/* Connect version information to BoCA callbacks.
 	 */
