@@ -217,7 +217,7 @@
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">CDDB forespørgsel</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Ingen Freedb indgang for denne disk.</entry>
+	<entry id="4101" string="No freedb entry for this disk.">Ingen freedb indgang for denne disk.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Forbinder til freedb server ved</entry>
 	<entry id="4103" string="Requesting CD information">Henter CD information</entry>
 	<entry id="4104" string="No exact matches found">Ingen nøjagtige resultater fundet</entry>
@@ -334,7 +334,7 @@
 
 	<section name="Errors">
 	  <entry id="5350" string="Please enter a valid eMail address.">Indtast venligst en gyldig email adresse.</entry>
-	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Freedb CDDBP protokol kan ikke bruges over HTTP Forward Proxies!&#10;&#10;Vil du skfite protokollen til HTTP?</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP protokol kan ikke bruges over HTTP Forward Proxies!&#10;&#10;Vil du skfite protokollen til HTTP?</entry>
 	</section>
       </section>
 

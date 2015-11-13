@@ -394,7 +394,7 @@
 
 	<section name="Errors">
 	  <entry id="5350" string="Please enter a valid eMail address.">Ange en giltig e-postadress.</entry>
-	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Freedb-protokollet CDDBP kan inte användas över&#10;HTTP-proxyservrar för vidarebefordran!&#10;&#10;Vill du ändra protokollet till HTTP?</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb-protokollet CDDBP kan inte användas över&#10;HTTP-proxyservrar för vidarebefordran!&#10;&#10;Vill du ändra protokollet till HTTP?</entry>
 	</section>
       </section>
 
