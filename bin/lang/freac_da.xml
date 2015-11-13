@@ -158,7 +158,7 @@
     <entry id="150" string="CDDB server:">CDDB Server:</entry>
     <entry id="151" string="Port:">Port:</entry>
     <entry id="152" string="Info">Information</entry>
-    <entry id="153" string="No freedb entry for this disk.">Ingen Freedb indgang for denne disk.</entry>
+    <entry id="153" string="No freedb entry for this disk.">Ingen freedb indgang for denne disk.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">En fejl opstod ved oprettelse af forbindelse til freedb serveren.</entry>
     <entry id="155" string="Connecting to freedb server at">Forbinder til freedb server ved</entry>
     <entry id="156" string="Requesting CD information">Henter CD information</entry>
@@ -340,7 +340,7 @@
     <entry id="336" string="Password:">Kodeord:</entry>
     <entry id="337" string="Delete original files after encoding">Slet orginale filer efter endt kodning</entry>
     <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denne indstilling vil slette de orginale filer efter de er blevet kodet! Ønsker du at forsætte?</entry>
-    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Freedb CDDBP protokol kan ikke bruges over HTTP Forward Proxies!&#10;&#10;Vil du skfite protokollen til HTTP?</entry>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP protokol kan ikke bruges over HTTP Forward Proxies!&#10;&#10;Vil du skfite protokollen til HTTP?</entry>
     <entry id="340" string="Playlists">Afspilningsliste</entry>
     <entry id="341" string="Create playlists">Lav afspilningsliste</entry>
     <entry id="342" string="Create cue sheets">Lav cue sheets</entry>

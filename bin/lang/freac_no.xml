@@ -339,7 +339,7 @@
     <entry id="336" string="Password:">Passord:</entry>
     <entry id="337" string="Delete original files after encoding">Slett originale filer etter koding</entry>
     <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denne innstillingen vil fjerne de originale filene fra datamaskinen din&#10;etter koding!&#10;&#10;Er du sikker på at du vil aktivere denne funksjonen?</entry>
-    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Freedb CDDBP-protokollen kan ikke brukes via HTTP&#10;Forward-proxyer!&#10;&#10;Vil du forandre protokollen til HTTP?</entry>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP-protokollen kan ikke brukes via HTTP&#10;Forward-proxyer!&#10;&#10;Vil du forandre protokollen til HTTP?</entry>
     <entry id="340" string="Playlists">Spillelister</entry>
     <entry id="341" string="Create playlists">Lag spillelister</entry>
     <entry id="342" string="Create cue sheets">Lag køark</entry>

@@ -340,7 +340,7 @@
     <entry id="336" string="Password:">Password:</entry>
     <entry id="337" string="Delete original files after encoding">Obriši originalnu datoteku nakon enkodiranja</entry>
     <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ova opcija izbrisat će originalnu datoteku sa vašeg računala&#10;nakon što enkodiranje završi!&#10;&#10;Da li ste sigurni da želite aktivirati ovu funkciju?</entry>
-    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Freedb CDDB protokol se ne može koristiti preko HTTP&#10;proslijeđenih Proxya!&#10;&#10;Želite li promijeniti protokol na HTTP?</entry>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDB protokol se ne može koristiti preko HTTP&#10;proslijeđenih Proxya!&#10;&#10;Želite li promijeniti protokol na HTTP?</entry>
     <entry id="340" string="Playlists">Playliste</entry>
     <entry id="341" string="Create playlists">Kreiraj playlistu</entry>
     <entry id="342" string="Create cue sheets">Kreiraj listu za čekanje</entry>
