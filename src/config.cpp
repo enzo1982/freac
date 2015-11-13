@@ -76,6 +76,7 @@ const Bool	 BonkEnc::Config::SettingsUpdatesCheckedDefault			= False;
 
 const String	 BonkEnc::Config::SettingsLastUsedGenreID			= "LastUsedGenre";
 
+const String	 BonkEnc::Config::SettingsLastOutputDirectoryID			= "LastOutputDirectory";
 const String	 BonkEnc::Config::SettingsLastFilePatternID			= "LastFilePattern";
 
 const String	 BonkEnc::Config::SettingsLastAddedDirID			= "LastAddedDir";

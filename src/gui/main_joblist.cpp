@@ -19,6 +19,7 @@
 #include <jobs/job.h>
 
 #include <gui/player.h>
+#include <gui/edit_folder.h>
 
 #include <dialogs/charset.h>
 
@@ -371,15 +372,26 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	UpdateEncoderText();
 
-	edb_outdir = new EditBox(NIL, Point(0, 27), Size(0, 0), 1024);
+	edb_outdir = new FolderEditBox(NIL, Point(0, 27), Size(0, 0), 1024);
 	edb_outdir->SetOrientation(OR_LOWERLEFT);
-	edb_outdir->Deactivate();
+	list_outdir = new List();
+
+	for (Int i = 1; i <= 5; i++)
+	{
+		if (config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(i)), NIL) != NIL)
+		{
+			list_outdir->AddEntry(config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(i)), NIL));
+		}
+	}
+
+	edb_outdir->SetDropDownList(list_outdir);
+	edb_outdir->onSelectEntry.Connect(&LayerJoblist::OnSelectFolder, this);
 
 	UpdateOutputDir();
 
 	btn_outdir = new Button(i18n->TranslateString("Browse"), NIL, Point(87, 28), Size(0, 0));
 	btn_outdir->SetOrientation(OR_LOWERRIGHT);
-	btn_outdir->onAction.Connect(&LayerJoblist::OnSelectDir, this);
+	btn_outdir->onAction.Connect(&LayerJoblist::OnBrowseForFolder, this);
 
 	progress = new Progressbar(Point(0, 51), Size(0, 10), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
 	progress->SetOrientation(OR_LOWERLEFT);
@@ -581,6 +593,7 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 	DeleteObject(edb_format);
 	DeleteObject(combo_encoder);
 	DeleteObject(edb_outdir);
+	DeleteObject(list_outdir);
 	DeleteObject(btn_skip);
 	DeleteObject(btn_outdir);
 	DeleteObject(progress);
@@ -1552,7 +1565,7 @@ Void BonkEnc::LayerJoblist::UpdateOutputDir()
 	edb_outdir->SetText(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 }
 
-Void BonkEnc::LayerJoblist::OnSelectDir()
+Void BonkEnc::LayerJoblist::OnBrowseForFolder()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -1571,10 +1584,69 @@ Void BonkEnc::LayerJoblist::OnSelectDir()
 	if (dialog->ShowDialog() == Success())
 	{
 		edb_outdir->SetText(dialog->GetDirName());
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, dialog->GetDirName());
+
+		OnSelectFolder();
 	}
 
 	DeleteObject(dialog);
+}
+
+Void BonkEnc::LayerJoblist::OnSelectFolder()
+{
+	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	i18n->SetContext("Configuration::Encoders::Errors");
+
+	/* Check if output folder exists.
+	 */
+	Directory	 outputDirectory(Utilities::GetAbsoluteDirName(edb_outdir->GetText()));
+
+	if (Directory::SetActiveDirectory(outputDirectory) != Success())
+	{
+		Int	 selection = QuickMessage(i18n->TranslateString("The output folder does not exist! Do you want to create it?"), i18n->TranslateString("Error"), Message::Buttons::YesNoCancel, Message::Icon::Question);
+
+		if	(selection == Message::Button::Yes)	outputDirectory.Create();
+		else if (selection == Message::Button::Cancel)	{ UpdateOutputDir(); return; }
+	}
+
+	Directory::SetActiveDirectory(GUI::Application::GetApplicationDirectory());
+
+	/* Save output directory and list of last used folders.
+	 */
+	Int	 outputDirNumber = 5;
+
+	for (Int i = 1; i <= 5; i++)
+	{
+		if (config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(i)), NIL) == edb_outdir->GetText())
+		{
+			outputDirNumber = i;
+
+			break;
+		}
+	}
+
+	for (Int i = outputDirNumber; i > 1; i--)
+	{
+		config->SetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(i)), config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(i - 1)), NIL));
+	}
+
+	config->SetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(1)), edb_outdir->GetText());
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, edb_outdir->GetText());
+
+	/* Update combo box.
+	 */
+	list_outdir->RemoveAllEntries();
+
+	for (Int i = 1; i <= 5; i++)
+	{
+		if (config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(i)), NIL) != NIL)
+		{
+			list_outdir->AddEntry(config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(i)), NIL));
+		}
+	}
+
+	edb_outdir->SetDropDownList(list_outdir);
 }
 
 Void BonkEnc::LayerJoblist::OnSelectEncoder()

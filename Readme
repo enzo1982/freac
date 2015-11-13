@@ -148,6 +148,7 @@ History
 		- converted input and output filters to BoCA components
 		- implemented new configuration dialog
 		- added support for multiple configurations
+		- added multi encoder hub component
 		- conversions are now done in parallel if possible
 		- redesigned progress display area
 		- new dialog to confirm overwriting of existing files before conversion
@@ -208,6 +209,7 @@ History
 		- added support for setting prcocess priority on Windows
 		- save playlists and cuesheets along with output file in single file mode
 		- the time left indicator now shows hours if necessary
+		- the five last used output folders are now saved for later use
 		- the five last used file name patterns are now saved for later use
 		- greatly improved case conversion functions
 		- conversion progress is now shown in the taskbar on Windows 7 and later

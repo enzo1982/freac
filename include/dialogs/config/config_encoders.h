@@ -36,6 +36,7 @@ namespace BonkEnc
 			CheckBox			*check_useInputDir;
 			CheckBox			*check_allowOverwrite;
 			EditBox				*edit_outdir;
+			List				*list_outdir;
 			Button				*button_outdir_browse;
 
 			GroupBox			*group_filename;

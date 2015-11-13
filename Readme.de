@@ -148,6 +148,7 @@ Geschichte
 		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
 		- Neuen Konfigurationsdialog implementiert
 		- Unterstützung für mehrere Konfigurationen hinzugefügt
+		- Multi-Encoder-Hub-Komponente hinzugefügt
 		- Konvertierungen werden nun wenn möglich parallel ausgeführt
 		- Neues Design des Fortschrittsanzeigebereichs
 		- Neuer Dialog zur Bestätigung des Überschreibens vorhandener Dateien vor der Konvertierung
@@ -208,6 +209,7 @@ Geschichte
 		- Möglichkeit zur Einstellung der Prozesspriorität unter Windows hinzugefügt
 		- Speichere Playlisten und Cue Sheets im Eine-Datei-Modus zusammen mit Ausgabedatei
 		- Die Restzeitanzeige zeigt falls notwendig nun auch Stunden an
+		- Die fünf zuletzt verwendeten Ausgabeordner werden jetzt für späteren Zugriff gespeichert
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
 		- Groß-/Kleinschreibungs-Konvertierungsfunktionen stark verbessert
 		- Der Fortschritt einer Konvertierung wird unter Windows 7 und neuer in der Taskleiste angezeigt

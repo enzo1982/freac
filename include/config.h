@@ -77,6 +77,7 @@ namespace BonkEnc
 
 			static const String	 SettingsLastUsedGenreID;
 
+			static const String	 SettingsLastOutputDirectoryID;
 			static const String	 SettingsLastFilePatternID;
 
 			static const String	 SettingsLastAddedDirID;

@@ -86,6 +86,7 @@ namespace BonkEnc
 
 			Text			*txt_outdir;
 			EditBox			*edb_outdir;
+			List			*list_outdir;
 
 			Button			*btn_skip;
 			Button			*btn_outdir;
@@ -198,7 +199,9 @@ namespace BonkEnc
 			Void			 ShowHideTitleInfo();
 			Void			 UpdateTitleInfo();
 
-			Void			 OnSelectDir();
+			Void			 OnBrowseForFolder();
+
+			Void			 OnSelectFolder();
 			Void			 OnSelectEncoder();
 
 			Void			 ToggleEditPopup();
