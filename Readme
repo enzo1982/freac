@@ -1,4 +1,4 @@
-fre:ac version 1.0.26
+fre:ac version 1.0.27
 
 fre:ac is a free and open source audio converter for various formats.
 It supports audio CD ripping and converts the following audio formats:
@@ -62,8 +62,8 @@ Requirements
 
 	Additional requirements for compiling the sources:
 
-		- MinGW GCC v4.0+ (http://www.mingw.org/) or Microsoft Visual C++ v10.0
-		- smooth v0.8.71.3 (http://www.smooth-project.org/)
+		- MinGW GCC v4.0+ (http://www.mingw.org/) or Microsoft Visual Studio 2015
+		- smooth v0.8.71.4 (http://www.smooth-project.org/)
 
 	Additional optional software:
 
@@ -95,15 +95,20 @@ Known problems
 History
 -------
 
-	Version 1.0.26 CVS (October 2015)
+	Version 1.0.27 CVS (November 2015)
+
+		- added Cantonese (Hong Kong) language support
+
+	Version 1.0.26 (October 2015)
 
 		- updated Serbian (Latin and Cyrillic) translations
 		- improved detection of concatenated MP3 files
-		- sped up opening Ogg Vorbis files with cover art
+		- sped up opening and saving Ogg Vorbis files with cover art
 		- read non-standard TOTALTRACKS and TOTALDISCS Vorbis Comment fields
 		- fill number of tracks metadata field when ripping audio CDs
 		- do not crash when Vorbis encoder fails to initialize
 		- fixed crash when trying to open invalid Ogg Vorbis files
+		- fixed crash when trying to create Ogg Vorbis files with very large cover art
 		- fixed crash when scrolling joblist while a tooltip is visible
 		- fixed Xing/LAME MP3 information tag parsing
 		- fixed edit box text disappearing in some cases in scaled mode
@@ -510,7 +515,8 @@ Special thanks to
 			   Eman Ali Fhoula (Arabic),
 			   Martin Deyanov (Bulgarian),
 			   Cois Wiid (Afrikaans),
-			   Xabier Aramendi (Basque)
+			   Xabier Aramendi (Basque),
+			   Kin Kwok (Cantonese, Hong Kong)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports
