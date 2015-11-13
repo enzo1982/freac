@@ -141,8 +141,8 @@ History
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
-		- added Estonian, Croatian, Portuguese, Bulgarian, Vietnamese, Hebrew, Arabic, Basque
-		  Afrikaans, Serbian (Cyrillic), Catalan, Valencian and Galician language support
+		- added Estonian, Croatian, Portuguese, Bulgarian, Vietnamese, Hebrew, Arabic, Basque, Afrikaans,
+		  Cantonese (Hong Kong), Serbian (Cyrillic), Catalan, Valencian and Galician language support
 		- added German, Spanish, Italian, Russian, Portuguese, Czech, Greek and Basque user guides
 		- added several translations for the installer
 		- converted input and output filters to BoCA components
@@ -298,7 +298,8 @@ Special thanks to
 			   Eman Ali Fhoula (Arabic),
 			   Martin Deyanov (Bulgarian),
 			   Cois Wiid (Afrikaans),
-			   Xabier Aramendi (Basque)
+			   Xabier Aramendi (Basque),
+			   Kin Kwok (Cantonese, Hong Kong)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports
