@@ -374,18 +374,8 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	edb_outdir = new FolderEditBox(NIL, Point(0, 27), Size(0, 0), 1024);
 	edb_outdir->SetOrientation(OR_LOWERLEFT);
-	list_outdir = new List();
-
-	for (Int i = 1; i <= 5; i++)
-	{
-		if (config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(i)), NIL) != NIL)
-		{
-			list_outdir->AddEntry(config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(i)), NIL));
-		}
-	}
-
-	edb_outdir->SetDropDownList(list_outdir);
 	edb_outdir->onSelectEntry.Connect(&LayerJoblist::OnSelectFolder, this);
+	list_outdir = new List();
 
 	UpdateOutputDir();
 
@@ -1563,6 +1553,20 @@ Void BonkEnc::LayerJoblist::UpdateOutputDir()
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	edb_outdir->SetText(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
+
+	/* Update combo box.
+	 */
+	list_outdir->RemoveAllEntries();
+
+	for (Int i = 1; i <= 5; i++)
+	{
+		if (config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(i)), NIL) != NIL)
+		{
+			list_outdir->AddEntry(config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(i)), NIL));
+		}
+	}
+
+	edb_outdir->SetDropDownList(list_outdir);
 }
 
 Void BonkEnc::LayerJoblist::OnBrowseForFolder()
@@ -1636,17 +1640,7 @@ Void BonkEnc::LayerJoblist::OnSelectFolder()
 
 	/* Update combo box.
 	 */
-	list_outdir->RemoveAllEntries();
-
-	for (Int i = 1; i <= 5; i++)
-	{
-		if (config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(i)), NIL) != NIL)
-		{
-			list_outdir->AddEntry(config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(i)), NIL));
-		}
-	}
-
-	edb_outdir->SetDropDownList(list_outdir);
+	UpdateOutputDir();
 }
 
 Void BonkEnc::LayerJoblist::OnSelectEncoder()
