@@ -99,6 +99,7 @@ Geschichte
 	Version 1.0.27 (November 2015)
 
 		- Sprachunterstützung für Kantonesisch (Hong Kong) hinzugefügt
+		- Probleme beim Umgang mit CDDB-Einträgen mit Zeilenumbrüchen behoben
 
 	Version 1.0.26 CVS (Oktober 2015)
 

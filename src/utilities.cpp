@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -469,15 +469,18 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 
 	for (Int k = 0, b = 0; k < string.Length(); k++)
 	{
-		if (string[k] == '\"')			{ rVal[k + b] = '\''; rVal[k + ++b] = '\''; }
+		if	(string[k] == '\"')	      { rVal[k + b] = '\''; rVal[k + ++b] = '\''; }
+		else if (string[k] == '\n')		b--;
+		else if (string[k] == '\r')		b--;
 		else if (string[k] == '?')		b--;
 		else if (string[k] == '|')		rVal[k + b] = '_';
 		else if (string[k] == '*')		b--;
 		else if (string[k] == '<')		rVal[k + b] = '(';
 		else if (string[k] == '>')		rVal[k + b] = ')';
 		else if (string[k] == ':')		b--;
-		else if (string[k] == '/' && repSlash)	rVal[k + b] = '-';
+		else if (string[k] == '/'  && repSlash)	rVal[k + b] = '-';
 		else if (string[k] == '\\' && repSlash)	rVal[k + b] = '-';
+		else if (string[k] == '\t')		rVal[k + b] = ' ';
 		else if (string[k] >= 256 &&
 			(!BonkEnc::currentConfig->useUnicodeNames ||
 			 !Setup::enableUnicode))	rVal[k + b] = '#';

@@ -98,6 +98,7 @@ History
 	Version 1.0.27 CVS (November 2015)
 
 		- added Cantonese (Hong Kong) language support
+		- fixed issues handling CDDB entries with line breaks
 
 	Version 1.0.26 (October 2015)
 

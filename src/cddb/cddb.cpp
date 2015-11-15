@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -211,14 +211,14 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 	content.Append("# ").Append("\n");
 
 	content.Append(FormatCDDBEntry("DISCID", cddbInfo.DiscIDToString()));
-	content.Append(FormatCDDBEntry("DTITLE", String(cddbInfo.dArtist).Append(" / ").Append(cddbInfo.dTitle)));
+	content.Append(FormatCDDBEntry("DTITLE", String(cddbInfo.dArtist).Replace("\n", " ").Trim().Append(" / ").Append(String(cddbInfo.dTitle).Replace("\n", " ").Trim())));
 	content.Append(FormatCDDBEntry("DYEAR", String::FromInt(cddbInfo.dYear)));
-	content.Append(FormatCDDBEntry("DGENRE", cddbInfo.dGenre));
+	content.Append(FormatCDDBEntry("DGENRE", String(cddbInfo.dGenre).Replace("\n", " ").Trim()));
 
 	for (Int j = 0; j < cddbInfo.trackTitles.Length(); j++)
 	{
-		if (cddbInfo.dArtist == "Various") content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), String(cddbInfo.trackArtists.GetNth(j)).Append(" / ").Append(cddbInfo.trackTitles.GetNth(j))));
-		else				   content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), cddbInfo.trackTitles.GetNth(j)));
+		if (cddbInfo.dArtist == "Various") content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), String(cddbInfo.trackArtists.GetNth(j)).Replace("\n", " ").Trim().Append(" / ").Append(String(cddbInfo.trackTitles.GetNth(j)).Replace("\n", " ").Trim())));
+		else				   content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), String(cddbInfo.trackTitles.GetNth(j)).Replace("\n", " ").Trim()));
 	}
 
 	content.Append(FormatCDDBEntry("EXTD", cddbInfo.comment));
@@ -228,7 +228,7 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 		content.Append(FormatCDDBEntry(String("EXTT").Append(String::FromInt(k)), cddbInfo.trackComments.GetNth(k)));
 	}
 
-	content.Append(FormatCDDBEntry("PLAYORDER", cddbInfo.playOrder));
+	content.Append(FormatCDDBEntry("PLAYORDER", String(cddbInfo.playOrder).Replace("\n", " ").Trim()));
 
 	return content;
 }
@@ -267,12 +267,17 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 
 			if (cddbInfo.dTitle == NIL) cddbInfo.dTitle = cddbInfo.dArtist;
 
+			cddbInfo.dArtist  = cddbInfo.dArtist.Replace("\n", " ").Trim();
+			cddbInfo.dTitle	  = cddbInfo.dTitle.Replace("\n", " ").Trim();
+
 			cddbInfo.oDArtist = cddbInfo.dArtist;
-			cddbInfo.oDTitle = cddbInfo.dTitle;
+			cddbInfo.oDTitle  = cddbInfo.dTitle;
 		}
 		else if (line.StartsWith("DGENRE"))
 		{
 			for (Int l = 7; l < line.Length(); l++) cddbInfo.dGenre[l - 7] = line[l];
+
+			cddbInfo.dGenre  = cddbInfo.dGenre.Replace("\n", " ").Trim();
 
 			cddbInfo.oDGenre = cddbInfo.dGenre;
 		}
@@ -318,6 +323,9 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 				for (Int l = k + 1; l < line.Length(); l++) title[l - k - 1] = line[l];
 			}
 
+			artist = artist.Replace("\n", " ").Trim();
+			title  = title.Replace("\n", " ").Trim();
+
 			cddbInfo.trackArtists.Add(artist, track.ToInt());
 			cddbInfo.trackTitles.Add(title, track.ToInt());
 
@@ -352,6 +360,8 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 		else if (line.StartsWith("PLAYORDER"))
 		{
 			for (Int k = 10; k < line.Length(); k++) cddbInfo.playOrder[k - 10] = line[k];
+
+			cddbInfo.playOrder = cddbInfo.playOrder.Replace("\n", " ").Trim();
 		}
 		else if (line.StartsWith("# Revision: "))
 		{
