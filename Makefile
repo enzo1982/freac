@@ -53,45 +53,38 @@ CMDNAME	= $(BIN)/freaccmd$(EXECUTABLE)
 DLLNAME	= $(BIN)/freac$(SHARED)
 LIBNAME	= $(OBJECTS)/libfreac.a
 
-COMPILER      = gcc
-RESCOMP	      = windres
-LINKER	      = gcc
-REMOVER	      = rm
-ECHO	      = echo
-COMPILER_OPTS = -I$(INCLUDE) -fvisibility=hidden -c
-RESCOMP_OPTS  = -O coff
-LINKER_OPTS   = -lstdc++
-REMOVER_OPTS  = -f
-
-ifeq ($(BUILD_FREEBSD),True)
-	COMPILER = clang
-	LINKER	 = clang
-endif
+RESCOMP	     = windres
+REMOVER	     = rm
+ECHO	     = echo
+CCOPTS	     = -I$(INCLUDE) -fvisibility=hidden -c
+LDOPTS	     = -lstdc++
+RESCOMP_OPTS = -O coff
+REMOVER_OPTS = -f
 
 ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
-	COMPILER_OPTS		+= -D BUILD_VIDEO_DOWNLOADER
+	CCOPTS			+= -D BUILD_VIDEO_DOWNLOADER
 endif
 
 ifeq ($(BUILD_WIN32),True)
-	COMPILER_OPTS		+= -DUNICODE -D_UNICODE -I$(CDK)/include
+	CCOPTS			+= -DUNICODE -D_UNICODE -I$(CDK)/include
 
-	LINKER_OPTS		+= -L$(LIB) -lsmooth -Wl,--dynamicbase,--nxcompat
+	LDOPTS			+= -L$(LIB) -lsmooth -Wl,--dynamicbase,--nxcompat
 
-	LINKER_OPTS_DLL		+= --shared -lboca -lws2_32 -Wl,--out-implib,$(LIBNAME)
-	LINKER_OPTS_GUI		+= -mwindows
+	LDOPTS_DLL		+= --shared -lboca -lws2_32 -Wl,--out-implib,$(LIBNAME)
+	LDOPTS_GUI		+= -mwindows
 
 	ifeq ($(BUILD_X86),True)
-		RESCOMP_OPTS	 += --target=pe-i386
+		RESCOMP_OPTS	+= --target=pe-i386
 	else ifeq ($(BUILD_X86_64),True)
-		RESCOMP_OPTS	 += --target=pe-x86-64
+		RESCOMP_OPTS	+= --target=pe-x86-64
 	endif
 else
-	COMPILER_OPTS		+= -fPIC
+	CCOPTS			+= -fPIC
 
 	ifneq ($(BUILD_SOLARIS),True)
 	ifneq ($(BUILD_HAIKU),True)
 		ifneq ($(BUILD_QNX),True)
-			CCOPTS += -pthread
+			CCOPTS	+= -pthread
 		endif
 
 		ifneq ($(BUILD_LINUX),True)
@@ -106,19 +99,19 @@ else
 	endif
 	endif
 
-	LINKER_OPTS		+= -L$(prefix)/lib -lsmooth-$(SMOOTHVER)
+	LDOPTS			+= -L$(prefix)/lib -lsmooth-$(SMOOTHVER)
 
-	LINKER_OPTS_DLL		+= -lboca-$(BOCAVER)
+	LDOPTS_DLL		+= -lboca-$(BOCAVER)
 
 	ifeq ($(BUILD_OSX),True)
-		LINKER_OPTS_DLL	+= -dynamiclib -framework Cocoa -framework IOKit -Wl,-dylib_install_name,freac$(SHARED) -Wl,-headerpad,80
+		LDOPTS_DLL	+= -dynamiclib -framework Cocoa -framework IOKit -Wl,-dylib_install_name,freac$(SHARED) -Wl,-headerpad,80
 	else
-		LINKER_OPTS_DLL	+= --shared
+		LDOPTS_DLL	+= --shared
 	endif
 
 	ifeq ($(BUILD_OPENBSD),True)
-		LINKER_OPTS_GUI	+= -L/usr/X11R6/lib -L/usr/local/lib -logg -lvorbis -lvorbisfile
-		LINKER_OPTS_CMD	+= -L/usr/X11R6/lib -L/usr/local/lib -logg -lvorbis -lvorbisfile
+		LDOPTS_GUI	+= -L/usr/X11R6/lib -L/usr/local/lib -logg -lvorbis -lvorbisfile
+		LDOPTS_CMD	+= -L/usr/X11R6/lib -L/usr/local/lib -logg -lvorbis -lvorbisfile
 	endif
 endif
 
@@ -182,12 +175,14 @@ endif
 clean:
 	$(ECHO) -n Cleaning directories...
 	$(REMOVER) $(REMOVER_OPTS) $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME) $(LIBNAME)
+ifneq ($(SRCDIR),$(CURDIR))
 	rmdir $(BIN) $(OBJECTS) 2> /dev/null || true
+endif
 	$(ECHO) done.
 
 $(DLLNAME): $(DLLOBJECTS)
 	$(ECHO) Linking $(DLLNAME)...
-	$(LINKER) $(DLLOBJECTS) $(LINKER_OPTS) $(LINKER_OPTS_DLL) $(LDFLAGS) -o $@
+	$(LD) $(DLLOBJECTS) $(LDOPTS) $(LDOPTS_DLL) $(LDFLAGS) -o $@
 ifeq ($(BUILD_WIN32),True)
 ifeq ($(BUILD_X86),True)
 	countbuild BuildNumber
@@ -197,7 +192,7 @@ endif
 
 $(EXENAME): $(EXEOBJECTS) $(RESOBJECTS)
 	$(ECHO) -n Linking $(EXENAME)...
-	$(LINKER) $(EXEOBJECTS) $(RESOBJECTS) $(LINKER_OPTS) $(LINKER_OPTS_GUI) $(LDFLAGS) -o $@
+	$(LD) $(EXEOBJECTS) $(RESOBJECTS) $(LDOPTS) $(LDOPTS_GUI) $(LDFLAGS) -o $@
 ifeq ($(BUILD_HAIKU),True)
 	xres -o $(EXENAME) resources/binary/freac.rsrc
 endif
@@ -205,7 +200,7 @@ endif
 
 $(CMDNAME): $(CMDOBJECTS) $(RESOBJECTS)
 	$(ECHO) -n Linking $(CMDNAME)...
-	$(LINKER) $(CMDOBJECTS) $(RESOBJECTS) $(LINKER_OPTS) $(LINKER_OPTS_CMD) $(LDFLAGS) -o $@
+	$(LD) $(CMDOBJECTS) $(RESOBJECTS) $(LDOPTS) $(LDOPTS_CMD) $(LDFLAGS) -o $@
 ifeq ($(BUILD_HAIKU),True)
 	xres -o $(CMDNAME) resources/binary/freac.rsrc
 endif
@@ -213,77 +208,77 @@ endif
 
 $(OBJECTS)/%.o: $(SRC)/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/cddb/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/dialogs/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/cddb_%.o: $(SRC)/dialogs/cddb/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/dialog_%.o: $(SRC)/dialogs/config/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/dialogs/config/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/engine_%.o: $(SRC)/engine/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/gui/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/jobs/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/job_%.o: $(SRC)/jobs/engine/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/job_%.o: $(SRC)/jobs/joblist/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/job_%.o: $(SRC)/jobs/other/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/loader/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/support/%.cpp
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(CXXFLAGS) $< -o $@
+	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/support/%.mm
 	$(ECHO) -n Compiling $<...
-	$(COMPILER) $(COMPILER_OPTS) $(OBJCXXFLAGS) $< -o $@
+	$(OBJCXX) $(CCOPTS) $(OBJCXXFLAGS) $< -o $@
 	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(RESOURCES)/%.rc $(INCLUDE)/resources.h $(BINRES)/freac.ico

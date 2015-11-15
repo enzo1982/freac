@@ -6,7 +6,10 @@ BOCAVER	  = 1.0
 # Find source folder and set vpath
 SRCDIR = $(abspath $(dir $(firstword $(MAKEFILE_LIST))))
 
+vpath %.c   $(SRCDIR)
+vpath %.cc  $(SRCDIR)
 vpath %.cpp $(SRCDIR)
+vpath %.m   $(SRCDIR)
 vpath %.mm  $(SRCDIR)
 vpath %.rc  $(SRCDIR)
 vpath %.ico $(SRCDIR)
@@ -76,19 +79,21 @@ else
 		BUILD_OPENBSD = True
 	else ifeq ($(UNAME),NetBSD)
 		BUILD_NETBSD = True
-	else ifeq ($(UNAME),Haiku)
-		BUILD_HAIKU = True
 	else ifeq ($(UNAME),SunOS)
 		BUILD_SOLARIS = True
+	else ifeq ($(UNAME),Haiku)
+		BUILD_HAIKU = True
 	else ifeq ($(UNAME),GNU)
 		BUILD_GNU = True
 	else ifeq ($(UNAME),QNX)
 		BUILD_QNX = True
 	else ifeq ($(UNAME),Darwin)
+#		Set shared object extension
 		SHARED = .dylib
 
 		BUILD_OSX = True
 
+#		Build universal binaries
 		ifneq ($(BUILD_X86),False)
 			BUILD_X86 = True
 		endif
@@ -102,6 +107,20 @@ else
 endif
 
 # Set default commands
+ifndef OBJC
+	OBJC	= $(CC)
+endif
+
+ifndef OBJCXX
+	OBJCXX	= $(CC)
+endif
+
+ifeq ($(LD),ld)
+	LD	= $(CC)
+endif
+
+LDCONFIG	= /sbin/ldconfig
+
 INSTALL		= install
 INSTALL_PROGRAM = $(INSTALL)
 INSTALL_DATA	= $(INSTALL) -m 644
@@ -126,7 +145,7 @@ else ifeq ($(BUILD_OSX),True)
 endif
 
 # Set install folders
-ifeq ($(prefix),)
+ifndef prefix
 	prefix = /usr/local
 
 	ifeq ($(BUILD_OSX),True)
@@ -154,8 +173,15 @@ ifeq ($(BUILD_HAIKU),True)
 endif
 
 # Set release specific options
-ifeq ($(config),release)
-	config =
+ifeq ($(findstring release,$(config)),release)
+	ifeq ($(BUILD_FREEBSD),True)
+		override CC	= clang
+		override CXX	= clang
+		override OBJC	= clang
+		override OBJCXX	= clang
+
+		override LD	= clang
+	endif
 
 	override CFLAGS	     = -pipe -g0 -Wall -Os
 	override CXXFLAGS    =
@@ -210,3 +236,31 @@ ifeq ($(config),release)
 	endif
 	endif
 endif
+
+# Set debug specific options
+ifeq ($(findstring debug,$(config)),debug)
+	override CFLAGS	     = -pipe -g -Wall
+	override CXXFLAGS    =
+	override OBJCFLAGS   =
+	override OBJCXXFLAGS =
+	override LDFLAGS     = -pipe
+
+	ifneq ($(EXCEPTION),True)
+		override CFLAGS += -fno-exceptions
+	endif
+
+	override CXXFLAGS    += $(CFLAGS)
+	override OBJCFLAGS   += $(CFLAGS)
+	override OBJCXXFLAGS += $(CFLAGS)
+
+	ifneq ($(BUILD_WIN32),True)
+	ifneq ($(BUILD_OSX),True)
+	ifneq ($(BUILD_LINUX),True)
+		override LDFLAGS += -Wl,-rpath,.
+	endif
+	endif
+	endif
+endif
+
+# Clear config variable
+config =
