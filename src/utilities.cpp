@@ -282,6 +282,8 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 	for (Int k = 0, b = 0; k < string.Length(); k++)
 	{
 		if	(string[k] == '\"')		   { rVal[k + b] = '\''; rVal[k + ++b] = '\''; }
+		else if (string[k] == '\n')		     b--;
+		else if (string[k] == '\r')		     b--;
 		else if (string[k] == '?')		     b--;
 		else if (string[k] == '|')		     rVal[k + b] = '_';
 		else if (string[k] == '*')		     b--;
@@ -291,6 +293,8 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 		else if (string[k] == '/'  && replaceSlash)  rVal[k + b] = '-';
 		else if (string[k] == '\\' && replaceSlash)  rVal[k + b] = '-';
 		else if (string[k] == ' '  && replaceSpaces) rVal[k + b] = '_';
+		else if (string[k] == '\t' && replaceSpaces) rVal[k + b] = '_';
+		else if (string[k] == '\t')		     rVal[k + b] = ' ';
 		else if (string[k] >= 256  && !useUnicode)   rVal[k + b] = '#';
 		else					     rVal[k + b] = string[k];
 	}
