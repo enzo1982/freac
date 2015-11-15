@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -290,13 +290,9 @@ Bool BonkEnc::CDDBBatch::QueryAll()
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &oCddbInfo)
+Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &cddbInfo)
 {
 	// Submit and delete entry if successful
-
-	CDDBInfo	 cddbInfo = oCddbInfo;
-
-	cddbInfo.revision++;
 
 	CDDBRemote	 cddb(config);
 

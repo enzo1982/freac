@@ -169,6 +169,8 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 					else if (cddbInfo.category == "data")	    cddbInfo.category = "unknown";
 
 					foundCollision = True;
+
+					break;
 				}
 			}
 

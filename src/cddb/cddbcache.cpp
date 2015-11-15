@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -79,9 +79,12 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	config->freedb_dir = String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter());
 
-	CDDBLocal	 cddbLocal(config);
+	// Delete existing cache entry
+	File(String(config->freedb_dir).Append(nCddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(nCddbInfo.DiscIDToString())).Delete();
 
 	// Save entry
+	CDDBLocal	 cddbLocal(config);
+
 	cddbLocal.Submit(nCddbInfo);
 
 	// Restore real freedb path

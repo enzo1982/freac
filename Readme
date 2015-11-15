@@ -99,6 +99,7 @@ History
 
 		- added Cantonese (Hong Kong) language support
 		- fixed issues handling CDDB entries with line breaks
+		- fixed inability to send new CDDB entries when there was a disc-id collision
 
 	Version 1.0.26 (October 2015)
 

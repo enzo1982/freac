@@ -100,6 +100,7 @@ Geschichte
 
 		- Sprachunterstützung für Kantonesisch (Hong Kong) hinzugefügt
 		- Probleme beim Umgang mit CDDB-Einträgen mit Zeilenumbrüchen behoben
+		- Problem beim Senden von neuen CDDB-Einträgen behoben, wenn eine Disc-ID-Kollision vorlag
 
 	Version 1.0.26 CVS (Oktober 2015)
 
