@@ -67,7 +67,8 @@ BonkEnc::ConfigureLanguage::ConfigureLanguage()
 #elif defined __APPLE__
 	if (Directory(GUI::Application::GetApplicationDirectory().Append("translator.app")).Exists())
 #else
-	if (File(GUI::Application::GetApplicationDirectory().Append("translator")).Exists())
+	if (File(GUI::Application::GetApplicationDirectory().Append("smooth-translator")).Exists() ||
+	    File(GUI::Application::GetApplicationDirectory().Append("translator")).Exists())
 #endif
 	{
 		combo_language->SetWidth(combo_language->GetWidth() - btn_edit->GetWidth() - 8);
@@ -126,7 +127,7 @@ Void BonkEnc::ConfigureLanguage::EditLanguageFile()
 #if defined __WIN32__
 	ShellExecute(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory().Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()))).Append("\""), String("."), SW_SHOW);
 #else
-	String	 command = String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("translator\"");
+	String	 command = String("\"").Append(GUI::Application::GetApplicationDirectory()).Append(File(GUI::Application::GetApplicationDirectory().Append("smooth-translator")).Exists() ? "smooth-translator" : "translator").Append("\"");
 
 #if defined __APPLE__
 	/* Check if OS X version is at least 10.6 (Darwin 10.0) as the open
