@@ -215,11 +215,11 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 	titles.RemoveAll();
 	categories.RemoveAll();
 
-	/* No match found
+	/* No match found.
 	 */
 	if (str.StartsWith("202")) return QUERY_RESULT_NONE;
 
-	/* Exact match
+	/* Exact match.
 	 */
 	if (str.StartsWith("200"))
 	{
@@ -249,7 +249,7 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 		return QUERY_RESULT_SINGLE;
 	}
 
-	/* Multiple exact matches
+	/* Multiple exact matches.
 	 */
 	if (str.StartsWith("210") || str.StartsWith("211"))
 	{

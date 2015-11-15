@@ -36,7 +36,7 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
 
-	/* Read saved queries from XML
+	/* Read saved queries from XML.
 	 */
 	XML::Document	*document = new XML::Document();
 
@@ -57,7 +57,7 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 
 	delete document;
 
-	/* Read saved submits from XML and database cache
+	/* Read saved submits from XML and database cache.
 	 */
 	document = new XML::Document();
 
@@ -125,11 +125,11 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 
 	String	 configDir = config->configDir;
 
-	/* Save queued queries
+	/* Save queued queries.
 	 */
 	if (queries.Length() == 0)
 	{
-		/* Delete queries file if no more saved queries exist
+		/* Delete queries file if no more saved queries exist.
 		 */
 		File(String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml")).Delete();
 	}
@@ -153,11 +153,11 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 		delete root;
 	}
 
-	/* Save queued submits
+	/* Save queued submits.
 	 */
 	if (submits.Length() == 0)
 	{
-		/* Delete submits file if no more saved submits exist
+		/* Delete submits file if no more saved submits exist.
 		 */
 		File(String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml")).Delete();
 	}
@@ -211,7 +211,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 
 	String	 configDir = config->configDir;
 
-	/* Create directory for entry
+	/* Create directory for entry.
 	 */
 	Directory	 cddbDir(String(configDir).Append("cddb"));
 
@@ -221,7 +221,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 
 	if (!categoryDir.Exists()) categoryDir.Create();
 
-	/* Save current freedb path
+	/* Save current freedb path.
 	 */
 	String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
@@ -229,7 +229,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 
 	CDDBLocal	 cddb;
 
-	/* Save entry to batch queue
+	/* Save entry to batch queue.
 	 */
 	cddb.SetActiveDrive(activeDriveID);
 	cddb.Submit(cddbInfo);
@@ -250,7 +250,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 
 	submits.Add(nCddbInfo);
 
-	/* Restore real freedb path
+	/* Restore real freedb path.
 	 */
 	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, configFreedbDir);
 
@@ -277,7 +277,7 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	/* Query entry and delete entry if successful
+	/* Query entry and delete entry if successful.
 	 */
 	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
 	    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
@@ -306,7 +306,7 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 
 		if (cddbInfo == NIL) return QUERY_RESULT_NONE;
 
-		/* Save current freedb path
+		/* Save current freedb path.
 		 */
 		String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
@@ -316,11 +316,11 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 
 		cddb.SetUpdateTrackOffsets(False);
 
-		/* Save entry to local cache
+		/* Save entry to local cache.
 		 */
 		cddb.Submit(cddbInfo);
 
-		/* Restore real freedb path
+		/* Restore real freedb path.
 		 */
 		config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, configFreedbDir);
 
@@ -358,14 +358,10 @@ Bool BonkEnc::CDDBBatch::QueryAll()
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &oCddbInfo)
+Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &cddbInfo)
 {
-	/* Submit and delete entry if successful
+	/* Submit and delete entry if successful.
 	 */
-	CDDBInfo	 cddbInfo = oCddbInfo;
-
-	cddbInfo.revision++;
-
 	CDDBRemote	 cddb;
 
 	cddb.SetUpdateTrackOffsets(False);

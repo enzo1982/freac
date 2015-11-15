@@ -45,15 +45,15 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 	if (cddbInfo != NIL)
 	{
-		/* Softcache entry found
+		/* Softcache entry found.
 		 */
 		return cddbInfo;
 	}
 
-	/* Try to find an entry in the persistant cache
+	/* Try to find an entry in the persistant cache.
 	 */
 
-	/* Save current freedb path
+	/* Save current freedb path.
 	 */
 	String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
@@ -61,7 +61,7 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 	CDDBLocal	 cddbLocal;
 
-	/* Query cache entry
+	/* Query cache entry.
 	 */
 	Int	 result = cddbLocal.Query(discID);
 
@@ -71,11 +71,12 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 		cddbLocal.Read(cddbLocal.GetNthCategory(0), cddbLocal.GetNthDiscID(0), newInfo);
 
-		// Add entry to softcache
+		/* Add entry to softcache.
+		 */
 		infoCache.Add(newInfo, discID);
 	}
 
-	/* Restore real freedb path
+	/* Restore real freedb path.
 	 */
 	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, configFreedbDir);
 
@@ -89,7 +90,7 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	if (cddbInfo != NIL)
 	{
-		/* Delete existing cache entry
+		/* Delete existing cache entry.
 		 */
 		infoCache.Remove(nCddbInfo.discID);
 	}
@@ -98,22 +99,26 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) return True;
 
-	/* Save new entry to the persistant cache
+	/* Save new entry to the persistant cache.
 	 */
 
-	/* Save current freedb path
+	/* Save current freedb path.
 	 */
 	String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
 	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
 
+	/* Delete existing cache entry.
+	 */
+	File(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(nCddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(nCddbInfo.DiscIDToString())).Delete();
+
+	/* Save entry.
+	 */
 	CDDBLocal	 cddbLocal;
 
-	/* Save entry
-	 */
 	cddbLocal.Submit(nCddbInfo);
 
-	/* Restore real freedb path
+	/* Restore real freedb path.
 	 */
 	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, configFreedbDir);
 

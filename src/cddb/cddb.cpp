@@ -226,8 +226,8 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 
 	if (cddbInfo.revision == 0)
 	{
-		// This is a new entry; see if it already exists in another category
-
+		/* This is a new entry; see if it already exists in another category.
+		 */
 		if (query == QUERY_RESULT_SINGLE || query == QUERY_RESULT_MULTIPLE)
 		{
 			cddbInfo.category = GetNthCategory(0);
@@ -246,8 +246,8 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 			{
 				if (cddbInfo.trackOffsets.GetNth(i) != revisionInfo.trackOffsets.GetNth(i))
 				{
-					// found disc ID collision
-
+					/* Found disc ID collision. Try next category.
+					 */
 					if	(cddbInfo.category == "rock")	    cddbInfo.category = "misc";
 					else if (cddbInfo.category == "misc")	    cddbInfo.category = "newage";
 					else if (cddbInfo.category == "newage")	    cddbInfo.category = "soundtrack";
@@ -262,14 +262,14 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 
 					foundCollision = True;
 
-
+					break;
 				}
 			}
 
 			if (!foundCollision)
 			{
-				// increment revision of old entry
-
+				/* Increment revision of old entry.
+				 */
 				cddbInfo.revision = revisionInfo.revision + 1;
 
 				break;

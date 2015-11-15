@@ -202,19 +202,19 @@ Int BonkEnc::CDDBLocal::Query(Int discid)
 
 Int BonkEnc::CDDBLocal::Query(const String &queryString)
 {
-	/* Try to find Unix style record first; if no match is found, try Windows style
+	/* Try to find Unix style record first; if no match is found, try Windows style.
 	 */
 	if (!QueryUnixDB(queryString)) QueryWinDB(queryString);
 
-	/* No match found
+	/* No match found.
 	 */
 	if (categories.Length() == 0) return QUERY_RESULT_NONE;
 
-	/* Exact match
+	/* Exact match.
 	 */
 	if (categories.Length() == 1) return QUERY_RESULT_SINGLE;
 
-	/* Multiple exact matches
+	/* Multiple exact matches.
 	 */
 	if (categories.Length() >  1) return QUERY_RESULT_MULTIPLE;
 
@@ -246,12 +246,12 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 
 	String	  content = FormatCDDBRecord(cddbInfo);
 
-	/* See if we have a Windows or Unix style DB
+	/* See if we have a Windows or Unix style DB.
 	 */
 	Directory dir	  = Directory(String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(cddbInfo.category));
 	String	  pattern = String("??to??");
 
-	/* Create directory if it doesn't exist
+	/* Create directory if it doesn't exist.
 	 */
 	dir.Create();
 
