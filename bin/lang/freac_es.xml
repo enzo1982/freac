@@ -593,7 +593,7 @@
       <section name="CueSheet">
 	<entry id="12000" string="Title information">Información del título</entry>
 	<entry id="12001" string="Read tags from referenced files">Leer etiquetas de los archivos de referencia</entry>
-	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">Preferir metadatos de cue sheet sobre los archivos de referencia</entry>
+	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">Preferir metadatos de cue sheet que etiquetas de los archivos de referencia</entry>
 	<entry id="12003" string="Alternative files">Archivos alternativos</entry>
 	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">Buscar alternativas de compresión si los archivos Wave de referencia no pueden localizarse</entry>
 	<entry id="12005" string="Error handling">Error en proceso</entry>
