@@ -462,14 +462,19 @@ Void BonkEnc::BonkEncCommandline::OnEncodeTrack(const Track &track, const String
 {
 	static Bool	 firstTime = True;
 
-	Bool	 quiet = ScanForParameter("-quiet", NULL);
+	BoCA::Config	*config = BoCA::Config::Get();
+	Bool		 quiet	= ScanForParameter("-quiet", NULL);
 
 	if (!quiet)
 	{
 		if (!firstTime) Console::OutputString("done.\n");
 		else		firstTime = False;
 
-		Console::OutputString(String("Processing file: ").Append(track.origFilename).Append("..."));
+		String	 currentFile = track.origFilename;
+
+		if (currentFile.StartsWith("device://cdda:")) currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 16));
+
+		Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
 	}
 }
 
