@@ -123,7 +123,7 @@
     <entry id="110" string="Audio processing">聲音處理</entry>
     <entry id="111" string="Set bitrate:">位元率：</entry>
     <entry id="112" string="Set ratio:">比率：</entry>
-    <entry id="113" string="Set quality:">品質：</entry>
+    <entry id="113" string="Set quality:">推算品質：</entry>
     <entry id="114" string="worse">較差</entry>
     <entry id="115" string="better">較好</entry>
     <entry id="116" string="Auto">自動</entry>
@@ -385,7 +385,7 @@
     <entry id="381" string="Apodization">訊號處理</entry>
     <entry id="382" string="Apodization function(s):">視窗功能：</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">可以指定多個函數，每個函數使用分號來分隔。</entry>
-    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">啟動%1時可自動進行網上更新檢查。&#10;&#10;要求%1於啟動時自動檢查更新嗎？</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">啟動%1時可自動進行更新檢查。&#10;&#10;要求%1於啟動時自動檢查更新嗎？</entry>
     <entry id="385" string="Cannot access input file: %1">無法存取原始檔案：%1</entry>
     <entry id="386" string="Cannot create output file: %1">無法建立輸出檔案：%1</entry>
     <entry id="387" string="File not found">未找到檔案</entry>
@@ -408,9 +408,9 @@
     <entry id="404" string="Target bitrate">目標位元率</entry>
     <entry id="405" string="Set drive speed limit:">限定光碟機速度：</entry>
     <entry id="406" string="Support this project">捐助方式</entry>
-    <entry id="407" string="Please support this project!">請支持本企劃。</entry>
+    <entry id="407" string="Please support this project!">請支持本企劃</entry>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">%1雖然免費，但持續開發需要資金。&#10;&#10;請按以下任何按鈕透過PayPal捐助：</entry>
-    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">%1接受PayPal直接捐助。&#10;&#10;電子轉帳或郵寄支票，請聯絡%1。</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">本企劃接受PayPal：%1直接捐助。&#10;&#10;電子轉帳或郵寄支票，請聯絡%1。</entry>
     <entry id="410" string="usd">usd</entry>
     <entry id="411" string="en">en</entry>
     <entry id="412" string="Thank you very much!">多謝</entry>
