@@ -90,10 +90,10 @@
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings">設定</entry>
+	<entry id="1300" string="General settings">喜好設定</entry>
 	<entry id="1301" string="Configure selected encoder">設定所選編碼器</entry>
-	<entry id="1302" string="Active CD-ROM drive">可用的CD-ROM機</entry>
-	<entry id="1303" string="Active configuration">活躍工作範本</entry>
+	<entry id="1302" string="Active CD-ROM drive">使用的CD-ROM機</entry>
+	<entry id="1303" string="Active configuration">使用的工作範本</entry>
 	<entry id="1304" string="Default configuration">預設工作範本</entry>
       </section>
 
@@ -129,7 +129,7 @@
       <entry id="2005" string="Submit CDDB data">提交CDDB資料</entry>
       <entry id="2006" string="Configure general settings">喜好設定</entry>
       <entry id="2007" string="Configure the selected audio encoder">設定所選聲音編碼</entry>
-      <entry id="2008" string="Start the encoding process">開始編碼</entry>
+      <entry id="2008" string="Start the encoding process">開始編碼（可選取編碼器）</entry>
       <entry id="2009" string="Pause/resume encoding">暫停╱繼續編碼</entry>
       <entry id="2010" string="Stop encoding">停止編碼</entry>
     </section>
@@ -180,7 +180,7 @@
       <entry id="3042" string="Audio Files">聲音檔</entry>
       <entry id="3043" string="All Files">全部檔案</entry>
       <entry id="3044" string="Playlist Files">播放清單檔案</entry>
-      <entry id="3045" string="Active decoder">活躍解碼器</entry>
+      <entry id="3045" string="Active decoder">使用的解碼器</entry>
       <entry id="3046" string="Joblist">工作清單</entry>
       <entry id="3047" string="unknown">未知</entry>
       <entry id="3048" string="Other">其他</entry>
@@ -214,7 +214,7 @@
       </section>
     </section>
 
-   <section name="Jobs">
+    <section name="Jobs">
       <entry id="3500" string="Jobs">工作</entry>
       <entry id="3501" string="Progress">進度</entry>
       <entry id="3502" string="Errors / Warnings">錯誤╱警告</entry>
@@ -237,7 +237,7 @@
 	<entry id="4008" string="Various artists">多個演出者</entry>
 	<entry id="4009" string="Data track">有曲目編號的資料段</entry>
 	<entry id="4010" string="Submit to online database later">稍後提交到網上資料庫</entry>
-	<entry id="4011" string="Active CD-ROM drive">可用的CD-ROM機</entry>
+	<entry id="4011" string="Active CD-ROM drive">使用的CD-ROM機</entry>
 
 	<section name="Errors">
 	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">連接freedb伺服器時發生錯誤。</entry>
@@ -304,7 +304,7 @@
       <entry id="5001" string="Encoders">編碼器</entry>
       <entry id="5002" string="Playlists">播放清單</entry>
       <entry id="5003" string="Language">語言</entry>
-      <entry id="5004" string="Component configuration">元件</entry>
+      <entry id="5004" string="Component configuration">設定編碼器</entry>
       <entry id="5005" string="CDDB">CDDB</entry>
       <entry id="5006" string="Interface">介面</entry>
       <entry id="5007" string="Tags">標籤</entry>
@@ -312,18 +312,18 @@
       <entry id="5009" string="Decoders">解碼器</entry>
       <entry id="5010" string="Output">輸出</entry>
       <entry id="5011" string="DSP">聲音調教</entry>
-      <entry id="5012" string="Extensions">副檔名</entry>
+      <entry id="5012" string="Extensions">延伸</entry>
       <entry id="5013" string="Other">其他</entry>
-      <entry id="5014" string="Active configuration">活躍工作範本</entry>
+      <entry id="5014" string="Active configuration">使用的工作範本</entry>
       <entry id="5015" string="New">新</entry>
       <entry id="5016" string="Delete">刪除</entry>
-      <entry id="5017" string="Command line arguments">指令行分歧</entry>
-      <entry id="5018" string="Resulting arguments string">分歧結果字串</entry>
+      <entry id="5017" string="Command line arguments">指令行參數</entry>
+      <entry id="5018" string="Resulting arguments string">參數字串</entry>
       <entry id="5019" string="Default configuration">預設工作範本</entry>
       <entry id="5020" string="New configuration">新工作範本</entry>
       <entry id="5021" string="Ripper">翻錄器</entry>
       <entry id="5022" string="Settings">選項</entry>
-      <entry id="5023" string="Resources">資源</entry>
+      <entry id="5023" string="Resources">系統資源</entry>
       <entry id="5024" string="Verifiers">驗證器</entry>
       <entry id="5025" string="Taggers">標籤器</entry>
 
@@ -430,7 +430,7 @@
 	<entry id="5517" string="Read chapters from files">從檔案讀取章節</entry>
 	<entry id="5518" string="Write chapters to files">寫入章節到檔案</entry>
 	<entry id="5519" string="Chapter format">章節格式</entry>
-	<entry id="5520" string="both">兩皆</entry>
+	<entry id="5520" string="both">兩者</entry>
 	<entry id="5521" string="Special fields">特別項</entry>
 	<entry id="5522" string="Write CD table of contents">寫入鐳射唱片目錄</entry>
 	<entry id="5523" string="Preserve Replay Gain information">保留播放增益資訊</entry>
@@ -463,10 +463,16 @@
       </section>
 
       <section name="Resources">
-	<entry id="5700" string="Parallel processing">平衡處理</entry>
-	<entry id="5701" string="Enable parallel processing">啟用平衡處理</entry>
+	<entry id="5700" string="Parallel processing">並行處理</entry>
+	<entry id="5701" string="Enable parallel processing">啟用並行處理</entry>
 	<entry id="5702" string="Number of conversion threads">轉碼使用的執行緒數量</entry>
 	<entry id="5703" string="auto">自動</entry>
+	<entry id="5704" string="Process priority">優先權</entry>
+	<entry id="5705" string="lowest">最低</entry>
+	<entry id="5706" string="lower">較低</entry>
+	<entry id="5707" string="normal">一般</entry>
+	<entry id="5708" string="higher">較高</entry>
+	<entry id="5709" string="highest">最高</entry>
       </section>
 
       <section name="Verification">
@@ -480,7 +486,7 @@
 
     <section name="About">
       <entry id="6000" string="About %1">關於%1</entry>
-      <entry id="6001" string="Translated by %1.">翻者：%1</entry>
+      <entry id="6001" string="Translated by %1.">譯者：%1</entry>
       <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">本程式按GNU General Public License發行。</entry>
     </section>
 
@@ -488,7 +494,7 @@
       <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">有%1的更新存在。&#10;觀看更新清單嗎？</entry>
       <entry id="6101" string="There are no updates available at the moment!">目前並無更新。</entry>
       <entry id="6102" string="Check for updates at startup">啟動時檢查更新</entry>
-      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">啟動%1時可自動進行網上更新檢查。&#10;&#10;要求%1於啟動時自動檢查更新嗎？</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">啟動%1時可自動進行更新檢查。&#10;&#10;要求%1於啟動時自動檢查更新嗎？</entry>
     </section>
 
     <section name="Tips">
@@ -550,7 +556,7 @@
     </section>
 
     <section name="Ripper">
-      <entry id="9000" string="Active CD-ROM drive">可用的CD-ROM機</entry>
+      <entry id="9000" string="Active CD-ROM drive">使用的CD-ROM機</entry>
       <entry id="9001" string="Set drive speed limit">限定光碟機速度</entry>
       <entry id="9002" string="CD information">CD資訊</entry>
       <entry id="9003" string="Read CD Text">讀取CD文字</entry>
@@ -586,12 +592,12 @@
 
       <section name="mpg123">
 	<entry id="11000" string="Decoder">解碼器</entry>
-	<entry id="11001" string="Active decoder">活躍解碼器</entry>
- 	<entry id="11002" string="auto select">自動選取</entry>
+	<entry id="11001" string="Active decoder">使用的解碼器</entry>
+	<entry id="11002" string="auto select">自動選取</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information">標題</entry>
+	<entry id="12000" string="Title information">標籤</entry>
 	<entry id="12001" string="Read tags from referenced files">從參考檔案讀最標籤</entry>
 	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">CUE元資料凌駕參考檔案標籤</entry>
 	<entry id="12003" string="Alternative files">替代檔案</entry>
@@ -644,7 +650,7 @@
 	  <entry id="32107" string="Quality">品質</entry>
 	  <entry id="32108" string="Set bitrate">位元率</entry>
 	  <entry id="32109" string="Set ratio">比率</entry>
-	  <entry id="32110" string="Set quality">品質</entry>
+	  <entry id="32110" string="Set quality">推算品質</entry>
 	  <entry id="32111" string="worse">較差</entry>
 	  <entry id="32112" string="better">較好</entry>
 	  <entry id="32113" string="VBR mode">位元率模式</entry>
@@ -711,8 +717,8 @@
 	  <entry id="33203" string="Set quality">品質</entry>
 	  <entry id="33204" string="Stereo mode">立體聲模式</entry>
 	  <entry id="33205" string="Allow Joint Stereo">容許聯合立體聲</entry>
-	  <entry id="33206" string="Temporal Noise Shaping">臨時噪音修整</entry>
-	  <entry id="33207" string="Use Temporal Noise Shaping">啟用臨時噪音修整</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">瞬態降噪</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">啟用瞬態降噪</entry>
 	  <entry id="33208" string="Maximum bandwidth">最大頻寬</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">使用的最大AAC頻率頻寬（Hz）</entry>
 	</section>
@@ -814,8 +820,8 @@
       </section>
 
       <section name="Speex">
-	<entry id="39000" string="Profile">形態</entry>
-	<entry id="39001" string="Select encoding profile">選取編碼形態</entry>
+	<entry id="39000" string="Profile">頻寬</entry>
+	<entry id="39001" string="Select encoding profile">選取編碼頻寬</entry>
 	<entry id="39002" string="Auto">自動</entry>
 	<entry id="39003" string="Narrowband (8 kHz)">窄（8 kHz）</entry>
 	<entry id="39004" string="Wideband (16 kHz)">闊（16 kHz）</entry>
@@ -875,6 +881,16 @@
 	  <entry id="41101" string="Unable to use selected audio format.">無法使用所選聲音格式</entry>
 	</section>
       </section>
+
+      <section name="meh!">
+	<entry id="42000" string="Encoders">編碼器</entry>
+	<entry id="42001" string="Available">未選取</entry>
+	<entry id="42002" string="Selected">已選取</entry>
+	<entry id="42003" string="Configure encoder">設定編碼器</entry>
+	<entry id="42004" string="Encoder configuration">編碼碼設定</entry>
+	<entry id="42005" string="Options">設定</entry>
+	<entry id="42006" string="Create a separate folder for each output format">為每個輸出格式建立獨立資料夾</entry>
+      </section>
     </section>
 
     <section name="DSP">
@@ -890,9 +906,9 @@
 
       <section name="Donate">
 	<entry id="100000" string="Support this project">捐助方式</entry>
-	<entry id="100001" string="Please support this project!">請支持本企劃。</entry>
+	<entry id="100001" string="Please support this project!">請支持本企劃</entry>
 	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">%1雖然免費，但持續開發需要資金。&#10;&#10;請按以下任何按鈕透過PayPal捐助：</entry>
-	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">%1接受PayPal直接捐助。&#10;&#10;電子轉帳或郵寄支票，請聯絡%1。</entry>
+	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">本企劃接受PayPal：%1直接捐助。&#10;&#10;電子轉帳或郵寄支票，請聯絡%1。</entry>
 	<entry id="100004" string="usd">usd</entry>
 	<entry id="100005" string="en">en</entry>
 	<entry id="100006" string="Thank you very much!">多謝</entry>
@@ -959,7 +975,7 @@
 	<section name="Basic">
 	  <entry id="103100" string="Basic">基本</entry>
 	  <entry id="103101" string="Title information">標題</entry>
-	  <entry id="103102" string="Disc">碟號</entry>
+	  <entry id="103102" string="Disc">光碟</entry>
 	  <entry id="103103" string="Cover art">封面</entry>
 	  <entry id="103104" string="Covers">封面</entry>
 	  <entry id="103105" string="Type">類型</entry>
@@ -999,7 +1015,7 @@
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案：%1&#10;&#10;錯誤：%2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">無法更新標籤： %1&#10;&#10;錯誤：%2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">無法更新標籤：%1&#10;&#10;錯誤：%2</entry>
 	</section>
       </section>
     </section>
