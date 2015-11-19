@@ -634,7 +634,7 @@ Error BonkEnc::JobConvert::Perform()
 		{
 			SetHeight(51 + workerQueue.Length() * 20);
 
-			container->Paint(SP_PAINT);
+			if (container != NIL) container->Paint(SP_PAINT);
 		}
 
 		Bool	 visible = IsVisible();
