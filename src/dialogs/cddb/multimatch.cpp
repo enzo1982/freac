@@ -14,14 +14,14 @@
 #include <config.h>
 #include <resources.h>
 
+Int	 BonkEnc::cddbMultiMatchDlg::previewCount = 0;
+
 BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(CDDB &iCDDB, Bool fuzzy) : cddb(iCDDB)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("CDDB::Query");
-
-	loadPreviewThread = NIL;
 
 	String	 title;
 
@@ -78,8 +78,6 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(CDDB &iCDDB, Bool fuzzy) : cddb(iC
 
 BonkEnc::cddbMultiMatchDlg::~cddbMultiMatchDlg()
 {
-	if (loadPreviewThread != NIL) loadPreviewThread->Stop();
-
 	DeleteObject(text_match);
 	DeleteObject(combo_match);
 	DeleteObject(text_preview);
@@ -104,11 +102,27 @@ const Error &BonkEnc::cddbMultiMatchDlg::ShowDialog()
 
 Void BonkEnc::cddbMultiMatchDlg::OK()
 {
+	/* Hide window.
+	 */
+	mainWnd->Hide();
+
+	CleanUpPreviews();
+
+	/* Close window.
+	 */
 	mainWnd->Close();
 }
 
 Void BonkEnc::cddbMultiMatchDlg::Cancel()
 {
+	/* Hide window.
+	 */
+	mainWnd->Hide();
+
+	CleanUpPreviews();
+
+	/* Close window.
+	 */
 	mainWnd->Close();
 
 	error = Error();
@@ -126,36 +140,38 @@ Int BonkEnc::cddbMultiMatchDlg::AddEntry(const String &category, const String &t
 
 Void BonkEnc::cddbMultiMatchDlg::SelectEntry()
 {
-	Int	 index = combo_match->GetSelectedEntryNumber();
+	/* Give last preview loader thread enough time to exit.
+	 */
+	previewCount++;
 
-	if (loadPreviewThread != NIL)
+	for (Int i = 0; i < 10; i++)
 	{
-		loadPreviewThread->Stop();
-
-		loadPreviewThread = NIL;
+		if (loadPreviewThreads.Length() > 0 &&
+		    loadPreviewThreads.GetLast()->GetStatus() == Threads::THREAD_RUNNING) S::System::System::Sleep(10);
+		else									  break;
 	}
+
+	/* Start new preview loader thread.
+	 */
+	Int	 index = combo_match->GetSelectedEntryNumber();
 
 	edit_preview->SetText(NIL);
 
-	if (discIDs.GetNth(index) != 0)
-	{
-		loadPreviewThread = NonBlocking1<Int>(&cddbMultiMatchDlg::LoadPreview, this).Call(index);
-	}
-	else
-	{
-		text_loading_preview->Hide();
-	}
+	if (discIDs.GetNth(index) != 0) loadPreviewThreads.Add(NonBlocking1<Int>(&cddbMultiMatchDlg::LoadPreview, this).Call(index));
+	else				text_loading_preview->Hide();
 }
 
 Void BonkEnc::cddbMultiMatchDlg::LoadPreview(Int index)
 {
+	Int	 me = previewCount;
+
 	text_loading_preview->Show();
 
 	CDDBInfo	 cddbInfo;
 
 	cddb.Read(categories.GetNth(index), discIDs.GetNth(index), cddbInfo);
 
-	if (cddbInfo != NIL)
+	if (cddbInfo != NIL && previewCount == me)
 	{
 		String	 preview;
 
@@ -168,6 +184,27 @@ Void BonkEnc::cddbMultiMatchDlg::LoadPreview(Int index)
 
 		edit_preview->SetText(preview);
 	}
+}
+
+Void BonkEnc::cddbMultiMatchDlg::CleanUpPreviews()
+{
+	/* Give preview loader threads enough time to exit.
+	 */
+	previewCount++;
+
+	for (Int i = 0; i < 100; i++)
+	{
+		Int	 runningThreads = 0;
+
+		foreach (Threads::Thread *thread, loadPreviewThreads) if (thread->GetStatus() == Threads::THREAD_RUNNING) runningThreads++;
+
+		if (runningThreads > 0) S::System::System::Sleep(10);
+		else			break;
+	}
+
+	/* Kill still active threads.
+	 */
+	foreach (Threads::Thread *thread, loadPreviewThreads) thread->Stop();
 }
 
 Int BonkEnc::cddbMultiMatchDlg::GetSelectedEntryNumber()

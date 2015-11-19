@@ -26,43 +26,46 @@ namespace BonkEnc
 	class cddbMultiMatchDlg : public Dialogs::Dialog
 	{
 		private:
-			GroupBox	*group_match;
-			Text		*text_match;
-			ComboBox	*combo_match;
+			static Int			previewCount;
 
-			Text		*text_preview;
-			MultiEdit	*edit_preview;
-			Text		*text_loading_preview;
+			GroupBox			*group_match;
+			Text				*text_match;
+			ComboBox			*combo_match;
 
-			Divider		*divbar;
+			Text				*text_preview;
+			MultiEdit			*edit_preview;
+			Text				*text_loading_preview;
 
-			Window		*mainWnd;
-			Titlebar	*mainWnd_titlebar;
+			Divider				*divbar;
 
-			Button		*btn_cancel;
-			Button		*btn_ok;
+			Window				*mainWnd;
+			Titlebar			*mainWnd_titlebar;
 
-			CDDB		&cddb;
+			Button				*btn_cancel;
+			Button				*btn_ok;
 
-			Array<String>	 categories;
-			Array<Int>	 discIDs;
+			CDDB				&cddb;
 
-			Threads::Thread	*loadPreviewThread;
+			Array<String>			 categories;
+			Array<Int>			 discIDs;
 
-			Void		 LoadPreview(Int);
+			Array<Threads::Thread *>	 loadPreviewThreads;
+
+			Void				 LoadPreview(Int);
+			Void				 CleanUpPreviews();
 		public:
-					 cddbMultiMatchDlg(CDDB &, Bool);
-					~cddbMultiMatchDlg();
+							 cddbMultiMatchDlg(CDDB &, Bool);
+							~cddbMultiMatchDlg();
 
-			const Error	&ShowDialog();
+			const Error			&ShowDialog();
 
-			Int		 AddEntry(const String &, const String &, Int);
-			Int		 GetSelectedEntryNumber();
+			Int				 AddEntry(const String &, const String &, Int);
+			Int				 GetSelectedEntryNumber();
 		slots:
-			Void		 SelectEntry();
+			Void				 SelectEntry();
 
-			Void		 OK();
-			Void		 Cancel();
+			Void				 OK();
+			Void				 Cancel();
 	};
 };
 
