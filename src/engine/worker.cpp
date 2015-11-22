@@ -81,6 +81,10 @@ Int BonkEnc::ConvertWorker::Convert()
 	String	 selectedEncoderID	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 	String	 activeEncoderID	= selectedEncoderID;
 
+	/* Do not verify output if meh! encoder selected.
+	 */
+	if (selectedEncoderID == "meh-enc") verifyOutput = False;
+
 	/* We always convert on the fly when outputting simple audio files.
 	 */
 	if (selectedEncoderID == "wave-enc" ||
@@ -153,7 +157,23 @@ Int BonkEnc::ConvertWorker::Convert()
 
 		/* Setup input file name in verification step.
 		 */
-		if (conversionStep == ConversionStepVerify) in_filename = out_filename;
+		if (conversionStep == ConversionStepVerify)
+		{
+			in_filename = out_filename;
+
+			if (!File(in_filename).Exists())
+			{
+				onReportWarning.Emit(i18n->TranslateString("Skipped verification due to non existing output file: %1", "Messages").Replace("%1", File(in_filename).GetFileName()));
+
+				log->Write(String("\tSkipping verification due to non existing output file: ").Append(in_filename), MessageTypeWarning);
+
+				trackPosition = trackToConvert.length;
+
+				onFinishTrack.Emit(trackToConvert, False);
+
+				break;
+			}
+		}
 
 		/* Check format of output file in verification step.
 		 */

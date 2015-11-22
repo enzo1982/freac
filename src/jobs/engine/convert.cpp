@@ -253,6 +253,10 @@ Error BonkEnc::JobConvert::Perform()
 	Bool	 createPlaylist		= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
 	Bool	 createCueSheet		= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
 
+	/* Do not verify output if meh! encoder selected.
+	 */
+	if (selectedEncoderID == "meh-enc") verifyOutput = False;
+
 	/* Check if encoder is thread safe.
 	 */
 	EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(selectedEncoderID);
@@ -817,52 +821,55 @@ Error BonkEnc::JobConvert::Perform()
 		singleFileEncoder  = new Encoder(configuration);
 		singleTrack.length = progress->GetTotalSamples();
 
-		/* Setup and start worker for verification.
-		 */
-		ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, singleFileEncoder);
-
-		worker->onFinishTrack.Connect(&Progress::FinishTrack, progress);
-		worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);
-
-		worker->onReportError.Connect(&JobConvert::OnWorkerReportError, this);
-		worker->onReportWarning.Connect(&JobConvert::OnWorkerReportWarning, this);
-
-		worker->SetEncodeChecksum(encodeChecksum);
-		worker->SetConversionStep(ConversionStepVerify);
-		worker->SetTrackToConvert(singleTrack);
-
-		worker->Start();
-
-		/* Announce new track.
-		 */
-		while (worker->IsWaiting() && !worker->IsIdle()) S::System::System::Sleep(1);
-
-		onEncodeTrack.Emit(singleTrack, decoderName    = worker->GetDecoderName(),
-						conversionStep = worker->GetConversionStep());
-
-		SetText(String("Verifying %1...").Replace("%1", singleTrack.origFilename));
-
-		progress->StartTrack(singleTrack);
-
-		/* Loop until finished.
-		 */
-		while (!worker->IsIdle())
+		if (File(singleOutFile).Exists())
 		{
-			if (worker->IsWaiting()) continue;
+			/* Setup and start worker for verification.
+			 */
+			ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, singleFileEncoder);
 
-			AutoRelease	 autoRelease;
+			worker->onFinishTrack.Connect(&Progress::FinishTrack, progress);
+			worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);
 
-			progress->UpdateTrack(singleTrack, worker->GetTrackPosition());
+			worker->onReportError.Connect(&JobConvert::OnWorkerReportError, this);
+			worker->onReportWarning.Connect(&JobConvert::OnWorkerReportWarning, this);
 
-			S::System::System::Sleep(25);
+			worker->SetEncodeChecksum(encodeChecksum);
+			worker->SetConversionStep(ConversionStepVerify);
+			worker->SetTrackToConvert(singleTrack);
+
+			worker->Start();
+
+			/* Announce new track.
+			 */
+			while (worker->IsWaiting() && !worker->IsIdle()) S::System::System::Sleep(1);
+
+			onEncodeTrack.Emit(singleTrack, decoderName    = worker->GetDecoderName(),
+							conversionStep = worker->GetConversionStep());
+
+			SetText(String("Verifying %1...").Replace("%1", singleTrack.origFilename));
+
+			progress->StartTrack(singleTrack);
+
+			/* Loop until finished.
+			 */
+			while (!worker->IsIdle())
+			{
+				if (worker->IsWaiting()) continue;
+
+				AutoRelease	 autoRelease;
+
+				progress->UpdateTrack(singleTrack, worker->GetTrackPosition());
+
+				S::System::System::Sleep(25);
+			}
+
+			/* Delete worker.
+			 */
+			worker->Quit();
+			worker->Wait();
+
+			delete worker;
 		}
-
-		/* Delete worker.
-		 */
-		worker->Quit();
-		worker->Wait();
-
-		delete worker;
 	}
 
 	/* Clean up single file handlers.

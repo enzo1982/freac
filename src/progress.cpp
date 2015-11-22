@@ -89,7 +89,7 @@ Void BonkEnc::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 	 */
 	Bool	 verifyOutput	    = configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
 
-	if (encodeLossless && verifyOutput) totalSamplesMultiplier += 1;
+	if (encodeLossless && verifyOutput && selectedEncoderID != "meh-enc") totalSamplesMultiplier += 1;
 
 	totalSamples *= totalSamplesMultiplier;
 }
