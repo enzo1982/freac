@@ -304,6 +304,12 @@ Error BonkEnc::JobConvert::Perform()
 
 	progress->ComputeTotalSamples(tracks);
 
+	/* Notify components about started conversion.
+	 */
+	Engine	*engine = Engine::Get();
+
+	engine->onStartConversion.Emit(tracksToConvert);
+
 	/* Setup single file encoder.
 	 */
 	Track	 singleTrack;
@@ -958,9 +964,13 @@ Error BonkEnc::JobConvert::Perform()
 
 	conversionRunning = False;
 
-	if (stopConversion) log->Write("Encoding process cancelled.", MessageTypeWarning);
-	else		    log->Write("Encoding process finished.");
+	/* Notify components and write log.
+	 */
+	if (stopConversion) { engine->onCancelConversion.Emit(); log->Write("Encoding process cancelled.", MessageTypeWarning); }
+	else		    { engine->onFinishConversion.Emit(); log->Write("Encoding process finished."); }
 
+	/* Set progress to 100%.
+	 */
 	SetProgress(1000);
 
 	if	(stopConversion	      )	SetText(       "Conversion cancelled");

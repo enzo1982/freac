@@ -392,7 +392,7 @@ Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder
 
 	/* Inform components about starting conversion.
 	 */
-	BoCA::Engine::Get()->onStartConversion.Emit(trackToConvert);
+	BoCA::Engine::Get()->onStartTrackConversion.Emit(trackToConvert);
 
 	/* Enter conversion loop.
 	 */
@@ -460,8 +460,8 @@ Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder
 
 	/* Inform components about finished/cancelled conversion.
 	 */
-	if (cancel) BoCA::Engine::Get()->onCancelConversion.Emit(trackToConvert);
-	else	    BoCA::Engine::Get()->onFinishConversion.Emit(trackToConvert);
+	if (cancel) BoCA::Engine::Get()->onCancelTrackConversion.Emit(trackToConvert);
+	else	    BoCA::Engine::Get()->onFinishTrackConversion.Emit(trackToConvert);
 
 	return trackLength;
 }
