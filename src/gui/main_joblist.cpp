@@ -1552,7 +1552,7 @@ Void BonkEnc::LayerJoblist::UpdateOutputDir()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	edb_outdir->SetText(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
+	edb_outdir->SetText(BoCA::Utilities::GetAbsolutePathName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 
 	/* Update combo box.
 	 */
@@ -1583,7 +1583,7 @@ Void BonkEnc::LayerJoblist::OnBrowseForFolder()
 
 	dialog->SetParentWindow(mainWnd);
 	dialog->SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder in which the encoded files will be placed"))));
-	dialog->SetDirName(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
+	dialog->SetDirName(BoCA::Utilities::GetAbsolutePathName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 
 	if (dialog->ShowDialog() == Success())
 	{
@@ -1604,7 +1604,7 @@ Void BonkEnc::LayerJoblist::OnSelectFolder()
 
 	/* Check if output folder exists.
 	 */
-	Directory	 outputDirectory(Utilities::GetAbsoluteDirName(edb_outdir->GetText()));
+	Directory	 outputDirectory(BoCA::Utilities::GetAbsolutePathName(edb_outdir->GetText()));
 
 	if (Directory::SetActiveDirectory(outputDirectory) != Success())
 	{

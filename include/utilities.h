@@ -23,16 +23,10 @@ namespace BonkEnc
 			static Void	 FillGenreList(List *);
 			static Void	 UpdateGenreList(List *, const String &);
 
-			static String	 ReplaceIncompatibleChars(const String &, Bool);
-			static String	 GetAbsoluteDirName(const String &);
-			static String	 NormalizeFileName(const String &);
-
 			static String	 GetOutputFileName(const BoCA::Track &);
 			static String	 GetSingleOutputFileName(const BoCA::Track &);
 
 			static String	 GetPlaylistFileName(const BoCA::Track &);
-
-			static String	 GetInstallDrive();
 
 			static Bool	 SetProcessPriority();
 	};

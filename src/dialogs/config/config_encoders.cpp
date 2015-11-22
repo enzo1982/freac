@@ -14,7 +14,6 @@
 #include <dialogs/config/configcomponent.h>
 
 #include <config.h>
-#include <utilities.h>
 
 using namespace BoCA::AS;
 
@@ -209,7 +208,7 @@ Void BonkEnc::ConfigureEncoders::SelectDir()
 
 	dialog->SetParentWindow(GetContainerWindow());
 	dialog->SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder in which the encoded files will be placed"))));
-	dialog->SetDirName(Utilities::GetAbsoluteDirName(edit_outdir->GetText()));
+	dialog->SetDirName(BoCA::Utilities::GetAbsolutePathName(edit_outdir->GetText()));
 
 	if (dialog->ShowDialog() == Success())
 	{
@@ -305,7 +304,7 @@ Int BonkEnc::ConfigureEncoders::SaveSettings()
 
 	/* Check if output folder exists.
 	 */
-	Directory	 outputDirectory(Utilities::GetAbsoluteDirName(edit_outdir->GetText()));
+	Directory	 outputDirectory(BoCA::Utilities::GetAbsolutePathName(edit_outdir->GetText()));
 
 	if (Directory::SetActiveDirectory(outputDirectory) != Success())
 	{

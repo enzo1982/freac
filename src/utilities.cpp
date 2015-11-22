@@ -270,135 +270,6 @@ Void BonkEnc::Utilities::UpdateGenreList(List *list, const String &genre)
 	FillGenreList(list);
 }
 
-String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool replaceSlash)
-{
-	BoCA::Config	*config = BoCA::Config::Get();
-
-	Bool	 useUnicode	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
-	Bool	 replaceSpaces	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
-
-	String	 rVal;
-
-	for (Int k = 0, b = 0; k < string.Length(); k++)
-	{
-		if	(string[k] == '\"')		   { rVal[k + b] = '\''; rVal[k + ++b] = '\''; }
-		else if (string[k] == '\n')		     b--;
-		else if (string[k] == '\r')		     b--;
-		else if (string[k] == '?')		     b--;
-		else if (string[k] == '|')		     rVal[k + b] = '_';
-		else if (string[k] == '*')		     b--;
-		else if (string[k] == '<')		     rVal[k + b] = '(';
-		else if (string[k] == '>')		     rVal[k + b] = ')';
-		else if (string[k] == ':')		     b--;
-		else if (string[k] == '/'  && replaceSlash)  rVal[k + b] = '-';
-		else if (string[k] == '\\' && replaceSlash)  rVal[k + b] = '-';
-		else if (string[k] == ' '  && replaceSpaces) rVal[k + b] = '_';
-		else if (string[k] == '\t' && replaceSpaces) rVal[k + b] = '_';
-		else if (string[k] == '\t')		     rVal[k + b] = ' ';
-		else if (string[k] >= 256  && !useUnicode)   rVal[k + b] = '#';
-		else					     rVal[k + b] = string[k];
-	}
-
-	return rVal;
-}
-
-/* This function returns the absolute output path. It may differ
- * from the output directory setting due to use of the <installdrive>
- * placeholder or because the output directory is a relative path.
- */
-String BonkEnc::Utilities::GetAbsoluteDirName(const String &dirName)
-{
-	String	 rDirName = dirName;
-
-	/* Replace <installdrive> patter.
-	 */
-	rDirName.Replace("<installdrive>", Utilities::GetInstallDrive());
-
-#ifdef __WIN32__
-	if ( rDirName[1] != ':' &&	  // Absolute local path
-	    !rDirName.StartsWith("\\\\")) // Network resource
-#else
-	if (!rDirName.StartsWith("/") &&  // Absolute path
-	    !rDirName.StartsWith("~"))	  // Home directory
-#endif
-	{
-		rDirName = GUI::Application::GetApplicationDirectory().Append(rDirName);
-	}
-
-	return rDirName;
-}
-
-/* This function takes a file name and normalizes all the
- * directory names included in the path by removing spaces
- * and dots at the end. It also shortens each directory
- * and the file name to a maximum of 248 characters.
- */
-String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
-{
-	String	 rFileName = fileName;
-	String	 dir	   = fileName;
-
-	Int	 maxLength = 248;
-
-	String	 tmpDir;
-	Int	 lastBS	   = 0;
-
-	for (Int i = 0; i < dir.Length(); i++)
-	{
-		if (dir[i] == '\\' || dir[i] == '/')
-		{
-			String	 tmpDir2 = tmpDir;
-
-			/* Shorten to at most maxLength characters.
-			 */
-			if (tmpDir.Length() - lastBS > maxLength)
-			{
-				tmpDir2 = String().CopyN(tmpDir, lastBS + maxLength);
-
-				i -= (tmpDir.Length() - lastBS - maxLength);
-			}
-
-			/* Replace trailing dots and spaces.
-			 */
-			while ((tmpDir2.Tail(tmpDir2.Length() - lastBS - 1) != ".." &&
-				tmpDir2.Tail(tmpDir2.Length() - lastBS - 1) != ".") &&
-			       (tmpDir2.EndsWith(".") || tmpDir2.EndsWith(" ")))
-			{
-				tmpDir2[tmpDir2.Length() - 1] = 0;
-
-				i--;
-			}
-
-			if (tmpDir2 != tmpDir)
-			{
-				rFileName.Replace(tmpDir, tmpDir2);
-
-				tmpDir = tmpDir2;
-				dir = rFileName;
-			}
-
-			lastBS = i;
-		}
-
-		tmpDir[i] = dir[i];
-	}
-
-	/* Shorten file name to maxLength characters.
-	 */
-	if (rFileName.Length() - lastBS > maxLength) rFileName = String().CopyN(rFileName, lastBS + maxLength);
-
-	/* Normalize directory delimiters.
-	 */
-	rFileName.Replace("\\",	Directory::GetDirectoryDelimiter());
-	rFileName.Replace("/",	Directory::GetDirectoryDelimiter());
-
-	/* Replace trailing spaces.
-	 */
-	while (rFileName.EndsWith(" ")) { rFileName[rFileName.Length() - 1] = 0; }
-
-	return rFileName;
-}
-
 String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
@@ -446,7 +317,7 @@ String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 	if (track.outfile == NIL)
 	{
 		if (writeToInputDir) outputFileName.Copy(inFileDirectory);
-		else		     outputFileName.Copy(Utilities::GetAbsoluteDirName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
+		else		     outputFileName.Copy(BoCA::Utilities::GetAbsolutePathName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 
 		/* Get file extension from selected encoder component
 		 * caching the result for requests in quick succession.
@@ -470,7 +341,7 @@ String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 
 		/* Replace patterns.
 		 */
-		String	 filePattern   = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
+		String	 filePattern = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
 
 		if ((info.artist != NIL && filePattern.Contains("<artist>")  ) ||
 		    (info.title  != NIL && filePattern.Contains("<title>")   ) ||
@@ -479,14 +350,14 @@ String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 		{
 			String	 shortOutFileName = filePattern;
 
-			shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist"), True));
-			shortOutFileName.Replace("<title>", Utilities::ReplaceIncompatibleChars(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title"), True));
-			shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album"), True));
-			shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre"), True));
+			shortOutFileName.Replace("<artist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
+			shortOutFileName.Replace("<title>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")));
+			shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
+			shortOutFileName.Replace("<genre>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
 			shortOutFileName.Replace("<disc>", String(info.disc < 10 ? "0" : NIL).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
 			shortOutFileName.Replace("<track>", String(info.track < 10 ? "0" : NIL).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
-			shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year"), True));
-			shortOutFileName.Replace("<filename>", Utilities::ReplaceIncompatibleChars(shortInFileName, True));
+			shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
+			shortOutFileName.Replace("<filename>", BoCA::Utilities::ReplaceIncompatibleCharacters(shortInFileName));
 			shortOutFileName.Replace("<filetype>", fileExtension.ToUpper());
 
 			for (Int i = 1; i <= 4; i++)
@@ -537,8 +408,11 @@ String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 				}
 			}
 
-			outputFileName.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
-			outputFileName = Utilities::NormalizeFileName(outputFileName);
+			Bool	 useUnicode    = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
+			Bool	 replaceSpaces = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
+
+			outputFileName.Append(BoCA::Utilities::ReplaceIncompatibleCharacters(shortOutFileName, useUnicode, False, replaceSpaces));
+			outputFileName = BoCA::Utilities::NormalizeFileName(outputFileName);
 		}
 		else if (track.isCDTrack)
 		{
@@ -619,7 +493,7 @@ String BonkEnc::Utilities::GetSingleOutputFileName(const Track &track)
 	dialog->AddFilter(i18n->TranslateString("All Files", "Joblist"), "*.*");
 
 	dialog->SetDefaultExtension(defaultExtension);
-	dialog->SetFileName(Utilities::ReplaceIncompatibleChars(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist"), True).Append(" - ").Append(Utilities::ReplaceIncompatibleChars(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album"), True)).Append(defaultExtension != NIL ? "." : NIL).Append(defaultExtension));
+	dialog->SetFileName(BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album"))).Append(defaultExtension != NIL ? "." : NIL).Append(defaultExtension));
 	dialog->SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedSaveDirID, NIL));
 
 	if (dialog->ShowDialog() == Success())
@@ -645,21 +519,23 @@ String BonkEnc::Utilities::GetPlaylistFileName(const Track &track)
 
 	if (config->enable_console) return NIL;
 
-	String	 outputDir = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
+	String	 outputDir	   = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
+	Bool	 useUnicode	   = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
+	Bool	 replaceSpaces	   = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
 
-	String	 playlistOutputDir = Utilities::GetAbsoluteDirName(config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, Config::PlaylistUseEncoderOutputDirDefault) ? outputDir : config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, outputDir));
-	String	 playlistFileName = playlistOutputDir;
+	String	 playlistOutputDir = BoCA::Utilities::GetAbsolutePathName(config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, Config::PlaylistUseEncoderOutputDirDefault) ? outputDir : config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, outputDir));
+	String	 playlistFileName  = playlistOutputDir;
 
 	if (info.artist != NIL || info.album != NIL)
 	{
 		String	 shortOutFileName = config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenamePatternID, Config::PlaylistFilenamePatternDefault);
 
-		shortOutFileName.Replace("<artist>", Utilities::ReplaceIncompatibleChars(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist"), True));
-		shortOutFileName.Replace("<album>", Utilities::ReplaceIncompatibleChars(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album"), True));
-		shortOutFileName.Replace("<genre>", Utilities::ReplaceIncompatibleChars(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre"), True));
-		shortOutFileName.Replace("<year>", Utilities::ReplaceIncompatibleChars(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year"), True));
+		shortOutFileName.Replace("<artist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
+		shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
+		shortOutFileName.Replace("<genre>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
+		shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
 
-		playlistFileName.Append(Utilities::ReplaceIncompatibleChars(shortOutFileName, False));
+		playlistFileName.Append(BoCA::Utilities::ReplaceIncompatibleCharacters(shortOutFileName, useUnicode, False, replaceSpaces));
 	}
 	else if (track.isCDTrack)
 	{
@@ -667,15 +543,10 @@ String BonkEnc::Utilities::GetPlaylistFileName(const Track &track)
 	}
 	else
 	{
-		playlistFileName.Append(Utilities::ReplaceIncompatibleChars(i18n->TranslateString("unknown playlist"), True));
+		playlistFileName.Append(BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown playlist"), useUnicode, True, replaceSpaces));
 	}
 
-	return Utilities::NormalizeFileName(playlistFileName);
-}
-
-String BonkEnc::Utilities::GetInstallDrive()
-{
-	return GUI::Application::GetApplicationDirectory().Head(2);
+	return BoCA::Utilities::NormalizeFileName(playlistFileName);
 }
 
 Bool BonkEnc::Utilities::SetProcessPriority()

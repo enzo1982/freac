@@ -322,7 +322,7 @@ Error BonkEnc::JobConvert::Perform()
 
 		if (singleOutFile != NIL)
 		{
-			singleOutFile = Utilities::NormalizeFileName(singleOutFile);
+			singleOutFile = BoCA::Utilities::NormalizeFileName(singleOutFile);
 
 			/* Set playlist filename so it is written to the same place.
 			 */
@@ -872,7 +872,7 @@ Error BonkEnc::JobConvert::Perform()
 
 	/* Fill playlist and cuesheet tracks.
 	 */
-	String	 absoluteOutputDir = Utilities::GetAbsoluteDirName(encoderOutputDirectory);
+	String	 absoluteOutputDir = BoCA::Utilities::GetAbsolutePathName(encoderOutputDirectory);
 
 	foreach (const Track &original_track, original_tracks)
 	{
