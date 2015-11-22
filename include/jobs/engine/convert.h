@@ -57,7 +57,7 @@ namespace BonkEnc
 			static Void					 Skip()		{ if (conversionRunning) skipTrack = True; }
 			static Void					 Stop();
 
-									 JobConvert(Array<BoCA::Track> &);
+									 JobConvert(const Array<BoCA::Track> &);
 			virtual						~JobConvert();
 
 			virtual Error					 Precheck();

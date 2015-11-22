@@ -57,7 +57,7 @@ Signal0<Void>				 BonkEnc::JobConvert::onFinishTrack;
 Signal2<Void, Int, Int>			 BonkEnc::JobConvert::onTrackProgress;
 Signal2<Void, Int, Int>			 BonkEnc::JobConvert::onTotalProgress;
 
-BonkEnc::JobConvert::JobConvert(Array<BoCA::Track> &iTracks)
+BonkEnc::JobConvert::JobConvert(const Array<BoCA::Track> &iTracks)
 {
 	tracks		 = iTracks;
 
