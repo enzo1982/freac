@@ -277,20 +277,13 @@ Error BonkEnc::JobConvert::Perform()
 
 	log->Write("Encoding process started...");
 
-	/* Setup playlist and cuesheet writers.
+	/* Setup playlist and cuesheet track lists.
 	 */
-	String			 playlistID	    = configuration->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault);
-	PlaylistComponent	*playlist	    = (PlaylistComponent *) boca.CreateComponentByID(playlistID.Head(playlistID.FindLast("-")));
-	PlaylistComponent	*cuesheet	    = (PlaylistComponent *) boca.CreateComponentByID("cuesheet-playlist");
+	Array<Track>	 tracksToConvert = tracks;
+	Array<Track>	 convertedTracks;
 
-	Array<Track>		 original_tracks    = tracks;
-	Array<Track>		 converted_tracks;
-
-	Array<Track>		 playlist_tracks;
-	Array<Track>		 cuesheet_tracks;
-
-	String			 playlist_filename  = Utilities::GetPlaylistFileName(tracks.GetFirst());
-	String			 playlist_extension = playlistID.Tail(playlistID.Length() - playlistID.FindLast("-") - 1);
+	Array<Track>	 playlistTracks;
+	Array<Track>	 cuesheetTracks;
 
 	/* Setup progress indicators.
 	 */
@@ -330,10 +323,6 @@ Error BonkEnc::JobConvert::Perform()
 		{
 			singleOutFile = BoCA::Utilities::NormalizeFileName(singleOutFile);
 
-			/* Set playlist filename so it is written to the same place.
-			 */
-			playlist_filename = singleOutFile.Head(singleOutFile.FindLast("."));
-
 			/* Set output file name and add track to playlist.
 			 */
 			singleTrack.origFilename = singleOutFile;
@@ -341,7 +330,7 @@ Error BonkEnc::JobConvert::Perform()
 
 			singleTrack.length	 = progress->GetTotalSamples();
 
-			playlist_tracks.Add(singleTrack);
+			playlistTracks.Add(singleTrack);
 
 			/* Create encoder for single file output.
 			 */
@@ -549,7 +538,7 @@ Error BonkEnc::JobConvert::Perform()
 
 				/* Add track to list of converted tracks.
 				 */
-				converted_tracks.Add(track, track.GetTrackID());
+				convertedTracks.Add(track, track.GetTrackID());
 			}
 
 			encodedTracks++;
@@ -573,7 +562,7 @@ Error BonkEnc::JobConvert::Perform()
 
 				const Track	&workerTrack = worker->GetTrackToConvert();
 
-				onEncodeTrack.Emit(original_tracks.Get(workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+				onEncodeTrack.Emit(tracksToConvert.Get(workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
 												  conversionStep = worker->GetConversionStep());
 
 				SetText(String("Converting %1...").Replace("%1", workerTrack.origFilename));
@@ -625,7 +614,7 @@ Error BonkEnc::JobConvert::Perform()
 			const Track	&workerTrack = worker->GetTrackToConvert();
 
 			if (first && (worker->GetConversionStep() != conversionStep ||
-				      worker->GetDecoderName()	  != decoderName)) onEncodeTrack.Emit(original_tracks.Get(workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+				      worker->GetDecoderName()	  != decoderName)) onEncodeTrack.Emit(tracksToConvert.Get(workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
 																		     conversionStep = worker->GetConversionStep());
 
 			first = False;
@@ -780,7 +769,7 @@ Error BonkEnc::JobConvert::Perform()
 			{
 				while (workerToUse->IsWaiting() && !workerToUse->IsIdle()) S::System::System::Sleep(1);
 
-				onEncodeTrack.Emit(original_tracks.Get(track.GetTrackID()), decoderName	   = workerToUse->GetDecoderName(),
+				onEncodeTrack.Emit(tracksToConvert.Get(track.GetTrackID()), decoderName	   = workerToUse->GetDecoderName(),
 											    conversionStep = workerToUse->GetConversionStep());
 
 				SetText(String("Converting %1...").Replace("%1", track.origFilename));
@@ -876,13 +865,41 @@ Error BonkEnc::JobConvert::Perform()
 		delete worker;
 	}
 
+	/* Clean up single file handlers.
+	 */
+	if (encodeToSingleFile)
+	{
+		if (singleFileEncoder != NIL) delete singleFileEncoder;
+
+		if (File(singleOutFile).GetFileSize() <= 0 || encodedTracks == 0 || skipTrack || stopConversion) File(singleOutFile).Delete();
+
+		/* Add output file to joblist if requested.
+		 */
+		if (File(singleOutFile).Exists() && addEncodedTracks)
+		{
+			Array<String>	 files;
+
+			files.Add(singleOutFile);
+
+			(new JobAddFiles(files))->Schedule();
+		}
+
+		/* Do not create playlists if output file does not exist.
+		 */
+		if (!File(singleOutFile).Exists())
+		{
+			createPlaylist = False;
+			createCueSheet = False;
+		}
+	}
+
 	/* Fill playlist and cuesheet tracks.
 	 */
 	String	 absoluteOutputDir = BoCA::Utilities::GetAbsolutePathName(encoderOutputDirectory);
 
-	foreach (const Track &original_track, original_tracks)
+	foreach (const Track &trackToConvert, tracksToConvert)
 	{
-		Track	 track = converted_tracks.Get(original_track.GetTrackID());
+		Track	 track = convertedTracks.Get(trackToConvert.GetTrackID());
 
 		if (track == NIL) continue;
 
@@ -893,44 +910,21 @@ Error BonkEnc::JobConvert::Perform()
 			playlistTrack.isCDTrack	   = False;
 			playlistTrack.origFilename = track.outfile;
 
-			playlist_tracks.Add(playlistTrack);
-			cuesheet_tracks.Add(playlistTrack);
+			playlistTracks.Add(playlistTrack);
+			cuesheetTracks.Add(playlistTrack);
 
 			track.SaveCoverArtFiles(absoluteOutputDir);
 		}
 		else
 		{
-			Track	 cuesheetTrack = original_track;
+			Track	 cuesheetTrack = trackToConvert;
 
 			cuesheetTrack.isCDTrack	   = False;
 			cuesheetTrack.sampleOffset = track.sampleOffset;
 			cuesheetTrack.length	   = track.length;
 			cuesheetTrack.origFilename = singleOutFile;
 
-			cuesheet_tracks.Add(cuesheetTrack);
-		}
-	}
-
-	/* Clean up single file handlers.
-	 */
-	if (encodeToSingleFile)
-	{
-		if (singleFileEncoder != NIL) delete singleFileEncoder;
-
-		if (File(singleOutFile).GetFileSize() <= 0 || encodedTracks == 0 || skipTrack || stopConversion) File(singleOutFile).Delete();
-
-		if (File(singleOutFile).Exists())
-		{
-			/* Add output file to joblist if requested.
-			 */
-			if (addEncodedTracks)
-			{
-				Array<String>	 files;
-
-				files.Add(singleOutFile);
-
-				(new JobAddFiles(files))->Schedule();
-			}
+			cuesheetTracks.Add(cuesheetTrack);
 		}
 	}
 
@@ -938,18 +932,47 @@ Error BonkEnc::JobConvert::Perform()
 	 */
 	if (!stopConversion && encodedTracks > 0)
 	{
-		if (createPlaylist && playlist != NIL)
+		String	 playlistID	   = configuration->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault);
+
+		String	 playlistFileName  = Utilities::GetPlaylistFileName(tracksToConvert.GetFirst());
+		String	 playlistExtension = playlistID.Tail(playlistID.Length() - playlistID.FindLast("-") - 1);
+
+		/* Set playlist filename so it is written to the same place as a single output file.
+		 */
+		if (encodeToSingleFile) playlistFileName = singleOutFile.Head(singleOutFile.FindLast("."));
+
+		/* Write playlist.
+		 */
+		if (createPlaylist)
 		{
-			playlist->SetTrackList(playlist_tracks);
-			playlist->WritePlaylist(String(playlist_filename).Append(".").Append(playlist_extension));
+			PlaylistComponent	*playlist = (PlaylistComponent *) boca.CreateComponentByID(playlistID.Head(playlistID.FindLast("-")));
+
+			if (playlist != NIL)
+			{
+				playlist->SetTrackList(playlistTracks);
+				playlist->WritePlaylist(String(playlistFileName).Append(".").Append(playlistExtension));
+
+				boca.DeleteComponent(playlist);
+			}
 		}
 
-		if (createCueSheet && cuesheet != NIL)
+		/* Write cue sheet.
+		 */
+		if (createCueSheet)
 		{
-			cuesheet->SetTrackList(cuesheet_tracks);
-			cuesheet->WritePlaylist(String(playlist_filename).Append(".cue"));
+			PlaylistComponent	*cuesheet = (PlaylistComponent *) boca.CreateComponentByID("cuesheet-playlist");
+
+			if (cuesheet != NIL)
+			{
+				cuesheet->SetTrackList(cuesheetTracks);
+				cuesheet->WritePlaylist(String(playlistFileName).Append(".cue"));
+
+				boca.DeleteComponent(cuesheet);
+			}
 		}
 
+		/* Reset "Delete after encoding" option.
+		 */
 		Config::Get()->deleteAfterEncoding = False;
 	}
 
@@ -958,9 +981,6 @@ Error BonkEnc::JobConvert::Perform()
 	onFinishEncoding.Emit(!stopConversion && encodedTracks > 0);
 
 	delete progress;
-
-	if (playlist != NIL) boca.DeleteComponent(playlist);
-	if (cuesheet != NIL) boca.DeleteComponent(cuesheet);
 
 	conversionRunning = False;
 
