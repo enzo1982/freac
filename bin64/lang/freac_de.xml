@@ -459,6 +459,10 @@
 	  <entry id="5659" string="File name">Dateiname</entry>
 	  <entry id="5660" string="File type">Dateityp</entry>
 	  <entry id="5661" string="Output file name">Ausgabedateiname</entry>
+	  <entry id="5662" string="Bitrate">Bitrate</entry>
+	  <entry id="5663" string="Sampling rate">Samplerate</entry>
+	  <entry id="5664" string="Channels">Audiokanäle</entry>
+	  <entry id="5665" string="Sample resolution">Sampleauflösung</entry>
 	</section>
       </section>
 
@@ -687,7 +691,7 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">Samplingrate</entry>
+	  <entry id="32400" string="Output sampling rate">Samplerate</entry>
 	  <entry id="32401" string="auto">automatisch</entry>
 	  <entry id="32402" string="no resampling">kein Resampling</entry>
 	  <entry id="32403" string="Highpass filter">Hochpassfilter</entry>

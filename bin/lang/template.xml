@@ -459,6 +459,10 @@
 	  <entry id="5659" string="File name"/>
 	  <entry id="5660" string="File type"/>
 	  <entry id="5661" string="Output file name"/>
+	  <entry id="5662" string="Bitrate"/>
+	  <entry id="5663" string="Sampling rate"/>
+	  <entry id="5664" string="Channels"/>
+	  <entry id="5665" string="Sample resolution"/>
 	</section>
       </section>
 

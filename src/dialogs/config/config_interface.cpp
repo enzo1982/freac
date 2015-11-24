@@ -87,18 +87,22 @@ Void BonkEnc::ConfigureInterface::FillJoblistFieldsList()
 	Array<String>	 entryTexts;
 	Array<Bool>	 entryPresent;
 
-	entryTexts.Add(String("<artist>\t").Append(i18n->TranslateString("Track artist")));	    entryPresent.Add(False);
-	entryTexts.Add(String("<title>\t").Append(i18n->TranslateString("Track title")));	    entryPresent.Add(False);
-	entryTexts.Add(String("<genre>\t").Append(i18n->TranslateString("Track genre")));	    entryPresent.Add(False);
-	entryTexts.Add(String("<album>\t").Append(i18n->TranslateString("Album title")));	    entryPresent.Add(False);
-	entryTexts.Add(String("<disc>\t").Append(i18n->TranslateString("Disc number")));	    entryPresent.Add(False);
-	entryTexts.Add(String("<track>\t").Append(i18n->TranslateString("Track number")));	    entryPresent.Add(False);
-	entryTexts.Add(String("<rating>\t").Append(i18n->TranslateString("Track rating")));	    entryPresent.Add(False);
-	entryTexts.Add(String("<time>\t").Append(i18n->TranslateString("Track length")));	    entryPresent.Add(False);
-	entryTexts.Add(String("<bytes>\t").Append(i18n->TranslateString("Track size")));	    entryPresent.Add(False);
-	entryTexts.Add(String("<file>\t").Append(i18n->TranslateString("File name")));		    entryPresent.Add(False);
-	entryTexts.Add(String("<filetype>\t").Append(i18n->TranslateString("File type")));	    entryPresent.Add(False);
-	entryTexts.Add(String("<outputfile>\t").Append(i18n->TranslateString("Output file name"))); entryPresent.Add(False);
+	entryTexts.Add(String("<artist>\t").Append(i18n->TranslateString("Track artist")));	     entryPresent.Add(False);
+	entryTexts.Add(String("<title>\t").Append(i18n->TranslateString("Track title")));	     entryPresent.Add(False);
+	entryTexts.Add(String("<genre>\t").Append(i18n->TranslateString("Track genre")));	     entryPresent.Add(False);
+	entryTexts.Add(String("<album>\t").Append(i18n->TranslateString("Album title")));	     entryPresent.Add(False);
+	entryTexts.Add(String("<disc>\t").Append(i18n->TranslateString("Disc number")));	     entryPresent.Add(False);
+	entryTexts.Add(String("<track>\t").Append(i18n->TranslateString("Track number")));	     entryPresent.Add(False);
+	entryTexts.Add(String("<rating>\t").Append(i18n->TranslateString("Track rating")));	     entryPresent.Add(False);
+	entryTexts.Add(String("<time>\t").Append(i18n->TranslateString("Track length")));	     entryPresent.Add(False);
+	entryTexts.Add(String("<bytes>\t").Append(i18n->TranslateString("Track size")));	     entryPresent.Add(False);
+	entryTexts.Add(String("<bitrate>\t").Append(i18n->TranslateString("Bitrate")));		     entryPresent.Add(False);
+	entryTexts.Add(String("<samplerate>\t").Append(i18n->TranslateString("Sampling rate")));     entryPresent.Add(False);
+	entryTexts.Add(String("<channels>\t").Append(i18n->TranslateString("Channels")));	     entryPresent.Add(False);
+	entryTexts.Add(String("<resolution>\t").Append(i18n->TranslateString("Sample resolution"))); entryPresent.Add(False);
+	entryTexts.Add(String("<file>\t").Append(i18n->TranslateString("File name")));		     entryPresent.Add(False);
+	entryTexts.Add(String("<filetype>\t").Append(i18n->TranslateString("File type")));	     entryPresent.Add(False);
+	entryTexts.Add(String("<outputfile>\t").Append(i18n->TranslateString("Output file name")));  entryPresent.Add(False);
 
 	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
 
