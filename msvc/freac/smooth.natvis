@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<AutoVisualizer xmlns="http://schemas.microsoft.com/vstudio/debugger/natvis/2010">
+  <Type Name="smooth::String">
+    <DisplayString Condition="wString.size == 0">none</DisplayString>
+    <DisplayString>{wString.memory->memory,su}</DisplayString>
+    <StringView>wString.memory->memory,su</StringView>
+  </Type>
+  <Type Name="smooth::Buffer&lt;*&gt;">
+    <DisplayString>{{size={size}}}</DisplayString>
+    <Expand>
+      <ArrayItems>
+        <Size>size</Size>
+        <ValuePointer>($T1 *) memory->memory</ValuePointer>
+      </ArrayItems>
+    </Expand>
+  </Type>
+  <Type Name="smooth::Array&lt;*,*&gt;">
+    <DisplayString>{{length={nOfEntries}}}</DisplayString>
+    <Expand>
+      <IndexListItems>
+        <Size>nOfEntries</Size>
+        <ValueNode>*(($T1 **) entries.memory->memory)[$i]</ValueNode>
+      </IndexListItems>
+    </Expand>
+  </Type>
+</AutoVisualizer>
