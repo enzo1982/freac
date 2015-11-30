@@ -95,9 +95,10 @@ Known problems
 History
 -------
 
-	Version 1.0.27 CVS (November 2015)
+	Version 1.0.27 CVS (December 2015)
 
 		- added Cantonese (Hong Kong) language support
+		- minor improvements for CDDB submit dialog
 		- fixed issues handling CDDB entries with line breaks
 		- fixed inability to send new CDDB entries when there was a disc-id collision
 

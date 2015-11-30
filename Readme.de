@@ -96,9 +96,10 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.0.27 (November 2015)
+	Version 1.0.27 (Dezember 2015)
 
 		- Sprachunterstützung für Kantonesisch (Hong Kong) hinzugefügt
+		- Kleinere Verbesserungen für den CDDB-Sendedialog
 		- Probleme beim Umgang mit CDDB-Einträgen mit Zeilenumbrüchen behoben
 		- Problem beim Senden von neuen CDDB-Einträgen behoben, wenn eine Disc-ID-Kollision vorlag
 
