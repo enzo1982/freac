@@ -21,7 +21,7 @@ using namespace smooth::GUI::Dialogs;
 Int smooth::Main(const Array<String> &args)
 {
 #ifdef __WIN32__
-	SetEnvironmentVariableA("PATH", String("%PATH%;").Append(GUI::Application::GetApplicationDirectory()).Append("boca"));
+	SetEnvironmentVariableW(L"PATH", String("%PATH%;").Append(GUI::Application::GetApplicationDirectory()).Append("boca"));
 #endif
 
 	DynamicLoader	*loader = new DynamicLoader("freac");
