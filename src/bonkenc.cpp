@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -44,7 +44,7 @@ String	 BonkEnc::BonkEnc::version	= "v1.0.27";
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.27";
 String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.27";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
-String	 BonkEnc::BonkEnc::copyright	= "Copyright (C) 2001-2015 Robert Kausch";
+String	 BonkEnc::BonkEnc::copyright	= "Copyright (C) 2001-2016 Robert Kausch";
 String	 BonkEnc::BonkEnc::website	= "http://www.freac.org/";
 String	 BonkEnc::BonkEnc::updatePath	= "http://www.freac.org/eUpdate/eUpdate.xml";
 
