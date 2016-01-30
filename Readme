@@ -95,10 +95,11 @@ Known problems
 History
 -------
 
-	Version 1.0.27 CVS (December 2015)
+	Version 1.0.27 (January 2016)
 
 		- added Cantonese (Hong Kong) language support
 		- minor improvements for CDDB submit dialog
+		- fixed erroneous message about non existing folder if it is drive's root
 		- fixed issues handling CDDB entries with line breaks
 		- fixed inability to send new CDDB entries when there was a disc-id collision
 

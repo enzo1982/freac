@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -131,7 +131,7 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 {
 	Directory	 outputDirectory(register_layer_encoders->GetOutputDirectory().Replace("<installdrive>", Utilities::GetInstallDrive()));
 
-	if (Directory::SetActiveDirectory(outputDirectory) != Success())
+	if (!outputDirectory.Exists())
 	{
 		Int	 selection = QuickMessage(BonkEnc::i18n->TranslateString("The output folder does not exist! Do you want to create it?"), BonkEnc::i18n->TranslateString("Error"), Message::Buttons::YesNoCancel, Message::Icon::Question);
 
