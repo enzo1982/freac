@@ -326,6 +326,7 @@
       <entry id="5023" string="Resources"/>
       <entry id="5024" string="Verifiers"/>
       <entry id="5025" string="Taggers"/>
+      <entry id="5026" string="Processing"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder"/>
@@ -485,6 +486,13 @@
 	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from."/>
 	<entry id="5803" string="Enable output verification"/>
 	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them."/>
+      </section>
+
+      <section name="Processing">
+	<entry id="5900" string="Signal processing"/>
+	<entry id="5901" string="Available"/>
+	<entry id="5902" string="Selected"/>
+	<entry id="5903" string="Configure component"/>
       </section>
     </section>
 
@@ -999,6 +1007,8 @@
 	  <entry id="103207" string="Publisher information"/>
 	  <entry id="103208" string="Publisher / label"/>
 	  <entry id="103209" string="ISRC"/>
+	  <entry id="103210" string="Tempo"/>
+	  <entry id="103211" string="BPM"/>
 	</section>
 
 	<section name="Other">

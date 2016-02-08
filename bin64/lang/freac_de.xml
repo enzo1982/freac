@@ -326,6 +326,7 @@
       <entry id="5023" string="Resources">Ressourcen</entry>
       <entry id="5024" string="Verifiers">Verifizierer</entry>
       <entry id="5025" string="Taggers">Tagger</entry>
+      <entry id="5026" string="Processing">Verarbeitung</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Kodierer konfigurieren</entry>
@@ -485,6 +486,13 @@
 	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Überprüfen, dass verlustfreie Quellen exakt den Daten&#10;entsprechen, aus den sie ursprünglich erzeugt wurden.</entry>
 	<entry id="5803" string="Enable output verification">Ausgabeverifikation aktivieren</entry>
 	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Überprüfen, dass verlustfreie Ausgaben exakt den Daten&#10;entsprechen, die zum Kodieren verwendet wurden.</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="5900" string="Signal processing">Signalverarbeitung</entry>
+	<entry id="5901" string="Available">Verfügbar</entry>
+	<entry id="5902" string="Selected">Ausgewählt</entry>
+	<entry id="5903" string="Configure component">Komponente konfigurieren</entry>
       </section>
     </section>
 
@@ -999,6 +1007,8 @@
 	  <entry id="103207" string="Publisher information">Verlegerinformationen</entry>
 	  <entry id="103208" string="Publisher / label">Verleger / Label</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>
+	  <entry id="103210" string="Tempo">Tempo</entry>
+	  <entry id="103211" string="BPM">BPM</entry>
 	</section>
 
 	<section name="Other">
