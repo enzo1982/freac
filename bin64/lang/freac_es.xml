@@ -39,7 +39,8 @@
     <entry id="352" string="unknown album">álbum desconocido</entry>
     <entry id="353" string="unknown genre">género desconocido</entry>
     <entry id="354" string="unknown year">año desconocido</entry>
-    <entry id="355" string="hidden track">pista oculta</entry>
+
+    <entry id="380" string="hidden track">pista oculta</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -972,10 +973,10 @@
 	  <entry id="103200" string="Details">Detalles</entry>
 	  <entry id="103201" string="Detailed information">Información detallada</entry>
 	  <entry id="103202" string="Band / orchestra">Grupo / Orquesta</entry>
-	  <entry id="103203" string="Performer refinement">Detalle del ejecutante</entry>
-	  <entry id="103204" string="Modified / remixed by">Modificado / remezclado por</entry>
-	  <entry id="103205" string="Composer">Compositor</entry>
-	  <entry id="103206" string="Lyrics writer">Letrista</entry>
+	  <entry id="103203" string="Conductor">Detalle del ejecutante</entry>
+	  <entry id="103204" string="Composer">Compositor</entry>
+	  <entry id="103205" string="Lyrics writer">Letrista</entry>
+	  <entry id="103206" string="Modified / remixed by">Modificado / remezclado por</entry>
 	  <entry id="103207" string="Publisher information">Información del editor</entry>
 	  <entry id="103208" string="Publisher / label">Editor / Etiqueta</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>

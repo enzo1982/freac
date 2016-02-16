@@ -28,6 +28,7 @@ sowie Video-Downloads und konvertiert folgende Audioformate:
 
 	- Musepack					(http://www.musepack.net/)
 	- WavPack					(http://www.wavpack.com/)
+	- OptimFROG					(http://www.losslessaudio.org/)
 	- Monkey's Audio				(http://www.monkeysaudio.com/)
 	- TAK						(http://www.thbeck.de/)
 
@@ -137,7 +138,7 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.1 CVS (November 2015)
+	Version 1.1 CVS (Februar 2016)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, Mac OS X, Solaris, FreeBSD, OpenBSD und NetBSD portiert
@@ -183,10 +184,10 @@ Geschichte
 		- Unterstützung für große Schriften hinzugefügt
 		- Standardausgabeverzeichnis auf Ordner "Eigene Musik" geändert
 		- Zusätzliche, von Winamp 5.6 definierte Genres hinzugefügt
-		- Vorlage <disc> hinzugefügt
-		- Vorlage <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
-		- Vorlage <filetype> hinzugefügt
-		- Vorlage <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
+		- Platzhalter <composer>, <conductor> und <disc> hinzugefügt
+		- Platzhalter <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
+		- Platzhalter <filetype> hinzugefügt
+		- Platzhalter <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
 		- Vorschau zum CDDB-Trefferauswahldialog hinzugefügt
 		- Option für automatische Auswahl des ersten CDDB-Treffers hinzugefügt
 		- Unterstützung für CDDB-Abfrage per HTTP GET hinzugefügt

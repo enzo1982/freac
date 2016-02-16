@@ -39,7 +39,8 @@
     <entry id="352" string="unknown album">未知專輯</entry>
     <entry id="353" string="unknown genre">未知曲式</entry>
     <entry id="354" string="unknown year">未知年份</entry>
-    <entry id="355" string="hidden track">隱藏曲目</entry>
+
+    <entry id="380" string="hidden track">隱藏曲目</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1：</entry>
@@ -988,10 +989,10 @@
 	  <entry id="103200" string="Details">細節</entry>
 	  <entry id="103201" string="Detailed information">細節</entry>
 	  <entry id="103202" string="Band / orchestra">樂隊╱交響樂團</entry>
-	  <entry id="103203" string="Performer refinement">表演改良</entry>
-	  <entry id="103204" string="Modified / remixed by">混音</entry>
-	  <entry id="103205" string="Composer">作曲</entry>
-	  <entry id="103206" string="Lyrics writer">填詞</entry>
+	  <entry id="103203" string="Conductor">表演改良</entry>
+	  <entry id="103204" string="Composer">作曲</entry>
+	  <entry id="103205" string="Lyrics writer">填詞</entry>
+	  <entry id="103206" string="Modified / remixed by">混音</entry>
 	  <entry id="103207" string="Publisher information">出版商資訊</entry>
 	  <entry id="103208" string="Publisher / label">出版商</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>

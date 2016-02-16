@@ -842,10 +842,10 @@
 	  <entry id="103200" string="Details">Детайли</entry>
 	  <entry id="103201" string="Detailed information">Детайлна информация</entry>
 	  <entry id="103202" string="Band / orchestra">Група / Оркестър</entry>
-	  <entry id="103203" string="Performer refinement">Аранжимент</entry>
-	  <entry id="103204" string="Modified / remixed by">Преработено / ремиксирано от</entry>
-	  <entry id="103205" string="Composer">Композитор</entry>
-	  <entry id="103206" string="Lyrics writer">Текстописец</entry>
+	  <entry id="103203" string="Conductor">Аранжимент</entry>
+	  <entry id="103204" string="Composer">Композитор</entry>
+	  <entry id="103205" string="Lyrics writer">Текстописец</entry>
+	  <entry id="103206" string="Modified / remixed by">Преработено / ремиксирано от</entry>
 	  <entry id="103207" string="Publisher information">Информация за издателя</entry>
 	  <entry id="103208" string="Publisher / label">Издател / лейбъл</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>

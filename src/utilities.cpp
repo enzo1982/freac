@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -355,10 +355,13 @@ String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 			shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
 			shortOutFileName.Replace("<genre>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
 			shortOutFileName.Replace("<disc>", String(info.disc < 10 ? "0" : NIL).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
-			shortOutFileName.Replace("<track>", String(info.track < 10 ? "0" : NIL).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
 			shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
 			shortOutFileName.Replace("<filename>", BoCA::Utilities::ReplaceIncompatibleCharacters(shortInFileName));
 			shortOutFileName.Replace("<filetype>", fileExtension.ToUpper());
+
+			/* Replace <track> pattern.
+			 */
+			shortOutFileName.Replace("<track>", String(info.track < 10 ? "0" : NIL).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
 
 			for (Int i = 1; i <= 4; i++)
 			{
@@ -367,6 +370,24 @@ String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 				shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.track > 0 ? info.track : 1) + 1)).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
 			}
 
+			/* Replace other text fields.
+			 */
+			foreach (const String &pair, info.other)
+			{
+				String	 key   = pair.Head(pair.Find(":") + 1);
+				String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
+
+				if (value == NIL) continue;
+
+				if	(key == String(INFO_CONDUCTOR).Append(":")) shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+				else if	(key == String(INFO_COMPOSER).Append(":"))  shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			}
+
+			shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
+			shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
+
+			/* Replace <directory> pattern.
+			 */
 			String	 directory = inFileDirectory;
 
 			if	(directory[1] == ':')	       directory = directory.Tail(directory.Length() - 3);

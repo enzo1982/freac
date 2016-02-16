@@ -39,7 +39,8 @@
     <entry id="352" string="unknown album">okänt album</entry>
     <entry id="353" string="unknown genre">okänd genre</entry>
     <entry id="354" string="unknown year">okänt år</entry>
-    <entry id="355" string="hidden track">dolt spår</entry>
+
+    <entry id="380" string="hidden track">dolt spår</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -951,10 +952,10 @@
 	  <entry id="103200" string="Details">Information</entry>
 	  <entry id="103201" string="Detailed information">Detaljerad information</entry>
 	  <entry id="103202" string="Band / orchestra">Band/orkester</entry>
-	  <entry id="103203" string="Performer refinement">Artistinformation</entry>
-	  <entry id="103204" string="Modified / remixed by">Modifierad/ommixad av</entry>
-	  <entry id="103205" string="Composer">Kompositör</entry>
-	  <entry id="103206" string="Lyrics writer">Textförfattare/librettist</entry>
+	  <entry id="103203" string="Conductor">Artistinformation</entry>
+	  <entry id="103204" string="Composer">Kompositör</entry>
+	  <entry id="103205" string="Lyrics writer">Textförfattare/librettist</entry>
+	  <entry id="103206" string="Modified / remixed by">Modifierad/ommixad av</entry>
 	  <entry id="103207" string="Publisher information">Information om utgivare</entry>
 	  <entry id="103208" string="Publisher / label">Utgivare/skivmärke</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>

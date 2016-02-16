@@ -28,6 +28,7 @@ the following audio formats:
 
 	- Musepack					(http://www.musepack.net/)
 	- WavPack					(http://www.wavpack.com/)
+	- OptimFROG					(http://www.losslessaudio.org/)
 	- Monkey's Audio				(http://www.monkeysaudio.com/)
 	- TAK						(http://www.thbeck.de/)
 
@@ -137,7 +138,7 @@ Known problems
 History
 -------
 
-	Version 1.1 CVS (November 2015)
+	Version 1.1 CVS (February 2016)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -183,7 +184,7 @@ History
 		- added support for large fonts
 		- changed default output directory to "My Music" folder
 		- added additional genres as defined by Winamp 5.6
-		- added <disc> pattern
+		- added <composer>, <conductor> and <disc> patterns
 		- added <directory> pattern to allow preserving existing directory structures
 		- added <filetype> pattern
 		- added <installdrive> pattern for use in output directory name

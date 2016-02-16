@@ -34,7 +34,8 @@
     <entry id="352" string="unknown album">アルバム不明</entry>
     <entry id="353" string="unknown genre">ジャンル不明</entry>
     <entry id="354" string="unknown year">年不明</entry>
-    <entry id="355" string="hidden track">隠しトラック</entry>
+
+    <entry id="380" string="hidden track">隠しトラック</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1：</entry>

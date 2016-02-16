@@ -39,7 +39,10 @@
     <entry id="352" string="unknown album"/>
     <entry id="353" string="unknown genre"/>
     <entry id="354" string="unknown year"/>
-    <entry id="355" string="hidden track"/>
+    <entry id="355" string="unknown conductor"/>
+    <entry id="356" string="unknown composer"/>
+
+    <entry id="380" string="hidden track"/>
 
     <section name="Characters">
       <entry id="500" string="%1:"/>
@@ -1000,10 +1003,10 @@
 	  <entry id="103200" string="Details"/>
 	  <entry id="103201" string="Detailed information"/>
 	  <entry id="103202" string="Band / orchestra"/>
-	  <entry id="103203" string="Performer refinement"/>
-	  <entry id="103204" string="Modified / remixed by"/>
-	  <entry id="103205" string="Composer"/>
-	  <entry id="103206" string="Lyrics writer"/>
+	  <entry id="103203" string="Conductor"/>
+	  <entry id="103204" string="Composer"/>
+	  <entry id="103205" string="Lyrics writer"/>
+	  <entry id="103206" string="Modified / remixed by"/>
 	  <entry id="103207" string="Publisher information"/>
 	  <entry id="103208" string="Publisher / label"/>
 	  <entry id="103209" string="ISRC"/>

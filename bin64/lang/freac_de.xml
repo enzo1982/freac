@@ -39,7 +39,10 @@
     <entry id="352" string="unknown album">unbekanntes Album</entry>
     <entry id="353" string="unknown genre">unbekanntes Genre</entry>
     <entry id="354" string="unknown year">unbekanntes Jahr</entry>
-    <entry id="355" string="hidden track">versteckter Track</entry>
+    <entry id="355" string="unknown conductor">unbekannter Leiter</entry>
+    <entry id="356" string="unknown composer">unbekannter Komponist</entry>
+
+    <entry id="380" string="hidden track">versteckter Track</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -1000,10 +1003,10 @@
 	  <entry id="103200" string="Details">Details</entry>
 	  <entry id="103201" string="Detailed information">Detaillierte Informationen</entry>
 	  <entry id="103202" string="Band / orchestra">Band / Orchester</entry>
-	  <entry id="103203" string="Performer refinement">Weitere Künstler</entry>
-	  <entry id="103204" string="Modified / remixed by">Bearbeitet / remixed von</entry>
-	  <entry id="103205" string="Composer">Komponist</entry>
-	  <entry id="103206" string="Lyrics writer">Texter</entry>
+	  <entry id="103203" string="Conductor">Leiter / Dirigent</entry>
+	  <entry id="103204" string="Composer">Komponist</entry>
+	  <entry id="103205" string="Lyrics writer">Texter</entry>
+	  <entry id="103206" string="Modified / remixed by">Bearbeiter / Remixer</entry>
 	  <entry id="103207" string="Publisher information">Verlegerinformationen</entry>
 	  <entry id="103208" string="Publisher / label">Verleger / Label</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>

@@ -38,7 +38,8 @@
     <entry id="352" string="unknown album">неизвестный альбом</entry>
     <entry id="353" string="unknown genre">неизвестный жанр</entry>
     <entry id="354" string="unknown year">неизвестный год</entry>
-    <entry id="355" string="hidden track">скрытая дорожка</entry>
+
+    <entry id="380" string="hidden track">скрытая дорожка</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -987,10 +988,10 @@
 	  <entry id="103200" string="Details">Подробно</entry>
 	  <entry id="103201" string="Detailed information">Подробная информация</entry>
 	  <entry id="103202" string="Band / orchestra">Группа / ансамбль</entry>
-	  <entry id="103203" string="Performer refinement">Исполнитель</entry>
-	  <entry id="103204" string="Modified / remixed by">Изменено / микшировано</entry>
-	  <entry id="103205" string="Composer">Композитор</entry>
-	  <entry id="103206" string="Lyrics writer">Автор текста</entry>
+	  <entry id="103203" string="Conductor">Исполнитель</entry>
+	  <entry id="103204" string="Composer">Композитор</entry>
+	  <entry id="103205" string="Lyrics writer">Автор текста</entry>
+	  <entry id="103206" string="Modified / remixed by">Изменено / микшировано</entry>
 	  <entry id="103207" string="Publisher information">Информация об издателе</entry>
 	  <entry id="103208" string="Publisher / label">Издатель / лэйбл</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>
