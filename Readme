@@ -95,13 +95,15 @@ Known problems
 History
 -------
 
-	Version 1.0.27 (January 2016)
+	Version 1.0.27 (February 2016)
 
 		- added Cantonese (Hong Kong) language support
 		- minor improvements for CDDB submit dialog
+		- display error message only once when adding multiple files while converting
 		- fixed erroneous message about non existing folder if it is drive's root
 		- fixed issues handling CDDB entries with line breaks
 		- fixed inability to send new CDDB entries when there was a disc-id collision
+		- fixed CDDB query dialog appearing off screen when main window is minimized
 
 	Version 1.0.26 (October 2015)
 
