@@ -138,7 +138,7 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.1 CVS (Februar 2016)
+	Version 1.1 CVS (April 2016)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, Mac OS X, Solaris, FreeBSD, OpenBSD und NetBSD portiert
@@ -302,7 +302,8 @@ Besonderen Dank
 			   Martin Deyanov (Bulgarisch),
 			   Cois Wiid (Afrikaans),
 			   Xabier Aramendi (Baskisch),
-			   Kin Kwok (Kantonesisch, Hong Kong)
+			   Kin Kwok (Kantonesisch, Hong Kong),
+			   Patriccollu di Santa Maria è Sichè (Korsisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC-Kodierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat
