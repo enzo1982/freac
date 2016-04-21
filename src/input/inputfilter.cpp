@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -232,6 +232,12 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 
 				ex_ID3Field_GetBINARY(field, picture->data, picture->data.Size());
 			}
+
+			if	(picture->data[0] == 0xFF && picture->data[1] == 0xD8) picture->mime = "image/jpeg";
+			else if (picture->data[0] == 0x89 && picture->data[1] == 0x50 &&
+				 picture->data[2] == 0x4E && picture->data[3] == 0x47 &&
+				 picture->data[4] == 0x0D && picture->data[5] == 0x0A &&
+				 picture->data[6] == 0x1A && picture->data[7] == 0x0A) picture->mime = "image/png";
 
 			nFormat->pictures.Add(picture);
 		}

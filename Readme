@@ -95,10 +95,11 @@ Known problems
 History
 -------
 
-	Version 1.0.27 (February 2016)
+	Version 1.0.27 (April 2016)
 
 		- added Cantonese (Hong Kong) language support
 		- minor improvements for CDDB submit dialog
+		- improved detection of cover art mime types
 		- display error message only once when adding multiple files while converting
 		- fixed erroneous message about non existing folder if it is drive's root
 		- fixed issues handling CDDB entries with line breaks

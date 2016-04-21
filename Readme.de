@@ -96,17 +96,18 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.0.27 (Februar 2016)
+	Version 1.0.27 (April 2016)
 
 		- Sprachunterstützung für Kantonesisch (Hong Kong) hinzugefügt
 		- Kleinere Verbesserungen für den CDDB-Sendedialog
+		- Erkennung des MIME-Types von Cover-Bildern verbessert
 		- Zeige Fehlermeldung nur einmal wenn während der Konvertierung mehrere Dateien hinzugefügt werden
 		- Fehlerhafte Meldung über nicht existierendes Verzeichnis bei Wurzelverzeichnis eines Laufwerks behoben
 		- Probleme beim Umgang mit CDDB-Einträgen mit Zeilenumbrüchen behoben
 		- Problem beim Senden von neuen CDDB-Einträgen behoben, wenn eine Disc-ID-Kollision vorlag
 		- Fehler behoben, durch den der CDDB-Abfragedialog bei minimiertem Hauptfenster außerhalb des Bildschirms erschien
 
-	Version 1.0.26 CVS (Oktober 2015)
+	Version 1.0.26 (Oktober 2015)
 
 		- Serbische (Latein und Kyrillisch) Übersetzungen aktualisiert
 		- Erkennung von zusammengefügten MP3-Dateien verbessert
