@@ -282,7 +282,7 @@
     <entry id="279" string="MP4 metadata encoding:">Codificació metadades MP4:</entry>
     <entry id="280" string="Tag encodings">Codificació Tag</entry>
     <entry id="281" string="Update joblist with this information">Actualitzar llista de tasques amb aquesta informació</entry>
-    <entry id="282" string="unknown genre">Gèner5e desconegut</entry>
+    <entry id="282" string="unknown genre">Gènere desconegut</entry>
     <entry id="283" string="Load joblist...">Carregar llista de tasques...</entry>
     <entry id="284" string="Save joblist...">Guardar llista de tasques...</entry>
     <entry id="285" string="Pause/resume encoding">Pausar/continuar codificació</entry>
