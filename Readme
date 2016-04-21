@@ -97,7 +97,7 @@ History
 
 	Version 1.0.27 (April 2016)
 
-		- added Cantonese (Hong Kong) language support
+		- added Cantonese (Hong Kong) and Corsican language support
 		- minor improvements for CDDB submit dialog
 		- improved detection of cover art mime types
 		- display error message only once when adding multiple files while converting
@@ -523,7 +523,8 @@ Special thanks to
 			   Martin Deyanov (Bulgarian),
 			   Cois Wiid (Afrikaans),
 			   Xabier Aramendi (Basque),
-			   Kin Kwok (Cantonese, Hong Kong)
+			   Kin Kwok (Cantonese, Hong Kong),
+			   Patriccollu di Santa Maria è Sichè (Corsican)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

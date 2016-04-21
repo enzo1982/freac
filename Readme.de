@@ -98,7 +98,7 @@ Geschichte
 
 	Version 1.0.27 (April 2016)
 
-		- Sprachunterstützung für Kantonesisch (Hong Kong) hinzugefügt
+		- Sprachunterstützung für Kantonesisch (Hong Kong) und Korsisch hinzugefügt
 		- Kleinere Verbesserungen für den CDDB-Sendedialog
 		- Erkennung des MIME-Types von Cover-Bildern verbessert
 		- Zeige Fehlermeldung nur einmal wenn während der Konvertierung mehrere Dateien hinzugefügt werden
@@ -524,7 +524,8 @@ Besonderen Dank
 			   Martin Deyanov (Bulgarisch),
 			   Cois Wiid (Afrikaans),
 			   Xabier Aramendi (Baskisch),
-			   Kin Kwok (Kantonesisch, Hong Kong)
+			   Kin Kwok (Kantonesisch, Hong Kong),
+			   Patriccollu di Santa Maria è Sichè (Korsisch)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC-Kodierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat
