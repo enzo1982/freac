@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -65,8 +65,10 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	 */
 	config->SetSaveSettingsOnExit(False);
 
-	Bool		 quiet		= ScanForParameter("-quiet", NULL);
-	Bool		 cddb		= ScanForParameter("-cddb", NULL);
+	/* Configure the converter.
+	 */
+	Bool		 quiet		= ScanForOption("--quiet");
+	Bool		 cddb		= ScanForOption("--cddb");
 	Array<String>	 files;
 	String		 encoderID	= "LAME";
 	String		 helpenc;
@@ -77,11 +79,11 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	String		 tracks;
 	String		 timeout	= "120";
 
-	ScanForParameter("-e", &encoderID);
-	ScanForParameter("-h", &helpenc);
-	ScanForParameter("-d", &outdir);
-	ScanForParameter("-o", &outfile);
-	ScanForParameter("-p", &pattern);
+	if (!ScanForOption("--encoder", &encoderID)) ScanForOption("-e", &encoderID);
+	if (!ScanForOption("--help",	&helpenc))   ScanForOption("-h", &helpenc);
+						     ScanForOption("-d", &outdir);
+						     ScanForOption("-o", &outfile);
+	if (!ScanForOption("--pattern", &pattern))   ScanForOption("-p", &pattern);
 
 	DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
 	Int			 numDrives = 0;
@@ -90,9 +92,10 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	{
 		if (info->GetNumberOfDevices() > 0)
 		{
-			ScanForParameter("-cd", &cdDrive);
-			ScanForParameter("-track", &tracks);
-			ScanForParameter("-t", &timeout);
+			if (!ScanForOption("--drive", &cdDrive)) ScanForOption("-cd", &cdDrive);
+			if (!ScanForOption("--track", &tracks))	 ScanForOption("-t",  &tracks);
+
+			ScanForOption("--timeout", &timeout);
 		}
 
 		numDrives = info->GetNumberOfDevices();
@@ -115,7 +118,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		if (!TracksToFiles(tracks, &files))
 		{
-			Console::OutputString("Error: Invalid track(s) specified after -track.\n");
+			Console::OutputString("Error: Invalid track(s) specified after --track.\n");
 
 			return;
 		}
@@ -160,9 +163,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		String	 quality = "5";
 		String	 mode	 = "VBR";
 
-		ScanForParameter("-b", &bitrate);
-		ScanForParameter("-q", &quality);
-		ScanForParameter("-m", &mode);
+		ScanForOption("-b", &bitrate);
+		ScanForOption("-q", &quality);
+		ScanForOption("-m", &mode);
 
 		config->SetIntValue("LAME", "Preset", 0);
 		config->SetIntValue("LAME", "SetBitrate", True);
@@ -182,8 +185,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		String	 bitrate = "192";
 		String	 quality = "60";
 
-		if (ScanForParameter("-b", &bitrate)) config->SetIntValue("Vorbis", "Mode", 1);
-		else				      config->SetIntValue("Vorbis", "Mode", 0);
+		if (ScanForOption("-b", &bitrate)) config->SetIntValue("Vorbis", "Mode", 1);
+		else				   config->SetIntValue("Vorbis", "Mode", 0);
 
 		config->SetIntValue("Vorbis", "Quality", Math::Max(0, Math::Min(100, (Int) quality.ToInt())));
 		config->SetIntValue("Vorbis", "Bitrate", Math::Max(45, Math::Min(500, (Int) bitrate.ToInt())));
@@ -196,12 +199,12 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		String	 predictor    = "32";
 		String	 downsampling = "2";
 
-		ScanForParameter("-q", &quantization);
-		ScanForParameter("-p", &predictor);
-		ScanForParameter("-r", &downsampling);
+		ScanForOption("-q", &quantization);
+		ScanForOption("-p", &predictor);
+		ScanForOption("-r", &downsampling);
 
-		config->SetIntValue("Bonk", "JointStereo", ScanForParameter("-js", NULL));
-		config->SetIntValue("Bonk", "Lossless", ScanForParameter("-lossless", NULL));
+		config->SetIntValue("Bonk", "JointStereo", ScanForOption("-js"));
+		config->SetIntValue("Bonk", "Lossless", ScanForOption("-lossless"));
 
 		config->SetIntValue("Bonk", "Quantization", Math::Max(0, Math::Min(40, (Int) Math::Round(quantization.ToFloat() * 20))));
 		config->SetIntValue("Bonk", "Predictor", Math::Max(0, Math::Min(512, (Int) predictor.ToInt())));
@@ -213,7 +216,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	{
 		String	 bitrate = "192";
 
-		ScanForParameter("-b", &bitrate);
+		ScanForOption("-b", &bitrate);
 
 		config->SetIntValue("BladeEnc", "Bitrate", Math::Max(32, Math::Min(320, (Int) bitrate.ToInt())));
 
@@ -224,10 +227,10 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		String	 bitrate = "64";
 		String	 quality = "100";
 
-		if (ScanForParameter("-b", &bitrate)) config->SetIntValue("FAAC", "SetQuality", False);
-		else				      config->SetIntValue("FAAC", "SetQuality", True);
+		if (ScanForOption("-b", &bitrate)) config->SetIntValue("FAAC", "SetQuality", False);
+		else				   config->SetIntValue("FAAC", "SetQuality", True);
 
-		config->SetIntValue("FAAC", "MP4Container", ScanForParameter("-mp4", NULL));
+		config->SetIntValue("FAAC", "MP4Container", ScanForOption("-mp4"));
 
 		config->SetIntValue("FAAC", "AACQuality", Math::Max(10, Math::Min(500, (Int) quality.ToInt())));
 		config->SetIntValue("FAAC", "Bitrate", Math::Max(8, Math::Min(256, (Int) bitrate.ToInt())));
@@ -243,10 +246,10 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		String	 minrice;
 		String	 maxrice;
 
-		ScanForParameter("-b", &blocksize);
-		ScanForParameter("-l", &lpc);
-		ScanForParameter("-q", &qlp);
-		ScanForParameter("-r", &rice);
+		ScanForOption("-b", &blocksize);
+		ScanForOption("-l", &lpc);
+		ScanForOption("-q", &qlp);
+		ScanForOption("-r", &rice);
 
 		Int	 i = 0;
 		Int	 j = 0;
@@ -256,9 +259,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		config->SetIntValue("FLAC", "Preset", -1);
 
-		config->SetIntValue("FLAC", "DoMidSideStereo", ScanForParameter("-ms", NULL));
-		config->SetIntValue("FLAC", "DoExhaustiveModelSearch", ScanForParameter("-e", NULL));
-		config->SetIntValue("FLAC", "DoQLPCoeffPrecSearch", ScanForParameter("-p", NULL));
+		config->SetIntValue("FLAC", "DoMidSideStereo", ScanForOption("-ms"));
+		config->SetIntValue("FLAC", "DoExhaustiveModelSearch", ScanForOption("-e"));
+		config->SetIntValue("FLAC", "DoQLPCoeffPrecSearch", ScanForOption("-p"));
 
 		config->SetIntValue("FLAC", "Blocksize", Math::Max(192, Math::Min(32768, (Int) blocksize.ToInt())));
 		config->SetIntValue("FLAC", "MaxLPCOrder", Math::Max(0, Math::Min(32, (Int) lpc.ToInt())));
@@ -273,8 +276,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		String	 bitrate    = "48";
 		String	 candidates = "32";
 
-		ScanForParameter("-b", &bitrate);
-		ScanForParameter("-c", &candidates);
+		ScanForOption("-b", &bitrate);
+		ScanForOption("-c", &candidates);
 
 		config->SetIntValue("TwinVQ", "PreselectionCandidates", Math::Max(4, Math::Min(32, (Int) candidates.ToInt())));
 		config->SetIntValue("TwinVQ", "Bitrate", Math::Max(24, Math::Min(48, (Int) bitrate.ToInt())));
@@ -463,7 +466,7 @@ Void BonkEnc::BonkEncCommandline::OnEncodeTrack(const Track &track, const String
 	static Bool	 firstTime = True;
 
 	BoCA::Config	*config = BoCA::Config::Get();
-	Bool		 quiet	= ScanForParameter("-quiet", NULL);
+	Bool		 quiet	= ScanForOption("--quiet");
 
 	if (!quiet)
 	{
@@ -478,13 +481,23 @@ Void BonkEnc::BonkEncCommandline::OnEncodeTrack(const Track &track, const String
 	}
 }
 
-Bool BonkEnc::BonkEncCommandline::ScanForParameter(const String &param, String *option)
+Bool BonkEnc::BonkEncCommandline::ScanForOption(const String &option, String *value)
 {
 	for (Int i = 0; i < args.Length(); i++)
 	{
-		if (args.GetNth(i) == param)
+		if (option.StartsWith("--") && value != NIL && args.GetNth(i).StartsWith(String(option).Append("=")))
 		{
-			if (option != NULL) *option = args.GetNth(i + 1);
+			*value = args.GetNth(i).Tail(args.GetNth(i).Length() - option.Length() - 1);
+
+			return True;
+		}
+		else if (option.StartsWith("--") && args.GetNth(i) == option)
+		{
+			return True;
+		}
+		else if (option.StartsWith("-") && args.GetNth(i) == option)
+		{
+			if (value != NIL) *value = args.GetNth(i + 1);
 
 			return True;
 		}
@@ -503,15 +516,14 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 		prevParam	= param;
 		param		= args.GetNth(i);
 
-		if (param[0] != '-' && (prevParam[0] != '-'	 ||
-					prevParam == "-quiet"	 ||
-					prevParam == "-cddb"	 ||
-					prevParam == "-js"	 ||
-					prevParam == "-lossless" ||
-					prevParam == "-mp4"	 ||
-					prevParam == "-ms"	 ||
-					prevParam == "-extc"	 ||
-					prevParam == "-extm"))
+		if (param[0] != '-' && (prevParam.StartsWith("--")  ||
+					prevParam[0] != '-'	    ||
+					prevParam    == "-js"	    ||
+					prevParam    == "-lossless" ||
+					prevParam    == "-mp4"	    ||
+					prevParam    == "-ms"	    ||
+					prevParam    == "-extc"	    ||
+					prevParam    == "-extm"))
 		{
 			if (param.Contains("*") || param.Contains("?"))
 			{
@@ -600,15 +612,16 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 
 Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 {
+	Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" (").Append(BonkEnc::architecture).Append(") command line interface\n").Append(BonkEnc::copyright).Append("\n\n"));
+
 	if (helpenc == NIL)
 	{
-		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" (").Append(BonkEnc::architecture).Append(") command line interface\n").Append(BonkEnc::copyright).Append("\n\n"));
 		Console::OutputString("Usage:\tfreaccmd [options] [file(s)]\n\n");
-		Console::OutputString("\t-e <encoder>\tSpecify the encoder to use (default is LAME)\n");
-		Console::OutputString("\t-h <encoder>\tPrint help for encoder specific options\n\n");
-		Console::OutputString("\t-d <outdir>\tSpecify output directory for encoded files\n");
-		Console::OutputString("\t-o <outfile>\tSpecify output file name in single file mode\n");
-		Console::OutputString("\t-p <pattern>\tSpecify output file name pattern\n\n");
+		Console::OutputString("  --encoder=<id>  | -e <id>\tSpecify the encoder to use (default is LAME)\n");
+		Console::OutputString("  --help=<id>     | -h <id>\tPrint help for encoder specific options\n\n");
+		Console::OutputString("                    -d <dir>\tSpecify output directory for encoded files\n");
+		Console::OutputString("                    -o <file>\tSpecify output file name in single file mode\n");
+		Console::OutputString("  --pattern=<pat> | -p <pat>\tSpecify output file name pattern\n\n");
 
 		Registry		&boca	   = Registry::Get();
 		DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
@@ -617,23 +630,21 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 		{
 			if (info->GetNumberOfDevices() > 0)
 			{
-				Console::OutputString("\t-cd <drive>\tSpecify active CD drive (0..n)\n");
-				Console::OutputString("\t-track <track>\tSpecify input track(s) to rip (e.g. 1-5,7,9 or 'all')\n");
-				Console::OutputString("\t-t <timeout>\tTimeout for CD track ripping (default is 120 seconds)\n");
-				Console::OutputString("\t-cddb\t\tEnable CDDB database lookup\n\n");
+				Console::OutputString("  --drive=<n>     | -cd <n>\tSpecify active CD drive (0..n)\n");
+				Console::OutputString("  --track=<n>     | -t <n>\tSpecify input track(s) to rip (e.g. 1-5,7,9 or 'all')\n");
+				Console::OutputString("  --timeout=<s>\t\t\tTimeout for CD track ripping (default is 120 seconds)\n");
+				Console::OutputString("  --cddb\t\t\tEnable CDDB database lookup\n\n");
 			}
 
 			boca.DeleteComponent(info);
 		}
 
-		Console::OutputString("\t-quiet\t\tDo not print any messages\n\n");
-		Console::OutputString("<encoder> can be one of LAME, VORBIS, BONK, BLADE, FAAC, FLAC, TVQ or WAVE.\n\n");
-		Console::OutputString("Default for <pattern> is \"<artist> - <title>\".\n\n");
+		Console::OutputString("  --quiet\t\t\tDo not print any messages\n\n");
+		Console::OutputString("Encoder <id> can be one of LAME, VORBIS, BONK, BLADE, FAAC, FLAC, TVQ or WAVE.\n\n");
+		Console::OutputString("Default for <pat> is \"<artist> - <title>\".\n\n");
 	}
 	else
 	{
-		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" (").Append(BonkEnc::architecture).Append(") command line interface\n").Append(BonkEnc::copyright).Append("\n\n"));
-
 		if (helpenc == "LAME" || helpenc == "lame")
 		{
 			Console::OutputString("Options for LAME MP3 encoder:\n\n");
