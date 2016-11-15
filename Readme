@@ -180,6 +180,7 @@ History
 		- added RIFF tagging support (using LIST INFO and Cart chunks)
 		- added support for Ogg FLAC files
 		- completely reworked arguments of freacmd
+		- added support for selecting configuration in freaccmd
 		- added support for wildcards in arguments to freaccmd
 		- added support for encoding to single file with freaccmd
 		- added support for large fonts

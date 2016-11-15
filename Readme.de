@@ -180,6 +180,7 @@ Geschichte
 		- Unterstützung für RIFF-Tagging hinzugefügt (über LIST-INFO- und Cart-Chunks)
 		- Unterstützung für Ogg FLAC-Dateien hinzugefügt
 		- Parameter von freaccmd komplett überarbeitet
+		- Unterstützung für Konfigurationsauswahl in freaccmd hinzugefügt
 		- Unterstützung für Wildcards in freaccmd-Parametern hinzugefügt
 		- Unterstützung für Ausgabe in einzelne Datei mit freaccmd hinzugefügt
 		- Unterstützung für große Schriften hinzugefügt

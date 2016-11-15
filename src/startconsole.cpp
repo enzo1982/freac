@@ -65,6 +65,49 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	 */
 	config->SetSaveSettingsOnExit(False);
 
+	/* List configurations if requested.
+	 */
+	if (ScanForOption("--list-configs"))
+	{
+		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" (").Append(BonkEnc::architecture).Append(") command line interface\n").Append(BonkEnc::copyright).Append("\n\n"));
+		Console::OutputString("Available configurations:\n\n");
+
+		for (Int i = 0; i < config->GetNOfConfigurations(); i++)
+		{
+			if (i == 0) Console::OutputString(String("\t").Append(i18n->TranslateString("Default configuration", "Configuration")).Append("\n"));
+			else	    Console::OutputString(String("\t").Append(config->GetNthConfigurationName(i)).Append("\n"));
+		}
+
+		Console::OutputString("\n");
+
+		return;
+	}
+
+	/* Set active configuration.
+	 */
+	String		 configName;
+
+	config->SetActiveConfiguration("default");
+
+	if (ScanForOption("--config", &configName) && configName != "default" && configName != "Default configuration" && configName != i18n->TranslateString("Default configuration", "Configuration"))
+	{
+		Bool	 foundConfig = False;
+
+		for (Int i = 1; i < config->GetNOfConfigurations(); i++)
+		{
+			if (configName == config->GetNthConfigurationName(i)) { foundConfig = True; break; }
+		}
+
+		if (!foundConfig)
+		{
+			Console::OutputString(String("Error: No such configuration: ").Append(configName).Append("\n"));
+
+			return;
+		}
+
+		config->SetActiveConfiguration(configName);
+	}
+
 	/* Configure the converter.
 	 */
 	Bool		 quiet		= ScanForOption("--quiet");
@@ -639,6 +682,8 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 			boca.DeleteComponent(info);
 		}
 
+		Console::OutputString("  --list-configs\t\tPrint a list of available configurations\n");
+		Console::OutputString("  --config=<cfg>\t\tSpecify configuration to use\n\n");
 		Console::OutputString("  --quiet\t\t\tDo not print any messages\n\n");
 		Console::OutputString("Encoder <id> can be one of LAME, VORBIS, BONK, BLADE, FAAC, FLAC, TVQ or WAVE.\n\n");
 		Console::OutputString("Default for <pat> is \"<artist> - <title>\".\n\n");
