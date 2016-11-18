@@ -153,7 +153,7 @@ ifndef prefix
 	endif
 
 	ifeq ($(BUILD_HAIKU),True)
-		prefix = /boot/common
+		prefix = /system/non-packaged
 	endif
 endif
 
@@ -170,6 +170,7 @@ endif
 
 ifeq ($(BUILD_HAIKU),True)
 	includedir = $(prefix)/develop/headers
+	datadir	   = $(prefix)/data
 endif
 
 # Set release specific options
