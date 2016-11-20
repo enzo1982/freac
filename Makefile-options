@@ -1,6 +1,6 @@
 ########## fre:ac options makefile ##########
 
-SMOOTHVER = 0.8.72
+SMOOTHVER = 0.8.73
 BOCAVER	  = 1.0
 
 # Find source folder and set vpath
