@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -19,8 +19,6 @@ using namespace BoCA::AS;
 
 BonkEnc::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration)
 {
-	SetFlags(Threads::THREAD_WAITFLAG_START);
-
 	configuration	= iConfiguration;
 
 	trackToConvert	= NIL;
