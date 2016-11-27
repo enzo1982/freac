@@ -1,5 +1,5 @@
 /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -327,10 +327,10 @@ const Bool	 BonkEnc::Config::FreedbUpdateJoblistDefault			= True;
 BonkEnc::Config::Config()
 {
 #ifndef __WIN32__
-	if (Directory(GUI::Application::GetApplicationDirectory().Append("../share/freac")).Exists())
+	if (Directory(S::System::System::GetResourcesDirectory().Append("freac")).Exists())
 	{
-		resourcesPath		= "../share/freac/";
-		documentationPath	= "../share/doc/freac/";
+		resourcesPath		= S::System::System::GetResourcesDirectory().Append("freac").Append(Directory::GetDirectoryDelimiter());
+		documentationPath	= S::System::System::GetResourcesDirectory().Append("doc").Append(Directory::GetDirectoryDelimiter()).Append("freac").Append(Directory::GetDirectoryDelimiter());
 	}
 #endif
 
