@@ -112,7 +112,7 @@ ifndef OBJC
 endif
 
 ifndef OBJCXX
-	OBJCXX	= $(CC)
+	OBJCXX	= $(CXX)
 endif
 
 ifeq ($(LD),ld)
@@ -182,6 +182,13 @@ ifeq ($(findstring release,$(config)),release)
 		override OBJCXX	= clang
 
 		override LD	= clang
+	else ifeq ($(BUILD_OSX),True)
+		override CC	= gcc
+		override CXX	= gcc
+		override OBJC	= gcc
+		override OBJCXX	= gcc
+
+		override LD	= gcc
 	endif
 
 	override CFLAGS	     = -pipe -g0 -Wall -Os
@@ -231,9 +238,7 @@ ifeq ($(findstring release,$(config)),release)
 
 	ifneq ($(BUILD_WIN32),True)
 	ifneq ($(BUILD_OSX),True)
-	ifneq ($(BUILD_LINUX),True)
 		override LDFLAGS += -Wl,-rpath,.
-	endif
 	endif
 	endif
 endif
@@ -256,9 +261,7 @@ ifeq ($(findstring debug,$(config)),debug)
 
 	ifneq ($(BUILD_WIN32),True)
 	ifneq ($(BUILD_OSX),True)
-	ifneq ($(BUILD_LINUX),True)
 		override LDFLAGS += -Wl,-rpath,.
-	endif
 	endif
 	endif
 endif
