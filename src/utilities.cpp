@@ -348,7 +348,14 @@ String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 		    (info.track  != -1  && filePattern.Contains("<track>")   ) ||
 		    (			   filePattern.Contains("<filename>")))
 		{
-			String	 shortOutFileName = filePattern;
+			String		 shortOutFileName = filePattern;
+
+			DateTime	 currentDateTime  = DateTime::Current();
+			String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(currentDateTime.GetYear()))).Append(String::FromInt(currentDateTime.GetYear()))
+						    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMonth())))).Append(String::FromInt(currentDateTime.GetMonth()))
+						    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetDay())))).Append(String::FromInt(currentDateTime.GetDay()));
+			String		 currentTime	  = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()))).Append(String::FromInt(currentDateTime.GetHour()))
+						    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute())))).Append(String::FromInt(currentDateTime.GetMinute()));
 
 			shortOutFileName.Replace("<artist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
 			shortOutFileName.Replace("<title>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")));
@@ -358,6 +365,8 @@ String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 			shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
 			shortOutFileName.Replace("<filename>", BoCA::Utilities::ReplaceIncompatibleCharacters(shortInFileName));
 			shortOutFileName.Replace("<filetype>", fileExtension.ToUpper());
+			shortOutFileName.Replace("<currentdate>", currentDate);
+			shortOutFileName.Replace("<currenttime>", currentTime);
 
 			/* Replace <track> pattern.
 			 */
