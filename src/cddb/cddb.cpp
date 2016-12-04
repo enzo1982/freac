@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -23,7 +23,7 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-int cddb_sum(int n)
+static int cddb_sum(int n)
 {
 	int	 ret = 0;
 
@@ -113,7 +113,7 @@ Int BonkEnc::CDDB::DiscIDFromMCDI(const MCDI &mcdi)
 		n += cddb_sum(offset / 75);
 	}
 
-	Int	 t =  mcdi.GetNthEntryOffset(numTocEntries) / 75 -  mcdi.GetNthEntryOffset(0) / 75;
+	Int	 t = mcdi.GetNthEntryOffset(numTocEntries) / 75 - mcdi.GetNthEntryOffset(0) / 75;
 
 	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
 }
