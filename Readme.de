@@ -64,7 +64,7 @@ Voraussetzungen
 	Zusätzliche Vorraussetzungen zur Übersetzung des Quellcodes:
 
 		- MinGW GCC v4.0+ (http://www.mingw.org/) oder Microsoft Visual Studio 2015
-		- smooth v0.8.71.4 (http://www.smooth-project.org/)
+		- smooth v0.8.71.5 (http://www.smooth-project.org/)
 
 	Zusätzliche optionale Software:
 
@@ -96,7 +96,7 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.0.27 (April 2016)
+	Version 1.0.27 (Dezember 2016)
 
 		- Sprachunterstützung für Kantonesisch (Hong Kong) und Korsisch hinzugefügt
 		- Kleinere Verbesserungen für den CDDB-Sendedialog

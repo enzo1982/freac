@@ -63,7 +63,7 @@ Requirements
 	Additional requirements for compiling the sources:
 
 		- MinGW GCC v4.0+ (http://www.mingw.org/) or Microsoft Visual Studio 2015
-		- smooth v0.8.71.4 (http://www.smooth-project.org/)
+		- smooth v0.8.71.5 (http://www.smooth-project.org/)
 
 	Additional optional software:
 
@@ -95,7 +95,7 @@ Known problems
 History
 -------
 
-	Version 1.0.27 (April 2016)
+	Version 1.0.27 (December 2016)
 
 		- added Cantonese (Hong Kong) and Corsican language support
 		- minor improvements for CDDB submit dialog
