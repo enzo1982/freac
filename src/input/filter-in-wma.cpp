@@ -393,23 +393,28 @@ BonkEnc::Track *BonkEnc::FilterInWMA::GetFileInfo(const String &inFile)
 					WM_PICTURE	*picData = (WM_PICTURE *) pbValue;
 					Picture		*picture = new Picture();
 
-					picture->mime = picData->pwszMIMEType;
-
-					if	(picData->pbData[0] == 0xFF && picData->pbData[1] == 0xD8) picture->mime = "image/jpeg";
-					else if (picData->pbData[0] == 0x89 && picData->pbData[1] == 0x50 &&
-						 picData->pbData[2] == 0x4E && picData->pbData[3] == 0x47 &&
-						 picData->pbData[4] == 0x0D && picData->pbData[5] == 0x0A &&
-						 picData->pbData[6] == 0x1A && picData->pbData[7] == 0x0A) picture->mime = "image/png";
-
-					picture->type = picData->bPictureType;
+					picture->mime	     = picData->pwszMIMEType;
+					picture->type	     = picData->bPictureType;
 					picture->description = picData->pwszDescription;
 
 					picture->data.Resize(picData->dwDataLen);
 
 					memcpy(picture->data, picData->pbData, picture->data.Size());
 
-					if (picture->data.Size() > 16 && picture->data[0] != 0 && picture->data[1] != 0) nFormat->pictures.Add(picture);
-					else										 delete picture;
+					if (picture->data.Size() >= 16 && picture->data[0] != 0 && picture->data[1] != 0)
+					{
+						if	(picture->data[0] == 0xFF && picture->data[1] == 0xD8) picture->mime = "image/jpeg";
+						else if (picture->data[0] == 0x89 && picture->data[1] == 0x50 &&
+							 picture->data[2] == 0x4E && picture->data[3] == 0x47 &&
+							 picture->data[4] == 0x0D && picture->data[5] == 0x0A &&
+							 picture->data[6] == 0x1A && picture->data[7] == 0x0A) picture->mime = "image/png";
+
+						nFormat->pictures.Add(picture);
+					}
+					else
+					{
+						delete picture;
+					}
 				}
 
 				delete [] pbValue;

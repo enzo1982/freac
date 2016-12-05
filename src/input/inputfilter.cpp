@@ -233,13 +233,20 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 				ex_ID3Field_GetBINARY(field, picture->data, picture->data.Size());
 			}
 
-			if	(picture->data[0] == 0xFF && picture->data[1] == 0xD8) picture->mime = "image/jpeg";
-			else if (picture->data[0] == 0x89 && picture->data[1] == 0x50 &&
-				 picture->data[2] == 0x4E && picture->data[3] == 0x47 &&
-				 picture->data[4] == 0x0D && picture->data[5] == 0x0A &&
-				 picture->data[6] == 0x1A && picture->data[7] == 0x0A) picture->mime = "image/png";
+			if (picture->data.Size() >= 16 && picture->data[0] != 0 && picture->data[1] != 0)
+			{
+				if	(picture->data[0] == 0xFF && picture->data[1] == 0xD8) picture->mime = "image/jpeg";
+				else if (picture->data[0] == 0x89 && picture->data[1] == 0x50 &&
+					 picture->data[2] == 0x4E && picture->data[3] == 0x47 &&
+					 picture->data[4] == 0x0D && picture->data[5] == 0x0A &&
+					 picture->data[6] == 0x1A && picture->data[7] == 0x0A) picture->mime = "image/png";
 
-			nFormat->pictures.Add(picture);
+				nFormat->pictures.Add(picture);
+			}
+			else
+			{
+				delete picture;
+			}
 		}
 	}
 

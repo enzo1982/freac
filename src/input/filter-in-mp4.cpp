@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -171,21 +171,28 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 		{
 			Picture	*picture = new Picture();
 
-			picture->data.Resize(size);
-
-			memcpy(picture->data, buffer, picture->data.Size());
-
-			if	(buffer[0] == 0xFF && buffer[1] == 0xD8) picture->mime = "image/jpeg";
-			else if (buffer[0] == 0x89 && buffer[1] == 0x50 &&
-				 buffer[2] == 0x4E && buffer[3] == 0x47 &&
-				 buffer[4] == 0x0D && buffer[5] == 0x0A &&
-				 buffer[6] == 0x1A && buffer[7] == 0x0A) picture->mime = "image/png";
-
 			if	(i == 0) picture->type = 3; // Cover (front)
 			else if (i == 1) picture->type = 4; // Cover (back)
 			else		 picture->type = 0; // Other
 
-			nFormat->pictures.Add(picture);
+			picture->data.Resize(size);
+
+			memcpy(picture->data, buffer, picture->data.Size());
+
+			if (picture->data.Size() >= 16 && picture->data[0] != 0 && picture->data[1] != 0)
+			{
+				if	(picture->data[0] == 0xFF && picture->data[1] == 0xD8) picture->mime = "image/jpeg";
+				else if (picture->data[0] == 0x89 && picture->data[1] == 0x50 &&
+					 picture->data[2] == 0x4E && picture->data[3] == 0x47 &&
+					 picture->data[4] == 0x0D && picture->data[5] == 0x0A &&
+					 picture->data[6] == 0x1A && picture->data[7] == 0x0A) picture->mime = "image/png";
+
+				nFormat->pictures.Add(picture);
+			}
+			else
+			{
+				delete picture;
+			}
 
 			ex_MP4Free(buffer);
 		}

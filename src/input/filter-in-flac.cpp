@@ -322,12 +322,6 @@ void BonkEnc::FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decod
 		picture->type = metadata->data.picture.type;
 		picture->mime = metadata->data.picture.mime_type;
 
-		if	(metadata->data.picture.data[0] == 0xFF && metadata->data.picture.data[1] == 0xD8) picture->mime = "image/jpeg";
-		else if (metadata->data.picture.data[0] == 0x89 && metadata->data.picture.data[1] == 0x50 &&
-			 metadata->data.picture.data[2] == 0x4E && metadata->data.picture.data[3] == 0x47 &&
-			 metadata->data.picture.data[4] == 0x0D && metadata->data.picture.data[5] == 0x0A &&
-			 metadata->data.picture.data[6] == 0x1A && metadata->data.picture.data[7] == 0x0A) picture->mime = "image/png";
-
 		picture->description.ImportFrom("UTF-8", (char *) metadata->data.picture.description);
 
 		picture->data.Resize(metadata->data.picture.data_length);
@@ -338,7 +332,20 @@ void BonkEnc::FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decod
 		memset(picture->data, 0, picture->data.Size());
 		memcpy(picture->data, metadata->data.picture.data, picture->data.Size());
 
-		filter->infoFormat->pictures.Add(picture);
+		if (picture->data.Size() >= 16 && picture->data[0] != 0 && picture->data[1] != 0)
+		{
+			if	(picture->data[0] == 0xFF && picture->data[1] == 0xD8) picture->mime = "image/jpeg";
+			else if (picture->data[0] == 0x89 && picture->data[1] == 0x50 &&
+				 picture->data[2] == 0x4E && picture->data[3] == 0x47 &&
+				 picture->data[4] == 0x0D && picture->data[5] == 0x0A &&
+				 picture->data[6] == 0x1A && picture->data[7] == 0x0A) picture->mime = "image/png";
+
+			filter->infoFormat->pictures.Add(picture);
+		}
+		else
+		{
+			delete picture;
+		}
 	}
 }
 
