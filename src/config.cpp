@@ -242,6 +242,12 @@ const Bool	 BonkEnc::Config::TagsCoverArtWriteToFilesWithReferenceDefault	= Fals
 const String	 BonkEnc::Config::TagsCoverArtFilenamePatternID			= "CoverArtFilenamePattern";
 const String	 BonkEnc::Config::TagsCoverArtFilenamePatternDefault		= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<type>");
 
+const String	 BonkEnc::Config::TagsReadEmbeddedCueSheetsID			= "ReadEmbeddedCueSheets";
+const Int	 BonkEnc::Config::TagsReadEmbeddedCueSheetsDefault		= True;
+
+const String	 BonkEnc::Config::TagsPreferCueSheetsToChaptersID		= "PreferCueSheetsToChapters";
+const Int	 BonkEnc::Config::TagsPreferCueSheetsToChaptersDefault		= True;
+
 const String	 BonkEnc::Config::TagsReadChaptersID				= "ReadChapters";
 const Bool	 BonkEnc::Config::TagsReadChaptersDefault			= True;
 

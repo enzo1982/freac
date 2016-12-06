@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -29,6 +29,9 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	enableCoverArtWriteToFiles	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesID, Config::TagsCoverArtWriteToFilesDefault);
 	enableCoverArtWriteToFilesRef	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesWithReferenceID, Config::TagsCoverArtWriteToFilesWithReferenceDefault);
 
+	readCueSheets			= config->GetIntValue(Config::CategoryTagsID, Config::TagsReadEmbeddedCueSheetsID, Config::TagsReadEmbeddedCueSheetsDefault);
+	preferCueSheets			= config->GetIntValue(Config::CategoryTagsID, Config::TagsPreferCueSheetsToChaptersID, Config::TagsPreferCueSheetsToChaptersDefault);
+
 	readChapters			= config->GetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, Config::TagsReadChaptersDefault);
 	writeChapters			= config->GetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersID, Config::TagsWriteChaptersDefault);
 	chapterFormat			= config->GetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersTypeID, Config::TagsWriteChaptersTypeDefault);
@@ -38,13 +41,13 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 	replaceComments			= config->GetIntValue(Config::CategoryTagsID, Config::TagsReplaceExistingCommentsID, Config::TagsReplaceExistingCommentsDefault);
 
-	tab_tags		= new TabWidget(Point(7, 7), Size(552, 207));
+	tab_tags		= new TabWidget(Point(7, 7), Size(552, 213));
 
 	layer_tags		= new Layer(i18n->TranslateString("Tags"));
 
-	group_tags		= new GroupBox(i18n->TranslateString("Tag formats"), Point(7, 11), Size(534, 87));
+	group_tags		= new GroupBox(i18n->TranslateString("Tag formats"), Point(7, 11), Size(534, 94));
 
-	list_tag_formats	= new ListBox(Point(10, 13), Size(252, 64));
+	list_tag_formats	= new ListBox(Point(10, 13), Size(252, 71));
 	list_tag_formats->SetFlags(LF_MULTICHECKBOX);
 
 	Registry		&boca = Registry::Get();
@@ -81,7 +84,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	group_tags->Add(edit_encoding);
 	group_tags->Add(combo_encoding);
 
-	group_definfo		= new GroupBox(i18n->TranslateString("Comments"), Point(7, 110), Size(534, 67));
+	group_definfo		= new GroupBox(i18n->TranslateString("Comments"), Point(7, 117), Size(534, 67));
 
 	text_defcomment		= new Text(i18n->AddColon(i18n->TranslateString("Default comment string")), Point(10, 15));
 	edit_defcomment		= new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, NIL), Point(17 + text_defcomment->GetUnscaledTextWidth(), 12), Size(507 - text_defcomment->GetUnscaledTextWidth(), 0), 0);
@@ -104,12 +107,12 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	group_coverart_read->Add(check_coverart_read_tags);
 	group_coverart_read->Add(check_coverart_read_files);
 
-	group_coverart_write	= new GroupBox(i18n->TranslateString("Write cover art"), Point(7, 64), Size(534, 113));
+	group_coverart_write	= new GroupBox(i18n->TranslateString("Write cover art"), Point(7, 64), Size(534, 120));
 
 	check_coverart_write_tags  = new CheckBox(i18n->TranslateString("Write cover art to tags"), Point(10, 14), Size(253, 0), &enableCoverArtWriteToTags);
 	check_coverart_write_tags->onAction.Connect(&ConfigureTags::ToggleWriteCoverArt, this);
 
-	list_coverart_write_tags_format = new ListBox(Point(27, 39), Size(236, 64));
+	list_coverart_write_tags_format = new ListBox(Point(27, 39), Size(236, 71));
 	list_coverart_write_tags_format->SetFlags(LF_MULTICHECKBOX);
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
@@ -144,7 +147,17 @@ BonkEnc::ConfigureTags::ConfigureTags()
 
 	layer_other		= new Layer(i18n->TranslateString("Other"));
 
-	group_chapters		= new GroupBox(i18n->TranslateString("Chapters"), Point(7, 11), Size(263, 94));
+	group_cue		= new GroupBox(i18n->TranslateString("Cue sheets"), Point(7, 11), Size(534, 67));
+
+	check_read_cue		= new CheckBox(i18n->TranslateString("Read cue sheets embedded in metadata"), Point(10, 14), Size(514, 0), &readCueSheets);
+	check_read_cue->onAction.Connect(&ConfigureTags::ToggleReadCueSheets, this);
+
+	check_prefer_cue	= new CheckBox(i18n->TranslateString("Prefer cue sheets over chapter information"), Point(27, 40), Size(497, 0), &preferCueSheets);
+
+	group_cue->Add(check_read_cue);
+	group_cue->Add(check_prefer_cue);
+
+	group_chapters		= new GroupBox(i18n->TranslateString("Chapters"), Point(7, 90), Size(263, 94));
 
 	check_read_chapters	= new CheckBox(i18n->TranslateString("Read chapters from files"), Point(10, 14), Size(243, 0), &readChapters);
 	check_write_chapters	= new CheckBox(i18n->TranslateString("Write chapters to files"), check_read_chapters->GetPosition() + Point(0, 26), Size(243, 0), &writeChapters);
@@ -176,7 +189,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	group_chapters->Add(text_chapter_format);
 	group_chapters->Add(combo_chapter_format);
 
-	group_special		= new GroupBox(i18n->TranslateString("Special fields"), Point(278, 11), Size(263, 67));
+	group_special		= new GroupBox(i18n->TranslateString("Special fields"), Point(278, 90), Size(263, 67));
 
 	check_mcdi		= new CheckBox(i18n->TranslateString("Write CD table of contents"), Point(10, 14), Size(243, 0), &writeMCDI);
 	check_replaygain	= new CheckBox(i18n->TranslateString("Preserve Replay Gain information"), check_mcdi->GetPosition() + Point(0, 26), Size(243, 0), &preserveReplayGain);
@@ -184,6 +197,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	group_special->Add(check_mcdi);
 	group_special->Add(check_replaygain);
 
+	layer_other->Add(group_cue);
 	layer_other->Add(group_chapters);
 	layer_other->Add(group_special);
 
@@ -192,13 +206,15 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	ToggleWriteCoverArt();
 	ToggleWriteChapters();
 
+	ToggleReadCueSheets();
+
 	tab_tags->Add(layer_tags);
 	tab_tags->Add(layer_coverart);
 	tab_tags->Add(layer_other);
 
 	Add(tab_tags);
 
-	SetSize(Size(566, 221));
+	SetSize(Size(566, 225));
 }
 
 BonkEnc::ConfigureTags::~ConfigureTags()
@@ -229,6 +245,10 @@ BonkEnc::ConfigureTags::~ConfigureTags()
 	DeleteObject(check_coverart_write_files_ref);
 
 	DeleteObject(layer_other);
+
+	DeleteObject(group_cue);
+	DeleteObject(check_read_cue);
+	DeleteObject(check_prefer_cue);
 
 	DeleteObject(group_chapters);
 	DeleteObject(check_read_chapters);
@@ -361,6 +381,12 @@ Void BonkEnc::ConfigureTags::ToggleWriteChapters()
 	}
 }
 
+Void BonkEnc::ConfigureTags::ToggleReadCueSheets()
+{
+	if (readCueSheets) check_prefer_cue->Activate();
+	else		   check_prefer_cue->Deactivate();
+}
+
 Int BonkEnc::ConfigureTags::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
@@ -388,6 +414,9 @@ Int BonkEnc::ConfigureTags::SaveSettings()
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesWithReferenceID, enableCoverArtWriteToFilesRef);
 
 	config->SetStringValue(Config::CategoryTagsID, Config::TagsCoverArtFilenamePatternID, edit_coverart_write_files_name->GetText());
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadEmbeddedCueSheetsID, readCueSheets);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsPreferCueSheetsToChaptersID, preferCueSheets);
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, readChapters);
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersID, writeChapters);

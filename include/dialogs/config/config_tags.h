@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -53,6 +53,10 @@ namespace BonkEnc
 
 			Layer		*layer_other;
 
+			GroupBox	*group_cue;
+			CheckBox	*check_read_cue;
+			CheckBox	*check_prefer_cue;
+
 			GroupBox	*group_chapters;
 			CheckBox	*check_read_chapters;
 			CheckBox	*check_write_chapters;
@@ -72,6 +76,9 @@ namespace BonkEnc
 
 			Bool		 enableCoverArtWriteToFilesRef;
 
+			Bool		 readCueSheets;
+			Bool		 preferCueSheets;
+
 			Bool		 readChapters;
 			Bool		 writeChapters;
 
@@ -87,6 +94,7 @@ namespace BonkEnc
 			Void		 ToggleTags();
 			Void		 ToggleWriteCoverArt();
 			Void		 ToggleWriteChapters();
+			Void		 ToggleReadCueSheets();
 		public:
 					 ConfigureTags();
 					~ConfigureTags();

@@ -438,7 +438,10 @@
 	<entry id="5521" string="Special fields"/>
 	<entry id="5522" string="Write CD table of contents"/>
 	<entry id="5523" string="Preserve Replay Gain information"/>
-      </section>
+	<entry id="5524" string="Cue sheets"/>
+	<entry id="5525" string="Read cue sheets embedded in metadata"/>
+	<entry id="5526" string="Prefer cue sheets over chapter information"/>
+       </section>
 
       <section name="Joblist">
 	<entry id="5600" string="Joblist"/>

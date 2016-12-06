@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -231,6 +231,12 @@ namespace BonkEnc
 
 			static const String	 TagsCoverArtFilenamePatternID;
 			static const String	 TagsCoverArtFilenamePatternDefault;
+
+			static const String	 TagsReadEmbeddedCueSheetsID;
+			static const Int	 TagsReadEmbeddedCueSheetsDefault;
+
+			static const String	 TagsPreferCueSheetsToChaptersID;
+			static const Int	 TagsPreferCueSheetsToChaptersDefault;
 
 			static const String	 TagsReadChaptersID;
 			static const Bool	 TagsReadChaptersDefault;
