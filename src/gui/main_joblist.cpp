@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -953,8 +953,8 @@ Void BonkEnc::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 	info_edit_album->SetText(info.album);
 
 	if	(info.track <=  0) info_edit_track->SetText(NIL);
-	else if	(info.track  < 10) info_edit_track->SetText(String("0").Append(String::FromInt(info.track)));
-	else if (info.track >= 10) info_edit_track->SetText(String::FromInt(info.track));
+	else if	(info.track <  10) info_edit_track->SetText(String("0").Append(String::FromInt(info.track)));
+	else			   info_edit_track->SetText(String::FromInt(info.track));
 
 	if (info.year <= 0) info_edit_year->SetText(NIL);
 	else		    info_edit_year->SetText(String::FromInt(info.year));

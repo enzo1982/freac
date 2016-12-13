@@ -581,9 +581,9 @@ String BonkEnc::Utilities::GetPlaylistFileName(const Track &track)
 
 Bool BonkEnc::Utilities::SetProcessPriority()
 {
+#ifdef __WIN32__
 	BoCA::Config	*config	= BoCA::Config::Get();
 
-#ifdef __WIN32__
 	HANDLE	 currentProcess = GetCurrentProcess();
 	DWORD	 priorityClass  = NORMAL_PRIORITY_CLASS;
 
