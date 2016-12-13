@@ -138,7 +138,7 @@ Known problems
 History
 -------
 
-	Version 1.1 CVS (November 2016)
+	Version 1.1 CVS (December 2016)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -240,6 +240,7 @@ History
 		- fixed support for various artists CDs
 		- improved CDDB data sanity check
 		- improved title info editing user friendliness
+		- improved metadata extraction from paths
 		- improved support for network files and directories
 		- raised maximum file name length
 		- do not eject discs when user stopped conversion

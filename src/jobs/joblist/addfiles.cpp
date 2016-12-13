@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -114,22 +114,7 @@ Error BonkEnc::JobAddFiles::Perform()
 
 		Info	 info = track.GetInfo();
 
-		if (info.artist == NIL && info.title == NIL && !file.StartsWith("device://"))
-		{
-			String			 fileName = File(file).GetFileName();
-
-			if (fileName.FindLast(".") >= 0) fileName = fileName.Head(fileName.FindLast("."));
-
-			const Array<String>	&elements = fileName.Explode(" - ");
-
-			if (elements.Length() >= 2)
-			{
-				info.artist = elements.GetFirst();
-				info.title  = elements.GetLast();
-			}
-
-			String::ExplodeFinish();
-		}
+		if (info.artist == NIL && info.title == NIL && !file.StartsWith("device://")) ExtractInfoFromPath(file, info);
 
 		track.SetInfo(info);
 
@@ -165,4 +150,119 @@ Error BonkEnc::JobAddFiles::Perform()
 Void BonkEnc::JobAddFiles::OnRemoveAllTracksJobScheduled()
 {
 	abort = True;
+}
+
+Void BonkEnc::JobAddFiles::ExtractInfoFromPath(const String &path, Info &info)
+{
+	String	 fileName   = File(path).GetFileName().Replace("_", " ");
+	String	 folderName = Directory(File(path).GetFilePath()).GetDirectoryName();
+
+	/* Remove file extension.
+	 */
+	if (fileName.FindLast(".") >= 0) fileName = fileName.Head(fileName.FindLast("."));
+
+	/* Check if folder might name a disc number.
+	 */
+	if (!folderName.Contains(" - "))
+	{
+		Bool	 discNo = False;
+
+		for (Int i = 0; i < folderName.Length(); i++) if (folderName[i] >= '1' && folderName[i] <= '9') { discNo = True; break; }
+
+		if (discNo) folderName = Directory(Directory(File(path).GetFilePath()).GetDirectoryPath()).GetDirectoryName();
+	}
+
+	/* Split file and folder names at " - ".
+	 */
+	const Array<String>	&fileElements	= fileName.Explode(" - ");
+	const Array<String>	&folderElements = folderName.Explode(" - ");
+
+	/* Assume folder name contains artist and album name.
+	 */
+	info.artist = folderName;
+
+	if (folderElements.Length() >= 2)
+	{
+		info.artist = folderElements.GetFirst();
+		info.album  = folderName.Tail(folderName.Length() - info.artist.Length() - 3);
+	}
+
+	/* Check file name contents.
+	 */
+	info.title = fileName;
+
+	const String &first = fileElements.GetFirst();
+
+	if (first[0] >= '0' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && (first[2] == ' ' || first[2] == '.' || first[2] == '-'))
+	{
+		info.track = first.ToInt();
+
+		if	(fileElements.Length() == 1)   info.title  = first.Tail(first.Length() - 3).Trim();
+		else if (fileElements.Length() >= 2) { info.artist = first.Tail(first.Length() - 3).Trim(); info.title = fileElements.GetLast(); }
+	}
+	else if (first[0] >= '0' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && first.Length() == 2)
+	{
+		info.track = first.ToInt();
+
+		if	(fileElements.Length() == 2)					     info.title = fileElements.GetLast();
+		else if (fileElements.Length() >= 3) { info.artist = fileElements.GetNth(1); info.title = fileElements.GetLast(); }
+	}
+	else if (first[0] >= '1' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && first[2] >= '0' && first[2] <= '9' && (first[3] == ' ' || first[3] == '.' || first[3] == '-'))
+	{
+		info.disc  = first.ToInt() / 100;
+		info.track = first.ToInt() % 100;
+
+		if	(fileElements.Length() == 1)   info.title  = first.Tail(first.Length() - 4).Trim();
+		else if (fileElements.Length() >= 2) { info.artist = first.Tail(first.Length() - 4).Trim(); info.title = fileElements.GetLast(); }
+	}
+	else if (first[0] >= '1' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && first[2] >= '0' && first[2] <= '9' && first.Length() == 3)
+	{
+		info.disc  = first.ToInt() / 100;
+		info.track = first.ToInt() % 100;
+
+		if	(fileElements.Length() == 2)					     info.title = fileElements.GetLast();
+		else if (fileElements.Length() >= 3) { info.artist = fileElements.GetNth(1); info.title = fileElements.GetLast(); }
+	}
+	else if (fileElements.Length() == 4)
+	{
+		const String &second = fileElements.GetNth(1);
+		const String &third  = fileElements.GetNth(2);
+
+		if (second[0] >= '0' && second[0] <= '9' && second[1] >= '0' && second[1] <= '9' && second.Length() == 2)
+		{
+			info.album  = fileElements.GetFirst();
+			info.track  = fileElements.GetNth(1).ToInt();
+			info.artist = fileElements.GetNth(2);
+			info.title  = fileElements.GetLast();
+		}
+		else if (third[0] >= '0' && third[0] <= '9' && third[1] >= '0' && third[1] <= '9' && third.Length() == 2)
+		{
+			info.artist = fileElements.GetFirst();
+			info.album  = fileElements.GetNth(1);
+			info.track  = fileElements.GetNth(2).ToInt();
+			info.title  = fileElements.GetLast();
+		}
+	}
+	else if (fileElements.Length() >= 2)
+	{
+		info.artist = fileElements.GetFirst();
+		info.title  = fileElements.GetLast();
+
+		foreach (const String &element, fileElements)
+		{
+			if (element[0] >= '0' && element[0] <= '9' && element[1] >= '0' && element[1] <= '9' && element.Length() == 2) info.track = element.ToInt();
+		}
+	}
+
+	/* Clean up title.
+	 */
+	Int	 length = info.title.Length();
+
+	if (info.title[length - 4] == '-' && info.title[length - 3] >= 'a' && info.title[length - 3] <= 'z' && info.title[length - 2] >= 'a' && info.title[length - 2] <= 'z' && info.title[length - 1] >= 'a' && info.title[length - 1] <= 'z') info.title = info.title.Head(info.title.Length() - 4);
+	if (info.title.ToLower().StartsWith(info.artist.ToLower().Append("-"))) info.title = info.title.Tail(info.title.Length() - info.artist.Length() - 1);
+
+	/* Finish operation.
+	 */
+	String::ExplodeFinish();
+	String::ExplodeFinish();
 }
