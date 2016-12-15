@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -603,18 +603,17 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, activedrive);
 
-	CDDBRemote	 cddb;
-	Int		 iDiscid = cddb.ComputeDiscID();
+	String		 queryString = CDDB::QueryStringFromMCDI(mcdi);
 	CDDBInfo	 cdInfo;
 
-	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(iDiscid);
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(queryString);
 
 	if (cdInfo == NIL)
 	{
 		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
 		    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 		{
-			cddbQueryDlg	*dlg = new cddbQueryDlg(cddb.GetCDDBQueryString());
+			cddbQueryDlg	*dlg = new cddbQueryDlg(queryString);
 
 			if (dlg->ShowDialog() == Error())
 			{
@@ -624,7 +623,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 				{
 					CDDBBatch	*queries = new CDDBBatch();
 
-					queries->AddQuery(cddb.GetCDDBQueryString());
+					queries->AddQuery(queryString);
 
 					delete queries;
 				}
@@ -695,7 +694,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	{
 		cddbInfo = NIL;
 
-		cddbInfo.discID	    = iDiscid;
+		cddbInfo.discID	    = CDDB::DiscIDFromMCDI(mcdi);
 		cddbInfo.discLength = mcdi.GetNthEntryOffset(numTocEntries) / 75 + 2;
 		cddbInfo.revision   = -1;
 
@@ -752,7 +751,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	{
 		const Track	&trackInfo = joblist->GetNth(i);
 
-		if (trackInfo.discid != cddb.ComputeDiscID()) continue;
+		if (trackInfo.discid != CDDB::DiscIDFromMCDI(mcdi)) continue;
 
 		if (list_tracks->GetNthEntry(trackInfo.cdTrack - 1) != NIL)
 		{

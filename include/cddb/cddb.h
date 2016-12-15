@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -55,8 +55,7 @@ namespace BonkEnc
 			Int		 ComputeDiscID();
 
 			virtual Bool	 ConnectToServer()			= 0;
-			virtual Int	 Query(Int)				= 0; // Query by disc ID
-			virtual Int	 Query(const String &)			= 0; // Query by query string
+			virtual Int	 Query(const String &)			= 0;
 			virtual Bool	 Read(const String &, Int, CDDBInfo &)	= 0;
 			virtual Bool	 Submit(const CDDBInfo &)		= 0;
 			virtual Bool	 CloseConnection()			= 0;

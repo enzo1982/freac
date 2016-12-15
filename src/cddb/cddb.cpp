@@ -213,7 +213,7 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 		for (Int l = 0; l < numTocEntries; l++) cddbInfo.trackOffsets.Set(l, mcdi.GetNthEntryOffset(l) + 150);
 
 		cddbInfo.discLength = mcdi.GetNthEntryOffset(numTocEntries) / 75 + 2;
-		cddbInfo.discID = ComputeDiscID();
+		cddbInfo.discID	    = DiscIDFromMCDI(mcdi);
 	}
 
 	boca.DeleteComponent(info);

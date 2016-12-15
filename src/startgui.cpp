@@ -685,7 +685,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 		const String	&queryString = queryStrings.GetNth(i);
 		CDDBInfo	 cdInfo;
 
-		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(discID);
+		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(queryString);
 
 		if (cdInfo == NIL)
 		{
@@ -739,7 +739,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 		for (Int j = 0; j < joblist->GetNOfTracks(); j++)
 		{
 			Track	 track = joblist->GetNthTrack(j);
-			Info	 info = track.GetInfo();
+			Info	 info  = track.GetInfo();
 
 			if ((info.mcdi.GetData().Size() > 0 && discID == CDDB::DiscIDFromMCDI(info.mcdi)) ||
 			    (info.offsets != NIL && discID == CDDB::DiscIDFromOffsets(info.offsets)))

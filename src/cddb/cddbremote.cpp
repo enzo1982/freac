@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -200,11 +200,6 @@ Bool BonkEnc::CDDBRemote::ConnectToServer()
 	SendCommand(String("cddb hello user ").Append((char *) hostNameBuffer).Append(" ").Append(BonkEnc::appName).Append(" ").Append(BonkEnc::cddbVersion));
 
 	return True;
-}
-
-Int BonkEnc::CDDBRemote::Query(Int discid)
-{
-	return Query(GetCDDBQueryString());
 }
 
 Int BonkEnc::CDDBRemote::Query(const String &queryString)

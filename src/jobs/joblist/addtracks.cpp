@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -149,15 +149,16 @@ Error BonkEnc::JobAddTracks::Perform()
 		{
 			if (!cddbQueried)
 			{
-				if (configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(track.discid);
+				String	 queryString = CDDB::QueryStringFromMCDI(track.GetInfo().mcdi);
+
+				if (configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(queryString);
 
 				if (cdInfo == NIL)
 				{
 					if (configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
 					    configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 					{
-						const Info	&info = track.GetInfo();
-						cddbQueryDlg	*dlg  = new cddbQueryDlg(CDDB::QueryStringFromMCDI(info.mcdi));
+						cddbQueryDlg	*dlg = new cddbQueryDlg(queryString);
 
 						if (dlg->ShowDialog() == Error())
 						{
@@ -167,7 +168,7 @@ Error BonkEnc::JobAddTracks::Perform()
 							{
 								CDDBBatch	*queries = new CDDBBatch();
 
-								queries->AddQuery(CDDB::QueryStringFromMCDI(info.mcdi));
+								queries->AddQuery(queryString);
 
 								delete queries;
 							}

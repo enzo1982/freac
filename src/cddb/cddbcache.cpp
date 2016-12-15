@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -38,10 +38,15 @@ Void BonkEnc::CDDBCache::Free()
 	if (instance != NIL) delete instance;
 }
 
-const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
+const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(const String &queryString)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
-	const CDDBInfo	&cddbInfo = infoCache.Get(discID);
+
+	const Array<String>	&values	  = queryString.Explode(" ");
+	Int			 discID	  = CDDB::StringToDiscID(values.GetNth(2));
+	const CDDBInfo		&cddbInfo = infoCache.Get(discID);
+
+	String::ExplodeFinish();
 
 	if (cddbInfo != NIL)
 	{
@@ -63,7 +68,7 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 
 	/* Query cache entry.
 	 */
-	Int	 result = cddbLocal.Query(discID);
+	Int	 result = cddbLocal.Query(queryString);
 
 	if (result == QUERY_RESULT_SINGLE || result == QUERY_RESULT_MULTIPLE)
 	{
