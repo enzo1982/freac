@@ -52,7 +52,6 @@ namespace BonkEnc
 			virtual		~CDDB();
 
 			Int		 SetActiveDrive(Int);
-			Int		 ComputeDiscID();
 
 			virtual Bool	 ConnectToServer()			= 0;
 			virtual Int	 Query(const String &)			= 0;
@@ -66,8 +65,6 @@ namespace BonkEnc
 			Int		 GetNthDiscID(Int n)					{ return ids.GetNth(n); }
 			const String	&GetNthTitle(Int n)					{ return titles.GetNth(n); }
 			const String	&GetNthCategory(Int n)					{ return categories.GetNth(n); }
-
-			String		 GetCDDBQueryString();
 
 			static String	 DiscIDToString(Int);
 			static Int	 StringToDiscID(const String &);

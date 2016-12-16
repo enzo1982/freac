@@ -74,7 +74,7 @@ String	 BonkEnc::BonkEnc::architecture = "unknown";
 #endif
 
 String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
-String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre4";	// CDDB version may not contain spaces
+String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre5";	// CDDB version may not contain spaces
 String	 BonkEnc::BonkEnc::cddbMode	= "submit";
 
 String	 BonkEnc::BonkEnc::copyright	= "Copyright (C) 2001-2016 Robert Kausch";

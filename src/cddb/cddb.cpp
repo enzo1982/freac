@@ -71,24 +71,6 @@ Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
 	return Success();
 }
 
-Int BonkEnc::CDDB::ComputeDiscID()
-{
-	Registry		&boca	= Registry::Get();
-	DeviceInfoComponent	*info	= boca.CreateDeviceInfoComponent();
-	Int			 discID = 0;
-
-	if (info != NIL)
-	{
-		const MCDI	&mcdi = info->GetNthDeviceMCDI(activeDriveID);
-
-		discID = DiscIDFromMCDI(mcdi);
-
-		boca.DeleteComponent(info);
-	}
-
-	return discID;
-}
-
 String BonkEnc::CDDB::DiscIDToString(Int discID)
 {
 	String	 discIDString = Number((Int64) discID).ToHexString(8);
@@ -116,24 +98,6 @@ Int BonkEnc::CDDB::DiscIDFromMCDI(const MCDI &mcdi)
 	Int	 t = mcdi.GetNthEntryOffset(numTocEntries) / 75 - mcdi.GetNthEntryOffset(0) / 75;
 
 	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
-}
-
-String BonkEnc::CDDB::GetCDDBQueryString()
-{
-	Registry		&boca = Registry::Get();
-	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
-	String			 str;
-
-	if (info != NIL)
-	{
-		const MCDI	&mcdi = info->GetNthDeviceMCDI(activeDriveID);
-
-		str = QueryStringFromMCDI(mcdi);
-
-		boca.DeleteComponent(info);
-	}
-
-	return str;
 }
 
 String BonkEnc::CDDB::QueryStringFromMCDI(const MCDI &mcdi)

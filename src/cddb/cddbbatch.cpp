@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -123,19 +123,17 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	String	 configDir = config->configDir;
-
 	/* Save queued queries.
 	 */
 	if (queries.Length() == 0)
 	{
 		/* Delete queries file if no more saved queries exist.
 		 */
-		File(String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml")).Delete();
+		File(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml")).Delete();
 	}
 	else
 	{
-		Directory(String(configDir).Append("cddb")).Create();
+		Directory(String(config->configDir).Append("cddb")).Create();
 
 		XML::Document	*document = new XML::Document();
 		XML::Node	*root = new XML::Node("cddbQueries");
@@ -147,7 +145,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 			root->AddNode("query", queries.GetNth(i));
 		}
 
-		document->SaveFile(String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml"));
+		document->SaveFile(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml"));
 
 		delete document;
 		delete root;
@@ -159,11 +157,11 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 	{
 		/* Delete submits file if no more saved submits exist.
 		 */
-		File(String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml")).Delete();
+		File(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml")).Delete();
 	}
 	else
 	{
-		Directory(String(configDir).Append("cddb")).Create();
+		Directory(String(config->configDir).Append("cddb")).Create();
 
 		XML::Document	*document = new XML::Document();
 		XML::Node	*root = new XML::Node("cddbSubmits");
@@ -177,7 +175,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 			node->SetAttribute("category", submits.GetNth(i).category);
 		}
 
-		document->SaveFile(String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml"));
+		document->SaveFile(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml"));
 
 		delete document;
 		delete root;
@@ -205,19 +203,21 @@ Bool BonkEnc::CDDBBatch::DeleteQuery(Int n)
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
+Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &oCddbInfo)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	String	 configDir = config->configDir;
+	CDDBInfo  cddbInfo = oCddbInfo;
+
+	UpdateEntry(cddbInfo);
 
 	/* Create directory for entry.
 	 */
-	Directory	 cddbDir(String(configDir).Append("cddb"));
+	Directory	 cddbDir(String(config->configDir).Append("cddb"));
 
 	if (!cddbDir.Exists()) cddbDir.Create();
 
-	Directory	 categoryDir(String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.category));
+	Directory	 categoryDir(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.category));
 
 	if (!categoryDir.Exists()) categoryDir.Create();
 
@@ -225,22 +225,18 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 	 */
 	String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
-	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
-
-	CDDBLocal	 cddb;
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
 
 	/* Save entry to batch queue.
 	 */
+	CDDBLocal	 cddb;
+
 	cddb.SetActiveDrive(activeDriveID);
 	cddb.Submit(cddbInfo);
 
-	CDDBInfo nCddbInfo = cddbInfo;
-
-	nCddbInfo.discID = cddb.ComputeDiscID();
-
 	for (Int i = 0; i < submits.Length(); i++)
 	{
-		if (submits.GetNth(i) == nCddbInfo)
+		if (submits.GetNth(i) == cddbInfo)
 		{
 			submits.Remove(submits.GetNthIndex(i));
 
@@ -248,7 +244,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 		}
 	}
 
-	submits.Add(nCddbInfo);
+	submits.Add(cddbInfo);
 
 	/* Restore real freedb path.
 	 */

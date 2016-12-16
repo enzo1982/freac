@@ -654,7 +654,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
 	{
 		const Track	&track = joblist->GetNthTrack(i);
-		const Info	&info = track.GetInfo();
+		const Info	&info  = track.GetInfo();
 
 		if (info.mcdi.GetData().Size() > 0)
 		{
@@ -784,27 +784,30 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 
 Void BonkEnc::BonkEncGUI::QueryCDDBLater()
 {
-	Array<Int>	 drives;
+	/* Collect CDDB query strings.
+	 */
+	Array<String>	 queryStrings;
 
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
 	{
 		const Track	&track = joblist->GetNthTrack(i);
+		const Info	&info  = track.GetInfo();
 
-		if (track.isCDTrack) drives.Add(track.drive, track.drive);
+		if (track.isCDTrack)
+		{
+			String	 queryString = CDDB::QueryStringFromMCDI(info.mcdi);
+
+			queryStrings.Add(queryString, queryString.ComputeCRC32());
+		}
 	}
 
-	if (drives.Length() > 0)
+	/* Add queries to batch.
+	 */
+	if (queryStrings.Length() > 0)
 	{
 		CDDBBatch	*queries = new CDDBBatch();
 
-		foreach (Int drive, drives)
-		{
-			CDDBRemote	 cddb;
-
-			cddb.SetActiveDrive(drive);
-
-			queries->AddQuery(cddb.GetCDDBQueryString());
-		}
+		foreach (const String &queryString, queryStrings) queries->AddQuery(queryString);
 
 		delete queries;
 	}
