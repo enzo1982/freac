@@ -646,9 +646,8 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 		return;
 	}
 
-	/* Collect disc IDs and query strings.
+	/* Collect CDDB query strings.
 	 */
-	Array<Int>	 discIDs;
 	Array<String>	 queryStrings;
 
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
@@ -658,18 +657,14 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 
 		if (info.mcdi.GetData().Size() > 0)
 		{
-			Int	 discID	     = CDDB::DiscIDFromMCDI(info.mcdi);
 			String	 queryString = CDDB::QueryStringFromMCDI(info.mcdi);
 
-			discIDs.Add(discID, queryString.ComputeCRC32());
 			queryStrings.Add(queryString, queryString.ComputeCRC32());
 		}
 		else if (info.offsets != NIL)
 		{
-			Int	 discID	     = CDDB::DiscIDFromOffsets(info.offsets);
 			String	 queryString = CDDB::QueryStringFromOffsets(info.offsets);
 
-			discIDs.Add(discID, queryString.ComputeCRC32());
 			queryStrings.Add(queryString, queryString.ComputeCRC32());
 		}
 	}
@@ -681,7 +676,6 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 
 	for (Int i = 0; i < queryStrings.Length(); i++)
 	{
-		Int		 discID	     = discIDs.GetNth(i);
 		const String	&queryString = queryStrings.GetNth(i);
 		CDDBInfo	 cdInfo;
 
@@ -741,8 +735,8 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 			Track	 track = joblist->GetNthTrack(j);
 			Info	 info  = track.GetInfo();
 
-			if ((info.mcdi.GetData().Size() > 0 && discID == CDDB::DiscIDFromMCDI(info.mcdi)) ||
-			    (info.offsets != NIL && discID == CDDB::DiscIDFromOffsets(info.offsets)))
+			if ((info.mcdi.GetData().Size() > 0 && queryString == CDDB::QueryStringFromMCDI(info.mcdi)) ||
+			    (info.offsets != NIL && queryString == CDDB::QueryStringFromOffsets(info.offsets)))
 			{
 				Int	 trackNumber = -1;
 
