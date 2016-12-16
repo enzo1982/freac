@@ -16,12 +16,9 @@
 
 using namespace smooth::IO;
 
-using namespace BoCA;
-using namespace BoCA::AS;
-
 BonkEnc::CDDBLocal::CDDBLocal()
 {
-	protocol = Protocol::Get("CDDB communication");
+	protocol = BoCA::Protocol::Get("CDDB communication");
 }
 
 BonkEnc::CDDBLocal::~CDDBLocal()

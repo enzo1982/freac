@@ -16,12 +16,7 @@
 
 #include <boca.h>
 
-#ifndef __WIN32__
-#  include <netinet/in.h>
-#endif
-
 using namespace BoCA;
-using namespace BoCA::AS;
 
 static int cddb_sum(int n)
 {
