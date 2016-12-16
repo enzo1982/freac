@@ -254,7 +254,7 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 	{
 		protocol->Write("Found Windows style DB.");
 
-		pattern = String().CopyN(cddbInfo.DiscIDToString(), 2).Append("to??");
+		pattern = String().CopyN(DiscIDToString(cddbInfo.discID), 2).Append("to??");
 
 		String	  found;
 
@@ -279,7 +279,7 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 
 		InStream	*in	  = new InStream(STREAM_FILE, found, IS_READ);
 		OutStream	*out	  = new OutStream(STREAM_FILE, String(found).Append(".new"), OS_REPLACE);
-		String		 idString = String("#FILENAME=").Append(cddbInfo.DiscIDToString());
+		String		 idString = String("#FILENAME=").Append(DiscIDToString(cddbInfo.discID));
 		Bool		 written  = False;
 
 		String	 inputFormat = String::SetInputFormat("ISO-8859-1");
@@ -324,9 +324,9 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 	else						  // Unix style DB
 	{
 		protocol->Write("Found Unix style DB.");
-		protocol->Write(String("Writing to ").Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString()));
+		protocol->Write(String("Writing to ").Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(cddbInfo.discID)));
 
-		OutStream	*out = new OutStream(STREAM_FILE, String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString()), OS_REPLACE);
+		OutStream	*out = new OutStream(STREAM_FILE, String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(cddbInfo.discID)), OS_REPLACE);
 
 		String	 outputFormat = String::SetOutputFormat("UTF-8");
 

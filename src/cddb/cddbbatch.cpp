@@ -170,7 +170,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 
 		for (Int i = 0; i < submits.Length(); i++)
 		{
-			XML::Node	*node = root->AddNode("submit", submits.GetNth(i).DiscIDToString());
+			XML::Node	*node = root->AddNode("submit", DiscIDToString(submits.GetNth(i).discID));
 
 			node->SetAttribute("category", submits.GetNth(i).category);
 		}
@@ -231,7 +231,6 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &oCddbInfo)
 	 */
 	CDDBLocal	 cddb;
 
-	cddb.SetActiveDrive(activeDriveID);
 	cddb.Submit(cddbInfo);
 
 	for (Int i = 0; i < submits.Length(); i++)
@@ -308,12 +307,10 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 
 		config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
 
-		CDDBLocal	 cddb;
-
-		cddb.SetUpdateTrackOffsets(False);
-
 		/* Save entry to local cache.
 		 */
+		CDDBLocal	 cddb;
+
 		cddb.Submit(cddbInfo);
 
 		/* Restore real freedb path.
@@ -359,8 +356,6 @@ Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &cddbInfo)
 	/* Submit and delete entry if successful.
 	 */
 	CDDBRemote	 cddb;
-
-	cddb.SetUpdateTrackOffsets(False);
 
 	if (!cddb.Submit(cddbInfo))
 	{

@@ -38,10 +38,6 @@ static int cddb_sum(int n)
 
 BonkEnc::CDDB::CDDB()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
-
-	activeDriveID = config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
-	updateTrackOffsets = True;
 }
 
 BonkEnc::CDDB::~CDDB()
@@ -49,26 +45,6 @@ BonkEnc::CDDB::~CDDB()
 	ids.RemoveAll();
 	titles.RemoveAll();
 	categories.RemoveAll();
-}
-
-Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
-{
-	Registry		&boca	   = Registry::Get();
-	DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
-	Int			 numDrives = 0;
-
-	if (info != NIL)
-	{
-		numDrives = info->GetNumberOfDevices();
-
-		boca.DeleteComponent(info);
-	}
-
-	if (driveID >= numDrives) return Error();
-
-	activeDriveID = driveID;
-
-	return Success();
 }
 
 String BonkEnc::CDDB::DiscIDToString(Int discID)
@@ -161,27 +137,6 @@ String BonkEnc::CDDB::QueryStringFromOffsets(const String &offsets)
 
 Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 {
-	Registry		&boca = Registry::Get();
-	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
-
-	if (info == NIL) return False;
-
-	const MCDI	&mcdi = info->GetNthDeviceMCDI(activeDriveID);
-
-	if (updateTrackOffsets)
-	{
-		/* Update track offsets and disc ID in case we had a fuzzy match.
-		 */
-		Int	 numTocEntries = mcdi.GetNumberOfEntries();
-
-		for (Int l = 0; l < numTocEntries; l++) cddbInfo.trackOffsets.Set(l, mcdi.GetNthEntryOffset(l) + 150);
-
-		cddbInfo.discLength = mcdi.GetNthEntryOffset(numTocEntries) / 75 + 2;
-		cddbInfo.discID	    = DiscIDFromMCDI(mcdi);
-	}
-
-	boca.DeleteComponent(info);
-
 	if (ConnectToServer() == False) return False;
 
 	Int	 query = Query(cddbInfo.discID);
@@ -269,7 +224,7 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 	content.Append("# Submitted via: ").Append(BonkEnc::appName).Append(" ").Append(BonkEnc::cddbVersion).Append("\n");
 	content.Append("# ").Append("\n");
 
-	content.Append(FormatCDDBEntry("DISCID", cddbInfo.DiscIDToString()));
+	content.Append(FormatCDDBEntry("DISCID", DiscIDToString(cddbInfo.discID)));
 	content.Append(FormatCDDBEntry("DTITLE", String(cddbInfo.dArtist.Replace("\n", " ").Trim()).Append(" / ").Append(cddbInfo.dTitle.Replace("\n", " ").Trim())));
 	content.Append(FormatCDDBEntry("DYEAR", String::FromInt(cddbInfo.dYear)));
 	content.Append(FormatCDDBEntry("DGENRE", cddbInfo.dGenre.Replace("\n", " ").Trim()));

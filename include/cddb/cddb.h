@@ -32,13 +32,9 @@ namespace BonkEnc
 	abstract class CDDB
 	{
 		protected:
-			Int		 activeDriveID;
-
 			Array<Int>	 ids;
 			Array<String>	 titles;
 			Array<String>	 categories;
-
-			Bool		 updateTrackOffsets;
 
 			Bool		 UpdateEntry(CDDBInfo &);
 
@@ -51,20 +47,16 @@ namespace BonkEnc
 					 CDDB();
 			virtual		~CDDB();
 
-			Int		 SetActiveDrive(Int);
-
 			virtual Bool	 ConnectToServer()			= 0;
 			virtual Int	 Query(const String &)			= 0;
 			virtual Bool	 Read(const String &, Int, CDDBInfo &)	= 0;
 			virtual Bool	 Submit(const CDDBInfo &)		= 0;
 			virtual Bool	 CloseConnection()			= 0;
 
-			Void		 SetUpdateTrackOffsets(Bool nUpdateTrackOffsets)	{ updateTrackOffsets = nUpdateTrackOffsets; }
-
-			Int		 GetNumberOfMatches()					{ return ids.Length(); }
-			Int		 GetNthDiscID(Int n)					{ return ids.GetNth(n); }
-			const String	&GetNthTitle(Int n)					{ return titles.GetNth(n); }
-			const String	&GetNthCategory(Int n)					{ return categories.GetNth(n); }
+			Int		 GetNumberOfMatches()	{ return ids.Length(); }
+			Int		 GetNthDiscID(Int n)	{ return ids.GetNth(n); }
+			const String	&GetNthTitle(Int n)	{ return titles.GetNth(n); }
+			const String	&GetNthCategory(Int n)	{ return categories.GetNth(n); }
 
 			static String	 DiscIDToString(Int);
 			static Int	 StringToDiscID(const String &);

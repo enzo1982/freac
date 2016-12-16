@@ -216,7 +216,14 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 
 		if (!cddb.Read(category, discID, cddbInfo)) readError = True;
 
-		if (fuzzy) cddbInfo.revision = -1;
+		/* Update track offsets and disc ID when we had a fuzzy match.
+		 */
+		if (fuzzy)
+		{
+			cddbInfo.revision = -1;
+
+			cddbInfo.UpdateFromQueryString(queryString);
+		}
 	}
 
 	if (stopQueryThread) { cddbInfo = NIL; cddb.CloseConnection(); return False; }

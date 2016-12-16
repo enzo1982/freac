@@ -113,7 +113,20 @@ BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(const CDDBInfo &oInfo)
 	return *this;
 }
 
-String BonkEnc::CDDBInfo::DiscIDToString() const
+Bool BonkEnc::CDDBInfo::UpdateFromQueryString(const String &queryString)
 {
-	return CDDB::DiscIDToString(discID);
+	/* Update track offsets and disc ID from query string.
+	 */
+	const Array<String>	&values = queryString.Explode(" ");
+
+	Int	 numTocEntries = values.GetNth(3).ToInt();
+
+	for (Int i = 0; i < numTocEntries; i++) trackOffsets.Set(i, values.GetNth(i + 4).ToInt());
+
+	discLength = values.GetNth(numTocEntries + 4).ToInt();
+	discID	   = CDDB::StringToDiscID(values.GetNth(2));
+
+	String::ExplodeFinish();
+
+	return True;
 }

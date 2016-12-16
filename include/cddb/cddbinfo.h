@@ -13,7 +13,7 @@
 #ifndef H_FREAC_CDDBINFO
 #define H_FREAC_CDDBINFO
 
-#include <smooth.h>
+#include <boca.h>
 
 using namespace smooth;
 
@@ -64,7 +64,7 @@ namespace BonkEnc
 			CDDBInfo	&operator =(int);
 			CDDBInfo	&operator =(const CDDBInfo &);
 
-			String		 DiscIDToString() const;
+			Bool		 UpdateFromQueryString(const String &);
 	};
 };
 

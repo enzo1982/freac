@@ -359,7 +359,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 	Net::Protocols::HTTP	 http(String("http://").Append(freedb_server).Append(":").Append(String::FromInt(freedb_http_port)).Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbSubmitPathID, Config::FreedbSubmitPathDefault)));
 
 	http.SetHeaderField("Category", cddbInfo.category);
-	http.SetHeaderField("Discid", cddbInfo.DiscIDToString());
+	http.SetHeaderField("Discid", DiscIDToString(cddbInfo.discID));
 	http.SetHeaderField("User-Email", config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault));
 	http.SetHeaderField("Submit-Mode", BonkEnc::cddbMode);
 	http.SetHeaderField("Charset", "UTF-8");

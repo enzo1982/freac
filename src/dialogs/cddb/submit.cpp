@@ -410,7 +410,6 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	{
 		CDDBLocal	 cddb;
 
-		cddb.SetActiveDrive(activedrive);
 		cddb.Submit(cddbInfo);
 	}
 
@@ -420,7 +419,6 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 
 		cddbInfo.revision = revision;
 
-		cddb.SetActiveDrive(activedrive);
 		cddb.AddSubmit(cddbInfo);
 	}
 	else if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
@@ -428,8 +426,6 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 		CDDBRemote	 cddb;
 
 		cddbInfo.revision = revision;
-
-		cddb.SetActiveDrive(activedrive);
 
 		if (!cddb.Submit(cddbInfo))
 		{

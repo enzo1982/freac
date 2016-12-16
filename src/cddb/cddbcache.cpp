@@ -55,20 +55,16 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(const String &querySt
 		return cddbInfo;
 	}
 
-	/* Try to find an entry in the persistant cache.
-	 */
-
 	/* Save current freedb path.
 	 */
 	String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
 	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
 
-	CDDBLocal	 cddbLocal;
-
-	/* Query cache entry.
+	/* Try to find an entry in the persistant cache.
 	 */
-	Int	 result = cddbLocal.Query(queryString);
+	CDDBLocal	 cddbLocal;
+	Int		 result = cddbLocal.Query(queryString);
 
 	if (result == QUERY_RESULT_SINGLE || result == QUERY_RESULT_MULTIPLE)
 	{
@@ -104,9 +100,6 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) return True;
 
-	/* Save new entry to the persistant cache.
-	 */
-
 	/* Save current freedb path.
 	 */
 	String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
@@ -115,9 +108,9 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	/* Delete existing cache entry.
 	 */
-	File(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(nCddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(nCddbInfo.DiscIDToString())).Delete();
+	File(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(nCddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(CDDB::DiscIDToString(nCddbInfo.discID))).Delete();
 
-	/* Save entry.
+	/* Save new entry to the persistant cache.
 	 */
 	CDDBLocal	 cddbLocal;
 
@@ -138,7 +131,7 @@ Int BonkEnc::CDDBCache::RemoveNthEntry(Int n)
 	Int		 discID = infoCache.GetNthIndex(n);
 	const CDDBInfo	&cddbInfo = infoCache.Get(discID);
 
-	File(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.DiscIDToString())).Delete();
+	File(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(CDDB::DiscIDToString(cddbInfo.discID))).Delete();
 
 	infoCache.Remove(discID);
 
