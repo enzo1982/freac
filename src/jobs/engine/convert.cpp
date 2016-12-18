@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -336,6 +336,13 @@ Error BonkEnc::JobConvert::Perform()
 
 			playlistTracks.Add(singleTrack);
 
+			/* Check if output file is one of the input files.
+			 */
+			foreach (Track &track, tracks)
+			{
+				if (track.origFilename == singleOutFile) { singleOutFile.Append(".temp"); break; }
+			}
+
 			/* Create encoder for single file output.
 			 */
 			singleFileEncoder = new Encoder(configuration);
@@ -351,7 +358,7 @@ Error BonkEnc::JobConvert::Perform()
 
 			/* Set track output file in single file mode.
 			 */
-			foreach (Track &track, tracks) track.outfile = singleOutFile;
+			foreach (Track &track, tracks) track.outfile = singleTrack.outfile;
 		}
 	}
 
@@ -823,6 +830,16 @@ Error BonkEnc::JobConvert::Perform()
 
 		if (File(singleOutFile).Exists())
 		{
+			/* Move single output file if temporary.
+			 */
+			if (singleOutFile == String(singleTrack.outfile).Append(".temp"))
+			{
+				File(singleTrack.outfile).Delete();
+				File(singleOutFile).Move(singleTrack.outfile);
+
+				singleOutFile = singleTrack.outfile;
+			}
+
 			/* Setup and start worker for verification.
 			 */
 			ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, singleFileEncoder);
@@ -880,21 +897,33 @@ Error BonkEnc::JobConvert::Perform()
 
 		if (File(singleOutFile).GetFileSize() <= 0 || encodedTracks == 0 || skipTrack || stopConversion) File(singleOutFile).Delete();
 
-		/* Add output file to joblist if requested.
-		 */
-		if (File(singleOutFile).Exists() && addEncodedTracks)
+		if (File(singleOutFile).Exists())
 		{
-			Array<String>	 files;
+			/* Move single output file if temporary.
+			 */
+			if (singleOutFile == String(singleTrack.outfile).Append(".temp"))
+			{
+				File(singleTrack.outfile).Delete();
+				File(singleOutFile).Move(singleTrack.outfile);
 
-			files.Add(singleOutFile);
+				singleOutFile = singleTrack.outfile;
+			}
 
-			(new JobAddFiles(files))->Schedule();
+			/* Add output file to joblist if requested.
+			 */
+			if (addEncodedTracks)
+			{
+				Array<String>	 files;
+
+				files.Add(singleOutFile);
+
+				(new JobAddFiles(files))->Schedule();
+			}
 		}
-
-		/* Do not create playlists if output file does not exist.
-		 */
-		if (!File(singleOutFile).Exists())
+		else
 		{
+			/* Do not create playlists if output file does not exist.
+			 */
 			createPlaylist = False;
 			createCueSheet = False;
 		}

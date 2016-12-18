@@ -157,7 +157,8 @@ Int BonkEnc::ConvertWorker::Convert()
 		 */
 		if (conversionStep == ConversionStepVerify)
 		{
-			in_filename = out_filename;
+			if	(out_filename.ToLower() != String(in_filename.ToLower()).Append(".temp")) in_filename = out_filename;
+			else if (writeToInputDirectory && !allowOverwriteSource)			  in_filename = in_filename.Append(".new");
 
 			if (!File(in_filename).Exists())
 			{
