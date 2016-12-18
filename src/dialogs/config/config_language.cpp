@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -130,8 +130,8 @@ Void BonkEnc::ConfigureLanguage::EditLanguageFile()
 	String	 command = String("\"").Append(GUI::Application::GetApplicationDirectory()).Append(File(GUI::Application::GetApplicationDirectory().Append("smooth-translator")).Exists() ? "smooth-translator" : "translator").Append("\"");
 
 #if defined __APPLE__
-	/* Check if OS X version is at least 10.6 (Darwin 10.0) as the open
-	 * command does not support the --args flag on earlier releases of OS X.
+	/* Check if macOS version is at least 10.6 (Darwin 10.0) as the open
+	 * command does not support the --args flag on earlier releases of macOS.
 	 */
 	Buffer<char>     buffer(32);
 	FILE            *pstdin = popen("sysctl kern.osrelease", "r");

@@ -16,9 +16,9 @@ echo "  On Linux:"
 echo
 echo "    - libudev development package"
 echo
-echo "  On OS X:"
+echo "  On macOS:"
 echo
-echo "    - Building fre:ac is tested on OS X Leopard 10.5.8 only using"
+echo "    - Building fre:ac is tested on macOS 10.5.8 Leopard only using"
 echo "      the Xcode 3.1 Command Line Tools (no Xcode project file provided)"
 echo
 echo "  On Windows:"

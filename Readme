@@ -40,7 +40,7 @@ Further codecs (e.g. Nero's HE-AAC encoder) can be used as external
 plug-ins (see the manual for installation instructions).
 
 fre:ac uses the CDRip library for audio ripping on Windows.
-fre:ac uses the cdio library for audio ripping on OS X, Linux, Solaris, FreeBSD and NetBSD.
+fre:ac uses the cdio library for audio ripping on macOS, Linux, Solaris, FreeBSD and NetBSD.
 fre:ac uses the cdparanoia library for audio ripping on Linux, FreeBSD and OpenBSD.
 
 Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
@@ -64,7 +64,7 @@ Requirements
 
 		Supported operating systems:
 			- Windows XP/Vista/7/8.x/10
-			- OS X 10.5 Leopard or later
+			- macOS 10.5 Leopard or later
 			- Linux (most modern distributions should work)
 			- FreeBSD/PC-BSD (tested on FreeBSD 10.0)
 			- NetBSD (tested on NetBSD 6.0, NetBSD 5.x and earlier releases are not supported)
@@ -141,7 +141,7 @@ History
 	Version 1.1 CVS (December 2016)
 
 		- renamed project to fre:ac - free audio converter
-		- ported to Linux, Mac OS X, Solaris, FreeBSD, OpenBSD and NetBSD
+		- ported to Linux, macOS, Solaris, FreeBSD, OpenBSD and NetBSD
 		- added Estonian, Croatian, Portuguese, Bulgarian, Vietnamese, Hebrew, Arabic, Basque, Afrikaans,
 		  Cantonese (Hong Kong), Serbian (Cyrillic), Catalan, Valencian and Galician language support
 		- added German, Spanish, Italian, Russian, Portuguese, Czech, Greek and Basque user guides
