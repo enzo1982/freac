@@ -55,7 +55,6 @@ LIBNAME	= $(OBJECTS)/libfreac.a
 
 RESCOMP	     = windres
 REMOVER	     = rm
-ECHO	     = echo
 CCOPTS	     = -I$(INCLUDE) -fvisibility=hidden -c
 LDOPTS	     = -lstdc++
 RESCOMP_OPTS = -O coff
@@ -116,7 +115,6 @@ else
 endif
 
 .PHONY: all folders install uninstall clean
-.SILENT:
 
 all: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME)
 
@@ -173,115 +171,75 @@ ifneq ($(BUILD_WIN32),True)
 endif
 
 clean:
-	$(ECHO) -n Cleaning directories...
 	$(REMOVER) $(REMOVER_OPTS) $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME) $(LIBNAME)
 ifneq ($(SRCDIR),$(CURDIR))
 	rmdir $(BIN) $(OBJECTS) 2> /dev/null || true
 endif
-	$(ECHO) done.
 
 $(DLLNAME): $(DLLOBJECTS)
-	$(ECHO) Linking $(DLLNAME)...
 	$(LD) $(DLLOBJECTS) $(LDOPTS) $(LDOPTS_DLL) $(LDFLAGS) -o $@
 ifeq ($(BUILD_WIN32),True)
 ifeq ($(BUILD_X86),True)
 	countbuild BuildNumber
 endif
 endif
-	$(ECHO) done.
 
 $(EXENAME): $(EXEOBJECTS) $(RESOBJECTS)
-	$(ECHO) -n Linking $(EXENAME)...
 	$(LD) $(EXEOBJECTS) $(RESOBJECTS) $(LDOPTS) $(LDOPTS_GUI) $(LDFLAGS) -o $@
 ifeq ($(BUILD_HAIKU),True)
 	xres -o $(EXENAME) resources/binary/freac.rsrc
 endif
-	$(ECHO) done.
 
 $(CMDNAME): $(CMDOBJECTS) $(RESOBJECTS)
-	$(ECHO) -n Linking $(CMDNAME)...
 	$(LD) $(CMDOBJECTS) $(RESOBJECTS) $(LDOPTS) $(LDOPTS_CMD) $(LDFLAGS) -o $@
 ifeq ($(BUILD_HAIKU),True)
 	xres -o $(CMDNAME) resources/binary/freac.rsrc
 endif
-	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/cddb/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/dialogs/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/cddb_%.o: $(SRC)/dialogs/cddb/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/dialog_%.o: $(SRC)/dialogs/config/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/dialogs/config/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/engine_%.o: $(SRC)/engine/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/gui/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/jobs/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/job_%.o: $(SRC)/jobs/engine/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/job_%.o: $(SRC)/jobs/joblist/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/job_%.o: $(SRC)/jobs/other/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/loader/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/support/%.cpp
-	$(ECHO) -n Compiling $<...
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(SRC)/support/%.mm
-	$(ECHO) -n Compiling $<...
 	$(OBJCXX) $(CCOPTS) $(OBJCXXFLAGS) $< -o $@
-	$(ECHO) done.
 
 $(OBJECTS)/%.o: $(RESOURCES)/%.rc $(INCLUDE)/resources.h $(BINRES)/freac.ico
-	$(ECHO) -n Compiling $<...
 	$(RESCOMP) $(RESCOMP_OPTS) $< -o $@
-	$(ECHO) done.
