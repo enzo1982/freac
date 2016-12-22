@@ -14,12 +14,13 @@
 #include <smooth/dll.h>
 
 #include <boca.h>
+#include <bonkenc.h>
 
 Void smooth::AttachDLL(Void *instance)
 {
 	/* Init BoCA library.
 	 */
-	BoCA::Init();
+	BoCA::Init(BonkEnc::BonkEnc::appName);
 }
 
 Void smooth::DetachDLL()
@@ -29,7 +30,6 @@ Void smooth::DetachDLL()
 	BoCA::Free();
 }
 
-#include <bonkenc.h>
 #include <playback.h>
 #include <config.h>
 #include <utilities.h>
