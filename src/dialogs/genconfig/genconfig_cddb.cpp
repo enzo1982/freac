@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,12 +14,12 @@
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i18n->TranslateString("CDDB"))
+freac::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(freac::i18n->TranslateString("CDDB"))
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	cddb_auto	= currentConfig->enable_auto_cddb;
 	cddb_cdtext	= currentConfig->enable_overwrite_cdtext;
@@ -37,11 +37,11 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 	pos.x	= 2;
 	pos.y	= 0;
 
-	check_local	= new CheckBox(BonkEnc::i18n->TranslateString("Enable local CDDB database"), pos, size, &cddb_local);
+	check_local	= new CheckBox(freac::i18n->TranslateString("Enable local CDDB database"), pos, size, &cddb_local);
 	check_local->onAction.Connect(&GeneralSettingsLayerCDDB::ToggleLocalCDDB, this);
 	check_local->SetWidth(check_local->GetUnscaledTextWidth() + 20);
 
-	check_remote	= new CheckBox(BonkEnc::i18n->TranslateString("Enable remote CDDB database"), pos, size, &cddb_remote);
+	check_remote	= new CheckBox(freac::i18n->TranslateString("Enable remote CDDB database"), pos, size, &cddb_remote);
 	check_remote->onAction.Connect(&GeneralSettingsLayerCDDB::ToggleRemoteCDDB, this);
 	check_remote->SetWidth(check_remote->GetUnscaledTextWidth() + 20);
 
@@ -61,7 +61,7 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 	pos.x	+= 9;
 	pos.y	+= 15;
 
-	text_dir	= new Text(BonkEnc::i18n->TranslateString("CDDB path:"), pos);
+	text_dir	= new Text(freac::i18n->TranslateString("CDDB path:"), pos);
 
 	pos.x	+= 106;
 	pos.y	-= 3;
@@ -74,7 +74,7 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 	pos.y	-= 1;
 	size.cx	= 0;
 
-	button_browse	= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
+	button_browse	= new Button(freac::i18n->TranslateString("Browse"), NIL, pos, size);
 	button_browse->onAction.Connect(&GeneralSettingsLayerCDDB::SelectDir, this);
 
 	pos.x	= 7;
@@ -87,7 +87,7 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 	pos.x	+= 9;
 	pos.y	+= 15;
 
-	text_mode	= new Text(BonkEnc::i18n->TranslateString("CDDB access mode:"), pos);
+	text_mode	= new Text(freac::i18n->TranslateString("CDDB access mode:"), pos);
 
 	pos.x	+= 106;
 	pos.y	-= 3;
@@ -102,7 +102,7 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 	pos.x -= 106;
 	pos.y += 30;
 
-	text_server	= new Text(BonkEnc::i18n->TranslateString("CDDB server:"), pos);
+	text_server	= new Text(freac::i18n->TranslateString("CDDB server:"), pos);
 
 	pos.x	+= 106;
 	pos.y	-= 3;
@@ -113,7 +113,7 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 	pos.x += 153;
 	pos.y += 3;
 
-	text_port	= new Text(BonkEnc::i18n->TranslateString("Port:"), pos);
+	text_port	= new Text(freac::i18n->TranslateString("Port:"), pos);
 	text_port->SetX(296 - text_port->GetUnscaledTextWidth());
 
 	pos.x	+= 29;
@@ -126,7 +126,7 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 	pos.x = 16;
 	pos.y += 30;
 
-	text_email	= new Text(BonkEnc::i18n->TranslateString("eMail address:"), pos);
+	text_email	= new Text(freac::i18n->TranslateString("eMail address:"), pos);
 
 	pos.x	+= 106;
 	pos.y	-= 3;
@@ -138,12 +138,12 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 	pos.y	+= 27;
 	size.cx	= 158;
 
-	button_http	= new Button(BonkEnc::i18n->TranslateString("HTTP settings"), NIL, pos, size);
+	button_http	= new Button(freac::i18n->TranslateString("HTTP settings"), NIL, pos, size);
 	button_http->onAction.Connect(&GeneralSettingsLayerCDDB::HTTPSettings, this);
 
 	pos.x += 166;
 
-	button_proxy	= new Button(BonkEnc::i18n->TranslateString("Proxy settings"), NIL, pos, size);
+	button_proxy	= new Button(freac::i18n->TranslateString("Proxy settings"), NIL, pos, size);
 	button_proxy->onAction.Connect(&GeneralSettingsLayerCDDB::ProxySettings, this);
 
 	pos.x	= 359;
@@ -151,23 +151,23 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 	size.cx	= 178;
 	size.cy	= 94;
 
-	group_cddb_options = new GroupBox(BonkEnc::i18n->TranslateString("Options"), pos, size);
+	group_cddb_options = new GroupBox(freac::i18n->TranslateString("Options"), pos, size);
 
 	pos.x	= 369;
 	pos.y	= 25;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_auto	= new CheckBox(BonkEnc::i18n->TranslateString("Automatic CDDB queries"), pos, size, &cddb_auto);
+	check_auto	= new CheckBox(freac::i18n->TranslateString("Automatic CDDB queries"), pos, size, &cddb_auto);
 	check_auto->onAction.Connect(&GeneralSettingsLayerCDDB::ToggleAutoCDDB, this);
 
 	pos.y += 26;
 
-	check_cdtext	= new CheckBox(BonkEnc::i18n->TranslateString("Prefer CDDB over CD Text"), pos, size, &cddb_cdtext);
+	check_cdtext	= new CheckBox(freac::i18n->TranslateString("Prefer CDDB over CD Text"), pos, size, &cddb_cdtext);
 
 	pos.y += 26;
 
-	check_cache	= new CheckBox(BonkEnc::i18n->TranslateString("Enable CDDB cache"), pos, size, &cddb_cache);
+	check_cache	= new CheckBox(freac::i18n->TranslateString("Enable CDDB cache"), pos, size, &cddb_cache);
 
 	combo_mode->SelectNthEntry(currentConfig->freedb_mode);
 
@@ -207,7 +207,7 @@ BonkEnc::GeneralSettingsLayerCDDB::GeneralSettingsLayerCDDB() : Layer(BonkEnc::i
 	Add(layer_remote_background);
 }
 
-BonkEnc::GeneralSettingsLayerCDDB::~GeneralSettingsLayerCDDB()
+freac::GeneralSettingsLayerCDDB::~GeneralSettingsLayerCDDB()
 {
 	DeleteObject(group_local);
 	DeleteObject(text_dir);
@@ -234,12 +234,12 @@ BonkEnc::GeneralSettingsLayerCDDB::~GeneralSettingsLayerCDDB()
 	DeleteObject(check_remote);
 }
 
-Void BonkEnc::GeneralSettingsLayerCDDB::SelectDir()
+Void freac::GeneralSettingsLayerCDDB::SelectDir()
 {
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(GetContainerWindow());
-	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder of the CDDB database:")));
+	dialog->SetCaption(String("\n").Append(freac::i18n->TranslateString("Select the folder of the CDDB database:")));
 	dialog->SetDirName(edit_dir->GetText());
 
 	if (dialog->ShowDialog() == Success())
@@ -250,7 +250,7 @@ Void BonkEnc::GeneralSettingsLayerCDDB::SelectDir()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::GeneralSettingsLayerCDDB::SetCDDBMode()
+Void freac::GeneralSettingsLayerCDDB::SetCDDBMode()
 {
 	if (combo_mode->GetSelectedEntryNumber() == FREEDB_MODE_CDDBP)
 	{
@@ -264,7 +264,7 @@ Void BonkEnc::GeneralSettingsLayerCDDB::SetCDDBMode()
 	}
 }
 
-Void BonkEnc::GeneralSettingsLayerCDDB::ToggleLocalCDDB()
+Void freac::GeneralSettingsLayerCDDB::ToggleLocalCDDB()
 {
 	if (cddb_local)
 	{
@@ -280,7 +280,7 @@ Void BonkEnc::GeneralSettingsLayerCDDB::ToggleLocalCDDB()
 	ToggleCDDBSettings();
 }
 
-Void BonkEnc::GeneralSettingsLayerCDDB::ToggleRemoteCDDB()
+Void freac::GeneralSettingsLayerCDDB::ToggleRemoteCDDB()
 {
 	if (cddb_remote)
 	{
@@ -306,7 +306,7 @@ Void BonkEnc::GeneralSettingsLayerCDDB::ToggleRemoteCDDB()
 	ToggleCDDBSettings();
 }
 
-Void BonkEnc::GeneralSettingsLayerCDDB::ToggleCDDBSettings()
+Void freac::GeneralSettingsLayerCDDB::ToggleCDDBSettings()
 {
 	if (cddb_local || cddb_remote)
 	{
@@ -322,13 +322,13 @@ Void BonkEnc::GeneralSettingsLayerCDDB::ToggleCDDBSettings()
 	}
 }
 
-Void BonkEnc::GeneralSettingsLayerCDDB::ToggleAutoCDDB()
+Void freac::GeneralSettingsLayerCDDB::ToggleAutoCDDB()
 {
 	if (cddb_auto)	check_cdtext->Activate();
 	else		check_cdtext->Deactivate();
 }
 
-Void BonkEnc::GeneralSettingsLayerCDDB::HTTPSettings()
+Void freac::GeneralSettingsLayerCDDB::HTTPSettings()
 {
 	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(0);
 
@@ -337,7 +337,7 @@ Void BonkEnc::GeneralSettingsLayerCDDB::HTTPSettings()
 	DeleteObject(dlg);
 }
 
-Void BonkEnc::GeneralSettingsLayerCDDB::ProxySettings()
+Void freac::GeneralSettingsLayerCDDB::ProxySettings()
 {
 	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(1);
 
@@ -346,52 +346,52 @@ Void BonkEnc::GeneralSettingsLayerCDDB::ProxySettings()
 	DeleteObject(dlg);
 }
 
-Int BonkEnc::GeneralSettingsLayerCDDB::GetFreedbMode()
+Int freac::GeneralSettingsLayerCDDB::GetFreedbMode()
 {
 	return combo_mode->GetSelectedEntryNumber();
 }
 
-Int BonkEnc::GeneralSettingsLayerCDDB::GetFreedbPort()
+Int freac::GeneralSettingsLayerCDDB::GetFreedbPort()
 {
 	return edit_port->GetText().ToInt();
 }
 
-String BonkEnc::GeneralSettingsLayerCDDB::GetFreedbServer()
+String freac::GeneralSettingsLayerCDDB::GetFreedbServer()
 {
 	return edit_server->GetText();
 }
 
-String BonkEnc::GeneralSettingsLayerCDDB::GetFreedbEMail()
+String freac::GeneralSettingsLayerCDDB::GetFreedbEMail()
 {
 	return edit_email->GetText();
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDDB::GetCDDBAutoQuery()
+Bool freac::GeneralSettingsLayerCDDB::GetCDDBAutoQuery()
 {
 	return cddb_auto;
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDDB::GetCDDBOverwriteCDText()
+Bool freac::GeneralSettingsLayerCDDB::GetCDDBOverwriteCDText()
 {
 	return cddb_cdtext;
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDDB::GetCDDBCache()
+Bool freac::GeneralSettingsLayerCDDB::GetCDDBCache()
 {
 	return cddb_cache;
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDDB::GetLocalCDDB()
+Bool freac::GeneralSettingsLayerCDDB::GetLocalCDDB()
 {
 	return cddb_local;
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDDB::GetRemoteCDDB()
+Bool freac::GeneralSettingsLayerCDDB::GetRemoteCDDB()
 {
 	return cddb_remote;
 }
 
-String BonkEnc::GeneralSettingsLayerCDDB::GetLocalPath()
+String freac::GeneralSettingsLayerCDDB::GetLocalPath()
 {
 	return edit_dir->GetText();
 }

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,16 +10,16 @@
 
 #include <input/filter-in-au.h>
 
-BonkEnc::FilterInAU::FilterInAU(Config *config, Track *format) : InputFilter(config, format)
+freac::FilterInAU::FilterInAU(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-BonkEnc::FilterInAU::~FilterInAU()
+freac::FilterInAU::~FilterInAU()
 {
 }
 
-Bool BonkEnc::FilterInAU::Activate()
+Bool freac::FilterInAU::Activate()
 {
 	InStream	*in = new InStream(STREAM_DRIVER, driver);
     
@@ -34,12 +34,12 @@ Bool BonkEnc::FilterInAU::Activate()
 	return True;
 }
 
-Bool BonkEnc::FilterInAU::Deactivate()
+Bool freac::FilterInAU::Deactivate()
 {
 	return True;
 }
 
-Int BonkEnc::FilterInAU::ReadData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterInAU::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (driver->GetPos() == driver->GetSize()) return -1;
 
@@ -54,7 +54,7 @@ Int BonkEnc::FilterInAU::ReadData(Buffer<UnsignedByte> &data, Int size)
 	return size;
 }
 
-BonkEnc::Track *BonkEnc::FilterInAU::GetFileInfo(const String &inFile)
+freac::Track *freac::FilterInAU::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
 	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READ);

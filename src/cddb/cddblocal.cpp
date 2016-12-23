@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,18 +9,18 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <cddb/cddblocal.h>
-#include <bonkenc.h>
+#include <freac.h>
 #include <dllinterfaces.h>
 
-BonkEnc::CDDBLocal::CDDBLocal(Config *iConfig) : CDDB(iConfig)
+freac::CDDBLocal::CDDBLocal(Config *iConfig) : CDDB(iConfig)
 {
 }
 
-BonkEnc::CDDBLocal::~CDDBLocal()
+freac::CDDBLocal::~CDDBLocal()
 {
 }
 
-Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
+Bool freac::CDDBLocal::QueryUnixDB(Int discid)
 {
 	String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
 
@@ -76,7 +76,7 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(Int discid)
 	return (results.Length() != 0);
 }
 
-Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
+Bool freac::CDDBLocal::QueryWinDB(Int discid)
 {
 	String	 array[11] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data" };
 
@@ -180,12 +180,12 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(Int discid)
 	return (results.Length() != 0);
 }
 
-Bool BonkEnc::CDDBLocal::ConnectToServer()
+Bool freac::CDDBLocal::ConnectToServer()
 {
 	return True;
 }
 
-Int BonkEnc::CDDBLocal::Query(Int discid)
+Int freac::CDDBLocal::Query(Int discid)
 {
 	// Try to find Unix style record first; if no match is found, try Windows style
 	if (!QueryUnixDB(discid)) QueryWinDB(discid);
@@ -202,7 +202,7 @@ Int BonkEnc::CDDBLocal::Query(Int discid)
 	return QUERY_RESULT_ERROR;
 }
 
-Int BonkEnc::CDDBLocal::Query(const String &queryString)
+Int freac::CDDBLocal::Query(const String &queryString)
 {
 	// extract disc ID from query string and call Query() with disc ID
 
@@ -213,7 +213,7 @@ Int BonkEnc::CDDBLocal::Query(const String &queryString)
 	return Query(StringToDiscID(discID));
 }
 
-Bool BonkEnc::CDDBLocal::Read(const String &category, Int discID, CDDBInfo &cddbInfo)
+Bool freac::CDDBLocal::Read(const String &category, Int discID, CDDBInfo &cddbInfo)
 {
 	cddbInfo.discID   = discID;
 	cddbInfo.category = category;
@@ -226,7 +226,7 @@ Bool BonkEnc::CDDBLocal::Read(const String &category, Int discID, CDDBInfo &cddb
 	else		   return ParseCDDBRecord(result, cddbInfo);
 }
 
-Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
+Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 {
 	debug_out->EnterMethod("CDDBLocal::Submit(const CDDBInfo &)");
 
@@ -337,7 +337,7 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 	return True;
 }
 
-Bool BonkEnc::CDDBLocal::CloseConnection()
+Bool freac::CDDBLocal::CloseConnection()
 {
 	return True;
 }

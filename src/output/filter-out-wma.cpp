@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,7 +12,7 @@
 
 #include <output/filter-out-wma.h>
 
-namespace BonkEnc
+namespace freac
 {
 	Error RenderWMAItem(const String &id, const String &value, Void *headerInfo)
 	{
@@ -23,7 +23,7 @@ namespace BonkEnc
 	}
 }
 
-BonkEnc::FilterOutWMA::FilterOutWMA(Config *config, Track *format) : OutputFilter(config, format)
+freac::FilterOutWMA::FilterOutWMA(Config *config, Track *format) : OutputFilter(config, format)
 {
 	samplesWritten = 0;
 
@@ -32,14 +32,14 @@ BonkEnc::FilterOutWMA::FilterOutWMA(Config *config, Track *format) : OutputFilte
 	CoInitialize(NIL);
 }
 
-BonkEnc::FilterOutWMA::~FilterOutWMA()
+freac::FilterOutWMA::~FilterOutWMA()
 {
 	/* Uninit the Microsoft COM library.
 	 */
 	CoUninitialize();
 }
 
-Bool BonkEnc::FilterOutWMA::Activate()
+Bool freac::FilterOutWMA::Activate()
 {
 	HRESULT	 hr = S_OK;
 
@@ -120,7 +120,7 @@ Bool BonkEnc::FilterOutWMA::Activate()
 	return !errorState;
 }
 
-Bool BonkEnc::FilterOutWMA::Deactivate()
+Bool freac::FilterOutWMA::Deactivate()
 {
 	if (errorState)
 	{
@@ -245,7 +245,7 @@ Bool BonkEnc::FilterOutWMA::Deactivate()
 	return True;
 }
 
-Int BonkEnc::FilterOutWMA::WriteData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterOutWMA::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	HRESULT		 hr = S_OK;
 	INSSBuffer	*pSample = NIL;
@@ -280,7 +280,7 @@ Int BonkEnc::FilterOutWMA::WriteData(Buffer<UnsignedByte> &data, Int size)
 
 /* Select default codec to be used when no codec is set.
  */
-Int BonkEnc::FilterOutWMA::GetDefaultCodec(IWMCodecInfo3 *codecInfo)
+Int freac::FilterOutWMA::GetDefaultCodec(IWMCodecInfo3 *codecInfo)
 {
 	HRESULT	 hr = S_OK;
 	DWORD	 numCodecs = 0;
@@ -313,7 +313,7 @@ Int BonkEnc::FilterOutWMA::GetDefaultCodec(IWMCodecInfo3 *codecInfo)
 /* This method will return the format best matching
  * our requirements for a specified codec.
  */
-IWMStreamConfig *BonkEnc::FilterOutWMA::GetBestCodecFormat(IWMCodecInfo3 *pCodecInfo, DWORD codecIndex, const Track *format)
+IWMStreamConfig *freac::FilterOutWMA::GetBestCodecFormat(IWMCodecInfo3 *pCodecInfo, DWORD codecIndex, const Track *format)
 {
 	HRESULT		 hr = S_OK;
 
@@ -456,7 +456,7 @@ IWMStreamConfig *BonkEnc::FilterOutWMA::GetBestCodecFormat(IWMCodecInfo3 *pCodec
 /* This method will set the input format to the
  * specified format.
  */
-Bool BonkEnc::FilterOutWMA::SetInputFormat(IWMWriter *pWriter, const Track *format)
+Bool freac::FilterOutWMA::SetInputFormat(IWMWriter *pWriter, const Track *format)
 {
 	HRESULT			 hr = S_OK;
 

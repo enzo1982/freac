@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,16 +13,16 @@
 #include <stdint.h>
 #include <math.h>
 
-BonkEnc::FilterInAIFF::FilterInAIFF(Config *config, Track *format) : InputFilter(config, format)
+freac::FilterInAIFF::FilterInAIFF(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-BonkEnc::FilterInAIFF::~FilterInAIFF()
+freac::FilterInAIFF::~FilterInAIFF()
 {
 }
 
-Bool BonkEnc::FilterInAIFF::Activate()
+Bool freac::FilterInAIFF::Activate()
 {
 	InStream	*in = new InStream(STREAM_DRIVER, driver);
     
@@ -48,12 +48,12 @@ Bool BonkEnc::FilterInAIFF::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterInAIFF::Deactivate()
+Bool freac::FilterInAIFF::Deactivate()
 {
 	return true;
 }
 
-Int BonkEnc::FilterInAIFF::ReadData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterInAIFF::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (driver->GetPos() == driver->GetSize()) return -1;
 
@@ -68,7 +68,7 @@ Int BonkEnc::FilterInAIFF::ReadData(Buffer<UnsignedByte> &data, Int size)
 	return size;
 }
 
-BonkEnc::Track *BonkEnc::FilterInAIFF::GetFileInfo(const String &inFile)
+freac::Track *freac::FilterInAIFF::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
 	InStream	*f_in	 = new InStream(STREAM_FILE, inFile, IS_READ);

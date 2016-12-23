@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,18 +12,18 @@
 #include <utilities.h>
 #include <dllinterfaces.h>
 
-namespace BonkEnc
+namespace freac
 {
 	FLAC__StreamEncoderWriteStatus	 FLACStreamEncoderWriteCallback(const FLAC__StreamEncoder *, const FLAC__byte[], size_t, unsigned, unsigned, void *);
 	FLAC__StreamEncoderSeekStatus	 FLACStreamEncoderSeekCallback(const FLAC__StreamEncoder *, FLAC__uint64, void *);
 	FLAC__StreamEncoderTellStatus	 FLACStreamEncoderTellCallback(const FLAC__StreamEncoder *, FLAC__uint64 *, void *);
 };
 
-BonkEnc::FilterOutFLAC::FilterOutFLAC(Config *config, Track *format) : OutputFilter(config, format)
+freac::FilterOutFLAC::FilterOutFLAC(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (format->channels > 2)
 	{
-		Utilities::ErrorMessage(String(BonkEnc::appName).Append(" does not support more than 2 channels!"));
+		Utilities::ErrorMessage(String(freac::appName).Append(" does not support more than 2 channels!"));
 
 		errorState = True;
 
@@ -31,11 +31,11 @@ BonkEnc::FilterOutFLAC::FilterOutFLAC(Config *config, Track *format) : OutputFil
 	}
 }
 
-BonkEnc::FilterOutFLAC::~FilterOutFLAC()
+freac::FilterOutFLAC::~FilterOutFLAC()
 {
 }
 
-Bool BonkEnc::FilterOutFLAC::Activate()
+Bool freac::FilterOutFLAC::Activate()
 {
 	encoder = ex_FLAC__stream_encoder_new();
 
@@ -219,7 +219,7 @@ Bool BonkEnc::FilterOutFLAC::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterOutFLAC::Deactivate()
+Bool freac::FilterOutFLAC::Deactivate()
 {
 	ex_FLAC__stream_encoder_finish(encoder);
 	ex_FLAC__stream_encoder_delete(encoder);
@@ -229,7 +229,7 @@ Bool BonkEnc::FilterOutFLAC::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutFLAC::WriteData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterOutFLAC::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	bytesWritten = 0;
 
@@ -248,7 +248,7 @@ Int BonkEnc::FilterOutFLAC::WriteData(Buffer<UnsignedByte> &data, Int size)
 	return bytesWritten;
 }
 
-FLAC__StreamEncoderWriteStatus BonkEnc::FLACStreamEncoderWriteCallback(const FLAC__StreamEncoder *encoder, const FLAC__byte buffer[], size_t bytes, unsigned samples, unsigned current_frame, void *client_data)
+FLAC__StreamEncoderWriteStatus freac::FLACStreamEncoderWriteCallback(const FLAC__StreamEncoder *encoder, const FLAC__byte buffer[], size_t bytes, unsigned samples, unsigned current_frame, void *client_data)
 {
 	FilterOutFLAC	*filter = (FilterOutFLAC *) client_data;
 
@@ -258,7 +258,7 @@ FLAC__StreamEncoderWriteStatus BonkEnc::FLACStreamEncoderWriteCallback(const FLA
 	return FLAC__STREAM_ENCODER_WRITE_STATUS_OK;
 }
 
-FLAC__StreamEncoderSeekStatus BonkEnc::FLACStreamEncoderSeekCallback(const FLAC__StreamEncoder *encoder, FLAC__uint64 absolute_byte_offset, void *client_data)
+FLAC__StreamEncoderSeekStatus freac::FLACStreamEncoderSeekCallback(const FLAC__StreamEncoder *encoder, FLAC__uint64 absolute_byte_offset, void *client_data)
 {
 	FilterOutFLAC	*filter = (FilterOutFLAC *) client_data;
 
@@ -267,7 +267,7 @@ FLAC__StreamEncoderSeekStatus BonkEnc::FLACStreamEncoderSeekCallback(const FLAC_
 	return FLAC__STREAM_ENCODER_SEEK_STATUS_OK;
 }
 
-FLAC__StreamEncoderTellStatus BonkEnc::FLACStreamEncoderTellCallback(const FLAC__StreamEncoder *encoder, FLAC__uint64 *absolute_byte_offset, void *client_data)
+FLAC__StreamEncoderTellStatus freac::FLACStreamEncoderTellCallback(const FLAC__StreamEncoder *encoder, FLAC__uint64 *absolute_byte_offset, void *client_data)
 {
 	FilterOutFLAC	*filter = (FilterOutFLAC *) client_data;
 

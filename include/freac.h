@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -23,7 +23,7 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-namespace BonkEnc
+namespace freac
 {
 	class JobList;
 
@@ -44,11 +44,11 @@ typedef unsigned long  uint32;
 typedef unsigned short uint16;
 typedef unsigned char  uint8;
 
-namespace BonkEnc
+namespace freac
 {
 	extern BEEXPORT Debug	*debug_out;
 
-	class BEEXPORT BonkEnc : public Application
+	class BEEXPORT freac : public Application
 	{
 		protected:
 			Window			*mainWnd;
@@ -169,8 +169,8 @@ namespace BonkEnc
 
 			Int			 player_entry;
 
-						 BonkEnc();
-						~BonkEnc();
+						 freac();
+						~freac();
 
 			virtual CDDBInfo	 GetCDDBData();
 			CDDBInfo		 QueryCDDB(CDDB &);

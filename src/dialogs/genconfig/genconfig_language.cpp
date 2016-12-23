@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -16,19 +16,19 @@
 #	include <unistd.h>
 #endif
 
-BonkEnc::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(BonkEnc::i18n->TranslateString("Language"))
+freac::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(freac::i18n->TranslateString("Language"))
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	pos.x	= 7;
 	pos.y	= 66;
 	size.cx	= 530;
 	size.cy	= 77;
 
-	group_info	= new GroupBox(BonkEnc::i18n->TranslateString("Information"), pos, size);
+	group_info	= new GroupBox(freac::i18n->TranslateString("Information"), pos, size);
 
 	pos.x += 9;
 	pos.y += 11;
@@ -45,12 +45,12 @@ BonkEnc::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(Bo
 	size.cx	= 530;
 	size.cy	= 43;
 
-	group_language	= new GroupBox(BonkEnc::i18n->TranslateString("Language"), pos, size);
+	group_language	= new GroupBox(freac::i18n->TranslateString("Language"), pos, size);
 
 	pos.x += 9;
 	pos.y += 15;
 
-	text_language	= new Text(BonkEnc::i18n->TranslateString("Select language:"), pos);
+	text_language	= new Text(freac::i18n->TranslateString("Select language:"), pos);
 
 	pos.x	+= (text_language->GetUnscaledTextWidth() + 8);
 	pos.y	= 23;
@@ -64,14 +64,14 @@ BonkEnc::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(Bo
 	pos.y -= 1;
 	size.cx = 130;
 
-	btn_edit	= new Button(BonkEnc::i18n->TranslateString("Edit language file"), NIL, pos, size);
+	btn_edit	= new Button(freac::i18n->TranslateString("Edit language file"), NIL, pos, size);
 	btn_edit->onAction.Connect(&GeneralSettingsLayerLanguage::EditLanguageFile, this);
 
-	for (Int i = 0; i < BonkEnc::i18n->GetNOfLanguages(); i++)
+	for (Int i = 0; i < freac::i18n->GetNOfLanguages(); i++)
 	{
-		combo_language->AddEntry(BonkEnc::i18n->GetNthLanguageName(i));
+		combo_language->AddEntry(freac::i18n->GetNthLanguageName(i));
 
-		if (currentConfig->language == BonkEnc::i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
+		if (currentConfig->language == freac::i18n->GetNthLanguageID(i)) combo_language->SelectNthEntry(i);
 	}
 
 #ifdef __WIN32__
@@ -96,7 +96,7 @@ BonkEnc::GeneralSettingsLayerLanguage::GeneralSettingsLayerLanguage() : Layer(Bo
 	Add(link_url);
 }
 
-BonkEnc::GeneralSettingsLayerLanguage::~GeneralSettingsLayerLanguage()
+freac::GeneralSettingsLayerLanguage::~GeneralSettingsLayerLanguage()
 {
 	DeleteObject(group_language);
 	DeleteObject(text_language);
@@ -108,45 +108,45 @@ BonkEnc::GeneralSettingsLayerLanguage::~GeneralSettingsLayerLanguage()
 	DeleteObject(link_url);
 }
 
-Void BonkEnc::GeneralSettingsLayerLanguage::SelectLanguage()
+Void freac::GeneralSettingsLayerLanguage::SelectLanguage()
 {
 	if (combo_language->GetSelectedEntry() != NIL)
 	{
-		text_info->SetText(String(BonkEnc::i18n->TranslateString("Language")).Append(": ").Append(BonkEnc::i18n->GetNthLanguageName(combo_language->GetSelectedEntryNumber()))
-				.Append("\n").Append(BonkEnc::i18n->TranslateString("Encoding")).Append(": ").Append(BonkEnc::i18n->GetNthLanguageEncoding(combo_language->GetSelectedEntryNumber()))
-				.Append("\n").Append(BonkEnc::i18n->TranslateString("Author")).Append(": ").Append(BonkEnc::i18n->GetNthLanguageAuthor(combo_language->GetSelectedEntryNumber()))
-				.Append("\n").Append(BonkEnc::i18n->TranslateString("URL")).Append(": "));
+		text_info->SetText(String(freac::i18n->TranslateString("Language")).Append(": ").Append(freac::i18n->GetNthLanguageName(combo_language->GetSelectedEntryNumber()))
+				.Append("\n").Append(freac::i18n->TranslateString("Encoding")).Append(": ").Append(freac::i18n->GetNthLanguageEncoding(combo_language->GetSelectedEntryNumber()))
+				.Append("\n").Append(freac::i18n->TranslateString("Author")).Append(": ").Append(freac::i18n->GetNthLanguageAuthor(combo_language->GetSelectedEntryNumber()))
+				.Append("\n").Append(freac::i18n->TranslateString("URL")).Append(": "));
 
-		link_url->SetText(BonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
-		link_url->SetURL(BonkEnc::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
+		link_url->SetText(freac::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
+		link_url->SetURL(freac::i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
 
 		link_url->Paint(SP_PAINT);
 
-		if (BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()) == "internal") btn_edit->Deactivate();
-		else											     btn_edit->Activate();
+		if (freac::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()) == "internal") btn_edit->Deactivate();
+		else											   btn_edit->Activate();
 	}
 }
 
-Void BonkEnc::GeneralSettingsLayerLanguage::EditLanguageFile()
+Void freac::GeneralSettingsLayerLanguage::EditLanguageFile()
 {
 #ifdef __WIN32__
-	if (Setup::enableUnicode) ShellExecuteW(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
-	else			  ShellExecuteA(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
+	if (Setup::enableUnicode) ShellExecuteW(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(freac::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
+	else			  ShellExecuteA(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(freac::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), String("."), SW_SHOW);
 #else
 	if (!fork())
 	{
-		execl("/bin/sh", "sh", "-c", (char *) GUI::Application::GetApplicationDirectory().Append("translator \"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), NULL);
+		execl("/bin/sh", "sh", "-c", (char *) GUI::Application::GetApplicationDirectory().Append("translator \"").Append(GUI::Application::GetApplicationDirectory()).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(freac::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Append("\""), NULL);
 		exit(0);
 	}
 #endif
 }
 
-Bool BonkEnc::GeneralSettingsLayerLanguage::IsLanguageChanged()
+Bool freac::GeneralSettingsLayerLanguage::IsLanguageChanged()
 {
-	return (currentConfig->language != BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()));
+	return (currentConfig->language != freac::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()));
 }
 
-String BonkEnc::GeneralSettingsLayerLanguage::GetSelectedLanguageID()
+String freac::GeneralSettingsLayerLanguage::GetSelectedLanguageID()
 {
-	return BonkEnc::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber());
+	return freac::i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber());
 }

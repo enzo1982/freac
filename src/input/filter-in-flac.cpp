@@ -16,7 +16,7 @@
 
 using namespace smooth::Threads;
 
-namespace BonkEnc
+namespace freac
 {
 	FLAC__StreamDecoderReadStatus	 FLACStreamDecoderReadCallback(const FLAC__StreamDecoder *, FLAC__byte [], size_t *, void *);
 	FLAC__StreamDecoderWriteStatus	 FLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *, const FLAC__Frame *, const FLAC__int32 * const [], void *);
@@ -28,16 +28,16 @@ namespace BonkEnc
 	void				 FLACStreamDecoderErrorCallback(const FLAC__StreamDecoder *, FLAC__StreamDecoderErrorStatus, void *);
 };
 
-BonkEnc::FilterInFLAC::FilterInFLAC(Config *config, Track *format) : InputFilter(config, format)
+freac::FilterInFLAC::FilterInFLAC(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-BonkEnc::FilterInFLAC::~FilterInFLAC()
+freac::FilterInFLAC::~FilterInFLAC()
 {
 }
 
-Bool BonkEnc::FilterInFLAC::Activate()
+Bool freac::FilterInFLAC::Activate()
 {
 	stop	 = False;
 	finished = False;
@@ -54,7 +54,7 @@ Bool BonkEnc::FilterInFLAC::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterInFLAC::Deactivate()
+Bool freac::FilterInFLAC::Deactivate()
 {
 	if (decoderThread != NIL)
 	{
@@ -73,7 +73,7 @@ Bool BonkEnc::FilterInFLAC::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInFLAC::ReadData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterInFLAC::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (decoderThread == NIL) decoderThread = NonBlocking0<>(&FilterInFLAC::ReadFLACData, this).Call();
 
@@ -105,7 +105,7 @@ Int BonkEnc::FilterInFLAC::ReadData(Buffer<UnsignedByte> &data, Int size)
 	return size;
 }
 
-BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
+freac::Track *freac::FilterInFLAC::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
 	Driver		*ioDriver = new DriverPOSIX(inFile, IS_READ);
@@ -160,7 +160,7 @@ BonkEnc::Track *BonkEnc::FilterInFLAC::GetFileInfo(const String &inFile)
 	return nFormat;
 }
 
-Int BonkEnc::FilterInFLAC::ReadFLACData()
+Int freac::FilterInFLAC::ReadFLACData()
 {
 	decoder = ex_FLAC__stream_decoder_new();
 
@@ -174,7 +174,7 @@ Int BonkEnc::FilterInFLAC::ReadFLACData()
 	return Success();
 }
 
-Int BonkEnc::FilterInFLAC::ReadFLACMetadata()
+Int freac::FilterInFLAC::ReadFLACMetadata()
 {
 	decoder = ex_FLAC__stream_decoder_new();
 
@@ -191,7 +191,7 @@ Int BonkEnc::FilterInFLAC::ReadFLACMetadata()
 	return Success();
 }
 
-FLAC__StreamDecoderReadStatus BonkEnc::FLACStreamDecoderReadCallback(const FLAC__StreamDecoder *decoder, FLAC__byte buffer[], size_t *bytes, void *client_data)
+FLAC__StreamDecoderReadStatus freac::FLACStreamDecoderReadCallback(const FLAC__StreamDecoder *decoder, FLAC__byte buffer[], size_t *bytes, void *client_data)
 {
 	FilterInFLAC	*filter = (FilterInFLAC *) client_data;
 
@@ -211,7 +211,7 @@ FLAC__StreamDecoderReadStatus BonkEnc::FLACStreamDecoderReadCallback(const FLAC_
 	return FLAC__STREAM_DECODER_READ_STATUS_CONTINUE;
 }
 
-FLAC__StreamDecoderWriteStatus BonkEnc::FLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *decoder, const FLAC__Frame *frame, const FLAC__int32 * const buffer[], void *client_data)
+FLAC__StreamDecoderWriteStatus freac::FLACStreamDecoderWriteCallback(const FLAC__StreamDecoder *decoder, const FLAC__Frame *frame, const FLAC__int32 * const buffer[], void *client_data)
 {
 	FilterInFLAC	*filter = (FilterInFLAC *) client_data;
 
@@ -234,7 +234,7 @@ FLAC__StreamDecoderWriteStatus BonkEnc::FLACStreamDecoderWriteCallback(const FLA
 	return FLAC__STREAM_DECODER_WRITE_STATUS_CONTINUE;
 }
 
-FLAC__StreamDecoderSeekStatus BonkEnc::FLACStreamDecoderSeekCallback(const FLAC__StreamDecoder *decoder, FLAC__uint64 absolute_byte_offset, void *client_data)
+FLAC__StreamDecoderSeekStatus freac::FLACStreamDecoderSeekCallback(const FLAC__StreamDecoder *decoder, FLAC__uint64 absolute_byte_offset, void *client_data)
 {
 	FilterInFLAC	*filter = (FilterInFLAC *) client_data;
 
@@ -243,7 +243,7 @@ FLAC__StreamDecoderSeekStatus BonkEnc::FLACStreamDecoderSeekCallback(const FLAC_
 	return FLAC__STREAM_DECODER_SEEK_STATUS_OK;
 }
 
-FLAC__StreamDecoderTellStatus BonkEnc::FLACStreamDecoderTellCallback(const FLAC__StreamDecoder *decoder, FLAC__uint64 *absolute_byte_offset, void *client_data)
+FLAC__StreamDecoderTellStatus freac::FLACStreamDecoderTellCallback(const FLAC__StreamDecoder *decoder, FLAC__uint64 *absolute_byte_offset, void *client_data)
 {
 	FilterInFLAC	*filter = (FilterInFLAC *) client_data;
 
@@ -252,7 +252,7 @@ FLAC__StreamDecoderTellStatus BonkEnc::FLACStreamDecoderTellCallback(const FLAC_
 	return FLAC__STREAM_DECODER_TELL_STATUS_OK;
 }
 
-FLAC__StreamDecoderLengthStatus BonkEnc::FLACStreamDecoderLengthCallback(const FLAC__StreamDecoder *decoder, FLAC__uint64 *stream_length, void *client_data)
+FLAC__StreamDecoderLengthStatus freac::FLACStreamDecoderLengthCallback(const FLAC__StreamDecoder *decoder, FLAC__uint64 *stream_length, void *client_data)
 {
 	FilterInFLAC	*filter = (FilterInFLAC *) client_data;
 
@@ -261,14 +261,14 @@ FLAC__StreamDecoderLengthStatus BonkEnc::FLACStreamDecoderLengthCallback(const F
 	return FLAC__STREAM_DECODER_LENGTH_STATUS_OK;
 }
 
-FLAC__bool BonkEnc::FLACStreamDecoderEofCallback(const FLAC__StreamDecoder *decoder, void *client_data)
+FLAC__bool freac::FLACStreamDecoderEofCallback(const FLAC__StreamDecoder *decoder, void *client_data)
 {
 	FilterInFLAC	*filter = (FilterInFLAC *) client_data;
 
 	return (filter->driver->GetPos() == filter->driver->GetSize());
 }
 
-void BonkEnc::FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decoder, const FLAC__StreamMetadata *metadata, void *client_data)
+void freac::FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decoder, const FLAC__StreamMetadata *metadata, void *client_data)
 {
 	FilterInFLAC	*filter = (FilterInFLAC *) client_data;
 
@@ -349,6 +349,6 @@ void BonkEnc::FLACStreamDecoderMetadataCallback(const FLAC__StreamDecoder *decod
 	}
 }
 
-void BonkEnc::FLACStreamDecoderErrorCallback(const FLAC__StreamDecoder *decoder, FLAC__StreamDecoderErrorStatus status, void *client_data)
+void freac::FLACStreamDecoderErrorCallback(const FLAC__StreamDecoder *decoder, FLAC__StreamDecoderErrorStatus status, void *client_data)
 {
 }

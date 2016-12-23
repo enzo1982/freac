@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,15 +13,15 @@
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::AddPatternDialog::AddPatternDialog()
+freac::AddPatternDialog::AddPatternDialog()
 {
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("Add files by pattern"), currentConfig->wndPos + Point(40, 40), Size(402, 156));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(freac::i18n->TranslateString("Add files by pattern"), currentConfig->wndPos + Point(40, 40), Size(402, 156));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_NONE);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -31,13 +31,13 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&AddPatternDialog::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(freac::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onAction.Connect(&AddPatternDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -46,16 +46,16 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 	size.cx = 380;
 	size.cy = 65;
 
-	group_pattern	= new GroupBox(BonkEnc::i18n->TranslateString("Pattern"), pos, size);
+	group_pattern	= new GroupBox(freac::i18n->TranslateString("Pattern"), pos, size);
 
 	pos.x += 9;
 	pos.y += 12;
 
-	text_directory	= new Text(String(BonkEnc::i18n->TranslateString("Start folder")).Append(":"), pos);
+	text_directory	= new Text(String(freac::i18n->TranslateString("Start folder")).Append(":"), pos);
 
 	pos.y += 26;
 
-	text_pattern	= new Text(String(BonkEnc::i18n->TranslateString("Filename pattern")).Append(":"), pos);
+	text_pattern	= new Text(String(freac::i18n->TranslateString("Filename pattern")).Append(":"), pos);
 
 	pos.x += (Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()) + 7);
 	pos.y -= 29;
@@ -68,7 +68,7 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 	pos.y -= 1;
 	size.cx = 80;
 
-	btn_browse	= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
+	btn_browse	= new Button(freac::i18n->TranslateString("Browse"), NIL, pos, size);
 	btn_browse->onAction.Connect(&AddPatternDialog::Browse, this);
 
 	pos.x = edit_directory->GetX();
@@ -95,7 +95,7 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::AddPatternDialog::~AddPatternDialog()
+freac::AddPatternDialog::~AddPatternDialog()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -110,24 +110,24 @@ BonkEnc::AddPatternDialog::~AddPatternDialog()
 	DeleteObject(btn_cancel);
 }
 
-const Error &BonkEnc::AddPatternDialog::ShowDialog()
+const Error &freac::AddPatternDialog::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-String BonkEnc::AddPatternDialog::GetDirectory()
+String freac::AddPatternDialog::GetDirectory()
 {
 	return edit_directory->GetText();
 }
 
-String BonkEnc::AddPatternDialog::GetPattern()
+String freac::AddPatternDialog::GetPattern()
 {
 	return edit_pattern->GetText();
 }
 
-Void BonkEnc::AddPatternDialog::OK()
+Void freac::AddPatternDialog::OK()
 {
 	currentConfig->lastAddedDir = edit_directory->GetText();
 	currentConfig->lastAddedPattern = edit_pattern->GetText();
@@ -135,19 +135,19 @@ Void BonkEnc::AddPatternDialog::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::AddPatternDialog::Cancel()
+Void freac::AddPatternDialog::Cancel()
 {
 	error = Error();
 
 	mainWnd->Close();
 }
 
-Void BonkEnc::AddPatternDialog::Browse()
+Void freac::AddPatternDialog::Browse()
 {
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(mainWnd);
-	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder to add to the joblist:")));
+	dialog->SetCaption(String("\n").Append(freac::i18n->TranslateString("Select the folder to add to the joblist:")));
 	dialog->SetDirName(edit_directory->GetText());
 
 	if (dialog->ShowDialog() == Success())

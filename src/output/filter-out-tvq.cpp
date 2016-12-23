@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -31,7 +31,7 @@
 #include <3rdparty/twinvq/ChunkHelper.h>
 #include <3rdparty/twinvq/ChunkHelper.cxx>
 
-BonkEnc::FilterOutTVQ::FilterOutTVQ(Config *config, Track *format) : OutputFilter(config, format)
+freac::FilterOutTVQ::FilterOutTVQ(Config *config, Track *format) : OutputFilter(config, format)
 {
 	switch (format->rate)
 	{
@@ -65,7 +65,7 @@ BonkEnc::FilterOutTVQ::FilterOutTVQ(Config *config, Track *format) : OutputFilte
 
 	if (format->channels > 2)
 	{
-		Utilities::ErrorMessage(String(BonkEnc::appName).Append(" does not support more than 2 channels!"));
+		Utilities::ErrorMessage(String(freac::appName).Append(" does not support more than 2 channels!"));
 
 		errorState = True;
 
@@ -73,11 +73,11 @@ BonkEnc::FilterOutTVQ::FilterOutTVQ(Config *config, Track *format) : OutputFilte
 	}
 }
 
-BonkEnc::FilterOutTVQ::~FilterOutTVQ()
+freac::FilterOutTVQ::~FilterOutTVQ()
 {
 }
 
-Bool BonkEnc::FilterOutTVQ::Activate()
+Bool freac::FilterOutTVQ::Activate()
 {
 	memset(&setupInfo, 0, sizeof(headerInfo));
 	memset(&encInfo, 0, sizeof(encSpecificInfo));
@@ -116,7 +116,7 @@ Bool BonkEnc::FilterOutTVQ::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterOutTVQ::Deactivate()
+Bool freac::FilterOutTVQ::Deactivate()
 {
 	OutStream	*d_out = new OutStream(STREAM_BUFFER, outBuffer, outBuffer.Size());
 
@@ -141,7 +141,7 @@ Bool BonkEnc::FilterOutTVQ::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutTVQ::WriteData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterOutTVQ::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	OutStream	*d_out = new OutStream(STREAM_BUFFER, outBuffer, outBuffer.Size());
 

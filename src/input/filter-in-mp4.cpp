@@ -13,16 +13,16 @@
 #include <dllinterfaces.h>
 #include <utilities.h>
 
-BonkEnc::FilterInMP4::FilterInMP4(Config *config, Track *format) : InputFilter(config, format)
+freac::FilterInMP4::FilterInMP4(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-BonkEnc::FilterInMP4::~FilterInMP4()
+freac::FilterInMP4::~FilterInMP4()
 {
 }
 
-Bool BonkEnc::FilterInMP4::Activate()
+Bool freac::FilterInMP4::Activate()
 {
 	if (GetTempFile(format->origFilename) != format->origFilename)
 	{
@@ -63,7 +63,7 @@ Bool BonkEnc::FilterInMP4::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterInMP4::Deactivate()
+Bool freac::FilterInMP4::Deactivate()
 {
 	if (mp4Track >= 0) ex_NeAACDecClose(handle);
 
@@ -79,7 +79,7 @@ Bool BonkEnc::FilterInMP4::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInMP4::ReadData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterInMP4::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (size <= 0) return -1;
 
@@ -124,7 +124,7 @@ Int BonkEnc::FilterInMP4::ReadData(Buffer<UnsignedByte> &data, Int size)
 	return samplesRead * 2;
 }
 
-BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
+freac::Track *freac::FilterInMP4::GetFileInfo(const String &inFile)
 {
 	if (GetTempFile(inFile) != inFile)
 	{
@@ -241,7 +241,7 @@ BonkEnc::Track *BonkEnc::FilterInMP4::GetFileInfo(const String &inFile)
 	return nFormat;
 }
 
-Int BonkEnc::FilterInMP4::GetAudioTrack()
+Int freac::FilterInMP4::GetAudioTrack()
 {
 	Int nOfTracks = ex_MP4GetNumberOfTracks(mp4File, NIL, 0);
 
@@ -256,7 +256,7 @@ Int BonkEnc::FilterInMP4::GetAudioTrack()
 	return -1;
 } 
 
-String BonkEnc::FilterInMP4::GetTempFile(const String &oFileName)
+String freac::FilterInMP4::GetTempFile(const String &oFileName)
 {
 	String	 rVal	= oFileName;
 	Int	 lastBs	= -1;

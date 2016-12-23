@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -32,7 +32,7 @@
 using namespace smooth::GUI::Dialogs;
 using namespace smooth::Threads;
 
-Void BonkEnc::BonkEnc::Encode(Bool useThread)
+Void freac::freac::Encode(Bool useThread)
 {
 	if (encoding) return;
 
@@ -50,7 +50,7 @@ Void BonkEnc::BonkEnc::Encode(Bool useThread)
 		encoder_thread = NIL;
 	}
 
-	debug_out->EnterMethod("BonkEnc::Encode()");
+	debug_out->EnterMethod("freac::Encode()");
 
 	encoding = True;
 	pause_encoding = False;
@@ -64,7 +64,7 @@ Void BonkEnc::BonkEnc::Encode(Bool useThread)
 	if (useThread)
 	{
 		encoder_thread = new Thread();
-		encoder_thread->threadMain.Connect(&BonkEnc::Encoder, this);
+		encoder_thread->threadMain.Connect(&freac::Encoder, this);
 
 		encoder_thread->SetFlags(THREAD_WAITFLAG_START);
 		encoder_thread->Start();
@@ -77,9 +77,9 @@ Void BonkEnc::BonkEnc::Encode(Bool useThread)
 	debug_out->LeaveMethod();
 }
 
-Int BonkEnc::BonkEnc::Encoder(Thread *thread)
+Int freac::freac::Encoder(Thread *thread)
 {
-	debug_out->EnterMethod("BonkEnc::Encoder(Thread *)");
+	debug_out->EnterMethod("freac::Encoder(Thread *)");
 	debug_out->OutputLine("Encoding process started...");
 
 	String		 in_filename;
@@ -647,14 +647,14 @@ Int BonkEnc::BonkEnc::Encoder(Thread *thread)
 	return Success();
 }
 
-Void BonkEnc::BonkEnc::PauseEncoding()
+Void freac::freac::PauseEncoding()
 {
 	if (!encoding) return;
 
 	pause_encoding = !pause_encoding;
 }
 
-Void BonkEnc::BonkEnc::StopEncoding()
+Void freac::freac::StopEncoding()
 {
 	if (!encoding) return;
 
@@ -667,7 +667,7 @@ Void BonkEnc::BonkEnc::StopEncoding()
 	encoder_thread = NIL;
 }
 
-String BonkEnc::BonkEnc::GetPlaylistFileName(Track *trackInfo)
+String freac::freac::GetPlaylistFileName(Track *trackInfo)
 {
 	if (currentConfig->enable_console) return NIL;
 
@@ -700,7 +700,7 @@ String BonkEnc::BonkEnc::GetPlaylistFileName(Track *trackInfo)
 	return Utilities::NormalizeFileName(playlistFileName);
 }
 
-String BonkEnc::BonkEnc::GetRelativeFileName(const String &trackFileName, const String &baseFileName)
+String freac::freac::GetRelativeFileName(const String &trackFileName, const String &baseFileName)
 {
 	Int	 equalBytes	   = 0;
 	Int	 furtherComponents = 0;
@@ -734,7 +734,7 @@ String BonkEnc::BonkEnc::GetRelativeFileName(const String &trackFileName, const 
 	return relativeFileName;
 }
 
-String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
+String freac::freac::GetOutputFileName(Track *trackInfo)
 {
 	String		 outputFileName;
 
@@ -890,7 +890,7 @@ String BonkEnc::BonkEnc::GetOutputFileName(Track *trackInfo)
 	return outputFileName;
 }
 
-String BonkEnc::BonkEnc::GetSingleOutputFileName(Track *trackInfo)
+String freac::freac::GetSingleOutputFileName(Track *trackInfo)
 {
 	if (currentConfig->enable_console) return NIL;
 
@@ -904,54 +904,54 @@ String BonkEnc::BonkEnc::GetSingleOutputFileName(Track *trackInfo)
 
 	if (currentConfig->encoder == ENCODER_BONKENC)
 	{
-		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Bonk Files")).Append(" (*.bonk)"), "*.bonk");
+		dialog->AddFilter(String(freac::i18n->TranslateString("Bonk Files")).Append(" (*.bonk)"), "*.bonk");
 		defaultExtension = "bonk";
 	}
 	else if (currentConfig->encoder == ENCODER_BLADEENC || currentConfig->encoder == ENCODER_LAMEENC)
 	{
-		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("MP3 Files")).Append(" (*.mp3)"), "*.mp3");
+		dialog->AddFilter(String(freac::i18n->TranslateString("MP3 Files")).Append(" (*.mp3)"), "*.mp3");
 		defaultExtension = "mp3";
 	}
 	else if (currentConfig->encoder == ENCODER_VORBISENC)
 	{
-		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Ogg Vorbis Files")).Append(" (*.ogg)"), "*.ogg");
+		dialog->AddFilter(String(freac::i18n->TranslateString("Ogg Vorbis Files")).Append(" (*.ogg)"), "*.ogg");
 		defaultExtension = "ogg";
 	}
 	else if (currentConfig->encoder == ENCODER_FLAC)
 	{
-		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("FLAC Files")).Append(" (*.flac)"), "*.flac");
+		dialog->AddFilter(String(freac::i18n->TranslateString("FLAC Files")).Append(" (*.flac)"), "*.flac");
 		defaultExtension = "flac";
 	}
 	else if (currentConfig->encoder == ENCODER_TVQ)
 	{
-		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("VQF Files")).Append(" (*.vqf)"), "*.vqf");
+		dialog->AddFilter(String(freac::i18n->TranslateString("VQF Files")).Append(" (*.vqf)"), "*.vqf");
 		defaultExtension = "vqf";
 	}
 	else if (currentConfig->encoder == ENCODER_WAVE)
 	{
-		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Wave Files")).Append(" (*.wav)"), "*.wav");
+		dialog->AddFilter(String(freac::i18n->TranslateString("Wave Files")).Append(" (*.wav)"), "*.wav");
 		defaultExtension = "wav";
 	}
 	else if (currentConfig->encoder == ENCODER_WMA)
 	{
-		dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Windows Media Audio Files")).Append(" (*.wma)"), "*.wma");
+		dialog->AddFilter(String(freac::i18n->TranslateString("Windows Media Audio Files")).Append(" (*.wma)"), "*.wma");
 		defaultExtension = "wma";
 	}
 	else if (currentConfig->encoder == ENCODER_FAAC)
 	{
 		if (currentConfig->enable_mp4 && currentConfig->faac_enable_mp4)
 		{
-			dialog->AddFilter(String(BonkEnc::i18n->TranslateString("MP4 Files")).Append(" (*.m4a; *.m4b; *.mp4)"), "*.m4a; *.m4b; *.mp4");
+			dialog->AddFilter(String(freac::i18n->TranslateString("MP4 Files")).Append(" (*.m4a; *.m4b; *.mp4)"), "*.m4a; *.m4b; *.mp4");
 			defaultExtension = "m4a";
 		}
 		else
 		{
-			dialog->AddFilter(String(BonkEnc::i18n->TranslateString("AAC Files")).Append(" (*.aac)"), "*.aac");
+			dialog->AddFilter(String(freac::i18n->TranslateString("AAC Files")).Append(" (*.aac)"), "*.aac");
 			defaultExtension = "aac";
 		}
 	}
 
-	dialog->AddFilter(BonkEnc::i18n->TranslateString("All Files"), "*.*");
+	dialog->AddFilter(freac::i18n->TranslateString("All Files"), "*.*");
 
 	dialog->SetDefaultExtension(defaultExtension);
 	dialog->SetFileName(String(Utilities::ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), True)).Append(" - ").Append(Utilities::ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"), True)).Append(".").Append(defaultExtension));
@@ -963,7 +963,7 @@ String BonkEnc::BonkEnc::GetSingleOutputFileName(Track *trackInfo)
 	return singleOutputFileName;
 }
 
-Void BonkEnc::BonkEnc::ComputeTotalNumberOfSamples()
+Void freac::freac::ComputeTotalNumberOfSamples()
 {
 	if (currentConfig->enable_console) return;
 
@@ -986,7 +986,7 @@ Void BonkEnc::BonkEnc::ComputeTotalNumberOfSamples()
 	progress_total->SetValue(0);
 }
 
-Void BonkEnc::BonkEnc::FixTotalNumberOfSamples(Track *trackInfo, Track *nTrackInfo)
+Void freac::freac::FixTotalNumberOfSamples(Track *trackInfo, Track *nTrackInfo)
 {
 	if (currentConfig->enable_console) return;
 
@@ -999,7 +999,7 @@ Void BonkEnc::BonkEnc::FixTotalNumberOfSamples(Track *trackInfo, Track *nTrackIn
 	trackInfo->length = nTrackInfo->length;
 }
 
-Void BonkEnc::BonkEnc::InitTotalProgressValues()
+Void freac::freac::InitTotalProgressValues()
 {
 	totalStartTicks = S::System::System::Clock();
 
@@ -1014,7 +1014,7 @@ Void BonkEnc::BonkEnc::InitTotalProgressValues()
 	}
 }
 
-Void BonkEnc::BonkEnc::InitProgressValues()
+Void freac::freac::InitProgressValues()
 {
 	startTicks = S::System::System::Clock();
 
@@ -1029,7 +1029,7 @@ Void BonkEnc::BonkEnc::InitProgressValues()
 	}
 }
 
-Void BonkEnc::BonkEnc::UpdateProgressValues(Track *trackInfo, Int samplePosition)
+Void freac::freac::UpdateProgressValues(Track *trackInfo, Int samplePosition)
 {
 	if (currentConfig->enable_console) return;
 
@@ -1117,7 +1117,7 @@ Void BonkEnc::BonkEnc::UpdateProgressValues(Track *trackInfo, Int samplePosition
 	lastInvoked = clockValue;
 }
 
-Void BonkEnc::BonkEnc::FinishProgressValues(Track *trackInfo)
+Void freac::freac::FinishProgressValues(Track *trackInfo)
 {
 	if (currentConfig->enable_console) return;
 

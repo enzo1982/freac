@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,15 +10,15 @@
 
 #include <cdinfo/cdinfo.h>
 
-BonkEnc::CDInfo::CDInfo()
+freac::CDInfo::CDInfo()
 {
 }
 
-BonkEnc::CDInfo::~CDInfo()
+freac::CDInfo::~CDInfo()
 {
 }
 
-Void BonkEnc::CDInfo::SetTrackArtist(Int n, const String &nArtist)
+Void freac::CDInfo::SetTrackArtist(Int n, const String &nArtist)
 {
 	if (trackArtists.Length() < n)
 	{
@@ -31,7 +31,7 @@ Void BonkEnc::CDInfo::SetTrackArtist(Int n, const String &nArtist)
 	}
 }
 
-Void BonkEnc::CDInfo::SetTrackTitle(Int n, const String &nTitle)
+Void freac::CDInfo::SetTrackTitle(Int n, const String &nTitle)
 {
 	if (trackTitles.Length() < n)
 	{
@@ -44,7 +44,7 @@ Void BonkEnc::CDInfo::SetTrackTitle(Int n, const String &nTitle)
 	}
 }
 
-Int BonkEnc::CDInfo::Clear()
+Int freac::CDInfo::Clear()
 {
 	artist = NIL;
 	title  = NIL;

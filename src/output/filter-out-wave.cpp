@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,16 +10,16 @@
 
 #include <output/filter-out-wave.h>
 
-BonkEnc::FilterOutWAVE::FilterOutWAVE(Config *config, Track *format) : OutputFilter(config, format)
+freac::FilterOutWAVE::FilterOutWAVE(Config *config, Track *format) : OutputFilter(config, format)
 {
 	nOfSamples = 0;
 }
 
-BonkEnc::FilterOutWAVE::~FilterOutWAVE()
+freac::FilterOutWAVE::~FilterOutWAVE()
 {
 }
 
-Bool BonkEnc::FilterOutWAVE::Activate()
+Bool freac::FilterOutWAVE::Activate()
 {
 	Buffer<unsigned char>	 buffer(44);
 	OutStream		*out = new OutStream(STREAM_BUFFER, buffer, 44);
@@ -45,7 +45,7 @@ Bool BonkEnc::FilterOutWAVE::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterOutWAVE::Deactivate()
+Bool freac::FilterOutWAVE::Deactivate()
 {
 	int	 size = nOfSamples * (format->bits / 8) + 36;
 
@@ -60,7 +60,7 @@ Bool BonkEnc::FilterOutWAVE::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutWAVE::WriteData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterOutWAVE::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	nOfSamples += (size / (format->bits / 8));
 

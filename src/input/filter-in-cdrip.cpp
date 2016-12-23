@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -16,18 +16,18 @@
 
 #include <dllinterfaces.h>
 
-Bool			 BonkEnc::FilterInCDRip::readActive	= False;
+Bool			 freac::FilterInCDRip::readActive	= False;
 
-BonkEnc::CDPlayerIni	 BonkEnc::FilterInCDRip::cdPlayer;
-Int			 BonkEnc::FilterInCDRip::cdPlayerDiscID	= -1;
+freac::CDPlayerIni	 freac::FilterInCDRip::cdPlayer;
+Int			 freac::FilterInCDRip::cdPlayerDiscID	= -1;
 
-BonkEnc::CDText		 BonkEnc::FilterInCDRip::cdText;
-Int			 BonkEnc::FilterInCDRip::cdTextDiscID	= -1;
+freac::CDText		 freac::FilterInCDRip::cdText;
+Int			 freac::FilterInCDRip::cdTextDiscID	= -1;
 
-BonkEnc::CDDBInfo	 BonkEnc::FilterInCDRip::cdInfo;
-Int			 BonkEnc::FilterInCDRip::cdInfoDiscID	= -1;
+freac::CDDBInfo		 freac::FilterInCDRip::cdInfo;
+Int			 freac::FilterInCDRip::cdInfoDiscID	= -1;
 
-BonkEnc::FilterInCDRip::FilterInCDRip(Config *config, Track *format) : InputFilter(config, format)
+freac::FilterInCDRip::FilterInCDRip(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize	= 0;
 
@@ -35,7 +35,7 @@ BonkEnc::FilterInCDRip::FilterInCDRip(Config *config, Track *format) : InputFilt
 	buffer		= NIL;
 }
 
-BonkEnc::FilterInCDRip::~FilterInCDRip()
+freac::FilterInCDRip::~FilterInCDRip()
 {
 	if (buffer != NIL)
 	{
@@ -47,7 +47,7 @@ BonkEnc::FilterInCDRip::~FilterInCDRip()
 	}
 }
 
-Int BonkEnc::FilterInCDRip::ReadData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterInCDRip::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (trackNumber == -1) return true;
 
@@ -85,7 +85,7 @@ Int BonkEnc::FilterInCDRip::ReadData(Buffer<UnsignedByte> &data, Int size)
 	return size;
 }
 
-Bool BonkEnc::FilterInCDRip::SetTrack(Int newTrack)
+Bool freac::FilterInCDRip::SetTrack(Int newTrack)
 {
 	if (buffer != NIL)
 	{
@@ -133,7 +133,7 @@ Bool BonkEnc::FilterInCDRip::SetTrack(Int newTrack)
 	{
 		if (entry2.btTrackNumber == entry.btTrackNumber || entry2.btTrackNumber == 0xAA)
 		{
-			if ((j > 1) && ((entry2.btFlag & 4) != (ex_CR_GetTocEntry(j).btFlag & 4)) && (ex_CR_GetTocEntry(j).btTrackNumber != 0xAA))
+			if ((entry2.btFlag & 4) != (ex_CR_GetTocEntry(j).btFlag & 4) && ex_CR_GetTocEntry(j).btTrackNumber != 0xAA)
 			{
 				endSector = ex_CR_GetTocEntry(j).dwStartSector - 11400 - 1;
 			}
@@ -194,14 +194,14 @@ Bool BonkEnc::FilterInCDRip::SetTrack(Int newTrack)
 	return true;
 }
 
-Int BonkEnc::FilterInCDRip::GetTrackSize()
+Int freac::FilterInCDRip::GetTrackSize()
 {
 	if (trackNumber == -1) return 0;
 
 	return trackSize;
 }
 
-BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
+freac::Track *freac::FilterInCDRip::GetFileInfo(const String &inFile)
 {
 	Track	*nFormat = new Track;
 
@@ -247,7 +247,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 			entry = ex_CR_GetTocEntry(i);
 			nextentry = ex_CR_GetTocEntry(i + 1);
 
-			if ((i > 0) && ((entry.btFlag & 4) != (nextentry.btFlag & 4)) && (nextentry.btTrackNumber != 0xAA))
+			if ((entry.btFlag & 4) != (nextentry.btFlag & 4) && nextentry.btTrackNumber != 0xAA)
 			{
 				trackLength = nextentry.dwStartSector - entry.dwStartSector - 11400;
 			}
@@ -324,7 +324,7 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 				entry = ex_CR_GetTocEntry(i);
 				nextentry = ex_CR_GetTocEntry(i + 1);
 
-				if ((i > 0) && ((entry.btFlag & 4) != (nextentry.btFlag & 4)) && (nextentry.btTrackNumber != 0xAA))
+				if ((entry.btFlag & 4) != (nextentry.btFlag & 4) && nextentry.btTrackNumber != 0xAA)
 				{
 					trackLength = nextentry.dwStartSector - entry.dwStartSector - 11400;
 				}
@@ -432,14 +432,14 @@ BonkEnc::Track *BonkEnc::FilterInCDRip::GetFileInfo(const String &inFile)
 	return nFormat;
 }
 
-Int BonkEnc::FilterInCDRip::StartDiscRead()
+Int freac::FilterInCDRip::StartDiscRead()
 {
 	readActive		= True;
 
 	return Success();
 }
 
-Int BonkEnc::FilterInCDRip::FinishDiscRead()
+Int freac::FilterInCDRip::FinishDiscRead()
 {
 	readActive		 = False;
 

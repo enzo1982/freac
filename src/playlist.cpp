@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,7 +13,7 @@
 
 using namespace smooth::IO;
 
-Bool BonkEnc::Playlist::AddTrack(const String &fileName, const String &trackName, Int trackLength)
+Bool freac::Playlist::AddTrack(const String &fileName, const String &trackName, Int trackLength)
 {
 	fileNames.Add(fileName);
 	trackNames.Add(trackName);
@@ -22,17 +22,17 @@ Bool BonkEnc::Playlist::AddTrack(const String &fileName, const String &trackName
 	return True;
 }
 
-Int BonkEnc::Playlist::GetNOfTracks()
+Int freac::Playlist::GetNOfTracks()
 {
 	return fileNames.Length();
 }
 
-String BonkEnc::Playlist::GetNthTrackFileName(Int n)
+String freac::Playlist::GetNthTrackFileName(Int n)
 {
 	return fileNames.GetNth(n);
 }
 
-Bool BonkEnc::Playlist::Save(const String &fileName)
+Bool freac::Playlist::Save(const String &fileName)
 {
 	if (fileNames.Length() == 0) return False;
 
@@ -58,7 +58,7 @@ Bool BonkEnc::Playlist::Save(const String &fileName)
 	return True;
 }
 
-Bool BonkEnc::Playlist::Load(const String &fileName)
+Bool freac::Playlist::Load(const String &fileName)
 {
 	String		 format = String::SetInputFormat("UTF-8");
 	InStream	*file = new InStream(STREAM_FILE, fileName, IS_READ);

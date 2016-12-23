@@ -8,7 +8,7 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <bonkenc.h>
+#include <freac.h>
 
 #include <utilities.h>
 #include <dllinterfaces.h>
@@ -31,29 +31,29 @@ Int	 ENCODER_TVQ		= -1;
 Int	 ENCODER_WAVE		= -1;
 Int	 ENCODER_WMA		= -1;
 
-BonkEnc::Config		*BonkEnc::BonkEnc::currentConfig = NIL;
-I18n::Translator	*BonkEnc::BonkEnc::i18n		 = NIL;
+freac::Config		*freac::freac::currentConfig	= NIL;
+I18n::Translator	*freac::freac::i18n		= NIL;
 
-BonkEnc::Debug		*BonkEnc::debug_out;
+freac::Debug		*freac::debug_out;
 
 /* General application information and fixed settings.
  */
-String	 BonkEnc::BonkEnc::appName	= "fre:ac";
-String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
-String	 BonkEnc::BonkEnc::version	= "v1.0.27";
-String	 BonkEnc::BonkEnc::shortVersion	= "v1.0.27";
-String	 BonkEnc::BonkEnc::cddbVersion	= "v1.0.27";	// CDDB version may not contain spaces
-String	 BonkEnc::BonkEnc::cddbMode	= "submit";
-String	 BonkEnc::BonkEnc::copyright	= "Copyright (C) 2001-2016 Robert Kausch";
-String	 BonkEnc::BonkEnc::website	= "http://www.freac.org/";
-String	 BonkEnc::BonkEnc::updatePath	= "http://www.freac.org/eUpdate/eUpdate.xml";
+String	 freac::freac::appName	    = "fre:ac";
+String	 freac::freac::appLongName  = "fre:ac - free audio converter";
+String	 freac::freac::version	    = "v1.0.28";
+String	 freac::freac::shortVersion = "v1.0.28";
+String	 freac::freac::cddbVersion  = "v1.0.27";	// CDDB version may not contain spaces
+String	 freac::freac::cddbMode	    = "submit";
+String	 freac::freac::copyright    = "Copyright (C) 2001-2016 Robert Kausch";
+String	 freac::freac::website	    = "http://www.freac.org/";
+String	 freac::freac::updatePath   = "http://www.freac.org/eUpdate/eUpdate.xml";
 
 /* Use these settings for debugging.
  */
-//String	 BonkEnc::BonkEnc::cddbMode	= "test";
-//String	 BonkEnc::BonkEnc::updatePath	= "file://eUpdate/eUpdate.xml";
+//String	 freac::freac::cddbMode	    = "test";
+//String	 freac::freac::updatePath   = "file://eUpdate/eUpdate.xml";
 
-BonkEnc::BonkEnc::BonkEnc()
+freac::freac::freac()
 {
 	encoding = False;
 	encoder_thread = NIL;
@@ -86,7 +86,7 @@ BonkEnc::BonkEnc::BonkEnc()
 	/* Set default language information.
 	 */
 	i18n = new I18n::Translator("freac");
-	i18n->SetInternalLanguageInfo("English", "Robert Kausch <robert.kausch@freac.org>", BonkEnc::website, False);
+	i18n->SetInternalLanguageInfo("English", "Robert Kausch <robert.kausch@freac.org>", freac::website, False);
 
 	/* Load encoder DLLs.
 	 */
@@ -161,7 +161,7 @@ BonkEnc::BonkEnc::BonkEnc()
 	if (currentConfig->encoder >= nextEC) currentConfig->encoder = ENCODER_WAVE;
 }
 
-BonkEnc::BonkEnc::~BonkEnc()
+freac::freac::~freac()
 {
 	if (currentConfig->enable_cdrip) ex_CR_DeInit();
 
@@ -195,7 +195,7 @@ BonkEnc::BonkEnc::~BonkEnc()
 	delete currentConfig;
 }
 
-Bool BonkEnc::BonkEnc::InitCDRip()
+Bool freac::freac::InitCDRip()
 {
 	if (!currentConfig->enable_cdrip) return False;
 
@@ -247,7 +247,7 @@ Bool BonkEnc::BonkEnc::InitCDRip()
 	return False;
 }
 
-Void BonkEnc::BonkEnc::ReadCD()
+Void freac::freac::ReadCD()
 {
 	if (encoding)
 	{
@@ -274,7 +274,7 @@ Void BonkEnc::BonkEnc::ReadCD()
 	FilterInCDRip::FinishDiscRead();
 }
 
-BonkEnc::CDDBInfo BonkEnc::BonkEnc::GetCDDBData()
+freac::CDDBInfo freac::freac::GetCDDBData()
 {
 	CDDBInfo	 cddbInfo;
 
@@ -295,7 +295,7 @@ BonkEnc::CDDBInfo BonkEnc::BonkEnc::GetCDDBData()
 	return cddbInfo;
 }
 
-BonkEnc::CDDBInfo BonkEnc::BonkEnc::QueryCDDB(CDDB &cddb)
+freac::CDDBInfo freac::freac::QueryCDDB(CDDB &cddb)
 {
 	cddb.ConnectToServer();
 	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
@@ -312,7 +312,7 @@ BonkEnc::CDDBInfo BonkEnc::BonkEnc::QueryCDDB(CDDB &cddb)
 
 	if (result == QUERY_RESULT_NONE)
 	{
-		Console::OutputString(BonkEnc::i18n->TranslateString("No freedb entry for this disk."));
+		Console::OutputString(freac::i18n->TranslateString("No freedb entry for this disk."));
 	}
 	else if (result == QUERY_RESULT_SINGLE || result == QUERY_RESULT_MULTIPLE || result == QUERY_RESULT_FUZZY)
 	{

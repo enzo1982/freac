@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,7 +12,7 @@
 #include <utilities.h>
 #include <dllinterfaces.h>
 
-BonkEnc::FilterOutFAAC::FilterOutFAAC(Config *config, Track *format) : OutputFilter(config, format)
+freac::FilterOutFAAC::FilterOutFAAC(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (format->rate !=  8000 && format->rate != 11025 && format->rate != 12000 &&
 	    format->rate != 16000 && format->rate != 22050 && format->rate != 24000 &&
@@ -28,7 +28,7 @@ BonkEnc::FilterOutFAAC::FilterOutFAAC(Config *config, Track *format) : OutputFil
 
 	if (format->channels > 2)
 	{
-		Utilities::ErrorMessage(String(BonkEnc::appName).Append(" does not support more than 2 channels!"));
+		Utilities::ErrorMessage(String(freac::appName).Append(" does not support more than 2 channels!"));
 
 		errorState = True;
 
@@ -36,11 +36,11 @@ BonkEnc::FilterOutFAAC::FilterOutFAAC(Config *config, Track *format) : OutputFil
 	}
 }
 
-BonkEnc::FilterOutFAAC::~FilterOutFAAC()
+freac::FilterOutFAAC::~FilterOutFAAC()
 {
 }
 
-Bool BonkEnc::FilterOutFAAC::Activate()
+Bool freac::FilterOutFAAC::Activate()
 {
 	unsigned long	 samplesSize	= 0;
 	unsigned long	 bufferSize	= 0;
@@ -81,13 +81,13 @@ Bool BonkEnc::FilterOutFAAC::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterOutFAAC::Deactivate()
+Bool freac::FilterOutFAAC::Deactivate()
 {
 	unsigned long	 bytes = 0;
 
 	do
 	{
-		bytes = ex_faacEncEncode(handle, NULL, 0, outBuffer, outBuffer.Size());
+		bytes = ex_faacEncEncode(handle, NIL, 0, outBuffer, outBuffer.Size());
 
 		driver->WriteData(outBuffer, bytes);
 	}
@@ -98,7 +98,7 @@ Bool BonkEnc::FilterOutFAAC::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutFAAC::WriteData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterOutFAAC::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	unsigned long	 bytes = 0;
 

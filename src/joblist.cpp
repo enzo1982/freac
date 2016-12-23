@@ -19,7 +19,7 @@
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iSize)
+freac::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iSize)
 {
 	SetFlags(LF_ALLOWREORDER | LF_MULTICHECKBOX);
 
@@ -40,20 +40,20 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 	button_sel_all		= new Button(NIL, ImageLoader::Load("freac.pci:18"), iPos - Point(19, 4), Size(21, 21));
 	button_sel_all->onAction.Connect(&JobList::SelectAll, this);
 	button_sel_all->SetFlags(BF_NOFRAME);
-	button_sel_all->SetTooltipText(BonkEnc::i18n->TranslateString("Select all"));
+	button_sel_all->SetTooltipText(freac::i18n->TranslateString("Select all"));
 
 	button_sel_none		= new Button(NIL, ImageLoader::Load("freac.pci:19"), iPos - Point(19, -10), Size(21, 21));
 	button_sel_none->onAction.Connect(&JobList::SelectNone, this);
 	button_sel_none->SetFlags(BF_NOFRAME);
-	button_sel_none->SetTooltipText(BonkEnc::i18n->TranslateString("Select none"));
+	button_sel_none->SetTooltipText(freac::i18n->TranslateString("Select none"));
 
 	button_sel_toggle	= new Button(NIL, ImageLoader::Load("freac.pci:20"), iPos - Point(19, -24), Size(21, 21));
 	button_sel_toggle->onAction.Connect(&JobList::ToggleSelection, this);
 	button_sel_toggle->SetFlags(BF_NOFRAME);
-	button_sel_toggle->SetTooltipText(BonkEnc::i18n->TranslateString("Toggle selection"));
+	button_sel_toggle->SetTooltipText(freac::i18n->TranslateString("Toggle selection"));
 }
 
-BonkEnc::JobList::~JobList()
+freac::JobList::~JobList()
 {
 	onRegister.Disconnect(&JobList::OnRegister, this);
 	onUnregister.Disconnect(&JobList::OnUnregister, this);
@@ -66,12 +66,12 @@ BonkEnc::JobList::~JobList()
 	DeleteObject(button_sel_toggle);
 }
 
-Int BonkEnc::JobList::GetNOfTracks()
+Int freac::JobList::GetNOfTracks()
 {
 	return tracks.Length();
 }
 
-BonkEnc::Track *BonkEnc::JobList::GetNthTrack(Int n)
+freac::Track *freac::JobList::GetNthTrack(Int n)
 {
 	if (n < 0 || GetNOfTracks() <= n) return NIL;
 	
@@ -79,7 +79,7 @@ BonkEnc::Track *BonkEnc::JobList::GetNthTrack(Int n)
 	return tracks.Get(GetNthEntry(n)->GetHandle());
 }
 
-Bool BonkEnc::JobList::AddTrack(Track *track)
+Bool freac::JobList::AddTrack(Track *track)
 {
 	track->oArtist = track->artist;
 	track->oTitle = track->title;
@@ -90,24 +90,24 @@ Bool BonkEnc::JobList::AddTrack(Track *track)
 	String	 tooltip;
 
 	if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-	else							jlEntry = String(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
+	else							jlEntry = String(track->artist.Length() > 0 ? track->artist : freac::i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : freac::i18n->TranslateString("unknown title")).Append("\t");
 
 	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
 
-	tooltip = String(BonkEnc::i18n->TranslateString("File")).Append(": ").Append(track->origFilename).Append("\n").
-		  Append(BonkEnc::i18n->TranslateString("Size")).Append(": ").Append(track->fileSizeString).Append(" ").Append(BonkEnc::i18n->TranslateString("bytes")).Append("\n").
-		  Append(BonkEnc::i18n->TranslateString("Artist")).Append(": ").Append(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append("\n").
-		  Append(BonkEnc::i18n->TranslateString("Title")).Append(": ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\n").
-		  Append(track->length > 0 || track->approxLength > 0 ? String(BonkEnc::i18n->TranslateString("Length")).Append(": ").Append(track->lengthString).Append(" ").Append(BonkEnc::i18n->TranslateString("min")).Append("\n") : String()).
-		  Append(track->length > 0 ? String(BonkEnc::i18n->TranslateString("Number of samples")).Append(": ").Append(I18n::Number::GetLocalizedNumberString(track->length / track->channels)).Append("\n") : String()).
-		  Append(BonkEnc::i18n->TranslateString("Sampling rate")).Append(": ").Append(I18n::Number::GetLocalizedNumberString(track->rate)).Append(" Hz\n").
-		  Append(BonkEnc::i18n->TranslateString("Sample resolution")).Append(": ").Append(String::FromInt(track->bits)).Append(" ").Append(BonkEnc::i18n->TranslateString("bit")).Append("\n").
-		  Append(BonkEnc::i18n->TranslateString("Channels")).Append(": ").Append((track->channels > 2 || track->channels < 1) ? String::FromInt(track->channels) : (track->channels == 1 ? BonkEnc::i18n->TranslateString("Mono") : BonkEnc::i18n->TranslateString("Stereo")));
+	tooltip = String(freac::i18n->TranslateString("File")).Append(": ").Append(track->origFilename).Append("\n").
+		  Append(freac::i18n->TranslateString("Size")).Append(": ").Append(track->fileSizeString).Append(" ").Append(freac::i18n->TranslateString("bytes")).Append("\n").
+		  Append(freac::i18n->TranslateString("Artist")).Append(": ").Append(track->artist.Length() > 0 ? track->artist : freac::i18n->TranslateString("unknown artist")).Append("\n").
+		  Append(freac::i18n->TranslateString("Title")).Append(": ").Append(track->title.Length() > 0 ? track->title : freac::i18n->TranslateString("unknown title")).Append("\n").
+		  Append(track->length > 0 || track->approxLength > 0 ? String(freac::i18n->TranslateString("Length")).Append(": ").Append(track->lengthString).Append(" ").Append(freac::i18n->TranslateString("min")).Append("\n") : String()).
+		  Append(track->length > 0 ? String(freac::i18n->TranslateString("Number of samples")).Append(": ").Append(I18n::Number::GetLocalizedNumberString(track->length / track->channels)).Append("\n") : String()).
+		  Append(freac::i18n->TranslateString("Sampling rate")).Append(": ").Append(I18n::Number::GetLocalizedNumberString(track->rate)).Append(" Hz\n").
+		  Append(freac::i18n->TranslateString("Sample resolution")).Append(": ").Append(String::FromInt(track->bits)).Append(" ").Append(freac::i18n->TranslateString("bit")).Append("\n").
+		  Append(freac::i18n->TranslateString("Channels")).Append(": ").Append((track->channels > 2 || track->channels < 1) ? String::FromInt(track->channels) : (track->channels == 1 ? freac::i18n->TranslateString("Mono") : freac::i18n->TranslateString("Stereo")));
 
 	if (track->rate > 0 && track->channels > 0)
 	{
-		if (track->length > 0)		  tooltip.Append(String(BonkEnc::i18n->TranslateString("\nBitrate")).Append(": ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->length / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
-		else if (track->approxLength > 0) tooltip.Append(String(BonkEnc::i18n->TranslateString("\nBitrate")).Append(": ~ ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->approxLength / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
+		if (track->length > 0)		  tooltip.Append(String(freac::i18n->TranslateString("\nBitrate")).Append(": ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->length / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
+		else if (track->approxLength > 0) tooltip.Append(String(freac::i18n->TranslateString("\nBitrate")).Append(": ~ ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->approxLength / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
 
 		wchar_t	 sign[2] = { 0x2248, 0 };
 
@@ -116,7 +116,7 @@ Bool BonkEnc::JobList::AddTrack(Track *track)
 
 	ListEntry	*entry	= AddEntry(jlEntry);
 
-	if (BonkEnc::currentConfig->showTooltips) entry->SetTooltipText(tooltip);
+	if (freac::currentConfig->showTooltips) entry->SetTooltipText(tooltip);
 
 	entry->SetMark(True);
 
@@ -127,7 +127,7 @@ Bool BonkEnc::JobList::AddTrack(Track *track)
 	return True;
 }
 
-Bool BonkEnc::JobList::RemoveNthTrack(Int n)
+Bool freac::JobList::RemoveNthTrack(Int n)
 {
 	delete GetNthTrack(n);
 
@@ -140,9 +140,9 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 	return True;
 }
 
-Bool BonkEnc::JobList::RemoveAllTracks()
+Bool freac::JobList::RemoveAllTracks()
 {
-	if (BonkEnc::currentConfig->appMain->encoding)
+	if (freac::currentConfig->appMain->encoding)
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
@@ -164,21 +164,21 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 	return True;
 }
 
-BonkEnc::Track *BonkEnc::JobList::GetSelectedTrack()
+freac::Track *freac::JobList::GetSelectedTrack()
 {
 	return GetNthTrack(GetSelectedEntryNumber());
 }
 
-Int BonkEnc::JobList::SetMetrics(const Point &nPos, const Size &nSize)
+Int freac::JobList::SetMetrics(const Point &nPos, const Size &nSize)
 {
 	droparea->SetMetrics(nPos, nSize);
 
 	return ListBox::SetMetrics(nPos, nSize);
 }
 
-Void BonkEnc::JobList::AddTrackByDialog()
+Void freac::JobList::AddTrackByDialog()
 {
-	if (BonkEnc::currentConfig->appMain->encoding)
+	if (freac::currentConfig->appMain->encoding)
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
@@ -253,38 +253,38 @@ Void BonkEnc::JobList::AddTrackByDialog()
 
 	String	 fileTypes;
 
-	if (BonkEnc::currentConfig->enable_faad2)							fileTypes.Append("*.aac; ");
-													fileTypes.Append("*.aif; *.aiff; *.aifc; *.au");
-	if (BonkEnc::currentConfig->enable_bonk)							fileTypes.Append("; *.bonk");
-	if (BonkEnc::currentConfig->enable_cdrip && BonkEnc::currentConfig->cdrip_numdrives >= 1)	fileTypes.Append("; *.cda");
-	if (BonkEnc::currentConfig->enable_flac)							fileTypes.Append("; *.flac");
-	if (BonkEnc::currentConfig->enable_mad)								fileTypes.Append("; *.mp1; *.mp2; *.mp3");
-	if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->enable_faad2)			fileTypes.Append("; *.m4a; *.m4b; *.mp4");
-	if (BonkEnc::currentConfig->enable_vorbis)							fileTypes.Append("; *.ogg");
-													fileTypes.Append("; *.snd; *.voc; *.wav");
-	if (BonkEnc::currentConfig->enable_wma)								fileTypes.Append("; *.wma");
+	if (freac::currentConfig->enable_faad2)							fileTypes.Append("*.aac; ");
+												fileTypes.Append("*.aif; *.aiff; *.aifc; *.au");
+	if (freac::currentConfig->enable_bonk)							fileTypes.Append("; *.bonk");
+	if (freac::currentConfig->enable_cdrip && freac::currentConfig->cdrip_numdrives >= 1)	fileTypes.Append("; *.cda");
+	if (freac::currentConfig->enable_flac)							fileTypes.Append("; *.flac");
+	if (freac::currentConfig->enable_mad)							fileTypes.Append("; *.mp1; *.mp2; *.mp3");
+	if (freac::currentConfig->enable_mp4 && freac::currentConfig->enable_faad2)		fileTypes.Append("; *.m4a; *.m4b; *.mp4");
+	if (freac::currentConfig->enable_vorbis)						fileTypes.Append("; *.ogg");
+												fileTypes.Append("; *.snd; *.voc; *.wav");
+	if (freac::currentConfig->enable_wma)							fileTypes.Append("; *.wma");
 
 	for (Int l = 0; l < extensions.Length(); l++) fileTypes.Append("; ").Append(extensions.GetNth(l));
 
-													dialog->AddFilter(BonkEnc::i18n->TranslateString("Audio Files"), fileTypes);
-	if (BonkEnc::currentConfig->enable_faad2)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("AAC Files")).Append(" (*.aac)"), "*.aac");
-													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Apple Audio Files")).Append(" (*.aif; *.aiff; *.aifc)"), "*.aif; *.aiff; *.aifc");
-	if (BonkEnc::currentConfig->enable_bonk)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Bonk Files")).Append(" (*.bonk)"), "*.bonk");
-													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Creative Voice Files")).Append(" (*.voc)"), "*.voc");
-	if (BonkEnc::currentConfig->enable_flac)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("FLAC Files")).Append(" (*.flac)"), "*.flac");
-	if (BonkEnc::currentConfig->enable_mad)								dialog->AddFilter(String(BonkEnc::i18n->TranslateString("MPEG Audio Files")).Append(" (*.mp1; *.mp2; *.mp3)"), "*.mp1; *.mp2; *.mp3");
-	if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->enable_faad2)			dialog->AddFilter(String(BonkEnc::i18n->TranslateString("MP4 Files")).Append(" (*.m4a; *.m4b; *.mp4)"), "*.m4a; *.m4b; *.mp4");
-	if (BonkEnc::currentConfig->enable_vorbis)							dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Ogg Vorbis Files")).Append(" (*.ogg)"), "*.ogg");
-													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Sun Audio Files")).Append(" (*.au; *.snd)"), "*.au; *.snd");
-													dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Wave Files")).Append(" (*.wav)"), "*.wav");
-	if (BonkEnc::currentConfig->enable_cdrip && BonkEnc::currentConfig->cdrip_numdrives >= 1)	dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Windows CD Audio Track")).Append(" (*.cda)"), "*.cda");
-	if (BonkEnc::currentConfig->enable_wma)								dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Windows Media Audio Files")).Append(" (*.wma)"), "*.wma");
+												dialog->AddFilter(freac::i18n->TranslateString("Audio Files"), fileTypes);
+	if (freac::currentConfig->enable_faad2)							dialog->AddFilter(String(freac::i18n->TranslateString("AAC Files")).Append(" (*.aac)"), "*.aac");
+												dialog->AddFilter(String(freac::i18n->TranslateString("Apple Audio Files")).Append(" (*.aif; *.aiff; *.aifc)"), "*.aif; *.aiff; *.aifc");
+	if (freac::currentConfig->enable_bonk)							dialog->AddFilter(String(freac::i18n->TranslateString("Bonk Files")).Append(" (*.bonk)"), "*.bonk");
+												dialog->AddFilter(String(freac::i18n->TranslateString("Creative Voice Files")).Append(" (*.voc)"), "*.voc");
+	if (freac::currentConfig->enable_flac)							dialog->AddFilter(String(freac::i18n->TranslateString("FLAC Files")).Append(" (*.flac)"), "*.flac");
+	if (freac::currentConfig->enable_mad)							dialog->AddFilter(String(freac::i18n->TranslateString("MPEG Audio Files")).Append(" (*.mp1; *.mp2; *.mp3)"), "*.mp1; *.mp2; *.mp3");
+	if (freac::currentConfig->enable_mp4 && freac::currentConfig->enable_faad2)		dialog->AddFilter(String(freac::i18n->TranslateString("MP4 Files")).Append(" (*.m4a; *.m4b; *.mp4)"), "*.m4a; *.m4b; *.mp4");
+	if (freac::currentConfig->enable_vorbis)						dialog->AddFilter(String(freac::i18n->TranslateString("Ogg Vorbis Files")).Append(" (*.ogg)"), "*.ogg");
+												dialog->AddFilter(String(freac::i18n->TranslateString("Sun Audio Files")).Append(" (*.au; *.snd)"), "*.au; *.snd");
+												dialog->AddFilter(String(freac::i18n->TranslateString("Wave Files")).Append(" (*.wav)"), "*.wav");
+	if (freac::currentConfig->enable_cdrip && freac::currentConfig->cdrip_numdrives >= 1)	dialog->AddFilter(String(freac::i18n->TranslateString("Windows CD Audio Track")).Append(" (*.cda)"), "*.cda");
+	if (freac::currentConfig->enable_wma)							dialog->AddFilter(String(freac::i18n->TranslateString("Windows Media Audio Files")).Append(" (*.wma)"), "*.wma");
 
 #ifdef __WIN32__
 	for (Int m = 0; m < types.Length(); m++) dialog->AddFilter(types.GetNth(m), extensions.GetNth(m));
 #endif
 
-	dialog->AddFilter(BonkEnc::i18n->TranslateString("All Files"), "*.*");
+	dialog->AddFilter(freac::i18n->TranslateString("All Files"), "*.*");
 
 	if (dialog->ShowDialog() == Success())
 	{
@@ -303,9 +303,9 @@ Void BonkEnc::JobList::AddTrackByDialog()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outfile, Bool displayErrors)
+Void freac::JobList::AddTrackByFileName(const String &file, const String &outfile, Bool displayErrors)
 {
-	if (BonkEnc::currentConfig->appMain->encoding)
+	if (freac::currentConfig->appMain->encoding)
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
@@ -317,7 +317,7 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 
 	if (filter_in == NIL)
 	{
-		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString("Unknown file type")));
+		if (displayErrors) Utilities::ErrorMessage(String(freac::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", freac::i18n->TranslateString("Unknown file type")));
 
 		return;
 	}
@@ -330,19 +330,19 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 
 	if (format == NIL)
 	{
-		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString(errorString)));
+		if (displayErrors) Utilities::ErrorMessage(String(freac::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", freac::i18n->TranslateString(errorString)));
 
 		return;
 	}
 
 	if (format->rate == 0 || format->channels == 0)
 	{
-		if (displayErrors) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString(errorString)));
+		if (displayErrors) Utilities::ErrorMessage(String(freac::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", freac::i18n->TranslateString(errorString)));
 
 		return;
 	}
 
-	if (format->isCDTrack && BonkEnc::currentConfig->cdrip_autoRead_active)
+	if (format->isCDTrack && freac::currentConfig->cdrip_autoRead_active)
 	{
 		for (Int i = 0; i < tracks.Length(); i++)
 		{
@@ -420,9 +420,9 @@ Void BonkEnc::JobList::AddTrackByFileName(const String &file, const String &outf
 	AddTrack(format);
 }
 
-Void BonkEnc::JobList::AddTrackByDragAndDrop(const String &file)
+Void freac::JobList::AddTrackByDragAndDrop(const String &file)
 {
-	if (BonkEnc::currentConfig->appMain->encoding)
+	if (freac::currentConfig->appMain->encoding)
 	{
 		static Int64	 ticks = 0;
 
@@ -448,23 +448,23 @@ Void BonkEnc::JobList::AddTrackByDragAndDrop(const String &file)
 	}
 	else
 	{
-		Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", BonkEnc::i18n->TranslateString("File not found")));
+		Utilities::ErrorMessage(String(freac::i18n->TranslateString("Unable to open file: %1\n\nError: %2")).Replace("%1", File(file).GetFileName()).Replace("%2", freac::i18n->TranslateString("File not found")));
 	}
 }
 
-Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String &pattern)
+Void freac::JobList::AddTracksByPattern(const String &directory, const String &pattern)
 {
 	Directory		 dir = Directory(directory);
 	const Array<File>	&files = dir.GetFilesByPattern(pattern);
 
 	for (Int j = 0; j < files.Length(); j++) AddTrackByFileName(files.GetNth(j), NIL, False);
 
-	if (files.Length() == 0) Utilities::ErrorMessage(String(BonkEnc::i18n->TranslateString("No files found matching pattern:")).Append(" ").Append(pattern));
+	if (files.Length() == 0) Utilities::ErrorMessage(String(freac::i18n->TranslateString("No files found matching pattern:")).Append(" ").Append(pattern));
 }
 
-Void BonkEnc::JobList::RemoveSelectedTrack()
+Void freac::JobList::RemoveSelectedTrack()
 {
-	if (BonkEnc::currentConfig->appMain->encoding)
+	if (freac::currentConfig->appMain->encoding)
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
@@ -486,8 +486,8 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 		if (GetNthTrack(i) == track) n = i;
 	}
 
-	if (BonkEnc::currentConfig->appMain->playing && BonkEnc::currentConfig->appMain->player_entry == n) onRemovePlayingTrack.Emit();
-	if (BonkEnc::currentConfig->appMain->playing && BonkEnc::currentConfig->appMain->player_entry > n) BonkEnc::currentConfig->appMain->player_entry--;
+	if (freac::currentConfig->appMain->playing && freac::currentConfig->appMain->player_entry == n) onRemovePlayingTrack.Emit();
+	if (freac::currentConfig->appMain->playing && freac::currentConfig->appMain->player_entry > n) freac::currentConfig->appMain->player_entry--;
 
 	RemoveNthTrack(n);
 
@@ -501,12 +501,12 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 	else			onSelectNone.Emit();
 }
 
-Void BonkEnc::JobList::UpdateTextLine()
+Void freac::JobList::UpdateTextLine()
 {
-	text->SetText(String(BonkEnc::i18n->TranslateString("%1 file(s) in joblist (%2 min):")).Replace("%2", GetTotalDuration()).Replace("%1", String::FromInt(GetNOfTracks())));
+	text->SetText(String(freac::i18n->TranslateString("%1 file(s) in joblist (%2 min):")).Replace("%2", GetTotalDuration()).Replace("%1", String::FromInt(GetNOfTracks())));
 }
 
-const String &BonkEnc::JobList::GetTotalDuration()
+const String &freac::JobList::GetTotalDuration()
 {
 	static String	 string;
 
@@ -543,7 +543,7 @@ const String &BonkEnc::JobList::GetTotalDuration()
 	return string;
 }
 
-Void BonkEnc::JobList::SelectAll()
+Void freac::JobList::SelectAll()
 {
 	for (Int i = 0; i < Length(); i++)
 	{
@@ -551,7 +551,7 @@ Void BonkEnc::JobList::SelectAll()
 	}
 }
 
-Void BonkEnc::JobList::SelectNone()
+Void freac::JobList::SelectNone()
 {
 	for (Int i = 0; i < Length(); i++)
 	{
@@ -559,7 +559,7 @@ Void BonkEnc::JobList::SelectNone()
 	}
 }
 
-Void BonkEnc::JobList::ToggleSelection()
+Void freac::JobList::ToggleSelection()
 {
 	for (Int i = 0; i < Length(); i++)
 	{
@@ -568,9 +568,9 @@ Void BonkEnc::JobList::ToggleSelection()
 	}
 }
 
-Void BonkEnc::JobList::LoadList()
+Void freac::JobList::LoadList()
 {
-	if (BonkEnc::currentConfig->appMain->encoding)
+	if (freac::currentConfig->appMain->encoding)
 	{
 		Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
@@ -581,8 +581,8 @@ Void BonkEnc::JobList::LoadList()
 
 	dialog->SetParentWindow(container->GetContainerWindow());
 
-	dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Playlist Files")).Append(" (*.m3u)"), "*.m3u");
-	dialog->AddFilter(BonkEnc::i18n->TranslateString("All Files"), "*.*");
+	dialog->AddFilter(String(freac::i18n->TranslateString("Playlist Files")).Append(" (*.m3u)"), "*.m3u");
+	dialog->AddFilter(freac::i18n->TranslateString("All Files"), "*.*");
 
 	if (dialog->ShowDialog() == Success())
 	{
@@ -603,7 +603,7 @@ Void BonkEnc::JobList::LoadList()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::JobList::SaveList()
+Void freac::JobList::SaveList()
 {
 	FileSelection	*dialog = new FileSelection();
 
@@ -612,8 +612,8 @@ Void BonkEnc::JobList::SaveList()
 	dialog->SetFlags(SFD_CONFIRMOVERWRITE);
 	dialog->SetDefaultExtension("m3u");
 
-	dialog->AddFilter(String(BonkEnc::i18n->TranslateString("Playlist Files")).Append(" (*.m3u)"), "*.m3u");
-	dialog->AddFilter(BonkEnc::i18n->TranslateString("All Files"), "*.*");
+	dialog->AddFilter(String(freac::i18n->TranslateString("Playlist Files")).Append(" (*.m3u)"), "*.m3u");
+	dialog->AddFilter(freac::i18n->TranslateString("All Files"), "*.*");
 
 	if (dialog->ShowDialog() == Success())
 	{
@@ -649,7 +649,7 @@ Void BonkEnc::JobList::SaveList()
 				}
 			}
 
-			playlist.AddTrack(fileName, String(trackInfo->artist.Length() > 0 ? trackInfo->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : BonkEnc::i18n->TranslateString("unknown title")), trackInfo->length == -1 ? -1 : Math::Round((Float) trackInfo->length / (trackInfo->rate * trackInfo->channels)));
+			playlist.AddTrack(fileName, String(trackInfo->artist.Length() > 0 ? trackInfo->artist : freac::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : freac::i18n->TranslateString("unknown title")), trackInfo->length == -1 ? -1 : Math::Round((Float) trackInfo->length / (trackInfo->rate * trackInfo->channels)));
 		}
 
 		playlist.Save(dialog->GetFileName());
@@ -658,7 +658,7 @@ Void BonkEnc::JobList::SaveList()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::JobList::OnRegister(Widget *container)
+Void freac::JobList::OnRegister(Widget *container)
 {
 	container->Add(droparea);
 	container->Add(text);
@@ -667,10 +667,10 @@ Void BonkEnc::JobList::OnRegister(Widget *container)
 	container->Add(button_sel_none);
 	container->Add(button_sel_toggle);
 
-	((BonkEncGUI *) BonkEnc::currentConfig->appMain)->onChangeLanguageSettings.Connect(&JobList::OnChangeLanguageSettings, this);
+	((freacGUI *) freac::currentConfig->appMain)->onChangeLanguageSettings.Connect(&JobList::OnChangeLanguageSettings, this);
 }
 
-Void BonkEnc::JobList::OnUnregister(Widget *container)
+Void freac::JobList::OnUnregister(Widget *container)
 {
 	container->Remove(droparea);
 	container->Remove(text);
@@ -679,21 +679,21 @@ Void BonkEnc::JobList::OnUnregister(Widget *container)
 	container->Remove(button_sel_none);
 	container->Remove(button_sel_toggle);
 
-	((BonkEncGUI *) BonkEnc::currentConfig->appMain)->onChangeLanguageSettings.Disconnect(&JobList::OnChangeLanguageSettings, this);
+	((freacGUI *) freac::currentConfig->appMain)->onChangeLanguageSettings.Disconnect(&JobList::OnChangeLanguageSettings, this);
 }
 
-Void BonkEnc::JobList::OnSelectEntry()
+Void freac::JobList::OnSelectEntry()
 {
 	onSelectTrack.Emit(GetSelectedTrack());
 }
 
-Void BonkEnc::JobList::OnChangeLanguageSettings()
+Void freac::JobList::OnChangeLanguageSettings()
 {
 	UpdateTextLine();
 
-	button_sel_all->SetTooltipText(BonkEnc::i18n->TranslateString("Select all"));
-	button_sel_none->SetTooltipText(BonkEnc::i18n->TranslateString("Select none"));
-	button_sel_toggle->SetTooltipText(BonkEnc::i18n->TranslateString("Toggle selection"));
+	button_sel_all->SetTooltipText(freac::i18n->TranslateString("Select all"));
+	button_sel_none->SetTooltipText(freac::i18n->TranslateString("Select none"));
+	button_sel_toggle->SetTooltipText(freac::i18n->TranslateString("Toggle selection"));
 
 	Hide();
 
@@ -705,45 +705,45 @@ Void BonkEnc::JobList::OnChangeLanguageSettings()
 		String		 tooltip;
 
 		if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-		else							jlEntry = String(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
+		else							jlEntry = String(track->artist.Length() > 0 ? track->artist : freac::i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : freac::i18n->TranslateString("unknown title")).Append("\t");
 
 		jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
 
 		if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 
-		tooltip = String(BonkEnc::i18n->TranslateString("File")).Append(": ").Append(track->origFilename).Append("\n").
-			  Append(BonkEnc::i18n->TranslateString("Size")).Append(": ").Append(track->fileSizeString).Append(" ").Append(BonkEnc::i18n->TranslateString("bytes")).Append("\n").
-			  Append(BonkEnc::i18n->TranslateString("Artist")).Append(": ").Append(track->artist.Length() > 0 ? track->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append("\n").
-			  Append(BonkEnc::i18n->TranslateString("Title")).Append(": ").Append(track->title.Length() > 0 ? track->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\n").
-			  Append(track->length > 0 || track->approxLength > 0 ? String(BonkEnc::i18n->TranslateString("Length")).Append(": ").Append(track->lengthString).Append(" ").Append(BonkEnc::i18n->TranslateString("min")).Append("\n") : String()).
-			  Append(track->length > 0 ? String(BonkEnc::i18n->TranslateString("Number of samples")).Append(": ").Append(I18n::Number::GetLocalizedNumberString(track->length / track->channels)).Append("\n") : String()).
-			  Append(BonkEnc::i18n->TranslateString("Sampling rate")).Append(": ").Append(I18n::Number::GetLocalizedNumberString(track->rate)).Append(" Hz\n").
-			  Append(BonkEnc::i18n->TranslateString("Sample resolution")).Append(": ").Append(String::FromInt(track->bits)).Append(" ").Append(BonkEnc::i18n->TranslateString("bit")).Append("\n").
-			  Append(BonkEnc::i18n->TranslateString("Channels")).Append(": ").Append((track->channels > 2 || track->channels < 1) ? String::FromInt(track->channels) : (track->channels == 1 ? BonkEnc::i18n->TranslateString("Mono") : BonkEnc::i18n->TranslateString("Stereo")));
+		tooltip = String(freac::i18n->TranslateString("File")).Append(": ").Append(track->origFilename).Append("\n").
+			  Append(freac::i18n->TranslateString("Size")).Append(": ").Append(track->fileSizeString).Append(" ").Append(freac::i18n->TranslateString("bytes")).Append("\n").
+			  Append(freac::i18n->TranslateString("Artist")).Append(": ").Append(track->artist.Length() > 0 ? track->artist : freac::i18n->TranslateString("unknown artist")).Append("\n").
+			  Append(freac::i18n->TranslateString("Title")).Append(": ").Append(track->title.Length() > 0 ? track->title : freac::i18n->TranslateString("unknown title")).Append("\n").
+			  Append(track->length > 0 || track->approxLength > 0 ? String(freac::i18n->TranslateString("Length")).Append(": ").Append(track->lengthString).Append(" ").Append(freac::i18n->TranslateString("min")).Append("\n") : String()).
+			  Append(track->length > 0 ? String(freac::i18n->TranslateString("Number of samples")).Append(": ").Append(I18n::Number::GetLocalizedNumberString(track->length / track->channels)).Append("\n") : String()).
+			  Append(freac::i18n->TranslateString("Sampling rate")).Append(": ").Append(I18n::Number::GetLocalizedNumberString(track->rate)).Append(" Hz\n").
+			  Append(freac::i18n->TranslateString("Sample resolution")).Append(": ").Append(String::FromInt(track->bits)).Append(" ").Append(freac::i18n->TranslateString("bit")).Append("\n").
+			  Append(freac::i18n->TranslateString("Channels")).Append(": ").Append((track->channels > 2 || track->channels < 1) ? String::FromInt(track->channels) : (track->channels == 1 ? freac::i18n->TranslateString("Mono") : freac::i18n->TranslateString("Stereo")));
 
 		if (track->rate > 0 && track->channels > 0)
 		{
-			if (track->length > 0)		  tooltip.Append(String(BonkEnc::i18n->TranslateString("\nBitrate")).Append(": ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->length / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
-			else if (track->approxLength > 0) tooltip.Append(String(BonkEnc::i18n->TranslateString("\nBitrate")).Append(": ~ ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->approxLength / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
+			if (track->length > 0)		  tooltip.Append(String(freac::i18n->TranslateString("\nBitrate")).Append(": ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->length / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
+			else if (track->approxLength > 0) tooltip.Append(String(freac::i18n->TranslateString("\nBitrate")).Append(": ~ ").Append(String::FromInt((Int) Math::Round(((Float) track->fileSize) / (track->approxLength / (track->rate * track->channels)) * 8.0 / 1000.0))).Append(" kbps"));
 
 			wchar_t	 sign[2] = { 0x2248, 0 };
 
 			if (Setup::enableUnicode) tooltip.Replace("~", sign);
 		}
 
-		if (BonkEnc::currentConfig->showTooltips) entry->SetTooltipText(tooltip);
+		if (freac::currentConfig->showTooltips) entry->SetTooltipText(tooltip);
 	}
 
-	BonkEnc::currentConfig->tab_width_track = GetNthTabWidth(1);
-	BonkEnc::currentConfig->tab_width_length = GetNthTabWidth(2);
-	BonkEnc::currentConfig->tab_width_size = GetNthTabWidth(3);
+	freac::currentConfig->tab_width_track = GetNthTabWidth(1);
+	freac::currentConfig->tab_width_length = GetNthTabWidth(2);
+	freac::currentConfig->tab_width_size = GetNthTabWidth(3);
 
 	RemoveAllTabs();
 
-	AddTab(BonkEnc::i18n->TranslateString("Title"));
-	AddTab(BonkEnc::i18n->TranslateString("Track"), BonkEnc::currentConfig->tab_width_track, OR_RIGHT);
-	AddTab(BonkEnc::i18n->TranslateString("Length"), BonkEnc::currentConfig->tab_width_length, OR_RIGHT);
-	AddTab(BonkEnc::i18n->TranslateString("Size"), BonkEnc::currentConfig->tab_width_size, OR_RIGHT);
+	AddTab(freac::i18n->TranslateString("Title"));
+	AddTab(freac::i18n->TranslateString("Track"), freac::currentConfig->tab_width_track, OR_RIGHT);
+	AddTab(freac::i18n->TranslateString("Length"), freac::currentConfig->tab_width_length, OR_RIGHT);
+	AddTab(freac::i18n->TranslateString("Size"), freac::currentConfig->tab_width_size, OR_RIGHT);
 
 	Show();
 }

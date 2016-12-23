@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,12 +14,12 @@
 
 #include <3rdparty/lame/lame.h>
 
-BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
+freac::ConfigureLameEnc::ConfigureLameEnc()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	preset = currentConfig->lame_preset;
 	set_bitrate = currentConfig->lame_set_bitrate;
@@ -48,29 +48,29 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	enable_ath = currentConfig->lame_enable_ath;
 	enable_tempmask = currentConfig->lame_use_tns;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "LAME MP3"), currentConfig->wndPos + Point(80, 80), Size(430, 305));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(String(freac::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "LAME MP3"), currentConfig->wndPos + Point(80, 80), Size(430, 305));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	register_layer_basic	= new Layer(BonkEnc::i18n->TranslateString("Basic"));
-	register_layer_misc	= new Layer(BonkEnc::i18n->TranslateString("Misc"));
-	register_layer_expert	= new Layer(BonkEnc::i18n->TranslateString("Expert"));
-	register_layer_filtering= new Layer(BonkEnc::i18n->TranslateString("Audio processing"));
+	register_layer_basic	= new Layer(freac::i18n->TranslateString("Basic"));
+	register_layer_misc	= new Layer(freac::i18n->TranslateString("Misc"));
+	register_layer_expert	= new Layer(freac::i18n->TranslateString("Expert"));
+	register_layer_filtering= new Layer(freac::i18n->TranslateString("Audio processing"));
 
 	pos.x = 175;
 	pos.y = 29;
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&ConfigureLameEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(freac::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onAction.Connect(&ConfigureLameEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -86,12 +86,12 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cx = 390;
 	size.cy = 39;
 
-	basic_preset		= new GroupBox(BonkEnc::i18n->TranslateString("Presets"), pos, size);
+	basic_preset		= new GroupBox(freac::i18n->TranslateString("Presets"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 
-	basic_text_preset	= new Text(BonkEnc::i18n->TranslateString("Use preset:"), pos);
+	basic_text_preset	= new Text(freac::i18n->TranslateString("Use preset:"), pos);
 
 	pos.x += (basic_text_preset->GetUnscaledTextWidth() + 8);
 	pos.y -= 3;
@@ -99,10 +99,10 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cy = 0;
 
 	basic_combo_preset	= new ComboBox(pos, size);
-	basic_combo_preset->AddEntry(BonkEnc::i18n->TranslateString("Custom settings"));
-	basic_combo_preset->AddEntry(BonkEnc::i18n->TranslateString("Medium, Fast"));
-	basic_combo_preset->AddEntry(BonkEnc::i18n->TranslateString("Standard, Fast"));
-	basic_combo_preset->AddEntry(BonkEnc::i18n->TranslateString("Extreme, Fast"));
+	basic_combo_preset->AddEntry(freac::i18n->TranslateString("Custom settings"));
+	basic_combo_preset->AddEntry(freac::i18n->TranslateString("Medium, Fast"));
+	basic_combo_preset->AddEntry(freac::i18n->TranslateString("Standard, Fast"));
+	basic_combo_preset->AddEntry(freac::i18n->TranslateString("Extreme, Fast"));
 	basic_combo_preset->AddEntry("ABR");
 	basic_combo_preset->SelectNthEntry(currentConfig->lame_preset);
 	basic_combo_preset->onSelectEntry.Connect(&ConfigureLameEnc::SetPreset, this);
@@ -112,19 +112,19 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cx = 255;
 	size.cy = 63;
 
-	basic_bitrate		= new GroupBox(BonkEnc::i18n->TranslateString("Bitrate"), pos, size);
+	basic_bitrate		= new GroupBox(freac::i18n->TranslateString("Bitrate"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 76;
 	size.cy = 0;
 
-	basic_option_set_bitrate= new OptionBox(BonkEnc::i18n->TranslateString("Set bitrate:"), pos, size, &set_bitrate, 1);
+	basic_option_set_bitrate= new OptionBox(freac::i18n->TranslateString("Set bitrate:"), pos, size, &set_bitrate, 1);
 	basic_option_set_bitrate->onAction.Connect(&ConfigureLameEnc::SetBitrateOption, this);
 
 	pos.y += 25;
 
-	basic_option_set_ratio	= new OptionBox(BonkEnc::i18n->TranslateString("Set ratio:"), pos, size, &set_bitrate, 0);
+	basic_option_set_ratio	= new OptionBox(freac::i18n->TranslateString("Set ratio:"), pos, size, &set_bitrate, 0);
 	basic_option_set_ratio->onAction.Connect(&ConfigureLameEnc::SetBitrateOption, this);
 
 	pos.y -= 25;
@@ -157,14 +157,14 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cx = 255;
 	size.cy = 51;
 
-	basic_quality		= new GroupBox(BonkEnc::i18n->TranslateString("Quality"), pos, size);
+	basic_quality		= new GroupBox(freac::i18n->TranslateString("Quality"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 76;
 	size.cy = 0;
 
-	basic_check_set_quality	= new CheckBox(BonkEnc::i18n->TranslateString("Set quality:"), pos, size, &set_quality);
+	basic_check_set_quality	= new CheckBox(freac::i18n->TranslateString("Set quality:"), pos, size, &set_quality);
 	basic_check_set_quality->onAction.Connect(&ConfigureLameEnc::SetQualityOption, this);
 
 	pos.x += 85;
@@ -181,10 +181,10 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	pos.y += 17;
 
-	basic_text_quality_worse= new Text(BonkEnc::i18n->TranslateString("worse"), pos);
+	basic_text_quality_worse= new Text(freac::i18n->TranslateString("worse"), pos);
 	basic_text_quality_worse->SetPosition(Point(240 - (basic_text_quality_worse->GetUnscaledTextWidth() / 2), pos.y));
 
-	basic_text_quality_better= new Text(BonkEnc::i18n->TranslateString("better"), pos);
+	basic_text_quality_better= new Text(freac::i18n->TranslateString("better"), pos);
 	basic_text_quality_better->SetPosition(Point(369 - (basic_text_quality_better->GetUnscaledTextWidth() / 2), pos.y));
 
 	pos.x = 153;
@@ -192,7 +192,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cx = 244;
 	size.cy = 39;
 
-	basic_stereomode	= new GroupBox(BonkEnc::i18n->TranslateString("Stereo mode"), pos, size);
+	basic_stereomode	= new GroupBox(freac::i18n->TranslateString("Stereo mode"), pos, size);
 
 	pos.x += 10;
 	pos.y += 10;
@@ -200,24 +200,24 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cy = 0;
 
 	basic_combo_stereomode	= new ComboBox(pos, size);
-	basic_combo_stereomode->AddEntry(BonkEnc::i18n->TranslateString("Auto"));
-	basic_combo_stereomode->AddEntry(BonkEnc::i18n->TranslateString("Mono"));
-	basic_combo_stereomode->AddEntry(BonkEnc::i18n->TranslateString("Stereo"));
-	basic_combo_stereomode->AddEntry(BonkEnc::i18n->TranslateString("Joint Stereo"));
+	basic_combo_stereomode->AddEntry(freac::i18n->TranslateString("Auto"));
+	basic_combo_stereomode->AddEntry(freac::i18n->TranslateString("Mono"));
+	basic_combo_stereomode->AddEntry(freac::i18n->TranslateString("Stereo"));
+	basic_combo_stereomode->AddEntry(freac::i18n->TranslateString("Joint Stereo"));
 	basic_combo_stereomode->SelectNthEntry(currentConfig->lame_stereomode);
 	basic_combo_stereomode->onSelectEntry.Connect(&ConfigureLameEnc::SetStereoMode, this);
 
 	pos.x += 115;
 	pos.y += 1;
 
-	basic_check_forcejs	= new CheckBox(BonkEnc::i18n->TranslateString("Force Joint Stereo"), pos, size, &forcejs);
+	basic_check_forcejs	= new CheckBox(freac::i18n->TranslateString("Force Joint Stereo"), pos, size, &forcejs);
 
 	pos.x = 7;
 	pos.y = 62;
 	size.cx = 127;
 	size.cy = 88;
 
-	vbr_vbrmode		= new GroupBox(BonkEnc::i18n->TranslateString("VBR mode"), pos, size);
+	vbr_vbrmode		= new GroupBox(freac::i18n->TranslateString("VBR mode"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
@@ -234,7 +234,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	pos.y += 25;
 
-	vbr_option_cbr		= new OptionBox(String("CBR (").Append(BonkEnc::i18n->TranslateString("no VBR")).Append(")"), pos, size, &vbrmode, vbr_off);
+	vbr_option_cbr		= new OptionBox(String("CBR (").Append(freac::i18n->TranslateString("no VBR")).Append(")"), pos, size, &vbrmode, vbr_off);
 	vbr_option_cbr->onAction.Connect(&ConfigureLameEnc::SetVBRMode, this);
 
 	pos.x = 142;
@@ -242,12 +242,12 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cx = 255;
 	size.cy = 51;
 
-	vbr_quality		= new GroupBox(BonkEnc::i18n->TranslateString("VBR quality"), pos, size);
+	vbr_quality		= new GroupBox(freac::i18n->TranslateString("VBR quality"), pos, size);
 
 	pos.x += 11;
 	pos.y += 13;
 
-	vbr_text_setquality	= new Text(String(BonkEnc::i18n->TranslateString("Quality")).Append(":"), pos);
+	vbr_text_setquality	= new Text(String(freac::i18n->TranslateString("Quality")).Append(":"), pos);
 
 	pos.x += (vbr_text_setquality->GetUnscaledTextWidth() + 8);
 	pos.y -= 2;
@@ -265,10 +265,10 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 
 	pos.y += 17;
 
-	vbr_text_quality_worse= new Text(BonkEnc::i18n->TranslateString("worse"), pos);
+	vbr_text_quality_worse= new Text(freac::i18n->TranslateString("worse"), pos);
 	vbr_text_quality_worse->SetX(vbr_slider_quality->GetX() + 3 - (vbr_text_quality_worse->GetUnscaledTextWidth() / 2));
 
-	vbr_text_quality_better= new Text(BonkEnc::i18n->TranslateString("better"), pos);
+	vbr_text_quality_better= new Text(freac::i18n->TranslateString("better"), pos);
 	vbr_text_quality_better->SetX(360 - (vbr_text_quality_better->GetUnscaledTextWidth() / 2));
 
 	pos.x = 142;
@@ -276,7 +276,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cx = 255;
 	size.cy = 39;
 
-	vbr_abrbitrate		= new GroupBox(BonkEnc::i18n->TranslateString("ABR target bitrate"), pos, size);
+	vbr_abrbitrate		= new GroupBox(freac::i18n->TranslateString("ABR target bitrate"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
@@ -305,14 +305,14 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cx = 390;
 	size.cy = 63;
 
-	vbr_bitrate		= new GroupBox(BonkEnc::i18n->TranslateString("VBR bitrate range"), pos, size);
+	vbr_bitrate		= new GroupBox(freac::i18n->TranslateString("VBR bitrate range"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 146;
 	size.cy = 0;
 
-	vbr_check_set_min_brate	= new CheckBox(BonkEnc::i18n->TranslateString("Set minimum VBR bitrate:"), pos, size, &set_min_vbr_brate);
+	vbr_check_set_min_brate	= new CheckBox(freac::i18n->TranslateString("Set minimum VBR bitrate:"), pos, size, &set_min_vbr_brate);
 	vbr_check_set_min_brate->onAction.Connect(&ConfigureLameEnc::SetMinVBRBitrateOption, this);
 
 	pos.x += 155;
@@ -330,7 +330,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	pos.y += 23;
 	size.cx = 146;
 
-	vbr_check_set_max_brate	= new CheckBox(BonkEnc::i18n->TranslateString("Set maximum VBR bitrate:"), pos, size, &set_max_vbr_brate);
+	vbr_check_set_max_brate	= new CheckBox(freac::i18n->TranslateString("Set maximum VBR bitrate:"), pos, size, &set_max_vbr_brate);
 	vbr_check_set_max_brate->onAction.Connect(&ConfigureLameEnc::SetMaxVBRBitrateOption, this);
 
 	pos.x += 155;
@@ -353,64 +353,64 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cx = 138;
 	size.cy = 90;
 
-	misc_bits		= new GroupBox(BonkEnc::i18n->TranslateString("Control bits"), pos, size);
+	misc_bits		= new GroupBox(freac::i18n->TranslateString("Control bits"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 117;
 	size.cy = 0;
 
-	misc_check_copyright	= new CheckBox(BonkEnc::i18n->TranslateString("Set Copyright bit"), pos, size, &set_copyright);
+	misc_check_copyright	= new CheckBox(freac::i18n->TranslateString("Set Copyright bit"), pos, size, &set_copyright);
 
 	pos.y += 25;
 
-	misc_check_original	= new CheckBox(BonkEnc::i18n->TranslateString("Set Original bit"), pos, size, &set_original);
+	misc_check_original	= new CheckBox(freac::i18n->TranslateString("Set Original bit"), pos, size, &set_original);
 
 	pos.y += 25;
 
-	misc_check_private	= new CheckBox(BonkEnc::i18n->TranslateString("Set Private bit"), pos, size, &set_private);
+	misc_check_private	= new CheckBox(freac::i18n->TranslateString("Set Private bit"), pos, size, &set_private);
 
 	pos.x = 153;
 	pos.y = 62;
 	size.cx = 244;
 	size.cy = 39;
 
-	misc_crc		= new GroupBox(BonkEnc::i18n->TranslateString("CRC"), pos, size);
+	misc_crc		= new GroupBox(freac::i18n->TranslateString("CRC"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 225;
 	size.cy = 0;
 
-	misc_check_crc		= new CheckBox(BonkEnc::i18n->TranslateString("Enable CRC"), pos, size, &set_crc);
+	misc_check_crc		= new CheckBox(freac::i18n->TranslateString("Enable CRC"), pos, size, &set_crc);
 
 	pos.x = 7;
 	pos.y = 113;
 	size.cx = 390;
 	size.cy = 39;
 
-	misc_format		= new GroupBox(BonkEnc::i18n->TranslateString("Stream format"), pos, size);
+	misc_format		= new GroupBox(freac::i18n->TranslateString("Stream format"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 369;
 	size.cy = 0;
 
-	misc_check_iso		= new CheckBox(BonkEnc::i18n->TranslateString("Enforce strict ISO compliance"), pos, size, &set_iso);
+	misc_check_iso		= new CheckBox(freac::i18n->TranslateString("Enforce strict ISO compliance"), pos, size, &set_iso);
 
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 390;
 	size.cy = 39;
 
-	expert_ath		= new GroupBox(BonkEnc::i18n->TranslateString("ATH"), pos, size);
+	expert_ath		= new GroupBox(freac::i18n->TranslateString("ATH"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 93;
 	size.cy = 0;
 
-	expert_check_ath	= new CheckBox(BonkEnc::i18n->TranslateString("Enable ATH:"), pos, size, &enable_ath);
+	expert_check_ath	= new CheckBox(freac::i18n->TranslateString("Enable ATH:"), pos, size, &enable_ath);
 	expert_check_ath->onAction.Connect(&ConfigureLameEnc::SetEnableATH, this);
 	expert_check_ath->SetWidth(expert_check_ath->GetUnscaledTextWidth() + 19);
 
@@ -420,7 +420,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cy = 0;
 
 	expert_combo_athtype	= new ComboBox(pos, size);
-	expert_combo_athtype->AddEntry(BonkEnc::i18n->TranslateString("Use default setting"));
+	expert_combo_athtype->AddEntry(freac::i18n->TranslateString("Use default setting"));
 	expert_combo_athtype->AddEntry("Gabriel Bouvigne, 9");
 	expert_combo_athtype->AddEntry("Frank Klemm");
 	expert_combo_athtype->AddEntry("Gabriel Bouvigne, 0");
@@ -436,21 +436,21 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cx = 390;
 	size.cy = 39;
 
-	expert_psycho		= new GroupBox(BonkEnc::i18n->TranslateString("Psycho acoustic model"), pos, size);
+	expert_psycho		= new GroupBox(freac::i18n->TranslateString("Psycho acoustic model"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 369;
 	size.cy = 0;
 
-	expert_check_tempmask	= new CheckBox(BonkEnc::i18n->TranslateString("Use Temporal Masking Effect"), pos, size, &enable_tempmask);
+	expert_check_tempmask	= new CheckBox(freac::i18n->TranslateString("Use Temporal Masking Effect"), pos, size, &enable_tempmask);
 
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 161;
 	size.cy = 39;
 
-	filtering_resample	= new GroupBox(BonkEnc::i18n->TranslateString("Output sampling rate"), pos, size);
+	filtering_resample	= new GroupBox(freac::i18n->TranslateString("Output sampling rate"), pos, size);
 
 	pos.x += 10;
 	pos.y += 10;
@@ -458,8 +458,8 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cy = 0;
 
 	filtering_combo_resample= new ComboBox(pos, size);
-	filtering_combo_resample->AddEntry(BonkEnc::i18n->TranslateString("auto"));
-	filtering_combo_resample->AddEntry(BonkEnc::i18n->TranslateString("no resampling"));
+	filtering_combo_resample->AddEntry(freac::i18n->TranslateString("auto"));
+	filtering_combo_resample->AddEntry(freac::i18n->TranslateString("no resampling"));
 	filtering_combo_resample->AddEntry("8 kHz");
 	filtering_combo_resample->AddEntry("11.025 kHz");
 	filtering_combo_resample->AddEntry("12 kHz");
@@ -487,14 +487,14 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cx = 221;
 	size.cy = 64;
 
-	filtering_highpass	= new GroupBox(BonkEnc::i18n->TranslateString("Highpass filter"), pos, size);
+	filtering_highpass	= new GroupBox(freac::i18n->TranslateString("Highpass filter"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 155;
 	size.cy = 0;
 
-	filtering_set_highpass	= new CheckBox(BonkEnc::i18n->TranslateString("Set Highpass frequency (Hz):"), pos, size, &set_highpass);
+	filtering_set_highpass	= new CheckBox(freac::i18n->TranslateString("Set Highpass frequency (Hz):"), pos, size, &set_highpass);
 	filtering_set_highpass->onAction.Connect(&ConfigureLameEnc::SetHighpass, this);
 
 	pos.x += 164;
@@ -508,7 +508,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	pos.y += 26;
 	size.cx = 155;
 
-	filtering_set_highpass_width= new CheckBox(BonkEnc::i18n->TranslateString("Set Highpass width (Hz):"), pos, size, &set_highpass_width);
+	filtering_set_highpass_width= new CheckBox(freac::i18n->TranslateString("Set Highpass width (Hz):"), pos, size, &set_highpass_width);
 	filtering_set_highpass_width->onAction.Connect(&ConfigureLameEnc::SetHighpassWidth, this);
 
 	pos.x += 164;
@@ -523,14 +523,14 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cx = 221;
 	size.cy = 64;
 
-	filtering_lowpass	= new GroupBox(BonkEnc::i18n->TranslateString("Lowpass filter"), pos, size);
+	filtering_lowpass	= new GroupBox(freac::i18n->TranslateString("Lowpass filter"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 155;
 	size.cy = 0;
 
-	filtering_set_lowpass	= new CheckBox(BonkEnc::i18n->TranslateString("Set Lowpass frequency (Hz):"), pos, size, &set_lowpass);
+	filtering_set_lowpass	= new CheckBox(freac::i18n->TranslateString("Set Lowpass frequency (Hz):"), pos, size, &set_lowpass);
 	filtering_set_lowpass->onAction.Connect(&ConfigureLameEnc::SetLowpass, this);
 
 	pos.x += 164;
@@ -544,7 +544,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	pos.y += 26;
 	size.cx = 155;
 
-	filtering_set_lowpass_width= new CheckBox(BonkEnc::i18n->TranslateString("Set Lowpass width (Hz):"), pos, size, &set_lowpass_width);
+	filtering_set_lowpass_width= new CheckBox(freac::i18n->TranslateString("Set Lowpass width (Hz):"), pos, size, &set_lowpass_width);
 	filtering_set_lowpass_width->onAction.Connect(&ConfigureLameEnc::SetLowpassWidth, this);
 
 	pos.x += 164;
@@ -559,14 +559,14 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	size.cx = 161;
 	size.cy = 39;
 
-	filtering_misc		= new GroupBox(BonkEnc::i18n->TranslateString("Misc settings"), pos, size);
+	filtering_misc		= new GroupBox(freac::i18n->TranslateString("Misc settings"), pos, size);
 
 	pos.x += 10;
 	pos.y += 11;
 	size.cx = 140;
 	size.cy = 0;
 
-	filtering_check_disable_all= new CheckBox(BonkEnc::i18n->TranslateString("Disable all filtering"), pos, size, &disable_filtering);
+	filtering_check_disable_all= new CheckBox(freac::i18n->TranslateString("Disable all filtering"), pos, size, &disable_filtering);
 	filtering_check_disable_all->onAction.Connect(&ConfigureLameEnc::SetDisableFiltering, this);
 
 	SetPreset();
@@ -672,7 +672,7 @@ BonkEnc::ConfigureLameEnc::ConfigureLameEnc()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::ConfigureLameEnc::~ConfigureLameEnc()
+freac::ConfigureLameEnc::~ConfigureLameEnc()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(divbar);
@@ -753,14 +753,14 @@ BonkEnc::ConfigureLameEnc::~ConfigureLameEnc()
 	DeleteObject(filtering_check_disable_all);
 }
 
-const Error &BonkEnc::ConfigureLameEnc::ShowDialog()
+const Error &freac::ConfigureLameEnc::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-Void BonkEnc::ConfigureLameEnc::OK()
+Void freac::ConfigureLameEnc::OK()
 {
 	if (abrbitrate < 8)	abrbitrate = 8;
 	if (abrbitrate > 320)	abrbitrate = 320;
@@ -873,12 +873,12 @@ Void BonkEnc::ConfigureLameEnc::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigureLameEnc::Cancel()
+Void freac::ConfigureLameEnc::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigureLameEnc::SetPreset()
+Void freac::ConfigureLameEnc::SetPreset()
 {
 	preset = basic_combo_preset->GetSelectedEntryNumber();
 
@@ -1025,7 +1025,7 @@ Void BonkEnc::ConfigureLameEnc::SetPreset()
 	}
 }
 
-Void BonkEnc::ConfigureLameEnc::SetBitrateOption()
+Void freac::ConfigureLameEnc::SetBitrateOption()
 {
 	if (set_bitrate)
 	{
@@ -1041,12 +1041,12 @@ Void BonkEnc::ConfigureLameEnc::SetBitrateOption()
 	}
 }
 
-Void BonkEnc::ConfigureLameEnc::SetBitrate()
+Void freac::ConfigureLameEnc::SetBitrate()
 {
 	basic_text_bitrate->SetText(String::FromInt(GetBitrate()).Append(" kbps"));
 }
 
-Void BonkEnc::ConfigureLameEnc::SetQualityOption()
+Void freac::ConfigureLameEnc::SetQualityOption()
 {
 	if (set_quality)
 	{
@@ -1064,18 +1064,18 @@ Void BonkEnc::ConfigureLameEnc::SetQualityOption()
 	}
 }
 
-Void BonkEnc::ConfigureLameEnc::SetQuality()
+Void freac::ConfigureLameEnc::SetQuality()
 {
 	basic_text_quality->SetText(String::FromInt(9 - quality));
 }
 
-Void BonkEnc::ConfigureLameEnc::SetStereoMode()
+Void freac::ConfigureLameEnc::SetStereoMode()
 {
 	if (basic_combo_stereomode->GetSelectedEntryNumber() == 3)	basic_check_forcejs->Activate();
 	else								basic_check_forcejs->Deactivate();
 }
 
-Void BonkEnc::ConfigureLameEnc::SetVBRQuality()
+Void freac::ConfigureLameEnc::SetVBRQuality()
 {
 	String	 txt = String::FromFloat(9 - ((double) vbrquality) / 10);
 
@@ -1084,7 +1084,7 @@ Void BonkEnc::ConfigureLameEnc::SetVBRQuality()
 	vbr_text_quality->SetText(txt);
 }
 
-Void BonkEnc::ConfigureLameEnc::SetVBRMode()
+Void freac::ConfigureLameEnc::SetVBRMode()
 {
 	switch (vbrmode)
 	{
@@ -1181,17 +1181,17 @@ Void BonkEnc::ConfigureLameEnc::SetVBRMode()
 	}
 }
 
-Void BonkEnc::ConfigureLameEnc::SetABRBitrate()
+Void freac::ConfigureLameEnc::SetABRBitrate()
 {
 	vbr_edit_abrbitrate->SetText(String::FromInt(abrbitrate));
 }
 
-Void BonkEnc::ConfigureLameEnc::SetABRBitrateByEditBox()
+Void freac::ConfigureLameEnc::SetABRBitrateByEditBox()
 {
 	vbr_slider_abrbitrate->SetValue(vbr_edit_abrbitrate->GetText().ToInt());
 }
 
-Void BonkEnc::ConfigureLameEnc::SetMinVBRBitrateOption()
+Void freac::ConfigureLameEnc::SetMinVBRBitrateOption()
 {
 	if (set_min_vbr_brate)
 	{
@@ -1205,7 +1205,7 @@ Void BonkEnc::ConfigureLameEnc::SetMinVBRBitrateOption()
 	}
 }
 
-Void BonkEnc::ConfigureLameEnc::SetMaxVBRBitrateOption()
+Void freac::ConfigureLameEnc::SetMaxVBRBitrateOption()
 {
 	if (set_max_vbr_brate)
 	{
@@ -1219,7 +1219,7 @@ Void BonkEnc::ConfigureLameEnc::SetMaxVBRBitrateOption()
 	}
 }
 
-Void BonkEnc::ConfigureLameEnc::SetMinVBRBitrate()
+Void freac::ConfigureLameEnc::SetMinVBRBitrate()
 {
 	vbr_text_min_brate_kbps->SetText(String::FromInt(GetMinVBRBitrate()).Append(" kbps"));
 
@@ -1229,7 +1229,7 @@ Void BonkEnc::ConfigureLameEnc::SetMinVBRBitrate()
 	}
 }
 
-Void BonkEnc::ConfigureLameEnc::SetMaxVBRBitrate()
+Void freac::ConfigureLameEnc::SetMaxVBRBitrate()
 {
 	vbr_text_max_brate_kbps->SetText(String::FromInt(GetMaxVBRBitrate()).Append(" kbps"));
 
@@ -1239,7 +1239,7 @@ Void BonkEnc::ConfigureLameEnc::SetMaxVBRBitrate()
 	}
 }
 
-Void BonkEnc::ConfigureLameEnc::SetHighpass()
+Void freac::ConfigureLameEnc::SetHighpass()
 {
 	if (set_highpass)
 	{
@@ -1256,13 +1256,13 @@ Void BonkEnc::ConfigureLameEnc::SetHighpass()
 	}
 }
 
-Void BonkEnc::ConfigureLameEnc::SetHighpassWidth()
+Void freac::ConfigureLameEnc::SetHighpassWidth()
 {
 	if (set_highpass_width)	filtering_edit_highpass_width->Activate();
 	else			filtering_edit_highpass_width->Deactivate();
 }
 
-Void BonkEnc::ConfigureLameEnc::SetLowpass()
+Void freac::ConfigureLameEnc::SetLowpass()
 {
 	if (set_lowpass)
 	{
@@ -1279,13 +1279,13 @@ Void BonkEnc::ConfigureLameEnc::SetLowpass()
 	}
 }
 
-Void BonkEnc::ConfigureLameEnc::SetLowpassWidth()
+Void freac::ConfigureLameEnc::SetLowpassWidth()
 {
 	if (set_lowpass_width)	filtering_edit_lowpass_width->Activate();
 	else			filtering_edit_lowpass_width->Deactivate();
 }
 
-Void BonkEnc::ConfigureLameEnc::SetEnableATH()
+Void freac::ConfigureLameEnc::SetEnableATH()
 {
 	if (enable_ath)
 	{
@@ -1297,7 +1297,7 @@ Void BonkEnc::ConfigureLameEnc::SetEnableATH()
 	}
 }
 
-Void BonkEnc::ConfigureLameEnc::SetDisableFiltering()
+Void freac::ConfigureLameEnc::SetDisableFiltering()
 {
 	if (disable_filtering)
 	{
@@ -1324,37 +1324,37 @@ Void BonkEnc::ConfigureLameEnc::SetDisableFiltering()
 	}
 }
 
-Int BonkEnc::ConfigureLameEnc::GetBitrate()
+Int freac::ConfigureLameEnc::GetBitrate()
 {
 	return SliderValueToBitrate(bitrate);
 }
 
-Int BonkEnc::ConfigureLameEnc::GetSliderValue()
+Int freac::ConfigureLameEnc::GetSliderValue()
 {
 	return BitrateToSliderValue(currentConfig->lame_bitrate);
 }
 
-Int BonkEnc::ConfigureLameEnc::GetMinVBRBitrate()
+Int freac::ConfigureLameEnc::GetMinVBRBitrate()
 {
 	return SliderValueToBitrate(min_vbr_brate);
 }
 
-Int BonkEnc::ConfigureLameEnc::GetMinVBRSliderValue()
+Int freac::ConfigureLameEnc::GetMinVBRSliderValue()
 {
 	return BitrateToSliderValue(currentConfig->lame_min_vbr_bitrate);
 }
 
-Int BonkEnc::ConfigureLameEnc::GetMaxVBRBitrate()
+Int freac::ConfigureLameEnc::GetMaxVBRBitrate()
 {
 	return SliderValueToBitrate(max_vbr_brate);
 }
 
-Int BonkEnc::ConfigureLameEnc::GetMaxVBRSliderValue()
+Int freac::ConfigureLameEnc::GetMaxVBRSliderValue()
 {
 	return BitrateToSliderValue(currentConfig->lame_max_vbr_bitrate);
 }
 
-Int BonkEnc::ConfigureLameEnc::SliderValueToBitrate(Int value)
+Int freac::ConfigureLameEnc::SliderValueToBitrate(Int value)
 {
 	switch (value)
 	{
@@ -1380,7 +1380,7 @@ Int BonkEnc::ConfigureLameEnc::SliderValueToBitrate(Int value)
 	}
 }
 
-Int BonkEnc::ConfigureLameEnc::BitrateToSliderValue(Int value)
+Int freac::ConfigureLameEnc::BitrateToSliderValue(Int value)
 {
 	switch (value)
 	{

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,20 +15,20 @@
 #include <cddb/cddbcache.h>
 #include <utilities.h>
 
-#include <bonkenc.h>
+#include <freac.h>
 #include <resources.h>
 
-BonkEnc::cddbManageDlg::cddbManageDlg()
+freac::cddbManageDlg::cddbManageDlg()
 {
-	currentConfig	= BonkEnc::currentConfig;
+	currentConfig	= freac::currentConfig;
 
 	updateJoblist	= currentConfig->update_joblist;
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB data"), currentConfig->wndPos + Point(40, 40), Size(552, 352));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(freac::i18n->TranslateString("CDDB data"), currentConfig->wndPos + Point(40, 40), Size(552, 352));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -38,35 +38,35 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&cddbManageDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok		= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok		= new Button(freac::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onAction.Connect(&cddbManageDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
 	pos.y = 27;
 
-	check_updateJoblist	= new CheckBox(BonkEnc::i18n->TranslateString("Update joblist with this information"), pos, size, &updateJoblist);
+	check_updateJoblist	= new CheckBox(freac::i18n->TranslateString("Update joblist with this information"), pos, size, &updateJoblist);
 	check_updateJoblist->SetWidth(check_updateJoblist->GetUnscaledTextWidth() + 21);
 	check_updateJoblist->SetOrientation(OR_LOWERLEFT);
 
 	pos.x = 7;
 	pos.y = 10;
 
-	text_entries	= new Text(BonkEnc::i18n->TranslateString("Downloaded CDDB entries:"), pos);
+	text_entries	= new Text(freac::i18n->TranslateString("Downloaded CDDB entries:"), pos);
 
 	pos.y += 19;
 	size.cx = 261;
 	size.cy = 213;
 
 	list_entries	= new ListBox(pos, size);
-	list_entries->AddTab(BonkEnc::i18n->TranslateString("Disc name"), 0);
-	list_entries->AddTab(BonkEnc::i18n->TranslateString("Charset"), 100);
+	list_entries->AddTab(freac::i18n->TranslateString("Disc name"), 0);
+	list_entries->AddTab(freac::i18n->TranslateString("Charset"), 100);
 	list_entries->onSelectEntry.Connect(&cddbManageDlg::SelectEntry, this);
 
 	for (Int i = 0; i < currentConfig->cddbCache->GetNOfEntries(); i++)
@@ -79,7 +79,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	pos.x += 269;
 	pos.y -= 19;
 
-	text_preview	= new Text(String(BonkEnc::i18n->TranslateString("Preview")).Append(":"), pos);
+	text_preview	= new Text(String(freac::i18n->TranslateString("Preview")).Append(":"), pos);
 
 	pos.y += 19;
 
@@ -91,7 +91,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 
 	pos.y += 197;
 
-	text_charset	= new Text(String(BonkEnc::i18n->TranslateString("Charset")).Append(":"), pos);
+	text_charset	= new Text(String(freac::i18n->TranslateString("Charset")).Append(":"), pos);
 
 	pos.x += (text_charset->GetUnscaledTextWidth() + 7);
 	pos.y -= 3;
@@ -117,13 +117,13 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_delete	= new Button(BonkEnc::i18n->TranslateString("Remove entry"), NIL, pos, size);
+	btn_delete	= new Button(freac::i18n->TranslateString("Remove entry"), NIL, pos, size);
 	btn_delete->onAction.Connect(&cddbManageDlg::DeleteEntry, this);
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
 	pos.x = 457;
 
-	btn_save	= new Button(BonkEnc::i18n->TranslateString("Save entry"), NIL, pos, size);
+	btn_save	= new Button(freac::i18n->TranslateString("Save entry"), NIL, pos, size);
 	btn_save->onAction.Connect(&cddbManageDlg::SaveEntry, this);
 	btn_save->SetOrientation(OR_LOWERLEFT);
 
@@ -151,7 +151,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::cddbManageDlg::~cddbManageDlg()
+freac::cddbManageDlg::~cddbManageDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -174,14 +174,14 @@ BonkEnc::cddbManageDlg::~cddbManageDlg()
 	DeleteObject(check_updateJoblist);
 }
 
-const Error &BonkEnc::cddbManageDlg::ShowDialog()
+const Error &freac::cddbManageDlg::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-Void BonkEnc::cddbManageDlg::OK()
+Void freac::cddbManageDlg::OK()
 {
 	if (updateJoblist)
 	{
@@ -225,12 +225,12 @@ Void BonkEnc::cddbManageDlg::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbManageDlg::Cancel()
+Void freac::cddbManageDlg::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbManageDlg::SetCharset()
+Void freac::cddbManageDlg::SetCharset()
 {
 	const CDDBInfo	&entry = currentConfig->cddbCache->GetNthEntry(list_entries->GetSelectedEntryNumber());
 	String		 dArtist;
@@ -255,7 +255,7 @@ Void BonkEnc::cddbManageDlg::SetCharset()
 	edit_preview->SetText(preview);
 }
 
-Void BonkEnc::cddbManageDlg::SelectEntry()
+Void freac::cddbManageDlg::SelectEntry()
 {
 	const CDDBInfo	&entry = currentConfig->cddbCache->GetNthEntry(list_entries->GetSelectedEntryNumber());
 	String		 preview = String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\n\n");
@@ -273,7 +273,7 @@ Void BonkEnc::cddbManageDlg::SelectEntry()
 	btn_save->Activate();
 }
 
-Void BonkEnc::cddbManageDlg::DeleteEntry()
+Void freac::cddbManageDlg::DeleteEntry()
 {
 	currentConfig->cddbCache->RemoveNthEntry(list_entries->GetSelectedEntryNumber());
 
@@ -286,7 +286,7 @@ Void BonkEnc::cddbManageDlg::DeleteEntry()
 	btn_save->Deactivate();
 }
 
-Void BonkEnc::cddbManageDlg::SaveEntry()
+Void freac::cddbManageDlg::SaveEntry()
 {
 	CDDBInfo entry = currentConfig->cddbCache->GetNthEntry(list_entries->GetSelectedEntryNumber());
 

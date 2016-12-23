@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,12 +11,12 @@
 #include <dialogs/genconfig/genconfig_plugins.h>
 #include <dllinterfaces.h>
 
-BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(BonkEnc::i18n->TranslateString("Plug-ins"))
+freac::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(freac::i18n->TranslateString("Plug-ins"))
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	pos.x	= 7;
 	pos.y	= 7;
@@ -25,7 +25,7 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 
 	tabs_plugins		= new TabWidget(pos, size);
 
-	layer_input		= new Layer(BonkEnc::i18n->TranslateString("Input plug-ins"));
+	layer_input		= new Layer(freac::i18n->TranslateString("Input plug-ins"));
 
 	pos.x	= 7;
 	pos.y	= 7;
@@ -44,17 +44,17 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	size.cx	= 0;
 	size.cy	= 0;
 
-	button_input		= new Button(BonkEnc::i18n->TranslateString("Configure"), NIL, pos, size);
+	button_input		= new Button(freac::i18n->TranslateString("Configure"), NIL, pos, size);
 	button_input->onAction.Connect(&GeneralSettingsLayerPlugins::ConfigureInputPlugin, this);
 	button_input->Deactivate();
 
 	pos.y += 30;
 
-	button_input_about	= new Button(BonkEnc::i18n->TranslateString("About"), NIL, pos, size);
+	button_input_about	= new Button(freac::i18n->TranslateString("About"), NIL, pos, size);
 	button_input_about->onAction.Connect(&GeneralSettingsLayerPlugins::AboutInputPlugin, this);
 	button_input_about->Deactivate();
 
-	layer_output		= new Layer(BonkEnc::i18n->TranslateString("Output plug-ins"));
+	layer_output		= new Layer(freac::i18n->TranslateString("Output plug-ins"));
 
 	pos.x	= 7;
 	pos.y	= 7;
@@ -70,13 +70,13 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	size.cx	= 0;
 	size.cy	= 0;
 
-	button_output		= new Button(BonkEnc::i18n->TranslateString("Configure"), NIL, pos, size);
+	button_output		= new Button(freac::i18n->TranslateString("Configure"), NIL, pos, size);
 	button_output->onAction.Connect(&GeneralSettingsLayerPlugins::ConfigureOutputPlugin, this);
 	button_output->Deactivate();
 
 	pos.y += 30;
 
-	button_output_about	= new Button(BonkEnc::i18n->TranslateString("About"), NIL, pos, size);
+	button_output_about	= new Button(freac::i18n->TranslateString("About"), NIL, pos, size);
 	button_output_about->onAction.Connect(&GeneralSettingsLayerPlugins::AboutOutputPlugin, this);
 	button_output_about->Deactivate();
 
@@ -101,7 +101,7 @@ BonkEnc::GeneralSettingsLayerPlugins::GeneralSettingsLayerPlugins() : Layer(Bonk
 	layer_output->Add(button_output_about);
 }
 
-BonkEnc::GeneralSettingsLayerPlugins::~GeneralSettingsLayerPlugins()
+freac::GeneralSettingsLayerPlugins::~GeneralSettingsLayerPlugins()
 {
 	DeleteObject(tabs_plugins);
 	DeleteObject(layer_input);
@@ -114,13 +114,13 @@ BonkEnc::GeneralSettingsLayerPlugins::~GeneralSettingsLayerPlugins()
 	DeleteObject(button_output_about);
 }
 
-Void BonkEnc::GeneralSettingsLayerPlugins::SelectInputPlugin()
+Void freac::GeneralSettingsLayerPlugins::SelectInputPlugin()
 {
 	button_input->Activate();
 	button_input_about->Activate();
 }
 
-Void BonkEnc::GeneralSettingsLayerPlugins::SelectOutputPlugin()
+Void freac::GeneralSettingsLayerPlugins::SelectOutputPlugin()
 {
 	if (list_output->GetSelectedEntry() == NIL) return;
 
@@ -156,35 +156,35 @@ Void BonkEnc::GeneralSettingsLayerPlugins::SelectOutputPlugin()
 	}
 }
 
-Void BonkEnc::GeneralSettingsLayerPlugins::ConfigureInputPlugin()
+Void freac::GeneralSettingsLayerPlugins::ConfigureInputPlugin()
 {
 	if (list_input->GetSelectedEntry() == NIL) return;
 
 	DLLInterfaces::winamp_in_modules.GetNth(list_input->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
-Void BonkEnc::GeneralSettingsLayerPlugins::ConfigureOutputPlugin()
+Void freac::GeneralSettingsLayerPlugins::ConfigureOutputPlugin()
 {
 	if (list_output->GetSelectedEntry() == NIL) return;
 
 	DLLInterfaces::winamp_out_modules.GetNth(list_output->GetSelectedEntryNumber())->Config((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
-Void BonkEnc::GeneralSettingsLayerPlugins::AboutInputPlugin()
+Void freac::GeneralSettingsLayerPlugins::AboutInputPlugin()
 {
 	if (list_input->GetSelectedEntry() == NIL) return;
 
 	DLLInterfaces::winamp_in_modules.GetNth(list_input->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
-Void BonkEnc::GeneralSettingsLayerPlugins::AboutOutputPlugin()
+Void freac::GeneralSettingsLayerPlugins::AboutOutputPlugin()
 {
 	if (list_output->GetSelectedEntry() == NIL) return;
 
 	DLLInterfaces::winamp_out_modules.GetNth(list_output->GetSelectedEntryNumber())->About((HWND) GetContainerWindow()->GetSystemWindow());
 }
 
-Int BonkEnc::GeneralSettingsLayerPlugins::GetSelectedOutputPlugin()
+Int freac::GeneralSettingsLayerPlugins::GetSelectedOutputPlugin()
 {
 	for (Int i = 0; i < list_output->Length(); i++) if (list_output->GetNthEntry(i)->IsMarked()) return i;
 

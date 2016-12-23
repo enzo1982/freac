@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,16 +12,16 @@
 
 #include <dllinterfaces.h>
 
-BonkEnc::FilterInFAAD2::FilterInFAAD2(Config *config, Track *format) : InputFilter(config, format)
+freac::FilterInFAAD2::FilterInFAAD2(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-BonkEnc::FilterInFAAD2::~FilterInFAAD2()
+freac::FilterInFAAD2::~FilterInFAAD2()
 {
 }
 
-Bool BonkEnc::FilterInFAAD2::Activate()
+Bool freac::FilterInFAAD2::Activate()
 {
 	InStream	*in = new InStream(STREAM_DRIVER, driver);
 
@@ -58,14 +58,14 @@ Bool BonkEnc::FilterInFAAD2::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterInFAAD2::Deactivate()
+Bool freac::FilterInFAAD2::Deactivate()
 {
 	ex_NeAACDecClose(handle);
 
 	return true;
 }
 
-Int BonkEnc::FilterInFAAD2::ReadData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterInFAAD2::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (size <= 0) return -1;
 
@@ -128,7 +128,7 @@ Int BonkEnc::FilterInFAAD2::ReadData(Buffer<UnsignedByte> &data, Int size)
 	return samplesRead * 2;
 }
 
-BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
+freac::Track *freac::FilterInFAAD2::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
 	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READ);
@@ -224,7 +224,7 @@ BonkEnc::Track *BonkEnc::FilterInFAAD2::GetFileInfo(const String &inFile)
 	return nFormat;
 }
 
-Bool BonkEnc::FilterInFAAD2::SkipID3v2Tag(InStream *in)
+Bool freac::FilterInFAAD2::SkipID3v2Tag(InStream *in)
 {
 	/* Check for an ID3v2 tag at the beginning of the
 	 * file and skip it if it exists as LAME may crash
@@ -254,7 +254,7 @@ Bool BonkEnc::FilterInFAAD2::SkipID3v2Tag(InStream *in)
 	return True;
 }
 
-Bool BonkEnc::FilterInFAAD2::SyncOnAACHeader(InStream *in)
+Bool freac::FilterInFAAD2::SyncOnAACHeader(InStream *in)
 {
 	Int	 startPos = in->GetPos();
 

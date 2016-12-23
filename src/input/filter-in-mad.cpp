@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,13 +11,16 @@
 #include <input/filter-in-mad.h>
 
 #include <dllinterfaces.h>
-#include <3rdparty/xing/dxhead.h>
 
 #include <smooth/io/drivers/driver_posix.h>
 
+#undef NULL
+#define NULL 0
+#include <3rdparty/xing/dxhead.h>
+
 using namespace smooth::Threads;
 
-namespace BonkEnc
+namespace freac
 {
 	mad_flow	 MADInputCallback(void *, mad_stream *);
 	mad_flow	 MADOutputCallback(void *, const mad_header *, mad_pcm *);
@@ -44,7 +47,7 @@ namespace BonkEnc
 	}
 };
 
-BonkEnc::FilterInMAD::FilterInMAD(Config *config, Track *format) : InputFilter(config, format)
+freac::FilterInMAD::FilterInMAD(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize	 = 0;
 
@@ -61,11 +64,11 @@ BonkEnc::FilterInMAD::FilterInMAD(Config *config, Track *format) : InputFilter(c
 	delaySamplesLeft = 529;
 }
 
-BonkEnc::FilterInMAD::~FilterInMAD()
+freac::FilterInMAD::~FilterInMAD()
 {
 }
 
-Bool BonkEnc::FilterInMAD::Activate()
+Bool freac::FilterInMAD::Activate()
 {
 	stop	 = False;
 	finished = False;
@@ -91,7 +94,7 @@ Bool BonkEnc::FilterInMAD::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterInMAD::Deactivate()
+Bool freac::FilterInMAD::Deactivate()
 {
 	if (decoderThread != NIL)
 	{
@@ -110,7 +113,7 @@ Bool BonkEnc::FilterInMAD::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInMAD::ReadData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterInMAD::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (decoderThread == NIL) decoderThread = NonBlocking0<>(&FilterInMAD::ReadMADData, this).Call();
 
@@ -137,7 +140,7 @@ Int BonkEnc::FilterInMAD::ReadData(Buffer<UnsignedByte> &data, Int size)
 	return size;
 }
 
-Bool BonkEnc::FilterInMAD::SkipID3v2Tag(InStream *in)
+Bool freac::FilterInMAD::SkipID3v2Tag(InStream *in)
 {
 	/* Check for an ID3v2 tag at the beginning of the
 	 * file and skip it if it exists as it might cause
@@ -167,7 +170,7 @@ Bool BonkEnc::FilterInMAD::SkipID3v2Tag(InStream *in)
 	return True;
 }
 
-Bool BonkEnc::FilterInMAD::ReadXingAndLAMETag(InStream *in)
+Bool freac::FilterInMAD::ReadXingAndLAMETag(InStream *in)
 {
 	/* Read MPEG header and get frame size.
 	 */
@@ -229,7 +232,7 @@ Bool BonkEnc::FilterInMAD::ReadXingAndLAMETag(InStream *in)
 	return True;
 }
 
-Int BonkEnc::FilterInMAD::GetMPEGFrameSize(const Buffer<UnsignedByte> &header)
+Int freac::FilterInMAD::GetMPEGFrameSize(const Buffer<UnsignedByte> &header)
 {
 	/* MPEG bitrate table - [version][layer][bitrate]
 	 */
@@ -303,7 +306,7 @@ Int BonkEnc::FilterInMAD::GetMPEGFrameSize(const Buffer<UnsignedByte> &header)
 	return (((Float) mpegFrameSamples[version][layer] / 8.0 * (Float) (mpegBitrate[version][layer][bitrate] * 1000)) / (Float) mpegSampleRate[version][sampleRate]) + ((padding) ? mpegUnitSize[layer] : 0);
 }
 
-BonkEnc::Track *BonkEnc::FilterInMAD::GetFileInfo(const String &inFile)
+freac::Track *freac::FilterInMAD::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
 	Driver		*ioDriver = new DriverPOSIX(inFile, IS_READ);
@@ -355,7 +358,7 @@ BonkEnc::Track *BonkEnc::FilterInMAD::GetFileInfo(const String &inFile)
 	return nFormat;
 }
 
-Int BonkEnc::FilterInMAD::ReadMADData()
+Int freac::FilterInMAD::ReadMADData()
 {
 	ex_mad_decoder_init(&decoder, this, &MADInputCallback, NIL, NIL, &MADOutputCallback, &MADErrorCallback, NIL);
 
@@ -366,7 +369,7 @@ Int BonkEnc::FilterInMAD::ReadMADData()
 	return Success();
 }
 
-Int BonkEnc::FilterInMAD::ReadMADMetadata()
+Int freac::FilterInMAD::ReadMADMetadata()
 {
 	ex_mad_decoder_init(&decoder, this, &MADInputCallback, NIL, NIL, &MADHeaderCallback, &MADErrorCallback, NIL);
 
@@ -377,7 +380,7 @@ Int BonkEnc::FilterInMAD::ReadMADMetadata()
 	return Success();
 }
 
-mad_flow BonkEnc::MADInputCallback(void *client_data, mad_stream *stream)
+mad_flow freac::MADInputCallback(void *client_data, mad_stream *stream)
 {
 	FilterInMAD	*filter = (FilterInMAD *) client_data;
 
@@ -411,7 +414,7 @@ mad_flow BonkEnc::MADInputCallback(void *client_data, mad_stream *stream)
 	return MAD_FLOW_CONTINUE;
 }
 
-mad_flow BonkEnc::MADOutputCallback(void *client_data, const mad_header *header, mad_pcm *pcm)
+mad_flow freac::MADOutputCallback(void *client_data, const mad_header *header, mad_pcm *pcm)
 {
 	FilterInMAD	*filter = (FilterInMAD *) client_data;
 
@@ -439,7 +442,7 @@ mad_flow BonkEnc::MADOutputCallback(void *client_data, const mad_header *header,
 	return MAD_FLOW_CONTINUE;
 }
 
-mad_flow BonkEnc::MADHeaderCallback(void *client_data, const mad_header *header, mad_pcm *pcm)
+mad_flow freac::MADHeaderCallback(void *client_data, const mad_header *header, mad_pcm *pcm)
 {
 	FilterInMAD	*filter = (FilterInMAD *) client_data;
 
@@ -461,7 +464,7 @@ mad_flow BonkEnc::MADHeaderCallback(void *client_data, const mad_header *header,
 	return MAD_FLOW_STOP;
 }
 
-mad_flow BonkEnc::MADErrorCallback(void *client_data, mad_stream *stream, mad_frame *frame)
+mad_flow freac::MADErrorCallback(void *client_data, mad_stream *stream, mad_frame *frame)
 {
 	return MAD_FLOW_CONTINUE;
 }

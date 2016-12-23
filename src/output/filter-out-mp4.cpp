@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,11 +12,11 @@
 #include <utilities.h>
 #include <dllinterfaces.h>
 
-BonkEnc::FilterOutMP4::FilterOutMP4(Config *config, Track *format) : OutputFilter(config, format)
+freac::FilterOutMP4::FilterOutMP4(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (format->channels > 2)
 	{
-		Utilities::ErrorMessage(String(BonkEnc::appName).Append(" does not support more than 2 channels!"));
+		Utilities::ErrorMessage(String(freac::appName).Append(" does not support more than 2 channels!"));
 
 		errorState = True;
 
@@ -24,11 +24,11 @@ BonkEnc::FilterOutMP4::FilterOutMP4(Config *config, Track *format) : OutputFilte
 	}
 }
 
-BonkEnc::FilterOutMP4::~FilterOutMP4()
+freac::FilterOutMP4::~FilterOutMP4()
 {
 }
 
-Bool BonkEnc::FilterOutMP4::Activate()
+Bool freac::FilterOutMP4::Activate()
 {
 	if (GetTempFile(format->outfile) != format->outfile)
 	{
@@ -88,13 +88,13 @@ Bool BonkEnc::FilterOutMP4::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterOutMP4::Deactivate()
+Bool freac::FilterOutMP4::Deactivate()
 {
 	unsigned long	 bytes = 0;
 
 	do
 	{
-		bytes = ex_faacEncEncode(handle, NULL, 0, outBuffer, outBuffer.Size());
+		bytes = ex_faacEncEncode(handle, NIL, 0, outBuffer, outBuffer.Size());
 
 		if (bytes > 0)
 		{
@@ -169,7 +169,7 @@ Bool BonkEnc::FilterOutMP4::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutMP4::WriteData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterOutMP4::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	unsigned long	 bytes = 0;
 	Int		 samplesRead = size / (format->bits / 8);
@@ -206,7 +206,7 @@ Int BonkEnc::FilterOutMP4::WriteData(Buffer<UnsignedByte> &data, Int size)
 	return bytes;
 }
 
-String BonkEnc::FilterOutMP4::GetTempFile(const String &oFileName)
+String freac::FilterOutMP4::GetTempFile(const String &oFileName)
 {
 	String	 rVal	= oFileName;
 	Int	 lastBs	= -1;

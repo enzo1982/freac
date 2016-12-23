@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,7 +12,7 @@
 #include <utilities.h>
 #include <dllinterfaces.h>
 
-BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFilter(config, format)
+freac::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (currentConfig->lame_resample >= 0)
 	{
@@ -96,7 +96,7 @@ BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFil
 
 	if (format->channels > 2)
 	{
-		Utilities::ErrorMessage(String(BonkEnc::appName).Append(" does not support more than 2 channels!"));
+		Utilities::ErrorMessage(String(freac::appName).Append(" does not support more than 2 channels!"));
 
 		errorState = True;
 
@@ -104,11 +104,11 @@ BonkEnc::FilterOutLAME::FilterOutLAME(Config *config, Track *format) : OutputFil
 	}
 }
 
-BonkEnc::FilterOutLAME::~FilterOutLAME()
+freac::FilterOutLAME::~FilterOutLAME()
 {
 }
 
-Bool BonkEnc::FilterOutLAME::Activate()
+Bool freac::FilterOutLAME::Activate()
 {
 	outBuffer.Resize(131072);
 
@@ -242,7 +242,7 @@ Bool BonkEnc::FilterOutLAME::Activate()
 	return True;
 }
 
-Bool BonkEnc::FilterOutLAME::Deactivate()
+Bool freac::FilterOutLAME::Deactivate()
 {
 	unsigned long	 bytes = ex_lame_encode_flush(lameFlags, outBuffer, outBuffer.Size());
 
@@ -269,7 +269,7 @@ Bool BonkEnc::FilterOutLAME::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutLAME::WriteData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterOutLAME::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	unsigned long	 bytes = 0;
 

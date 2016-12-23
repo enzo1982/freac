@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,12 +11,12 @@
 #include <dialogs/bladeconfig.h>
 #include <resources.h>
 
-BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
+freac::ConfigureBladeEnc::ConfigureBladeEnc()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	bitrate = GetSliderValue();
 	crc = currentConfig->blade_crc;
@@ -25,8 +25,8 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	priv = currentConfig->blade_private;
 	dualchannel = currentConfig->blade_dualchannel;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "BladeEnc"), currentConfig->wndPos + Point(80, 80), Size(366, 244));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(String(freac::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "BladeEnc"), currentConfig->wndPos + Point(80, 80), Size(366, 244));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -36,13 +36,13 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&ConfigureBladeEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(freac::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onAction.Connect(&ConfigureBladeEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -51,29 +51,29 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	size.cx = 168;
 	size.cy = 43;
 
-	group_bit		= new GroupBox(BonkEnc::i18n->TranslateString("Bitrate"), pos, size);
+	group_bit		= new GroupBox(freac::i18n->TranslateString("Bitrate"), pos, size);
 
 	pos.x += 176;
 
-	group_copyright		= new GroupBox(BonkEnc::i18n->TranslateString("Copyright bit"), pos, size);
+	group_copyright		= new GroupBox(freac::i18n->TranslateString("Copyright bit"), pos, size);
 
 	pos.x -= 176;
 	pos.y += 55;
 
-	group_crc		= new GroupBox(BonkEnc::i18n->TranslateString("CRC"), pos, size);
+	group_crc		= new GroupBox(freac::i18n->TranslateString("CRC"), pos, size);
 
 	pos.x += 176;
 
-	group_original		= new GroupBox(BonkEnc::i18n->TranslateString("Original bit"), pos, size);
+	group_original		= new GroupBox(freac::i18n->TranslateString("Original bit"), pos, size);
 
 	pos.x -= 176;
 	pos.y += 55;
 
-	group_dualchannel	= new GroupBox(BonkEnc::i18n->TranslateString("Channels"), pos, size);
+	group_dualchannel	= new GroupBox(freac::i18n->TranslateString("Channels"), pos, size);
 
 	pos.x += 176;
 
-	group_private		= new GroupBox(BonkEnc::i18n->TranslateString("Private bit"), pos, size);
+	group_private		= new GroupBox(freac::i18n->TranslateString("Private bit"), pos, size);
 
 	pos.x = 17;
 	pos.y = 24;
@@ -93,29 +93,29 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	pos.y -= 2;
 	size.cx += 44;
 
-	check_copyright		= new CheckBox(BonkEnc::i18n->TranslateString("Set Copyright bit"), pos, size, &copyright);
+	check_copyright		= new CheckBox(freac::i18n->TranslateString("Set Copyright bit"), pos, size, &copyright);
 
 	pos.x = 17;
 	pos.y += 55;
 	size.cx = 147;
 	size.cy = 0;
 
-	check_crc		= new CheckBox(BonkEnc::i18n->TranslateString("Enable CRC"), pos, size, &crc);
+	check_crc		= new CheckBox(freac::i18n->TranslateString("Enable CRC"), pos, size, &crc);
 
 	pos.x += 176;
 
-	check_original		= new CheckBox(BonkEnc::i18n->TranslateString("Set Original bit"), pos, size, &original);
+	check_original		= new CheckBox(freac::i18n->TranslateString("Set Original bit"), pos, size, &original);
 
 	pos.x = 17;
 	pos.y += 55;
 	size.cx = 147;
 	size.cy = 0;
 
-	check_dualchannel	= new CheckBox(BonkEnc::i18n->TranslateString("Dual channel encoding"), pos, size, &dualchannel);
+	check_dualchannel	= new CheckBox(freac::i18n->TranslateString("Dual channel encoding"), pos, size, &dualchannel);
 
 	pos.x += 176;
 
-	check_private		= new CheckBox(BonkEnc::i18n->TranslateString("Set Private bit"), pos, size, &priv);
+	check_private		= new CheckBox(freac::i18n->TranslateString("Set Private bit"), pos, size, &priv);
 
 	Add(mainWnd);
 
@@ -141,7 +141,7 @@ BonkEnc::ConfigureBladeEnc::ConfigureBladeEnc()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::ConfigureBladeEnc::~ConfigureBladeEnc()
+freac::ConfigureBladeEnc::~ConfigureBladeEnc()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -163,14 +163,14 @@ BonkEnc::ConfigureBladeEnc::~ConfigureBladeEnc()
 	DeleteObject(check_dualchannel);
 }
 
-const Error &BonkEnc::ConfigureBladeEnc::ShowDialog()
+const Error &freac::ConfigureBladeEnc::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-Void BonkEnc::ConfigureBladeEnc::OK()
+Void freac::ConfigureBladeEnc::OK()
 {
 	currentConfig->blade_bitrate = GetBitrate();
 	currentConfig->blade_crc = crc;
@@ -182,17 +182,17 @@ Void BonkEnc::ConfigureBladeEnc::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigureBladeEnc::Cancel()
+Void freac::ConfigureBladeEnc::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigureBladeEnc::SetBitrate()
+Void freac::ConfigureBladeEnc::SetBitrate()
 {
 	text_bit->SetText(String::FromInt(GetBitrate()).Append(" kbit"));
 }
 
-Int BonkEnc::ConfigureBladeEnc::GetBitrate()
+Int freac::ConfigureBladeEnc::GetBitrate()
 {
 	switch (bitrate)
 	{
@@ -229,7 +229,7 @@ Int BonkEnc::ConfigureBladeEnc::GetBitrate()
 	}
 }
 
-Int BonkEnc::ConfigureBladeEnc::GetSliderValue()
+Int freac::ConfigureBladeEnc::GetSliderValue()
 {
 	switch (currentConfig->blade_bitrate)
 	{

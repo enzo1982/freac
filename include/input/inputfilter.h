@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,13 +13,13 @@
 
 #include <smooth/io/filter.h>
 #include <smooth/io/driver.h>
-#include "../bonkenc.h"
+#include "../freac.h"
 
 #include <3rdparty/id3.h>
 
 using namespace smooth::IO;
 
-namespace BonkEnc
+namespace freac
 {
 	class InputFilter : public Filter
 	{

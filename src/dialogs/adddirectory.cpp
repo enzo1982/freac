@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,15 +13,15 @@
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
+freac::AddDirectoryDialog::AddDirectoryDialog()
 {
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("Add folder"), currentConfig->wndPos + Point(40, 40), Size(402, 128));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(freac::i18n->TranslateString("Add folder"), currentConfig->wndPos + Point(40, 40), Size(402, 128));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_NONE);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -31,13 +31,13 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&AddDirectoryDialog::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(freac::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onAction.Connect(&AddDirectoryDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -46,12 +46,12 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	size.cx = 380;
 	size.cy = 37;
 
-	group_directory	= new GroupBox(BonkEnc::i18n->TranslateString("Folder"), pos, size);
+	group_directory	= new GroupBox(freac::i18n->TranslateString("Folder"), pos, size);
 
 	pos.x += 9;
 	pos.y += 12;
 
-	text_directory	= new Text(BonkEnc::i18n->TranslateString("Choose folder:"), pos);
+	text_directory	= new Text(freac::i18n->TranslateString("Choose folder:"), pos);
 
 	pos.x += (text_directory->GetUnscaledTextWidth() + 7);
 	pos.y -= 3;
@@ -64,7 +64,7 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	pos.y -= 1;
 	size.cx = 80;
 
-	btn_browse	= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
+	btn_browse	= new Button(freac::i18n->TranslateString("Browse"), NIL, pos, size);
 	btn_browse->onAction.Connect(&AddDirectoryDialog::Browse, this);
 
 	Add(mainWnd);
@@ -82,7 +82,7 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::AddDirectoryDialog::~AddDirectoryDialog()
+freac::AddDirectoryDialog::~AddDirectoryDialog()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -95,38 +95,38 @@ BonkEnc::AddDirectoryDialog::~AddDirectoryDialog()
 	DeleteObject(btn_cancel);
 }
 
-const Error &BonkEnc::AddDirectoryDialog::ShowDialog()
+const Error &freac::AddDirectoryDialog::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-String BonkEnc::AddDirectoryDialog::GetDirectory()
+String freac::AddDirectoryDialog::GetDirectory()
 {
 	return edit_directory->GetText();
 }
 
-Void BonkEnc::AddDirectoryDialog::OK()
+Void freac::AddDirectoryDialog::OK()
 {
 	currentConfig->lastAddedDir = edit_directory->GetText();
 
 	mainWnd->Close();
 }
 
-Void BonkEnc::AddDirectoryDialog::Cancel()
+Void freac::AddDirectoryDialog::Cancel()
 {
 	error = Error();
 
 	mainWnd->Close();
 }
 
-Void BonkEnc::AddDirectoryDialog::Browse()
+Void freac::AddDirectoryDialog::Browse()
 {
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(mainWnd);
-	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder to add to the joblist:")));
+	dialog->SetCaption(String("\n").Append(freac::i18n->TranslateString("Select the folder to add to the joblist:")));
 	dialog->SetDirName(edit_directory->GetText());
 
 	if (dialog->ShowDialog() == Success())

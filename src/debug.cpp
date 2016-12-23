@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,15 +12,15 @@
 #include <smooth/io/drivers/driver_posix.h>
 
 #include <debug.h>
-#include <bonkenc.h>
+#include <freac.h>
 
 #ifdef __WIN32__
 #	include <windows.h>
 #endif
 
-BonkEnc::Debug::Debug(const String &fileName)
+freac::Debug::Debug(const String &fileName)
 {
-	config = BonkEnc::currentConfig;
+	config = freac::currentConfig;
 
 	tabLevel = 0;
 
@@ -35,7 +35,7 @@ BonkEnc::Debug::Debug(const String &fileName)
 	}
 }
 
-BonkEnc::Debug::~Debug()
+freac::Debug::~Debug()
 {
 	if (config->enable_logging)
 	{
@@ -45,7 +45,7 @@ BonkEnc::Debug::~Debug()
 	}
 }
 
-Int BonkEnc::Debug::OutputLine(const String &string)
+Int freac::Debug::OutputLine(const String &string)
 {
 	if (config->enable_logging)
 	{
@@ -71,7 +71,7 @@ Int BonkEnc::Debug::OutputLine(const String &string)
 	return Success();
 }
 
-Int BonkEnc::Debug::OutputVariable(const String &name, Int value)
+Int freac::Debug::OutputVariable(const String &name, Int value)
 {
 #ifdef DEBUG
 	OutputLine(String("Integer variable \'").Append(name).Append("\': ").Append(String::FromInt(value)));
@@ -80,7 +80,7 @@ Int BonkEnc::Debug::OutputVariable(const String &name, Int value)
 	return Success();
 }
 
-Int BonkEnc::Debug::OutputVariable(const String &name, const String &value)
+Int freac::Debug::OutputVariable(const String &name, const String &value)
 {
 #ifdef DEBUG
 	OutputLine(String("String variable \'").Append(name).Append("\': ").Append(value));
@@ -89,7 +89,7 @@ Int BonkEnc::Debug::OutputVariable(const String &name, const String &value)
 	return Success();
 }
 
-Int BonkEnc::Debug::EnterMethod(const String &name)
+Int freac::Debug::EnterMethod(const String &name)
 {
 #ifdef DEBUG
 	methods.Add(name);
@@ -102,7 +102,7 @@ Int BonkEnc::Debug::EnterMethod(const String &name)
 	return Success();
 }
 
-Int BonkEnc::Debug::LeaveMethod()
+Int freac::Debug::LeaveMethod()
 {
 #ifdef DEBUG
 	tabLevel--;

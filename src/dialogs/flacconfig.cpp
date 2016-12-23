@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,12 +11,12 @@
 #include <dialogs/flacconfig.h>
 #include <resources.h>
 
-BonkEnc::ConfigureFLAC::ConfigureFLAC()
+freac::ConfigureFLAC::ConfigureFLAC()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	preset = currentConfig->flac_preset;
 	streamable_subset = currentConfig->flac_streamable_subset;
@@ -30,28 +30,28 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	min_residual_partition_order = currentConfig->flac_min_residual_partition_order;
 	max_residual_partition_order = currentConfig->flac_max_residual_partition_order;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "FLAC"), currentConfig->wndPos + Point(80, 80), Size(520, 332));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(String(freac::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "FLAC"), currentConfig->wndPos + Point(80, 80), Size(520, 332));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	layer_simple		= new Layer(BonkEnc::i18n->TranslateString("Basic"));
-	layer_format		= new Layer(BonkEnc::i18n->TranslateString("Format"));
-	layer_advanced		= new Layer(BonkEnc::i18n->TranslateString("Expert"));
+	layer_simple		= new Layer(freac::i18n->TranslateString("Basic"));
+	layer_format		= new Layer(freac::i18n->TranslateString("Format"));
+	layer_advanced		= new Layer(freac::i18n->TranslateString("Expert"));
 
 	pos.x = 175;
 	pos.y = 29;
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&ConfigureFLAC::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(freac::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onAction.Connect(&ConfigureFLAC::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -67,12 +67,12 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	size.cx = 480;
 	size.cy = 39;
 
-	group_preset		= new GroupBox(BonkEnc::i18n->TranslateString("Presets"), pos, size);
+	group_preset		= new GroupBox(freac::i18n->TranslateString("Presets"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 
-	text_preset		= new Text(BonkEnc::i18n->TranslateString("Use preset:"), pos);
+	text_preset		= new Text(freac::i18n->TranslateString("Use preset:"), pos);
 
 	pos.x += (text_preset->GetUnscaledTextWidth() + 8);
 	pos.y -= 3;
@@ -80,16 +80,16 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	size.cy = 0;
 
 	combo_preset		= new ComboBox(pos, size);
-	combo_preset->AddEntry(BonkEnc::i18n->TranslateString("Custom settings"));
-	combo_preset->AddEntry(String("0").Append(", ").Append(BonkEnc::i18n->TranslateString("Fastest encoding")));
+	combo_preset->AddEntry(freac::i18n->TranslateString("Custom settings"));
+	combo_preset->AddEntry(String("0").Append(", ").Append(freac::i18n->TranslateString("Fastest encoding")));
 	combo_preset->AddEntry("1");
 	combo_preset->AddEntry("2");
 	combo_preset->AddEntry("3");
 	combo_preset->AddEntry("4");
-	combo_preset->AddEntry(String("5").Append(", ").Append(BonkEnc::i18n->TranslateString("Default")));
+	combo_preset->AddEntry(String("5").Append(", ").Append(freac::i18n->TranslateString("Default")));
 	combo_preset->AddEntry("6");
 	combo_preset->AddEntry("7");
-	combo_preset->AddEntry(String("8").Append(", ").Append(BonkEnc::i18n->TranslateString("Best compression")));
+	combo_preset->AddEntry(String("8").Append(", ").Append(freac::i18n->TranslateString("Best compression")));
 	combo_preset->SelectNthEntry(currentConfig->flac_preset + 1);
 	combo_preset->onSelectEntry.Connect(&ConfigureFLAC::SetPreset, this);
 
@@ -98,39 +98,39 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	size.cx = 150;
 	size.cy = 65;
 
-	group_stereo		= new GroupBox(BonkEnc::i18n->TranslateString("Stereo mode"), pos, size);
+	group_stereo		= new GroupBox(freac::i18n->TranslateString("Stereo mode"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
 	size.cx = 130;
 	size.cy = 0;
 
-	check_mid_side_stereo	= new CheckBox(BonkEnc::i18n->TranslateString("Joint Stereo"), pos, size, &do_mid_side_stereo);
+	check_mid_side_stereo	= new CheckBox(freac::i18n->TranslateString("Joint Stereo"), pos, size, &do_mid_side_stereo);
 	check_mid_side_stereo->onAction.Connect(&ConfigureFLAC::SetStereoMode, this);
 
 	pos.y += 25;
 
-	check_loose_mid_side	= new CheckBox(BonkEnc::i18n->TranslateString("Adaptive Joint Stereo"), pos, size, &loose_mid_side_stereo);
+	check_loose_mid_side	= new CheckBox(freac::i18n->TranslateString("Adaptive Joint Stereo"), pos, size, &loose_mid_side_stereo);
 
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 480;
 	size.cy = 66;
 
-	group_format		= new GroupBox(BonkEnc::i18n->TranslateString("Format"), pos, size);
+	group_format		= new GroupBox(freac::i18n->TranslateString("Format"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
 	size.cy = 0;
 
-	check_streamable_subset	= new CheckBox(BonkEnc::i18n->TranslateString("Use streamable subset"), pos, size, &streamable_subset);
+	check_streamable_subset	= new CheckBox(freac::i18n->TranslateString("Use streamable subset"), pos, size, &streamable_subset);
 	check_streamable_subset->onAction.Connect(&ConfigureFLAC::SetStreamableSubset, this);
 	check_streamable_subset->SetWidth(check_streamable_subset->GetUnscaledTextWidth() + 21);
 
 	pos.x -= 1;
 	pos.y += 27;
 
-	text_blocksize		= new Text(BonkEnc::i18n->TranslateString("Blocksize:"), pos);
+	text_blocksize		= new Text(freac::i18n->TranslateString("Blocksize:"), pos);
 
 	pos.x += text_blocksize->GetUnscaledTextWidth() + 7;
 	pos.y -= 2;
@@ -149,20 +149,20 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	pos.x += 44;
 	pos.y += 3;
 
-	text_blocksize_bytes	= new Text(BonkEnc::i18n->TranslateString("bytes"), pos);
+	text_blocksize_bytes	= new Text(freac::i18n->TranslateString("bytes"), pos);
 
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 480;
 	size.cy = 56;
 
-	group_apodization	= new GroupBox(BonkEnc::i18n->TranslateString("Apodization"), pos, size);
+	group_apodization	= new GroupBox(freac::i18n->TranslateString("Apodization"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 	size.cy = 0;
 
-	text_apodization	= new Text(BonkEnc::i18n->TranslateString("Apodization function(s):"), pos);
+	text_apodization	= new Text(freac::i18n->TranslateString("Apodization function(s):"), pos);
 
 	pos.x += text_apodization->GetUnscaledTextWidth() + 7;
 	pos.y -= 3;
@@ -192,19 +192,19 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	pos.x += 2;
 	pos.y += 25;
 
-	text_apodization_explain= new Text(String(BonkEnc::i18n->TranslateString("Note:")).Append(" ").Append(BonkEnc::i18n->TranslateString("You can specify multiple functions separated by semicolons.")), pos);
+	text_apodization_explain= new Text(String(freac::i18n->TranslateString("Note:")).Append(" ").Append(freac::i18n->TranslateString("You can specify multiple functions separated by semicolons.")), pos);
 
 	pos.x = 7;
 	pos.y = 79;
 	size.cx = 480;
 	size.cy = 62;
 
-	group_lpc		= new GroupBox(BonkEnc::i18n->TranslateString("Linear predictor"), pos, size);
+	group_lpc		= new GroupBox(freac::i18n->TranslateString("Linear predictor"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 
-	text_max_lpc_order	= new Text(String(BonkEnc::i18n->TranslateString("Maximum LPC order")).Append(":"), pos);
+	text_max_lpc_order	= new Text(String(freac::i18n->TranslateString("Maximum LPC order")).Append(":"), pos);
 
 	pos.x += 7;
 	pos.y -= 2;
@@ -216,19 +216,19 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	pos.x += 257;
 	pos.y += 2;
 
-	text_max_lpc_order_value= new Text(BonkEnc::i18n->TranslateString("disabled"), pos);
+	text_max_lpc_order_value= new Text(freac::i18n->TranslateString("disabled"), pos);
 
 	pos.x += 50;
 	pos.y -= 2;
 	size.cx = 150;
 	size.cy = 0;
 
-	check_exhaustive_model	= new CheckBox(BonkEnc::i18n->TranslateString("Exhaustive model search"), pos, size, &do_exhaustive_model_search);
+	check_exhaustive_model	= new CheckBox(freac::i18n->TranslateString("Exhaustive model search"), pos, size, &do_exhaustive_model_search);
 
 	pos.x -= 314;
 	pos.y += 25;
 
-	text_qlp_precision	= new Text(String(BonkEnc::i18n->TranslateString("Quantized LPC precision")).Append(":"), pos);
+	text_qlp_precision	= new Text(String(freac::i18n->TranslateString("Quantized LPC precision")).Append(":"), pos);
 
 	pos.x += 7;
 	pos.y -= 2;
@@ -240,14 +240,14 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	pos.x += 257;
 	pos.y += 2;
 
-	text_qlp_precision_value= new Text(BonkEnc::i18n->TranslateString("auto"), pos);
+	text_qlp_precision_value= new Text(freac::i18n->TranslateString("auto"), pos);
 
 	pos.x += 50;
 	pos.y -= 2;
 	size.cx = 150;
 	size.cy = 0;
 
-	check_qlp_precision_search= new CheckBox(BonkEnc::i18n->TranslateString("Optimize LPC quantization"), pos, size, &do_qlp_coeff_prec_search);
+	check_qlp_precision_search= new CheckBox(freac::i18n->TranslateString("Optimize LPC quantization"), pos, size, &do_qlp_coeff_prec_search);
 	check_qlp_precision_search->onAction.Connect(&ConfigureFLAC::SetQLPSearch, this);
 
 	Int	 maxTextSize = Math::Max(text_max_lpc_order_value->GetUnscaledTextWidth(), text_qlp_precision_value->GetUnscaledTextWidth());
@@ -260,12 +260,12 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	size.cx = 296;
 	size.cy = 62;
 
-	group_rice		= new GroupBox(BonkEnc::i18n->TranslateString("Residual coding"), pos, size);
+	group_rice		= new GroupBox(freac::i18n->TranslateString("Residual coding"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 
-	text_min_part_order	= new Text(String(BonkEnc::i18n->TranslateString("Minimum partition order")).Append(":"), pos);
+	text_min_part_order	= new Text(String(freac::i18n->TranslateString("Minimum partition order")).Append(":"), pos);
 
 	pos.x += 7;
 	pos.y -= 2;
@@ -282,7 +282,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	pos.x -= 264;
 	pos.y += 23;
 
-	text_max_part_order	= new Text(String(BonkEnc::i18n->TranslateString("Maximum partition order")).Append(":"), pos);
+	text_max_part_order	= new Text(String(freac::i18n->TranslateString("Maximum partition order")).Append(":"), pos);
 
 	pos.x += 7;
 	pos.y -= 2;
@@ -365,7 +365,7 @@ BonkEnc::ConfigureFLAC::ConfigureFLAC()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::ConfigureFLAC::~ConfigureFLAC()
+freac::ConfigureFLAC::~ConfigureFLAC()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -418,14 +418,14 @@ BonkEnc::ConfigureFLAC::~ConfigureFLAC()
 	DeleteObject(text_max_part_order_value);
 }
 
-const Error &BonkEnc::ConfigureFLAC::ShowDialog()
+const Error &freac::ConfigureFLAC::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-Void BonkEnc::ConfigureFLAC::OK()
+Void freac::ConfigureFLAC::OK()
 {
 	currentConfig->flac_preset = preset;
 	currentConfig->flac_streamable_subset = streamable_subset;
@@ -443,12 +443,12 @@ Void BonkEnc::ConfigureFLAC::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigureFLAC::Cancel()
+Void freac::ConfigureFLAC::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigureFLAC::SetPreset()
+Void freac::ConfigureFLAC::SetPreset()
 {
 	preset = combo_preset->GetSelectedEntryNumber() - 1;
 
@@ -536,9 +536,9 @@ Void BonkEnc::ConfigureFLAC::SetPreset()
 	}
 }
 
-Void BonkEnc::ConfigureFLAC::SetLPCOrder()
+Void freac::ConfigureFLAC::SetLPCOrder()
 {
-	if (max_lpc_order == 0)	text_max_lpc_order_value->SetText(BonkEnc::i18n->TranslateString("disabled"));
+	if (max_lpc_order == 0)	text_max_lpc_order_value->SetText(freac::i18n->TranslateString("disabled"));
 	else			text_max_lpc_order_value->SetText(String::FromInt(max_lpc_order));
 
 	if (max_lpc_order == 0)
@@ -563,7 +563,7 @@ Void BonkEnc::ConfigureFLAC::SetLPCOrder()
 	}
 }
 
-Void BonkEnc::ConfigureFLAC::SetQLPSearch()
+Void freac::ConfigureFLAC::SetQLPSearch()
 {
 	if (do_qlp_coeff_prec_search)
 	{
@@ -579,7 +579,7 @@ Void BonkEnc::ConfigureFLAC::SetQLPSearch()
 	}
 }
 
-Void BonkEnc::ConfigureFLAC::SetQLPPrecision()
+Void freac::ConfigureFLAC::SetQLPPrecision()
 {
 	Font	 font = text_qlp_precision_value->GetFont();
 
@@ -588,11 +588,11 @@ Void BonkEnc::ConfigureFLAC::SetQLPPrecision()
 
 	text_qlp_precision_value->SetFont(font);
 
-	if (qlp_coeff_precision == 0)	text_qlp_precision_value->SetText(BonkEnc::i18n->TranslateString("auto"));
+	if (qlp_coeff_precision == 0)	text_qlp_precision_value->SetText(freac::i18n->TranslateString("auto"));
 	else				text_qlp_precision_value->SetText(String::FromInt(qlp_coeff_precision));
 }
 
-Void BonkEnc::ConfigureFLAC::SetRiceOrder()
+Void freac::ConfigureFLAC::SetRiceOrder()
 {
 	if (max_residual_partition_order < min_residual_partition_order) slider_max_part_order->SetValue(min_residual_partition_order);
 	if (min_residual_partition_order > max_residual_partition_order) slider_min_part_order->SetValue(max_residual_partition_order);
@@ -601,13 +601,13 @@ Void BonkEnc::ConfigureFLAC::SetRiceOrder()
 	text_max_part_order_value->SetText(String::FromInt(max_residual_partition_order));
 }
 
-Void BonkEnc::ConfigureFLAC::SetStereoMode()
+Void freac::ConfigureFLAC::SetStereoMode()
 {
 	if (do_mid_side_stereo)	check_loose_mid_side->Activate();
 	else			check_loose_mid_side->Deactivate();
 }
 
-Void BonkEnc::ConfigureFLAC::SetStreamableSubset()
+Void freac::ConfigureFLAC::SetStreamableSubset()
 {
 	if (streamable_subset)
 	{
@@ -627,23 +627,23 @@ Void BonkEnc::ConfigureFLAC::SetStreamableSubset()
 	SetBlockSize();
 }
 
-Void BonkEnc::ConfigureFLAC::SetBlockSize()
+Void freac::ConfigureFLAC::SetBlockSize()
 {
 	if (streamable_subset)
 	{
-		if (blocksize <= 28)				blocksize = 24;
-		else if (blocksize > 28 && blocksize <= 48)	blocksize = 32;
-		else if (blocksize > 48 && blocksize <= 68)	blocksize = 64;
-		else if (blocksize > 68 && blocksize <= 100)	blocksize = 72;
-		else if (blocksize > 100 && blocksize <= 136)	blocksize = 128;
-		else if (blocksize > 136 && blocksize <= 200)	blocksize = 144;
-		else if (blocksize > 200 && blocksize <= 272)	blocksize = 256;
-		else if (blocksize > 272 && blocksize <= 400)	blocksize = 288;
-		else if (blocksize > 400 && blocksize <= 544)	blocksize = 512;
-		else if (blocksize > 544 && blocksize <= 800)	blocksize = 576;
-		else if (blocksize > 800 && blocksize <= 1536)	blocksize = 1024;
+		if	(		     blocksize <=   28)	blocksize =   24;
+		else if (blocksize >   28 && blocksize <=   48)	blocksize =   32;
+		else if (blocksize >   48 && blocksize <=   68)	blocksize =   64;
+		else if (blocksize >   68 && blocksize <=  100)	blocksize =   72;
+		else if (blocksize >  100 && blocksize <=  136)	blocksize =  128;
+		else if (blocksize >  136 && blocksize <=  200)	blocksize =  144;
+		else if (blocksize >  200 && blocksize <=  272)	blocksize =  256;
+		else if (blocksize >  272 && blocksize <=  400)	blocksize =  288;
+		else if (blocksize >  400 && blocksize <=  544)	blocksize =  512;
+		else if (blocksize >  544 && blocksize <=  800)	blocksize =  576;
+		else if (blocksize >  800 && blocksize <= 1536)	blocksize = 1024;
 		else if (blocksize > 1536 && blocksize <= 3072)	blocksize = 2048;
-		else if (blocksize > 3072)			blocksize = 4096;
+		else if (blocksize > 3072		      )	blocksize = 4096;
 
 		slider_blocksize->SetValue(blocksize);
 	}
@@ -651,7 +651,7 @@ Void BonkEnc::ConfigureFLAC::SetBlockSize()
 	edit_blocksize->SetText(String::FromInt(blocksize * 8));
 }
 
-Void BonkEnc::ConfigureFLAC::EditBlockSize()
+Void freac::ConfigureFLAC::EditBlockSize()
 {
 	String	 bsText = edit_blocksize->GetText();
 

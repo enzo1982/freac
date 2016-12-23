@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,7 +13,7 @@
 #include <dllinterfaces.h>
 #include <utilities.h>
 
-BonkEnc::OutputFilter::OutputFilter(Config *config, Track *iFormat)
+freac::OutputFilter::OutputFilter(Config *config, Track *iFormat)
 {
 	errorState	= False;
 	errorString	= "Unknown error";
@@ -22,11 +22,11 @@ BonkEnc::OutputFilter::OutputFilter(Config *config, Track *iFormat)
 	currentConfig	= config;
 }
 
-BonkEnc::OutputFilter::~OutputFilter()
+freac::OutputFilter::~OutputFilter()
 {
 }
 
-Int BonkEnc::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buffer)
+Int freac::OutputFilter::RenderID3Tag(Int version, Buffer<unsigned char> &buffer)
 {
 	ID3Tag		*tag = ex_ID3Tag_New();
 

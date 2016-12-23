@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,7 +12,7 @@
 #include <utilities.h>
 #include <dllinterfaces.h>
 
-BonkEnc::FilterOutBLADE::FilterOutBLADE(Config *config, Track *format) : OutputFilter(config, format)
+freac::FilterOutBLADE::FilterOutBLADE(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (format->rate != 32000 && format->rate != 44100 && format->rate != 48000)
 	{
@@ -25,7 +25,7 @@ BonkEnc::FilterOutBLADE::FilterOutBLADE(Config *config, Track *format) : OutputF
 
 	if (format->channels > 2)
 	{
-		Utilities::ErrorMessage(String(BonkEnc::appName).Append(" does not support more than 2 channels!"));
+		Utilities::ErrorMessage(String(freac::appName).Append(" does not support more than 2 channels!"));
 
 		errorState = True;
 
@@ -33,11 +33,11 @@ BonkEnc::FilterOutBLADE::FilterOutBLADE(Config *config, Track *format) : OutputF
 	}
 }
 
-BonkEnc::FilterOutBLADE::~FilterOutBLADE()
+freac::FilterOutBLADE::~FilterOutBLADE()
 {
 }
 
-Bool BonkEnc::FilterOutBLADE::Activate()
+Bool freac::FilterOutBLADE::Activate()
 {
 	beConfig.dwConfig			= BE_CONFIG_MP3;
 	beConfig.format.mp3.dwSampleRate	= format->rate;
@@ -79,7 +79,7 @@ Bool BonkEnc::FilterOutBLADE::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterOutBLADE::Deactivate()
+Bool freac::FilterOutBLADE::Deactivate()
 {
 	unsigned long	 bytes = 0;
 
@@ -100,7 +100,7 @@ Bool BonkEnc::FilterOutBLADE::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutBLADE::WriteData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterOutBLADE::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	unsigned long	 bytes = 0;
 

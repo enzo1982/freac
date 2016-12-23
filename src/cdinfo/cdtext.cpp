@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,7 +9,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <cdinfo/cdtext.h>
-#include <bonkenc.h>
+#include <freac.h>
 #include <dllinterfaces.h>
 
 typedef struct
@@ -28,17 +28,17 @@ typedef struct
 }
 cdTextPackage;
 
-BonkEnc::CDText::CDText()
+freac::CDText::CDText()
 {
 }
 
-BonkEnc::CDText::~CDText()
+freac::CDText::~CDText()
 {
 }
 
-Int BonkEnc::CDText::ReadCDText()
+Int freac::CDText::ReadCDText()
 {
-	if (!BonkEnc::currentConfig->cdrip_read_cdtext) return Success();
+	if (!freac::currentConfig->cdrip_read_cdtext) return Success();
 
 	cdInfo.Clear();
 
@@ -99,14 +99,14 @@ Int BonkEnc::CDText::ReadCDText()
 	return Success();
 }
 
-Int BonkEnc::CDText::ClearCDInfo()
+Int freac::CDText::ClearCDInfo()
 {
 	cdInfo.Clear();
 
 	return Success();
 }
 
-const BonkEnc::CDInfo &BonkEnc::CDText::GetCDInfo()
+const freac::CDInfo &freac::CDText::GetCDInfo()
 {
 	return cdInfo;
 }

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,19 +11,19 @@
 #include <dialogs/vorbisconfig.h>
 #include <resources.h>
 
-BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
+freac::ConfigureVorbisEnc::ConfigureVorbisEnc()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	quality = currentConfig->vorbis_quality;
 	abr = currentConfig->vorbis_bitrate;
 	mode = currentConfig->vorbis_mode;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "Ogg Vorbis"), currentConfig->wndPos + Point(80, 80), Size(366, 175));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(String(freac::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "Ogg Vorbis"), currentConfig->wndPos + Point(80, 80), Size(366, 175));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -35,13 +35,13 @@ BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&ConfigureVorbisEnc::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(freac::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onAction.Connect(&ConfigureVorbisEnc::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -50,29 +50,29 @@ BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
 	size.cx = 344;
 	size.cy = 43;
 
-	group_mode		= new GroupBox(BonkEnc::i18n->TranslateString("Encoding Mode"), pos, size);
+	group_mode		= new GroupBox(freac::i18n->TranslateString("Encoding Mode"), pos, size);
 
 	size.cy = 84;
 
-	group_mode2		= new GroupBox(BonkEnc::i18n->TranslateString("Encoding Mode"), pos, size);
+	group_mode2		= new GroupBox(freac::i18n->TranslateString("Encoding Mode"), pos, size);
 
 	pos.x = 17;
 	pos.y = 24;
 	size.cx = 157;
 	size.cy = 0;
 
-	option_mode_vbr		= new OptionBox(String("VBR (").Append(BonkEnc::i18n->TranslateString("Variable Bitrate")).Append(")"), pos, size, &mode, 0);
+	option_mode_vbr		= new OptionBox(String("VBR (").Append(freac::i18n->TranslateString("Variable Bitrate")).Append(")"), pos, size, &mode, 0);
 	option_mode_vbr->onAction.Connect(&ConfigureVorbisEnc::SetMode, this);
 
 	pos.x += 166;
 
-	option_mode_abr		= new OptionBox(String("ABR (").Append(BonkEnc::i18n->TranslateString("Average Bitrate")).Append(")"), pos, size, &mode, 1);
+	option_mode_abr		= new OptionBox(String("ABR (").Append(freac::i18n->TranslateString("Average Bitrate")).Append(")"), pos, size, &mode, 1);
 	option_mode_abr->onAction.Connect(&ConfigureVorbisEnc::SetMode, this);
 
 	pos.x = 19;
 	pos.y += 43;
 
-	text_quality		= new Text(String(BonkEnc::i18n->TranslateString("Quality")).Append(":"), pos);
+	text_quality		= new Text(String(freac::i18n->TranslateString("Quality")).Append(":"), pos);
 
 	pos.x += (text_quality->GetUnscaledTextWidth() + 8);
 	pos.y -= 2;
@@ -88,7 +88,7 @@ BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
 
 	pos.x = 19;
 
-	text_abr		= new Text(String(BonkEnc::i18n->TranslateString("Average Bitrate")).Append(":"), pos);
+	text_abr		= new Text(String(freac::i18n->TranslateString("Average Bitrate")).Append(":"), pos);
 
 	pos.x += (text_abr->GetUnscaledTextWidth() + 8);
 	pos.y -= 2;
@@ -150,7 +150,7 @@ BonkEnc::ConfigureVorbisEnc::ConfigureVorbisEnc()
 	}
 }
 
-BonkEnc::ConfigureVorbisEnc::~ConfigureVorbisEnc()
+freac::ConfigureVorbisEnc::~ConfigureVorbisEnc()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd_layer_abr);
@@ -175,14 +175,14 @@ BonkEnc::ConfigureVorbisEnc::~ConfigureVorbisEnc()
 	DeleteObject(text_abr_kbps);
 }
 
-const Error &BonkEnc::ConfigureVorbisEnc::ShowDialog()
+const Error &freac::ConfigureVorbisEnc::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-Void BonkEnc::ConfigureVorbisEnc::OK()
+Void freac::ConfigureVorbisEnc::OK()
 {
 	currentConfig->vorbis_mode = mode;
 	currentConfig->vorbis_quality = quality;
@@ -191,12 +191,12 @@ Void BonkEnc::ConfigureVorbisEnc::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigureVorbisEnc::Cancel()
+Void freac::ConfigureVorbisEnc::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigureVorbisEnc::SetMode()
+Void freac::ConfigureVorbisEnc::SetMode()
 {
 	switch (mode)
 	{
@@ -211,7 +211,7 @@ Void BonkEnc::ConfigureVorbisEnc::SetMode()
 	}
 }
 
-Void BonkEnc::ConfigureVorbisEnc::SetQuality()
+Void freac::ConfigureVorbisEnc::SetQuality()
 {
 	String	 txt = String::FromFloat(((double) quality) / 10);
 
@@ -220,12 +220,12 @@ Void BonkEnc::ConfigureVorbisEnc::SetQuality()
 	text_quality_value->SetText(txt);
 }
 
-Void BonkEnc::ConfigureVorbisEnc::SetBitrate()
+Void freac::ConfigureVorbisEnc::SetBitrate()
 {
 	edit_abr->SetText(String::FromInt(abr));
 }
 
-Void BonkEnc::ConfigureVorbisEnc::SetBitrateByEditBox()
+Void freac::ConfigureVorbisEnc::SetBitrateByEditBox()
 {
 	slider_abr->SetValue(edit_abr->GetText().ToInt());
 }

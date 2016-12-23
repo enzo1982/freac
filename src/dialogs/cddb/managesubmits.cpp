@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,18 +10,18 @@
 
 #include <dialogs/cddb/managesubmits.h>
 
-#include <bonkenc.h>
+#include <freac.h>
 #include <resources.h>
 
-BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
+freac::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 {
-	currentConfig	= BonkEnc::currentConfig;
+	currentConfig	= freac::currentConfig;
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB data"), currentConfig->wndPos + Point(40, 40), Size(552, 352));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(freac::i18n->TranslateString("CDDB data"), currentConfig->wndPos + Point(40, 40), Size(552, 352));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -31,28 +31,28 @@ BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel	= new Button(BonkEnc::i18n->TranslateString("Close"), NIL, pos, size);
+	btn_cancel	= new Button(freac::i18n->TranslateString("Close"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&cddbManageSubmitsDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
 	pos.y = 10;
 
-	text_entries	= new Text(BonkEnc::i18n->TranslateString("CDDB entries to submit:"), pos);
+	text_entries	= new Text(freac::i18n->TranslateString("CDDB entries to submit:"), pos);
 
 	pos.y += 19;
 	size.cx = 261;
 	size.cy = 213;
 
 	list_entries	= new ListBox(pos, size);
-	list_entries->AddTab(BonkEnc::i18n->TranslateString("Category"), 65);
-	list_entries->AddTab(BonkEnc::i18n->TranslateString("Disc name"), 0);
+	list_entries->AddTab(freac::i18n->TranslateString("Category"), 65);
+	list_entries->AddTab(freac::i18n->TranslateString("Disc name"), 0);
 	list_entries->onSelectEntry.Connect(&cddbManageSubmitsDlg::SelectEntry, this);
 
 	pos.x += 269;
 	pos.y -= 19;
 
-	text_preview	= new Text(String(BonkEnc::i18n->TranslateString("Preview")).Append(":"), pos);
+	text_preview	= new Text(String(freac::i18n->TranslateString("Preview")).Append(":"), pos);
 
 	pos.y += 19;
 
@@ -67,19 +67,19 @@ BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_delete	= new Button(BonkEnc::i18n->TranslateString("Remove entry"), NIL, pos, size);
+	btn_delete	= new Button(freac::i18n->TranslateString("Remove entry"), NIL, pos, size);
 	btn_delete->onAction.Connect(&cddbManageSubmitsDlg::DeleteEntry, this);
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
 	pos.x = 369;
 
-	btn_send	= new Button(BonkEnc::i18n->TranslateString("Submit"), NIL, pos, size);
+	btn_send	= new Button(freac::i18n->TranslateString("Submit"), NIL, pos, size);
 	btn_send->onAction.Connect(&cddbManageSubmitsDlg::SendEntry, this);
 	btn_send->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += 88;
 
-	btn_send_all	= new Button(BonkEnc::i18n->TranslateString("Submit all"), NIL, pos, size);
+	btn_send_all	= new Button(freac::i18n->TranslateString("Submit all"), NIL, pos, size);
 	btn_send_all->onAction.Connect(&cddbManageSubmitsDlg::SendAllEntries, this);
 	btn_send_all->SetOrientation(OR_LOWERLEFT);
 
@@ -114,7 +114,7 @@ BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::cddbManageSubmitsDlg::~cddbManageSubmitsDlg()
+freac::cddbManageSubmitsDlg::~cddbManageSubmitsDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -136,19 +136,19 @@ BonkEnc::cddbManageSubmitsDlg::~cddbManageSubmitsDlg()
 	delete cddbBatch;
 }
 
-const Error &BonkEnc::cddbManageSubmitsDlg::ShowDialog()
+const Error &freac::cddbManageSubmitsDlg::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-Void BonkEnc::cddbManageSubmitsDlg::Cancel()
+Void freac::cddbManageSubmitsDlg::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbManageSubmitsDlg::SelectEntry()
+Void freac::cddbManageSubmitsDlg::SelectEntry()
 {
 	const CDDBInfo	&cddbInfo = cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber());
 	String		 preview = String(cddbInfo.dArtist).Append(" - ").Append(cddbInfo.dTitle).Append("\n\n");
@@ -164,7 +164,7 @@ Void BonkEnc::cddbManageSubmitsDlg::SelectEntry()
 	btn_send->Activate();
 }
 
-Void BonkEnc::cddbManageSubmitsDlg::DeleteEntry()
+Void freac::cddbManageSubmitsDlg::DeleteEntry()
 {
 	cddbBatch->DeleteSubmit(cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber()));
 
@@ -176,7 +176,7 @@ Void BonkEnc::cddbManageSubmitsDlg::DeleteEntry()
 	btn_send->Deactivate();
 }
 
-Void BonkEnc::cddbManageSubmitsDlg::ReadEntries()
+Void freac::cddbManageSubmitsDlg::ReadEntries()
 {
 	// Read all entries from the freedb queue
 
@@ -190,11 +190,11 @@ Void BonkEnc::cddbManageSubmitsDlg::ReadEntries()
 	}
 }
 
-Void BonkEnc::cddbManageSubmitsDlg::SendEntry()
+Void freac::cddbManageSubmitsDlg::SendEntry()
 {
 	// Submit selected entry to online CDDB
 
-	text_status->SetText(String(BonkEnc::i18n->TranslateString("Submitting CD information")).Append("..."));
+	text_status->SetText(String(freac::i18n->TranslateString("Submitting CD information")).Append("..."));
 
 	if (cddbBatch->Submit(cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber())))
 	{
@@ -209,11 +209,11 @@ Void BonkEnc::cddbManageSubmitsDlg::SendEntry()
 	text_status->SetText(NIL);
 }
 
-Void BonkEnc::cddbManageSubmitsDlg::SendAllEntries()
+Void freac::cddbManageSubmitsDlg::SendAllEntries()
 {
 	// Submit all entries to online CDDB
 
-	text_status->SetText(String(BonkEnc::i18n->TranslateString("Submitting CD information")).Append("..."));
+	text_status->SetText(String(freac::i18n->TranslateString("Submitting CD information")).Append("..."));
 
 	if (cddbBatch->SubmitAll()) mainWnd->Close();
 

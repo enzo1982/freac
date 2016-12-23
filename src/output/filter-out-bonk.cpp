@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,11 +12,11 @@
 #include <utilities.h>
 #include <dllinterfaces.h>
 
-BonkEnc::FilterOutBONK::FilterOutBONK(Config *config, Track *format) : OutputFilter(config, format)
+freac::FilterOutBONK::FilterOutBONK(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (format->channels > 2)
 	{
-		Utilities::ErrorMessage(String(BonkEnc::appName).Append(" does not support more than 2 channels!"));
+		Utilities::ErrorMessage(String(freac::appName).Append(" does not support more than 2 channels!"));
 
 		errorState = True;
 
@@ -24,11 +24,11 @@ BonkEnc::FilterOutBONK::FilterOutBONK(Config *config, Track *format) : OutputFil
 	}
 }
 
-BonkEnc::FilterOutBONK::~FilterOutBONK()
+freac::FilterOutBONK::~FilterOutBONK()
 {
 }
 
-Bool BonkEnc::FilterOutBONK::Activate()
+Bool freac::FilterOutBONK::Activate()
 {
 	packageSize = int(1024.0 * format->rate / 44100) * format->channels * (currentConfig->bonk_lossless ? 1 : currentConfig->bonk_downsampling) * (format->bits / 8);
 
@@ -56,7 +56,7 @@ Bool BonkEnc::FilterOutBONK::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterOutBONK::Deactivate()
+Bool freac::FilterOutBONK::Deactivate()
 {
 	int	 bytes = ex_bonk_encoder_finish(encoder, dataBuffer, dataBuffer.Size());
 
@@ -82,7 +82,7 @@ Bool BonkEnc::FilterOutBONK::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutBONK::WriteData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterOutBONK::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	int	 bytes = 0;
 

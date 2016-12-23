@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,13 +11,13 @@
 #include <dialogs/wmaconfig.h>
 #include <resources.h>
 
-BonkEnc::ConfigureWMA::ConfigureWMA()
+freac::ConfigureWMA::ConfigureWMA()
 {
 	/* Init the Microsoft COM library.
 	 */
 	CoInitialize(NIL);
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	uncompressed = currentConfig->wma_uncompressed;
 	autoselect = currentConfig->wma_autoFormat;
@@ -30,17 +30,17 @@ BonkEnc::ConfigureWMA::ConfigureWMA()
 
 	quality = currentConfig->wma_quality / 5;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "Windows Media Audio"), currentConfig->wndPos + Point(80, 80), Size(408, 342));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(String(freac::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "Windows Media Audio"), currentConfig->wndPos + Point(80, 80), Size(408, 342));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&ConfigureWMA::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
+	btn_ok			= new Button(freac::i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
 	btn_ok->onAction.Connect(&ConfigureWMA::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -48,12 +48,12 @@ BonkEnc::ConfigureWMA::ConfigureWMA()
 
 	hr = ex_WMCreateProfileManager(&profileManager);
 
-	group_codec		= new GroupBox(BonkEnc::i18n->TranslateString("Select codec"), Point(7, 11), Size(386, 67));
+	group_codec		= new GroupBox(freac::i18n->TranslateString("Select codec"), Point(7, 11), Size(386, 67));
 
-	option_uncompressed	= new OptionBox(BonkEnc::i18n->TranslateString("Write uncompressed WMA files"), Point(10, 13), Size(366, 0), &uncompressed, 1);
+	option_uncompressed	= new OptionBox(freac::i18n->TranslateString("Write uncompressed WMA files"), Point(10, 13), Size(366, 0), &uncompressed, 1);
 	option_uncompressed->onAction.Connect(&ConfigureWMA::OnToggleCodec, this);
 
-	option_codec		= new OptionBox(String(BonkEnc::i18n->TranslateString("Use codec")).Append(":"), Point(10, 39), Size(100, 0), &uncompressed, 0);
+	option_codec		= new OptionBox(String(freac::i18n->TranslateString("Use codec")).Append(":"), Point(10, 39), Size(100, 0), &uncompressed, 0);
 	option_codec->SetWidth(option_codec->GetUnscaledTextWidth() + 20);
 	option_codec->onAction.Connect(&ConfigureWMA::OnToggleCodec, this);
 
@@ -63,18 +63,18 @@ BonkEnc::ConfigureWMA::ConfigureWMA()
 	group_codec->Add(option_codec);
 	group_codec->Add(combo_codec);
 
-	group_format		= new GroupBox(BonkEnc::i18n->TranslateString("Select codec format"), Point(7, 90), Size(386, 93));
+	group_format		= new GroupBox(freac::i18n->TranslateString("Select codec format"), Point(7, 90), Size(386, 93));
 
-	option_autoselect	= new OptionBox(BonkEnc::i18n->TranslateString("Automatically select format based on settings and input format"), Point(10, 13), Size(366, 0), &autoselect, 1);
+	option_autoselect	= new OptionBox(freac::i18n->TranslateString("Automatically select format based on settings and input format"), Point(10, 13), Size(366, 0), &autoselect, 1);
 	option_autoselect->onAction.Connect(&ConfigureWMA::OnToggleFormat, this);
 
-	option_format		= new OptionBox(String(BonkEnc::i18n->TranslateString("Use format")).Append(":"), Point(10, 39), Size(100, 0), &autoselect, 0);
+	option_format		= new OptionBox(String(freac::i18n->TranslateString("Use format")).Append(":"), Point(10, 39), Size(100, 0), &autoselect, 0);
 	option_format->SetWidth(option_codec->GetUnscaledTextWidth() + 20);
 	option_format->onAction.Connect(&ConfigureWMA::OnToggleFormat, this);
 
-	check_vbr		= new CheckBox(BonkEnc::i18n->TranslateString("Use VBR encoding"), Point(18 + option_format->GetWidth(), 39), Size((352 - option_format->GetWidth()) / 2, 0), &useVBR);
+	check_vbr		= new CheckBox(freac::i18n->TranslateString("Use VBR encoding"), Point(18 + option_format->GetWidth(), 39), Size((352 - option_format->GetWidth()) / 2, 0), &useVBR);
 	check_vbr->onAction.Connect(&ConfigureWMA::OnToggleVBR, this);
-	check_2pass		= new CheckBox(BonkEnc::i18n->TranslateString("Use 2-pass encoding"), Point(25 + option_format->GetWidth() + check_vbr->GetWidth(), 39), Size((352 - option_format->GetWidth()) / 2, 0), &use2Pass);
+	check_2pass		= new CheckBox(freac::i18n->TranslateString("Use 2-pass encoding"), Point(25 + option_format->GetWidth() + check_vbr->GetWidth(), 39), Size((352 - option_format->GetWidth()) / 2, 0), &use2Pass);
 	check_2pass->onAction.Connect(&ConfigureWMA::OnToggle2Pass, this);
 
 	combo_format		= new ComboBox(Point(18 + option_format->GetWidth(), 64), Size(358 - option_format->GetWidth(), 0));
@@ -85,21 +85,21 @@ BonkEnc::ConfigureWMA::ConfigureWMA()
 	group_format->Add(check_2pass);
 	group_format->Add(combo_format);
 
-	group_settings		= new GroupBox(BonkEnc::i18n->TranslateString("Codec settings"), Point(7, 195), Size(386, 67));
+	group_settings		= new GroupBox(freac::i18n->TranslateString("Codec settings"), Point(7, 195), Size(386, 67));
 
-	check_vbr_setting	= new CheckBox(BonkEnc::i18n->TranslateString("Use VBR encoding"), Point(10, 14), Size(180, 0), &useVBRSetting);
+	check_vbr_setting	= new CheckBox(freac::i18n->TranslateString("Use VBR encoding"), Point(10, 14), Size(180, 0), &useVBRSetting);
 	check_vbr_setting->onAction.Connect(&ConfigureWMA::OnToggleVBRSetting, this);
-	check_2pass_setting	= new CheckBox(BonkEnc::i18n->TranslateString("Use 2-pass encoding"), Point(10, 40), Size(180, 0), &use2PassSetting);
+	check_2pass_setting	= new CheckBox(freac::i18n->TranslateString("Use 2-pass encoding"), Point(10, 40), Size(180, 0), &use2PassSetting);
 	check_2pass_setting->onAction.Connect(&ConfigureWMA::OnToggle2PassSetting, this);
 
-	text_quality		= new Text(String(BonkEnc::i18n->TranslateString("Quality")).Append(":"), Point(197, 16));
+	text_quality		= new Text(String(freac::i18n->TranslateString("Quality")).Append(":"), Point(197, 16));
 
 	slider_quality		= new Slider(Point(204 + text_quality->GetUnscaledTextWidth(), 13), Size(142 - text_quality->GetUnscaledTextWidth(), 0), OR_HORZ, &quality, 0, 20);
 	slider_quality->onValueChange.Connect(&ConfigureWMA::OnSetQuality, this);
 
 	text_quality_value	= new Text(String::FromInt(quality * 5), Point(353, 16));
 
-	text_bitrate		= new Text(String(BonkEnc::i18n->TranslateString("Target bitrate")).Append(":"), Point(197, 42));
+	text_bitrate		= new Text(String(freac::i18n->TranslateString("Target bitrate")).Append(":"), Point(197, 42));
 
 	combo_bitrate		= new ComboBox(Point(204 + text_bitrate->GetUnscaledTextWidth(), 39), Size(142 - text_bitrate->GetUnscaledTextWidth(), 0));
 	combo_bitrate->AddEntry("32");
@@ -158,7 +158,7 @@ BonkEnc::ConfigureWMA::ConfigureWMA()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::ConfigureWMA::~ConfigureWMA()
+freac::ConfigureWMA::~ConfigureWMA()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -195,14 +195,14 @@ BonkEnc::ConfigureWMA::~ConfigureWMA()
 	CoUninitialize();
 }
 
-const Error &BonkEnc::ConfigureWMA::ShowDialog()
+const Error &freac::ConfigureWMA::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-Void BonkEnc::ConfigureWMA::OK()
+Void freac::ConfigureWMA::OK()
 {
 	currentConfig->wma_uncompressed = uncompressed;
 	currentConfig->wma_codec = combo_codec->GetSelectedEntryNumber();
@@ -227,12 +227,12 @@ Void BonkEnc::ConfigureWMA::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigureWMA::Cancel()
+Void freac::ConfigureWMA::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigureWMA::FillCodecComboBox()
+Void freac::ConfigureWMA::FillCodecComboBox()
 {
 	combo_codec->RemoveAllEntries();
 
@@ -270,7 +270,7 @@ Void BonkEnc::ConfigureWMA::FillCodecComboBox()
 	}
 }
 
-Void BonkEnc::ConfigureWMA::FillFormatComboBox()
+Void freac::ConfigureWMA::FillFormatComboBox()
 {
 	static UnsignedInt	 prevCodec	= -1;
 	static Bool		 prevUseVBR	= False;
@@ -333,7 +333,7 @@ Void BonkEnc::ConfigureWMA::FillFormatComboBox()
 	combo_format->SelectNthEntry(0);
 }
 
-Void BonkEnc::ConfigureWMA::OnToggleCodec()
+Void freac::ConfigureWMA::OnToggleCodec()
 {
 	if (uncompressed)
 	{
@@ -352,7 +352,7 @@ Void BonkEnc::ConfigureWMA::OnToggleCodec()
 	}
 }
 
-Void BonkEnc::ConfigureWMA::OnSelectCodec()
+Void freac::ConfigureWMA::OnSelectCodec()
 {
 	HRESULT			 hr = S_OK;
 	IWMCodecInfo3		*codecInfo = NIL;
@@ -465,7 +465,7 @@ Void BonkEnc::ConfigureWMA::OnSelectCodec()
 */
 }
 
-Void BonkEnc::ConfigureWMA::OnToggleFormat()
+Void freac::ConfigureWMA::OnToggleFormat()
 {
 	if (autoselect)
 	{
@@ -491,7 +491,7 @@ Void BonkEnc::ConfigureWMA::OnToggleFormat()
 	}
 }
 
-Void BonkEnc::ConfigureWMA::OnToggleVBR()
+Void freac::ConfigureWMA::OnToggleVBR()
 {
 /* ToDo: Implement 2-pass encoding.
  *
@@ -510,7 +510,7 @@ Void BonkEnc::ConfigureWMA::OnToggleVBR()
 	FillFormatComboBox();
 }
 
-Void BonkEnc::ConfigureWMA::OnToggle2Pass()
+Void freac::ConfigureWMA::OnToggle2Pass()
 {
 	if (use2Pass)
 	{
@@ -526,7 +526,7 @@ Void BonkEnc::ConfigureWMA::OnToggle2Pass()
 	FillFormatComboBox();
 }
 
-Void BonkEnc::ConfigureWMA::OnToggleVBRSetting()
+Void freac::ConfigureWMA::OnToggleVBRSetting()
 {
 	if (useVBRSetting)
 	{
@@ -550,11 +550,11 @@ Void BonkEnc::ConfigureWMA::OnToggleVBRSetting()
 	}
 }
 
-Void BonkEnc::ConfigureWMA::OnToggle2PassSetting()
+Void freac::ConfigureWMA::OnToggle2PassSetting()
 {
 }
 
-Void BonkEnc::ConfigureWMA::OnSetQuality()
+Void freac::ConfigureWMA::OnSetQuality()
 {
 	text_quality_value->SetText(String::FromInt(quality * 5));
 }

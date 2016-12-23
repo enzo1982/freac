@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,10 +9,10 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <config.h>
-#include <bonkenc.h>
+#include <freac.h>
 #include <cddb/cddbcache.h>
 
-BonkEnc::Config::Config()
+freac::Config::Config()
 {
 	languageChanged = False;
 	deleteAfterEncoding = False;
@@ -25,12 +25,12 @@ BonkEnc::Config::Config()
 	cddbCache = new CDDBCache(this);
 }
 
-BonkEnc::Config::~Config()
+freac::Config::~Config()
 {
 	delete cddbCache;
 }
 
-Bool BonkEnc::Config::LoadSettings()
+Bool freac::Config::LoadSettings()
 {
 	String		 personalDir = S::System::System::GetPersonalFilesDirectory(S::System::PersonalFilesMusic);
 	String		 programsDir = S::System::System::GetProgramFilesDirectory();
@@ -101,7 +101,7 @@ Bool BonkEnc::Config::LoadSettings()
 	vctag_encoding				= config->GetStringValue("Settings", "VorbisCommentTagEncoding", "UTF-8");
 	mp4meta_encoding			= config->GetStringValue("Settings", "MP4MetadataEncoding", "UTF-8");
 	wmameta_encoding			= config->GetStringValue("Settings", "WMAMetadataEncoding", "UTF-16LE");
-	default_comment				= config->GetStringValue("Settings", "DefaultComment", String(BonkEnc::appLongName).Append(" <").Append(BonkEnc::website).Append(">"));
+	default_comment				= config->GetStringValue("Settings", "DefaultComment", String(freac::appLongName).Append(" <").Append(freac::website).Append(">"));
 	overwriteComments			= config->GetIntValue("Settings", "OverwriteComments", 0);
 	copy_picture_tags			= config->GetIntValue("Settings", "CopyPictureTags", 1);
 
@@ -245,7 +245,7 @@ Bool BonkEnc::Config::LoadSettings()
 	return True;
 }
 
-Bool BonkEnc::Config::SaveSettings()
+Bool freac::Config::SaveSettings()
 {
 	Configuration	*config = new Configuration();
 	Bool		 retVal = True;

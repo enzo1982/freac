@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,7 +12,7 @@
 
 using namespace smooth::IO;
 
-Bool BonkEnc::CueSheet::AddTrack(const String &fileName, Int offset, const String &trackTitle, const String &trackArtist, const String &trackAlbum)
+Bool freac::CueSheet::AddTrack(const String &fileName, Int offset, const String &trackTitle, const String &trackArtist, const String &trackAlbum)
 {
 	fileNames.Add(fileName);
 	trackOffsets.Add(offset);
@@ -23,7 +23,7 @@ Bool BonkEnc::CueSheet::AddTrack(const String &fileName, Int offset, const Strin
 	return True;
 }
 
-Bool BonkEnc::CueSheet::Save(const String &fileName)
+Bool freac::CueSheet::Save(const String &fileName)
 {
 	if (fileNames.Length() == 0) return False;
 

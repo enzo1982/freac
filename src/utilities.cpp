@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -46,7 +46,7 @@
 using namespace smooth::GUI::Dialogs;
 using namespace smooth::System;
 
-const String	 BonkEnc::Utilities::genres[192] =
+const String	 freac::Utilities::genres[192] =
       { "Blues", "Classic Rock", "Country", "Dance", "Disco", "Funk", "Grunge", "Hip-Hop", "Jazz",
 	"Metal", "New Age", "Oldies", "Other", "Pop", "R&B", "Rap", "Reggae", "Rock", "Techno",
 	"Industrial", "Alternative", "Ska", "Death Metal", "Pranks", "Soundtrack", "Euro-Techno",
@@ -74,19 +74,19 @@ const String	 BonkEnc::Utilities::genres[192] =
 	"Trop Rock", "World Music", "Neoclassical", "Audiobook", "Audio Theatre", "Neue Deutsche Welle",
 	"Podcast", "Indie Rock", "G-Funk", "Dubstep", "Garage Rock", "Psybient" };
 
-Void BonkEnc::Utilities::WarningMessage(const String &message, const String &replace)
+Void freac::Utilities::WarningMessage(const String &message, const String &replace)
 {
-	if (!BonkEnc::currentConfig->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Warning"), Message::Buttons::Ok, Message::Icon::Exclamation);
-	else						Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Warning")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
+	if (!freac::currentConfig->enable_console) QuickMessage(String(freac::i18n->TranslateString(message)).Replace("%1", replace), freac::i18n->TranslateString("Warning"), Message::Buttons::Ok, Message::Icon::Exclamation);
+	else					   Console::OutputString(String("\n").Append(freac::i18n->TranslateString("Warning")).Append(": ").Append(String(freac::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
 }
 
-Void BonkEnc::Utilities::ErrorMessage(const String &message, const String &replace)
+Void freac::Utilities::ErrorMessage(const String &message, const String &replace)
 {
-	if (!BonkEnc::currentConfig->enable_console)	QuickMessage(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace), BonkEnc::i18n->TranslateString("Error"), Message::Buttons::Ok, Message::Icon::Hand);
-	else						Console::OutputString(String("\n").Append(BonkEnc::i18n->TranslateString("Error")).Append(": ").Append(String(BonkEnc::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
+	if (!freac::currentConfig->enable_console) QuickMessage(String(freac::i18n->TranslateString(message)).Replace("%1", replace), freac::i18n->TranslateString("Error"), Message::Buttons::Ok, Message::Icon::Hand);
+	else					   Console::OutputString(String("\n").Append(freac::i18n->TranslateString("Error")).Append(": ").Append(String(freac::i18n->TranslateString(message)).Replace("%1", replace)).Append("\n"));
 }
 
-BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile, Track *trackInfo)
+freac::InputFilter *freac::Utilities::CreateInputFilter(const String &iFile, Track *trackInfo)
 {
 	String		 file = iFile.ToLower();
 
@@ -157,42 +157,42 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 
 	InputFilter	*filter_in = NIL;
 
-	if ((file.EndsWith(".mp1") || file.EndsWith(".mp2") || file.EndsWith(".mp3")) && BonkEnc::currentConfig->enable_mad)
+	if ((file.EndsWith(".mp1") || file.EndsWith(".mp2") || file.EndsWith(".mp3")) && freac::currentConfig->enable_mad)
 	{
-		filter_in = new FilterInMAD(BonkEnc::currentConfig, trackInfo);
+		filter_in = new FilterInMAD(freac::currentConfig, trackInfo);
 	}
-	else if ((file.EndsWith(".mp4") || file.EndsWith(".m4a") || file.EndsWith(".m4b")) && BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->enable_faad2)
+	else if ((file.EndsWith(".mp4") || file.EndsWith(".m4a") || file.EndsWith(".m4b")) && freac::currentConfig->enable_mp4 && freac::currentConfig->enable_faad2)
 	{
-		filter_in = new FilterInMP4(BonkEnc::currentConfig, trackInfo);
+		filter_in = new FilterInMP4(freac::currentConfig, trackInfo);
 	}
-	else if (file.EndsWith(".ogg") && BonkEnc::currentConfig->enable_vorbis)
+	else if (file.EndsWith(".ogg") && freac::currentConfig->enable_vorbis)
 	{
-		filter_in = new FilterInVORBIS(BonkEnc::currentConfig, trackInfo);
+		filter_in = new FilterInVORBIS(freac::currentConfig, trackInfo);
 	}
-	else if (file.EndsWith(".aac") && BonkEnc::currentConfig->enable_faad2)
+	else if (file.EndsWith(".aac") && freac::currentConfig->enable_faad2)
 	{
-		filter_in = new FilterInFAAD2(BonkEnc::currentConfig, trackInfo);
+		filter_in = new FilterInFAAD2(freac::currentConfig, trackInfo);
 	}
-	else if (file.EndsWith(".bonk") && BonkEnc::currentConfig->enable_bonk)
+	else if (file.EndsWith(".bonk") && freac::currentConfig->enable_bonk)
 	{
-		filter_in = new FilterInBONK(BonkEnc::currentConfig, trackInfo);
+		filter_in = new FilterInBONK(freac::currentConfig, trackInfo);
 	}
-	else if (file.EndsWith(".flac") && BonkEnc::currentConfig->enable_flac)
+	else if (file.EndsWith(".flac") && freac::currentConfig->enable_flac)
 	{
-		filter_in = new FilterInFLAC(BonkEnc::currentConfig, trackInfo);
+		filter_in = new FilterInFLAC(freac::currentConfig, trackInfo);
 	}
 #ifdef __WIN32__
-	else if ((file.StartsWith("/cda") || file.EndsWith(".cda")) && BonkEnc::currentConfig->enable_cdrip && BonkEnc::currentConfig->cdrip_numdrives >= 1)
+	else if ((file.StartsWith("/cda") || file.EndsWith(".cda")) && freac::currentConfig->enable_cdrip && freac::currentConfig->cdrip_numdrives >= 1)
 	{
-		filter_in = new FilterInCDRip(BonkEnc::currentConfig, trackInfo);
+		filter_in = new FilterInCDRip(freac::currentConfig, trackInfo);
 	}
-	else if (file.EndsWith(".wma") && BonkEnc::currentConfig->enable_wma)
+	else if (file.EndsWith(".wma") && freac::currentConfig->enable_wma)
 	{
-		filter_in = new FilterInWMA(BonkEnc::currentConfig, trackInfo);
+		filter_in = new FilterInWMA(freac::currentConfig, trackInfo);
 	}
 	else if (found != -1)
 	{
-		filter_in = new FilterInWinamp(BonkEnc::currentConfig, trackInfo, DLLInterfaces::winamp_in_modules.GetNth(indexes.GetNth(found)));
+		filter_in = new FilterInWinamp(freac::currentConfig, trackInfo, DLLInterfaces::winamp_in_modules.GetNth(indexes.GetNth(found)));
 	}
 #endif
 	else
@@ -205,16 +205,16 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 		switch (magic)
 		{
 			case 1297239878:
-				filter_in = new FilterInAIFF(BonkEnc::currentConfig, trackInfo);
+				filter_in = new FilterInAIFF(freac::currentConfig, trackInfo);
 				break;
 			case 1684960046:
-				filter_in = new FilterInAU(BonkEnc::currentConfig, trackInfo);
+				filter_in = new FilterInAU(freac::currentConfig, trackInfo);
 				break;
 			case 1634038339:
-				filter_in = new FilterInVOC(BonkEnc::currentConfig, trackInfo);
+				filter_in = new FilterInVOC(freac::currentConfig, trackInfo);
 				break;
 			case 1179011410:
-				filter_in = new FilterInWAVE(BonkEnc::currentConfig, trackInfo);
+				filter_in = new FilterInWAVE(freac::currentConfig, trackInfo);
 				break;
 		}
 	}
@@ -222,32 +222,32 @@ BonkEnc::InputFilter *BonkEnc::Utilities::CreateInputFilter(const String &iFile,
 	return filter_in;
 }
 
-BonkEnc::OutputFilter *BonkEnc::Utilities::CreateOutputFilter(Int encoder, Track *trackInfo)
+freac::OutputFilter *freac::Utilities::CreateOutputFilter(Int encoder, Track *trackInfo)
 {
 	OutputFilter	*filter_out = NIL;
 
-	if (encoder == ENCODER_BONKENC)		filter_out = new FilterOutBONK(BonkEnc::currentConfig, trackInfo);
-	if (encoder == ENCODER_FLAC)		filter_out = new FilterOutFLAC(BonkEnc::currentConfig, trackInfo);
-	if (encoder == ENCODER_LAMEENC)		filter_out = new FilterOutLAME(BonkEnc::currentConfig, trackInfo);
-	if (encoder == ENCODER_VORBISENC)	filter_out = new FilterOutVORBIS(BonkEnc::currentConfig, trackInfo);
-	if (encoder == ENCODER_WAVE)		filter_out = new FilterOutWAVE(BonkEnc::currentConfig, trackInfo);
+	if (encoder == ENCODER_BONKENC)		filter_out = new FilterOutBONK(freac::currentConfig, trackInfo);
+	if (encoder == ENCODER_FLAC)		filter_out = new FilterOutFLAC(freac::currentConfig, trackInfo);
+	if (encoder == ENCODER_LAMEENC)		filter_out = new FilterOutLAME(freac::currentConfig, trackInfo);
+	if (encoder == ENCODER_VORBISENC)	filter_out = new FilterOutVORBIS(freac::currentConfig, trackInfo);
+	if (encoder == ENCODER_WAVE)		filter_out = new FilterOutWAVE(freac::currentConfig, trackInfo);
 
 #ifdef __WIN32__
-	if (encoder == ENCODER_BLADEENC)	filter_out = new FilterOutBLADE(BonkEnc::currentConfig, trackInfo);
-	if (encoder == ENCODER_TVQ)		filter_out = new FilterOutTVQ(BonkEnc::currentConfig, trackInfo);
-	if (encoder == ENCODER_WMA)		filter_out = new FilterOutWMA(BonkEnc::currentConfig, trackInfo);
+	if (encoder == ENCODER_BLADEENC)	filter_out = new FilterOutBLADE(freac::currentConfig, trackInfo);
+	if (encoder == ENCODER_TVQ)		filter_out = new FilterOutTVQ(freac::currentConfig, trackInfo);
+	if (encoder == ENCODER_WMA)		filter_out = new FilterOutWMA(freac::currentConfig, trackInfo);
 #endif
 
 	if (encoder == ENCODER_FAAC)
 	{
-		if (BonkEnc::currentConfig->enable_mp4 && BonkEnc::currentConfig->faac_enable_mp4) filter_out = new FilterOutMP4(BonkEnc::currentConfig, trackInfo);
-		else										   filter_out = new FilterOutFAAC(BonkEnc::currentConfig, trackInfo);
+		if (freac::currentConfig->enable_mp4 && freac::currentConfig->faac_enable_mp4) filter_out = new FilterOutMP4(freac::currentConfig, trackInfo);
+		else									       filter_out = new FilterOutFAAC(freac::currentConfig, trackInfo);
 	}
 
 	return filter_out;
 }
 
-Void BonkEnc::Utilities::FillGenreList(List *list)
+Void freac::Utilities::FillGenreList(List *list)
 {
 	list->AddEntry(NIL);
 	list->AddEntry("A Cappella");
@@ -446,14 +446,14 @@ Void BonkEnc::Utilities::FillGenreList(List *list)
 	list->AddEntry("World Music");
 }
 
-String BonkEnc::Utilities::GetID3CategoryName(Int id)
+String freac::Utilities::GetID3CategoryName(Int id)
 {
 	if (id < 0 || id > 191) return NIL;
 
 	return genres[id];
 }
 
-Int BonkEnc::Utilities::GetID3CategoryID(const String &name)
+Int freac::Utilities::GetID3CategoryID(const String &name)
 {
 	for (Int i = 0; i < 192; i++)
 	{
@@ -463,7 +463,7 @@ Int BonkEnc::Utilities::GetID3CategoryID(const String &name)
 	return 12; // Other
 }
 
-String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool repSlash)
+String freac::Utilities::ReplaceIncompatibleChars(const String &string, Bool repSlash)
 {
 	String	 rVal;
 
@@ -482,7 +482,7 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
 		else if (string[k] == '\\' && repSlash)	rVal[k + b] = '-';
 		else if (string[k] == '\t')		rVal[k + b] = ' ';
 		else if (string[k] >= 256 &&
-			(!BonkEnc::currentConfig->useUnicodeNames ||
+			(!freac::currentConfig->useUnicodeNames ||
 			 !Setup::enableUnicode))	rVal[k + b] = '#';
 		else					rVal[k + b] = string[k];
 	}
@@ -496,7 +496,7 @@ String BonkEnc::Utilities::ReplaceIncompatibleChars(const String &string, Bool r
  * shortens each directory and the file name to a
  * maximum of 248 or 96 characters.
  */
-String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
+String freac::Utilities::NormalizeFileName(const String &fileName)
 {
 	Int	 maxLength = 248;
 
@@ -561,7 +561,7 @@ String BonkEnc::Utilities::NormalizeFileName(const String &fileName)
 	return rFileName;
 }
 
-String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
+String freac::Utilities::CreateDirectoryForFile(const String &fileName)
 {
 	File		 file(NormalizeFileName(fileName));
 	Directory	 directory(file.GetFilePath());
@@ -571,7 +571,7 @@ String BonkEnc::Utilities::CreateDirectoryForFile(const String &fileName)
 	return file;
 }
 
-String BonkEnc::Utilities::GetInstallDrive()
+String freac::Utilities::GetInstallDrive()
 {
 #ifdef __WIN32__
 	return Application::GetApplicationDirectory().Head(2);
@@ -580,7 +580,7 @@ String BonkEnc::Utilities::GetInstallDrive()
 #endif
 }
 
-Void BonkEnc::Utilities::GainShutdownPrivilege()
+Void freac::Utilities::GainShutdownPrivilege()
 {
 #ifdef __WIN32__
 	OSVERSIONINFOA	 vInfo;
@@ -597,14 +597,14 @@ Void BonkEnc::Utilities::GainShutdownPrivilege()
 
 		OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES, &htoken);
 
-		if (Setup::enableUnicode)	LookupPrivilegeValueW(NULL, SE_SHUTDOWN_NAME, &value);
-		else				LookupPrivilegeValueA(NULL, "SeShutdownPrivilege", &value);
+		if (Setup::enableUnicode)	LookupPrivilegeValueW(NIL, SE_SHUTDOWN_NAME, &value);
+		else				LookupPrivilegeValueA(NIL, "SeShutdownPrivilege", &value);
 
 		token.PrivilegeCount = 1;
 		token.Privileges[0].Luid = value;
 		token.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
 
-		AdjustTokenPrivileges(htoken, false, &token, 0, NULL, NULL);
+		AdjustTokenPrivileges(htoken, false, &token, 0, NIL, NIL);
 	}
 #endif
 }

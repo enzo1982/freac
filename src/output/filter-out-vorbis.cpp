@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,11 +15,11 @@
 #include <time.h>
 #include <stdlib.h>
 
-BonkEnc::FilterOutVORBIS::FilterOutVORBIS(Config *config, Track *format) : OutputFilter(config, format)
+freac::FilterOutVORBIS::FilterOutVORBIS(Config *config, Track *format) : OutputFilter(config, format)
 {
 	if (format->channels > 2)
 	{
-		Utilities::ErrorMessage(String(BonkEnc::appName).Append(" does not support more than 2 channels!"));
+		Utilities::ErrorMessage(String(freac::appName).Append(" does not support more than 2 channels!"));
 
 		errorState = True;
 
@@ -27,11 +27,11 @@ BonkEnc::FilterOutVORBIS::FilterOutVORBIS(Config *config, Track *format) : Outpu
 	}
 }
 
-BonkEnc::FilterOutVORBIS::~FilterOutVORBIS()
+freac::FilterOutVORBIS::~FilterOutVORBIS()
 {
 }
 
-Bool BonkEnc::FilterOutVORBIS::Activate()
+Bool freac::FilterOutVORBIS::Activate()
 {
 	srand(clock());
 
@@ -165,7 +165,7 @@ Bool BonkEnc::FilterOutVORBIS::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterOutVORBIS::Deactivate()
+Bool freac::FilterOutVORBIS::Deactivate()
 {
 	ex_vorbis_analysis_wrote(&vd, 0);
 
@@ -173,7 +173,7 @@ Bool BonkEnc::FilterOutVORBIS::Deactivate()
 
 	while (ex_vorbis_analysis_blockout(&vd, &vb) == 1)
 	{
-		ex_vorbis_analysis(&vb, NULL);
+		ex_vorbis_analysis(&vb, NIL);
 		ex_vorbis_bitrate_addblock(&vb);
 
 		while(ex_vorbis_bitrate_flushpacket(&vd, &op))
@@ -216,7 +216,7 @@ Bool BonkEnc::FilterOutVORBIS::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterOutVORBIS::WriteData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterOutVORBIS::WriteData(Buffer<UnsignedByte> &data, Int size)
 {
 	int	 dataLength = 0;
 	int	 samples_size = size / (format->bits / 8);
@@ -275,7 +275,7 @@ Int BonkEnc::FilterOutVORBIS::WriteData(Buffer<UnsignedByte> &data, Int size)
 
 	while (ex_vorbis_analysis_blockout(&vd, &vb) == 1)
 	{
-		ex_vorbis_analysis(&vb, NULL);
+		ex_vorbis_analysis(&vb, NIL);
 		ex_vorbis_bitrate_addblock(&vb);
 
 		while(ex_vorbis_bitrate_flushpacket(&vd, &op))

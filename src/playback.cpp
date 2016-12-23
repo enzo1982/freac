@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -20,7 +20,7 @@
 
 using namespace smooth::Threads;
 
-Void BonkEnc::BonkEncGUI::PlayItem(Int entry)
+Void freac::freacGUI::PlayItem(Int entry)
 {
 	if (entry < 0) return;
 
@@ -49,7 +49,7 @@ Void BonkEnc::BonkEncGUI::PlayItem(Int entry)
 	joblist->GetNthEntry(entry)->SetFont(font);
 
 	play_thread = new Thread();
-	play_thread->threadMain.Connect(&BonkEncGUI::PlayThread, this);
+	play_thread->threadMain.Connect(&freacGUI::PlayThread, this);
 
 	playing = True;
 	paused = False;
@@ -60,12 +60,12 @@ Void BonkEnc::BonkEncGUI::PlayItem(Int entry)
 	play_thread->Start();
 }
 
-Void BonkEnc::BonkEncGUI::PlaySelectedItem()
+Void freac::freacGUI::PlaySelectedItem()
 {
 	PlayItem(joblist->GetSelectedEntryNumber());
 }
 
-Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
+Int freac::freacGUI::PlayThread(Thread *thread)
 {
 	String	 in_filename;
 	Track	*trackInfo;
@@ -234,7 +234,7 @@ Int BonkEnc::BonkEncGUI::PlayThread(Thread *thread)
 	return Success();
 }
 
-Void BonkEnc::BonkEncGUI::PausePlayback()
+Void freac::freacGUI::PausePlayback()
 {
 	if (!playing) return;
 
@@ -244,7 +244,7 @@ Void BonkEnc::BonkEncGUI::PausePlayback()
 	paused = !paused;
 }
 
-Void BonkEnc::BonkEncGUI::StopPlayback()
+Void freac::freacGUI::StopPlayback()
 {
 	if (!playing) return;
 
@@ -257,21 +257,21 @@ Void BonkEnc::BonkEncGUI::StopPlayback()
 	play_thread = NIL;
 }
 
-Void BonkEnc::BonkEncGUI::PlayPrevious()
+Void freac::freacGUI::PlayPrevious()
 {
 	if (!playing) return;
 
 	if (player_entry > 0) PlayItem(player_entry - 1);
 }
 
-Void BonkEnc::BonkEncGUI::PlayNext()
+Void freac::freacGUI::PlayNext()
 {
 	if (!playing) return;
 
 	if (player_entry < joblist->GetNOfTracks() - 1) PlayItem(player_entry + 1);
 }
 
-Void BonkEnc::BonkEncGUI::OpenCDTray()
+Void freac::freacGUI::OpenCDTray()
 {
 	ex_CR_SetActiveCDROM(currentConfig->cdrip_activedrive);
  	ex_CR_EjectCD(True);

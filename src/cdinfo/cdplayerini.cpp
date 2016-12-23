@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,20 +11,20 @@
 #include <cdinfo/cdplayerini.h>
 #include <cddb/cddb.h>
 #include <utilities.h>
-#include <bonkenc.h>
+#include <freac.h>
 #include <dllinterfaces.h>
 
-BonkEnc::CDPlayerIni::CDPlayerIni()
+freac::CDPlayerIni::CDPlayerIni()
 {
 }
 
-BonkEnc::CDPlayerIni::~CDPlayerIni()
+freac::CDPlayerIni::~CDPlayerIni()
 {
 }
 
-Int BonkEnc::CDPlayerIni::ReadCDInfo()
+Int freac::CDPlayerIni::ReadCDInfo()
 {
-	if (!BonkEnc::currentConfig->cdrip_read_cdplayerini) return Success();
+	if (!freac::currentConfig->cdrip_read_cdplayerini) return Success();
 
 	cdInfo.Clear();
 
@@ -113,14 +113,14 @@ Int BonkEnc::CDPlayerIni::ReadCDInfo()
 	return Success();
 }
 
-Int BonkEnc::CDPlayerIni::ClearCDInfo()
+Int freac::CDPlayerIni::ClearCDInfo()
 {
 	cdInfo.Clear();
 
 	return Success();
 }
 
-const BonkEnc::CDInfo &BonkEnc::CDPlayerIni::GetCDInfo()
+const freac::CDInfo &freac::CDPlayerIni::GetCDInfo()
 {
 	return cdInfo;
 }

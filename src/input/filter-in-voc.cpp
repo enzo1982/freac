@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,17 +10,17 @@
 
 #include <input/filter-in-voc.h>
 
-BonkEnc::FilterInVOC::FilterInVOC(Config *config, Track *format) : InputFilter(config, format)
+freac::FilterInVOC::FilterInVOC(Config *config, Track *format) : InputFilter(config, format)
 {
 	bytesLeft	= 0;
 	packageSize	= 0;
 }
 
-BonkEnc::FilterInVOC::~FilterInVOC()
+freac::FilterInVOC::~FilterInVOC()
 {
 }
 
-Bool BonkEnc::FilterInVOC::Activate()
+Bool freac::FilterInVOC::Activate()
 {
 	InStream	*in = new InStream(STREAM_DRIVER, driver);
     
@@ -35,12 +35,12 @@ Bool BonkEnc::FilterInVOC::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterInVOC::Deactivate()
+Bool freac::FilterInVOC::Deactivate()
 {
 	return true;
 }
 
-Int BonkEnc::FilterInVOC::ReadData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterInVOC::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	data.Resize(size);
 
@@ -71,7 +71,7 @@ Int BonkEnc::FilterInVOC::ReadData(Buffer<UnsignedByte> &data, Int size)
 	return outSize;
 }
 
-BonkEnc::Track *BonkEnc::FilterInVOC::GetFileInfo(const String &inFile)
+freac::Track *freac::FilterInVOC::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
 	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READ);

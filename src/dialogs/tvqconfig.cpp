@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,15 +11,15 @@
 #include <dialogs/tvqconfig.h>
 #include <resources.h>
 
-BonkEnc::ConfigureTVQ::ConfigureTVQ()
+freac::ConfigureTVQ::ConfigureTVQ()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "TwinVQ"), currentConfig->wndPos + Point(80, 80), Size(255, 181));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(String(freac::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "TwinVQ"), currentConfig->wndPos + Point(80, 80), Size(255, 181));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -29,13 +29,13 @@ BonkEnc::ConfigureTVQ::ConfigureTVQ()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&ConfigureTVQ::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(freac::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onAction.Connect(&ConfigureTVQ::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -44,12 +44,12 @@ BonkEnc::ConfigureTVQ::ConfigureTVQ()
 	size.cx = 233;
 	size.cy = 39;
 
-	group_bitrate		= new GroupBox(BonkEnc::i18n->TranslateString("Bitrate"), pos, size);
+	group_bitrate		= new GroupBox(freac::i18n->TranslateString("Bitrate"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 
-	text_bitrate		= new Text(BonkEnc::i18n->TranslateString("Bitrate per channel:"), pos);
+	text_bitrate		= new Text(freac::i18n->TranslateString("Bitrate per channel:"), pos);
 
 	pos.x += (text_bitrate->GetUnscaledTextWidth() + 8);
 	pos.y -= 3;
@@ -84,12 +84,12 @@ BonkEnc::ConfigureTVQ::ConfigureTVQ()
 	size.cx = 233;
 	size.cy = 39;
 
-	group_precand		= new GroupBox(BonkEnc::i18n->TranslateString("Preselection"), pos, size);
+	group_precand		= new GroupBox(freac::i18n->TranslateString("Preselection"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 
-	text_precand		= new Text(BonkEnc::i18n->TranslateString("Number of preselection candidates:"), pos);
+	text_precand		= new Text(freac::i18n->TranslateString("Number of preselection candidates:"), pos);
 
 	pos.x += (text_precand->GetUnscaledTextWidth() + 8);
 	pos.y -= 3;
@@ -136,7 +136,7 @@ BonkEnc::ConfigureTVQ::ConfigureTVQ()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::ConfigureTVQ::~ConfigureTVQ()
+freac::ConfigureTVQ::~ConfigureTVQ()
 {
 	delete mainWnd_titlebar;
 	delete mainWnd;
@@ -152,14 +152,14 @@ BonkEnc::ConfigureTVQ::~ConfigureTVQ()
 	delete combo_precand;
 }
 
-const Error &BonkEnc::ConfigureTVQ::ShowDialog()
+const Error &freac::ConfigureTVQ::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-Void BonkEnc::ConfigureTVQ::OK()
+Void freac::ConfigureTVQ::OK()
 {
 	currentConfig->tvq_bitrate = combo_bitrate->GetSelectedEntry()->GetText().ToInt();
 	currentConfig->tvq_presel_candidates = combo_precand->GetSelectedEntry()->GetText().ToInt();
@@ -167,7 +167,7 @@ Void BonkEnc::ConfigureTVQ::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigureTVQ::Cancel()
+Void freac::ConfigureTVQ::Cancel()
 {
 	mainWnd->Close();
 }

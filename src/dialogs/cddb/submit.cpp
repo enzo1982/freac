@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,7 +13,7 @@
 #include <dllinterfaces.h>
 #include <utilities.h>
 
-#include <bonkenc.h>
+#include <freac.h>
 #include <resources.h>
 
 #include <cddb/cddblocal.h>
@@ -21,9 +21,9 @@
 #include <cddb/cddbbatch.h>
 #include <cddb/cddbcache.h>
 
-BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
+freac::cddbSubmitDlg::cddbSubmitDlg()
 {
-	currentConfig	= BonkEnc::currentConfig;
+	currentConfig	= freac::currentConfig;
 
 	activedrive	= currentConfig->cdrip_activedrive;
 	updateJoblist	= currentConfig->update_joblist;
@@ -35,8 +35,8 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB data"), currentConfig->wndPos + Point(40, 40), Size(502, 453));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(freac::i18n->TranslateString("CDDB data"), currentConfig->wndPos + Point(40, 40), Size(502, 453));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(45, OR_HORZ | OR_BOTTOM);
@@ -46,27 +46,27 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&cddbSubmitDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_submit		= new Button(BonkEnc::i18n->TranslateString("Submit"), NIL, pos, size);
+	btn_submit		= new Button(freac::i18n->TranslateString("Submit"), NIL, pos, size);
 	btn_submit->onAction.Connect(&cddbSubmitDlg::Submit, this);
 	btn_submit->SetOrientation(OR_LOWERRIGHT);
 
-	if (!currentConfig->enable_remote_cddb) btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
+	if (!currentConfig->enable_remote_cddb) btn_submit->SetText(freac::i18n->TranslateString("Save entry"));
 
 	pos.x = 3;
 	pos.y = 39;
 
-	check_updateJoblist	= new CheckBox(BonkEnc::i18n->TranslateString("Update joblist with this information"), pos, size, &updateJoblist);
+	check_updateJoblist	= new CheckBox(freac::i18n->TranslateString("Update joblist with this information"), pos, size, &updateJoblist);
 	check_updateJoblist->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 19;
 
-	check_submitLater	= new CheckBox(BonkEnc::i18n->TranslateString("Submit to online database later"), pos, size, &submitLater);
+	check_submitLater	= new CheckBox(freac::i18n->TranslateString("Submit to online database later"), pos, size, &submitLater);
 	check_submitLater->onAction.Connect(&cddbSubmitDlg::ToggleSubmitLater, this);
 	check_submitLater->SetOrientation(OR_LOWERLEFT);
 
@@ -78,7 +78,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	size.cx = 480;
 	size.cy = 43;
 
-	group_drive	= new GroupBox(BonkEnc::i18n->TranslateString("Active CD-ROM drive"), pos, size);
+	group_drive	= new GroupBox(freac::i18n->TranslateString("Active CD-ROM drive"), pos, size);
 
 	pos.x = 17;
 	pos.y = 23;
@@ -98,16 +98,16 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	pos.x += 267;
 	pos.y += 3;
 
-	text_cdstatus	= new Text(String(BonkEnc::i18n->TranslateString("Status")).Append(":"), pos);
+	text_cdstatus	= new Text(String(freac::i18n->TranslateString("Status")).Append(":"), pos);
 
 	pos.x = 7;
 	pos.y = 65;
 
-	text_artist	= new Text(String(BonkEnc::i18n->TranslateString("Artist")).Append(":"), pos);
+	text_artist	= new Text(String(freac::i18n->TranslateString("Artist")).Append(":"), pos);
 
 	pos.y += 27;
 
-	text_album	= new Text(String(BonkEnc::i18n->TranslateString("Album")).Append(":"), pos);
+	text_album	= new Text(String(freac::i18n->TranslateString("Album")).Append(":"), pos);
 
 	pos.x += (7 + (Int) Math::Max(text_artist->GetUnscaledTextWidth(), text_album->GetUnscaledTextWidth()));
 	pos.y -= 30;
@@ -117,7 +117,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	edit_artist	= new EditBox(NIL, pos, size, 0);
 
 	list_artist	= new List();
-	list_artist->AddEntry(BonkEnc::i18n->TranslateString("Various artists"));
+	list_artist->AddEntry(freac::i18n->TranslateString("Various artists"));
 
 	edit_artist->SetDropDownList(list_artist);
 	edit_artist->onInput.Connect(&cddbSubmitDlg::SetArtist, this);
@@ -132,11 +132,11 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	pos.x = 221;
 	pos.y = 65;
 
-	text_year	= new Text(String(BonkEnc::i18n->TranslateString("Year")).Append(":"), pos);
+	text_year	= new Text(String(freac::i18n->TranslateString("Year")).Append(":"), pos);
 
 	pos.y += 27;
 
-	text_disccomment= new Text(String(BonkEnc::i18n->TranslateString("Comment")).Append(":"), pos);
+	text_disccomment= new Text(String(freac::i18n->TranslateString("Comment")).Append(":"), pos);
 
 	pos.x = 228 + Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
 	pos.y -= 30;
@@ -148,7 +148,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	pos.x += 38;
 	pos.y += 3;
 
-	text_genre	= new Text(String(BonkEnc::i18n->TranslateString("Genre")).Append(":"), pos);
+	text_genre	= new Text(String(freac::i18n->TranslateString("Genre")).Append(":"), pos);
 
 	pos.x += (7 + text_genre->GetUnscaledTextWidth());
 	pos.y -= 3;
@@ -172,14 +172,14 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 
 	list_tracks	= new ListBox(pos, size);
 	list_tracks->SetFlags(LF_ALLOWRESELECT);
-	list_tracks->AddTab(BonkEnc::i18n->TranslateString("Track"), 50);
-	list_tracks->AddTab(BonkEnc::i18n->TranslateString("Title"));
+	list_tracks->AddTab(freac::i18n->TranslateString("Track"), 50);
+	list_tracks->AddTab(freac::i18n->TranslateString("Title"));
 	list_tracks->onSelectEntry.Connect(&cddbSubmitDlg::SelectTrack, this);
 
 	pos.x -= 1;
 	pos.y += 151;
 
-	text_track	= new Text(String(BonkEnc::i18n->TranslateString("Track")).Append(":"), pos);
+	text_track	= new Text(String(freac::i18n->TranslateString("Track")).Append(":"), pos);
 
 	pos.x += (7 + text_track->GetUnscaledTextWidth());
 	pos.y -= 3;
@@ -193,15 +193,15 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	pos.x += 32;
 	pos.y += 3;
 
-	text_trackartist= new Text(String(BonkEnc::i18n->TranslateString("Artist")).Append(":"), pos);
+	text_trackartist= new Text(String(freac::i18n->TranslateString("Artist")).Append(":"), pos);
 
 	pos.y += 27;
 
-	text_title	= new Text(String(BonkEnc::i18n->TranslateString("Title")).Append(":"), pos);
+	text_title	= new Text(String(freac::i18n->TranslateString("Title")).Append(":"), pos);
 
 	pos.y += 27;
 
-	text_comment	= new Text(String(BonkEnc::i18n->TranslateString("Comment")).Append(":"), pos);
+	text_comment	= new Text(String(freac::i18n->TranslateString("Comment")).Append(":"), pos);
 
 	pos.x += (7 + Math::Max(text_title->GetUnscaledTextWidth(), text_comment->GetUnscaledTextWidth()));
 	pos.y -= 57;
@@ -271,7 +271,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::cddbSubmitDlg::~cddbSubmitDlg()
+freac::cddbSubmitDlg::~cddbSubmitDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -307,7 +307,7 @@ BonkEnc::cddbSubmitDlg::~cddbSubmitDlg()
 	DeleteObject(btn_cancel);
 }
 
-const Error &BonkEnc::cddbSubmitDlg::ShowDialog()
+const Error &freac::cddbSubmitDlg::ShowDialog()
 {
 	ChangeDrive();
 
@@ -316,7 +316,7 @@ const Error &BonkEnc::cddbSubmitDlg::ShowDialog()
 	return error;
 }
 
-Void BonkEnc::cddbSubmitDlg::Submit()
+Void freac::cddbSubmitDlg::Submit()
 {
 	if (!IsDataValid())
 	{
@@ -325,7 +325,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 		return;
 	}
 
-	cddbInfo.dArtist	= (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") ? String("Various") : edit_artist->GetText());
+	cddbInfo.dArtist	= (edit_artist->GetText() == freac::i18n->TranslateString("Various artists") ? String("Various") : edit_artist->GetText());
 
 	cddbInfo.dTitle		= edit_album->GetText();
 	cddbInfo.dYear		= edit_year->GetText().ToInt();
@@ -337,7 +337,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	cddbInfo.trackComments.RemoveAll();
 
 	for (Int j = 0; j < artists.Length(); j++) cddbInfo.trackArtists.Add(artists.GetNth(j));
-	for (Int k = 0; k < titles.Length(); k++) cddbInfo.trackTitles.Add((titles.GetNth(k) == BonkEnc::i18n->TranslateString("Data track") ? String("Data track") : titles.GetNth(k)));
+	for (Int k = 0; k < titles.Length(); k++) cddbInfo.trackTitles.Add((titles.GetNth(k) == freac::i18n->TranslateString("Data track") ? String("Data track") : titles.GetNth(k)));
 	for (Int l = 0; l < comments.Length(); l++) cddbInfo.trackComments.Add(comments.GetNth(l));
 
 	if (cddbInfo.category == NIL) cddbInfo.category = GetCDDBGenre(edit_genre->GetText());
@@ -346,7 +346,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 
 	check_updateJoblist->Hide();
 	check_submitLater->Hide();
-	text_status->SetText(String(BonkEnc::i18n->TranslateString("Submitting CD information")).Append("..."));
+	text_status->SetText(String(freac::i18n->TranslateString("Submitting CD information")).Append("..."));
 
 	Int	 revision = cddbInfo.revision;
 
@@ -406,7 +406,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 			{
 				if (trackInfo->cdTrack == list_tracks->GetNthEntry(m)->GetText().ToInt())
 				{
-					if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") trackInfo->artist = artists.GetNth(m);
+					if (edit_artist->GetText() == freac::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") trackInfo->artist = artists.GetNth(m);
 					else															trackInfo->artist = edit_artist->GetText();
 
 					trackInfo->title	= titles.GetNth(m);
@@ -418,7 +418,7 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 					String	 jlEntry;
 
 					if (trackInfo->artist == NIL && trackInfo->title == NIL) jlEntry = String(trackInfo->origFilename).Append("\t");
-					else							 jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : BonkEnc::i18n->TranslateString("unknown title")).Append("\t");
+					else							 jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : freac::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : freac::i18n->TranslateString("unknown title")).Append("\t");
 
 					jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String()).Append("\t").Append(trackInfo->lengthString).Append("\t").Append(trackInfo->fileSizeString);
 
@@ -433,16 +433,16 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbSubmitDlg::Cancel()
+Void freac::cddbSubmitDlg::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbSubmitDlg::SetArtist()
+Void freac::cddbSubmitDlg::SetArtist()
 {
 	if (dontUpdateInfo) return;
 
-	if ((edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") && !edit_trackartist->IsActive())
+	if ((edit_artist->GetText() == freac::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") && !edit_trackartist->IsActive())
 	{
 		if (list_tracks->GetSelectedEntry() != NIL)
 		{
@@ -450,7 +450,7 @@ Void BonkEnc::cddbSubmitDlg::SetArtist()
 			edit_trackartist->Activate();
 		}
 	}
-	else if ((edit_artist->GetText() != BonkEnc::i18n->TranslateString("Various artists") && edit_artist->GetText() != "Various") && edit_trackartist->IsActive())
+	else if ((edit_artist->GetText() != freac::i18n->TranslateString("Various artists") && edit_artist->GetText() != "Various") && edit_trackartist->IsActive())
 	{
 		edit_trackartist->SetText(NIL);
 		edit_trackartist->Deactivate();
@@ -459,16 +459,16 @@ Void BonkEnc::cddbSubmitDlg::SetArtist()
 	UpdateTrackList();
 }
 
-Void BonkEnc::cddbSubmitDlg::UpdateTrackList()
+Void freac::cddbSubmitDlg::UpdateTrackList()
 {
 	for (Int i = 0; i < list_tracks->Length(); i++)
 	{
-		if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append("\t").Append(artists.GetNth(i).Length() > 0 ? artists.GetNth(i) : BonkEnc::i18n->TranslateString("unknown artist")).Append(" - ").Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : BonkEnc::i18n->TranslateString("unknown title")));
-		else															list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append("\t").Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : BonkEnc::i18n->TranslateString("unknown title")));
+		if (edit_artist->GetText() == freac::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append("\t").Append(artists.GetNth(i).Length() > 0 ? artists.GetNth(i) : freac::i18n->TranslateString("unknown artist")).Append(" - ").Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : freac::i18n->TranslateString("unknown title")));
+		else														      list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append("\t").Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : freac::i18n->TranslateString("unknown title")));
 	}
 }
 
-Void BonkEnc::cddbSubmitDlg::ChangeDrive()
+Void freac::cddbSubmitDlg::ChangeDrive()
 {
 	activedrive = combo_drive->GetSelectedEntryNumber();
 
@@ -487,7 +487,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 	if (numAudioTracks <= 0)
 	{
-		text_cdstatus->SetText(String(BonkEnc::i18n->TranslateString("Status")).Append(": ").Append(BonkEnc::i18n->TranslateString("No audio CD in drive!")));
+		text_cdstatus->SetText(String(freac::i18n->TranslateString("Status")).Append(": ").Append(freac::i18n->TranslateString("No audio CD in drive!")));
 
 		dontUpdateInfo = True;
 
@@ -519,7 +519,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	}
 	else
 	{
-		text_cdstatus->SetText(String(BonkEnc::i18n->TranslateString("Status")).Append(": ").Append(BonkEnc::i18n->TranslateString("Successfully read CD!")));
+		text_cdstatus->SetText(String(freac::i18n->TranslateString("Status")).Append(": ").Append(freac::i18n->TranslateString("Successfully read CD!")));
 
 		btn_submit->Activate();
 	}
@@ -555,7 +555,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 
 	if (cdInfo != NIL)
 	{
-		if (cdInfo.dArtist == "Various") edit_artist->SetText(BonkEnc::i18n->TranslateString("Various artists"));
+		if (cdInfo.dArtist == "Various") edit_artist->SetText(freac::i18n->TranslateString("Various artists"));
 		else				 edit_artist->SetText(cdInfo.dArtist);
 
 		edit_album->SetText(cdInfo.dTitle);
@@ -589,7 +589,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	}
 	else if (cdText.GetCDInfo().GetArtist() != NIL)
 	{
-		if (cdText.GetCDInfo().GetArtist() == "Various") edit_artist->SetText(BonkEnc::i18n->TranslateString("Various artists"));
+		if (cdText.GetCDInfo().GetArtist() == "Various") edit_artist->SetText(freac::i18n->TranslateString("Various artists"));
 		else						 edit_artist->SetText(cdText.GetCDInfo().GetArtist());
 
 		edit_album->SetText(cdText.GetCDInfo().GetTitle());
@@ -632,7 +632,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 				Int	 handle = list_tracks->AddEntry(NIL)->GetHandle();
 
 				artists.Add(NIL, handle);
-				titles.Add(BonkEnc::i18n->TranslateString("Data track"), handle);
+				titles.Add(freac::i18n->TranslateString("Data track"), handle);
 				comments.Add(NIL, handle);
 			}
 			else
@@ -649,7 +649,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	}
 	else if (cdPlayerInfo.GetCDInfo().GetArtist() != NIL)
 	{
-		if (cdPlayerInfo.GetCDInfo().GetArtist() == "Various")	edit_artist->SetText(BonkEnc::i18n->TranslateString("Various artists"));
+		if (cdPlayerInfo.GetCDInfo().GetArtist() == "Various")	edit_artist->SetText(freac::i18n->TranslateString("Various artists"));
 		else							edit_artist->SetText(cdPlayerInfo.GetCDInfo().GetArtist());
 
 		edit_album->SetText(cdPlayerInfo.GetCDInfo().GetTitle());
@@ -692,7 +692,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 				Int	 handle = list_tracks->AddEntry(NIL)->GetHandle();
 
 				artists.Add(NIL, handle);
-				titles.Add(BonkEnc::i18n->TranslateString("Data track"), handle);
+				titles.Add(freac::i18n->TranslateString("Data track"), handle);
 				comments.Add(NIL, handle);
 			}
 			else
@@ -745,7 +745,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 				Int	 handle = list_tracks->AddEntry(NIL)->GetHandle();
 
 				artists.Add(NIL, handle);
-				titles.Add(BonkEnc::i18n->TranslateString("Data track"), handle);
+				titles.Add(freac::i18n->TranslateString("Data track"), handle);
 				comments.Add(NIL, handle);
 			}
 			else
@@ -793,7 +793,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	{
 		if (artists.GetNth(m) != artists.GetNth(m - 1))
 		{
-			edit_artist->SetText(BonkEnc::i18n->TranslateString("Various artists"));
+			edit_artist->SetText(freac::i18n->TranslateString("Various artists"));
 			edit_trackartist->Activate();
 
 			break;
@@ -805,7 +805,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	dontUpdateInfo = False;
 }
 
-Void BonkEnc::cddbSubmitDlg::SelectTrack()
+Void freac::cddbSubmitDlg::SelectTrack()
 {
 	if (list_tracks->GetSelectedEntry() == NIL) return;
 
@@ -826,7 +826,7 @@ Void BonkEnc::cddbSubmitDlg::SelectTrack()
 	if	(track > 0 && track < 10) edit_track->SetText(String("0").Append(String::FromInt(track)));
 	else if (track >= 10)		  edit_track->SetText(String::FromInt(track));
 
-	if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various")
+	if (edit_artist->GetText() == freac::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various")
 	{
 		edit_trackartist->SetText(artist);
 		edit_trackartist->Activate();
@@ -842,26 +842,26 @@ Void BonkEnc::cddbSubmitDlg::SelectTrack()
 	dontUpdateInfo = False;
 }
 
-Void BonkEnc::cddbSubmitDlg::UpdateTrack()
+Void freac::cddbSubmitDlg::UpdateTrack()
 {
 	if (dontUpdateInfo) return;
 	if (list_tracks->GetSelectedEntry() == NIL) return;
 
 	Int	 track = edit_track->GetText().ToInt();
 
-	if (edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : NIL).Append(String::FromInt(track)).Append("\t").Append(edit_trackartist->GetText() == NIL ? BonkEnc::i18n->TranslateString("unknown artist") : edit_trackartist->GetText()).Append(" - ").Append(edit_title->GetText() == NIL ? BonkEnc::i18n->TranslateString("unknown title") : edit_title->GetText()));
-	else															list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : NIL).Append(String::FromInt(track)).Append("\t").Append(edit_title->GetText() == NIL ? BonkEnc::i18n->TranslateString("unknown title") : edit_title->GetText()));
+	if (edit_artist->GetText() == freac::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : NIL).Append(String::FromInt(track)).Append("\t").Append(edit_trackartist->GetText() == NIL ? freac::i18n->TranslateString("unknown artist") : edit_trackartist->GetText()).Append(" - ").Append(edit_title->GetText() == NIL ? freac::i18n->TranslateString("unknown title") : edit_title->GetText()));
+	else														      list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : NIL).Append(String::FromInt(track)).Append("\t").Append(edit_title->GetText() == NIL ? freac::i18n->TranslateString("unknown title") : edit_title->GetText()));
 
 	artists.Set(list_tracks->GetSelectedEntry()->GetHandle(), edit_trackartist->GetText());
 	titles.Set(list_tracks->GetSelectedEntry()->GetHandle(), edit_title->GetText());
 }
 
-Void BonkEnc::cddbSubmitDlg::FinishArtist()
+Void freac::cddbSubmitDlg::FinishArtist()
 {
 	edit_title->MarkAll();
 }
 
-Void BonkEnc::cddbSubmitDlg::FinishTrack()
+Void freac::cddbSubmitDlg::FinishTrack()
 {
 	for (Int i = 0; i < list_tracks->Length() - 1; i++)
 	{
@@ -876,7 +876,7 @@ Void BonkEnc::cddbSubmitDlg::FinishTrack()
 	}
 }
 
-Void BonkEnc::cddbSubmitDlg::UpdateComment()
+Void freac::cddbSubmitDlg::UpdateComment()
 {
 	if (dontUpdateInfo) return;
 	if (list_tracks->GetSelectedEntry() == NIL) return;
@@ -884,13 +884,13 @@ Void BonkEnc::cddbSubmitDlg::UpdateComment()
 	comments.Set(list_tracks->GetSelectedEntry()->GetHandle(), edit_comment->GetText());
 }
 
-Void BonkEnc::cddbSubmitDlg::ToggleSubmitLater()
+Void freac::cddbSubmitDlg::ToggleSubmitLater()
 {
-	if (!submitLater && currentConfig->enable_remote_cddb)	btn_submit->SetText(BonkEnc::i18n->TranslateString("Submit"));
-	else							btn_submit->SetText(BonkEnc::i18n->TranslateString("Save entry"));
+	if (!submitLater && currentConfig->enable_remote_cddb)	btn_submit->SetText(freac::i18n->TranslateString("Submit"));
+	else							btn_submit->SetText(freac::i18n->TranslateString("Save entry"));
 }
 
-Bool BonkEnc::cddbSubmitDlg::IsDataValid()
+Bool freac::cddbSubmitDlg::IsDataValid()
 {
 	Bool	 sane = True;
 
@@ -899,8 +899,8 @@ Bool BonkEnc::cddbSubmitDlg::IsDataValid()
 
 	for (Int i = 0; i < titles.Length(); i++)
 	{
-		if ((edit_artist->GetText() == BonkEnc::i18n->TranslateString("Various artists") ||
-		     edit_artist->GetText() == "Various")					 &&
+		if ((edit_artist->GetText() == freac::i18n->TranslateString("Various artists") ||
+		     edit_artist->GetText() == "Various")				       &&
 		    !IsStringValid(artists.GetNth(i))) sane = False;
 
 		if (!IsStringValid(titles.GetNth(i))) sane = False;
@@ -909,7 +909,7 @@ Bool BonkEnc::cddbSubmitDlg::IsDataValid()
 	return sane;
 }
 
-Bool BonkEnc::cddbSubmitDlg::IsStringValid(const String &text)
+Bool freac::cddbSubmitDlg::IsStringValid(const String &text)
 {
 	Bool	 valid = False;
 
@@ -936,7 +936,7 @@ Bool BonkEnc::cddbSubmitDlg::IsStringValid(const String &text)
 	return valid;
 }
 
-String BonkEnc::cddbSubmitDlg::GetCDDBGenre(const String &genre)
+String freac::cddbSubmitDlg::GetCDDBGenre(const String &genre)
 {
 	String	 cddbGenre = "misc";
 

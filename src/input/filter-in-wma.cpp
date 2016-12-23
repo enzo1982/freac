@@ -14,7 +14,7 @@
 
 using namespace smooth::Threads;
 
-BonkEnc::FilterInWMA::FilterInWMA(Config *config, Track *format) : InputFilter(config, format)
+freac::FilterInWMA::FilterInWMA(Config *config, Track *format) : InputFilter(config, format)
 {
 	m_pReader = NIL;
 
@@ -25,14 +25,14 @@ BonkEnc::FilterInWMA::FilterInWMA(Config *config, Track *format) : InputFilter(c
 	CoInitialize(NIL);
 }
 
-BonkEnc::FilterInWMA::~FilterInWMA()
+freac::FilterInWMA::~FilterInWMA()
 {
 	/* Uninit the Microsoft COM library.
 	 */
 	CoUninitialize();
 }
 
-Bool BonkEnc::FilterInWMA::Activate()
+Bool freac::FilterInWMA::Activate()
 {
 	HRESULT	 hr = NIL;
 
@@ -104,7 +104,7 @@ Bool BonkEnc::FilterInWMA::Activate()
 	return True;
 }
 
-Bool BonkEnc::FilterInWMA::Deactivate()
+Bool freac::FilterInWMA::Deactivate()
 {
 	readerCallback->SetActive(False);
 
@@ -130,7 +130,7 @@ Bool BonkEnc::FilterInWMA::Deactivate()
 	return True;
 }
 
-Int BonkEnc::FilterInWMA::ReadData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterInWMA::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (!readerCallback->IsActive() && samplesBuffer.Size() <= 0) return -1;
 
@@ -155,7 +155,7 @@ Int BonkEnc::FilterInWMA::ReadData(Buffer<UnsignedByte> &data, Int size)
 	return data.Size();
 }
 
-HRESULT BonkEnc::FilterInWMA::GetHeaderAttribute(IWMHeaderInfo *pHeaderInfo, LPCWSTR pwszName, BYTE **ppbValue)
+HRESULT freac::FilterInWMA::GetHeaderAttribute(IWMHeaderInfo *pHeaderInfo, LPCWSTR pwszName, BYTE **ppbValue)
 {
 	HRESULT			 hr = S_OK;
 	WMT_ATTR_DATATYPE	 wmtType;
@@ -183,7 +183,7 @@ HRESULT BonkEnc::FilterInWMA::GetHeaderAttribute(IWMHeaderInfo *pHeaderInfo, LPC
 	return S_OK;
 }
 
-Void BonkEnc::FilterInWMA::WaitForEvent(HANDLE hEvent, DWORD msMaxWaitTime)
+Void freac::FilterInWMA::WaitForEvent(HANDLE hEvent, DWORD msMaxWaitTime)
 {
 	for (DWORD i = 0; i < msMaxWaitTime; i += 10)
 	{
@@ -205,7 +205,7 @@ Void BonkEnc::FilterInWMA::WaitForEvent(HANDLE hEvent, DWORD msMaxWaitTime)
 	}
 }
 
-BonkEnc::Track *BonkEnc::FilterInWMA::GetFileInfo(const String &inFile)
+freac::Track *freac::FilterInWMA::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
 	InStream	*f_in	 = new InStream(STREAM_FILE, inFile, IS_READ);
@@ -436,7 +436,7 @@ BonkEnc::Track *BonkEnc::FilterInWMA::GetFileInfo(const String &inFile)
 	else		{		  return nFormat; }
 }
 
-BonkEnc::WMAReader::WMAReader()
+freac::WMAReader::WMAReader()
 {
 	m_cRef = 1;
 
@@ -455,12 +455,12 @@ BonkEnc::WMAReader::WMAReader()
 	samplesBufferMutex = NIL;
 }
 
-BonkEnc::WMAReader::~WMAReader()
+freac::WMAReader::~WMAReader()
 {
 	CloseHandle(m_hAsyncEvent);
 }
 
-HRESULT BonkEnc::WMAReader::QueryInterface(REFIID riid, void **ppvObject) 
+HRESULT freac::WMAReader::QueryInterface(REFIID riid, void **ppvObject) 
 {
 	if (ppvObject == NIL) return E_INVALIDARG;
 
@@ -488,12 +488,12 @@ HRESULT BonkEnc::WMAReader::QueryInterface(REFIID riid, void **ppvObject)
 	return S_OK;
 }
 
-ULONG BonkEnc::WMAReader::AddRef()
+ULONG freac::WMAReader::AddRef()
 {
 	return InterlockedIncrement(&m_cRef);
 }
 
-ULONG BonkEnc::WMAReader::Release()
+ULONG freac::WMAReader::Release()
 {
 	if (InterlockedDecrement(&m_cRef) == 0)
 	{
@@ -505,7 +505,7 @@ ULONG BonkEnc::WMAReader::Release()
 	return m_cRef;
 }
 
-HRESULT BonkEnc::WMAReader::OnStatus(WMT_STATUS status, HRESULT hr, WMT_ATTR_DATATYPE dwType, BYTE __RPC_FAR *pValue, void __RPC_FAR *pvContext)
+HRESULT freac::WMAReader::OnStatus(WMT_STATUS status, HRESULT hr, WMT_ATTR_DATATYPE dwType, BYTE __RPC_FAR *pValue, void __RPC_FAR *pvContext)
 {
 	/* This switch checks for the important messages sent by the reader object.
 	 */
@@ -584,7 +584,7 @@ HRESULT BonkEnc::WMAReader::OnStatus(WMT_STATUS status, HRESULT hr, WMT_ATTR_DAT
 	return S_OK;
 }
 
-HRESULT BonkEnc::WMAReader::OnSample(DWORD dwOutputNum, QWORD cnsSampleTime, QWORD cnsSampleDuration, DWORD dwFlags, INSSBuffer *pSample, void *pvContext)
+HRESULT freac::WMAReader::OnSample(DWORD dwOutputNum, QWORD cnsSampleTime, QWORD cnsSampleDuration, DWORD dwFlags, INSSBuffer *pSample, void *pvContext)
 {
 	/* Check the output number of the sample against the stored output number.
 	 * Because only the first audio output is stored, all other outputs,
@@ -624,7 +624,7 @@ HRESULT BonkEnc::WMAReader::OnSample(DWORD dwOutputNum, QWORD cnsSampleTime, QWO
 	return hr;
 }
 
-HRESULT BonkEnc::WMAReader::OnTime(QWORD cnsCurrentTime, void *pvContext)
+HRESULT freac::WMAReader::OnTime(QWORD cnsCurrentTime, void *pvContext)
 {
 	HRESULT	 hr = S_OK;
 
@@ -640,47 +640,47 @@ HRESULT BonkEnc::WMAReader::OnTime(QWORD cnsCurrentTime, void *pvContext)
 	return hr;
 }
 
-Void BonkEnc::WMAReader::SetAsyncEvent(HRESULT hrAsync)
+Void freac::WMAReader::SetAsyncEvent(HRESULT hrAsync)
 {
 	SetEvent(m_hAsyncEvent);
 }
 
-Bool BonkEnc::WMAReader::IsActive()
+Bool freac::WMAReader::IsActive()
 {
 	return active;
 }
 
-Void BonkEnc::WMAReader::SetActive(Bool nActive)
+Void freac::WMAReader::SetActive(Bool nActive)
 {
 	active = nActive;
 }
 
-Bool BonkEnc::WMAReader::IsError()
+Bool freac::WMAReader::IsError()
 {
 	return error;
 }
 
-const String &BonkEnc::WMAReader::GetErrorString()
+const String &freac::WMAReader::GetErrorString()
 {
 	return errorString;
 }
 
-HANDLE BonkEnc::WMAReader::GetAsyncEventHandle() const
+HANDLE freac::WMAReader::GetAsyncEventHandle() const
 {
 	return m_hAsyncEvent;
 }
 
-Void BonkEnc::WMAReader::SetReaderAdvanced(IWMReaderAdvanced *pReaderAdvanced)
+Void freac::WMAReader::SetReaderAdvanced(IWMReaderAdvanced *pReaderAdvanced)
 {
 	m_pReaderAdvanced = pReaderAdvanced;
 }
 
-Void BonkEnc::WMAReader::SetAudioOutputNum(DWORD dwAudioOutputNum)
+Void freac::WMAReader::SetAudioOutputNum(DWORD dwAudioOutputNum)
 {
 	m_dwAudioOutputNum = dwAudioOutputNum;
 }
 
-Void BonkEnc::WMAReader::SetSamplesBuffer(Buffer<UnsignedByte> *buffer, Mutex *mutex)
+Void freac::WMAReader::SetSamplesBuffer(Buffer<UnsignedByte> *buffer, Mutex *mutex)
 {
 	samplesBuffer = buffer;
 	samplesBufferMutex = mutex;

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,18 +12,18 @@
 
 #include <dllinterfaces.h>
 
-BonkEnc::FilterInBONK::FilterInBONK(Config *config, Track *format) : InputFilter(config, format)
+freac::FilterInBONK::FilterInBONK(Config *config, Track *format) : InputFilter(config, format)
 {
 	decoder	= NIL;
 
 	packageSize = 0;
 }
 
-BonkEnc::FilterInBONK::~FilterInBONK()
+freac::FilterInBONK::~FilterInBONK()
 {
 }
 
-Bool BonkEnc::FilterInBONK::Activate()
+Bool freac::FilterInBONK::Activate()
 {
 	unsigned int	 length		= 0;
 	unsigned int	 rate		= 0;
@@ -42,7 +42,7 @@ Bool BonkEnc::FilterInBONK::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterInBONK::Deactivate()
+Bool freac::FilterInBONK::Deactivate()
 {
 	ex_bonk_decoder_finish(decoder);
 
@@ -51,7 +51,7 @@ Bool BonkEnc::FilterInBONK::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInBONK::ReadData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterInBONK::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	size = driver->ReadData(dataBuffer, size >= 0 ? size : 0);
 
@@ -62,7 +62,7 @@ Int BonkEnc::FilterInBONK::ReadData(Buffer<UnsignedByte> &data, Int size)
 	return (nSamples == -1) ? 0 : nSamples * (format->bits / 8);
 }
 
-BonkEnc::Track *BonkEnc::FilterInBONK::GetFileInfo(const String &inFile)
+freac::Track *freac::FilterInBONK::GetFileInfo(const String &inFile)
 {
 	InStream	*in		= new InStream(STREAM_FILE, inFile, IS_READ);
 	Track		*nFormat	= new Track;

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -289,32 +289,32 @@ WMCREATEPROFILEMANAGER		 ex_WMCreateProfileManager		= NIL;
 WMCREATEEDITOR			 ex_WMCreateEditor			= NIL;
 #endif
 
-DynamicLoader *BonkEnc::DLLInterfaces::bonkdll		= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::lamedll		= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::vorbisdll	= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::faacdll		= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::faad2dll		= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::id3dll		= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::eupdatedll	= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::mp4v2dll		= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::flacdll		= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::maddll		= NIL;
+DynamicLoader *freac::DLLInterfaces::bonkdll	= NIL;
+DynamicLoader *freac::DLLInterfaces::lamedll	= NIL;
+DynamicLoader *freac::DLLInterfaces::vorbisdll	= NIL;
+DynamicLoader *freac::DLLInterfaces::faacdll	= NIL;
+DynamicLoader *freac::DLLInterfaces::faad2dll	= NIL;
+DynamicLoader *freac::DLLInterfaces::id3dll	= NIL;
+DynamicLoader *freac::DLLInterfaces::eupdatedll	= NIL;
+DynamicLoader *freac::DLLInterfaces::mp4v2dll	= NIL;
+DynamicLoader *freac::DLLInterfaces::flacdll	= NIL;
+DynamicLoader *freac::DLLInterfaces::maddll	= NIL;
 
 #ifdef __WIN32__
-DynamicLoader *BonkEnc::DLLInterfaces::bladedll		= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::cdripdll		= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::tvqdll		= NIL;
-DynamicLoader *BonkEnc::DLLInterfaces::wmvcoredll	= NIL;
+DynamicLoader *freac::DLLInterfaces::bladedll	= NIL;
+DynamicLoader *freac::DLLInterfaces::cdripdll	= NIL;
+DynamicLoader *freac::DLLInterfaces::tvqdll	= NIL;
+DynamicLoader *freac::DLLInterfaces::wmvcoredll	= NIL;
 
-Array<DynamicLoader *>	 BonkEnc::DLLInterfaces::winamp_in_plugins;
-Array<In_Module *>	 BonkEnc::DLLInterfaces::winamp_in_modules;
-Array<DynamicLoader *>	 BonkEnc::DLLInterfaces::winamp_out_plugins;
-Array<Out_Module *>	 BonkEnc::DLLInterfaces::winamp_out_modules;
+Array<DynamicLoader *>	 freac::DLLInterfaces::winamp_in_plugins;
+Array<In_Module *>	 freac::DLLInterfaces::winamp_in_modules;
+Array<DynamicLoader *>	 freac::DLLInterfaces::winamp_out_plugins;
+Array<Out_Module *>	 freac::DLLInterfaces::winamp_out_modules;
 #endif
 
-Bool BonkEnc::DLLInterfaces::LoadBonkDLL()
+Bool freac::DLLInterfaces::LoadBonkDLL()
 {
-	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().HasSSE3())
+	if (freac::currentConfig->openmp_enableOpenMP && CPU().HasSSE3())
 	{
 #ifdef __WIN32__
 		if (File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\Bonk-OpenMP.dll")).Exists())
@@ -375,14 +375,14 @@ Bool BonkEnc::DLLInterfaces::LoadBonkDLL()
 	return True;
 }
 
-Void BonkEnc::DLLInterfaces::FreeBonkDLL()
+Void freac::DLLInterfaces::FreeBonkDLL()
 {
 	Object::DeleteObject(bonkdll);
 
 	bonkdll = NIL;
 }
 
-Bool BonkEnc::DLLInterfaces::LoadBladeDLL()
+Bool freac::DLLInterfaces::LoadBladeDLL()
 {
 #ifdef __WIN32__
 	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\BladeEnc.dll")).Exists()) return False;
@@ -407,16 +407,16 @@ Bool BonkEnc::DLLInterfaces::LoadBladeDLL()
 #endif
 }
 
-Void BonkEnc::DLLInterfaces::FreeBladeDLL()
+Void freac::DLLInterfaces::FreeBladeDLL()
 {
 	Object::DeleteObject(bladedll);
 
 	bladedll = NIL;
 }
 
-Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
+Bool freac::DLLInterfaces::LoadLAMEDLL()
 {
-	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().HasSSE3())
+	if (freac::currentConfig->openmp_enableOpenMP && CPU().HasSSE3())
 	{
 #ifdef __WIN32__
 		if (File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\LAME-OpenMP.dll")).Exists())
@@ -513,14 +513,14 @@ Bool BonkEnc::DLLInterfaces::LoadLAMEDLL()
 	return True;
 }
 
-Void BonkEnc::DLLInterfaces::FreeLAMEDLL()
+Void freac::DLLInterfaces::FreeLAMEDLL()
 {
 	Object::DeleteObject(lamedll);
 
 	lamedll = NIL;
 }
 
-Bool BonkEnc::DLLInterfaces::LoadTVQDLL()
+Bool freac::DLLInterfaces::LoadTVQDLL()
 {
 #ifdef __WIN32__
 	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\TVQenc.dll")).Exists()) return False;
@@ -553,16 +553,16 @@ Bool BonkEnc::DLLInterfaces::LoadTVQDLL()
 #endif
 }
 
-Void BonkEnc::DLLInterfaces::FreeTVQDLL()
+Void freac::DLLInterfaces::FreeTVQDLL()
 {
 	Object::DeleteObject(tvqdll);
 
 	tvqdll = NIL;
 }
 
-Bool BonkEnc::DLLInterfaces::LoadVorbisDLL()
+Bool freac::DLLInterfaces::LoadVorbisDLL()
 {
-	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().HasSSE3())
+	if (freac::currentConfig->openmp_enableOpenMP && CPU().HasSSE3())
 	{
 #ifdef __WIN32__
 		if (File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\OggVorbis-OpenMP.dll")).Exists())
@@ -665,16 +665,16 @@ Bool BonkEnc::DLLInterfaces::LoadVorbisDLL()
 	return True;
 }
 
-Void BonkEnc::DLLInterfaces::FreeVorbisDLL()
+Void freac::DLLInterfaces::FreeVorbisDLL()
 {
 	Object::DeleteObject(vorbisdll);
 
 	vorbisdll = NIL;
 }
 
-Bool BonkEnc::DLLInterfaces::LoadFAACDLL()
+Bool freac::DLLInterfaces::LoadFAACDLL()
 {
-	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().HasSSE3())
+	if (freac::currentConfig->openmp_enableOpenMP && CPU().HasSSE3())
 	{
 #ifdef __WIN32__
 		if (File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\FAAC-OpenMP.dll")).Exists())
@@ -713,14 +713,14 @@ Bool BonkEnc::DLLInterfaces::LoadFAACDLL()
 	return True;
 }
 
-Void BonkEnc::DLLInterfaces::FreeFAACDLL()
+Void freac::DLLInterfaces::FreeFAACDLL()
 {
 	Object::DeleteObject(faacdll);
 
 	faacdll = NIL;
 }
 
-Bool BonkEnc::DLLInterfaces::LoadFAAD2DLL()
+Bool freac::DLLInterfaces::LoadFAAD2DLL()
 {
 #ifdef __WIN32__
 	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\FAAD2.dll")).Exists()) return False;
@@ -749,14 +749,14 @@ Bool BonkEnc::DLLInterfaces::LoadFAAD2DLL()
 	return True;
 }
 
-Void BonkEnc::DLLInterfaces::FreeFAAD2DLL()
+Void freac::DLLInterfaces::FreeFAAD2DLL()
 {
 	Object::DeleteObject(faad2dll);
 
 	faad2dll = NIL;
 }
 
-Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
+Bool freac::DLLInterfaces::LoadCDRipDLL()
 {
 #ifdef __WIN32__
 	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("CDRip.dll")).Exists()) return False;
@@ -803,14 +803,14 @@ Bool BonkEnc::DLLInterfaces::LoadCDRipDLL()
 #endif
 }
 
-Void BonkEnc::DLLInterfaces::FreeCDRipDLL()
+Void freac::DLLInterfaces::FreeCDRipDLL()
 {
 	Object::DeleteObject(cdripdll);
 
 	cdripdll = NIL;
 }
 
-Bool BonkEnc::DLLInterfaces::LoadID3DLL()
+Bool freac::DLLInterfaces::LoadID3DLL()
 {
 #ifdef __WIN32__
 	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("ID3lib.dll")).Exists()) return False;
@@ -877,14 +877,14 @@ Bool BonkEnc::DLLInterfaces::LoadID3DLL()
 	return True;
 }
 
-Void BonkEnc::DLLInterfaces::FreeID3DLL()
+Void freac::DLLInterfaces::FreeID3DLL()
 {
 	Object::DeleteObject(id3dll);
 
 	id3dll = NIL;
 }
 
-Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
+Bool freac::DLLInterfaces::LoadEUpdateDLL()
 {
 #ifdef __WIN32__
 	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("eUpdate.dll")).Exists()) return False;
@@ -917,14 +917,14 @@ Bool BonkEnc::DLLInterfaces::LoadEUpdateDLL()
 #endif
 }
 
-Void BonkEnc::DLLInterfaces::FreeEUpdateDLL()
+Void freac::DLLInterfaces::FreeEUpdateDLL()
 {
 	Object::DeleteObject(eupdatedll);
 
 	eupdatedll = NIL;
 }
 
-Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
+Bool freac::DLLInterfaces::LoadMP4V2DLL()
 {
 #ifdef __WIN32__
 	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\MP4v2.dll")).Exists()) return False;
@@ -1007,14 +1007,14 @@ Bool BonkEnc::DLLInterfaces::LoadMP4V2DLL()
 	return True;
 }
 
-Void BonkEnc::DLLInterfaces::FreeMP4V2DLL()
+Void freac::DLLInterfaces::FreeMP4V2DLL()
 {
 	Object::DeleteObject(mp4v2dll);
 
 	mp4v2dll = NIL;
 }
 
-Bool BonkEnc::DLLInterfaces::LoadMADDLL()
+Bool freac::DLLInterfaces::LoadMADDLL()
 {
 #ifdef __WIN32__
 	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\MAD.dll")).Exists()) return False;
@@ -1035,14 +1035,14 @@ Bool BonkEnc::DLLInterfaces::LoadMADDLL()
 	return True;
 }
 
-Void BonkEnc::DLLInterfaces::FreeMADDLL()
+Void freac::DLLInterfaces::FreeMADDLL()
 {
 	Object::DeleteObject(maddll);
 
 	maddll = NIL;
 }
 
-Bool BonkEnc::DLLInterfaces::LoadWMVCoreDLL()
+Bool freac::DLLInterfaces::LoadWMVCoreDLL()
 {
 #ifdef __WIN32__
 	wmvcoredll = new DynamicLoader("WMVCore");
@@ -1065,16 +1065,16 @@ Bool BonkEnc::DLLInterfaces::LoadWMVCoreDLL()
 #endif
 }
 
-Void BonkEnc::DLLInterfaces::FreeWMVCoreDLL()
+Void freac::DLLInterfaces::FreeWMVCoreDLL()
 {
 	Object::DeleteObject(wmvcoredll);
 
 	wmvcoredll = NIL;
 }
 
-Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
+Bool freac::DLLInterfaces::LoadFLACDLL()
 {
-	if (BonkEnc::currentConfig->openmp_enableOpenMP && CPU().HasSSE3())
+	if (freac::currentConfig->openmp_enableOpenMP && CPU().HasSSE3())
 	{
 #ifdef __WIN32__
 		if (File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\FLAC-OpenMP.dll")).Exists())
@@ -1179,7 +1179,7 @@ Bool BonkEnc::DLLInterfaces::LoadFLACDLL()
 	return True;
 }
 
-Void BonkEnc::DLLInterfaces::FreeFLACDLL()
+Void freac::DLLInterfaces::FreeFLACDLL()
 {
 	Object::DeleteObject(flacdll);
 
@@ -1187,7 +1187,7 @@ Void BonkEnc::DLLInterfaces::FreeFLACDLL()
 }
 
 #ifdef __WIN32__
-Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()
+Bool freac::DLLInterfaces::LoadWinampDLLs()
 {
 	MoveFileA(Application::GetApplicationDirectory().Append("plugins\\plugins.ini"), Application::GetApplicationDirectory().Append("freac.ini"));
 
@@ -1245,7 +1245,7 @@ Bool BonkEnc::DLLInterfaces::LoadWinampDLLs()
 	return True;
 }
 
-Void BonkEnc::DLLInterfaces::FreeWinampDLLs()
+Void freac::DLLInterfaces::FreeWinampDLLs()
 {
 	for (Int i = 0; i < winamp_in_plugins.Length(); i++)
 	{

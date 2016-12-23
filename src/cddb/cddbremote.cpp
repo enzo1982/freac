@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,7 +13,7 @@
 #include <smooth/io/drivers/driver_socks4.h>
 #include <smooth/io/drivers/driver_socks5.h>
 #include <cddb/cddbremote.h>
-#include <bonkenc.h>
+#include <freac.h>
 
 #ifdef __WIN32__
 #	include <winsock2.h>
@@ -23,16 +23,16 @@
 
 #include <dllinterfaces.h>
 
-BonkEnc::CDDBRemote::CDDBRemote(Config *iConfig) : CDDB(iConfig)
+freac::CDDBRemote::CDDBRemote(Config *iConfig) : CDDB(iConfig)
 {
 	connected = False;
 }
 
-BonkEnc::CDDBRemote::~CDDBRemote()
+freac::CDDBRemote::~CDDBRemote()
 {
 }
 
-String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
+String freac::CDDBRemote::SendCommand(const String &iCommand)
 {
 	if (!connected && config->freedb_mode == FREEDB_MODE_CDDBP) return "error not connected";
 
@@ -88,13 +88,13 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			if (config->freedb_proxy_mode == 1 && config->freedb_proxy_user != NIL) str.Append("Proxy-Authorization: Basic ").Append(String(String(config->freedb_proxy_user).Append(":").Append(config->freedb_proxy_password)).EncodeBase64()).Append("\n");
 
 			str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-			str.Append("Content-Length: ").Append(String::FromInt(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+").Append(BonkEnc::appName).Append("+").Append(BonkEnc::cddbVersion).Append("&proto=6\n").Length())).Append("\n");
+			str.Append("Content-Length: ").Append(String::FromInt(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+").Append(freac::appName).Append("+").Append(freac::cddbVersion).Append("&proto=6\n").Length())).Append("\n");
 			str.Append("Charset: UTF-8\n");
 			str.Append("\n");
 
 			for (int i = 0; i < command.Length(); i++) if (command[i] == ' ') command[i] = '+';
 
-			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+").Append(BonkEnc::appName).Append("+").Append(BonkEnc::cddbVersion).Append("&proto=6\n");
+			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+").Append(freac::appName).Append("+").Append(freac::cddbVersion).Append("&proto=6\n");
 
 			delete [] buffer;
 
@@ -158,7 +158,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 	return str;
 }
 
-Bool BonkEnc::CDDBRemote::ConnectToServer()
+Bool freac::CDDBRemote::ConnectToServer()
 {
 	if (config->freedb_mode == FREEDB_MODE_CDDBP)
 	{
@@ -196,17 +196,17 @@ Bool BonkEnc::CDDBRemote::ConnectToServer()
 
 	gethostname(hostNameBuffer, hostNameBuffer.Size());
 
-	SendCommand(String("cddb hello user ").Append(hostNameBuffer).Append(" ").Append(BonkEnc::appName).Append(" ").Append(BonkEnc::cddbVersion));
+	SendCommand(String("cddb hello user ").Append(hostNameBuffer).Append(" ").Append(freac::appName).Append(" ").Append(freac::cddbVersion));
 
 	return True;
 }
 
-Int BonkEnc::CDDBRemote::Query(Int discid)
+Int freac::CDDBRemote::Query(Int discid)
 {
 	return Query(GetCDDBQueryString());
 }
 
-Int BonkEnc::CDDBRemote::Query(const String &queryString)
+Int freac::CDDBRemote::Query(const String &queryString)
 {
 	String	 str = SendCommand(queryString);
 
@@ -295,7 +295,7 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 	return QUERY_RESULT_ERROR;
 }
 
-Bool BonkEnc::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbInfo)
+Bool freac::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbInfo)
 {
 	String	 result = SendCommand(String("cddb read ").Append(category).Append(" ").Append(DiscIDToString(discID)));
 
@@ -327,7 +327,7 @@ Bool BonkEnc::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cdd
 	return ParseCDDBRecord(result, cddbInfo);
 }
 
-Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
+Bool freac::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 {
 	CDDBInfo cddbInfo = oCddbInfo;
 
@@ -346,7 +346,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 	str.Append("Category: ").Append(cddbInfo.category).Append("\n");
 	str.Append("Discid: ").Append(cddbInfo.DiscIDToString()).Append("\n");
 	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-	str.Append("Submit-Mode: ").Append(BonkEnc::cddbMode).Append("\n");
+	str.Append("Submit-Mode: ").Append(freac::cddbMode).Append("\n");
 	str.Append("Content-Length: ").Append(String::FromInt(strlen(content.ConvertTo("UTF-8")))).Append("\n");
 	str.Append("Charset: UTF-8\n");
 	str.Append("\n");
@@ -406,7 +406,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 	else				return False;
 }
 
-Bool BonkEnc::CDDBRemote::CloseConnection()
+Bool freac::CDDBRemote::CloseConnection()
 {
 	if (!connected && config->freedb_mode == FREEDB_MODE_CDDBP) return False;
 

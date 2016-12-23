@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,7 +13,7 @@
 #include <dllinterfaces.h>
 #include <utilities.h>
 
-#include <bonkenc.h>
+#include <freac.h>
 #include <resources.h>
 
 #include <cddb/cddblocal.h>
@@ -22,9 +22,9 @@
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::cddbQueryDlg::cddbQueryDlg()
+freac::cddbQueryDlg::cddbQueryDlg()
 {
-	currentConfig	= BonkEnc::currentConfig;
+	currentConfig	= freac::currentConfig;
 
 	allowAddToBatch = False;
 
@@ -34,8 +34,8 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB query"), currentConfig->wndPos + Point(40, 40), Size(310, 84));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(freac::i18n->TranslateString("CDDB query"), currentConfig->wndPos + Point(40, 40), Size(310, 84));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 
@@ -55,7 +55,7 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&cddbQueryDlg::Cancel, this);
 
 	Add(mainWnd);
@@ -69,7 +69,7 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::cddbQueryDlg::~cddbQueryDlg()
+freac::cddbQueryDlg::~cddbQueryDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -78,7 +78,7 @@ BonkEnc::cddbQueryDlg::~cddbQueryDlg()
 	DeleteObject(btn_cancel);
 }
 
-const Error &BonkEnc::cddbQueryDlg::ShowDialog()
+const Error &freac::cddbQueryDlg::ShowDialog()
 {
 	mainWnd->Show();
 
@@ -91,14 +91,14 @@ const Error &BonkEnc::cddbQueryDlg::ShowDialog()
 	return error;
 }
 
-Bool BonkEnc::cddbQueryDlg::SetQueryString(const String &nQueryString)
+Bool freac::cddbQueryDlg::SetQueryString(const String &nQueryString)
 {
 	queryString = nQueryString;
 
 	return True;
 }
 
-const BonkEnc::CDDBInfo &BonkEnc::cddbQueryDlg::QueryCDDB(Bool iAllowAddToBatch)
+const freac::CDDBInfo &freac::cddbQueryDlg::QueryCDDB(Bool iAllowAddToBatch)
 {
 	allowAddToBatch = iAllowAddToBatch;
 
@@ -107,7 +107,7 @@ const BonkEnc::CDDBInfo &BonkEnc::cddbQueryDlg::QueryCDDB(Bool iAllowAddToBatch)
 	return cddbInfo;
 }
 
-Void BonkEnc::cddbQueryDlg::Cancel()
+Void freac::cddbQueryDlg::Cancel()
 {
 	if (queryThread == NIL) return;
 
@@ -129,7 +129,7 @@ Void BonkEnc::cddbQueryDlg::Cancel()
 	queryThread->Stop();
 }
 
-Int BonkEnc::cddbQueryDlg::QueryThread()
+Int freac::cddbQueryDlg::QueryThread()
 {
 	Bool	 result = False;
 
@@ -153,19 +153,19 @@ Int BonkEnc::cddbQueryDlg::QueryThread()
 	else	    return Error();
 }
 
-Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
+Bool freac::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 {
 	Int	 result;
 
 	prog_status->SetValue(0);
-	text_status->SetText(String(BonkEnc::i18n->TranslateString("Connecting to freedb server at")).Append(" ").Append(currentConfig->freedb_server).Append("..."));
+	text_status->SetText(String(freac::i18n->TranslateString("Connecting to freedb server at")).Append(" ").Append(currentConfig->freedb_server).Append("..."));
 
 	cddb.ConnectToServer();
 
 	if (stopQueryThread) { cddb.CloseConnection(); return False; }
 
 	prog_status->SetValue(20);
-	text_status->SetText(String(BonkEnc::i18n->TranslateString("Requesting CD information")).Append("..."));
+	text_status->SetText(String(freac::i18n->TranslateString("Requesting CD information")).Append("..."));
 
 	cddb.SetActiveDrive(currentConfig->cdrip_activedrive);
 
@@ -198,7 +198,7 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 
 	if (result == QUERY_RESULT_NONE)
 	{
-		if (displayError) QuickMessage(BonkEnc::i18n->TranslateString("No freedb entry for this disk."), BonkEnc::i18n->TranslateString("Info"), Message::Buttons::Ok, Message::Icon::Information);
+		if (displayError) QuickMessage(freac::i18n->TranslateString("No freedb entry for this disk."), freac::i18n->TranslateString("Info"), Message::Buttons::Ok, Message::Icon::Information);
 	}
 	else if (result == QUERY_RESULT_SINGLE)
 	{
@@ -213,7 +213,7 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 
 		for (int i = 0; i < cddb.GetNumberOfMatches(); i++) dlg->AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i));
 
-		if (fuzzy) dlg->AddEntry(BonkEnc::i18n->TranslateString("none"), NIL);
+		if (fuzzy) dlg->AddEntry(freac::i18n->TranslateString("none"), NIL);
 
 		if (dlg->ShowDialog() == Success())
 		{
@@ -252,7 +252,7 @@ Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb, Bool displayError)
 	{
 		if (allowAddToBatch)
 		{
-			if (QuickMessage(String(BonkEnc::i18n->TranslateString("Some error occurred trying to connect to the freedb server.")).Append("\n\n").Append(BonkEnc::i18n->TranslateString("Would you like to perform this query again later?")), BonkEnc::i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Hand) == Message::Button::Yes)
+			if (QuickMessage(String(freac::i18n->TranslateString("Some error occurred trying to connect to the freedb server.")).Append("\n\n").Append(freac::i18n->TranslateString("Would you like to perform this query again later?")), freac::i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Hand) == Message::Button::Yes)
 			{
 				CDDBBatch	*queries = new CDDBBatch(currentConfig);
 

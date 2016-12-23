@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -9,10 +9,10 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <cddb/cddb.h>
-#include <bonkenc.h>
+#include <freac.h>
 #include <dllinterfaces.h>
 
-int cddb_sum(int n)
+static int cddb_sum(int n)
 {
 	int	 ret = 0;
 
@@ -25,7 +25,7 @@ int cddb_sum(int n)
 	return ret;
 }
 
-BonkEnc::CDDB::CDDB(Config *iConfig)
+freac::CDDB::CDDB(Config *iConfig)
 {
 	activeDriveID = iConfig->cdrip_activedrive;
 	updateTrackOffsets = True;
@@ -33,14 +33,14 @@ BonkEnc::CDDB::CDDB(Config *iConfig)
 	config = iConfig;
 }
 
-BonkEnc::CDDB::~CDDB()
+freac::CDDB::~CDDB()
 {
 	ids.RemoveAll();
 	titles.RemoveAll();
 	categories.RemoveAll();
 }
 
-Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
+Int freac::CDDB::SetActiveDrive(Int driveID)
 {
 	if (driveID >= ex_CR_GetNumCDROM()) return Error();
 
@@ -49,7 +49,7 @@ Int BonkEnc::CDDB::SetActiveDrive(Int driveID)
 	return Success();
 }
 
-Int BonkEnc::CDDB::ComputeDiscID()
+Int freac::CDDB::ComputeDiscID()
 {
 	ex_CR_SetActiveCDROM(activeDriveID);
 	ex_CR_ReadToc();
@@ -64,7 +64,7 @@ Int BonkEnc::CDDB::ComputeDiscID()
 	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
 }
 
-String BonkEnc::CDDB::DiscIDToString(Int discID)
+String freac::CDDB::DiscIDToString(Int discID)
 {
 	String	 result;
 
@@ -77,7 +77,7 @@ String BonkEnc::CDDB::DiscIDToString(Int discID)
 	return result;
 }
 
-Int BonkEnc::CDDB::StringToDiscID(const String &string)
+Int freac::CDDB::StringToDiscID(const String &string)
 {
 	Int	 result = 0;
 
@@ -90,7 +90,7 @@ Int BonkEnc::CDDB::StringToDiscID(const String &string)
 	return result;
 }
 
-String BonkEnc::CDDB::GetCDDBQueryString()
+String freac::CDDB::GetCDDBQueryString()
 {
 	ex_CR_SetActiveCDROM(activeDriveID);
 	ex_CR_ReadToc();
@@ -110,7 +110,7 @@ String BonkEnc::CDDB::GetCDDBQueryString()
 	return str;
 }
 
-Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
+Bool freac::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 {
 	if (updateTrackOffsets)
 	{
@@ -192,7 +192,7 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 /* Format a complete CDDB record according
    to the rules from the freedb how-to. */
 
-String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
+String freac::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 {
 	String	 content;
 
@@ -209,7 +209,7 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 	content.Append("# Disc length: ").Append(String::FromInt(cddbInfo.discLength)).Append("\n");
 	content.Append("# ").Append("\n");
 	content.Append("# Revision: ").Append(String::FromInt(cddbInfo.revision)).Append("\n");
-	content.Append("# Submitted via: ").Append(BonkEnc::appName).Append(" ").Append(BonkEnc::cddbVersion).Append("\n");
+	content.Append("# Submitted via: ").Append(freac::appName).Append(" ").Append(freac::cddbVersion).Append("\n");
 	content.Append("# ").Append("\n");
 
 	content.Append(FormatCDDBEntry("DISCID", cddbInfo.DiscIDToString()));
@@ -238,7 +238,7 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 /* Parse a complete CDDB record and fill the
    given CDDBInfo structure. */
 
-Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
+Bool freac::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 {
 	Int	 index = 0;
 
@@ -441,7 +441,7 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
    from the freedb how-to. Replace special
    characters and split lines at 256 chars. */
 
-String BonkEnc::CDDB::FormatCDDBEntry(const String &entry, const String &value)
+String freac::CDDB::FormatCDDBEntry(const String &entry, const String &value)
 {
 	if (value == NIL) return String(entry).Append("=\n");
 
@@ -480,7 +480,7 @@ String BonkEnc::CDDB::FormatCDDBEntry(const String &entry, const String &value)
    special character sequences and concatenate
    multiline entries. */
 
-String BonkEnc::CDDB::ParseCDDBEntry(const String &cddb, Int &index)
+String freac::CDDB::ParseCDDBEntry(const String &cddb, Int &index)
 {
 	String	 result;
 	String	 entry;

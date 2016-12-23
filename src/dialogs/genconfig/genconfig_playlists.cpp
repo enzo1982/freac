@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -13,12 +13,12 @@
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::GeneralSettingsLayerPlaylists::GeneralSettingsLayerPlaylists() : Layer(BonkEnc::i18n->TranslateString("Playlists"))
+freac::GeneralSettingsLayerPlaylists::GeneralSettingsLayerPlaylists() : Layer(freac::i18n->TranslateString("Playlists"))
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	createPlaylists	= currentConfig->createPlaylist;
 	createCueSheets	= currentConfig->createCueSheet;
@@ -29,19 +29,19 @@ BonkEnc::GeneralSettingsLayerPlaylists::GeneralSettingsLayerPlaylists() : Layer(
 	size.cx	= 178;
 	size.cy	= 68;
 
-	group_options	= new GroupBox(BonkEnc::i18n->TranslateString("Playlists"), pos, size);
+	group_options	= new GroupBox(freac::i18n->TranslateString("Playlists"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_createPlaylists	= new CheckBox(BonkEnc::i18n->TranslateString("Create playlists"), pos, size, &createPlaylists);
+	check_createPlaylists	= new CheckBox(freac::i18n->TranslateString("Create playlists"), pos, size, &createPlaylists);
 	check_createPlaylists->onAction.Connect(&GeneralSettingsLayerPlaylists::ToggleCreatePlaylists, this);
 
 	pos.y += 26;
 
-	check_createCueSheets	= new CheckBox(BonkEnc::i18n->TranslateString("Create cue sheets"), pos, size, &createCueSheets);
+	check_createCueSheets	= new CheckBox(freac::i18n->TranslateString("Create cue sheets"), pos, size, &createCueSheets);
 	check_createCueSheets->onAction.Connect(&GeneralSettingsLayerPlaylists::ToggleCreatePlaylists, this);
 
 	pos.x	= 193;
@@ -49,14 +49,14 @@ BonkEnc::GeneralSettingsLayerPlaylists::GeneralSettingsLayerPlaylists() : Layer(
 	size.cx	= 344;
 	size.cy	= 69;
 
-	group_outdir	= new GroupBox(BonkEnc::i18n->TranslateString("Output folder"), pos, size);
+	group_outdir	= new GroupBox(freac::i18n->TranslateString("Output folder"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 236;
 	size.cy	= 0;
 
-	check_useEncOutdir	= new CheckBox(BonkEnc::i18n->TranslateString("Use encoder output folder"), pos, size, &useEncOutdir);
+	check_useEncOutdir	= new CheckBox(freac::i18n->TranslateString("Use encoder output folder"), pos, size, &useEncOutdir);
 	check_useEncOutdir->onAction.Connect(&GeneralSettingsLayerPlaylists::ToggleUseEncOutdir, this);
 
 	pos.x	= 203;
@@ -70,7 +70,7 @@ BonkEnc::GeneralSettingsLayerPlaylists::GeneralSettingsLayerPlaylists() : Layer(
 	pos.y	-= 1;
 	size.cx	= 0;
 
-	button_outdir_browse= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
+	button_outdir_browse= new Button(freac::i18n->TranslateString("Browse"), NIL, pos, size);
 	button_outdir_browse->onAction.Connect(&GeneralSettingsLayerPlaylists::SelectDir, this);
 
 	pos.x	= 193;
@@ -78,7 +78,7 @@ BonkEnc::GeneralSettingsLayerPlaylists::GeneralSettingsLayerPlaylists() : Layer(
 	size.cx	= 344;
 	size.cy	= 43;
 
-	group_filename	= new GroupBox(BonkEnc::i18n->TranslateString("Filename pattern"), pos, size);
+	group_filename	= new GroupBox(freac::i18n->TranslateString("Filename pattern"), pos, size);
 
 	pos.x	= 203;
 	pos.y	+= 12;
@@ -110,7 +110,7 @@ BonkEnc::GeneralSettingsLayerPlaylists::GeneralSettingsLayerPlaylists() : Layer(
 	Add(check_createCueSheets);
 }
 
-BonkEnc::GeneralSettingsLayerPlaylists::~GeneralSettingsLayerPlaylists()
+freac::GeneralSettingsLayerPlaylists::~GeneralSettingsLayerPlaylists()
 {
 	DeleteObject(group_outdir);
 	DeleteObject(check_useEncOutdir);
@@ -124,12 +124,12 @@ BonkEnc::GeneralSettingsLayerPlaylists::~GeneralSettingsLayerPlaylists()
 	DeleteObject(check_createCueSheets);
 }
 
-Void BonkEnc::GeneralSettingsLayerPlaylists::SelectDir()
+Void freac::GeneralSettingsLayerPlaylists::SelectDir()
 {
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(GetContainerWindow());
-	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder in which the playlist files will be placed:")));
+	dialog->SetCaption(String("\n").Append(freac::i18n->TranslateString("Select the folder in which the playlist files will be placed:")));
 	dialog->SetDirName(String(edit_outdir->GetText()).Replace("<installdrive>", Utilities::GetInstallDrive()));
 
 	if (dialog->ShowDialog() == Success())
@@ -140,7 +140,7 @@ Void BonkEnc::GeneralSettingsLayerPlaylists::SelectDir()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::GeneralSettingsLayerPlaylists::ToggleCreatePlaylists()
+Void freac::GeneralSettingsLayerPlaylists::ToggleCreatePlaylists()
 {
 	if (createPlaylists || createCueSheets)
 	{
@@ -158,7 +158,7 @@ Void BonkEnc::GeneralSettingsLayerPlaylists::ToggleCreatePlaylists()
 	}
 }
 
-Void BonkEnc::GeneralSettingsLayerPlaylists::ToggleUseEncOutdir()
+Void freac::GeneralSettingsLayerPlaylists::ToggleUseEncOutdir()
 {
 	if (useEncOutdir)
 	{
@@ -172,27 +172,27 @@ Void BonkEnc::GeneralSettingsLayerPlaylists::ToggleUseEncOutdir()
 	}
 }
 
-Bool BonkEnc::GeneralSettingsLayerPlaylists::GetCreatePlaylists()
+Bool freac::GeneralSettingsLayerPlaylists::GetCreatePlaylists()
 {
 	return createPlaylists;
 }
 
-Bool BonkEnc::GeneralSettingsLayerPlaylists::GetCreateCueSheets()
+Bool freac::GeneralSettingsLayerPlaylists::GetCreateCueSheets()
 {
 	return createCueSheets;
 }
 
-Bool BonkEnc::GeneralSettingsLayerPlaylists::GetUseEncOutdir()
+Bool freac::GeneralSettingsLayerPlaylists::GetUseEncOutdir()
 {
 	return useEncOutdir;
 }
 
-String BonkEnc::GeneralSettingsLayerPlaylists::GetOutputDirectory()
+String freac::GeneralSettingsLayerPlaylists::GetOutputDirectory()
 {
 	return edit_outdir->GetText();
 }
 
-String BonkEnc::GeneralSettingsLayerPlaylists::GetFilenamePattern()
+String freac::GeneralSettingsLayerPlaylists::GetFilenamePattern()
 {
 	return edit_filename->GetText();
 }

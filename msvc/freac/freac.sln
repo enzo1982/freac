@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BonkEnc", "BonkEnc.vcxproj", "{F121548C-5FD2-4E54-89AB-37671DE3CC76}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fre:ac", "freac.vcxproj", "{F121548C-5FD2-4E54-89AB-37671DE3CC76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

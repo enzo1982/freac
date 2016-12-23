@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,12 +10,12 @@
 
 #include <dialogs/genconfig/genconfig_tags.h>
 
-BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i18n->TranslateString("Info tags"))
+freac::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(freac::i18n->TranslateString("Info tags"))
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	enableID3V1	= currentConfig->enable_id3v1;
 	enableID3V2	= currentConfig->enable_id3v2;
@@ -30,38 +30,38 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	size.cx	= 530;
 	size.cy	= 146;
 
-	group_tags	= new GroupBox(BonkEnc::i18n->TranslateString("Info tags"), pos, size);
+	group_tags	= new GroupBox(freac::i18n->TranslateString("Info tags"), pos, size);
 
 	pos.x	= 17;
 	pos.y	= 25;
 	size.cx	= 163;
 	size.cy	= 0;
 
-	check_id3v1	= new CheckBox(BonkEnc::i18n->TranslateString("Write ID3v1 tags"), pos, size, &enableID3V1);
+	check_id3v1	= new CheckBox(freac::i18n->TranslateString("Write ID3v1 tags"), pos, size, &enableID3V1);
 	check_id3v1->onAction.Connect(&GeneralSettingsLayerTags::ToggleID3V1, this);
 	check_id3v1->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
 	pos.y += 26;
 
-	check_id3v2	= new CheckBox(BonkEnc::i18n->TranslateString("Write ID3v2 tags"), pos, size, &enableID3V2);
+	check_id3v2	= new CheckBox(freac::i18n->TranslateString("Write ID3v2 tags"), pos, size, &enableID3V2);
 	check_id3v2->onAction.Connect(&GeneralSettingsLayerTags::ToggleID3V2, this);
 	check_id3v2->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
 	pos.y += 26;
 
-	check_vctags	= new CheckBox(BonkEnc::i18n->TranslateString("Write Vorbis Comment tags"), pos, size, &enableVCTags);
+	check_vctags	= new CheckBox(freac::i18n->TranslateString("Write Vorbis Comment tags"), pos, size, &enableVCTags);
 	check_vctags->onAction.Connect(&GeneralSettingsLayerTags::ToggleVCTags, this);
 	check_vctags->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
 	pos.y += 26;
 
-	check_mp4meta	= new CheckBox(BonkEnc::i18n->TranslateString("Write MP4 metadata info"), pos, size, &enableMP4Meta);
+	check_mp4meta	= new CheckBox(freac::i18n->TranslateString("Write MP4 metadata info"), pos, size, &enableMP4Meta);
 	check_mp4meta->onAction.Connect(&GeneralSettingsLayerTags::ToggleMP4Meta, this);
 	check_mp4meta->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
 	pos.y += 26;
 
-	check_wmameta	= new CheckBox(BonkEnc::i18n->TranslateString("Write WMA metadata info"), pos, size, &enableWMAMeta);
+	check_wmameta	= new CheckBox(freac::i18n->TranslateString("Write WMA metadata info"), pos, size, &enableWMAMeta);
 	check_wmameta->onAction.Connect(&GeneralSettingsLayerTags::ToggleWMAMeta, this);
 	check_wmameta->onAction.Connect(&GeneralSettingsLayerTags::ToggleTags, this);
 
@@ -78,28 +78,28 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	size.cx	= 530 - Math::Max(Math::Max(Math::Max(check_id3v1->GetUnscaledTextWidth(), check_id3v2->GetUnscaledTextWidth()), Math::Max(check_vctags->GetUnscaledTextWidth(), check_mp4meta->GetUnscaledTextWidth())), check_wmameta->GetUnscaledTextWidth()) - 49;
 	size.cy	= 146;
 
-	group_encodings	= new GroupBox(BonkEnc::i18n->TranslateString("Tag encodings"), pos, size);
+	group_encodings	= new GroupBox(freac::i18n->TranslateString("Tag encodings"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	= 27;
 
-	text_id3v1_encoding	= new Text(BonkEnc::i18n->TranslateString("ID3v1 tag encoding:"), pos);
+	text_id3v1_encoding	= new Text(freac::i18n->TranslateString("ID3v1 tag encoding:"), pos);
 
 	pos.y += 26;
 
-	text_id3v2_encoding	= new Text(BonkEnc::i18n->TranslateString("ID3v2 tag encoding:"), pos);
+	text_id3v2_encoding	= new Text(freac::i18n->TranslateString("ID3v2 tag encoding:"), pos);
 
 	pos.y += 26;
 
-	text_vctags_encoding	= new Text(BonkEnc::i18n->TranslateString("Vorbis Comment tag encoding:"), pos);
+	text_vctags_encoding	= new Text(freac::i18n->TranslateString("Vorbis Comment tag encoding:"), pos);
 
 	pos.y += 26;
 
-	text_mp4meta_encoding	= new Text(BonkEnc::i18n->TranslateString("MP4 metadata encoding:"), pos);
+	text_mp4meta_encoding	= new Text(freac::i18n->TranslateString("MP4 metadata encoding:"), pos);
 
 	pos.y += 26;
 
-	text_wmameta_encoding	= new Text(BonkEnc::i18n->TranslateString("WMA metadata encoding:"), pos);
+	text_wmameta_encoding	= new Text(freac::i18n->TranslateString("WMA metadata encoding:"), pos);
 
 	pos.x	+= Math::Max(Math::Max(Math::Max(text_id3v1_encoding->GetUnscaledTextWidth(), text_id3v2_encoding->GetUnscaledTextWidth()), Math::Max(text_vctags_encoding->GetUnscaledTextWidth(), text_mp4meta_encoding->GetUnscaledTextWidth())), text_wmameta_encoding->GetUnscaledTextWidth()) + 7;
 	pos.y	= 23;
@@ -163,12 +163,12 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	size.cx	= 530;
 	size.cy	= 66;
 
-	group_definfo	= new GroupBox(BonkEnc::i18n->TranslateString("Default information"), pos, size);
+	group_definfo	= new GroupBox(freac::i18n->TranslateString("Default information"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 15;
 
-	text_defcomment	= new Text(BonkEnc::i18n->TranslateString("Default comment string:"), pos);
+	text_defcomment	= new Text(freac::i18n->TranslateString("Default comment string:"), pos);
 
 	pos.x	+= (7 + text_defcomment->GetUnscaledTextWidth());
 	pos.y	-= 3;
@@ -181,7 +181,7 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	pos.y += 27;
 	size.cx = 510;
 
-	check_overwrite	= new CheckBox(BonkEnc::i18n->TranslateString("Replace existing comments with default comment"), pos, size, &overwriteExisting);
+	check_overwrite	= new CheckBox(freac::i18n->TranslateString("Replace existing comments with default comment"), pos, size, &overwriteExisting);
 
 	ToggleID3V1();
 	ToggleID3V2();
@@ -248,7 +248,7 @@ BonkEnc::GeneralSettingsLayerTags::GeneralSettingsLayerTags() : Layer(BonkEnc::i
 	Add(check_overwrite);
 }
 
-BonkEnc::GeneralSettingsLayerTags::~GeneralSettingsLayerTags()
+freac::GeneralSettingsLayerTags::~GeneralSettingsLayerTags()
 {
 	DeleteObject(group_tags);
 	DeleteObject(check_id3v1);
@@ -281,7 +281,7 @@ BonkEnc::GeneralSettingsLayerTags::~GeneralSettingsLayerTags()
 	DeleteObject(list_encodings_wma);
 }
 
-Void BonkEnc::GeneralSettingsLayerTags::ToggleID3V1()
+Void freac::GeneralSettingsLayerTags::ToggleID3V1()
 {
 	if (enableID3V1)
 	{
@@ -295,7 +295,7 @@ Void BonkEnc::GeneralSettingsLayerTags::ToggleID3V1()
 	}
 }
 
-Void BonkEnc::GeneralSettingsLayerTags::ToggleID3V2()
+Void freac::GeneralSettingsLayerTags::ToggleID3V2()
 {
 	if (enableID3V2)
 	{
@@ -309,7 +309,7 @@ Void BonkEnc::GeneralSettingsLayerTags::ToggleID3V2()
 	}
 }
 
-Void BonkEnc::GeneralSettingsLayerTags::ToggleVCTags()
+Void freac::GeneralSettingsLayerTags::ToggleVCTags()
 {
 	if (enableVCTags)
 	{
@@ -323,7 +323,7 @@ Void BonkEnc::GeneralSettingsLayerTags::ToggleVCTags()
 	}
 }
 
-Void BonkEnc::GeneralSettingsLayerTags::ToggleMP4Meta()
+Void freac::GeneralSettingsLayerTags::ToggleMP4Meta()
 {
 	if (enableMP4Meta)
 	{
@@ -337,13 +337,13 @@ Void BonkEnc::GeneralSettingsLayerTags::ToggleMP4Meta()
 	}
 }
 
-Void BonkEnc::GeneralSettingsLayerTags::ToggleWMAMeta()
+Void freac::GeneralSettingsLayerTags::ToggleWMAMeta()
 {
 	text_wmameta_encoding->Deactivate();
 	edit_wmameta_encoding->Deactivate();
 }
 
-Void BonkEnc::GeneralSettingsLayerTags::ToggleTags()
+Void freac::GeneralSettingsLayerTags::ToggleTags()
 {
 	if (((!enableID3V1 && !enableID3V2) || (!currentConfig->enable_lame && !currentConfig->enable_blade) || !currentConfig->enable_id3) && (!enableVCTags || (!currentConfig->enable_vorbis && !currentConfig->enable_flac)) && (!enableMP4Meta || (!currentConfig->enable_mp4 || !currentConfig->enable_faac)) && (!enableWMAMeta || !currentConfig->enable_wma))
 	{
@@ -357,62 +357,62 @@ Void BonkEnc::GeneralSettingsLayerTags::ToggleTags()
 	}
 }
 
-Bool BonkEnc::GeneralSettingsLayerTags::GetEnableID3V1()
+Bool freac::GeneralSettingsLayerTags::GetEnableID3V1()
 {
 	return enableID3V1;
 }
 
-Bool BonkEnc::GeneralSettingsLayerTags::GetEnableID3V2()
+Bool freac::GeneralSettingsLayerTags::GetEnableID3V2()
 {
 	return enableID3V2;
 }
 
-Bool BonkEnc::GeneralSettingsLayerTags::GetEnableVCTags()
+Bool freac::GeneralSettingsLayerTags::GetEnableVCTags()
 {
 	return enableVCTags;
 }
 
-Bool BonkEnc::GeneralSettingsLayerTags::GetEnableMP4Meta()
+Bool freac::GeneralSettingsLayerTags::GetEnableMP4Meta()
 {
 	return enableMP4Meta;
 }
 
-Bool BonkEnc::GeneralSettingsLayerTags::GetEnableWMAMeta()
+Bool freac::GeneralSettingsLayerTags::GetEnableWMAMeta()
 {
 	return enableWMAMeta;
 }
 
-String BonkEnc::GeneralSettingsLayerTags::GetID3V1Encoding()
+String freac::GeneralSettingsLayerTags::GetID3V1Encoding()
 {
 	return edit_id3v1_encoding->GetText();
 }
 
-String BonkEnc::GeneralSettingsLayerTags::GetID3V2Encoding()
+String freac::GeneralSettingsLayerTags::GetID3V2Encoding()
 {
 	return edit_id3v2_encoding->GetText();
 }
 
-String BonkEnc::GeneralSettingsLayerTags::GetVCTagEncoding()
+String freac::GeneralSettingsLayerTags::GetVCTagEncoding()
 {
 	return edit_vctags_encoding->GetText();
 }
 
-String BonkEnc::GeneralSettingsLayerTags::GetMP4MetaEncoding()
+String freac::GeneralSettingsLayerTags::GetMP4MetaEncoding()
 {
 	return edit_mp4meta_encoding->GetText();
 }
 
-String BonkEnc::GeneralSettingsLayerTags::GetWMAMetaEncoding()
+String freac::GeneralSettingsLayerTags::GetWMAMetaEncoding()
 {
 	return edit_wmameta_encoding->GetText();
 }
 
-String BonkEnc::GeneralSettingsLayerTags::GetDefaultComment()
+String freac::GeneralSettingsLayerTags::GetDefaultComment()
 {
 	return edit_defcomment->GetText();
 }
 
-Bool BonkEnc::GeneralSettingsLayerTags::GetOverwriteComments()
+Bool freac::GeneralSettingsLayerTags::GetOverwriteComments()
 {
 	return overwriteExisting;
 }

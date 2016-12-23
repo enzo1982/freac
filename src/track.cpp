@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,7 +10,7 @@
 
 #include <track.h>
 
-BonkEnc::Track::Track()
+freac::Track::Track()
 {
 	channels	= 0;
 	rate		= 0;
@@ -35,7 +35,7 @@ BonkEnc::Track::Track()
 	year		= -1;
 }
 
-BonkEnc::Track::~Track()
+freac::Track::~Track()
 {
 	for (Int i = 0; i < pictures.Length(); i++) delete pictures.GetNth(i);
 }

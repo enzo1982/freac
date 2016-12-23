@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -15,7 +15,7 @@
 
 using namespace smooth::Threads;
 
-namespace BonkEnc
+namespace freac
 {
 	FilterInWinamp	*filter = NIL;
 
@@ -45,7 +45,7 @@ namespace BonkEnc
 	int		 Out_GetWrittenTime();
 };
 
-BonkEnc::FilterInWinamp::FilterInWinamp(Config *config, Track *format, In_Module *iPlugin) : InputFilter(config, format)
+freac::FilterInWinamp::FilterInWinamp(Config *config, Track *format, In_Module *iPlugin) : InputFilter(config, format)
 {
 	plugin				= iPlugin;
 
@@ -83,12 +83,12 @@ BonkEnc::FilterInWinamp::FilterInWinamp(Config *config, Track *format, In_Module
 	samplesDone		= 0;
 }
 
-BonkEnc::FilterInWinamp::~FilterInWinamp()
+freac::FilterInWinamp::~FilterInWinamp()
 {
 	delete plugin->outMod;
 }
 
-Bool BonkEnc::FilterInWinamp::Activate()
+Bool freac::FilterInWinamp::Activate()
 {
 	if (GetTempFile(format->origFilename) != format->origFilename)
 	{
@@ -107,7 +107,7 @@ Bool BonkEnc::FilterInWinamp::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterInWinamp::Deactivate()
+Bool freac::FilterInWinamp::Deactivate()
 {
 	samplesBufferMutex->Release();
 
@@ -125,7 +125,7 @@ Bool BonkEnc::FilterInWinamp::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInWinamp::ReadData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterInWinamp::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	samplesBufferMutex->Release();
 
@@ -153,7 +153,7 @@ Int BonkEnc::FilterInWinamp::ReadData(Buffer<UnsignedByte> &data, Int size)
 	else		return size;
 }
 
-String BonkEnc::FilterInWinamp::GetTempFile(const String &oFileName)
+String freac::FilterInWinamp::GetTempFile(const String &oFileName)
 {
 	String	 rVal	= oFileName;
 	Int	 lastBs	= -1;
@@ -176,7 +176,7 @@ String BonkEnc::FilterInWinamp::GetTempFile(const String &oFileName)
 	return tempDir.Append(".in.temp");
 }
 
-BonkEnc::Track *BonkEnc::FilterInWinamp::GetFileInfo(const String &inFile)
+freac::Track *freac::FilterInWinamp::GetFileInfo(const String &inFile)
 {
 	if (GetTempFile(inFile) != inFile)
 	{
@@ -268,59 +268,59 @@ BonkEnc::Track *BonkEnc::FilterInWinamp::GetFileInfo(const String &inFile)
 	return nFormat;
 }
 
-void BonkEnc::SetInfo(int bitrate, int srate, int stereo, int synched)
+void freac::SetInfo(int bitrate, int srate, int stereo, int synched)
 {
 }
 
-void BonkEnc::VSASetInfo(int nch, int srate)
+void freac::VSASetInfo(int nch, int srate)
 {
 }
 
-void BonkEnc::VSAAddPCMData(void *PCMData, int nch, int bps, int timestamp)
+void freac::VSAAddPCMData(void *PCMData, int nch, int bps, int timestamp)
 {
 }
 
-int BonkEnc::VSAGetMode(int *specNch, int *waveNch)
-{
-	return 0;
-}
-
-void BonkEnc::VSAAdd(void *data, int timestamp)
-{
-}
-
-void BonkEnc::SAVSAInit(int latency, int srate)
-{
-}
-
-void BonkEnc::SAVSADeInit()
-{
-}
-
-void BonkEnc::SAAddPCMData(void *PCMData, int nch, int bps, int timestamp)
-{
-}
-
-int BonkEnc::SAGetMode()
+int freac::VSAGetMode(int *specNch, int *waveNch)
 {
 	return 0;
 }
 
-void BonkEnc::SAAdd(void *data, int timestamp, int csa)
+void freac::VSAAdd(void *data, int timestamp)
 {
 }
 
-int BonkEnc::dsp_isactive()
+void freac::SAVSAInit(int latency, int srate)
+{
+}
+
+void freac::SAVSADeInit()
+{
+}
+
+void freac::SAAddPCMData(void *PCMData, int nch, int bps, int timestamp)
+{
+}
+
+int freac::SAGetMode()
+{
+	return 0;
+}
+
+void freac::SAAdd(void *data, int timestamp, int csa)
+{
+}
+
+int freac::dsp_isactive()
 {
 	return false;
 }
 
-int BonkEnc::dsp_dosamples(short int *samples, int numsamples, int bps, int nch, int srate)
+int freac::dsp_dosamples(short int *samples, int numsamples, int bps, int nch, int srate)
 {
 	return numsamples;
 }
 
-int BonkEnc::Out_Open(int samplerate, int numchannels, int bitspersamp, int bufferlenms, int prebufferms)
+int freac::Out_Open(int samplerate, int numchannels, int bitspersamp, int bufferlenms, int prebufferms)
 {
 	if (filter->infoTrack == NIL) return 0;
 
@@ -331,15 +331,15 @@ int BonkEnc::Out_Open(int samplerate, int numchannels, int bitspersamp, int buff
 	return 0;
 }
 
-void BonkEnc::Out_Close()
+void freac::Out_Close()
 {
 }
 
-void BonkEnc::Out_Flush(int t)
+void freac::Out_Flush(int t)
 {
 }
 
-int BonkEnc::Out_Write(char *buf, int len)
+int freac::Out_Write(char *buf, int len)
 {
 	filter->samplesBufferMutex->Lock();
 
@@ -354,35 +354,35 @@ int BonkEnc::Out_Write(char *buf, int len)
 	return 0;
 }
 
-int BonkEnc::Out_CanWrite()
+int freac::Out_CanWrite()
 {
 	return Math::Max(0, 32768 - filter->samplesBuffer.Size());
 }
 
-int BonkEnc::Out_IsPlaying()
+int freac::Out_IsPlaying()
 {
 	return true;
 }
 
-int BonkEnc::Out_Pause(int pause)
+int freac::Out_Pause(int pause)
 {
 	return 0;
 }
 
-void BonkEnc::Out_SetVolume(int vol)
+void freac::Out_SetVolume(int vol)
 {
 }
 
-void BonkEnc::Out_SetPan(int pan)
+void freac::Out_SetPan(int pan)
 {
 }
 
-int BonkEnc::Out_GetOutputTime()
+int freac::Out_GetOutputTime()
 {
 	return 0;
 }
 
-int BonkEnc::Out_GetWrittenTime()
+int freac::Out_GetWrittenTime()
 {
 	return 0;
 }

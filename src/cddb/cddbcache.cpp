@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,16 +11,16 @@
 #include <cddb/cddbcache.h>
 #include <cddb/cddblocal.h>
 
-BonkEnc::CDDBCache::CDDBCache(Config *iConfig)
+freac::CDDBCache::CDDBCache(Config *iConfig)
 {
 	config = iConfig;
 }
 
-BonkEnc::CDDBCache::~CDDBCache()
+freac::CDDBCache::~CDDBCache()
 {
 }
 
-const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
+const freac::CDDBInfo &freac::CDDBCache::GetCacheEntry(Int discID)
 {
 	const CDDBInfo	&cddbInfo = infoCache.Get(discID);
 
@@ -58,7 +58,7 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(Int discID)
 	return infoCache.Get(discID);
 }
 
-Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
+Bool freac::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 {
 	const CDDBInfo	&cddbInfo = infoCache.Get(nCddbInfo.discID);
 
@@ -93,7 +93,7 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 	return True;
 }
 
-Int BonkEnc::CDDBCache::RemoveNthEntry(Int n)
+Int freac::CDDBCache::RemoveNthEntry(Int n)
 {
 	if (n >= GetNOfEntries()) return Error();
 

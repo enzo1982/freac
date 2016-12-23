@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -19,14 +19,14 @@ using namespace smooth::System;
 
 Int smooth::Main(const Array<String> &args)
 {
-	BonkEnc::BonkEncCommandline	*app = new BonkEnc::BonkEncCommandline(args);
+	freac::freacCommandline	*app = new freac::freacCommandline(args);
 
 	Object::DeleteObject(app);
 
 	return 0;
 }
 
-BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) : args(arguments)
+freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args(arguments)
 {
 	currentConfig->enable_console = true;
 	currentConfig->appMain = this;
@@ -37,8 +37,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	InitCDRip();
 
-	Bool		 quiet		= ScanForParameter("-quiet", NULL);
-	Bool		 cddb		= ScanForParameter("-cddb", NULL);
+	Bool		 quiet		= ScanForParameter("-quiet", NIL);
+	Bool		 cddb		= ScanForParameter("-cddb", NIL);
 	Array<String>	 files;
 	String		 encoder	= "LAME";
 	String		 helpenc;
@@ -83,7 +83,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		Console::OutputString("Error: CD ripping disabled!");
 	}
 
-	Console::SetTitle(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version));
+	Console::SetTitle(String(freac::appName).Append(" ").Append(freac::version));
 
 	encoder = encoder.ToUpper();
 
@@ -161,8 +161,8 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		ScanForParameter("-p", &predictor);
 		ScanForParameter("-r", &downsampling);
 
-		currentConfig->bonk_jstereo	 = ScanForParameter("-js", NULL);
-		currentConfig->bonk_lossless	 = ScanForParameter("-lossless", NULL);
+		currentConfig->bonk_jstereo	 = ScanForParameter("-js", NIL);
+		currentConfig->bonk_lossless	 = ScanForParameter("-lossless", NIL);
 
 		currentConfig->bonk_quantization = Math::Max(0, Math::Min(40, (Int) Math::Round(quantization.ToFloat() * 20)));
 		currentConfig->bonk_predictor	 = Math::Max(0, Math::Min(512, (Int) predictor.ToInt()));
@@ -189,7 +189,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		else if (ScanForParameter("-q", &quality))	currentConfig->faac_set_quality = True;
 		else						currentConfig->faac_set_quality = True;
 
-		currentConfig->faac_enable_mp4	= ScanForParameter("-mp4", NULL);
+		currentConfig->faac_enable_mp4	= ScanForParameter("-mp4", NIL);
 
 		currentConfig->faac_aac_quality	= Math::Max(10, Math::Min(500, (Int) quality.ToInt()));
 		currentConfig->faac_bitrate	= Math::Max(8, Math::Min(256, (Int) bitrate.ToInt()));
@@ -218,9 +218,9 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 		currentConfig->flac_preset = -1;
 
-		currentConfig->flac_do_mid_side_stereo		 = ScanForParameter("-ms", NULL);
-		currentConfig->flac_do_exhaustive_model_search	 = ScanForParameter("-e", NULL);
-		currentConfig->flac_do_qlp_coeff_prec_search	 = ScanForParameter("-p", NULL);
+		currentConfig->flac_do_mid_side_stereo		 = ScanForParameter("-ms", NIL);
+		currentConfig->flac_do_exhaustive_model_search	 = ScanForParameter("-e", NIL);
+		currentConfig->flac_do_qlp_coeff_prec_search	 = ScanForParameter("-p", NIL);
 
 		currentConfig->flac_blocksize			 = Math::Max(192, Math::Min(32768, (Int) blocksize.ToInt()));
 		currentConfig->flac_max_lpc_order		 = Math::Max(0, Math::Min(32, (Int) lpc.ToInt()));
@@ -249,7 +249,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	}
 	else
 	{
-		Console::OutputString(String("Encoder ").Append(encoder).Append(" is not supported by ").Append(BonkEnc::appName).Append("!\n\n"));
+		Console::OutputString(String("Encoder ").Append(encoder).Append(" is not supported by ").Append(freac::appName).Append("!\n\n"));
 
 		broken = true;
 	}
@@ -321,17 +321,17 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	delete joblist;
 }
 
-BonkEnc::BonkEncCommandline::~BonkEncCommandline()
+freac::freacCommandline::~freacCommandline()
 {
 }
 
-Bool BonkEnc::BonkEncCommandline::ScanForParameter(const String &param, String *option)
+Bool freac::freacCommandline::ScanForParameter(const String &param, String *option)
 {
 	for (Int i = 0; i < args.Length(); i++)
 	{
 		if (args.GetNth(i) == param)
 		{
-			if (option != NULL) *option = args.GetNth(i + 1);
+			if (option != NIL) *option = args.GetNth(i + 1);
 
 			return True;
 		}
@@ -340,7 +340,7 @@ Bool BonkEnc::BonkEncCommandline::ScanForParameter(const String &param, String *
 	return False;
 }
 
-Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
+Void freac::freacCommandline::ScanForFiles(Array<String> *files)
 {
 	String	 param;
 	String	 prevParam;
@@ -376,7 +376,7 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 	}
 }
 
-Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<String> *files)
+Bool freac::freacCommandline::TracksToFiles(const String &tracks, Array<String> *files)
 {
 	if (tracks == "all")
 	{
@@ -433,11 +433,11 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 	return True;
 }
 
-Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
+Void freac::freacCommandline::ShowHelp(const String &helpenc)
 {
 	if (helpenc == NIL)
 	{
-		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" command line interface\n").Append(BonkEnc::copyright).Append("\n\n"));
+		Console::OutputString(String(freac::appLongName).Append(" ").Append(freac::version).Append(" command line interface\n").Append(freac::copyright).Append("\n\n"));
 		Console::OutputString("Usage:\tfreaccmd [options] [file(s)]\n\n");
 		Console::OutputString("\t-e <encoder>\tSpecify the encoder to use (default is LAME)\n");
 		Console::OutputString("\t-h <encoder>\tPrint help for encoder specific options\n\n");
@@ -454,7 +454,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 	}
 	else
 	{
-		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" command line interface\n").Append(BonkEnc::copyright).Append("\n\n"));
+		Console::OutputString(String(freac::appLongName).Append(" ").Append(freac::version).Append(" command line interface\n").Append(freac::copyright).Append("\n\n"));
 
 		if (helpenc == "LAME" || helpenc == "lame")
 		{
@@ -514,7 +514,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 		}
 		else
 		{
-			Console::OutputString(String("Encoder ").Append(helpenc).Append(" is not supported by ").Append(BonkEnc::appName).Append("!\n\n"));
+			Console::OutputString(String("Encoder ").Append(helpenc).Append(" is not supported by ").Append(freac::appName).Append("!\n\n"));
 		}
 	}
 }

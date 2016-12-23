@@ -26,15 +26,15 @@
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
+freac::GeneralSettingsDialog::GeneralSettingsDialog()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("General settings setup"), currentConfig->wndPos + Point(40, 40), Size(570, 352));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(freac::i18n->TranslateString("General settings setup"), currentConfig->wndPos + Point(40, 40), Size(570, 352));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -55,13 +55,13 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 	size.cx	= 0;
 	size.cy	= 0;
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&GeneralSettingsDialog::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(freac::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onAction.Connect(&GeneralSettingsDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -83,7 +83,7 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 	reg_register->Add(register_layer_encoders);
 	reg_register->Add(register_layer_playlists);
 
-	if (BonkEnc::i18n->GetNOfLanguages() > 1) reg_register->Add(register_layer_language);
+	if (freac::i18n->GetNOfLanguages() > 1) reg_register->Add(register_layer_language);
 
 #ifdef __WIN32__
 	if (currentConfig->enable_cdrip && currentConfig->cdrip_numdrives >= 1) reg_register->Add(register_layer_cdrip);
@@ -98,7 +98,7 @@ BonkEnc::GeneralSettingsDialog::GeneralSettingsDialog()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::GeneralSettingsDialog::~GeneralSettingsDialog()
+freac::GeneralSettingsDialog::~GeneralSettingsDialog()
 {
 	DeleteObject(mainWnd);
 	DeleteObject(mainWnd_titlebar);
@@ -120,20 +120,20 @@ BonkEnc::GeneralSettingsDialog::~GeneralSettingsDialog()
 	DeleteObject(btn_cancel);
 }
 
-const Error &BonkEnc::GeneralSettingsDialog::ShowDialog()
+const Error &freac::GeneralSettingsDialog::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-Void BonkEnc::GeneralSettingsDialog::OK()
+Void freac::GeneralSettingsDialog::OK()
 {
 	Directory	 outputDirectory(register_layer_encoders->GetOutputDirectory().Replace("<installdrive>", Utilities::GetInstallDrive()));
 
 	if (!outputDirectory.Exists())
 	{
-		Int	 selection = QuickMessage(BonkEnc::i18n->TranslateString("The output folder does not exist! Do you want to create it?"), BonkEnc::i18n->TranslateString("Error"), Message::Buttons::YesNoCancel, Message::Icon::Question);
+		Int	 selection = QuickMessage(freac::i18n->TranslateString("The output folder does not exist! Do you want to create it?"), freac::i18n->TranslateString("Error"), Message::Buttons::YesNoCancel, Message::Icon::Question);
 
 		if	(selection == Message::Button::Yes)    outputDirectory.Create();
 		else if (selection == Message::Button::Cancel) return;
@@ -144,7 +144,7 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 #ifdef __WIN32__
 	if (currentConfig->freedb_proxy_mode == 1 && register_layer_cddb->GetFreedbMode() == FREEDB_MODE_CDDBP)
 	{
-		Int	 selection = QuickMessage(BonkEnc::i18n->TranslateString("The freedb CDDBP protocol cannot be used over HTTP\nForward proxies!\n\nWould you like to change the protocol to HTTP?"), BonkEnc::i18n->TranslateString("Error"), Message::Buttons::YesNoCancel, Message::Icon::Question);
+		Int	 selection = QuickMessage(freac::i18n->TranslateString("The freedb CDDBP protocol cannot be used over HTTP\nForward proxies!\n\nWould you like to change the protocol to HTTP?"), freac::i18n->TranslateString("Error"), Message::Buttons::YesNoCancel, Message::Icon::Question);
 
 		if	(selection == Message::Button::Yes)    currentConfig->freedb_mode = FREEDB_MODE_HTTP;
 		else if (selection == Message::Button::No)     currentConfig->freedb_mode = register_layer_cddb->GetFreedbMode();
@@ -170,7 +170,7 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 
 	currentConfig->encoder = register_layer_encoders->GetSelectedEncoder();
 
-	if (BonkEnc::i18n->GetNOfLanguages() > 1)
+	if (freac::i18n->GetNOfLanguages() > 1)
 	{
 		if (register_layer_language->IsLanguageChanged()) currentConfig->languageChanged = true;
 
@@ -249,7 +249,7 @@ Void BonkEnc::GeneralSettingsDialog::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::GeneralSettingsDialog::Cancel()
+Void freac::GeneralSettingsDialog::Cancel()
 {
 	mainWnd->Close();
 }

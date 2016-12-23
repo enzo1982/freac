@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2014 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -19,7 +19,7 @@
 #	define WAVE_FORMAT_EXTENSIBLE 0xFFFE
 #endif
 
-BonkEnc::FilterInWAVE::FilterInWAVE(Config *config, Track *format) : InputFilter(config, format)
+freac::FilterInWAVE::FilterInWAVE(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize	= 0;
 
@@ -27,11 +27,11 @@ BonkEnc::FilterInWAVE::FilterInWAVE(Config *config, Track *format) : InputFilter
 	floatFormatBits	= 32;
 }
 
-BonkEnc::FilterInWAVE::~FilterInWAVE()
+freac::FilterInWAVE::~FilterInWAVE()
 {
 }
 
-Bool BonkEnc::FilterInWAVE::Activate()
+Bool freac::FilterInWAVE::Activate()
 {
 	InStream	*in = new InStream(STREAM_DRIVER, driver);
     
@@ -73,12 +73,12 @@ Bool BonkEnc::FilterInWAVE::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterInWAVE::Deactivate()
+Bool freac::FilterInWAVE::Deactivate()
 {
 	return true;
 }
 
-Int BonkEnc::FilterInWAVE::ReadData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterInWAVE::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (driver->GetPos() == driver->GetSize()) return -1;
 
@@ -108,7 +108,7 @@ Int BonkEnc::FilterInWAVE::ReadData(Buffer<UnsignedByte> &data, Int size)
 	return size;
 }
 
-BonkEnc::Track *BonkEnc::FilterInWAVE::GetFileInfo(const String &inFile)
+freac::Track *freac::FilterInWAVE::GetFileInfo(const String &inFile)
 {
 	Track		*nFormat = new Track;
 	InStream	*f_in	 = new InStream(STREAM_FILE, inFile, IS_READ);

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,12 +11,12 @@
 #include <dialogs/faacconfig.h>
 #include <resources.h>
 
-BonkEnc::ConfigureFAAC::ConfigureFAAC()
+freac::ConfigureFAAC::ConfigureFAAC()
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	mpegVersion = currentConfig->faac_mpegversion;
 	aacType = currentConfig->faac_type;
@@ -28,8 +28,8 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	allowID3 = currentConfig->faac_enable_id3;
 	fileFormat = currentConfig->faac_enable_mp4;
 
-	mainWnd			= new Window(String(BonkEnc::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "FAAC"), currentConfig->wndPos + Point(80, 80), Size(547, 295));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(String(freac::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "FAAC"), currentConfig->wndPos + Point(80, 80), Size(547, 295));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -39,13 +39,13 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&ConfigureFAAC::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(freac::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onAction.Connect(&ConfigureFAAC::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -56,14 +56,14 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 
 	tabwidget		= new TabWidget(pos, size);
 
-	layer_format		= new Layer(BonkEnc::i18n->TranslateString("Format"));
+	layer_format		= new Layer(freac::i18n->TranslateString("Format"));
 
 	pos.x = 135;
 	pos.y = 11;
 	size.cx = 120;
 	size.cy = 65;
 
-	group_version		= new GroupBox(BonkEnc::i18n->TranslateString("MPEG version"), pos, size);
+	group_version		= new GroupBox(freac::i18n->TranslateString("MPEG version"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
@@ -83,7 +83,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cx = 120;
 	size.cy = 90;
 
-	group_aactype		= new GroupBox(BonkEnc::i18n->TranslateString("AAC object type"), pos, size);
+	group_aactype		= new GroupBox(freac::i18n->TranslateString("AAC object type"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
@@ -108,7 +108,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cx = 120;
 	size.cy = 65;
 
-	group_mp4		= new GroupBox(BonkEnc::i18n->TranslateString("File format"), pos, size);
+	group_mp4		= new GroupBox(freac::i18n->TranslateString("File format"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
@@ -135,41 +135,41 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cx = 279;
 	size.cy = 90;
 
-	group_id3v2		= new GroupBox(BonkEnc::i18n->TranslateString("Info tags"), pos, size);
+	group_id3v2		= new GroupBox(freac::i18n->TranslateString("Info tags"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
 	size.cx = 200;
 	size.cy = 0;
 
-	check_id3v2		= new CheckBox(BonkEnc::i18n->TranslateString("Allow ID3v2 tags in AAC files"), pos, size, &allowID3);
+	check_id3v2		= new CheckBox(freac::i18n->TranslateString("Allow ID3v2 tags in AAC files"), pos, size, &allowID3);
 	check_id3v2->SetWidth(check_id3v2->GetUnscaledTextWidth() + 20);
 
 	pos.y += 25;
 
-	text_note		= new Text(BonkEnc::i18n->TranslateString("Note:"), pos);
+	text_note		= new Text(freac::i18n->TranslateString("Note:"), pos);
 
 	pos.x += text_note->GetUnscaledTextWidth() + 2;
 
-	text_id3v2		= new Text(BonkEnc::i18n->TranslateString("Some players may have problems playing AAC\nfiles with ID3 tags attached. Please use this option only\nif you are sure that your player can handle these tags."), pos);
+	text_id3v2		= new Text(freac::i18n->TranslateString("Some players may have problems playing AAC\nfiles with ID3 tags attached. Please use this option only\nif you are sure that your player can handle these tags."), pos);
 
 	group_id3v2->SetWidth(text_note->GetUnscaledTextWidth() + text_id3v2->GetUnscaledTextWidth() + 22);
 
-	layer_quality		= new Layer(BonkEnc::i18n->TranslateString("Quality"));
+	layer_quality		= new Layer(freac::i18n->TranslateString("Quality"));
 
 	pos.x = 7;
 	pos.y = 11;
 	size.cx = 320;
 	size.cy = 65;
 
-	group_bitrate		= new GroupBox(BonkEnc::i18n->TranslateString("Bitrate / Quality"), pos, size);
+	group_bitrate		= new GroupBox(freac::i18n->TranslateString("Bitrate / Quality"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
 	size.cx = 150;
 	size.cy = 0;
 
-	option_bitrate		= new OptionBox(BonkEnc::i18n->TranslateString("Bitrate per channel:"), pos, size, &setQuality, 0);
+	option_bitrate		= new OptionBox(freac::i18n->TranslateString("Bitrate per channel:"), pos, size, &setQuality, 0);
 	option_bitrate->onAction.Connect(&ConfigureFAAC::ToggleBitrateQuality, this);
 	option_bitrate->SetWidth(option_bitrate->GetUnscaledTextWidth() + 19);
 
@@ -198,7 +198,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cx = 150;
 	size.cy = 0;
 
-	option_quality		= new OptionBox(BonkEnc::i18n->TranslateString("Set quality:"), pos, size, &setQuality, 1);
+	option_quality		= new OptionBox(freac::i18n->TranslateString("Set quality:"), pos, size, &setQuality, 1);
 	option_quality->onAction.Connect(&ConfigureFAAC::ToggleBitrateQuality, this);
 	option_quality->SetWidth(option_bitrate->GetUnscaledTextWidth() + 19);
 
@@ -227,40 +227,40 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	size.cx = 179;
 	size.cy = 42;
 
-	group_js		= new GroupBox(BonkEnc::i18n->TranslateString("Stereo mode"), pos, size);
+	group_js		= new GroupBox(freac::i18n->TranslateString("Stereo mode"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
 	size.cx = 158;
 	size.cy = 0;
 
-	check_js		= new CheckBox(BonkEnc::i18n->TranslateString("Allow Joint Stereo"), pos, size, &allowjs);
+	check_js		= new CheckBox(freac::i18n->TranslateString("Allow Joint Stereo"), pos, size, &allowjs);
 
 	pos.x = 335;
 	pos.y = 65;
 	size.cx = 179;
 	size.cy = 42;
 
-	group_tns		= new GroupBox(BonkEnc::i18n->TranslateString("Temporal Noise Shaping"), pos, size);
+	group_tns		= new GroupBox(freac::i18n->TranslateString("Temporal Noise Shaping"), pos, size);
 
 	pos.x += 10;
 	pos.y += 13;
 	size.cx = 158;
 	size.cy = 0;
 
-	check_tns		= new CheckBox(BonkEnc::i18n->TranslateString("Use Temporal Noise Shaping"), pos, size, &usetns);
+	check_tns		= new CheckBox(freac::i18n->TranslateString("Use Temporal Noise Shaping"), pos, size, &usetns);
 
 	pos.x = 7;
 	pos.y = 88;
 	size.cx = 320;
 	size.cy = 43;
 
-	group_bandwidth		= new GroupBox(BonkEnc::i18n->TranslateString("Maximum bandwidth"), pos, size);
+	group_bandwidth		= new GroupBox(freac::i18n->TranslateString("Maximum bandwidth"), pos, size);
 
 	pos.x += 11;
 	pos.y += 15;
 
-	text_bandwidth		= new Text(BonkEnc::i18n->TranslateString("Maximum AAC frequency bandwidth to use (Hz):"), pos);
+	text_bandwidth		= new Text(freac::i18n->TranslateString("Maximum AAC frequency bandwidth to use (Hz):"), pos);
 
 	pos.x += (text_bandwidth->GetUnscaledTextWidth() + 8);
 	pos.y -= 3;
@@ -324,7 +324,7 @@ BonkEnc::ConfigureFAAC::ConfigureFAAC()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::ConfigureFAAC::~ConfigureFAAC()
+freac::ConfigureFAAC::~ConfigureFAAC()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -369,14 +369,14 @@ BonkEnc::ConfigureFAAC::~ConfigureFAAC()
 	DeleteObject(edit_bandwidth);
 }
 
-const Error &BonkEnc::ConfigureFAAC::ShowDialog()
+const Error &freac::ConfigureFAAC::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-Void BonkEnc::ConfigureFAAC::OK()
+Void freac::ConfigureFAAC::OK()
 {
 	if (bitrate < 8)	bitrate = 8;
 	if (bitrate > 256)	bitrate = 256;
@@ -398,12 +398,12 @@ Void BonkEnc::ConfigureFAAC::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigureFAAC::Cancel()
+Void freac::ConfigureFAAC::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigureFAAC::SetMPEGVersion()
+Void freac::ConfigureFAAC::SetMPEGVersion()
 {
 	if (mpegVersion == 0) // MPEG4;
 	{
@@ -422,7 +422,7 @@ Void BonkEnc::ConfigureFAAC::SetMPEGVersion()
 	}
 }
 
-Void BonkEnc::ConfigureFAAC::SetObjectType()
+Void freac::ConfigureFAAC::SetObjectType()
 {
 	if (aacType == 4) // LTP
 	{
@@ -434,27 +434,27 @@ Void BonkEnc::ConfigureFAAC::SetObjectType()
 	}
 }
 
-Void BonkEnc::ConfigureFAAC::SetBitrate()
+Void freac::ConfigureFAAC::SetBitrate()
 {
 	edit_bitrate->SetText(String::FromInt(bitrate));
 }
 
-Void BonkEnc::ConfigureFAAC::SetBitrateByEditBox()
+Void freac::ConfigureFAAC::SetBitrateByEditBox()
 {
 	slider_bitrate->SetValue(edit_bitrate->GetText().ToInt());
 }
 
-Void BonkEnc::ConfigureFAAC::SetQuality()
+Void freac::ConfigureFAAC::SetQuality()
 {
 	edit_quality->SetText(String::FromInt(aacQuality));
 }
 
-Void BonkEnc::ConfigureFAAC::SetQualityByEditBox()
+Void freac::ConfigureFAAC::SetQualityByEditBox()
 {
 	slider_quality->SetValue(edit_quality->GetText().ToInt());
 }
 
-Void BonkEnc::ConfigureFAAC::SetFileFormat()
+Void freac::ConfigureFAAC::SetFileFormat()
 {
 	if (fileFormat == 1)	// MP4 container
 	{
@@ -492,7 +492,7 @@ Void BonkEnc::ConfigureFAAC::SetFileFormat()
 	SetObjectType();
 }
 
-Void BonkEnc::ConfigureFAAC::ToggleBitrateQuality()
+Void freac::ConfigureFAAC::ToggleBitrateQuality()
 {
 	if (setQuality)
 	{

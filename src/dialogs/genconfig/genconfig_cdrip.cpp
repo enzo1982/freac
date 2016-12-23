@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,12 +12,12 @@
 
 #include <windows.h>
 
-BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer(BonkEnc::i18n->TranslateString("Ripper"))
+freac::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer(freac::i18n->TranslateString("Ripper"))
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	setspeed	= currentConfig->cdrip_speed;
 	cdparanoia	= currentConfig->cdrip_paranoia;
@@ -36,7 +36,7 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer(BonkEnc:
 	size.cx	= 344;
 	size.cy	= 68;
 
-	group_drive	= new GroupBox(BonkEnc::i18n->TranslateString("Active CD-ROM drive"), pos, size);
+	group_drive	= new GroupBox(freac::i18n->TranslateString("Active CD-ROM drive"), pos, size);
 
 	pos.x	= 17;
 	pos.y	= 23;
@@ -57,7 +57,7 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer(BonkEnc:
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_speed		= new CheckBox(BonkEnc::i18n->TranslateString("Set drive speed limit:"), pos, size, &setspeed);
+	check_speed		= new CheckBox(freac::i18n->TranslateString("Set drive speed limit:"), pos, size, &setspeed);
 	check_speed->onAction.Connect(&GeneralSettingsLayerCDRip::ToggleSetSpeed, this);
 
 	pos.x	+= 166;
@@ -76,32 +76,32 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer(BonkEnc:
 	size.cx	= 344;
 	size.cy	= 39;
 
-	group_cdinfo	= new GroupBox(BonkEnc::i18n->TranslateString("CD information"), pos, size);
+	group_cdinfo	= new GroupBox(freac::i18n->TranslateString("CD information"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 11;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_readCDText	= new CheckBox(BonkEnc::i18n->TranslateString("Read CD Text"), pos, size, &readCDText);
+	check_readCDText	= new CheckBox(freac::i18n->TranslateString("Read CD Text"), pos, size, &readCDText);
 
 	pos.x += 166;
 
-	check_readCDPlayerIni	= new CheckBox(BonkEnc::i18n->TranslateString("Read cdplayer.ini"), pos, size, &readCDPlayerIni);
+	check_readCDPlayerIni	= new CheckBox(freac::i18n->TranslateString("Read cdplayer.ini"), pos, size, &readCDPlayerIni);
 
 	pos.x	= 7;
 	pos.y	= 142;
 	size.cx	= 344;
 	size.cy	= 68;
 
-	group_ripping	= new GroupBox(BonkEnc::i18n->TranslateString("Ripper settings"), pos, size);
+	group_ripping	= new GroupBox(freac::i18n->TranslateString("Ripper settings"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_paranoia	= new CheckBox(BonkEnc::i18n->TranslateString("Activate cdparanoia mode:"), pos, size, &cdparanoia);
+	check_paranoia	= new CheckBox(freac::i18n->TranslateString("Activate cdparanoia mode:"), pos, size, &cdparanoia);
 	check_paranoia->onAction.Connect(&GeneralSettingsLayerCDRip::SetParanoia, this);
 
 	pos.x	+= 166;
@@ -110,10 +110,10 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer(BonkEnc:
 	size.cy	= 0;
 
 	combo_paranoia_mode= new ComboBox(pos, size);
-	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("Overlap only"));
-	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("No verify"));
-	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("No scratch repair"));
-	combo_paranoia_mode->AddEntry(BonkEnc::i18n->TranslateString("Full cdparanoia mode"));
+	combo_paranoia_mode->AddEntry(freac::i18n->TranslateString("Overlap only"));
+	combo_paranoia_mode->AddEntry(freac::i18n->TranslateString("No verify"));
+	combo_paranoia_mode->AddEntry(freac::i18n->TranslateString("No scratch repair"));
+	combo_paranoia_mode->AddEntry(freac::i18n->TranslateString("Full cdparanoia mode"));
 	combo_paranoia_mode->SelectNthEntry(currentConfig->cdrip_paranoia_mode);
 
 	if (!cdparanoia) combo_paranoia_mode->Deactivate();
@@ -123,51 +123,51 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer(BonkEnc:
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_jitter	= new CheckBox(BonkEnc::i18n->TranslateString("Activate jitter correction"), pos, size, &jitter);
+	check_jitter	= new CheckBox(freac::i18n->TranslateString("Activate jitter correction"), pos, size, &jitter);
 
 	pos.x += 166;
 
-	check_swapchannels	= new CheckBox(BonkEnc::i18n->TranslateString("Swap left/right channel"), pos, size, &swapchannels);
+	check_swapchannels	= new CheckBox(freac::i18n->TranslateString("Swap left/right channel"), pos, size, &swapchannels);
 
 	pos.x	= 359;
 	pos.y	= 11;
 	size.cx	= 178;
 	size.cy	= 94;
 
-	group_automatization	= new GroupBox(BonkEnc::i18n->TranslateString("Automatization"), pos, size);
+	group_automatization	= new GroupBox(freac::i18n->TranslateString("Automatization"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_autoRead	= new CheckBox(BonkEnc::i18n->TranslateString("Read CD contents on insert"), pos, size, &autoRead);
+	check_autoRead	= new CheckBox(freac::i18n->TranslateString("Read CD contents on insert"), pos, size, &autoRead);
 	check_autoRead->onAction.Connect(&GeneralSettingsLayerCDRip::ToggleAutoRead, this);
 	pos.y += 26;
 
-	check_autoRip	= new CheckBox(BonkEnc::i18n->TranslateString("Start ripping automatically"), pos, size, &autoRip);
+	check_autoRip	= new CheckBox(freac::i18n->TranslateString("Start ripping automatically"), pos, size, &autoRip);
 
 	pos.y += 26;
 
-	check_autoEject	= new CheckBox(BonkEnc::i18n->TranslateString("Eject disk after ripping"), pos, size, &autoEject);
+	check_autoEject	= new CheckBox(freac::i18n->TranslateString("Eject disk after ripping"), pos, size, &autoEject);
 
 	pos.x	= 359;
 	pos.y	= 142;
 	size.cx	= 178;
 	size.cy	= 68;
 
-	group_cdoptions	= new GroupBox(BonkEnc::i18n->TranslateString("CD options"), pos, size);
+	group_cdoptions	= new GroupBox(freac::i18n->TranslateString("CD options"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_locktray	= new CheckBox(BonkEnc::i18n->TranslateString("Lock CD tray while ripping"), pos, size, &locktray);
+	check_locktray	= new CheckBox(freac::i18n->TranslateString("Lock CD tray while ripping"), pos, size, &locktray);
 
 	pos.y += 26;
 
-	check_ntscsi	= new CheckBox(BonkEnc::i18n->TranslateString("Use native NT SCSI library"), pos, size, &ntscsi);
+	check_ntscsi	= new CheckBox(freac::i18n->TranslateString("Use native NT SCSI library"), pos, size, &ntscsi);
 
 	OSVERSIONINFOA	 vInfo;
 
@@ -201,7 +201,7 @@ BonkEnc::GeneralSettingsLayerCDRip::GeneralSettingsLayerCDRip() : Layer(BonkEnc:
 	Add(check_readCDPlayerIni);
 }
 
-BonkEnc::GeneralSettingsLayerCDRip::~GeneralSettingsLayerCDRip()
+freac::GeneralSettingsLayerCDRip::~GeneralSettingsLayerCDRip()
 {
 	DeleteObject(group_drive);
 	DeleteObject(combo_drive);
@@ -224,82 +224,82 @@ BonkEnc::GeneralSettingsLayerCDRip::~GeneralSettingsLayerCDRip()
 	DeleteObject(check_readCDPlayerIni);
 }
 
-Void BonkEnc::GeneralSettingsLayerCDRip::ToggleSetSpeed()
+Void freac::GeneralSettingsLayerCDRip::ToggleSetSpeed()
 {
 	if (setspeed)	combo_speed->Activate();
 	else		combo_speed->Deactivate();
 }
 
-Void BonkEnc::GeneralSettingsLayerCDRip::SetParanoia()
+Void freac::GeneralSettingsLayerCDRip::SetParanoia()
 {
 	if (cdparanoia)	combo_paranoia_mode->Activate();
 	else		combo_paranoia_mode->Deactivate();
 }
 
-Void BonkEnc::GeneralSettingsLayerCDRip::ToggleAutoRead()
+Void freac::GeneralSettingsLayerCDRip::ToggleAutoRead()
 {
 	if (autoRead)	check_autoRip->Activate();
 	else		check_autoRip->Deactivate();
 }
 
-Int BonkEnc::GeneralSettingsLayerCDRip::GetActiveDrive()
+Int freac::GeneralSettingsLayerCDRip::GetActiveDrive()
 {
 	return combo_drive->GetSelectedEntryNumber();
 }
 
-Int BonkEnc::GeneralSettingsLayerCDRip::GetCDParanoiaMode()
+Int freac::GeneralSettingsLayerCDRip::GetCDParanoiaMode()
 {
 	if (!cdparanoia) return -1;
 
 	return combo_paranoia_mode->GetSelectedEntryNumber();
 }
 
-Int BonkEnc::GeneralSettingsLayerCDRip::GetSpeed()
+Int freac::GeneralSettingsLayerCDRip::GetSpeed()
 {
 	return (setspeed ? 48 - (combo_speed->GetSelectedEntryNumber() * 4) : 0);
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDRip::GetJitter()
+Bool freac::GeneralSettingsLayerCDRip::GetJitter()
 {
 	return jitter;
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDRip::GetSwapChannels()
+Bool freac::GeneralSettingsLayerCDRip::GetSwapChannels()
 {
 	return swapchannels;
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDRip::GetLockTray()
+Bool freac::GeneralSettingsLayerCDRip::GetLockTray()
 {
 	return locktray;
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDRip::GetNTSCSI()
+Bool freac::GeneralSettingsLayerCDRip::GetNTSCSI()
 {
 	return ntscsi;
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDRip::GetAutoRead()
+Bool freac::GeneralSettingsLayerCDRip::GetAutoRead()
 {
 	return autoRead;
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDRip::GetAutoRip()
+Bool freac::GeneralSettingsLayerCDRip::GetAutoRip()
 {
 	return autoRip;
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDRip::GetAutoEject()
+Bool freac::GeneralSettingsLayerCDRip::GetAutoEject()
 {
 	return autoEject;
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDRip::GetReadCDText()
+Bool freac::GeneralSettingsLayerCDRip::GetReadCDText()
 {
 	return readCDText;
 }
 
-Bool BonkEnc::GeneralSettingsLayerCDRip::GetReadCDPlayerIni()
+Bool freac::GeneralSettingsLayerCDRip::GetReadCDPlayerIni()
 {
 	return readCDPlayerIni;
 }

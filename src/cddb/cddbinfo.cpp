@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,45 +11,45 @@
 #include <cddb/cddbinfo.h>
 #include <cddb/cddb.h>
 
-BonkEnc::CDDBInfo::CDDBInfo()
+freac::CDDBInfo::CDDBInfo()
 {
 	charset = "UTF-8";
 
 	discID = -1;
 }
 
-BonkEnc::CDDBInfo::CDDBInfo(int nil)
+freac::CDDBInfo::CDDBInfo(int nil)
 {
 	*this = nil;
 }
 
-BonkEnc::CDDBInfo::CDDBInfo(const CDDBInfo &oInfo)
+freac::CDDBInfo::CDDBInfo(const CDDBInfo &oInfo)
 {
 	*this = oInfo;
 }
 
-bool BonkEnc::CDDBInfo::operator ==(const CDDBInfo &oInfo) const
+bool freac::CDDBInfo::operator ==(const CDDBInfo &oInfo) const
 {
 	return discID	== oInfo.discID &&
 	       category == oInfo.category;
 }
 
-bool BonkEnc::CDDBInfo::operator !=(const CDDBInfo &oInfo) const
+bool freac::CDDBInfo::operator !=(const CDDBInfo &oInfo) const
 {
 	return !(*this == oInfo);
 }
 
-bool BonkEnc::CDDBInfo::operator ==(int nil) const
+bool freac::CDDBInfo::operator ==(int nil) const
 {
 	return discID == 0 || discID == -1;
 }
 
-bool BonkEnc::CDDBInfo::operator !=(int nil) const
+bool freac::CDDBInfo::operator !=(int nil) const
 {
 	return !(*this == nil);
 }
 
-BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(int nil)
+freac::CDDBInfo &freac::CDDBInfo::operator =(int nil)
 {
 	discID = -1;
 
@@ -66,7 +66,7 @@ BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(int nil)
 	return *this;
 }
 
-BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(const CDDBInfo &oInfo)
+freac::CDDBInfo &freac::CDDBInfo::operator =(const CDDBInfo &oInfo)
 {
 	category = oInfo.category;
 	discID = oInfo.discID;
@@ -101,12 +101,12 @@ BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(const CDDBInfo &oInfo)
 	return *this;
 }
 
-String BonkEnc::CDDBInfo::DiscIDToString() const
+String freac::CDDBInfo::DiscIDToString() const
 {
 	return CDDB::DiscIDToString(discID);
 }
 
-String BonkEnc::CDDBInfo::GetCDDBQueryString() const
+String freac::CDDBInfo::GetCDDBQueryString() const
 {
 	Int	 numTocEntries = trackTitles.Length();
 	String	 str = String("cddb query ").Append(DiscIDToString());

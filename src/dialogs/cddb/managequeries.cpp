@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,20 +10,20 @@
 
 #include <dialogs/cddb/managequeries.h>
 
-#include <bonkenc.h>
+#include <freac.h>
 #include <resources.h>
 
-BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
+freac::cddbManageQueriesDlg::cddbManageQueriesDlg()
 {
-	currentConfig	= BonkEnc::currentConfig;
+	currentConfig	= freac::currentConfig;
 
 	cddbQueries	= new CDDBBatch(currentConfig);
 
 	Point	 pos;
 	Size	 size;
 
-	mainWnd			= new Window(BonkEnc::i18n->TranslateString("CDDB queries"), currentConfig->wndPos + Point(40, 40), Size(402, 352));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(freac::i18n->TranslateString("CDDB queries"), currentConfig->wndPos + Point(40, 40), Size(402, 352));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -33,21 +33,21 @@ BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel	= new Button(BonkEnc::i18n->TranslateString("Close"), NIL, pos, size);
+	btn_cancel	= new Button(freac::i18n->TranslateString("Close"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&cddbManageQueriesDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x = 7;
 	pos.y = 10;
 
-	text_entries	= new Text(BonkEnc::i18n->TranslateString("CDDB queries to perform:"), pos);
+	text_entries	= new Text(freac::i18n->TranslateString("CDDB queries to perform:"), pos);
 
 	pos.y += 19;
 	size.cx = 380;
 	size.cy = 213;
 
 	list_entries	= new ListBox(pos, size);
-	list_entries->AddTab(BonkEnc::i18n->TranslateString("Query string"), 0);
+	list_entries->AddTab(freac::i18n->TranslateString("Query string"), 0);
 	list_entries->onSelectEntry.Connect(&cddbManageQueriesDlg::SelectEntry, this);
 
 	pos.x = 7;
@@ -55,19 +55,19 @@ BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_delete	= new Button(BonkEnc::i18n->TranslateString("Remove entry"), NIL, pos, size);
+	btn_delete	= new Button(freac::i18n->TranslateString("Remove entry"), NIL, pos, size);
 	btn_delete->onAction.Connect(&cddbManageQueriesDlg::DeleteEntry, this);
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
 	pos.x = 219;
 
-	btn_query	= new Button(BonkEnc::i18n->TranslateString("Query"), NIL, pos, size);
+	btn_query	= new Button(freac::i18n->TranslateString("Query"), NIL, pos, size);
 	btn_query->onAction.Connect(&cddbManageQueriesDlg::QueryEntry, this);
 	btn_query->SetOrientation(OR_LOWERLEFT);
 
 	pos.x += 88;
 
-	btn_query_all	= new Button(BonkEnc::i18n->TranslateString("Query all"), NIL, pos, size);
+	btn_query_all	= new Button(freac::i18n->TranslateString("Query all"), NIL, pos, size);
 	btn_query_all->onAction.Connect(&cddbManageQueriesDlg::QueryAllEntries, this);
 	btn_query_all->SetOrientation(OR_LOWERLEFT);
 
@@ -98,7 +98,7 @@ BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::cddbManageQueriesDlg::~cddbManageQueriesDlg()
+freac::cddbManageQueriesDlg::~cddbManageQueriesDlg()
 {
 	delete cddbQueries;
 
@@ -117,25 +117,25 @@ BonkEnc::cddbManageQueriesDlg::~cddbManageQueriesDlg()
 	DeleteObject(text_status);
 }
 
-const Error &BonkEnc::cddbManageQueriesDlg::ShowDialog()
+const Error &freac::cddbManageQueriesDlg::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-Void BonkEnc::cddbManageQueriesDlg::Cancel()
+Void freac::cddbManageQueriesDlg::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbManageQueriesDlg::SelectEntry()
+Void freac::cddbManageQueriesDlg::SelectEntry()
 {
 	btn_delete->Activate();
 	btn_query->Activate();
 }
 
-Void BonkEnc::cddbManageQueriesDlg::DeleteEntry()
+Void freac::cddbManageQueriesDlg::DeleteEntry()
 {
 	cddbQueries->DeleteQuery(list_entries->GetSelectedEntryNumber());
 
@@ -145,7 +145,7 @@ Void BonkEnc::cddbManageQueriesDlg::DeleteEntry()
 	btn_query->Deactivate();
 }
 
-Void BonkEnc::cddbManageQueriesDlg::ReadEntries()
+Void freac::cddbManageQueriesDlg::ReadEntries()
 {
 	// Read all entries from the query queue
 
@@ -157,11 +157,11 @@ Void BonkEnc::cddbManageQueriesDlg::ReadEntries()
 	}
 }
 
-Void BonkEnc::cddbManageQueriesDlg::QueryEntry()
+Void freac::cddbManageQueriesDlg::QueryEntry()
 {
 	// Query selected entry from online CDDB
 
-	text_status->SetText(String(BonkEnc::i18n->TranslateString("Querying CD information")).Append("..."));
+	text_status->SetText(String(freac::i18n->TranslateString("Querying CD information")).Append("..."));
 
 	if (cddbQueries->Query(list_entries->GetSelectedEntryNumber()) != QUERY_RESULT_ERROR)
 	{
@@ -174,11 +174,11 @@ Void BonkEnc::cddbManageQueriesDlg::QueryEntry()
 	text_status->SetText(NIL);
 }
 
-Void BonkEnc::cddbManageQueriesDlg::QueryAllEntries()
+Void freac::cddbManageQueriesDlg::QueryAllEntries()
 {
 	// Query all entries from online CDDB
 
-	text_status->SetText(String(BonkEnc::i18n->TranslateString("Querying CD information")).Append("..."));
+	text_status->SetText(String(freac::i18n->TranslateString("Querying CD information")).Append("..."));
 
 	if (cddbQueries->QueryAll()) mainWnd->Close();
 

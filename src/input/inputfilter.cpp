@@ -13,7 +13,7 @@
 #include <dllinterfaces.h>
 #include <utilities.h>
 
-BonkEnc::InputFilter::InputFilter(Config *config, Track *iFormat)
+freac::InputFilter::InputFilter(Config *config, Track *iFormat)
 {
 	errorState	= False;
 	errorString	= "Unknown error";
@@ -24,18 +24,18 @@ BonkEnc::InputFilter::InputFilter(Config *config, Track *iFormat)
 	currentConfig	= config;
 }
 
-BonkEnc::InputFilter::~InputFilter()
+freac::InputFilter::~InputFilter()
 {
 }
 
-Bool BonkEnc::InputFilter::SetFileSize(UnsignedInt newFileSize)
+Bool freac::InputFilter::SetFileSize(UnsignedInt newFileSize)
 {
 	fileSize = newFileSize;
 
 	return true;
 }
 
-Bool BonkEnc::InputFilter::ParseID3V2Tag(unsigned char *buffer, Int size, Track *nFormat)
+Bool freac::InputFilter::ParseID3V2Tag(unsigned char *buffer, Int size, Track *nFormat)
 {
 	ID3Tag		*tag = ex_ID3Tag_New();
 
@@ -48,7 +48,7 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(unsigned char *buffer, Int size, Track 
 	return retVal;
 }
 
-Bool BonkEnc::InputFilter::ParseID3V2Tag(const String &fileName, Track *nFormat)
+Bool freac::InputFilter::ParseID3V2Tag(const String &fileName, Track *nFormat)
 {
 	InStream	 in(STREAM_FILE, fileName, IS_READ);
 
@@ -118,7 +118,7 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(const String &fileName, Track *nFormat)
 	return Error();
 }
 
-Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
+Bool freac::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 {
 	ID3TagIterator	*iterator = ex_ID3Tag_CreateIterator(tag);
 
@@ -255,7 +255,7 @@ Bool BonkEnc::InputFilter::ParseID3V2Tag(ID3Tag *tag, Track *nFormat)
 	return True;
 }
 
-String BonkEnc::InputFilter::GetID3V2FrameString(ID3Frame *frame)
+String freac::InputFilter::GetID3V2FrameString(ID3Frame *frame)
 {
 	ID3Field	*field = ex_ID3Frame_GetField(frame, ID3FN_TEXTENC);
 	String		 result;

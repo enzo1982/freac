@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,12 +12,12 @@
 #define H_FREAC_MAIN
 
 #include <smooth.h>
-#include "bonkenc.h"
+#include "freac.h"
 
 using namespace smooth;
 using namespace smooth::GUI;
 
-namespace BonkEnc
+namespace freac
 {
 	const Int	 CHARSET_ISO_8859_1	= 0;
 	const Int	 CHARSET_ISO_8859_2	= 1;
@@ -28,7 +28,7 @@ namespace BonkEnc
 	const Int	 CHARSET_GBK		= 6;
 	const Int	 CHARSET_BIG_5		= 7;
 
-	class BonkEncGUI : public BonkEnc
+	class freacGUI : public freac
 	{
 		private:
 			PopupMenu	*menu_file;
@@ -160,8 +160,8 @@ namespace BonkEnc
 			Void		 OnJoblistSelectTrack(Track *);
 			Void		 OnJoblistSelectNone();
 		public:
-					 BonkEncGUI();
-					~BonkEncGUI();
+					 freacGUI();
+					~freacGUI();
 
 			CDDBInfo	 GetCDDBData();
 	};

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,17 +14,17 @@
 #include <dialogs/cddb/query.h>
 #include <utilities.h>
 
-BonkEnc::CDDBBatch::CDDBBatch(Config *iConfig) : CDDB(iConfig)
+freac::CDDBBatch::CDDBBatch(Config *iConfig) : CDDB(iConfig)
 {
 	ReadEntries();
 }
 
-BonkEnc::CDDBBatch::~CDDBBatch()
+freac::CDDBBatch::~CDDBBatch()
 {
 	SaveEntries();
 }
 
-Bool BonkEnc::CDDBBatch::ReadEntries()
+Bool freac::CDDBBatch::ReadEntries()
 {
 	String	 inputFormat = String::SetInputFormat("UTF-8");
 	String	 outputFormat = String::SetOutputFormat("UTF-8");
@@ -104,7 +104,7 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::SaveEntries()
+Bool freac::CDDBBatch::SaveEntries()
 {
 	// Save queued queries
 
@@ -165,7 +165,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::AddQuery(const String &query)
+Bool freac::CDDBBatch::AddQuery(const String &query)
 {
 	for (Int i = 0; i < queries.Length(); i++)
 	{
@@ -177,14 +177,14 @@ Bool BonkEnc::CDDBBatch::AddQuery(const String &query)
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::DeleteQuery(Int n)
+Bool freac::CDDBBatch::DeleteQuery(Int n)
 {
 	queries.Remove(queries.GetNthIndex(n));
 
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
+Bool freac::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 {
 	// create directory for entry
 	Directory	 cddbDir(String(config->configDir).Append("cddb"));
@@ -228,7 +228,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &cddbInfo)
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::DeleteSubmit(const CDDBInfo &cddbInfo)
+Bool freac::CDDBBatch::DeleteSubmit(const CDDBInfo &cddbInfo)
 {
 	for (Int i = 0; i < submits.Length(); i++)
 	{
@@ -243,7 +243,7 @@ Bool BonkEnc::CDDBBatch::DeleteSubmit(const CDDBInfo &cddbInfo)
 	return True;
 }
 
-Int BonkEnc::CDDBBatch::Query(Int n)
+Int freac::CDDBBatch::Query(Int n)
 {
 	// Query entry and delete entry if successful
 
@@ -280,7 +280,7 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 	return QUERY_RESULT_ERROR;
 }
 
-Bool BonkEnc::CDDBBatch::QueryAll()
+Bool freac::CDDBBatch::QueryAll()
 {
 	while (queries.Length() > 0)
 	{
@@ -290,7 +290,7 @@ Bool BonkEnc::CDDBBatch::QueryAll()
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &cddbInfo)
+Bool freac::CDDBBatch::Submit(const CDDBInfo &cddbInfo)
 {
 	// Submit and delete entry if successful
 
@@ -310,7 +310,7 @@ Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &cddbInfo)
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::SubmitAll()
+Bool freac::CDDBBatch::SubmitAll()
 {
 	while (submits.Length() > 0)
 	{

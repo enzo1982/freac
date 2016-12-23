@@ -12,16 +12,16 @@
 
 #include <dllinterfaces.h>
 
-BonkEnc::FilterInVORBIS::FilterInVORBIS(Config *config, Track *format) : InputFilter(config, format)
+freac::FilterInVORBIS::FilterInVORBIS(Config *config, Track *format) : InputFilter(config, format)
 {
 	packageSize = 0;
 }
 
-BonkEnc::FilterInVORBIS::~FilterInVORBIS()
+freac::FilterInVORBIS::~FilterInVORBIS()
 {
 }
 
-Bool BonkEnc::FilterInVORBIS::Activate()
+Bool freac::FilterInVORBIS::Activate()
 {
 	ex_ogg_sync_init(&oy);
 
@@ -82,7 +82,7 @@ Bool BonkEnc::FilterInVORBIS::Activate()
 	return true;
 }
 
-Bool BonkEnc::FilterInVORBIS::Deactivate()
+Bool freac::FilterInVORBIS::Deactivate()
 {
 	ex_ogg_stream_clear(&os);
 
@@ -96,7 +96,7 @@ Bool BonkEnc::FilterInVORBIS::Deactivate()
 	return true;
 }
 
-Int BonkEnc::FilterInVORBIS::ReadData(Buffer<UnsignedByte> &data, Int size)
+Int freac::FilterInVORBIS::ReadData(Buffer<UnsignedByte> &data, Int size)
 {
 	if (size <= 0) return -1;
 
@@ -173,7 +173,7 @@ Int BonkEnc::FilterInVORBIS::ReadData(Buffer<UnsignedByte> &data, Int size)
 	return size;
 }
 
-BonkEnc::Track *BonkEnc::FilterInVORBIS::GetFileInfo(const String &inFile)
+freac::Track *freac::FilterInVORBIS::GetFileInfo(const String &inFile)
 {
 	InStream	*f_in = new InStream(STREAM_FILE, inFile, IS_READ);
 

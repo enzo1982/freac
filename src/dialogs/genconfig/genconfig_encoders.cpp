@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -33,12 +33,12 @@
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(BonkEnc::i18n->TranslateString("Encoders"))
+freac::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(freac::i18n->TranslateString("Encoders"))
 {
 	Point	 pos;
 	Size	 size;
 
-	currentConfig = BonkEnc::currentConfig;
+	currentConfig = freac::currentConfig;
 
 	onTheFly	= currentConfig->enc_onTheFly;
 	keepWaves	= currentConfig->enc_keepWaves;
@@ -52,7 +52,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	size.cx	= 344;
 	size.cy	= 43;
 
-	group_encoder	= new GroupBox(BonkEnc::i18n->TranslateString("Encoder"), pos, size);
+	group_encoder	= new GroupBox(freac::i18n->TranslateString("Encoder"), pos, size);
 
 	pos.x	= 17;
 	pos.y	= 23;
@@ -115,7 +115,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	pos.x	+= 194;
 	size.cx	= 130;
 
-	button_config	= new Button(BonkEnc::i18n->TranslateString("Configure encoder"), NIL, pos, size);
+	button_config	= new Button(freac::i18n->TranslateString("Configure encoder"), NIL, pos, size);
 	button_config->onAction.Connect(&GeneralSettingsLayerEncoders::ConfigureEncoder, this);
 
 	pos.x	= 7;
@@ -123,14 +123,14 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	size.cx	= 344;
 	size.cy	= 93;
 
-	group_outdir	= new GroupBox(BonkEnc::i18n->TranslateString("Output folder"), pos, size);
+	group_outdir	= new GroupBox(freac::i18n->TranslateString("Output folder"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 236;
 	size.cy	= 0;
 
-	check_useInputDir	= new CheckBox(BonkEnc::i18n->TranslateString("Use input file folder if possible"), pos, size, &useInputDir);
+	check_useInputDir	= new CheckBox(freac::i18n->TranslateString("Use input file folder if possible"), pos, size, &useInputDir);
 	check_useInputDir->onAction.Connect(&GeneralSettingsLayerEncoders::ToggleUseInputDir, this);
 
 	pos.x	+= 17;
@@ -138,7 +138,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	size.cx	= 219;
 	size.cy	= 0;
 
-	check_allowOverwrite	= new CheckBox(BonkEnc::i18n->TranslateString("Allow overwriting input file"), pos, size, &allowOverwrite);
+	check_allowOverwrite	= new CheckBox(freac::i18n->TranslateString("Allow overwriting input file"), pos, size, &allowOverwrite);
 
 	ToggleUseInputDir();
 
@@ -153,7 +153,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	pos.y	-= 1;
 	size.cx	= 0;
 
-	button_outdir_browse= new Button(BonkEnc::i18n->TranslateString("Browse"), NIL, pos, size);
+	button_outdir_browse= new Button(freac::i18n->TranslateString("Browse"), NIL, pos, size);
 	button_outdir_browse->onAction.Connect(&GeneralSettingsLayerEncoders::SelectDir, this);
 
 	pos.x	= 7;
@@ -161,7 +161,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	size.cx	= 344;
 	size.cy	= 43;
 
-	group_filename	= new GroupBox(BonkEnc::i18n->TranslateString("Filename pattern"), pos, size);
+	group_filename	= new GroupBox(freac::i18n->TranslateString("Filename pattern"), pos, size);
 
 	pos.x	= 17;
 	pos.y	+= 12;
@@ -189,25 +189,25 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	size.cx	= 178;
 	size.cy	= 94;
 
-	group_options		= new GroupBox(BonkEnc::i18n->TranslateString("Options"), pos, size);
+	group_options		= new GroupBox(freac::i18n->TranslateString("Options"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_onTheFly		= new CheckBox(BonkEnc::i18n->TranslateString("Encode \'On-The-Fly\'"), pos, size, &onTheFly);
+	check_onTheFly		= new CheckBox(freac::i18n->TranslateString("Encode \'On-The-Fly\'"), pos, size, &onTheFly);
 	check_onTheFly->onAction.Connect(&GeneralSettingsLayerEncoders::ToggleOnTheFly, this);
 
 	pos.y += 26;
 
-	check_keepWaves		= new CheckBox(BonkEnc::i18n->TranslateString("Keep ripped Wave files"), pos, size, &keepWaves);
+	check_keepWaves		= new CheckBox(freac::i18n->TranslateString("Keep ripped Wave files"), pos, size, &keepWaves);
 
 	ToggleOnTheFly();
 
 	pos.y += 26;
 
-	check_singleFile	= new CheckBox(BonkEnc::i18n->TranslateString("Encode to a single file"), pos, size, &singleFile);
+	check_singleFile	= new CheckBox(freac::i18n->TranslateString("Encode to a single file"), pos, size, &singleFile);
 	check_singleFile->onAction.Connect(&GeneralSettingsLayerEncoders::ToggleEncodeToSingleFile, this);
 
 	ToggleEncodeToSingleFile();
@@ -217,14 +217,14 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	size.cx	= 178;
 	size.cy	= 43;
 
-	group_unicode		= new GroupBox(BonkEnc::i18n->TranslateString("Unicode"), pos, size);
+	group_unicode		= new GroupBox(freac::i18n->TranslateString("Unicode"), pos, size);
 
 	pos.x	+= 10;
 	pos.y	+= 14;
 	size.cx	= 157;
 	size.cy	= 0;
 
-	check_unicode_files	= new CheckBox(BonkEnc::i18n->TranslateString("Use Unicode filenames"), pos, size, &unicode_files);
+	check_unicode_files	= new CheckBox(freac::i18n->TranslateString("Use Unicode filenames"), pos, size, &unicode_files);
 
 	if (!Setup::enableUnicode) check_unicode_files->Deactivate();
 
@@ -246,7 +246,7 @@ BonkEnc::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(Bo
 	Add(check_unicode_files);
 }
 
-BonkEnc::GeneralSettingsLayerEncoders::~GeneralSettingsLayerEncoders()
+freac::GeneralSettingsLayerEncoders::~GeneralSettingsLayerEncoders()
 {
 	DeleteObject(group_encoder);
 	DeleteObject(combo_encoder);
@@ -267,12 +267,12 @@ BonkEnc::GeneralSettingsLayerEncoders::~GeneralSettingsLayerEncoders()
 	DeleteObject(check_unicode_files);
 }
 
-Void BonkEnc::GeneralSettingsLayerEncoders::SelectDir()
+Void freac::GeneralSettingsLayerEncoders::SelectDir()
 {
 	DirSelection	*dialog = new DirSelection();
 
 	dialog->SetParentWindow(GetContainerWindow());
-	dialog->SetCaption(String("\n").Append(BonkEnc::i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
+	dialog->SetCaption(String("\n").Append(freac::i18n->TranslateString("Select the folder in which the encoded files will be placed:")));
 	dialog->SetDirName(String(edit_outdir->GetText()).Replace("<installdrive>", Utilities::GetInstallDrive()));
 
 	if (dialog->ShowDialog() == Success())
@@ -283,11 +283,11 @@ Void BonkEnc::GeneralSettingsLayerEncoders::SelectDir()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::GeneralSettingsLayerEncoders::ConfigureEncoder()
+Void freac::GeneralSettingsLayerEncoders::ConfigureEncoder()
 {
 	if (combo_encoder->GetSelectedEntryNumber() == ENCODER_WAVE)
 	{
-		QuickMessage(BonkEnc::i18n->TranslateString("No options can be configured for Windows Wave file output!"), BonkEnc::i18n->TranslateString("Windows Wave file output"), Message::Buttons::Ok, Message::Icon::Information);
+		QuickMessage(freac::i18n->TranslateString("No options can be configured for Windows Wave file output!"), freac::i18n->TranslateString("Windows Wave file output"), Message::Buttons::Ok, Message::Icon::Information);
 
 		return;
 	}
@@ -314,19 +314,19 @@ Void BonkEnc::GeneralSettingsLayerEncoders::ConfigureEncoder()
 	}
 }
 
-Void BonkEnc::GeneralSettingsLayerEncoders::ToggleOnTheFly()
+Void freac::GeneralSettingsLayerEncoders::ToggleOnTheFly()
 {
 	if (onTheFly)	check_keepWaves->Deactivate();
 	else		check_keepWaves->Activate();
 }
 
-Void BonkEnc::GeneralSettingsLayerEncoders::ToggleUseInputDir()
+Void freac::GeneralSettingsLayerEncoders::ToggleUseInputDir()
 {
 	if (useInputDir) check_allowOverwrite->Activate();
 	else		 check_allowOverwrite->Deactivate();
 }
 
-Void BonkEnc::GeneralSettingsLayerEncoders::ToggleEncodeToSingleFile()
+Void freac::GeneralSettingsLayerEncoders::ToggleEncodeToSingleFile()
 {
 	if (singleFile)	{ onTheFly = True; check_onTheFly->Deactivate(); }
 	else		{ check_onTheFly->Activate(); }
@@ -334,47 +334,47 @@ Void BonkEnc::GeneralSettingsLayerEncoders::ToggleEncodeToSingleFile()
 	ToggleOnTheFly();
 }
 
-Int BonkEnc::GeneralSettingsLayerEncoders::GetSelectedEncoder()
+Int freac::GeneralSettingsLayerEncoders::GetSelectedEncoder()
 {
 	return combo_encoder->GetSelectedEntryNumber();
 }
 
-Bool BonkEnc::GeneralSettingsLayerEncoders::GetUseInputDirectory()
+Bool freac::GeneralSettingsLayerEncoders::GetUseInputDirectory()
 {
 	return useInputDir;
 }
 
-Bool BonkEnc::GeneralSettingsLayerEncoders::GetAllowOverwrite()
+Bool freac::GeneralSettingsLayerEncoders::GetAllowOverwrite()
 {
 	return allowOverwrite;
 }
 
-Bool BonkEnc::GeneralSettingsLayerEncoders::GetEncodeToSingleFile()
+Bool freac::GeneralSettingsLayerEncoders::GetEncodeToSingleFile()
 {
 	return singleFile;
 }
 
-Bool BonkEnc::GeneralSettingsLayerEncoders::GetOnTheFly()
+Bool freac::GeneralSettingsLayerEncoders::GetOnTheFly()
 {
 	return onTheFly;
 }
 
-Bool BonkEnc::GeneralSettingsLayerEncoders::GetKeepWaveFiles()
+Bool freac::GeneralSettingsLayerEncoders::GetKeepWaveFiles()
 {
 	return keepWaves;
 }
 
-Bool BonkEnc::GeneralSettingsLayerEncoders::GetUnicodeFilenames()
+Bool freac::GeneralSettingsLayerEncoders::GetUnicodeFilenames()
 {
 	return unicode_files;
 }
 
-String BonkEnc::GeneralSettingsLayerEncoders::GetOutputDirectory()
+String freac::GeneralSettingsLayerEncoders::GetOutputDirectory()
 {
 	return edit_outdir->GetText();
 }
 
-String BonkEnc::GeneralSettingsLayerEncoders::GetFilenamePattern()
+String freac::GeneralSettingsLayerEncoders::GetFilenamePattern()
 {
 	return edit_filename->GetText();
 }

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2013 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -10,20 +10,20 @@
 
 #include <dialogs/cddb/multimatch.h>
 
-#include <bonkenc.h>
+#include <freac.h>
 #include <resources.h>
 
-BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
+freac::cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 {
 	Point	 pos;
 	Size	 size;
 	String	 title;
 
-	if (fuzzy)	title = BonkEnc::i18n->TranslateString("No exact matches found");
-	else		title = BonkEnc::i18n->TranslateString("Multiple matches found");
+	if (fuzzy)	title = freac::i18n->TranslateString("No exact matches found");
+	else		title = freac::i18n->TranslateString("Multiple matches found");
 
-	mainWnd			= new Window(title, BonkEnc::currentConfig->wndPos + Point(80, 80), Size(352, 150));
-	mainWnd->SetRightToLeft(BonkEnc::i18n->IsActiveLanguageRightToLeft());
+	mainWnd			= new Window(title, freac::currentConfig->wndPos + Point(80, 80), Size(352, 150));
+	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -33,13 +33,13 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 	size.cx = 0;
 	size.cy = 0;
 
-	btn_cancel		= new Button(BonkEnc::i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(freac::i18n->TranslateString("Cancel"), NIL, pos, size);
 	btn_cancel->onAction.Connect(&cddbMultiMatchDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
 	pos.x -= 88;
 
-	btn_ok			= new Button(BonkEnc::i18n->TranslateString("OK"), NIL, pos, size);
+	btn_ok			= new Button(freac::i18n->TranslateString("OK"), NIL, pos, size);
 	btn_ok->onAction.Connect(&cddbMultiMatchDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -48,12 +48,12 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 	size.cx = 330;
 	size.cy = 59;
 
-	group_match		= new GroupBox(BonkEnc::i18n->TranslateString("Matches"), pos, size);
+	group_match		= new GroupBox(freac::i18n->TranslateString("Matches"), pos, size);
 
 	pos.x += 13;
 	pos.y += 11;
 
-	text_match		= new Text(BonkEnc::i18n->TranslateString("Select the entry that best fits your CD:"), pos);
+	text_match		= new Text(freac::i18n->TranslateString("Select the entry that best fits your CD:"), pos);
 
 	pos.x -= 3;
 	pos.y += 19;
@@ -76,7 +76,7 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(Bool fuzzy)
 	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
 }
 
-BonkEnc::cddbMultiMatchDlg::~cddbMultiMatchDlg()
+freac::cddbMultiMatchDlg::~cddbMultiMatchDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -88,33 +88,33 @@ BonkEnc::cddbMultiMatchDlg::~cddbMultiMatchDlg()
 	DeleteObject(btn_cancel);
 }
 
-const Error &BonkEnc::cddbMultiMatchDlg::ShowDialog()
+const Error &freac::cddbMultiMatchDlg::ShowDialog()
 {
 	mainWnd->Stay();
 
 	return error;
 }
 
-Void BonkEnc::cddbMultiMatchDlg::OK()
+Void freac::cddbMultiMatchDlg::OK()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbMultiMatchDlg::Cancel()
+Void freac::cddbMultiMatchDlg::Cancel()
 {
 	mainWnd->Close();
 
 	error = Error();
 }
 
-Int BonkEnc::cddbMultiMatchDlg::AddEntry(const String &category, const String &title)
+Int freac::cddbMultiMatchDlg::AddEntry(const String &category, const String &title)
 {
 	combo_match->AddEntry(String("(").Append(category).Append(") ").Append(title));
 
 	return Success();
 }
 
-Int BonkEnc::cddbMultiMatchDlg::GetSelectedEntryNumber()
+Int freac::cddbMultiMatchDlg::GetSelectedEntryNumber()
 {
 	return combo_match->GetSelectedEntryNumber();
 }
