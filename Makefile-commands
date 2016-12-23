@@ -52,14 +52,14 @@ else
 	endif
 endif
 
-all: allcmds $(FREAC_PATH)/$(BINDIR)/freac/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED)
+all: allcmds $(FREAC_PATH)/$(BINDIR)/boca/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED)
 
 allcmds:
 	+ $(ALLCMD1)
 	+ $(ALLCMD2)
 
-$(FREAC_PATH)/$(BINDIR)/freac/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED) : $(OBJECTS)
-	mkdir -p $(FREAC_PATH)/$(BINDIR)
+$(FREAC_PATH)/$(BINDIR)/boca/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED) : $(OBJECTS)
+	mkdir -p $(FREAC_PATH)/$(BINDIR)/boca
 ifneq ($(BUILD_OSX),True)
 	$(LD) --shared -o $@ $(OBJECTS) $(LDOPTS) $(LDFLAGS)
 else
@@ -67,14 +67,14 @@ else
 endif
 
 clean:
-	rm -f $(FREAC_PATH)/$(BINDIR)/freac/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED) $(OBJECTS)
+	rm -f $(FREAC_PATH)/$(BINDIR)/boca/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED) $(OBJECTS)
 	$(CLEANCMD1)
 	$(CLEANCMD2)
 
 install: all
 ifneq ($(BUILD_WIN32),True)
 	$(INSTALL) -d $(DESTDIR)$(libdir)/freac
-	$(INSTALL_DATA) $(FREAC_PATH)/$(BINDIR)/freac/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED) $(DESTDIR)$(libdir)/freac
+	$(INSTALL_DATA) $(FREAC_PATH)/$(BINDIR)/boca/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED) $(DESTDIR)$(libdir)/freac
 endif
 	$(INSTCMD1)
 	$(INSTCMD2)
