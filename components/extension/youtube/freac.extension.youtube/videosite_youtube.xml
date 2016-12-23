@@ -1,0 +1,42 @@
+<VideoSite>
+  <name>YouTube</name>
+  <version>1.0</version>
+  <decoders>
+    <decoder>avconv-webm_audio-dec</decoder>
+  </decoders>
+
+  <script type="text/javascript">
+    <![CDATA[
+      function canHandleURL(URL) {
+	if (URL.toLowerCase().match(/https?:\/\/www.youtube.com\/watch\?v=.*/)) return true;
+	else									return false;
+      }
+
+      function getVideoURL(html) {
+	var streamMap = (html.match(/"url_encoded_fmt_stream_map": "(.*?)"/), RegExp.$1.split(","));
+
+	for (var i = 0; i < streamMap.length; i++) {
+	  if (streamMap[i].match(/type=video%2Fwebm/)) {
+	    var url = (streamMap[i].match(/url=(.*?)(?:\\u0026.*)?$/), RegExp.$1);
+	    var sig = (streamMap[i].match(/sig=(.*?)(?:\\u0026.*)?$/), RegExp.$1);
+
+	    return "" + unescape(unescape(url)) + "&signature=" + sig;
+	  }
+	}
+      }
+
+      function queryMetadata(html) {
+	var metadata = new Metadata();
+
+	metadata.title	     = (html.match(/<meta name="title" content="(.*?)">/) ? RegExp.$1 : null);
+	metadata.description = (html.match(/<p id="eow-description"\s*>((?:.|\n|\r)*?)<\/p>/) ? RegExp.$1 : null);
+
+	metadata.thumbnail   = (html.match(/<meta property="og:image" content="(.*?)"\s*\/?>/) ? RegExp.$1 : null);
+
+	metadata.uploader    = (html.match(/<a (?:.|\n|\r)*?class=".*?yt-user-name.*?"(?:.|\n|\r)*?>\s*(.*?)\s*<\/a>/) ? RegExp.$1 : null);
+
+	return metadata;
+      }
+    ]]>
+  </script>
+</VideoSite>

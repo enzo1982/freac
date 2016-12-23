@@ -1,0 +1,36 @@
+<VideoSite>
+  <name>Daum 뮤직</name>
+  <version>1.0</version>
+  <decoders>
+    <decoder>avconv-flv_audio-dec</decoder>
+  </decoders>
+
+  <script type="text/javascript">
+    <![CDATA[
+      function canHandleURL(URL) {
+	if (URL.toLowerCase().match(/http:\/\/music.daum.net(\/.*)?\/vclip\/detail\?.*/)) return true;
+	else										  return false;
+      }
+
+      function getVideoURL(html) {
+	var location = downloadURL("http://videofarm.daum.net/controller/api/open/v1_2/MovieLocation.apixml?vid=" + (html.match(/"body_mv_player", "(.*?)"/), RegExp.$1) + "&preset=main");
+
+	return location.match(/<url>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/url>/), RegExp.$1;
+      }
+
+      function queryMetadata(html) {
+	var metadata = new Metadata();
+
+	metadata.title	     = (html.match(/<div class="song_info">[\s\n\r]*<strong>[\s\n\r]*(.*?)[\s\n\r]*<\/strong>/) ? RegExp.$1 : null);
+	metadata.description = (html.match(/<div class="lyrics scroll_lyrics">[\s\n\r]*<p class="fc_txt">[\s\n\r]*((?:.|\n|\r)*?)[\s\n\r]*<\/p>[\s\n\r]*<\/div>/) ? RegExp.$1 : null);
+
+	metadata.date	     = (html.match(/<span class="txt_source">(?:.|\n|\r)*?<span class="txt_bar"> \| <\/span>[\s\n\r]*(.*?)[\s\n\r]*<\/span>/) ? RegExp.$1 : null);
+	metadata.thumbnail   = (html.match(/{thumb:"(.*?)".*?}/) ? RegExp.$1 : null);
+
+	metadata.uploader    = (html.match(/<a class="artist_name key_artist".*?>(.*?)<\/a>/) ? RegExp.$1 : null);
+
+	return metadata;
+      }
+    ]]>
+  </script>
+</VideoSite>

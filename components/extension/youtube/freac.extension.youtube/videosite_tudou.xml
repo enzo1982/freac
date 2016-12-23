@@ -1,0 +1,35 @@
+<VideoSite>
+  <name>Tudou 土豆网</name>
+  <version>1.0</version>
+  <decoders>
+    <decoder>avconv-flv_audio-dec</decoder>
+  </decoders>
+
+  <script type="text/javascript">
+    <![CDATA[
+      function canHandleURL(URL) {
+	if (URL.toLowerCase().match(/http:\/\/www.tudou.com\/programs\/view\/.*/)) return true;
+	else									   return false;
+      }
+
+      function getVideoURL(html) {
+	var location = downloadURL("http://v2.tudou.com/f?id=" + (html.match(/iid: ([0-9]+)/), RegExp.$1));
+
+	return location.match(/<f .*?>(.*?)<\/f>/), RegExp.$1.replace(/&amp;/g, "&") + "&vn=02";
+      }
+
+      function queryMetadata(html) {
+	var metadata = new Metadata();
+
+	metadata.title	     = (html.match(/kw: '(.*?)'/) ? RegExp.$1 : null);
+	metadata.description = (html.match(/desc: '((?:.|\n|\r)*?)'/) ? RegExp.$1 : null);
+
+	metadata.thumbnail   = (html.match(/pic: '(.*?)'/) ? RegExp.$1 : null);
+
+	metadata.uploader    = (html.match(/<div class="v_user">[\s\n\r]*<a .*?>(.*?)<\/a>/) ? RegExp.$1 : null);
+
+	return metadata;
+      }
+    ]]>
+  </script>
+</VideoSite>

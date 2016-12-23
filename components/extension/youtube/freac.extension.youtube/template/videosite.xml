@@ -1,0 +1,54 @@
+<!-- This template is based on the YouTube site script. You will need to be familiar
+  -- with regular expressions in order to understand what is happening here.
+  -->
+<VideoSite>
+  <name>YouTube</name>			   <!-- name of the video site, eg. YouTube -->
+  <version>1.0</version>		   <!-- must be 1.0 for now -->
+  <decoders>
+    <decoder>avconv-flv_audio-in</decoder> <!-- or another decoder if the site does not use FLV format -->
+  </decoders>
+
+  <script type="text/javascript">	   <!-- this is where the action is -->
+    <![CDATA[
+      function canHandleURL(URL) {
+	/* This function simply returns true or false depending on
+	 * whether it thinks it can handle the given URL or not.
+	 */
+	if (URL.toLowerCase().match(/http:\/\/www.youtube.com\/watch\?v=.*/)) return true;
+	else								      return false;
+      }
+
+      function getVideoURL(html) {
+	/* This function returns the URL of the actual FLV video file. It is relatively straight
+	 * forward for YouTube, but for some other sites you will need to do much more here.
+	 *
+	 * For example, many site store the actual video URL in an intermediate file that has to be
+	 * downloaded first. Please have a look at the other site scripts for examples on this.
+	 */
+	return html.match(/"url_encoded_fmt_stream_map": ".*?url=(.*?)\\u0026.*?webm.*?\\u0026sig=(.*?)\\u0026.*?,/), unescape(RegExp.$1) + "&signature=" + RegExp.$2;
+      }
+
+      function queryMetadata(html) {
+	/* You need to create and fill a Metadata object here.
+	 *
+	 * You should use regular expressions to extract the metadata from the HTML or a linked resource file.
+	 * For example, for YouTube the description is specified as <p id="eow-description">[description]</p> and thus
+	 * extracted using the regular expression {/<p id="eow-description"\s*>((?:.|\n|\r)*?)<\/p>/} below.
+	 *
+	 * Please have a look at the other site scripts for further examples.
+	 */
+	var metadata = new Metadata();
+
+	metadata.title	     = (html.match(/<meta name="title" content="(.*?)">/) ? RegExp.$1 : null);
+	metadata.description = (html.match(/<p id="eow-description"\s*>((?:.|\n|\r)*?)<\/p>/) ? RegExp.$1 : null);
+
+	metadata.date	     = (html.match(/<span id="eow-date" class="watch-video-date"\s*>\s*(.*?)\s*<\/span>/) ? RegExp.$1 : null);
+	metadata.thumbnail   = (html.match(/<meta property="og:image" content="(.*?)"\s*\/?>/) ? RegExp.$1 : null);
+
+	metadata.uploader    = (html.match(/<a (?:.|\n|\r)*? class=".*? yt-user-name author" rel="author"(?:.|\n|\r)*?>\s*(.*?)\s*<\/a>/) ? RegExp.$1 : null);
+
+	return metadata;
+      }
+    ]]>
+  </script>
+</VideoSite>

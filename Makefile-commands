@@ -1,0 +1,99 @@
+########## fre:ac commands makefile ##########
+
+include $(dir $(firstword $(MAKEFILE_LIST)))/$(FREAC_PATH)/Makefile-options
+
+BOCA_PATH = $(FREAC_PATH)/cdk
+
+CCOPTS = -fvisibility=hidden -DBOCA_COMPONENT_BUILD $(DEFINE) -I$(SRCDIR)/$(BOCA_PATH)/include
+LDOPTS = -L$(BOCA_PATH)/$(LIBDIR) -L$(SRCDIR)/$(BOCA_PATH)/$(LIBDIR) $(LIBS)
+
+ifeq (,$(findstring -lstdc++,$(LIBS)))
+	LDOPTS += -lstdc++
+endif
+
+ifeq ($(BUILD_WIN32),True)
+	CCOPTS += -DUNICODE -D_UNICODE
+	LDOPTS += -lsmooth -lboca -Wl,--dynamicbase,--nxcompat,--enable-auto-import
+else
+	CCOPTS += -fPIC
+
+	ifneq ($(BUILD_SOLARIS),True)
+	ifneq ($(BUILD_HAIKU),True)
+		ifneq ($(BUILD_QNX),True)
+			CCOPTS += -pthread
+		endif
+
+		ifneq ($(BUILD_LINUX),True)
+		ifneq ($(BUILD_OSX),True)
+			ifeq ($(BUILD_NETBSD),True)
+				CCOPTS += -I/usr/pkg/include
+			else
+				CCOPTS += -I/usr/local/include
+			endif
+		endif
+		endif
+	endif
+	endif
+
+	LDOPTS += -L$(prefix)/lib -lsmooth-$(SMOOTHVER) -lboca-$(VERSION)
+
+	ifeq ($(BUILD_OSX),True)
+		LDOPTS += -Wl,-headerpad,80
+	else ifeq ($(BUILD_NETBSD),True)
+		LDOPTS += -Wl,-rpath,/usr/pkg/lib -L/usr/pkg/lib
+	else ifeq ($(BUILD_HAIKU),True)
+		LDOPTS += -L/boot/common/lib
+	else
+		ifneq ($(BUILD_LINUX),True)
+		ifneq ($(BUILD_SOLARIS),True)
+			LDOPTS += -L/usr/local/lib
+		endif
+		endif
+	endif
+endif
+
+all: allcmds $(FREAC_PATH)/$(BINDIR)/freac/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED)
+
+allcmds:
+	+ $(ALLCMD1)
+	+ $(ALLCMD2)
+
+$(FREAC_PATH)/$(BINDIR)/freac/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED) : $(OBJECTS)
+	mkdir -p $(FREAC_PATH)/$(BINDIR)
+ifneq ($(BUILD_OSX),True)
+	$(LD) --shared -o $@ $(OBJECTS) $(LDOPTS) $(LDFLAGS)
+else
+	$(LD) -dynamiclib -o $@ $(OBJECTS) $(LDOPTS) $(LDFLAGS)
+endif
+
+clean:
+	rm -f $(FREAC_PATH)/$(BINDIR)/freac/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED) $(OBJECTS)
+	$(CLEANCMD1)
+	$(CLEANCMD2)
+
+install: all
+ifneq ($(BUILD_WIN32),True)
+	$(INSTALL) -d $(DESTDIR)$(libdir)/freac
+	$(INSTALL_DATA) $(FREAC_PATH)/$(BINDIR)/freac/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED) $(DESTDIR)$(libdir)/freac
+endif
+	$(INSTCMD1)
+	$(INSTCMD2)
+
+uninstall:
+ifneq ($(BUILD_WIN32),True)
+	rm -f $(DESTDIR)$(libdir)/freac/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED)
+endif
+	$(UINSTCMD1)
+	$(UINSTCMD2)
+
+.c.o:
+	$(CC) $(CCOPTS) $(CFLAGS) -c $< -o $@
+
+.cpp.o:
+	$(CXX) $(CCOPTS) $(CXXFLAGS) -c $< -o $@
+
+.m.o:
+	$(OBJC) $(CCOPTS) $(OBJCFLAGS) -c $< -o $@
+
+.mm.o:
+	$(OBJCXX) $(CCOPTS) $(OBJCXXFLAGS) -c $< -o $@

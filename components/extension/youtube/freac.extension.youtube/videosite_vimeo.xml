@@ -1,0 +1,38 @@
+<VideoSite>
+  <name>Vimeo</name>
+  <version>1.0</version>
+  <decoders>
+    <decoder>avconv-m4v_audio-dec</decoder>
+  </decoders>
+
+  <script type="text/javascript">
+    <![CDATA[
+      function canHandleURL(URL) {
+	if (URL.toLowerCase().match(/https?:\/\/vimeo.com\/(?:.*\/)*[0-9]+#?/)) return true;
+	else									return false;
+      }
+
+      function getVideoURL(html) {
+	var configURL = (html.match(/data-config-url="(.*?)"/), RegExp.$1.replace(/&amp;/g, "&"));
+	var config    = eval("(" + downloadURL(configURL) + ")");
+
+	if ('hd' in config.request.files.h264) return config.request.files.h264.hd.url;
+	else				       return config.request.files.h264.sd.url;
+      }
+
+      function queryMetadata(html) {
+	var metadata = new Metadata();
+
+	metadata.title	     = (html.match(/"title":"(.*?)"[\},]/) ? RegExp.$1.replace(/\\/g, "") : null);
+	metadata.description = (html.match(/<div (?:.*?)itemprop="description"(?:.*?)>((?:.|\n|\r)*?)<\/div>/) ? RegExp.$1 : null);
+
+	metadata.date	     = (html.match(/<meta itemprop="uploadDate" content="(.*?)T(?:.*?)">/) ? RegExp.$1 : null);
+	metadata.thumbnail   = (html.match(/<link itemprop="thumbnailUrl" href="(.*?)">/) ? RegExp.$1 : null);
+
+	metadata.uploader    = (html.match(/"user":\{(?:.*?)"name":"(.*?)"[\},]/) ? RegExp.$1.replace(/\\/g, "") : null);
+
+	return metadata;
+      }
+    ]]>
+  </script>
+</VideoSite>

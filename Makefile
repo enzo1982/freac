@@ -118,6 +118,8 @@ endif
 
 all: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME)
 
+	+ $(call makein,components)
+
 folders:
 	mkdir -p $(BIN) $(OBJECTS)
 
@@ -148,6 +150,8 @@ ifneq ($(BUILD_WIN32),True)
 
 	cp -r $(SRCDIR)/bin/manual $(DESTDIR)$(datadir)/doc/freac
 	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/doc/freac/manual
+
+	$(call makein,components,install)
 endif
 
 uninstall:
@@ -168,6 +172,8 @@ ifneq ($(BUILD_WIN32),True)
 	rm -f -r $(DESTDIR)$(datadir)/doc/freac/manual
 
 	rm -f -r $(DESTDIR)$(datadir)/doc/freac
+
+	$(call makein,components,uninstall)
 endif
 
 clean:
@@ -175,6 +181,8 @@ clean:
 ifneq ($(SRCDIR),$(CURDIR))
 	rmdir $(BIN) $(OBJECTS) 2> /dev/null || true
 endif
+
+	+ $(call cleanin,components)
 
 $(DLLNAME): $(DLLOBJECTS)
 	$(LD) $(DLLOBJECTS) $(LDOPTS) $(LDOPTS_DLL) $(LDFLAGS) -o $@

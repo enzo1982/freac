@@ -1,0 +1,16 @@
+<VideoConverter>
+  <name>Windows Media Video Converter</name>
+  <version>1.0</version>
+  <decoder>avconv-wmv_audio-dec</decoder>
+
+  <format>
+    <name>Windows Media Video</name>
+    <extension>wmv</extension>
+    <tag id="wma-tag" mode="other">WMA Metadata</tag>
+  </format>
+
+  <external>
+    <command>avconv</command>
+    <arguments>-i %INFILE -f asf -c:v wmv2 -sameq -c:a wmav2 -b:a 128000 %OUTFILE</arguments>
+  </external>
+</VideoConverter>

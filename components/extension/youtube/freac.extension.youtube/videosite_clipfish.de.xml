@@ -1,0 +1,38 @@
+<VideoSite>
+  <name>ClipFish.de</name>
+  <version>1.0</version>
+  <decoders>
+    <decoder>avconv-flv_audio-dec</decoder>
+  </decoders>
+
+  <script type="text/javascript">
+    <![CDATA[
+      function canHandleURL(URL) {
+	if (URL.toLowerCase().match(/http:\/\/www.clipfish.de\/(.*\/)?video\/.*/)) return true;
+	else									   return false;
+      }
+
+      function getVideoURL(html) {
+	var devxml = downloadURL((html.match(/data: "(.*?)"/), RegExp.$1.substr(0, 7) == "http://" ? RegExp.$1 : "http://www.clipfish.de" + RegExp.$1));
+
+	return devxml.match(/<filename>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/filename>/), RegExp.$1;
+      }
+
+      function queryMetadata(html) {
+	var metadata = new Metadata();
+
+	var devxml = downloadURL((html.match(/data: "(.*?)"/), RegExp.$1.substr(0, 7) == "http://" ? RegExp.$1 : "http://www.clipfish.de" + RegExp.$1));
+
+	metadata.title	     = (devxml.match(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/) ? RegExp.$1 : null);
+	metadata.description = (html.match(/<span .*?itemprop="description">[\s\n\r]*((?:.|\n|\r)*?)[\s\n\r]*(?:<div class="cf-clearer">.*?<\/div>)?[\s\n\r]*<\/span>/) ? RegExp.$1 : null);
+
+	metadata.date	     = (html.match(/(?:Upload:|Jahr:)\s*<span.*?>(.*?)<\/span>/) ? RegExp.$1 : null);
+	metadata.thumbnail   = (devxml.match(/<imageurl>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/imageurl>/) ? RegExp.$1 : null);
+
+	metadata.uploader    = (html.match(/<h2 .*?class="cf-box-top-headermodule.*?".*?>(.*?)<\/h2>/) ? RegExp.$1 : null);
+
+	return metadata;
+      }
+    ]]>
+  </script>
+</VideoSite>

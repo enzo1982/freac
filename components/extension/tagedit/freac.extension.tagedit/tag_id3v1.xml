@@ -1,0 +1,13 @@
+<TagSpec>
+  <name>ID3v1</name>
+
+  <fields>
+    <field name="Artist" type="text"/>
+    <field name="Title" type="text"/>
+    <field name="Album" type="text"/>
+    <field name="Track" type="integer"/>
+    <field name="Genre" type="genre"/>
+    <field name="Year" type="integer"/>
+    <field name="Comment" type="text"/>
+  </fields>
+</TagSpec>

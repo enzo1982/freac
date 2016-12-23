@@ -241,6 +241,17 @@ ifeq ($(findstring release,$(config)),release)
 		override LDFLAGS += -Wl,-rpath,.
 	endif
 	endif
+
+	# Use V8 when building on a supported platform
+	ifeq ($(BUILD_X86),True)
+		USE_V8 = True
+	else ifeq ($(BUILD_X86_64),True)
+		USE_V8 = True
+	else ifeq ($(BUILD_ARM),True)
+		USE_V8 = True
+	else ifeq ($(BUILD_MIPS),True)
+		USE_V8 = True
+	endif
 endif
 
 # Set debug specific options
@@ -263,6 +274,17 @@ ifeq ($(findstring debug,$(config)),debug)
 	ifneq ($(BUILD_OSX),True)
 		override LDFLAGS += -Wl,-rpath,.
 	endif
+	endif
+
+	# Use V8 when building on a supported platform
+	ifeq ($(BUILD_X86),True)
+		USE_V8 = True
+	else ifeq ($(BUILD_X86_64),True)
+		USE_V8 = True
+	else ifeq ($(BUILD_ARM),True)
+		USE_V8 = True
+	else ifeq ($(BUILD_MIPS),True)
+		USE_V8 = True
 	endif
 endif
 

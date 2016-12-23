@@ -1,0 +1,16 @@
+<VideoConverter>
+  <name>MP4 Video Converter</name>
+  <version>1.0</version>
+  <decoder>avconv-m4v_audio-dec</decoder>
+
+  <format>
+    <name>MP4 Video</name>
+    <extension>m4v</extension>
+    <tag id="mp4-tag" mode="other">MP4 Metadata</tag>
+  </format>
+
+  <external>
+    <command>avconv</command>
+    <arguments>-i %INFILE -f mp4 -c:v copy -c:a copy %OUTFILE</arguments>
+  </external>
+</VideoConverter>

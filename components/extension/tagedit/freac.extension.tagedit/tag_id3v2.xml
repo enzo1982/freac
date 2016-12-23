@@ -1,0 +1,101 @@
+<TagSpec>
+  <name>ID3v2</name>
+
+  <fields>
+    <field name="Audio encryption" type="data">AENC</field>
+    <field name="Attached picture" type="picture">APIC</field>
+    <field name="Audio seek point index" type="data">ASPI</field>
+
+    <field name="Comments" type="text">COMM</field>
+    <field name="Commercial frame" type="text">COMR</field>
+
+    <field name="Encryption method registration" type="text">ENCR</field>
+    <field name="Equalisation (2)" type="data">EQU2</field>
+    <field name="Event timing codes" type="data">ETCO</field>
+
+    <field name="General encapsulated object" type="data">GEOB</field>
+    <field name="Group identification registration" type="data">GRID</field>
+
+    <field name="Linked information" type="text">LINK</field>
+
+    <field name="Music CD identifier" type="integer">MCDI</field>
+    <field name="MPEG location lookup table" type="data">MLLT</field>
+
+    <field name="Ownership frame" type="text">OWNE</field>
+
+    <field name="Private frame" type="integer">PRIV</field>
+    <field name="Play counter" type="integer">PCNT</field>
+    <field name="Popularimeter" type="integer">POPM</field>
+    <field name="Position synchronisation frame" type="data">POSS</field>
+
+    <field name="Recommended buffer size" type="integer">RBUF</field>
+    <field name="Relative volume adjustment (2)" type="data">RVA2</field>
+    <field name="Reverb" type="data">RVRB</field>
+
+    <field name="Seek frame" type="data">SEEK</field>
+    <field name="Signature frame" type="data">SIGN</field>
+    <field name="Synchronised lyric/text" type="text">SYLT</field>
+    <field name="Synchronised tempo codes" type="data">SYTC</field>
+
+    <field name="Album/Movie/Show title" type="text">TALB</field>
+    <field name="BPM (beats per minute)" type="integer">TBPM</field>
+    <field name="Composer" type="text">TCOM</field>
+    <field name="Content type" type="text">TCON</field>
+    <field name="Copyright message" type="text">TCOP</field>
+    <field name="Encoding time" type="date">TDEN</field>
+    <field name="Playlist delay" type="integer">TDLY</field>
+    <field name="Original release time" type="date">TDOR</field>
+    <field name="Recording time" type="date">TDRC</field>
+    <field name="Release time" type="date">TDRL</field>
+    <field name="Tagging time" type="date">TDTG</field>
+    <field name="Encoded by" type="text">TENC</field>
+    <field name="Lyricist/Text writer" type="text">TEXT</field>
+    <field name="File type" type="text">TFLT</field>
+    <field name="Involved people list" type="text">TIPL</field>
+    <field name="Content group description" type="text">TIT1</field>
+    <field name="Title/songname/content description" type="text">TIT2</field>
+    <field name="Subtitle/Description refinement" type="text">TIT3</field>
+    <field name="Initial key" type="text">TKEY</field>
+    <field name="Language(s)" type="text">TLAN</field>
+    <field name="Length" type="integer">TLEN</field>
+    <field name="Musician credits list" type="text">TMCL</field>
+    <field name="Media type" type="text">TMED</field>
+    <field name="Mood" type="text">TMOO</field>
+    <field name="Original album/movie/show title" type="text">TOAL</field>
+    <field name="Original filename" type="text">TOFN</field>
+    <field name="Original lyricist(s)/text writer(s)" type="text">TOLY</field>
+    <field name="Original artist(s)/performer(s)" type="text">TOPE</field>
+    <field name="File owner/licensee" type="text">TOWN</field>
+    <field name="Lead performer(s)/Soloist(s)" type="text">TPE1</field>
+    <field name="Band/orchestra/accompaniment" type="text">TPE2</field>
+    <field name="Conductor/performer refinement" type="text">TPE3</field>
+    <field name="Interpreted, remixed, or otherwise modified by" type="text">TPE4</field>
+    <field name="Part of a set" type="integer">TPOS</field>
+    <field name="Produced notice" type="text">TPRO</field>
+    <field name="Publisher" type="text">TPUB</field>
+    <field name="Track number/Position in set" type="integer">TRCK</field>
+    <field name="Internet radio station name" type="text">TRSN</field>
+    <field name="Internet radio station owner" type="text">TRSO</field>
+    <field name="Album sort order" type="text">TSOA</field>
+    <field name="Performer sort order" type="text">TSOP</field>
+    <field name="Title sort order" type="text">TSOT</field>
+    <field name="ISRC (international standard recording code)" type="text">TSRC</field>
+    <field name="Software/Hardware and settings used for encoding" type="text">TSSE</field>
+    <field name="Set subtitle" type="text">TSST</field>
+    <field name="User defined text information frame" type="text">TXXX</field>
+
+    <field name="Unique file identifier" type="text">UFID</field>
+    <field name="Terms of use" type="text">USER</field>
+    <field name="Unsynchronised lyric/text transcription" type="text">USLT</field>
+
+    <field name="Commercial information" type="text">WCOM</field>
+    <field name="Copyright/Legal information" type="text">WCOP</field>
+    <field name="Official audio file webpage" type="text">WOAF</field>
+    <field name="Official artist/performer webpage" type="text">WOAR</field>
+    <field name="Official audio source webpage" type="text">WOAS</field>
+    <field name="Official Internet radio station homepage" type="text">WORS</field>
+    <field name="Payment" type="text">WPAY</field>
+    <field name="Publishers official webpage" type="text">WPUB</field>
+    <field name="User defined URL link frame" type="text">WXXX</field>
+  </fields>
+</TagSpec>

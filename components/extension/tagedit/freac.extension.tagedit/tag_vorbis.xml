@@ -1,0 +1,21 @@
+<TagSpec>
+  <name>Vorbis Comment</name>
+
+  <fields>
+    <field name="Track/Work name" type="text">TITLE</field>
+    <field name="Version information" type="text">VERSION</field>
+    <field name="Album name" type="text">ALBUM</field>
+    <field name="Track number" type="integer">TRACKNUMBER</field>
+    <field name="Artist name" type="text">ARTIST</field>
+    <field name="Performer" type="text">PERFORMER</field>
+    <field name="Copyright info" type="text">COPYRIGHT</field>
+    <field name="License" type="text">LICENSE</field>
+    <field name="Record label" type="text">ORGANIZATION</field>
+    <field name="Description" type="text">DESCRIPTION</field>
+    <field name="Genre" type="text">GENRE</field>
+    <field name="Date" type="date">DATE</field>
+    <field name="Location" type="text">LOCATION</field>
+    <field name="Contact" type="text">CONTACT</field>
+    <field name="ISRC number" type="text">ISRC</field>
+  </fields>
+</TagSpec>
