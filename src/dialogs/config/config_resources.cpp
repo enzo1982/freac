@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -13,7 +13,7 @@
 #include <dialogs/config/config_resources.h>
 #include <dialogs/config/configcomponent.h>
 
-#include <bonkenc.h>
+#include <freac.h>
 #include <config.h>
 #include <utilities.h>
 
@@ -21,7 +21,7 @@ using namespace BoCA::AS;
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::ConfigureResources::ConfigureResources()
+freac::ConfigureResources::ConfigureResources()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -82,7 +82,7 @@ BonkEnc::ConfigureResources::ConfigureResources()
 #endif
 }
 
-BonkEnc::ConfigureResources::~ConfigureResources()
+freac::ConfigureResources::~ConfigureResources()
 {
 	DeleteObject(group_cpu);
 	DeleteObject(check_enable_parallel);
@@ -96,7 +96,7 @@ BonkEnc::ConfigureResources::~ConfigureResources()
 	DeleteObject(slider_priority);
 }
 
-Void BonkEnc::ConfigureResources::ToggleParallel()
+Void freac::ConfigureResources::ToggleParallel()
 {
 	if (enableParallel)
 	{
@@ -112,7 +112,7 @@ Void BonkEnc::ConfigureResources::ToggleParallel()
 	}
 }
 
-Void BonkEnc::ConfigureResources::ChangeConversionThreads()
+Void freac::ConfigureResources::ChangeConversionThreads()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -122,7 +122,7 @@ Void BonkEnc::ConfigureResources::ChangeConversionThreads()
 	else				     text_threads_value->SetText(String::FromInt(slider_threads->GetValue()));
 }
 
-Void BonkEnc::ConfigureResources::ChangePriority()
+Void freac::ConfigureResources::ChangePriority()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -138,7 +138,7 @@ Void BonkEnc::ConfigureResources::ChangePriority()
 	}
 }
 
-Int BonkEnc::ConfigureResources::SaveSettings()
+Int freac::ConfigureResources::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 

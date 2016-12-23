@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -14,7 +14,7 @@
 #include <config.h>
 #include <resources.h>
 
-BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
+freac::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -83,7 +83,7 @@ BonkEnc::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::cddbManageSubmitsDlg::~cddbManageSubmitsDlg()
+freac::cddbManageSubmitsDlg::~cddbManageSubmitsDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -105,19 +105,19 @@ BonkEnc::cddbManageSubmitsDlg::~cddbManageSubmitsDlg()
 	delete cddbBatch;
 }
 
-const Error &BonkEnc::cddbManageSubmitsDlg::ShowDialog()
+const Error &freac::cddbManageSubmitsDlg::ShowDialog()
 {
 	mainWnd->WaitUntilClosed();
 
 	return error;
 }
 
-Void BonkEnc::cddbManageSubmitsDlg::Cancel()
+Void freac::cddbManageSubmitsDlg::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbManageSubmitsDlg::SelectEntry()
+Void freac::cddbManageSubmitsDlg::SelectEntry()
 {
 	const CDDBInfo	&cddbInfo = cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber());
 	String		 preview = String(cddbInfo.dArtist).Append(" - ").Append(cddbInfo.dTitle).Append("\n\n");
@@ -133,7 +133,7 @@ Void BonkEnc::cddbManageSubmitsDlg::SelectEntry()
 	btn_send->Activate();
 }
 
-Void BonkEnc::cddbManageSubmitsDlg::DeleteEntry()
+Void freac::cddbManageSubmitsDlg::DeleteEntry()
 {
 	cddbBatch->DeleteSubmit(cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber()));
 
@@ -145,10 +145,10 @@ Void BonkEnc::cddbManageSubmitsDlg::DeleteEntry()
 	btn_send->Deactivate();
 }
 
-Void BonkEnc::cddbManageSubmitsDlg::ReadEntries()
+Void freac::cddbManageSubmitsDlg::ReadEntries()
 {
-	// Read all entries from the freedb queue
-
+	/* Read all entries from the freedb queue.
+	 */
 	const Array<CDDBInfo> &entries = cddbBatch->GetSubmits();
 
 	for (Int i = 0; i < entries.Length(); i++)
@@ -159,13 +159,13 @@ Void BonkEnc::cddbManageSubmitsDlg::ReadEntries()
 	}
 }
 
-Void BonkEnc::cddbManageSubmitsDlg::SendEntry()
+Void freac::cddbManageSubmitsDlg::SendEntry()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("CDDB::Manage submits");
 
-	/* Submit selected entry to online CDDB
+	/* Submit selected entry to online CDDB.
 	 */
 	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Submitting CD information")));
 
@@ -182,13 +182,13 @@ Void BonkEnc::cddbManageSubmitsDlg::SendEntry()
 	text_status->SetText(NIL);
 }
 
-Void BonkEnc::cddbManageSubmitsDlg::SendAllEntries()
+Void freac::cddbManageSubmitsDlg::SendAllEntries()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("CDDB::Manage submits");
 
-	/* Submit all entries to online CDDB
+	/* Submit all entries to online CDDB.
 	 */
 	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Submitting CD information")));
 

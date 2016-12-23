@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -21,7 +21,7 @@ using namespace smooth::GUI::Dialogs;
 
 using namespace BoCA::AS;
 
-BonkEnc::ConfigureCDDB::ConfigureCDDB()
+freac::ConfigureCDDB::ConfigureCDDB()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -149,7 +149,7 @@ BonkEnc::ConfigureCDDB::ConfigureCDDB()
 	SetSize(Size(566, 198));
 }
 
-BonkEnc::ConfigureCDDB::~ConfigureCDDB()
+freac::ConfigureCDDB::~ConfigureCDDB()
 {
 	DeleteObject(group_local);
 	DeleteObject(text_dir);
@@ -181,7 +181,7 @@ BonkEnc::ConfigureCDDB::~ConfigureCDDB()
 	DeleteObject(check_remote);
 }
 
-Void BonkEnc::ConfigureCDDB::SelectDir()
+Void freac::ConfigureCDDB::SelectDir()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -201,7 +201,7 @@ Void BonkEnc::ConfigureCDDB::SelectDir()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::ConfigureCDDB::SetCDDBMode()
+Void freac::ConfigureCDDB::SetCDDBMode()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -218,7 +218,7 @@ Void BonkEnc::ConfigureCDDB::SetCDDBMode()
 	}
 }
 
-Void BonkEnc::ConfigureCDDB::ToggleLocalCDDB()
+Void freac::ConfigureCDDB::ToggleLocalCDDB()
 {
 	if (cddb_local)
 	{
@@ -234,7 +234,7 @@ Void BonkEnc::ConfigureCDDB::ToggleLocalCDDB()
 	ToggleCDDBSettings();
 }
 
-Void BonkEnc::ConfigureCDDB::ToggleRemoteCDDB()
+Void freac::ConfigureCDDB::ToggleRemoteCDDB()
 {
 	if (cddb_remote)
 	{
@@ -260,7 +260,7 @@ Void BonkEnc::ConfigureCDDB::ToggleRemoteCDDB()
 	ToggleCDDBSettings();
 }
 
-Void BonkEnc::ConfigureCDDB::ToggleCDDBSettings()
+Void freac::ConfigureCDDB::ToggleCDDBSettings()
 {
 	if (cddb_local || cddb_remote)
 	{
@@ -274,13 +274,13 @@ Void BonkEnc::ConfigureCDDB::ToggleCDDBSettings()
 	}
 }
 
-Void BonkEnc::ConfigureCDDB::ToggleAutoCDDB()
+Void freac::ConfigureCDDB::ToggleAutoCDDB()
 {
 	if (cddb_autoquery) check_cdtext->Activate();
 	else		    check_cdtext->Deactivate();
 }
 
-Void BonkEnc::ConfigureCDDB::HTTPSettings()
+Void freac::ConfigureCDDB::HTTPSettings()
 {
 	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(0);
 
@@ -289,7 +289,7 @@ Void BonkEnc::ConfigureCDDB::HTTPSettings()
 	DeleteObject(dlg);
 }
 
-Void BonkEnc::ConfigureCDDB::ProxySettings()
+Void freac::ConfigureCDDB::ProxySettings()
 {
 	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(1);
 
@@ -298,7 +298,7 @@ Void BonkEnc::ConfigureCDDB::ProxySettings()
 	DeleteObject(dlg);
 }
 
-Int BonkEnc::ConfigureCDDB::SaveSettings()
+Int freac::ConfigureCDDB::SaveSettings()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();

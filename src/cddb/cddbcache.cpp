@@ -16,29 +16,29 @@
 #include <config.h>
 #include <boca.h>
 
-BonkEnc::CDDBCache *BonkEnc::CDDBCache::instance = NIL;
+freac::CDDBCache	*freac::CDDBCache::instance = NIL;
 
-BonkEnc::CDDBCache::CDDBCache()
+freac::CDDBCache::CDDBCache()
 {
 }
 
-BonkEnc::CDDBCache::~CDDBCache()
+freac::CDDBCache::~CDDBCache()
 {
 }
 
-BonkEnc::CDDBCache *BonkEnc::CDDBCache::Get()
+freac::CDDBCache *freac::CDDBCache::Get()
 {
 	if (instance == NIL) instance = new CDDBCache();
 
 	return instance;
 }
 
-Void BonkEnc::CDDBCache::Free()
+Void freac::CDDBCache::Free()
 {
 	if (instance != NIL) delete instance;
 }
 
-const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(const String &queryString)
+const freac::CDDBInfo &freac::CDDBCache::GetCacheEntry(const String &queryString)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -84,7 +84,7 @@ const BonkEnc::CDDBInfo &BonkEnc::CDDBCache::GetCacheEntry(const String &querySt
 	return infoCache.Get(discID);
 }
 
-Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
+Bool freac::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	const CDDBInfo	&cddbInfo = infoCache.Get(nCddbInfo.discID);
@@ -123,7 +123,7 @@ Bool BonkEnc::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 	return True;
 }
 
-Int BonkEnc::CDDBCache::RemoveNthEntry(Int n)
+Int freac::CDDBCache::RemoveNthEntry(Int n)
 {
 	if (n >= GetNOfEntries()) return Error();
 

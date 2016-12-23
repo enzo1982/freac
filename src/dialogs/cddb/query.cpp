@@ -22,7 +22,7 @@
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::cddbQueryDlg::cddbQueryDlg(const String &iQueryString)
+freac::cddbQueryDlg::cddbQueryDlg(const String &iQueryString)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -58,7 +58,7 @@ BonkEnc::cddbQueryDlg::cddbQueryDlg(const String &iQueryString)
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::cddbQueryDlg::~cddbQueryDlg()
+freac::cddbQueryDlg::~cddbQueryDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -67,7 +67,7 @@ BonkEnc::cddbQueryDlg::~cddbQueryDlg()
 	DeleteObject(btn_cancel);
 }
 
-const Error &BonkEnc::cddbQueryDlg::ShowDialog()
+const Error &freac::cddbQueryDlg::ShowDialog()
 {
 	mainWnd->Show();
 
@@ -80,7 +80,7 @@ const Error &BonkEnc::cddbQueryDlg::ShowDialog()
 	return error;
 }
 
-Void BonkEnc::cddbQueryDlg::Cancel()
+Void freac::cddbQueryDlg::Cancel()
 {
 	if (queryThread == NIL) return;
 
@@ -102,7 +102,7 @@ Void BonkEnc::cddbQueryDlg::Cancel()
 	queryThread->Stop();
 }
 
-Int BonkEnc::cddbQueryDlg::QueryThread()
+Int freac::cddbQueryDlg::QueryThread()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -128,7 +128,7 @@ Int BonkEnc::cddbQueryDlg::QueryThread()
 	else	    return Error();
 }
 
-Bool BonkEnc::cddbQueryDlg::QueryCDDB(CDDB &cddb)
+Bool freac::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();

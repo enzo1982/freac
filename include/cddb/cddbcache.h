@@ -15,7 +15,7 @@
 
 #include <cddb/cddb.h>
 
-namespace BonkEnc
+namespace freac
 {
 	class CDDBCache
 	{

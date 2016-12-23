@@ -16,7 +16,7 @@
 #include <cddb/cddb.h>
 #include <boca/common/protocol.h>
 
-namespace BonkEnc
+namespace freac
 {
 	class CDDBLocal : public CDDB
 	{

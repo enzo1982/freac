@@ -17,7 +17,7 @@
 
 using namespace smooth;
 
-namespace BonkEnc
+namespace freac
 {
 	class CDDBInfo
 	{

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -21,7 +21,7 @@
 
 using namespace BoCA;
 
-BonkEnc::cddbManageDlg::cddbManageDlg()
+freac::cddbManageDlg::cddbManageDlg()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -115,7 +115,7 @@ BonkEnc::cddbManageDlg::cddbManageDlg()
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::cddbManageDlg::~cddbManageDlg()
+freac::cddbManageDlg::~cddbManageDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -138,14 +138,14 @@ BonkEnc::cddbManageDlg::~cddbManageDlg()
 	DeleteObject(check_updateJoblist);
 }
 
-const Error &BonkEnc::cddbManageDlg::ShowDialog()
+const Error &freac::cddbManageDlg::ShowDialog()
 {
 	mainWnd->WaitUntilClosed();
 
 	return error;
 }
 
-Void BonkEnc::cddbManageDlg::OK()
+Void freac::cddbManageDlg::OK()
 {
 	if (updateJoblist)
 	{
@@ -191,12 +191,12 @@ Void BonkEnc::cddbManageDlg::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbManageDlg::Cancel()
+Void freac::cddbManageDlg::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbManageDlg::SetCharset()
+Void freac::cddbManageDlg::SetCharset()
 {
 	const CDDBInfo	&entry = CDDBCache::Get()->GetNthEntry(list_entries->GetSelectedEntryNumber());
 	String		 dArtist;
@@ -221,7 +221,7 @@ Void BonkEnc::cddbManageDlg::SetCharset()
 	edit_preview->SetText(preview);
 }
 
-Void BonkEnc::cddbManageDlg::SelectEntry()
+Void freac::cddbManageDlg::SelectEntry()
 {
 	const CDDBInfo	&entry = CDDBCache::Get()->GetNthEntry(list_entries->GetSelectedEntryNumber());
 	String		 preview = String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\n\n");
@@ -239,7 +239,7 @@ Void BonkEnc::cddbManageDlg::SelectEntry()
 	btn_save->Activate();
 }
 
-Void BonkEnc::cddbManageDlg::DeleteEntry()
+Void freac::cddbManageDlg::DeleteEntry()
 {
 	CDDBCache::Get()->RemoveNthEntry(list_entries->GetSelectedEntryNumber());
 
@@ -252,7 +252,7 @@ Void BonkEnc::cddbManageDlg::DeleteEntry()
 	btn_save->Deactivate();
 }
 
-Void BonkEnc::cddbManageDlg::SaveEntry()
+Void freac::cddbManageDlg::SaveEntry()
 {
 	CDDBInfo entry = CDDBCache::Get()->GetNthEntry(list_entries->GetSelectedEntryNumber());
 

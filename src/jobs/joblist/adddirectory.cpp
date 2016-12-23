@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -22,16 +22,16 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::JobAddDirectory::JobAddDirectory(const String &iDirectory) : JobAddFiles(Array<String>())
+freac::JobAddDirectory::JobAddDirectory(const String &iDirectory) : JobAddFiles(Array<String>())
 {
 	directory = iDirectory;
 }
 
-BonkEnc::JobAddDirectory::~JobAddDirectory()
+freac::JobAddDirectory::~JobAddDirectory()
 {
 }
 
-Void BonkEnc::JobAddDirectory::AddDirectory(const Directory &directory)
+Void freac::JobAddDirectory::AddDirectory(const Directory &directory)
 {
 	if (!directory.Exists()) return;
 
@@ -68,7 +68,7 @@ Void BonkEnc::JobAddDirectory::AddDirectory(const Directory &directory)
 	String::ExplodeFinish();
 }
 
-Void BonkEnc::JobAddDirectory::RemoveReferencedFiles()
+Void freac::JobAddDirectory::RemoveReferencedFiles()
 {
 	/* Find and remove files referenced by
 	 * cuesheets to avoid adding them twice.
@@ -114,7 +114,7 @@ Void BonkEnc::JobAddDirectory::RemoveReferencedFiles()
 	}
 }
 
-Bool BonkEnc::JobAddDirectory::ReadyToRun()
+Bool freac::JobAddDirectory::ReadyToRun()
 {
 	if (!BoCA::JobList::Get()->IsLocked())
 	{
@@ -126,7 +126,7 @@ Bool BonkEnc::JobAddDirectory::ReadyToRun()
 	return False;
 }
 
-Error BonkEnc::JobAddDirectory::Perform()
+Error freac::JobAddDirectory::Perform()
 {
 	SetText("Reading directories...");
 

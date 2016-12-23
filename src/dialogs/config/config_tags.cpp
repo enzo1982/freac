@@ -16,7 +16,7 @@
 
 using namespace BoCA::AS;
 
-BonkEnc::ConfigureTags::ConfigureTags()
+freac::ConfigureTags::ConfigureTags()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -217,7 +217,7 @@ BonkEnc::ConfigureTags::ConfigureTags()
 	SetSize(Size(566, 225));
 }
 
-BonkEnc::ConfigureTags::~ConfigureTags()
+freac::ConfigureTags::~ConfigureTags()
 {
 	DeleteObject(tab_tags);
 
@@ -266,13 +266,13 @@ BonkEnc::ConfigureTags::~ConfigureTags()
 	DeleteObject(check_replace);
 }
 
-Void BonkEnc::ConfigureTags::OnEditEncoding()
+Void freac::ConfigureTags::OnEditEncoding()
 {
 	if (edit_encoding->IsVisible())	selected_encodings.SetNth(list_tag_formats->GetSelectedEntryNumber(), edit_encoding->GetText());
 	else				selected_encodings.SetNth(list_tag_formats->GetSelectedEntryNumber(), combo_encoding->GetSelectedEntry()->GetText());
 }
 
-Void BonkEnc::ConfigureTags::ToggleTags()
+Void freac::ConfigureTags::ToggleTags()
 {
 	ListEntry	*entry = list_tag_formats->GetSelectedEntry();
 
@@ -348,7 +348,7 @@ Void BonkEnc::ConfigureTags::ToggleTags()
 	}
 }
 
-Void BonkEnc::ConfigureTags::ToggleWriteCoverArt()
+Void freac::ConfigureTags::ToggleWriteCoverArt()
 {
 	if (enableCoverArtWriteToTags)	list_coverart_write_tags_format->Activate();
 	else				list_coverart_write_tags_format->Deactivate();
@@ -367,7 +367,7 @@ Void BonkEnc::ConfigureTags::ToggleWriteCoverArt()
 	}
 }
 
-Void BonkEnc::ConfigureTags::ToggleWriteChapters()
+Void freac::ConfigureTags::ToggleWriteChapters()
 {
 	if (writeChapters)
 	{
@@ -381,13 +381,13 @@ Void BonkEnc::ConfigureTags::ToggleWriteChapters()
 	}
 }
 
-Void BonkEnc::ConfigureTags::ToggleReadCueSheets()
+Void freac::ConfigureTags::ToggleReadCueSheets()
 {
 	if (readCueSheets) check_prefer_cue->Activate();
 	else		   check_prefer_cue->Deactivate();
 }
 
-Int BonkEnc::ConfigureTags::SaveSettings()
+Int freac::ConfigureTags::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	Registry	&boca = Registry::Get();

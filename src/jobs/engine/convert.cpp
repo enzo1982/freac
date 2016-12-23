@@ -35,29 +35,29 @@ using namespace smooth::IO;
 using namespace BoCA;
 using namespace BoCA::AS;
 
-Bool					 BonkEnc::JobConvert::conversionRunning = False;
-Bool					 BonkEnc::JobConvert::conversionPaused	= False;
+Bool					 freac::JobConvert::conversionRunning	= False;
+Bool					 freac::JobConvert::conversionPaused	= False;
 
-Bool					 BonkEnc::JobConvert::skipTrack		= False;
-Bool					 BonkEnc::JobConvert::stopConversion	= False;
+Bool					 freac::JobConvert::skipTrack		= False;
+Bool					 freac::JobConvert::stopConversion	= False;
 
-Array<Bool>				 BonkEnc::JobConvert::deviceLocked;
-Array<Bool>				 BonkEnc::JobConvert::outputLocked;
+Array<Bool>				 freac::JobConvert::deviceLocked;
+Array<Bool>				 freac::JobConvert::outputLocked;
 
-Threads::Mutex				 BonkEnc::JobConvert::managementMutex;
+Threads::Mutex				 freac::JobConvert::managementMutex;
 
-Signal0<Void>				 BonkEnc::JobConvert::onStartEncoding;
-Signal1<Void, Bool>			 BonkEnc::JobConvert::onFinishEncoding;
+Signal0<Void>				 freac::JobConvert::onStartEncoding;
+Signal1<Void, Bool>			 freac::JobConvert::onFinishEncoding;
 
 Signal3<Void, const BoCA::Track &,
 	      const String &,
-	      BonkEnc::ConversionStep>	 BonkEnc::JobConvert::onEncodeTrack;
-Signal0<Void>				 BonkEnc::JobConvert::onFinishTrack;
+	      freac::ConversionStep>	 freac::JobConvert::onEncodeTrack;
+Signal0<Void>				 freac::JobConvert::onFinishTrack;
 
-Signal2<Void, Int, Int>			 BonkEnc::JobConvert::onTrackProgress;
-Signal2<Void, Int, Int>			 BonkEnc::JobConvert::onTotalProgress;
+Signal2<Void, Int, Int>			 freac::JobConvert::onTrackProgress;
+Signal2<Void, Int, Int>			 freac::JobConvert::onTotalProgress;
 
-BonkEnc::JobConvert::JobConvert(const Array<BoCA::Track> &iTracks)
+freac::JobConvert::JobConvert(const Array<BoCA::Track> &iTracks)
 {
 	tracks		 = iTracks;
 
@@ -67,11 +67,11 @@ BonkEnc::JobConvert::JobConvert(const Array<BoCA::Track> &iTracks)
 	stopConversion   = False;
 }
 
-BonkEnc::JobConvert::~JobConvert()
+freac::JobConvert::~JobConvert()
 {
 }
 
-Error BonkEnc::JobConvert::Precheck()
+Error freac::JobConvert::Precheck()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -213,7 +213,7 @@ Error BonkEnc::JobConvert::Precheck()
 	return Success();
 }
 
-Bool BonkEnc::JobConvert::ReadyToRun()
+Bool freac::JobConvert::ReadyToRun()
 {
 	if (conversionRunning) return False;
 
@@ -222,7 +222,7 @@ Bool BonkEnc::JobConvert::ReadyToRun()
 	return True;
 }
 
-Error BonkEnc::JobConvert::Perform()
+Error freac::JobConvert::Perform()
 {
 	/* Return immediately if there are no tracks to convert.
 	 */
@@ -1037,7 +1037,7 @@ Error BonkEnc::JobConvert::Perform()
 	return Success();
 }
 
-Void BonkEnc::JobConvert::Stop()
+Void freac::JobConvert::Stop()
 {
 	if (!conversionRunning) return;
 
@@ -1050,22 +1050,22 @@ Void BonkEnc::JobConvert::Stop()
 	while (conversionRunning) event.ProcessNextEvent();
 }
 
-Void BonkEnc::JobConvert::UpdateProgress(Int progressValue, Int secondsLeft)
+Void freac::JobConvert::UpdateProgress(Int progressValue, Int secondsLeft)
 {
 	SetProgress(progressValue);
 }
 
-Void BonkEnc::JobConvert::OnWorkerReportError(String error)
+Void freac::JobConvert::OnWorkerReportError(String error)
 {
 	errors.Add(error);
 }
 
-Void BonkEnc::JobConvert::OnWorkerReportWarning(String warning)
+Void freac::JobConvert::OnWorkerReportWarning(String warning)
 {
 	warnings.Add(warning);
 }
 
-Bool BonkEnc::JobConvert::CheckSingleFileSampleFormat()
+Bool freac::JobConvert::CheckSingleFileSampleFormat()
 {
 	Track	 referenceTrack = NIL;
 
@@ -1081,7 +1081,7 @@ Bool BonkEnc::JobConvert::CheckSingleFileSampleFormat()
 	return True;
 }
 
-Track BonkEnc::JobConvert::ConsolidateTrackInfo()
+Track freac::JobConvert::ConsolidateTrackInfo()
 {
 	/* This method consolidates information from tracks to
 	 * process into a toplevel track with chapters.
@@ -1250,7 +1250,7 @@ Track BonkEnc::JobConvert::ConsolidateTrackInfo()
 	return singleTrack;
 }
 
-Bool BonkEnc::JobConvert::LockDeviceForTrack(const Track &track)
+Bool freac::JobConvert::LockDeviceForTrack(const Track &track)
 {
 	/* Check if the track is on a locked device.
 	 */
@@ -1270,7 +1270,7 @@ Bool BonkEnc::JobConvert::LockDeviceForTrack(const Track &track)
 	return True;
 }
 
-Bool BonkEnc::JobConvert::UnlockDeviceForTrack(const Track &track)
+Bool freac::JobConvert::UnlockDeviceForTrack(const Track &track)
 {
 	/* Unlock track device if necessary.
 	 */
@@ -1288,7 +1288,7 @@ Bool BonkEnc::JobConvert::UnlockDeviceForTrack(const Track &track)
 	return True;
 }
 
-Bool BonkEnc::JobConvert::LockOutputForTrack(const Track &track)
+Bool freac::JobConvert::LockOutputForTrack(const Track &track)
 {
 	/* Check if the track output file is currently locked.
 	 */
@@ -1306,7 +1306,7 @@ Bool BonkEnc::JobConvert::LockOutputForTrack(const Track &track)
 	return True;
 }
 
-Bool BonkEnc::JobConvert::UnlockOutputForTrack(const Track &track)
+Bool freac::JobConvert::UnlockOutputForTrack(const Track &track)
 {
 	/* Unlock track output file if necessary.
 	 */

@@ -11,7 +11,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <config.h>
-#include <bonkenc.h>
+#include <freac.h>
 
 #include <jobs/engine/convert.h>
 
@@ -19,125 +19,125 @@
 
 using namespace BoCA;
 
-BonkEnc::Config *BonkEnc::Config::instance = NIL;
+freac::Config	*freac::Config::instance = NIL;
 
-const String	 BonkEnc::Config::CategorySettingsID				= "Settings";
-const String	 BonkEnc::Config::CategoryResourcesID				= "Resources";
-const String	 BonkEnc::Config::CategoryJoblistID				= "Joblist";
-const String	 BonkEnc::Config::CategoryRipperID				= "Ripper";
-const String	 BonkEnc::Config::CategoryPlaylistID				= "Playlist";
-const String	 BonkEnc::Config::CategoryTagsID				= "Tags";
-const String	 BonkEnc::Config::CategoryFreedbID				= "freedb";
-const String	 BonkEnc::Config::CategoryVerificationID			= "Verification";
+const String	 freac::Config::CategorySettingsID				= "Settings";
+const String	 freac::Config::CategoryResourcesID				= "Resources";
+const String	 freac::Config::CategoryJoblistID				= "Joblist";
+const String	 freac::Config::CategoryRipperID				= "Ripper";
+const String	 freac::Config::CategoryPlaylistID				= "Playlist";
+const String	 freac::Config::CategoryTagsID					= "Tags";
+const String	 freac::Config::CategoryFreedbID				= "freedb";
+const String	 freac::Config::CategoryVerificationID				= "Verification";
 
 /* Category Settings
  */
-const String	 BonkEnc::Config::SettingsStartCountID				= "StartCount";
-const Int	 BonkEnc::Config::SettingsStartCountDefault			= 0;
+const String	 freac::Config::SettingsStartCountID				= "StartCount";
+const Int	 freac::Config::SettingsStartCountDefault			= 0;
 
-const String	 BonkEnc::Config::SettingsWindowPosXID				= "WindowPosX";
-const Int	 BonkEnc::Config::SettingsWindowPosXDefault			= 100;
+const String	 freac::Config::SettingsWindowPosXID				= "WindowPosX";
+const Int	 freac::Config::SettingsWindowPosXDefault			= 100;
 
-const String	 BonkEnc::Config::SettingsWindowPosYID				= "WindowPosY";
-const Int	 BonkEnc::Config::SettingsWindowPosYDefault			= 100;
+const String	 freac::Config::SettingsWindowPosYID				= "WindowPosY";
+const Int	 freac::Config::SettingsWindowPosYDefault			= 100;
 
-const String	 BonkEnc::Config::SettingsWindowSizeXID				= "WindowSizeX";
-const Int	 BonkEnc::Config::SettingsWindowSizeXDefault			= 800;
+const String	 freac::Config::SettingsWindowSizeXID				= "WindowSizeX";
+const Int	 freac::Config::SettingsWindowSizeXDefault			= 800;
 
-const String	 BonkEnc::Config::SettingsWindowSizeYID				= "WindowSizeY";
-const Int	 BonkEnc::Config::SettingsWindowSizeYDefault			= 600;
+const String	 freac::Config::SettingsWindowSizeYID				= "WindowSizeY";
+const Int	 freac::Config::SettingsWindowSizeYDefault			= 600;
 
-const String	 BonkEnc::Config::SettingsWindowMaximizedID			= "WindowMaximized";
-const Bool	 BonkEnc::Config::SettingsWindowMaximizedDefault		= False;
+const String	 freac::Config::SettingsWindowMaximizedID			= "WindowMaximized";
+const Bool	 freac::Config::SettingsWindowMaximizedDefault			= False;
 
-const String	 BonkEnc::Config::SettingsLanguageID				= "Language";
-const String	 BonkEnc::Config::SettingsLanguageDefault			= NIL;
+const String	 freac::Config::SettingsLanguageID				= "Language";
+const String	 freac::Config::SettingsLanguageDefault				= NIL;
 
-const String	 BonkEnc::Config::SettingsShowTitleInfoID			= "ShowTitleInfo";
-const Bool	 BonkEnc::Config::SettingsShowTitleInfoDefault			= True;
+const String	 freac::Config::SettingsShowTitleInfoID				= "ShowTitleInfo";
+const Bool	 freac::Config::SettingsShowTitleInfoDefault			= True;
 
-const String	 BonkEnc::Config::SettingsShowTooltipsID			= "ShowTooltips";
-const Bool	 BonkEnc::Config::SettingsShowTooltipsDefault			= True;
+const String	 freac::Config::SettingsShowTooltipsID				= "ShowTooltips";
+const Bool	 freac::Config::SettingsShowTooltipsDefault			= True;
 
-const String	 BonkEnc::Config::SettingsShowTipsID				= "ShowTips";
-const Bool	 BonkEnc::Config::SettingsShowTipsDefault			= True;
+const String	 freac::Config::SettingsShowTipsID				= "ShowTips";
+const Bool	 freac::Config::SettingsShowTipsDefault				= True;
 
-const String	 BonkEnc::Config::SettingsNextTipID				= "NextTip";
-const Int	 BonkEnc::Config::SettingsNextTipDefault			= 0;
+const String	 freac::Config::SettingsNextTipID				= "NextTip";
+const Int	 freac::Config::SettingsNextTipDefault				= 0;
 
-const String	 BonkEnc::Config::SettingsDisplayErrorsID			= "DisplayErrors";
-const Bool	 BonkEnc::Config::SettingsDisplayErrorsDefault			= True;
+const String	 freac::Config::SettingsDisplayErrorsID				= "DisplayErrors";
+const Bool	 freac::Config::SettingsDisplayErrorsDefault			= True;
 
-const String	 BonkEnc::Config::SettingsCheckForUpdatesID			= "CheckUpdatesAtStartup";
-const Bool	 BonkEnc::Config::SettingsCheckForUpdatesDefault		= True;
+const String	 freac::Config::SettingsCheckForUpdatesID			= "CheckUpdatesAtStartup";
+const Bool	 freac::Config::SettingsCheckForUpdatesDefault			= True;
 
-const String	 BonkEnc::Config::SettingsUpdatesCheckedID			= "UpdatesChecked";
-const Bool	 BonkEnc::Config::SettingsUpdatesCheckedDefault			= False;
+const String	 freac::Config::SettingsUpdatesCheckedID			= "UpdatesChecked";
+const Bool	 freac::Config::SettingsUpdatesCheckedDefault			= False;
 
-const String	 BonkEnc::Config::SettingsLastUsedGenreID			= "LastUsedGenre";
+const String	 freac::Config::SettingsLastUsedGenreID				= "LastUsedGenre";
 
-const String	 BonkEnc::Config::SettingsLastOutputDirectoryID			= "LastOutputDirectory";
-const String	 BonkEnc::Config::SettingsLastFilePatternID			= "LastFilePattern";
+const String	 freac::Config::SettingsLastOutputDirectoryID			= "LastOutputDirectory";
+const String	 freac::Config::SettingsLastFilePatternID			= "LastFilePattern";
 
-const String	 BonkEnc::Config::SettingsLastAddedDirID			= "LastAddedDir";
-const String	 BonkEnc::Config::SettingsLastAddedDirDefault			= NIL;
+const String	 freac::Config::SettingsLastAddedDirID				= "LastAddedDir";
+const String	 freac::Config::SettingsLastAddedDirDefault			= NIL;
 
-const String	 BonkEnc::Config::SettingsLastAddedPatternID			= "LastAddedPattern";
-const String	 BonkEnc::Config::SettingsLastAddedPatternDefault		= NIL;
+const String	 freac::Config::SettingsLastAddedPatternID			= "LastAddedPattern";
+const String	 freac::Config::SettingsLastAddedPatternDefault			= NIL;
 
-const String	 BonkEnc::Config::SettingsLastSearchSubFoldersID		= "SearchSubFolders";
-const Bool	 BonkEnc::Config::SettingsLastSearchSubFoldersDefault		= False;
+const String	 freac::Config::SettingsLastSearchSubFoldersID			= "SearchSubFolders";
+const Bool	 freac::Config::SettingsLastSearchSubFoldersDefault		= False;
 
-const String	 BonkEnc::Config::SettingsEncodeOnTheFlyID			= "EncodeOnTheFly";
-const Bool	 BonkEnc::Config::SettingsEncodeOnTheFlyDefault			= True;
+const String	 freac::Config::SettingsEncodeOnTheFlyID			= "EncodeOnTheFly";
+const Bool	 freac::Config::SettingsEncodeOnTheFlyDefault			= True;
 
-const String	 BonkEnc::Config::SettingsKeepWaveFilesID			= "KeepWaveFiles";
-const Bool	 BonkEnc::Config::SettingsKeepWaveFilesDefault			= False;
+const String	 freac::Config::SettingsKeepWaveFilesID				= "KeepWaveFiles";
+const Bool	 freac::Config::SettingsKeepWaveFilesDefault			= False;
 
-const String	 BonkEnc::Config::SettingsEncodeToSingleFileID			= "EncodeToSingleFile";
-const Bool	 BonkEnc::Config::SettingsEncodeToSingleFileDefault		= False;
+const String	 freac::Config::SettingsEncodeToSingleFileID			= "EncodeToSingleFile";
+const Bool	 freac::Config::SettingsEncodeToSingleFileDefault		= False;
 
-const String	 BonkEnc::Config::SettingsSingleFilenameID			= "SingleFilename";
-const String	 BonkEnc::Config::SettingsSingleFilenameDefault			= NIL;
+const String	 freac::Config::SettingsSingleFilenameID			= "SingleFilename";
+const String	 freac::Config::SettingsSingleFilenameDefault			= NIL;
 
-const String	 BonkEnc::Config::SettingsRemoveTracksID			= "RemoveTracks";
-const Bool	 BonkEnc::Config::SettingsRemoveTracksDefault			= True;
+const String	 freac::Config::SettingsRemoveTracksID				= "RemoveTracks";
+const Bool	 freac::Config::SettingsRemoveTracksDefault			= True;
 
-const String	 BonkEnc::Config::SettingsAddEncodedTracksID			= "AddEncodedTracks";
-const Bool	 BonkEnc::Config::SettingsAddEncodedTracksDefault		= False;
+const String	 freac::Config::SettingsAddEncodedTracksID			= "AddEncodedTracks";
+const Bool	 freac::Config::SettingsAddEncodedTracksDefault			= False;
 
-const String	 BonkEnc::Config::SettingsWriteToInputDirectoryID		= "WriteToInputDirectory";
-const Bool	 BonkEnc::Config::SettingsWriteToInputDirectoryDefault		= False;
+const String	 freac::Config::SettingsWriteToInputDirectoryID			= "WriteToInputDirectory";
+const Bool	 freac::Config::SettingsWriteToInputDirectoryDefault		= False;
 
-const String	 BonkEnc::Config::SettingsAllowOverwriteSourceID		= "AllowOverwriteSource";
-const Bool	 BonkEnc::Config::SettingsAllowOverwriteSourceDefault		= False;
+const String	 freac::Config::SettingsAllowOverwriteSourceID			= "AllowOverwriteSource";
+const Bool	 freac::Config::SettingsAllowOverwriteSourceDefault		= False;
 
-const String	 BonkEnc::Config::SettingsFilenamesAllowUnicodeID		= "UseUnicodeFilenames";
-const Bool	 BonkEnc::Config::SettingsFilenamesAllowUnicodeDefault		= True;
+const String	 freac::Config::SettingsFilenamesAllowUnicodeID			= "UseUnicodeFilenames";
+const Bool	 freac::Config::SettingsFilenamesAllowUnicodeDefault		= True;
 
-const String	 BonkEnc::Config::SettingsFilenamesReplaceSpacesID		= "FilenamesReplaceSpaces";
-const Bool	 BonkEnc::Config::SettingsFilenamesReplaceSpacesDefault		= False;
+const String	 freac::Config::SettingsFilenamesReplaceSpacesID		= "FilenamesReplaceSpaces";
+const Bool	 freac::Config::SettingsFilenamesReplaceSpacesDefault		= False;
 
-const String	 BonkEnc::Config::SettingsEncoderID				= "Encoder";
-const String	 BonkEnc::Config::SettingsEncoderDefault			= "lame-enc";
+const String	 freac::Config::SettingsEncoderID				= "Encoder";
+const String	 freac::Config::SettingsEncoderDefault				= "lame-enc";
 
-const String	 BonkEnc::Config::SettingsEncoderOutputDirectoryID		= "EncoderOutDir";
-      String	 BonkEnc::Config::SettingsEncoderOutputDirectoryDefault		= NIL;
+const String	 freac::Config::SettingsEncoderOutputDirectoryID		= "EncoderOutDir";
+      String	 freac::Config::SettingsEncoderOutputDirectoryDefault		= NIL;
 
-const String	 BonkEnc::Config::SettingsEncoderFilenamePatternID		= "EncoderFilenamePattern";
-const String	 BonkEnc::Config::SettingsEncoderFilenamePatternDefault		= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album> - <track> - <title>");
+const String	 freac::Config::SettingsEncoderFilenamePatternID		= "EncoderFilenamePattern";
+const String	 freac::Config::SettingsEncoderFilenamePatternDefault		= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album> - <track> - <title>");
 
-const String	 BonkEnc::Config::SettingsLastCustomCharsetID			= "LastCustomCharset";
-const String	 BonkEnc::Config::SettingsLastCustomCharsetDefault		= NIL;
+const String	 freac::Config::SettingsLastCustomCharsetID			= "LastCustomCharset";
+const String	 freac::Config::SettingsLastCustomCharsetDefault		= NIL;
 
-const String	 BonkEnc::Config::SettingsShowJobsTabID				= "ShowJobsTab";
-const Bool	 BonkEnc::Config::SettingsShowJobsTabDefault			= False;
+const String	 freac::Config::SettingsShowJobsTabID				= "ShowJobsTab";
+const Bool	 freac::Config::SettingsShowJobsTabDefault			= False;
 
-const String	 BonkEnc::Config::SettingsWarnLossyToLosslessID			= "WarnLossyToLossless";
-const Bool	 BonkEnc::Config::SettingsWarnLossyToLosslessDefault		= True;
+const String	 freac::Config::SettingsWarnLossyToLosslessID			= "WarnLossyToLossless";
+const Bool	 freac::Config::SettingsWarnLossyToLosslessDefault		= True;
 
-const String	 BonkEnc::Config::SettingsExcludeExtensionsID			= "ExcludeExtensions";
-const String	 BonkEnc::Config::SettingsExcludeExtensionsDefault		= String(".jpg|.jpeg|.gif|.png|.bmp|")		  // pictures
+const String	 freac::Config::SettingsExcludeExtensionsID			= "ExcludeExtensions";
+const String	 freac::Config::SettingsExcludeExtensionsDefault		= String(".jpg|.jpeg|.gif|.png|.bmp|")		  // pictures
 										 .Append(".txt|.asc|.log|.nfo|.url|")		  // plain text
 										 .Append(".crc|.md5|.sha1|.sha256|.sha512|.sfv|") // checksums
 										 .Append(".m3u|.m3u8|.pls|.wpl|.xspf|")		  // playlists
@@ -150,187 +150,187 @@ const String	 BonkEnc::Config::SettingsExcludeExtensionsDefault		= String(".jpg|
 										 .Append(".xls|.xlsx|.ods|.odc|")		  // spreadsheets
 										 .Append(".torrent|thumbs.db|.DS_Store");	  // other files
 
-const String	 BonkEnc::Config::SettingsLastSelectedOpenDirID			= "LastSelectedOpenDir";
+const String	 freac::Config::SettingsLastSelectedOpenDirID			= "LastSelectedOpenDir";
 
-const String	 BonkEnc::Config::SettingsLastSelectedSaveDirID			= "LastSelectedSaveDir";
+const String	 freac::Config::SettingsLastSelectedSaveDirID			= "LastSelectedSaveDir";
 
-const String	 BonkEnc::Config::SettingsLastSelectedJoblistDirID		= "LastSelectedJoblistDir";
+const String	 freac::Config::SettingsLastSelectedJoblistDirID		= "LastSelectedJoblistDir";
 
 /* Category Verification
  */
-const String	 BonkEnc::Config::VerificationVerifyInputID			= "VerifyInput";
-const Bool	 BonkEnc::Config::VerificationVerifyInputDefault		= True;
+const String	 freac::Config::VerificationVerifyInputID			= "VerifyInput";
+const Bool	 freac::Config::VerificationVerifyInputDefault			= True;
 
-const String	 BonkEnc::Config::VerificationVerifyOutputID			= "VerifyOutput";
-const Bool	 BonkEnc::Config::VerificationVerifyOutputDefault		= False;
+const String	 freac::Config::VerificationVerifyOutputID			= "VerifyOutput";
+const Bool	 freac::Config::VerificationVerifyOutputDefault			= False;
 
 /* Category Resources
  */
-const String	 BonkEnc::Config::ResourcesEnableParallelConversionsID		= "EnableParallelConversions";
-const Bool	 BonkEnc::Config::ResourcesEnableParallelConversionsDefault	= True;
+const String	 freac::Config::ResourcesEnableParallelConversionsID		= "EnableParallelConversions";
+const Bool	 freac::Config::ResourcesEnableParallelConversionsDefault	= True;
 
-const String	 BonkEnc::Config::ResourcesNumberOfConversionThreadsID		= "NumberOfConversionThreads";
-const Int	 BonkEnc::Config::ResourcesNumberOfConversionThreadsDefault	= 0;
+const String	 freac::Config::ResourcesNumberOfConversionThreadsID		= "NumberOfConversionThreads";
+const Int	 freac::Config::ResourcesNumberOfConversionThreadsDefault	= 0;
 
-const String	 BonkEnc::Config::ResourcesPriorityID				= "Priority";
-const Int	 BonkEnc::Config::ResourcesPriorityDefault			= 0;
+const String	 freac::Config::ResourcesPriorityID				= "Priority";
+const Int	 freac::Config::ResourcesPriorityDefault			= 0;
 
 /* Category Joblist
  */
-const String	 BonkEnc::Config::JoblistFieldsID				= "Fields";
-const String	 BonkEnc::Config::JoblistFieldsDefault				= "<artist>,<title>,<track>,<time>,<bytes>";
+const String	 freac::Config::JoblistFieldsID					= "Fields";
+const String	 freac::Config::JoblistFieldsDefault				= "<artist>,<title>,<track>,<time>,<bytes>";
 
-const String	 BonkEnc::Config::JoblistFieldSizesID				= "FieldSizes";
-const String	 BonkEnc::Config::JoblistFieldSizesDefault			= "120,*,50,80,100";
+const String	 freac::Config::JoblistFieldSizesID				= "FieldSizes";
+const String	 freac::Config::JoblistFieldSizesDefault			= "120,*,50,80,100";
 
 /* Category Ripper
  */
-const String	 BonkEnc::Config::RipperActiveDriveID				= "ActiveDrive";
-const Int	 BonkEnc::Config::RipperActiveDriveDefault			= 0;
+const String	 freac::Config::RipperActiveDriveID				= "ActiveDrive";
+const Int	 freac::Config::RipperActiveDriveDefault			= 0;
 
-const String	 BonkEnc::Config::RipperLockTrayID				= "LockTray";
-const Bool	 BonkEnc::Config::RipperLockTrayDefault				= False;
+const String	 freac::Config::RipperLockTrayID				= "LockTray";
+const Bool	 freac::Config::RipperLockTrayDefault				= False;
 
-const String	 BonkEnc::Config::RipperEjectAfterRippingID			= "EjectAfterRipping";
-const Bool	 BonkEnc::Config::RipperEjectAfterRippingDefault		= False;
+const String	 freac::Config::RipperEjectAfterRippingID			= "EjectAfterRipping";
+const Bool	 freac::Config::RipperEjectAfterRippingDefault			= False;
 
-const String	 BonkEnc::Config::RipperAutoReadContentsID			= "AutoReadContents";
-const Bool	 BonkEnc::Config::RipperAutoReadContentsDefault			= True;
+const String	 freac::Config::RipperAutoReadContentsID			= "AutoReadContents";
+const Bool	 freac::Config::RipperAutoReadContentsDefault			= True;
 
-const String	 BonkEnc::Config::RipperAutoRipID				= "AutoRip";
-const Bool	 BonkEnc::Config::RipperAutoRipDefault				= False;
+const String	 freac::Config::RipperAutoRipID					= "AutoRip";
+const Bool	 freac::Config::RipperAutoRipDefault				= False;
 
-const String	 BonkEnc::Config::RipperTimeoutID				= "Timeout";
-const Int	 BonkEnc::Config::RipperTimeoutDefault				= 0;
+const String	 freac::Config::RipperTimeoutID					= "Timeout";
+const Int	 freac::Config::RipperTimeoutDefault				= 0;
 
 /* Category Playlist
  */
-const String	 BonkEnc::Config::PlaylistCreatePlaylistID			= "CreatePlaylist";
-const Bool	 BonkEnc::Config::PlaylistCreatePlaylistDefault			= False;
+const String	 freac::Config::PlaylistCreatePlaylistID			= "CreatePlaylist";
+const Bool	 freac::Config::PlaylistCreatePlaylistDefault			= False;
 
-const String	 BonkEnc::Config::PlaylistCreateCueSheetID			= "CreateCueSheet";
-const Bool	 BonkEnc::Config::PlaylistCreateCueSheetDefault			= False;
+const String	 freac::Config::PlaylistCreateCueSheetID			= "CreateCueSheet";
+const Bool	 freac::Config::PlaylistCreateCueSheetDefault			= False;
 
-const String	 BonkEnc::Config::PlaylistFormatID				= "PlaylistFormat";
-const String	 BonkEnc::Config::PlaylistFormatDefault				= "m3u-playlist-m3u8";
+const String	 freac::Config::PlaylistFormatID				= "PlaylistFormat";
+const String	 freac::Config::PlaylistFormatDefault				= "m3u-playlist-m3u8";
 
-const String	 BonkEnc::Config::PlaylistUseEncoderOutputDirID			= "UseEncoderOutputDir";
-const Bool	 BonkEnc::Config::PlaylistUseEncoderOutputDirDefault		= True;
+const String	 freac::Config::PlaylistUseEncoderOutputDirID			= "UseEncoderOutputDir";
+const Bool	 freac::Config::PlaylistUseEncoderOutputDirDefault		= True;
 
-const String	 BonkEnc::Config::PlaylistOutputDirID				= "OutputDir";
+const String	 freac::Config::PlaylistOutputDirID				= "OutputDir";
 
-const String	 BonkEnc::Config::PlaylistFilenamePatternID			= "FilenamePattern";
-const String	 BonkEnc::Config::PlaylistFilenamePatternDefault		= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>");
+const String	 freac::Config::PlaylistFilenamePatternID			= "FilenamePattern";
+const String	 freac::Config::PlaylistFilenamePatternDefault			= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>");
 
 /* Category Tags
  */
-const String	 BonkEnc::Config::TagsCoverArtReadFromTagsID			= "CoverArtReadFromTags";
-const Bool	 BonkEnc::Config::TagsCoverArtReadFromTagsDefault		= True;
+const String	 freac::Config::TagsCoverArtReadFromTagsID			= "CoverArtReadFromTags";
+const Bool	 freac::Config::TagsCoverArtReadFromTagsDefault			= True;
 
-const String	 BonkEnc::Config::TagsCoverArtReadFromFilesID			= "CoverArtReadFromFiles";
-const Bool	 BonkEnc::Config::TagsCoverArtReadFromFilesDefault		= True;
+const String	 freac::Config::TagsCoverArtReadFromFilesID			= "CoverArtReadFromFiles";
+const Bool	 freac::Config::TagsCoverArtReadFromFilesDefault		= True;
 
-const String	 BonkEnc::Config::TagsCoverArtWriteToTagsID			= "CoverArtWriteToTags";
-const Bool	 BonkEnc::Config::TagsCoverArtWriteToTagsDefault		= True;
+const String	 freac::Config::TagsCoverArtWriteToTagsID			= "CoverArtWriteToTags";
+const Bool	 freac::Config::TagsCoverArtWriteToTagsDefault			= True;
 
-const String	 BonkEnc::Config::TagsCoverArtWriteToFilesID			= "CoverArtWriteToFiles";
-const Bool	 BonkEnc::Config::TagsCoverArtWriteToFilesDefault		= False;
+const String	 freac::Config::TagsCoverArtWriteToFilesID			= "CoverArtWriteToFiles";
+const Bool	 freac::Config::TagsCoverArtWriteToFilesDefault			= False;
 
-const String	 BonkEnc::Config::TagsCoverArtWriteToFilesWithReferenceID	= "CoverArtWriteToFilesWithReference";
-const Bool	 BonkEnc::Config::TagsCoverArtWriteToFilesWithReferenceDefault	= False;
+const String	 freac::Config::TagsCoverArtWriteToFilesWithReferenceID		= "CoverArtWriteToFilesWithReference";
+const Bool	 freac::Config::TagsCoverArtWriteToFilesWithReferenceDefault	= False;
 
-const String	 BonkEnc::Config::TagsCoverArtFilenamePatternID			= "CoverArtFilenamePattern";
-const String	 BonkEnc::Config::TagsCoverArtFilenamePatternDefault		= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<type>");
+const String	 freac::Config::TagsCoverArtFilenamePatternID			= "CoverArtFilenamePattern";
+const String	 freac::Config::TagsCoverArtFilenamePatternDefault		= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<type>");
 
-const String	 BonkEnc::Config::TagsReadEmbeddedCueSheetsID			= "ReadEmbeddedCueSheets";
-const Int	 BonkEnc::Config::TagsReadEmbeddedCueSheetsDefault		= True;
+const String	 freac::Config::TagsReadEmbeddedCueSheetsID			= "ReadEmbeddedCueSheets";
+const Int	 freac::Config::TagsReadEmbeddedCueSheetsDefault		= True;
 
-const String	 BonkEnc::Config::TagsPreferCueSheetsToChaptersID		= "PreferCueSheetsToChapters";
-const Int	 BonkEnc::Config::TagsPreferCueSheetsToChaptersDefault		= True;
+const String	 freac::Config::TagsPreferCueSheetsToChaptersID			= "PreferCueSheetsToChapters";
+const Int	 freac::Config::TagsPreferCueSheetsToChaptersDefault		= True;
 
-const String	 BonkEnc::Config::TagsReadChaptersID				= "ReadChapters";
-const Bool	 BonkEnc::Config::TagsReadChaptersDefault			= True;
+const String	 freac::Config::TagsReadChaptersID				= "ReadChapters";
+const Bool	 freac::Config::TagsReadChaptersDefault				= True;
 
-const String	 BonkEnc::Config::TagsWriteChaptersID				= "WriteChapters";
-const Bool	 BonkEnc::Config::TagsWriteChaptersDefault			= True;
+const String	 freac::Config::TagsWriteChaptersID				= "WriteChapters";
+const Bool	 freac::Config::TagsWriteChaptersDefault			= True;
 
-const String	 BonkEnc::Config::TagsWriteChaptersTypeID			= "WriteChaptersType";
-const Int	 BonkEnc::Config::TagsWriteChaptersTypeDefault			= 1;
+const String	 freac::Config::TagsWriteChaptersTypeID				= "WriteChaptersType";
+const Int	 freac::Config::TagsWriteChaptersTypeDefault			= 1;
 
-const String	 BonkEnc::Config::TagsWriteMCDIID				= "WriteMCDI";
-const Bool	 BonkEnc::Config::TagsWriteMCDIDefault				= True;
+const String	 freac::Config::TagsWriteMCDIID					= "WriteMCDI";
+const Bool	 freac::Config::TagsWriteMCDIDefault				= True;
 
-const String	 BonkEnc::Config::TagsPreserveReplayGainID			= "PreserveReplayGain";
-const Bool	 BonkEnc::Config::TagsPreserveReplayGainDefault			= True;
+const String	 freac::Config::TagsPreserveReplayGainID			= "PreserveReplayGain";
+const Bool	 freac::Config::TagsPreserveReplayGainDefault			= True;
 
-const String	 BonkEnc::Config::TagsReplaceExistingCommentsID			= "ReplaceExistingComments";
-const Bool	 BonkEnc::Config::TagsReplaceExistingCommentsDefault		= False;
+const String	 freac::Config::TagsReplaceExistingCommentsID			= "ReplaceExistingComments";
+const Bool	 freac::Config::TagsReplaceExistingCommentsDefault		= False;
 
-const String	 BonkEnc::Config::TagsDefaultCommentID				= "DefaultComment";
+const String	 freac::Config::TagsDefaultCommentID				= "DefaultComment";
 
 /* Category freedb
  */
-const String	 BonkEnc::Config::FreedbDirectoryID				= "Directory";
-const String	 BonkEnc::Config::FreedbDirectoryDefault			= String("freedb").Append(Directory::GetDirectoryDelimiter());
+const String	 freac::Config::FreedbDirectoryID				= "Directory";
+const String	 freac::Config::FreedbDirectoryDefault				= String("freedb").Append(Directory::GetDirectoryDelimiter());
 
-const String	 BonkEnc::Config::FreedbServerID				= "Server";
-const String	 BonkEnc::Config::FreedbServerDefault				= "freedb.freedb.org";
+const String	 freac::Config::FreedbServerID					= "Server";
+const String	 freac::Config::FreedbServerDefault				= "freedb.freedb.org";
 
-const String	 BonkEnc::Config::FreedbModeID					= "Mode";
-const Int	 BonkEnc::Config::FreedbModeDefault				= 0;
+const String	 freac::Config::FreedbModeID					= "Mode";
+const Int	 freac::Config::FreedbModeDefault				= 0;
 
-const String	 BonkEnc::Config::FreedbHTTPPortID				= "HTTPPort";
-const Int	 BonkEnc::Config::FreedbHTTPPortDefault				= 80;
+const String	 freac::Config::FreedbHTTPPortID				= "HTTPPort";
+const Int	 freac::Config::FreedbHTTPPortDefault				= 80;
 
-const String	 BonkEnc::Config::FreedbCDDBPPortID				= "CDDBPPort";
-const Int	 BonkEnc::Config::FreedbCDDBPPortDefault			= 8880;
+const String	 freac::Config::FreedbCDDBPPortID				= "CDDBPPort";
+const Int	 freac::Config::FreedbCDDBPPortDefault				= 8880;
 
-const String	 BonkEnc::Config::FreedbQueryPathID				= "QueryPath";
-const String	 BonkEnc::Config::FreedbQueryPathDefault			= "/~cddb/cddb.cgi";
+const String	 freac::Config::FreedbQueryPathID				= "QueryPath";
+const String	 freac::Config::FreedbQueryPathDefault				= "/~cddb/cddb.cgi";
 
-const String	 BonkEnc::Config::FreedbSubmitPathID				= "SubmitPath";
-const String	 BonkEnc::Config::FreedbSubmitPathDefault			= "/~cddb/submit.cgi";
+const String	 freac::Config::FreedbSubmitPathID				= "SubmitPath";
+const String	 freac::Config::FreedbSubmitPathDefault				= "/~cddb/submit.cgi";
 
-const String	 BonkEnc::Config::FreedbEmailID					= "eMail";
-const String	 BonkEnc::Config::FreedbEmailDefault				= "cddb@freac.org";
+const String	 freac::Config::FreedbEmailID					= "eMail";
+const String	 freac::Config::FreedbEmailDefault				= "cddb@freac.org";
 
-const String	 BonkEnc::Config::FreedbProxyID					= "Proxy";
-const String	 BonkEnc::Config::FreedbProxyDefault				= "localhost";
+const String	 freac::Config::FreedbProxyID					= "Proxy";
+const String	 freac::Config::FreedbProxyDefault				= "localhost";
 
-const String	 BonkEnc::Config::FreedbProxyUserID				= "ProxyUserName";
-const String	 BonkEnc::Config::FreedbProxyUserDefault			= NIL;
+const String	 freac::Config::FreedbProxyUserID				= "ProxyUserName";
+const String	 freac::Config::FreedbProxyUserDefault				= NIL;
 
-const String	 BonkEnc::Config::FreedbProxyPasswordID				= "ProxyPassword";
-const String	 BonkEnc::Config::FreedbProxyPasswordDefault			= NIL;
+const String	 freac::Config::FreedbProxyPasswordID				= "ProxyPassword";
+const String	 freac::Config::FreedbProxyPasswordDefault			= NIL;
 
-const String	 BonkEnc::Config::FreedbProxyModeID				= "ProxyMode";
-const Int	 BonkEnc::Config::FreedbProxyModeDefault			= 0;
+const String	 freac::Config::FreedbProxyModeID				= "ProxyMode";
+const Int	 freac::Config::FreedbProxyModeDefault				= 0;
 
-const String	 BonkEnc::Config::FreedbProxyPortID				= "ProxyPort";
-const Int	 BonkEnc::Config::FreedbProxyPortDefault			= 1080;
+const String	 freac::Config::FreedbProxyPortID				= "ProxyPort";
+const Int	 freac::Config::FreedbProxyPortDefault				= 1080;
 
-const String	 BonkEnc::Config::FreedbEnableLocalID				= "EnableLocalCDDB";
-const Bool	 BonkEnc::Config::FreedbEnableLocalDefault			= False;
+const String	 freac::Config::FreedbEnableLocalID				= "EnableLocalCDDB";
+const Bool	 freac::Config::FreedbEnableLocalDefault			= False;
 
-const String	 BonkEnc::Config::FreedbEnableRemoteID				= "EnableRemoteCDDB";
-const Bool	 BonkEnc::Config::FreedbEnableRemoteDefault			= True;
+const String	 freac::Config::FreedbEnableRemoteID				= "EnableRemoteCDDB";
+const Bool	 freac::Config::FreedbEnableRemoteDefault			= True;
 
-const String	 BonkEnc::Config::FreedbAutoQueryID				= "AutoCDDBQueries";
-const Bool	 BonkEnc::Config::FreedbAutoQueryDefault			= True;
+const String	 freac::Config::FreedbAutoQueryID				= "AutoCDDBQueries";
+const Bool	 freac::Config::FreedbAutoQueryDefault				= True;
 
-const String	 BonkEnc::Config::FreedbAutoSelectID				= "AutoSelectFirstEntry";
-const Bool	 BonkEnc::Config::FreedbAutoSelectDefault			= False;
+const String	 freac::Config::FreedbAutoSelectID				= "AutoSelectFirstEntry";
+const Bool	 freac::Config::FreedbAutoSelectDefault				= False;
 
-const String	 BonkEnc::Config::FreedbEnableCacheID				= "EnableCDDBCache";
-const Bool	 BonkEnc::Config::FreedbEnableCacheDefault			= True;
+const String	 freac::Config::FreedbEnableCacheID				= "EnableCDDBCache";
+const Bool	 freac::Config::FreedbEnableCacheDefault			= True;
 
-const String	 BonkEnc::Config::FreedbOverwriteCDTextID			= "OverwriteCDText";
-const Bool	 BonkEnc::Config::FreedbOverwriteCDTextDefault			= True;
+const String	 freac::Config::FreedbOverwriteCDTextID				= "OverwriteCDText";
+const Bool	 freac::Config::FreedbOverwriteCDTextDefault			= True;
 
-const String	 BonkEnc::Config::FreedbUpdateJoblistID				= "UpdateJoblistOnSubmit";
-const Bool	 BonkEnc::Config::FreedbUpdateJoblistDefault			= True;
+const String	 freac::Config::FreedbUpdateJoblistID				= "UpdateJoblistOnSubmit";
+const Bool	 freac::Config::FreedbUpdateJoblistDefault			= True;
 
-BonkEnc::Config::Config()
+freac::Config::Config()
 {
 #ifndef __WIN32__
 	if (Directory(S::System::System::GetResourcesDirectory().Append("freac")).Exists())
@@ -364,11 +364,11 @@ BonkEnc::Config::Config()
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Config::SettingsSingleFilenameDefault);
 }
 
-BonkEnc::Config::~Config()
+freac::Config::~Config()
 {
 }
 
-BonkEnc::Config *BonkEnc::Config::Get()
+freac::Config *freac::Config::Get()
 {
 	if (instance == NIL)
 	{
@@ -378,7 +378,7 @@ BonkEnc::Config *BonkEnc::Config::Get()
 	return instance;
 }
 
-Void BonkEnc::Config::Free()
+Void freac::Config::Free()
 {
 	if (instance != NIL)
 	{

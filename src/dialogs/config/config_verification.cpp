@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -18,7 +18,7 @@ using namespace BoCA::AS;
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::ConfigureVerification::ConfigureVerification()
+freac::ConfigureVerification::ConfigureVerification()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -46,7 +46,7 @@ BonkEnc::ConfigureVerification::ConfigureVerification()
 	SetSize(Size(364, 144));
 }
 
-BonkEnc::ConfigureVerification::~ConfigureVerification()
+freac::ConfigureVerification::~ConfigureVerification()
 {
 	DeleteObject(group_verification);
 	DeleteObject(check_input);
@@ -55,7 +55,7 @@ BonkEnc::ConfigureVerification::~ConfigureVerification()
 	DeleteObject(text_output);
 }
 
-Int BonkEnc::ConfigureVerification::SaveSettings()
+Int freac::ConfigureVerification::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 

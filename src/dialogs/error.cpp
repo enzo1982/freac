@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -17,7 +17,7 @@
 
 #include <boca.h>
 
-BonkEnc::ErrorDialog::ErrorDialog(const Array<String> &errors)
+freac::ErrorDialog::ErrorDialog(const Array<String> &errors)
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -69,7 +69,7 @@ BonkEnc::ErrorDialog::ErrorDialog(const Array<String> &errors)
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::ErrorDialog::~ErrorDialog()
+freac::ErrorDialog::~ErrorDialog()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -84,14 +84,14 @@ BonkEnc::ErrorDialog::~ErrorDialog()
 	DeleteObject(btn_ok);
 }
 
-const Error &BonkEnc::ErrorDialog::ShowDialog()
+const Error &freac::ErrorDialog::ShowDialog()
 {
 	mainWnd->WaitUntilClosed();
 
 	return error;
 }
 
-Void BonkEnc::ErrorDialog::OnChangeSize(const Size &nSize)
+Void freac::ErrorDialog::OnChangeSize(const Size &nSize)
 {
 	Rect	 clientRect = Rect(mainWnd->GetMainLayer()->GetPosition(), mainWnd->GetMainLayer()->GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -102,12 +102,12 @@ Void BonkEnc::ErrorDialog::OnChangeSize(const Size &nSize)
 	text_details->SetPosition(edit_details->GetPosition() + Point((edit_details->GetWidth() - text_details->GetUnscaledTextWidth()) / 2, (-(edit_details->GetHeight() - text_details->GetUnscaledTextHeight())) / 2));
 }
 
-Void BonkEnc::ErrorDialog::OK()
+Void freac::ErrorDialog::OK()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::ErrorDialog::OnSelectError(ListEntry *error)
+Void freac::ErrorDialog::OnSelectError(ListEntry *error)
 {
 	text_details->Hide();
 	edit_details->SetText(error->GetText());

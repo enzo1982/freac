@@ -19,7 +19,7 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-namespace BonkEnc
+namespace freac
 {
 	class JobList : public ListBox
 	{

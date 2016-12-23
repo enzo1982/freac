@@ -27,25 +27,25 @@ using namespace BoCA::AS;
 
 Int StartConsole(const Array<String> &args)
 {
-	BonkEnc::BonkEncCommandline::Get(args);
-	BonkEnc::BonkEncCommandline::Free();
+	freac::freacCommandline::Get(args);
+	freac::freacCommandline::Free();
 
 	return 0;
 }
 
-BonkEnc::BonkEncCommandline *BonkEnc::BonkEncCommandline::Get(const Array<String> &args)
+freac::freacCommandline *freac::freacCommandline::Get(const Array<String> &args)
 {
-	if (instance == NIL) new BonkEncCommandline(args);
+	if (instance == NIL) new freacCommandline(args);
 
-	return (BonkEncCommandline *) instance;
+	return (freacCommandline *) instance;
 }
 
-Void BonkEnc::BonkEncCommandline::Free()
+Void freac::freacCommandline::Free()
 {
-	if (instance != NIL) delete (BonkEncCommandline *) instance;
+	if (instance != NIL) delete (freacCommandline *) instance;
 }
 
-BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) : args(arguments)
+freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args(arguments)
 {
 	Registry	&boca	= Registry::Get();
 
@@ -69,7 +69,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	 */
 	if (ScanForOption("--list-configs"))
 	{
-		Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" (").Append(BonkEnc::architecture).Append(") command line interface\n").Append(BonkEnc::copyright).Append("\n\n"));
+		Console::OutputString(String(freac::appLongName).Append(" ").Append(freac::version).Append(" (").Append(freac::architecture).Append(") command line interface\n").Append(freac::copyright).Append("\n\n"));
 		Console::OutputString("Available configurations:\n\n");
 
 		for (Int i = 0; i < config->GetNOfConfigurations(); i++)
@@ -171,7 +171,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 		Console::OutputString("Error: CD ripping disabled!");
 	}
 
-	Console::SetTitle(String(BonkEnc::appName).Append(" ").Append(BonkEnc::version));
+	Console::SetTitle(String(freac::appName).Append(" ").Append(freac::version));
 
 	encoderID = encoderID.ToLower();
 	helpenc	  = helpenc.ToLower();
@@ -185,7 +185,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 
 	if (!boca.ComponentExists(String(encoderID).Append("-enc")))
 	{
-		Console::OutputString(String("Encoder '").Append(encoderID).Append("' is not supported by ").Append(BonkEnc::appName).Append("!\n\n"));
+		Console::OutputString(String("Encoder '").Append(encoderID).Append("' is not supported by ").Append(freac::appName).Append("!\n\n"));
 
 		return;
 	}
@@ -336,7 +336,7 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 			config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, True);
 			config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outfile);
 
-			JobConvert::onEncodeTrack.Connect(&BonkEncCommandline::OnEncodeTrack, this);
+			JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
 
 			Array<String>	 jobFiles;
 			Bool		 addCDTracks = False;
@@ -463,11 +463,11 @@ BonkEnc::BonkEncCommandline::BonkEncCommandline(const Array<String> &arguments) 
 	delete joblist;
 }
 
-BonkEnc::BonkEncCommandline::~BonkEncCommandline()
+freac::freacCommandline::~freacCommandline()
 {
 }
 
-Void BonkEnc::BonkEncCommandline::OnEncodeTrack(const Track &track, const String &decoderName, ConversionStep mode)
+Void freac::freacCommandline::OnEncodeTrack(const Track &track, const String &decoderName, ConversionStep mode)
 {
 	static Bool	 firstTime = True;
 
@@ -487,7 +487,7 @@ Void BonkEnc::BonkEncCommandline::OnEncodeTrack(const Track &track, const String
 	}
 }
 
-Bool BonkEnc::BonkEncCommandline::ScanForOption(const String &option, String *value)
+Bool freac::freacCommandline::ScanForOption(const String &option, String *value)
 {
 	for (Int i = 0; i < args.Length(); i++)
 	{
@@ -512,7 +512,7 @@ Bool BonkEnc::BonkEncCommandline::ScanForOption(const String &option, String *va
 	return False;
 }
 
-Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
+Void freac::freacCommandline::ScanForFiles(Array<String> *files)
 {
 	String	 param;
 	String	 prevParam;
@@ -547,7 +547,7 @@ Void BonkEnc::BonkEncCommandline::ScanForFiles(Array<String> *files)
 	}
 }
 
-Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<String> *files)
+Bool freac::freacCommandline::TracksToFiles(const String &tracks, Array<String> *files)
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 
@@ -616,9 +616,9 @@ Bool BonkEnc::BonkEncCommandline::TracksToFiles(const String &tracks, Array<Stri
 	return True;
 }
 
-Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
+Void freac::freacCommandline::ShowHelp(const String &helpenc)
 {
-	Console::OutputString(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" (").Append(BonkEnc::architecture).Append(") command line interface\n").Append(BonkEnc::copyright).Append("\n\n"));
+	Console::OutputString(String(freac::appLongName).Append(" ").Append(freac::version).Append(" (").Append(freac::architecture).Append(") command line interface\n").Append(freac::copyright).Append("\n\n"));
 
 	Registry	&boca = Registry::Get();
 
@@ -681,7 +681,7 @@ Void BonkEnc::BonkEncCommandline::ShowHelp(const String &helpenc)
 	{
 		if (!boca.ComponentExists(String(helpenc).Append("-enc")))
 		{
-			Console::OutputString(String("Encoder '").Append(helpenc).Append("' is not supported by ").Append(BonkEnc::appName).Append("!\n\n"));
+			Console::OutputString(String("Encoder '").Append(helpenc).Append("' is not supported by ").Append(freac::appName).Append("!\n\n"));
 
 			return;
 		}

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -19,7 +19,7 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::LayerPlayer::LayerPlayer(JobList *iJoblist)
+freac::LayerPlayer::LayerPlayer(JobList *iJoblist)
 {
 	joblist = iJoblist;
 
@@ -99,7 +99,7 @@ BonkEnc::LayerPlayer::LayerPlayer(JobList *iJoblist)
 	SetSize(Size(243, 21));
 }
 
-BonkEnc::LayerPlayer::~LayerPlayer()
+freac::LayerPlayer::~LayerPlayer()
 {
 	Playback::Get()->onFinish.Disconnect(&LayerPlayer::StopPlayback, this);
 
@@ -120,7 +120,7 @@ BonkEnc::LayerPlayer::~LayerPlayer()
 	DeleteObject(slider_play);
 }
 
-Void BonkEnc::LayerPlayer::OnChangeLanguageSettings()
+Void freac::LayerPlayer::OnChangeLanguageSettings()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -180,19 +180,19 @@ Void BonkEnc::LayerPlayer::OnChangeLanguageSettings()
 	}
 }
 
-Void BonkEnc::LayerPlayer::OnJoblistRemoveTrack(const Track &track)
+Void freac::LayerPlayer::OnJoblistRemoveTrack(const Track &track)
 {
 	Playback	*player = Playback::Get();
 
 	if (player->IsPlaying() && playingTrack.GetTrackID() == track.GetTrackID()) StopPlayback();
 }
 
-Void BonkEnc::LayerPlayer::OnJoblistRemoveAllTracks()
+Void freac::LayerPlayer::OnJoblistRemoveAllTracks()
 {
 	if (Playback::Get()->IsPlaying()) StopPlayback();
 }
 
-Void BonkEnc::LayerPlayer::PlaySelectedItem()
+Void freac::LayerPlayer::PlaySelectedItem()
 {
 	const Track	&track = joblist->GetSelectedTrack();
 
@@ -204,7 +204,7 @@ Void BonkEnc::LayerPlayer::PlaySelectedItem()
 	}
 }
 
-Void BonkEnc::LayerPlayer::PlayPreviousItem()
+Void freac::LayerPlayer::PlayPreviousItem()
 {
 	for (Int i = 1; i < joblist->Length(); i++)
 	{
@@ -221,7 +221,7 @@ Void BonkEnc::LayerPlayer::PlayPreviousItem()
 	}
 }
 
-Void BonkEnc::LayerPlayer::PlayNextItem()
+Void freac::LayerPlayer::PlayNextItem()
 {
 	for (Int i = 0; i < joblist->Length() - 1; i++)
 	{
@@ -238,7 +238,7 @@ Void BonkEnc::LayerPlayer::PlayNextItem()
 	}
 }
 
-Void BonkEnc::LayerPlayer::Play(const Track &track)
+Void freac::LayerPlayer::Play(const Track &track)
 {
 	playingTrack = track;
 
@@ -264,7 +264,7 @@ Void BonkEnc::LayerPlayer::Play(const Track &track)
 	}
 }
 
-Void BonkEnc::LayerPlayer::PauseResumePlayback()
+Void freac::LayerPlayer::PauseResumePlayback()
 {
 	Playback	*player = Playback::Get();
 
@@ -274,7 +274,7 @@ Void BonkEnc::LayerPlayer::PauseResumePlayback()
 	else			player->Pause();
 }
 
-Void BonkEnc::LayerPlayer::StopPlayback()
+Void freac::LayerPlayer::StopPlayback()
 {
 	Playback	*player = Playback::Get();
 
@@ -302,7 +302,7 @@ Void BonkEnc::LayerPlayer::StopPlayback()
 	}
 }
 
-Void BonkEnc::LayerPlayer::OpenCDTray()
+Void freac::LayerPlayer::OpenCDTray()
 {
 	Registry		&boca = Registry::Get();
 	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
@@ -315,7 +315,7 @@ Void BonkEnc::LayerPlayer::OpenCDTray()
 	}
 }
 
-Void BonkEnc::LayerPlayer::OnChangePlayPosition()
+Void freac::LayerPlayer::OnChangePlayPosition()
 {
 	Playback	*player = Playback::Get();
 

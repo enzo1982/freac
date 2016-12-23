@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -14,7 +14,7 @@
 #include <config.h>
 #include <resources.h>
 
-BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
+freac::cddbManageQueriesDlg::cddbManageQueriesDlg()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -75,7 +75,7 @@ BonkEnc::cddbManageQueriesDlg::cddbManageQueriesDlg()
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::cddbManageQueriesDlg::~cddbManageQueriesDlg()
+freac::cddbManageQueriesDlg::~cddbManageQueriesDlg()
 {
 	delete cddbQueries;
 
@@ -94,25 +94,25 @@ BonkEnc::cddbManageQueriesDlg::~cddbManageQueriesDlg()
 	DeleteObject(text_status);
 }
 
-const Error &BonkEnc::cddbManageQueriesDlg::ShowDialog()
+const Error &freac::cddbManageQueriesDlg::ShowDialog()
 {
 	mainWnd->WaitUntilClosed();
 
 	return error;
 }
 
-Void BonkEnc::cddbManageQueriesDlg::Cancel()
+Void freac::cddbManageQueriesDlg::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbManageQueriesDlg::SelectEntry()
+Void freac::cddbManageQueriesDlg::SelectEntry()
 {
 	btn_delete->Activate();
 	btn_query->Activate();
 }
 
-Void BonkEnc::cddbManageQueriesDlg::DeleteEntry()
+Void freac::cddbManageQueriesDlg::DeleteEntry()
 {
 	cddbQueries->DeleteQuery(list_entries->GetSelectedEntryNumber());
 
@@ -122,7 +122,7 @@ Void BonkEnc::cddbManageQueriesDlg::DeleteEntry()
 	btn_query->Deactivate();
 }
 
-Void BonkEnc::cddbManageQueriesDlg::ReadEntries()
+Void freac::cddbManageQueriesDlg::ReadEntries()
 {
 	/* Read all entries from the query queue
 	 */
@@ -134,7 +134,7 @@ Void BonkEnc::cddbManageQueriesDlg::ReadEntries()
 	}
 }
 
-Void BonkEnc::cddbManageQueriesDlg::QueryEntry()
+Void freac::cddbManageQueriesDlg::QueryEntry()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -155,7 +155,7 @@ Void BonkEnc::cddbManageQueriesDlg::QueryEntry()
 	text_status->SetText(NIL);
 }
 
-Void BonkEnc::cddbManageQueriesDlg::QueryAllEntries()
+Void freac::cddbManageQueriesDlg::QueryAllEntries()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -17,10 +17,10 @@ using namespace smooth::IO;
 using namespace BoCA;
 using namespace BoCA::AS;
 
-Array<Threads::Mutex *>	 BonkEnc::Encoder::mutexes;
-Threads::Mutex		 BonkEnc::Encoder::managementMutex;
+Array<Threads::Mutex *>	 freac::Encoder::mutexes;
+Threads::Mutex		 freac::Encoder::managementMutex;
 
-BonkEnc::Encoder::Encoder(const BoCA::Config *iConfiguration)
+freac::Encoder::Encoder(const BoCA::Config *iConfiguration)
 {
 	configuration = iConfiguration;
 
@@ -34,12 +34,12 @@ BonkEnc::Encoder::Encoder(const BoCA::Config *iConfiguration)
 	calculateMD5  = False;
 }
 
-BonkEnc::Encoder::~Encoder()
+freac::Encoder::~Encoder()
 {
 	Destroy();
 }
 
-Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, const Track &track)
+Bool freac::Encoder::Create(const String &encoderID, const String &fileName, const Track &track)
 {
 	Registry	&boca	= Registry::Get();
 	const Format	&format = track.GetFormat();
@@ -115,7 +115,7 @@ Bool BonkEnc::Encoder::Create(const String &encoderID, const String &fileName, c
 	return True;
 }
 
-Bool BonkEnc::Encoder::Destroy()
+Bool freac::Encoder::Destroy()
 {
 	if (encoder == NIL || stream == NIL) return False;
 
@@ -139,7 +139,7 @@ Bool BonkEnc::Encoder::Destroy()
 	return True;
 }
 
-Int BonkEnc::Encoder::Write(Buffer<UnsignedByte> &buffer)
+Int freac::Encoder::Write(Buffer<UnsignedByte> &buffer)
 {
 	if (encoder == NIL || stream == NIL) return 0;
 
@@ -156,7 +156,7 @@ Int BonkEnc::Encoder::Write(Buffer<UnsignedByte> &buffer)
 	return buffer.Size();
 }
 
-Void BonkEnc::Encoder::SignalChapterChange()
+Void freac::Encoder::SignalChapterChange()
 {
 	if (album.tracks.Length() <= chapter) return;
 
@@ -174,17 +174,17 @@ Void BonkEnc::Encoder::SignalChapterChange()
 	chapter++;
 }
 
-Bool BonkEnc::Encoder::IsLossless() const
+Bool freac::Encoder::IsLossless() const
 {
 	return encoder->IsLossless();
 }
 
-String BonkEnc::Encoder::GetMD5Checksum()
+String freac::Encoder::GetMD5Checksum()
 {
 	return md5.Finish();
 }
 
-Void BonkEnc::Encoder::FreeLockObjects()
+Void freac::Encoder::FreeLockObjects()
 {
 	foreach (Threads::Mutex *mutex, mutexes) delete mutex;
 

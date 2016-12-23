@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -15,19 +15,19 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::Verifier::Verifier(const BoCA::Config *iConfiguration)
+freac::Verifier::Verifier(const BoCA::Config *iConfiguration)
 {
 	configuration = iConfiguration;
 
 	verifier      = NIL;
 }
 
-BonkEnc::Verifier::~Verifier()
+freac::Verifier::~Verifier()
 {
 	Destroy();
 }
 
-Bool BonkEnc::Verifier::Create(const Track &track)
+Bool freac::Verifier::Create(const Track &track)
 {
 	Registry	&boca = Registry::Get();
 
@@ -46,7 +46,7 @@ Bool BonkEnc::Verifier::Create(const Track &track)
 	return True;
 }
 
-Bool BonkEnc::Verifier::Destroy()
+Bool freac::Verifier::Destroy()
 {
 	if (verifier == NIL) return False;
 
@@ -63,14 +63,14 @@ Bool BonkEnc::Verifier::Destroy()
 	return True;
 }
 
-Int BonkEnc::Verifier::Process(Buffer<UnsignedByte> &buffer)
+Int freac::Verifier::Process(Buffer<UnsignedByte> &buffer)
 {
 	if (verifier == NIL) return 0;
 
 	return verifier->ProcessData(buffer);
 }
 
-Bool BonkEnc::Verifier::Verify()
+Bool freac::Verifier::Verify()
 {
 	if (verifier == NIL) return True;
 

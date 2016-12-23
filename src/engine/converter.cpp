@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -22,16 +22,16 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::Converter::Converter()
+freac::Converter::Converter()
 {
 	conversionFinished = False;
 }
 
-BonkEnc::Converter::~Converter()
+freac::Converter::~Converter()
 {
 }
 
-Void BonkEnc::Converter::Convert(JobList *joblist, Bool useThread)
+Void freac::Converter::Convert(JobList *joblist, Bool useThread)
 {
 	/* Check if currently playing a track.
 	 */
@@ -64,7 +64,7 @@ Void BonkEnc::Converter::Convert(JobList *joblist, Bool useThread)
 	if (!useThread)	while (!conversionFinished) S::System::System::Sleep(10);
 }
 
-Void BonkEnc::Converter::OnFinishJob()
+Void freac::Converter::OnFinishJob()
 {
 	conversionFinished = True;
 }

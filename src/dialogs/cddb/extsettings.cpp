@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -16,7 +16,7 @@
 
 #include <boca.h>
 
-BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
+freac::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -138,7 +138,7 @@ BonkEnc::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::cddbExtendedSettingsDlg::~cddbExtendedSettingsDlg()
+freac::cddbExtendedSettingsDlg::~cddbExtendedSettingsDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -166,14 +166,14 @@ BonkEnc::cddbExtendedSettingsDlg::~cddbExtendedSettingsDlg()
 	DeleteObject(btn_cancel);
 }
 
-const Error &BonkEnc::cddbExtendedSettingsDlg::ShowDialog()
+const Error &freac::cddbExtendedSettingsDlg::ShowDialog()
 {
 	mainWnd->WaitUntilClosed();
 
 	return error;
 }
 
-Void BonkEnc::cddbExtendedSettingsDlg::OK()
+Void freac::cddbExtendedSettingsDlg::OK()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -189,12 +189,12 @@ Void BonkEnc::cddbExtendedSettingsDlg::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbExtendedSettingsDlg::Cancel()
+Void freac::cddbExtendedSettingsDlg::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbExtendedSettingsDlg::SetProxyMode()
+Void freac::cddbExtendedSettingsDlg::SetProxyMode()
 {
 	if (proxy_combo_mode->GetSelectedEntryNumber() == 0)
 	{

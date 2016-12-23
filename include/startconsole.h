@@ -16,7 +16,7 @@
 #include <smooth.h>
 #include <boca.h>
 
-#include "bonkenc.h"
+#include "freac.h"
 
 #include "engine/converter.h"
 
@@ -34,33 +34,33 @@ extern "C"
 	Int DLLEXPORT StartConsole(const Array<String> &);
 }
 
-namespace BonkEnc
+namespace freac
 {
-	class BonkEncCommandline : public BonkEnc
+	class freacCommandline : public freac
 	{
 		private:
 			/* Singleton class, therefore protected constructor/destructor
 			 */
-							 BonkEncCommandline(const Array<String> &);
-							~BonkEncCommandline();
+						 freacCommandline(const Array<String> &);
+						~freacCommandline();
 
-			const Array<String>		&args;
+			const Array<String>	&args;
 
-			Bool				 ScanForOption(const String &, String * = NIL);
-			Void				 ScanForFiles(Array<String> *);
-			Bool				 TracksToFiles(const String &, Array<String> *);
+			Bool			 ScanForOption(const String &, String * = NIL);
+			Void			 ScanForFiles(Array<String> *);
+			Bool			 TracksToFiles(const String &, Array<String> *);
 		public:
-			Void				 ShowHelp(const String &);
+			Void			 ShowHelp(const String &);
 
-			/* Returns a new or existing instance of BonkEncCommandline
+			/* Returns a new or existing instance of freacCommandline
 			 */
-			static BonkEncCommandline	*Get(const Array<String> &);
+			static freacCommandline	*Get(const Array<String> &);
 
-			/* Destroys an existing instance of BonkEncCommandline
+			/* Destroys an existing instance of freacCommandline
 			 */
-			static Void			 Free();
+			static Void		 Free();
 		slots:
-			Void				 OnEncodeTrack(const BoCA::Track &, const String &, ConversionStep);
+			Void			 OnEncodeTrack(const BoCA::Track &, const String &, ConversionStep);
 	};
 };
 

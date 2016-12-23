@@ -53,28 +53,28 @@ using namespace BoCA::AS;
 
 Int StartGUI(const Array<String> &args)
 {
-	BonkEnc::BonkEncGUI	*app = BonkEnc::BonkEncGUI::Get();
+	freac::freacGUI	*app = freac::freacGUI::Get();
 
 	app->Loop();
 
-	BonkEnc::BonkEncGUI::Free();
+	freac::freacGUI::Free();
 
 	return 0;
 }
 
-BonkEnc::BonkEncGUI *BonkEnc::BonkEncGUI::Get()
+freac::freacGUI *freac::freacGUI::Get()
 {
-	if (instance == NIL) new BonkEncGUI();
+	if (instance == NIL) new freacGUI();
 
-	return (BonkEncGUI *) instance;
+	return (freacGUI *) instance;
 }
 
-Void BonkEnc::BonkEncGUI::Free()
+Void freac::freacGUI::Free()
 {
-	if (instance != NIL) delete (BonkEncGUI *) instance;
+	if (instance != NIL) delete (freacGUI *) instance;
 }
 
-BonkEnc::BonkEncGUI::BonkEncGUI()
+freac::freacGUI::freacGUI()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -87,9 +87,9 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	if (notification != NIL)
 	{
-		notification->onDriveChange.Connect(&BonkEncGUI::OnDriveChange, this);
-		notification->onDiscInsert.Connect(&BonkEncGUI::OnDiscInsert, this);
-		notification->onDiscRemove.Connect(&BonkEncGUI::OnDiscRemove, this);
+		notification->onDriveChange.Connect(&freacGUI::OnDriveChange, this);
+		notification->onDiscInsert.Connect(&freacGUI::OnDiscInsert, this);
+		notification->onDiscRemove.Connect(&freacGUI::OnDiscRemove, this);
 	}
 
 	/* Set interface language.
@@ -135,13 +135,13 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, wndSize.cx);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, wndSize.cy);
 
-	mainWnd			= new Window(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version), wndPos, wndSize);
+	mainWnd			= new Window(String(freac::appLongName).Append(" ").Append(freac::version), wndPos, wndSize);
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar();
 	mainWnd_menubar		= new Menubar();
 	mainWnd_iconbar		= new Menubar();
-	mainWnd_statusbar	= new Statusbar(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - ").Append(BonkEnc::copyright));
+	mainWnd_statusbar	= new Statusbar(String(freac::appLongName).Append(" ").Append(freac::version).Append(" - ").Append(freac::copyright));
 
 	menu_file		= new PopupMenu();
 	menu_addsubmenu		= new PopupMenu();
@@ -161,7 +161,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 
 	menu_help		= new PopupMenu();
 
-	hyperlink		= new Hyperlink(String(BonkEnc::website).Replace("http://", NIL).Replace("/", NIL), NIL, BonkEnc::website, Point(91, -22));
+	hyperlink		= new Hyperlink(String(freac::website).Replace("http://", NIL).Replace("/", NIL), NIL, freac::website, Point(91, -22));
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
 	hyperlink->SetX(hyperlink->GetUnscaledTextWidth() + 4);
 	hyperlink->SetIndependent(True);
@@ -237,14 +237,14 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
 #endif
 
-	mainWnd->onChangePosition.Connect(&BonkEncGUI::OnChangePosition, this);
-	mainWnd->onChangeSize.Connect(&BonkEncGUI::OnChangeSize, this);
+	mainWnd->onChangePosition.Connect(&freacGUI::OnChangePosition, this);
+	mainWnd->onChangeSize.Connect(&freacGUI::OnChangeSize, this);
 
-	mainWnd->onEvent.Connect(&BonkEncGUI::MessageProc, this);
+	mainWnd->onEvent.Connect(&freacGUI::MessageProc, this);
 
-	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault)) mainWnd->onShow.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault)) mainWnd->onShow.Connect(&freacGUI::ShowTipOfTheDay, this);
 
-	mainWnd->doClose.Connect(&BonkEncGUI::ExitProc, this);
+	mainWnd->doClose.Connect(&freacGUI::ExitProc, this);
 	mainWnd->SetMinimumSize(Size(600, 400 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0)));
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowMaximizedID, Config::SettingsWindowMaximizedDefault)) mainWnd->Maximize();
@@ -260,7 +260,7 @@ BonkEnc::BonkEncGUI::BonkEncGUI()
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, Config::SettingsCheckForUpdatesDefault)) (new JobCheckForUpdates(True))->Schedule();
 }
 
-BonkEnc::BonkEncGUI::~BonkEncGUI()
+freac::freacGUI::~freacGUI()
 {
 	/* Free Notification instance.
 	 */
@@ -304,7 +304,7 @@ BonkEnc::BonkEncGUI::~BonkEncGUI()
 	DeleteObject(menu_help);
 }
 
-Void BonkEnc::BonkEncGUI::InitExtensionComponents()
+Void freac::freacGUI::InitExtensionComponents()
 {
 	Registry	&boca = Registry::Get();
 
@@ -318,7 +318,7 @@ Void BonkEnc::BonkEncGUI::InitExtensionComponents()
 	}
 }
 
-Void BonkEnc::BonkEncGUI::FreeExtensionComponents()
+Void freac::freacGUI::FreeExtensionComponents()
 {
 	Registry	&boca = Registry::Get();
 
@@ -330,7 +330,7 @@ Void BonkEnc::BonkEncGUI::FreeExtensionComponents()
 	extensionComponents.RemoveAll();
 }
 
-Bool BonkEnc::BonkEncGUI::ExitProc()
+Bool freac::freacGUI::ExitProc()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -372,12 +372,12 @@ Bool BonkEnc::BonkEncGUI::ExitProc()
 	return True;
 }
 
-Void BonkEnc::BonkEncGUI::MessageProc(Int message, Int wParam, Int lParam)
+Void freac::freacGUI::MessageProc(Int message, Int wParam, Int lParam)
 {
 	notification->ProcessSystemMessage(message, wParam, lParam);
 }
 
-Void BonkEnc::BonkEncGUI::OnChangePosition(const Point &nPos)
+Void freac::freacGUI::OnChangePosition(const Point &nPos)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -385,14 +385,14 @@ Void BonkEnc::BonkEncGUI::OnChangePosition(const Point &nPos)
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, mainWnd->GetPosition().y);
 }
 
-Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
+Void freac::freacGUI::OnChangeSize(const Size &nSize)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, mainWnd->GetSize().cx);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, mainWnd->GetSize().cy);
 
-	mainWnd->SetStatusText(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" - ").Append(BonkEnc::copyright));
+	mainWnd->SetStatusText(String(freac::appLongName).Append(" ").Append(freac::version).Append(" - ").Append(freac::copyright));
 
 	Rect	 clientRect = mainWnd->GetClientRect();
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -400,21 +400,21 @@ Void BonkEnc::BonkEncGUI::OnChangeSize(const Size &nSize)
 	tabs_main->SetSize(clientSize - Size(12, 14));
 }
 
-Void BonkEnc::BonkEncGUI::Close()
+Void freac::freacGUI::Close()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::BonkEncGUI::About()
+Void freac::freacGUI::About()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("About");
 
-	QuickMessage(String(BonkEnc::appLongName).Append(" ").Append(BonkEnc::version).Append(" (").Append(BonkEnc::architecture).Append(")\n").Append(BonkEnc::copyright).Append("\n\n").Append(i18n->TranslateString("Translated by %1.").Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About %1").Replace("%1", BonkEnc::appName), Message::Buttons::Ok, (wchar_t *) IDI_ICON);
+	QuickMessage(String(freac::appLongName).Append(" ").Append(freac::version).Append(" (").Append(freac::architecture).Append(")\n").Append(freac::copyright).Append("\n\n").Append(i18n->TranslateString("Translated by %1.").Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About %1").Replace("%1", freac::appName), Message::Buttons::Ok, (wchar_t *) IDI_ICON);
 }
 
-Void BonkEnc::BonkEncGUI::ConfigureEncoder()
+Void freac::freacGUI::ConfigureEncoder()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 
@@ -443,7 +443,7 @@ Void BonkEnc::BonkEncGUI::ConfigureEncoder()
 	}
 }
 
-Void BonkEnc::BonkEncGUI::ConfigureSettings()
+Void freac::freacGUI::ConfigureSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -481,7 +481,7 @@ Void BonkEnc::BonkEncGUI::ConfigureSettings()
 	OnChangeConfiguration();
 }
 
-Void BonkEnc::BonkEncGUI::OnSelectConfiguration()
+Void freac::freacGUI::OnSelectConfiguration()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -492,7 +492,7 @@ Void BonkEnc::BonkEncGUI::OnSelectConfiguration()
 	OnChangeConfiguration();
 }
 
-Void BonkEnc::BonkEncGUI::OnChangeConfiguration()
+Void freac::freacGUI::OnChangeConfiguration()
 {
 	BoCA::Config	*config  = BoCA::Config::Get();
 	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
@@ -574,14 +574,14 @@ Void BonkEnc::BonkEncGUI::OnChangeConfiguration()
 	config->SaveSettings();
 }
 
-Void BonkEnc::BonkEncGUI::OnDriveChange()
+Void freac::freacGUI::OnDriveChange()
 {
 	/* Update menus to reflect drive change.
 	 */
 	FillMenus();
 }
 
-Void BonkEnc::BonkEncGUI::OnDiscInsert(Int drive)
+Void freac::freacGUI::OnDiscInsert(Int drive)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -597,12 +597,12 @@ Void BonkEnc::BonkEncGUI::OnDiscInsert(Int drive)
 	}
 }
 
-Void BonkEnc::BonkEncGUI::OnDiscRemove(Int drive)
+Void freac::freacGUI::OnDiscRemove(Int drive)
 {
 	(new JobRemoveDiscTracks(drive))->Schedule();
 }
 
-Void BonkEnc::BonkEncGUI::ReadCD(Bool autoCDRead)
+Void freac::freacGUI::ReadCD(Bool autoCDRead)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -624,7 +624,7 @@ Void BonkEnc::BonkEncGUI::ReadCD(Bool autoCDRead)
 
 		Job	*job = new JobAddTracks(urls, autoCDRead);
 
-		if (config->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault)) job->onFinish.Connect(&BonkEncGUI::Convert, this);
+		if (config->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault)) job->onFinish.Connect(&freacGUI::Convert, this);
 
 		job->Schedule();
 
@@ -632,7 +632,7 @@ Void BonkEnc::BonkEncGUI::ReadCD(Bool autoCDRead)
 	}
 }
 
-Void BonkEnc::BonkEncGUI::QueryCDDB()
+Void freac::freacGUI::QueryCDDB()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -776,7 +776,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDB()
 	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, remoteCDDBEnabled);
 }
 
-Void BonkEnc::BonkEncGUI::QueryCDDBLater()
+Void freac::freacGUI::QueryCDDBLater()
 {
 	/* Collect CDDB query strings.
 	 */
@@ -807,7 +807,7 @@ Void BonkEnc::BonkEncGUI::QueryCDDBLater()
 	}
 }
 
-Void BonkEnc::BonkEncGUI::SubmitCDDBData()
+Void freac::freacGUI::SubmitCDDBData()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -825,7 +825,7 @@ Void BonkEnc::BonkEncGUI::SubmitCDDBData()
 	DeleteObject(dlg);
 }
 
-Void BonkEnc::BonkEncGUI::ManageCDDBData()
+Void freac::freacGUI::ManageCDDBData()
 {
 	cddbManageDlg	*dlg = new cddbManageDlg();
 
@@ -834,7 +834,7 @@ Void BonkEnc::BonkEncGUI::ManageCDDBData()
 	DeleteObject(dlg);
 }
 
-Void BonkEnc::BonkEncGUI::ManageCDDBBatchData()
+Void freac::freacGUI::ManageCDDBBatchData()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -852,7 +852,7 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchData()
 	DeleteObject(dlg);
 }
 
-Void BonkEnc::BonkEncGUI::ManageCDDBBatchQueries()
+Void freac::freacGUI::ManageCDDBBatchQueries()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -870,7 +870,7 @@ Void BonkEnc::BonkEncGUI::ManageCDDBBatchQueries()
 	DeleteObject(dlg);
 }
 
-Bool BonkEnc::BonkEncGUI::SetLanguage()
+Bool freac::freacGUI::SetLanguage()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -897,7 +897,7 @@ Bool BonkEnc::BonkEncGUI::SetLanguage()
 	return true;
 }
 
-Void BonkEnc::BonkEncGUI::FillMenus()
+Void freac::freacGUI::FillMenus()
 {
 	BoCA::Config	*config	 = BoCA::Config::Get();
 	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
@@ -928,14 +928,14 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	menu_help->RemoveAllEntries();
 
-	MenuEntry	*entry	       = NIL;
-	Config		*bonkEncConfig = Config::Get();
+	MenuEntry	*entry	     = NIL;
+	Config		*freacConfig = Config::Get();
 
 	i18n->SetContext("Menu::File");
 
-	menu_file->AddEntry(i18n->TranslateString("Add"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:21")), menu_addsubmenu);
+	menu_file->AddEntry(i18n->TranslateString("Add"), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:21")), menu_addsubmenu);
 
-	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:24")));
+	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:24")));
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	entry->SetShortcut(SC_CONTROL, Keyboard::KeyR, mainWnd);
 
@@ -949,14 +949,14 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	menu_file->AddEntry();
 
-	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:25")));
+	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:25")));
 	entry->onAction.Connect(&JobList::StartJobRemoveAllTracks, joblist);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyR, mainWnd);
 
 	menu_file->AddEntry();
 
-	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:36")));
-	entry->onAction.Connect(&BonkEncGUI::Close, this);
+	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:36")));
+	entry->onAction.Connect(&freacGUI::Close, this);
 
 #ifdef __WIN32__
 	entry->SetShortcut(SC_ALT, Keyboard::KeyF4, mainWnd);
@@ -964,7 +964,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	entry->SetShortcut(SC_CONTROL, Keyboard::KeyQ, mainWnd);
 #endif
 
-	entry = menu_addsubmenu->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Audio file(s)")), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:22")));
+	entry = menu_addsubmenu->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Audio file(s)")), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:22")));
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetShortcut(SC_CONTROL, Keyboard::KeyF, mainWnd);
 
@@ -977,7 +977,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 			const Device	&device = info->GetNthDeviceInfo(i);
 			String		 name	= String(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision).Trim();
 
-			menu_drives->AddEntry(name, NIL, NIL, NIL, &clicked_drive, i)->onAction.Connect(&BonkEncGUI::ReadCD, this);
+			menu_drives->AddEntry(name, NIL, NIL, NIL, &clicked_drive, i)->onAction.Connect(&freacGUI::ReadCD, this);
 			menu_seldrive->AddEntry(name, NIL, NIL, NIL, &config->GetPersistentIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault), i);
 		}
 
@@ -986,13 +986,13 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	if (menu_drives->GetNOfEntries() >= 1)
 	{
-		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:23")));
-		entry->onAction.Connect(&BonkEncGUI::ReadCD, this);
+		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:23")));
+		entry->onAction.Connect(&freacGUI::ReadCD, this);
 		entry->SetShortcut(SC_CONTROL, Keyboard::KeyD, mainWnd);
 	}
 
-	menu_files->AddEntry(i18n->AddEllipsis(i18n->TranslateString("By pattern")))->onAction.Connect(&BonkEncGUI::AddFilesByPattern, this);
-	menu_files->AddEntry(i18n->AddEllipsis(i18n->TranslateString("From folder")))->onAction.Connect(&BonkEncGUI::AddFilesFromDirectory, this);
+	menu_files->AddEntry(i18n->AddEllipsis(i18n->TranslateString("By pattern")))->onAction.Connect(&freacGUI::AddFilesByPattern, this);
+	menu_files->AddEntry(i18n->AddEllipsis(i18n->TranslateString("From folder")))->onAction.Connect(&freacGUI::AddFilesFromDirectory, this);
 
 	menu_addsubmenu->AddEntry();
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)"), NIL, menu_files);
@@ -1004,50 +1004,50 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	i18n->SetContext("Menu::Database");
 
-	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:26")));
-	entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
+	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:26")));
+	entry->onAction.Connect(&freacGUI::QueryCDDB, this);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyQ, mainWnd);
 
-	entry = menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Submit CDDB data")), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:27")));
-	entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
+	entry = menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Submit CDDB data")), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:27")));
+	entry->onAction.Connect(&freacGUI::SubmitCDDBData, this);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyS, mainWnd);
 
 	menu_database->AddEntry();
 
-	menu_database->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
+	menu_database->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&freacGUI::QueryCDDBLater, this);
 
 	menu_database->AddEntry();
 
-	menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show queued CDDB entries")))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchData, this);
-	menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show queued CDDB queries")))->onAction.Connect(&BonkEncGUI::ManageCDDBBatchQueries, this);
+	menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show queued CDDB entries")))->onAction.Connect(&freacGUI::ManageCDDBBatchData, this);
+	menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show queued CDDB queries")))->onAction.Connect(&freacGUI::ManageCDDBBatchQueries, this);
 
 	menu_database->AddEntry();
 
 	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault));
-	menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Manage CDDB cache entries")))->onAction.Connect(&BonkEncGUI::ManageCDDBData, this);
+	menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Manage CDDB cache entries")))->onAction.Connect(&freacGUI::ManageCDDBData, this);
 
 	menu_database->AddEntry();
 
 	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault));
 
-	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:26")))->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
-	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&BonkEncGUI::QueryCDDBLater, this);
+	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:26")))->onAction.Connect(&freacGUI::QueryCDDB, this);
+	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&freacGUI::QueryCDDBLater, this);
 
 	i18n->SetContext("Menu::Options");
 
-	entry = menu_options->AddEntry(i18n->AddEllipsis(i18n->TranslateString("General settings")), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:28")));
-	entry->onAction.Connect(&BonkEncGUI::ConfigureSettings, this);
+	entry = menu_options->AddEntry(i18n->AddEllipsis(i18n->TranslateString("General settings")), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:28")));
+	entry->onAction.Connect(&freacGUI::ConfigureSettings, this);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyC, mainWnd);
 
-	entry = menu_options->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Configure selected encoder")), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:29")));
-	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
+	entry = menu_options->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Configure selected encoder")), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:29")));
+	entry->onAction.Connect(&freacGUI::ConfigureEncoder, this);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyE, mainWnd);
 
 	if (config->GetNOfConfigurations() > 1)
 	{
 		for (Int i = 0; i < config->GetNOfConfigurations(); i++)
 		{
-			menu_configurations->AddEntry(config->GetNthConfigurationName(i) == "default" ? i18n->TranslateString("Default configuration") : config->GetNthConfigurationName(i), NIL, NIL, NIL, &clicked_configuration, i)->onAction.Connect(&BonkEncGUI::OnSelectConfiguration, this);
+			menu_configurations->AddEntry(config->GetNthConfigurationName(i) == "default" ? i18n->TranslateString("Default configuration") : config->GetNthConfigurationName(i), NIL, NIL, NIL, &clicked_configuration, i)->onAction.Connect(&freacGUI::OnSelectConfiguration, this);
 
 			if (config->GetNthConfigurationName(i) == config->GetConfigurationName()) clicked_configuration = i;
 		}
@@ -1059,23 +1059,23 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	if (menu_seldrive->GetNOfEntries() > 1)
 	{
 		menu_options->AddEntry();
-		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:30")), menu_seldrive);
+		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:30")), menu_seldrive);
 	}
 
 	i18n->SetContext("Menu::Encode");
 
-	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:31")));
-	entry->onAction.Connect(&BonkEncGUI::Convert, this);
+	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:31")));
+	entry->onAction.Connect(&freacGUI::Convert, this);
 	entry->SetShortcut(SC_CONTROL, Keyboard::KeyE, mainWnd);
 
-	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:32")))->onAction.Connect(&BonkEncGUI::PauseResumeEncoding, this);
-	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:33")))->onAction.Connect(&BonkEncGUI::StopEncoding, this);
+	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:32")))->onAction.Connect(&freacGUI::PauseResumeEncoding, this);
+	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:33")))->onAction.Connect(&freacGUI::StopEncoding, this);
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 	{
 		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_ENCODER) continue;
 
-		menu_encoders->AddEntry(boca.GetComponentName(i), NIL, NIL, NIL, &clicked_encoder, i)->onAction.Connect(&BonkEncGUI::Convert, this);
+		menu_encoders->AddEntry(boca.GetComponentName(i), NIL, NIL, NIL, &clicked_encoder, i)->onAction.Connect(&freacGUI::Convert, this);
 	}
 
 	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0)
@@ -1088,13 +1088,13 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	menu_encoder_options->AddEntry();
 
-	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file folder if possible"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault))->onAction.Connect(&BonkEncGUI::ToggleUseInputDirectory, this);
+	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to input file folder if possible"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault))->onAction.Connect(&freacGUI::ToggleUseInputDirectory, this);
 
 	allowOverwriteMenuEntry = menu_encoder_options->AddEntry(i18n->TranslateString("Allow overwriting input file"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault));
 
 	menu_encoder_options->AddEntry();
 
-	menu_encoder_options->AddEntry(i18n->TranslateString("Delete original files after encoding"), NIL, NIL, &currentConfig->deleteAfterEncoding)->onAction.Connect(&BonkEncGUI::ConfirmDeleteAfterEncoding, this);
+	menu_encoder_options->AddEntry(i18n->TranslateString("Delete original files after encoding"), NIL, NIL, &currentConfig->deleteAfterEncoding)->onAction.Connect(&freacGUI::ConfirmDeleteAfterEncoding, this);
 
 	menu_encoder_options->AddEntry();
 
@@ -1102,31 +1102,31 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	menu_encode->AddEntry();
 
-	menu_encode->AddEntry(i18n->TranslateString("Encoder options"), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:29")), menu_encoder_options);
+	menu_encode->AddEntry(i18n->TranslateString("Encoder options"), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:29")), menu_encoder_options);
 
 	ToggleUseInputDirectory();
 
 	i18n->SetContext("Menu::Help");
 
-	entry = menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Help topics")), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:34")));
-	entry->onAction.Connect(&BonkEncGUI::ShowHelp, this);
+	entry = menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Help topics")), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:34")));
+	entry->onAction.Connect(&freacGUI::ShowHelp, this);
 	entry->SetShortcut(0, Keyboard::KeyF1, mainWnd);
 
 	menu_help->AddEntry();
 
 	entry = menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show Tip of the Day")));
-	entry->onAction.Connect(&BonkEncGUI::ShowTipOfTheDay, this);
+	entry->onAction.Connect(&freacGUI::ShowTipOfTheDay, this);
 	entry->SetShortcut(0, Keyboard::KeyF10, mainWnd);
 
 	if (currentConfig->enable_eUpdate)
 	{
 		menu_help->AddEntry();
-		menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Check for updates now")))->onAction.Connect(&BonkEncGUI::CheckForUpdates, this);
+		menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Check for updates now")))->onAction.Connect(&freacGUI::CheckForUpdates, this);
 		menu_help->AddEntry(i18n->TranslateString("Check for updates at startup"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, Config::SettingsCheckForUpdatesDefault));
 	}
 
 	menu_help->AddEntry();
-	menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("About %1").Replace("%1", BonkEnc::appName)), ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:35")))->onAction.Connect(&BonkEncGUI::About, this);
+	menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("About %1").Replace("%1", freac::appName)), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:35")))->onAction.Connect(&freacGUI::About, this);
 
 	i18n->SetContext("Menu");
 
@@ -1147,22 +1147,22 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 
 	mainWnd_iconbar->RemoveAllEntries();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:1")), menu_files);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:1")), menu_files);
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Add audio file(s) to the joblist"));
 
 	if (menu_drives->GetNOfEntries() >= 1)
 	{
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:2")), menu_drives->GetNOfEntries() > 1 ? menu_drives : NIL);
-		entry->onAction.Connect(&BonkEncGUI::ReadCD, this);
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:2")), menu_drives->GetNOfEntries() > 1 ? menu_drives : NIL);
+		entry->onAction.Connect(&freacGUI::ReadCD, this);
 		entry->SetTooltipText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:3")));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:3")));
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Remove the selected entry from the joblist"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:4")));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:4")));
 	entry->onAction.Connect(&JobList::StartJobRemoveAllTracks, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Clear the entire joblist"));
 
@@ -1170,37 +1170,37 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	{
 		mainWnd_iconbar->AddEntry();
 
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:5")), menu_database_query);
-		entry->onAction.Connect(&BonkEncGUI::QueryCDDB, this);
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:5")), menu_database_query);
+		entry->onAction.Connect(&freacGUI::QueryCDDB, this);
 		entry->SetTooltipText(i18n->TranslateString("Query CDDB database"));
 
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:6")));
-		entry->onAction.Connect(&BonkEncGUI::SubmitCDDBData, this);
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:6")));
+		entry->onAction.Connect(&freacGUI::SubmitCDDBData, this);
 		entry->SetTooltipText(i18n->AddEllipsis(i18n->TranslateString("Submit CDDB data")));
 	}
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:7")), config->GetNOfConfigurations() > 1 ? menu_configurations : NIL);
-	entry->onAction.Connect(&BonkEncGUI::ConfigureSettings, this);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:7")), config->GetNOfConfigurations() > 1 ? menu_configurations : NIL);
+	entry->onAction.Connect(&freacGUI::ConfigureSettings, this);
 	entry->SetTooltipText(i18n->TranslateString("Configure general settings"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:8")));
-	entry->onAction.Connect(&BonkEncGUI::ConfigureEncoder, this);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:8")));
+	entry->onAction.Connect(&freacGUI::ConfigureEncoder, this);
 	entry->SetTooltipText(i18n->TranslateString("Configure the selected audio encoder"));
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:9")), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
-	entry->onAction.Connect(&BonkEncGUI::Convert, this);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:9")), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
+	entry->onAction.Connect(&freacGUI::Convert, this);
 	entry->SetTooltipText(i18n->TranslateString("Start the encoding process"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:10")));
-	entry->onAction.Connect(&BonkEncGUI::PauseResumeEncoding, this);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:10")));
+	entry->onAction.Connect(&freacGUI::PauseResumeEncoding, this);
 	entry->SetTooltipText(i18n->TranslateString("Pause/resume encoding"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:11")));
-	entry->onAction.Connect(&BonkEncGUI::StopEncoding, this);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:11")));
+	entry->onAction.Connect(&freacGUI::StopEncoding, this);
 	entry->SetTooltipText(i18n->TranslateString("Stop encoding"));
 
 	mainWnd_menubar->Show();
@@ -1212,7 +1212,7 @@ Void BonkEnc::BonkEncGUI::FillMenus()
 	surface->EndPaint();
 }
 
-Void BonkEnc::BonkEncGUI::Convert()
+Void freac::freacGUI::Convert()
 {
 	/* Resume paused conversions if any.
 	 */
@@ -1262,7 +1262,7 @@ Void BonkEnc::BonkEncGUI::Convert()
 	previousTicks = S::System::System::Clock();
 }
 
-Void BonkEnc::BonkEncGUI::PauseResumeEncoding()
+Void freac::freacGUI::PauseResumeEncoding()
 {
 	if (!JobConvert::IsConverting()) return;
 
@@ -1270,12 +1270,12 @@ Void BonkEnc::BonkEncGUI::PauseResumeEncoding()
 	else			    JobConvert::Pause();
 }
 
-Void BonkEnc::BonkEncGUI::StopEncoding()
+Void freac::freacGUI::StopEncoding()
 {
 	JobConvert::Stop();
 }
 
-Void BonkEnc::BonkEncGUI::AddFilesByPattern()
+Void freac::freacGUI::AddFilesByPattern()
 {
 	AddPatternDialog	*dialog = new AddPatternDialog();
 
@@ -1284,7 +1284,7 @@ Void BonkEnc::BonkEncGUI::AddFilesByPattern()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::BonkEncGUI::AddFilesFromDirectory()
+Void freac::freacGUI::AddFilesFromDirectory()
 {
 	AddDirectoryDialog	*dialog = new AddDirectoryDialog();
 
@@ -1300,7 +1300,7 @@ Void BonkEnc::BonkEncGUI::AddFilesFromDirectory()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::BonkEncGUI::ToggleUseInputDirectory()
+Void freac::freacGUI::ToggleUseInputDirectory()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -1308,14 +1308,14 @@ Void BonkEnc::BonkEncGUI::ToggleUseInputDirectory()
 	else																	    allowOverwriteMenuEntry->Deactivate();
 }
 
-Void BonkEnc::BonkEncGUI::ToggleEncodeToSingleFile()
+Void freac::freacGUI::ToggleEncodeToSingleFile()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault)) config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, True);
 }
 
-Void BonkEnc::BonkEncGUI::ConfirmDeleteAfterEncoding()
+Void freac::freacGUI::ConfirmDeleteAfterEncoding()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -1327,7 +1327,7 @@ Void BonkEnc::BonkEncGUI::ConfirmDeleteAfterEncoding()
 	}
 }
 
-Void BonkEnc::BonkEncGUI::ShowHelp()
+Void freac::freacGUI::ShowHelp()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -1336,7 +1336,7 @@ Void BonkEnc::BonkEncGUI::ShowHelp()
 	S::System::System::OpenURL(String("file://").Append(GUI::Application::GetApplicationDirectory()).Append(Config::Get()->documentationPath).Append("manual/").Append(i18n->TranslateString("index_en.html")));
 }
 
-Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
+Void freac::freacGUI::ShowTipOfTheDay()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
@@ -1346,17 +1346,17 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 	Bool		 showTips = config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault);
 	TipOfTheDay	*dialog = new TipOfTheDay(&showTips);
 
-	dialog->AddTip(i18n->TranslateString("%1 is available in %2 languages. If your language is\nnot available, you can easily translate %1 using the\n\'smooth Translator\' application.").Replace("%1", BonkEnc::appName).Replace("%2", String::FromInt(Math::Max(36, i18n->GetNOfLanguages()))));
-	dialog->AddTip(i18n->TranslateString("%1 comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the %1 website: %2").Replace("%1", BonkEnc::appName).Replace("%2", BonkEnc::website));
+	dialog->AddTip(i18n->TranslateString("%1 is available in %2 languages. If your language is\nnot available, you can easily translate %1 using the\n\'smooth Translator\' application.").Replace("%1", freac::appName).Replace("%2", String::FromInt(Math::Max(36, i18n->GetNOfLanguages()))));
+	dialog->AddTip(i18n->TranslateString("%1 comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the %1 website: %2").Replace("%1", freac::appName).Replace("%2", freac::website));
 
 #ifdef __WIN32__
-	dialog->AddTip(i18n->TranslateString("%1 can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the %1/plugins directory to\nenable %1 to read these formats.").Replace("%1", BonkEnc::appName));
+	dialog->AddTip(i18n->TranslateString("%1 can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the %1/plugins directory to\nenable %1 to read these formats.").Replace("%1", freac::appName));
 #endif
 
-	dialog->AddTip(i18n->TranslateString("With %1 you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with %1.").Replace("%1", BonkEnc::appName));
-	dialog->AddTip(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the Ripper tab of %1's configuration\ndialog. If that does not help, try using one of the Paranoia modes.").Replace("%1", BonkEnc::appName));
-	dialog->AddTip(i18n->TranslateString("Do you have any suggestions on how to improve %1?\nYou can submit any ideas through the Tracker on the %1\nSourceForge project page - %2\nor send an eMail to %3.").Replace("%1", BonkEnc::appName).Replace("%2", "http://sf.net/projects/bonkenc").Replace("%3", "suggestions@freac.org"));
-	dialog->AddTip(i18n->TranslateString("Do you like %1? %1 is available for free, but you can\nhelp fund the development by donating to the %1 project.\nYou can send money to %2 through PayPal.\nSee %3 for more details.").Replace("%1", BonkEnc::appName).Replace("%2", "donate@freac.org").Replace("%3", String(BonkEnc::website).Append("donating.php")));
+	dialog->AddTip(i18n->TranslateString("With %1 you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with %1.").Replace("%1", freac::appName));
+	dialog->AddTip(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the Ripper tab of %1's configuration\ndialog. If that does not help, try using one of the Paranoia modes.").Replace("%1", freac::appName));
+	dialog->AddTip(i18n->TranslateString("Do you have any suggestions on how to improve %1?\nYou can submit any ideas through the Tracker on the %1\nSourceForge project page - %2\nor send an eMail to %3.").Replace("%1", freac::appName).Replace("%2", "http://sf.net/projects/bonkenc").Replace("%3", "suggestions@freac.org"));
+	dialog->AddTip(i18n->TranslateString("Do you like %1? %1 is available for free, but you can\nhelp fund the development by donating to the %1 project.\nYou can send money to %2 through PayPal.\nSee %3 for more details.").Replace("%1", freac::appName).Replace("%2", "donate@freac.org").Replace("%3", String(freac::website).Append("donating.php")));
 
 	dialog->SetMode(TIP_ORDERED, config->GetIntValue(Config::CategorySettingsID, Config::SettingsNextTipID, Config::SettingsNextTipDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault));
 
@@ -1368,7 +1368,7 @@ Void BonkEnc::BonkEncGUI::ShowTipOfTheDay()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::BonkEncGUI::CheckForUpdates()
+Void freac::freacGUI::CheckForUpdates()
 {
 	(new JobCheckForUpdates(False))->Schedule();
 }

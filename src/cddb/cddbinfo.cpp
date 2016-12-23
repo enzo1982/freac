@@ -13,7 +13,7 @@
 #include <cddb/cddbinfo.h>
 #include <cddb/cddb.h>
 
-BonkEnc::CDDBInfo::CDDBInfo()
+freac::CDDBInfo::CDDBInfo()
 {
 	charset	   = "UTF-8";
 
@@ -25,38 +25,38 @@ BonkEnc::CDDBInfo::CDDBInfo()
 	dYear	   = 0;
 }
 
-BonkEnc::CDDBInfo::CDDBInfo(int nil)
+freac::CDDBInfo::CDDBInfo(int nil)
 {
 	*this = nil;
 }
 
-BonkEnc::CDDBInfo::CDDBInfo(const CDDBInfo &oInfo)
+freac::CDDBInfo::CDDBInfo(const CDDBInfo &oInfo)
 {
 	*this = oInfo;
 }
 
-bool BonkEnc::CDDBInfo::operator ==(const CDDBInfo &oInfo) const
+bool freac::CDDBInfo::operator ==(const CDDBInfo &oInfo) const
 {
 	return discID	== oInfo.discID &&
 	       category == oInfo.category;
 }
 
-bool BonkEnc::CDDBInfo::operator !=(const CDDBInfo &oInfo) const
+bool freac::CDDBInfo::operator !=(const CDDBInfo &oInfo) const
 {
 	return !(*this == oInfo);
 }
 
-bool BonkEnc::CDDBInfo::operator ==(int nil) const
+bool freac::CDDBInfo::operator ==(int nil) const
 {
 	return discID == 0 || discID == -1;
 }
 
-bool BonkEnc::CDDBInfo::operator !=(int nil) const
+bool freac::CDDBInfo::operator !=(int nil) const
 {
 	return !(*this == nil);
 }
 
-BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(int nil)
+freac::CDDBInfo &freac::CDDBInfo::operator =(int nil)
 {
 	discID	   = -1;
 	revision   = -1;
@@ -78,7 +78,7 @@ BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(int nil)
 	return *this;
 }
 
-BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(const CDDBInfo &oInfo)
+freac::CDDBInfo &freac::CDDBInfo::operator =(const CDDBInfo &oInfo)
 {
 	category  = oInfo.category;
 	discID	  = oInfo.discID;
@@ -113,7 +113,7 @@ BonkEnc::CDDBInfo &BonkEnc::CDDBInfo::operator =(const CDDBInfo &oInfo)
 	return *this;
 }
 
-Bool BonkEnc::CDDBInfo::UpdateFromQueryString(const String &queryString)
+Bool freac::CDDBInfo::UpdateFromQueryString(const String &queryString)
 {
 	/* Update track offsets and disc ID from query string.
 	 */

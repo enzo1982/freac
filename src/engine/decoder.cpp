@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -19,10 +19,10 @@ using namespace smooth::IO;
 using namespace BoCA;
 using namespace BoCA::AS;
 
-Array<Threads::Mutex *>	 BonkEnc::Decoder::mutexes;
-Threads::Mutex		 BonkEnc::Decoder::managementMutex;
+Array<Threads::Mutex *>	 freac::Decoder::mutexes;
+Threads::Mutex		 freac::Decoder::managementMutex;
 
-BonkEnc::Decoder::Decoder(const BoCA::Config *iConfiguration)
+freac::Decoder::Decoder(const BoCA::Config *iConfiguration)
 {
 	configuration = iConfiguration;
 
@@ -34,12 +34,12 @@ BonkEnc::Decoder::Decoder(const BoCA::Config *iConfiguration)
 	sampleOffset  = 0;
 }
 
-BonkEnc::Decoder::~Decoder()
+freac::Decoder::~Decoder()
 {
 	Destroy();
 }
 
-Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
+Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 {
 	static DriverZero	 zero_in;
 
@@ -137,7 +137,7 @@ Bool BonkEnc::Decoder::Create(const String &nFileName, const Track &track)
 	return True;
 }
 
-Bool BonkEnc::Decoder::Destroy()
+Bool freac::Decoder::Destroy()
 {
 	if (decoder == NIL || stream == NIL) return False;
 
@@ -162,12 +162,12 @@ Bool BonkEnc::Decoder::Destroy()
 	return True;
 }
 
-Bool BonkEnc::Decoder::GetStreamInfo(Track &track) const
+Bool freac::Decoder::GetStreamInfo(Track &track) const
 {
 	return decoder->GetStreamInfo(fileName, track);
 }
 
-Int BonkEnc::Decoder::Read(Buffer<UnsignedByte> &buffer)
+Int freac::Decoder::Read(Buffer<UnsignedByte> &buffer)
 {
 	if (decoder == NIL || stream == NIL) return 0;
 
@@ -195,27 +195,27 @@ Int BonkEnc::Decoder::Read(Buffer<UnsignedByte> &buffer)
 	return bytes;
 }
 
-Bool BonkEnc::Decoder::Seek(Int64 sample)
+Bool freac::Decoder::Seek(Int64 sample)
 {
 	return decoder->Seek(sampleOffset + sample);
 }
 
-Int64 BonkEnc::Decoder::GetInBytes() const
+Int64 freac::Decoder::GetInBytes() const
 {
 	return decoder->GetInBytes();
 }
 
-String BonkEnc::Decoder::GetDecoderName() const
+String freac::Decoder::GetDecoderName() const
 {
 	return decoder->GetName();
 }
 
-String BonkEnc::Decoder::GetMD5Checksum()
+String freac::Decoder::GetMD5Checksum()
 {
 	return md5.Finish();
 }
 
-Void BonkEnc::Decoder::FreeLockObjects()
+Void freac::Decoder::FreeLockObjects()
 {
 	foreach (Threads::Mutex *mutex, mutexes) delete mutex;
 

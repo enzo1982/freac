@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -19,7 +19,7 @@
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
+freac::AddDirectoryDialog::AddDirectoryDialog()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -67,7 +67,7 @@ BonkEnc::AddDirectoryDialog::AddDirectoryDialog()
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::AddDirectoryDialog::~AddDirectoryDialog()
+freac::AddDirectoryDialog::~AddDirectoryDialog()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -80,39 +80,39 @@ BonkEnc::AddDirectoryDialog::~AddDirectoryDialog()
 	DeleteObject(btn_cancel);
 }
 
-const Error &BonkEnc::AddDirectoryDialog::ShowDialog()
+const Error &freac::AddDirectoryDialog::ShowDialog()
 {
 	mainWnd->WaitUntilClosed();
 
 	return error;
 }
 
-String BonkEnc::AddDirectoryDialog::GetDirectory()
+String freac::AddDirectoryDialog::GetDirectory()
 {
 	return edit_directory->GetText();
 }
 
-Void BonkEnc::AddDirectoryDialog::OK()
+Void freac::AddDirectoryDialog::OK()
 {
 	BoCA::Config::Get()->SetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, edit_directory->GetText());
 
 	mainWnd->Close();
 }
 
-Void BonkEnc::AddDirectoryDialog::Cancel()
+Void freac::AddDirectoryDialog::Cancel()
 {
 	error = Error();
 
 	mainWnd->Close();
 }
 
-Void BonkEnc::AddDirectoryDialog::OnChangeSize(const Size &nSize)
+Void freac::AddDirectoryDialog::OnChangeSize(const Size &nSize)
 {
 	group_directory->SetWidth(nSize.cx - 14);
 	edit_directory->SetWidth(nSize.cx - text_directory->GetUnscaledTextWidth() - 127);
 }
 
-Void BonkEnc::AddDirectoryDialog::Browse()
+Void freac::AddDirectoryDialog::Browse()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 

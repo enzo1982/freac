@@ -19,17 +19,17 @@
 #include <dialogs/cddb/query.h>
 #include <dialogs/error.h>
 
-BonkEnc::CDDBBatch::CDDBBatch()
+freac::CDDBBatch::CDDBBatch()
 {
 	ReadEntries();
 }
 
-BonkEnc::CDDBBatch::~CDDBBatch()
+freac::CDDBBatch::~CDDBBatch()
 {
 	SaveEntries();
 }
 
-Bool BonkEnc::CDDBBatch::ReadEntries()
+Bool freac::CDDBBatch::ReadEntries()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -74,7 +74,7 @@ Bool BonkEnc::CDDBBatch::ReadEntries()
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::ReadEntriesXML(XML::Document *document)
+Bool freac::CDDBBatch::ReadEntriesXML(XML::Document *document)
 {
 	XML::Node	*root = document->GetRootNode();
 
@@ -119,7 +119,7 @@ Bool BonkEnc::CDDBBatch::ReadEntriesXML(XML::Document *document)
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::SaveEntries()
+Bool freac::CDDBBatch::SaveEntries()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -184,7 +184,7 @@ Bool BonkEnc::CDDBBatch::SaveEntries()
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::AddQuery(const String &query)
+Bool freac::CDDBBatch::AddQuery(const String &query)
 {
 	for (Int i = 0; i < queries.Length(); i++)
 	{
@@ -196,14 +196,14 @@ Bool BonkEnc::CDDBBatch::AddQuery(const String &query)
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::DeleteQuery(Int n)
+Bool freac::CDDBBatch::DeleteQuery(Int n)
 {
 	queries.Remove(queries.GetNthIndex(n));
 
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &oCddbInfo)
+Bool freac::CDDBBatch::AddSubmit(const CDDBInfo &oCddbInfo)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -252,7 +252,7 @@ Bool BonkEnc::CDDBBatch::AddSubmit(const CDDBInfo &oCddbInfo)
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::DeleteSubmit(const CDDBInfo &cddbInfo)
+Bool freac::CDDBBatch::DeleteSubmit(const CDDBInfo &cddbInfo)
 {
 	for (Int i = 0; i < submits.Length(); i++)
 	{
@@ -267,7 +267,7 @@ Bool BonkEnc::CDDBBatch::DeleteSubmit(const CDDBInfo &cddbInfo)
 	return True;
 }
 
-Int BonkEnc::CDDBBatch::Query(Int n)
+Int freac::CDDBBatch::Query(Int n)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -325,7 +325,7 @@ Int BonkEnc::CDDBBatch::Query(Int n)
 	return QUERY_RESULT_ERROR;
 }
 
-Bool BonkEnc::CDDBBatch::QueryAll()
+Bool freac::CDDBBatch::QueryAll()
 {
 	/* Run all scheduled queries.
 	 */
@@ -351,7 +351,7 @@ Bool BonkEnc::CDDBBatch::QueryAll()
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &cddbInfo)
+Bool freac::CDDBBatch::Submit(const CDDBInfo &cddbInfo)
 {
 	/* Submit and delete entry if successful.
 	 */
@@ -373,7 +373,7 @@ Bool BonkEnc::CDDBBatch::Submit(const CDDBInfo &cddbInfo)
 	return True;
 }
 
-Bool BonkEnc::CDDBBatch::SubmitAll()
+Bool freac::CDDBBatch::SubmitAll()
 {
 	while (submits.Length() > 0)
 	{

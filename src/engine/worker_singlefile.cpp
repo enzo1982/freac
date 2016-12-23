@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -17,17 +17,17 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::ConvertWorkerSingleFile::ConvertWorkerSingleFile(const BoCA::Config *iConfiguration, Encoder *iEncoder) : ConvertWorker(iConfiguration)
+freac::ConvertWorkerSingleFile::ConvertWorkerSingleFile(const BoCA::Config *iConfiguration, Encoder *iEncoder) : ConvertWorker(iConfiguration)
 {
 	encoder	       = iEncoder;
 	encodedSamples = 0;
 }
 
-BonkEnc::ConvertWorkerSingleFile::~ConvertWorkerSingleFile()
+freac::ConvertWorkerSingleFile::~ConvertWorkerSingleFile()
 {
 }
 
-Int BonkEnc::ConvertWorkerSingleFile::Convert()
+Int freac::ConvertWorkerSingleFile::Convert()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 

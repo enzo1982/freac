@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -19,7 +19,7 @@
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::AddPatternDialog::AddPatternDialog()
+freac::AddPatternDialog::AddPatternDialog()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -77,7 +77,7 @@ BonkEnc::AddPatternDialog::AddPatternDialog()
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::AddPatternDialog::~AddPatternDialog()
+freac::AddPatternDialog::~AddPatternDialog()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -93,29 +93,29 @@ BonkEnc::AddPatternDialog::~AddPatternDialog()
 	DeleteObject(btn_cancel);
 }
 
-const Error &BonkEnc::AddPatternDialog::ShowDialog()
+const Error &freac::AddPatternDialog::ShowDialog()
 {
 	mainWnd->WaitUntilClosed();
 
 	return error;
 }
 
-String BonkEnc::AddPatternDialog::GetDirectory()
+String freac::AddPatternDialog::GetDirectory()
 {
 	return edit_directory->GetText();
 }
 
-String BonkEnc::AddPatternDialog::GetPattern()
+String freac::AddPatternDialog::GetPattern()
 {
 	return edit_pattern->GetText();
 }
 
-Bool BonkEnc::AddPatternDialog::GetSearchSubFolders()
+Bool freac::AddPatternDialog::GetSearchSubFolders()
 {
 	return check_subfolders->IsChecked();
 }
 
-Void BonkEnc::AddPatternDialog::OK()
+Void freac::AddPatternDialog::OK()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -127,14 +127,14 @@ Void BonkEnc::AddPatternDialog::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::AddPatternDialog::Cancel()
+Void freac::AddPatternDialog::Cancel()
 {
 	error = Error();
 
 	mainWnd->Close();
 }
 
-Void BonkEnc::AddPatternDialog::OnChangeSize(const Size &nSize)
+Void freac::AddPatternDialog::OnChangeSize(const Size &nSize)
 {
 	group_pattern->SetWidth(nSize.cx - 14);
 	edit_directory->SetWidth(nSize.cx - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()) - 127);
@@ -142,7 +142,7 @@ Void BonkEnc::AddPatternDialog::OnChangeSize(const Size &nSize)
 	check_subfolders->SetWidth(nSize.cx - Math::Max(text_directory->GetUnscaledTextWidth(), text_pattern->GetUnscaledTextWidth()) - 40);
 }
 
-Void BonkEnc::AddPatternDialog::Browse()
+Void freac::AddPatternDialog::Browse()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 

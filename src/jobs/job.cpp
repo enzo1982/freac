@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -15,19 +15,19 @@
 
 #include <time.h>
 
-Array<BonkEnc::Job *>		 BonkEnc::Job::scheduled;
-Array<BonkEnc::Job *>		 BonkEnc::Job::planned;
-Array<BonkEnc::Job *>		 BonkEnc::Job::running;
+Array<freac::Job *>		 freac::Job::scheduled;
+Array<freac::Job *>		 freac::Job::planned;
+Array<freac::Job *>		 freac::Job::running;
 
-Array<BonkEnc::Job *>		 BonkEnc::Job::all;
+Array<freac::Job *>		 freac::Job::all;
 
-Signal0<Void>			 BonkEnc::Job::onChange;
+Signal0<Void>			 freac::Job::onChange;
 
-Signal1<Void, BonkEnc::Job *>	 BonkEnc::Job::onPlanJob;
-Signal1<Void, BonkEnc::Job *>	 BonkEnc::Job::onRunJob;
-Signal1<Void, BonkEnc::Job *>	 BonkEnc::Job::onFinishJob;
+Signal1<Void, freac::Job *>	 freac::Job::onPlanJob;
+Signal1<Void, freac::Job *>	 freac::Job::onRunJob;
+Signal1<Void, freac::Job *>	 freac::Job::onFinishJob;
 
-BonkEnc::Job::Job() : ListEntry("Job")
+freac::Job::Job() : ListEntry("Job")
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -80,7 +80,7 @@ BonkEnc::Job::Job() : ListEntry("Job")
 	onChange.Emit();
 }
 
-BonkEnc::Job::~Job()
+freac::Job::~Job()
 {
 	BoCA::Config::Free(configuration);
 
@@ -102,14 +102,14 @@ BonkEnc::Job::~Job()
 	DeleteObject(closeHotspot);
 }
 
-Int BonkEnc::Job::Schedule()
+Int freac::Job::Schedule()
 {
 	scheduled.InsertAtPos(0, this, GetHandle());
 
 	return Success();
 }
 
-Int BonkEnc::Job::RunPrecheck()
+Int freac::Job::RunPrecheck()
 {
 	scheduled.Remove(GetHandle());
 
@@ -126,7 +126,7 @@ Int BonkEnc::Job::RunPrecheck()
 	return Success();
 }
 
-Int BonkEnc::Job::Run()
+Int freac::Job::Run()
 {
 	planned.Remove(GetHandle());
 	running.Add(this, GetHandle());
@@ -157,17 +157,17 @@ Int BonkEnc::Job::Run()
 	return Success();
 }
 
-Error BonkEnc::Job::Precheck()
+Error freac::Job::Precheck()
 {
 	return Success();
 }
 
-Bool BonkEnc::Job::ReadyToRun()
+Bool freac::Job::ReadyToRun()
 {
 	return True;
 }
 
-Void BonkEnc::Job::OnChangeSize(const Size &nSize)
+Void freac::Job::OnChangeSize(const Size &nSize)
 {
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -197,7 +197,7 @@ Void BonkEnc::Job::OnChangeSize(const Size &nSize)
 	surface->EndPaint();
 }
 
-Void BonkEnc::Job::OnDoubleClick()
+Void freac::Job::OnDoubleClick()
 {
 	if (closeHotspot->IsActive() && closeHotspot->IsMouseOver()) return;
 
@@ -206,7 +206,7 @@ Void BonkEnc::Job::OnDoubleClick()
 	dialog.ShowDialog();
 }
 
-Void BonkEnc::Job::OnClickToClose()
+Void freac::Job::OnClickToClose()
 {
 	EnterProtectedRegion();
 
@@ -218,7 +218,7 @@ Void BonkEnc::Job::OnClickToClose()
 	LeaveProtectedRegion();
 }
 
-Int BonkEnc::Job::Paint(Int message)
+Int freac::Job::Paint(Int message)
 {
 	if (!IsRegistered()) return Error();
 	if (!IsVisible())    return Success();
@@ -264,7 +264,7 @@ Int BonkEnc::Job::Paint(Int message)
 	return Widget::Paint(message);
 }
 
-Int BonkEnc::Job::SetText(const String &newText)
+Int freac::Job::SetText(const String &newText)
 {
 	if (text == newText) return Success();
 
@@ -286,7 +286,7 @@ Int BonkEnc::Job::SetText(const String &newText)
 	return Success();
 }
 
-Int BonkEnc::Job::SetProgress(Int nValue)
+Int freac::Job::SetProgress(Int nValue)
 {
 	progress->SetValue(nValue);
 	progressValue->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(Float(nValue) / 10.0))));
@@ -313,12 +313,12 @@ Int BonkEnc::Job::SetProgress(Int nValue)
 	return Success();
 }
 
-Int BonkEnc::Job::GetProgress() const
+Int freac::Job::GetProgress() const
 {
 	return progress->GetValue();
 }
 
-String BonkEnc::Job::SecondsToString(UnsignedInt seconds)
+String freac::Job::SecondsToString(UnsignedInt seconds)
 {
 	if (seconds >= 360000) return "??:??:??";
 

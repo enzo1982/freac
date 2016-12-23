@@ -28,7 +28,7 @@ using namespace BoCA::AS;
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::JobAddTracks::JobAddTracks(const Array<String> &iURLs, Bool iAutoCDRead)
+freac::JobAddTracks::JobAddTracks(const Array<String> &iURLs, Bool iAutoCDRead)
 {
 	foreach (const String &url, iURLs) urls.Add(url);
 
@@ -40,12 +40,12 @@ BonkEnc::JobAddTracks::JobAddTracks(const Array<String> &iURLs, Bool iAutoCDRead
 	SetText("Waiting for other jobs to finish...");
 }
 
-BonkEnc::JobAddTracks::~JobAddTracks()
+freac::JobAddTracks::~JobAddTracks()
 {
 	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Disconnect(&JobAddTracks::OnRemoveAllTracksJobScheduled, this);
 }
 
-Bool BonkEnc::JobAddTracks::ReadyToRun()
+Bool freac::JobAddTracks::ReadyToRun()
 {
 	if (!BoCA::JobList::Get()->IsLocked())
 	{
@@ -57,7 +57,7 @@ Bool BonkEnc::JobAddTracks::ReadyToRun()
 	return False;
 }
 
-Error BonkEnc::JobAddTracks::Perform()
+Error freac::JobAddTracks::Perform()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -238,7 +238,7 @@ Error BonkEnc::JobAddTracks::Perform()
 	return Success();
 }
 
-Void BonkEnc::JobAddTracks::OnRemoveAllTracksJobScheduled()
+Void freac::JobAddTracks::OnRemoveAllTracksJobScheduled()
 {
 	abort = True;
 }

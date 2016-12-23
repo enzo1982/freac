@@ -20,7 +20,7 @@
 #	include <unistd.h>
 #endif
 
-BonkEnc::ConfigureLanguage::ConfigureLanguage()
+freac::ConfigureLanguage::ConfigureLanguage()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -84,7 +84,7 @@ BonkEnc::ConfigureLanguage::ConfigureLanguage()
 	SetSize(Size(566, 150));
 }
 
-BonkEnc::ConfigureLanguage::~ConfigureLanguage()
+freac::ConfigureLanguage::~ConfigureLanguage()
 {
 	DeleteObject(group_language);
 	DeleteObject(text_language);
@@ -96,7 +96,7 @@ BonkEnc::ConfigureLanguage::~ConfigureLanguage()
 	DeleteObject(link_url);
 }
 
-Void BonkEnc::ConfigureLanguage::SelectLanguage()
+Void freac::ConfigureLanguage::SelectLanguage()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -120,7 +120,7 @@ Void BonkEnc::ConfigureLanguage::SelectLanguage()
 	}
 }
 
-Void BonkEnc::ConfigureLanguage::EditLanguageFile()
+Void freac::ConfigureLanguage::EditLanguageFile()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -152,7 +152,7 @@ Void BonkEnc::ConfigureLanguage::EditLanguageFile()
 #endif
 }
 
-Int BonkEnc::ConfigureLanguage::SaveSettings()
+Int freac::ConfigureLanguage::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();

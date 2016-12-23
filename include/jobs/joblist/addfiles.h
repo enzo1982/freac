@@ -15,7 +15,7 @@
 
 #include "../job.h"
 
-namespace BonkEnc
+namespace freac
 {
 	class JobAddFiles : public Job
 	{

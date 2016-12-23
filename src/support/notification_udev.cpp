@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -18,8 +18,6 @@
 
 using namespace BoCA;
 using namespace BoCA::AS;
-
-using namespace BonkEnc;
 
 using namespace smooth::System;
 
@@ -124,8 +122,8 @@ static Void CheckNotification()
 		{
 			if (info->GetNthDeviceInfo(drive).path == ex_udev_device_get_devnode(device))
 			{
-				if (String(ex_udev_device_get_property_value(device, "ID_CDROM_MEDIA")) == "1") Notification::Get()->onDiscInsert.Emit(drive);
-				else										Notification::Get()->onDiscRemove.Emit(drive);
+				if (String(ex_udev_device_get_property_value(device, "ID_CDROM_MEDIA")) == "1") freac::Notification::Get()->onDiscInsert.Emit(drive);
+				else										freac::Notification::Get()->onDiscRemove.Emit(drive);
 
 				break;
 			}
@@ -137,9 +135,9 @@ static Void CheckNotification()
 	ex_udev_device_unref(device);
 }
 
-BonkEnc::Notification *BonkEnc::Notification::instance = NIL;
+freac::Notification	*freac::Notification::instance = NIL;
 
-BonkEnc::Notification::Notification()
+freac::Notification::Notification()
 {
 	/* Setup udev monitor.
 	 */
@@ -159,7 +157,7 @@ BonkEnc::Notification::Notification()
 	((Timer *) privateData)->Start(500);
 }
 
-BonkEnc::Notification::~Notification()
+freac::Notification::~Notification()
 {
 	/* Stop timer.
 	 */
@@ -173,7 +171,7 @@ BonkEnc::Notification::~Notification()
 	ex_udev_unref(udev);
 }
 
-BonkEnc::Notification *BonkEnc::Notification::Get()
+freac::Notification *freac::Notification::Get()
 {
 	if (instance == NIL)
 	{
@@ -185,7 +183,7 @@ BonkEnc::Notification *BonkEnc::Notification::Get()
 	return instance;
 }
 
-Void BonkEnc::Notification::Free()
+Void freac::Notification::Free()
 {
 	if (instance != NIL)
 	{
@@ -197,6 +195,6 @@ Void BonkEnc::Notification::Free()
 	}
 }
 
-Void BonkEnc::Notification::ProcessSystemMessage(Int message, Int wParam, Int lParam)
+Void freac::Notification::ProcessSystemMessage(Int message, Int wParam, Int lParam)
 {
 }

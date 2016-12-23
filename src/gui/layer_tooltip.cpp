@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -14,7 +14,7 @@
 
 using namespace BoCA;
 
-BonkEnc::LayerTooltip::LayerTooltip(const Track &track) : Layer()
+freac::LayerTooltip::LayerTooltip(const Track &track) : Layer()
 {
 	cover = NIL;
 
@@ -44,14 +44,14 @@ BonkEnc::LayerTooltip::LayerTooltip(const Track &track) : Layer()
 	SetSize(Size(text->GetUnscaledTextWidth() + 7 + (track.pictures.Length() > 0 ? 44 : 0), text->GetUnscaledTextHeight() + 7));
 }
 
-BonkEnc::LayerTooltip::~LayerTooltip()
+freac::LayerTooltip::~LayerTooltip()
 {
 	if (cover != NIL) DeleteObject(cover);
 
 	DeleteObject(text);
 }
 
-const String &BonkEnc::LayerTooltip::GetTooltipText(const Track &track)
+const String &freac::LayerTooltip::GetTooltipText(const Track &track)
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 

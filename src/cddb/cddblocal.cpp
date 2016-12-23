@@ -11,21 +11,21 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <cddb/cddblocal.h>
-#include <bonkenc.h>
+#include <freac.h>
 #include <config.h>
 
 using namespace smooth::IO;
 
-BonkEnc::CDDBLocal::CDDBLocal()
+freac::CDDBLocal::CDDBLocal()
 {
 	protocol = BoCA::Protocol::Get("CDDB communication");
 }
 
-BonkEnc::CDDBLocal::~CDDBLocal()
+freac::CDDBLocal::~CDDBLocal()
 {
 }
 
-Bool BonkEnc::CDDBLocal::QueryUnixDB(const String &queryString)
+Bool freac::CDDBLocal::QueryUnixDB(const String &queryString)
 {
 	static String	 array[] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data", NIL };
 
@@ -82,7 +82,7 @@ Bool BonkEnc::CDDBLocal::QueryUnixDB(const String &queryString)
 	return (results.Length() != 0);
 }
 
-Bool BonkEnc::CDDBLocal::QueryWinDB(const String &queryString)
+Bool freac::CDDBLocal::QueryWinDB(const String &queryString)
 {
 	static String	 array[] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data", NIL };
 
@@ -187,12 +187,12 @@ Bool BonkEnc::CDDBLocal::QueryWinDB(const String &queryString)
 	return (results.Length() != 0);
 }
 
-Bool BonkEnc::CDDBLocal::ConnectToServer()
+Bool freac::CDDBLocal::ConnectToServer()
 {
 	return True;
 }
 
-Int BonkEnc::CDDBLocal::Query(const String &queryString)
+Int freac::CDDBLocal::Query(const String &queryString)
 {
 	/* Try to find Unix style record first; if no match is found, try Windows style.
 	 */
@@ -213,7 +213,7 @@ Int BonkEnc::CDDBLocal::Query(const String &queryString)
 	return QUERY_RESULT_ERROR;
 }
 
-Bool BonkEnc::CDDBLocal::Read(const String &category, Int discID, CDDBInfo &cddbInfo)
+Bool freac::CDDBLocal::Read(const String &category, Int discID, CDDBInfo &cddbInfo)
 {
 	cddbInfo.discID   = discID;
 	cddbInfo.category = category;
@@ -226,7 +226,7 @@ Bool BonkEnc::CDDBLocal::Read(const String &category, Int discID, CDDBInfo &cddb
 	else		   return ParseCDDBRecord(result, cddbInfo);
 }
 
-Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
+Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 {
 	protocol->Write("Entering method: CDDBLocal::Submit(const CDDBInfo &)");
 
@@ -339,7 +339,7 @@ Bool BonkEnc::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 	return True;
 }
 
-Bool BonkEnc::CDDBLocal::CloseConnection()
+Bool freac::CDDBLocal::CloseConnection()
 {
 	return True;
 }

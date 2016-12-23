@@ -25,7 +25,7 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::JobAddFiles::JobAddFiles(const Array<String> &iFiles)
+freac::JobAddFiles::JobAddFiles(const Array<String> &iFiles)
 {
 	foreach (const String &file, iFiles) files.Add(file);
 
@@ -36,12 +36,12 @@ BonkEnc::JobAddFiles::JobAddFiles(const Array<String> &iFiles)
 	SetText("Waiting for other jobs to finish...");
 }
 
-BonkEnc::JobAddFiles::~JobAddFiles()
+freac::JobAddFiles::~JobAddFiles()
 {
 	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Disconnect(&JobAddFiles::OnRemoveAllTracksJobScheduled, this);
 }
 
-Bool BonkEnc::JobAddFiles::ReadyToRun()
+Bool freac::JobAddFiles::ReadyToRun()
 {
 	if (!JobList::Get()->IsLocked())
 	{
@@ -53,7 +53,7 @@ Bool BonkEnc::JobAddFiles::ReadyToRun()
 	return False;
 }
 
-Error BonkEnc::JobAddFiles::Perform()
+Error freac::JobAddFiles::Perform()
 {
 	for (Int i = 0; i < files.Length(); i++)
 	{
@@ -147,12 +147,12 @@ Error BonkEnc::JobAddFiles::Perform()
 	return Success();
 }
 
-Void BonkEnc::JobAddFiles::OnRemoveAllTracksJobScheduled()
+Void freac::JobAddFiles::OnRemoveAllTracksJobScheduled()
 {
 	abort = True;
 }
 
-Void BonkEnc::JobAddFiles::ExtractInfoFromPath(const String &path, Info &info)
+Void freac::JobAddFiles::ExtractInfoFromPath(const String &path, Info &info)
 {
 	String	 fileName   = File(path).GetFileName().Replace("_", " ");
 	String	 folderName = Directory(File(path).GetFilePath()).GetDirectoryName();

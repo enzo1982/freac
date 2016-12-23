@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -12,12 +12,12 @@
 
 #include <gui/edit_folder.h>
 
-BonkEnc::FolderEditBox::FolderEditBox(const String &iText, const Point &iPos, const Size &iSize, Int maxSize) : EditBox(iText, iPos, iSize, maxSize)
+freac::FolderEditBox::FolderEditBox(const String &iText, const Point &iPos, const Size &iSize, Int maxSize) : EditBox(iText, iPos, iSize, maxSize)
 {
 	cursor->Deactivate();
 }
 
-Int BonkEnc::FolderEditBox::Paint(Int message)
+Int freac::FolderEditBox::Paint(Int message)
 {
 	if (!IsRegistered()) return Error();
 	if (!IsVisible())    return Success();
@@ -53,7 +53,7 @@ Int BonkEnc::FolderEditBox::Paint(Int message)
 	return Widget::Paint(message);
 }
 
-Void BonkEnc::FolderEditBox::OnSelectEntry(ListEntry *entry)
+Void freac::FolderEditBox::OnSelectEntry(ListEntry *entry)
 {
 	cursor->SetText(entry->GetText());
 

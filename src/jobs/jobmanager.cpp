@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -18,9 +18,9 @@
 
 #include <boca.h>
 
-BonkEnc::JobManager	*BonkEnc::JobManager::instance = NIL;
+freac::JobManager	*freac::JobManager::instance = NIL;
 
-BonkEnc::JobManager::JobManager()
+freac::JobManager::JobManager()
 {
 	exitThread = False;
 
@@ -37,7 +37,7 @@ BonkEnc::JobManager::JobManager()
 	managerThread = NonBlocking0<>(&JobManager::ManagerThread, this).Call();
 }
 
-BonkEnc::JobManager::~JobManager()
+freac::JobManager::~JobManager()
 {
 	exitThread = True;
 
@@ -46,7 +46,7 @@ BonkEnc::JobManager::~JobManager()
 	managerThread->Wait();
 }
 
-Void BonkEnc::JobManager::ManagerThread()
+Void freac::JobManager::ManagerThread()
 {
 	Config	*config = Config::Get();
 
@@ -90,7 +90,7 @@ Void BonkEnc::JobManager::ManagerThread()
 	}
 }
 
-Void BonkEnc::JobManager::OnFinishJob(Job *job)
+Void freac::JobManager::OnFinishJob(Job *job)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -116,7 +116,7 @@ Void BonkEnc::JobManager::OnFinishJob(Job *job)
 	Object::DeleteObject(job);
 }
 
-Error BonkEnc::JobManager::Start()
+Error freac::JobManager::Start()
 {
 	if (instance != NIL) return Error();
 
@@ -125,7 +125,7 @@ Error BonkEnc::JobManager::Start()
 	return Success();
 }
 
-Error BonkEnc::JobManager::Quit()
+Error freac::JobManager::Quit()
 {
 	if (instance == NIL) return Error();
 

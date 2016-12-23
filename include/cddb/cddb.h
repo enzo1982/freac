@@ -27,7 +27,7 @@ const Int	 QUERY_RESULT_SINGLE	= 1;
 const Int	 QUERY_RESULT_MULTIPLE	= 2;
 const Int	 QUERY_RESULT_FUZZY	= 3;
 
-namespace BonkEnc
+namespace freac
 {
 	abstract class CDDB
 	{

@@ -19,7 +19,7 @@ using namespace BoCA::AS;
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::ConfigureEncoders::ConfigureEncoders()
+freac::ConfigureEncoders::ConfigureEncoders()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -170,7 +170,7 @@ BonkEnc::ConfigureEncoders::ConfigureEncoders()
 	SetSize(Size(566, 345));
 }
 
-BonkEnc::ConfigureEncoders::~ConfigureEncoders()
+freac::ConfigureEncoders::~ConfigureEncoders()
 {
 	DeleteObject(group_encoder);
 	DeleteObject(combo_encoder);
@@ -198,7 +198,7 @@ BonkEnc::ConfigureEncoders::~ConfigureEncoders()
 	DeleteObject(check_replace_spaces);
 }
 
-Void BonkEnc::ConfigureEncoders::SelectDir()
+Void freac::ConfigureEncoders::SelectDir()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -218,7 +218,7 @@ Void BonkEnc::ConfigureEncoders::SelectDir()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::ConfigureEncoders::ConfigureEncoder()
+Void freac::ConfigureEncoders::ConfigureEncoder()
 {
 	Registry	&boca = Registry::Get();
 	String		 encoderID;
@@ -260,25 +260,25 @@ Void BonkEnc::ConfigureEncoders::ConfigureEncoder()
 	}
 }
 
-Void BonkEnc::ConfigureEncoders::ToggleOnTheFly()
+Void freac::ConfigureEncoders::ToggleOnTheFly()
 {
 	if (onTheFly) check_keepWaves->Deactivate();
 	else	      check_keepWaves->Activate();
 }
 
-Void BonkEnc::ConfigureEncoders::ToggleRemoveTracks()
+Void freac::ConfigureEncoders::ToggleRemoveTracks()
 {
 	if (removeTracks) { check_addEncodedTracks->Activate(); }
 	else		  { addEncodedTracks = False; check_addEncodedTracks->Deactivate(); }
 }
 
-Void BonkEnc::ConfigureEncoders::ToggleUseInputDir()
+Void freac::ConfigureEncoders::ToggleUseInputDir()
 {
 	if (useInputDir) check_allowOverwrite->Activate();
 	else		 check_allowOverwrite->Deactivate();
 }
 
-Void BonkEnc::ConfigureEncoders::ToggleEncodeToSingleFile()
+Void freac::ConfigureEncoders::ToggleEncodeToSingleFile()
 {
 	if (singleFile)	{ onTheFly = True; check_onTheFly->Deactivate(); }
 	else		{ check_onTheFly->Activate(); }
@@ -286,7 +286,7 @@ Void BonkEnc::ConfigureEncoders::ToggleEncodeToSingleFile()
 	ToggleOnTheFly();
 }
 
-Int BonkEnc::ConfigureEncoders::SaveSettings()
+Int freac::ConfigureEncoders::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();

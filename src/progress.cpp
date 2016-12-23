@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -18,7 +18,7 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::Progress::Progress(const BoCA::Config *iConfiguration)
+freac::Progress::Progress(const BoCA::Config *iConfiguration)
 {
 	configuration	       = iConfiguration;
 
@@ -36,14 +36,14 @@ BonkEnc::Progress::Progress(const BoCA::Config *iConfiguration)
 	window = Window::GetNthWindow(0);
 }
 
-BonkEnc::Progress::~Progress()
+freac::Progress::~Progress()
 {
 	/* Remove progress indicator from taskbar/dock.
 	 */
 	if (window != NIL) window->SetProgressIndicator(Window::ProgressIndicatorNone);
 }
 
-Void BonkEnc::Progress::ComputeTotalSamples(const Array<Track> &tracks)
+Void freac::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 {
 	Registry	&boca = Registry::Get();
 
@@ -94,7 +94,7 @@ Void BonkEnc::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 	totalSamples *= totalSamplesMultiplier;
 }
 
-Void BonkEnc::Progress::FixTotalSamples(const Track &track, const Track &nTrack)
+Void freac::Progress::FixTotalSamples(const Track &track, const Track &nTrack)
 {
 	if (configuration->enable_console) return;
 
@@ -109,12 +109,12 @@ Void BonkEnc::Progress::FixTotalSamples(const Track &track, const Track &nTrack)
 	mutex.Release();
 }
 
-Int64 BonkEnc::Progress::GetTotalSamples() const
+Int64 freac::Progress::GetTotalSamples() const
 {
 	return totalSamples / totalSamplesMultiplier;
 }
 
-Void BonkEnc::Progress::Start()
+Void freac::Progress::Start()
 {
 	startTicks = S::System::System::Clock();
 
@@ -123,7 +123,7 @@ Void BonkEnc::Progress::Start()
 	if (window != NIL) window->SetProgressIndicator(Window::ProgressIndicatorNormal, 0.0);
 }
 
-Void BonkEnc::Progress::Pause()
+Void freac::Progress::Pause()
 {
 	pauseTicks = S::System::System::Clock();
 
@@ -132,7 +132,7 @@ Void BonkEnc::Progress::Pause()
 	if (window != NIL) window->SetProgressIndicator(Window::ProgressIndicatorPaused);
 }
 
-Void BonkEnc::Progress::Resume()
+Void freac::Progress::Resume()
 {
 	for (Int i = 0; i < trackList.Length(); i++) trackStartTicks.SetNth(i, trackStartTicks.GetNth(i) + S::System::System::Clock() - pauseTicks);
 
@@ -143,7 +143,7 @@ Void BonkEnc::Progress::Resume()
 	if (window != NIL) window->SetProgressIndicator(Window::ProgressIndicatorNormal);
 }
 
-Void BonkEnc::Progress::StartTrack(const Track &track)
+Void freac::Progress::StartTrack(const Track &track)
 {
 	if (configuration->enable_console) return;
 
@@ -161,7 +161,7 @@ Void BonkEnc::Progress::StartTrack(const Track &track)
 	mutex.Release();
 }
 
-Void BonkEnc::Progress::UpdateTrack(const Track &track, Int64 position)
+Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
 {
 	if (configuration->enable_console) return;
 
@@ -230,7 +230,7 @@ Void BonkEnc::Progress::UpdateTrack(const Track &track, Int64 position)
 	lastInvoked = clockValue;
 }
 
-Void BonkEnc::Progress::FinishTrack(const Track &track, Bool stepsLeft)
+Void freac::Progress::FinishTrack(const Track &track, Bool stepsLeft)
 {
 	if (configuration->enable_console) return;
 

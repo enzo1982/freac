@@ -17,7 +17,7 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration)
+freac::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration)
 {
 	configuration	= iConfiguration;
 
@@ -37,11 +37,11 @@ BonkEnc::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration)
 	threadMain.Connect(&ConvertWorker::Perform, this);
 }
 
-BonkEnc::ConvertWorker::~ConvertWorker()
+freac::ConvertWorker::~ConvertWorker()
 {
 }
 
-Int BonkEnc::ConvertWorker::Perform()
+Int freac::ConvertWorker::Perform()
 {
 	while (!quit)
 	{
@@ -57,7 +57,7 @@ Int BonkEnc::ConvertWorker::Perform()
 	return Success();
 }
 
-Int BonkEnc::ConvertWorker::Convert()
+Int freac::ConvertWorker::Convert()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -403,7 +403,7 @@ Int BonkEnc::ConvertWorker::Convert()
 	return Success();
 }
 
-Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder *encoder)
+Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder *encoder)
 {
 	/* Get config values.
 	 */
@@ -485,7 +485,7 @@ Int64 BonkEnc::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder
 	return trackLength;
 }
 
-Void BonkEnc::ConvertWorker::SetTrackToConvert(const BoCA::Track &nTrack)
+Void freac::ConvertWorker::SetTrackToConvert(const BoCA::Track &nTrack)
 {
 	trackToConvert	= nTrack;
 	trackStartTicks	= 0;
@@ -495,21 +495,21 @@ Void BonkEnc::ConvertWorker::SetTrackToConvert(const BoCA::Track &nTrack)
 	waiting		= True;
 }
 
-Int BonkEnc::ConvertWorker::Pause(Bool value)
+Int freac::ConvertWorker::Pause(Bool value)
 {
 	pause = value;
 
 	return Success();
 }
 
-Int BonkEnc::ConvertWorker::Cancel()
+Int freac::ConvertWorker::Cancel()
 {
 	cancel = True;
 
 	return Success();
 }
 
-Int BonkEnc::ConvertWorker::Quit()
+Int freac::ConvertWorker::Quit()
 {
 	cancel = True;
 	quit   = True;

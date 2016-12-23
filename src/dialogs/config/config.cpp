@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -20,14 +20,14 @@
 #include <dialogs/config/config_tags.h>
 #include <dialogs/config/config_verification.h>
 
-#include <bonkenc.h>
+#include <freac.h>
 #include <config.h>
 #include <resources.h>
 
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::ConfigDialog::ConfigDialog()
+freac::ConfigDialog::ConfigDialog()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -92,7 +92,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 
 	selectedLayer = NIL;
 
-	tree_freac		= new Tree(::BonkEnc::BonkEnc::appName);
+	tree_freac		= new Tree(freac::appName);
 
 	tree_ripper		= new Tree(i18n->TranslateString("Ripper"));
 	tree_interface		= new Tree(i18n->TranslateString("Interface"));
@@ -143,7 +143,7 @@ BonkEnc::ConfigDialog::ConfigDialog()
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::ConfigDialog::~ConfigDialog()
+freac::ConfigDialog::~ConfigDialog()
 {
 	DeleteLayers();
 
@@ -180,7 +180,7 @@ BonkEnc::ConfigDialog::~ConfigDialog()
 	DeleteObject(tree_other);
 }
 
-Void BonkEnc::ConfigDialog::AddLayers()
+Void freac::ConfigDialog::AddLayers()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -328,7 +328,7 @@ Void BonkEnc::ConfigDialog::AddLayers()
 	}
 }
 
-Void BonkEnc::ConfigDialog::DeleteLayers()
+Void freac::ConfigDialog::DeleteLayers()
 {
 	if (layers.Length() == 0) return;
 
@@ -358,14 +358,14 @@ Void BonkEnc::ConfigDialog::DeleteLayers()
 	selectedLayer = NIL;
 }
 
-const Error &BonkEnc::ConfigDialog::ShowDialog()
+const Error &freac::ConfigDialog::ShowDialog()
 {
 	mainWnd->WaitUntilClosed();
 
 	return error;
 }
 
-Void BonkEnc::ConfigDialog::OK()
+Void freac::ConfigDialog::OK()
 {
 	for (Int i = 0; i < layers.Length(); i++)
 	{
@@ -375,7 +375,7 @@ Void BonkEnc::ConfigDialog::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigDialog::Cancel()
+Void freac::ConfigDialog::Cancel()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 
@@ -384,7 +384,7 @@ Void BonkEnc::ConfigDialog::Cancel()
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigDialog::OnChangeSize(const Size &nSize)
+Void freac::ConfigDialog::OnChangeSize(const Size &nSize)
 {
 	Rect	 clientRect = Rect(mainWnd->GetMainLayer()->GetPosition(), mainWnd->GetMainLayer()->GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -395,7 +395,7 @@ Void BonkEnc::ConfigDialog::OnChangeSize(const Size &nSize)
 	list_layers->SetSize(Size(210, clientSize.cy - 94));
 }
 
-Void BonkEnc::ConfigDialog::OnSelectConfiguration()
+Void freac::ConfigDialog::OnSelectConfiguration()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -448,12 +448,12 @@ Void BonkEnc::ConfigDialog::OnSelectConfiguration()
 	surface->EndPaint();
 }
 
-Void BonkEnc::ConfigDialog::OnSelectConfigurationByName()
+Void freac::ConfigDialog::OnSelectConfigurationByName()
 {
 	combo_config->SelectEntry(edit_config->GetText());
 }
 
-Void BonkEnc::ConfigDialog::OnEditConfigurationName(const String &name)
+Void freac::ConfigDialog::OnEditConfigurationName(const String &name)
 {
 	if (combo_config->GetSelectedEntryNumber() == 0) return;
 
@@ -483,7 +483,7 @@ Void BonkEnc::ConfigDialog::OnEditConfigurationName(const String &name)
 	config->SetConfigurationName(newName);
 }
 
-Void BonkEnc::ConfigDialog::OnCreateConfig()
+Void freac::ConfigDialog::OnCreateConfig()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -513,7 +513,7 @@ Void BonkEnc::ConfigDialog::OnCreateConfig()
 	edit_config->MarkAll();
 }
 
-Void BonkEnc::ConfigDialog::OnDeleteConfig()
+Void freac::ConfigDialog::OnDeleteConfig()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	ListEntry	*entry	= combo_config->GetSelectedEntry();
@@ -527,7 +527,7 @@ Void BonkEnc::ConfigDialog::OnDeleteConfig()
 	config->RemoveConfiguration(name);
 }
 
-Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *newLayer)
+Void freac::ConfigDialog::OnSelectEntry(ConfigLayer *newLayer)
 {
 	if (newLayer != NIL)
 	{
@@ -566,7 +566,7 @@ Void BonkEnc::ConfigDialog::OnSelectEntry(ConfigLayer *newLayer)
 	}
 }
 
-Void BonkEnc::ConfigDialog::OnChangeComponentSettings(const String &componentID)
+Void freac::ConfigDialog::OnChangeComponentSettings(const String &componentID)
 {
 	/* One of the component configurations has changed
 	 * so find the affected component here.

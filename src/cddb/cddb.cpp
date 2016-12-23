@@ -11,7 +11,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <cddb/cddb.h>
-#include <bonkenc.h>
+#include <freac.h>
 #include <config.h>
 
 #include <boca.h>
@@ -31,30 +31,30 @@ static int cddb_sum(int n)
 	return ret;
 }
 
-BonkEnc::CDDB::CDDB()
+freac::CDDB::CDDB()
 {
 }
 
-BonkEnc::CDDB::~CDDB()
+freac::CDDB::~CDDB()
 {
 	ids.RemoveAll();
 	titles.RemoveAll();
 	categories.RemoveAll();
 }
 
-String BonkEnc::CDDB::DiscIDToString(Int discID)
+String freac::CDDB::DiscIDToString(Int discID)
 {
 	String	 discIDString = Number((Int64) discID).ToHexString(8);
 
 	return discIDString;
 }
 
-Int BonkEnc::CDDB::StringToDiscID(const String &string)
+Int freac::CDDB::StringToDiscID(const String &string)
 {
 	return (Int64) Number::FromHexString(string);
 }
 
-Int BonkEnc::CDDB::DiscIDFromMCDI(const MCDI &mcdi)
+Int freac::CDDB::DiscIDFromMCDI(const MCDI &mcdi)
 {
 	Int	 numTocEntries = mcdi.GetNumberOfEntries();
 	Int	 n = 0;
@@ -71,7 +71,7 @@ Int BonkEnc::CDDB::DiscIDFromMCDI(const MCDI &mcdi)
 	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
 }
 
-String BonkEnc::CDDB::QueryStringFromMCDI(const MCDI &mcdi)
+String freac::CDDB::QueryStringFromMCDI(const MCDI &mcdi)
 {
 	Int	 numTocEntries = mcdi.GetNumberOfEntries();
 	String	 str = String("cddb query ").Append(DiscIDToString(DiscIDFromMCDI(mcdi)));
@@ -88,7 +88,7 @@ String BonkEnc::CDDB::QueryStringFromMCDI(const MCDI &mcdi)
 	return str;
 }
 
-Int BonkEnc::CDDB::DiscIDFromOffsets(const String &offsets)
+Int freac::CDDB::DiscIDFromOffsets(const String &offsets)
 {
 	Int	 numTocEntries = (Int64) Number::FromHexString(offsets);
 	Int	 n = 0;
@@ -109,7 +109,7 @@ Int BonkEnc::CDDB::DiscIDFromOffsets(const String &offsets)
 	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
 }
 
-String BonkEnc::CDDB::QueryStringFromOffsets(const String &offsets)
+String freac::CDDB::QueryStringFromOffsets(const String &offsets)
 {
 	Int	 numTocEntries = (Int64) Number::FromHexString(offsets);
 	String	 str = String("cddb query ").Append(DiscIDToString(DiscIDFromOffsets(offsets)));
@@ -130,7 +130,7 @@ String BonkEnc::CDDB::QueryStringFromOffsets(const String &offsets)
 	return str;
 }
 
-Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
+Bool freac::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 {
 	if (ConnectToServer() == False) return False;
 
@@ -199,7 +199,7 @@ Bool BonkEnc::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 /* Format a complete CDDB record according
  * to the rules from the freedb how-to.
  */
-String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
+String freac::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 {
 	String	 content;
 
@@ -216,7 +216,7 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 	content.Append("# Disc length: ").Append(String::FromInt(cddbInfo.discLength)).Append("\n");
 	content.Append("# ").Append("\n");
 	content.Append("# Revision: ").Append(String::FromInt(cddbInfo.revision)).Append("\n");
-	content.Append("# Submitted via: ").Append(BonkEnc::appName).Append(" ").Append(BonkEnc::cddbVersion).Append("\n");
+	content.Append("# Submitted via: ").Append(freac::appName).Append(" ").Append(freac::cddbVersion).Append("\n");
 	content.Append("# ").Append("\n");
 
 	content.Append(FormatCDDBEntry("DISCID", DiscIDToString(cddbInfo.discID)));
@@ -245,7 +245,7 @@ String BonkEnc::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 /* Parse a complete CDDB record and fill the
  * given CDDBInfo structure.
  */
-Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
+Bool freac::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 {
 	Int	 index = 0;
 
@@ -448,7 +448,7 @@ Bool BonkEnc::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
  * from the freedb how-to. Replace special
  * characters and split lines at 256 chars.
  */
-String BonkEnc::CDDB::FormatCDDBEntry(const String &entry, const String &value)
+String freac::CDDB::FormatCDDBEntry(const String &entry, const String &value)
 {
 	if (value == NIL) return String(entry).Append("=\n");
 
@@ -487,7 +487,7 @@ String BonkEnc::CDDB::FormatCDDBEntry(const String &entry, const String &value)
  * special character sequences and concatenate
  * multiline entries.
  */
-String BonkEnc::CDDB::ParseCDDBEntry(const String &cddb, Int &index)
+String freac::CDDB::ParseCDDBEntry(const String &cddb, Int &index)
 {
 	String	 result;
 	String	 entry;

@@ -23,7 +23,7 @@ using namespace BoCA::AS;
 using namespace smooth::GUI::Dialogs;
 using namespace smooth::IO;
 
-Void BonkEnc::Utilities::FillGenreList(List *list)
+Void freac::Utilities::FillGenreList(List *list)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -240,7 +240,7 @@ Void BonkEnc::Utilities::FillGenreList(List *list)
 	list->AddEntry("World Music");
 }
 
-Void BonkEnc::Utilities::UpdateGenreList(List *list, const String &genre)
+Void freac::Utilities::UpdateGenreList(List *list, const String &genre)
 {
 	if (genre == NIL) return;
 
@@ -270,7 +270,7 @@ Void BonkEnc::Utilities::UpdateGenreList(List *list, const String &genre)
 	FillGenreList(list);
 }
 
-String BonkEnc::Utilities::GetOutputFileName(const Track &track)
+String freac::Utilities::GetOutputFileName(const Track &track)
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -469,7 +469,7 @@ String BonkEnc::Utilities::GetOutputFileName(const Track &track)
 	return outputFileName;
 }
 
-String BonkEnc::Utilities::GetSingleOutputFileName(const Track &track)
+String freac::Utilities::GetSingleOutputFileName(const Track &track)
 {
 	/* Check if an output filename has already been set.
 	 */
@@ -540,7 +540,7 @@ String BonkEnc::Utilities::GetSingleOutputFileName(const Track &track)
 	return singleOutputFileName;
 }
 
-String BonkEnc::Utilities::GetPlaylistFileName(const Track &track)
+String freac::Utilities::GetPlaylistFileName(const Track &track)
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -579,7 +579,7 @@ String BonkEnc::Utilities::GetPlaylistFileName(const Track &track)
 	return BoCA::Utilities::NormalizeFileName(playlistFileName);
 }
 
-Bool BonkEnc::Utilities::SetProcessPriority()
+Bool freac::Utilities::SetProcessPriority()
 {
 #ifdef __WIN32__
 	BoCA::Config	*config	= BoCA::Config::Get();

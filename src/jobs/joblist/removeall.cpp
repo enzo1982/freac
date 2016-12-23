@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -14,26 +14,26 @@
 
 #include <boca.h>
 
-Signal0<Void>	 BonkEnc::JobRemoveAllTracks::onRemoveAllTracksJobScheduled;
+Signal0<Void>	 freac::JobRemoveAllTracks::onRemoveAllTracksJobScheduled;
 
-BonkEnc::JobRemoveAllTracks::JobRemoveAllTracks()
+freac::JobRemoveAllTracks::JobRemoveAllTracks()
 {
 	onPlanJob.Connect(&JobRemoveAllTracks::OnPlanJob, this);
 }
 
-BonkEnc::JobRemoveAllTracks::~JobRemoveAllTracks()
+freac::JobRemoveAllTracks::~JobRemoveAllTracks()
 {
 	onPlanJob.Disconnect(&JobRemoveAllTracks::OnPlanJob, this);
 }
 
-Void BonkEnc::JobRemoveAllTracks::OnPlanJob(Job *job)
+Void freac::JobRemoveAllTracks::OnPlanJob(Job *job)
 {
 	if (job != this) return;
 
 	onRemoveAllTracksJobScheduled.Emit();
 }
 
-Bool BonkEnc::JobRemoveAllTracks::ReadyToRun()
+Bool freac::JobRemoveAllTracks::ReadyToRun()
 {
 	if (!BoCA::JobList::Get()->IsLocked())
 	{
@@ -45,7 +45,7 @@ Bool BonkEnc::JobRemoveAllTracks::ReadyToRun()
 	return False;
 }
 
-Error BonkEnc::JobRemoveAllTracks::Perform()
+Error freac::JobRemoveAllTracks::Perform()
 {
 	SetText("Removing all tracks...");
 

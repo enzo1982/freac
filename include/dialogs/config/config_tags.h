@@ -16,7 +16,7 @@
 #include <smooth.h>
 #include <boca.h>
 
-namespace BonkEnc
+namespace freac
 {
 	class ConfigureTags : public BoCA::ConfigLayer
 	{

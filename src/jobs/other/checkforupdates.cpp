@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -12,22 +12,22 @@
 
 #include <jobs/other/checkforupdates.h>
 
-#include <bonkenc.h>
+#include <freac.h>
 #include <config.h>
 #include <dllinterfaces.h>
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::JobCheckForUpdates::JobCheckForUpdates(Bool iStartup)
+freac::JobCheckForUpdates::JobCheckForUpdates(Bool iStartup)
 {
 	startup = iStartup;
 }
 
-BonkEnc::JobCheckForUpdates::~JobCheckForUpdates()
+freac::JobCheckForUpdates::~JobCheckForUpdates()
 {
 }
 
-Error BonkEnc::JobCheckForUpdates::Perform()
+Error freac::JobCheckForUpdates::Perform()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -49,7 +49,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 	if (startup && configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 2 &&
 		      !configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsUpdatesCheckedID, Config::SettingsUpdatesCheckedDefault))
 	{
-		if (QuickMessage(i18n->TranslateString("%1 can perform an automatic check for online\nprogram updates at startup.\n\nWould you like %1 to look for updates at startup?").Replace("%1", ::BonkEnc::BonkEnc::appName), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question) == Message::Button::No)
+		if (QuickMessage(i18n->TranslateString("%1 can perform an automatic check for online\nprogram updates at startup.\n\nWould you like %1 to look for updates at startup?").Replace("%1", freac::appName), String(freac::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question) == Message::Button::No)
 		{
 			BoCA::Config	*config = BoCA::Config::Get();
 
@@ -64,7 +64,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 	SetText("Creating update context...");
 
 #ifdef __WIN32__
-	Void	*context = ex_eUpdate_CreateUpdateContext(::BonkEnc::BonkEnc::appLongName, ::BonkEnc::BonkEnc::version, ::BonkEnc::BonkEnc::updatePath);
+	Void	*context = ex_eUpdate_CreateUpdateContext(freac::appLongName, freac::version, freac::updatePath);
 
 	if (configuration->configDir != NIL) ex_eUpdate_SetConfigFile(context, String(configuration->configDir).Append("eUpdate.xml"));
 
@@ -95,7 +95,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 		SetText("Updates found...");
 		SetProgress(1000);
 
-		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are new updates for %1 available online!\nWould you like to see a list of available updates now?").Replace("%1", ::BonkEnc::BonkEnc::appName), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
+		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are new updates for %1 available online!\nWould you like to see a list of available updates now?").Replace("%1", freac::appName), String(freac::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
 
 		msgBox->ShowDialog();
 
@@ -118,7 +118,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 
 		if (!startup)
 		{
-			MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
+			MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), String(freac::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
 
 			msgBox->ShowDialog();
 
@@ -126,7 +126,7 @@ Error BonkEnc::JobCheckForUpdates::Perform()
 		}
 		else if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 2)
 		{
-			QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), String(::BonkEnc::BonkEnc::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information);
+			QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), String(freac::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information);
 		}
 	}
 

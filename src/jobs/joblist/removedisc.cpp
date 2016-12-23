@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -16,16 +16,16 @@
 
 using namespace BoCA;
 
-BonkEnc::JobRemoveDiscTracks::JobRemoveDiscTracks(Int iDrive)
+freac::JobRemoveDiscTracks::JobRemoveDiscTracks(Int iDrive)
 {
 	drive = iDrive;
 }
 
-BonkEnc::JobRemoveDiscTracks::~JobRemoveDiscTracks()
+freac::JobRemoveDiscTracks::~JobRemoveDiscTracks()
 {
 }
 
-Bool BonkEnc::JobRemoveDiscTracks::ReadyToRun()
+Bool freac::JobRemoveDiscTracks::ReadyToRun()
 {
 	if (!BoCA::JobList::Get()->IsLocked())
 	{
@@ -37,7 +37,7 @@ Bool BonkEnc::JobRemoveDiscTracks::ReadyToRun()
 	return False;
 }
 
-Error BonkEnc::JobRemoveDiscTracks::Perform()
+Error freac::JobRemoveDiscTracks::Perform()
 {
 	SetText(String("Removing tracks of disc in drive #").Append(String::FromInt(drive)).Append("..."));
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -14,7 +14,7 @@
 #define H_FREAC_MAIN
 
 #include <smooth.h>
-#include "bonkenc.h"
+#include "freac.h"
 
 #include <support/notification.h>
 
@@ -37,15 +37,15 @@ extern "C"
 	Int DLLEXPORT StartGUI(const Array<String> &);
 }
 
-namespace BonkEnc
+namespace freac
 {
-	class BonkEncGUI : public BonkEnc
+	class freacGUI : public freac
 	{
 		private:
 			/* Singleton class, therefore protected constructor/destructor
 			 */
-							 BonkEncGUI();
-							~BonkEncGUI();
+							 freacGUI();
+							~freacGUI();
 
 			Window				*mainWnd;
 
@@ -146,11 +146,11 @@ namespace BonkEnc
 
 			Void				 ConfirmDeleteAfterEncoding();
 		public:
-			/* Returns a new or existing instance of BonkEncGUI
+			/* Returns a new or existing instance of freacGUI
 			 */
-			static BonkEncGUI		*Get();
+			static freacGUI			*Get();
 
-			/* Destroys an existing instance of BonkEncGUI
+			/* Destroys an existing instance of freacGUI
 			 */
 			static Void			 Free();
 	};

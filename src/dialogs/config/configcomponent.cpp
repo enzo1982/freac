@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -18,7 +18,7 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::ConfigComponentDialog::ConfigComponentDialog(ConfigLayer *iLayer)
+freac::ConfigComponentDialog::ConfigComponentDialog(ConfigLayer *iLayer)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -54,7 +54,7 @@ BonkEnc::ConfigComponentDialog::ConfigComponentDialog(ConfigLayer *iLayer)
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::ConfigComponentDialog::~ConfigComponentDialog()
+freac::ConfigComponentDialog::~ConfigComponentDialog()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -63,21 +63,21 @@ BonkEnc::ConfigComponentDialog::~ConfigComponentDialog()
 	DeleteObject(divbar);
 }
 
-const Error &BonkEnc::ConfigComponentDialog::ShowDialog()
+const Error &freac::ConfigComponentDialog::ShowDialog()
 {
 	mainWnd->WaitUntilClosed();
 
 	return error;
 }
 
-Void BonkEnc::ConfigComponentDialog::OK()
+Void freac::ConfigComponentDialog::OK()
 {
 	if (layer->SaveSettings() == Error()) return;
 
 	mainWnd->Close();
 }
 
-Void BonkEnc::ConfigComponentDialog::Cancel()
+Void freac::ConfigComponentDialog::Cancel()
 {
 	mainWnd->Close();
 }

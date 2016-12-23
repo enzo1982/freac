@@ -16,7 +16,7 @@
 #include <smooth/io/drivers/driver_socks5.h>
 
 #include <cddb/cddbremote.h>
-#include <bonkenc.h>
+#include <freac.h>
 #include <config.h>
 
 #ifdef __WIN32__
@@ -27,7 +27,7 @@
 
 using namespace BoCA;
 
-BonkEnc::CDDBRemote::CDDBRemote()
+freac::CDDBRemote::CDDBRemote()
 {
 	connected = False;
 
@@ -39,11 +39,11 @@ BonkEnc::CDDBRemote::CDDBRemote()
 	out	  = NIL;
 }
 
-BonkEnc::CDDBRemote::~CDDBRemote()
+freac::CDDBRemote::~CDDBRemote()
 {
 }
 
-String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
+String freac::CDDBRemote::SendCommand(const String &iCommand)
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 
@@ -98,7 +98,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 			Net::Protocols::HTTP	 http(String("http://").Append(freedb_server).Append(":").Append(String::FromInt(freedb_http_port)).Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbQueryPathID, Config::FreedbQueryPathDefault)));
 
 			http.SetParameter("cmd", String(command).Replace(" ", "+"));
-			http.SetParameter("hello", String("user ").Append((char *) hostNameBuffer).Append(" ").Append(BonkEnc::appName).Append(" ").Append(BonkEnc::cddbVersion).Replace(" ", "+"));
+			http.SetParameter("hello", String("user ").Append((char *) hostNameBuffer).Append(" ").Append(freac::appName).Append(" ").Append(freac::cddbVersion).Replace(" ", "+"));
 			http.SetParameter("proto", "6");
 
 			http.SetHeaderField("User-Email", config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault));
@@ -144,7 +144,7 @@ String BonkEnc::CDDBRemote::SendCommand(const String &iCommand)
 	return str;
 }
 
-Bool BonkEnc::CDDBRemote::ConnectToServer()
+Bool freac::CDDBRemote::ConnectToServer()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -197,12 +197,12 @@ Bool BonkEnc::CDDBRemote::ConnectToServer()
 
 	gethostname(hostNameBuffer, hostNameBuffer.Size());
 
-	SendCommand(String("cddb hello user ").Append((char *) hostNameBuffer).Append(" ").Append(BonkEnc::appName).Append(" ").Append(BonkEnc::cddbVersion));
+	SendCommand(String("cddb hello user ").Append((char *) hostNameBuffer).Append(" ").Append(freac::appName).Append(" ").Append(freac::cddbVersion));
 
 	return True;
 }
 
-Int BonkEnc::CDDBRemote::Query(const String &queryString)
+Int freac::CDDBRemote::Query(const String &queryString)
 {
 	String	 str = SendCommand(queryString);
 
@@ -294,7 +294,7 @@ Int BonkEnc::CDDBRemote::Query(const String &queryString)
 	return QUERY_RESULT_ERROR;
 }
 
-Bool BonkEnc::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbInfo)
+Bool freac::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbInfo)
 {
 	/* Check cache of already read entries.
 	 */
@@ -345,7 +345,7 @@ Bool BonkEnc::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cdd
 	return True;
 }
 
-Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
+Bool freac::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -361,7 +361,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 	http.SetHeaderField("Category", cddbInfo.category);
 	http.SetHeaderField("Discid", DiscIDToString(cddbInfo.discID));
 	http.SetHeaderField("User-Email", config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault));
-	http.SetHeaderField("Submit-Mode", BonkEnc::cddbMode);
+	http.SetHeaderField("Submit-Mode", freac::cddbMode);
 	http.SetHeaderField("Charset", "UTF-8");
 
 	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbProxyModeID, Config::FreedbProxyModeDefault) != 0)
@@ -391,7 +391,7 @@ Bool BonkEnc::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 	else									  return False;
 }
 
-Bool BonkEnc::CDDBRemote::CloseConnection()
+Bool freac::CDDBRemote::CloseConnection()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 

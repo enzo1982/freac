@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -18,19 +18,19 @@
 using namespace smooth;
 using namespace smooth::GUI;
 
-namespace BonkEnc
+namespace freac
 {
 	class Config;
 
-	abstract class BonkEnc : public GUI::Application
+	abstract class freac : public GUI::Application
 	{
 		protected:
 			/* Singleton class, therefore protected constructor/destructor
 			 */
-			static BonkEnc	*instance;
+			static freac	*instance;
 
-					 BonkEnc();
-			virtual		~BonkEnc();
+					 freac();
+			virtual		~freac();
 
 			Config		*currentConfig;
 		public:

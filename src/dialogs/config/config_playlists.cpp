@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -19,7 +19,7 @@ using namespace BoCA::AS;
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
+freac::ConfigurePlaylists::ConfigurePlaylists()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -129,7 +129,7 @@ BonkEnc::ConfigurePlaylists::ConfigurePlaylists()
 	SetSize(Size(566, 221));
 }
 
-BonkEnc::ConfigurePlaylists::~ConfigurePlaylists()
+freac::ConfigurePlaylists::~ConfigurePlaylists()
 {
 	DeleteObject(group_outdir);
 	DeleteObject(check_useEncOutdir);
@@ -148,7 +148,7 @@ BonkEnc::ConfigurePlaylists::~ConfigurePlaylists()
 	DeleteObject(button_config);
 }
 
-Void BonkEnc::ConfigurePlaylists::SelectDir()
+Void freac::ConfigurePlaylists::SelectDir()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -168,7 +168,7 @@ Void BonkEnc::ConfigurePlaylists::SelectDir()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::ConfigurePlaylists::ConfigureFormat()
+Void freac::ConfigurePlaylists::ConfigureFormat()
 {
 	Registry	&boca = Registry::Get();
 	String		 componentID;
@@ -219,7 +219,7 @@ Void BonkEnc::ConfigurePlaylists::ConfigureFormat()
 	}
 }
 
-Void BonkEnc::ConfigurePlaylists::ToggleCreatePlaylists()
+Void freac::ConfigurePlaylists::ToggleCreatePlaylists()
 {
 	if (createPlaylists || createCueSheets)
 	{
@@ -244,7 +244,7 @@ Void BonkEnc::ConfigurePlaylists::ToggleCreatePlaylists()
 	}
 }
 
-Void BonkEnc::ConfigurePlaylists::ToggleUseEncOutdir()
+Void freac::ConfigurePlaylists::ToggleUseEncOutdir()
 {
 	if (useEncOutdir)
 	{
@@ -258,7 +258,7 @@ Void BonkEnc::ConfigurePlaylists::ToggleUseEncOutdir()
 	}
 }
 
-Int BonkEnc::ConfigurePlaylists::SaveSettings()
+Int freac::ConfigurePlaylists::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 

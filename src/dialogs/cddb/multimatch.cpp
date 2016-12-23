@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -14,9 +14,9 @@
 #include <config.h>
 #include <resources.h>
 
-Int	 BonkEnc::cddbMultiMatchDlg::previewCount = 0;
+Int	 freac::cddbMultiMatchDlg::previewCount = 0;
 
-BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(CDDB &iCDDB, Bool fuzzy) : cddb(iCDDB)
+freac::cddbMultiMatchDlg::cddbMultiMatchDlg(CDDB &iCDDB, Bool fuzzy) : cddb(iCDDB)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -76,7 +76,7 @@ BonkEnc::cddbMultiMatchDlg::cddbMultiMatchDlg(CDDB &iCDDB, Bool fuzzy) : cddb(iC
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::cddbMultiMatchDlg::~cddbMultiMatchDlg()
+freac::cddbMultiMatchDlg::~cddbMultiMatchDlg()
 {
 	DeleteObject(text_match);
 	DeleteObject(combo_match);
@@ -93,14 +93,14 @@ BonkEnc::cddbMultiMatchDlg::~cddbMultiMatchDlg()
 	DeleteObject(btn_cancel);
 }
 
-const Error &BonkEnc::cddbMultiMatchDlg::ShowDialog()
+const Error &freac::cddbMultiMatchDlg::ShowDialog()
 {
 	mainWnd->WaitUntilClosed();
 
 	return error;
 }
 
-Void BonkEnc::cddbMultiMatchDlg::OK()
+Void freac::cddbMultiMatchDlg::OK()
 {
 	/* Hide window.
 	 */
@@ -113,7 +113,7 @@ Void BonkEnc::cddbMultiMatchDlg::OK()
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbMultiMatchDlg::Cancel()
+Void freac::cddbMultiMatchDlg::Cancel()
 {
 	/* Hide window.
 	 */
@@ -128,7 +128,7 @@ Void BonkEnc::cddbMultiMatchDlg::Cancel()
 	error = Error();
 }
 
-Int BonkEnc::cddbMultiMatchDlg::AddEntry(const String &category, const String &title, Int discID)
+Int freac::cddbMultiMatchDlg::AddEntry(const String &category, const String &title, Int discID)
 {
 	combo_match->AddEntry(String("(").Append(category).Append(") ").Append(title));
 
@@ -138,7 +138,7 @@ Int BonkEnc::cddbMultiMatchDlg::AddEntry(const String &category, const String &t
 	return Success();
 }
 
-Void BonkEnc::cddbMultiMatchDlg::SelectEntry()
+Void freac::cddbMultiMatchDlg::SelectEntry()
 {
 	/* Give last preview loader thread enough time to exit.
 	 */
@@ -161,7 +161,7 @@ Void BonkEnc::cddbMultiMatchDlg::SelectEntry()
 	else				text_loading_preview->Hide();
 }
 
-Void BonkEnc::cddbMultiMatchDlg::LoadPreview(Int index)
+Void freac::cddbMultiMatchDlg::LoadPreview(Int index)
 {
 	Int	 me = previewCount;
 
@@ -186,7 +186,7 @@ Void BonkEnc::cddbMultiMatchDlg::LoadPreview(Int index)
 	}
 }
 
-Void BonkEnc::cddbMultiMatchDlg::CleanUpPreviews()
+Void freac::cddbMultiMatchDlg::CleanUpPreviews()
 {
 	/* Give preview loader threads enough time to exit.
 	 */
@@ -207,7 +207,7 @@ Void BonkEnc::cddbMultiMatchDlg::CleanUpPreviews()
 	foreach (Threads::Thread *thread, loadPreviewThreads) thread->Stop();
 }
 
-Int BonkEnc::cddbMultiMatchDlg::GetSelectedEntryNumber()
+Int freac::cddbMultiMatchDlg::GetSelectedEntryNumber()
 {
 	return combo_match->GetSelectedEntryNumber();
 }

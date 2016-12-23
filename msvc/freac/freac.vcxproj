@@ -153,7 +153,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\bonkenc.cpp" />
     <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\dialogs\charset.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_resources.cpp" />
@@ -164,6 +163,7 @@
     <ClCompile Include="..\..\src\engine\verifier.cpp" />
     <ClCompile Include="..\..\src\engine\worker.cpp" />
     <ClCompile Include="..\..\src\engine\worker_singlefile.cpp" />
+    <ClCompile Include="..\..\src\freac.cpp" />
     <ClCompile Include="..\..\src\gui\edit_folder.cpp" />
     <ClCompile Include="..\..\src\gui\player.cpp" />
     <ClCompile Include="..\..\src\joblist.cpp" />
@@ -251,7 +251,6 @@
     <ClCompile Include="..\..\src\engine\encoder.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\bonkenc.h" />
     <ClInclude Include="..\..\include\config.h" />
     <ClInclude Include="..\..\include\dialogs\charset.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_resources.h" />
@@ -262,6 +261,7 @@
     <ClInclude Include="..\..\include\engine\verifier.h" />
     <ClInclude Include="..\..\include\engine\worker.h" />
     <ClInclude Include="..\..\include\engine\worker_singlefile.h" />
+    <ClInclude Include="..\..\include\freac.h" />
     <ClInclude Include="..\..\include\gui\edit_folder.h" />
     <ClInclude Include="..\..\include\gui\player.h" />
     <ClInclude Include="..\..\include\joblist.h" />

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -40,18 +40,18 @@ static Int GetDriveNumber(const DEV_BROADCAST_VOLUME &dbcv)
 	return -1;
 }
 
-BonkEnc::Notification *BonkEnc::Notification::instance = NIL;
+freac::Notification	*freac::Notification::instance = NIL;
 
-BonkEnc::Notification::Notification()
+freac::Notification::Notification()
 {
 	privateData = NIL;
 }
 
-BonkEnc::Notification::~Notification()
+freac::Notification::~Notification()
 {
 }
 
-BonkEnc::Notification *BonkEnc::Notification::Get()
+freac::Notification *freac::Notification::Get()
 {
 	if (instance == NIL)
 	{
@@ -61,7 +61,7 @@ BonkEnc::Notification *BonkEnc::Notification::Get()
 	return instance;
 }
 
-Void BonkEnc::Notification::Free()
+Void freac::Notification::Free()
 {
 	if (instance != NIL)
 	{
@@ -71,7 +71,7 @@ Void BonkEnc::Notification::Free()
 	}
 }
 
-Void BonkEnc::Notification::ProcessSystemMessage(Int message, Int wParam, Int lParam)
+Void freac::Notification::ProcessSystemMessage(Int message, Int wParam, Int lParam)
 {
 	if (message != WM_DEVICECHANGE) return;
 

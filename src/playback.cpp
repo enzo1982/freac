@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -12,7 +12,7 @@
 
 #include <playback.h>
 #include <utilities.h>
-#include <bonkenc.h>
+#include <freac.h>
 
 #include <jobs/engine/convert.h>
 
@@ -21,9 +21,9 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::Playback *BonkEnc::Playback::instance = NIL;
+freac::Playback	*freac::Playback::instance = NIL;
 
-BonkEnc::Playback::Playback()
+freac::Playback::Playback()
 {
 	playing	    = False;
 	paused	    = False;
@@ -35,11 +35,11 @@ BonkEnc::Playback::Playback()
 	newPosition = -1;
 }
 
-BonkEnc::Playback::~Playback()
+freac::Playback::~Playback()
 {
 }
 
-BonkEnc::Playback *BonkEnc::Playback::Get()
+freac::Playback *freac::Playback::Get()
 {
 	if (instance == NIL)
 	{
@@ -49,7 +49,7 @@ BonkEnc::Playback *BonkEnc::Playback::Get()
 	return instance;
 }
 
-Void BonkEnc::Playback::Free()
+Void freac::Playback::Free()
 {
 	if (instance != NIL)
 	{
@@ -59,7 +59,7 @@ Void BonkEnc::Playback::Free()
 	}
 }
 
-Void BonkEnc::Playback::Play(const Track &iTrack)
+Void freac::Playback::Play(const Track &iTrack)
 {
 	if (JobConvert::IsConverting())
 	{
@@ -87,7 +87,7 @@ Void BonkEnc::Playback::Play(const Track &iTrack)
 	NonBlocking0<>(&Playback::PlayThread, this).Call();
 }
 
-Int BonkEnc::Playback::PlayThread()
+Int freac::Playback::PlayThread()
 {
 	BoCA::Config	*config = BoCA::Config::Copy();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -230,7 +230,7 @@ Int BonkEnc::Playback::PlayThread()
 	return Success();
 }
 
-Void BonkEnc::Playback::Pause()
+Void freac::Playback::Pause()
 {
 	if (!playing) return;
 
@@ -239,7 +239,7 @@ Void BonkEnc::Playback::Pause()
 	paused = True;
 }
 
-Void BonkEnc::Playback::Resume()
+Void freac::Playback::Resume()
 {
 	if (!playing) return;
 
@@ -248,14 +248,14 @@ Void BonkEnc::Playback::Resume()
 	paused = False;
 }
 
-Void BonkEnc::Playback::SetPosition(Int position)
+Void freac::Playback::SetPosition(Int position)
 {
 	if (!playing) return;
 
 	newPosition = position;
 }
 
-Void BonkEnc::Playback::Stop()
+Void freac::Playback::Stop()
 {
 	if (!playing) return;
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -26,7 +26,7 @@ using namespace smooth::IO;
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iSize)
+freac::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iSize)
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -63,21 +63,21 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 	droparea = new DropArea(iPos, iSize);
 	droparea->onDropFiles.Connect(&JobList::AddTracksByDragAndDrop, this);
 
-	Config	*bonkEncConfig	= Config::Get();
+	Config	*freacConfig	= Config::Get();
 
 	text			= new Text(NIL, iPos - Point(9, 19));
 
-	button_sel_all		= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:18")), iPos - Point(19, 4), Size(21, 21));
+	button_sel_all		= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:18")), iPos - Point(19, 4), Size(21, 21));
 	button_sel_all->onAction.Connect(&JobList::SelectAll, this);
 	button_sel_all->SetFlags(BF_NOFRAME);
 	button_sel_all->SetTooltipText(i18n->TranslateString("Select all"));
 
-	button_sel_none		= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:19")), iPos - Point(19, -10), Size(21, 21));
+	button_sel_none		= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:19")), iPos - Point(19, -10), Size(21, 21));
 	button_sel_none->onAction.Connect(&JobList::SelectNone, this);
 	button_sel_none->SetFlags(BF_NOFRAME);
 	button_sel_none->SetTooltipText(i18n->TranslateString("Select none"));
 
-	button_sel_toggle	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:20")), iPos - Point(19, -24), Size(21, 21));
+	button_sel_toggle	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:20")), iPos - Point(19, -24), Size(21, 21));
 	button_sel_toggle->onAction.Connect(&JobList::ToggleSelection, this);
 	button_sel_toggle->SetFlags(BF_NOFRAME);
 	button_sel_toggle->SetTooltipText(i18n->TranslateString("Toggle selection"));
@@ -87,7 +87,7 @@ BonkEnc::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, 
 	OnChangeConfigurationSettings();
 }
 
-BonkEnc::JobList::~JobList()
+freac::JobList::~JobList()
 {
 	/* Save tab field sizes.
 	 */
@@ -128,12 +128,12 @@ BonkEnc::JobList::~JobList()
 	DeleteObject(button_sel_toggle);
 }
 
-Int BonkEnc::JobList::GetNOfTracks() const
+Int freac::JobList::GetNOfTracks() const
 {
 	return tracks.Length();
 }
 
-const BoCA::Track &BonkEnc::JobList::GetNthTrack(Int n) const
+const BoCA::Track &freac::JobList::GetNthTrack(Int n) const
 {
 	static Track	 nil(NIL);
 
@@ -145,12 +145,12 @@ const BoCA::Track &BonkEnc::JobList::GetNthTrack(Int n) const
 	return tracks.Get(GetNthEntry(n)->GetHandle());
 }
 
-const Array<BoCA::Track> *BonkEnc::JobList::GetTrackList()
+const Array<BoCA::Track> *freac::JobList::GetTrackList()
 {
 	return &tracks;
 }
 
-Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
+Bool freac::JobList::AddTrack(const Track &iTrack)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	Track		 track	= iTrack;
@@ -174,7 +174,7 @@ Bool BonkEnc::JobList::AddTrack(const Track &iTrack)
 	return True;
 }
 
-Bool BonkEnc::JobList::RemoveTrack(const Track &track)
+Bool freac::JobList::RemoveTrack(const Track &track)
 {
 	ListEntry	*entry = GetEntryByTrack(track);
 
@@ -211,7 +211,7 @@ Bool BonkEnc::JobList::RemoveTrack(const Track &track)
 	return True;
 }
 
-Bool BonkEnc::JobList::RemoveNthTrack(Int n)
+Bool freac::JobList::RemoveNthTrack(Int n)
 {
 	ListEntry	*entry = GetNthEntry(n);
 	const Track	&track = tracks.Get(entry->GetHandle());
@@ -221,7 +221,7 @@ Bool BonkEnc::JobList::RemoveNthTrack(Int n)
 	return True;
 }
 
-Bool BonkEnc::JobList::RemoveAllTracks()
+Bool freac::JobList::RemoveAllTracks()
 {
 	Surface	*surface = GetDrawSurface();
 
@@ -258,24 +258,24 @@ Bool BonkEnc::JobList::RemoveAllTracks()
 	return True;
 }
 
-Void BonkEnc::JobList::StartJobRemoveAllTracks()
+Void freac::JobList::StartJobRemoveAllTracks()
 {
 	(new JobRemoveAllTracks())->Schedule();
 }
 
-const BoCA::Track &BonkEnc::JobList::GetSelectedTrack() const
+const BoCA::Track &freac::JobList::GetSelectedTrack() const
 {
 	return GetNthTrack(GetSelectedEntryNumber());
 }
 
-Int BonkEnc::JobList::SetMetrics(const Point &nPos, const Size &nSize)
+Int freac::JobList::SetMetrics(const Point &nPos, const Size &nSize)
 {
 	droparea->SetMetrics(nPos, nSize);
 
 	return ListBox::SetMetrics(nPos, nSize);
 }
 
-Void BonkEnc::JobList::AddTrackByDialog()
+Void freac::JobList::AddTrackByDialog()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -348,7 +348,7 @@ Void BonkEnc::JobList::AddTrackByDialog()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::JobList::AddTracksByDragAndDrop(const Array<String> &files)
+Void freac::JobList::AddTracksByDragAndDrop(const Array<String> &files)
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -371,7 +371,7 @@ Void BonkEnc::JobList::AddTracksByDragAndDrop(const Array<String> &files)
 	foreach (const String &directory, directoriesToAdd) (new JobAddDirectory(directory))->Schedule();
 }
 
-Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String &pattern, Bool searchSubDirectories)
+Void freac::JobList::AddTracksByPattern(const String &directory, const String &pattern, Bool searchSubDirectories)
 {
 	Array<String>	 jobFiles;
 
@@ -391,7 +391,7 @@ Void BonkEnc::JobList::AddTracksByPattern(const String &directory, const String 
 	}
 }
 
-Void BonkEnc::JobList::FindTracksByPattern(Array<String> &jobFiles, const String &directory, const String &pattern, Bool searchSubDirectories) const
+Void freac::JobList::FindTracksByPattern(Array<String> &jobFiles, const String &directory, const String &pattern, Bool searchSubDirectories) const
 {
 	Directory	 dir = Directory(directory);
 
@@ -419,7 +419,7 @@ Void BonkEnc::JobList::FindTracksByPattern(Array<String> &jobFiles, const String
 	}
 }
 
-Void BonkEnc::JobList::UpdateTrackInfo(const Track &track)
+Void freac::JobList::UpdateTrackInfo(const Track &track)
 {
 	ListEntry	*entry = GetEntryByTrack(track);
 
@@ -455,7 +455,7 @@ Void BonkEnc::JobList::UpdateTrackInfo(const Track &track)
 	BoCA::JobList::Get()->onApplicationModifyTrack.Emit(track);
 }
 
-Void BonkEnc::JobList::RemoveSelectedTrack()
+Void freac::JobList::RemoveSelectedTrack()
 {
 	if (GetSelectedEntry() == NIL)
 	{
@@ -487,7 +487,7 @@ Void BonkEnc::JobList::RemoveSelectedTrack()
 	}
 }
 
-Void BonkEnc::JobList::SelectAll()
+Void freac::JobList::SelectAll()
 {
 	for (Int i = 0; i < Length(); i++)
 	{
@@ -495,7 +495,7 @@ Void BonkEnc::JobList::SelectAll()
 	}
 }
 
-Void BonkEnc::JobList::SelectNone()
+Void freac::JobList::SelectNone()
 {
 	for (Int i = 0; i < Length(); i++)
 	{
@@ -503,7 +503,7 @@ Void BonkEnc::JobList::SelectNone()
 	}
 }
 
-Void BonkEnc::JobList::ToggleSelection()
+Void freac::JobList::ToggleSelection()
 {
 	for (Int i = 0; i < Length(); i++)
 	{
@@ -512,7 +512,7 @@ Void BonkEnc::JobList::ToggleSelection()
 	}
 }
 
-Void BonkEnc::JobList::LoadList()
+Void freac::JobList::LoadList()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -613,7 +613,7 @@ Void BonkEnc::JobList::LoadList()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::JobList::SaveList()
+Void freac::JobList::SaveList()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -723,7 +723,7 @@ Void BonkEnc::JobList::SaveList()
 	DeleteObject(dialog);
 }
 
-Bool BonkEnc::JobList::SortsAfter(const String &str1, const String &str2) const
+Bool freac::JobList::SortsAfter(const String &str1, const String &str2) const
 {
 	Int	 length = Math::Min(str1.Length(), str2.Length());
 
@@ -737,7 +737,7 @@ Bool BonkEnc::JobList::SortsAfter(const String &str1, const String &str2) const
 	else				   return False;
 }
 
-Void BonkEnc::JobList::OnRegister(Widget *container)
+Void freac::JobList::OnRegister(Widget *container)
 {
 	container->Add(droparea);
 	container->Add(text);
@@ -750,7 +750,7 @@ Void BonkEnc::JobList::OnRegister(Widget *container)
 	BoCA::Settings::Get()->onChangeLanguageSettings.Connect(&JobList::OnChangeLanguageSettings, this);
 }
 
-Void BonkEnc::JobList::OnUnregister(Widget *container)
+Void freac::JobList::OnUnregister(Widget *container)
 {
 	container->Remove(droparea);
 	container->Remove(text);
@@ -763,12 +763,12 @@ Void BonkEnc::JobList::OnUnregister(Widget *container)
 	BoCA::Settings::Get()->onChangeLanguageSettings.Disconnect(&JobList::OnChangeLanguageSettings, this);
 }
 
-Void BonkEnc::JobList::OnSelectEntry()
+Void freac::JobList::OnSelectEntry()
 {
 	BoCA::JobList::Get()->onApplicationSelectTrack.Emit(GetSelectedTrack());
 }
 
-Void BonkEnc::JobList::OnMarkEntry(ListEntry *entry)
+Void freac::JobList::OnMarkEntry(ListEntry *entry)
 {
 	if (tracks.Get(entry->GetHandle()) == NIL) return;
 
@@ -776,7 +776,7 @@ Void BonkEnc::JobList::OnMarkEntry(ListEntry *entry)
 	else			BoCA::JobList::Get()->onApplicationUnmarkTrack.Emit(tracks.Get(entry->GetHandle()));
 }
 
-Void BonkEnc::JobList::OnClickTab(Int n)
+Void freac::JobList::OnClickTab(Int n)
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 
@@ -927,28 +927,28 @@ Void BonkEnc::JobList::OnClickTab(Int n)
 	Paint(SP_UPDATE);
 }
 
-Void BonkEnc::JobList::OnComponentSelectTrack(const Track &track)
+Void freac::JobList::OnComponentSelectTrack(const Track &track)
 {
 	ListEntry	*entry = GetEntryByTrack(track);
 
 	if (entry != NIL && GetSelectedEntry() != entry) SelectEntry(entry);
 }
 
-Void BonkEnc::JobList::OnComponentMarkTrack(const Track &track)
+Void freac::JobList::OnComponentMarkTrack(const Track &track)
 {
 	ListEntry	*entry = GetEntryByTrack(track);
 
 	if (entry != NIL) entry->SetMark(True);
 }
 
-Void BonkEnc::JobList::OnComponentUnmarkTrack(const Track &track)
+Void freac::JobList::OnComponentUnmarkTrack(const Track &track)
 {
 	ListEntry	*entry = GetEntryByTrack(track);
 
 	if (entry != NIL) entry->SetMark(False);
 }
 
-ListEntry *BonkEnc::JobList::GetEntryByTrack(const Track &track) const
+ListEntry *freac::JobList::GetEntryByTrack(const Track &track) const
 {
 	for (Int i = 0; i < GetNOfTracks(); i++)
 	{
@@ -958,7 +958,7 @@ ListEntry *BonkEnc::JobList::GetEntryByTrack(const Track &track) const
 	return NIL;
 }
 
-Void BonkEnc::JobList::OnChangeConfigurationSettings()
+Void freac::JobList::OnChangeConfigurationSettings()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 
@@ -972,7 +972,7 @@ Void BonkEnc::JobList::OnChangeConfigurationSettings()
 	headerTabsHash = headerTabsConfig.ComputeCRC32();
 }
 
-Void BonkEnc::JobList::OnChangeLanguageSettings()
+Void freac::JobList::OnChangeLanguageSettings()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -1006,7 +1006,7 @@ Void BonkEnc::JobList::OnChangeLanguageSettings()
 	Show();
 }
 
-Void BonkEnc::JobList::OnChangeHeaderColumns()
+Void freac::JobList::OnChangeHeaderColumns()
 {
 	Surface	*surface = GetDrawSurface();
 
@@ -1029,7 +1029,7 @@ Void BonkEnc::JobList::OnChangeHeaderColumns()
 	surface->EndPaint();
 }
 
-Void BonkEnc::JobList::AddHeaderTabs()
+Void freac::JobList::AddHeaderTabs()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -1076,7 +1076,7 @@ Void BonkEnc::JobList::AddHeaderTabs()
 	String::ExplodeFinish();
 }
 
-Void BonkEnc::JobList::UpdateTextLine()
+Void freac::JobList::UpdateTextLine()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -1085,7 +1085,7 @@ Void BonkEnc::JobList::UpdateTextLine()
 	text->SetText(i18n->AddColon(i18n->TranslateString("%1 file(s) in joblist").Replace("%1", String::FromInt(GetNOfTracks()))));
 }
 
-String BonkEnc::JobList::GetEntryText(const Track &track) const
+String freac::JobList::GetEntryText(const Track &track) const
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();

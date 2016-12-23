@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -20,7 +20,7 @@ using namespace smooth::GUI::Dialogs;
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
+freac::LayerThreads::LayerThreads() : Layer("Jobs")
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -66,7 +66,7 @@ BonkEnc::LayerThreads::LayerThreads() : Layer("Jobs")
 	Job::onChange.Connect(&LayerThreads::OnChangeJobs, this);
 }
 
-BonkEnc::LayerThreads::~LayerThreads()
+freac::LayerThreads::~LayerThreads()
 {
 	Job::onChange.Disconnect(&LayerThreads::OnChangeJobs, this);
 
@@ -81,7 +81,7 @@ BonkEnc::LayerThreads::~LayerThreads()
 	DeleteObject(button_details);
 }
 
-Void BonkEnc::LayerThreads::OnChangeSize(const Size &nSize)
+Void freac::LayerThreads::OnChangeSize(const Size &nSize)
 {
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -91,7 +91,7 @@ Void BonkEnc::LayerThreads::OnChangeSize(const Size &nSize)
 	combo_errors->SetWidth(clientSize.cx - text_errors->GetUnscaledTextWidth() - 142);
 }
 
-Void BonkEnc::LayerThreads::OnChangeLanguageSettings()
+Void freac::LayerThreads::OnChangeLanguageSettings()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -123,7 +123,7 @@ Void BonkEnc::LayerThreads::OnChangeLanguageSettings()
 	if (prevVisible) Show();
 }
 
-Void BonkEnc::LayerThreads::OnChangeJobs()
+Void freac::LayerThreads::OnChangeJobs()
 {
 	Surface	*surface = GetDrawSurface();
 
@@ -151,7 +151,7 @@ Void BonkEnc::LayerThreads::OnChangeJobs()
 	surface->EndPaint();
 }
 
-Void BonkEnc::LayerThreads::OnSelectJob(ListEntry *entry)
+Void freac::LayerThreads::OnSelectJob(ListEntry *entry)
 {
 	Job	*job = (Job *) entry;
 
@@ -180,7 +180,7 @@ Void BonkEnc::LayerThreads::OnSelectJob(ListEntry *entry)
 	}
 }
 
-Void BonkEnc::LayerThreads::ShowDetails()
+Void freac::LayerThreads::ShowDetails()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 

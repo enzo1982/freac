@@ -27,7 +27,7 @@ using namespace BoCA;
 
 using namespace smooth::GUI::Dialogs;
 
-BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
+freac::cddbSubmitDlg::cddbSubmitDlg()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -307,7 +307,7 @@ BonkEnc::cddbSubmitDlg::cddbSubmitDlg()
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::cddbSubmitDlg::~cddbSubmitDlg()
+freac::cddbSubmitDlg::~cddbSubmitDlg()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -356,7 +356,7 @@ BonkEnc::cddbSubmitDlg::~cddbSubmitDlg()
 	DeleteObject(btn_cancel);
 }
 
-const Error &BonkEnc::cddbSubmitDlg::ShowDialog()
+const Error &freac::cddbSubmitDlg::ShowDialog()
 {
 	ChangeDrive();
 
@@ -365,7 +365,7 @@ const Error &BonkEnc::cddbSubmitDlg::ShowDialog()
 	return error;
 }
 
-Void BonkEnc::cddbSubmitDlg::Submit()
+Void freac::cddbSubmitDlg::Submit()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -488,12 +488,12 @@ Void BonkEnc::cddbSubmitDlg::Submit()
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbSubmitDlg::Cancel()
+Void freac::cddbSubmitDlg::Cancel()
 {
 	mainWnd->Close();
 }
 
-Void BonkEnc::cddbSubmitDlg::SetArtist()
+Void freac::cddbSubmitDlg::SetArtist()
 {
 	if (dontUpdateInfo) return;
 
@@ -520,7 +520,7 @@ Void BonkEnc::cddbSubmitDlg::SetArtist()
 	UpdateTrackList();
 }
 
-Void BonkEnc::cddbSubmitDlg::UpdateTrackList()
+Void freac::cddbSubmitDlg::UpdateTrackList()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -534,7 +534,7 @@ Void BonkEnc::cddbSubmitDlg::UpdateTrackList()
 	}
 }
 
-Void BonkEnc::cddbSubmitDlg::ChangeDrive()
+Void freac::cddbSubmitDlg::ChangeDrive()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -800,7 +800,7 @@ Void BonkEnc::cddbSubmitDlg::ChangeDrive()
 	dontUpdateInfo = False;
 }
 
-Void BonkEnc::cddbSubmitDlg::SelectTrack()
+Void freac::cddbSubmitDlg::SelectTrack()
 {
 	if (list_tracks->GetSelectedEntry() == NIL) return;
 
@@ -843,7 +843,7 @@ Void BonkEnc::cddbSubmitDlg::SelectTrack()
 	dontUpdateInfo = False;
 }
 
-Void BonkEnc::cddbSubmitDlg::UpdateTrack()
+Void freac::cddbSubmitDlg::UpdateTrack()
 {
 	if (dontUpdateInfo) return;
 	if (list_tracks->GetSelectedEntry() == NIL) return;
@@ -863,14 +863,14 @@ Void BonkEnc::cddbSubmitDlg::UpdateTrack()
 	titles.Set(list_tracks->GetSelectedEntry()->GetHandle(), edit_title->GetText());
 }
 
-Void BonkEnc::cddbSubmitDlg::FinishArtist()
+Void freac::cddbSubmitDlg::FinishArtist()
 {
 	edit_title->MarkAll();
 
 	finishedArtist = True;
 }
 
-Void BonkEnc::cddbSubmitDlg::FinishTrack()
+Void freac::cddbSubmitDlg::FinishTrack()
 {
 	if (finishedArtist)
 	{
@@ -894,7 +894,7 @@ Void BonkEnc::cddbSubmitDlg::FinishTrack()
 	}
 }
 
-Widget *BonkEnc::cddbSubmitDlg::GetActiveEditBox()
+Widget *freac::cddbSubmitDlg::GetActiveEditBox()
 {
 	if	(edit_artist->IsFocussed())	 return edit_artist;
 	else if	(edit_trackartist->IsFocussed()) return edit_trackartist;
@@ -909,7 +909,7 @@ Widget *BonkEnc::cddbSubmitDlg::GetActiveEditBox()
 	return NIL;
 }
 
-Void BonkEnc::cddbSubmitDlg::OnShortcutPrevious()
+Void freac::cddbSubmitDlg::OnShortcutPrevious()
 {
 	if (edit_comment->IsFocussed()) return;
 
@@ -917,28 +917,28 @@ Void BonkEnc::cddbSubmitDlg::OnShortcutPrevious()
 	else						 list_tracks->SelectNthEntry(list_tracks->GetSelectedEntryNumber() - 1);
 }
 
-Void BonkEnc::cddbSubmitDlg::OnShortcutNext()
+Void freac::cddbSubmitDlg::OnShortcutNext()
 {
 	if (edit_comment->IsFocussed()) return;
 
 	list_tracks->SelectNthEntry(list_tracks->GetSelectedEntryNumber() + 1);
 }
 
-Void BonkEnc::cddbSubmitDlg::OnShortcutFirst()
+Void freac::cddbSubmitDlg::OnShortcutFirst()
 {
 	if (GetActiveEditBox() != NIL) return;
 
 	list_tracks->SelectNthEntry(0);
 }
 
-Void BonkEnc::cddbSubmitDlg::OnShortcutLast()
+Void freac::cddbSubmitDlg::OnShortcutLast()
 {
 	if (GetActiveEditBox() != NIL) return;
 
 	list_tracks->SelectNthEntry(list_tracks->Length() - 1);
 }
 
-Void BonkEnc::cddbSubmitDlg::UpdateComment()
+Void freac::cddbSubmitDlg::UpdateComment()
 {
 	if (dontUpdateInfo) return;
 	if (list_tracks->GetSelectedEntry() == NIL) return;
@@ -946,7 +946,7 @@ Void BonkEnc::cddbSubmitDlg::UpdateComment()
 	comments.Set(list_tracks->GetSelectedEntry()->GetHandle(), edit_comment->GetText());
 }
 
-Void BonkEnc::cddbSubmitDlg::ToggleSubmitLater()
+Void freac::cddbSubmitDlg::ToggleSubmitLater()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -957,7 +957,7 @@ Void BonkEnc::cddbSubmitDlg::ToggleSubmitLater()
 	else																    btn_submit->SetText(i18n->TranslateString("Save entry"));
 }
 
-Bool BonkEnc::cddbSubmitDlg::IsDataValid()
+Bool freac::cddbSubmitDlg::IsDataValid()
 {
 	Bool	 sane = True;
 
@@ -981,7 +981,7 @@ Bool BonkEnc::cddbSubmitDlg::IsDataValid()
 	return sane;
 }
 
-Bool BonkEnc::cddbSubmitDlg::IsStringValid(const String &text)
+Bool freac::cddbSubmitDlg::IsStringValid(const String &text)
 {
 	Bool	 valid = False;
 
@@ -1008,7 +1008,7 @@ Bool BonkEnc::cddbSubmitDlg::IsStringValid(const String &text)
 	return valid;
 }
 
-String BonkEnc::cddbSubmitDlg::GetCDDBGenre(const String &genre)
+String freac::cddbSubmitDlg::GetCDDBGenre(const String &genre)
 {
 	String	 cddbGenre = "misc";
 

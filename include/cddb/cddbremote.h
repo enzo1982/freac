@@ -18,7 +18,7 @@
 
 using namespace smooth::IO;
 
-namespace BonkEnc
+namespace freac
 {
 	class CDDBRemote : public CDDB
 	{

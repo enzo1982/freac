@@ -28,7 +28,7 @@ using namespace smooth::GUI::Dialogs;
 using namespace BoCA;
 using namespace BoCA::AS;
 
-BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
+freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -517,7 +517,7 @@ BonkEnc::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	onChangeSize.Connect(&LayerJoblist::OnChangeSize, this);
 }
 
-BonkEnc::LayerJoblist::~LayerJoblist()
+freac::LayerJoblist::~LayerJoblist()
 {
 	BoCA::Settings::Get()->onChangeLanguageSettings.Disconnect(&LayerJoblist::OnChangeLanguageSettings, this);
 
@@ -608,7 +608,7 @@ BonkEnc::LayerJoblist::~LayerJoblist()
 	DeleteObject(menu_case_all);
 }
 
-Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
+Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -711,7 +711,7 @@ Void BonkEnc::LayerJoblist::OnChangeSize(const Size &nSize)
 	else							  check_playlist->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_playlist->GetUnscaledTextWidth() + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->GetUnscaledTextWidth() + 21, check_playlist->GetHeight()));
 }
 
-Void BonkEnc::LayerJoblist::OnChangeLanguageSettings()
+Void freac::LayerJoblist::OnChangeLanguageSettings()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -804,7 +804,7 @@ Void BonkEnc::LayerJoblist::OnChangeLanguageSettings()
 	FillMenus();
 }
 
-Void BonkEnc::LayerJoblist::FillMenus()
+Void freac::LayerJoblist::FillMenus()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -892,7 +892,7 @@ Void BonkEnc::LayerJoblist::FillMenus()
 	menu_edit_year->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&LayerJoblist::UseStringForSelectedTracks, this);
 }
 
-Void BonkEnc::LayerJoblist::UpdateEncoderText()
+Void freac::LayerJoblist::UpdateEncoderText()
 {
 	if (!combo_encoder->IsActive()) return;
 
@@ -908,7 +908,7 @@ Void BonkEnc::LayerJoblist::UpdateEncoderText()
 	}
 }
 
-Void BonkEnc::LayerJoblist::OnJoblistSelectTrack(const Track &track)
+Void freac::LayerJoblist::OnJoblistSelectTrack(const Track &track)
 {
 	Surface	*surface = GetDrawSurface();
 
@@ -929,7 +929,7 @@ Void BonkEnc::LayerJoblist::OnJoblistSelectTrack(const Track &track)
 	surface->EndPaint();
 }
 
-Void BonkEnc::LayerJoblist::OnJoblistModifyTrack(const Track &track)
+Void freac::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 {
 	if (joblist->GetSelectedTrack().GetTrackID() != track.GetTrackID()) return;
 
@@ -964,7 +964,7 @@ Void BonkEnc::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 	dontUpdateInfo = False;
 }
 
-Void BonkEnc::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
+Void freac::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
 {
 	/* Clear and deactivate edit boxes if the selected track is removed.
 	 */
@@ -998,7 +998,7 @@ Void BonkEnc::LayerJoblist::OnJoblistRemoveTrack(const Track &track)
 	}
 }
 
-Void BonkEnc::LayerJoblist::OnJoblistRemoveAllTracks()
+Void freac::LayerJoblist::OnJoblistRemoveAllTracks()
 {
 	/* Clear and deactivate edit boxes.
 	 */
@@ -1029,7 +1029,7 @@ Void BonkEnc::LayerJoblist::OnJoblistRemoveAllTracks()
 	dontUpdateInfo = False;
 }
 
-EditBox *BonkEnc::LayerJoblist::GetActiveEditBox()
+EditBox *freac::LayerJoblist::GetActiveEditBox()
 {
 	if	(info_edit_artist->IsFocussed()) return info_edit_artist;
 	else if	(info_edit_title->IsFocussed())	 return info_edit_title;
@@ -1041,13 +1041,13 @@ EditBox *BonkEnc::LayerJoblist::GetActiveEditBox()
 	return NIL;
 }
 
-Void BonkEnc::LayerJoblist::FocusEditBox(EditBox *editBox)
+Void freac::LayerJoblist::FocusEditBox(EditBox *editBox)
 {
 	editBox->SetFocus();
 	editBox->MarkAll();
 }
 
-Void BonkEnc::LayerJoblist::ShowCoverArea()
+Void freac::LayerJoblist::ShowCoverArea()
 {
 	if (info_text_artist->GetX() > 7) return;
 
@@ -1072,7 +1072,7 @@ Void BonkEnc::LayerJoblist::ShowCoverArea()
 	}
 }
 
-Void BonkEnc::LayerJoblist::HideCoverArea()
+Void freac::LayerJoblist::HideCoverArea()
 {
 	if (info_text_artist->GetX() == 7) return;
 
@@ -1097,7 +1097,7 @@ Void BonkEnc::LayerJoblist::HideCoverArea()
 	htsp_edit_album->SetWidth(htsp_edit_album->GetWidth() + 54);
 }
 
-Void BonkEnc::LayerJoblist::OnShortcutPrevious()
+Void freac::LayerJoblist::OnShortcutPrevious()
 {
 	if (!IsVisible()) return;
 
@@ -1110,7 +1110,7 @@ Void BonkEnc::LayerJoblist::OnShortcutPrevious()
 	else			  FocusEditBox(info_edit_artist);
 }
 
-Void BonkEnc::LayerJoblist::OnShortcutNext()
+Void freac::LayerJoblist::OnShortcutNext()
 {
 	if (!IsVisible()) return;
 
@@ -1122,7 +1122,7 @@ Void BonkEnc::LayerJoblist::OnShortcutNext()
 	else			  FocusEditBox(info_edit_artist);
 }
 
-Void BonkEnc::LayerJoblist::OnShortcutFirst()
+Void freac::LayerJoblist::OnShortcutFirst()
 {
 	if (!IsVisible() || GetActiveEditBox() != NIL) return;
 
@@ -1134,7 +1134,7 @@ Void BonkEnc::LayerJoblist::OnShortcutFirst()
 	else			  FocusEditBox(info_edit_artist);
 }
 
-Void BonkEnc::LayerJoblist::OnShortcutLast()
+Void freac::LayerJoblist::OnShortcutLast()
 {
 	if (!IsVisible() || GetActiveEditBox() != NIL) return;
 
@@ -1146,7 +1146,7 @@ Void BonkEnc::LayerJoblist::OnShortcutLast()
 	else			  FocusEditBox(info_edit_artist);
 }
 
-Void BonkEnc::LayerJoblist::OnShortcutMoveUp()
+Void freac::LayerJoblist::OnShortcutMoveUp()
 {
 	if (!IsVisible() || joblist->GetSelectedEntryNumber() == -1) return;
 
@@ -1165,7 +1165,7 @@ Void BonkEnc::LayerJoblist::OnShortcutMoveUp()
 	}
 }
 
-Void BonkEnc::LayerJoblist::OnShortcutMoveDown()
+Void freac::LayerJoblist::OnShortcutMoveDown()
 {
 	if (!IsVisible() || joblist->GetSelectedEntryNumber() == -1) return;
 
@@ -1184,7 +1184,7 @@ Void BonkEnc::LayerJoblist::OnShortcutMoveDown()
 	}
 }
 
-Void BonkEnc::LayerJoblist::OnShortcutMoveTop()
+Void freac::LayerJoblist::OnShortcutMoveTop()
 {
 	if (!IsVisible() || joblist->GetSelectedEntryNumber() == -1) return;
 
@@ -1202,7 +1202,7 @@ Void BonkEnc::LayerJoblist::OnShortcutMoveTop()
 	}
 }
 
-Void BonkEnc::LayerJoblist::OnShortcutMoveBottom()
+Void freac::LayerJoblist::OnShortcutMoveBottom()
 {
 	if (!IsVisible() || joblist->GetSelectedEntryNumber() == -1) return;
 
@@ -1220,7 +1220,7 @@ Void BonkEnc::LayerJoblist::OnShortcutMoveBottom()
 	}
 }
 
-Void BonkEnc::LayerJoblist::OnShortcutToggleMark()
+Void freac::LayerJoblist::OnShortcutToggleMark()
 {
 	if (!IsVisible() || GetActiveEditBox() != NIL) return;
 
@@ -1232,7 +1232,7 @@ Void BonkEnc::LayerJoblist::OnShortcutToggleMark()
 	}
 }
 
-Void BonkEnc::LayerJoblist::OnShortcutRemove()
+Void freac::LayerJoblist::OnShortcutRemove()
 {
 	if (!IsVisible() || GetActiveEditBox() != NIL) return;
 
@@ -1245,14 +1245,14 @@ Void BonkEnc::LayerJoblist::OnShortcutRemove()
 	}
 }
 
-Void BonkEnc::LayerJoblist::OnEditBoxEnter(EditBox *activeEditBox)
+Void freac::LayerJoblist::OnEditBoxEnter(EditBox *activeEditBox)
 {
 	joblist->SelectNthEntry(joblist->GetSelectedEntryNumber() + 1);
 
 	if (activeEditBox != NIL) FocusEditBox(activeEditBox);
 }
 
-Void BonkEnc::LayerJoblist::UpdateTitleInfo()
+Void freac::LayerJoblist::UpdateTitleInfo()
 {
 	if (dontUpdateInfo) return;
 
@@ -1280,7 +1280,7 @@ Void BonkEnc::LayerJoblist::UpdateTitleInfo()
 	BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 }
 
-PopupMenu *BonkEnc::LayerJoblist::GetContextMenu()
+PopupMenu *freac::LayerJoblist::GetContextMenu()
 {
 	/* Select the entry under the cursor before opening the context menu.
 	 */
@@ -1292,7 +1292,7 @@ PopupMenu *BonkEnc::LayerJoblist::GetContextMenu()
 	return NIL;
 }
 
-Void BonkEnc::LayerJoblist::OnEncoderStartEncoding()
+Void freac::LayerJoblist::OnEncoderStartEncoding()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 
@@ -1301,7 +1301,7 @@ Void BonkEnc::LayerJoblist::OnEncoderStartEncoding()
 	combo_encoder->Deactivate();
 }
 
-Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
+Void freac::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -1342,7 +1342,7 @@ Void BonkEnc::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 	if (success && Job::GetPlannedJobs().Length() == 0 && Config::Get()->shutdownAfterEncoding) S::System::System::Shutdown();
 }
 
-Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String &decoderName, ConversionStep mode)
+Void freac::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String &decoderName, ConversionStep mode)
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -1389,7 +1389,7 @@ Void BonkEnc::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const Strin
 	edb_format->SetText(decoderName);
 }
 
-Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsLeft)
+Void freac::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsLeft)
 {
 	/* Start painting here, end it in OnEncoderTotalProgress.
 	 */
@@ -1428,7 +1428,7 @@ Void BonkEnc::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int second
 	}
 }
 
-Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int secondsLeft)
+Void freac::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int secondsLeft)
 {
 	/* Update seconds only if estimate is less or
 	 * at least two seconds more than before.
@@ -1467,7 +1467,7 @@ Void BonkEnc::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int second
 	surface->EndPaint();
 }
 
-Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
+Void freac::LayerJoblist::ShowHideTitleInfo()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -1548,7 +1548,7 @@ Void BonkEnc::LayerJoblist::ShowHideTitleInfo()
 	surface->EndPaint();
 }
 
-Void BonkEnc::LayerJoblist::UpdateOutputDir()
+Void freac::LayerJoblist::UpdateOutputDir()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
@@ -1569,7 +1569,7 @@ Void BonkEnc::LayerJoblist::UpdateOutputDir()
 	edb_outdir->SetDropDownList(list_outdir);
 }
 
-Void BonkEnc::LayerJoblist::OnBrowseForFolder()
+Void freac::LayerJoblist::OnBrowseForFolder()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -1595,7 +1595,7 @@ Void BonkEnc::LayerJoblist::OnBrowseForFolder()
 	DeleteObject(dialog);
 }
 
-Void BonkEnc::LayerJoblist::OnSelectFolder()
+Void freac::LayerJoblist::OnSelectFolder()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -1643,7 +1643,7 @@ Void BonkEnc::LayerJoblist::OnSelectFolder()
 	UpdateOutputDir();
 }
 
-Void BonkEnc::LayerJoblist::OnSelectEncoder()
+Void freac::LayerJoblist::OnSelectEncoder()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	Registry	&boca	= Registry::Get();
@@ -1665,7 +1665,7 @@ Void BonkEnc::LayerJoblist::OnSelectEncoder()
 	if (config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Contains("<outputfile>")) joblist->OnChangeHeaderColumns();
 }
 
-Void BonkEnc::LayerJoblist::ToggleEditPopup()
+Void freac::LayerJoblist::ToggleEditPopup()
 {
 	String	 string;
 
@@ -1731,7 +1731,7 @@ Void BonkEnc::LayerJoblist::ToggleEditPopup()
 	menu_case_all->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 4)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
 }
 
-String BonkEnc::LayerJoblist::AdjustCaseFirstCapital(const String &string)
+String freac::LayerJoblist::AdjustCaseFirstCapital(const String &string)
 {
 	String	 value = String(string).ToLower();
 
@@ -1747,7 +1747,7 @@ String BonkEnc::LayerJoblist::AdjustCaseFirstCapital(const String &string)
 	return value;
 }
 
-String BonkEnc::LayerJoblist::AdjustCaseWordsFirstCapital(const String &string)
+String freac::LayerJoblist::AdjustCaseWordsFirstCapital(const String &string)
 {
 	String	 value = String(string).ToLower();
 	String	 character;
@@ -1777,7 +1777,7 @@ String BonkEnc::LayerJoblist::AdjustCaseWordsFirstCapital(const String &string)
 	return value;
 }
 
-String BonkEnc::LayerJoblist::AdjustCaseLongWordsFirstCapital(const String &string)
+String freac::LayerJoblist::AdjustCaseLongWordsFirstCapital(const String &string)
 {
 	String	 value = AdjustCaseWordsFirstCapital(string);
 	String	 character;
@@ -1806,7 +1806,7 @@ String BonkEnc::LayerJoblist::AdjustCaseLongWordsFirstCapital(const String &stri
 	return value;
 }
 
-Void BonkEnc::LayerJoblist::UseStringForSelectedTracks()
+Void freac::LayerJoblist::UseStringForSelectedTracks()
 {
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
 	{
@@ -1829,7 +1829,7 @@ Void BonkEnc::LayerJoblist::UseStringForSelectedTracks()
 	}
 }
 
-Void BonkEnc::LayerJoblist::InterpretStringAs()
+Void freac::LayerJoblist::InterpretStringAs()
 {
 	String	 charset;
 
@@ -1872,7 +1872,7 @@ Void BonkEnc::LayerJoblist::InterpretStringAs()
 	clicked_charset = -1;
 }
 
-Void BonkEnc::LayerJoblist::InterpretStringAsAll()
+Void freac::LayerJoblist::InterpretStringAsAll()
 {
 	String	 charset;
 
@@ -1923,7 +1923,7 @@ Void BonkEnc::LayerJoblist::InterpretStringAsAll()
 	clicked_charset = -1;
 }
 
-Void BonkEnc::LayerJoblist::AdjustStringCase()
+Void freac::LayerJoblist::AdjustStringCase()
 {
 	String	 string;
 
@@ -1954,7 +1954,7 @@ Void BonkEnc::LayerJoblist::AdjustStringCase()
 	clicked_case = -1;
 }
 
-Void BonkEnc::LayerJoblist::AdjustStringCaseAll()
+Void freac::LayerJoblist::AdjustStringCaseAll()
 {
 	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
 	{

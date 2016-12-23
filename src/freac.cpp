@@ -14,13 +14,13 @@
 #include <smooth/dll.h>
 
 #include <boca.h>
-#include <bonkenc.h>
+#include <freac.h>
 
 Void smooth::AttachDLL(Void *instance)
 {
 	/* Init BoCA library.
 	 */
-	BoCA::Init(BonkEnc::BonkEnc::appName);
+	BoCA::Init(freac::freac::appName);
 }
 
 Void smooth::DetachDLL()
@@ -41,53 +41,53 @@ Void smooth::DetachDLL()
 #include <engine/decoder.h>
 #include <engine/encoder.h>
 
-BonkEnc::BonkEnc	*BonkEnc::BonkEnc::instance = NIL;
+freac::freac	*freac::freac::instance = NIL;
 
 /* General application information and fixed settings.
  */
-String	 BonkEnc::BonkEnc::appName	= "fre:ac";
+String	 freac::freac::appName	    = "fre:ac";
 
 #ifdef BUILD_VIDEO_DOWNLOADER
-String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free video downloader";
+String	 freac::freac::appLongName  = "fre:ac - free video downloader";
 #else
-String	 BonkEnc::BonkEnc::appLongName	= "fre:ac - free audio converter";
+String	 freac::freac::appLongName  = "fre:ac - free audio converter";
 #endif
 
-String	 BonkEnc::BonkEnc::version	= "CVS 2016xxyy";
+String	 freac::freac::version	    = "CVS 2016xxyy";
 
 #if defined __i386__
-String	 BonkEnc::BonkEnc::architecture = "x86";
+String	 freac::freac::architecture = "x86";
 #elif defined __x86_64__
-String	 BonkEnc::BonkEnc::architecture = "x86-64";
+String	 freac::freac::architecture = "x86-64";
 #elif defined __arm__
-String	 BonkEnc::BonkEnc::architecture = "ARM";
+String	 freac::freac::architecture = "ARM";
 #elif defined __aarch64__
-String	 BonkEnc::BonkEnc::architecture = "ARM64";
+String	 freac::freac::architecture = "ARM64";
 #elif defined __mips__
-String	 BonkEnc::BonkEnc::architecture = "MIPS";
+String	 freac::freac::architecture = "MIPS";
 #elif defined __ppc__
-String	 BonkEnc::BonkEnc::architecture = "PPC";
+String	 freac::freac::architecture = "PPC";
 #elif defined __ppc64__
-String	 BonkEnc::BonkEnc::architecture = "PPC64";
+String	 freac::freac::architecture = "PPC64";
 #else
-String	 BonkEnc::BonkEnc::architecture = "unknown";
+String	 freac::freac::architecture = "unknown";
 #endif
 
-String	 BonkEnc::BonkEnc::shortVersion	= "v1.1";
-String	 BonkEnc::BonkEnc::cddbVersion	= "v1.1beta1pre5";	// CDDB version may not contain spaces
-String	 BonkEnc::BonkEnc::cddbMode	= "submit";
+String	 freac::freac::shortVersion = "v1.1";
+String	 freac::freac::cddbVersion  = "v1.1beta1pre5";	// CDDB version may not contain spaces
+String	 freac::freac::cddbMode	    = "submit";
 
-String	 BonkEnc::BonkEnc::copyright	= "Copyright (C) 2001-2016 Robert Kausch";
+String	 freac::freac::copyright    = "Copyright (C) 2001-2016 Robert Kausch";
 
-String	 BonkEnc::BonkEnc::website	= "http://www.freac.org/";
-String	 BonkEnc::BonkEnc::updatePath	= "http://www.freac.org/eUpdate/eUpdate.xml";
+String	 freac::freac::website	    = "http://www.freac.org/";
+String	 freac::freac::updatePath   = "http://www.freac.org/eUpdate/eUpdate.xml";
 
 /* Use these settings for debugging.
  */
-//String	 BonkEnc::BonkEnc::cddbMode	= "test";
-//String	 BonkEnc::BonkEnc::updatePath	= "file://eUpdate/eUpdate.xml";
+//String	 freac::freac::cddbMode	    = "test";
+//String	 freac::freac::updatePath   = "file://eUpdate/eUpdate.xml";
 
-BonkEnc::BonkEnc::BonkEnc()
+freac::freac::freac()
 {
 	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
 
@@ -134,7 +134,7 @@ BonkEnc::BonkEnc::BonkEnc()
 	if (!currentConfig->enable_eUpdate) debug->Write("    Online updater not found.");
 }
 
-BonkEnc::BonkEnc::~BonkEnc()
+freac::freac::~freac()
 {
 	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
 

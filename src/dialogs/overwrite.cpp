@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -15,7 +15,7 @@
 #include <config.h>
 #include <resources.h>
 
-BonkEnc::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track> &tracks)
+freac::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track> &tracks)
 {
 	userAction = ConfirmOverwrite::Action::None;
 
@@ -51,21 +51,21 @@ BonkEnc::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track>
 
 	text_files		= new Text(i18n->AddColon(i18n->TranslateString("The following %1 files already exist and will be overwritten").Replace("%1", String::FromInt(tracks.Length()))), Point(7, 5));
 
-	Config	*bonkEncConfig	= Config::Get();
+	Config	*freacConfig	= Config::Get();
 
 	i18n->SetContext("Joblist");
 
-	button_select_all	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:18")), Point(-2, 20), Size(21, 21));
+	button_select_all	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:18")), Point(-2, 20), Size(21, 21));
 	button_select_all->onAction.Connect(&DialogConfirmOverwrite::SelectAll, this);
 	button_select_all->SetFlags(BF_NOFRAME);
 	button_select_all->SetTooltipText(i18n->TranslateString("Select all"));
 
-	button_select_none	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:19")), Point(-2, 34), Size(21, 21));
+	button_select_none	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:19")), Point(-2, 34), Size(21, 21));
 	button_select_none->onAction.Connect(&DialogConfirmOverwrite::SelectNone, this);
 	button_select_none->SetFlags(BF_NOFRAME);
 	button_select_none->SetTooltipText(i18n->TranslateString("Select none"));
 
-	button_select_toggle	= new Button(NIL, ImageLoader::Load(String(bonkEncConfig->resourcesPath).Append("freac.pci:20")), Point(-2, 48), Size(21, 21));
+	button_select_toggle	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:20")), Point(-2, 48), Size(21, 21));
 	button_select_toggle->onAction.Connect(&DialogConfirmOverwrite::ToggleSelection, this);
 	button_select_toggle->SetFlags(BF_NOFRAME);
 	button_select_toggle->SetTooltipText(i18n->TranslateString("Toggle selection"));
@@ -104,7 +104,7 @@ BonkEnc::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track>
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::DialogConfirmOverwrite::~DialogConfirmOverwrite()
+freac::DialogConfirmOverwrite::~DialogConfirmOverwrite()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -123,19 +123,19 @@ BonkEnc::DialogConfirmOverwrite::~DialogConfirmOverwrite()
 	DeleteObject(button_cancel);
 }
 
-const Error &BonkEnc::DialogConfirmOverwrite::ShowDialog()
+const Error &freac::DialogConfirmOverwrite::ShowDialog()
 {
 	mainWnd->WaitUntilClosed();
 
 	return error;
 }
 
-Int BonkEnc::DialogConfirmOverwrite::GetUserAction()
+Int freac::DialogConfirmOverwrite::GetUserAction()
 {
 	return userAction;
 }
 
-const Array<Int> &BonkEnc::DialogConfirmOverwrite::GetUserActions()
+const Array<Int> &freac::DialogConfirmOverwrite::GetUserActions()
 {
 	static Array<Int>	 userActions;
 
@@ -151,7 +151,7 @@ const Array<Int> &BonkEnc::DialogConfirmOverwrite::GetUserActions()
 	return userActions;
 }
 
-Void BonkEnc::DialogConfirmOverwrite::OnChangeSize(const Size &nSize)
+Void freac::DialogConfirmOverwrite::OnChangeSize(const Size &nSize)
 {
 	Rect	 clientRect = Rect(mainWnd->GetMainLayer()->GetPosition(), mainWnd->GetMainLayer()->GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
@@ -159,7 +159,7 @@ Void BonkEnc::DialogConfirmOverwrite::OnChangeSize(const Size &nSize)
 	list_files->SetSize(clientSize - Size(24, 71));
 }
 
-Void BonkEnc::DialogConfirmOverwrite::SelectAll()
+Void freac::DialogConfirmOverwrite::SelectAll()
 {
 	for (Int i = 0; i < list_files->Length(); i++)
 	{
@@ -167,7 +167,7 @@ Void BonkEnc::DialogConfirmOverwrite::SelectAll()
 	}
 }
 
-Void BonkEnc::DialogConfirmOverwrite::SelectNone()
+Void freac::DialogConfirmOverwrite::SelectNone()
 {
 	for (Int i = 0; i < list_files->Length(); i++)
 	{
@@ -175,7 +175,7 @@ Void BonkEnc::DialogConfirmOverwrite::SelectNone()
 	}
 }
 
-Void BonkEnc::DialogConfirmOverwrite::ToggleSelection()
+Void freac::DialogConfirmOverwrite::ToggleSelection()
 {
 	for (Int i = 0; i < list_files->Length(); i++)
 	{
@@ -184,7 +184,7 @@ Void BonkEnc::DialogConfirmOverwrite::ToggleSelection()
 	}
 }
 
-Void BonkEnc::DialogConfirmOverwrite::OnMarkEntry(ListEntry *entry)
+Void freac::DialogConfirmOverwrite::OnMarkEntry(ListEntry *entry)
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -198,21 +198,21 @@ Void BonkEnc::DialogConfirmOverwrite::OnMarkEntry(ListEntry *entry)
 	entry->SetText(String(file).Append("\t").Append(action));
 }
 
-Void BonkEnc::DialogConfirmOverwrite::OnSkip()
+Void freac::DialogConfirmOverwrite::OnSkip()
 {
 	userAction = ConfirmOverwrite::Action::SkipAll;
 
 	mainWnd->Close();
 }
 
-Void BonkEnc::DialogConfirmOverwrite::OnOverwrite()
+Void freac::DialogConfirmOverwrite::OnOverwrite()
 {
 	userAction = ConfirmOverwrite::Action::Confirm;
 
 	mainWnd->Close();
 }
 
-Void BonkEnc::DialogConfirmOverwrite::OnCancel()
+Void freac::DialogConfirmOverwrite::OnCancel()
 {
 	userAction = ConfirmOverwrite::Action::Cancel;
 

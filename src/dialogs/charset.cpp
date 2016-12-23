@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -17,7 +17,7 @@
 
 #include <boca.h>
 
-BonkEnc::ChooseCharsetDialog::ChooseCharsetDialog()
+freac::ChooseCharsetDialog::ChooseCharsetDialog()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -59,7 +59,7 @@ BonkEnc::ChooseCharsetDialog::ChooseCharsetDialog()
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
-BonkEnc::ChooseCharsetDialog::~ChooseCharsetDialog()
+freac::ChooseCharsetDialog::~ChooseCharsetDialog()
 {
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
@@ -71,26 +71,26 @@ BonkEnc::ChooseCharsetDialog::~ChooseCharsetDialog()
 	DeleteObject(btn_cancel);
 }
 
-const Error &BonkEnc::ChooseCharsetDialog::ShowDialog()
+const Error &freac::ChooseCharsetDialog::ShowDialog()
 {
 	mainWnd->WaitUntilClosed();
 
 	return error;
 }
 
-String BonkEnc::ChooseCharsetDialog::GetCharset()
+String freac::ChooseCharsetDialog::GetCharset()
 {
 	return edit_charset->GetText();
 }
 
-Void BonkEnc::ChooseCharsetDialog::OK()
+Void freac::ChooseCharsetDialog::OK()
 {
 	BoCA::Config::Get()->SetStringValue(Config::CategorySettingsID, Config::SettingsLastCustomCharsetID, edit_charset->GetText());
 
 	mainWnd->Close();
 }
 
-Void BonkEnc::ChooseCharsetDialog::Cancel()
+Void freac::ChooseCharsetDialog::Cancel()
 {
 	error = Error();
 

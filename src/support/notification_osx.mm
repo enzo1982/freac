@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2015 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -21,8 +21,6 @@
 
 using namespace BoCA;
 using namespace BoCA::AS;
-
-using namespace BonkEnc;
 
 @interface NotificationReceiver : NSObject
 {
@@ -70,8 +68,8 @@ using namespace BonkEnc;
 
 					if (device.path != knownDevices.GetNth(drive))
 					{
-						Notification::Get()->onDriveChange.Emit();
-						Notification::Get()->onDiscInsert.Emit(drive);
+						freac::Notification::Get()->onDriveChange.Emit();
+						freac::Notification::Get()->onDiscInsert.Emit(drive);
 
 						break;
 					}
@@ -104,8 +102,8 @@ using namespace BonkEnc;
 				{
 					if (drive == info->GetNumberOfDevices())
 					{
-						Notification::Get()->onDiscRemove.Emit(drive);
-						Notification::Get()->onDriveChange.Emit();
+						freac::Notification::Get()->onDiscRemove.Emit(drive);
+						freac::Notification::Get()->onDriveChange.Emit();
 
 						break;
 					}
@@ -114,8 +112,8 @@ using namespace BonkEnc;
 
 					if (device.path != knownDevices.GetNth(drive))
 					{
-						Notification::Get()->onDiscRemove.Emit(drive);
-						Notification::Get()->onDriveChange.Emit();
+						freac::Notification::Get()->onDiscRemove.Emit(drive);
+						freac::Notification::Get()->onDriveChange.Emit();
 
 						break;
 					}
@@ -152,9 +150,9 @@ using namespace BonkEnc;
 	}
 @end
 
-BonkEnc::Notification *BonkEnc::Notification::instance = NIL;
+freac::Notification	*freac::Notification::instance = NIL;
 
-BonkEnc::Notification::Notification()
+freac::Notification::Notification()
 {
 	/* Create notification receiver instance.
 	 */
@@ -175,7 +173,7 @@ BonkEnc::Notification::Notification()
 				 object: [NSWorkspace sharedWorkspace]];
 }
 
-BonkEnc::Notification::~Notification()
+freac::Notification::~Notification()
 {
 	/* Unregister mount and unmount notification handlers.
 	 */
@@ -194,7 +192,7 @@ BonkEnc::Notification::~Notification()
 	[(NotificationReceiver *) privateData release];
 }
 
-BonkEnc::Notification *BonkEnc::Notification::Get()
+freac::Notification *freac::Notification::Get()
 {
 	if (instance == NIL)
 	{
@@ -204,7 +202,7 @@ BonkEnc::Notification *BonkEnc::Notification::Get()
 	return instance;
 }
 
-Void BonkEnc::Notification::Free()
+Void freac::Notification::Free()
 {
 	if (instance != NIL)
 	{
@@ -214,6 +212,6 @@ Void BonkEnc::Notification::Free()
 	}
 }
 
-Void BonkEnc::Notification::ProcessSystemMessage(Int message, Int wParam, Int lParam)
+Void freac::Notification::ProcessSystemMessage(Int message, Int wParam, Int lParam)
 {
 }
