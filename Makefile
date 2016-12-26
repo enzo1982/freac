@@ -82,9 +82,7 @@ else
 
 	ifneq ($(BUILD_SOLARIS),True)
 	ifneq ($(BUILD_HAIKU),True)
-		ifneq ($(BUILD_QNX),True)
-			CCOPTS	+= -pthread
-		endif
+		CCOPTS	+= -pthread
 
 		ifneq ($(BUILD_LINUX),True)
 		ifneq ($(BUILD_OSX),True)

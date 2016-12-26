@@ -71,7 +71,7 @@ Voraussetzungen
 			- OpenBSD (getestet unter OpenBSD 5.3)
 			- Solaris (getestet unter Solaris 11)
 			- GNU Hurd (getestet unter Debian Sid)
-			- QNX (getestet unter QNX 6.5)
+			- Haiku (getestet unter Haiku x86 GCC 5 Nightly)
 
 		Minimale Hardwarevoraussetzungen:
 			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 oder ARMv5 Prozessor
