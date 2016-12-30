@@ -79,7 +79,7 @@ String	 freac::freac::cddbMode	    = "submit";
 
 String	 freac::freac::copyright    = "Copyright (C) 2001-2016 Robert Kausch";
 
-String	 freac::freac::website	    = "http://www.freac.org/";
+String	 freac::freac::website	    = "https://www.freac.org/";
 String	 freac::freac::updatePath   = "http://www.freac.org/eUpdate/eUpdate.xml";
 
 /* Use these settings for debugging.
