@@ -55,7 +55,11 @@ BoCA::LanguageNotifierDialog::LanguageNotifierDialog(Bool incomplete)
 
 	mainWnd->Add(button_close);
 
-	Bitmap	 bitmap = ImageLoader::Load(File(Utilities::GetBoCADirectory().Append("../freac/freac.extension.langnotify/langnotify.png")));
+	Directory	 dir(Utilities::GetBoCADirectory().Append("freac.extension.langnotify"));
+
+	if (!dir.Exists()) dir = Utilities::GetBoCADirectory().Append("../freac/freac.extension.langnotify");
+
+	Bitmap		 bitmap = ImageLoader::Load(File(String(dir).Append("/langnotify.png")));
 
 	bitmap.SetBackgroundColor(Setup::BackgroundColor);
 

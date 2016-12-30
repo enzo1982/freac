@@ -158,7 +158,10 @@ Void BoCA::LayerTagAdvanced::OnSelectField()
 
 Int BoCA::LayerTagAdvanced::LoadTagTypes()
 {
-	Directory		 dir(Utilities::GetBoCADirectory().Append("../freac/freac.extension.tagedit"));
+	Directory		 dir(Utilities::GetBoCADirectory().Append("freac.extension.tagedit"));
+
+	if (!dir.Exists()) dir = Utilities::GetBoCADirectory().Append("../freac/freac.extension.tagedit");
+
 	const Array<File>	&files = dir.GetFilesByPattern("tag_*.xml");
 
 	for (Int i = 0; i < files.Length(); i++)

@@ -24,7 +24,10 @@ Array<BoCA::Converter *> &BoCA::Converter::Get()
 {
 	if (converters.Length() == 0)
 	{
-		Directory		 dir(Utilities::GetBoCADirectory().Append("../freac/freac.extension.youtube"));
+		Directory		 dir(Utilities::GetBoCADirectory().Append("freac.extension.youtube"));
+
+		if (!dir.Exists()) dir = Utilities::GetBoCADirectory().Append("../freac/freac.extension.youtube");
+
 		const Array<File>	&files = dir.GetFilesByPattern("converter_*.xml");
 
 		foreach (const File &file, files)

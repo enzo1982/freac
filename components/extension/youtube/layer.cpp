@@ -233,7 +233,10 @@ BoCA::LayerYouTube::~LayerYouTube()
 
 Void BoCA::LayerYouTube::LoadVideoSites()
 {
-	Directory		 dir(Utilities::GetBoCADirectory().Append("../freac/freac.extension.youtube"));
+	Directory		 dir(Utilities::GetBoCADirectory().Append("freac.extension.youtube"));
+
+	if (!dir.Exists()) dir = Utilities::GetBoCADirectory().Append("../freac/freac.extension.youtube");
+
 	const Array<File>	&files	= dir.GetFilesByPattern("videosite_*.xml");
 
 	Config			*config = Config::Get();

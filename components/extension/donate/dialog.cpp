@@ -50,17 +50,21 @@ BoCA::DonateDialog::DonateDialog()
 	mainWnd->Add(text_donate_other);
 	mainWnd->Add(text_thanks);
 
-	Bitmap	 image_5     = ImageLoader::Load(File(Utilities::GetBoCADirectory().Append("../freac/freac.extension.donate/donate_").Append(i18n->TranslateString("usd")).Append("_5.png")));
-	Bitmap	 image_10    = ImageLoader::Load(File(Utilities::GetBoCADirectory().Append("../freac/freac.extension.donate/donate_").Append(i18n->TranslateString("usd")).Append("_10.png")));
-	Bitmap	 image_other = ImageLoader::Load(File(Utilities::GetBoCADirectory().Append("../freac/freac.extension.donate/donate_other_").Append(i18n->TranslateString("en")).Append(".png")));
+	Directory	 dir(Utilities::GetBoCADirectory().Append("freac.extension.donate"));
+
+	if (!dir.Exists()) dir = Utilities::GetBoCADirectory().Append("../freac/freac.extension.donate");
+
+	Bitmap	 image_5     = ImageLoader::Load(File(String(dir).Append("/donate_").Append(i18n->TranslateString("usd")).Append("_5.png")));
+	Bitmap	 image_10    = ImageLoader::Load(File(String(dir).Append("/donate_").Append(i18n->TranslateString("usd")).Append("_10.png")));
+	Bitmap	 image_other = ImageLoader::Load(File(String(dir).Append("/donate_other_").Append(i18n->TranslateString("en")).Append(".png")));
 
 	image_5.SetBackgroundColor(Setup::BackgroundColor);
 	image_10.SetBackgroundColor(Setup::BackgroundColor);
 	image_other.SetBackgroundColor(Setup::BackgroundColor);
 
-	link_donate_5		= new Hyperlink(NIL, image_5, String("file:///").Append(Utilities::GetBoCADirectory().Replace("\\", "/")).Append("../freac/freac.extension.donate/donate_").Append(i18n->TranslateString("usd")).Append("_5.html"), Point((Math::Max(text_intro->GetUnscaledTextWidth(), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())) + 21) / 2 - 100, text_donate->GetUnscaledTextHeight() + 56));
-	link_donate_10		= new Hyperlink(NIL, image_10, String("file:///").Append(Utilities::GetBoCADirectory().Replace("\\", "/")).Append("../freac/freac.extension.donate/donate_").Append(i18n->TranslateString("usd")).Append("_10.html"), Point((Math::Max(text_intro->GetUnscaledTextWidth(), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())) + 21) / 2 - 30, text_donate->GetUnscaledTextHeight() + 56));
-	link_donate_other	= new Hyperlink(NIL, image_other, String("file:///").Append(Utilities::GetBoCADirectory().Replace("\\", "/")).Append("../freac/freac.extension.donate/donate_").Append(i18n->TranslateString("usd")).Append("_other.html"), Point((Math::Max(text_intro->GetUnscaledTextWidth(), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())) + 21) / 2 + 40, text_donate->GetUnscaledTextHeight() + 56));
+	link_donate_5		= new Hyperlink(NIL, image_5, String("file:///").Append(String(dir).Replace("\\", "/")).Append("/donate_").Append(i18n->TranslateString("usd")).Append("_5.html"), Point((Math::Max(text_intro->GetUnscaledTextWidth(), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())) + 21) / 2 - 100, text_donate->GetUnscaledTextHeight() + 56));
+	link_donate_10		= new Hyperlink(NIL, image_10, String("file:///").Append(String(dir).Replace("\\", "/")).Append("/donate_").Append(i18n->TranslateString("usd")).Append("_10.html"), Point((Math::Max(text_intro->GetUnscaledTextWidth(), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())) + 21) / 2 - 30, text_donate->GetUnscaledTextHeight() + 56));
+	link_donate_other	= new Hyperlink(NIL, image_other, String("file:///").Append(String(dir).Replace("\\", "/")).Append("/donate_").Append(i18n->TranslateString("usd")).Append("_other.html"), Point((Math::Max(text_intro->GetUnscaledTextWidth(), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())) + 21) / 2 + 40, text_donate->GetUnscaledTextHeight() + 56));
 
 	mainWnd->Add(link_donate_5);
 	mainWnd->Add(link_donate_10);
