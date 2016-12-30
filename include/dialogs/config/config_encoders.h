@@ -55,8 +55,8 @@ namespace freac
 			Bool				 allowOverwrite;
 
 			Bool				 unicode_files;
- 			Bool				 replace_spaces;
- 		slots:
+			Bool				 replace_spaces;
+		slots:
 			Void				 SelectDir();
 			Void				 ConfigureEncoder();
 

@@ -33,7 +33,7 @@ namespace freac
 			Text		*text_priority_value;
 
 			Bool		 enableParallel;
- 		slots:
+		slots:
 			Void		 ToggleParallel();
 
 			Void		 ChangeConversionThreads();

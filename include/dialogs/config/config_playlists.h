@@ -41,7 +41,7 @@ namespace freac
 			Bool				 createCueSheets;
 
 			Bool				 useEncOutdir;
- 		slots:
+		slots:
 			Void				 SelectDir();
 			Void				 ConfigureFormat();
 

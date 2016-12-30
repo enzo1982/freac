@@ -102,7 +102,7 @@ static Void CheckNotification()
 
 	FD_ZERO(&fdset);
 	FD_SET(udevFd, &fdset);
-	
+
 	if (select(udevFd + 1, &fdset, NIL, NIL, &timeval) <= 0) return;
 
 	/* Receive device notification.
