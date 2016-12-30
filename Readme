@@ -97,6 +97,7 @@ History
 
 	Version 1.0.28 (December 2016)
 
+		- configuration is now saved in freac.xml
 		- fixed crash on some invalid cover art
 
 	Version 1.0.27 (December 2016)

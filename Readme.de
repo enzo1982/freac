@@ -98,6 +98,7 @@ Geschichte
 
 	Version 1.0.28 (December 2016)
 
+		- Die Konfiguration wird jetzt in freac.xml gespeichert
 		- Absturz bei einigen ungültigen Cover-Bildern behoben
 
 	Version 1.0.27 (Dezember 2016)
