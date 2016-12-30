@@ -137,7 +137,7 @@ freac::freacGUI::freacGUI()
 	pos.x = 91;
 	pos.y = -22;
 
-	hyperlink		= new Hyperlink(String(freac::website).Replace("http://", NIL).Replace("/", NIL), NIL, freac::website, pos);
+	hyperlink		= new Hyperlink(String(freac::website).Replace("https://", NIL).Replace("/", NIL), NIL, freac::website, pos);
 	hyperlink->SetOrientation(OR_UPPERRIGHT);
 	hyperlink->SetX(hyperlink->GetUnscaledTextWidth() + 4);
 	hyperlink->SetIndependent(True);
@@ -2285,7 +2285,7 @@ Void freac::freacGUI::ShowTipOfTheDay()
 	dlg->AddTip(String(i18n->TranslateString("%1 can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the %1/plugins directory to\nenable %1 to read these formats.")).Replace("%1", freac::appName));
 	dlg->AddTip(String(i18n->TranslateString("With %1 you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with %1.")).Replace("%1", freac::appName));
 	dlg->AddTip(String(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the CDRip tab of %1's configuration\ndialog. If that does not help, try using one of the Paranoia modes.")).Replace("%1", freac::appName));
-	dlg->AddTip(String(i18n->TranslateString("Do you have any suggestions on how to improve %1?\nYou can submit any ideas through the Tracker on the %1\nSourceForge project page - %2\nor send an eMail to %3.")).Replace("%1", freac::appName).Replace("%2", "http://sf.net/projects/bonkenc").Replace("%3", "suggestions@freac.org"));
+	dlg->AddTip(String(i18n->TranslateString("Do you have any suggestions on how to improve %1?\nYou can submit any ideas through the Tracker on the %1\nSourceForge project page - %2\nor send an eMail to %3.")).Replace("%1", freac::appName).Replace("%2", "https://sf.net/projects/bonkenc").Replace("%3", "suggestions@freac.org"));
 	dlg->AddTip(String(i18n->TranslateString("Do you like %1? %1 is available for free, but you can\nhelp fund the development by donating to the %1 project.\nYou can send money to %2 through PayPal.\nSee %3 for more details.")).Replace("%1", freac::appName).Replace("%2", "donate@freac.org").Replace("%3", String(freac::website).Append("donating.php")));
 
 	dlg->SetMode(TIP_ORDERED, currentConfig->tipOffset, currentConfig->showTips);

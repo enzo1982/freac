@@ -45,7 +45,7 @@ String	 freac::freac::shortVersion = "v1.0.28";
 String	 freac::freac::cddbVersion  = "v1.0.27";	// CDDB version may not contain spaces
 String	 freac::freac::cddbMode	    = "submit";
 String	 freac::freac::copyright    = "Copyright (C) 2001-2016 Robert Kausch";
-String	 freac::freac::website	    = "http://www.freac.org/";
+String	 freac::freac::website	    = "https://www.freac.org/";
 String	 freac::freac::updatePath   = "http://www.freac.org/eUpdate/eUpdate.xml";
 
 /* Use these settings for debugging.
