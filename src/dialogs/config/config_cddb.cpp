@@ -309,13 +309,8 @@ Int freac::ConfigureCDDB::SaveSettings()
 	{
 		Int	 selection = QuickMessage(i18n->TranslateString("The freedb CDDBP protocol cannot be used over HTTP\nForward proxies!\n\nWould you like to change the protocol to HTTP?"), i18n->TranslateString("Error"), Message::Buttons::YesNoCancel, Message::Icon::Question);
 
-		if	(selection == Message::Button::Yes)	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, FREEDB_MODE_HTTP_POST);
-		else if (selection == Message::Button::No)	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, combo_mode->GetSelectedEntryNumber());
+		if	(selection == Message::Button::Yes)	combo_mode->SelectNthEntry(FREEDB_MODE_HTTP_POST);
 		else if (selection == Message::Button::Cancel)	return Error();
-	}
-	else
-	{
-		config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, combo_mode->GetSelectedEntryNumber());
 	}
 
 	/* Get number of drives.
@@ -362,6 +357,8 @@ Int freac::ConfigureCDDB::SaveSettings()
 
 	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, edit_server->GetText());
 	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, edit_email->GetText());
+
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, combo_mode->GetSelectedEntryNumber());
 
 	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault) == FREEDB_MODE_CDDBP) config->SetIntValue(Config::CategoryFreedbID, Config::FreedbCDDBPPortID, edit_port->GetText().ToInt());
 	else															 config->SetIntValue(Config::CategoryFreedbID, Config::FreedbHTTPPortID, edit_port->GetText().ToInt());
