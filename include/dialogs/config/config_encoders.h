@@ -37,14 +37,15 @@ namespace freac
 			CheckBox			*check_allowOverwrite;
 			EditBox				*edit_outdir;
 			List				*list_outdir;
-			Button				*button_outdir_browse;
+			Button				*button_outdirBrowse;
 
 			GroupBox			*group_filename;
 			Text				*text_filename;
 			EditBox				*edit_filename;
 			List				*list_filename;
-			CheckBox			*check_unicode_files;
-			CheckBox			*check_replace_spaces;
+			CheckBox			*check_addSeqNumbers;
+			CheckBox			*check_unicodeFiles;
+			CheckBox			*check_replaceSpaces;
 
 			Bool				 singleFile;
 			Bool				 onTheFly;
@@ -54,8 +55,9 @@ namespace freac
 			Bool				 useInputDir;
 			Bool				 allowOverwrite;
 
-			Bool				 unicode_files;
-			Bool				 replace_spaces;
+			Bool				 addSeqNumbers;
+			Bool				 unicodeFiles;
+			Bool				 replaceSpaces;
 		slots:
 			Void				 SelectDir();
 			Void				 ConfigureEncoder();

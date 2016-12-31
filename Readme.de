@@ -185,6 +185,7 @@ Geschichte
 		- Unterstützung für Ausgabe in einzelne Datei mit freaccmd hinzugefügt
 		- Unterstützung für große Schriften hinzugefügt
 		- Standardausgabeverzeichnis auf Ordner "Eigene Musik" geändert
+		- Option zum Anhängen von laufenden Nummern an ansonsten identische Dateinamen hinzugefügt
 		- Zusätzliche, von Winamp 5.6 definierte Genres hinzugefügt
 		- Platzhalter <composer>, <conductor> und <disc> hinzugefügt
 		- Platzhalter <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen

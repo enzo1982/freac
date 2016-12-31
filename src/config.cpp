@@ -118,6 +118,9 @@ const Bool	 freac::Config::SettingsFilenamesAllowUnicodeDefault		= True;
 const String	 freac::Config::SettingsFilenamesReplaceSpacesID		= "FilenamesReplaceSpaces";
 const Bool	 freac::Config::SettingsFilenamesReplaceSpacesDefault		= False;
 
+const String	 freac::Config::SettingsFilenamesAddSequentialNumbersID		= "FilenamesAddSequentialNumbers";
+const Bool	 freac::Config::SettingsFilenamesAddSequentialNumbersDefault	= False;
+
 const String	 freac::Config::SettingsEncoderID				= "Encoder";
 const String	 freac::Config::SettingsEncoderDefault				= "lame-enc";
 

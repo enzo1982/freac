@@ -35,8 +35,9 @@ freac::ConfigureEncoders::ConfigureEncoders()
 	useInputDir	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 	allowOverwrite	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault);
 
-	unicode_files	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
-	replace_spaces	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
+	addSeqNumbers	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAddSequentialNumbersID, Config::SettingsFilenamesAddSequentialNumbersDefault);
+	unicodeFiles	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
+	replaceSpaces	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
 
 	group_encoder	 = new GroupBox(i18n->TranslateString("Encoder"), Point(7, 11), Size(552, 43));
 
@@ -113,15 +114,15 @@ freac::ConfigureEncoders::ConfigureEncoders()
 
 	edit_outdir->SetDropDownList(list_outdir);
 
-	button_outdir_browse= new Button(i18n->TranslateString("Browse"), NIL, Point(462, 61), Size(0, 0));
-	button_outdir_browse->onAction.Connect(&ConfigureEncoders::SelectDir, this);
+	button_outdirBrowse	= new Button(i18n->TranslateString("Browse"), NIL, Point(462, 61), Size(0, 0));
+	button_outdirBrowse->onAction.Connect(&ConfigureEncoders::SelectDir, this);
 
 	group_outdir->Add(check_useInputDir);
 	group_outdir->Add(check_allowOverwrite);
 	group_outdir->Add(edit_outdir);
-	group_outdir->Add(button_outdir_browse);
+	group_outdir->Add(button_outdirBrowse);
 
-	group_filename	= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 271), Size(552, 67));
+	group_filename	= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 271), Size(552, 90));
 
 	text_filename	= new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(10, 15));
 	edit_filename	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault), Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(525 - text_filename->GetUnscaledTextWidth(), 0), 0);
@@ -154,20 +155,22 @@ freac::ConfigureEncoders::ConfigureEncoders()
 
 	edit_filename->SetDropDownList(list_filename);
 
-	check_unicode_files	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 39), Size(261, 0), &unicode_files);
-	check_replace_spaces	= new CheckBox(i18n->TranslateString("Replace spaces"), Point(280, 39), Size(261, 0), &replace_spaces);
+	check_addSeqNumbers	= new CheckBox(i18n->TranslateString("Append sequential numbers to otherwise identical filenames"), Point(10, 39), Size(532, 0), &addSeqNumbers);
+	check_unicodeFiles	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 62), Size(261, 0), &unicodeFiles);
+	check_replaceSpaces	= new CheckBox(i18n->TranslateString("Replace spaces"), Point(280, 62), Size(261, 0), &replaceSpaces);
 
 	group_filename->Add(text_filename);
 	group_filename->Add(edit_filename);
-	group_filename->Add(check_unicode_files);
-	group_filename->Add(check_replace_spaces);
+	group_filename->Add(check_addSeqNumbers);
+	group_filename->Add(check_unicodeFiles);
+	group_filename->Add(check_replaceSpaces);
 
 	Add(group_encoder);
 	Add(group_outdir);
 	Add(group_options);
 	Add(group_filename);
 
-	SetSize(Size(566, 345));
+	SetSize(Size(566, 368));
 }
 
 freac::ConfigureEncoders::~ConfigureEncoders()
@@ -188,14 +191,15 @@ freac::ConfigureEncoders::~ConfigureEncoders()
 	DeleteObject(check_allowOverwrite);
 	DeleteObject(edit_outdir);
 	DeleteObject(list_outdir);
-	DeleteObject(button_outdir_browse);
+	DeleteObject(button_outdirBrowse);
 
 	DeleteObject(group_filename);
 	DeleteObject(text_filename);
 	DeleteObject(edit_filename);
 	DeleteObject(list_filename);
-	DeleteObject(check_unicode_files);
-	DeleteObject(check_replace_spaces);
+	DeleteObject(check_addSeqNumbers);
+	DeleteObject(check_unicodeFiles);
+	DeleteObject(check_replaceSpaces);
 }
 
 Void freac::ConfigureEncoders::SelectDir()
@@ -391,8 +395,9 @@ Int freac::ConfigureEncoders::SaveSettings()
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, useInputDir);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, allowOverwrite);
 
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, unicode_files);
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, replace_spaces);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAddSequentialNumbersID, addSeqNumbers);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, unicodeFiles);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, replaceSpaces);
 
 	return Success();
 }

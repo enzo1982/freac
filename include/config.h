@@ -119,6 +119,9 @@ namespace freac
 			static const String	 SettingsFilenamesReplaceSpacesID;
 			static const Bool	 SettingsFilenamesReplaceSpacesDefault;
 
+			static const String	 SettingsFilenamesAddSequentialNumbersID;
+			static const Bool	 SettingsFilenamesAddSequentialNumbersDefault;
+
 			static const String	 SettingsEncoderID;
 			static const String	 SettingsEncoderDefault;
 

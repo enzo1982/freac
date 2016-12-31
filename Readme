@@ -185,6 +185,7 @@ History
 		- added support for encoding to single file with freaccmd
 		- added support for large fonts
 		- changed default output directory to "My Music" folder
+		- added an option to append sequential numbers to otherwise identical filenames
 		- added additional genres as defined by Winamp 5.6
 		- added <composer>, <conductor> and <disc> patterns
 		- added <directory> pattern to allow preserving existing directory structures

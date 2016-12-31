@@ -164,7 +164,20 @@ Error freac::JobConvert::Precheck()
 		{
 			track.outfile = Utilities::GetOutputFileName(track);
 
-			if (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory)) { existingTracks.Add(track); continue; }
+			if (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory))
+			{
+				if (!configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAddSequentialNumbersID, Config::SettingsFilenamesAddSequentialNumbersDefault)) { existingTracks.Add(track); continue; }
+
+				/* Append sequential number to output file.
+				 */
+				String	 name	   = track.outfile.Head(track.outfile.FindLast("."));
+				String	 extension = track.outfile.Tail(track.outfile.Length() - track.outfile.FindLast("."));
+
+				for (Int i = 2; i >= 2; i++)
+				{
+					if (!File(String(name).Append(" [").Append(String::FromInt(i)).Append("]").Append(extension)).Exists()) { track.outfile = String(name).Append(" [").Append(String::FromInt(i)).Append("]").Append(extension); break; }
+				}
+			}
 
 			Bool	 found = False;
 

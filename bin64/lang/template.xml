@@ -349,6 +349,7 @@
 	<entry id="5114" string="Replace spaces"/>
 	<entry id="5115" string="Remove processed tracks from joblist"/>
 	<entry id="5116" string="Add encoded files to joblist"/>
+	<entry id="5117" string="Append sequential numbers to otherwise identical filenames"/>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?"/>
