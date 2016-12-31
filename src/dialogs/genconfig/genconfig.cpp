@@ -142,12 +142,14 @@ Void freac::GeneralSettingsDialog::OK()
 	Directory::SetActiveDirectory(GUI::Application::GetApplicationDirectory());
 
 #ifdef __WIN32__
+	Bool	 getHTTPPort = True;
+
 	if (currentConfig->freedb_proxy_mode == 1 && register_layer_cddb->GetFreedbMode() == FREEDB_MODE_CDDBP)
 	{
 		Int	 selection = QuickMessage(freac::i18n->TranslateString("The freedb CDDBP protocol cannot be used over HTTP\nForward proxies!\n\nWould you like to change the protocol to HTTP?"), freac::i18n->TranslateString("Error"), Message::Buttons::YesNoCancel, Message::Icon::Question);
 
-		if	(selection == Message::Button::Yes)    currentConfig->freedb_mode = FREEDB_MODE_HTTP;
-		else if (selection == Message::Button::No)     currentConfig->freedb_mode = register_layer_cddb->GetFreedbMode();
+		if	(selection == Message::Button::Yes)    { currentConfig->freedb_mode = FREEDB_MODE_HTTP; getHTTPPort = False; }
+		else if (selection == Message::Button::No)	 currentConfig->freedb_mode = register_layer_cddb->GetFreedbMode();
 		else if (selection == Message::Button::Cancel) return;
 	}
 	else
@@ -236,8 +238,8 @@ Void freac::GeneralSettingsDialog::OK()
 	currentConfig->freedb_server		= register_layer_cddb->GetFreedbServer();
 	currentConfig->freedb_email		= register_layer_cddb->GetFreedbEMail();
 
-	if	(currentConfig->freedb_mode == FREEDB_MODE_CDDBP) currentConfig->freedb_cddbp_port = register_layer_cddb->GetFreedbPort();
-	else if (currentConfig->freedb_mode == FREEDB_MODE_HTTP)  currentConfig->freedb_http_port  = register_layer_cddb->GetFreedbPort();
+	if	(currentConfig->freedb_mode == FREEDB_MODE_CDDBP)		 currentConfig->freedb_cddbp_port = register_layer_cddb->GetFreedbPort();
+	else if (currentConfig->freedb_mode == FREEDB_MODE_HTTP && getHTTPPort)  currentConfig->freedb_http_port  = register_layer_cddb->GetFreedbPort();
 
 	currentConfig->output_plugin = register_layer_plugins->GetSelectedOutputPlugin();
 #endif
