@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -53,7 +53,7 @@ String	 freac::freac::appLongName  = "fre:ac - free video downloader";
 String	 freac::freac::appLongName  = "fre:ac - free audio converter";
 #endif
 
-String	 freac::freac::version	    = "CVS 2016xxyy";
+String	 freac::freac::version	    = "CVS 2017xxyy";
 
 #if defined __i386__
 String	 freac::freac::architecture = "x86";
@@ -77,7 +77,7 @@ String	 freac::freac::shortVersion = "v1.1";
 String	 freac::freac::cddbVersion  = "v1.1beta1pre5";	// CDDB version may not contain spaces
 String	 freac::freac::cddbMode	    = "submit";
 
-String	 freac::freac::copyright    = "Copyright (C) 2001-2016 Robert Kausch";
+String	 freac::freac::copyright    = "Copyright (C) 2001-2017 Robert Kausch";
 
 String	 freac::freac::website	    = "https://www.freac.org/";
 String	 freac::freac::updatePath   = "http://www.freac.org/eUpdate/eUpdate.xml";

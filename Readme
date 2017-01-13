@@ -138,7 +138,7 @@ Known problems
 History
 -------
 
-	Version 1.1 CVS (December 2016)
+	Version 1.1 CVS (January 2017)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, macOS, Solaris, FreeBSD, OpenBSD and NetBSD
