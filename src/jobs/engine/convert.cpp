@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -446,6 +446,13 @@ Error freac::JobConvert::Perform()
 	{
 		if (encodeToSingleFile && singleFileEncoder == NIL) break;
 
+		/* Check for errors.
+		 */
+		foreach (ConvertWorker *worker, workerQueue)
+		{
+			if (worker->IsError()) stopConversion = True;
+		}
+
 		/* Cancel workers if stop requested.
 		 */
 		if (stopConversion)
@@ -793,10 +800,13 @@ Error freac::JobConvert::Perform()
 			{
 				while (workerToUse->IsWaiting() && !workerToUse->IsIdle()) S::System::System::Sleep(1);
 
-				onEncodeTrack.Emit(tracksToConvert.Get(track.GetTrackID()), decoderName	   = workerToUse->GetDecoderName(),
-											    conversionStep = workerToUse->GetConversionStep());
+				if (!workerToUse->IsError())
+				{
+					onEncodeTrack.Emit(tracksToConvert.Get(track.GetTrackID()), decoderName	   = workerToUse->GetDecoderName(),
+												    conversionStep = workerToUse->GetConversionStep());
 
-				SetText(String("Converting %1...").Replace("%1", track.origFilename));
+					SetText(String("Converting %1...").Replace("%1", track.origFilename));
+				}
 			}
 
 			progress->StartTrack(workerToUse->GetTrackToConvert());

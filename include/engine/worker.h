@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -35,6 +35,7 @@ namespace freac
 
 			Bool						 idle;
 			Bool						 waiting;
+			Bool						 error;
 
 			Bool						 pause;
 			Bool						 cancel;
@@ -54,6 +55,7 @@ namespace freac
 		accessors:
 			Bool						 IsIdle() const				      { return idle; }
 			Bool						 IsWaiting() const			      { return waiting; }
+			Bool						 IsError() const			      { return error; }
 
 			const BoCA::Track				&GetTrackToConvert() const		      { return trackToConvert; }
 			Void						 SetTrackToConvert(const BoCA::Track &);
