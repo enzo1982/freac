@@ -12,6 +12,10 @@
 
 #include <engine/worker.h>
 
+#include <engine/decoder.h>
+#include <engine/encoder.h>
+#include <engine/verifier.h>
+
 #include <config.h>
 
 using namespace BoCA;

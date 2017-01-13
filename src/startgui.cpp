@@ -41,6 +41,11 @@
 #include <dialogs/cddb/managequeries.h>
 #include <dialogs/cddb/managesubmits.h>
 
+#include <gui/main_joblist.h>
+#include <gui/main_threads.h>
+
+#include <support/notification.h>
+
 #ifdef __WIN32__
 #	include <smooth/init.win32.h>
 #endif

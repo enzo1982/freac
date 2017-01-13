@@ -13,14 +13,17 @@
 #ifndef H_FREAC_CONVERT_WORKER
 #define H_FREAC_CONVERT_WORKER
 
-#include "converter.h"
+#include <smooth.h>
+#include <boca.h>
 
-#include "decoder.h"
-#include "encoder.h"
-#include "verifier.h"
+#include "converter.h"
 
 namespace freac
 {
+	class Decoder;
+	class Encoder;
+	class Verifier;
+
 	class ConvertWorker : public Threads::Thread
 	{
 		protected:
