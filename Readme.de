@@ -153,6 +153,7 @@ Geschichte
 		- Konvertierungen werden nun wenn möglich parallel ausgeführt
 		- Neues Design des Fortschrittsanzeigebereichs
 		- Neuer Dialog zur Bestätigung des Überschreibens vorhandener Dateien vor der Konvertierung
+		- Formatauswahl für Kodierer, die mehrere Formate unterstützen, im Kodieren-Menü ermöglicht
 		- Komplett überarbeiteter LAME-Konfigurationsdialog
 		- Möglichkeit zum Bearbeiten der Konfiguration während der Konvertierung hinzugefügt
 		- Untersützung für Verifikation von verlustfreien Ein- und Ausgabedateien hinzugefügt

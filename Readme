@@ -153,6 +153,7 @@ History
 		- conversions are now done in parallel if possible
 		- redesigned progress display area
 		- new dialog to confirm overwriting of existing files before conversion
+		- allowed format selection from the encode menu for encoders supporting multiple formats
 		- completely reworked LAME configuration dialog
 		- added support for editing configurations during conversions
 		- added support for verifying lossless input and output files

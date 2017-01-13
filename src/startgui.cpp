@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -302,6 +302,10 @@ freac::freacGUI::~freacGUI()
 	DeleteObject(menu_encoder_options);
 
 	DeleteObject(menu_help);
+
+	foreach (PopupMenu *menu_format, formatMenus) delete menu_format;
+
+	formatMenus.RemoveAll();
 }
 
 Void freac::freacGUI::InitExtensionComponents()
@@ -928,6 +932,10 @@ Void freac::freacGUI::FillMenus()
 
 	menu_help->RemoveAllEntries();
 
+	foreach (PopupMenu *menu_format, formatMenus) delete menu_format;
+
+	formatMenus.RemoveAll();
+
 	MenuEntry	*entry	     = NIL;
 	Config		*freacConfig = Config::Get();
 
@@ -1075,7 +1083,38 @@ Void freac::freacGUI::FillMenus()
 	{
 		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_ENCODER) continue;
 
-		menu_encoders->AddEntry(boca.GetComponentName(i), NIL, NIL, NIL, &clicked_encoder, i)->onAction.Connect(&freacGUI::Convert, this);
+		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
+
+		if (formats.Length() > 1)
+		{
+			PopupMenu	*menu_formats = new PopupMenu();
+
+			for (Int j = 0; j < formats.Length(); j++)
+			{
+				FileFormat		*format	    = formats.GetNth(j);
+				String			 name	    = format->GetName();
+				const Array<String>	&extensions = format->GetExtensions();
+
+				if (extensions.Length() > 0)
+				{
+					String	 extensionList;
+
+					foreach (const String &extension, extensions) extensionList.Append(extensionList != NIL ? ", " : NIL).Append(".").Append(extension);
+
+					name = i18n->AddBrackets(name, extensionList);
+				}
+
+				menu_formats->AddEntry(name, NIL, NIL, NIL, &clicked_encoder, 100 * i + j)->onAction.Connect(&freacGUI::Convert, this);
+			}
+
+			menu_encoders->AddEntry(boca.GetComponentName(i), NIL, menu_formats);
+
+			formatMenus.Add(menu_formats);
+		}
+		else
+		{
+			menu_encoders->AddEntry(boca.GetComponentName(i), NIL, NIL, NIL, &clicked_encoder, 100 * i)->onAction.Connect(&freacGUI::Convert, this);
+		}
 	}
 
 	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0)
@@ -1227,10 +1266,19 @@ Void freac::freacGUI::Convert()
 	 */
 	if (clicked_encoder >= 0)
 	{
-		BoCA::Config	*config = BoCA::Config::Get();
-		Registry	&boca	= Registry::Get();
+		BoCA::Config		*config	   = BoCA::Config::Get();
+		Registry		&boca	   = Registry::Get();
+		const String		&encoderID = boca.GetComponentID(clicked_encoder / 100);
+		EncoderComponent	*encoder   = (EncoderComponent *) boca.CreateComponentByID(encoderID);
 
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, boca.GetComponentID(clicked_encoder));
+		if (encoder != NIL)
+		{
+			encoder->SetOutputFormat(clicked_encoder % 100);
+
+			boca.DeleteComponent(encoder);
+		}
+
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, encoderID);
 
 		tab_layer_joblist->UpdateEncoderText();
 
