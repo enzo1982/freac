@@ -189,6 +189,7 @@
       <entry id="3048" string="Other">Andere</entry>
       <entry id="3049" string="Output file name">Ausgabedateiname</entry>
       <entry id="3050" string="verifying">Überprüfen</entry>
+      <entry id="3051" string="Open">Öffnen</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Ordner</entry>
