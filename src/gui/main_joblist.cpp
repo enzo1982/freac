@@ -1582,7 +1582,7 @@ Void freac::LayerJoblist::UpdateOutputDir()
 
 Void freac::LayerJoblist::OnOpenFolder()
 {
-	System::System::OpenURL(edb_outdir->GetText());
+	S::System::System::OpenURL(edb_outdir->GetText());
 }
 
 Void freac::LayerJoblist::OnBrowseForFolder()
