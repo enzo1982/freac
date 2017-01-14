@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -111,6 +111,20 @@ freac::CDDBInfo &freac::CDDBInfo::operator =(const CDDBInfo &oInfo)
 	charset	  = oInfo.charset;
 
 	return *this;
+}
+
+String freac::CDDBInfo::GetQueryString() const
+{
+	Int	 numTocEntries = trackOffsets.Length();
+	String	 str = String("cddb query ").Append(CDDB::DiscIDToString(discID));
+
+	str.Append(" ").Append(String::FromInt(numTocEntries));
+
+	foreach (Int trackOffset, trackOffsets) str.Append(" ").Append(String::FromInt(trackOffset));
+
+	str.Append(" ").Append(String::FromInt(discLength));
+
+	return str;
 }
 
 Bool freac::CDDBInfo::UpdateFromQueryString(const String &queryString)

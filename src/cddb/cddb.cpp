@@ -134,7 +134,7 @@ Bool freac::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 {
 	if (ConnectToServer() == False) return False;
 
-	Int	 query = Query(cddbInfo.discID);
+	Int	 query = Query(cddbInfo.GetQueryString());
 
 	if (query == QUERY_RESULT_ERROR) return False;
 

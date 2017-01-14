@@ -64,6 +64,7 @@ namespace freac
 			CDDBInfo	&operator =(int);
 			CDDBInfo	&operator =(const CDDBInfo &);
 
+			String		 GetQueryString() const;
 			Bool		 UpdateFromQueryString(const String &);
 	};
 };
