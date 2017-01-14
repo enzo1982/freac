@@ -212,6 +212,7 @@ Geschichte
 		- Möglichkeit zur Sortierung der Jobliste durch Klick auf Überschriften hinzugefügt
 		- Grundlegende Untersützung für Mehrkanal-Audio hinzugefügt
 		- Möglichkeit zur Einstellung der Prozesspriorität unter Windows hinzugefügt
+		- Schaltfläche zum Öffnen des Ausgabeordners hinzugefügt
 		- Speichere Playlisten und Cue Sheets im Eine-Datei-Modus zusammen mit Ausgabedatei
 		- Die Restzeitanzeige zeigt falls notwendig nun auch Stunden an
 		- Die fünf zuletzt verwendeten Ausgabeordner werden jetzt für späteren Zugriff gespeichert

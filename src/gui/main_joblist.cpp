@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -379,9 +379,13 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	UpdateOutputDir();
 
-	btn_outdir = new Button(i18n->TranslateString("Browse"), NIL, Point(87, 28), Size(0, 0));
-	btn_outdir->SetOrientation(OR_LOWERRIGHT);
-	btn_outdir->onAction.Connect(&LayerJoblist::OnBrowseForFolder, this);
+	btn_open = new Button(i18n->TranslateString("Open"), NIL, Point(173, 28), Size(0, 0));
+	btn_open->SetOrientation(OR_LOWERRIGHT);
+	btn_open->onAction.Connect(&LayerJoblist::OnOpenFolder, this);
+
+	btn_browse = new Button(i18n->TranslateString("Browse"), NIL, Point(87, 28), Size(0, 0));
+	btn_browse->SetOrientation(OR_LOWERRIGHT);
+	btn_browse->onAction.Connect(&LayerJoblist::OnBrowseForFolder, this);
 
 	progress = new Progressbar(Point(0, 51), Size(0, 10), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
 	progress->SetOrientation(OR_LOWERLEFT);
@@ -465,7 +469,8 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	Add(combo_encoder);
 	Add(edb_outdir);
 	Add(btn_skip);
-	Add(btn_outdir);
+	Add(btn_open);
+	Add(btn_browse);
 	Add(progress_total);
 	Add(progress);
 
@@ -585,7 +590,8 @@ freac::LayerJoblist::~LayerJoblist()
 	DeleteObject(edb_outdir);
 	DeleteObject(list_outdir);
 	DeleteObject(btn_skip);
-	DeleteObject(btn_outdir);
+	DeleteObject(btn_open);
+	DeleteObject(btn_browse);
 	DeleteObject(progress);
 	DeleteObject(progress_total);
 
@@ -656,7 +662,7 @@ Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 	edb_filename->SetWidth(clientSize.cx - 27 - maxTextLength - btn_skip->GetWidth());
 	edb_format->SetWidth(clientSize.cx / 2 - 14 - maxTextLength);
 	combo_encoder->SetWidth(Math::Ceil(Float(clientSize.cx) / 2.0) - 21 - txt_encoder->GetUnscaledTextWidth());
-	edb_outdir->SetWidth(clientSize.cx - 27 - maxTextLength - btn_outdir->GetWidth());
+	edb_outdir->SetWidth(clientSize.cx - 33 - maxTextLength - btn_browse->GetWidth() - btn_open->GetWidth());
 
 	/* Update progress bar and time-left display.
 	 */
@@ -738,8 +744,10 @@ Void freac::LayerJoblist::OnChangeLanguageSettings()
 	edb_filename->SetText(i18n->TranslateString("none"));
 	edb_format->SetText(i18n->TranslateString("unknown"));
 
-	btn_outdir->SetText(i18n->TranslateString("Browse"));
 	btn_skip->SetText(i18n->TranslateString("Skip"));
+
+	btn_open->SetText(i18n->TranslateString("Open"));
+	btn_browse->SetText(i18n->TranslateString("Browse"));
 
 	check_single->SetText(i18n->TranslateString("Encode to a single file"));
 	check_cuesheet->SetText(i18n->TranslateString("Create cue sheet"));
@@ -772,13 +780,16 @@ Void freac::LayerJoblist::OnChangeLanguageSettings()
 	progress->SetX(maxTextLength + 14);
 	progress_total->SetX(maxTextLength + 14);
 
-	Int	 maxButtonText = (Int) Math::Max(btn_outdir->GetUnscaledTextWidth(), btn_skip->GetUnscaledTextWidth());
+	Int	 maxButtonText = (Int) Math::Max(btn_skip->GetUnscaledTextWidth(), btn_browse->GetUnscaledTextWidth());
 
-	btn_outdir->SetWidth(Math::Max(80, maxButtonText + 13));
 	btn_skip->SetWidth(Math::Max(80, maxButtonText + 13));
+	btn_browse->SetWidth(Math::Max(80, maxButtonText + 13));
 
-	btn_outdir->SetX(btn_outdir->GetWidth() + 7);
 	btn_skip->SetX(btn_skip->GetWidth() + 7);
+	btn_browse->SetX(btn_browse->GetWidth() + 7);
+
+	btn_open->SetWidth(Math::Max(80, btn_open->GetUnscaledTextWidth() + 13));
+	btn_open->SetX(btn_browse->GetWidth() + btn_open->GetWidth() + 13);
 
 	if (progress_total->GetRealPosition().y < progress->GetRealPosition().y + progress->GetRealSize().cy - 1) progress_total->SetMetrics(progress_total->GetPosition() - Point(0, 1), progress_total->GetSize() - Size(0, 1));
 
@@ -1567,6 +1578,11 @@ Void freac::LayerJoblist::UpdateOutputDir()
 	}
 
 	edb_outdir->SetDropDownList(list_outdir);
+}
+
+Void freac::LayerJoblist::OnOpenFolder()
+{
+	System::System::OpenURL(edb_outdir->GetText());
 }
 
 Void freac::LayerJoblist::OnBrowseForFolder()

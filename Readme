@@ -211,7 +211,8 @@ History
 		- added a warning when converting from lossy to lossless formats
 		- added the ability to sort the joblist by clicking headers
 		- added basic multi-channel audio support
-		- added support for setting prcocess priority on Windows
+		- added support for setting process priority on Windows
+		- added a button to open the output folder
 		- save playlists and cuesheets along with output file in single file mode
 		- the time left indicator now shows hours if necessary
 		- the five last used output folders are now saved for later use
