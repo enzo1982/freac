@@ -213,7 +213,8 @@ Geschichte
 		- Grundlegende Untersützung für Mehrkanal-Audio hinzugefügt
 		- Möglichkeit zur Einstellung der Prozesspriorität unter Windows hinzugefügt
 		- Schaltfläche zum Öffnen des Ausgabeordners hinzugefügt
-		- Speichere Playlisten und Cue Sheets im Eine-Datei-Modus zusammen mit Ausgabedatei
+		- Unterstützung zum Erzeugen getrennter Playlisten bzw. Cuesheets pro Album in einer Konvertierung hinzugefügt
+		- Speichere Playlisten und Cuesheets im Eine-Datei-Modus zusammen mit Ausgabedatei
 		- Die Restzeitanzeige zeigt falls notwendig nun auch Stunden an
 		- Die fünf zuletzt verwendeten Ausgabeordner werden jetzt für späteren Zugriff gespeichert
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert

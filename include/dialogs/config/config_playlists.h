@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -36,11 +36,14 @@ namespace freac
 			Text				*text_filename;
 			EditBox				*edit_filename;
 			List				*list_filename;
+			CheckBox			*check_singlefile;
 
 			Bool				 createPlaylists;
 			Bool				 createCueSheets;
 
 			Bool				 useEncOutdir;
+
+			Bool				 createSingleFile;
 		slots:
 			Void				 SelectDir();
 			Void				 ConfigureFormat();

@@ -266,6 +266,8 @@ Error freac::JobConvert::Perform()
 	Bool	 createPlaylist		= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
 	Bool	 createCueSheet		= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
 
+	Bool	 singlePlaylistFile	= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateSingleFileID, Config::PlaylistCreateSingleFileDefault);
+
 	/* Do not verify output if meh! encoder selected.
 	 */
 	if (selectedEncoderID == "meh-enc") verifyOutput = False;
@@ -992,43 +994,80 @@ Error freac::JobConvert::Perform()
 	if (!stopConversion && encodedTracks > 0)
 	{
 		String	 playlistID	   = configuration->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault);
-
-		String	 playlistFileName  = Utilities::GetPlaylistFileName(tracksToConvert.GetFirst());
 		String	 playlistExtension = playlistID.Tail(playlistID.Length() - playlistID.FindLast("-") - 1);
 
-		/* Set playlist filename so it is written to the same place as a single output file.
+		/* Split playlist tracks to individual playlists.
 		 */
-		if (encodeToSingleFile) playlistFileName = singleOutFile.Head(singleOutFile.FindLast("."));
+		Array<String>		 playlistFileNames;
 
-		/* Write playlist.
-		 */
-		if (createPlaylist)
+		Array<Array<Track> *>	 playlistTrackLists;
+		Array<Array<Track> *>	 cuesheetTrackLists;
+
+		if (encodeToSingleFile || singlePlaylistFile)
 		{
-			PlaylistComponent	*playlist = (PlaylistComponent *) boca.CreateComponentByID(playlistID.Head(playlistID.FindLast("-")));
+			/* Set playlist filename so it is written to the same place as a single output file.
+			 */
+			if (encodeToSingleFile) playlistFileNames.Add(singleOutFile.Head(singleOutFile.FindLast(".")));
+			else			playlistFileNames.Add(Utilities::GetPlaylistFileName(playlistTracks.GetFirst()));
 
-			if (playlist != NIL)
+			playlistTrackLists.Add(new Array<Track>(playlistTracks));
+			cuesheetTrackLists.Add(new Array<Track>(cuesheetTracks));
+		}
+		else
+		{
+			foreach (const Track &track, playlistTracks)
 			{
-				playlist->SetTrackList(playlistTracks);
-				playlist->WritePlaylist(String(playlistFileName).Append(".").Append(playlistExtension));
+				/* Check if we already have a list for this playlist.
+				 */
+				String		 playlistFileName = Utilities::GetPlaylistFileName(track);
+				UnsignedInt32	 playlistFileCRC  = playlistFileName.ComputeCRC32();
 
-				boca.DeleteComponent(playlist);
+				if (playlistFileNames.Add(playlistFileName, playlistFileCRC))
+				{
+					playlistTrackLists.Add(new Array<Track>(), playlistFileCRC);
+					cuesheetTrackLists.Add(new Array<Track>(), playlistFileCRC);
+				}
+
+				/* Find current lists and add track.
+				 */
+				playlistTrackLists.Get(playlistFileCRC)->Add(track);
+				cuesheetTrackLists.Get(playlistFileCRC)->Add(track);
 			}
 		}
 
-		/* Write cue sheet.
+		/* Write playlists and cue sheets.
 		 */
-		if (createCueSheet)
+		for (Int i = 0; i < playlistFileNames.Length(); i++)
 		{
-			PlaylistComponent	*cuesheet = (PlaylistComponent *) boca.CreateComponentByID("cuesheet-playlist");
+			/* Write playlist.
+			 */
+			PlaylistComponent	*playlist = createPlaylist ? (PlaylistComponent *) boca.CreateComponentByID(playlistID.Head(playlistID.FindLast("-"))) : NIL;
+
+			if (playlist != NIL)
+			{
+				playlist->SetTrackList(*playlistTrackLists.GetNth(i));
+				playlist->WritePlaylist(String(playlistFileNames.GetNth(i)).Append(".").Append(playlistExtension));
+
+				boca.DeleteComponent(playlist);
+			}
+
+			/* Write cue sheet.
+			 */
+			PlaylistComponent	*cuesheet = createCueSheet ? (PlaylistComponent *) boca.CreateComponentByID("cuesheet-playlist") : NIL;
 
 			if (cuesheet != NIL)
 			{
-				cuesheet->SetTrackList(cuesheetTracks);
-				cuesheet->WritePlaylist(String(playlistFileName).Append(".cue"));
+				cuesheet->SetTrackList(*cuesheetTrackLists.GetNth(i));
+				cuesheet->WritePlaylist(String(playlistFileNames.GetNth(i)).Append(".cue"));
 
 				boca.DeleteComponent(cuesheet);
 			}
 		}
+
+		/* Clean up playlist and cuesheet track lists.
+		 */
+		foreach (Array<Track> *trackList, playlistTrackLists) delete trackList;
+		foreach (Array<Track> *trackList, cuesheetTrackLists) delete trackList;
 
 		/* Reset "Delete after encoding" option.
 		 */

@@ -204,7 +204,7 @@ History
 		- added CD read offset configuration option
 		- added configuration option to keep converted tracks in joblist
 		- added configuration option to add encoded files to joblist
-		- added support for loading cuesheets
+		- added support for loading cue sheets
 		- added support for reading and writing Vorbis files with .oga extension
 		- added support for XSPF, Windows Media and PLS playlists
 		- added a slider for seeking during playback
@@ -213,7 +213,8 @@ History
 		- added basic multi-channel audio support
 		- added support for setting process priority on Windows
 		- added a button to open the output folder
-		- save playlists and cuesheets along with output file in single file mode
+		- added support for creating one playlist or cue sheet per album in a single conversion
+		- save playlists and cue sheets along with output file in single file mode
 		- the time left indicator now shows hours if necessary
 		- the five last used output folders are now saved for later use
 		- the five last used file name patterns are now saved for later use
@@ -226,7 +227,7 @@ History
 		- fixed ID3lib to read and write correct ID3v2.4 tags
 		- fixed writing of ID3v1 tags when encoding VBR or ABR MP3s
 		- fixed automatic reading of CD contents on disc insert
-		- fixed creation of cuesheets for multiple tracks in a single file
+		- fixed creation of cue sheets for multiple tracks in a single file
 		- fixed total progress bar not working correctly with many tracks in joblist
 		- fixed crash when encoding to single MP4 file
 		- fixed unwanted downsampling when encoding to low bitrate MP3

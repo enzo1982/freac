@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -29,9 +29,10 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 	String	 playlistOutputDir	= config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault));
 	String	 playlistOutputPattern	= config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenamePatternID, Config::PlaylistFilenamePatternDefault);
 
-	createPlaylists	= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
-	createCueSheets	= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
-	useEncOutdir	= config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, Config::PlaylistUseEncoderOutputDirDefault);
+	createPlaylists	 = config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
+	createCueSheets	 = config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
+	useEncOutdir	 = config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, Config::PlaylistUseEncoderOutputDirDefault);
+	createSingleFile = config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateSingleFileID, Config::PlaylistCreateSingleFileDefault);
 
 	group_options		= new GroupBox(i18n->TranslateString("Playlists"), Point(7, 11), Size(552, 67));
 
@@ -102,7 +103,7 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 	group_outdir->Add(edit_outdir);
 	group_outdir->Add(button_outdir_browse);
 
-	group_filename		= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 171), Size(552, 43));
+	group_filename		= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 171), Size(552, 67));
 
 	text_filename		= new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(10, 15));
 	edit_filename		= new EditBox(playlistOutputPattern, Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(525 - text_filename->GetUnscaledTextWidth(), 0), 0);
@@ -116,8 +117,11 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 
 	edit_filename->SetDropDownList(list_filename);
 
+	check_singlefile	= new CheckBox(i18n->TranslateString("Create only a single playlist and/or cue sheet file per conversion"), Point(10, 39), Size(532, 0), &createSingleFile);
+
 	group_filename->Add(text_filename);
 	group_filename->Add(edit_filename);
+	group_filename->Add(check_singlefile);
 
 	ToggleUseEncOutdir();
 	ToggleCreatePlaylists();
@@ -126,7 +130,7 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 	Add(group_filename);
 	Add(group_options);
 
-	SetSize(Size(566, 221));
+	SetSize(Size(566, 245));
 }
 
 freac::ConfigurePlaylists::~ConfigurePlaylists()
@@ -140,6 +144,7 @@ freac::ConfigurePlaylists::~ConfigurePlaylists()
 	DeleteObject(text_filename);
 	DeleteObject(edit_filename);
 	DeleteObject(list_filename);
+	DeleteObject(check_singlefile);
 
 	DeleteObject(group_options);
 	DeleteObject(check_createPlaylists);
@@ -272,6 +277,7 @@ Int freac::ConfigurePlaylists::SaveSettings()
 	config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, playlistOutputDir);
 	config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenamePatternID, playlistOutputPattern);
 	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, useEncOutdir);
+	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateSingleFileID, createSingleFile);
 
 	Registry	&boca  = Registry::Get();
 	Int		 index = combo_formats->GetSelectedEntryNumber();

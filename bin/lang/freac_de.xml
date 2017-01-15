@@ -367,6 +367,7 @@
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Wählen sie einen Ordner für die Playlist-Dateien</entry>
 	<entry id="5207" string="Output filenames">Ausgabedateinamen</entry>
 	<entry id="5208" string="Configure plugin">Plugin konfigurieren</entry>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Nur eine einzige Playlisten- und/oder Cuesheet-Datei pro Konvertierung erzeugen</entry>
       </section>
 
       <section name="CDDB">
