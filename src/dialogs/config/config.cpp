@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -605,5 +605,17 @@ Void freac::ConfigDialog::OnChangeComponentSettings(const String &componentID)
 		}
 
 		break;
+	}
+
+	/* For meh!, replace all encoder components.
+	 */
+	if (componentID == "meh-enc")
+	{
+		foreach (Component *component, components)
+		{
+			if (component->GetType() != COMPONENT_TYPE_ENCODER || component->GetID() == componentID) continue;
+
+			OnChangeComponentSettings(component->GetID());
+		}
 	}
 }
