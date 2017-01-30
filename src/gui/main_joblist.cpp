@@ -950,7 +950,12 @@ Void freac::LayerJoblist::OnJoblistModifyTrack(const Track &track)
 
 	if (track.pictures.Length() > 0)
 	{
-		info_image_cover->SetBitmap(track.pictures.GetFirst().GetBitmap());
+		if (currentCover != track.pictures.GetFirst())
+		{
+			currentCover = track.pictures.GetFirst();
+
+			info_image_cover->SetBitmap(currentCover.GetBitmap());
+		}
 
 		ShowCoverArea();
 	}

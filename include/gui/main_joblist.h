@@ -127,6 +127,8 @@ namespace freac
 
 			LayerPlayer		*player;
 
+			BoCA::Picture		 currentCover;
+
 			Bool			 dontUpdateInfo;
 
 			Int			 clicked_charset;
