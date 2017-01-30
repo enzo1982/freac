@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -312,15 +312,28 @@ Void BoCA::LayerTagBasic::OnChangeLanguageSettings()
 	if (prevVisible) Show();
 }
 
-Void BoCA::LayerTagBasic::LoadCoverImages()
+Void BoCA::LayerTagBasic::LoadCoverImages(const Track &nTrack)
 {
-	foreach (const Picture &cover, track.pictures)
+	foreach (const Picture &cover, nTrack.pictures)
 	{
 		ImageEntry	*entry = new ImageEntry(cover.GetBitmap(), Size(70, 70));
 
 		entry->onLeftButtonDoubleClick.Connect(&LayerTagBasic::DisplayCover, this);
 
 		image_covers->Add(entry);
+	}
+}
+
+Void BoCA::LayerTagBasic::UpdateCoverImages(const Track &nTrack)
+{
+	for (Int i = 0; i < Math::Max(track.pictures.Length(), nTrack.pictures.Length()); i++)
+	{
+		if (track.pictures.GetNth(i) == nTrack.pictures.GetNth(i)) continue;
+
+		FreeCoverImages();
+		LoadCoverImages(nTrack);
+
+		break;
 	}
 }
 
@@ -483,7 +496,23 @@ Void BoCA::LayerTagBasic::OnSelectTrack(const Track &nTrack)
 
 	surface->StartPaint(GetVisibleArea());
 
-	OnSelectNone();
+	UpdateCoverImages(nTrack);
+
+	if (image_covers->GetSelectedEntryNumber() == -1)
+	{
+		combo_cover_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
+
+		combo_cover_type->SelectNthEntry(0);
+		edit_cover_desc->SetText(NIL);
+
+		combo_cover_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
+
+		button_cover_remove->Deactivate();
+		text_cover_type->Deactivate();
+		combo_cover_type->Deactivate();
+		text_cover_desc->Deactivate();
+		edit_cover_desc->Deactivate();
+	}
 
 	track = nTrack;
 
@@ -503,15 +532,13 @@ Void BoCA::LayerTagBasic::OnSelectTrack(const Track &nTrack)
 	edit_genre->SetText(info.genre);
 	edit_comment->SetText(info.comment);
 
-	if (info.year	   > 0) edit_year->SetText(String::FromInt(info.year));
+	edit_year->SetText(info.year > 0 ? String::FromInt(info.year) : String());
 
-	if (info.track	   > 0) edit_track->SetText(String(info.track < 10 ? "0" : NIL).Append(String::FromInt(info.track)));
-	if (info.numTracks > 0) edit_ntracks->SetText(String(info.numTracks < 10 ? "0" : NIL).Append(String::FromInt(info.numTracks)));
+	edit_track->SetText(info.track > 0 ? String(info.track < 10 ? "0" : NIL).Append(String::FromInt(info.track)) : String());
+	edit_ntracks->SetText(info.numTracks > 0 ? String(info.numTracks < 10 ? "0" : NIL).Append(String::FromInt(info.numTracks)) : String());
 
-	if (info.disc	   > 0) edit_disc->SetText(String(info.disc < 10 ? "0" : NIL).Append(String::FromInt(info.disc)));
-	if (info.numDiscs  > 0) edit_ndiscs->SetText(String(info.numDiscs < 10 ? "0" : NIL).Append(String::FromInt(info.numDiscs)));
-
-	LoadCoverImages();
+	edit_disc->SetText(info.disc > 0 ? String(info.disc < 10 ? "0" : NIL).Append(String::FromInt(info.disc)) : String());
+	edit_ndiscs->SetText(info.numDiscs > 0 ? String(info.numDiscs < 10 ? "0" : NIL).Append(String::FromInt(info.numDiscs)) : String());
 
 	EditBox	*activeEditBox = GetActiveEditBox();
 
@@ -536,7 +563,23 @@ Void BoCA::LayerTagBasic::OnSelectAlbum(const Track &nTrack)
 
 	surface->StartPaint(GetVisibleArea());
 
-	OnSelectNone();
+	UpdateCoverImages(nTrack);
+
+	if (image_covers->GetSelectedEntryNumber() == -1)
+	{
+		combo_cover_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
+
+		combo_cover_type->SelectNthEntry(0);
+		edit_cover_desc->SetText(NIL);
+
+		combo_cover_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
+
+		button_cover_remove->Deactivate();
+		text_cover_type->Deactivate();
+		combo_cover_type->Deactivate();
+		text_cover_desc->Deactivate();
+		edit_cover_desc->Deactivate();
+	}
 
 	track = nTrack;
 
@@ -551,18 +594,18 @@ Void BoCA::LayerTagBasic::OnSelectAlbum(const Track &nTrack)
 	const Info	&info = track.GetInfo();
 
 	edit_artist->SetText(info.artist);
+	edit_title->SetText(NIL);
 	edit_album->SetText(info.album);
 	edit_genre->SetText(info.genre);
 	edit_comment->SetText(info.comment);
 
-	if (info.year	   > 0) edit_year->SetText(String::FromInt(info.year));
+	edit_year->SetText(info.year > 0 ? String::FromInt(info.year) : String());
 
-	if (info.numTracks > 0) edit_ntracks->SetText(String(info.numTracks < 10 ? "0" : NIL).Append(String::FromInt(info.numTracks)));
+	edit_track->SetText(NIL);
+	edit_ntracks->SetText(info.numTracks > 0 ? String(info.numTracks < 10 ? "0" : NIL).Append(String::FromInt(info.numTracks)) : String());
 
-	if (info.disc	   > 0) edit_disc->SetText(String(info.disc < 10 ? "0" : NIL).Append(String::FromInt(info.disc)));
-	if (info.numDiscs  > 0) edit_ndiscs->SetText(String(info.numDiscs < 10 ? "0" : NIL).Append(String::FromInt(info.numDiscs)));
-
-	LoadCoverImages();
+	edit_disc->SetText(info.disc > 0 ? String(info.disc < 10 ? "0" : NIL).Append(String::FromInt(info.disc)) : String());
+	edit_ndiscs->SetText(info.numDiscs > 0 ? String(info.numDiscs < 10 ? "0" : NIL).Append(String::FromInt(info.numDiscs)) : String());
 
 	EditBox	*activeEditBox = GetActiveEditBox();
 
@@ -587,8 +630,6 @@ Void BoCA::LayerTagBasic::OnSelectNone()
 
 	FreeCoverImages();
 
-	combo_cover_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
-
 	edit_artist->SetText(NIL);
 	edit_title->SetText(NIL);
 	edit_album->SetText(NIL);
@@ -602,8 +643,12 @@ Void BoCA::LayerTagBasic::OnSelectNone()
 	edit_disc->SetText(NIL);
 	edit_ndiscs->SetText(NIL);
 
+	combo_cover_type->onSelectEntry.Disconnect(&LayerTagBasic::OnModifyTrack, this);
+
 	combo_cover_type->SelectNthEntry(0);
 	edit_cover_desc->SetText(NIL);
+
+	combo_cover_type->onSelectEntry.Connect(&LayerTagBasic::OnModifyTrack, this);
 
 	group_info->Deactivate();
 	group_cover->Deactivate();
