@@ -439,14 +439,16 @@ Void freac::JobList::UpdateTrackInfo(const Track &track)
 
 				entry->Hide();
 
-				delete entry->GetTooltipLayer();
+				((LayerTooltip *) entry->GetTooltipLayer())->UpdateFromTrack(track);
 
 				entry->Show();
 
 				surface->EndPaint();
 			}
-
-			entry->SetTooltipLayer(new LayerTooltip(track));
+			else
+			{
+				entry->SetTooltipLayer(new LayerTooltip(track));
+			}
 		}
 
 		existingTrack = track;
@@ -995,9 +997,8 @@ Void freac::JobList::OnChangeLanguageSettings()
 
 		if (BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTooltipsID, Config::SettingsShowTooltipsDefault))
 		{
-			if (entry->GetTooltipLayer() != NIL) delete entry->GetTooltipLayer();
-
-			entry->SetTooltipLayer(new LayerTooltip(track));
+			if (entry->GetTooltipLayer() != NIL) ((LayerTooltip *) entry->GetTooltipLayer())->UpdateFromTrack(track);
+			else				     entry->SetTooltipLayer(new LayerTooltip(track));
 		}
 	}
 

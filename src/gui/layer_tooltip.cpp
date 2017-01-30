@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -14,11 +14,32 @@
 
 using namespace BoCA;
 
-freac::LayerTooltip::LayerTooltip(const Track &track) : Layer()
+freac::LayerTooltip::LayerTooltip(const Track &iTrack) : Layer()
 {
 	cover = NIL;
+	text  = NIL;
 
-	if (track.pictures.Length() > 0)
+	UpdateFromTrack(iTrack);
+}
+
+freac::LayerTooltip::~LayerTooltip()
+{
+	if (cover != NIL) DeleteObject(cover);
+	if (text  != NIL) DeleteObject(text);
+}
+
+Void freac::LayerTooltip::UpdateFromTrack(const Track &nTrack)
+{
+	if (cover != NIL && nTrack.pictures.GetFirst() != track.pictures.GetFirst())
+	{
+		DeleteObject(cover);
+
+		cover = NIL;
+	}
+
+	track = nTrack;
+
+	if (track.pictures.Length() > 0 && cover == NIL)
 	{
 		Bitmap	 bitmap = track.pictures.GetFirst().GetBitmap();
 
@@ -37,18 +58,13 @@ freac::LayerTooltip::LayerTooltip(const Track &track) : Layer()
 		Add(cover);
 	}
 
+	if (text != NIL) DeleteObject(text);
+
 	text = new Text(GetTooltipText(track), Point(3 + (track.pictures.Length() > 0 ? 44 : 0), 3));
 
 	Add(text);
 
 	SetSize(Size(text->GetUnscaledTextWidth() + 7 + (track.pictures.Length() > 0 ? 44 : 0), text->GetUnscaledTextHeight() + 7));
-}
-
-freac::LayerTooltip::~LayerTooltip()
-{
-	if (cover != NIL) DeleteObject(cover);
-
-	DeleteObject(text);
 }
 
 const String &freac::LayerTooltip::GetTooltipText(const Track &track)
