@@ -87,7 +87,7 @@ String	 freac::freac::updatePath   = "http://www.freac.org/eUpdate/eUpdate.xml";
 //String	 freac::freac::cddbMode	    = "test";
 //String	 freac::freac::updatePath   = "file://eUpdate/eUpdate.xml";
 
-freac::freac::freac()
+freac::freac::freac() : Application(appName)
 {
 	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
 
