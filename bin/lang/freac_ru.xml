@@ -231,7 +231,7 @@
     <entry id="227" string="The output folder does not exist! Do you want to create it?">Директории для сохранения не существует! Создать?</entry>
     <entry id="228" string="Filename pattern">Формирование названия файла</entry>
     <entry id="229" string="unknown album">неизвестный альбом</entry>
-    <entry id="230" string="Translated by %1.">Перевед: %1</entry>
+    <entry id="230" string="Translated by %1.">Перевел: %1</entry>
     <entry id="231" string="Select all">Выбрать все</entry>
     <entry id="232" string="Select none">Снять выделение</entry>
     <entry id="233" string="Toggle selection">Инвертировать выделение</entry>
