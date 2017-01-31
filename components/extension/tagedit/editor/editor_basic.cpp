@@ -351,22 +351,24 @@ Void BoCA::LayerTagBasic::FreeCoverImages()
 
 Void BoCA::LayerTagBasic::AddCover()
 {
+	I18n	*i18n = I18n::Get();
+
 	FileSelection	*dialog = new FileSelection();
 
 	dialog->SetParentWindow(GetContainerWindow());
 
-	dialog->AddFilter(I18n::Get()->TranslateString("Image files"), "*.jpg; *.jpeg; *.png");
+	dialog->AddFilter(i18n->TranslateString("Image files"), "*.jpg; *.jpeg; *.png");
 
-	dialog->AddFilter(I18n::Get()->TranslateString("JPEG images"), "*.jpg; *.jpeg");
-	dialog->AddFilter(I18n::Get()->TranslateString("PNG images"), "*.png");
+	dialog->AddFilter(i18n->TranslateString("JPEG images"), "*.jpg; *.jpeg");
+	dialog->AddFilter(i18n->TranslateString("PNG images"), "*.png");
 
-	dialog->AddFilter(I18n::Get()->TranslateString("All Files"), "*.*");
+	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
 
 	if (dialog->ShowDialog() == Success())
 	{
 		String	 file = dialog->GetFileName();
 
-		/* Add picture to track.
+		/* Load picture.
 		 */
 		Picture	 picture;
 
@@ -376,21 +378,34 @@ Void BoCA::LayerTagBasic::AddCover()
 		else if (track.pictures.Length() == 1) picture.type = 4; // Cover (back)
 		else				       picture.type = 0; // Other
 
-		track.pictures.Add(picture);
+		Bitmap	 bitmap = picture.GetBitmap();
 
-		/* Add entry to image box.
-		 */
-		ImageEntry	*entry = new ImageEntry(picture.GetBitmap(), Size(70, 70));
+		if (bitmap != NIL)
+		{
+			/* Add entry to image box.
+			 */
+			ImageEntry	*entry = new ImageEntry(bitmap, Size(70, 70));
 
-		entry->onLeftButtonDoubleClick.Connect(&LayerTagBasic::DisplayCover, this);
+			entry->onLeftButtonDoubleClick.Connect(&LayerTagBasic::DisplayCover, this);
 
-		image_covers->Add(entry);
+			image_covers->Add(entry);
 
-		/* Select cover and send notifications.
-		 */
-		image_covers->SelectNthEntry(image_covers->Length() - 1);
+			/* Add picture to track.
+			 */
+			track.pictures.Add(picture);
 
-		onModifyTrack.Emit(track);
+			/* Select cover and send notifications.
+			 */
+			image_covers->SelectNthEntry(image_covers->Length() - 1);
+
+			onModifyTrack.Emit(track);
+		}
+		else
+		{
+			i18n->SetContext("Extensions::Tag Editor::Errors");
+
+			Utilities::ErrorMessage(i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", dialog->GetFileName()).Replace("%2", i18n->TranslateString("Unknown file type", "Messages")));
+		}
 	}
 
 	delete dialog;
