@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -154,22 +154,20 @@ Void BoCA::ConfigureYouTube::ToggleKeepFiles()
 
 Void BoCA::ConfigureYouTube::SelectOutputDir()
 {
-	I18n		*i18n	= I18n::Get();
+	I18n	*i18n = I18n::Get();
 
 	i18n->SetContext("Extensions::Video Downloader::Configuration");
 
-	DirSelection	*dialog = new DirSelection();
+	DirSelection	 dialog;
 
-	dialog->SetParentWindow(GetContainerWindow());
-	dialog->SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder to save downloaded video files to"))));
-	dialog->SetDirName(edit_dir->GetText());
+	dialog.SetParentWindow(GetContainerWindow());
+	dialog.SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder to save downloaded video files to"))));
+	dialog.SetDirName(edit_dir->GetText());
 
-	if (dialog->ShowDialog() == Success())
+	if (dialog.ShowDialog() == Success())
 	{
-		edit_dir->SetText(dialog->GetDirName());
+		edit_dir->SetText(dialog.GetDirName());
 	}
-
-	DeleteObject(dialog);
 }
 
 Int BoCA::ConfigureYouTube::SaveSettings()

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -488,11 +488,11 @@ String freac::Utilities::GetSingleOutputFileName(const Track &track)
 	/* Find main window and create dialog.
 	 */
 	Window		*mainWnd = Window::GetNthWindow(0);
-	FileSelection	*dialog	 = new FileSelection();
+	FileSelection	 dialog;
 
-	dialog->SetParentWindow(mainWnd);
-	dialog->SetMode(SFM_SAVE);
-	dialog->SetFlags(SFD_CONFIRMOVERWRITE);
+	dialog.SetParentWindow(mainWnd);
+	dialog.SetMode(SFM_SAVE);
+	dialog.SetFlags(SFD_CONFIRMOVERWRITE);
 
 	/* Get list of supported formats from selected encoder
 	 */
@@ -515,27 +515,25 @@ String freac::Utilities::GetSingleOutputFileName(const Track &track)
 			if (j < format_extensions.Length() - 1) extension.Append("; ");
 		}
 
-		dialog->AddFilter(formats.GetNth(i)->GetName().Append(extension != NIL ? String(" (").Append(extension).Append(")") : String()), extension);
+		dialog.AddFilter(formats.GetNth(i)->GetName().Append(extension != NIL ? String(" (").Append(extension).Append(")") : String()), extension);
 	}
 
 	boca.DeleteComponent(encoder);
 
-	dialog->AddFilter(i18n->TranslateString("All Files", "Joblist"), "*.*");
+	dialog.AddFilter(i18n->TranslateString("All Files", "Joblist"), "*.*");
 
-	dialog->SetDefaultExtension(defaultExtension);
-	dialog->SetFileName(BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album"))).Append(defaultExtension != NIL ? "." : NIL).Append(defaultExtension));
-	dialog->SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedSaveDirID, NIL));
+	dialog.SetDefaultExtension(defaultExtension);
+	dialog.SetFileName(BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album"))).Append(defaultExtension != NIL ? "." : NIL).Append(defaultExtension));
+	dialog.SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedSaveDirID, NIL));
 
-	if (dialog->ShowDialog() == Success())
+	if (dialog.ShowDialog() == Success())
 	{
-		singleOutputFileName = dialog->GetFileName();
+		singleOutputFileName = dialog.GetFileName();
 
 		/* Save selected path.
 		 */
 		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedSaveDirID, File(singleOutputFileName).GetFilePath());
 	}
-
-	Object::DeleteObject(dialog);
 
 	return singleOutputFileName;
 }

@@ -1600,20 +1600,18 @@ Void freac::LayerJoblist::OnBrowseForFolder()
 	/* Find main window and create dialog.
 	 */
 	Window		*mainWnd = Window::GetNthWindow(0);
-	DirSelection	*dialog	 = new DirSelection();
+	DirSelection	 dialog;
 
-	dialog->SetParentWindow(mainWnd);
-	dialog->SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder in which the encoded files will be placed"))));
-	dialog->SetDirName(BoCA::Utilities::GetAbsolutePathName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
+	dialog.SetParentWindow(mainWnd);
+	dialog.SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder in which the encoded files will be placed"))));
+	dialog.SetDirName(BoCA::Utilities::GetAbsolutePathName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 
-	if (dialog->ShowDialog() == Success())
+	if (dialog.ShowDialog() == Success())
 	{
-		edb_outdir->SetText(dialog->GetDirName());
+		edb_outdir->SetText(dialog.GetDirName());
 
 		OnSelectFolder();
 	}
-
-	DeleteObject(dialog);
 }
 
 Void freac::LayerJoblist::OnSelectFolder()

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -144,20 +144,18 @@ Void freac::AddPatternDialog::OnChangeSize(const Size &nSize)
 
 Void freac::AddPatternDialog::Browse()
 {
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 	i18n->SetContext("Joblist::Add by pattern");
 
-	DirSelection	*dialog = new DirSelection();
+	DirSelection	 dialog;
 
-	dialog->SetParentWindow(mainWnd);
-	dialog->SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder to add to the joblist"))));
-	dialog->SetDirName(edit_directory->GetText());
+	dialog.SetParentWindow(mainWnd);
+	dialog.SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder to add to the joblist"))));
+	dialog.SetDirName(edit_directory->GetText());
 
-	if (dialog->ShowDialog() == Success())
+	if (dialog.ShowDialog() == Success())
 	{
-		edit_directory->SetText(dialog->GetDirName());
+		edit_directory->SetText(dialog.GetDirName());
 	}
-
-	DeleteObject(dialog);
 }

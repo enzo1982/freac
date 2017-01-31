@@ -353,20 +353,20 @@ Void BoCA::LayerTagBasic::AddCover()
 {
 	I18n	*i18n = I18n::Get();
 
-	FileSelection	*dialog = new FileSelection();
+	FileSelection	 dialog;
 
-	dialog->SetParentWindow(GetContainerWindow());
+	dialog.SetParentWindow(GetContainerWindow());
 
-	dialog->AddFilter(i18n->TranslateString("Image files"), "*.jpg; *.jpeg; *.png");
+	dialog.AddFilter(i18n->TranslateString("Image files"), "*.jpg; *.jpeg; *.png");
 
-	dialog->AddFilter(i18n->TranslateString("JPEG images"), "*.jpg; *.jpeg");
-	dialog->AddFilter(i18n->TranslateString("PNG images"), "*.png");
+	dialog.AddFilter(i18n->TranslateString("JPEG images"), "*.jpg; *.jpeg");
+	dialog.AddFilter(i18n->TranslateString("PNG images"), "*.png");
 
-	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
+	dialog.AddFilter(i18n->TranslateString("All Files"), "*.*");
 
-	if (dialog->ShowDialog() == Success())
+	if (dialog.ShowDialog() == Success())
 	{
-		String	 file = dialog->GetFileName();
+		String	 file = dialog.GetFileName();
 
 		/* Load picture.
 		 */
@@ -404,11 +404,9 @@ Void BoCA::LayerTagBasic::AddCover()
 		{
 			i18n->SetContext("Extensions::Tag Editor::Errors");
 
-			Utilities::ErrorMessage(i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", dialog->GetFileName()).Replace("%2", i18n->TranslateString("Unknown file type", "Messages")));
+			Utilities::ErrorMessage(i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", dialog.GetFileName()).Replace("%2", i18n->TranslateString("Unknown file type", "Messages")));
 		}
 	}
-
-	delete dialog;
 }
 
 Void BoCA::LayerTagBasic::RemoveCover()

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -282,11 +282,11 @@ Void freac::JobList::AddTrackByDialog()
 
 	i18n->SetContext("Joblist");
 
-	FileSelection	*dialog = new FileSelection();
+	FileSelection	 dialog;
 
-	dialog->SetParentWindow(container->GetContainerWindow());
-	dialog->SetFlags(SFD_ALLOWMULTISELECT);
-	dialog->SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedOpenDirID, NIL));
+	dialog.SetParentWindow(container->GetContainerWindow());
+	dialog.SetFlags(SFD_ALLOWMULTISELECT);
+	dialog.SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedOpenDirID, NIL));
 
 	Array<String>	 types;
 	Array<String>	 extensions;
@@ -323,29 +323,27 @@ Void freac::JobList::AddTrackByDialog()
 		if (!fileTypes.Contains(extensions.GetNth(i))) fileTypes.Append(i > 0 ? ";" : NIL).Append(extensions.GetNth(i));
 	}
 
-	dialog->AddFilter(i18n->TranslateString("Audio Files"), fileTypes);
+	dialog.AddFilter(i18n->TranslateString("Audio Files"), fileTypes);
 
-	for (Int i = 0; i < types.Length(); i++) dialog->AddFilter(types.GetNth(i), extensions.GetNth(i));
+	for (Int i = 0; i < types.Length(); i++) dialog.AddFilter(types.GetNth(i), extensions.GetNth(i));
 
-	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
+	dialog.AddFilter(i18n->TranslateString("All Files"), "*.*");
 
-	if (dialog->ShowDialog() == Success())
+	if (dialog.ShowDialog() == Success())
 	{
 		Array<String>	 files;
 
-		for (Int i = 0; i < dialog->GetNumberOfFiles(); i++)
+		for (Int i = 0; i < dialog.GetNumberOfFiles(); i++)
 		{
-			files.Add(dialog->GetNthFileName(i));
+			files.Add(dialog.GetNthFileName(i));
 		}
 
 		if (files.Length() > 0) (new JobAddFiles(files))->Schedule();
 
 		/* Save selected path.
 		 */
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedOpenDirID, File(dialog->GetFileName()).GetFilePath());
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedOpenDirID, File(dialog.GetFileName()).GetFilePath());
 	}
-
-	DeleteObject(dialog);
 }
 
 Void freac::JobList::AddTracksByDragAndDrop(const Array<String> &files)
@@ -521,10 +519,10 @@ Void freac::JobList::LoadList()
 
 	i18n->SetContext("Joblist");
 
-	FileSelection	*dialog = new FileSelection();
+	FileSelection	 dialog;
 
-	dialog->SetParentWindow(container->GetContainerWindow());
-	dialog->SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, NIL));
+	dialog.SetParentWindow(container->GetContainerWindow());
+	dialog.SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, NIL));
 
 	/* Add available formats to dialog.
 	 */
@@ -563,15 +561,15 @@ Void freac::JobList::LoadList()
 		if (!fileTypes.Contains(extensions.GetNth(i))) fileTypes.Append(i > 0 ? ";" : NIL).Append(extensions.GetNth(i));
 	}
 
-	dialog->AddFilter(i18n->TranslateString("Playlist Files"), fileTypes);
+	dialog.AddFilter(i18n->TranslateString("Playlist Files"), fileTypes);
 
-	for (Int i = 0; i < types.Length(); i++) dialog->AddFilter(types.GetNth(i), extensions.GetNth(i));
+	for (Int i = 0; i < types.Length(); i++) dialog.AddFilter(types.GetNth(i), extensions.GetNth(i));
 
-	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
+	dialog.AddFilter(i18n->TranslateString("All Files"), "*.*");
 
 	/* Display open file dialog.
 	 */
-	if (dialog->ShowDialog() == Success())
+	if (dialog.ShowDialog() == Success())
 	{
 		/* Create playlist component based on selected file.
 		 */
@@ -585,7 +583,7 @@ Void freac::JobList::LoadList()
 
 			if (playlist != NIL)
 			{
-				if (playlist->CanOpenFile(dialog->GetFileName())) break;
+				if (playlist->CanOpenFile(dialog.GetFileName())) break;
 
 				boca.DeleteComponent(playlist);
 
@@ -597,7 +595,7 @@ Void freac::JobList::LoadList()
 		 */
 		if (playlist != NIL)
 		{
-			const Array<Track>	&tracks = playlist->ReadPlaylist(dialog->GetFileName());
+			const Array<Track>	&tracks = playlist->ReadPlaylist(dialog.GetFileName());
 			Array<String>		 files;
 
 			for (Int i = 0; i < tracks.Length(); i++) files.Add(tracks.GetNth(i).origFilename);
@@ -609,10 +607,8 @@ Void freac::JobList::LoadList()
 
 		/* Save selected path.
 		 */
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, File(dialog->GetFileName()).GetFilePath());
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, File(dialog.GetFileName()).GetFilePath());
 	}
-
-	DeleteObject(dialog);
 }
 
 Void freac::JobList::SaveList()
@@ -622,12 +618,12 @@ Void freac::JobList::SaveList()
 
 	i18n->SetContext("Joblist");
 
-	FileSelection	*dialog = new FileSelection();
+	FileSelection	 dialog;
 
-	dialog->SetParentWindow(container->GetContainerWindow());
-	dialog->SetMode(SFM_SAVE);
-	dialog->SetFlags(SFD_CONFIRMOVERWRITE);
-	dialog->SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, NIL));
+	dialog.SetParentWindow(container->GetContainerWindow());
+	dialog.SetMode(SFM_SAVE);
+	dialog.SetFlags(SFD_CONFIRMOVERWRITE);
+	dialog.SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, NIL));
 
 	/* Add available formats to dialog.
 	 */
@@ -657,18 +653,18 @@ Void freac::JobList::SaveList()
 				first = False;
 			}
 
-			dialog->AddFilter(formats.GetNth(j)->GetName().Append(" (").Append(extension).Append(")"), extension);
+			dialog.AddFilter(formats.GetNth(j)->GetName().Append(" (").Append(extension).Append(")"), extension);
 		}
 	}
 
-	dialog->AddFilter(i18n->TranslateString("All Files"), "*.*");
+	dialog.AddFilter(i18n->TranslateString("All Files"), "*.*");
 
-	dialog->SetDefaultExtension(defaultExtension);
-	dialog->SetFileName(String(i18n->TranslateString("Joblist")).Append(".").Append(defaultExtension));
+	dialog.SetDefaultExtension(defaultExtension);
+	dialog.SetFileName(String(i18n->TranslateString("Joblist")).Append(".").Append(defaultExtension));
 
 	/* Display save file dialog.
 	 */
-	if (dialog->ShowDialog() == Success())
+	if (dialog.ShowDialog() == Success())
 	{
 		/* Create playlist component based on selected file.
 		 */
@@ -689,7 +685,7 @@ Void freac::JobList::SaveList()
 
 				for (Int k = 0; k < format_extensions.Length(); k++)
 				{
-					if (dialog->GetFileName().ToLower().EndsWith(String(".").Append(format_extensions.GetNth(k).ToLower())))
+					if (dialog.GetFileName().ToLower().EndsWith(String(".").Append(format_extensions.GetNth(k).ToLower())))
 					{
 						found = True;
 
@@ -712,17 +708,15 @@ Void freac::JobList::SaveList()
 		if (playlist != NIL)
 		{
 			playlist->SetTrackList(tracks);
-			playlist->WritePlaylist(dialog->GetFileName());
+			playlist->WritePlaylist(dialog.GetFileName());
 
 			boca.DeleteComponent(playlist);
 		}
 
 		/* Save selected path.
 		 */
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, File(dialog->GetFileName()).GetFilePath());
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, File(dialog.GetFileName()).GetFilePath());
 	}
-
-	DeleteObject(dialog);
 }
 
 Bool freac::JobList::SortsAfter(const String &str1, const String &str2) const
