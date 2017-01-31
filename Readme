@@ -95,8 +95,9 @@ Known problems
 History
 -------
 
-	Version 1.0.28 (December 2016)
+	Version 1.0.28 (January 2017)
 
+		- updated Chinese (traditional) translation
 		- configuration is now saved in freac.xml
 		- fixed crash on some invalid cover art
 
@@ -497,7 +498,7 @@ Special thanks to
 			   Jose Maria Vera Somoza (Spanish, Latin American),
 			   Nikolaos-Ioannis Galanis (Greek),
 			   Evgeny Kozlov (Russian),
-			   Henryk Ning (Chinese, traditional),
+			   Henryk Ning and Meng Pang Wang (Chinese, traditional),
 			   Joeyong Jen (Chinese, simplified),
 			   Michal Trzebiatowski and Darek Rzeznicki (Polish),
 			   Peter Toth (Hungarian),
