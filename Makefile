@@ -65,7 +65,7 @@ ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
 endif
 
 ifeq ($(BUILD_WIN32),True)
-	CCOPTS			+= -DUNICODE -D_UNICODE -I$(CDK)/include
+	CCOPTS			+= -I$(CDK)/include
 
 	LDOPTS			+= -L$(LIB) -lsmooth -Wl,--dynamicbase,--nxcompat
 

@@ -12,7 +12,6 @@ ifeq (,$(findstring -lstdc++,$(LIBS)))
 endif
 
 ifeq ($(BUILD_WIN32),True)
-	CCOPTS += -DUNICODE -D_UNICODE
 	LDOPTS += -lsmooth -lboca -Wl,--dynamicbase,--nxcompat,--enable-auto-import
 else
 	CCOPTS += -fPIC
