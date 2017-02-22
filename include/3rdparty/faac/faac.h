@@ -26,7 +26,8 @@
 extern "C" {
 #endif /* __cplusplus */
 
-#ifdef WIN32
+//#if defined(_WIN32) && !defined(__MINGW32__)
+#if defined(_WIN32) // Use __stdcall as DLL will be compiled with ICL instead of MinGW.
 # ifndef FAACAPI
 #  define FAACAPI __stdcall
 # endif
@@ -50,7 +51,7 @@ psymodellist_t;
 typedef void *faacEncHandle;
 
 #ifndef HAVE_INT32_T
-typedef int int32_t;
+typedef signed int int32_t;
 #endif
 
 /*

@@ -1,6 +1,6 @@
 /* libFLAC - Free Lossless Audio Codec library
  * Copyright (C) 2000-2009  Josh Coalson
- * Copyright (C) 2011-2013  Xiph.Org Foundation
+ * Copyright (C) 2011-2016  Xiph.Org Foundation
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -228,7 +228,7 @@ typedef enum {
 	 */
 
 	FLAC__STREAM_DECODER_ABORTED,
-	/**< The decoder was aborted by the read callback. */
+	/**< The decoder was aborted by the read or write callback. */
 
 	FLAC__STREAM_DECODER_MEMORY_ALLOCATION_ERROR,
 	/**< An error occurred allocating memory.  The decoder is in an invalid
