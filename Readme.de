@@ -96,11 +96,12 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.0.28 (Januar 2017)
+	Version 1.0.28 (Februar 2017)
 
 		- Chinesische (traditionell) Übersetzung aktualisiert
 		- Die Konfiguration wird jetzt in freac.xml gespeichert
 		- Absturz bei einigen ungültigen Cover-Bildern behoben
+		- FLAC auf Version 1.3.2 aktualisiert
 
 	Version 1.0.27 (Dezember 2016)
 
