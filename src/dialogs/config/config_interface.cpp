@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -87,22 +87,22 @@ Void freac::ConfigureInterface::FillJoblistFieldsList()
 	Array<String>	 entryTexts;
 	Array<Bool>	 entryPresent;
 
-	entryTexts.Add(String("<artist>\t").Append(i18n->TranslateString("Track artist")));	     entryPresent.Add(False);
-	entryTexts.Add(String("<title>\t").Append(i18n->TranslateString("Track title")));	     entryPresent.Add(False);
-	entryTexts.Add(String("<genre>\t").Append(i18n->TranslateString("Track genre")));	     entryPresent.Add(False);
-	entryTexts.Add(String("<album>\t").Append(i18n->TranslateString("Album title")));	     entryPresent.Add(False);
-	entryTexts.Add(String("<disc>\t").Append(i18n->TranslateString("Disc number")));	     entryPresent.Add(False);
-	entryTexts.Add(String("<track>\t").Append(i18n->TranslateString("Track number")));	     entryPresent.Add(False);
-	entryTexts.Add(String("<rating>\t").Append(i18n->TranslateString("Track rating")));	     entryPresent.Add(False);
-	entryTexts.Add(String("<time>\t").Append(i18n->TranslateString("Track length")));	     entryPresent.Add(False);
-	entryTexts.Add(String("<bytes>\t").Append(i18n->TranslateString("Track size")));	     entryPresent.Add(False);
-	entryTexts.Add(String("<bitrate>\t").Append(i18n->TranslateString("Bitrate")));		     entryPresent.Add(False);
-	entryTexts.Add(String("<samplerate>\t").Append(i18n->TranslateString("Sampling rate")));     entryPresent.Add(False);
-	entryTexts.Add(String("<channels>\t").Append(i18n->TranslateString("Channels")));	     entryPresent.Add(False);
-	entryTexts.Add(String("<resolution>\t").Append(i18n->TranslateString("Sample resolution"))); entryPresent.Add(False);
-	entryTexts.Add(String("<file>\t").Append(i18n->TranslateString("File name")));		     entryPresent.Add(False);
-	entryTexts.Add(String("<filetype>\t").Append(i18n->TranslateString("File type")));	     entryPresent.Add(False);
-	entryTexts.Add(String("<outputfile>\t").Append(i18n->TranslateString("Output file name")));  entryPresent.Add(False);
+	entryTexts.Add(String("<artist>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track artist")));	   entryPresent.Add(False);
+	entryTexts.Add(String("<title>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track title")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<genre>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track genre")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<album>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Album title")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<disc>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Disc number")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<track>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track number")));	   entryPresent.Add(False);
+	entryTexts.Add(String("<rating>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track rating")));	   entryPresent.Add(False);
+	entryTexts.Add(String("<time>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track length")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<bytes>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track size")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<bitrate>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Bitrate")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<samplerate>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Sampling rate")));     entryPresent.Add(False);
+	entryTexts.Add(String("<channels>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Channels")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<resolution>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Sample resolution"))); entryPresent.Add(False);
+	entryTexts.Add(String("<file>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("File name")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<filetype>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("File type")));	   entryPresent.Add(False);
+	entryTexts.Add(String("<outputfile>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Output file name")));  entryPresent.Add(False);
 
 	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
 
@@ -158,7 +158,7 @@ Int freac::ConfigureInterface::SaveSettings()
 		ListEntry	*entry	   = list_fields->GetNthEntry(i);
 		const String	&entryText = entry->GetText();
 
-		if (entry->IsMarked()) fields = fields.Append(fields != NIL ? "," : NIL).Append(entryText.Head(entryText.Find("\t")));
+		if (entry->IsMarked()) fields = fields.Append(fields != NIL ? "," : NIL).Append(entryText.Head(entryText.Find(ListEntry::tabDelimiter)));
 	}
 
 	BoCA::Config	*config = BoCA::Config::Get();

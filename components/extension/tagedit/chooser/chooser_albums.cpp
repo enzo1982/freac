@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -180,7 +180,7 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 		if (albums.Get(list_albums->GetNthEntry(i)->GetHandle()).GetTrackID() == track.GetTrackID())
 		{
 			const Info	&info = track.GetInfo();
-			String		 jlEntry = String(info.artist.Length() > 0 ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append("\t").Append(info.album.Length() > 0 ? info.album : I18n::Get()->TranslateString("unknown album")).Append("\t");
+			String		 jlEntry = String(info.artist.Length() > 0 ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(info.album.Length() > 0 ? info.album : I18n::Get()->TranslateString("unknown album")).Append(ListEntry::tabDelimiter);
 
 			list_albums->GetNthEntry(i)->SetText(jlEntry);
 
@@ -428,7 +428,7 @@ Void BoCA::ChooserAlbums::AddToAlbumList(const Track &track)
 		/* Add to album list.
 		 */
 		const Info	&info = album.GetInfo();
-		String		 jlEntry = String(info.artist.Length() > 0 ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append("\t").Append(info.album.Length() > 0 ? info.album : I18n::Get()->TranslateString("unknown album")).Append("\t");
+		String		 jlEntry = String(info.artist.Length() > 0 ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(info.album.Length() > 0 ? info.album : I18n::Get()->TranslateString("unknown album")).Append(ListEntry::tabDelimiter);
 
 		albums.Add(album, list_albums->AddEntry(jlEntry)->GetHandle());
 	}

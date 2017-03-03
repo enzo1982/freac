@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -110,7 +110,7 @@ Void BoCA::LayerTagAdvanced::OnSelectTagType()
 
 	foreach (const TagField &field, tag->fields)
 	{
-		list_fields->AddEntry(String(field.name).Append("\t").Append(field.techId).Append("\t").Append(""));
+		list_fields->AddEntry(String(field.name).Append(ListEntry::tabDelimiter).Append(field.techId).Append(ListEntry::tabDelimiter).Append(""));
 	}
 }
 

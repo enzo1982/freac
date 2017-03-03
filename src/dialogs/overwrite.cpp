@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -80,7 +80,7 @@ freac::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track> &
 
 	foreach (const BoCA::Track &track, tracks)
 	{
-		list_files->AddEntry(String(track.outfile).Append("\t").Append(i18n->TranslateString("Overwrite")), True);
+		list_files->AddEntry(String(track.outfile).Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Overwrite")), True);
 	}
 
 	Add(mainWnd);
@@ -190,12 +190,12 @@ Void freac::DialogConfirmOverwrite::OnMarkEntry(ListEntry *entry)
 
 	i18n->SetContext("Dialogs::Overwrite");
 
-	String		 file	= entry->GetText().Head(entry->GetText().FindLast("\t"));
+	String		 file	= entry->GetText().Head(entry->GetText().FindLast(ListEntry::tabDelimiter));
 	String		 action = i18n->TranslateString("Overwrite");
 
 	if (!entry->IsMarked()) action = i18n->TranslateString("Skip");
 
-	entry->SetText(String(file).Append("\t").Append(action));
+	entry->SetText(String(file).Append(ListEntry::tabDelimiter).Append(action));
 }
 
 Void freac::DialogConfirmOverwrite::OnSkip()

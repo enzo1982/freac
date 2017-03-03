@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -59,7 +59,7 @@ freac::cddbManageDlg::cddbManageDlg()
 	{
 		const CDDBInfo	&entry = CDDBCache::Get()->GetNthEntry(i);
 
-		list_entries->AddEntry(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\t").Append(entry.charset));
+		list_entries->AddEntry(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append(ListEntry::tabDelimiter).Append(entry.charset));
 	}
 
 	text_preview	= new Text(i18n->AddColon(i18n->TranslateString("Preview")), Point(276, 10));
@@ -278,7 +278,7 @@ Void freac::cddbManageDlg::SaveEntry()
 
 	entry.charset = edit_charset->GetText();
 
-	list_entries->GetSelectedEntry()->SetText(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\t").Append(entry.charset));
+	list_entries->GetSelectedEntry()->SetText(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append(ListEntry::tabDelimiter).Append(entry.charset));
 
 	/* Save modified entry back to cache (necessary to make changes persistant)
 	 */

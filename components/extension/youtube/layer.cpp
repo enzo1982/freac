@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -671,10 +671,10 @@ Void BoCA::LayerYouTube::OnApplicationModifyTrack(const Track &track)
 	const Info	&info = track.GetInfo();
 	String		 jlEntry;
 
-	if (info.artist == NIL && info.title == NIL) jlEntry = String("\t").Append(track.origFilename).Append("\t");
-	else					     jlEntry = String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown")).Append("\t").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")).Append("\t");
+	if (info.artist == NIL && info.title == NIL) jlEntry = String(ListEntry::tabDelimiter).Append(track.origFilename).Append(ListEntry::tabDelimiter);
+	else					     jlEntry = String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown")).Append(ListEntry::tabDelimiter).Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
-	jlEntry.Append(track.GetLengthString()).Append("\t").Append(track.GetFileSizeString());
+	jlEntry.Append(track.GetLengthString()).Append(ListEntry::tabDelimiter).Append(track.GetFileSizeString());
 
 	for (Int i = 0; i < list_tracks->Length(); i++)
 	{
@@ -902,7 +902,7 @@ Bool BoCA::LayerYouTube::FinishDownload(Video *video)
 	 */
 	JobList::Get()->onComponentAddTrack.Emit(track);
 
-	String		 jlEntry = String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown")).Append("\t").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")).Append("\t").Append(track.GetLengthString()).Append("\t").Append(track.GetFileSizeString());
+	String		 jlEntry = String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown")).Append(ListEntry::tabDelimiter).Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")).Append(ListEntry::tabDelimiter).Append(track.GetLengthString()).Append(ListEntry::tabDelimiter).Append(track.GetFileSizeString());
 
 	tracks.Add(track, list_tracks->AddEntry(jlEntry)->GetHandle());
 

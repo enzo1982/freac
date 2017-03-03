@@ -1135,7 +1135,7 @@ String freac::JobList::GetEntryText(const Track &track) const
 			else if (fileName.StartsWith(inputDirectory))  jlEntry.Append(fileName.Tail(fileName.Length() - inputDirectory.Length()));
 		}
 
-		jlEntry.Append("\t");
+		jlEntry.Append(ListEntry::tabDelimiter);
 	}
 
 	String::ExplodeFinish();
