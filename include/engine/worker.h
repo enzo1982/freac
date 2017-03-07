@@ -73,8 +73,8 @@ namespace freac
 			Signal2<Void, const BoCA::Track &,
 				      const BoCA::Track &>		 onFixTotalSamples;
 
-			Signal1<Void, String>				 onReportError;
-			Signal1<Void, String>				 onReportWarning;
+			Signal1<Void, const String &>			 onReportError;
+			Signal1<Void, const String &>			 onReportWarning;
 	};
 };
 

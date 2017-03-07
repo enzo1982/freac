@@ -1117,12 +1117,12 @@ Void freac::JobConvert::UpdateProgress(Int progressValue, Int secondsLeft)
 	SetProgress(progressValue);
 }
 
-Void freac::JobConvert::OnWorkerReportError(String error)
+Void freac::JobConvert::OnWorkerReportError(const String &error)
 {
 	errors.Add(error);
 }
 
-Void freac::JobConvert::OnWorkerReportWarning(String warning)
+Void freac::JobConvert::OnWorkerReportWarning(const String &warning)
 {
 	warnings.Add(warning);
 }
