@@ -511,6 +511,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 		info_edit_genre->Hide();
 	}
 
+	BoCA::Settings::Get()->onChangeConfigurationSettings.Connect(&LayerJoblist::OnChangeConfigurationSettings, this);
 	BoCA::Settings::Get()->onChangeLanguageSettings.Connect(&LayerJoblist::OnChangeLanguageSettings, this);
 
 	BoCA::JobList::Get()->onApplicationModifyTrack.Connect(&LayerJoblist::OnJoblistModifyTrack, this);
@@ -524,6 +525,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 freac::LayerJoblist::~LayerJoblist()
 {
+	BoCA::Settings::Get()->onChangeConfigurationSettings.Disconnect(&LayerJoblist::OnChangeConfigurationSettings, this);
 	BoCA::Settings::Get()->onChangeLanguageSettings.Disconnect(&LayerJoblist::OnChangeLanguageSettings, this);
 
 	BoCA::JobList::Get()->onApplicationModifyTrack.Disconnect(&LayerJoblist::OnJoblistModifyTrack, this);
@@ -715,6 +717,13 @@ Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 
 	if (Registry::Get().ComponentExists("cuesheet-playlist")) check_playlist->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_cuesheet->GetUnscaledTextWidth() + check_playlist->GetUnscaledTextWidth() + 78, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->GetUnscaledTextWidth() + 21, check_playlist->GetHeight()));
 	else							  check_playlist->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_playlist->GetUnscaledTextWidth() + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->GetUnscaledTextWidth() + 21, check_playlist->GetHeight()));
+}
+
+Void freac::LayerJoblist::OnChangeConfigurationSettings()
+{
+	/* Update title info area state.
+	 */
+	ShowHideTitleInfo();
 }
 
 Void freac::LayerJoblist::OnChangeLanguageSettings()
@@ -1487,6 +1496,13 @@ Void freac::LayerJoblist::ShowHideTitleInfo()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
+	/* Check if visibility state actually changed.
+	 */
+	if (( config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) &&  info_bottom->IsVisible()) ||
+	    (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) && !info_bottom->IsVisible())) return;
+
+	/* Toggle info area visibility state.
+	 */
 	Surface	*surface = GetDrawSurface();
 
 	surface->StartPaint(GetVisibleArea());

@@ -162,6 +162,8 @@ namespace freac
 			Signal0<Void>		 onRequestSkipTrack;
 		slots:
 			Void			 OnChangeSize(const Size &);
+
+			Void			 OnChangeConfigurationSettings();
 			Void			 OnChangeLanguageSettings();
 
 			Void			 OnJoblistSelectTrack(const BoCA::Track &);

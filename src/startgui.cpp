@@ -494,6 +494,7 @@ Void freac::freacGUI::OnSelectConfiguration()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
+	config->SaveSettings();
 	config->SetActiveConfiguration(config->GetNthConfigurationName(clicked_configuration));
 
 	/* Update widgets and notify components.
