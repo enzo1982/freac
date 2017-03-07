@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -39,6 +39,7 @@ freac::ConfigureTags::ConfigureTags()
 	writeMCDI			= config->GetIntValue(Config::CategoryTagsID, Config::TagsWriteMCDIID, Config::TagsWriteMCDIDefault);
 	preserveReplayGain		= config->GetIntValue(Config::CategoryTagsID, Config::TagsPreserveReplayGainID, Config::TagsPreserveReplayGainDefault);
 
+	prependZero			= False;
 	replaceComments			= config->GetIntValue(Config::CategoryTagsID, Config::TagsReplaceExistingCommentsID, Config::TagsReplaceExistingCommentsDefault);
 
 	tab_tags		= new TabWidget(Point(7, 7), Size(552, 213));
@@ -47,7 +48,7 @@ freac::ConfigureTags::ConfigureTags()
 
 	group_tags		= new GroupBox(i18n->TranslateString("Tag formats"), Point(7, 11), Size(534, 94));
 
-	list_tag_formats	= new ListBox(Point(10, 13), Size(252, 71));
+	list_tag_formats	= new ListBox(Point(10, 13), Size(250, 71));
 	list_tag_formats->SetFlags(LF_MULTICHECKBOX);
 
 	Registry		&boca = Registry::Get();
@@ -61,28 +62,34 @@ freac::ConfigureTags::ConfigureTags()
 		foreach (TagSpec *spec, specs)
 		{
 			list_tag_formats->AddEntry(spec->GetName(), config->GetIntValue(Config::CategoryTagsID, String("Enable").Append(spec->GetName().Replace(" ", NIL)), spec->IsDefault()));
+
 			selected_encodings.Add(config->GetStringValue(Config::CategoryTagsID, spec->GetName().Replace(" ", NIL).Append("Encoding"), spec->GetDefaultEncoding()));
+			tags_prependzero.Add(config->GetIntValue(Config::CategoryTagsID, String("TrackPrependZero").Append(spec->GetName().Replace(" ", NIL)), spec->IsPrependZeroDefault()));
 		}
 	}
 
 	list_tag_formats->onSelectEntry.Connect(&ConfigureTags::ToggleTags, this);
 	list_tag_formats->onMarkEntry.Connect(&ConfigureTags::ToggleTags, this);
 
-	text_encoding		= new Text(i18n->AddColon(i18n->TranslateString("Encoding")), Point(269, 16));
+	text_encoding		= new Text(i18n->AddColon(i18n->TranslateString("Encoding")), Point(268, 16));
 
 	list_encodings		= new List();
 
-	edit_encoding		= new EditBox(NIL, Point(text_encoding->GetUnscaledTextWidth() + 276, 13), Size(248 - text_encoding->GetUnscaledTextWidth(), 0));
+	edit_encoding		= new EditBox(NIL, Point(text_encoding->GetUnscaledTextWidth() + 275, 13), Size(249 - text_encoding->GetUnscaledTextWidth(), 0));
 	edit_encoding->onInput.Connect(&ConfigureTags::OnEditEncoding, this);
 
-	combo_encoding		= new ComboBox(Point(text_encoding->GetUnscaledTextWidth() + 276, 13), Size(248 - text_encoding->GetUnscaledTextWidth(), 0));
+	combo_encoding		= new ComboBox(Point(text_encoding->GetUnscaledTextWidth() + 275, 13), Size(249 - text_encoding->GetUnscaledTextWidth(), 0));
 	combo_encoding->onSelectEntry.Connect(&ConfigureTags::OnEditEncoding, this);
 	combo_encoding->Hide();
+
+	check_prependzero	= new CheckBox(i18n->TranslateString("Prepend zero to track numbers below 10"), Point(268, edit_encoding->GetY() + 28), Size(256, 0), &prependZero);
+	check_prependzero->onAction.Connect(&ConfigureTags::TogglePrependZero, this);
 
 	group_tags->Add(list_tag_formats);
 	group_tags->Add(text_encoding);
 	group_tags->Add(edit_encoding);
 	group_tags->Add(combo_encoding);
+	group_tags->Add(check_prependzero);
 
 	group_definfo		= new GroupBox(i18n->TranslateString("Comments"), Point(7, 117), Size(534, 67));
 
@@ -229,6 +236,7 @@ freac::ConfigureTags::~ConfigureTags()
 	DeleteObject(edit_encoding);
 	DeleteObject(combo_encoding);
 	DeleteObject(list_encodings);
+	DeleteObject(check_prependzero);
 
 	DeleteObject(layer_coverart);
 
@@ -283,15 +291,21 @@ Void freac::ConfigureTags::ToggleTags()
 		text_encoding->Deactivate();
 		edit_encoding->Deactivate();
 
+		check_prependzero->Deactivate();
+
 		return;
 	}
 
+	/* Hide all controls first.
+	 */
 	edit_encoding->Hide();
 	combo_encoding->Hide();
 
 	list_encodings->RemoveAllEntries();
 	combo_encoding->RemoveAllEntries();
 
+	/* Configure and show controls according to format capabilities.
+	 */
 	Registry	&boca = Registry::Get();
 	Int		 n = 0;
 
@@ -324,6 +338,11 @@ Void freac::ConfigureTags::ToggleTags()
 				combo_encoding->Show();
 			}
 
+			check_prependzero->SetChecked(tags_prependzero.GetNth(n - 1));
+
+			if (spec->IsPrependZeroAllowed()) check_prependzero->Activate();
+			else				  check_prependzero->Deactivate();
+
 			break;
 		}
 
@@ -332,8 +351,8 @@ Void freac::ConfigureTags::ToggleTags()
 
 	edit_encoding->SetDropDownList(list_encodings);
 
-	String	 format = entry->GetText();
-
+	/* Activate encoding controls if more than one encoding is available.
+	 */
 	if (list_encodings->Length() > 1)
 	{
 		text_encoding->Activate();
@@ -346,6 +365,11 @@ Void freac::ConfigureTags::ToggleTags()
 		edit_encoding->Deactivate();
 		combo_encoding->Deactivate();
 	}
+}
+
+Void freac::ConfigureTags::TogglePrependZero()
+{
+	tags_prependzero.SetNth(list_tag_formats->GetSelectedEntryNumber(), prependZero);
 }
 
 Void freac::ConfigureTags::ToggleWriteCoverArt()
@@ -403,7 +427,8 @@ Int freac::ConfigureTags::SaveSettings()
 			config->SetIntValue(Config::CategoryTagsID, String("Enable").Append(spec->GetName().Replace(" ", NIL)), list_tag_formats->GetEntry(spec->GetName())->IsMarked());
 			config->SetStringValue(Config::CategoryTagsID, spec->GetName().Replace(" ", NIL).Append("Encoding"), selected_encodings.GetNth(list_tag_formats->GetEntryNumber(spec->GetName())));
 
-			if (spec->IsCoverArtSupported()) config->SetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(spec->GetName().Replace(" ", NIL)), list_coverart_write_tags_format->GetEntry(spec->GetName())->IsMarked());
+			if (spec->IsPrependZeroAllowed()) config->SetIntValue(Config::CategoryTagsID, String("TrackPrependZero").Append(spec->GetName().Replace(" ", NIL)), tags_prependzero.GetNth(list_tag_formats->GetEntryNumber(spec->GetName())));
+			if (spec->IsCoverArtSupported())  config->SetIntValue(Config::CategoryTagsID, String("CoverArtWriteTo").Append(spec->GetName().Replace(" ", NIL)), list_coverart_write_tags_format->GetEntry(spec->GetName())->IsMarked());
 		}
 	}
 

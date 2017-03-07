@@ -444,6 +444,7 @@
 	<entry id="5524" string="Cue sheets">Cuesheets</entry>
 	<entry id="5525" string="Read cue sheets embedded in metadata">In Metadaten eingebettete Cuesheets lesen</entry>
 	<entry id="5526" string="Prefer cue sheets over chapter information">Cuesheets gegenüber Kapitelinformationen bevorzugen</entry>
+	<entry id="5527" string="Prepend zero to track numbers below 10">Tracknummern unter 10 eine Null voranstellen</entry>
       </section>
 
       <section name="Joblist">

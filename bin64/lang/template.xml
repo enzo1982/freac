@@ -444,6 +444,7 @@
 	<entry id="5524" string="Cue sheets"/>
 	<entry id="5525" string="Read cue sheets embedded in metadata"/>
 	<entry id="5526" string="Prefer cue sheets over chapter information"/>
+	<entry id="5527" string="Prepend zero to track numbers below 10"/>
        </section>
 
       <section name="Joblist">

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -31,6 +31,7 @@ namespace freac
 			EditBox		*edit_encoding;
 			ComboBox	*combo_encoding;
 			List		*list_encodings;
+			CheckBox	*check_prependzero;
 
 			GroupBox	*group_definfo;
 			Text		*text_defcomment;
@@ -68,6 +69,7 @@ namespace freac
 			CheckBox	*check_replaygain;
 
 			Array<String>	 selected_encodings;
+			Array<Bool>	 tags_prependzero;
 
 			Bool		 enableCoverArtReadFromTags;
 			Bool		 enableCoverArtReadFromFiles;
@@ -87,11 +89,13 @@ namespace freac
 			Bool		 writeMCDI;
 			Bool		 preserveReplayGain;
 
+			Bool		 prependZero;
 			Bool		 replaceComments;
 		slots:
 			Void		 OnEditEncoding();
 
 			Void		 ToggleTags();
+			Void		 TogglePrependZero();
 			Void		 ToggleWriteCoverArt();
 			Void		 ToggleWriteChapters();
 			Void		 ToggleReadCueSheets();
