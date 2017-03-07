@@ -215,28 +215,36 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 
 				/* Update other text info.
 				 */
-				for (Int i = 0; i < mTrackInfo.other.Length(); i++)
+				foreach (const String &pair, mTrackInfo.other)
 				{
-					const String	&value = mTrackInfo.other.GetNth(i);
+					String	 key = pair.Head(pair.Find(":"));
 
-					if (value.StartsWith(String(INFO_WEB_ARTIST).Append(":"))    ||
-					    value.StartsWith(String(INFO_WEB_PUBLISHER).Append(":")) ||
-					    value.StartsWith(String(INFO_WEB_RADIO).Append(":"))     ||
-					    value.StartsWith(String(INFO_WEB_SOURCE).Append(":"))    ||
-					    value.StartsWith(String(INFO_WEB_COPYRIGHT).Append(":")) ||
-					    value.StartsWith(String(INFO_WEB_COMMERCIAL).Append(":"))) mTrackInfo.other.RemoveNth(i);
+					if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
+					    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
+					    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
+
+					    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
+					    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
+
+					    key == INFO_WEB_ARTIST    || key == INFO_WEB_PUBLISHER ||
+					    key == INFO_WEB_RADIO     || key == INFO_WEB_SOURCE    ||
+					    key == INFO_WEB_COPYRIGHT || key == INFO_WEB_COMMERCIAL) mTrackInfo.other.RemoveNth(foreachindex--);
 				}
 
-				for (Int i = 0; i < info.other.Length(); i++)
+				foreach (const String &pair, info.other)
 				{
-					const String	&value = info.other.GetNth(i);
+					String	 key = pair.Head(pair.Find(":"));
 
-					if (value.StartsWith(String(INFO_WEB_ARTIST).Append(":"))    ||
-					    value.StartsWith(String(INFO_WEB_PUBLISHER).Append(":")) ||
-					    value.StartsWith(String(INFO_WEB_RADIO).Append(":"))     ||
-					    value.StartsWith(String(INFO_WEB_SOURCE).Append(":"))    ||
-					    value.StartsWith(String(INFO_WEB_COPYRIGHT).Append(":")) ||
-					    value.StartsWith(String(INFO_WEB_COMMERCIAL).Append(":"))) mTrackInfo.other.Add(value);
+					if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
+					    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
+					    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
+
+					    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
+					    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
+
+					    key == INFO_WEB_ARTIST    || key == INFO_WEB_PUBLISHER ||
+					    key == INFO_WEB_RADIO     || key == INFO_WEB_SOURCE    ||
+					    key == INFO_WEB_COPYRIGHT || key == INFO_WEB_COMMERCIAL) mTrackInfo.other.Add(pair);
 				}
 
 				mTrack.SetInfo(mTrackInfo);
@@ -256,6 +264,10 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 			origAlbum = track;
 
 			dontUpdateAlbumList = False;
+
+			/* Reselect album to let non-active editors know about changes.
+			 */
+			OnSelectAlbum();
 
 			break;
 		}
@@ -404,16 +416,20 @@ Void BoCA::ChooserAlbums::AddToAlbumList(const Track &track)
 
 		/* Copy other text info.
 		 */
-		for (Int i = 0; i < trackInfo.other.Length(); i++)
+		foreach (const String &pair, trackInfo.other)
 		{
-			const String	&value = trackInfo.other.GetNth(i);
+			String	 key = pair.Head(pair.Find(":"));
 
-			if (value.StartsWith(String(INFO_WEB_ARTIST).Append(":"))    ||
-			    value.StartsWith(String(INFO_WEB_PUBLISHER).Append(":")) ||
-			    value.StartsWith(String(INFO_WEB_RADIO).Append(":"))     ||
-			    value.StartsWith(String(INFO_WEB_SOURCE).Append(":"))    ||
-			    value.StartsWith(String(INFO_WEB_COPYRIGHT).Append(":")) ||
-			    value.StartsWith(String(INFO_WEB_COMMERCIAL).Append(":"))) albumInfo.other.Add(value);
+			if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
+			    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
+			    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
+
+			    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
+			    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
+
+			    key == INFO_WEB_ARTIST    || key == INFO_WEB_PUBLISHER ||
+			    key == INFO_WEB_RADIO     || key == INFO_WEB_SOURCE    ||
+			    key == INFO_WEB_COPYRIGHT || key == INFO_WEB_COMMERCIAL) albumInfo.other.Add(pair);
 		}
 
 		album.SetInfo(albumInfo);

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -30,6 +30,9 @@ namespace BoCA
 		private:
 			GroupBox			*group_details;
 
+			Text				*text_albumartist;
+			EditBox				*edit_albumartist;
+
 			Text				*text_band;
 			EditBox				*edit_band;
 
@@ -59,6 +62,7 @@ namespace BoCA
 			EditBox				*edit_bpm;
 
 			Track				 track;
+			Bool				 ignoreSelect;
 
 			EditBox				*GetActiveEditBox();
 		slots:

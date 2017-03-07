@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -18,13 +18,19 @@ using namespace smooth::GUI::Dialogs;
 
 BoCA::LayerTagDetails::LayerTagDetails() : Editor("Details")
 {
-	group_details		= new GroupBox(NIL, Point(7, 10), Size(400, 147));
+	ignoreSelect = False;
 
-	text_band		= new Text(NIL, Point(9, 13));
+	group_details		= new GroupBox(NIL, Point(7, 10), Size(400, 174));
+
+	text_albumartist	= new Text(NIL, Point(9, 13));
+	text_band		= new Text(NIL, text_albumartist->GetPosition() + Point(0, 27));
 	text_conductor		= new Text(NIL, text_band->GetPosition() + Point(0, 27));
 	text_composer		= new Text(NIL, text_conductor->GetPosition() + Point(0, 27));
 	text_textwriter		= new Text(NIL, text_composer->GetPosition() + Point(0, 27));
 	text_remix		= new Text(NIL, text_textwriter->GetPosition() + Point(0, 27));
+
+	edit_albumartist	= new EditBox(NIL, text_albumartist->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_albumartist->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
 	edit_band		= new EditBox(NIL, text_band->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_band->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
@@ -41,6 +47,8 @@ BoCA::LayerTagDetails::LayerTagDetails() : Editor("Details")
 	edit_remix		= new EditBox(NIL, text_remix->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_remix->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
+	group_details->Add(text_albumartist);
+	group_details->Add(edit_albumartist);
 	group_details->Add(text_band);
 	group_details->Add(edit_band);
 	group_details->Add(text_conductor);
@@ -101,6 +109,8 @@ BoCA::LayerTagDetails::~LayerTagDetails()
 	Settings::Get()->onChangeLanguageSettings.Disconnect(&LayerTagDetails::OnChangeLanguageSettings, this);
 
 	DeleteObject(group_details);
+	DeleteObject(text_albumartist);
+	DeleteObject(edit_albumartist);
 	DeleteObject(text_band);
 	DeleteObject(edit_band);
 	DeleteObject(text_conductor);
@@ -133,9 +143,10 @@ Void BoCA::LayerTagDetails::OnChangeSize(const Size &nSize)
 
 	group_details->SetWidth((clientSize.cx - 23) / 2);
 
-	Int	 maxTextSize = Math::Max(Math::Max(Math::Max(text_band->GetUnscaledTextWidth(), text_conductor->GetUnscaledTextWidth()), text_remix->GetUnscaledTextWidth()), Math::Max(text_composer->GetUnscaledTextWidth(), text_textwriter->GetUnscaledTextWidth()));
+	Int	 maxTextSize = Math::Max(Math::Max(Math::Max(text_band->GetUnscaledTextWidth(), text_conductor->GetUnscaledTextWidth()), Math::Max(text_remix->GetUnscaledTextWidth(), text_albumartist->GetUnscaledTextWidth())), Math::Max(text_composer->GetUnscaledTextWidth(), text_textwriter->GetUnscaledTextWidth()));
 	Int	 maxTextSize2 = Math::Max(Math::Max(text_publisher->GetUnscaledTextWidth(), text_isrc->GetUnscaledTextWidth()), text_bpm->GetUnscaledTextWidth());
 
+	edit_albumartist->SetWidth(group_details->GetWidth() - 26 - maxTextSize);
 	edit_band->SetWidth(group_details->GetWidth() - 26 - maxTextSize);
 	edit_conductor->SetWidth(group_details->GetWidth() - 26 - maxTextSize);
 	edit_composer->SetWidth(group_details->GetWidth() - 26 - maxTextSize);
@@ -172,14 +183,16 @@ Void BoCA::LayerTagDetails::OnChangeLanguageSettings()
 
 	group_details->SetText(i18n->TranslateString("Detailed information"));
 
+	text_albumartist->SetText(i18n->AddColon(i18n->TranslateString("Album artist")));
 	text_band->SetText(i18n->AddColon(i18n->TranslateString("Band / orchestra")));
 	text_conductor->SetText(i18n->AddColon(i18n->TranslateString("Conductor")));
 	text_composer->SetText(i18n->AddColon(i18n->TranslateString("Composer")));
 	text_textwriter->SetText(i18n->AddColon(i18n->TranslateString("Lyrics writer")));
 	text_remix->SetText(i18n->AddColon(i18n->TranslateString("Modified / remixed by")));
 
-	Int	 maxTextSize = Math::Max(Math::Max(Math::Max(text_band->GetUnscaledTextWidth(), text_conductor->GetUnscaledTextWidth()), text_remix->GetUnscaledTextWidth()), Math::Max(text_composer->GetUnscaledTextWidth(), text_textwriter->GetUnscaledTextWidth()));
+	Int	 maxTextSize = Math::Max(Math::Max(Math::Max(text_band->GetUnscaledTextWidth(), text_conductor->GetUnscaledTextWidth()), Math::Max(text_remix->GetUnscaledTextWidth(), text_albumartist->GetUnscaledTextWidth())), Math::Max(text_composer->GetUnscaledTextWidth(), text_textwriter->GetUnscaledTextWidth()));
 
+	edit_albumartist->SetX(text_albumartist->GetX() + maxTextSize + 7);
 	edit_band->SetX(text_band->GetX() + maxTextSize + 7);
 	edit_conductor->SetX(text_conductor->GetX() + maxTextSize + 7);
 	edit_composer->SetX(text_composer->GetX() + maxTextSize + 7);
@@ -213,14 +226,15 @@ Void BoCA::LayerTagDetails::OnChangeLanguageSettings()
 
 EditBox *BoCA::LayerTagDetails::GetActiveEditBox()
 {
-	if	(edit_band->IsFocussed())	return edit_band;
-	else if	(edit_conductor->IsFocussed())	return edit_conductor;
-	else if	(edit_composer->IsFocussed())	return edit_composer;
-	else if	(edit_textwriter->IsFocussed())	return edit_textwriter;
-	else if	(edit_remix->IsFocussed())	return edit_remix;
-	else if	(edit_publisher->IsFocussed())	return edit_publisher;
-	else if	(edit_isrc->IsFocussed())	return edit_isrc;
-	else if	(edit_bpm->IsFocussed())	return edit_bpm;
+	if	(edit_albumartist->IsFocussed()) return edit_albumartist;
+	else if	(edit_band->IsFocussed())	 return edit_band;
+	else if	(edit_conductor->IsFocussed())	 return edit_conductor;
+	else if	(edit_composer->IsFocussed())	 return edit_composer;
+	else if	(edit_textwriter->IsFocussed())	 return edit_textwriter;
+	else if	(edit_remix->IsFocussed())	 return edit_remix;
+	else if	(edit_publisher->IsFocussed())	 return edit_publisher;
+	else if	(edit_isrc->IsFocussed())	 return edit_isrc;
+	else if	(edit_bpm->IsFocussed())	 return edit_bpm;
 
 	return NIL;
 }
@@ -238,7 +252,7 @@ Bool BoCA::LayerTagDetails::AllowTrackRemoveByDeleteKey()
  */
 Void BoCA::LayerTagDetails::OnSelectTrack(const Track &nTrack)
 {
-	if (&nTrack == &track) return;
+	if (ignoreSelect || &nTrack == &track) return;
 
 	Surface	*surface = GetDrawSurface();
 
@@ -266,15 +280,16 @@ Void BoCA::LayerTagDetails::OnSelectTrack(const Track &nTrack)
 
 	foreach (const String &pair, info.other)
 	{
-		String	 key   = pair.Head(pair.Find(":") + 1);
+		String	 key   = pair.Head(pair.Find(":"));
 		String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
 
-		if	(key == String(INFO_BAND).Append(":"))	    edit_band->SetText(value);
-		else if	(key == String(INFO_CONDUCTOR).Append(":")) edit_conductor->SetText(value);
-		else if	(key == String(INFO_COMPOSER).Append(":"))  edit_composer->SetText(value);
-		else if	(key == String(INFO_LYRICIST).Append(":"))  edit_textwriter->SetText(value);
-		else if	(key == String(INFO_REMIX).Append(":"))	    edit_remix->SetText(value);
-		else if	(key == String(INFO_BPM).Append(":"))	    edit_bpm->SetText(value);
+		if	(key == INFO_ALBUMARTIST) edit_albumartist->SetText(value);
+		else if	(key == INFO_BAND)	  edit_band->SetText(value);
+		else if	(key == INFO_CONDUCTOR)   edit_conductor->SetText(value);
+		else if	(key == INFO_COMPOSER)    edit_composer->SetText(value);
+		else if	(key == INFO_LYRICIST)    edit_textwriter->SetText(value);
+		else if	(key == INFO_REMIX)	  edit_remix->SetText(value);
+		else if	(key == INFO_BPM)	  edit_bpm->SetText(value);
 	}
 
 	EditBox	*activeEditBox = GetActiveEditBox();
@@ -294,7 +309,7 @@ Void BoCA::LayerTagDetails::OnSelectTrack(const Track &nTrack)
  */
 Void BoCA::LayerTagDetails::OnSelectAlbum(const Track &nTrack)
 {
-	if (&nTrack == &track) return;
+	if (ignoreSelect || &nTrack == &track) return;
 
 	Surface	*surface = GetDrawSurface();
 
@@ -304,6 +319,7 @@ Void BoCA::LayerTagDetails::OnSelectAlbum(const Track &nTrack)
 
 	track = nTrack;
 
+	group_details->Activate();
 	group_publisher->Activate();
 
 	text_isrc->Deactivate();
@@ -317,6 +333,19 @@ Void BoCA::LayerTagDetails::OnSelectAlbum(const Track &nTrack)
 	const Info	&info = track.GetInfo();
 
 	edit_publisher->SetText(info.label);
+
+	foreach (const String &pair, info.other)
+	{
+		String	 key   = pair.Head(pair.Find(":"));
+		String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
+
+		if	(key == INFO_ALBUMARTIST) edit_albumartist->SetText(value);
+		else if	(key == INFO_BAND)	  edit_band->SetText(value);
+		else if	(key == INFO_CONDUCTOR)   edit_conductor->SetText(value);
+		else if	(key == INFO_COMPOSER)    edit_composer->SetText(value);
+		else if	(key == INFO_LYRICIST)    edit_textwriter->SetText(value);
+		else if	(key == INFO_REMIX)	  edit_remix->SetText(value);
+	}
 
 	EditBox	*activeEditBox = GetActiveEditBox();
 
@@ -339,6 +368,7 @@ Void BoCA::LayerTagDetails::OnSelectNone()
 
 	surface->StartPaint(GetVisibleArea());
 
+	edit_albumartist->SetText(NIL);
 	edit_band->SetText(NIL);
 	edit_conductor->SetText(NIL);
 	edit_composer->SetText(NIL);
@@ -370,36 +400,21 @@ Void BoCA::LayerTagDetails::OnModifyTrack()
 	info.label	= edit_publisher->GetText();
 	info.isrc	= edit_isrc->GetText();
 
-	Bool	 modified_band		= False;
-	Bool	 modified_conductor	= False;
-	Bool	 modified_composer	= False;
-	Bool	 modified_textwriter	= False;
-	Bool	 modified_remix		= False;
-	Bool	 modified_bpm		= False;
-
-	for (Int i = 0; i < info.other.Length(); i++)
-	{
-		const String	&pair = info.other.GetNth(i);
-
-		String	 key   = pair.Head(pair.Find(":") + 1);
-		String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
-
-		if	(key == String(INFO_BAND).Append(":"))	    { if (edit_band->GetText()	     != NIL) { info.other.SetNth(i, String(INFO_BAND).Append(":").Append(edit_band->GetText()));	   modified_band	= True; } else { info.other.RemoveNth(i); } }
-		else if	(key == String(INFO_CONDUCTOR).Append(":")) { if (edit_conductor->GetText()  != NIL) { info.other.SetNth(i, String(INFO_CONDUCTOR).Append(":").Append(edit_conductor->GetText())); modified_conductor	= True; } else { info.other.RemoveNth(i); } }
-		else if	(key == String(INFO_COMPOSER).Append(":"))  { if (edit_composer->GetText()   != NIL) { info.other.SetNth(i, String(INFO_COMPOSER).Append(":").Append(edit_composer->GetText()));   modified_composer	= True; } else { info.other.RemoveNth(i); } }
-		else if	(key == String(INFO_LYRICIST).Append(":"))  { if (edit_textwriter->GetText() != NIL) { info.other.SetNth(i, String(INFO_LYRICIST).Append(":").Append(edit_textwriter->GetText())); modified_textwriter	= True; } else { info.other.RemoveNth(i); } }
-		else if	(key == String(INFO_REMIX).Append(":"))	    { if (edit_remix->GetText()	     != NIL) { info.other.SetNth(i, String(INFO_REMIX).Append(":").Append(edit_remix->GetText()));	   modified_remix	= True; } else { info.other.RemoveNth(i); } }
-		else if	(key == String(INFO_BPM).Append(":"))	    { if (edit_bpm->GetText()	     != NIL) { info.other.SetNth(i, String(INFO_BPM).Append(":").Append(edit_bpm->GetText()));		   modified_bpm		= True; } else { info.other.RemoveNth(i); } }
-	}
-
-	if	(!modified_band	       && edit_band->GetText()	      != NIL) info.other.Add(String(INFO_BAND).Append(":").Append(edit_band->GetText()));
-	else if	(!modified_conductor   && edit_conductor->GetText()   != NIL) info.other.Add(String(INFO_CONDUCTOR).Append(":").Append(edit_conductor->GetText()));
-	else if	(!modified_composer    && edit_composer->GetText()    != NIL) info.other.Add(String(INFO_COMPOSER).Append(":").Append(edit_composer->GetText()));
-	else if	(!modified_textwriter  && edit_textwriter->GetText()  != NIL) info.other.Add(String(INFO_LYRICIST).Append(":").Append(edit_textwriter->GetText()));
-	else if	(!modified_remix       && edit_remix->GetText()	      != NIL) info.other.Add(String(INFO_REMIX).Append(":").Append(edit_remix->GetText()));
-	else if	(!modified_bpm	       && edit_bpm->GetText()	      != NIL) info.other.Add(String(INFO_BPM).Append(":").Append(edit_bpm->GetText()));
+	info.SetOtherInfo(INFO_ALBUMARTIST, edit_albumartist->GetText());
+	info.SetOtherInfo(INFO_BAND,	    edit_band->GetText());
+	info.SetOtherInfo(INFO_CONDUCTOR,   edit_conductor->GetText());
+	info.SetOtherInfo(INFO_COMPOSER,    edit_composer->GetText());
+	info.SetOtherInfo(INFO_LYRICIST,    edit_textwriter->GetText());
+	info.SetOtherInfo(INFO_REMIX,	    edit_remix->GetText());
+	info.SetOtherInfo(INFO_BPM,	    edit_bpm->GetText());
 
 	track.SetInfo(info);
 
+	/* Prevent re-selecting entry and emit onModifyTrack signal.
+	 */
+	ignoreSelect = True;
+
 	onModifyTrack.Emit(track);
+
+	ignoreSelect = False;
 }

@@ -1018,6 +1018,7 @@
 	  <entry id="103209" string="ISRC"/>
 	  <entry id="103210" string="Tempo"/>
 	  <entry id="103211" string="BPM"/>
+	  <entry id="103212" string="Album artist"/>
 	</section>
 
 	<section name="Other">

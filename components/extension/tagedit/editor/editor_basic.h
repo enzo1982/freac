@@ -74,6 +74,7 @@ namespace BoCA
 			MultiEdit			*edit_cover_desc;
 
 			Track				 track;
+			Bool				 ignoreSelect;
 
 			EditBox				*GetActiveEditBox();
 

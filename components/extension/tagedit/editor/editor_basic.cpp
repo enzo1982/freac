@@ -19,6 +19,8 @@ using namespace smooth::GUI::Dialogs;
 
 BoCA::LayerTagBasic::LayerTagBasic() : Editor("Basic")
 {
+	ignoreSelect = False;
+
 	group_info		= new GroupBox(NIL, Point(7, 10), Size(400, 178));
 
 	text_artist		= new Text(NIL, Point(9, 13));
@@ -503,7 +505,7 @@ Bool BoCA::LayerTagBasic::AllowTrackRemoveByDeleteKey()
  */
 Void BoCA::LayerTagBasic::OnSelectTrack(const Track &nTrack)
 {
-	if (&nTrack == &track) return;
+	if (ignoreSelect || &nTrack == &track) return;
 
 	Surface	*surface = GetDrawSurface();
 
@@ -570,7 +572,7 @@ Void BoCA::LayerTagBasic::OnSelectTrack(const Track &nTrack)
  */
 Void BoCA::LayerTagBasic::OnSelectAlbum(const Track &nTrack)
 {
-	if (&nTrack == &track) return;
+	if (ignoreSelect || &nTrack == &track) return;
 
 	Surface	*surface = GetDrawSurface();
 
@@ -710,5 +712,11 @@ Void BoCA::LayerTagBasic::OnModifyTrack()
 		picture.description = edit_cover_desc->GetText();
 	}
 
+	/* Prevent re-selecting entry and emit onModifyTrack signal.
+	 */
+	ignoreSelect = True;
+
 	onModifyTrack.Emit(track);
+
+	ignoreSelect = False;
 }
