@@ -383,13 +383,13 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 			 */
 			foreach (const String &pair, info.other)
 			{
-				String	 key   = pair.Head(pair.Find(":") + 1);
+				String	 key   = pair.Head(pair.Find(":"));
 				String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
 
 				if (value == NIL) continue;
 
-				if	(key == String(INFO_CONDUCTOR).Append(":")) shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
-				else if	(key == String(INFO_COMPOSER).Append(":"))  shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+				if	(key == INFO_CONDUCTOR) shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+				else if	(key == INFO_COMPOSER)  shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
 			}
 
 			shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
