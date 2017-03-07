@@ -577,13 +577,16 @@ Void BoCA::LayerYouTube::OnSelectTrack()
 	text_uploader_value->SetText(NIL);
 	text_date_value->SetText(NIL);
 
-	foreach (const String &value, info.other)
+	foreach (const String &pair, info.other)
 	{
-		if	(value.StartsWith(String(INFO_WEB_SOURCE).Append(":")))	  { link_source->SetURL(value.Tail(value.Length() - value.Find(":") - 1)); OnChangeSize(GetSize()); }
+		String	 key   = pair.Head(pair.Find(":"));
+		String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
 
-		else if	(value.StartsWith(String("Video site").Append(":")))	    text_site_value->SetText(value.Tail(value.Length() - value.Find(":") - 1));
-		else if	(value.StartsWith(String("Video uploader").Append(":")))    text_uploader_value->SetText(value.Tail(value.Length() - value.Find(":") - 1));
-		else if	(value.StartsWith(String("Video upload date").Append(":"))) text_date_value->SetText(value.Tail(value.Length() - value.Find(":") - 1));
+		if	(key == INFO_WEB_SOURCE)   { link_source->SetURL(value); OnChangeSize(GetSize()); }
+
+		else if	(key == "Video site")	     text_site_value->SetText(value);
+		else if	(key == "Video uploader")    text_uploader_value->SetText(value);
+		else if	(key == "Video upload date") text_date_value->SetText(value);
 	}
 
 	if (track.pictures.Length() > 0) image_cover->SetBitmap(track.pictures.GetFirst().GetBitmap());
@@ -884,11 +887,11 @@ Bool BoCA::LayerYouTube::FinishDownload(Video *video)
 	info.title	= video->GetVideoTitle();
 	info.comment	= video->GetVideoDescription();
 
-	info.other.Add(String(INFO_WEB_SOURCE).Append(":").Append(video->GetVideoURL()));
+	info.SetOtherInfo(INFO_WEB_SOURCE,     video->GetVideoURL());
 
-	info.other.Add(String("Video site").Append(":").Append(video->GetVideoSiteName()));
-	info.other.Add(String("Video uploader").Append(":").Append(video->GetVideoUploader()));
-	info.other.Add(String("Video upload date").Append(":").Append(video->GetVideoDate()));
+	info.SetOtherInfo("Video site",	       video->GetVideoSiteName());
+	info.SetOtherInfo("Video uploader",    video->GetVideoUploader());
+	info.SetOtherInfo("Video upload date", video->GetVideoDate());
 
 	if (video->GetVideoThumbnail().mime == "image/jpeg") track.pictures.Add(video->GetVideoThumbnail());
 
