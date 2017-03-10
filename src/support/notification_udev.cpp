@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -137,28 +137,36 @@ static Void CheckNotification()
 
 freac::Notification	*freac::Notification::instance = NIL;
 
-freac::Notification::Notification()
+freac::Notification::Notification() : privateData(NIL)
 {
-	/* Setup udev monitor.
+	/* Initialize udev library.
 	 */
-	udev	    = ex_udev_new();
-	udevMonitor = ex_udev_monitor_new_from_netlink(udev, "udev");
+	udev = ex_udev_new();
 
-	ex_udev_monitor_filter_add_match_subsystem_devtype(udevMonitor, "block", "disk");
-	ex_udev_monitor_enable_receiving(udevMonitor);
+	if (udev != NIL)
+	{
+		/* Setup udev monitor.
+		 */
+		udevMonitor = ex_udev_monitor_new_from_netlink(udev, "udev");
 
-	udevFd	    = ex_udev_monitor_get_fd(udevMonitor);
+		ex_udev_monitor_filter_add_match_subsystem_devtype(udevMonitor, "block", "disk");
+		ex_udev_monitor_enable_receiving(udevMonitor);
 
-	/* Create a timer to fire every half second.
-	 */
-	privateData = new Timer();
+		udevFd	    = ex_udev_monitor_get_fd(udevMonitor);
 
-	((Timer *) privateData)->onInterval.Connect(&CheckNotification);
-	((Timer *) privateData)->Start(500);
+		/* Create a timer to fire every half second.
+		 */
+		privateData = new Timer();
+
+		((Timer *) privateData)->onInterval.Connect(&CheckNotification);
+		((Timer *) privateData)->Start(500);
+	}
 }
 
 freac::Notification::~Notification()
 {
+	if (udev == NIL) return;
+
 	/* Stop timer.
 	 */
 	((Timer *) privateData)->Stop();
