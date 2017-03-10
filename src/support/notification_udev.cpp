@@ -149,34 +149,38 @@ freac::Notification::Notification() : privateData(NIL)
 		 */
 		udevMonitor = ex_udev_monitor_new_from_netlink(udev, "udev");
 
-		ex_udev_monitor_filter_add_match_subsystem_devtype(udevMonitor, "block", "disk");
-		ex_udev_monitor_enable_receiving(udevMonitor);
+		if (udevMonitor != NIL)
+		{
+			ex_udev_monitor_filter_add_match_subsystem_devtype(udevMonitor, "block", "disk");
+			ex_udev_monitor_enable_receiving(udevMonitor);
 
-		udevFd	    = ex_udev_monitor_get_fd(udevMonitor);
+			udevFd	    = ex_udev_monitor_get_fd(udevMonitor);
 
-		/* Create a timer to fire every half second.
-		 */
-		privateData = new Timer();
+			/* Create a timer to fire every half second.
+			 */
+			privateData = new Timer();
 
-		((Timer *) privateData)->onInterval.Connect(&CheckNotification);
-		((Timer *) privateData)->Start(500);
+			((Timer *) privateData)->onInterval.Connect(&CheckNotification);
+			((Timer *) privateData)->Start(500);
+		}
 	}
 }
 
 freac::Notification::~Notification()
 {
-	if (udev == NIL) return;
-
 	/* Stop timer.
 	 */
-	((Timer *) privateData)->Stop();
+	if (privateData != NIL)
+	{
+		((Timer *) privateData)->Stop();
 
-	Object::DeleteObject((Timer *) privateData);
+		Object::DeleteObject((Timer *) privateData);
+	}
 
 	/* Clean up udev monitor.
 	 */
-	ex_udev_monitor_unref(udevMonitor);
-	ex_udev_unref(udev);
+	if (udevMonitor != NIL) ex_udev_monitor_unref(udevMonitor);
+	if (udev	!= NIL) ex_udev_unref(udev);
 }
 
 freac::Notification *freac::Notification::Get()
