@@ -20,7 +20,7 @@ Void smooth::AttachDLL(Void *instance)
 {
 	/* Init BoCA library.
 	 */
-	BoCA::Init(freac::freac::appName);
+	BoCA::Init("fre:ac");
 }
 
 Void smooth::DetachDLL()
