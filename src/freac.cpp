@@ -80,7 +80,12 @@ String	 freac::freac::cddbMode	    = "submit";
 String	 freac::freac::copyright    = "Copyright (C) 2001-2017 Robert Kausch";
 
 String	 freac::freac::website	    = "https://www.freac.org/";
-String	 freac::freac::updatePath   = "http://www.freac.org/eUpdate/eUpdate.xml";
+
+#if defined __i386__
+String	 freac::freac::updatePath   = "https://www.freac.org/eUpdate/eUpdate.xml";
+#else
+String	 freac::freac::updatePath   = String("https://www.freac.org/eUpdate/eUpdate-").Append(freac::freac::architecture).Append(".xml");
+#endif
 
 /* Use these settings for debugging.
  */
