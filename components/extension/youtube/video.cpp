@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -71,26 +71,15 @@ Int BoCA::Video::DownloaderThread(String targetFileName)
 
 	if (!error)
 	{
-		/* HTTPS is not supported yet, so try using HTTP.
-		 */
-		cacheURL.Replace("https://", "http://");
+		Protocols::Protocol	*protocol = Protocols::Protocol::CreateForURL(cacheURL);
 
-		do
-		{
-			Protocols::Protocol	*protocol = Protocols::Protocol::CreateForURL(cacheURL);
+		protocol->downloadProgress.Connect(&downloadProgress);
+		protocol->downloadSpeed.Connect(&downloadSpeed);
+		protocol->doCancelDownload.DisconnectAll();
+		protocol->doCancelDownload.Connect(&Video::DoCancelDownload, this);
+		protocol->DownloadToFile(targetFileName);
 
-			protocol->downloadProgress.Connect(&downloadProgress);
-			protocol->downloadSpeed.Connect(&downloadSpeed);
-			protocol->doCancelDownload.DisconnectAll();
-			protocol->doCancelDownload.Connect(&Video::DoCancelDownload, this);
-			protocol->DownloadToFile(targetFileName);
-
-			cacheURL = ((Protocols::HTTP *) protocol)->GetResponseHeaderField("Location");
-			cacheURL.Replace("https://", "http://");
-
-			delete protocol;
-		}
-		while (cacheURL != NIL);
+		delete protocol;
 	}
 
 	/* Convert video file if requested.
@@ -135,33 +124,12 @@ Bool BoCA::Video::DownloadPage()
 
 	if (pageDownloaded) { downloadMutex.Release(); return True; }
 
-	/* HTTPS is not supported yet, so try using HTTP.
-	 */
-	videoURL.Replace("https://", "http://");
-
 	Buffer<UnsignedByte>	 buffer;
-	String			 pageURL = videoURL;
+	Protocols::Protocol	*protocol = Protocols::Protocol::CreateForURL(videoURL);
 
-	do
-	{
-		Protocols::Protocol	*protocol = Protocols::Protocol::CreateForURL(pageURL);
+	protocol->DownloadToBuffer(buffer);
 
-		protocol->DownloadToBuffer(buffer);
-
-		pageURL = ((Protocols::HTTP *) protocol)->GetResponseHeaderField("Location");
-		pageURL.Replace("https://", "http://");
-
-		delete protocol;
-
-		if (pageURL.StartsWith("/"))
-		{
-			String	 proto	= videoURL.Head(videoURL.Find("//") + 2);
-			String	 server = videoURL.SubString(proto.Length(), videoURL.Tail(videoURL.Length() - proto.Length()).Find("/"));
-
-			pageURL = String(proto).Append(server).Append(pageURL);
-		}
-	}
-	while (pageURL != NIL);
+	delete protocol;
 
 	videoPageHTML.ImportFrom("ISO-8859-1", (char *) (UnsignedByte *) buffer);
 
@@ -201,25 +169,12 @@ Bool BoCA::Video::QueryMetadata()
 	 */
 	if (videoThumbnailURL.StartsWith("http://") || videoThumbnailURL.StartsWith("https://"))
 	{
-		/* HTTPS is not supported yet, so try using HTTP.
-		 */
-		videoThumbnailURL.Replace("https://", "http://");
-
 		Buffer<UnsignedByte>	 buffer;
-		String			 streamURL = videoThumbnailURL;
+		Protocols::Protocol	*protocol = Protocols::Protocol::CreateForURL(videoThumbnailURL);
 
-		do
-		{
-			Protocols::Protocol	*protocol = Protocols::Protocol::CreateForURL(streamURL);
+		protocol->DownloadToBuffer(buffer);
 
-			protocol->DownloadToBuffer(buffer);
-
-			streamURL = ((Protocols::HTTP *) protocol)->GetResponseHeaderField("Location");
-			streamURL.Replace("https://", "http://");
-
-			delete protocol;
-		}
-		while (streamURL != NIL);
+		delete protocol;
 
 		videoThumbnail.mime = "image/jpeg";
 		videoThumbnail.type = 16;

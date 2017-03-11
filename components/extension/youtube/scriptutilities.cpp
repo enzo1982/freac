@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -30,23 +30,12 @@ void BoCA::DownloadURL(const v8::FunctionCallbackInfo<v8::Value> &args)
 
 	if (url.StartsWith("http://") || url.StartsWith("https://"))
 	{
-		/* HTTPS is not supported yet, so try using HTTP.
-		 */
-		url.Replace("https://", "http://");
-
 		Buffer<UnsignedByte>	 buffer;
+		Protocols::Protocol	*protocol = Protocols::Protocol::CreateForURL(url);
 
-		do
-		{
-			Protocols::Protocol	*protocol = Protocols::Protocol::CreateForURL(url);
+		protocol->DownloadToBuffer(buffer);
 
-			protocol->DownloadToBuffer(buffer);
-
-			url = ((Protocols::HTTP *) protocol)->GetResponseHeaderField("Location");
-
-			delete protocol;
-		}
-		while (url != NIL);
+		delete protocol;
 
 		if (buffer.Size() > 0)
 		{
