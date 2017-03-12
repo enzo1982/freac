@@ -160,12 +160,6 @@ libdir	   = $(prefix)/lib
 includedir = $(prefix)/include
 datadir	   = $(prefix)/share
 
-ifeq ($(BUILD_X86_64),True)
-	ifneq ($(wildcard $(DESTDIR)$(prefix)/lib64),)
-		libdir = $(prefix)/lib64
-	endif
-endif
-
 ifeq ($(BUILD_HAIKU),True)
 	includedir = $(prefix)/develop/headers
 	datadir	   = $(prefix)/data
