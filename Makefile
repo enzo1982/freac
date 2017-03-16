@@ -121,7 +121,7 @@ all: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) 
 folders:
 	mkdir -p $(BIN) $(OBJECTS)
 
-install: all
+install: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME)
 ifneq ($(BUILD_WIN32),True)
 	$(INSTALL) -d $(DESTDIR)$(bindir)
 
