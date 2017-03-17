@@ -47,13 +47,21 @@ freac::freac	*freac::freac::instance = NIL;
  */
 String	 freac::freac::appName	    = "fre:ac";
 
-#ifdef BUILD_VIDEO_DOWNLOADER
-String	 freac::freac::appLongName  = "fre:ac - free video downloader";
-#else
+#ifndef BUILD_VIDEO_DOWNLOADER
 String	 freac::freac::appLongName  = "fre:ac - free audio converter";
+#else
+String	 freac::freac::appLongName  = "fre:ac - free video downloader";
 #endif
 
-String	 freac::freac::version	    = "CVS 2017xxyy";
+#ifdef FREAC_VERSION
+String	 freac::freac::version	    = FREAC_VERSION;
+#else
+#	ifdef FREAC_DATE
+String	 freac::freac::version	    = "CVS " FREAC_DATE;
+#	else
+String	 freac::freac::version	    = "CVS";
+#	endif
+#endif
 
 #if defined __i386__
 String	 freac::freac::architecture = "x86";

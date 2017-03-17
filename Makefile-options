@@ -183,7 +183,7 @@ ifeq ($(findstring release,$(config)),release)
 		override LD	= gcc
 	endif
 
-	override CFLAGS	     = -pipe -g0 -Wall -Os
+	override CFLAGS	     = -pipe -g0 -Wall -Os -DFREAC_DATE=\"$(shell date +"%Y%m%d")\"
 	override CXXFLAGS    =
 	override OBJCFLAGS   =
 	override OBJCXXFLAGS =
