@@ -91,6 +91,7 @@ Void freac::ConfigureInterface::FillJoblistFieldsList()
 	entryTexts.Add(String("<title>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track title")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<genre>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track genre")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<album>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Album title")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<albumartist>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Album artist")));	   entryPresent.Add(False);
 	entryTexts.Add(String("<disc>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Disc number")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<track>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track number")));	   entryPresent.Add(False);
 	entryTexts.Add(String("<rating>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track rating")));	   entryPresent.Add(False);

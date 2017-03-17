@@ -33,6 +33,7 @@
     <entry id="308" string="Rating">Bewertung</entry>
     <entry id="309" string="File name">Dateiname</entry>
     <entry id="310" string="File type">Dateityp</entry>
+    <entry id="311" string="Album artist">Albuminterpret</entry>
 
     <entry id="350" string="unknown artist">unbekannter Künstler</entry>
     <entry id="351" string="unknown title">unbekannter Titel</entry>
@@ -41,6 +42,7 @@
     <entry id="354" string="unknown year">unbekanntes Jahr</entry>
     <entry id="355" string="unknown conductor">unbekannter Leiter</entry>
     <entry id="356" string="unknown composer">unbekannter Komponist</entry>
+    <entry id="357" string="unknown album artist">unbekannter Albuminterpret</entry>
 
     <entry id="380" string="hidden track">versteckter Track</entry>
 
@@ -1019,7 +1021,6 @@
 	  <entry id="103209" string="ISRC">ISRC</entry>
 	  <entry id="103210" string="Tempo">Tempo</entry>
 	  <entry id="103211" string="BPM">BPM</entry>
-	  <entry id="103212" string="Album artist">Albuminterpret</entry>
 	</section>
 
 	<section name="Other">

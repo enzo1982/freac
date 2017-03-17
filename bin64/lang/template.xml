@@ -33,6 +33,7 @@
     <entry id="308" string="Rating"/>
     <entry id="309" string="File name"/>
     <entry id="310" string="File type"/>
+    <entry id="311" string="Album artist"/>
 
     <entry id="350" string="unknown artist"/>
     <entry id="351" string="unknown title"/>
@@ -41,6 +42,7 @@
     <entry id="354" string="unknown year"/>
     <entry id="355" string="unknown conductor"/>
     <entry id="356" string="unknown composer"/>
+    <entry id="357" string="unknown album artist"/>
 
     <entry id="380" string="hidden track"/>
 
@@ -1019,7 +1021,6 @@
 	  <entry id="103209" string="ISRC"/>
 	  <entry id="103210" string="Tempo"/>
 	  <entry id="103211" string="BPM"/>
-	  <entry id="103212" string="Album artist"/>
 	</section>
 
 	<section name="Other">

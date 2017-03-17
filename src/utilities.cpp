@@ -388,10 +388,14 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 
 				if (value == NIL) continue;
 
-				if	(key == INFO_CONDUCTOR) shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
-				else if	(key == INFO_COMPOSER)  shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+				if	(key == INFO_ALBUMARTIST) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+				else if	(key == INFO_CONDUCTOR)	  shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+				else if	(key == INFO_COMPOSER)	  shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
 			}
 
+			if (info.artist.Length() > 0) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist));
+
+			shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
 			shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
 			shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
 
@@ -556,7 +560,7 @@ String freac::Utilities::GetPlaylistFileName(const Track &track)
 
 	if (info.artist != NIL || info.album != NIL)
 	{
-		String	 shortOutFileName	  = config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenamePatternID, Config::PlaylistFilenamePatternDefault);
+		String		 shortOutFileName = config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenamePatternID, Config::PlaylistFilenamePatternDefault);
 
 		DateTime	 currentDateTime  = DateTime::Current();
 		String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(currentDateTime.GetYear()))).Append(String::FromInt(currentDateTime.GetYear()))
@@ -582,10 +586,14 @@ String freac::Utilities::GetPlaylistFileName(const Track &track)
 
 			if (value == NIL) continue;
 
-			if	(key == INFO_CONDUCTOR)	  shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			if	(key == INFO_ALBUMARTIST) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_CONDUCTOR)	  shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
 			else if	(key == INFO_COMPOSER)	  shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
 		}
 
+		if (info.artist.Length() > 0) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist));
+
+		shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
 		shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
 		shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
 

@@ -784,22 +784,23 @@ Void freac::JobList::OnClickTab(Int n)
 	 */
 	const Array<String>	&fields = BoCA::Config::Get()->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
 
-	Bool	 sortByArtist	  = (fields.GetNth(n) == "<artist>");
-	Bool	 sortByAlbum	  = (fields.GetNth(n) == "<album>");
-	Bool	 sortByTitle	  = (fields.GetNth(n) == "<title>");
-	Bool	 sortByGenre	  = (fields.GetNth(n) == "<genre>");
-	Bool	 sortByFile	  = (fields.GetNth(n) == "<file>");
-	Bool	 sortByType	  = (fields.GetNth(n) == "<filetype>");
-	Bool	 sortByOutput	  = (fields.GetNth(n) == "<outputfile>");
-	Bool	 sortByDisc	  = (fields.GetNth(n) == "<disc>");
-	Bool	 sortByTrack	  = (fields.GetNth(n) == "<track>");
-	Bool	 sortByRating	  = (fields.GetNth(n) == "<rating>");
-	Bool	 sortByTime	  = (fields.GetNth(n) == "<time>");
-	Bool	 sortByBytes	  = (fields.GetNth(n) == "<bytes>");
-	Bool	 sortByBitrate	  = (fields.GetNth(n) == "<bitrate>");
-	Bool	 sortBySamplerate = (fields.GetNth(n) == "<samplerate>");
-	Bool	 sortByChannels	  = (fields.GetNth(n) == "<channels>");
-	Bool	 sortByResolution = (fields.GetNth(n) == "<resolution>");
+	Bool	 sortByArtist	   = (fields.GetNth(n) == "<artist>");
+	Bool	 sortByAlbum	   = (fields.GetNth(n) == "<album>");
+	Bool	 sortByAlbumArtist = (fields.GetNth(n) == "<albumartist>");
+	Bool	 sortByTitle	   = (fields.GetNth(n) == "<title>");
+	Bool	 sortByGenre	   = (fields.GetNth(n) == "<genre>");
+	Bool	 sortByFile	   = (fields.GetNth(n) == "<file>");
+	Bool	 sortByType	   = (fields.GetNth(n) == "<filetype>");
+	Bool	 sortByOutput	   = (fields.GetNth(n) == "<outputfile>");
+	Bool	 sortByDisc	   = (fields.GetNth(n) == "<disc>");
+	Bool	 sortByTrack	   = (fields.GetNth(n) == "<track>");
+	Bool	 sortByRating	   = (fields.GetNth(n) == "<rating>");
+	Bool	 sortByTime	   = (fields.GetNth(n) == "<time>");
+	Bool	 sortByBytes	   = (fields.GetNth(n) == "<bytes>");
+	Bool	 sortByBitrate	   = (fields.GetNth(n) == "<bitrate>");
+	Bool	 sortBySamplerate  = (fields.GetNth(n) == "<samplerate>");
+	Bool	 sortByChannels	   = (fields.GetNth(n) == "<channels>");
+	Bool	 sortByResolution  = (fields.GetNth(n) == "<resolution>");
 
 	/* Check if reverse sorting is needed.
 	 */
@@ -852,15 +853,17 @@ Void freac::JobList::OnClickTab(Int n)
 		Info		 thisInfo   = thisTrack.GetInfo();
 		const Format	&thisFormat = thisTrack.GetFormat();
 
-		if	(sortByArtist) thisInfo.artist	      = thisInfo.artist.ToLower();
-		else if (sortByAlbum)  thisInfo.album	      = thisInfo.album.ToLower();
-		else if (sortByTitle)  thisInfo.title	      = thisInfo.title.ToLower();
-		else if (sortByGenre)  thisInfo.genre	      = thisInfo.genre.ToLower();
+		if	(sortByArtist)	    thisInfo.artist	   = thisInfo.artist.ToLower();
+		else if (sortByAlbum)	    thisInfo.album	   = thisInfo.album.ToLower();
+		else if (sortByTitle)	    thisInfo.title	   = thisInfo.title.ToLower();
+		else if (sortByGenre)	    thisInfo.genre	   = thisInfo.genre.ToLower();
 
-		else if (sortByFile)   thisTrack.origFilename = thisTrack.origFilename.ToLower();
+		else if (sortByAlbumArtist) thisInfo.SetOtherInfo(INFO_ALBUMARTIST, thisInfo.GetOtherInfo(INFO_ALBUMARTIST).Length() > 0 ? thisInfo.GetOtherInfo(INFO_ALBUMARTIST).ToLower() : thisInfo.artist.ToLower());
 
-		else if (sortByType)   fileTypes.SetNth(i, fileTypes.GetNth(i).ToLower());
-		else if (sortByOutput) outputFileNames.SetNth(i, outputFileNames.GetNth(i).ToLower());
+		else if (sortByFile)	    thisTrack.origFilename = thisTrack.origFilename.ToLower();
+
+		else if (sortByType)	    fileTypes.SetNth(i, fileTypes.GetNth(i).ToLower());
+		else if (sortByOutput)	    outputFileNames.SetNth(i, outputFileNames.GetNth(i).ToLower());
 
 		thisTrack.SetInfo(thisInfo);
 
@@ -882,25 +885,26 @@ Void freac::JobList::OnClickTab(Int n)
 			const Info	&compInfo   = compTrack.GetInfo();
 			const Format	&compFormat = compTrack.GetFormat();
 
-			if ((sortByArtist     &&  SortsAfter(compInfo.artist, thisInfo.artist)											  ) ||
-			    (sortByAlbum      &&  SortsAfter(compInfo.album, thisInfo.album)											  ) ||
-			    (sortByTitle      &&  SortsAfter(compInfo.title, thisInfo.title)											  ) ||
-			    (sortByGenre      &&  SortsAfter(compInfo.genre, thisInfo.genre)											  ) ||
-			    (sortByFile	      &&  SortsAfter(compTrack.origFilename, thisTrack.origFilename)									  ) ||
-			    (sortByType	      &&  SortsAfter(fileTypes.GetNth(m), fileTypes.GetNth(i))										  ) ||
-			    (sortByOutput     &&  SortsAfter(outputFileNames.GetNth(m), outputFileNames.GetNth(i))								  ) ||
-			    (sortByDisc	      &&  compInfo.disc						       >  thisInfo.disc							  ) ||
-			    (sortByTrack      &&  compInfo.track					       >  thisInfo.track						  ) ||
-			    (sortByRating     &&  compInfo.rating					       >  thisInfo.rating						  ) ||
-			    (sortByTime	      && (compTrack.length > 0 ? compTrack.length : compTrack.approxLength) / compFormat.rate >
-						 (thisTrack.length > 0 ? thisTrack.length : thisTrack.approxLength) / thisFormat.rate						  ) ||
-			    (sortByBytes      &&  compTrack.fileSize					       >  thisTrack.fileSize						  ) ||
-			    (sortByBitrate    &&  Float(compTrack.fileSize) / ((compTrack.length > 0 ? compTrack.length : compTrack.approxLength) / compFormat.rate) >
-						  Float(thisTrack.fileSize) / ((thisTrack.length > 0 ? thisTrack.length : thisTrack.approxLength) / thisFormat.rate)		  ) ||
-			    (sortBySamplerate &&  compFormat.rate					       >  thisFormat.rate						  ) ||
-			    (sortByChannels   &&  compFormat.channels					       >  thisFormat.channels						  ) ||
-			    (sortByResolution &&  compFormat.bits					       >  thisFormat.bits						  )) top    = m - 1;
-			else																			     bottom = m + 1;
+			if ((sortByArtist      &&  SortsAfter(compInfo.artist, thisInfo.artist)										) ||
+			    (sortByAlbum       &&  SortsAfter(compInfo.album, thisInfo.album)										) ||
+			    (sortByTitle       &&  SortsAfter(compInfo.title, thisInfo.title)										) ||
+			    (sortByGenre       &&  SortsAfter(compInfo.genre, thisInfo.genre)										) ||
+			    (sortByFile	       &&  SortsAfter(compTrack.origFilename, thisTrack.origFilename)								) ||
+			    (sortByType	       &&  SortsAfter(fileTypes.GetNth(m), fileTypes.GetNth(i))									) ||
+			    (sortByOutput      &&  SortsAfter(outputFileNames.GetNth(m), outputFileNames.GetNth(i))							) ||
+			    (sortByAlbumArtist &&  SortsAfter(compInfo.GetOtherInfo(INFO_ALBUMARTIST), thisInfo.GetOtherInfo(INFO_ALBUMARTIST))				) ||
+			    (sortByDisc	       &&  compInfo.disc					       >  thisInfo.disc						) ||
+			    (sortByTrack       &&  compInfo.track					       >  thisInfo.track					) ||
+			    (sortByRating      &&  compInfo.rating					       >  thisInfo.rating					) ||
+			    (sortByTime	       && (compTrack.length > 0 ? compTrack.length : compTrack.approxLength) / compFormat.rate >
+						  (thisTrack.length > 0 ? thisTrack.length : thisTrack.approxLength) / thisFormat.rate					) ||
+			    (sortByBytes       &&  compTrack.fileSize					       >  thisTrack.fileSize					) ||
+			    (sortByBitrate     &&  Float(compTrack.fileSize) / ((compTrack.length > 0 ? compTrack.length : compTrack.approxLength) / compFormat.rate) >
+						   Float(thisTrack.fileSize) / ((thisTrack.length > 0 ? thisTrack.length : thisTrack.approxLength) / thisFormat.rate)	) ||
+			    (sortBySamplerate  &&  compFormat.rate					       >  thisFormat.rate					) ||
+			    (sortByChannels    &&  compFormat.channels					       >  thisFormat.channels					) ||
+			    (sortByResolution  &&  compFormat.bits					       >  thisFormat.bits					)) top    = m - 1;
+			else																		   bottom = m + 1;
 		}
 
 		/* Move element to target position.
@@ -1040,23 +1044,24 @@ Void freac::JobList::AddHeaderTabs()
 		Int		 tabAlign = OR_LEFT;
 		Int		 tabSize  = (fields.Length() == sizes.Length() ? sizes.GetNth(i).ToInt() : 0);
 
-		if	(field == "<artist>")	  { tabName = "Artist";					tabSize = tabSize <= 0 ? 120 : tabSize; }
-		else if (field == "<album>")	  { tabName = "Album";					tabSize = tabSize <= 0 ? 120 : tabSize; }
-		else if (field == "<title>")	  { tabName = "Title";					tabSize = !config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Contains("<file>") ? 0 :
-														  tabSize <= 0 ? 180 : tabSize; }
-		else if (field == "<genre>")	  { tabName = "Genre";					tabSize = tabSize <= 0 ? 120 : tabSize; }
-		else if (field == "<disc>")	  { tabName = "Disc";		   tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
-		else if (field == "<track>")	  { tabName = "Track";		   tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
-		else if (field == "<rating>")	  { tabName = "Rating";		   tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<time>")	  { tabName = "Length";		   tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<bytes>")	  { tabName = "Size";		   tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<bitrate>")	  { tabName = "Bitrate";	   tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<samplerate>") { tabName = "Sampling rate";	   tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<channels>")	  { tabName = "Channels";	   tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<resolution>") { tabName = "Sample resolution"; tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ? 100 : tabSize; }
-		else if (field == "<file>")	  { tabName = "File name";				tabSize = 0;			       }
-		else if (field == "<filetype>")	  { tabName = "File type";				tabSize = tabSize <= 0 ?  60 : tabSize; }
-		else if (field == "<outputfile>") { tabName = "Output file name";			tabSize = tabSize <= 0 ? 240 : tabSize; }
+		if	(field == "<artist>")	   { tabName = "Artist";				 tabSize = tabSize <= 0 ? 120 : tabSize; }
+		else if (field == "<album>")	   { tabName = "Album";					 tabSize = tabSize <= 0 ? 120 : tabSize; }
+		else if	(field == "<albumartist>") { tabName = "Album artist";				 tabSize = tabSize <= 0 ? 120 : tabSize; }
+		else if (field == "<title>")	   { tabName = "Title";					 tabSize = !config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Contains("<file>") ? 0 :
+														   tabSize <= 0 ? 180 : tabSize; }
+		else if (field == "<genre>")	   { tabName = "Genre";					 tabSize = tabSize <= 0 ? 120 : tabSize; }
+		else if (field == "<disc>")	   { tabName = "Disc";		    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
+		else if (field == "<track>")	   { tabName = "Track";		    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
+		else if (field == "<rating>")	   { tabName = "Rating";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<time>")	   { tabName = "Length";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<bytes>")	   { tabName = "Size";		    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<bitrate>")	   { tabName = "Bitrate";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<samplerate>")  { tabName = "Sampling rate";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<channels>")	   { tabName = "Channels";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<resolution>")  { tabName = "Sample resolution"; tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ? 100 : tabSize; }
+		else if (field == "<file>")	   { tabName = "File name";				 tabSize = 0;				 }
+		else if (field == "<filetype>")	   { tabName = "File type";				 tabSize = tabSize <= 0 ?  60 : tabSize; }
+		else if (field == "<outputfile>")  { tabName = "Output file name";			 tabSize = tabSize <= 0 ? 240 : tabSize; }
 
 		BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -1095,15 +1100,17 @@ String freac::JobList::GetEntryText(const Track &track) const
 
 	foreach (const String &field, fields)
 	{
-		if	(field == "<artist>")	  jlEntry.Append(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist"));
-		else if (field == "<album>")	  jlEntry.Append(info.album.Length()  > 0 ? info.album  : i18n->TranslateString("unknown album"));
-		else if (field == "<title>")	  jlEntry.Append(info.title.Length()  > 0 ? info.title  : i18n->TranslateString("unknown title"));
-		else if (field == "<genre>")	  jlEntry.Append(info.genre.Length()  > 0 ? info.genre  : i18n->TranslateString("unknown genre"));
-		else if (field == "<disc>")	  jlEntry.Append(info.disc > 0 ? (info.disc < 10 ? String("0").Append(String::FromInt(info.disc)) : String::FromInt(info.disc)) : String());
-		else if (field == "<track>")	  jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String());
-		else if (field == "<rating>")	  jlEntry.Append(info.rating > 0 ? String().FillN(0x2605, Math::Round(info.rating / 25.0) + 1).Append(String().FillN(0x2606, 5 - (Math::Round(info.rating / 25.0) + 1))) : String());
-		else if (field == "<time>")	  jlEntry.Append(track.GetLengthString());
-		else if (field == "<bytes>")	  jlEntry.Append(track.GetFileSizeString());
+		if	(field == "<artist>")	   jlEntry.Append(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist"));
+		else if (field == "<album>")	   jlEntry.Append(info.album.Length()  > 0 ? info.album  : i18n->TranslateString("unknown album"));
+		else if (field == "<title>")	   jlEntry.Append(info.title.Length()  > 0 ? info.title  : i18n->TranslateString("unknown title"));
+		else if (field == "<genre>")	   jlEntry.Append(info.genre.Length()  > 0 ? info.genre  : i18n->TranslateString("unknown genre"));
+		else if (field == "<disc>")	   jlEntry.Append(info.disc > 0 ? (info.disc < 10 ? String("0").Append(String::FromInt(info.disc)) : String::FromInt(info.disc)) : String());
+		else if (field == "<track>")	   jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String());
+		else if (field == "<rating>")	   jlEntry.Append(info.rating > 0 ? String().FillN(0x2605, Math::Round(info.rating / 25.0) + 1).Append(String().FillN(0x2606, 5 - (Math::Round(info.rating / 25.0) + 1))) : String());
+		else if (field == "<time>")	   jlEntry.Append(track.GetLengthString());
+		else if (field == "<bytes>")	   jlEntry.Append(track.GetFileSizeString());
+
+		else if	(field == "<albumartist>") jlEntry.Append(info.GetOtherInfo(INFO_ALBUMARTIST).Length() > 0 ? info.GetOtherInfo(INFO_ALBUMARTIST) : info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown album artist"));
 
 		else if (field == "<bitrate>")
 		{
@@ -1113,10 +1120,10 @@ String freac::JobList::GetEntryText(const Track &track) const
 			else if (track.approxLength > 0) jlEntry.Append(sign).Append(" ").Append(i18n->TranslateString("%1 kbps", "Technical").Replace("%1", String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.approxLength / format.rate) * 8.0 / 1000.0))));
 		}
 
-		else if (field == "<samplerate>") jlEntry.Append(i18n->TranslateString("%1 Hz", "Technical").Replace("%1", S::I18n::Number::GetLocalizedNumberString(format.rate)));
-		else if (field == "<channels>")	  jlEntry.Append(format.channels > 2 ? (format.channels != 4 && format.channels != 5 && format.channels <= 8 ? String::FromInt(format.channels - 1).Append(".1") : String::FromInt(format.channels)) : (format.channels == 1 ? i18n->TranslateString("Mono") : i18n->TranslateString("Stereo")));
-		else if (field == "<resolution>") jlEntry.Append(i18n->TranslateString("%1 bit", "Technical").Replace("%1", String::FromInt(format.bits)));
-		else if (field == "<file>")	  jlEntry.Append(track.origFilename);
+		else if (field == "<samplerate>")  jlEntry.Append(i18n->TranslateString("%1 Hz", "Technical").Replace("%1", S::I18n::Number::GetLocalizedNumberString(format.rate)));
+		else if (field == "<channels>")	   jlEntry.Append(format.channels > 2 ? (format.channels != 4 && format.channels != 5 && format.channels <= 8 ? String::FromInt(format.channels - 1).Append(".1") : String::FromInt(format.channels)) : (format.channels == 1 ? i18n->TranslateString("Mono") : i18n->TranslateString("Stereo")));
+		else if (field == "<resolution>")  jlEntry.Append(i18n->TranslateString("%1 bit", "Technical").Replace("%1", String::FromInt(format.bits)));
+		else if (field == "<file>")	   jlEntry.Append(track.origFilename);
 
 		else if (field == "<filetype>")
 		{
