@@ -31,6 +31,10 @@ ifneq ($(findstring arm,$(MACHINE)),)
 	ifneq ($(BUILD_ARM),False)
 		BUILD_ARM = True
 	endif
+else ifneq ($(findstring aarch64,$(MACHINE)),)
+	ifneq ($(BUILD_ARM64),False)
+		BUILD_ARM64 = True
+	endif
 else ifneq ($(findstring mips,$(MACHINE)),)
 	ifneq ($(BUILD_MIPS),False)
 		BUILD_MIPS = True
