@@ -343,10 +343,7 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 		 */
 		String	 filePattern = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
 
-		if ((info.artist != NIL && filePattern.Contains("<artist>")  ) ||
-		    (info.title  != NIL && filePattern.Contains("<title>")   ) ||
-		    (info.track  != -1  && filePattern.Contains("<track>")   ) ||
-		    (			   filePattern.Contains("<filename>")))
+		if (info.HasBasicInfo() || filePattern.Contains("<filename>") || filePattern.Contains("<currentdate>") || filePattern.Contains("<currenttime>"))
 		{
 			String		 shortOutFileName = filePattern;
 
