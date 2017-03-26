@@ -380,6 +380,7 @@ Error freac::JobConvert::Perform()
 	/* Enter actual conversion routines.
 	 */
 	Int		 encodedTracks	= 0;
+	Int		 trackID	= 0;
 	ConversionStep	 conversionStep = ConversionStepNone;
 	String		 decoderName;
 
@@ -595,8 +596,8 @@ Error freac::JobConvert::Perform()
 
 				const Track	&workerTrack = worker->GetTrackToConvert();
 
-				onEncodeTrack.Emit(tracksToConvert.Get(workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
-												  conversionStep = worker->GetConversionStep());
+				onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+													    conversionStep = worker->GetConversionStep());
 
 				SetText(String("Converting %1...").Replace("%1", workerTrack.origFilename));
 
@@ -646,9 +647,10 @@ Error freac::JobConvert::Perform()
 
 			const Track	&workerTrack = worker->GetTrackToConvert();
 
-			if (first && (worker->GetConversionStep() != conversionStep ||
-				      worker->GetDecoderName()	  != decoderName)) onEncodeTrack.Emit(tracksToConvert.Get(workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
-																		     conversionStep = worker->GetConversionStep());
+			if (first && (workerTrack.GetTrackID()	  != trackID	    ||
+				      worker->GetConversionStep() != conversionStep ||
+				      worker->GetDecoderName()	  != decoderName)) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+																			       conversionStep = worker->GetConversionStep());
 
 			first = False;
 
@@ -804,8 +806,8 @@ Error freac::JobConvert::Perform()
 
 				if (!workerToUse->IsError())
 				{
-					onEncodeTrack.Emit(tracksToConvert.Get(track.GetTrackID()), decoderName	   = workerToUse->GetDecoderName(),
-												    conversionStep = workerToUse->GetConversionStep());
+					onEncodeTrack.Emit(tracksToConvert.Get(trackID = track.GetTrackID()), decoderName    = workerToUse->GetDecoderName(),
+													      conversionStep = workerToUse->GetConversionStep());
 
 					SetText(String("Converting %1...").Replace("%1", track.origFilename));
 				}
@@ -884,6 +886,8 @@ Error freac::JobConvert::Perform()
 			/* Announce new track.
 			 */
 			while (worker->IsWaiting() && !worker->IsIdle()) S::System::System::Sleep(1);
+
+			trackID = singleTrack.GetTrackID();
 
 			onEncodeTrack.Emit(singleTrack, decoderName    = worker->GetDecoderName(),
 							conversionStep = worker->GetConversionStep());

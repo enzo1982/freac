@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -153,10 +153,10 @@ Void freac::Progress::StartTrack(const Track &track)
 	 */
 	mutex.Lock();
 
-	trackList.Add(track);
+	trackList.Add(track, track.GetTrackID());
 
-	trackStartTicks.Add(S::System::System::Clock());
-	trackPositions.Add(0);
+	trackStartTicks.Add(S::System::System::Clock(), track.GetTrackID());
+	trackPositions.Add(0, track.GetTrackID());
 
 	mutex.Release();
 }
@@ -169,14 +169,22 @@ Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
 	 */
 	mutex.Lock();
 
-	for (Int i = 0; i < trackList.Length(); i++)
+	Int	 nonZeroTracks = 0;
+
+	foreach (const Track &trackListTrack, trackList)
 	{
-		if (trackList.GetNth(i).GetTrackID() != track.GetTrackID()) continue;
+		if (trackPositions.GetNth(foreachindex) == 0) trackStartTicks.SetNth(foreachindex, S::System::System::Clock());
+		else					      nonZeroTracks++;
 
-		trackPositions.SetNth(i, position);
+		if (trackListTrack.GetTrackID() != track.GetTrackID()) continue;
 
-		if (i > 0) { mutex.Release(); return; }
-		else			      break;
+		trackPositions.SetNth(foreachindex, position);
+
+		if (foreachindex == 0 || nonZeroTracks <= 1) break;
+
+		mutex.Release();
+
+		return;
 	}
 
 	mutex.Release();
@@ -208,11 +216,11 @@ Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
 		else				 totalProgress += 1000.0 * trackPositions.GetNth(i) / track.fileSize * (Float(240 * track.GetFormat().rate) / totalSamples);
 	}
 
-	Float	 trackTicks = clockValue - trackStartTicks.GetFirst();
+	Float	 trackTicks = clockValue - trackStartTicks.Get(track.GetTrackID());
 	Float	 totalTicks = clockValue - startTicks;
 
-	if (trackProgress > 0) trackTicks = Math::Round((trackTicks / (trackProgress / 1000.0) - trackTicks) / 1000.0);
-	if (totalProgress > 0) totalTicks = Math::Round((totalTicks / (totalProgress / 1000.0) - totalTicks) / 1000.0);
+	trackTicks = trackProgress > 0 ? Math::Round((trackTicks / (trackProgress / 1000.0) - trackTicks) / 1000.0) : 0;
+	totalTicks = totalProgress > 0 ? Math::Round((totalTicks / (totalProgress / 1000.0) - totalTicks) / 1000.0) : 0;
 
 	mutex.Release();
 

@@ -1425,7 +1425,7 @@ Void freac::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsL
 	/* Update seconds only if estimate is less or
 	 * at least two seconds more than before.
 	 */
-	if (secondsLeft < previousTrackSeconds || secondsLeft >= previousTrackSeconds + 2)
+	if (secondsLeft < previousTrackSeconds || secondsLeft >= previousTrackSeconds + 2 || previousTrackSeconds == 0)
 	{
 		/* Set track time string.
 		 */
@@ -1458,7 +1458,7 @@ Void freac::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int secondsL
 	/* Update seconds only if estimate is less or
 	 * at least two seconds more than before.
 	 */
-	if (secondsLeft < previousTotalSeconds || secondsLeft >= previousTotalSeconds + 2)
+	if (secondsLeft < previousTotalSeconds || secondsLeft >= previousTotalSeconds + 2 || previousTotalSeconds == 0)
 	{
 		/* Set total time string.
 		 */
