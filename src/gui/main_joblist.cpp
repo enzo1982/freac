@@ -1496,10 +1496,12 @@ Void freac::LayerJoblist::ShowHideTitleInfo()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
+	Bool	 showTitleInfo = config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault);
+
 	/* Check if visibility state actually changed.
 	 */
-	if (( config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) &&  info_bottom->IsVisible()) ||
-	    (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) && !info_bottom->IsVisible())) return;
+	if (( showTitleInfo && info_divider->GetPos() != 113) ||
+	    (!showTitleInfo && info_divider->GetPos() == 113)) return;
 
 	/* Toggle info area visibility state.
 	 */
@@ -1507,16 +1509,8 @@ Void freac::LayerJoblist::ShowHideTitleInfo()
 
 	surface->StartPaint(GetVisibleArea());
 
-	Int	 n = 0;
-
-	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault))
+	if (!showTitleInfo)
 	{
-		n = 68;
-	}
-	else
-	{
-		n = -68;
-
 		info_bottom->Hide();
 
 		if (info_text_artist->GetX() > 7)
@@ -1542,18 +1536,18 @@ Void freac::LayerJoblist::ShowHideTitleInfo()
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0)));
+	joblist->SetSize(Size(clientSize.cx - 23, clientSize.cy - 162 - (showTitleInfo ? 68 : 0)));
 
 	check_single->SetMetrics(Point(check_single->GetUnscaledTextWidth() + 28, joblist->GetY() + joblist->GetHeight() + 4), Size(check_single->GetUnscaledTextWidth() + 21, check_single->GetHeight()));
 	check_cuesheet->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_cuesheet->GetUnscaledTextWidth() + 53, joblist->GetY() + joblist->GetHeight() + 4), Size(check_cuesheet->GetUnscaledTextWidth() + 21, check_cuesheet->GetHeight()));
 	check_playlist->SetMetrics(Point(check_single->GetUnscaledTextWidth() + check_cuesheet->GetUnscaledTextWidth() + check_playlist->GetUnscaledTextWidth() + 78, joblist->GetY() + joblist->GetHeight() + 4), Size(check_playlist->GetUnscaledTextWidth() + 21, check_playlist->GetHeight()));
 
-	info_divider->SetPos(info_divider->GetPos() + n);
-	info_background->SetY(info_background->GetY() + n);
+	info_divider->SetPos(113 + (showTitleInfo ? 68 : 0));
+	info_background->SetY(121 + (showTitleInfo ? 68 : 0));
 
 	joblist->Paint(SP_PAINT);
 
-	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault))
+	if (showTitleInfo)
 	{
 		info_bottom->Show();
 
