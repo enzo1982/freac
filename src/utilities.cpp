@@ -405,37 +405,45 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 
 			shortOutFileName.Replace("<directory>", directory);
 
-			for (Int i = 0; i < 10; i++)
+			for (Int i = 0; i < 10 && shortOutFileName.Contains("<directory+"); i++)
 			{
-				String	 pattern = String("<directory").Append(String("+").Append(String::FromInt(i))).Append(">");
-				String	 value	 = directory;
+				String	 pattern = String("<directory+").Append(String::FromInt(i)).Append(">");
 
-				for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
-
-				shortOutFileName.Replace(pattern, value);
-
-				for (Int j = 0; j < 10; j++)
+				if (shortOutFileName.Contains(pattern))
 				{
-					String	 pattern = String("<directory").Append(String("+").Append(String::FromInt(i))).Append(String("(").Append(String::FromInt(j + 1)).Append(")")).Append(">");
-					String	 value	 = directory;
+					String	 value = directory;
 
 					for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
 
-					Int	 bsCount = 0;
-
-					for (Int n = 0; n < value.Length(); n++)
-					{
-						if (value[n] == '\\' || value[n] == '/') bsCount++;
-
-						if (bsCount == j + 1)
-						{
-							value[n] = 0;
-
-							break;
-						}
-					}
-
 					shortOutFileName.Replace(pattern, value);
+				}
+
+				for (Int j = 0; j < 10 && shortOutFileName.Contains(String("<directory+").Append(String::FromInt(i)).Append("(")); j++)
+				{
+					String	 pattern = String("<directory+").Append(String::FromInt(i)).Append("(").Append(String::FromInt(j + 1)).Append(")>");
+
+					if (shortOutFileName.Contains(pattern))
+					{
+						String	 value = directory;
+
+						for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
+
+						Int	 bsCount = 0;
+
+						for (Int n = 0; n < value.Length(); n++)
+						{
+							if (value[n] == '\\' || value[n] == '/') bsCount++;
+
+							if (bsCount == j + 1)
+							{
+								value[n] = 0;
+
+								break;
+							}
+						}
+
+						shortOutFileName.Replace(pattern, value);
+					}
 				}
 			}
 

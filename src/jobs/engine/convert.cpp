@@ -157,8 +157,8 @@ Error freac::JobConvert::Precheck()
 
 		/* Find existing tracks.
 		 */
-		Array<Track>	 existingTracks;
-		Array<Track>	 newTracks;
+		Array<Track>		 existingTracks;
+		Array<UnsignedInt64>	 newTrackCRCs;
 
 		foreach (Track &track, tracks)
 		{
@@ -179,15 +179,14 @@ Error freac::JobConvert::Precheck()
 				}
 			}
 
-			Bool	 found = False;
+			UnsignedInt64	 trackCRC = track.outfile.ComputeCRC64();
 
-			foreach (const Track &newTrack, newTracks)
+			foreachreverse (UnsignedInt64 newTrackCRC, newTrackCRCs)
 			{
-				if (newTrack.outfile == track.outfile) { found = True; break; }
+				if (newTrackCRC == trackCRC) { existingTracks.Add(track); break; }
 			}
 
-			if (found) existingTracks.Add(track);
-			else	   newTracks.Add(track);
+			newTrackCRCs.Add(trackCRC);
 		}
 
 		/* Check if we have existing files that would be overwritten.
