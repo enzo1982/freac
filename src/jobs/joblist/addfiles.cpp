@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -193,7 +193,14 @@ Void freac::JobAddFiles::ExtractInfoFromPath(const String &path, Info &info)
 
 	const String &first = fileElements.GetFirst();
 
-	if (first[0] >= '0' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && (first[2] == ' ' || first[2] == '.' || first[2] == '-'))
+	if (first[0] >= '1' && first[0] <= '9' && (first[1] == ' ' || first[1] == '.' || first[1] == '-'))
+	{
+		info.track = first.ToInt();
+
+		if	(fileElements.Length() == 1)   info.title  = first.Tail(first.Length() - 2).Trim();
+		else if (fileElements.Length() >= 2) { info.artist = first.Tail(first.Length() - 2).Trim(); info.title = fileElements.GetLast(); }
+	}
+	else if (first[0] >= '0' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && (first[2] == ' ' || first[2] == '.' || first[2] == '-'))
 	{
 		info.track = first.ToInt();
 
