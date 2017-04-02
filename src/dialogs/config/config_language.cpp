@@ -17,6 +17,7 @@
 #ifdef __WIN32__
 #	include <windows.h>
 #else
+#	include <stdlib.h>
 #	include <unistd.h>
 #endif
 
