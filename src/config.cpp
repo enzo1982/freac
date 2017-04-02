@@ -338,14 +338,6 @@ const Bool	 freac::Config::FreedbUpdateJoblistDefault			= True;
 
 freac::Config::Config()
 {
-#ifndef __WIN32__
-	if (Directory(S::System::System::GetResourcesDirectory().Append("freac")).Exists())
-	{
-		resourcesPath		= S::System::System::GetResourcesDirectory().Append("freac").Append(Directory::GetDirectoryDelimiter());
-		documentationPath	= S::System::System::GetResourcesDirectory().Append("doc").Append(Directory::GetDirectoryDelimiter()).Append("freac").Append(Directory::GetDirectoryDelimiter());
-	}
-#endif
-
 	maxActiveJobs		= 2;
 
 	deleteAfterEncoding	= False;
@@ -353,8 +345,25 @@ freac::Config::Config()
 
 	enable_eUpdate		= False;
 
+	/* Set resource paths.
+	 */
+	resourcesPath	  = GUI::Application::GetApplicationDirectory();
+	documentationPath = GUI::Application::GetApplicationDirectory();
+
+#ifndef __WIN32__
+	if (Directory(S::System::System::GetResourcesDirectory().Append("freac")).Exists())
+	{
+		resourcesPath	  = S::System::System::GetResourcesDirectory().Append("freac").Append(Directory::GetDirectoryDelimiter());
+		documentationPath = S::System::System::GetResourcesDirectory().Append("doc").Append(Directory::GetDirectoryDelimiter()).Append("freac").Append(Directory::GetDirectoryDelimiter());
+	}
+#endif
+
+	/* Set default output folder.
+	 */
 	Config::SettingsEncoderOutputDirectoryDefault = S::System::System::GetPersonalFilesDirectory(S::System::PersonalFilesMusic);
 
+	/* Append directory delimiter to output paths.
+	 */
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	String	 encoderOutputDir  = config->GetStringValue(CategorySettingsID, SettingsEncoderOutputDirectoryID, SettingsEncoderOutputDirectoryDefault);
@@ -365,9 +374,9 @@ freac::Config::Config()
 	if (!playlistOutputDir.EndsWith(Directory::GetDirectoryDelimiter())) config->SetStringValue(CategoryPlaylistID, PlaylistOutputDirID, playlistOutputDir.Append(Directory::GetDirectoryDelimiter()));
 	if (!freedbDir.EndsWith(Directory::GetDirectoryDelimiter()))	     config->SetStringValue(CategoryFreedbID, FreedbDirectoryID, freedbDir.Append(Directory::GetDirectoryDelimiter()));
 
+	/* Reset last output folder if it does not exist.
+	 */
 	if (config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(1)), NIL) == NIL) config->SetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(1)), config->GetStringValue(CategorySettingsID, SettingsEncoderOutputDirectoryID, SettingsEncoderOutputDirectoryDefault));
-
-	config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Config::SettingsSingleFilenameDefault);
 }
 
 freac::Config::~Config()

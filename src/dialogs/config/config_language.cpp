@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -146,7 +146,7 @@ Void freac::ConfigureLanguage::EditLanguageFile()
 	else 													command = String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("translator.app/Contents/MacOS/translator\"");
 #endif
 
-	const char	*cmd = command.Append(" \"").Append(GUI::Application::GetApplicationDirectory().Append(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Replace(" ", "\\ ")).Append("\"");
+	const char	*cmd = command.Append(" \"").Append(String(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Replace(" ", "\\ ")).Append("\"");
 
 	if (!fork()) { execl("/bin/sh", "sh", "-c", cmd, NULL); exit(0); }
 #endif

@@ -1387,7 +1387,7 @@ Void freac::freacGUI::ShowHelp()
 
 	i18n->SetContext("Menu::Help");
 
-	S::System::System::OpenURL(String("file://").Append(GUI::Application::GetApplicationDirectory()).Append(Config::Get()->documentationPath).Append("manual/").Append(i18n->TranslateString("index_en.html")));
+	S::System::System::OpenURL(String("file://").Append(Config::Get()->documentationPath).Append("manual/").Append(i18n->TranslateString("index_en.html")));
 }
 
 Void freac::freacGUI::ShowTipOfTheDay()
