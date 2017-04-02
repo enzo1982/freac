@@ -1332,6 +1332,27 @@ Bool freac::JobConvert::LockDeviceForTrack(const Track &track)
 		managementMutex.Release();
 	}
 
+#if defined __APPLE__ || defined __HAIKU__
+	/* On macOS and Haiku, treat CDDA volumes like CD tracks.
+	 */
+	String	 filePath = File(track.origFilename).GetFilePath();
+
+#if defined __APPLE__
+	if (track.origFilename.EndsWith(".aiff") && Directory(filePath).GetDirectoryPath() == "/Volumes" && File(String(filePath).Append("/.TOC.plist")).Exists())
+#else
+	if (track.origFilename.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
+#endif
+	{
+		managementMutex.Lock();
+
+		if (deviceLocked.Get(filePath.ComputeCRC32())) { managementMutex.Release(); return False; }
+
+		deviceLocked.Add(True, filePath.ComputeCRC32());
+
+		managementMutex.Release();
+	}
+#endif
+
 	return True;
 }
 
@@ -1349,6 +1370,25 @@ Bool freac::JobConvert::UnlockDeviceForTrack(const Track &track)
 
 		managementMutex.Release();
 	}
+
+#if defined __APPLE__ || defined __HAIKU__
+	/* On macOS and Haiku, treat CDDA volumes like CD tracks.
+	 */
+	String	 filePath = File(track.origFilename).GetFilePath();
+
+#if defined __APPLE__
+	if (track.origFilename.EndsWith(".aiff") && Directory(filePath).GetDirectoryPath() == "/Volumes" && File(String(filePath).Append("/.TOC.plist")).Exists())
+#else
+	if (track.origFilename.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
+#endif
+	{
+		managementMutex.Lock();
+
+		deviceLocked.Remove(filePath.ComputeCRC32());
+
+		managementMutex.Release();
+	}
+#endif
 
 	return True;
 }
