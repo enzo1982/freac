@@ -205,11 +205,18 @@ Void freac::ConfigDialog::AddLayers()
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_freac->Add(entries.GetLast());
 
-	layers.Add(new ConfigureResources());
-	createdLayers.Add(layers.GetLast());
-	entries.Add(new ConfigEntry(i18n->TranslateString("Resources"), layers.GetLast()));
-	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-	tree_freac->Add(entries.GetLast());
+#ifndef __WIN32__
+	if (CPU().GetNumLogicalCPUs() > 1)
+	{
+#endif
+		layers.Add(new ConfigureResources());
+		createdLayers.Add(layers.GetLast());
+		entries.Add(new ConfigEntry(i18n->TranslateString("Resources"), layers.GetLast()));
+		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+		tree_freac->Add(entries.GetLast());
+#ifndef __WIN32__
+	}
+#endif
 
 	Component	*component = NIL;
 

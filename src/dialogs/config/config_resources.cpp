@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -47,6 +47,8 @@ freac::ConfigureResources::ConfigureResources()
 	group_cpu->Add(text_threads);
 	group_cpu->Add(text_threads_value);
 	group_cpu->Add(slider_threads);
+
+	if (CPU().GetNumLogicalCPUs() <= 1) group_cpu->Deactivate();
 
 	ToggleParallel();
 	ChangeConversionThreads();
