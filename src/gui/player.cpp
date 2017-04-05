@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -196,12 +196,7 @@ Void freac::LayerPlayer::PlaySelectedItem()
 {
 	const Track	&track = joblist->GetSelectedTrack();
 
-	if (track != NIL)
-	{
-		StopPlayback();
-
-		Play(track);
-	}
+	if (track != NIL) Play(track);
 }
 
 Void freac::LayerPlayer::PlayPreviousItem()
@@ -240,15 +235,15 @@ Void freac::LayerPlayer::PlayNextItem()
 
 Void freac::LayerPlayer::Play(const Track &track)
 {
-	playingTrack = track;
-
 	/* Play track.
 	 */
 	Playback	*player = Playback::Get();
 
-	player->Play(playingTrack);
+	player->Play(track);
 
 	if (!player->IsPlaying()) return;
+
+	playingTrack = track;
 
 	/* Set joblist entry color.
 	 */
