@@ -43,7 +43,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Setup conversion log.
 	 */
-	BoCA::Protocol	*log = BoCA::Protocol::Get("Converter log");
+	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
 
 	/* Check format of output file in verification step.
 	 */

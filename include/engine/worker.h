@@ -29,6 +29,8 @@ namespace freac
 		protected:
 			const BoCA::Config				*configuration;
 
+			String						 logName;
+
 			BoCA::Track					 trackToConvert;
 			UnsignedInt64					 trackStartTicks;
 			Int64						 trackPosition;
@@ -56,18 +58,20 @@ namespace freac
 			Int						 Cancel();
 			Int						 Quit();
 		accessors:
-			Bool						 IsIdle() const				      { return idle; }
-			Bool						 IsWaiting() const			      { return waiting; }
-			Bool						 IsError() const			      { return error; }
+			Bool						 IsIdle() const					{ return idle; }
+			Bool						 IsWaiting() const				{ return waiting; }
+			Bool						 IsError() const				{ return error; }
 
-			const BoCA::Track				&GetTrackToConvert() const		      { return trackToConvert; }
+			Void						 SetLogName(const String &nLogName)		{ logName = nLogName; }
+
+			const BoCA::Track				&GetTrackToConvert() const			{ return trackToConvert; }
 			Void						 SetTrackToConvert(const BoCA::Track &);
 
-			const String					&GetDecoderName() const			      { return decoderName; }
-			ConversionStep					 GetConversionStep() const		      { return conversionStep; }
+			const String					&GetDecoderName() const				{ return decoderName; }
+			ConversionStep					 GetConversionStep() const			{ return conversionStep; }
 
-			UnsignedInt64					 GetTrackStartTicks() const		      { return trackStartTicks; }
-			Int64						 GetTrackPosition() const		      { return trackPosition; }
+			UnsignedInt64					 GetTrackStartTicks() const			{ return trackStartTicks; }
+			Int64						 GetTrackPosition() const			{ return trackPosition; }
 		signals:
 			Signal2<Void, const BoCA::Track &, Bool>	 onFinishTrack;
 			Signal2<Void, const BoCA::Track &,

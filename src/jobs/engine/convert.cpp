@@ -291,9 +291,15 @@ Error freac::JobConvert::Perform()
 
 	/* Setup conversion log.
 	 */
-	BoCA::Protocol	*log = BoCA::Protocol::Get("Converter log");
+	DateTime	 currentDateTime = DateTime::Current();
+	String		 currentTime	 = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()))).Append(String::FromInt(currentDateTime.GetHour())).Append(":")
+				   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute())))).Append(String::FromInt(currentDateTime.GetMinute())).Append(":")
+				   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetSecond())))).Append(String::FromInt(currentDateTime.GetSecond()));
 
-	log->Write("Encoding process started...");
+	String		 logName = String("Conversion of %1 tracks at %2").Replace("%1", String::FromInt(tracks.Length())).Replace("%2", currentTime);
+	BoCA::Protocol	*log	 = BoCA::Protocol::Get(logName);
+
+	log->Write("Conversion process started...");
 
 	/* Setup playlist and cuesheet track lists.
 	 */
@@ -398,6 +404,7 @@ Error freac::JobConvert::Perform()
 		worker->onReportError.Connect(&JobConvert::OnWorkerReportError, this);
 		worker->onReportWarning.Connect(&JobConvert::OnWorkerReportWarning, this);
 
+		worker->SetLogName(logName);
 		worker->Start();
 	}
 
@@ -1087,8 +1094,8 @@ Error freac::JobConvert::Perform()
 
 	/* Notify components and write log.
 	 */
-	if (stopConversion) { engine->onCancelConversion.Emit(); log->Write("Encoding process cancelled.", MessageTypeWarning); }
-	else		    { engine->onFinishConversion.Emit(); log->Write("Encoding process finished."); }
+	if (stopConversion) { engine->onCancelConversion.Emit(); log->Write("Conversion process cancelled.", MessageTypeWarning); }
+	else		    { engine->onFinishConversion.Emit(); log->Write("Conversion process finished."); }
 
 	/* Set progress to 100%.
 	 */

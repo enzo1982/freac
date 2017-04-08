@@ -25,6 +25,8 @@ freac::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration)
 {
 	configuration	= iConfiguration;
 
+	logName		= "Converter log";
+
 	trackToConvert	= NIL;
 	trackStartTicks	= 0;
 	trackPosition	= 0;
@@ -99,7 +101,7 @@ Int freac::ConvertWorker::Convert()
 
 	/* Setup conversion log.
 	 */
-	BoCA::Protocol	*log = BoCA::Protocol::Get("Converter log");
+	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
 
 	/* Loop over conversion passes.
 	 */
