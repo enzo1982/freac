@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -14,20 +14,18 @@
 
 BoCA::LayerProtocols::LayerProtocols() : Layer("Protocols")
 {
-	needReselect	= False;
-
-	text_protocol	= new Text("Protocol:", Point(7, 11));
+	text_protocol	= new Text(NIL, Point(7, 11));
 
 	combo_protocol	= new ComboBox(Point(358, 8), Size(350, 0));
 	combo_protocol->onSelectEntry.Connect(&LayerProtocols::SelectProtocol, this);
 	combo_protocol->SetOrientation(OR_UPPERRIGHT);
 
-	edit_protocol	= new MultiEdit(NIL, Point(7, 35), Size(500, 360));
+	list_protocol	= new ListBox(Point(7, 35), Size(500, 360));
 
 	edit_status	= new EditBox(NIL, Point(7, 56), Size(500, 0));
 	edit_status->SetOrientation(OR_LOWERLEFT);
 
-	text_errors	= new Text("Errors / Warnings:", Point(7, 25));
+	text_errors	= new Text(NIL, Point(7, 25));
 	text_errors->SetOrientation(OR_LOWERLEFT);
 
 	edit_errors	= new EditBox("0/0", Point(text_errors->GetUnscaledTextWidth() + 14, 28), Size(25, 0));
@@ -43,7 +41,7 @@ BoCA::LayerProtocols::LayerProtocols() : Layer("Protocols")
 	Add(text_protocol);
 	Add(combo_protocol);
 
-	Add(edit_protocol);
+	Add(list_protocol);
 	Add(edit_status);
 
 	Add(text_errors);
@@ -53,7 +51,11 @@ BoCA::LayerProtocols::LayerProtocols() : Layer("Protocols")
 
 	UpdateProtocolList();
 
+	/* Connect slots.
+	 */
 	onChangeSize.Connect(&LayerProtocols::OnChangeSize, this);
+
+	Settings::Get()->onChangeLanguageSettings.Connect(&LayerProtocols::OnChangeLanguageSettings, this);
 
 	Protocol::onUpdateProtocolList.Connect(&LayerProtocols::UpdateProtocolList, this);
 	Protocol::onUpdateProtocol.Connect(&LayerProtocols::UpdateProtocol, this);
@@ -61,13 +63,19 @@ BoCA::LayerProtocols::LayerProtocols() : Layer("Protocols")
 
 BoCA::LayerProtocols::~LayerProtocols()
 {
+	/* Disconnect slots.
+	 */
+	Settings::Get()->onChangeLanguageSettings.Disconnect(&LayerProtocols::OnChangeLanguageSettings, this);
+
 	Protocol::onUpdateProtocolList.Disconnect(&LayerProtocols::UpdateProtocolList, this);
 	Protocol::onUpdateProtocol.Disconnect(&LayerProtocols::UpdateProtocol, this);
 
+	/* Delete widgets.
+	 */
 	DeleteObject(text_protocol);
 	DeleteObject(combo_protocol);
 
-	DeleteObject(edit_protocol);
+	DeleteObject(list_protocol);
 	DeleteObject(edit_status);
 
 	DeleteObject(text_errors);
@@ -76,24 +84,61 @@ BoCA::LayerProtocols::~LayerProtocols()
 	DeleteObject(button_details);
 }
 
+/* Called when component canvas size changes.
+ * ----
+ */
 Void BoCA::LayerProtocols::OnChangeSize(const Size &nSize)
 {
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
-	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
+	Size	 clientSize = Size(clientRect.GetWidth(), clientRect.GetHeight());
 
-	edit_protocol->SetSize(clientSize - Size(15, 92));
+	list_protocol->SetSize(clientSize - Size(15, 92));
 	edit_status->SetWidth(clientSize.cx - 15);
 
 	combo_errors->SetWidth(clientSize.cx - text_errors->GetUnscaledTextWidth() - 142);
 }
 
-Int BoCA::LayerProtocols::Show()
+/* Called when application language is changed.
+ * ----
+ */
+Void BoCA::LayerProtocols::OnChangeLanguageSettings()
 {
-	if (needReselect) SelectProtocol();
+	I18n	*i18n	= I18n::Get();
 
-	needReselect = False;
+	i18n->SetContext("Extensions::Protocols");
 
-	return Layer::Show();
+	SetText(i18n->TranslateString("Protocols"));
+
+	/* Hide all affected widgets prior to changing
+	 * labels to avoid flickering.
+	 */
+	Bool	 prevVisible = IsVisible();
+
+	if (prevVisible) Hide();
+
+	/* Set texts and positions.
+	 */
+	text_protocol->SetText(i18n->AddColon(i18n->TranslateString("Protocol")));
+
+	text_errors->SetText(i18n->AddColon(i18n->TranslateString("Errors / Warnings")));
+
+	edit_errors->SetX(text_errors->GetUnscaledTextWidth() + 14);
+	combo_errors->SetX(text_errors->GetUnscaledTextWidth() + 47);
+
+	button_details->SetText(i18n->TranslateString("Details"));
+
+	list_protocol->RemoveAllTabs();
+
+	list_protocol->AddTab(i18n->TranslateString("Time"), 70, OR_RIGHT);
+	list_protocol->AddTab(i18n->TranslateString("Message"));
+
+	/* OnChangeSize will correct sizes of any other widgets.
+	 */
+	OnChangeSize(GetSize());
+
+	/* Show all widgets again.
+	 */
+	if (prevVisible) Show();
 }
 
 Void BoCA::LayerProtocols::UpdateProtocolList()
@@ -114,8 +159,12 @@ Void BoCA::LayerProtocols::UpdateProtocolList()
 
 	const Array<Protocol *>	&protocols = Protocol::Get();
 
-	foreach (Protocol *protocol, protocols)
+	foreachreverse (Protocol *protocol, protocols)
 	{
+#ifndef DEBUG
+		if (protocol->GetName() == "Debug output") continue;
+#endif
+
 		ListEntry	*entry = combo_protocol->AddEntry(protocol->GetName());
 
 		if (protocol->GetName() == name)
@@ -134,21 +183,41 @@ Void BoCA::LayerProtocols::UpdateProtocol(const String &name)
 
 	if (name == combo_protocol->GetSelectedEntry()->GetText())
 	{
-		if (!IsVisible()) { needReselect = True; return; }
+		Surface	*surface = GetDrawSurface();
+		Bool	 visible = IsVisible();
 
-		SelectProtocol();
+		if (visible) surface->StartPaint(Rect(list_protocol->GetRealPosition(), list_protocol->GetRealSize()));
+
+		const Array<String>	&messages = Protocol::Get(combo_protocol->GetSelectedEntry()->GetText())->GetMessages();
+
+		for (Int i = list_protocol->Length(); i < messages.Length(); i++)
+		{
+			const String	&message = messages.GetNth(i);
+
+			list_protocol->AddEntry(message.SubString(0, 12).Append(ListEntry::tabDelimiter).Append(message.Tail(message.Length() - 15)));
+		}
+
+		if (visible) surface->EndPaint();
 	}
 }
 
 Void BoCA::LayerProtocols::SelectProtocol()
 {
 	Surface	*surface = GetDrawSurface();
+	Bool	 visible = IsVisible();
 
-	if (IsVisible()) surface->StartPaint(Rect(edit_protocol->GetRealPosition(), edit_protocol->GetRealSize()));
+	if (visible) surface->StartPaint(Rect(list_protocol->GetRealPosition(), list_protocol->GetRealSize()));
 
-	edit_protocol->SetText(Protocol::Get(combo_protocol->GetSelectedEntry()->GetText())->GetProtocolText());
+	const Array<String>	&messages = Protocol::Get(combo_protocol->GetSelectedEntry()->GetText())->GetMessages();
 
-	if (IsVisible()) surface->EndPaint();
+	list_protocol->RemoveAllEntries();
+
+	foreach (const String &message, messages)
+	{
+		list_protocol->AddEntry(message.SubString(0, 12).Append(ListEntry::tabDelimiter).Append(message.Tail(message.Length() - 15)));
+	}
+
+	if (visible) surface->EndPaint();
 }
 
 Void BoCA::LayerProtocols::ShowDetails()

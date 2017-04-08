@@ -1044,6 +1044,15 @@
 	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Kann Tag nicht aktualisieren: %1&#10;&#10;Fehler: %2</entry>
 	</section>
       </section>
+
+      <section name="Protocols">
+	<entry id="104000" string="Protocols">Protokolle</entry>
+	<entry id="104001" string="Protocol">Protokoll</entry>
+	<entry id="104002" string="Errors / Warnings">Fehler / Warnungen</entry>
+	<entry id="104003" string="Details">Details</entry>
+	<entry id="104004" string="Time">Zeit</entry>
+	<entry id="104005" string="Message">Nachricht</entry>
+      </section>
     </section>
   </data>
 </LangFile>
