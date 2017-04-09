@@ -78,7 +78,7 @@ const String &freac::LayerTooltip::GetTooltipText(const Track &track)
 
 	static String	 tooltip;
 
-	tooltip = String(i18n->AddColon(i18n->TranslateString("File"))).Append(" ").Append(File(track.origFilename).GetFileName()).Append("\n").
+	tooltip = String(i18n->AddColon(i18n->TranslateString("File"))).Append(" ").Append(track.origFilename.Contains("://") ? track.origFilename : File(track.origFilename).GetFileName()).Append("\n").
 		  Append(i18n->AddColon(i18n->TranslateString("Size"))).Append(" ").Append(i18n->TranslateString("%1 bytes", "Technical").Replace("%1", track.GetFileSizeString())).Append("\n").
 		  Append(i18n->AddColon(i18n->TranslateString("Artist"))).Append(" ").Append(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append("\n").
 		  Append(i18n->AddColon(i18n->TranslateString("Title"))).Append(" ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")).Append("\n").
