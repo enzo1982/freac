@@ -53,6 +53,12 @@ else ifneq ($(findstring x86_64,$(MACHINE)),)
 		BUILD_X86_64 = True
 	endif
 	endif
+else ifneq ($(findstring amd64,$(MACHINE)),)
+	ifneq ($(BUILD_X86),True)
+	ifneq ($(BUILD_X86_64),False)
+		BUILD_X86_64 = True
+	endif
+	endif
 else
 	ifneq ($(BUILD_X86),False)
 	ifneq ($(BUILD_X86_64),True)
@@ -252,7 +258,7 @@ endif
 
 # Set debug specific options
 ifeq ($(findstring debug,$(config)),debug)
-	override CFLAGS	     = -pipe -g -Wall
+	override CFLAGS	     = -pipe -g -Wall -DDEBUG
 	override CXXFLAGS    =
 	override OBJCFLAGS   =
 	override OBJCXXFLAGS =
