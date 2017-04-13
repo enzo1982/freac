@@ -199,8 +199,16 @@ ifeq ($(findstring release,$(config)),release)
 	override OBJCXXFLAGS =
 	override LDFLAGS     = -pipe
 
+	ifneq ($(RTTI),True)
+		ifneq ($(BUILD_HAIKU),True)
+			override CXXFLAGS    += -fno-rtti
+			override OBJCXXFLAGS += -fno-rtti
+		endif
+	endif
+
 	ifneq ($(EXCEPTION),True)
-		override CFLAGS += -fno-exceptions
+		override CXXFLAGS    += -fno-exceptions
+		override OBJCXXFLAGS += -fno-exceptions
 	endif
 
 	ifeq ($(BUILD_OSX),True)
@@ -264,8 +272,16 @@ ifeq ($(findstring debug,$(config)),debug)
 	override OBJCXXFLAGS =
 	override LDFLAGS     = -pipe
 
+	ifneq ($(RTTI),True)
+		ifneq ($(BUILD_HAIKU),True)
+			override CXXFLAGS    += -fno-rtti
+			override OBJCXXFLAGS += -fno-rtti
+		endif
+	endif
+
 	ifneq ($(EXCEPTION),True)
-		override CFLAGS += -fno-exceptions
+		override CXXFLAGS    += -fno-exceptions
+		override OBJCXXFLAGS += -fno-exceptions
 	endif
 
 	override CXXFLAGS    += $(CFLAGS)
