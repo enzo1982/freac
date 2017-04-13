@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -27,7 +27,7 @@ namespace BoCA
 	{
 		private:
 			Directory				 directory;
-			Array<Tree *>				 trees;
+			Array<Tree *, Void *>			 trees;
 		public:
 			static Signal1<Void, const Directory &>	 onSelectDirectory;
 

@@ -391,7 +391,7 @@ Error freac::JobConvert::Perform()
 
 	/* Instantiate and start worker threads.
 	 */
-	Array<ConvertWorker *>	 workers;
+	Array<ConvertWorker *, Void *>	 workers;
 
 	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, singleFileEncoder));
 	else			for (Int i = 0; i < numberOfThreads; i++) workers.Add(new ConvertWorker(configuration));
@@ -410,8 +410,8 @@ Error freac::JobConvert::Perform()
 
 	/* Set up per worker progress displays.
 	 */
-	Array<Text *>		 workerText;
-	Array<Progressbar *>	 workerProgress;
+	Array<Text *, Void *>		 workerText;
+	Array<Progressbar *, Void *>	 workerProgress;
 
 	for (Int i = 0; i < workers.Length(); i++)
 	{
@@ -448,8 +448,8 @@ Error freac::JobConvert::Perform()
 
 	/* Main conversion loop.
 	 */
-	Bool			 allTracksAssigned = False;
-	Array<ConvertWorker *>	 workerQueue;
+	Bool				 allTracksAssigned = False;
+	Array<ConvertWorker *, Void *>	 workerQueue;
 
 	do
 	{
@@ -1008,10 +1008,10 @@ Error freac::JobConvert::Perform()
 
 		/* Split playlist tracks to individual playlists.
 		 */
-		Array<String>		 playlistFileNames;
+		Array<String>			 playlistFileNames;
 
-		Array<Array<Track> *>	 playlistTrackLists;
-		Array<Array<Track> *>	 cuesheetTrackLists;
+		Array<Array<Track> *, Void *>	 playlistTrackLists;
+		Array<Array<Track> *, Void *>	 cuesheetTrackLists;
 
 		if (encodeToSingleFile || singlePlaylistFile)
 		{

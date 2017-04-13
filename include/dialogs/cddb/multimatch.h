@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -26,46 +26,46 @@ namespace freac
 	class cddbMultiMatchDlg : public Dialogs::Dialog
 	{
 		private:
-			static Int			previewCount;
+			static Int				 previewCount;
 
-			GroupBox			*group_match;
-			Text				*text_match;
-			ComboBox			*combo_match;
+			GroupBox				*group_match;
+			Text					*text_match;
+			ComboBox				*combo_match;
 
-			Text				*text_preview;
-			MultiEdit			*edit_preview;
-			Text				*text_loading_preview;
+			Text					*text_preview;
+			MultiEdit				*edit_preview;
+			Text					*text_loading_preview;
 
-			Divider				*divbar;
+			Divider					*divbar;
 
-			Window				*mainWnd;
-			Titlebar			*mainWnd_titlebar;
+			Window					*mainWnd;
+			Titlebar				*mainWnd_titlebar;
 
-			Button				*btn_cancel;
-			Button				*btn_ok;
+			Button					*btn_cancel;
+			Button					*btn_ok;
 
-			CDDB				&cddb;
+			CDDB					&cddb;
 
-			Array<String>			 categories;
-			Array<Int>			 discIDs;
+			Array<String>				 categories;
+			Array<Int>				 discIDs;
 
-			Array<Threads::Thread *>	 loadPreviewThreads;
+			Array<Threads::Thread *, Void *>	 loadPreviewThreads;
 
-			Void				 LoadPreview(Int);
-			Void				 CleanUpPreviews();
+			Void					 LoadPreview(Int);
+			Void					 CleanUpPreviews();
 		public:
-							 cddbMultiMatchDlg(CDDB &, Bool);
-							~cddbMultiMatchDlg();
+								 cddbMultiMatchDlg(CDDB &, Bool);
+								~cddbMultiMatchDlg();
 
-			const Error			&ShowDialog();
+			const Error				&ShowDialog();
 
-			Int				 AddEntry(const String &, const String &, Int);
-			Int				 GetSelectedEntryNumber();
+			Int					 AddEntry(const String &, const String &, Int);
+			Int					 GetSelectedEntryNumber();
 		slots:
-			Void				 SelectEntry();
+			Void					 SelectEntry();
 
-			Void				 OK();
-			Void				 Cancel();
+			Void					 OK();
+			Void					 Cancel();
 	};
 };
 

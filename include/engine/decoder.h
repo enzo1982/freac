@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -23,42 +23,42 @@ namespace freac
 	class Decoder
 	{
 		protected:
-			static Array<Threads::Mutex *>	 mutexes;
-			static Threads::Mutex		 managementMutex;
+			static Array<Threads::Mutex *, Void *>	 mutexes;
+			static Threads::Mutex			 managementMutex;
 
-			const BoCA::Config		*configuration;
+			const BoCA::Config			*configuration;
 
-			String				 fileName;
-			Int64				 sampleOffset;
+			String					 fileName;
+			Int64					 sampleOffset;
 
-			BoCA::Format			 format;
+			BoCA::Format				 format;
 
-			IO::InStream			*stream;
-			BoCA::AS::DecoderComponent	*decoder;
+			IO::InStream				*stream;
+			BoCA::AS::DecoderComponent		*decoder;
 
-			Bool				 calculateMD5;
-			Hash::MD5			 md5;
+			Bool					 calculateMD5;
+			Hash::MD5				 md5;
 		public:
-			static Void			 FreeLockObjects();
+			static Void				 FreeLockObjects();
 
-							 Decoder(const BoCA::Config *);
-			virtual				~Decoder();
+								 Decoder(const BoCA::Config *);
+			virtual					~Decoder();
 
-			Bool				 Create(const String &, const BoCA::Track &);
-			Bool				 Destroy();
+			Bool					 Create(const String &, const BoCA::Track &);
+			Bool					 Destroy();
 
-			Bool				 GetStreamInfo(BoCA::Track &) const;
+			Bool					 GetStreamInfo(BoCA::Track &) const;
 
-			Int				 Read(Buffer<UnsignedByte> &);
+			Int					 Read(Buffer<UnsignedByte> &);
 
-			Bool				 Seek(Int64);
+			Bool					 Seek(Int64);
 		accessors:
-			Void				 SetCalculateMD5(Bool nCalculateMD5)	{ calculateMD5 = nCalculateMD5; }
+			Void					 SetCalculateMD5(Bool nCalculateMD5)	{ calculateMD5 = nCalculateMD5; }
 
-			Int64				 GetInBytes() const;
-			String				 GetDecoderName() const;
+			Int64					 GetInBytes() const;
+			String					 GetDecoderName() const;
 
-			String				 GetMD5Checksum();
+			String					 GetMD5Checksum();
 	};
 };
 

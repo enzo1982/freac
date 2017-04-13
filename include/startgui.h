@@ -46,117 +46,117 @@ namespace freac
 		private:
 			/* Singleton class, therefore protected constructor/destructor
 			 */
-								 freacGUI();
-								~freacGUI();
+									 freacGUI();
+									~freacGUI();
 
-			Window					*mainWnd;
+			Window						*mainWnd;
 
-			Titlebar				*mainWnd_titlebar;
-			Statusbar				*mainWnd_statusbar;
+			Titlebar					*mainWnd_titlebar;
+			Statusbar					*mainWnd_statusbar;
 
-			Menubar					*mainWnd_menubar;
-			Menubar					*mainWnd_iconbar;
+			Menubar						*mainWnd_menubar;
+			Menubar						*mainWnd_iconbar;
 
-			PopupMenu				*menu_file;
-			PopupMenu				*menu_addsubmenu;
-			PopupMenu				*menu_files;
-			PopupMenu				*menu_drives;
+			PopupMenu					*menu_file;
+			PopupMenu					*menu_addsubmenu;
+			PopupMenu					*menu_files;
+			PopupMenu					*menu_drives;
 
-			PopupMenu				*menu_database;
-			PopupMenu				*menu_database_query;
+			PopupMenu					*menu_database;
+			PopupMenu					*menu_database_query;
 
-			PopupMenu				*menu_options;
-			PopupMenu				*menu_configurations;
-			PopupMenu				*menu_seldrive;
+			PopupMenu					*menu_options;
+			PopupMenu					*menu_configurations;
+			PopupMenu					*menu_seldrive;
 
-			PopupMenu				*menu_encode;
-			PopupMenu				*menu_encoders;
-			PopupMenu				*menu_encoder_options;
+			PopupMenu					*menu_encode;
+			PopupMenu					*menu_encoders;
+			PopupMenu					*menu_encoder_options;
 
-			PopupMenu				*menu_help;
+			PopupMenu					*menu_help;
 
-			Array<PopupMenu *>			 formatMenus;
+			Array<PopupMenu *, Void *>			 formatMenus;
 
-			MenuEntry				*allowOverwriteMenuEntry;
+			MenuEntry					*allowOverwriteMenuEntry;
 
-			Hyperlink				*hyperlink;
+			Hyperlink					*hyperlink;
 
-			TabWidget				*tabs_main;
-			LayerJoblist				*tab_layer_joblist;
-			LayerThreads				*tab_layer_threads;
+			TabWidget					*tabs_main;
+			LayerJoblist					*tab_layer_joblist;
+			LayerThreads					*tab_layer_threads;
 
-			JobList					*joblist;
+			JobList						*joblist;
 
-			Notification				*notification;
+			Notification					*notification;
 
-			Int					 clicked_configuration;
-			Int					 clicked_drive;
-			Int					 clicked_encoder;
+			Int						 clicked_configuration;
+			Int						 clicked_drive;
+			Int						 clicked_encoder;
 
-			Array<BoCA::AS::ExtensionComponent *>	 extensionComponents;
+			Array<BoCA::AS::ExtensionComponent *, Void *>	 extensionComponents;
 
-			Void					 InitExtensionComponents();
-			Void					 FreeExtensionComponents();
+			Void						 InitExtensionComponents();
+			Void						 FreeExtensionComponents();
 
-			Void					 Close();
-			Void					 About();
+			Void						 Close();
+			Void						 About();
 
-			Void					 ConfigureEncoder();
-			Void					 ConfigureSettings();
+			Void						 ConfigureEncoder();
+			Void						 ConfigureSettings();
 
-			Void					 ShowHelp();
-			Void					 ShowTipOfTheDay();
+			Void						 ShowHelp();
+			Void						 ShowTipOfTheDay();
 
-			Void					 CheckForUpdates();
+			Void						 CheckForUpdates();
 
-			Bool					 SetLanguage();
-			Void					 FillMenus();
+			Bool						 SetLanguage();
+			Void						 FillMenus();
 
-			Void					 Convert();
+			Void						 Convert();
 
-			Void					 PauseResumeEncoding();
-			Void					 StopEncoding();
+			Void						 PauseResumeEncoding();
+			Void						 StopEncoding();
 		slots:
-			Bool					 ExitProc();
+			Bool						 ExitProc();
 
-			Void					 MessageProc(Int, Int, Int);
+			Void						 MessageProc(Int, Int, Int);
 
-			Void					 OnChangePosition(const Point &);
-			Void					 OnChangeSize(const Size &);
+			Void						 OnChangePosition(const Point &);
+			Void						 OnChangeSize(const Size &);
 
-			Void					 OnSelectConfiguration();
-			Void					 OnChangeConfiguration();
+			Void						 OnSelectConfiguration();
+			Void						 OnChangeConfiguration();
 
-			Void					 OnDriveChange();
-			Void					 OnDiscInsert(Int);
-			Void					 OnDiscRemove(Int);
+			Void						 OnDriveChange();
+			Void						 OnDiscInsert(Int);
+			Void						 OnDiscRemove(Int);
 
-			Void					 ReadCD()				{ ReadCD(False); }
-			Void					 ReadCD(Bool);
+			Void						 ReadCD()				{ ReadCD(False); }
+			Void						 ReadCD(Bool);
 
-			Void					 QueryCDDB();
-			Void					 QueryCDDBLater();
-			Void					 SubmitCDDBData();
+			Void						 QueryCDDB();
+			Void						 QueryCDDBLater();
+			Void						 SubmitCDDBData();
 
-			Void					 ManageCDDBData();
-			Void					 ManageCDDBBatchData();
-			Void					 ManageCDDBBatchQueries();
+			Void						 ManageCDDBData();
+			Void						 ManageCDDBBatchData();
+			Void						 ManageCDDBBatchQueries();
 
-			Void					 AddFilesFromDirectory();
-			Void					 AddFilesByPattern();
+			Void						 AddFilesFromDirectory();
+			Void						 AddFilesByPattern();
 
-			Void					 ToggleUseInputDirectory();
-			Void					 ToggleEncodeToSingleFile();
+			Void						 ToggleUseInputDirectory();
+			Void						 ToggleEncodeToSingleFile();
 
-			Void					 ConfirmDeleteAfterEncoding();
+			Void						 ConfirmDeleteAfterEncoding();
 		public:
 			/* Returns a new or existing instance of freacGUI
 			 */
-			static freacGUI				*Get();
+			static freacGUI					*Get();
 
 			/* Destroys an existing instance of freacGUI
 			 */
-			static Void				 Free();
+			static Void					 Free();
 	};
 };
 

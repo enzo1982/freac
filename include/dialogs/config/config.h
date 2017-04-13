@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -26,70 +26,70 @@ namespace freac
 	class ConfigDialog : public Dialogs::Dialog
 	{
 		private:
-			String				 initialConfig;
+			String					 initialConfig;
 
-			Array<BoCA::AS::Component *>	 components;
-			Array<ConfigEntry *>		 entries;
-			Array<BoCA::ConfigLayer *>	 layers;
-			Array<BoCA::ConfigLayer *>	 createdLayers;
+			Array<BoCA::AS::Component *, Void *>	 components;
+			Array<ConfigEntry *, Void *>		 entries;
+			Array<BoCA::ConfigLayer *, Void *>	 layers;
+			Array<BoCA::ConfigLayer *, Void *>	 createdLayers;
 
-			BoCA::ConfigLayer		*selectedLayer;
+			BoCA::ConfigLayer			*selectedLayer;
 
-			Window				*mainWnd;
-			Titlebar			*mainWnd_titlebar;
+			Window					*mainWnd;
+			Titlebar				*mainWnd_titlebar;
 
-			Button				*btn_cancel;
-			Button				*btn_ok;
+			Button					*btn_cancel;
+			Button					*btn_ok;
 
-			Divider				*divbar;
+			Divider					*divbar;
 
-			Text				*text_config;
-			ComboBox			*combo_config;
-			EditBox				*edit_config;
-			Button				*button_config_new;
-			Button				*button_config_delete;
-			Divider				*divider_top;
+			Text					*text_config;
+			ComboBox				*combo_config;
+			EditBox					*edit_config;
+			Button					*button_config_new;
+			Button					*button_config_delete;
+			Divider					*divider_top;
 
-			ListBox				*list_layers;
-			Tree				*tree_freac;
-			Tree				*tree_ripper;
-			Tree				*tree_interface;
+			ListBox					*list_layers;
+			Tree					*tree_freac;
+			Tree					*tree_ripper;
+			Tree					*tree_interface;
 
-			Tree				*tree_components;
-			Tree				*tree_extension;
-			Tree				*tree_encoders;
-			Tree				*tree_decoders;
-			Tree				*tree_verifiers;
-			Tree				*tree_taggers;
-			Tree				*tree_playlists;
-			Tree				*tree_dsp;
-			Tree				*tree_output;
-			Tree				*tree_other;
+			Tree					*tree_components;
+			Tree					*tree_extension;
+			Tree					*tree_encoders;
+			Tree					*tree_decoders;
+			Tree					*tree_verifiers;
+			Tree					*tree_taggers;
+			Tree					*tree_playlists;
+			Tree					*tree_dsp;
+			Tree					*tree_output;
+			Tree					*tree_other;
 
-			Void				 AddLayers();
-			Void				 DeleteLayers();
+			Void					 AddLayers();
+			Void					 DeleteLayers();
 		slots:
-			Void				 OK();
-			Void				 Cancel();
+			Void					 OK();
+			Void					 Cancel();
 
-			Void				 OnChangeSize(const Size &);
+			Void					 OnChangeSize(const Size &);
 
-			Void				 OnSelectConfiguration();
-			Void				 OnSelectConfigurationByName();
+			Void					 OnSelectConfiguration();
+			Void					 OnSelectConfigurationByName();
 
-			Void				 OnEditConfigurationName(const String &);
+			Void					 OnEditConfigurationName(const String &);
 
-			Void				 OnCreateConfig();
-			Void				 OnDeleteConfig();
+			Void					 OnCreateConfig();
+			Void					 OnDeleteConfig();
 
-			Void				 OnSelectEntry(BoCA::ConfigLayer *);
+			Void					 OnSelectEntry(BoCA::ConfigLayer *);
 
-			Void				 OnChangeComponentSettings(const String &);
+			Void					 OnChangeComponentSettings(const String &);
 		public:
-							 ConfigDialog();
-							~ConfigDialog();
+								 ConfigDialog();
+								~ConfigDialog();
 
-			const Error			&ShowDialog();
+			const Error				&ShowDialog();
 	};
 };
 

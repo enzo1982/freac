@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -29,8 +29,8 @@ namespace BoCA
 	class LayerTags : public Layer
 	{
 		private:
-			Array<Chooser *>		 choosers;
-			Array<Editor *>			 editors;
+			Array<Chooser *, Void *>	 choosers;
+			Array<Editor *, Void *>		 editors;
 
 			TabWidget			*tab_mode;
 			TabWidget			*tab_editor;

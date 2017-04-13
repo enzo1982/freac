@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -17,8 +17,8 @@ using namespace smooth::IO;
 using namespace BoCA;
 using namespace BoCA::AS;
 
-Array<Threads::Mutex *>	 freac::Encoder::mutexes;
-Threads::Mutex		 freac::Encoder::managementMutex;
+Array<Threads::Mutex *, Void *>	 freac::Encoder::mutexes;
+Threads::Mutex			 freac::Encoder::managementMutex;
 
 freac::Encoder::Encoder(const BoCA::Config *iConfiguration)
 {
