@@ -291,18 +291,6 @@ Error freac::JobConvert::Perform()
 
 	numberOfThreads = Math::Min(numberOfThreads, tracks.Length());
 
-	/* Setup conversion log.
-	 */
-	DateTime	 currentDateTime = DateTime::Current();
-	String		 currentTime	 = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()))).Append(String::FromInt(currentDateTime.GetHour())).Append(":")
-				   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute())))).Append(String::FromInt(currentDateTime.GetMinute())).Append(":")
-				   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetSecond())))).Append(String::FromInt(currentDateTime.GetSecond()));
-
-	String		 logName = String("Conversion of %1 tracks at %2").Replace("%1", String::FromInt(tracks.Length())).Replace("%2", currentTime);
-	BoCA::Protocol	*log	 = BoCA::Protocol::Get(logName);
-
-	log->Write("Conversion process started...");
-
 	/* Setup playlist and cuesheet track lists.
 	 */
 	Array<Track>	 tracksToConvert = tracks;
@@ -383,6 +371,18 @@ Error freac::JobConvert::Perform()
 			foreach (Track &track, tracks) track.outfile = singleTrack.outfile;
 		}
 	}
+
+	/* Setup conversion log.
+	 */
+	DateTime	 currentDateTime = DateTime::Current();
+	String		 currentTime	 = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()))).Append(String::FromInt(currentDateTime.GetHour())).Append(":")
+				   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute())))).Append(String::FromInt(currentDateTime.GetMinute())).Append(":")
+				   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetSecond())))).Append(String::FromInt(currentDateTime.GetSecond()));
+
+	String		 logName = String("Conversion of %1 tracks at %2").Replace("%1", String::FromInt(tracks.Length())).Replace("%2", currentTime);
+	BoCA::Protocol	*log	 = BoCA::Protocol::Get(logName);
+
+	log->Write("Conversion process started...");
 
 	/* Enter actual conversion routines.
 	 */
