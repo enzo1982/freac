@@ -289,6 +289,8 @@ Error freac::JobConvert::Perform()
 	if	(!enableParallel)      numberOfThreads = 1;
 	else if (numberOfThreads <= 1) numberOfThreads = CPU().GetNumCores() + (CPU().GetNumLogicalCPUs() - CPU().GetNumCores()) / 2;
 
+	numberOfThreads = Math::Min(numberOfThreads, tracks.Length());
+
 	/* Setup conversion log.
 	 */
 	DateTime	 currentDateTime = DateTime::Current();
