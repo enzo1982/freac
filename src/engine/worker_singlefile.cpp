@@ -45,6 +45,10 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	 */
 	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
 
+	/* Set conversion step.
+	 */
+	if (conversionStep == ConversionStepNone) conversionStep = ConversionStepOnTheFly;
+
 	/* Check format of output file in verification step.
 	 */
 	Track	 track  = trackToConvert;
@@ -106,8 +110,10 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	/* Create verifier.
 	 */
 	Verifier	*verifier = new Verifier(configuration);
+	Bool		 verify	  = False;
 
-	if (verifyInput && conversionStep == ConversionStepOnTheFly) verifier->Create(trackToConvert);
+	if (verifyInput && (conversionStep == ConversionStepOnTheFly ||
+			    conversionStep == ConversionStepDecode)) verify = verifier->Create(trackToConvert);
 
 	/* Enable MD5 if we are to verify the output.
 	 */
@@ -134,11 +140,11 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Verify input.
 	 */
-	if (!cancel && verifier->Verify())
+	if (!cancel && verify && verifier->Verify())
 	{
 		log->Write(String("\tSuccessfully verified input file: ").Append(trackToConvert.origFilename));
 	}
-	else if (!cancel)
+	else if (!cancel && verify)
 	{
 		onReportError.Emit(i18n->TranslateString("Failed to verify input file: %1", "Messages").Replace("%1", File(trackToConvert.origFilename).GetFileName()));
 
