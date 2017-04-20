@@ -303,6 +303,7 @@
 		    <li><b>&lt;artist&gt;</b> - The song artist</li>
 		    <li><b>&lt;title&gt;</b> - The song title</li>
 		    <li><b>&lt;album&gt;</b> - The album title</li>
+		    <li><b>&lt;disc&gt;</b> - The disc number</li>
 		    <li><b>&lt;track&gt;</b> - The song track number</li>
 		    <li><b>&lt;genre&gt;</b> - The song genre</li>
 		    <br/>
@@ -316,9 +317,9 @@
 		    <li><b>&lt;currentdate&gt;</b> - The current date formatted as yyyymmdd</li>
 		    <li><b>&lt;currenttime&gt;</b> - The current time formatted as hhmm</li>
 		  </ul>
-		  <p>The <b>&lt;track&gt;</b> placeholder can be modified like <b>&lt;track(n)&gt;</b> where the <b>(n)</b> part specifies the minimum length
-		    of the track number. Zeroes will be prepended if the actual number is too small. <b>n</b> may be in the range of <b>1</b> to <b>4</b>
-		    where <b>2</b> is the default if the <b>(n)</b> part is omitted.</p>
+		  <p>The <b>&lt;disc&gt;</b> and <b>&lt;track&gt;</b> placeholders can be modified like <b>&lt;disc(n)&gt;</b> and <b>&lt;track(n)&gt;</b> where the <b>(n)</b>
+		    part specifies the minimum length of the disc or track number. Zeroes will be prepended if the actual number is too small. <b>n</b> may be in the range of
+		    <b>1</b> to <b>4</b> where <b>1</b> is the default for disc and <b>2</b> is the default for track numbers if the <b>(n)</b> part is omitted.</p>
 		  <p>The above placeholders refer to song and album information. The following placeholder resolves to the type of the output file:</p>
 		  <ul>
 		    <li><b>&lt;filetype&gt;</b> - The type of the output file</li>

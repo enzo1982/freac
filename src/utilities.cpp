@@ -358,7 +358,6 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 			shortOutFileName.Replace("<title>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")));
 			shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
 			shortOutFileName.Replace("<genre>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
-			shortOutFileName.Replace("<disc>", String(info.disc < 10 ? "0" : NIL).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
 			shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
 			shortOutFileName.Replace("<filename>", BoCA::Utilities::ReplaceIncompatibleCharacters(shortInFileName));
 			shortOutFileName.Replace("<filetype>", fileExtension.ToUpper());
@@ -374,6 +373,17 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 				String	 pattern = String("<track(").Append(String::FromInt(i)).Append(")>");
 
 				shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.track > 0 ? info.track : 1) + 1)).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
+			}
+
+			/* Replace <disc> pattern.
+			 */
+			shortOutFileName.Replace("<disc>", String::FromInt(info.disc < 0 ? 0 : info.disc));
+
+			for (Int i = 1; i <= 4; i++)
+			{
+				String	 pattern = String("<disc(").Append(String::FromInt(i)).Append(")>");
+
+				shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
 			}
 
 			/* Replace other text fields.
@@ -577,10 +587,20 @@ String freac::Utilities::GetPlaylistFileName(const Track &track)
 		shortOutFileName.Replace("<artist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
 		shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
 		shortOutFileName.Replace("<genre>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
-		shortOutFileName.Replace("<disc>", String(info.disc < 10 ? "0" : NIL).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
 		shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
 		shortOutFileName.Replace("<currentdate>", currentDate);
 		shortOutFileName.Replace("<currenttime>", currentTime);
+
+		/* Replace <disc> pattern.
+		 */
+		shortOutFileName.Replace("<disc>", String::FromInt(info.disc < 0 ? 0 : info.disc));
+
+		for (Int i = 1; i <= 4; i++)
+		{
+			String	 pattern = String("<disc(").Append(String::FromInt(i)).Append(")>");
+
+			shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
+		}
 
 		/* Replace other text fields.
 		 */
