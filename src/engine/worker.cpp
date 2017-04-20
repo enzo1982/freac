@@ -52,7 +52,7 @@ Int freac::ConvertWorker::Perform()
 {
 	while (!quit)
 	{
-		if (idle) { S::System::System::Sleep(100); continue; }
+		if (idle) { S::System::System::Sleep(1); continue; }
 
 		if (Convert() != Success()) error = True;
 
