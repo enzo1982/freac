@@ -10,31 +10,33 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <boca.h>
-#include "layer.h"
+#ifndef H_PROTOCOLS_CONFIG
+#define H_PROTOCOLS_CONFIG
 
-BoCA_BEGIN_COMPONENT(Protocols)
+#include <smooth.h>
+#include <boca.h>
+
+using namespace smooth;
+using namespace smooth::GUI;
+
+using namespace BoCA;
 
 namespace BoCA
 {
-	class Protocols : public CS::ExtensionComponent
+	class ConfigureProtocols : public ConfigLayer
 	{
 		private:
-			ConfigLayer		*configLayer;
+			GroupBox	*group_ui;
+			CheckBox	*check_ui_showTab;
 
-			LayerProtocols		*mainTabLayer;
+
+			Bool		 showProtocolsTab;
 		public:
-			static const String	&GetComponentSpecs();
+					 ConfigureProtocols();
+					~ConfigureProtocols();
 
-						 Protocols();
-						~Protocols();
-
-			ConfigLayer		*GetConfigurationLayer();
-		callbacks:
-			Layer			*GetMainTabLayer();
+			Int		 SaveSettings();
 	};
 };
 
-BoCA_DEFINE_EXTENSION_COMPONENT(Protocols)
-
-BoCA_END_COMPONENT(Protocols)
+#endif

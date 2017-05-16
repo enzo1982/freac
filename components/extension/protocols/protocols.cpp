@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -14,6 +14,7 @@
 #include <smooth/dll.h>
 
 #include "protocols.h"
+#include "config.h"
 
 const String &BoCA::Protocols::GetComponentSpecs()
 {
@@ -21,7 +22,7 @@ const String &BoCA::Protocols::GetComponentSpecs()
 							\
 	  <?xml version=\"1.0\" encoding=\"UTF-8\"?>	\
 	  <component>					\
-	    <name>Protocol viewer</name>		\
+	    <name>Protocol Viewer</name>		\
 	    <version>1.0</version>			\
 	    <id>protocols-ext</id>			\
 	    <type>extension</type>			\
@@ -44,6 +45,7 @@ Void smooth::DetachDLL()
 
 BoCA::Protocols::Protocols()
 {
+	configLayer  = NIL;
 	mainTabLayer = NIL;
 
 	getMainTabLayer.Connect(&Protocols::GetMainTabLayer, this);
@@ -51,11 +53,23 @@ BoCA::Protocols::Protocols()
 
 BoCA::Protocols::~Protocols()
 {
+	if (configLayer	 != NIL) Object::DeleteObject(configLayer);
 	if (mainTabLayer != NIL) Object::DeleteObject(mainTabLayer);
+}
+
+ConfigLayer *BoCA::Protocols::GetConfigurationLayer()
+{
+	if (configLayer == NIL) configLayer = new ConfigureProtocols();
+
+	return configLayer;
 }
 
 Layer *BoCA::Protocols::GetMainTabLayer()
 {
+	const Config	*config = GetConfiguration();
+
+	if (!config->GetIntValue("Protocols", "ShowProtocolsTab", False)) return NIL;
+
 	if (mainTabLayer == NIL) mainTabLayer = new LayerProtocols();
 
 	return mainTabLayer;

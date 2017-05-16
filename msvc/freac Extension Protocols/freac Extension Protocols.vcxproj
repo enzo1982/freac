@@ -137,10 +137,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\components\extension\protocols\config.cpp" />
     <ClCompile Include="..\..\components\extension\protocols\layer.cpp" />
     <ClCompile Include="..\..\components\extension\protocols\protocols.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\components\extension\protocols\config.h" />
     <ClInclude Include="..\..\components\extension\protocols\layer.h" />
     <ClInclude Include="..\..\components\extension\protocols\protocols.h" />
   </ItemGroup>
