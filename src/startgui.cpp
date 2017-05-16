@@ -522,12 +522,33 @@ Void freac::freacGUI::OnChangeConfiguration()
 	 */
 	BoCA::Settings::Get()->onChangeConfigurationSettings.Emit();
 
-	/* Show/hide Jobs tab.
+	/* Update tabs for new configuration.
 	 */
+	for (Int i = 0; i < tabs_main->GetNOfObjects(); i++)
+	{
+		if (tabs_main->GetNthObject(i)->GetObjectType() != Layer::classID) continue;
+
+		tabs_main->Remove(tabs_main->GetNthObject(i--));
+	}
+
+#ifndef BUILD_VIDEO_DOWNLOADER
+	tabs_main->Add(tab_layer_joblist);
+#endif
+
+	for (Int i = 0; i < extensionComponents.Length(); i++)
+	{
+		Layer	*mainTabLayer = extensionComponents.GetNth(i)->getMainTabLayer.Emit();
+
+		if (mainTabLayer != NIL) tabs_main->Add(mainTabLayer);
+	}
+
+#ifdef BUILD_VIDEO_DOWNLOADER
+	tabs_main->Add(tab_layer_joblist);
+#endif
+
 	if (config->GetIntValue(Config::CategorySettingsID,
 				Config::SettingsShowJobsTabID,
 				Config::SettingsShowJobsTabDefault)) tabs_main->Add(tab_layer_threads);
-	else							     tabs_main->Remove(tab_layer_threads);
 
 	tabs_main->Paint(SP_PAINT);
 
