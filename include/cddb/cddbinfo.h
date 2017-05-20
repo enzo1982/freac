@@ -13,7 +13,7 @@
 #ifndef H_FREAC_CDDBINFO
 #define H_FREAC_CDDBINFO
 
-#include <smooth.h>
+#include <boca.h>
 
 using namespace smooth;
 
@@ -66,6 +66,8 @@ namespace freac
 
 			String		 GetQueryString() const;
 			Bool		 UpdateFromQueryString(const String &);
+
+			Bool		 UpdateTrack(BoCA::Track &) const;
 	};
 };
 

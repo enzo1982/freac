@@ -144,3 +144,28 @@ Bool freac::CDDBInfo::UpdateFromQueryString(const String &queryString)
 
 	return True;
 }
+
+Bool freac::CDDBInfo::UpdateTrack(BoCA::Track &track) const
+{
+	BoCA::Info	 info = track.GetInfo();
+
+	if ((info.mcdi.GetData().Size() > 0 && track.discid == CDDB::DiscIDFromMCDI(info.mcdi)) ||
+	    (info.offsets != NIL && track.discid == CDDB::DiscIDFromOffsets(info.offsets)))
+	{
+		if (dArtist == "Various") info.artist = trackArtists.GetNth(track.cdTrack - 1);
+		else			  info.artist = dArtist;
+
+		if (trackTitles.GetNth(track.cdTrack - 1) != NIL) info.title = trackTitles.GetNth(track.cdTrack - 1);
+
+		info.album = dTitle;
+		info.genre = dGenre;
+		info.year  = dYear;
+		info.track = track.cdTrack;
+
+		track.SetInfo(info);
+
+		track.outfile	= NIL;
+	}
+
+	return True;
+}

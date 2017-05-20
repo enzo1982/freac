@@ -42,21 +42,22 @@ namespace freac
 			Threads::Thread	*queryThread;
 			Bool		 stopQueryThread;
 
-			Void		 Cancel();
 			Int		 QueryThread();
-
-			Bool		 QueryCDDB(CDDB &);
+			Bool		 Query(CDDB &);
 		public:
+			static CDDBInfo	 QueryCDDB(const BoCA::Track &);
+
 					 cddbQueryDlg(const String &);
 					~cddbQueryDlg();
 
 			const Error	&ShowDialog();
-
 		accessors:
 			Bool		 GetErrorState() const	{ return errorState; }
 			const String	&GetErrorString() const	{ return errorString; }
 
 			const CDDBInfo	&GetCDDBInfo()		{ return cddbInfo; }
+		slots:
+			Void		 Cancel();
 	};
 };
 

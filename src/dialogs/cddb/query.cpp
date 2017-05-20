@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -19,6 +19,9 @@
 
 #include <cddb/cddblocal.h>
 #include <cddb/cddbremote.h>
+
+#include <cddb/cddbcache.h>
+#include <cddb/cddbbatch.h>
 
 using namespace smooth::GUI::Dialogs;
 
@@ -112,14 +115,14 @@ Int freac::cddbQueryDlg::QueryThread()
 	{
 		CDDBLocal	 cddbLocal;
 
-		result = QueryCDDB(cddbLocal);
+		result = Query(cddbLocal);
 	}
 
 	if (!result && config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
 		CDDBRemote	 cddbRemote;
 
-		result = QueryCDDB(cddbRemote);
+		result = Query(cddbRemote);
 	}
 
 	mainWnd->Close();
@@ -128,7 +131,7 @@ Int freac::cddbQueryDlg::QueryThread()
 	else	    return Error();
 }
 
-Bool freac::cddbQueryDlg::QueryCDDB(CDDB &cddb)
+Bool freac::cddbQueryDlg::Query(CDDB &cddb)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -244,4 +247,52 @@ Bool freac::cddbQueryDlg::QueryCDDB(CDDB &cddb)
 
 	if (category == NIL || discID == 0) return False;
 	else				    return True;
+}
+
+freac::CDDBInfo freac::cddbQueryDlg::QueryCDDB(const BoCA::Track &track)
+{
+	const BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n		*i18n	= BoCA::I18n::Get();
+
+	String		 queryString = CDDB::QueryStringFromMCDI(track.GetInfo().mcdi);
+	CDDBInfo	 cdInfo;
+
+	/* Query CDDB cache first.
+	 */
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault))
+	{
+		cdInfo = CDDBCache::Get()->GetCacheEntry(queryString);
+
+		if (cdInfo != NIL) return cdInfo;
+	}
+
+	/* Perform local or remote CDDB query.
+	 */
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
+	    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
+	{
+		cddbQueryDlg	 dlg(queryString);
+
+		if (dlg.ShowDialog() == Error())
+		{
+			/* Ask whether to perform this query later.
+			 */
+			if (QuickMessage(dlg.GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
+			{
+				CDDBBatch().AddQuery(queryString);
+			}
+		}
+		else if (dlg.GetErrorString() != NIL)
+		{
+			/* Display info message if any.
+			 */
+			BoCA::Utilities::InfoMessage(dlg.GetErrorString());
+		}
+
+		cdInfo = dlg.GetCDDBInfo();
+	}
+
+	if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
+
+	return cdInfo;
 }

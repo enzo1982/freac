@@ -13,9 +13,6 @@
 #include <jobs/joblist/addtracks.h>
 #include <jobs/joblist/removeall.h>
 
-#include <cddb/cddbcache.h>
-#include <cddb/cddbbatch.h>
-
 #include <dialogs/cddb/query.h>
 
 #include <config.h>
@@ -25,8 +22,6 @@
 
 using namespace BoCA;
 using namespace BoCA::AS;
-
-using namespace smooth::GUI::Dialogs;
 
 freac::JobAddTracks::JobAddTracks(const Array<String> &iURLs, Bool iAutoCDRead)
 {
@@ -59,8 +54,6 @@ Bool freac::JobAddTracks::ReadyToRun()
 
 Error freac::JobAddTracks::Perform()
 {
-	BoCA::I18n	*i18n = BoCA::I18n::Get();
-
 	CDDBInfo	 cdInfo;
 	Bool		 cddbQueried = False;
 
@@ -110,7 +103,7 @@ Error freac::JobAddTracks::Perform()
 			continue;
 		}
 
-		/* Add disc ID to CD tracks
+		/* Add disc ID to CD tracks.
 		 */
 		track.discid = CDDB::DiscIDFromMCDI(track.GetInfo().mcdi);
 
@@ -133,7 +126,7 @@ Error freac::JobAddTracks::Perform()
 
 		/* Set special title for hidden tracks.
 		 */
-		if (track.isCDTrack && track.cdTrack == 0)
+		if (track.cdTrack == 0)
 		{
 			BoCA::I18n	*i18n = BoCA::I18n::Get();
 			Info		 info = track.GetInfo();
@@ -149,65 +142,11 @@ Error freac::JobAddTracks::Perform()
 		{
 			if (!cddbQueried)
 			{
-				String	 queryString = CDDB::QueryStringFromMCDI(track.GetInfo().mcdi);
-
-				if (configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) cdInfo = CDDBCache::Get()->GetCacheEntry(queryString);
-
-				if (cdInfo == NIL)
-				{
-					if (configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
-					    configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
-					{
-						cddbQueryDlg	 dlg(queryString);
-
-						if (dlg.ShowDialog() == Error())
-						{
-							/* Ask whether to perform this query later.
-							 */
-							if (QuickMessage(dlg.GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
-							{
-								CDDBBatch().AddQuery(queryString);
-							}
-						}
-						else if (dlg.GetErrorString() != NIL)
-						{
-							/* Display info message if any.
-							 */
-							BoCA::Utilities::InfoMessage(dlg.GetErrorString());
-						}
-
-						cdInfo = dlg.GetCDDBInfo();
-					}
-
-					if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
-				}
-
+				cdInfo	    = cddbQueryDlg::QueryCDDB(track);
 				cddbQueried = True;
 			}
 
-			if (cdInfo != NIL)
-			{
-				Info	 info = track.GetInfo();
-
-				if ((info.mcdi.GetData().Size() > 0 && track.discid == CDDB::DiscIDFromMCDI(info.mcdi)) ||
-				    (info.offsets != NIL && track.discid == CDDB::DiscIDFromOffsets(info.offsets)))
-				{
-					if (cdInfo.dArtist == "Various") info.artist = cdInfo.trackArtists.GetNth(track.cdTrack - 1);
-					else				 info.artist = cdInfo.dArtist;
-
-					if (cdInfo.trackTitles.GetNth(track.cdTrack - 1) != NIL) info.title = cdInfo.trackTitles.GetNth(track.cdTrack - 1);
-
-					info.album = cdInfo.dTitle;
-					info.genre = cdInfo.dGenre;
-					info.year  = cdInfo.dYear;
-					info.track = track.cdTrack;
-
-					track.SetInfo(info);
-
-					track.outfile	= NIL;
-				}
-
-			}
+			if (cdInfo != NIL) cdInfo.UpdateTrack(track);
 		}
 
 		/* Add track to joblist.

@@ -13,14 +13,12 @@
 #include <jobs/joblist/addfiles.h>
 #include <jobs/joblist/removeall.h>
 
-#include <cddb/cddb.h>
+#include <dialogs/cddb/query.h>
 
-#include <utilities.h>
 #include <config.h>
+#include <utilities.h>
 
 #include <support/autorelease.h>
-
-#include <boca.h>
 
 using namespace BoCA;
 using namespace BoCA::AS;
@@ -55,6 +53,9 @@ Bool freac::JobAddFiles::ReadyToRun()
 
 Error freac::JobAddFiles::Perform()
 {
+	Array<CDDBInfo>	 cdInfos;
+	Array<Bool>	 cddbsQueried;
+	
 	for (Int i = 0; i < files.Length(); i++)
 	{
 		if (abort) break;
@@ -105,13 +106,12 @@ Error freac::JobAddFiles::Perform()
 		 */
 		if (track == NIL) continue;
 
-		/* Add disc ID to CD tracks
+		/* Add disc ID to CD tracks.
 		 */
-		if (track.isCDTrack)
-		{
-			track.discid = CDDB::DiscIDFromMCDI(track.GetInfo().mcdi);
-		}
+		if (track.isCDTrack) track.discid = CDDB::DiscIDFromMCDI(track.GetInfo().mcdi);
 
+		/* Extract title info from path names.
+		 */
 		Info	 info = track.GetInfo();
 
 		if (info.artist == NIL && info.title == NIL && !file.StartsWith("device://")) ExtractInfoFromPath(file, info);
@@ -121,6 +121,21 @@ Error freac::JobAddFiles::Perform()
 		/* Add cover art from external files.
 		 */
 		track.LoadCoverArtFiles();
+
+		/* Query CDDB and update track info.
+		 */
+		if (track.isCDTrack && configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault))
+		{
+			if (!cddbsQueried.Get(track.discid))
+			{
+				cdInfos.Add(cddbQueryDlg::QueryCDDB(track), track.discid);
+				cddbsQueried.Add(True, track.discid);
+			}
+
+			const CDDBInfo	&cdInfo = cdInfos.Get(track.discid);
+
+			if (cdInfo != NIL) cdInfo.UpdateTrack(track);
+		}
 
 		/* Add track(s) to joblist.
 		 */
