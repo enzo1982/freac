@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -158,31 +158,25 @@ Error freac::JobAddTracks::Perform()
 					if (configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
 					    configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 					{
-						cddbQueryDlg	*dlg = new cddbQueryDlg(queryString);
+						cddbQueryDlg	 dlg(queryString);
 
-						if (dlg->ShowDialog() == Error())
+						if (dlg.ShowDialog() == Error())
 						{
 							/* Ask whether to perform this query later.
 							 */
-							if (QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
+							if (QuickMessage(dlg.GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
 							{
-								CDDBBatch	*queries = new CDDBBatch();
-
-								queries->AddQuery(queryString);
-
-								delete queries;
+								CDDBBatch().AddQuery(queryString);
 							}
 						}
-						else if (dlg->GetErrorString() != NIL)
+						else if (dlg.GetErrorString() != NIL)
 						{
 							/* Display info message if any.
 							 */
-							BoCA::Utilities::InfoMessage(dlg->GetErrorString());
+							BoCA::Utilities::InfoMessage(dlg.GetErrorString());
 						}
 
-						cdInfo = dlg->GetCDDBInfo();
-
-						DeleteObject(dlg);
+						cdInfo = dlg.GetCDDBInfo();
 					}
 
 					if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);

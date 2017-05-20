@@ -409,26 +409,20 @@ Void freac::cddbSubmitDlg::Submit()
 
 	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault))
 	{
-		CDDBLocal	 cddb;
-
-		cddb.Submit(cddbInfo);
+		CDDBLocal().Submit(cddbInfo);
 	}
 
 	if (submitLater)
 	{
-		CDDBBatch	 cddb;
-
 		cddbInfo.revision = revision;
 
-		cddb.AddSubmit(cddbInfo);
+		CDDBBatch().AddSubmit(cddbInfo);
 	}
 	else if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 	{
-		CDDBRemote	 cddb;
-
 		cddbInfo.revision = revision;
 
-		if (!cddb.Submit(cddbInfo))
+		if (!CDDBRemote().Submit(cddbInfo))
 		{
 			i18n->SetContext("CDDB::Submit::Errors");
 
@@ -618,11 +612,7 @@ Void freac::cddbSubmitDlg::ChangeDrive()
 				 */
 				if (QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
 				{
-					CDDBBatch	*queries = new CDDBBatch();
-
-					queries->AddQuery(queryString);
-
-					delete queries;
+					CDDBBatch().AddQuery(queryString);
 				}
 			}
 			else if (dlg->GetErrorString() != NIL)

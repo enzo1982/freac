@@ -61,8 +61,6 @@ freac::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 	btn_delete->Deactivate();
 	btn_send->Deactivate();
 
-	cddbBatch = new CDDBBatch();
-
 	ReadEntries();
 
 	Add(mainWnd);
@@ -101,8 +99,6 @@ freac::cddbManageSubmitsDlg::~cddbManageSubmitsDlg()
 	DeleteObject(btn_send_all);
 
 	DeleteObject(text_status);
-
-	delete cddbBatch;
 }
 
 const Error &freac::cddbManageSubmitsDlg::ShowDialog()
@@ -119,7 +115,7 @@ Void freac::cddbManageSubmitsDlg::Cancel()
 
 Void freac::cddbManageSubmitsDlg::SelectEntry()
 {
-	const CDDBInfo	&cddbInfo = cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber());
+	const CDDBInfo	&cddbInfo = cddbBatch.GetSubmits().GetNth(list_entries->GetSelectedEntryNumber());
 	String		 preview = String(cddbInfo.dArtist).Append(" - ").Append(cddbInfo.dTitle).Append("\n\n");
 
 	for (Int i = 0; i < cddbInfo.trackTitles.Length(); i++)
@@ -135,7 +131,7 @@ Void freac::cddbManageSubmitsDlg::SelectEntry()
 
 Void freac::cddbManageSubmitsDlg::DeleteEntry()
 {
-	cddbBatch->DeleteSubmit(cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber()));
+	cddbBatch.DeleteSubmit(cddbBatch.GetSubmits().GetNth(list_entries->GetSelectedEntryNumber()));
 
 	list_entries->Remove(list_entries->GetSelectedEntry());
 
@@ -149,7 +145,7 @@ Void freac::cddbManageSubmitsDlg::ReadEntries()
 {
 	/* Read all entries from the freedb queue.
 	 */
-	const Array<CDDBInfo> &entries = cddbBatch->GetSubmits();
+	const Array<CDDBInfo> &entries = cddbBatch.GetSubmits();
 
 	for (Int i = 0; i < entries.Length(); i++)
 	{
@@ -169,7 +165,7 @@ Void freac::cddbManageSubmitsDlg::SendEntry()
 	 */
 	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Submitting CD information")));
 
-	if (cddbBatch->Submit(cddbBatch->GetSubmits().GetNth(list_entries->GetSelectedEntryNumber())))
+	if (cddbBatch.Submit(cddbBatch.GetSubmits().GetNth(list_entries->GetSelectedEntryNumber())))
 	{
 		list_entries->Remove(list_entries->GetSelectedEntry());
 
@@ -192,7 +188,7 @@ Void freac::cddbManageSubmitsDlg::SendAllEntries()
 	 */
 	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Submitting CD information")));
 
-	if (cddbBatch->SubmitAll()) mainWnd->Close();
+	if (cddbBatch.SubmitAll()) mainWnd->Close();
 
 	text_status->SetText(NIL);
 }

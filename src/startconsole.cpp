@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -343,7 +343,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			for (Int i = 0; i < files.Length(); i++)
 			{
-				InStream	*in = new InStream(STREAM_FILE, files.GetNth(i), IS_READ);
+				InStream	 in(STREAM_FILE, files.GetNth(i), IS_READ);
 				String		 currentFile = files.GetNth(i);
 
 				if (currentFile.StartsWith("device://cdda:"))
@@ -352,19 +352,13 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 					addCDTracks = True;
 				}
 
-				if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("device://"))
+				if (in.GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("device://"))
 				{
-					delete in;
-
 					Console::OutputString(String("File not found: ").Append(files.GetNth(i)).Append("\n"));
 
 					broken = True;
 
 					continue;
-				}
-				else
-				{
-					delete in;
 				}
 
 				jobFiles.Add(files.GetNth(i));
@@ -395,7 +389,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		{
 			for (Int i = 0; i < files.Length(); i++)
 			{
-				InStream	*in	     = new InStream(STREAM_FILE, files.GetNth(i), IS_READ);
+				InStream	 in(STREAM_FILE, files.GetNth(i), IS_READ);
 				String		 currentFile = files.GetNth(i);
 				Bool		 addCDTrack  = False;
 
@@ -405,19 +399,13 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 					addCDTrack  = True;
 				}
 
-				if (in->GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("device://"))
+				if (in.GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("device://"))
 				{
-					delete in;
-
 					Console::OutputString(String("File not found: ").Append(files.GetNth(i)).Append("\n"));
 
 					broken = True;
 
 					continue;
-				}
-				else
-				{
-					delete in;
 				}
 
 				Array<String>	 jobFiles;

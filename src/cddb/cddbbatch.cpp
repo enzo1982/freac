@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -229,9 +229,7 @@ Bool freac::CDDBBatch::AddSubmit(const CDDBInfo &oCddbInfo)
 
 	/* Save entry to batch queue.
 	 */
-	CDDBLocal	 cddb;
-
-	cddb.Submit(cddbInfo);
+	CDDBLocal().Submit(cddbInfo);
 
 	for (Int i = 0; i < submits.Length(); i++)
 	{
@@ -309,9 +307,7 @@ Int freac::CDDBBatch::Query(Int n)
 
 		/* Save entry to local cache.
 		 */
-		CDDBLocal	 cddb;
-
-		cddb.Submit(cddbInfo);
+		CDDBLocal().Submit(cddbInfo);
 
 		/* Restore real freedb path.
 		 */
@@ -355,9 +351,7 @@ Bool freac::CDDBBatch::Submit(const CDDBInfo &cddbInfo)
 {
 	/* Submit and delete entry if successful.
 	 */
-	CDDBRemote	 cddb;
-
-	if (!cddb.Submit(cddbInfo))
+	if (!CDDBRemote().Submit(cddbInfo))
 	{
 		BoCA::I18n	*i18n	= BoCA::I18n::Get();
 

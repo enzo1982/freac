@@ -308,7 +308,7 @@ freac::freacGUI::~freacGUI()
 
 	DeleteObject(menu_help);
 
-	foreach (PopupMenu *menu_format, formatMenus) delete menu_format;
+	foreach (PopupMenu *menu_format, formatMenus) DeleteObject(menu_format);
 
 	formatMenus.RemoveAll();
 }
@@ -723,18 +723,16 @@ Void freac::freacGUI::QueryCDDB()
 				{
 					/* Ask whether to perform this query later.
 					 */
-					CDDBBatch	*queries = new CDDBBatch();
+					CDDBBatch	 queries;
 
 					if (i == queryStrings.Length() - 1 && QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
 					{
-						queries->AddQuery(queryString);
+						queries.AddQuery(queryString);
 					}
 					else if (i < queryStrings.Length() - 1 && QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform the remaining queries again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
 					{
-						for (Int j = i; j < queryStrings.Length(); j++) queries->AddQuery(queryStrings.GetNth(j));
+						for (Int j = i; j < queryStrings.Length(); j++) queries.AddQuery(queryStrings.GetNth(j));
 					}
-
-					delete queries;
 
 					/* Temporarily disable remote CDDB queries if connection failed.
 					 */
@@ -830,11 +828,9 @@ Void freac::freacGUI::QueryCDDBLater()
 	 */
 	if (queryStrings.Length() > 0)
 	{
-		CDDBBatch	*queries = new CDDBBatch();
+		CDDBBatch	 queries;
 
-		foreach (const String &queryString, queryStrings) queries->AddQuery(queryString);
-
-		delete queries;
+		foreach (const String &queryString, queryStrings) queries.AddQuery(queryString);
 	}
 }
 
@@ -959,7 +955,7 @@ Void freac::freacGUI::FillMenus()
 
 	menu_help->RemoveAllEntries();
 
-	foreach (PopupMenu *menu_format, formatMenus) delete menu_format;
+	foreach (PopupMenu *menu_format, formatMenus) DeleteObject(menu_format);
 
 	formatMenus.RemoveAll();
 

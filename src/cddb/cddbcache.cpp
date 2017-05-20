@@ -112,9 +112,7 @@ Bool freac::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	/* Save new entry to the persistant cache.
 	 */
-	CDDBLocal	 cddbLocal;
-
-	cddbLocal.Submit(nCddbInfo);
+	CDDBLocal().Submit(nCddbInfo);
 
 	/* Restore real freedb path.
 	 */

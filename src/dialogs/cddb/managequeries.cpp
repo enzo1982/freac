@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -20,8 +20,6 @@ freac::cddbManageQueriesDlg::cddbManageQueriesDlg()
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("CDDB::Manage queries");
-
-	cddbQueries	= new CDDBBatch();
 
 	mainWnd			= new Window(i18n->TranslateString("CDDB queries"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(402, 352));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
@@ -77,8 +75,6 @@ freac::cddbManageQueriesDlg::cddbManageQueriesDlg()
 
 freac::cddbManageQueriesDlg::~cddbManageQueriesDlg()
 {
-	delete cddbQueries;
-
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
 	DeleteObject(divbar);
@@ -114,7 +110,7 @@ Void freac::cddbManageQueriesDlg::SelectEntry()
 
 Void freac::cddbManageQueriesDlg::DeleteEntry()
 {
-	cddbQueries->DeleteQuery(list_entries->GetSelectedEntryNumber());
+	cddbQueries.DeleteQuery(list_entries->GetSelectedEntryNumber());
 
 	list_entries->Remove(list_entries->GetSelectedEntry());
 
@@ -126,7 +122,7 @@ Void freac::cddbManageQueriesDlg::ReadEntries()
 {
 	/* Read all entries from the query queue
 	 */
-	const Array<String> &queries = cddbQueries->GetQueries();
+	const Array<String> &queries = cddbQueries.GetQueries();
 
 	for (Int i = 0; i < queries.Length(); i++)
 	{
@@ -144,7 +140,7 @@ Void freac::cddbManageQueriesDlg::QueryEntry()
 	 */
 	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Querying CD information")));
 
-	if (cddbQueries->Query(list_entries->GetSelectedEntryNumber()) != QUERY_RESULT_ERROR)
+	if (cddbQueries.Query(list_entries->GetSelectedEntryNumber()) != QUERY_RESULT_ERROR)
 	{
 		list_entries->Remove(list_entries->GetSelectedEntry());
 
@@ -165,7 +161,7 @@ Void freac::cddbManageQueriesDlg::QueryAllEntries()
 	 */
 	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Querying CD information")));
 
-	if (cddbQueries->QueryAll()) mainWnd->Close();
+	if (cddbQueries.QueryAll()) mainWnd->Close();
 
 	text_status->SetText(NIL);
 }
