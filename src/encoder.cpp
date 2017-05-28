@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -1033,17 +1033,17 @@ Void freac::freac::UpdateProgressValues(Track *trackInfo, Int samplePosition)
 {
 	if (currentConfig->enable_console) return;
 
-	static Int	 lastInvoked = 0;
+	static UnsignedInt64	 lastInvoked = 0;
 
-	Int	 clockValue	= S::System::System::Clock();
+	UnsignedInt64	 clockValue    = S::System::System::Clock();
 
 	if (clockValue - lastInvoked < 40) return;
 
-	Int	 trackTicks	= clockValue - startTicks;
-	Int	 totalTicks	= clockValue - totalStartTicks;
+	Int64		 trackTicks    = clockValue - startTicks;
+	Int64		 totalTicks    = clockValue - totalStartTicks;
 
-	Int	 trackProgress	= 0;
-	Int	 totalProgress	= 0;
+	Int		 trackProgress = 0;
+	Int		 totalProgress = 0;
 
 	if (trackInfo->length >= 0)
 	{

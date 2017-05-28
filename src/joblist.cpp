@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -424,7 +424,7 @@ Void freac::JobList::AddTrackByDragAndDrop(const String &file)
 {
 	if (freac::currentConfig->appMain->encoding)
 	{
-		static Int64	 ticks = 0;
+		static UnsignedInt64	 ticks = 0;
 
 		if (S::System::System::Clock() - ticks > 250) Utilities::ErrorMessage("Cannot modify the joblist while encoding!");
 
