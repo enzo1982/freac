@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -22,7 +22,7 @@
 #include <3rdparty/mp4v2/mp4v2.h>
 #include <3rdparty/flac/stream_encoder.h>
 #include <3rdparty/flac/stream_decoder.h>
-#include <3rdparty/mad/mad.h>
+#include <3rdparty/mpg123/mpg123.h>
 
 #ifdef __WIN32__
 #	include <windows.h>
@@ -55,7 +55,7 @@ namespace freac
 			static DynamicLoader		*eupdatedll;
 			static DynamicLoader		*mp4v2dll;
 			static DynamicLoader		*flacdll;
-			static DynamicLoader		*maddll;
+			static DynamicLoader		*mpg123dll;
 			static DynamicLoader		*wmvcoredll;
 		public:
 			static Bool			 LoadBonkDLL();
@@ -70,7 +70,7 @@ namespace freac
 			static Bool			 LoadEUpdateDLL();
 			static Bool			 LoadMP4V2DLL();
 			static Bool			 LoadFLACDLL();
-			static Bool			 LoadMADDLL();
+			static Bool			 LoadMPG123DLL();
 			static Bool			 LoadWMVCoreDLL();
 
 			static Void			 FreeBonkDLL();
@@ -85,7 +85,7 @@ namespace freac
 			static Void			 FreeEUpdateDLL();
 			static Void			 FreeMP4V2DLL();
 			static Void			 FreeFLACDLL();
-			static Void			 FreeMADDLL();
+			static Void			 FreeMPG123DLL();
 			static Void			 FreeWMVCoreDLL();
 
 #ifdef __WIN32__
@@ -586,17 +586,33 @@ namespace freac
 	extern		FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR	 ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair;
 	extern BEEXPORT FLAC__VERSION_STRING_TYPE					 ex_FLAC__VERSION_STRING;
 
-// MAD DLL API
+// mpg123 DLL API
 
-	typedef void					(*MAD_DECODER_INIT)				(mad_decoder *, void *, mad_flow (*)(void *, mad_stream *), mad_flow(*)(void *, mad_header const *), mad_flow(*)(void *, mad_stream const *, mad_frame *), mad_flow(*)(void *, mad_header const *, mad_pcm *), mad_flow(*)(void *, mad_stream *, mad_frame *), mad_flow(*)(void *, void *, unsigned int *));
-	typedef int					(*MAD_DECODER_RUN)				(mad_decoder *, mad_decoder_mode);
-	typedef int					(*MAD_DECODER_FINISH)				(mad_decoder *);
-	typedef void					(*MAD_STREAM_BUFFER)				(mad_stream *, unsigned char const *, unsigned long);
+	typedef int					(*MPG123_INIT)					();
+	typedef void					(*MPG123_EXIT)					();
 
-	extern		MAD_DECODER_INIT		 ex_mad_decoder_init;
-	extern		MAD_DECODER_RUN			 ex_mad_decoder_run;
-	extern		MAD_DECODER_FINISH		 ex_mad_decoder_finish;
-	extern		MAD_STREAM_BUFFER		 ex_mad_stream_buffer;
+	typedef mpg123_handle *				(*MPG123_NEW)					(const char *, int *);
+	typedef void					(*MPG123_DELETE)				(mpg123_handle *);
+
+	typedef int					(*MPG123_OPEN_FEED)				(mpg123_handle *);
+	typedef int					(*MPG123_DECODE)				(mpg123_handle *, const unsigned char *, size_t, unsigned char *, size_t, size_t *);
+
+	typedef int					(*MPG123_GETFORMAT)				(mpg123_handle *, long *, int *, int *);
+	typedef int					(*MPG123_INFO)					(mpg123_handle *, mpg123_frameinfo *);
+	typedef int					(*MPG123_SPF)					(mpg123_handle *);
+
+	extern		MPG123_INIT			 ex_mpg123_init;
+	extern		MPG123_EXIT			 ex_mpg123_exit;
+
+	extern		MPG123_NEW			 ex_mpg123_new;
+	extern		MPG123_DELETE			 ex_mpg123_delete;
+
+	extern		MPG123_OPEN_FEED		 ex_mpg123_open_feed;
+	extern		MPG123_DECODE			 ex_mpg123_decode;
+
+	extern		MPG123_GETFORMAT		 ex_mpg123_getformat;
+	extern		MPG123_INFO			 ex_mpg123_info;
+	extern		MPG123_SPF			 ex_mpg123_spf;
 
 // ID3Lib DLL API
 

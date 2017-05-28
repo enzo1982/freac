@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -80,7 +80,7 @@ namespace freac
 			Bool		 enable_eUpdate;
 			Bool		 enable_mp4;
 			Bool		 enable_flac;
-			Bool		 enable_mad;
+			Bool		 enable_mpg123;
 			Bool		 enable_id3;
 			Bool		 enable_wma;
 			String		 enc_outdir;

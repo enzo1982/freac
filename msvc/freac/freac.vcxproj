@@ -192,6 +192,7 @@
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
     <ClCompile Include="..\..\src\encoder.cpp" />
     <ClCompile Include="..\..\src\freac.cpp" />
+    <ClCompile Include="..\..\src\input\filter-in-mpg123.cpp" />
     <ClCompile Include="..\..\src\joblist.cpp" />
     <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="..\..\src\picture.cpp" />
@@ -237,7 +238,6 @@
     <ClCompile Include="..\..\src\input\filter-in-cdrip.cpp" />
     <ClCompile Include="..\..\src\input\filter-in-faad2.cpp" />
     <ClCompile Include="..\..\src\input\filter-in-flac.cpp" />
-    <ClCompile Include="..\..\src\input\filter-in-mad.cpp" />
     <ClCompile Include="..\..\src\input\filter-in-mp4.cpp" />
     <ClCompile Include="..\..\src\input\filter-in-voc.cpp" />
     <ClCompile Include="..\..\src\input\filter-in-vorbis.cpp" />
@@ -267,6 +267,7 @@
     <ClInclude Include="..\..\include\debug.h" />
     <ClInclude Include="..\..\include\dllinterfaces.h" />
     <ClInclude Include="..\..\include\freac.h" />
+    <ClInclude Include="..\..\include\input\filter-in-mpg123.h" />
     <ClInclude Include="..\..\include\joblist.h" />
     <ClInclude Include="..\..\include\main.h" />
     <ClInclude Include="..\..\include\picture.h" />
@@ -280,7 +281,6 @@
     <ClInclude Include="..\..\include\input\filter-in-cdrip.h" />
     <ClInclude Include="..\..\include\input\filter-in-faad2.h" />
     <ClInclude Include="..\..\include\input\filter-in-flac.h" />
-    <ClInclude Include="..\..\include\input\filter-in-mad.h" />
     <ClInclude Include="..\..\include\input\filter-in-mp4.h" />
     <ClInclude Include="..\..\include\input\filter-in-voc.h" />
     <ClInclude Include="..\..\include\input\filter-in-vorbis.h" />
@@ -331,9 +331,6 @@
     <ClInclude Include="..\..\include\cddb\cddbremote.h" />
     <ClInclude Include="..\..\include\cdinfo\cdplayerini.h" />
     <ClInclude Include="..\..\include\cdinfo\cdtext.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="VTune\freac.vpj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

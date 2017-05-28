@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -248,10 +248,18 @@ FLAC__METADATA_OBJECT_VORBISCOMMENT_APPEND_COMMENT		 ex_FLAC__metadata_object_vo
 FLAC__METADATA_OBJECT_VORBISCOMMENT_ENTRY_FROM_NAME_VALUE_PAIR	 ex_FLAC__metadata_object_vorbiscomment_entry_from_name_value_pair	= NIL;
 FLAC__VERSION_STRING_TYPE					 ex_FLAC__VERSION_STRING						= NIL;
 
-MAD_DECODER_INIT		 ex_mad_decoder_init			= NIL;
-MAD_DECODER_RUN			 ex_mad_decoder_run			= NIL;
-MAD_DECODER_FINISH		 ex_mad_decoder_finish			= NIL;
-MAD_STREAM_BUFFER		 ex_mad_stream_buffer			= NIL;
+MPG123_INIT			 ex_mpg123_init				= NIL;
+MPG123_EXIT			 ex_mpg123_exit				= NIL;
+
+MPG123_NEW			 ex_mpg123_new				= NIL;
+MPG123_DELETE			 ex_mpg123_delete			= NIL;
+
+MPG123_OPEN_FEED		 ex_mpg123_open_feed			= NIL;
+MPG123_DECODE			 ex_mpg123_decode			= NIL;
+
+MPG123_GETFORMAT		 ex_mpg123_getformat			= NIL;
+MPG123_INFO			 ex_mpg123_info				= NIL;
+MPG123_SPF			 ex_mpg123_spf				= NIL;
 
 ID3TAGNEW			 ex_ID3Tag_New				= NIL;
 ID3TAGDELETE			 ex_ID3Tag_Delete			= NIL;
@@ -298,7 +306,7 @@ DynamicLoader *freac::DLLInterfaces::id3dll	= NIL;
 DynamicLoader *freac::DLLInterfaces::eupdatedll	= NIL;
 DynamicLoader *freac::DLLInterfaces::mp4v2dll	= NIL;
 DynamicLoader *freac::DLLInterfaces::flacdll	= NIL;
-DynamicLoader *freac::DLLInterfaces::maddll	= NIL;
+DynamicLoader *freac::DLLInterfaces::mpg123dll	= NIL;
 
 #ifdef __WIN32__
 DynamicLoader *freac::DLLInterfaces::bladedll	= NIL;
@@ -1014,32 +1022,52 @@ Void freac::DLLInterfaces::FreeMP4V2DLL()
 	mp4v2dll = NIL;
 }
 
-Bool freac::DLLInterfaces::LoadMADDLL()
+Bool freac::DLLInterfaces::LoadMPG123DLL()
 {
 #ifdef __WIN32__
-	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\MAD.dll")).Exists()) return False;
+	if (!File(String(GUI::Application::GetApplicationDirectory()).Append("encoders\\mpg123.dll")).Exists()) return False;
 #endif
 
-	maddll = new DynamicLoader("encoders/MAD");
+	mpg123dll = new DynamicLoader("encoders/mpg123");
 
-	ex_mad_decoder_init		= (MAD_DECODER_INIT) maddll->GetFunctionAddress("mad_decoder_init");
-	ex_mad_decoder_run		= (MAD_DECODER_RUN) maddll->GetFunctionAddress("mad_decoder_run");
-	ex_mad_decoder_finish		= (MAD_DECODER_FINISH) maddll->GetFunctionAddress("mad_decoder_finish");
-	ex_mad_stream_buffer		= (MAD_STREAM_BUFFER) maddll->GetFunctionAddress("mad_stream_buffer");
+	ex_mpg123_init			= (MPG123_INIT) mpg123dll->GetFunctionAddress("mpg123_init");
+	ex_mpg123_exit			= (MPG123_EXIT) mpg123dll->GetFunctionAddress("mpg123_exit");
 
-	if (ex_mad_decoder_init			== NIL ||
-	    ex_mad_decoder_run			== NIL ||
-	    ex_mad_decoder_finish		== NIL ||
-	    ex_mad_stream_buffer		== NIL) { FreeMADDLL(); return False; }
+	ex_mpg123_new			= (MPG123_NEW) mpg123dll->GetFunctionAddress("mpg123_new");
+	ex_mpg123_delete		= (MPG123_DELETE) mpg123dll->GetFunctionAddress("mpg123_delete");
+
+	ex_mpg123_open_feed		= (MPG123_OPEN_FEED) mpg123dll->GetFunctionAddress("mpg123_open_feed");
+	ex_mpg123_decode		= (MPG123_DECODE) mpg123dll->GetFunctionAddress("mpg123_decode");
+
+	ex_mpg123_getformat		= (MPG123_GETFORMAT) mpg123dll->GetFunctionAddress("mpg123_getformat");
+	ex_mpg123_info			= (MPG123_INFO) mpg123dll->GetFunctionAddress("mpg123_info");
+	ex_mpg123_spf			= (MPG123_SPF) mpg123dll->GetFunctionAddress("mpg123_spf");
+
+	if (ex_mpg123_init		== NIL ||
+	    ex_mpg123_exit		== NIL ||
+
+	    ex_mpg123_new		== NIL ||
+	    ex_mpg123_delete		== NIL ||
+
+	    ex_mpg123_open_feed		== NIL ||
+	    ex_mpg123_decode		== NIL ||
+
+	    ex_mpg123_getformat		== NIL ||
+	    ex_mpg123_info		== NIL ||
+	    ex_mpg123_spf		== NIL) { FreeMPG123DLL(); return False; }
+
+	ex_mpg123_init();
 
 	return True;
 }
 
-Void freac::DLLInterfaces::FreeMADDLL()
+Void freac::DLLInterfaces::FreeMPG123DLL()
 {
-	Object::DeleteObject(maddll);
+	if (ex_mpg123_exit != NIL) ex_mpg123_exit();
 
-	maddll = NIL;
+	Object::DeleteObject(mpg123dll);
+
+	mpg123dll = NIL;
 }
 
 Bool freac::DLLInterfaces::LoadWMVCoreDLL()

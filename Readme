@@ -5,7 +5,7 @@ It supports audio CD ripping and converts the following audio formats:
 
 	- MP3
 		- using the LAME MP3 encoder			(http://lame.sourceforge.net/)
-		- using the MAD MP3 decoder			(http://www.underbit.com/)
+		- using the mpg123 decoder			(http://www.mpg123.org/)
 
 	- MP4/M4A AAC
 		- using the FAAC/FAAD2 codec			(http://www.audiocoding.com/)
@@ -97,6 +97,7 @@ History
 
 	Version 1.0.29 (May 2017)
 
+		- now using the mpg123 decoder for MP3
 		- fixed progress not being updated for long running conversions
 		- fixed handling of stray tabs in title info
 		- upgraded CDRip to version 1.26 to fix handling of drives with letter A:

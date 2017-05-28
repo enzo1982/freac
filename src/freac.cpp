@@ -123,8 +123,8 @@ freac::freac::freac()
 	if (DLLInterfaces::LoadFLACDLL() == False)	currentConfig->enable_flac = False;
 	else						currentConfig->enable_flac = True;
 
-	if (DLLInterfaces::LoadMADDLL() == False)	currentConfig->enable_mad = False;
-	else						currentConfig->enable_mad = True;
+	if (DLLInterfaces::LoadMPG123DLL() == False)	currentConfig->enable_mpg123 = False;
+	else						currentConfig->enable_mpg123 = True;
 
 	if (DLLInterfaces::LoadWMVCoreDLL() == False)	currentConfig->enable_wma = False;
 	else						currentConfig->enable_wma = True;
@@ -177,7 +177,7 @@ freac::freac::~freac()
 	if (currentConfig->enable_eUpdate)	DLLInterfaces::FreeEUpdateDLL();
 	if (currentConfig->enable_mp4)		DLLInterfaces::FreeMP4V2DLL();
 	if (currentConfig->enable_flac)		DLLInterfaces::FreeFLACDLL();
-	if (currentConfig->enable_mad)		DLLInterfaces::FreeMADDLL();
+	if (currentConfig->enable_mpg123)	DLLInterfaces::FreeMPG123DLL();
 	if (currentConfig->enable_wma)		DLLInterfaces::FreeWMVCoreDLL();
 
 #ifdef __WIN32__

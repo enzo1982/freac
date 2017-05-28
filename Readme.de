@@ -6,7 +6,7 @@ Audioformate:
 
 	- MP3
 		- mit dem LAME MP3-Encoder			(http://lame.sourceforge.net/)
-		- mit dem MAD MP3-Decoder			(http://www.underbit.com/)
+		- mit dem mpg123-Decoder			(http://www.mpg123.org/)
 
 	- MP4/M4A AAC
 		- mit dem FAAC/FAAD2-Codec			(http://www.audiocoding.com/)
@@ -98,6 +98,7 @@ Geschichte
 
 	Version 1.0.29 (May 2017)
 
+		- Zum Lesen von MP3-Dateien wird jetzt der mpg123-Decoder verwendet
 		- Problem mit Fortschrittsanzeige bei lange laufenden Konvertierungen behoben
 		- Probleme beim Umgang mit Tabulatorzeichen in Titelinformationen behoben
 		- CDRip auf Version 1.26 aktualisiert um Probleme mit Laufwerken mit dem Buchstaben A: zu beheben

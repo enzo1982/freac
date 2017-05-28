@@ -11,7 +11,7 @@ LIBDIR1 = ../smooth/lib
 RESOURCEDIR = ./resources
 BINRESDIR = $(RESOURCEDIR)/binary
 
-DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdinfo.o $(OBJECTDIR)/cdplayerini.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-faad2.o $(OBJECTDIR)/filter-in-flac.o $(OBJECTDIR)/filter-in-mad.o $(OBJECTDIR)/filter-in-mp4.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-flac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-mp4.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/freac.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/picture.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/track.o $(OBJECTDIR)/utilities.o
+DLLOBJECTS = $(OBJECTDIR)/cddb.o $(OBJECTDIR)/cddbcache.o $(OBJECTDIR)/cddbinfo.o $(OBJECTDIR)/cddblocal.o $(OBJECTDIR)/cddbremote.o $(OBJECTDIR)/cdinfo.o $(OBJECTDIR)/cdplayerini.o $(OBJECTDIR)/cdtext.o $(OBJECTDIR)/filter-in-aiff.o $(OBJECTDIR)/filter-in-au.o $(OBJECTDIR)/filter-in-bonk.o $(OBJECTDIR)/filter-in-faad2.o $(OBJECTDIR)/filter-in-flac.o $(OBJECTDIR)/filter-in-mp4.o $(OBJECTDIR)/filter-in-mpg123.o $(OBJECTDIR)/filter-in-voc.o $(OBJECTDIR)/filter-in-vorbis.o $(OBJECTDIR)/filter-in-wave.o $(OBJECTDIR)/inputfilter.o $(OBJECTDIR)/filter-out-bonk.o $(OBJECTDIR)/filter-out-faac.o $(OBJECTDIR)/filter-out-flac.o $(OBJECTDIR)/filter-out-lame.o $(OBJECTDIR)/filter-out-mp4.o $(OBJECTDIR)/filter-out-vorbis.o $(OBJECTDIR)/filter-out-wave.o $(OBJECTDIR)/outputfilter.o $(OBJECTDIR)/config.o $(OBJECTDIR)/cuesheet.o $(OBJECTDIR)/debug.o $(OBJECTDIR)/dllinterfaces.o $(OBJECTDIR)/encoder.o $(OBJECTDIR)/freac.o $(OBJECTDIR)/joblist.o $(OBJECTDIR)/picture.o $(OBJECTDIR)/playlist.o $(OBJECTDIR)/track.o $(OBJECTDIR)/utilities.o
 
 ifeq ($(BUILD_WIN32),True)
 	DLLOBJECTS += $(OBJECTDIR)/filter-in-cdrip.o $(OBJECTDIR)/filter-in-winamp.o $(OBJECTDIR)/filter-in-wma.o $(OBJECTDIR)/filter-out-blade.o $(OBJECTDIR)/filter-out-tvq.o $(OBJECTDIR)/filter-out-wma.o
@@ -395,14 +395,14 @@ $(OBJECTDIR)/filter-in-flac.o: $(SRCDIR)/input/filter-in-flac.cpp
 	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/input/filter-in-flac.cpp -o $(OBJECTDIR)/filter-in-flac.o
 	$(ECHO) done.
 
-$(OBJECTDIR)/filter-in-mad.o: $(SRCDIR)/input/filter-in-mad.cpp
-	$(ECHO) -n Compiling $(SRCDIR)/input/filter-in-mad.cpp...
-	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/input/filter-in-mad.cpp -o $(OBJECTDIR)/filter-in-mad.o
-	$(ECHO) done.
-
 $(OBJECTDIR)/filter-in-mp4.o: $(SRCDIR)/input/filter-in-mp4.cpp
 	$(ECHO) -n Compiling $(SRCDIR)/input/filter-in-mp4.cpp...
 	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/input/filter-in-mp4.cpp -o $(OBJECTDIR)/filter-in-mp4.o
+	$(ECHO) done.
+
+$(OBJECTDIR)/filter-in-mpg123.o: $(SRCDIR)/input/filter-in-mpg123.cpp
+	$(ECHO) -n Compiling $(SRCDIR)/input/filter-in-mpg123.cpp...
+	$(COMPILER) $(COMPILER_OPTS) -DBEEXPORT="__declspec (dllexport)" $(SRCDIR)/input/filter-in-mpg123.cpp -o $(OBJECTDIR)/filter-in-mpg123.o
 	$(ECHO) done.
 
 $(OBJECTDIR)/filter-in-voc.o: $(SRCDIR)/input/filter-in-voc.cpp

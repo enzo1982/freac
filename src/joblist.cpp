@@ -258,8 +258,8 @@ Void freac::JobList::AddTrackByDialog()
 	if (freac::currentConfig->enable_bonk)							fileTypes.Append("; *.bonk");
 	if (freac::currentConfig->enable_cdrip && freac::currentConfig->cdrip_numdrives >= 1)	fileTypes.Append("; *.cda");
 	if (freac::currentConfig->enable_flac)							fileTypes.Append("; *.flac");
-	if (freac::currentConfig->enable_mad)							fileTypes.Append("; *.mp1; *.mp2; *.mp3");
 	if (freac::currentConfig->enable_mp4 && freac::currentConfig->enable_faad2)		fileTypes.Append("; *.m4a; *.m4b; *.mp4");
+	if (freac::currentConfig->enable_mpg123)						fileTypes.Append("; *.mp1; *.mp2; *.mp3");
 	if (freac::currentConfig->enable_vorbis)						fileTypes.Append("; *.ogg");
 												fileTypes.Append("; *.snd; *.voc; *.wav");
 	if (freac::currentConfig->enable_wma)							fileTypes.Append("; *.wma");
@@ -272,8 +272,8 @@ Void freac::JobList::AddTrackByDialog()
 	if (freac::currentConfig->enable_bonk)							dialog->AddFilter(String(freac::i18n->TranslateString("Bonk Files")).Append(" (*.bonk)"), "*.bonk");
 												dialog->AddFilter(String(freac::i18n->TranslateString("Creative Voice Files")).Append(" (*.voc)"), "*.voc");
 	if (freac::currentConfig->enable_flac)							dialog->AddFilter(String(freac::i18n->TranslateString("FLAC Files")).Append(" (*.flac)"), "*.flac");
-	if (freac::currentConfig->enable_mad)							dialog->AddFilter(String(freac::i18n->TranslateString("MPEG Audio Files")).Append(" (*.mp1; *.mp2; *.mp3)"), "*.mp1; *.mp2; *.mp3");
 	if (freac::currentConfig->enable_mp4 && freac::currentConfig->enable_faad2)		dialog->AddFilter(String(freac::i18n->TranslateString("MP4 Files")).Append(" (*.m4a; *.m4b; *.mp4)"), "*.m4a; *.m4b; *.mp4");
+	if (freac::currentConfig->enable_mpg123)						dialog->AddFilter(String(freac::i18n->TranslateString("MPEG Audio Files")).Append(" (*.mp1; *.mp2; *.mp3)"), "*.mp1; *.mp2; *.mp3");
 	if (freac::currentConfig->enable_vorbis)						dialog->AddFilter(String(freac::i18n->TranslateString("Ogg Vorbis Files")).Append(" (*.ogg)"), "*.ogg");
 												dialog->AddFilter(String(freac::i18n->TranslateString("Sun Audio Files")).Append(" (*.au; *.snd)"), "*.au; *.snd");
 												dialog->AddFilter(String(freac::i18n->TranslateString("Wave Files")).Append(" (*.wav)"), "*.wav");

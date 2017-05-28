@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -14,8 +14,8 @@
 #include <input/filter-in-voc.h>
 #include <input/filter-in-aiff.h>
 #include <input/filter-in-au.h>
-#include <input/filter-in-mad.h>
 #include <input/filter-in-mp4.h>
+#include <input/filter-in-mpg123.h>
 #include <input/filter-in-vorbis.h>
 #include <input/filter-in-bonk.h>
 #include <input/filter-in-faad2.h>
@@ -157,9 +157,9 @@ freac::InputFilter *freac::Utilities::CreateInputFilter(const String &iFile, Tra
 
 	InputFilter	*filter_in = NIL;
 
-	if ((file.EndsWith(".mp1") || file.EndsWith(".mp2") || file.EndsWith(".mp3")) && freac::currentConfig->enable_mad)
+	if ((file.EndsWith(".mp1") || file.EndsWith(".mp2") || file.EndsWith(".mp3")) && freac::currentConfig->enable_mpg123)
 	{
-		filter_in = new FilterInMAD(freac::currentConfig, trackInfo);
+		filter_in = new FilterInMPG123(freac::currentConfig, trackInfo);
 	}
 	else if ((file.EndsWith(".mp4") || file.EndsWith(".m4a") || file.EndsWith(".m4b")) && freac::currentConfig->enable_mp4 && freac::currentConfig->enable_faad2)
 	{
