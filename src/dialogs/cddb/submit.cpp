@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -417,10 +417,10 @@ Void freac::cddbSubmitDlg::Submit()
 
 					String	 jlEntry;
 
-					if (trackInfo->artist == NIL && trackInfo->title == NIL) jlEntry = String(trackInfo->origFilename).Append("\t");
-					else							 jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : freac::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : freac::i18n->TranslateString("unknown title")).Append("\t");
+					if (trackInfo->artist == NIL && trackInfo->title == NIL) jlEntry = String(trackInfo->origFilename).Append(ListEntry::tabDelimiter);
+					else							 jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : freac::i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : freac::i18n->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
-					jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String()).Append("\t").Append(trackInfo->lengthString).Append("\t").Append(trackInfo->fileSizeString);
+					jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String()).Append(ListEntry::tabDelimiter).Append(trackInfo->lengthString).Append(ListEntry::tabDelimiter).Append(trackInfo->fileSizeString);
 
 					if (currentConfig->appMain->joblist->GetNthEntry(l)->GetText() != jlEntry) currentConfig->appMain->joblist->GetNthEntry(l)->SetText(jlEntry);
 				}
@@ -463,8 +463,8 @@ Void freac::cddbSubmitDlg::UpdateTrackList()
 {
 	for (Int i = 0; i < list_tracks->Length(); i++)
 	{
-		if (edit_artist->GetText() == freac::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append("\t").Append(artists.GetNth(i).Length() > 0 ? artists.GetNth(i) : freac::i18n->TranslateString("unknown artist")).Append(" - ").Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : freac::i18n->TranslateString("unknown title")));
-		else														      list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append("\t").Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : freac::i18n->TranslateString("unknown title")));
+		if (edit_artist->GetText() == freac::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(ListEntry::tabDelimiter).Append(artists.GetNth(i).Length() > 0 ? artists.GetNth(i) : freac::i18n->TranslateString("unknown artist")).Append(" - ").Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : freac::i18n->TranslateString("unknown title")));
+		else														      list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(ListEntry::tabDelimiter).Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : freac::i18n->TranslateString("unknown title")));
 	}
 }
 
@@ -849,8 +849,8 @@ Void freac::cddbSubmitDlg::UpdateTrack()
 
 	Int	 track = edit_track->GetText().ToInt();
 
-	if (edit_artist->GetText() == freac::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : NIL).Append(String::FromInt(track)).Append("\t").Append(edit_trackartist->GetText() == NIL ? freac::i18n->TranslateString("unknown artist") : edit_trackartist->GetText()).Append(" - ").Append(edit_title->GetText() == NIL ? freac::i18n->TranslateString("unknown title") : edit_title->GetText()));
-	else														      list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : NIL).Append(String::FromInt(track)).Append("\t").Append(edit_title->GetText() == NIL ? freac::i18n->TranslateString("unknown title") : edit_title->GetText()));
+	if (edit_artist->GetText() == freac::i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : NIL).Append(String::FromInt(track)).Append(ListEntry::tabDelimiter).Append(edit_trackartist->GetText() == NIL ? freac::i18n->TranslateString("unknown artist") : edit_trackartist->GetText()).Append(" - ").Append(edit_title->GetText() == NIL ? freac::i18n->TranslateString("unknown title") : edit_title->GetText()));
+	else														      list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : NIL).Append(String::FromInt(track)).Append(ListEntry::tabDelimiter).Append(edit_title->GetText() == NIL ? freac::i18n->TranslateString("unknown title") : edit_title->GetText()));
 
 	artists.Set(list_tracks->GetSelectedEntry()->GetHandle(), edit_trackartist->GetText());
 	titles.Set(list_tracks->GetSelectedEntry()->GetHandle(), edit_title->GetText());

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -73,7 +73,7 @@ freac::cddbManageDlg::cddbManageDlg()
 	{
 		const CDDBInfo	&entry = currentConfig->cddbCache->GetNthEntry(i);
 
-		list_entries->AddEntry(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\t").Append(entry.charset));
+		list_entries->AddEntry(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append(ListEntry::tabDelimiter).Append(entry.charset));
 	}
 
 	pos.x += 269;
@@ -208,10 +208,10 @@ Void freac::cddbManageDlg::OK()
 
 						String	 jlEntry;
 
-						if (trackInfo->artist == NIL && trackInfo->title == NIL)	jlEntry = String(trackInfo->origFilename).Append("\t");
-						else								jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : currentConfig->appMain->i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : currentConfig->appMain->i18n->TranslateString("unknown title")).Append("\t");
+						if (trackInfo->artist == NIL && trackInfo->title == NIL)	jlEntry = String(trackInfo->origFilename).Append(ListEntry::tabDelimiter);
+						else								jlEntry = String(trackInfo->artist.Length() > 0 ? trackInfo->artist : currentConfig->appMain->i18n->TranslateString("unknown artist")).Append(" - ").Append(trackInfo->title.Length() > 0 ? trackInfo->title : currentConfig->appMain->i18n->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
-						jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String()).Append("\t").Append(trackInfo->lengthString).Append("\t").Append(trackInfo->fileSizeString);
+						jlEntry.Append(trackInfo->track > 0 ? (trackInfo->track < 10 ? String("0").Append(String::FromInt(trackInfo->track)) : String::FromInt(trackInfo->track)) : String()).Append(ListEntry::tabDelimiter).Append(trackInfo->lengthString).Append(ListEntry::tabDelimiter).Append(trackInfo->fileSizeString);
 
 						if (currentConfig->appMain->joblist->GetNthEntry(l)->GetText() != jlEntry) currentConfig->appMain->joblist->GetNthEntry(l)->SetText(jlEntry);
 					}
@@ -312,7 +312,7 @@ Void freac::cddbManageDlg::SaveEntry()
 
 	entry.charset = edit_charset->GetText();
 
-	list_entries->GetSelectedEntry()->SetText(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append("\t").Append(entry.charset));
+	list_entries->GetSelectedEntry()->SetText(String(entry.dArtist).Append(" - ").Append(entry.dTitle).Append(ListEntry::tabDelimiter).Append(entry.charset));
 
 	// Save modified entry back to cache (necessary to make changes persistant)
 	currentConfig->cddbCache->AddCacheEntry(entry);

@@ -99,6 +99,7 @@ Geschichte
 	Version 1.0.29 (May 2017)
 
 		- Problem mit Fortschrittsanzeige bei lange laufenden Konvertierungen behoben
+		- Probleme beim Umgang mit Tabulatorzeichen in Titelinformationen behoben
 		- CDRip auf Version 1.26 aktualisiert um Probleme mit Laufwerken mit dem Buchstaben A: zu beheben
 
 	Version 1.0.28 (Februar 2017)

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -1072,10 +1072,10 @@ Void freac::freacGUI::QueryCDDB()
 
 					String	 jlEntry;
 
-					if (format->artist == NIL && format->title == NIL)	jlEntry = String(format->origFilename).Append("\t");
-					else							jlEntry = String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\t");
+					if (format->artist == NIL && format->title == NIL)	jlEntry = String(format->origFilename).Append(ListEntry::tabDelimiter);
+					else							jlEntry = String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
-					jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String()).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
+					jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String()).Append(ListEntry::tabDelimiter).Append(format->lengthString).Append(ListEntry::tabDelimiter).Append(format->fileSizeString);
 
 					joblist->GetNthEntry(k)->SetText(jlEntry);
 				}
@@ -2007,10 +2007,10 @@ Void freac::freacGUI::UseStringForSelectedTracks()
 
 			String		 jlEntry;
 
-			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
+			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append(ListEntry::tabDelimiter);
+			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
-			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append(ListEntry::tabDelimiter).Append(track->lengthString).Append(ListEntry::tabDelimiter).Append(track->fileSizeString);
 
 			if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 		}
@@ -2043,10 +2043,10 @@ Void freac::freacGUI::InterpretStringAs()
 
 	String		 jlEntry;
 
-	if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-	else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
+	if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append(ListEntry::tabDelimiter);
+	else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
-	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append(ListEntry::tabDelimiter).Append(track->lengthString).Append(ListEntry::tabDelimiter).Append(track->fileSizeString);
 
 	if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 
@@ -2083,10 +2083,10 @@ Void freac::freacGUI::InterpretStringAsAll()
 
 			String		 jlEntry;
 
-			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
+			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append(ListEntry::tabDelimiter);
+			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
-			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append(ListEntry::tabDelimiter).Append(track->lengthString).Append(ListEntry::tabDelimiter).Append(track->fileSizeString);
 
 			if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 		}
@@ -2121,10 +2121,10 @@ Void freac::freacGUI::AdjustStringCase()
 
 	String		 jlEntry;
 
-	if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-	else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
+	if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append(ListEntry::tabDelimiter);
+	else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
-	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+	jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append(ListEntry::tabDelimiter).Append(track->lengthString).Append(ListEntry::tabDelimiter).Append(track->fileSizeString);
 
 	if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 
@@ -2161,10 +2161,10 @@ Void freac::freacGUI::AdjustStringCaseAll()
 
 			String		 jlEntry;
 
-			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append("\t");
-			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append("\t");
+			if (track->artist == NIL && track->title == NIL)	jlEntry = String(track->origFilename).Append(ListEntry::tabDelimiter);
+			else							jlEntry = String(track->artist.Length() > 0 ? track->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(track->title.Length() > 0 ? track->title : i18n->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
-			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append("\t").Append(track->lengthString).Append("\t").Append(track->fileSizeString);
+			jlEntry.Append(track->track > 0 ? (track->track < 10 ? String("0").Append(String::FromInt(track->track)) : String::FromInt(track->track)) : String()).Append(ListEntry::tabDelimiter).Append(track->lengthString).Append(ListEntry::tabDelimiter).Append(track->fileSizeString);
 
 			if (entry->GetText() != jlEntry) entry->SetText(jlEntry);
 		}
@@ -2250,10 +2250,10 @@ Void freac::freacGUI::UpdateTitleInfo()
 
 	String	 jlEntry;
 
-	if (format->artist == NIL && format->title == NIL)	jlEntry = String(format->origFilename).Append("\t");
-	else							jlEntry = String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append("\t");
+	if (format->artist == NIL && format->title == NIL)	jlEntry = String(format->origFilename).Append(ListEntry::tabDelimiter);
+	else							jlEntry = String(format->artist.Length() > 0 ? format->artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(format->title.Length() > 0 ? format->title : i18n->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
-	jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String()).Append("\t").Append(format->lengthString).Append("\t").Append(format->fileSizeString);
+	jlEntry.Append(format->track > 0 ? (format->track < 10 ? String("0").Append(String::FromInt(format->track)) : String::FromInt(format->track)) : String()).Append(ListEntry::tabDelimiter).Append(format->lengthString).Append(ListEntry::tabDelimiter).Append(format->fileSizeString);
 
 	if (joblist->GetSelectedEntry()->GetText() != jlEntry) joblist->GetSelectedEntry()->SetText(jlEntry);
 }
