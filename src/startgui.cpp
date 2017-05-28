@@ -1316,7 +1316,7 @@ Void freac::freacGUI::Convert()
 
 	/* Detect accidental double clicks.
 	 */
-	static Int64	 previousTicks = 0;
+	static UnsignedInt64	 previousTicks = 0;
 
 	if (S::System::System::Clock() - previousTicks < 250) return;
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -291,7 +291,7 @@ Int freac::Job::SetProgress(Int nValue)
 	progress->SetValue(nValue);
 	progressValue->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(Float(nValue) / 10.0))));
 
-	Int	 totalTicks  = S::System::System::Clock() - startTicks;
+	Int64	 totalTicks  = S::System::System::Clock() - startTicks;
 	Int	 secondsLeft = (Int) (totalTicks * ((1000.0 - nValue) / nValue)) / 1000 + (nValue < 1000 ? 1 : 0);
 
 	if (secondsLeft < previousSecondsLeft || secondsLeft >= previousSecondsLeft + 2)
