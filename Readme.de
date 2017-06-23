@@ -87,7 +87,7 @@ Voraussetzungen
 
 		Alle Systeme:
 
-			- smooth v0.8.72.0 CVS (http://www.smooth-project.org/)
+			- smooth v0.8.73.0 CVS (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -138,7 +138,7 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.1 CVS (März 2017)
+	Version 1.1 CVS (Juli 2017)
 
 		- Projekt umbenannt in fre:ac - free audio converter
 		- Auf Linux, macOS, Solaris, FreeBSD, OpenBSD und NetBSD portiert
@@ -192,6 +192,7 @@ Geschichte
 		- Platzhalter <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
 		- Platzhalter <filetype> hinzugefügt
 		- Platzhalter <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
+		- CDDB-Abfrage auch dann ermöglicht, wenn kein CD-Laufwerk vorhanden ist
 		- Vorschau zum CDDB-Trefferauswahldialog hinzugefügt
 		- Option für automatische Auswahl des ersten CDDB-Treffers hinzugefügt
 		- Unterstützung für CDDB-Abfrage per HTTP GET hinzugefügt

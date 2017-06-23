@@ -188,6 +188,8 @@ Void freac::ConfigDialog::AddLayers()
 
 	Registry	&boca = Registry::Get();
 
+	/* Add encoder configuration layer.
+	 */
 	layers.Add(new ConfigureEncoders());
 	createdLayers.Add(layers.GetLast());
 	entries.Add(new ConfigEntry(i18n->TranslateString("Encoders"), layers.GetLast()));
@@ -199,12 +201,16 @@ Void freac::ConfigDialog::AddLayers()
 	 */
 	((ConfigureEncoders *) layers.GetLast())->onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
 
+	/* Add verification configuration layer.
+	 */
 	layers.Add(new ConfigureVerification());
 	createdLayers.Add(layers.GetLast());
 	entries.Add(new ConfigEntry(i18n->TranslateString("Verification"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_freac->Add(entries.GetLast());
 
+	/* Add resources configuration layer.
+	 */
 #ifndef __WIN32__
 	if (CPU().GetNumLogicalCPUs() > 1)
 	{
@@ -218,8 +224,28 @@ Void freac::ConfigDialog::AddLayers()
 	}
 #endif
 
+	/* Add interface configuration layers.
+	 */
+	if (i18n->GetNOfLanguages() > 1)
+	{
+		layers.Add(new ConfigureLanguage());
+		createdLayers.Add(layers.GetLast());
+		entries.Add(new ConfigEntry(i18n->TranslateString("Language"), layers.GetLast()));
+		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+		tree_interface->Add(entries.GetLast());
+	}
+
+	layers.Add(new ConfigureInterface());
+	createdLayers.Add(layers.GetLast());
+	entries.Add(new ConfigEntry(i18n->TranslateString("Joblist"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_interface->Add(entries.GetLast());
+
+	tree_freac->Add(tree_interface);
 	Component	*component = NIL;
 
+	/* Add ripper and CDDB configuration layers.
+	 */
 	if (component == NIL) component = boca.CreateComponentByID("cdio-dec");
 	if (component == NIL) component = boca.CreateComponentByID("cdparanoia-dec");
 	if (component == NIL) component = boca.CreateComponentByID("cdrip-dec");
@@ -243,33 +269,18 @@ Void freac::ConfigDialog::AddLayers()
 		{
 			boca.DeleteComponent(component);
 		}
-
-		layers.Add(new ConfigureCDDB());
-		createdLayers.Add(layers.GetLast());
-		entries.Add(new ConfigEntry(i18n->TranslateString("CDDB"), layers.GetLast()));
-		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-		tree_ripper->Add(entries.GetLast());
-
-		tree_freac->Add(tree_ripper);
 	}
 
-	if (i18n->GetNOfLanguages() > 1)
-	{
-		layers.Add(new ConfigureLanguage());
-		createdLayers.Add(layers.GetLast());
-		entries.Add(new ConfigEntry(i18n->TranslateString("Language"), layers.GetLast()));
-		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-		tree_interface->Add(entries.GetLast());
-	}
-
-	layers.Add(new ConfigureInterface());
+	layers.Add(new ConfigureCDDB());
 	createdLayers.Add(layers.GetLast());
-	entries.Add(new ConfigEntry(i18n->TranslateString("Joblist"), layers.GetLast()));
+	entries.Add(new ConfigEntry(i18n->TranslateString("CDDB"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-	tree_interface->Add(entries.GetLast());
+	tree_ripper->Add(entries.GetLast());
 
-	tree_freac->Add(tree_interface);
+	tree_freac->Add(tree_ripper);
 
+	/* Add playlist configuration layer.
+	 */
 	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 0)
 	{
 		layers.Add(new ConfigurePlaylists());
@@ -284,12 +295,16 @@ Void freac::ConfigDialog::AddLayers()
 		((ConfigurePlaylists *) layers.GetLast())->onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
 	}
 
+	/* Add tags configuration layer.
+	 */
 	layers.Add(new ConfigureTags());
 	createdLayers.Add(layers.GetLast());
 	entries.Add(new ConfigEntry(i18n->TranslateString("Tags"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_freac->Add(entries.GetLast());
 
+	/* Add component configuration layers.
+	 */
 	i18n->SetContext("Configuration");
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)

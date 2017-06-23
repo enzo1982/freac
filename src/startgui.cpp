@@ -1039,27 +1039,33 @@ Void freac::freacGUI::FillMenus()
 	entry->onAction.Connect(&freacGUI::QueryCDDB, this);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyQ, mainWnd);
 
-	entry = menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Submit CDDB data")), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:27")));
-	entry->onAction.Connect(&freacGUI::SubmitCDDBData, this);
-	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyS, mainWnd);
+	if (menu_drives->GetNOfEntries() >= 1)
+	{
+		entry = menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Submit CDDB data")), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:27")));
+		entry->onAction.Connect(&freacGUI::SubmitCDDBData, this);
+		entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyS, mainWnd);
 
-	menu_database->AddEntry();
+		menu_database->AddEntry();
 
-	menu_database->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&freacGUI::QueryCDDBLater, this);
+		menu_database->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&freacGUI::QueryCDDBLater, this);
 
-	menu_database->AddEntry();
+		menu_database->AddEntry();
 
-	menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show queued CDDB entries")))->onAction.Connect(&freacGUI::ManageCDDBBatchData, this);
-	menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show queued CDDB queries")))->onAction.Connect(&freacGUI::ManageCDDBBatchQueries, this);
+		menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show queued CDDB entries")))->onAction.Connect(&freacGUI::ManageCDDBBatchData, this);
+		menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show queued CDDB queries")))->onAction.Connect(&freacGUI::ManageCDDBBatchQueries, this);
+	}
 
 	menu_database->AddEntry();
 
 	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault));
 	menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Manage CDDB cache entries")))->onAction.Connect(&freacGUI::ManageCDDBData, this);
 
-	menu_database->AddEntry();
+	if (menu_drives->GetNOfEntries() >= 1)
+	{
+		menu_database->AddEntry();
 
-	menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault));
+		menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault));
+	}
 
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:26")))->onAction.Connect(&freacGUI::QueryCDDB, this);
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&freacGUI::QueryCDDBLater, this);
@@ -1195,9 +1201,7 @@ Void freac::freacGUI::FillMenus()
 	mainWnd_menubar->RemoveAllEntries();
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
-
-	if (menu_drives->GetNOfEntries() >= 1) mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
-
+	mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
 
@@ -1228,14 +1232,14 @@ Void freac::freacGUI::FillMenus()
 	entry->onAction.Connect(&JobList::StartJobRemoveAllTracks, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Clear the entire joblist"));
 
+	mainWnd_iconbar->AddEntry();
+
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:5")), menu_drives->GetNOfEntries() >= 1 ? menu_database_query : NIL);
+	entry->onAction.Connect(&freacGUI::QueryCDDB, this);
+	entry->SetTooltipText(i18n->TranslateString("Query CDDB database"));
+
 	if (menu_drives->GetNOfEntries() >= 1)
 	{
-		mainWnd_iconbar->AddEntry();
-
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:5")), menu_database_query);
-		entry->onAction.Connect(&freacGUI::QueryCDDB, this);
-		entry->SetTooltipText(i18n->TranslateString("Query CDDB database"));
-
 		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:6")));
 		entry->onAction.Connect(&freacGUI::SubmitCDDBData, this);
 		entry->SetTooltipText(i18n->AddEllipsis(i18n->TranslateString("Submit CDDB data")));
