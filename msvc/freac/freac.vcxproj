@@ -171,6 +171,7 @@
     <ClCompile Include="..\..\src\dialogs\error.cpp" />
     <ClCompile Include="..\..\src\dialogs\overwrite.cpp" />
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
+    <ClCompile Include="..\..\src\engine\processor.cpp" />
     <ClCompile Include="..\..\src\engine\verifier.cpp" />
     <ClCompile Include="..\..\src\engine\worker.cpp" />
     <ClCompile Include="..\..\src\engine\worker_singlefile.cpp" />
@@ -269,6 +270,7 @@
     <ClInclude Include="..\..\include\dialogs\error.h" />
     <ClInclude Include="..\..\include\dialogs\overwrite.h" />
     <ClInclude Include="..\..\include\dllinterfaces.h" />
+    <ClInclude Include="..\..\include\engine\processor.h" />
     <ClInclude Include="..\..\include\engine\verifier.h" />
     <ClInclude Include="..\..\include\engine\worker.h" />
     <ClInclude Include="..\..\include\engine\worker_singlefile.h" />

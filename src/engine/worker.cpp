@@ -14,6 +14,7 @@
 
 #include <engine/decoder.h>
 #include <engine/encoder.h>
+#include <engine/processor.h>
 #include <engine/verifier.h>
 
 #include <config.h>
@@ -236,6 +237,18 @@ Int freac::ConvertWorker::Convert()
 
 		decoderName = decoder->GetDecoderName();
 
+		/* Create processor.
+		 */
+		Processor	*processor = new Processor(configuration);
+
+		if (!processor->Create(trackToConvert))
+		{
+			delete decoder;
+			delete processor;
+
+			return Error();
+		}
+
 		/* Create encoder.
 		 */
 		Encoder	*encoder = new Encoder(encoderConfig);
@@ -244,6 +257,7 @@ Int freac::ConvertWorker::Convert()
 		{
 			delete decoder;
 			delete encoder;
+			delete processor;
 
 			File(out_filename).Delete();
 
@@ -292,7 +306,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Run main conversion loop.
 		 */
-		Int64	 trackLength = Loop(decoder, verifier, encoder);
+		Int64	 trackLength = Loop(decoder, processor, verifier, encoder);
 
 		/* Verify input.
 		 */
@@ -343,10 +357,11 @@ Int freac::ConvertWorker::Convert()
 				break;
 		}
 
-		/* Free encoder, decoder and verifier.
+		/* Free encoder, decoder, processor and verifier.
 		 */
 		delete encoder;
 		delete decoder;
+		delete processor;
 		delete verifier;
 
 		BoCA::Config::Free(encoderConfig);
@@ -410,7 +425,7 @@ Int freac::ConvertWorker::Convert()
 	return Success();
 }
 
-Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Encoder *encoder)
+Int64 freac::ConvertWorker::Loop(Decoder *decoder, Processor *processor, Verifier *verifier, Encoder *encoder)
 {
 	/* Get config values.
 	 */

@@ -10,30 +10,35 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef H_FREAC_CONVERT_WORKER_SINGLE_FILE
-#define H_FREAC_CONVERT_WORKER_SINGLE_FILE
+#ifndef H_FREAC_PROCESSOR
+#define H_FREAC_PROCESSOR
 
-#include "worker.h"
+#include <smooth.h>
+#include <boca.h>
+
+using namespace smooth;
 
 namespace freac
 {
-	class ConvertWorkerSingleFile : public ConvertWorker
+	class Processor
 	{
-		private:
-			Encoder		*encoder;
-			Processor	*processor;
+		protected:
+			const BoCA::Config			*configuration;
 
-			Int64		 encodedSamples;
-			String		 encodeChecksum;
+			BoCA::Format				 format;
 
-			Int		 Convert();
+			Array<BoCA::AS::DSPComponent *, Void *>	 dsps;
 		public:
-					 ConvertWorkerSingleFile(const BoCA::Config *, Encoder *);
-					~ConvertWorkerSingleFile();
-		accessors:
-			Void		 SetEncodeChecksum(const String &nEncodeChecksum)  { encodeChecksum = nEncodeChecksum; }
+								 Processor(const BoCA::Config *);
+			virtual					~Processor();
 
-			Void		 SetConversionStep(ConversionStep nConversionStep) { conversionStep = nConversionStep; }
+			Bool					 Create(const BoCA::Track &);
+			Bool					 Destroy();
+
+			const BoCA::Format			&GetFormatInfo() const;
+
+			Int					 Transform(Buffer<UnsignedByte> &);
+			Int					 Finish(Buffer<UnsignedByte> &);
 	};
 };
 

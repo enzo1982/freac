@@ -14,6 +14,7 @@
 
 #include <engine/decoder.h>
 #include <engine/encoder.h>
+#include <engine/processor.h>
 #include <engine/verifier.h>
 
 #include <config.h>
@@ -136,7 +137,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Run main conversion loop.
 	 */
-	Int64	 trackLength = Loop(decoder, verifier, encoder);
+	Int64	 trackLength = Loop(decoder, NIL, verifier, encoder);
 
 	/* Verify input.
 	 */
