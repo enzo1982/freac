@@ -30,6 +30,7 @@ namespace freac
 			static const String	 CategoryTagsID;
 			static const String	 CategoryFreedbID;
 			static const String	 CategoryVerificationID;
+			static const String	 CategoryProcessingID;
 
 			/* Category Settings
 			 */
@@ -148,6 +149,11 @@ namespace freac
 			static const String	 SettingsLastSelectedSaveDirID;
 
 			static const String	 SettingsLastSelectedJoblistDirID;
+
+			/* Category Processing
+			 */
+			static const String	 ProcessingComponentsID;
+			static const String	 ProcessingComponentsDefault;
 
 			/* Category Verification
 			 */

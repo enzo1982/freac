@@ -29,6 +29,7 @@ const String	 freac::Config::CategoryPlaylistID				= "Playlist";
 const String	 freac::Config::CategoryTagsID					= "Tags";
 const String	 freac::Config::CategoryFreedbID				= "freedb";
 const String	 freac::Config::CategoryVerificationID				= "Verification";
+const String	 freac::Config::CategoryProcessingID				= "Processing";
 
 /* Category Settings
  */
@@ -158,6 +159,11 @@ const String	 freac::Config::SettingsLastSelectedOpenDirID			= "LastSelectedOpen
 const String	 freac::Config::SettingsLastSelectedSaveDirID			= "LastSelectedSaveDir";
 
 const String	 freac::Config::SettingsLastSelectedJoblistDirID		= "LastSelectedJoblistDir";
+
+/* Category Processing
+ */
+const String	 freac::Config::ProcessingComponentsID				= "ProcessingComponents";
+const String	 freac::Config::ProcessingComponentsDefault			= NIL;
 
 /* Category Verification
  */
