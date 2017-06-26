@@ -107,6 +107,8 @@ Int freac::Playback::PlayThread()
 
 	if (output == NIL)
 	{
+		BoCA::Config::Free(config);
+
 		playing = false;
 
 		return Error();
@@ -118,6 +120,8 @@ Int freac::Playback::PlayThread()
 	if (!output->Activate())
 	{
 		boca.DeleteComponent(output);
+
+		BoCA::Config::Free(config);
 
 		playing = False;
 
@@ -135,6 +139,8 @@ Int freac::Playback::PlayThread()
 		boca.DeleteComponent(output);
 
 		delete decoder;
+
+		BoCA::Config::Free(config);
 
 		playing = False;
 
