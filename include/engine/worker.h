@@ -32,6 +32,8 @@ namespace freac
 
 			String						 logName;
 
+			Int						 numThreads;
+
 			BoCA::Track					 trackToConvert;
 			UnsignedInt64					 trackStartTicks;
 			Int64						 trackPosition;
@@ -64,6 +66,8 @@ namespace freac
 			Bool						 IsError() const				{ return error; }
 
 			Void						 SetLogName(const String &nLogName)		{ logName = nLogName; }
+
+			Void						 SetNumberOfThreads(Int nNumThreads)		{ numThreads = nNumThreads; }
 
 			const BoCA::Track				&GetTrackToConvert() const			{ return trackToConvert; }
 			Void						 SetTrackToConvert(const BoCA::Track &);

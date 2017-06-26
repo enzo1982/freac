@@ -289,8 +289,6 @@ Error freac::JobConvert::Perform()
 	if	(!enableParallel)      numberOfThreads = 1;
 	else if (numberOfThreads <= 1) numberOfThreads = CPU().GetNumCores() + (CPU().GetNumLogicalCPUs() - CPU().GetNumCores()) / 2;
 
-	numberOfThreads = Math::Min(numberOfThreads, tracks.Length());
-
 	/* Setup playlist and cuesheet track lists.
 	 */
 	Array<Track>	 tracksToConvert = tracks;
@@ -394,9 +392,10 @@ Error freac::JobConvert::Perform()
 	/* Instantiate and start worker threads.
 	 */
 	Array<ConvertWorker *, Void *>	 workers;
+	Int				 numberOfWorkers = Math::Min(numberOfThreads, tracks.Length());
 
 	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, singleFileEncoder));
-	else			for (Int i = 0; i < numberOfThreads; i++) workers.Add(new ConvertWorker(configuration));
+	else			for (Int i = 0; i < numberOfWorkers; i++) workers.Add(new ConvertWorker(configuration));
 
 	foreach (ConvertWorker *worker, workers)
 	{
@@ -799,6 +798,10 @@ Error freac::JobConvert::Perform()
 					Object::DeleteObject(confirmation);
 				}
 			}
+
+			/* Set maximum number of threads to use by encoder.
+			 */
+			if (!encodeToSingleFile) workerToUse->SetNumberOfThreads(Math::Max(1, numberOfThreads / numberOfWorkers));
 
 			/* Assign track and add worker to end of queue.
 			 */

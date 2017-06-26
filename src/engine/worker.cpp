@@ -28,6 +28,8 @@ freac::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration)
 
 	logName		= "Converter log";
 
+	numThreads	= 0;
+
 	trackToConvert	= NIL;
 	trackStartTicks	= 0;
 	trackPosition	= 0;
@@ -160,6 +162,11 @@ Int freac::ConvertWorker::Convert()
 			in_filename = out_filename;
 			in_filename.Append(".wav");
 		}
+
+		/* Set number of threads to requested value.
+		 */
+		if	(numThreads == 1) encoderConfig->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, False);
+		else if (numThreads >= 2) encoderConfig->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, numThreads);
 
 		/* Setup input file name in verification step.
 		 */
