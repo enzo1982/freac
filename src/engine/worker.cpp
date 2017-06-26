@@ -178,6 +178,8 @@ Int freac::ConvertWorker::Convert()
 
 				onFinishTrack.Emit(trackToConvert, False);
 
+				BoCA::Config::Free(encoderConfig);
+
 				break;
 			}
 		}
@@ -213,6 +215,8 @@ Int freac::ConvertWorker::Convert()
 
 					onFinishTrack.Emit(trackToConvert, False);
 
+					BoCA::Config::Free(encoderConfig);
+
 					break;
 				}
 
@@ -232,6 +236,8 @@ Int freac::ConvertWorker::Convert()
 		{
 			delete decoder;
 
+			BoCA::Config::Free(encoderConfig);
+
 			return Error();
 		}
 
@@ -245,6 +251,8 @@ Int freac::ConvertWorker::Convert()
 		{
 			delete decoder;
 			delete processor;
+
+			BoCA::Config::Free(encoderConfig);
 
 			return Error();
 		}
@@ -260,6 +268,8 @@ Int freac::ConvertWorker::Convert()
 			delete processor;
 
 			File(out_filename).Delete();
+
+			BoCA::Config::Free(encoderConfig);
 
 			return Error();
 		}
