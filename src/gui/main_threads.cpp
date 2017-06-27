@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -22,20 +22,14 @@ using namespace BoCA::AS;
 
 freac::LayerThreads::LayerThreads() : Layer("Jobs")
 {
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
-
-	i18n->SetContext("Jobs");
-
-	SetText(i18n->TranslateString("Jobs"));
-
-	text_progress	= new Text(i18n->AddColon(i18n->TranslateString("Progress")), Point(7, 11));
+	text_progress	= new Text(NIL, Point(7, 11));
 
 	list_threads	= new ListBox(Point(7, 35), Size(500, 360));
 	list_threads->onSelectEntry.Connect(&LayerThreads::OnSelectJob, this);
 	list_threads->SetFlags(LF_ALLOWRESELECT);
 	list_threads->EnableLocking();
 
-	text_errors	= new Text(i18n->AddColon(i18n->TranslateString("Errors / Warnings")), Point(7, 25));
+	text_errors	= new Text(NIL, Point(7, 25));
 	text_errors->SetOrientation(OR_LOWERLEFT);
 
 	edit_errors	= new EditBox(NIL, Point(text_errors->GetUnscaledTextWidth() + 14, 28), Size(25, 0));
@@ -45,7 +39,7 @@ freac::LayerThreads::LayerThreads() : Layer("Jobs")
 	combo_errors	= new ComboBox(Point(text_errors->GetUnscaledTextWidth() + 47, 28), Size(250, 0));
 	combo_errors->SetOrientation(OR_LOWERLEFT);
 
-	button_details	= new Button(i18n->TranslateString("Details"), NIL, Point(87, 29), Size(80, 0));
+	button_details	= new Button(NIL, NIL, Point(87, 29), Size(80, 0));
 	button_details->onAction.Connect(&LayerThreads::ShowDetails, this);
 	button_details->SetOrientation(OR_LOWERRIGHT);
 
@@ -59,6 +53,8 @@ freac::LayerThreads::LayerThreads() : Layer("Jobs")
 
 	OnChangeJobs();
 
+	/* Connect slots.
+	 */
 	BoCA::Settings::Get()->onChangeLanguageSettings.Connect(&LayerThreads::OnChangeLanguageSettings, this);
 
 	onChangeSize.Connect(&LayerThreads::OnChangeSize, this);
@@ -68,10 +64,14 @@ freac::LayerThreads::LayerThreads() : Layer("Jobs")
 
 freac::LayerThreads::~LayerThreads()
 {
+	/* Disconnect slots.
+	 */
 	Job::onChange.Disconnect(&LayerThreads::OnChangeJobs, this);
 
 	BoCA::Settings::Get()->onChangeLanguageSettings.Disconnect(&LayerThreads::OnChangeLanguageSettings, this);
 
+	/* Delete widgets.
+	 */
 	DeleteObject(text_progress);
 	DeleteObject(list_threads);
 

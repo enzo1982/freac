@@ -31,11 +31,6 @@ using namespace BoCA::AS;
 freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 {
 	BoCA::Config	*config = BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
-
-	i18n->SetContext("Joblist");
-
-	SetText(i18n->TranslateString("Joblist"));
 
 	dontUpdateInfo		= False;
 
@@ -350,7 +345,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	edb_filename->SetOrientation(OR_LOWERLEFT);
 	edb_filename->Deactivate();
 
-	btn_skip = new Button(i18n->TranslateString("Skip"), NIL, Point(87, 100), Size(0, 0));
+	btn_skip = new Button(NIL, NIL, Point(87, 100), Size(0, 0));
 	btn_skip->SetOrientation(OR_LOWERRIGHT);
 	btn_skip->onAction.Connect(&onRequestSkipTrack);
 	btn_skip->Deactivate();
@@ -379,11 +374,11 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	UpdateOutputDir();
 
-	btn_open = new Button(i18n->TranslateString("Open"), NIL, Point(173, 28), Size(0, 0));
+	btn_open = new Button(NIL, NIL, Point(173, 28), Size(0, 0));
 	btn_open->SetOrientation(OR_LOWERRIGHT);
 	btn_open->onAction.Connect(&LayerJoblist::OnOpenFolder, this);
 
-	btn_browse = new Button(i18n->TranslateString("Browse"), NIL, Point(87, 28), Size(0, 0));
+	btn_browse = new Button(NIL, NIL, Point(87, 28), Size(0, 0));
 	btn_browse->SetOrientation(OR_LOWERRIGHT);
 	btn_browse->onAction.Connect(&LayerJoblist::OnBrowseForFolder, this);
 
@@ -395,14 +390,14 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	progress_total->SetOrientation(OR_LOWERLEFT);
 	progress_total->Deactivate();
 
-	edb_trackPercent = new EditBox(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"), Point(0, 51), Size(33, 0), 4);
+	edb_trackPercent = new EditBox(NIL, Point(0, 51), Size(33, 0), 4);
 	edb_trackPercent->SetOrientation(OR_LOWERLEFT);
 	edb_trackPercent->Deactivate();
 
 	txt_splitPercent		= new Text("/", Point(0, 48));
 	txt_splitPercent->SetOrientation(OR_LOWERLEFT);
 
-	edb_totalPercent = new EditBox(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"), Point(0, 51), Size(33, 0), 4);
+	edb_totalPercent = new EditBox(NIL, Point(0, 51), Size(33, 0), 4);
 	edb_totalPercent->SetOrientation(OR_LOWERLEFT);
 	edb_totalPercent->Deactivate();
 
@@ -511,6 +506,8 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 		info_edit_genre->Hide();
 	}
 
+	/* Connect slots.
+	 */
 	BoCA::Settings::Get()->onChangeConfigurationSettings.Connect(&LayerJoblist::OnChangeConfigurationSettings, this);
 	BoCA::Settings::Get()->onChangeLanguageSettings.Connect(&LayerJoblist::OnChangeLanguageSettings, this);
 
@@ -525,6 +522,8 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 freac::LayerJoblist::~LayerJoblist()
 {
+	/* Disconnect slots.
+	 */
 	BoCA::Settings::Get()->onChangeConfigurationSettings.Disconnect(&LayerJoblist::OnChangeConfigurationSettings, this);
 	BoCA::Settings::Get()->onChangeLanguageSettings.Disconnect(&LayerJoblist::OnChangeLanguageSettings, this);
 
@@ -534,8 +533,12 @@ freac::LayerJoblist::~LayerJoblist()
 
 	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Disconnect(&LayerJoblist::OnJoblistRemoveAllTracks, this);
 
+	/* Clear tracks.
+	 */
 	joblist->RemoveAllTracks();
 
+	/* Delete widgets.
+	 */
 	if (player != NIL) DeleteObject(player);
 
 	DeleteObject(joblist);
