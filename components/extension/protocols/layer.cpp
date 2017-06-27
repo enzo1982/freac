@@ -34,7 +34,7 @@ BoCA::LayerProtocols::LayerProtocols() : Layer("Protocols")
 	combo_errors	= new ComboBox(Point(text_errors->GetUnscaledTextWidth() + 47, 28), Size(250, 0));
 	combo_errors->SetOrientation(OR_LOWERLEFT);
 
-	button_details	= new Button("Details", NIL, Point(87, 29), Size(80, 0));
+	button_details	= new Button(NIL, NIL, Point(87, 29), Size(80, 0));
 	button_details->onAction.Connect(&LayerProtocols::ShowDetails, this);
 	button_details->SetOrientation(OR_LOWERRIGHT);
 
@@ -50,6 +50,10 @@ BoCA::LayerProtocols::LayerProtocols() : Layer("Protocols")
 	Add(button_details);
 
 	UpdateProtocolList();
+
+	/* Update language settings in case the layer is instantiated late.
+	 */
+	OnChangeLanguageSettings();
 
 	/* Connect slots.
 	 */
