@@ -33,13 +33,15 @@
     <entry id="308" string="Rating">Puntuación</entry>
     <entry id="309" string="File name">Nombre de archivo</entry>
     <entry id="310" string="File type">Tipo de archivo</entry>
-
+    <entry id="311" string="Album artist">Artista del álbum</entry>
     <entry id="350" string="unknown artist">artista desconocido</entry>
     <entry id="351" string="unknown title">título desconocido</entry>
     <entry id="352" string="unknown album">álbum desconocido</entry>
     <entry id="353" string="unknown genre">género desconocido</entry>
     <entry id="354" string="unknown year">año desconocido</entry>
-
+    <entry id="355" string="unknown conductor">director desconocido</entry>
+    <entry id="356" string="unknown composer">compositor desconocido</entry>
+    <entry id="357" string="unknown album artist">artista del álbum desconocido</entry>
     <entry id="380" string="hidden track">pista oculta</entry>
 
     <section name="Characters">
@@ -187,6 +189,7 @@
       <entry id="3048" string="Other">Otro</entry>
       <entry id="3049" string="Output file name">Nombre de archivo de salida</entry>
       <entry id="3050" string="verifying">comprobando</entry>
+      <entry id="3051" string="Open">Abrir (carpeta/Web)</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Carpeta</entry>
@@ -327,6 +330,7 @@
       <entry id="5023" string="Resources">Recursos</entry>
       <entry id="5024" string="Verifiers">Verificadores</entry>
       <entry id="5025" string="Taggers">Etiquetadores</entry>
+      <entry id="5026" string="Processing">Procesando</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar compresor</entry>
@@ -346,6 +350,7 @@
 	<entry id="5114" string="Replace spaces">Reemplazar espacios</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Quitar archivos procesados de la lista</entry>
 	<entry id="5116" string="Add encoded files to joblist">Añadir archivos codificados a la lista</entry>
+	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Numerar consecutivamente nombres de archivo iguales</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">La carpeta de destino no existe. ¿Desea crearla?</entry>
@@ -362,6 +367,7 @@
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Escoja una carpeta para guardar las listas de reproducción</entry>
 	<entry id="5207" string="Output filenames">Nombre de archivos de salida</entry>
 	<entry id="5208" string="Configure plugin">Configurar plugin</entry>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Crear una sola lista de reproducción o archivo cue en cada conversión</entry>
       </section>
 
       <section name="CDDB">
@@ -435,6 +441,10 @@
 	<entry id="5521" string="Special fields">Campos especiales</entry>
 	<entry id="5522" string="Write CD table of contents">Escribir Tabla de contenido del CD</entry>
 	<entry id="5523" string="Preserve Replay Gain information">Conservar información de ganancia</entry>
+	<entry id="5524" string="Cue sheets">Cue sheets</entry>
+	<entry id="5525" string="Read cue sheets embedded in metadata">Leer cue sheets integradas en los metadatos</entry>
+	<entry id="5526" string="Prefer cue sheets over chapter information">Preferir cue sheets a la información del capítulo</entry>
+	<entry id="5527" string="Prepend zero to track numbers below 10">Anteponer cero a los números de pista menores que 10</entry>
       </section>
 
       <section name="Joblist">
@@ -460,6 +470,10 @@
 	  <entry id="5659" string="File name">Nombre de archivo</entry>
 	  <entry id="5660" string="File type">Tipo de archivo</entry>
 	  <entry id="5661" string="Output file name">Nombre de archivo de salida</entry>
+	  <entry id="5662" string="Bitrate">Bitrate</entry>
+	  <entry id="5663" string="Sampling rate">Tasa de muestreo</entry>
+	  <entry id="5664" string="Channels">Canales</entry>
+	  <entry id="5665" string="Sample resolution">Resolución de la muestra</entry>
 	</section>
       </section>
 
@@ -468,6 +482,12 @@
 	<entry id="5701" string="Enable parallel processing">Habilitar proceso paralelo</entry>
 	<entry id="5702" string="Number of conversion threads">Número de hilos de conversión</entry>
 	<entry id="5703" string="auto">automático</entry>
+	<entry id="5704" string="Process priority">Prioridad del proceso</entry>
+	<entry id="5705" string="lowest">la más baja</entry>
+	<entry id="5706" string="lower">más baja</entry>
+	<entry id="5707" string="normal">normal</entry>
+	<entry id="5708" string="higher">más alta</entry>
+	<entry id="5709" string="highest">la más alta</entry>
       </section>
 
       <section name="Verification">
@@ -476,6 +496,13 @@
 	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Verificar que las entradas sin pérdida corresponden&#10;exactamente con sus originales.</entry>
 	<entry id="5803" string="Enable output verification">Habilitar verificación de la salida</entry>
 	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Verificar que las salidas sin pérdida corresponden&#10;exactamente con los datos codificados.</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="5900" string="Signal processing">Apodización</entry>
+	<entry id="5901" string="Available">Disponible</entry>
+	<entry id="5902" string="Selected">Elegido</entry>
+	<entry id="5903" string="Configure component">Configurar componente</entry>
       </section>
     </section>
 
@@ -876,14 +903,24 @@
 	  <entry id="41101" string="Unable to use selected audio format.">Imposible usar el formato de audio elegido.</entry>
 	</section>
       </section>
+
+      <section name="meh!">
+	<entry id="42000" string="Encoders">Compresores</entry>
+	<entry id="42001" string="Available">Disponible</entry>
+	<entry id="42002" string="Selected">Elegido</entry>
+	<entry id="42003" string="Configure encoder">Configurar compresor</entry>
+	<entry id="42004" string="Encoder configuration">Configuración del compresor</entry>
+	<entry id="42005" string="Options">Opciones</entry>
+	<entry id="42006" string="Create a separate folder for each output format">Crear una carpeta separada para cada formato de salida</entry>
+      </section>
     </section>
 
     <section name="DSP">
 
       <section name="Resample">
-        <entry id="50000" string="Converter">Conversor</entry>
-        <entry id="50001" string="Sampling rate">Tasa de muestreo</entry>
-        <entry id="50002" string="Output sampling rate">Muestreo de salida</entry>
+	<entry id="50000" string="Converter">Conversor</entry>
+	<entry id="50001" string="Sampling rate">Tasa de muestreo</entry>
+	<entry id="50002" string="Output sampling rate">Muestreo de salida</entry>
       </section>
     </section>
 
@@ -980,6 +1017,8 @@
 	  <entry id="103207" string="Publisher information">Información del editor</entry>
 	  <entry id="103208" string="Publisher / label">Editor / Etiqueta</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>
+	  <entry id="103210" string="Tempo">Tempo</entry>
+	  <entry id="103211" string="BPM">BPM (pulsos por minuto)</entry>
 	</section>
 
 	<section name="Other">
