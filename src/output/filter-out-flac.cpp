@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -163,7 +163,7 @@ Bool freac::FilterOutFLAC::Activate()
 
 	FLAC__StreamMetadata	*padding = ex_FLAC__metadata_object_new(FLAC__METADATA_TYPE_PADDING);
 
-	padding->length = 4096;
+	padding->length = 8192;
 
 	metadata.Add(padding);
 
@@ -202,7 +202,7 @@ Bool freac::FilterOutFLAC::Activate()
 		ex_FLAC__stream_encoder_set_compression_level(encoder, currentConfig->flac_preset);
 
 		if (currentConfig->flac_preset < 3) ex_FLAC__stream_encoder_set_blocksize(encoder, 1152);
-		else				    ex_FLAC__stream_encoder_set_blocksize(encoder, 4608);
+		else				    ex_FLAC__stream_encoder_set_blocksize(encoder, 4096);
 	}
 
 	bytesWritten = 0;

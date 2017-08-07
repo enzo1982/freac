@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -205,7 +205,7 @@ Bool freac::Config::LoadSettings()
 	flac_streamable_subset			= config->GetIntValue(categoryFLAC, "StreamableSubset", 1);
 	flac_do_mid_side_stereo			= config->GetIntValue(categoryFLAC, "DoMidSideStereo", 1);
 	flac_loose_mid_side_stereo		= config->GetIntValue(categoryFLAC, "LooseMidSideStereo", 0);
-	flac_blocksize				= config->GetIntValue(categoryFLAC, "Blocksize", 4608);
+	flac_blocksize				= config->GetIntValue(categoryFLAC, "Blocksize", 4096);
 	flac_apodization			= config->GetStringValue(categoryFLAC, "Apodization", "tukey(0.5)");
 	flac_max_lpc_order			= config->GetIntValue(categoryFLAC, "MaxLPCOrder", 8);
 	flac_qlp_coeff_precision		= config->GetIntValue(categoryFLAC, "QLPCoeffPrecision", 0);

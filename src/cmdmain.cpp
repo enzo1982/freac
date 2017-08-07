@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -198,7 +198,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	}
 	else if (encoder == "FLAC" || encoder == "flac")
 	{
-		String	 blocksize = "4608";
+		String	 blocksize = "4096";
 		String	 lpc = "8";
 		String	 qlp = "0";
 		String	 rice = "3,3";
@@ -494,7 +494,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		else if (helpenc == "FLAC" || helpenc == "flac")
 		{
 			Console::OutputString("Options for FLAC encoder:\n\n");
-			Console::OutputString("\t-b <blocksize>\t\t\t(192 - 32768, default: 4608)\n");
+			Console::OutputString("\t-b <blocksize>\t\t\t(192 - 32768, default: 4096)\n");
 			Console::OutputString("\t-ms\t\t\t\t(use mid-side stereo)\n");
 			Console::OutputString("\t-l <max LPC order>\t\t(0 - 32, default: 8)\n");
 			Console::OutputString("\t-q <QLP coeff precision>\t(0 - 16, default: 0)\n");
