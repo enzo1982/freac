@@ -34,6 +34,7 @@
     <entry id="309" string="File name">Nombre de archivo</entry>
     <entry id="310" string="File type">Tipo de archivo</entry>
     <entry id="311" string="Album artist">Artista del álbum</entry>
+
     <entry id="350" string="unknown artist">artista desconocido</entry>
     <entry id="351" string="unknown title">título desconocido</entry>
     <entry id="352" string="unknown album">álbum desconocido</entry>
@@ -42,6 +43,7 @@
     <entry id="355" string="unknown conductor">director desconocido</entry>
     <entry id="356" string="unknown composer">compositor desconocido</entry>
     <entry id="357" string="unknown album artist">artista del álbum desconocido</entry>
+
     <entry id="380" string="hidden track">pista oculta</entry>
 
     <section name="Characters">
@@ -1040,6 +1042,20 @@
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">No se puede abrir el archivo: %1&#10;&#10;%2</entry>
 	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">No se puede actualizar la etiqueta: %1&#10;&#10;Error: %2</entry>
+	</section>
+      </section>
+
+      <section name="Protocols">
+	<entry id="104000" string="Protocols">Protocolos</entry>
+	<entry id="104001" string="Protocol">Protocol</entry>
+	<entry id="104002" string="Errors / Warnings">Errores / Avisos</entry>
+	<entry id="104003" string="Details">Detalles</entry>
+	<entry id="104004" string="Time">Hora</entry>
+	<entry id="104005" string="Message">Mensaje</entry>
+
+	<section name="Configuration">
+	  <entry id="104100" string="User interface">Interfaz de usuario</entry>
+	  <entry id="104101" string="Show protocols tab in main window">Mostrar pestaña de protocolos en la ventana principal</entry>
 	</section>
       </section>
     </section>
