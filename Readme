@@ -138,7 +138,7 @@ Known problems
 History
 -------
 
-	Version 1.1 CVS (July 2017)
+	Version 1.1 CVS (August 2017)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, macOS, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -180,6 +180,7 @@ History
 		- added support for RF64 and Wave64 files
 		- added RIFF tagging support (using LIST INFO and Cart chunks)
 		- added support for Ogg FLAC files
+		- changed default FLAC blocksize to 4096 samples to match official FLAC tools
 		- completely reworked arguments of freacmd
 		- added support for selecting configuration in freaccmd
 		- added support for wildcards in arguments to freaccmd
