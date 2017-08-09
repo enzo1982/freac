@@ -353,7 +353,8 @@ Void BoCA::LayerTagBasic::FreeCoverImages()
 
 Void BoCA::LayerTagBasic::AddCover()
 {
-	I18n	*i18n = I18n::Get();
+	Config	*config = Config::Get();
+	I18n	*i18n	= I18n::Get();
 
 	FileSelection	 dialog;
 
@@ -366,9 +367,15 @@ Void BoCA::LayerTagBasic::AddCover()
 
 	dialog.AddFilter(i18n->TranslateString("All Files"), "*.*");
 
+	dialog.SetInitialPath(config->GetStringValue("TagEdit", "LastSelectedCoverDir", NIL));
+
 	if (dialog.ShowDialog() == Success())
 	{
 		String	 file = dialog.GetFileName();
+
+		/* Save selected path.
+		 */
+		config->SetStringValue("TagEdit", "LastSelectedCoverDir", File(file).GetFilePath());
 
 		/* Load picture.
 		 */
