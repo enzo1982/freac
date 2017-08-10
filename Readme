@@ -181,6 +181,7 @@ History
 		- added RIFF tagging support (using LIST INFO and Cart chunks)
 		- added support for Ogg FLAC files
 		- changed default FLAC blocksize to 4096 samples to match official FLAC tools
+		- the FLAC encoder now writes seektable metadata blocks
 		- completely reworked arguments of freacmd
 		- added support for selecting configuration in freaccmd
 		- added support for wildcards in arguments to freaccmd
