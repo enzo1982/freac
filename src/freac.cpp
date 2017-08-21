@@ -57,9 +57,9 @@ String	 freac::freac::appLongName  = "fre:ac - free video downloader";
 String	 freac::freac::version	    = FREAC_VERSION;
 #else
 #	ifdef FREAC_DATE
-String	 freac::freac::version	    = "CVS " FREAC_DATE;
+String	 freac::freac::version	    = "Git " FREAC_DATE;
 #	else
-String	 freac::freac::version	    = "CVS";
+String	 freac::freac::version	    = "Git";
 #	endif
 #endif
 

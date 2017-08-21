@@ -1,4 +1,4 @@
-fre:ac version 1.1 CVS
+fre:ac version 1.1 (Development Snapshot)
 
 fre:ac is a free and open source audio converter for various formats.
 It supports audio CD ripping, tag editing and video downloads and converts
@@ -87,7 +87,7 @@ Requirements
 
 		All platforms:
 
-			- smooth v0.8.73.0 CVS (http://www.smooth-project.org/)
+			- smooth v0.8.73.0 Git (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -138,7 +138,7 @@ Known problems
 History
 -------
 
-	Version 1.1 CVS (August 2017)
+	Version 1.1 Git (August 2017)
 
 		- renamed project to fre:ac - free audio converter
 		- ported to Linux, macOS, Solaris, FreeBSD, OpenBSD and NetBSD
@@ -320,7 +320,7 @@ Special thanks to
 
 -----------------------------------------------------------------------------------
 
-The official fre:ac homepage: http://www.freac.org/
+The official fre:ac homepage: https://www.freac.org/
 
 robert.kausch@freac.org,
 Robert Kausch
