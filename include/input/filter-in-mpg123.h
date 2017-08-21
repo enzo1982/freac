@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -8,32 +8,19 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef H_FREAC_FILTER_IN_MAD
-#define H_FREAC_FILTER_IN_MAD
+#ifndef H_FREAC_FILTER_IN_MPG123
+#define H_FREAC_FILTER_IN_MPG123
 
 #include "inputfilter.h"
 
-#include <3rdparty/mad/mad.h>
+#include <3rdparty/mpg123/mpg123.h>
 
 namespace freac
 {
-	class FilterInMAD : public InputFilter
+	class FilterInMPG123 : public InputFilter
 	{
-		friend mad_flow	 MADInputCallback(void *, mad_stream *);
-		friend mad_flow	 MADOutputCallback(void *, const mad_header *, mad_pcm *);
-		friend mad_flow	 MADHeaderCallback(void *, const mad_header *, mad_pcm *);
-		friend mad_flow	 MADErrorCallback(void *, mad_stream *, mad_frame *);
-
 		private:
-
-			mad_decoder		 decoder;
-
-			Bool			 stop;
-			Bool			 finished;
-
-			Buffer<signed int>	 samplesBuffer;
-
-			Track			*infoFormat;
+			mpg123_handle		*context;
 
 			Int			 numBytes;
 			Int			 numFrames;
@@ -43,20 +30,13 @@ namespace freac
 
 			Int			 delaySamplesLeft;
 
-			Threads::Thread		*decoderThread;
-			Threads::Mutex		*readDataMutex;
-			Threads::Mutex		*samplesBufferMutex;
-
 			Bool			 SkipID3v2Tag(InStream *);
 			Bool			 ReadXingAndLAMETag(InStream *);
 
 			Int			 GetMPEGFrameSize(const Buffer<UnsignedByte> &);
-
-			Int			 ReadMADData();
-			Int			 ReadMADMetadata();
 		public:
-						 FilterInMAD(Config *, Track *);
-						~FilterInMAD();
+						 FilterInMPG123(Config *, Track *);
+						~FilterInMPG123();
 
 			Bool			 Activate();
 			Bool			 Deactivate();
