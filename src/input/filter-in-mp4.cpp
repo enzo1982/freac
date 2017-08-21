@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -55,7 +55,7 @@ Bool freac::FilterInMP4::Activate()
 
 		ex_NeAACDecInit2(handle, (unsigned char *) buffer, buffer_size, &rate, &channels);
 
-		sampleId = 0;
+		sampleId = 1;
 
 		ex_MP4Free(buffer);
 	}
@@ -112,7 +112,7 @@ Int freac::FilterInMP4::ReadData(Buffer<UnsignedByte> &data, Int size)
 			samplesRead += frameInfo.samples;
 		}
 	}
-	while (samples != NIL && sampleId < ((format->length / 2048) * (double(inBytes) / format->fileSize)));
+	while (samples != NIL && sampleId <= ((format->length / 2048) * (double(inBytes) / format->fileSize)));
 
         if (samplesRead > 0)
 	{
