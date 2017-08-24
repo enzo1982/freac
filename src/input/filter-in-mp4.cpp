@@ -263,7 +263,7 @@ String freac::FilterInMP4::GetTempFile(const String &oFileName)
 
 	for (Int i = 0; i < rVal.Length(); i++)
 	{
-		if (rVal[i] > 255)			rVal[i] = '#';
+		if (rVal[i] > 127)			rVal[i] = '#';
 		if (rVal[i] == '\\' || rVal[i] == '/')	lastBs = i;
 	}
 
