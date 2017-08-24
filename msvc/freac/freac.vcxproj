@@ -332,6 +332,9 @@
     <ClInclude Include="..\..\include\cdinfo\cdplayerini.h" />
     <ClInclude Include="..\..\include\cdinfo\cdtext.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="smooth.natvis" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
