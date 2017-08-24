@@ -102,6 +102,8 @@ History
 		- fixed progress not being updated for long running conversions
 		- fixed handling of stray tabs in title info
 		- upgraded CDRip to version 1.26 to fix handling of drives with letter A:
+		- upgraded FAAC to version 1.29.7
+		- upgraded FAAD2 to version 2.8.1
 
 	Version 1.0.28 (February 2017)
 

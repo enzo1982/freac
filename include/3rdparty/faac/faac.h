@@ -16,7 +16,7 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id$
+ * $Id: faac.h,v 1.38 2012/03/01 18:34:17 knik Exp $
  */
 
 #ifndef _FAAC_H_
@@ -26,15 +26,16 @@
 extern "C" {
 #endif /* __cplusplus */
 
-//#if defined(_WIN32) && !defined(__MINGW32__)
-#if defined(_WIN32) // Use __stdcall as DLL will be compiled with ICL instead of MinGW.
-# ifndef FAACAPI
-#  define FAACAPI __stdcall
+
+#if !defined(FAACAPI) && defined(__GNUC__) && (__GNUC__ >= 4)
+# if defined(_WIN32)
+#  define FAACAPI __stdcall __declspec(dllexport)
+# else
+#  define FAACAPI __attribute__((visibility("default")))
 # endif
-#else
-# ifndef FAACAPI
+#endif
+#ifndef FAACAPI
 #  define FAACAPI
-# endif
 #endif
 
 #pragma pack(push, 1)

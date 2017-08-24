@@ -25,7 +25,7 @@
 ** Commercial non-GPL licensing of this software is possible.
 ** For more info contact Nero AG through Mpeg4AAClicense@nero.com.
 **
-** $Id$
+** $Id: neaacdec.h,v 1.14 2012/03/02 15:29:47 knik Exp $
 **/
 
 #ifndef __NEAACDEC_H__
@@ -63,13 +63,17 @@ extern "C" {
   #ifndef NEAACDECAPI
     #define NEAACDECAPI __cdecl
   #endif
+#elif defined(__GNUC__) && __GNUC__ >= 4
+  #ifndef NEAACDECAPI
+    #define NEAACDECAPI __attribute__((visibility("default")))
+  #endif
 #else
   #ifndef NEAACDECAPI
     #define NEAACDECAPI
   #endif
 #endif
 
-#define FAAD2_VERSION "2.7"
+#define FAAD2_VERSION PACKAGE_VERSION
 
 /* object types for AAC */
 #define MAIN       1

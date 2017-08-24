@@ -103,6 +103,8 @@ Geschichte
 		- Problem mit Fortschrittsanzeige bei lange laufenden Konvertierungen behoben
 		- Probleme beim Umgang mit Tabulatorzeichen in Titelinformationen behoben
 		- CDRip auf Version 1.26 aktualisiert um Probleme mit Laufwerken mit dem Buchstaben A: zu beheben
+		- FAAC auf Version 1.29.7 aktualisiert
+		- FAAD2 suf Version 2.8.1 aktualisiert
 
 	Version 1.0.28 (Februar 2017)
 
