@@ -259,8 +259,8 @@ Geschichte
 		- Problem beim direkten Start des Deinstallationsprogramms behoben
 		- Native Unterstützung für die x64-Platform hinzugefügt
 		- FLAC auf Version 1.3.2 aktualisiert
-		- FAAC auf Version 1.28 aktualisiert
-		- FAAD2 suf Version 2.7 aktualisiert
+		- FAAC auf Version 1.29.7 aktualisiert
+		- FAAD2 suf Version 2.8.1 aktualisiert
 		- LAME suf Version 3.99.5 aktualisiert
 		- Vorbis auf Version 1.3.5 + aoTuV Beta 6.03 (2014) aktualisiert
 		- Ogg-Bibliothek auf Version 1.3.2 aktualisiert
