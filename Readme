@@ -147,6 +147,7 @@ History
 		- allowed format selection from the encode menu for encoders supporting multiple formats
 		- added support for editing configurations during conversions
 		- added support for verifying lossless input and output files
+		- added support for processing input with DSP filters
 		- added a simple tag editor
 		- added Monkey's Audio encoder/decoder
 		- added Speex speech encoder/decoder
