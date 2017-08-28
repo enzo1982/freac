@@ -82,14 +82,11 @@ Bekannte Probleme
 				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48, 64, 88.2 oder 96 kHz vorliegen
 		- FLAC:
 				- Der FLAC-Referenzencoder ist auf eine Sampleauflösung von 24bit beschränkt
-		- LAME:
-				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1 oder 48 kHz vorliegen,
-				  können von LAME konvertiert werden
 		- TwinVQ:
 				- Audiodaten müssen in 22.05 kHz (24 und 32 kBit) oder 44.1 kHz (48 kBit) vorliegen
 
-	- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
-	  Ausgabe-Samplingrate haben, wenn Sie nicht LAME verwenden.
+	- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen in der für die Ausgabe gewünschten
+	  Abtastrate vorliegen, wenn nicht LAME verwendet wird.
 
 	- fre:ac ist zurzeit auf 2 Audiokanäle beschränkt
 
