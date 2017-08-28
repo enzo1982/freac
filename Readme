@@ -123,87 +123,60 @@ Known problems
 
 			- FAAC, FDK AAC, VisualOn AAC:
 				- audio must be at 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48, 64, 88.2 or 96 kHz
-			- LAME:
-				- audio must be at 8, 11.025, 12, 16, 22.05, 24, 32, 44.1 or 48 kHz,
-				  can be converted by LAME
 
-		- Resampling is only supported with LAME. Input files must be at the desired output
-		  sampling rate unless you are encoding with LAME.
+		- Resampling is only supported with LAME and Opus. Input files must be at the desired output
+		  sampling rate unless you are encoding with LAME or Opus.
 
 	Linux and Unix specific problems:
 
 		- There are no application packages for fre:ac yet, so you need to install dependencies manually for now.
-		  Please just extract the contents of the archive to your home directory.
+		  Please extract the contents of the archive to your home directory.
 
 History
 -------
 
 	Version 1.1 Git (August 2017)
 
-		- renamed project to fre:ac - free audio converter
-		- ported to Linux, macOS, Solaris, FreeBSD, OpenBSD and NetBSD
-		- added Estonian, Croatian, Portuguese, Bulgarian, Vietnamese, Hebrew, Arabic, Basque, Afrikaans,
-		  Cantonese (Hong Kong), Serbian (Cyrillic), Catalan, Valencian and Galician language support
-		- added German, Spanish, Italian, Russian, Portuguese, Czech, Greek and Basque user guides
-		- added several translations for the installer
-		- converted input and output filters to BoCA components
-		- implemented new configuration dialog
+		- ported to macOS, Linux and BSD operating systems
+		- implemented an extension component framework to modularize fre:ac
+		- completely reworked configuration dialog
 		- added support for multiple configurations
 		- added multi encoder hub component
 		- conversions are now done in parallel if possible
 		- redesigned progress display area
 		- new dialog to confirm overwriting of existing files before conversion
 		- allowed format selection from the encode menu for encoders supporting multiple formats
-		- completely reworked LAME configuration dialog
 		- added support for editing configurations during conversions
 		- added support for verifying lossless input and output files
 		- added a simple tag editor
-		- added video downloader extension
 		- added Monkey's Audio encoder/decoder
 		- added Speex speech encoder/decoder
-		- added Windows Media Audio encoder/decoder
 		- added Opus audio encoder/decoder
 		- added Core Audio AAC/ALAC encoder
 		- added support for command line encoders/decoders
-		- added support for the mpg123 MP3 decoder
-		- added support for the MAD MP3 decoder
 		- added TwinVQ VQF decoder support
-		- added support for AAC synchronizing (needed to read ripped AAC streams)
 		- added support for the VisualOn AAC encoder
 		- added support for the Fraunhofer FDK AAC encoder/decoder
 		- added support for reading simple audio files using libsndfile
-		- added support for cover art in MP4 files
 		- added support for ID3v2, MP4, WMA and Vorbis Comment chapters
 		- added support for MCDI frame in ID3v2 tags
 		- added support for ID3v1 tags in AAC files
-		- added support for gapless MP3 decoding
 		- added support for RF64 and Wave64 files
 		- added RIFF tagging support (using LIST INFO and Cart chunks)
 		- added support for Ogg FLAC files
-		- changed default FLAC blocksize to 4096 samples to match official FLAC tools
 		- the FLAC encoder now writes seektable metadata blocks
 		- completely reworked arguments of freacmd
 		- added support for selecting configuration in freaccmd
-		- added support for wildcards in arguments to freaccmd
 		- added support for encoding to single file with freaccmd
-		- added support for large fonts
-		- changed default output directory to "My Music" folder
 		- added an option to append sequential numbers to otherwise identical filenames
-		- added additional genres as defined by Winamp 5.6
 		- added <composer>, <conductor> and <disc> patterns
-		- added <directory> pattern to allow preserving existing directory structures
-		- added <filetype> pattern
-		- added <installdrive> pattern for use in output directory name
 		- allow CDDB queries even when no CD drive is present
 		- added preview to CDDB match selection dialog
 		- added an option to automatically select the first CDDB match
 		- added support for CDDB queries using HTTP GET
 		- added context menu for text edit fields
-		- label/publisher and ISRC information is now preserved during conversion
 		- added support for reading ISRC codes from CDs
 		- added support for ripping hidden tracks (HTOA)
-		- added support for disc drives with drive letters A: and B:
-		- added ripping speed configuration option
 		- added CD read offset configuration option
 		- added configuration option to keep converted tracks in joblist
 		- added configuration option to add encoded files to joblist
@@ -217,56 +190,18 @@ History
 		- added support for setting process priority on Windows
 		- added a button to open the output folder
 		- added support for creating one playlist or cue sheet per album in a single conversion
-		- save playlists and cue sheets along with output file in single file mode
 		- the time left indicator now shows hours if necessary
 		- the five last used output folders are now saved for later use
 		- the five last used file name patterns are now saved for later use
 		- greatly improved case conversion functions
 		- conversion progress is now shown in the taskbar on Windows 7 and later
 		- skipping tracks is no longer possible when converting to a single file
-		- fixed CJK editor appearing offset in Windows Vista/7/8 default designs
-		- fixed ID3v2 cover data not being displayed in iTunes
-		- fixed writing of bad ID3v2 tags when iconv.dll is not available
-		- fixed ID3lib to read and write correct ID3v2.4 tags
-		- fixed writing of ID3v1 tags when encoding VBR or ABR MP3s
-		- fixed automatic reading of CD contents on disc insert
 		- fixed creation of cue sheets for multiple tracks in a single file
-		- fixed total progress bar not working correctly with many tracks in joblist
-		- fixed crash when encoding to single MP4 file
-		- fixed unwanted downsampling when encoding to low bitrate MP3
-		- fixed Vorbis (and FLAC) comment tag reading
-		- fixed not writing Xing header when using LAME presets
-		- fixed crash when trying to open unsupported Sun Audio (.au) files
-		- fixed and improved decoding of raw audio formats WAVE, AIFF and AU
-		- fixed failure to delete read-only files with "Delete files after encoding" option
-		- fixed last track of CD-Extra discs being two seconds too long
-		- fixed encoding empty tracks when no CD is inserted
-		- fixed various CDDB issues
-		- fixed HTTP proxy authentication
-		- fixed freaccmd crashes
-		- fixed support for various artists CDs
-		- fixed handling of stray tabs in title info
-		- improved CDDB data sanity check
 		- improved title info editing user friendliness
 		- improved metadata extraction from paths
-		- improved support for network files and directories
-		- raised maximum file name length
-		- do not eject discs when user stopped conversion
-		- NT SCSI mode is now used by default to access CD drives
-		- fixed ASPI error message being displayed on systems without optical drives
-		- installer improvements
-		- lots of fixes to the command line encoder
-		- fixed uninstaller not working when run directly
 		- added native x64 platform support
-		- upgraded FLAC to version 1.3.2
-		- upgraded FAAC to version 1.29.7
-		- upgraded FAAD2 to version 2.8.1
-		- upgraded LAME to version 3.99.5
-		- upgraded Vorbis to version 1.3.5 + aoTuV beta 6.03 (2014)
-		- upgraded Ogg library to version 1.3.2
 		- upgraded CDRip to version 2.2 (with cdparanoia III version 10.2)
 		- upgrade to MP4v2 v2.0.0
-		- lots of other fixes
 
 Special thanks to
 -----------------

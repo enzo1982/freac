@@ -123,87 +123,60 @@ Bekannte Probleme
 
 			- FAAC, FDK AAC, VisualOn AAC:
 				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48, 64, 88.2 oder 96 kHz vorliegen
-			- LAME:
-				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1 oder 48 kHz vorliegen,
-				  können von LAME konvertiert werden
 
-		- Resampling wird nur mit LAME unterstützt. Eingabedateien müssen die gewünschte
-		  Ausgabe-Samplingrate haben, wenn Sie nicht LAME verwenden.
+		- Resampling wird nur mit LAME und Opus unterstützt. Eingabedateien müssen in der für die Ausgabe gewünschten
+		  Abtastrate vorliegen, wenn nicht LAME oder Opus verwendet wird.
 
-	Linux- und Unix-spezifische probleme:
+	Linux- und Unix-spezifische Probleme:
 
-		- Es gibt noch keine Anwendungspakete für fre:ac, so dass Abhängigkeiten derzeit noch manuell installiert werden müssen.
-		  Bitte enpacken Sie den Inhalt des Archivs in Ihr Home-Verzeichnis.
+		- Es gibt noch keine Anwendungspakete für fre:ac, so dass Abhängigkeiten derzeit noch manuell installiert werden
+		  müssen. Bitte enpacken Sie den Inhalt des Archivs in Ihr Home-Verzeichnis.
 
 Geschichte
 ----------
 
 	Version 1.1 Git (August 2017)
 
-		- Projekt umbenannt in fre:ac - free audio converter
-		- Auf Linux, macOS, Solaris, FreeBSD, OpenBSD und NetBSD portiert
-		- Sprachunterstützung für Estnisch, Kroatisch, Portugiesisch, Bulgarisch, Vietnamesisch, Hebräisch, Arabisch, Baskisch, Afrikaans,
-		  Kantonesisch (Hong Kong), Serbisch (Kyrillisch), Katalanisch, Valencianisch und Galizisch hinzugefügt
-		- Deutsche, spanische, italienische, russische, portugiesische, tschechische, griechische und baskische Anleitungen hinzugefügt
-		- Mehrere Übersetzungen für das Installationsprogramm hinzugefügt
-		- Ein- und Ausgabefilter sind jetzt als BoCA-Komponenten implementiert
-		- Neuen Konfigurationsdialog implementiert
+		- Auf macOS, Linux und BSD-Betriebssysteme portiert
+		- Framework für Erweiterungskomponenten implementiert, um fre:ac zu modularisieren
+		- Vollständig überarbeiteter Konfigurationsdialog
 		- Unterstützung für mehrere Konfigurationen hinzugefügt
 		- Multi-Encoder-Hub-Komponente hinzugefügt
 		- Konvertierungen werden nun wenn möglich parallel ausgeführt
 		- Neues Design des Fortschrittsanzeigebereichs
 		- Neuer Dialog zur Bestätigung des Überschreibens vorhandener Dateien vor der Konvertierung
 		- Formatauswahl für Kodierer, die mehrere Formate unterstützen, im Kodieren-Menü ermöglicht
-		- Komplett überarbeiteter LAME-Konfigurationsdialog
 		- Möglichkeit zum Bearbeiten der Konfiguration während der Konvertierung hinzugefügt
 		- Untersützung für Verifikation von verlustfreien Ein- und Ausgabedateien hinzugefügt
 		- Einfachen Tag-Editor hinzugefügt
-		- Video-Downloader-Erweiterung hinzugefügt
 		- Monkey's Audiokodierer/-dekodierer hinzugefügt
 		- Speex Sprachkodierer/-dekodierer hinzugefügt
-		- Windows Media Audio Codierer/Dekodierer hinzugefügt
 		- Opus Audiokodierer/-dekodierer hinzugefügt
 		- Core Audio AAC-/ALAC-Kodierer hinzugefügt
 		- Unterstützung für Kommandozeilenkodierer/-dekodierer hinzugefügt
-		- Unterstützung für den mpg123 MP3-Dekodierer hinzugefügt
-		- Unterstützung für den MAD MP3-Dekodierer hinzugefügt
 		- Unterstützung für den TwinVQ VQF-Dekodierer hinzugefügt
-		- Unterstützung für AAC-Synchronisierung hinzugefügt (zum Lesen von AAC-Streamrips benötigt)
 		- Unterstützung für den VisualOn AAC-Kodierer hinzugefügt
 		- Unterstützung für den Fraunhofer FDK AAC-Kodierer/-Dekodierer hinzugefügt
 		- Unterstützung für das Lesen von einfachen Audiodateien mittels libsndfile hinzugefügt
-		- Unterstützung für Cover-Bilder in MP4-Dateien hinzugefügt
 		- Unterstützung für ID3v2-, MP4-, WMA- und Vorbis Comment-Kapitel hinzugefügt
 		- Unterstützung für das MCDI-Frame in ID3v2-Tags hinzugefügt
 		- Unterstützung für ID3v1-Tags in AAC-Dateien hinzugefügt
-		- Unterstützung für MP3-Dekodierung ohne Unterbrechungen hinzugefügt
 		- Unterstützung für RF64- und Wave64-Dateien hinzugefügt
 		- Unterstützung für RIFF-Tagging hinzugefügt (über LIST-INFO- und Cart-Chunks)
 		- Unterstützung für Ogg FLAC-Dateien hinzugefügt
-		- Standardblockgröße bei FLAC auf 4096 Samples geändert, entsprechend den offiziellen FLAC-Tools
 		- Der FLAC-Kodierer schreibt jetzt Seektable Metadaten-Blöcke
 		- Parameter von freaccmd komplett überarbeitet
 		- Unterstützung für Konfigurationsauswahl in freaccmd hinzugefügt
-		- Unterstützung für Wildcards in freaccmd-Parametern hinzugefügt
 		- Unterstützung für Ausgabe in einzelne Datei mit freaccmd hinzugefügt
-		- Unterstützung für große Schriften hinzugefügt
-		- Standardausgabeverzeichnis auf Ordner "Eigene Musik" geändert
 		- Option zum Anhängen von laufenden Nummern an ansonsten identische Dateinamen hinzugefügt
-		- Zusätzliche, von Winamp 5.6 definierte Genres hinzugefügt
 		- Platzhalter <composer>, <conductor> und <disc> hinzugefügt
-		- Platzhalter <directory> hinzugefügt, um das Erhalten von Verzeichnisstrukturen zu ermöglichen
-		- Platzhalter <filetype> hinzugefügt
-		- Platzhalter <installdrive> für Ausgabeverzeichnisangabe hinzugefügt
 		- CDDB-Abfrage auch dann ermöglicht, wenn kein CD-Laufwerk vorhanden ist
 		- Vorschau zum CDDB-Trefferauswahldialog hinzugefügt
 		- Option für automatische Auswahl des ersten CDDB-Treffers hinzugefügt
 		- Unterstützung für CDDB-Abfrage per HTTP GET hinzugefügt
 		- Kontextmenü für Texteingabefelder hinzugefügt
-		- Label/Produzent und ISRC-Informationen werden bei der Konvertierung jetzt mit übernommen
 		- Unterstützung für das Auslesen von ISRC-Codes von CDs hinzugefügt
 		- Unterstützung für das Rippen von versteckten tracks (HTOA) hinzugefügt
-		- Unterstützung für CD-Laufwerke mit den Laufwerksbuchstaben A: und B: hinzugefügt
-		- Konfigurationsoption für Geschwindigkeit beim Rippen hinzugefügt
 		- Konfigurationsoption für Offset beim Rippen hinzugefügt
 		- Konfigurationsoption hinzugefügt, konvertierte Tracks in der Jobliste stehen zu lassen
 		- Konfigurationsoption hinzugefügt, kodierte Dateien in die Jobliste aufzunehmen
@@ -217,56 +190,18 @@ Geschichte
 		- Möglichkeit zur Einstellung der Prozesspriorität unter Windows hinzugefügt
 		- Schaltfläche zum Öffnen des Ausgabeordners hinzugefügt
 		- Unterstützung zum Erzeugen getrennter Playlisten bzw. Cuesheets pro Album in einer Konvertierung hinzugefügt
-		- Speichere Playlisten und Cuesheets im Eine-Datei-Modus zusammen mit Ausgabedatei
 		- Die Restzeitanzeige zeigt falls notwendig nun auch Stunden an
 		- Die fünf zuletzt verwendeten Ausgabeordner werden jetzt für späteren Zugriff gespeichert
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
 		- Groß-/Kleinschreibungs-Konvertierungsfunktionen stark verbessert
 		- Der Fortschritt einer Konvertierung wird unter Windows 7 und neuer in der Taskleiste angezeigt
 		- Überspringen von Tracks ist beim Konvertieren in eine einzige Datei nicht mehr möglich
-		- Problem mit versetzt angezeigtem CJK-Editor im Standarddesign von Windows Vista/7/8 behoben
-		- ID3v2-Coverdaten werden nun auch in iTunes angezeigt
-		- Schreiben von fehlerhaften ID3v2-Tags, wenn iconv.dll nicht zur Verfügung steht, behoben
-		- Fehler in ID3lib behoben, um korrektes Lesen und Schreiben von ID3v2.4-Tags zu gewährleisten
-		- Schreiben von ID3v1-Tags beim Kodieren von VBR- oder ABR-MP3s behoben
-		- Fehler beim automatischen Einlesen von CDs beim Einlegen behoben
 		- Fehler in Cuesheets für mehrere Titel in einer Datei behoben
-		- Fehlerhafte Anzeige des Fortschrittsbalkens bei vielen Tracks in der Jobliste behoben
-		- Absturz beim Kodieren in einzelne MP4-Datei behoben
-		- Ungewolltes Downsampling beim Kodieren von MP3s mit niedriger Bitrate behoben
-		- Fehler beim Lesen von Vorbis (und FLAC) Comment Tags behoben
-		- Fehlende Xing-Header bei Verwendung von LAME-Voreinstellungen behoben
-		- Absturz beim Lesen von nicht unterstützten Sun Audio Dateien (.au) behoben
-		- Probleme beim Dekodieren der Raw-Formate WAVE, AIFF und AU behoben
-		- Problem mit der Option "Originale nach dem Kodieren löschen" mit geschützten Dateien behoben
-		- Problem bei der Berechnung der Länge des letzten Tracks von CD-Extra CDs behoben
-		- Kodierung von leeren Tracks behoben, wenn keine CD eingelegt ist
-		- Verschiedene CDDB-Probleme behoben
-		- Fehler bei HTTP-Proxy-Authentifizierung behoben
-		- Abstürze von freaccmd behoben
-		- Fehler in der Unterstützung von CDs von mehreren Künstlern behoben
-		- Probleme beim Umgang mit Tabulatorzeichen in Titelinformationen behoben
-		- Gültigkeitsprüfung für CDDB-Daten verbessert
 		- Benutzerfreundlichkeit der Titelinfopflege verbessert
 		- Metadaten-Extraktion aus Pfaden verbessert
-		- Unterstützung für Netzwerkdateien und -verzeichnisse verbessert
-		- Maximale Länge von Dateinamen angehoben
-		- CDs nicht auswerfen, wenn der Nutzer die Konvertierung gestoppt hat
-		- NT SCSI-Modus wird nun standardmäßig zum Zugriff auf CD-Laufwerke verwendet
-		- Anzeige einer ASPI-Fehlermeldung auf Systemen ohne optische Laufwerke behoben
-		- Verbesserungen beim Installer
-		- Viele Fehler im Kommandozeilen-Kodierer behoben
-		- Problem beim direkten Start des Deinstallationsprogramms behoben
 		- Native Unterstützung für die x64-Platform hinzugefügt
-		- FLAC auf Version 1.3.2 aktualisiert
-		- FAAC auf Version 1.29.7 aktualisiert
-		- FAAD2 suf Version 2.8.1 aktualisiert
-		- LAME suf Version 3.99.5 aktualisiert
-		- Vorbis auf Version 1.3.5 + aoTuV Beta 6.03 (2014) aktualisiert
-		- Ogg-Bibliothek auf Version 1.3.2 aktualisiert
 		- CDRip auf Version 2.2 aktualisiert (mit cdparanoia III Version 10.2)
 		- Update auf MP4v2 v2.0.0
-		- Viele weitere Korrekturen
 
 Besonderen Dank
 ---------------
