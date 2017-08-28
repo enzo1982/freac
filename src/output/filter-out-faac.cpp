@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -53,7 +53,7 @@ Bool freac::FilterOutFAAC::Activate()
 	fConfig = ex_faacEncGetCurrentConfiguration(handle);
 
 	fConfig->mpegVersion	= currentConfig->faac_mpegversion;
-	fConfig->aacObjectType	= currentConfig->faac_type;
+	fConfig->aacObjectType	= LOW;
 	fConfig->allowMidside	= currentConfig->faac_allowjs;
 	fConfig->useTns		= currentConfig->faac_usetns;
 	fConfig->bandWidth	= currentConfig->faac_bandwidth;

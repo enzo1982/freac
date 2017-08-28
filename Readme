@@ -99,6 +99,7 @@ History
 
 		- now using the mpg123 decoder for MP3
 		- changed default FLAC blocksize to 4096 samples to match official FLAC tools
+		- removed support for obsolete Main and LTP AAC profiles
 		- fixed progress not being updated for long running conversions
 		- fixed handling of stray tabs in title info
 		- upgraded CDRip to version 1.26 to fix handling of drives with letter A:

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -25,11 +25,6 @@ namespace freac
 			GroupBox	*group_version;
 			OptionBox	*option_version_mpeg2;
 			OptionBox	*option_version_mpeg4;
-
-			GroupBox	*group_aactype;
-			OptionBox	*option_aactype_main;
-			OptionBox	*option_aactype_low;
-			OptionBox	*option_aactype_ltp;
 
 			GroupBox	*group_id3v2;
 			CheckBox	*check_id3v2;
@@ -71,7 +66,6 @@ namespace freac
 			Button		*btn_ok;
 
 			Int		 mpegVersion;
-			Int		 aacType;
 			Int		 bitrate;
 			Bool		 allowjs;
 			Bool		 usetns;
@@ -84,8 +78,6 @@ namespace freac
 
 			Void		 OK();
 			Void		 Cancel();
-			Void		 SetMPEGVersion();
-			Void		 SetObjectType();
 			Void		 SetBitrate();
 			Void		 SetBitrateByEditBox();
 			Void		 SetQuality();

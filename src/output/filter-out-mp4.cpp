@@ -48,7 +48,7 @@ Bool freac::FilterOutMP4::Activate()
 	fConfig = ex_faacEncGetCurrentConfiguration(handle);
 
 	fConfig->mpegVersion	= MPEG4;
-	fConfig->aacObjectType	= currentConfig->faac_type;
+	fConfig->aacObjectType	= LOW;
 	fConfig->allowMidside	= currentConfig->faac_allowjs;
 	fConfig->useTns		= currentConfig->faac_usetns;
 	fConfig->bandWidth	= currentConfig->faac_bandwidth;

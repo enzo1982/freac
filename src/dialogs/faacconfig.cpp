@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -19,7 +19,6 @@ freac::ConfigureFAAC::ConfigureFAAC()
 	currentConfig = freac::currentConfig;
 
 	mpegVersion = currentConfig->faac_mpegversion;
-	aacType = currentConfig->faac_type;
 	bitrate = currentConfig->faac_bitrate;
 	allowjs = currentConfig->faac_allowjs;
 	usetns = currentConfig->faac_usetns;
@@ -28,7 +27,7 @@ freac::ConfigureFAAC::ConfigureFAAC()
 	allowID3 = currentConfig->faac_enable_id3;
 	fileFormat = currentConfig->faac_enable_mp4;
 
-	mainWnd			= new Window(String(freac::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "FAAC"), currentConfig->wndPos + Point(80, 80), Size(547, 295));
+	mainWnd			= new Window(String(freac::i18n->TranslateString("%1 encoder configuration")).Replace("%1", "FAAC"), currentConfig->wndPos + Point(80, 80), Size(547, 270));
 	mainWnd->SetRightToLeft(freac::i18n->IsActiveLanguageRightToLeft());
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
@@ -52,14 +51,14 @@ freac::ConfigureFAAC::ConfigureFAAC()
 	pos.x = 7;
 	pos.y = 7;
 	size.cx = 525;
-	size.cy = 208;
+	size.cy = 183;
 
 	tabwidget		= new TabWidget(pos, size);
 
 	layer_format		= new Layer(freac::i18n->TranslateString("Format"));
 
-	pos.x = 135;
-	pos.y = 11;
+	pos.x = 7;
+	pos.y = 88;
 	size.cx = 120;
 	size.cy = 65;
 
@@ -71,37 +70,10 @@ freac::ConfigureFAAC::ConfigureFAAC()
 	size.cy = 0;
 
 	option_version_mpeg2	= new OptionBox("MPEG 2", pos, size, &mpegVersion, 1);
-	option_version_mpeg2->onAction.Connect(&ConfigureFAAC::SetMPEGVersion, this);
 
 	pos.y += 25;
 
 	option_version_mpeg4	= new OptionBox("MPEG 4", pos, size, &mpegVersion, 0);
-	option_version_mpeg4->onAction.Connect(&ConfigureFAAC::SetMPEGVersion, this);
-
-	pos.x = 7;
-	pos.y = 88;
-	size.cx = 120;
-	size.cy = 90;
-
-	group_aactype		= new GroupBox(freac::i18n->TranslateString("AAC object type"), pos, size);
-
-	pos.x += 10;
-	pos.y += 13;
-	size.cx = 99;
-	size.cy = 0;
-
-	option_aactype_main	= new OptionBox("MAIN", pos, size, &aacType, 1);
-	option_aactype_main->onAction.Connect(&ConfigureFAAC::SetObjectType, this);
-
-	pos.y += 25;
-
-	option_aactype_low	= new OptionBox("LC", pos, size, &aacType, 2);
-	option_aactype_low->onAction.Connect(&ConfigureFAAC::SetObjectType, this);
-
-	pos.y += 25;
-
-	option_aactype_ltp	= new OptionBox("LTP", pos, size, &aacType, 4);
-	option_aactype_ltp->onAction.Connect(&ConfigureFAAC::SetObjectType, this);
 
 	pos.x = 7;
 	pos.y = 11;
@@ -131,7 +103,7 @@ freac::ConfigureFAAC::ConfigureFAAC()
 	option_aac->onAction.Connect(&ConfigureFAAC::SetFileFormat, this);
 
 	pos.x = 135;
-	pos.y = 88;
+	pos.y = 11;
 	size.cx = 279;
 	size.cy = 90;
 
@@ -272,7 +244,6 @@ freac::ConfigureFAAC::ConfigureFAAC()
 
 	SetBitrate();
 	SetQuality();
-	SetMPEGVersion();
 	SetFileFormat();
 
 	ToggleBitrateQuality();
@@ -291,10 +262,6 @@ freac::ConfigureFAAC::ConfigureFAAC()
 	layer_format->Add(group_version);
 	layer_format->Add(option_version_mpeg2);
 	layer_format->Add(option_version_mpeg4);
-	layer_format->Add(group_aactype);
-	layer_format->Add(option_aactype_main);
-	layer_format->Add(option_aactype_low);
-	layer_format->Add(option_aactype_ltp);
 	layer_format->Add(group_mp4);
 	layer_format->Add(option_mp4);
 	layer_format->Add(option_aac);
@@ -339,10 +306,6 @@ freac::ConfigureFAAC::~ConfigureFAAC()
 	DeleteObject(group_version);
 	DeleteObject(option_version_mpeg2);
 	DeleteObject(option_version_mpeg4);
-	DeleteObject(group_aactype);
-	DeleteObject(option_aactype_main);
-	DeleteObject(option_aactype_low);
-	DeleteObject(option_aactype_ltp);
 	DeleteObject(group_mp4);
 	DeleteObject(option_mp4);
 	DeleteObject(option_aac);
@@ -385,7 +348,6 @@ Void freac::ConfigureFAAC::OK()
 	if (aacQuality > 500)	aacQuality = 500;
 
 	currentConfig->faac_mpegversion = mpegVersion;
-	currentConfig->faac_type = aacType;
 	currentConfig->faac_bitrate = bitrate;
 	currentConfig->faac_allowjs = allowjs;
 	currentConfig->faac_usetns = usetns;
@@ -401,37 +363,6 @@ Void freac::ConfigureFAAC::OK()
 Void freac::ConfigureFAAC::Cancel()
 {
 	mainWnd->Close();
-}
-
-Void freac::ConfigureFAAC::SetMPEGVersion()
-{
-	if (mpegVersion == 0) // MPEG4;
-	{
-		option_aactype_ltp->Activate();
-	}
-	else if (mpegVersion == 1) // MPEG2;
-	{
-		if (aacType == 4) // LTP
-		{
-			aacType = 2;
-
-			OptionBox::internalCheckValues.Emit();
-		}
-
-		option_aactype_ltp->Deactivate();
-	}
-}
-
-Void freac::ConfigureFAAC::SetObjectType()
-{
-	if (aacType == 4) // LTP
-	{
-		option_version_mpeg2->Deactivate();
-	}
-	else
-	{
-		if (fileFormat == 0) option_version_mpeg2->Activate();
-	}
 }
 
 Void freac::ConfigureFAAC::SetBitrate()
@@ -467,8 +398,6 @@ Void freac::ConfigureFAAC::SetFileFormat()
 		text_id3v2->Deactivate();
 		text_note->Deactivate();
 
-		option_aactype_ltp->Activate();
-
 		if (mpegVersion == 1) // MPEG2
 		{
 			mpegVersion = 0;
@@ -487,9 +416,6 @@ Void freac::ConfigureFAAC::SetFileFormat()
 		text_id3v2->Activate();
 		text_note->Activate();
 	}
-
-	SetMPEGVersion();
-	SetObjectType();
 }
 
 Void freac::ConfigureFAAC::ToggleBitrateQuality()

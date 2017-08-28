@@ -100,6 +100,7 @@ Geschichte
 
 		- Zum Lesen von MP3-Dateien wird jetzt der mpg123-Decoder verwendet
 		- Standardblockgröße bei FLAC auf 4096 Samples geändert, entsprechend den offiziellen FLAC-Tools
+		- Unterstützung für veraltete Main- und LTP-AAC-Profile entfernt
 		- Problem mit Fortschrittsanzeige bei lange laufenden Konvertierungen behoben
 		- Probleme beim Umgang mit Tabulatorzeichen in Titelinformationen behoben
 		- CDRip auf Version 1.26 aktualisiert um Probleme mit Laufwerken mit dem Buchstaben A: zu beheben

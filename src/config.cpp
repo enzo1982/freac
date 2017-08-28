@@ -191,7 +191,6 @@ Bool freac::Config::LoadSettings()
 	bonk_lossless				= config->GetIntValue(categoryBonk, "Lossless", 0);
 
 	faac_mpegversion			= config->GetIntValue(categoryFAAC, "MPEGVersion", 0);
-	faac_type				= config->GetIntValue(categoryFAAC, "AACType", 2);
 	faac_bitrate				= config->GetIntValue(categoryFAAC, "Bitrate", 64);
 	faac_bandwidth				= config->GetIntValue(categoryFAAC, "BandWidth", 16000);
 	faac_allowjs				= config->GetIntValue(categoryFAAC, "AllowJS", 1);
@@ -409,7 +408,6 @@ Bool freac::Config::SaveSettings()
 		config->SetIntValue(categoryBonk, "Lossless", bonk_lossless);
 
 		config->SetIntValue(categoryFAAC, "MPEGVersion", faac_mpegversion);
-		config->SetIntValue(categoryFAAC, "AACType", faac_type);
 		config->SetIntValue(categoryFAAC, "Bitrate", faac_bitrate);
 		config->SetIntValue(categoryFAAC, "BandWidth", faac_bandwidth);
 		config->SetIntValue(categoryFAAC, "AllowJS", faac_allowjs);

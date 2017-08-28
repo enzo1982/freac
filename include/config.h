@@ -203,7 +203,6 @@ namespace freac
 			Int		 vorbis_bitrate;
 
 			Int		 faac_mpegversion;
-			Int		 faac_type;
 			Int		 faac_bitrate;
 			Int		 faac_bandwidth;
 			Bool		 faac_allowjs;
