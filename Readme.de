@@ -1,8 +1,7 @@
 fre:ac Version 1.1 (Entwicklungs-Snapshot)
 
-fre:ac ist ein freier Open-Source Audiokonverter für verschiedene Formate.
-Das Programm unterstützt das Rippen von Audio-CDs, das Editieren von Tags
-sowie Video-Downloads und konvertiert folgende Audioformate:
+fre:ac ist ein freier Open-Source Audiokonverter. Das Programm unterstützt das Rippen
+von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate:
 
 	- MP3
 		- mit dem LAME MP3-Encoder		(http://lame.sourceforge.net/)
