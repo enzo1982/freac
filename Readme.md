@@ -1,7 +1,7 @@
 # ![fre:ac logo](https://freac.org/images/stories/freac_icon_smaller.png) fre:ac - free audio converter
 fre:ac is a free and open source audio converter. It supports audio CD ripping and tag editing and converts between various audio formats.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![fre:ac on Ubuntu Linux](https://freac.org/images/freac-ubuntu.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![fre:ac on Ubuntu Linux](https://freac.org/images/freac-ubuntu.png)
 
 ## Features
 - Supported formats include MP3, MP4/AAC, Opus and FLAC
