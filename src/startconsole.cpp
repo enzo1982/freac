@@ -674,16 +674,9 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 			return;
 		}
 
-		String	 encoderName;
+		Component	*component = boca.CreateComponentByID(String(helpenc).Append("-enc"));
 
-		for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
-		{
-			if (boca.GetComponentType(i) != COMPONENT_TYPE_ENCODER) continue;
-
-			if (boca.GetComponentID(i) == String(helpenc).Append("-enc")) encoderName = boca.GetComponentName(i);
-		}
-
-		Console::OutputString(String("Options for ").Append(encoderName).Append(":\n\n"));
+		Console::OutputString(String("Options for ").Append(component->GetName()).Append(":\n\n"));
 
 		if (helpenc == "lame")
 		{
@@ -730,9 +723,66 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 			Console::OutputString("\t-b <bitrate per channel>\t(24, 32 or 48, default: 48)\n");
 			Console::OutputString("\t-c <preselection candidates>\t(4, 8, 16 or 32, default: 32)\n\n");
 		}
+		else if (component->GetParameters().Length() > 0)
+		{
+			const Array<Parameter *>	&parameters = component->GetParameters();
+
+			/* Get required number of tabs for formatting.
+			 */
+			Int	 maxTabs = 0;
+
+			foreach (Parameter *parameter, parameters)
+			{
+				String	 spec = parameter->GetArgument().Replace("%VALUE", "<val>");
+
+				maxTabs = Math::Max((Int64) maxTabs, Math::Ceil((spec.Length() + 1) / 8.0));
+			}
+
+			/* Print formatted parameter list.
+			 */
+			foreach (Parameter *parameter, parameters)
+			{
+				ParameterType		 type	 = parameter->GetType();
+				String			 name	 = parameter->GetName();
+				String			 spec	 = parameter->GetArgument().Replace("%VALUE", "<val>");
+				const Array<Option *>	&options = parameter->GetOptions();
+				String			 def	 = parameter->GetDefault();
+
+				if (type == PARAMETER_TYPE_SWITCH)
+				{
+					Console::OutputString(String("\t").Append(spec).Append(String().FillN('\t', maxTabs - Math::Floor(spec.Length() / 8.0))).Append(name).Append("\n"));
+				}
+				else if (type == PARAMETER_TYPE_SELECTION)
+				{
+					Console::OutputString(String("\t").Append(spec).Append(String().FillN('\t', maxTabs - Math::Floor(spec.Length() / 8.0))).Append(name).Append(": "));
+
+					{
+						foreach (Option *option, options)
+						{
+							if (foreachindex > 0) Console::OutputString(String().FillN('\t', maxTabs + 1).Append(String().FillN(' ', name.Length() + 2)));
+
+							Console::OutputString(option->GetValue().Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias()).Append(")") : String()).Append(def == option->GetValue() ? ", default" : NIL).Append("\n"));
+						}
+					}
+
+					if (foreachindex < parameters.Length() - 1) Console::OutputString("\n");
+				}
+				else if (type == PARAMETER_TYPE_RANGE)
+				{
+					Console::OutputString(String("\t").Append(spec).Append(String().FillN('\t', maxTabs - Math::Floor(spec.Length() / 8.0))).Append(name).Append(": "));
+
+					foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MIN) Console::OutputString(String(option->GetValue()).Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias()).Append(")") : String()).Append(" - "));
+					foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MAX) Console::OutputString(String(option->GetValue()).Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias()).Append(")") : String()).Append(", "));
+
+					Console::OutputString(String("default ").Append(def).Append("\n"));
+				}
+			}
+		}
 		else
 		{
-			Console::OutputString(String("\tno options for ").Append(encoderName).Append("\n\n"));
+			Console::OutputString(String("\tno options for ").Append(component->GetName()).Append("\n\n"));
 		}
+
+		boca.DeleteComponent(component);
 	}
 }
