@@ -678,52 +678,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 
 		Console::OutputString(String("Options for ").Append(component->GetName()).Append(":\n\n"));
 
-		if (helpenc == "lame")
-		{
-			Console::OutputString("\t-m <mode>\t\t(CBR, VBR or ABR, default: VBR)\n");
-			Console::OutputString("\t-b <CBR/ABR bitrate>\t(8 - 320, default: 192)\n");
-			Console::OutputString("\t-q <VBR quality>\t(0 = best, 9 = worst, default: 5)\n\n");
-		}
-		else if (helpenc == "vorbis")
-		{
-			Console::OutputString("\t-q <quality>\t\t(0 - 100, default: 60, VBR mode)\n");
-			Console::OutputString("\t-b <target bitrate>\t(45 - 500, default: 192, ABR mode)\n\n");
-		}
-		else if (helpenc == "bonk")
-		{
-			Console::OutputString("\t-q <quantization factor>\t(0 - 2, default: 0.4)\n");
-			Console::OutputString("\t-p <predictor size>\t\t(0 - 512, default: 32)\n");
-			Console::OutputString("\t-r <downsampling ratio>\t\t(1 - 10, default: 2)\n");
-			Console::OutputString("\t-js\t\t\t\t(use Joint Stereo)\n");
-			Console::OutputString("\t-lossless\t\t\t(use lossless compression)\n\n");
-		}
-		else if (helpenc == "bladeenc")
-		{
-			Console::OutputString("\t-b <bitrate>\t(32, 40, 48, 56, 64, 80, 96, 112, 128,\n");
-			Console::OutputString("\t\t\t 160, 192, 224, 256 or 320, default: 192)\n\n");
-		}
-		else if (helpenc == "faac")
-		{
-			Console::OutputString("\t-q <quality>\t\t\t(10 - 500, default: 100, VBR mode)\n");
-			Console::OutputString("\t-b <bitrate per channel>\t(8 - 256, default: 64, ABR mode)\n");
-			Console::OutputString("\t-mp4\t\t\t\t(use MP4 container format)\n\n");
-		}
-		else if (helpenc == "flac")
-		{
-			Console::OutputString("\t-b <blocksize>\t\t\t(192 - 32768, default: 4608)\n");
-			Console::OutputString("\t-ms\t\t\t\t(use mid-side stereo)\n");
-			Console::OutputString("\t-l <max LPC order>\t\t(0 - 32, default: 8)\n");
-			Console::OutputString("\t-q <QLP coeff precision>\t(0 - 16, default: 0)\n");
-			Console::OutputString("\t-extc\t\t\t\t(do exhaustive QLP coeff optimization)\n");
-			Console::OutputString("\t-extm\t\t\t\t(do exhaustive model search)\n");
-			Console::OutputString("\t-r <min Rice>,<max Rice>\t(0 - 16, default: 3,3)\n\n");
-		}
-		else if (helpenc == "twinvq")
-		{
-			Console::OutputString("\t-b <bitrate per channel>\t(24, 32 or 48, default: 48)\n");
-			Console::OutputString("\t-c <preselection candidates>\t(4, 8, 16 or 32, default: 32)\n\n");
-		}
-		else if (component->GetParameters().Length() > 0)
+		if (component->GetParameters().Length() > 0)
 		{
 			const Array<Parameter *>	&parameters = component->GetParameters();
 
