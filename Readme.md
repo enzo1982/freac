@@ -32,3 +32,9 @@ Development packages for the following libraries need to be installed in order t
 When the dependencies are met, run `make` followed by `sudo make install` for smooth, BoCA and fre:ac respectively.
 
 You should then be able to run fre:ac using `/usr/local/bin/freac` and the command line interface using `/usr/local/bin/freaccmd`.
+
+----
+The official fre:ac homepage: https://www.freac.org/
+
+robert.kausch@freac.org,  
+Robert Kausch
