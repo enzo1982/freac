@@ -30,7 +30,7 @@
 #include <dialogs/overwrite.h>
 
 using namespace smooth::GUI::Dialogs;
-using namespace smooth::IO;
+using namespace smooth::Threads;
 
 using namespace BoCA;
 using namespace BoCA::AS;
@@ -44,7 +44,7 @@ Bool					 freac::JobConvert::stopConversion	= False;
 Array<Bool>				 freac::JobConvert::deviceLocked;
 Array<Bool>				 freac::JobConvert::outputLocked;
 
-Threads::Mutex				 freac::JobConvert::managementMutex;
+Mutex					 freac::JobConvert::managementMutex;
 
 Signal0<Void>				 freac::JobConvert::onStartEncoding;
 Signal1<Void, Bool>			 freac::JobConvert::onFinishEncoding;
@@ -1334,14 +1334,11 @@ Bool freac::JobConvert::LockDeviceForTrack(const Track &track)
 	if (track.origFilename.StartsWith("device://"))
 	{
 		String	 device = track.origFilename.SubString(9, track.origFilename.Tail(track.origFilename.Length() - 9).Find("/"));
+		Lock	 lock(managementMutex);
 
-		managementMutex.Lock();
-
-		if (deviceLocked.Get(device.ComputeCRC32())) { managementMutex.Release(); return False; }
+		if (deviceLocked.Get(device.ComputeCRC32())) return False;
 
 		deviceLocked.Add(True, device.ComputeCRC32());
-
-		managementMutex.Release();
 	}
 
 #if defined __APPLE__ || defined __HAIKU__
@@ -1355,13 +1352,11 @@ Bool freac::JobConvert::LockDeviceForTrack(const Track &track)
 	if (track.origFilename.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
 #endif
 	{
-		managementMutex.Lock();
+		Lock	 lock(managementMutex);
 
-		if (deviceLocked.Get(filePath.ComputeCRC32())) { managementMutex.Release(); return False; }
+		if (deviceLocked.Get(filePath.ComputeCRC32())) return False;
 
 		deviceLocked.Add(True, filePath.ComputeCRC32());
-
-		managementMutex.Release();
 	}
 #endif
 
@@ -1375,12 +1370,9 @@ Bool freac::JobConvert::UnlockDeviceForTrack(const Track &track)
 	if (track.origFilename.StartsWith("device://"))
 	{
 		String	 device = track.origFilename.SubString(9, track.origFilename.Tail(track.origFilename.Length() - 9).Find("/"));
-
-		managementMutex.Lock();
+		Lock	 lock(managementMutex);
 
 		deviceLocked.Remove(device.ComputeCRC32());
-
-		managementMutex.Release();
 	}
 
 #if defined __APPLE__ || defined __HAIKU__
@@ -1394,11 +1386,9 @@ Bool freac::JobConvert::UnlockDeviceForTrack(const Track &track)
 	if (track.origFilename.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
 #endif
 	{
-		managementMutex.Lock();
+		Lock	 lock(managementMutex);
 
 		deviceLocked.Remove(filePath.ComputeCRC32());
-
-		managementMutex.Release();
 	}
 #endif
 
@@ -1411,13 +1401,11 @@ Bool freac::JobConvert::LockOutputForTrack(const Track &track)
 	 */
 	if (track.outfile != NIL)
 	{
-		managementMutex.Lock();
+		Lock	 lock(managementMutex);
 
-		if (outputLocked.Get(track.outfile.ComputeCRC32())) { managementMutex.Release(); return False; }
+		if (outputLocked.Get(track.outfile.ComputeCRC32())) return False;
 
 		outputLocked.Add(True, track.outfile.ComputeCRC32());
-
-		managementMutex.Release();
 	}
 
 	return True;
@@ -1429,11 +1417,9 @@ Bool freac::JobConvert::UnlockOutputForTrack(const Track &track)
 	 */
 	if (track.outfile != NIL)
 	{
-		managementMutex.Lock();
+		Lock	 lock(managementMutex);
 
 		outputLocked.Remove(track.outfile.ComputeCRC32());
-
-		managementMutex.Release();
 	}
 
 	return True;
