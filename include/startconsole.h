@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -46,7 +46,8 @@ namespace freac
 
 			const Array<String>	&args;
 
-			Bool			 ScanForOption(const String &, String * = NIL);
+			Bool			 ScanForProgramOption(const String &, String * = NIL);
+			Bool			 ScanForEncoderOption(const String &, String * = NIL);
 			Void			 ScanForFiles(Array<String> *);
 			Bool			 TracksToFiles(const String &, Array<String> *);
 		public:
