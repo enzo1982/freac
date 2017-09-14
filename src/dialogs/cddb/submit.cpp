@@ -761,6 +761,8 @@ Void freac::cddbSubmitDlg::ChangeDrive()
 		cddbInfo.discLength = ex_CR_GetTocEntry(numTocEntries).dwStartSector / 75 + 2;
 	}
 
+	/* Update information from joblist.
+	 */
 	for (Int l = 0; l < currentConfig->appMain->joblist->GetNOfTracks(); l++)
 	{
 		Track	*trackInfo = currentConfig->appMain->joblist->GetNthTrack(l);
@@ -781,6 +783,24 @@ Void freac::cddbSubmitDlg::ChangeDrive()
 				cddbInfo.trackTitles.Set(cddbInfo.trackTitles.GetNthIndex(trackInfo->cdTrack - 1), trackInfo->title);
 			}
 
+			if (trackInfo->album != NIL && trackInfo->album != edit_album->GetText() && trackInfo->cdTrack == 1)
+			{
+				edit_album->SetText(trackInfo->album);
+				cddbInfo.dTitle = trackInfo->album;
+			}
+
+			if (trackInfo->genre != NIL && trackInfo->genre != edit_genre->GetText() && trackInfo->cdTrack == 1)
+			{
+				edit_genre->SetText(trackInfo->genre);
+				cddbInfo.dGenre = trackInfo->genre;
+			}
+
+			if (trackInfo->year > 0 && trackInfo->year != edit_year->GetText().ToInt() && trackInfo->cdTrack == 1)
+			{
+				edit_year->SetText(String::FromInt(trackInfo->year));
+				cddbInfo.dYear = trackInfo->year;
+			}
+
 			if (trackInfo->comment != NIL && trackInfo->comment != comments.GetNth(trackInfo->cdTrack - 1))
 			{
 				comments.Set(comments.GetNthIndex(trackInfo->cdTrack - 1), trackInfo->comment);
@@ -789,9 +809,13 @@ Void freac::cddbSubmitDlg::ChangeDrive()
 		}
 	}
 
+	/* Set disc artist field.
+	 */
+	edit_artist->SetText(artists.GetFirst());
+
 	for (Int m = 1; m < list_tracks->Length(); m++)
 	{
-		if (artists.GetNth(m) != artists.GetNth(m - 1))
+		if (artists.GetNth(m) != artists.GetNth(m - 1) && titles.GetNth(m) != freac::i18n->TranslateString("Data track") && titles.GetNth(m) != "Data track")
 		{
 			edit_artist->SetText(freac::i18n->TranslateString("Various artists"));
 			edit_trackartist->Activate();
