@@ -1,4 +1,4 @@
-fre:ac version 1.0.29a
+fre:ac version 1.0.30
 
 fre:ac is a free and open source audio converter for various formats.
 It supports audio CD ripping and converts the following audio formats:
@@ -92,9 +92,10 @@ Known problems
 History
 -------
 
-        Version 1.0.29a (September 2017)
+        Version 1.0.30 (September 2017)
 
 		- minor improvements for CDDB submit dialog
+		- guard against disc insert notification being received multiple times
 		- upgraded FAAC to version 1.29.7.4
 
 	Version 1.0.29 (August 2017)

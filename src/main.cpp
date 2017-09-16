@@ -737,6 +737,9 @@ Bool freac::freacGUI::ExitProc()
 Void freac::freacGUI::MessageProc(Int message, Int wParam, Int lParam)
 {
 #ifdef __WIN32__
+	static UnsignedInt64	 lastTime = 0;
+	static String		 lastDrive;
+
 	switch (message)
 	{
 		case WM_DEVICECHANGE:
@@ -759,6 +762,10 @@ Void freac::freacGUI::MessageProc(Int message, Int wParam, Int lParam)
 				}
 
 				if (driveLetter[0] == ' ') break;
+
+				/* Check time since last message.
+				 */
+				if (driveLetter == lastDrive && S::System::System::Clock() - lastTime < 15000) break;
 
 				Int	 trackLength = 0;
 
@@ -828,6 +835,11 @@ Void freac::freacGUI::MessageProc(Int message, Int wParam, Int lParam)
 						if (currentConfig->cdrip_autoRip) StartEncoding();
 					}
 				}
+
+				/* Save message time and drive.
+				 */
+				lastTime  = S::System::System::Clock();
+				lastDrive = driveLetter;
 			}
 
 			break;
