@@ -40,8 +40,8 @@ freac::Debug		*freac::debug_out;
  */
 String	 freac::freac::appName	    = "fre:ac";
 String	 freac::freac::appLongName  = "fre:ac - free audio converter";
-String	 freac::freac::version	    = "v1.0.29a";
-String	 freac::freac::shortVersion = "v1.0.29a";
+String	 freac::freac::version	    = "v1.0.30";
+String	 freac::freac::shortVersion = "v1.0.30";
 String	 freac::freac::cddbVersion  = "v1.0.27";	// CDDB version may not contain spaces
 String	 freac::freac::cddbMode	    = "submit";
 String	 freac::freac::copyright    = "Copyright (C) 2001-2017 Robert Kausch";
