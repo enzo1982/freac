@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -75,6 +75,9 @@ Void freac::Notification::ProcessSystemMessage(Int message, Int wParam, Int lPar
 {
 	if (message != WM_DEVICECHANGE) return;
 
+	static UnsignedInt64	 lastTime  = 0;
+	static Int		 lastDrive = -1;
+
 	switch (wParam)
 	{
 		case DBT_DEVICEARRIVAL:
@@ -85,7 +88,21 @@ Void freac::Notification::ProcessSystemMessage(Int message, Int wParam, Int lPar
 			{
 				Int	 drive = GetDriveNumber(*(DEV_BROADCAST_VOLUME *) lParam);
 
-				if (drive >= 0) onDiscInsert.Emit(drive);
+				if (drive >= 0)
+				{
+					/* Guard against double sent notifications.
+					 */
+					if (drive == lastDrive && S::System::System::Clock() - lastTime <= 15000) break;
+
+					/* Fire disc insert event.
+					 */
+					onDiscInsert.Emit(drive);
+
+					/* Save message time and drive.
+					 */
+					lastTime  = S::System::System::Clock();
+					lastDrive = drive;
+				}
 			}
 
 			break;
@@ -97,7 +114,16 @@ Void freac::Notification::ProcessSystemMessage(Int message, Int wParam, Int lPar
 			{
 				Int	 drive = GetDriveNumber(*(DEV_BROADCAST_VOLUME *) lParam);
 
-				if (drive >= 0) onDiscRemove.Emit(drive);
+				if (drive >= 0)
+				{
+					/* Fire disc removal event.
+					 */
+					onDiscRemove.Emit(drive);
+
+					/* Reset message time.
+					 */
+					if (drive == lastDrive) lastTime = 0;
+				}
 			}
 
 			break;
