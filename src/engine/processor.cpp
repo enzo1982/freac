@@ -46,6 +46,8 @@ Bool freac::Processor::Create(const Track &nTrack)
 		{
 			Destroy();
 
+			String::ExplodeFinish();
+
 			return False;
 		}
 
@@ -61,6 +63,8 @@ Bool freac::Processor::Create(const Track &nTrack)
 
 		dsps.Add(dsp);
 	}
+
+	String::ExplodeFinish();
 
 	return True;
 }
