@@ -304,7 +304,11 @@ Void freac::LayerPlayer::OpenCDTray()
 
 	if (info != NIL)
 	{
-		info->OpenNthDeviceTray(BoCA::Config::Get()->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
+		BoCA::Config	*config = BoCA::Config::Get();
+		Int		 drive	= config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
+
+		if (info->IsNthDeviceTrayOpen(drive)) info->CloseNthDeviceTray(drive);
+		else				      info->OpenNthDeviceTray(drive);
 
 		boca.DeleteComponent(info);
 	}

@@ -192,6 +192,7 @@ History
 		- the time left indicator now shows hours if necessary
 		- the five last used output folders are now saved for later use
 		- the five last used file name patterns are now saved for later use
+		- the button to open the CD tray now closes it if already open
 		- greatly improved case conversion functions
 		- conversion progress is now shown in the taskbar on Windows 7 and later
 		- skipping tracks is no longer possible when converting to a single file

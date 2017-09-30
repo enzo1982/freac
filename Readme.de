@@ -192,6 +192,7 @@ Geschichte
 		- Die Restzeitanzeige zeigt falls notwendig nun auch Stunden an
 		- Die fünf zuletzt verwendeten Ausgabeordner werden jetzt für späteren Zugriff gespeichert
 		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
+		- Die Schaltfläche zum Öffnen des CD-Laufwerks schließt das Laufwerk nun, wenn es bereits offen ist
 		- Groß-/Kleinschreibungs-Konvertierungsfunktionen stark verbessert
 		- Der Fortschritt einer Konvertierung wird unter Windows 7 und neuer in der Taskleiste angezeigt
 		- Überspringen von Tracks ist beim Konvertieren in eine einzige Datei nicht mehr möglich
