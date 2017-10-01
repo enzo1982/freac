@@ -50,7 +50,7 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 	if (nFileName.StartsWith("device://")) stream = new InStream(STREAM_DRIVER, &zero_in);
 	else				       stream = new InStream(STREAM_FILE, nFileName, IS_READ);
 
-	stream->SetPackageSize((track.length >= 0 ? 32768 : 2048) * format.channels * (format.bits / 8));
+	stream->SetPackageSize((track.length >= 0 && track.lossless ? 32768 : 4096) * format.channels * (format.bits / 8));
 
 	if (stream->GetLastError() != IO_ERROR_OK)
 	{
