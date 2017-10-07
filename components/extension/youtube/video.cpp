@@ -13,6 +13,7 @@
 #include "video.h"
 #include "videosite.h"
 #include "converter.h"
+#include "config.h"
 
 using namespace smooth::Net;
 using namespace smooth::Threads;
@@ -44,7 +45,7 @@ Int BoCA::Video::DownloaderThread(String targetFileName)
 
 	/* Wait until number of active downloads drops below maximum.
 	 */
-	Int	&maxActiveDownloads = config->GetPersistentIntValue("YouTube", "MaxDownloads", 8);
+	Int	&maxActiveDownloads = config->GetPersistentIntValue(ConfigureYouTube::ConfigID, "MaxDownloads", 8);
 
 	while (activeDownloads >= maxActiveDownloads) S::System::System::Sleep(100);
 
@@ -84,10 +85,10 @@ Int BoCA::Video::DownloaderThread(String targetFileName)
 
 	/* Convert video file if requested.
 	 */
-	if (config->GetIntValue("YouTube", "OutputFormat", -1) >= 0)
+	if (config->GetIntValue(ConfigureYouTube::ConfigID, "OutputFormat", -1) >= 0)
 	{
 		Array<Converter *>	&converters = Converter::Get();
-		Converter		*converter  = converters.GetNth(config->GetIntValue("YouTube", "OutputFormat", -1));
+		Converter		*converter  = converters.GetNth(config->GetIntValue(ConfigureYouTube::ConfigID, "OutputFormat", -1));
 
 		String			 convertedFileName = targetFileName.Head(targetFileName.FindLast(".") + 1).Append(converter->GetFormat().GetExtensions().GetFirst());
 

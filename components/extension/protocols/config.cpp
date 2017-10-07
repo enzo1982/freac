@@ -14,14 +14,16 @@
 
 using namespace smooth::GUI::Dialogs;
 
+const String	 BoCA::ConfigureProtocols::ConfigID = "Protocols";
+
 BoCA::ConfigureProtocols::ConfigureProtocols()
 {
-	Config	*config = Config::Get();
-	I18n	*i18n	= I18n::Get();
+	const Config	*config = Config::Get();
+	I18n		*i18n	= I18n::Get();
 
 	i18n->SetContext("Extensions::Protocols::Configuration");
 
-	showProtocolsTab	= config->GetIntValue("Protocols", "ShowProtocolsTab", False);
+	showProtocolsTab	= config->GetIntValue(ConfigID, "ShowProtocolsTab", False);
 
 	group_ui		= new GroupBox(i18n->TranslateString("User interface"), Point(7, 11), Size(344, 41));
 
@@ -44,7 +46,7 @@ Int BoCA::ConfigureProtocols::SaveSettings()
 {
 	Config	*config = Config::Get();
 
-	config->SetIntValue("Protocols", "ShowProtocolsTab", showProtocolsTab);
+	config->SetIntValue(ConfigID, "ShowProtocolsTab", showProtocolsTab);
 
 	return Success();
 }

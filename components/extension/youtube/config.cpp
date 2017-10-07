@@ -15,18 +15,20 @@
 
 using namespace smooth::GUI::Dialogs;
 
+const String	 BoCA::ConfigureYouTube::ConfigID = "YouTube";
+
 BoCA::ConfigureYouTube::ConfigureYouTube()
 {
-	Config	*config = Config::Get();
-	I18n	*i18n	= I18n::Get();
+	const Config	*config	= Config::Get();
+	I18n		*i18n	= I18n::Get();
 
 	i18n->SetContext("Extensions::Video Downloader::Configuration");
 
-	autoDownload	= config->GetIntValue("YouTube", "AutoDownload", False);
-	maxDownloads	= config->GetIntValue("YouTube", "MaxDownloads", 8);
-	keepVideoFiles	= config->GetIntValue("YouTube", "SaveVideoFiles", False);
+	autoDownload	= config->GetIntValue(ConfigID, "AutoDownload", False);
+	maxDownloads	= config->GetIntValue(ConfigID, "MaxDownloads", 8);
+	keepVideoFiles	= config->GetIntValue(ConfigID, "SaveVideoFiles", False);
 
-	String	 videoOutputDir = config->GetStringValue("YouTube", "VideoOutputDir", S::System::System::GetPersonalFilesDirectory(S::System::PersonalFilesMovies));
+	String	 videoOutputDir = config->GetStringValue(ConfigID, "VideoOutputDir", S::System::System::GetPersonalFilesDirectory(S::System::PersonalFilesMovies));
 
 	group_auto		= new GroupBox(i18n->TranslateString("Automatization"), Point(7, 11), Size(344, 41));
 
@@ -56,7 +58,7 @@ BoCA::ConfigureYouTube::ConfigureYouTube()
 	check_keep		= new CheckBox(i18n->TranslateString("Save downloaded video files"), Point(10, 14), Size(236, 0), &keepVideoFiles);
 	check_keep->onAction.Connect(&ConfigureYouTube::ToggleKeepFiles, this);
 
-	if (config->GetIntValue("YouTube", "DisableSaveOption", False)) check_keep->Deactivate();
+	if (config->GetIntValue(ConfigID, "DisableSaveOption", False)) check_keep->Deactivate();
 
 	edit_dir		= new EditBox(videoOutputDir, Point(10, 39), Size(236, 0), 0);
 
@@ -77,7 +79,7 @@ BoCA::ConfigureYouTube::ConfigureYouTube()
 		combo_format->AddEntry(format.GetName().Append(" (*.").Append(format.GetExtensions().GetFirst()).Append(")"));
 	}
 
-	combo_format->SelectNthEntry(config->GetIntValue("YouTube", "OutputFormat", -1) + 1);
+	combo_format->SelectNthEntry(config->GetIntValue(ConfigID, "OutputFormat", -1) + 1);
 
 	group_files->Add(check_keep);
 	group_files->Add(edit_dir);
@@ -178,12 +180,12 @@ Int BoCA::ConfigureYouTube::SaveSettings()
 
 	if (!videoOutputDir.EndsWith(Directory::GetDirectoryDelimiter())) videoOutputDir.Append(Directory::GetDirectoryDelimiter());
 
-	config->SetStringValue("YouTube", "VideoOutputDir", videoOutputDir);
+	config->SetStringValue(ConfigID, "VideoOutputDir", videoOutputDir);
 
-	config->SetIntValue("YouTube", "AutoDownload", autoDownload);
-	config->SetIntValue("YouTube", "MaxDownloads", maxDownloads);
-	config->SetIntValue("YouTube", "SaveVideoFiles", keepVideoFiles);
-	config->SetIntValue("YouTube", "OutputFormat", combo_format->GetSelectedEntryNumber() - 1);
+	config->SetIntValue(ConfigID, "AutoDownload", autoDownload);
+	config->SetIntValue(ConfigID, "MaxDownloads", maxDownloads);
+	config->SetIntValue(ConfigID, "SaveVideoFiles", keepVideoFiles);
+	config->SetIntValue(ConfigID, "OutputFormat", combo_format->GetSelectedEntryNumber() - 1);
 
 	return Success();
 }

@@ -11,6 +11,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include "layer.h"
+#include "config.h"
 #include "video.h"
 #include "videosite.h"
 #include "videolist.h"
@@ -46,10 +47,10 @@ BoCA::LayerYouTube::LayerYouTube() : Layer("Video")
 	Add(edit_url);
 	Add(button_add_url);
 
-	check_auto_download	= new CheckBox(NIL, Point(8, 34), Size(300, 0), (Bool *) &config->GetPersistentIntValue("YouTube", "AutoDownload", False));
+	check_auto_download	= new CheckBox(NIL, Point(8, 34), Size(300, 0), (Bool *) &config->GetPersistentIntValue(ConfigureYouTube::ConfigID, "AutoDownload", False));
 	check_auto_download->SetOrientation(OR_UPPERRIGHT);
 
-	check_keep_files	= new CheckBox(NIL, Point(8, 34), Size(300, 0), (Bool *) &config->GetPersistentIntValue("YouTube", "SaveVideoFiles", False));
+	check_keep_files	= new CheckBox(NIL, Point(8, 34), Size(300, 0), (Bool *) &config->GetPersistentIntValue(ConfigureYouTube::ConfigID, "SaveVideoFiles", False));
 	check_keep_files->SetOrientation(OR_UPPERRIGHT);
 
 	if (missingDecoders) check_keep_files->Deactivate();
@@ -263,9 +264,9 @@ Void BoCA::LayerYouTube::LoadVideoSites()
 		}
 	}
 
-	if (missingDecoders) config->SetIntValue("YouTube", "SaveVideoFiles", True);
+	if (missingDecoders) config->SetIntValue(ConfigureYouTube::ConfigID, "SaveVideoFiles", True);
 
-	config->SetIntValue("YouTube", "DisableSaveOption", missingDecoders);
+	config->SetIntValue(ConfigureYouTube::ConfigID, "DisableSaveOption", missingDecoders);
 }
 
 Void BoCA::LayerYouTube::FreeVideoSites()
@@ -320,7 +321,7 @@ Void BoCA::LayerYouTube::OnShowLayer()
 
 	Config	*config = Config::Get();
 
-	if (missingDecoders && !config->GetIntValue("YouTube", "DoNotShowDecoderWarning", False))
+	if (missingDecoders && !config->GetIntValue(ConfigureYouTube::ConfigID, "DoNotShowDecoderWarning", False))
 	{
 		BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -333,7 +334,7 @@ Void BoCA::LayerYouTube::OnShowLayer()
 
 		DeleteObject(messageBox);
 
-		config->SetIntValue("YouTube", "DoNotShowDecoderWarning", doNotShowAgain);
+		config->SetIntValue(ConfigureYouTube::ConfigID, "DoNotShowDecoderWarning", doNotShowAgain);
 	}
 
 	initialized = True;
@@ -470,7 +471,7 @@ Void BoCA::LayerYouTube::OnTimerCheckClipboard()
 
 	/* Quit if auto download is disabled.
 	 */
-	if (!config->GetIntValue("YouTube", "AutoDownload", False)) { previousClipboardText = NIL; return; }
+	if (!config->GetIntValue(ConfigureYouTube::ConfigID, "AutoDownload", False)) { previousClipboardText = NIL; return; }
 
 	/* Get text from clipboard.
 	 */
@@ -708,7 +709,7 @@ Void BoCA::LayerYouTube::OnApplicationRemoveTrack(const Track &track)
 	{
 		if (tracks.Get(list_tracks->GetNthEntry(i)->GetHandle()).GetTrackID() == track.GetTrackID())
 		{
-			if (!config->GetIntValue("YouTube", "SaveVideoFiles", False) || track.origFilename.StartsWith(S::System::System::GetTempDirectory())) File(track.origFilename).Delete();
+			if (!config->GetIntValue(ConfigureYouTube::ConfigID, "SaveVideoFiles", False) || track.origFilename.StartsWith(S::System::System::GetTempDirectory())) File(track.origFilename).Delete();
 
 			tracks.Remove(list_tracks->GetNthEntry(i)->GetHandle());
 
@@ -748,7 +749,7 @@ Void BoCA::LayerYouTube::OnApplicationRemoveAllTracks()
 
 	foreach (const Track &track, tracks)
 	{
-		if (!config->GetIntValue("YouTube", "SaveVideoFiles", False) || track.origFilename.StartsWith(S::System::System::GetTempDirectory())) File(track.origFilename).Delete();
+		if (!config->GetIntValue(ConfigureYouTube::ConfigID, "SaveVideoFiles", False) || track.origFilename.StartsWith(S::System::System::GetTempDirectory())) File(track.origFilename).Delete();
 	}
 
 	tracks.RemoveAll();
@@ -826,11 +827,11 @@ Bool BoCA::LayerYouTube::StartDownload(const String &URL)
 	Config	*config = Config::Get();
 	String	 videoFile = S::System::System::GetTempDirectory().Append("video_temp_").Append(String::FromInt(S::System::System::Clock())).Append(".").Append(fileExt);
 
-	if (config->GetIntValue("YouTube", "SaveVideoFiles", False))
+	if (config->GetIntValue(ConfigureYouTube::ConfigID, "SaveVideoFiles", False))
 	{
 		video->QueryMetadata();
 
-		videoFile = config->GetStringValue("YouTube", "VideoOutputDir", S::System::System::GetPersonalFilesDirectory(S::System::PersonalFilesMovies));
+		videoFile = config->GetStringValue(ConfigureYouTube::ConfigID, "VideoOutputDir", S::System::System::GetPersonalFilesDirectory(S::System::PersonalFilesMovies));
 
 		if (!videoFile.EndsWith(Directory::GetDirectoryDelimiter())) videoFile.Append(Directory::GetDirectoryDelimiter());
 

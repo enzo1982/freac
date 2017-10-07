@@ -26,16 +26,18 @@ namespace BoCA
 	class ConfigureProtocols : public ConfigLayer
 	{
 		private:
-			GroupBox	*group_ui;
-			CheckBox	*check_ui_showTab;
+			GroupBox		*group_ui;
+			CheckBox		*check_ui_showTab;
 
 
-			Bool		 showProtocolsTab;
+			Bool			 showProtocolsTab;
 		public:
-					 ConfigureProtocols();
-					~ConfigureProtocols();
+			static const String	 ConfigID;
 
-			Int		 SaveSettings();
+						 ConfigureProtocols();
+						~ConfigureProtocols();
+
+			Int			 SaveSettings();
 	};
 };
 

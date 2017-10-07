@@ -68,7 +68,7 @@ Layer *BoCA::Protocols::GetMainTabLayer()
 {
 	const Config	*config = GetConfiguration();
 
-	if (!config->GetIntValue("Protocols", "ShowProtocolsTab", False)) return NIL;
+	if (!config->GetIntValue(ConfigureProtocols::ConfigID, "ShowProtocolsTab", False)) return NIL;
 
 	if (mainTabLayer == NIL) mainTabLayer = new LayerProtocols();
 
