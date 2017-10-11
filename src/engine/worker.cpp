@@ -248,6 +248,14 @@ Int freac::ConvertWorker::Convert()
 
 		decoderName = decoder->GetDecoderName();
 
+		/* Create verifier.
+		 */
+		Verifier	*verifier = new Verifier(configuration);
+		Bool		 verify	  = False;
+
+		if (verifyInput && (conversionStep == ConversionStepOnTheFly ||
+				    conversionStep == ConversionStepDecode)) verify = verifier->Create(trackToConvert);
+
 		/* Create processor.
 		 */
 		Processor	*processor = new Processor(configuration);
@@ -255,6 +263,7 @@ Int freac::ConvertWorker::Convert()
 		if (!processor->Create(trackToConvert))
 		{
 			delete decoder;
+			delete verifier;
 			delete processor;
 
 			BoCA::Config::Free(encoderConfig);
@@ -269,8 +278,9 @@ Int freac::ConvertWorker::Convert()
 		if (conversionStep != ConversionStepVerify && !encoder->Create(activeEncoderID, out_filename, trackToConvert))
 		{
 			delete decoder;
-			delete encoder;
+			delete verifier;
 			delete processor;
+			delete encoder;
 
 			File(out_filename).Delete();
 
@@ -278,14 +288,6 @@ Int freac::ConvertWorker::Convert()
 
 			return Error();
 		}
-
-		/* Create verifier.
-		 */
-		Verifier	*verifier = new Verifier(configuration);
-		Bool		 verify	  = False;
-
-		if (verifyInput && (conversionStep == ConversionStepOnTheFly ||
-				    conversionStep == ConversionStepDecode)) verify = verifier->Create(trackToConvert);
 
 		/* Enable MD5 and add a verification step if we are to verify the output.
 		 */
@@ -321,7 +323,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Run main conversion loop.
 		 */
-		Int64	 trackLength = Loop(decoder, processor, verifier, encoder);
+		Int64	 trackLength = Loop(decoder, verifier, processor, encoder);
 
 		/* Verify input.
 		 */
@@ -372,12 +374,12 @@ Int freac::ConvertWorker::Convert()
 				break;
 		}
 
-		/* Free encoder, decoder, processor and verifier.
+		/* Free decoder, verifier, processor and encoder.
 		 */
-		delete encoder;
 		delete decoder;
-		delete processor;
 		delete verifier;
+		delete processor;
+		delete encoder;
 
 		BoCA::Config::Free(encoderConfig);
 
@@ -442,7 +444,7 @@ Int freac::ConvertWorker::Convert()
 	return Success();
 }
 
-Int64 freac::ConvertWorker::Loop(Decoder *decoder, Processor *processor, Verifier *verifier, Encoder *encoder)
+Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Processor *processor, Encoder *encoder)
 {
 	/* Get config values.
 	 */

@@ -50,7 +50,7 @@ namespace freac
 			Bool						 quit;
 
 			Int						 Perform();
-			Int64						 Loop(Decoder *, Processor *, Verifier *, Encoder *);
+			Int64						 Loop(Decoder *, Verifier *, Processor *, Encoder *);
 
 			virtual Int					 Convert();
 		public:

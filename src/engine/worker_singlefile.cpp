@@ -135,7 +135,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Run main conversion loop.
 	 */
-	Int64	 trackLength = Loop(decoder, NIL, verifier, encoder);
+	Int64	 trackLength = Loop(decoder, verifier, NIL, encoder);
 
 	/* Verify input.
 	 */
