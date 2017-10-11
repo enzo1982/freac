@@ -113,11 +113,8 @@ Int freac::ConvertWorker::Convert()
 
 	for (Int step = 0; step < conversionSteps && !cancel; step++)
 	{
-		/* Setup track and file names.
+		/* Setup file names.
 		 */
-		Track	 track  = trackToConvert;
-		Format	 format = trackToConvert.GetFormat();
-
 		String	 in_filename  = trackToConvert.origFilename;
 		String	 out_filename = trackToConvert.outfile;
 
@@ -205,6 +202,7 @@ Int freac::ConvertWorker::Convert()
 
 				boca.DeleteComponent(decoder);
 
+				Format		 format	   = trackToConvert.GetFormat();
 				const Format	&outFormat = outTrack.GetFormat();
 
 				if (outFormat.rate     != format.rate ||
@@ -430,6 +428,8 @@ Int freac::ConvertWorker::Convert()
 
 		/* Update track length and offset.
 		 */
+		Track	 track = trackToConvert;
+
 		trackToConvert.sampleOffset = 0;
 		trackToConvert.length	    = trackLength;
 
