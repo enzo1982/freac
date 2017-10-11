@@ -30,11 +30,11 @@ freac::ConfigureDSP::ConfigureDSP()
 	list_available	= new ListBox(Point(10, 29), Size(245, 116));
 	list_available->onSelectEntry.Connect(&ConfigureDSP::OnSelectAvailable, this);
 
-	btn_add		= new Button(i18n->IsActiveLanguageRightToLeft() ? "<" : ">", NIL, Point(263, 60), Size(26, 0));
+	btn_add		= new Button(i18n->IsActiveLanguageRightToLeft() ? "<-" : "->", NIL, Point(263, 60), Size(26, 0));
 	btn_add->onAction.Connect(&ConfigureDSP::OnAddComponent, this);
 	btn_add->Deactivate();
 
-	btn_remove	= new Button(i18n->IsActiveLanguageRightToLeft() ? ">" : "<", NIL, Point(263, 90), Size(26, 0));
+	btn_remove	= new Button(i18n->IsActiveLanguageRightToLeft() ? "->" : "<-", NIL, Point(263, 90), Size(26, 0));
 	btn_remove->onAction.Connect(&ConfigureDSP::OnRemoveComponent, this);
 	btn_remove->Deactivate();
 
