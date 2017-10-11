@@ -258,9 +258,10 @@ Int freac::ConvertWorker::Convert()
 
 		/* Create processor.
 		 */
-		Processor	*processor = new Processor(configuration);
+		Processor	*processor     = new Processor(configuration);
+		Track		 trackToEncode = trackToConvert;
 
-		if (!processor->Create(trackToConvert))
+		if (!processor->Create(trackToEncode))
 		{
 			delete decoder;
 			delete verifier;
@@ -271,11 +272,13 @@ Int freac::ConvertWorker::Convert()
 			return Error();
 		}
 
+		trackToEncode.SetFormat(processor->GetFormatInfo());
+
 		/* Create encoder.
 		 */
 		Encoder	*encoder = new Encoder(encoderConfig);
 
-		if (conversionStep != ConversionStepVerify && !encoder->Create(activeEncoderID, out_filename, trackToConvert))
+		if (conversionStep != ConversionStepVerify && !encoder->Create(activeEncoderID, out_filename, trackToEncode))
 		{
 			delete decoder;
 			delete verifier;
@@ -491,7 +494,11 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Processor
 
 		/* Pass samples to verifier.
 		 */
-		verifier->Process(buffer);
+		if (verifier != NIL) verifier->Process(buffer);
+
+		/* Transform samples using processor.
+		 */
+		if (processor != NIL) processor->Transform(buffer);
 
 		/* Pass samples to encoder.
 		 */
