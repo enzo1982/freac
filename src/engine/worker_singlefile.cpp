@@ -114,6 +114,19 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	if (verifyInput && (conversionStep == ConversionStepOnTheFly ||
 			    conversionStep == ConversionStepDecode)) verify = verifier->Create(trackToConvert);
 
+	/* Create processor.
+	 */
+	Processor	*processor = new Processor(configuration);
+
+	if (!processor->Create(trackToConvert))
+	{
+		delete decoder;
+		delete verifier;
+		delete processor;
+
+		return Error();
+	}
+
 	/* Enable MD5 if we are to verify the output.
 	 */
 	if (conversionStep == ConversionStepVerify) decoder->SetCalculateMD5(True);
@@ -135,7 +148,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Run main conversion loop.
 	 */
-	Int64	 trackLength = Loop(decoder, verifier, NIL, encoder);
+	Int64	 trackLength = Loop(decoder, verifier, processor, encoder);
 
 	/* Verify input.
 	 */
@@ -180,6 +193,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	 */
 	delete decoder;
 	delete verifier;
+	delete processor;
 
 	/* Signal next chapter.
 	 */
