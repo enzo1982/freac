@@ -52,9 +52,6 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Check format of output file in verification step.
 	 */
-	Track	 track  = trackToConvert;
-	Format	 format = trackToConvert.GetFormat();
-
 	if (conversionStep == ConversionStepVerify)
 	{
 		DecoderComponent	*decoder = boca.CreateDecoderForStream(trackToConvert.origFilename);
@@ -67,6 +64,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 			boca.DeleteComponent(decoder);
 
+			Format		 format	   = trackToConvert.GetFormat();
 			const Format	&outFormat = outTrack.GetFormat();
 
 			if (outFormat.rate     != format.rate ||
@@ -201,7 +199,9 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Update track length and offset.
 	 */
-	trackToConvert.sampleOffset = Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75);
+	Track	 track = trackToConvert;
+
+	trackToConvert.sampleOffset = Math::Round((Float) (encodedSamples - trackLength) / trackToConvert.GetFormat().rate * 75);
 	trackToConvert.length	    = trackLength;
 
 	/* Fix total samples value in case we had
