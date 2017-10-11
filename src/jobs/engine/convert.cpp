@@ -16,6 +16,7 @@
 
 #include <engine/decoder.h>
 #include <engine/encoder.h>
+#include <engine/processor.h>
 
 #include <engine/worker.h>
 #include <engine/worker_singlefile.h>
@@ -351,11 +352,20 @@ Error freac::JobConvert::Perform()
 				if (track.origFilename == singleOutFile) { singleOutFile.Append(".temp"); break; }
 			}
 
+			/* Create processor to get output format.
+			 */
+			Processor	*processor     = new Processor(configuration);
+			Track		 trackToEncode = singleTrack;
+
+			if (processor->Create(trackToEncode)) trackToEncode.SetFormat(processor->GetFormatInfo());
+
+			delete processor;
+
 			/* Create encoder for single file output.
 			 */
 			singleFileEncoder = new Encoder(configuration);
 
-			if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrack))
+			if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, trackToEncode))
 			{
 				delete singleFileEncoder;
 
