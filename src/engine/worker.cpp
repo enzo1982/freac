@@ -525,6 +525,16 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Processor
 		while (pause && !cancel) S::System::System::Sleep(50);
 	}
 
+	/* Finish sample transformations.
+	 */
+	buffer.Resize(0);
+
+	if (processor != NIL) processor->Finish(buffer);
+
+	/* Pass remaining samples to encoder.
+	 */
+	if (buffer.Size() > 0 && encoder->Write(buffer) == -1) cancel = True;
+
 	/* Inform components about finished/cancelled conversion.
 	 */
 	if (cancel) BoCA::Engine::Get()->onCancelTrackConversion.Emit(trackToConvert);
