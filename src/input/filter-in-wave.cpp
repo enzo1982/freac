@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -152,6 +152,8 @@ freac::Track *freac::FilterInWAVE::GetFileInfo(const String &inFile)
 		}
 		else if (chunk == "data")
 		{
+			if (uint32(cSize) == 0xFFFFFFFF || cSize == 0) cSize = f_in->Size() - f_in->GetPos();
+
 			nFormat->length = uint32(cSize) / (nFormat->bits / 8);
 			nFormat->bits	= Math::Min(32, nFormat->bits);
 
