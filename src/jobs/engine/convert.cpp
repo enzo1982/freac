@@ -892,6 +892,7 @@ Error freac::JobConvert::Perform()
 			worker->SetConversionStep(ConversionStepVerify);
 			worker->SetTrackToConvert(singleTrack);
 
+			worker->SetLogName(logName);
 			worker->Start();
 
 			/* Announce new track.
