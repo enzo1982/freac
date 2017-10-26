@@ -37,8 +37,21 @@ namespace freac
 
 			const BoCA::Format			&GetFormatInfo() const;
 
-			Int					 Transform(Buffer<UnsignedByte> &);
-			Int					 Finish(Buffer<UnsignedByte> &);
+			virtual Int				 Transform(Buffer<UnsignedByte> &);
+			virtual Int				 Finish(Buffer<UnsignedByte> &);
+	};
+
+	/* Special processor class for single file conversions.
+	 *
+	 * Ignores finish requests until FinishSingleFile is called.
+	 */
+	class ProcessorSingleFile : public Processor
+	{
+		public:
+				 ProcessorSingleFile(const BoCA::Config *config) : Processor(config)	{ }
+
+			Int	 Finish(Buffer<UnsignedByte> &buffer)					{ return 0; }
+			Int	 FinishSingleFile(Buffer<UnsignedByte> &buffer)				{ return Processor::Finish(buffer); }
 	};
 };
 

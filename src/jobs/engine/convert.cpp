@@ -253,6 +253,8 @@ Error freac::JobConvert::Perform()
 	Bool	 encodeToSingleFile	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
 	Bool	 overwriteAllFiles	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || configuration->enable_console;
 
+	Int	 singleFileMode		= configuration->GetIntValue(Config::CategoryProcessingID, Config::ProcessingSingleFileModeID, Config::ProcessingSingleFileModeDefault);
+
 	Bool	 verifyOutput		= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
 
 	String	 encoderOutputDirectory	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
@@ -318,9 +320,11 @@ Error freac::JobConvert::Perform()
 
 	/* Setup single file encoder.
 	 */
-	Track	 singleTrack;
-	String	 singleOutFile;
-	Encoder	*singleFileEncoder = NIL;
+	Track			 singleTrack;
+	String			 singleOutFile;
+
+	ProcessorSingleFile	*singleFileProcessor = NIL;
+	Encoder			*singleFileEncoder   = NIL;
 
 	if (encodeToSingleFile)
 	{
@@ -354,12 +358,11 @@ Error freac::JobConvert::Perform()
 
 			/* Create processor to get output format.
 			 */
-			Processor	*processor     = new Processor(configuration);
-			Track		 trackToEncode = singleTrack;
+			Track	 trackToEncode = singleTrack;
 
-			if (processor->Create(trackToEncode)) trackToEncode.SetFormat(processor->GetFormatInfo());
+			singleFileProcessor = new ProcessorSingleFile(configuration);
 
-			delete processor;
+			if (singleFileProcessor->Create(trackToEncode)) trackToEncode.SetFormat(singleFileProcessor->GetFormatInfo());
 
 			/* Create encoder for single file output.
 			 */
@@ -367,9 +370,11 @@ Error freac::JobConvert::Perform()
 
 			if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, trackToEncode))
 			{
+				delete singleFileProcessor;
 				delete singleFileEncoder;
 
-				singleFileEncoder = NIL;
+				singleFileProcessor = NIL;
+				singleFileEncoder   = NIL;
 			}
 
 			if (singleFileEncoder != NIL && singleFileEncoder->IsLossless() && verifyOutput) singleFileEncoder->SetCalculateMD5(True);
@@ -404,7 +409,7 @@ Error freac::JobConvert::Perform()
 	Array<ConvertWorker *, Void *>	 workers;
 	Int				 numberOfWorkers = Math::Min(numberOfThreads, tracks.Length());
 
-	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, singleFileEncoder));
+	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, singleFileProcessor, singleFileEncoder));
 	else			for (Int i = 0; i < numberOfWorkers; i++) workers.Add(new ConvertWorker(configuration));
 
 	foreach (ConvertWorker *worker, workers)
@@ -867,6 +872,12 @@ Error freac::JobConvert::Perform()
 	 */
 	if (encodeToSingleFile && verifyOutput && encodedTracks > 0 && !skipTrack && !stopConversion && singleFileEncoder != NIL && singleFileEncoder->IsLossless())
 	{
+		/* Finish processing and pass remaining samples to encoder.
+		 */
+		Buffer<UnsignedByte>	 buffer;
+
+		if (singleFileMode == 1 && singleFileProcessor->FinishSingleFile(buffer) > 0) singleFileEncoder->Write(buffer);
+
 		/* Save checksum and replace single file encoder.
 		 */
 		String	 encodeChecksum = singleFileEncoder->GetMD5Checksum();
@@ -890,7 +901,7 @@ Error freac::JobConvert::Perform()
 
 			/* Setup and start worker for verification.
 			 */
-			ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, singleFileEncoder);
+			ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, NIL, singleFileEncoder);
 
 			worker->onFinishTrack.Connect(&Progress::FinishTrack, progress);
 			worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);
@@ -944,7 +955,19 @@ Error freac::JobConvert::Perform()
 	 */
 	if (encodeToSingleFile)
 	{
-		if (singleFileEncoder != NIL) delete singleFileEncoder;
+		if (singleFileEncoder != NIL)
+		{
+			/* Finish processing and pass remaining samples to encoder.
+			 */
+			Buffer<UnsignedByte>	 buffer;
+
+			if (singleFileMode == 1 && singleFileProcessor->FinishSingleFile(buffer) > 0) singleFileEncoder->Write(buffer);
+
+			/* Delete processor and encoder.
+			 */
+			delete singleFileProcessor;
+			delete singleFileEncoder;
+		}
 
 		if (File(singleOutFile).GetFileSize() <= 0 || encodedTracks == 0 || skipTrack || stopConversion) File(singleOutFile).Delete();
 
