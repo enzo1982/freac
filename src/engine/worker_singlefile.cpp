@@ -22,9 +22,11 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-freac::ConvertWorkerSingleFile::ConvertWorkerSingleFile(const BoCA::Config *iConfiguration, Encoder *iEncoder) : ConvertWorker(iConfiguration)
+freac::ConvertWorkerSingleFile::ConvertWorkerSingleFile(const BoCA::Config *iConfiguration, Processor *iProcessor, Encoder *iEncoder) : ConvertWorker(iConfiguration)
 {
+	processor      = iProcessor;
 	encoder	       = iEncoder;
+
 	encodedSamples = 0;
 }
 
@@ -40,6 +42,8 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Get config values.
 	 */
+	Int	 singleFileMode	= configuration->GetIntValue(Config::CategoryProcessingID, Config::ProcessingSingleFileModeID, Config::ProcessingSingleFileModeDefault);
+
 	Bool	 verifyInput	= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, Config::VerificationVerifyInputDefault);
 
 	/* Setup conversion log.
@@ -116,15 +120,18 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Create processor.
 	 */
-	Processor	*processor = new Processor(configuration);
-
-	if (!processor->Create(trackToConvert))
+	if (singleFileMode == 0)
 	{
-		delete decoder;
-		delete verifier;
-		delete processor;
+		processor = new Processor(configuration);
 
-		return Error();
+		if (!processor->Create(trackToConvert))
+		{
+			delete decoder;
+			delete verifier;
+			delete processor;
+
+			return Error();
+		}
 	}
 
 	/* Enable MD5 if we are to verify the output.
@@ -193,7 +200,8 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	 */
 	delete decoder;
 	delete verifier;
-	delete processor;
+
+	if (singleFileMode == 0) delete processor;
 
 	/* Signal next chapter.
 	 */
