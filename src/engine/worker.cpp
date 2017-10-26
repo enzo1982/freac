@@ -262,7 +262,7 @@ Int freac::ConvertWorker::Convert()
 		 */
 		Processor	*processor = new Processor(configuration);
 
-		if (!processor->Create(trackToEncode))
+		if (conversionStep != ConversionStepVerify && !processor->Create(trackToEncode))
 		{
 			delete decoder;
 			delete verifier;
