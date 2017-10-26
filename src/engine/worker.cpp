@@ -108,6 +108,8 @@ Int freac::ConvertWorker::Convert()
 
 	/* Loop over conversion passes.
 	 */
+	Track	 trackToEncode = trackToConvert;
+
 	String	 encodeChecksum;
 	String	 verifyChecksum;
 
@@ -202,7 +204,7 @@ Int freac::ConvertWorker::Convert()
 
 				boca.DeleteComponent(decoder);
 
-				Format		 format	   = trackToConvert.GetFormat();
+				Format		 format	   = trackToEncode.GetFormat();
 				const Format	&outFormat = outTrack.GetFormat();
 
 				if (outFormat.rate     != format.rate ||
@@ -258,8 +260,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Create processor.
 		 */
-		Processor	*processor     = new Processor(configuration);
-		Track		 trackToEncode = trackToConvert;
+		Processor	*processor = new Processor(configuration);
 
 		if (!processor->Create(trackToEncode))
 		{
