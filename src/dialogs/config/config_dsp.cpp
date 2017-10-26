@@ -19,9 +19,12 @@ using namespace BoCA::AS;
 
 freac::ConfigureDSP::ConfigureDSP()
 {
-	BoCA::I18n	*i18n = BoCA::I18n::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Configuration::Processing");
+
+	singleFileMode = config->GetIntValue(Config::CategoryProcessingID, Config::ProcessingSingleFileModeID, Config::ProcessingSingleFileModeDefault);
 
 	group_dsp	= new GroupBox(i18n->TranslateString("Signal processing"), Point(7, 11), Size(552, 185));
 
@@ -65,7 +68,17 @@ freac::ConfigureDSP::ConfigureDSP()
 
 	AddComponents();
 
-	SetSize(Size(566, 255));
+	group_single_file	= new GroupBox(i18n->TranslateString("Conversion to a single output file"), Point(7, 207), Size(552, 63));
+
+	option_individual	= new OptionBox(i18n->TranslateString("Process each track individually"), Point(10, 13), Size(532, 0), &singleFileMode, 0);
+	option_combined		= new OptionBox(i18n->TranslateString("Treat the combined tracks like a single track"), Point(10, 36), Size(532, 0), &singleFileMode, 1);
+
+	group_single_file->Add(option_individual);
+	group_single_file->Add(option_combined);
+
+	Add(group_single_file);
+
+	SetSize(Size(566, 277));
 }
 
 freac::ConfigureDSP::~ConfigureDSP()
@@ -82,6 +95,11 @@ freac::ConfigureDSP::~ConfigureDSP()
 	DeleteObject(list_selected);
 
 	DeleteObject(btn_configure);
+
+	DeleteObject(group_single_file);
+
+	DeleteObject(option_individual);
+	DeleteObject(option_combined);
 }
 
 Void freac::ConfigureDSP::AddComponents()
@@ -225,6 +243,8 @@ Int freac::ConfigureDSP::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
+	/* Save component list.
+	 */
 	Registry	&boca	     = Registry::Get();
 	Int		 entryNumber = 0;
 	String		 components;
@@ -239,6 +259,10 @@ Int freac::ConfigureDSP::SaveSettings()
 	}
 
 	config->SetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, components);
+
+	/* Save other settings.
+	 */
+	config->SetIntValue(Config::CategoryProcessingID, Config::ProcessingSingleFileModeID, singleFileMode);
 
 	return Success();
 }
