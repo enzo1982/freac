@@ -32,6 +32,13 @@ namespace freac
 			Button				*btn_remove;
 			Button				*btn_configure;
 
+			GroupBox			*group_single_file;
+
+			OptionBox			*option_individual;
+			OptionBox			*option_combined;
+
+			Int				 singleFileMode;
+
 			Void				 AddComponents();
 		public:
 							 ConfigureDSP();
