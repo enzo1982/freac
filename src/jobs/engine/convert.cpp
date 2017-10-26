@@ -321,6 +321,8 @@ Error freac::JobConvert::Perform()
 	/* Setup single file encoder.
 	 */
 	Track			 singleTrack;
+	Track			 singleTrackToEncode;
+
 	String			 singleOutFile;
 
 	ProcessorSingleFile	*singleFileProcessor = NIL;
@@ -358,17 +360,16 @@ Error freac::JobConvert::Perform()
 
 			/* Create processor to get output format.
 			 */
-			Track	 trackToEncode = singleTrack;
-
+			singleTrackToEncode = singleTrack;
 			singleFileProcessor = new ProcessorSingleFile(configuration);
 
-			if (singleFileProcessor->Create(trackToEncode)) trackToEncode.SetFormat(singleFileProcessor->GetFormatInfo());
+			if (singleFileProcessor->Create(singleTrackToEncode)) singleTrackToEncode.SetFormat(singleFileProcessor->GetFormatInfo());
 
 			/* Create encoder for single file output.
 			 */
 			singleFileEncoder = new Encoder(configuration);
 
-			if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, trackToEncode))
+			if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrackToEncode))
 			{
 				delete singleFileProcessor;
 				delete singleFileEncoder;
@@ -911,7 +912,7 @@ Error freac::JobConvert::Perform()
 
 			worker->SetEncodeChecksum(encodeChecksum);
 			worker->SetConversionStep(ConversionStepVerify);
-			worker->SetTrackToConvert(singleTrack);
+			worker->SetTrackToConvert(singleTrackToEncode);
 
 			worker->SetLogName(logName);
 			worker->Start();
