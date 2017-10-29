@@ -45,6 +45,7 @@ freac::ConfigureDSP::ConfigureDSP()
 
 	list_selected	= new ListBox(Point(297, 29), Size(245, 116));
 	list_selected->onSelectEntry.Connect(&ConfigureDSP::OnSelectComponent, this);
+	list_selected->SetFlags(LF_ALLOWREORDER);
 
 	btn_configure	= new Button(i18n->TranslateString("Configure component"), NIL, Point(382, 153), Size(160, 0));
 	btn_configure->onAction.Connect(&ConfigureDSP::OnConfigureComponent, this);
@@ -245,17 +246,20 @@ Int freac::ConfigureDSP::SaveSettings()
 
 	/* Save component list.
 	 */
-	Registry	&boca	     = Registry::Get();
-	Int		 entryNumber = 0;
+	Registry	&boca = Registry::Get();
 	String		 components;
 
-	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+	for (Int i = 0; i < list_selected->Length(); i++)
 	{
-		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_DSP) continue;
+		String	name = list_selected->GetNthEntry(i)->GetText();
 
-		if (list_available->GetNthEntry(entryNumber++)->GetHeight() != 0) continue;
+		for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+		{
+			if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_DSP) continue;
+			if (boca.GetComponentName(i) != name)			  continue;
 
-		components.Append(components.Length() > 0 ? "," : NIL).Append(boca.GetComponentID(i));
+			components.Append(components.Length() > 0 ? "," : NIL).Append(boca.GetComponentID(i));
+		}
 	}
 
 	config->SetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, components);
