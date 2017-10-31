@@ -23,12 +23,17 @@ namespace freac
 	class Processor
 	{
 		protected:
+			static Array<Threads::Mutex *, Void *>	 mutexes;
+			static Threads::Mutex			 managementMutex;
+
 			const BoCA::Config			*configuration;
 
 			BoCA::Format				 format;
 
 			Array<BoCA::AS::DSPComponent *, Void *>	 dsps;
 		public:
+			static Void				 FreeLockObjects();
+
 								 Processor(const BoCA::Config *);
 			virtual					~Processor();
 
