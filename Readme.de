@@ -95,6 +95,7 @@ Geschichte
 
 	Version 1.0.31 (Oktober 2017)
 
+		- Verwende als Standardeinstellung WMA 9.2 statt WMA 10 Pro
 		- Unterstützung zum Lesen von WAV-Dateien mit unbekannter Länge hinzugefügt
 		- Seltener Absturz beim Dekodieren einiger Ogg Vorbis-Dateien behoben
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -261,7 +261,8 @@ Void freac::ConfigureWMA::FillCodecComboBox()
 
 			if (String(name).Find("Windows Media Audio") >=  0 &&
 			    String(name).Find("Voice")		     == -1 &&
-			    String(name).Find("Lossless")	     == -1) combo_codec->SelectNthEntry(i);
+			    String(name).Find("Lossless")	     == -1 &&
+			    String(name).Find("Pro")		     == -1) combo_codec->SelectNthEntry(i);
 
 			delete [] name;
 		}
