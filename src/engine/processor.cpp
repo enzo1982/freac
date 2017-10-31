@@ -17,6 +17,9 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
+Array<Threads::Mutex *, Void *>	 freac::Processor::mutexes;
+Threads::Mutex			 freac::Processor::managementMutex;
+
 freac::Processor::Processor(const BoCA::Config *iConfiguration)
 {
 	configuration = iConfiguration;
@@ -51,6 +54,19 @@ Bool freac::Processor::Create(const Track &nTrack)
 			return False;
 		}
 
+		/* Lock processor if it's not thread safe.
+		 */
+		if (!dsp->IsThreadSafe())
+		{
+			managementMutex.Lock();
+
+			if (mutexes.Get(dsp->GetID().ComputeCRC32()) == NIL) mutexes.Add(new Threads::Mutex(), dsp->GetID().ComputeCRC32());
+
+			managementMutex.Release();
+
+			mutexes.Get(dsp->GetID().ComputeCRC32())->Lock();
+		}
+
 		/* Activate DSP component.
 		 */
 		dsp->SetConfiguration(configuration);
@@ -78,6 +94,8 @@ Bool freac::Processor::Destroy()
 		dsp->Deactivate();
 
 		if (dsp->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", dsp->GetErrorString());
+
+		if (!dsp->IsThreadSafe()) mutexes.Get(dsp->GetID().ComputeCRC32())->Release();
 
 		boca.DeleteComponent(dsp);
 	}
@@ -125,4 +143,11 @@ Int freac::Processor::Finish(Buffer<UnsignedByte> &buffer)
 	}
 
 	return buffer.Size();
+}
+
+Void freac::Processor::FreeLockObjects()
+{
+	foreach (Threads::Mutex *mutex, mutexes) delete mutex;
+
+	mutexes.RemoveAll();
 }
