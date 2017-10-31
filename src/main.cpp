@@ -1617,8 +1617,8 @@ Void freac::freacGUI::FillMenus()
 	if (currentConfig->enable_flac)   menu_encoders->AddEntry("FLAC Audio Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_FLAC)->onAction.Connect(&freacGUI::EncodeSpecific, this);
 	if (currentConfig->enable_lame)   menu_encoders->AddEntry("LAME MP3 Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_LAMEENC)->onAction.Connect(&freacGUI::EncodeSpecific, this);
 	if (currentConfig->enable_vorbis) menu_encoders->AddEntry("Ogg Vorbis Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_VORBISENC)->onAction.Connect(&freacGUI::EncodeSpecific, this);
-	if (currentConfig->enable_wma)    menu_encoders->AddEntry("Windows Media Audio Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_WMA)->onAction.Connect(&freacGUI::EncodeSpecific, this);
 	if (currentConfig->enable_tvq)    menu_encoders->AddEntry("TwinVQ VQF Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_TVQ)->onAction.Connect(&freacGUI::EncodeSpecific, this);
+	if (currentConfig->enable_wma)    menu_encoders->AddEntry("Windows Media Audio Encoder", NIL, NIL, NIL, &clicked_encoder, ENCODER_WMA)->onAction.Connect(&freacGUI::EncodeSpecific, this);
 
 	menu_encoders->AddEntry("Windows Wave File Output", NIL, NIL, NIL, &clicked_encoder, ENCODER_WAVE)->onAction.Connect(&freacGUI::EncodeSpecific, this);
 
