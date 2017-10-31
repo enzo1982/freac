@@ -100,6 +100,14 @@ Void freac::Progress::FixTotalSamples(const Track &track, const Track &nTrack)
 
 	mutex.Lock();
 
+	/* Update internal track list entry.
+	 */
+	Track	&trackListTrack = trackList.GetReference(track.GetTrackID());
+
+	trackListTrack.length = nTrack.length;
+
+	/* Fix total number of samples.
+	 */
 	if	(track.length	    >= 0) totalSamples -= totalSamplesMultiplier * track.length;
 	else if (track.approxLength >= 0) totalSamples -= totalSamplesMultiplier * track.approxLength;
 	else				  totalSamples -= totalSamplesMultiplier * (240 * track.GetFormat().rate);
