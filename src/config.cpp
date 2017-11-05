@@ -91,12 +91,12 @@ Bool freac::Config::LoadSettings()
 	language				= config->GetStringValue(categorySettings, "Language", NIL);
 	encoder					= config->GetIntValue(categorySettings, "Encoder", 3);
 	enc_outdir				= config->GetStringValue(categorySettings, "EncoderOutDir", personalDir);
-	enc_filePattern				= config->GetStringValue(categorySettings, "EncoderFilenamePattern", "<artist> - <title>");
+	enc_filePattern				= config->GetStringValue(categorySettings, "EncoderFilenamePattern", String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album> - <track> - <title>"));
 	enc_onTheFly				= config->GetIntValue(categorySettings, "EncodeOnTheFly", 1);
 	enc_keepWaves				= config->GetIntValue(categorySettings, "KeepWaveFiles", 0);
 	playlist_useEncOutdir			= config->GetIntValue(categorySettings, "PlaylistUseEncOutDir", 1);
 	playlist_outdir				= config->GetStringValue(categorySettings, "PlaylistOutDir", personalDir);
-	playlist_filePattern			= config->GetStringValue(categorySettings, "PlaylistFilenamePattern", "<artist> - <album>");
+	playlist_filePattern			= config->GetStringValue(categorySettings, "PlaylistFilenamePattern", String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>"));
 	useUnicodeNames				= config->GetIntValue(categorySettings, "UseUnicodeFilenames", 1);
 	showTitleInfo				= config->GetIntValue(categorySettings, "ShowTitleInfo", 1);
 	showTooltips				= config->GetIntValue(categorySettings, "ShowTooltips", 1);

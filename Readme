@@ -94,6 +94,7 @@ History
 
 	Version 1.0.31 (November 2017)
 
+		- changed default output pattern to <artist> - <album>\<artist> - <album> - <track> - <title>
 		- default to using WMA 9.2 instead of WMA 10 Pro
 		- added support for reading WAV files with unknown length
 		- fixed rare crash when decoding certain Ogg Vorbis files
