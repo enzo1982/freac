@@ -76,8 +76,8 @@ int FAACAPI faacEncSetConfiguration(faacEncHandle hEncoder,
 faacEncHandle FAACAPI faacEncOpen(unsigned long sampleRate,
 				  unsigned int numChannels,
 				  unsigned long *inputSamples,
-				  unsigned long *maxOutputBytes);
-
+                                  unsigned long *maxOutputBytes
+                                 );
 
 int FAACAPI faacEncGetDecoderSpecificInfo(faacEncHandle hEncoder, unsigned char **ppBuffer,
 					  unsigned long *pSizeOfDecoderSpecificInfo);

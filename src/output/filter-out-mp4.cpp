@@ -49,10 +49,10 @@ Bool freac::FilterOutMP4::Activate()
 
 	fConfig->mpegVersion	= MPEG4;
 	fConfig->aacObjectType	= LOW;
-	fConfig->allowMidside	= currentConfig->faac_allowjs;
+	fConfig->jointmode	= currentConfig->faac_allowjs;
 	fConfig->useTns		= currentConfig->faac_usetns;
 	fConfig->bandWidth	= currentConfig->faac_bandwidth;
-	fConfig->outputFormat	= 0; // Raw AAC frame headers
+	fConfig->outputFormat	= RAW_STREAM;
 
 	if (currentConfig->faac_set_quality)	fConfig->quantqual	= currentConfig->faac_aac_quality;
 	else					fConfig->bitRate	= currentConfig->faac_bitrate * 1000;

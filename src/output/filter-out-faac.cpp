@@ -54,7 +54,7 @@ Bool freac::FilterOutFAAC::Activate()
 
 	fConfig->mpegVersion	= currentConfig->faac_mpegversion;
 	fConfig->aacObjectType	= LOW;
-	fConfig->allowMidside	= currentConfig->faac_allowjs;
+	fConfig->jointmode	= currentConfig->faac_allowjs;
 	fConfig->useTns		= currentConfig->faac_usetns;
 	fConfig->bandWidth	= currentConfig->faac_bandwidth;
 

@@ -16,13 +16,13 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * $Id$
+ * $Id: faaccfg.h,v 1.3 2004/07/04 12:12:05 corrados Exp $
  */
 
 #ifndef _FAACCFG_H_
 #define _FAACCFG_H_
 
-#define FAAC_CFG_VERSION 104
+#define FAAC_CFG_VERSION 105
 
 /* MPEG ID's */
 #define MPEG2 1
@@ -45,6 +45,14 @@
 #define SHORTCTL_NOSHORT   1
 #define SHORTCTL_NOLONG    2
 
+enum stream_format
+{
+    RAW_STREAM = 0,
+    ADTS_STREAM = 1,
+};
+
+enum {JOINT_NONE = 0, JOINT_MS, JOINT_IS};
+
 #pragma pack(push, 1)
 typedef struct faacEncConfiguration
 {
@@ -63,8 +71,8 @@ typedef struct faacEncConfiguration
     /* AAC object type */
     unsigned int aacObjectType;
 
-    /* Allow mid/side coding */
-    unsigned int allowMidside;
+    /* Joint coding mode */
+    unsigned int jointmode;
 
     /* Use one of the channels as LFE channel */
     unsigned int useLfe;
@@ -113,8 +121,8 @@ typedef struct faacEncConfiguration
 		WAVE 5.1		2, 0, 1, 4, 5, 3
 		AIFF 5.1		2, 0, 3, 1, 4, 5 
 	*/
-	int channel_map[64];	
-
+    int channel_map[64];
+    int pnslevel;
 } faacEncConfiguration, *faacEncConfigurationPtr;
 
 #pragma pack(pop)

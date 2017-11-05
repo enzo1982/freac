@@ -364,14 +364,14 @@ namespace freac
 
 // FAAD2 DLL API
 
-	typedef NeAACDecHandle				(NEAACDECAPI *NEAACDECOPEN)			();
-	typedef long					(NEAACDECAPI *NEAACDECINIT)			(NeAACDecHandle, unsigned char *, unsigned long, unsigned long *, unsigned char *);
-	typedef long					(NEAACDECAPI *NEAACDECINIT2)			(NeAACDecHandle, unsigned char *, unsigned long, unsigned long *, unsigned char *);
-	typedef NeAACDecConfigurationPtr		(NEAACDECAPI *NEAACDECGETCURRENTCONFIGURATION)	(NeAACDecHandle);
-	typedef unsigned char				(NEAACDECAPI *NEAACDECSETCONFIGURATION)		(NeAACDecHandle, NeAACDecConfigurationPtr);
-	typedef void *					(NEAACDECAPI *NEAACDECDECODE)			(NeAACDecHandle, NeAACDecFrameInfo *, unsigned char *, unsigned long);
-	typedef void					(NEAACDECAPI *NEAACDECCLOSE)			(NeAACDecHandle);
-	typedef char *					(NEAACDECAPI *NEAACDECGETERRORMESSAGE)		(unsigned char);
+	typedef NeAACDecHandle				(*NEAACDECOPEN)					();
+	typedef long					(*NEAACDECINIT)					(NeAACDecHandle, unsigned char *, unsigned long, unsigned long *, unsigned char *);
+	typedef long					(*NEAACDECINIT2)				(NeAACDecHandle, unsigned char *, unsigned long, unsigned long *, unsigned char *);
+	typedef NeAACDecConfigurationPtr		(*NEAACDECGETCURRENTCONFIGURATION)		(NeAACDecHandle);
+	typedef unsigned char				(*NEAACDECSETCONFIGURATION)			(NeAACDecHandle, NeAACDecConfigurationPtr);
+	typedef void *					(*NEAACDECDECODE)				(NeAACDecHandle, NeAACDecFrameInfo *, unsigned char *, unsigned long);
+	typedef void					(*NEAACDECCLOSE)				(NeAACDecHandle);
+	typedef char *					(*NEAACDECGETERRORMESSAGE)			(unsigned char);
 
 	extern		NEAACDECOPEN			 ex_NeAACDecOpen;
 	extern		NEAACDECINIT			 ex_NeAACDecInit;

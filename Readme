@@ -92,11 +92,15 @@ Known problems
 History
 -------
 
-	Version 1.0.31 (October 2017)
+	Version 1.0.31 (November 2017)
 
 		- default to using WMA 9.2 instead of WMA 10 Pro
 		- added support for reading WAV files with unknown length
 		- fixed rare crash when decoding certain Ogg Vorbis files
+		- upgraded LAME to version 3.100
+		- upgraded FAAC to version 1.29.9
+		- upgraded FAAD2 to version 2.8.6
+		- upgraded mpg123 to version 1.25.7
 
 	Version 1.0.30 (September 2017)
 
