@@ -115,8 +115,8 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	Verifier	*verifier = new Verifier(configuration);
 	Bool		 verify	  = False;
 
-	if (verifyInput && (conversionStep == ConversionStepOnTheFly ||
-			    conversionStep == ConversionStepDecode)) verify = verifier->Create(trackToConvert);
+	if ((conversionStep == ConversionStepOnTheFly ||
+	     conversionStep == ConversionStepDecode) && verifyInput) verify = verifier->Create(trackToConvert);
 
 	/* Create processor.
 	 */
@@ -124,7 +124,8 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	{
 		processor = new Processor(configuration);
 
-		if (!processor->Create(trackToConvert))
+		if ((conversionStep == ConversionStepOnTheFly ||
+		     conversionStep == ConversionStepDecode) && !processor->Create(trackToConvert))
 		{
 			delete decoder;
 			delete verifier;

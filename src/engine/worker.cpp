@@ -255,25 +255,29 @@ Int freac::ConvertWorker::Convert()
 		Verifier	*verifier = new Verifier(configuration);
 		Bool		 verify	  = False;
 
-		if (verifyInput && (conversionStep == ConversionStepOnTheFly ||
-				    conversionStep == ConversionStepDecode)) verify = verifier->Create(trackToConvert);
+		if ((conversionStep == ConversionStepOnTheFly ||
+		     conversionStep == ConversionStepDecode) && verifyInput) verify = verifier->Create(trackToConvert);
 
 		/* Create processor.
 		 */
 		Processor	*processor = new Processor(configuration);
 
-		if (conversionStep != ConversionStepVerify && !processor->Create(trackToEncode))
+		if (conversionStep == ConversionStepOnTheFly ||
+		    conversionStep == ConversionStepDecode)
 		{
-			delete decoder;
-			delete verifier;
-			delete processor;
+			if (!processor->Create(trackToEncode))
+			{
+				delete decoder;
+				delete verifier;
+				delete processor;
 
-			BoCA::Config::Free(encoderConfig);
+				BoCA::Config::Free(encoderConfig);
 
-			return Error();
+				return Error();
+			}
+
+			trackToEncode.SetFormat(processor->GetFormatInfo());
 		}
-
-		trackToEncode.SetFormat(processor->GetFormatInfo());
 
 		/* Create encoder.
 		 */
