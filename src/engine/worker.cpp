@@ -331,7 +331,10 @@ Int freac::ConvertWorker::Convert()
 
 		/* Run main conversion loop.
 		 */
-		Int64	 trackLength = Loop(decoder, verifier, processor, encoder);
+		Int64	 trackLength  = Loop(decoder, verifier, processor, encoder);
+		Int64	 outputLength = processor->GetOutputSamples();
+
+		if (outputLength == 0) outputLength = trackLength;
 
 		/* Verify input.
 		 */
@@ -441,7 +444,7 @@ Int freac::ConvertWorker::Convert()
 		Track	 track = trackToConvert;
 
 		trackToConvert.sampleOffset = 0;
-		trackToConvert.length	    = trackLength;
+		trackToConvert.length	    = outputLength;
 
 		/* Fix total samples value in case we had
 		 * a wrong or uncertain track length before.
