@@ -41,11 +41,12 @@ namespace freac
 			Bool					 Create(const BoCA::Track &);
 			Bool					 Destroy();
 
-			const BoCA::Format			&GetFormatInfo() const;
-			Int64					 GetOutputSamples() const;
-
 			virtual Int				 Transform(Buffer<UnsignedByte> &);
 			virtual Int				 Finish(Buffer<UnsignedByte> &);
+		accessors:
+			const BoCA::Format			&GetFormatInfo() const			{ return format; }
+
+			Int64					 GetOutputSamples() const		{ return outputSamples; }
 	};
 
 	/* Special processor class for single file conversions.
