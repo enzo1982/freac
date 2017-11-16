@@ -22,16 +22,18 @@ Threads::Mutex			 freac::Encoder::managementMutex;
 
 freac::Encoder::Encoder(const BoCA::Config *iConfiguration)
 {
-	configuration = iConfiguration;
+	configuration  = iConfiguration;
 
-	stream	      = NIL;
-	encoder       = NIL;
+	stream	       = NIL;
+	encoder        = NIL;
 
-	chapter       = 0;
-	bytes	      = 0;
-	offset	      = 0;
+	chapter        = 0;
+	bytes	       = 0;
+	offset	       = 0;
 
-	calculateMD5  = False;
+	encodedSamples = 0;
+
+	calculateMD5   = False;
 }
 
 freac::Encoder::~Encoder()
@@ -41,8 +43,9 @@ freac::Encoder::~Encoder()
 
 Bool freac::Encoder::Create(const String &encoderID, const String &fileName, const Track &track)
 {
-	Registry	&boca	= Registry::Get();
-	const Format	&format = track.GetFormat();
+	Registry	&boca = Registry::Get();
+
+	format	= track.GetFormat();
 
 	album	= track;
 	chapter = 0;
@@ -148,6 +151,8 @@ Int freac::Encoder::Write(Buffer<UnsignedByte> &buffer)
 	/* Calculate MD5 if requested.
 	 */
 	if (calculateMD5) md5.Feed(buffer);
+
+	encodedSamples += buffer.Size() / format.channels / (format.bits / 8);
 
 	/* Hand data to encoder component.
 	 */
