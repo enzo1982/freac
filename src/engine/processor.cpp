@@ -32,16 +32,16 @@ freac::Processor::~Processor()
 	Destroy();
 }
 
-Bool freac::Processor::Create(const Track &nTrack)
+Bool freac::Processor::Create(const Track &track)
 {
-	Registry	&boca  = Registry::Get();
-	Track		 track = nTrack;
+	Registry	&boca = Registry::Get();
 
 	format = track.GetFormat();
 
 	/* Create DSP components.
 	 */
 	const Array<String>	&components = configuration->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault).Explode(",");
+	Track			 dspTrack   = track;
 
 	foreach (const String &component, components)
 	{
@@ -72,12 +72,12 @@ Bool freac::Processor::Create(const Track &nTrack)
 		/* Activate DSP component.
 		 */
 		dsp->SetConfiguration(configuration);
-		dsp->SetAudioTrackInfo(track);
+		dsp->SetAudioTrackInfo(dspTrack);
 		dsp->Activate();
 
 		format = dsp->GetFormatInfo();
 
-		track.SetFormat(format);
+		dspTrack.SetFormat(format);
 
 		dsps.Add(dsp);
 	}
@@ -105,16 +105,6 @@ Bool freac::Processor::Destroy()
 	dsps.RemoveAll();
 
 	return True;
-}
-
-const Format &freac::Processor::GetFormatInfo() const
-{
-	return format;
-}
-
-Int64 freac::Processor::GetOutputSamples() const
-{
-	return outputSamples;
 }
 
 Int freac::Processor::Transform(Buffer<UnsignedByte> &buffer)
