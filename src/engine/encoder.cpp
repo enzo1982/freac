@@ -28,7 +28,6 @@ freac::Encoder::Encoder(const BoCA::Config *iConfiguration)
 	encoder        = NIL;
 
 	chapter        = 0;
-	bytes	       = 0;
 	offset	       = 0;
 
 	encodedSamples = 0;
@@ -49,7 +48,6 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 
 	album	= track;
 	chapter = 0;
-	bytes	= 0;
 	offset	= 0;
 
 	stream = new OutStream(STREAM_FILE, BoCA::Utilities::CreateDirectoryForFile(fileName), OS_REPLACE);
@@ -146,13 +144,11 @@ Int freac::Encoder::Write(Buffer<UnsignedByte> &buffer)
 {
 	if (encoder == NIL || stream == NIL) return 0;
 
-	bytes += buffer.Size();
+	encodedSamples += buffer.Size() / format.channels / (format.bits / 8);
 
 	/* Calculate MD5 if requested.
 	 */
 	if (calculateMD5) md5.Feed(buffer);
-
-	encodedSamples += buffer.Size() / format.channels / (format.bits / 8);
 
 	/* Hand data to encoder component.
 	 */
@@ -169,12 +165,10 @@ Void freac::Encoder::SignalChapterChange()
 	 * set accurate chapter marks even in case we have tracks
 	 * with only approxLength set in the first place.
 	 */
-	Track		&track	= album.tracks.GetNthReference(chapter);
-	const Format	&format = album.GetFormat();
+	Track	&track = album.tracks.GetNthReference(chapter);
 
-	track.length = bytes / format.channels / (format.bits / 8) - offset;
-
-	offset += track.length;
+	track.length = encodedSamples - offset;
+	offset	     = encodedSamples;
 
 	chapter++;
 }
