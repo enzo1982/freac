@@ -24,14 +24,15 @@ Threads::Mutex			 freac::Decoder::managementMutex;
 
 freac::Decoder::Decoder(const BoCA::Config *iConfiguration)
 {
-	configuration = iConfiguration;
+	configuration  = iConfiguration;
 
-	stream	      = NIL;
-	decoder	      = NIL;
+	stream	       = NIL;
+	decoder	       = NIL;
 
-	calculateMD5  = False;
+	sampleOffset   = 0;
+	decodedSamples = 0;
 
-	sampleOffset  = 0;
+	calculateMD5   = False;
 }
 
 freac::Decoder::~Decoder()
@@ -182,6 +183,8 @@ Int freac::Decoder::Read(Buffer<UnsignedByte> &buffer)
 	if (bytes >= 0)
 	{
 		buffer.Resize(bytes);
+
+		decodedSamples += buffer.Size() / format.channels / (format.bits / 8);
 
 		/* Switch byte order to native.
 		 */
