@@ -165,15 +165,15 @@ Int freac::ConvertWorkerSingleFile::Convert()
 		default:
 		case ConversionStepOnTheFly:
 			if (cancel) log->Write(String("\tCancelled converting: ").Append(trackToConvert.origFilename), MessageTypeWarning);
-			else	    log->Write(String("\tFinished converting:" ).Append(trackToConvert.origFilename));
+			else	    log->Write(String("\tFinished converting: ").Append(trackToConvert.origFilename));
 
 			break;
 		case ConversionStepVerify:
 			if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Messages").Replace("%1", File(trackToConvert.origFilename).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
 
 			if	(cancel)			   log->Write(String("\tCancelled verifying output file: ").Append(trackToConvert.origFilename), MessageTypeWarning);
-			else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying output file:" ).Append(trackToConvert.origFilename));
-			else					   log->Write(String("\tSuccessfully verified output file:" ).Append(trackToConvert.origFilename));
+			else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying output file: ").Append(trackToConvert.origFilename));
+			else					   log->Write(String("\tSuccessfully verified output file: ").Append(trackToConvert.origFilename));
 
 			break;
 	}
