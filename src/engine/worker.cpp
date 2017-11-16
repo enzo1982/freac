@@ -331,10 +331,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Run main conversion loop.
 		 */
-		Int64	 trackLength  = Loop(decoder, verifier, processor, encoder);
-		Int64	 outputLength = processor->GetOutputSamples();
-
-		if (outputLength == 0) outputLength = trackLength;
+		Int64	 trackLength = Loop(decoder, verifier, processor, encoder);
 
 		/* Verify input.
 		 */
@@ -444,7 +441,7 @@ Int freac::ConvertWorker::Convert()
 		Track	 track = trackToConvert;
 
 		trackToConvert.sampleOffset = 0;
-		trackToConvert.length	    = outputLength;
+		trackToConvert.length	    = trackLength;
 
 		/* Fix total samples value in case we had
 		 * a wrong or uncertain track length before.
@@ -469,7 +466,7 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Processor
 	 */
 	Format		 format	     = trackToConvert.GetFormat();
 
-	Int64		 trackLength = 0;
+	Int64		 trackOffset = encoder->GetEncodedSamples();
 	UnsignedLong	 samplesSize = 512;
 
 	trackStartTicks = S::System::System::Clock();
@@ -512,10 +509,8 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Processor
 		 */
 		if (encoder->Write(buffer) == -1) { cancel = True; break; }
 
-		/* Update length and position info.
+		/* Update position info.
 		 */
-		trackLength += (bytes / bytesPerSample / format.channels);
-
 		if (trackToConvert.length >= 0) trackPosition += (bytes / bytesPerSample / format.channels);
 		else				trackPosition = decoder->GetInBytes();
 
@@ -548,7 +543,8 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Processor
 	if (cancel) BoCA::Engine::Get()->onCancelTrackConversion.Emit(trackToConvert);
 	else	    BoCA::Engine::Get()->onFinishTrackConversion.Emit(trackToConvert);
 
-	return trackLength;
+	if (encoder->GetEncodedSamples() > 0) return encoder->GetEncodedSamples() - trackOffset;
+	else				      return decoder->GetDecodedSamples();
 }
 
 Void freac::ConvertWorker::SetTrackToConvert(const BoCA::Track &nTrack)
