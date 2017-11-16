@@ -33,7 +33,6 @@ namespace freac
 
 			BoCA::Track				 album;
 			Int					 chapter;
-			Int64					 bytes;
 			Int64					 offset;
 
 			BoCA::Format				 format;
