@@ -883,10 +883,11 @@ Error freac::JobConvert::Perform()
 		 */
 		String	 encodeChecksum = singleFileEncoder->GetMD5Checksum();
 
+		singleTrackToEncode.length = singleFileEncoder->GetEncodedSamples();
+
 		delete singleFileEncoder;
 
-		singleFileEncoder  = new Encoder(configuration);
-		singleTrack.length = progress->GetTotalSamples();
+		singleFileEncoder = new Encoder(configuration);
 
 		if (File(singleOutFile).Exists())
 		{
@@ -921,14 +922,12 @@ Error freac::JobConvert::Perform()
 			 */
 			while (worker->IsWaiting() && !worker->IsIdle()) S::System::System::Sleep(1);
 
-			trackID = singleTrack.GetTrackID();
+			onEncodeTrack.Emit(singleTrackToEncode, decoderName    = worker->GetDecoderName(),
+								conversionStep = worker->GetConversionStep());
 
-			onEncodeTrack.Emit(singleTrack, decoderName    = worker->GetDecoderName(),
-							conversionStep = worker->GetConversionStep());
+			SetText(String("Verifying %1...").Replace("%1", singleTrackToEncode.origFilename));
 
-			SetText(String("Verifying %1...").Replace("%1", singleTrack.origFilename));
-
-			progress->StartTrack(singleTrack);
+			progress->StartTrack(singleTrackToEncode);
 
 			/* Loop until finished.
 			 */
@@ -938,7 +937,7 @@ Error freac::JobConvert::Perform()
 
 				AutoRelease	 autoRelease;
 
-				progress->UpdateTrack(singleTrack, worker->GetTrackPosition());
+				progress->UpdateTrack(singleTrackToEncode, worker->GetTrackPosition());
 
 				S::System::System::Sleep(25);
 			}
