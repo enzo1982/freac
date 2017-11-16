@@ -197,6 +197,12 @@ Int freac::ConvertWorkerSingleFile::Convert()
 			break;
 	}
 
+	/* Get output format info.
+	 */
+	Format	 format = trackToConvert.GetFormat();
+
+	if (processor != NIL) format = processor->GetFormatInfo();
+
 	/* Free decoder and verifier.
 	 */
 	delete decoder;
@@ -222,9 +228,9 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Update track length and offset.
 	 */
-	Track	 track = trackToConvert;
+	Track	 track	= trackToConvert;
 
-	trackToConvert.sampleOffset = Math::Round((Float) (encodedSamples - trackLength) / trackToConvert.GetFormat().rate * 75);
+	trackToConvert.sampleOffset = Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75);
 	trackToConvert.length	    = trackLength;
 
 	/* Fix total samples value in case we had
