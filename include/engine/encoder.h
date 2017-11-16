@@ -36,6 +36,9 @@ namespace freac
 			Int64					 bytes;
 			Int64					 offset;
 
+			BoCA::Format				 format;
+			Int64					 encodedSamples;
+
 			Bool					 calculateMD5;
 			Hash::MD5				 md5;
 		public:
@@ -51,10 +54,11 @@ namespace freac
 
 			Void					 SignalChapterChange();
 		accessors:
-			Void					 SetCalculateMD5(Bool nCalculateMD5)	{ calculateMD5 = nCalculateMD5; }
-
 			Bool					 IsLossless() const;
 
+			Int64					 GetEncodedSamples() const		{ return encodedSamples; }
+
+			Void					 SetCalculateMD5(Bool nCalculateMD5)	{ calculateMD5 = nCalculateMD5; }
 			String					 GetMD5Checksum();
 	};
 };
