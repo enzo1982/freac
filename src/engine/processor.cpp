@@ -23,8 +23,6 @@ Threads::Mutex			 freac::Processor::managementMutex;
 freac::Processor::Processor(const BoCA::Config *iConfiguration)
 {
 	configuration = iConfiguration;
-
-	outputSamples = 0;
 }
 
 freac::Processor::~Processor()
@@ -109,13 +107,9 @@ Bool freac::Processor::Destroy()
 
 Int freac::Processor::Transform(Buffer<UnsignedByte> &buffer)
 {
-	if (dsps.Length() == 0) return buffer.Size();
-
 	/* Call transform for every DSP component.
 	 */
 	foreach (AS::DSPComponent *dsp, dsps) dsp->TransformData(buffer);
-
-	outputSamples += buffer.Size() / format.channels / (format.bits / 8);
 
 	return buffer.Size();
 }
@@ -123,7 +117,6 @@ Int freac::Processor::Transform(Buffer<UnsignedByte> &buffer)
 Int freac::Processor::Finish(Buffer<UnsignedByte> &buffer)
 {
 	if (buffer.Size() != 0) return -1;
-	if (dsps.Length() == 0) return buffer.Size();
 
 	foreach (AS::DSPComponent *dsp, dsps)
 	{
@@ -143,8 +136,6 @@ Int freac::Processor::Finish(Buffer<UnsignedByte> &buffer)
 
 		memcpy(buffer + buffer.Size() - flush.Size(), flush, flush.Size());
 	}
-
-	outputSamples += buffer.Size() / format.channels / (format.bits / 8);
 
 	return buffer.Size();
 }

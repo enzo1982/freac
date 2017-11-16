@@ -29,7 +29,6 @@ namespace freac
 			const BoCA::Config			*configuration;
 
 			BoCA::Format				 format;
-			Int64					 outputSamples;
 
 			Array<BoCA::AS::DSPComponent *, Void *>	 dsps;
 		public:
@@ -45,8 +44,6 @@ namespace freac
 			virtual Int				 Finish(Buffer<UnsignedByte> &);
 		accessors:
 			const BoCA::Format			&GetFormatInfo() const			{ return format; }
-
-			Int64					 GetOutputSamples() const		{ return outputSamples; }
 	};
 
 	/* Special processor class for single file conversions.
