@@ -306,6 +306,60 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		config->SetIntValue("TwinVQ", "Bitrate", Math::Max(24, Math::Min(48, (Int) bitrate.ToInt())));
 	}
 
+	/* Check dynamic encoder parameters.
+	 */
+	Bool				 broken	    = False;
+	Component			*component  = boca.CreateComponentByID(String(encoderID).Append("-enc"));
+	const Array<Parameter *>	&parameters = component->GetParameters();
+
+	foreach (Parameter *parameter, parameters)
+	{
+		ParameterType		 type	 = parameter->GetType();
+		String			 name	 = parameter->GetName();
+		String			 spec	 = parameter->GetArgument();
+		const Array<Option *>	&options = parameter->GetOptions();
+		String			 def	 = parameter->GetDefault();
+
+		if (type == PARAMETER_TYPE_SWITCH)
+		{
+			config->SetIntValue(component->GetID(), name, ScanForEncoderOption(spec));
+		}
+		else if (type == PARAMETER_TYPE_SELECTION)
+		{
+			String	 value;
+			Bool	 found = False;
+
+			config->SetIntValue(component->GetID(), String("Set ").Append(name), ScanForEncoderOption(String(spec).Replace("%VALUE%", NIL).Trim(), &value));
+			config->SetStringValue(component->GetID(), name, value);
+
+			foreach (Option *option, options) if (option->GetValue() == value) found = True;
+
+			if (!found) broken = True;
+		}
+		else if (type == PARAMETER_TYPE_RANGE)
+		{
+			String	 value;
+			Bool	 valid = True;
+
+			config->SetIntValue(component->GetID(), String("Set ").Append(name), ScanForEncoderOption(String(spec).Replace("%VALUE%", NIL).Trim(), &value));
+			config->SetStringValue(component->GetID(), name, value);
+
+			foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MIN && value.ToFloat() < option->GetValue().ToFloat()) valid = False;
+			foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MAX && value.ToFloat() > option->GetValue().ToFloat()) valid = False;
+
+			if (!valid) broken = True;
+		}
+	}
+
+	boca.DeleteComponent(component);
+
+	if (broken)
+	{
+		Console::OutputString("Invalid arguments.\n");
+
+		return;
+	}
+
 	/* Perform actual conversion.
 	 */
 	if (!outdir.EndsWith(Directory::GetDirectoryDelimiter())) outdir.Append(Directory::GetDirectoryDelimiter());
