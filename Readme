@@ -134,7 +134,7 @@ Known problems
 History
 -------
 
-	Version 1.1 Alpha (September 2017)
+	Version 1.1 Alpha (November 2017)
 
 		- ported to macOS, Linux and BSD operating systems
 		- implemented an extension component framework to modularize fre:ac
