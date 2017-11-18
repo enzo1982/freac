@@ -17,6 +17,9 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
+Array<Threads::Mutex *, Void *>	 freac::Processor::mutexes;
+Threads::Mutex			 freac::Processor::managementMutex;
+
 freac::Processor::Processor(const BoCA::Config *iConfiguration)
 {
 	configuration = iConfiguration;
@@ -27,16 +30,16 @@ freac::Processor::~Processor()
 	Destroy();
 }
 
-Bool freac::Processor::Create(const Track &nTrack)
+Bool freac::Processor::Create(const Track &track)
 {
-	Registry	&boca  = Registry::Get();
-	Track		 track = nTrack;
+	Registry	&boca = Registry::Get();
 
 	format = track.GetFormat();
 
 	/* Create DSP components.
 	 */
 	const Array<String>	&components = configuration->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault).Explode(",");
+	Track			 dspTrack   = track;
 
 	foreach (const String &component, components)
 	{
@@ -51,15 +54,28 @@ Bool freac::Processor::Create(const Track &nTrack)
 			return False;
 		}
 
+		/* Lock processor if it's not thread safe.
+		 */
+		if (!dsp->IsThreadSafe())
+		{
+			managementMutex.Lock();
+
+			if (mutexes.Get(dsp->GetID().ComputeCRC32()) == NIL) mutexes.Add(new Threads::Mutex(), dsp->GetID().ComputeCRC32());
+
+			managementMutex.Release();
+
+			mutexes.Get(dsp->GetID().ComputeCRC32())->Lock();
+		}
+
 		/* Activate DSP component.
 		 */
 		dsp->SetConfiguration(configuration);
-		dsp->SetAudioTrackInfo(track);
+		dsp->SetAudioTrackInfo(dspTrack);
 		dsp->Activate();
 
 		format = dsp->GetFormatInfo();
 
-		track.SetFormat(format);
+		dspTrack.SetFormat(format);
 
 		dsps.Add(dsp);
 	}
@@ -79,17 +95,14 @@ Bool freac::Processor::Destroy()
 
 		if (dsp->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", dsp->GetErrorString());
 
+		if (!dsp->IsThreadSafe()) mutexes.Get(dsp->GetID().ComputeCRC32())->Release();
+
 		boca.DeleteComponent(dsp);
 	}
 
 	dsps.RemoveAll();
 
 	return True;
-}
-
-const Format &freac::Processor::GetFormatInfo() const
-{
-	return format;
 }
 
 Int freac::Processor::Transform(Buffer<UnsignedByte> &buffer)
@@ -125,4 +138,11 @@ Int freac::Processor::Finish(Buffer<UnsignedByte> &buffer)
 	}
 
 	return buffer.Size();
+}
+
+Void freac::Processor::FreeLockObjects()
+{
+	foreach (Threads::Mutex *mutex, mutexes) delete mutex;
+
+	mutexes.RemoveAll();
 }

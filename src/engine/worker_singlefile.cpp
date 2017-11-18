@@ -22,9 +22,11 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-freac::ConvertWorkerSingleFile::ConvertWorkerSingleFile(const BoCA::Config *iConfiguration, Encoder *iEncoder) : ConvertWorker(iConfiguration)
+freac::ConvertWorkerSingleFile::ConvertWorkerSingleFile(const BoCA::Config *iConfiguration, Processor *iProcessor, Encoder *iEncoder) : ConvertWorker(iConfiguration)
 {
+	processor      = iProcessor;
 	encoder	       = iEncoder;
+
 	encodedSamples = 0;
 }
 
@@ -40,6 +42,8 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Get config values.
 	 */
+	Int	 singleFileMode	= configuration->GetIntValue(Config::CategoryProcessingID, Config::ProcessingSingleFileModeID, Config::ProcessingSingleFileModeDefault);
+
 	Bool	 verifyInput	= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, Config::VerificationVerifyInputDefault);
 
 	/* Setup conversion log.
@@ -52,9 +56,6 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Check format of output file in verification step.
 	 */
-	Track	 track  = trackToConvert;
-	Format	 format = trackToConvert.GetFormat();
-
 	if (conversionStep == ConversionStepVerify)
 	{
 		DecoderComponent	*decoder = boca.CreateDecoderForStream(trackToConvert.origFilename);
@@ -67,6 +68,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 			boca.DeleteComponent(decoder);
 
+			Format		 format	   = trackToConvert.GetFormat();
 			const Format	&outFormat = outTrack.GetFormat();
 
 			if (outFormat.rate     != format.rate ||
@@ -113,8 +115,25 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	Verifier	*verifier = new Verifier(configuration);
 	Bool		 verify	  = False;
 
-	if (verifyInput && (conversionStep == ConversionStepOnTheFly ||
-			    conversionStep == ConversionStepDecode)) verify = verifier->Create(trackToConvert);
+	if ((conversionStep == ConversionStepOnTheFly ||
+	     conversionStep == ConversionStepDecode) && verifyInput) verify = verifier->Create(trackToConvert);
+
+	/* Create processor.
+	 */
+	if (singleFileMode == 0)
+	{
+		processor = new Processor(configuration);
+
+		if ((conversionStep == ConversionStepOnTheFly ||
+		     conversionStep == ConversionStepDecode) && !processor->Create(trackToConvert))
+		{
+			delete decoder;
+			delete verifier;
+			delete processor;
+
+			return Error();
+		}
+	}
 
 	/* Enable MD5 if we are to verify the output.
 	 */
@@ -137,7 +156,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Run main conversion loop.
 	 */
-	Int64	 trackLength = Loop(decoder, NIL, verifier, encoder);
+	Int64	 trackLength = Loop(decoder, verifier, processor, encoder);
 
 	/* Verify input.
 	 */
@@ -178,10 +197,18 @@ Int freac::ConvertWorkerSingleFile::Convert()
 			break;
 	}
 
+	/* Get output format info.
+	 */
+	Format	 format = trackToConvert.GetFormat();
+
+	if (processor != NIL) format = processor->GetFormatInfo();
+
 	/* Free decoder and verifier.
 	 */
 	delete decoder;
 	delete verifier;
+
+	if (singleFileMode == 0) delete processor;
 
 	/* Signal next chapter.
 	 */
@@ -201,6 +228,8 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Update track length and offset.
 	 */
+	Track	 track	= trackToConvert;
+
 	trackToConvert.sampleOffset = Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75);
 	trackToConvert.length	    = trackLength;
 

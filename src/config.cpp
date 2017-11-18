@@ -165,6 +165,9 @@ const String	 freac::Config::SettingsLastSelectedJoblistDirID		= "LastSelectedJo
 const String	 freac::Config::ProcessingComponentsID				= "ProcessingComponents";
 const String	 freac::Config::ProcessingComponentsDefault			= NIL;
 
+const String	 freac::Config::ProcessingSingleFileModeID			= "SingleFileMode";
+const Int	 freac::Config::ProcessingSingleFileModeDefault			= 1;
+
 /* Category Verification
  */
 const String	 freac::Config::VerificationVerifyInputID			= "VerifyInput";

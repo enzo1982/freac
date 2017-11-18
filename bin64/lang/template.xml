@@ -505,6 +505,9 @@
 	<entry id="5901" string="Available"/>
 	<entry id="5902" string="Selected"/>
 	<entry id="5903" string="Configure component"/>
+	<entry id="5904" string="Conversion to a single output file"/>
+	<entry id="5905" string="Process each track individually"/>
+	<entry id="5906" string="Treat the combined tracks like a single track"/>
       </section>
     </section>
 

@@ -28,7 +28,7 @@ namespace freac
 
 			Int		 Convert();
 		public:
-					 ConvertWorkerSingleFile(const BoCA::Config *, Encoder *);
+					 ConvertWorkerSingleFile(const BoCA::Config *, Processor *, Encoder *);
 					~ConvertWorkerSingleFile();
 		accessors:
 			Void		 SetEncodeChecksum(const String &nEncodeChecksum)  { encodeChecksum = nEncodeChecksum; }

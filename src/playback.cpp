@@ -17,6 +17,7 @@
 #include <jobs/engine/convert.h>
 
 #include <engine/decoder.h>
+#include <engine/processor.h>
 
 using namespace BoCA;
 using namespace BoCA::AS;
@@ -90,7 +91,41 @@ Void freac::Playback::Play(const Track &iTrack)
 Int freac::Playback::PlayThread()
 {
 	BoCA::Config	*config = BoCA::Config::Copy();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+
+	/* Create decoder.
+	 */
+	Decoder	*decoder = new Decoder(config);
+
+	if (!decoder->Create(track.origFilename, track))
+	{
+		delete decoder;
+
+		BoCA::Config::Free(config);
+
+		playing = False;
+
+		return Error();
+	}
+
+	/* Create processor.
+	 */
+	Processor	*processor = new Processor(config);
+
+	if (!processor->Create(track))
+	{
+		delete decoder;
+		delete processor;
+
+		BoCA::Config::Free(config);
+
+		playing = False;
+
+		return Error();
+	}
+
+	Track	 trackToPlay = track;
+
+	trackToPlay.SetFormat(processor->GetFormatInfo());
 
 	/* Create output component.
 	 */
@@ -107,6 +142,9 @@ Int freac::Playback::PlayThread()
 
 	if (output == NIL)
 	{
+		delete decoder;
+		delete processor;
+
 		BoCA::Config::Free(config);
 
 		playing = false;
@@ -115,125 +153,120 @@ Int freac::Playback::PlayThread()
 	}
 
 	output->SetConfiguration(config);
-	output->SetAudioTrackInfo(track);
+	output->SetAudioTrackInfo(trackToPlay);
 
-	if (!output->Activate())
+	if (output->Activate())
 	{
-		boca.DeleteComponent(output);
+		/* Enter playback loop.
+		 */
+		if (!output->GetErrorState()) Loop(decoder, processor);
 
-		BoCA::Config::Free(config);
-
-		playing = False;
-
-		return Error();
-	}
-
-	/* Create decoder.
-	 */
-	Decoder	*decoder = new Decoder(config);
-
-	if (!decoder->Create(track.origFilename, track))
-	{
+		/* Clean up.
+		 */
 		output->Deactivate();
-
-		boca.DeleteComponent(output);
-
-		delete decoder;
-
-		BoCA::Config::Free(config);
-
-		playing = False;
-
-		return Error();
 	}
 
-	/* Notify application aboud track playback.
+	boca.DeleteComponent(output);
+
+	delete decoder;
+	delete processor;
+
+	BoCA::Config::Free(config);
+
+	playing = false;
+
+	return Success();
+}
+
+Void freac::Playback::Loop(Decoder *decoder, Processor *processor)
+{
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	/* Notify application about track playback.
 	 */
 	onPlay.Emit(track);
 
 	/* Enter playback loop.
 	 */
-	if (!output->GetErrorState())
+	const Format		&format		= track.GetFormat();
+
+	Int64			 position	= 0;
+	UnsignedLong		 samplesSize	= format.rate / 4;
+
+	Int			 bytesPerSample = format.bits / 8;
+	Buffer<UnsignedByte>	 buffer(samplesSize * bytesPerSample * format.channels);
+
+	while (!stop)
 	{
-		const Format		&format		= track.GetFormat();
-
-		Int64			 position	= 0;
-		UnsignedLong		 samples_size	= format.rate / 4;
-
-		Int			 bytesPerSample = format.bits / 8;
-		Buffer<UnsignedByte>	 buffer(samples_size * bytesPerSample * format.channels);
-
-		while (!stop)
+		/* Seek if requested.
+		 */
+		if (newPosition >= 0)
 		{
-			/* Seek if requested.
-			 */
-			if (newPosition >= 0)
-			{
-				if	(track.length	    >= 0) position = track.length		/ 1000 * newPosition;
-				else if (track.approxLength >= 0) position = track.approxLength		/ 1000 * newPosition;
-				else				  position = (Int64(240) * format.rate) / 1000 * newPosition;
+			if	(track.length	    >= 0) position = track.length		/ 1000 * newPosition;
+			else if (track.approxLength >= 0) position = track.approxLength		/ 1000 * newPosition;
+			else				  position = (Int64(240) * format.rate) / 1000 * newPosition;
 
-				decoder->Seek(position);
+			decoder->Seek(position);
 
-				newPosition = -1;
-			}
-
-			/* Find step size.
-			 */
-			Int	 step = samples_size;
-
-			if (track.length >= 0)
-			{
-				if (position >= track.length) break;
-
-				if (position + step > track.length) step = track.length - position;
-			}
-
-			buffer.Resize(step * bytesPerSample * format.channels);
-
-			/* Read samples.
-			 */
-			Int	 bytes = decoder->Read(buffer);
-
-			if (bytes == 0) break;
-
-			buffer.Resize(bytes);
-
-			/* Update position and write data.
-			 */
-			position += (bytes / bytesPerSample / format.channels);
-
-			if	(track.length	    >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / track.length	    * position : 1000.0 / track.length	      * position);
-			else if (track.approxLength >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / track.approxLength  * position : 1000.0 / track.approxLength  * position);
-			else				  onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / (240 * format.rate) * position : 1000.0 / (240 * format.rate) * position);
-
-			while (output->CanWrite() < bytes && !stop) S::System::System::Sleep(10);
-
-			if (!stop) output->WriteData(buffer);
+			newPosition = -1;
 		}
 
-		if (!stop) output->Finish();
+		/* Find step size.
+		 */
+		Int	 step = samplesSize;
+
+		if (track.length >= 0)
+		{
+			if (position >= track.length) break;
+
+			if (position + step > track.length) step = track.length - position;
+		}
+
+		buffer.Resize(step * bytesPerSample * format.channels);
+
+		/* Read samples from decoder.
+		 */
+		Int	 bytes = decoder->Read(buffer);
+
+		if (bytes == 0) break;
+
+		/* Transform samples using processor.
+		 */
+		if (processor != NIL) processor->Transform(buffer);
+
+		/* Update position and write data.
+		 */
+		position += (bytes / bytesPerSample / format.channels);
+
+		if	(track.length	    >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / track.length	    * position : 1000.0 / track.length	      * position);
+		else if (track.approxLength >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / track.approxLength  * position : 1000.0 / track.approxLength  * position);
+		else				  onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / (240 * format.rate) * position : 1000.0 / (240 * format.rate) * position);
+
+		while (output->CanWrite() < buffer.Size() && !stop) S::System::System::Sleep(10);
+
+		if (!stop) output->WriteData(buffer);
 	}
 
+	/* Finish sample transformations.
+	 */
+	buffer.Resize(0);
+
+	if (processor != NIL) processor->Finish(buffer);
+
+	/* Pass remaining samples to output.
+	 */
+	while (output->CanWrite() < buffer.Size() && !stop) S::System::System::Sleep(10);
+
+	if (!stop) output->WriteData(buffer);
+	if (!stop) output->Finish();
+
 	while (!stop && output->IsPlaying()) S::System::System::Sleep(20);
-
-	output->Deactivate();
-
-	boca.DeleteComponent(output);
-
-	delete decoder;
-
-	BoCA::Config::Free(config);
 
 	/* Notify application about finished playback.
 	 */
 	stop = True;
 
 	onFinish.Emit(track);
-
-	playing = false;
-
-	return Success();
 }
 
 Void freac::Playback::Pause()

@@ -155,6 +155,9 @@ namespace freac
 			static const String	 ProcessingComponentsID;
 			static const String	 ProcessingComponentsDefault;
 
+			static const String	 ProcessingSingleFileModeID;
+			static const Int	 ProcessingSingleFileModeDefault;
+
 			/* Category Verification
 			 */
 			static const String	 VerificationVerifyInputID;
