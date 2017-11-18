@@ -147,6 +147,7 @@ Geschichte
 		- Formatauswahl für Kodierer, die mehrere Formate unterstützen, im Kodieren-Menü ermöglicht
 		- Möglichkeit zum Bearbeiten der Konfiguration während der Konvertierung hinzugefügt
 		- Untersützung für Verifikation von verlustfreien Ein- und Ausgabedateien hinzugefügt
+		- Unterstützung für die Verarbeitung von Eingabedaten mit DSP-Filtern hinzugefügt
 		- Einfachen Tag-Editor hinzugefügt
 		- Monkey's Audiokodierer/-dekodierer hinzugefügt
 		- Speex Sprachkodierer/-dekodierer hinzugefügt

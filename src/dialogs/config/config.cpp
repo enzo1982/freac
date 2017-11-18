@@ -19,6 +19,7 @@
 #include <dialogs/config/config_resources.h>
 #include <dialogs/config/config_tags.h>
 #include <dialogs/config/config_verification.h>
+#include <dialogs/config/config_dsp.h>
 
 #include <freac.h>
 #include <config.h>
@@ -200,6 +201,19 @@ Void freac::ConfigDialog::AddLayers()
 	 * layer to be notified when settings for a specific component are changed.
 	 */
 	((ConfigureEncoders *) layers.GetLast())->onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
+
+	/* Add DSP configuration layer.
+	 */
+	layers.Add(new ConfigureDSP());
+	createdLayers.Add(layers.GetLast());
+	entries.Add(new ConfigEntry(i18n->TranslateString("Processing"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_freac->Add(entries.GetLast());
+
+	/* Connect to the onChangeComponentSettings signal of the DSP configuration
+	 * layer to be notified when settings for a specific component are changed.
+	 */
+	((ConfigureDSP *) layers.GetLast())->onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
 
 	/* Add verification configuration layer.
 	 */

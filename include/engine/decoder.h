@@ -32,6 +32,7 @@ namespace freac
 			Int64					 sampleOffset;
 
 			BoCA::Format				 format;
+			Int64					 decodedSamples;
 
 			IO::InStream				*stream;
 			BoCA::AS::DecoderComponent		*decoder;
@@ -53,11 +54,12 @@ namespace freac
 
 			Bool					 Seek(Int64);
 		accessors:
-			Void					 SetCalculateMD5(Bool nCalculateMD5)	{ calculateMD5 = nCalculateMD5; }
-
 			Int64					 GetInBytes() const;
 			String					 GetDecoderName() const;
 
+			Int64					 GetDecodedSamples() const		{ return decodedSamples; }
+
+			Void					 SetCalculateMD5(Bool nCalculateMD5)	{ calculateMD5 = nCalculateMD5; }
 			String					 GetMD5Checksum();
 	};
 };

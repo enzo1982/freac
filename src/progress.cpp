@@ -24,9 +24,9 @@ freac::Progress::Progress(const BoCA::Config *iConfiguration)
 
 	lastInvoked	       = 0;
 
-	totalSamples	       = 0;
+	totalSamplesLeft       = 0;
 	totalSamplesMultiplier = 1;
-	totalSamplesDone       = 0;
+	totalProgressDone      = 0;
 
 	startTicks	       = 0;
 	pauseTicks	       = 0;
@@ -49,15 +49,15 @@ Void freac::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 
 	if (configuration->enable_console) return;
 
-	totalSamples	       = 0;
+	totalSamplesLeft       = 0;
 	totalSamplesMultiplier = 1;
-	totalSamplesDone       = 0;
+	totalProgressDone      = 0;
 
 	foreach (const Track &track, tracks)
 	{
-		if	(track.length	    >= 0) totalSamples += track.length;
-		else if (track.approxLength >= 0) totalSamples += track.approxLength;
-		else				  totalSamples += (240 * track.GetFormat().rate);
+		if	(track.length	    >= 0) totalSamplesLeft += track.length;
+		else if (track.approxLength >= 0) totalSamplesLeft += track.approxLength;
+		else				  totalSamplesLeft += (240 * track.GetFormat().rate);
 	}
 
 	/* Find out if we are encoding lossless.
@@ -91,7 +91,7 @@ Void freac::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 
 	if (encodeLossless && verifyOutput && selectedEncoderID != "meh-enc") totalSamplesMultiplier += 1;
 
-	totalSamples *= totalSamplesMultiplier;
+	totalSamplesLeft *= totalSamplesMultiplier;
 }
 
 Void freac::Progress::FixTotalSamples(const Track &track, const Track &nTrack)
@@ -108,18 +108,18 @@ Void freac::Progress::FixTotalSamples(const Track &track, const Track &nTrack)
 
 	/* Fix total number of samples.
 	 */
-	if	(track.length	    >= 0) totalSamples -= totalSamplesMultiplier * track.length;
-	else if (track.approxLength >= 0) totalSamples -= totalSamplesMultiplier * track.approxLength;
-	else				  totalSamples -= totalSamplesMultiplier * (240 * track.GetFormat().rate);
+	if	(track.length	    >= 0) totalSamplesLeft -= (totalSamplesMultiplier - 1) * track.length;
+	else if (track.approxLength >= 0) totalSamplesLeft -= (totalSamplesMultiplier - 1) * track.approxLength;
+	else				  totalSamplesLeft -= (totalSamplesMultiplier - 1) * (240 * track.GetFormat().rate);
 
-	totalSamples += totalSamplesMultiplier * nTrack.length;
+	totalSamplesLeft += (totalSamplesMultiplier - 1) * nTrack.length;
 
 	mutex.Release();
 }
 
 Int64 freac::Progress::GetTotalSamples() const
 {
-	return totalSamples / totalSamplesMultiplier;
+	return totalSamplesLeft / totalSamplesMultiplier;
 }
 
 Void freac::Progress::Start()
@@ -208,27 +208,27 @@ Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
 	mutex.Lock();
 
 	Float	 trackProgress = 0;
-	Float	 totalProgress = totalSamplesDone;
+	Float	 totalProgress = totalProgressDone;
 
-	if (track.length > 0) trackProgress = 1000.0 * position / track.length;
-	else		      trackProgress = 1000.0 * position / track.fileSize;
+	if (track.length > 0) trackProgress = Float(position) / track.length;
+	else		      trackProgress = Float(position) / track.fileSize;
 
 	for (Int i = 0; i < trackList.Length(); i++)
 	{
-		if (totalSamples == 0) break;
+		if (totalSamplesLeft == 0) break;
 
 		const Track	&track = trackList.GetNth(i);
 
-		if	(track.length	    > 0) totalProgress += 1000.0 * trackPositions.GetNth(i) / track.length   * (Float(track.length)		    / totalSamples);
-		else if (track.approxLength > 0) totalProgress += 1000.0 * trackPositions.GetNth(i) / track.fileSize * (Float(track.approxLength)	    / totalSamples);
-		else				 totalProgress += 1000.0 * trackPositions.GetNth(i) / track.fileSize * (Float(240 * track.GetFormat().rate) / totalSamples);
+		if	(track.length	    > 0) totalProgress += (1.0 - totalProgressDone) * trackPositions.GetNth(i) / track.length   * (Float(track.length)		       / totalSamplesLeft);
+		else if (track.approxLength > 0) totalProgress += (1.0 - totalProgressDone) * trackPositions.GetNth(i) / track.fileSize * (Float(track.approxLength)	       / totalSamplesLeft);
+		else				 totalProgress += (1.0 - totalProgressDone) * trackPositions.GetNth(i) / track.fileSize * (Float(240 * track.GetFormat().rate) / totalSamplesLeft);
 	}
 
 	Float	 trackTicks = clockValue - trackStartTicks.Get(track.GetTrackID());
 	Float	 totalTicks = clockValue - startTicks;
 
-	trackTicks = trackProgress > 0 ? Math::Round((trackTicks / (trackProgress / 1000.0) - trackTicks) / 1000.0) : 0;
-	totalTicks = totalProgress > 0 ? Math::Round((totalTicks / (totalProgress / 1000.0) - totalTicks) / 1000.0) : 0;
+	trackTicks = trackProgress > 0 ? Math::Round((trackTicks / trackProgress - trackTicks) / 1000.0) : 0;
+	totalTicks = totalProgress > 0 ? Math::Round((totalTicks / totalProgress - totalTicks) / 1000.0) : 0;
 
 	mutex.Release();
 
@@ -236,12 +236,12 @@ Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
 	 */
 	AutoRelease	 autoRelease;
 
-	onTrackProgress.Emit(Math::Min(Int64(1000), Math::Round(trackProgress)), Math::Max(Int64(0), Math::Round(trackTicks)));
-	onTotalProgress.Emit(Math::Min(Int64(1000), Math::Round(totalProgress)), Math::Max(Int64(0), Math::Round(totalTicks)));
+	onTrackProgress.Emit(Math::Min(Int64(1000), Math::Round(trackProgress * 1000.0)), Math::Max(Int64(0), Math::Round(trackTicks)));
+	onTotalProgress.Emit(Math::Min(Int64(1000), Math::Round(totalProgress * 1000.0)), Math::Max(Int64(0), Math::Round(totalTicks)));
 
 	/* Show progress in taskbar/dock.
 	 */
-	if (window != NIL) window->SetProgressIndicator(Window::ProgressIndicatorNormal, Math::Min(100.0, totalProgress / 10.0));
+	if (window != NIL) window->SetProgressIndicator(Window::ProgressIndicatorNormal, Math::Min(100.0, totalProgress * 100.0));
 
 	lastInvoked = clockValue;
 }
@@ -255,6 +255,8 @@ Void freac::Progress::FinishTrack(const Track &track, Bool stepsLeft)
 	/* Remove from internal track list.
 	 */
 	mutex.Lock();
+
+	Track	&trackListTrack = trackList.GetReference(track.GetTrackID());
 
 	for (Int i = 0; i < trackList.Length(); i++)
 	{
@@ -279,13 +281,17 @@ Void freac::Progress::FinishTrack(const Track &track, Bool stepsLeft)
 
 	/* Update total number of samples done.
 	 */
-	if (totalSamples == 0) return;
+	if (totalSamplesLeft == 0) return;
 
 	mutex.Lock();
 
-	if	(track.length	    >= 0) totalSamplesDone += 1000.0 *  track.length		      / totalSamples;
-	else if (track.approxLength >= 0) totalSamplesDone += 1000.0 *  track.approxLength	      / totalSamples;
-	else				  totalSamplesDone += 1000.0 * (240 * track.GetFormat().rate) / totalSamples;
+	if	(track.length	    >= 0) totalProgressDone += (1.0 - totalProgressDone) *  track.length		  / totalSamplesLeft;
+	else if (track.approxLength >= 0) totalProgressDone += (1.0 - totalProgressDone) *  track.approxLength		  / totalSamplesLeft;
+	else				  totalProgressDone += (1.0 - totalProgressDone) * (240 * track.GetFormat().rate) / totalSamplesLeft;
+
+	if	(track.length	    >= 0) totalSamplesLeft -= track.length;
+	else if (track.approxLength >= 0) totalSamplesLeft -= track.approxLength;
+	else				  totalSamplesLeft -= (240 * track.GetFormat().rate);
 
 	mutex.Release();
 }

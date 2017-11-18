@@ -16,6 +16,7 @@
 
 #include <engine/decoder.h>
 #include <engine/encoder.h>
+#include <engine/processor.h>
 
 #include <engine/worker.h>
 #include <engine/worker_singlefile.h>
@@ -252,6 +253,8 @@ Error freac::JobConvert::Perform()
 	Bool	 encodeToSingleFile	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
 	Bool	 overwriteAllFiles	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || configuration->enable_console;
 
+	Int	 singleFileMode		= configuration->GetIntValue(Config::CategoryProcessingID, Config::ProcessingSingleFileModeID, Config::ProcessingSingleFileModeDefault);
+
 	Bool	 verifyOutput		= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
 
 	String	 encoderOutputDirectory	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
@@ -317,9 +320,13 @@ Error freac::JobConvert::Perform()
 
 	/* Setup single file encoder.
 	 */
-	Track	 singleTrack;
-	String	 singleOutFile;
-	Encoder	*singleFileEncoder = NIL;
+	Track			 singleTrack;
+	Track			 singleTrackToEncode;
+
+	String			 singleOutFile;
+
+	ProcessorSingleFile	*singleFileProcessor = NIL;
+	Encoder			*singleFileEncoder   = NIL;
 
 	if (encodeToSingleFile)
 	{
@@ -342,8 +349,6 @@ Error freac::JobConvert::Perform()
 
 			singleTrack.length	 = progress->GetTotalSamples();
 
-			playlistTracks.Add(singleTrack);
-
 			/* Check if output file is one of the input files.
 			 */
 			foreach (Track &track, tracks)
@@ -351,15 +356,24 @@ Error freac::JobConvert::Perform()
 				if (track.origFilename == singleOutFile) { singleOutFile.Append(".temp"); break; }
 			}
 
+			/* Create processor to get output format.
+			 */
+			singleTrackToEncode = singleTrack;
+			singleFileProcessor = new ProcessorSingleFile(configuration);
+
+			if (singleFileProcessor->Create(singleTrackToEncode)) singleTrackToEncode.SetFormat(singleFileProcessor->GetFormatInfo());
+
 			/* Create encoder for single file output.
 			 */
 			singleFileEncoder = new Encoder(configuration);
 
-			if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrack))
+			if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrackToEncode))
 			{
+				delete singleFileProcessor;
 				delete singleFileEncoder;
 
-				singleFileEncoder = NIL;
+				singleFileProcessor = NIL;
+				singleFileEncoder   = NIL;
 			}
 
 			if (singleFileEncoder != NIL && singleFileEncoder->IsLossless() && verifyOutput) singleFileEncoder->SetCalculateMD5(True);
@@ -394,7 +408,7 @@ Error freac::JobConvert::Perform()
 	Array<ConvertWorker *, Void *>	 workers;
 	Int				 numberOfWorkers = Math::Min(numberOfThreads, tracks.Length());
 
-	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, singleFileEncoder));
+	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, singleFileProcessor, singleFileEncoder));
 	else			for (Int i = 0; i < numberOfWorkers; i++) workers.Add(new ConvertWorker(configuration));
 
 	foreach (ConvertWorker *worker, workers)
@@ -857,14 +871,28 @@ Error freac::JobConvert::Perform()
 	 */
 	if (encodeToSingleFile && verifyOutput && encodedTracks > 0 && !skipTrack && !stopConversion && singleFileEncoder != NIL && singleFileEncoder->IsLossless())
 	{
-		/* Save checksum and replace single file encoder.
+		/* Finish processing and pass remaining samples to encoder.
+		 */
+		Buffer<UnsignedByte>	 buffer;
+
+		if (singleFileMode == 1 && singleFileProcessor->FinishSingleFile(buffer) > 0) singleFileEncoder->Write(buffer);
+
+		/* Query actual length of track.
+		 */
+		singleTrackToEncode.length = singleFileEncoder->GetEncodedSamples();
+
+		/* Save checksum.
 		 */
 		String	 encodeChecksum = singleFileEncoder->GetMD5Checksum();
 
+		/* Delete processor and encoder.
+		 */
+		delete singleFileProcessor;
 		delete singleFileEncoder;
 
-		singleFileEncoder  = new Encoder(configuration);
-		singleTrack.length = progress->GetTotalSamples();
+		/* Create dummy single file encoder.
+		 */
+		singleFileEncoder = new Encoder(configuration);
 
 		if (File(singleOutFile).Exists())
 		{
@@ -880,7 +908,7 @@ Error freac::JobConvert::Perform()
 
 			/* Setup and start worker for verification.
 			 */
-			ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, singleFileEncoder);
+			ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, NIL, singleFileEncoder);
 
 			worker->onFinishTrack.Connect(&Progress::FinishTrack, progress);
 			worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);
@@ -890,7 +918,7 @@ Error freac::JobConvert::Perform()
 
 			worker->SetEncodeChecksum(encodeChecksum);
 			worker->SetConversionStep(ConversionStepVerify);
-			worker->SetTrackToConvert(singleTrack);
+			worker->SetTrackToConvert(singleTrackToEncode);
 
 			worker->SetLogName(logName);
 			worker->Start();
@@ -899,14 +927,12 @@ Error freac::JobConvert::Perform()
 			 */
 			while (worker->IsWaiting() && !worker->IsIdle()) S::System::System::Sleep(1);
 
-			trackID = singleTrack.GetTrackID();
+			onEncodeTrack.Emit(singleTrackToEncode, decoderName    = worker->GetDecoderName(),
+								conversionStep = worker->GetConversionStep());
 
-			onEncodeTrack.Emit(singleTrack, decoderName    = worker->GetDecoderName(),
-							conversionStep = worker->GetConversionStep());
+			SetText(String("Verifying %1...").Replace("%1", singleTrackToEncode.origFilename));
 
-			SetText(String("Verifying %1...").Replace("%1", singleTrack.origFilename));
-
-			progress->StartTrack(singleTrack);
+			progress->StartTrack(singleTrackToEncode);
 
 			/* Loop until finished.
 			 */
@@ -916,7 +942,7 @@ Error freac::JobConvert::Perform()
 
 				AutoRelease	 autoRelease;
 
-				progress->UpdateTrack(singleTrack, worker->GetTrackPosition());
+				progress->UpdateTrack(singleTrackToEncode, worker->GetTrackPosition());
 
 				S::System::System::Sleep(25);
 			}
@@ -928,13 +954,33 @@ Error freac::JobConvert::Perform()
 
 			delete worker;
 		}
+
+		delete singleFileEncoder;
+
+		singleFileEncoder = NIL;
 	}
 
 	/* Clean up single file handlers.
 	 */
 	if (encodeToSingleFile)
 	{
-		if (singleFileEncoder != NIL) delete singleFileEncoder;
+		if (singleFileEncoder != NIL)
+		{
+			/* Finish processing and pass remaining samples to encoder.
+			 */
+			Buffer<UnsignedByte>	 buffer;
+
+			if (singleFileMode == 1 && singleFileProcessor->FinishSingleFile(buffer) > 0) singleFileEncoder->Write(buffer);
+
+			/* Query actual length of track.
+			 */
+			singleTrackToEncode.length = singleFileEncoder->GetEncodedSamples();
+
+			/* Delete processor and encoder.
+			 */
+			delete singleFileProcessor;
+			delete singleFileEncoder;
+		}
 
 		if (File(singleOutFile).GetFileSize() <= 0 || encodedTracks == 0 || skipTrack || stopConversion) File(singleOutFile).Delete();
 
@@ -949,6 +995,10 @@ Error freac::JobConvert::Perform()
 
 				singleOutFile = singleTrack.outfile;
 			}
+
+			/* Add single output file to playlist.
+			 */
+			playlistTracks.Add(singleTrackToEncode);
 
 			/* Add output file to joblist if requested.
 			 */

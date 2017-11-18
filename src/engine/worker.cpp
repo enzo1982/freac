@@ -108,16 +108,15 @@ Int freac::ConvertWorker::Convert()
 
 	/* Loop over conversion passes.
 	 */
+	Track	 trackToEncode = trackToConvert;
+
 	String	 encodeChecksum;
 	String	 verifyChecksum;
 
 	for (Int step = 0; step < conversionSteps && !cancel; step++)
 	{
-		/* Setup track and file names.
+		/* Setup file names.
 		 */
-		Track	 track  = trackToConvert;
-		Format	 format = trackToConvert.GetFormat();
-
 		String	 in_filename  = trackToConvert.origFilename;
 		String	 out_filename = trackToConvert.outfile;
 
@@ -205,6 +204,7 @@ Int freac::ConvertWorker::Convert()
 
 				boca.DeleteComponent(decoder);
 
+				Format		 format	   = trackToEncode.GetFormat();
 				const Format	&outFormat = outTrack.GetFormat();
 
 				if (outFormat.rate     != format.rate ||
@@ -250,29 +250,45 @@ Int freac::ConvertWorker::Convert()
 
 		decoderName = decoder->GetDecoderName();
 
+		/* Create verifier.
+		 */
+		Verifier	*verifier = new Verifier(configuration);
+		Bool		 verify	  = False;
+
+		if ((conversionStep == ConversionStepOnTheFly ||
+		     conversionStep == ConversionStepDecode) && verifyInput) verify = verifier->Create(trackToConvert);
+
 		/* Create processor.
 		 */
 		Processor	*processor = new Processor(configuration);
 
-		if (!processor->Create(trackToConvert))
+		if (conversionStep == ConversionStepOnTheFly ||
+		    conversionStep == ConversionStepDecode)
 		{
-			delete decoder;
-			delete processor;
+			if (!processor->Create(trackToEncode))
+			{
+				delete decoder;
+				delete verifier;
+				delete processor;
 
-			BoCA::Config::Free(encoderConfig);
+				BoCA::Config::Free(encoderConfig);
 
-			return Error();
+				return Error();
+			}
+
+			trackToEncode.SetFormat(processor->GetFormatInfo());
 		}
 
 		/* Create encoder.
 		 */
 		Encoder	*encoder = new Encoder(encoderConfig);
 
-		if (conversionStep != ConversionStepVerify && !encoder->Create(activeEncoderID, out_filename, trackToConvert))
+		if (conversionStep != ConversionStepVerify && !encoder->Create(activeEncoderID, out_filename, trackToEncode))
 		{
 			delete decoder;
-			delete encoder;
+			delete verifier;
 			delete processor;
+			delete encoder;
 
 			File(out_filename).Delete();
 
@@ -280,14 +296,6 @@ Int freac::ConvertWorker::Convert()
 
 			return Error();
 		}
-
-		/* Create verifier.
-		 */
-		Verifier	*verifier = new Verifier(configuration);
-		Bool		 verify	  = False;
-
-		if (verifyInput && (conversionStep == ConversionStepOnTheFly ||
-				    conversionStep == ConversionStepDecode)) verify = verifier->Create(trackToConvert);
 
 		/* Enable MD5 and add a verification step if we are to verify the output.
 		 */
@@ -323,7 +331,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Run main conversion loop.
 		 */
-		Int64	 trackLength = Loop(decoder, processor, verifier, encoder);
+		Int64	 trackLength = Loop(decoder, verifier, processor, encoder);
 
 		/* Verify input.
 		 */
@@ -374,12 +382,12 @@ Int freac::ConvertWorker::Convert()
 				break;
 		}
 
-		/* Free encoder, decoder, processor and verifier.
+		/* Free decoder, verifier, processor and encoder.
 		 */
-		delete encoder;
 		delete decoder;
-		delete processor;
 		delete verifier;
+		delete processor;
+		delete encoder;
 
 		BoCA::Config::Free(encoderConfig);
 
@@ -430,6 +438,8 @@ Int freac::ConvertWorker::Convert()
 
 		/* Update track length and offset.
 		 */
+		Track	 track = trackToConvert;
+
 		trackToConvert.sampleOffset = 0;
 		trackToConvert.length	    = trackLength;
 
@@ -442,7 +452,7 @@ Int freac::ConvertWorker::Convert()
 	return Success();
 }
 
-Int64 freac::ConvertWorker::Loop(Decoder *decoder, Processor *processor, Verifier *verifier, Encoder *encoder)
+Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Processor *processor, Encoder *encoder)
 {
 	/* Get config values.
 	 */
@@ -456,7 +466,7 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Processor *processor, Verifie
 	 */
 	Format		 format	     = trackToConvert.GetFormat();
 
-	Int64		 trackLength = 0;
+	Int64		 trackOffset = encoder->GetEncodedSamples();
 	UnsignedLong	 samplesSize = 512;
 
 	trackStartTicks = S::System::System::Clock();
@@ -489,16 +499,18 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Processor *processor, Verifie
 
 		/* Pass samples to verifier.
 		 */
-		verifier->Process(buffer);
+		if (verifier != NIL) verifier->Process(buffer);
+
+		/* Transform samples using processor.
+		 */
+		if (processor != NIL) processor->Transform(buffer);
 
 		/* Pass samples to encoder.
 		 */
 		if (encoder->Write(buffer) == -1) { cancel = True; break; }
 
-		/* Update length and position info.
+		/* Update position info.
 		 */
-		trackLength += (bytes / bytesPerSample / format.channels);
-
 		if (trackToConvert.length >= 0) trackPosition += (bytes / bytesPerSample / format.channels);
 		else				trackPosition = decoder->GetInBytes();
 
@@ -516,12 +528,23 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Processor *processor, Verifie
 		while (pause && !cancel) S::System::System::Sleep(50);
 	}
 
+	/* Finish sample transformations.
+	 */
+	buffer.Resize(0);
+
+	if (processor != NIL) processor->Finish(buffer);
+
+	/* Pass remaining samples to encoder.
+	 */
+	if (buffer.Size() > 0 && encoder->Write(buffer) == -1) cancel = True;
+
 	/* Inform components about finished/cancelled conversion.
 	 */
 	if (cancel) BoCA::Engine::Get()->onCancelTrackConversion.Emit(trackToConvert);
 	else	    BoCA::Engine::Get()->onFinishTrackConversion.Emit(trackToConvert);
 
-	return trackLength;
+	if (encoder->GetEncodedSamples() > 0) return encoder->GetEncodedSamples() - trackOffset;
+	else				      return decoder->GetDecodedSamples();
 }
 
 Void freac::ConvertWorker::SetTrackToConvert(const BoCA::Track &nTrack)
