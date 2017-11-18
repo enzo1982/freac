@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac DLL", "freac.vcxproj", "{F121548C-5FD2-4E54-89AB-37671DE3CC76}"
 EndProject
@@ -12,6 +12,13 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension TagEdit", "..\freac Extension TagEdit\freac Extension TagEdit.vcxproj", "{F2561807-A735-4ED5-93C7-74649D06A94B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension Protocols", "..\freac Extension Protocols\freac Extension Protocols.vcxproj", "{362EBB5E-5D27-49B3-846A-02E3F9EFAE4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{88A9765E-C213-4E4E-8E15-46C048ECB01E}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Readme = ..\..\Readme
+		..\..\Readme.de = ..\..\Readme.de
+		..\..\Readme.md = ..\..\Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,5 +74,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		AMDCaProjectFile = G:\devel\projects\private\freac\msvc\freac\CodeAnalyst\freac.caw
+		SolutionGuid = {9B699F6B-4AE4-4B5C-AB3A-BA8A53444F5A}
 	EndGlobalSection
 EndGlobal

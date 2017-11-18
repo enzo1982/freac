@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>freacgui</ProjectName>
+    <ProjectName>freac</ProjectName>
     <ProjectGuid>{92DE9054-BD7A-4D35-9E87-1B48C3F892FE}</ProjectGuid>
     <RootNamespace>freacGUI</RootNamespace>
     <Keyword>Win32Proj</Keyword>
