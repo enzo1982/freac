@@ -349,8 +349,6 @@ Error freac::JobConvert::Perform()
 
 			singleTrack.length	 = progress->GetTotalSamples();
 
-			playlistTracks.Add(singleTrack);
-
 			/* Check if output file is one of the input files.
 			 */
 			foreach (Track &track, tracks)
@@ -879,14 +877,21 @@ Error freac::JobConvert::Perform()
 
 		if (singleFileMode == 1 && singleFileProcessor->FinishSingleFile(buffer) > 0) singleFileEncoder->Write(buffer);
 
-		/* Save checksum and replace single file encoder.
+		/* Query actual length of track.
+		 */
+		singleTrackToEncode.length = singleFileEncoder->GetEncodedSamples();
+
+		/* Save checksum.
 		 */
 		String	 encodeChecksum = singleFileEncoder->GetMD5Checksum();
 
-		singleTrackToEncode.length = singleFileEncoder->GetEncodedSamples();
-
+		/* Delete processor and encoder.
+		 */
+		delete singleFileProcessor;
 		delete singleFileEncoder;
 
+		/* Create dummy single file encoder.
+		 */
 		singleFileEncoder = new Encoder(configuration);
 
 		if (File(singleOutFile).Exists())
@@ -949,6 +954,10 @@ Error freac::JobConvert::Perform()
 
 			delete worker;
 		}
+
+		delete singleFileEncoder;
+
+		singleFileEncoder = NIL;
 	}
 
 	/* Clean up single file handlers.
@@ -962,6 +971,10 @@ Error freac::JobConvert::Perform()
 			Buffer<UnsignedByte>	 buffer;
 
 			if (singleFileMode == 1 && singleFileProcessor->FinishSingleFile(buffer) > 0) singleFileEncoder->Write(buffer);
+
+			/* Query actual length of track.
+			 */
+			singleTrackToEncode.length = singleFileEncoder->GetEncodedSamples();
 
 			/* Delete processor and encoder.
 			 */
@@ -982,6 +995,10 @@ Error freac::JobConvert::Perform()
 
 				singleOutFile = singleTrack.outfile;
 			}
+
+			/* Add single output file to playlist.
+			 */
+			playlistTracks.Add(singleTrackToEncode);
 
 			/* Add output file to joblist if requested.
 			 */
