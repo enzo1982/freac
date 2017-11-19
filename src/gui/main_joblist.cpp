@@ -1600,6 +1600,15 @@ Void freac::LayerJoblist::UpdateOutputDir()
 
 Void freac::LayerJoblist::OnOpenFolder()
 {
+	Directory	 outputDirectory(BoCA::Utilities::GetAbsolutePathName(edb_outdir->GetText()));
+
+	if (!outputDirectory.Exists())
+	{
+		BoCA::Utilities::ErrorMessage("The selected folder does not exist anymore!");
+
+		return;
+	}
+
 	S::System::System::OpenURL(edb_outdir->GetText());
 }
 

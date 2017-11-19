@@ -561,6 +561,7 @@
       <entry id="7023" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?">Ein Konvertierungsvorgang ist bereits aktiv!&#10;&#10;Möchten Sie diese Konvertierung in die Warteschlange stellen?</entry>
       <entry id="7024" string="Failed to verify input file: %1">Überprüfung der Eingabedatei fehlgeschlagen: %1</entry>
       <entry id="7025" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Prüfsummenfehler beim Verifizieren der Ausgabedatei: %1&#10;&#10;Prüfsumme beim Kodieren: %2&#10;Prüfsumme bei Verifikation: %3</entry>
+      <entry id="7026" string="The selected folder does not exist anymore!">Der ausgewählte Ordner existiert nicht mehr!</entry>
     </section>
 
     <section name="Dialogs">

@@ -561,6 +561,7 @@
       <entry id="7023" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?"/>
       <entry id="7024" string="Failed to verify input file: %1"/>
       <entry id="7025" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
+      <entry id="7026" string="The selected folder does not exist anymore!"/>
     </section>
 
     <section name="Dialogs">
