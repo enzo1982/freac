@@ -73,7 +73,7 @@
 	<entry id="1200" string="Query CDDB database">Interroga database CDDB</entry>
 	<entry id="1201" string="Submit CDDB data">Invia dati CDDB</entry>
 	<entry id="1202" string="Query CDDB database later">Interroga database CDDB in seguito</entry>
-	<entry id="1203" string="Show queued CDDB entries">Visualizza voci CDDB in coda</entry>
+	<entry id="1203" string="Show queued CDDB entries">Visualizza elementi CDDB in coda</entry>
 	<entry id="1204" string="Show queued CDDB queries">Visualizza interrogazioni CDDB in coda</entry>
 	<entry id="1205" string="Enable CDDB cache">Attiva cache CDDB</entry>
 	<entry id="1206" string="Manage CDDB cache entries">Gestisci voci della cache CDDB</entry>
@@ -82,7 +82,7 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Impostazioni generali</entry>
-	<entry id="1301" string="Configure selected encoder">Configura codificatore</entry>
+	<entry id="1301" string="Configure selected encoder">Imposta codec selezionato</entry>
 	<entry id="1302" string="Active CD-ROM drive">Unità CD predefinita</entry>
       </section>
 
@@ -91,7 +91,7 @@
 	<entry id="1401" string="Start encoding with">Avvia codifica con</entry>
 	<entry id="1402" string="Pause/resume encoding">Sospendi/riprendi codifica</entry>
 	<entry id="1403" string="Stop encoding">Interrompi codifica</entry>
-	<entry id="1404" string="Encoder options">Opzioni codificatore</entry>
+	<entry id="1404" string="Encoder options">Opzioni codec</entry>
 	<entry id="1405" string="Encode to a single file">Codifica in un file singolo</entry>
 	<entry id="1406" string="Encode to input file folder if possible">Codifica nella cartella dei file di origine se possibile</entry>
 	<entry id="1407" string="Allow overwriting input file">Consenti sovrascrittura file di origine</entry>
@@ -116,8 +116,8 @@
       <entry id="2003" string="Clear the entire joblist">Reimposta l'elenco dei brani</entry>
       <entry id="2004" string="Query CDDB database">Interroga database CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Invia dati CDDB</entry>
-      <entry id="2006" string="Configure general settings">Configura le opzioni generali del programma</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Configura il codificatore selezionato</entry>
+      <entry id="2006" string="Configure general settings">Imposta le opzioni generali del programma</entry>
+      <entry id="2007" string="Configure the selected audio encoder">Imposta il codec selezionato</entry>
       <entry id="2008" string="Start the encoding process">Avvia il processo di codifica</entry>
       <entry id="2009" string="Pause/resume encoding">Sospendi/riprendi codifica</entry>
       <entry id="2010" string="Stop encoding">Interrompi codifica</entry>
@@ -126,7 +126,7 @@
     <section name="Joblist">
       <entry id="3000" string="Encoding file">File elaborato</entry>
       <entry id="3001" string="Time left">Tempo residuo</entry>
-      <entry id="3002" string="Selected encoder">Codificatore selezionato</entry>
+      <entry id="3002" string="Selected encoder">Codifica selezionata</entry>
       <entry id="3003" string="File progress">Avanzamento</entry>
       <entry id="3004" string="Output folder">Destinazione</entry>
       <entry id="3005" string="%1 file(s) in joblist">%1 file da elaborare</entry>
@@ -203,7 +203,7 @@
 	<entry id="4004" string="Update joblist with this information">Aggiorna elenco con questa informazione</entry>
 	<entry id="4005" string="Status">Stato</entry>
 	<entry id="4006" string="Successfully read CD!">CD letto correttamente</entry>
-	<entry id="4007" string="Save entry">Salva voce</entry>
+	<entry id="4007" string="Save entry">Salva elemento</entry>
 	<entry id="4008" string="Various artists">Artisti vari</entry>
 	<entry id="4009" string="Data track">Dati traccia</entry>
 	<entry id="4010" string="Submit to online database later">Invia al database online in seguito</entry>
@@ -234,7 +234,7 @@
       </section>
 
       <section name="Manage queries">
-	<entry id="4200" string="Remove entry">Rimuovi voce</entry>
+	<entry id="4200" string="Remove entry">Rimuovi elemento</entry>
 	<entry id="4201" string="CDDB queries">Interrogazioni CDB</entry>
 	<entry id="4202" string="Query">Interroga</entry>
 	<entry id="4203" string="Query all">Interroga tutti</entry>
@@ -243,8 +243,8 @@
       </section>
 
       <section name="Manage submits">
-	<entry id="4300" string="Remove entry">Rimuovi voce</entry>
-	<entry id="4301" string="CDDB entries to submit">Voci CDDB da inviare</entry>
+	<entry id="4300" string="Remove entry">Rimuovi elemento</entry>
+	<entry id="4301" string="CDDB entries to submit">Elementi CDDB da inviare</entry>
 	<entry id="4302" string="Submit all">Invia tutto</entry>
 	<entry id="4303" string="CDDB data">Dati CDDB</entry>
 	<entry id="4304" string="Submit">Invia</entry>
@@ -258,11 +258,11 @@
 	<entry id="4400" string="CDDB data">Dati CDDB</entry>
 	<entry id="4401" string="Update joblist with this information">Aggiorna elenco con questa informazione</entry>
 	<entry id="4402" string="Charset">Set caratteri</entry>
-	<entry id="4403" string="Downloaded CDDB entries">Voci CDDB scaricate</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Elementi CDDB scaricati</entry>
 	<entry id="4404" string="Disc name">Nome disco</entry>
 	<entry id="4405" string="Preview">Anteprima</entry>
-	<entry id="4406" string="Remove entry">Rimuovi voce</entry>
-	<entry id="4407" string="Save entry">Salva voce</entry>
+	<entry id="4406" string="Remove entry">Rimuovi elemento</entry>
+	<entry id="4407" string="Save entry">Salva elemento</entry>
       </section>
     </section>
 
@@ -274,8 +274,8 @@
       <entry id="5007" string="Tags">Tag</entry>
 
       <section name="Encoders">
-	<entry id="5100" string="Configure encoder">Configura...</entry>
-	<entry id="5101" string="Encoder">Codificatore</entry>
+	<entry id="5100" string="Configure encoder">Imposta...</entry>
+	<entry id="5101" string="Encoder">Codec</entry>
 	<entry id="5102" string="Output folder">Cartella destinazione</entry>
 	<entry id="5103" string="Browse">Sfoglia...</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Seleziona la cartella in cui memorizzare i file elaborati</entry>
@@ -297,7 +297,7 @@
 	<entry id="5201" string="Create cue sheets">Crea cue sheet</entry>
 	<entry id="5202" string="Output folder">Cartella destinazione</entry>
 	<entry id="5203" string="Browse">Sfoglia...</entry>
-	<entry id="5204" string="Use encoder output folder">Utilizza cartella di destinazione del codificatore</entry>
+	<entry id="5204" string="Use encoder output folder">Usa cartella destinazione del codec</entry>
 	<entry id="5205" string="Filename pattern">Modello nome file</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Seleziona la cartella in cui salvare la playlist</entry>
       </section>
@@ -333,7 +333,7 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="5350" string="Please enter a valid eMail address.">Inserisci un indirizzo di posta elettronica valido.</entry>
+	  <entry id="5350" string="Please enter a valid eMail address.">Inserisci un indirizzo email valido.</entry>
 	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Il protocollo CDDBP freedb non può essere utilizzato con i server proxy HTTP.&#10;&#10;Utilizzare il protocollo HTTP, invece?</entry>
 	</section>
       </section>
@@ -385,7 +385,7 @@
     <section name="Messages">
       <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Elaborazione ancora in corso. Uscire comunque?</entry>
       <entry id="7001" string="Currently converting">Elaborazione in corso</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Impossibile caricare i driver ASPI. Estrazione dati audio da CD disattivata.</entry>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Impossibile caricare i driver ASPI! Estrazione dati audio da CD disattivata!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Impossibile aprire il seguente file: %1&#10;&#10;Errore: %2</entry>
       <entry id="7004" string="Cannot play a file while encoding!">Impossibile riprodurre un file audio durante l'operazione di codifica.</entry>
       <entry id="7005" string="Cannot start encoding while playing a file!">Impossibile avviare la codifica di un file durante la riproduzione.</entry>
@@ -417,7 +417,7 @@
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Unità CD predefinita</entry>
-      <entry id="9001" string="Set drive speed limit">Limita velocità dell'unità</entry>
+      <entry id="9001" string="Set drive speed limit">Limita velocità dell'unità a</entry>
       <entry id="9002" string="CD information">Informazioni CD</entry>
       <entry id="9003" string="Read CD Text">Leggi CD Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Leggi cdplayer.ini</entry>
@@ -481,7 +481,7 @@
 	  <entry id="32107" string="Quality">Qualità</entry>
 	  <entry id="32108" string="Set bitrate">Bitrate</entry>
 	  <entry id="32109" string="Set ratio">Rapporto</entry>
-	  <entry id="32110" string="Set quality">Imposta</entry>
+	  <entry id="32110" string="Set quality">Qualità</entry>
 	  <entry id="32111" string="worse">peggiore</entry>
 	  <entry id="32112" string="better">migliore</entry>
 	  <entry id="32113" string="VBR mode">Modalità VBR</entry>
@@ -522,11 +522,11 @@
 	  <entry id="32401" string="auto">automatico</entry>
 	  <entry id="32402" string="no resampling">no ricampionatura</entry>
 	  <entry id="32403" string="Highpass filter">Filtro passa alto</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">Imposta frequenza (in Hz)</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">Imposta ampiezza (in Hz)</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz)">Frequenza passa alto (Hz)</entry>
+	  <entry id="32405" string="Set Highpass width (Hz)">Ampiezza passa alto (Hz)</entry>
 	  <entry id="32406" string="Lowpass filter">Filtro passa basso</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">Imposta frequenza (in Hz)</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">Imposta ampiezza (in Hz)</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz)">Frequenza passa basso (Hz)</entry>
+	  <entry id="32408" string="Set Lowpass width (Hz)">Ampiezza passa basso (Hz)</entry>
 	  <entry id="32409" string="Misc settings">Altre impostazioni</entry>
 	  <entry id="32410" string="Disable all filtering">Disattiva tutti i filtri</entry>
 	</section>
@@ -540,7 +540,7 @@
 	  <entry id="33200" string="Bitrate">Bitrate</entry>
 	  <entry id="33201" string="Bitrate / Quality">Bitrate/qualità</entry>
 	  <entry id="33202" string="Bitrate per channel">Bitrate per canale</entry>
-	  <entry id="33203" string="Set quality">Imposta</entry>
+	  <entry id="33203" string="Set quality">Qualità</entry>
 	  <entry id="33204" string="Stereo mode">Modalità stereo</entry>
 	  <entry id="33205" string="Allow Joint Stereo">Attiva Joint Stereo</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
@@ -573,7 +573,7 @@
 	  <entry id="34104" string="Best compression">Compressione migliore</entry>
 	  <entry id="34105" string="Stereo mode">Modalità stereo</entry>
 	  <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
-	  <entry id="34107" string="Adaptive Joint Stereo">Stereo adattiva</entry>
+	  <entry id="34107" string="Adaptive Joint Stereo">Joint Stereo adattivo</entry>
 	  <entry id="34108" string="File format">Formato file</entry>
 	  <entry id="34109" string="Default">Predefinito</entry>
 	</section>
@@ -587,7 +587,7 @@
 	  <entry id="34300" string="Signal processing">Apodizzazione</entry>
 	  <entry id="34301" string="Window function(s)">Funzioni di apodizzazione</entry>
 	  <entry id="34302" string="Note">Nota</entry>
-	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">è possibile specificare più funzioni separate da punto e&#10;virgola.</entry>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">È possibile specificare più funzioni separate da punto e&#10;virgola.</entry>
 	  <entry id="34304" string="Linear predictor">Predictor lineare</entry>
 	  <entry id="34305" string="Maximum LPC order">Ordine LPC massimo</entry>
 	  <entry id="34306" string="disabled">disattivato</entry>
@@ -620,7 +620,7 @@
 	<entry id="36007" string="Use VBR encoding">Usa codifica VBR</entry>
 	<entry id="36008" string="Quality">Qualità</entry>
 	<entry id="36009" string="Target bitrate">Bitrate</entry>
-	<entry id="36010" string="Use 2-pass encoding">Usa codifica a 2 passi</entry>
+	<entry id="36010" string="Use 2-pass encoding">Usa codifica a 2 passaggi</entry>
       </section>
 
       <section name="TwinVQ">
@@ -656,7 +656,7 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="100000" string="Support this project">Suppota questo progetto</entry>
+	<entry id="100000" string="Support this project">Supporta questo progetto</entry>
 	<entry id="100001" string="Please support this project!">Per favore supporta questo progetto!</entry>
 	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Aiutaci a mantenere questo sofwtare gratuito supportando il progetto %1&#10;con una donazione&#10;&#10;Fai clic su uno dei pulsanti sottostanti per fare una donazione con PayPal:</entry>
 	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Puoi inviare anche direttamente del denaro a %1 usando PayPal.&#10;&#10;Per favore scrivi a %1 se vuoi donare usando&#10;un pagamento elettronico, inviarci un cheque o inviarci denaro via mail.</entry>
@@ -667,7 +667,7 @@
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="101000" string="Configure">Configura</entry>
+	<entry id="101000" string="Configure">Imposta</entry>
 	<entry id="101001" string="About">Informazioni...</entry>
       </section>
 
