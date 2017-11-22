@@ -71,8 +71,12 @@ typedef struct faacEncConfiguration
     /* AAC object type */
     unsigned int aacObjectType;
 
-    /* Joint coding mode */
-    unsigned int jointmode;
+    union {
+        /* Joint coding mode */
+        unsigned int jointmode;
+        /* compatibility alias */
+        unsigned int allowMidside;
+    };
 
     /* Use one of the channels as LFE channel */
     unsigned int useLfe;
