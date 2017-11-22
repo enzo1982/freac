@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -12,6 +12,7 @@
 #include <smooth/io/drivers/driver_https.h>
 #include <smooth/io/drivers/driver_socks4.h>
 #include <smooth/io/drivers/driver_socks5.h>
+
 #include <cddb/cddbremote.h>
 #include <freac.h>
 
@@ -21,11 +22,14 @@
 #	include <unistd.h>
 #endif
 
-#include <dllinterfaces.h>
-
 freac::CDDBRemote::CDDBRemote(Config *iConfig) : CDDB(iConfig)
 {
 	connected = False;
+
+	socket	  = NIL;
+
+	in	  = NIL;
+	out	  = NIL;
 }
 
 freac::CDDBRemote::~CDDBRemote()
@@ -62,95 +66,61 @@ String freac::CDDBRemote::SendCommand(const String &iCommand)
 		case FREEDB_MODE_HTTP:
 			if (connected)
 			{
-				delete out;
 				delete in;
-				delete socket;
 
 				connected = false;
 			}
 
-			if (command[0] == 'p' && command[1] == 'r' && command[2] == 'o' && command[3] == 't' && command[4] == 'o')	break;
-			if (command[5] == 'h' && command[6] == 'e' && command[7] == 'l' && command[8] == 'l' && command[9] == 'o')	break;
-			if (command[0] == 'q' && command[1] == 'u' && command[2] == 'i' && command[3] == 't')				break;
-			if (command == NIL)												break;
+			if (command.StartsWith("proto"))	break;
+			if (command.StartsWith("cddb hello"))	break;
+			if (command.StartsWith("quit"))		break;
+			if (command == NIL)			break;
 
-			char	*buffer = new char [256];
+			hostNameBuffer.Resize(256);
 
-			gethostname(buffer, 256);
+			gethostname(hostNameBuffer, hostNameBuffer.Size());
 
-			str.Append("POST ");
+			Net::Protocols::HTTP	 http(String("http://").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append(config->freedb_query_path));
 
-			if (config->freedb_proxy_mode == 1) str.Append("http://").Append(config->freedb_server);
+			http.SetParameter("cmd", String(command).Replace(" ", "+"));
+			http.SetParameter("hello", String("user ").Append((char *) hostNameBuffer).Append(" ").Append(freac::appName).Append(" ").Append(freac::cddbVersion).Replace(" ", "+"));
+			http.SetParameter("proto", "6");
 
-			str.Append(config->freedb_query_path).Append(" HTTP/1.0\n");
-			str.Append("Host: ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append("\n");
+			http.SetHeaderField("User-Email", config->freedb_email);
+			http.SetHeaderField("Charset", "UTF-8");
 
-			if (config->freedb_proxy_mode == 1 && config->freedb_proxy_user != NIL) str.Append("Proxy-Authorization: Basic ").Append(String(String(config->freedb_proxy_user).Append(":").Append(config->freedb_proxy_password)).EncodeBase64()).Append("\n");
+			http.SetMode(Net::Protocols::HTTP_METHOD_GET);
 
-			str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-			str.Append("Content-Length: ").Append(String::FromInt(String("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+").Append(freac::appName).Append("+").Append(freac::cddbVersion).Append("&proto=6\n").Length())).Append("\n");
-			str.Append("Charset: UTF-8\n");
-			str.Append("\n");
+			if (config->freedb_proxy_mode != 0)
+			{
+				http.SetProxy(config->freedb_proxy, config->freedb_proxy_port);
+				http.SetProxyAuth(config->freedb_proxy_user, config->freedb_proxy_password);
 
-			for (int i = 0; i < command.Length(); i++) if (command[i] == ' ') command[i] = '+';
+				switch (config->freedb_proxy_mode)
+				{
+					case 1: http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTP);   break;
+					case 2: http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTPS);  break;
+					case 3: http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS4); break;
+					case 4: http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS5); break;
+				}
+			}
 
-			str.Append("cmd=").Append(command).Append("&hello=user+").Append(buffer).Append("+").Append(freac::appName).Append("+").Append(freac::cddbVersion).Append("&proto=6\n");
-
-			delete [] buffer;
-
-			if (config->freedb_proxy_mode == 0)		socket = new DriverSocket(config->freedb_server, config->freedb_http_port);
-			else if (config->freedb_proxy_mode == 1)	socket = new DriverSocket(config->freedb_proxy, config->freedb_proxy_port);
-			else if (config->freedb_proxy_mode == 2)	socket = new DriverHTTPS(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
-			else if (config->freedb_proxy_mode == 3)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
-			else if (config->freedb_proxy_mode == 4)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
-
-			if (socket->GetLastError() != IO_ERROR_OK)
+			if (http.DownloadToBuffer(httpResultBuffer) == Error())
 			{
 				debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
 
 				str = "error";
 
-				delete socket;
-
 				break;
 			}
 
-			in = new InStream(STREAM_DRIVER, socket);
-			out = new OutStream(STREAM_STREAM, in);
+			in = new InStream(STREAM_BUFFER, httpResultBuffer, httpResultBuffer.Size());
 
-			out->SetPackageSize(str.Length());
+			str = in->InputLine();
+			debug_out->OutputLine(str);
 
-			debug_out->OutputLine(String("CDDB: ").Append(str));
-
-			out->OutputString(str);
-			out->Flush();
-
-			do
-			{
-				str = in->InputLine();
-
-				debug_out->OutputLine(String("CDDB: < ").Append(str));
-			}
-			while (str != NIL);
-
-			do
-			{
-				str = in->InputLine();
-
-				debug_out->OutputLine(String("CDDB: < ").Append(str));
-			}
-			while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5' && str != NIL);
-
-			if (str[1] == '1')
-			{
-				connected = true;
-			}
-			else
-			{
-				delete out;
-				delete in;
-				delete socket;
-			}
+			if (str.StartsWith("210") || str.StartsWith("211")) connected = true;
+			else						    delete in;
 
 			break;
 	}
@@ -162,11 +132,14 @@ Bool freac::CDDBRemote::ConnectToServer()
 {
 	if (config->freedb_mode == FREEDB_MODE_CDDBP)
 	{
-		if (config->freedb_proxy_mode == 0)		socket = new DriverSocket(config->freedb_server, config->freedb_cddbp_port);
-		else if (config->freedb_proxy_mode == 1)	{ connected = False; return False; }
-		else if (config->freedb_proxy_mode == 2)	socket = new DriverHTTPS(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port, config->freedb_proxy_user, config->freedb_proxy_password);
-		else if (config->freedb_proxy_mode == 3)	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port);
-		else if (config->freedb_proxy_mode == 4)	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port, config->freedb_proxy_user, config->freedb_proxy_password);
+		switch (config->freedb_proxy_mode)
+		{
+			case 0:	socket = new DriverSocket(config->freedb_server, config->freedb_cddbp_port); break;
+			case 1:	connected = False; return False;
+			case 2:	socket = new DriverHTTPS(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port, config->freedb_proxy_user, config->freedb_proxy_password); break;
+			case 3:	socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port); break;
+			case 4:	socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_cddbp_port, config->freedb_proxy_user, config->freedb_proxy_password); break;
+		}
 
 		if (socket->GetLastError() != IO_ERROR_OK)
 		{
@@ -196,7 +169,7 @@ Bool freac::CDDBRemote::ConnectToServer()
 
 	gethostname(hostNameBuffer, hostNameBuffer.Size());
 
-	SendCommand(String("cddb hello user ").Append(hostNameBuffer).Append(" ").Append(freac::appName).Append(" ").Append(freac::cddbVersion));
+	SendCommand(String("cddb hello user ").Append((char *) hostNameBuffer).Append(" ").Append(freac::appName).Append(" ").Append(freac::cddbVersion));
 
 	return True;
 }
@@ -214,11 +187,13 @@ Int freac::CDDBRemote::Query(const String &queryString)
 	titles.RemoveAll();
 	categories.RemoveAll();
 
-	// no match found
-	if (str[0] == '2' && str[1] == '0' && str[2] == '2') return QUERY_RESULT_NONE;
+	/* No match found.
+	 */
+	if (str.StartsWith("202")) return QUERY_RESULT_NONE;
 
-	// exact match
-	if (str[0] == '2' && str[1] == '0' && str[2] == '0')
+	/* Exact match.
+	 */
+	if (str.StartsWith("200"))
 	{
 		String	 id;
 		String	 title;
@@ -228,8 +203,8 @@ Int freac::CDDBRemote::Query(const String &queryString)
 		{
 			if (str[s] == ' ')
 			{
-				for (Int i = 0; i < 8; i++)				id[i] = str[s + i + 1];
-				for (Int j = 0; j < (str.Length() - s - 14); j++)	title[j] = str[s + j + 10];
+				for (Int i = 0; i < 8; i++)			  id[i]	   = str[s + i +  1];
+				for (Int j = 0; j < (str.Length() - s - 14); j++) title[j] = str[s + j + 10];
 
 				break;
 			}
@@ -246,8 +221,9 @@ Int freac::CDDBRemote::Query(const String &queryString)
 		return QUERY_RESULT_SINGLE;
 	}
 
-	// multiple exact matches
-	if (str[0] == '2' && str[1] == '1' && (str[2] == '0' || str[2] == '1'))
+	/* Multiple exact matches.
+	 */
+	if (str.StartsWith("210") || str.StartsWith("211"))
 	{
 		String	 inputFormat = String::SetInputFormat("UTF-8");
 		String	 outputFormat = String::SetOutputFormat("UTF-8");
@@ -268,8 +244,8 @@ Int freac::CDDBRemote::Query(const String &queryString)
 			{
 				if (val[s] == ' ')
 				{
-					for (Int i = 0; i < 8; i++)				id[i] = val[s + i + 1];
-					for (Int j = 0; j < (val.Length() - s - 10); j++)	title[j] = val[s + j + 10];
+					for (Int i = 0; i < 8; i++)			  id[i]	   = val[s + i +  1];
+					for (Int j = 0; j < (val.Length() - s - 10); j++) title[j] = val[s + j + 10];
 
 					break;
 				}
@@ -288,8 +264,8 @@ Int freac::CDDBRemote::Query(const String &queryString)
 		String::SetInputFormat(inputFormat);
 		String::SetOutputFormat(outputFormat);
 
-		if (str[2] == '0')	return QUERY_RESULT_MULTIPLE;
-		else			return QUERY_RESULT_FUZZY;
+		if (str[2] == '0') return QUERY_RESULT_MULTIPLE;
+		else		   return QUERY_RESULT_FUZZY;
 	}
 
 	return QUERY_RESULT_ERROR;
@@ -297,6 +273,8 @@ Int freac::CDDBRemote::Query(const String &queryString)
 
 Bool freac::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbInfo)
 {
+	/* Send read command and get result.
+	 */
 	String	 result = SendCommand(String("cddb read ").Append(category).Append(" ").Append(DiscIDToString(discID)));
 
 	if (!result.StartsWith("210")) return False;
@@ -324,6 +302,8 @@ Bool freac::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbI
 	String::SetInputFormat(inputFormat);
 	String::SetOutputFormat(outputFormat);
 
+	/* Parse result and return.
+	 */
 	return ParseCDDBRecord(result, cddbInfo);
 }
 
@@ -333,77 +313,39 @@ Bool freac::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 
 	if (!UpdateEntry(cddbInfo)) return False;
 
-	String	 content = FormatCDDBRecord(cddbInfo);
-	String	 str = "POST ";
+	Net::Protocols::HTTP	 http(String("http://").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append(config->freedb_submit_path));
 
-	if (config->freedb_proxy_mode == 1) str.Append("http://").Append(config->freedb_server);
+	http.SetHeaderField("Category", cddbInfo.category);
+	http.SetHeaderField("Discid", DiscIDToString(cddbInfo.discID));
+	http.SetHeaderField("User-Email", config->freedb_email);
+	http.SetHeaderField("Submit-Mode", freac::cddbMode);
+	http.SetHeaderField("Charset", "UTF-8");
 
-	str.Append(config->freedb_submit_path).Append(" HTTP/1.0\n");
-	str.Append("Host: ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)).Append("\n");
+	if (config->freedb_proxy_mode != 0)
+	{
+		http.SetProxy(config->freedb_proxy, config->freedb_proxy_port);
+		http.SetProxyAuth(config->freedb_proxy_user, config->freedb_proxy_password);
 
-	if (config->freedb_proxy_mode == 1 && config->freedb_proxy_user != NIL) str.Append("Proxy-Authorization: Basic ").Append(String(String(config->freedb_proxy_user).Append(":").Append(config->freedb_proxy_password)).EncodeBase64()).Append("\n");
+		switch (config->freedb_proxy_mode)
+		{
+			case 1: http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTP);   break;
+			case 2: http.SetProxyMode(Net::Protocols::HTTP_PROXY_HTTPS);  break;
+			case 3: http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS4); break;
+			case 4: http.SetProxyMode(Net::Protocols::HTTP_PROXY_SOCKS5); break;
+		}
+	}
 
-	str.Append("Category: ").Append(cddbInfo.category).Append("\n");
-	str.Append("Discid: ").Append(cddbInfo.DiscIDToString()).Append("\n");
-	str.Append("User-Email: ").Append(config->freedb_email).Append("\n");
-	str.Append("Submit-Mode: ").Append(freac::cddbMode).Append("\n");
-	str.Append("Content-Length: ").Append(String::FromInt(strlen(content.ConvertTo("UTF-8")))).Append("\n");
-	str.Append("Charset: UTF-8\n");
-	str.Append("\n");
+	http.SetContent(FormatCDDBRecord(cddbInfo));
 
-	str.Append(content);
-
-	String	 outputFormat = String::SetOutputFormat("UTF-8");
-
-	debug_out->OutputLine(String("CDDB: ").Append(str));
-
-	if	(config->freedb_proxy_mode == 0) socket = new DriverSocket(config->freedb_server, config->freedb_http_port);
-	else if (config->freedb_proxy_mode == 1) socket = new DriverSocket(config->freedb_proxy, config->freedb_proxy_port);
-	else if (config->freedb_proxy_mode == 2) socket = new DriverHTTPS(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
-	else if (config->freedb_proxy_mode == 3) socket = new DriverSOCKS4(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port);
-	else if (config->freedb_proxy_mode == 4) socket = new DriverSOCKS5(config->freedb_proxy, config->freedb_proxy_port, config->freedb_server, config->freedb_http_port, config->freedb_proxy_user, config->freedb_proxy_password);
-
-	if (socket->GetLastError() != IO_ERROR_OK)
+	if (http.DownloadToBuffer(httpResultBuffer) == Error())
 	{
 		debug_out->OutputLine(String("CDDB: Error connecting to CDDB server at ").Append(config->freedb_server).Append(":").Append(String::FromInt(config->freedb_http_port)));
-
-		delete socket;
 
 		return False;
 	}
 
-	in = new InStream(STREAM_DRIVER, socket);
-	out = new OutStream(STREAM_STREAM, in);
-
-	out->SetPackageSize(str.Length());
-
-	out->OutputLine(str);
-	out->Flush();
-
-	String::SetOutputFormat(outputFormat);
-
-	do
-	{
-		str = in->InputLine();
-
-		debug_out->OutputLine(String("CDDB: < ").Append(str));
-	}
-	while (str != NIL);
-
-	do
-	{
-		str = in->InputLine();
-
-		debug_out->OutputLine(String("CDDB: < ").Append(str));
-	}
-	while (str[0] != '2' && str[0] != '3' && str[0] != '4' && str[0] != '5');
-
-	delete out;
-	delete in;
-	delete socket;
-
-	if (str.StartsWith("200"))	return True;
-	else				return False;
+	if (String((char *) (UnsignedByte *) httpResultBuffer).StartsWith("200")) return True;
+	else									  return False;
 }
 
 Bool freac::CDDBRemote::CloseConnection()

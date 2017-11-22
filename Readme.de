@@ -99,6 +99,7 @@ Geschichte
 		- Verwende als Standardeinstellung WMA 9.2 statt WMA 10 Pro
 		- Unterstützung zum Lesen von WAV-Dateien mit unbekannter Länge hinzugefügt
 		- Seltener Absturz beim Dekodieren einiger Ogg Vorbis-Dateien behoben
+		- Einige Probleme bei Verbindung mit der freedb-Datenbank behoben
 		- CDRip auf Version 1.27 aktualisiert um Probleme bei der Erkennung von USB-Laufwerken zu beheben
 		- LAME auf Version 3.100 aktualisiert
 		- FAAC auf Version 1.29.9.2 aktualisiert
