@@ -322,32 +322,46 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 		if (type == PARAMETER_TYPE_SWITCH)
 		{
+			/* Enable switch if given on command line.
+			 */
 			config->SetIntValue(component->GetID(), name, ScanForEncoderOption(spec));
 		}
 		else if (type == PARAMETER_TYPE_SELECTION)
 		{
+			/* Set selection to given value.
+			 */
 			String	 value;
-			Bool	 found = False;
+			Bool	 present = ScanForEncoderOption(String(spec).Replace("%VALUE%", NIL).Trim(), &value);
 
-			config->SetIntValue(component->GetID(), String("Set ").Append(name), ScanForEncoderOption(String(spec).Replace("%VALUE%", NIL).Trim(), &value));
+			config->SetIntValue(component->GetID(), String("Set ").Append(name), present);
 			config->SetStringValue(component->GetID(), name, value);
+
+			/* Check if given value is allowed.
+			 */
+			Bool	 found = False;
 
 			foreach (Option *option, options) if (option->GetValue() == value) found = True;
 
-			if (!found) broken = True;
+			if (present && !found) broken = True;
 		}
 		else if (type == PARAMETER_TYPE_RANGE)
 		{
+			/* Set range parameter to given value.
+			 */
 			String	 value;
-			Bool	 valid = True;
+			Bool	 present = ScanForEncoderOption(String(spec).Replace("%VALUE%", NIL).Trim(), &value);
 
-			config->SetIntValue(component->GetID(), String("Set ").Append(name), ScanForEncoderOption(String(spec).Replace("%VALUE%", NIL).Trim(), &value));
+			config->SetIntValue(component->GetID(), String("Set ").Append(name), present);
 			config->SetStringValue(component->GetID(), name, value);
+
+			/* Check if given value is valid.
+			 */
+			Bool	 valid = True;
 
 			foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MIN && value.ToFloat() < option->GetValue().ToFloat()) valid = False;
 			foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MAX && value.ToFloat() > option->GetValue().ToFloat()) valid = False;
 
-			if (!valid) broken = True;
+			if (present && !valid) broken = True;
 		}
 	}
 
