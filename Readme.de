@@ -95,6 +95,7 @@ Geschichte
 
 	Version 1.0.31 (November 2017)
 
+		- Italienische Übersetzung aktualisiert
 		- Standard-Ausgabevorlage auf <artist> - <album>\<artist> - <album> - <track> - <title> geändert
 		- Verwende als Standardeinstellung WMA 9.2 statt WMA 10 Pro
 		- Unterstützung zum Lesen von WAV-Dateien mit unbekannter Länge hinzugefügt
@@ -522,7 +523,7 @@ Besonderen Dank
 	- Albert L. Faber für die exzellente CDRip Ripper Bibliothek
 
 	- den Übersetzern: Eric Le Carre (Französisch),
-			   Marco D'Amato (Italienisch),
+			   Marco D'Amato und Roberto Boriotti (Italienisch),
 			   REIKA (Japanisch),
 			   Federico Reddig und Will (Spanisch),
 			   Jose Maria Vera Somoza (Spanisch, Latinamerikanisch),

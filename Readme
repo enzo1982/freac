@@ -94,6 +94,7 @@ History
 
 	Version 1.0.31 (November 2017)
 
+		- updated Italian translation
 		- changed default output pattern to <artist> - <album>\<artist> - <album> - <track> - <title>
 		- default to using WMA 9.2 instead of WMA 10 Pro
 		- added support for reading WAV files with unknown length
@@ -521,7 +522,7 @@ Special thanks to
 	- Albert L. Faber for his excellent CDRip Ripping Library
 
 	- the translators: Eric Le Carre (French),
-			   Marco D'Amato (Italian),
+			   Marco D'Amato and Roberto Boriotti (Italian),
 			   REIKA (Japanese),
 			   Federico Reddig and Will (Spanish),
 			   Jose Maria Vera Somoza (Spanish, Latin American),
