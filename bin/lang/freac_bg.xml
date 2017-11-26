@@ -96,7 +96,7 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Основни настройки</entry>
-	<entry id="1301" string="Configure selected encoder">Конфигуриране на избран енкодер</entry>
+	<entry id="1301" string="Configure selected encoder">Конфигуриране на избрания енкодер</entry>
 	<entry id="1302" string="Active CD-ROM drive">Активно CD-ROM устройство</entry>
 	<entry id="1303" string="Active configuration">Активна конфигурация</entry>
 	<entry id="1304" string="Default configuration">Конфигурация по подразбиране</entry>
@@ -457,7 +457,7 @@
 	<entry id="5604" string="Up">Нагоре</entry>
 	<entry id="5605" string="Down">Надолу</entry>
 	<entry id="5606" string="Jobs">Задачи</entry>
-	<entry id="5607" string="Show Jobs tab">Показване на раздел "Задачи"</entry>
+	<entry id="5607" string="Show Jobs tab">Показване на раздел &quot;Задачи&quot;</entry>
 
 	<section name="Columns">
 	  <entry id="5650" string="Track artist">Изпълнител</entry>
@@ -527,7 +527,7 @@
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 е наличен на %2 езика.&#10;Ако вашият език не е наличен,&#10;можете лесно да преведете %1,&#10;използвайки приложението 'smooth Translator'.</entry>
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 поддържа енкодерите&#10;LAME, Ogg Vorbis, FAAC, FLAC и Bonk.&#10;Енкодер за формата VQF е наличен &#10;на сайта на %1 на адрес: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 може да ползва входящи плъгини на Winamp 2&#10;за подъдържане на повече формати.&#10;Копирайте файловете in_*.dll в директорията&#10;%1 / plugins за да може %1 да чете тези формати.</entry>
+      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 може да ползва входящи плъгини на Winamp 2&#10;за поддъдържане на повече формати.&#10;Копирайте файловете in_*.dll в папката&#10;%1 / plugins за да може %1 да чете тези формати.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">С %1 може да изпратите записи към&#10;freedb CD базата данни съдържащи Unicode символи.&#10;Така че, ако имате CD-та без латински имена&#10;на изпълнителя или песните,&#10;може да изпратите верни записи към freedb с %1.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">За коригиране на грешките при четене по време на&#10;извличането може да включите 'Корекция на трептенията'&#10;в таба 'CD Извличане'&#10;в конфигурационния прозорец на %1.&#10;Ако това не помогне, опитайте някой от Paranoia режимите.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Имате ли предложения за усъвършенстване на %1?&#10;&#10;Може да изпращате всякакви идеи&#10;през Тракера на SourceForge&#10;страницата на %1 - %2&#10;или да изпратите eMail до %3.</entry>
@@ -594,7 +594,7 @@
       <entry id="9007" string="Overlap only">Само препокриване</entry>
       <entry id="9008" string="No verify">Без проверка</entry>
       <entry id="9009" string="No scratch repair">Без поправка за надраскване</entry>
-      <entry id="9010" string="Full cdparanoia mode">Пълен cdparanoia режим&#13;</entry>
+      <entry id="9010" string="Full cdparanoia mode">Пълен cdparanoia режим</entry>
       <entry id="9011" string="Activate jitter correction">Корекция на колебанията</entry>
       <entry id="9012" string="Swap left/right channel">Размяна Ляв/Десен канал</entry>
       <entry id="9013" string="Automatization">Автоматизация</entry>
@@ -607,7 +607,7 @@
       <entry id="9020" string="Use read offset">Изместване при четене</entry>
       <entry id="9021" string="samples">семпли</entry>
       <entry id="9022" string="Read ISRC when adding tracks to joblist">Четене на ISRC при добавяне на песни към задачите</entry>
-      <entry id="9023" string="Spin up before ripping">Завъртане преди извличане&#13;</entry>
+      <entry id="9023" string="Spin up before ripping">Завъртане преди извличане</entry>
       <entry id="9024" string="%1 seconds">%1 секунди</entry>
     </section>
 
@@ -656,7 +656,7 @@
 	<entry id="31001" string="Stereo mode">Стерео режим</entry>
 	<entry id="31002" string="Quantization">Квантуване</entry>
 	<entry id="31003" string="Downsampling ratio">Коефициент на понижено семплиране</entry>
-	<entry id="31004" string="Predictor size">Предсказване размер</entry>
+	<entry id="31004" string="Predictor size">Предсказване на размера</entry>
 	<entry id="31005" string="Enable lossless encoding">Кодиране без загуба</entry>
 	<entry id="31006" string="Enable Joint Stereo">Включено Joint Stereo</entry>
       </section>
@@ -688,7 +688,7 @@
 	</section>
 
 	<section name="Misc">
-	  <entry id="32200" string="Control bits">Контролни битове</entry>
+	  <entry id="32200" string="Control bits">Контролни маркери</entry>
 	  <entry id="32201" string="Set Copyright bit">Зад.Авторско право</entry>
 	  <entry id="32202" string="Set Original bit">Зад. Оригинал</entry>
 	  <entry id="32203" string="Set Private bit">Зад. Лично право</entry>
@@ -709,9 +709,9 @@
 	  <entry id="32301" string="Enable ATH">Включ. ATH</entry>
 	  <entry id="32302" string="Use default setting">Използване на настройка по подразбиране</entry>
 	  <entry id="32303" string="Psycho acoustic model">Психо акустичен модел</entry>
-	  <entry id="32304" string="Use Temporal Masking Effect">Използване времеви маскиращ ефект&#13;</entry>
+	  <entry id="32304" string="Use Temporal Masking Effect">Използване времеви маскиращ ефект</entry>
 	  <entry id="32305" string="Stream format">Формат на потока</entry>
-	  <entry id="32306" string="Enforce strict ISO compliance">Стриктно прилагане спазването на ISO&#13;</entry>
+	  <entry id="32306" string="Enforce strict ISO compliance">Стриктно прилагане спазването на ISO</entry>
 	</section>
 
 	<section name="Audio processing">
@@ -719,10 +719,10 @@
 	  <entry id="32401" string="auto">автоматично</entry>
 	  <entry id="32402" string="no resampling">без пресемплиране</entry>
 	  <entry id="32403" string="Highpass filter">Филтър за ВИСОКИ честоти</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">Задаване висока честота (Hz)</entry>
+	  <entry id="32404" string="Set Highpass frequency (Hz)">Зададена висока честота (Hz)</entry>
 	  <entry id="32405" string="Set Highpass width (Hz)">Зад.ширина висока честота(Hz)</entry>
 	  <entry id="32406" string="Lowpass filter">Филтър за ниски честоти</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">Задаване ниска честота (Hz)</entry>
+	  <entry id="32407" string="Set Lowpass frequency (Hz)">Зададена ниска честота (Hz)</entry>
 	  <entry id="32408" string="Set Lowpass width (Hz)">Зад.ширина ниска честота (Hz)</entry>
 	  <entry id="32409" string="Misc settings">Разни настройки</entry>
 	  <entry id="32410" string="Disable all filtering">Изкл. всички филтри</entry>
@@ -757,7 +757,7 @@
 	  <entry id="33302" string="File format">Файлов формат</entry>
 	  <entry id="33303" string="File extension">Разширение файл</entry>
 	  <entry id="33304" string="Tags">Тагове</entry>
-	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Позволено ID3v2 тагове в AAC файлове&#13;</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Позволено ID3v2 тагове в AAC файлове</entry>
 	  <entry id="33306" string="Note">Забележка</entry>
 	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Някои устройства могат да имат проблем с AAC&#10;файлове с ID3 тагове. Използвайте само ако сте&#10;сигурни, че вашия плеър може да прочете тези тагове.</entry>
 	</section>
@@ -824,7 +824,7 @@
 	<entry id="36004" string="Use format">Използван формат</entry>
 	<entry id="36005" string="Write uncompressed WMA files">Записване на некомпресирани WMA файлове</entry>
 	<entry id="36006" string="Automatically select format based on settings and input format">Авт. избор въз основа на настройките и входния формат</entry>
-	<entry id="36007" string="Use VBR encoding">VBR кодиране&#13;</entry>
+	<entry id="36007" string="Use VBR encoding">VBR кодиране</entry>
 	<entry id="36008" string="Quality">Качество</entry>
 	<entry id="36009" string="Target bitrate">Целеви битрейт</entry>
 	<entry id="36010" string="Use 2-pass encoding">Кодиране на 2 етапа</entry>
@@ -955,7 +955,7 @@
 	<entry id="102003" string="Automatically download URLs copied to clipboard">Автоматично изтегляне адресите копирани в буфера</entry>
 	<entry id="102004" string="Save downloaded video files">Запис на изтеглените видео файлове</entry>
 	<entry id="102005" string="Video downloads">Видео изтегляния</entry>
-	<entry id="102006" string="Downloaded tracks">Изтеглени песни&#13;</entry>
+	<entry id="102006" string="Downloaded tracks">Изтеглени песни</entry>
 	<entry id="102007" string="Uploader">Качване</entry>
 	<entry id="102008" string="Video URL">URL адрес на видеото</entry>
 	<entry id="102009" string="Video title">Заглавие на видеото</entry>
@@ -1059,7 +1059,7 @@
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface">Потребителски интерфейс</entry>
-	  <entry id="104101" string="Show protocols tab in main window">Показване раздел "протоколи" в главния прозорец</entry>
+	  <entry id="104101" string="Show protocols tab in main window">Показване раздел &quot;протоколи&quot; в главния прозорец</entry>
 	</section>
       </section>
     </section>
