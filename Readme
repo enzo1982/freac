@@ -95,6 +95,7 @@ History
 	Version 1.0.31a (November 2017)
 
 		- updated Bulgarian translation
+		- updated FAAC encoder to fix Joint Stereo bug
 
 	Version 1.0.31 (November 2017)
 
