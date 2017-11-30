@@ -51,11 +51,10 @@ Bool freac::FilterOutMP4::Activate()
 	fConfig->aacObjectType	= LOW;
 	fConfig->jointmode	= currentConfig->faac_allowjs;
 	fConfig->useTns		= currentConfig->faac_usetns;
+	fConfig->quantqual	= currentConfig->faac_set_quality ? currentConfig->faac_aac_quality : 0;
+	fConfig->bitRate	= currentConfig->faac_set_quality ? 0 : currentConfig->faac_bitrate * 1000;
 	fConfig->bandWidth	= currentConfig->faac_bandwidth;
 	fConfig->outputFormat	= RAW_STREAM;
-
-	if (currentConfig->faac_set_quality)	fConfig->quantqual	= currentConfig->faac_aac_quality;
-	else					fConfig->bitRate	= currentConfig->faac_bitrate * 1000;
 
 	if (format->bits == 8)	fConfig->inputFormat	= FAAC_INPUT_16BIT;
 	if (format->bits == 16)	fConfig->inputFormat	= FAAC_INPUT_16BIT;
