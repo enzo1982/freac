@@ -30,16 +30,16 @@ freac::ConfigureResources::ConfigureResources()
 
 	enableParallel = config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
 
-	group_cpu		= new GroupBox(i18n->TranslateString("Parallel processing"), Point(7, 11), Size(350, 65));
+	group_cpu		= new GroupBox(i18n->TranslateString("Parallel processing"), Point(7, 11), Size(350, 66));
 
-	check_enable_parallel	= new CheckBox(i18n->TranslateString("Enable parallel processing"), Point(10, 13), Size(group_cpu->GetWidth() - 20, 0), &enableParallel);
+	check_enable_parallel	= new CheckBox(i18n->TranslateString("Enable parallel processing"), Point(10, 14), Size(group_cpu->GetWidth() - 20, 0), &enableParallel);
 	check_enable_parallel->onAction.Connect(&ConfigureResources::ToggleParallel, this);
 
-	text_threads		= new Text(i18n->AddColon(i18n->TranslateString("Number of conversion threads")), Point(10, 40));
-	text_threads_value	= new Text(i18n->TranslateString("auto"), Point(350, 40));
+	text_threads		= new Text(i18n->AddColon(i18n->TranslateString("Number of conversion threads")), Point(10, 41));
+	text_threads_value	= new Text(i18n->TranslateString("auto"), Point(350, 41));
 	text_threads_value->SetX(group_cpu->GetWidth() - text_threads_value->GetUnscaledTextWidth() - 10);
 
-	slider_threads		= new Slider(Point(17 + text_threads->GetUnscaledTextWidth(), 38), Size(group_cpu->GetWidth() - 35 - text_threads->GetUnscaledTextWidth() - text_threads_value->GetUnscaledTextWidth(), 0), OR_HORZ, NIL, 1, CPU().GetNumLogicalCPUs());
+	slider_threads		= new Slider(Point(17 + text_threads->GetUnscaledTextWidth(), 39), Size(group_cpu->GetWidth() - 35 - text_threads->GetUnscaledTextWidth() - text_threads_value->GetUnscaledTextWidth(), 0), OR_HORZ, NIL, 1, CPU().GetNumLogicalCPUs());
 	slider_threads->SetValue(config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault));
 	slider_threads->onAction.Connect(&ConfigureResources::ChangeConversionThreads, this);
 
@@ -53,7 +53,7 @@ freac::ConfigureResources::ConfigureResources()
 	ToggleParallel();
 	ChangeConversionThreads();
 
-	group_priority		= new GroupBox(i18n->TranslateString("Process priority"), Point(7, 87), Size(350, 40));
+	group_priority		= new GroupBox(i18n->TranslateString("Process priority"), Point(7, 88), Size(350, 40));
 
 	text_priority		= new Text(i18n->AddColon(i18n->TranslateString("Process priority")), Point(10, 15));
 	text_priority_value	= new Text(NIL, Point(350, 15));
