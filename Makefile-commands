@@ -2,10 +2,8 @@
 
 include $(dir $(firstword $(MAKEFILE_LIST)))/$(FREAC_PATH)/Makefile-options
 
-BOCA_PATH = $(FREAC_PATH)/cdk
-
-CCOPTS = -fvisibility=hidden -DBOCA_COMPONENT_BUILD $(DEFINE) -I$(SRCDIR)/$(BOCA_PATH)/include
-LDOPTS = -L$(BOCA_PATH)/$(LIBDIR) -L$(SRCDIR)/$(BOCA_PATH)/$(LIBDIR) $(LIBS)
+CCOPTS = -fvisibility=hidden -DBOCA_COMPONENT_BUILD $(DEFINE) -I$(CDK_INSTALL_PATH)/include
+LDOPTS = -L$(CDK_INSTALL_PATH)/$(LIBDIR) $(LIBS)
 
 ifeq (,$(findstring -lstdc++,$(LIBS)))
 	LDOPTS += -lstdc++
