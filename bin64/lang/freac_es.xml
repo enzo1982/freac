@@ -191,7 +191,7 @@
       <entry id="3048" string="Other">Otro</entry>
       <entry id="3049" string="Output file name">Nombre de archivo de salida</entry>
       <entry id="3050" string="verifying">comprobando</entry>
-      <entry id="3051" string="Open">Abrir (carpeta/Web)</entry>
+      <entry id="3051" string="Open">Abrir</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Carpeta</entry>
@@ -405,7 +405,7 @@
 
 	<section name="Errors">
 	  <entry id="5350" string="Please enter a valid eMail address.">Introduzca una dirección de email válida.</entry>
-	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">¡El protocolo CDDBP de freedb no puede ser utilizado a través&#10;de un servidor proxy HTTP!&#10;&#10;¿Desea cambiar el protocolo a HTTP?</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">¡El protocolo CDDBP de freedb no puede usarse a través&#10;de un servidor proxy HTTP!&#10;&#10;¿Desea cambiar el protocolo a HTTP?</entry>
 	</section>
       </section>
 
@@ -558,6 +558,7 @@
       <entry id="7023" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?">¡Ya hay un proceso de conversión en marcha!&#10;&#10;¿Quiere poner éste en cola?</entry>
       <entry id="7024" string="Failed to verify input file: %1">Fallo al verificar el archivo de entrada:  %1</entry>
       <entry id="7025" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">La suma de verificación difiere en el archivo de salida: %1&#10;&#10;Suma de codificación: %2&#10;Suma de verificación: %3</entry>
+      <entry id="7026" string="The selected folder does not exist anymore!">¡La carpeta elegida ya no existe!</entry>
     </section>
 
     <section name="Dialogs">
@@ -1047,7 +1048,7 @@
 
       <section name="Protocols">
 	<entry id="104000" string="Protocols">Protocolos</entry>
-	<entry id="104001" string="Protocol">Protocol</entry>
+	<entry id="104001" string="Protocol">Protocolo</entry>
 	<entry id="104002" string="Errors / Warnings">Errores / Avisos</entry>
 	<entry id="104003" string="Details">Detalles</entry>
 	<entry id="104004" string="Time">Hora</entry>
