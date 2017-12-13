@@ -931,6 +931,16 @@
 	<entry id="50001" string="Sampling rate"/>
 	<entry id="50002" string="Output sampling rate"/>
       </section>
+
+      <section name="Format">
+	<entry id="50100" string="Sample format"/>
+	<entry id="50101" string="Number format"/>
+	<entry id="50102" string="Sample resolution"/>
+	<entry id="50103" string="bit"/>
+	<entry id="50104" string="unsigned"/>
+	<entry id="50105" string="Integer"/>
+	<entry id="50106" string="Float"/>
+      </section>
     </section>
 
     <section name="Extensions">
