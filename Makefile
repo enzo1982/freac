@@ -2,19 +2,17 @@
 
 include $(dir $(firstword $(MAKEFILE_LIST)))/Makefile-options
 
-CDK	= $(SRCDIR)/cdk
-
 INCLUDE	= $(SRCDIR)/include
 OBJECTS	= objects
 SRC	= src
 
 BIN	= bin
-LIB	= $(CDK)/lib
+LIB	= lib
 
 ifeq ($(BUILD_WIN32),True)
 ifeq ($(BUILD_X86_64),True)
-	BIN = $(CURDIR)/bin64
-	LIB = $(CDK)/lib64
+	BIN = bin64
+	LIB = lib64
 endif
 endif
 
@@ -72,9 +70,9 @@ ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
 endif
 
 ifeq ($(BUILD_WIN32),True)
-	CCOPTS			+= -I$(CDK)/include
+	CCOPTS			+= -I$(CDK_INSTALL_PATH)/include
 
-	LDOPTS			+= -L$(LIB) -lsmooth -Wl,--dynamicbase,--nxcompat
+	LDOPTS			+= -L$(CDK_INSTALL_PATH)/$(LIB) -lsmooth -Wl,--dynamicbase,--nxcompat
 
 	LDOPTS_DLL		+= --shared -lboca -lws2_32 -Wl,--out-implib,$(LIBNAME)
 	LDOPTS_GUI		+= -mwindows
