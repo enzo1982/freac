@@ -23,6 +23,11 @@ namespace freac
 		private:
 			GroupBox			*group_dsp;
 
+			CheckBox			*check_enable;
+			CheckBox			*check_playback;
+
+			GroupBox			*group_components;
+
 			Text				*text_available;
 			ListBox				*list_available;
 			Text				*text_selected;
@@ -37,6 +42,9 @@ namespace freac
 			OptionBox			*option_individual;
 			OptionBox			*option_combined;
 
+			Bool				 enableProcessing;
+			Bool				 processPlayback;
+
 			Int				 singleFileMode;
 
 			Void				 AddComponents();
@@ -46,6 +54,8 @@ namespace freac
 
 			Int				 SaveSettings();
 		slots:
+			Void				 OnToggleProcessing();
+
 			Void				 OnSelectAvailable();
 			Void				 OnSelectComponent();
 

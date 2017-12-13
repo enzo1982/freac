@@ -24,67 +24,89 @@ freac::ConfigureDSP::ConfigureDSP()
 
 	i18n->SetContext("Configuration::Processing");
 
-	singleFileMode = config->GetIntValue(Config::CategoryProcessingID, Config::ProcessingSingleFileModeID, Config::ProcessingSingleFileModeDefault);
+	enableProcessing = config->GetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault);
+	processPlayback	 = config->GetIntValue(Config::CategoryProcessingID, Config::ProcessingProcessPlaybackID, Config::ProcessingProcessPlaybackDefault);
 
-	group_dsp	= new GroupBox(i18n->TranslateString("Signal processing"), Point(7, 11), Size(552, 185));
+	singleFileMode	 = config->GetIntValue(Config::CategoryProcessingID, Config::ProcessingSingleFileModeID, Config::ProcessingSingleFileModeDefault);
 
-	text_available	= new Text(i18n->AddColon(i18n->TranslateString("Available")), Point(10, 10));
+	group_dsp		= new GroupBox(i18n->TranslateString("Signal processing"), Point(7, 11), Size(552, 65));
 
-	list_available	= new ListBox(Point(10, 29), Size(245, 116));
+	check_enable		= new CheckBox(i18n->TranslateString("Enable signal processing"), Point(10, 14), Size(532, 0), &enableProcessing);
+	check_enable->onAction.Connect(&ConfigureDSP::OnToggleProcessing, this);
+
+	check_playback		= new CheckBox(i18n->TranslateString("Enable processing during playback"), Point(27, 37), Size(515, 0), &processPlayback);
+
+	group_dsp->Add(check_enable);
+	group_dsp->Add(check_playback);
+
+	Add(group_dsp);
+
+	group_components	= new GroupBox(i18n->TranslateString("Components"), Point(7, 87), Size(552, 197));
+
+	text_available		= new Text(i18n->AddColon(i18n->TranslateString("Available")), Point(10, 12));
+
+	list_available		= new ListBox(Point(10, 32), Size(245, 125));
 	list_available->onSelectEntry.Connect(&ConfigureDSP::OnSelectAvailable, this);
 
-	btn_add		= new Button(i18n->IsActiveLanguageRightToLeft() ? "<-" : "->", NIL, Point(263, 60), Size(26, 0));
+	btn_add			= new Button(i18n->IsActiveLanguageRightToLeft() ? "<-" : "->", NIL, Point(263, 68), Size(26, 0));
 	btn_add->onAction.Connect(&ConfigureDSP::OnAddComponent, this);
 	btn_add->Deactivate();
 
-	btn_remove	= new Button(i18n->IsActiveLanguageRightToLeft() ? "->" : "<-", NIL, Point(263, 90), Size(26, 0));
+	btn_remove		= new Button(i18n->IsActiveLanguageRightToLeft() ? "->" : "<-", NIL, Point(263, 98), Size(26, 0));
 	btn_remove->onAction.Connect(&ConfigureDSP::OnRemoveComponent, this);
 	btn_remove->Deactivate();
 
-	text_selected	= new Text(i18n->AddColon(i18n->TranslateString("Selected")), Point(297, 10));
+	text_selected		= new Text(i18n->AddColon(i18n->TranslateString("Selected")), Point(297, 12));
 
-	list_selected	= new ListBox(Point(297, 29), Size(245, 116));
+	list_selected		= new ListBox(Point(297, 32), Size(245, 125));
 	list_selected->onSelectEntry.Connect(&ConfigureDSP::OnSelectComponent, this);
 	list_selected->SetFlags(LF_ALLOWREORDER);
 
-	btn_configure	= new Button(i18n->TranslateString("Configure component"), NIL, Point(382, 153), Size(160, 0));
+	btn_configure		= new Button(i18n->TranslateString("Configure component"), NIL, Point(382, 165), Size(160, 0));
 	btn_configure->onAction.Connect(&ConfigureDSP::OnConfigureComponent, this);
 	btn_configure->Deactivate();
 
 	btn_configure->SetWidth(Math::Max(80, btn_configure->GetUnscaledTextWidth() + 14));
 	btn_configure->SetX(542 - btn_configure->GetWidth());
 
-	group_dsp->Add(text_available);
-	group_dsp->Add(list_available);
+	group_components->Add(text_available);
+	group_components->Add(list_available);
 
-	group_dsp->Add(btn_add);
-	group_dsp->Add(btn_remove);
+	group_components->Add(btn_add);
+	group_components->Add(btn_remove);
 
-	group_dsp->Add(text_selected);
-	group_dsp->Add(list_selected);
+	group_components->Add(text_selected);
+	group_components->Add(list_selected);
 
-	group_dsp->Add(btn_configure);
+	group_components->Add(btn_configure);
 
-	Add(group_dsp);
+	Add(group_components);
 
 	AddComponents();
 
-	group_single_file	= new GroupBox(i18n->TranslateString("Conversion to a single output file"), Point(7, 207), Size(552, 63));
+	group_single_file	= new GroupBox(i18n->TranslateString("Conversion to a single output file"), Point(7, 296), Size(552, 65));
 
-	option_individual	= new OptionBox(i18n->TranslateString("Process each track individually"), Point(10, 13), Size(532, 0), &singleFileMode, 0);
-	option_combined		= new OptionBox(i18n->TranslateString("Treat the combined tracks like a single track"), Point(10, 36), Size(532, 0), &singleFileMode, 1);
+	option_individual	= new OptionBox(i18n->TranslateString("Process each track individually"), Point(10, 14), Size(532, 0), &singleFileMode, 0);
+	option_combined		= new OptionBox(i18n->TranslateString("Treat the combined tracks like a single track"), Point(10, 37), Size(532, 0), &singleFileMode, 1);
 
 	group_single_file->Add(option_individual);
 	group_single_file->Add(option_combined);
 
 	Add(group_single_file);
 
-	SetSize(Size(566, 277));
+	OnToggleProcessing();
+
+	SetSize(Size(566, 368));
 }
 
 freac::ConfigureDSP::~ConfigureDSP()
 {
 	DeleteObject(group_dsp);
+
+	DeleteObject(check_enable);
+	DeleteObject(check_playback);
+
+	DeleteObject(group_components);
 
 	DeleteObject(text_available);
 	DeleteObject(list_available);
@@ -139,6 +161,24 @@ Void freac::ConfigureDSP::AddComponents()
 	}
 
 	String::ExplodeFinish();
+}
+
+Void freac::ConfigureDSP::OnToggleProcessing()
+{
+	if (enableProcessing)
+	{
+		check_playback->Activate();
+
+		group_components->Activate();
+		group_single_file->Activate();
+	}
+	else
+	{
+		check_playback->Deactivate();
+
+		group_components->Deactivate();
+		group_single_file->Deactivate();
+	}
 }
 
 Void freac::ConfigureDSP::OnSelectAvailable()
@@ -266,6 +306,9 @@ Int freac::ConfigureDSP::SaveSettings()
 
 	/* Save other settings.
 	 */
+	config->SetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, enableProcessing);
+	config->SetIntValue(Config::CategoryProcessingID, Config::ProcessingProcessPlaybackID, processPlayback);
+
 	config->SetIntValue(Config::CategoryProcessingID, Config::ProcessingSingleFileModeID, singleFileMode);
 
 	return Success();

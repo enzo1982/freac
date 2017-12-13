@@ -11,6 +11,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <playback.h>
+#include <config.h>
 #include <utilities.h>
 #include <freac.h>
 
@@ -92,6 +93,10 @@ Int freac::Playback::PlayThread()
 {
 	BoCA::Config	*config = BoCA::Config::Copy();
 
+	/* Get config values.
+	 */
+	Bool	 processPlayback = config->GetIntValue(Config::CategoryProcessingID, Config::ProcessingProcessPlaybackID, Config::ProcessingProcessPlaybackDefault);
+
 	/* Create decoder.
 	 */
 	Decoder	*decoder = new Decoder(config);
@@ -109,23 +114,25 @@ Int freac::Playback::PlayThread()
 
 	/* Create processor.
 	 */
-	Processor	*processor = new Processor(config);
+	Track		 trackToPlay = track;
+	Processor	*processor   = new Processor(config);
 
-	if (!processor->Create(track))
+	if (processPlayback)
 	{
-		delete decoder;
-		delete processor;
+		if (!processor->Create(track))
+		{
+			delete decoder;
+			delete processor;
 
-		BoCA::Config::Free(config);
+			BoCA::Config::Free(config);
 
-		playing = False;
+			playing = False;
 
-		return Error();
+			return Error();
+		}
+
+		trackToPlay.SetFormat(processor->GetFormatInfo());
 	}
-
-	Track	 trackToPlay = track;
-
-	trackToPlay.SetFormat(processor->GetFormatInfo());
 
 	/* Create output component.
 	 */

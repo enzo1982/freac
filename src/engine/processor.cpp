@@ -36,6 +36,12 @@ Bool freac::Processor::Create(const Track &track)
 
 	format = track.GetFormat();
 
+	/* Get config values.
+	 */
+	Bool	 enableProcessing = configuration->GetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault);
+
+	if (!enableProcessing) return True;
+
 	/* Create DSP components.
 	 */
 	const Array<String>	&components = configuration->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault).Explode(",");

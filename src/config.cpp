@@ -162,6 +162,12 @@ const String	 freac::Config::SettingsLastSelectedJoblistDirID		= "LastSelectedJo
 
 /* Category Processing
  */
+const String	 freac::Config::ProcessingEnableProcessingID			= "EnableProcessing";
+const Int	 freac::Config::ProcessingEnableProcessingDefault		= 1;
+
+const String	 freac::Config::ProcessingProcessPlaybackID			= "ProcessPlayback";
+const Int	 freac::Config::ProcessingProcessPlaybackDefault		= 1;
+
 const String	 freac::Config::ProcessingComponentsID				= "ProcessingComponents";
 const String	 freac::Config::ProcessingComponentsDefault			= NIL;
 

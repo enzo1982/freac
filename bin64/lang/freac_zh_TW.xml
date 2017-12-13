@@ -488,9 +488,9 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing">訊號處理</entry>
-	<entry id="5901" string="Available">可用</entry>
-	<entry id="5902" string="Selected">已選擇</entry>
-	<entry id="5903" string="Configure component">元件組態</entry>
+	<entry id="5904" string="Available">可用</entry>
+	<entry id="5905" string="Selected">已選擇</entry>
+	<entry id="5906" string="Configure component">元件組態</entry>
       </section>
     </section>
 
