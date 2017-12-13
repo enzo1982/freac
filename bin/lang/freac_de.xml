@@ -931,6 +931,16 @@
 	<entry id="50001" string="Sampling rate">Samplerate</entry>
 	<entry id="50002" string="Output sampling rate">Ausgabesamplerate</entry>
       </section>
+
+      <section name="Format">
+	<entry id="50100" string="Sample format">Sampleformat</entry>
+	<entry id="50101" string="Number format">Zahlenformat</entry>
+	<entry id="50102" string="Sample resolution">Sampleauflösung</entry>
+	<entry id="50103" string="bit">Bit</entry>
+	<entry id="50104" string="unsigned">vorzeichenlos</entry>
+	<entry id="50105" string="Integer">Ganzzahl</entry>
+	<entry id="50106" string="Float">Fließkomma</entry>
+      </section>
     </section>
 
     <section name="Extensions">
