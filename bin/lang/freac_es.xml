@@ -502,9 +502,12 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing">Apodización</entry>
-	<entry id="5901" string="Available">Disponible</entry>
-	<entry id="5902" string="Selected">Elegido</entry>
-	<entry id="5903" string="Configure component">Configurar componente</entry>
+	<entry id="5904" string="Available">Disponible</entry>
+	<entry id="5905" string="Selected">Elegido</entry>
+	<entry id="5906" string="Configure component">Configurar componente</entry>
+	<entry id="5907" string="Conversion to a single output file">Convertir en un único archivo de salida</entry>
+	<entry id="5908" string="Process each track individually">Procesar cada pista individualmente</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">Tratar el conjunto de pistas como una sola</entry>
       </section>
     </section>
 

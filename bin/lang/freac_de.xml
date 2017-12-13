@@ -502,12 +502,15 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing">Signalverarbeitung</entry>
-	<entry id="5901" string="Available">Verfügbar</entry>
-	<entry id="5902" string="Selected">Ausgewählt</entry>
-	<entry id="5903" string="Configure component">Komponente konfigurieren</entry>
-	<entry id="5904" string="Conversion to a single output file">Konvertierung in eine einzige Ausgabedatei</entry>
-	<entry id="5905" string="Process each track individually">Jeden Track einzeln verarbeiten</entry>
-	<entry id="5906" string="Treat the combined tracks like a single track">Die kombinierten Tracks wie einen einzelnen Track behandeln</entry>
+	<entry id="5901" string="Enable signal processing">Signalverarbeitung aktivieren</entry>
+	<entry id="5902" string="Enable processing during playback">Verarbeitung während der Wiedergabe aktivieren</entry>
+	<entry id="5903" string="Components">Komponenten</entry>
+	<entry id="5904" string="Available">Verfügbar</entry>
+	<entry id="5905" string="Selected">Ausgewählt</entry>
+	<entry id="5906" string="Configure component">Komponente konfigurieren</entry>
+	<entry id="5907" string="Conversion to a single output file">Konvertierung in eine einzige Ausgabedatei</entry>
+	<entry id="5908" string="Process each track individually">Jeden Track einzeln verarbeiten</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">Die kombinierten Tracks wie einen einzigen Track behandeln</entry>
       </section>
     </section>
 

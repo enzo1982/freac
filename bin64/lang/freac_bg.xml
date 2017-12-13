@@ -502,12 +502,12 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing">Обработка на сигнала</entry>
-	<entry id="5901" string="Available">Налични</entry>
-	<entry id="5902" string="Selected">Избрани</entry>
-	<entry id="5903" string="Configure component">Конфигуриране на компонент</entry>
-	<entry id="5904" string="Conversion to a single output file">Преобразуване в един изходен файл</entry>
-	<entry id="5905" string="Process each track individually">Обработване на всяка песен поотделно</entry>
-	<entry id="5906" string="Treat the combined tracks like a single track">Третирайте комбинираните песни като една песен</entry>
+	<entry id="5904" string="Available">Налични</entry>
+	<entry id="5905" string="Selected">Избрани</entry>
+	<entry id="5906" string="Configure component">Конфигуриране на компонент</entry>
+	<entry id="5907" string="Conversion to a single output file">Преобразуване в един изходен файл</entry>
+	<entry id="5908" string="Process each track individually">Обработване на всяка песен поотделно</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">Третирайте комбинираните песни като една песен</entry>
       </section>
     </section>
 

@@ -152,6 +152,12 @@ namespace freac
 
 			/* Category Processing
 			 */
+			static const String	 ProcessingEnableProcessingID;
+			static const Int	 ProcessingEnableProcessingDefault;
+
+			static const String	 ProcessingProcessPlaybackID;
+			static const Int	 ProcessingProcessPlaybackDefault;
+
 			static const String	 ProcessingComponentsID;
 			static const String	 ProcessingComponentsDefault;
 
