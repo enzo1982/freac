@@ -519,17 +519,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">Излазна стопа семпловања</entry>
-	  <entry id="32401" string="auto">само</entry>
-	  <entry id="32402" string="no resampling">без ре-семпловања</entry>
-	  <entry id="32403" string="Highpass filter">Филтер високих тонова</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">Високопролазна фреквенција (Hz)</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">Високопролазна ширина (Hz)</entry>
-	  <entry id="32406" string="Lowpass filter">Филтер ниских тонова</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">Нископролазна фреквенција (Hz)</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">Нископролазна ширина (Hz)</entry>
-	  <entry id="32409" string="Misc settings">Разна подешења</entry>
-	  <entry id="32410" string="Disable all filtering">Онемогући све филтере</entry>
+	  <entry id="32400" string="Highpass filter">Филтер високих тонова</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Високопролазна фреквенција (Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Високопролазна ширина (Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">Филтер ниских тонова</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Нископролазна фреквенција (Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Нископролазна ширина (Hz)</entry>
+	  <entry id="32406" string="Misc settings">Разна подешења</entry>
+	  <entry id="32407" string="Disable all filtering">Онемогући све филтере</entry>
 	</section>
       </section>
 

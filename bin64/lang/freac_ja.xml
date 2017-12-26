@@ -559,17 +559,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">出力サンプリング レート</entry>
-	  <entry id="32401" string="auto">自動</entry>
-	  <entry id="32402" string="no resampling">リサンプリングしない</entry>
-	  <entry id="32403" string="Highpass filter">低域カット フィルタ</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">低域カット 周波数 (Hz)</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">低域カット減衰幅 (Hz)</entry>
-	  <entry id="32406" string="Lowpass filter">高域カット フィルタ</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">高域カット周波数 (Hz)</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">高域カット減衰幅 (Hz)</entry>
-	  <entry id="32409" string="Misc settings">その他の設定</entry>
-	  <entry id="32410" string="Disable all filtering">フィルタを使用しない</entry>
+	  <entry id="32400" string="Highpass filter">低域カット フィルタ</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">低域カット 周波数 (Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">低域カット減衰幅 (Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">高域カット フィルタ</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">高域カット周波数 (Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">高域カット減衰幅 (Hz)</entry>
+	  <entry id="32406" string="Misc settings">その他の設定</entry>
+	  <entry id="32407" string="Disable all filtering">フィルタを使用しない</entry>
 	</section>
       </section>
 

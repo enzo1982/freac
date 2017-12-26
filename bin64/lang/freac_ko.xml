@@ -407,16 +407,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">출력 샘플레이트</entry>
-	  <entry id="32402" string="no resampling">다시 샘플링 안함</entry>
-	  <entry id="32403" string="Highpass filter">HPF</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">하이패스 주파수설정(Hz)</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">하이패스 대역폭설정(Hz)</entry>
-	  <entry id="32406" string="Lowpass filter">로우패스 필터</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">로우패스 주파수설정(Hz)</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">로우패스 대역폭설정(Hz)</entry>
-	  <entry id="32409" string="Misc settings">기타 설정</entry>
-	  <entry id="32410" string="Disable all filtering">모든 필터링 허용안함</entry>
+	  <entry id="32400" string="Highpass filter">HPF</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">하이패스 주파수설정(Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">하이패스 대역폭설정(Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">로우패스 필터</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">로우패스 주파수설정(Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">로우패스 대역폭설정(Hz)</entry>
+	  <entry id="32406" string="Misc settings">기타 설정</entry>
+	  <entry id="32407" string="Disable all filtering">모든 필터링 허용안함</entry>
 	</section>
       </section>
 

@@ -1,4 +1,4 @@
-fre:ac Version 1.1 (Entwicklungs-Snapshot)
+fre:ac Version 1.1 Alpha
 
 fre:ac ist ein freier Open-Source Audiokonverter. Das Programm unterstützt das Rippen
 von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate:
@@ -116,16 +116,6 @@ Voraussetzungen
 Bekannte Probleme
 -----------------
 
-	Alle Systeme:
-
-		- Es gibt folgende Einschränkungen für das Eingabeformat:
-
-			- FAAC, FDK AAC, VisualOn AAC:
-				- Audiodaten müssen in 8, 11.025, 12, 16, 22.05, 24, 32, 44.1, 48, 64, 88.2 oder 96 kHz vorliegen
-
-		- Resampling wird nur mit LAME und Opus unterstützt. Eingabedateien müssen in der für die Ausgabe gewünschten
-		  Abtastrate vorliegen, wenn nicht LAME oder Opus verwendet wird.
-
 	Linux- und Unix-spezifische Probleme:
 
 		- Es gibt noch keine Anwendungspakete für fre:ac, so dass Abhängigkeiten derzeit noch manuell installiert werden
@@ -134,7 +124,7 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.1 Alpha (November 2017)
+	Version 1.1 Alpha (Dezember 2017)
 
 		- Auf macOS, Linux und BSD-Betriebssysteme portiert
 		- Framework für Erweiterungskomponenten implementiert, um fre:ac zu modularisieren
@@ -148,6 +138,8 @@ Geschichte
 		- Möglichkeit zum Bearbeiten der Konfiguration während der Konvertierung hinzugefügt
 		- Untersützung für Verifikation von verlustfreien Ein- und Ausgabedateien hinzugefügt
 		- Unterstützung für die Verarbeitung von Eingabedaten mit DSP-Filtern hinzugefügt
+		- DSP-Komponenten für Resampling, Kanal-Up-/Downmixing und Sampleformatkonvertierung hinzugefügt
+		- Unterstützung für automatische Sampleformatkonvertierung je nach Anforderungen des Kodierers hinzugefügt
 		- Einfachen Tag-Editor hinzugefügt
 		- Monkey's Audiokodierer/-dekodierer hinzugefügt
 		- Speex Sprachkodierer/-dekodierer hinzugefügt

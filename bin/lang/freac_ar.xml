@@ -516,17 +516,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">معدل عيينات الناتج</entry>
-	  <entry id="32401" string="auto">تلقائي</entry>
-	  <entry id="32402" string="no resampling">بدون اختزال</entry>
-	  <entry id="32403" string="Highpass filter">مرشح تمرير عالية</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">ثبت تمرير مرتفع الترددات بالهرتز</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">ثبت تمرير مرتفع بالعرض بالهرتز</entry>
-	  <entry id="32406" string="Lowpass filter">مرشح تمرير منخفض</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">ثبت تمرير منخفض بالتردد بالهرتز</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">ثبت تمرير منخفض بالعرض بالهرتز</entry>
-	  <entry id="32409" string="Misc settings">إعدادات متفرقة</entry>
-	  <entry id="32410" string="Disable all filtering">تعطيل كافة المرشحات</entry>
+	  <entry id="32400" string="Highpass filter">مرشح تمرير عالية</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">ثبت تمرير مرتفع الترددات بالهرتز</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">ثبت تمرير مرتفع بالعرض بالهرتز</entry>
+	  <entry id="32403" string="Lowpass filter">مرشح تمرير منخفض</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">ثبت تمرير منخفض بالتردد بالهرتز</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">ثبت تمرير منخفض بالعرض بالهرتز</entry>
+	  <entry id="32406" string="Misc settings">إعدادات متفرقة</entry>
+	  <entry id="32407" string="Disable all filtering">تعطيل كافة المرشحات</entry>
 	</section>
       </section>
 

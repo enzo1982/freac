@@ -697,17 +697,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">輸出取樣率</entry>
-	  <entry id="32401" string="auto">自動</entry>
-	  <entry id="32402" string="no resampling">不重新取樣</entry>
-	  <entry id="32403" string="Highpass filter">高通濾波器</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">設定高通頻率 (Hz)</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">設定高通頻寬 (Hz)</entry>
-	  <entry id="32406" string="Lowpass filter">低通濾波器</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">設定低通頻率 (Hz)</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">設定低通頻寬 (Hz)</entry>
-	  <entry id="32409" string="Misc settings">雜項</entry>
-	  <entry id="32410" string="Disable all filtering">停用所有濾波器</entry>
+	  <entry id="32400" string="Highpass filter">高通濾波器</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">設定高通頻率 (Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">設定高通頻寬 (Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">低通濾波器</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">設定低通頻率 (Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">設定低通頻寬 (Hz)</entry>
+	  <entry id="32406" string="Misc settings">雜項</entry>
+	  <entry id="32407" string="Disable all filtering">停用所有濾波器</entry>
 	</section>
       </section>
 
@@ -906,9 +903,9 @@
     <section name="DSP">
 
       <section name="Resample">
-	<entry id="50000" string="Converter">轉換器</entry>
-	<entry id="50001" string="Sampling rate">取樣頻率</entry>
-	<entry id="50002" string="Output sampling rate">輸出取樣率</entry>
+	<entry id="50200" string="Converter">轉換器</entry>
+	<entry id="50201" string="Sampling rate">取樣頻率</entry>
+	<entry id="50202" string="Output sampling rate">輸出取樣率</entry>
       </section>
     </section>
 

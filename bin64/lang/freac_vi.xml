@@ -517,17 +517,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">Xếp hạng xuất dữ liệu mẫu</entry>
-	  <entry id="32401" string="auto">tự động</entry>
-	  <entry id="32402" string="no resampling">không thí dụ</entry>
-	  <entry id="32403" string="Highpass filter">Bộ lọc Highpass</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">Tạo tần số Highpass (Hz)</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">Tạo chiều rộng Highpass (Hz)</entry>
-	  <entry id="32406" string="Lowpass filter">Bộ lọc Lowpass</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">Tạo tần số Lowpass (Hz)</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">Tạo chiều rộng Lowpass (Hz)</entry>
-	  <entry id="32409" string="Misc settings">Thiết lập chung</entry>
-	  <entry id="32410" string="Disable all filtering">Tắt tất cả bộ lọc</entry>
+	  <entry id="32400" string="Highpass filter">Bộ lọc Highpass</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Tạo tần số Highpass (Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Tạo chiều rộng Highpass (Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">Bộ lọc Lowpass</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Tạo tần số Lowpass (Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Tạo chiều rộng Lowpass (Hz)</entry>
+	  <entry id="32406" string="Misc settings">Thiết lập chung</entry>
+	  <entry id="32407" string="Disable all filtering">Tắt tất cả bộ lọc</entry>
 	</section>
       </section>
 

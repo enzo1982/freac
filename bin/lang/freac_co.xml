@@ -546,17 +546,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">Frequenza campiunariu d'esciuta</entry>
-	  <entry id="32401" string="auto">autumaticu</entry>
-	  <entry id="32402" string="no resampling">ùn cambià a frequenza</entry>
-	  <entry id="32403" string="Highpass filter">Filtru passa-altu</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">Frequenza passa-altu (Hz)</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">Larghezza passa-altu (Hz)</entry>
-	  <entry id="32406" string="Lowpass filter">Filtru passa-bassu</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">Frequenza passa-bassu (Hz)</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">Larghezza passa-bassu (Hz)</entry>
-	  <entry id="32409" string="Misc settings">Preferenze diverse</entry>
-	  <entry id="32410" string="Disable all filtering">Disattivà tutti i filtri</entry>
+	  <entry id="32400" string="Highpass filter">Filtru passa-altu</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Frequenza passa-altu (Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Larghezza passa-altu (Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">Filtru passa-bassu</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Frequenza passa-bassu (Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Larghezza passa-bassu (Hz)</entry>
+	  <entry id="32406" string="Misc settings">Preferenze diverse</entry>
+	  <entry id="32407" string="Disable all filtering">Disattivà tutti i filtri</entry>
 	</section>
       </section>
 
@@ -697,8 +694,8 @@
     <section name="DSP">
 
       <section name="Resample">
-	<entry id="50001" string="Sampling rate">Frequenza di campiunariu</entry>
-	<entry id="50002" string="Output sampling rate">Frequenza campiunariu d'esciuta</entry>
+	<entry id="50201" string="Sampling rate">Frequenza di campiunariu</entry>
+	<entry id="50202" string="Output sampling rate">Frequenza campiunariu d'esciuta</entry>
       </section>
     </section>
 

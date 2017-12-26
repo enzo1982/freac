@@ -523,17 +523,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">Tx échantil. sortie</entry>
-	  <entry id="32401" string="auto">auto</entry>
-	  <entry id="32402" string="no resampling">Aucun</entry>
-	  <entry id="32403" string="Highpass filter">Filtre passe-haut</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">Fréquence passe-haut (Hz)</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">Largeur passe-haut (Hz)</entry>
-	  <entry id="32406" string="Lowpass filter">Filtre passe-bas</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">Fréquence passe-bas (Hz)</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">Largeur passe-bas (Hz)</entry>
-	  <entry id="32409" string="Misc settings">Paramètres divers</entry>
-	  <entry id="32410" string="Disable all filtering">Désactiver filtrage</entry>
+	  <entry id="32400" string="Highpass filter">Filtre passe-haut</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Fréquence passe-haut (Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Largeur passe-haut (Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">Filtre passe-bas</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Fréquence passe-bas (Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Largeur passe-bas (Hz)</entry>
+	  <entry id="32406" string="Misc settings">Paramètres divers</entry>
+	  <entry id="32407" string="Disable all filtering">Désactiver filtrage</entry>
 	</section>
       </section>
 

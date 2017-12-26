@@ -718,17 +718,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">Samplerate</entry>
-	  <entry id="32401" string="auto">automatisch</entry>
-	  <entry id="32402" string="no resampling">kein Resampling</entry>
-	  <entry id="32403" string="Highpass filter">Hochpassfilter</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">Hochpassfrequenz in Hz</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">Hochpassbreite in Hz</entry>
-	  <entry id="32406" string="Lowpass filter">Tiefpassfilter</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">Tiefpassfrequenz in Hz</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">Tiefpassbreite in Hz</entry>
-	  <entry id="32409" string="Misc settings">Andere Einstellungen</entry>
-	  <entry id="32410" string="Disable all filtering">Filterung abschalten</entry>
+	  <entry id="32400" string="Highpass filter">Hochpassfilter</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Hochpassfrequenz in Hz</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Hochpassbreite in Hz</entry>
+	  <entry id="32403" string="Lowpass filter">Tiefpassfilter</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Tiefpassfrequenz in Hz</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Tiefpassbreite in Hz</entry>
+	  <entry id="32406" string="Misc settings">Andere Einstellungen</entry>
+	  <entry id="32407" string="Disable all filtering">Filterung abschalten</entry>
 	</section>
       </section>
 
@@ -926,20 +923,27 @@
 
     <section name="DSP">
 
-      <section name="Resample">
-	<entry id="50000" string="Converter">Konverter</entry>
-	<entry id="50001" string="Sampling rate">Samplerate</entry>
-	<entry id="50002" string="Output sampling rate">Ausgabesamplerate</entry>
+      <section name="Format">
+	<entry id="50000" string="Sample format">Sampleformat</entry>
+	<entry id="50001" string="Number format">Zahlenformat</entry>
+	<entry id="50002" string="Sample resolution">Sampleauflösung</entry>
+	<entry id="50003" string="bit">Bit</entry>
+	<entry id="50004" string="unsigned">vorzeichenlos</entry>
+	<entry id="50005" string="Integer">Ganzzahl</entry>
+	<entry id="50006" string="Float">Fließkomma</entry>
       </section>
 
-      <section name="Format">
-	<entry id="50100" string="Sample format">Sampleformat</entry>
-	<entry id="50101" string="Number format">Zahlenformat</entry>
-	<entry id="50102" string="Sample resolution">Sampleauflösung</entry>
-	<entry id="50103" string="bit">Bit</entry>
-	<entry id="50104" string="unsigned">vorzeichenlos</entry>
-	<entry id="50105" string="Integer">Ganzzahl</entry>
-	<entry id="50106" string="Float">Fließkomma</entry>
+      <section name="Channels">
+	<entry id="50100" string="Output channels">Ausgabekanäle</entry>
+	<entry id="50101" string="Channel configuration">Kanalkonfiguration</entry>
+	<entry id="50102" string="Mono">Mono</entry>
+	<entry id="50103" string="Stereo">Stereo</entry>
+      </section>
+
+      <section name="Resample">
+	<entry id="50200" string="Converter">Konverter</entry>
+	<entry id="50201" string="Sampling rate">Samplerate</entry>
+	<entry id="50202" string="Output sampling rate">Ausgabesamplerate</entry>
       </section>
     </section>
 

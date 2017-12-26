@@ -718,17 +718,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate"/>
-	  <entry id="32401" string="auto"/>
-	  <entry id="32402" string="no resampling"/>
-	  <entry id="32403" string="Highpass filter"/>
-	  <entry id="32404" string="Set Highpass frequency (Hz)"/>
-	  <entry id="32405" string="Set Highpass width (Hz)"/>
-	  <entry id="32406" string="Lowpass filter"/>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)"/>
-	  <entry id="32408" string="Set Lowpass width (Hz)"/>
-	  <entry id="32409" string="Misc settings"/>
-	  <entry id="32410" string="Disable all filtering"/>
+	  <entry id="32400" string="Highpass filter"/>
+	  <entry id="32401" string="Set Highpass frequency (Hz)"/>
+	  <entry id="32402" string="Set Highpass width (Hz)"/>
+	  <entry id="32403" string="Lowpass filter"/>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)"/>
+	  <entry id="32405" string="Set Lowpass width (Hz)"/>
+	  <entry id="32406" string="Misc settings"/>
+	  <entry id="32407" string="Disable all filtering"/>
 	</section>
       </section>
 
@@ -926,20 +923,27 @@
 
     <section name="DSP">
 
-      <section name="Resample">
-	<entry id="50000" string="Converter"/>
-	<entry id="50001" string="Sampling rate"/>
-	<entry id="50002" string="Output sampling rate"/>
+      <section name="Format">
+	<entry id="50000" string="Sample format"/>
+	<entry id="50001" string="Number format"/>
+	<entry id="50002" string="Sample resolution"/>
+	<entry id="50003" string="bit"/>
+	<entry id="50004" string="unsigned"/>
+	<entry id="50005" string="Integer"/>
+	<entry id="50006" string="Float"/>
       </section>
 
-      <section name="Format">
-	<entry id="50100" string="Sample format"/>
-	<entry id="50101" string="Number format"/>
-	<entry id="50102" string="Sample resolution"/>
-	<entry id="50103" string="bit"/>
-	<entry id="50104" string="unsigned"/>
-	<entry id="50105" string="Integer"/>
-	<entry id="50106" string="Float"/>
+      <section name="Channels">
+	<entry id="50100" string="Output channels"/>
+	<entry id="50101" string="Channel configuration"/>
+	<entry id="50102" string="Mono"/>
+	<entry id="50103" string="Stereo"/>
+      </section>
+
+      <section name="Resample">
+	<entry id="50200" string="Converter"/>
+	<entry id="50201" string="Sampling rate"/>
+	<entry id="50202" string="Output sampling rate"/>
       </section>
     </section>
 

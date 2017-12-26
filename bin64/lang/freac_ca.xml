@@ -518,17 +518,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">Mostreig de sortida</entry>
-	  <entry id="32401" string="auto">automàtic</entry>
-	  <entry id="32402" string="no resampling">sense remostreig</entry>
-	  <entry id="32403" string="Highpass filter">Filtre Highpass</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">Freqüència Highpass (Hz)</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">Ample Highpass (Hz)</entry>
-	  <entry id="32406" string="Lowpass filter">Filtre Lowpass</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">Frecuancia Lowpass (Hz)</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">Ample Lowpass (Hz)</entry>
-	  <entry id="32409" string="Misc settings">Altres Configuracions</entry>
-	  <entry id="32410" string="Disable all filtering">Deshabilitar filtres</entry>
+	  <entry id="32400" string="Highpass filter">Filtre Highpass</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Freqüència Highpass (Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Ample Highpass (Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">Filtre Lowpass</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Frecuancia Lowpass (Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Ample Lowpass (Hz)</entry>
+	  <entry id="32406" string="Misc settings">Altres Configuracions</entry>
+	  <entry id="32407" string="Disable all filtering">Deshabilitar filtres</entry>
 	</section>
       </section>
 
