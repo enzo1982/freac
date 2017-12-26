@@ -715,17 +715,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">Muestreo de salida</entry>
-	  <entry id="32401" string="auto">automático</entry>
-	  <entry id="32402" string="no resampling">sin remuestreo</entry>
-	  <entry id="32403" string="Highpass filter">Filtro Highpass</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">Frecuencia Highpass (Hz)</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">Ancho Highpass (Hz)</entry>
-	  <entry id="32406" string="Lowpass filter">Filtro Lowpass</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">Frecuencia Lowpass (Hz)</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">Ancho Lowpass (Hz)</entry>
-	  <entry id="32409" string="Misc settings">Otras configuraciones</entry>
-	  <entry id="32410" string="Disable all filtering">Desactivar todos los filtros</entry>
+	  <entry id="32400" string="Highpass filter">Filtro Highpass</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Frecuencia Highpass (Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Ancho Highpass (Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">Filtro Lowpass</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Frecuencia Lowpass (Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Ancho Lowpass (Hz)</entry>
+	  <entry id="32406" string="Misc settings">Otras configuraciones</entry>
+	  <entry id="32407" string="Disable all filtering">Desactivar todos los filtros</entry>
 	</section>
       </section>
 
@@ -924,9 +921,9 @@
     <section name="DSP">
 
       <section name="Resample">
-	<entry id="50000" string="Converter">Conversor</entry>
-	<entry id="50001" string="Sampling rate">Tasa de muestreo</entry>
-	<entry id="50002" string="Output sampling rate">Muestreo de salida</entry>
+	<entry id="50200" string="Converter">Conversor</entry>
+	<entry id="50201" string="Sampling rate">Tasa de muestreo</entry>
+	<entry id="50202" string="Output sampling rate">Muestreo de salida</entry>
       </section>
     </section>
 

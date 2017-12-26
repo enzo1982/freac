@@ -389,10 +389,8 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32401" string="auto">אוטומטי</entry>
-	  <entry id="32402" string="no resampling">ללא דחיסה מחדש</entry>
-	  <entry id="32409" string="Misc settings">הגדרות שונות</entry>
-	  <entry id="32410" string="Disable all filtering">בטל את כל הפילטרים</entry>
+	  <entry id="32406" string="Misc settings">הגדרות שונות</entry>
+	  <entry id="32407" string="Disable all filtering">בטל את כל הפילטרים</entry>
 	</section>
       </section>
 

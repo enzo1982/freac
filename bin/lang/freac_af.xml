@@ -513,17 +513,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">Uitset monsternemingskoers</entry>
-	  <entry id="32401" string="auto">outo</entry>
-	  <entry id="32402" string="no resampling">geen hermonsterneming</entry>
-	  <entry id="32403" string="Highpass filter">Hoë deurlaatfilter</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">Stel hoë deurlaatfrekwensie (Hz)</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">Stel hoë deurlaatwydte (Hz)</entry>
-	  <entry id="32406" string="Lowpass filter">Lae deurlaatfilter</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">Stel lae deurlaatfrekwensie (Hz)</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">Stel lae deurlaatwydte (Hz)</entry>
-	  <entry id="32409" string="Misc settings">Verskillende stellings</entry>
-	  <entry id="32410" string="Disable all filtering">Skakel alle filtrering af</entry>
+	  <entry id="32400" string="Highpass filter">Hoë deurlaatfilter</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Stel hoë deurlaatfrekwensie (Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Stel hoë deurlaatwydte (Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">Lae deurlaatfilter</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Stel lae deurlaatfrekwensie (Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Stel lae deurlaatwydte (Hz)</entry>
+	  <entry id="32406" string="Misc settings">Verskillende stellings</entry>
+	  <entry id="32407" string="Disable all filtering">Skakel alle filtrering af</entry>
 	</section>
       </section>
 

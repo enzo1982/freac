@@ -518,17 +518,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">Вихідна частота</entry>
-	  <entry id="32401" string="auto">авто</entry>
-	  <entry id="32402" string="no resampling">Не відновлювати форму сигналу (без ресемплінгу)</entry>
-	  <entry id="32403" string="Highpass filter">Високочастотний фільтр</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">Верхній рівень частоти Гц</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">Верхній рівень ширини Гц</entry>
-	  <entry id="32406" string="Lowpass filter">Низькочастотний фільтр</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">Нижній рівень частоти Гц</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">Нижній рівень ширини Гц</entry>
-	  <entry id="32409" string="Misc settings">Інші налаштування</entry>
-	  <entry id="32410" string="Disable all filtering">Відмінити всі фільтри</entry>
+	  <entry id="32400" string="Highpass filter">Високочастотний фільтр</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Верхній рівень частоти Гц</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Верхній рівень ширини Гц</entry>
+	  <entry id="32403" string="Lowpass filter">Низькочастотний фільтр</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Нижній рівень частоти Гц</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Нижній рівень ширини Гц</entry>
+	  <entry id="32406" string="Misc settings">Інші налаштування</entry>
+	  <entry id="32407" string="Disable all filtering">Відмінити всі фільтри</entry>
 	</section>
       </section>
 

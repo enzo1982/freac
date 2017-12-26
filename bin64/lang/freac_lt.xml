@@ -518,17 +518,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">Išvesties atrankos tempas</entry>
-	  <entry id="32401" string="auto">auto</entry>
-	  <entry id="32402" string="no resampling">jokio perrinkimo</entry>
-	  <entry id="32403" string="Highpass filter">Highpass filtras</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">Nustatyti Highpass dažnį (Hz)</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">Nustatyti Highpass plotį (Hz)</entry>
-	  <entry id="32406" string="Lowpass filter">Lowpass filtras</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">Nustatyti Lowpass dažnį (Hz)</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">Nustatyti Lowpass plotį (Hz)</entry>
-	  <entry id="32409" string="Misc settings">Įvairios nuostatos</entry>
-	  <entry id="32410" string="Disable all filtering">Išjungti visą filtravimą</entry>
+	  <entry id="32400" string="Highpass filter">Highpass filtras</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Nustatyti Highpass dažnį (Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Nustatyti Highpass plotį (Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">Lowpass filtras</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Nustatyti Lowpass dažnį (Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Nustatyti Lowpass plotį (Hz)</entry>
+	  <entry id="32406" string="Misc settings">Įvairios nuostatos</entry>
+	  <entry id="32407" string="Disable all filtering">Išjungti visą filtravimą</entry>
 	</section>
       </section>
 

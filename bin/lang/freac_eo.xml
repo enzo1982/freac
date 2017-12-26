@@ -509,17 +509,14 @@
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Output sampling rate">Samplingkvoto</entry>
-	  <entry id="32401" string="auto">aŭtomata</entry>
-	  <entry id="32402" string="no resampling">ne resampligado</entry>
-	  <entry id="32403" string="Highpass filter">Highpass filtrilo</entry>
-	  <entry id="32404" string="Set Highpass frequency (Hz)">Highpass-frekvenzo en Hz</entry>
-	  <entry id="32405" string="Set Highpass width (Hz)">Highpass-larĝo en Hz</entry>
-	  <entry id="32406" string="Lowpass filter">Lowpass-filtrilo</entry>
-	  <entry id="32407" string="Set Lowpass frequency (Hz)">Lowpass-frekvenco en Hz</entry>
-	  <entry id="32408" string="Set Lowpass width (Hz)">Lowpass-larĝo en Hz</entry>
-	  <entry id="32409" string="Misc settings">Aliaj agordoj</entry>
-	  <entry id="32410" string="Disable all filtering">Malŝalti ĉiujn filtradojn</entry>
+	  <entry id="32400" string="Highpass filter">Highpass filtrilo</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Highpass-frekvenzo en Hz</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Highpass-larĝo en Hz</entry>
+	  <entry id="32403" string="Lowpass filter">Lowpass-filtrilo</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Lowpass-frekvenco en Hz</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Lowpass-larĝo en Hz</entry>
+	  <entry id="32406" string="Misc settings">Aliaj agordoj</entry>
+	  <entry id="32407" string="Disable all filtering">Malŝalti ĉiujn filtradojn</entry>
 	</section>
       </section>
 
