@@ -89,7 +89,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	config->SetActiveConfiguration("default");
 
-	if (ScanForProgramOption("--config", &configName) && configName != "default" && configName != "Default configuration" && configName != i18n->TranslateString("Default configuration", "Configuration"))
+	if (ScanForProgramOption("--config=%VALUE", &configName) && configName != "default" && configName != "Default configuration" && configName != i18n->TranslateString("Default configuration", "Configuration"))
 	{
 		Bool	 foundConfig = False;
 
@@ -122,11 +122,11 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	String		 tracks;
 	String		 timeout	= "120";
 
-	if (!ScanForProgramOption("--encoder", &encoderID)) ScanForProgramOption("-e", &encoderID);
-	if (!ScanForProgramOption("--help",    &helpenc))   ScanForProgramOption("-h", &helpenc);
-							    ScanForProgramOption("-d", &outdir);
-							    ScanForProgramOption("-o", &outfile);
-	if (!ScanForProgramOption("--pattern", &pattern))   ScanForProgramOption("-p", &pattern);
+	if (!ScanForProgramOption("--encoder=%VALUE", &encoderID)) ScanForProgramOption("-e %VALUE", &encoderID);
+	if (!ScanForProgramOption("--help=%VALUE",    &helpenc))   ScanForProgramOption("-h %VALUE", &helpenc);
+								   ScanForProgramOption("-d %VALUE", &outdir);
+								   ScanForProgramOption("-o %VALUE", &outfile);
+	if (!ScanForProgramOption("--pattern=%VALUE", &pattern))   ScanForProgramOption("-p %VALUE", &pattern);
 
 	DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
 	Int			 numDrives = 0;
@@ -135,10 +135,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	{
 		if (info->GetNumberOfDevices() > 0)
 		{
-			if (!ScanForProgramOption("--drive", &cdDrive)) ScanForProgramOption("-cd", &cdDrive);
-			if (!ScanForProgramOption("--track", &tracks))	ScanForProgramOption("-t",  &tracks);
+			if (!ScanForProgramOption("--drive=%VALUE", &cdDrive)) ScanForProgramOption("-cd %VALUE", &cdDrive);
+			if (!ScanForProgramOption("--track=%VALUE", &tracks))  ScanForProgramOption("-t %VALUE",  &tracks);
 
-			ScanForProgramOption("--timeout", &timeout);
+			ScanForProgramOption("--timeout=%VALUE", &timeout);
 		}
 
 		numDrives = info->GetNumberOfDevices();
@@ -198,9 +198,9 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		String	 quality = "5";
 		String	 mode	 = "VBR";
 
-		ScanForEncoderOption("-b", &bitrate);
-		ScanForEncoderOption("-q", &quality);
-		ScanForEncoderOption("-m", &mode);
+		ScanForEncoderOption("-b %VALUE", &bitrate);
+		ScanForEncoderOption("-q %VALUE", &quality);
+		ScanForEncoderOption("-m %VALUE", &mode);
 
 		config->SetIntValue("LAME", "Preset", 0);
 		config->SetIntValue("LAME", "SetBitrate", True);
@@ -218,8 +218,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		String	 bitrate = "192";
 		String	 quality = "60";
 
-		if (ScanForEncoderOption("-b", &bitrate)) config->SetIntValue("Vorbis", "Mode", 1);
-		else					  config->SetIntValue("Vorbis", "Mode", 0);
+		if (ScanForEncoderOption("-b %VALUE", &bitrate)) config->SetIntValue("Vorbis", "Mode", 1);
+		else						 config->SetIntValue("Vorbis", "Mode", 0);
 
 		config->SetIntValue("Vorbis", "Quality", Math::Max(0, Math::Min(100, (Int) quality.ToInt())));
 		config->SetIntValue("Vorbis", "Bitrate", Math::Max(45, Math::Min(500, (Int) bitrate.ToInt())));
@@ -230,9 +230,9 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		String	 predictor    = "32";
 		String	 downsampling = "2";
 
-		ScanForEncoderOption("-q", &quantization);
-		ScanForEncoderOption("-p", &predictor);
-		ScanForEncoderOption("-r", &downsampling);
+		ScanForEncoderOption("-q %VALUE", &quantization);
+		ScanForEncoderOption("-p %VALUE", &predictor);
+		ScanForEncoderOption("-r %VALUE", &downsampling);
 
 		config->SetIntValue("Bonk", "JointStereo", ScanForEncoderOption("-js"));
 		config->SetIntValue("Bonk", "Lossless", ScanForEncoderOption("-lossless"));
@@ -245,7 +245,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	{
 		String	 bitrate = "192";
 
-		ScanForEncoderOption("-b", &bitrate);
+		ScanForEncoderOption("-b %VALUE", &bitrate);
 
 		config->SetIntValue("BladeEnc", "Bitrate", Math::Max(32, Math::Min(320, (Int) bitrate.ToInt())));
 	}
@@ -254,8 +254,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		String	 bitrate = "64";
 		String	 quality = "100";
 
-		if (ScanForEncoderOption("-b", &bitrate)) config->SetIntValue("FAAC", "SetQuality", False);
-		else					  config->SetIntValue("FAAC", "SetQuality", True);
+		if (ScanForEncoderOption("-b %VALUE", &bitrate)) config->SetIntValue("FAAC", "SetQuality", False);
+		else						 config->SetIntValue("FAAC", "SetQuality", True);
 
 		config->SetIntValue("FAAC", "MP4Container", ScanForEncoderOption("-mp4"));
 
@@ -271,10 +271,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		String	 minrice;
 		String	 maxrice;
 
-		ScanForEncoderOption("-b", &blocksize);
-		ScanForEncoderOption("-l", &lpc);
-		ScanForEncoderOption("-q", &qlp);
-		ScanForEncoderOption("-r", &rice);
+		ScanForEncoderOption("-b %VALUE", &blocksize);
+		ScanForEncoderOption("-l %VALUE", &lpc);
+		ScanForEncoderOption("-q %VALUE", &qlp);
+		ScanForEncoderOption("-r %VALUE", &rice);
 
 		Int	 i = 0;
 		Int	 j = 0;
@@ -299,8 +299,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		String	 bitrate    = "48";
 		String	 candidates = "32";
 
-		ScanForEncoderOption("-b", &bitrate);
-		ScanForEncoderOption("-c", &candidates);
+		ScanForEncoderOption("-b %VALUE", &bitrate);
+		ScanForEncoderOption("-c %VALUE", &candidates);
 
 		config->SetIntValue("TwinVQ", "PreselectionCandidates", Math::Max(4, Math::Min(32, (Int) candidates.ToInt())));
 		config->SetIntValue("TwinVQ", "Bitrate", Math::Max(24, Math::Min(48, (Int) bitrate.ToInt())));
@@ -331,7 +331,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			/* Set selection to given value.
 			 */
 			String	 value;
-			Bool	 present = ScanForEncoderOption(String(spec).Replace("%VALUE%", NIL).Trim(), &value);
+			Bool	 present = ScanForEncoderOption(String(spec).Trim(), &value);
 
 			config->SetIntValue(component->GetID(), String("Set ").Append(name), present);
 			config->SetStringValue(component->GetID(), name, value);
@@ -349,7 +349,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			/* Set range parameter to given value.
 			 */
 			String	 value;
-			Bool	 present = ScanForEncoderOption(String(spec).Replace("%VALUE%", NIL).Trim(), &value);
+			Bool	 present = ScanForEncoderOption(String(spec).Trim(), &value);
 
 			config->SetIntValue(component->GetID(), String("Set ").Append(name), present);
 			config->SetStringValue(component->GetID(), name, value);
@@ -544,9 +544,9 @@ Bool freac::freacCommandline::ScanForProgramOption(const String &option, String 
 		 */
 		if (arg == "--") break;
 
-		if (option.StartsWith("--") && value != NIL && arg.StartsWith(String(option).Append("=")))
+		if (option.StartsWith("--") && option.EndsWith("=%VALUE") && value != NIL && arg.StartsWith(option.Head(option.Find("=") + 1)))
 		{
-			*value = arg.Tail(arg.Length() - option.Length() - 1);
+			*value = arg.Tail(arg.Length() - option.Length() + 6);
 
 			return True;
 		}
@@ -554,10 +554,20 @@ Bool freac::freacCommandline::ScanForProgramOption(const String &option, String 
 		{
 			return True;
 		}
+		else if (option.StartsWith("-") && option.EndsWith("%VALUE") && !option.Contains(" ") && value != NIL && arg.StartsWith(option.Head(option.Find("%"))))
+		{
+			*value = arg.Tail(arg.Length() - option.Length() + 6);
+
+			return True;
+		}
+		else if (option.StartsWith("-") && option.EndsWith(" %VALUE") && value != NIL && arg == option.Head(option.Find(" ")))
+		{
+			*value = args.GetNth(foreachindex + 1);
+
+			return True;
+		}
 		else if (option.StartsWith("-") && arg == option)
 		{
-			if (value != NIL) *value = args.GetNth(foreachindex + 1);
-
 			return True;
 		}
 	}
@@ -588,9 +598,9 @@ Bool freac::freacCommandline::ScanForEncoderOption(const String &option, String 
 		 */
 		if (foreachindex <= separatorindex) continue;
 
-		if (option.StartsWith("--") && value != NIL && arg.StartsWith(String(option).Append("=")))
+		if (option.StartsWith("--") && option.EndsWith("=%VALUE") && value != NIL && arg.StartsWith(option.Head(option.Find("=") + 1)))
 		{
-			*value = arg.Tail(arg.Length() - option.Length() - 1);
+			*value = arg.Tail(arg.Length() - option.Length() + 6);
 
 			return True;
 		}
@@ -598,10 +608,20 @@ Bool freac::freacCommandline::ScanForEncoderOption(const String &option, String 
 		{
 			return True;
 		}
+		else if (option.StartsWith("-") && option.EndsWith("%VALUE") && !option.Contains(" ") && value != NIL && arg.StartsWith(option.Head(option.Find("%"))))
+		{
+			*value = arg.Tail(arg.Length() - option.Length() + 6);
+
+			return True;
+		}
+		else if (option.StartsWith("-") && option.EndsWith(" %VALUE") && value != NIL && arg == option.Head(option.Find(" ")))
+		{
+			*value = args.GetNth(foreachindex + 1);
+
+			return True;
+		}
 		else if (option.StartsWith("-") && arg == option)
 		{
-			if (value != NIL) *value = args.GetNth(foreachindex + 1);
-
 			return True;
 		}
 	}
