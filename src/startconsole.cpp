@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -538,23 +538,23 @@ Bool freac::freacCommandline::ScanForProgramOption(const String &option, String 
 {
 	/* Scan all arguments.
 	 */
-	foreach (const String &param, args)
+	foreach (const String &arg, args)
 	{
 		/* Stop upon encountering separator.
 		 */
-		if (param == "--") break;
+		if (arg == "--") break;
 
-		if (option.StartsWith("--") && value != NIL && param.StartsWith(String(option).Append("=")))
+		if (option.StartsWith("--") && value != NIL && arg.StartsWith(String(option).Append("=")))
 		{
-			*value = param.Tail(param.Length() - option.Length() - 1);
+			*value = arg.Tail(arg.Length() - option.Length() - 1);
 
 			return True;
 		}
-		else if (option.StartsWith("--") && param == option)
+		else if (option.StartsWith("--") && arg == option)
 		{
 			return True;
 		}
-		else if (option.StartsWith("-") && param == option)
+		else if (option.StartsWith("-") && arg == option)
 		{
 			if (value != NIL) *value = args.GetNth(foreachindex + 1);
 
@@ -571,9 +571,9 @@ Bool freac::freacCommandline::ScanForEncoderOption(const String &option, String 
 	 */
 	Int	 separatorindex = -1;
 
-	foreach (const String &param, args)
+	foreach (const String &arg, args)
 	{
-		if (param != "--") continue;
+		if (arg != "--") continue;
 
 		separatorindex = foreachindex;
 
@@ -582,23 +582,23 @@ Bool freac::freacCommandline::ScanForEncoderOption(const String &option, String 
 
 	/* Scan all arguments.
 	 */
-	foreach (const String &param, args)
+	foreach (const String &arg, args)
 	{
 		/* Discard arguments before separator.
 		 */
 		if (foreachindex <= separatorindex) continue;
 
-		if (option.StartsWith("--") && value != NIL && param.StartsWith(String(option).Append("=")))
+		if (option.StartsWith("--") && value != NIL && arg.StartsWith(String(option).Append("=")))
 		{
-			*value = param.Tail(param.Length() - option.Length() - 1);
+			*value = arg.Tail(arg.Length() - option.Length() - 1);
 
 			return True;
 		}
-		else if (option.StartsWith("--") && param == option)
+		else if (option.StartsWith("--") && arg == option)
 		{
 			return True;
 		}
-		else if (option.StartsWith("-") && param == option)
+		else if (option.StartsWith("-") && arg == option)
 		{
 			if (value != NIL) *value = args.GetNth(foreachindex + 1);
 
@@ -611,22 +611,22 @@ Bool freac::freacCommandline::ScanForEncoderOption(const String &option, String 
 
 Void freac::freacCommandline::ScanForFiles(Array<String> *files)
 {
-	String	 prevParam;
+	String	 prevArg;
 
-	foreach (const String &param, args)
+	foreach (const String &arg, args)
 	{
-		if (param[0] != '-' && (prevParam.StartsWith("--")  ||
-					prevParam[0] != '-'	    ||
-					prevParam    == "-js"	    ||
-					prevParam    == "-lossless" ||
-					prevParam    == "-mp4"	    ||
-					prevParam    == "-ms"	    ||
-					prevParam    == "-extc"	    ||
-					prevParam    == "-extm"))
+		if (arg[0] != '-' && (prevArg.StartsWith("--")  ||
+				      prevArg[0] != '-'		||
+				      prevArg    == "-js"	||
+				      prevArg    == "-lossless" ||
+				      prevArg    == "-mp4"	||
+				      prevArg    == "-ms"	||
+				      prevArg    == "-extc"	||
+				      prevArg    == "-extm"))
 		{
-			if (param.Contains("*") || param.Contains("?"))
+			if (arg.Contains("*") || arg.Contains("?"))
 			{
-				File			 file(param);
+				File			 file(arg);
 				Directory		 dir(file.GetFilePath());
 				const Array<File>	&array = dir.GetFilesByPattern(file.GetFileName());
 
@@ -634,11 +634,11 @@ Void freac::freacCommandline::ScanForFiles(Array<String> *files)
 			}
 			else
 			{
-				(*files).Add(param);
+				(*files).Add(arg);
 			}
 		}
 
-		prevParam = param;
+		prevArg = arg;
 	}
 }
 
