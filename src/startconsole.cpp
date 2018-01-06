@@ -318,6 +318,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		String			 name	 = parameter->GetName();
 		String			 spec	 = parameter->GetArgument();
 		const Array<Option *>	&options = parameter->GetOptions();
+		Float			 step	 = parameter->GetStepSize();
 		String			 def	 = parameter->GetDefault();
 
 		if (type == PARAMETER_TYPE_SWITCH)
@@ -352,7 +353,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			Bool	 present = ScanForEncoderOption(String(spec).Trim(), &value);
 
 			config->SetIntValue(component->GetID(), String("Set ").Append(name), present);
-			config->SetStringValue(component->GetID(), name, value);
+			config->SetIntValue(component->GetID(), name, Math::Round(value.ToFloat() / step));
 
 			/* Check if given value is valid.
 			 */
