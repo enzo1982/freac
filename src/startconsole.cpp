@@ -209,9 +209,9 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		config->SetIntValue("LAME", "ABRBitrate", Math::Max(0, Math::Min(320, (Int) bitrate.ToInt())));
 		config->SetIntValue("LAME", "VBRQuality", Math::Max(0, Math::Min(9, (Int) quality.ToInt())) * 10);
 
-		if	(mode == "VBR" || mode == "vbr") config->SetIntValue("LAME", "VBRMode", 4);
-		else if (mode == "ABR" || mode == "abr") config->SetIntValue("LAME", "VBRMode", 3);
-		else if (mode == "CBR" || mode == "cbr") config->SetIntValue("LAME", "VBRMode", 0);
+		if	(mode.ToUpper() == "VBR") config->SetIntValue("LAME", "VBRMode", 4);
+		else if (mode.ToUpper() == "ABR") config->SetIntValue("LAME", "VBRMode", 3);
+		else if (mode.ToUpper() == "CBR") config->SetIntValue("LAME", "VBRMode", 0);
 	}
 	else if (encoderID == "vorbis")
 	{
