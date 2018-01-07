@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -61,8 +61,6 @@ namespace freac
 			GroupBox	*group_chapters;
 			CheckBox	*check_read_chapters;
 			CheckBox	*check_write_chapters;
-			Text		*text_chapter_format;
-			ComboBox	*combo_chapter_format;
 
 			GroupBox	*group_special;
 			CheckBox	*check_mcdi;
@@ -84,8 +82,6 @@ namespace freac
 			Bool		 readChapters;
 			Bool		 writeChapters;
 
-			Int		 chapterFormat;
-
 			Bool		 writeMCDI;
 			Bool		 preserveReplayGain;
 
@@ -97,7 +93,6 @@ namespace freac
 			Void		 ToggleTags();
 			Void		 TogglePrependZero();
 			Void		 ToggleWriteCoverArt();
-			Void		 ToggleWriteChapters();
 			Void		 ToggleReadCueSheets();
 		public:
 					 ConfigureTags();

@@ -1,5 +1,5 @@
 /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -274,9 +274,6 @@ const Bool	 freac::Config::TagsReadChaptersDefault				= True;
 
 const String	 freac::Config::TagsWriteChaptersID				= "WriteChapters";
 const Bool	 freac::Config::TagsWriteChaptersDefault			= True;
-
-const String	 freac::Config::TagsWriteChaptersTypeID				= "WriteChaptersType";
-const Int	 freac::Config::TagsWriteChaptersTypeDefault			= 1;
 
 const String	 freac::Config::TagsWriteMCDIID					= "WriteMCDI";
 const Bool	 freac::Config::TagsWriteMCDIDefault				= True;

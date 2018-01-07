@@ -438,15 +438,13 @@
 	<entry id="5516" string="Chapters">Глави</entry>
 	<entry id="5517" string="Read chapters from files">Четене на глави от файлове</entry>
 	<entry id="5518" string="Write chapters to files">Записване на главата във файловете</entry>
-	<entry id="5519" string="Chapter format">Формат на главата</entry>
-	<entry id="5520" string="both">и двете</entry>
-	<entry id="5521" string="Special fields">Специални полета</entry>
-	<entry id="5522" string="Write CD table of contents">Записване на CD таблица със съдържание</entry>
-	<entry id="5523" string="Preserve Replay Gain information">Запазване информацията за сила на звука</entry>
-	<entry id="5524" string="Cue sheets">CUE листи</entry>
-	<entry id="5525" string="Read cue sheets embedded in metadata">Предпочитам CUE листи вградени в метаданните</entry>
-	<entry id="5526" string="Prefer cue sheets over chapter information">Предпочитам CUE листи с информация за страницата</entry>
-	<entry id="5527" string="Prepend zero to track numbers below 10">Добавете нула, за да следите числата под 10</entry>
+	<entry id="5519" string="Special fields">Специални полета</entry>
+	<entry id="5520" string="Write CD table of contents">Записване на CD таблица със съдържание</entry>
+	<entry id="5521" string="Preserve Replay Gain information">Запазване информацията за сила на звука</entry>
+	<entry id="5522" string="Cue sheets">CUE листи</entry>
+	<entry id="5523" string="Read cue sheets embedded in metadata">Предпочитам CUE листи вградени в метаданните</entry>
+	<entry id="5524" string="Prefer cue sheets over chapter information">Предпочитам CUE листи с информация за страницата</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">Добавете нула, за да следите числата под 10</entry>
       </section>
 
       <section name="Joblist">
@@ -924,6 +922,14 @@
 	<entry id="50200" string="Converter">Конвертор</entry>
 	<entry id="50201" string="Sampling rate">Семплираща честота</entry>
 	<entry id="50202" string="Output sampling rate">Изходна семплираща честота</entry>
+      </section>
+    </section>
+
+    <section name="Taggers">
+
+      <section name="MP4">
+	<entry id="60000" string="Chapter format">Формат на главата</entry>
+	<entry id="60001" string="both">и двете</entry>
       </section>
     </section>
 

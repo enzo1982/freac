@@ -391,9 +391,9 @@
 	<entry id="5513" string="Write cover art to files">Obal alba - zapsat do souboru</entry>
 	<entry id="5514" string="Add reference to audio file tag">Přidat reference do tagu audio souboru</entry>
 	<entry id="5515" string="Other">Další</entry>
-	<entry id="5521" string="Special fields">Další pole</entry>
-	<entry id="5522" string="Write CD table of contents">Zapsat obsah CD</entry>
-	<entry id="5523" string="Preserve Replay Gain information">Zachovat Replay Gain-informace</entry>
+	<entry id="5519" string="Special fields">Další pole</entry>
+	<entry id="5520" string="Write CD table of contents">Zapsat obsah CD</entry>
+	<entry id="5521" string="Preserve Replay Gain information">Zachovat Replay Gain-informace</entry>
       </section>
 
       <section name="Joblist">

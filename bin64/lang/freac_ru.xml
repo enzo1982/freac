@@ -429,11 +429,9 @@
 	<entry id="5516" string="Chapters">Разделы</entry>
 	<entry id="5517" string="Read chapters from files">Считать разделы из файлов</entry>
 	<entry id="5518" string="Write chapters to files">Записать разделы в файлы</entry>
-	<entry id="5519" string="Chapter format">Формат разделов</entry>
-	<entry id="5520" string="both">оба</entry>
-	<entry id="5521" string="Special fields">Специальные поля</entry>
-	<entry id="5522" string="Write CD table of contents">Записать содержание CD</entry>
-	<entry id="5523" string="Preserve Replay Gain information">Сохранять информацию Replay Gain</entry>
+	<entry id="5519" string="Special fields">Специальные поля</entry>
+	<entry id="5520" string="Write CD table of contents">Записать содержание CD</entry>
+	<entry id="5521" string="Preserve Replay Gain information">Сохранять информацию Replay Gain</entry>
       </section>
 
       <section name="Joblist">
@@ -896,6 +894,14 @@
 	<entry id="50200" string="Converter">Преобразователь</entry>
 	<entry id="50201" string="Sampling rate">Частота дискретизации</entry>
 	<entry id="50202" string="Output sampling rate">Выходная частота</entry>
+      </section>
+    </section>
+
+    <section name="Taggers">
+
+      <section name="MP4">
+	<entry id="60000" string="Chapter format">Формат разделов</entry>
+	<entry id="60001" string="both">оба</entry>
       </section>
     </section>
 

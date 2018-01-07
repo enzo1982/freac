@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -34,7 +34,6 @@ freac::ConfigureTags::ConfigureTags()
 
 	readChapters			= config->GetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, Config::TagsReadChaptersDefault);
 	writeChapters			= config->GetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersID, Config::TagsWriteChaptersDefault);
-	chapterFormat			= config->GetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersTypeID, Config::TagsWriteChaptersTypeDefault);
 
 	writeMCDI			= config->GetIntValue(Config::CategoryTagsID, Config::TagsWriteMCDIID, Config::TagsWriteMCDIDefault);
 	preserveReplayGain		= config->GetIntValue(Config::CategoryTagsID, Config::TagsPreserveReplayGainID, Config::TagsPreserveReplayGainDefault);
@@ -154,52 +153,28 @@ freac::ConfigureTags::ConfigureTags()
 
 	layer_other		= new Layer(i18n->TranslateString("Other"));
 
-	group_cue		= new GroupBox(i18n->TranslateString("Cue sheets"), Point(7, 11), Size(534, 67));
+	group_cue		= new GroupBox(i18n->TranslateString("Cue sheets"), Point(7, 11), Size(534, 64));
 
 	check_read_cue		= new CheckBox(i18n->TranslateString("Read cue sheets embedded in metadata"), Point(10, 14), Size(514, 0), &readCueSheets);
 	check_read_cue->onAction.Connect(&ConfigureTags::ToggleReadCueSheets, this);
 
-	check_prefer_cue	= new CheckBox(i18n->TranslateString("Prefer cue sheets over chapter information"), Point(27, 40), Size(497, 0), &preferCueSheets);
+	check_prefer_cue	= new CheckBox(i18n->TranslateString("Prefer cue sheets over chapter information"), Point(27, 37), Size(497, 0), &preferCueSheets);
 
 	group_cue->Add(check_read_cue);
 	group_cue->Add(check_prefer_cue);
 
-	group_chapters		= new GroupBox(i18n->TranslateString("Chapters"), Point(7, 90), Size(263, 94));
+	group_chapters		= new GroupBox(i18n->TranslateString("Chapters"), Point(7, 87), Size(263, 64));
 
 	check_read_chapters	= new CheckBox(i18n->TranslateString("Read chapters from files"), Point(10, 14), Size(243, 0), &readChapters);
-	check_write_chapters	= new CheckBox(i18n->TranslateString("Write chapters to files"), check_read_chapters->GetPosition() + Point(0, 26), Size(243, 0), &writeChapters);
-	check_write_chapters->onAction.Connect(&ConfigureTags::ToggleWriteChapters, this);
-
-	text_chapter_format	= new Text(i18n->AddColon(i18n->TranslateString("Chapter format")), check_write_chapters->GetPosition() + Point(17, 28));
-
-	combo_chapter_format	= new ComboBox(text_chapter_format->GetPosition() + Point(text_chapter_format->GetUnscaledTextWidth() + 7, -3), Size(219 - text_chapter_format->GetUnscaledTextWidth(), 0));
-	combo_chapter_format->AddEntry(i18n->TranslateString("both"));
-	combo_chapter_format->AddEntry("QuickTime");
-	combo_chapter_format->AddEntry("Nero");
-
-	switch (chapterFormat)
-	{
-		default:
-		case 1: // MP4ChapterTypeAny
-			combo_chapter_format->SelectNthEntry(0);
-			break;
-		case 2: // MP4ChapterTypeQt
-			combo_chapter_format->SelectNthEntry(1);
-			break;
-		case 4: // MP4ChapterTypeNero
-			combo_chapter_format->SelectNthEntry(2);
-			break;
-	}
+	check_write_chapters	= new CheckBox(i18n->TranslateString("Write chapters to files"), check_read_chapters->GetPosition() + Point(0, 23), Size(243, 0), &writeChapters);
 
 	group_chapters->Add(check_read_chapters);
 	group_chapters->Add(check_write_chapters);
-	group_chapters->Add(text_chapter_format);
-	group_chapters->Add(combo_chapter_format);
 
-	group_special		= new GroupBox(i18n->TranslateString("Special fields"), Point(278, 90), Size(263, 67));
+	group_special		= new GroupBox(i18n->TranslateString("Special fields"), Point(278, 87), Size(263, 64));
 
 	check_mcdi		= new CheckBox(i18n->TranslateString("Write CD table of contents"), Point(10, 14), Size(243, 0), &writeMCDI);
-	check_replaygain	= new CheckBox(i18n->TranslateString("Preserve Replay Gain information"), check_mcdi->GetPosition() + Point(0, 26), Size(243, 0), &preserveReplayGain);
+	check_replaygain	= new CheckBox(i18n->TranslateString("Preserve Replay Gain information"), check_mcdi->GetPosition() + Point(0, 23), Size(243, 0), &preserveReplayGain);
 
 	group_special->Add(check_mcdi);
 	group_special->Add(check_replaygain);
@@ -211,7 +186,6 @@ freac::ConfigureTags::ConfigureTags()
 	ToggleTags();
 
 	ToggleWriteCoverArt();
-	ToggleWriteChapters();
 
 	ToggleReadCueSheets();
 
@@ -261,8 +235,6 @@ freac::ConfigureTags::~ConfigureTags()
 	DeleteObject(group_chapters);
 	DeleteObject(check_read_chapters);
 	DeleteObject(check_write_chapters);
-	DeleteObject(text_chapter_format);
-	DeleteObject(combo_chapter_format);
 
 	DeleteObject(group_special);
 	DeleteObject(check_mcdi);
@@ -391,20 +363,6 @@ Void freac::ConfigureTags::ToggleWriteCoverArt()
 	}
 }
 
-Void freac::ConfigureTags::ToggleWriteChapters()
-{
-	if (writeChapters)
-	{
-		text_chapter_format->Activate();
-		combo_chapter_format->Activate();
-	}
-	else
-	{
-		text_chapter_format->Deactivate();
-		combo_chapter_format->Deactivate();
-	}
-}
-
 Void freac::ConfigureTags::ToggleReadCueSheets()
 {
 	if (readCueSheets) check_prefer_cue->Activate();
@@ -445,20 +403,6 @@ Int freac::ConfigureTags::SaveSettings()
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, readChapters);
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersID, writeChapters);
-
-	switch (combo_chapter_format->GetSelectedEntryNumber())
-	{
-		default:
-		case 0: // Any
-			config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersTypeID, 1);
-			break;
-		case 1: // QuickTime
-			config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersTypeID, 2);
-			break;
-		case 2: // Nero
-			config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersTypeID, 4);
-			break;
-	}
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteMCDIID, writeMCDI);
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsPreserveReplayGainID, preserveReplayGain);

@@ -428,11 +428,9 @@
 	<entry id="5516" string="Chapters">Kapitel</entry>
 	<entry id="5517" string="Read chapters from files">Läs kapitel från filer</entry>
 	<entry id="5518" string="Write chapters to files">Skriv kapitel till filer</entry>
-	<entry id="5519" string="Chapter format">Kapitelformat</entry>
-	<entry id="5520" string="both">Bägge</entry>
-	<entry id="5521" string="Special fields">Särskilda fält</entry>
-	<entry id="5522" string="Write CD table of contents">Skriv innehållsförteckning för cd</entry>
-	<entry id="5523" string="Preserve Replay Gain information">Behåll uppspelningsförstärkningsinfo</entry>
+	<entry id="5519" string="Special fields">Särskilda fält</entry>
+	<entry id="5520" string="Write CD table of contents">Skriv innehållsförteckning för cd</entry>
+	<entry id="5521" string="Preserve Replay Gain information">Behåll uppspelningsförstärkningsinfo</entry>
       </section>
 
       <section name="Joblist">
@@ -860,6 +858,14 @@
 	  <entry id="41100" string="Could not find suitable audio format.">Det gick inte att hitta ett passande ljudformat.</entry>
 	  <entry id="41101" string="Unable to use selected audio format.">Det gick inte att använda det valda ljudformatet</entry>
 	</section>
+      </section>
+    </section>
+
+    <section name="Taggers">
+
+      <section name="MP4">
+	<entry id="60000" string="Chapter format">Kapitelformat</entry>
+	<entry id="60001" string="both">Bägge</entry>
       </section>
     </section>
 

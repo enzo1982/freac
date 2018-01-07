@@ -428,11 +428,9 @@
 	<entry id="5516" string="Chapters">章節</entry>
 	<entry id="5517" string="Read chapters from files">從檔案讀取章節</entry>
 	<entry id="5518" string="Write chapters to files">將章節寫入檔案</entry>
-	<entry id="5519" string="Chapter format">章節格式</entry>
-	<entry id="5520" string="both">兩者皆是</entry>
-	<entry id="5521" string="Special fields">特殊</entry>
-	<entry id="5522" string="Write CD table of contents">寫入 CD 目錄</entry>
-	<entry id="5523" string="Preserve Replay Gain information">保留回放增益資訊</entry>
+	<entry id="5519" string="Special fields">特殊</entry>
+	<entry id="5520" string="Write CD table of contents">寫入 CD 目錄</entry>
+	<entry id="5521" string="Preserve Replay Gain information">保留回放增益資訊</entry>
       </section>
 
       <section name="Joblist">
@@ -906,6 +904,14 @@
 	<entry id="50200" string="Converter">轉換器</entry>
 	<entry id="50201" string="Sampling rate">取樣頻率</entry>
 	<entry id="50202" string="Output sampling rate">輸出取樣率</entry>
+      </section>
+    </section>
+
+    <section name="Taggers">
+
+      <section name="MP4">
+	<entry id="60000" string="Chapter format">章節格式</entry>
+	<entry id="60001" string="both">兩者皆是</entry>
       </section>
     </section>
 

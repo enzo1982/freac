@@ -438,15 +438,13 @@
 	<entry id="5516" string="Chapters">Kapitel</entry>
 	<entry id="5517" string="Read chapters from files">Kapitel aus Dateien lesen</entry>
 	<entry id="5518" string="Write chapters to files">Kapitel in Dateien schreiben</entry>
-	<entry id="5519" string="Chapter format">Kapitelformat</entry>
-	<entry id="5520" string="both">beide</entry>
-	<entry id="5521" string="Special fields">Weitere Felder</entry>
-	<entry id="5522" string="Write CD table of contents">CD-Inhaltsverzeichnis schreiben</entry>
-	<entry id="5523" string="Preserve Replay Gain information">Replay Gain-Informationen beibehalten</entry>
-	<entry id="5524" string="Cue sheets">Cuesheets</entry>
-	<entry id="5525" string="Read cue sheets embedded in metadata">In Metadaten eingebettete Cuesheets lesen</entry>
-	<entry id="5526" string="Prefer cue sheets over chapter information">Cuesheets gegenüber Kapitelinformationen bevorzugen</entry>
-	<entry id="5527" string="Prepend zero to track numbers below 10">Tracknummern unter 10 eine Null voranstellen</entry>
+	<entry id="5519" string="Special fields">Weitere Felder</entry>
+	<entry id="5520" string="Write CD table of contents">CD-Inhaltsverzeichnis schreiben</entry>
+	<entry id="5521" string="Preserve Replay Gain information">Replay Gain-Informationen beibehalten</entry>
+	<entry id="5522" string="Cue sheets">Cuesheets</entry>
+	<entry id="5523" string="Read cue sheets embedded in metadata">In Metadaten eingebettete Cuesheets lesen</entry>
+	<entry id="5524" string="Prefer cue sheets over chapter information">Cuesheets gegenüber Kapitelinformationen bevorzugen</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">Tracknummern unter 10 eine Null voranstellen</entry>
       </section>
 
       <section name="Joblist">
@@ -944,6 +942,14 @@
 	<entry id="50200" string="Converter">Konverter</entry>
 	<entry id="50201" string="Sampling rate">Samplerate</entry>
 	<entry id="50202" string="Output sampling rate">Ausgabesamplerate</entry>
+      </section>
+    </section>
+
+    <section name="Taggers">
+
+      <section name="MP4">
+	<entry id="60000" string="Chapter format">Kapitelformat</entry>
+	<entry id="60001" string="both">beide</entry>
       </section>
     </section>
 
