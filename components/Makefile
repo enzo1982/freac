@@ -4,7 +4,7 @@ FREAC_PATH = ..
 
 include $(dir $(firstword $(MAKEFILE_LIST)))/$(FREAC_PATH)/Makefile-options
 
-FOLDERS = extension other
+FOLDERS = extension
 
 .PHONY: $(FOLDERS)
 
