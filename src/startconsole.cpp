@@ -308,8 +308,16 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	/* Check dynamic encoder parameters.
 	 */
+	Component	*component = boca.CreateComponentByID(String(encoderID).Append("-enc"));
+
+	if (component == NIL)
+	{
+		Console::OutputString(String("Encoder '").Append(helpenc).Append("' could not be initialized!\n\n"));
+
+		return;
+	}
+
 	Bool				 broken	    = False;
-	Component			*component  = boca.CreateComponentByID(String(encoderID).Append("-enc"));
 	const Array<Parameter *>	&parameters = component->GetParameters();
 
 	foreach (Parameter *parameter, parameters)
@@ -370,7 +378,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	if (broken)
 	{
-		Console::OutputString("Invalid arguments.\n");
+		Console::OutputString(String("Invalid arguments for encoder '").Append(helpenc).Append("'!\n\n"));
 
 		return;
 	}
@@ -804,6 +812,13 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		}
 
 		Component	*component = boca.CreateComponentByID(String(helpenc).Append("-enc"));
+
+		if (component == NIL)
+		{
+			Console::OutputString(String("Encoder '").Append(helpenc).Append("' could not be initialized!\n\n"));
+
+			return;
+		}
 
 		Console::OutputString(String("Options for ").Append(component->GetName()).Append(":\n\n"));
 
