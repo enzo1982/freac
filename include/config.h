@@ -23,6 +23,7 @@ namespace freac
 	{
 		constants:
 			static const String	 CategorySettingsID;
+			static const String	 CategoryDialogsID;
 			static const String	 CategoryResourcesID;
 			static const String	 CategoryJoblistID;
 			static const String	 CategoryRipperID;
@@ -149,6 +150,38 @@ namespace freac
 			static const String	 SettingsLastSelectedSaveDirID;
 
 			static const String	 SettingsLastSelectedJoblistDirID;
+
+			/* Category Dialogs
+			 */
+			static const String	 DialogsCDDBSubmitSizeXID;
+			static const Int	 DialogsCDDBSubmitSizeXDefault;
+
+			static const String	 DialogsCDDBSubmitSizeYID;
+			static const Int	 DialogsCDDBSubmitSizeYDefault;
+
+			static const String	 DialogsCDDBMultiMatchSizeXID;
+			static const Int	 DialogsCDDBMultiMatchSizeXDefault;
+
+			static const String	 DialogsCDDBMultiMatchSizeYID;
+			static const Int	 DialogsCDDBMultiMatchSizeYDefault;
+
+			static const String	 DialogsCDDBManageQueriesSizeXID;
+			static const Int	 DialogsCDDBManageQueriesSizeXDefault;
+
+			static const String	 DialogsCDDBManageQueriesSizeYID;
+			static const Int	 DialogsCDDBManageQueriesSizeYDefault;
+
+			static const String	 DialogsCDDBManageSubmitsSizeXID;
+			static const Int	 DialogsCDDBManageSubmitsSizeXDefault;
+
+			static const String	 DialogsCDDBManageSubmitsSizeYID;
+			static const Int	 DialogsCDDBManageSubmitsSizeYDefault;
+
+			static const String	 DialogsCDDBManageCacheSizeXID;
+			static const Int	 DialogsCDDBManageCacheSizeXDefault;
+
+			static const String	 DialogsCDDBManageCacheSizeYID;
+			static const Int	 DialogsCDDBManageCacheSizeYDefault;
 
 			/* Category Processing
 			 */

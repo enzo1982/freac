@@ -124,7 +124,7 @@ Known problems
 History
 -------
 
-	Version 1.1 Alpha (December 2017)
+	Version 1.1 Alpha (January 2018)
 
 		- ported to macOS, Linux and BSD operating systems
 		- implemented an extension component framework to modularize fre:ac
@@ -163,6 +163,7 @@ History
 		- added an option to append sequential numbers to otherwise identical filenames
 		- added <composer>, <conductor> and <disc> patterns
 		- allow CDDB queries even when no CD drive is present
+		- allow CDDB dialogs to be resized
 		- added preview to CDDB match selection dialog
 		- added an option to automatically select the first CDDB match
 		- added support for CDDB queries using HTTP GET

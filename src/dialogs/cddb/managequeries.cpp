@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -21,8 +21,13 @@ freac::cddbManageQueriesDlg::cddbManageQueriesDlg()
 
 	i18n->SetContext("CDDB::Manage queries");
 
-	mainWnd			= new Window(i18n->TranslateString("CDDB queries"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(402, 352));
+	Point	 wndPos	 = Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40);
+	Size	 wndSize = Size(config->GetIntValue(Config::CategoryDialogsID, Config::DialogsCDDBManageQueriesSizeXID, Config::DialogsCDDBManageQueriesSizeXDefault), config->GetIntValue(Config::CategoryDialogsID, Config::DialogsCDDBManageQueriesSizeYID, Config::DialogsCDDBManageQueriesSizeYDefault));
+
+	mainWnd			= new Window(i18n->TranslateString("CDDB queries"), wndPos, wndSize);
+	mainWnd->SetMinimumSize(Size(286, 200));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
+	mainWnd->GetMainLayer()->onChangeSize.Connect(&cddbManageQueriesDlg::OnChangeSize, this);
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -41,13 +46,13 @@ freac::cddbManageQueriesDlg::cddbManageQueriesDlg()
 	btn_delete->onAction.Connect(&cddbManageQueriesDlg::DeleteEntry, this);
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
-	btn_query	= new Button(i18n->TranslateString("Query"), NIL, Point(219, 69), Size());
+	btn_query	= new Button(i18n->TranslateString("Query"), NIL, Point(175, 69), Size());
 	btn_query->onAction.Connect(&cddbManageQueriesDlg::QueryEntry, this);
-	btn_query->SetOrientation(OR_LOWERLEFT);
+	btn_query->SetOrientation(OR_LOWERRIGHT);
 
-	btn_query_all	= new Button(i18n->TranslateString("Query all"), NIL, Point(307, 69), Size());
+	btn_query_all	= new Button(i18n->TranslateString("Query all"), NIL, Point(87, 69), Size());
 	btn_query_all->onAction.Connect(&cddbManageQueriesDlg::QueryAllEntries, this);
-	btn_query_all->SetOrientation(OR_LOWERLEFT);
+	btn_query_all->SetOrientation(OR_LOWERRIGHT);
 
 	text_status	= new Text(NIL, Point(7, 26));
 	text_status->SetOrientation(OR_LOWERLEFT);
@@ -69,7 +74,7 @@ freac::cddbManageQueriesDlg::cddbManageQueriesDlg()
 	mainWnd->Add(btn_query_all);
 	mainWnd->Add(text_status);
 
-	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON | WF_MODAL);
+	mainWnd->SetFlags(WF_NOTASKBUTTON | WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
@@ -95,6 +100,19 @@ const Error &freac::cddbManageQueriesDlg::ShowDialog()
 	mainWnd->WaitUntilClosed();
 
 	return error;
+}
+
+Void freac::cddbManageQueriesDlg::OnChangeSize(const Size &nSize)
+{
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	config->SetIntValue(Config::CategoryDialogsID, Config::DialogsCDDBManageQueriesSizeXID, mainWnd->GetSize().cx);
+	config->SetIntValue(Config::CategoryDialogsID, Config::DialogsCDDBManageQueriesSizeYID, mainWnd->GetSize().cy);
+
+	Rect	 clientRect = Rect(mainWnd->GetMainLayer()->GetPosition(), mainWnd->GetMainLayer()->GetSize());
+	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
+
+	list_entries->SetSize(clientSize - Size(14, 106));
 }
 
 Void freac::cddbManageQueriesDlg::Cancel()

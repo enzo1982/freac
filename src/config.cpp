@@ -22,6 +22,7 @@ using namespace BoCA;
 freac::Config	*freac::Config::instance = NIL;
 
 const String	 freac::Config::CategorySettingsID				= "Settings";
+const String	 freac::Config::CategoryDialogsID				= "Dialogs";
 const String	 freac::Config::CategoryResourcesID				= "Resources";
 const String	 freac::Config::CategoryJoblistID				= "Joblist";
 const String	 freac::Config::CategoryRipperID				= "Ripper";
@@ -159,6 +160,38 @@ const String	 freac::Config::SettingsLastSelectedOpenDirID			= "LastSelectedOpen
 const String	 freac::Config::SettingsLastSelectedSaveDirID			= "LastSelectedSaveDir";
 
 const String	 freac::Config::SettingsLastSelectedJoblistDirID		= "LastSelectedJoblistDir";
+
+/* Category Dialogs
+ */
+const String	 freac::Config::DialogsCDDBSubmitSizeXID			= "CDDBSubmitSizeX";
+const Int	 freac::Config::DialogsCDDBSubmitSizeXDefault			= 510;
+
+const String	 freac::Config::DialogsCDDBSubmitSizeYID			= "CDDBSubmitSizeY";
+const Int	 freac::Config::DialogsCDDBSubmitSizeYDefault			= 461;
+
+const String	 freac::Config::DialogsCDDBMultiMatchSizeXID			= "CDDBMultiMatchSizeX";
+const Int	 freac::Config::DialogsCDDBMultiMatchSizeXDefault		= 360;
+
+const String	 freac::Config::DialogsCDDBMultiMatchSizeYID			= "CDDBMultiMatchSizeY";
+const Int	 freac::Config::DialogsCDDBMultiMatchSizeYDefault		= 369;
+
+const String	 freac::Config::DialogsCDDBManageQueriesSizeXID			= "CDDBManageQueriesSizeX";
+const Int	 freac::Config::DialogsCDDBManageQueriesSizeXDefault		= 500;
+
+const String	 freac::Config::DialogsCDDBManageQueriesSizeYID			= "CDDBManageQueriesSizeY";
+const Int	 freac::Config::DialogsCDDBManageQueriesSizeYDefault		= 250;
+
+const String	 freac::Config::DialogsCDDBManageSubmitsSizeXID			= "CDDBManageSubmitsSizeX";
+const Int	 freac::Config::DialogsCDDBManageSubmitsSizeXDefault		= 560;
+
+const String	 freac::Config::DialogsCDDBManageSubmitsSizeYID			= "CDDBManageSubmitsSizeY";
+const Int	 freac::Config::DialogsCDDBManageSubmitsSizeYDefault		= 360;
+
+const String	 freac::Config::DialogsCDDBManageCacheSizeXID			= "CDDBManageCacheSizeX";
+const Int	 freac::Config::DialogsCDDBManageCacheSizeXDefault		= 560;
+
+const String	 freac::Config::DialogsCDDBManageCacheSizeYID			= "CDDBManageCacheSizeY";
+const Int	 freac::Config::DialogsCDDBManageCacheSizeYDefault		= 360;
 
 /* Category Processing
  */

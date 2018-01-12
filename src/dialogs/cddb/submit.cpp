@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -43,60 +43,40 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 	dontUpdateInfo	= False;
 	finishedArtist	= False;
 
-	Point	 pos;
-	Size	 size;
+	Point	 wndPos	 = Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40);
+	Size	 wndSize = Size(config->GetIntValue(Config::CategoryDialogsID, Config::DialogsCDDBSubmitSizeXID, Config::DialogsCDDBSubmitSizeXDefault), config->GetIntValue(Config::CategoryDialogsID, Config::DialogsCDDBSubmitSizeYID, Config::DialogsCDDBSubmitSizeYDefault));
 
-	mainWnd			= new Window(i18n->TranslateString("CDDB data"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(502, 453));
+	mainWnd			= new Window(i18n->TranslateString("CDDB data"), wndPos, wndSize);
+	mainWnd->SetMinimumSize(Size(510, 461));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
+	mainWnd->GetMainLayer()->onChangeSize.Connect(&cddbSubmitDlg::OnChangeSize, this);
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(45, OR_HORZ | OR_BOTTOM);
 
-	pos.x = 175;
-	pos.y = 32;
-	size.cx = 0;
-	size.cy = 0;
-
-	btn_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, pos, size);
+	btn_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(175, 32), Size());
 	btn_cancel->onAction.Connect(&cddbSubmitDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	pos.x -= 88;
-
-	btn_submit		= new Button(i18n->TranslateString("Submit"), NIL, pos, size);
+	btn_submit		= new Button(i18n->TranslateString("Submit"), NIL, Point(87, 32), Size());
 	btn_submit->onAction.Connect(&cddbSubmitDlg::Submit, this);
 	btn_submit->SetOrientation(OR_LOWERRIGHT);
 
 	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault)) btn_submit->SetText(i18n->TranslateString("Save entry"));
 
-	pos.x = 3;
-	pos.y = 39;
-
-	check_updateJoblist	= new CheckBox(i18n->TranslateString("Update joblist with this information"), pos, size, &updateJoblist);
+	check_updateJoblist	= new CheckBox(i18n->TranslateString("Update joblist with this information"), Point(3, 39), Size(), &updateJoblist);
 	check_updateJoblist->SetOrientation(OR_LOWERLEFT);
 
-	pos.y -= 19;
-
-	check_submitLater	= new CheckBox(i18n->TranslateString("Submit to online database later"), pos, size, &submitLater);
+	check_submitLater	= new CheckBox(i18n->TranslateString("Submit to online database later"), Point(3, 20), Size(), &submitLater);
 	check_submitLater->onAction.Connect(&cddbSubmitDlg::ToggleSubmitLater, this);
 	check_submitLater->SetOrientation(OR_LOWERLEFT);
 
 	check_updateJoblist->SetWidth(Math::Max(check_updateJoblist->GetUnscaledTextWidth(), check_submitLater->GetUnscaledTextWidth()) + 21);
 	check_submitLater->SetWidth(Math::Max(check_updateJoblist->GetUnscaledTextWidth(), check_submitLater->GetUnscaledTextWidth()) + 21);
 
-	pos.x = 7;
-	pos.y = 11;
-	size.cx = 480;
-	size.cy = 43;
+	group_drive	= new GroupBox(i18n->TranslateString("Active CD-ROM drive"), Point(7, 11), Size(480, 43));
 
-	group_drive	= new GroupBox(i18n->TranslateString("Active CD-ROM drive"), pos, size);
-
-	pos.x = 17;
-	pos.y = 23;
-	size.cx = 260;
-	size.cy = 0;
-
-	combo_drive	= new ComboBox(pos, size);
+	combo_drive	= new ComboBox(Point(10, 12), Size(260, 0));
 
 	Registry		&boca = Registry::Get();
 	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
@@ -116,26 +96,17 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 	combo_drive->SelectNthEntry(activedrive);
 	combo_drive->onSelectEntry.Connect(&cddbSubmitDlg::ChangeDrive, this);
 
-	pos.x += 267;
-	pos.y += 3;
+	text_cdstatus	= new Text(i18n->AddColon(i18n->TranslateString("Status")), Point(277, 15));
 
-	text_cdstatus	= new Text(i18n->AddColon(i18n->TranslateString("Status")), pos);
+	group_drive->Add(combo_drive);
+	group_drive->Add(text_cdstatus);
 
-	pos.x = 7;
-	pos.y = 65;
+	text_artist	= new Text(i18n->AddColon(i18n->TranslateString("Artist")), Point(7, 65));
+	text_album	= new Text(i18n->AddColon(i18n->TranslateString("Album")), Point(7, 92));
 
-	text_artist	= new Text(i18n->AddColon(i18n->TranslateString("Artist")), pos);
+	Int	 maxTextSize = Math::Max(text_artist->GetUnscaledTextWidth(), text_album->GetUnscaledTextWidth());
 
-	pos.y += 27;
-
-	text_album	= new Text(i18n->AddColon(i18n->TranslateString("Album")), pos);
-
-	pos.x += (7 + (Int) Math::Max(text_artist->GetUnscaledTextWidth(), text_album->GetUnscaledTextWidth()));
-	pos.y -= 30;
-	size.cx = 200 - (Int) Math::Max(text_artist->GetUnscaledTextWidth(), text_album->GetUnscaledTextWidth());
-	size.cy = 0;
-
-	edit_artist	= new EditBox(NIL, pos, size, 0);
+	edit_artist	= new EditBox(NIL, Point(14 + maxTextSize, 62), Size(200 - maxTextSize, 0), 0);
 
 	list_artist	= new List();
 	list_artist->AddEntry(i18n->TranslateString("Various artists"));
@@ -143,55 +114,28 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 	edit_artist->SetDropDownList(list_artist);
 	edit_artist->onInput.Connect(&cddbSubmitDlg::SetArtist, this);
 
-	pos.y += 27;
-
-	edit_album	= new EditBox(NIL, pos, size, 0);
+	edit_album	= new EditBox(NIL, Point(14 + maxTextSize, 89), Size(200 - maxTextSize, 0), 0);
 
 	list_genre	= new List();
 	Utilities::FillGenreList(list_genre);
 
-	pos.x = 221;
-	pos.y = 65;
+	text_year	= new Text(i18n->AddColon(i18n->TranslateString("Year")), Point(221, 65));
 
-	text_year	= new Text(i18n->AddColon(i18n->TranslateString("Year")), pos);
+	text_disccomment= new Text(i18n->AddColon(i18n->TranslateString("Comment")), Point(221, 92));
 
-	pos.y += 27;
+	maxTextSize = Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
 
-	text_disccomment= new Text(i18n->AddColon(i18n->TranslateString("Comment")), pos);
-
-	pos.x = 228 + Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
-	pos.y -= 30;
-	size.cx = 31;
-
-	edit_year	= new EditBox(NIL, pos, size, 4);
+	edit_year	= new EditBox(NIL, Point(228 + maxTextSize, 62), Size(31, 0), 4);
 	edit_year->SetFlags(EDB_NUMERIC);
 
-	pos.x += 38;
-	pos.y += 3;
+	text_genre	= new Text(i18n->AddColon(i18n->TranslateString("Genre")), Point(266 + maxTextSize, 65));
 
-	text_genre	= new Text(i18n->AddColon(i18n->TranslateString("Genre")), pos);
-
-	pos.x += (7 + text_genre->GetUnscaledTextWidth());
-	pos.y -= 3;
-	size.cx = 214 - text_genre->GetUnscaledTextWidth() - Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
-	size.cy = 0;
-
-	edit_genre	= new EditBox(NIL, pos, size, 0);
+	edit_genre	= new EditBox(NIL, Point(273 + maxTextSize + text_genre->GetUnscaledTextWidth(), 62), Size(214 - maxTextSize - text_genre->GetUnscaledTextWidth(), 0), 0);
 	edit_genre->SetDropDownList(list_genre);
 
-	pos.x = 228 + Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
-	pos.y += 27;
-	size.cx = 259 - Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
-	size.cy = 34;
+	edit_disccomment= new MultiEdit(NIL, Point(228 + maxTextSize, 89), Size(259 - maxTextSize, 34), 0);
 
-	edit_disccomment= new MultiEdit(NIL, pos, size, 0);
-
-	pos.x = 7;
-	pos.y += 42;
-	size.cx = 480;
-	size.cy = 140;
-
-	list_tracks	= new ListBox(pos, size);
+	list_tracks	= new ListBox(Point(7, 131), Size(480, 140));
 	list_tracks->SetFlags(LF_ALLOWRESELECT);
 	list_tracks->AddTab(i18n->TranslateString("Track"), 50);
 	list_tracks->AddTab(i18n->TranslateString("Title"));
@@ -209,60 +153,43 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 	shortcut_last		= new Shortcut(0, Input::Keyboard::KeyEnd, list_tracks);
 	shortcut_last->onKeyDown.Connect(&cddbSubmitDlg::OnShortcutLast, this);
 
-	pos.x -= 1;
-	pos.y += 151;
+	text_track	= new Text(i18n->AddColon(i18n->TranslateString("Track")), Point(7, 138));
+	text_track->SetOrientation(OR_LOWERLEFT);
 
-	text_track	= new Text(i18n->AddColon(i18n->TranslateString("Track")), pos);
-
-	pos.x += (7 + text_track->GetUnscaledTextWidth());
-	pos.y -= 3;
-	size.cx = 25;
-	size.cy = 0;
-
-	edit_track	= new EditBox(NIL, pos, size, 3);
+	edit_track	= new EditBox(NIL, Point(13 + text_track->GetUnscaledTextWidth(), 141), Size(25, 0), 3);
+	edit_track->SetOrientation(OR_LOWERLEFT);
 	edit_track->SetFlags(EDB_NUMERIC);
 	edit_track->Deactivate();
 
-	pos.x += 32;
-	pos.y += 3;
+	text_trackartist= new Text(i18n->AddColon(i18n->TranslateString("Artist")), Point(45 + text_track->GetUnscaledTextWidth(), 138));
+	text_trackartist->SetOrientation(OR_LOWERLEFT);
 
-	text_trackartist= new Text(i18n->AddColon(i18n->TranslateString("Artist")), pos);
+	text_title	= new Text(i18n->AddColon(i18n->TranslateString("Title")), Point(45 + text_track->GetUnscaledTextWidth(), 111));
+	text_title->SetOrientation(OR_LOWERLEFT);
 
-	pos.y += 27;
+	text_comment	= new Text(i18n->AddColon(i18n->TranslateString("Comment")), Point(45 + text_track->GetUnscaledTextWidth(), 84));
+	text_comment->SetOrientation(OR_LOWERLEFT);
 
-	text_title	= new Text(i18n->AddColon(i18n->TranslateString("Title")), pos);
+	maxTextSize = Math::Max(text_title->GetUnscaledTextWidth(), text_comment->GetUnscaledTextWidth());
 
-	pos.y += 27;
-
-	text_comment	= new Text(i18n->AddColon(i18n->TranslateString("Comment")), pos);
-
-	pos.x += (7 + Math::Max(text_title->GetUnscaledTextWidth(), text_comment->GetUnscaledTextWidth()));
-	pos.y -= 57;
-	size.cx = 435 - Math::Max(text_title->GetUnscaledTextWidth(), text_comment->GetUnscaledTextWidth()) - text_track->GetUnscaledTextWidth();
-
-	edit_trackartist= new EditBox(NIL, pos, size, 0);
+	edit_trackartist= new EditBox(NIL, Point(52 + text_track->GetUnscaledTextWidth() + maxTextSize, 141), Size(435 - text_track->GetUnscaledTextWidth() - maxTextSize, 0), 0);
+	edit_trackartist->SetOrientation(OR_LOWERLEFT);
 	edit_trackartist->Deactivate();
 	edit_trackartist->onInput.Connect(&cddbSubmitDlg::UpdateTrack, this);
 	edit_trackartist->onEnter.Connect(&cddbSubmitDlg::FinishArtist, this);
 
-	pos.y += 27;
-
-	edit_title	= new EditBox(NIL, pos, size, 0);
+	edit_title	= new EditBox(NIL, Point(52 + text_track->GetUnscaledTextWidth() + maxTextSize, 114), Size(435 - text_track->GetUnscaledTextWidth() - maxTextSize, 0), 0);
+	edit_title->SetOrientation(OR_LOWERLEFT);
 	edit_title->Deactivate();
 	edit_title->onInput.Connect(&cddbSubmitDlg::UpdateTrack, this);
 	edit_title->onEnter.Connect(&cddbSubmitDlg::FinishTrack, this);
 
-	pos.y += 27;
-	size.cy = 34;
-
-	edit_comment	= new MultiEdit(NIL, pos, size, 0);
+	edit_comment	= new MultiEdit(NIL, Point(52 + text_track->GetUnscaledTextWidth() + maxTextSize, 87), Size(435 - text_track->GetUnscaledTextWidth() - maxTextSize, 34), 0);
+	edit_comment->SetOrientation(OR_LOWERLEFT);
 	edit_comment->Deactivate();
 	edit_comment->onInput.Connect(&cddbSubmitDlg::UpdateComment, this);
 
-	pos.x = 7;
-	pos.y = 28;
-
-	text_status	= new Text(NIL, pos);
+	text_status	= new Text(NIL, Point(7, 28));
 	text_status->SetOrientation(OR_LOWERLEFT);
 
 	SetArtist();
@@ -271,10 +198,12 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 
 	mainWnd->Add(btn_submit);
 	mainWnd->Add(btn_cancel);
+
 	mainWnd->Add(check_updateJoblist);
 	mainWnd->Add(check_submitLater);
-	mainWnd->Add(combo_drive);
+
 	mainWnd->Add(group_drive);
+
 	mainWnd->Add(text_artist);
 	mainWnd->Add(edit_artist);
 	mainWnd->Add(list_artist);
@@ -286,6 +215,7 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 	mainWnd->Add(edit_genre);
 	mainWnd->Add(text_disccomment);
 	mainWnd->Add(edit_disccomment);
+
 	mainWnd->Add(text_track);
 	mainWnd->Add(edit_track);
 	mainWnd->Add(text_trackartist);
@@ -294,17 +224,20 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 	mainWnd->Add(edit_title);
 	mainWnd->Add(text_comment);
 	mainWnd->Add(edit_comment);
+
 	mainWnd->Add(list_tracks);
+
 	mainWnd->Add(shortcut_previous);
 	mainWnd->Add(shortcut_next);
 	mainWnd->Add(shortcut_first);
 	mainWnd->Add(shortcut_last);
-	mainWnd->Add(text_cdstatus);
+
 	mainWnd->Add(text_status);
+
 	mainWnd->Add(mainWnd_titlebar);
 	mainWnd->Add(divbar);
 
-	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON | WF_MODAL);
+	mainWnd->SetFlags(WF_NOTASKBUTTON | WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
@@ -315,8 +248,9 @@ freac::cddbSubmitDlg::~cddbSubmitDlg()
 
 	DeleteObject(divbar);
 
-	DeleteObject(combo_drive);
 	DeleteObject(group_drive);
+	DeleteObject(combo_drive);
+	DeleteObject(text_cdstatus);
 
 	DeleteObject(text_artist);
 	DeleteObject(edit_artist);
@@ -347,7 +281,6 @@ freac::cddbSubmitDlg::~cddbSubmitDlg()
 	DeleteObject(text_comment);
 	DeleteObject(edit_comment);
 
-	DeleteObject(text_cdstatus);
 	DeleteObject(text_status);
 
 	DeleteObject(check_updateJoblist);
@@ -364,6 +297,46 @@ const Error &freac::cddbSubmitDlg::ShowDialog()
 	mainWnd->WaitUntilClosed();
 
 	return error;
+}
+
+Void freac::cddbSubmitDlg::OnChangeSize(const Size &nSize)
+{
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	config->SetIntValue(Config::CategoryDialogsID, Config::DialogsCDDBSubmitSizeXID, mainWnd->GetSize().cx);
+	config->SetIntValue(Config::CategoryDialogsID, Config::DialogsCDDBSubmitSizeYID, mainWnd->GetSize().cy);
+
+	Rect	 clientRect = Rect(mainWnd->GetMainLayer()->GetPosition(), mainWnd->GetMainLayer()->GetSize());
+	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
+
+	group_drive->SetWidth(clientSize.cx - 14);
+
+	text_cdstatus->SetX(group_drive->GetWidth() - 203);
+	combo_drive->SetWidth(group_drive->GetWidth() - 220);
+
+	Int	 textSize = Math::Max(text_artist->GetUnscaledTextWidth(), text_album->GetUnscaledTextWidth()) + Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
+
+	edit_artist->SetWidth((clientSize.cx - textSize - 34) / 2);
+	edit_album->SetWidth(edit_artist->GetWidth());
+
+	text_year->SetX(edit_artist->GetX() + edit_artist->GetWidth() + 7);
+	text_disccomment->SetX(text_year->GetX());
+
+	edit_year->SetX(text_year->GetX() + Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth()) + 7);
+
+	edit_disccomment->SetX(edit_year->GetX());
+	edit_disccomment->SetWidth(edit_artist->GetWidth() - (clientSize.cx - 1) % 2);
+
+	text_genre->SetX(edit_year->GetX() + 38);
+
+	edit_genre->SetX(text_genre->GetX() + text_genre->GetUnscaledTextWidth() + 7);
+	edit_genre->SetWidth(edit_disccomment->GetWidth() - text_genre->GetUnscaledTextWidth() - 45);
+
+	list_tracks->SetSize(clientSize - Size(14, 280));
+
+	edit_trackartist->SetWidth(clientSize.cx - 59 - Math::Max(text_title->GetUnscaledTextWidth(), text_comment->GetUnscaledTextWidth()) - text_track->GetUnscaledTextWidth());
+	edit_title->SetWidth(edit_trackartist->GetWidth());
+	edit_comment->SetWidth(edit_trackartist->GetWidth());
 }
 
 Void freac::cddbSubmitDlg::Submit()

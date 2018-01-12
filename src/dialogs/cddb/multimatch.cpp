@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -23,13 +23,13 @@ freac::cddbMultiMatchDlg::cddbMultiMatchDlg(CDDB &iCDDB, Bool fuzzy) : cddb(iCDD
 
 	i18n->SetContext("CDDB::Query");
 
-	String	 title;
+	Point	 wndPos	 = Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(80, 80);
+	Size	 wndSize = Size(config->GetIntValue(Config::CategoryDialogsID, Config::DialogsCDDBMultiMatchSizeXID, Config::DialogsCDDBMultiMatchSizeXDefault), config->GetIntValue(Config::CategoryDialogsID, Config::DialogsCDDBMultiMatchSizeYID, Config::DialogsCDDBMultiMatchSizeYDefault));
 
-	if (fuzzy)	title = i18n->TranslateString("No exact matches found");
-	else		title = i18n->TranslateString("Multiple matches found");
-
-	mainWnd			= new Window(title, Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(80, 80), Size(352, 361));
+	mainWnd			= new Window(i18n->TranslateString(fuzzy ? "No exact matches found" : "Multiple matches found"), wndPos, wndSize);
+	mainWnd->SetMinimumSize(Size(360, 369));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
+	mainWnd->GetMainLayer()->onChangeSize.Connect(&cddbMultiMatchDlg::OnChangeSize, this);
 
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
@@ -72,32 +72,52 @@ freac::cddbMultiMatchDlg::cddbMultiMatchDlg(CDDB &iCDDB, Bool fuzzy) : cddb(iCDD
 	mainWnd->Add(mainWnd_titlebar);
 	mainWnd->Add(divbar);
 
-	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON | WF_MODAL);
+	mainWnd->SetFlags(WF_NOTASKBUTTON | WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 }
 
 freac::cddbMultiMatchDlg::~cddbMultiMatchDlg()
 {
+	DeleteObject(mainWnd_titlebar);
+	DeleteObject(mainWnd);
+	DeleteObject(divbar);
+
+	DeleteObject(group_match);
 	DeleteObject(text_match);
 	DeleteObject(combo_match);
 	DeleteObject(text_preview);
 	DeleteObject(edit_preview);
 	DeleteObject(text_loading_preview);
 
-	DeleteObject(group_match);
-
-	DeleteObject(mainWnd_titlebar);
-	DeleteObject(mainWnd);
-	DeleteObject(divbar);
 	DeleteObject(btn_ok);
 	DeleteObject(btn_cancel);
 }
 
 const Error &freac::cddbMultiMatchDlg::ShowDialog()
 {
+	error = Error();
+
 	mainWnd->WaitUntilClosed();
 
 	return error;
+}
+
+Void freac::cddbMultiMatchDlg::OnChangeSize(const Size &nSize)
+{
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	config->SetIntValue(Config::CategoryDialogsID, Config::DialogsCDDBMultiMatchSizeXID, mainWnd->GetSize().cx);
+	config->SetIntValue(Config::CategoryDialogsID, Config::DialogsCDDBMultiMatchSizeYID, mainWnd->GetSize().cy);
+
+	Rect	 clientRect = Rect(mainWnd->GetMainLayer()->GetPosition(), mainWnd->GetMainLayer()->GetSize());
+	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
+
+	group_match->SetSize(clientSize - Size(14, 58));
+
+	combo_match->SetWidth(group_match->GetWidth() - 20);
+	edit_preview->SetSize(group_match->GetSize() - Size(20, 84));
+
+	text_loading_preview->SetPosition(edit_preview->GetPosition() + Point((edit_preview->GetWidth() - text_loading_preview->GetUnscaledTextWidth()) / 2, (edit_preview->GetHeight() - text_loading_preview->GetUnscaledTextHeight()) / 2));
 }
 
 Void freac::cddbMultiMatchDlg::OK()
@@ -110,6 +130,8 @@ Void freac::cddbMultiMatchDlg::OK()
 
 	/* Close window.
 	 */
+	error = Success();
+
 	mainWnd->Close();
 }
 
@@ -124,8 +146,6 @@ Void freac::cddbMultiMatchDlg::Cancel()
 	/* Close window.
 	 */
 	mainWnd->Close();
-
-	error = Error();
 }
 
 Int freac::cddbMultiMatchDlg::AddEntry(const String &category, const String &title, Int discID)
@@ -177,7 +197,7 @@ Void freac::cddbMultiMatchDlg::LoadPreview(Int index)
 
 		for (Int i = 0; i < cddbInfo.trackTitles.Length(); i++)
 		{
-			preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(i).Append(" - ") : String()).Append(cddbInfo.trackTitles.GetNth(i)).Append("\n");
+			preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(i).Append(" - ") : String()).Append(cddbInfo.trackTitles.GetNth(i)).Append(i < cddbInfo.trackTitles.Length() - 1 ? "\n" : NIL);
 		}
 
 		text_loading_preview->Hide();
