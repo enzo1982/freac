@@ -255,7 +255,7 @@ Void freac::cddbManageDlg::SelectEntry()
 
 	for (Int i = 0; i < entry.trackTitles.Length(); i++)
 	{
-		preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(entry.dArtist == "Various" ? entry.trackArtists.GetNth(i).Append(" - ") : String()).Append(entry.trackTitles.GetNth(i)).Append("\n");
+		preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(entry.dArtist == "Various" ? entry.trackArtists.GetNth(i).Append(" - ") : String()).Append(entry.trackTitles.GetNth(i)).Append(i < entry.trackTitles.Length() - 1 ? "\n" : NIL);
 	}
 
 	edit_preview->SetText(preview);
