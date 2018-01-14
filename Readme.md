@@ -25,8 +25,8 @@ fre:ac depends on the [BoCA audio component framework](https://github.com/enzo19
 
 Development packages for the following libraries need to be installed in order to build smooth, BoCA and fre:ac:
 
-- For the smooth Class Library: libbz2, libcurl, libfribidi, libgtk+3.0, libjpeg, libxml2, libxmu
-- For the BoCA component framework: libasound2 (Linux only), libcdio, libcdio-paranoia, libexpat,liburiparser
+- For the smooth Class Library: libbz2, libcurl, libfribidi, libgtk+3.0, libjpeg, libxml2
+- For the BoCA component framework: libasound2 (Linux only), libcdio, libcdio-paranoia, libexpat, liburiparser
 - For fre:ac itself: libudev (Linux only)
 
 When the dependencies are met, run `make` followed by `sudo make install` for smooth, BoCA and fre:ac respectively.

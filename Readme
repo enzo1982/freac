@@ -86,22 +86,22 @@ Requirements
 
 		All platforms:
 
-			- smooth v0.8.73.0 Git (http://www.smooth-project.org/)
+			- smooth v0.8.74.0 (http://www.smooth-project.org/)
 
 		Windows:
 
-			- MinGW GCC v4.0+ (http://www.mingw.org/) or Visual Studio 2015
+			- MinGW GCC v4.0+ (http://www.mingw.org/) or Visual Studio 2017
 
 		All Linux and Unix platforms:
 
 			- GCC v4.0+
 
-			- libbz2, libcairo, libfaac, libfaad2, libjpeg, libmp3lame, libmp4v2, libmpg123,
-			  libogg, libopus, libpng, libspeex, libvorbis, libx11, libxml2, libXmu
+			- libfaac, libfaad2, libjpeg, libmp3lame, libmp4v2, libmpg123,
+			  libogg, libopus, libpng, libspeex, libvorbis
 
 			Linux:
 
-				- libasound2, libcdio, libcdio-paranoia, libgtk2, libudev
+				- libasound2, libcdio, libcdio-paranoia, libudev
 
 			Solaris:
 
@@ -183,6 +183,8 @@ History
 		- added support for setting process priority on Windows
 		- added a button to open the output folder
 		- added support for creating one playlist or cue sheet per album in a single conversion
+		- added RNNoise speech noise reduction DSP component
+		- added Rubber Band time stretching DSP component
 		- the time left indicator now shows hours if necessary
 		- the five last used output folders are now saved for later use
 		- the five last used file name patterns are now saved for later use
