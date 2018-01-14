@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -460,7 +460,9 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Processor
 
 	/* Inform components about starting conversion.
 	 */
-	BoCA::Engine::Get()->onStartTrackConversion.Emit(trackToConvert);
+	BoCA::Engine	*engine = BoCA::Engine::Get();
+
+	engine->onStartTrackConversion.Emit(trackToConvert);
 
 	/* Enter conversion loop.
 	 */
@@ -540,8 +542,8 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Processor
 
 	/* Inform components about finished/cancelled conversion.
 	 */
-	if (cancel) BoCA::Engine::Get()->onCancelTrackConversion.Emit(trackToConvert);
-	else	    BoCA::Engine::Get()->onFinishTrackConversion.Emit(trackToConvert);
+	if (cancel) engine->onCancelTrackConversion.Emit(trackToConvert);
+	else	    engine->onFinishTrackConversion.Emit(trackToConvert);
 
 	if (encoder->GetEncodedSamples() > 0) return encoder->GetEncodedSamples() - trackOffset;
 	else				      return decoder->GetDecodedSamples();
