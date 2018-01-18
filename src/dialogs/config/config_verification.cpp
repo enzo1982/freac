@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -36,6 +36,13 @@ freac::ConfigureVerification::ConfigureVerification()
 	check_output		= new CheckBox(i18n->TranslateString("Enable output verification"), Point(10, 70), Size(330, 0), &verifyOutput);
 	text_output		= new Text(i18n->TranslateString("Verify that lossless outputs decode to exactly the data\nused when encoding them."), Point(27, 90));
 
+	Int	 maxTextSize = Math::Max(text_input->GetUnscaledTextWidth(), text_output->GetUnscaledTextWidth());
+
+	group_verification->SetWidth(Math::Max(maxTextSize + 36, 330));
+
+	check_input->SetWidth(group_verification->GetWidth() - 20);
+	check_output->SetWidth(group_verification->GetWidth() - 20);
+
 	group_verification->Add(check_input);
 	group_verification->Add(text_input);
 	group_verification->Add(check_output);
@@ -43,7 +50,7 @@ freac::ConfigureVerification::ConfigureVerification()
 
 	Add(group_verification);
 
-	SetSize(Size(364, 144));
+	SetSize(group_verification->GetSize() + Size(14, 16));
 }
 
 freac::ConfigureVerification::~ConfigureVerification()
