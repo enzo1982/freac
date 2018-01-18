@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -31,8 +31,6 @@ freac::Decoder::Decoder(const BoCA::Config *iConfiguration)
 
 	sampleOffset   = 0;
 	decodedSamples = 0;
-
-	calculateMD5   = False;
 }
 
 freac::Decoder::~Decoder()
@@ -152,6 +150,8 @@ Bool freac::Decoder::Destroy()
 
 	delete stream;
 
+	md5Sum = decoder->GetMD5Checksum();
+
 	boca.DeleteComponent(decoder);
 
 	decoder	     = NIL;
@@ -172,10 +172,6 @@ Int freac::Decoder::Read(Buffer<UnsignedByte> &buffer)
 {
 	if (decoder == NIL || stream == NIL) return 0;
 
-	/* Find system byte order.
-	 */
-	static Int	 systemByteOrder = CPU().GetEndianness() == EndianLittle ? BYTE_INTEL : BYTE_RAW;
-
 	/* Get data from decoder component.
 	 */
 	Int	 bytes = stream->InputData(buffer, buffer.Size());
@@ -185,14 +181,6 @@ Int freac::Decoder::Read(Buffer<UnsignedByte> &buffer)
 		buffer.Resize(bytes);
 
 		decodedSamples += buffer.Size() / format.channels / (format.bits / 8);
-
-		/* Switch byte order to native.
-		 */
-		if (format.order != BYTE_NATIVE && format.order != systemByteOrder) BoCA::Utilities::SwitchBufferByteOrder(buffer, format.bits / 8);
-
-		/* Calculate MD5 if requested.
-		 */
-		if (calculateMD5) md5.Feed(buffer);
 	}
 
 	return bytes;
@@ -213,9 +201,16 @@ String freac::Decoder::GetDecoderName() const
 	return decoder->GetName();
 }
 
+Void freac::Decoder::SetCalculateMD5(Bool calculateMD5)
+{
+	decoder->SetCalculateMD5(calculateMD5);
+}
+
 String freac::Decoder::GetMD5Checksum()
 {
-	return md5.Finish();
+	Destroy();
+
+	return md5Sum;
 }
 
 Void freac::Decoder::FreeLockObjects()

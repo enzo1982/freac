@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -31,8 +31,6 @@ freac::Encoder::Encoder(const BoCA::Config *iConfiguration)
 	offset	       = 0;
 
 	encodedSamples = 0;
-
-	calculateMD5   = False;
 }
 
 freac::Encoder::~Encoder()
@@ -132,6 +130,8 @@ Bool freac::Encoder::Destroy()
 
 	delete stream;
 
+	md5Sum = encoder->GetMD5Checksum();
+
 	boca.DeleteComponent(encoder);
 
 	encoder = NIL;
@@ -145,10 +145,6 @@ Int freac::Encoder::Write(Buffer<UnsignedByte> &buffer)
 	if (encoder == NIL || stream == NIL) return 0;
 
 	encodedSamples += buffer.Size() / format.channels / (format.bits / 8);
-
-	/* Calculate MD5 if requested.
-	 */
-	if (calculateMD5) md5.Feed(buffer);
 
 	/* Hand data to encoder component.
 	 */
@@ -178,9 +174,16 @@ Bool freac::Encoder::IsLossless() const
 	return encoder->IsLossless();
 }
 
+Void freac::Encoder::SetCalculateMD5(Bool calculateMD5)
+{
+	encoder->SetCalculateMD5(calculateMD5);
+}
+
 String freac::Encoder::GetMD5Checksum()
 {
-	return md5.Finish();
+	Destroy();
+
+	return md5Sum;
 }
 
 Void freac::Encoder::FreeLockObjects()

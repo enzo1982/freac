@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -37,8 +37,7 @@ namespace freac
 			IO::InStream				*stream;
 			BoCA::AS::DecoderComponent		*decoder;
 
-			Bool					 calculateMD5;
-			Hash::MD5				 md5;
+			String					 md5Sum;
 		public:
 			static Void				 FreeLockObjects();
 
@@ -57,9 +56,9 @@ namespace freac
 			Int64					 GetInBytes() const;
 			String					 GetDecoderName() const;
 
-			Int64					 GetDecodedSamples() const		{ return decodedSamples; }
+			Int64					 GetDecodedSamples() const	{ return decodedSamples; }
 
-			Void					 SetCalculateMD5(Bool nCalculateMD5)	{ calculateMD5 = nCalculateMD5; }
+			Void					 SetCalculateMD5(Bool);
 			String					 GetMD5Checksum();
 	};
 };
