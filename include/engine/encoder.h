@@ -35,7 +35,9 @@ namespace freac
 			Int					 chapter;
 			Int64					 offset;
 
-			BoCA::Format				 format;
+			BoCA::Format				 sourceFormat;
+			BoCA::Format				 targetFormat;
+
 			Int64					 encodedSamples;
 
 			String					 md5Sum;
@@ -55,6 +57,8 @@ namespace freac
 			Bool					 IsLossless() const;
 
 			Int64					 GetEncodedSamples() const	{ return encodedSamples; }
+
+			const BoCA::Format			&GetTargetFormat() const	{ return targetFormat; }
 
 			Void					 SetCalculateMD5(Bool);
 			String					 GetMD5Checksum();

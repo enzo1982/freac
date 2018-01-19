@@ -297,6 +297,8 @@ Int freac::ConvertWorker::Convert()
 			return Error();
 		}
 
+		trackToEncode.SetFormat(encoder->GetTargetFormat());
+
 		/* Enable MD5 and add a verification step if we are to verify the output.
 		 */
 		if	(verifyOutput && (conversionStep == ConversionStepOnTheFly ||

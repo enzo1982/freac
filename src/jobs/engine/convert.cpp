@@ -376,7 +376,12 @@ Error freac::JobConvert::Perform()
 				singleFileEncoder   = NIL;
 			}
 
-			if (singleFileEncoder != NIL && singleFileEncoder->IsLossless() && verifyOutput) singleFileEncoder->SetCalculateMD5(True);
+			if (singleFileEncoder != NIL)
+			{
+				singleTrackToEncode.SetFormat(singleFileEncoder->GetTargetFormat());
+
+				if (singleFileEncoder->IsLossless() && verifyOutput) singleFileEncoder->SetCalculateMD5(True);
+			}
 
 			/* Set track output file in single file mode.
 			 */

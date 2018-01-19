@@ -42,14 +42,16 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 {
 	Registry	&boca = Registry::Get();
 
-	format	= track.GetFormat();
+	sourceFormat = track.GetFormat();
 
-	album	= track;
-	chapter = 0;
-	offset	= 0;
+	album	     = track;
+	chapter      = 0;
+	offset	     = 0;
 
+	/* Create output file.
+	 */
 	stream = new OutStream(STREAM_FILE, BoCA::Utilities::CreateDirectoryForFile(fileName), OS_REPLACE);
-	stream->SetPackageSize(32768 * format.channels * (format.bits / 8));
+	stream->SetPackageSize(32768 * sourceFormat.channels * (sourceFormat.bits / 8));
 
 	if (stream->GetLastError() != IO_ERROR_OK)
 	{
@@ -77,6 +79,10 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 		return False;
 	}
 
+	targetFormat = FormatConverter::GetBestTargetFormat(sourceFormat, encoder);
+
+	album.SetFormat(targetFormat);
+
 	/* Lock encoder if it's not thread safe.
 	 */
 	if (!encoder->IsThreadSafe())
@@ -93,7 +99,7 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 	/* Add encoder to stream.
 	 */
 	encoder->SetConfiguration(configuration);
-	encoder->SetAudioTrackInfo(album);
+	encoder->SetAudioTrackInfo(track);
 
 	if (stream->SetFilter(encoder) == False)
 	{
@@ -144,7 +150,7 @@ Int freac::Encoder::Write(Buffer<UnsignedByte> &buffer)
 {
 	if (encoder == NIL || stream == NIL) return 0;
 
-	encodedSamples += buffer.Size() / format.channels / (format.bits / 8);
+	encodedSamples += buffer.Size() / sourceFormat.channels / (sourceFormat.bits / 8);
 
 	/* Hand data to encoder component.
 	 */
