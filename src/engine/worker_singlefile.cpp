@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -71,9 +71,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 			Format		 format	   = trackToConvert.GetFormat();
 			const Format	&outFormat = outTrack.GetFormat();
 
-			if (outFormat.rate     != format.rate ||
-			    outFormat.bits     != format.bits ||
-			    outFormat.channels != format.channels)
+			if (format != outFormat)
 			{
 				onReportWarning.Emit(i18n->TranslateString(String("Skipped verification due to format mismatch: %1\n\n")
 									  .Append("Original format: %2 Hz, %3 bit, %4 channels\n")
@@ -91,9 +89,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 			/* Update track format with decoder format.
 			 */
-			format.order = outFormat.order;
-
-			trackToConvert.SetFormat(format);
+			trackToConvert.SetFormat(outFormat);
 		}
 	}
 

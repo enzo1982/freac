@@ -207,9 +207,7 @@ Int freac::ConvertWorker::Convert()
 				Format		 format	   = trackToEncode.GetFormat();
 				const Format	&outFormat = outTrack.GetFormat();
 
-				if (outFormat.rate     != format.rate ||
-				    outFormat.bits     != format.bits ||
-				    outFormat.channels != format.channels)
+				if (format != outFormat)
 				{
 					onReportWarning.Emit(i18n->TranslateString(String("Skipped verification due to format mismatch: %1\n\n")
 										  .Append("Original format: %2 Hz, %3 bit, %4 channels\n")
@@ -229,9 +227,7 @@ Int freac::ConvertWorker::Convert()
 
 				/* Update track format with decoder format.
 				 */
-				format.order = outFormat.order;
-
-				trackToConvert.SetFormat(format);
+				trackToConvert.SetFormat(outFormat);
 			}
 		}
 
