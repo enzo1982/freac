@@ -577,10 +577,16 @@
 	<entry id="8006" string="Skip">Überspringen</entry>
       </section>
 
+      <section name="Format">
+	<entry id="8100" string="Select sample format">Sampleformat auswählen</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">Die ausgewählten Tracks besitzen unterschiedliche Sampleformate. Bitte&#10;wählen Sie das gewünschte Sampleformat der Ausgabedatei:</entry>
+	<entry id="8102" string="Select">Auswählen</entry>
+      </section>
+
       <section name="Errors">
-	<entry id="8100" string="Errors">Fehler</entry>
-	<entry id="8101" string="%1 errors while processing job">%1 Fehler bei der Jobverarbeitung</entry>
-	<entry id="8102" string="select an entry for details">für Details einen Eintrag auswählen</entry>
+	<entry id="8200" string="Errors">Fehler</entry>
+	<entry id="8201" string="%1 errors while processing job">%1 Fehler bei der Jobverarbeitung</entry>
+	<entry id="8202" string="select an entry for details">für Details einen Eintrag auswählen</entry>
       </section>
     </section>
 

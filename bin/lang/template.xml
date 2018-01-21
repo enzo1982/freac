@@ -577,10 +577,16 @@
 	<entry id="8006" string="Skip"/>
       </section>
 
+      <section name="Format">
+	<entry id="8100" string="Select sample format"/>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:"/>
+	<entry id="8102" string="Select"/>
+      </section>
+
       <section name="Errors">
-	<entry id="8100" string="Errors"/>
-	<entry id="8101" string="%1 errors while processing job"/>
-	<entry id="8102" string="select an entry for details"/>
+	<entry id="8200" string="Errors"/>
+	<entry id="8201" string="%1 errors while processing job"/>
+	<entry id="8202" string="select an entry for details"/>
       </section>
     </section>
 

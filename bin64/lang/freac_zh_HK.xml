@@ -548,9 +548,9 @@
       </section>
 
       <section name="Errors">
-	<entry id="8100" string="Errors">錯誤</entry>
-	<entry id="8101" string="%1 errors while processing job">處理期間發生%1個錯誤</entry>
-	<entry id="8102" string="select an entry for details">選取觀看細節項目</entry>
+	<entry id="8200" string="Errors">錯誤</entry>
+	<entry id="8201" string="%1 errors while processing job">處理期間發生%1個錯誤</entry>
+	<entry id="8202" string="select an entry for details">選取觀看細節項目</entry>
       </section>
     </section>
 

@@ -540,9 +540,9 @@
       </section>
 
       <section name="Errors">
-	<entry id="8100" string="Errors">Fel</entry>
-	<entry id="8101" string="%1 errors while processing job">%1 fel inträffade under bearbetningen</entry>
-	<entry id="8102" string="select an entry for details">markera en post för detaljerad information</entry>
+	<entry id="8200" string="Errors">Fel</entry>
+	<entry id="8201" string="%1 errors while processing job">%1 fel inträffade under bearbetningen</entry>
+	<entry id="8202" string="select an entry for details">markera en post för detaljerad information</entry>
       </section>
     </section>
 
