@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -37,9 +37,11 @@ namespace freac
 			Array<BoCA::Track>				 tracks;
 			Array<Int>					 trackActions;
 
+			BoCA::Format					 singleTrackSampleFormat;
+
 			Void						 UpdateProgress(Int, Int);
 
-			Bool						 CheckSingleFileSampleFormat();
+			BoCA::Format					 GetSingleTrackSampleFormat() const;
 			BoCA::Track					 ConsolidateTrackInfo();
 
 			Bool						 LockDeviceForTrack(const BoCA::Track &);

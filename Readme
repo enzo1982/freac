@@ -140,6 +140,7 @@ History
 		- added support for processing input with DSP filters
 		- added DSP components for resampling, channel up-/downmixing and sample format conversion
 		- added support for automatic sample format conversions to match encoder requirements
+		- added support for joining tracks with different sample formats into a single output file
 		- added a simple tag editor
 		- added Monkey's Audio encoder/decoder
 		- added Speex speech encoder/decoder

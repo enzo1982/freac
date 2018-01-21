@@ -22,8 +22,10 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-freac::ConvertWorkerSingleFile::ConvertWorkerSingleFile(const BoCA::Config *iConfiguration, Processor *iProcessor, Encoder *iEncoder) : ConvertWorker(iConfiguration)
+freac::ConvertWorkerSingleFile::ConvertWorkerSingleFile(const BoCA::Config *iConfiguration, const BoCA::Format &iFormat, Processor *iProcessor, Encoder *iEncoder) : ConvertWorker(iConfiguration)
 {
+	format	       = iFormat;
+
 	processor      = iProcessor;
 	encoder	       = iEncoder;
 
@@ -114,17 +116,26 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	if ((conversionStep == ConversionStepOnTheFly ||
 	     conversionStep == ConversionStepDecode) && verifyInput) verify = verifier->Create(trackToConvert);
 
+	/* Create format converter.
+	 */
+	FormatConverter	*converter = new FormatConverter(trackToConvert.GetFormat(), format);
+
 	/* Create processor.
 	 */
 	if (singleFileMode == 0)
 	{
+		Track	 trackToProcess = trackToConvert;
+
+		trackToProcess.SetFormat(format);
+
 		processor = new Processor(configuration);
 
 		if ((conversionStep == ConversionStepOnTheFly ||
-		     conversionStep == ConversionStepDecode) && !processor->Create(trackToConvert))
+		     conversionStep == ConversionStepDecode) && !processor->Create(trackToProcess))
 		{
 			delete decoder;
 			delete verifier;
+			delete converter;
 			delete processor;
 
 			return Error();
@@ -152,7 +163,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Run main conversion loop.
 	 */
-	Int64	 trackLength = Loop(decoder, verifier, processor, encoder);
+	Int64	 trackLength = Loop(decoder, verifier, converter, processor, encoder);
 
 	/* Verify input.
 	 */
@@ -203,6 +214,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	 */
 	delete decoder;
 	delete verifier;
+	delete converter;
 
 	if (singleFileMode == 0) delete processor;
 

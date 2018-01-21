@@ -29,6 +29,7 @@
 #include <support/notification.h>
 
 #include <dialogs/overwrite.h>
+#include <dialogs/format.h>
 
 using namespace smooth::GUI::Dialogs;
 using namespace smooth::Threads;
@@ -85,19 +86,16 @@ Error freac::JobConvert::Precheck()
 
 	Bool	 writeToInputDirectory = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 
-	/* When converting to a single file, check that all
-	 * files to be combined have the same sample format.
+	/* When converting to a single file, query the
+	 * sample format for the combined output file.
 	 */
 	if (encodeToSingleFile)
 	{
 		SetText("Checking sample formats...");
 
-		if (!CheckSingleFileSampleFormat())
-		{
-			BoCA::Utilities::ErrorMessage("The selected files cannot be combined into a single\noutput file due to different sample formats.\n\nPlease convert all files to the same sample format first.");
+		singleTrackSampleFormat = GetSingleTrackSampleFormat();
 
-			return Error();
-		}
+		if (singleTrackSampleFormat == Format()) return Error();
 	}
 
 	/* Check if we have lossy tracks that would be converted to lossless.
@@ -359,6 +357,8 @@ Error freac::JobConvert::Perform()
 			/* Create processor to get output format.
 			 */
 			singleTrackToEncode = singleTrack;
+			singleTrackToEncode.SetFormat(singleTrackSampleFormat);
+
 			singleFileProcessor = new ProcessorSingleFile(configuration);
 
 			if (singleFileProcessor->Create(singleTrackToEncode)) singleTrackToEncode.SetFormat(singleFileProcessor->GetFormatInfo());
@@ -413,7 +413,7 @@ Error freac::JobConvert::Perform()
 	Array<ConvertWorker *, Void *>	 workers;
 	Int				 numberOfWorkers = Math::Min(numberOfThreads, tracks.Length());
 
-	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, singleFileProcessor, singleFileEncoder));
+	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, singleTrackSampleFormat, singleFileProcessor, singleFileEncoder));
 	else			for (Int i = 0; i < numberOfWorkers; i++) workers.Add(new ConvertWorker(configuration));
 
 	foreach (ConvertWorker *worker, workers)
@@ -913,7 +913,7 @@ Error freac::JobConvert::Perform()
 
 			/* Setup and start worker for verification.
 			 */
-			ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, NIL, singleFileEncoder);
+			ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, singleTrackSampleFormat, NIL, singleFileEncoder);
 
 			worker->onFinishTrack.Connect(&Progress::FinishTrack, progress);
 			worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);
@@ -1198,20 +1198,52 @@ Void freac::JobConvert::OnWorkerReportWarning(const String &warning)
 	warnings.Add(warning);
 }
 
-Bool freac::JobConvert::CheckSingleFileSampleFormat()
+Format freac::JobConvert::GetSingleTrackSampleFormat() const
 {
-	Track	 referenceTrack = NIL;
+	Registry	&boca = Registry::Get();
+
+	/* Create encoder instance.
+	 */
+	String			 encoderID = configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+	AS::EncoderComponent	*encoder   = (AS::EncoderComponent *) boca.CreateComponentByID(encoderID);
+
+	if (encoder == NIL) return Format();
+
+	/* Collect all sample formats of input tracks.
+	 */
+	Array<Format>	 formats;
 
 	foreach (const Track &track, tracks)
 	{
-		if (referenceTrack == NIL) referenceTrack = track;
+		Processor	*processor = new Processor(configuration);
 
-		if (track.GetFormat().channels != referenceTrack.GetFormat().channels ||
-		    track.GetFormat().rate     != referenceTrack.GetFormat().rate     ||
-		    track.GetFormat().bits     != referenceTrack.GetFormat().bits) return False;
+		if (!processor->Create(track)) { delete processor; continue; }
+
+		const Format	&processorFormat = processor->GetFormatInfo();
+		Format		 targetFormat	 = FormatConverter::GetBestTargetFormat(processorFormat, encoder);
+
+		delete processor;
+
+		/* Add format to list.
+		 */
+		Bool	 found = False;
+
+		foreach (const Format &format, formats) if (format == targetFormat) found = True;
+
+		if (!found) formats.Add(targetFormat);
 	}
 
-	return True;
+	boca.DeleteComponent(encoder);
+
+	if (formats.Length() == 1) return formats.GetFirst();
+
+	/* Display dialog to select output format.
+	 */
+	DialogSelectFormat	 dialog(formats);
+
+	if (dialog.ShowDialog() == Success()) return formats.GetNth(dialog.GetSelectedEntryNumber());
+
+	return Format();
 }
 
 Track freac::JobConvert::ConsolidateTrackInfo()
@@ -1376,7 +1408,6 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 	if (singleTrackInfo.title == NIL) singleTrackInfo.title = singleTrackInfo.album;
 
 	singleTrack.SetInfo(singleTrackInfo);
-	singleTrack.SetFormat(firstTrack.GetFormat());
 
 	foreach (const Track &chapterTrack, tracks) singleTrack.tracks.Add(chapterTrack);
 

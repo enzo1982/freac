@@ -140,6 +140,7 @@ Geschichte
 		- Unterstützung für die Verarbeitung von Eingabedaten mit DSP-Filtern hinzugefügt
 		- DSP-Komponenten für Resampling, Kanal-Up-/Downmixing und Sampleformatkonvertierung hinzugefügt
 		- Unterstützung für automatische Sampleformatkonvertierung je nach Anforderungen des Kodierers hinzugefügt
+		- Unterstützung für die Ausgabe von Tracks mit verschiedenen Sampleformaten in eine einzige Ausgabedatei hinzugefügt
 		- Einfachen Tag-Editor hinzugefügt
 		- Monkey's Audiokodierer/-dekodierer hinzugefügt
 		- Speex Sprachkodierer/-dekodierer hinzugefügt

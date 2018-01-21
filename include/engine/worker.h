@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -21,9 +21,9 @@
 namespace freac
 {
 	class Decoder;
-	class Encoder;
-	class Processor;
 	class Verifier;
+	class Processor;
+	class Encoder;
 
 	class ConvertWorker : public Threads::Thread
 	{
@@ -50,7 +50,7 @@ namespace freac
 			Bool						 quit;
 
 			Int						 Perform();
-			Int64						 Loop(Decoder *, Verifier *, Processor *, Encoder *);
+			Int64						 Loop(Decoder *, Verifier *, BoCA::FormatConverter *, Processor *, Encoder *);
 
 			virtual Int					 Convert();
 		public:

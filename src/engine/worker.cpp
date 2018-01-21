@@ -329,7 +329,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Run main conversion loop.
 		 */
-		Int64	 trackLength = Loop(decoder, verifier, processor, encoder);
+		Int64	 trackLength = Loop(decoder, verifier, NIL, processor, encoder);
 
 		/* Verify input.
 		 */
@@ -450,7 +450,7 @@ Int freac::ConvertWorker::Convert()
 	return Success();
 }
 
-Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Processor *processor, Encoder *encoder)
+Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatConverter *converter, Processor *processor, Encoder *encoder)
 {
 	/* Get config values.
 	 */
@@ -501,8 +501,9 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Processor
 		 */
 		if (verifier != NIL) verifier->Process(buffer);
 
-		/* Transform samples using processor.
+		/* Convert format and process samples.
 		 */
+		if (converter != NIL) converter->Transform(buffer);
 		if (processor != NIL) processor->Transform(buffer);
 
 		/* Pass samples to encoder.
@@ -528,15 +529,19 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, Processor
 		while (pause && !cancel) S::System::System::Sleep(50);
 	}
 
-	/* Finish sample transformations.
+	/* Finish format conversion and processing.
 	 */
-	buffer.Resize(0);
+	for (Int i = 0; i < 2 && !cancel; i++)
+	{
+		buffer.Resize(0);
 
-	if (processor != NIL) processor->Finish(buffer);
+		if (i == 0 && converter != NIL) converter->Finish(buffer);
+		if (i == 0 && processor != NIL) processor->Transform(buffer);
 
-	/* Pass remaining samples to encoder.
-	 */
-	if (buffer.Size() > 0 && encoder->Write(buffer) == -1) cancel = True;
+		if (i == 1 && processor != NIL) processor->Finish(buffer);
+
+		if (encoder->Write(buffer) == -1) cancel = True;
+	}
 
 	/* Inform components about finished/cancelled conversion.
 	 */
