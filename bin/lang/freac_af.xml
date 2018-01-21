@@ -400,7 +400,6 @@
       <entry id="7017" string="Unknown file type">Onbekende lêertipe</entry>
       <entry id="7018" string="Unsupported audio format">Nie-ondersteunde oudioformaat</entry>
       <entry id="7019" string="Unknown error">Onbekende fout</entry>
-      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Die gekose lêers kan nie tot 'n enkele uitsetlêer gekombineer&#10;word nie weens verskillende monsterformate.&#10;&#10;Skakel eers alle lêers om na dieselfde monsterformaat.</entry>
     </section>
 
     <section name="Dialogs">

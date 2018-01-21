@@ -536,12 +536,11 @@
       <entry id="7017" string="Unknown file type">未知的檔案類型</entry>
       <entry id="7018" string="Unsupported audio format">不支援的音訊格式</entry>
       <entry id="7019" string="Unknown error">未知的錯誤</entry>
-      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">因為取樣格式不同，無法將選擇的檔案&#10;合併為一個輸出檔案。&#10;&#10;請先將所有檔案轉換成相同的取樣格式。</entry>
-      <entry id="7021" string="No configuration dialog available for:&#10;&#10;%1">沒有可用的組態:&#10;&#10;%1</entry>
-      <entry id="7022" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">您似乎正在轉換已壓縮格式為無失真格式。&#10;&#10;請注意您無法復原已損失的音訊品質，這項動作&#10;不可能改善音訊品質，並極有可能增加檔案大小。&#10;&#10;您確定要繼續嗎？</entry>
-      <entry id="7023" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?">正在執行轉換！&#10;&#10;您想要將這項轉換加入排程嗎？</entry>
-      <entry id="7024" string="Failed to verify input file: %1">無法驗證輸入檔案: %1</entry>
-      <entry id="7025" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">輸出檔案校驗錯誤: %1&#10;&#10;編碼校驗: %2&#10;驗證核對: %3</entry>
+      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">沒有可用的組態:&#10;&#10;%1</entry>
+      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">您似乎正在轉換已壓縮格式為無失真格式。&#10;&#10;請注意您無法復原已損失的音訊品質，這項動作&#10;不可能改善音訊品質，並極有可能增加檔案大小。&#10;&#10;您確定要繼續嗎？</entry>
+      <entry id="7022" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?">正在執行轉換！&#10;&#10;您想要將這項轉換加入排程嗎？</entry>
+      <entry id="7023" string="Failed to verify input file: %1">無法驗證輸入檔案: %1</entry>
+      <entry id="7024" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">輸出檔案校驗錯誤: %1&#10;&#10;編碼校驗: %2&#10;驗證核對: %3</entry>
     </section>
 
     <section name="Dialogs">

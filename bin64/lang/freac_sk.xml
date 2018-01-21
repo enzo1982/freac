@@ -403,7 +403,6 @@
       <entry id="7017" string="Unknown file type">Neznámy typ súboru</entry>
       <entry id="7018" string="Unsupported audio format">Nepodporovaný audio formát</entry>
       <entry id="7019" string="Unknown error">Neznáma chyba</entry>
-      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Zvolené súbory nemôžu byť skombinované do jedného&#10;výstupného súboru z dôvodu rôznych vzorkovacích formátov.&#10;&#10;Preveďte, prosím, najprv všetky súbory do rovnakého vzorkovacieho formátu.</entry>
     </section>
 
     <section name="Dialogs">

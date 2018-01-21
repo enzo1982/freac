@@ -404,7 +404,6 @@
       <entry id="7017" string="Unknown file type">Nepoznata vrsta fajla</entry>
       <entry id="7018" string="Unsupported audio format">Ovaj audio format nije podržan</entry>
       <entry id="7019" string="Unknown error">Nepoznata greška</entry>
-      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Izabrani fajlovi ne mogu se kombinovati u jedan&#10;izlazni fajl zbog različitih početnih formata.&#10;&#10;Molimo prvo pretvorite sve fajlove u isti format.</entry>
     </section>
 
     <section name="Dialogs">

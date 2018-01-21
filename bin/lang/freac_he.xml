@@ -300,7 +300,6 @@
       <entry id="7017" string="Unknown file type">סוג קובץ לא נתמך</entry>
       <entry id="7018" string="Unsupported audio format">פורמט שמע לא נתמך</entry>
       <entry id="7019" string="Unknown error">שגיאה לא ידועה</entry>
-      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">לא ניתן למזג קבצים אלו בגלל שוני באיכות הקבצים</entry>
     </section>
 
     <section name="Dialogs">

@@ -553,13 +553,12 @@
       <entry id="7017" string="Unknown file type">Tipo de archivo desconocido</entry>
       <entry id="7018" string="Unsupported audio format">Formato de audio no soportado</entry>
       <entry id="7019" string="Unknown error">Error desconocido</entry>
-      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Los archivos elegidos no pueden unirse en uno solo&#10;por su distinto formato de muestreo.&#10;&#10;Por favor, unifíquelos primero.</entry>
-      <entry id="7021" string="No configuration dialog available for:&#10;&#10;%1">No hay diálogo de configuración para:&#10;&#10;%1</entry>
-      <entry id="7022" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Parece que quiere convertir un formato con pérdida en uno sin ella.&#10;&#10;Por favor, compruebe si puede deshacer la pérdida de calidad, porque este&#10;proceso no puede mejorar la calidad pero sí aumentará el tamaño del archivo.</entry>
-      <entry id="7023" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?">¡Ya hay un proceso de conversión en marcha!&#10;&#10;¿Quiere poner éste en cola?</entry>
-      <entry id="7024" string="Failed to verify input file: %1">Fallo al verificar el archivo de entrada:  %1</entry>
-      <entry id="7025" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">La suma de verificación difiere en el archivo de salida: %1&#10;&#10;Suma de codificación: %2&#10;Suma de verificación: %3</entry>
-      <entry id="7026" string="The selected folder does not exist anymore!">¡La carpeta elegida ya no existe!</entry>
+      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">No hay diálogo de configuración para:&#10;&#10;%1</entry>
+      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Parece que quiere convertir un formato con pérdida en uno sin ella.&#10;&#10;Por favor, compruebe si puede deshacer la pérdida de calidad, porque este&#10;proceso no puede mejorar la calidad pero sí aumentará el tamaño del archivo.</entry>
+      <entry id="7022" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?">¡Ya hay un proceso de conversión en marcha!&#10;&#10;¿Quiere poner éste en cola?</entry>
+      <entry id="7023" string="Failed to verify input file: %1">Fallo al verificar el archivo de entrada:  %1</entry>
+      <entry id="7024" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">La suma de verificación difiere en el archivo de salida: %1&#10;&#10;Suma de codificación: %2&#10;Suma de verificación: %3</entry>
+      <entry id="7025" string="The selected folder does not exist anymore!">¡La carpeta elegida ya no existe!</entry>
     </section>
 
     <section name="Dialogs">

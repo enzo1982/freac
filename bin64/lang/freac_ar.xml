@@ -401,7 +401,6 @@
       <entry id="7017" string="Unknown file type">نوع الملف مجهول</entry>
       <entry id="7018" string="Unsupported audio format">لا يدعم صيغة الصوت</entry>
       <entry id="7019" string="Unknown error">خطأ مجهول</entry>
-      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">الملفات المحددة لا يمكن دمجها في ملف&#10;واحد للناتج بسبب صيغات عينة مختلفة&#10;&#10;يرجى تحويل جميع الملفات إلى صيغة نفس العينة الأولى</entry>
     </section>
 
     <section name="Dialogs">

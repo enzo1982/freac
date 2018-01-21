@@ -403,7 +403,6 @@
       <entry id="7017" string="Unknown file type">Невідомий тип файлу</entry>
       <entry id="7018" string="Unsupported audio format">Даний аудіо-формат не підтримується</entry>
       <entry id="7019" string="Unknown error">Невідома помилка</entry>
-      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Вибрані файли різних форматів, тому їх не можна об`єднати в один файл.&#10;&#10;Спочатку конветуйте всі файли у один формат.</entry>
     </section>
 
     <section name="Dialogs">

@@ -403,7 +403,6 @@
       <entry id="7017" string="Unknown file type">Ukendt fil type</entry>
       <entry id="7018" string="Unsupported audio format">Ikke understøttet lyd format</entry>
       <entry id="7019" string="Unknown error">Ukendt fejl</entry>
-      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">De valgte filer kan ikke kombineres til én fil pga. forskellige sample formater.&#10;&#10;Venligst konventér alle filerne til samme sample format først</entry>
     </section>
 
     <section name="Dialogs">

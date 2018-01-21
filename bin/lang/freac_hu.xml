@@ -403,7 +403,6 @@
       <entry id="7017" string="Unknown file type">Ismeretlen fájltípus</entry>
       <entry id="7018" string="Unsupported audio format">Nem támogatott audio formátum</entry>
       <entry id="7019" string="Unknown error">Ismeretlen hiba</entry>
-      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">A kiválasztott fájlok nem fűzhetők egy kimeneti&#10;fájlba az eltérő mintavételezés miatt.&#10;&#10;Konvertáld először a fájokalt egyforma mintavételezésűre.</entry>
     </section>
 
     <section name="Dialogs">

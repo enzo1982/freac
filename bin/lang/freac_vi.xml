@@ -403,7 +403,6 @@
       <entry id="7017" string="Unknown file type">Không biết dạng file</entry>
       <entry id="7018" string="Unsupported audio format">Định dạng audio không được hỗ trợ</entry>
       <entry id="7019" string="Unknown error">Lỗi không biết</entry>
-      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Các file được chọn không thể nối lại với nhau.&#10;Sample formats for the files are different.&#10;&#10;Please convert all files to the same sample format first.</entry>
     </section>
 
     <section name="Dialogs">

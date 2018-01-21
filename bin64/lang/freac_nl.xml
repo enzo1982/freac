@@ -405,7 +405,6 @@
       <entry id="7017" string="Unknown file type">Onbekend bestandstype</entry>
       <entry id="7018" string="Unsupported audio format">Niet-ondersteund audioformaat</entry>
       <entry id="7019" string="Unknown error">Onbekende fout</entry>
-      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">De geselecteerde bestanden kunnen niet gecombineerd worden&#10;in een enkel uitvoerbestand ten gevolge van verschillende&#10;sampleformaten.&#10;&#10;Gelieve eerst alle bestanden naar hetzelfde sampleformaat&#10;te converteren.</entry>
     </section>
 
     <section name="Dialogs">

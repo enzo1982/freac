@@ -404,7 +404,6 @@
       <entry id="7017" string="Unknown file type">Agiri mota ezezaguna</entry>
       <entry id="7018" string="Unsupported audio format">Audio heuskarri sostengu gabea</entry>
       <entry id="7019" string="Unknown error">Akats ezezaguna</entry>
-      <entry id="7020" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Hautaturiko agiriak ezin dira irteera agiri bakar batean&#10;nahastu laginketa heuskarri ezberdinak dituztelako.&#10;&#10;Mesedez bihurtu agiriak laginketa heuskarri berdinera lehenik.</entry>
     </section>
 
     <section name="Dialogs">
