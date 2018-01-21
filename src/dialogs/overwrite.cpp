@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -33,21 +33,22 @@ freac::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track> &
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	button_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(87, 29), Size());
-	button_cancel->onAction.Connect(&DialogConfirmOverwrite::OnCancel, this);
-	button_cancel->SetOrientation(OR_LOWERRIGHT);
+	button_overwrite	= new Button(i18n->TranslateString("Confirm"), NIL, Point(87, 29), Size());
+	button_overwrite->onAction.Connect(&DialogConfirmOverwrite::OnOverwrite, this);
+	button_overwrite->SetOrientation(OR_LOWERRIGHT);
+	button_overwrite->SetWidth(Math::Max(80, button_overwrite->GetUnscaledTextWidth() + 14));
+	button_overwrite->SetX(7 + button_overwrite->GetWidth());
 
 	button_skip		= new Button(i18n->TranslateString("Skip all"), NIL, Point(175, 29), Size());
 	button_skip->onAction.Connect(&DialogConfirmOverwrite::OnSkip, this);
 	button_skip->SetOrientation(OR_LOWERRIGHT);
 	button_skip->SetWidth(Math::Max(80, button_skip->GetUnscaledTextWidth() + 14));
-	button_skip->SetX(95 + button_skip->GetWidth());
+	button_skip->SetX(15 + button_overwrite->GetWidth() + button_skip->GetWidth());
 
-	button_overwrite	= new Button(i18n->TranslateString("Confirm"), NIL, Point(183 + button_skip->GetWidth(), 29), Size());
-	button_overwrite->onAction.Connect(&DialogConfirmOverwrite::OnOverwrite, this);
-	button_overwrite->SetOrientation(OR_LOWERRIGHT);
-	button_overwrite->SetWidth(Math::Max(80, button_overwrite->GetUnscaledTextWidth() + 14));
-	button_overwrite->SetX(103 + button_skip->GetWidth() + button_overwrite->GetWidth());
+	button_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(183 + button_skip->GetWidth(), 29), Size());
+	button_cancel->onAction.Connect(&DialogConfirmOverwrite::OnCancel, this);
+	button_cancel->SetOrientation(OR_LOWERRIGHT);
+	button_cancel->SetX(103 + button_skip->GetWidth() + button_overwrite->GetWidth());
 
 	text_files		= new Text(i18n->AddColon(i18n->TranslateString("The following %1 files already exist and will be overwritten").Replace("%1", String::FromInt(tracks.Length()))), Point(7, 5));
 
