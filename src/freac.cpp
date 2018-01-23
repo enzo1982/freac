@@ -153,8 +153,8 @@ freac::freac::freac()
 	if (currentConfig->enable_flac)		ENCODER_FLAC = nextEC++;
 	if (currentConfig->enable_lame)		ENCODER_LAMEENC = nextEC++;
 	if (currentConfig->enable_vorbis)	ENCODER_VORBISENC = nextEC++;
-	if (currentConfig->enable_wma)		ENCODER_WMA = nextEC++;
 	if (currentConfig->enable_tvq)		ENCODER_TVQ = nextEC++;
+	if (currentConfig->enable_wma)		ENCODER_WMA = nextEC++;
 
 	ENCODER_WAVE = nextEC++;
 

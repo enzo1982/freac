@@ -97,6 +97,7 @@ Geschichte
 
 		- Umgang mit leerem Track-Metadatenfeld verbessert
 		- Fehler bei FAAC-Qualitätseinstellung behoben
+		- Vertauschung von TwinVQ- und WMA-Kodierern im Konfigurationsdialog behoben
 		- Serbische Übersetzung für das Installationsprogramm hinzugefügt
 
 	Version 1.0.31a (November 2017)

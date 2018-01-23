@@ -96,6 +96,7 @@ History
 
 		- fixed handling of empty track metadata field
 		- fixed FAAC quality setting
+		- fixed TwinVQ and WMA encoders being mixed up in config dialog
 		- added Serbian translation for the installer
 
 	Version 1.0.31a (November 2017)
