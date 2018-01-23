@@ -94,6 +94,7 @@ History
 
 	Version 1.0.32 (January 2018)
 
+		- fixed handling of empty track metadata field
 		- fixed FAAC quality setting
 		- added Serbian translation for the installer
 

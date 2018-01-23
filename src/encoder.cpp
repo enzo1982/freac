@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -780,7 +780,7 @@ String freac::freac::GetOutputFileName(Track *trackInfo)
 
 		if ((trackInfo->artist != NIL && currentConfig->enc_filePattern.Find("<artist>")   >= 0) ||
 		    (trackInfo->title  != NIL && currentConfig->enc_filePattern.Find("<title>")	   >= 0) ||
-		    (trackInfo->track  != -1  && currentConfig->enc_filePattern.Find("<track>")	   >= 0) ||
+		    (trackInfo->track  >  0   && currentConfig->enc_filePattern.Find("<track>")	   >= 0) ||
 		    (				 currentConfig->enc_filePattern.Find("<filename>") >= 0))
 		{
 			String	 shortOutFileName = currentConfig->enc_filePattern;

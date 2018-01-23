@@ -95,6 +95,7 @@ Geschichte
 
 	Version 1.0.32 (Januar 2018)
 
+		- Umgang mit leerem Track-Metadatenfeld verbessert
 		- Fehler bei FAAC-Qualitätseinstellung behoben
 		- Serbische Übersetzung für das Installationsprogramm hinzugefügt
 
