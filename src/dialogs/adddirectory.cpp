@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -48,7 +48,7 @@ freac::AddDirectoryDialog::AddDirectoryDialog()
 	text_directory		= new Text(i18n->AddColon(i18n->TranslateString("Choose folder")), Point(16, 24));
 	edit_directory		= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastAddedDirID, Config::SettingsLastAddedDirDefault), Point(23 + text_directory->GetUnscaledTextWidth(), 21), Size(267 - text_directory->GetUnscaledTextWidth(), 0));
 
-	btn_browse		= new Button(i18n->TranslateString("Browse"), NIL, Point(96, 20), Size(80, 0));
+	btn_browse		= new Button(i18n->TranslateString("Select"), NIL, Point(96, 20), Size(80, 0));
 	btn_browse->SetOrientation(OR_UPPERRIGHT);
 	btn_browse->onAction.Connect(&AddDirectoryDialog::Browse, this);
 

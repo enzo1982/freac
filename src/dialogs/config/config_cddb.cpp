@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -62,7 +62,7 @@ freac::ConfigureCDDB::ConfigureCDDB()
 	text_dir	= new Text(i18n->AddColon(i18n->TranslateString("CDDB path")), Point(16, 26));
 	edit_dir	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault), Point(122, 23), Size(119, 0), 0);
 
-	button_browse	= new Button(i18n->TranslateString("Browse"), NIL, Point(271, 22), Size());
+	button_browse	= new Button(i18n->TranslateString("Select"), NIL, Point(271, 22), Size());
 	button_browse->onAction.Connect(&ConfigureCDDB::SelectDir, this);
 
 	group_cddb	= new GroupBox(NIL, Point(7, 66), Size(354, 125));

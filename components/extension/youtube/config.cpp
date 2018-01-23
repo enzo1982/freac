@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -62,7 +62,7 @@ BoCA::ConfigureYouTube::ConfigureYouTube()
 
 	edit_dir		= new EditBox(videoOutputDir, Point(10, 39), Size(236, 0), 0);
 
-	button_browse		= new Button(i18n->TranslateString("Browse"), NIL, Point(254, 38), Size(0, 0));
+	button_browse		= new Button(i18n->TranslateString("Select"), NIL, Point(254, 38), Size(0, 0));
 	button_browse->onAction.Connect(&ConfigureYouTube::SelectOutputDir, this);
 
 	text_format		= new Text(i18n->AddColon(i18n->TranslateString("Output format")), Point(10, 70));

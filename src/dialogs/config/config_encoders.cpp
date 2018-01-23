@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -114,7 +114,7 @@ freac::ConfigureEncoders::ConfigureEncoders()
 
 	edit_outdir->SetDropDownList(list_outdir);
 
-	button_outdirBrowse	= new Button(i18n->TranslateString("Browse"), NIL, Point(462, 61), Size(0, 0));
+	button_outdirBrowse	= new Button(i18n->TranslateString("Select"), NIL, Point(462, 61), Size(0, 0));
 	button_outdirBrowse->onAction.Connect(&ConfigureEncoders::SelectDir, this);
 
 	group_outdir->Add(check_useInputDir);
