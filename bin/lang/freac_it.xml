@@ -141,7 +141,7 @@
       <entry id="3014" string="encoding">codifica</entry>
       <entry id="3015" string="Create playlist">Crea playlist</entry>
       <entry id="3016" string="Create cue sheet">Crea cue sheet</entry>
-      <entry id="3017" string="Browse">Sfoglia...</entry>
+      <entry id="3017" string="Select">Sfoglia...</entry>
       <entry id="3018" string="Skip">Ignora</entry>
       <entry id="3019" string="Encode to a single file">Codifica in un file singolo</entry>
       <entry id="3020" string="Remove">Rimuovi</entry>
@@ -277,7 +277,7 @@
 	<entry id="5100" string="Configure encoder">Imposta...</entry>
 	<entry id="5101" string="Encoder">Codec</entry>
 	<entry id="5102" string="Output folder">Cartella destinazione</entry>
-	<entry id="5103" string="Browse">Sfoglia...</entry>
+	<entry id="5103" string="Select">Sfoglia...</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Seleziona la cartella in cui memorizzare i file elaborati</entry>
 	<entry id="5105" string="Use input file folder if possible">Usa se possibile cartella dei file sorgente</entry>
 	<entry id="5106" string="Allow overwriting input file">Consenti sovrascrittura file sorgente</entry>
@@ -296,7 +296,7 @@
 	<entry id="5200" string="Create playlists">Crea playlist</entry>
 	<entry id="5201" string="Create cue sheets">Crea cue sheet</entry>
 	<entry id="5202" string="Output folder">Cartella destinazione</entry>
-	<entry id="5203" string="Browse">Sfoglia...</entry>
+	<entry id="5203" string="Select">Sfoglia...</entry>
 	<entry id="5204" string="Use encoder output folder">Usa cartella destinazione del codec</entry>
 	<entry id="5205" string="Filename pattern">Modello nome file</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Seleziona la cartella in cui salvare la playlist</entry>
@@ -306,7 +306,7 @@
 	<entry id="5300" string="Enable local CDDB database">Attiva database CDDB locale</entry>
 	<entry id="5301" string="Enable remote CDDB database">Attiva database CDDB remoto</entry>
 	<entry id="5302" string="CDDB path">Cartella CDDB</entry>
-	<entry id="5303" string="Browse">Sfoglia...</entry>
+	<entry id="5303" string="Select">Sfoglia...</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Seleziona la cartella del database CDDB</entry>
 	<entry id="5305" string="CDDB access mode">Modalità di accesso CDDB</entry>
 	<entry id="5306" string="CDDB server">Server CDDB</entry>
@@ -673,7 +673,7 @@
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatizzazione</entry>
-	  <entry id="102103" string="Browse">Sfoglia...</entry>
+	  <entry id="102103" string="Select">Sfoglia...</entry>
 	</section>
 
 	<section name="Errors"/>

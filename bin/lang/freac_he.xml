@@ -128,7 +128,7 @@
       <entry id="3013" string="ripping/decoding">המרה</entry>
       <entry id="3014" string="encoding">המרה</entry>
       <entry id="3015" string="Create playlist">צור רשימת השמעה</entry>
-      <entry id="3017" string="Browse">דפדף</entry>
+      <entry id="3017" string="Select">דפדף</entry>
       <entry id="3018" string="Skip">דלג</entry>
       <entry id="3019" string="Encode to a single file">המר לקובץ אחד</entry>
       <entry id="3020" string="Remove">הסר</entry>
@@ -215,7 +215,7 @@
 	<entry id="5100" string="Configure encoder">הגדרות מקודד</entry>
 	<entry id="5101" string="Encoder">מקודד</entry>
 	<entry id="5102" string="Output folder">תקיית יעד</entry>
-	<entry id="5103" string="Browse">דפדף</entry>
+	<entry id="5103" string="Select">דפדף</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">בחר בתקייה בה ישמרו הקבצים לאחר הקידוד</entry>
 	<entry id="5106" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
 	<entry id="5107" string="Options">אפשרויות</entry>
@@ -230,13 +230,13 @@
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">צור רשימת השמעה</entry>
 	<entry id="5202" string="Output folder">תקיית יעד</entry>
-	<entry id="5203" string="Browse">דפדף</entry>
+	<entry id="5203" string="Select">דפדף</entry>
 	<entry id="5205" string="Filename pattern">צורת שם קובץ</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">בחר תיקייה לרשימת השמעה</entry>
       </section>
 
       <section name="CDDB">
-	<entry id="5303" string="Browse">דפדף</entry>
+	<entry id="5303" string="Select">דפדף</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">בחר תיקייה למידע הדיסק</entry>
 	<entry id="5305" string="CDDB access mode">גישה למידע CD</entry>
 	<entry id="5311" string="Options">אפשרויות</entry>
@@ -488,7 +488,7 @@
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">אוטומטיזציה</entry>
-	  <entry id="102103" string="Browse">דפדף</entry>
+	  <entry id="102103" string="Select">דפדף</entry>
 	</section>
 
 	<section name="Errors"/>

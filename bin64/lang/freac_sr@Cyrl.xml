@@ -157,7 +157,7 @@
       <entry id="3014" string="encoding">енкодовање</entry>
       <entry id="3015" string="Create playlist">Креирај листу</entry>
       <entry id="3016" string="Create cue sheet">Креирај cue лист</entry>
-      <entry id="3017" string="Browse">Претражи</entry>
+      <entry id="3017" string="Select">Претражи</entry>
       <entry id="3018" string="Skip">Прескочи</entry>
       <entry id="3019" string="Encode to a single file">Енкодуј у један фајл</entry>
       <entry id="3020" string="Remove">Уклони</entry>
@@ -338,7 +338,7 @@
 	<entry id="5100" string="Configure encoder">Подеси енкодер</entry>
 	<entry id="5101" string="Encoder">Енкодер</entry>
 	<entry id="5102" string="Output folder">Излазни фолдер</entry>
-	<entry id="5103" string="Browse">Претражи</entry>
+	<entry id="5103" string="Select">Претражи</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Одабери фолдер за смештај енкодованих фајлова</entry>
 	<entry id="5105" string="Use input file folder if possible">Ако је могуће, користи улазни фолдер</entry>
 	<entry id="5106" string="Allow overwriting input file">Дозволи преписивање улазних фајлова</entry>
@@ -363,7 +363,7 @@
 	<entry id="5200" string="Create playlists">Креирај листе покретања</entry>
 	<entry id="5201" string="Create cue sheets">Креирај cue листове</entry>
 	<entry id="5202" string="Output folder">Излазни фолдер</entry>
-	<entry id="5203" string="Browse">Претражи</entry>
+	<entry id="5203" string="Select">Претражи</entry>
 	<entry id="5204" string="Use encoder output folder">Користи излазни фолдер за енкодер</entry>
 	<entry id="5205" string="Filename pattern">Шаблон назива</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Изабери фолдер у који ће се смештати фајлови са листе</entry>
@@ -376,7 +376,7 @@
 	<entry id="5300" string="Enable local CDDB database">Омогући локалну CDDB базу</entry>
 	<entry id="5301" string="Enable remote CDDB database">Омогући удаљену CDDB базу</entry>
 	<entry id="5302" string="CDDB path">CDDB путања</entry>
-	<entry id="5303" string="Browse">Претражи</entry>
+	<entry id="5303" string="Select">Претражи</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Изабери фолдер за CDDB базу</entry>
 	<entry id="5305" string="CDDB access mode">CDDB режим приступа</entry>
 	<entry id="5306" string="CDDB server">CDDB сервер</entry>
@@ -974,7 +974,7 @@
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Аутоматизација</entry>
 	  <entry id="102102" string="Video files">Видео фајлови</entry>
-	  <entry id="102103" string="Browse">Претражи</entry>
+	  <entry id="102103" string="Select">Претражи</entry>
 	  <entry id="102104" string="Select the folder to save downloaded video files to">Одабери фолдер за чување преузетих видео фајлова</entry>
 	  <entry id="102105" string="Downloads">Преузимања</entry>
 	  <entry id="102106" string="Maximum number of simultaneous downloads">Највиши број истовремених преузимања</entry>

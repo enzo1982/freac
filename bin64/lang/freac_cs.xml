@@ -144,7 +144,7 @@
       <entry id="3014" string="encoding">kódování</entry>
       <entry id="3015" string="Create playlist">Vytvořit playlist</entry>
       <entry id="3016" string="Create cue sheet">Vytvořit cue sheet</entry>
-      <entry id="3017" string="Browse">Vyhledat</entry>
+      <entry id="3017" string="Select">Vyhledat</entry>
       <entry id="3018" string="Skip">Přeskočit</entry>
       <entry id="3019" string="Encode to a single file">Kódovat do jediného souboru</entry>
       <entry id="3020" string="Remove">Odstranit</entry>
@@ -300,7 +300,7 @@
 	<entry id="5100" string="Configure encoder">Konfigurovat enkodér</entry>
 	<entry id="5101" string="Encoder">Enkodér</entry>
 	<entry id="5102" string="Output folder">Výstupní adresář</entry>
-	<entry id="5103" string="Browse">Vyhledat</entry>
+	<entry id="5103" string="Select">Vyhledat</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Zvolte složku pro uložení výsledných souborů</entry>
 	<entry id="5105" string="Use input file folder if possible">Použít vstupní složku je-li to možné</entry>
 	<entry id="5106" string="Allow overwriting input file">Povolit přepisování vstupního souboru</entry>
@@ -322,7 +322,7 @@
 	<entry id="5200" string="Create playlists">Vytvořit playlisty</entry>
 	<entry id="5201" string="Create cue sheets">Vytvořit cue sheets</entry>
 	<entry id="5202" string="Output folder">Výstupní adresář</entry>
-	<entry id="5203" string="Browse">Vyhledat</entry>
+	<entry id="5203" string="Select">Vyhledat</entry>
 	<entry id="5204" string="Use encoder output folder">Použít výstupní složku kodéru</entry>
 	<entry id="5205" string="Filename pattern">Vzor názvu souboru</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Zvolte složku, kam se uloží playlisty</entry>
@@ -333,7 +333,7 @@
 	<entry id="5300" string="Enable local CDDB database">Povolit lokální CDDB databázi</entry>
 	<entry id="5301" string="Enable remote CDDB database">Povolit vzdálenou CDDB databázi</entry>
 	<entry id="5302" string="CDDB path">CDDB složka</entry>
-	<entry id="5303" string="Browse">Vyhledat</entry>
+	<entry id="5303" string="Select">Vyhledat</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Zvolte složku CDDB databáze</entry>
 	<entry id="5305" string="CDDB access mode">CDDB - způsob přístupu</entry>
 	<entry id="5306" string="CDDB server">CDDB server</entry>
@@ -767,7 +767,7 @@
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatizace</entry>
 	  <entry id="102102" string="Video files">Video soubory</entry>
-	  <entry id="102103" string="Browse">Vyhledat</entry>
+	  <entry id="102103" string="Select">Vyhledat</entry>
 	  <entry id="102104" string="Select the folder to save downloaded video files to">Vyberte složku pro uložení stažených video souborů</entry>
 	</section>
 

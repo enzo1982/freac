@@ -150,7 +150,7 @@
       <entry id="3014" string="encoding">正在編碼</entry>
       <entry id="3015" string="Create playlist">建立播放清單</entry>
       <entry id="3016" string="Create cue sheet">建立 cue 描述檔</entry>
-      <entry id="3017" string="Browse">瀏覽</entry>
+      <entry id="3017" string="Select">瀏覽</entry>
       <entry id="3018" string="Skip">跳過</entry>
       <entry id="3019" string="Encode to a single file">編碼為單一檔案</entry>
       <entry id="3020" string="Remove">移除</entry>
@@ -330,7 +330,7 @@
 	<entry id="5100" string="Configure encoder">編碼器組態</entry>
 	<entry id="5101" string="Encoder">編碼器</entry>
 	<entry id="5102" string="Output folder">輸出資料夾</entry>
-	<entry id="5103" string="Browse">瀏覽</entry>
+	<entry id="5103" string="Select">瀏覽</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">選擇存放輸出檔案的資料夾</entry>
 	<entry id="5105" string="Use input file folder if possible">若可能，和輸入檔案使用相同資料夾</entry>
 	<entry id="5106" string="Allow overwriting input file">允許覆寫輸入檔案</entry>
@@ -354,7 +354,7 @@
 	<entry id="5200" string="Create playlists">建立播放清單</entry>
 	<entry id="5201" string="Create cue sheets">建立 cue 描述檔</entry>
 	<entry id="5202" string="Output folder">輸出資料夾</entry>
-	<entry id="5203" string="Browse">瀏覽</entry>
+	<entry id="5203" string="Select">瀏覽</entry>
 	<entry id="5204" string="Use encoder output folder">和編碼器的輸出資料夾相同</entry>
 	<entry id="5205" string="Filename pattern">檔名模式</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">選擇存放播放清單的資料夾</entry>
@@ -366,7 +366,7 @@
 	<entry id="5300" string="Enable local CDDB database">啟用本機 CDDB 資料庫</entry>
 	<entry id="5301" string="Enable remote CDDB database">啟用遠端 CDDB 資料庫</entry>
 	<entry id="5302" string="CDDB path">CDDB 路徑</entry>
-	<entry id="5303" string="Browse">瀏覽</entry>
+	<entry id="5303" string="Select">瀏覽</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">選擇存放 CDDB 資料庫的資料夾</entry>
 	<entry id="5305" string="CDDB access mode">CDDB 存取模式</entry>
 	<entry id="5306" string="CDDB server">CDDB 伺服器</entry>
@@ -956,7 +956,7 @@
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">自動化</entry>
 	  <entry id="102102" string="Video files">影片檔案</entry>
-	  <entry id="102103" string="Browse">瀏覽</entry>
+	  <entry id="102103" string="Select">瀏覽</entry>
 	  <entry id="102104" string="Select the folder to save downloaded video files to">選擇儲存影片檔案的資料夾</entry>
 	  <entry id="102105" string="Downloads">下載</entry>
 	  <entry id="102106" string="Maximum number of simultaneous downloads">同時下載的最大數量</entry>

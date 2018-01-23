@@ -157,7 +157,7 @@
       <entry id="3014" string="encoding">Kodieren</entry>
       <entry id="3015" string="Create playlist">Playliste erzeugen</entry>
       <entry id="3016" string="Create cue sheet">Cuesheet erzeugen</entry>
-      <entry id="3017" string="Browse">Suchen</entry>
+      <entry id="3017" string="Select">Wählen</entry>
       <entry id="3018" string="Skip">Überspringen</entry>
       <entry id="3019" string="Encode to a single file">In eine einzige Datei kodieren</entry>
       <entry id="3020" string="Remove">Entfernen</entry>
@@ -338,7 +338,7 @@
 	<entry id="5100" string="Configure encoder">Kodierer konfigurieren</entry>
 	<entry id="5101" string="Encoder">Kodierer</entry>
 	<entry id="5102" string="Output folder">Ausgabeordner</entry>
-	<entry id="5103" string="Browse">Suchen</entry>
+	<entry id="5103" string="Select">Wählen</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Wählen sie einen Ordner für die Ausgabedateien</entry>
 	<entry id="5105" string="Use input file folder if possible">Verwende möglichst Eingabedateiordner</entry>
 	<entry id="5106" string="Allow overwriting input file">Überschreiben der Eingabedatei erlauben</entry>
@@ -363,7 +363,7 @@
 	<entry id="5200" string="Create playlists">Playlisten erzeugen</entry>
 	<entry id="5201" string="Create cue sheets">Cuesheets erzeugen</entry>
 	<entry id="5202" string="Output folder">Ausgabeordner</entry>
-	<entry id="5203" string="Browse">Suchen</entry>
+	<entry id="5203" string="Select">Wählen</entry>
 	<entry id="5204" string="Use encoder output folder">Kodierer-Ausgabeordner verwenden</entry>
 	<entry id="5205" string="Filename pattern">Vorlage für Dateinamen</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Wählen sie einen Ordner für die Playlist-Dateien</entry>
@@ -376,7 +376,7 @@
 	<entry id="5300" string="Enable local CDDB database">Lokale CDDB-Datenbank verwenden</entry>
 	<entry id="5301" string="Enable remote CDDB database">Entfernte CDDB-Datenbank verwenden</entry>
 	<entry id="5302" string="CDDB path">CDDB-Pfad</entry>
-	<entry id="5303" string="Browse">Suchen</entry>
+	<entry id="5303" string="Select">Wählen</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Wählen Sie den Ordner mit der CDDB-Datenbank</entry>
 	<entry id="5305" string="CDDB access mode">CDDB-Zugriffsmodus</entry>
 	<entry id="5306" string="CDDB server">CDDB-Server</entry>
@@ -1000,7 +1000,7 @@
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatisierung</entry>
 	  <entry id="102102" string="Video files">Videodateien</entry>
-	  <entry id="102103" string="Browse">Suchen</entry>
+	  <entry id="102103" string="Select">Wählen</entry>
 	  <entry id="102104" string="Select the folder to save downloaded video files to">Wählen Sie einen Ordner für heruntergeladene Videodateien</entry>
 	  <entry id="102105" string="Downloads">Downloads</entry>
 	  <entry id="102106" string="Maximum number of simultaneous downloads">Maximale Anzahl gleichzeitiger Downloads</entry>

@@ -141,7 +141,7 @@
       <entry id="3014" string="encoding">tömörítés</entry>
       <entry id="3015" string="Create playlist">Lejátszási lista készítés</entry>
       <entry id="3016" string="Create cue sheet">Vágólap készítés</entry>
-      <entry id="3017" string="Browse">Keresés</entry>
+      <entry id="3017" string="Select">Keresés</entry>
       <entry id="3018" string="Skip">Átugrás</entry>
       <entry id="3019" string="Encode to a single file">Egy fájlba tömörítés</entry>
       <entry id="3020" string="Remove">Eltávolítás</entry>
@@ -277,7 +277,7 @@
 	<entry id="5100" string="Configure encoder">Tömörítö beállítása</entry>
 	<entry id="5101" string="Encoder">Tömörítö</entry>
 	<entry id="5102" string="Output folder">Célkönyvtár</entry>
-	<entry id="5103" string="Browse">Keresés</entry>
+	<entry id="5103" string="Select">Keresés</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Célkönyvtár megadása</entry>
 	<entry id="5105" string="Use input file folder if possible">Bemeneti fájl könyvtárának használata (ha lehetséges)</entry>
 	<entry id="5106" string="Allow overwriting input file">Bemeneti fájl felülírásának engedélyezése</entry>
@@ -296,7 +296,7 @@
 	<entry id="5200" string="Create playlists">Lejátszási lista készítés</entry>
 	<entry id="5201" string="Create cue sheets">Vágólap készítés</entry>
 	<entry id="5202" string="Output folder">Célkönyvtár</entry>
-	<entry id="5203" string="Browse">Keresés</entry>
+	<entry id="5203" string="Select">Keresés</entry>
 	<entry id="5204" string="Use encoder output folder">A tömörítő kimeneti könyvtárának használata</entry>
 	<entry id="5205" string="Filename pattern">Fájlnév minta</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Válassz könyvtárat a lejátszási listák elhelyezésére</entry>
@@ -306,7 +306,7 @@
 	<entry id="5300" string="Enable local CDDB database">Helyi CDDB adatbázis engedélyezése</entry>
 	<entry id="5301" string="Enable remote CDDB database">Távoli CDDB adatbázis engedélyezése</entry>
 	<entry id="5302" string="CDDB path">CDDB könyvtár</entry>
-	<entry id="5303" string="Browse">Keresés</entry>
+	<entry id="5303" string="Select">Keresés</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Válassz CDDB adatbázis könyvtárat</entry>
 	<entry id="5305" string="CDDB access mode">CDDB hozzáférési mód</entry>
 	<entry id="5306" string="CDDB server">CDDB szerver</entry>
@@ -666,7 +666,7 @@
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatizálás</entry>
-	  <entry id="102103" string="Browse">Keresés</entry>
+	  <entry id="102103" string="Select">Keresés</entry>
 	</section>
 
 	<section name="Errors"/>

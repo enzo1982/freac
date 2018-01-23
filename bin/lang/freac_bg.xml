@@ -157,7 +157,7 @@
       <entry id="3014" string="encoding">кодиране</entry>
       <entry id="3015" string="Create playlist">Създаване на плейлист</entry>
       <entry id="3016" string="Create cue sheet">Създаване на CUE лист</entry>
-      <entry id="3017" string="Browse">Отваряне...</entry>
+      <entry id="3017" string="Select">Отваряне...</entry>
       <entry id="3018" string="Skip">Пропускане</entry>
       <entry id="3019" string="Encode to a single file">Кодиране в един файл</entry>
       <entry id="3020" string="Remove">Премахване</entry>
@@ -338,7 +338,7 @@
 	<entry id="5100" string="Configure encoder">Конфигурация на енкодера</entry>
 	<entry id="5101" string="Encoder">Енкодер</entry>
 	<entry id="5102" string="Output folder">Изходна папка</entry>
-	<entry id="5103" string="Browse">Отваряне...</entry>
+	<entry id="5103" string="Select">Отваряне...</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Изберете папка, където кодираните файлове ще бъдат поставени</entry>
 	<entry id="5105" string="Use input file folder if possible">Папката на входния файл (ако е възможно)</entry>
 	<entry id="5106" string="Allow overwriting input file">Презаписване на входния файл</entry>
@@ -363,7 +363,7 @@
 	<entry id="5200" string="Create playlists">Създаване на плейлисти</entry>
 	<entry id="5201" string="Create cue sheets">Създаване на CUE листи</entry>
 	<entry id="5202" string="Output folder">Изходна папка</entry>
-	<entry id="5203" string="Browse">Отваряне...</entry>
+	<entry id="5203" string="Select">Отваряне...</entry>
 	<entry id="5204" string="Use encoder output folder">Изходната папка на енкодера</entry>
 	<entry id="5205" string="Filename pattern">Шаблон за име на файла</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Изберете папка, където плейлистите ще бъдат поставени</entry>
@@ -376,7 +376,7 @@
 	<entry id="5300" string="Enable local CDDB database">Включване на местна CDDB база данни</entry>
 	<entry id="5301" string="Enable remote CDDB database">Включване на отдалечена CDDB база данни</entry>
 	<entry id="5302" string="CDDB path">Път към CDDB</entry>
-	<entry id="5303" string="Browse">Отваряне...</entry>
+	<entry id="5303" string="Select">Отваряне...</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Изберете папката на CDDB базата данни</entry>
 	<entry id="5305" string="CDDB access mode">Режим за достъп до CDDB</entry>
 	<entry id="5306" string="CDDB server">CDDB сървър</entry>
@@ -974,7 +974,7 @@
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Автоматизация</entry>
 	  <entry id="102102" string="Video files">Видео файлове</entry>
-	  <entry id="102103" string="Browse">Отваряне...</entry>
+	  <entry id="102103" string="Select">Отваряне...</entry>
 	  <entry id="102104" string="Select the folder to save downloaded video files to">Изберете папка за записване на изтеглените файлове</entry>
 	  <entry id="102105" string="Downloads">Изтегляния</entry>
 	  <entry id="102106" string="Maximum number of simultaneous downloads">Макс. брой на паралелните изтегляния</entry>

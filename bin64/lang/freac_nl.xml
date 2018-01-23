@@ -141,7 +141,7 @@
       <entry id="3014" string="encoding">coderen</entry>
       <entry id="3015" string="Create playlist">Afspeellijst maken</entry>
       <entry id="3016" string="Create cue sheet">Cue sheet aanmaken</entry>
-      <entry id="3017" string="Browse">Bladeren</entry>
+      <entry id="3017" string="Select">Bladeren</entry>
       <entry id="3018" string="Skip">Overslaan</entry>
       <entry id="3019" string="Encode to a single file">Coderen naar enkel bestand</entry>
       <entry id="3020" string="Remove">Verwijderen</entry>
@@ -279,7 +279,7 @@
 	<entry id="5100" string="Configure encoder">Encoder configureren</entry>
 	<entry id="5101" string="Encoder">Encoder</entry>
 	<entry id="5102" string="Output folder">Uitvoermap</entry>
-	<entry id="5103" string="Browse">Bladeren</entry>
+	<entry id="5103" string="Select">Bladeren</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Selecteer de map waarin de gecodeerde bestanden moeten terechtkomen</entry>
 	<entry id="5105" string="Use input file folder if possible">Map van invoerbestand gebruiken indien mogelijk</entry>
 	<entry id="5106" string="Allow overwriting input file">Overschijven van invoerbestand toestaan</entry>
@@ -298,7 +298,7 @@
 	<entry id="5200" string="Create playlists">Afspeellijsten aanmaken</entry>
 	<entry id="5201" string="Create cue sheets">Cue sheets aanmaken</entry>
 	<entry id="5202" string="Output folder">Uitvoermap</entry>
-	<entry id="5203" string="Browse">Bladeren</entry>
+	<entry id="5203" string="Select">Bladeren</entry>
 	<entry id="5204" string="Use encoder output folder">Uitvoermap van encoder gebruiken</entry>
 	<entry id="5205" string="Filename pattern">Bestandspatroon</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Selecteer de map waarin de afspeellijstbestanden geplaatst moeten worden</entry>
@@ -308,7 +308,7 @@
 	<entry id="5300" string="Enable local CDDB database">Lokale CDDB-database activeren</entry>
 	<entry id="5301" string="Enable remote CDDB database">CDDB-database op afstand activeren</entry>
 	<entry id="5302" string="CDDB path">CDDB-map</entry>
-	<entry id="5303" string="Browse">Bladeren</entry>
+	<entry id="5303" string="Select">Bladeren</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Selecteer de map van de CDDB-database</entry>
 	<entry id="5305" string="CDDB access mode">CDDB-toegangsmode</entry>
 	<entry id="5306" string="CDDB server">CDDB-server</entry>
@@ -675,7 +675,7 @@
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatisatie</entry>
-	  <entry id="102103" string="Browse">Bladeren</entry>
+	  <entry id="102103" string="Select">Bladeren</entry>
 	</section>
 
 	<section name="Errors"/>

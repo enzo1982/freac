@@ -141,7 +141,7 @@
       <entry id="3014" string="encoding">konwersja</entry>
       <entry id="3015" string="Create playlist">Utwórz listę odtwarzania</entry>
       <entry id="3016" string="Create cue sheet">Utwórz tabelę cue</entry>
-      <entry id="3017" string="Browse">Przeglądaj</entry>
+      <entry id="3017" string="Select">Przeglądaj</entry>
       <entry id="3018" string="Skip">Pomiń</entry>
       <entry id="3019" string="Encode to a single file">Konwertuj do jednego pliku</entry>
       <entry id="3020" string="Remove">Usuń z listy</entry>
@@ -279,7 +279,7 @@
 	<entry id="5100" string="Configure encoder">Ustawienia konwersji</entry>
 	<entry id="5101" string="Encoder">Konwerter</entry>
 	<entry id="5102" string="Output folder">Katalog docelowy</entry>
-	<entry id="5103" string="Browse">Przeglądaj</entry>
+	<entry id="5103" string="Select">Przeglądaj</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Wybierz katalog docelowy dla konwertowanych plików</entry>
 	<entry id="5105" string="Use input file folder if possible">Jeśli możliwe, wykorzystaj katalog wejściowy</entry>
 	<entry id="5106" string="Allow overwriting input file">Zezwól na zastąpienie pliku wejściowego</entry>
@@ -298,7 +298,7 @@
 	<entry id="5200" string="Create playlists">Utwórz listy odtwarzania</entry>
 	<entry id="5201" string="Create cue sheets">Utwórz tabele cue</entry>
 	<entry id="5202" string="Output folder">Katalog docelowy</entry>
-	<entry id="5203" string="Browse">Przeglądaj</entry>
+	<entry id="5203" string="Select">Przeglądaj</entry>
 	<entry id="5204" string="Use encoder output folder">Wykorzystaj katalog wyjściowy konwertera</entry>
 	<entry id="5205" string="Filename pattern">Wzór nazw plików</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Wybierz katalog do umieszczenia list odtwarzania</entry>
@@ -308,7 +308,7 @@
 	<entry id="5300" string="Enable local CDDB database">Uaktywnij lokalna bazę CDDB</entry>
 	<entry id="5301" string="Enable remote CDDB database">Uaktywnij zdalna bazę CDDB</entry>
 	<entry id="5302" string="CDDB path">Katalog bazy CDDB</entry>
-	<entry id="5303" string="Browse">Przeglądaj</entry>
+	<entry id="5303" string="Select">Przeglądaj</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Wybierz folder dla bazy CDDB</entry>
 	<entry id="5305" string="CDDB access mode">Tryb dostępu do CDDB</entry>
 	<entry id="5306" string="CDDB server">Serwer CDDB</entry>
@@ -675,7 +675,7 @@
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatyzacja</entry>
-	  <entry id="102103" string="Browse">Przeglądaj</entry>
+	  <entry id="102103" string="Select">Przeglądaj</entry>
 	</section>
 
 	<section name="Errors"/>

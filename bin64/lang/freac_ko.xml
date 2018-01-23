@@ -120,7 +120,7 @@
       <entry id="3012" string="Toggle selection">선택 반전</entry>
       <entry id="3013" string="ripping/decoding">리핑/디코딩</entry>
       <entry id="3014" string="encoding">인코딩</entry>
-      <entry id="3017" string="Browse">브라우즈</entry>
+      <entry id="3017" string="Select">브라우즈</entry>
       <entry id="3018" string="Skip">건너 뛰기</entry>
       <entry id="3020" string="Remove">제거</entry>
       <entry id="3021" string="Clear joblist">초기화</entry>
@@ -205,7 +205,7 @@
 	<entry id="5100" string="Configure encoder">인코더 설정</entry>
 	<entry id="5101" string="Encoder">인코더</entry>
 	<entry id="5102" string="Output folder">출력 디렉토리</entry>
-	<entry id="5103" string="Browse">브라우즈</entry>
+	<entry id="5103" string="Select">브라우즈</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">인코드 파일이 위치할 폴더를 선택하시오</entry>
 	<entry id="5107" string="Options">옵션</entry>
 	<entry id="5108" string="Filename pattern">파일명 방식</entry>
@@ -219,12 +219,12 @@
 
       <section name="Playlists">
 	<entry id="5202" string="Output folder">출력 디렉토리</entry>
-	<entry id="5203" string="Browse">브라우즈</entry>
+	<entry id="5203" string="Select">브라우즈</entry>
 	<entry id="5205" string="Filename pattern">파일명 방식</entry>
       </section>
 
       <section name="CDDB">
-	<entry id="5303" string="Browse">브라우즈</entry>
+	<entry id="5303" string="Select">브라우즈</entry>
 	<entry id="5305" string="CDDB access mode">CDDB 억세스모드</entry>
 	<entry id="5306" string="CDDB server">CDDB 서버</entry>
 	<entry id="5307" string="Port">포트</entry>
@@ -523,7 +523,7 @@
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">자동화</entry>
-	  <entry id="102103" string="Browse">브라우즈</entry>
+	  <entry id="102103" string="Select">브라우즈</entry>
 	</section>
 
 	<section name="Errors"/>

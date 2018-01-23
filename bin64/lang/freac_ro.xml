@@ -141,7 +141,7 @@
       <entry id="3014" string="encoding">codare</entry>
       <entry id="3015" string="Create playlist">Creare listă</entry>
       <entry id="3016" string="Create cue sheet">Creare program</entry>
-      <entry id="3017" string="Browse">Răsfoire</entry>
+      <entry id="3017" string="Select">Răsfoire</entry>
       <entry id="3018" string="Skip">Sări peste</entry>
       <entry id="3019" string="Encode to a single file">Codare într-un singur fişier</entry>
       <entry id="3020" string="Remove">Ştergere</entry>
@@ -277,7 +277,7 @@
 	<entry id="5100" string="Configure encoder">Configurare codec</entry>
 	<entry id="5101" string="Encoder">Codec</entry>
 	<entry id="5102" string="Output folder">Folder salvare</entry>
-	<entry id="5103" string="Browse">Răsfoire</entry>
+	<entry id="5103" string="Select">Răsfoire</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Selectaţi folderul în care vor fi salvate fişierele</entry>
 	<entry id="5105" string="Use input file folder if possible">Utilizare folder de intrare (dacă e posibil)</entry>
 	<entry id="5106" string="Allow overwriting input file">Permite suprascriere fişier intrare</entry>
@@ -296,7 +296,7 @@
 	<entry id="5200" string="Create playlists">Creare listă</entry>
 	<entry id="5201" string="Create cue sheets">Creare program</entry>
 	<entry id="5202" string="Output folder">Folder salvare</entry>
-	<entry id="5203" string="Browse">Răsfoire</entry>
+	<entry id="5203" string="Select">Răsfoire</entry>
 	<entry id="5204" string="Use encoder output folder">Utilizare folder ieşire</entry>
 	<entry id="5205" string="Filename pattern">Model nume fisier</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Selectaţi folderul în care lista de fişiere va fi salvată</entry>
@@ -306,7 +306,7 @@
 	<entry id="5300" string="Enable local CDDB database">Activare bază locală CDDB</entry>
 	<entry id="5301" string="Enable remote CDDB database">Activare bază CDDB Internet</entry>
 	<entry id="5302" string="CDDB path">Folder CDDB</entry>
-	<entry id="5303" string="Browse">Răsfoire</entry>
+	<entry id="5303" string="Select">Răsfoire</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Selectaţi folderul bazei CDDB</entry>
 	<entry id="5305" string="CDDB access mode">Mod acces CDDB</entry>
 	<entry id="5306" string="CDDB server">Server CDDB</entry>
@@ -672,7 +672,7 @@
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatizare</entry>
-	  <entry id="102103" string="Browse">Răsfoire</entry>
+	  <entry id="102103" string="Select">Răsfoire</entry>
 	</section>
 
 	<section name="Errors"/>

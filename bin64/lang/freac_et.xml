@@ -141,7 +141,7 @@
       <entry id="3014" string="encoding">kodeerimine</entry>
       <entry id="3015" string="Create playlist">Luua playlist</entry>
       <entry id="3016" string="Create cue sheet">Luua cue sheet</entry>
-      <entry id="3017" string="Browse">Valik</entry>
+      <entry id="3017" string="Select">Valik</entry>
       <entry id="3018" string="Skip">Jätta vahele</entry>
       <entry id="3019" string="Encode to a single file">Kodeerida ühte faili</entry>
       <entry id="3020" string="Remove">Eemalda</entry>
@@ -277,7 +277,7 @@
 	<entry id="5100" string="Configure encoder">Kodeki sätted</entry>
 	<entry id="5101" string="Encoder">Kodek</entry>
 	<entry id="5102" string="Output folder">Väljundi kaust</entry>
-	<entry id="5103" string="Browse">Valik</entry>
+	<entry id="5103" string="Select">Valik</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Valida kaust kuhu paigutatakse kodeeritud failid</entry>
 	<entry id="5105" string="Use input file folder if possible">Kasuta sisendfaili kausta kui on võimalik</entry>
 	<entry id="5106" string="Allow overwriting input file">Kirjutada üle sisend fail</entry>
@@ -296,7 +296,7 @@
 	<entry id="5200" string="Create playlists">Luua playlistid</entry>
 	<entry id="5201" string="Create cue sheets">Luua cue sheets</entry>
 	<entry id="5202" string="Output folder">Väljundi kaust</entry>
-	<entry id="5203" string="Browse">Valik</entry>
+	<entry id="5203" string="Select">Valik</entry>
 	<entry id="5205" string="Filename pattern">Faili nime formeerimine</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Valige kaust, kuhu paigutatakse playlistid</entry>
       </section>
@@ -305,7 +305,7 @@
 	<entry id="5300" string="Enable local CDDB database">Lokaalne CDDB andmebaas</entry>
 	<entry id="5301" string="Enable remote CDDB database">Eemalt laetav CDDB andmebaas</entry>
 	<entry id="5302" string="CDDB path">CDDB kaust</entry>
-	<entry id="5303" string="Browse">Valik</entry>
+	<entry id="5303" string="Select">Valik</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Valige CDDB andmetebaasi kaust</entry>
 	<entry id="5305" string="CDDB access mode">CDDB juurdepääsu moodus</entry>
 	<entry id="5306" string="CDDB server">CDDB server</entry>
@@ -653,7 +653,7 @@
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatiseerimine</entry>
-	  <entry id="102103" string="Browse">Valik</entry>
+	  <entry id="102103" string="Select">Valik</entry>
 	</section>
 
 	<section name="Errors"/>

@@ -157,7 +157,7 @@
       <entry id="3014" string="encoding"/>
       <entry id="3015" string="Create playlist"/>
       <entry id="3016" string="Create cue sheet"/>
-      <entry id="3017" string="Browse"/>
+      <entry id="3017" string="Select"/>
       <entry id="3018" string="Skip"/>
       <entry id="3019" string="Encode to a single file"/>
       <entry id="3020" string="Remove"/>
@@ -338,7 +338,7 @@
 	<entry id="5100" string="Configure encoder"/>
 	<entry id="5101" string="Encoder"/>
 	<entry id="5102" string="Output folder"/>
-	<entry id="5103" string="Browse"/>
+	<entry id="5103" string="Select"/>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed"/>
 	<entry id="5105" string="Use input file folder if possible"/>
 	<entry id="5106" string="Allow overwriting input file"/>
@@ -363,7 +363,7 @@
 	<entry id="5200" string="Create playlists"/>
 	<entry id="5201" string="Create cue sheets"/>
 	<entry id="5202" string="Output folder"/>
-	<entry id="5203" string="Browse"/>
+	<entry id="5203" string="Select"/>
 	<entry id="5204" string="Use encoder output folder"/>
 	<entry id="5205" string="Filename pattern"/>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed"/>
@@ -376,7 +376,7 @@
 	<entry id="5300" string="Enable local CDDB database"/>
 	<entry id="5301" string="Enable remote CDDB database"/>
 	<entry id="5302" string="CDDB path"/>
-	<entry id="5303" string="Browse"/>
+	<entry id="5303" string="Select"/>
 	<entry id="5304" string="Select the folder of the CDDB database"/>
 	<entry id="5305" string="CDDB access mode"/>
 	<entry id="5306" string="CDDB server"/>
@@ -1000,7 +1000,7 @@
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization"/>
 	  <entry id="102102" string="Video files"/>
-	  <entry id="102103" string="Browse"/>
+	  <entry id="102103" string="Select"/>
 	  <entry id="102104" string="Select the folder to save downloaded video files to"/>
 	  <entry id="102105" string="Downloads"/>
 	  <entry id="102106" string="Maximum number of simultaneous downloads"/>

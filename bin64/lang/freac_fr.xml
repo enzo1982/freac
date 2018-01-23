@@ -141,7 +141,7 @@
       <entry id="3014" string="encoding">encodage</entry>
       <entry id="3015" string="Create playlist">Créer sélection</entry>
       <entry id="3016" string="Create cue sheet">Créer feuille mixage</entry>
-      <entry id="3017" string="Browse">Parcourir</entry>
+      <entry id="3017" string="Select">Parcourir</entry>
       <entry id="3018" string="Skip">Ignorer</entry>
       <entry id="3019" string="Encode to a single file">Encoder dans fichier unique</entry>
       <entry id="3020" string="Remove">Supprimer</entry>
@@ -277,7 +277,7 @@
 	<entry id="5100" string="Configure encoder">Configurer l'encodeur</entry>
 	<entry id="5101" string="Encoder">Encodeur</entry>
 	<entry id="5102" string="Output folder">Répertoire de sortie</entry>
-	<entry id="5103" string="Browse">Parcourir</entry>
+	<entry id="5103" string="Select">Parcourir</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Sélectionnez le dossier de destination des fichiers encodés</entry>
 	<entry id="5105" string="Use input file folder if possible">Utiliser répertoire fichier entrée si possible</entry>
 	<entry id="5106" string="Allow overwriting input file">Autoriser remplacement fichier entrée</entry>
@@ -296,7 +296,7 @@
 	<entry id="5200" string="Create playlists">Créer sélections</entry>
 	<entry id="5201" string="Create cue sheets">Créer feuilles de mixage</entry>
 	<entry id="5202" string="Output folder">Répertoire de sortie</entry>
-	<entry id="5203" string="Browse">Parcourir</entry>
+	<entry id="5203" string="Select">Parcourir</entry>
 	<entry id="5204" string="Use encoder output folder">Utiliser répertoire sortie encodeur</entry>
 	<entry id="5205" string="Filename pattern">Modèle de nom de fichier</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Sélectionnez le dossier de destination des fichiers de la playlist</entry>
@@ -306,7 +306,7 @@
 	<entry id="5300" string="Enable local CDDB database">Activer la base de données CDDB locale</entry>
 	<entry id="5301" string="Enable remote CDDB database">Activer la base distante CDDB</entry>
 	<entry id="5302" string="CDDB path">Répertoire CDDB</entry>
-	<entry id="5303" string="Browse">Parcourir</entry>
+	<entry id="5303" string="Select">Parcourir</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Sélectionnez le dossier de la base de données CDDB</entry>
 	<entry id="5305" string="CDDB access mode">Mode d'accès CDDB</entry>
 	<entry id="5306" string="CDDB server">Serveur CDDB</entry>
@@ -678,7 +678,7 @@
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatisation</entry>
-	  <entry id="102103" string="Browse">Parcourir</entry>
+	  <entry id="102103" string="Select">Parcourir</entry>
 	</section>
 
 	<section name="Errors"/>

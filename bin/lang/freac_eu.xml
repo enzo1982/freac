@@ -141,7 +141,7 @@
       <entry id="3014" string="encoding">kodeatzen</entry>
       <entry id="3015" string="Create playlist">Sortu irakur-zerrenda</entry>
       <entry id="3016" string="Create cue sheet">Sortu cue orria</entry>
-      <entry id="3017" string="Browse">Bilatu</entry>
+      <entry id="3017" string="Select">Bilatu</entry>
       <entry id="3018" string="Skip">Jauzi</entry>
       <entry id="3019" string="Encode to a single file">Kodeatu agiri bakarrera</entry>
       <entry id="3020" string="Remove">Kendu</entry>
@@ -278,7 +278,7 @@
 	<entry id="5100" string="Configure encoder">Itxuratu kodeatzailea</entry>
 	<entry id="5101" string="Encoder">Kodeatzailea</entry>
 	<entry id="5102" string="Output folder">Irteera agiritegia</entry>
-	<entry id="5103" string="Browse">Bilatu</entry>
+	<entry id="5103" string="Select">Bilatu</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Hautatu kodeatutako agiriak jarri behar diren agiritegia</entry>
 	<entry id="5105" string="Use input file folder if possible">Erabili sarrera agiriaren agiritegia ahal bada</entry>
 	<entry id="5106" string="Allow overwriting input file">Ahalbidetu sarrera agiria gainidaztea</entry>
@@ -297,7 +297,7 @@
 	<entry id="5200" string="Create playlists">Sortu irakur-zerrendak</entry>
 	<entry id="5201" string="Create cue sheets">Sortu cue orriak</entry>
 	<entry id="5202" string="Output folder">Irteera agiritegia</entry>
-	<entry id="5203" string="Browse">Bilatu</entry>
+	<entry id="5203" string="Select">Bilatu</entry>
 	<entry id="5204" string="Use encoder output folder">Erabili kodeatzailearen irteera agiritegia</entry>
 	<entry id="5205" string="Filename pattern">Agirizen eredua</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Hautatu irakur-zerrendak non jarri behar diren agiritegia</entry>
@@ -307,7 +307,7 @@
 	<entry id="5300" string="Enable local CDDB database">Gaitu tokiko CDDB datubasea</entry>
 	<entry id="5301" string="Enable remote CDDB database">Gaitu hurruneko CDDB datubasea</entry>
 	<entry id="5302" string="CDDB path">CDDB helburua</entry>
-	<entry id="5303" string="Browse">Bilatu</entry>
+	<entry id="5303" string="Select">Bilatu</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Hautau CDDB datubasearen agiritegia</entry>
 	<entry id="5305" string="CDDB access mode">CDDB sarbide modua</entry>
 	<entry id="5306" string="CDDB server">CDDB zerbitzaria</entry>
@@ -678,7 +678,7 @@
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Berezgaitasuna</entry>
-	  <entry id="102103" string="Browse">Bilatu</entry>
+	  <entry id="102103" string="Select">Bilatu</entry>
 	</section>
 
 	<section name="Errors"/>

@@ -141,7 +141,7 @@
       <entry id="3014" string="encoding">Çevrilen</entry>
       <entry id="3015" string="Create playlist">Çalma listesi oluştur</entry>
       <entry id="3016" string="Create cue sheet">Cue dosyası oluştur</entry>
-      <entry id="3017" string="Browse">Gözat</entry>
+      <entry id="3017" string="Select">Gözat</entry>
       <entry id="3018" string="Skip">Atla</entry>
       <entry id="3019" string="Encode to a single file">Tek dosya haline getir</entry>
       <entry id="3020" string="Remove">Sil</entry>
@@ -277,7 +277,7 @@
 	<entry id="5100" string="Configure encoder">Çevirici ayarları</entry>
 	<entry id="5101" string="Encoder">Çevirici</entry>
 	<entry id="5102" string="Output folder">Kaydetme dizini</entry>
-	<entry id="5103" string="Browse">Gözat</entry>
+	<entry id="5103" string="Select">Gözat</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Çevirilen dosyaların gönderileceği yeri seçin</entry>
 	<entry id="5105" string="Use input file folder if possible">Orjinal dosyaların bulunduğu dizini kullan</entry>
 	<entry id="5106" string="Allow overwriting input file">Orjinal dosyaların üstüne yazmaya izin ver</entry>
@@ -296,7 +296,7 @@
 	<entry id="5200" string="Create playlists">Çalma listesi oluştur</entry>
 	<entry id="5201" string="Create cue sheets">Cue dosyası oluştur</entry>
 	<entry id="5202" string="Output folder">Kaydetme dizini</entry>
-	<entry id="5203" string="Browse">Gözat</entry>
+	<entry id="5203" string="Select">Gözat</entry>
 	<entry id="5204" string="Use encoder output folder">Çıkış dizini</entry>
 	<entry id="5205" string="Filename pattern">Dosya adı şablonu</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Çalma listesinin koyulacağı dizini seçin</entry>
@@ -306,7 +306,7 @@
 	<entry id="5300" string="Enable local CDDB database">Yerel CDDB veritabanını kullan</entry>
 	<entry id="5301" string="Enable remote CDDB database">Uzaktan CDDB vertabanını etkinleştir</entry>
 	<entry id="5302" string="CDDB path">CDDB dizini</entry>
-	<entry id="5303" string="Browse">Gözat</entry>
+	<entry id="5303" string="Select">Gözat</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">CDDB veritabanı klasörünü seç</entry>
 	<entry id="5305" string="CDDB access mode">CDDB erişim tipi</entry>
 	<entry id="5306" string="CDDB server">CDDB sunucu</entry>
@@ -672,7 +672,7 @@
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Otomatik olarak yap</entry>
-	  <entry id="102103" string="Browse">Gözat</entry>
+	  <entry id="102103" string="Select">Gözat</entry>
 	</section>
 
 	<section name="Errors"/>

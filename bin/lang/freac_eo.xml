@@ -141,7 +141,7 @@
       <entry id="3014" string="encoding">Kodi</entry>
       <entry id="3015" string="Create playlist">Krei legliston</entry>
       <entry id="3016" string="Create cue sheet">Krei replikfolion</entry>
-      <entry id="3017" string="Browse">Elekti ujon</entry>
+      <entry id="3017" string="Select">Elekti ujon</entry>
       <entry id="3018" string="Skip">Transsalti</entry>
       <entry id="3019" string="Encode to a single file">Kodi al solaj dosieroj</entry>
       <entry id="3020" string="Remove">Forigi</entry>
@@ -277,7 +277,7 @@
 	<entry id="5100" string="Configure encoder">Agordi kodilon</entry>
 	<entry id="5101" string="Encoder">Kodilo</entry>
 	<entry id="5102" string="Output folder">Eliga dosierujo</entry>
-	<entry id="5103" string="Browse">Elekti ujon</entry>
+	<entry id="5103" string="Select">Elekti ujon</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Elektu dosierujon por la kodita(j) dosiero(j)</entry>
 	<entry id="5105" string="Use input file folder if possible">Uzi enigan dosierujon se eblas</entry>
 	<entry id="5106" string="Allow overwriting input file">Permesi anstataŭigi la enigan dosieron</entry>
@@ -296,7 +296,7 @@
 	<entry id="5200" string="Create playlists">Krei leglistojn</entry>
 	<entry id="5201" string="Create cue sheets">Krei replikfolion</entry>
 	<entry id="5202" string="Output folder">Eliga dosierujo</entry>
-	<entry id="5203" string="Browse">Elekti ujon</entry>
+	<entry id="5203" string="Select">Elekti ujon</entry>
 	<entry id="5204" string="Use encoder output folder">Uzi elig-dosierujon de la kodilo</entry>
 	<entry id="5205" string="Filename pattern">Modelo por dosiernomo</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Elekti dosierujon por la leglist-dosieroj</entry>
@@ -306,7 +306,7 @@
 	<entry id="5300" string="Enable local CDDB database">Uzi lokan CDDB-datumbankon</entry>
 	<entry id="5301" string="Enable remote CDDB database">Uzi forigitan CDDB-datumbankon</entry>
 	<entry id="5302" string="CDDB path">CDDB-dosierujo</entry>
-	<entry id="5303" string="Browse">Elekti ujon</entry>
+	<entry id="5303" string="Select">Elekti ujon</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Elekti la dosierujon de la CDDB-datumbanko</entry>
 	<entry id="5305" string="CDDB access mode">CDDB-atinga moduso</entry>
 	<entry id="5306" string="CDDB server">CDDB-servilo</entry>
@@ -647,7 +647,7 @@
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Aŭtomatigo</entry>
-	  <entry id="102103" string="Browse">Elekti ujon</entry>
+	  <entry id="102103" string="Select">Elekti ujon</entry>
 	</section>
 
 	<section name="Errors"/>
