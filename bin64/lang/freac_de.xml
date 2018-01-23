@@ -948,6 +948,40 @@
 	<entry id="50201" string="Sampling rate">Samplerate</entry>
 	<entry id="50202" string="Output sampling rate">Ausgabesamplerate</entry>
       </section>
+
+      <section name="RubberBand">
+	<entry id="50300" string="Basic controls">Grundeinstellungen</entry>
+	<entry id="50301" string="Tempo">Tempo</entry>
+	<entry id="50302" string="Pitch">Tonhöhe</entry>
+	<entry id="50303" string="%1 Semitones">%1 Halbtöne</entry>
+	<entry id="50304" string="Advanced options">Erweiterte Einstellungen</entry>
+	<entry id="50305" string="Transient detection">Transientenerkennung</entry>
+	<entry id="50306" string="Compound">Gemischt</entry>
+	<entry id="50307" string="Percussive">Perkussiv</entry>
+	<entry id="50308" string="Soft">Weich</entry>
+	<entry id="50309" string="Transient handling">Transientenbehandlung</entry>
+	<entry id="50310" string="Crisp">Hervorheben</entry>
+	<entry id="50311" string="Mixed">Gemischt</entry>
+	<entry id="50312" string="Smooth">Glätten</entry>
+	<entry id="50313" string="Transformation window">Transformationsfenster</entry>
+	<entry id="50314" string="Standard">Standard</entry>
+	<entry id="50315" string="Short">Kurz</entry>
+	<entry id="50316" string="Long">Lang</entry>
+	<entry id="50317" string="Use time-domain smoothing">Zeitsignal glätten</entry>
+	<entry id="50318" string="Phase handling">Phasenbehandlung</entry>
+	<entry id="50319" string="Laminar">Laminar</entry>
+	<entry id="50320" string="Independent">Unabhängig</entry>
+	<entry id="50321" string="Formant handling">Formantenbehandlung</entry>
+	<entry id="50322" string="Shift">Verschieben</entry>
+	<entry id="50323" string="Preserve">Erhalten</entry>
+	<entry id="50324" string="Pitch processing">Tonhöhenverarbeitung</entry>
+	<entry id="50325" string="High quality">Hohe Qualität</entry>
+	<entry id="50326" string="High speed">Hohe Geschwindigkeit</entry>
+	<entry id="50327" string="High consistency">Hohe Konsistenz</entry>
+	<entry id="50328" string="Stereo processing">Stereoverarbeitung</entry>
+	<entry id="50329" string="Separate">Getrennt</entry>
+	<entry id="50330" string="Combined">Verbunden</entry>
+      </section>
     </section>
 
     <section name="Taggers">

@@ -948,6 +948,40 @@
 	<entry id="50201" string="Sampling rate"/>
 	<entry id="50202" string="Output sampling rate"/>
       </section>
+
+      <section name="RubberBand">
+	<entry id="50300" string="Basic controls"/>
+	<entry id="50301" string="Tempo"/>
+	<entry id="50302" string="Pitch"/>
+	<entry id="50303" string="%1 Semitones"/>
+	<entry id="50304" string="Advanced options"/>
+	<entry id="50305" string="Transient detection"/>
+	<entry id="50306" string="Compound"/>
+	<entry id="50307" string="Percussive"/>
+	<entry id="50308" string="Soft"/>
+	<entry id="50309" string="Transient handling"/>
+	<entry id="50310" string="Crisp"/>
+	<entry id="50311" string="Mixed"/>
+	<entry id="50312" string="Smooth"/>
+	<entry id="50313" string="Transformation window"/>
+	<entry id="50314" string="Standard"/>
+	<entry id="50315" string="Short"/>
+	<entry id="50316" string="Long"/>
+	<entry id="50317" string="Use time-domain smoothing"/>
+	<entry id="50318" string="Phase handling"/>
+	<entry id="50319" string="Laminar"/>
+	<entry id="50320" string="Independent"/>
+	<entry id="50321" string="Formant handling"/>
+	<entry id="50322" string="Shift"/>
+	<entry id="50323" string="Preserve"/>
+	<entry id="50324" string="Pitch processing"/>
+	<entry id="50325" string="High quality"/>
+	<entry id="50326" string="High speed"/>
+	<entry id="50327" string="High consistency"/>
+	<entry id="50328" string="Stereo processing"/>
+	<entry id="50329" string="Separate"/>
+	<entry id="50330" string="Combined"/>
+      </section>
     </section>
 
     <section name="Taggers">
