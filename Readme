@@ -92,9 +92,10 @@ Known problems
 History
 -------
 
-	Version 1.0.32 (November 2017)
+	Version 1.0.32 (January 2018)
 
 		- fixed FAAC quality setting
+		- added Serbian translation for the installer
 
 	Version 1.0.31a (November 2017)
 
