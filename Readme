@@ -94,6 +94,7 @@ History
 
 	Version 1.0.32 (January 2018)
 
+		- improved behaviour of bitrate selection controls
 		- fixed handling of empty track metadata field
 		- fixed FAAC quality setting
 		- fixed TwinVQ and WMA encoders being mixed up in config dialog

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -648,13 +648,10 @@ Void freac::ConfigureFLAC::SetBlockSize()
 		slider_blocksize->SetValue(blocksize);
 	}
 
-	edit_blocksize->SetText(String::FromInt(blocksize * 8));
+	if (!edit_blocksize->IsFocussed()) edit_blocksize->SetText(String::FromInt(blocksize * 8));
 }
 
 Void freac::ConfigureFLAC::EditBlockSize()
 {
-	String	 bsText = edit_blocksize->GetText();
-
-	slider_blocksize->SetValue(bsText.ToInt() / 8);
-	edit_blocksize->SetText(bsText);
+	slider_blocksize->SetValue(edit_blocksize->GetText().ToInt() / 8);
 }

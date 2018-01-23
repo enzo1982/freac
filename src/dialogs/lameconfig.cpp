@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -1183,7 +1183,7 @@ Void freac::ConfigureLameEnc::SetVBRMode()
 
 Void freac::ConfigureLameEnc::SetABRBitrate()
 {
-	vbr_edit_abrbitrate->SetText(String::FromInt(abrbitrate));
+	if (!vbr_edit_abrbitrate->IsFocussed()) vbr_edit_abrbitrate->SetText(String::FromInt(abrbitrate));
 }
 
 Void freac::ConfigureLameEnc::SetABRBitrateByEditBox()
