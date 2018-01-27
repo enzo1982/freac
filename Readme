@@ -100,7 +100,7 @@ History
 		- fixed handling of invalid Xing/LAME tags
 		- fixed FAAC quality setting
 		- fixed TwinVQ and WMA encoders being mixed up in config dialog
-		- added Serbian translation for the installer
+		- added Serbian and Chinese (traditional) translations for the installer
 
 	Version 1.0.31a (November 2017)
 
