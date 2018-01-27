@@ -340,7 +340,7 @@
     <entry id="336" string="Password:">Contraseña:</entry>
     <entry id="337" string="Delete original files after encoding">Eliminar los archivos originales al terminar la codificación</entry>
     <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">¡Esta opción elimina los archivos originales al terminar &#10;la codificación!&#10;&#10;¿Está Ud. seguro de activar esta función?</entry>
-    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">¡El protocolo CDDBP de freedb no puede ser utilizado a través&#10;de un servidor proxy HTTP!&#10;&#10;¿Desea cambiar el protocolo a HTTP?</entry>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">¡El protocolo CDDBP de freedb no puede usarse a través&#10;de un servidor proxy HTTP!&#10;&#10;¿Desea cambiar el protocolo a HTTP?</entry>
     <entry id="340" string="Playlists">Listas de reproducción</entry>
     <entry id="341" string="Create playlists">Generar listas de reproducción</entry>
     <entry id="342" string="Create cue sheets">Generar cue sheets</entry>

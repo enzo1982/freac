@@ -49,10 +49,10 @@
     <entry id="36" string="Wave Files">Wave fajl(ovi)</entry>
     <entry id="37" string="Windows CD Audio Track">Windows CD audio stavka</entry>
     <entry id="38" string="All Files">Svi fajlovi</entry>
-    <entry id="39" string="You did not select a track!">Niste odabrali fajl!</entry>
+    <entry id="39" string="You did not select a track!">Niste odabrali pesmu!</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Enkodovanje u toku! Da li zaista želite da ga otkažete?</entry>
     <entry id="41" string="Currently encoding">Enkodovanje u toku</entry>
-    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ovaj program se distribuira pod uslovima&#10;GNU Opštih Javnih Licenci (GPL).</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Ovaj program se distribuira pod uslovima&#10;GNU Opštih javnih dozvola (GPL).</entry>
     <entry id="43" string="CDDB query">CDDB upit</entry>
     <entry id="44" string="About %1">O %1-u</entry>
     <entry id="45" string="No options can be configured for Windows Wave file output!">Opcije za Windows Wave izlazni fajl ne mogu se podešavati!</entry>
@@ -164,9 +164,9 @@
     <entry id="156" string="Requesting CD information">Zahtevanje CD informacije</entry>
     <entry id="157" string="eMail address:">eMail adresa:</entry>
     <entry id="158" string="Please enter a valid eMail address.">Molimo unesite ispravnu eMail adresu.</entry>
-    <entry id="159" string="No exact matches found">Nisu nađeni tačni &quot;pogoci&quot;</entry>
-    <entry id="160" string="Multiple matches found">Nađeno više &quot;pogodaka&quot;</entry>
-    <entry id="161" string="Matches">&quot;Pogoci&quot;</entry>
+    <entry id="159" string="No exact matches found">Nisu nađena tačna poklapanja</entry>
+    <entry id="160" string="Multiple matches found">Nađeno više poklapanja</entry>
+    <entry id="161" string="Matches">Poklapanja</entry>
     <entry id="162" string="Select the entry that best fits your CD:">Izaberite podatak koji najviše odgovara Vašem CD-u:</entry>
     <entry id="163" string="Extended CDDB settings">Proširena CDDB podešenja</entry>
     <entry id="164" string="CGI scripts">CGI skripte</entry>
@@ -240,9 +240,9 @@
     <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 dolazi sa podrškom za LAME, Ogg Vorbis, FAAC,&#10;FLAC, i Bonk enkoderima. Enkoder za VQF format je&#10;raspoloživ na %1 vebsajtu: %2</entry>
     <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 može da koristi Winamp 2 ulazne plugin-ove&#10;da podrži više formata. Kopirajte in_*.dll fajlove&#10;u %1/plugins folder da omogućite %1-u da čita&#10;ove formate.</entry>
     <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Sa %1-om možete poslati upit CDDB bazi koji&#10;sadrži Unikod karaktere. Ako imate bilo koji CD sa&#10;ne-Latin izvođačem ili pesmom možete prijaviti&#10;podatke freedb-u preko %1-a.</entry>
-    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Za ispravke greške čitanja u toku ripovanja možete&#10;omogućiti Jitter korekciju u tabu CDRip %1 podešenja.&#10;Ako to ne pomogne, pokušajte sa nekim od Paranoia&#10;režima.</entry>
-    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Imate predloge kako da poboljšamo %1? Vaše ideje&#10;prijavite preko Trackera na %1 SourceForge strani&#10;projekta - %2 ili poslati&#10;eMejl na: %3.</entry>
-    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Dopada Vam se što je %1? %1 besplatan, i želite&#10;pomoći razvoj istog doniranjem %1 projektu. Možete&#10;poslati novčani prilog na: %2 preko&#10;PayPal-a. Pogledaj %3&#10;za više detalja.</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Za ispravke greške čitanja u toku ripovanja možete&#10;omogućiti Jitter korekciju u tabu CDRip %1 podešenja.&#10;Ako to ne pomogne, pokušajte&#10;sa nekim od Paranoia režima.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Imate predloge kako da poboljšamo %1?&#10;Vaše ideje prijavite preko Trackera&#10;na %1 SourceForge strani projekta - %2&#10;ili pošaljite eMejl na: %3.</entry>
+    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Dopada Vam se što je %1? %1 besplatan, i želite&#10;pomoći razvoj istog doniranjem %1 projektu.&#10;Možete poslati novčani prilog&#10;na: %2 preko PayPal-a.&#10;Pogledaj %3 za više detalja.</entry>
     <entry id="242" string="Bitrate / Quality">Stopa bitova / Kvalitet</entry>
     <entry id="243" string="Check for updates now">Proveri sada za nadogradnje</entry>
     <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Postoje nadogradnje za %1 na internetu!&#10;Da li želite da vidite listu raspoloživih nadogradnji sada?</entry>

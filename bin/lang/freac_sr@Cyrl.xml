@@ -49,10 +49,10 @@
     <entry id="36" string="Wave Files">Wave фајл(ови)</entry>
     <entry id="37" string="Windows CD Audio Track">Windows ЦД аудио ставка</entry>
     <entry id="38" string="All Files">Сви фајлови</entry>
-    <entry id="39" string="You did not select a track!">Нисте одабрали фајл!</entry>
+    <entry id="39" string="You did not select a track!">Нисте одабрали песму!</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Енкодовање у току! Да ли заиста желите да га откажете?</entry>
     <entry id="41" string="Currently encoding">Енкодовање у току</entry>
-    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Овај програм се дистрибуира под условима&#10;ГНУ Општих Јавних Лиценци (ОЈЛ).</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Овај програм се дистрибуира под условима&#10;GNU Општих јавних дозвола (GPL).</entry>
     <entry id="43" string="CDDB query">CDDB упит</entry>
     <entry id="44" string="About %1">О %1-у</entry>
     <entry id="45" string="No options can be configured for Windows Wave file output!">Опције за Windows Wave излазни фајл не могу се подешавати!</entry>
@@ -164,9 +164,9 @@
     <entry id="156" string="Requesting CD information">Захтевање ЦД информације</entry>
     <entry id="157" string="eMail address:">еМejл адреса:</entry>
     <entry id="158" string="Please enter a valid eMail address.">Молимо унесите исправну еМejл адресу.</entry>
-    <entry id="159" string="No exact matches found">Нису нађени тачни &quot;погоци&quot;</entry>
-    <entry id="160" string="Multiple matches found">Нађено више &quot;погодака&quot;</entry>
-    <entry id="161" string="Matches">&quot;Погоци&quot;</entry>
+    <entry id="159" string="No exact matches found">Нису нађена тачна поклапања</entry>
+    <entry id="160" string="Multiple matches found">Нађено више поклапања</entry>
+    <entry id="161" string="Matches">Поклапања</entry>
     <entry id="162" string="Select the entry that best fits your CD:">Изаберите податак који највише одговара Вашем ЦД-у:</entry>
     <entry id="163" string="Extended CDDB settings">Проширена CDDB подешења</entry>
     <entry id="164" string="CGI scripts">CGI скрипте</entry>
@@ -237,12 +237,12 @@
     <entry id="233" string="Toggle selection">Обрни избор</entry>
     <entry id="234" string="Show Tip of the Day">Прикажи Савет дана</entry>
     <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 је расположив у %2 језика. Ако Ваш језик није&#10;расположив, можете га лако превести користећи&#10;апликацију: &quot;Лаки преводилац&quot;.</entry>
-    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 долази са подршком за LAME, Ogg Vorbis, FAAC,&#10;FLAC, и Bonk енкодерима. Енкодер за VQF формат је&#10;расположив на %1 интернет страна: %2</entry>
+    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 долази са подршком за LAME, Ogg Vorbis, FAAC,&#10;FLAC, и Bonk енкодерима. Енкодер за VQF формат је&#10;расположив на %1 вебсајту: %2</entry>
     <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 може да користи Winamp 2 улазне plugin-ове&#10;да подржи више формата. Копирајте in_*.dll фајлове&#10;у %1/plugins фолдер да омогућите %1-у да чита&#10;ове формате.</entry>
     <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Са %1-ом можете послати упит CDDB бази који&#10;садржи Unikod карактере. Ако имате било који ЦД са&#10;не-Латин извођачем или песмом можете пријавити&#10;податке freedb-у преко %1-а.</entry>
-    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">За исправке грешке читања у току риповања можете&#10;омогућити Jitter корекцију у табу ЦДРип %1 подешења.&#10;Ако то не помогне, покушајте са неким од Параноја&#10;режима.</entry>
-    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Имате предлоге како да побољшамо %1? Ваше идеје&#10;пријавите преко Trackera на %1 SourceForge страни&#10;пројекта - %2 или послати&#10;еМејл на: %3.</entry>
-    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Допада Вам се што је %1? %1 бесплатан, и желите&#10;помоћи развој истог донирањем %1 пројекту. Можете&#10;послати новчани прилог на: %2 преко&#10;PayPal-а. Погледај %3&#10;за више детаља.</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">За исправке грешке читања у току риповања можете&#10;омогућити Jitter корекцију у табу ЦДРип %1 подешења.&#10;Ако то не помогне, покушајте&#10;са неким од Параноја режима.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Имате предлоге како да побољшамо %1?&#10;Ваше идеје пријавите преко Trackera&#10;на %1 SourceForge страни пројекта - %2&#10;или пошаљите еМејл на: %3.</entry>
+    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Допада Вам се што је %1? %1 бесплатан, и желите&#10;помоћи развој истог донирањем %1 пројекту.&#10;Можете послати новчани прилог&#10;на: %2 преко PayPal-а.&#10;Погледај %3 за више детаља.</entry>
     <entry id="242" string="Bitrate / Quality">Стопа битова / Квалитет</entry>
     <entry id="243" string="Check for updates now">Провери сада за надоградње</entry>
     <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Постоје надоградње за %1 на интернету!&#10;Да ли желите да видите листу расположивих надоградњи сада?</entry>
