@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -405,9 +405,16 @@ Void freac::JobList::AddTrackByFileName(const String &file, const String &outfil
 
 	if (format->fileSize > 0)	    format->fileSizeString = I18n::Number::GetLocalizedNumberString(format->fileSize);
 
-	if (format->length >= 0)	    format->lengthString = String::FromInt(Math::Floor(format->length / (format->rate * format->channels) / 60)).Append(":").Append((format->length / (format->rate * format->channels) % 60) < 10 ? "0" : NIL).Append(String::FromInt(format->length / (format->rate * format->channels) % 60));
-	else if (format->approxLength >= 0) format->lengthString = String("~ ").Append(String::FromInt(Math::Floor(format->approxLength / (format->rate * format->channels) / 60)).Append(":").Append((format->approxLength / (format->rate * format->channels) % 60) < 10 ? "0" : NIL).Append(String::FromInt(format->approxLength / (format->rate * format->channels) % 60)));
-	else				    format->lengthString = "?";
+	Int	 seconds = -1;
+
+	if	(format->length	      >= 0) seconds = format->length / (format->rate * format->channels);
+	else if (format->approxLength >= 0) seconds = format->approxLength / (format->rate * format->channels);
+
+	if	(seconds >= 3600) format->lengthString = String(seconds / 3600 < 10 ? "0" : NIL).Append(String::FromInt(seconds / 3600)).Append(":").Append(seconds % 3600 / 60 < 10 ? "0" : NIL).Append(String::FromInt(seconds % 3600 / 60)).Append(":").Append(seconds % 3600 % 60 < 10 ? "0" : NIL).Append(String::FromInt(seconds % 3600 % 60));
+	else if (seconds >=    0) format->lengthString = String(seconds / 60 < 10 ? "0" : NIL).Append(String::FromInt(seconds / 60)).Append(":").Append(seconds % 60 < 10 ? "0" : NIL).Append(String::FromInt(seconds % 60));
+	else			  format->lengthString = "?";
+
+	if (format->length < 0 && format->approxLength >= 0) format->lengthString = String("~ ").Append(format->lengthString);
 
 	wchar_t	 sign[2] = { 0x2248, 0 };
 
@@ -534,7 +541,8 @@ const String &freac::JobList::GetTotalDuration()
 		}
 	}
 
-	string = String(unknown ? "> " : NIL).Append(approx ? "~ " : NIL).Append(String::FromInt(seconds / 60)).Append(":").Append(seconds % 60 < 10 ? "0" : NIL).Append(String::FromInt(seconds % 60));
+	if (seconds >= 3600) string = String(unknown ? "> " : NIL).Append(approx ? "~ " : NIL).Append(seconds / 3600 < 10 ? "0" : NIL).Append(String::FromInt(seconds / 3600)).Append(":").Append(seconds % 3600 / 60 < 10 ? "0" : NIL).Append(String::FromInt(seconds % 3600 / 60)).Append(":").Append(seconds % 3600 % 60 < 10 ? "0" : NIL).Append(String::FromInt(seconds % 3600 % 60));
+	else		     string = String(unknown ? "> " : NIL).Append(approx ? "~ " : NIL).Append(seconds / 60 < 10 ? "0" : NIL).Append(String::FromInt(seconds / 60)).Append(":").Append(seconds % 60 < 10 ? "0" : NIL).Append(String::FromInt(seconds % 60));
 
 	wchar_t	 sign[2] = { 0x2248, 0 };
 

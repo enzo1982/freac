@@ -96,6 +96,7 @@ Geschichte
 	Version 1.0.32 (Januar 2018)
 
 		- Verhalten von Controls zur Bitratenauswahl verbessert
+		- Zeige Länge der Jobliste in Stunden, wenn länger als eine Stunde
 		- Umgang mit leerem Track-Metadatenfeld verbessert
 		- Probleme beim Umgang mit ungültigen Xing/LAME-Tags behoben
 		- Fehler bei FAAC-Qualitätseinstellung behoben

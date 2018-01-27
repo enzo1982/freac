@@ -95,6 +95,7 @@ History
 	Version 1.0.32 (January 2018)
 
 		- improved behaviour of bitrate selection controls
+		- show joblist duration in hours if longer than 1 hour
 		- fixed handling of empty track metadata field
 		- fixed handling of invalid Xing/LAME tags
 		- fixed FAAC quality setting
