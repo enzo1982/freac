@@ -97,6 +97,7 @@ Geschichte
 
 		- Verhalten von Controls zur Bitratenauswahl verbessert
 		- Umgang mit leerem Track-Metadatenfeld verbessert
+		- Probleme beim Umgang mit ungültigen Xing/LAME-Tags behoben
 		- Fehler bei FAAC-Qualitätseinstellung behoben
 		- Vertauschung von TwinVQ- und WMA-Kodierern im Konfigurationsdialog behoben
 		- Serbische Übersetzung für das Installationsprogramm hinzugefügt

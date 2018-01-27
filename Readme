@@ -96,6 +96,7 @@ History
 
 		- improved behaviour of bitrate selection controls
 		- fixed handling of empty track metadata field
+		- fixed handling of invalid Xing/LAME tags
 		- fixed FAAC quality setting
 		- fixed TwinVQ and WMA encoders being mixed up in config dialog
 		- added Serbian translation for the installer
