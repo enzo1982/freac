@@ -160,6 +160,8 @@ freac::freacGUI::freacGUI()
 	menu_configurations	= new PopupMenu();
 	menu_seldrive		= new PopupMenu();
 
+	menu_processing		= new PopupMenu();
+
 	menu_encode		= new PopupMenu();
 	menu_encoders		= new PopupMenu();
 	menu_encoder_options	= new PopupMenu();
@@ -301,6 +303,8 @@ freac::freacGUI::~freacGUI()
 	DeleteObject(menu_options);
 	DeleteObject(menu_configurations);
 	DeleteObject(menu_seldrive);
+
+	DeleteObject(menu_processing);
 
 	DeleteObject(menu_encode);
 	DeleteObject(menu_encoders);
@@ -598,6 +602,8 @@ Void freac::freacGUI::OnChangeConfiguration()
 	tab_layer_joblist->UpdateOutputDir();
 
 	CheckBox::internalCheckValues.Emit();
+
+	ToggleSignalProcessing();
 	ToggleUseInputDirectory();
 
 	surface->EndPaint();
@@ -949,6 +955,8 @@ Void freac::freacGUI::FillMenus()
 	menu_configurations->RemoveAllEntries();
 	menu_seldrive->RemoveAllEntries();
 
+	menu_processing->RemoveAllEntries();
+
 	menu_encode->RemoveAllEntries();
 	menu_encoders->RemoveAllEntries();
 	menu_encoder_options->RemoveAllEntries();
@@ -1098,6 +1106,15 @@ Void freac::freacGUI::FillMenus()
 		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:30")), menu_seldrive);
 	}
 
+	i18n->SetContext("Menu::Processing");
+
+	entry = menu_processing->AddEntry(i18n->TranslateString("Enable signal processing"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault));
+	entry->onAction.Connect(&freacGUI::ToggleSignalProcessing, this);
+
+	entry = menu_processing->AddEntry(i18n->TranslateString("Enable processing during playback"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryProcessingID, Config::ProcessingProcessPlaybackID, Config::ProcessingProcessPlaybackDefault));
+
+	ToggleSignalProcessing();
+
 	i18n->SetContext("Menu::Encode");
 
 	entry = menu_encode->AddEntry(i18n->TranslateString(currentConfig->deleteAfterEncoding ? "Start encoding (deleting original files)" : "Start encoding"), ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "freac.pci:38" : "freac.pci:31")));
@@ -1202,6 +1219,7 @@ Void freac::freacGUI::FillMenus()
 	mainWnd_menubar->AddEntry(i18n->TranslateString("File"), NIL, menu_file);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Database"), NIL, menu_database);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
+	mainWnd_menubar->AddEntry(i18n->TranslateString("Processing"), NIL, menu_processing);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
 
 	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
@@ -1372,6 +1390,14 @@ Void freac::freacGUI::AddFilesFromDirectory()
 	}
 
 	DeleteObject(dialog);
+}
+
+Void freac::freacGUI::ToggleSignalProcessing()
+{
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	if (config->GetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault)) menu_processing->GetNthEntry(1)->Activate();
+	else																	menu_processing->GetNthEntry(1)->Deactivate();
 }
 
 Void freac::freacGUI::ToggleUseInputDirectory()
