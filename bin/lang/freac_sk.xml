@@ -88,15 +88,15 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">Začať kódovať</entry>
-	<entry id="1401" string="Start encoding with">Začať kódovať s</entry>
-	<entry id="1402" string="Pause/resume encoding">Puaza/Pokračovať kódovanie</entry>
-	<entry id="1403" string="Stop encoding">Zastaviť kódovanie</entry>
-	<entry id="1404" string="Encoder options">Možnosti kodeku</entry>
-	<entry id="1405" string="Encode to a single file">Kódovať do jedného súboru</entry>
-	<entry id="1406" string="Encode to input file folder if possible">Kódovať do vstupného adresára ak je to možné</entry>
-	<entry id="1407" string="Allow overwriting input file">Povoliť prepisovanie vstupného súboru</entry>
-	<entry id="1408" string="Delete original files after encoding">Po kódovaní zmazať pôvodné súbory</entry>
-	<entry id="1409" string="Shutdown after encoding">Vypnúť PC po kódovaní</entry>
+	<entry id="1402" string="Start encoding with">Začať kódovať s</entry>
+	<entry id="1403" string="Pause/resume encoding">Puaza/Pokračovať kódovanie</entry>
+	<entry id="1404" string="Stop encoding">Zastaviť kódovanie</entry>
+	<entry id="1405" string="Encoder options">Možnosti kodeku</entry>
+	<entry id="1406" string="Encode to a single file">Kódovať do jedného súboru</entry>
+	<entry id="1407" string="Encode to input file folder if possible">Kódovať do vstupného adresára ak je to možné</entry>
+	<entry id="1408" string="Allow overwriting input file">Povoliť prepisovanie vstupného súboru</entry>
+	<entry id="1409" string="Delete original files after encoding">Po kódovaní zmazať pôvodné súbory</entry>
+	<entry id="1410" string="Shutdown after encoding">Vypnúť PC po kódovaní</entry>
       </section>
 
       <section name="Help">
@@ -119,8 +119,8 @@
       <entry id="2006" string="Configure general settings">Prispôsobiť hlavné nastavenia</entry>
       <entry id="2007" string="Configure the selected audio encoder">Nastaviť vybraný kodek</entry>
       <entry id="2008" string="Start the encoding process">Začať kódovanie</entry>
-      <entry id="2009" string="Pause/resume encoding">Puaza/Pokračovať kódovanie</entry>
-      <entry id="2010" string="Stop encoding">Zastaviť kódovanie</entry>
+      <entry id="2010" string="Pause/resume encoding">Puaza/Pokračovať kódovanie</entry>
+      <entry id="2011" string="Stop encoding">Zastaviť kódovanie</entry>
     </section>
 
     <section name="Joblist">

@@ -77,8 +77,8 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">인코딩 시작</entry>
-	<entry id="1401" string="Start encoding with">인코딩 시작</entry>
-	<entry id="1403" string="Stop encoding">인코딩 정지</entry>
+	<entry id="1402" string="Start encoding with">인코딩 시작</entry>
+	<entry id="1404" string="Stop encoding">인코딩 정지</entry>
       </section>
 
       <section name="Help">
@@ -101,7 +101,7 @@
       <entry id="2006" string="Configure general settings">일반설정</entry>
       <entry id="2007" string="Configure the selected audio encoder">선택된 오디오 인코더 설정</entry>
       <entry id="2008" string="Start the encoding process">인코딩 프로세스 시작</entry>
-      <entry id="2010" string="Stop encoding">인코딩 정지</entry>
+      <entry id="2011" string="Stop encoding">인코딩 정지</entry>
     </section>
 
     <section name="Joblist">

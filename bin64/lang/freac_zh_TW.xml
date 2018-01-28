@@ -68,11 +68,11 @@
 	<entry id="1101" string="Remove">移除</entry>
 	<entry id="1102" string="Load joblist">讀取工作清單</entry>
 	<entry id="1103" string="Save joblist">儲存工作清單</entry>
-	<entry id="1104" string="Clear joblist">清空工作清單</entry>
+	<entry id="1104" string="Clear joblist">清除工作清單</entry>
 	<entry id="1105" string="Exit">離開</entry>
 	<entry id="1106" string="Audio file(s)">音訊檔案</entry>
 	<entry id="1107" string="Audio CD contents">音樂 CD 內容</entry>
-	<entry id="1108" string="By pattern">依照檔名模式</entry>
+	<entry id="1108" string="By pattern">依照檔名規則</entry>
 	<entry id="1109" string="From folder">從資料夾</entry>
       </section>
 
@@ -97,15 +97,15 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">開始編碼</entry>
-	<entry id="1401" string="Start encoding with">開始編碼，使用</entry>
-	<entry id="1402" string="Pause/resume encoding">暫停 / 繼續編碼</entry>
-	<entry id="1403" string="Stop encoding">停止編碼</entry>
-	<entry id="1404" string="Encoder options">編碼器選項</entry>
-	<entry id="1405" string="Encode to a single file">編碼為單一檔案</entry>
-	<entry id="1406" string="Encode to input file folder if possible">若可能，將輸出檔案存放在原資料夾</entry>
-	<entry id="1407" string="Allow overwriting input file">允許覆寫輸入檔案</entry>
-	<entry id="1408" string="Delete original files after encoding">編碼完成後刪除原始檔案</entry>
-	<entry id="1409" string="Shutdown after encoding">編碼完成後關機</entry>
+	<entry id="1402" string="Start encoding with">開始編碼，使用</entry>
+	<entry id="1403" string="Pause/resume encoding">暫停 / 繼續編碼</entry>
+	<entry id="1404" string="Stop encoding">停止編碼</entry>
+	<entry id="1405" string="Encoder options">編碼器選項</entry>
+	<entry id="1406" string="Encode to a single file">編碼為單一檔案</entry>
+	<entry id="1407" string="Encode to input file folder if possible">若可能，和輸入檔案使用相同資料夾</entry>
+	<entry id="1408" string="Allow overwriting input file">允許覆寫輸入檔案</entry>
+	<entry id="1409" string="Delete original files after encoding">編碼完成後刪除原始檔案</entry>
+	<entry id="1410" string="Shutdown after encoding">編碼完成後關機</entry>
       </section>
 
       <section name="Help">
@@ -122,14 +122,14 @@
       <entry id="2000" string="Add audio file(s) to the joblist">新增音訊檔案</entry>
       <entry id="2001" string="Add audio CD contents to the joblist">新增音樂 CD 內容</entry>
       <entry id="2002" string="Remove the selected entry from the joblist">移除選擇的項目</entry>
-      <entry id="2003" string="Clear the entire joblist">清空所有工作清單</entry>
+      <entry id="2003" string="Clear the entire joblist">清除工作清單</entry>
       <entry id="2004" string="Query CDDB database">查詢 CDDB 資料庫</entry>
       <entry id="2005" string="Submit CDDB data">上傳 CDDB 資料</entry>
       <entry id="2006" string="Configure general settings">調整一般設定</entry>
       <entry id="2007" string="Configure the selected audio encoder">調整目前的編碼器組態</entry>
       <entry id="2008" string="Start the encoding process">開始編碼</entry>
-      <entry id="2009" string="Pause/resume encoding">暫停 / 繼續編碼</entry>
-      <entry id="2010" string="Stop encoding">停止編碼</entry>
+      <entry id="2010" string="Pause/resume encoding">暫停 / 繼續編碼</entry>
+      <entry id="2011" string="Stop encoding">停止編碼</entry>
     </section>
 
     <section name="Joblist">
@@ -154,7 +154,7 @@
       <entry id="3018" string="Skip">跳過</entry>
       <entry id="3019" string="Encode to a single file">編碼為單一檔案</entry>
       <entry id="3020" string="Remove">移除</entry>
-      <entry id="3021" string="Clear joblist">清空工作清單</entry>
+      <entry id="3021" string="Clear joblist">清除工作清單</entry>
       <entry id="3022" string="Use for all selected tracks">使用於所有選擇的音軌</entry>
       <entry id="3023" string="Interpret string as">將字串轉換為</entry>
       <entry id="3024" string="selected tracks">選擇的音軌</entry>
@@ -193,10 +193,10 @@
       </section>
 
       <section name="Add by pattern">
-	<entry id="3200" string="Add files by pattern">依照檔名模式新增檔案</entry>
-	<entry id="3201" string="Pattern">檔名模式</entry>
+	<entry id="3200" string="Add files by pattern">依照檔名規則新增檔案</entry>
+	<entry id="3201" string="Pattern">檔名規則</entry>
 	<entry id="3202" string="Start folder">起始資料夾</entry>
-	<entry id="3203" string="Filename pattern">檔案名稱模式</entry>
+	<entry id="3203" string="Filename pattern">檔名規則</entry>
 	<entry id="3204" string="Search subfolders">搜尋子資料夾</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">選擇要新增到工作清單的資料夾</entry>
       </section>
@@ -208,7 +208,7 @@
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">您尚未選擇音軌！</entry>
-	<entry id="3401" string="No files found matching pattern: %1">找不到符合檔名模式的檔案: %1</entry>
+	<entry id="3401" string="No files found matching pattern: %1">找不到符合檔名規則的檔案： %1</entry>
       </section>
     </section>
 
@@ -335,7 +335,7 @@
 	<entry id="5105" string="Use input file folder if possible">若可能，和輸入檔案使用相同資料夾</entry>
 	<entry id="5106" string="Allow overwriting input file">允許覆寫輸入檔案</entry>
 	<entry id="5107" string="Options">選項</entry>
-	<entry id="5108" string="Filename pattern">檔名模式</entry>
+	<entry id="5108" string="Filename pattern">檔名規則</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">即時編碼</entry>
 	<entry id="5110" string="Keep ripped Wave files">轉檔完成後保留 Wave 檔案</entry>
 	<entry id="5111" string="Encode to a single file">編碼為單一檔案</entry>
@@ -355,9 +355,9 @@
 	<entry id="5201" string="Create cue sheets">建立 cue 描述檔</entry>
 	<entry id="5202" string="Output folder">輸出資料夾</entry>
 	<entry id="5203" string="Select">瀏覽</entry>
-	<entry id="5204" string="Use encoder output folder">和編碼器的輸出資料夾相同</entry>
-	<entry id="5205" string="Filename pattern">檔名模式</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed">選擇存放播放清單的資料夾</entry>
+	<entry id="5204" string="Use encoder output folder">使用編碼器指定的資料夾</entry>
+	<entry id="5205" string="Filename pattern">檔名規則</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">選擇儲存播放清單的資料夾</entry>
 	<entry id="5207" string="Output filenames">輸出檔案名稱</entry>
 	<entry id="5208" string="Configure plugin">外掛程式組態</entry>
       </section>
@@ -413,7 +413,7 @@
 	<entry id="5501" string="Tag formats">標籤格式</entry>
 	<entry id="5502" string="Default comment string">預設註解字串</entry>
 	<entry id="5503" string="Replace existing comments with default comment">使用預設註解取代原有註解</entry>
-	<entry id="5504" string="Filename pattern">檔名模式</entry>
+	<entry id="5504" string="Filename pattern">檔名規則</entry>
 	<entry id="5505" string="Encoding">編碼</entry>
 	<entry id="5506" string="Comments">註解</entry>
 	<entry id="5507" string="Cover art">封面藝術</entry>
@@ -511,12 +511,12 @@
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 能透過 Winamp 2 輸入外掛支援更多格式。&#10;將 in_*.dll 檔案複製到 %1/plugins 資料夾即可&#10;讓 %1 讀取這些格式。</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">您可以透過 %1 上傳包含 Unicode 的 CDDB 資料。&#10;如果您的 CD 包含非拉丁字元的演出者或標題，&#10;您可以透過 %1 上傳正確的 freedb 資料。</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">您可以在 %1 一般設定的轉檔器選項&#10;啟用抖動校正來修正光碟讀取錯誤。&#10;如果無效，請嘗試使用任一種 Paranoia 模式。</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">您有任何改善 %1 的想法嗎？&#10;您可以在 SourceForge 上的 %1 專案網頁&#10;%2 發表您的想法！&#10;您也可以寄電子郵件給 %3。</entry>
+      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">您有任何改良 %1 的想法嗎？&#10;您可以在 SourceForge 上的 %1 專案網頁&#10;%2 發表您的想法與建議！&#10;您也可以寄電子郵件給 %3。</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">您喜歡 %1 嗎？%1 是免費軟體，&#10;但您可以透過捐款幫助 %1 專案繼續開發。&#10;您也可以使用 Paypal 捐款。&#10;請查閱 %3 以了解更多資訊。</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">正在執行轉換！您確定要離開嗎？</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">正在執行編碼！您確定要離開嗎？</entry>
       <entry id="7001" string="Currently converting">正在轉換</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">無法載入 ASPI 驅動程式！已停用 CD 轉檔功能！</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案: %1&#10;&#10;錯誤: %2</entry>
@@ -575,7 +575,7 @@
       <entry id="9009" string="No scratch repair">不修復光碟刮傷</entry>
       <entry id="9010" string="Full cdparanoia mode">完整模式</entry>
       <entry id="9011" string="Activate jitter correction">啟用抖動校正</entry>
-      <entry id="9012" string="Swap left/right channel">調換 左/右 聲道</entry>
+      <entry id="9012" string="Swap left/right channel">切換 左/右 聲道</entry>
       <entry id="9013" string="Automatization">自動化</entry>
       <entry id="9014" string="Read CD contents on insert">放入 CD 後立即讀取內容</entry>
       <entry id="9015" string="Start ripping automatically">自動開始轉檔</entry>
@@ -782,8 +782,8 @@
 
       <section name="Vorbis">
 	<entry id="35000" string="Encoding Mode">編碼模式</entry>
-	<entry id="35001" string="Variable Bitrate">VBR (可變位元率)</entry>
-	<entry id="35002" string="Average Bitrate">ABR (平均位元率)</entry>
+	<entry id="35001" string="Variable Bitrate">可變位元率</entry>
+	<entry id="35002" string="Average Bitrate">平均位元率</entry>
 	<entry id="35003" string="Quality">品質</entry>
 	<entry id="35004" string="Bitrate">位元率</entry>
 	<entry id="35005" string="Minimum bitrate">最小位元率</entry>
@@ -860,7 +860,7 @@
 	<entry id="40009" string="Superwideband">超寬頻</entry>
 	<entry id="40010" string="Fullband">全頻</entry>
 	<entry id="40011" string="File extension">副檔名</entry>
-	<entry id="40012" string="Variable bitrate">VBR (可變位元率)</entry>
+	<entry id="40012" string="Variable bitrate">可變位元率</entry>
 	<entry id="40013" string="Enable variable bitrate encoding">啟用 VBR 編碼</entry>
 	<entry id="40014" string="Constrain bitrate to target value">將位元率限制為目標數值</entry>
 	<entry id="40015" string="Quality">品質</entry>

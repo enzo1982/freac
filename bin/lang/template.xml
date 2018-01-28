@@ -104,15 +104,16 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding"/>
-	<entry id="1401" string="Start encoding with"/>
-	<entry id="1402" string="Pause/resume encoding"/>
-	<entry id="1403" string="Stop encoding"/>
-	<entry id="1404" string="Encoder options"/>
-	<entry id="1405" string="Encode to a single file"/>
-	<entry id="1406" string="Encode to input file folder if possible"/>
-	<entry id="1407" string="Allow overwriting input file"/>
-	<entry id="1408" string="Delete original files after encoding"/>
-	<entry id="1409" string="Shutdown after encoding"/>
+	<entry id="1401" string="Start encoding (deleting original files)"/>
+	<entry id="1402" string="Start encoding with"/>
+	<entry id="1403" string="Pause/resume encoding"/>
+	<entry id="1404" string="Stop encoding"/>
+	<entry id="1405" string="Encoder options"/>
+	<entry id="1406" string="Encode to a single file"/>
+	<entry id="1407" string="Encode to input file folder if possible"/>
+	<entry id="1408" string="Allow overwriting input file"/>
+	<entry id="1409" string="Delete original files after encoding"/>
+	<entry id="1410" string="Shutdown after encoding"/>
       </section>
 
       <section name="Help">
@@ -135,8 +136,9 @@
       <entry id="2006" string="Configure general settings"/>
       <entry id="2007" string="Configure the selected audio encoder"/>
       <entry id="2008" string="Start the encoding process"/>
-      <entry id="2009" string="Pause/resume encoding"/>
-      <entry id="2010" string="Stop encoding"/>
+      <entry id="2009" string="Start the encoding process (deleting original files)"/>
+      <entry id="2010" string="Pause/resume encoding"/>
+      <entry id="2011" string="Stop encoding"/>
     </section>
 
     <section name="Joblist">
@@ -562,6 +564,7 @@
       <entry id="7023" string="Failed to verify input file: %1"/>
       <entry id="7024" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
       <entry id="7025" string="The selected folder does not exist anymore!"/>
+      <entry id="7026" string="Keep this option enabled even after restarting %1"/>
     </section>
 
     <section name="Dialogs">

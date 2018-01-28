@@ -79,14 +79,14 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">התחל המרה</entry>
-	<entry id="1401" string="Start encoding with">התחל המרה</entry>
-	<entry id="1402" string="Pause/resume encoding">השהה / חדש המרה</entry>
-	<entry id="1403" string="Stop encoding">עצור המרה</entry>
-	<entry id="1404" string="Encoder options">אפשרויות המרה</entry>
-	<entry id="1405" string="Encode to a single file">המר לקובץ אחד</entry>
-	<entry id="1407" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
-	<entry id="1408" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
-	<entry id="1409" string="Shutdown after encoding">כבה מחשב לאחר המרה</entry>
+	<entry id="1402" string="Start encoding with">התחל המרה</entry>
+	<entry id="1403" string="Pause/resume encoding">השהה / חדש המרה</entry>
+	<entry id="1404" string="Stop encoding">עצור המרה</entry>
+	<entry id="1405" string="Encoder options">אפשרויות המרה</entry>
+	<entry id="1406" string="Encode to a single file">המר לקובץ אחד</entry>
+	<entry id="1408" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
+	<entry id="1409" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
+	<entry id="1410" string="Shutdown after encoding">כבה מחשב לאחר המרה</entry>
       </section>
 
       <section name="Help">
@@ -107,8 +107,8 @@
       <entry id="2006" string="Configure general settings">הגדר מאפיינים</entry>
       <entry id="2007" string="Configure the selected audio encoder">הגדר מקודד</entry>
       <entry id="2008" string="Start the encoding process">החל תהליך קידוד</entry>
-      <entry id="2009" string="Pause/resume encoding">השהה / חדש המרה</entry>
-      <entry id="2010" string="Stop encoding">עצור המרה</entry>
+      <entry id="2010" string="Pause/resume encoding">השהה / חדש המרה</entry>
+      <entry id="2011" string="Stop encoding">עצור המרה</entry>
     </section>
 
     <section name="Joblist">

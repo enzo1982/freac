@@ -88,15 +88,15 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">Begynd kodning</entry>
-	<entry id="1401" string="Start encoding with">Begynd kodning med</entry>
-	<entry id="1402" string="Pause/resume encoding">Pause/forsæt kodning</entry>
-	<entry id="1403" string="Stop encoding">Stop kodning</entry>
-	<entry id="1404" string="Encoder options">Koder indstillinger</entry>
-	<entry id="1405" string="Encode to a single file">Kod til enkelte filer</entry>
-	<entry id="1406" string="Encode to input file folder if possible">Kod til indata fil mappe om muligt</entry>
-	<entry id="1407" string="Allow overwriting input file">Allow overskrivning af inddata filen</entry>
-	<entry id="1408" string="Delete original files after encoding">Slet orginale filer efter endt kodning</entry>
-	<entry id="1409" string="Shutdown after encoding">Luk computer efter endt kodning</entry>
+	<entry id="1402" string="Start encoding with">Begynd kodning med</entry>
+	<entry id="1403" string="Pause/resume encoding">Pause/forsæt kodning</entry>
+	<entry id="1404" string="Stop encoding">Stop kodning</entry>
+	<entry id="1405" string="Encoder options">Koder indstillinger</entry>
+	<entry id="1406" string="Encode to a single file">Kod til enkelte filer</entry>
+	<entry id="1407" string="Encode to input file folder if possible">Kod til indata fil mappe om muligt</entry>
+	<entry id="1408" string="Allow overwriting input file">Allow overskrivning af inddata filen</entry>
+	<entry id="1409" string="Delete original files after encoding">Slet orginale filer efter endt kodning</entry>
+	<entry id="1410" string="Shutdown after encoding">Luk computer efter endt kodning</entry>
       </section>
 
       <section name="Help">
@@ -119,8 +119,8 @@
       <entry id="2006" string="Configure general settings">Indstil generelle indstillinger</entry>
       <entry id="2007" string="Configure the selected audio encoder">Indstil den valgte lyd koder</entry>
       <entry id="2008" string="Start the encoding process">Start kodningsprocess</entry>
-      <entry id="2009" string="Pause/resume encoding">Pause/forsæt kodning</entry>
-      <entry id="2010" string="Stop encoding">Stop kodning</entry>
+      <entry id="2010" string="Pause/resume encoding">Pause/forsæt kodning</entry>
+      <entry id="2011" string="Stop encoding">Stop kodning</entry>
     </section>
 
     <section name="Joblist">

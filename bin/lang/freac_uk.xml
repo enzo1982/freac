@@ -88,15 +88,15 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">Розпочати кодування</entry>
-	<entry id="1401" string="Start encoding with">Розпочати кодування з</entry>
-	<entry id="1402" string="Pause/resume encoding">Призупинити/продовжити</entry>
-	<entry id="1403" string="Stop encoding">Зупинити кодування</entry>
-	<entry id="1404" string="Encoder options">Налаштування кодека</entry>
-	<entry id="1405" string="Encode to a single file">Кодувати у єдиний файл</entry>
-	<entry id="1406" string="Encode to input file folder if possible">Кодувати у теку вхідного файлу якщо можливо</entry>
-	<entry id="1407" string="Allow overwriting input file">Дозволити перезаписувати вхідний файл</entry>
-	<entry id="1408" string="Delete original files after encoding">Знищити оригінали після кодування</entry>
-	<entry id="1409" string="Shutdown after encoding">Виключити після кодування</entry>
+	<entry id="1402" string="Start encoding with">Розпочати кодування з</entry>
+	<entry id="1403" string="Pause/resume encoding">Призупинити/продовжити</entry>
+	<entry id="1404" string="Stop encoding">Зупинити кодування</entry>
+	<entry id="1405" string="Encoder options">Налаштування кодека</entry>
+	<entry id="1406" string="Encode to a single file">Кодувати у єдиний файл</entry>
+	<entry id="1407" string="Encode to input file folder if possible">Кодувати у теку вхідного файлу якщо можливо</entry>
+	<entry id="1408" string="Allow overwriting input file">Дозволити перезаписувати вхідний файл</entry>
+	<entry id="1409" string="Delete original files after encoding">Знищити оригінали після кодування</entry>
+	<entry id="1410" string="Shutdown after encoding">Виключити після кодування</entry>
       </section>
 
       <section name="Help">
@@ -119,8 +119,8 @@
       <entry id="2006" string="Configure general settings">Конфігурувати основні налаштування</entry>
       <entry id="2007" string="Configure the selected audio encoder">Розпочати кодування</entry>
       <entry id="2008" string="Start the encoding process">Розпочати процес кодування</entry>
-      <entry id="2009" string="Pause/resume encoding">Призупинити/продовжити</entry>
-      <entry id="2010" string="Stop encoding">Зупинити кодування</entry>
+      <entry id="2010" string="Pause/resume encoding">Призупинити/продовжити</entry>
+      <entry id="2011" string="Stop encoding">Зупинити кодування</entry>
     </section>
 
     <section name="Joblist">

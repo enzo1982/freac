@@ -84,15 +84,15 @@
 
       <section name="Encode">
 	<entry id="1400" string="Start encoding">Comenzar codificación</entry>
-	<entry id="1401" string="Start encoding with">Comenzar codificación con</entry>
-	<entry id="1402" string="Pause/resume encoding">Pausar/Resumir codificación</entry>
-	<entry id="1403" string="Stop encoding">Detener codificación</entry>
-	<entry id="1404" string="Encoder options">Opciones de codificación</entry>
-	<entry id="1405" string="Encode to a single file">Codificar a un solo archivo</entry>
-	<entry id="1406" string="Encode to input file folder if possible">Codificar al directorio origien si es posible</entry>
-	<entry id="1407" string="Allow overwriting input file">Permitir sobreescribir el archivo de origen</entry>
-	<entry id="1408" string="Delete original files after encoding">Eliminar archivos originales luego de codificar</entry>
-	<entry id="1409" string="Shutdown after encoding">Apagar luego de codificar</entry>
+	<entry id="1402" string="Start encoding with">Comenzar codificación con</entry>
+	<entry id="1403" string="Pause/resume encoding">Pausar/Resumir codificación</entry>
+	<entry id="1404" string="Stop encoding">Detener codificación</entry>
+	<entry id="1405" string="Encoder options">Opciones de codificación</entry>
+	<entry id="1406" string="Encode to a single file">Codificar a un solo archivo</entry>
+	<entry id="1407" string="Encode to input file folder if possible">Codificar al directorio origien si es posible</entry>
+	<entry id="1408" string="Allow overwriting input file">Permitir sobreescribir el archivo de origen</entry>
+	<entry id="1409" string="Delete original files after encoding">Eliminar archivos originales luego de codificar</entry>
+	<entry id="1410" string="Shutdown after encoding">Apagar luego de codificar</entry>
       </section>
 
       <section name="Help">
@@ -115,8 +115,8 @@
       <entry id="2006" string="Configure general settings">Configurar las opciones generales</entry>
       <entry id="2007" string="Configure the selected audio encoder">Configurar el codificador de audio seleccionado</entry>
       <entry id="2008" string="Start the encoding process">Comenzar el proceso de codificación</entry>
-      <entry id="2009" string="Pause/resume encoding">Pausar/Resumir codificación</entry>
-      <entry id="2010" string="Stop encoding">Detener codificación</entry>
+      <entry id="2010" string="Pause/resume encoding">Pausar/Resumir codificación</entry>
+      <entry id="2011" string="Stop encoding">Detener codificación</entry>
     </section>
 
     <section name="Joblist">
