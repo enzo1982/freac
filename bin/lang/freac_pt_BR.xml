@@ -186,7 +186,7 @@
       <entry id="3043" string="All Files">Todos os arquivos</entry>
       <entry id="3044" string="Playlist Files">Arquivos da lista de reprodução</entry>
       <entry id="3045" string="Active decoder">Decodificador ativo</entry>
-      <entry id="3046" string="Joblist">lista de tarefas</entry>
+      <entry id="3046" string="Joblist">Lista de tarefas</entry>
       <entry id="3047" string="unknown">desconhecido</entry>
       <entry id="3048" string="Other">Outros</entry>
       <entry id="3049" string="Output file name">Nome do arquivo de saída</entry>
@@ -448,7 +448,7 @@
       </section>
 
       <section name="Joblist">
-	<entry id="5600" string="Joblist">lista de tarefas</entry>
+	<entry id="5600" string="Joblist">Lista de tarefas</entry>
 	<entry id="5601" string="Columns">Colunas</entry>
 	<entry id="5602" string="Name">Nome</entry>
 	<entry id="5603" string="Description">Descrição</entry>
