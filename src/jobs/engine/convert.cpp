@@ -1157,10 +1157,6 @@ Error freac::JobConvert::Perform()
 		 */
 		foreach (Array<Track> *trackList, playlistTrackLists) delete trackList;
 		foreach (Array<Track> *trackList, cuesheetTrackLists) delete trackList;
-
-		/* Reset "Delete after encoding" option.
-		 */
-		Config::Get()->deleteAfterEncoding = False;
 	}
 
 	/* Clean up.

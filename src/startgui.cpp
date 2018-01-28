@@ -1100,7 +1100,7 @@ Void freac::freacGUI::FillMenus()
 
 	i18n->SetContext("Menu::Encode");
 
-	entry = menu_encode->AddEntry(i18n->TranslateString("Start encoding"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:31")));
+	entry = menu_encode->AddEntry(i18n->TranslateString(currentConfig->deleteAfterEncoding ? "Start encoding (deleting original files)" : "Start encoding"), ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "freac.pci:38" : "freac.pci:31")));
 	entry->onAction.Connect(&freacGUI::Convert, this);
 	entry->SetShortcut(SC_CONTROL, Keyboard::KeyE, mainWnd);
 
@@ -1256,9 +1256,9 @@ Void freac::freacGUI::FillMenus()
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:9")), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "freac.pci:37" : "freac.pci:9")), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
 	entry->onAction.Connect(&freacGUI::Convert, this);
-	entry->SetTooltipText(i18n->TranslateString("Start the encoding process"));
+	entry->SetTooltipText(i18n->TranslateString(currentConfig->deleteAfterEncoding ? "Start the encoding process (deleting original files)" : "Start the encoding process"));
 
 	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:10")));
 	entry->onAction.Connect(&freacGUI::PauseResumeEncoding, this);
@@ -1399,6 +1399,8 @@ Void freac::freacGUI::ConfirmDeleteAfterEncoding()
 	{
 		if (Message::Button::No == QuickMessage(i18n->TranslateString("This option will remove the original files from your computer\nafter the encoding process!\n\nAre you sure you want to activate this function?"), i18n->TranslateString("Delete original files after encoding"), Message::Buttons::YesNo, Message::Icon::Question)) currentConfig->deleteAfterEncoding = False;
 	}
+
+	FillMenus();
 }
 
 Void freac::freacGUI::ShowHelp()
