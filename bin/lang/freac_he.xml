@@ -52,8 +52,8 @@
       <entry id="1000" string="File">קובץ</entry>
       <entry id="1001" string="Options">אפשרויות</entry>
       <entry id="1002" string="Database">בסיס נתונים</entry>
-      <entry id="1003" string="Encode">המרה</entry>
-      <entry id="1004" string="Help">עזרה</entry>
+      <entry id="1004" string="Encode">המרה</entry>
+      <entry id="1005" string="Help">עזרה</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">הוסף</entry>
@@ -78,24 +78,24 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">התחל המרה</entry>
-	<entry id="1402" string="Start encoding with">התחל המרה</entry>
-	<entry id="1403" string="Pause/resume encoding">השהה / חדש המרה</entry>
-	<entry id="1404" string="Stop encoding">עצור המרה</entry>
-	<entry id="1405" string="Encoder options">אפשרויות המרה</entry>
-	<entry id="1406" string="Encode to a single file">המר לקובץ אחד</entry>
-	<entry id="1408" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
-	<entry id="1409" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
-	<entry id="1410" string="Shutdown after encoding">כבה מחשב לאחר המרה</entry>
+	<entry id="1500" string="Start encoding">התחל המרה</entry>
+	<entry id="1502" string="Start encoding with">התחל המרה</entry>
+	<entry id="1503" string="Pause/resume encoding">השהה / חדש המרה</entry>
+	<entry id="1504" string="Stop encoding">עצור המרה</entry>
+	<entry id="1505" string="Encoder options">אפשרויות המרה</entry>
+	<entry id="1506" string="Encode to a single file">המר לקובץ אחד</entry>
+	<entry id="1508" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
+	<entry id="1509" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
+	<entry id="1510" string="Shutdown after encoding">כבה מחשב לאחר המרה</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">נושאי עזרה</entry>
-	<entry id="1501" string="Show Tip of the Day">הצג טיפ יומי</entry>
-	<entry id="1502" string="Check for updates now">בדיקת עדכונים</entry>
-	<entry id="1503" string="Check for updates at startup">בדוק עדכונים בהפעלה</entry>
-	<entry id="1504" string="About %1">על התכנה</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">נושאי עזרה</entry>
+	<entry id="1601" string="Show Tip of the Day">הצג טיפ יומי</entry>
+	<entry id="1602" string="Check for updates now">בדיקת עדכונים</entry>
+	<entry id="1603" string="Check for updates at startup">בדוק עדכונים בהפעלה</entry>
+	<entry id="1604" string="About %1">על התכנה</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

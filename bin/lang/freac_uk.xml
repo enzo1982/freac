@@ -53,8 +53,8 @@
       <entry id="1000" string="File">Файл</entry>
       <entry id="1001" string="Options">Налаштування</entry>
       <entry id="1002" string="Database">База даних</entry>
-      <entry id="1003" string="Encode">Кодування</entry>
-      <entry id="1004" string="Help">Допомога</entry>
+      <entry id="1004" string="Encode">Кодування</entry>
+      <entry id="1005" string="Help">Допомога</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Додати</entry>
@@ -87,25 +87,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Розпочати кодування</entry>
-	<entry id="1402" string="Start encoding with">Розпочати кодування з</entry>
-	<entry id="1403" string="Pause/resume encoding">Призупинити/продовжити</entry>
-	<entry id="1404" string="Stop encoding">Зупинити кодування</entry>
-	<entry id="1405" string="Encoder options">Налаштування кодека</entry>
-	<entry id="1406" string="Encode to a single file">Кодувати у єдиний файл</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Кодувати у теку вхідного файлу якщо можливо</entry>
-	<entry id="1408" string="Allow overwriting input file">Дозволити перезаписувати вхідний файл</entry>
-	<entry id="1409" string="Delete original files after encoding">Знищити оригінали після кодування</entry>
-	<entry id="1410" string="Shutdown after encoding">Виключити після кодування</entry>
+	<entry id="1500" string="Start encoding">Розпочати кодування</entry>
+	<entry id="1502" string="Start encoding with">Розпочати кодування з</entry>
+	<entry id="1503" string="Pause/resume encoding">Призупинити/продовжити</entry>
+	<entry id="1504" string="Stop encoding">Зупинити кодування</entry>
+	<entry id="1505" string="Encoder options">Налаштування кодека</entry>
+	<entry id="1506" string="Encode to a single file">Кодувати у єдиний файл</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Кодувати у теку вхідного файлу якщо можливо</entry>
+	<entry id="1508" string="Allow overwriting input file">Дозволити перезаписувати вхідний файл</entry>
+	<entry id="1509" string="Delete original files after encoding">Знищити оригінали після кодування</entry>
+	<entry id="1510" string="Shutdown after encoding">Виключити після кодування</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Допомога</entry>
-	<entry id="1501" string="Show Tip of the Day">Порада дня</entry>
-	<entry id="1502" string="Check for updates now">Перевірити зараз поновлення</entry>
-	<entry id="1503" string="Check for updates at startup">Перевіряти оновлення при старті</entry>
-	<entry id="1504" string="About %1">Про %1</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">Допомога</entry>
+	<entry id="1601" string="Show Tip of the Day">Порада дня</entry>
+	<entry id="1602" string="Check for updates now">Перевірити зараз поновлення</entry>
+	<entry id="1603" string="Check for updates at startup">Перевіряти оновлення при старті</entry>
+	<entry id="1604" string="About %1">Про %1</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

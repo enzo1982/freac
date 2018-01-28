@@ -67,8 +67,9 @@
       <entry id="1000" string="File">Datei</entry>
       <entry id="1001" string="Options">Optionen</entry>
       <entry id="1002" string="Database">Datenbank</entry>
-      <entry id="1003" string="Encode">Kodieren</entry>
-      <entry id="1004" string="Help">Hilfe</entry>
+      <entry id="1003" string="Processing">Verarbeitung</entry>
+      <entry id="1004" string="Encode">Kodieren</entry>
+      <entry id="1005" string="Help">Hilfe</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Hinzufügen</entry>
@@ -102,27 +103,32 @@
 	<entry id="1304" string="Default configuration">Standardkonfiguration</entry>
       </section>
 
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">Signalverarbeitung aktivieren</entry>
+	<entry id="1401" string="Enable processing during playback">Verarbeitung während der Wiedergabe aktivieren</entry>
+      </section>
+
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Kodierung starten</entry>
-	<entry id="1401" string="Start encoding (deleting original files)">Kodierung starten (und Originaldateien löschen)</entry>
-	<entry id="1402" string="Start encoding with">Kodierung starten mit</entry>
-	<entry id="1403" string="Pause/resume encoding">Kodierung unterbrechen/fortsetzen</entry>
-	<entry id="1404" string="Stop encoding">Kodierung abbrechen</entry>
-	<entry id="1405" string="Encoder options">Kodiereroptionen</entry>
-	<entry id="1406" string="Encode to a single file">In eine einzige Datei kodieren</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Kodiere möglichst in Eingabedateiordner</entry>
-	<entry id="1408" string="Allow overwriting input file">Überschreiben der Eingabedatei erlauben</entry>
-	<entry id="1409" string="Delete original files after encoding">Originaldateien nach dem Kodieren löschen</entry>
-	<entry id="1410" string="Shutdown after encoding">Nach der Kodierung herunterfahren</entry>
+	<entry id="1500" string="Start encoding">Kodierung starten</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">Kodierung starten (und Originaldateien löschen)</entry>
+	<entry id="1502" string="Start encoding with">Kodierung starten mit</entry>
+	<entry id="1503" string="Pause/resume encoding">Kodierung unterbrechen/fortsetzen</entry>
+	<entry id="1504" string="Stop encoding">Kodierung abbrechen</entry>
+	<entry id="1505" string="Encoder options">Kodiereroptionen</entry>
+	<entry id="1506" string="Encode to a single file">In eine einzige Datei kodieren</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Kodiere möglichst in Eingabedateiordner</entry>
+	<entry id="1508" string="Allow overwriting input file">Überschreiben der Eingabedatei erlauben</entry>
+	<entry id="1509" string="Delete original files after encoding">Originaldateien nach dem Kodieren löschen</entry>
+	<entry id="1510" string="Shutdown after encoding">Nach der Kodierung herunterfahren</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Hilfeindex</entry>
-	<entry id="1501" string="Show Tip of the Day">Tipp des Tages anzeigen</entry>
-	<entry id="1502" string="Check for updates now">Jetzt auf Aktualisierungen überprüfen</entry>
-	<entry id="1503" string="Check for updates at startup">Beim Start auf Aktualisierungen überprüfen</entry>
-	<entry id="1504" string="About %1">Über %1</entry>
-	<entry id="1505" string="index_en.html">index_de.html</entry>
+	<entry id="1600" string="Help topics">Hilfeindex</entry>
+	<entry id="1601" string="Show Tip of the Day">Tipp des Tages anzeigen</entry>
+	<entry id="1602" string="Check for updates now">Jetzt auf Aktualisierungen überprüfen</entry>
+	<entry id="1603" string="Check for updates at startup">Beim Start auf Aktualisierungen überprüfen</entry>
+	<entry id="1604" string="About %1">Über %1</entry>
+	<entry id="1605" string="index_en.html">index_de.html</entry>
       </section>
     </section>
 

@@ -53,8 +53,8 @@
       <entry id="1000" string="File">Plik</entry>
       <entry id="1001" string="Options">Ustawienia</entry>
       <entry id="1002" string="Database">Baza danych</entry>
-      <entry id="1003" string="Encode">Konwersja</entry>
-      <entry id="1004" string="Help">Pomoc</entry>
+      <entry id="1004" string="Encode">Konwersja</entry>
+      <entry id="1005" string="Help">Pomoc</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Dodaj</entry>
@@ -87,25 +87,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Rozpocznij konwersję</entry>
-	<entry id="1402" string="Start encoding with">Rozpocznij konwersję z</entry>
-	<entry id="1403" string="Pause/resume encoding">Wstrzymaj/wznów konwersję</entry>
-	<entry id="1404" string="Stop encoding">Zatrzymaj konwersję</entry>
-	<entry id="1405" string="Encoder options">Ustawienia konwertera</entry>
-	<entry id="1406" string="Encode to a single file">Konwertuj do jednego pliku</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Jeśli możliwe, konwertuj do katalogu wejściowego</entry>
-	<entry id="1408" string="Allow overwriting input file">Zezwól na zastąpienie pliku wejściowego</entry>
-	<entry id="1409" string="Delete original files after encoding">Usuń oryginalne pliki po zakończeniu konwersji</entry>
-	<entry id="1410" string="Shutdown after encoding">Wyłącz komputer po zakończeniu konwersji</entry>
+	<entry id="1500" string="Start encoding">Rozpocznij konwersję</entry>
+	<entry id="1502" string="Start encoding with">Rozpocznij konwersję z</entry>
+	<entry id="1503" string="Pause/resume encoding">Wstrzymaj/wznów konwersję</entry>
+	<entry id="1504" string="Stop encoding">Zatrzymaj konwersję</entry>
+	<entry id="1505" string="Encoder options">Ustawienia konwertera</entry>
+	<entry id="1506" string="Encode to a single file">Konwertuj do jednego pliku</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Jeśli możliwe, konwertuj do katalogu wejściowego</entry>
+	<entry id="1508" string="Allow overwriting input file">Zezwól na zastąpienie pliku wejściowego</entry>
+	<entry id="1509" string="Delete original files after encoding">Usuń oryginalne pliki po zakończeniu konwersji</entry>
+	<entry id="1510" string="Shutdown after encoding">Wyłącz komputer po zakończeniu konwersji</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Tematy pomocy</entry>
-	<entry id="1501" string="Show Tip of the Day">Wyświetl poradę</entry>
-	<entry id="1502" string="Check for updates now">Sprawdź uaktualnienia</entry>
-	<entry id="1503" string="Check for updates at startup">Sprawdzaj przy uruchomieniu</entry>
-	<entry id="1504" string="About %1">O programie %1</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">Tematy pomocy</entry>
+	<entry id="1601" string="Show Tip of the Day">Wyświetl poradę</entry>
+	<entry id="1602" string="Check for updates now">Sprawdź uaktualnienia</entry>
+	<entry id="1603" string="Check for updates at startup">Sprawdzaj przy uruchomieniu</entry>
+	<entry id="1604" string="About %1">O programie %1</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

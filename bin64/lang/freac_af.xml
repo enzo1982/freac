@@ -53,8 +53,8 @@
       <entry id="1000" string="File">Lêer</entry>
       <entry id="1001" string="Options">Opsies</entry>
       <entry id="1002" string="Database">Databank</entry>
-      <entry id="1003" string="Encode">Enkodeer</entry>
-      <entry id="1004" string="Help">Hulp</entry>
+      <entry id="1004" string="Encode">Enkodeer</entry>
+      <entry id="1005" string="Help">Hulp</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Voeg by</entry>
@@ -87,25 +87,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Begin enkodering</entry>
-	<entry id="1402" string="Start encoding with">Begin enkodering met</entry>
-	<entry id="1403" string="Pause/resume encoding">Pouseer/hervat enkodering</entry>
-	<entry id="1404" string="Stop encoding">Stop enkodering</entry>
-	<entry id="1405" string="Encoder options">Enkoderingsopsies</entry>
-	<entry id="1406" string="Encode to a single file">Enkodeer na 'n enkele lêer</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Enkodeer na invoerlêergids indien moontlik</entry>
-	<entry id="1408" string="Allow overwriting input file">Laat oorskrywing van insetlêer toe</entry>
-	<entry id="1409" string="Delete original files after encoding">Vee oorspronklike lêers na enkodering uit</entry>
-	<entry id="1410" string="Shutdown after encoding">Sluit af na enkodering</entry>
+	<entry id="1500" string="Start encoding">Begin enkodering</entry>
+	<entry id="1502" string="Start encoding with">Begin enkodering met</entry>
+	<entry id="1503" string="Pause/resume encoding">Pouseer/hervat enkodering</entry>
+	<entry id="1504" string="Stop encoding">Stop enkodering</entry>
+	<entry id="1505" string="Encoder options">Enkoderingsopsies</entry>
+	<entry id="1506" string="Encode to a single file">Enkodeer na 'n enkele lêer</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Enkodeer na invoerlêergids indien moontlik</entry>
+	<entry id="1508" string="Allow overwriting input file">Laat oorskrywing van insetlêer toe</entry>
+	<entry id="1509" string="Delete original files after encoding">Vee oorspronklike lêers na enkodering uit</entry>
+	<entry id="1510" string="Shutdown after encoding">Sluit af na enkodering</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Hulponderwerpe</entry>
-	<entry id="1501" string="Show Tip of the Day">Toon wenk van die dag</entry>
-	<entry id="1502" string="Check for updates now">Kontroleer vir opdaterings</entry>
-	<entry id="1503" string="Check for updates at startup">Kontroleer vir opdaterings tydens aanskakeling</entry>
-	<entry id="1504" string="About %1">Betreffende %1</entry>
-	<entry id="1505" string="index_en.html">index_en.html</entry>
+	<entry id="1600" string="Help topics">Hulponderwerpe</entry>
+	<entry id="1601" string="Show Tip of the Day">Toon wenk van die dag</entry>
+	<entry id="1602" string="Check for updates now">Kontroleer vir opdaterings</entry>
+	<entry id="1603" string="Check for updates at startup">Kontroleer vir opdaterings tydens aanskakeling</entry>
+	<entry id="1604" string="About %1">Betreffende %1</entry>
+	<entry id="1605" string="index_en.html">index_en.html</entry>
       </section>
     </section>
 

@@ -53,8 +53,8 @@
       <entry id="1000" string="File">Fail</entry>
       <entry id="1001" string="Options">Sätted</entry>
       <entry id="1002" string="Database">Andmebaas</entry>
-      <entry id="1003" string="Encode">Kodeerimine</entry>
-      <entry id="1004" string="Help">Abi</entry>
+      <entry id="1004" string="Encode">Kodeerimine</entry>
+      <entry id="1005" string="Help">Abi</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Lisa</entry>
@@ -87,25 +87,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Alusta kodeerimist</entry>
-	<entry id="1402" string="Start encoding with">Alusta kodeerimist koos</entry>
-	<entry id="1403" string="Pause/resume encoding">Paus/jätkata kodeerimist</entry>
-	<entry id="1404" string="Stop encoding">Lõpeta Kodeerimine</entry>
-	<entry id="1405" string="Encoder options">Kodeki sätted</entry>
-	<entry id="1406" string="Encode to a single file">Kodeerida ühte faili</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Kodeeri otse sisendfaili kausta kui on võimalik</entry>
-	<entry id="1408" string="Allow overwriting input file">Kirjutada üle sisend fail</entry>
-	<entry id="1409" string="Delete original files after encoding">Kustuta originaal failid peale kodeerimist</entry>
-	<entry id="1410" string="Shutdown after encoding">Peale kodeerimist lülitada arvuti välja</entry>
+	<entry id="1500" string="Start encoding">Alusta kodeerimist</entry>
+	<entry id="1502" string="Start encoding with">Alusta kodeerimist koos</entry>
+	<entry id="1503" string="Pause/resume encoding">Paus/jätkata kodeerimist</entry>
+	<entry id="1504" string="Stop encoding">Lõpeta Kodeerimine</entry>
+	<entry id="1505" string="Encoder options">Kodeki sätted</entry>
+	<entry id="1506" string="Encode to a single file">Kodeerida ühte faili</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Kodeeri otse sisendfaili kausta kui on võimalik</entry>
+	<entry id="1508" string="Allow overwriting input file">Kirjutada üle sisend fail</entry>
+	<entry id="1509" string="Delete original files after encoding">Kustuta originaal failid peale kodeerimist</entry>
+	<entry id="1510" string="Shutdown after encoding">Peale kodeerimist lülitada arvuti välja</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Abi</entry>
-	<entry id="1501" string="Show Tip of the Day">Hüva nõu</entry>
-	<entry id="1502" string="Check for updates now">Kontrolli uuendusi</entry>
-	<entry id="1503" string="Check for updates at startup">Kontrollida uuendusi programmi käivitusel</entry>
-	<entry id="1504" string="About %1">Info %1 kohta</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">Abi</entry>
+	<entry id="1601" string="Show Tip of the Day">Hüva nõu</entry>
+	<entry id="1602" string="Check for updates now">Kontrolli uuendusi</entry>
+	<entry id="1603" string="Check for updates at startup">Kontrollida uuendusi programmi käivitusel</entry>
+	<entry id="1604" string="About %1">Info %1 kohta</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

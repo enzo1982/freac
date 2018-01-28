@@ -53,8 +53,8 @@
       <entry id="1000" string="File">Arquivo</entry>
       <entry id="1001" string="Options">Opcións</entry>
       <entry id="1002" string="Database">Base de datos</entry>
-      <entry id="1003" string="Encode">Convertir</entry>
-      <entry id="1004" string="Help">Axuda</entry>
+      <entry id="1004" string="Encode">Convertir</entry>
+      <entry id="1005" string="Help">Axuda</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Engadir</entry>
@@ -87,25 +87,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Comezar conversión</entry>
-	<entry id="1402" string="Start encoding with">Comezar conversión con</entry>
-	<entry id="1403" string="Pause/resume encoding">Pausar/continuar conversión</entry>
-	<entry id="1404" string="Stop encoding">Deter conversión</entry>
-	<entry id="1405" string="Encoder options">Opcións do conversor</entry>
-	<entry id="1406" string="Encode to a single file">Extraer nun só arquivo</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Codificar no directorio de entrada, se é posíbel</entry>
-	<entry id="1408" string="Allow overwriting input file">Permitir sobreescribir o arquivo de entrada</entry>
-	<entry id="1409" string="Delete original files after encoding">Eliminar os arquivos orixinais ao rematar a codificación</entry>
-	<entry id="1410" string="Shutdown after encoding">Apagar o equipo ao finalizar a codificación</entry>
+	<entry id="1500" string="Start encoding">Comezar conversión</entry>
+	<entry id="1502" string="Start encoding with">Comezar conversión con</entry>
+	<entry id="1503" string="Pause/resume encoding">Pausar/continuar conversión</entry>
+	<entry id="1504" string="Stop encoding">Deter conversión</entry>
+	<entry id="1505" string="Encoder options">Opcións do conversor</entry>
+	<entry id="1506" string="Encode to a single file">Extraer nun só arquivo</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Codificar no directorio de entrada, se é posíbel</entry>
+	<entry id="1508" string="Allow overwriting input file">Permitir sobreescribir o arquivo de entrada</entry>
+	<entry id="1509" string="Delete original files after encoding">Eliminar os arquivos orixinais ao rematar a codificación</entry>
+	<entry id="1510" string="Shutdown after encoding">Apagar o equipo ao finalizar a codificación</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Temas de axuda</entry>
-	<entry id="1501" string="Show Tip of the Day">Suxestión do día</entry>
-	<entry id="1502" string="Check for updates now">Comprobar se hai actualizacións agora</entry>
-	<entry id="1503" string="Check for updates at startup">Comprobar no inicio se hai actualizacións</entry>
-	<entry id="1504" string="About %1">Sobre %1</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">Temas de axuda</entry>
+	<entry id="1601" string="Show Tip of the Day">Suxestión do día</entry>
+	<entry id="1602" string="Check for updates now">Comprobar se hai actualizacións agora</entry>
+	<entry id="1603" string="Check for updates at startup">Comprobar no inicio se hai actualizacións</entry>
+	<entry id="1604" string="About %1">Sobre %1</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

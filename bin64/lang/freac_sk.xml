@@ -53,8 +53,8 @@
       <entry id="1000" string="File">Súbor</entry>
       <entry id="1001" string="Options">Možnosti</entry>
       <entry id="1002" string="Database">Databáza</entry>
-      <entry id="1003" string="Encode">Zakódovať</entry>
-      <entry id="1004" string="Help">Pomoc</entry>
+      <entry id="1004" string="Encode">Zakódovať</entry>
+      <entry id="1005" string="Help">Pomoc</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Pridať</entry>
@@ -87,25 +87,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Začať kódovať</entry>
-	<entry id="1402" string="Start encoding with">Začať kódovať s</entry>
-	<entry id="1403" string="Pause/resume encoding">Puaza/Pokračovať kódovanie</entry>
-	<entry id="1404" string="Stop encoding">Zastaviť kódovanie</entry>
-	<entry id="1405" string="Encoder options">Možnosti kodeku</entry>
-	<entry id="1406" string="Encode to a single file">Kódovať do jedného súboru</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Kódovať do vstupného adresára ak je to možné</entry>
-	<entry id="1408" string="Allow overwriting input file">Povoliť prepisovanie vstupného súboru</entry>
-	<entry id="1409" string="Delete original files after encoding">Po kódovaní zmazať pôvodné súbory</entry>
-	<entry id="1410" string="Shutdown after encoding">Vypnúť PC po kódovaní</entry>
+	<entry id="1500" string="Start encoding">Začať kódovať</entry>
+	<entry id="1502" string="Start encoding with">Začať kódovať s</entry>
+	<entry id="1503" string="Pause/resume encoding">Puaza/Pokračovať kódovanie</entry>
+	<entry id="1504" string="Stop encoding">Zastaviť kódovanie</entry>
+	<entry id="1505" string="Encoder options">Možnosti kodeku</entry>
+	<entry id="1506" string="Encode to a single file">Kódovať do jedného súboru</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Kódovať do vstupného adresára ak je to možné</entry>
+	<entry id="1508" string="Allow overwriting input file">Povoliť prepisovanie vstupného súboru</entry>
+	<entry id="1509" string="Delete original files after encoding">Po kódovaní zmazať pôvodné súbory</entry>
+	<entry id="1510" string="Shutdown after encoding">Vypnúť PC po kódovaní</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Témy pomocníka</entry>
-	<entry id="1501" string="Show Tip of the Day">Ukázať Tip Dňa</entry>
-	<entry id="1502" string="Check for updates now">Zistiť Updaty</entry>
-	<entry id="1503" string="Check for updates at startup">Kontrolovať updaty pri štarte programu</entry>
-	<entry id="1504" string="About %1">O %1</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">Témy pomocníka</entry>
+	<entry id="1601" string="Show Tip of the Day">Ukázať Tip Dňa</entry>
+	<entry id="1602" string="Check for updates now">Zistiť Updaty</entry>
+	<entry id="1603" string="Check for updates at startup">Kontrolovať updaty pri štarte programu</entry>
+	<entry id="1604" string="About %1">O %1</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

@@ -53,8 +53,8 @@
       <entry id="1000" string="File">Datoteka</entry>
       <entry id="1001" string="Options">Opcije</entry>
       <entry id="1002" string="Database">Baza podataka</entry>
-      <entry id="1003" string="Encode">Enkodiranje</entry>
-      <entry id="1004" string="Help">Pomoć</entry>
+      <entry id="1004" string="Encode">Enkodiranje</entry>
+      <entry id="1005" string="Help">Pomoć</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Dodaj</entry>
@@ -87,25 +87,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Počni enkodiranje</entry>
-	<entry id="1402" string="Start encoding with">Počni enkodiranje s</entry>
-	<entry id="1403" string="Pause/resume encoding">Pauziraj/nastavi enkodiranje</entry>
-	<entry id="1404" string="Stop encoding">Zaustavi enkodiranje</entry>
-	<entry id="1405" string="Encoder options">Opcije enkodera</entry>
-	<entry id="1406" string="Encode to a single file">Enkodiraj u jednu datoteku</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Enkodiraj u ulaznu mapu ako je moguće</entry>
-	<entry id="1408" string="Allow overwriting input file">Dozvoli prepisivanje ulazne datoteke</entry>
-	<entry id="1409" string="Delete original files after encoding">Obriši originalnu datoteku nakon enkodiranja</entry>
-	<entry id="1410" string="Shutdown after encoding">Shutdown nakon enkodiranja</entry>
+	<entry id="1500" string="Start encoding">Počni enkodiranje</entry>
+	<entry id="1502" string="Start encoding with">Počni enkodiranje s</entry>
+	<entry id="1503" string="Pause/resume encoding">Pauziraj/nastavi enkodiranje</entry>
+	<entry id="1504" string="Stop encoding">Zaustavi enkodiranje</entry>
+	<entry id="1505" string="Encoder options">Opcije enkodera</entry>
+	<entry id="1506" string="Encode to a single file">Enkodiraj u jednu datoteku</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Enkodiraj u ulaznu mapu ako je moguće</entry>
+	<entry id="1508" string="Allow overwriting input file">Dozvoli prepisivanje ulazne datoteke</entry>
+	<entry id="1509" string="Delete original files after encoding">Obriši originalnu datoteku nakon enkodiranja</entry>
+	<entry id="1510" string="Shutdown after encoding">Shutdown nakon enkodiranja</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Teme pomoć</entry>
-	<entry id="1501" string="Show Tip of the Day">Prikaži Savjet dana</entry>
-	<entry id="1502" string="Check for updates now">Provjeri za update sada</entry>
-	<entry id="1503" string="Check for updates at startup">Provjeri nadogradnje prilikom startanja</entry>
-	<entry id="1504" string="About %1">O %1</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">Teme pomoć</entry>
+	<entry id="1601" string="Show Tip of the Day">Prikaži Savjet dana</entry>
+	<entry id="1602" string="Check for updates now">Provjeri za update sada</entry>
+	<entry id="1603" string="Check for updates at startup">Provjeri nadogradnje prilikom startanja</entry>
+	<entry id="1604" string="About %1">O %1</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

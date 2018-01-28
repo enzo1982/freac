@@ -67,8 +67,9 @@
       <entry id="1000" string="File">Файл</entry>
       <entry id="1001" string="Options">Настройки</entry>
       <entry id="1002" string="Database">База Данни</entry>
-      <entry id="1003" string="Encode">Кодиране</entry>
-      <entry id="1004" string="Help">Помощ</entry>
+      <entry id="1003" string="Processing">Обработка</entry>
+      <entry id="1004" string="Encode">Кодиране</entry>
+      <entry id="1005" string="Help">Помощ</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Добавяне</entry>
@@ -103,25 +104,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Старт на кодирането</entry>
-	<entry id="1402" string="Start encoding with">Старт на кодирането с</entry>
-	<entry id="1403" string="Pause/resume encoding">Пауза/Продължаване на кодирането</entry>
-	<entry id="1404" string="Stop encoding">Стоп на кодирането</entry>
-	<entry id="1405" string="Encoder options">Настройки на енкодера</entry>
-	<entry id="1406" string="Encode to a single file">Кодиране в един файл</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Кодиране в папката на входния файл (ако е възможно)</entry>
-	<entry id="1408" string="Allow overwriting input file">Разрешаване на презаписването на входния файл</entry>
-	<entry id="1409" string="Delete original files after encoding">Изтриване на оригиналните файлове след кодирането</entry>
-	<entry id="1410" string="Shutdown after encoding">Изключване след кодирането</entry>
+	<entry id="1500" string="Start encoding">Старт на кодирането</entry>
+	<entry id="1502" string="Start encoding with">Старт на кодирането с</entry>
+	<entry id="1503" string="Pause/resume encoding">Пауза/Продължаване на кодирането</entry>
+	<entry id="1504" string="Stop encoding">Стоп на кодирането</entry>
+	<entry id="1505" string="Encoder options">Настройки на енкодера</entry>
+	<entry id="1506" string="Encode to a single file">Кодиране в един файл</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Кодиране в папката на входния файл (ако е възможно)</entry>
+	<entry id="1508" string="Allow overwriting input file">Разрешаване на презаписването на входния файл</entry>
+	<entry id="1509" string="Delete original files after encoding">Изтриване на оригиналните файлове след кодирането</entry>
+	<entry id="1510" string="Shutdown after encoding">Изключване след кодирането</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Ръководство за употреба</entry>
-	<entry id="1501" string="Show Tip of the Day">Показване на Съвети за деня</entry>
-	<entry id="1502" string="Check for updates now">Проверка за обновление сега</entry>
-	<entry id="1503" string="Check for updates at startup">Проверка за обновление при стартиране</entry>
-	<entry id="1504" string="About %1">Относно %1</entry>
-	<entry id="1505" string="index_en.html">index_en.html</entry>
+	<entry id="1600" string="Help topics">Ръководство за употреба</entry>
+	<entry id="1601" string="Show Tip of the Day">Показване на Съвети за деня</entry>
+	<entry id="1602" string="Check for updates now">Проверка за обновление сега</entry>
+	<entry id="1603" string="Check for updates at startup">Проверка за обновление при стартиране</entry>
+	<entry id="1604" string="About %1">Относно %1</entry>
+	<entry id="1605" string="index_en.html">index_en.html</entry>
       </section>
     </section>
 

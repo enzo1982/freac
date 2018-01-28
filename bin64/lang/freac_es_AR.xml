@@ -49,8 +49,8 @@
       <entry id="1000" string="File">Archivo</entry>
       <entry id="1001" string="Options">Opciones</entry>
       <entry id="1002" string="Database">Base de datos</entry>
-      <entry id="1003" string="Encode">Codificar</entry>
-      <entry id="1004" string="Help">Ayuda</entry>
+      <entry id="1004" string="Encode">Codificar</entry>
+      <entry id="1005" string="Help">Ayuda</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Agregar</entry>
@@ -83,25 +83,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Comenzar codificación</entry>
-	<entry id="1402" string="Start encoding with">Comenzar codificación con</entry>
-	<entry id="1403" string="Pause/resume encoding">Pausar/Resumir codificación</entry>
-	<entry id="1404" string="Stop encoding">Detener codificación</entry>
-	<entry id="1405" string="Encoder options">Opciones de codificación</entry>
-	<entry id="1406" string="Encode to a single file">Codificar a un solo archivo</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Codificar al directorio origien si es posible</entry>
-	<entry id="1408" string="Allow overwriting input file">Permitir sobreescribir el archivo de origen</entry>
-	<entry id="1409" string="Delete original files after encoding">Eliminar archivos originales luego de codificar</entry>
-	<entry id="1410" string="Shutdown after encoding">Apagar luego de codificar</entry>
+	<entry id="1500" string="Start encoding">Comenzar codificación</entry>
+	<entry id="1502" string="Start encoding with">Comenzar codificación con</entry>
+	<entry id="1503" string="Pause/resume encoding">Pausar/Resumir codificación</entry>
+	<entry id="1504" string="Stop encoding">Detener codificación</entry>
+	<entry id="1505" string="Encoder options">Opciones de codificación</entry>
+	<entry id="1506" string="Encode to a single file">Codificar a un solo archivo</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Codificar al directorio origien si es posible</entry>
+	<entry id="1508" string="Allow overwriting input file">Permitir sobreescribir el archivo de origen</entry>
+	<entry id="1509" string="Delete original files after encoding">Eliminar archivos originales luego de codificar</entry>
+	<entry id="1510" string="Shutdown after encoding">Apagar luego de codificar</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Temas de ayuda</entry>
-	<entry id="1501" string="Show Tip of the Day">Sugerencia del día</entry>
-	<entry id="1502" string="Check for updates now">Comprobar si hay actualizaciones ahora</entry>
-	<entry id="1503" string="Check for updates at startup">Comprobar por actualizaciones al iniciar</entry>
-	<entry id="1504" string="About %1">Acerca de %1</entry>
-	<entry id="1505" string="index_en.html">index_es.html</entry>
+	<entry id="1600" string="Help topics">Temas de ayuda</entry>
+	<entry id="1601" string="Show Tip of the Day">Sugerencia del día</entry>
+	<entry id="1602" string="Check for updates now">Comprobar si hay actualizaciones ahora</entry>
+	<entry id="1603" string="Check for updates at startup">Comprobar por actualizaciones al iniciar</entry>
+	<entry id="1604" string="About %1">Acerca de %1</entry>
+	<entry id="1605" string="index_en.html">index_es.html</entry>
       </section>
     </section>
 

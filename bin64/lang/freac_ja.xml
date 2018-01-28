@@ -58,8 +58,8 @@
       <entry id="1000" string="File">ファイル</entry>
       <entry id="1001" string="Options">オプション</entry>
       <entry id="1002" string="Database">データベース</entry>
-      <entry id="1003" string="Encode">エンコード</entry>
-      <entry id="1004" string="Help">ヘルプ</entry>
+      <entry id="1004" string="Encode">エンコード</entry>
+      <entry id="1005" string="Help">ヘルプ</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">追加</entry>
@@ -92,25 +92,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">エンコード開始</entry>
-	<entry id="1402" string="Start encoding with">エンコード開始</entry>
-	<entry id="1403" string="Pause/resume encoding">エンコードを中断/再開</entry>
-	<entry id="1404" string="Stop encoding">エンコード停止</entry>
-	<entry id="1405" string="Encoder options">エンコーダの設定</entry>
-	<entry id="1406" string="Encode to a single file">一つのファイルにエンコード</entry>
-	<entry id="1407" string="Encode to input file folder if possible">可能なら入力ファイルのディレクトリにエンコード</entry>
-	<entry id="1408" string="Allow overwriting input file">入力ファイルへ上書きを許可</entry>
-	<entry id="1409" string="Delete original files after encoding">エンコード後に元ファイルを削除</entry>
-	<entry id="1410" string="Shutdown after encoding">エンコード終了後にシャットダウン</entry>
+	<entry id="1500" string="Start encoding">エンコード開始</entry>
+	<entry id="1502" string="Start encoding with">エンコード開始</entry>
+	<entry id="1503" string="Pause/resume encoding">エンコードを中断/再開</entry>
+	<entry id="1504" string="Stop encoding">エンコード停止</entry>
+	<entry id="1505" string="Encoder options">エンコーダの設定</entry>
+	<entry id="1506" string="Encode to a single file">一つのファイルにエンコード</entry>
+	<entry id="1507" string="Encode to input file folder if possible">可能なら入力ファイルのディレクトリにエンコード</entry>
+	<entry id="1508" string="Allow overwriting input file">入力ファイルへ上書きを許可</entry>
+	<entry id="1509" string="Delete original files after encoding">エンコード後に元ファイルを削除</entry>
+	<entry id="1510" string="Shutdown after encoding">エンコード終了後にシャットダウン</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">ヘルプ</entry>
-	<entry id="1501" string="Show Tip of the Day">今日の Tip を表示</entry>
-	<entry id="1502" string="Check for updates now">アップデートを確認</entry>
-	<entry id="1503" string="Check for updates at startup">起動時にアップデートを確認</entry>
-	<entry id="1504" string="About %1">%1 について</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">ヘルプ</entry>
+	<entry id="1601" string="Show Tip of the Day">今日の Tip を表示</entry>
+	<entry id="1602" string="Check for updates now">アップデートを確認</entry>
+	<entry id="1603" string="Check for updates at startup">起動時にアップデートを確認</entry>
+	<entry id="1604" string="About %1">%1 について</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

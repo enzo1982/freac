@@ -67,8 +67,9 @@
       <entry id="1000" string="File">Arquivo</entry>
       <entry id="1001" string="Options">Opções</entry>
       <entry id="1002" string="Database">Base de dados</entry>
-      <entry id="1003" string="Encode">Codificar</entry>
-      <entry id="1004" string="Help">Ajuda</entry>
+      <entry id="1003" string="Processing">Processando</entry>
+      <entry id="1004" string="Encode">Codificar</entry>
+      <entry id="1005" string="Help">Ajuda</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Adicionar</entry>
@@ -102,26 +103,31 @@
 	<entry id="1304" string="Default configuration">Configuração padrão</entry>
       </section>
 
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">Habilitar o processamento de sinal</entry>
+	<entry id="1401" string="Enable processing during playback">Habilitar o processamento durante a reprodução</entry>
+      </section>
+
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Iniciar a codificação</entry>
-	<entry id="1402" string="Start encoding with">Iniciar a codificação com</entry>
-	<entry id="1403" string="Pause/resume encoding">Pausar / retomar a codificação</entry>
-	<entry id="1404" string="Stop encoding">Parar a codificação</entry>
-	<entry id="1405" string="Encoder options">Opções do codificador</entry>
-	<entry id="1406" string="Encode to a single file">Codificar para um único arquivo</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Codificar para a pasta de arquivos de entrada, se possível</entry>
-	<entry id="1408" string="Allow overwriting input file">Permitir a substituição do arquivo de entrada</entry>
-	<entry id="1409" string="Delete original files after encoding">Excluir os arquivos originais após a codificação</entry>
-	<entry id="1410" string="Shutdown after encoding">Desligamento automático após a codificação</entry>
+	<entry id="1500" string="Start encoding">Iniciar a codificação</entry>
+	<entry id="1502" string="Start encoding with">Iniciar a codificação com</entry>
+	<entry id="1503" string="Pause/resume encoding">Pausar / retomar a codificação</entry>
+	<entry id="1504" string="Stop encoding">Parar a codificação</entry>
+	<entry id="1505" string="Encoder options">Opções do codificador</entry>
+	<entry id="1506" string="Encode to a single file">Codificar para um único arquivo</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Codificar para a pasta de arquivos de entrada, se possível</entry>
+	<entry id="1508" string="Allow overwriting input file">Permitir a substituição do arquivo de entrada</entry>
+	<entry id="1509" string="Delete original files after encoding">Excluir os arquivos originais após a codificação</entry>
+	<entry id="1510" string="Shutdown after encoding">Desligamento automático após a codificação</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Tópicos da ajuda</entry>
-	<entry id="1501" string="Show Tip of the Day">Mostrar a Dica-do-Dia</entry>
-	<entry id="1502" string="Check for updates now">Verificar se há atualizações agora</entry>
-	<entry id="1503" string="Check for updates at startup">Verificar se há atualizações na inicialização</entry>
-	<entry id="1504" string="About %1">Sobre %1</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">Tópicos da ajuda</entry>
+	<entry id="1601" string="Show Tip of the Day">Mostrar a Dica-do-Dia</entry>
+	<entry id="1602" string="Check for updates now">Verificar se há atualizações agora</entry>
+	<entry id="1603" string="Check for updates at startup">Verificar se há atualizações na inicialização</entry>
+	<entry id="1604" string="About %1">Sobre %1</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

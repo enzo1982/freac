@@ -53,8 +53,8 @@
       <entry id="1000" string="File">Schedariu</entry>
       <entry id="1001" string="Options">Ozzioni</entry>
       <entry id="1002" string="Database">Banca di dati</entry>
-      <entry id="1003" string="Encode">Cudificà</entry>
-      <entry id="1004" string="Help">Aiutu</entry>
+      <entry id="1004" string="Encode">Cudificà</entry>
+      <entry id="1005" string="Help">Aiutu</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Aghjunghje</entry>
@@ -87,25 +87,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Principià a cudificazione</entry>
-	<entry id="1402" string="Start encoding with">Principià a cudificazione cù</entry>
-	<entry id="1403" string="Pause/resume encoding">Piantà/ripiglià a cudificazione</entry>
-	<entry id="1404" string="Stop encoding">Piantà a cudificazione</entry>
-	<entry id="1405" string="Encoder options">Ozzioni di cudificatore</entry>
-	<entry id="1406" string="Encode to a single file">Cudificà ver di sched. unicu</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Cudificà ver di u cartulare di u schedariu d'urigine s'ellu hè pussibule</entry>
-	<entry id="1408" string="Allow overwriting input file">Permette di rimpiazzà u schedariu d'urigine</entry>
-	<entry id="1409" string="Delete original files after encoding">Squassà u schedariu d'urigine dopu à a cudificazione</entry>
-	<entry id="1410" string="Shutdown after encoding">Chjusura di u sistema dopu à a cudificazione</entry>
+	<entry id="1500" string="Start encoding">Principià a cudificazione</entry>
+	<entry id="1502" string="Start encoding with">Principià a cudificazione cù</entry>
+	<entry id="1503" string="Pause/resume encoding">Piantà/ripiglià a cudificazione</entry>
+	<entry id="1504" string="Stop encoding">Piantà a cudificazione</entry>
+	<entry id="1505" string="Encoder options">Ozzioni di cudificatore</entry>
+	<entry id="1506" string="Encode to a single file">Cudificà ver di sched. unicu</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Cudificà ver di u cartulare di u schedariu d'urigine s'ellu hè pussibule</entry>
+	<entry id="1508" string="Allow overwriting input file">Permette di rimpiazzà u schedariu d'urigine</entry>
+	<entry id="1509" string="Delete original files after encoding">Squassà u schedariu d'urigine dopu à a cudificazione</entry>
+	<entry id="1510" string="Shutdown after encoding">Chjusura di u sistema dopu à a cudificazione</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Rubriche d'aiutu</entry>
-	<entry id="1501" string="Show Tip of the Day">Affissà a Minichichja Oghjinca</entry>
-	<entry id="1502" string="Check for updates now">Cuntrollà i rinnovi avà</entry>
-	<entry id="1503" string="Check for updates at startup">Circà i rinnovi à l'iniziu di u prugramma</entry>
-	<entry id="1504" string="About %1">Apprupositu di %1</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">Rubriche d'aiutu</entry>
+	<entry id="1601" string="Show Tip of the Day">Affissà a Minichichja Oghjinca</entry>
+	<entry id="1602" string="Check for updates now">Cuntrollà i rinnovi avà</entry>
+	<entry id="1603" string="Check for updates at startup">Circà i rinnovi à l'iniziu di u prugramma</entry>
+	<entry id="1604" string="About %1">Apprupositu di %1</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

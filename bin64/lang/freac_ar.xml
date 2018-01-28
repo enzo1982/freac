@@ -53,8 +53,8 @@
       <entry id="1000" string="File">ملف</entry>
       <entry id="1001" string="Options">خيارات</entry>
       <entry id="1002" string="Database">قاعدة بيانات</entry>
-      <entry id="1003" string="Encode">ترميز</entry>
-      <entry id="1004" string="Help">مساعدة</entry>
+      <entry id="1004" string="Encode">ترميز</entry>
+      <entry id="1005" string="Help">مساعدة</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">إضافة</entry>
@@ -87,25 +87,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">بدء الترميز</entry>
-	<entry id="1402" string="Start encoding with">بدء الترميز</entry>
-	<entry id="1403" string="Pause/resume encoding">وقفة/استعادة الترميز</entry>
-	<entry id="1404" string="Stop encoding">إيقاف الترميز</entry>
-	<entry id="1405" string="Encoder options">خيارات الترميز</entry>
-	<entry id="1406" string="Encode to a single file">ملف و حيد للترميز</entry>
-	<entry id="1407" string="Encode to input file folder if possible">إذا كان ذلك ممكنا الترميز ‘إلى مجلد ملف الناتج</entry>
-	<entry id="1408" string="Allow overwriting input file">السماح بالكتابة على ملف الادخال</entry>
-	<entry id="1409" string="Delete original files after encoding">حذف الملف الأصلي بعد الترميز</entry>
-	<entry id="1410" string="Shutdown after encoding">غلق الحاسب بعد الترميز</entry>
+	<entry id="1500" string="Start encoding">بدء الترميز</entry>
+	<entry id="1502" string="Start encoding with">بدء الترميز</entry>
+	<entry id="1503" string="Pause/resume encoding">وقفة/استعادة الترميز</entry>
+	<entry id="1504" string="Stop encoding">إيقاف الترميز</entry>
+	<entry id="1505" string="Encoder options">خيارات الترميز</entry>
+	<entry id="1506" string="Encode to a single file">ملف و حيد للترميز</entry>
+	<entry id="1507" string="Encode to input file folder if possible">إذا كان ذلك ممكنا الترميز ‘إلى مجلد ملف الناتج</entry>
+	<entry id="1508" string="Allow overwriting input file">السماح بالكتابة على ملف الادخال</entry>
+	<entry id="1509" string="Delete original files after encoding">حذف الملف الأصلي بعد الترميز</entry>
+	<entry id="1510" string="Shutdown after encoding">غلق الحاسب بعد الترميز</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">موضوعات المساعدة</entry>
-	<entry id="1501" string="Show Tip of the Day">عرض نصيحة هذا اليوم</entry>
-	<entry id="1502" string="Check for updates now">تحقق من توفر تحيينات الآن</entry>
-	<entry id="1503" string="Check for updates at startup">التحقق من التحديثات عند بدء التشغيل</entry>
-	<entry id="1504" string="About %1">%1 بخصوص</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">موضوعات المساعدة</entry>
+	<entry id="1601" string="Show Tip of the Day">عرض نصيحة هذا اليوم</entry>
+	<entry id="1602" string="Check for updates now">تحقق من توفر تحيينات الآن</entry>
+	<entry id="1603" string="Check for updates at startup">التحقق من التحديثات عند بدء التشغيل</entry>
+	<entry id="1604" string="About %1">%1 بخصوص</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

@@ -53,8 +53,8 @@
       <entry id="1000" string="File">Tiedosto</entry>
       <entry id="1001" string="Options">Asetukset</entry>
       <entry id="1002" string="Database">Tietokanta</entry>
-      <entry id="1003" string="Encode">Muunna</entry>
-      <entry id="1004" string="Help">Ohje</entry>
+      <entry id="1004" string="Encode">Muunna</entry>
+      <entry id="1005" string="Help">Ohje</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Lisää</entry>
@@ -87,25 +87,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Aloita muuntaminen</entry>
-	<entry id="1402" string="Start encoding with">Aloita muuntaminen kanssa</entry>
-	<entry id="1403" string="Pause/resume encoding">Tauko/jatka muuntamista</entry>
-	<entry id="1404" string="Stop encoding">Pysäytä muuntaminen</entry>
-	<entry id="1405" string="Encoder options">Muuntimen asetukset</entry>
-	<entry id="1406" string="Encode to a single file">Muunna yksittäinen tiedosto</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Muunna syötetiedostokansio jos mahdollista</entry>
-	<entry id="1408" string="Allow overwriting input file">Salli syötetiedoston korvaaminen</entry>
-	<entry id="1409" string="Delete original files after encoding">Poista alkuperäiset tiedostot muuntamisen jälkeen</entry>
-	<entry id="1410" string="Shutdown after encoding">Sammuta muuntamisen jälkeen</entry>
+	<entry id="1500" string="Start encoding">Aloita muuntaminen</entry>
+	<entry id="1502" string="Start encoding with">Aloita muuntaminen kanssa</entry>
+	<entry id="1503" string="Pause/resume encoding">Tauko/jatka muuntamista</entry>
+	<entry id="1504" string="Stop encoding">Pysäytä muuntaminen</entry>
+	<entry id="1505" string="Encoder options">Muuntimen asetukset</entry>
+	<entry id="1506" string="Encode to a single file">Muunna yksittäinen tiedosto</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Muunna syötetiedostokansio jos mahdollista</entry>
+	<entry id="1508" string="Allow overwriting input file">Salli syötetiedoston korvaaminen</entry>
+	<entry id="1509" string="Delete original files after encoding">Poista alkuperäiset tiedostot muuntamisen jälkeen</entry>
+	<entry id="1510" string="Shutdown after encoding">Sammuta muuntamisen jälkeen</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Näytä ohje</entry>
-	<entry id="1501" string="Show Tip of the Day">Näytä Päivän vihje</entry>
-	<entry id="1502" string="Check for updates now">Tarkista päivitykset</entry>
-	<entry id="1503" string="Check for updates at startup">Tarkista päivitykset heti ohjelman käynnistyessä</entry>
-	<entry id="1504" string="About %1">Tietoja %1ista</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">Näytä ohje</entry>
+	<entry id="1601" string="Show Tip of the Day">Näytä Päivän vihje</entry>
+	<entry id="1602" string="Check for updates now">Tarkista päivitykset</entry>
+	<entry id="1603" string="Check for updates at startup">Tarkista päivitykset heti ohjelman käynnistyessä</entry>
+	<entry id="1604" string="About %1">Tietoja %1ista</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

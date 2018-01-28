@@ -53,8 +53,8 @@
       <entry id="1000" string="File">Fájl</entry>
       <entry id="1001" string="Options">Beállítások</entry>
       <entry id="1002" string="Database">Adatbázis</entry>
-      <entry id="1003" string="Encode">Tömörítés</entry>
-      <entry id="1004" string="Help">Segítség</entry>
+      <entry id="1004" string="Encode">Tömörítés</entry>
+      <entry id="1005" string="Help">Segítség</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Hozzáadás</entry>
@@ -87,25 +87,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Tömörítés indítása</entry>
-	<entry id="1402" string="Start encoding with">Tömörítés indítása...</entry>
-	<entry id="1403" string="Pause/resume encoding">Tömörítés szünet/folytatás</entry>
-	<entry id="1404" string="Stop encoding">Tömörítés megszakítása</entry>
-	<entry id="1405" string="Encoder options">Tömörítő beállításai</entry>
-	<entry id="1406" string="Encode to a single file">Egy fájlba tömörítés</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Bemeneti könyvtár használata kódoláshoz (ha lehetséges)</entry>
-	<entry id="1408" string="Allow overwriting input file">Bemeneti fájl felülírásának engedélyezése</entry>
-	<entry id="1409" string="Delete original files after encoding">Eredeti fájlok törlése tömörítés után</entry>
-	<entry id="1410" string="Shutdown after encoding">Lekapcsolás a tömörítés végén</entry>
+	<entry id="1500" string="Start encoding">Tömörítés indítása</entry>
+	<entry id="1502" string="Start encoding with">Tömörítés indítása...</entry>
+	<entry id="1503" string="Pause/resume encoding">Tömörítés szünet/folytatás</entry>
+	<entry id="1504" string="Stop encoding">Tömörítés megszakítása</entry>
+	<entry id="1505" string="Encoder options">Tömörítő beállításai</entry>
+	<entry id="1506" string="Encode to a single file">Egy fájlba tömörítés</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Bemeneti könyvtár használata kódoláshoz (ha lehetséges)</entry>
+	<entry id="1508" string="Allow overwriting input file">Bemeneti fájl felülírásának engedélyezése</entry>
+	<entry id="1509" string="Delete original files after encoding">Eredeti fájlok törlése tömörítés után</entry>
+	<entry id="1510" string="Shutdown after encoding">Lekapcsolás a tömörítés végén</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Segítség fejezetek</entry>
-	<entry id="1501" string="Show Tip of the Day">Mutassa a Nap Tippjét</entry>
-	<entry id="1502" string="Check for updates now">Új verzió keresése most</entry>
-	<entry id="1503" string="Check for updates at startup">Új verzió keresése induláskor</entry>
-	<entry id="1504" string="About %1">A %1-röl röviden</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">Segítség fejezetek</entry>
+	<entry id="1601" string="Show Tip of the Day">Mutassa a Nap Tippjét</entry>
+	<entry id="1602" string="Check for updates now">Új verzió keresése most</entry>
+	<entry id="1603" string="Check for updates at startup">Új verzió keresése induláskor</entry>
+	<entry id="1604" string="About %1">A %1-röl röviden</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

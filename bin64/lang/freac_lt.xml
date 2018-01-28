@@ -53,8 +53,8 @@
       <entry id="1000" string="File">Failas</entry>
       <entry id="1001" string="Options">Pasirinktys</entry>
       <entry id="1002" string="Database">Duomenų bazė</entry>
-      <entry id="1003" string="Encode">Koduoti</entry>
-      <entry id="1004" string="Help">Pagalba</entry>
+      <entry id="1004" string="Encode">Koduoti</entry>
+      <entry id="1005" string="Help">Pagalba</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Pridėti</entry>
@@ -87,25 +87,25 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">Pradėti kodavimą</entry>
-	<entry id="1402" string="Start encoding with">Pradėti kodavimą su</entry>
-	<entry id="1403" string="Pause/resume encoding">Pristabdyti/Pratęsti kodavimą</entry>
-	<entry id="1404" string="Stop encoding">Stabdyti kodavimą</entry>
-	<entry id="1405" string="Encoder options">Koduotojo pasirinktys</entry>
-	<entry id="1406" string="Encode to a single file">Koduoti į vieną failą</entry>
-	<entry id="1407" string="Encode to input file folder if possible">Koduoti į įvesties failo aplanką, jei įmanomą</entry>
-	<entry id="1408" string="Allow overwriting input file">Leisti perrašyti įvesties failą</entry>
-	<entry id="1409" string="Delete original files after encoding">Po kodavimo ištrinti originalo failus</entry>
-	<entry id="1410" string="Shutdown after encoding">Išjungti kompiuterį baigus kodavimą</entry>
+	<entry id="1500" string="Start encoding">Pradėti kodavimą</entry>
+	<entry id="1502" string="Start encoding with">Pradėti kodavimą su</entry>
+	<entry id="1503" string="Pause/resume encoding">Pristabdyti/Pratęsti kodavimą</entry>
+	<entry id="1504" string="Stop encoding">Stabdyti kodavimą</entry>
+	<entry id="1505" string="Encoder options">Koduotojo pasirinktys</entry>
+	<entry id="1506" string="Encode to a single file">Koduoti į vieną failą</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Koduoti į įvesties failo aplanką, jei įmanomą</entry>
+	<entry id="1508" string="Allow overwriting input file">Leisti perrašyti įvesties failą</entry>
+	<entry id="1509" string="Delete original files after encoding">Po kodavimo ištrinti originalo failus</entry>
+	<entry id="1510" string="Shutdown after encoding">Išjungti kompiuterį baigus kodavimą</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">Pagalbos temos</entry>
-	<entry id="1501" string="Show Tip of the Day">Rodyti dienos patarimą</entry>
-	<entry id="1502" string="Check for updates now">Ieškoti atnaujinimų dabar</entry>
-	<entry id="1503" string="Check for updates at startup">Ieškoti atnaujinimų paleidimo metu</entry>
-	<entry id="1504" string="About %1">Apie %1</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">Pagalbos temos</entry>
+	<entry id="1601" string="Show Tip of the Day">Rodyti dienos patarimą</entry>
+	<entry id="1602" string="Check for updates now">Ieškoti atnaujinimų dabar</entry>
+	<entry id="1603" string="Check for updates at startup">Ieškoti atnaujinimų paleidimo metu</entry>
+	<entry id="1604" string="About %1">Apie %1</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 

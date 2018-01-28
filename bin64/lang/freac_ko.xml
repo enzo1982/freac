@@ -50,8 +50,8 @@
       <entry id="1000" string="File">파일</entry>
       <entry id="1001" string="Options">옵션</entry>
       <entry id="1002" string="Database">데이타베이스</entry>
-      <entry id="1003" string="Encode">인코드</entry>
-      <entry id="1004" string="Help">도움말</entry>
+      <entry id="1004" string="Encode">인코드</entry>
+      <entry id="1005" string="Help">도움말</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">추가</entry>
@@ -76,18 +76,18 @@
       </section>
 
       <section name="Encode">
-	<entry id="1400" string="Start encoding">인코딩 시작</entry>
-	<entry id="1402" string="Start encoding with">인코딩 시작</entry>
-	<entry id="1404" string="Stop encoding">인코딩 정지</entry>
+	<entry id="1500" string="Start encoding">인코딩 시작</entry>
+	<entry id="1502" string="Start encoding with">인코딩 시작</entry>
+	<entry id="1504" string="Stop encoding">인코딩 정지</entry>
       </section>
 
       <section name="Help">
-	<entry id="1500" string="Help topics">도움말</entry>
-	<entry id="1501" string="Show Tip of the Day">오늘의 팁 표시</entry>
-	<entry id="1502" string="Check for updates now">최신 업데이트 체크</entry>
-	<entry id="1503" string="Check for updates at startup">시작시 업데이트 체크</entry>
-	<entry id="1504" string="About %1">%1 정보</entry>
-	<entry id="1505" string="index_en.html">index.html</entry>
+	<entry id="1600" string="Help topics">도움말</entry>
+	<entry id="1601" string="Show Tip of the Day">오늘의 팁 표시</entry>
+	<entry id="1602" string="Check for updates now">최신 업데이트 체크</entry>
+	<entry id="1603" string="Check for updates at startup">시작시 업데이트 체크</entry>
+	<entry id="1604" string="About %1">%1 정보</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 
