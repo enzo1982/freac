@@ -393,17 +393,13 @@ Int freac::ConvertWorker::Convert()
 		 */
 		if (File(out_filename).GetFileSize() <= 0 || cancel) File(out_filename).Delete();
 
-		/* Delete input file if requested or not in on-the-fly mode.
+		/* Delete intermediate file in non-on-the-fly mode.
 		 */
 		if (conversionStep == ConversionStepEncode)
 		{
 			if (!keepWaveFiles || cancel) File(in_filename).Delete();
 
 			if (in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
-		}
-		else if (conversionStep != ConversionStepVerify && Config::Get()->deleteAfterEncoding && !cancel)
-		{
-			File(in_filename).Delete();
 		}
 
 		/* Move output file if temporary.

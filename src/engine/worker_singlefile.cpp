@@ -226,10 +226,6 @@ Int freac::ConvertWorkerSingleFile::Convert()
 		encodedSamples += trackLength;
 	}
 
-	/* Delete input file if requested.
-	 */
-	if (Config::Get()->deleteAfterEncoding && !cancel) File(trackToConvert.origFilename).Delete();
-
 	/* Report finished conversion.
 	 */
 	onFinishTrack.Emit(trackToConvert, False);

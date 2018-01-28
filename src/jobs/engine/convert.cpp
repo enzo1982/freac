@@ -567,6 +567,24 @@ Error freac::JobConvert::Perform()
 					}
 				}
 
+				/* Delete input file if requested.
+				 */
+				if (Config::Get()->deleteAfterEncoding && !configuration->enable_console)
+				{
+					/* Check if this was the last track depending on this input file.
+					 */
+					Bool	 deleteFile = True;
+
+					foreach (const Track &trackToCheck, tracks)
+					{
+						if (trackToCheck.origFilename == track.origFilename) { deleteFile = False; break; }
+					}
+
+					/* Delete file if no more tracks left.
+					 */
+					if (deleteFile) File(track.origFilename).Delete();
+				}
+
 				/* Remove track from joblist.
 				 */
 				if ((removeProcessedTracks || Config::Get()->deleteAfterEncoding) && !configuration->enable_console)
