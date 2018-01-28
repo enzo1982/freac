@@ -151,6 +151,9 @@ namespace freac
 
 			static const String	 SettingsLastSelectedJoblistDirID;
 
+			static const String	 SettingsDeleteAfterEncodingID;
+			static const Bool	 SettingsDeleteAfterEncodingDefault;
+
 			/* Category Dialogs
 			 */
 			static const String	 DialogsCDDBSubmitSizeXID;

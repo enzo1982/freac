@@ -161,6 +161,9 @@ const String	 freac::Config::SettingsLastSelectedSaveDirID			= "LastSelectedSave
 
 const String	 freac::Config::SettingsLastSelectedJoblistDirID		= "LastSelectedJoblistDir";
 
+const String	 freac::Config::SettingsDeleteAfterEncodingID			= "DeleteAfterEncoding";
+const Bool	 freac::Config::SettingsDeleteAfterEncodingDefault		= False;
+
 /* Category Dialogs
  */
 const String	 freac::Config::DialogsCDDBSubmitSizeXID			= "CDDBSubmitSizeX";
@@ -383,9 +386,13 @@ const Bool	 freac::Config::FreedbUpdateJoblistDefault			= True;
 
 freac::Config::Config()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	/* Set default settings.
+	 */
 	maxActiveJobs		= 2;
 
-	deleteAfterEncoding	= False;
+	deleteAfterEncoding	= config->GetIntValue(CategorySettingsID, SettingsDeleteAfterEncodingID, SettingsDeleteAfterEncodingDefault);
 	shutdownAfterEncoding	= False;
 
 	enable_eUpdate		= False;
@@ -409,8 +416,6 @@ freac::Config::Config()
 
 	/* Append directory delimiter to output paths.
 	 */
-	BoCA::Config	*config = BoCA::Config::Get();
-
 	String	 encoderOutputDir  = config->GetStringValue(CategorySettingsID, SettingsEncoderOutputDirectoryID, SettingsEncoderOutputDirectoryDefault);
 	String	 playlistOutputDir = config->GetStringValue(CategoryPlaylistID, PlaylistOutputDirID, encoderOutputDir);
 	String	 freedbDir	   = config->GetStringValue(CategoryFreedbID, FreedbDirectoryID, FreedbDirectoryDefault);

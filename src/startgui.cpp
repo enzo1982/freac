@@ -1391,14 +1391,23 @@ Void freac::freacGUI::ToggleEncodeToSingleFile()
 
 Void freac::freacGUI::ConfirmDeleteAfterEncoding()
 {
-	BoCA::I18n	*i18n = BoCA::I18n::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Messages");
 
+	Bool	 keepOptionEnabled = config->GetIntValue(Config::CategorySettingsID, Config::SettingsDeleteAfterEncodingID, Config::SettingsDeleteAfterEncodingDefault);
+
 	if (currentConfig->deleteAfterEncoding)
 	{
-		if (Message::Button::No == QuickMessage(i18n->TranslateString("This option will remove the original files from your computer\nafter the encoding process!\n\nAre you sure you want to activate this function?"), i18n->TranslateString("Delete original files after encoding"), Message::Buttons::YesNo, Message::Icon::Question)) currentConfig->deleteAfterEncoding = False;
+		MessageDlg	 messageBox(i18n->TranslateString("This option will remove the original files from your computer\nafter the encoding process!\n\nAre you sure you want to activate this function?"), i18n->TranslateString("Delete original files after encoding"), Message::Buttons::YesNo, Message::Icon::Question, i18n->TranslateString("Keep this option enabled even after restarting %1").Replace("%1", appName), &keepOptionEnabled);
+
+		messageBox.ShowDialog();
+
+		if (messageBox.GetButtonCode() == Message::Button::No) currentConfig->deleteAfterEncoding = False;
 	}
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsDeleteAfterEncodingID, currentConfig->deleteAfterEncoding && keepOptionEnabled);
 
 	FillMenus();
 }
