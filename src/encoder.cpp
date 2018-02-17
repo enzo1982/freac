@@ -954,7 +954,8 @@ String freac::freac::GetSingleOutputFileName(Track *trackInfo)
 	dialog->AddFilter(freac::i18n->TranslateString("All Files"), "*.*");
 
 	dialog->SetDefaultExtension(defaultExtension);
-	dialog->SetFileName(String(Utilities::ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), True)).Append(" - ").Append(Utilities::ReplaceIncompatibleChars(trackInfo->album.Length() > 0 ? trackInfo->album : i18n->TranslateString("unknown album"), True)).Append(".").Append(defaultExtension));
+	dialog->SetFileName(Utilities::NormalizeFileName(Utilities::ReplaceIncompatibleChars(trackInfo->artist.Length() > 0 ? trackInfo->artist : i18n->TranslateString("unknown artist"), True).Append(" - ")
+						 .Append(Utilities::ReplaceIncompatibleChars(trackInfo->album.Length()  > 0 ? trackInfo->album  : i18n->TranslateString("unknown album"), True))).Append(".").Append(defaultExtension));
 
 	if (dialog->ShowDialog() == Success()) singleOutputFileName = dialog->GetFileName();
 

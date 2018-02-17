@@ -98,6 +98,7 @@ Geschichte
 		- Serbische und chinesische (traditionell) Übersetzungen für das Installationsprogramm hinzugefügt
 		- Verhalten von Controls zur Bitratenauswahl verbessert
 		- Zeige Länge der Jobliste in Stunden, wenn länger als eine Stunde
+		- Problem mit Kodierung in eine einzige Datei behoben, wenn vorgeschlagener Dateiname zu lang wird
 		- Umgang mit leerem Track-Metadatenfeld verbessert
 		- Probleme beim Umgang mit ungültigen Xing/LAME-Tags behoben
 		- Fehler bei FAAC-Qualitätseinstellung behoben

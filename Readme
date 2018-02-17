@@ -97,6 +97,7 @@ History
 		- added Serbian and Chinese (traditional) translations for the installer
 		- improved behaviour of bitrate selection controls
 		- show joblist duration in hours if longer than 1 hour
+		- fixed issues with encoding to single file when suggested file name becomes too long
 		- fixed handling of empty track metadata field
 		- fixed handling of invalid Xing/LAME tags
 		- fixed FAAC quality setting
