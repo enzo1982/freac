@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -542,7 +542,9 @@ String freac::Utilities::GetSingleOutputFileName(const Track &track)
 	dialog.AddFilter(i18n->TranslateString("All Files", "Joblist"), "*.*");
 
 	dialog.SetDefaultExtension(defaultExtension);
-	dialog.SetFileName(BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album"))).Append(defaultExtension != NIL ? "." : NIL).Append(defaultExtension));
+	dialog.SetFileName(BoCA::Utilities::NormalizeFileName(BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ")
+						      .Append(BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length()  > 0 ? info.album  : i18n->TranslateString("unknown album")))).Append(defaultExtension != NIL ? "." : NIL).Append(defaultExtension));
+
 	dialog.SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedSaveDirID, NIL));
 
 	if (dialog.ShowDialog() == Success())
