@@ -16,19 +16,23 @@ typedef uint64_t    MP4Timestamp;
 typedef uint64_t    MP4Duration;
 typedef uint32_t    MP4EditId;
 
+typedef enum {
+    MP4_LOG_NONE = 0,
+    MP4_LOG_ERROR = 1,
+    MP4_LOG_WARNING = 2,
+    MP4_LOG_INFO = 3,
+    MP4_LOG_VERBOSE1 = 4,
+    MP4_LOG_VERBOSE2 = 5,
+    MP4_LOG_VERBOSE3 = 6,
+    MP4_LOG_VERBOSE4 = 7
+}  MP4LogLevel;
+
 /*****************************************************************************/
 
-typedef void (*error_msg_func_t)(
-    int         loglevel,
-    const char* lib,
+typedef void (*MP4LogCallback)(
+    MP4LogLevel loglevel,
     const char* fmt,
     va_list     ap );
-
-typedef void (*lib_message_func_t)(
-    int         loglevel,
-    const char* lib,
-    const char* fmt,
-    ... );
 
 /*****************************************************************************/
 
@@ -56,11 +60,6 @@ typedef uint32_t (*encryptFunc_t)( uint32_t, uint32_t, uint8_t*, uint32_t*, uint
 #define MP4_IS_VALID_DURATION(x)    ((x) != MP4_INVALID_DURATION)
 #define MP4_IS_VALID_EDIT_ID(x)     ((x) != MP4_INVALID_EDIT_ID)
 
-#define MP4_DETAILS_READ_ALL        \
-    (MP4_DETAILS_READ | MP4_DETAILS_TABLE | MP4_DETAILS_SAMPLE)
-#define MP4_DETAILS_WRITE_ALL       \
-    (MP4_DETAILS_WRITE | MP4_DETAILS_TABLE | MP4_DETAILS_SAMPLE)
-
 /*
  * MP4 Known track type names - e.g. MP4GetNumberOfTracks(type)
  *
@@ -75,6 +74,7 @@ typedef uint32_t (*encryptFunc_t)( uint32_t, uint32_t, uint8_t*, uint32_t*, uint
 #define MP4_CNTL_TRACK_TYPE     "cntl"  /**< Constant: control track. */
 #define MP4_TEXT_TRACK_TYPE     "text"  /**< Constant: text track. */
 #define MP4_SUBTITLE_TRACK_TYPE "sbtl"  /**< Constant: subtitle track. */
+#define MP4_SUBPIC_TRACK_TYPE   "subp"  /**< Constant: subpic track. */
 /*
  * This second set of track types should be created
  * via MP4AddSystemsTrack(type)
@@ -264,7 +264,6 @@ typedef uint32_t (*encryptFunc_t)( uint32_t, uint32_t, uint8_t*, uint32_t*, uint
 MP4V2_EXPORT
 bool MP4Make3GPCompliant(
     const char* fileName,
-    uint32_t    verbosity DEFAULT(0),
     char*       majorBrand DEFAULT(0),
     uint32_t    minorVersion DEFAULT(0),
     char**      supportedBrands DEFAULT(NULL),
@@ -466,10 +465,31 @@ MP4V2_EXPORT
 void MP4Free(
     void* p );
 
+/** Set the function to call in place of default logging behavior
+ *
+ * @param cb_func the function to call
+ */
 MP4V2_EXPORT
-void MP4SetLibFunc(
-    lib_message_func_t libfunc );
-
+void MP4SetLogCallback(
+    MP4LogCallback cb_func );
 /** @} ***********************************************************************/
+
+/**
+ * Accessor for the maximum level for diagnostic information
+ *
+ * @return the maximum level for diagnostic information
+ *
+ * @see MP4LogSetLevel() for further details.
+ */
+MP4V2_EXPORT
+MP4LogLevel MP4LogGetLevel( void );
+
+/**
+ * Set the maximum level for diagnostic information
+ *
+ * @param verbosity the level to set
+ */
+MP4V2_EXPORT
+void MP4LogSetLevel( MP4LogLevel verbosity );
 
 #endif /* MP4V2_GENERAL_H */

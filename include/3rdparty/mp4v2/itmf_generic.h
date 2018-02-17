@@ -6,6 +6,65 @@
  *  @defgroup mp4_itmf_generic MP4v2 iTMF (iTunes Metadata Format) Generic
  *  @{
  *
+ *  This is a low-level API used to manage iTMF metadata.
+ *
+ *  It provides support for virtually any kind of iTMF metadata item,
+ *  including meaning atoms, sometimes referred to as reverse-DNS meanings.
+ *  Structures are directly modified; ie: there are no fuctions which
+ *  modify values for you. There is little type-safety, logic checks, or
+ *  specifications compliance checks. For these reasons it is recommended
+ *  to use iTMF Tags API when possible.
+ *
+ *  At the heart of this API is an #MP4ItmfItem which corresponds to an
+ *  iTMF metadata item atom. The item, and any recursive data structures
+ *  contained within require <b>manual</b> memory management. The general
+ *  rule to follow is that you must always check/free a ptr if you intend
+ *  to resize data. In cases where you know the existing data size is
+ *  exactly what is needed, you may overwrite the buffer contents.
+ *
+ *  Each item always has at least 1 data elements which corresponds to
+ *  a data atom. Additionally, each item has optional <b>mean</b> and
+ *  <b>name</b> values which correspond to mean and name atoms.
+ *
+ *  Each #MP4ItmfItem has a list of #MP4ItmfData. Similarily, care must
+ *  be taken to manage memory with one key difference; these structures
+ *  also have a valueSize field. If value is NULL then set valueSize=0.
+ *  Otherwise, set valueSize to the size (in bytes) of value buffer.
+ *
+ *  In rare cases where the number of data elements in a single item
+ *  is > 1, the user must manually free/alloc/copy the <b>elements</b>
+ *  buffer and update <b>size</b> accordingly.
+ *
+ *  The mp4 file structure is modified only when MP4AddItem(),
+ *  MP4SetItem() and MP4RemoveItem() are used. Simply free'ing
+ *  the item list does not modify the mp4 file.
+ *
+ *  <b>iTMF Generic read workflow:</b>
+ *
+ *      @li MP4ItmfGetItems()
+ *      @li inspect each item...
+ *      @li MP4ItmfItemListFree()
+ *
+ *  <b>iTMF Generic read/modify/remove workflow:</b>
+ *
+ *      @li MP4ItmfGetItems()
+ *      @li inspect/modify item...
+ *      @li MP4ItmfSetItem() each modified item...
+ *      @li MP4ItmfRemoveItem()...
+ *      @li MP4ItmfItemListFree()
+ *
+ *  <b>iTMF Generic add workflow:</b>
+ *
+ *      @li MP4ItmfItemAlloc()
+ *      @li MP4ItmfAddItem()
+ *      @li MP4ItmfItemFree()
+ *
+ *  @par Warning:
+ *  Care must be taken when using multiple mechanisms to modify an open mp4
+ *  file as it is not thread-safe, nor does it permit overlapping different
+ *  API workflows which have a begin/end to their workflow. That is to say
+ *  do not interleave an iTMF Generic workflow with an iTMF Tags workflow.
+ *
  *****************************************************************************/
 
 /** Basic types of value data as enumerated in spec. */
@@ -59,11 +118,12 @@ typedef struct MP4ItmfDataList_s
  */
 typedef struct MP4ItmfItem_s
 {
-    int32_t         index;    /**< 0-based index of item in ilst container. -1 if undefined. */
+    void* __handle; /**< internal use only. */
+
     char*           code;     /**< four-char code identifing atom type. NULL-terminated. */
     char*           mean;     /**< may be NULL. UTF-8 meaning. NULL-terminated. */
     char*           name;     /**< may be NULL. UTF-8 name. NULL-terminated. */
-    MP4ItmfDataList dataList; /**< list of data. size is always >= 1. */
+    MP4ItmfDataList dataList; /**< list of data. can be zero length. */
 } MP4ItmfItem;
 
 /** List of items. */

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -177,25 +177,7 @@ MP4CREATEEX			 ex_MP4CreateEx				= NIL;
 MP4CLOSE			 ex_MP4Close				= NIL;
 MP4FREE				 ex_MP4Free				= NIL;
 MP4OPTIMIZE			 ex_MP4Optimize				= NIL;
-MP4SETMETADATANAME		 ex_MP4SetMetadataName			= NIL;
-MP4GETMETADATANAME		 ex_MP4GetMetadataName			= NIL;
-MP4SETMETADATAARTIST		 ex_MP4SetMetadataArtist		= NIL;
-MP4GETMETADATAARTIST		 ex_MP4GetMetadataArtist		= NIL;
-MP4SETMETADATACOMMENT		 ex_MP4SetMetadataComment		= NIL;
-MP4GETMETADATACOMMENT		 ex_MP4GetMetadataComment		= NIL;
-MP4SETMETADATAYEAR		 ex_MP4SetMetadataYear			= NIL;
-MP4GETMETADATAYEAR		 ex_MP4GetMetadataYear			= NIL;
-MP4SETMETADATAALBUM		 ex_MP4SetMetadataAlbum			= NIL;
-MP4GETMETADATAALBUM		 ex_MP4GetMetadataAlbum			= NIL;
-MP4SETMETADATAGENRE		 ex_MP4SetMetadataGenre			= NIL;
-MP4GETMETADATAGENRE		 ex_MP4GetMetadataGenre			= NIL;
-MP4SETMETADATATRACK		 ex_MP4SetMetadataTrack			= NIL;
-MP4GETMETADATATRACK		 ex_MP4GetMetadataTrack			= NIL;
-MP4SETMETADATADISK		 ex_MP4SetMetadataDisk			= NIL;
-MP4GETMETADATADISK		 ex_MP4GetMetadataDisk			= NIL;
-MP4GETMETADATACOVERARTCOUNT	 ex_MP4GetMetadataCoverArtCount		= NIL;
-MP4SETMETADATACOVERART		 ex_MP4SetMetadataCoverArt		= NIL;
-MP4GETMETADATACOVERART		 ex_MP4GetMetadataCoverArt		= NIL;
+
 MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks		= NIL;
 MP4FINDTRACKID			 ex_MP4FindTrackId			= NIL;
 MP4GETTRACKTYPE			 ex_MP4GetTrackType			= NIL;
@@ -207,6 +189,22 @@ MP4SETAUDIOPROFILELEVEL		 ex_MP4SetAudioProfileLevel		= NIL;
 MP4ADDAUDIOTRACK		 ex_MP4AddAudioTrack			= NIL;
 MP4READSAMPLE			 ex_MP4ReadSample			= NIL;
 MP4WRITESAMPLE			 ex_MP4WriteSample			= NIL;
+
+MP4TAGSALLOC			 ex_MP4TagsAlloc			= NIL;
+MP4TAGSFETCH			 ex_MP4TagsFetch			= NIL;
+MP4TAGSSTORE			 ex_MP4TagsStore			= NIL;
+MP4TAGSFREE			 ex_MP4TagsFree				= NIL;
+
+MP4TAGSSETNAME			 ex_MP4TagsSetName			= NIL;
+MP4TAGSSETARTIST		 ex_MP4TagsSetArtist			= NIL;
+MP4TAGSSETALBUM			 ex_MP4TagsSetAlbum			= NIL;
+MP4TAGSSETCOMMENTS		 ex_MP4TagsSetComments			= NIL;
+MP4TAGSSETGENRE			 ex_MP4TagsSetGenre			= NIL;
+MP4TAGSSETRELEASEDATE		 ex_MP4TagsSetReleaseDate		= NIL;
+MP4TAGSSETTRACK			 ex_MP4TagsSetTrack			= NIL;
+MP4TAGSSETDISK			 ex_MP4TagsSetDisk			= NIL;
+
+MP4TAGSADDARTWORK		 ex_MP4TagsAddArtwork			= NIL;
 
 FLAC__STREAM_ENCODER_NEW					 ex_FLAC__stream_encoder_new						= NIL;
 FLAC__STREAM_ENCODER_DELETE					 ex_FLAC__stream_encoder_delete						= NIL;
@@ -945,25 +943,7 @@ Bool freac::DLLInterfaces::LoadMP4V2DLL()
 	ex_MP4Close			= (MP4CLOSE) mp4v2dll->GetFunctionAddress("MP4Close");
 	ex_MP4Free			= (MP4FREE) mp4v2dll->GetFunctionAddress("MP4Free");
 	ex_MP4Optimize			= (MP4OPTIMIZE) mp4v2dll->GetFunctionAddress("MP4Optimize");
-	ex_MP4SetMetadataName		= (MP4SETMETADATANAME) mp4v2dll->GetFunctionAddress("MP4SetMetadataName");
-	ex_MP4GetMetadataName		= (MP4GETMETADATANAME) mp4v2dll->GetFunctionAddress("MP4GetMetadataName");
-	ex_MP4SetMetadataArtist		= (MP4SETMETADATAARTIST) mp4v2dll->GetFunctionAddress("MP4SetMetadataArtist");
-	ex_MP4GetMetadataArtist		= (MP4GETMETADATAARTIST) mp4v2dll->GetFunctionAddress("MP4GetMetadataArtist");
-	ex_MP4SetMetadataComment	= (MP4SETMETADATACOMMENT) mp4v2dll->GetFunctionAddress("MP4SetMetadataComment");
-	ex_MP4GetMetadataComment	= (MP4GETMETADATACOMMENT) mp4v2dll->GetFunctionAddress("MP4GetMetadataComment");
-	ex_MP4SetMetadataYear		= (MP4SETMETADATAYEAR) mp4v2dll->GetFunctionAddress("MP4SetMetadataYear");
-	ex_MP4GetMetadataYear		= (MP4GETMETADATAYEAR) mp4v2dll->GetFunctionAddress("MP4GetMetadataYear");
-	ex_MP4SetMetadataAlbum		= (MP4SETMETADATAALBUM) mp4v2dll->GetFunctionAddress("MP4SetMetadataAlbum");
-	ex_MP4GetMetadataAlbum		= (MP4GETMETADATAALBUM) mp4v2dll->GetFunctionAddress("MP4GetMetadataAlbum");
-	ex_MP4SetMetadataGenre		= (MP4SETMETADATAGENRE) mp4v2dll->GetFunctionAddress("MP4SetMetadataGenre");
-	ex_MP4GetMetadataGenre		= (MP4GETMETADATAGENRE) mp4v2dll->GetFunctionAddress("MP4GetMetadataGenre");
-	ex_MP4SetMetadataTrack		= (MP4SETMETADATATRACK) mp4v2dll->GetFunctionAddress("MP4SetMetadataTrack");
-	ex_MP4GetMetadataTrack		= (MP4GETMETADATATRACK) mp4v2dll->GetFunctionAddress("MP4GetMetadataTrack");
-	ex_MP4SetMetadataDisk		= (MP4SETMETADATADISK) mp4v2dll->GetFunctionAddress("MP4SetMetadataDisk");
-	ex_MP4GetMetadataDisk		= (MP4GETMETADATADISK) mp4v2dll->GetFunctionAddress("MP4GetMetadataDisk");
-	ex_MP4GetMetadataCoverArtCount	= (MP4GETMETADATACOVERARTCOUNT) mp4v2dll->GetFunctionAddress("MP4GetMetadataCoverArtCount");
-	ex_MP4SetMetadataCoverArt	= (MP4SETMETADATACOVERART) mp4v2dll->GetFunctionAddress("MP4SetMetadataCoverArt");
-	ex_MP4GetMetadataCoverArt	= (MP4GETMETADATACOVERART) mp4v2dll->GetFunctionAddress("MP4GetMetadataCoverArt");
+
 	ex_MP4GetNumberOfTracks		= (MP4GETNUMBEROFTRACKS) mp4v2dll->GetFunctionAddress("MP4GetNumberOfTracks");
 	ex_MP4FindTrackId		= (MP4FINDTRACKID) mp4v2dll->GetFunctionAddress("MP4FindTrackId");
 	ex_MP4GetTrackType		= (MP4GETTRACKTYPE) mp4v2dll->GetFunctionAddress("MP4GetTrackType");
@@ -976,30 +956,28 @@ Bool freac::DLLInterfaces::LoadMP4V2DLL()
 	ex_MP4ReadSample		= (MP4READSAMPLE) mp4v2dll->GetFunctionAddress("MP4ReadSample");
 	ex_MP4WriteSample		= (MP4WRITESAMPLE) mp4v2dll->GetFunctionAddress("MP4WriteSample");
 
+	ex_MP4TagsAlloc			= (MP4TAGSALLOC) mp4v2dll->GetFunctionAddress("MP4TagsAlloc");
+	ex_MP4TagsFetch			= (MP4TAGSFETCH) mp4v2dll->GetFunctionAddress("MP4TagsFetch");
+	ex_MP4TagsStore			= (MP4TAGSSTORE) mp4v2dll->GetFunctionAddress("MP4TagsStore");
+	ex_MP4TagsFree			= (MP4TAGSFREE) mp4v2dll->GetFunctionAddress("MP4TagsFree");
+
+	ex_MP4TagsSetName		= (MP4TAGSSETNAME) mp4v2dll->GetFunctionAddress("MP4TagsSetName");
+	ex_MP4TagsSetArtist		= (MP4TAGSSETARTIST) mp4v2dll->GetFunctionAddress("MP4TagsSetArtist");
+	ex_MP4TagsSetAlbum		= (MP4TAGSSETALBUM) mp4v2dll->GetFunctionAddress("MP4TagsSetAlbum");
+	ex_MP4TagsSetComments		= (MP4TAGSSETCOMMENTS) mp4v2dll->GetFunctionAddress("MP4TagsSetComments");
+	ex_MP4TagsSetGenre		= (MP4TAGSSETGENRE) mp4v2dll->GetFunctionAddress("MP4TagsSetGenre");
+	ex_MP4TagsSetReleaseDate	= (MP4TAGSSETRELEASEDATE) mp4v2dll->GetFunctionAddress("MP4TagsSetReleaseDate");
+	ex_MP4TagsSetTrack		= (MP4TAGSSETTRACK) mp4v2dll->GetFunctionAddress("MP4TagsSetTrack");
+	ex_MP4TagsSetDisk		= (MP4TAGSSETDISK) mp4v2dll->GetFunctionAddress("MP4TagsSetDisk");
+
+	ex_MP4TagsAddArtwork		= (MP4TAGSADDARTWORK) mp4v2dll->GetFunctionAddress("MP4TagsAddArtwork");
+
 	if (ex_MP4Read				== NIL ||
 	    ex_MP4CreateEx			== NIL ||
 	    ex_MP4Close				== NIL ||
 	    ex_MP4Free				== NIL ||
 	    ex_MP4Optimize			== NIL ||
-	    ex_MP4SetMetadataName		== NIL ||
-	    ex_MP4GetMetadataName		== NIL ||
-	    ex_MP4SetMetadataArtist		== NIL ||
-	    ex_MP4GetMetadataArtist		== NIL ||
-	    ex_MP4SetMetadataComment		== NIL ||
-	    ex_MP4GetMetadataComment		== NIL ||
-	    ex_MP4SetMetadataYear		== NIL ||
-	    ex_MP4GetMetadataYear		== NIL ||
-	    ex_MP4SetMetadataAlbum		== NIL ||
-	    ex_MP4GetMetadataAlbum		== NIL ||
-	    ex_MP4SetMetadataGenre		== NIL ||
-	    ex_MP4GetMetadataGenre		== NIL ||
-	    ex_MP4SetMetadataTrack		== NIL ||
-	    ex_MP4GetMetadataTrack		== NIL ||
-	    ex_MP4SetMetadataDisk		== NIL ||
-	    ex_MP4GetMetadataDisk		== NIL ||
-	    ex_MP4GetMetadataCoverArtCount	== NIL ||
-	    ex_MP4SetMetadataCoverArt		== NIL ||
-	    ex_MP4GetMetadataCoverArt		== NIL ||
+
 	    ex_MP4GetNumberOfTracks		== NIL ||
 	    ex_MP4FindTrackId			== NIL ||
 	    ex_MP4GetTrackType			== NIL ||
@@ -1010,7 +988,23 @@ Bool freac::DLLInterfaces::LoadMP4V2DLL()
 	    ex_MP4SetAudioProfileLevel		== NIL ||
 	    ex_MP4AddAudioTrack			== NIL ||
 	    ex_MP4ReadSample			== NIL ||
-	    ex_MP4WriteSample			== NIL) { FreeMP4V2DLL(); return False; }
+	    ex_MP4WriteSample			== NIL ||
+
+	    ex_MP4TagsAlloc			== NIL ||
+	    ex_MP4TagsFetch			== NIL ||
+	    ex_MP4TagsStore			== NIL ||
+	    ex_MP4TagsFree			== NIL ||
+
+	    ex_MP4TagsSetName			== NIL ||
+	    ex_MP4TagsSetArtist			== NIL ||
+	    ex_MP4TagsSetAlbum			== NIL ||
+	    ex_MP4TagsSetComments		== NIL ||
+	    ex_MP4TagsSetGenre			== NIL ||
+	    ex_MP4TagsSetReleaseDate		== NIL ||
+	    ex_MP4TagsSetTrack			== NIL ||
+	    ex_MP4TagsSetDisk			== NIL ||
+
+	    ex_MP4TagsAddArtwork		== NIL) { FreeMP4V2DLL(); return False; }
 
 	return True;
 }

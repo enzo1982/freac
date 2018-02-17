@@ -101,14 +101,16 @@ uint32_t MP4GetTrackTimeScale(
  *  @param hFile handle of file for operation.
  *  @param trackId id of track for operation.
  *  @param timeScale desired time scale for the track.
+ *
+ *  @return <b>true</b> on success, <b>false</b> on failure.
  */
 MP4V2_EXPORT
-void MP4SetTrackTimeScale(
+bool MP4SetTrackTimeScale(
     MP4FileHandle hFile,
     MP4TrackId    trackId,
     uint32_t      value );
 
-/** Get ISO-639-2/T langauge code of a track.
+/** Get ISO-639-2/T language code of a track.
  *  The language code is a 3-char alpha code consisting of lower-case letters.
  *
  *  @param hFile handle of file for operation.
@@ -123,7 +125,7 @@ bool MP4GetTrackLanguage(
     MP4TrackId    trackId,
     char*         code );
 
-/** Set ISO-639-2/T langauge code of a track.
+/** Set ISO-639-2/T language code of a track.
  *  The language code is a 3-char alpha code consisting of lower-case letters.
  *
  *  @param hFile handle of file for operation.
@@ -220,7 +222,7 @@ bool MP4GetTrackH264ProfileLevel(
     uint8_t*      pLevel );
 
 MP4V2_EXPORT
-void MP4GetTrackH264SeqPictHeaders(
+bool MP4GetTrackH264SeqPictHeaders(
     MP4FileHandle hFile,
     MP4TrackId    trackId,
     uint8_t***    pSeqHeaders,

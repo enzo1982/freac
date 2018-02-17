@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -67,7 +67,7 @@ Bool freac::FilterInMP4::Deactivate()
 {
 	if (mp4Track >= 0) ex_NeAACDecClose(handle);
 
-	ex_MP4Close(mp4File);
+	ex_MP4Close(mp4File, 0);
 
 	if (GetTempFile(format->origFilename) != format->origFilename)
 	{
@@ -143,31 +143,39 @@ freac::Track *freac::FilterInMP4::GetFileInfo(const String &inFile)
 
 	mp4File = ex_MP4Read(GetTempFile(inFile), 0);
 
-	char		*buffer		= NIL;
-	unsigned short	 trackNr	= 0;
-	unsigned short	 nOfTracks	= 0;
-	unsigned short	 discNr		= 0;
-	unsigned short	 nOfDiscs	= 0;
+	const MP4Tags	*mp4Tags = ex_MP4TagsAlloc();
+
+	ex_MP4TagsFetch(mp4Tags, mp4File);
 
 	String	 prevInFormat = String::SetInputFormat("UTF-8");
 
-	if (ex_MP4GetMetadataName(mp4File, &buffer)) { nFormat->title = buffer; ex_MP4Free(buffer); }
-	if (ex_MP4GetMetadataArtist(mp4File, &buffer)) { nFormat->artist = buffer; ex_MP4Free(buffer); }
-	if (ex_MP4GetMetadataComment(mp4File, &buffer)) { nFormat->comment = buffer; ex_MP4Free(buffer); }
-	if (ex_MP4GetMetadataYear(mp4File, &buffer)) { nFormat->year = String(buffer).ToInt(); ex_MP4Free(buffer); }
-	if (ex_MP4GetMetadataAlbum(mp4File, &buffer)) { nFormat->album = buffer; ex_MP4Free(buffer); }
-	if (ex_MP4GetMetadataGenre(mp4File, &buffer)) { nFormat->genre = buffer; ex_MP4Free(buffer); }
-	if (ex_MP4GetMetadataTrack(mp4File, (uint16_t *) &trackNr, (uint16_t *) &nOfTracks)) { nFormat->track = trackNr; nFormat->numTracks = nOfTracks; }
-	if (ex_MP4GetMetadataDisk(mp4File, (uint16_t *) &discNr, (uint16_t *) &nOfDiscs)) { nFormat->disc = discNr; nFormat->numDiscs = nOfDiscs; }
+	if	(mp4Tags->name	      != NIL) nFormat->title    = mp4Tags->name;
+	if	(mp4Tags->artist      != NIL) nFormat->artist   = mp4Tags->artist;
+	if	(mp4Tags->releaseDate != NIL) nFormat->year     = String(mp4Tags->releaseDate).ToInt();
+	if	(mp4Tags->album	      != NIL) nFormat->album    = mp4Tags->album;
+	if	(mp4Tags->comments    != NIL) nFormat->comment  = mp4Tags->comments;
 
-	uint32_t	 artworkCount = ex_MP4GetMetadataCoverArtCount(mp4File);
+	if	(mp4Tags->genre	      != NIL) nFormat->genre    = mp4Tags->genre;
+	else if (mp4Tags->genreType   != NIL) nFormat->genre    = Utilities::GetID3CategoryName(*mp4Tags->genreType - 1);
 
-	for (UnsignedInt i = 0; i < artworkCount; i++)
+	if (mp4Tags->track != NIL)
 	{
-		unsigned char	*buffer	= NIL;
-		uint32_t	 size	= 0;
+		nFormat->track	   = mp4Tags->track->index;
+		nFormat->numTracks = mp4Tags->track->total;
+	}
 
-		if (ex_MP4GetMetadataCoverArt(mp4File, &buffer, &size, i))
+	if (mp4Tags->disk != NIL)
+	{
+		nFormat->disc	   = mp4Tags->disk->index;
+		nFormat->numDiscs  = mp4Tags->disk->total;
+	}
+
+	for (UnsignedInt i = 0; i < mp4Tags->artworkCount; i++)
+	{
+		unsigned char	*buffer	= (unsigned char *) mp4Tags->artwork[i].data;
+		uint32_t	 size	= mp4Tags->artwork[i].size;
+
+		if (size > 0)
 		{
 			Picture	*picture = new Picture();
 
@@ -193,10 +201,10 @@ freac::Track *freac::FilterInMP4::GetFileInfo(const String &inFile)
 			{
 				delete picture;
 			}
-
-			ex_MP4Free(buffer);
 		}
 	}
+
+	ex_MP4TagsFree(mp4Tags);
 
 	String::SetInputFormat(prevInFormat);
 
@@ -229,7 +237,7 @@ freac::Track *freac::FilterInMP4::GetFileInfo(const String &inFile)
 		ex_NeAACDecClose(handle);
 	}
 
-	ex_MP4Close(mp4File);
+	ex_MP4Close(mp4File, 0);
 
 	if (GetTempFile(inFile) != inFile)
 	{

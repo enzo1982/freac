@@ -63,7 +63,6 @@ extern "C" {
 #include "chapter.h"
 #include "itmf_generic.h"
 #include "itmf_tags.h"
-#include "meta.h"
 #include "streaming.h"
 #include "isma.h"
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -433,29 +433,11 @@ namespace freac
 // MP4V2 DLL API
 
 	typedef MP4FileHandle				(*MP4READ)					(const char *, uint32_t);
-	typedef MP4FileHandle				(*MP4CREATEEX)					(const char *, uint32_t, uint32_t, int, int, char *, uint32_t, char **, uint32_t);
-	typedef bool					(*MP4CLOSE)					(MP4FileHandle);
+	typedef MP4FileHandle				(*MP4CREATEEX)					(const char *, uint32_t, int, int, char *, uint32_t, char **, uint32_t);
+	typedef void					(*MP4CLOSE)					(MP4FileHandle, uint32_t);
 	typedef void					(*MP4FREE)					(void *);
-	typedef bool					(*MP4OPTIMIZE)					(const char *, const char *, uint32_t);
-	typedef bool					(*MP4SETMETADATANAME)				(MP4FileHandle, const char *);
-	typedef bool					(*MP4GETMETADATANAME)				(MP4FileHandle, char **);
-	typedef bool					(*MP4SETMETADATAARTIST)				(MP4FileHandle, const char *);
-	typedef bool					(*MP4GETMETADATAARTIST)				(MP4FileHandle, char **);
-	typedef bool					(*MP4SETMETADATACOMMENT)			(MP4FileHandle, const char *);
-	typedef bool					(*MP4GETMETADATACOMMENT)			(MP4FileHandle, char **);
-	typedef bool					(*MP4SETMETADATAYEAR)				(MP4FileHandle, const char *);
-	typedef bool					(*MP4GETMETADATAYEAR)				(MP4FileHandle, char **);
-	typedef bool					(*MP4SETMETADATAALBUM)				(MP4FileHandle, const char *);
-	typedef bool					(*MP4GETMETADATAALBUM)				(MP4FileHandle, char **);
-	typedef bool					(*MP4SETMETADATAGENRE)				(MP4FileHandle, const char *);
-	typedef bool					(*MP4GETMETADATAGENRE)				(MP4FileHandle, char **);
-	typedef bool					(*MP4SETMETADATATRACK)				(MP4FileHandle, uint16_t, uint16_t);
-	typedef bool					(*MP4GETMETADATATRACK)				(MP4FileHandle, uint16_t *, uint16_t *);
-	typedef bool					(*MP4SETMETADATADISK)				(MP4FileHandle, uint16_t, uint16_t);
-	typedef bool					(*MP4GETMETADATADISK)				(MP4FileHandle, uint16_t *, uint16_t *);
-	typedef uint32_t				(*MP4GETMETADATACOVERARTCOUNT)			(MP4FileHandle);
-	typedef bool					(*MP4SETMETADATACOVERART)			(MP4FileHandle, uint8_t *, uint32_t);
-	typedef bool					(*MP4GETMETADATACOVERART)			(MP4FileHandle, uint8_t **, uint32_t *, uint32_t);
+	typedef bool					(*MP4OPTIMIZE)					(const char *, const char *);
+
 	typedef uint32_t				(*MP4GETNUMBEROFTRACKS)				(MP4FileHandle, const char *, uint8_t);
 	typedef MP4TrackId				(*MP4FINDTRACKID)				(MP4FileHandle, uint16_t, const char *, uint8_t);
 	typedef const char *				(*MP4GETTRACKTYPE)				(MP4FileHandle, MP4TrackId);
@@ -468,30 +450,28 @@ namespace freac
 	typedef bool					(*MP4READSAMPLE)				(MP4FileHandle, MP4TrackId, MP4SampleId, uint8_t **, uint32_t *, MP4Timestamp *, MP4Duration *, MP4Duration *, bool *);
 	typedef bool					(*MP4WRITESAMPLE)				(MP4FileHandle, MP4TrackId, const uint8_t *, uint32_t, MP4Duration, MP4Duration, bool);
 
+	typedef const MP4Tags *				(*MP4TAGSALLOC)					();
+	typedef bool					(*MP4TAGSFETCH)					(const MP4Tags *, MP4FileHandle);
+	typedef bool					(*MP4TAGSSTORE)					(const MP4Tags *, MP4FileHandle);
+	typedef void					(*MP4TAGSFREE)					(const MP4Tags *);
+
+	typedef bool					(*MP4TAGSSETNAME)				(const MP4Tags *, const char *);
+	typedef bool					(*MP4TAGSSETARTIST)				(const MP4Tags *, const char *);
+	typedef bool					(*MP4TAGSSETALBUM)				(const MP4Tags *, const char *);
+	typedef bool					(*MP4TAGSSETCOMMENTS)				(const MP4Tags *, const char *);
+	typedef bool					(*MP4TAGSSETGENRE)				(const MP4Tags *, const char *);
+	typedef bool					(*MP4TAGSSETRELEASEDATE)			(const MP4Tags *, const char *);
+	typedef bool					(*MP4TAGSSETTRACK)				(const MP4Tags *, const MP4TagTrack *);
+	typedef bool					(*MP4TAGSSETDISK)				(const MP4Tags *, const MP4TagDisk *);
+
+	typedef bool					(*MP4TAGSADDARTWORK)				(const MP4Tags *, MP4TagArtwork *);
+
 	extern		MP4READ				 ex_MP4Read;
 	extern		MP4CREATEEX			 ex_MP4CreateEx;
 	extern		MP4CLOSE			 ex_MP4Close;
 	extern		MP4FREE				 ex_MP4Free;
 	extern		MP4OPTIMIZE			 ex_MP4Optimize;
-	extern		MP4SETMETADATANAME		 ex_MP4SetMetadataName;
-	extern		MP4GETMETADATANAME		 ex_MP4GetMetadataName;
-	extern		MP4SETMETADATAARTIST		 ex_MP4SetMetadataArtist;
-	extern		MP4GETMETADATAARTIST		 ex_MP4GetMetadataArtist;
-	extern		MP4SETMETADATACOMMENT		 ex_MP4SetMetadataComment;
-	extern		MP4GETMETADATACOMMENT		 ex_MP4GetMetadataComment;
-	extern		MP4SETMETADATAYEAR		 ex_MP4SetMetadataYear;
-	extern		MP4GETMETADATAYEAR		 ex_MP4GetMetadataYear;
-	extern		MP4SETMETADATAALBUM		 ex_MP4SetMetadataAlbum;
-	extern		MP4GETMETADATAALBUM		 ex_MP4GetMetadataAlbum;
-	extern		MP4SETMETADATAGENRE		 ex_MP4SetMetadataGenre;
-	extern		MP4GETMETADATAGENRE		 ex_MP4GetMetadataGenre;
-	extern		MP4SETMETADATATRACK		 ex_MP4SetMetadataTrack;
-	extern		MP4GETMETADATATRACK		 ex_MP4GetMetadataTrack;
-	extern		MP4SETMETADATADISK		 ex_MP4SetMetadataDisk;
-	extern		MP4GETMETADATADISK		 ex_MP4GetMetadataDisk;
-	extern		MP4GETMETADATACOVERARTCOUNT	 ex_MP4GetMetadataCoverArtCount;
-	extern		MP4SETMETADATACOVERART		 ex_MP4SetMetadataCoverArt;
-	extern		MP4GETMETADATACOVERART		 ex_MP4GetMetadataCoverArt;
+
 	extern		MP4GETNUMBEROFTRACKS		 ex_MP4GetNumberOfTracks;
 	extern		MP4FINDTRACKID			 ex_MP4FindTrackId;
 	extern		MP4GETTRACKTYPE			 ex_MP4GetTrackType;
@@ -503,6 +483,22 @@ namespace freac
 	extern		MP4ADDAUDIOTRACK		 ex_MP4AddAudioTrack;
 	extern		MP4READSAMPLE			 ex_MP4ReadSample;
 	extern		MP4WRITESAMPLE			 ex_MP4WriteSample;
+
+	extern		MP4TAGSALLOC			 ex_MP4TagsAlloc;
+	extern		MP4TAGSFETCH			 ex_MP4TagsFetch;
+	extern		MP4TAGSSTORE			 ex_MP4TagsStore;
+	extern		MP4TAGSFREE			 ex_MP4TagsFree;
+
+	extern		MP4TAGSSETNAME			 ex_MP4TagsSetName;
+	extern		MP4TAGSSETARTIST		 ex_MP4TagsSetArtist;
+	extern		MP4TAGSSETALBUM			 ex_MP4TagsSetAlbum;
+	extern		MP4TAGSSETCOMMENTS		 ex_MP4TagsSetComments;
+	extern		MP4TAGSSETGENRE			 ex_MP4TagsSetGenre;
+	extern		MP4TAGSSETRELEASEDATE		 ex_MP4TagsSetReleaseDate;
+	extern		MP4TAGSSETTRACK			 ex_MP4TagsSetTrack;
+	extern		MP4TAGSSETDISK			 ex_MP4TagsSetDisk;
+
+	extern		MP4TAGSADDARTWORK		 ex_MP4TagsAddArtwork;
 
 // FLAC DLL API
 

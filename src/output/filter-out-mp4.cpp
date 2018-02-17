@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -65,7 +65,7 @@ Bool freac::FilterOutMP4::Activate()
 
 	/* Create file and track.
 	 */
-	mp4File		= ex_MP4CreateEx(GetTempFile(format->outfile), 0, 0, 1, 1, NIL, 0, NIL, 0);
+	mp4File		= ex_MP4CreateEx(GetTempFile(format->outfile), 0, 1, 1, NIL, 0, NIL, 0);
 	mp4Track	= ex_MP4AddAudioTrack(mp4File, format->rate, MP4_INVALID_DURATION, MP4_MPEG4_AUDIO_TYPE);	
 
 	ex_MP4SetAudioProfileLevel(mp4File, 0x0F);
@@ -112,20 +112,36 @@ Bool freac::FilterOutMP4::Deactivate()
 
 	if (currentConfig->enable_mp4meta)
 	{
+		const MP4Tags	*mp4Tags = ex_MP4TagsAlloc();
+
+		ex_MP4TagsFetch(mp4Tags, mp4File);
+
 		String	 prevOutFormat = String::SetOutputFormat(currentConfig->mp4meta_encoding);
 
 		if (format->artist != NIL || format->title != NIL)
 		{
-			if (format->title != NIL)	ex_MP4SetMetadataName(mp4File, format->title);
-			if (format->artist != NIL)	ex_MP4SetMetadataArtist(mp4File, format->artist);
-			if (format->year > 0)		ex_MP4SetMetadataYear(mp4File, String::FromInt(format->year));
-			if (format->album != NIL)	ex_MP4SetMetadataAlbum(mp4File, format->album);
-			if (format->genre != NIL)	ex_MP4SetMetadataGenre(mp4File, format->genre);
-			if (format->track > 0)		ex_MP4SetMetadataTrack(mp4File, format->track, format->numTracks > 0 ? format->numTracks : 0);
-			if (format->disc > 0)		ex_MP4SetMetadataDisk(mp4File, format->disc, format->numDiscs > 0 ? format->numDiscs : 0);
+			if (format->artist != NIL) ex_MP4TagsSetArtist(mp4Tags, format->artist);
+			if (format->title  != NIL) ex_MP4TagsSetName(mp4Tags, format->title);
+			if (format->album  != NIL) ex_MP4TagsSetAlbum(mp4Tags, format->album);
+			if (format->year    >   0) ex_MP4TagsSetReleaseDate(mp4Tags, String::FromInt(format->year));
+			if (format->genre  != NIL) ex_MP4TagsSetGenre(mp4Tags, format->genre);
 
-			if (format->comment != NIL && !currentConfig->overwriteComments) ex_MP4SetMetadataComment(mp4File, format->comment);
-			else if (currentConfig->default_comment != NIL)			 ex_MP4SetMetadataComment(mp4File, currentConfig->default_comment);
+			if (format->track > 0)
+			{
+				MP4TagTrack	 mp4Track = { (uint16_t) format->track, (uint16_t) format->numTracks };
+
+				ex_MP4TagsSetTrack(mp4Tags, &mp4Track);
+			}
+
+			if (format->disc > 0)
+			{
+				MP4TagDisk	 mp4Disk = { (uint16_t) format->disc, (uint16_t) (format->numDiscs > 0 ? format->numDiscs : format->disc) };
+
+				ex_MP4TagsSetDisk(mp4Tags, &mp4Disk);
+			}
+
+			if	(format->comment != NIL && !currentConfig->overwriteComments) ex_MP4TagsSetComments(mp4Tags, format->comment);
+			else if (currentConfig->default_comment != NIL)			      ex_MP4TagsSetComments(mp4Tags, currentConfig->default_comment);
 		}
 
 		/* Save cover art.
@@ -147,16 +163,21 @@ Bool freac::FilterOutMP4::Deactivate()
 			 */
 			foreach (const Picture *picInfo, pictures)
 			{
-				ex_MP4SetMetadataCoverArt(mp4File, (BYTE *) (UnsignedByte *) picInfo->data, (uint32_t) picInfo->data.Size());
+				MP4TagArtwork	 artwork = { const_cast<UnsignedByte *>((const UnsignedByte *) picInfo->data), (uint32_t) picInfo->data.Size(), picInfo->mime == "image/png" ? MP4_ART_PNG : MP4_ART_JPEG };
+
+				ex_MP4TagsAddArtwork(mp4Tags, &artwork);
 			}
 		}
+
+		ex_MP4TagsStore(mp4Tags, mp4File);
+		ex_MP4TagsFree(mp4Tags);
 
 		String::SetOutputFormat(prevOutFormat);
 	}
 
-	ex_MP4Close(mp4File);
+	ex_MP4Close(mp4File, 0);
 
-	ex_MP4Optimize(GetTempFile(format->outfile), NIL, 0);
+	ex_MP4Optimize(GetTempFile(format->outfile), NIL);
 
 	if (GetTempFile(format->outfile) != format->outfile)
 	{

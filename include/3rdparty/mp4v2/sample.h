@@ -21,7 +21,7 @@ typedef enum MP4SampleDependencyType_e {
     MP4_SDT_IS_DEPENDENT                  = 0x10, /**< references other samples */
     MP4_SDT_IS_INDEPENDENT                = 0x20, /**< does not reference other samples */
     MP4_SDT_EARLIER_DISPLAY_TIMES_ALLOWED = 0x40, /**< subequent samples in GOP may display earlier */
-    _MP4_SDT_RESERVED                     = 0x80, /**< reserved */
+    _MP4_SDT_RESERVED                     = 0x80 /**< reserved */
 } MP4SampleDependencyType;
 
 /** Read a track sample.
@@ -37,12 +37,12 @@ typedef enum MP4SampleDependencyType_e {
  *  *ppBytes to the buffer it wishes to use. The calling application is
  *  responsible for ensuring that the buffer is large enough to hold the
  *  sample. This can be done by using either MP4GetSampleSize() or
- *  MP4GetTrackMaxSampleSize() to determine before−hand how large the
+ *  MP4GetTrackMaxSampleSize() to determine before-hand how large the
  *  receiving buffer must be.
  *
  *  If the value of *ppBytes is NULL, then an appropriately sized buffer is
- *  automatically malloc’ed for the sample data and *ppBytes set to this
- *  pointer. The calling application is responsible for free’ing this
+ *  automatically malloc'ed for the sample data and *ppBytes set to this
+ *  pointer. The calling application is responsible for free'ing this
  *  memory.
  *
  *  The last four arguments are pointers to variables that can receive
@@ -66,17 +66,17 @@ typedef enum MP4SampleDependencyType_e {
  *  @param ppBytes pointer to the pointer to the sample data.
  *  @param pNumBytes pointer to variable that will be hold the size in bytes
  *      of the sample.
- *  @param pStartTime if non−NULL, pointer to variable that will receive the
+ *  @param pStartTime if non-NULL, pointer to variable that will receive the
  *      starting timestamp for this sample. Caveat: The timestamp is in
  *      <b>trackId</b>'s timescale.
- *  @param pDuration if non−NULL, pointer to variable that will receive the
+ *  @param pDuration if non-NULL, pointer to variable that will receive the
  *      duration for this sample. Caveat: The duration is in
  *      <b>trackId</b>'s timescale.
- *  @param pRenderingOffset if non−NULL, pointer to variable that will
+ *  @param pRenderingOffset if non-NULL, pointer to variable that will
  *      receive the rendering offset for this sample. Currently the only
  *      media type that needs this feature is MPEG video. Caveat: The offset
  *      is in <b>trackId</b>'s timescale.
- *  @param pIsSyncSample if non−NULL, pointer to variable that will receive
+ *  @param pIsSyncSample if non-NULL, pointer to variable that will receive
  *      the state of the sync/random access flag for this sample.
  *
  *  @return <b>true</b> on success, <b>false</b> on failure.
@@ -113,12 +113,12 @@ bool MP4ReadSample(
  *  *ppBytes to the buffer it wishes to use. The calling application is
  *  responsible for ensuring that the buffer is large enough to hold the
  *  sample. This can be done by using either MP4GetSampleSize() or
- *  MP4GetTrackMaxSampleSize() to determine before−hand how large the
+ *  MP4GetTrackMaxSampleSize() to determine before-hand how large the
  *  receiving buffer must be.
  *
  *  If the value of *ppBytes is NULL, then an appropriately sized buffer is
- *  automatically malloc’ed for the sample data and *ppBytes set to this
- *  pointer. The calling application is responsible for free’ing this
+ *  automatically malloc'ed for the sample data and *ppBytes set to this
+ *  pointer. The calling application is responsible for free'ing this
  *  memory.
  *
  *  The last four arguments are pointers to variables that can receive
@@ -142,17 +142,17 @@ bool MP4ReadSample(
  *  @param ppBytes pointer to the pointer to the sample data.
  *  @param pNumBytes pointer to variable that will be hold the size in bytes
  *      of the sample.
- *  @param pStartTime if non−NULL, pointer to variable that will receive the
+ *  @param pStartTime if non-NULL, pointer to variable that will receive the
  *      starting timestamp for this sample. Caveat: The timestamp is in
  *      <b>trackId</b>'s timescale.
- *  @param pDuration if non−NULL, pointer to variable that will receive the
+ *  @param pDuration if non-NULL, pointer to variable that will receive the
  *      duration for this sample. Caveat: The duration is in
  *      <b>trackId</b>'s timescale.
- *  @param pRenderingOffset if non−NULL, pointer to variable that will
+ *  @param pRenderingOffset if non-NULL, pointer to variable that will
  *      receive the rendering offset for this sample. Currently the only
  *      media type that needs this feature is MPEG video. Caveat: The offset
  *      is in <b>trackId</b>'s timescale.
- *  @param pIsSyncSample if non−NULL, pointer to variable that will receive
+ *  @param pIsSyncSample if non-NULL, pointer to variable that will receive
  *      the state of the sync/random access flag for this sample.
  *
  *  @return <b>true</b> on success, <b>false</b> on failure.

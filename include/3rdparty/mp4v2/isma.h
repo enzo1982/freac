@@ -78,7 +78,6 @@ MP4TrackId MP4EncAndCopyTrack(
 MP4V2_EXPORT
 bool MP4MakeIsmaCompliant(
     const char* fileName,
-    uint32_t    verbosity DEFAULT(0),
     bool        addIsmaComplianceSdp DEFAULT(true) );
 
 MP4V2_EXPORT
@@ -90,8 +89,7 @@ char* MP4MakeIsmaSdpIod(
     uint8_t  audioProfile,
     uint32_t audioBitrate,
     uint8_t* audioConfig,
-    uint32_t audioConfigLength,
-    uint32_t verbosity DEFAULT(0) );
+    uint32_t audioConfigLength );
 
 /** @} ***********************************************************************/
 

@@ -93,15 +93,17 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.0.32 (Januar 2018)
+	Version 1.0.32 (Februar 2018)
 
+		- Serbische und chinesische (traditionell) Übersetzungen für das Installationsprogramm hinzugefügt
 		- Verhalten von Controls zur Bitratenauswahl verbessert
 		- Zeige Länge der Jobliste in Stunden, wenn länger als eine Stunde
 		- Umgang mit leerem Track-Metadatenfeld verbessert
 		- Probleme beim Umgang mit ungültigen Xing/LAME-Tags behoben
 		- Fehler bei FAAC-Qualitätseinstellung behoben
+		- Problem mit fehlenden Coverbild-Mimetypes in MP4-Tags behoben
 		- Vertauschung von TwinVQ- und WMA-Kodierern im Konfigurationsdialog behoben
-		- Serbische und chinesische (traditionell) Übersetzungen für das Installationsprogramm hinzugefügt
+		- Update auf MP4v2 v2.0.0
 
 	Version 1.0.31a (November 2017)
 
@@ -343,7 +345,6 @@ Geschichte
 		- Einfrieren des Programms unter Windows 7 behoben
 		- Mögliches Einfrieren beim Programmstart behoben
 		- Deutliche Geschwindigkeitsverbesserungen bei der Kodierung
-		- Update auf MP4v2 v1.9.1
 		- Einige kleinere Korrekturen
 
 	Version 1.0.13 (Juli 2009)
