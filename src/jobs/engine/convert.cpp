@@ -533,44 +533,44 @@ Error freac::JobConvert::Perform()
 
 			const Track	&track = worker->GetTrackToConvert();
 
+			/* Remove track from joblist.
+			 */
+			if ((removeProcessedTracks || Config::Get()->deleteAfterEncoding) && !configuration->enable_console)
+			{
+				BoCA::JobList		*joblist = BoCA::JobList::Get();
+				const Array<Track>	*tracks	 = joblist->getTrackList.Call();
+
+				foreach (const Track &jltrack, *tracks)
+				{
+					if (jltrack.GetTrackID() == track.GetTrackID())
+					{
+						joblist->onComponentRemoveTrack.Emit(jltrack);
+
+						break;
+					}
+				}
+			}
+
+			/* Delete input file if requested.
+			 */
+			if (Config::Get()->deleteAfterEncoding && !configuration->enable_console)
+			{
+				/* Check if this was the last track depending on this input file.
+				 */
+				Bool	 deleteFile = True;
+
+				foreach (const Track &trackToCheck, tracks)
+				{
+					if (trackToCheck.origFilename == track.origFilename) { deleteFile = False; break; }
+				}
+
+				/* Delete file if no more tracks left.
+				 */
+				if (deleteFile) File(track.origFilename).Delete();
+			}
+
 			if (File(track.outfile).Exists())
 			{
-				/* Remove track from joblist.
-				 */
-				if ((removeProcessedTracks || Config::Get()->deleteAfterEncoding) && !configuration->enable_console)
-				{
-					BoCA::JobList		*joblist = BoCA::JobList::Get();
-					const Array<Track>	*tracks	 = joblist->getTrackList.Call();
-
-					foreach (const Track &jltrack, *tracks)
-					{
-						if (jltrack.GetTrackID() == track.GetTrackID())
-						{
-							joblist->onComponentRemoveTrack.Emit(jltrack);
-
-							break;
-						}
-					}
-				}
-
-				/* Delete input file if requested.
-				 */
-				if (Config::Get()->deleteAfterEncoding && !configuration->enable_console)
-				{
-					/* Check if this was the last track depending on this input file.
-					 */
-					Bool	 deleteFile = True;
-
-					foreach (const Track &trackToCheck, tracks)
-					{
-						if (trackToCheck.origFilename == track.origFilename) { deleteFile = False; break; }
-					}
-
-					/* Delete file if no more tracks left.
-					 */
-					if (deleteFile) File(track.origFilename).Delete();
-				}
-
 				/* Add encoded track to joblist if requested.
 				 */
 				if (addEncodedTracks && !encodeToSingleFile && !configuration->enable_console)
@@ -585,36 +585,36 @@ Error freac::JobConvert::Perform()
 				/* Add track to list of converted tracks.
 				 */
 				convertedTracks.Add(track, track.GetTrackID());
+			}
 
-				/* Eject CD if this was the last track from that disc.
+			/* Eject CD if this was the last track from that disc.
+			 */
+			if (track.isCDTrack && ripperEjectDisc)
+			{
+				/* Check if this was the last track.
 				 */
-				if (track.isCDTrack && ripperEjectDisc)
+				Bool	 ejectDisk = True;
+
+				foreach (const Track &trackToCheck, tracks)
 				{
-					/* Check if this was the last track.
-					 */
-					Bool	 ejectDisk = True;
+					if (trackToCheck.drive == track.drive) { ejectDisk = False; break; }
+				}
 
-					foreach (const Track &trackToCheck, tracks)
+				/* Eject disc if no more tracks left.
+				 */
+				if (ejectDisk)
+				{
+					DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
+
+					if (info != NIL)
 					{
-						if (trackToCheck.drive == track.drive) { ejectDisk = False; break; }
-					}
+						info->OpenNthDeviceTray(track.drive);
 
-					/* Eject disc if no more tracks left.
-					 */
-					if (ejectDisk)
-					{
-						DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
+						boca.DeleteComponent(info);
 
-						if (info != NIL)
-						{
-							info->OpenNthDeviceTray(track.drive);
-
-							boca.DeleteComponent(info);
-
-							/* Notify application of removed disc.
-							 */
-							Notification::Get()->onDiscRemove.Emit(track.drive);
-						}
+						/* Notify application of removed disc.
+						 */
+						Notification::Get()->onDiscRemove.Emit(track.drive);
 					}
 				}
 			}
