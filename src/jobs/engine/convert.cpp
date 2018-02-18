@@ -535,6 +535,57 @@ Error freac::JobConvert::Perform()
 
 			if (File(track.outfile).Exists())
 			{
+				/* Remove track from joblist.
+				 */
+				if ((removeProcessedTracks || Config::Get()->deleteAfterEncoding) && !configuration->enable_console)
+				{
+					BoCA::JobList		*joblist = BoCA::JobList::Get();
+					const Array<Track>	*tracks	 = joblist->getTrackList.Call();
+
+					foreach (const Track &jltrack, *tracks)
+					{
+						if (jltrack.GetTrackID() == track.GetTrackID())
+						{
+							joblist->onComponentRemoveTrack.Emit(jltrack);
+
+							break;
+						}
+					}
+				}
+
+				/* Delete input file if requested.
+				 */
+				if (Config::Get()->deleteAfterEncoding && !configuration->enable_console)
+				{
+					/* Check if this was the last track depending on this input file.
+					 */
+					Bool	 deleteFile = True;
+
+					foreach (const Track &trackToCheck, tracks)
+					{
+						if (trackToCheck.origFilename == track.origFilename) { deleteFile = False; break; }
+					}
+
+					/* Delete file if no more tracks left.
+					 */
+					if (deleteFile) File(track.origFilename).Delete();
+				}
+
+				/* Add encoded track to joblist if requested.
+				 */
+				if (addEncodedTracks && !encodeToSingleFile && !configuration->enable_console)
+				{
+					Array<String>	 files;
+
+					files.Add(track.outfile);
+
+					(new JobAddFiles(files))->Schedule();
+				}
+
+				/* Add track to list of converted tracks.
+				 */
+				convertedTracks.Add(track, track.GetTrackID());
+
 				/* Eject CD if this was the last track from that disc.
 				 */
 				if (track.isCDTrack && ripperEjectDisc)
@@ -566,57 +617,6 @@ Error freac::JobConvert::Perform()
 						}
 					}
 				}
-
-				/* Delete input file if requested.
-				 */
-				if (Config::Get()->deleteAfterEncoding && !configuration->enable_console)
-				{
-					/* Check if this was the last track depending on this input file.
-					 */
-					Bool	 deleteFile = True;
-
-					foreach (const Track &trackToCheck, tracks)
-					{
-						if (trackToCheck.origFilename == track.origFilename) { deleteFile = False; break; }
-					}
-
-					/* Delete file if no more tracks left.
-					 */
-					if (deleteFile) File(track.origFilename).Delete();
-				}
-
-				/* Remove track from joblist.
-				 */
-				if ((removeProcessedTracks || Config::Get()->deleteAfterEncoding) && !configuration->enable_console)
-				{
-					BoCA::JobList		*joblist = BoCA::JobList::Get();
-					const Array<Track>	*tracks	 = joblist->getTrackList.Call();
-
-					foreach (const Track &jltrack, *tracks)
-					{
-						if (jltrack.GetTrackID() == track.GetTrackID())
-						{
-							joblist->onComponentRemoveTrack.Emit(jltrack);
-
-							break;
-						}
-					}
-				}
-
-				/* Add encoded track to joblist if requested.
-				 */
-				if (addEncodedTracks && !encodeToSingleFile && !configuration->enable_console)
-				{
-					Array<String>	 files;
-
-					files.Add(track.outfile);
-
-					(new JobAddFiles(files))->Schedule();
-				}
-
-				/* Add track to list of converted tracks.
-				 */
-				convertedTracks.Add(track, track.GetTrackID());
 			}
 
 			encodedTracks++;
