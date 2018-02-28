@@ -60,7 +60,8 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 Bit</entry>
       <entry id="516" string="%1 bytes">%1 Bytes</entry>
-      <entry id="517" string="%1%">%1%</entry>
+      <entry id="517" string="%1 kB">%1 kB</entry>
+      <entry id="518" string="%1%">%1%</entry>
     </section>
 
     <section name="Menu">
@@ -453,6 +454,8 @@
 	<entry id="5523" string="Read cue sheets embedded in metadata">In Metadaten eingebettete Cuesheets lesen</entry>
 	<entry id="5524" string="Prefer cue sheets over chapter information">Cuesheets gegenüber Kapitelinformationen bevorzugen</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Tracknummern unter 10 eine Null voranstellen</entry>
+	<entry id="5526" string="File size limit">Dateigrößenlimit</entry>
+	<entry id="5527" string="unlimited">unbegrenzt</entry>
       </section>
 
       <section name="Joblist">
