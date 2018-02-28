@@ -43,6 +43,9 @@ namespace freac
 			GroupBox	*group_coverart_read;
 			CheckBox	*check_coverart_read_tags;
 			CheckBox	*check_coverart_read_files;
+			Text		*text_coverart_read_max;
+			Slider		*slider_coverart_read_max;
+			Text		*text_coverart_read_max_value;
 
 			GroupBox	*group_coverart_write;
 			CheckBox	*check_coverart_write_tags;
@@ -71,6 +74,9 @@ namespace freac
 
 			Bool		 enableCoverArtReadFromTags;
 			Bool		 enableCoverArtReadFromFiles;
+
+			Int		 coverArtMaxFileSize;
+
 			Bool		 enableCoverArtWriteToTags;
 			Bool		 enableCoverArtWriteToFiles;
 
@@ -93,7 +99,10 @@ namespace freac
 			Void		 ToggleTags();
 			Void		 TogglePrependZero();
 			Void		 ToggleWriteCoverArt();
+			Void		 ToggleReadCoverArtFiles();
 			Void		 ToggleReadCueSheets();
+
+			Void		 ChangeMaxCoverArtSize(Int);
 		public:
 					 ConfigureTags();
 					~ConfigureTags();

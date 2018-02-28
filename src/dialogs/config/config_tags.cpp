@@ -23,8 +23,13 @@ freac::ConfigureTags::ConfigureTags()
 
 	i18n->SetContext("Configuration::Tags");
 
+	/* Get configuration.
+	 */
 	enableCoverArtReadFromTags	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, Config::TagsCoverArtReadFromTagsDefault);
 	enableCoverArtReadFromFiles	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromFilesID, Config::TagsCoverArtReadFromFilesDefault);
+
+	coverArtMaxFileSize		= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtMaxFileSizeID, Config::TagsCoverArtMaxFileSizeDefault);
+
 	enableCoverArtWriteToTags	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, Config::TagsCoverArtWriteToTagsDefault);
 	enableCoverArtWriteToFiles	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesID, Config::TagsCoverArtWriteToFilesDefault);
 	enableCoverArtWriteToFilesRef	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesWithReferenceID, Config::TagsCoverArtWriteToFilesWithReferenceDefault);
@@ -41,13 +46,15 @@ freac::ConfigureTags::ConfigureTags()
 	prependZero			= False;
 	replaceComments			= config->GetIntValue(Config::CategoryTagsID, Config::TagsReplaceExistingCommentsID, Config::TagsReplaceExistingCommentsDefault);
 
-	tab_tags		= new TabWidget(Point(7, 7), Size(552, 213));
+	/* Create widgets.
+	 */
+	tab_tags			= new TabWidget(Point(7, 7), Size(552, 236));
 
-	layer_tags		= new Layer(i18n->TranslateString("Tags"));
+	layer_tags			= new Layer(i18n->TranslateString("Tags"));
 
-	group_tags		= new GroupBox(i18n->TranslateString("Tag formats"), Point(7, 11), Size(534, 94));
+	group_tags			= new GroupBox(i18n->TranslateString("Tag formats"), Point(7, 11), Size(534, 117));
 
-	list_tag_formats	= new ListBox(Point(10, 13), Size(250, 71));
+	list_tag_formats		= new ListBox(Point(10, 13), Size(250, 94));
 	list_tag_formats->SetFlags(LF_MULTICHECKBOX);
 
 	Registry		&boca = Registry::Get();
@@ -70,18 +77,18 @@ freac::ConfigureTags::ConfigureTags()
 	list_tag_formats->onSelectEntry.Connect(&ConfigureTags::ToggleTags, this);
 	list_tag_formats->onMarkEntry.Connect(&ConfigureTags::ToggleTags, this);
 
-	text_encoding		= new Text(i18n->AddColon(i18n->TranslateString("Encoding")), Point(268, 16));
+	text_encoding			= new Text(i18n->AddColon(i18n->TranslateString("Encoding")), Point(268, 16));
 
-	list_encodings		= new List();
+	list_encodings			= new List();
 
-	edit_encoding		= new EditBox(NIL, Point(text_encoding->GetUnscaledTextWidth() + 275, 13), Size(249 - text_encoding->GetUnscaledTextWidth(), 0));
+	edit_encoding			= new EditBox(NIL, Point(text_encoding->GetUnscaledTextWidth() + 275, 13), Size(249 - text_encoding->GetUnscaledTextWidth(), 0));
 	edit_encoding->onInput.Connect(&ConfigureTags::OnEditEncoding, this);
 
-	combo_encoding		= new ComboBox(Point(text_encoding->GetUnscaledTextWidth() + 275, 13), Size(249 - text_encoding->GetUnscaledTextWidth(), 0));
+	combo_encoding			= new ComboBox(Point(text_encoding->GetUnscaledTextWidth() + 275, 13), Size(249 - text_encoding->GetUnscaledTextWidth(), 0));
 	combo_encoding->onSelectEntry.Connect(&ConfigureTags::OnEditEncoding, this);
 	combo_encoding->Hide();
 
-	check_prependzero	= new CheckBox(i18n->TranslateString("Prepend zero to track numbers below 10"), Point(268, edit_encoding->GetY() + 28), Size(256, 0), &prependZero);
+	check_prependzero		= new CheckBox(i18n->TranslateString("Prepend zero to track numbers below 10"), Point(268, edit_encoding->GetY() + 28), Size(256, 0), &prependZero);
 	check_prependzero->onAction.Connect(&ConfigureTags::TogglePrependZero, this);
 
 	group_tags->Add(list_tag_formats);
@@ -90,11 +97,11 @@ freac::ConfigureTags::ConfigureTags()
 	group_tags->Add(combo_encoding);
 	group_tags->Add(check_prependzero);
 
-	group_definfo		= new GroupBox(i18n->TranslateString("Comments"), Point(7, 117), Size(534, 67));
+	group_definfo			= new GroupBox(i18n->TranslateString("Comments"), Point(7, 139), Size(534, 67));
 
-	text_defcomment		= new Text(i18n->AddColon(i18n->TranslateString("Default comment string")), Point(10, 15));
-	edit_defcomment		= new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, NIL), Point(17 + text_defcomment->GetUnscaledTextWidth(), 12), Size(507 - text_defcomment->GetUnscaledTextWidth(), 0), 0);
-	check_replace		= new CheckBox(i18n->TranslateString("Replace existing comments with default comment"), Point(10, edit_defcomment->GetY() + 28), Size(514, 0), &replaceComments);
+	text_defcomment			= new Text(i18n->AddColon(i18n->TranslateString("Default comment string")), Point(10, 15));
+	edit_defcomment			= new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, NIL), Point(17 + text_defcomment->GetUnscaledTextWidth(), 12), Size(507 - text_defcomment->GetUnscaledTextWidth(), 0), 0);
+	check_replace			= new CheckBox(i18n->TranslateString("Replace existing comments with default comment"), Point(10, edit_defcomment->GetY() + 28), Size(514, 0), &replaceComments);
 
 	group_definfo->Add(text_defcomment);
 	group_definfo->Add(edit_defcomment);
@@ -103,22 +110,38 @@ freac::ConfigureTags::ConfigureTags()
 	layer_tags->Add(group_tags);
 	layer_tags->Add(group_definfo);
 
-	layer_coverart		= new Layer(i18n->TranslateString("Cover art"));
+	layer_coverart			= new Layer(i18n->TranslateString("Cover art"));
 
-	group_coverart_read	= new GroupBox(i18n->TranslateString("Read cover art"), Point(7, 11), Size(534, 41));
+	group_coverart_read		= new GroupBox(i18n->TranslateString("Read cover art"), Point(7, 11), Size(534, 64));
 
-	check_coverart_read_tags  = new CheckBox(i18n->TranslateString("Read cover art from tags"), Point(10, 14), Size(253, 0), &enableCoverArtReadFromTags);
-	check_coverart_read_files = new CheckBox(i18n->TranslateString("Read cover art from files"), Point(271, 14), Size(253, 0), &enableCoverArtReadFromFiles);
+	check_coverart_read_tags	= new CheckBox(i18n->TranslateString("Read cover art from tags"), Point(10, 14), Size(253, 0), &enableCoverArtReadFromTags);
+	check_coverart_read_files	= new CheckBox(i18n->TranslateString("Read cover art from files"), Point(271, 14), Size(253, 0), &enableCoverArtReadFromFiles);
+	check_coverart_read_files->onAction.Connect(&ConfigureTags::ToggleReadCoverArtFiles, this);
+
+	Int	 maxTextSize = Math::Max(Font().GetUnscaledTextSizeX(i18n->TranslateString("%1 kB", "Technical").Replace("%1", "250")), Font().GetUnscaledTextSizeX(i18n->TranslateString("unlimited")));
+
+	text_coverart_read_max		= new Text(i18n->AddColon(i18n->TranslateString("File size limit")), Point(288, 39));
+
+	text_coverart_read_max_value	= new Text(NIL, Point(80, 39));
+	text_coverart_read_max_value->SetX(maxTextSize + 10);
+	text_coverart_read_max_value->SetOrientation(OR_UPPERRIGHT);
+
+	slider_coverart_read_max	= new Slider(Point(295 + text_coverart_read_max->GetUnscaledTextWidth(), 37), Size(221 - text_coverart_read_max->GetUnscaledTextWidth() - maxTextSize, 0), OR_HORZ, NIL, 1, 21);
+	slider_coverart_read_max->SetValue(coverArtMaxFileSize == 0 ? 9999 : coverArtMaxFileSize / 25);
+	slider_coverart_read_max->onValueChange.Connect(&ConfigureTags::ChangeMaxCoverArtSize, this);
 
 	group_coverart_read->Add(check_coverart_read_tags);
 	group_coverart_read->Add(check_coverart_read_files);
+	group_coverart_read->Add(text_coverart_read_max);
+	group_coverart_read->Add(slider_coverart_read_max);
+	group_coverart_read->Add(text_coverart_read_max_value);
 
-	group_coverart_write	= new GroupBox(i18n->TranslateString("Write cover art"), Point(7, 64), Size(534, 120));
+	group_coverart_write		= new GroupBox(i18n->TranslateString("Write cover art"), Point(7, 86), Size(534, 120));
 
-	check_coverart_write_tags  = new CheckBox(i18n->TranslateString("Write cover art to tags"), Point(10, 14), Size(253, 0), &enableCoverArtWriteToTags);
+	check_coverart_write_tags	= new CheckBox(i18n->TranslateString("Write cover art to tags"), Point(10, 14), Size(253, 0), &enableCoverArtWriteToTags);
 	check_coverart_write_tags->onAction.Connect(&ConfigureTags::ToggleWriteCoverArt, this);
 
-	list_coverart_write_tags_format = new ListBox(Point(27, 39), Size(236, 71));
+	list_coverart_write_tags_format	= new ListBox(Point(27, 39), Size(236, 71));
 	list_coverart_write_tags_format->SetFlags(LF_MULTICHECKBOX);
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
@@ -133,13 +156,13 @@ freac::ConfigureTags::ConfigureTags()
 		}
 	}
 
-	check_coverart_write_files = new CheckBox(i18n->TranslateString("Write cover art to files"), Point(271, 14), Size(253, 0), &enableCoverArtWriteToFiles);
+	check_coverart_write_files	= new CheckBox(i18n->TranslateString("Write cover art to files"), Point(271, 14), Size(253, 0), &enableCoverArtWriteToFiles);
 	check_coverart_write_files->onAction.Connect(&ConfigureTags::ToggleWriteCoverArt, this);
 
-	text_coverart_write_files_name = new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(288, 38));
-	edit_coverart_write_files_name = new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsCoverArtFilenamePatternID, Config::TagsCoverArtFilenamePatternDefault), Point(288, 58), Size(236, 0), 0);
+	text_coverart_write_files_name	= new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(288, 38));
+	edit_coverart_write_files_name	= new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsCoverArtFilenamePatternID, Config::TagsCoverArtFilenamePatternDefault), Point(288, 58), Size(236, 0), 0);
 
-	check_coverart_write_files_ref = new CheckBox(i18n->TranslateString("Add reference to audio file tag"), Point(288, 86), Size(236, 0), &enableCoverArtWriteToFilesRef);
+	check_coverart_write_files_ref	= new CheckBox(i18n->TranslateString("Add reference to audio file tag"), Point(288, 86), Size(236, 0), &enableCoverArtWriteToFilesRef);
 
 	group_coverart_write->Add(check_coverart_write_tags);
 	group_coverart_write->Add(list_coverart_write_tags_format);
@@ -151,30 +174,30 @@ freac::ConfigureTags::ConfigureTags()
 	layer_coverart->Add(group_coverart_read);
 	layer_coverart->Add(group_coverart_write);
 
-	layer_other		= new Layer(i18n->TranslateString("Other"));
+	layer_other			= new Layer(i18n->TranslateString("Other"));
 
-	group_cue		= new GroupBox(i18n->TranslateString("Cue sheets"), Point(7, 11), Size(534, 64));
+	group_cue			= new GroupBox(i18n->TranslateString("Cue sheets"), Point(7, 11), Size(534, 64));
 
-	check_read_cue		= new CheckBox(i18n->TranslateString("Read cue sheets embedded in metadata"), Point(10, 14), Size(514, 0), &readCueSheets);
+	check_read_cue			= new CheckBox(i18n->TranslateString("Read cue sheets embedded in metadata"), Point(10, 14), Size(514, 0), &readCueSheets);
 	check_read_cue->onAction.Connect(&ConfigureTags::ToggleReadCueSheets, this);
 
-	check_prefer_cue	= new CheckBox(i18n->TranslateString("Prefer cue sheets over chapter information"), Point(27, 37), Size(497, 0), &preferCueSheets);
+	check_prefer_cue		= new CheckBox(i18n->TranslateString("Prefer cue sheets over chapter information"), Point(27, 37), Size(497, 0), &preferCueSheets);
 
 	group_cue->Add(check_read_cue);
 	group_cue->Add(check_prefer_cue);
 
-	group_chapters		= new GroupBox(i18n->TranslateString("Chapters"), Point(7, 87), Size(263, 64));
+	group_chapters			= new GroupBox(i18n->TranslateString("Chapters"), Point(7, 86), Size(263, 64));
 
-	check_read_chapters	= new CheckBox(i18n->TranslateString("Read chapters from files"), Point(10, 14), Size(243, 0), &readChapters);
-	check_write_chapters	= new CheckBox(i18n->TranslateString("Write chapters to files"), check_read_chapters->GetPosition() + Point(0, 23), Size(243, 0), &writeChapters);
+	check_read_chapters		= new CheckBox(i18n->TranslateString("Read chapters from files"), Point(10, 14), Size(243, 0), &readChapters);
+	check_write_chapters		= new CheckBox(i18n->TranslateString("Write chapters to files"), check_read_chapters->GetPosition() + Point(0, 23), Size(243, 0), &writeChapters);
 
 	group_chapters->Add(check_read_chapters);
 	group_chapters->Add(check_write_chapters);
 
-	group_special		= new GroupBox(i18n->TranslateString("Special fields"), Point(278, 87), Size(263, 64));
+	group_special			= new GroupBox(i18n->TranslateString("Special fields"), Point(278, 86), Size(263, 64));
 
-	check_mcdi		= new CheckBox(i18n->TranslateString("Write CD table of contents"), Point(10, 14), Size(243, 0), &writeMCDI);
-	check_replaygain	= new CheckBox(i18n->TranslateString("Preserve Replay Gain information"), check_mcdi->GetPosition() + Point(0, 23), Size(243, 0), &preserveReplayGain);
+	check_mcdi			= new CheckBox(i18n->TranslateString("Write CD table of contents"), Point(10, 14), Size(243, 0), &writeMCDI);
+	check_replaygain		= new CheckBox(i18n->TranslateString("Preserve Replay Gain information"), check_mcdi->GetPosition() + Point(0, 23), Size(243, 0), &preserveReplayGain);
 
 	group_special->Add(check_mcdi);
 	group_special->Add(check_replaygain);
@@ -186,8 +209,10 @@ freac::ConfigureTags::ConfigureTags()
 	ToggleTags();
 
 	ToggleWriteCoverArt();
-
+	ToggleReadCoverArtFiles();
 	ToggleReadCueSheets();
+
+	ChangeMaxCoverArtSize(slider_coverart_read_max->GetValue());
 
 	tab_tags->Add(layer_tags);
 	tab_tags->Add(layer_coverart);
@@ -195,7 +220,7 @@ freac::ConfigureTags::ConfigureTags()
 
 	Add(tab_tags);
 
-	SetSize(Size(566, 225));
+	SetSize(Size(566, 248));
 }
 
 freac::ConfigureTags::~ConfigureTags()
@@ -217,6 +242,9 @@ freac::ConfigureTags::~ConfigureTags()
 	DeleteObject(group_coverart_read);
 	DeleteObject(check_coverart_read_tags);
 	DeleteObject(check_coverart_read_files);
+	DeleteObject(text_coverart_read_max);
+	DeleteObject(slider_coverart_read_max);
+	DeleteObject(text_coverart_read_max_value);
 
 	DeleteObject(group_coverart_write);
 	DeleteObject(check_coverart_write_tags);
@@ -363,10 +391,36 @@ Void freac::ConfigureTags::ToggleWriteCoverArt()
 	}
 }
 
+Void freac::ConfigureTags::ToggleReadCoverArtFiles()
+{
+	if (enableCoverArtReadFromFiles)
+	{
+		text_coverart_read_max->Activate();
+		slider_coverart_read_max->Activate();
+		text_coverart_read_max_value->Activate();
+	}
+	else
+	{
+		text_coverart_read_max->Deactivate();
+		slider_coverart_read_max->Deactivate();
+		text_coverart_read_max_value->Deactivate();
+	}
+}
+
 Void freac::ConfigureTags::ToggleReadCueSheets()
 {
 	if (readCueSheets) check_prefer_cue->Activate();
 	else		   check_prefer_cue->Deactivate();
+}
+
+Void freac::ConfigureTags::ChangeMaxCoverArtSize(Int value)
+{
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	i18n->SetContext("Configuration::Tags");
+
+	if (value <= 20) text_coverart_read_max_value->SetText(i18n->TranslateString("%1 kB", "Technical").Replace("%1", String::FromInt(value * 25)));
+	else		 text_coverart_read_max_value->SetText(i18n->TranslateString("unlimited"));
 }
 
 Int freac::ConfigureTags::SaveSettings()
@@ -392,6 +446,8 @@ Int freac::ConfigureTags::SaveSettings()
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, enableCoverArtReadFromTags);
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromFilesID, enableCoverArtReadFromFiles);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtMaxFileSizeID, slider_coverart_read_max->GetValue() % 21 * 25);
+
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, enableCoverArtWriteToTags);
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesID, enableCoverArtWriteToFiles);
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesWithReferenceID, enableCoverArtWriteToFilesRef);

@@ -277,6 +277,9 @@ namespace freac
 			static const String	 TagsCoverArtReadFromFilesID;
 			static const Bool	 TagsCoverArtReadFromFilesDefault;
 
+			static const String	 TagsCoverArtMaxFileSizeID;
+			static const Int	 TagsCoverArtMaxFileSizeDefault;
+
 			static const String	 TagsCoverArtWriteToTagsID;
 			static const Bool	 TagsCoverArtWriteToTagsDefault;
 
