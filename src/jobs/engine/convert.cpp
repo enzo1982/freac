@@ -1225,7 +1225,8 @@ Format freac::JobConvert::GetSingleTrackSampleFormat() const
 
 	/* Collect all sample formats of input tracks.
 	 */
-	Array<Format>	 formats;
+	Array<Format>	 sourceFormats;
+	Array<Format>	 targetFormats;
 
 	foreach (const Track &track, tracks)
 	{
@@ -1233,29 +1234,57 @@ Format freac::JobConvert::GetSingleTrackSampleFormat() const
 
 		if (!processor->Create(track)) { delete processor; continue; }
 
+		const Format	&sourceFormat	 = track.GetFormat();
 		const Format	&processorFormat = processor->GetFormatInfo();
 		Format		 targetFormat	 = FormatConverter::GetBestTargetFormat(processorFormat, encoder);
 
 		delete processor;
 
-		/* Add format to list.
+		/* Check if format is already in list.
 		 */
 		Bool	 found = False;
 
-		foreach (const Format &format, formats) if (format == targetFormat) found = True;
+		foreach (const Format &format, targetFormats)
+		{
+			if (format != targetFormat) continue;
 
-		if (!found) formats.Add(targetFormat);
+			/* Update source format if the new format is better suited for conversion.
+			 */
+			Format	&source = sourceFormats.GetNthReference(foreachindex);
+
+			if ((source.channels ==			    1 && sourceFormat.channels == 2) ||
+			    (source.channels  > sourceFormat.channels && sourceFormat.channels >= 2)) source = sourceFormat;
+
+			if (source.channels == sourceFormat.channels					      &&
+			    Math::Abs(format.bits - source.bits) > Math::Abs(format.bits - sourceFormat.bits) &&
+			    (source.bits < format.bits || sourceFormat.bits >= format.bits)) source = sourceFormat;
+
+			if (source.channels == sourceFormat.channels					      &&
+			    source.bits	    == sourceFormat.bits					      &&
+			    Math::Abs(format.rate - source.rate) > Math::Abs(format.rate - sourceFormat.rate) &&
+			    (source.rate < format.rate || sourceFormat.rate >= format.rate)) source = sourceFormat;
+
+			found = True;
+		}
+
+		/* Add format to list.
+		 */
+		if (!found)
+		{
+			sourceFormats.Add(sourceFormat);
+			targetFormats.Add(targetFormat);
+		}
 	}
 
 	boca.DeleteComponent(encoder);
 
-	if (formats.Length() == 1) return formats.GetFirst();
+	if (targetFormats.Length() == 1) return sourceFormats.GetFirst();
 
 	/* Display dialog to select output format.
 	 */
-	DialogSelectFormat	 dialog(formats);
+	DialogSelectFormat	 dialog(targetFormats);
 
-	if (dialog.ShowDialog() == Success()) return formats.GetNth(dialog.GetSelectedEntryNumber());
+	if (dialog.ShowDialog() == Success()) return sourceFormats.GetNth(dialog.GetSelectedEntryNumber());
 
 	return Format();
 }
