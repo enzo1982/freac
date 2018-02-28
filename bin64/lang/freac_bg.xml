@@ -1062,7 +1062,7 @@
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface">Потребителски интерфейс</entry>
-	  <entry id="104101" string="Show protocols tab in main window">Показване раздел &quot;протоколи&quot; в главния прозорец</entry>
+	  <entry id="104101" string="Show Protocols tab in main window">Показване раздел &quot;протоколи&quot; в главния прозорец</entry>
 	</section>
       </section>
     </section>

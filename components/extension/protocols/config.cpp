@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -27,7 +27,7 @@ BoCA::ConfigureProtocols::ConfigureProtocols()
 
 	group_ui		= new GroupBox(i18n->TranslateString("User interface"), Point(7, 11), Size(344, 41));
 
-	check_ui_showTab	= new CheckBox(i18n->TranslateString("Show protocols tab in main window"), Point(10, 14), Size(324, 0), &showProtocolsTab);
+	check_ui_showTab	= new CheckBox(i18n->TranslateString("Show Protocols tab in main window"), Point(10, 14), Size(324, 0), &showProtocolsTab);
 
 	group_ui->Add(check_ui_showTab);
 
