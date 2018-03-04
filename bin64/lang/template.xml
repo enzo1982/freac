@@ -107,6 +107,8 @@
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing"/>
 	<entry id="1401" string="Enable processing during playback"/>
+	<entry id="1402" string="Configure signal processing"/>
+	<entry id="1403" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
