@@ -249,10 +249,8 @@ Void freac::Playback::Loop(Decoder *decoder, Processor *processor)
 		else if (track.approxLength >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / track.approxLength  * position : 1000.0 / track.approxLength  * position);
 		else				  onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / (240 * format.rate) * position : 1000.0 / (240 * format.rate) * position);
 
-		while (output->CanWrite() < buffer.Size() && !stop) S::System::System::Sleep(10);
-
-		if (!stop) output->WriteData(buffer);
-	}
+		Write(buffer, step * bytesPerSample);
+ 	}
 
 	/* Finish sample transformations.
 	 */
@@ -262,9 +260,8 @@ Void freac::Playback::Loop(Decoder *decoder, Processor *processor)
 
 	/* Pass remaining samples to output.
 	 */
-	while (output->CanWrite() < buffer.Size() && !stop) S::System::System::Sleep(10);
+	Write(buffer, samplesSize * bytesPerSample);
 
-	if (!stop) output->WriteData(buffer);
 	if (!stop) output->Finish();
 
 	while (!stop && output->IsPlaying()) S::System::System::Sleep(20);
@@ -274,6 +271,25 @@ Void freac::Playback::Loop(Decoder *decoder, Processor *processor)
 	stop = True;
 
 	onFinish.Emit(track);
+}
+
+Void freac::Playback::Write(Buffer<UnsignedByte> &buffer, Int chunkSize)
+{
+	while (buffer.Size() > 0)
+	{
+		while (output->CanWrite() < chunkSize && !stop) S::System::System::Sleep(10);
+
+		if (stop) break;
+
+		Buffer<UnsignedByte>	 outputBuffer(Math::Min(buffer.Size(), output->CanWrite()));
+
+		memcpy(outputBuffer, buffer, outputBuffer.Size());
+		memmove(buffer, buffer + outputBuffer.Size(), buffer.Size() - outputBuffer.Size());
+
+		buffer.Resize(buffer.Size() - outputBuffer.Size());
+
+		output->WriteData(outputBuffer);
+	}
 }
 
 Void freac::Playback::Pause()
