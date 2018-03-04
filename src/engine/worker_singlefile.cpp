@@ -218,6 +218,8 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	if (singleFileMode == 0) delete processor;
 
+	if (singleFileMode == 0) delete processor;
+
 	/* Signal next chapter.
 	 */
 	if (!cancel)

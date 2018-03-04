@@ -256,6 +256,8 @@ Void freac::Progress::FinishTrack(const Track &track, Bool stepsLeft)
 	 */
 	mutex.Lock();
 
+	Track	&trackListTrack = trackList.GetReference(track.GetTrackID());
+
 	for (Int i = 0; i < trackList.Length(); i++)
 	{
 		if (trackList.GetNth(i).GetTrackID() != track.GetTrackID()) continue;
