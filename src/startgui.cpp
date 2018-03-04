@@ -111,6 +111,7 @@ freac::freacGUI::freacGUI()
 	clicked_configuration = -1;
 	clicked_drive	      = -1;
 	clicked_encoder	      = -1;
+	clicked_processor     = -1;
 
 	Rect	 workArea = Screen::GetVirtualScreenMetrics();
 
@@ -161,6 +162,7 @@ freac::freacGUI::freacGUI()
 	menu_seldrive		= new PopupMenu();
 
 	menu_processing		= new PopupMenu();
+	menu_processors		= new PopupMenu();
 
 	menu_encode		= new PopupMenu();
 	menu_encoders		= new PopupMenu();
@@ -305,6 +307,7 @@ freac::freacGUI::~freacGUI()
 	DeleteObject(menu_seldrive);
 
 	DeleteObject(menu_processing);
+	DeleteObject(menu_processors);
 
 	DeleteObject(menu_encode);
 	DeleteObject(menu_encoders);
@@ -427,12 +430,58 @@ Void freac::freacGUI::About()
 	QuickMessage(String(freac::appLongName).Append(" ").Append(freac::version).Append(" (").Append(freac::architecture).Append(")\n").Append(freac::copyright).Append("\n\n").Append(i18n->TranslateString("Translated by %1.").Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About %1").Replace("%1", freac::appName), Message::Buttons::Ok, (wchar_t *) IDI_ICON);
 }
 
-Void freac::freacGUI::ConfigureEncoder()
+Void freac::freacGUI::ConfigureSettings(ConfigurePage page)
 {
-	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
 
+	/* Save joblist tab field sizes.
+	 */
+	String	 fieldSizes;
+
+	for (Int i = 0; i < joblist->GetNOfTabs(); i++)
+	{
+		if (i > 0) fieldSizes.Append(",");
+
+		if (joblist->GetNthTabWidth(i) <= 0) fieldSizes.Append("*");
+		else				     fieldSizes.Append(String::FromInt(joblist->GetNthTabWidth(i)));
+	}
+
+	config->SetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, fieldSizes);
+
+	/* Show configuration dialog.
+	 */
+	ConfigDialog	*dialog = new ConfigDialog();
+
+	dialog->ShowDialog(page);
+
+	DeleteObject(dialog);
+
+	/* Select active configuration if we have multiple.
+	 */
+	for (Int i = 0; i < config->GetNOfConfigurations(); i++)
+	{
+		if (config->GetNthConfigurationName(i) == config->GetConfigurationName()) clicked_configuration = i;
+	}
+
+	/* Update widgets and notify components.
+	 */
+	OnChangeConfiguration();
+}
+
+Void freac::freacGUI::ConfigureSettings()
+{
+	ConfigureSettings(ConfigurePageDefault);
+}
+
+Void freac::freacGUI::ConfigureProcessing()
+{
+	ConfigureSettings(ConfigurePageProcessing);
+}
+
+Void freac::freacGUI::ConfigureComponent(const String &id)
+{
 	Registry	&boca = Registry::Get();
-	Component	*component = boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
+	Component	*component = boca.CreateComponentByID(id);
 
 	if (component != NIL)
 	{
@@ -456,42 +505,24 @@ Void freac::freacGUI::ConfigureEncoder()
 	}
 }
 
-Void freac::freacGUI::ConfigureSettings()
+Void freac::freacGUI::ConfigureEncoder()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
 
-	/* Save joblist tab field sizes.
-	 */
-	String	 fieldSizes;
+	ConfigureComponent(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
+}
 
-	for (Int i = 0; i < joblist->GetNOfTabs(); i++)
-	{
-		if (i > 0) fieldSizes.Append(",");
+Void freac::freacGUI::ConfigureProcessor()
+{
+	BoCA::Config	*config	= BoCA::Config::Get();
 
-		if (joblist->GetNthTabWidth(i) <= 0) fieldSizes.Append("*");
-		else				     fieldSizes.Append(String::FromInt(joblist->GetNthTabWidth(i)));
-	}
+	const Array<String>	&ids = config->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault).Explode(",");
 
-	config->SetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, fieldSizes);
+	ConfigureComponent(ids.GetNth(clicked_processor));
 
-	/* Show configuration dialog.
-	 */
-	ConfigDialog	*dialog	 = new ConfigDialog();
+	clicked_processor = -1;
 
-	dialog->ShowDialog();
-
-	DeleteObject(dialog);
-
-	/* Select active configuration if we have multiple.
-	 */
-	for (Int i = 0; i < config->GetNOfConfigurations(); i++)
-	{
-		if (config->GetNthConfigurationName(i) == config->GetConfigurationName()) clicked_configuration = i;
-	}
-
-	/* Update widgets and notify components.
-	 */
-	OnChangeConfiguration();
+	String::ExplodeFinish();
 }
 
 Void freac::freacGUI::OnSelectConfiguration()
@@ -956,6 +987,7 @@ Void freac::freacGUI::FillMenus()
 	menu_seldrive->RemoveAllEntries();
 
 	menu_processing->RemoveAllEntries();
+	menu_processors->RemoveAllEntries();
 
 	menu_encode->RemoveAllEntries();
 	menu_encoders->RemoveAllEntries();
@@ -1111,7 +1143,32 @@ Void freac::freacGUI::FillMenus()
 	entry = menu_processing->AddEntry(i18n->TranslateString("Enable signal processing"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault));
 	entry->onAction.Connect(&freacGUI::ToggleSignalProcessing, this);
 
-	entry = menu_processing->AddEntry(i18n->TranslateString("Enable processing during playback"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryProcessingID, Config::ProcessingProcessPlaybackID, Config::ProcessingProcessPlaybackDefault));
+	menu_processing->AddEntry(i18n->TranslateString("Enable processing during playback"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryProcessingID, Config::ProcessingProcessPlaybackID, Config::ProcessingProcessPlaybackDefault));
+	menu_processing->AddEntry();
+
+	entry = menu_processing->AddEntry(i18n->TranslateString("Configure signal processing"));
+	entry->onAction.Connect(&freacGUI::ConfigureProcessing, this);
+
+	const Array<String>	&components = config->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault).Explode(",");
+
+	foreach (const String &component, components)
+	{
+		AS::DSPComponent	*dsp = (AS::DSPComponent *) boca.CreateComponentByID(component);
+
+		if (dsp == NIL) continue;
+
+		menu_processors->AddEntry(dsp->GetName(), NIL, NIL, NIL, &clicked_processor, foreachindex)->onAction.Connect(&freacGUI::ConfigureProcessor, this);
+
+		boca.DeleteComponent(dsp);
+	}
+
+	if (menu_processors->GetNOfEntries() > 0)
+	{
+		menu_processing->AddEntry();
+		menu_processing->AddEntry(i18n->TranslateString("Selected signal processors"), NIL, menu_processors);
+	}
+
+	String::ExplodeFinish();
 
 	ToggleSignalProcessing();
 

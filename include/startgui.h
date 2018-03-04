@@ -18,6 +18,8 @@
 
 #include "freac.h"
 
+#include "dialogs/config/config.h"
+
 #ifdef __WIN32__
 #	define DLLEXPORT __declspec (dllexport)
 #else
@@ -70,6 +72,7 @@ namespace freac
 			PopupMenu					*menu_seldrive;
 
 			PopupMenu					*menu_processing;
+			PopupMenu					*menu_processors;
 
 			PopupMenu					*menu_encode;
 			PopupMenu					*menu_encoders;
@@ -94,6 +97,7 @@ namespace freac
 			Int						 clicked_configuration;
 			Int						 clicked_drive;
 			Int						 clicked_encoder;
+			Int						 clicked_processor;
 
 			Array<BoCA::AS::ExtensionComponent *, Void *>	 extensionComponents;
 
@@ -103,8 +107,15 @@ namespace freac
 			Void						 Close();
 			Void						 About();
 
-			Void						 ConfigureEncoder();
+			Void						 ConfigureSettings(ConfigurePage);
+
 			Void						 ConfigureSettings();
+			Void						 ConfigureProcessing();
+
+			Void						 ConfigureComponent(const String &);
+
+			Void						 ConfigureEncoder();
+			Void						 ConfigureProcessor();
 
 			Void						 ShowHelp();
 			Void						 ShowTipOfTheDay();
