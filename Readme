@@ -92,9 +92,10 @@ Known problems
 History
 -------
 
-	Version 1.0.32 (February 2018)
+	Version 1.0.32 (March 2018)
 
 		- added Serbian and Chinese (traditional) translations for the installer
+		- changed default output pattern to <artist> - <album> - <track> - <title>
 		- improved behaviour of bitrate selection controls
 		- show joblist duration in hours if longer than 1 hour
 		- fixed issues with encoding to single file when suggested file name becomes too long
