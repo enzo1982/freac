@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -200,8 +200,8 @@ Void freac::Playback::Loop(Decoder *decoder, Processor *processor)
 	Int64			 position	= 0;
 	UnsignedLong		 samplesSize	= format.rate / 4;
 
-	Int			 bytesPerSample = format.bits / 8;
-	Buffer<UnsignedByte>	 buffer(samplesSize * bytesPerSample * format.channels);
+	Int			 bytesPerSample = format.bits / 8 * format.channels;
+	Buffer<UnsignedByte>	 buffer(samplesSize * bytesPerSample);
 
 	while (!stop)
 	{
@@ -229,7 +229,7 @@ Void freac::Playback::Loop(Decoder *decoder, Processor *processor)
 			if (position + step > track.length) step = track.length - position;
 		}
 
-		buffer.Resize(step * bytesPerSample * format.channels);
+		buffer.Resize(step * bytesPerSample);
 
 		/* Read samples from decoder.
 		 */
@@ -243,7 +243,7 @@ Void freac::Playback::Loop(Decoder *decoder, Processor *processor)
 
 		/* Update position and write data.
 		 */
-		position += (bytes / bytesPerSample / format.channels);
+		position += (bytes / bytesPerSample);
 
 		if	(track.length	    >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / track.length	    * position : 1000.0 / track.length	      * position);
 		else if (track.approxLength >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / track.approxLength  * position : 1000.0 / track.approxLength  * position);

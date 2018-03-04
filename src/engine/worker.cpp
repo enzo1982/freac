@@ -470,8 +470,8 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 
 	waiting		= False;
 
-	Int			 bytesPerSample = format.bits / 8;
-	Buffer<UnsignedByte>	 buffer(samplesSize * bytesPerSample * format.channels);
+	Int			 bytesPerSample = format.bits / 8 * format.channels;
+	Buffer<UnsignedByte>	 buffer(samplesSize * bytesPerSample);
 
 	while (!cancel)
 	{
@@ -484,7 +484,7 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 			if (trackPosition + step > trackToConvert.length) step = trackToConvert.length - trackPosition;
 		}
 
-		buffer.Resize(step * bytesPerSample * format.channels);
+		buffer.Resize(step * bytesPerSample);
 
 		/* Read samples from decoder.
 		 */
@@ -508,7 +508,7 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 
 		/* Update position info.
 		 */
-		if (trackToConvert.length >= 0) trackPosition += (bytes / bytesPerSample / format.channels);
+		if (trackToConvert.length >= 0) trackPosition += (bytes / bytesPerSample);
 		else				trackPosition = decoder->GetInBytes();
 
 		/* Check for ripper timeout.
