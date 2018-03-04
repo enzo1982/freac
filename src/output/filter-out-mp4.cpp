@@ -30,13 +30,6 @@ freac::FilterOutMP4::~FilterOutMP4()
 
 Bool freac::FilterOutMP4::Activate()
 {
-	if (GetTempFile(format->outfile) != format->outfile)
-	{
-		File	 mp4File(format->outfile);
-
-		mp4File.Delete();
-	}
-
 	unsigned long	 samplesSize	= 0;
 	unsigned long	 bufferSize	= 0;
 
@@ -65,7 +58,7 @@ Bool freac::FilterOutMP4::Activate()
 
 	/* Create file and track.
 	 */
-	mp4File		= ex_MP4CreateEx(GetTempFile(format->outfile), 0, 1, 1, NIL, 0, NIL, 0);
+	mp4File		= ex_MP4CreateEx(format->outfile.ConvertTo("UTF-8"), 0, 1, 1, NIL, 0, NIL, 0);
 	mp4Track	= ex_MP4AddAudioTrack(mp4File, format->rate, MP4_INVALID_DURATION, MP4_MPEG4_AUDIO_TYPE);	
 
 	ex_MP4SetAudioProfileLevel(mp4File, 0x0F);
@@ -177,14 +170,7 @@ Bool freac::FilterOutMP4::Deactivate()
 
 	ex_MP4Close(mp4File, 0);
 
-	ex_MP4Optimize(GetTempFile(format->outfile), NIL);
-
-	if (GetTempFile(format->outfile) != format->outfile)
-	{
-		File	 tempFile(GetTempFile(format->outfile));
-
-		tempFile.Move(format->outfile);
-	}
+	ex_MP4Optimize(format->outfile.ConvertTo("UTF-8"), NIL);
 
 	return true;
 }
@@ -224,27 +210,4 @@ Int freac::FilterOutMP4::WriteData(Buffer<UnsignedByte> &data, Int size)
 	}
 
 	return bytes;
-}
-
-String freac::FilterOutMP4::GetTempFile(const String &oFileName)
-{
-	String	 rVal	= oFileName;
-	Int	 lastBs	= -1;
-
-	for (Int i = 0; i < rVal.Length(); i++)
-	{
-		if (rVal[i] > 127)			rVal[i] = '#';
-		if (rVal[i] == '\\' || rVal[i] == '/')	lastBs = i;
-	}
-
-	if (rVal == oFileName) return rVal;
-
-	String	 tempDir = S::System::System::GetTempDirectory();
-
-	for (Int j = lastBs + 1; j < rVal.Length(); j++)
-	{
-		tempDir[tempDir.Length()] = rVal[j];
-	}
-
-	return tempDir.Append(".out.temp");
 }
