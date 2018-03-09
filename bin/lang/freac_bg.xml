@@ -62,8 +62,8 @@
     <entry id="49" string="OK">OK</entry>
     <entry id="50" string="Cancel">Отказ</entry>
     <entry id="51" string="Encoding Mode">Режим на кодиране</entry>
-    <entry id="52" string="Variable Bitrate">Променлив битрейт</entry>
-    <entry id="53" string="Average Bitrate">Среден битрейт</entry>
+    <entry id="52" string="Variable Bitrate">Променлив Bitrate</entry>
+    <entry id="53" string="Average Bitrate">Среден Bitrate</entry>
     <entry id="54" string="Quality">Качество</entry>
     <entry id="55" string="Encoders">Енкодери</entry>
     <entry id="56" string="Language">Език</entry>
@@ -80,8 +80,8 @@
     <entry id="67" string="Information">Информация</entry>
     <entry id="68" string="Select language:">Изберете език:</entry>
     <entry id="69" string="Active CD-ROM drive">Активно CD-ROM устройство</entry>
-    <entry id="70" string="Ripper settings">Настройки на Ripper</entry>
-    <entry id="71" string="Activate cdparanoia mode:">Актив. на режим cdparanoia:</entry>
+    <entry id="70" string="Ripper settings">Ripper настройки</entry>
+    <entry id="71" string="Activate cdparanoia mode:">CD параноя режим:</entry>
     <entry id="72" string="Activate jitter correction">Корекция на колебанията</entry>
     <entry id="73" string="Swap left/right channel">Размяна Ляв/Десен канал</entry>
     <entry id="74" string="Lock CD tray while ripping">Заключ. на CD при извличане</entry>
@@ -90,15 +90,15 @@
     <entry id="77" string="No verify">Без проверка</entry>
     <entry id="78" string="No scratch repair">Без поправка за надраскване</entry>
     <entry id="79" string="Full cdparanoia mode">Пълен режим cdparanoia</entry>
-    <entry id="80" string="Bitrate">Битрейт</entry>
+    <entry id="80" string="Bitrate">Bitrate</entry>
     <entry id="81" string="Copyright bit">Авт. право</entry>
     <entry id="82" string="CRC">CRC</entry>
     <entry id="83" string="Original bit">Оригинал</entry>
     <entry id="84" string="Channels">Канали</entry>
-    <entry id="85" string="Private bit">Лично право</entry>
+    <entry id="85" string="Private bit">Личен право</entry>
     <entry id="86" string="Set Copyright bit">Зад. авт, право</entry>
     <entry id="87" string="Enable CRC">Добавяне на CRC</entry>
-    <entry id="88" string="Set Original bit">Зад. Оригинал</entry>
+    <entry id="88" string="Set Original bit">Зад. Ориг. bit</entry>
     <entry id="89" string="Dual channel encoding">Кодиране на два канала</entry>
     <entry id="90" string="Set Private bit">Зад. Лично право</entry>
     <entry id="91" string="Encoder mode">Метод на кодиране</entry>
@@ -108,7 +108,7 @@
     <entry id="95" string="Predictor size">Предсказване на размера</entry>
     <entry id="96" string="Enable lossless encoding">Кодиране без загуба</entry>
     <entry id="97" string="Enable Joint Stereo">Включено Joint Stereo</entry>
-    <entry id="98" string="Bitrate per channel:">Битрейт на канал:</entry>
+    <entry id="98" string="Bitrate per channel:">Bitrate на канал:</entry>
     <entry id="99" string="Preselection">Предварителен избор</entry>
     <entry id="100" string="Number of preselection candidates:">OK</entry>
     <entry id="101" string="MPEG version">Отказ</entry>
@@ -121,8 +121,8 @@
     <entry id="108" string="Basic">Основни</entry>
     <entry id="109" string="Misc">Разни</entry>
     <entry id="110" string="Audio processing">Аудио процесинг</entry>
-    <entry id="111" string="Set bitrate:">Битрейт:</entry>
-    <entry id="112" string="Set ratio:">Съотношение:</entry>
+    <entry id="111" string="Set bitrate:">Зад. Bitrate:</entry>
+    <entry id="112" string="Set ratio:">Зад. съотношение:</entry>
     <entry id="113" string="Set quality:">Зададено качество:</entry>
     <entry id="114" string="worse">лошо</entry>
     <entry id="115" string="better">добро</entry>
@@ -133,10 +133,10 @@
     <entry id="120" string="VBR mode">VBR режим</entry>
     <entry id="121" string="no VBR">без VBR</entry>
     <entry id="122" string="VBR quality">VBR качество</entry>
-    <entry id="123" string="ABR target bitrate">ABR битрейт</entry>
-    <entry id="124" string="VBR bitrate range">Диапазон на VBR битрейт</entry>
-    <entry id="125" string="Set minimum VBR bitrate:">Минимален VBR битрейт:</entry>
-    <entry id="126" string="Set maximum VBR bitrate:">Максимален VBR битрейт:</entry>
+    <entry id="123" string="ABR target bitrate">ABR bitrate</entry>
+    <entry id="124" string="VBR bitrate range">Диапазон на VBR bitrate</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">Минимален VBR bitrate:</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">Максимален VBR bitrate:</entry>
     <entry id="127" string="Control bits">Контролни маркери</entry>
     <entry id="128" string="Stream format">Формат на потока</entry>
     <entry id="129" string="Enforce strict ISO compliance">Стриктно прилагане спазването на ISO</entry>
@@ -243,11 +243,11 @@
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">За коригиране на грешките при четене по време на&#10;извличането може да влючите 'Корекция на трептенията'&#10;в таба 'CD Извличане' в конфигурационния прозорец на %1.&#10;Ако това не помогне, опитайте някой от Paranoia режимите.</entry>
     <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Имате предложения за усъвършенстване на %1?&#10;Може да изпращате всякакви идеи&#10;през Тракера на SourceForge страницата&#10;на %1 - %2&#10;или да изпратите eMail до %3.</entry>
     <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Харесвате ли %1? %1 е безплатен, но вие може да&#10;подпомогнете разработването като направите дарение&#10;за проекта %1. Може да изпратите пари до %2&#10;през PayPal.&#10;Вижте %3 за повече подробности.</entry>
-    <entry id="242" string="Bitrate / Quality">Битрейт / Качество</entry>
-    <entry id="243" string="Check for updates now">Проверка за обновления сега</entry>
+    <entry id="242" string="Bitrate / Quality">Bitrate / Качество</entry>
+    <entry id="243" string="Check for updates now">Проверка за обновяване сега</entry>
     <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Налични са обновления за %1!&#10;Желаете ли да разгледате списък с наличните обновления сега?</entry>
     <entry id="245" string="There are no updates available at the moment!">Няма налични обновления в момента!</entry>
-    <entry id="246" string="Check for updates at startup">Проверка за обновления при стартиране</entry>
+    <entry id="246" string="Check for updates at startup">Проверка за обновяване при стартиране</entry>
     <entry id="247" string="Read CD contents on insert">Четене на CD при поставяне</entry>
     <entry id="248" string="Eject disk after ripping">Извади диска след извличането</entry>
     <entry id="249" string="Encode 'On-The-Fly'">ПаралелноКодиране(в движение)</entry>
@@ -268,8 +268,8 @@
     <entry id="264" string="Sample resolution">Семплираща резолюция</entry>
     <entry id="265" string="Number of samples">Брой семпли</entry>
     <entry id="266" string="Mono">Моно</entry>
-    <entry id="267" string="bytes">байтове</entry>
-    <entry id="268" string="bit">бит</entry>
+    <entry id="267" string="bytes">bytes</entry>
+    <entry id="268" string="bit">bit</entry>
     <entry id="269" string="min">мин</entry>
     <entry id="270" string="Create playlist">Създаване на плейлист</entry>
     <entry id="271" string="Create cue sheet">Създаване на cue лист</entry>
@@ -327,7 +327,7 @@
     <entry id="323" string="all lower case">всичко с малки букви</entry>
     <entry id="324" string="all upper case">всичко с главни букви</entry>
     <entry id="325" string="Status">Състояние</entry>
-    <entry id="326" string="Successfully read CD!">Успешно прочетен CD!</entry>
+    <entry id="326" string="Successfully read CD!">Успешно прочетено CD!</entry>
     <entry id="327" string="Comment">Коментар</entry>
     <entry id="328" string="Manage CDDB cache entries...">Управление на кеша със записи на CDDB...</entry>
     <entry id="329" string="Save entry">Запазване</entry>
@@ -361,7 +361,7 @@
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Изходния файл %1&#10;вече съществува! Искате ли да го презапишете?</entry>
     <entry id="358" string="Overwrite all further files">Презаписване на всички следващи файлове</entry>
     <entry id="359" string="Start ripping automatically">Авт.стартиране на извличането</entry>
-    <entry id="360" string="Submit to online database later">Изпращане към онлайн базата данни по-късно</entry>
+    <entry id="360" string="Submit to online database later">Изпращане към онлайн базата с данни по-късно</entry>
     <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Поддръжката на CDDB е изключена! Моля включете поддръжка&#10;за местна или отдалечена CDDB в конфигурационния прозорец.</entry>
     <entry id="362" string="CDDB entries to submit:">CDDB записи за изпращане:</entry>
     <entry id="363" string="Show queued CDDB entries...">Показване на чакащите CDDB запис...</entry>
@@ -385,7 +385,7 @@
     <entry id="381" string="Apodization">Аподизация</entry>
     <entry id="382" string="Apodization function(s):">Функция/и на аподизация</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Може да посочите повече функции разделени с ;</entry>
-    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 може да извърши автоматична проверка за&#10;обновления на програмата при стартиране.&#10;&#10;Желаете ли %1 да потърси обновления при стартиране?</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 може да извърши автоматична проверка за&#10;обновяване на програмата при стартиране.&#10;&#10;Желаете ли %1 да потърси обновления при стартиране?</entry>
     <entry id="385" string="Cannot access input file: %1">Няма достъп до входния файл: %1</entry>
     <entry id="386" string="Cannot create output file: %1">Не може да се създаде изходен файл: %1</entry>
     <entry id="387" string="File not found">Файлът не е открит</entry>
@@ -405,7 +405,7 @@
     <entry id="401" string="Automatically select format based on settings and input format">Автоматично избиране въз основа на настройките и входния формат</entry>
     <entry id="402" string="Use VBR encoding">VBR кодиране</entry>
     <entry id="403" string="Use 2-pass encoding">Кодиране на 2 етапа</entry>
-    <entry id="404" string="Target bitrate">Битрейт</entry>
+    <entry id="404" string="Target bitrate">Целеви bitrate</entry>
     <entry id="405" string="Set drive speed limit:">Пределна скорост:</entry>
     <entry id="406" string="Support this project">Подкрепа за този проект</entry>
     <entry id="407" string="Please support this project!">Моля, подкрепете този проект!</entry>
