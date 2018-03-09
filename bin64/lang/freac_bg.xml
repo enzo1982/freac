@@ -58,8 +58,9 @@
       <entry id="512" string="%1 kHz">%1 kHz</entry>
       <entry id="513" string="%1 ms">%1 ms</entry>
       <entry id="514" string="%1 min">%1 мин</entry>
-      <entry id="515" string="%1 bit">%1 бит</entry>
-      <entry id="516" string="%1 bytes">%1 байтове</entry>
+      <entry id="515" string="%1 bit">%1 bit</entry>
+      <entry id="516" string="%1 bytes">%1 bytes</entry>
+      <entry id="517" string="%1 kB">%1 kB</entry>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
@@ -103,8 +104,16 @@
 	<entry id="1304" string="Default configuration">Конфигурация по подразбиране</entry>
       </section>
 
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">Разрешаване обработката на сигнала</entry>
+	<entry id="1401" string="Enable processing during playback">Разрешаване обработката при възпроизвеждане</entry>
+	<entry id="1402" string="Configure signal processing">Конфигуриране обработката на сигнала</entry>
+	<entry id="1403" string="Selected signal processors">Избиране процесор на сигнала</entry>
+      </section>
+
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Старт на кодирането</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">Старт на кодирането (Изтриване на ориг. файлове)</entry>
 	<entry id="1502" string="Start encoding with">Старт на кодирането с</entry>
 	<entry id="1503" string="Pause/resume encoding">Пауза/Продължаване на кодирането</entry>
 	<entry id="1504" string="Stop encoding">Стоп на кодирането</entry>
@@ -119,8 +128,8 @@
       <section name="Help">
 	<entry id="1600" string="Help topics">Ръководство за употреба</entry>
 	<entry id="1601" string="Show Tip of the Day">Показване на Съвети за деня</entry>
-	<entry id="1602" string="Check for updates now">Проверка за обновление сега</entry>
-	<entry id="1603" string="Check for updates at startup">Проверка за обновление при стартиране</entry>
+	<entry id="1602" string="Check for updates now">Проверка за обновяване сега</entry>
+	<entry id="1603" string="Check for updates at startup">Проверка за обновяване при стартиране</entry>
 	<entry id="1604" string="About %1">Относно %1</entry>
 	<entry id="1605" string="index_en.html">index_en.html</entry>
       </section>
@@ -136,6 +145,7 @@
       <entry id="2006" string="Configure general settings">Конфигуриране на основните настройки</entry>
       <entry id="2007" string="Configure the selected audio encoder">Конфигуриране на избрания аудио енкодер</entry>
       <entry id="2008" string="Start the encoding process">Старт на процеса кодиране</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)">Старт на процеса кодиране (Изтриване на ориг. файлове)</entry>
       <entry id="2010" string="Pause/resume encoding">Пауза/Продължаване на кодирането</entry>
       <entry id="2011" string="Stop encoding">Стоп на кодирането</entry>
     </section>
@@ -158,7 +168,7 @@
       <entry id="3014" string="encoding">кодиране</entry>
       <entry id="3015" string="Create playlist">Създаване на плейлист</entry>
       <entry id="3016" string="Create cue sheet">Създаване на CUE лист</entry>
-      <entry id="3017" string="Select">Отваряне...</entry>
+      <entry id="3017" string="Select">Избиране...</entry>
       <entry id="3018" string="Skip">Пропускане</entry>
       <entry id="3019" string="Encode to a single file">Кодиране в един файл</entry>
       <entry id="3020" string="Remove">Премахване</entry>
@@ -182,7 +192,7 @@
       <entry id="3038" string="Length">Времетраене</entry>
       <entry id="3039" string="File">Файл</entry>
       <entry id="3040" string="Size">Размер</entry>
-      <entry id="3041" string="Bitrate">Битрейт</entry>
+      <entry id="3041" string="Bitrate">Bitrate</entry>
       <entry id="3042" string="Audio Files">Аудио файлове</entry>
       <entry id="3043" string="All Files">Всички файлове</entry>
       <entry id="3044" string="Playlist Files">Плейлист файлове</entry>
@@ -239,11 +249,11 @@
 	<entry id="4003" string="Submitting CD information">Изпращане на информация за CD</entry>
 	<entry id="4004" string="Update joblist with this information">Обновяване на списъка със задачи с тази информация</entry>
 	<entry id="4005" string="Status">Състояние</entry>
-	<entry id="4006" string="Successfully read CD!">Успешно прочетен CD!</entry>
+	<entry id="4006" string="Successfully read CD!">Успешно прочетено CD!</entry>
 	<entry id="4007" string="Save entry">Запазване</entry>
 	<entry id="4008" string="Various artists">Разни изпълнители</entry>
 	<entry id="4009" string="Data track">Пътечка с данни</entry>
-	<entry id="4010" string="Submit to online database later">Изпращане към онлайн базата данни по-късно</entry>
+	<entry id="4010" string="Submit to online database later">Изпращане към онлайн базата с данни по-късно</entry>
 	<entry id="4011" string="Active CD-ROM drive">Активно CD-ROM устройство</entry>
 
 	<section name="Errors">
@@ -339,7 +349,7 @@
 	<entry id="5100" string="Configure encoder">Конфигурация на енкодера</entry>
 	<entry id="5101" string="Encoder">Енкодер</entry>
 	<entry id="5102" string="Output folder">Изходна папка</entry>
-	<entry id="5103" string="Select">Отваряне...</entry>
+	<entry id="5103" string="Select">Избиране...</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Изберете папка, където кодираните файлове ще бъдат поставени</entry>
 	<entry id="5105" string="Use input file folder if possible">Папката на входния файл (ако е възможно)</entry>
 	<entry id="5106" string="Allow overwriting input file">Презаписване на входния файл</entry>
@@ -364,7 +374,7 @@
 	<entry id="5200" string="Create playlists">Създаване на плейлисти</entry>
 	<entry id="5201" string="Create cue sheets">Създаване на CUE листи</entry>
 	<entry id="5202" string="Output folder">Изходна папка</entry>
-	<entry id="5203" string="Select">Отваряне...</entry>
+	<entry id="5203" string="Select">Избиране...</entry>
 	<entry id="5204" string="Use encoder output folder">Изходната папка на енкодера</entry>
 	<entry id="5205" string="Filename pattern">Шаблон за име на файла</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Изберете папка, където плейлистите ще бъдат поставени</entry>
@@ -377,7 +387,7 @@
 	<entry id="5300" string="Enable local CDDB database">Включване на местна CDDB база данни</entry>
 	<entry id="5301" string="Enable remote CDDB database">Включване на отдалечена CDDB база данни</entry>
 	<entry id="5302" string="CDDB path">Път към CDDB</entry>
-	<entry id="5303" string="Select">Отваряне...</entry>
+	<entry id="5303" string="Select">Избиране...</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Изберете папката на CDDB базата данни</entry>
 	<entry id="5305" string="CDDB access mode">Режим за достъп до CDDB</entry>
 	<entry id="5306" string="CDDB server">CDDB сървър</entry>
@@ -446,6 +456,8 @@
 	<entry id="5523" string="Read cue sheets embedded in metadata">Предпочитам CUE листи вградени в метаданните</entry>
 	<entry id="5524" string="Prefer cue sheets over chapter information">Предпочитам CUE листи с информация за страницата</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Добавете нула, за да следите числата под 10</entry>
+	<entry id="5526" string="File size limit">Ограничение за размер на файла</entry>
+	<entry id="5527" string="unlimited">Без ограничение</entry>
       </section>
 
       <section name="Joblist">
@@ -464,14 +476,14 @@
 	  <entry id="5652" string="Track genre">Жанр</entry>
 	  <entry id="5653" string="Album title">Албум заглавие</entry>
 	  <entry id="5654" string="Disc number">Диск №</entry>
-	  <entry id="5655" string="Track number">Номер</entry>
+	  <entry id="5655" string="Track number">№</entry>
 	  <entry id="5656" string="Track rating">Оценка</entry>
 	  <entry id="5657" string="Track length">Продължителност </entry>
 	  <entry id="5658" string="Track size">Размер</entry>
 	  <entry id="5659" string="File name">Име файл</entry>
 	  <entry id="5660" string="File type">Тип файл</entry>
 	  <entry id="5661" string="Output file name">Име на изходния файл</entry>
-	  <entry id="5662" string="Bitrate">Битрейт</entry>
+	  <entry id="5662" string="Bitrate">Bitrate</entry>
 	  <entry id="5663" string="Sampling rate">Семплираща честота</entry>
 	  <entry id="5664" string="Channels">Канали</entry>
 	  <entry id="5665" string="Sample resolution">Семплираща резолюция</entry>
@@ -501,6 +513,9 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing">Обработка на сигнала</entry>
+	<entry id="5901" string="Enable signal processing">Разрешаване обработката на сигнала</entry>
+	<entry id="5902" string="Enable processing during playback">Разрешаване обработката при възпроизвеждане</entry>
+	<entry id="5903" string="Components">Компоненти</entry>
 	<entry id="5904" string="Available">Налични</entry>
 	<entry id="5905" string="Selected">Избрани</entry>
 	<entry id="5906" string="Configure component">Конфигуриране на компонент</entry>
@@ -520,7 +535,7 @@
       <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Налични са обновления за %1&#10;Желаете ли да разгледате списък с наличните обновления сега?</entry>
       <entry id="6101" string="There are no updates available at the moment!">Няма налични обновления в момента!</entry>
       <entry id="6102" string="Check for updates at startup">Проверка за обновления при стартиране</entry>
-      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 може да извърши автоматична проверка онлайн&#10;за обновления на програмата при стартиране.&#10;&#10;Желаете ли %1 да потърси обновления при стартиране?</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 може да извърши автоматична проверка онлайн&#10;за обновяване на програмата при стартиране.&#10;&#10;Желаете ли %1 да потърси обновления при стартиране?</entry>
     </section>
 
     <section name="Tips">
@@ -560,6 +575,7 @@
       <entry id="7023" string="Failed to verify input file: %1">Неуспешна проверка на входния файл: %1</entry>
       <entry id="7024" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Несъответствие в контролна сума за проверка на изходния файл: %1&#10;&#10;Кодираща сума: %2&#10;Проверка на контролна сума: %3</entry>
       <entry id="7025" string="The selected folder does not exist anymore!">Избраната папка вече не съществува!</entry>
+      <entry id="7026" string="Keep this option enabled even after restarting %1">Запазете тази опция включена дори след рестартиране %1</entry>
     </section>
 
     <section name="Dialogs">
@@ -572,6 +588,12 @@
 	<entry id="8004" string="Action">Действие</entry>
 	<entry id="8005" string="Overwrite">Презапис</entry>
 	<entry id="8006" string="Skip">Пропускане</entry>
+      </section>
+
+      <section name="Format">
+	<entry id="8100" string="Select sample format">Избиране семплиращ формат</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">Избраните песни имат различни семплиращи формати.&#10;Изберете желаният семплиращ формат на изходния файл:</entry>
+	<entry id="8102" string="Select">Избиране...</entry>
       </section>
 
       <section name="Errors">
@@ -587,8 +609,8 @@
       <entry id="9002" string="CD information">CD информация</entry>
       <entry id="9003" string="Read CD Text">Четене на CD Текст</entry>
       <entry id="9004" string="Read cdplayer.ini">Четене на cdplayer.ini</entry>
-      <entry id="9005" string="Ripper settings">Настройки на Ripper</entry>
-      <entry id="9006" string="Activate cdparanoia mode">cdparanoia режим</entry>
+      <entry id="9005" string="Ripper settings">Ripper настройки</entry>
+      <entry id="9006" string="Activate cdparanoia mode">CD параноя режим</entry>
       <entry id="9007" string="Overlap only">Само препокриване</entry>
       <entry id="9008" string="No verify">Без проверка</entry>
       <entry id="9009" string="No scratch repair">Без поправка за надраскване</entry>
@@ -603,7 +625,7 @@
       <entry id="9018" string="Lock CD tray while ripping">Заключ. CD при извличане</entry>
       <entry id="9019" string="Use native NT SCSI library">Изп. на NT SCSI библиотека</entry>
       <entry id="9020" string="Use read offset">Изместване при четене</entry>
-      <entry id="9021" string="samples">семпли</entry>
+      <entry id="9021" string="samples">образец</entry>
       <entry id="9022" string="Read ISRC when adding tracks to joblist">Четене на ISRC при добавяне на песни към задачите</entry>
       <entry id="9023" string="Spin up before ripping">Завъртане преди извличане</entry>
       <entry id="9024" string="%1 seconds">%1 секунди</entry>
@@ -636,15 +658,15 @@
     <section name="Encoders">
 
       <section name="BladeEnc">
-	<entry id="30000" string="Bitrate">Битрейт</entry>
+	<entry id="30000" string="Bitrate">Bitrate</entry>
 	<entry id="30001" string="Copyright bit">Авторско право</entry>
 	<entry id="30002" string="CRC">CRC</entry>
 	<entry id="30003" string="Original bit">Оригинал</entry>
 	<entry id="30004" string="Channels">Канали</entry>
-	<entry id="30005" string="Private bit">Лично право</entry>
+	<entry id="30005" string="Private bit">Личен право</entry>
 	<entry id="30006" string="Set Copyright bit">Задаване Авторско право</entry>
 	<entry id="30007" string="Enable CRC">Включен CRC</entry>
-	<entry id="30008" string="Set Original bit">Задаване Оригинал</entry>
+	<entry id="30008" string="Set Original bit">Зад. Ориг. bit</entry>
 	<entry id="30009" string="Dual channel encoding">Кодиране на два канала</entry>
 	<entry id="30010" string="Set Private bit">Задаване Лично право</entry>
       </section>
@@ -667,15 +689,15 @@
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets">Предварителна настройки</entry>
-	  <entry id="32101" string="Use preset">Използване предв.настройка</entry>
+	  <entry id="32101" string="Use preset">Използване предв. настройка</entry>
 	  <entry id="32102" string="Custom settings">Собствени настройки</entry>
 	  <entry id="32103" string="Medium, Fast">Средно, Бързо</entry>
 	  <entry id="32104" string="Standard, Fast">Стандартно, Бързо</entry>
 	  <entry id="32105" string="Extreme, Fast">Пределно, Бързо</entry>
-	  <entry id="32106" string="Bitrate">Битрейт</entry>
+	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Качество</entry>
-	  <entry id="32108" string="Set bitrate">Зад.Битрейт</entry>
-	  <entry id="32109" string="Set ratio">Зад.съотношение</entry>
+	  <entry id="32108" string="Set bitrate">Зад. Bitrate</entry>
+	  <entry id="32109" string="Set ratio">Зад. съотношение</entry>
 	  <entry id="32110" string="Set quality">Зададено качество</entry>
 	  <entry id="32111" string="worse">лошо</entry>
 	  <entry id="32112" string="better">добро</entry>
@@ -734,9 +756,9 @@
 	</section>
 
 	<section name="Quality">
-	  <entry id="33200" string="Bitrate">Битрейт</entry>
-	  <entry id="33201" string="Bitrate / Quality">Битрейт / Качество</entry>
-	  <entry id="33202" string="Bitrate per channel">Битрейт на канал</entry>
+	  <entry id="33200" string="Bitrate">Bitrate</entry>
+	  <entry id="33201" string="Bitrate / Quality">Bitrate / Качество</entry>
+	  <entry id="33202" string="Bitrate per channel">Bitrate на канал</entry>
 	  <entry id="33203" string="Set quality">Зададено качество</entry>
 	  <entry id="33204" string="Stereo mode">Стерео режим</entry>
 	  <entry id="33205" string="Allow Joint Stereo">Позволено Joint Stereo</entry>
@@ -801,13 +823,13 @@
 
       <section name="Vorbis">
 	<entry id="35000" string="Encoding Mode">Режим на кодиране</entry>
-	<entry id="35001" string="Variable Bitrate">Променлив битрейт</entry>
-	<entry id="35002" string="Average Bitrate">Среден Битрейт</entry>
+	<entry id="35001" string="Variable Bitrate">Променлив Bitrate</entry>
+	<entry id="35002" string="Average Bitrate">Среден Bitrate</entry>
 	<entry id="35003" string="Quality">Качество</entry>
-	<entry id="35004" string="Bitrate">Битрейт</entry>
-	<entry id="35005" string="Minimum bitrate">Миним. битрейт</entry>
-	<entry id="35006" string="Average bitrate">Среден битрейт</entry>
-	<entry id="35007" string="Maximum bitrate">Макс. битрейт</entry>
+	<entry id="35004" string="Bitrate">Bitrate</entry>
+	<entry id="35005" string="Minimum bitrate">Миним. bitrate</entry>
+	<entry id="35006" string="Average bitrate">Среден bitrate</entry>
+	<entry id="35007" string="Maximum bitrate">Макс. bitrate</entry>
 	<entry id="35008" string="File extension">Разширение файл</entry>
       </section>
 
@@ -821,13 +843,13 @@
 	<entry id="36006" string="Automatically select format based on settings and input format">Авт. избор въз основа на настройките и входния формат</entry>
 	<entry id="36007" string="Use VBR encoding">VBR кодиране</entry>
 	<entry id="36008" string="Quality">Качество</entry>
-	<entry id="36009" string="Target bitrate">Целеви битрейт</entry>
+	<entry id="36009" string="Target bitrate">Целеви bitrate</entry>
 	<entry id="36010" string="Use 2-pass encoding">Кодиране на 2 етапа</entry>
       </section>
 
       <section name="TwinVQ">
-	<entry id="37000" string="Bitrate">Битрейт</entry>
-	<entry id="37001" string="Bitrate per channel">Битрейт на канал</entry>
+	<entry id="37000" string="Bitrate">Bitrate</entry>
+	<entry id="37001" string="Bitrate per channel">Bitrate на канал</entry>
 	<entry id="37002" string="Preselection">Предвар. избор</entry>
 	<entry id="37003" string="Number of preselection candidates">Брой предвар. избрани варианти</entry>
       </section>
@@ -861,9 +883,9 @@
 	<entry id="39015" string="CBR quality">CBR качество</entry>
 	<entry id="39016" string="VBR quality">VBR качество</entry>
 	<entry id="39017" string="ABR target bitrate">ABR целеви битрейт</entry>
-	<entry id="39018" string="Bitrate">Битрейт</entry>
+	<entry id="39018" string="Bitrate">Bitrate</entry>
 	<entry id="39019" string="Quality">Качество</entry>
-	<entry id="39020" string="Max. bitrate">Макс. битрейт</entry>
+	<entry id="39020" string="Max. bitrate">Макс. bitrate</entry>
       </section>
 
       <section name="Opus">
@@ -879,11 +901,11 @@
 	<entry id="40009" string="Superwideband">Супер обширна чест.лента</entry>
 	<entry id="40010" string="Fullband">Пълна чест. лента</entry>
 	<entry id="40011" string="File extension">Разширение файл</entry>
-	<entry id="40012" string="Variable bitrate">Променлив битрейт</entry>
-	<entry id="40013" string="Enable variable bitrate encoding">Включено кодиране в променлив битрейт</entry>
-	<entry id="40014" string="Constrain bitrate to target value">Ограничение на битрейта до целевата стойност</entry>
+	<entry id="40012" string="Variable bitrate">Променлив bitrate</entry>
+	<entry id="40013" string="Enable variable bitrate encoding">Включено кодиране в променлив bitrate</entry>
+	<entry id="40014" string="Constrain bitrate to target value">Ограничение на bitrate до целевата стойност</entry>
 	<entry id="40015" string="Quality">Качество</entry>
-	<entry id="40016" string="Bitrate">Битрейт</entry>
+	<entry id="40016" string="Bitrate">Bitrate</entry>
 	<entry id="40017" string="Complexity">Сложност</entry>
 	<entry id="40018" string="Stream">Поток</entry>
 	<entry id="40019" string="Frame length">Времетраене</entry>
@@ -918,10 +940,61 @@
 
     <section name="DSP">
 
+      <section name="Format">
+	<entry id="50000" string="Sample format">Семплиращ формат</entry>
+	<entry id="50001" string="Number format">Номер на формата</entry>
+	<entry id="50002" string="Sample resolution">Семплираща резолюция</entry>
+	<entry id="50003" string="bit">bit</entry>
+	<entry id="50004" string="unsigned">неподписан</entry>
+	<entry id="50005" string="Integer">цяло число</entry>
+	<entry id="50006" string="Float">Плаващо</entry>
+      </section>
+
+      <section name="Channels">
+	<entry id="50100" string="Output channels">Изходни канали</entry>
+	<entry id="50101" string="Channel configuration">Конфигурация на канала</entry>
+	<entry id="50102" string="Mono">Моно</entry>
+	<entry id="50103" string="Stereo">Стерео</entry>
+      </section>
+
       <section name="Resample">
 	<entry id="50200" string="Converter">Конвертор</entry>
 	<entry id="50201" string="Sampling rate">Семплираща честота</entry>
 	<entry id="50202" string="Output sampling rate">Изходна семплираща честота</entry>
+      </section>
+
+      <section name="RubberBand">
+	<entry id="50300" string="Basic controls">Основни елементи за управление</entry>
+	<entry id="50301" string="Tempo">Темпо</entry>
+	<entry id="50302" string="Pitch">Стъпка</entry>
+	<entry id="50303" string="%1 Semitones">%1 полутонове</entry>
+	<entry id="50304" string="Advanced options">Допълнителни опции</entry>
+	<entry id="50305" string="Transient detection">Временно откриване</entry>
+	<entry id="50306" string="Compound">Сложно</entry>
+	<entry id="50307" string="Percussive">Ударно</entry>
+	<entry id="50308" string="Soft">Меко</entry>
+	<entry id="50309" string="Transient handling">Временна обработка</entry>
+	<entry id="50310" string="Crisp">Чисто</entry>
+	<entry id="50311" string="Mixed">Смесено</entry>
+	<entry id="50312" string="Smooth">Гладко</entry>
+	<entry id="50313" string="Transformation window">Трансформация на прозореца</entry>
+	<entry id="50314" string="Standard">Стандартен</entry>
+	<entry id="50315" string="Short">Кратък</entry>
+	<entry id="50316" string="Long">Дълъг</entry>
+	<entry id="50317" string="Use time-domain smoothing">Включ. време-домейн изглаждане</entry>
+	<entry id="50318" string="Phase handling">Фаза обработка</entry>
+	<entry id="50319" string="Laminar">Ламинарно</entry>
+	<entry id="50320" string="Independent">Независимо</entry>
+	<entry id="50321" string="Formant handling">Формантна обработка</entry>
+	<entry id="50322" string="Shift">Променлива</entry>
+	<entry id="50323" string="Preserve">Постоянна</entry>
+	<entry id="50324" string="Pitch processing">Обработка на процеса</entry>
+	<entry id="50325" string="High quality">Високо качество</entry>
+	<entry id="50326" string="High speed">Висока скорост</entry>
+	<entry id="50327" string="High consistency">Висока плътност</entry>
+	<entry id="50328" string="Stereo processing">Стерео обработка</entry>
+	<entry id="50329" string="Separate">Поотделно</entry>
+	<entry id="50330" string="Combined">Комбинирано</entry>
       </section>
     </section>
 
@@ -975,7 +1048,7 @@
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Автоматизация</entry>
 	  <entry id="102102" string="Video files">Видео файлове</entry>
-	  <entry id="102103" string="Select">Отваряне...</entry>
+	  <entry id="102103" string="Select">Избиране...</entry>
 	  <entry id="102104" string="Select the folder to save downloaded video files to">Изберете папка за записване на изтеглените файлове</entry>
 	  <entry id="102105" string="Downloads">Изтегляния</entry>
 	  <entry id="102106" string="Maximum number of simultaneous downloads">Макс. брой на паралелните изтегляния</entry>
