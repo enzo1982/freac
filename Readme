@@ -63,7 +63,7 @@ Requirements
 	Additional requirements for compiling the sources:
 
 		- MinGW GCC v4.0+ (http://www.mingw.org/) or Microsoft Visual Studio 2015
-		- smooth v0.8.71.5 (http://www.smooth-project.org/)
+		- smooth v0.8.71.8 (http://www.smooth-project.org/)
 
 	Additional optional software:
 
@@ -104,6 +104,7 @@ History
 		- fixed FAAC quality setting
 		- fixed missing album art mimetype in MP4 metadata
 		- fixed TwinVQ and WMA encoders being mixed up in config dialog
+		- upgraded mpg123 to version 1.25.10
 		- upgrade to MP4v2 v2.0.0
 
 	Version 1.0.31a (November 2017)

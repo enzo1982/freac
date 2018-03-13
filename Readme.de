@@ -64,7 +64,7 @@ Voraussetzungen
 	Zusätzliche Vorraussetzungen zur Übersetzung des Quellcodes:
 
 		- MinGW GCC v4.0+ (http://www.mingw.org/) oder Microsoft Visual Studio 2015
-		- smooth v0.8.71.5 (http://www.smooth-project.org/)
+		- smooth v0.8.71.8 (http://www.smooth-project.org/)
 
 	Zusätzliche optionale Software:
 
@@ -105,6 +105,7 @@ Geschichte
 		- Fehler bei FAAC-Qualitätseinstellung behoben
 		- Problem mit fehlenden Coverbild-Mimetypes in MP4-Tags behoben
 		- Vertauschung von TwinVQ- und WMA-Kodierern im Konfigurationsdialog behoben
+		- mpg123 auf Version 1.25.10 aktualisiert
 		- Update auf MP4v2 v2.0.0
 
 	Version 1.0.31a (November 2017)
