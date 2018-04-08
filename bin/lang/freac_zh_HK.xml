@@ -464,14 +464,14 @@
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">並行處理</entry>
 	<entry id="5701" string="Enable parallel processing">啟用並行處理</entry>
-	<entry id="5702" string="Number of conversion threads">轉碼使用的執行緒數量</entry>
-	<entry id="5703" string="auto">自動</entry>
-	<entry id="5704" string="Process priority">優先權</entry>
-	<entry id="5705" string="lowest">最低</entry>
-	<entry id="5706" string="lower">較低</entry>
-	<entry id="5707" string="normal">一般</entry>
-	<entry id="5708" string="higher">較高</entry>
-	<entry id="5709" string="highest">最高</entry>
+	<entry id="5703" string="Number of conversion threads">轉碼使用的執行緒數量</entry>
+	<entry id="5704" string="auto">自動</entry>
+	<entry id="5705" string="Process priority">優先權</entry>
+	<entry id="5706" string="lowest">最低</entry>
+	<entry id="5707" string="lower">較低</entry>
+	<entry id="5708" string="normal">一般</entry>
+	<entry id="5709" string="higher">較高</entry>
+	<entry id="5710" string="highest">最高</entry>
       </section>
 
       <section name="Verification">

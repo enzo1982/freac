@@ -481,14 +481,14 @@
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Упоредо процесуирање</entry>
 	<entry id="5701" string="Enable parallel processing">Омогући упоредо процесуирање</entry>
-	<entry id="5702" string="Number of conversion threads">Број конверзија</entry>
-	<entry id="5703" string="auto">само</entry>
-	<entry id="5704" string="Process priority">Приоритет процеса</entry>
-	<entry id="5705" string="lowest">најнижи</entry>
-	<entry id="5706" string="lower">нижи</entry>
-	<entry id="5707" string="normal">нормалан</entry>
-	<entry id="5708" string="higher">виши</entry>
-	<entry id="5709" string="highest">највиши</entry>
+	<entry id="5703" string="Number of conversion threads">Број конверзија</entry>
+	<entry id="5704" string="auto">само</entry>
+	<entry id="5705" string="Process priority">Приоритет процеса</entry>
+	<entry id="5706" string="lowest">најнижи</entry>
+	<entry id="5707" string="lower">нижи</entry>
+	<entry id="5708" string="normal">нормалан</entry>
+	<entry id="5709" string="higher">виши</entry>
+	<entry id="5710" string="highest">највиши</entry>
       </section>
 
       <section name="Verification">

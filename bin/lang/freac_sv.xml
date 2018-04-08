@@ -462,8 +462,8 @@
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Parallell bearbetning</entry>
 	<entry id="5701" string="Enable parallel processing">Aktivera parallell bearbetning</entry>
-	<entry id="5702" string="Number of conversion threads">Antal konverteringstrådar</entry>
-	<entry id="5703" string="auto">automatisk</entry>
+	<entry id="5703" string="Number of conversion threads">Antal konverteringstrådar</entry>
+	<entry id="5704" string="auto">automatisk</entry>
       </section>
 
       <section name="Verification">

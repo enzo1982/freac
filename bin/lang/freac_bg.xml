@@ -493,14 +493,14 @@
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Паралелна обработка</entry>
 	<entry id="5701" string="Enable parallel processing">Включена паралелна обработка</entry>
-	<entry id="5702" string="Number of conversion threads">Брой теми за преобразуване</entry>
-	<entry id="5703" string="auto">автоматично</entry>
-	<entry id="5704" string="Process priority">Приоритет на процеса</entry>
-	<entry id="5705" string="lowest">най-нисък</entry>
-	<entry id="5706" string="lower">нисък</entry>
-	<entry id="5707" string="normal">нормален</entry>
-	<entry id="5708" string="higher">висок</entry>
-	<entry id="5709" string="highest">най-висок</entry>
+	<entry id="5703" string="Number of conversion threads">Брой теми за преобразуване</entry>
+	<entry id="5704" string="auto">автоматично</entry>
+	<entry id="5705" string="Process priority">Приоритет на процеса</entry>
+	<entry id="5706" string="lowest">най-нисък</entry>
+	<entry id="5707" string="lower">нисък</entry>
+	<entry id="5708" string="normal">нормален</entry>
+	<entry id="5709" string="higher">висок</entry>
+	<entry id="5710" string="highest">най-висок</entry>
       </section>
 
       <section name="Verification">

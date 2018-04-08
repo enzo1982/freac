@@ -463,14 +463,14 @@
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Параллельная обработка</entry>
 	<entry id="5701" string="Enable parallel processing">Разрешить параллельную обработку</entry>
-	<entry id="5702" string="Number of conversion threads">Количество потоков преобразования</entry>
-	<entry id="5703" string="auto">авто</entry>
-	<entry id="5704" string="Process priority">Приоритет процесса</entry>
-	<entry id="5705" string="lowest">самый низкий</entry>
-	<entry id="5706" string="lower">ниже среднего</entry>
-	<entry id="5707" string="normal">нормальный</entry>
-	<entry id="5708" string="higher">выше среднего</entry>
-	<entry id="5709" string="highest">самый высокий</entry>
+	<entry id="5703" string="Number of conversion threads">Количество потоков преобразования</entry>
+	<entry id="5704" string="auto">авто</entry>
+	<entry id="5705" string="Process priority">Приоритет процесса</entry>
+	<entry id="5706" string="lowest">самый низкий</entry>
+	<entry id="5707" string="lower">ниже среднего</entry>
+	<entry id="5708" string="normal">нормальный</entry>
+	<entry id="5709" string="higher">выше среднего</entry>
+	<entry id="5710" string="highest">самый высокий</entry>
       </section>
 
       <section name="Verification">

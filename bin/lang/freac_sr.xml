@@ -481,14 +481,14 @@
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Uporedo procesuiranje</entry>
 	<entry id="5701" string="Enable parallel processing">Omogući uporedo procesuiranje</entry>
-	<entry id="5702" string="Number of conversion threads">Broj konverzija</entry>
-	<entry id="5703" string="auto">samo</entry>
-	<entry id="5704" string="Process priority">Prioritet procesa</entry>
-	<entry id="5705" string="lowest">najniži</entry>
-	<entry id="5706" string="lower">niži</entry>
-	<entry id="5707" string="normal">normalan</entry>
-	<entry id="5708" string="higher">viši</entry>
-	<entry id="5709" string="highest">najviši</entry>
+	<entry id="5703" string="Number of conversion threads">Broj konverzija</entry>
+	<entry id="5704" string="auto">samo</entry>
+	<entry id="5705" string="Process priority">Prioritet procesa</entry>
+	<entry id="5706" string="lowest">najniži</entry>
+	<entry id="5707" string="lower">niži</entry>
+	<entry id="5708" string="normal">normalan</entry>
+	<entry id="5709" string="higher">viši</entry>
+	<entry id="5710" string="highest">najviši</entry>
       </section>
 
       <section name="Verification">

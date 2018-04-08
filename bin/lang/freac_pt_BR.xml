@@ -486,14 +486,14 @@
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Processamento paralelo</entry>
 	<entry id="5701" string="Enable parallel processing">Habilitar processamento paralelo</entry>
-	<entry id="5702" string="Number of conversion threads">Número de sub-tarefas de conversão</entry>
-	<entry id="5703" string="auto">auto</entry>
-	<entry id="5704" string="Process priority">Prioridade do processo</entry>
-	<entry id="5705" string="lowest">menor</entry>
-	<entry id="5706" string="lower">abaixar</entry>
-	<entry id="5707" string="normal">normal</entry>
-	<entry id="5708" string="higher">superior</entry>
-	<entry id="5709" string="highest">maior</entry>
+	<entry id="5703" string="Number of conversion threads">Número de sub-tarefas de conversão</entry>
+	<entry id="5704" string="auto">auto</entry>
+	<entry id="5705" string="Process priority">Prioridade do processo</entry>
+	<entry id="5706" string="lowest">menor</entry>
+	<entry id="5707" string="lower">abaixar</entry>
+	<entry id="5708" string="normal">normal</entry>
+	<entry id="5709" string="higher">superior</entry>
+	<entry id="5710" string="highest">maior</entry>
       </section>
 
       <section name="Verification">
