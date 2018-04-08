@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -28,22 +28,26 @@ freac::ConfigureResources::ConfigureResources()
 
 	i18n->SetContext("Configuration::Resources");
 
-	enableParallel = config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
+	enableParallel	= config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
+	enableSuperFast = config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, Config::ResourcesEnableSuperFastModeDefault);
 
-	group_cpu		= new GroupBox(i18n->TranslateString("Parallel processing"), Point(7, 11), Size(350, 66));
+	group_cpu		= new GroupBox(i18n->TranslateString("Parallel processing"), Point(7, 11), Size(350, 89));
 
 	check_enable_parallel	= new CheckBox(i18n->TranslateString("Enable parallel processing"), Point(10, 14), Size(group_cpu->GetWidth() - 20, 0), &enableParallel);
 	check_enable_parallel->onAction.Connect(&ConfigureResources::ToggleParallel, this);
 
-	text_threads		= new Text(i18n->AddColon(i18n->TranslateString("Number of conversion threads")), Point(10, 41));
-	text_threads_value	= new Text(i18n->TranslateString("auto"), Point(350, 41));
+	check_enable_superfast	= new CheckBox(i18n->TranslateString("Enable SuperFast mode (experimental)"), Point(27, 37), Size(group_cpu->GetWidth() - 37, 0), &enableSuperFast);
+
+	text_threads		= new Text(i18n->AddColon(i18n->TranslateString("Number of conversion threads")), Point(10, 64));
+	text_threads_value	= new Text(i18n->TranslateString("auto"), Point(350, 64));
 	text_threads_value->SetX(group_cpu->GetWidth() - text_threads_value->GetUnscaledTextWidth() - 10);
 
-	slider_threads		= new Slider(Point(17 + text_threads->GetUnscaledTextWidth(), 39), Size(group_cpu->GetWidth() - 35 - text_threads->GetUnscaledTextWidth() - text_threads_value->GetUnscaledTextWidth(), 0), OR_HORZ, NIL, 1, CPU().GetNumLogicalCPUs());
+	slider_threads		= new Slider(Point(17 + text_threads->GetUnscaledTextWidth(), 62), Size(group_cpu->GetWidth() - 35 - text_threads->GetUnscaledTextWidth() - text_threads_value->GetUnscaledTextWidth(), 0), OR_HORZ, NIL, 1, CPU().GetNumLogicalCPUs());
 	slider_threads->SetValue(config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault));
 	slider_threads->onAction.Connect(&ConfigureResources::ChangeConversionThreads, this);
 
 	group_cpu->Add(check_enable_parallel);
+	group_cpu->Add(check_enable_superfast);
 	group_cpu->Add(text_threads);
 	group_cpu->Add(text_threads_value);
 	group_cpu->Add(slider_threads);
@@ -53,7 +57,7 @@ freac::ConfigureResources::ConfigureResources()
 	ToggleParallel();
 	ChangeConversionThreads();
 
-	group_priority		= new GroupBox(i18n->TranslateString("Process priority"), Point(7, 88), Size(350, 40));
+	group_priority		= new GroupBox(i18n->TranslateString("Process priority"), Point(7, 111), Size(350, 40));
 
 	text_priority		= new Text(i18n->AddColon(i18n->TranslateString("Process priority")), Point(10, 15));
 	text_priority_value	= new Text(NIL, Point(350, 15));
@@ -78,9 +82,9 @@ freac::ConfigureResources::ConfigureResources()
 #ifdef __WIN32__
 	Add(group_priority);
 
-	SetSize(Size(364, 134));
+	SetSize(Size(364, 157));
 #else
-	SetSize(Size(364, 83));
+	SetSize(Size(364, 106));
 #endif
 }
 
@@ -88,6 +92,7 @@ freac::ConfigureResources::~ConfigureResources()
 {
 	DeleteObject(group_cpu);
 	DeleteObject(check_enable_parallel);
+	DeleteObject(check_enable_superfast);
 	DeleteObject(text_threads);
 	DeleteObject(text_threads_value);
 	DeleteObject(slider_threads);
@@ -102,12 +107,14 @@ Void freac::ConfigureResources::ToggleParallel()
 {
 	if (enableParallel)
 	{
+		check_enable_superfast->Activate();
 		text_threads->Activate();
 		text_threads_value->Activate();
 		slider_threads->Activate();
 	}
 	else
 	{
+		check_enable_superfast->Deactivate();
 		text_threads->Deactivate();
 		text_threads_value->Deactivate();
 		slider_threads->Deactivate();
@@ -145,6 +152,8 @@ Int freac::ConfigureResources::SaveSettings()
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, enableParallel);
+	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, enableSuperFast);
+
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, slider_threads->GetValue());
 
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesPriorityID, slider_priority->GetValue());

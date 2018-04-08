@@ -213,6 +213,9 @@ namespace freac
 			static const String	 ResourcesEnableParallelConversionsID;
 			static const Bool	 ResourcesEnableParallelConversionsDefault;
 
+			static const String	 ResourcesEnableSuperFastModeID;
+			static const Bool	 ResourcesEnableSuperFastModeDefault;
+
 			static const String	 ResourcesNumberOfConversionThreadsID;
 			static const Int	 ResourcesNumberOfConversionThreadsDefault;
 
