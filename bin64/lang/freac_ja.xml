@@ -418,8 +418,6 @@
       <entry id="7001" string="Currently converting">エンコード中です</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI ドライバがロードできません。 CD リッピングが出来ません。</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">エンコード中はファイル再生はできません</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">ファイル再生中はエンコードを開始できません</entry>
       <entry id="7006" string="Delete original files after encoding">エンコード後に元ファイルを削除</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">このオプションはファイルをエンコードした後に元ファイルを&#10;コンピュータから削除します!&#10;&#10;本当にこの機能を有効にしますか？</entry>
       <entry id="7008" string="File already exists">ファイルが既に存在します</entry>

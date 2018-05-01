@@ -385,8 +385,6 @@
       <entry id="7001" string="Currently converting">الترميز الحالي</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">اشتقاق القرص المضغوط معطل ASPI غير قادر على تحميل!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">غير قادر على فتح الملف: %1&#10;&#10;خطأ: %2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">لا يمكن تشغيل ملف عندما يتم الترميز!</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">عند تشغيل ملف لا يمكن بدء الترميز!</entry>
       <entry id="7006" string="Delete original files after encoding">حذف الملف الأصلي بعد الترميز</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">بهذا الخيار سيتم إزالة الملفات الأصلية&#10;من الحاسب الخاص بك بعد عملية الترميز&#10;&#10;هل أنت متأكد تريد تنشيط هذه الوظيفة؟</entry>
       <entry id="7008" string="File already exists">الملف موجود مسبقا</entry>

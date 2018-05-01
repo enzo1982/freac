@@ -553,8 +553,6 @@
       <entry id="7001" string="Currently converting">В момента се конвертира</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Невъзможно е да се заредят ASPI драйверите!&#10;CD извличането е изключено!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Невъзможно е да се отвари файл: %1&#10;&#10;Грешка: %2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">Не може да се възпроизвежда файл по време на кодиране!</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">Не може да се стартира кодиране по време на възпроизвеждане на файл!</entry>
       <entry id="7006" string="Delete original files after encoding">Изтриване на оригиналните файлове след кодирането</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Тази опция ще изтрие оригиналните файлове&#10;от вашия компютър след процеса по кодиране!&#10;&#10;Сигурни ли сте, че искате да активирате тази функция?</entry>
       <entry id="7008" string="File already exists">Файлът вече съществува</entry>

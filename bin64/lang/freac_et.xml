@@ -385,8 +385,6 @@
       <entry id="7001" string="Currently converting">Praegu kodeeritakse</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Ei saa laadida ASPI draivereid! CD ripping ei tööta!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Ei saa faili avada: %1&#10;&#10;Viga: %2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">Faili ei saa esitada kodeerimise ajal!</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">Faili ei saa kodeerida esitamise ajal!</entry>
       <entry id="7006" string="Delete original files after encoding">Kustuta originaal failid peale kodeerimist</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">See säte kustutab originaal failid peale seda kui nad on kodeeritud! Kas soovite jätkata?</entry>
       <entry id="7008" string="File already exists">Fail eksisteerib</entry>

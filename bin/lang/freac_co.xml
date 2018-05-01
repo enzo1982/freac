@@ -406,8 +406,6 @@
       <entry id="7001" string="Currently converting">Cudificazione in corsu</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Impussibule di caricà i piloti ASPI ! Estrazzione CD disattivata !</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Impussibule d'apre u schedariu : %1&#10;&#10;Sbagliu : %2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">Ùn pò micca sunà un schedariu durante a cudificazione !</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">Ùn pò micca cudificà un schedariu durante a lettura !</entry>
       <entry id="7006" string="Delete original files after encoding">Squassà u schedariu d'urigine dopu à a cudificazione</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">St'ozzione hà da caccià i schedarii d'urigine&#10;da l'urdinatore dopu à a cudificazione !&#10;&#10;Site sicuru di vulè attivà sta funzione ?</entry>
       <entry id="7008" string="File already exists">U schedariu esiste dighjà</entry>

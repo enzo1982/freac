@@ -554,8 +554,8 @@
       <entry id="7001" string="Currently converting">Konvertierungsvorgang aktiv</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Kann ASPI-Treiber nicht laden! CD-Rippen deaktiviert!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Kann Datei nicht öffnen: %1&#10;&#10;Fehler: %2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">Kann während des Kodierens keine Datei abspielen!</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">Kann nicht Kodieren, während eine Datei abgespielt wird!</entry>
+      <entry id="7004" string="Cannot play a CD track while ripping from the same drive!">Kann keinen CD-Track abspielen, während vom selben Laufwerk gerippt wird!</entry>
+      <entry id="7005" string="Cannot start ripping while playing a track from the same drive!">Kann nicht Rippen, während ein Track vom selben Laufwerk abgespielt wird!</entry>
       <entry id="7006" string="Delete original files after encoding">Originaldateien nach dem Kodieren löschen</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Diese Einstellung entfernt die Originaldateien nach der Kodierung&#10;von Ihrem Computer!&#10;&#10;Sind Sie sicher, dass Sie diese Funktion aktivieren möchten?</entry>
       <entry id="7008" string="File already exists">Datei existiert bereits</entry>

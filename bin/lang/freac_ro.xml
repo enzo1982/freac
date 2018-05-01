@@ -387,8 +387,6 @@
       <entry id="7001" string="Currently converting">Proces activ de codare</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Eroare la încărcarea driver-elor ASPI! Extragerea nu poate fi efectuată!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Nu pot deschide fişierul: %1&#10;&#10;%2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">Fişierul nu poate fi redat în timpul codării!</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">Codarea nu poate începe în timpul redării unui fişier!</entry>
       <entry id="7006" string="Delete original files after encoding">Ştergere fişiere originale după codare</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Această opţiune determină ştergerea fişierelor originale&#10;după terminarea codării! Continuaţi?</entry>
       <entry id="7008" string="File already exists">Fişierul există deja</entry>

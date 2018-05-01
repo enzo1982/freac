@@ -387,8 +387,6 @@
       <entry id="7001" string="Currently converting">Enkodiram</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Ne mogu učitati ASPI driver! CD ripanje onemogućeno!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Ne mogu otvoriti datoteku: %1&#10;&#10;Greška: %2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">Ne mogu svirati datoteku za vrijeme enkodiranja!</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">ne mogu početi enkodiranje dok datoteka svira!</entry>
       <entry id="7006" string="Delete original files after encoding">Obriši originalnu datoteku nakon enkodiranja</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ova opcija izbrisat će originalnu datoteku sa vašeg računala&#10;nakon što enkodiranje završi!&#10;&#10;Da li ste sigurni da želite aktivirati ovu funkciju?</entry>
       <entry id="7008" string="File already exists">Datoteka već postoji</entry>

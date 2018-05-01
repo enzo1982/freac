@@ -387,8 +387,6 @@
       <entry id="7001" string="Currently converting">Iniciado proceso de conversión</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Non foi posíbel cargar o controlador ASPI! Extracción de CD desactivada!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Non é posíbel abrir o arquivo: %1&#10;&#10;Erro: %2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">Non é posíbel reproducir durante o proceso de conversión</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">Non é posíbel comezar a conversión mentres se reproduce un arquivo!</entry>
       <entry id="7006" string="Delete original files after encoding">Eliminar os arquivos orixinais ao rematar a codificación</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Esta opción elimina os arquivos orixinais ao remate&#10;da codificación!&#10;&#10;Desexa activar esta función?</entry>
       <entry id="7008" string="File already exists">O arquivo xa existe</entry>

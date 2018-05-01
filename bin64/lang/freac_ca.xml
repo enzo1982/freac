@@ -387,8 +387,6 @@
       <entry id="7001" string="Currently converting">Iniciat procés de compresió</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">No es va poder carregar el controlador ASPI! Rippeado de CD desactivat!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">No es pot obrir el fitxer: %1&#10;&#10;%2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">No es pot reproduir durant el procés de codificació</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">No es pot començar la codificació mentre es reproduix un fitxer!</entry>
       <entry id="7006" string="Delete original files after encoding">Eliminar els fitxers originals a l'acabar la codificació</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Aquesta opció elimina els fitxers originals&#10;a l'acabar la codificació!&#10;&#10;Està Vè. segur d'activar è funció?</entry>
       <entry id="7008" string="File already exists">Fitxer ja existeix</entry>

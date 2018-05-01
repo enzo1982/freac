@@ -386,8 +386,6 @@
       <entry id="7001" string="Currently converting">Ankoraŭ kodanta</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Ne eblas ŝarĝi la ASPI-pelilon! KD-ripanto malaktiviĝis!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Ne eblas malfermi la dosieron: %1&#10;&#10;%2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">Ne eblas legi dosieron dum la kodado!</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">Ne eblas kodi dum dosiero estas legata!</entry>
       <entry id="7006" string="Delete original files after encoding">Forigi originalajn dosierojn post la kodado</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Tiu agordo forigas la originalajn dosierojn post la kodado el&#10;via komputilo!&#10;&#10;Ĉu vi estas certa, ke vi volas aktivigi tiun funkcion?</entry>
       <entry id="7008" string="File already exists">La dosiero jam eksistas</entry>

@@ -521,8 +521,6 @@
       <entry id="7001" string="Currently converting">正在轉換</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">無法載入 ASPI 驅動程式！已停用 CD 轉檔功能！</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案: %1&#10;&#10;錯誤: %2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">編碼時無法播放檔案！</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">播放檔案時無法編碼！</entry>
       <entry id="7006" string="Delete original files after encoding">編碼完成後刪除原始檔案</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">啟用這個選項將在編碼完成後&#10;刪除您電腦中的原始檔案！&#10;&#10;您真的確定要啟用這項功能嗎？</entry>
       <entry id="7008" string="File already exists">檔案已經存在</entry>

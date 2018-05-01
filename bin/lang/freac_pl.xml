@@ -389,8 +389,6 @@
       <entry id="7001" string="Currently converting">Trwa konwersja</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Nie można załadować sterowników ASPI! Zgrywanie płyt CD zostało wyłączone!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Nie można otworzyć pliku %1&#10;&#10;Błąd %2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">Nie można odtwarzać pliku podczas kompresji!</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">Nie można rozpocząć konwersji podczas odtwarzania pliku!</entry>
       <entry id="7006" string="Delete original files after encoding">Usuń oryginalne pliki po zakończeniu konwersji</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Zaznaczenie tej opcji spowoduje skasowanie&#10;oryginalnych plików po konwersji. Kontynuować?</entry>
       <entry id="7008" string="File already exists">Plik o tej nazwie już istnieje</entry>

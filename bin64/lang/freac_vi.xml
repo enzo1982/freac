@@ -387,8 +387,6 @@
       <entry id="7001" string="Currently converting">Đang chuyển mã hiện tại</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Không thể tải driver của ASPI! Việc rip đĩa CD bị vô hiệu!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Không thể mở file: %1&#10;&#10;Error: %2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">Không thể chơi tập tin khi đang chuyển mã!</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">Không thể chuyển mã khi đang chơi tập tin!</entry>
       <entry id="7006" string="Delete original files after encoding">Xóa file gốc sau khi chuyển mã</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Phần lựa chọn này sẽ xóa tập tin gốc khỏi hệ thông sau&#10;khi quá trình chuyển mã hoàn tất!&#10;&#10;Bạn có thực sự muốn kích hoạt tính năng&#10;này không?</entry>
       <entry id="7008" string="File already exists">Tập tin đó đã tồn tại</entry>

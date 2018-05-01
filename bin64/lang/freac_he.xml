@@ -288,8 +288,6 @@
       <entry id="7001" string="Currently converting">ממיר כרגע</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">לא יכול לתקשר עם כונן, מבטל יכולת קריאה מדיסק</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">לא יכול לנגן בסמן המרה!</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">לא יכול להתחיל המרה בזמן ניגון !</entry>
       <entry id="7006" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">פונקציה זו תמחק את קבצי המקור לאחר ההמרה&#10;האם אתה בטוח שברצונך לאפשר זאת?</entry>
       <entry id="7008" string="File already exists">קובץ כבר קיים</entry>

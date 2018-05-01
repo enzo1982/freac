@@ -388,8 +388,6 @@
       <entry id="7001" string="Currently converting">Orain kodeatzen</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Ezinezkoa ASPI gidatzaileak gertatzea! CD erauzketa ezgaituta!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Ezinezkoa agiria irekitzea: %1&#10;&#10;Akatsa: %2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">Ezin da agiri bat irakurri kodeaketan zehar!</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">Ezin da kodeaketa hasi agiri bat irakurtzeraoan!</entry>
       <entry id="7006" string="Delete original files after encoding">Ezabatu jatorrizko agiriak kodeatu ondoren</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Aukera honek jatorrizko agiriak ezabatuko ditu zure&#10;ordenagailutik kodeaketa garapenaren ondoren!&#10;&#10;Zihur zaude eginkizun hau gaitzea nahi duzula?</entry>
       <entry id="7008" string="File already exists">Agiria badago jadanik</entry>

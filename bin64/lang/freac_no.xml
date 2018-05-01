@@ -386,8 +386,6 @@
       <entry id="7001" string="Currently converting">Koding pågår</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Kan ikke laste ASPI-drivere! CD-ripping deaktiviert!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åpne filen: %1&#10;&#10;Feil: %2</entry>
-      <entry id="7004" string="Cannot play a file while encoding!">Kan ikke spille av mens koding pågår!</entry>
-      <entry id="7005" string="Cannot start encoding while playing a file!">Kan ikke kode mens avspilling pågår!</entry>
       <entry id="7006" string="Delete original files after encoding">Slett originale filer etter koding</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denne innstillingen vil fjerne de originale filene fra datamaskinen din&#10;etter koding!&#10;&#10;Er du sikker på at du vil aktivere denne funksjonen?</entry>
       <entry id="7008" string="File already exists">Fil finnes allerede</entry>
