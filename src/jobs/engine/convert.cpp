@@ -781,8 +781,14 @@ Error freac::JobConvert::Perform()
 			 */
 			if (encodeToSingleFile)
 			{
-				while (!Locking::LockDeviceForTrack(track)) S::System::System::Sleep(25);
-				while (!Locking::LockOutputForTrack(track)) S::System::System::Sleep(25);
+				if (!Locking::LockDeviceForTrack(track))
+				{
+					progress->Pause();
+
+					while (!Locking::LockDeviceForTrack(track)) S::System::System::Sleep(25);
+
+					progress->Resume();
+				}
 			}
 			else
 			{
@@ -840,6 +846,10 @@ Error freac::JobConvert::Perform()
 				}
 			}
 
+			/* Make sure we are reporting progress again.
+			 */
+			progress->Resume();
+
 			/* Set maximum number of threads to use by encoder.
 			 */
 			if (!encodeToSingleFile) workerToUse->SetNumberOfThreads(Math::Max(1, numberOfThreads / numberOfWorkers));
@@ -876,7 +886,12 @@ Error freac::JobConvert::Perform()
 
 		/* Sleep while waiting for devices to become unlocked.
 		 */
-		if (workerQueue.Length() == 0 && !allTracksAssigned) S::System::System::Sleep(25);
+		if (workerQueue.Length() == 0 && !allTracksAssigned)
+		{
+			progress->Pause();
+
+			S::System::System::Sleep(25);
+		}
 	}
 	while (workerQueue.Length() > 0 || !allTracksAssigned);
 
