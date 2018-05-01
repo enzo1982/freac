@@ -124,7 +124,7 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.1 Alpha (März 2018)
+	Version 1.1 Alpha (Mai 2018)
 
 		- Auf macOS, Linux und BSD-Betriebssysteme portiert
 		- Framework für Erweiterungskomponenten implementiert, um fre:ac zu modularisieren
@@ -178,6 +178,7 @@ Geschichte
 		- Unterstützung für Vorbis-Dateien mit der Dateiendung .oga hinzugefügt
 		- Unterstützung für XSPF-, Windows Media- und PLS-Playlisten hinzugefügt
 		- Slider zum Springen während der Wiedergabe hinzugefügt
+		- Wiedergabe während laufender Konvertierung ermöglicht
 		- Warnung beim Konvertieren von verlustbehafteten in verlustfreie Formate hinzugefügt
 		- Möglichkeit zur Sortierung der Jobliste durch Klick auf Überschriften hinzugefügt
 		- Grundlegende Untersützung für Mehrkanal-Audio hinzugefügt
