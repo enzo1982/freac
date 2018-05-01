@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -133,7 +133,7 @@ Void BoCA::LayerProtocols::OnChangeLanguageSettings()
 
 	list_protocol->RemoveAllTabs();
 
-	list_protocol->AddTab(i18n->TranslateString("Time"), 70, OR_RIGHT);
+	list_protocol->AddTab(i18n->TranslateString("Time"), list_protocol->GetFont().GetUnscaledTextSizeX("00:00:00.000") + 4, OR_RIGHT);
 	list_protocol->AddTab(i18n->TranslateString("Message"));
 
 	/* OnChangeSize will correct sizes of any other widgets.
