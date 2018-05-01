@@ -779,8 +779,16 @@ Error freac::JobConvert::Perform()
 
 			/* Lock track device and output file if necessary.
 			 */
-			if (!Locking::LockDeviceForTrack(track))					 continue;
-			if (!Locking::LockOutputForTrack(track)) { Locking::UnlockDeviceForTrack(track); continue; }
+			if (encodeToSingleFile)
+			{
+				while (!Locking::LockDeviceForTrack(track)) S::System::System::Sleep(25);
+				while (!Locking::LockOutputForTrack(track)) S::System::System::Sleep(25);
+			}
+			else
+			{
+				if (!Locking::LockDeviceForTrack(track))					 continue;
+				if (!Locking::LockOutputForTrack(track)) { Locking::UnlockDeviceForTrack(track); continue; }
+			}
 
 			/* Check if track should be overwritten.
 			 */
