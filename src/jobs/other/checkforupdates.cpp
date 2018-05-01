@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -95,11 +95,11 @@ Error freac::JobCheckForUpdates::Perform()
 		SetText("Updates found...");
 		SetProgress(1000);
 
-		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are new updates for %1 available online!\nWould you like to see a list of available updates now?").Replace("%1", freac::appName), String(freac::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
+		MessageDlg	 msgBox(i18n->TranslateString("There are new updates for %1 available online!\nWould you like to see a list of available updates now?").Replace("%1", freac::appName), String(freac::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
 
-		msgBox->ShowDialog();
+		msgBox.ShowDialog();
 
-		if (msgBox->GetButtonCode() == Message::Button::Yes)
+		if (msgBox.GetButtonCode() == Message::Button::Yes)
 		{
 			BoCA::Config	*config = BoCA::Config::Get();
 
@@ -108,8 +108,6 @@ Error freac::JobCheckForUpdates::Perform()
 
 			ex_eUpdate_AutomaticUpdate(context);
 		}
-
-		DeleteObject(msgBox);
 	}
 	else
 	{
@@ -118,11 +116,9 @@ Error freac::JobCheckForUpdates::Perform()
 
 		if (!startup)
 		{
-			MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), String(freac::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
+			MessageDlg	 msgBox(i18n->TranslateString("There are no updates available at the moment!"), String(freac::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
 
-			msgBox->ShowDialog();
-
-			DeleteObject(msgBox);
+			msgBox.ShowDialog();
 		}
 		else if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 2)
 		{

@@ -808,11 +808,11 @@ Error freac::JobConvert::Perform()
 
 					i18n->SetContext("Messages");
 
-					MessageDlg	*confirmation = new MessageDlg(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", track.outfile), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAllFiles);
+					MessageDlg	 confirmation(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", track.outfile), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAllFiles);
 
-					confirmation->ShowDialog();
+					confirmation.ShowDialog();
 
-					if (confirmation->GetButtonCode() == Message::Button::Cancel)
+					if (confirmation.GetButtonCode() == Message::Button::Cancel)
 					{
 						stopConversion = True;
 
@@ -821,12 +821,10 @@ Error freac::JobConvert::Perform()
 						Locking::UnlockDeviceForTrack(track);
 						Locking::UnlockOutputForTrack(track);
 
-						Object::DeleteObject(confirmation);
-
 						break;
 					}
 
-					if (confirmation->GetButtonCode() == Message::Button::No)
+					if (confirmation.GetButtonCode() == Message::Button::No)
 					{
 						overwriteAllFiles = False;
 
@@ -837,12 +835,8 @@ Error freac::JobConvert::Perform()
 						Locking::UnlockDeviceForTrack(track);
 						Locking::UnlockOutputForTrack(track);
 
-						Object::DeleteObject(confirmation);
-
 						continue;
 					}
-
-					Object::DeleteObject(confirmation);
 				}
 			}
 
