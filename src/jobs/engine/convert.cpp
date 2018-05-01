@@ -14,6 +14,8 @@
 
 #include <jobs/joblist/addfiles.h>
 
+#include <engine/locking.h>
+
 #include <engine/decoder.h>
 #include <engine/encoder.h>
 #include <engine/processor.h>
@@ -32,7 +34,6 @@
 #include <dialogs/format.h>
 
 using namespace smooth::GUI::Dialogs;
-using namespace smooth::Threads;
 
 using namespace BoCA;
 using namespace BoCA::AS;
@@ -42,11 +43,6 @@ Bool					 freac::JobConvert::conversionPaused	= False;
 
 Bool					 freac::JobConvert::skipTrack		= False;
 Bool					 freac::JobConvert::stopConversion	= False;
-
-Array<Bool>				 freac::JobConvert::deviceLocked;
-Array<Bool>				 freac::JobConvert::outputLocked;
-
-Mutex					 freac::JobConvert::managementMutex;
 
 Signal0<Void>				 freac::JobConvert::onStartEncoding;
 Signal1<Void, Bool>			 freac::JobConvert::onFinishEncoding;
@@ -490,8 +486,8 @@ Error freac::JobConvert::Perform()
 			{
 				/* Unlock track device and output file if necessary.
 				 */
-				UnlockDeviceForTrack(worker->GetTrackToConvert());
-				UnlockOutputForTrack(worker->GetTrackToConvert());
+				Locking::UnlockDeviceForTrack(worker->GetTrackToConvert());
+				Locking::UnlockOutputForTrack(worker->GetTrackToConvert());
 
 				worker->Cancel();
 			}
@@ -519,8 +515,8 @@ Error freac::JobConvert::Perform()
 			 */
 			const Track	&track = worker->GetTrackToConvert();
 
-			UnlockDeviceForTrack(track);
-			UnlockOutputForTrack(track);
+			Locking::UnlockDeviceForTrack(track);
+			Locking::UnlockOutputForTrack(track);
 
 			skipTrack = False;
 		}
@@ -625,8 +621,8 @@ Error freac::JobConvert::Perform()
 
 			/* Unlock track device and output file if necessary.
 			 */
-			UnlockDeviceForTrack(track);
-			UnlockOutputForTrack(track);
+			Locking::UnlockDeviceForTrack(track);
+			Locking::UnlockOutputForTrack(track);
 
 			/* Announce next track.
 			 */
@@ -783,8 +779,8 @@ Error freac::JobConvert::Perform()
 
 			/* Lock track device and output file if necessary.
 			 */
-			if (!LockDeviceForTrack(track))				       continue;
-			if (!LockOutputForTrack(track)) { UnlockDeviceForTrack(track); continue; }
+			if (!Locking::LockDeviceForTrack(track))					 continue;
+			if (!Locking::LockOutputForTrack(track)) { Locking::UnlockDeviceForTrack(track); continue; }
 
 			/* Check if track should be overwritten.
 			 */
@@ -808,8 +804,8 @@ Error freac::JobConvert::Perform()
 
 						/* Unlock track device and output file if necessary.
 						 */
-						UnlockDeviceForTrack(track);
-						UnlockOutputForTrack(track);
+						Locking::UnlockDeviceForTrack(track);
+						Locking::UnlockOutputForTrack(track);
 
 						Object::DeleteObject(confirmation);
 
@@ -824,8 +820,8 @@ Error freac::JobConvert::Perform()
 
 						/* Unlock track device and output file if necessary.
 						 */
-						UnlockDeviceForTrack(track);
-						UnlockOutputForTrack(track);
+						Locking::UnlockDeviceForTrack(track);
+						Locking::UnlockOutputForTrack(track);
 
 						Object::DeleteObject(confirmation);
 
@@ -1455,102 +1451,4 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 	foreach (const Track &chapterTrack, tracks) singleTrack.tracks.Add(chapterTrack);
 
 	return singleTrack;
-}
-
-Bool freac::JobConvert::LockDeviceForTrack(const Track &track)
-{
-	/* Check if the track is on a locked device.
-	 */
-	if (track.origFilename.StartsWith("device://"))
-	{
-		String	 device = track.origFilename.SubString(9, track.origFilename.Tail(track.origFilename.Length() - 9).Find("/"));
-		Lock	 lock(managementMutex);
-
-		if (deviceLocked.Get(device.ComputeCRC32())) return False;
-
-		deviceLocked.Add(True, device.ComputeCRC32());
-	}
-
-#if defined __APPLE__ || defined __HAIKU__
-	/* On macOS and Haiku, treat CDDA volumes like CD tracks.
-	 */
-	String	 filePath = File(track.origFilename).GetFilePath();
-
-#if defined __APPLE__
-	if (track.origFilename.EndsWith(".aiff") && Directory(filePath).GetDirectoryPath() == "/Volumes" && File(String(filePath).Append("/.TOC.plist")).Exists())
-#else
-	if (track.origFilename.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
-#endif
-	{
-		Lock	 lock(managementMutex);
-
-		if (deviceLocked.Get(filePath.ComputeCRC32())) return False;
-
-		deviceLocked.Add(True, filePath.ComputeCRC32());
-	}
-#endif
-
-	return True;
-}
-
-Bool freac::JobConvert::UnlockDeviceForTrack(const Track &track)
-{
-	/* Unlock track device if necessary.
-	 */
-	if (track.origFilename.StartsWith("device://"))
-	{
-		String	 device = track.origFilename.SubString(9, track.origFilename.Tail(track.origFilename.Length() - 9).Find("/"));
-		Lock	 lock(managementMutex);
-
-		deviceLocked.Remove(device.ComputeCRC32());
-	}
-
-#if defined __APPLE__ || defined __HAIKU__
-	/* On macOS and Haiku, treat CDDA volumes like CD tracks.
-	 */
-	String	 filePath = File(track.origFilename).GetFilePath();
-
-#if defined __APPLE__
-	if (track.origFilename.EndsWith(".aiff") && Directory(filePath).GetDirectoryPath() == "/Volumes" && File(String(filePath).Append("/.TOC.plist")).Exists())
-#else
-	if (track.origFilename.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
-#endif
-	{
-		Lock	 lock(managementMutex);
-
-		deviceLocked.Remove(filePath.ComputeCRC32());
-	}
-#endif
-
-	return True;
-}
-
-Bool freac::JobConvert::LockOutputForTrack(const Track &track)
-{
-	/* Check if the track output file is currently locked.
-	 */
-	if (track.outfile != NIL)
-	{
-		Lock	 lock(managementMutex);
-
-		if (outputLocked.Get(track.outfile.ComputeCRC32())) return False;
-
-		outputLocked.Add(True, track.outfile.ComputeCRC32());
-	}
-
-	return True;
-}
-
-Bool freac::JobConvert::UnlockOutputForTrack(const Track &track)
-{
-	/* Unlock track output file if necessary.
-	 */
-	if (track.outfile != NIL)
-	{
-		Lock	 lock(managementMutex);
-
-		outputLocked.Remove(track.outfile.ComputeCRC32());
-	}
-
-	return True;
 }

@@ -29,11 +29,6 @@ namespace freac
 			static Bool					 skipTrack;
 			static Bool					 stopConversion;
 
-			static Array<Bool>				 deviceLocked;
-			static Array<Bool>				 outputLocked;
-
-			static Threads::Mutex				 managementMutex;
-
 			Array<BoCA::Track>				 tracks;
 			Array<Int>					 trackActions;
 
@@ -43,12 +38,6 @@ namespace freac
 
 			BoCA::Format					 GetSingleTrackSampleFormat() const;
 			BoCA::Track					 ConsolidateTrackInfo();
-
-			Bool						 LockDeviceForTrack(const BoCA::Track &);
-			Bool						 UnlockDeviceForTrack(const BoCA::Track &);
-
-			Bool						 LockOutputForTrack(const BoCA::Track &);
-			Bool						 UnlockOutputForTrack(const BoCA::Track &);
 		public:
 			static Bool					 IsConverting()	{ return conversionRunning; }
 			static Bool					 IsPaused()	{ return conversionPaused;  }
