@@ -873,8 +873,12 @@ Error freac::JobConvert::Perform()
 
 			break;
 		}
+
+		/* Sleep while waiting for devices to become unlocked.
+		 */
+		if (workerQueue.Length() == 0 && !allTracksAssigned) S::System::System::Sleep(25);
 	}
-	while (workerQueue.Length() > 0);
+	while (workerQueue.Length() > 0 || !allTracksAssigned);
 
 	/* Clean up worker threads.
 	 */
