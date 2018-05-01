@@ -133,6 +133,8 @@ Void freac::Progress::Start()
 
 Void freac::Progress::Pause()
 {
+	if (pauseTicks) return;
+
 	pauseTicks = S::System::System::Clock();
 
 	/* Set taskbar progress state to paused.
@@ -142,9 +144,12 @@ Void freac::Progress::Pause()
 
 Void freac::Progress::Resume()
 {
+	if (!pauseTicks) return;
+
 	for (Int i = 0; i < trackList.Length(); i++) trackStartTicks.SetNth(i, trackStartTicks.GetNth(i) + S::System::System::Clock() - pauseTicks);
 
 	startTicks += S::System::System::Clock() - pauseTicks;
+	pauseTicks  = 0;
 
 	/* Set taskbar/dock progress state to normal.
 	 */
