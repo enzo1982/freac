@@ -1,4 +1,4 @@
-fre:ac Version 1.0.32
+fre:ac Version 1.0.33
 
 fre:ac ist ein freier Open-Source Audiokonverter für verschiedene Formate.
 Das Programm unterstützt das Rippen von Audio-CDs und konvertiert folgende
@@ -92,6 +92,11 @@ Bekannte Probleme
 
 Geschichte
 ----------
+
+	Version 1.0.33 (Mai 2018)
+
+		- Einfrieren des Programms beim Öffnen einiger Windows Wave-Dateien behoben
+		- Problem mit Setup-Berechtigungen unter nicht-Administrator-Accounts behoben
 
 	Version 1.0.32 (März 2018)
 
