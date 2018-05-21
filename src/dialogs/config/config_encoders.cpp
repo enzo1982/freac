@@ -144,14 +144,13 @@ freac::ConfigureEncoders::ConfigureEncoders()
 
 	list_filename->AddEntry(String("<artist> - <title>"));
 	list_filename->AddEntry(String("<artist>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <title>"));
-	list_filename->AddEntry(String("<artist> - <album> - <track> - <title>"));
-	list_filename->AddEntry(String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <title>"));
-	list_filename->AddEntry(String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album> - <track> - <title>"));
 	list_filename->AddEntry(String("<track> - <artist> - <title>"));
-	list_filename->AddEntry(String("<album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <artist> - <title>"));
-	list_filename->AddEntry(String("<genre>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <title>"));
-	list_filename->AddEntry(String("<filetype>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <title>"));
+	list_filename->AddEntry(String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <artist> - <title>"));
+	list_filename->AddEntry(String("<albumartist> - <album> - <track> - <title>"));
+	list_filename->AddEntry(String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <title>"));
+	list_filename->AddEntry(String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<albumartist> - <album> - <track> - <title>"));
 	list_filename->AddEntry(String("<filename>"));
+	list_filename->AddEntry(String("<directory>").Append(Directory::GetDirectoryDelimiter()).Append("<filename>"));
 
 	edit_filename->SetDropDownList(list_filename);
 

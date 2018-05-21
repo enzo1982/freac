@@ -109,11 +109,8 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 	edit_filename		= new EditBox(playlistOutputPattern, Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(525 - text_filename->GetUnscaledTextWidth(), 0), 0);
 
 	list_filename		= new List();
-	list_filename->AddEntry(String("<artist> - <album>"));
-	list_filename->AddEntry(String("<artist>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>"));
-	list_filename->AddEntry(String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>"));
-	list_filename->AddEntry(String("<album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>"));
-	list_filename->AddEntry(String("<genre>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>"));
+	list_filename->AddEntry(String("<albumartist> - <album>"));
+	list_filename->AddEntry(String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<albumartist> - <album>"));
 
 	edit_filename->SetDropDownList(list_filename);
 
