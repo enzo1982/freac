@@ -1,0 +1,54 @@
+language: cpp
+
+matrix:
+  include:
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          packages:
+            - libasound2-dev
+            - libbz2-dev
+            - libcdio-paranoia-dev
+            - libcurl4-openssl-dev
+            - libexpat1-dev
+            - libfribidi-dev
+            - libgtk-3-dev
+            - libjpeg-dev
+            - libudev-dev
+            - liburiparser-dev
+            - libxml2-dev
+
+    - os: linux
+      compiler: clang
+      addons:
+        apt:
+          packages:
+            - libasound2-dev
+            - libbz2-dev
+            - libcdio-paranoia-dev
+            - libcurl4-openssl-dev
+            - libexpat1-dev
+            - libfribidi-dev
+            - libgtk-3-dev
+            - libjpeg-dev
+            - libudev-dev
+            - liburiparser-dev
+            - libxml2-dev
+
+    - os: osx
+      compiler: gcc
+
+    - os: osx
+      compiler: clang
+
+before_install:
+  - if [ $TRAVIS_OS_NAME = osx ]; then brew install libcdio; fi
+  - if [ $TRAVIS_OS_NAME = osx ]; then wget https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+0.94+2.tar.gz && tar xfz libcdio-paranoia-10.2+0.94+2.tar.gz && cd libcdio-paranoia-10.2+0.94+2 && ./configure --prefix=/usr/local && make && sudo make install && cd ..; fi
+
+install:
+  - git clone https://github.com/enzo1982/smooth.git enzo1982/smooth && cd enzo1982/smooth && make && sudo make install prefix=/usr/local && cd ../..
+  - git clone https://github.com/enzo1982/boca.git enzo1982/boca && cd enzo1982/boca && make && sudo make install prefix=/usr/local && cd ../..
+
+script:
+  - make
