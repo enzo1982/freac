@@ -117,7 +117,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	String		 helpenc;
 	String		 outdir		= Directory::GetActiveDirectory();
 	String		 outfile;
-	String		 pattern	= "<artist> - <title>";
+	String		 pattern	= "<filename>";
 	String		 cdDrive	= "0";
 	String		 tracks;
 	String		 timeout	= "120";
@@ -800,7 +800,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		}
 
 		Console::OutputString(list.Append("\n\n"));
-		Console::OutputString("Default for <pat> is \"<artist> - <title>\".\n");
+		Console::OutputString("Default for <pat> is \"<filename>\".\n");
 	}
 	else
 	{
