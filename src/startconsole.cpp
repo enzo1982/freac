@@ -67,7 +67,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	/* List configurations if requested.
 	 */
-	if (ScanForOption("--list-configs"))
+	if (ScanForProgramOption("--list-configs"))
 	{
 		Console::OutputString(String(freac::appLongName).Append(" ").Append(freac::version).Append(" (").Append(freac::architecture).Append(") command line interface\n").Append(freac::copyright).Append("\n\n"));
 		Console::OutputString("Available configurations:\n\n");
@@ -89,7 +89,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	config->SetActiveConfiguration("default");
 
-	if (ScanForOption("--config", &configName) && configName != "default" && configName != "Default configuration" && configName != i18n->TranslateString("Default configuration", "Configuration"))
+	if (ScanForProgramOption("--config", &configName) && configName != "default" && configName != "Default configuration" && configName != i18n->TranslateString("Default configuration", "Configuration"))
 	{
 		Bool	 foundConfig = False;
 
@@ -110,8 +110,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	/* Configure the converter.
 	 */
-	Bool		 quiet		= ScanForOption("--quiet");
-	Bool		 cddb		= ScanForOption("--cddb");
+	Bool		 quiet		= ScanForProgramOption("--quiet");
+	Bool		 cddb		= ScanForProgramOption("--cddb");
 	Array<String>	 files;
 	String		 encoderID	= "lame";
 	String		 helpenc;
@@ -122,11 +122,11 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	String		 tracks;
 	String		 timeout	= "120";
 
-	if (!ScanForOption("--encoder", &encoderID)) ScanForOption("-e", &encoderID);
-	if (!ScanForOption("--help",	&helpenc))   ScanForOption("-h", &helpenc);
-						     ScanForOption("-d", &outdir);
-						     ScanForOption("-o", &outfile);
-	if (!ScanForOption("--pattern", &pattern))   ScanForOption("-p", &pattern);
+	if (!ScanForProgramOption("--encoder", &encoderID)) ScanForProgramOption("-e", &encoderID);
+	if (!ScanForProgramOption("--help",    &helpenc))   ScanForProgramOption("-h", &helpenc);
+							    ScanForProgramOption("-d", &outdir);
+							    ScanForProgramOption("-o", &outfile);
+	if (!ScanForProgramOption("--pattern", &pattern))   ScanForProgramOption("-p", &pattern);
 
 	DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
 	Int			 numDrives = 0;
@@ -135,10 +135,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	{
 		if (info->GetNumberOfDevices() > 0)
 		{
-			if (!ScanForOption("--drive", &cdDrive)) ScanForOption("-cd", &cdDrive);
-			if (!ScanForOption("--track", &tracks))	 ScanForOption("-t",  &tracks);
+			if (!ScanForProgramOption("--drive", &cdDrive)) ScanForProgramOption("-cd", &cdDrive);
+			if (!ScanForProgramOption("--track", &tracks))	ScanForProgramOption("-t",  &tracks);
 
-			ScanForOption("--timeout", &timeout);
+			ScanForProgramOption("--timeout", &timeout);
 		}
 
 		numDrives = info->GetNumberOfDevices();
@@ -199,9 +199,9 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		String	 quality = "5";
 		String	 mode	 = "VBR";
 
-		ScanForOption("-b", &bitrate);
-		ScanForOption("-q", &quality);
-		ScanForOption("-m", &mode);
+		ScanForEncoderOption("-b", &bitrate);
+		ScanForEncoderOption("-q", &quality);
+		ScanForEncoderOption("-m", &mode);
 
 		config->SetIntValue("LAME", "Preset", 0);
 		config->SetIntValue("LAME", "SetBitrate", True);
@@ -219,8 +219,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		String	 bitrate = "192";
 		String	 quality = "60";
 
-		if (ScanForOption("-b", &bitrate)) config->SetIntValue("Vorbis", "Mode", 1);
-		else				   config->SetIntValue("Vorbis", "Mode", 0);
+		if (ScanForEncoderOption("-b", &bitrate)) config->SetIntValue("Vorbis", "Mode", 1);
+		else					  config->SetIntValue("Vorbis", "Mode", 0);
 
 		config->SetIntValue("Vorbis", "Quality", Math::Max(0, Math::Min(100, (Int) quality.ToInt())));
 		config->SetIntValue("Vorbis", "Bitrate", Math::Max(45, Math::Min(500, (Int) bitrate.ToInt())));
@@ -231,12 +231,12 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		String	 predictor    = "32";
 		String	 downsampling = "2";
 
-		ScanForOption("-q", &quantization);
-		ScanForOption("-p", &predictor);
-		ScanForOption("-r", &downsampling);
+		ScanForEncoderOption("-q", &quantization);
+		ScanForEncoderOption("-p", &predictor);
+		ScanForEncoderOption("-r", &downsampling);
 
-		config->SetIntValue("Bonk", "JointStereo", ScanForOption("-js"));
-		config->SetIntValue("Bonk", "Lossless", ScanForOption("-lossless"));
+		config->SetIntValue("Bonk", "JointStereo", ScanForEncoderOption("-js"));
+		config->SetIntValue("Bonk", "Lossless", ScanForEncoderOption("-lossless"));
 
 		config->SetIntValue("Bonk", "Quantization", Math::Max(0, Math::Min(40, (Int) Math::Round(quantization.ToFloat() * 20))));
 		config->SetIntValue("Bonk", "Predictor", Math::Max(0, Math::Min(512, (Int) predictor.ToInt())));
@@ -246,7 +246,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	{
 		String	 bitrate = "192";
 
-		ScanForOption("-b", &bitrate);
+		ScanForEncoderOption("-b", &bitrate);
 
 		config->SetIntValue("BladeEnc", "Bitrate", Math::Max(32, Math::Min(320, (Int) bitrate.ToInt())));
 	}
@@ -255,10 +255,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		String	 bitrate = "64";
 		String	 quality = "100";
 
-		if (ScanForOption("-b", &bitrate)) config->SetIntValue("FAAC", "SetQuality", False);
-		else				   config->SetIntValue("FAAC", "SetQuality", True);
+		if (ScanForEncoderOption("-b", &bitrate)) config->SetIntValue("FAAC", "SetQuality", False);
+		else					  config->SetIntValue("FAAC", "SetQuality", True);
 
-		config->SetIntValue("FAAC", "MP4Container", ScanForOption("-mp4"));
+		config->SetIntValue("FAAC", "MP4Container", ScanForEncoderOption("-mp4"));
 
 		config->SetIntValue("FAAC", "AACQuality", Math::Max(10, Math::Min(500, (Int) quality.ToInt())));
 		config->SetIntValue("FAAC", "Bitrate", Math::Max(8, Math::Min(256, (Int) bitrate.ToInt())));
@@ -272,10 +272,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		String	 minrice;
 		String	 maxrice;
 
-		ScanForOption("-b", &blocksize);
-		ScanForOption("-l", &lpc);
-		ScanForOption("-q", &qlp);
-		ScanForOption("-r", &rice);
+		ScanForEncoderOption("-b", &blocksize);
+		ScanForEncoderOption("-l", &lpc);
+		ScanForEncoderOption("-q", &qlp);
+		ScanForEncoderOption("-r", &rice);
 
 		Int	 i = 0;
 		Int	 j = 0;
@@ -285,9 +285,9 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 		config->SetIntValue("FLAC", "Preset", -1);
 
-		config->SetIntValue("FLAC", "DoMidSideStereo", ScanForOption("-ms"));
-		config->SetIntValue("FLAC", "DoExhaustiveModelSearch", ScanForOption("-e"));
-		config->SetIntValue("FLAC", "DoQLPCoeffPrecSearch", ScanForOption("-p"));
+		config->SetIntValue("FLAC", "DoMidSideStereo", ScanForEncoderOption("-ms"));
+		config->SetIntValue("FLAC", "DoExhaustiveModelSearch", ScanForEncoderOption("-e"));
+		config->SetIntValue("FLAC", "DoQLPCoeffPrecSearch", ScanForEncoderOption("-p"));
 
 		config->SetIntValue("FLAC", "Blocksize", Math::Max(192, Math::Min(32768, (Int) blocksize.ToInt())));
 		config->SetIntValue("FLAC", "MaxLPCOrder", Math::Max(0, Math::Min(32, (Int) lpc.ToInt())));
@@ -300,8 +300,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		String	 bitrate    = "48";
 		String	 candidates = "32";
 
-		ScanForOption("-b", &bitrate);
-		ScanForOption("-c", &candidates);
+		ScanForEncoderOption("-b", &bitrate);
+		ScanForEncoderOption("-c", &candidates);
 
 		config->SetIntValue("TwinVQ", "PreselectionCandidates", Math::Max(4, Math::Min(32, (Int) candidates.ToInt())));
 		config->SetIntValue("TwinVQ", "Bitrate", Math::Max(24, Math::Min(48, (Int) bitrate.ToInt())));
@@ -341,27 +341,22 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			Array<String>	 jobFiles;
 			Bool		 addCDTracks = False;
 
-			for (Int i = 0; i < files.Length(); i++)
+			foreach (const String &file, files)
 			{
-				InStream	 in(STREAM_FILE, files.GetNth(i), IS_READ);
-				String		 currentFile = files.GetNth(i);
+				if (file.StartsWith("device://cdda:")) addCDTracks = True;
 
-				if (currentFile.StartsWith("device://cdda:"))
-				{
-					currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 16));
-					addCDTracks = True;
-				}
+				InStream	 in(STREAM_FILE, file, IS_READ);
 
-				if (in.GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("device://"))
+				if (in.GetLastError() != IO_ERROR_OK && !file.StartsWith("device://"))
 				{
-					Console::OutputString(String("File not found: ").Append(files.GetNth(i)).Append("\n"));
+					Console::OutputString(String("File not found: ").Append(file).Append("\n"));
 
 					broken = True;
 
 					continue;
 				}
 
-				jobFiles.Add(files.GetNth(i));
+				jobFiles.Add(file);
 			}
 
 			Job	*job = addCDTracks ? (Job *) new JobAddTracks(jobFiles) : (Job *) new JobAddFiles(jobFiles);
@@ -387,11 +382,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		}
 		else
 		{
-			for (Int i = 0; i < files.Length(); i++)
+			foreach (const String &file, files)
 			{
-				InStream	 in(STREAM_FILE, files.GetNth(i), IS_READ);
-				String		 currentFile = files.GetNth(i);
-				Bool		 addCDTrack  = False;
+				String	 currentFile = file;
+				Bool	 addCDTrack  = False;
 
 				if (currentFile.StartsWith("device://cdda:"))
 				{
@@ -399,9 +393,11 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 					addCDTrack  = True;
 				}
 
-				if (in.GetLastError() != IO_ERROR_OK && !files.GetNth(i).StartsWith("device://"))
+				InStream	 in(STREAM_FILE, file, IS_READ);
+
+				if (in.GetLastError() != IO_ERROR_OK && !file.StartsWith("device://"))
 				{
-					Console::OutputString(String("File not found: ").Append(files.GetNth(i)).Append("\n"));
+					Console::OutputString(String("File not found: ").Append(file).Append("\n"));
 
 					broken = True;
 
@@ -410,7 +406,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 				Array<String>	 jobFiles;
 
-				jobFiles.Add(files.GetNth(i));
+				jobFiles.Add(file);
 
 				Job	*job = addCDTrack ? (Job *) new JobAddTracks(jobFiles) : (Job *) new JobAddFiles(jobFiles);
 
@@ -460,7 +456,7 @@ Void freac::freacCommandline::OnEncodeTrack(const Track &track, const String &de
 	static Bool	 firstTime = True;
 
 	BoCA::Config	*config = BoCA::Config::Get();
-	Bool		 quiet	= ScanForOption("--quiet");
+	Bool		 quiet	= ScanForProgramOption("--quiet");
 
 	if (!quiet)
 	{
@@ -475,23 +471,73 @@ Void freac::freacCommandline::OnEncodeTrack(const Track &track, const String &de
 	}
 }
 
-Bool freac::freacCommandline::ScanForOption(const String &option, String *value)
+Bool freac::freacCommandline::ScanForProgramOption(const String &option, String *value)
 {
-	for (Int i = 0; i < args.Length(); i++)
+	/* Scan all arguments.
+	 */
+	foreach (const String &param, args)
 	{
-		if (option.StartsWith("--") && value != NIL && args.GetNth(i).StartsWith(String(option).Append("=")))
+		/* Stop upon encountering separator.
+		 */
+		if (param == "--") break;
+
+		if (option.StartsWith("--") && value != NIL && param.StartsWith(String(option).Append("=")))
 		{
-			*value = args.GetNth(i).Tail(args.GetNth(i).Length() - option.Length() - 1);
+			*value = param.Tail(param.Length() - option.Length() - 1);
 
 			return True;
 		}
-		else if (option.StartsWith("--") && args.GetNth(i) == option)
+		else if (option.StartsWith("--") && param == option)
 		{
 			return True;
 		}
-		else if (option.StartsWith("-") && args.GetNth(i) == option)
+		else if (option.StartsWith("-") && param == option)
 		{
-			if (value != NIL) *value = args.GetNth(i + 1);
+			if (value != NIL) *value = args.GetNth(foreachindex + 1);
+
+			return True;
+		}
+	}
+
+	return False;
+}
+
+Bool freac::freacCommandline::ScanForEncoderOption(const String &option, String *value)
+{
+	/* Check if we have a separator for program and encoder options.
+	 */
+	Int	 separatorindex = -1;
+
+	foreach (const String &param, args)
+	{
+		if (param != "--") continue;
+
+		separatorindex = foreachindex;
+
+		break;
+	}
+
+	/* Scan all arguments.
+	 */
+	foreach (const String &param, args)
+	{
+		/* Discard arguments before separator.
+		 */
+		if (foreachindex <= separatorindex) continue;
+
+		if (option.StartsWith("--") && value != NIL && param.StartsWith(String(option).Append("=")))
+		{
+			*value = param.Tail(param.Length() - option.Length() - 1);
+
+			return True;
+		}
+		else if (option.StartsWith("--") && param == option)
+		{
+			return True;
+		}
+		else if (option.StartsWith("-") && param == option)
+		{
+			if (value != NIL) *value = args.GetNth(foreachindex + 1);
 
 			return True;
 		}
@@ -502,14 +548,10 @@ Bool freac::freacCommandline::ScanForOption(const String &option, String *value)
 
 Void freac::freacCommandline::ScanForFiles(Array<String> *files)
 {
-	String	 param;
 	String	 prevParam;
 
-	for (Int i = 0; i < args.Length(); i++)
+	foreach (const String &param, args)
 	{
-		prevParam	= param;
-		param		= args.GetNth(i);
-
 		if (param[0] != '-' && (prevParam.StartsWith("--")  ||
 					prevParam[0] != '-'	    ||
 					prevParam    == "-js"	    ||
@@ -532,6 +574,8 @@ Void freac::freacCommandline::ScanForFiles(Array<String> *files)
 				(*files).Add(param);
 			}
 		}
+
+		prevParam = param;
 	}
 }
 
@@ -612,7 +656,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 
 	if (helpenc == NIL)
 	{
-		Console::OutputString("Usage:\tfreaccmd [options] [file(s)]\n\n");
+		Console::OutputString("Usage:\tfreaccmd [options] [--] [encoder options] [file(s)]\n\n");
 		Console::OutputString("  --encoder=<id>  | -e <id>\tSpecify the encoder to use (default is LAME)\n");
 		Console::OutputString("  --help=<id>     | -h <id>\tPrint help for encoder specific options\n\n");
 		Console::OutputString("                    -d <dir>\tSpecify output directory for encoded files\n");
@@ -637,6 +681,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		Console::OutputString("  --list-configs\t\tPrint a list of available configurations\n");
 		Console::OutputString("  --config=<cfg>\t\tSpecify configuration to use\n\n");
 		Console::OutputString("  --quiet\t\t\tDo not print any messages\n\n");
+		Console::OutputString("Use -- to separate freaccmd options from encoder options if both have the same name.\n\n");
 		Console::OutputString("Encoder <id> can be one of:\n\n");
 
 		String	 list;
@@ -663,7 +708,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		}
 
 		Console::OutputString(list.Append("\n\n"));
-		Console::OutputString("Default for <pat> is \"<filename>\".\n\n");
+		Console::OutputString("Default for <pat> is \"<filename>\".\n");
 	}
 	else
 	{
