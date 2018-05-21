@@ -190,9 +190,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		return;
 	}
 
-	JobList	*joblist = new JobList(Point(0, 0), Size(0, 0));
-	Bool	 broken	 = False;
-
+	/* Check encoder parameters.
+	 */
 	if (encoderID == "lame")
 	{
 		String	 bitrate = "192";
@@ -307,59 +306,107 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		config->SetIntValue("TwinVQ", "Bitrate", Math::Max(24, Math::Min(48, (Int) bitrate.ToInt())));
 	}
 
-	if (!broken)
+	/* Perform actual conversion.
+	 */
+	if (!outdir.EndsWith(Directory::GetDirectoryDelimiter())) outdir.Append(Directory::GetDirectoryDelimiter());
+
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, String(encoderID).Append("-enc"));
+
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, outdir);
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
+
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, cddb);
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoSelectID, True);
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, True);
+
+	config->SetIntValue(Config::CategoryRipperID, Config::RipperLockTrayID, Config::RipperLockTrayDefault);
+	config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, False);
+
+	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, False);
+	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, False);
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, False);
+
+	if (files.Length() > 1 && outfile != NIL)
 	{
-		if (!outdir.EndsWith(Directory::GetDirectoryDelimiter())) outdir.Append(Directory::GetDirectoryDelimiter());
+		config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, True);
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outfile);
 
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, String(encoderID).Append("-enc"));
+		JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
 
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, outdir);
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
+		Array<String>	 jobFiles;
+		Bool		 addCDTracks = False;
 
-		config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, cddb);
-		config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoSelectID, True);
-		config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, True);
-
-		config->SetIntValue(Config::CategoryRipperID, Config::RipperLockTrayID, Config::RipperLockTrayDefault);
-		config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
-
-		config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, False);
-
-		config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, False);
-		config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, False);
-
-		config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
-		config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, False);
-
-		if (files.Length() > 1 && outfile != NIL)
+		foreach (const String &file, files)
 		{
-			config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, True);
-			config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outfile);
+			if (file.StartsWith("device://cdda:")) addCDTracks = True;
 
-			JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
+			InStream	 in(STREAM_FILE, file, IS_READ);
 
-			Array<String>	 jobFiles;
-			Bool		 addCDTracks = False;
-
-			foreach (const String &file, files)
+			if (in.GetLastError() != IO_ERROR_OK && !file.StartsWith("device://"))
 			{
-				if (file.StartsWith("device://cdda:")) addCDTracks = True;
+				Console::OutputString(String("File not found: ").Append(file).Append("\n"));
 
-				InStream	 in(STREAM_FILE, file, IS_READ);
-
-				if (in.GetLastError() != IO_ERROR_OK && !file.StartsWith("device://"))
-				{
-					Console::OutputString(String("File not found: ").Append(file).Append("\n"));
-
-					broken = True;
-
-					continue;
-				}
-
-				jobFiles.Add(file);
+				continue;
 			}
 
-			Job	*job = addCDTracks ? (Job *) new JobAddTracks(jobFiles) : (Job *) new JobAddFiles(jobFiles);
+			jobFiles.Add(file);
+		}
+
+		JobList	*joblist = new JobList(Point(0, 0), Size(0, 0));
+		Job	*job	 = addCDTracks ? (Job *) new JobAddTracks(jobFiles) : (Job *) new JobAddFiles(jobFiles);
+
+		job->Schedule();
+
+		while (Job::GetScheduledJobs().Length()	> 0) S::System::System::Sleep(10);
+		while (Job::GetPlannedJobs().Length()	> 0) S::System::System::Sleep(10);
+		while (Job::GetRunningJobs().Length()	> 0) S::System::System::Sleep(10);
+
+		if (joblist->GetNOfTracks() > 0)
+		{
+			Converter().Convert(joblist, False);
+
+			if (!quiet) Console::OutputString("done.\n");
+		}
+		else
+		{
+			Console::OutputString("Could not process input files!\n");
+		}
+
+		delete joblist;
+	}
+	else
+	{
+		JobList	*joblist = new JobList(Point(0, 0), Size(0, 0));
+
+		foreach (const String &file, files)
+		{
+			String	 currentFile = file;
+			Bool	 addCDTrack  = False;
+
+			if (currentFile.StartsWith("device://cdda:"))
+			{
+				currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 16));
+				addCDTrack  = True;
+			}
+
+			InStream	 in(STREAM_FILE, file, IS_READ);
+
+			if (in.GetLastError() != IO_ERROR_OK && !file.StartsWith("device://"))
+			{
+				Console::OutputString(String("File not found: ").Append(file).Append("\n"));
+
+				continue;
+			}
+
+			Array<String>	 jobFiles;
+
+			jobFiles.Add(file);
+
+			Job	*job = addCDTrack ? (Job *) new JobAddTracks(jobFiles) : (Job *) new JobAddFiles(jobFiles);
 
 			job->Schedule();
 
@@ -369,82 +416,30 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			if (joblist->GetNOfTracks() > 0)
 			{
+				if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
+
+				Track	 track = joblist->GetNthTrack(0);
+
+				track.outfile = outfile;
+
+				joblist->UpdateTrackInfo(track);
+
 				Converter().Convert(joblist, False);
+
+				joblist->RemoveNthTrack(0);
 
 				if (!quiet) Console::OutputString("done.\n");
 			}
 			else
 			{
-				Console::OutputString("Could not process input files!\n");
+				Console::OutputString(String("Could not process file: ").Append(currentFile).Append("\n"));
 
-				broken = True;
+				continue;
 			}
 		}
-		else
-		{
-			foreach (const String &file, files)
-			{
-				String	 currentFile = file;
-				Bool	 addCDTrack  = False;
 
-				if (currentFile.StartsWith("device://cdda:"))
-				{
-					currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 16));
-					addCDTrack  = True;
-				}
-
-				InStream	 in(STREAM_FILE, file, IS_READ);
-
-				if (in.GetLastError() != IO_ERROR_OK && !file.StartsWith("device://"))
-				{
-					Console::OutputString(String("File not found: ").Append(file).Append("\n"));
-
-					broken = True;
-
-					continue;
-				}
-
-				Array<String>	 jobFiles;
-
-				jobFiles.Add(file);
-
-				Job	*job = addCDTrack ? (Job *) new JobAddTracks(jobFiles) : (Job *) new JobAddFiles(jobFiles);
-
-				job->Schedule();
-
-				while (Job::GetScheduledJobs().Length()	> 0) S::System::System::Sleep(10);
-				while (Job::GetPlannedJobs().Length()	> 0) S::System::System::Sleep(10);
-				while (Job::GetRunningJobs().Length()	> 0) S::System::System::Sleep(10);
-
-				if (joblist->GetNOfTracks() > 0)
-				{
-					if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
-
-					Track	 track = joblist->GetNthTrack(0);
-
-					track.outfile = outfile;
-
-					joblist->UpdateTrackInfo(track);
-
-					Converter().Convert(joblist, False);
-
-					joblist->RemoveNthTrack(0);
-
-					if (!quiet) Console::OutputString("done.\n");
-				}
-				else
-				{
-					Console::OutputString(String("Could not process file: ").Append(currentFile).Append("\n"));
-
-					broken = True;
-
-					continue;
-				}
-			}
-		}
+		delete joblist;
 	}
-
-	delete joblist;
 }
 
 freac::freacCommandline::~freacCommandline()
