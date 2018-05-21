@@ -124,7 +124,7 @@ Known problems
 History
 -------
 
-	Version 1.1 Alpha (January 2018)
+	Version 1.1 Alpha (March 2018)
 
 		- ported to macOS, Linux and BSD operating systems
 		- implemented an extension component framework to modularize fre:ac
@@ -198,7 +198,6 @@ History
 		- improved metadata extraction from paths
 		- added native x64 platform support
 		- upgraded CDRip to version 2.2 (with cdparanoia III version 10.2)
-		- upgrade to MP4v2 v2.0.0
 
 Special thanks to
 -----------------
