@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -117,7 +117,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	String		 helpenc;
 	String		 outdir		= Directory::GetActiveDirectory();
 	String		 outfile;
-	String		 pattern	= "<artist> - <title>";
+	String		 pattern	= "<filename>";
 	String		 cdDrive	= "0";
 	String		 tracks;
 	String		 timeout	= "120";
@@ -663,7 +663,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		}
 
 		Console::OutputString(list.Append("\n\n"));
-		Console::OutputString("Default for <pat> is \"<artist> - <title>\".\n\n");
+		Console::OutputString("Default for <pat> is \"<filename>\".\n\n");
 	}
 	else
 	{
