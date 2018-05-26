@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -67,12 +67,7 @@ Void freac::freacGUI::PlaySelectedItem()
 
 Int freac::freacGUI::PlayThread(Thread *thread)
 {
-	String	 in_filename;
-	Track	*trackInfo;
-
-	player_activedrive = currentConfig->cdrip_activedrive;
- 
-	trackInfo = joblist->GetNthTrack(player_entry);
+	Track	*trackInfo = joblist->GetNthTrack(player_entry);
 
 	if (trackInfo == NIL)
 	{
@@ -81,11 +76,13 @@ Int freac::freacGUI::PlayThread(Thread *thread)
 		return Error();
 	}
 
-	in_filename = trackInfo->origFilename;
+	String		 in_filename = trackInfo->origFilename;
+
+	Int		 activeDrive = currentConfig->cdrip_activedrive;
 
 	InStream	*f_in;
-	Driver		*driver_in = new DriverZero();
-	InputFilter	*filter_in = NIL;
+	Driver		*driver_in   = new DriverZero();
+	InputFilter	*filter_in   = NIL;
 
 	if (trackInfo->isCDTrack)
 	{
@@ -221,7 +218,7 @@ Int freac::freacGUI::PlayThread(Thread *thread)
 		delete filter_in;
 	}
 
-	currentConfig->cdrip_activedrive = player_activedrive;
+	currentConfig->cdrip_activedrive = activeDrive;
 
 	Font	 font = joblist->GetNthEntry(player_entry)->GetFont();
 

@@ -88,7 +88,7 @@ Int freac::freac::Encoder(Thread *thread)
 	String		 playlist_filename;
 	Track		*trackInfo;
 
-	encoder_activedrive = currentConfig->cdrip_activedrive;
+	Int		 activeDrive	= currentConfig->cdrip_activedrive;
 
 	Int		 num		= joblist->GetNOfTracks();
 	Int		 nRemoved	= 0;
@@ -604,7 +604,7 @@ Int freac::freac::Encoder(Thread *thread)
 	delete zero_in;
 	delete zero_out;
 
-	currentConfig->cdrip_activedrive = encoder_activedrive;
+	currentConfig->cdrip_activedrive = activeDrive;
 
 	if (!currentConfig->enable_console)
 	{
