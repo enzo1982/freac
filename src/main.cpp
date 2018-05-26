@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -830,9 +830,9 @@ Void freac::freacGUI::MessageProc(Int message, Int wParam, Int lParam)
 
 						ReadCD();
 
-						currentConfig->cdrip_autoRead_active = False;
+						if (currentConfig->cdrip_autoRip && currentConfig->cdrip_autoRead_active) StartEncoding();
 
-						if (currentConfig->cdrip_autoRip) StartEncoding();
+						currentConfig->cdrip_autoRead_active = False;
 					}
 				}
 

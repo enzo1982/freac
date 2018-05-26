@@ -96,6 +96,7 @@ Geschichte
 	Version 1.0.33 (Mai 2018)
 
 		- Beim automatischen Rippen werden nur noch Tracks der neu eingelegten CD berücksichtigt
+		- Ripper wird nicht mehr automatisch gestartet, wenn kein freedb-Eintrag gefunden wird
 		- Einfrieren des Programms beim Öffnen einiger Windows Wave-Dateien behoben
 		- Problem mit Setup-Berechtigungen unter nicht-Administrator-Accounts behoben
 
