@@ -52,11 +52,13 @@ Void freac::freac::Encode(Bool useThread)
 
 	debug_out->EnterMethod("freac::Encode()");
 
-	encoding = True;
-	pause_encoding = False;
-	stop_encoding = False;
+	encoding	= True;
+	autoRip		= currentConfig->cdrip_autoRead_active;
 
-	overwriteAll = False;
+	pause_encoding	= False;
+	stop_encoding	= False;
+
+	overwriteAll	= False;
  
 	if (currentConfig->enable_console ||
 	    currentConfig->encodeToSingleFile) overwriteAll = True;
@@ -125,7 +127,12 @@ Int freac::freac::Encoder(Thread *thread)
 			continue;
 		}
 
+		/* Skip tracks from other drives when ripping automatically.
+		 */
 		trackInfo	= joblist->GetNthTrack(i - nRemoved);
+
+		if (autoRip && trackInfo->drive != activeDrive) continue;
+
 		in_filename	= trackInfo->origFilename;
 		skip_track	= False;
 

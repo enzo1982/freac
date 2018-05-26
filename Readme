@@ -94,6 +94,7 @@ History
 
 	Version 1.0.33 (May 2018)
 
+		- rip only tracks from the newly inserted disc when auto-ripping
 		- fixed hangs when trying to open some Windows Wave files
 		- fixed setup not running with elevated rights on non-administrator accounts
 

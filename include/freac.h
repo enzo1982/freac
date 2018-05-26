@@ -113,6 +113,7 @@ namespace freac
 			Int			 player_plugin;
 
 			Bool			 dontUpdateInfo;
+			Bool			 autoRip;
 
 			Int64			 totalSamples;
 			Float			 totalSamplesDone;
