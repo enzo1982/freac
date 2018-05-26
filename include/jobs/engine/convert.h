@@ -32,6 +32,7 @@ namespace freac
 			Array<BoCA::Track>				 tracks;
 			Array<Int>					 trackActions;
 
+			String						 singleOutFile;
 			BoCA::Format					 singleTrackSampleFormat;
 
 			Void						 UpdateProgress(Int, Int);

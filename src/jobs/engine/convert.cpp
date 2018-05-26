@@ -144,9 +144,18 @@ Error freac::JobConvert::Precheck()
 		}
 	}
 
-	/* Calculate output filenames.
+	/* Get or generate output filenames.
 	 */
-	if (!encodeToSingleFile)
+	if (encodeToSingleFile)
+	{
+		/* Get single file name.
+		 */
+		singleOutFile = Utilities::GetSingleOutputFileName(tracks);
+		singleOutFile = BoCA::Utilities::NormalizeFileName(singleOutFile);
+
+		if (singleOutFile == NIL) return Error();
+	}
+	else
 	{
 		SetText("Checking output file names...");
 
@@ -317,8 +326,6 @@ Error freac::JobConvert::Perform()
 	Track			 singleTrack;
 	Track			 singleTrackToEncode;
 
-	String			 singleOutFile;
-
 	ProcessorSingleFile	*singleFileProcessor = NIL;
 	Encoder			*singleFileEncoder   = NIL;
 
@@ -328,61 +335,52 @@ Error freac::JobConvert::Perform()
 		 */
 		singleTrack = ConsolidateTrackInfo();
 
-		/* Get single file name.
+		/* Set output file name and add track to playlist.
 		 */
-		singleOutFile = Utilities::GetSingleOutputFileName(singleTrack);
+		singleTrack.origFilename = singleOutFile;
+		singleTrack.outfile	 = singleOutFile;
 
-		if (singleOutFile != NIL)
+		singleTrack.length	 = progress->GetTotalSamples();
+
+		/* Check if output file is one of the input files.
+		 */
+		foreach (Track &track, tracks)
 		{
-			singleOutFile = BoCA::Utilities::NormalizeFileName(singleOutFile);
-
-			/* Set output file name and add track to playlist.
-			 */
-			singleTrack.origFilename = singleOutFile;
-			singleTrack.outfile	 = singleOutFile;
-
-			singleTrack.length	 = progress->GetTotalSamples();
-
-			/* Check if output file is one of the input files.
-			 */
-			foreach (Track &track, tracks)
-			{
-				if (track.origFilename == singleOutFile) { singleOutFile.Append(".temp"); break; }
-			}
-
-			/* Create processor to get output format.
-			 */
-			singleTrackToEncode = singleTrack;
-			singleTrackToEncode.SetFormat(singleTrackSampleFormat);
-
-			singleFileProcessor = new ProcessorSingleFile(configuration);
-
-			if (singleFileProcessor->Create(singleTrackToEncode)) singleTrackToEncode.SetFormat(singleFileProcessor->GetFormatInfo());
-
-			/* Create encoder for single file output.
-			 */
-			singleFileEncoder = new Encoder(configuration);
-
-			if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrackToEncode))
-			{
-				delete singleFileProcessor;
-				delete singleFileEncoder;
-
-				singleFileProcessor = NIL;
-				singleFileEncoder   = NIL;
-			}
-
-			if (singleFileEncoder != NIL)
-			{
-				singleTrackToEncode.SetFormat(singleFileEncoder->GetTargetFormat());
-
-				if (singleFileEncoder->IsLossless() && verifyOutput) singleFileEncoder->SetCalculateMD5(True);
-			}
-
-			/* Set track output file in single file mode.
-			 */
-			foreach (Track &track, tracks) track.outfile = singleTrack.outfile;
+			if (track.origFilename == singleOutFile) { singleOutFile.Append(".temp"); break; }
 		}
+
+		/* Create processor to get output format.
+		 */
+		singleTrackToEncode = singleTrack;
+		singleTrackToEncode.SetFormat(singleTrackSampleFormat);
+
+		singleFileProcessor = new ProcessorSingleFile(configuration);
+
+		if (singleFileProcessor->Create(singleTrackToEncode)) singleTrackToEncode.SetFormat(singleFileProcessor->GetFormatInfo());
+
+		/* Create encoder for single file output.
+		 */
+		singleFileEncoder = new Encoder(configuration);
+
+		if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrackToEncode))
+		{
+			delete singleFileProcessor;
+			delete singleFileEncoder;
+
+			singleFileProcessor = NIL;
+			singleFileEncoder   = NIL;
+		}
+
+		if (singleFileEncoder != NIL)
+		{
+			singleTrackToEncode.SetFormat(singleFileEncoder->GetTargetFormat());
+
+			if (singleFileEncoder->IsLossless() && verifyOutput) singleFileEncoder->SetCalculateMD5(True);
+		}
+
+		/* Set track output file in single file mode.
+		 */
+		foreach (Track &track, tracks) track.outfile = singleTrack.outfile;
 	}
 
 	/* Setup conversion log.

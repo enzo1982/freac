@@ -478,7 +478,7 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 	return outputFileName;
 }
 
-String freac::Utilities::GetSingleOutputFileName(const Track &track)
+String freac::Utilities::GetSingleOutputFileName(const Array<Track> &tracks)
 {
 	/* Check if an output filename has already been set.
 	 */
@@ -486,6 +486,18 @@ String freac::Utilities::GetSingleOutputFileName(const Track &track)
 	String		 singleOutputFileName = config->GetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Config::SettingsSingleFilenameDefault);
 
 	if (singleOutputFileName != NIL || config->enable_console) return singleOutputFileName;
+
+	/* Find artist and album to use for file name.
+	 */
+	Info	 info = tracks.GetFirst().GetInfo();
+
+	foreach (const Track &chapterTrack, tracks)
+	{
+		const Info	&chapterInfo = chapterTrack.GetInfo();
+
+		if (chapterInfo.artist != info.artist) info.artist = NIL;
+		if (chapterInfo.album  != info.album)  info.album  = NIL;
+	}
 
 	/* Instantiate selected encoder.
 	 */
@@ -509,8 +521,6 @@ String freac::Utilities::GetSingleOutputFileName(const Track &track)
 
 	const Array<FileFormat *>	&formats	  = encoder->GetFormats();
 	String				 defaultExtension = encoder->GetOutputFileExtension();
-
-	const Info			&info		  = track.GetInfo();
 
 	for (Int i = 0; i < formats.Length(); i++)
 	{
