@@ -32,19 +32,8 @@ freac::Converter::~Converter()
 {
 }
 
-Void freac::Converter::Convert(JobList *joblist, Bool useThread)
+Void freac::Converter::Convert(const Array<Track> &tracks, Bool useThread)
 {
-	/* Create array of tracks to convert.
-	 */
-	Array<Track>	 tracks;
-
-	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
-	{
-		if (!joblist->GetNthEntry(i)->IsMarked()) continue;
-
-		tracks.Add(joblist->GetNthTrack(i), joblist->GetNthTrack(i).GetTrackID());
-	}
-
 	/* Check if currently playing a CD track.
 	 */
 	Playback	*playback = Playback::Get();

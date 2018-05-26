@@ -1404,9 +1404,22 @@ Void freac::freacGUI::Convert()
 
 	if (JobConvert::IsConverting() && QuickMessage(i18n->TranslateString("A conversion process is already active!\n\nWould you like to enqueue this conversion?", "Messages"), i18n->TranslateString("Info"), Message::Buttons::YesNo, Message::Icon::Question) != Message::Button::Yes) return;
 
+	/* Create array of tracks to convert.
+	 */
+	Array<Track>	 tracks;
+
+	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
+	{
+		if (!joblist->GetNthEntry(i)->IsMarked()) continue;
+
+		const Track	&track = joblist->GetNthTrack(i);
+
+		tracks.Add(track, track.GetTrackID());
+	}
+
 	/* Start conversion.
 	 */
-	Converter().Convert(joblist);
+	Converter().Convert(tracks);
 
 	previousTicks = S::System::System::Clock();
 }

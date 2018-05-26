@@ -367,7 +367,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 		if (joblist->GetNOfTracks() > 0)
 		{
-			Converter().Convert(joblist, False);
+			Converter().Convert(*joblist->GetTrackList(), False);
 
 			if (!quiet) Console::OutputString("done.\n");
 		}
@@ -424,7 +424,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 				joblist->UpdateTrackInfo(track);
 
-				Converter().Convert(joblist, False);
+				Converter().Convert(*joblist->GetTrackList(), False);
 
 				joblist->RemoveNthTrack(0);
 
