@@ -690,11 +690,7 @@ Void freac::freacGUI::ReadCD(Bool autoCDRead)
 	{
 		const Array<String>	&urls = info->GetNthDeviceTrackList(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
 
-		Job	*job = new JobAddTracks(urls, autoCDRead);
-
-		if (config->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault)) job->onFinish.Connect(&freacGUI::Convert, this);
-
-		job->Schedule();
+		(new JobAddTracks(urls, autoCDRead))->Schedule();
 
 		boca.DeleteComponent(info);
 	}
