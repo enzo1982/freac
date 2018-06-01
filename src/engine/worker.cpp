@@ -22,9 +22,11 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-freac::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration)
+freac::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration, Int iConversionID)
 {
 	configuration	= iConfiguration;
+
+	conversionID	= iConversionID;
 
 	logName		= "Converter log";
 
@@ -456,7 +458,7 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 	 */
 	BoCA::Engine	*engine = BoCA::Engine::Get();
 
-	engine->onStartTrackConversion.Emit(trackToConvert);
+	engine->onStartTrackConversion.Emit(conversionID, trackToConvert);
 
 	/* Enter conversion loop.
 	 */
@@ -541,8 +543,8 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 
 	/* Inform components about finished/cancelled conversion.
 	 */
-	if (cancel) engine->onCancelTrackConversion.Emit(trackToConvert);
-	else	    engine->onFinishTrackConversion.Emit(trackToConvert);
+	if (cancel) engine->onCancelTrackConversion.Emit(conversionID, trackToConvert);
+	else	    engine->onFinishTrackConversion.Emit(conversionID, trackToConvert);
 
 	if (encoder->GetEncodedSamples() > 0) return encoder->GetEncodedSamples() - trackOffset;
 	else				      return decoder->GetDecodedSamples();

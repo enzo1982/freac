@@ -23,11 +23,15 @@ namespace freac
 	class JobConvert : public Job
 	{
 		private:
+			static Int					 conversionCount;
+
 			static Bool					 conversionRunning;
 			static Bool					 conversionPaused;
 
 			static Bool					 skipTrack;
 			static Bool					 stopConversion;
+
+			Int						 conversionID;
 
 			Array<BoCA::Track>				 tracks;
 			Array<Int>					 trackActions;

@@ -38,6 +38,8 @@ using namespace smooth::GUI::Dialogs;
 using namespace BoCA;
 using namespace BoCA::AS;
 
+Int					 freac::JobConvert::conversionCount	= 0;
+
 Bool					 freac::JobConvert::conversionRunning	= False;
 Bool					 freac::JobConvert::conversionPaused	= False;
 
@@ -57,6 +59,8 @@ Signal2<Void, Int, Int>			 freac::JobConvert::onTotalProgress;
 
 freac::JobConvert::JobConvert(const Array<BoCA::Track> &iTracks)
 {
+	conversionID	 = conversionCount++;
+
 	tracks		 = iTracks;
 
 	conversionPaused = False;
@@ -319,7 +323,7 @@ Error freac::JobConvert::Perform()
 	 */
 	Engine	*engine = Engine::Get();
 
-	engine->onStartConversion.Emit(tracksToConvert);
+	engine->onStartConversion.Emit(conversionID, tracksToConvert);
 
 	/* Setup single file encoder.
 	 */
@@ -407,8 +411,8 @@ Error freac::JobConvert::Perform()
 	Array<ConvertWorker *, Void *>	 workers;
 	Int				 numberOfWorkers = Math::Min(numberOfThreads, tracks.Length());
 
-	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, singleTrackSampleFormat, singleFileProcessor, singleFileEncoder));
-	else			for (Int i = 0; i < numberOfWorkers; i++) workers.Add(new ConvertWorker(configuration));
+	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, conversionID, singleTrackSampleFormat, singleFileProcessor, singleFileEncoder));
+	else			for (Int i = 0; i < numberOfWorkers; i++) workers.Add(new ConvertWorker(configuration, conversionID));
 
 	foreach (ConvertWorker *worker, workers)
 	{
@@ -946,7 +950,7 @@ Error freac::JobConvert::Perform()
 
 			/* Setup and start worker for verification.
 			 */
-			ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, singleTrackSampleFormat, NIL, singleFileEncoder);
+			ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, conversionID, singleTrackSampleFormat, NIL, singleFileEncoder);
 
 			worker->onFinishTrack.Connect(&Progress::FinishTrack, progress);
 			worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);
@@ -1184,8 +1188,8 @@ Error freac::JobConvert::Perform()
 
 	/* Notify components and write log.
 	 */
-	if (stopConversion) { engine->onCancelConversion.Emit(); log->Write("Conversion process cancelled.", MessageTypeWarning); }
-	else		    { engine->onFinishConversion.Emit(); log->Write("Conversion process finished."); }
+	if (stopConversion) { engine->onCancelConversion.Emit(conversionID); log->Write("Conversion process cancelled.", MessageTypeWarning); }
+	else		    { engine->onFinishConversion.Emit(conversionID); log->Write("Conversion process finished."); }
 
 	/* Set progress to 100%.
 	 */

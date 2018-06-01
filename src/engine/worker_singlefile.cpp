@@ -22,7 +22,7 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-freac::ConvertWorkerSingleFile::ConvertWorkerSingleFile(const BoCA::Config *iConfiguration, const BoCA::Format &iFormat, Processor *iProcessor, Encoder *iEncoder) : ConvertWorker(iConfiguration)
+freac::ConvertWorkerSingleFile::ConvertWorkerSingleFile(const BoCA::Config *iConfiguration, Int iConversionID, const BoCA::Format &iFormat, Processor *iProcessor, Encoder *iEncoder) : ConvertWorker(iConfiguration, iConversionID)
 {
 	format	       = iFormat;
 
