@@ -60,6 +60,7 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 bytes</entry>
+      <entry id="517" string="%1 kB">%1 kB</entry>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
@@ -103,8 +104,16 @@
 	<entry id="1304" string="Default configuration">Configuración por defecto</entry>
       </section>
 
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">Habilitar el proceso de la señal</entry>
+	<entry id="1401" string="Enable processing during playback">Habilitar el proceso durante la reproducción</entry>
+	<entry id="1402" string="Configure signal processing">Configurar el proceso de la señal</entry>
+	<entry id="1403" string="Selected signal processors">Procesadores de la señal elegidos</entry>
+      </section>
+
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Comenzar compresión</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">Comenzar compresión (borrando los archivos originales)</entry>
 	<entry id="1502" string="Start encoding with">Comenzar compresión con</entry>
 	<entry id="1503" string="Pause/resume encoding">Pausar/continuar compresión</entry>
 	<entry id="1504" string="Stop encoding">Parar compresión</entry>
@@ -136,6 +145,7 @@
       <entry id="2006" string="Configure general settings">Configuración general</entry>
       <entry id="2007" string="Configure the selected audio encoder">Configurar el compresor elegido</entry>
       <entry id="2008" string="Start the encoding process">Comenzar el proceso de compresión</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)">Comenzar el proceso de compresión (borrando los archivos originales)</entry>
       <entry id="2010" string="Pause/resume encoding">Pausar/continuar la compresión</entry>
       <entry id="2011" string="Stop encoding">Parar compresión</entry>
     </section>
@@ -446,6 +456,8 @@
 	<entry id="5523" string="Read cue sheets embedded in metadata">Leer cue sheets integradas en los metadatos</entry>
 	<entry id="5524" string="Prefer cue sheets over chapter information">Preferir cue sheets a la información del capítulo</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Anteponer cero a los números de pista menores que 10</entry>
+	<entry id="5526" string="File size limit">Tamaño límite del archivo</entry>
+	<entry id="5527" string="unlimited">ilimitado</entry>
       </section>
 
       <section name="Joblist">
@@ -500,7 +512,10 @@
       </section>
 
       <section name="Processing">
-	<entry id="5900" string="Signal processing">Apodización</entry>
+	<entry id="5900" string="Signal processing">Proceso de señal</entry>
+	<entry id="5901" string="Enable signal processing">Habilitar el proceso de la señal</entry>
+	<entry id="5902" string="Enable processing during playback">Habilitar el proceso durante la reproducción</entry>
+	<entry id="5903" string="Components">Componentes</entry>
 	<entry id="5904" string="Available">Disponible</entry>
 	<entry id="5905" string="Selected">Elegido</entry>
 	<entry id="5906" string="Configure component">Configurar componente</entry>
@@ -558,6 +573,7 @@
       <entry id="7023" string="Failed to verify input file: %1">Fallo al verificar el archivo de entrada:  %1</entry>
       <entry id="7024" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">La suma de verificación difiere en el archivo de salida: %1&#10;&#10;Suma de codificación: %2&#10;Suma de verificación: %3</entry>
       <entry id="7025" string="The selected folder does not exist anymore!">¡La carpeta elegida ya no existe!</entry>
+      <entry id="7026" string="Keep this option enabled even after restarting %1">Mantener activa esta opción incluso después de reiniciar %1</entry>
     </section>
 
     <section name="Dialogs">
@@ -570,6 +586,12 @@
 	<entry id="8004" string="Action">Acción</entry>
 	<entry id="8005" string="Overwrite">Sobrescribir</entry>
 	<entry id="8006" string="Skip">Omitir</entry>
+      </section>
+
+      <section name="Format">
+	<entry id="8100" string="Select sample format">Elegir el formato de la muestra</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">Las pistas seleccionadas tienen diferentes formatos.&#10;Por favor, elija el formato deseado para el archivo de salida:</entry>
+	<entry id="8102" string="Select">Elegir</entry>
       </section>
 
       <section name="Errors">
@@ -916,10 +938,61 @@
 
     <section name="DSP">
 
+      <section name="Format">
+	<entry id="50000" string="Sample format">Formato de la muestra</entry>
+	<entry id="50001" string="Number format">Formato del número</entry>
+	<entry id="50002" string="Sample resolution">Resolución de la muestra</entry>
+	<entry id="50003" string="bit">bit</entry>
+	<entry id="50004" string="unsigned">sin signo</entry>
+	<entry id="50005" string="Integer">Entero</entry>
+	<entry id="50006" string="Float">Flotante</entry>
+      </section>
+
+      <section name="Channels">
+	<entry id="50100" string="Output channels">Canales de salida</entry>
+	<entry id="50101" string="Channel configuration">Configuración del canal</entry>
+	<entry id="50102" string="Mono">Mono</entry>
+	<entry id="50103" string="Stereo">Estéreo</entry>
+      </section>
+
       <section name="Resample">
 	<entry id="50200" string="Converter">Conversor</entry>
 	<entry id="50201" string="Sampling rate">Tasa de muestreo</entry>
 	<entry id="50202" string="Output sampling rate">Muestreo de salida</entry>
+      </section>
+
+      <section name="RubberBand">
+	<entry id="50300" string="Basic controls">Controles básicos</entry>
+	<entry id="50301" string="Tempo">Tempo</entry>
+	<entry id="50302" string="Pitch">Tono</entry>
+	<entry id="50303" string="%1 Semitones">%1 semitonos</entry>
+	<entry id="50304" string="Advanced options">Opciones avanzadas</entry>
+	<entry id="50305" string="Transient detection">Detección de transición</entry>
+	<entry id="50306" string="Compound">Compuesta</entry>
+	<entry id="50307" string="Percussive">Percusiva</entry>
+	<entry id="50308" string="Soft">Suave</entry>
+	<entry id="50309" string="Transient handling">Gestión de transición</entry>
+	<entry id="50310" string="Crisp">Nítida</entry>
+	<entry id="50311" string="Mixed">Mezclada</entry>
+	<entry id="50312" string="Smooth">Suavizada</entry>
+	<entry id="50313" string="Transformation window">Franja de transformación</entry>
+	<entry id="50314" string="Standard">Estándar</entry>
+	<entry id="50315" string="Short">Corta</entry>
+	<entry id="50316" string="Long">Larga</entry>
+	<entry id="50317" string="Use time-domain smoothing">Suavizar 'time-domain'</entry>
+	<entry id="50318" string="Phase handling">Gestión de fase</entry>
+	<entry id="50319" string="Laminar">Laminar</entry>
+	<entry id="50320" string="Independent">Independiente</entry>
+	<entry id="50321" string="Formant handling">Gestión de formantes</entry>
+	<entry id="50322" string="Shift">Cambiar</entry>
+	<entry id="50323" string="Preserve">Preservar</entry>
+	<entry id="50324" string="Pitch processing">Proceso del tono</entry>
+	<entry id="50325" string="High quality">Alta calidad</entry>
+	<entry id="50326" string="High speed">Alta velocidad</entry>
+	<entry id="50327" string="High consistency">Alta coherencia</entry>
+	<entry id="50328" string="Stereo processing">Proceso del estéreo</entry>
+	<entry id="50329" string="Separate">Separado</entry>
+	<entry id="50330" string="Combined">Unido</entry>
       </section>
     </section>
 
