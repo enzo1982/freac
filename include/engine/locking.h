@@ -23,11 +23,16 @@ namespace freac
 	class Locking
 	{
 		private:
+			static Int		 allocatedThreads;
+
 			static Array<Bool>	 deviceLocked;
 			static Array<Bool>	 outputLocked;
 
 			static Threads::Mutex	 managementMutex;
 		public:
+			static Bool		 AllocateThread();
+			static Bool		 FreeThread();
+
 			static Bool		 LockDeviceForTrack(const BoCA::Track &);
 			static Bool		 UnlockDeviceForTrack(const BoCA::Track &);
 

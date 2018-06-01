@@ -12,14 +12,63 @@
 
 #include <engine/locking.h>
 
+#include <config.h>
+
 using namespace smooth::Threads;
 
 using namespace BoCA;
+
+Int		 freac::Locking::allocatedThreads = 0;
 
 Array<Bool>	 freac::Locking::deviceLocked;
 Array<Bool>	 freac::Locking::outputLocked;
 
 Mutex		 freac::Locking::managementMutex;
+
+Bool freac::Locking::AllocateThread()
+{
+	/* Get number of available threads.
+	 */
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	Bool	 enableParallel	 = config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
+	Int	 numberOfThreads = config->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault);
+
+	if	(!enableParallel)      numberOfThreads = 1;
+	else if (numberOfThreads <= 1) numberOfThreads = CPU().GetNumCores() + (CPU().GetNumLogicalCPUs() - CPU().GetNumCores()) / 2;
+
+	/* Allocate a thread and return.
+	 */
+	while (True)
+	{
+		if (allocatedThreads >= numberOfThreads) { S::System::System::Sleep(1); continue; }
+
+		Lock	 lock(managementMutex);
+
+		if (allocatedThreads < numberOfThreads)
+		{
+			allocatedThreads++;
+
+			return True;
+		}
+	}
+}
+
+Bool freac::Locking::FreeThread()
+{
+	/* Free a thread and return.
+	 */
+	Lock	 lock(managementMutex);
+
+	if (allocatedThreads)
+	{
+		allocatedThreads--;
+
+		return True;
+	}
+
+	return False;
+}
 
 Bool freac::Locking::LockDeviceForTrack(const Track &track)
 {
