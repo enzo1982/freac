@@ -17,6 +17,7 @@
 #include <utilities.h>
 
 #include <jobs/job.h>
+#include <jobs/engine/convert.h>
 
 #include <gui/player.h>
 #include <gui/edit_folder.h>
@@ -506,32 +507,58 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 		info_edit_genre->Hide();
 	}
 
-	/* Connect slots.
+	/* Listen to configuration changes.
 	 */
 	BoCA::Settings::Get()->onChangeConfigurationSettings.Connect(&LayerJoblist::OnChangeConfigurationSettings, this);
 	BoCA::Settings::Get()->onChangeLanguageSettings.Connect(&LayerJoblist::OnChangeLanguageSettings, this);
 
+	/* Listen to joblist changes.
+	 */
 	BoCA::JobList::Get()->onApplicationModifyTrack.Connect(&LayerJoblist::OnJoblistModifyTrack, this);
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Connect(&LayerJoblist::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationSelectTrack.Connect(&LayerJoblist::OnJoblistSelectTrack, this);
 
 	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Connect(&LayerJoblist::OnJoblistRemoveAllTracks, this);
 
+	/* Listen to conversion progress updates.
+	 */
+	JobConvert::onStartEncoding.Connect(&LayerJoblist::OnEncoderStartEncoding, this);
+	JobConvert::onFinishEncoding.Connect(&LayerJoblist::OnEncoderFinishEncoding, this);
+
+	JobConvert::onEncodeTrack.Connect(&LayerJoblist::OnEncoderEncodeTrack, this);
+
+	JobConvert::onTrackProgress.Connect(&LayerJoblist::OnEncoderTrackProgress, this);
+	JobConvert::onTotalProgress.Connect(&LayerJoblist::OnEncoderTotalProgress, this);
+
+	/* Connect other slots.
+	 */
 	onChangeSize.Connect(&LayerJoblist::OnChangeSize, this);
 }
 
 freac::LayerJoblist::~LayerJoblist()
 {
-	/* Disconnect slots.
+	/* Disconnect configuration change slots.
 	 */
 	BoCA::Settings::Get()->onChangeConfigurationSettings.Disconnect(&LayerJoblist::OnChangeConfigurationSettings, this);
 	BoCA::Settings::Get()->onChangeLanguageSettings.Disconnect(&LayerJoblist::OnChangeLanguageSettings, this);
 
+	/* Disconnect joblist change slots.
+	 */
 	BoCA::JobList::Get()->onApplicationModifyTrack.Disconnect(&LayerJoblist::OnJoblistModifyTrack, this);
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Disconnect(&LayerJoblist::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationSelectTrack.Disconnect(&LayerJoblist::OnJoblistSelectTrack, this);
 
 	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Disconnect(&LayerJoblist::OnJoblistRemoveAllTracks, this);
+
+	/* Disconnect conversion progress update slots.
+	 */
+	JobConvert::onStartEncoding.Disconnect(&LayerJoblist::OnEncoderStartEncoding, this);
+	JobConvert::onFinishEncoding.Disconnect(&LayerJoblist::OnEncoderFinishEncoding, this);
+
+	JobConvert::onEncodeTrack.Disconnect(&LayerJoblist::OnEncoderEncodeTrack, this);
+
+	JobConvert::onTrackProgress.Disconnect(&LayerJoblist::OnEncoderTrackProgress, this);
+	JobConvert::onTotalProgress.Disconnect(&LayerJoblist::OnEncoderTotalProgress, this);
 
 	/* Clear tracks.
 	 */

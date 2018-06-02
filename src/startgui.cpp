@@ -258,14 +258,8 @@ freac::freacGUI::freacGUI()
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowMaximizedID, Config::SettingsWindowMaximizedDefault)) mainWnd->Maximize();
 
-	JobConvert::onStartEncoding.Connect(&LayerJoblist::OnEncoderStartEncoding, tab_layer_joblist);
-	JobConvert::onFinishEncoding.Connect(&LayerJoblist::OnEncoderFinishEncoding, tab_layer_joblist);
-
-	JobConvert::onEncodeTrack.Connect(&LayerJoblist::OnEncoderEncodeTrack, tab_layer_joblist);
-
-	JobConvert::onTrackProgress.Connect(&LayerJoblist::OnEncoderTrackProgress, tab_layer_joblist);
-	JobConvert::onTotalProgress.Connect(&LayerJoblist::OnEncoderTotalProgress, tab_layer_joblist);
-
+	/* Run update check.
+	 */
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, Config::SettingsCheckForUpdatesDefault)) (new JobCheckForUpdates(True))->Schedule();
 }
 
