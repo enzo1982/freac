@@ -526,9 +526,8 @@
       <entry id="7019" string="Unknown error">Неизвестная ошибка</entry>
       <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">Нет доступного диалога настроек для:&#10;&#10;%1</entry>
       <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Вы собираетесь преобразовывать из формата с потерями в формат без потерь.&#10;&#10;Имейте в виду, что потеря качества необратима, поэтому этот процесс&#10;никак не улучшит качество и скорее всего увеличит размер файла.&#10;&#10;Вы все равно хотите продолжить?</entry>
-      <entry id="7022" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?">Процесс преобразования уже активен!&#10;&#10;Хотите добавить это преобразование в очередь?</entry>
-      <entry id="7023" string="Failed to verify input file: %1">Ошибка проверки входного файла: %1</entry>
-      <entry id="7024" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Несоответствие контрольной суммы при проверке выходного файла: %1&#10;&#10;Контрольная сумма кодирования: %2&#10;Контрольная сумма проверки: %3</entry>
+      <entry id="7022" string="Failed to verify input file: %1">Ошибка проверки входного файла: %1</entry>
+      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Несоответствие контрольной суммы при проверке выходного файла: %1&#10;&#10;Контрольная сумма кодирования: %2&#10;Контрольная сумма проверки: %3</entry>
     </section>
 
     <section name="Dialogs">

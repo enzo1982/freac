@@ -519,9 +519,8 @@
       <entry id="7019" string="Unknown error">Okänt fel</entry>
       <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">Det finns ingen konfigurationsdialog för&#10;&#10;%1</entry>
       <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Det verkar som att du konverterar från ett förlustgivande format&#10;till ett förlustfritt format.&#10;&#10;Observera att kvalitetsförlusten inte kan göras ogjord och att&#10;denna konvertering således inte kommer att förbättra kvaliteten&#10;överhuvudtaget, men antagligen öka filstorleken.&#10;&#10;Vill du ändå fortsätta?</entry>
-      <entry id="7022" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?">En konverteringsprocess är redan aktiv!&#10;&#10;Vill du placera denna konvertering i kö?</entry>
-      <entry id="7023" string="Failed to verify input file: %1">Det gick inte att verifiera källfilen: %1</entry>
-      <entry id="7024" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Kontrollsummefel vid verifiering av målfil: %1&#10;&#10;Förväntad kontrollsumma: %2&#10;Verklig kontrollsumma: %3</entry>
+      <entry id="7022" string="Failed to verify input file: %1">Det gick inte att verifiera källfilen: %1</entry>
+      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Kontrollsummefel vid verifiering av målfil: %1&#10;&#10;Förväntad kontrollsumma: %2&#10;Verklig kontrollsumma: %3</entry>
     </section>
 
     <section name="Dialogs">

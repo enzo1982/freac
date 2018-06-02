@@ -554,10 +554,9 @@
       <entry id="7019" string="Unknown error">Nepoznata greška</entry>
       <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">Nije raspoloživ dijalog za postavke:&#10;&#10;%1</entry>
       <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Izgleda da konvertujete iz formata sa gubicima u format bez gubitaka.&#10;&#10;Obratite pažnju da je gubitak kvaliteta trajan i nepovratan,&#10;tako da ovaj proces neće poboljšati kvalitet ni na koji način,&#10;a verovatno će uvećati veličinu fajla.&#10;&#10;Da li želite da nastavite bez obzira na sve?</entry>
-      <entry id="7022" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?">Proces konverzije je aktivan!&#10;&#10;Da li želite da ovu konverziju uvrstite u red za kasnije?</entry>
-      <entry id="7023" string="Failed to verify input file: %1">Overa ulaznog fajla nije uspela: %1</entry>
-      <entry id="7024" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Checksum se ne poklapa prilikom overe izlaznog fajla: %1&#10;&#10;Enkodovanje checksum: %2&#10;Overa checksum: %3</entry>
-      <entry id="7025" string="The selected folder does not exist anymore!">Odabrani folder više ne postoji!</entry>
+      <entry id="7022" string="Failed to verify input file: %1">Overa ulaznog fajla nije uspela: %1</entry>
+      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Checksum se ne poklapa prilikom overe izlaznog fajla: %1&#10;&#10;Enkodovanje checksum: %2&#10;Overa checksum: %3</entry>
+      <entry id="7024" string="The selected folder does not exist anymore!">Odabrani folder više ne postoji!</entry>
     </section>
 
     <section name="Dialogs">

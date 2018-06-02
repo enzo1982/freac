@@ -554,10 +554,9 @@
       <entry id="7019" string="Unknown error">Непозната грешка</entry>
       <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">Није расположив дијалог за поставке:&#10;&#10;%1</entry>
       <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Изгледа да конвертујете из формата са губицима у формат без губитака.&#10;&#10;Обратите пажњу да је губитак квалитета трајан и неповратан,&#10;тако да овај процес неће побољшати квалитет ни на који начин,&#10;а вероватно ће увећати величину фајла.&#10;&#10;Да ли желите да наставите без обзира на све?</entry>
-      <entry id="7022" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?">Процес конверзије је активан!&#10;&#10;Да ли желите да ову конверзију уврстите у ред за касније?</entry>
-      <entry id="7023" string="Failed to verify input file: %1">Овера улазног фајла није успела: %1</entry>
-      <entry id="7024" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Чецксум се не поклапа приликом овере излазног фајла: %1&#10;&#10;Енкодовање чецксум: %2&#10;Овера чецксум: %3</entry>
-      <entry id="7025" string="The selected folder does not exist anymore!">Одабрани фолдер више не постоји!</entry>
+      <entry id="7022" string="Failed to verify input file: %1">Овера улазног фајла није успела: %1</entry>
+      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Чецксум се не поклапа приликом овере излазног фајла: %1&#10;&#10;Енкодовање чецксум: %2&#10;Овера чецксум: %3</entry>
+      <entry id="7024" string="The selected folder does not exist anymore!">Одабрани фолдер више не постоји!</entry>
     </section>
 
     <section name="Dialogs">

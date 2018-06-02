@@ -527,9 +527,8 @@
       <entry id="7019" string="Unknown error">未知錯誤</entry>
       <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">無選項予：&#10;&#10;%1</entry>
       <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">有損編碼聲音檔轉成無損編碼聲音檔無助改善音質。&#10;&#10;繼續嗎？</entry>
-      <entry id="7022" string="A conversion process is already active!&#10;&#10;Would you like to enqueue this conversion?">其他轉碼進行中。本轉碼緊接其後嗎？</entry>
-      <entry id="7023" string="Failed to verify input file: %1">無法驗證輸入檔案</entry>
-      <entry id="7024" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">檔案%1的編碼驗證失敗&#10;&#10;編碼加總：%2&#10;虛擬編碼加總：%3</entry>
+      <entry id="7022" string="Failed to verify input file: %1">無法驗證輸入檔案</entry>
+      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">檔案%1的編碼驗證失敗&#10;&#10;編碼加總：%2&#10;虛擬編碼加總：%3</entry>
     </section>
 
     <section name="Dialogs">
