@@ -1349,6 +1349,8 @@ PopupMenu *freac::LayerJoblist::GetContextMenu()
 
 Void freac::LayerJoblist::OnEncoderStartEncoding()
 {
+	OnEncoderFinishEncoding(True);
+
 	BoCA::Config	*config	= BoCA::Config::Get();
 
 	if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault)) btn_skip->Activate();
@@ -1361,9 +1363,6 @@ Void freac::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Joblist");
-
-	edb_filename->SetText(i18n->TranslateString("none"));
-	edb_format->SetText(i18n->TranslateString("unknown"));
 
 	edb_trackPercent->SetText(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"));
 	edb_trackTime->SetText("00:00");
@@ -1385,6 +1384,11 @@ Void freac::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 
 	previousTrackSeconds = -10;
 	previousTotalSeconds = -10;
+
+	if (JobConvert::IsConverting()) return;
+
+	edb_filename->SetText(i18n->TranslateString("none"));
+	edb_format->SetText(i18n->TranslateString("unknown"));
 
 	btn_skip->Deactivate();
 

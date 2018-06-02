@@ -40,11 +40,8 @@ using namespace BoCA::AS;
 
 Int					 freac::JobConvert::conversionCount	= 0;
 
-Bool					 freac::JobConvert::conversionRunning	= False;
+Array<freac::JobConvert *>		 freac::JobConvert::conversionJobs;
 Bool					 freac::JobConvert::conversionPaused	= False;
-
-Bool					 freac::JobConvert::skipTrack		= False;
-Bool					 freac::JobConvert::stopConversion	= False;
 
 Signal0<Void>				 freac::JobConvert::onStartEncoding;
 Signal1<Void, Bool>			 freac::JobConvert::onFinishEncoding;
@@ -52,7 +49,6 @@ Signal1<Void, Bool>			 freac::JobConvert::onFinishEncoding;
 Signal3<Void, const BoCA::Track &,
 	      const String &,
 	      freac::ConversionStep>	 freac::JobConvert::onEncodeTrack;
-Signal0<Void>				 freac::JobConvert::onFinishTrack;
 
 Signal2<Void, Int, Int>			 freac::JobConvert::onTrackProgress;
 Signal2<Void, Int, Int>			 freac::JobConvert::onTotalProgress;
@@ -233,20 +229,16 @@ Error freac::JobConvert::Precheck()
 	return Success();
 }
 
-Bool freac::JobConvert::ReadyToRun()
-{
-	if (conversionRunning) return False;
-
-	conversionRunning = True;
-
-	return True;
-}
-
 Error freac::JobConvert::Perform()
 {
 	/* Return immediately if there are no tracks to convert.
 	 */
-	if (tracks.Length() == 0) { conversionRunning = False; return Success(); }
+	if (tracks.Length() == 0) return Success();
+
+	/* Add ourselves to conversion jobs array.
+	 */
+	conversionJobs.EnableLocking();
+	conversionJobs.Add(this);
 
 	Registry	&boca = Registry::Get();
 
@@ -311,9 +303,8 @@ Error freac::JobConvert::Perform()
 	 */
 	Progress	*progress = new Progress(configuration);
 
-	progress->onTrackProgress.Connect(&onTrackProgress);
-	progress->onTotalProgress.Connect(&onTotalProgress);
-	progress->onTotalProgress.Connect(&JobConvert::UpdateProgress, this);
+	progress->onTrackProgress.Connect(&JobConvert::UpdateTrackProgress, this);
+	progress->onTotalProgress.Connect(&JobConvert::UpdateTotalProgress, this);
 
 	onStartEncoding.Emit();
 
@@ -638,8 +629,8 @@ Error freac::JobConvert::Perform()
 
 				const Track	&workerTrack = worker->GetTrackToConvert();
 
-				onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
-													    conversionStep = worker->GetConversionStep());
+				if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+																		  conversionStep = worker->GetConversionStep());
 
 				SetText(String("Converting %1...").Replace("%1", workerTrack.origFilename));
 
@@ -679,7 +670,8 @@ Error freac::JobConvert::Perform()
 
 		/* Update total progress values.
 		 */
-		Bool	 first = True;
+		Bool			 first		= True;
+		static JobConvert	*lastConversion = conversionJobs.GetLast();
 
 		foreach (ConvertWorker *worker, workerQueue)
 		{
@@ -689,15 +681,18 @@ Error freac::JobConvert::Perform()
 
 			const Track	&workerTrack = worker->GetTrackToConvert();
 
-			if (first && (workerTrack.GetTrackID()	  != trackID	    ||
-				      worker->GetConversionStep() != conversionStep ||
-				      worker->GetDecoderName()	  != decoderName)) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
-																			       conversionStep = worker->GetConversionStep());
+			if (first && conversionJobs.GetLast() == this && (this			      != lastConversion ||
+									  workerTrack.GetTrackID()    != trackID	||
+									  worker->GetConversionStep() != conversionStep ||
+									  worker->GetDecoderName()    != decoderName)) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+																								   conversionStep = worker->GetConversionStep());
 
 			first = False;
 
 			progress->UpdateTrack(workerTrack, worker->GetTrackPosition());
 		}
+
+		lastConversion = conversionJobs.GetLast();
 
 		/* Update per track progress values.
 		 */
@@ -864,8 +859,8 @@ Error freac::JobConvert::Perform()
 
 				if (!workerToUse->IsError())
 				{
-					onEncodeTrack.Emit(tracksToConvert.Get(trackID = track.GetTrackID()), decoderName    = workerToUse->GetDecoderName(),
-													      conversionStep = workerToUse->GetConversionStep());
+					if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = track.GetTrackID()), decoderName    = workerToUse->GetDecoderName(),
+																		    conversionStep = workerToUse->GetConversionStep());
 
 					SetText(String("Converting %1...").Replace("%1", track.origFilename));
 				}
@@ -969,8 +964,8 @@ Error freac::JobConvert::Perform()
 			 */
 			while (worker->IsWaiting() && !worker->IsIdle()) S::System::System::Sleep(1);
 
-			onEncodeTrack.Emit(singleTrackToEncode, decoderName    = worker->GetDecoderName(),
-								conversionStep = worker->GetConversionStep());
+			if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(singleTrackToEncode, decoderName    = worker->GetDecoderName(),
+												      conversionStep = worker->GetConversionStep());
 
 			SetText(String("Verifying %1...").Replace("%1", singleTrackToEncode.origFilename));
 
@@ -1178,13 +1173,26 @@ Error freac::JobConvert::Perform()
 		foreach (Array<Track> *trackList, cuesheetTrackLists) delete trackList;
 	}
 
+	/* Remove ourselves from conversion jobs array.
+	 */
+	conversionJobs.LockForWrite();
+
+	foreach (JobConvert *job, conversionJobs)
+	{
+		if (job != this) continue;
+
+		conversionJobs.RemoveNth(foreachindex);
+
+		break;
+	}
+
+	conversionJobs.Unlock();
+
 	/* Clean up.
 	 */
 	onFinishEncoding.Emit(!stopConversion && encodedTracks > 0);
 
 	delete progress;
-
-	conversionRunning = False;
 
 	/* Notify components and write log.
 	 */
@@ -1203,21 +1211,41 @@ Error freac::JobConvert::Perform()
 	return Success();
 }
 
+Void freac::JobConvert::Skip()
+{
+	if (!IsConverting()) return;
+
+	/* Skip current track of most recent conversion.
+	 */
+	JobConvert	*job = conversionJobs.GetLast();
+
+	job->skipTrack = True;
+}
+
 Void freac::JobConvert::Stop()
 {
-	if (!conversionRunning) return;
+	if (!IsConverting()) return;
 
-	stopConversion = True;
+	/* Order all conversions to stop.
+	 */
+	foreachreverse (JobConvert *job, conversionJobs) job->stopConversion = True;
 
-	/* Wait for conversion thread to exit.
+	/* Wait for conversion threads to exit.
 	 */
 	S::System::EventProcessor	 event;
 
-	while (conversionRunning) event.ProcessNextEvent();
+	while (IsConverting()) event.ProcessNextEvent();
 }
 
-Void freac::JobConvert::UpdateProgress(Int progressValue, Int secondsLeft)
+Void freac::JobConvert::UpdateTrackProgress(Int progressValue, Int secondsLeft)
 {
+	if (conversionJobs.GetLast() == this) onTrackProgress.Emit(progressValue, secondsLeft);
+}
+
+Void freac::JobConvert::UpdateTotalProgress(Int progressValue, Int secondsLeft)
+{
+	if (conversionJobs.GetLast() == this) onTotalProgress.Emit(progressValue, secondsLeft);
+
 	SetProgress(progressValue);
 }
 

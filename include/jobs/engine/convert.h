@@ -25,39 +25,39 @@ namespace freac
 		private:
 			static Int					 conversionCount;
 
-			static Bool					 conversionRunning;
+			static Array<JobConvert *>			 conversionJobs;
 			static Bool					 conversionPaused;
-
-			static Bool					 skipTrack;
-			static Bool					 stopConversion;
 
 			Int						 conversionID;
 
 			Array<BoCA::Track>				 tracks;
 			Array<Int>					 trackActions;
 
+			Bool						 skipTrack;
+			Bool						 stopConversion;
+
 			String						 singleOutFile;
 			BoCA::Format					 singleTrackSampleFormat;
 
-			Void						 UpdateProgress(Int, Int);
+			Void						 UpdateTrackProgress(Int, Int);
+			Void						 UpdateTotalProgress(Int, Int);
 
 			BoCA::Format					 GetSingleTrackSampleFormat() const;
 			BoCA::Track					 ConsolidateTrackInfo();
 		public:
-			static Bool					 IsConverting()	{ return conversionRunning; }
+			static Bool					 IsConverting()	{ return conversionJobs.Length(); }
 			static Bool					 IsPaused()	{ return conversionPaused;  }
 
-			static Void					 Pause()	{ if (conversionRunning) conversionPaused = True;  }
-			static Void					 Resume()	{ if (conversionRunning) conversionPaused = False; }
+			static Void					 Pause()	{ if (IsConverting()) conversionPaused = True;  }
+			static Void					 Resume()	{ if (IsConverting()) conversionPaused = False; }
 
-			static Void					 Skip()		{ if (conversionRunning) skipTrack = True; }
+			static Void					 Skip();
 			static Void					 Stop();
 
 									 JobConvert(const Array<BoCA::Track> &);
 			virtual						~JobConvert();
 
 			virtual Error					 Precheck();
-			virtual Bool					 ReadyToRun();
 		signals:
 			static Signal0<Void>				 onStartEncoding;
 			static Signal1<Void, Bool>			 onFinishEncoding;
@@ -65,7 +65,6 @@ namespace freac
 			static Signal3<Void, const BoCA::Track &,
 					     const String &,
 					     ConversionStep>		 onEncodeTrack;
-			static Signal0<Void>				 onFinishTrack;
 
 			static Signal2<Void, Int, Int>			 onTrackProgress;
 			static Signal2<Void, Int, Int>			 onTotalProgress;

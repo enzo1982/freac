@@ -1386,12 +1386,6 @@ Void freac::freacGUI::Convert()
 
 	if (S::System::System::Clock() - previousTicks < 250) return;
 
-	/* Warn about active conversion.
-	 */
-	BoCA::I18n	*i18n = BoCA::I18n::Get();
-
-	if (JobConvert::IsConverting() && QuickMessage(i18n->TranslateString("A conversion process is already active!\n\nWould you like to enqueue this conversion?", "Messages"), i18n->TranslateString("Info"), Message::Buttons::YesNo, Message::Icon::Question) != Message::Button::Yes) return;
-
 	/* Create array of tracks to convert.
 	 */
 	Array<Track>	 tracks;
