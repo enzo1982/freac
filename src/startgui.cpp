@@ -1275,8 +1275,6 @@ Void freac::freacGUI::FillMenus()
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Processing"), NIL, menu_processing);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
 
-	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
-
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Help"), NIL, menu_help)->SetOrientation(OR_RIGHT);
 
 	i18n->SetContext("Toolbar");
