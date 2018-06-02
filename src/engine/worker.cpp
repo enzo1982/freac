@@ -16,6 +16,7 @@
 #include <engine/encoder.h>
 #include <engine/processor.h>
 #include <engine/verifier.h>
+#include <engine/locking.h>
 
 #include <config.h>
 
@@ -59,8 +60,16 @@ Int freac::ConvertWorker::Perform()
 	{
 		if (idle) { S::System::System::Sleep(1); continue; }
 
+		/* Allocate thread and run conversion.
+		 */
+		Locking::AllocateThread();
+
 		if (Convert() != Success()) error = True;
 
+		Locking::FreeThread();
+
+		/* Return to waiting state.
+		 */
 		idle	= True;
 		waiting	= True;
 		cancel	= False;
