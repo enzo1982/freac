@@ -1,0 +1,496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Quelldateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Quelldateien\cddb">
+      <UniqueIdentifier>{7c01d4a0-0e62-4615-b1fc-11c0b6e387d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\dialogs">
+      <UniqueIdentifier>{828d1aaf-5279-491b-b82f-a61a3f397d9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\dialogs\cddb">
+      <UniqueIdentifier>{2af4ef34-ff3e-4a5f-a255-ad0566bd0e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\dialogs\config">
+      <UniqueIdentifier>{1bfae0ff-e1aa-47ce-8d92-c5f0fac46dda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\gui">
+      <UniqueIdentifier>{0d6fee8c-012d-46fd-aa27-079a584b8d75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\jobs">
+      <UniqueIdentifier>{7f7dcdfe-45cd-4d0e-bb65-599dcec8e27d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\dialogs">
+      <UniqueIdentifier>{9633be36-16e9-44cd-ae9b-5051151a796c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\dialogs\cddb">
+      <UniqueIdentifier>{92463fb5-bb87-4faa-9d0c-429d2d240aa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\dialogs\config">
+      <UniqueIdentifier>{4841c7e5-b7a3-4da0-87cb-1fd864c6dbba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\cddb">
+      <UniqueIdentifier>{23e97d65-7f39-4b6a-a39a-d228616587d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\gui">
+      <UniqueIdentifier>{f9a70921-7a51-4f7c-8fcf-c9c7c20769b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\jobs">
+      <UniqueIdentifier>{0d2d13da-a9f5-446b-8ec6-e5091f1c5d30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\engine">
+      <UniqueIdentifier>{7e3cbdd9-12ed-4629-9181-bea568be559b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Headerdateien\jobs\engine">
+      <UniqueIdentifier>{4dd8ec92-d155-429a-9e9c-a7e5c4f5fbb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\jobs\joblist">
+      <UniqueIdentifier>{ed417e5e-1101-4011-97d4-426b1f26e5c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\jobs\other">
+      <UniqueIdentifier>{e02da28f-bf10-4832-a39f-a4cc25cce5fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\jobs\engine">
+      <UniqueIdentifier>{ec50a232-fa8f-4a5f-8809-812959211e3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\jobs\joblist">
+      <UniqueIdentifier>{73680264-e5eb-465b-a794-a91ba9095433}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\jobs\other">
+      <UniqueIdentifier>{f56cc0d2-60e3-4b41-b106-53d2e4a128cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\support">
+      <UniqueIdentifier>{b60a24d3-bbc6-4a05-8ad8-554f2c9ac883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headerdateien\support">
+      <UniqueIdentifier>{2b7b10ef-99cf-4090-b025-035c184f5403}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Quelldateien\engine">
+      <UniqueIdentifier>{ab3facb0-ea9d-42c5-b714-07fe1fc207ee}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\config.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dllinterfaces.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\joblist.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\playback.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\progress.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\startconsole.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\startgui.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utilities.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cddb\cddb.cpp">
+      <Filter>Quelldateien\cddb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cddb\cddbbatch.cpp">
+      <Filter>Quelldateien\cddb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cddb\cddbcache.cpp">
+      <Filter>Quelldateien\cddb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cddb\cddbinfo.cpp">
+      <Filter>Quelldateien\cddb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cddb\cddblocal.cpp">
+      <Filter>Quelldateien\cddb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cddb\cddbremote.cpp">
+      <Filter>Quelldateien\cddb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\adddirectory.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\addpattern.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\cddb\extsettings.cpp">
+      <Filter>Quelldateien\dialogs\cddb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\cddb\manage.cpp">
+      <Filter>Quelldateien\dialogs\cddb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\cddb\managequeries.cpp">
+      <Filter>Quelldateien\dialogs\cddb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\cddb\managesubmits.cpp">
+      <Filter>Quelldateien\dialogs\cddb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\cddb\multimatch.cpp">
+      <Filter>Quelldateien\dialogs\cddb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\cddb\query.cpp">
+      <Filter>Quelldateien\dialogs\cddb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\cddb\submit.cpp">
+      <Filter>Quelldateien\dialogs\cddb</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_cddb.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_encoders.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_interface.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_language.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_playlists.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_tags.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\configcomponent.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\configentry.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\layer_tooltip.cpp">
+      <Filter>Quelldateien\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\main_joblist.cpp">
+      <Filter>Quelldateien\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\main_threads.cpp">
+      <Filter>Quelldateien\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\job.cpp">
+      <Filter>Quelldateien\jobs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\jobmanager.cpp">
+      <Filter>Quelldateien\jobs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\engine\converter.cpp">
+      <Filter>Quelldateien\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\engine\decoder.cpp">
+      <Filter>Quelldateien\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\engine\encoder.cpp">
+      <Filter>Quelldateien\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\charset.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\error.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\overwrite.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\engine\convert.cpp">
+      <Filter>Quelldateien\jobs\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\joblist\adddirectory.cpp">
+      <Filter>Quelldateien\jobs\joblist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\joblist\addfiles.cpp">
+      <Filter>Quelldateien\jobs\joblist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\joblist\addtracks.cpp">
+      <Filter>Quelldateien\jobs\joblist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\joblist\removeall.cpp">
+      <Filter>Quelldateien\jobs\joblist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\other\checkforupdates.cpp">
+      <Filter>Quelldateien\jobs\other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\player.cpp">
+      <Filter>Quelldateien\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\joblist\removedisc.cpp">
+      <Filter>Quelldateien\jobs\joblist</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\support\autorelease_none.cpp">
+      <Filter>Quelldateien\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\support\notification_none.cpp">
+      <Filter>Quelldateien\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\support\notification_udev.cpp">
+      <Filter>Quelldateien\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\support\notification_win32.cpp">
+      <Filter>Quelldateien\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_resources.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_verification.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\engine\worker.cpp">
+      <Filter>Quelldateien\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\engine\worker_singlefile.cpp">
+      <Filter>Quelldateien\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\engine\verifier.cpp">
+      <Filter>Quelldateien\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\gui\edit_folder.cpp">
+      <Filter>Quelldateien\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\freac.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\engine\processor.cpp">
+      <Filter>Quelldateien\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_dsp.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\format.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\engine\locking.cpp">
+      <Filter>Quelldateien\engine</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\config.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dllinterfaces.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\joblist.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\playback.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\progress.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\resources.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\startconsole.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\startgui.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\utilities.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\adddirectory.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\addpattern.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\cddb\extsettings.h">
+      <Filter>Headerdateien\dialogs\cddb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\cddb\manage.h">
+      <Filter>Headerdateien\dialogs\cddb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\cddb\managequeries.h">
+      <Filter>Headerdateien\dialogs\cddb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\cddb\managesubmits.h">
+      <Filter>Headerdateien\dialogs\cddb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\cddb\multimatch.h">
+      <Filter>Headerdateien\dialogs\cddb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\cddb\query.h">
+      <Filter>Headerdateien\dialogs\cddb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\cddb\submit.h">
+      <Filter>Headerdateien\dialogs\cddb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_cddb.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_encoders.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_interface.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_language.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_playlists.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_tags.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\configcomponent.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\configentry.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\cddb\cddb.h">
+      <Filter>Headerdateien\cddb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\cddb\cddbbatch.h">
+      <Filter>Headerdateien\cddb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\cddb\cddbcache.h">
+      <Filter>Headerdateien\cddb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\cddb\cddbinfo.h">
+      <Filter>Headerdateien\cddb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\cddb\cddblocal.h">
+      <Filter>Headerdateien\cddb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\cddb\cddbremote.h">
+      <Filter>Headerdateien\cddb</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\gui\layer_tooltip.h">
+      <Filter>Headerdateien\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\gui\main_joblist.h">
+      <Filter>Headerdateien\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\gui\main_threads.h">
+      <Filter>Headerdateien\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\jobs\job.h">
+      <Filter>Headerdateien\jobs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\jobs\jobmanager.h">
+      <Filter>Headerdateien\jobs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\engine\converter.h">
+      <Filter>Headerdateien\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\engine\decoder.h">
+      <Filter>Headerdateien\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\engine\encoder.h">
+      <Filter>Headerdateien\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\charset.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\error.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\overwrite.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\jobs\engine\convert.h">
+      <Filter>Headerdateien\jobs\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\jobs\joblist\adddirectory.h">
+      <Filter>Headerdateien\jobs\joblist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\jobs\joblist\addfiles.h">
+      <Filter>Headerdateien\jobs\joblist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\jobs\joblist\addtracks.h">
+      <Filter>Headerdateien\jobs\joblist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\jobs\joblist\removeall.h">
+      <Filter>Headerdateien\jobs\joblist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\jobs\other\checkforupdates.h">
+      <Filter>Headerdateien\jobs\other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\gui\player.h">
+      <Filter>Headerdateien\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\jobs\joblist\removedisc.h">
+      <Filter>Headerdateien\jobs\joblist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\support\autorelease.h">
+      <Filter>Headerdateien\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\support\notification.h">
+      <Filter>Headerdateien\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_resources.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_verification.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\engine\worker.h">
+      <Filter>Headerdateien\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\engine\worker_singlefile.h">
+      <Filter>Headerdateien\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\engine\verifier.h">
+      <Filter>Headerdateien\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\gui\edit_folder.h">
+      <Filter>Headerdateien\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\freac.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\engine\processor.h">
+      <Filter>Headerdateien\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_dsp.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\format.h">
+      <Filter>Headerdateien\dialogs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\engine\locking.h">
+      <Filter>Headerdateien\engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\src\support\autorelease_osx.mm">
+      <Filter>Quelldateien\support</Filter>
+    </None>
+    <None Include="..\..\src\support\notification_osx.mm">
+      <Filter>Quelldateien\support</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\resources\resources.rc">
+      <Filter>Ressourcendateien</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="smooth.natvis" />
+  </ItemGroup>
+</Project>
