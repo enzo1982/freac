@@ -96,7 +96,7 @@ Error freac::JobConvert::Precheck()
 
 	/* Check if we have lossy tracks that would be converted to lossless.
 	 */
-	Bool	 doNotWarnAgain = !configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, Config::SettingsWarnLossyToLosslessDefault);
+	Bool	 doNotWarnAgain = !configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, Config::SettingsWarnLossyToLosslessDefault) || configuration->enable_console;
 
 	if (!doNotWarnAgain)
 	{
