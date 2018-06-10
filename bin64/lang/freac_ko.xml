@@ -508,7 +508,15 @@
 
     <section name="Extensions">
 
-      <section name="Donate"/>
+      <section name="Donate">
+	<entry id="100006" string="paypal,sepa,bitcoin,ethereum">paypal,bitcoin,ethereum</entry>
+
+	<section name="PayPal">
+	  <entry id="100102" string="usd">krw</entry>
+	  <entry id="100103" string="$%1">₩%1</entry>
+	  <entry id="100104" string="5,10,other amount">5000,10000,다른 금액</entry>
+	</section>
+      </section>
 
       <section name="Winamp Adapter">
 	<entry id="101000" string="Configure">설정</entry>

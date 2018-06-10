@@ -638,8 +638,13 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="100004" string="usd">usd</entry>
-	<entry id="100005" string="en">en</entry>
+	<entry id="100006" string="paypal,sepa,bitcoin,ethereum">paypal,bitcoin,ethereum</entry>
+
+	<section name="PayPal">
+	  <entry id="100102" string="usd">vnd</entry>
+	  <entry id="100103" string="$%1">%1₫</entry>
+	  <entry id="100104" string="5,10,other amount">100000,200000,số tiền khác</entry>
+	</section>
       </section>
 
       <section name="Winamp Adapter">

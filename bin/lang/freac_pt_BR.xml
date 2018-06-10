@@ -960,12 +960,19 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Apoie este projeto</entry>
 	<entry id="100001" string="Please support this project!">Por favor, apoie este projeto!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Por favor, ajude a manter este software livre apoiando o projeto %1&#10;com uma doação.&#10;&#10;Clique em um dos botões abaixo para fazer uma doação usando o PayPal:</entry>
-	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Você também pode enviar dinheiro diretamente para %1&#10;usando o PayPal.&#10;&#10;Por favor, escreva para %1 caso queira doar usando&#10;transferência eletrônica, postar um cheque ou enviar um vale postal.</entry>
-	<entry id="100004" string="usd">usd</entry>
-	<entry id="100005" string="en">en</entry>
-	<entry id="100006" string="Thank you very much!">Muito obrigado!</entry>
-	<entry id="100007" string="Remind me later">Lembrar-me mais tarde</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Por favor, ajude a manter este software livre apoiando o projeto %1 com uma&#10;doação.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Por favor, escreva para %1 caso queira doar usando transferência&#10;eletrônica, postar um cheque ou enviar um vale postal.</entry>
+	<entry id="100004" string="Thank you very much!">Muito obrigado!</entry>
+	<entry id="100005" string="Remind me later">Lembrar-me mais tarde</entry>
+	<entry id="100006" string="paypal,sepa,bitcoin,ethereum">paypal,bitcoin,ethereum</entry>
+
+	<section name="PayPal">
+	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Clique em um dos botões abaixo para fazer uma doação usando o PayPal:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Você também pode enviar dinheiro diretamente para %1&#10;usando o PayPal.</entry>
+	  <entry id="100102" string="usd">brl</entry>
+	  <entry id="100103" string="$%1">R$ %1</entry>
+	  <entry id="100104" string="5,10,other amount">20,40,outra quantia</entry>
+	</section>
       </section>
 
       <section name="Winamp Adapter">

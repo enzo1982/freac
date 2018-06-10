@@ -1011,12 +1011,36 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Unterstützen Sie dieses Projekt</entry>
 	<entry id="100001" string="Please support this project!">Bitte unterstützen Sie dieses Projekt!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Bitte helfen Sie, diese Software weiterhin frei und kostenlos zu erhalten,&#10;indem Sie das %1-Projekt mit einer Spende unterstützen.&#10;&#10;Klicken Sie auf einen dieser Knöpfe, um jetzt per PayPal zu spenden:</entry>
-	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Sie können per PayPal auch direkt Geld an %1 senden.&#10;&#10;Bitte schreiben Sie an %1, wenn Sie per Überweisung oder&#10;Scheck spenden oder Geld per Post senden möchten.</entry>
-	<entry id="100004" string="usd">eur</entry>
-	<entry id="100005" string="en">de</entry>
-	<entry id="100006" string="Thank you very much!">Vielen Dank!</entry>
-	<entry id="100007" string="Remind me later">Später erneut erinnern</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Bitte helfen Sie, diese Software weiterhin frei und kostenlos zu erhalten, indem&#10;Sie das %1-Projekt mit einer Spende unterstützen.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Bitte schreiben Sie an %1, wenn Sie per Scheck spenden oder Geld&#10;per Post senden möchten.</entry>
+	<entry id="100004" string="Thank you very much!">Vielen Dank!</entry>
+	<entry id="100005" string="Remind me later">Später erneut erinnern</entry>
+	<entry id="100006" string="paypal,sepa,bitcoin,ethereum">sepa,paypal,bitcoin,ethereum</entry>
+
+	<section name="PayPal">
+	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Klicken Sie auf einen dieser Knöpfe, um jetzt per PayPal zu spenden:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Sie können per PayPal auch direkt Geld an %1 senden.</entry>
+	  <entry id="100102" string="usd">eur</entry>
+	  <entry id="100103" string="$%1">%1€</entry>
+	  <entry id="100104" string="5,10,other amount">5,10,anderer Betrag</entry>
+	</section>
+
+	<section name="SEPA">
+	  <entry id="100200" string="You can donate by making an electronic transfer to the&#10;following account:">Sie können per Überweisung auf folgendes Konto spenden:</entry>
+	  <entry id="100201" string="Account holder:">Kontoinhaber:</entry>
+	  <entry id="100202" string="IBAN:">IBAN:</entry>
+	  <entry id="100203" string="BIC:">BIC:</entry>
+	</section>
+
+	<section name="Bitcoin">
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Bitte scannen oder klicken Sie auf den QR-Code oder kopieren&#10;Sie die folgende Adresse, um Bitcoin zu spenden:</entry>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Diese Adresse akzeptiert auch Bitcoin Cash und andere Forks.</entry>
+	</section>
+
+	<section name="Ethereum">
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Bitte scannen oder klicken Sie auf den QR-Code oder kopieren&#10;Sie die folgende Adresse, um Ethereum zu spenden:</entry>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">Diese Adresse akzeptiert auch Ether Classic und ERC20-Token.</entry>
+	</section>
       </section>
 
       <section name="Winamp Adapter">

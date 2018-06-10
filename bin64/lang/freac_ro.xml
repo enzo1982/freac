@@ -651,12 +651,19 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Ajută acest proiect</entry>
 	<entry id="100001" string="Please support this project!">Vă rog ajutaţi acest proiect!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Vă rog să ajutaţi păstrarea acestui proiect gratuit prin suportarea&#10;%1 cu o donaţie.&#10;&#10;Da-ţi click pe unul dintre butoanele de mai jos pentru a face o&#10;donaţie utilizând PayPal:</entry>
-	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Puteţi deasemenea trimite bani direct la %1 cu PayPal.&#10;&#10;Scrie te rog către %1 dacă te-ai decis să faci o donaţie&#10;folosind transfer electronic, cec sau bani prin poştă.</entry>
-	<entry id="100004" string="usd">eur</entry>
-	<entry id="100005" string="en">en</entry>
-	<entry id="100006" string="Thank you very much!">Mulţumesc foarte mult!</entry>
-	<entry id="100007" string="Remind me later">Adu-mi aminte mai târziu</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Vă rog să ajutaţi păstrarea acestui proiect gratuit prin suportarea %1 cu&#10;o donaţie.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Scrie te rog către %1 dacă te-ai decis să faci o donaţie folosind&#10;transfer electronic, cec sau bani prin poştă.</entry>
+	<entry id="100004" string="Thank you very much!">Mulţumesc foarte mult!</entry>
+	<entry id="100005" string="Remind me later">Adu-mi aminte mai târziu</entry>
+	<entry id="100006" string="paypal,sepa,bitcoin,ethereum">sepa,paypal,bitcoin,ethereum</entry>
+
+	<section name="PayPal">
+	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Da-ţi click pe unul dintre butoanele de mai jos pentru a face o donaţie&#10;utilizând PayPal:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Puteţi deasemenea trimite bani direct la %1 cu PayPal.</entry>
+	  <entry id="100102" string="usd">ron</entry>
+	  <entry id="100103" string="$%1">%1 lei</entry>
+	  <entry id="100104" string="5,10,other amount">20,40,altă sumă</entry>
+	</section>
       </section>
 
       <section name="Winamp Adapter">

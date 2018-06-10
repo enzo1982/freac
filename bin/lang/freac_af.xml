@@ -644,12 +644,19 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Help hierdie projek</entry>
 	<entry id="100001" string="Please support this project!">Help asseblief hierdie projek!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Help asseblief om hierdie sagteware gratis te hou deur die %1 projek&#10;met 'n donasie te ondersteun.&#10;&#10;Klik op een van die knoppies hieronder om 'n donasie te maak via PayPal:</entry>
-	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Jy kan ook 'n donasie direk aan %1 stuur deur PayPal te gebruik.&#10;&#10;Skryf asseblief aan %1 as jy graag 'n donasie wil maak via&#10;elektroniese oordrag, of 'n tjek wil pos, of geld per pos wil stuur.</entry>
-	<entry id="100004" string="usd">usd</entry>
-	<entry id="100005" string="en">en</entry>
-	<entry id="100006" string="Thank you very much!">Baie dankie!</entry>
-	<entry id="100007" string="Remind me later">Herinner my later</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Help asseblief om hierdie sagteware gratis te hou deur die %1 projek met 'n&#10;donasie te ondersteun.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Skryf asseblief aan %1 as jy graag 'n donasie wil maak via&#10;elektroniese oordrag, of 'n tjek wil pos, of geld per pos wil stuur.</entry>
+	<entry id="100004" string="Thank you very much!">Baie dankie!</entry>
+	<entry id="100005" string="Remind me later">Herinner my later</entry>
+	<entry id="100006" string="paypal,sepa,bitcoin,ethereum">paypal,bitcoin,ethereum</entry>
+
+	<section name="PayPal">
+	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Klik op een van die knoppies hieronder om 'n donasie te maak via PayPal:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Jy kan ook 'n donasie direk aan %1 stuur deur PayPal te gebruik.</entry>
+	  <entry id="100102" string="usd">zar</entry>
+	  <entry id="100103" string="$%1">R%1</entry>
+	  <entry id="100104" string="5,10,other amount">50,100,ander bedrag</entry>
+	</section>
       </section>
 
       <section name="Winamp Adapter">

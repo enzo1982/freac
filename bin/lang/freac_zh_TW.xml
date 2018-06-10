@@ -917,12 +917,19 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">支援本專案</entry>
 	<entry id="100001" string="Please support this project!">請支援本專案！</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">透過捐款，您可以幫助 %1 專案 繼續維持免費。&#10;&#10;&#10;點擊下列任一按鈕，使用 PayPal 捐款:</entry>
-	<entry id="100003" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">您也可以使用 PayPal 直接付款給 %1。&#10;&#10;如果您想使用電子轉帳、支票或郵寄現金，&#10;請先寄電子郵件給 %1。</entry>
-	<entry id="100004" string="usd">usd</entry>
-	<entry id="100005" string="en">en</entry>
-	<entry id="100006" string="Thank you very much!">感激不盡！</entry>
-	<entry id="100007" string="Remind me later">稍後提醒我</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">透過捐款，您可以幫助 %1 專案 繼續維持免費。</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">如果您想使用電子轉帳、支票或郵寄現金，&#10;請先寄電子郵件給 %1。</entry>
+	<entry id="100004" string="Thank you very much!">感激不盡！</entry>
+	<entry id="100005" string="Remind me later">稍後提醒我</entry>
+	<entry id="100006" string="paypal,sepa,bitcoin,ethereum">paypal,bitcoin,ethereum</entry>
+
+	<section name="PayPal">
+	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">點擊下列任一按鈕，使用 PayPal 捐款:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">您也可以使用 PayPal 直接付款給 %1。</entry>
+	  <entry id="100102" string="usd">twd</entry>
+	  <entry id="100103" string="$%1">%1元</entry>
+	  <entry id="100104" string="5,10,other amount">200,400,其他金額</entry>
+	</section>
       </section>
 
       <section name="Winamp Adapter">
