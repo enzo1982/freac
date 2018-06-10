@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">English (United Kingdom)</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
+    <property name="author">Robert Kausch &lt;robert.kausch@freac.org&gt;</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <section name="Configuration">
+
+      <section name="CDDB">
+	<entry id="5315" string="Automatization">Automatisation</entry>
+      </section>
+    </section>
+
+    <section name="Tips">
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialogue. If that does not help, try using one of the Paranoia modes.</entry>
+    </section>
+
+    <section name="Messages">
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialogue.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialogue.</entry>
+      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">No configuration dialogue available for:&#10;&#10;%1</entry>
+    </section>
+
+    <section name="Ripper">
+      <entry id="9013" string="Automatization">Automatisation</entry>
+    </section>
+
+    <section name="Encoders">
+
+      <section name="Bonk">
+	<entry id="31002" string="Quantization">Quantisation</entry>
+      </section>
+
+      <section name="FLAC">
+
+	<section name="Expert">
+	  <entry id="34308" string="Quantized LPC precision">Quantised LPC precision</entry>
+	  <entry id="34310" string="Optimize LPC quantization">Optimise LPC quantisation</entry>
+	</section>
+      </section>
+    </section>
+
+    <section name="Extensions">
+
+      <section name="Donate">
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Please write to %1 if you would like to mail a cheque or send&#10;money by mail.</entry>
+	<entry id="100006" string="paypal,sepa,bitcoin,ethereum">sepa,paypal,bitcoin,ethereum</entry>
+
+	<section name="PayPal">
+	  <entry id="100102" string="usd">gbp</entry>
+	  <entry id="100103" string="$%1">£%1</entry>
+	  <entry id="100104" string="5,10,other amount">5,10,other amount</entry>
+	</section>
+      </section>
+
+      <section name="Video Downloader">
+
+	<section name="Configuration">
+	  <entry id="102101" string="Automatization">Automatisation</entry>
+	</section>
+      </section>
+    </section>
+  </data>
+</LangFile>
