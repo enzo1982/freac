@@ -655,7 +655,7 @@
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Elektronik para transferi veya çek ile bağış için lütfen %1 a mail atınız.</entry>
 	<entry id="100004" string="Thank you very much!">Teşekkürler!</entry>
 	<entry id="100005" string="Remind me later">Sonra hatırlat</entry>
-	<entry id="100006" string="paypal,sepa,bitcoin,ethereum">paypal,bitcoin,ethereum</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
 	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Aşağıdaki tuşlardan birini kullanarak Paypal üzerinden güvenle bağış yapabilirsiniz:</entry>

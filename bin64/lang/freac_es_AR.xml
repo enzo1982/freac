@@ -620,7 +620,7 @@
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="100006" string="paypal,sepa,bitcoin,ethereum">paypal,bitcoin,ethereum</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
 	  <entry id="100102" string="usd">usd</entry>

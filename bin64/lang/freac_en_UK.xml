@@ -51,7 +51,7 @@
 
       <section name="Donate">
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Please write to %1 if you would like to mail a cheque or send&#10;money by mail.</entry>
-	<entry id="100006" string="paypal,sepa,bitcoin,ethereum">sepa,paypal,bitcoin,ethereum</entry>
+	<entry id="100006" string="paypal,donorbox,sepa,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
 	  <entry id="100102" string="usd">gbp</entry>

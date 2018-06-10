@@ -652,7 +652,7 @@
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">يرجى الكتابة إلى %1 إذا كنت ترغب في التبرع به التحويل الالكتروني&#10;والبريد الاختيار أو إرسال المال عن طريق البريد.</entry>
 	<entry id="100004" string="Thank you very much!">شكرا جزيلا لكم!</entry>
 	<entry id="100005" string="Remind me later">ذكرني لاحقا</entry>
-	<entry id="100006" string="paypal,sepa,bitcoin,ethereum">paypal,bitcoin,ethereum</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
 	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">انقر فوق أحد الأزرار الموجودة أدناه للتبرع به باي بال:</entry>
