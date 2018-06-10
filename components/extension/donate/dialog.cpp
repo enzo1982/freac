@@ -47,7 +47,7 @@ BoCA::DonateDialog::DonateDialog()
 		methods.Add(method, method->GetID().ComputeCRC32());
 	}
 
-	const Array<String>	&order = i18n->TranslateString("paypal,sepa,bitcoin,ethereum").Explode(",");
+	const Array<String>	&order = i18n->TranslateString("paypal,donorbox,bitcoin,ethereum").Explode(",");
 
 	foreach (const String &id, order)
 	{
