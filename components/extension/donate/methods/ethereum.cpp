@@ -55,13 +55,13 @@ BoCA::LayerEthereum::LayerEthereum()
 
 	if (!dir.Exists()) dir = Utilities::GetBoCADirectory().Append("../freac/freac.extension.donate");
 
-	link_qrcode	= new Hyperlink(NIL, ImageLoader::Load(String(dir).Append("/ethereum/qrcode.png")), "ethereum:0xd1cce102fa7ce1223dcb37579cf92d8abd71ebf6", Point(101, 4), Size(96, 96));
+	link_qrcode	= new Hyperlink(NIL, ImageLoader::Load(String(dir).Append("/ethereum/qrcode.png")), "ethereum:0xa7bac27ae9036c6f0a7ca4227b7234a79de93faf", Point(101, 4), Size(96, 96));
 	link_qrcode->SetOrientation(OR_UPPERRIGHT);
 
 	text_donate	= new Text(i18n->TranslateString("Please scan or click the QR code or copy the following\naddress to donate Ethereum:"), Point(7, 4));
 
 	cursor_ether	= new Cursor(Point(7, text_donate->GetUnscaledTextHeight() + 24), Size(210, 16));
-	cursor_ether->SetText("0xd1cce102fa7ce1223dcb37579cf92d8abd71ebf6");
+	cursor_ether->SetText("0xa7bac27ae9036c6f0a7ca4227b7234a79de93faf");
 	cursor_ether->SetSize(Size(cursor_ether->GetUnscaledTextWidth(), cursor_ether->GetUnscaledTextHeight()) + Size(1, 3));
 	cursor_ether->Deactivate();
 
