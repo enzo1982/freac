@@ -61,7 +61,7 @@
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 bajt(ovi)</entry>
       <entry id="517" string="%1 kB">%1%</entry>
-      <entry id="518" string="%1%">%1%</entry>
+      <entry id="518" string="%1%"/>
     </section>
 
     <section name="Menu">
@@ -126,7 +126,7 @@
       </section>
 
       <section name="Help">
-	<entry id="1600" string="Help topics">Help topics</entry>
+	<entry id="1600" string="Help topics"/>
 	<entry id="1601" string="Show Tip of the Day">Prikaži Savet dana</entry>
 	<entry id="1602" string="Check for updates now">Proveri sada za nadogradnje</entry>
 	<entry id="1603" string="Check for updates at startup">Proveri nadogradnje pri pokretanju</entry>
@@ -456,8 +456,8 @@
 	<entry id="5523" string="Read cue sheets embedded in metadata">Očitaj cue listove usađene u podacima</entry>
 	<entry id="5524" string="Prefer cue sheets over chapter information">Daj prednost cue listovima nad informacijama o poglavljima</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Dodaj nulu ispred brojeva manjih od 10</entry>
-	<entry id="5526" string="File size limit">File size limit</entry>
-	<entry id="5527" string="unlimited">unlimited</entry>
+	<entry id="5526" string="File size limit"/>
+	<entry id="5527" string="unlimited"/>
        </section>
 
       <section name="Joblist">
@@ -501,7 +501,7 @@
 	<entry id="5707" string="lower">normalan</entry>
 	<entry id="5708" string="normal">viši</entry>
 	<entry id="5709" string="higher">najviši</entry>
-	<entry id="5710" string="highest">highest</entry>
+	<entry id="5710" string="highest"/>
       </section>
 
       <section name="Verification">
@@ -520,9 +520,9 @@
 	<entry id="5904" string="Available">Pretvaranje u jedan izlazni fajl</entry>
 	<entry id="5905" string="Selected">Procesuiraj svaku pesmu zasebno</entry>
 	<entry id="5906" string="Configure component">Tretiraj kombinovane pesme kao jednu pesmu</entry>
-	<entry id="5907" string="Conversion to a single output file">Conversion to a single output file</entry>
-	<entry id="5908" string="Process each track individually">Process each track individually</entry>
-	<entry id="5909" string="Treat the combined tracks like a single track">Treat the combined tracks like a single track</entry>
+	<entry id="5907" string="Conversion to a single output file"/>
+	<entry id="5908" string="Process each track individually"/>
+	<entry id="5909" string="Treat the combined tracks like a single track"/>
       </section>
     </section>
 
@@ -573,9 +573,9 @@
       <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">Overa ulaznog fajla nije uspela: %1</entry>
       <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Checksum se ne poklapa prilikom overe izlaznog fajla: %1&#10;&#10;Enkodovanje checksum: %2&#10;Overa checksum: %3</entry>
       <entry id="7022" string="Failed to verify input file: %1">Odabrani folder više ne postoji!</entry>
-      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3</entry>
-      <entry id="7024" string="The selected folder does not exist anymore!">The selected folder does not exist anymore!</entry>
-      <entry id="7025" string="Keep this option enabled even after restarting %1">Keep this option enabled even after restarting %1</entry>
+      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
+      <entry id="7024" string="The selected folder does not exist anymore!"/>
+      <entry id="7025" string="Keep this option enabled even after restarting %1"/>
     </section>
 
     <section name="Dialogs">
@@ -597,9 +597,9 @@
       </section>
 
       <section name="Errors">
-	<entry id="8200" string="Errors">Errors</entry>
-	<entry id="8201" string="%1 errors while processing job">%1 errors while processing job</entry>
-	<entry id="8202" string="select an entry for details">select an entry for details</entry>
+	<entry id="8200" string="Errors"/>
+	<entry id="8201" string="%1 errors while processing job"/>
+	<entry id="8202" string="select an entry for details"/>
       </section>
     </section>
 
@@ -945,56 +945,56 @@
 	<entry id="50001" string="Number format">Stopa semplovanja</entry>
 	<entry id="50002" string="Sample resolution">Izlazna stopa semplovanja</entry>
 	<entry id="50003" string="bit">bit</entry>
-	<entry id="50004" string="unsigned">unsigned</entry>
-	<entry id="50005" string="Integer">Integer</entry>
-	<entry id="50006" string="Float">Float</entry>
+	<entry id="50004" string="unsigned"/>
+	<entry id="50005" string="Integer"/>
+	<entry id="50006" string="Float"/>
       </section>
 
       <section name="Channels">
-	<entry id="50100" string="Output channels">Output channels</entry>
-	<entry id="50101" string="Channel configuration">Channel configuration</entry>
+	<entry id="50100" string="Output channels"/>
+	<entry id="50101" string="Channel configuration"/>
 	<entry id="50102" string="Mono">Mono</entry>
 	<entry id="50103" string="Stereo">Stereo</entry>
       </section>
 
       <section name="Resample">
-	<entry id="50200" string="Converter">Converter</entry>
+	<entry id="50200" string="Converter"/>
 	<entry id="50201" string="Sampling rate">Stopa semplovanja</entry>
 	<entry id="50202" string="Output sampling rate">Izlazna stopa semplovanja</entry>
       </section>
 
       <section name="RubberBand">
-	<entry id="50300" string="Basic controls">Basic controls</entry>
-	<entry id="50301" string="Tempo">Tempo</entry>
-	<entry id="50302" string="Pitch">Pitch</entry>
-	<entry id="50303" string="%1 Semitones">%1 Semitones</entry>
-	<entry id="50304" string="Advanced options">Advanced options</entry>
-	<entry id="50305" string="Transient detection">Transient detection</entry>
-	<entry id="50306" string="Compound">Compound</entry>
-	<entry id="50307" string="Percussive">Percussive</entry>
-	<entry id="50308" string="Soft">Soft</entry>
-	<entry id="50309" string="Transient handling">Transient handling</entry>
-	<entry id="50310" string="Crisp">Crisp</entry>
-	<entry id="50311" string="Mixed">Mixed</entry>
-	<entry id="50312" string="Smooth">Smooth</entry>
-	<entry id="50313" string="Transformation window">Transformation window</entry>
-	<entry id="50314" string="Standard">Standard</entry>
-	<entry id="50315" string="Short">Short</entry>
-	<entry id="50316" string="Long">Long</entry>
-	<entry id="50317" string="Use time-domain smoothing">Use time-domain smoothing</entry>
-	<entry id="50318" string="Phase handling">Phase handling</entry>
-	<entry id="50319" string="Laminar">Laminar</entry>
-	<entry id="50320" string="Independent">Independent</entry>
-	<entry id="50321" string="Formant handling">Formant handling</entry>
-	<entry id="50322" string="Shift">Shift</entry>
-	<entry id="50323" string="Preserve">Preserve</entry>
-	<entry id="50324" string="Pitch processing">Pitch processing</entry>
-	<entry id="50325" string="High quality">High quality</entry>
-	<entry id="50326" string="High speed">High speed</entry>
-	<entry id="50327" string="High consistency">High consistency</entry>
-	<entry id="50328" string="Stereo processing">Stereo processing</entry>
-	<entry id="50329" string="Separate">Separate</entry>
-	<entry id="50330" string="Combined">Combined</entry>
+	<entry id="50300" string="Basic controls"/>
+	<entry id="50301" string="Tempo"/>
+	<entry id="50302" string="Pitch"/>
+	<entry id="50303" string="%1 Semitones"/>
+	<entry id="50304" string="Advanced options"/>
+	<entry id="50305" string="Transient detection"/>
+	<entry id="50306" string="Compound"/>
+	<entry id="50307" string="Percussive"/>
+	<entry id="50308" string="Soft"/>
+	<entry id="50309" string="Transient handling"/>
+	<entry id="50310" string="Crisp"/>
+	<entry id="50311" string="Mixed"/>
+	<entry id="50312" string="Smooth"/>
+	<entry id="50313" string="Transformation window"/>
+	<entry id="50314" string="Standard"/>
+	<entry id="50315" string="Short"/>
+	<entry id="50316" string="Long"/>
+	<entry id="50317" string="Use time-domain smoothing"/>
+	<entry id="50318" string="Phase handling"/>
+	<entry id="50319" string="Laminar"/>
+	<entry id="50320" string="Independent"/>
+	<entry id="50321" string="Formant handling"/>
+	<entry id="50322" string="Shift"/>
+	<entry id="50323" string="Preserve"/>
+	<entry id="50324" string="Pitch processing"/>
+	<entry id="50325" string="High quality"/>
+	<entry id="50326" string="High speed"/>
+	<entry id="50327" string="High consistency"/>
+	<entry id="50328" string="Stereo processing"/>
+	<entry id="50329" string="Separate"/>
+	<entry id="50330" string="Combined"/>
       </section>
     </section>
 
@@ -1026,25 +1026,25 @@
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:">Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:</entry>
-	  <entry id="100201" string="Donate">Donate</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:"/>
+	  <entry id="100201" string="Donate"/>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:</entry>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">This address also accepts Bitcoin Cash and other forks.</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:"/>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks."/>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Please scan or click the QR code or copy the following&#10;address to donate Ethereum:</entry>
-	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">This address also accepts Ether Classic and ERC20 tokens.</entry>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:"/>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens."/>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making a SEPA transfer to the following&#10;account:">You can donate by making a SEPA transfer to the following&#10;account:</entry>
-	  <entry id="100501" string="Account holder:">Account holder:</entry>
-	  <entry id="100502" string="IBAN:">IBAN:</entry>
-	  <entry id="100503" string="BIC:">BIC:</entry>
+	  <entry id="100500" string="You can donate by making a SEPA transfer to the following&#10;account:"/>
+	  <entry id="100501" string="Account holder:"/>
+	  <entry id="100502" string="IBAN:"/>
+	  <entry id="100503" string="BIC:"/>
 	</section>
       </section>
 
