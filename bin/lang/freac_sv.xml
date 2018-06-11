@@ -40,11 +40,11 @@
     <entry id="352" string="unknown album">okänd genre</entry>
     <entry id="353" string="unknown genre">okänt år</entry>
     <entry id="354" string="unknown year">dolt spår</entry>
-    <entry id="355" string="unknown conductor">unknown conductor</entry>
-    <entry id="356" string="unknown composer">unknown composer</entry>
-    <entry id="357" string="unknown album artist">unknown album artist</entry>
+    <entry id="355" string="unknown conductor"/>
+    <entry id="356" string="unknown composer"/>
+    <entry id="357" string="unknown album artist"/>
 
-    <entry id="380" string="hidden track">hidden track</entry>
+    <entry id="380" string="hidden track"/>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -61,7 +61,7 @@
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 byte</entry>
       <entry id="517" string="%1 kB">%1%</entry>
-      <entry id="518" string="%1%">%1%</entry>
+      <entry id="518" string="%1%"/>
     </section>
 
     <section name="Menu">
@@ -126,7 +126,7 @@
       </section>
 
       <section name="Help">
-	<entry id="1600" string="Help topics">Help topics</entry>
+	<entry id="1600" string="Help topics"/>
 	<entry id="1601" string="Show Tip of the Day">Visa &quot;Dagens tips&quot;</entry>
 	<entry id="1602" string="Check for updates now">Sök efter uppdateringar nu</entry>
 	<entry id="1603" string="Check for updates at startup">Sök efter uppdateringar vid programstart</entry>
@@ -202,7 +202,7 @@
       <entry id="3048" string="Other">Annan</entry>
       <entry id="3049" string="Output file name">Målfilens namn</entry>
       <entry id="3050" string="verifying">verifierar</entry>
-      <entry id="3051" string="Open">Open</entry>
+      <entry id="3051" string="Open"/>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Mapp</entry>
@@ -341,8 +341,8 @@
       <entry id="5021" string="Ripper">Rippning</entry>
       <entry id="5022" string="Settings">Inställningar</entry>
       <entry id="5023" string="Resources">Resurser</entry>
-      <entry id="5024" string="Verifiers">Verifiers</entry>
-      <entry id="5025" string="Taggers">Taggers</entry>
+      <entry id="5024" string="Verifiers"/>
+      <entry id="5025" string="Taggers"/>
       <entry id="5026" string="Processing">Koda</entry>
 
       <section name="Encoders">
@@ -363,7 +363,7 @@
 	<entry id="5114" string="Replace spaces">Ersätt mellanslag</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Ta bort bearbetade spår från jobblistan</entry>
 	<entry id="5116" string="Add encoded files to joblist">Lägg till kodade filer i jobblistan</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Append sequential numbers to otherwise identical filenames</entry>
+	<entry id="5117" string="Append sequential numbers to otherwise identical filenames"/>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Målmappen finns inte! Vill du skapa den?</entry>
@@ -380,7 +380,7 @@
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Välj den mapp där spelningslistefilerna skall sparas</entry>
 	<entry id="5207" string="Output filenames">Målfilernas namn</entry>
 	<entry id="5208" string="Configure plugin">Konfigurera</entry>
-	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Create only a single playlist and/or cue sheet file per conversion</entry>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion"/>
       </section>
 
       <section name="CDDB">
@@ -452,12 +452,12 @@
 	<entry id="5519" string="Special fields">Särskilda fält</entry>
 	<entry id="5520" string="Write CD table of contents">Skriv innehållsförteckning för cd</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Behåll uppspelningsförstärkningsinfo</entry>
-	<entry id="5522" string="Cue sheets">Cue sheets</entry>
-	<entry id="5523" string="Read cue sheets embedded in metadata">Read cue sheets embedded in metadata</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">Prefer cue sheets over chapter information</entry>
-	<entry id="5525" string="Prepend zero to track numbers below 10">Prepend zero to track numbers below 10</entry>
-	<entry id="5526" string="File size limit">File size limit</entry>
-	<entry id="5527" string="unlimited">unlimited</entry>
+	<entry id="5522" string="Cue sheets"/>
+	<entry id="5523" string="Read cue sheets embedded in metadata"/>
+	<entry id="5524" string="Prefer cue sheets over chapter information"/>
+	<entry id="5525" string="Prepend zero to track numbers below 10"/>
+	<entry id="5526" string="File size limit"/>
+	<entry id="5527" string="unlimited"/>
        </section>
 
       <section name="Joblist">
@@ -496,12 +496,12 @@
 	<entry id="5702" string="Enable SuperFast mode (experimental)">Antal konverteringstrådar</entry>
 	<entry id="5703" string="Number of conversion threads">automatisk</entry>
 	<entry id="5704" string="auto">automatisk</entry>
-	<entry id="5705" string="Process priority">Process priority</entry>
-	<entry id="5706" string="lowest">lowest</entry>
-	<entry id="5707" string="lower">lower</entry>
-	<entry id="5708" string="normal">normal</entry>
-	<entry id="5709" string="higher">higher</entry>
-	<entry id="5710" string="highest">highest</entry>
+	<entry id="5705" string="Process priority"/>
+	<entry id="5706" string="lowest"/>
+	<entry id="5707" string="lower"/>
+	<entry id="5708" string="normal"/>
+	<entry id="5709" string="higher"/>
+	<entry id="5710" string="highest"/>
       </section>
 
       <section name="Verification">
@@ -513,16 +513,16 @@
       </section>
 
       <section name="Processing">
-	<entry id="5900" string="Signal processing">Signal processing</entry>
+	<entry id="5900" string="Signal processing"/>
 	<entry id="5901" string="Enable signal processing">Starta kodning</entry>
 	<entry id="5902" string="Enable processing during playback">Starta kodning med</entry>
 	<entry id="5903" string="Components">Komponenter</entry>
-	<entry id="5904" string="Available">Available</entry>
-	<entry id="5905" string="Selected">Selected</entry>
-	<entry id="5906" string="Configure component">Configure component</entry>
-	<entry id="5907" string="Conversion to a single output file">Conversion to a single output file</entry>
-	<entry id="5908" string="Process each track individually">Process each track individually</entry>
-	<entry id="5909" string="Treat the combined tracks like a single track">Treat the combined tracks like a single track</entry>
+	<entry id="5904" string="Available"/>
+	<entry id="5905" string="Selected"/>
+	<entry id="5906" string="Configure component"/>
+	<entry id="5907" string="Conversion to a single output file"/>
+	<entry id="5908" string="Process each track individually"/>
+	<entry id="5909" string="Treat the combined tracks like a single track"/>
       </section>
     </section>
 
@@ -572,10 +572,10 @@
       <entry id="7019" string="Unknown error">Det verkar som att du konverterar från ett förlustgivande format&#10;till ett förlustfritt format.&#10;&#10;Observera att kvalitetsförlusten inte kan göras ogjord och att&#10;denna konvertering således inte kommer att förbättra kvaliteten&#10;överhuvudtaget, men antagligen öka filstorleken.&#10;&#10;Vill du ändå fortsätta?</entry>
       <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">Det gick inte att verifiera källfilen: %1</entry>
       <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Kontrollsummefel vid verifiering av målfil: %1&#10;&#10;Förväntad kontrollsumma: %2&#10;Verklig kontrollsumma: %3</entry>
-      <entry id="7022" string="Failed to verify input file: %1">Failed to verify input file: %1</entry>
-      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3</entry>
-      <entry id="7024" string="The selected folder does not exist anymore!">The selected folder does not exist anymore!</entry>
-      <entry id="7025" string="Keep this option enabled even after restarting %1">Keep this option enabled even after restarting %1</entry>
+      <entry id="7022" string="Failed to verify input file: %1"/>
+      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
+      <entry id="7024" string="The selected folder does not exist anymore!"/>
+      <entry id="7025" string="Keep this option enabled even after restarting %1"/>
     </section>
 
     <section name="Dialogs">
@@ -597,9 +597,9 @@
       </section>
 
       <section name="Errors">
-	<entry id="8200" string="Errors">Errors</entry>
-	<entry id="8201" string="%1 errors while processing job">%1 errors while processing job</entry>
-	<entry id="8202" string="select an entry for details">select an entry for details</entry>
+	<entry id="8200" string="Errors"/>
+	<entry id="8201" string="%1 errors while processing job"/>
+	<entry id="8202" string="select an entry for details"/>
       </section>
     </section>
 
@@ -645,13 +645,13 @@
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information">Title information</entry>
-	<entry id="12001" string="Read tags from referenced files">Read tags from referenced files</entry>
-	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">Prefer cue sheet metadata over referenced files' tags</entry>
-	<entry id="12003" string="Alternative files">Alternative files</entry>
-	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">Look for compressed alternatives if referenced Wave files cannot be located</entry>
-	<entry id="12005" string="Error handling">Error handling</entry>
-	<entry id="12006" string="Ignore errors during cue sheet processing">Ignore errors during cue sheet processing</entry>
+	<entry id="12000" string="Title information"/>
+	<entry id="12001" string="Read tags from referenced files"/>
+	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags"/>
+	<entry id="12003" string="Alternative files"/>
+	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
+	<entry id="12005" string="Error handling"/>
+	<entry id="12006" string="Ignore errors during cue sheet processing"/>
       </section>
     </section>
 
@@ -929,12 +929,12 @@
 
       <section name="meh!">
 	<entry id="42000" string="Encoders">Kodare</entry>
-	<entry id="42001" string="Available">Available</entry>
-	<entry id="42002" string="Selected">Selected</entry>
+	<entry id="42001" string="Available"/>
+	<entry id="42002" string="Selected"/>
 	<entry id="42003" string="Configure encoder">Inställningar för kodare</entry>
-	<entry id="42004" string="Encoder configuration">Encoder configuration</entry>
+	<entry id="42004" string="Encoder configuration"/>
 	<entry id="42005" string="Options">Inställningar</entry>
-	<entry id="42006" string="Create a separate folder for each output format">Create a separate folder for each output format</entry>
+	<entry id="42006" string="Create a separate folder for each output format"/>
       </section>
     </section>
 
@@ -945,56 +945,56 @@
 	<entry id="50001" string="Number format">Bägge</entry>
 	<entry id="50002" string="Sample resolution">Sampelupplösning</entry>
 	<entry id="50003" string="bit">bit</entry>
-	<entry id="50004" string="unsigned">unsigned</entry>
-	<entry id="50005" string="Integer">Integer</entry>
-	<entry id="50006" string="Float">Float</entry>
+	<entry id="50004" string="unsigned"/>
+	<entry id="50005" string="Integer"/>
+	<entry id="50006" string="Float"/>
       </section>
 
       <section name="Channels">
-	<entry id="50100" string="Output channels">Output channels</entry>
-	<entry id="50101" string="Channel configuration">Channel configuration</entry>
+	<entry id="50100" string="Output channels"/>
+	<entry id="50101" string="Channel configuration"/>
 	<entry id="50102" string="Mono">Mono</entry>
 	<entry id="50103" string="Stereo">Stereo</entry>
       </section>
 
       <section name="Resample">
-	<entry id="50200" string="Converter">Converter</entry>
+	<entry id="50200" string="Converter"/>
 	<entry id="50201" string="Sampling rate">Samplingshastighet</entry>
 	<entry id="50202" string="Output sampling rate">Utgående samplingshastighet</entry>
       </section>
 
       <section name="RubberBand">
-	<entry id="50300" string="Basic controls">Basic controls</entry>
-	<entry id="50301" string="Tempo">Tempo</entry>
-	<entry id="50302" string="Pitch">Pitch</entry>
-	<entry id="50303" string="%1 Semitones">%1 Semitones</entry>
-	<entry id="50304" string="Advanced options">Advanced options</entry>
-	<entry id="50305" string="Transient detection">Transient detection</entry>
-	<entry id="50306" string="Compound">Compound</entry>
-	<entry id="50307" string="Percussive">Percussive</entry>
-	<entry id="50308" string="Soft">Soft</entry>
-	<entry id="50309" string="Transient handling">Transient handling</entry>
-	<entry id="50310" string="Crisp">Crisp</entry>
-	<entry id="50311" string="Mixed">Mixed</entry>
-	<entry id="50312" string="Smooth">Smooth</entry>
-	<entry id="50313" string="Transformation window">Transformation window</entry>
-	<entry id="50314" string="Standard">Standard</entry>
-	<entry id="50315" string="Short">Short</entry>
-	<entry id="50316" string="Long">Long</entry>
-	<entry id="50317" string="Use time-domain smoothing">Use time-domain smoothing</entry>
-	<entry id="50318" string="Phase handling">Phase handling</entry>
-	<entry id="50319" string="Laminar">Laminar</entry>
-	<entry id="50320" string="Independent">Independent</entry>
-	<entry id="50321" string="Formant handling">Formant handling</entry>
-	<entry id="50322" string="Shift">Shift</entry>
-	<entry id="50323" string="Preserve">Preserve</entry>
-	<entry id="50324" string="Pitch processing">Pitch processing</entry>
-	<entry id="50325" string="High quality">High quality</entry>
-	<entry id="50326" string="High speed">High speed</entry>
-	<entry id="50327" string="High consistency">High consistency</entry>
-	<entry id="50328" string="Stereo processing">Stereo processing</entry>
-	<entry id="50329" string="Separate">Separate</entry>
-	<entry id="50330" string="Combined">Combined</entry>
+	<entry id="50300" string="Basic controls"/>
+	<entry id="50301" string="Tempo"/>
+	<entry id="50302" string="Pitch"/>
+	<entry id="50303" string="%1 Semitones"/>
+	<entry id="50304" string="Advanced options"/>
+	<entry id="50305" string="Transient detection"/>
+	<entry id="50306" string="Compound"/>
+	<entry id="50307" string="Percussive"/>
+	<entry id="50308" string="Soft"/>
+	<entry id="50309" string="Transient handling"/>
+	<entry id="50310" string="Crisp"/>
+	<entry id="50311" string="Mixed"/>
+	<entry id="50312" string="Smooth"/>
+	<entry id="50313" string="Transformation window"/>
+	<entry id="50314" string="Standard"/>
+	<entry id="50315" string="Short"/>
+	<entry id="50316" string="Long"/>
+	<entry id="50317" string="Use time-domain smoothing"/>
+	<entry id="50318" string="Phase handling"/>
+	<entry id="50319" string="Laminar"/>
+	<entry id="50320" string="Independent"/>
+	<entry id="50321" string="Formant handling"/>
+	<entry id="50322" string="Shift"/>
+	<entry id="50323" string="Preserve"/>
+	<entry id="50324" string="Pitch processing"/>
+	<entry id="50325" string="High quality"/>
+	<entry id="50326" string="High speed"/>
+	<entry id="50327" string="High consistency"/>
+	<entry id="50328" string="Stereo processing"/>
+	<entry id="50329" string="Separate"/>
+	<entry id="50330" string="Combined"/>
       </section>
     </section>
 
@@ -1011,40 +1011,40 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Stöd det här projektet</entry>
 	<entry id="100001" string="Please support this project!">Det här projektet behöver ditt stöd!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.">Please help keep this software free by supporting the %1 project&#10;with a donation.</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check&#10;or send money by mail.">Please write to %1 if you would like to mail a check&#10;or send money by mail.</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation."/>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check&#10;or send money by mail."/>
 	<entry id="100004" string="Thank you very much!">Tusen tack!</entry>
 	<entry id="100005" string="Remind me later">Påminn mig senare</entry>
-	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum"/>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Click one of the buttons below to make a donation using PayPal:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">You can also send money directly to %1 using PayPal.</entry>
+	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:"/>
+	  <entry id="100101" string="You can also send money directly to %1 using PayPal."/>
 	  <entry id="100102" string="usd">eur</entry>
-	  <entry id="100103" string="$%1">$%1</entry>
-	  <entry id="100104" string="5,10,other amount">5,10,other amount</entry>
+	  <entry id="100103" string="$%1"/>
+	  <entry id="100104" string="5,10,other amount"/>
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:">Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:</entry>
-	  <entry id="100201" string="Donate">Donate</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:"/>
+	  <entry id="100201" string="Donate"/>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:</entry>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">This address also accepts Bitcoin Cash and other forks.</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:"/>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks."/>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Please scan or click the QR code or copy the following&#10;address to donate Ethereum:</entry>
-	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">This address also accepts Ether Classic and ERC20 tokens.</entry>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:"/>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens."/>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making a SEPA transfer to the following&#10;account:">You can donate by making a SEPA transfer to the following&#10;account:</entry>
-	  <entry id="100501" string="Account holder:">Account holder:</entry>
-	  <entry id="100502" string="IBAN:">IBAN:</entry>
-	  <entry id="100503" string="BIC:">BIC:</entry>
+	  <entry id="100500" string="You can donate by making a SEPA transfer to the following&#10;account:"/>
+	  <entry id="100501" string="Account holder:"/>
+	  <entry id="100502" string="IBAN:"/>
+	  <entry id="100503" string="BIC:"/>
 	</section>
       </section>
 
@@ -1054,42 +1054,42 @@
       </section>
 
       <section name="Video Downloader">
-	<entry id="102000" string="Video">Video</entry>
-	<entry id="102001" string="Enter video URL here">Enter video URL here</entry>
-	<entry id="102002" string="Download">Download</entry>
-	<entry id="102003" string="Automatically download URLs copied to clipboard">Automatically download URLs copied to clipboard</entry>
-	<entry id="102004" string="Save downloaded video files">Save downloaded video files</entry>
-	<entry id="102005" string="Video downloads">Video downloads</entry>
-	<entry id="102006" string="Downloaded tracks">Downloaded tracks</entry>
-	<entry id="102007" string="Uploader">Uploader</entry>
-	<entry id="102008" string="Video URL">Video URL</entry>
-	<entry id="102009" string="Video title">Video title</entry>
-	<entry id="102010" string="Video description">Video description</entry>
-	<entry id="102011" string="Site name">Site name</entry>
-	<entry id="102012" string="Uploaded by">Uploaded by</entry>
-	<entry id="102013" string="Uploaded on">Uploaded on</entry>
+	<entry id="102000" string="Video"/>
+	<entry id="102001" string="Enter video URL here"/>
+	<entry id="102002" string="Download"/>
+	<entry id="102003" string="Automatically download URLs copied to clipboard"/>
+	<entry id="102004" string="Save downloaded video files"/>
+	<entry id="102005" string="Video downloads"/>
+	<entry id="102006" string="Downloaded tracks"/>
+	<entry id="102007" string="Uploader"/>
+	<entry id="102008" string="Video URL"/>
+	<entry id="102009" string="Video title"/>
+	<entry id="102010" string="Video description"/>
+	<entry id="102011" string="Site name"/>
+	<entry id="102012" string="Uploaded by"/>
+	<entry id="102013" string="Uploaded on"/>
 	<entry id="102014" string="Length">Längd</entry>
 	<entry id="102015" string="Size">Storlek</entry>
-	<entry id="102016" string="Cancel download">Cancel download</entry>
+	<entry id="102016" string="Cancel download"/>
 	<entry id="102017" string="unknown">i.u.</entry>
 	<entry id="102018" string="Note">Obs</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatisering</entry>
-	  <entry id="102102" string="Video files">Video files</entry>
+	  <entry id="102102" string="Video files"/>
 	  <entry id="102103" string="Select">Bläddra …</entry>
-	  <entry id="102104" string="Select the folder to save downloaded video files to">Select the folder to save downloaded video files to</entry>
-	  <entry id="102105" string="Downloads">Downloads</entry>
-	  <entry id="102106" string="Maximum number of simultaneous downloads">Maximum number of simultaneous downloads</entry>
+	  <entry id="102104" string="Select the folder to save downloaded video files to"/>
+	  <entry id="102105" string="Downloads"/>
+	  <entry id="102106" string="Maximum number of simultaneous downloads"/>
 	  <entry id="102107" string="Output format">Utdataformat</entry>
-	  <entry id="102108" string="keep original format">keep original format</entry>
+	  <entry id="102108" string="keep original format"/>
 	</section>
 
 	<section name="Errors">
-	  <entry id="102201" string="This URL is not supported or not a video page URL!">This URL is not supported or not a video page URL!</entry>
-	  <entry id="102202" string="Error downloading video!">Error downloading video!</entry>
-	  <entry id="102203" string="You are already downloading this video!">You are already downloading this video!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!</entry>
+	  <entry id="102201" string="This URL is not supported or not a video page URL!"/>
+	  <entry id="102202" string="Error downloading video!"/>
+	  <entry id="102203" string="You are already downloading this video!"/>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!"/>
 	</section>
       </section>
 
@@ -1097,21 +1097,21 @@
 	<entry id="103000" string="Tags">Informationstaggar</entry>
 	<entry id="103001" string="Length">Längd</entry>
 	<entry id="103002" string="Size">Storlek</entry>
-	<entry id="103003" string="Albums">Albums</entry>
-	<entry id="103004" string="Files">Files</entry>
+	<entry id="103003" string="Albums"/>
+	<entry id="103004" string="Files"/>
 	<entry id="103005" string="File">Arkiv</entry>
-	<entry id="103006" string="Tracks">Tracks</entry>
-	<entry id="103007" string="Save">Save</entry>
-	<entry id="103008" string="Save all">Save all</entry>
-	<entry id="103009" string="no audio files found">no audio files found</entry>
+	<entry id="103006" string="Tracks"/>
+	<entry id="103007" string="Save"/>
+	<entry id="103008" string="Save all"/>
+	<entry id="103009" string="no audio files found"/>
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Allmänt</entry>
-	  <entry id="103101" string="Title information">Title information</entry>
+	  <entry id="103101" string="Title information"/>
 	  <entry id="103102" string="Disc">Skiva</entry>
 	  <entry id="103103" string="Cover art">Skivomslag</entry>
-	  <entry id="103104" string="Covers">Covers</entry>
-	  <entry id="103105" string="Type">Type</entry>
+	  <entry id="103104" string="Covers"/>
+	  <entry id="103105" string="Type"/>
 	  <entry id="103106" string="Description">Beskrivning</entry>
 	  <entry id="103107" string="Add">Lägg till</entry>
 	  <entry id="103108" string="Remove">Ta bort</entry>
@@ -1119,52 +1119,52 @@
 
 	<section name="Details">
 	  <entry id="103200" string="Details">Information</entry>
-	  <entry id="103201" string="Detailed information">Detailed information</entry>
-	  <entry id="103202" string="Band / orchestra">Band / orchestra</entry>
-	  <entry id="103203" string="Conductor">Conductor</entry>
-	  <entry id="103204" string="Composer">Composer</entry>
-	  <entry id="103205" string="Lyrics writer">Lyrics writer</entry>
-	  <entry id="103206" string="Modified / remixed by">Modified / remixed by</entry>
-	  <entry id="103207" string="Publisher information">Publisher information</entry>
-	  <entry id="103208" string="Publisher / label">Publisher / label</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">Tempo</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103201" string="Detailed information"/>
+	  <entry id="103202" string="Band / orchestra"/>
+	  <entry id="103203" string="Conductor"/>
+	  <entry id="103204" string="Composer"/>
+	  <entry id="103205" string="Lyrics writer"/>
+	  <entry id="103206" string="Modified / remixed by"/>
+	  <entry id="103207" string="Publisher information"/>
+	  <entry id="103208" string="Publisher / label"/>
+	  <entry id="103209" string="ISRC"/>
+	  <entry id="103210" string="Tempo"/>
+	  <entry id="103211" string="BPM"/>
 	</section>
 
 	<section name="Other">
 	  <entry id="103300" string="Other">Annan</entry>
-	  <entry id="103301" string="Original information">Original information</entry>
-	  <entry id="103302" string="Original artist">Original artist</entry>
-	  <entry id="103303" string="Original album">Original album</entry>
-	  <entry id="103304" string="Original lyrics writer">Original lyrics writer</entry>
-	  <entry id="103305" string="Original release year">Original release year</entry>
-	  <entry id="103306" string="Webpage URLs">Webpage URLs</entry>
-	  <entry id="103307" string="Artist webpage">Artist webpage</entry>
-	  <entry id="103308" string="Publisher webpage">Publisher webpage</entry>
-	  <entry id="103309" string="Internet radio station">Internet radio station</entry>
-	  <entry id="103310" string="Audio source webpage">Audio source webpage</entry>
-	  <entry id="103311" string="Copyright information">Copyright information</entry>
-	  <entry id="103312" string="Commercial information">Commercial information</entry>
+	  <entry id="103301" string="Original information"/>
+	  <entry id="103302" string="Original artist"/>
+	  <entry id="103303" string="Original album"/>
+	  <entry id="103304" string="Original lyrics writer"/>
+	  <entry id="103305" string="Original release year"/>
+	  <entry id="103306" string="Webpage URLs"/>
+	  <entry id="103307" string="Artist webpage"/>
+	  <entry id="103308" string="Publisher webpage"/>
+	  <entry id="103309" string="Internet radio station"/>
+	  <entry id="103310" string="Audio source webpage"/>
+	  <entry id="103311" string="Copyright information"/>
+	  <entry id="103312" string="Commercial information"/>
 	</section>
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Det gick inte att öppna fil: %1&#10;&#10;Fel: %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Unable to update tag: %1&#10;&#10;Error: %2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2"/>
 	</section>
       </section>
 
       <section name="Protocols">
-	<entry id="104000" string="Protocols">Protocols</entry>
-	<entry id="104001" string="Protocol">Protocol</entry>
+	<entry id="104000" string="Protocols"/>
+	<entry id="104001" string="Protocol"/>
 	<entry id="104002" string="Errors / Warnings">Fel/Varningar</entry>
 	<entry id="104003" string="Details">Information</entry>
-	<entry id="104004" string="Time">Time</entry>
-	<entry id="104005" string="Message">Message</entry>
+	<entry id="104004" string="Time"/>
+	<entry id="104005" string="Message"/>
 
 	<section name="Configuration">
-	  <entry id="104100" string="User interface">User interface</entry>
-	  <entry id="104101" string="Show Protocols tab in main window">Show Protocols tab in main window</entry>
+	  <entry id="104100" string="User interface"/>
+	  <entry id="104101" string="Show Protocols tab in main window"/>
 	</section>
       </section>
     </section>
