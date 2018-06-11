@@ -1,3 +1,4 @@
 branches:
   except:
     - v1.0.x
+    - i18n-v1.0.x
