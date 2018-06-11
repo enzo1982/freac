@@ -1,5 +1,9 @@
 language: cpp
 
+branches:
+  except:
+    - i18n-master
+
 matrix:
   include:
     - os: linux
