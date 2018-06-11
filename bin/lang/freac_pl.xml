@@ -16,21 +16,21 @@
     <entry id="102" string="Close">Zamknij</entry>
 
     <entry id="200" string="Error">Błąd</entry>
-    <entry id="201" string="Warning">Warning</entry>
-    <entry id="202" string="Info">Informacje</entry>
+    <entry id="201" string="Warning">Informacje</entry>
+    <entry id="202" string="Info">Artysta</entry>
 
-    <entry id="210" string="Do not display this warning again">Do not display this warning again</entry>
-    <entry id="211" string="Do not display this note again">Do not display this note again</entry>
+    <entry id="210" string="Do not display this warning again">Tytuł</entry>
+    <entry id="211" string="Do not display this note again">Album</entry>
 
-    <entry id="300" string="Artist">Artysta</entry> 
-    <entry id="301" string="Title">Tytuł</entry> 
-    <entry id="302" string="Album">Album</entry> 
-    <entry id="303" string="Track">Ścieżka</entry> 
-    <entry id="304" string="Genre">Rodzaj</entry> 
-    <entry id="305" string="Comment">Komentarz</entry> 
-    <entry id="306" string="Year">Rok</entry>
-    <entry id="307" string="Disc">Disc</entry>
-    <entry id="308" string="Rating">Rating</entry>
+    <entry id="300" string="Artist">Ścieżka</entry> 
+    <entry id="301" string="Title">Rodzaj</entry> 
+    <entry id="302" string="Album">Komentarz</entry> 
+    <entry id="303" string="Track">Rok</entry> 
+    <entry id="304" string="Genre">nieznany artysta</entry> 
+    <entry id="305" string="Comment">nieznany tytuł</entry> 
+    <entry id="306" string="Year">nieznany album</entry>
+    <entry id="307" string="Disc">nieznany rodzaj</entry>
+    <entry id="308" string="Rating">nieznany rok</entry>
     <entry id="309" string="File name">File name</entry>
     <entry id="310" string="File type">File type</entry>
     <entry id="311" string="Album artist">Album artist</entry>
@@ -48,7 +48,7 @@
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
-      <entry id="501" string="%1...">%1...</entry>
+      <entry id="501" string="%1...">%1…</entry>
       <entry id="502" string="%1 (%2)">%1 (%2)</entry>
     </section>
 
@@ -59,8 +59,8 @@
       <entry id="513" string="%1 ms">%1 ms</entry>
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
-      <entry id="516" string="%1 bytes">%1 bytes</entry>
-      <entry id="517" string="%1 kB">%1 kB</entry>
+      <entry id="516" string="%1 bytes">%1 B</entry>
+      <entry id="517" string="%1 kB">%1%</entry>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
@@ -68,15 +68,15 @@
       <entry id="1000" string="File">Plik</entry>
       <entry id="1001" string="Options">Ustawienia</entry>
       <entry id="1002" string="Database">Baza danych</entry>
-      <entry id="1003" string="Processing">Processing</entry>
-      <entry id="1004" string="Encode">Konwersja</entry>
+      <entry id="1003" string="Processing">Konwersja</entry>
+      <entry id="1004" string="Encode">Pomoc</entry>
       <entry id="1005" string="Help">Pomoc</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Dodaj</entry>
 	<entry id="1101" string="Remove">Usuń z listy</entry>
-	<entry id="1102" string="Load joblist">Load joblist</entry>
-	<entry id="1103" string="Save joblist">Save joblist</entry>
+	<entry id="1102" string="Load joblist">Wczytaj listę zadań</entry>
+	<entry id="1103" string="Save joblist">Zapisz listę zadań</entry>
 	<entry id="1104" string="Clear joblist">Usuń wszystkie z listy</entry>
 	<entry id="1105" string="Exit">Wyjdź</entry>
 	<entry id="1106" string="Audio file(s)">Plik(i) audio</entry>
@@ -87,37 +87,37 @@
 
       <section name="Database">
 	<entry id="1200" string="Query CDDB database">Wyszukaj w bazie danych CDDB</entry>
-	<entry id="1201" string="Submit CDDB data">Submit CDDB data</entry>
+	<entry id="1201" string="Submit CDDB data">Wyślij dane do CDDB</entry>
 	<entry id="1202" string="Query CDDB database later">Wyszukaj w bazie CDDB później</entry>
-	<entry id="1203" string="Show queued CDDB entries">Show queued CDDB entries</entry>
-	<entry id="1204" string="Show queued CDDB queries">Show queued CDDB queries</entry>
+	<entry id="1203" string="Show queued CDDB entries">Pokaż oczekujące wpisy CDDB</entry>
+	<entry id="1204" string="Show queued CDDB queries">Pokaż oczekujące zapytania CDDB</entry>
 	<entry id="1205" string="Enable CDDB cache">Włącz bufor CDDB</entry>
-	<entry id="1206" string="Manage CDDB cache entries">Manage CDDB cache entries</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Zarządzaj wpisami bufora CDDB</entry>
 	<entry id="1207" string="Automatic CDDB queries">Automatyczne zapytania CDDB</entry>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings">General settings</entry>
-	<entry id="1301" string="Configure selected encoder">Configure selected encoder</entry>
+	<entry id="1300" string="General settings">Ustawienia podstawowe</entry>
+	<entry id="1301" string="Configure selected encoder">Konfiguruj bieżący konwerter</entry>
 	<entry id="1302" string="Active CD-ROM drive">Bieżący napęd CD-ROM</entry>
 	<entry id="1303" string="Active configuration">Active configuration</entry>
 	<entry id="1304" string="Default configuration">Default configuration</entry>
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing">Enable signal processing</entry>
-	<entry id="1401" string="Enable processing during playback">Enable processing during playback</entry>
-	<entry id="1402" string="Configure signal processing">Configure signal processing</entry>
-	<entry id="1403" string="Selected signal processors">Selected signal processors</entry>
+	<entry id="1400" string="Enable signal processing">Rozpocznij konwersję</entry>
+	<entry id="1401" string="Enable processing during playback">Rozpocznij konwersję z</entry>
+	<entry id="1402" string="Configure signal processing">Wstrzymaj/wznów konwersję</entry>
+	<entry id="1403" string="Selected signal processors">Zatrzymaj konwersję</entry>
       </section>
 
       <section name="Encode">
-	<entry id="1500" string="Start encoding">Rozpocznij konwersję</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">Start encoding (deleting original files)</entry>
-	<entry id="1502" string="Start encoding with">Start encoding with</entry>
-	<entry id="1503" string="Pause/resume encoding">Wstrzymaj/wznów konwersję</entry>
-	<entry id="1504" string="Stop encoding">Zatrzymaj konwersję</entry>
-	<entry id="1505" string="Encoder options">Ustawienia konwertera</entry>
+	<entry id="1500" string="Start encoding">Tematy pomocy</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">Wyświetl poradę</entry>
+	<entry id="1502" string="Start encoding with">Sprawdź uaktualnienia</entry>
+	<entry id="1503" string="Pause/resume encoding">Sprawdzaj przy uruchomieniu</entry>
+	<entry id="1504" string="Stop encoding">O programie %1</entry>
+	<entry id="1505" string="Encoder options">index.html</entry>
 	<entry id="1506" string="Encode to a single file">Konwertuj do jednego pliku</entry>
 	<entry id="1507" string="Encode to input file folder if possible">Jeśli możliwe, konwertuj do katalogu wejściowego</entry>
 	<entry id="1508" string="Allow overwriting input file">Zezwól na zastąpienie pliku wejściowego</entry>
@@ -141,22 +141,22 @@
       <entry id="2002" string="Remove the selected entry from the joblist">Usuń zaznaczony element z listy zadań</entry>
       <entry id="2003" string="Clear the entire joblist">Usuń wszystkie elementy z listy zadań</entry>
       <entry id="2004" string="Query CDDB database">Wyszukaj w bazie danych CDDB</entry>
-      <entry id="2005" string="Submit CDDB data">Submit CDDB data</entry>
+      <entry id="2005" string="Submit CDDB data">Wyślij dane do CDDB</entry>
       <entry id="2006" string="Configure general settings">Zmień ustawienia podstawowe</entry>
       <entry id="2007" string="Configure the selected audio encoder">Konfiguruj bieżący konwerter</entry>
       <entry id="2008" string="Start the encoding process">Rozpocznij proces konwersji</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Start the encoding process (deleting original files)</entry>
-      <entry id="2010" string="Pause/resume encoding">Wstrzymaj/wznów konwersję</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)">Wstrzymaj/wznów konwersję</entry>
+      <entry id="2010" string="Pause/resume encoding">Zatrzymaj konwersję</entry>
       <entry id="2011" string="Stop encoding">Zatrzymaj konwersję</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Encoding file</entry>
-      <entry id="3001" string="Time left">Time left</entry>
-      <entry id="3002" string="Selected encoder">Selected encoder</entry>
-      <entry id="3003" string="File progress">File progress</entry>
+      <entry id="3000" string="Encoding file">Konwersja pliku</entry>
+      <entry id="3001" string="Time left">Pozostało do końca</entry>
+      <entry id="3002" string="Selected encoder">Zastosowany konwerter</entry>
+      <entry id="3003" string="File progress">Postęp przetwarzania</entry>
       <entry id="3004" string="Output folder">Katalog docelowy</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 file(s) in joblist</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 plik(i) na liście</entry>
       <entry id="3006" string="none">brak</entry>
       <entry id="3007" string="Show title info">Wyświetl dane utworu</entry>
       <entry id="3008" string="Play">Odtwórz</entry>
@@ -168,7 +168,7 @@
       <entry id="3014" string="encoding">konwersja</entry>
       <entry id="3015" string="Create playlist">Utwórz listę odtwarzania</entry>
       <entry id="3016" string="Create cue sheet">Utwórz tabelę cue</entry>
-      <entry id="3017" string="Select">Select</entry>
+      <entry id="3017" string="Select">Przeglądaj</entry>
       <entry id="3018" string="Skip">Pomiń</entry>
       <entry id="3019" string="Encode to a single file">Konwertuj do jednego pliku</entry>
       <entry id="3020" string="Remove">Usuń z listy</entry>
@@ -182,7 +182,7 @@
       <entry id="3028" string="first letter upper case">zaczynaj wielką literą</entry>
       <entry id="3029" string="all lower case">wszystko małymi literami</entry>
       <entry id="3030" string="all upper case">wszystko wielkimi literami</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Select the folder in which the encoded files will be placed</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Wybierz katalog docelowy dla konwertowanych plików</entry>
       <entry id="3032" string="Sampling rate">Próbkowanie</entry>
       <entry id="3033" string="Sample resolution">Rozdzielczość próbki</entry>
       <entry id="3034" string="Number of samples">Liczba próbek</entry>
@@ -207,8 +207,8 @@
       <section name="Add folder">
 	<entry id="3100" string="Folder">Katalog</entry>
 	<entry id="3101" string="Add folder">Dodaj katalog</entry>
-	<entry id="3102" string="Choose folder">Choose folder</entry>
-	<entry id="3103" string="Select the folder to add to the joblist">Select the folder to add to the joblist</entry>
+	<entry id="3102" string="Choose folder">Wybierz katalog</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Wybierz katalog do umieszczenia na liście</entry>
       </section>
 
       <section name="Add by pattern">
@@ -216,8 +216,8 @@
 	<entry id="3201" string="Pattern">Wzór</entry>
 	<entry id="3202" string="Start folder">Katalog początkowy</entry>
 	<entry id="3203" string="Filename pattern">Wzór nazw plików</entry>
-	<entry id="3204" string="Search subfolders">Search subfolders</entry>
-	<entry id="3205" string="Select the folder to add to the joblist">Select the folder to add to the joblist</entry>
+	<entry id="3204" string="Search subfolders">Wybierz katalog do umieszczenia na liście</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Wybierz katalog do umieszczenia na liście</entry>
       </section>
 
       <section name="Character set">
@@ -227,7 +227,7 @@
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Nie wybrano żadnego pliku!</entry>
-	<entry id="3401" string="No files found matching pattern: %1">No files found matching pattern: %1</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Brak plików pasujących do wzoru: %1</entry>
       </section>
     </section>
 
@@ -237,39 +237,39 @@
       <entry id="3502" string="Errors / Warnings">Errors / Warnings</entry>
       <entry id="3503" string="Details">Details</entry>
       <entry id="3504" string="Error details">Error details</entry>
-      <entry id="3505" string="Time left">Time left</entry>
+      <entry id="3505" string="Time left">Pozostało do końca</entry>
     </section>
 
     <section name="CDDB">
 
       <section name="Submit">
-	<entry id="4000" string="CDDB data">Dane CDDB</entry>
-	<entry id="4001" string="Submit">Wyślij</entry>
-	<entry id="4002" string="No audio CD in drive!">Brak płyty audio CD w napędzie!</entry>
-	<entry id="4003" string="Submitting CD information">Wysyłanie danych płyty CD</entry>
-	<entry id="4004" string="Update joblist with this information">Uaktualnij listę zadań tymi danymi</entry>
-	<entry id="4005" string="Status">Stan</entry>
-	<entry id="4006" string="Successfully read CD!">Odczyt CD powiódł się!</entry>
-	<entry id="4007" string="Save entry">Zapisz wpis</entry>
-	<entry id="4008" string="Various artists">Różni wykonawcy</entry>
-	<entry id="4009" string="Data track">Ścieżka danych</entry>
-	<entry id="4010" string="Submit to online database later">Wyślij do bazy online później</entry>
-	<entry id="4011" string="Active CD-ROM drive">Bieżący napęd CD-ROM</entry>
+	<entry id="4000" string="CDDB data">Ustawienia konwersji</entry>
+	<entry id="4001" string="Submit">Konwerter</entry>
+	<entry id="4002" string="No audio CD in drive!">Katalog docelowy</entry>
+	<entry id="4003" string="Submitting CD information">Przeglądaj</entry>
+	<entry id="4004" string="Update joblist with this information">Wybierz katalog docelowy dla konwertowanych plików</entry>
+	<entry id="4005" string="Status">Jeśli możliwe, wykorzystaj katalog wejściowy</entry>
+	<entry id="4006" string="Successfully read CD!">Zezwól na zastąpienie pliku wejściowego</entry>
+	<entry id="4007" string="Save entry">Ustawienia</entry>
+	<entry id="4008" string="Various artists">Wzór nazw plików</entry>
+	<entry id="4009" string="Data track">Konwertuj „w locie”</entry>
+	<entry id="4010" string="Submit to online database later">Zachowaj zgrane pliki Wave</entry>
+	<entry id="4011" string="Active CD-ROM drive">Konwertuj do jednego pliku</entry>
 
 	<section name="Errors">
-	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Przy połączeniu z serwerem freedb wystąpił błąd.</entry>
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Katalog docelowy nie istnieje! Utworzyć go?</entry>
 	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Przed wysłaniem wypełnij wszystkie pola i tytuły utworów.</entry>
 	</section>
       </section>
 
       <section name="Query">
-	<entry id="4100" string="CDDB query">Zapytanie CDDB</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Baza freedb nie zawiera danych tej płyty CD.</entry>
-	<entry id="4102" string="Connecting to freedb server at">Łączenie z serwerem freedb</entry>
-	<entry id="4103" string="Requesting CD information">Wysyłanie zapytania o dane płyty CD</entry>
-	<entry id="4104" string="No exact matches found">Brak danych pasujących do wzorca</entry>
-	<entry id="4105" string="Multiple matches found">Znaleziono kilka wpisów pasujących do wzorca</entry>
-	<entry id="4106" string="Matches">Znalezione wpisy</entry>
+	<entry id="4100" string="CDDB query">Utwórz listy odtwarzania</entry>
+	<entry id="4101" string="No freedb entry for this disk.">Utwórz tabele cue</entry>
+	<entry id="4102" string="Connecting to freedb server at">Katalog docelowy</entry>
+	<entry id="4103" string="Requesting CD information">Przeglądaj</entry>
+	<entry id="4104" string="No exact matches found">Wykorzystaj katalog wyjściowy konwertera</entry>
+	<entry id="4105" string="Multiple matches found">Wzór nazw plików</entry>
+	<entry id="4106" string="Matches">Wybierz katalog do umieszczenia list odtwarzania</entry>
 	<entry id="4107" string="Select the entry that best fits your CD">Select the entry that best fits your CD</entry>
 	<entry id="4108" string="Would you like to perform this query again later?">Chcesz ponowić wysłanie tych zapytań później?</entry>
 	<entry id="4109" string="Would you like to perform the remaining queries again later?">Would you like to perform the remaining queries again later?</entry>
@@ -283,43 +283,43 @@
       </section>
 
       <section name="Manage queries">
-	<entry id="4200" string="Remove entry">Usuń wpis</entry>
-	<entry id="4201" string="CDDB queries">Zapytania do bazy CDDB</entry>
-	<entry id="4202" string="Query">Wyślij</entry>
-	<entry id="4203" string="Query all">Wyślij wszystkie</entry>
-	<entry id="4204" string="Query string">Treść zapytania</entry>
-	<entry id="4205" string="CDDB queries to perform">CDDB queries to perform</entry>
-	<entry id="4206" string="Querying CD information">Querying CD information</entry>
+	<entry id="4200" string="Remove entry">Uaktywnij lokalna bazę CDDB</entry>
+	<entry id="4201" string="CDDB queries">Uaktywnij zdalna bazę CDDB</entry>
+	<entry id="4202" string="Query">Katalog bazy CDDB</entry>
+	<entry id="4203" string="Query all">Przeglądaj</entry>
+	<entry id="4204" string="Query string">Wybierz folder dla bazy CDDB</entry>
+	<entry id="4205" string="CDDB queries to perform">Tryb dostępu do CDDB</entry>
+	<entry id="4206" string="Querying CD information">Serwer CDDB</entry>
       </section>
 
       <section name="Manage submits">
-	<entry id="4300" string="Remove entry">Usuń wpis</entry>
-	<entry id="4301" string="CDDB entries to submit">CDDB entries to submit</entry>
-	<entry id="4302" string="Submit all">Wyślij wszystko</entry>
-	<entry id="4303" string="CDDB data">Dane CDDB</entry>
-	<entry id="4304" string="Submit">Wyślij</entry>
-	<entry id="4305" string="Disc name">Nazwa płyty</entry>
+	<entry id="4300" string="Remove entry">Wybierz język</entry>
+	<entry id="4301" string="CDDB entries to submit">Edytuj plik językowy</entry>
+	<entry id="4302" string="Submit all">Informacje</entry>
+	<entry id="4303" string="CDDB data">Kodowanie</entry>
+	<entry id="4304" string="Submit">Autor</entry>
+	<entry id="4305" string="Disc name">URL</entry>
 	<entry id="4306" string="Preview">Podgląd</entry>
 	<entry id="4307" string="Category">Kategoria</entry>
 	<entry id="4308" string="Submitting CD information">Wysyłanie danych płyty CD</entry>
       </section>
 
       <section name="Manage cache">
-	<entry id="4400" string="CDDB data">Dane CDDB</entry>
-	<entry id="4401" string="Update joblist with this information">Uaktualnij listę zadań tymi danymi</entry>
-	<entry id="4402" string="Charset">Zestaw znaków</entry>
-	<entry id="4403" string="Downloaded CDDB entries">Downloaded CDDB entries</entry>
-	<entry id="4404" string="Disc name">Nazwa płyty</entry>
-	<entry id="4405" string="Preview">Podgląd</entry>
+	<entry id="4400" string="CDDB data">Identyfikatory</entry>
+	<entry id="4401" string="Update joblist with this information">Kodowanie identyfikatorów</entry>
+	<entry id="4402" string="Charset">Domyślny opis</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Zastąp istniejące komentarze standardowymi komentarzami</entry>
+	<entry id="4404" string="Disc name">Wzór nazw plików</entry>
+	<entry id="4405" string="Preview">Kodowanie</entry>
 	<entry id="4406" string="Remove entry">Usuń wpis</entry>
 	<entry id="4407" string="Save entry">Zapisz wpis</entry>
       </section>
     </section>
 
     <section name="Configuration">
-      <entry id="5000" string="General settings setup">Ustawienia programu</entry>
-      <entry id="5001" string="Encoders">Konwertery</entry>
-      <entry id="5002" string="Playlists">Listy odtwarzania</entry>
+      <entry id="5000" string="General settings setup">O programie %1</entry>
+      <entry id="5001" string="Encoders">Tłumaczenie: %1.</entry>
+      <entry id="5002" string="Playlists">Program jest rozpowszechniany zgodnie z&#10;warunkami Licencji Publicznej GNU (GPL).</entry>
       <entry id="5003" string="Language">Język</entry>
       <entry id="5004" string="Component configuration">Component configuration</entry>
       <entry id="5005" string="CDDB">CDDB</entry>
@@ -343,14 +343,14 @@
       <entry id="5023" string="Resources">Resources</entry>
       <entry id="5024" string="Verifiers">Verifiers</entry>
       <entry id="5025" string="Taggers">Taggers</entry>
-      <entry id="5026" string="Processing">Processing</entry>
+      <entry id="5026" string="Processing">Konwersja</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Ustawienia konwersji</entry>
 	<entry id="5101" string="Encoder">Konwerter</entry>
 	<entry id="5102" string="Output folder">Katalog docelowy</entry>
-	<entry id="5103" string="Select">Select</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Select the folder in which the encoded files will be placed</entry>
+	<entry id="5103" string="Select">Przeglądaj</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Wybierz katalog docelowy dla konwertowanych plików</entry>
 	<entry id="5105" string="Use input file folder if possible">Jeśli możliwe, wykorzystaj katalog wejściowy</entry>
 	<entry id="5106" string="Allow overwriting input file">Zezwól na zastąpienie pliku wejściowego</entry>
 	<entry id="5107" string="Options">Ustawienia</entry>
@@ -374,7 +374,7 @@
 	<entry id="5200" string="Create playlists">Utwórz listy odtwarzania</entry>
 	<entry id="5201" string="Create cue sheets">Utwórz tabele cue</entry>
 	<entry id="5202" string="Output folder">Katalog docelowy</entry>
-	<entry id="5203" string="Select">Select</entry>
+	<entry id="5203" string="Select">Przeglądaj</entry>
 	<entry id="5204" string="Use encoder output folder">Wykorzystaj katalog wyjściowy konwertera</entry>
 	<entry id="5205" string="Filename pattern">Wzór nazw plików</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Select the folder in which the playlist files will be placed</entry>
@@ -387,7 +387,7 @@
 	<entry id="5300" string="Enable local CDDB database">Uaktywnij lokalna bazę CDDB</entry>
 	<entry id="5301" string="Enable remote CDDB database">Uaktywnij zdalna bazę CDDB</entry>
 	<entry id="5302" string="CDDB path">CDDB path</entry>
-	<entry id="5303" string="Select">Select</entry>
+	<entry id="5303" string="Select">Przeglądaj</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Select the folder of the CDDB database</entry>
 	<entry id="5305" string="CDDB access mode">CDDB access mode</entry>
 	<entry id="5306" string="CDDB server">CDDB server</entry>
@@ -514,8 +514,8 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing">Signal processing</entry>
-	<entry id="5901" string="Enable signal processing">Enable signal processing</entry>
-	<entry id="5902" string="Enable processing during playback">Enable processing during playback</entry>
+	<entry id="5901" string="Enable signal processing">Rozpocznij konwersję</entry>
+	<entry id="5902" string="Enable processing during playback">Rozpocznij konwersję z</entry>
 	<entry id="5903" string="Components">Components</entry>
 	<entry id="5904" string="Available">Available</entry>
 	<entry id="5905" string="Selected">Selected</entry>
@@ -527,26 +527,26 @@
     </section>
 
     <section name="About">
-      <entry id="6000" string="About %1">O programie %1</entry>
-      <entry id="6001" string="Translated by %1.">Tłumaczenie: %1.</entry>
-      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Program jest rozpowszechniany zgodnie z&#10;warunkami Licencji Publicznej GNU (GPL).</entry>
+      <entry id="6000" string="About %1">Dostępna jest nowa wersja programu %1!&#10;Chcesz teraz zobaczyć listę dostępnych aktualizacji?</entry>
+      <entry id="6001" string="Translated by %1.">Nie ma nowej wersji programu!</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Sprawdzaj przy uruchomieniu</entry>
     </section>
 
     <section name="Updates">
-      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Dostępna jest nowa wersja programu %1!&#10;Chcesz teraz zobaczyć listę dostępnych aktualizacji?</entry>
-      <entry id="6101" string="There are no updates available at the moment!">Nie ma nowej wersji programu!</entry>
-      <entry id="6102" string="Check for updates at startup">Sprawdzaj przy uruchomieniu</entry>
-      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 może przeprowadzać automatyczne sprawdzanie&#10;uaktualnień programu podczas startu.&#10;&#10;Czy chcesz włączyć poszukiwanie aktualizacji podczas startu programu?</entry>
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Program %1 jest dostępny w %2 wersjach językowych.&#10;Łatwo można przetłumaczyć go na dowolny język, wykorzystując&#10;dołączony program smooth Translator.</entry>
+      <entry id="6101" string="There are no updates available at the moment!">Program %1 zawiera konwertery dla formatów LAME, Ogg Vorbis,&#10;FAAC, FLAC oraz Bonk. Konwerter formatu VQF można&#10;pobrać z witryny programu: %2.</entry>
+      <entry id="6102" string="Check for updates at startup">Program %1 może korzystać z rozszerzeń wejściowych&#10;programu WinAmp 2 do obsługi innych formatów plików.&#10;W tym celu skopiuj pliki in_*.dll do katalogu %1/plugins.</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">Możliwe jest wysyłanie do bazy CD freedb danych zawierających&#10;znaki w formacie Unicode. Dzięki temu można wysyłać dane CD,&#10;w których nazwa wykonawcy czy tytuł utworu zawierają znaki&#10;spoza podstawowego zestawu, na przykład akcentowane&#10;specyficzne dla danego języka.</entry>
     </section>
 
     <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">Program %1 jest dostępny w %2 wersjach językowych.&#10;Łatwo można przetłumaczyć go na dowolny język, wykorzystując&#10;dołączony program smooth Translator.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">Program %1 zawiera konwertery dla formatów LAME, Ogg Vorbis,&#10;FAAC, FLAC oraz Bonk. Konwerter formatu VQF można&#10;pobrać z witryny programu: %2.</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">Program %1 może korzystać z rozszerzeń wejściowych&#10;programu WinAmp 2 do obsługi innych formatów plików.&#10;W tym celu skopiuj pliki in_*.dll do katalogu %1/plugins.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Możliwe jest wysyłanie do bazy CD freedb danych zawierających&#10;znaki w formacie Unicode. Dzięki temu można wysyłać dane CD,&#10;w których nazwa wykonawcy czy tytuł utworu zawierają znaki&#10;spoza podstawowego zestawu, na przykład akcentowane&#10;specyficzne dla danego języka.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Czy masz jakiś pomysł, jak ulepszyć program %1?&#10;Swoje sugestie możesz przekazać poprzez stronę WWW projektu&#10;%1 w serwisie SourceForge – %2&#10;lub poprzez e-mail do %3.</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Czy podoba Ci się program %1? Jest on dostępny&#10;bezpłatnie, ale możesz wspomóc jego rozwój, dotując projekt&#10;%1. Pieniądze możesz przesłać do %2&#10;przez serwis PayPal. Więcej szczegółów znajdziesz na&#10;stronie %3.</entry>
+      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">Wątek konwersji jeszcze trwa! Na pewno zakończyć program?</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">Trwa konwersja</entry>
+      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">Nie można załadować sterowników ASPI! Zgrywanie płyt CD zostało wyłączone!</entry>
+      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Nie można otworzyć pliku %1&#10;&#10;Błąd %2</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Usuń oryginalne pliki po zakończeniu konwersji</entry>
+      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Zaznaczenie tej opcji spowoduje skasowanie&#10;oryginalnych plików po konwersji. Kontynuować?</entry>
+      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Plik o tej nazwie już istnieje</entry>
     </section>
 
     <section name="Messages">
@@ -593,7 +593,7 @@
       <section name="Format">
 	<entry id="8100" string="Select sample format">Select sample format</entry>
 	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:</entry>
-	<entry id="8102" string="Select">Select</entry>
+	<entry id="8102" string="Select">Przeglądaj</entry>
       </section>
 
       <section name="Errors">
@@ -634,19 +634,19 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="10000" string="Decoding">Decoding</entry>
-	<entry id="10001" string="Enable 24 bit decoding">Enable 24 bit decoding</entry>
+	<entry id="10000" string="Decoding">Wesprzyj ten projekt</entry>
+	<entry id="10001" string="Enable 24 bit decoding">Prosimy o wsparcie tego projektu!</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder">Decoder</entry>
-	<entry id="11001" string="Active decoder">Active decoder</entry>
+	<entry id="11000" string="Decoder">Konfiguracja</entry>
+	<entry id="11001" string="Active decoder">O rozszerzeniu</entry>
  	<entry id="11002" string="auto select">auto select</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information">Title information</entry>
-	<entry id="12001" string="Read tags from referenced files">Read tags from referenced files</entry>
+	<entry id="12000" string="Title information">Długość</entry>
+	<entry id="12001" string="Read tags from referenced files">Rozmiar</entry>
 	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">Prefer cue sheet metadata over referenced files' tags</entry>
 	<entry id="12003" string="Alternative files">Alternative files</entry>
 	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">Look for compressed alternatives if referenced Wave files cannot be located</entry>
@@ -1077,7 +1077,7 @@
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatyzacja</entry>
 	  <entry id="102102" string="Video files">Video files</entry>
-	  <entry id="102103" string="Select">Select</entry>
+	  <entry id="102103" string="Select">Przeglądaj</entry>
 	  <entry id="102104" string="Select the folder to save downloaded video files to">Select the folder to save downloaded video files to</entry>
 	  <entry id="102105" string="Downloads">Downloads</entry>
 	  <entry id="102106" string="Maximum number of simultaneous downloads">Maximum number of simultaneous downloads</entry>
@@ -1107,8 +1107,8 @@
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Podstawowe</entry>
-	  <entry id="103101" string="Title information">Title information</entry>
-	  <entry id="103102" string="Disc">Disc</entry>
+	  <entry id="103101" string="Title information">Długość</entry>
+	  <entry id="103102" string="Disc">nieznany rodzaj</entry>
 	  <entry id="103103" string="Cover art">Cover art</entry>
 	  <entry id="103104" string="Covers">Covers</entry>
 	  <entry id="103105" string="Type">Type</entry>
