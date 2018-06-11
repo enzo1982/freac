@@ -13,24 +13,24 @@
   <data>
     <entry id="100" string="OK">ΟΚ</entry>
     <entry id="101" string="Cancel">Άκυρο</entry>
-    <entry id="102" string="Close">Εμφάνιση ερωτήσεων CDDB στην ουρά...</entry>
+    <entry id="102" string="Close">Κλείσιμο</entry>
 
     <entry id="200" string="Error">Σφάλμα</entry>
-    <entry id="201" string="Warning">Warning</entry>
-    <entry id="202" string="Info">Σύνδεση με τον freedb server στο</entry>
+    <entry id="201" string="Warning">Πληροφορίες</entry>
+    <entry id="202" string="Info">Καλλιτέχνης</entry>
 
-    <entry id="210" string="Do not display this warning again">Do not display this warning again</entry>
-    <entry id="211" string="Do not display this note again">Do not display this note again</entry>
+    <entry id="210" string="Do not display this warning again">Τίτλος</entry>
+    <entry id="211" string="Do not display this note again">Άλμπουμ</entry>
 
-    <entry id="300" string="Artist">Άλμπουμ</entry> 
-    <entry id="301" string="Title">Μέγεθος</entry> 
-    <entry id="302" string="Album">Προεπιλεγμένο σχόλιο:</entry> 
-    <entry id="303" string="Track">Καλλιτέχνης</entry> 
-    <entry id="304" string="Genre">Προεπιλεγμένες πληροφορίες</entry> 
-    <entry id="305" string="Comment">Διαγραφή καταχώρησης</entry> 
-    <entry id="306" string="Year">Tag πληροφοριών</entry>
-    <entry id="307" string="Disc">Disc</entry>
-    <entry id="308" string="Rating">Rating</entry>
+    <entry id="300" string="Artist">Κομμάτι</entry> 
+    <entry id="301" string="Title">Είδος</entry> 
+    <entry id="302" string="Album">Σχόλιο</entry> 
+    <entry id="303" string="Track">Έτος</entry> 
+    <entry id="304" string="Genre">άγνωστος καλλιτέχνης</entry> 
+    <entry id="305" string="Comment">άγνωστος τίτλος</entry> 
+    <entry id="306" string="Year">άγνωστο άλμπουμ</entry>
+    <entry id="307" string="Disc">άγνωστο είδος</entry>
+    <entry id="308" string="Rating">άγνωστο έτος</entry>
     <entry id="309" string="File name">File name</entry>
     <entry id="310" string="File type">File type</entry>
     <entry id="311" string="Album artist">Album artist</entry>
@@ -57,67 +57,67 @@
       <entry id="511" string="%1 Hz">%1 Hz</entry>
       <entry id="512" string="%1 kHz">%1 kHz</entry>
       <entry id="513" string="%1 ms">%1 ms</entry>
-      <entry id="514" string="%1 min">%1 min</entry>
+      <entry id="514" string="%1 min">%1 λεπτά</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 bytes</entry>
-      <entry id="517" string="%1 kB">%1 kB</entry>
+      <entry id="517" string="%1 kB">%1%</entry>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
     <section name="Menu">
       <entry id="1000" string="File">Αρχείο</entry>
       <entry id="1001" string="Options">Επιλογές</entry>
-      <entry id="1002" string="Database">Δεδομένα CDDB</entry>
-      <entry id="1003" string="Processing">Processing</entry>
-      <entry id="1004" string="Encode">Κωδικοποίηση</entry>
+      <entry id="1002" string="Database">Βάση δεδομένων</entry>
+      <entry id="1003" string="Processing">Κωδικοποίηση</entry>
+      <entry id="1004" string="Encode">Βοήθεια</entry>
       <entry id="1005" string="Help">Πρόσθετα εισόδου</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Προσθήκη</entry>
 	<entry id="1101" string="Remove">Διαγραφή</entry>
-	<entry id="1102" string="Load joblist">Load joblist</entry>
-	<entry id="1103" string="Save joblist">Save joblist</entry>
+	<entry id="1102" string="Load joblist">Φόρτωση λίστας εργασιών</entry>
+	<entry id="1103" string="Save joblist">Αποθήκευση λίστας εργασιών</entry>
 	<entry id="1104" string="Clear joblist">Καθαρισμός Λίστας Εργασίας</entry>
 	<entry id="1105" string="Exit">Έξοδος</entry>
 	<entry id="1106" string="Audio file(s)">Αρχείο(α) ήχου</entry>
 	<entry id="1107" string="Audio CD contents">Περιεχόμενα CD ήχου</entry>
-	<entry id="1108" string="By pattern">Προσθήκη φακέλου</entry>
-	<entry id="1109" string="From folder">Επιλέξτε φάκελο:</entry>
+	<entry id="1108" string="By pattern">Σύμφωνα με πρότυπο</entry>
+	<entry id="1109" string="From folder">Από φάκελο</entry>
       </section>
 
       <section name="Database">
-	<entry id="1200" string="Query CDDB database">Πρόσθετα</entry>
-	<entry id="1201" string="Submit CDDB data">Submit CDDB data</entry>
-	<entry id="1202" string="Query CDDB database later">Ερώτηση</entry>
-	<entry id="1203" string="Show queued CDDB entries">Show queued CDDB entries</entry>
-	<entry id="1204" string="Show queued CDDB queries">Show queued CDDB queries</entry>
-	<entry id="1205" string="Enable CDDB cache">Κανένα CD ήχου στον οδηγό!</entry>
-	<entry id="1206" string="Manage CDDB cache entries">Manage CDDB cache entries</entry>
-	<entry id="1207" string="Automatic CDDB queries">Port:</entry>
+	<entry id="1200" string="Query CDDB database">Ερώτηση βάσης δεδομένων CDDB</entry>
+	<entry id="1201" string="Submit CDDB data">Καταχώρηση δεδομένων στο CDDB</entry>
+	<entry id="1202" string="Query CDDB database later">Ερώτηση CDDB αργότερα</entry>
+	<entry id="1203" string="Show queued CDDB entries">Εμφάνιση καταχωρήσεων CDDB στην ουρά</entry>
+	<entry id="1204" string="Show queued CDDB queries">Εμφάνιση ερωτήσεων CDDB στην ουρά</entry>
+	<entry id="1205" string="Enable CDDB cache">Ενεργοποίηση CDDB cache</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Διαχείριση καταχωρίσεων CDDB cache</entry>
+	<entry id="1207" string="Automatic CDDB queries">Αυτόματη ερώτηση CDDB</entry>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings">General settings</entry>
-	<entry id="1301" string="Configure selected encoder">Configure selected encoder</entry>
-	<entry id="1302" string="Active CD-ROM drive">Διόρθωση jitter</entry>
+	<entry id="1300" string="General settings">Γενικές ρυθμίσεις</entry>
+	<entry id="1301" string="Configure selected encoder">Ρύθμιση επιλεγμένου κωδικοποιητή</entry>
+	<entry id="1302" string="Active CD-ROM drive">Ενεργός οδηγός CD-ROM</entry>
 	<entry id="1303" string="Active configuration">Active configuration</entry>
 	<entry id="1304" string="Default configuration">Default configuration</entry>
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing">Enable signal processing</entry>
-	<entry id="1401" string="Enable processing during playback">Enable processing during playback</entry>
-	<entry id="1402" string="Configure signal processing">Configure signal processing</entry>
-	<entry id="1403" string="Selected signal processors">Selected signal processors</entry>
+	<entry id="1400" string="Enable signal processing">Έναρξη κωδικοποίησης</entry>
+	<entry id="1401" string="Enable processing during playback">Έναρξη κωδικοποίησης</entry>
+	<entry id="1402" string="Configure signal processing">Παύση/συνέχεια κωδικοποίησης</entry>
+	<entry id="1403" string="Selected signal processors">Διακοπή κωδικοποίησης</entry>
       </section>
 
       <section name="Encode">
-	<entry id="1500" string="Start encoding">Έναρξη κωδικοποίησης</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">Start encoding (deleting original files)</entry>
-	<entry id="1502" string="Start encoding with">Start encoding with</entry>
-	<entry id="1503" string="Pause/resume encoding">άγνωστο έτος</entry>
-	<entry id="1504" string="Stop encoding">Διακοπή κωδικοποίησης</entry>
-	<entry id="1505" string="Encoder options">Φάκελος CDDB:</entry>
+	<entry id="1500" string="Start encoding">Θέματα στη βοήθεια</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">Εμφάνιση συμβουλής της ημέρας</entry>
+	<entry id="1502" string="Start encoding with">Έλεγχος ενημερώσεων τώρα</entry>
+	<entry id="1503" string="Pause/resume encoding">Έλεγχος για ενημερώσεις στην εκκίνηση</entry>
+	<entry id="1504" string="Stop encoding">Σχετικά με το %1</entry>
+	<entry id="1505" string="Encoder options">index_el.html</entry>
 	<entry id="1506" string="Encode to a single file">Ενεργοποίηση τοπικής βάσης δεδομένων CDDB</entry>
 	<entry id="1507" string="Encode to input file folder if possible">Επιλογές κωδικοποιητή</entry>
 	<entry id="1508" string="Allow overwriting input file">Παράλειψη</entry>
@@ -140,62 +140,62 @@
       <entry id="2001" string="Add audio CD contents to the joblist">Προσθήκη περιεχομένων CD ήχου στη λίστα εργασίας</entry>
       <entry id="2002" string="Remove the selected entry from the joblist">Διαγραφή επιλεγμένου αρχείου από τη λίστα εργασίας</entry>
       <entry id="2003" string="Clear the entire joblist">Καθαρισμός της λίστας εργασίας</entry>
-      <entry id="2004" string="Query CDDB database">Πρόσθετα</entry>
-      <entry id="2005" string="Submit CDDB data">Submit CDDB data</entry>
+      <entry id="2004" string="Query CDDB database">Ερώτηση βάσης δεδομένων CDDB</entry>
+      <entry id="2005" string="Submit CDDB data">Καταχώρηση δεδομένων στο CDDB</entry>
       <entry id="2006" string="Configure general settings">Ρύθμιση γενικών επιλογών</entry>
       <entry id="2007" string="Configure the selected audio encoder">Ρύθμιση επιλεγμένου κωδικοποιητή</entry>
       <entry id="2008" string="Start the encoding process">Έναρξη της διαδικασίας κωδικοποίησης</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Start the encoding process (deleting original files)</entry>
-      <entry id="2010" string="Pause/resume encoding">άγνωστο έτος</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)">Παύση/συνέχεια κωδικοποίησης</entry>
+      <entry id="2010" string="Pause/resume encoding">Διακοπή κωδικοποίησης</entry>
       <entry id="2011" string="Stop encoding">Διακοπή κωδικοποίησης</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Encoding file</entry>
-      <entry id="3001" string="Time left">Time left</entry>
-      <entry id="3002" string="Selected encoder">Selected encoder</entry>
-      <entry id="3003" string="File progress">File progress</entry>
-      <entry id="3004" string="Output folder">Εξερεύνηση</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 file(s) in joblist</entry>
+      <entry id="3000" string="Encoding file">Κωδικοποίηση αρχείου</entry>
+      <entry id="3001" string="Time left">Χρόνος που απομένει</entry>
+      <entry id="3002" string="Selected encoder">Επιλεγμένος κωδικοποιητής</entry>
+      <entry id="3003" string="File progress">Πρόοδος αρχείου</entry>
+      <entry id="3004" string="Output folder">Φάκελος αποθήκευσης</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 αρχείο(α) στη Λίστα Εργασίας</entry>
       <entry id="3006" string="none">κανένα</entry>
-      <entry id="3007" string="Show title info">Ρύθμιση γενικών επιλογών</entry>
-      <entry id="3008" string="Play">Αδύνατη η κωδικοποίηση κατά την αναπαραγωγή!</entry>
-      <entry id="3009" string="Stop">Ενεργοποίηση απομακρυσμένης βάσησ δεδομένων CDDB</entry>
-      <entry id="3010" string="Select all">Εμφάνιση συμβουλής της ημέρας</entry>
-      <entry id="3011" string="Select none">Ο %1 είναι διαθέσιμος σε %2 γλώσσες. Αν η γλώσσα&#10;σας δεν είναι διαθέσιμη, χρησιμοποιήστε εύκολα την&#10;εφαρμογή 'smooth Translator' για να το μεταφράσετε!</entry>
-      <entry id="3012" string="Toggle selection">Ο %1 υποστηρίζει τους κωδικοποιητές LAME, Ogg Vorbis,&#10;FAAC, FLAC και Bonk. Κωδικοποιητής για τη μορφή VQF είναι&#10;διαθέσιμος στο website του %1: %2</entry>
-      <entry id="3013" string="ripping/decoding">Χρήση ονομάτων αρχείων Unicode</entry>
-      <entry id="3014" string="encoding">Αρχεία ΑΑC</entry>
-      <entry id="3015" string="Create playlist">Εγγραφή ID3v2 tag</entry>
-      <entry id="3016" string="Create cue sheet">Εγγραφή tag σχολίων Vorbis</entry>
-      <entry id="3017" string="Select">Select</entry>
-      <entry id="3018" string="Skip">Επιλέξτε φάκελο της βάσης δεδομένων CDDB:</entry>
-      <entry id="3019" string="Encode to a single file">Ενεργοποίηση τοπικής βάσης δεδομένων CDDB</entry>
+      <entry id="3007" string="Show title info">Προβολή πληροφοριών τίτλου</entry>
+      <entry id="3008" string="Play">Αναπαραγωγή</entry>
+      <entry id="3009" string="Stop">Διακοπή</entry>
+      <entry id="3010" string="Select all">Επιλογή όλων</entry>
+      <entry id="3011" string="Select none">Αποεπιλογή όλων</entry>
+      <entry id="3012" string="Toggle selection">Επιλογή</entry>
+      <entry id="3013" string="ripping/decoding">ripping/αποσυμπίεση</entry>
+      <entry id="3014" string="encoding">κωδικοποίηση</entry>
+      <entry id="3015" string="Create playlist">Δημιουργία λίστας αναπαραγωγής</entry>
+      <entry id="3016" string="Create cue sheet">Δημιουργία cue sheet</entry>
+      <entry id="3017" string="Select">Εξερεύνηση</entry>
+      <entry id="3018" string="Skip">Παράλειψη</entry>
+      <entry id="3019" string="Encode to a single file">Κωδικοποίηση ενός αρχείου</entry>
       <entry id="3020" string="Remove">Διαγραφή</entry>
       <entry id="3021" string="Clear joblist">Καθαρισμός Λίστας Εργασίας</entry>
-      <entry id="3022" string="Use for all selected tracks">Ρύθμιση κεφαλαίων/πεζών</entry>
-      <entry id="3023" string="Interpret string as">όλες οι λέξεις κεφαλαία</entry>
-      <entry id="3024" string="selected tracks">οι μεγάλες λέξεις κεφαλαία</entry>
-      <entry id="3025" string="Adjust upper/lower case">Πρώτο γράμμα κεφαλαίο</entry>
-      <entry id="3026" string="all words upper case">Όλα πεζά</entry>
-      <entry id="3027" string="long words upper case">Όλα κεφαλαία</entry>
-      <entry id="3028" string="first letter upper case">Κατάσταση</entry>
-      <entry id="3029" string="all lower case">Επιτυχής ανάγνωση CD!</entry>
-      <entry id="3030" string="all upper case">Σχόλιο</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Select the folder in which the encoded files will be placed</entry>
-      <entry id="3032" string="Sampling rate">Mono</entry>
-      <entry id="3033" string="Sample resolution">bytes</entry>
-      <entry id="3034" string="Number of samples">bit</entry>
-      <entry id="3035" string="Channels">Ενεργοποίηση CRC</entry>
-      <entry id="3036" string="Mono">λεπτά</entry>
-      <entry id="3037" string="Stereo">Λειτουργία VBR</entry>
-      <entry id="3038" string="Length">Έτος</entry>
+      <entry id="3022" string="Use for all selected tracks">Χρήση για όλα τα επιλεγμένα κομμάτια</entry>
+      <entry id="3023" string="Interpret string as">Ανάγνωση συμβολοσειράς ως</entry>
+      <entry id="3024" string="selected tracks">επιλεγμένα κομμάτια</entry>
+      <entry id="3025" string="Adjust upper/lower case">Ρύθμιση κεφαλαίων/πεζών</entry>
+      <entry id="3026" string="all words upper case">όλες οι λέξεις κεφαλαία</entry>
+      <entry id="3027" string="long words upper case">οι μεγάλες λέξεις κεφαλαία</entry>
+      <entry id="3028" string="first letter upper case">Πρώτο γράμμα κεφαλαίο</entry>
+      <entry id="3029" string="all lower case">Όλα πεζά</entry>
+      <entry id="3030" string="all upper case">Όλα κεφαλαία</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Επιλέξτε φάκελο τοποθέτησης των κωδικοποιημένων αρχέιων</entry>
+      <entry id="3032" string="Sampling rate">Ρυθμός δειγματοληψίας</entry>
+      <entry id="3033" string="Sample resolution">Ανάλυση δείγματος</entry>
+      <entry id="3034" string="Number of samples">Αριθμός δειγμάτων</entry>
+      <entry id="3035" string="Channels">Κανάλια</entry>
+      <entry id="3036" string="Mono">Mono</entry>
+      <entry id="3037" string="Stereo">Stereo</entry>
+      <entry id="3038" string="Length">Διάρκεια</entry>
       <entry id="3039" string="File">Αρχείο</entry>
-      <entry id="3040" string="Size">Είδος</entry>
-      <entry id="3041" string="Bitrate">Αυθεντικό bit</entry>
+      <entry id="3040" string="Size">Μέγεθος</entry>
+      <entry id="3041" string="Bitrate">Ρυθμός μετάδοσης</entry>
       <entry id="3042" string="Audio Files">Αρχεία ήχου</entry>
       <entry id="3043" string="All Files">Όλα τα αρχεία</entry>
-      <entry id="3044" string="Playlist Files">Μέγεθος Block:</entry>
+      <entry id="3044" string="Playlist Files">Αρχεία λίστας αναπαραγωγής</entry>
       <entry id="3045" string="Active decoder">Active decoder</entry>
       <entry id="3046" string="Joblist">Joblist</entry>
       <entry id="3047" string="unknown">unknown</entry>
@@ -205,19 +205,19 @@
       <entry id="3051" string="Open">Open</entry>
 
       <section name="Add folder">
-	<entry id="3100" string="Folder">Επιλέξτε φάκελο για προσθήκη στη λίστα εργασιών:</entry>
-	<entry id="3101" string="Add folder">Προσθήκη αρχείων με πρότυπο</entry>
-	<entry id="3102" string="Choose folder">Choose folder</entry>
-	<entry id="3103" string="Select the folder to add to the joblist">Select the folder to add to the joblist</entry>
+	<entry id="3100" string="Folder">Φάκελος</entry>
+	<entry id="3101" string="Add folder">Προσθήκη φακέλου</entry>
+	<entry id="3102" string="Choose folder">Επιλέξτε φάκελο</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Επιλέξτε φάκελο για προσθήκη στη λίστα εργασιών</entry>
       </section>
 
       <section name="Add by pattern">
-	<entry id="3200" string="Add files by pattern">Δε βρέθηκαν αρχεία να ταιριάζουν στο πρότυπο:</entry>
-	<entry id="3201" string="Pattern">Επεξεργασία αρχείου γλώσσας</entry>
-	<entry id="3202" string="Start folder">Χρήση για όλα τα επιλεγμένα κομμάτια</entry>
-	<entry id="3203" string="Filename pattern">Επιλογή όλων</entry>
-	<entry id="3204" string="Search subfolders">Search subfolders</entry>
-	<entry id="3205" string="Select the folder to add to the joblist">Select the folder to add to the joblist</entry>
+	<entry id="3200" string="Add files by pattern">Προσθήκη αρχείων με πρότυπο</entry>
+	<entry id="3201" string="Pattern">Πρότυπο</entry>
+	<entry id="3202" string="Start folder">Φάκελος εκκίνησης</entry>
+	<entry id="3203" string="Filename pattern">Στυλ ονόματος αρχείου</entry>
+	<entry id="3204" string="Search subfolders">Επιλέξτε φάκελο για προσθήκη στη λίστα εργασιών</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Επιλέξτε φάκελο για προσθήκη στη λίστα εργασιών</entry>
       </section>
 
       <section name="Character set">
@@ -227,7 +227,7 @@
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Δεν έχετε επιλέξει αρχείο!</entry>
-	<entry id="3401" string="No files found matching pattern: %1">No files found matching pattern: %1</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Δε βρέθηκαν αρχεία να ταιριάζουν στο πρότυπο: %1</entry>
       </section>
     </section>
 
@@ -237,39 +237,39 @@
       <entry id="3502" string="Errors / Warnings">Errors / Warnings</entry>
       <entry id="3503" string="Details">Details</entry>
       <entry id="3504" string="Error details">Error details</entry>
-      <entry id="3505" string="Time left">Time left</entry>
+      <entry id="3505" string="Time left">Χρόνος που απομένει</entry>
     </section>
 
     <section name="CDDB">
 
       <section name="Submit">
-	<entry id="4000" string="CDDB data">Παρακαλώ συμπληρώστε όλα τα πεδία και τίτλους κομματιών πριν την καταχώρηση.</entry>
-	<entry id="4001" string="Submit">Προτίμηση CDDB από το CD Text</entry>
-	<entry id="4002" string="No audio CD in drive!">Επιλογές CD</entry>
-	<entry id="4003" string="Submitting CD information">Βοήθεια</entry>
-	<entry id="4004" string="Update joblist with this information">Αποθήκευση λίστας εργασιών...</entry>
-	<entry id="4005" string="Status">Διαχείριση καταχωρίσεων CDDB cache...</entry>
-	<entry id="4006" string="Successfully read CD!">Αποθήκευση καταχώρησης</entry>
-	<entry id="4007" string="Save entry">Συμβολοσειρά</entry>
-	<entry id="4008" string="Various artists">Χρήση φακέλου εισόδου όπου είναι δυνατό</entry>
-	<entry id="4009" string="Data track">Κωδικοποίηση στο φάκελο εισόδου αν είναι δυνατό</entry>
-	<entry id="4010" string="Submit to online database later">Εμφάνιση καταχωρήσεων CDDB στην ουρά...</entry>
-	<entry id="4011" string="Active CD-ROM drive">Διόρθωση jitter</entry>
+	<entry id="4000" string="CDDB data">Ρύθμιση κωδικοποιητή</entry>
+	<entry id="4001" string="Submit">Κωδικοποιητής</entry>
+	<entry id="4002" string="No audio CD in drive!">Φάκελος αποθήκευσης</entry>
+	<entry id="4003" string="Submitting CD information">Εξερεύνηση</entry>
+	<entry id="4004" string="Update joblist with this information">Επιλέξτε φάκελο τοποθέτησης των κωδικοποιημένων αρχέιων</entry>
+	<entry id="4005" string="Status">Χρήση φακέλου εισόδου όπου είναι δυνατό</entry>
+	<entry id="4006" string="Successfully read CD!">Αντικατάσταση αρχείου εισόδου</entry>
+	<entry id="4007" string="Save entry">Επιλογές</entry>
+	<entry id="4008" string="Various artists">Στυλ ονόματος αρχείου</entry>
+	<entry id="4009" string="Data track">Κωδικοποίηση 'On-The-Fly'</entry>
+	<entry id="4010" string="Submit to online database later">Διατήρηση αποθηκευμένων αρχείων wave</entry>
+	<entry id="4011" string="Active CD-ROM drive">Κωδικοποίηση ενός αρχείου</entry>
 
 	<section name="Errors">
-	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Διεύθυνση email:</entry>
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Ο φάκελος εξόδου δεν υπάρχει! Θέλετε να δημιουργηθεί;</entry>
 	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Καταχώρηση πληροφοριών CD</entry>
 	</section>
       </section>
 
       <section name="Query">
-	<entry id="4100" string="CDDB query">Ερώτηση CDDB</entry>
-	<entry id="4101" string="No freedb entry for this disk.">Ζήτηση πληροφοριών για το CD</entry>
-	<entry id="4102" string="Connecting to freedb server at">Παρακαλώ εισάγετε έγκυρο email.</entry>
-	<entry id="4103" string="Requesting CD information">Δε βρέθηκε παρόμοια καταγραφή</entry>
-	<entry id="4104" string="No exact matches found">Επιλέξτε την καταγραφή που ταιριάζει στο CD:</entry>
-	<entry id="4105" string="Multiple matches found">Εκτεταμένες επιλογές CDDB</entry>
-	<entry id="4106" string="Matches">CGI scripts</entry>
+	<entry id="4100" string="CDDB query">Δημιουργία λιστών αναπαραγωγής</entry>
+	<entry id="4101" string="No freedb entry for this disk.">Δημιουργία cue sheets</entry>
+	<entry id="4102" string="Connecting to freedb server at">Φάκελος αποθήκευσης</entry>
+	<entry id="4103" string="Requesting CD information">Εξερεύνηση</entry>
+	<entry id="4104" string="No exact matches found">Χρήση φακέλου αποθήκευσης κωδικοποιητή</entry>
+	<entry id="4105" string="Multiple matches found">Στυλ ονόματος αρχείου</entry>
+	<entry id="4106" string="Matches">Επιλέξτε φάκελο για αποθήκευση λιστών αναπαραγωγής</entry>
 	<entry id="4107" string="Select the entry that best fits your CD">Select the entry that best fits your CD</entry>
 	<entry id="4108" string="Would you like to perform this query again later?">Ανάγνωση CD Text</entry>
 	<entry id="4109" string="Would you like to perform the remaining queries again later?">Would you like to perform the remaining queries again later?</entry>
@@ -283,20 +283,20 @@
       </section>
 
       <section name="Manage queries">
-	<entry id="4200" string="Remove entry">Προεπισκόπηση</entry>
-	<entry id="4201" string="CDDB queries">Ερώτηση string</entry>
-	<entry id="4202" string="Query">Ερωτήσεις CDDB που θα γίνουν:</entry>
-	<entry id="4203" string="Query all">Θα θέλατε να επαναλάβετε την ερώτηση αργότερα;</entry>
-	<entry id="4204" string="Query string">Πρόσβαση στις συσκευές CD αποκλείστηκε από τα Windows&#10;&#10;Παρακαλώ επικοινωνήστε με τον διαχειριστή του συστήματός&#10;σας.</entry>
-	<entry id="4205" string="CDDB queries to perform">CDDB queries to perform</entry>
-	<entry id="4206" string="Querying CD information">Querying CD information</entry>
+	<entry id="4200" string="Remove entry">Ενεργοποίηση τοπικής βάσης δεδομένων CDDB</entry>
+	<entry id="4201" string="CDDB queries">Ενεργοποίηση απομακρυσμένης βάσησ δεδομένων CDDB</entry>
+	<entry id="4202" string="Query">Φάκελος CDDB</entry>
+	<entry id="4203" string="Query all">Εξερεύνηση</entry>
+	<entry id="4204" string="Query string">Επιλέξτε φάκελο της βάσης δεδομένων CDDB</entry>
+	<entry id="4205" string="CDDB queries to perform">Μέθοδος πρόσβασης CDDB</entry>
+	<entry id="4206" string="Querying CD information">CDDB server</entry>
       </section>
 
       <section name="Manage submits">
-	<entry id="4300" string="Remove entry">Προεπισκόπηση</entry>
-	<entry id="4301" string="CDDB entries to submit">CDDB entries to submit</entry>
-	<entry id="4302" string="Submit all">Κλείσιμο</entry>
-	<entry id="4303" string="CDDB data">Παρακαλώ συμπληρώστε όλα τα πεδία και τίτλους κομματιών πριν την καταχώρηση.</entry>
+	<entry id="4300" string="Remove entry">Επιλογή γλώσσας</entry>
+	<entry id="4301" string="CDDB entries to submit">Επεξεργασία αρχείου γλώσσας</entry>
+	<entry id="4302" string="Submit all">Πληροφορίες</entry>
+	<entry id="4303" string="CDDB data">Κωδικοποίηση</entry>
 	<entry id="4304" string="Submit">Προτίμηση CDDB από το CD Text</entry>
 	<entry id="4305" string="Disc name">Κατέβασμα καταχωρήσεων CDDB:</entry>
 	<entry id="4306" string="Preview">Κωδικός:</entry>
@@ -305,11 +305,11 @@
       </section>
 
       <section name="Manage cache">
-	<entry id="4400" string="CDDB data">Παρακαλώ συμπληρώστε όλα τα πεδία και τίτλους κομματιών πριν την καταχώρηση.</entry>
-	<entry id="4401" string="Update joblist with this information">Αποθήκευση λίστας εργασιών...</entry>
-	<entry id="4402" string="Charset">Όνομα χρήστη:</entry>
-	<entry id="4403" string="Downloaded CDDB entries">Downloaded CDDB entries</entry>
-	<entry id="4404" string="Disc name">Κατέβασμα καταχωρήσεων CDDB:</entry>
+	<entry id="4400" string="CDDB data">Tag πληροφοριών</entry>
+	<entry id="4401" string="Update joblist with this information">Κωδικοποίηση tag</entry>
+	<entry id="4402" string="Charset">Προεπιλεγμένο σχόλιο</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Στυλ ονόματος αρχείου</entry>
+	<entry id="4404" string="Disc name">Κωδικοποίηση</entry>
 	<entry id="4405" string="Preview">Κωδικός:</entry>
 	<entry id="4406" string="Remove entry">Προεπισκόπηση</entry>
 	<entry id="4407" string="Save entry">Συμβολοσειρά</entry>
@@ -317,9 +317,9 @@
     </section>
 
     <section name="Configuration">
-      <entry id="5000" string="General settings setup">Ρύθμιση κωδικοποιητή</entry>
-      <entry id="5001" string="Encoders">Κωδικοποιητές</entry>
-      <entry id="5002" string="Playlists">Χρήση φακέλου αποθήκευσης κωδικοποιητή</entry>
+      <entry id="5000" string="General settings setup">Σχετικά με το %1</entry>
+      <entry id="5001" string="Encoders">Μετάφραση από τον %1.</entry>
+      <entry id="5002" string="Playlists">Αυτό το πρόγραμμα διατίθεται σύμφωνα με τους όρους&#10;της GNU General Public License (GPL).</entry>
       <entry id="5003" string="Language">Προβολή πληροφοριών τίτλου</entry>
       <entry id="5004" string="Component configuration">Component configuration</entry>
       <entry id="5005" string="CDDB">CDDB</entry>
@@ -343,14 +343,14 @@
       <entry id="5023" string="Resources">Resources</entry>
       <entry id="5024" string="Verifiers">Verifiers</entry>
       <entry id="5025" string="Taggers">Taggers</entry>
-      <entry id="5026" string="Processing">Processing</entry>
+      <entry id="5026" string="Processing">Κωδικοποίηση</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Κωδικοποιητής</entry>
 	<entry id="5101" string="Encoder">Φάκελος αποθήκευσης</entry>
 	<entry id="5102" string="Output folder">Εξερεύνηση</entry>
-	<entry id="5103" string="Select">Select</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Select the folder in which the encoded files will be placed</entry>
+	<entry id="5103" string="Select">Εξερεύνηση</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Επιλέξτε φάκελο τοποθέτησης των κωδικοποιημένων αρχέιων</entry>
 	<entry id="5105" string="Use input file folder if possible">Κωδικοποίηση ενός αρχείου</entry>
 	<entry id="5106" string="Allow overwriting input file">Παράλειψη</entry>
 	<entry id="5107" string="Options">Επιλογές</entry>
@@ -374,7 +374,7 @@
 	<entry id="5200" string="Create playlists">Διάφοροι καλλιτέχνες</entry>
 	<entry id="5201" string="Create cue sheets">Data track</entry>
 	<entry id="5202" string="Output folder">Εξερεύνηση</entry>
-	<entry id="5203" string="Select">Select</entry>
+	<entry id="5203" string="Select">Εξερεύνηση</entry>
 	<entry id="5204" string="Use encoder output folder">Επιλέξτε φάκελο για αποθήκευση λιστών αναπαραγωγής:</entry>
 	<entry id="5205" string="Filename pattern">Επιλογή όλων</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Select the folder in which the playlist files will be placed</entry>
@@ -387,7 +387,7 @@
 	<entry id="5300" string="Enable local CDDB database">Το αρχείο υπάρχει ήδη</entry>
 	<entry id="5301" string="Enable remote CDDB database">Χρήση προεπιλεγμένων ρυθμίσεων</entry>
 	<entry id="5302" string="CDDB path">CDDB path</entry>
-	<entry id="5303" string="Select">Select</entry>
+	<entry id="5303" string="Select">Εξερεύνηση</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Select the folder of the CDDB database</entry>
 	<entry id="5305" string="CDDB access mode">CDDB access mode</entry>
 	<entry id="5306" string="CDDB server">CDDB server</entry>
@@ -514,8 +514,8 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing">Signal processing</entry>
-	<entry id="5901" string="Enable signal processing">Enable signal processing</entry>
-	<entry id="5902" string="Enable processing during playback">Enable processing during playback</entry>
+	<entry id="5901" string="Enable signal processing">Έναρξη κωδικοποίησης</entry>
+	<entry id="5902" string="Enable processing during playback">Έναρξη κωδικοποίησης</entry>
 	<entry id="5903" string="Components">Components</entry>
 	<entry id="5904" string="Available">Available</entry>
 	<entry id="5905" string="Selected">Selected</entry>
@@ -527,26 +527,26 @@
     </section>
 
     <section name="About">
-      <entry id="6000" string="About %1">Σχετικά με το %1</entry>
-      <entry id="6001" string="Translated by %1.">Επιλογή</entry>
-      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Αυτό το πρόγραμμα διατίθεται σύμφωνα με τους όρους&#10;της GNU General Public License (GPL).</entry>
+      <entry id="6000" string="About %1">Υπάρχει νέα έκδοση του %1!&#10;Θα θέλατε να δείτε τη λίστα με τις διαθέσιμες εκδόσεις τώρα;</entry>
+      <entry id="6001" string="Translated by %1.">Δεν υπάρχουν ενημερώσεις αυτή τη στιγμή!</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Έλεγχος για ενημερώσεις στην εκκίνηση</entry>
     </section>
 
     <section name="Updates">
-      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Ανάγνωση CD κατά την εισαγωγή</entry>
-      <entry id="6101" string="There are no updates available at the moment!">Εξαγωγή μετά το rip</entry>
-      <entry id="6102" string="Check for updates at startup">Κωδικοποίηση 'On-The-Fly'</entry>
-      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">eur</entry>
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Ο %1 είναι διαθέσιμος σε %2 γλώσσες. Αν η γλώσσα&#10;σας δεν είναι διαθέσιμη, χρησιμοποιήστε εύκολα την&#10;εφαρμογή 'smooth Translator' για να το μεταφράσετε!</entry>
+      <entry id="6101" string="There are no updates available at the moment!">Ο %1 υποστηρίζει τους κωδικοποιητές LAME, Ogg Vorbis,&#10;FAAC, FLAC και Bonk. Κωδικοποιητής για τη μορφή VQF είναι&#10;διαθέσιμος στο website του %1: %2</entry>
+      <entry id="6102" string="Check for updates at startup">Ο %1 μπορεί να χρησιμοποιήσει πρόσθετα του Winamp 2&#10;για υποστήριξη περισσότερων μορφών αρχείων. Αντιγράψτε&#10;τα in_*.dll αρχεία σοτν κατάλογο %1/plugins για να&#10;χρησιμοποιήσετε αυτές τις μορφές</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">Με το %1 μπορείτε να καταχωρήσετε στοιχεία στη&#10;βάση δεδομένων CD freedb με Unicode χαρακτήρες. Αν έχετε&#10;CD με τίτλους ή ονόματα με μη-Λατινικούς χαρακτήρες,&#10;μπορείτε να τα καταχωρήσετε σωστά με το %1.</entry>
     </section>
 
     <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">Με το %1 μπορείτε να καταχωρήσετε στοιχεία στη&#10;βάση δεδομένων CD freedb με Unicode χαρακτήρες. Αν έχετε&#10;CD με τίτλους ή ονόματα με μη-Λατινικούς χαρακτήρες,&#10;μπορείτε να τα καταχωρήσετε σωστά με το %1.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">Για να διορθώσετε λάθη ανάγνωσης κατά το ripping&#10;ενεργοποιήστε τη διόρθωση Jitter στην καρτέλα για CDrip στις&#10;ρυθμίσεις του %1. Αν δεν βοηθάει, δοκιμάστε κάποια&#10;μέθοδο Paranoia.</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">Έχετε προτάσεις για βελτίωση του %1;&#10;Καταχωρήστε τις στον Tracker του %1 στη&#10;σελίδα του SourceForge - %2&#10;ή στείλτε email sto %3</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Σας αρέσει το %1; Είναι διαθέσιμο δωρεάν, αλλά&#10;μπορείτε να βοηθήσετε τη χρηματοδότηση για την ανάπτυξη&#10;του προγράμματος κάνοντας μια δωρεά. Μπορείτε να στείλετε&#10;χρήματα στο %2 μέσω Paypal.&#10;Δείτε το %3 για&#10;περισσότερες πληροφορίες.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Έλεγχος ενημερώσεων τώρα</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Υπάρχει νέα έκδοση του %1!&#10;Θα θέλατε να δείτε τη λίστα με τις διαθέσιμες εκδόσεις τώρα;</entry>
+      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">Η κωδικοποίηση βρίσκεται ακόμα σε εξέλιξη! Σίγουρα επιθυμείτε έξοδο;</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">Τρέχουσα κωδικοποίηση</entry>
+      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">Αδύνατο να φορτωθούν οι οδηγοί ASPI! Το CD ripping απενεργοποιήθηκε!</entry>
+      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Αδύνατο το άνοιγμα του αρχείου: %1&#10;&#10;%2</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Διαγραφή αρχείων μετά την κωδικοποίηση</entry>
+      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Αυτή η επιλογή θα διαγράψει τα αρχεία μετα την&#10;κωδικοποίηση! Θέλετε σίγουρα να συνεχίσετε;</entry>
+      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Το αρχείο υπάρχει ήδη</entry>
     </section>
 
     <section name="Messages">
@@ -593,7 +593,7 @@
       <section name="Format">
 	<entry id="8100" string="Select sample format">Select sample format</entry>
 	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:</entry>
-	<entry id="8102" string="Select">Select</entry>
+	<entry id="8102" string="Select">Εξερεύνηση</entry>
       </section>
 
       <section name="Errors">
@@ -634,19 +634,19 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="10000" string="Decoding">Decoding</entry>
+	<entry id="10000" string="Decoding">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 	<entry id="10001" string="Enable 24 bit decoding">Enable 24 bit decoding</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder">Decoder</entry>
-	<entry id="11001" string="Active decoder">Active decoder</entry>
+	<entry id="11000" string="Decoder">Ρύθμιση</entry>
+	<entry id="11001" string="Active decoder">Περί...</entry>
  	<entry id="11002" string="auto select">auto select</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information">Title information</entry>
-	<entry id="12001" string="Read tags from referenced files">Read tags from referenced files</entry>
+	<entry id="12000" string="Title information">Διάρκεια</entry>
+	<entry id="12001" string="Read tags from referenced files">Μέγεθος</entry>
 	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">Prefer cue sheet metadata over referenced files' tags</entry>
 	<entry id="12003" string="Alternative files">Alternative files</entry>
 	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">Look for compressed alternatives if referenced Wave files cannot be located</entry>
@@ -1077,7 +1077,7 @@
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Ερωτήσεις CDDB</entry>
 	  <entry id="102102" string="Video files">Video files</entry>
-	  <entry id="102103" string="Select">Select</entry>
+	  <entry id="102103" string="Select">Εξερεύνηση</entry>
 	  <entry id="102104" string="Select the folder to save downloaded video files to">Select the folder to save downloaded video files to</entry>
 	  <entry id="102105" string="Downloads">Downloads</entry>
 	  <entry id="102106" string="Maximum number of simultaneous downloads">Maximum number of simultaneous downloads</entry>
@@ -1107,8 +1107,8 @@
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Εισάγετε ρυθμό μετάδοσης:</entry>
-	  <entry id="103101" string="Title information">Title information</entry>
-	  <entry id="103102" string="Disc">Disc</entry>
+	  <entry id="103101" string="Title information">Διάρκεια</entry>
+	  <entry id="103102" string="Disc">άγνωστο είδος</entry>
 	  <entry id="103103" string="Cover art">Cover art</entry>
 	  <entry id="103104" string="Covers">Covers</entry>
 	  <entry id="103105" string="Type">Type</entry>
