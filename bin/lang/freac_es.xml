@@ -501,7 +501,7 @@
 	<entry id="5707" string="lower">normal</entry>
 	<entry id="5708" string="normal">más alta</entry>
 	<entry id="5709" string="higher">la más alta</entry>
-	<entry id="5710" string="highest">highest</entry>
+	<entry id="5710" string="highest"/>
       </section>
 
       <section name="Verification">
@@ -574,8 +574,8 @@
       <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">La suma de verificación difiere en el archivo de salida: %1&#10;&#10;Suma de codificación: %2&#10;Suma de verificación: %3</entry>
       <entry id="7022" string="Failed to verify input file: %1">¡La carpeta elegida ya no existe!</entry>
       <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Mantener activa esta opción incluso después de reiniciar %1</entry>
-      <entry id="7024" string="The selected folder does not exist anymore!">The selected folder does not exist anymore!</entry>
-      <entry id="7025" string="Keep this option enabled even after restarting %1">Keep this option enabled even after restarting %1</entry>
+      <entry id="7024" string="The selected folder does not exist anymore!"/>
+      <entry id="7025" string="Keep this option enabled even after restarting %1"/>
     </section>
 
     <section name="Dialogs">
@@ -1026,25 +1026,25 @@
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:">Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:</entry>
-	  <entry id="100201" string="Donate">Donate</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:"/>
+	  <entry id="100201" string="Donate"/>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:</entry>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">This address also accepts Bitcoin Cash and other forks.</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:"/>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks."/>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Please scan or click the QR code or copy the following&#10;address to donate Ethereum:</entry>
-	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">This address also accepts Ether Classic and ERC20 tokens.</entry>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:"/>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens."/>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making a SEPA transfer to the following&#10;account:">You can donate by making a SEPA transfer to the following&#10;account:</entry>
-	  <entry id="100501" string="Account holder:">Account holder:</entry>
-	  <entry id="100502" string="IBAN:">IBAN:</entry>
-	  <entry id="100503" string="BIC:">BIC:</entry>
+	  <entry id="100500" string="You can donate by making a SEPA transfer to the following&#10;account:"/>
+	  <entry id="100501" string="Account holder:"/>
+	  <entry id="100502" string="IBAN:"/>
+	  <entry id="100503" string="BIC:"/>
 	</section>
       </section>
 
