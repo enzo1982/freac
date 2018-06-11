@@ -22,12 +22,12 @@
     <entry id="210" string="Do not display this warning again">Do not display this warning again</entry>
     <entry id="211" string="Do not display this note again">Do not display this note again</entry>
 
-    <entry id="300" string="Artist">Artist</entry>
-    <entry id="301" string="Title">Title</entry>
-    <entry id="302" string="Album">Album</entry>
-    <entry id="303" string="Track">Track</entry>
-    <entry id="304" string="Genre">Genre</entry>
-    <entry id="305" string="Comment">Comment</entry>
+    <entry id="300" string="Artist">Artist</entry> 
+    <entry id="301" string="Title">Title</entry> 
+    <entry id="302" string="Album">Album</entry> 
+    <entry id="303" string="Track">Track</entry> 
+    <entry id="304" string="Genre">Genre</entry> 
+    <entry id="305" string="Comment">Comment</entry> 
     <entry id="306" string="Year">Year</entry>
     <entry id="307" string="Disc">Disc</entry>
     <entry id="308" string="Rating">Rating</entry>
@@ -53,7 +53,7 @@
     </section>
 
     <section name="Technical">
-      <entry id="510" string="%1 kbps">To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialogue. If that does not help, try using one of the Paranoia modes.</entry>
+      <entry id="510" string="%1 kbps">%1 kbps</entry>
       <entry id="511" string="%1 Hz">%1 Hz</entry>
       <entry id="512" string="%1 kHz">%1 kHz</entry>
       <entry id="513" string="%1 ms">%1 ms</entry>
