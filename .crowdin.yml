@@ -1,0 +1,17 @@
+files:
+  - source: /bin/lang/template_crowdin.xml
+    translation: /bin/lang/freac_%two_letters_code%.xml
+    languages_mapping:
+      two_letters_code:
+        pt-BR: pt_BR
+        es-AR: es_AR
+        zh-CN: zh_CN
+        zh-TW: zh_TW
+        zh-HK: zh_HK
+        en-GB: en_UK
+        val-ES: ca@valencia
+        sr: sr@Cyrl
+    content_segmentation: '0'
+    translatable_elements:
+      - /LangFile/info/property
+      - /LangFile/data//entry
