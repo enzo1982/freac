@@ -16,11 +16,11 @@
     <entry id="102" string="Close">Затвори</entry>
 
     <entry id="200" string="Error">Грешка</entry>
-    <entry id="201" string="Warning">Warning</entry>
+    <entry id="201" string="Warning">Упозорење</entry>
     <entry id="202" string="Info">Инфо</entry>
 
-    <entry id="210" string="Do not display this warning again">Do not display this warning again</entry>
-    <entry id="211" string="Do not display this note again">Do not display this note again</entry>
+    <entry id="210" string="Do not display this warning again">Не приказуј поново ово упозорење</entry>
+    <entry id="211" string="Do not display this note again">Не приказуј поново ову напомену</entry>
 
     <entry id="300" string="Artist">Извођач</entry> 
     <entry id="301" string="Title">Назив</entry> 
@@ -29,38 +29,38 @@
     <entry id="304" string="Genre">Жанр</entry> 
     <entry id="305" string="Comment">Коментар</entry> 
     <entry id="306" string="Year">Година</entry>
-    <entry id="307" string="Disc">Disc</entry>
-    <entry id="308" string="Rating">Rating</entry>
-    <entry id="309" string="File name">File name</entry>
-    <entry id="310" string="File type">File type</entry>
-    <entry id="311" string="Album artist">Album artist</entry>
+    <entry id="307" string="Disc">Диск</entry>
+    <entry id="308" string="Rating">Оцена</entry>
+    <entry id="309" string="File name">Назив фајла</entry>
+    <entry id="310" string="File type">Врста фајла</entry>
+    <entry id="311" string="Album artist">Извођач на албуму</entry>
 
     <entry id="350" string="unknown artist">непознат извођач</entry>
     <entry id="351" string="unknown title">напознат назив</entry>
     <entry id="352" string="unknown album">непознат албум</entry>
     <entry id="353" string="unknown genre">непознат жанр</entry>
     <entry id="354" string="unknown year">непозната година</entry>
-    <entry id="355" string="unknown conductor">unknown conductor</entry>
-    <entry id="356" string="unknown composer">unknown composer</entry>
-    <entry id="357" string="unknown album artist">unknown album artist</entry>
+    <entry id="355" string="unknown conductor">непознат диригент</entry>
+    <entry id="356" string="unknown composer">непознат композитор</entry>
+    <entry id="357" string="unknown album artist">непознат извођач на албуму</entry>
 
-    <entry id="380" string="hidden track">hidden track</entry>
+    <entry id="380" string="hidden track">скривена песма</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
-      <entry id="501" string="%1...">%1...</entry>
+      <entry id="501" string="%1...">%1 ...</entry>
       <entry id="502" string="%1 (%2)">%1 (%2)</entry>
     </section>
 
     <section name="Technical">
-      <entry id="510" string="%1 kbps">%1 kbps</entry>
+      <entry id="510" string="%1 kbps">%1 кбпс</entry>
       <entry id="511" string="%1 Hz">%1 Hz</entry>
       <entry id="512" string="%1 kHz">%1 kHz</entry>
-      <entry id="513" string="%1 ms">%1 ms</entry>
-      <entry id="514" string="%1 min">%1 min</entry>
-      <entry id="515" string="%1 bit">%1 bit</entry>
-      <entry id="516" string="%1 bytes">%1 bytes</entry>
-      <entry id="517" string="%1 kB">%1 kB</entry>
+      <entry id="513" string="%1 ms">%1 мс</entry>
+      <entry id="514" string="%1 min">%1 мин</entry>
+      <entry id="515" string="%1 bit">%1 бит</entry>
+      <entry id="516" string="%1 bytes">%1 бајт(ови)</entry>
+      <entry id="517" string="%1 kB">%1%</entry>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
@@ -68,15 +68,15 @@
       <entry id="1000" string="File">Фајл</entry>
       <entry id="1001" string="Options">Опције</entry>
       <entry id="1002" string="Database">База података</entry>
-      <entry id="1003" string="Processing">Processing</entry>
+      <entry id="1003" string="Processing">Процедурисање</entry>
       <entry id="1004" string="Encode">Енкодуј</entry>
       <entry id="1005" string="Help">Помоћ</entry>
 
       <section name="File">
 	<entry id="1100" string="Add">Додај</entry>
 	<entry id="1101" string="Remove">Уклони</entry>
-	<entry id="1102" string="Load joblist">Load joblist</entry>
-	<entry id="1103" string="Save joblist">Save joblist</entry>
+	<entry id="1102" string="Load joblist">Учитавање листе задатака</entry>
+	<entry id="1103" string="Save joblist">Сачувај листу задатака</entry>
 	<entry id="1104" string="Clear joblist">Очисти листу задатака</entry>
 	<entry id="1105" string="Exit">Излаз</entry>
 	<entry id="1106" string="Audio file(s)">Аудио фајл(ови)</entry>
@@ -87,37 +87,37 @@
 
       <section name="Database">
 	<entry id="1200" string="Query CDDB database">Упит CDDB бази</entry>
-	<entry id="1201" string="Submit CDDB data">Submit CDDB data</entry>
+	<entry id="1201" string="Submit CDDB data">Пријава података CDDB-у</entry>
 	<entry id="1202" string="Query CDDB database later">Упит CDDB базе касније</entry>
-	<entry id="1203" string="Show queued CDDB entries">Show queued CDDB entries</entry>
-	<entry id="1204" string="Show queued CDDB queries">Show queued CDDB queries</entry>
+	<entry id="1203" string="Show queued CDDB entries">Прикажи CDDB уписе на чекању</entry>
+	<entry id="1204" string="Show queued CDDB queries">Прикажи упите CDDB-у на чекању</entry>
 	<entry id="1205" string="Enable CDDB cache">Омогући CDDB кеш</entry>
-	<entry id="1206" string="Manage CDDB cache entries">Manage CDDB cache entries</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Управљај CDDB кеш записима</entry>
 	<entry id="1207" string="Automatic CDDB queries">Аутоматски CDDB упити</entry>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings">General settings</entry>
-	<entry id="1301" string="Configure selected encoder">Configure selected encoder</entry>
+	<entry id="1300" string="General settings">Општа подешења</entry>
+	<entry id="1301" string="Configure selected encoder">Подеси изабрани енкодер</entry>
 	<entry id="1302" string="Active CD-ROM drive">Активан ЦД РОМ уређај</entry>
-	<entry id="1303" string="Active configuration">Active configuration</entry>
-	<entry id="1304" string="Default configuration">Default configuration</entry>
+	<entry id="1303" string="Active configuration">Активна поставка</entry>
+	<entry id="1304" string="Default configuration">Усађена поставка</entry>
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing">Enable signal processing</entry>
-	<entry id="1401" string="Enable processing during playback">Enable processing during playback</entry>
-	<entry id="1402" string="Configure signal processing">Configure signal processing</entry>
-	<entry id="1403" string="Selected signal processors">Selected signal processors</entry>
+	<entry id="1400" string="Enable signal processing">Покрени енкодовање</entry>
+	<entry id="1401" string="Enable processing during playback">Покрени енкодовање са</entry>
+	<entry id="1402" string="Configure signal processing">Паузирај/настави енкодовање</entry>
+	<entry id="1403" string="Selected signal processors">Прекини енкодовање</entry>
       </section>
 
       <section name="Encode">
-	<entry id="1500" string="Start encoding">Покрени енкодовање</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">Start encoding (deleting original files)</entry>
-	<entry id="1502" string="Start encoding with">Start encoding with</entry>
-	<entry id="1503" string="Pause/resume encoding">Паузирај/настави енкодовање</entry>
-	<entry id="1504" string="Stop encoding">Прекини енкодовање</entry>
-	<entry id="1505" string="Encoder options">Опције енкодера</entry>
+	<entry id="1500" string="Start encoding">Теме помоћи</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">Прикажи Савет дана</entry>
+	<entry id="1502" string="Start encoding with">Провери сада за надоградње</entry>
+	<entry id="1503" string="Pause/resume encoding">Провери надоградње при покретању</entry>
+	<entry id="1504" string="Stop encoding">О %1-у</entry>
+	<entry id="1505" string="Encoder options">index.html</entry>
 	<entry id="1506" string="Encode to a single file">Енкодуј у један фајл</entry>
 	<entry id="1507" string="Encode to input file folder if possible">Ако је могуће, енкодуј у улазни фолдер</entry>
 	<entry id="1508" string="Allow overwriting input file">Дозволи преписивање улазних фајлова</entry>
@@ -141,22 +141,22 @@
       <entry id="2002" string="Remove the selected entry from the joblist">Уклони изабрану ставку са листе задатака</entry>
       <entry id="2003" string="Clear the entire joblist">Очисти целу листу задатака</entry>
       <entry id="2004" string="Query CDDB database">Упит CDDB бази</entry>
-      <entry id="2005" string="Submit CDDB data">Submit CDDB data</entry>
+      <entry id="2005" string="Submit CDDB data">Пријава података CDDB-у</entry>
       <entry id="2006" string="Configure general settings">Уреди општа подешења</entry>
       <entry id="2007" string="Configure the selected audio encoder">Подеси изабрани аудио енкодер</entry>
       <entry id="2008" string="Start the encoding process">Покрени енкодовање</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Start the encoding process (deleting original files)</entry>
-      <entry id="2010" string="Pause/resume encoding">Паузирај/настави енкодовање</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)">Паузирај/настави енкодовање</entry>
+      <entry id="2010" string="Pause/resume encoding">Прекид енкодовања</entry>
       <entry id="2011" string="Stop encoding">Прекини енкодовање</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Encoding file</entry>
-      <entry id="3001" string="Time left">Time left</entry>
-      <entry id="3002" string="Selected encoder">Selected encoder</entry>
-      <entry id="3003" string="File progress">File progress</entry>
+      <entry id="3000" string="Encoding file">Енкодовање фајла</entry>
+      <entry id="3001" string="Time left">Преостало време</entry>
+      <entry id="3002" string="Selected encoder">Изабрани енкодер</entry>
+      <entry id="3003" string="File progress">Напредовање фајла/посла</entry>
       <entry id="3004" string="Output folder">Излазни фолдер</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 file(s) in joblist</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 фајл(ова) у листи задатака</entry>
       <entry id="3006" string="none">ниједан</entry>
       <entry id="3007" string="Show title info">Прикажи инфо о називу</entry>
       <entry id="3008" string="Play">Покрени</entry>
@@ -168,7 +168,7 @@
       <entry id="3014" string="encoding">енкодовање</entry>
       <entry id="3015" string="Create playlist">Креирај листу</entry>
       <entry id="3016" string="Create cue sheet">Креирај cue лист</entry>
-      <entry id="3017" string="Select">Select</entry>
+      <entry id="3017" string="Select">Претражи</entry>
       <entry id="3018" string="Skip">Прескочи</entry>
       <entry id="3019" string="Encode to a single file">Енкодуј у један фајл</entry>
       <entry id="3020" string="Remove">Уклони</entry>
@@ -182,7 +182,7 @@
       <entry id="3028" string="first letter upper case">прво слово ВЕЛИКО</entry>
       <entry id="3029" string="all lower case">сва слова мала</entry>
       <entry id="3030" string="all upper case">сва слова ВЕЛИКА</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Select the folder in which the encoded files will be placed</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Одабери фолдер за смештај енкодованих фајлова</entry>
       <entry id="3032" string="Sampling rate">Стопа семпловања</entry>
       <entry id="3033" string="Sample resolution">Резолуција семпла</entry>
       <entry id="3034" string="Number of samples">Број семплова</entry>
@@ -196,19 +196,19 @@
       <entry id="3042" string="Audio Files">Аудио фајл(ови)</entry>
       <entry id="3043" string="All Files">Сви фајлови</entry>
       <entry id="3044" string="Playlist Files">Фајлови листе</entry>
-      <entry id="3045" string="Active decoder">Active decoder</entry>
-      <entry id="3046" string="Joblist">Joblist</entry>
-      <entry id="3047" string="unknown">unknown</entry>
-      <entry id="3048" string="Other">Other</entry>
-      <entry id="3049" string="Output file name">Output file name</entry>
-      <entry id="3050" string="verifying">verifying</entry>
-      <entry id="3051" string="Open">Open</entry>
+      <entry id="3045" string="Active decoder">Активни декодер</entry>
+      <entry id="3046" string="Joblist">Листа задатака</entry>
+      <entry id="3047" string="unknown">непознато</entry>
+      <entry id="3048" string="Other">Остало</entry>
+      <entry id="3049" string="Output file name">Излазни назив фајла</entry>
+      <entry id="3050" string="verifying">овера</entry>
+      <entry id="3051" string="Open">Отвори</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Фолдер</entry>
 	<entry id="3101" string="Add folder">Додај фолдер</entry>
-	<entry id="3102" string="Choose folder">Choose folder</entry>
-	<entry id="3103" string="Select the folder to add to the joblist">Select the folder to add to the joblist</entry>
+	<entry id="3102" string="Choose folder">Изабери фолдер</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Изабери фолдер за додавање на листу задатака</entry>
       </section>
 
       <section name="Add by pattern">
@@ -216,28 +216,28 @@
 	<entry id="3201" string="Pattern">Шаблон</entry>
 	<entry id="3202" string="Start folder">Покрени фолдер</entry>
 	<entry id="3203" string="Filename pattern">Шаблон назива</entry>
-	<entry id="3204" string="Search subfolders">Search subfolders</entry>
-	<entry id="3205" string="Select the folder to add to the joblist">Select the folder to add to the joblist</entry>
+	<entry id="3204" string="Search subfolders">Претражи подфолдере</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Изабери фолдер за додавање на листу задатака</entry>
       </section>
 
       <section name="Character set">
-	<entry id="3300" string="Character set">Character set</entry>
-	<entry id="3301" string="Choose character set">Choose character set</entry>
+	<entry id="3300" string="Character set">Подешење карактера</entry>
+	<entry id="3301" string="Choose character set">Одабери подешење карактера</entry>
       </section>
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Нисте одабрали песму!</entry>
-	<entry id="3401" string="No files found matching pattern: %1">No files found matching pattern: %1</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Нису нађени фајлови по шаблону: %1</entry>
       </section>
     </section>
 
     <section name="Jobs">
-      <entry id="3500" string="Jobs">Jobs</entry>
-      <entry id="3501" string="Progress">Progress</entry>
-      <entry id="3502" string="Errors / Warnings">Errors / Warnings</entry>
-      <entry id="3503" string="Details">Details</entry>
-      <entry id="3504" string="Error details">Error details</entry>
-      <entry id="3505" string="Time left">Time left</entry>
+      <entry id="3500" string="Jobs">Задаци</entry>
+      <entry id="3501" string="Progress">Напредовање</entry>
+      <entry id="3502" string="Errors / Warnings">Грешке / Упозорења</entry>
+      <entry id="3503" string="Details">Детаљи</entry>
+      <entry id="3504" string="Error details">Детаљи грешке</entry>
+      <entry id="3505" string="Time left">Преостало време</entry>
     </section>
 
     <section name="CDDB">
@@ -270,15 +270,15 @@
 	<entry id="4104" string="No exact matches found">Нису нађена тачна поклапања</entry>
 	<entry id="4105" string="Multiple matches found">Нађено више поклапања</entry>
 	<entry id="4106" string="Matches">Поклапања</entry>
-	<entry id="4107" string="Select the entry that best fits your CD">Select the entry that best fits your CD</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">Изаберите податак који највише одговара Вашем ЦД-у</entry>
 	<entry id="4108" string="Would you like to perform this query again later?">Желите ли да касније поновите овај упит?</entry>
-	<entry id="4109" string="Would you like to perform the remaining queries again later?">Would you like to perform the remaining queries again later?</entry>
+	<entry id="4109" string="Would you like to perform the remaining queries again later?">Желите ли да касније поновите преостале упите?</entry>
 	<entry id="4110" string="none">ниједан</entry>
 	<entry id="4111" string="Preview">Преглед</entry>
-	<entry id="4112" string="loading preview">loading preview</entry>
+	<entry id="4112" string="loading preview">учитавање прегледа</entry>
 
 	<section name="Errors">
-	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Појава грешке приликом повезивања са freedb сервером.</entry>
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Појавила се грешка приликом повезивања са freedb сервером.</entry>
 	</section>
       </section>
 
@@ -288,13 +288,13 @@
 	<entry id="4202" string="Query">Упит</entry>
 	<entry id="4203" string="Query all">Упит свега</entry>
 	<entry id="4204" string="Query string">Стринг упита</entry>
-	<entry id="4205" string="CDDB queries to perform">CDDB queries to perform</entry>
-	<entry id="4206" string="Querying CD information">Querying CD information</entry>
+	<entry id="4205" string="CDDB queries to perform">CDDB упити за урадити</entry>
+	<entry id="4206" string="Querying CD information">Упитивање за информације о ЦД-у</entry>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry">Уклони запис</entry>
-	<entry id="4301" string="CDDB entries to submit">CDDB entries to submit</entry>
+	<entry id="4301" string="CDDB entries to submit">CDDB уписи за пријаву</entry>
 	<entry id="4302" string="Submit all">Пријави све</entry>
 	<entry id="4303" string="CDDB data">CDDB подаци</entry>
 	<entry id="4304" string="Submit">Пријави</entry>
@@ -308,7 +308,7 @@
 	<entry id="4400" string="CDDB data">CDDB подаци</entry>
 	<entry id="4401" string="Update joblist with this information">Ажурирај листу задатака овом информацијом</entry>
 	<entry id="4402" string="Charset">Карактери</entry>
-	<entry id="4403" string="Downloaded CDDB entries">Downloaded CDDB entries</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Преузети CDDB улази</entry>
 	<entry id="4404" string="Disc name">Назив диска</entry>
 	<entry id="4405" string="Preview">Преглед</entry>
 	<entry id="4406" string="Remove entry">Уклони запис</entry>
@@ -321,36 +321,36 @@
       <entry id="5001" string="Encoders">Енкодери</entry>
       <entry id="5002" string="Playlists">Листе покретања</entry>
       <entry id="5003" string="Language">Језик</entry>
-      <entry id="5004" string="Component configuration">Component configuration</entry>
+      <entry id="5004" string="Component configuration">Поставка компоненте</entry>
       <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5006" string="Interface">Interface</entry>
-      <entry id="5007" string="Tags">Tags</entry>
-      <entry id="5008" string="Components">Components</entry>
-      <entry id="5009" string="Decoders">Decoders</entry>
-      <entry id="5010" string="Output">Output</entry>
-      <entry id="5011" string="DSP">DSP</entry>
-      <entry id="5012" string="Extensions">Extensions</entry>
-      <entry id="5013" string="Other">Other</entry>
-      <entry id="5014" string="Active configuration">Active configuration</entry>
-      <entry id="5015" string="New">New</entry>
-      <entry id="5016" string="Delete">Delete</entry>
-      <entry id="5017" string="Command line arguments">Command line arguments</entry>
-      <entry id="5018" string="Resulting arguments string">Resulting arguments string</entry>
-      <entry id="5019" string="Default configuration">Default configuration</entry>
-      <entry id="5020" string="New configuration">New configuration</entry>
+      <entry id="5006" string="Interface">Интерфејс</entry>
+      <entry id="5007" string="Tags">Инфо тагови</entry>
+      <entry id="5008" string="Components">Компоненте</entry>
+      <entry id="5009" string="Decoders">Декодери</entry>
+      <entry id="5010" string="Output">Излаз</entry>
+      <entry id="5011" string="DSP">ДСП</entry>
+      <entry id="5012" string="Extensions">Екстензије</entry>
+      <entry id="5013" string="Other">Остало</entry>
+      <entry id="5014" string="Active configuration">Активна поставка</entry>
+      <entry id="5015" string="New">Ново</entry>
+      <entry id="5016" string="Delete">Обриши</entry>
+      <entry id="5017" string="Command line arguments">Аргументи командне линије</entry>
+      <entry id="5018" string="Resulting arguments string">Резултат низа аргумената</entry>
+      <entry id="5019" string="Default configuration">Усађена поставка</entry>
+      <entry id="5020" string="New configuration">Нова поставка</entry>
       <entry id="5021" string="Ripper">Рипер</entry>
-      <entry id="5022" string="Settings">Settings</entry>
-      <entry id="5023" string="Resources">Resources</entry>
-      <entry id="5024" string="Verifiers">Verifiers</entry>
-      <entry id="5025" string="Taggers">Taggers</entry>
-      <entry id="5026" string="Processing">Processing</entry>
+      <entry id="5022" string="Settings">Подешења</entry>
+      <entry id="5023" string="Resources">Извори</entry>
+      <entry id="5024" string="Verifiers">Оверивачи</entry>
+      <entry id="5025" string="Taggers">Тагери</entry>
+      <entry id="5026" string="Processing">Процедурисање</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Подеси енкодер</entry>
 	<entry id="5101" string="Encoder">Енкодер</entry>
 	<entry id="5102" string="Output folder">Излазни фолдер</entry>
-	<entry id="5103" string="Select">Select</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Select the folder in which the encoded files will be placed</entry>
+	<entry id="5103" string="Select">Претражи</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Одабери фолдер за смештај енкодованих фајлова</entry>
 	<entry id="5105" string="Use input file folder if possible">Ако је могуће, користи улазни фолдер</entry>
 	<entry id="5106" string="Allow overwriting input file">Дозволи преписивање улазних фајлова</entry>
 	<entry id="5107" string="Options">Опције</entry>
@@ -358,12 +358,12 @@
 	<entry id="5109" string="Encode 'On-The-Fly'">Енкодуј &quot;У-Лету&quot;</entry>
 	<entry id="5110" string="Keep ripped Wave files">Задржи риповане Wave фајлове</entry>
 	<entry id="5111" string="Encode to a single file">Енкодуј у један фајл</entry>
-	<entry id="5112" string="Output filenames">Output filenames</entry>
-	<entry id="5113" string="Allow Unicode characters">Allow Unicode characters</entry>
-	<entry id="5114" string="Replace spaces">Replace spaces</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Remove processed tracks from joblist</entry>
-	<entry id="5116" string="Add encoded files to joblist">Add encoded files to joblist</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Append sequential numbers to otherwise identical filenames</entry>
+	<entry id="5112" string="Output filenames">Излазни називи фајлова</entry>
+	<entry id="5113" string="Allow Unicode characters">Дозволи Unikod карактере</entry>
+	<entry id="5114" string="Replace spaces">Замени размаке</entry>
+	<entry id="5115" string="Remove processed tracks from joblist">Уклони завршене песме са листе задатака</entry>
+	<entry id="5116" string="Add encoded files to joblist">Додај енкодоване фајлове на листу задатака</entry>
+	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Додај секвенцијалне бројеве у иначе исте називе фајлова</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Излазни фолдер не постоји! Да ли га желите креирати?</entry>
@@ -374,25 +374,25 @@
 	<entry id="5200" string="Create playlists">Креирај листе покретања</entry>
 	<entry id="5201" string="Create cue sheets">Креирај cue листове</entry>
 	<entry id="5202" string="Output folder">Излазни фолдер</entry>
-	<entry id="5203" string="Select">Select</entry>
+	<entry id="5203" string="Select">Претражи</entry>
 	<entry id="5204" string="Use encoder output folder">Користи излазни фолдер за енкодер</entry>
 	<entry id="5205" string="Filename pattern">Шаблон назива</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed">Select the folder in which the playlist files will be placed</entry>
-	<entry id="5207" string="Output filenames">Output filenames</entry>
-	<entry id="5208" string="Configure plugin">Configure plugin</entry>
-	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Create only a single playlist and/or cue sheet file per conversion</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Изабери фолдер у који ће се смештати фајлови са листе</entry>
+	<entry id="5207" string="Output filenames">Излазни називи фајлова</entry>
+	<entry id="5208" string="Configure plugin">Поставка плугин-а</entry>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Направи само једну листу покретања и/или cue лист по једној конверзији</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Омогући локалну CDDB базу</entry>
 	<entry id="5301" string="Enable remote CDDB database">Омогући удаљену CDDB базу</entry>
-	<entry id="5302" string="CDDB path">CDDB path</entry>
-	<entry id="5303" string="Select">Select</entry>
-	<entry id="5304" string="Select the folder of the CDDB database">Select the folder of the CDDB database</entry>
-	<entry id="5305" string="CDDB access mode">CDDB access mode</entry>
-	<entry id="5306" string="CDDB server">CDDB server</entry>
-	<entry id="5307" string="Port">Port</entry>
-	<entry id="5308" string="eMail address">eMail address</entry>
+	<entry id="5302" string="CDDB path">CDDB путања</entry>
+	<entry id="5303" string="Select">Претражи</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Изабери фолдер за CDDB базу</entry>
+	<entry id="5305" string="CDDB access mode">CDDB режим приступа</entry>
+	<entry id="5306" string="CDDB server">CDDB сервер</entry>
+	<entry id="5307" string="Port">Порт</entry>
+	<entry id="5308" string="eMail address">еМejл адреса</entry>
 	<entry id="5309" string="HTTP settings">HTTP подешења</entry>
 	<entry id="5310" string="Proxy settings">Прокси подешења</entry>
 	<entry id="5311" string="Options">Опције</entry>
@@ -400,18 +400,18 @@
 	<entry id="5313" string="Prefer CDDB over CD Text">Предност CDDB над ЦД текстом</entry>
 	<entry id="5314" string="Enable CDDB cache">Омогући CDDB кеш</entry>
 	<entry id="5315" string="Automatization">Аутоматизација</entry>
-	<entry id="5316" string="Always select first entry">Always select first entry</entry>
+	<entry id="5316" string="Always select first entry">Увек одабери прву ставку</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Проширена CDDB подешења</entry>
 	  <entry id="5331" string="CGI scripts">CGI скрипте</entry>
-	  <entry id="5332" string="CDDB query script">CDDB query script</entry>
-	  <entry id="5333" string="CDDB submit script">CDDB submit script</entry>
+	  <entry id="5332" string="CDDB query script">Скрипта CDDB упита</entry>
+	  <entry id="5333" string="CDDB submit script">Скрипта CDDB пријаве</entry>
 	  <entry id="5334" string="no proxy">без прокси-ја</entry>
-	  <entry id="5335" string="Proxy type">Proxy type</entry>
-	  <entry id="5336" string="Proxy server">Proxy server</entry>
-	  <entry id="5337" string="User name">User name</entry>
-	  <entry id="5338" string="Password">Password</entry>
+	  <entry id="5335" string="Proxy type">Тип прокси-ја</entry>
+	  <entry id="5336" string="Proxy server">Прокси сервер</entry>
+	  <entry id="5337" string="User name">Корисничко име</entry>
+	  <entry id="5338" string="Password">Лозинка</entry>
 	</section>
 
 	<section name="Errors">
@@ -421,7 +421,7 @@
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language">Select language</entry>
+	<entry id="5400" string="Select language">Избор језика</entry>
 	<entry id="5401" string="Edit language file">Уреди фајл језика</entry>
 	<entry id="5402" string="Information">Инфо</entry>
 	<entry id="5403" string="Encoding">Енкодовање</entry>
@@ -430,59 +430,59 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Tags</entry>
-	<entry id="5501" string="Tag formats">Tag formats</entry>
-	<entry id="5502" string="Default comment string">Default comment string</entry>
+	<entry id="5500" string="Tags">Инфо тагови</entry>
+	<entry id="5501" string="Tag formats">Енкодовање тагова</entry>
+	<entry id="5502" string="Default comment string">Усађен коментар</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Замени постојеће коментаре усађеним коментаром</entry>
 	<entry id="5504" string="Filename pattern">Шаблон назива</entry>
 	<entry id="5505" string="Encoding">Енкодовање</entry>
-	<entry id="5506" string="Comments">Comments</entry>
-	<entry id="5507" string="Cover art">Cover art</entry>
-	<entry id="5508" string="Read cover art">Read cover art</entry>
-	<entry id="5509" string="Read cover art from tags">Read cover art from tags</entry>
-	<entry id="5510" string="Read cover art from files">Read cover art from files</entry>
-	<entry id="5511" string="Write cover art">Write cover art</entry>
-	<entry id="5512" string="Write cover art to tags">Write cover art to tags</entry>
-	<entry id="5513" string="Write cover art to files">Write cover art to files</entry>
-	<entry id="5514" string="Add reference to audio file tag">Add reference to audio file tag</entry>
-	<entry id="5515" string="Other">Other</entry>
-	<entry id="5516" string="Chapters">Chapters</entry>
-	<entry id="5517" string="Read chapters from files">Read chapters from files</entry>
-	<entry id="5518" string="Write chapters to files">Write chapters to files</entry>
-	<entry id="5519" string="Special fields">Special fields</entry>
-	<entry id="5520" string="Write CD table of contents">Write CD table of contents</entry>
-	<entry id="5521" string="Preserve Replay Gain information">Preserve Replay Gain information</entry>
-	<entry id="5522" string="Cue sheets">Cue sheets</entry>
-	<entry id="5523" string="Read cue sheets embedded in metadata">Read cue sheets embedded in metadata</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">Prefer cue sheets over chapter information</entry>
-	<entry id="5525" string="Prepend zero to track numbers below 10">Prepend zero to track numbers below 10</entry>
+	<entry id="5506" string="Comments">Коментари</entry>
+	<entry id="5507" string="Cover art">Слика омота</entry>
+	<entry id="5508" string="Read cover art">Очитај слику омота</entry>
+	<entry id="5509" string="Read cover art from tags">Очитај слику омота из тагова</entry>
+	<entry id="5510" string="Read cover art from files">Очитај слику омота из фајлова</entry>
+	<entry id="5511" string="Write cover art">Упиши слику омота</entry>
+	<entry id="5512" string="Write cover art to tags">Упиши слику омота у тагове</entry>
+	<entry id="5513" string="Write cover art to files">Упиши слику омота у фајлове</entry>
+	<entry id="5514" string="Add reference to audio file tag">Додај референцу у аудио таг фајла</entry>
+	<entry id="5515" string="Other">Остало</entry>
+	<entry id="5516" string="Chapters">Поглавља</entry>
+	<entry id="5517" string="Read chapters from files">Очитај поглавља из фајлова</entry>
+	<entry id="5518" string="Write chapters to files">Упиши поглавља у фајлове</entry>
+	<entry id="5519" string="Special fields">Посебна поља</entry>
+	<entry id="5520" string="Write CD table of contents">Упиши табелу садржаја ЦД-а</entry>
+	<entry id="5521" string="Preserve Replay Gain information">Очувај Replay Gain информацију</entry>
+	<entry id="5522" string="Cue sheets">Cue листови</entry>
+	<entry id="5523" string="Read cue sheets embedded in metadata">Очитај cue листове усађене у подацима</entry>
+	<entry id="5524" string="Prefer cue sheets over chapter information">Дај предност cue листовима над информацијама о поглављима</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">Додај нулу испред бројева мањих од 10</entry>
 	<entry id="5526" string="File size limit">File size limit</entry>
 	<entry id="5527" string="unlimited">unlimited</entry>
        </section>
 
       <section name="Joblist">
-	<entry id="5600" string="Joblist">Joblist</entry>
-	<entry id="5601" string="Columns">Columns</entry>
-	<entry id="5602" string="Name">Name</entry>
-	<entry id="5603" string="Description">Description</entry>
-	<entry id="5604" string="Up">Up</entry>
-	<entry id="5605" string="Down">Down</entry>
-	<entry id="5606" string="Jobs">Jobs</entry>
-	<entry id="5607" string="Show Jobs tab">Show Jobs tab</entry>
+	<entry id="5600" string="Joblist">Листа задатака</entry>
+	<entry id="5601" string="Columns">Колоне</entry>
+	<entry id="5602" string="Name">Назив</entry>
+	<entry id="5603" string="Description">Опис</entry>
+	<entry id="5604" string="Up">Горе</entry>
+	<entry id="5605" string="Down">Доле</entry>
+	<entry id="5606" string="Jobs">Задаци</entry>
+	<entry id="5607" string="Show Jobs tab">Прикажи лист задатака</entry>
 
 	<section name="Columns">
-	  <entry id="5650" string="Track artist">Track artist</entry>
-	  <entry id="5651" string="Track title">Track title</entry>
-	  <entry id="5652" string="Track genre">Track genre</entry>
-	  <entry id="5653" string="Album title">Album title</entry>
-	  <entry id="5654" string="Disc number">Disc number</entry>
-	  <entry id="5655" string="Track number">Track number</entry>
-	  <entry id="5656" string="Track rating">Track rating</entry>
-	  <entry id="5657" string="Track length">Track length</entry>
-	  <entry id="5658" string="Track size">Track size</entry>
-	  <entry id="5659" string="File name">File name</entry>
-	  <entry id="5660" string="File type">File type</entry>
-	  <entry id="5661" string="Output file name">Output file name</entry>
+	  <entry id="5650" string="Track artist">Извођач песме</entry>
+	  <entry id="5651" string="Track title">Назив песме</entry>
+	  <entry id="5652" string="Track genre">Жанр песме</entry>
+	  <entry id="5653" string="Album title">Назив албума</entry>
+	  <entry id="5654" string="Disc number">Број диска</entry>
+	  <entry id="5655" string="Track number">Редни број песме</entry>
+	  <entry id="5656" string="Track rating">Оцена песме</entry>
+	  <entry id="5657" string="Track length">Дужина песме</entry>
+	  <entry id="5658" string="Track size">Величина песме</entry>
+	  <entry id="5659" string="File name">Назив фајла</entry>
+	  <entry id="5660" string="File type">Врста фајла</entry>
+	  <entry id="5661" string="Output file name">Излазни назив фајла</entry>
 	  <entry id="5662" string="Bitrate">Стопа битова</entry>
 	  <entry id="5663" string="Sampling rate">Стопа семпловања</entry>
 	  <entry id="5664" string="Channels">Канали</entry>
@@ -491,35 +491,35 @@
       </section>
 
       <section name="Resources">
-	<entry id="5700" string="Parallel processing">Parallel processing</entry>
-	<entry id="5701" string="Enable parallel processing">Enable parallel processing</entry>
-	<entry id="5702" string="Enable SuperFast mode (experimental)">Enable SuperFast mode (experimental)</entry>
-	<entry id="5703" string="Number of conversion threads">Number of conversion threads</entry>
-	<entry id="5704" string="auto">само</entry>
-	<entry id="5705" string="Process priority">Process priority</entry>
-	<entry id="5706" string="lowest">lowest</entry>
-	<entry id="5707" string="lower">lower</entry>
-	<entry id="5708" string="normal">normal</entry>
-	<entry id="5709" string="higher">higher</entry>
+	<entry id="5700" string="Parallel processing">Упоредо процесуирање</entry>
+	<entry id="5701" string="Enable parallel processing">Омогући упоредо процесуирање</entry>
+	<entry id="5702" string="Enable SuperFast mode (experimental)">Број конверзија</entry>
+	<entry id="5703" string="Number of conversion threads">само</entry>
+	<entry id="5704" string="auto">Приоритет процеса</entry>
+	<entry id="5705" string="Process priority">најнижи</entry>
+	<entry id="5706" string="lowest">нижи</entry>
+	<entry id="5707" string="lower">нормалан</entry>
+	<entry id="5708" string="normal">виши</entry>
+	<entry id="5709" string="higher">највиши</entry>
 	<entry id="5710" string="highest">highest</entry>
       </section>
 
       <section name="Verification">
-	<entry id="5800" string="Verification">Verification</entry>
-	<entry id="5801" string="Enable input verification">Enable input verification</entry>
-	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Verify that lossless inputs decode to exactly the data&#10;they were originally created from.</entry>
-	<entry id="5803" string="Enable output verification">Enable output verification</entry>
-	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Verify that lossless outputs decode to exactly the data&#10;used when encoding them.</entry>
+	<entry id="5800" string="Verification">Овера</entry>
+	<entry id="5801" string="Enable input verification">Омогући улазну оверу</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Овери да је безгубитни улази тачно декодовани&#10;у фајлове из којих су првобитно настали</entry>
+	<entry id="5803" string="Enable output verification">Омогући излазну оверу</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Овери да је безгубитни излази тачно декодовани у фајлове&#10;који су коришћени када су енкодовани</entry>
       </section>
 
       <section name="Processing">
-	<entry id="5900" string="Signal processing">Signal processing</entry>
-	<entry id="5901" string="Enable signal processing">Enable signal processing</entry>
-	<entry id="5902" string="Enable processing during playback">Enable processing during playback</entry>
-	<entry id="5903" string="Components">Components</entry>
-	<entry id="5904" string="Available">Available</entry>
-	<entry id="5905" string="Selected">Selected</entry>
-	<entry id="5906" string="Configure component">Configure component</entry>
+	<entry id="5900" string="Signal processing">Процесуирање сигнала</entry>
+	<entry id="5901" string="Enable signal processing">Расположиво</entry>
+	<entry id="5902" string="Enable processing during playback">Одабрано</entry>
+	<entry id="5903" string="Components">Поставка компоненте</entry>
+	<entry id="5904" string="Available">Претварање у један излазни фајл</entry>
+	<entry id="5905" string="Selected">Процесуирај сваку песму засебно</entry>
+	<entry id="5906" string="Configure component">Третирај комбиноване песме као једну песму</entry>
 	<entry id="5907" string="Conversion to a single output file">Conversion to a single output file</entry>
 	<entry id="5908" string="Process each track individually">Process each track individually</entry>
 	<entry id="5909" string="Treat the combined tracks like a single track">Treat the combined tracks like a single track</entry>
@@ -542,37 +542,37 @@
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 је расположив у %2 језика. Ако Ваш језик није&#10;расположив, можете га лако превести користећи&#10;апликацију: &quot;Лаки преводилац&quot;.</entry>
       <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 долази са подршком за LAME, Ogg Vorbis, FAAC,&#10;FLAC, и Bonk енкодерима. Енкодер за VQF формат је&#10;расположив на %1 вебсајту: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 може да користи Winamp 2 улазне plugin-ове&#10;да подржи више формата. Копирајте in_*.dll фајлове&#10;у %1/plugins фолдер да омогућите %1-у да чита&#10;ове формате.</entry>
+      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 може да користи Winamp 2 улазне plugin-ове&#10;да подржи више формата. Копирајте in_*.dll фајлове&#10;у %1/plugins фолдер да омогућите %1у да чита&#10;ове формате.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Са %1-ом можете послати упит CDDB бази који&#10;садржи Unikod карактере. Ако имате било који ЦД са&#10;не-Латин извођачем или песмом можете пријавити&#10;податке freedb-у преко %1-а.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">За исправке грешке читања у току риповања можете&#10;омогућити Jitter корекцију у табу Рипер %1 подешења.&#10;Ако то не помогне, покушајте&#10;са неким од Параноја режима.</entry>
       <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Имате предлоге како да побољшамо %1?&#10;Ваше идеје пријавите преко Trackera&#10;на %1 SourceForge страни пројекта - %2&#10;или пошаљите еМејл на: %3.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Допада Вам се што је %1? %1 бесплатан, и желите&#10;помоћи развој истог донирањем %1 пројекту.&#10;Можете послати новчани прилог&#10;на: %2 преко PayPal-а.&#10;Погледај %3 за више детаља.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">A conversion process is still active! Do you really want to quit?</entry>
-      <entry id="7001" string="Currently converting">Currently converting</entry>
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Енкодовање у току! Да ли заиста желите да га откажете?</entry>
+      <entry id="7001" string="Currently converting">Енкодовање у току</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Није могуће учитати ASPI драјвере! Риповање ЦД-а отказано!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Немогуће отворити фајл: %1&#10;&#10;%2</entry>
-      <entry id="7004" string="Cannot play a CD track while ripping from the same drive!">Cannot play a CD track while ripping from the same drive!</entry>
-      <entry id="7005" string="Cannot start ripping while playing a track from the same drive!">Cannot start ripping while playing a track from the same drive!</entry>
-      <entry id="7006" string="Delete original files after encoding">Обриши изворни фајл након енкодовања</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ова опција брише изворне фајлове након енкодовања!&#10;&#10;Да ли сте сигурни да желите да наставите?</entry>
-      <entry id="7008" string="File already exists">Фајл већ постоји</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Излазни фајл %1&#10;већ постоји! Да ли желите да га препишете?</entry>
-      <entry id="7010" string="Overwrite all further files">Препиши све будуће фајлове</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB подршка је онемогућена! Молимо омогућите&#10;локалну или удаљену CDDB подршку у поставкама.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Удаљена CDDB подрша онемогућена! Молимо&#10;омогућите CDDB подршку у поставкама подешења.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Приступ ЦД РОМ уређају одбијен од стране Windows-а.&#10;&#10;Молимо обратите се администратору система&#10;да Вам одобри приступ ЦД РОМ уређају.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Не могу да приступим улазном фајлу: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Не могу да креирам излазни фајл: %1</entry>
-      <entry id="7016" string="File not found">Фајл није нађен</entry>
-      <entry id="7017" string="Unknown file type">Непозната врста фајла</entry>
-      <entry id="7018" string="Unsupported audio format">Овај аудио формат није подржан</entry>
-      <entry id="7019" string="Unknown error">Непозната грешка</entry>
-      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">No configuration dialog available for:&#10;&#10;%1</entry>
-      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?</entry>
-      <entry id="7022" string="Failed to verify input file: %1">Failed to verify input file: %1</entry>
+      <entry id="7004" string="Cannot play a CD track while ripping from the same drive!">Обриши изворни фајл након енкодовања</entry>
+      <entry id="7005" string="Cannot start ripping while playing a track from the same drive!">Ова опција брише изворне фајлове након енкодовања!&#10;&#10;Да ли сте сигурни да желите да наставите?</entry>
+      <entry id="7006" string="Delete original files after encoding">Фајл већ постоји</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Излазни фајл %1&#10;већ постоји! Да ли желите да га препишете?</entry>
+      <entry id="7008" string="File already exists">Препиши све будуће фајлове</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">CDDB подршка је онемогућена! Молимо омогућите&#10;локалну или удаљену CDDB подршку у поставкама.</entry>
+      <entry id="7010" string="Overwrite all further files">Удаљена CDDB подрша онемогућена! Молимо&#10;омогућите CDDB подршку у поставкама подешења.</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Приступ ЦД РОМ уређају одбијен од стране Windows-а.&#10;&#10;Молимо обратите се администратору система&#10;да Вам одобри приступ ЦД РОМ уређају.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Не могу да приступим улазном фајлу: %1</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Не могу да креирам излазни фајл: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1">Фајл није нађен</entry>
+      <entry id="7015" string="Cannot create output file: %1">Непозната врста фајла</entry>
+      <entry id="7016" string="File not found">Овај аудио формат није подржан</entry>
+      <entry id="7017" string="Unknown file type">Непозната грешка</entry>
+      <entry id="7018" string="Unsupported audio format">Није расположив дијалог за поставке:&#10;&#10;%1</entry>
+      <entry id="7019" string="Unknown error">Изгледа да конвертујете из формата са губицима у формат без губитака.&#10;&#10;Обратите пажњу да је губитак квалитета трајан и неповратан,&#10;тако да овај процес неће побољшати квалитет ни на који начин,&#10;а вероватно ће увећати величину фајла.&#10;&#10;Да ли желите да наставите без обзира на све?</entry>
+      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">Овера улазног фајла није успела: %1</entry>
+      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Чецксум се не поклапа приликом овере излазног фајла: %1&#10;&#10;Енкодовање чецксум: %2&#10;Овера чецксум: %3</entry>
+      <entry id="7022" string="Failed to verify input file: %1">Одабрани фолдер више не постоји!</entry>
       <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3</entry>
       <entry id="7024" string="The selected folder does not exist anymore!">The selected folder does not exist anymore!</entry>
       <entry id="7025" string="Keep this option enabled even after restarting %1">Keep this option enabled even after restarting %1</entry>
@@ -581,19 +581,19 @@
     <section name="Dialogs">
 
       <section name="Overwrite">
-	<entry id="8000" string="Confirm overwrite">Confirm overwrite</entry>
-	<entry id="8001" string="Confirm">Confirm</entry>
-	<entry id="8002" string="Skip all">Skip all</entry>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten">The following %1 files already exist and will be overwritten</entry>
-	<entry id="8004" string="Action">Action</entry>
-	<entry id="8005" string="Overwrite">Overwrite</entry>
+	<entry id="8000" string="Confirm overwrite">Потврди препис</entry>
+	<entry id="8001" string="Confirm">Потврди</entry>
+	<entry id="8002" string="Skip all">Прескочи све</entry>
+	<entry id="8003" string="The following %1 files already exist and will be overwritten">Наредни  %1 фајлови већ постоје и биће преписани</entry>
+	<entry id="8004" string="Action">Акција</entry>
+	<entry id="8005" string="Overwrite">Препиши</entry>
 	<entry id="8006" string="Skip">Прескочи</entry>
       </section>
 
       <section name="Format">
-	<entry id="8100" string="Select sample format">Select sample format</entry>
-	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:</entry>
-	<entry id="8102" string="Select">Select</entry>
+	<entry id="8100" string="Select sample format">Грешке</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">%1 грешака у року обраде</entry>
+	<entry id="8102" string="Select">одабери поље за детаље</entry>
       </section>
 
       <section name="Errors">
@@ -605,12 +605,12 @@
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Активан ЦД РОМ уређај</entry>
-      <entry id="9001" string="Set drive speed limit">Set drive speed limit</entry>
+      <entry id="9001" string="Set drive speed limit">Подеси брзину драјв уређаја</entry>
       <entry id="9002" string="CD information">ЦД инфо</entry>
       <entry id="9003" string="Read CD Text">Читај ЦД текст</entry>
       <entry id="9004" string="Read cdplayer.ini">Читај из cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Подешења рипера</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Activate cdparanoia mode</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Покрени цдпараноја режим</entry>
       <entry id="9007" string="Overlap only">Само за пребачаје</entry>
       <entry id="9008" string="No verify">Без овере</entry>
       <entry id="9009" string="No scratch repair">Без поправки огреботина</entry>
@@ -624,34 +624,34 @@
       <entry id="9017" string="CD options">ЦД опције</entry>
       <entry id="9018" string="Lock CD tray while ripping">Закључај ЦД уређај у току риповања</entry>
       <entry id="9019" string="Use native NT SCSI library">Користи усађену NT SCSI библиотеку</entry>
-      <entry id="9020" string="Use read offset">Use read offset</entry>
-      <entry id="9021" string="samples">samples</entry>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist">Read ISRC when adding tracks to joblist</entry>
-      <entry id="9023" string="Spin up before ripping">Spin up before ripping</entry>
-      <entry id="9024" string="%1 seconds">%1 seconds</entry>
+      <entry id="9020" string="Use read offset">Користи читање непоклапања</entry>
+      <entry id="9021" string="samples">узорци</entry>
+      <entry id="9022" string="Read ISRC when adding tracks to joblist">Читај ISRC када додајеш песме на листу задатака</entry>
+      <entry id="9023" string="Spin up before ripping">Убрзај пре риповања</entry>
+      <entry id="9024" string="%1 seconds">%1 секунди</entry>
     </section>
 
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="10000" string="Decoding">Decoding</entry>
-	<entry id="10001" string="Enable 24 bit decoding">Enable 24 bit decoding</entry>
+	<entry id="10000" string="Decoding">Децодовање</entry>
+	<entry id="10001" string="Enable 24 bit decoding">Омогући 24битно декодовање</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder">Decoder</entry>
-	<entry id="11001" string="Active decoder">Active decoder</entry>
- 	<entry id="11002" string="auto select">auto select</entry>
+	<entry id="11000" string="Decoder">Декодер</entry>
+	<entry id="11001" string="Active decoder">Активни декодер</entry>
+ 	<entry id="11002" string="auto select">самоодабирајуће</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information">Title information</entry>
-	<entry id="12001" string="Read tags from referenced files">Read tags from referenced files</entry>
-	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">Prefer cue sheet metadata over referenced files' tags</entry>
-	<entry id="12003" string="Alternative files">Alternative files</entry>
-	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">Look for compressed alternatives if referenced Wave files cannot be located</entry>
-	<entry id="12005" string="Error handling">Error handling</entry>
-	<entry id="12006" string="Ignore errors during cue sheet processing">Ignore errors during cue sheet processing</entry>
+	<entry id="12000" string="Title information">Инфо о називу</entry>
+	<entry id="12001" string="Read tags from referenced files">Читај тагове из референтних фајлова</entry>
+	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">Преферирај cue лист податке над таговима референтних фајлова</entry>
+	<entry id="12003" string="Alternative files">Алтернативни фајлови</entry>
+	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">Потражи спаковане фајлове ако није могуће лоцирање референтних фајлова</entry>
+	<entry id="12005" string="Error handling">Грешка у управљању</entry>
+	<entry id="12006" string="Ignore errors during cue sheet processing">Игнориши грешке у току процесуирања cue листова</entry>
       </section>
     </section>
 
@@ -689,16 +689,16 @@
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets">Предподешења</entry>
-	  <entry id="32101" string="Use preset">Use preset</entry>
+	  <entry id="32101" string="Use preset">Користи предподешења</entry>
 	  <entry id="32102" string="Custom settings">Корисникова подешења</entry>
 	  <entry id="32103" string="Medium, Fast">Средње, Брзо</entry>
 	  <entry id="32104" string="Standard, Fast">Стандардно, Брзо</entry>
 	  <entry id="32105" string="Extreme, Fast">Крајње, Брзо</entry>
 	  <entry id="32106" string="Bitrate">Стопа битова</entry>
 	  <entry id="32107" string="Quality">Квалитет</entry>
-	  <entry id="32108" string="Set bitrate">Set bitrate</entry>
-	  <entry id="32109" string="Set ratio">Set ratio</entry>
-	  <entry id="32110" string="Set quality">Set quality</entry>
+	  <entry id="32108" string="Set bitrate">Стопа</entry>
+	  <entry id="32109" string="Set ratio">Сразмера</entry>
+	  <entry id="32110" string="Set quality">Квалитет</entry>
 	  <entry id="32111" string="worse">лошије</entry>
 	  <entry id="32112" string="better">боље</entry>
 	  <entry id="32113" string="VBR mode">VBR режим</entry>
@@ -720,13 +720,13 @@
 	  <entry id="32209" string="Joint Stereo">&quot;Збијени&quot; стерео</entry>
 	  <entry id="32210" string="Force Joint Stereo">Форсирај &quot;збијени&quot; стерео</entry>
 	  <entry id="32211" string="VBR bitrate range">VBR опсег стопе битове</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Set minimum VBR bitrate</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Set maximum VBR bitrate</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">Подеси мин. VBR стопу</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">Подеси макс. VBR стопу</entry>
 	</section>
 
 	<section name="Expert">
 	  <entry id="32300" string="ATH">ATH</entry>
-	  <entry id="32301" string="Enable ATH">Enable ATH</entry>
+	  <entry id="32301" string="Enable ATH">Омогући ATH</entry>
 	  <entry id="32302" string="Use default setting">Користи усађена подешења</entry>
 	  <entry id="32303" string="Psycho acoustic model">Психо акустични модел</entry>
 	  <entry id="32304" string="Use Temporal Masking Effect">Користи привремен ефекат маскирања</entry>
@@ -736,46 +736,46 @@
 
 	<section name="Audio processing">
 	  <entry id="32400" string="Highpass filter">Филтер високих тонова</entry>
-	  <entry id="32401" string="Set Highpass frequency (Hz)">Set Highpass frequency (Hz)</entry>
-	  <entry id="32402" string="Set Highpass width (Hz)">Set Highpass width (Hz)</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Високопролазна фреквенција (Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Високопролазна ширина (Hz)</entry>
 	  <entry id="32403" string="Lowpass filter">Филтер ниских тонова</entry>
-	  <entry id="32404" string="Set Lowpass frequency (Hz)">Set Lowpass frequency (Hz)</entry>
-	  <entry id="32405" string="Set Lowpass width (Hz)">Set Lowpass width (Hz)</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Нископролазна фреквенција (Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Нископролазна ширина (Hz)</entry>
 	  <entry id="32406" string="Misc settings">Разна подешења</entry>
 	  <entry id="32407" string="Disable all filtering">Онемогући све филтере</entry>
 	</section>
       </section>
 
       <section name="AAC">
-	<entry id="33000" string="Codec">Codec</entry>
+	<entry id="33000" string="Codec">Кодек</entry>
 	<entry id="33001" string="Quality">Квалитет</entry>
 	<entry id="33002" string="Format">Формат</entry>
 
 	<section name="Codec">
-	  <entry id="33100" string="Audio codec">Audio codec</entry>
+	  <entry id="33100" string="Audio codec">Аудио кодек</entry>
 	</section>
 
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">Стопа битова</entry>
 	  <entry id="33201" string="Bitrate / Quality">Стопа битова / Квалитет</entry>
-	  <entry id="33202" string="Bitrate per channel">Bitrate per channel</entry>
-	  <entry id="33203" string="Set quality">Set quality</entry>
+	  <entry id="33202" string="Bitrate per channel">Стопа битова по каналу</entry>
+	  <entry id="33203" string="Set quality">Квалитет</entry>
 	  <entry id="33204" string="Stereo mode">Стерео режим</entry>
 	  <entry id="33205" string="Allow Joint Stereo">Дозволи &quot;збијени&quot; стерео</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">Привремено обликовање шумова</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Користи привремено обликовање шумова</entry>
 	  <entry id="33208" string="Maximum bandwidth">Максималан проток</entry>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maximum AAC frequency bandwidth to use (Hz)</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Максимална AAC фреквенција протока (Hz)</entry>
 	</section>
 
 	<section name="Format">
 	  <entry id="33300" string="MPEG version">MPEG верзија</entry>
 	  <entry id="33301" string="AAC object type">Тип AAC објекта</entry>
 	  <entry id="33302" string="File format">Формат фајла</entry>
-	  <entry id="33303" string="File extension">File extension</entry>
-	  <entry id="33304" string="Tags">Tags</entry>
+	  <entry id="33303" string="File extension">Екстензија фајла</entry>
+	  <entry id="33304" string="Tags">Инфо тагови</entry>
 	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Дозволи ID3v2 тагове у AAC фајловима</entry>
-	  <entry id="33306" string="Note">Note</entry>
+	  <entry id="33306" string="Note">Напомена</entry>
 	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Неки плејери имају проблеме са покретањем AAC&#10;фајлова са ID3 таговима. Молимо користите ову опцију&#10;само ако сте сигурни да Ваш плејер то може.</entry>
 	</section>
       </section>
@@ -787,7 +787,7 @@
 
 	<section name="Basic">
 	  <entry id="34100" string="Presets">Предподешења</entry>
-	  <entry id="34101" string="Use preset">Use preset</entry>
+	  <entry id="34101" string="Use preset">Користи предподешења</entry>
 	  <entry id="34102" string="Custom settings">Корисникова подешења</entry>
 	  <entry id="34103" string="Fastest encoding">Најбрже енкодовање</entry>
 	  <entry id="34104" string="Best compression">Најбоља компресија</entry>
@@ -800,13 +800,13 @@
 
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Користи проточно подподешавање</entry>
-	  <entry id="34201" string="Blocksize">Blocksize</entry>
+	  <entry id="34201" string="Blocksize">Величина блока</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Signal processing">Signal processing</entry>
-	  <entry id="34301" string="Window function(s)">Window function(s)</entry>
-	  <entry id="34302" string="Note">Note</entry>
+	  <entry id="34300" string="Signal processing">Обрада сигнала</entry>
+	  <entry id="34301" string="Window function(s)">Функција(е) прозора</entry>
+	  <entry id="34302" string="Note">Напомена</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Можете задати више функција одвајајући их тачка-зарезом.</entry>
 	  <entry id="34304" string="Linear predictor">Линеарни предвиђач</entry>
 	  <entry id="34305" string="Maximum LPC order">Максималан LPC редослед</entry>
@@ -827,10 +827,10 @@
 	<entry id="35002" string="Average Bitrate">Просечна стопа битова (ABR)</entry>
 	<entry id="35003" string="Quality">Квалитет</entry>
 	<entry id="35004" string="Bitrate">Стопа битова</entry>
-	<entry id="35005" string="Minimum bitrate">Minimum bitrate</entry>
-	<entry id="35006" string="Average bitrate">Average bitrate</entry>
-	<entry id="35007" string="Maximum bitrate">Maximum bitrate</entry>
-	<entry id="35008" string="File extension">File extension</entry>
+	<entry id="35005" string="Minimum bitrate">Најнижа стопа битова</entry>
+	<entry id="35006" string="Average bitrate">Просечна стопа битова</entry>
+	<entry id="35007" string="Maximum bitrate">Навиша стопа битова</entry>
+	<entry id="35008" string="File extension">Екстензија фајла</entry>
       </section>
 
       <section name="WMA">
@@ -849,101 +849,101 @@
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">Стопа битова</entry>
-	<entry id="37001" string="Bitrate per channel">Bitrate per channel</entry>
+	<entry id="37001" string="Bitrate per channel">Стопа битова по каналу</entry>
 	<entry id="37002" string="Preselection">Претходни избор</entry>
-	<entry id="37003" string="Number of preselection candidates">Number of preselection candidates</entry>
+	<entry id="37003" string="Number of preselection candidates">Број претходно изабраних кандидата</entry>
       </section>
 
       <section name="Monkey's Audio">
-	<entry id="38000" string="Compression">Compression</entry>
-	<entry id="38001" string="Compression mode">Compression mode</entry>
-	<entry id="38002" string="Fast">Fast</entry>
-	<entry id="38003" string="Normal">Normal</entry>
-	<entry id="38004" string="High">High</entry>
-	<entry id="38005" string="Extra high">Extra high</entry>
-	<entry id="38006" string="Insane">Insane</entry>
+	<entry id="38000" string="Compression">Компресија</entry>
+	<entry id="38001" string="Compression mode">Режим компресије</entry>
+	<entry id="38002" string="Fast">Брзо</entry>
+	<entry id="38003" string="Normal">Нормално</entry>
+	<entry id="38004" string="High">Високо</entry>
+	<entry id="38005" string="Extra high">Веома високо</entry>
+	<entry id="38006" string="Insane">Лудачки</entry>
       </section>
 
       <section name="Speex">
-	<entry id="39000" string="Profile">Profile</entry>
-	<entry id="39001" string="Select encoding profile">Select encoding profile</entry>
+	<entry id="39000" string="Profile">Профил</entry>
+	<entry id="39001" string="Select encoding profile">Изаберите профил енкодовања</entry>
 	<entry id="39002" string="Auto">Самоподешење</entry>
-	<entry id="39003" string="Narrowband (8 kHz)">Narrowband (8 kHz)</entry>
-	<entry id="39004" string="Wideband (16 kHz)">Wideband (16 kHz)</entry>
-	<entry id="39005" string="Ultra-Wideband (32 kHz)">Ultra-Wideband (32 kHz)</entry>
+	<entry id="39003" string="Narrowband (8 kHz)">Ускоканално (8 kHz)</entry>
+	<entry id="39004" string="Wideband (16 kHz)">Ширококанално (16 kHz)</entry>
+	<entry id="39005" string="Ultra-Wideband (32 kHz)">Крајње-ширококанално (32 kHz)</entry>
 	<entry id="39006" string="VBR mode">VBR режим</entry>
-	<entry id="39007" string="CBR (no VBR)">CBR (no VBR)</entry>
+	<entry id="39007" string="CBR (no VBR)">CBR (не VBR)</entry>
 	<entry id="39008" string="VBR">VBR</entry>
 	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Опције</entry>
-	<entry id="39011" string="Voice Activity Detection">Voice Activity Detection</entry>
-	<entry id="39012" string="Discontinued Transmission">Discontinued Transmission</entry>
-	<entry id="39013" string="Algorithm complexity">Algorithm complexity</entry>
-	<entry id="39014" string="Complexity">Complexity</entry>
-	<entry id="39015" string="CBR quality">CBR quality</entry>
+	<entry id="39011" string="Voice Activity Detection">Препознавање активности гласа</entry>
+	<entry id="39012" string="Discontinued Transmission">Прекинут пренос</entry>
+	<entry id="39013" string="Algorithm complexity">Сложеност алгоритма</entry>
+	<entry id="39014" string="Complexity">Сложеност</entry>
+	<entry id="39015" string="CBR quality">CBR квалитет</entry>
 	<entry id="39016" string="VBR quality">VBR квалитет</entry>
 	<entry id="39017" string="ABR target bitrate">циљна ABR стопа битова</entry>
 	<entry id="39018" string="Bitrate">Стопа битова</entry>
 	<entry id="39019" string="Quality">Квалитет</entry>
-	<entry id="39020" string="Max. bitrate">Max. bitrate</entry>
+	<entry id="39020" string="Max. bitrate">Највиша стопа битова</entry>
       </section>
 
       <section name="Opus">
-	<entry id="40000" string="Basic settings">Basic settings</entry>
-	<entry id="40001" string="Encoding mode">Encoding mode</entry>
-	<entry id="40002" string="Auto">Самоподешење</entry>
-	<entry id="40003" string="Voice">Voice</entry>
-	<entry id="40004" string="Music">Music</entry>
-	<entry id="40005" string="Bandwidth">Bandwidth</entry>
-	<entry id="40006" string="Narrowband">Narrowband</entry>
-	<entry id="40007" string="Mediumband">Mediumband</entry>
-	<entry id="40008" string="Wideband">Wideband</entry>
-	<entry id="40009" string="Superwideband">Superwideband</entry>
-	<entry id="40010" string="Fullband">Fullband</entry>
-	<entry id="40011" string="File extension">File extension</entry>
-	<entry id="40012" string="Variable bitrate">Variable bitrate</entry>
-	<entry id="40013" string="Enable variable bitrate encoding">Enable variable bitrate encoding</entry>
-	<entry id="40014" string="Constrain bitrate to target value">Constrain bitrate to target value</entry>
+	<entry id="40000" string="Basic settings">Основна подешења</entry>
+	<entry id="40001" string="Encoding mode">Режим енкодовања</entry>
+	<entry id="40002" string="Auto">Самоподешавајуће</entry>
+	<entry id="40003" string="Voice">Глас</entry>
+	<entry id="40004" string="Music">Музика</entry>
+	<entry id="40005" string="Bandwidth">Ширина канала</entry>
+	<entry id="40006" string="Narrowband">Ускоканално</entry>
+	<entry id="40007" string="Mediumband">Средњеканално</entry>
+	<entry id="40008" string="Wideband">Ширококанално</entry>
+	<entry id="40009" string="Superwideband">Веома ширококанално</entry>
+	<entry id="40010" string="Fullband">Пуноканално</entry>
+	<entry id="40011" string="File extension">Екстензија фајла</entry>
+	<entry id="40012" string="Variable bitrate">Променљива стопа битова</entry>
+	<entry id="40013" string="Enable variable bitrate encoding">Омогући енкодовање променљиве стопе битова</entry>
+	<entry id="40014" string="Constrain bitrate to target value">Ограничи стопу битова на циљану вредност</entry>
 	<entry id="40015" string="Quality">Квалитет</entry>
 	<entry id="40016" string="Bitrate">Стопа битова</entry>
-	<entry id="40017" string="Complexity">Complexity</entry>
-	<entry id="40018" string="Stream">Stream</entry>
-	<entry id="40019" string="Frame length">Frame length</entry>
+	<entry id="40017" string="Complexity">Сложеност</entry>
+	<entry id="40018" string="Stream">Ток</entry>
+	<entry id="40019" string="Frame length">Дужина фрејма</entry>
 	<entry id="40020" string="Options">Опције</entry>
-	<entry id="40021" string="Enable discontinous transmission">Enable discontinous transmission</entry>
-	<entry id="40022" string="Expected packet loss">Expected packet loss</entry>
+	<entry id="40021" string="Enable discontinous transmission">Омогући несталан пренос</entry>
+	<entry id="40022" string="Expected packet loss">Очекивани губитак</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41000" string="Output format">Output format</entry>
+	<entry id="41000" string="Output format">Излазни формат</entry>
 	<entry id="41001" string="File format">Формат фајла</entry>
-	<entry id="41002" string="Audio format">Audio format</entry>
-	<entry id="41003" string="mono">mono</entry>
-	<entry id="41004" string="auto select">auto select</entry>
+	<entry id="41002" string="Audio format">Аудио формат</entry>
+	<entry id="41003" string="mono">моно</entry>
+	<entry id="41004" string="auto select">самобирајуће</entry>
 
 	<section name="Errors">
-	  <entry id="41100" string="Could not find suitable audio format.">Could not find suitable audio format.</entry>
-	  <entry id="41101" string="Unable to use selected audio format.">Unable to use selected audio format.</entry>
+	  <entry id="41100" string="Could not find suitable audio format.">Није пронађен одговарајући аудио формат.</entry>
+	  <entry id="41101" string="Unable to use selected audio format.">Није могуће користити одабрани аудио формат.</entry>
 	</section>
       </section>
 
       <section name="meh!">
 	<entry id="42000" string="Encoders">Енкодери</entry>
-	<entry id="42001" string="Available">Available</entry>
-	<entry id="42002" string="Selected">Selected</entry>
+	<entry id="42001" string="Available">Расположиво</entry>
+	<entry id="42002" string="Selected">Одабрано</entry>
 	<entry id="42003" string="Configure encoder">Подеси енкодер</entry>
-	<entry id="42004" string="Encoder configuration">Encoder configuration</entry>
+	<entry id="42004" string="Encoder configuration">Поставка енкодера</entry>
 	<entry id="42005" string="Options">Опције</entry>
-	<entry id="42006" string="Create a separate folder for each output format">Create a separate folder for each output format</entry>
+	<entry id="42006" string="Create a separate folder for each output format">Направи засебан фолдер за сваки излазни формат</entry>
       </section>
     </section>
 
     <section name="DSP">
 
       <section name="Format">
-	<entry id="50000" string="Sample format">Sample format</entry>
-	<entry id="50001" string="Number format">Number format</entry>
-	<entry id="50002" string="Sample resolution">Резолуција семпла</entry>
+	<entry id="50000" string="Sample format">Претварач</entry>
+	<entry id="50001" string="Number format">Стопа семпловања</entry>
+	<entry id="50002" string="Sample resolution">Излазна стопа семпловања</entry>
 	<entry id="50003" string="bit">бит</entry>
 	<entry id="50004" string="unsigned">unsigned</entry>
 	<entry id="50005" string="Integer">Integer</entry>
@@ -1001,8 +1001,8 @@
     <section name="Taggers">
 
       <section name="MP4">
-	<entry id="60000" string="Chapter format">Chapter format</entry>
-	<entry id="60001" string="both">both</entry>
+	<entry id="60000" string="Chapter format">Формат поглавља</entry>
+	<entry id="60001" string="both">Оба</entry>
       </section>
     </section>
 
@@ -1011,18 +1011,18 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Подржи овај пројекат</entry>
 	<entry id="100001" string="Please support this project!">Молимо подржите овај пројекат!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.">Please help keep this software free by supporting the %1 project&#10;with a donation.</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check&#10;or send money by mail.">Please write to %1 if you would like to mail a check&#10;or send money by mail.</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.">Молимо помозите да овај програм остане бесплатан подржавајући %1&#10;пројекат донацијом.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check&#10;or send money by mail.">Молимо пишите %1 ако желите да донирате преко електрон-&#10;ског трансфера, пошаљете чек поштом, или да пошаљете новац поштом.</entry>
 	<entry id="100004" string="Thank you very much!">Хвала Вам пуно!</entry>
 	<entry id="100005" string="Remind me later">Подсети ме касније</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Click one of the buttons below to make a donation using PayPal:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">You can also send money directly to %1 using PayPal.</entry>
-	  <entry id="100102" string="usd">usd</entry>
-	  <entry id="100103" string="$%1">$%1</entry>
-	  <entry id="100104" string="5,10,other amount">5,10,other amount</entry>
+	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Кликните на једно од дугмића испод за донацију преко PayPal-а:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Такође, можете изравно послати новац %1 путем PayPal-а.</entry>
+	  <entry id="100102" string="usd">rsd</entry>
+	  <entry id="100103" string="$%1">%1 дин.</entry>
+	  <entry id="100104" string="5,10,other amount">500,1000,други износ</entry>
 	</section>
 
 	<section name="Donorbox">
@@ -1054,117 +1054,117 @@
       </section>
 
       <section name="Video Downloader">
-	<entry id="102000" string="Video">Video</entry>
-	<entry id="102001" string="Enter video URL here">Enter video URL here</entry>
-	<entry id="102002" string="Download">Download</entry>
-	<entry id="102003" string="Automatically download URLs copied to clipboard">Automatically download URLs copied to clipboard</entry>
-	<entry id="102004" string="Save downloaded video files">Save downloaded video files</entry>
-	<entry id="102005" string="Video downloads">Video downloads</entry>
-	<entry id="102006" string="Downloaded tracks">Downloaded tracks</entry>
-	<entry id="102007" string="Uploader">Uploader</entry>
-	<entry id="102008" string="Video URL">Video URL</entry>
-	<entry id="102009" string="Video title">Video title</entry>
-	<entry id="102010" string="Video description">Video description</entry>
-	<entry id="102011" string="Site name">Site name</entry>
-	<entry id="102012" string="Uploaded by">Uploaded by</entry>
-	<entry id="102013" string="Uploaded on">Uploaded on</entry>
+	<entry id="102000" string="Video">Видео</entry>
+	<entry id="102001" string="Enter video URL here">Унеси видео URL овде</entry>
+	<entry id="102002" string="Download">Преузимање</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">Аутоматски преузми URL-ове који су сачувани у клипборду</entry>
+	<entry id="102004" string="Save downloaded video files">Сачувај преузете видео фајлове</entry>
+	<entry id="102005" string="Video downloads">Преузета видеа</entry>
+	<entry id="102006" string="Downloaded tracks">Преузете песме</entry>
+	<entry id="102007" string="Uploader">Аплоадер</entry>
+	<entry id="102008" string="Video URL">Видео URL</entry>
+	<entry id="102009" string="Video title">Назив видеа</entry>
+	<entry id="102010" string="Video description">Опис видеа</entry>
+	<entry id="102011" string="Site name">Назив интернет стране</entry>
+	<entry id="102012" string="Uploaded by">Аплоадовао</entry>
+	<entry id="102013" string="Uploaded on">Аплоадовано дана</entry>
 	<entry id="102014" string="Length">Дужина</entry>
 	<entry id="102015" string="Size">Величина</entry>
-	<entry id="102016" string="Cancel download">Cancel download</entry>
-	<entry id="102017" string="unknown">unknown</entry>
-	<entry id="102018" string="Note">Note</entry>
+	<entry id="102016" string="Cancel download">Откажи преузимање</entry>
+	<entry id="102017" string="unknown">непознато</entry>
+	<entry id="102018" string="Note">Напомена</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Аутоматизација</entry>
-	  <entry id="102102" string="Video files">Video files</entry>
-	  <entry id="102103" string="Select">Select</entry>
-	  <entry id="102104" string="Select the folder to save downloaded video files to">Select the folder to save downloaded video files to</entry>
-	  <entry id="102105" string="Downloads">Downloads</entry>
-	  <entry id="102106" string="Maximum number of simultaneous downloads">Maximum number of simultaneous downloads</entry>
-	  <entry id="102107" string="Output format">Output format</entry>
-	  <entry id="102108" string="keep original format">keep original format</entry>
+	  <entry id="102102" string="Video files">Видео фајлови</entry>
+	  <entry id="102103" string="Select">Претражи</entry>
+	  <entry id="102104" string="Select the folder to save downloaded video files to">Одабери фолдер за чување преузетих видео фајлова</entry>
+	  <entry id="102105" string="Downloads">Преузимања</entry>
+	  <entry id="102106" string="Maximum number of simultaneous downloads">Највиши број истовремених преузимања</entry>
+	  <entry id="102107" string="Output format">Излазни формат</entry>
+	  <entry id="102108" string="keep original format">задржи изворни формат</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="102201" string="This URL is not supported or not a video page URL!">This URL is not supported or not a video page URL!</entry>
-	  <entry id="102202" string="Error downloading video!">Error downloading video!</entry>
-	  <entry id="102203" string="You are already downloading this video!">You are already downloading this video!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!</entry>
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">Овај URL није подржан или није видео URL!</entry>
+	  <entry id="102202" string="Error downloading video!">Грешка у преузимању видеа!</entry>
+	  <entry id="102203" string="You are already downloading this video!">Већ преузимате овај видео!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Неки неопходни видео декодери не могу бити нађени. Видео фајлови&#10;не могу бити додати на листу задатака за претварање у аудио фајлове.&#10;&#10;Молимо инсталирајте avconv или FFmpeg да решите овај проблем!</entry>
 	</section>
       </section>
 
       <section name="Tag Editor">
-	<entry id="103000" string="Tags">Tags</entry>
+	<entry id="103000" string="Tags">Инфо тагови</entry>
 	<entry id="103001" string="Length">Дужина</entry>
 	<entry id="103002" string="Size">Величина</entry>
-	<entry id="103003" string="Albums">Albums</entry>
-	<entry id="103004" string="Files">Files</entry>
+	<entry id="103003" string="Albums">Албуми</entry>
+	<entry id="103004" string="Files">Фајлови</entry>
 	<entry id="103005" string="File">Фајл</entry>
-	<entry id="103006" string="Tracks">Tracks</entry>
-	<entry id="103007" string="Save">Save</entry>
-	<entry id="103008" string="Save all">Save all</entry>
-	<entry id="103009" string="no audio files found">no audio files found</entry>
+	<entry id="103006" string="Tracks">Песме</entry>
+	<entry id="103007" string="Save">Сачувај</entry>
+	<entry id="103008" string="Save all">Сачувај све</entry>
+	<entry id="103009" string="no audio files found">нису нађени аудио фајлови</entry>
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Основно</entry>
-	  <entry id="103101" string="Title information">Title information</entry>
-	  <entry id="103102" string="Disc">Disc</entry>
-	  <entry id="103103" string="Cover art">Cover art</entry>
-	  <entry id="103104" string="Covers">Covers</entry>
-	  <entry id="103105" string="Type">Type</entry>
-	  <entry id="103106" string="Description">Description</entry>
+	  <entry id="103101" string="Title information">Инфо о називу</entry>
+	  <entry id="103102" string="Disc">Диск</entry>
+	  <entry id="103103" string="Cover art">Слика омота</entry>
+	  <entry id="103104" string="Covers">Омоти</entry>
+	  <entry id="103105" string="Type">Тип</entry>
+	  <entry id="103106" string="Description">Опис</entry>
 	  <entry id="103107" string="Add">Додај</entry>
 	  <entry id="103108" string="Remove">Уклони</entry>
 	</section>
 
 	<section name="Details">
-	  <entry id="103200" string="Details">Details</entry>
-	  <entry id="103201" string="Detailed information">Detailed information</entry>
-	  <entry id="103202" string="Band / orchestra">Band / orchestra</entry>
-	  <entry id="103203" string="Conductor">Conductor</entry>
-	  <entry id="103204" string="Composer">Composer</entry>
-	  <entry id="103205" string="Lyrics writer">Lyrics writer</entry>
-	  <entry id="103206" string="Modified / remixed by">Modified / remixed by</entry>
-	  <entry id="103207" string="Publisher information">Publisher information</entry>
-	  <entry id="103208" string="Publisher / label">Publisher / label</entry>
+	  <entry id="103200" string="Details">Детаљи</entry>
+	  <entry id="103201" string="Detailed information">Детаљна информација</entry>
+	  <entry id="103202" string="Band / orchestra">Група / оркестар</entry>
+	  <entry id="103203" string="Conductor">Диригент</entry>
+	  <entry id="103204" string="Composer">Композитор</entry>
+	  <entry id="103205" string="Lyrics writer">Писац текста</entry>
+	  <entry id="103206" string="Modified / remixed by">Мењао / ремиксовао</entry>
+	  <entry id="103207" string="Publisher information">Инфо о издавачу</entry>
+	  <entry id="103208" string="Publisher / label">Издавач / фирма</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">Tempo</entry>
+	  <entry id="103210" string="Tempo">Темпо</entry>
 	  <entry id="103211" string="BPM">BPM</entry>
 	</section>
 
 	<section name="Other">
-	  <entry id="103300" string="Other">Other</entry>
-	  <entry id="103301" string="Original information">Original information</entry>
-	  <entry id="103302" string="Original artist">Original artist</entry>
-	  <entry id="103303" string="Original album">Original album</entry>
-	  <entry id="103304" string="Original lyrics writer">Original lyrics writer</entry>
-	  <entry id="103305" string="Original release year">Original release year</entry>
-	  <entry id="103306" string="Webpage URLs">Webpage URLs</entry>
-	  <entry id="103307" string="Artist webpage">Artist webpage</entry>
-	  <entry id="103308" string="Publisher webpage">Publisher webpage</entry>
-	  <entry id="103309" string="Internet radio station">Internet radio station</entry>
-	  <entry id="103310" string="Audio source webpage">Audio source webpage</entry>
-	  <entry id="103311" string="Copyright information">Copyright information</entry>
-	  <entry id="103312" string="Commercial information">Commercial information</entry>
+	  <entry id="103300" string="Other">Остало</entry>
+	  <entry id="103301" string="Original information">Изворна информација</entry>
+	  <entry id="103302" string="Original artist">Изворни извођач</entry>
+	  <entry id="103303" string="Original album">Изворни албум</entry>
+	  <entry id="103304" string="Original lyrics writer">Изворни писац текста</entry>
+	  <entry id="103305" string="Original release year">Изворна година издања</entry>
+	  <entry id="103306" string="Webpage URLs">Интернет URL-ови</entry>
+	  <entry id="103307" string="Artist webpage">Интернет страна извођача</entry>
+	  <entry id="103308" string="Publisher webpage">Интернет страна издавача</entry>
+	  <entry id="103309" string="Internet radio station">Интернет радио станица</entry>
+	  <entry id="103310" string="Audio source webpage">Интернет страна аудио извора</entry>
+	  <entry id="103311" string="Copyright information">Инфо о правима копирања</entry>
+	  <entry id="103312" string="Commercial information">Комерцијална информација</entry>
 	</section>
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Немогуће отворити фајл: %1&#10;&#10;%2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Unable to update tag: %1&#10;&#10;Error: %2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Није могуће ажурирати таг: %1&#10;&#10;Грешка: %2</entry>
 	</section>
       </section>
 
       <section name="Protocols">
-	<entry id="104000" string="Protocols">Protocols</entry>
-	<entry id="104001" string="Protocol">Protocol</entry>
-	<entry id="104002" string="Errors / Warnings">Errors / Warnings</entry>
-	<entry id="104003" string="Details">Details</entry>
-	<entry id="104004" string="Time">Time</entry>
-	<entry id="104005" string="Message">Message</entry>
+	<entry id="104000" string="Protocols">Протоколи</entry>
+	<entry id="104001" string="Protocol">Протокол</entry>
+	<entry id="104002" string="Errors / Warnings">Грешке / Упозорења</entry>
+	<entry id="104003" string="Details">Детаљи</entry>
+	<entry id="104004" string="Time">Време</entry>
+	<entry id="104005" string="Message">Порука</entry>
 
 	<section name="Configuration">
-	  <entry id="104100" string="User interface">User interface</entry>
-	  <entry id="104101" string="Show Protocols tab in main window">Show Protocols tab in main window</entry>
+	  <entry id="104100" string="User interface">Корисников интерфејс</entry>
+	  <entry id="104101" string="Show Protocols tab in main window">Прикажи лист протокола у главном менију</entry>
 	</section>
       </section>
     </section>
