@@ -1112,7 +1112,7 @@
 	  <entry id="103103" string="Cover art"/>
 	  <entry id="103104" string="Covers"/>
 	  <entry id="103105" string="Type"/>
-	  <entry id="103106" string="Description"/>
+	  <entry id="103106" string="Description">Beskrivelse</entry>
 	  <entry id="103107" string="Add">Legg til</entry>
 	  <entry id="103108" string="Remove">Fjern</entry>
 	</section>
@@ -1155,12 +1155,12 @@
       </section>
 
       <section name="Protocols">
-	<entry id="104000" string="Protocols"/>
-	<entry id="104001" string="Protocol"/>
+	<entry id="104000" string="Protocols">Protokoller</entry>
+	<entry id="104001" string="Protocol">Protokoll</entry>
 	<entry id="104002" string="Errors / Warnings"/>
-	<entry id="104003" string="Details"/>
+	<entry id="104003" string="Details">Detaljer</entry>
 	<entry id="104004" string="Time"/>
-	<entry id="104005" string="Message"/>
+	<entry id="104005" string="Message">Melding</entry>
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface"/>
