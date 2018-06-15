@@ -117,14 +117,25 @@ else
 	endif
 endif
 
-.PHONY: all folders install uninstall clean
+.PHONY: all folders ressources install uninstall clean clean_ressources
 
-all: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME)
+all: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME) ressources
 
 	+ $(call makein,components)
 
 folders:
 	mkdir -p $(BIN) $(OBJECTS)
+
+ressources: folders
+ifeq ($(BUILD_WIN32),True)
+	mkdir -p $(BIN)/icons
+
+	cp $(SRCDIR)/icons/freac.pci $(BIN)
+	cp $(SRCDIR)/icons/freac.png $(BIN)/icons
+
+	cp -r $(SRCDIR)/i18n/lang $(BIN)
+	cp -r $(SRCDIR)/i18n/manual $(BIN)
+endif
 
 install: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME)
 ifneq ($(BUILD_WIN32),True)
@@ -138,20 +149,19 @@ ifneq ($(BUILD_WIN32),True)
 	$(INSTALL_DATA) $(DLLNAME) $(DESTDIR)$(libdir)/freac
 
 	$(INSTALL) -d $(DESTDIR)$(datadir)/freac
+	$(INSTALL) -d $(DESTDIR)$(datadir)/freac/icons
 
-	cp -r $(SRCDIR)/bin/icons $(DESTDIR)$(datadir)/freac
-	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons
-
-	cp -r $(SRCDIR)/bin/lang $(DESTDIR)$(datadir)/freac
+	cp -r $(SRCDIR)/i18n/lang $(DESTDIR)$(datadir)/freac
 	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/lang
 
-	$(INSTALL_DATA) $(SRCDIR)/bin/freac.pci $(DESTDIR)$(datadir)/freac
+	$(INSTALL_DATA) $(SRCDIR)/icons/freac.pci $(DESTDIR)$(datadir)/freac
+	$(INSTALL_DATA) $(SRCDIR)/icons/freac.png $(DESTDIR)$(datadir)/freac/icons
 
 	$(INSTALL) -d $(DESTDIR)$(datadir)/doc/freac
 
 	$(INSTALL_DATA) $(SRCDIR)/Readme* $(DESTDIR)$(datadir)/doc/freac
 
-	cp -r $(SRCDIR)/bin/manual $(DESTDIR)$(datadir)/doc/freac
+	cp -r $(SRCDIR)/i18n/manual $(DESTDIR)$(datadir)/doc/freac
 	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/doc/freac/manual
 
 	$(call makein,components,install)
@@ -179,13 +189,23 @@ ifneq ($(BUILD_WIN32),True)
 	$(call makein,components,uninstall)
 endif
 
-clean:
+clean: clean_ressources
 	$(REMOVER) $(REMOVER_OPTS) $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME) $(LIBNAME)
 ifneq ($(SRCDIR),$(CURDIR))
 	rmdir $(BIN) $(OBJECTS) 2> /dev/null || true
 endif
 
 	+ $(call cleanin,components)
+
+clean_ressources:
+ifeq ($(BUILD_WIN32),True)
+	$(REMOVER) $(REMOVER_OPTS) $(BIN)/freac.pci
+
+	rm -f -r $(BIN)/icons
+
+	rm -f -r $(BIN)/lang
+	rm -f -r $(BIN)/manual
+endif
 
 $(DLLNAME): $(DLLOBJECTS)
 	$(LD) $(DLLOBJECTS) $(LDOPTS) $(LDOPTS_DLL) $(LDFLAGS) -o $@
@@ -252,5 +272,5 @@ $(OBJECTS)/%.o: $(SRC)/support/%.cpp
 $(OBJECTS)/%.o: $(SRC)/support/%.mm
 	$(OBJCXX) $(CCOPTS) $(OBJCXXFLAGS) $< -o $@
 
-$(OBJECTS)/%.o: $(RESOURCES)/%.rc $(INCLUDE)/resources.h $(BINRES)/freac.ico
+$(OBJECTS)/%.o: $(RESOURCES)/%.rc $(INCLUDE)/resources.h
 	$(RESCOMP) $(RESCOMP_OPTS) $< -o $@
