@@ -87,7 +87,7 @@ Error freac::JobConvert::Precheck()
 	 */
 	if (encodeToSingleFile)
 	{
-		SetText("Checking sample formats...");
+		SetText(i18n->AddEllipsis(i18n->TranslateString("Checking sample formats", "Jobs::Convert")));
 
 		singleTrackSampleFormat = GetSingleTrackSampleFormat();
 
@@ -100,7 +100,7 @@ Error freac::JobConvert::Precheck()
 
 	if (!doNotWarnAgain)
 	{
-		SetText("Checking for lossy to lossless conversion...");
+		SetText(i18n->AddEllipsis(i18n->TranslateString("Checking for lossy to lossless conversion", "Jobs::Convert")));
 
 		/* Find out if we are encoding lossless.
 		 */
@@ -157,7 +157,7 @@ Error freac::JobConvert::Precheck()
 	}
 	else
 	{
-		SetText("Checking output file names...");
+		SetText(i18n->AddEllipsis(i18n->TranslateString("Checking output file names", "Jobs::Convert")));
 
 		/* Find existing tracks.
 		 */
@@ -224,7 +224,7 @@ Error freac::JobConvert::Precheck()
 		}
 	}
 
-	SetText("Waiting for other jobs to finish...");
+	SetText(i18n->AddEllipsis(i18n->TranslateString("Waiting for other jobs to finish", "Jobs")));
 
 	return Success();
 }
@@ -239,6 +239,8 @@ Error freac::JobConvert::Perform()
 	 */
 	conversionJobs.EnableLocking();
 	conversionJobs.Add(this);
+
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 	Registry	&boca = Registry::Get();
 
@@ -632,7 +634,7 @@ Error freac::JobConvert::Perform()
 				if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
 																		  conversionStep = worker->GetConversionStep());
 
-				SetText(String("Converting %1...").Replace("%1", workerTrack.origFilename));
+				SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", workerTrack.origFilename));
 
 				progress->UpdateTrack(workerTrack, worker->GetTrackPosition());
 
@@ -862,7 +864,7 @@ Error freac::JobConvert::Perform()
 					if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = track.GetTrackID()), decoderName    = workerToUse->GetDecoderName(),
 																		    conversionStep = workerToUse->GetConversionStep());
 
-					SetText(String("Converting %1...").Replace("%1", track.origFilename));
+					SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", track.origFilename));
 				}
 			}
 
@@ -967,7 +969,7 @@ Error freac::JobConvert::Perform()
 			if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(singleTrackToEncode, decoderName    = worker->GetDecoderName(),
 												      conversionStep = worker->GetConversionStep());
 
-			SetText(String("Verifying %1...").Replace("%1", singleTrackToEncode.origFilename));
+			SetText(i18n->AddEllipsis(i18n->TranslateString("Verifying %1", "Jobs::Convert")).Replace("%1", singleTrackToEncode.origFilename));
 
 			progress->StartTrack(singleTrackToEncode);
 
@@ -1203,10 +1205,12 @@ Error freac::JobConvert::Perform()
 	 */
 	SetProgress(1000);
 
-	if	(stopConversion	      )	SetText(       "Conversion cancelled");
-	else if (errors.Length()   > 0)	SetText(String("Conversion finished with %1 errors").Replace("%1", String::FromInt(errors.Length())));
-	else if (warnings.Length() > 0)	SetText(String("Conversion finished with %1 warnings").Replace("%1", String::FromInt(warnings.Length())));
-	else				SetText(       "Conversion finished");
+	i18n->SetContext("Jobs::Convert");
+
+	if	(stopConversion	      )	SetText(i18n->TranslateString("Conversion cancelled"));
+	else if (errors.Length()   > 0)	SetText(i18n->TranslateString("Conversion finished with %1 errors").Replace("%1", String::FromInt(errors.Length())));
+	else if (warnings.Length() > 0)	SetText(i18n->TranslateString("Conversion finished with %1 warnings").Replace("%1", String::FromInt(warnings.Length())));
+	else				SetText(i18n->TranslateString("Conversion finished"));
 
 	return Success();
 }

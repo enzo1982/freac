@@ -27,6 +27,10 @@ using namespace BoCA::AS;
 
 freac::JobAddTracks::JobAddTracks(const Array<String> &iURLs, Bool iAutoCDRead)
 {
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	i18n->SetContext("Jobs");
+ 
 	foreach (const String &url, iURLs) urls.Add(url);
 
 	autoCDRead = iAutoCDRead;
@@ -34,7 +38,7 @@ freac::JobAddTracks::JobAddTracks(const Array<String> &iURLs, Bool iAutoCDRead)
 
 	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Connect(&JobAddTracks::OnRemoveAllTracksJobScheduled, this);
 
-	SetText("Waiting for other jobs to finish...");
+	SetText(i18n->AddEllipsis(i18n->TranslateString("Waiting for other jobs to finish")));
 }
 
 freac::JobAddTracks::~JobAddTracks()
@@ -56,7 +60,8 @@ Bool freac::JobAddTracks::ReadyToRun()
 Error freac::JobAddTracks::Perform()
 {
 	BoCA::JobList	*joblist = BoCA::JobList::Get();
-
+	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
+ 
 	Array<Track>	 tracks;
 
 	CDDBInfo	 cdInfo;
@@ -72,7 +77,7 @@ Error freac::JobAddTracks::Perform()
 		 */
 		const String	&url = urls.GetNth(i);
 
-		SetText(String("Adding files... - ").Append(url));
+		SetText(i18n->AddEllipsis(i18n->TranslateString("Adding tracks", "Jobs::Joblist")).Append(" - ").Append(url));
 
 		/* Create decoder component.
 		 */
@@ -168,7 +173,7 @@ Error freac::JobAddTracks::Perform()
 
 	if (!abort)
 	{
-		SetText(String("Added ").Append(String::FromInt(urls.Length() - errors.Length())).Append(" files; ").Append(String::FromInt(errors.Length())).Append(" errors occurred."));
+		SetText(i18n->TranslateString("Added %1 tracks, %2 errors occurred", "Jobs::Joblist").Replace("%1", String::FromInt(urls.Length() - errors.Length())).Replace("%2", String::FromInt(errors.Length())));
 		SetProgress(1000);
 
 		/* Start automatic ripping if enabled.

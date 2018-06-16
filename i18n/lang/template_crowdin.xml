@@ -238,6 +238,39 @@
       <entry id="3503" string="Details">Details</entry>
       <entry id="3504" string="Error details">Error details</entry>
       <entry id="3505" string="Time left">Time left</entry>
+      <entry id="3506" string="Waiting for other jobs to finish">Waiting for other jobs to finish</entry>
+
+      <section name="Joblist">
+	<entry id="3600" string="Reading folders">Reading folders</entry>
+	<entry id="3601" string="Filtering duplicates">Filtering duplicates</entry>
+	<entry id="3602" string="Adding files">Adding files</entry>
+	<entry id="3603" string="Adding tracks">Adding tracks</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">Added %1 files, %2 errors occurred</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">Added %1 tracks, %2 errors occurred</entry>
+	<entry id="3606" string="Removing all tracks">Removing all tracks</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">Removing tracks of disc in drive %1</entry>
+	<entry id="3608" string="Removed all tracks from joblist">Removed all tracks from joblist</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">Removed tracks of disc in drive %1 from joblist</entry>
+      </section>
+
+      <section name="Convert">
+	<entry id="3700" string="Checking sample formats">Checking sample formats</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">Checking for lossy to lossless conversion</entry>
+	<entry id="3702" string="Checking output file names">Checking output file names</entry>
+	<entry id="3703" string="Converting %1">Converting %1</entry>
+	<entry id="3704" string="Verifying %1">Verifying %1</entry>
+	<entry id="3705" string="Conversion cancelled">Conversion cancelled</entry>
+	<entry id="3706" string="Conversion finished">Conversion finished</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">Conversion finished with %1 warnings</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">Conversion finished with %1 errors</entry>
+      </section>
+
+      <section name="Update">
+	<entry id="3800" string="Preparing update check">Preparing update check</entry>
+	<entry id="3801" string="Contacting update server">Contacting update server</entry>
+	<entry id="3802" string="Updates found">Updates found</entry>
+	<entry id="3803" string="No updates found">No updates found</entry>
+      </section>
     </section>
 
     <section name="CDDB">

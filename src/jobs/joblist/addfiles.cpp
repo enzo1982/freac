@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -25,13 +25,17 @@ using namespace BoCA::AS;
 
 freac::JobAddFiles::JobAddFiles(const Array<String> &iFiles)
 {
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	i18n->SetContext("Jobs");
+ 
 	foreach (const String &file, iFiles) files.Add(file);
 
 	abort = False;
 
 	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Connect(&JobAddFiles::OnRemoveAllTracksJobScheduled, this);
 
-	SetText("Waiting for other jobs to finish...");
+	SetText(i18n->AddEllipsis(i18n->TranslateString("Waiting for other jobs to finish")));
 }
 
 freac::JobAddFiles::~JobAddFiles()
@@ -41,18 +45,20 @@ freac::JobAddFiles::~JobAddFiles()
 
 Bool freac::JobAddFiles::ReadyToRun()
 {
-	if (!JobList::Get()->IsLocked())
-	{
-		JobList::Get()->Lock();
+	BoCA::JobList	*joblist = BoCA::JobList::Get();
 
-		return True;
-	}
+	if (joblist->IsLocked()) return False;
 
-	return False;
+	JobList::Get()->Lock();
+
+	return True;
 }
 
 Error freac::JobAddFiles::Perform()
 {
+	BoCA::JobList	*joblist = BoCA::JobList::Get();
+	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
+ 
 	Array<CDDBInfo>	 cdInfos;
 	Array<Bool>	 cddbsQueried;
 	
@@ -66,7 +72,7 @@ Error freac::JobAddFiles::Perform()
 		 */
 		const String	&file = files.GetNth(i);
 
-		SetText(String("Adding files... - ").Append(file));
+		SetText(i18n->AddEllipsis(i18n->TranslateString("Adding files", "Jobs::Joblist")).Append(" - ").Append(file));
 
 		/* Create decoder component.
 		 */
@@ -139,8 +145,6 @@ Error freac::JobAddFiles::Perform()
 
 		/* Add track(s) to joblist.
 		 */
-		JobList	*joblist = JobList::Get();
-
 		if (track.tracks.Length() > 0) foreach (const Track &iTrack, track.tracks) joblist->onComponentAddTrack.Emit(iTrack);
 		else									   joblist->onComponentAddTrack.Emit(track);
 
@@ -151,13 +155,13 @@ Error freac::JobAddFiles::Perform()
 
 	if (!abort)
 	{
-		SetText(String("Added ").Append(String::FromInt(files.Length() - errors.Length())).Append(" files; ").Append(String::FromInt(errors.Length())).Append(" errors occurred."));
+		SetText(i18n->TranslateString("Added %1 files, %2 errors occurred", "Jobs::Joblist").Replace("%1", String::FromInt(files.Length() - errors.Length())).Replace("%2", String::FromInt(errors.Length())));
 		SetProgress(1000);
 	}
 
 	files.RemoveAll();
 
-	JobList::Get()->Unlock();
+	joblist->Unlock();
 
 	return Success();
 }
