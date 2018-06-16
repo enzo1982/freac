@@ -1051,11 +1051,13 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">請按以下任何按鈕透過PayPal捐助：</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">本企劃接受PayPal：%1直接捐助。</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:"/>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal."/>
 	  <entry id="100102" string="usd">usd</entry>
 	  <entry id="100103" string="$%1">%1元</entry>
-	  <entry id="100104" string="5,10,other amount">50,100,其他金額</entry>
+	  <entry id="100104" string="5,10,20,other amount"/>
+	  <entry id="100105" string="monthly recurring"/>
+	  <entry id="100106" string="Donate"/>
 	</section>
 
 	<section name="Donorbox">
