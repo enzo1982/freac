@@ -53,7 +53,7 @@ BoCA::LayerDonorbox::LayerDonorbox()
 
 	i18n->SetContext("Extensions::Donate::Donorbox");
 
-	text_donate	= new Text(i18n->TranslateString("Donorbox enables quick and simple donations by credit card. Click this\nbutton to make a donation using Donorbox:"), Point(7, 4));
+	text_donate	= new Text(i18n->TranslateString("Donorbox enables quick and simple donations by credit card. Click this\nbutton to make a donation with Donorbox:"), Point(7, 4));
 
 	Add(text_donate);
 
