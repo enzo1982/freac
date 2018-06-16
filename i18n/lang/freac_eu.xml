@@ -663,11 +663,11 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Klikatu beheko botoietako bat dirulaguntza bat emateko PayPal bidez:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Dirua ere bidali dezakezu %1-ra zuzenean Paypal erabiliz.</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Klikatu beheko botoietako bat dirulaguntza bat emateko PayPal bidez:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Dirua ere bidali dezakezu %1-ra zuzenean Paypal erabiliz.</entry>
 	  <entry id="100102" string="usd">eur</entry>
 	  <entry id="100103" string="$%1">%1€</entry>
-	  <entry id="100104" string="5,10,other amount">5,10,beste kopuru</entry>
+	  <entry id="100104" string="5,10,20,other amount">5,10,20,beste kopuru</entry>
 	</section>
 
 	<section name="Donorbox">

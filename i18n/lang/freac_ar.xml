@@ -655,11 +655,11 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">انقر فوق أحد الأزرار الموجودة أدناه للتبرع به باي بال:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">يمكنك أيضا إرسال المال مباشرة إلى %1 باستخدام باي بال.</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">انقر فوق أحد الأزرار الموجودة أدناه للتبرع به باي بال:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">يمكنك أيضا إرسال المال مباشرة إلى %1 باستخدام باي بال.</entry>
 	  <entry id="100102" string="usd">usd</entry>
 	  <entry id="100103" string="$%1">$%1</entry>
-	  <entry id="100104" string="5,10,other amount">5,10,كمية اخرى</entry>
+	  <entry id="100104" string="5,10,20,other amount">5,10,20,كمية اخرى</entry>
 	</section>
 
 	<section name="Donorbox">

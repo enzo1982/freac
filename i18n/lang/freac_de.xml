@@ -1051,15 +1051,17 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Klicken Sie auf einen dieser Knöpfe, um jetzt per PayPal zu spenden:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Sie können per PayPal auch direkt Geld an %1 senden.</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Wählen Sie einen Betrag und klicken Sie den Knopf, um mit PayPal zu spenden:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Sie können mit PayPal auch direkt Geld an %1 senden.</entry>
 	  <entry id="100102" string="usd">eur</entry>
 	  <entry id="100103" string="$%1">%1€</entry>
-	  <entry id="100104" string="5,10,other amount">5,10,anderer Betrag</entry>
+	  <entry id="100104" string="5,10,20,other amount">5,10,20,anderer Betrag</entry>
+	  <entry id="100105" string="monthly recurring">monatlich wiederkehrend</entry>
+	  <entry id="100106" string="Donate">Spenden</entry>
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:">Donorbox ermöglicht schnelle und einfache Spenden per Kreditkarte. Klicken&#10;Sie auf diese Schaltfläche, um mit Donorbox zu spenden:</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox ermöglicht schnelle und einfache Spenden per Kreditkarte. Klicken&#10;Sie auf diese Schaltfläche, um mit Donorbox zu spenden:</entry>
 	  <entry id="100201" string="Donate">Spenden</entry>
 	  <entry id="100202" string="usd">eur</entry>
 	</section>

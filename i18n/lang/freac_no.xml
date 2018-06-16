@@ -642,7 +642,7 @@
 	<section name="PayPal">
 	  <entry id="100102" string="usd">nok</entry>
 	  <entry id="100103" string="$%1">%1 kr</entry>
-	  <entry id="100104" string="5,10,other amount">50,100,andre beløp</entry>
+	  <entry id="100104" string="5,10,20,other amount">50,100,200,andre beløp</entry>
 	</section>
 
 	<section name="Donorbox">

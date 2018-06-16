@@ -913,11 +913,11 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Нажмите одну из кнопок ниже для помощи через PayPal:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Также вы можете отправить деньги %1 через PayPal напрямую.</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Нажмите одну из кнопок ниже для помощи через PayPal:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Также вы можете отправить деньги %1 через PayPal напрямую.</entry>
 	  <entry id="100102" string="usd">rub</entry>
 	  <entry id="100103" string="$%1">%1 руб.</entry>
-	  <entry id="100104" string="5,10,other amount">250,500,другая сумма</entry>
+	  <entry id="100104" string="5,10,20,other amount">250,500,1000,другая сумма</entry>
 	</section>
 
 	<section name="Donorbox">

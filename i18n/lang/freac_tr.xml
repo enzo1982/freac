@@ -658,11 +658,11 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Aşağıdaki tuşlardan birini kullanarak Paypal üzerinden güvenle bağış yapabilirsiniz:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Paypal kullanarak %1 adresine direk bağış da yapabilirsiniz.</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Aşağıdaki tuşlardan birini kullanarak Paypal üzerinden güvenle bağış yapabilirsiniz:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Paypal kullanarak %1 adresine direk bağış da yapabilirsiniz.</entry>
 	  <entry id="100102" string="usd">try</entry>
 	  <entry id="100103" string="$%1">₺%1</entry>
-	  <entry id="100104" string="5,10,other amount">25,50,diğer miktar</entry>
+	  <entry id="100104" string="5,10,20,other amount">25,50,100,diğer miktar</entry>
 	</section>
 
 	<section name="Donorbox">

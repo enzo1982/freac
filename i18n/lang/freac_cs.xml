@@ -737,11 +737,11 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Klikněte na jedno z tlačítek níže - darovat nyní přes PayPal:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Můžete také poslat peníze přímo na %1 s použitím PayPalu.</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Klikněte na jedno z tlačítek níže - darovat nyní přes PayPal:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Můžete také poslat peníze přímo na %1 s použitím PayPalu.</entry>
 	  <entry id="100102" string="usd">czk</entry>
 	  <entry id="100103" string="$%1">%1 Kč</entry>
-	  <entry id="100104" string="5,10,other amount">100,200,další částka</entry>
+	  <entry id="100104" string="5,10,20,other amount">100,200,400,další částka</entry>
 	</section>
 
 	<section name="Donorbox">

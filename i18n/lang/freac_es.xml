@@ -1015,11 +1015,11 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Pulse uno de los botones de abajo para donar usando PayPal:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">También puede enviar dinero directamente a %1 usando PayPal.</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Pulse uno de los botones de abajo para donar usando PayPal:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">También puede enviar dinero directamente a %1 usando PayPal.</entry>
 	  <entry id="100102" string="usd">eur</entry>
 	  <entry id="100103" string="$%1">%1€</entry>
-	  <entry id="100104" string="5,10,other amount">5,10,otra cantidad</entry>
+	  <entry id="100104" string="5,10,20,other amount">5,10,20,otra cantidad</entry>
 	</section>
 
 	<section name="Donorbox">

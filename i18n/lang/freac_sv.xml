@@ -877,11 +877,11 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Klicka på en av knapparna nedan för att donera via PayPal:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Du kan även skicka pengar direkt till %1 via PayPal.</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Klicka på en av knapparna nedan för att donera via PayPal:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Du kan även skicka pengar direkt till %1 via PayPal.</entry>
 	  <entry id="100102" string="usd">sek</entry>
 	  <entry id="100103" string="$%1">%1 kr</entry>
-	  <entry id="100104" string="5,10,other amount">50,100,annan summa</entry>
+	  <entry id="100104" string="5,10,20,other amount">50,100,200,annan summa</entry>
 	</section>
 
 	<section name="Donorbox">

@@ -710,11 +710,13 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">PayPal を使って寄付するには下記ボタンの１つをクリックしてください：</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">PayPal を使って %1 へ直接送金することも可能です。</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">PayPal を使って寄付するには下記ボタンのクリックしてください：</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">PayPal を使って %1 へ直接送金することも可能です。</entry>
 	  <entry id="100102" string="usd">jpy</entry>
 	  <entry id="100103" string="$%1">%1 円</entry>
-	  <entry id="100104" string="5,10,other amount">500,1000,別の金額</entry>
+	  <entry id="100104" string="5,10,20,other amount">500,1000,2000,別の金額</entry>
+	  <entry id="100105" string="monthly recurring">毎月繰り返す</entry>
+	  <entry id="100106" string="Donate">寄付する</entry>
 	</section>
 
 	<section name="Donorbox">

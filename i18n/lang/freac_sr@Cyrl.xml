@@ -942,11 +942,11 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Кликните на једно од дугмића испод за донацију преко PayPal-а:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Такође, можете изравно послати новац %1 путем PayPal-а.</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Кликните на једно од дугмића испод за донацију преко PayPal-а:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Такође, можете изравно послати новац %1 путем PayPal-а.</entry>
 	  <entry id="100102" string="usd">rsd</entry>
 	  <entry id="100103" string="$%1">%1 дин.</entry>
-	  <entry id="100104" string="5,10,other amount">500,1000,други износ</entry>
+	  <entry id="100104" string="5,10,20,other amount">500,1000,2000,други износ</entry>
 	</section>
 
 	<section name="Donorbox">

@@ -658,11 +658,11 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Da-ţi click pe unul dintre butoanele de mai jos pentru a face o donaţie&#10;utilizând PayPal:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Puteţi deasemenea trimite bani direct la %1 cu PayPal.</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Da-ţi click pe unul dintre butoanele de mai jos pentru a face o donaţie&#10;utilizând PayPal:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Puteţi deasemenea trimite bani direct la %1 cu PayPal.</entry>
 	  <entry id="100102" string="usd">ron</entry>
 	  <entry id="100103" string="$%1">%1 lei</entry>
-	  <entry id="100104" string="5,10,other amount">20,40,altă sumă</entry>
+	  <entry id="100104" string="5,10,20,other amount">20,40,80,altă sumă</entry>
 	</section>
 
 	<section name="Donorbox">

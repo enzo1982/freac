@@ -1015,11 +1015,11 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Щракнете един от бутоните по-долу за да направите дарение през PayPal:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Можете също да пратите пари директно до %1 през PayPal.</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Щракнете един от бутоните по-долу за да направите дарение през PayPal:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Можете също да пратите пари директно до %1 през PayPal.</entry>
 	  <entry id="100102" string="usd">bgn</entry>
 	  <entry id="100103" string="$%1">%1 лв.</entry>
-	  <entry id="100104" string="5,10,other amount">5,10,друга сума</entry>
+	  <entry id="100104" string="5,10,20,other amount">5,10,20,друга сума</entry>
 	</section>
 
 	<section name="Donorbox">

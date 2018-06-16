@@ -664,11 +664,11 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:">Cliquer sur un des boutons ci-dessous pour faire un don en utilisant PayPal :</entry>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal.">Vous pouvez aussi envoyer de l'argent directement à %1 en&#10;utilisant PayPal.</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Cliquer sur un des boutons ci-dessous pour faire un don en utilisant PayPal :</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Vous pouvez aussi envoyer de l'argent directement à %1 en&#10;utilisant PayPal.</entry>
 	  <entry id="100102" string="usd">eur</entry>
 	  <entry id="100103" string="$%1">%1€</entry>
-	  <entry id="100104" string="5,10,other amount">5,10,autre montant</entry>
+	  <entry id="100104" string="5,10,20,other amount">5,10,20,autre montant</entry>
 	</section>
 
 	<section name="Donorbox">
