@@ -1028,6 +1028,7 @@
 	<section name="Donorbox">
 	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:">Donorbox ermöglicht schnelle und einfache Spenden per Kreditkarte. Klicken&#10;Sie auf diese Schaltfläche, um mit Donorbox zu spenden:</entry>
 	  <entry id="100201" string="Donate">Spenden</entry>
+	  <entry id="100202" string="usd">eur</entry>
 	</section>
 
 	<section name="Bitcoin">

@@ -919,6 +919,10 @@
 	  <entry id="100103" string="$%1">%1 руб.</entry>
 	  <entry id="100104" string="5,10,other amount">250,500,другая сумма</entry>
 	</section>
+
+	<section name="Donorbox">
+	  <entry id="100202" string="usd">usd</entry>
+	</section>
       </section>
 
       <section name="Winamp Adapter">

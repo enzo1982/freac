@@ -516,6 +516,10 @@
 	  <entry id="100103" string="$%1">₩%1</entry>
 	  <entry id="100104" string="5,10,other amount">5000,10000,다른 금액</entry>
 	</section>
+
+	<section name="Donorbox">
+	  <entry id="100202" string="usd">usd</entry>
+	</section>
       </section>
 
       <section name="Winamp Adapter">

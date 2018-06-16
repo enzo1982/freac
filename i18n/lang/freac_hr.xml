@@ -656,6 +656,10 @@
 	  <entry id="100103" string="$%1">%1 kn</entry>
 	  <entry id="100104" string="5,10,other amount">25,50,drugi iznos</entry>
 	</section>
+
+	<section name="Donorbox">
+	  <entry id="100202" string="usd">eur</entry>
+	</section>
       </section>
 
       <section name="Winamp Adapter">

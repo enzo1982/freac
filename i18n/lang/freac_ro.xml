@@ -664,6 +664,10 @@
 	  <entry id="100103" string="$%1">%1 lei</entry>
 	  <entry id="100104" string="5,10,other amount">20,40,altă sumă</entry>
 	</section>
+
+	<section name="Donorbox">
+	  <entry id="100202" string="usd">eur</entry>
+	</section>
       </section>
 
       <section name="Winamp Adapter">

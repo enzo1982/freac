@@ -61,7 +61,7 @@ BoCA::LayerDonorbox::LayerDonorbox()
 
 	if (!dir.Exists()) dir = Utilities::GetBoCADirectory().Append("../freac/freac.extension.donate");
 
-	link_donate	= new Hyperlink(NIL, ImageLoader::Load(String(dir).Append("/donorbox/button.png")), "https://donorbox.org/the-freac-project", Point(0, text_donate->GetUnscaledTextHeight() + 20), Size(166, 40));
+	link_donate	= new Hyperlink(NIL, ImageLoader::Load(String(dir).Append("/donorbox/button.png")), String("https://donorbox.org/the-freac-project-").Append(i18n->TranslateString("usd")), Point(0, text_donate->GetUnscaledTextHeight() + 20), Size(166, 40));
 
 	image_box	= new Image(ImageLoader::Load(String(dir).Append("/donorbox/box.png")), link_donate->GetPosition() + Point(30, 10), Size(19, 19));
 	text_box	= new Text(i18n->TranslateString("Donate"), link_donate->GetPosition() + Point(60, 10));

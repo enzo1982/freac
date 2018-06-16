@@ -973,6 +973,10 @@
 	  <entry id="100103" string="$%1">R$ %1</entry>
 	  <entry id="100104" string="5,10,other amount">20,40,outra quantia</entry>
 	</section>
+
+	<section name="Donorbox">
+	  <entry id="100202" string="usd">usd</entry>
+	</section>
       </section>
 
       <section name="Winamp Adapter">
