@@ -1051,11 +1051,13 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum"/>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:"/>
-	  <entry id="100101" string="You can also send money directly to %1 using PayPal."/>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:"/>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal."/>
 	  <entry id="100102" string="usd">eur</entry>
 	  <entry id="100103" string="$%1"/>
-	  <entry id="100104" string="5,10,other amount"/>
+	  <entry id="100104" string="5,10,20,other amount"/>
+	  <entry id="100105" string="monthly recurring"/>
+	  <entry id="100106" string="Donate"/>
 	</section>
 
 	<section name="Donorbox">
