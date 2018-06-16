@@ -23,18 +23,19 @@ namespace BoCA
 			Text		*text_donate;
 			Text		*text_donate_direct;
 
-			Hyperlink	*link_donate_5;
-			Hyperlink	*link_donate_10;
-			Hyperlink	*link_donate_other;
+			ComboBox	*combo_amount;
+			CheckBox	*check_monthly;
 
-			Text		*text_donate_5;
-			Text		*text_donate_10;
-			Text		*text_donate_other;
+			Hyperlink	*link_donate;
+			Text		*text_donate_now;
+
+			Bool		 monthly;
 		public:
 					 LayerPayPal();
 					~LayerPayPal();
 		slots:
 			Void		 OnChangeSize(const Size &);
+			Void		 OnChangeSettings();
 	};
 
 	class MethodPayPal : public PaymentMethod
