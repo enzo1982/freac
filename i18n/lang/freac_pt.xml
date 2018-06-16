@@ -1,0 +1,1173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Portuguese / Português</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
+    <property name="author">José Gonçalves</property>
+    <property name="url">http://www.eufisica.com/</property>
+  </info>
+  <data>
+    <entry id="100" string="OK">OK</entry>
+    <entry id="101" string="Cancel">Cancelar</entry>
+    <entry id="102" string="Close">Fechar</entry>
+
+    <entry id="200" string="Error">Erro</entry>
+    <entry id="201" string="Warning">Informação</entry>
+    <entry id="202" string="Info">Informação</entry>
+
+    <entry id="210" string="Do not display this warning again">Título</entry>
+    <entry id="211" string="Do not display this note again">Álbum</entry>
+
+    <entry id="300" string="Artist">Artista</entry>
+    <entry id="301" string="Title">Título</entry>
+    <entry id="302" string="Album">Álbum</entry>
+    <entry id="303" string="Track">Pista</entry>
+    <entry id="304" string="Genre">Gênero</entry>
+    <entry id="305" string="Comment">Comentários</entry>
+    <entry id="306" string="Year">Ano</entry>
+    <entry id="307" string="Disc">Gênero desconhecido</entry>
+    <entry id="308" string="Rating">ano desconhecido</entry>
+    <entry id="309" string="File name"/>
+    <entry id="310" string="File type"/>
+    <entry id="311" string="Album artist"/>
+
+    <entry id="350" string="unknown artist">artista desconhecido</entry>
+    <entry id="351" string="unknown title">título desconhecido</entry>
+    <entry id="352" string="unknown album">álbum desconhecido</entry>
+    <entry id="353" string="unknown genre">Gênero desconhecido</entry>
+    <entry id="354" string="unknown year">ano desconhecido</entry>
+    <entry id="355" string="unknown conductor"/>
+    <entry id="356" string="unknown composer"/>
+    <entry id="357" string="unknown album artist"/>
+
+    <entry id="380" string="hidden track"/>
+
+    <section name="Characters">
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 kbps</entry>
+      <entry id="511" string="%1 Hz">%1 Hz</entry>
+      <entry id="512" string="%1 kHz">%1 kHz</entry>
+      <entry id="513" string="%1 ms">%1 ms</entry>
+      <entry id="514" string="%1 min">%1 min</entry>
+      <entry id="515" string="%1 bit">%1 bit</entry>
+      <entry id="516" string="%1 bytes">%1 bytes</entry>
+      <entry id="517" string="%1 kB">%1%</entry>
+      <entry id="518" string="%1%"/>
+    </section>
+
+    <section name="Menu">
+      <entry id="1000" string="File">Ficheiro</entry>
+      <entry id="1001" string="Options">Opções</entry>
+      <entry id="1002" string="Database">Base de dados</entry>
+      <entry id="1003" string="Processing">Codificar</entry>
+      <entry id="1004" string="Encode">Codificar</entry>
+      <entry id="1005" string="Help">Ajuda</entry>
+
+      <section name="File">
+	<entry id="1100" string="Add">Adicionar</entry>
+	<entry id="1101" string="Remove">Remover</entry>
+	<entry id="1102" string="Load joblist">Carregar uma listagem de trabalho</entry>
+	<entry id="1103" string="Save joblist">Guardar a listagem de trabalho</entry>
+	<entry id="1104" string="Clear joblist">Limpar a listagem de trabalho</entry>
+	<entry id="1105" string="Exit">Sair</entry>
+	<entry id="1106" string="Audio file(s)">Ficheiro(s) de áudio</entry>
+	<entry id="1107" string="Audio CD contents">Conteúdo do CD de áudio</entry>
+	<entry id="1108" string="By pattern">Com modelo</entry>
+	<entry id="1109" string="From folder">Da pasta</entry>
+      </section>
+
+      <section name="Database">
+	<entry id="1200" string="Query CDDB database">Pesquisar a base de dados do CDDB</entry>
+	<entry id="1201" string="Submit CDDB data">Enviar dados ao CDDB</entry>
+	<entry id="1202" string="Query CDDB database later">Pesquisar o CDDB mais tarde</entry>
+	<entry id="1203" string="Show queued CDDB entries">Mostrar itens CDDB armazenados</entry>
+	<entry id="1204" string="Show queued CDDB queries">Mostrar pesquisas CDDB na fila</entry>
+	<entry id="1205" string="Enable CDDB cache">Permitir cache do CDDB</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Gerenciar as listas guardadas do CDDB</entry>
+	<entry id="1207" string="Automatic CDDB queries">Pesquisas CDDB automáticas</entry>
+      </section>
+
+      <section name="Options">
+	<entry id="1300" string="General settings">Configurações gerais</entry>
+	<entry id="1301" string="Configure selected encoder">Configurar codificador seleccionado</entry>
+	<entry id="1302" string="Active CD-ROM drive">Unidade de CD-ROM activa</entry>
+	<entry id="1303" string="Active configuration"/>
+	<entry id="1304" string="Default configuration"/>
+      </section>
+
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">Iniciar codificação</entry>
+	<entry id="1401" string="Enable processing during playback">Iniciar codificação com</entry>
+	<entry id="1402" string="Configure signal processing">Parar/recomeçar a codificação</entry>
+	<entry id="1403" string="Selected signal processors">Parar codificação</entry>
+      </section>
+
+      <section name="Encode">
+	<entry id="1500" string="Start encoding">Iniciar codificação</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">Mostrar a Dica do Dia</entry>
+	<entry id="1502" string="Start encoding with">Procurar por actualizações</entry>
+	<entry id="1503" string="Pause/resume encoding">Parar/recomeçar a codificação</entry>
+	<entry id="1504" string="Stop encoding">Parar codificação</entry>
+	<entry id="1505" string="Encoder options">Opções do codificador</entry>
+	<entry id="1506" string="Encode to a single file">Codificar num ficheiro único</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Codificar para a pasta do ficheiro de entrada, se possível</entry>
+	<entry id="1508" string="Allow overwriting input file">Permitir sobrescrever o ficheiro de entrada</entry>
+	<entry id="1509" string="Delete original files after encoding">Apagar ficheiros originais após codificação</entry>
+	<entry id="1510" string="Shutdown after encoding">Desligar após codificação</entry>
+      </section>
+
+      <section name="Help">
+	<entry id="1600" string="Help topics"/>
+	<entry id="1601" string="Show Tip of the Day">Mostrar a Dica do Dia</entry>
+	<entry id="1602" string="Check for updates now">Procurar por actualizações</entry>
+	<entry id="1603" string="Check for updates at startup">Verificar actualizações na inicialização</entry>
+	<entry id="1604" string="About %1">Sobre o %1</entry>
+	<entry id="1605" string="index_en.html">index_pt.html</entry>
+      </section>
+    </section>
+
+    <section name="Toolbar">
+      <entry id="2000" string="Add audio file(s) to the joblist">Adicionar ficheiro de áudio à listagem de trabalho</entry>
+      <entry id="2001" string="Add audio CD contents to the joblist">Adicionar conteúdo do CD à listagem de trabalho</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">Remover os itens seleccionados da listagem de trabalho</entry>
+      <entry id="2003" string="Clear the entire joblist">Limpar a fila de trabalho</entry>
+      <entry id="2004" string="Query CDDB database">Pesquisar a base de dados do CDDB</entry>
+      <entry id="2005" string="Submit CDDB data">Enviar dados ao CDDB</entry>
+      <entry id="2006" string="Configure general settings">Configurar opções gerais</entry>
+      <entry id="2007" string="Configure the selected audio encoder">Configurar o codificador de áudio seleccionado</entry>
+      <entry id="2008" string="Start the encoding process">Iniciar o processo de codificação</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)">Parar/recomeçar a codificação</entry>
+      <entry id="2010" string="Pause/resume encoding">Parar/recomeçar a codificação</entry>
+      <entry id="2011" string="Stop encoding">Parar codificação</entry>
+    </section>
+
+    <section name="Joblist">
+      <entry id="3000" string="Encoding file">Codificando ficheiro</entry>
+      <entry id="3001" string="Time left">Tempo restante</entry>
+      <entry id="3002" string="Selected encoder">Seleccionar codificador</entry>
+      <entry id="3003" string="File progress">Progresso do ficheiro</entry>
+      <entry id="3004" string="Output folder">Pasta de saída</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 ficheiro(s) na lista de trabalho</entry>
+      <entry id="3006" string="none">nenhum</entry>
+      <entry id="3007" string="Show title info">Mostrar título</entry>
+      <entry id="3008" string="Play">Tocar</entry>
+      <entry id="3009" string="Stop">Parar</entry>
+      <entry id="3010" string="Select all">Seleccionar tudo</entry>
+      <entry id="3011" string="Select none">Remover selecção</entry>
+      <entry id="3012" string="Toggle selection">Inverter selecção</entry>
+      <entry id="3013" string="ripping/decoding">extraindo/codificando</entry>
+      <entry id="3014" string="encoding">codificando</entry>
+      <entry id="3015" string="Create playlist">Criar lista de execução</entry>
+      <entry id="3016" string="Create cue sheet">Criar lista das pistas (cue sheet)</entry>
+      <entry id="3017" string="Select">Escolher</entry>
+      <entry id="3018" string="Skip">Pular</entry>
+      <entry id="3019" string="Encode to a single file">Codificar num ficheiro único</entry>
+      <entry id="3020" string="Remove">Remover</entry>
+      <entry id="3021" string="Clear joblist">Limpar a listagem de trabalho</entry>
+      <entry id="3022" string="Use for all selected tracks">Use em todas as pistas seleccionadas</entry>
+      <entry id="3023" string="Interpret string as">Interprete o texto como</entry>
+      <entry id="3024" string="selected tracks">pistas seleccionadas</entry>
+      <entry id="3025" string="Adjust upper/lower case">Ajustar capitalização</entry>
+      <entry id="3026" string="all words upper case">todas as palavras em maiúsculas</entry>
+      <entry id="3027" string="long words upper case">palavras longas em maiúsculas</entry>
+      <entry id="3028" string="first letter upper case">primeira letra em maiúscula</entry>
+      <entry id="3029" string="all lower case">tudo em letras minúsculas</entry>
+      <entry id="3030" string="all upper case">tudo em letras maiúsculas</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Seleccione a pasta para os ficheiros codificados</entry>
+      <entry id="3032" string="Sampling rate">Taxa de amostragem</entry>
+      <entry id="3033" string="Sample resolution">Resolução da amostragem</entry>
+      <entry id="3034" string="Number of samples">Número de amostras</entry>
+      <entry id="3035" string="Channels">Canais</entry>
+      <entry id="3036" string="Mono">Mono</entry>
+      <entry id="3037" string="Stereo">Estéreo</entry>
+      <entry id="3038" string="Length">Duração</entry>
+      <entry id="3039" string="File">Ficheiro</entry>
+      <entry id="3040" string="Size">Tamanho</entry>
+      <entry id="3041" string="Bitrate">Taxa de bits</entry>
+      <entry id="3042" string="Audio Files">Ficheiros de áudio</entry>
+      <entry id="3043" string="All Files">Todos os Ficheiros</entry>
+      <entry id="3044" string="Playlist Files">Ficheiros de listas de execução</entry>
+      <entry id="3045" string="Active decoder"/>
+      <entry id="3046" string="Joblist"/>
+      <entry id="3047" string="unknown"/>
+      <entry id="3048" string="Other"/>
+      <entry id="3049" string="Output file name"/>
+      <entry id="3050" string="verifying"/>
+      <entry id="3051" string="Open"/>
+
+      <section name="Add folder">
+	<entry id="3100" string="Folder">Pasta</entry>
+	<entry id="3101" string="Add folder">Insere pasta</entry>
+	<entry id="3102" string="Choose folder">Escolher pasta</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Seleccionar a pasta para adicionar à listagem de trabalho</entry>
+      </section>
+
+      <section name="Add by pattern">
+	<entry id="3200" string="Add files by pattern">Adicionar ficheiros por modelo</entry>
+	<entry id="3201" string="Pattern">Modelo</entry>
+	<entry id="3202" string="Start folder">Pasta inicial</entry>
+	<entry id="3203" string="Filename pattern">Sintaxe do nome do ficheiro</entry>
+	<entry id="3204" string="Search subfolders">Seleccionar a pasta para adicionar à listagem de trabalho</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Seleccionar a pasta para adicionar à listagem de trabalho</entry>
+      </section>
+
+      <section name="Character set">
+	<entry id="3300" string="Character set"/>
+	<entry id="3301" string="Choose character set"/>
+      </section>
+
+      <section name="Errors">
+	<entry id="3400" string="You did not select a track!">Nenhum ficheiro seleccionado!</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Nenhum ficheiro corresponde ao modelo: %1</entry>
+      </section>
+    </section>
+
+    <section name="Jobs">
+      <entry id="3500" string="Jobs"/>
+      <entry id="3501" string="Progress"/>
+      <entry id="3502" string="Errors / Warnings"/>
+      <entry id="3503" string="Details"/>
+      <entry id="3504" string="Error details"/>
+      <entry id="3505" string="Time left">Tempo restante</entry>
+    </section>
+
+    <section name="CDDB">
+
+      <section name="Submit">
+	<entry id="4000" string="CDDB data">Dados do CDDB</entry>
+	<entry id="4001" string="Submit">Enviar</entry>
+	<entry id="4002" string="No audio CD in drive!">Sem CD de áudio na unidade!</entry>
+	<entry id="4003" string="Submitting CD information">Enviando informações do CD</entry>
+	<entry id="4004" string="Update joblist with this information">Actualizar a fila com este dado</entry>
+	<entry id="4005" string="Status">Estado</entry>
+	<entry id="4006" string="Successfully read CD!">CD lido correctamente!</entry>
+	<entry id="4007" string="Save entry">Guardar lista</entry>
+	<entry id="4008" string="Various artists">Vários artistas</entry>
+	<entry id="4009" string="Data track">Dados da Pista</entry>
+	<entry id="4010" string="Submit to online database later">Enviar mais tarde para a base de dados online</entry>
+	<entry id="4011" string="Active CD-ROM drive">Unidade de CD-ROM activa</entry>
+
+	<section name="Errors">
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Ocorreu um erro ao ligar ao servidor freedb.</entry>
+	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Preencha todos os campos e nomes antes de enviar.</entry>
+	</section>
+      </section>
+
+      <section name="Query">
+	<entry id="4100" string="CDDB query">Pesquisa CDDB</entry>
+	<entry id="4101" string="No freedb entry for this disk.">Sem dados no freedb para este disco.</entry>
+	<entry id="4102" string="Connecting to freedb server at">Ligando ao servidor freedb em</entry>
+	<entry id="4103" string="Requesting CD information">Solicitando informação sobre o CD</entry>
+	<entry id="4104" string="No exact matches found">Nenhuma resposta exacta obtida.</entry>
+	<entry id="4105" string="Multiple matches found">Obtidas múltiplas respostas</entry>
+	<entry id="4106" string="Matches">Respostas</entry>
+	<entry id="4107" string="Select the entry that best fits your CD"/>
+	<entry id="4108" string="Would you like to perform this query again later?">Gostaria de fazer esta pesquisa de novo no futuro?</entry>
+	<entry id="4109" string="Would you like to perform the remaining queries again later?"/>
+	<entry id="4110" string="none">nenhum</entry>
+	<entry id="4111" string="Preview">Prévia</entry>
+	<entry id="4112" string="loading preview"/>
+
+	<section name="Errors">
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Ocorreu um erro ao ligar ao servidor freedb.</entry>
+	</section>
+      </section>
+
+      <section name="Manage queries">
+	<entry id="4200" string="Remove entry">Remover lista</entry>
+	<entry id="4201" string="CDDB queries">Pesquisas CDDB</entry>
+	<entry id="4202" string="Query">Pesquisar</entry>
+	<entry id="4203" string="Query all">Pesquisar todas</entry>
+	<entry id="4204" string="Query string">Comando de pesquisa</entry>
+	<entry id="4205" string="CDDB queries to perform">Modo de acesso ao CDDB</entry>
+	<entry id="4206" string="Querying CD information">Servidor CDDB</entry>
+      </section>
+
+      <section name="Manage submits">
+	<entry id="4300" string="Remove entry">Remover lista</entry>
+	<entry id="4301" string="CDDB entries to submit">Editar ficheiro de idioma</entry>
+	<entry id="4302" string="Submit all">Enviar tudo</entry>
+	<entry id="4303" string="CDDB data">Dados do CDDB</entry>
+	<entry id="4304" string="Submit">Enviar</entry>
+	<entry id="4305" string="Disc name">Nome do disco</entry>
+	<entry id="4306" string="Preview">Prévia</entry>
+	<entry id="4307" string="Category">Categoria</entry>
+	<entry id="4308" string="Submitting CD information">Enviando informações do CD</entry>
+      </section>
+
+      <section name="Manage cache">
+	<entry id="4400" string="CDDB data">Dados do CDDB</entry>
+	<entry id="4401" string="Update joblist with this information">Actualizar a fila com este dado</entry>
+	<entry id="4402" string="Charset">Conjunto de caracteres</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Substituir comentários existentes pelo comentário padrão</entry>
+	<entry id="4404" string="Disc name">Nome do disco</entry>
+	<entry id="4405" string="Preview">Prévia</entry>
+	<entry id="4406" string="Remove entry">Remover lista</entry>
+	<entry id="4407" string="Save entry">Guardar lista</entry>
+      </section>
+    </section>
+
+    <section name="Configuration">
+      <entry id="5000" string="General settings setup">Configurar Opções Gerais</entry>
+      <entry id="5001" string="Encoders">Codificadores</entry>
+      <entry id="5002" string="Playlists">Listas de execução</entry>
+      <entry id="5003" string="Language">Idioma</entry>
+      <entry id="5004" string="Component configuration"/>
+      <entry id="5005" string="CDDB"/>
+      <entry id="5006" string="Interface"/>
+      <entry id="5007" string="Tags"/>
+      <entry id="5008" string="Components"/>
+      <entry id="5009" string="Decoders"/>
+      <entry id="5010" string="Output"/>
+      <entry id="5011" string="DSP"/>
+      <entry id="5012" string="Extensions"/>
+      <entry id="5013" string="Other"/>
+      <entry id="5014" string="Active configuration"/>
+      <entry id="5015" string="New"/>
+      <entry id="5016" string="Delete"/>
+      <entry id="5017" string="Command line arguments"/>
+      <entry id="5018" string="Resulting arguments string"/>
+      <entry id="5019" string="Default configuration"/>
+      <entry id="5020" string="New configuration"/>
+      <entry id="5021" string="Ripper"/>
+      <entry id="5022" string="Settings"/>
+      <entry id="5023" string="Resources"/>
+      <entry id="5024" string="Verifiers"/>
+      <entry id="5025" string="Taggers"/>
+      <entry id="5026" string="Processing">Codificar</entry>
+
+      <section name="Encoders">
+	<entry id="5100" string="Configure encoder">Configurar codificador</entry>
+	<entry id="5101" string="Encoder">Codificador</entry>
+	<entry id="5102" string="Output folder">Pasta de saída</entry>
+	<entry id="5103" string="Select">Escolher</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Seleccione a pasta para os ficheiros codificados</entry>
+	<entry id="5105" string="Use input file folder if possible">Usar a pasta do ficheiro de entrada, se possível</entry>
+	<entry id="5106" string="Allow overwriting input file">Permitir sobrescrever o ficheiro de entrada</entry>
+	<entry id="5107" string="Options">Opções</entry>
+	<entry id="5108" string="Filename pattern">Sintaxe do nome do ficheiro</entry>
+	<entry id="5109" string="Encode 'On-The-Fly'">Codificar 'On-The-Fly'</entry>
+	<entry id="5110" string="Keep ripped Wave files">Manter os ficheiros wav</entry>
+	<entry id="5111" string="Encode to a single file">Codificar num ficheiro único</entry>
+	<entry id="5112" string="Output filenames"/>
+	<entry id="5113" string="Allow Unicode characters"/>
+	<entry id="5114" string="Replace spaces"/>
+	<entry id="5115" string="Remove processed tracks from joblist"/>
+	<entry id="5116" string="Add encoded files to joblist"/>
+	<entry id="5117" string="Append sequential numbers to otherwise identical filenames"/>
+
+	<section name="Errors">
+	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">A pasta de saída não existe! Deseja criá-la?</entry>
+	</section>
+      </section>
+
+      <section name="Playlists">
+	<entry id="5200" string="Create playlists">Criar listas de execução</entry>
+	<entry id="5201" string="Create cue sheets">Criar lista de pistas (cue sheet)</entry>
+	<entry id="5202" string="Output folder">Pasta de saída</entry>
+	<entry id="5203" string="Select">Escolher</entry>
+	<entry id="5204" string="Use encoder output folder">Usar a pasta de saída do codificador</entry>
+	<entry id="5205" string="Filename pattern">Sintaxe do nome do ficheiro</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed"/>
+	<entry id="5207" string="Output filenames"/>
+	<entry id="5208" string="Configure plugin"/>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion"/>
+      </section>
+
+      <section name="CDDB">
+	<entry id="5300" string="Enable local CDDB database">Activar base de dados local do CDDB</entry>
+	<entry id="5301" string="Enable remote CDDB database">Activar base de dados remota do CDDB</entry>
+	<entry id="5302" string="CDDB path"/>
+	<entry id="5303" string="Select">Escolher</entry>
+	<entry id="5304" string="Select the folder of the CDDB database"/>
+	<entry id="5305" string="CDDB access mode"/>
+	<entry id="5306" string="CDDB server"/>
+	<entry id="5307" string="Port"/>
+	<entry id="5308" string="eMail address"/>
+	<entry id="5309" string="HTTP settings">Opções HTTP</entry>
+	<entry id="5310" string="Proxy settings">Opções de proxy</entry>
+	<entry id="5311" string="Options">Opções</entry>
+	<entry id="5312" string="Automatic CDDB queries">Pesquisas CDDB automáticas</entry>
+	<entry id="5313" string="Prefer CDDB over CD Text">CDDB preferível ao CD-Text</entry>
+	<entry id="5314" string="Enable CDDB cache">Permitir cache do CDDB</entry>
+	<entry id="5315" string="Automatization">Automatizar</entry>
+	<entry id="5316" string="Always select first entry"/>
+
+	<section name="Extended">
+	  <entry id="5330" string="Extended CDDB settings">Opções extras do CDDB</entry>
+	  <entry id="5331" string="CGI scripts">Script CGI</entry>
+	  <entry id="5332" string="CDDB query script"/>
+	  <entry id="5333" string="CDDB submit script"/>
+	  <entry id="5334" string="no proxy">sem proxy</entry>
+	  <entry id="5335" string="Proxy type"/>
+	  <entry id="5336" string="Proxy server"/>
+	  <entry id="5337" string="User name"/>
+	  <entry id="5338" string="Password"/>
+	</section>
+
+	<section name="Errors">
+	  <entry id="5350" string="Please enter a valid eMail address.">Introduza um endereço válido de e-mail.</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">O protocolo CDDBP náo pode ser usado com proxies de&#10;encaminhamento de HTTP!&#10;&#10;Deseja mudar o protocolo para HTTP?</entry>
+	</section>
+      </section>
+
+      <section name="Language">
+	<entry id="5400" string="Select language"/>
+	<entry id="5401" string="Edit language file">Editar ficheiro de idioma</entry>
+	<entry id="5402" string="Information">Informação</entry>
+	<entry id="5403" string="Encoding">Codificando</entry>
+	<entry id="5404" string="Author">Autor</entry>
+	<entry id="5405" string="URL">URL</entry>
+      </section>
+
+      <section name="Tags">
+	<entry id="5500" string="Tags"/>
+	<entry id="5501" string="Tag formats"/>
+	<entry id="5502" string="Default comment string"/>
+	<entry id="5503" string="Replace existing comments with default comment">Substituir comentários existentes pelo comentário padrão</entry>
+	<entry id="5504" string="Filename pattern">Sintaxe do nome do ficheiro</entry>
+	<entry id="5505" string="Encoding">Codificando</entry>
+	<entry id="5506" string="Comments"/>
+	<entry id="5507" string="Cover art"/>
+	<entry id="5508" string="Read cover art"/>
+	<entry id="5509" string="Read cover art from tags"/>
+	<entry id="5510" string="Read cover art from files"/>
+	<entry id="5511" string="Write cover art"/>
+	<entry id="5512" string="Write cover art to tags"/>
+	<entry id="5513" string="Write cover art to files"/>
+	<entry id="5514" string="Add reference to audio file tag"/>
+	<entry id="5515" string="Other"/>
+	<entry id="5516" string="Chapters"/>
+	<entry id="5517" string="Read chapters from files"/>
+	<entry id="5518" string="Write chapters to files"/>
+	<entry id="5519" string="Special fields"/>
+	<entry id="5520" string="Write CD table of contents"/>
+	<entry id="5521" string="Preserve Replay Gain information"/>
+	<entry id="5522" string="Cue sheets"/>
+	<entry id="5523" string="Read cue sheets embedded in metadata"/>
+	<entry id="5524" string="Prefer cue sheets over chapter information"/>
+	<entry id="5525" string="Prepend zero to track numbers below 10"/>
+	<entry id="5526" string="File size limit"/>
+	<entry id="5527" string="unlimited"/>
+       </section>
+
+      <section name="Joblist">
+	<entry id="5600" string="Joblist"/>
+	<entry id="5601" string="Columns"/>
+	<entry id="5602" string="Name"/>
+	<entry id="5603" string="Description"/>
+	<entry id="5604" string="Up"/>
+	<entry id="5605" string="Down"/>
+	<entry id="5606" string="Jobs"/>
+	<entry id="5607" string="Show Jobs tab"/>
+
+	<section name="Columns">
+	  <entry id="5650" string="Track artist"/>
+	  <entry id="5651" string="Track title"/>
+	  <entry id="5652" string="Track genre"/>
+	  <entry id="5653" string="Album title"/>
+	  <entry id="5654" string="Disc number"/>
+	  <entry id="5655" string="Track number"/>
+	  <entry id="5656" string="Track rating"/>
+	  <entry id="5657" string="Track length"/>
+	  <entry id="5658" string="Track size"/>
+	  <entry id="5659" string="File name"/>
+	  <entry id="5660" string="File type"/>
+	  <entry id="5661" string="Output file name"/>
+	  <entry id="5662" string="Bitrate">Taxa de bits</entry>
+	  <entry id="5663" string="Sampling rate">Taxa de amostragem</entry>
+	  <entry id="5664" string="Channels">Canais</entry>
+	  <entry id="5665" string="Sample resolution">Resolução da amostragem</entry>
+	</section>
+      </section>
+
+      <section name="Resources">
+	<entry id="5700" string="Parallel processing"/>
+	<entry id="5701" string="Enable parallel processing"/>
+	<entry id="5702" string="Enable SuperFast mode (experimental)"/>
+	<entry id="5703" string="Number of conversion threads"/>
+	<entry id="5704" string="auto">auto</entry>
+	<entry id="5705" string="Process priority"/>
+	<entry id="5706" string="lowest"/>
+	<entry id="5707" string="lower"/>
+	<entry id="5708" string="normal"/>
+	<entry id="5709" string="higher"/>
+	<entry id="5710" string="highest"/>
+      </section>
+
+      <section name="Verification">
+	<entry id="5800" string="Verification"/>
+	<entry id="5801" string="Enable input verification"/>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from."/>
+	<entry id="5803" string="Enable output verification"/>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them."/>
+      </section>
+
+      <section name="Processing">
+	<entry id="5900" string="Signal processing"/>
+	<entry id="5901" string="Enable signal processing">Iniciar codificação</entry>
+	<entry id="5902" string="Enable processing during playback">Iniciar codificação com</entry>
+	<entry id="5903" string="Components"/>
+	<entry id="5904" string="Available"/>
+	<entry id="5905" string="Selected"/>
+	<entry id="5906" string="Configure component"/>
+	<entry id="5907" string="Conversion to a single output file"/>
+	<entry id="5908" string="Process each track individually"/>
+	<entry id="5909" string="Treat the combined tracks like a single track"/>
+      </section>
+    </section>
+
+    <section name="About">
+      <entry id="6000" string="About %1">Sobre o %1</entry>
+      <entry id="6001" string="Translated by %1.">Traduzido por %1.</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Este programa é distribuido conforme os termos&#10;da licença GNU (General Public License).</entry>
+    </section>
+
+    <section name="Updates">
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Existem actualizações disponíveis online!&#10;Gostaria de ver a lista de actualizações existentes?</entry>
+      <entry id="6101" string="There are no updates available at the moment!">Não há actualizações disponíveis no momento!</entry>
+      <entry id="6102" string="Check for updates at startup">Verificar actualizações na inicialização</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">Ao iniciar, o %1 pode verificar automaticamente&#10;se há alguma actualização disponível.&#10;&#10;Deseja que o %1 verifique as actualizaçãoes&#10;automaticamente ao iniciar?</entry>
+    </section>
+
+    <section name="Tips">
+      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">O %1 está disponível em %2 idiomas. Se o seu&#10;não estiver disponível, poderá fazer a tradução&#10;facilmente, usando o programa 'smooth Translator'.</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">O %1 suporta os codificadores LAME, Ogg Vorbis, FAAC&#10;e Bonk. Um codificador para o formato VQF está disponível no&#10;sítio do %1 em %2.</entry>
+      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">O %1 pode usar os plug-ins do Winamp 2 para ler outros&#10;formatos de arquivos. Copie os arquivos in_*.dll para a pasta&#10;%1/plugins para permitir o %1 ler esses formatos.</entry>
+      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Com o %1 poderá enviar ao freedb dados de CD&#10;que contenham caracteres Unicode. Se tiver CDs de&#10;artistas ou nomes de músicas com caracteres não-latinos,&#10;você pode enviar os dados correctamente com o %1.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Apagar ficheiros originais após codificação</entry>
+      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Tem alguma sugestão para melhorar o %1? Envie suas&#10;idéias por meio do Tracker na página do projeto %1 no&#10;sítio da SourceForge - %2&#10;ou envie um email para %3.</entry>
+      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Gostou do %1? O %1 é gratuito, mas você pode ajudar&#10;no seu desenvolvimento fazendo uma doação para o projeto&#10;%1. Qualquer valor pode ser enviado através do Paypal&#10;para %2.&#10;Para maiores detalhes, veja a página %3.</entry>
+    </section>
+
+    <section name="Messages">
+      <entry id="7000" string="A conversion process is still active! Do you really want to quit?"/>
+      <entry id="7001" string="Currently converting"/>
+      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Drivers ASPI não puderam ser carregados! Extracção de CD desabilitada!</entry>
+      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Não consegue abrir o ficheiro: %1&#10;&#10;Erro: %2</entry>
+      <entry id="7004" string="Cannot play a CD track while ripping from the same drive!"/>
+      <entry id="7005" string="Cannot start ripping while playing a track from the same drive!"/>
+      <entry id="7006" string="Delete original files after encoding">Apagar ficheiros originais após codificação</entry>
+      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Esta opção irá apagar os ficheiros originais&#10;depois da codificação! Tem certeza?</entry>
+      <entry id="7008" string="File already exists">Ficheiro já existe</entry>
+      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">O ficheiro %1&#10;já existe! Quer sobrescrevê-lo?</entry>
+      <entry id="7010" string="Overwrite all further files">Sobrescreva todos os demais ficheiros</entry>
+      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Suporte CDDB está inactivo! Active o suporte CDDB&#10;local ou remoto no diálogo de configuração.</entry>
+      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Suporte ao CDDB remoto está inactivo! Active o&#10;CDDB no diálogo de configuração.</entry>
+      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">O acesso ao drive de CD foi bloqueado pelo Windows.&#10;&#10;Contate o administrador do sistema para permitir&#10;acesso ao drive de CD-ROM.</entry>
+      <entry id="7014" string="Cannot access input file: %1">Não é possível aceder ao ficheiro de entrada: %1</entry>
+      <entry id="7015" string="Cannot create output file: %1">Não é possível criar ficheiro de saída: %1</entry>
+      <entry id="7016" string="File not found">Ficheiro não encontrado</entry>
+      <entry id="7017" string="Unknown file type">Tipo de ficheiro desconhecido</entry>
+      <entry id="7018" string="Unsupported audio format">Formato de áudio não suportado</entry>
+      <entry id="7019" string="Unknown error">Erro desconhecido</entry>
+      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1"/>
+      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?"/>
+      <entry id="7022" string="Failed to verify input file: %1"/>
+      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
+      <entry id="7024" string="The selected folder does not exist anymore!"/>
+      <entry id="7025" string="Keep this option enabled even after restarting %1"/>
+    </section>
+
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8000" string="Confirm overwrite"/>
+	<entry id="8001" string="Confirm"/>
+	<entry id="8002" string="Skip all"/>
+	<entry id="8003" string="The following %1 files already exist and will be overwritten"/>
+	<entry id="8004" string="Action"/>
+	<entry id="8005" string="Overwrite"/>
+	<entry id="8006" string="Skip">Pular</entry>
+      </section>
+
+      <section name="Format">
+	<entry id="8100" string="Select sample format"/>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:"/>
+	<entry id="8102" string="Select">Escolher</entry>
+      </section>
+
+      <section name="Errors">
+	<entry id="8200" string="Errors"/>
+	<entry id="8201" string="%1 errors while processing job"/>
+	<entry id="8202" string="select an entry for details"/>
+      </section>
+    </section>
+
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">Unidade de CD-ROM activa</entry>
+      <entry id="9001" string="Set drive speed limit"/>
+      <entry id="9002" string="CD information">Informações do CD:</entry>
+      <entry id="9003" string="Read CD Text">Ler o CD-Text</entry>
+      <entry id="9004" string="Read cdplayer.ini">Ler cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">Opções de extracção</entry>
+      <entry id="9006" string="Activate cdparanoia mode"/>
+      <entry id="9007" string="Overlap only">Somente overlap</entry>
+      <entry id="9008" string="No verify">Não verificar</entry>
+      <entry id="9009" string="No scratch repair">Não reparar riscos</entry>
+      <entry id="9010" string="Full cdparanoia mode">Modo 'pananóia' completo</entry>
+      <entry id="9011" string="Activate jitter correction">Activar correcção de jitter</entry>
+      <entry id="9012" string="Swap left/right channel">Inverter canais esq./dir.</entry>
+      <entry id="9013" string="Automatization">Automatizar</entry>
+      <entry id="9014" string="Read CD contents on insert">Ler o CD na inserção</entry>
+      <entry id="9015" string="Start ripping automatically">Extrair automaticamente</entry>
+      <entry id="9016" string="Eject disk after ripping">Ejectar CD após a extracção</entry>
+      <entry id="9017" string="CD options">Opções do CD</entry>
+      <entry id="9018" string="Lock CD tray while ripping">Travar o CD na extracção</entry>
+      <entry id="9019" string="Use native NT SCSI library">Usar biblioteca SCSI nativa</entry>
+      <entry id="9020" string="Use read offset"/>
+      <entry id="9021" string="samples"/>
+      <entry id="9022" string="Read ISRC when adding tracks to joblist"/>
+      <entry id="9023" string="Spin up before ripping"/>
+      <entry id="9024" string="%1 seconds"/>
+    </section>
+
+    <section name="Decoders">
+
+      <section name="MAD">
+	<entry id="10000" string="Decoding">sepa,paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="10001" string="Enable 24 bit decoding"/>
+      </section>
+
+      <section name="mpg123">
+	<entry id="11000" string="Decoder">Configurar</entry>
+	<entry id="11001" string="Active decoder"/>
+ 	<entry id="11002" string="auto select"/>
+      </section>
+
+      <section name="CueSheet">
+	<entry id="12000" string="Title information">Duração</entry>
+	<entry id="12001" string="Read tags from referenced files">Tamanho</entry>
+	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags"/>
+	<entry id="12003" string="Alternative files"/>
+	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
+	<entry id="12005" string="Error handling"/>
+	<entry id="12006" string="Ignore errors during cue sheet processing"/>
+      </section>
+    </section>
+
+    <section name="Encoders">
+
+      <section name="BladeEnc">
+	<entry id="30000" string="Bitrate">Taxa de bits</entry>
+	<entry id="30001" string="Copyright bit">Bit de Copyright</entry>
+	<entry id="30002" string="CRC">CRC</entry>
+	<entry id="30003" string="Original bit">Bit de Original</entry>
+	<entry id="30004" string="Channels">Canais</entry>
+	<entry id="30005" string="Private bit">Bit de Privado</entry>
+	<entry id="30006" string="Set Copyright bit">Marcar bit de Copyright</entry>
+	<entry id="30007" string="Enable CRC">Activar CRC</entry>
+	<entry id="30008" string="Set Original bit">Marcar bit de Original</entry>
+	<entry id="30009" string="Dual channel encoding">Codificação de duplo canal</entry>
+	<entry id="30010" string="Set Private bit">Marcar bit de Privado</entry>
+      </section>
+
+      <section name="Bonk">
+	<entry id="31000" string="Encoder mode">Modo do codificador</entry>
+	<entry id="31001" string="Stereo mode">Modo estéreo</entry>
+	<entry id="31002" string="Quantization">Quantização</entry>
+	<entry id="31003" string="Downsampling ratio">Subamostragem</entry>
+	<entry id="31004" string="Predictor size">Tamanho do predictor</entry>
+	<entry id="31005" string="Enable lossless encoding">Codificação sem perdas</entry>
+	<entry id="31006" string="Enable Joint Stereo">Ativar joint-estéreo</entry>
+      </section>
+
+      <section name="LAME">
+	<entry id="32000" string="Basic">Básico</entry>
+	<entry id="32001" string="Misc">Miscelânea</entry>
+	<entry id="32002" string="Expert">Expert</entry>
+	<entry id="32003" string="Audio processing">Processamento de áudio</entry>
+
+	<section name="Basic">
+	  <entry id="32100" string="Presets">Presets</entry>
+	  <entry id="32101" string="Use preset"/>
+	  <entry id="32102" string="Custom settings">Opções personalizadas</entry>
+	  <entry id="32103" string="Medium, Fast">Médio e rápido</entry>
+	  <entry id="32104" string="Standard, Fast">Normal e rápido</entry>
+	  <entry id="32105" string="Extreme, Fast">Extremo e rápido</entry>
+	  <entry id="32106" string="Bitrate">Taxa de bits</entry>
+	  <entry id="32107" string="Quality">Qualidade</entry>
+	  <entry id="32108" string="Set bitrate"/>
+	  <entry id="32109" string="Set ratio"/>
+	  <entry id="32110" string="Set quality"/>
+	  <entry id="32111" string="worse">pior</entry>
+	  <entry id="32112" string="better">melhor</entry>
+	  <entry id="32113" string="VBR mode">Modo VBR</entry>
+	  <entry id="32114" string="no VBR">sem VBR</entry>
+	  <entry id="32115" string="VBR quality">Qualidade VBR</entry>
+	  <entry id="32116" string="ABR target bitrate">Taxa de bits desejada para ABR</entry>
+	</section>
+
+	<section name="Misc">
+	  <entry id="32200" string="Control bits">Bits de controle</entry>
+	  <entry id="32201" string="Set Copyright bit">Marcar bit de Copyright</entry>
+	  <entry id="32202" string="Set Original bit">Marcar bit de Original</entry>
+	  <entry id="32203" string="Set Private bit">Marcar bit de Privado</entry>
+	  <entry id="32204" string="CRC">CRC</entry>
+	  <entry id="32205" string="Enable CRC">Activar CRC</entry>
+	  <entry id="32206" string="Stereo mode">Modo estéreo</entry>
+	  <entry id="32207" string="Auto">Auto</entry>
+	  <entry id="32208" string="Stereo">Estéreo</entry>
+	  <entry id="32209" string="Joint Stereo">Joint-estéreo</entry>
+	  <entry id="32210" string="Force Joint Stereo">Forçar joint-estéreo</entry>
+	  <entry id="32211" string="VBR bitrate range">Faixa da taxa de bits para VBR</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate"/>
+	  <entry id="32213" string="Set maximum VBR bitrate"/>
+	</section>
+
+	<section name="Expert">
+	  <entry id="32300" string="ATH">ATH</entry>
+	  <entry id="32301" string="Enable ATH"/>
+	  <entry id="32302" string="Use default setting">Usar padrão</entry>
+	  <entry id="32303" string="Psycho acoustic model">Modelo psico-acústico</entry>
+	  <entry id="32304" string="Use Temporal Masking Effect">Usar 'Temporal Mask Effect'</entry>
+	  <entry id="32305" string="Stream format">Formato do stream</entry>
+	  <entry id="32306" string="Enforce strict ISO compliance">Forçar os padrões ISO</entry>
+	</section>
+
+	<section name="Audio processing">
+	  <entry id="32400" string="Highpass filter">Filtro passo-alto</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)"/>
+	  <entry id="32402" string="Set Highpass width (Hz)"/>
+	  <entry id="32403" string="Lowpass filter">Filtro passo-baixo</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)"/>
+	  <entry id="32405" string="Set Lowpass width (Hz)"/>
+	  <entry id="32406" string="Misc settings">Outras configurações</entry>
+	  <entry id="32407" string="Disable all filtering">Sem filtros</entry>
+	</section>
+      </section>
+
+      <section name="AAC">
+	<entry id="33000" string="Codec"/>
+	<entry id="33001" string="Quality">Qualidade</entry>
+	<entry id="33002" string="Format">Formato</entry>
+
+	<section name="Codec">
+	  <entry id="33100" string="Audio codec"/>
+	</section>
+
+	<section name="Quality">
+	  <entry id="33200" string="Bitrate">Taxa de bits</entry>
+	  <entry id="33201" string="Bitrate / Quality">Taxa de bits / Qualidade</entry>
+	  <entry id="33202" string="Bitrate per channel"/>
+	  <entry id="33203" string="Set quality"/>
+	  <entry id="33204" string="Stereo mode">Modo estéreo</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Permitir joint-estéreo</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">Usar &quot;Temporal Noise Shaping&quot;</entry>
+	  <entry id="33208" string="Maximum bandwidth">Largura máxima de banda</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)"/>
+	</section>
+
+	<section name="Format">
+	  <entry id="33300" string="MPEG version">Versão MPEG</entry>
+	  <entry id="33301" string="AAC object type">Tipo de objecto AAC</entry>
+	  <entry id="33302" string="File format">Formato do ficheiro</entry>
+	  <entry id="33303" string="File extension"/>
+	  <entry id="33304" string="Tags"/>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Permitir campos ID3v2 nos ficheiros AAC</entry>
+	  <entry id="33306" string="Note"/>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Alguns reprodutores de aúdio tem problemas para ler ficheiros AAC com&#10;campos ID3. Use esta opção apenas se tiver certeza que&#10;seu reprodutor pode ler estes ficheiros.</entry>
+	</section>
+      </section>
+
+      <section name="FLAC">
+	<entry id="34000" string="Basic">Básico</entry>
+	<entry id="34001" string="Format">Formato</entry>
+	<entry id="34002" string="Expert">Expert</entry>
+
+	<section name="Basic">
+	  <entry id="34100" string="Presets">Presets</entry>
+	  <entry id="34101" string="Use preset"/>
+	  <entry id="34102" string="Custom settings">Opções personalizadas</entry>
+	  <entry id="34103" string="Fastest encoding">Codificação rápida</entry>
+	  <entry id="34104" string="Best compression">Melhor compressão</entry>
+	  <entry id="34105" string="Stereo mode">Modo estéreo</entry>
+	  <entry id="34106" string="Joint Stereo">Joint-estéreo</entry>
+	  <entry id="34107" string="Adaptive Joint Stereo">Joint-estéreo adaptativo</entry>
+	  <entry id="34108" string="File format">Formato do ficheiro</entry>
+	  <entry id="34109" string="Default"/>
+	</section>
+
+	<section name="Format">
+	  <entry id="34200" string="Use streamable subset">Use &quot;streamable subset&quot;</entry>
+	  <entry id="34201" string="Blocksize"/>
+	</section>
+
+	<section name="Expert">
+	  <entry id="34300" string="Signal processing"/>
+	  <entry id="34301" string="Window function(s)"/>
+	  <entry id="34302" string="Note"/>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Pode-se especificar várias funções separadas por ponto e vírgula.</entry>
+	  <entry id="34304" string="Linear predictor">Predictor linear</entry>
+	  <entry id="34305" string="Maximum LPC order">Ordem máxima</entry>
+	  <entry id="34306" string="disabled">desabilitado</entry>
+	  <entry id="34307" string="Exhaustive model search">Busca exaustiva</entry>
+	  <entry id="34308" string="Quantized LPC precision">Quantização</entry>
+	  <entry id="34309" string="auto">auto</entry>
+	  <entry id="34310" string="Optimize LPC quantization">Quantização optimizada</entry>
+	  <entry id="34311" string="Residual coding">Codificação residual</entry>
+	  <entry id="34312" string="Minimum partition order">Partição mínima</entry>
+	  <entry id="34313" string="Maximum partition order">Partição máxima</entry>
+	</section>
+      </section>
+
+      <section name="Vorbis">
+	<entry id="35000" string="Encoding Mode">Modo de codificação</entry>
+	<entry id="35001" string="Variable Bitrate">Taxa de bits variável</entry>
+	<entry id="35002" string="Average Bitrate">Taxa de bits média</entry>
+	<entry id="35003" string="Quality">Qualidade</entry>
+	<entry id="35004" string="Bitrate">Taxa de bits</entry>
+	<entry id="35005" string="Minimum bitrate"/>
+	<entry id="35006" string="Average bitrate"/>
+	<entry id="35007" string="Maximum bitrate"/>
+	<entry id="35008" string="File extension"/>
+      </section>
+
+      <section name="WMA">
+	<entry id="36000" string="Select codec">Seleccionar codificador</entry>
+	<entry id="36001" string="Select codec format">Selecionar formato do codificador</entry>
+	<entry id="36002" string="Codec settings">Propriedades do codificador</entry>
+	<entry id="36003" string="Use codec">Utilizar codificador</entry>
+	<entry id="36004" string="Use format">Utilizar formato</entry>
+	<entry id="36005" string="Write uncompressed WMA files">Escrever ficheiros WMA descomprimidos</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">Seleccionar formato automático com base nas configurações e formato de entrada</entry>
+	<entry id="36007" string="Use VBR encoding">Utilizar codificação VBR</entry>
+	<entry id="36008" string="Quality">Qualidade</entry>
+	<entry id="36009" string="Target bitrate">Razão de bit alvo</entry>
+	<entry id="36010" string="Use 2-pass encoding">Utilizar codificação de dupla passagem</entry>
+      </section>
+
+      <section name="TwinVQ">
+	<entry id="37000" string="Bitrate">Taxa de bits</entry>
+	<entry id="37001" string="Bitrate per channel"/>
+	<entry id="37002" string="Preselection">Pré-selecção</entry>
+	<entry id="37003" string="Number of preselection candidates"/>
+      </section>
+
+      <section name="Monkey's Audio">
+	<entry id="38000" string="Compression"/>
+	<entry id="38001" string="Compression mode"/>
+	<entry id="38002" string="Fast"/>
+	<entry id="38003" string="Normal"/>
+	<entry id="38004" string="High"/>
+	<entry id="38005" string="Extra high"/>
+	<entry id="38006" string="Insane"/>
+      </section>
+
+      <section name="Speex">
+	<entry id="39000" string="Profile"/>
+	<entry id="39001" string="Select encoding profile"/>
+	<entry id="39002" string="Auto">Auto</entry>
+	<entry id="39003" string="Narrowband (8 kHz)"/>
+	<entry id="39004" string="Wideband (16 kHz)"/>
+	<entry id="39005" string="Ultra-Wideband (32 kHz)"/>
+	<entry id="39006" string="VBR mode">Modo VBR</entry>
+	<entry id="39007" string="CBR (no VBR)"/>
+	<entry id="39008" string="VBR"/>
+	<entry id="39009" string="ABR"/>
+	<entry id="39010" string="Options">Opções</entry>
+	<entry id="39011" string="Voice Activity Detection"/>
+	<entry id="39012" string="Discontinued Transmission"/>
+	<entry id="39013" string="Algorithm complexity"/>
+	<entry id="39014" string="Complexity"/>
+	<entry id="39015" string="CBR quality"/>
+	<entry id="39016" string="VBR quality">Qualidade VBR</entry>
+	<entry id="39017" string="ABR target bitrate">Taxa de bits desejada para ABR</entry>
+	<entry id="39018" string="Bitrate">Taxa de bits</entry>
+	<entry id="39019" string="Quality">Qualidade</entry>
+	<entry id="39020" string="Max. bitrate"/>
+      </section>
+
+      <section name="Opus">
+	<entry id="40000" string="Basic settings"/>
+	<entry id="40001" string="Encoding mode"/>
+	<entry id="40002" string="Auto">Auto</entry>
+	<entry id="40003" string="Voice"/>
+	<entry id="40004" string="Music"/>
+	<entry id="40005" string="Bandwidth"/>
+	<entry id="40006" string="Narrowband"/>
+	<entry id="40007" string="Mediumband"/>
+	<entry id="40008" string="Wideband"/>
+	<entry id="40009" string="Superwideband"/>
+	<entry id="40010" string="Fullband"/>
+	<entry id="40011" string="File extension"/>
+	<entry id="40012" string="Variable bitrate"/>
+	<entry id="40013" string="Enable variable bitrate encoding"/>
+	<entry id="40014" string="Constrain bitrate to target value"/>
+	<entry id="40015" string="Quality">Qualidade</entry>
+	<entry id="40016" string="Bitrate">Taxa de bits</entry>
+	<entry id="40017" string="Complexity"/>
+	<entry id="40018" string="Stream"/>
+	<entry id="40019" string="Frame length"/>
+	<entry id="40020" string="Options">Opções</entry>
+	<entry id="40021" string="Enable discontinous transmission"/>
+	<entry id="40022" string="Expected packet loss"/>
+      </section>
+
+      <section name="SndFile">
+	<entry id="41000" string="Output format"/>
+	<entry id="41001" string="File format">Formato do ficheiro</entry>
+	<entry id="41002" string="Audio format"/>
+	<entry id="41003" string="mono"/>
+	<entry id="41004" string="auto select"/>
+
+	<section name="Errors">
+	  <entry id="41100" string="Could not find suitable audio format."/>
+	  <entry id="41101" string="Unable to use selected audio format."/>
+	</section>
+      </section>
+
+      <section name="meh!">
+	<entry id="42000" string="Encoders">Codificadores</entry>
+	<entry id="42001" string="Available"/>
+	<entry id="42002" string="Selected"/>
+	<entry id="42003" string="Configure encoder">Configurar codificador</entry>
+	<entry id="42004" string="Encoder configuration"/>
+	<entry id="42005" string="Options">Opções</entry>
+	<entry id="42006" string="Create a separate folder for each output format"/>
+      </section>
+    </section>
+
+    <section name="DSP">
+
+      <section name="Format">
+	<entry id="50000" string="Sample format"/>
+	<entry id="50001" string="Number format"/>
+	<entry id="50002" string="Sample resolution">Resolução da amostragem</entry>
+	<entry id="50003" string="bit">bit</entry>
+	<entry id="50004" string="unsigned"/>
+	<entry id="50005" string="Integer"/>
+	<entry id="50006" string="Float"/>
+      </section>
+
+      <section name="Channels">
+	<entry id="50100" string="Output channels"/>
+	<entry id="50101" string="Channel configuration"/>
+	<entry id="50102" string="Mono">Mono</entry>
+	<entry id="50103" string="Stereo">Estéreo</entry>
+      </section>
+
+      <section name="Resample">
+	<entry id="50200" string="Converter"/>
+	<entry id="50201" string="Sampling rate">Taxa de amostragem</entry>
+	<entry id="50202" string="Output sampling rate">Taxa de amostragem de Saída</entry>
+      </section>
+
+      <section name="RubberBand">
+	<entry id="50300" string="Basic controls"/>
+	<entry id="50301" string="Tempo"/>
+	<entry id="50302" string="Pitch"/>
+	<entry id="50303" string="%1 Semitones"/>
+	<entry id="50304" string="Advanced options"/>
+	<entry id="50305" string="Transient detection"/>
+	<entry id="50306" string="Compound"/>
+	<entry id="50307" string="Percussive"/>
+	<entry id="50308" string="Soft"/>
+	<entry id="50309" string="Transient handling"/>
+	<entry id="50310" string="Crisp"/>
+	<entry id="50311" string="Mixed"/>
+	<entry id="50312" string="Smooth"/>
+	<entry id="50313" string="Transformation window"/>
+	<entry id="50314" string="Standard"/>
+	<entry id="50315" string="Short"/>
+	<entry id="50316" string="Long"/>
+	<entry id="50317" string="Use time-domain smoothing"/>
+	<entry id="50318" string="Phase handling"/>
+	<entry id="50319" string="Laminar"/>
+	<entry id="50320" string="Independent"/>
+	<entry id="50321" string="Formant handling"/>
+	<entry id="50322" string="Shift"/>
+	<entry id="50323" string="Preserve"/>
+	<entry id="50324" string="Pitch processing"/>
+	<entry id="50325" string="High quality"/>
+	<entry id="50326" string="High speed"/>
+	<entry id="50327" string="High consistency"/>
+	<entry id="50328" string="Stereo processing"/>
+	<entry id="50329" string="Separate"/>
+	<entry id="50330" string="Combined"/>
+      </section>
+    </section>
+
+    <section name="Taggers">
+
+      <section name="MP4">
+	<entry id="60000" string="Chapter format"/>
+	<entry id="60001" string="both"/>
+      </section>
+    </section>
+
+    <section name="Extensions">
+
+      <section name="Donate">
+	<entry id="100000" string="Support this project">eur</entry>
+	<entry id="100001" string="Please support this project!">CDDB</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation."/>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check&#10;or send money by mail."/>
+	<entry id="100004" string="Thank you very much!"/>
+	<entry id="100005" string="Remind me later"/>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum"/>
+
+	<section name="PayPal">
+	  <entry id="100100" string="Click one of the buttons below to make a donation using PayPal:"/>
+	  <entry id="100101" string="You can also send money directly to %1 using PayPal."/>
+	  <entry id="100102" string="usd"/>
+	  <entry id="100103" string="$%1"/>
+	  <entry id="100104" string="5,10,other amount"/>
+	</section>
+
+	<section name="Donorbox">
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:"/>
+	  <entry id="100201" string="Donate"/>
+	  <entry id="100202" string="usd"/>
+	</section>
+
+	<section name="Bitcoin">
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:"/>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks."/>
+	</section>
+
+	<section name="Ethereum">
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:"/>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens."/>
+	</section>
+
+	<section name="SEPA">
+	  <entry id="100500" string="You can donate by making a SEPA transfer to the following&#10;account:"/>
+	  <entry id="100501" string="Account holder:"/>
+	  <entry id="100502" string="IBAN:"/>
+	  <entry id="100503" string="BIC:"/>
+	</section>
+      </section>
+
+      <section name="Winamp Adapter">
+	<entry id="101000" string="Configure">Configurar</entry>
+	<entry id="101001" string="About">Sobre</entry>
+      </section>
+
+      <section name="Video Downloader">
+	<entry id="102000" string="Video"/>
+	<entry id="102001" string="Enter video URL here"/>
+	<entry id="102002" string="Download"/>
+	<entry id="102003" string="Automatically download URLs copied to clipboard"/>
+	<entry id="102004" string="Save downloaded video files"/>
+	<entry id="102005" string="Video downloads"/>
+	<entry id="102006" string="Downloaded tracks"/>
+	<entry id="102007" string="Uploader"/>
+	<entry id="102008" string="Video URL"/>
+	<entry id="102009" string="Video title"/>
+	<entry id="102010" string="Video description"/>
+	<entry id="102011" string="Site name"/>
+	<entry id="102012" string="Uploaded by"/>
+	<entry id="102013" string="Uploaded on"/>
+	<entry id="102014" string="Length">Duração</entry>
+	<entry id="102015" string="Size">Tamanho</entry>
+	<entry id="102016" string="Cancel download"/>
+	<entry id="102017" string="unknown"/>
+	<entry id="102018" string="Note"/>
+
+	<section name="Configuration">
+	  <entry id="102101" string="Automatization">Automatizar</entry>
+	  <entry id="102102" string="Video files"/>
+	  <entry id="102103" string="Select">Escolher</entry>
+	  <entry id="102104" string="Select the folder to save downloaded video files to"/>
+	  <entry id="102105" string="Downloads"/>
+	  <entry id="102106" string="Maximum number of simultaneous downloads"/>
+	  <entry id="102107" string="Output format"/>
+	  <entry id="102108" string="keep original format"/>
+	</section>
+
+	<section name="Errors">
+	  <entry id="102201" string="This URL is not supported or not a video page URL!"/>
+	  <entry id="102202" string="Error downloading video!"/>
+	  <entry id="102203" string="You are already downloading this video!"/>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!"/>
+	</section>
+      </section>
+
+      <section name="Tag Editor">
+	<entry id="103000" string="Tags"/>
+	<entry id="103001" string="Length">Duração</entry>
+	<entry id="103002" string="Size">Tamanho</entry>
+	<entry id="103003" string="Albums"/>
+	<entry id="103004" string="Files"/>
+	<entry id="103005" string="File">Ficheiro</entry>
+	<entry id="103006" string="Tracks"/>
+	<entry id="103007" string="Save"/>
+	<entry id="103008" string="Save all"/>
+	<entry id="103009" string="no audio files found"/>
+
+	<section name="Basic">
+	  <entry id="103100" string="Basic">Básico</entry>
+	  <entry id="103101" string="Title information">Duração</entry>
+	  <entry id="103102" string="Disc">Gênero desconhecido</entry>
+	  <entry id="103103" string="Cover art"/>
+	  <entry id="103104" string="Covers"/>
+	  <entry id="103105" string="Type"/>
+	  <entry id="103106" string="Description"/>
+	  <entry id="103107" string="Add">Adicionar</entry>
+	  <entry id="103108" string="Remove">Remover</entry>
+	</section>
+
+	<section name="Details">
+	  <entry id="103200" string="Details"/>
+	  <entry id="103201" string="Detailed information"/>
+	  <entry id="103202" string="Band / orchestra"/>
+	  <entry id="103203" string="Conductor"/>
+	  <entry id="103204" string="Composer"/>
+	  <entry id="103205" string="Lyrics writer"/>
+	  <entry id="103206" string="Modified / remixed by"/>
+	  <entry id="103207" string="Publisher information"/>
+	  <entry id="103208" string="Publisher / label"/>
+	  <entry id="103209" string="ISRC"/>
+	  <entry id="103210" string="Tempo"/>
+	  <entry id="103211" string="BPM"/>
+	</section>
+
+	<section name="Other">
+	  <entry id="103300" string="Other"/>
+	  <entry id="103301" string="Original information"/>
+	  <entry id="103302" string="Original artist"/>
+	  <entry id="103303" string="Original album"/>
+	  <entry id="103304" string="Original lyrics writer"/>
+	  <entry id="103305" string="Original release year"/>
+	  <entry id="103306" string="Webpage URLs"/>
+	  <entry id="103307" string="Artist webpage"/>
+	  <entry id="103308" string="Publisher webpage"/>
+	  <entry id="103309" string="Internet radio station"/>
+	  <entry id="103310" string="Audio source webpage"/>
+	  <entry id="103311" string="Copyright information"/>
+	  <entry id="103312" string="Commercial information"/>
+	</section>
+
+	<section name="Errors">
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Não consegue abrir o ficheiro: %1&#10;&#10;Erro: %2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2"/>
+	</section>
+      </section>
+
+      <section name="Protocols">
+	<entry id="104000" string="Protocols"/>
+	<entry id="104001" string="Protocol"/>
+	<entry id="104002" string="Errors / Warnings"/>
+	<entry id="104003" string="Details"/>
+	<entry id="104004" string="Time"/>
+	<entry id="104005" string="Message"/>
+
+	<section name="Configuration">
+	  <entry id="104100" string="User interface"/>
+	  <entry id="104101" string="Show Protocols tab in main window"/>
+	</section>
+      </section>
+    </section>
+  </data>
+</LangFile>
