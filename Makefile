@@ -130,8 +130,15 @@ ressources: folders
 ifeq ($(BUILD_WIN32),True)
 	mkdir -p $(BIN)/icons
 
-	cp $(SRCDIR)/icons/freac.pci $(BIN)
 	cp $(SRCDIR)/icons/freac.png $(BIN)/icons
+
+	cp -r $(SRCDIR)/icons/conversion $(BIN)/icons
+	cp -r $(SRCDIR)/icons/freedb $(BIN)/icons
+	cp -r $(SRCDIR)/icons/joblist $(BIN)/icons
+	cp -r $(SRCDIR)/icons/other $(BIN)/icons
+	cp -r $(SRCDIR)/icons/player $(BIN)/icons
+	cp -r $(SRCDIR)/icons/select $(BIN)/icons
+	cp -r $(SRCDIR)/icons/settings $(BIN)/icons
 
 	cp -r $(SRCDIR)/i18n/lang $(BIN)
 	cp -r $(SRCDIR)/i18n/manual $(BIN)
@@ -154,8 +161,28 @@ ifneq ($(BUILD_WIN32),True)
 	cp -r $(SRCDIR)/i18n/lang $(DESTDIR)$(datadir)/freac
 	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/lang
 
-	$(INSTALL_DATA) $(SRCDIR)/icons/freac.pci $(DESTDIR)$(datadir)/freac
 	$(INSTALL_DATA) $(SRCDIR)/icons/freac.png $(DESTDIR)$(datadir)/freac/icons
+
+	cp -r $(SRCDIR)/icons/conversion $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/conversion
+
+	cp -r $(SRCDIR)/icons/freedb $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/freedb
+
+	cp -r $(SRCDIR)/icons/joblist $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/joblist
+
+	cp -r $(SRCDIR)/icons/other $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/other
+
+	cp -r $(SRCDIR)/icons/player $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/player
+
+	cp -r $(SRCDIR)/icons/select $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/select
+
+	cp -r $(SRCDIR)/icons/settings $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/settings
 
 	$(INSTALL) -d $(DESTDIR)$(datadir)/doc/freac
 
@@ -178,7 +205,6 @@ ifneq ($(BUILD_WIN32),True)
 	rm -f -r $(DESTDIR)$(datadir)/freac/icons
 	rm -f -r $(DESTDIR)$(datadir)/freac/lang
 
-	rm -f $(DESTDIR)$(datadir)/freac/freac.pci
 	rm -f -r $(DESTDIR)$(datadir)/freac
 
 	rm -f $(DESTDIR)$(datadir)/doc/freac/Readme*
@@ -199,8 +225,6 @@ endif
 
 clean_ressources:
 ifeq ($(BUILD_WIN32),True)
-	$(REMOVER) $(REMOVER_OPTS) $(BIN)/freac.pci
-
 	rm -f -r $(BIN)/icons
 
 	rm -f -r $(BIN)/lang

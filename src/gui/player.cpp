@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -36,37 +36,37 @@ freac::LayerPlayer::LayerPlayer(JobList *iJoblist)
 	size.cx = 25;
 	size.cy = 25;
 
-	button_play	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:12")), pos, size);
+	button_play	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-play.png")), pos, size);
 	button_play->onAction.Connect(&LayerPlayer::PlaySelectedItem, this);
 	button_play->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-	button_pause	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:13")), pos, size);
+	button_pause	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-pause.png")), pos, size);
 	button_pause->onAction.Connect(&LayerPlayer::PauseResumePlayback, this);
 	button_pause->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-	button_stop	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:14")), pos, size);
+	button_stop	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-stop.png")), pos, size);
 	button_stop->onAction.Connect(&LayerPlayer::StopPlayback, this);
 	button_stop->SetFlags(BF_NOFRAME);
 
 	pos.x += 127 - (i18n->IsActiveLanguageRightToLeft() ? 254 : 0);
 
-	button_prev	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:15")), pos, size);
+	button_prev	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-previous.png")), pos, size);
 	button_prev->onAction.Connect(&LayerPlayer::PlayPreviousItem, this);
 	button_prev->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-	button_next	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:16")), pos, size);
+	button_next	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-next.png")), pos, size);
 	button_next->onAction.Connect(&LayerPlayer::PlayNextItem, this);
 	button_next->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-	button_open	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:17")), pos, size);
+	button_open	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-eject.png")), pos, size);
 	button_open->onAction.Connect(&LayerPlayer::OpenCDTray, this);
 	button_open->SetFlags(BF_NOFRAME);
 
