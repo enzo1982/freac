@@ -11,8 +11,13 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/cddb/managesubmits.h>
+
 #include <config.h>
 #include <resources.h>
+
+#ifdef __WIN32__
+#	include <smooth/init.win32.h>
+#endif
 
 freac::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 {
@@ -84,6 +89,10 @@ freac::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON | WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
+
+#ifdef __WIN32__
+	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
+#endif
 }
 
 freac::cddbManageSubmitsDlg::~cddbManageSubmitsDlg()
