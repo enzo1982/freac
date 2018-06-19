@@ -355,7 +355,9 @@
 	<entry id="5505" string="Encoding">Koder</entry>
       </section>
 
-      <section name="Joblist"/>
+      <section name="Joblist">
+	<entry id="5603" string="Description">Beskrivelse</entry>
+      </section>
     </section>
 
     <section name="About">
@@ -675,17 +677,27 @@
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Enkelt</entry>
+	  <entry id="103106" string="Description">Beskrivelse</entry>
 	  <entry id="103107" string="Add">Legg til</entry>
 	  <entry id="103108" string="Remove">Fjern</entry>
 	</section>
 
-	<section name="Details"/>
+	<section name="Details">
+	  <entry id="103200" string="Details">Detaljer</entry>
+	</section>
 
 	<section name="Other"/>
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åpne filen: %1&#10;&#10;Feil: %2</entry>
 	</section>
+      </section>
+
+      <section name="Protocols">
+	<entry id="104000" string="Protocols">Protokoller</entry>
+	<entry id="104001" string="Protocol">Protokoll</entry>
+	<entry id="104003" string="Details">Detaljer</entry>
+	<entry id="104005" string="Message">Melding</entry>
       </section>
     </section>
   </data>
