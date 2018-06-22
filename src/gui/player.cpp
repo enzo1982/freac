@@ -89,7 +89,8 @@ freac::LayerPlayer::LayerPlayer(JobList *iJoblist)
 
 	Add(slider_play);
 
-	Playback::Get()->onFinish.Connect(&LayerPlayer::StopPlayback, this);
+	Playback::Get()->onPlay.Connect(&LayerPlayer::OnPlay, this);
+	Playback::Get()->onFinish.Connect(&LayerPlayer::OnFinish, this);
 
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Connect(&LayerPlayer::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Connect(&LayerPlayer::OnJoblistRemoveAllTracks, this);
@@ -101,7 +102,8 @@ freac::LayerPlayer::LayerPlayer(JobList *iJoblist)
 
 freac::LayerPlayer::~LayerPlayer()
 {
-	Playback::Get()->onFinish.Disconnect(&LayerPlayer::StopPlayback, this);
+	Playback::Get()->onFinish.Disconnect(&LayerPlayer::OnPlay, this);
+	Playback::Get()->onFinish.Disconnect(&LayerPlayer::OnFinish, this);
 
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Disconnect(&LayerPlayer::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Disconnect(&LayerPlayer::OnJoblistRemoveAllTracks, this);
@@ -244,19 +246,6 @@ Void freac::LayerPlayer::Play(const Track &track)
 	if (!player->IsPlaying()) return;
 
 	playingTrack = track;
-
-	/* Set joblist entry color.
-	 */
-	ListEntry	*entry = joblist->GetEntryByTrack(playingTrack);
-
-	if (entry != NIL)
-	{
-		GUI::Font	 font = entry->GetFont();
-
-		font.SetColor(Color(255, 0, 0));
-
-		entry->SetFont(font);
-	}
 }
 
 Void freac::LayerPlayer::PauseResumePlayback()
@@ -276,7 +265,26 @@ Void freac::LayerPlayer::StopPlayback()
 	if (!player->IsPlaying()) return;
 
 	player->Stop();
+}
 
+Void freac::LayerPlayer::OnPlay(const Track &track)
+{
+	/* Set joblist entry color.
+	 */
+	ListEntry	*entry = joblist->GetEntryByTrack(track);
+
+	if (entry != NIL)
+	{
+		GUI::Font	 font = entry->GetFont();
+
+		font.SetColor(Color(255, 0, 0));
+
+		entry->SetFont(font);
+	}
+}
+
+Void freac::LayerPlayer::OnFinish(const Track &track)
+{
 	/* Reset slider.
 	 */
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -285,7 +293,7 @@ Void freac::LayerPlayer::StopPlayback()
 
 	/* Reset joblist entry color.
 	 */
-	ListEntry	*entry = joblist->GetEntryByTrack(playingTrack);
+	ListEntry	*entry = joblist->GetEntryByTrack(track);
 
 	if (entry != NIL)
 	{
@@ -320,12 +328,12 @@ Void freac::LayerPlayer::OnChangePlayPosition()
 
 	if (!player->IsPlaying()) return;
 
-	player->onFinish.Disconnect(&LayerPlayer::StopPlayback, this);
+	player->onFinish.Disconnect(&LayerPlayer::OnFinish, this);
 
 	player->Stop();
 	player->Play(playingTrack);
 
-	player->onFinish.Connect(&LayerPlayer::StopPlayback, this);
+	player->onFinish.Connect(&LayerPlayer::OnFinish, this);
 
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
