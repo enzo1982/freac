@@ -609,6 +609,7 @@
       <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Prüfsummenfehler beim Verifizieren der Ausgabedatei: %1&#10;&#10;Prüfsumme beim Kodieren: %2&#10;Prüfsumme bei Verifikation: %3</entry>
       <entry id="7024" string="The selected folder does not exist anymore!">Der ausgewählte Ordner existiert nicht mehr!</entry>
       <entry id="7025" string="Keep this option enabled even after restarting %1">Diese Funktion auch nach dem Neustart von %1 aktiviert lassen</entry>
+      <entry id="7026" string="Invalid file format">Ungültiges Dateiformat</entry>
     </section>
 
     <section name="Dialogs">

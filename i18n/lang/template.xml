@@ -609,6 +609,7 @@
       <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
       <entry id="7024" string="The selected folder does not exist anymore!"/>
       <entry id="7025" string="Keep this option enabled even after restarting %1"/>
+      <entry id="7026" string="Invalid file format"/>
     </section>
 
     <section name="Dialogs">
