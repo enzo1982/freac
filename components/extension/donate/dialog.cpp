@@ -52,6 +52,9 @@ BoCA::DonateDialog::DonateDialog()
 	foreach (const String &id, order)
 	{
 		PaymentMethod	*method = methods.Get(id.ComputeCRC32());
+
+		if (method == NIL) continue;
+
 		Layer		*layer	= method->GetLayer();
 
 		tabSize.cx = Math::Max(tabSize.cx, layer->GetWidth());
