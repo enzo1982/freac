@@ -156,10 +156,6 @@ endif
 ifndef prefix
 	prefix = /usr/local
 
-	ifeq ($(BUILD_OSX),True)
-		prefix = /usr
-	endif
-
 	ifeq ($(BUILD_HAIKU),True)
 		prefix = /system/non-packaged
 	endif
