@@ -1356,7 +1356,8 @@ Void freac::freacGUI::FillMenus()
  		if (mainWnd_iconbar->GetNthObject(i)->GetObjectType() != MenuEntry::classID) continue;
 
 		entry = (MenuEntry *) mainWnd_iconbar->GetNthObject(i);
-		entry->SetSize(Size(28 + (entry->GetPopupMenu() != NIL ? 12 : 0), 28));
+
+		if (entry->GetBitmap() != NIL) entry->SetSize(Size(28 + (entry->GetPopupMenu() != NIL ? 12 : 0), 28));
 	}
 
 	mainWnd_iconbar->SetHeight(30);
