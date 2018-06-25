@@ -12,7 +12,7 @@
 
 #include "dialog.h"
 
-Array<PaymentMethod *(*)()>	 BoCA::DonateDialog::factories;
+Array<PaymentMethod *(*)()>	*BoCA::DonateDialog::factories = NIL;
 
 BoCA::DonateDialog::DonateDialog()
 {
@@ -40,7 +40,7 @@ BoCA::DonateDialog::DonateDialog()
 
 	tab_methods		= new TabWidget(Point(7, 7), Size(100, 24));
 
-	foreach (PaymentMethod *(*factory)(), factories)
+	foreach (PaymentMethod *(*factory)(), *factories)
 	{
 		PaymentMethod	*method = factory();
 
@@ -154,7 +154,27 @@ Void BoCA::DonateDialog::Close()
 
 Bool BoCA::DonateDialog::RegisterPaymentMethod(PaymentMethod *(*factory)())
 {
-	factories.Add(factory);
+	if (factories == NIL) factories = new Array<PaymentMethod *(*)()>;
+
+	factories->Add(factory);
+
+	return True;
+}
+
+const Array<PaymentMethod *(*)()> &BoCA::DonateDialog::GetPaymentMethodFactories()
+{
+	if (factories == NIL) factories = new Array<PaymentMethod *(*)()>;
+
+	return *factories;
+}
+
+Bool BoCA::DonateDialog::FreePaymentMethodFactories()
+{
+	if (factories == NIL) return True;
+
+	delete factories;
+
+	factories = NIL;
 
 	return True;
 }

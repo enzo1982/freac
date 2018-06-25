@@ -25,36 +25,39 @@ namespace BoCA
 	class DonateDialog : public Dialog
 	{
 		private:
-			static Array<PaymentMethod *(*)()>	 factories;
+			static Array<PaymentMethod *(*)()>		*factories;
 
-			GUI::Window				*mainWnd;
-			Titlebar				*mainWnd_titlebar;
+			GUI::Window					*mainWnd;
+			Titlebar					*mainWnd_titlebar;
 
-			Divider					*divider;
+			Divider						*divider;
 
-			Button					*button_close;
+			Button						*button_close;
 
-			Array<PaymentMethod *>			 methods;
+			Array<PaymentMethod *>				 methods;
 
-			TabWidget				*tab_methods;
+			TabWidget					*tab_methods;
 
-			Text					*text_intro;
-			Text					*text_donate;
-			Text					*text_donate_other;
-			Text					*text_thanks;
+			Text						*text_intro;
+			Text						*text_donate;
+			Text						*text_donate_other;
+			Text						*text_thanks;
 
-			CheckBox				*check_remind;
+			CheckBox					*check_remind;
 
-			Bool					 remind;
+			Bool						 remind;
 		public:
-			static Bool				 RegisterPaymentMethod(PaymentMethod *(*)());
+			static Bool					 RegisterPaymentMethod(PaymentMethod *(*)());
 
-								 DonateDialog();
-								~DonateDialog();
+			static const Array<PaymentMethod *(*)()>	&GetPaymentMethodFactories();
+			static Bool					 FreePaymentMethodFactories();
 
-			const Error				&ShowDialog();
+									 DonateDialog();
+									~DonateDialog();
+
+			const Error					&ShowDialog();
 		slots:
-			Void					 Close();
+			Void						 Close();
 	};
 };
 
