@@ -263,7 +263,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	htsp_edit_title->onActivate.Connect(&MicroMenu::Hide, menu_edit_title);
 
 	pos.y -= 27;
-	size.cx = 25;
+	size.cx = Font().GetUnscaledTextSizeX("000") + 7;
 
 	info_edit_track = new EditBox(NIL, pos, size, 3);
 	info_edit_track->SetFlags(EDB_NUMERIC);
@@ -279,7 +279,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	pos.x += (7 + info_text_year->GetUnscaledTextWidth());
 	pos.y += 3;
-	size.cx = 31;
+	size.cx = Font().GetUnscaledTextSizeX("0000") + 7;
 
 	info_edit_year = new EditBox(NIL, pos, size, 4);
 	info_edit_year->SetFlags(EDB_NUMERIC);
@@ -668,16 +668,16 @@ Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 
 	/* Update title info area.
 	 */
-	info_edit_title->SetX(clientSize.cx - 226 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth());
-	info_edit_title->SetWidth(219 + info_text_genre->GetUnscaledTextWidth() + info_text_year->GetUnscaledTextWidth());
-	info_edit_track->SetX(clientSize.cx - 226 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth());
-	info_text_year->SetX(info_edit_track->GetX() + 32);
+	info_edit_title->SetX(clientSize.cx - 170 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - info_edit_year->GetWidth() - info_edit_track->GetWidth());
+	info_edit_title->SetWidth(163 + info_text_genre->GetUnscaledTextWidth() + info_text_year->GetUnscaledTextWidth() + info_edit_year->GetWidth() + info_edit_track->GetWidth());
+	info_edit_track->SetX(info_edit_title->GetX());
+	info_text_year->SetX(info_edit_track->GetX() + info_edit_track->GetWidth() + 7);
 	info_edit_year->SetX(info_text_year->GetX() + info_text_year->GetUnscaledTextWidth() + 7);
-	info_text_genre->SetX(info_edit_year->GetX() + 38);
+	info_text_genre->SetX(info_edit_year->GetX() + info_edit_year->GetWidth() + 7);
 	info_text_title->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
-	info_text_track->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
-	info_edit_artist->SetWidth(clientSize.cx - 240 - info_edit_artist->GetX() - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()));
-	info_edit_album->SetWidth(clientSize.cx - 240 - info_edit_album->GetX() - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()));
+	info_text_track->SetX(info_text_title->GetX());
+	info_edit_artist->SetWidth(clientSize.cx - 26 - info_edit_artist->GetX() - info_text_title->GetUnscaledTextWidth() - info_edit_title->GetWidth());
+	info_edit_album->SetWidth(info_edit_artist->GetWidth());
 	info_edit_genre->SetX(clientSize.cx - 142);
 
 	htsp_edit_title->SetWidth(info_edit_title->GetWidth());
