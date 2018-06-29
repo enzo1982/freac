@@ -486,7 +486,7 @@
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">Ενεργοποίηση CRC</entry>
 	  <entry id="32206" string="Stereo mode">Λειτουργία Stereo</entry>
-	  <entry id="32207" string="Auto">Αυτόματο</entry>
+	  <entry id="32207" string="auto">αυτόματο</entry>
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Εξαναγκασμός Joint Stereo</entry>
@@ -607,7 +607,7 @@
       <section name="Monkey's Audio"/>
 
       <section name="Speex">
-	<entry id="39002" string="Auto">Αυτόματο</entry>
+	<entry id="39002" string="auto">αυτόματο</entry>
 	<entry id="39006" string="VBR mode">Λειτουργία VBR</entry>
 	<entry id="39010" string="Options">Επιλογές</entry>
 	<entry id="39016" string="VBR quality">Ποιότητα VBR</entry>
@@ -615,7 +615,7 @@
       </section>
 
       <section name="Opus">
-	<entry id="40002" string="Auto">Αυτόματο</entry>
+	<entry id="40002" string="auto">αυτόματο</entry>
 	<entry id="40015" string="Quality">Ποιότητα</entry>
 	<entry id="40020" string="Options">Επιλογές</entry>
       </section>

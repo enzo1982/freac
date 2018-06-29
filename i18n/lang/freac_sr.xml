@@ -690,7 +690,7 @@
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">Omogući CRC</entry>
 	  <entry id="32206" string="Stereo mode">Stereo režim</entry>
-	  <entry id="32207" string="Auto">Samopodešenje</entry>
+	  <entry id="32207" string="auto">samopodešenje</entry>
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">&quot;Zbijeni&quot; stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forsiraj &quot;zbijeni&quot; stereo</entry>
@@ -842,7 +842,7 @@
       <section name="Speex">
 	<entry id="39000" string="Profile">Profil</entry>
 	<entry id="39001" string="Select encoding profile">Izaberite profil enkodovanja</entry>
-	<entry id="39002" string="Auto">Samopodešenje</entry>
+	<entry id="39002" string="auto">samopodešenje</entry>
 	<entry id="39003" string="Narrowband (8 kHz)">Uskokanalno (8 kHz)</entry>
 	<entry id="39004" string="Wideband (16 kHz)">Širokokanalno (16 kHz)</entry>
 	<entry id="39005" string="Ultra-Wideband (32 kHz)">Krajnje-širokokanalno (32 kHz)</entry>
@@ -866,7 +866,7 @@
       <section name="Opus">
 	<entry id="40000" string="Basic settings">Osnovna podešenja</entry>
 	<entry id="40001" string="Encoding mode">Režim enkodovanja</entry>
-	<entry id="40002" string="Auto">Samopodešavajuće</entry>
+	<entry id="40002" string="auto">samopodešavajuće</entry>
 	<entry id="40003" string="Voice">Glas</entry>
 	<entry id="40004" string="Music">Muzika</entry>
 	<entry id="40005" string="Bandwidth">Širina kanala</entry>

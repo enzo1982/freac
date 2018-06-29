@@ -495,7 +495,7 @@
 	  <entry id="32204" string="CRC">CRC (контрольна сума)</entry>
 	  <entry id="32205" string="Enable CRC">Підтримка CRC</entry>
 	  <entry id="32206" string="Stereo mode">Стерео режим</entry>
-	  <entry id="32207" string="Auto">Авто</entry>
+	  <entry id="32207" string="auto">авто</entry>
 	  <entry id="32208" string="Stereo">Cтерео</entry>
 	  <entry id="32209" string="Joint Stereo">Joint стерео</entry>
 	  <entry id="32210" string="Force Joint Stereo">Примусово</entry>
@@ -626,7 +626,7 @@
       <section name="Monkey's Audio"/>
 
       <section name="Speex">
-	<entry id="39002" string="Auto">Авто</entry>
+	<entry id="39002" string="auto">авто</entry>
 	<entry id="39006" string="VBR mode">VBR режим</entry>
 	<entry id="39010" string="Options">Налаштування</entry>
 	<entry id="39016" string="VBR quality">VBR якість</entry>
@@ -634,7 +634,7 @@
       </section>
 
       <section name="Opus">
-	<entry id="40002" string="Auto">Авто</entry>
+	<entry id="40002" string="auto">авто</entry>
 	<entry id="40015" string="Quality">Якість</entry>
 	<entry id="40020" string="Options">Налаштування</entry>
       </section>

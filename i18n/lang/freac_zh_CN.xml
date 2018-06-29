@@ -499,7 +499,7 @@
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">启用 CRC</entry>
 	  <entry id="32206" string="Stereo mode">立体声模式</entry>
-	  <entry id="32207" string="Auto">自动</entry>
+	  <entry id="32207" string="auto">自动</entry>
 	  <entry id="32208" string="Stereo">立体声</entry>
 	  <entry id="32209" string="Joint Stereo">混合立体声</entry>
 	  <entry id="32210" string="Force Joint Stereo">强制混合立体声</entry>
@@ -633,7 +633,7 @@
       <section name="Monkey's Audio"/>
 
       <section name="Speex">
-	<entry id="39002" string="Auto">自动</entry>
+	<entry id="39002" string="auto">自动</entry>
 	<entry id="39006" string="VBR mode">VBR 模式</entry>
 	<entry id="39010" string="Options">选项</entry>
 	<entry id="39016" string="VBR quality">VBR 品质</entry>
@@ -643,7 +643,7 @@
       </section>
 
       <section name="Opus">
-	<entry id="40002" string="Auto">自动</entry>
+	<entry id="40002" string="auto">自动</entry>
 	<entry id="40011" string="File extension">文件扩展名</entry>
 	<entry id="40015" string="Quality">品质</entry>
 	<entry id="40016" string="Bitrate">比特率</entry>

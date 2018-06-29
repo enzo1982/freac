@@ -690,7 +690,7 @@
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">Омогући CRC</entry>
 	  <entry id="32206" string="Stereo mode">Стерео режим</entry>
-	  <entry id="32207" string="Auto">Самоподешење</entry>
+	  <entry id="32207" string="auto">самоподешење</entry>
 	  <entry id="32208" string="Stereo">Стерео</entry>
 	  <entry id="32209" string="Joint Stereo">&quot;Збијени&quot; стерео</entry>
 	  <entry id="32210" string="Force Joint Stereo">Форсирај &quot;збијени&quot; стерео</entry>
@@ -842,7 +842,7 @@
       <section name="Speex">
 	<entry id="39000" string="Profile">Профил</entry>
 	<entry id="39001" string="Select encoding profile">Изаберите профил енкодовања</entry>
-	<entry id="39002" string="Auto">Самоподешење</entry>
+	<entry id="39002" string="auto">самоподешење</entry>
 	<entry id="39003" string="Narrowband (8 kHz)">Ускоканално (8 kHz)</entry>
 	<entry id="39004" string="Wideband (16 kHz)">Ширококанално (16 kHz)</entry>
 	<entry id="39005" string="Ultra-Wideband (32 kHz)">Крајње-ширококанално (32 kHz)</entry>
@@ -866,7 +866,7 @@
       <section name="Opus">
 	<entry id="40000" string="Basic settings">Основна подешења</entry>
 	<entry id="40001" string="Encoding mode">Режим енкодовања</entry>
-	<entry id="40002" string="Auto">Самоподешавајуће</entry>
+	<entry id="40002" string="auto">самоподешавајуће</entry>
 	<entry id="40003" string="Voice">Глас</entry>
 	<entry id="40004" string="Music">Музика</entry>
 	<entry id="40005" string="Bandwidth">Ширина канала</entry>

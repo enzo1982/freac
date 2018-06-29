@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">freac</property>
@@ -496,7 +497,7 @@
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">Activar CRC</entry>
 	  <entry id="32206" string="Stereo mode">Mode Estèreo</entry>
-	  <entry id="32207" string="Auto">Auto</entry>
+	  <entry id="32207" string="auto">auto</entry>
 	  <entry id="32208" string="Stereo">Estèreo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forçar Joint Stereo</entry>
@@ -628,7 +629,7 @@
       <section name="Monkey's Audio"/>
 
       <section name="Speex">
-	<entry id="39002" string="Auto">Auto</entry>
+	<entry id="39002" string="auto">auto</entry>
 	<entry id="39006" string="VBR mode">Mode VBR</entry>
 	<entry id="39010" string="Options">Opcions</entry>
 	<entry id="39016" string="VBR quality">Qualitat VBR</entry>
@@ -636,7 +637,7 @@
       </section>
 
       <section name="Opus">
-	<entry id="40002" string="Auto">Auto</entry>
+	<entry id="40002" string="auto">auto</entry>
 	<entry id="40015" string="Quality">Qualitat</entry>
 	<entry id="40020" string="Options">Opcions</entry>
       </section>

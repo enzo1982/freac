@@ -496,7 +496,7 @@
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">Gaitu CRC</entry>
 	  <entry id="32206" string="Stereo mode">Estereo modua</entry>
-	  <entry id="32207" string="Auto">Berez</entry>
+	  <entry id="32207" string="auto">berez</entry>
 	  <entry id="32208" string="Stereo">Estereoa</entry>
 	  <entry id="32209" string="Joint Stereo">Estereoa Batzea</entry>
 	  <entry id="32210" string="Force Joint Stereo">Behartu Batzea</entry>
@@ -628,7 +628,7 @@
       <section name="Monkey's Audio"/>
 
       <section name="Speex">
-	<entry id="39002" string="Auto">Berez</entry>
+	<entry id="39002" string="auto">berez</entry>
 	<entry id="39006" string="VBR mode">BNA modua</entry>
 	<entry id="39010" string="Options">Aukerak</entry>
 	<entry id="39016" string="VBR quality">BNA ontasuna</entry>
@@ -638,7 +638,7 @@
       </section>
 
       <section name="Opus">
-	<entry id="40002" string="Auto">Berez</entry>
+	<entry id="40002" string="auto">berez</entry>
 	<entry id="40015" string="Quality">Ontasuna</entry>
 	<entry id="40016" string="Bitrate">Bitneurria</entry>
 	<entry id="40020" string="Options">Aukerak</entry>

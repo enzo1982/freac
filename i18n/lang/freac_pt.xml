@@ -495,7 +495,7 @@
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">Activar CRC</entry>
 	  <entry id="32206" string="Stereo mode">Modo estéreo</entry>
-	  <entry id="32207" string="Auto">Auto</entry>
+	  <entry id="32207" string="auto">auto</entry>
 	  <entry id="32208" string="Stereo">Estéreo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint-estéreo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forçar joint-estéreo</entry>
@@ -626,7 +626,7 @@
       <section name="Monkey's Audio"/>
 
       <section name="Speex">
-	<entry id="39002" string="Auto">Auto</entry>
+	<entry id="39002" string="auto">auto</entry>
 	<entry id="39006" string="VBR mode">Modo VBR</entry>
 	<entry id="39010" string="Options">Opções</entry>
 	<entry id="39016" string="VBR quality">Qualidade VBR</entry>
@@ -634,7 +634,7 @@
       </section>
 
       <section name="Opus">
-	<entry id="40002" string="Auto">Auto</entry>
+	<entry id="40002" string="auto">auto</entry>
 	<entry id="40015" string="Quality">Qualidade</entry>
 	<entry id="40020" string="Options">Opções</entry>
       </section>

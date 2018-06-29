@@ -495,7 +495,7 @@
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">Vælg CRC</entry>
 	  <entry id="32206" string="Stereo mode">Stereo metode</entry>
-	  <entry id="32207" string="Auto">Automatisk</entry>
+	  <entry id="32207" string="auto">automatisk</entry>
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Samlet Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Gennemtving Samlet Stereo</entry>
@@ -627,7 +627,7 @@
       <section name="Monkey's Audio"/>
 
       <section name="Speex">
-	<entry id="39002" string="Auto">Automatisk</entry>
+	<entry id="39002" string="auto">automatisk</entry>
 	<entry id="39006" string="VBR mode">VBR metode</entry>
 	<entry id="39010" string="Options">Indstillinger</entry>
 	<entry id="39016" string="VBR quality">VBR Kvalitet</entry>
@@ -635,7 +635,7 @@
       </section>
 
       <section name="Opus">
-	<entry id="40002" string="Auto">Automatisk</entry>
+	<entry id="40002" string="auto">automatisk</entry>
 	<entry id="40015" string="Quality">Kvalitet</entry>
 	<entry id="40020" string="Options">Indstillinger</entry>
       </section>

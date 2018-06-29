@@ -712,7 +712,7 @@
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">Включено CRC</entry>
 	  <entry id="32206" string="Stereo mode">Стерео режим</entry>
-	  <entry id="32207" string="Auto">Автоматично</entry>
+	  <entry id="32207" string="auto">автоматично</entry>
 	  <entry id="32208" string="Stereo">Стерео</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Принудително Joint Stereo</entry>
@@ -864,7 +864,7 @@
       <section name="Speex">
 	<entry id="39000" string="Profile">Профил</entry>
 	<entry id="39001" string="Select encoding profile">Избор профил на кодиране</entry>
-	<entry id="39002" string="Auto">Автоматично</entry>
+	<entry id="39002" string="auto">автоматично</entry>
 	<entry id="39003" string="Narrowband (8 kHz)">Теснолентов (8 kHz)</entry>
 	<entry id="39004" string="Wideband (16 kHz)">Широколентов (16 kHz)</entry>
 	<entry id="39005" string="Ultra-Wideband (32 kHz)">Ултра-Широколентов (32 kHz)</entry>
@@ -888,7 +888,7 @@
       <section name="Opus">
 	<entry id="40000" string="Basic settings">Основни настройки</entry>
 	<entry id="40001" string="Encoding mode">Режим на кодиране</entry>
-	<entry id="40002" string="Auto">Автоматично</entry>
+	<entry id="40002" string="auto">автоматично</entry>
 	<entry id="40003" string="Voice">Глас</entry>
 	<entry id="40004" string="Music">Музика</entry>
 	<entry id="40005" string="Bandwidth">Широколентова честота</entry>

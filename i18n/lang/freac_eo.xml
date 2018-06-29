@@ -487,7 +487,7 @@
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">Aktivigi CRC</entry>
 	  <entry id="32206" string="Stereo mode">Stereomoduso</entry>
-	  <entry id="32207" string="Auto">Aŭtomata</entry>
+	  <entry id="32207" string="auto">aŭtomata</entry>
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Stereokunigi</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forci la stereokunigo</entry>
@@ -608,7 +608,7 @@
       <section name="Monkey's Audio"/>
 
       <section name="Speex">
-	<entry id="39002" string="Auto">Aŭtomata</entry>
+	<entry id="39002" string="auto">aŭtomata</entry>
 	<entry id="39006" string="VBR mode">VBR-moduso</entry>
 	<entry id="39010" string="Options">Opcioj</entry>
 	<entry id="39016" string="VBR quality">VBR-kvalito</entry>
@@ -616,7 +616,7 @@
       </section>
 
       <section name="Opus">
-	<entry id="40002" string="Auto">Aŭtomata</entry>
+	<entry id="40002" string="auto">aŭtomata</entry>
 	<entry id="40015" string="Quality">Kvalito</entry>
 	<entry id="40020" string="Options">Opcioj</entry>
       </section>

@@ -749,7 +749,7 @@
 	  <entry id="32204" string="CRC"/>
 	  <entry id="32205" string="Enable CRC"/>
 	  <entry id="32206" string="Stereo mode"/>
-	  <entry id="32207" string="Auto"/>
+	  <entry id="32207" string="auto"/>
 	  <entry id="32208" string="Stereo"/>
 	  <entry id="32209" string="Joint Stereo"/>
 	  <entry id="32210" string="Force Joint Stereo"/>
@@ -901,7 +901,7 @@
       <section name="Speex">
 	<entry id="39000" string="Profile"/>
 	<entry id="39001" string="Select encoding profile"/>
-	<entry id="39002" string="Auto"/>
+	<entry id="39002" string="auto"/>
 	<entry id="39003" string="Narrowband (8 kHz)"/>
 	<entry id="39004" string="Wideband (16 kHz)"/>
 	<entry id="39005" string="Ultra-Wideband (32 kHz)"/>
@@ -925,7 +925,7 @@
       <section name="Opus">
 	<entry id="40000" string="Basic settings"/>
 	<entry id="40001" string="Encoding mode"/>
-	<entry id="40002" string="Auto"/>
+	<entry id="40002" string="auto"/>
 	<entry id="40003" string="Voice"/>
 	<entry id="40004" string="Music"/>
 	<entry id="40005" string="Bandwidth"/>

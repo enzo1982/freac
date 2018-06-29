@@ -372,7 +372,7 @@
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">אפשר CRC</entry>
 	  <entry id="32206" string="Stereo mode">מצב Stereo</entry>
-	  <entry id="32207" string="Auto">אוטומטי</entry>
+	  <entry id="32207" string="auto">אוטומטי</entry>
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">ערוצי Stereo ממוזגים</entry>
 	  <entry id="32210" string="Force Joint Stereo">אלץ מיזוג ערוצים</entry>
@@ -450,14 +450,14 @@
       <section name="Monkey's Audio"/>
 
       <section name="Speex">
-	<entry id="39002" string="Auto">אוטומטי</entry>
+	<entry id="39002" string="auto">אוטומטי</entry>
 	<entry id="39006" string="VBR mode">מצב VBR</entry>
 	<entry id="39010" string="Options">אפשרויות</entry>
 	<entry id="39016" string="VBR quality">איכות VBR</entry>
       </section>
 
       <section name="Opus">
-	<entry id="40002" string="Auto">אוטומטי</entry>
+	<entry id="40002" string="auto">אוטומטי</entry>
 	<entry id="40015" string="Quality">איכות</entry>
 	<entry id="40020" string="Options">אפשרויות</entry>
       </section>
