@@ -1045,8 +1045,8 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Apoye este proyecto</entry>
 	<entry id="100001" string="Please support this project!">¡Por favor, apoye este proyecto!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation.">Por favor, ayude a mantener este software gratuito apoyando el proyecto %1&#10;con una donación.</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check&#10;or send money by mail.">Por favor, escriba a %1 si desea enviar un cheque o dinero por correo.</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Por favor, ayude a mantener este software gratuito apoyando el proyecto %1&#10;con una donación.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Por favor, escriba a %1 si desea enviar un cheque o dinero por&#10;correo.</entry>
 	<entry id="100004" string="Thank you very much!">¡Muchas gracias!</entry>
 	<entry id="100005" string="Remind me later">Recordármelo más tarde</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
@@ -1062,7 +1062,7 @@
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox permite donaciones rápidas y simples con tarjeta de crédito.&#10;Clique en este botón para donar con Donorbox:&#10;</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox permite donaciones rápidas y simples con tarjeta de crédito. Clique&#10;en este botón para donar con Donorbox:</entry>
 	  <entry id="100201" string="Donate">Donar</entry>
 	  <entry id="100202" string="usd">eur</entry>
 	</section>
@@ -1078,7 +1078,7 @@
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making a SEPA transfer to the following&#10;account:">Puede donar mediante una transferencia SEPA a la siguiente cuenta:</entry>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Puede donar mediante una transferencia SEPA a la siguiente&#10;cuenta:</entry>
 	  <entry id="100501" string="Account holder:">Titular de la cuenta:</entry>
 	  <entry id="100502" string="IBAN:">IBAN:</entry>
 	  <entry id="100503" string="BIC:">BIC:</entry>

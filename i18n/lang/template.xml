@@ -1045,8 +1045,8 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project"/>
 	<entry id="100001" string="Please support this project!"/>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project&#10;with a donation."/>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check&#10;or send money by mail."/>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation."/>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail."/>
 	<entry id="100004" string="Thank you very much!"/>
 	<entry id="100005" string="Remind me later"/>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum"/>
@@ -1078,7 +1078,7 @@
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making a SEPA transfer to the following&#10;account:"/>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:"/>
 	  <entry id="100501" string="Account holder:"/>
 	  <entry id="100502" string="IBAN:"/>
 	  <entry id="100503" string="BIC:"/>
