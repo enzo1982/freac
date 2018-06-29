@@ -1040,6 +1040,78 @@
       </section>
     </section>
 
+    <section name="External">
+      <entry id="80000" string="Downmix multi-channel audio to stereo">Mehrkanal-Audio auf Stereo heruntermixen</entry>
+
+      <section name="Musepack Audio Encoder">
+	<entry id="80100" string="Quality">Qualität</entry>
+	<entry id="80101" string="poor">schlecht</entry>
+	<entry id="80102" string="excellent">ausgezeichnet</entry>
+	<entry id="80103" string="Mid/Side stereo mode">Mid/Side-Stereomodus</entry>
+	<entry id="80104" string="off">deaktiviert</entry>
+	<entry id="80105" string="reduced">eingeschränkt</entry>
+	<entry id="80106" string="on">aktiviert</entry>
+	<entry id="80107" string="decoupled">entkoppelt</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">verbessert 1.5/3 dB</entry>
+	<entry id="80109" string="enhanced 2/6 dB">verbessert 2/6 dB</entry>
+	<entry id="80110" string="enhanced 2.5/9 dB">verbessert 2.5/9 dB</entry>
+	<entry id="80111" string="enhanced 3/12 dB">verbessert 3/12 dB</entry>
+	<entry id="80112" string="enhanced 3/inf dB">verbessert 3/inf dB</entry>
+	<entry id="80113" string="Adaptive noise shaping order">Adaptive Rauschformung</entry>
+	<entry id="80114" string="high">stark</entry>
+	<entry id="80115" string="Clear Voice Detection">Clear Voice-Erkennung</entry>
+	<entry id="80116" string="dual">dual</entry>
+      </section>
+
+      <section name="OptimFROG Lossless Encoder">
+	<entry id="80200" string="Encoding mode">Kodiereinstellung</entry>
+	<entry id="80201" string="fast">schnell</entry>
+	<entry id="80202" string="normal">normal</entry>
+	<entry id="80203" string="high">hoch</entry>
+	<entry id="80204" string="extra">extra</entry>
+	<entry id="80205" string="best">beste</entry>
+	<entry id="80206" string="high, new">hoch, neu</entry>
+	<entry id="80207" string="extra, new">extra, neu</entry>
+	<entry id="80208" string="best, new">beste, neu</entry>
+	<entry id="80209" string="Add MD5 checksum">MD5-Checksumme hinzufügen</entry>
+	<entry id="80210" string="Seeking">Seeking</entry>
+	<entry id="80211" string="slow">langsam</entry>
+	<entry id="80212" string="minimum">minimal</entry>
+	<entry id="80213" string="Optimization">Optimierung</entry>
+	<entry id="80214" string="disabled">deaktiviert</entry>
+	<entry id="80215" string="low">gering</entry>
+      </section>
+
+      <section name="Tom's Audiokompressor">
+	<entry id="80300" string="Encoder preset">Kodiereinstellung</entry>
+	<entry id="80301" string="fastest">schnellste</entry>
+	<entry id="80302" string="strongest">stärkste</entry>
+	<entry id="80303" string="Frame size limit">Framegrößenlimit</entry>
+	<entry id="80304" string="Add MD5 checksum">MD5-Checksumme hinzufügen</entry>
+      </section>
+
+      <section name="WavPack Audio Encoder">
+	<entry id="80400" string="Enable lossy compression">Verlustbehaftete Kodierung</entry>
+	<entry id="80401" string="Compression mode">Komprimierungsmodus</entry>
+	<entry id="80402" string="fast">Schnell</entry>
+	<entry id="80403" string="high quality">Hohe Qualität</entry>
+	<entry id="80404" string="very high quality">Sehr hohe Qualität</entry>
+	<entry id="80405" string="Extra encode processing">Zusätzliche Verarbeitung</entry>
+	<entry id="80406" string="faster">schneller</entry>
+	<entry id="80407" string="better">besser</entry>
+      </section>
+
+      <section name="Nero AAC Encoder">
+	<entry id="80500" string="Encoding mode">Kodiermodus</entry>
+	<entry id="80501" string="auto">automatisch</entry>
+	<entry id="80502" string="Quality">Qualität</entry>
+	<entry id="80503" string="worse">schlechter</entry>
+	<entry id="80504" string="better">besser</entry>
+	<entry id="80505" string="Bitrate">Bitrate</entry>
+	<entry id="80506" string="Bitrate (Streaming)">Bitrate (Streaming)</entry>
+      </section>
+    </section>
+
     <section name="Extensions">
 
       <section name="Donate">
