@@ -1040,6 +1040,78 @@
       </section>
     </section>
 
+    <section name="External">
+      <entry id="80000" string="Downmix multi-channel audio to stereo">Mezcla de audio multicanal a estéreo</entry>
+
+      <section name="Musepack Audio Encoder">
+	<entry id="80100" string="Quality">Calidad</entry>
+	<entry id="80101" string="poor">pobre</entry>
+	<entry id="80102" string="excellent">excelente</entry>
+	<entry id="80103" string="Mid/Side stereo mode">Modo estéreo Mid/Side</entry>
+	<entry id="80104" string="off">nulo</entry>
+	<entry id="80105" string="reduced">reducido</entry>
+	<entry id="80106" string="on">activo</entry>
+	<entry id="80107" string="decoupled">desacoplado</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">mejorado 1,5/3 dB</entry>
+	<entry id="80109" string="enhanced 2/6 dB">mejorado 2/6 dB</entry>
+	<entry id="80110" string="enhanced 2.5/9 dB">mejorado 2,5/9 dB</entry>
+	<entry id="80111" string="enhanced 3/12 dB">mejorado 3/12 dB</entry>
+	<entry id="80112" string="enhanced 3/inf dB">mejorado 3/inf dB</entry>
+	<entry id="80113" string="Adaptive noise shaping order">Moldeo adaptativo de ruido</entry>
+	<entry id="80114" string="high">alto</entry>
+	<entry id="80115" string="Clear Voice Detection">Detección Clear Voice</entry>
+	<entry id="80116" string="dual">dual</entry>
+      </section>
+
+      <section name="OptimFROG Lossless Encoder">
+	<entry id="80200" string="Encoding mode">Codificación</entry>
+	<entry id="80201" string="fast">rápida</entry>
+	<entry id="80202" string="normal">normal</entry>
+	<entry id="80203" string="high">alta</entry>
+	<entry id="80204" string="extra">extra</entry>
+	<entry id="80205" string="best">la mejor</entry>
+	<entry id="80206" string="high, new">alta, nueva</entry>
+	<entry id="80207" string="extra, new">extra, nueva</entry>
+	<entry id="80208" string="best, new">la mejor, nueva</entry>
+	<entry id="80209" string="Store MD5 of original PCM data">Guardar MD5 de los datos originales PCM</entry>
+	<entry id="80210" string="Seeking">Buscando</entry>
+	<entry id="80211" string="slow">lenta</entry>
+	<entry id="80212" string="minimum">mínimo</entry>
+	<entry id="80213" string="Optimization">Optimización</entry>
+	<entry id="80214" string="disabled">desactivado</entry>
+	<entry id="80215" string="low">baja</entry>
+      </section>
+
+      <section name="Tom's Audiokompressor">
+	<entry id="80300" string="Encoder preset">Preselección del codificador</entry>
+	<entry id="80301" string="fastest">la más rápida</entry>
+	<entry id="80302" string="strongest">la más fuerte</entry>
+	<entry id="80303" string="Frame size limit">Límite de tamaño del cuadro</entry>
+	<entry id="80304" string="Add MD5 checksum">Añadir comprobación MD5</entry>
+      </section>
+
+      <section name="WavPack Audio Encoder">
+	<entry id="80400" string="Enable lossy compression">Habilitar compresión con pérdidas</entry>
+	<entry id="80401" string="Compression mode">Modo de compresión</entry>
+	<entry id="80402" string="fast">rápido</entry>
+	<entry id="80403" string="high quality">alta calidad</entry>
+	<entry id="80404" string="very high quality">muy alta calidad</entry>
+	<entry id="80405" string="Extra encode processing">Proceso extra de codificación</entry>
+	<entry id="80406" string="faster">el más rápido</entry>
+	<entry id="80407" string="better">el mejor</entry>
+      </section>
+
+      <section name="Nero AAC Encoder">
+	<entry id="80500" string="Encoding mode">Codificación</entry>
+	<entry id="80501" string="auto">automático</entry>
+	<entry id="80502" string="Quality">Calidad</entry>
+	<entry id="80503" string="worse">peor</entry>
+	<entry id="80504" string="better">mejor</entry>
+	<entry id="80505" string="Bitrate">Bitrate</entry>
+	<entry id="80506" string="Bitrate (Streaming)">Bitrate (Streaming)</entry>
+      </section>
+    </section>
+
     <section name="Extensions">
 
       <section name="Donate">
@@ -1052,11 +1124,11 @@
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Pulse uno de los botones de abajo para donar usando PayPal:</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Escoja una cantidad y clique el botón para donar con Paypal:</entry>
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">También puede enviar dinero directamente a %1 usando PayPal.</entry>
 	  <entry id="100102" string="usd">eur</entry>
 	  <entry id="100103" string="$%1">%1€</entry>
-	  <entry id="100104" string="5,10,20,other amount">5, 10, 20, otra cantidad</entry>
+	  <entry id="100104" string="5,10,20,other amount">5,10,20,otra cantidad</entry>
 	  <entry id="100105" string="monthly recurring">cada mes</entry>
 	  <entry id="100106" string="Donate">Donar</entry>
 	</section>
