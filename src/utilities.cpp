@@ -282,11 +282,11 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 	Int	 lastBs	 = Math::Max(track.origFilename.FindLast("\\"), track.origFilename.FindLast("/"));
 	Int	 lastDot = track.origFilename.FindLast(".");
 
-	if (lastDot < lastBs) lastDot = 0;
+	if (lastDot < lastBs) lastDot = track.origFilename.Length();
 
 	String	 shortInFileName;
 
-	for (Int i = 0; i < (track.origFilename.Length() - lastBs - lastDot - 1); i++) shortInFileName[i] = track.origFilename[i + lastBs + 1];
+	for (Int i = 0; i < lastDot - lastBs - 1; i++) shortInFileName[i] = track.origFilename[i + lastBs + 1];
 
 	String	 inFileDirectory = track.origFilename;
 	Bool	 writeToInputDir = False;
