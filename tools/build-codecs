@@ -1,0 +1,435 @@
+#!/usr/bin/env bash
+
+# Exit on error
+set -e
+
+# Number of parallel jobs
+jobs=12
+
+# Query OS and machine
+uname=`uname`
+machine=`gcc -dumpmachine`
+
+# Standard CFLAGS
+if [[ $uname == Darwin ]] && [[ $BUILD_PPC == True ]]; then
+  cflags="-arch ppc -O3 -mcpu=G4"
+  ldflags="-Wl,-x -arch ppc"
+  ppc=true
+elif [[ $uname == Darwin ]] && [[ $BUILD_X86 == True ]]; then
+  cflags="-arch i386 -O3 -march=prescott"
+  ldflags="-Wl,-x -arch i386"
+elif [[ $uname == Darwin ]]; then
+  cflags="-arch x86_64 -O3 -march=core2"
+  ldflags="-Wl,-x -arch x86_64"
+  x86_64=true
+elif [[ $uname == *MINGW* ]] && [[ $BUILD_X86_64 != True ]]; then
+  cflags="-O3 -march=pentium4"
+elif [[ $machine == *amd64* ]] || [[ $machine == *x86_64* ]]; then
+  cflags="-O3 -march=nocona -mno-sse3"
+  x86_64=true
+else
+  cflags="-O3 -march=pentium4"
+fi
+
+cflags_unroll="-funroll-loops"
+
+# Set compiler and tools
+if [[ $uname != *FreeBSD* ]]; then
+  export CC=gcc
+  export CXX=gcc
+  export MAKE=make
+  export PATCH="patch --binary"
+else
+  export CC=clang
+  export CXX=clang
+  export MAKE=gmake
+  export PATCH=patch
+fi
+
+# Setup environment
+export CFLAGS="$cflags $cflags_unroll"
+export LDFLAGS="$ldflags"
+
+if [[ $uname == *MINGW* ]]; then
+  execext=exe
+  sharedext=dll
+  sharedinfix=-*
+else
+  execext=
+  sharedext=so
+  sharedinfix=
+fi
+
+# Package versions
+faac_version=1.29.9.2
+faad2_version=2.8.8
+fdk_aac_version=0.1.6
+flac_version=1.3.2
+lame_version=3.100
+libav_version=12.3
+libogg_version=1.3.3
+libsamplerate_version=0.1.9
+libsndfile_version=1.0.28
+mac_version=4.34
+mpg123_version=1.25.10
+opus_version=1.2.1
+rubberband_version=1.8.2
+speex_version=1.2.0
+vorbis_version=1.3.6
+wavpack_version=5.1.0
+
+# Package locations
+faac_location=https://sourceforge.net/projects/faac/files/faac-src/faac-1.29/faac-$faac_version.tar.gz
+faad2_location=https://sourceforge.net/projects/faac/files/faad2-src/faad2-2.8.0/faad2-$faad2_version.tar.gz
+fdk_aac_location=https://sourceforge.net/projects/opencore-amr/files/fdk-aac/fdk-aac-$fdk_aac_version.tar.gz
+flac_location=https://ftp.osuosl.org/pub/xiph/releases/flac/flac-$flac_version.tar.xz
+lame_location=https://sourceforge.net/projects/lame/files/lame/$lame_version/lame-$lame_version.tar.gz
+libav_location=https://libav.org/releases/libav-$libav_version.tar.xz
+libogg_location=https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-$libogg_version.tar.xz
+libsamplerate_location=http://www.mega-nerd.com/SRC/libsamplerate-$libsamplerate_version.tar.gz
+libsndfile_location=http://www.mega-nerd.com/libsndfile/files/libsndfile-$libsndfile_version.tar.gz
+mac_location=http://monkeysaudio.com/files/MAC_SDK_${mac_version%.*}${mac_version#*.}.zip
+mpg123_location=https://www.mpg123.de/download/mpg123-$mpg123_version.tar.bz2
+opus_location=https://ftp.osuosl.org/pub/xiph/releases/opus/opus-$opus_version.tar.gz
+rubberband_location=https://breakfastquay.com/files/releases/rubberband-$rubberband_version.tar.bz2
+speex_location=https://ftp.osuosl.org/pub/xiph/releases/speex/speex-$speex_version.tar.gz
+vorbis_location=https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-$vorbis_version.tar.xz
+wavpack_location=http://www.wavpack.com/wavpack-$wavpack_version.tar.bz2
+
+# Patch locations
+faac_patches=(https://freac.org/patches/faac-$faac_version-jsfix.patch)
+faac_patch_levels=(1)
+
+flac_patches=(https://freac.org/patches/flac-$flac_version-fastcrc.diff)
+flac_patch_levels=(1)
+
+lame_patches=(https://freac.org/patches/lame-$lame_version-sse-20171014.diff https://freac.org/patches/lame-$lame_version-fastcrc.diff)
+lame_patch_levels=(0 1)
+
+lame_patches_ppc=(https://freac.org/patches/lame-$lame_version-altivec-20171014.diff https://freac.org/patches/lame-$lame_version-fastcrc.diff)
+lame_patch_levels_ppc=(0 1)
+
+libogg_patches=(https://freac.org/patches/libogg-$libogg_version-fastcrc.diff)
+libogg_patch_levels=(1)
+
+mac_patches=(https://freac.org/patches/mac-sdk-$mac_version-gcc.patch)
+mac_patch_levels=(1)
+
+rubberband_patches=(https://freac.org/patches/rubberband-$rubberband_version-fixed.diff)
+rubberband_patch_levels=(1)
+
+vorbis_patches=(https://freac.org/patches/libvorbis-$vorbis_version-aotuv-b6.03.patch https://freac.org/patches/libvorbis-$vorbis_version-aotuv-b6.03-lancer.patch)
+vorbis_patch_levels=(1 1)
+
+build () {
+  archive=${1##*/}
+
+  if [[ $archive == *.tar.* ]]; then folder=${archive%.tar.*}; fi
+  if [[ $archive == *.zip   ]]; then folder=${archive%.zip}; fi
+
+  if [[ $1 == *://* ]]; then wget $1 -O $archive; fi
+  
+  rm -fr $folder
+
+  if [[ $archive == *.tar.gz  ]]; then tar xfz $archive; fi
+  if [[ $archive == *.tar.bz2 ]]; then tar xfj $archive; fi
+  if [[ $archive == *.tar.xz  ]]; then tar xfJ $archive; fi
+  if [[ $archive == *.zip     ]]; then unzip   $archive; fi
+
+  cd $folder
+
+  index=0
+
+  for patch in ${patches[@]}; do
+    wget $patch -O ../${patch##*/}
+
+    if [ ${#patch_levels[index]} -gt 0 ]; then
+      $PATCH -p${patch_levels[index]} < ../${patch##*/}
+    else
+      $PATCH -p1 < ../${patch##*/}
+    fi
+
+    set +e
+    let index++
+    set -e
+  done
+
+  eval $prepare
+  eval $configure_exports ./configure $configure_flags
+  $MAKE -j$jobs
+
+  index=0
+
+  if [[ $uname == *MINGW* ]]; then
+    files=($2)
+    targets=($3)
+
+    for file in ${files[@]}; do
+      strip --strip-all $file
+      cp $file ../${targets[index]}
+
+      if [[ ${targets[index]} == *.$sharedext ]]; then
+        peflags -d1 -n1 ../${targets[index]}
+      else
+        peflags -n1 ../${targets[index]}
+      fi
+
+      set +e
+      let index++
+      set -e
+    done
+  else
+    sudo $MAKE -j$jobs install
+  fi
+
+  cd ..
+
+  unset patches
+  unset patch_levels
+  unset prepare
+  unset configure_exports
+  unset configure_flags
+
+  export CFLAGS="$cflags $cflags_unroll"
+  export LDFLAGS="$ldflags"
+}
+
+packages=$@
+
+if [ ${#packages[0]} -eq 0 ]; then
+  echo "Usage: build.sh [{list of packages}|all]"
+  echo "Available packages: faac faad2 fdk-aac flac lame libav libogg libsamplerate libsndfile mac mpg123 opus rubberband speex vorbis wavpack"
+  echo
+elif [ "${packages[0]}" == all ]; then
+  if [[ $uname == Darwin ]]; then
+    packages=( faad2 fdk-aac flac lame libav libogg libsamplerate libsndfile mac mpg123 opus speex vorbis wavpack )
+  else
+    packages=( faac faad2 fdk-aac flac lame libav libogg libsamplerate libsndfile mac mpg123 opus rubberband speex vorbis wavpack )
+  fi
+fi
+
+for package in ${packages[@]}; do
+  if [ $package == faac ]; then
+    # Build FAAC
+    patches=${faac_patches[@]}
+    patch_levels=(${faac_patch_levels[@]})
+    prepare="sed -i -e \"s/FAACAPI __stdcall/FAACAPI/\" include/faac.h"
+    if [[ $x86_64 != true ]]; then
+      if [[ $uname == *MINGW* ]]; then
+        configure_exports="WINDRES=\"windres -F pe-i386\""
+      fi
+    else
+      if [[ $uname != FreeBSD ]]; then
+        export CFLAGS="$cflags $cflags_unroll -mfpmath=387"
+      fi
+    fi
+    build $faac_location libfaac/.libs/libfaac$sharedinfix.$sharedext FAAC.$sharedext
+
+  elif [ $package == faad2 ]; then
+    # Build FAAD2
+    if [[ $uname == *MINGW* ]]; then
+      prepare="./utils/win32/ac2ver faad2 configure.ac > libfaad/win32_ver.h"
+    elif [[ $uname == Darwin ]]; then
+      prepare="sed -i -e \"s/__builtin_bswap16(u16)/((((u16) \\& 0xff) << 8) | ((u16) >> 8))/\" frontend/mp4read.c"
+    fi
+    build $faad2_location libfaad/.libs/libfaad$sharedinfix.$sharedext FAAD2.$sharedext
+
+  elif [ $package == fdk-aac ]; then
+    # Build FDK-AAC
+    export CXXFLAGS="$cflags $cflags_unroll"
+    build $fdk_aac_location .libs/libfdk-aac$sharedinfix.$sharedext FDK-AAC.$sharedext
+
+  elif [ $package == flac ]; then
+    # Build FLAC
+    patches=${flac_patches[@]}
+    patch_levels=(${flac_patch_levels[@]})
+    if [[ $x86_64 != true ]]; then
+      configure_flags="--disable-cpplibs"
+    else
+      if [[ $uname == *MINGW* ]]; then
+        prepare="sed -i -e \"s/#undef FLAC__CPU_IA32//\" config.h.in && sed -i -e \"s/#undef FLAC__CPU_X86_64/#define FLAC__CPU_X86_64 1/\" config.h.in && sed -i -e \"s/ARCH_SUBDIRS = ia32/ARCH_SUBDIRS =/\" src/libFLAC/Makefile.in && sed -i -e \"s/LOCAL_EXTRA_LIBADD = ia32\/libFLAC-asm\.la/LOCAL_EXTRA_LIBADD =/\" src/libFLAC/Makefile.in"
+      fi
+      configure_flags="--disable-cpplibs --enable-64-bit-words"
+    fi
+    if [[ $uname == Darwin ]]; then
+      configure_flags="$configure_flags --disable-asm-optimizations"
+    fi
+    build $flac_location src/libFLAC/.libs/libFLAC$sharedinfix.$sharedext FLAC.$sharedext
+    if [[ $uname == *MINGW* ]]; then
+      sed -i -b -e "s/libogg-0.dll/Ogg.dll\x00\x00\x00\x00\x00/" FLAC.$sharedext
+    fi
+
+  elif [ $package == lame ]; then
+    # Build LAME
+    if [[ $ppc == true ]]; then
+      patches=${lame_patches_ppc[@]}
+      patch_levels=(${lame_patch_levels_ppc[@]})
+    else
+      patches=${lame_patches[@]}
+      patch_levels=(${lame_patch_levels[@]})
+    fi
+    if [[ $uname == *MINGW* ]]; then
+      prepare="sed -i -e \"/lame_init_old/d\" include/libmp3lame.sym"
+    elif [[ $uname == Darwin ]]; then
+      prepare="sed -i -e \"/lame_init_old/d\" include/libmp3lame.sym && sed -i -e \"s/strnlen(\\(.*\\),[^)]*)/strlen(\1)/\" frontend/parse.c"
+    fi
+    if [[ $ppc == true ]]; then
+        export CFLAGS="$cflags $cflags_unroll -faltivec -DALTIVEC"
+    elif [[ $x86_64 != true ]]; then
+      if [[ $uname == *MINGW* ]] || [[ $uname == FreeBSD ]] || [[ $uname == Darwin ]]; then
+        export CFLAGS="$cflags $cflags_unroll -mfpmath=sse"
+      fi
+
+      configure_flags="--enable-nasm"
+    fi
+    build $lame_location libmp3lame/.libs/libmp3lame$sharedinfix.$sharedext LAME.$sharedext
+
+  elif [ $package == libav ]; then
+    # Build libav
+    export CFLAGS="$cflags"
+    configure_flags="--enable-gpl --enable-small --enable-runtime-cpudetect"
+    if [[ $uname == *MINGW* ]]; then
+      prepare="sed -i -e \"s/#if HAVE_DIRECT_H/#ifdef HAVE_DIRECT_H/\" libavformat/os_support.h && sed -i -e \"s/#if HAVE_ISATTY/#if HAVE_ISATTY_/\" libavutil/log.c && sed -i -e \"s/#include \x22version.h\x22/#include \x22version.h\x22\n#include \x22libavutil\/mathematics.h\x22/\" libavutil/common.h && sed -i -e \"s/#ifndef M_LOG2_10/#ifndef M_E\n#define M_E 2.7182818284590452354\n#endif\n#ifndef M_PI\n#define M_PI 3.14159265358979323846\n#endif\n#ifndef M_SQRT2\n#define M_SQRT2 1.41421356237309504880\n#endif\n#ifndef M_SQRT1_2\n#define M_SQRT1_2 0.70710678118654752440\n#endif\n#ifndef M_LN2\n#define M_LN2 0.69314718055994530942\n#endif\n#ifndef M_LN10\n#define M_LN10 2.30258509299404568402\n#endif\n#ifndef M_LOG2_10/\" libavutil/mathematics.h"
+      configure_flags="$configure_flags --enable-memalign-hack --enable-w32threads"
+    elif [[ $uname == Darwin ]]; then
+      configure_flags="$configure_flags --enable-memalign-hack --disable-vda"
+      if [[ $ppc == true ]]; then
+        configure_flags="$configure_flags --arch=ppc"
+      elif [[ $x86_64 == true ]]; then
+        configure_flags="$configure_flags --arch=x86_64"
+      else
+        configure_flags="$configure_flags --arch=i386"
+      fi
+    fi
+    build $libav_location avconv.$execext avconv.$execext
+
+  elif [ $package == libogg ]; then
+    # Build Ogg
+    patches=${libogg_patches[@]}
+    patch_levels=(${libogg_patch_levels[@]})
+    build $libogg_location src/.libs/libogg$sharedinfix.$sharedext Ogg.$sharedext
+
+  elif [ $package == libsamplerate ]; then
+    # Build libsamplerate
+    if [[ $uname == Darwin ]]; then
+      prepare="sed -i -e \"s/typedef struct AUDIO_OUT_s/struct AUDIO_OUT_s/\" examples/audio_out.c && sed -i -e \"s/} AUDIO_OUT ;/} AUDIO_OUT_s ;/\" examples/audio_out.c"
+    fi
+    if [[ $x86_64 == true ]]; then
+      if [[ $uname != FreeBSD ]]; then
+        export CFLAGS="$cflags $cflags_unroll -mfpmath=387"
+      fi
+    fi
+    build $libsamplerate_location src/.libs/libsamplerate$sharedinfix.$sharedext SampleRate.$sharedext
+
+  elif [ $package == libsndfile ]; then
+    # Build libsndfile
+    if [[ $uname == Darwin ]]; then
+      prepare="sed -i -e \"s/ -Wvla//\" configure"
+    fi
+    if [[ $x86_64 != true ]] && [[ $ppc != true ]]; then
+      if [[ $uname == *MINGW* ]]; then
+        configure_exports="RC=\"windres -F pe-i386\""
+      fi
+    fi
+    configure_flags="--disable-external-libs"
+    build $libsndfile_location src/.libs/libsndfile$sharedinfix.$sharedext SndFile.$sharedext
+
+  elif [ $package == mac ]; then
+    # Build Monkey's Audio
+    archive=${mac_location##*/}
+    folder=${archive%.zip}
+    wget $mac_location -O $archive
+    rm -fr $folder; unzip -d $folder $archive
+    rm $archive; zip -m -r $archive $folder
+    patches=${mac_patches[@]}
+    patch_levels=(${mac_patch_levels[@]})
+    prepare="chmod 777 configure"
+    build $archive Source/MACDll.$sharedext MACDll.$sharedext
+
+  elif [ $package == mpg123 ]; then
+    # Build mpg123
+    configure_flags="--enable-modules=no"
+    if [[ $ppc == true ]]; then
+      configure_flags="$configure_flags --with-cpu=altivec"
+    elif [[ $x86_64 == true ]]; then
+      if [[ $uname == Darwin ]]; then
+        configure_flags="$configure_flags --with-cpu=x86-64_alone"
+      else
+        configure_flags="$configure_flags --with-cpu=x86-64"
+      fi
+    else
+      if [[ $uname == *MINGW* ]]; then
+        export CFLAGS="$cflags $cflags_unroll -m32"
+      fi
+      configure_flags="$configure_flags --with-cpu=sse"
+    fi
+    build $mpg123_location src/libmpg123/.libs/libmpg123$sharedinfix.$sharedext mpg123.$sharedext
+
+  elif [ $package == opus ]; then
+    # Build Opus
+    if [[ $x86_64 != true ]] && [[ $ppc != true ]]; then
+      export CFLAGS="$cflags $cflags_unroll -mfpmath=sse"
+    fi
+    configure_exports="X86_SSE4_1_CFLAGS=\"\" X86_AVX_CFLAGS=\"\""
+    configure_flags="--enable-float-approx"
+    if [[ $uname != Darwin ]] || [[ $x86_64 == true ]]; then
+      configure_flags="$configure_flags --enable-intrinsics"
+    else
+      configure_flags="$configure_flags --disable-intrinsics"
+    fi
+    build $opus_location .libs/libopus$sharedinfix.$sharedext Opus.$sharedext
+
+  elif [ $package == rubberband ]; then
+    # Build RubberBand
+    export CXXFLAGS="$cflags $cflags_unroll"
+    patches=${rubberband_patches[@]}
+    patch_levels=(${rubberband_patch_levels[@]})
+    if [[ $uname == *MINGW* ]]; then
+      prepare="sed -i -e \"s/-DNO_THREAD_CHECKS -DUSE_PTHREADS/-DUSE_OWN_ALIGNED_MALLOC/\" Makefile.in && sed -i -e \"s/-lpthread//\" Makefile.in && sed -i -e \"s/all:.*/all: bin lib \$\(DYNAMIC_TARGET\)/\" Makefile.in && sed -i -e \"s/:= .so/:= .dll/\" Makefile.in"
+      configure_exports="FFTW_CFLAGS=\" \" FFTW_LIBS=\" \" SRC_CFLAGS=\" \" SRC_LIBS=\" \" SNDFILE_CFLAGS=\" \" SNDFILE_LIBS=\" \" Vamp_CFLAGS=\" \" Vamp_LIBS=\" \""
+    else
+      configure_exports="FFTW_CFLAGS=\" \" FFTW_LIBS=\" \" SRC_CFLAGS=\" \" SRC_LIBS=\" \" Vamp_CFLAGS=\" \" Vamp_LIBS=\" \""
+    fi
+    build $rubberband_location lib/librubberband.$sharedext RubberBand.$sharedext
+
+  elif [ $package == speex ]; then
+    # Build Speex
+    if [[ $x86_64 != true ]] && [[ $ppc != true ]]; then
+      export CFLAGS="$cflags $cflags_unroll -mfpmath=sse"
+    fi
+    build $speex_location libspeex/.libs/libspeex$sharedinfix.$sharedext Speex.$sharedext
+
+  elif [ $package == vorbis ]; then
+    # Build Vorbis
+    patches=${vorbis_patches[@]}
+    patch_levels=(${vorbis_patch_levels[@]})
+    if [[ $x86_64 == true ]] || [[ $ppc == true ]]; then
+      export CFLAGS="$cflags"
+    else
+      if [[ $uname == Darwin ]]; then
+        export CFLAGS="$cflags -mno-sse"
+      else
+        export CFLAGS="$cflags -mfpmath=sse"
+      fi
+    fi
+    build $vorbis_location "lib/.libs/libvorbis$sharedinfix.$sharedext lib/.libs/libvorbisenc$sharedinfix.$sharedext" "Vorbis.$sharedext VorbisEnc.$sharedext"
+    if [[ $uname == *MINGW* ]]; then
+      sed -i -b -e "s/libogg-0.dll/Ogg.dll\x00\x00\x00\x00\x00/" Vorbis.$sharedext
+
+      sed -i -b -e "s/libogg-0.dll/Ogg.dll\x00\x00\x00\x00\x00/" VorbisEnc.$sharedext
+      sed -i -b -e "s/libvorbis-0.dll/Vorbis.dll\x00\x00\x00\x00\x00/" VorbisEnc.$sharedext
+    fi
+
+  elif [ $package == wavpack ]; then
+    # Build WavPack
+    if [[ $uname == *MINGW* ]]; then
+      prepare="sed -i -e \"s/#ifndef LIBWAVPACK_VERSION_STRING/#ifndef LIBWAVPACK_VERSION_STRING2/\" src/common_utils.c"
+      configure_flags="--disable-shared --disable-asm"
+    elif [[ $uname == Darwin ]]; then
+      configure_flags="--disable-shared --disable-asm"
+    else
+      configure_flags="--disable-shared"
+    fi
+    build $wavpack_location "cli/wavpack.$execext cli/wvunpack.$execext" "wavpack.$execext wvunpack.$execext"
+  fi
+done
