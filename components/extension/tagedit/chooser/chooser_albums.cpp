@@ -179,7 +179,14 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 	{
 		if (albums.Get(list_albums->GetNthEntry(i)->GetHandle()).GetTrackID() != track.GetTrackID()) continue;
 
-		const Info	&info = track.GetInfo();
+		Info	 info = track.GetInfo();
+
+		/* Consolidate artist information.
+		 */
+		Track		&origAlbum = albums.GetReference(list_albums->GetNthEntry(i)->GetHandle());
+		const Info	&origInfo  = origAlbum.GetInfo();
+
+		info.SetOtherInfo(INFO_ALBUMARTIST, info.artist);
 
 		/* Update joblist entry.
 		 */
@@ -192,8 +199,6 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 		 */
 		dontUpdateAlbumList = True;
 
-		Track	&origAlbum = albums.GetReference(list_albums->GetNthEntry(i)->GetHandle());
-
 		for (Int j = 0; j < tracks.Length(); j++)
 		{
 			Track	&mTrack = tracks.GetNthReference(j);
@@ -204,7 +209,11 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 
 			/* Update basic info.
 			 */
-			mTrackInfo.artist	= info.artist;
+			if (mTrackInfo.artist == origInfo.artist) mTrackInfo.artist = info.artist;
+			else					  mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, info.artist);
+
+			if (mTrackInfo.artist == mTrackInfo.GetOtherInfo(INFO_ALBUMARTIST)) mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, NIL);
+
 			mTrackInfo.album	= info.album;
 			mTrackInfo.genre	= info.genre;
 			mTrackInfo.year		= info.year;
@@ -223,7 +232,7 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 			{
 				String	 key = pair.Head(pair.Find(":"));
 
-				if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
+				if (				 key == INFO_BAND	   ||
 				    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
 				    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
 
@@ -239,7 +248,7 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 			{
 				String	 key = pair.Head(pair.Find(":"));
 
-				if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
+				if (				 key == INFO_BAND	   ||
 				    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
 				    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
 
@@ -263,6 +272,7 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 		}
 
 		origAlbum = track;
+		origAlbum.SetInfo(info);
 
 		dontUpdateAlbumList = False;
 
@@ -370,11 +380,14 @@ Void BoCA::ChooserAlbums::ReselectEntry()
  */
 Bool BoCA::ChooserAlbums::IsAlbumIdentical(const Track &track1, const Track &track2)
 {
-	const Info	&info1 = track1.GetInfo();
-	const Info	&info2 = track2.GetInfo();
+	Info	 info1 = track1.GetInfo();
+	Info	 info2 = track2.GetInfo();
 
-	if (info1.artist  == info2.artist &&
-	    info1.album   == info2.album) return True;
+	if (info1.GetOtherInfo(INFO_ALBUMARTIST) != NIL) info1.artist = info1.GetOtherInfo(INFO_ALBUMARTIST);
+	if (info2.GetOtherInfo(INFO_ALBUMARTIST) != NIL) info2.artist = info2.GetOtherInfo(INFO_ALBUMARTIST);
+
+	if (info1.artist == info2.artist &&
+	    info1.album  == info2.album) return True;
 
 	return False;
 }
@@ -398,7 +411,7 @@ Void BoCA::ChooserAlbums::AddToAlbumList(const Track &track)
 
 	/* Copy basic info.
 	 */
-	albumInfo.artist	= trackInfo.artist;
+	albumInfo.artist	= trackInfo.GetOtherInfo(INFO_ALBUMARTIST) == NIL ? trackInfo.artist : trackInfo.GetOtherInfo(INFO_ALBUMARTIST);
 	albumInfo.album		= trackInfo.album;
 	albumInfo.genre		= trackInfo.genre;
 	albumInfo.year		= trackInfo.year;
