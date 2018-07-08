@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -177,100 +177,100 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 {
 	for (Int i = 0; i < list_albums->Length(); i++)
 	{
-		if (albums.Get(list_albums->GetNthEntry(i)->GetHandle()).GetTrackID() == track.GetTrackID())
+		if (albums.Get(list_albums->GetNthEntry(i)->GetHandle()).GetTrackID() != track.GetTrackID()) continue;
+
+		const Info	&info = track.GetInfo();
+
+		/* Update joblist entry.
+		 */
+		String	 jlEntry = String(info.artist != NIL ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter)
+				  .Append(info.album  != NIL ? info.album  : I18n::Get()->TranslateString("unknown album")).Append(ListEntry::tabDelimiter);
+
+		list_albums->GetNthEntry(i)->SetText(jlEntry);
+
+		/* Modify tracks and emit onComponentModifyTrack for each affected track.
+		 */
+		dontUpdateAlbumList = True;
+
+		Track	&origAlbum = albums.GetReference(list_albums->GetNthEntry(i)->GetHandle());
+
+		for (Int j = 0; j < tracks.Length(); j++)
 		{
-			const Info	&info = track.GetInfo();
-			String		 jlEntry = String(info.artist.Length() > 0 ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(info.album.Length() > 0 ? info.album : I18n::Get()->TranslateString("unknown album")).Append(ListEntry::tabDelimiter);
+			Track	&mTrack = tracks.GetNthReference(j);
 
-			list_albums->GetNthEntry(i)->SetText(jlEntry);
+			if (!IsAlbumIdentical(mTrack, origAlbum)) continue;
 
-			dontUpdateAlbumList = True;
+			Info	 mTrackInfo = mTrack.GetInfo();
 
-			Track		&origAlbum = albums.GetReference(list_albums->GetNthEntry(i)->GetHandle());
-
-			/* Modify tracks and emit onComponentModifyTrack for each affected track.
+			/* Update basic info.
 			 */
-			for (Int j = 0; j < tracks.Length(); j++)
+			mTrackInfo.artist	= info.artist;
+			mTrackInfo.album	= info.album;
+			mTrackInfo.genre	= info.genre;
+			mTrackInfo.year		= info.year;
+			mTrackInfo.comment	= info.comment;
+
+			mTrackInfo.numTracks	= info.numTracks;
+
+			mTrackInfo.disc		= info.disc;
+			mTrackInfo.numDiscs	= info.numDiscs;
+
+			mTrackInfo.label	= info.label;
+
+			/* Update other text info.
+			 */
+			foreach (const String &pair, mTrackInfo.other)
 			{
-				Track	&mTrack = tracks.GetNthReference(j);
+				String	 key = pair.Head(pair.Find(":"));
 
-				if (!IsAlbumIdentical(mTrack, origAlbum)) continue;
+				if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
+				    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
+				    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
 
-				Info	 mTrackInfo = mTrack.GetInfo();
+				    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
+				    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
 
-				/* Update basic info.
-				 */
-				mTrackInfo.artist	= info.artist;
-				mTrackInfo.album	= info.album;
-				mTrackInfo.genre	= info.genre;
-				mTrackInfo.year		= info.year;
-				mTrackInfo.comment	= info.comment;
-
-				mTrackInfo.numTracks	= info.numTracks;
-
-				mTrackInfo.disc		= info.disc;
-				mTrackInfo.numDiscs	= info.numDiscs;
-
-				mTrackInfo.label	= info.label;
-
-				/* Update other text info.
-				 */
-				foreach (const String &pair, mTrackInfo.other)
-				{
-					String	 key = pair.Head(pair.Find(":"));
-
-					if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
-					    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
-					    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
-
-					    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
-					    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
-
-					    key == INFO_WEB_ARTIST    || key == INFO_WEB_PUBLISHER ||
-					    key == INFO_WEB_RADIO     || key == INFO_WEB_SOURCE    ||
-					    key == INFO_WEB_COPYRIGHT || key == INFO_WEB_COMMERCIAL) mTrackInfo.other.RemoveNth(foreachindex--);
-				}
-
-				foreach (const String &pair, info.other)
-				{
-					String	 key = pair.Head(pair.Find(":"));
-
-					if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
-					    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
-					    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
-
-					    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
-					    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
-
-					    key == INFO_WEB_ARTIST    || key == INFO_WEB_PUBLISHER ||
-					    key == INFO_WEB_RADIO     || key == INFO_WEB_SOURCE    ||
-					    key == INFO_WEB_COPYRIGHT || key == INFO_WEB_COMMERCIAL) mTrackInfo.other.Add(pair);
-				}
-
-				mTrack.SetInfo(mTrackInfo);
-
-				/* Update cover art.
-				 */
-				mTrack.pictures.RemoveAll();
-
-				foreach (const Picture &picture, track.pictures)
-				{
-					mTrack.pictures.Add(picture);
-				}
-
-				JobList::Get()->onComponentModifyTrack.Emit(mTrack);
+				    key == INFO_WEB_ARTIST    || key == INFO_WEB_PUBLISHER ||
+				    key == INFO_WEB_RADIO     || key == INFO_WEB_SOURCE    ||
+				    key == INFO_WEB_COPYRIGHT || key == INFO_WEB_COMMERCIAL) mTrackInfo.other.RemoveNth(foreachindex--);
 			}
 
-			origAlbum = track;
+			foreach (const String &pair, info.other)
+			{
+				String	 key = pair.Head(pair.Find(":"));
 
-			dontUpdateAlbumList = False;
+				if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
+				    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
+				    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
 
-			/* Reselect album to let non-active editors know about changes.
+				    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
+				    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
+
+				    key == INFO_WEB_ARTIST    || key == INFO_WEB_PUBLISHER ||
+				    key == INFO_WEB_RADIO     || key == INFO_WEB_SOURCE    ||
+				    key == INFO_WEB_COPYRIGHT || key == INFO_WEB_COMMERCIAL) mTrackInfo.other.Add(pair);
+			}
+
+			mTrack.SetInfo(mTrackInfo);
+
+			/* Update cover art.
 			 */
-			OnSelectAlbum();
+			mTrack.pictures.RemoveAll();
 
-			break;
+			foreach (const Picture &picture, track.pictures) mTrack.pictures.Add(picture);
+
+			JobList::Get()->onComponentModifyTrack.Emit(mTrack);
 		}
+
+		origAlbum = track;
+
+		dontUpdateAlbumList = False;
+
+		/* Reselect album to let non-active editors know about changes.
+		 */
+		OnSelectAlbum();
+
+		break;
 	}
 }
 
@@ -293,17 +293,16 @@ Void BoCA::ChooserAlbums::OnApplicationModifyTrack(const Track &track)
 {
 	for (Int i = 0; i < tracks.Length(); i++)
 	{
-		if (tracks.GetNth(i).GetTrackID() == track.GetTrackID())
-		{
-			Track	 album = tracks.GetNth(i);
+		if (tracks.GetNth(i).GetTrackID() != track.GetTrackID()) continue;
 
-			tracks.GetNthReference(i) = track;
+		Track	 album = tracks.GetNth(i);
 
-			AddToAlbumList(track);
-			RemoveFromAlbumList(album);
+		tracks.GetNthReference(i) = track;
 
-			break;
-		}
+		AddToAlbumList(track);
+		RemoveFromAlbumList(album);
+
+		break;
 	}
 }
 
@@ -315,12 +314,11 @@ Void BoCA::ChooserAlbums::OnApplicationRemoveTrack(const Track &track)
 {
 	for (Int i = 0; i < tracks.Length(); i++)
 	{
-		if (tracks.GetNth(i).GetTrackID() == track.GetTrackID())
-		{
-			tracks.RemoveNth(i);
+		if (tracks.GetNth(i).GetTrackID() != track.GetTrackID()) continue;
 
-			break;
-		}
+		tracks.RemoveNth(i);
+
+		break;
 	}
 
 	RemoveFromAlbumList(track);
@@ -336,12 +334,11 @@ Void BoCA::ChooserAlbums::OnApplicationSelectTrack(const Track &track)
 {
 	for (Int i = 0; i < list_albums->Length(); i++)
 	{
-		if (IsAlbumIdentical(albums.Get(list_albums->GetNthEntry(i)->GetHandle()), track))
-		{
-			if (list_albums->GetSelectedEntryNumber() != i) list_albums->SelectNthEntry(i);
+		if (!IsAlbumIdentical(albums.Get(list_albums->GetNthEntry(i)->GetHandle()), track)) continue;
 
-			break;
-		}
+		if (list_albums->GetSelectedEntryNumber() != i) list_albums->SelectNthEntry(i);
+
+		break;
 	}
 }
 
@@ -393,61 +390,58 @@ Void BoCA::ChooserAlbums::AddToAlbumList(const Track &track)
 		if (IsAlbumIdentical(album, track)) { found = True; break; }
 	}
 
-	if (!found)
+	if (found) return;
+
+	Track		 album;
+	Info		 albumInfo = album.GetInfo();
+	const Info	&trackInfo = track.GetInfo();
+
+	/* Copy basic info.
+	 */
+	albumInfo.artist	= trackInfo.artist;
+	albumInfo.album		= trackInfo.album;
+	albumInfo.genre		= trackInfo.genre;
+	albumInfo.year		= trackInfo.year;
+	albumInfo.comment	= trackInfo.comment;
+
+	albumInfo.numTracks	= trackInfo.numTracks;
+
+	albumInfo.disc		= trackInfo.disc;
+	albumInfo.numDiscs	= trackInfo.numDiscs;
+
+	albumInfo.label		= trackInfo.label;
+
+	/* Copy other text info.
+	 */
+	foreach (const String &pair, trackInfo.other)
 	{
-		Track		 album;
-		Info		 albumInfo = album.GetInfo();
-		const Info	&trackInfo = track.GetInfo();
+		String	 key = pair.Head(pair.Find(":"));
 
-		/* Copy basic info.
-		 */
-		albumInfo.artist	= trackInfo.artist;
-		albumInfo.album		= trackInfo.album;
-		albumInfo.genre		= trackInfo.genre;
-		albumInfo.year		= trackInfo.year;
-		albumInfo.comment	= trackInfo.comment;
+		if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
+		    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
+		    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
 
-		albumInfo.numTracks	= trackInfo.numTracks;
+		    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
+		    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
 
-		albumInfo.disc		= trackInfo.disc;
-		albumInfo.numDiscs	= trackInfo.numDiscs;
-
-		albumInfo.label		= trackInfo.label;
-
-		/* Copy other text info.
-		 */
-		foreach (const String &pair, trackInfo.other)
-		{
-			String	 key = pair.Head(pair.Find(":"));
-
-			if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
-			    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
-			    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
-
-			    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
-			    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
-
-			    key == INFO_WEB_ARTIST    || key == INFO_WEB_PUBLISHER ||
-			    key == INFO_WEB_RADIO     || key == INFO_WEB_SOURCE    ||
-			    key == INFO_WEB_COPYRIGHT || key == INFO_WEB_COMMERCIAL) albumInfo.other.Add(pair);
-		}
-
-		album.SetInfo(albumInfo);
-
-		/* Copy cover art.
-		 */
-		foreach (const Picture &picture, track.pictures)
-		{
-			album.pictures.Add(picture);
-		}
-
-		/* Add to album list.
-		 */
-		const Info	&info = album.GetInfo();
-		String		 jlEntry = String(info.artist.Length() > 0 ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(info.album.Length() > 0 ? info.album : I18n::Get()->TranslateString("unknown album")).Append(ListEntry::tabDelimiter);
-
-		albums.Add(album, list_albums->AddEntry(jlEntry)->GetHandle());
+		    key == INFO_WEB_ARTIST    || key == INFO_WEB_PUBLISHER ||
+		    key == INFO_WEB_RADIO     || key == INFO_WEB_SOURCE    ||
+		    key == INFO_WEB_COPYRIGHT || key == INFO_WEB_COMMERCIAL) albumInfo.other.Add(pair);
 	}
+
+	album.SetInfo(albumInfo);
+
+	/* Copy cover art.
+	 */
+	foreach (const Picture &picture, track.pictures) album.pictures.Add(picture);
+
+	/* Add to album list.
+	 */
+	const Info	&info	 = album.GetInfo();
+	String		 jlEntry = String(info.artist != NIL ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter)
+				  .Append(info.album  != NIL ? info.album  : I18n::Get()->TranslateString("unknown album")).Append(ListEntry::tabDelimiter);
+
+	albums.Add(album, list_albums->AddEntry(jlEntry)->GetHandle());
 }
 
 Void BoCA::ChooserAlbums::RemoveFromAlbumList(const Track &album)
@@ -461,17 +455,16 @@ Void BoCA::ChooserAlbums::RemoveFromAlbumList(const Track &album)
 		if (IsAlbumIdentical(album, track)) { found = True; break; }
 	}
 
-	if (!found)
+	if (found) return;
+
+	for (Int i = 0; i < albums.Length(); i++)
 	{
-		for (Int i = 0; i < albums.Length(); i++)
-		{
-			if (!IsAlbumIdentical(album, albums.GetNth(i))) continue;
+		if (!IsAlbumIdentical(album, albums.GetNth(i))) continue;
 
-			albums.RemoveNth(i);
-			list_albums->Remove(list_albums->GetNthEntry(i));
+		albums.RemoveNth(i);
+		list_albums->Remove(list_albums->GetNthEntry(i));
 
-			break;
-		}
+		break;
 	}
 }
 
