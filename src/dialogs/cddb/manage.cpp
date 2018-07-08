@@ -96,10 +96,14 @@ freac::cddbManageDlg::cddbManageDlg()
 
 	btn_delete	= new Button(i18n->TranslateString("Remove entry"), NIL, Point(188, 69), Size());
 	btn_delete->onAction.Connect(&cddbManageDlg::DeleteEntry, this);
+	btn_delete->SetWidth(Math::Max(80, btn_delete->GetUnscaledTextWidth() + 14));
+	btn_delete->SetX(268 - btn_delete->GetWidth());
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
 	btn_save	= new Button(i18n->TranslateString("Save entry"), NIL, Point(87, 69), Size());
 	btn_save->onAction.Connect(&cddbManageDlg::SaveEntry, this);
+	btn_save->SetWidth(Math::Max(80, btn_save->GetUnscaledTextWidth() + 14));
+	btn_save->SetX(btn_save->GetWidth() + 7);
 	btn_save->SetOrientation(OR_LOWERRIGHT);
 
 	edit_charset->Deactivate();
@@ -180,7 +184,7 @@ Void freac::cddbManageDlg::OnChangeSize(const Size &nSize)
 
 	list_entries->SetSize(Size((clientSize.cx - 22) / 2, clientSize.cy - 106));
 
-	btn_delete->SetX(clientSize.cx / 2 - 84);
+	btn_delete->SetX(clientSize.cx / 2 - btn_delete->GetWidth() - 4);
 }
 
 Void freac::cddbManageDlg::OK()

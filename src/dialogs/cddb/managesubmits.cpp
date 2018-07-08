@@ -55,15 +55,21 @@ freac::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 
 	btn_delete	= new Button(i18n->TranslateString("Remove entry"), NIL, Point(188, 69), Size());
 	btn_delete->onAction.Connect(&cddbManageSubmitsDlg::DeleteEntry, this);
+	btn_delete->SetWidth(Math::Max(80, btn_delete->GetUnscaledTextWidth() + 14));
+	btn_delete->SetX(268 - btn_delete->GetWidth());
 	btn_delete->SetOrientation(OR_LOWERLEFT);
-
-	btn_send	= new Button(i18n->TranslateString("Submit"), NIL, Point(175, 69), Size());
-	btn_send->onAction.Connect(&cddbManageSubmitsDlg::SendEntry, this);
-	btn_send->SetOrientation(OR_LOWERRIGHT);
 
 	btn_send_all	= new Button(i18n->TranslateString("Submit all"), NIL, Point(87, 69), Size());
 	btn_send_all->onAction.Connect(&cddbManageSubmitsDlg::SendAllEntries, this);
+	btn_send_all->SetWidth(Math::Max(80, btn_send_all->GetUnscaledTextWidth() + 14));
+	btn_send_all->SetX(btn_send_all->GetWidth() + 7);
 	btn_send_all->SetOrientation(OR_LOWERRIGHT);
+
+	btn_send	= new Button(i18n->TranslateString("Submit"), NIL, Point(175, 69), Size());
+	btn_send->onAction.Connect(&cddbManageSubmitsDlg::SendEntry, this);
+	btn_send->SetWidth(Math::Max(80, btn_send->GetUnscaledTextWidth() + 14));
+	btn_send->SetX(btn_send->GetWidth() + btn_send_all->GetWidth() + 15);
+	btn_send->SetOrientation(OR_LOWERRIGHT);
 
 	text_status	= new Text(NIL, Point(7, 26));
 	text_status->SetOrientation(OR_LOWERLEFT);
@@ -137,7 +143,7 @@ Void freac::cddbManageSubmitsDlg::OnChangeSize(const Size &nSize)
 
 	list_entries->SetSize(Size((clientSize.cx - 22) / 2, clientSize.cy - 106));
 
-	btn_delete->SetX(clientSize.cx / 2 - 84);
+	btn_delete->SetX(clientSize.cx / 2 - btn_delete->GetWidth() - 4);
 }
 
 Void freac::cddbManageSubmitsDlg::Cancel()
