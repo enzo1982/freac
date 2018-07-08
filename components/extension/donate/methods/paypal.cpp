@@ -73,17 +73,17 @@ BoCA::LayerPayPal::LayerPayPal()
 
 	combo_amount->onSelectEntry.Connect(&LayerPayPal::OnChangeSettings, this);
 
-	String::ExplodeFinish();
-
 	check_monthly		= new CheckBox(i18n->TranslateString("monthly recurring"), Point(100, combo_amount->GetY() + 23), Size(0, 0), &monthly);
 	check_monthly->onAction.Connect(&LayerPayPal::OnChangeSettings, this);
-	check_monthly->SetWidth(check_monthly->GetUnscaledTextWidth() + 23);
+	check_monthly->SetWidth(Math::Max(combo_amount->GetFont().GetUnscaledTextSizeX(levels.GetNth(3)) + 24, check_monthly->GetUnscaledTextWidth() + 23));
 
 	combo_amount->SetWidth(check_monthly->GetWidth());
 	combo_amount->SelectNthEntry(1);
 
 	Add(combo_amount);
 	Add(check_monthly);
+
+	String::ExplodeFinish();
 
 	/* Donate button.
 	 */

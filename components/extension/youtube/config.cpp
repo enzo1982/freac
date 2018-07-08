@@ -51,8 +51,6 @@ BoCA::ConfigureYouTube::ConfigureYouTube()
 	group_downloads->Add(edit_max_downloads);
 	group_downloads->Add(arrows_max_downloads);
 
-	group_auto->Add(check_auto_download);
-
 	group_files		= new GroupBox(i18n->TranslateString("Video files"), Point(7, 117), Size(344, 96));
 
 	check_keep		= new CheckBox(i18n->TranslateString("Save downloaded video files"), Point(10, 14), Size(236, 0), &keepVideoFiles);
@@ -62,7 +60,8 @@ BoCA::ConfigureYouTube::ConfigureYouTube()
 
 	edit_dir		= new EditBox(videoOutputDir, Point(10, 39), Size(236, 0), 0);
 
-	button_browse		= new Button(i18n->TranslateString("Select"), NIL, Point(254, 38), Size(0, 0));
+	button_browse		= new Button(i18n->TranslateString("Select"), NIL, Point(90, 38), Size(0, 0));
+	button_browse->SetOrientation(OR_UPPERRIGHT);
 	button_browse->onAction.Connect(&ConfigureYouTube::SelectOutputDir, this);
 
 	text_format		= new Text(i18n->AddColon(i18n->TranslateString("Output format")), Point(10, 70));
@@ -87,13 +86,22 @@ BoCA::ConfigureYouTube::ConfigureYouTube()
 	group_files->Add(text_format);
 	group_files->Add(combo_format);
 
+	check_auto_download->SetWidth(Math::Max(324, check_auto_download->GetUnscaledTextWidth() + 21));
+	check_keep->SetWidth(check_auto_download->GetWidth() - 88);
+	edit_dir->SetWidth(check_keep->GetWidth());
+	combo_format->SetWidth(check_auto_download->GetWidth() - 7 - text_format->GetUnscaledTextWidth());
+
+	group_auto->SetWidth(check_auto_download->GetWidth() + 20);
+	group_downloads->SetWidth(group_auto->GetWidth());
+	group_files->SetWidth(group_auto->GetWidth());
+
 	Add(group_auto);
 	Add(group_downloads);
 	Add(group_files);
 
 	ToggleKeepFiles();
 
-	SetSize(Size(358, 220));
+	SetSize(Size(group_auto->GetWidth() + 14, 220));
 }
 
 BoCA::ConfigureYouTube::~ConfigureYouTube()

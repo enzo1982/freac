@@ -111,6 +111,16 @@ freac::ConfigureCDDB::ConfigureCDDB()
 	group_cddb_options->Add(check_cdtext);
 	group_cddb_options->Add(check_cache);
 
+	Int	 maxTextSize = Math::Max(Math::Max(check_autoquery->GetUnscaledTextWidth(), check_autoselect->GetUnscaledTextWidth()), Math::Max(check_cdtext->GetUnscaledTextWidth(), check_cache->GetUnscaledTextWidth()));
+
+	check_autoquery->SetWidth(Math::Max(149, maxTextSize + 21));
+	check_autoselect->SetWidth(check_autoquery->GetWidth());
+	check_cdtext->SetWidth(check_autoquery->GetWidth());
+	check_cache->SetWidth(check_autoquery->GetWidth());
+
+	group_cddb_auto->SetWidth(check_autoquery->GetWidth() + 20);
+	group_cddb_options->SetWidth(check_autoquery->GetWidth() + 20);
+
 	combo_mode->SelectNthEntry(config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault));
 
 	SetCDDBMode();
@@ -119,7 +129,7 @@ freac::ConfigureCDDB::ConfigureCDDB()
 	ToggleLocalCDDB();
 	ToggleRemoteCDDB();
 
-	Int	 maxTextSize = Math::Max(Math::Max(text_dir->GetUnscaledTextWidth(), text_email->GetUnscaledTextWidth()), Math::Max(text_mode->GetUnscaledTextWidth(), text_server->GetUnscaledTextWidth()));
+	maxTextSize = Math::Max(Math::Max(text_dir->GetUnscaledTextWidth(), text_email->GetUnscaledTextWidth()), Math::Max(text_mode->GetUnscaledTextWidth(), text_server->GetUnscaledTextWidth()));
 
 	edit_dir->SetMetrics(Point(maxTextSize + 24, edit_dir->GetY()), Size(239 - maxTextSize, edit_dir->GetHeight()));
 	combo_mode->SetMetrics(Point(maxTextSize + 24, combo_mode->GetY()), Size(327 - maxTextSize, combo_mode->GetHeight()));
@@ -146,7 +156,7 @@ freac::ConfigureCDDB::ConfigureCDDB()
 	Add(layer_local_background);
 	Add(layer_remote_background);
 
-	SetSize(Size(566, 198));
+	SetSize(Size(376 + group_cddb_auto->GetWidth(), 198));
 }
 
 freac::ConfigureCDDB::~ConfigureCDDB()
