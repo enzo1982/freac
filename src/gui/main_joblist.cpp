@@ -676,7 +676,7 @@ Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 	info_text_genre->SetX(info_edit_year->GetX() + info_edit_year->GetWidth() + 7);
 	info_text_title->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
 	info_text_track->SetX(info_text_title->GetX());
-	info_edit_artist->SetWidth(clientSize.cx - 26 - info_edit_artist->GetX() - info_text_title->GetUnscaledTextWidth() - info_edit_title->GetWidth());
+	info_edit_artist->SetWidth(clientSize.cx - 21 - info_edit_artist->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - info_edit_title->GetWidth());
 	info_edit_album->SetWidth(info_edit_artist->GetWidth());
 	info_edit_genre->SetX(clientSize.cx - 142);
 
