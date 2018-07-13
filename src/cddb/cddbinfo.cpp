@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -152,8 +152,9 @@ Bool freac::CDDBInfo::UpdateTrack(BoCA::Track &track) const
 	if ((info.mcdi.GetData().Size() > 0 && track.discid == CDDB::DiscIDFromMCDI(info.mcdi)) ||
 	    (info.offsets != NIL && track.discid == CDDB::DiscIDFromOffsets(info.offsets)))
 	{
-		if (dArtist == "Various") info.artist = trackArtists.GetNth(track.cdTrack - 1);
-		else			  info.artist = dArtist;
+		/* Set basic title information.
+		 */
+		info.artist = dArtist;
 
 		if (trackTitles.GetNth(track.cdTrack - 1) != NIL) info.title = trackTitles.GetNth(track.cdTrack - 1);
 
@@ -162,9 +163,21 @@ Bool freac::CDDBInfo::UpdateTrack(BoCA::Track &track) const
 		info.year  = dYear;
 		info.track = track.cdTrack;
 
+		/* Set album artist for compilation CDs.
+		 */
+		if (dArtist == "Various")
+		{
+			BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+			i18n->SetContext("CDDB::Submit");
+ 
+			info.artist = trackArtists.GetNth(track.cdTrack - 1);
+			info.SetOtherInfo(BoCA::INFO_ALBUMARTIST, i18n->TranslateString("Various artists"));
+		}
+
 		track.SetInfo(info);
 
-		track.outfile	= NIL;
+		track.outfile = NIL;
 	}
 
 	return True;
