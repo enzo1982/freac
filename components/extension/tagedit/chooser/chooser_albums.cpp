@@ -386,8 +386,8 @@ Bool BoCA::ChooserAlbums::IsAlbumIdentical(const Track &track1, const Track &tra
 	if (info1.GetOtherInfo(INFO_ALBUMARTIST) != NIL) info1.artist = info1.GetOtherInfo(INFO_ALBUMARTIST);
 	if (info2.GetOtherInfo(INFO_ALBUMARTIST) != NIL) info2.artist = info2.GetOtherInfo(INFO_ALBUMARTIST);
 
-	if (info1.artist == info2.artist &&
-	    info1.album  == info2.album) return True;
+	if ((info1.artist == NIL || info2.artist == NIL || info1.artist == info2.artist) &&
+							   info1.album  == info2.album) return True;
 
 	return False;
 }
