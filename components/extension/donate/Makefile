@@ -10,7 +10,7 @@ FREAC_PATH = ../../..
 include $(dir $(firstword $(MAKEFILE_LIST)))/$(FREAC_PATH)/Makefile-options
 
 # Enter object files here:
-OBJECTS	  = dialog.o donate.o
+OBJECTS	  = methods/bitcoin.o methods/donorbox.o methods/ethereum.o methods/method.o methods/paypal.o methods/sepa.o dialog.o donate.o
 
 # Enter additional defines here:
 DEFINE	  =

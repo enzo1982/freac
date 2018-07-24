@@ -15,6 +15,10 @@
 #include <config.h>
 #include <resources.h>
 
+#ifdef __WIN32__
+#	include <smooth/init.win32.h>
+#endif
+
 freac::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track> &tracks)
 {
 	userAction = ConfirmOverwrite::Action::None;
@@ -56,17 +60,17 @@ freac::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track> &
 
 	i18n->SetContext("Joblist");
 
-	button_select_all	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:18")), Point(-2, 20), Size(21, 21));
+	button_select_all	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-all.png")), Point(-2, 20), Size(21, 21));
 	button_select_all->onAction.Connect(&DialogConfirmOverwrite::SelectAll, this);
 	button_select_all->SetFlags(BF_NOFRAME);
 	button_select_all->SetTooltipText(i18n->TranslateString("Select all"));
 
-	button_select_none	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:19")), Point(-2, 34), Size(21, 21));
+	button_select_none	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-none.png")), Point(-2, 34), Size(21, 21));
 	button_select_none->onAction.Connect(&DialogConfirmOverwrite::SelectNone, this);
 	button_select_none->SetFlags(BF_NOFRAME);
 	button_select_none->SetTooltipText(i18n->TranslateString("Select none"));
 
-	button_select_toggle	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("freac.pci:20")), Point(-2, 48), Size(21, 21));
+	button_select_toggle	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-toggle.png")), Point(-2, 48), Size(21, 21));
 	button_select_toggle->onAction.Connect(&DialogConfirmOverwrite::ToggleSelection, this);
 	button_select_toggle->SetFlags(BF_NOFRAME);
 	button_select_toggle->SetTooltipText(i18n->TranslateString("Toggle selection"));
@@ -103,6 +107,10 @@ freac::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track> &
 
 	mainWnd->SetFlags(WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
+
+#ifdef __WIN32__
+	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
+#endif
 }
 
 freac::DialogConfirmOverwrite::~DialogConfirmOverwrite()

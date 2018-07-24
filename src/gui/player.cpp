@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -36,37 +36,37 @@ freac::LayerPlayer::LayerPlayer(JobList *iJoblist)
 	size.cx = 25;
 	size.cy = 25;
 
-	button_play	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:12")), pos, size);
+	button_play	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-play.png")), pos, size);
 	button_play->onAction.Connect(&LayerPlayer::PlaySelectedItem, this);
 	button_play->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-	button_pause	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:13")), pos, size);
+	button_pause	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-pause.png")), pos, size);
 	button_pause->onAction.Connect(&LayerPlayer::PauseResumePlayback, this);
 	button_pause->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-	button_stop	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:14")), pos, size);
+	button_stop	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-stop.png")), pos, size);
 	button_stop->onAction.Connect(&LayerPlayer::StopPlayback, this);
 	button_stop->SetFlags(BF_NOFRAME);
 
 	pos.x += 127 - (i18n->IsActiveLanguageRightToLeft() ? 254 : 0);
 
-	button_prev	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:15")), pos, size);
+	button_prev	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-previous.png")), pos, size);
 	button_prev->onAction.Connect(&LayerPlayer::PlayPreviousItem, this);
 	button_prev->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-	button_next	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:16")), pos, size);
+	button_next	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-next.png")), pos, size);
 	button_next->onAction.Connect(&LayerPlayer::PlayNextItem, this);
 	button_next->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-	button_open	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("freac.pci:17")), pos, size);
+	button_open	= new Button(NIL, ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-eject.png")), pos, size);
 	button_open->onAction.Connect(&LayerPlayer::OpenCDTray, this);
 	button_open->SetFlags(BF_NOFRAME);
 
@@ -89,7 +89,8 @@ freac::LayerPlayer::LayerPlayer(JobList *iJoblist)
 
 	Add(slider_play);
 
-	Playback::Get()->onFinish.Connect(&LayerPlayer::StopPlayback, this);
+	Playback::Get()->onPlay.Connect(&LayerPlayer::OnPlay, this);
+	Playback::Get()->onFinish.Connect(&LayerPlayer::OnFinish, this);
 
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Connect(&LayerPlayer::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Connect(&LayerPlayer::OnJoblistRemoveAllTracks, this);
@@ -101,7 +102,8 @@ freac::LayerPlayer::LayerPlayer(JobList *iJoblist)
 
 freac::LayerPlayer::~LayerPlayer()
 {
-	Playback::Get()->onFinish.Disconnect(&LayerPlayer::StopPlayback, this);
+	Playback::Get()->onFinish.Disconnect(&LayerPlayer::OnPlay, this);
+	Playback::Get()->onFinish.Disconnect(&LayerPlayer::OnFinish, this);
 
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Disconnect(&LayerPlayer::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Disconnect(&LayerPlayer::OnJoblistRemoveAllTracks, this);
@@ -244,19 +246,6 @@ Void freac::LayerPlayer::Play(const Track &track)
 	if (!player->IsPlaying()) return;
 
 	playingTrack = track;
-
-	/* Set joblist entry color.
-	 */
-	ListEntry	*entry = joblist->GetEntryByTrack(playingTrack);
-
-	if (entry != NIL)
-	{
-		GUI::Font	 font = entry->GetFont();
-
-		font.SetColor(Color(255, 0, 0));
-
-		entry->SetFont(font);
-	}
 }
 
 Void freac::LayerPlayer::PauseResumePlayback()
@@ -276,7 +265,26 @@ Void freac::LayerPlayer::StopPlayback()
 	if (!player->IsPlaying()) return;
 
 	player->Stop();
+}
 
+Void freac::LayerPlayer::OnPlay(const Track &track)
+{
+	/* Set joblist entry color.
+	 */
+	ListEntry	*entry = joblist->GetEntryByTrack(track);
+
+	if (entry != NIL)
+	{
+		GUI::Font	 font = entry->GetFont();
+
+		font.SetColor(Color(255, 0, 0));
+
+		entry->SetFont(font);
+	}
+}
+
+Void freac::LayerPlayer::OnFinish(const Track &track)
+{
 	/* Reset slider.
 	 */
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -285,7 +293,7 @@ Void freac::LayerPlayer::StopPlayback()
 
 	/* Reset joblist entry color.
 	 */
-	ListEntry	*entry = joblist->GetEntryByTrack(playingTrack);
+	ListEntry	*entry = joblist->GetEntryByTrack(track);
 
 	if (entry != NIL)
 	{
@@ -320,12 +328,12 @@ Void freac::LayerPlayer::OnChangePlayPosition()
 
 	if (!player->IsPlaying()) return;
 
-	player->onFinish.Disconnect(&LayerPlayer::StopPlayback, this);
+	player->onFinish.Disconnect(&LayerPlayer::OnFinish, this);
 
 	player->Stop();
 	player->Play(playingTrack);
 
-	player->onFinish.Connect(&LayerPlayer::StopPlayback, this);
+	player->onFinish.Connect(&LayerPlayer::OnFinish, this);
 
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -23,6 +23,7 @@ namespace freac
 		private:
 			GroupBox	*group_cpu;
 			CheckBox	*check_enable_parallel;
+			CheckBox	*check_enable_superfast;
 			Text		*text_threads;
 			Slider		*slider_threads;
 			Text		*text_threads_value;
@@ -33,6 +34,7 @@ namespace freac
 			Text		*text_priority_value;
 
 			Bool		 enableParallel;
+			Bool		 enableSuperFast;
 		slots:
 			Void		 ToggleParallel();
 

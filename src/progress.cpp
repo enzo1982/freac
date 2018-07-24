@@ -18,6 +18,8 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
+Array<freac::Progress *>	 freac::Progress::progressIndicators;
+
 freac::Progress::Progress(const BoCA::Config *iConfiguration)
 {
 	configuration	       = iConfiguration;
@@ -31,6 +33,9 @@ freac::Progress::Progress(const BoCA::Config *iConfiguration)
 	startTicks	       = 0;
 	pauseTicks	       = 0;
 
+	progressIndicators.EnableLocking();
+	progressIndicators.Add(this);
+
 	/* Get main window handle for taskbar/dock progress.
 	 */
 	window = Window::GetNthWindow(0);
@@ -40,7 +45,22 @@ freac::Progress::~Progress()
 {
 	/* Remove progress indicator from taskbar/dock.
 	 */
-	if (window != NIL) window->SetProgressIndicator(Window::ProgressIndicatorNone);
+	if (window != NIL && progressIndicators.GetLast() == this) window->SetProgressIndicator(Window::ProgressIndicatorNone);
+
+	/* Remove ourselves from progress indicator array.
+	 */
+	progressIndicators.LockForWrite();
+
+	foreach (Progress *progress, progressIndicators)
+	{
+		if (progress != this) continue;
+
+		progressIndicators.RemoveNth(foreachindex);
+
+		break;
+	}
+
+	progressIndicators.Unlock();
 }
 
 Void freac::Progress::ComputeTotalSamples(const Array<Track> &tracks)
@@ -128,27 +148,32 @@ Void freac::Progress::Start()
 
 	/* Show progress in taskbar.
 	 */
-	if (window != NIL) window->SetProgressIndicator(Window::ProgressIndicatorNormal, 0.0);
+	if (window != NIL && progressIndicators.GetLast() == this) window->SetProgressIndicator(Window::ProgressIndicatorNormal, 0.0);
 }
 
 Void freac::Progress::Pause()
 {
+	if (pauseTicks) return;
+
 	pauseTicks = S::System::System::Clock();
 
 	/* Set taskbar progress state to paused.
 	 */
-	if (window != NIL) window->SetProgressIndicator(Window::ProgressIndicatorPaused);
+	if (window != NIL && progressIndicators.GetLast() == this) window->SetProgressIndicator(Window::ProgressIndicatorPaused);
 }
 
 Void freac::Progress::Resume()
 {
+	if (!pauseTicks) return;
+
 	for (Int i = 0; i < trackList.Length(); i++) trackStartTicks.SetNth(i, trackStartTicks.GetNth(i) + S::System::System::Clock() - pauseTicks);
 
 	startTicks += S::System::System::Clock() - pauseTicks;
+	pauseTicks  = 0;
 
 	/* Set taskbar/dock progress state to normal.
 	 */
-	if (window != NIL) window->SetProgressIndicator(Window::ProgressIndicatorNormal);
+	if (window != NIL && progressIndicators.GetLast() == this) window->SetProgressIndicator(Window::ProgressIndicatorNormal);
 }
 
 Void freac::Progress::StartTrack(const Track &track)
@@ -241,7 +266,7 @@ Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
 
 	/* Show progress in taskbar/dock.
 	 */
-	if (window != NIL) window->SetProgressIndicator(Window::ProgressIndicatorNormal, Math::Min(100.0, totalProgress * 100.0));
+	if (window != NIL && progressIndicators.GetLast() == this) window->SetProgressIndicator(Window::ProgressIndicatorNormal, Math::Min(100.0, totalProgress * 100.0));
 
 	lastInvoked = clockValue;
 }

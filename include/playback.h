@@ -66,8 +66,10 @@ namespace freac
 			 */
 			static Void				 Free();
 		accessors:
-			Bool					 IsPlaying() const	{ return playing; }
-			Bool					 IsPaused() const	{ return paused; }
+			Bool					 IsPlaying() const		{ return playing; }
+			Bool					 IsPaused() const		{ return paused; }
+
+			const BoCA::Track			&GetPlayingTrack() const	{ return track; }
 		signals:
 			Signal1<Void, const BoCA::Track &>	 onPlay;
 			Signal1<Void, Int>			 onProgress;

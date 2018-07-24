@@ -130,7 +130,7 @@ const String	 freac::Config::SettingsEncoderOutputDirectoryID		= "EncoderOutDir"
       String	 freac::Config::SettingsEncoderOutputDirectoryDefault		= NIL;
 
 const String	 freac::Config::SettingsEncoderFilenamePatternID		= "EncoderFilenamePattern";
-const String	 freac::Config::SettingsEncoderFilenamePatternDefault		= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album> - <track> - <title>");
+const String	 freac::Config::SettingsEncoderFilenamePatternDefault		= String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <artist> - <title>");
 
 const String	 freac::Config::SettingsLastCustomCharsetID			= "LastCustomCharset";
 const String	 freac::Config::SettingsLastCustomCharsetDefault		= NIL;
@@ -223,6 +223,9 @@ const Bool	 freac::Config::VerificationVerifyOutputDefault			= False;
 const String	 freac::Config::ResourcesEnableParallelConversionsID		= "EnableParallelConversions";
 const Bool	 freac::Config::ResourcesEnableParallelConversionsDefault	= True;
 
+const String	 freac::Config::ResourcesEnableSuperFastModeID			= "EnableSuperFastMode";
+const Bool	 freac::Config::ResourcesEnableSuperFastModeDefault		= False;
+
 const String	 freac::Config::ResourcesNumberOfConversionThreadsID		= "NumberOfConversionThreads";
 const Int	 freac::Config::ResourcesNumberOfConversionThreadsDefault	= 0;
 
@@ -274,7 +277,7 @@ const Bool	 freac::Config::PlaylistUseEncoderOutputDirDefault		= True;
 const String	 freac::Config::PlaylistOutputDirID				= "OutputDir";
 
 const String	 freac::Config::PlaylistFilenamePatternID			= "FilenamePattern";
-const String	 freac::Config::PlaylistFilenamePatternDefault			= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>");
+const String	 freac::Config::PlaylistFilenamePatternDefault			= String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<albumartist> - <album>");
 
 const String	 freac::Config::PlaylistCreateSingleFileID			= "SinglePlaylistFile";
 const Bool	 freac::Config::PlaylistCreateSingleFileDefault			= False;
@@ -300,7 +303,7 @@ const String	 freac::Config::TagsCoverArtWriteToFilesWithReferenceID		= "CoverAr
 const Bool	 freac::Config::TagsCoverArtWriteToFilesWithReferenceDefault	= False;
 
 const String	 freac::Config::TagsCoverArtFilenamePatternID			= "CoverArtFilenamePattern";
-const String	 freac::Config::TagsCoverArtFilenamePatternDefault		= String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<type>");
+const String	 freac::Config::TagsCoverArtFilenamePatternDefault		= String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<type>");
 
 const String	 freac::Config::TagsReadEmbeddedCueSheetsID			= "ReadEmbeddedCueSheets";
 const Int	 freac::Config::TagsReadEmbeddedCueSheetsDefault		= True;

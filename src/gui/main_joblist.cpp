@@ -17,6 +17,7 @@
 #include <utilities.h>
 
 #include <jobs/job.h>
+#include <jobs/engine/convert.h>
 
 #include <gui/player.h>
 #include <gui/edit_folder.h>
@@ -262,7 +263,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	htsp_edit_title->onActivate.Connect(&MicroMenu::Hide, menu_edit_title);
 
 	pos.y -= 27;
-	size.cx = 25;
+	size.cx = Font().GetUnscaledTextSizeX("000") + 7;
 
 	info_edit_track = new EditBox(NIL, pos, size, 3);
 	info_edit_track->SetFlags(EDB_NUMERIC);
@@ -278,7 +279,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	pos.x += (7 + info_text_year->GetUnscaledTextWidth());
 	pos.y += 3;
-	size.cx = 31;
+	size.cx = Font().GetUnscaledTextSizeX("0000") + 7;
 
 	info_edit_year = new EditBox(NIL, pos, size, 4);
 	info_edit_year->SetFlags(EDB_NUMERIC);
@@ -506,32 +507,58 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 		info_edit_genre->Hide();
 	}
 
-	/* Connect slots.
+	/* Listen to configuration changes.
 	 */
 	BoCA::Settings::Get()->onChangeConfigurationSettings.Connect(&LayerJoblist::OnChangeConfigurationSettings, this);
 	BoCA::Settings::Get()->onChangeLanguageSettings.Connect(&LayerJoblist::OnChangeLanguageSettings, this);
 
+	/* Listen to joblist changes.
+	 */
 	BoCA::JobList::Get()->onApplicationModifyTrack.Connect(&LayerJoblist::OnJoblistModifyTrack, this);
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Connect(&LayerJoblist::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationSelectTrack.Connect(&LayerJoblist::OnJoblistSelectTrack, this);
 
 	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Connect(&LayerJoblist::OnJoblistRemoveAllTracks, this);
 
+	/* Listen to conversion progress updates.
+	 */
+	JobConvert::onStartEncoding.Connect(&LayerJoblist::OnEncoderStartEncoding, this);
+	JobConvert::onFinishEncoding.Connect(&LayerJoblist::OnEncoderFinishEncoding, this);
+
+	JobConvert::onEncodeTrack.Connect(&LayerJoblist::OnEncoderEncodeTrack, this);
+
+	JobConvert::onTrackProgress.Connect(&LayerJoblist::OnEncoderTrackProgress, this);
+	JobConvert::onTotalProgress.Connect(&LayerJoblist::OnEncoderTotalProgress, this);
+
+	/* Connect other slots.
+	 */
 	onChangeSize.Connect(&LayerJoblist::OnChangeSize, this);
 }
 
 freac::LayerJoblist::~LayerJoblist()
 {
-	/* Disconnect slots.
+	/* Disconnect configuration change slots.
 	 */
 	BoCA::Settings::Get()->onChangeConfigurationSettings.Disconnect(&LayerJoblist::OnChangeConfigurationSettings, this);
 	BoCA::Settings::Get()->onChangeLanguageSettings.Disconnect(&LayerJoblist::OnChangeLanguageSettings, this);
 
+	/* Disconnect joblist change slots.
+	 */
 	BoCA::JobList::Get()->onApplicationModifyTrack.Disconnect(&LayerJoblist::OnJoblistModifyTrack, this);
 	BoCA::JobList::Get()->onApplicationRemoveTrack.Disconnect(&LayerJoblist::OnJoblistRemoveTrack, this);
 	BoCA::JobList::Get()->onApplicationSelectTrack.Disconnect(&LayerJoblist::OnJoblistSelectTrack, this);
 
 	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Disconnect(&LayerJoblist::OnJoblistRemoveAllTracks, this);
+
+	/* Disconnect conversion progress update slots.
+	 */
+	JobConvert::onStartEncoding.Disconnect(&LayerJoblist::OnEncoderStartEncoding, this);
+	JobConvert::onFinishEncoding.Disconnect(&LayerJoblist::OnEncoderFinishEncoding, this);
+
+	JobConvert::onEncodeTrack.Disconnect(&LayerJoblist::OnEncoderEncodeTrack, this);
+
+	JobConvert::onTrackProgress.Disconnect(&LayerJoblist::OnEncoderTrackProgress, this);
+	JobConvert::onTotalProgress.Disconnect(&LayerJoblist::OnEncoderTotalProgress, this);
 
 	/* Clear tracks.
 	 */
@@ -641,16 +668,16 @@ Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 
 	/* Update title info area.
 	 */
-	info_edit_title->SetX(clientSize.cx - 226 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth());
-	info_edit_title->SetWidth(219 + info_text_genre->GetUnscaledTextWidth() + info_text_year->GetUnscaledTextWidth());
-	info_edit_track->SetX(clientSize.cx - 226 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth());
-	info_text_year->SetX(info_edit_track->GetX() + 32);
+	info_edit_title->SetX(clientSize.cx - 170 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - info_edit_year->GetWidth() - info_edit_track->GetWidth());
+	info_edit_title->SetWidth(163 + info_text_genre->GetUnscaledTextWidth() + info_text_year->GetUnscaledTextWidth() + info_edit_year->GetWidth() + info_edit_track->GetWidth());
+	info_edit_track->SetX(info_edit_title->GetX());
+	info_text_year->SetX(info_edit_track->GetX() + info_edit_track->GetWidth() + 7);
 	info_edit_year->SetX(info_text_year->GetX() + info_text_year->GetUnscaledTextWidth() + 7);
-	info_text_genre->SetX(info_edit_year->GetX() + 38);
+	info_text_genre->SetX(info_edit_year->GetX() + info_edit_year->GetWidth() + 7);
 	info_text_title->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
-	info_text_track->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
-	info_edit_artist->SetWidth(clientSize.cx - 240 - info_edit_artist->GetX() - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()));
-	info_edit_album->SetWidth(clientSize.cx - 240 - info_edit_album->GetX() - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()));
+	info_text_track->SetX(info_text_title->GetX());
+	info_edit_artist->SetWidth(clientSize.cx - 21 - info_edit_artist->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - info_edit_title->GetWidth());
+	info_edit_album->SetWidth(info_edit_artist->GetWidth());
 	info_edit_genre->SetX(clientSize.cx - 142);
 
 	htsp_edit_title->SetWidth(info_edit_title->GetWidth());
@@ -1322,6 +1349,8 @@ PopupMenu *freac::LayerJoblist::GetContextMenu()
 
 Void freac::LayerJoblist::OnEncoderStartEncoding()
 {
+	OnEncoderFinishEncoding(True);
+
 	BoCA::Config	*config	= BoCA::Config::Get();
 
 	if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault)) btn_skip->Activate();
@@ -1334,9 +1363,6 @@ Void freac::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Joblist");
-
-	edb_filename->SetText(i18n->TranslateString("none"));
-	edb_format->SetText(i18n->TranslateString("unknown"));
 
 	edb_trackPercent->SetText(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"));
 	edb_trackTime->SetText("00:00");
@@ -1358,6 +1384,11 @@ Void freac::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 
 	previousTrackSeconds = -10;
 	previousTotalSeconds = -10;
+
+	if (JobConvert::IsConverting()) return;
+
+	edb_filename->SetText(i18n->TranslateString("none"));
+	edb_format->SetText(i18n->TranslateString("unknown"));
 
 	btn_skip->Deactivate();
 

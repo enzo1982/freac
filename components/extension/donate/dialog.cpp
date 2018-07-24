@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -11,6 +11,8 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include "dialog.h"
+
+Array<PaymentMethod *(*)()>	*BoCA::DonateDialog::factories = NIL;
 
 BoCA::DonateDialog::DonateDialog()
 {
@@ -34,41 +36,59 @@ BoCA::DonateDialog::DonateDialog()
 
 	mainWnd->Add(button_close);
 
-	text_donate		= new Text(i18n->TranslateString("Please help keep this software free by supporting the %1 project\nwith a donation.\n\nClick one of the buttons below to make a donation using PayPal:").Replace("%1", "fre:ac"), Point(7, 45));
-	text_donate_other	= new Text(i18n->TranslateString("You can also send money directly to %1 using PayPal.\n\nPlease write to %1 if you would like to donate using\nelectronic transfer, mail a cheque or send money by mail.").Replace("%1", "donate@freac.org"), Point(7, text_donate->GetUnscaledTextHeight() + 116));
+	Size	 tabSize;
+
+	tab_methods		= new TabWidget(Point(7, 7), Size(100, 24));
+
+	foreach (PaymentMethod *(*factory)(), *factories)
+	{
+		PaymentMethod	*method = factory();
+
+		methods.Add(method, method->GetID().ComputeCRC32());
+	}
+
+	const Array<String>	&order = i18n->TranslateString("paypal,donorbox,bitcoin,ethereum").Explode(",");
+
+	foreach (const String &id, order)
+	{
+		PaymentMethod	*method = methods.Get(id.ComputeCRC32());
+
+		if (method == NIL) continue;
+
+		Layer		*layer	= method->GetLayer();
+
+		tabSize.cx = Math::Max(tabSize.cx, layer->GetWidth());
+		tabSize.cy = Math::Max(tabSize.cy, layer->GetHeight());
+
+		tab_methods->Add(layer, method->GetLogo());
+	}
+
+	String::ExplodeFinish();
 
 	text_intro		= new Text(i18n->TranslateString("Please support this project!"), Point(7, 12));
 	text_intro->SetFont(Font(Font::Default, 12, Font::Bold));
-	text_intro->SetX((Math::Max(text_intro->GetUnscaledTextWidth(), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())) + 9 - text_intro->GetUnscaledTextWidth()) / 2);
 
-	text_thanks		= new Text(i18n->TranslateString("Thank you very much!"), Point(7, text_donate->GetUnscaledTextHeight() + text_donate_other->GetUnscaledTextHeight() + 129));
+	text_donate		= new Text(i18n->TranslateString("Please help keep this software free by supporting the %1 project with a\ndonation.").Replace("%1", "fre:ac"), Point(7, text_intro->GetUnscaledTextHeight() + 25));
+	text_donate_other	= new Text(i18n->TranslateString("Please write to %1 if you would like to mail a check or send\nmoney by mail.").Replace("%1", "donate@freac.org"), Point(7, text_donate->GetY() + text_donate->GetUnscaledTextHeight() + tabSize.cy + 40));
+
+	text_thanks		= new Text(i18n->TranslateString("Thank you very much!"), Point(7, text_donate_other->GetY() + text_donate_other->GetUnscaledTextHeight() + 13));
 	text_thanks->SetFont(Font(Font::Default, 12, Font::Bold));
-	text_thanks->SetX((Math::Max(text_intro->GetUnscaledTextWidth(), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())) + 9 - text_thanks->GetUnscaledTextWidth()) / 2);
+
+	Int	 maxElementSize = Math::Max(tabSize.cx + 2, Math::Max(Math::Max(text_intro->GetUnscaledTextWidth(), text_thanks->GetUnscaledTextWidth()), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())));
+
+	tabSize.cx = maxElementSize - 2;
+
+	tab_methods->SetMetrics(Point(7, text_donate->GetY() + text_donate->GetUnscaledTextHeight() + 9), tabSize + Size(2, 24));
+
+	text_intro->SetX((maxElementSize + 12 - text_intro->GetUnscaledTextWidth()) / 2);
+	text_thanks->SetX((maxElementSize + 12 - text_thanks->GetUnscaledTextWidth()) / 2);
+
+	mainWnd->Add(tab_methods);
 
 	mainWnd->Add(text_intro);
 	mainWnd->Add(text_donate);
 	mainWnd->Add(text_donate_other);
 	mainWnd->Add(text_thanks);
-
-	Directory	 dir(Utilities::GetBoCADirectory().Append("freac.extension.donate"));
-
-	if (!dir.Exists()) dir = Utilities::GetBoCADirectory().Append("../freac/freac.extension.donate");
-
-	Bitmap	 image_5     = ImageLoader::Load(File(String(dir).Append("/donate_").Append(i18n->TranslateString("usd")).Append("_5.png")));
-	Bitmap	 image_10    = ImageLoader::Load(File(String(dir).Append("/donate_").Append(i18n->TranslateString("usd")).Append("_10.png")));
-	Bitmap	 image_other = ImageLoader::Load(File(String(dir).Append("/donate_other_").Append(i18n->TranslateString("en")).Append(".png")));
-
-	image_5.SetBackgroundColor(Setup::BackgroundColor);
-	image_10.SetBackgroundColor(Setup::BackgroundColor);
-	image_other.SetBackgroundColor(Setup::BackgroundColor);
-
-	link_donate_5		= new Hyperlink(NIL, image_5, String("file:///").Append(String(dir).Replace("\\", "/")).Append("/donate_").Append(i18n->TranslateString("usd")).Append("_5.html"), Point((Math::Max(text_intro->GetUnscaledTextWidth(), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())) + 21) / 2 - 100, text_donate->GetUnscaledTextHeight() + 56));
-	link_donate_10		= new Hyperlink(NIL, image_10, String("file:///").Append(String(dir).Replace("\\", "/")).Append("/donate_").Append(i18n->TranslateString("usd")).Append("_10.html"), Point((Math::Max(text_intro->GetUnscaledTextWidth(), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())) + 21) / 2 - 30, text_donate->GetUnscaledTextHeight() + 56));
-	link_donate_other	= new Hyperlink(NIL, image_other, String("file:///").Append(String(dir).Replace("\\", "/")).Append("/donate_").Append(i18n->TranslateString("usd")).Append("_other.html"), Point((Math::Max(text_intro->GetUnscaledTextWidth(), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())) + 21) / 2 + 40, text_donate->GetUnscaledTextHeight() + 56));
-
-	mainWnd->Add(link_donate_5);
-	mainWnd->Add(link_donate_10);
-	mainWnd->Add(link_donate_other);
 
 	remind = config->GetIntValue("Donate", "ShowAgain", True);
 
@@ -89,7 +109,7 @@ BoCA::DonateDialog::DonateDialog()
 
 	Rect	 workArea = Screen::GetActiveScreenWorkArea();
 
-	Size	 wndSize  = Size(Math::Max(text_intro->GetUnscaledTextWidth(), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())) + 21, text_donate->GetUnscaledTextHeight() + text_donate_other->GetUnscaledTextHeight() + 236);
+	Size	 wndSize  = Size(maxElementSize + 22, text_thanks->GetY() + text_thanks->GetUnscaledTextHeight() + 87);
 	Point	 wndPos	  = workArea.GetPosition() + Point((workArea.GetSize().cx - wndSize.cx) / 2, (workArea.GetSize().cy - wndSize.cy) / 2);
 
 	mainWnd->SetMetrics(wndPos, wndSize);
@@ -104,14 +124,14 @@ BoCA::DonateDialog::~DonateDialog()
 
 	DeleteObject(button_close);
 
+	DeleteObject(tab_methods);
+
+	foreach (PaymentMethod *method, methods) delete method;
+
 	DeleteObject(text_intro);
 	DeleteObject(text_donate);
 	DeleteObject(text_donate_other);
 	DeleteObject(text_thanks);
-
-	DeleteObject(link_donate_5);
-	DeleteObject(link_donate_10);
-	DeleteObject(link_donate_other);
 
 	DeleteObject(check_remind);
 }
@@ -130,4 +150,31 @@ Void BoCA::DonateDialog::Close()
 	mainWnd->Close();
 
 	config->SetIntValue("Donate", "ShowAgain", remind);
+}
+
+Bool BoCA::DonateDialog::RegisterPaymentMethod(PaymentMethod *(*factory)())
+{
+	if (factories == NIL) factories = new Array<PaymentMethod *(*)()>;
+
+	factories->Add(factory);
+
+	return True;
+}
+
+const Array<PaymentMethod *(*)()> &BoCA::DonateDialog::GetPaymentMethodFactories()
+{
+	if (factories == NIL) factories = new Array<PaymentMethod *(*)()>;
+
+	return *factories;
+}
+
+Bool BoCA::DonateDialog::FreePaymentMethodFactories()
+{
+	if (factories == NIL) return True;
+
+	delete factories;
+
+	factories = NIL;
+
+	return True;
 }

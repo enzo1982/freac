@@ -15,7 +15,7 @@
 #include <utilities.h>
 #include <freac.h>
 
-#include <jobs/engine/convert.h>
+#include <engine/locking.h>
 
 #include <engine/decoder.h>
 #include <engine/processor.h>
@@ -63,13 +63,8 @@ Void freac::Playback::Free()
 
 Void freac::Playback::Play(const Track &iTrack)
 {
-	if (JobConvert::IsConverting())
-	{
-		BoCA::Utilities::ErrorMessage("Cannot play a file while encoding!");
-
-		return;
-	}
-
+	/* Resume playback if it is paused.
+	 */
 	if (playing && paused && track.GetTrackID() == iTrack.GetTrackID())
 	{
 		Resume();
@@ -77,8 +72,21 @@ Void freac::Playback::Play(const Track &iTrack)
 		return;
 	}
 
+	/* Stop playback if already playing.
+	 */
 	if (playing) Stop();
 
+	/* Lock device in case this is a CD track.
+	 */
+	if (!Locking::LockDeviceForTrack(iTrack))
+	{
+		BoCA::Utilities::ErrorMessage("Cannot play a CD track while ripping from the same drive!");
+
+		return;
+	}
+
+	/* Play selected track.
+	 */
 	track	= iTrack;
 
 	playing	= True;
@@ -105,6 +113,8 @@ Int freac::Playback::PlayThread()
 	{
 		delete decoder;
 
+		Locking::UnlockDeviceForTrack(track);
+
 		BoCA::Config::Free(config);
 
 		playing = False;
@@ -124,6 +134,8 @@ Int freac::Playback::PlayThread()
 			delete decoder;
 			delete processor;
 
+			Locking::UnlockDeviceForTrack(track);
+
 			BoCA::Config::Free(config);
 
 			playing = False;
@@ -136,7 +148,8 @@ Int freac::Playback::PlayThread()
 
 	/* Create output component.
 	 */
-	Registry	&boca = Registry::Get();
+	Int		 error = Error();
+	Registry	&boca  = Registry::Get();
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 	{
@@ -144,45 +157,39 @@ Int freac::Playback::PlayThread()
 
 		output = (OutputComponent *) boca.CreateComponentByID(boca.GetComponentID(i));
 
-		if (output != NIL) break;
+		if (output == NIL) continue;
+
+		output->SetConfiguration(config);
+		output->SetAudioTrackInfo(trackToPlay);
+
+		if (output->Activate())
+		{
+			/* Enter playback loop.
+			 */
+			if (!output->GetErrorState()) Loop(decoder, processor);
+
+			/* Clean up.
+			 */
+			output->Deactivate();
+
+			error = Success();
+		}
+
+		boca.DeleteComponent(output);
+
+		break;
 	}
-
-	if (output == NIL)
-	{
-		delete decoder;
-		delete processor;
-
-		BoCA::Config::Free(config);
-
-		playing = false;
-
-		return Error();
-	}
-
-	output->SetConfiguration(config);
-	output->SetAudioTrackInfo(trackToPlay);
-
-	if (output->Activate())
-	{
-		/* Enter playback loop.
-		 */
-		if (!output->GetErrorState()) Loop(decoder, processor);
-
-		/* Clean up.
-		 */
-		output->Deactivate();
-	}
-
-	boca.DeleteComponent(output);
 
 	delete decoder;
 	delete processor;
+
+	Locking::UnlockDeviceForTrack(track);
 
 	BoCA::Config::Free(config);
 
 	playing = false;
 
-	return Success();
+	return error;
 }
 
 Void freac::Playback::Loop(Decoder *decoder, Processor *processor)
@@ -321,6 +328,8 @@ Void freac::Playback::Stop()
 {
 	if (!playing) return;
 
+	/* Request stop of playback.
+	 */
 	if (!stop)
 	{
 		stop = True;

@@ -11,13 +11,20 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/cddb/manage.h>
+
 #include <config.h>
-#include <resources.h>
 #include <dllinterfaces.h>
+#include <utilities.h>
+#include <resources.h>
+
 #include <joblist.h>
+
 #include <cddb/cddb.h>
 #include <cddb/cddbcache.h>
-#include <utilities.h>
+
+#ifdef __WIN32__
+#	include <smooth/init.win32.h>
+#endif
 
 using namespace BoCA;
 
@@ -89,10 +96,14 @@ freac::cddbManageDlg::cddbManageDlg()
 
 	btn_delete	= new Button(i18n->TranslateString("Remove entry"), NIL, Point(188, 69), Size());
 	btn_delete->onAction.Connect(&cddbManageDlg::DeleteEntry, this);
+	btn_delete->SetWidth(Math::Max(80, btn_delete->GetUnscaledTextWidth() + 14));
+	btn_delete->SetX(268 - btn_delete->GetWidth());
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
 	btn_save	= new Button(i18n->TranslateString("Save entry"), NIL, Point(87, 69), Size());
 	btn_save->onAction.Connect(&cddbManageDlg::SaveEntry, this);
+	btn_save->SetWidth(Math::Max(80, btn_save->GetUnscaledTextWidth() + 14));
+	btn_save->SetX(btn_save->GetWidth() + 7);
 	btn_save->SetOrientation(OR_LOWERRIGHT);
 
 	edit_charset->Deactivate();
@@ -116,8 +127,12 @@ freac::cddbManageDlg::cddbManageDlg()
 	mainWnd->Add(btn_save);
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON | WF_MODAL);
-	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 	mainWnd->SetMinimumSize(Size(Math::Max(374, check_updateJoblist->GetWidth() + 206), 210));
+	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
+
+#ifdef __WIN32__
+	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
+#endif
 }
 
 freac::cddbManageDlg::~cddbManageDlg()
@@ -169,7 +184,7 @@ Void freac::cddbManageDlg::OnChangeSize(const Size &nSize)
 
 	list_entries->SetSize(Size((clientSize.cx - 22) / 2, clientSize.cy - 106));
 
-	btn_delete->SetX(clientSize.cx / 2 - 84);
+	btn_delete->SetX(clientSize.cx / 2 - btn_delete->GetWidth() - 4);
 }
 
 Void freac::cddbManageDlg::OK()

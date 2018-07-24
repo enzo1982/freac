@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -31,11 +31,11 @@ Error freac::JobCheckForUpdates::Perform()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-	i18n->SetContext("Updates");
+	i18n->SetContext("Jobs::Update");
 
 	if (!Config::Get()->enable_eUpdate) return Success();
 
-	SetText("Preparing update check...");
+	SetText(i18n->AddEllipsis(i18n->TranslateString("Preparing update check")));
 
 	/* Do not check for updates on first startup.
 	 */
@@ -49,7 +49,7 @@ Error freac::JobCheckForUpdates::Perform()
 	if (startup && configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 2 &&
 		      !configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsUpdatesCheckedID, Config::SettingsUpdatesCheckedDefault))
 	{
-		if (QuickMessage(i18n->TranslateString("%1 can perform an automatic check for online\nprogram updates at startup.\n\nWould you like %1 to look for updates at startup?").Replace("%1", freac::appName), String(freac::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question) == Message::Button::No)
+		if (QuickMessage(i18n->TranslateString("%1 can perform an automatic check for online\nprogram updates at startup.\n\nWould you like %1 to look for updates at startup?", "Updates").Replace("%1", freac::appName), String(freac::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question) == Message::Button::No)
 		{
 			BoCA::Config	*config = BoCA::Config::Get();
 
@@ -61,8 +61,6 @@ Error freac::JobCheckForUpdates::Perform()
 
 	/* Create update context and check for updates.
 	 */
-	SetText("Creating update context...");
-
 #ifdef __WIN32__
 	Void	*context = ex_eUpdate_CreateUpdateContext(freac::appLongName, freac::version, freac::updatePath);
 
@@ -84,22 +82,23 @@ Error freac::JobCheckForUpdates::Perform()
 	}
 
 	i18n->ActivateLanguage(language);
+	i18n->SetContext("Jobs::Update");
 
-	SetText("Contacting update server...");
+	SetText(i18n->AddEllipsis(i18n->TranslateString("Contacting update server")));
 	SetProgress(100);
 
 	Bool	 checkUpdates = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, Config::SettingsCheckForUpdatesDefault);
 
 	if (ex_eUpdate_CheckForNewUpdates(context, !startup) > 0)
 	{
-		SetText("Updates found...");
+		SetText(i18n->TranslateString("Updates found"));
 		SetProgress(1000);
 
-		MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are new updates for %1 available online!\nWould you like to see a list of available updates now?").Replace("%1", freac::appName), String(freac::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
+		MessageDlg	 msgBox(i18n->TranslateString("There are new updates for %1 available online!\nWould you like to see a list of available updates now?", "Updates").Replace("%1", freac::appName), String(freac::appName).Append(" easyUpdate"), Message::Buttons::YesNo, Message::Icon::Question, i18n->TranslateString("Check for updates at startup", "Updates"), &checkUpdates);
 
-		msgBox->ShowDialog();
+		msgBox.ShowDialog();
 
-		if (msgBox->GetButtonCode() == Message::Button::Yes)
+		if (msgBox.GetButtonCode() == Message::Button::Yes)
 		{
 			BoCA::Config	*config = BoCA::Config::Get();
 
@@ -108,25 +107,21 @@ Error freac::JobCheckForUpdates::Perform()
 
 			ex_eUpdate_AutomaticUpdate(context);
 		}
-
-		DeleteObject(msgBox);
 	}
 	else
 	{
-		SetText("No updates found...");
+		SetText(i18n->TranslateString("No updates found"));
 		SetProgress(1000);
 
 		if (!startup)
 		{
-			MessageDlg	*msgBox = new MessageDlg(i18n->TranslateString("There are no updates available at the moment!"), String(freac::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information, i18n->TranslateString("Check for updates at startup"), &checkUpdates);
+			MessageDlg	 msgBox(i18n->TranslateString("There are no updates available at the moment!", "Updates"), String(freac::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information, i18n->TranslateString("Check for updates at startup", "Updates"), &checkUpdates);
 
-			msgBox->ShowDialog();
-
-			DeleteObject(msgBox);
+			msgBox.ShowDialog();
 		}
 		else if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) == 2)
 		{
-			QuickMessage(i18n->TranslateString("There are no updates available at the moment!"), String(freac::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information);
+			QuickMessage(i18n->TranslateString("There are no updates available at the moment!", "Updates"), String(freac::appName).Append(" easyUpdate"), Message::Buttons::Ok, Message::Icon::Information);
 		}
 	}
 

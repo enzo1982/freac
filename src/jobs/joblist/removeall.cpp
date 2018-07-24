@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -35,26 +35,29 @@ Void freac::JobRemoveAllTracks::OnPlanJob(Job *job)
 
 Bool freac::JobRemoveAllTracks::ReadyToRun()
 {
-	if (!BoCA::JobList::Get()->IsLocked())
-	{
-		BoCA::JobList::Get()->Lock();
+	BoCA::JobList	*joblist = BoCA::JobList::Get();
 
-		return True;
-	}
+	if (joblist->IsLocked()) return False;
 
-	return False;
+	joblist->Lock();
+
+	return True;
 }
 
 Error freac::JobRemoveAllTracks::Perform()
 {
-	SetText("Removing all tracks...");
+	BoCA::JobList	*joblist = BoCA::JobList::Get();
+	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
+ 
+	SetText(i18n->AddEllipsis(i18n->TranslateString("Removing all tracks", "Jobs::Joblist")));
 
-	if (BoCA::JobList::Get()->doRemoveAllTracks.Call()) SetText("Removed all tracks from joblist.");
-	else						    SetText("Could not remove tracks from joblist!");
+	joblist->doRemoveAllTracks.Call();
+
+	SetText(i18n->TranslateString("Removed all tracks from joblist", "Jobs::Joblist"));
 
 	SetProgress(1000);
 
-	BoCA::JobList::Get()->Unlock();
+	joblist->Unlock();
 
 	return Success();
 }

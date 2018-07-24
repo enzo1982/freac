@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -22,9 +22,6 @@ BoCA::LayerProtocols::LayerProtocols() : Layer("Protocols")
 
 	list_protocol	= new ListBox(Point(7, 35), Size(500, 360));
 
-	edit_status	= new EditBox(NIL, Point(7, 56), Size(500, 0));
-	edit_status->SetOrientation(OR_LOWERLEFT);
-
 	text_errors	= new Text(NIL, Point(7, 25));
 	text_errors->SetOrientation(OR_LOWERLEFT);
 
@@ -42,12 +39,13 @@ BoCA::LayerProtocols::LayerProtocols() : Layer("Protocols")
 	Add(combo_protocol);
 
 	Add(list_protocol);
-	Add(edit_status);
 
 	Add(text_errors);
 	Add(edit_errors);
 	Add(combo_errors);
 	Add(button_details);
+
+	Deactivate();
 
 	UpdateProtocolList();
 
@@ -80,7 +78,6 @@ BoCA::LayerProtocols::~LayerProtocols()
 	DeleteObject(combo_protocol);
 
 	DeleteObject(list_protocol);
-	DeleteObject(edit_status);
 
 	DeleteObject(text_errors);
 	DeleteObject(edit_errors);
@@ -96,8 +93,7 @@ Void BoCA::LayerProtocols::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.GetWidth(), clientRect.GetHeight());
 
-	list_protocol->SetSize(clientSize - Size(15, 92));
-	edit_status->SetWidth(clientSize.cx - 15);
+	list_protocol->SetSize(clientSize - Size(15, 72));
 
 	combo_errors->SetWidth(clientSize.cx - text_errors->GetUnscaledTextWidth() - 142);
 }
@@ -133,7 +129,7 @@ Void BoCA::LayerProtocols::OnChangeLanguageSettings()
 
 	list_protocol->RemoveAllTabs();
 
-	list_protocol->AddTab(i18n->TranslateString("Time"), 70, OR_RIGHT);
+	list_protocol->AddTab(i18n->TranslateString("Time"), list_protocol->GetFont().GetUnscaledTextSizeX("00:00:00.000") + 4, OR_RIGHT);
 	list_protocol->AddTab(i18n->TranslateString("Message"));
 
 	/* OnChangeSize will correct sizes of any other widgets.
@@ -179,6 +175,8 @@ Void BoCA::LayerProtocols::UpdateProtocolList()
 	}
 
 	if (IsVisible()) surface->EndPaint();
+
+	if (combo_protocol->Length() > 0) Activate();
 }
 
 Void BoCA::LayerProtocols::UpdateProtocol(const String &name)

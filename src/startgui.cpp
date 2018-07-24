@@ -258,14 +258,8 @@ freac::freacGUI::freacGUI()
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowMaximizedID, Config::SettingsWindowMaximizedDefault)) mainWnd->Maximize();
 
-	JobConvert::onStartEncoding.Connect(&LayerJoblist::OnEncoderStartEncoding, tab_layer_joblist);
-	JobConvert::onFinishEncoding.Connect(&LayerJoblist::OnEncoderFinishEncoding, tab_layer_joblist);
-
-	JobConvert::onEncodeTrack.Connect(&LayerJoblist::OnEncoderEncodeTrack, tab_layer_joblist);
-
-	JobConvert::onTrackProgress.Connect(&LayerJoblist::OnEncoderTrackProgress, tab_layer_joblist);
-	JobConvert::onTotalProgress.Connect(&LayerJoblist::OnEncoderTotalProgress, tab_layer_joblist);
-
+	/* Run update check.
+	 */
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsCheckForUpdatesID, Config::SettingsCheckForUpdatesDefault)) (new JobCheckForUpdates(True))->Schedule();
 }
 
@@ -690,11 +684,7 @@ Void freac::freacGUI::ReadCD(Bool autoCDRead)
 	{
 		const Array<String>	&urls = info->GetNthDeviceTrackList(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault));
 
-		Job	*job = new JobAddTracks(urls, autoCDRead);
-
-		if (config->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault)) job->onFinish.Connect(&freacGUI::Convert, this);
-
-		job->Schedule();
+		(new JobAddTracks(urls, autoCDRead))->Schedule();
 
 		boca.DeleteComponent(info);
 	}
@@ -974,6 +964,8 @@ Void freac::freacGUI::FillMenus()
 	mainWnd_menubar->Hide();
 	mainWnd_iconbar->Hide();
 
+	/* Clear menus.
+	 */
 	menu_file->RemoveAllEntries();
 	menu_addsubmenu->RemoveAllEntries();
 	menu_files->RemoveAllEntries();
@@ -999,13 +991,15 @@ Void freac::freacGUI::FillMenus()
 
 	formatMenus.RemoveAll();
 
-	MenuEntry	*entry = NIL;
-
+	/* Fill file menu.
+	 */
 	i18n->SetContext("Menu::File");
 
-	menu_file->AddEntry(i18n->TranslateString("Add"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:21")), menu_addsubmenu);
+	MenuEntry	*entry = NIL;
 
-	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:24")));
+	menu_file->AddEntry(i18n->TranslateString("Add"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/joblist/joblist-add.png")), menu_addsubmenu);
+
+	entry = menu_file->AddEntry(i18n->TranslateString("Remove"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/joblist/joblist-remove.png")));
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	entry->SetShortcut(SC_CONTROL, Keyboard::KeyR, mainWnd);
 
@@ -1019,13 +1013,13 @@ Void freac::freacGUI::FillMenus()
 
 	menu_file->AddEntry();
 
-	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:25")));
+	entry = menu_file->AddEntry(i18n->TranslateString("Clear joblist"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/joblist/joblist-clear.png")));
 	entry->onAction.Connect(&JobList::StartJobRemoveAllTracks, joblist);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyR, mainWnd);
 
 	menu_file->AddEntry();
 
-	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:36")));
+	entry = menu_file->AddEntry(i18n->TranslateString("Exit"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/other/exit.png")));
 	entry->onAction.Connect(&freacGUI::Close, this);
 
 #ifdef __WIN32__
@@ -1034,7 +1028,7 @@ Void freac::freacGUI::FillMenus()
 	entry->SetShortcut(SC_CONTROL, Keyboard::KeyQ, mainWnd);
 #endif
 
-	entry = menu_addsubmenu->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Audio file(s)")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:22")));
+	entry = menu_addsubmenu->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Audio file(s)")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/joblist/joblist-addfiles.png")));
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetShortcut(SC_CONTROL, Keyboard::KeyF, mainWnd);
 
@@ -1056,7 +1050,7 @@ Void freac::freacGUI::FillMenus()
 
 	if (menu_drives->GetNOfEntries() >= 1)
 	{
-		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:23")));
+		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/joblist/joblist-adddisc.png")));
 		entry->onAction.Connect(&freacGUI::ReadCD, this);
 		entry->SetShortcut(SC_CONTROL, Keyboard::KeyD, mainWnd);
 	}
@@ -1072,15 +1066,17 @@ Void freac::freacGUI::FillMenus()
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, menu_drives);
 	}
 
+	/* Fill database menu.
+	 */
 	i18n->SetContext("Menu::Database");
 
-	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:26")));
+	entry = menu_database->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-query.png")));
 	entry->onAction.Connect(&freacGUI::QueryCDDB, this);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyQ, mainWnd);
 
 	if (menu_drives->GetNOfEntries() >= 1)
 	{
-		entry = menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Submit CDDB data")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:27")));
+		entry = menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Submit CDDB data")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-edit.png")));
 		entry->onAction.Connect(&freacGUI::SubmitCDDBData, this);
 		entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyS, mainWnd);
 
@@ -1106,16 +1102,18 @@ Void freac::freacGUI::FillMenus()
 		menu_database->AddEntry(i18n->TranslateString("Automatic CDDB queries"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault));
 	}
 
-	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:26")))->onAction.Connect(&freacGUI::QueryCDDB, this);
+	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-query.png")))->onAction.Connect(&freacGUI::QueryCDDB, this);
 	menu_database_query->AddEntry(i18n->TranslateString("Query CDDB database later"))->onAction.Connect(&freacGUI::QueryCDDBLater, this);
 
+	/* Fill options menu.
+	 */
 	i18n->SetContext("Menu::Options");
 
-	entry = menu_options->AddEntry(i18n->AddEllipsis(i18n->TranslateString("General settings")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:28")));
+	entry = menu_options->AddEntry(i18n->AddEllipsis(i18n->TranslateString("General settings")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/settings/settings.png")));
 	entry->onAction.Connect(&freacGUI::ConfigureSettings, this);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyC, mainWnd);
 
-	entry = menu_options->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Configure selected encoder")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:29")));
+	entry = menu_options->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Configure selected encoder")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/settings/settings-codec.png")));
 	entry->onAction.Connect(&freacGUI::ConfigureEncoder, this);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyE, mainWnd);
 
@@ -1135,9 +1133,11 @@ Void freac::freacGUI::FillMenus()
 	if (menu_seldrive->GetNOfEntries() > 1)
 	{
 		menu_options->AddEntry();
-		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:30")), menu_seldrive);
+		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/other/cd-drive.png")), menu_seldrive);
 	}
 
+	/* Fill processing menu.
+	 */
 	i18n->SetContext("Menu::Processing");
 
 	entry = menu_processing->AddEntry(i18n->TranslateString("Enable signal processing"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault));
@@ -1172,14 +1172,16 @@ Void freac::freacGUI::FillMenus()
 
 	ToggleSignalProcessing();
 
+	/* Fill conversion menu.
+	 */
 	i18n->SetContext("Menu::Encode");
 
-	entry = menu_encode->AddEntry(i18n->TranslateString(currentConfig->deleteAfterEncoding ? "Start encoding (deleting original files)" : "Start encoding"), ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "freac.pci:38" : "freac.pci:31")));
+	entry = menu_encode->AddEntry(i18n->TranslateString(currentConfig->deleteAfterEncoding ? "Start encoding (deleting original files)" : "Start encoding"), ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "icons/conversion/conversion-start-warning.png" : "icons/conversion/conversion-start.png")));
 	entry->onAction.Connect(&freacGUI::Convert, this);
 	entry->SetShortcut(SC_CONTROL, Keyboard::KeyE, mainWnd);
 
-	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:32")))->onAction.Connect(&freacGUI::PauseResumeEncoding, this);
-	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:33")))->onAction.Connect(&freacGUI::StopEncoding, this);
+	menu_encode->AddEntry(i18n->TranslateString("Pause/resume encoding"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/conversion/conversion-pause.png")))->onAction.Connect(&freacGUI::PauseResumeEncoding, this);
+	menu_encode->AddEntry(i18n->TranslateString("Stop encoding"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/conversion/conversion-stop.png")))->onAction.Connect(&freacGUI::StopEncoding, this);
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 	{
@@ -1243,13 +1245,15 @@ Void freac::freacGUI::FillMenus()
 
 	menu_encode->AddEntry();
 
-	menu_encode->AddEntry(i18n->TranslateString("Encoder options"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:29")), menu_encoder_options);
+	menu_encode->AddEntry(i18n->TranslateString("Encoder options"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/settings/settings-codec.png")), menu_encoder_options);
 
 	ToggleUseInputDirectory();
 
+	/* Fill help menu.
+	 */
 	i18n->SetContext("Menu::Help");
 
-	entry = menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Help topics")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:34")));
+	entry = menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Help topics")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/other/help.png")));
 	entry->onAction.Connect(&freacGUI::ShowHelp, this);
 	entry->SetShortcut(0, Keyboard::KeyF1, mainWnd);
 
@@ -1267,8 +1271,10 @@ Void freac::freacGUI::FillMenus()
 	}
 
 	menu_help->AddEntry();
-	menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("About %1").Replace("%1", freac::appName)), ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:35")))->onAction.Connect(&freacGUI::About, this);
+	menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("About %1").Replace("%1", freac::appName)), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/other/info.png")))->onAction.Connect(&freacGUI::About, this);
 
+	/* Add entries to menubar.
+	 */
 	i18n->SetContext("Menu");
 
 	mainWnd_menubar->RemoveAllEntries();
@@ -1279,69 +1285,82 @@ Void freac::freacGUI::FillMenus()
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Processing"), NIL, menu_processing);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
 
-	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
-
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Help"), NIL, menu_help)->SetOrientation(OR_RIGHT);
 
+	/* Fill toolbar.
+	 */
 	i18n->SetContext("Toolbar");
 
 	mainWnd_iconbar->RemoveAllEntries();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:1")), menu_files);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/joblist/joblist-addfiles.png")), menu_files);
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Add audio file(s) to the joblist"));
 
 	if (menu_drives->GetNOfEntries() >= 1)
 	{
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:2")), menu_drives->GetNOfEntries() > 1 ? menu_drives : NIL);
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/joblist/joblist-adddisc.png")), menu_drives->GetNOfEntries() > 1 ? menu_drives : NIL);
 		entry->onAction.Connect(&freacGUI::ReadCD, this);
 		entry->SetTooltipText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:3")));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/joblist/joblist-remove.png")));
 	entry->onAction.Connect(&JobList::RemoveSelectedTrack, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Remove the selected entry from the joblist"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:4")));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/joblist/joblist-clear.png")));
 	entry->onAction.Connect(&JobList::StartJobRemoveAllTracks, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Clear the entire joblist"));
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:5")), menu_drives->GetNOfEntries() >= 1 ? menu_database_query : NIL);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-query.png")), menu_drives->GetNOfEntries() >= 1 ? menu_database_query : NIL);
 	entry->onAction.Connect(&freacGUI::QueryCDDB, this);
 	entry->SetTooltipText(i18n->TranslateString("Query CDDB database"));
 
 	if (menu_drives->GetNOfEntries() >= 1)
 	{
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:6")));
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-edit.png")));
 		entry->onAction.Connect(&freacGUI::SubmitCDDBData, this);
 		entry->SetTooltipText(i18n->AddEllipsis(i18n->TranslateString("Submit CDDB data")));
 	}
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:7")), config->GetNOfConfigurations() > 1 ? menu_configurations : NIL);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/settings/settings.png")), config->GetNOfConfigurations() > 1 ? menu_configurations : NIL);
 	entry->onAction.Connect(&freacGUI::ConfigureSettings, this);
 	entry->SetTooltipText(i18n->TranslateString("Configure general settings"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:8")));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/settings/settings-codec.png")));
 	entry->onAction.Connect(&freacGUI::ConfigureEncoder, this);
 	entry->SetTooltipText(i18n->TranslateString("Configure the selected audio encoder"));
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "freac.pci:37" : "freac.pci:9")), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "icons/conversion/conversion-start-warning.png" : "icons/conversion/conversion-start.png")), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
 	entry->onAction.Connect(&freacGUI::Convert, this);
 	entry->SetTooltipText(i18n->TranslateString(currentConfig->deleteAfterEncoding ? "Start the encoding process (deleting original files)" : "Start the encoding process"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:10")));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/conversion/conversion-pause.png")));
 	entry->onAction.Connect(&freacGUI::PauseResumeEncoding, this);
 	entry->SetTooltipText(i18n->TranslateString("Pause/resume encoding"));
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("freac.pci:11")));
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/conversion/conversion-stop.png")));
 	entry->onAction.Connect(&freacGUI::StopEncoding, this);
 	entry->SetTooltipText(i18n->TranslateString("Stop encoding"));
+
+	/* Set size of iconbar entries to 28x28 pixels.
+	 */
+	for (Int i = 0; i < mainWnd_iconbar->GetNOfObjects(); i++)
+	{
+ 		if (mainWnd_iconbar->GetNthObject(i)->GetObjectType() != MenuEntry::classID) continue;
+
+		entry = (MenuEntry *) mainWnd_iconbar->GetNthObject(i);
+
+		if (entry->GetBitmap() != NIL) entry->SetSize(Size(28 + (entry->GetPopupMenu() != NIL ? 12 : 0), 28));
+	}
+
+	mainWnd_iconbar->SetHeight(30);
 
 	mainWnd_menubar->Show();
 	mainWnd_iconbar->Show();
@@ -1398,15 +1417,22 @@ Void freac::freacGUI::Convert()
 
 	if (S::System::System::Clock() - previousTicks < 250) return;
 
-	/* Warn about active conversion.
+	/* Create array of tracks to convert.
 	 */
-	BoCA::I18n	*i18n = BoCA::I18n::Get();
+	Array<Track>	 tracks;
 
-	if (JobConvert::IsConverting() && QuickMessage(i18n->TranslateString("A conversion process is already active!\n\nWould you like to enqueue this conversion?", "Messages"), i18n->TranslateString("Info"), Message::Buttons::YesNo, Message::Icon::Question) != Message::Button::Yes) return;
+	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
+	{
+		if (!joblist->GetNthEntry(i)->IsMarked()) continue;
+
+		const Track	&track = joblist->GetNthTrack(i);
+
+		tracks.Add(track, track.GetTrackID());
+	}
 
 	/* Start conversion.
 	 */
-	Converter().Convert(joblist);
+	Converter().Convert(tracks);
 
 	previousTicks = S::System::System::Clock();
 }

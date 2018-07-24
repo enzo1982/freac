@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -16,43 +16,48 @@
 #include <smooth.h>
 #include <boca.h>
 
-using namespace smooth;
-using namespace smooth::GUI;
-using namespace smooth::GUI::Dialogs;
+#include "methods/method.h"
 
-using namespace BoCA;
+using namespace smooth::GUI::Dialogs;
 
 namespace BoCA
 {
 	class DonateDialog : public Dialog
 	{
 		private:
-			GUI::Window	*mainWnd;
-			Titlebar	*mainWnd_titlebar;
+			static Array<PaymentMethod *(*)()>		*factories;
 
-			Divider		*divider;
+			GUI::Window					*mainWnd;
+			Titlebar					*mainWnd_titlebar;
 
-			Button		*button_close;
+			Divider						*divider;
 
-			Text		*text_intro;
-			Text		*text_donate;
-			Text		*text_donate_other;
-			Text		*text_thanks;
+			Button						*button_close;
 
-			Hyperlink	*link_donate_5;
-			Hyperlink	*link_donate_10;
-			Hyperlink	*link_donate_other;
+			Array<PaymentMethod *>				 methods;
 
-			CheckBox	*check_remind;
+			TabWidget					*tab_methods;
 
-			Bool		 remind;
+			Text						*text_intro;
+			Text						*text_donate;
+			Text						*text_donate_other;
+			Text						*text_thanks;
+
+			CheckBox					*check_remind;
+
+			Bool						 remind;
 		public:
-					 DonateDialog();
-					~DonateDialog();
+			static Bool					 RegisterPaymentMethod(PaymentMethod *(*)());
 
-			const Error	&ShowDialog();
+			static const Array<PaymentMethod *(*)()>	&GetPaymentMethodFactories();
+			static Bool					 FreePaymentMethodFactories();
+
+									 DonateDialog();
+									~DonateDialog();
+
+			const Error					&ShowDialog();
 		slots:
-			Void		 Close();
+			Void						 Close();
 	};
 };
 

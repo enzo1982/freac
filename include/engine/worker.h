@@ -30,6 +30,8 @@ namespace freac
 		protected:
 			const BoCA::Config				*configuration;
 
+			Int						 conversionID;
+
 			String						 logName;
 
 			Int						 numThreads;
@@ -54,7 +56,7 @@ namespace freac
 
 			virtual Int					 Convert();
 		public:
-									 ConvertWorker(const BoCA::Config *);
+									 ConvertWorker(const BoCA::Config *, Int);
 			virtual						~ConvertWorker();
 
 			Int						 Pause(Bool);

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">easyUpdate</property>
+    <property name="version">0.3</property>
+    <property name="language">Bulgarian / Български</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="author">Martin Deyanov &lt;martin.deyanov@gmail.com&gt;, KalinM &lt;kalinm@gbg.bg&gt;</property>
+    <property name="url">http://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="1" string="Cancel">Отказ</entry>
+    <entry id="2" string="Install">Инсталиране</entry>
+    <entry id="3" string="Show unstable releases">Показване на нестабилни издания</entry>
+    <entry id="4" string="Select the updated program version to be installed:">Изберете обновената версия на програмата за инсталиране:</entry>
+    <entry id="5" string="You can select optional components to be installed:">Можете да изберете допълнителни компоненти за инсталиране:</entry>
+    <entry id="6" string="Version ID">ID на версията</entry>
+    <entry id="7" string="Package">Пакет</entry>
+    <entry id="8" string="Description">Описание</entry>
+    <entry id="9" string="Latest">Най-нови</entry>
+    <entry id="10" string="Size">Размер</entry>
+    <entry id="11" string="Yes">Да</entry>
+    <entry id="12" string="No">Не</entry>
+    <entry id="13" string="unknown">неизвестно</entry>
+    <entry id="14" string="Installing files...">Инсталиране на файлове...</entry>
+    <entry id="15" string="Installing file:">Инсталиране на файл:</entry>
+    <entry id="16" string="Downloading file:">Изтегляне на файл:</entry>
+    <entry id="17" string="Update complete">Обновяването завърши</entry>
+    <entry id="18" string="Your application has been successfully updated!">Вашето приложение беше обновено успешно!</entry>
+    <entry id="19" string="Error">Грешка</entry>
+    <entry id="20" string="Error downloading package!">Грешка при изтеглянето на пакета!</entry>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Грешка при инсталиране на &quot;%1&quot;!&#10;&#10;Достъпът до папката на приложението беше отказан.</entry>
+  </data>
+</LangFile>

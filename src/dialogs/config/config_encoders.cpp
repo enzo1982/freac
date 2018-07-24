@@ -55,12 +55,11 @@ freac::ConfigureEncoders::ConfigureEncoders()
 	}
 
 	button_config	= new Button(i18n->TranslateString("Configure encoder"), NIL, Point(412, 11), Size(130, 0));
+	button_config->SetOrientation(OR_UPPERRIGHT);
 	button_config->onAction.Connect(&ConfigureEncoders::ConfigureEncoder, this);
 
 	button_config->SetWidth(Math::Max(80, button_config->GetUnscaledTextWidth() + 14));
-	button_config->SetX(542 - button_config->GetWidth());
-
-	combo_encoder->SetWidth(524 - button_config->GetWidth());
+	button_config->SetX(button_config->GetWidth() + 10);
 
 	group_encoder->Add(combo_encoder);
 	group_encoder->Add(button_config);
@@ -92,16 +91,32 @@ freac::ConfigureEncoders::ConfigureEncoders()
 	group_options->Add(check_removeTracks);
 	group_options->Add(check_addEncodedTracks);
 
-	group_outdir	= new GroupBox(i18n->TranslateString("Output folder"), Point(7, 166), Size(552, 93));
+	Int	 maxTextSize = Math::Max(Math::Max(Math::Max(check_onTheFly->GetUnscaledTextWidth(), check_keepWaves->GetUnscaledTextWidth() + 17), check_singleFile->GetUnscaledTextWidth()), Math::Max(check_removeTracks->GetUnscaledTextWidth(), check_addEncodedTracks->GetUnscaledTextWidth() + 17));
 
-	check_useInputDir	= new CheckBox(i18n->TranslateString("Use input file folder if possible"), Point(10, 14), Size(444, 0), &useInputDir);
+	check_onTheFly->SetWidth(Math::Max(261, maxTextSize + 21));
+	check_keepWaves->SetWidth(check_onTheFly->GetWidth() - 17);
+	check_singleFile->SetWidth(check_onTheFly->GetWidth());
+
+	check_removeTracks->SetX(check_onTheFly->GetWidth() + 19);
+	check_removeTracks->SetWidth(check_onTheFly->GetWidth());
+	check_addEncodedTracks->SetX(check_onTheFly->GetWidth() + 36);
+	check_addEncodedTracks->SetWidth(check_onTheFly->GetWidth() - 17);
+
+	group_options->SetWidth(2 * check_onTheFly->GetWidth() + 30);
+
+	group_encoder->SetWidth(group_options->GetWidth());
+	combo_encoder->SetWidth(group_encoder->GetWidth() - button_config->GetWidth() - 28);
+
+	group_outdir	= new GroupBox(i18n->TranslateString("Output folder"), Point(7, 166), Size(group_options->GetWidth(), 93));
+
+	check_useInputDir	= new CheckBox(i18n->TranslateString("Use input file folder if possible"), Point(10, 14), Size(group_outdir->GetWidth() - 108, 0), &useInputDir);
 	check_useInputDir->onAction.Connect(&ConfigureEncoders::ToggleUseInputDir, this);
 
-	check_allowOverwrite	= new CheckBox(i18n->TranslateString("Allow overwriting input file"), Point(27, 37), Size(427, 0), &allowOverwrite);
+	check_allowOverwrite	= new CheckBox(i18n->TranslateString("Allow overwriting input file"), Point(27, 37), Size(check_useInputDir->GetWidth() - 17, 0), &allowOverwrite);
 
 	ToggleUseInputDir();
 
-	edit_outdir	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault), Point(10, 62), Size(444, 0), 0);
+	edit_outdir	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault), Point(10, 62), Size(check_useInputDir->GetWidth(), 0), 0);
 	list_outdir	= new List();
 
 	for (Int i = 1; i <= 5; i++)
@@ -114,7 +129,8 @@ freac::ConfigureEncoders::ConfigureEncoders()
 
 	edit_outdir->SetDropDownList(list_outdir);
 
-	button_outdirBrowse	= new Button(i18n->TranslateString("Select"), NIL, Point(462, 61), Size(0, 0));
+	button_outdirBrowse	= new Button(i18n->TranslateString("Select"), NIL, Point(90, 61), Size(0, 0));
+	button_outdirBrowse->SetOrientation(OR_UPPERRIGHT);
 	button_outdirBrowse->onAction.Connect(&ConfigureEncoders::SelectDir, this);
 
 	group_outdir->Add(check_useInputDir);
@@ -122,10 +138,10 @@ freac::ConfigureEncoders::ConfigureEncoders()
 	group_outdir->Add(edit_outdir);
 	group_outdir->Add(button_outdirBrowse);
 
-	group_filename	= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 271), Size(552, 90));
+	group_filename	= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 271), Size(group_options->GetWidth(), 90));
 
 	text_filename	= new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(10, 15));
-	edit_filename	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault), Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(525 - text_filename->GetUnscaledTextWidth(), 0), 0);
+	edit_filename	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault), Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(group_filename->GetWidth() - text_filename->GetUnscaledTextWidth() - 27, 0), 0);
 	list_filename	= new List();
 
 	Int	 customEntries = 0;
@@ -144,20 +160,19 @@ freac::ConfigureEncoders::ConfigureEncoders()
 
 	list_filename->AddEntry(String("<artist> - <title>"));
 	list_filename->AddEntry(String("<artist>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <title>"));
-	list_filename->AddEntry(String("<artist> - <album> - <track> - <title>"));
-	list_filename->AddEntry(String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <title>"));
-	list_filename->AddEntry(String("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album> - <track> - <title>"));
 	list_filename->AddEntry(String("<track> - <artist> - <title>"));
-	list_filename->AddEntry(String("<album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <artist> - <title>"));
-	list_filename->AddEntry(String("<genre>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <title>"));
-	list_filename->AddEntry(String("<filetype>").Append(Directory::GetDirectoryDelimiter()).Append("<artist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <title>"));
+	list_filename->AddEntry(String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <artist> - <title>"));
+	list_filename->AddEntry(String("<albumartist> - <album> - <track> - <title>"));
+	list_filename->AddEntry(String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<track> - <title>"));
+	list_filename->AddEntry(String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<albumartist> - <album> - <track> - <title>"));
 	list_filename->AddEntry(String("<filename>"));
+	list_filename->AddEntry(String("<directory>").Append(Directory::GetDirectoryDelimiter()).Append("<filename>"));
 
 	edit_filename->SetDropDownList(list_filename);
 
-	check_addSeqNumbers	= new CheckBox(i18n->TranslateString("Append sequential numbers to otherwise identical filenames"), Point(10, 39), Size(532, 0), &addSeqNumbers);
-	check_unicodeFiles	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 62), Size(261, 0), &unicodeFiles);
-	check_replaceSpaces	= new CheckBox(i18n->TranslateString("Replace spaces"), Point(280, 62), Size(261, 0), &replaceSpaces);
+	check_addSeqNumbers	= new CheckBox(i18n->TranslateString("Append sequential numbers to otherwise identical filenames"), Point(10, 39), Size(group_filename->GetWidth() - 20, 0), &addSeqNumbers);
+	check_unicodeFiles	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 62), Size(check_onTheFly->GetWidth(), 0), &unicodeFiles);
+	check_replaceSpaces	= new CheckBox(i18n->TranslateString("Replace spaces"), Point(check_onTheFly->GetWidth() + 19, 62), Size(check_onTheFly->GetWidth(), 0), &replaceSpaces);
 
 	group_filename->Add(text_filename);
 	group_filename->Add(edit_filename);
@@ -170,7 +185,7 @@ freac::ConfigureEncoders::ConfigureEncoders()
 	Add(group_options);
 	Add(group_filename);
 
-	SetSize(Size(566, 368));
+	SetSize(Size(14 + group_encoder->GetWidth(), 368));
 }
 
 freac::ConfigureEncoders::~ConfigureEncoders()

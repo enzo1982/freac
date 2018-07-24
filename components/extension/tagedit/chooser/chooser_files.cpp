@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -18,15 +18,15 @@
 
 BoCA::ChooserFiles::ChooserFiles() : Chooser("Files")
 {
-	list_directories	= new ListBox(Point(7,7), Size(150, 150));
+	list_directories	= new ListBox(Point(7,7), Size(200, 150));
 
-	div_split		= new Divider(160, OR_VERT | DIV_MOVABLE);
+	div_split		= new Divider(210, OR_VERT | DIV_MOVABLE);
 	div_split->onDrag.Connect(&ChooserFiles::OnDragDivider, this);
 
-	edit_directory		= new EditBox(NIL, Point(165, 7), Size(100, 0));
+	edit_directory		= new EditBox(NIL, Point(215, 7), Size(100, 0));
 	edit_directory->Deactivate();
 
-	list_files		= new ListBox(Point(165, 34), Size(100, 150));
+	list_files		= new ListBox(Point(215, 34), Size(100, 150));
 	list_files->Deactivate();
 	list_files->onSelectEntry.Connect(&ChooserFiles::OnSelectFile, this);
 
@@ -193,6 +193,8 @@ Void BoCA::ChooserFiles::OnDragDivider(Int pos)
 
 	if (pos > clientSize.cx - 300) pos = clientSize.cx - 300;
 	if (pos <		  150) pos =		     150;
+
+	if (div_split->GetPos() == pos) return;
 
 	Surface	*surface = GetDrawSurface();
 

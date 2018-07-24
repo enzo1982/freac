@@ -95,7 +95,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>smooth.lib;boca.1.0.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/Debug;../../cdk/msvc/BoCA/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/Debug;../../cdk/msvc/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>Debug</GenerateDebugInformation>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
@@ -119,7 +119,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>smooth.lib;boca.1.0.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/x64/Debug;../../cdk/msvc/BoCA/x64/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/x64/Debug;../../cdk/msvc/x64/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>Debug</GenerateDebugInformation>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
@@ -134,7 +134,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>smooth.lib;boca.1.0.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/Release;../../cdk/msvc/BoCA/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/Release;../../cdk/msvc/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>No</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -154,7 +154,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>smooth.lib;boca.1.0.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/x64/Release;../../cdk/msvc/BoCA/x64/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/x64/Release;../../cdk/msvc/x64/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>No</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -172,6 +172,7 @@
     <ClCompile Include="..\..\src\dialogs\format.cpp" />
     <ClCompile Include="..\..\src\dialogs\overwrite.cpp" />
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
+    <ClCompile Include="..\..\src\engine\locking.cpp" />
     <ClCompile Include="..\..\src\engine\processor.cpp" />
     <ClCompile Include="..\..\src\engine\verifier.cpp" />
     <ClCompile Include="..\..\src\engine\worker.cpp" />
@@ -273,6 +274,7 @@
     <ClInclude Include="..\..\include\dialogs\format.h" />
     <ClInclude Include="..\..\include\dialogs\overwrite.h" />
     <ClInclude Include="..\..\include\dllinterfaces.h" />
+    <ClInclude Include="..\..\include\engine\locking.h" />
     <ClInclude Include="..\..\include\engine\processor.h" />
     <ClInclude Include="..\..\include\engine\verifier.h" />
     <ClInclude Include="..\..\include\engine\worker.h" />

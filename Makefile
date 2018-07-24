@@ -23,7 +23,7 @@ DLLOBJECTS  = $(OBJECTS)/cddb.o $(OBJECTS)/cddbbatch.o $(OBJECTS)/cddbcache.o $(
 DLLOBJECTS += $(OBJECTS)/cddb_extsettings.o $(OBJECTS)/cddb_manage.o $(OBJECTS)/cddb_managequeries.o $(OBJECTS)/cddb_managesubmits.o $(OBJECTS)/cddb_multimatch.o $(OBJECTS)/cddb_query.o $(OBJECTS)/cddb_submit.o
 DLLOBJECTS += $(OBJECTS)/dialog_config.o $(OBJECTS)/config_cddb.o $(OBJECTS)/config_dsp.o $(OBJECTS)/config_encoders.o $(OBJECTS)/config_interface.o $(OBJECTS)/config_language.o $(OBJECTS)/config_playlists.o $(OBJECTS)/config_resources.o $(OBJECTS)/config_tags.o $(OBJECTS)/config_verification.o $(OBJECTS)/configcomponent.o $(OBJECTS)/configentry.o
 DLLOBJECTS += $(OBJECTS)/adddirectory.o $(OBJECTS)/addpattern.o $(OBJECTS)/charset.o $(OBJECTS)/error.o $(OBJECTS)/format.o $(OBJECTS)/overwrite.o
-DLLOBJECTS += $(OBJECTS)/engine_converter.o $(OBJECTS)/engine_decoder.o $(OBJECTS)/engine_encoder.o $(OBJECTS)/engine_processor.o $(OBJECTS)/engine_verifier.o $(OBJECTS)/engine_worker.o $(OBJECTS)/engine_worker_singlefile.o
+DLLOBJECTS += $(OBJECTS)/engine_converter.o $(OBJECTS)/engine_decoder.o $(OBJECTS)/engine_encoder.o $(OBJECTS)/engine_locking.o $(OBJECTS)/engine_processor.o $(OBJECTS)/engine_verifier.o $(OBJECTS)/engine_worker.o $(OBJECTS)/engine_worker_singlefile.o
 DLLOBJECTS += $(OBJECTS)/edit_folder.o $(OBJECTS)/layer_tooltip.o $(OBJECTS)/main_joblist.o $(OBJECTS)/main_threads.o $(OBJECTS)/player.o
 DLLOBJECTS += $(OBJECTS)/job_convert.o $(OBJECTS)/job_adddirectory.o $(OBJECTS)/job_addfiles.o $(OBJECTS)/job_addtracks.o $(OBJECTS)/job_removeall.o $(OBJECTS)/job_removedisc.o $(OBJECTS)/job_checkforupdates.o $(OBJECTS)/job.o $(OBJECTS)/jobmanager.o
 DLLOBJECTS += $(OBJECTS)/config.o $(OBJECTS)/dllinterfaces.o $(OBJECTS)/freac.o $(OBJECTS)/joblist.o $(OBJECTS)/playback.o $(OBJECTS)/progress.o $(OBJECTS)/startconsole.o $(OBJECTS)/startgui.o $(OBJECTS)/utilities.o
@@ -117,14 +117,32 @@ else
 	endif
 endif
 
-.PHONY: all folders install uninstall clean
+.PHONY: all folders ressources install uninstall clean clean_ressources
 
-all: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME)
+all: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME) ressources
 
 	+ $(call makein,components)
 
 folders:
 	mkdir -p $(BIN) $(OBJECTS)
+
+ressources: folders
+ifeq ($(BUILD_WIN32),True)
+	mkdir -p $(BIN)/icons
+
+	cp $(SRCDIR)/icons/freac.png $(BIN)/icons
+
+	cp -r $(SRCDIR)/icons/conversion $(BIN)/icons
+	cp -r $(SRCDIR)/icons/freedb $(BIN)/icons
+	cp -r $(SRCDIR)/icons/joblist $(BIN)/icons
+	cp -r $(SRCDIR)/icons/other $(BIN)/icons
+	cp -r $(SRCDIR)/icons/player $(BIN)/icons
+	cp -r $(SRCDIR)/icons/select $(BIN)/icons
+	cp -r $(SRCDIR)/icons/settings $(BIN)/icons
+
+	cp -r $(SRCDIR)/i18n/lang $(BIN)
+	cp -r $(SRCDIR)/i18n/manual $(BIN)
+endif
 
 install: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME)
 ifneq ($(BUILD_WIN32),True)
@@ -138,20 +156,39 @@ ifneq ($(BUILD_WIN32),True)
 	$(INSTALL_DATA) $(DLLNAME) $(DESTDIR)$(libdir)/freac
 
 	$(INSTALL) -d $(DESTDIR)$(datadir)/freac
+	$(INSTALL) -d $(DESTDIR)$(datadir)/freac/icons
 
-	cp -r $(SRCDIR)/bin/icons $(DESTDIR)$(datadir)/freac
-	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons
-
-	cp -r $(SRCDIR)/bin/lang $(DESTDIR)$(datadir)/freac
+	cp -r $(SRCDIR)/i18n/lang $(DESTDIR)$(datadir)/freac
 	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/lang
 
-	$(INSTALL_DATA) $(SRCDIR)/bin/freac.pci $(DESTDIR)$(datadir)/freac
+	$(INSTALL_DATA) $(SRCDIR)/icons/freac.png $(DESTDIR)$(datadir)/freac/icons
+
+	cp -r $(SRCDIR)/icons/conversion $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/conversion
+
+	cp -r $(SRCDIR)/icons/freedb $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/freedb
+
+	cp -r $(SRCDIR)/icons/joblist $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/joblist
+
+	cp -r $(SRCDIR)/icons/other $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/other
+
+	cp -r $(SRCDIR)/icons/player $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/player
+
+	cp -r $(SRCDIR)/icons/select $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/select
+
+	cp -r $(SRCDIR)/icons/settings $(DESTDIR)$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/settings
 
 	$(INSTALL) -d $(DESTDIR)$(datadir)/doc/freac
 
 	$(INSTALL_DATA) $(SRCDIR)/Readme* $(DESTDIR)$(datadir)/doc/freac
 
-	cp -r $(SRCDIR)/bin/manual $(DESTDIR)$(datadir)/doc/freac
+	cp -r $(SRCDIR)/i18n/manual $(DESTDIR)$(datadir)/doc/freac
 	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/doc/freac/manual
 
 	$(call makein,components,install)
@@ -168,7 +205,6 @@ ifneq ($(BUILD_WIN32),True)
 	rm -f -r $(DESTDIR)$(datadir)/freac/icons
 	rm -f -r $(DESTDIR)$(datadir)/freac/lang
 
-	rm -f $(DESTDIR)$(datadir)/freac/freac.pci
 	rm -f -r $(DESTDIR)$(datadir)/freac
 
 	rm -f $(DESTDIR)$(datadir)/doc/freac/Readme*
@@ -179,13 +215,21 @@ ifneq ($(BUILD_WIN32),True)
 	$(call makein,components,uninstall)
 endif
 
-clean:
+clean: clean_ressources
 	$(REMOVER) $(REMOVER_OPTS) $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME) $(LIBNAME)
 ifneq ($(SRCDIR),$(CURDIR))
 	rmdir $(BIN) $(OBJECTS) 2> /dev/null || true
 endif
 
 	+ $(call cleanin,components)
+
+clean_ressources:
+ifeq ($(BUILD_WIN32),True)
+	rm -f -r $(BIN)/icons
+
+	rm -f -r $(BIN)/lang
+	rm -f -r $(BIN)/manual
+endif
 
 $(DLLNAME): $(DLLOBJECTS)
 	$(LD) $(DLLOBJECTS) $(LDOPTS) $(LDOPTS_DLL) $(LDFLAGS) -o $@
@@ -252,5 +296,5 @@ $(OBJECTS)/%.o: $(SRC)/support/%.cpp
 $(OBJECTS)/%.o: $(SRC)/support/%.mm
 	$(OBJCXX) $(CCOPTS) $(OBJCXXFLAGS) $< -o $@
 
-$(OBJECTS)/%.o: $(RESOURCES)/%.rc $(INCLUDE)/resources.h $(BINRES)/freac.ico
+$(OBJECTS)/%.o: $(RESOURCES)/%.rc $(INCLUDE)/resources.h
 	$(RESCOMP) $(RESCOMP_OPTS) $< -o $@

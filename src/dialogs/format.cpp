@@ -15,6 +15,10 @@
 #include <config.h>
 #include <resources.h>
 
+#ifdef __WIN32__
+#	include <smooth/init.win32.h>
+#endif
+
 freac::DialogSelectFormat::DialogSelectFormat(const Array<BoCA::Format> &formats)
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
@@ -93,6 +97,10 @@ freac::DialogSelectFormat::DialogSelectFormat(const Array<BoCA::Format> &formats
 
 	mainWnd->SetFlags(WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/freac.png")));
+
+#ifdef __WIN32__
+	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
+#endif
 }
 
 freac::DialogSelectFormat::~DialogSelectFormat()

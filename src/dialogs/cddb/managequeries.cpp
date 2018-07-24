@@ -11,8 +11,13 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <dialogs/cddb/managequeries.h>
+
 #include <config.h>
 #include <resources.h>
+
+#ifdef __WIN32__
+#	include <smooth/init.win32.h>
+#endif
 
 freac::cddbManageQueriesDlg::cddbManageQueriesDlg()
 {
@@ -44,15 +49,20 @@ freac::cddbManageQueriesDlg::cddbManageQueriesDlg()
 
 	btn_delete	= new Button(i18n->TranslateString("Remove entry"), NIL, Point(7, 69), Size());
 	btn_delete->onAction.Connect(&cddbManageQueriesDlg::DeleteEntry, this);
+	btn_delete->SetWidth(Math::Max(80, btn_delete->GetUnscaledTextWidth() + 14));
 	btn_delete->SetOrientation(OR_LOWERLEFT);
-
-	btn_query	= new Button(i18n->TranslateString("Query"), NIL, Point(175, 69), Size());
-	btn_query->onAction.Connect(&cddbManageQueriesDlg::QueryEntry, this);
-	btn_query->SetOrientation(OR_LOWERRIGHT);
 
 	btn_query_all	= new Button(i18n->TranslateString("Query all"), NIL, Point(87, 69), Size());
 	btn_query_all->onAction.Connect(&cddbManageQueriesDlg::QueryAllEntries, this);
+	btn_query_all->SetWidth(Math::Max(80, btn_query_all->GetUnscaledTextWidth() + 14));
+	btn_query_all->SetX(btn_query_all->GetWidth() + 7);
 	btn_query_all->SetOrientation(OR_LOWERRIGHT);
+
+	btn_query	= new Button(i18n->TranslateString("Query"), NIL, Point(175, 69), Size());
+	btn_query->onAction.Connect(&cddbManageQueriesDlg::QueryEntry, this);
+	btn_query->SetWidth(Math::Max(80, btn_query->GetUnscaledTextWidth() + 14));
+	btn_query->SetX(btn_query->GetWidth() + btn_query_all->GetWidth() + 15);
+	btn_query->SetOrientation(OR_LOWERRIGHT);
 
 	text_status	= new Text(NIL, Point(7, 26));
 	text_status->SetOrientation(OR_LOWERLEFT);
@@ -76,6 +86,10 @@ freac::cddbManageQueriesDlg::cddbManageQueriesDlg()
 
 	mainWnd->SetFlags(WF_NOTASKBUTTON | WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
+
+#ifdef __WIN32__
+	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
+#endif
 }
 
 freac::cddbManageQueriesDlg::~cddbManageQueriesDlg()

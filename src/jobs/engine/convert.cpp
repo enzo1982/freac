@@ -14,6 +14,8 @@
 
 #include <jobs/joblist/addfiles.h>
 
+#include <engine/locking.h>
+
 #include <engine/decoder.h>
 #include <engine/encoder.h>
 #include <engine/processor.h>
@@ -32,21 +34,14 @@
 #include <dialogs/format.h>
 
 using namespace smooth::GUI::Dialogs;
-using namespace smooth::Threads;
 
 using namespace BoCA;
 using namespace BoCA::AS;
 
-Bool					 freac::JobConvert::conversionRunning	= False;
+Int					 freac::JobConvert::conversionCount	= 0;
+
+Array<freac::JobConvert *>		 freac::JobConvert::conversionJobs;
 Bool					 freac::JobConvert::conversionPaused	= False;
-
-Bool					 freac::JobConvert::skipTrack		= False;
-Bool					 freac::JobConvert::stopConversion	= False;
-
-Array<Bool>				 freac::JobConvert::deviceLocked;
-Array<Bool>				 freac::JobConvert::outputLocked;
-
-Mutex					 freac::JobConvert::managementMutex;
 
 Signal0<Void>				 freac::JobConvert::onStartEncoding;
 Signal1<Void, Bool>			 freac::JobConvert::onFinishEncoding;
@@ -54,13 +49,14 @@ Signal1<Void, Bool>			 freac::JobConvert::onFinishEncoding;
 Signal3<Void, const BoCA::Track &,
 	      const String &,
 	      freac::ConversionStep>	 freac::JobConvert::onEncodeTrack;
-Signal0<Void>				 freac::JobConvert::onFinishTrack;
 
 Signal2<Void, Int, Int>			 freac::JobConvert::onTrackProgress;
 Signal2<Void, Int, Int>			 freac::JobConvert::onTotalProgress;
 
 freac::JobConvert::JobConvert(const Array<BoCA::Track> &iTracks)
 {
+	conversionID	 = conversionCount++;
+
 	tracks		 = iTracks;
 
 	conversionPaused = False;
@@ -91,7 +87,7 @@ Error freac::JobConvert::Precheck()
 	 */
 	if (encodeToSingleFile)
 	{
-		SetText("Checking sample formats...");
+		SetText(i18n->AddEllipsis(i18n->TranslateString("Checking sample formats", "Jobs::Convert")));
 
 		singleTrackSampleFormat = GetSingleTrackSampleFormat();
 
@@ -100,11 +96,11 @@ Error freac::JobConvert::Precheck()
 
 	/* Check if we have lossy tracks that would be converted to lossless.
 	 */
-	Bool	 doNotWarnAgain = !configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, Config::SettingsWarnLossyToLosslessDefault);
+	Bool	 doNotWarnAgain = !configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, Config::SettingsWarnLossyToLosslessDefault) || configuration->enable_console;
 
 	if (!doNotWarnAgain)
 	{
-		SetText("Checking for lossy to lossless conversion...");
+		SetText(i18n->AddEllipsis(i18n->TranslateString("Checking for lossy to lossless conversion", "Jobs::Convert")));
 
 		/* Find out if we are encoding lossless.
 		 */
@@ -148,11 +144,20 @@ Error freac::JobConvert::Precheck()
 		}
 	}
 
-	/* Calculate output filenames.
+	/* Get or generate output filenames.
 	 */
-	if (!encodeToSingleFile)
+	if (encodeToSingleFile)
 	{
-		SetText("Checking output file names...");
+		/* Get single file name.
+		 */
+		singleOutFile = Utilities::GetSingleOutputFileName(tracks);
+		singleOutFile = BoCA::Utilities::NormalizeFileName(singleOutFile);
+
+		if (singleOutFile == NIL) return Error();
+	}
+	else
+	{
+		SetText(i18n->AddEllipsis(i18n->TranslateString("Checking output file names", "Jobs::Convert")));
 
 		/* Find existing tracks.
 		 */
@@ -219,25 +224,23 @@ Error freac::JobConvert::Precheck()
 		}
 	}
 
-	SetText("Waiting for other jobs to finish...");
+	SetText(i18n->AddEllipsis(i18n->TranslateString("Waiting for other jobs to finish", "Jobs")));
 
 	return Success();
-}
-
-Bool freac::JobConvert::ReadyToRun()
-{
-	if (conversionRunning) return False;
-
-	conversionRunning = True;
-
-	return True;
 }
 
 Error freac::JobConvert::Perform()
 {
 	/* Return immediately if there are no tracks to convert.
 	 */
-	if (tracks.Length() == 0) { conversionRunning = False; return Success(); }
+	if (tracks.Length() == 0) return Success();
+
+	/* Add ourselves to conversion jobs array.
+	 */
+	conversionJobs.EnableLocking();
+	conversionJobs.Add(this);
+
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 	Registry	&boca = Registry::Get();
 
@@ -302,9 +305,8 @@ Error freac::JobConvert::Perform()
 	 */
 	Progress	*progress = new Progress(configuration);
 
-	progress->onTrackProgress.Connect(&onTrackProgress);
-	progress->onTotalProgress.Connect(&onTotalProgress);
-	progress->onTotalProgress.Connect(&JobConvert::UpdateProgress, this);
+	progress->onTrackProgress.Connect(&JobConvert::UpdateTrackProgress, this);
+	progress->onTotalProgress.Connect(&JobConvert::UpdateTotalProgress, this);
 
 	onStartEncoding.Emit();
 
@@ -314,14 +316,12 @@ Error freac::JobConvert::Perform()
 	 */
 	Engine	*engine = Engine::Get();
 
-	engine->onStartConversion.Emit(tracksToConvert);
+	engine->onStartConversion.Emit(conversionID, tracksToConvert);
 
 	/* Setup single file encoder.
 	 */
 	Track			 singleTrack;
 	Track			 singleTrackToEncode;
-
-	String			 singleOutFile;
 
 	ProcessorSingleFile	*singleFileProcessor = NIL;
 	Encoder			*singleFileEncoder   = NIL;
@@ -332,61 +332,52 @@ Error freac::JobConvert::Perform()
 		 */
 		singleTrack = ConsolidateTrackInfo();
 
-		/* Get single file name.
+		/* Set output file name and add track to playlist.
 		 */
-		singleOutFile = Utilities::GetSingleOutputFileName(singleTrack);
+		singleTrack.origFilename = singleOutFile;
+		singleTrack.outfile	 = singleOutFile;
 
-		if (singleOutFile != NIL)
+		singleTrack.length	 = progress->GetTotalSamples();
+
+		/* Check if output file is one of the input files.
+		 */
+		foreach (Track &track, tracks)
 		{
-			singleOutFile = BoCA::Utilities::NormalizeFileName(singleOutFile);
-
-			/* Set output file name and add track to playlist.
-			 */
-			singleTrack.origFilename = singleOutFile;
-			singleTrack.outfile	 = singleOutFile;
-
-			singleTrack.length	 = progress->GetTotalSamples();
-
-			/* Check if output file is one of the input files.
-			 */
-			foreach (Track &track, tracks)
-			{
-				if (track.origFilename == singleOutFile) { singleOutFile.Append(".temp"); break; }
-			}
-
-			/* Create processor to get output format.
-			 */
-			singleTrackToEncode = singleTrack;
-			singleTrackToEncode.SetFormat(singleTrackSampleFormat);
-
-			singleFileProcessor = new ProcessorSingleFile(configuration);
-
-			if (singleFileProcessor->Create(singleTrackToEncode)) singleTrackToEncode.SetFormat(singleFileProcessor->GetFormatInfo());
-
-			/* Create encoder for single file output.
-			 */
-			singleFileEncoder = new Encoder(configuration);
-
-			if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrackToEncode))
-			{
-				delete singleFileProcessor;
-				delete singleFileEncoder;
-
-				singleFileProcessor = NIL;
-				singleFileEncoder   = NIL;
-			}
-
-			if (singleFileEncoder != NIL)
-			{
-				singleTrackToEncode.SetFormat(singleFileEncoder->GetTargetFormat());
-
-				if (singleFileEncoder->IsLossless() && verifyOutput) singleFileEncoder->SetCalculateMD5(True);
-			}
-
-			/* Set track output file in single file mode.
-			 */
-			foreach (Track &track, tracks) track.outfile = singleTrack.outfile;
+			if (track.origFilename == singleOutFile) { singleOutFile.Append(".temp"); break; }
 		}
+
+		/* Create processor to get output format.
+		 */
+		singleTrackToEncode = singleTrack;
+		singleTrackToEncode.SetFormat(singleTrackSampleFormat);
+
+		singleFileProcessor = new ProcessorSingleFile(configuration);
+
+		if (singleFileProcessor->Create(singleTrackToEncode)) singleTrackToEncode.SetFormat(singleFileProcessor->GetFormatInfo());
+
+		/* Create encoder for single file output.
+		 */
+		singleFileEncoder = new Encoder(configuration);
+
+		if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrackToEncode))
+		{
+			delete singleFileProcessor;
+			delete singleFileEncoder;
+
+			singleFileProcessor = NIL;
+			singleFileEncoder   = NIL;
+		}
+
+		if (singleFileEncoder != NIL)
+		{
+			singleTrackToEncode.SetFormat(singleFileEncoder->GetTargetFormat());
+
+			if (singleFileEncoder->IsLossless() && verifyOutput) singleFileEncoder->SetCalculateMD5(True);
+		}
+
+		/* Set track output file in single file mode.
+		 */
+		foreach (Track &track, tracks) track.outfile = singleTrack.outfile;
 	}
 
 	/* Setup conversion log.
@@ -413,8 +404,8 @@ Error freac::JobConvert::Perform()
 	Array<ConvertWorker *, Void *>	 workers;
 	Int				 numberOfWorkers = Math::Min(numberOfThreads, tracks.Length());
 
-	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, singleTrackSampleFormat, singleFileProcessor, singleFileEncoder));
-	else			for (Int i = 0; i < numberOfWorkers; i++) workers.Add(new ConvertWorker(configuration));
+	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, conversionID, singleTrackSampleFormat, singleFileProcessor, singleFileEncoder));
+	else			for (Int i = 0; i < numberOfWorkers; i++) workers.Add(new ConvertWorker(configuration, conversionID));
 
 	foreach (ConvertWorker *worker, workers)
 	{
@@ -490,8 +481,8 @@ Error freac::JobConvert::Perform()
 			{
 				/* Unlock track device and output file if necessary.
 				 */
-				UnlockDeviceForTrack(worker->GetTrackToConvert());
-				UnlockOutputForTrack(worker->GetTrackToConvert());
+				Locking::UnlockDeviceForTrack(worker->GetTrackToConvert());
+				Locking::UnlockOutputForTrack(worker->GetTrackToConvert());
 
 				worker->Cancel();
 			}
@@ -519,8 +510,8 @@ Error freac::JobConvert::Perform()
 			 */
 			const Track	&track = worker->GetTrackToConvert();
 
-			UnlockDeviceForTrack(track);
-			UnlockOutputForTrack(track);
+			Locking::UnlockDeviceForTrack(track);
+			Locking::UnlockOutputForTrack(track);
 
 			skipTrack = False;
 		}
@@ -625,8 +616,8 @@ Error freac::JobConvert::Perform()
 
 			/* Unlock track device and output file if necessary.
 			 */
-			UnlockDeviceForTrack(track);
-			UnlockOutputForTrack(track);
+			Locking::UnlockDeviceForTrack(track);
+			Locking::UnlockOutputForTrack(track);
 
 			/* Announce next track.
 			 */
@@ -640,10 +631,10 @@ Error freac::JobConvert::Perform()
 
 				const Track	&workerTrack = worker->GetTrackToConvert();
 
-				onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
-													    conversionStep = worker->GetConversionStep());
+				if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+																		  conversionStep = worker->GetConversionStep());
 
-				SetText(String("Converting %1...").Replace("%1", workerTrack.origFilename));
+				SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", workerTrack.origFilename));
 
 				progress->UpdateTrack(workerTrack, worker->GetTrackPosition());
 
@@ -681,7 +672,8 @@ Error freac::JobConvert::Perform()
 
 		/* Update total progress values.
 		 */
-		Bool	 first = True;
+		Bool			 first		= True;
+		static JobConvert	*lastConversion = conversionJobs.GetLast();
 
 		foreach (ConvertWorker *worker, workerQueue)
 		{
@@ -691,15 +683,18 @@ Error freac::JobConvert::Perform()
 
 			const Track	&workerTrack = worker->GetTrackToConvert();
 
-			if (first && (workerTrack.GetTrackID()	  != trackID	    ||
-				      worker->GetConversionStep() != conversionStep ||
-				      worker->GetDecoderName()	  != decoderName)) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
-																			       conversionStep = worker->GetConversionStep());
+			if (first && conversionJobs.GetLast() == this && (this			      != lastConversion ||
+									  workerTrack.GetTrackID()    != trackID	||
+									  worker->GetConversionStep() != conversionStep ||
+									  worker->GetDecoderName()    != decoderName)) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+																								   conversionStep = worker->GetConversionStep());
 
 			first = False;
 
 			progress->UpdateTrack(workerTrack, worker->GetTrackPosition());
 		}
+
+		lastConversion = conversionJobs.GetLast();
 
 		/* Update per track progress values.
 		 */
@@ -783,8 +778,22 @@ Error freac::JobConvert::Perform()
 
 			/* Lock track device and output file if necessary.
 			 */
-			if (!LockDeviceForTrack(track))				       continue;
-			if (!LockOutputForTrack(track)) { UnlockDeviceForTrack(track); continue; }
+			if (encodeToSingleFile)
+			{
+				if (!Locking::LockDeviceForTrack(track))
+				{
+					progress->Pause();
+
+					while (!Locking::LockDeviceForTrack(track)) S::System::System::Sleep(25);
+
+					progress->Resume();
+				}
+			}
+			else
+			{
+				if (!Locking::LockDeviceForTrack(track))					 continue;
+				if (!Locking::LockOutputForTrack(track)) { Locking::UnlockDeviceForTrack(track); continue; }
+			}
 
 			/* Check if track should be overwritten.
 			 */
@@ -798,25 +807,23 @@ Error freac::JobConvert::Perform()
 
 					i18n->SetContext("Messages");
 
-					MessageDlg	*confirmation = new MessageDlg(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", track.outfile), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAllFiles);
+					MessageDlg	 confirmation(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", track.outfile), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAllFiles);
 
-					confirmation->ShowDialog();
+					confirmation.ShowDialog();
 
-					if (confirmation->GetButtonCode() == Message::Button::Cancel)
+					if (confirmation.GetButtonCode() == Message::Button::Cancel)
 					{
 						stopConversion = True;
 
 						/* Unlock track device and output file if necessary.
 						 */
-						UnlockDeviceForTrack(track);
-						UnlockOutputForTrack(track);
-
-						Object::DeleteObject(confirmation);
+						Locking::UnlockDeviceForTrack(track);
+						Locking::UnlockOutputForTrack(track);
 
 						break;
 					}
 
-					if (confirmation->GetButtonCode() == Message::Button::No)
+					if (confirmation.GetButtonCode() == Message::Button::No)
 					{
 						overwriteAllFiles = False;
 
@@ -824,17 +831,17 @@ Error freac::JobConvert::Perform()
 
 						/* Unlock track device and output file if necessary.
 						 */
-						UnlockDeviceForTrack(track);
-						UnlockOutputForTrack(track);
-
-						Object::DeleteObject(confirmation);
+						Locking::UnlockDeviceForTrack(track);
+						Locking::UnlockOutputForTrack(track);
 
 						continue;
 					}
-
-					Object::DeleteObject(confirmation);
 				}
 			}
+
+			/* Make sure we are reporting progress again.
+			 */
+			progress->Resume();
 
 			/* Set maximum number of threads to use by encoder.
 			 */
@@ -854,10 +861,10 @@ Error freac::JobConvert::Perform()
 
 				if (!workerToUse->IsError())
 				{
-					onEncodeTrack.Emit(tracksToConvert.Get(trackID = track.GetTrackID()), decoderName    = workerToUse->GetDecoderName(),
-													      conversionStep = workerToUse->GetConversionStep());
+					if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = track.GetTrackID()), decoderName    = workerToUse->GetDecoderName(),
+																		    conversionStep = workerToUse->GetConversionStep());
 
-					SetText(String("Converting %1...").Replace("%1", track.origFilename));
+					SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", track.origFilename));
 				}
 			}
 
@@ -869,8 +876,17 @@ Error freac::JobConvert::Perform()
 
 			break;
 		}
+
+		/* Sleep while waiting for devices to become unlocked.
+		 */
+		if (workerQueue.Length() == 0 && !allTracksAssigned)
+		{
+			progress->Pause();
+
+			S::System::System::Sleep(25);
+		}
 	}
-	while (workerQueue.Length() > 0);
+	while (workerQueue.Length() > 0 || !allTracksAssigned);
 
 	/* Clean up worker threads.
 	 */
@@ -931,7 +947,7 @@ Error freac::JobConvert::Perform()
 
 			/* Setup and start worker for verification.
 			 */
-			ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, singleTrackSampleFormat, NIL, singleFileEncoder);
+			ConvertWorkerSingleFile	*worker = new ConvertWorkerSingleFile(configuration, conversionID, singleTrackSampleFormat, NIL, singleFileEncoder);
 
 			worker->onFinishTrack.Connect(&Progress::FinishTrack, progress);
 			worker->onFixTotalSamples.Connect(&Progress::FixTotalSamples, progress);
@@ -950,10 +966,10 @@ Error freac::JobConvert::Perform()
 			 */
 			while (worker->IsWaiting() && !worker->IsIdle()) S::System::System::Sleep(1);
 
-			onEncodeTrack.Emit(singleTrackToEncode, decoderName    = worker->GetDecoderName(),
-								conversionStep = worker->GetConversionStep());
+			if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(singleTrackToEncode, decoderName    = worker->GetDecoderName(),
+												      conversionStep = worker->GetConversionStep());
 
-			SetText(String("Verifying %1...").Replace("%1", singleTrackToEncode.origFilename));
+			SetText(i18n->AddEllipsis(i18n->TranslateString("Verifying %1", "Jobs::Convert")).Replace("%1", singleTrackToEncode.origFilename));
 
 			progress->StartTrack(singleTrackToEncode);
 
@@ -1159,46 +1175,81 @@ Error freac::JobConvert::Perform()
 		foreach (Array<Track> *trackList, cuesheetTrackLists) delete trackList;
 	}
 
+	/* Remove ourselves from conversion jobs array.
+	 */
+	conversionJobs.LockForWrite();
+
+	foreach (JobConvert *job, conversionJobs)
+	{
+		if (job != this) continue;
+
+		conversionJobs.RemoveNth(foreachindex);
+
+		break;
+	}
+
+	conversionJobs.Unlock();
+
 	/* Clean up.
 	 */
 	onFinishEncoding.Emit(!stopConversion && encodedTracks > 0);
 
 	delete progress;
 
-	conversionRunning = False;
-
 	/* Notify components and write log.
 	 */
-	if (stopConversion) { engine->onCancelConversion.Emit(); log->Write("Conversion process cancelled.", MessageTypeWarning); }
-	else		    { engine->onFinishConversion.Emit(); log->Write("Conversion process finished."); }
+	if (stopConversion) { engine->onCancelConversion.Emit(conversionID); log->Write("Conversion process cancelled.", MessageTypeWarning); }
+	else		    { engine->onFinishConversion.Emit(conversionID); log->Write("Conversion process finished."); }
 
 	/* Set progress to 100%.
 	 */
 	SetProgress(1000);
 
-	if	(stopConversion	      )	SetText(       "Conversion cancelled");
-	else if (errors.Length()   > 0)	SetText(String("Conversion finished with %1 errors").Replace("%1", String::FromInt(errors.Length())));
-	else if (warnings.Length() > 0)	SetText(String("Conversion finished with %1 warnings").Replace("%1", String::FromInt(warnings.Length())));
-	else				SetText(       "Conversion finished");
+	i18n->SetContext("Jobs::Convert");
+
+	if	(stopConversion	      )	SetText(i18n->TranslateString("Conversion cancelled"));
+	else if (errors.Length()   > 0)	SetText(i18n->TranslateString("Conversion finished with %1 errors").Replace("%1", String::FromInt(errors.Length())));
+	else if (warnings.Length() > 0)	SetText(i18n->TranslateString("Conversion finished with %1 warnings").Replace("%1", String::FromInt(warnings.Length())));
+	else				SetText(i18n->TranslateString("Conversion finished"));
 
 	return Success();
 }
 
+Void freac::JobConvert::Skip()
+{
+	if (!IsConverting()) return;
+
+	/* Skip current track of most recent conversion.
+	 */
+	JobConvert	*job = conversionJobs.GetLast();
+
+	job->skipTrack = True;
+}
+
 Void freac::JobConvert::Stop()
 {
-	if (!conversionRunning) return;
+	if (!IsConverting()) return;
 
-	stopConversion = True;
+	/* Order all conversions to stop.
+	 */
+	foreachreverse (JobConvert *job, conversionJobs) job->stopConversion = True;
 
-	/* Wait for conversion thread to exit.
+	/* Wait for conversion threads to exit.
 	 */
 	S::System::EventProcessor	 event;
 
-	while (conversionRunning) event.ProcessNextEvent();
+	while (IsConverting()) event.ProcessNextEvent();
 }
 
-Void freac::JobConvert::UpdateProgress(Int progressValue, Int secondsLeft)
+Void freac::JobConvert::UpdateTrackProgress(Int progressValue, Int secondsLeft)
 {
+	if (conversionJobs.GetLast() == this) onTrackProgress.Emit(progressValue, secondsLeft);
+}
+
+Void freac::JobConvert::UpdateTotalProgress(Int progressValue, Int secondsLeft)
+{
+	if (conversionJobs.GetLast() == this) onTotalProgress.Emit(progressValue, secondsLeft);
+
 	SetProgress(progressValue);
 }
 
@@ -1455,102 +1506,4 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 	foreach (const Track &chapterTrack, tracks) singleTrack.tracks.Add(chapterTrack);
 
 	return singleTrack;
-}
-
-Bool freac::JobConvert::LockDeviceForTrack(const Track &track)
-{
-	/* Check if the track is on a locked device.
-	 */
-	if (track.origFilename.StartsWith("device://"))
-	{
-		String	 device = track.origFilename.SubString(9, track.origFilename.Tail(track.origFilename.Length() - 9).Find("/"));
-		Lock	 lock(managementMutex);
-
-		if (deviceLocked.Get(device.ComputeCRC32())) return False;
-
-		deviceLocked.Add(True, device.ComputeCRC32());
-	}
-
-#if defined __APPLE__ || defined __HAIKU__
-	/* On macOS and Haiku, treat CDDA volumes like CD tracks.
-	 */
-	String	 filePath = File(track.origFilename).GetFilePath();
-
-#if defined __APPLE__
-	if (track.origFilename.EndsWith(".aiff") && Directory(filePath).GetDirectoryPath() == "/Volumes" && File(String(filePath).Append("/.TOC.plist")).Exists())
-#else
-	if (track.origFilename.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
-#endif
-	{
-		Lock	 lock(managementMutex);
-
-		if (deviceLocked.Get(filePath.ComputeCRC32())) return False;
-
-		deviceLocked.Add(True, filePath.ComputeCRC32());
-	}
-#endif
-
-	return True;
-}
-
-Bool freac::JobConvert::UnlockDeviceForTrack(const Track &track)
-{
-	/* Unlock track device if necessary.
-	 */
-	if (track.origFilename.StartsWith("device://"))
-	{
-		String	 device = track.origFilename.SubString(9, track.origFilename.Tail(track.origFilename.Length() - 9).Find("/"));
-		Lock	 lock(managementMutex);
-
-		deviceLocked.Remove(device.ComputeCRC32());
-	}
-
-#if defined __APPLE__ || defined __HAIKU__
-	/* On macOS and Haiku, treat CDDA volumes like CD tracks.
-	 */
-	String	 filePath = File(track.origFilename).GetFilePath();
-
-#if defined __APPLE__
-	if (track.origFilename.EndsWith(".aiff") && Directory(filePath).GetDirectoryPath() == "/Volumes" && File(String(filePath).Append("/.TOC.plist")).Exists())
-#else
-	if (track.origFilename.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
-#endif
-	{
-		Lock	 lock(managementMutex);
-
-		deviceLocked.Remove(filePath.ComputeCRC32());
-	}
-#endif
-
-	return True;
-}
-
-Bool freac::JobConvert::LockOutputForTrack(const Track &track)
-{
-	/* Check if the track output file is currently locked.
-	 */
-	if (track.outfile != NIL)
-	{
-		Lock	 lock(managementMutex);
-
-		if (outputLocked.Get(track.outfile.ComputeCRC32())) return False;
-
-		outputLocked.Add(True, track.outfile.ComputeCRC32());
-	}
-
-	return True;
-}
-
-Bool freac::JobConvert::UnlockOutputForTrack(const Track &track)
-{
-	/* Unlock track output file if necessary.
-	 */
-	if (track.outfile != NIL)
-	{
-		Lock	 lock(managementMutex);
-
-		outputLocked.Remove(track.outfile.ComputeCRC32());
-	}
-
-	return True;
 }

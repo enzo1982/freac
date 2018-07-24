@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -263,6 +263,10 @@ Void BoCA::LayerTagDetails::OnSelectTrack(const Track &nTrack)
 	track = nTrack;
 
 	group_details->Activate();
+
+	text_albumartist->Activate();
+	edit_albumartist->Activate();
+
 	group_publisher->Activate();
 
 	text_isrc->Activate();
@@ -320,6 +324,10 @@ Void BoCA::LayerTagDetails::OnSelectAlbum(const Track &nTrack)
 	track = nTrack;
 
 	group_details->Activate();
+
+	text_albumartist->Deactivate();
+	edit_albumartist->Deactivate();
+
 	group_publisher->Activate();
 
 	text_isrc->Deactivate();

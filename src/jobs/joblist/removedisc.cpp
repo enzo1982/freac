@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -27,21 +27,23 @@ freac::JobRemoveDiscTracks::~JobRemoveDiscTracks()
 
 Bool freac::JobRemoveDiscTracks::ReadyToRun()
 {
-	if (!BoCA::JobList::Get()->IsLocked())
-	{
-		BoCA::JobList::Get()->Lock();
+	BoCA::JobList	*joblist = BoCA::JobList::Get();
 
-		return True;
-	}
+	if (joblist->IsLocked()) return False;
 
-	return False;
+	joblist->Lock();
+
+	return True;
 }
 
 Error freac::JobRemoveDiscTracks::Perform()
 {
-	SetText(String("Removing tracks of disc in drive #").Append(String::FromInt(drive)).Append("..."));
+	BoCA::JobList	*joblist = BoCA::JobList::Get();
+	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
+ 
+	SetText(i18n->AddEllipsis(i18n->TranslateString("Removing tracks of disc in drive %1", "Jobs::Joblist")).Replace("%1", String::FromInt(drive)));
 
-	const Array<Track>	*tracks    = BoCA::JobList::Get()->getTrackList.Call();
+	const Array<Track>	*tracks    = joblist->getTrackList.Call();
 	Int			 numTracks = tracks->Length();
 
 	for (Int i = numTracks - 1; i >= 0; i--)
@@ -50,17 +52,17 @@ Error freac::JobRemoveDiscTracks::Perform()
 
 		if (track.isCDTrack && track.drive == drive)
 		{
-			BoCA::JobList::Get()->onComponentRemoveTrack.Emit(track);
+			joblist->onComponentRemoveTrack.Emit(track);
 		}
 
 		SetProgress(1000.0 * (numTracks - i) / numTracks);
 	}
 
-	SetText(String("Removed tracks of disc in drive #").Append(String::FromInt(drive)).Append(" from joblist."));
+	SetText(i18n->TranslateString("Removed tracks of disc in drive %1 from joblist", "Jobs::Joblist").Replace("%1", String::FromInt(drive)));
 
 	SetProgress(1000);
 
-	BoCA::JobList::Get()->Unlock();
+	joblist->Unlock();
 
 	return Success();
 }

@@ -279,23 +279,14 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 
 	String	 outputFileName;
 
-	Int	 lastBs = -1;
-	Int	 firstDot = 0;
+	Int	 lastBs	 = Math::Max(track.origFilename.FindLast("\\"), track.origFilename.FindLast("/"));
+	Int	 lastDot = track.origFilename.FindLast(".");
 
-	for (Int j = 0; j < track.origFilename.Length(); j++)
-	{
-		if (track.origFilename[j] == '\\' || track.origFilename[j] == '/') lastBs = j;
-	}
-
-	for (Int k = track.origFilename.Length() - 1; k >= 0; k--)
-	{
-		if (track.origFilename[k] == '.' ) { firstDot = track.origFilename.Length() - k; break; }
-		if (track.origFilename[k] == '\\' || track.origFilename[k] == '/') break;
-	}
+	if (lastDot < lastBs) lastDot = track.origFilename.Length();
 
 	String	 shortInFileName;
 
-	for (Int l = 0; l < (track.origFilename.Length() - lastBs - firstDot - 1); l++) shortInFileName[l] = track.origFilename[l + lastBs + 1];
+	for (Int i = 0; i < lastDot - lastBs - 1; i++) shortInFileName[i] = track.origFilename[i + lastBs + 1];
 
 	String	 inFileDirectory = track.origFilename;
 	Bool	 writeToInputDir = False;
@@ -432,28 +423,27 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 				{
 					String	 pattern = String("<directory+").Append(String::FromInt(i)).Append("(").Append(String::FromInt(j + 1)).Append(")>");
 
-					if (shortOutFileName.Contains(pattern))
+					if (!shortOutFileName.Contains(pattern)) continue;
+
+					String	 value = directory;
+
+					for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
+
+					Int	 bsCount = 0;
+
+					for (Int n = 0; n < value.Length(); n++)
 					{
-						String	 value = directory;
+						if (value[n] == '\\' || value[n] == '/') bsCount++;
 
-						for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
-
-						Int	 bsCount = 0;
-
-						for (Int n = 0; n < value.Length(); n++)
+						if (bsCount == j + 1)
 						{
-							if (value[n] == '\\' || value[n] == '/') bsCount++;
+							value[n] = 0;
 
-							if (bsCount == j + 1)
-							{
-								value[n] = 0;
-
-								break;
-							}
+							break;
 						}
-
-						shortOutFileName.Replace(pattern, value);
 					}
+
+					shortOutFileName.Replace(pattern, value);
 				}
 			}
 
@@ -488,7 +478,7 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 	return outputFileName;
 }
 
-String freac::Utilities::GetSingleOutputFileName(const Track &track)
+String freac::Utilities::GetSingleOutputFileName(const Array<Track> &tracks)
 {
 	/* Check if an output filename has already been set.
 	 */
@@ -496,6 +486,18 @@ String freac::Utilities::GetSingleOutputFileName(const Track &track)
 	String		 singleOutputFileName = config->GetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Config::SettingsSingleFilenameDefault);
 
 	if (singleOutputFileName != NIL || config->enable_console) return singleOutputFileName;
+
+	/* Find artist and album to use for file name.
+	 */
+	Info	 info = tracks.GetFirst().GetInfo();
+
+	foreach (const Track &chapterTrack, tracks)
+	{
+		const Info	&chapterInfo = chapterTrack.GetInfo();
+
+		if (chapterInfo.artist != info.artist) info.artist = NIL;
+		if (chapterInfo.album  != info.album)  info.album  = NIL;
+	}
 
 	/* Instantiate selected encoder.
 	 */
@@ -519,8 +521,6 @@ String freac::Utilities::GetSingleOutputFileName(const Track &track)
 
 	const Array<FileFormat *>	&formats	  = encoder->GetFormats();
 	String				 defaultExtension = encoder->GetOutputFileExtension();
-
-	const Info			&info		  = track.GetInfo();
 
 	for (Int i = 0; i < formats.Length(); i++)
 	{

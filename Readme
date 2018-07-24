@@ -124,7 +124,7 @@ Known problems
 History
 -------
 
-	Version 1.1 Alpha (March 2018)
+	Version 1.1 Alpha (July 2018)
 
 		- ported to macOS, Linux and BSD operating systems
 		- implemented an extension component framework to modularize fre:ac
@@ -178,6 +178,7 @@ History
 		- added support for reading and writing Vorbis files with .oga extension
 		- added support for XSPF, Windows Media and PLS playlists
 		- added a slider for seeking during playback
+		- allow playback while a conversion is running
 		- added a warning when converting from lossy to lossless formats
 		- added the ability to sort the joblist by clicking headers
 		- added basic multi-channel audio support

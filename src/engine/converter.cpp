@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -11,6 +11,7 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <engine/converter.h>
+#include <engine/locking.h>
 
 #include <joblist.h>
 #include <playback.h>
@@ -31,26 +32,34 @@ freac::Converter::~Converter()
 {
 }
 
-Void freac::Converter::Convert(JobList *joblist, Bool useThread)
+Void freac::Converter::Convert(const Array<Track> &tracks, Bool useThread)
 {
-	/* Check if currently playing a track.
+	/* Check if currently playing a CD track.
 	 */
-	if (Playback::Get()->IsPlaying())
+	Playback	*playback = Playback::Get();
+
+	if (playback->IsPlaying())
 	{
-		BoCA::Utilities::ErrorMessage("Cannot start encoding while playing a file!");
+		const Track	&playingTrack = playback->GetPlayingTrack();
 
-		return;
-	}
+		if (!Locking::LockDeviceForTrack(playingTrack))
+		{
+			foreach (const Track &track, tracks)
+			{
+				if (!Locking::LockDeviceForTrack(track))
+				{
+					BoCA::Utilities::ErrorMessage("Cannot start ripping while playing a track from the same drive!");
 
-	/* Create array of tracks to convert.
-	 */
-	Array<Track>	 tracks;
+					return;
+				}
 
-	for (Int i = 0; i < joblist->GetNOfTracks(); i++)
-	{
-		if (!joblist->GetNthEntry(i)->IsMarked()) continue;
-
-		tracks.Add(joblist->GetNthTrack(i), joblist->GetNthTrack(i).GetTrackID());
+				Locking::UnlockDeviceForTrack(track);
+			}
+		}
+		else
+		{
+			Locking::UnlockDeviceForTrack(playingTrack);
+		}
 	}
 
 	/* Start conversion job.

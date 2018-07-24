@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -18,6 +18,8 @@
 #include <config.h>
 #include <utilities.h>
 
+#include <engine/converter.h>
+
 #include <support/autorelease.h>
 
 using namespace BoCA;
@@ -25,6 +27,10 @@ using namespace BoCA::AS;
 
 freac::JobAddTracks::JobAddTracks(const Array<String> &iURLs, Bool iAutoCDRead)
 {
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	i18n->SetContext("Jobs");
+ 
 	foreach (const String &url, iURLs) urls.Add(url);
 
 	autoCDRead = iAutoCDRead;
@@ -32,7 +38,7 @@ freac::JobAddTracks::JobAddTracks(const Array<String> &iURLs, Bool iAutoCDRead)
 
 	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Connect(&JobAddTracks::OnRemoveAllTracksJobScheduled, this);
 
-	SetText("Waiting for other jobs to finish...");
+	SetText(i18n->AddEllipsis(i18n->TranslateString("Waiting for other jobs to finish")));
 }
 
 freac::JobAddTracks::~JobAddTracks()
@@ -42,18 +48,22 @@ freac::JobAddTracks::~JobAddTracks()
 
 Bool freac::JobAddTracks::ReadyToRun()
 {
-	if (!BoCA::JobList::Get()->IsLocked())
-	{
-		BoCA::JobList::Get()->Lock();
+	BoCA::JobList	*joblist = BoCA::JobList::Get();
 
-		return True;
-	}
+	if (joblist->IsLocked()) return False;
 
-	return False;
+	joblist->Lock();
+
+	return True;
 }
 
 Error freac::JobAddTracks::Perform()
 {
+	BoCA::JobList	*joblist = BoCA::JobList::Get();
+	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
+ 
+	Array<Track>	 tracks;
+
 	CDDBInfo	 cdInfo;
 	Bool		 cddbQueried = False;
 
@@ -67,7 +77,7 @@ Error freac::JobAddTracks::Perform()
 		 */
 		const String	&url = urls.GetNth(i);
 
-		SetText(String("Adding files... - ").Append(url));
+		SetText(i18n->AddEllipsis(i18n->TranslateString("Adding tracks", "Jobs::Joblist")).Append(" - ").Append(url));
 
 		/* Create decoder component.
 		 */
@@ -111,12 +121,12 @@ Error freac::JobAddTracks::Perform()
 		 */
 		if (autoCDRead)
 		{
-			const Array<Track>	&tracks	    = *(BoCA::JobList::Get()->getTrackList.Call());
+			const Array<Track>	*tracks	    = joblist->getTrackList.Call();
 			Bool			 foundTrack = False;
 
-			for (Int i = 0; i < tracks.Length(); i++)
+			for (Int i = 0; i < tracks->Length(); i++)
 			{
-				const Track	&cdTrack = tracks.GetNth(i);
+				const Track	&cdTrack = tracks->GetNth(i);
 
 				if (cdTrack.discid == track.discid && cdTrack.cdTrack == track.cdTrack) foundTrack = True;
 			}
@@ -151,7 +161,10 @@ Error freac::JobAddTracks::Perform()
 
 		/* Add track to joblist.
 		 */
-		BoCA::JobList::Get()->onComponentAddTrack.Emit(track);
+		joblist->onComponentAddTrack.Emit(track);
+
+		track = joblist->getTrackList.Call()->GetLast();
+		tracks.Add(track, track.GetTrackID());
 
 		SetProgress((i + 1) * 1000 / urls.Length());
 	}
@@ -160,13 +173,19 @@ Error freac::JobAddTracks::Perform()
 
 	if (!abort)
 	{
-		SetText(String("Added ").Append(String::FromInt(urls.Length() - errors.Length())).Append(" files; ").Append(String::FromInt(errors.Length())).Append(" errors occurred."));
+		SetText(i18n->TranslateString("Added %1 tracks, %2 errors occurred", "Jobs::Joblist").Replace("%1", String::FromInt(urls.Length() - errors.Length())).Replace("%2", String::FromInt(errors.Length())));
 		SetProgress(1000);
+
+		/* Start automatic ripping if enabled.
+		 */
+		Bool	 autoRip = configuration->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault);
+
+		if (autoCDRead && autoRip && cdInfo != NIL) Converter().Convert(tracks);
 	}
 
 	urls.RemoveAll();
 
-	BoCA::JobList::Get()->Unlock();
+	joblist->Unlock();
 
 	return Success();
 }
