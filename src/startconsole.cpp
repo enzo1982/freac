@@ -113,7 +113,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	Bool		 quiet		= ScanForProgramOption("--quiet");
 	Bool		 cddb		= ScanForProgramOption("--cddb");
 	Array<String>	 files;
-	String		 encoderID	= "lame";
 	String		 helpenc;
 	String		 outdir		= Directory::GetActiveDirectory();
 	String		 outfile;
@@ -122,11 +121,16 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	String		 tracks;
 	String		 timeout	= "120";
 
+	encoderID = "lame";
+
 	if (!ScanForProgramOption("--encoder=%VALUE", &encoderID)) ScanForProgramOption("-e %VALUE", &encoderID);
 	if (!ScanForProgramOption("--help=%VALUE",    &helpenc))   ScanForProgramOption("-h %VALUE", &helpenc);
 								   ScanForProgramOption("-d %VALUE", &outdir);
 								   ScanForProgramOption("-o %VALUE", &outfile);
 	if (!ScanForProgramOption("--pattern=%VALUE", &pattern))   ScanForProgramOption("-p %VALUE", &pattern);
+
+	encoderID = encoderID.ToLower();
+	helpenc	  = helpenc.ToLower();
 
 	DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
 	Int			 numDrives = 0;
@@ -172,9 +176,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	}
 
 	Console::SetTitle(String(freac::appName).Append(" ").Append(freac::version));
-
-	encoderID = encoderID.ToLower();
-	helpenc	  = helpenc.ToLower();
 
 	if (files.Length() == 0 || helpenc != NIL)
 	{
@@ -640,35 +641,87 @@ Bool freac::freacCommandline::ScanForEncoderOption(const String &option, String 
 
 Void freac::freacCommandline::ScanForFiles(Array<String> *files)
 {
-	String	 prevArg;
+	Bool	 encoderOptionsOnly = False;
 
 	foreach (const String &arg, args)
 	{
-		if (arg[0] != '-' && (prevArg.StartsWith("--")  ||
-				      prevArg[0] != '-'		||
-				      prevArg    == "-js"	||
-				      prevArg    == "-lossless" ||
-				      prevArg    == "-mp4"	||
-				      prevArg    == "-ms"	||
-				      prevArg    == "-extc"	||
-				      prevArg    == "-extm"))
-		{
-			if (arg.Contains("*") || arg.Contains("?"))
-			{
-				File			 file(arg);
-				Directory		 dir(file.GetFilePath());
-				const Array<File>	&array = dir.GetFilesByPattern(file.GetFileName());
+		/* Skip non-file arguments.
+		 */
+		if (arg == "--")	  encoderOptionsOnly = True;
+		if (arg.StartsWith("--")) continue;
 
-				foreach (const File &entry, array) (*files).Add(entry);
-			}
-			else
-			{
-				(*files).Add(arg);
-			}
+		if (arg.StartsWith("-"))
+		{
+			if (ParamHasArguments(arg, encoderOptionsOnly)) foreachindex++;
+
+			continue;
 		}
 
-		prevArg = arg;
+		/* Add file argument to list.
+		 */
+		if (arg.Contains("*") || arg.Contains("?"))
+		{
+			File			 file(arg);
+			Directory		 dir(file.GetFilePath());
+			const Array<File>	&array = dir.GetFilesByPattern(file.GetFileName());
+
+			foreach (const File &entry, array) (*files).Add(entry);
+		}
+		else
+		{
+			(*files).Add(arg);
+		}
 	}
+}
+
+Bool freac::freacCommandline::ParamHasArguments(const String &arg, Bool encoderOptionsOnly)
+{
+	if (!encoderOptionsOnly && (arg == "-e" || arg == "-h" || arg == "-d" || arg == "-o" || arg == "-p" || arg == "-cd" || arg == "-t")) return True;
+
+	Registry	&boca	   = Registry::Get();
+	Component	*component = boca.CreateComponentByID(String(encoderID).Append("-enc"));
+
+	if (component == NIL) return False;
+
+	/* Check dynamic encoder parameters.
+	 */
+	Bool				 hasArgs    = False;
+	const Array<Parameter *>	&parameters = component->GetParameters();
+
+	foreach (Parameter *parameter, parameters)
+	{
+		ParameterType		 type	 = parameter->GetType();
+		String			 spec	 = parameter->GetArgument();
+		const Array<Option *>	&options = parameter->GetOptions();
+
+		if (type == PARAMETER_TYPE_SWITCH)
+		{
+			if (spec == arg) break;
+		}
+		else if (type == PARAMETER_TYPE_SELECTION)
+		{
+			if (spec.StartsWith(arg.Append(" "))) { hasArgs = True; break; }
+			if (spec == arg.Append("%VALUE"))			break;
+
+			if (spec == "%VALUE")
+			{
+				Bool	 found = False;
+
+				foreach (Option *option, options) if (option->GetValue() == arg) found = True;
+
+				if (found) break;
+			}
+		}
+		else if (type == PARAMETER_TYPE_RANGE)
+		{
+			if (spec.StartsWith(arg.Append(" "))) { hasArgs = True; break; }
+			if (spec == arg.Append("%VALUE"))			break;
+		}
+	}
+
+	boca.DeleteComponent(component);
+
+	return hasArgs;
 }
 
 Bool freac::freacCommandline::TracksToFiles(const String &tracks, Array<String> *files)
