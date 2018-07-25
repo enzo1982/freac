@@ -67,6 +67,8 @@ fdk_aac_version=0.1.6
 flac_version=1.3.2
 lame_version=3.100
 libav_version=12.3
+libcdio_version=2.0.0
+libcdio_paranoia_version=10.2+0.94+2
 libogg_version=1.3.3
 libsamplerate_version=0.1.9
 libsndfile_version=1.0.28
@@ -85,6 +87,8 @@ fdk_aac_location=https://sourceforge.net/projects/opencore-amr/files/fdk-aac/fdk
 flac_location=https://ftp.osuosl.org/pub/xiph/releases/flac/flac-$flac_version.tar.xz
 lame_location=https://sourceforge.net/projects/lame/files/lame/$lame_version/lame-$lame_version.tar.gz
 libav_location=https://libav.org/releases/libav-$libav_version.tar.xz
+libcdio_location=https://ftp.gnu.org/gnu/libcdio/libcdio-$libcdio_version.tar.bz2
+libcdio_paranoia_location=https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-$libcdio_paranoia_version.tar.gz
 libogg_location=https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-$libogg_version.tar.xz
 libsamplerate_location=http://www.mega-nerd.com/SRC/libsamplerate-$libsamplerate_version.tar.gz
 libsndfile_location=http://www.mega-nerd.com/libsndfile/files/libsndfile-$libsndfile_version.tar.gz
@@ -198,13 +202,13 @@ packages=$@
 
 if [ ${#packages[0]} -eq 0 ]; then
   echo "Usage: build.sh [{list of packages}|all]"
-  echo "Available packages: faac faad2 fdk-aac flac lame libav libogg libsamplerate libsndfile mac mpg123 opus rubberband speex vorbis wavpack"
+  echo "Available packages: faac faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mpg123 opus rubberband speex vorbis wavpack"
   echo
 elif [ "${packages[0]}" == all ]; then
   if [[ $uname == Darwin ]]; then
-    packages=( faad2 fdk-aac flac lame libav libogg libsamplerate libsndfile mac mpg123 opus speex vorbis wavpack )
+    packages=( faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mpg123 opus speex vorbis wavpack )
   else
-    packages=( faac faad2 fdk-aac flac lame libav libogg libsamplerate libsndfile mac mpg123 opus rubberband speex vorbis wavpack )
+    packages=( faac faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mpg123 opus rubberband speex vorbis wavpack )
   fi
 fi
 
@@ -302,6 +306,18 @@ for package in ${packages[@]}; do
       fi
     fi
     build $libav_location avconv.$execext avconv.$execext
+
+  elif [ $package == libcdio ]; then
+    # Build CDIO
+    export CFLAGS="$cflags -Os"
+    configure_flags="--disable-cxx"
+    build $libcdio_location lib/driver/.libs/libcdio$sharedinfix.$sharedext libcdio.$sharedext
+
+  elif [ $package == libcdio-paranoia ]; then
+    # Build CDIO
+    export CFLAGS="$cflags -Os"
+    configure_exports="LIBCDIO_CFLAGS=\"-I.\" LIBCDIO_LIBS=\"-lcdio\""
+    build $libcdio_paranoia_location "lib/cdda_interface/.libs/libcdio_cdda$sharedinfix.$sharedext lib/paranoia/.libs/libcdio_paranoia$sharedinfix.$sharedext" "libcdio_cdda.$sharedext libcdio_paranoia.$sharedext"
 
   elif [ $package == libogg ]; then
     # Build Ogg
