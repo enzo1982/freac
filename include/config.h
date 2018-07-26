@@ -38,6 +38,9 @@ namespace freac
 			static const String	 SettingsStartCountID;
 			static const Int	 SettingsStartCountDefault;
 
+			static const String	 SettingsEnableConsoleID;
+			static const Bool	 SettingsEnableConsoleDefault;
+
 			static const String	 SettingsWindowPosXID;
 			static const Int	 SettingsWindowPosXDefault;
 

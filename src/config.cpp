@@ -37,6 +37,9 @@ const String	 freac::Config::CategoryProcessingID				= "Processing";
 const String	 freac::Config::SettingsStartCountID				= "StartCount";
 const Int	 freac::Config::SettingsStartCountDefault			= 0;
 
+const String	 freac::Config::SettingsEnableConsoleID				= "EnableConsole";
+const Bool	 freac::Config::SettingsEnableConsoleDefault			= False;
+
 const String	 freac::Config::SettingsWindowPosXID				= "WindowPosX";
 const Int	 freac::Config::SettingsWindowPosXDefault			= 100;
 

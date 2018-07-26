@@ -52,8 +52,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	config->enable_console = True;
-
 	/* Set interface language.
 	 */
 	String	 language = config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault);
@@ -107,6 +105,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 		config->SetActiveConfiguration(configName);
 	}
+
+	/* Set console mode.
+	 */
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, True);
 
 	/* Configure the converter.
 	 */

@@ -65,9 +65,9 @@ freac::Progress::~Progress()
 
 Void freac::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 {
-	Registry	&boca = Registry::Get();
+	if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return;
 
-	if (configuration->enable_console) return;
+	Registry	&boca = Registry::Get();
 
 	totalSamplesLeft       = 0;
 	totalSamplesMultiplier = 1;
@@ -116,7 +116,7 @@ Void freac::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 
 Void freac::Progress::FixTotalSamples(const Track &track, const Track &nTrack)
 {
-	if (configuration->enable_console) return;
+	if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return;
 
 	mutex.Lock();
 
@@ -178,7 +178,7 @@ Void freac::Progress::Resume()
 
 Void freac::Progress::StartTrack(const Track &track)
 {
-	if (configuration->enable_console) return;
+	if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return;
 
 	lastInvoked = 0;
 
@@ -196,7 +196,7 @@ Void freac::Progress::StartTrack(const Track &track)
 
 Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
 {
-	if (configuration->enable_console) return;
+	if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return;
 
 	/* Update internal track list.
 	 */
@@ -273,7 +273,7 @@ Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
 
 Void freac::Progress::FinishTrack(const Track &track, Bool stepsLeft)
 {
-	if (configuration->enable_console) return;
+	if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return;
 
 	lastInvoked = 0;
 

@@ -84,8 +84,6 @@ freac::freacGUI::freacGUI()
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	config->enable_console = False;
-
 	/* Setup Notification instance.
 	 */
 	notification = Notification::Get();

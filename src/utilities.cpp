@@ -482,10 +482,14 @@ String freac::Utilities::GetSingleOutputFileName(const Array<Track> &tracks)
 {
 	/* Check if an output filename has already been set.
 	 */
-	BoCA::Config	*config		      = BoCA::Config::Get();
-	String		 singleOutputFileName = config->GetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Config::SettingsSingleFilenameDefault);
+	BoCA::Config	*config = BoCA::Config::Get();
 
-	if (singleOutputFileName != NIL || config->enable_console) return singleOutputFileName;
+	Bool	 enableConsole	      = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+
+	String	 selectedEncoder      = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+	String	 singleOutputFileName = config->GetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Config::SettingsSingleFilenameDefault);
+
+	if (singleOutputFileName != NIL || enableConsole) return singleOutputFileName;
 
 	/* Find artist and album to use for file name.
 	 */
@@ -502,7 +506,7 @@ String freac::Utilities::GetSingleOutputFileName(const Array<Track> &tracks)
 	/* Instantiate selected encoder.
 	 */
 	Registry		&boca	 = Registry::Get();
-	EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
+	EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(selectedEncoder);
 
 	if (encoder == NIL) return NIL;
 
@@ -566,7 +570,9 @@ String freac::Utilities::GetPlaylistFileName(const Track &track)
 
 	const Info	&info	= track.GetInfo();
 
-	if (config->enable_console) return NIL;
+	Bool	 enableConsole	   = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+
+	if (enableConsole) return NIL;
 
 	String	 outputDir	   = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
 	Bool	 useUnicode	   = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);

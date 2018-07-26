@@ -77,8 +77,10 @@ Error freac::JobConvert::Precheck()
 
 	/* Get config values.
 	 */
+	Bool	 enableConsole	       = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+
 	Bool	 encodeToSingleFile    = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
-	Bool	 overwriteAllFiles     = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || configuration->enable_console;
+	Bool	 overwriteAllFiles     = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || enableConsole;
 
 	Bool	 writeToInputDirectory = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 
@@ -96,7 +98,7 @@ Error freac::JobConvert::Precheck()
 
 	/* Check if we have lossy tracks that would be converted to lossless.
 	 */
-	Bool	 doNotWarnAgain = !configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, Config::SettingsWarnLossyToLosslessDefault) || configuration->enable_console;
+	Bool	 doNotWarnAgain = !configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWarnLossyToLosslessID, Config::SettingsWarnLossyToLosslessDefault) || enableConsole;
 
 	if (!doNotWarnAgain)
 	{
@@ -248,11 +250,13 @@ Error freac::JobConvert::Perform()
 	 */
 	String	 selectedEncoderID	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 
+	Bool	 enableConsole		= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+
 	Bool	 enableParallel		= configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
 	Int	 numberOfThreads	= configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault);
 
 	Bool	 encodeToSingleFile	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
-	Bool	 overwriteAllFiles	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || configuration->enable_console;
+	Bool	 overwriteAllFiles	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || enableConsole;
 
 	Int	 singleFileMode		= configuration->GetIntValue(Config::CategoryProcessingID, Config::ProcessingSingleFileModeID, Config::ProcessingSingleFileModeDefault);
 
@@ -526,7 +530,7 @@ Error freac::JobConvert::Perform()
 
 			/* Remove track from joblist.
 			 */
-			if ((removeProcessedTracks || Config::Get()->deleteAfterEncoding) && !configuration->enable_console)
+			if ((removeProcessedTracks || Config::Get()->deleteAfterEncoding) && !enableConsole)
 			{
 				BoCA::JobList		*joblist = BoCA::JobList::Get();
 				const Array<Track>	*tracks	 = joblist->getTrackList.Call();
@@ -544,7 +548,7 @@ Error freac::JobConvert::Perform()
 
 			/* Delete input file if requested.
 			 */
-			if (Config::Get()->deleteAfterEncoding && !configuration->enable_console)
+			if (Config::Get()->deleteAfterEncoding && !enableConsole)
 			{
 				/* Check if this was the last track depending on this input file.
 				 */
@@ -564,7 +568,7 @@ Error freac::JobConvert::Perform()
 			{
 				/* Add encoded track to joblist if requested.
 				 */
-				if (addEncodedTracks && !encodeToSingleFile && !configuration->enable_console)
+				if (addEncodedTracks && !encodeToSingleFile && !enableConsole)
 				{
 					Array<String>	 files;
 

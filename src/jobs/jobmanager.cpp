@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -94,11 +94,14 @@ Void freac::JobManager::OnFinishJob(Job *job)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
+	Bool	 enableConsole = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+	Bool	 displayErrors = config->GetIntValue(Config::CategorySettingsID, Config::SettingsDisplayErrorsID, Config::SettingsDisplayErrorsDefault);
+
 	job->onFinishJob.Disconnect(&JobManager::OnFinishJob, this);
 
-	if (job->GetErrors().Length() > 0 && !config->enable_console)
+	if (job->GetErrors().Length() > 0 && !enableConsole)
 	{
-		if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsDisplayErrorsID, Config::SettingsDisplayErrorsDefault))
+		if (displayErrors)
 		{
 			ErrorDialog	 dialog(job->GetErrors());
 
@@ -108,7 +111,7 @@ Void freac::JobManager::OnFinishJob(Job *job)
 		return;
 	}
 
-	if (job->GetWarnings().Length() > 0 && !config->enable_console)
+	if (job->GetWarnings().Length() > 0 && !enableConsole)
 	{
 		return;
 	}
