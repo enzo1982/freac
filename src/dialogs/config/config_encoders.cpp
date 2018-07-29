@@ -260,11 +260,7 @@ Void freac::ConfigureEncoders::ConfigureEncoder()
 
 		if (layer != NIL)
 		{
-			ConfigComponentDialog	*dlg = new ConfigComponentDialog(layer);
-
-			dlg->ShowDialog();
-
-			DeleteObject(dlg);
+			ConfigComponentDialog(layer).ShowDialog();
 
 			onChangeComponentSettings.Emit(encoderID);
 		}

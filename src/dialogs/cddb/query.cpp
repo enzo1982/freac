@@ -195,15 +195,15 @@ Bool freac::cddbQueryDlg::Query(CDDB &cddb)
 		}
 		else
 		{
-			cddbMultiMatchDlg	*dlg	= new cddbMultiMatchDlg(cddb, fuzzy);
+			cddbMultiMatchDlg	 dlg(cddb, fuzzy);
 
-			for (int i = 0; i < cddb.GetNumberOfMatches(); i++) dlg->AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i), cddb.GetNthDiscID(i));
+			for (Int i = 0; i < cddb.GetNumberOfMatches(); i++) dlg.AddEntry(cddb.GetNthCategory(i), cddb.GetNthTitle(i), cddb.GetNthDiscID(i));
 
-			if (fuzzy) dlg->AddEntry(i18n->TranslateString("none"), NIL, 0);
+			if (fuzzy) dlg.AddEntry(i18n->TranslateString("none"), NIL, 0);
 
-			if (dlg->ShowDialog() == Success())
+			if (dlg.ShowDialog() == Success())
 			{
-				Int	 index = dlg->GetSelectedEntryNumber();
+				Int	 index = dlg.GetSelectedEntryNumber();
 
 				if (index < cddb.GetNumberOfMatches() && index >= 0)
 				{
@@ -211,8 +211,6 @@ Bool freac::cddbQueryDlg::Query(CDDB &cddb)
 					discID	 = cddb.GetNthDiscID(index);
 				}
 			}
-
-			DeleteObject(dlg);
 		}
 	}
 
