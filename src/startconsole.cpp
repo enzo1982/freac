@@ -315,7 +315,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	if (component == NIL)
 	{
-		Console::OutputString(String("Encoder '").Append(helpenc).Append("' could not be initialized!\n\n"));
+		Console::OutputString(String("Encoder '").Append(encoderID).Append("' could not be initialized!\n\n"));
 
 		return;
 	}
@@ -381,7 +381,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	if (broken)
 	{
-		Console::OutputString(String("Invalid arguments for encoder '").Append(helpenc).Append("'!\n\n"));
+		Console::OutputString(String("Invalid arguments for encoder '").Append(encoderID).Append("'!\n\n"));
 
 		return;
 	}
