@@ -442,11 +442,7 @@ Void freac::freacGUI::ConfigureSettings(ConfigurePage page)
 
 	/* Show configuration dialog.
 	 */
-	ConfigDialog	*dialog = new ConfigDialog();
-
-	dialog->ShowDialog(page);
-
-	DeleteObject(dialog);
+	ConfigDialog().ShowDialog(page);
 
 	/* Select active configuration if we have multiple.
 	 */
@@ -481,12 +477,10 @@ Void freac::freacGUI::ConfigureComponent(const String &id)
 
 		if (layer != NIL)
 		{
-			ConfigComponentDialog	*dlg = new ConfigComponentDialog(layer);
+			ConfigComponentDialog	 dlg(layer);
 
-			dlg->SetParentWindow(mainWnd);
-			dlg->ShowDialog();
-
-			DeleteObject(dlg);
+			dlg.SetParentWindow(mainWnd);
+			dlg.ShowDialog();
 		}
 		else
 		{
@@ -742,19 +736,19 @@ Void freac::freacGUI::QueryCDDB()
 			if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
 			    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 			{
-				cddbQueryDlg	*dlg = new cddbQueryDlg(queryString);
+				cddbQueryDlg	 dlg(queryString);
 
-				if (dlg->ShowDialog() == Error())
+				if (dlg.ShowDialog() == Error())
 				{
 					/* Ask whether to perform this query later.
 					 */
 					CDDBBatch	 queries;
 
-					if (i == queryStrings.Length() - 1 && QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
+					if (i == queryStrings.Length() - 1 && QuickMessage(dlg.GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
 					{
 						queries.AddQuery(queryString);
 					}
-					else if (i < queryStrings.Length() - 1 && QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform the remaining queries again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
+					else if (i < queryStrings.Length() - 1 && QuickMessage(dlg.GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform the remaining queries again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
 					{
 						for (Int j = i; j < queryStrings.Length(); j++) queries.AddQuery(queryStrings.GetNth(j));
 					}
@@ -763,16 +757,14 @@ Void freac::freacGUI::QueryCDDB()
 					 */
 					config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, False);
 				}
-				else if (dlg->GetErrorString() != NIL)
+				else if (dlg.GetErrorString() != NIL)
 				{
 					/* If there's an info message, add it to the list of errors.
 					 */
-					queryErrors.Add(dlg->GetErrorString());
+					queryErrors.Add(dlg.GetErrorString());
 				}
 
-				cdInfo = dlg->GetCDDBInfo();
-
-				DeleteObject(dlg);
+				cdInfo = dlg.GetCDDBInfo();
 			}
 
 			if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);
@@ -870,20 +862,12 @@ Void freac::freacGUI::SubmitCDDBData()
 		return;
 	}
 
-	cddbSubmitDlg	*dlg = new cddbSubmitDlg();
-
-	dlg->ShowDialog();
-
-	DeleteObject(dlg);
+	cddbSubmitDlg().ShowDialog();
 }
 
 Void freac::freacGUI::ManageCDDBData()
 {
-	cddbManageDlg	*dlg = new cddbManageDlg();
-
-	dlg->ShowDialog();
-
-	DeleteObject(dlg);
+	cddbManageDlg().ShowDialog();
 }
 
 Void freac::freacGUI::ManageCDDBBatchData()
@@ -897,11 +881,7 @@ Void freac::freacGUI::ManageCDDBBatchData()
 		return;
 	}
 
-	cddbManageSubmitsDlg	*dlg = new cddbManageSubmitsDlg();
-
-	dlg->ShowDialog();
-
-	DeleteObject(dlg);
+	cddbManageSubmitsDlg().ShowDialog();
 }
 
 Void freac::freacGUI::ManageCDDBBatchQueries()
@@ -915,11 +895,7 @@ Void freac::freacGUI::ManageCDDBBatchQueries()
 		return;
 	}
 
-	cddbManageQueriesDlg	*dlg = new cddbManageQueriesDlg();
-
-	dlg->ShowDialog();
-
-	DeleteObject(dlg);
+	cddbManageQueriesDlg().ShowDialog();
 }
 
 Bool freac::freacGUI::SetLanguage()
@@ -1450,27 +1426,23 @@ Void freac::freacGUI::StopEncoding()
 
 Void freac::freacGUI::AddFilesByPattern()
 {
-	AddPatternDialog	*dialog = new AddPatternDialog();
+	AddPatternDialog	 dialog;
 
-	if (dialog->ShowDialog() == Success()) joblist->AddTracksByPattern(dialog->GetDirectory(), dialog->GetPattern(), dialog->GetSearchSubFolders());
-
-	DeleteObject(dialog);
+	if (dialog.ShowDialog() == Success()) joblist->AddTracksByPattern(dialog.GetDirectory(), dialog.GetPattern(), dialog.GetSearchSubFolders());
 }
 
 Void freac::freacGUI::AddFilesFromDirectory()
 {
-	AddDirectoryDialog	*dialog = new AddDirectoryDialog();
+	AddDirectoryDialog	 dialog;
 
-	if (dialog->ShowDialog() == Success())
+	if (dialog.ShowDialog() == Success())
 	{
 		Array<String>	 directories;
 
-		directories.Add(dialog->GetDirectory());
+		directories.Add(dialog.GetDirectory());
 
 		joblist->AddTracksByDragAndDrop(directories);
 	}
-
-	DeleteObject(dialog);
 }
 
 Void freac::freacGUI::ToggleSignalProcessing()
@@ -1536,28 +1508,26 @@ Void freac::freacGUI::ShowTipOfTheDay()
 	i18n->SetContext("Tips");
 
 	Bool		 showTips = config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault);
-	TipOfTheDay	*dialog = new TipOfTheDay(&showTips);
+	TipOfTheDay	 dialog(&showTips);
 
-	dialog->AddTip(i18n->TranslateString("%1 is available in %2 languages. If your language is\nnot available, you can easily translate %1 using the\n\'smooth Translator\' application.").Replace("%1", freac::appName).Replace("%2", String::FromInt(Math::Max(36, i18n->GetNOfLanguages()))));
-	dialog->AddTip(i18n->TranslateString("%1 comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the %1 website: %2").Replace("%1", freac::appName).Replace("%2", freac::website));
+	dialog.AddTip(i18n->TranslateString("%1 is available in %2 languages. If your language is\nnot available, you can easily translate %1 using the\n\'smooth Translator\' application.").Replace("%1", freac::appName).Replace("%2", String::FromInt(Math::Max(36, i18n->GetNOfLanguages()))));
+	dialog.AddTip(i18n->TranslateString("%1 comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Bonk encoders. An encoder for the VQF format is\navailable at the %1 website: %2").Replace("%1", freac::appName).Replace("%2", freac::website));
 
 #ifdef __WIN32__
-	dialog->AddTip(i18n->TranslateString("%1 can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the %1/plugins directory to\nenable %1 to read these formats.").Replace("%1", freac::appName));
+	dialog.AddTip(i18n->TranslateString("%1 can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the %1/plugins directory to\nenable %1 to read these formats.").Replace("%1", freac::appName));
 #endif
 
-	dialog->AddTip(i18n->TranslateString("With %1 you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with %1.").Replace("%1", freac::appName));
-	dialog->AddTip(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the Ripper tab of %1's configuration\ndialog. If that does not help, try using one of the Paranoia modes.").Replace("%1", freac::appName));
-	dialog->AddTip(i18n->TranslateString("Do you have any suggestions on how to improve %1?\nYou can submit any ideas through the Tracker on the %1\nSourceForge project page - %2\nor send an eMail to %3.").Replace("%1", freac::appName).Replace("%2", "https://sf.net/projects/bonkenc").Replace("%3", "suggestions@freac.org"));
-	dialog->AddTip(i18n->TranslateString("Do you like %1? %1 is available for free, but you can\nhelp fund the development by donating to the %1 project.\nYou can send money to %2 through PayPal.\nSee %3 for more details.").Replace("%1", freac::appName).Replace("%2", "donate@freac.org").Replace("%3", String(freac::website).Append("donating.php")));
+	dialog.AddTip(i18n->TranslateString("With %1 you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with %1.").Replace("%1", freac::appName));
+	dialog.AddTip(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the Ripper tab of %1's configuration\ndialog. If that does not help, try using one of the Paranoia modes.").Replace("%1", freac::appName));
+	dialog.AddTip(i18n->TranslateString("Do you have any suggestions on how to improve %1?\nYou can submit any ideas through the Tracker on the %1\nSourceForge project page - %2\nor send an eMail to %3.").Replace("%1", freac::appName).Replace("%2", "https://sf.net/projects/bonkenc").Replace("%3", "suggestions@freac.org"));
+	dialog.AddTip(i18n->TranslateString("Do you like %1? %1 is available for free, but you can\nhelp fund the development by donating to the %1 project.\nYou can send money to %2 through PayPal.\nSee %3 for more details.").Replace("%1", freac::appName).Replace("%2", "donate@freac.org").Replace("%3", String(freac::website).Append("donating.php")));
 
-	dialog->SetMode(TIP_ORDERED, config->GetIntValue(Config::CategorySettingsID, Config::SettingsNextTipID, Config::SettingsNextTipDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault));
+	dialog.SetMode(TIP_ORDERED, config->GetIntValue(Config::CategorySettingsID, Config::SettingsNextTipID, Config::SettingsNextTipDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault));
 
-	dialog->ShowDialog();
+	dialog.ShowDialog();
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, showTips);
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsNextTipID, dialog->GetOffset());
-
-	DeleteObject(dialog);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsNextTipID, dialog.GetOffset());
 }
 
 Void freac::freacGUI::CheckForUpdates()

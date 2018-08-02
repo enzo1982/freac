@@ -587,27 +587,25 @@ Void freac::cddbSubmitDlg::ChangeDrive()
 		if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault) ||
 		    config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
 		{
-			cddbQueryDlg	*dlg = new cddbQueryDlg(queryString);
+			cddbQueryDlg	 dlg(queryString);
 
-			if (dlg->ShowDialog() == Error())
+			if (dlg.ShowDialog() == Error())
 			{
 				/* Ask whether to perform this query later.
 				 */
-				if (QuickMessage(dlg->GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
+				if (QuickMessage(dlg.GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
 				{
 					CDDBBatch().AddQuery(queryString);
 				}
 			}
-			else if (dlg->GetErrorString() != NIL)
+			else if (dlg.GetErrorString() != NIL)
 			{
 				/* Display info message if any.
 				 */
-				BoCA::Utilities::InfoMessage(dlg->GetErrorString());
+				BoCA::Utilities::InfoMessage(dlg.GetErrorString());
 			}
 
-			cdInfo = dlg->GetCDDBInfo();
-
-			DeleteObject(dlg);
+			cdInfo = dlg.GetCDDBInfo();
 		}
 
 		if (cdInfo != NIL) CDDBCache::Get()->AddCacheEntry(cdInfo);

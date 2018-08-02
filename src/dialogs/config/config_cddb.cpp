@@ -290,20 +290,12 @@ Void freac::ConfigureCDDB::ToggleAutoCDDB()
 
 Void freac::ConfigureCDDB::HTTPSettings()
 {
-	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(0);
-
-	dlg->ShowDialog();
-
-	DeleteObject(dlg);
+	cddbExtendedSettingsDlg(0).ShowDialog();
 }
 
 Void freac::ConfigureCDDB::ProxySettings()
 {
-	cddbExtendedSettingsDlg	*dlg = new cddbExtendedSettingsDlg(1);
-
-	dlg->ShowDialog();
-
-	DeleteObject(dlg);
+	cddbExtendedSettingsDlg(1).ShowDialog();
 }
 
 Int freac::ConfigureCDDB::SaveSettings()
