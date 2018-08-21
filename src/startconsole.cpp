@@ -76,8 +76,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			else	    Console::OutputString(String("\t").Append(config->GetNthConfigurationName(i)).Append("\n"));
 		}
 
-		Console::OutputString("\n");
-
 		return;
 	}
 
@@ -188,7 +186,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	if (!boca.ComponentExists(String(encoderID).Append("-enc")))
 	{
-		Console::OutputString(String("Encoder '").Append(encoderID).Append("' is not supported by ").Append(freac::appName).Append("!\n\n"));
+		Console::OutputString(String("Encoder '").Append(encoderID).Append("' is not supported by ").Append(freac::appName).Append("!\n"));
 
 		return;
 	}
@@ -199,7 +197,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	if (component == NIL)
 	{
-		Console::OutputString(String("Encoder '").Append(encoderID).Append("' could not be initialized!\n\n"));
+		Console::OutputString(String("Encoder '").Append(encoderID).Append("' could not be initialized!\n"));
 
 		return;
 	}
@@ -265,7 +263,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	if (broken)
 	{
-		Console::OutputString(String("Invalid arguments for encoder '").Append(encoderID).Append("'!\n\n"));
+		Console::OutputString(String("Invalid arguments for encoder '").Append(encoderID).Append("'!\n"));
 
 		return;
 	}
@@ -745,7 +743,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 	{
 		if (!boca.ComponentExists(String(helpenc).Append("-enc")))
 		{
-			Console::OutputString(String("Encoder '").Append(helpenc).Append("' is not supported by ").Append(freac::appName).Append("!\n\n"));
+			Console::OutputString(String("Encoder '").Append(helpenc).Append("' is not supported by ").Append(freac::appName).Append("!\n"));
 
 			return;
 		}
@@ -754,7 +752,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 
 		if (component == NIL)
 		{
-			Console::OutputString(String("Encoder '").Append(helpenc).Append("' could not be initialized!\n\n"));
+			Console::OutputString(String("Encoder '").Append(helpenc).Append("' could not be initialized!\n"));
 
 			return;
 		}
@@ -810,15 +808,17 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 					Console::OutputString(String("\t").Append(spec).Append(String().FillN('\t', maxTabs - Math::Floor(spec.Length() / 8.0))).Append(name).Append(": "));
 
 					foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MIN) Console::OutputString(String(option->GetValue()).Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias()).Append(")") : String()).Append(" - "));
-					foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MAX) Console::OutputString(String(option->GetValue()).Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias()).Append(")") : String()).Append(", "));
+					foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MAX) Console::OutputString(String(option->GetValue()).Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias()).Append(")") : String()));
 
-					Console::OutputString(String("default ").Append(def).Append("\n"));
+					if (def != NIL) Console::OutputString(String(", default ").Append(def));
+
+					Console::OutputString("\n");
 				}
 			}
 		}
 		else
 		{
-			Console::OutputString(String("\tno options for ").Append(component->GetName()).Append("\n\n"));
+			Console::OutputString(String("\tno options for ").Append(component->GetName()).Append("\n"));
 		}
 
 		boca.DeleteComponent(component);
