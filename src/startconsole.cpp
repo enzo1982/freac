@@ -438,17 +438,7 @@ Bool freac::freacCommandline::ScanForProgramOption(const String &option, String 
 		 */
 		if (arg == "--") break;
 
-		if (option.StartsWith("--") && option.EndsWith("=%VALUE") && value != NIL && arg.StartsWith(option.Head(option.Find("=") + 1)))
-		{
-			*value = arg.Tail(arg.Length() - option.Length() + 6);
-
-			return True;
-		}
-		else if (option.StartsWith("--") && arg == option)
-		{
-			return True;
-		}
-		else if (option.StartsWith("-") && option.EndsWith("%VALUE") && !option.Contains(" ") && value != NIL && arg.StartsWith(option.Head(option.Find("%"))))
+		if (option.StartsWith("-") && option.EndsWith("%VALUE") && !option.Contains(" ") && value != NIL && arg.StartsWith(option.Head(option.Find("%"))))
 		{
 			*value = arg.Tail(arg.Length() - option.Length() + 6);
 
@@ -492,17 +482,7 @@ Bool freac::freacCommandline::ScanForEncoderOption(const String &option, String 
 		 */
 		if (foreachindex <= separatorindex) continue;
 
-		if (option.StartsWith("--") && option.EndsWith("=%VALUE") && value != NIL && arg.StartsWith(option.Head(option.Find("=") + 1)))
-		{
-			*value = arg.Tail(arg.Length() - option.Length() + 6);
-
-			return True;
-		}
-		else if (option.StartsWith("--") && arg == option)
-		{
-			return True;
-		}
-		else if (option.StartsWith("-") && option.EndsWith("%VALUE") && !option.Contains(" ") && value != NIL && arg.StartsWith(option.Head(option.Find("%"))))
+		if (option.StartsWith("-") && option.EndsWith("%VALUE") && !option.Contains(" ") && value != NIL && arg.StartsWith(option.Head(option.Find("%"))))
 		{
 			*value = arg.Tail(arg.Length() - option.Length() + 6);
 
@@ -531,8 +511,7 @@ Void freac::freacCommandline::ScanForFiles(Array<String> *files)
 	{
 		/* Skip non-file arguments.
 		 */
-		if (arg == "--")	  encoderOptionsOnly = True;
-		if (arg.StartsWith("--")) continue;
+		if (arg == "--") encoderOptionsOnly = True;
 
 		if (arg.StartsWith("-"))
 		{
