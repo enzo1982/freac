@@ -76,8 +76,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			else	    Console::OutputString(String("\t").Append(config->GetNthConfigurationName(i)).Append("\n"));
 		}
 
-		Console::OutputString("\n");
-
 		return;
 	}
 
@@ -115,7 +113,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	Bool		 quiet		= ScanForProgramOption("--quiet");
 	Bool		 cddb		= ScanForProgramOption("--cddb");
 	Array<String>	 files;
-	String		 encoderID	= "lame";
 	String		 helpenc;
 	String		 outdir		= Directory::GetActiveDirectory();
 	String		 outfile;
@@ -124,11 +121,16 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	String		 tracks;
 	String		 timeout	= "120";
 
+	encoderID = "lame";
+
 	if (!ScanForProgramOption("--encoder=%VALUE", &encoderID)) ScanForProgramOption("-e %VALUE", &encoderID);
 	if (!ScanForProgramOption("--help=%VALUE",    &helpenc))   ScanForProgramOption("-h %VALUE", &helpenc);
 								   ScanForProgramOption("-d %VALUE", &outdir);
 								   ScanForProgramOption("-o %VALUE", &outfile);
 	if (!ScanForProgramOption("--pattern=%VALUE", &pattern))   ScanForProgramOption("-p %VALUE", &pattern);
+
+	encoderID = encoderID.ToLower();
+	helpenc	  = helpenc.ToLower();
 
 	DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
 	Int			 numDrives = 0;
@@ -175,9 +177,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	Console::SetTitle(String(freac::appName).Append(" ").Append(freac::version));
 
-	encoderID = encoderID.ToLower();
-	helpenc	  = helpenc.ToLower();
-
 	if (files.Length() == 0 || helpenc != NIL)
 	{
 		ShowHelp(helpenc);
@@ -187,125 +186,86 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	if (!boca.ComponentExists(String(encoderID).Append("-enc")))
 	{
-		Console::OutputString(String("Encoder '").Append(encoderID).Append("' is not supported by ").Append(freac::appName).Append("!\n\n"));
+		Console::OutputString(String("Encoder '").Append(encoderID).Append("' is not supported by ").Append(freac::appName).Append("!\n"));
 
 		return;
 	}
 
-	/* Check encoder parameters.
+	/* Check dynamic encoder parameters.
 	 */
-	if (encoderID == "lame")
+	Component	*component = boca.CreateComponentByID(String(encoderID).Append("-enc"));
+
+	if (component == NIL)
 	{
-		String	 bitrate = "192";
-		String	 quality = "5";
-		String	 mode	 = "VBR";
+		Console::OutputString(String("Encoder '").Append(encoderID).Append("' could not be initialized!\n"));
 
-		ScanForEncoderOption("-b %VALUE", &bitrate);
-		ScanForEncoderOption("-q %VALUE", &quality);
-		ScanForEncoderOption("-m %VALUE", &mode);
-
-		config->SetIntValue("LAME", "Preset", 0);
-		config->SetIntValue("LAME", "SetBitrate", True);
-
-		config->SetIntValue("LAME", "Bitrate", Math::Max(0, Math::Min(320, (Int) bitrate.ToInt())));
-		config->SetIntValue("LAME", "ABRBitrate", Math::Max(0, Math::Min(320, (Int) bitrate.ToInt())));
-		config->SetIntValue("LAME", "VBRQuality", Math::Max(0, Math::Min(9, (Int) quality.ToInt())) * 10);
-
-		if	(mode.ToUpper() == "VBR") config->SetIntValue("LAME", "VBRMode", 4);
-		else if (mode.ToUpper() == "ABR") config->SetIntValue("LAME", "VBRMode", 3);
-		else if (mode.ToUpper() == "CBR") config->SetIntValue("LAME", "VBRMode", 0);
+		return;
 	}
-	else if (encoderID == "vorbis")
+
+	Bool				 broken	    = False;
+	const Array<Parameter *>	&parameters = component->GetParameters();
+
+	foreach (Parameter *parameter, parameters)
 	{
-		String	 bitrate = "192";
-		String	 quality = "60";
+		ParameterType		 type	 = parameter->GetType();
+		String			 name	 = parameter->GetName();
+		String			 spec	 = parameter->GetArgument();
+		const Array<Option *>	&options = parameter->GetOptions();
+		Float			 step	 = parameter->GetStepSize();
+		String			 def	 = parameter->GetDefault();
 
-		if (ScanForEncoderOption("-b %VALUE", &bitrate)) config->SetIntValue("Vorbis", "Mode", 1);
-		else						 config->SetIntValue("Vorbis", "Mode", 0);
+		if (type == PARAMETER_TYPE_SWITCH)
+		{
+			/* Enable switch if given on command line.
+			 */
+			config->SetIntValue(component->GetID(), name, ScanForEncoderOption(spec));
+		}
+		else if (type == PARAMETER_TYPE_SELECTION)
+		{
+			/* Set selection to given value.
+			 */
+			String	 value;
+			Bool	 present = ScanForEncoderOption(String(spec).Trim(), &value);
 
-		config->SetIntValue("Vorbis", "Quality", Math::Max(0, Math::Min(100, (Int) quality.ToInt())));
-		config->SetIntValue("Vorbis", "Bitrate", Math::Max(45, Math::Min(500, (Int) bitrate.ToInt())));
+			config->SetIntValue(component->GetID(), String("Set ").Append(name), present);
+			config->SetStringValue(component->GetID(), name, value);
+
+			/* Check if given value is allowed.
+			 */
+			Bool	 found = False;
+
+			foreach (Option *option, options) if (option->GetValue() == value) found = True;
+
+			if (present && !found) broken = True;
+		}
+		else if (type == PARAMETER_TYPE_RANGE)
+		{
+			/* Set range parameter to given value.
+			 */
+			String	 value;
+			Bool	 present = ScanForEncoderOption(String(spec).Trim(), &value);
+
+			config->SetIntValue(component->GetID(), String("Set ").Append(name), present);
+			config->SetIntValue(component->GetID(), name, Math::Round(value.ToFloat() / step));
+
+			/* Check if given value is valid.
+			 */
+			Bool	 valid = True;
+
+			foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MIN && value.ToFloat() < option->GetValue().ToFloat()) valid = False;
+			foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MAX && value.ToFloat() > option->GetValue().ToFloat()) valid = False;
+
+			if (present && !valid) broken = True;
+		}
 	}
-	else if (encoderID == "bonk")
+
+	boca.DeleteComponent(component);
+
+	if (broken)
 	{
-		String	 quantization = "0.4";
-		String	 predictor    = "32";
-		String	 downsampling = "2";
+		Console::OutputString(String("Invalid arguments for encoder '").Append(encoderID).Append("'!\n"));
 
-		ScanForEncoderOption("-q %VALUE", &quantization);
-		ScanForEncoderOption("-p %VALUE", &predictor);
-		ScanForEncoderOption("-r %VALUE", &downsampling);
-
-		config->SetIntValue("Bonk", "JointStereo", ScanForEncoderOption("-js"));
-		config->SetIntValue("Bonk", "Lossless", ScanForEncoderOption("-lossless"));
-
-		config->SetIntValue("Bonk", "Quantization", Math::Max(0, Math::Min(40, (Int) Math::Round(quantization.ToFloat() * 20))));
-		config->SetIntValue("Bonk", "Predictor", Math::Max(0, Math::Min(512, (Int) predictor.ToInt())));
-		config->SetIntValue("Bonk", "Downsampling", Math::Max(0, Math::Min(10, (Int) downsampling.ToInt())));
-	}
-	else if (encoderID == "bladeenc")
-	{
-		String	 bitrate = "192";
-
-		ScanForEncoderOption("-b %VALUE", &bitrate);
-
-		config->SetIntValue("BladeEnc", "Bitrate", Math::Max(32, Math::Min(320, (Int) bitrate.ToInt())));
-	}
-	else if (encoderID == "faac")
-	{
-		String	 bitrate = "64";
-		String	 quality = "100";
-
-		if (ScanForEncoderOption("-b %VALUE", &bitrate)) config->SetIntValue("FAAC", "SetQuality", False);
-		else						 config->SetIntValue("FAAC", "SetQuality", True);
-
-		config->SetIntValue("FAAC", "MP4Container", ScanForEncoderOption("-mp4"));
-
-		config->SetIntValue("FAAC", "AACQuality", Math::Max(10, Math::Min(500, (Int) quality.ToInt())));
-		config->SetIntValue("FAAC", "Bitrate", Math::Max(8, Math::Min(256, (Int) bitrate.ToInt())));
-	}
-	else if (encoderID == "flac")
-	{
-		String	 blocksize = "4608";
-		String	 lpc = "8";
-		String	 qlp = "0";
-		String	 rice = "3,3";
-		String	 minrice;
-		String	 maxrice;
-
-		ScanForEncoderOption("-b %VALUE", &blocksize);
-		ScanForEncoderOption("-l %VALUE", &lpc);
-		ScanForEncoderOption("-q %VALUE", &qlp);
-		ScanForEncoderOption("-r %VALUE", &rice);
-
-		Int	 i = 0;
-		Int	 j = 0;
-
-		for (i = 0; i < rice.Length(); i++)	{ if (rice[i] == ',') break; minrice[i] = rice[i]; }
-		for (j = i + 1; j < rice.Length(); j++)	{ maxrice[j - i - 1] = rice[j]; }
-
-		config->SetIntValue("FLAC", "Preset", -1);
-
-		config->SetIntValue("FLAC", "DoMidSideStereo", ScanForEncoderOption("-ms"));
-		config->SetIntValue("FLAC", "DoExhaustiveModelSearch", ScanForEncoderOption("-e"));
-		config->SetIntValue("FLAC", "DoQLPCoeffPrecSearch", ScanForEncoderOption("-p"));
-
-		config->SetIntValue("FLAC", "Blocksize", Math::Max(192, Math::Min(32768, (Int) blocksize.ToInt())));
-		config->SetIntValue("FLAC", "MaxLPCOrder", Math::Max(0, Math::Min(32, (Int) lpc.ToInt())));
-		config->SetIntValue("FLAC", "QLPCoeffPrecision", Math::Max(0, Math::Min(16, (Int) qlp.ToInt())));
-		config->SetIntValue("FLAC", "MinResidualPartitionOrder", Math::Max(0, Math::Min(16, (Int) minrice.ToInt())));
-		config->SetIntValue("FLAC", "MaxResidualPartitionOrder", Math::Max(0, Math::Min(16, (Int) maxrice.ToInt())));
-	}
-	else if (encoderID == "twinvq")
-	{
-		String	 bitrate    = "48";
-		String	 candidates = "32";
-
-		ScanForEncoderOption("-b %VALUE", &bitrate);
-		ScanForEncoderOption("-c %VALUE", &candidates);
-
-		config->SetIntValue("TwinVQ", "PreselectionCandidates", Math::Max(4, Math::Min(32, (Int) candidates.ToInt())));
-		config->SetIntValue("TwinVQ", "Bitrate", Math::Max(24, Math::Min(48, (Int) bitrate.ToInt())));
+		return;
 	}
 
 	/* Perform actual conversion.
@@ -478,17 +438,7 @@ Bool freac::freacCommandline::ScanForProgramOption(const String &option, String 
 		 */
 		if (arg == "--") break;
 
-		if (option.StartsWith("--") && option.EndsWith("=%VALUE") && value != NIL && arg.StartsWith(option.Head(option.Find("=") + 1)))
-		{
-			*value = arg.Tail(arg.Length() - option.Length() + 6);
-
-			return True;
-		}
-		else if (option.StartsWith("--") && arg == option)
-		{
-			return True;
-		}
-		else if (option.StartsWith("-") && option.EndsWith("%VALUE") && !option.Contains(" ") && value != NIL && arg.StartsWith(option.Head(option.Find("%"))))
+		if (option.StartsWith("-") && option.EndsWith("%VALUE") && !option.Contains(" ") && value != NIL && arg.StartsWith(option.Head(option.Find("%"))))
 		{
 			*value = arg.Tail(arg.Length() - option.Length() + 6);
 
@@ -532,17 +482,7 @@ Bool freac::freacCommandline::ScanForEncoderOption(const String &option, String 
 		 */
 		if (foreachindex <= separatorindex) continue;
 
-		if (option.StartsWith("--") && option.EndsWith("=%VALUE") && value != NIL && arg.StartsWith(option.Head(option.Find("=") + 1)))
-		{
-			*value = arg.Tail(arg.Length() - option.Length() + 6);
-
-			return True;
-		}
-		else if (option.StartsWith("--") && arg == option)
-		{
-			return True;
-		}
-		else if (option.StartsWith("-") && option.EndsWith("%VALUE") && !option.Contains(" ") && value != NIL && arg.StartsWith(option.Head(option.Find("%"))))
+		if (option.StartsWith("-") && option.EndsWith("%VALUE") && !option.Contains(" ") && value != NIL && arg.StartsWith(option.Head(option.Find("%"))))
 		{
 			*value = arg.Tail(arg.Length() - option.Length() + 6);
 
@@ -565,35 +505,86 @@ Bool freac::freacCommandline::ScanForEncoderOption(const String &option, String 
 
 Void freac::freacCommandline::ScanForFiles(Array<String> *files)
 {
-	String	 prevArg;
+	Bool	 encoderOptionsOnly = False;
 
 	foreach (const String &arg, args)
 	{
-		if (arg[0] != '-' && (prevArg.StartsWith("--")  ||
-				      prevArg[0] != '-'		||
-				      prevArg    == "-js"	||
-				      prevArg    == "-lossless" ||
-				      prevArg    == "-mp4"	||
-				      prevArg    == "-ms"	||
-				      prevArg    == "-extc"	||
-				      prevArg    == "-extm"))
-		{
-			if (arg.Contains("*") || arg.Contains("?"))
-			{
-				File			 file(arg);
-				Directory		 dir(file.GetFilePath());
-				const Array<File>	&array = dir.GetFilesByPattern(file.GetFileName());
+		/* Skip non-file arguments.
+		 */
+		if (arg == "--") encoderOptionsOnly = True;
 
-				foreach (const File &entry, array) (*files).Add(entry);
-			}
-			else
-			{
-				(*files).Add(arg);
-			}
+		if (arg.StartsWith("-"))
+		{
+			if (ParamHasArguments(arg, encoderOptionsOnly)) foreachindex++;
+
+			continue;
 		}
 
-		prevArg = arg;
+		/* Add file argument to list.
+		 */
+		if (arg.Contains("*") || arg.Contains("?"))
+		{
+			File			 file(arg);
+			Directory		 dir(file.GetFilePath());
+			const Array<File>	&array = dir.GetFilesByPattern(file.GetFileName());
+
+			foreach (const File &entry, array) (*files).Add(entry);
+		}
+		else
+		{
+			(*files).Add(arg);
+		}
 	}
+}
+
+Bool freac::freacCommandline::ParamHasArguments(const String &arg, Bool encoderOptionsOnly)
+{
+	if (!encoderOptionsOnly && (arg == "-e" || arg == "-h" || arg == "-d" || arg == "-o" || arg == "-p" || arg == "-cd" || arg == "-t")) return True;
+
+	Registry	&boca	   = Registry::Get();
+	Component	*component = boca.CreateComponentByID(String(encoderID).Append("-enc"));
+
+	if (component == NIL) return False;
+
+	/* Check dynamic encoder parameters.
+	 */
+	Bool				 hasArgs    = False;
+	const Array<Parameter *>	&parameters = component->GetParameters();
+
+	foreach (Parameter *parameter, parameters)
+	{
+		ParameterType		 type	 = parameter->GetType();
+		String			 spec	 = parameter->GetArgument();
+		const Array<Option *>	&options = parameter->GetOptions();
+
+		if (type == PARAMETER_TYPE_SWITCH)
+		{
+			if (spec == arg) break;
+		}
+		else if (type == PARAMETER_TYPE_SELECTION)
+		{
+			if (spec.StartsWith(arg.Append(" "))) { hasArgs = True; break; }
+			if (spec == arg.Append("%VALUE"))			break;
+
+			if (spec == "%VALUE")
+			{
+				Bool	 found = False;
+
+				foreach (Option *option, options) if (option->GetValue() == arg) found = True;
+
+				if (found) break;
+			}
+		}
+		else if (type == PARAMETER_TYPE_RANGE)
+		{
+			if (spec.StartsWith(arg.Append(" "))) { hasArgs = True; break; }
+			if (spec == arg.Append("%VALUE"))			break;
+		}
+	}
+
+	boca.DeleteComponent(component);
+
+	return hasArgs;
 }
 
 Bool freac::freacCommandline::TracksToFiles(const String &tracks, Array<String> *files)
@@ -731,70 +722,84 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 	{
 		if (!boca.ComponentExists(String(helpenc).Append("-enc")))
 		{
-			Console::OutputString(String("Encoder '").Append(helpenc).Append("' is not supported by ").Append(freac::appName).Append("!\n\n"));
+			Console::OutputString(String("Encoder '").Append(helpenc).Append("' is not supported by ").Append(freac::appName).Append("!\n"));
 
 			return;
 		}
 
-		String	 encoderName;
+		Component	*component = boca.CreateComponentByID(String(helpenc).Append("-enc"));
 
-		for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+		if (component == NIL)
 		{
-			if (boca.GetComponentType(i) != COMPONENT_TYPE_ENCODER) continue;
+			Console::OutputString(String("Encoder '").Append(helpenc).Append("' could not be initialized!\n"));
 
-			if (boca.GetComponentID(i) == String(helpenc).Append("-enc")) encoderName = boca.GetComponentName(i);
+			return;
 		}
 
-		Console::OutputString(String("Options for ").Append(encoderName).Append(":\n\n"));
+		Console::OutputString(String("Options for ").Append(component->GetName()).Append(":\n\n"));
 
-		if (helpenc == "lame")
+		if (component->GetParameters().Length() > 0)
 		{
-			Console::OutputString("\t-m <mode>\t\t(CBR, VBR or ABR, default: VBR)\n");
-			Console::OutputString("\t-b <CBR/ABR bitrate>\t(8 - 320, default: 192)\n");
-			Console::OutputString("\t-q <VBR quality>\t(0 = best, 9 = worst, default: 5)\n\n");
-		}
-		else if (helpenc == "vorbis")
-		{
-			Console::OutputString("\t-q <quality>\t\t(0 - 100, default: 60, VBR mode)\n");
-			Console::OutputString("\t-b <target bitrate>\t(45 - 500, default: 192, ABR mode)\n\n");
-		}
-		else if (helpenc == "bonk")
-		{
-			Console::OutputString("\t-q <quantization factor>\t(0 - 2, default: 0.4)\n");
-			Console::OutputString("\t-p <predictor size>\t\t(0 - 512, default: 32)\n");
-			Console::OutputString("\t-r <downsampling ratio>\t\t(1 - 10, default: 2)\n");
-			Console::OutputString("\t-js\t\t\t\t(use Joint Stereo)\n");
-			Console::OutputString("\t-lossless\t\t\t(use lossless compression)\n\n");
-		}
-		else if (helpenc == "bladeenc")
-		{
-			Console::OutputString("\t-b <bitrate>\t(32, 40, 48, 56, 64, 80, 96, 112, 128,\n");
-			Console::OutputString("\t\t\t 160, 192, 224, 256 or 320, default: 192)\n\n");
-		}
-		else if (helpenc == "faac")
-		{
-			Console::OutputString("\t-q <quality>\t\t\t(10 - 500, default: 100, VBR mode)\n");
-			Console::OutputString("\t-b <bitrate per channel>\t(8 - 256, default: 64, ABR mode)\n");
-			Console::OutputString("\t-mp4\t\t\t\t(use MP4 container format)\n\n");
-		}
-		else if (helpenc == "flac")
-		{
-			Console::OutputString("\t-b <blocksize>\t\t\t(192 - 32768, default: 4608)\n");
-			Console::OutputString("\t-ms\t\t\t\t(use mid-side stereo)\n");
-			Console::OutputString("\t-l <max LPC order>\t\t(0 - 32, default: 8)\n");
-			Console::OutputString("\t-q <QLP coeff precision>\t(0 - 16, default: 0)\n");
-			Console::OutputString("\t-extc\t\t\t\t(do exhaustive QLP coeff optimization)\n");
-			Console::OutputString("\t-extm\t\t\t\t(do exhaustive model search)\n");
-			Console::OutputString("\t-r <min Rice>,<max Rice>\t(0 - 16, default: 3,3)\n\n");
-		}
-		else if (helpenc == "twinvq")
-		{
-			Console::OutputString("\t-b <bitrate per channel>\t(24, 32 or 48, default: 48)\n");
-			Console::OutputString("\t-c <preselection candidates>\t(4, 8, 16 or 32, default: 32)\n\n");
+			const Array<Parameter *>	&parameters = component->GetParameters();
+
+			/* Get required number of tabs for formatting.
+			 */
+			Int	 maxTabs = 0;
+
+			foreach (Parameter *parameter, parameters)
+			{
+				String	 spec = parameter->GetArgument().Replace("%VALUE", "<val>");
+
+				maxTabs = Math::Max((Int64) maxTabs, Math::Ceil((spec.Length() + 1) / 8.0));
+			}
+
+			/* Print formatted parameter list.
+			 */
+			foreach (Parameter *parameter, parameters)
+			{
+				ParameterType		 type	 = parameter->GetType();
+				String			 name	 = parameter->GetName();
+				String			 spec	 = parameter->GetArgument().Replace("%VALUE", "<val>");
+				const Array<Option *>	&options = parameter->GetOptions();
+				String			 def	 = parameter->GetDefault();
+
+				if (type == PARAMETER_TYPE_SWITCH)
+				{
+					Console::OutputString(String("\t").Append(spec).Append(String().FillN('\t', maxTabs - Math::Floor(spec.Length() / 8.0))).Append(name).Append("\n"));
+				}
+				else if (type == PARAMETER_TYPE_SELECTION)
+				{
+					Console::OutputString(String("\t").Append(spec).Append(String().FillN('\t', maxTabs - Math::Floor(spec.Length() / 8.0))).Append(name).Append(": "));
+
+					{
+						foreach (Option *option, options)
+						{
+							if (foreachindex > 0) Console::OutputString(String().FillN('\t', maxTabs + 1).Append(String().FillN(' ', name.Length() + 2)));
+
+							Console::OutputString(option->GetValue().Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias()).Append(")") : String()).Append(def == option->GetValue() ? ", default" : NIL).Append("\n"));
+						}
+					}
+
+					if (foreachindex < parameters.Length() - 1) Console::OutputString("\n");
+				}
+				else if (type == PARAMETER_TYPE_RANGE)
+				{
+					Console::OutputString(String("\t").Append(spec).Append(String().FillN('\t', maxTabs - Math::Floor(spec.Length() / 8.0))).Append(name).Append(": "));
+
+					foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MIN) Console::OutputString(String(option->GetValue()).Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias()).Append(")") : String()).Append(" - "));
+					foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MAX) Console::OutputString(String(option->GetValue()).Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias()).Append(")") : String()));
+
+					if (def != NIL) Console::OutputString(String(", default ").Append(def));
+
+					Console::OutputString("\n");
+				}
+			}
 		}
 		else
 		{
-			Console::OutputString(String("\tno options for ").Append(encoderName).Append("\n\n"));
+			Console::OutputString(String("\tno options for ").Append(component->GetName()).Append("\n"));
 		}
+
+		boca.DeleteComponent(component);
 	}
 }
