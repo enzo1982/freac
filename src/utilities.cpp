@@ -334,6 +334,8 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 		 */
 		String	 filePattern = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
 
+		if (filePattern.Trim() == NIL) filePattern = Config::SettingsEncoderFilenamePatternDefault;
+
 		if (info.HasBasicInfo() || filePattern.Contains("<filename>") || filePattern.Contains("<currentdate>") || filePattern.Contains("<currenttime>"))
 		{
 			String		 shortOutFileName = filePattern;
@@ -584,6 +586,8 @@ String freac::Utilities::GetPlaylistFileName(const Track &track)
 	if (info.artist != NIL || info.album != NIL)
 	{
 		String		 shortOutFileName = config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenamePatternID, Config::PlaylistFilenamePatternDefault);
+
+		if (shortOutFileName.Trim() == NIL) shortOutFileName = Config::PlaylistFilenamePatternDefault;
 
 		DateTime	 currentDateTime  = DateTime::Current();
 		String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(currentDateTime.GetYear()))).Append(String::FromInt(currentDateTime.GetYear()))
