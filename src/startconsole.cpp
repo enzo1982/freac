@@ -110,16 +110,22 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	/* Configure the converter.
 	 */
-	Bool		 quiet		= ScanForProgramOption("--quiet");
-	Bool		 cddb		= ScanForProgramOption("--cddb");
-	Array<String>	 files;
 	String		 helpenc;
-	String		 outdir		= Directory::GetActiveDirectory();
-	String		 outfile;
+
+	Array<String>	 files;
 	String		 pattern	= "<filename>";
+	String		 outfile;
+	String		 outdir		= Directory::GetActiveDirectory();
+
+	Bool		 superFast	= ScanForProgramOption("--superfast");
+	String		 threads	= "0";
+
 	String		 cdDrive	= "0";
 	String		 tracks;
 	String		 timeout	= "120";
+	Bool		 cddb		= ScanForProgramOption("--cddb");
+
+	Bool		 quiet		= ScanForProgramOption("--quiet");
 
 	encoderID = "lame";
 
@@ -128,6 +134,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 								   ScanForProgramOption("-d %VALUE", &outdir);
 								   ScanForProgramOption("-o %VALUE", &outfile);
 	if (!ScanForProgramOption("--pattern=%VALUE", &pattern))   ScanForProgramOption("-p %VALUE", &pattern);
+
+	ScanForProgramOption("--threads=%VALUE", &threads);
 
 	encoderID = encoderID.ToLower();
 	helpenc	  = helpenc.ToLower();
@@ -276,6 +284,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, outdir);
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
+
+	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, True);
+	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, superFast);
+	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, threads.ToInt());
 
 	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, cddb);
 	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoSelectID, True);
@@ -686,9 +698,14 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 			boca.DeleteComponent(info);
 		}
 
+		Console::OutputString("  --superfast\t\t\tEnable SuperFast mode (experimental)\n");
+		Console::OutputString("  --threads=<n>\t\t\tSpecify number of threads to use in SuperFast mode\n\n");
+
 		Console::OutputString("  --list-configs\t\tPrint a list of available configurations\n");
 		Console::OutputString("  --config=<cfg>\t\tSpecify configuration to use\n\n");
+
 		Console::OutputString("  --quiet\t\t\tDo not print any messages\n\n");
+
 		Console::OutputString("Use -- to separate freaccmd options from encoder options if both have the same name.\n\n");
 		Console::OutputString("Encoder <id> can be one of:\n\n");
 

@@ -124,13 +124,14 @@ Known problems
 History
 -------
 
-	Version 1.1 Alpha (July 2018)
+	Version 1.1 Alpha (September 2018)
 
 		- ported to macOS, Linux and BSD operating systems
 		- implemented an extension component framework to modularize fre:ac
 		- completely reworked configuration dialog
 		- added support for multiple configurations
 		- added multi encoder hub component
+		- integrated SuperFast encoding technology for multi-threaded processing
 		- conversions are now done in parallel if possible
 		- redesigned progress display area
 		- new dialog to confirm overwriting of existing files before conversion
