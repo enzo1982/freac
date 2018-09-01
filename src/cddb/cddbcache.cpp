@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -98,21 +98,22 @@ Bool freac::CDDBCache::AddCacheEntry(const CDDBInfo &nCddbInfo)
 
 	infoCache.Add(nCddbInfo, nCddbInfo.discID);
 
-	if (!config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault)) return True;
-
 	/* Save current freedb path.
 	 */
 	String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
 	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
 
-	/* Delete existing cache entry.
+	/* Update existing entry in persistant cache.
 	 */
-	File(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(nCddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(CDDB::DiscIDToString(nCddbInfo.discID))).Delete();
+	String	 fileName = String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(nCddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(CDDB::DiscIDToString(nCddbInfo.discID));
 
-	/* Save new entry to the persistant cache.
-	 */
-	CDDBLocal().Submit(nCddbInfo);
+	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault) || File(fileName).Exists())
+	{
+		File(fileName).Delete();
+
+		CDDBLocal().Submit(nCddbInfo);
+	}
 
 	/* Restore real freedb path.
 	 */
