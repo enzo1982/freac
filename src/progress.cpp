@@ -118,7 +118,7 @@ Void freac::Progress::FixTotalSamples(const Track &track, const Track &nTrack)
 {
 	if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return;
 
-	mutex.Lock();
+	Threads::Lock	 lock(mutex);
 
 	/* Update internal track list entry.
 	 */
@@ -133,8 +133,6 @@ Void freac::Progress::FixTotalSamples(const Track &track, const Track &nTrack)
 	else				  totalSamplesLeft -= (totalSamplesMultiplier - 1) * (240 * track.GetFormat().rate);
 
 	totalSamplesLeft += (totalSamplesMultiplier - 1) * nTrack.length;
-
-	mutex.Release();
 }
 
 Int64 freac::Progress::GetTotalSamples() const
@@ -180,18 +178,16 @@ Void freac::Progress::StartTrack(const Track &track)
 {
 	if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return;
 
-	lastInvoked = 0;
-
 	/* Add to internal track list.
 	 */
-	mutex.Lock();
+	Threads::Lock	 lock(mutex);
 
 	trackList.Add(track, track.GetTrackID());
 
 	trackStartTicks.Add(S::System::System::Clock(), track.GetTrackID());
 	trackPositions.Add(0, track.GetTrackID());
 
-	mutex.Release();
+	lastInvoked = 0;
 }
 
 Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
@@ -220,18 +216,21 @@ Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
 		return;
 	}
 
-	mutex.Release();
-
 	/* Perform updates every 25ms only.
 	 */
 	UnsignedInt64	 clockValue = S::System::System::Clock();
 
-	if (clockValue - lastInvoked < 25) return;
+	if (clockValue - lastInvoked < 25)
+	{
+		mutex.Release();
+
+		return;
+	}
+
+	lastInvoked = clockValue;
 
 	/* Calculate progress values.
 	 */
-	mutex.Lock();
-
 	Float	 trackProgress = 0;
 	Float	 totalProgress = totalProgressDone;
 
@@ -267,19 +266,15 @@ Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
 	/* Show progress in taskbar/dock.
 	 */
 	if (window != NIL && progressIndicators.GetLast() == this) window->SetProgressIndicator(Window::ProgressIndicatorNormal, Math::Min(100.0, totalProgress * 100.0));
-
-	lastInvoked = clockValue;
 }
 
 Void freac::Progress::FinishTrack(const Track &track, Bool stepsLeft)
 {
 	if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return;
 
-	lastInvoked = 0;
-
 	/* Remove from internal track list.
 	 */
-	mutex.Lock();
+	Threads::Lock	 lock(mutex);
 
 	for (Int i = 0; i < trackList.Length(); i++)
 	{
@@ -300,21 +295,18 @@ Void freac::Progress::FinishTrack(const Track &track, Bool stepsLeft)
 		break;
 	}
 
-	mutex.Release();
-
 	/* Update total number of samples done.
 	 */
-	if (totalSamplesLeft == 0) return;
+	if (totalSamplesLeft)
+	{
+		if	(track.length	    >= 0) totalProgressDone += (1.0 - totalProgressDone) *  track.length		  / totalSamplesLeft;
+		else if (track.approxLength >= 0) totalProgressDone += (1.0 - totalProgressDone) *  track.approxLength		  / totalSamplesLeft;
+		else				  totalProgressDone += (1.0 - totalProgressDone) * (240 * track.GetFormat().rate) / totalSamplesLeft;
 
-	mutex.Lock();
+		if	(track.length	    >= 0) totalSamplesLeft -= track.length;
+		else if (track.approxLength >= 0) totalSamplesLeft -= track.approxLength;
+		else				  totalSamplesLeft -= (240 * track.GetFormat().rate);
+	}
 
-	if	(track.length	    >= 0) totalProgressDone += (1.0 - totalProgressDone) *  track.length		  / totalSamplesLeft;
-	else if (track.approxLength >= 0) totalProgressDone += (1.0 - totalProgressDone) *  track.approxLength		  / totalSamplesLeft;
-	else				  totalProgressDone += (1.0 - totalProgressDone) * (240 * track.GetFormat().rate) / totalSamplesLeft;
-
-	if	(track.length	    >= 0) totalSamplesLeft -= track.length;
-	else if (track.approxLength >= 0) totalSamplesLeft -= track.approxLength;
-	else				  totalSamplesLeft -= (240 * track.GetFormat().rate);
-
-	mutex.Release();
+	lastInvoked = 0;
 }
