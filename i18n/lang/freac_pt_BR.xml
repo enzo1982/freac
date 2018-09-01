@@ -790,7 +790,7 @@
 	  <entry id="34300" string="Signal processing">Processamento de sinal</entry>
 	  <entry id="34301" string="Window function(s)">Função(ões) de janela</entry>
 	  <entry id="34302" string="Note">Nota</entry>
-	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Pode-se especificar múltiplas funções separadas por pontos e vírgulas.</entry>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Pode-se especificar múltiplas funções separadas por pontos&#10;e vírgulas.</entry>
 	  <entry id="34304" string="Linear predictor">Preditor linear</entry>
 	  <entry id="34305" string="Maximum LPC order">Grau de LPC máximo</entry>
 	  <entry id="34306" string="disabled">desabilitado</entry>
