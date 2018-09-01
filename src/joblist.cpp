@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -789,6 +789,7 @@ Void freac::JobList::OnClickTab(Int n)
 	Bool	 sortByAlbumArtist = (fields.GetNth(n) == "<albumartist>");
 	Bool	 sortByTitle	   = (fields.GetNth(n) == "<title>");
 	Bool	 sortByGenre	   = (fields.GetNth(n) == "<genre>");
+	Bool	 sortByDrive	   = (fields.GetNth(n) == "<drive>");
 	Bool	 sortByFile	   = (fields.GetNth(n) == "<file>");
 	Bool	 sortByType	   = (fields.GetNth(n) == "<filetype>");
 	Bool	 sortByOutput	   = (fields.GetNth(n) == "<outputfile>");
@@ -893,6 +894,7 @@ Void freac::JobList::OnClickTab(Int n)
 			    (sortByType	       &&  SortsAfter(fileTypes.GetNth(m), fileTypes.GetNth(i))									) ||
 			    (sortByOutput      &&  SortsAfter(outputFileNames.GetNth(m), outputFileNames.GetNth(i))							) ||
 			    (sortByAlbumArtist &&  SortsAfter(compInfo.GetOtherInfo(INFO_ALBUMARTIST), thisInfo.GetOtherInfo(INFO_ALBUMARTIST))				) ||
+			    (sortByDrive       &&  compTrack.drive					       >  thisTrack.drive					) ||
 			    (sortByDisc	       &&  compInfo.disc					       >  thisInfo.disc						) ||
 			    (sortByTrack       &&  compInfo.track					       >  thisInfo.track					) ||
 			    (sortByRating      &&  compInfo.rating					       >  thisInfo.rating					) ||
@@ -1059,6 +1061,7 @@ Void freac::JobList::AddHeaderTabs()
 		else if (field == "<samplerate>")  { tabName = "Sampling rate";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
 		else if (field == "<channels>")	   { tabName = "Channels";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
 		else if (field == "<resolution>")  { tabName = "Sample resolution"; tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ? 100 : tabSize; }
+		else if (field == "<drive>")	   { tabName = "CD drive";				 tabSize = tabSize <= 0 ? 180 : tabSize; }
 		else if (field == "<file>")	   { tabName = "File name";				 tabSize = 0;				 }
 		else if (field == "<filetype>")	   { tabName = "File type";				 tabSize = tabSize <= 0 ?  60 : tabSize; }
 		else if (field == "<outputfile>")  { tabName = "Output file name";			 tabSize = tabSize <= 0 ? 240 : tabSize; }
@@ -1092,6 +1095,9 @@ String freac::JobList::GetEntryText(const Track &track) const
 
 	i18n->SetContext("Joblist");
 
+	Registry		&boca	= Registry::Get();
+	Array<String>		 drives;
+
 	const Format		&format	= track.GetFormat();
 	const Info		&info	= track.GetInfo();
 	const Array<String>	&fields = config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
@@ -1123,6 +1129,26 @@ String freac::JobList::GetEntryText(const Track &track) const
 		else if (field == "<samplerate>")  jlEntry.Append(i18n->TranslateString("%1 Hz", "Technical").Replace("%1", S::I18n::Number::GetLocalizedNumberString(format.rate)));
 		else if (field == "<channels>")	   jlEntry.Append(format.channels > 2 ? (format.channels != 4 && format.channels != 5 && format.channels <= 8 ? String::FromInt(format.channels - 1).Append(".1") : String::FromInt(format.channels)) : (format.channels == 1 ? i18n->TranslateString("Mono") : i18n->TranslateString("Stereo")));
 		else if (field == "<resolution>")  jlEntry.Append(i18n->TranslateString("%1 bit", "Technical").Replace("%1", String::FromInt(format.bits)));
+
+		else if (field == "<drive>" && track.isCDTrack)
+		{
+			if (drives.Get(track.drive) == NIL)
+			{
+				DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
+
+				if (info != NIL)
+				{
+					const Device	&device = info->GetNthDeviceInfo(track.drive);
+
+					drives.Add(String(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision).Trim(), track.drive);
+
+					boca.DeleteComponent(info);
+				} 
+			}
+
+			jlEntry.Append(drives.Get(track.drive));
+		}
+
 		else if (field == "<file>")	   jlEntry.Append(track.origFilename);
 
 		else if (field == "<filetype>")

@@ -203,6 +203,7 @@
       <entry id="3049" string="Output file name">Output file name</entry>
       <entry id="3050" string="verifying">verifying</entry>
       <entry id="3051" string="Open">Open</entry>
+      <entry id="3052" string="CD drive">CD drive</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Folder</entry>
