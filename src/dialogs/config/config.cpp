@@ -116,7 +116,6 @@ freac::ConfigDialog::ConfigDialog()
 
 	OnSelectConfiguration();
 
-	if (tree_extension->Length() > 0) tree_components->Add(tree_extension);
 	if (tree_encoders->Length()  > 0) tree_components->Add(tree_encoders);
 	if (tree_decoders->Length()  > 0) tree_components->Add(tree_decoders);
 	if (tree_verifiers->Length() > 0) tree_components->Add(tree_verifiers);
@@ -131,9 +130,13 @@ freac::ConfigDialog::ConfigDialog()
 	tree_ripper->Open();
 	tree_interface->Open();
 
+	tree_extension->Open();
 	tree_components->Open();
 
 	list_layers->Add(tree_freac);
+
+	if (tree_extension->Length() > 0) list_layers->Add(tree_extension);
+
 	list_layers->Add(tree_components);
 
 	Add(mainWnd);
