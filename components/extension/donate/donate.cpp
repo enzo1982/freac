@@ -47,27 +47,76 @@ BoCA::Donate::Donate()
 {
 	static Bool	 checkedDonation = False;
 
-	dialog = NIL;
-
 	if (checkedDonation) return;
 
+	/* Show dialog every 10th start.
+	 */
 	Config	*config = Config::Get();
 
 	Int	 startCount = config->GetIntValue("Donate", "StartCount", 0) + 1;
 
-	if (startCount % 10 == 0 && config->GetIntValue("Donate", "ShowAgain", True))
-	{
-		dialog = new DonateDialog();
-
-		dialog->ShowDialog();
-	}
+	if (startCount % 10 == 0 && config->GetIntValue("Donate", "ShowAgain", True)) ShowDialog();
 
 	config->SetIntValue("Donate", "StartCount", startCount);
 
 	checkedDonation = True;
+
+	/* Register menubar overlay handler.
+	 */
+	BoCA::Menu	*menu = BoCA::Menu::Get();
+
+	menu->doMenubarOverlay.Connect(&Donate::DoMenubarOverlay, this);
 }
 
 BoCA::Donate::~Donate()
 {
-	if (dialog != NIL) Object::DeleteObject(dialog);
+	/* Unregister menubar overlay handler.
+	 */
+	BoCA::Menu	*menu = BoCA::Menu::Get();
+
+	menu->doMenubarOverlay.Disconnect(&Donate::DoMenubarOverlay, this);
+
+	/* Free opened dialogs.
+	 */
+	foreach (DonateDialog *dialog, dialogs) Object::DeleteObject(dialog);
+}
+
+Void BoCA::Donate::ShowDialog()
+{
+	/* Show donation dialog.
+	 */
+	DonateDialog	*dialog = new DonateDialog();
+
+	dialog->ShowDialog();
+
+	dialogs.Add(dialog);
+
+	/* Reset startup count.
+	 */
+	Config	*config = Config::Get();
+
+	config->SetIntValue("Donate", "StartCount", config->GetIntValue("Donate", "StartCount", 0) / 10 * 10);
+}
+
+Void BoCA::Donate::DoMenubarOverlay(GUI::Menu *menubar)
+{
+	I18n	*i18n = I18n::Get();
+
+	for (Int i = 0; i < menubar->Length(); i++)
+	{
+		MenuEntry	*menubarEntry = menubar->GetNthEntry(i);
+
+		if (menubarEntry->GetText() != i18n->TranslateString("Help", "Menu")) continue;
+
+		PopupMenu	*popup	      = menubarEntry->GetPopupMenu();
+		MenuEntry	*popupEntry   = popup->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Donate to the %1 project", "Extensions::Donate")).Replace("%1", "fre:ac"));
+
+		popupEntry->onAction.Connect(&Donate::ShowDialog, this);
+		popup->AddEntry();
+
+		popup->MoveEntry(popup->Length() - 2, popup->Length() - 4);
+		popup->MoveEntry(popup->Length() - 1, popup->Length() - 4);
+
+		break;
+	}
 }
