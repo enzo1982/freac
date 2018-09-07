@@ -1022,7 +1022,7 @@ Void freac::freacGUI::FillMenus()
 		boca.DeleteComponent(info);
 	}
 
-	if (menu_drives->GetNOfEntries() >= 1)
+	if (menu_drives->Length() >= 1)
 	{
 		entry = menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/joblist/joblist-adddisc.png")));
 		entry->onAction.Connect(&freacGUI::ReadCD, this);
@@ -1035,7 +1035,7 @@ Void freac::freacGUI::FillMenus()
 	menu_addsubmenu->AddEntry();
 	menu_addsubmenu->AddEntry(i18n->TranslateString("Audio file(s)"), NIL, menu_files);
 
-	if (menu_drives->GetNOfEntries() > 1)
+	if (menu_drives->Length() > 1)
 	{
 		menu_addsubmenu->AddEntry(i18n->TranslateString("Audio CD contents"), NIL, menu_drives);
 	}
@@ -1048,7 +1048,7 @@ Void freac::freacGUI::FillMenus()
 	entry->onAction.Connect(&freacGUI::QueryCDDB, this);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyQ, mainWnd);
 
-	if (menu_drives->GetNOfEntries() >= 1)
+	if (menu_drives->Length() >= 1)
 	{
 		entry = menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Submit CDDB data")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-edit.png")));
 		entry->onAction.Connect(&freacGUI::SubmitCDDBData, this);
@@ -1069,7 +1069,7 @@ Void freac::freacGUI::FillMenus()
 	menu_database->AddEntry(i18n->TranslateString("Enable CDDB cache"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, Config::FreedbEnableCacheDefault));
 	menu_database->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Manage CDDB cache entries")))->onAction.Connect(&freacGUI::ManageCDDBData, this);
 
-	if (menu_drives->GetNOfEntries() >= 1)
+	if (menu_drives->Length() >= 1)
 	{
 		menu_database->AddEntry();
 
@@ -1104,7 +1104,7 @@ Void freac::freacGUI::FillMenus()
 		menu_options->AddEntry(i18n->TranslateString("Active configuration"), NIL, menu_configurations);
 	}
 
-	if (menu_seldrive->GetNOfEntries() > 1)
+	if (menu_seldrive->Length() > 1)
 	{
 		menu_options->AddEntry();
 		menu_options->AddEntry(i18n->TranslateString("Active CD-ROM drive"), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/other/cd-drive.png")), menu_seldrive);
@@ -1136,7 +1136,7 @@ Void freac::freacGUI::FillMenus()
 		boca.DeleteComponent(dsp);
 	}
 
-	if (menu_processors->GetNOfEntries() > 0)
+	if (menu_processors->Length() > 0)
 	{
 		menu_processing->AddEntry();
 		menu_processing->AddEntry(i18n->TranslateString("Selected signal processors"), NIL, menu_processors);
@@ -1271,9 +1271,9 @@ Void freac::freacGUI::FillMenus()
 	entry->onAction.Connect(&JobList::AddTrackByDialog, joblist);
 	entry->SetTooltipText(i18n->TranslateString("Add audio file(s) to the joblist"));
 
-	if (menu_drives->GetNOfEntries() >= 1)
+	if (menu_drives->Length() >= 1)
 	{
-		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/joblist/joblist-adddisc.png")), menu_drives->GetNOfEntries() > 1 ? menu_drives : NIL);
+		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/joblist/joblist-adddisc.png")), menu_drives->Length() > 1 ? menu_drives : NIL);
 		entry->onAction.Connect(&freacGUI::ReadCD, this);
 		entry->SetTooltipText(i18n->TranslateString("Add audio CD contents to the joblist"));
 	}
@@ -1288,11 +1288,11 @@ Void freac::freacGUI::FillMenus()
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-query.png")), menu_drives->GetNOfEntries() >= 1 ? menu_database_query : NIL);
+	entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-query.png")), menu_drives->Length() >= 1 ? menu_database_query : NIL);
 	entry->onAction.Connect(&freacGUI::QueryCDDB, this);
 	entry->SetTooltipText(i18n->TranslateString("Query CDDB database"));
 
-	if (menu_drives->GetNOfEntries() >= 1)
+	if (menu_drives->Length() >= 1)
 	{
 		entry = mainWnd_iconbar->AddEntry(NIL, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freedb/freedb-edit.png")));
 		entry->onAction.Connect(&freacGUI::SubmitCDDBData, this);
