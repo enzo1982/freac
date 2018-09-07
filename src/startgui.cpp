@@ -1336,6 +1336,15 @@ Void freac::freacGUI::FillMenus()
 
 	mainWnd_iconbar->SetHeight(30);
 
+	/* Emit overlay signals.
+	 */
+	BoCA::Menu	*menu = BoCA::Menu::Get();
+
+	menu->doMenubarOverlay.Emit(mainWnd_menubar);
+	menu->doIconbarOverlay.Emit(mainWnd_iconbar);
+
+	/* Show menu bars.
+	 */
 	mainWnd_menubar->Show();
 	mainWnd_iconbar->Show();
 

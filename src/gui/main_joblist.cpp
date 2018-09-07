@@ -856,10 +856,12 @@ Void freac::LayerJoblist::OnChangeLanguageSettings()
 
 Void freac::LayerJoblist::FillMenus()
 {
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 	i18n->SetContext("Joblist");
 
+	/* Fill track context menu.
+	 */
 	menu_trackmenu->RemoveAllEntries();
 
 	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
@@ -877,6 +879,14 @@ Void freac::LayerJoblist::FillMenus()
 	menu_trackmenu->AddEntry(i18n->TranslateString("Select none"))->onAction.Connect(&JobList::SelectNone, joblist);
 	menu_trackmenu->AddEntry(i18n->TranslateString("Toggle selection"))->onAction.Connect(&JobList::ToggleSelection, joblist);
 
+	/* Emit overlay signal.
+	 */
+	BoCA::Menu	*menu = BoCA::Menu::Get();
+
+	menu->doContextMenuOverlay.Emit(menu_trackmenu);
+
+	/* Fill character sets menu.
+	 */
 	menu_charsets->RemoveAllEntries();
 	menu_charsets_all->RemoveAllEntries();
 
@@ -906,6 +916,8 @@ Void freac::LayerJoblist::FillMenus()
 	menu_charsets_all->AddEntry();
 	menu_charsets_all->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Other")), NIL, NIL, NIL, &clicked_charset, CHARSET_OTHER)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 
+	/* Fill metadata edit menus.
+	 */
 	menu_edit_artist->RemoveAllEntries();
 	menu_edit_title->RemoveAllEntries();
 	menu_edit_album->RemoveAllEntries();
