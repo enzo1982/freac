@@ -89,7 +89,10 @@ freac::ConfigureTags::ConfigureTags()
 	combo_encoding->Hide();
 
 	check_prependzero		= new CheckBox(i18n->TranslateString("Prepend zero to track numbers below 10"), Point(268, edit_encoding->GetY() + 28), Size(256, 0), &prependZero);
+	check_prependzero->SetWidth(Math::Max(268, check_prependzero->GetUnscaledTextWidth() + 21));
 	check_prependzero->onAction.Connect(&ConfigureTags::TogglePrependZero, this);
+
+	group_tags->SetWidth(278 + check_prependzero->GetWidth());
 
 	group_tags->Add(list_tag_formats);
 	group_tags->Add(text_encoding);
@@ -163,6 +166,9 @@ freac::ConfigureTags::ConfigureTags()
 	edit_coverart_write_files_name	= new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsCoverArtFilenamePatternID, Config::TagsCoverArtFilenamePatternDefault), Point(288, 58), Size(236, 0), 0);
 
 	check_coverart_write_files_ref	= new CheckBox(i18n->TranslateString("Add reference to audio file tag"), Point(288, 86), Size(236, 0), &enableCoverArtWriteToFilesRef);
+	check_coverart_write_files_ref->SetWidth(Math::Max(236, check_coverart_write_files_ref->GetUnscaledTextWidth() + 21));
+
+	group_coverart_write->SetWidth(298 + check_coverart_write_files_ref->GetWidth());
 
 	group_coverart_write->Add(check_coverart_write_tags);
 	group_coverart_write->Add(list_coverart_write_tags_format);
@@ -206,6 +212,46 @@ freac::ConfigureTags::ConfigureTags()
 	layer_other->Add(group_chapters);
 	layer_other->Add(group_special);
 
+	/* Adjust element widths.
+	 */
+	tab_tags->SetWidth(Math::Max(group_tags->GetWidth(), group_coverart_write->GetWidth()) + 18);
+
+	group_tags->SetWidth(tab_tags->GetWidth() - 18);
+	group_definfo->SetWidth(group_tags->GetWidth());
+
+	edit_encoding->SetWidth(group_tags->GetWidth() - edit_encoding->GetX() - 10);
+	combo_encoding->SetWidth(group_tags->GetWidth() - combo_encoding->GetX() - 10);
+	check_prependzero->SetWidth(group_tags->GetWidth() - check_prependzero->GetX() - 10);
+
+	edit_defcomment->SetWidth(group_definfo->GetWidth() - edit_defcomment->GetX() - 10);
+	check_replace->SetWidth(group_definfo->GetWidth() - 20);
+
+	group_coverart_read->SetWidth(tab_tags->GetWidth() - 18);
+	group_coverart_write->SetWidth(group_coverart_read->GetWidth());
+
+	check_coverart_read_files->SetWidth(group_coverart_read->GetWidth() - check_coverart_read_files->GetX() - 10);
+	slider_coverart_read_max->SetWidth(group_coverart_read->GetWidth() - slider_coverart_read_max->GetX() - text_coverart_read_max_value->GetX() - 8);
+
+	check_coverart_write_files->SetWidth(group_coverart_write->GetWidth() - check_coverart_write_files->GetX() - 10);
+	edit_coverart_write_files_name->SetWidth(group_coverart_write->GetWidth() - edit_coverart_write_files_name->GetX() - 10);
+	check_coverart_write_files_ref->SetWidth(group_coverart_write->GetWidth() - check_coverart_write_files_ref->GetX() - 10);
+
+	group_cue->SetWidth(tab_tags->GetWidth() - 18);
+	group_chapters->SetWidth((tab_tags->GetWidth() - 26) / 2);
+	group_special->SetX(group_chapters->GetWidth() + 15);
+	group_special->SetWidth(group_chapters->GetWidth() + group_cue->GetWidth() % 2);
+
+	check_read_cue->SetWidth(group_cue->GetWidth() - 20);
+	check_prefer_cue->SetWidth(group_cue->GetWidth() - 37);
+
+	check_read_chapters->SetWidth(group_chapters->GetWidth() - 20);
+	check_write_chapters->SetWidth(group_chapters->GetWidth() - 20);
+
+	check_mcdi->SetWidth(group_special->GetWidth() - 20);
+	check_replaygain->SetWidth(group_special->GetWidth() - 20);
+
+	/* Finish initialization.
+	 */
 	ToggleTags();
 
 	ToggleWriteCoverArt();
@@ -220,7 +266,7 @@ freac::ConfigureTags::ConfigureTags()
 
 	Add(tab_tags);
 
-	SetSize(Size(566, 248));
+	SetSize(tab_tags->GetSize() + Size(14, 14));
 }
 
 freac::ConfigureTags::~ConfigureTags()
