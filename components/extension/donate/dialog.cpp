@@ -107,10 +107,12 @@ BoCA::DonateDialog::DonateDialog()
 	if (Directory(S::System::System::GetResourcesDirectory().Append("freac")).Exists()) mainWnd->SetIcon(ImageLoader::Load(S::System::System::GetResourcesDirectory().Append("freac/icons/freac.png")));
 #endif
 
-	Rect	 workArea = Screen::GetActiveScreenWorkArea();
+	Rect	 workArea    = Screen::GetActiveScreenWorkArea();
+	Float	 scaleFactor = Surface().GetSurfaceDPI() / 96.0;
 
-	Size	 wndSize  = Size(maxElementSize + 22, text_thanks->GetY() + text_thanks->GetUnscaledTextHeight() + 87);
-	Point	 wndPos	  = workArea.GetPosition() + Point((workArea.GetSize().cx - wndSize.cx) / 2, (workArea.GetSize().cy - wndSize.cy) / 2);
+	Size	 wndSize     = Size(maxElementSize + 22, text_thanks->GetY() + text_thanks->GetUnscaledTextHeight() + 87);
+	Point	 wndPos	     = workArea.GetPosition() + Point((workArea.GetWidth()  - Math::Round(wndSize.cx * scaleFactor)) / 2,
+							      (workArea.GetHeight() - Math::Round(wndSize.cy * scaleFactor)) / 2);
 
 	mainWnd->SetMetrics(wndPos, wndSize);
 }

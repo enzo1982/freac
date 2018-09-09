@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -111,10 +111,12 @@ BoCA::LanguageNotifierDialog::LanguageNotifierDialog(Bool incomplete)
 	if (Directory(S::System::System::GetResourcesDirectory().Append("freac")).Exists()) mainWnd->SetIcon(ImageLoader::Load(S::System::System::GetResourcesDirectory().Append("freac/icons/freac.png")));
 #endif
 
-	Rect	 workArea = Screen::GetActiveScreenWorkArea();
+	Rect	 workArea    = Screen::GetActiveScreenWorkArea();
+	Float	 scaleFactor = Surface().GetSurfaceDPI() / 96.0;
 
-	Size	 wndSize  = Size(Math::Max(text_intro->GetUnscaledTextWidth(), text_info->GetUnscaledTextWidth()) + 21, text_info->GetUnscaledTextHeight() + 165);
-	Point	 wndPos	  = workArea.GetPosition() + Point((workArea.GetSize().cx - wndSize.cx) / 2, (workArea.GetSize().cy - wndSize.cy) / 2);
+	Size	 wndSize     = Size(Math::Max(text_intro->GetUnscaledTextWidth(), text_info->GetUnscaledTextWidth()) + 21, text_info->GetUnscaledTextHeight() + 165);
+	Point	 wndPos	     = workArea.GetPosition() + Point((workArea.GetWidth()  - Math::Round(wndSize.cx * scaleFactor)) / 2,
+							      (workArea.GetHeight() - Math::Round(wndSize.cy * scaleFactor)) / 2);
 
 	mainWnd->SetMetrics(wndPos, wndSize);
 }

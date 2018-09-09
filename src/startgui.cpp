@@ -111,16 +111,17 @@ freac::freacGUI::freacGUI()
 	clicked_encoder	      = -1;
 	clicked_processor     = -1;
 
-	Rect	 workArea = Screen::GetVirtualScreenMetrics();
+	Rect	 workArea    = Screen::GetActiveScreenWorkArea();
+	Float	 scaleFactor = Surface().GetSurfaceDPI() / 96.0;
 
-	Point	 wndPos = Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault));
-	Size	 wndSize = Size(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, Config::SettingsWindowSizeXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, Config::SettingsWindowSizeYDefault));
+	Point	 wndPos	     = Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault));
+	Size	 wndSize     = Size(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, Config::SettingsWindowSizeXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, Config::SettingsWindowSizeYDefault));
 
-	if (wndPos.x + wndSize.cx > workArea.right + 2 ||
-	    wndPos.y + wndSize.cy > workArea.bottom + 2)
+	if (wndPos.x + wndSize.cx * scaleFactor > workArea.right + 2 ||
+	    wndPos.y + wndSize.cy * scaleFactor > workArea.bottom + 2)
 	{
-		wndPos.x = (Int) Math::Min(workArea.right - 10 - wndSize.cx, wndPos.x);
-		wndPos.y = (Int) Math::Min(workArea.bottom - 10 - wndSize.cy, wndPos.y);
+		wndPos.x = (Int) Math::Min(workArea.right - 10 - Math::Round(wndSize.cx * scaleFactor), (Int64) wndPos.x);
+		wndPos.y = (Int) Math::Min(workArea.bottom - 10 - Math::Round(wndSize.cy * scaleFactor), (Int64) wndPos.y);
 	}
 
 	if (wndPos.x < workArea.left - 2 ||
@@ -129,8 +130,8 @@ freac::freacGUI::freacGUI()
 		wndPos.x = (Int) Math::Max(workArea.left + 10, wndPos.x);
 		wndPos.y = (Int) Math::Max(workArea.top + 10, wndPos.y);
 
-		wndSize.cx = (Int) Math::Min(workArea.right - 20, wndSize.cx);
-		wndSize.cy = (Int) Math::Min(workArea.bottom - 20, wndSize.cy);
+		wndSize.cx = (Int) Math::Min(Math::Round((workArea.right - 20) / scaleFactor), (Int64) wndSize.cx);
+		wndSize.cy = (Int) Math::Min(Math::Round((workArea.bottom - 20) / scaleFactor), (Int64) wndSize.cy);
 	}
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, wndPos.x);
