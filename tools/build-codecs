@@ -316,7 +316,11 @@ for package in ${packages[@]}; do
   elif [ $package == libcdio-paranoia ]; then
     # Build CDIO
     export CFLAGS="$cflags -Os"
-    configure_exports="LIBCDIO_CFLAGS=\"-I.\" LIBCDIO_LIBS=\"-lcdio\""
+    if [[ $uname != FreeBSD ]]; then
+      configure_exports="LIBCDIO_CFLAGS=\"-I.\" LIBCDIO_LIBS=\"-lcdio\""
+    else
+      configure_exports="LIBCDIO_CFLAGS=\"-I/usr/local/include\" LIBCDIO_LIBS=\"-L/usr/local/lib -lcdio\""
+    fi
     build $libcdio_paranoia_location "lib/cdda_interface/.libs/libcdio_cdda$sharedinfix.$sharedext lib/paranoia/.libs/libcdio_paranoia$sharedinfix.$sharedext" "libcdio_cdda.$sharedext libcdio_paranoia.$sharedext"
 
   elif [ $package == libogg ]; then
