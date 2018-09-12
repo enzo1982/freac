@@ -21,7 +21,7 @@ namespace BoCA
 	class Donate : public CS::ExtensionComponent
 	{
 		private:
-			Array<DonateDialog *>	 dialogs;
+			DonateDialog		*dialog;
 		public:
 			static const String	&GetComponentSpecs();
 

@@ -56,6 +56,7 @@ namespace BoCA
 									~DonateDialog();
 
 			const Error					&ShowDialog();
+			const Error					&ShowDialog(Bool);
 		slots:
 			Void						 Close();
 	};

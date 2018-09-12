@@ -140,7 +140,13 @@ BoCA::DonateDialog::~DonateDialog()
 
 const Error &BoCA::DonateDialog::ShowDialog()
 {
-	mainWnd->Show();
+	return ShowDialog(False);
+}
+
+const Error &BoCA::DonateDialog::ShowDialog(Bool blocking)
+{
+	if (!blocking) mainWnd->Show();
+	else	       mainWnd->WaitUntilClosed();
 
 	return error;
 }

@@ -47,6 +47,8 @@ BoCA::Donate::Donate()
 {
 	static Bool	 checkedDonation = False;
 
+	dialog = NIL;
+
 	if (checkedDonation) return;
 
 	/* Show dialog every 10th start.
@@ -55,7 +57,12 @@ BoCA::Donate::Donate()
 
 	Int	 startCount = config->GetIntValue("Donate", "StartCount", 0) + 1;
 
-	if (startCount % 10 == 0 && config->GetIntValue("Donate", "ShowAgain", True)) ShowDialog();
+	if (startCount % 10 == 0 && config->GetIntValue("Donate", "ShowAgain", True))
+	{
+		dialog = new DonateDialog();
+
+		dialog->ShowDialog();
+	}
 
 	config->SetIntValue("Donate", "StartCount", startCount);
 
@@ -76,20 +83,18 @@ BoCA::Donate::~Donate()
 
 	menu->doMenubarOverlay.Disconnect(&Donate::DoMenubarOverlay, this);
 
-	/* Free opened dialogs.
+	/* Free opened dialog.
 	 */
-	foreach (DonateDialog *dialog, dialogs) Object::DeleteObject(dialog);
+	if (dialog != NIL) Object::DeleteObject(dialog);
 }
 
 Void BoCA::Donate::ShowDialog()
 {
 	/* Show donation dialog.
 	 */
-	DonateDialog	*dialog = new DonateDialog();
+	DonateDialog	 dialog;
 
-	dialog->ShowDialog();
-
-	dialogs.Add(dialog);
+	dialog.ShowDialog(True);
 
 	/* Reset startup count.
 	 */
