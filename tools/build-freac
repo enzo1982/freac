@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+
+# Exit on error
+set -e
+
+# Number of parallel jobs
+jobs=12
+
+# Query OS and machine
+uname=`uname`
+machine=`gcc -dumpmachine`
+
+# Set x86-64 environment
+if [[ $uname == Darwin ]]; then
+  x86_64=true
+elif [[ $uname == *MINGW* ]] && [[ $BUILD_X86_64 == True ]]; then
+  x86_64=true
+elif [[ $uname != *MINGW* ]]; then
+  if [[ $machine == *amd64* ]] || [[ $machine == *x86_64* ]]; then
+    x86_64=true
+  fi
+fi
+
+# Set make tool
+if [[ $uname != *FreeBSD* ]]; then
+  export MAKE=make
+else
+  export MAKE=gmake
+fi
+
+# Package locations
+smooth_location=https://github.com/enzo1982/smooth/archive/master.zip
+boca_location=https://github.com/enzo1982/boca/archive/master.zip
+freac_location=https://github.com/enzo1982/freac/archive/master.zip
+
+# Build smooth
+wget $smooth_location -O smooth-master.zip
+
+rm -fr smooth-master
+unzip smooth-master.zip
+
+cd smooth-master
+if [[ $uname == *MINGW* ]] || [[ $uname == Darwin ]]; then
+  $MAKE config=release -j$jobs
+
+  if [[ $uname == Darwin ]]; then
+    sudo $MAKE config=release install -j$jobs
+  fi
+else
+  $MAKE config=release,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib -j$jobs
+  sudo $MAKE config=release,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib install -j$jobs
+fi
+cd ..
+
+# Build BoCA
+wget $boca_location -O boca-master.zip
+
+rm -fr boca-master
+unzip boca-master.zip
+
+cp smooth-master/include/smooth.h BoCA-master/include
+
+cp -R smooth-master/include/smooth BoCA-master/include
+cp -R smooth-master/include/smooth-js BoCA-master/include
+
+if [[ $uname == *MINGW* ]]; then
+  if [[ $x86_64 != true ]]; then
+    mkdir BoCA-master/lib
+    cp smooth-master/lib/libsmooth* BoCA-master/lib
+  else
+    mkdir BoCA-master/lib64
+    cp smooth-master/lib64/libsmooth* BoCA-master/lib64
+  fi
+fi
+
+cd BoCA-master
+if [[ $uname == *MINGW* ]] || [[ $uname == Darwin ]]; then
+  $MAKE config=release -j$jobs
+
+  if [[ $uname == Darwin ]]; then
+    sudo $MAKE config=release install -j$jobs
+  fi
+else
+  $MAKE config=release,bundledlibexpat,bundledliburiparser,bundledzlib -j$jobs
+  sudo $MAKE config=release,bundledlibexpat,bundledliburiparser,bundledzlib install -j$jobs
+fi
+cd ..
+
+# Build fre:ac
+wget $freac_location -O freac-master.zip
+
+rm -fr freac-master
+unzip freac-master.zip
+
+mkdir freac-master/cdk
+
+cp -R BoCA-master/include freac-master/cdk
+
+if [[ $uname == *MINGW* ]]; then
+  if [[ $x86_64 != true ]]; then
+    cp -R BoCA-master/lib freac-master/cdk
+  else
+    cp -R BoCA-master/lib64 freac-master/cdk
+  fi
+fi
+
+cd freac-master
+$MAKE config=release -j$jobs
+if [[ $uname != *MINGW* ]]; then
+	sudo $MAKE config=release install -j$jobs
+fi
+cd ..
