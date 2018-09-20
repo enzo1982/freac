@@ -170,7 +170,9 @@ Error freac::JobConvert::Precheck()
 		{
 			track.outfile = Utilities::GetOutputFileName(track);
 
-			if (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory))
+			UnsignedInt64	 trackCRC = track.outfile.ComputeCRC64();
+
+			if (newTrackCRCs.Get(trackCRC) != NIL || (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory)))
 			{
 				if (!configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAddSequentialNumbersID, Config::SettingsFilenamesAddSequentialNumbersDefault)) { existingTracks.Add(track); continue; }
 
@@ -181,18 +183,19 @@ Error freac::JobConvert::Precheck()
 
 				for (Int i = 2; i >= 2; i++)
 				{
-					if (!File(String(name).Append(" [").Append(String::FromInt(i)).Append("]").Append(extension)).Exists()) { track.outfile = String(name).Append(" [").Append(String::FromInt(i)).Append("]").Append(extension); break; }
+					String	 result = String(name).Append(" [").Append(String::FromInt(i)).Append("]").Append(extension);
+
+					if (newTrackCRCs.Get(result.ComputeCRC64()) == NIL && !File(result).Exists())
+					{
+						track.outfile = result;
+						trackCRC      = result.ComputeCRC64();
+
+						break;
+					}
 				}
 			}
 
-			UnsignedInt64	 trackCRC = track.outfile.ComputeCRC64();
-
-			foreachreverse (UnsignedInt64 newTrackCRC, newTrackCRCs)
-			{
-				if (newTrackCRC == trackCRC) { existingTracks.Add(track); break; }
-			}
-
-			newTrackCRCs.Add(trackCRC);
+			newTrackCRCs.Add(trackCRC, trackCRC);
 		}
 
 		/* Check if we have existing files that would be overwritten.
