@@ -73,6 +73,7 @@ libogg_version=1.3.3
 libsamplerate_version=0.1.9
 libsndfile_version=1.0.28
 mac_version=4.34
+mp4v2_version=2.0.0
 mpg123_version=1.25.10
 opus_version=1.2.1
 rubberband_version=1.8.2
@@ -93,6 +94,7 @@ libogg_location=https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-$libogg_vers
 libsamplerate_location=http://www.mega-nerd.com/SRC/libsamplerate-$libsamplerate_version.tar.gz
 libsndfile_location=http://www.mega-nerd.com/libsndfile/files/libsndfile-$libsndfile_version.tar.gz
 mac_location=http://monkeysaudio.com/files/MAC_SDK_${mac_version%.*}${mac_version#*.}.zip
+mp4v2_location=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-$mp4v2_version.tar.bz2
 mpg123_location=https://www.mpg123.de/download/mpg123-$mpg123_version.tar.bz2
 opus_location=https://ftp.osuosl.org/pub/xiph/releases/opus/opus-$opus_version.tar.gz
 rubberband_location=https://breakfastquay.com/files/releases/rubberband-$rubberband_version.tar.bz2
@@ -118,6 +120,12 @@ libogg_patch_levels=(1)
 
 mac_patches=(https://freac.org/patches/mac-sdk-$mac_version-gcc.patch)
 mac_patch_levels=(1)
+
+mp4v2_patches=(https://freac.org/patches/mp4v2-$mp4v2_version-fixes.patch)
+mp4v2_patch_levels=(1)
+
+mp4v2_patches_win32=(https://freac.org/patches/mp4v2-$mp4v2_version-fixes.patch https://freac.org/patches/mp4v2-$mp4v2_version-win32.patch)
+mp4v2_patch_levels_win32=(1 1)
 
 rubberband_patches=(https://freac.org/patches/rubberband-$rubberband_version-fixed.diff)
 rubberband_patch_levels=(1)
@@ -202,13 +210,13 @@ packages=$@
 
 if [ ${#packages[0]} -eq 0 ]; then
   echo "Usage: build.sh [{list of packages}|all]"
-  echo "Available packages: faac faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mpg123 opus rubberband speex vorbis wavpack"
+  echo "Available packages: faac faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 opus rubberband speex vorbis wavpack"
   echo
 elif [ "${packages[0]}" == all ]; then
   if [[ $uname == Darwin ]]; then
-    packages=( faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mpg123 opus speex vorbis wavpack )
+    packages=( faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 opus speex vorbis wavpack )
   else
-    packages=( faac faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mpg123 opus rubberband speex vorbis wavpack )
+    packages=( faac faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 opus rubberband speex vorbis wavpack )
   fi
 fi
 
@@ -365,6 +373,20 @@ for package in ${packages[@]}; do
     patch_levels=(${mac_patch_levels[@]})
     prepare="chmod 777 configure"
     build $archive Source/MACDll.$sharedext MACDll.$sharedext
+
+  elif [ $package == mp4v2 ]; then
+    # Build mp4v2
+    configure_flags="--disable-gch"
+    export CXXFLAGS="$cflags -Os"
+    export LDFLAGS="$ldflags -lm -lstdc++"
+    if [[ $uname == *MINGW* ]]; then
+      patches=${mp4v2_patches_win32[@]}
+      patch_levels=(${mp4v2_patch_levels_win32[@]})
+    else
+      patches=${mp4v2_patches[@]}
+      patch_levels=(${mp4v2_patch_levels[@]})
+    fi
+    build $mp4v2_location src/libmp4v2$sharedinfix.$sharedext MP4v2.$sharedext
 
   elif [ $package == mpg123 ]; then
     # Build mpg123
