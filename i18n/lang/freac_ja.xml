@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
-    <property name="author">REIKA</property>
+    <property name="author">REIKA &amp; BHCrusher1</property>
     <property name="url">http://www.freac.org/</property>
   </info>
   <data>
@@ -16,7 +16,11 @@
     <entry id="102" string="Close">閉じる</entry>
 
     <entry id="200" string="Error">エラー</entry>
+    <entry id="201" string="Warning">警告</entry>
     <entry id="202" string="Info">情報</entry>
+
+    <entry id="210" string="Do not display this warning again">この警告をもう一度表示しない</entry>
+    <entry id="211" string="Do not display this note again">この注意をもう一度表示しない</entry>
 
     <entry id="300" string="Artist">アーティスト</entry>
     <entry id="301" string="Title">タイトル</entry>
@@ -26,14 +30,19 @@
     <entry id="305" string="Comment">コメント</entry>
     <entry id="306" string="Year">年</entry>
     <entry id="307" string="Disc">ディスク</entry>
+    <entry id="308" string="Rating">評価</entry>
     <entry id="309" string="File name">ファイル名</entry>
     <entry id="310" string="File type">ファイルタイプ</entry>
+    <entry id="311" string="Album artist">アルバムアーティスト</entry>
 
     <entry id="350" string="unknown artist">アーティスト不明</entry>
     <entry id="351" string="unknown title">タイトル不明</entry>
     <entry id="352" string="unknown album">アルバム不明</entry>
     <entry id="353" string="unknown genre">ジャンル不明</entry>
     <entry id="354" string="unknown year">年不明</entry>
+    <entry id="355" string="unknown conductor">指揮者不明</entry>
+    <entry id="356" string="unknown composer">作曲者不明</entry>
+    <entry id="357" string="unknown album artist">アルバムアーティスト不明</entry>
 
     <entry id="380" string="hidden track">隠しトラック</entry>
 
@@ -58,6 +67,7 @@
       <entry id="1000" string="File">ファイル</entry>
       <entry id="1001" string="Options">オプション</entry>
       <entry id="1002" string="Database">データベース</entry>
+      <entry id="1003" string="Processing">処理</entry>
       <entry id="1004" string="Encode">エンコード</entry>
       <entry id="1005" string="Help">ヘルプ</entry>
 
@@ -89,10 +99,20 @@
 	<entry id="1300" string="General settings">一般設定</entry>
 	<entry id="1301" string="Configure selected encoder">選択エンコーダの設定</entry>
 	<entry id="1302" string="Active CD-ROM drive">アクティブな CD-ROM ドライブ</entry>
+	<entry id="1303" string="Active configuration">有効な設定</entry>
+	<entry id="1304" string="Default configuration">デフォルト設定</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">信号処理を有効にする</entry>
+	<entry id="1401" string="Enable processing during playback">再生中に処理を有効にする</entry>
+	<entry id="1402" string="Configure signal processing">信号処理を設定する</entry>
+	<entry id="1403" string="Selected signal processors">選択された信号処理</entry>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">エンコード開始</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">エンコード開始（元のファイルを削除する）</entry>
 	<entry id="1502" string="Start encoding with">エンコード開始</entry>
 	<entry id="1503" string="Pause/resume encoding">エンコードを中断/再開</entry>
 	<entry id="1504" string="Stop encoding">エンコード停止</entry>
@@ -124,6 +144,7 @@
       <entry id="2006" string="Configure general settings">一般設定</entry>
       <entry id="2007" string="Configure the selected audio encoder">選択エンコーダの設定</entry>
       <entry id="2008" string="Start the encoding process">エンコードを開始</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)">エンコードを開始（元のファイルを削除する）</entry>
       <entry id="2010" string="Pause/resume encoding">エンコードを中断/再開</entry>
       <entry id="2011" string="Stop encoding">エンコード停止</entry>
     </section>
@@ -174,8 +195,14 @@
       <entry id="3042" string="Audio Files">オーディオ ファイル</entry>
       <entry id="3043" string="All Files">全てのファイル</entry>
       <entry id="3044" string="Playlist Files">プレイリスト ファイル</entry>
+      <entry id="3045" string="Active decoder">処理中のデコーダ</entry>
       <entry id="3046" string="Joblist">ジョブリスト</entry>
+      <entry id="3047" string="unknown">不明</entry>
+      <entry id="3048" string="Other">その他</entry>
       <entry id="3049" string="Output file name">出力ファイル名</entry>
+      <entry id="3050" string="verifying">ベリファイ中</entry>
+      <entry id="3051" string="Open">開く</entry>
+      <entry id="3052" string="CD drive">CDドライブ</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">ディレクトリ</entry>
@@ -189,6 +216,7 @@
 	<entry id="3201" string="Pattern">パターン</entry>
 	<entry id="3202" string="Start folder">基準ディレクトリ</entry>
 	<entry id="3203" string="Filename pattern">ファイル名パターン</entry>
+	<entry id="3204" string="Search subfolders">サブフォルダを検索する</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">リストに追加するフォルダ</entry>
       </section>
 
@@ -203,7 +231,43 @@
     <section name="Jobs">
       <entry id="3500" string="Jobs">ジョブ</entry>
       <entry id="3501" string="Progress">処理状況</entry>
+      <entry id="3502" string="Errors / Warnings">エラー/警告</entry>
+      <entry id="3503" string="Details">詳細</entry>
+      <entry id="3504" string="Error details">エラーの詳細</entry>
       <entry id="3505" string="Time left">残り時間</entry>
+      <entry id="3506" string="Waiting for other jobs to finish">他のジョブが完了するのを待っています</entry>
+
+      <section name="Joblist">
+	<entry id="3600" string="Reading folders">フォルダを読み込み中</entry>
+	<entry id="3601" string="Filtering duplicates">重複をフィルタリング中</entry>
+	<entry id="3602" string="Adding files">ファイルの追加</entry>
+	<entry id="3603" string="Adding tracks">トラックの追加</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">%1ファイルを追加しました。%2個エラーが発生しました</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">%1トラックを追加しました。%2個エラーが発生しました</entry>
+	<entry id="3606" string="Removing all tracks">すべてのトラックを削除する</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">ドライブ%1のディスクのトラックを削除しています</entry>
+	<entry id="3608" string="Removed all tracks from joblist">ジョブリストからすべてのトラックを削除しました</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">ジョブリストからドライブ%1のディスクのトラックを削除しました</entry>
+      </section>
+
+      <section name="Convert">
+	<entry id="3700" string="Checking sample formats">サンプル形式の確認</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">非可逆圧縮から可逆圧縮への変換の確認</entry>
+	<entry id="3702" string="Checking output file names">出力ファイル名の確認</entry>
+	<entry id="3703" string="Converting %1">変換中 %1</entry>
+	<entry id="3704" string="Verifying %1">ベリファイ中 %1</entry>
+	<entry id="3705" string="Conversion cancelled">変換を中止しました</entry>
+	<entry id="3706" string="Conversion finished">変換が完了しました</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">%1個の警告で変換が完了しました</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">%1個のエラーで変換が完了しました</entry>
+      </section>
+
+      <section name="Update">
+	<entry id="3800" string="Preparing update check">更新チェックの準備</entry>
+	<entry id="3801" string="Contacting update server">更新サーバーに接続中</entry>
+	<entry id="3802" string="Updates found">更新が見つかりました</entry>
+	<entry id="3803" string="No updates found">更新は見つかりませんでした</entry>
+      </section>
     </section>
 
     <section name="CDDB">
@@ -238,8 +302,10 @@
 	<entry id="4106" string="Matches">一致</entry>
 	<entry id="4107" string="Select the entry that best fits your CD">この CD に最適な項目を選択</entry>
 	<entry id="4108" string="Would you like to perform this query again later?">この問い合わせを後で再度実行しますか？</entry>
-	<entry id="4109" string="none">なし</entry>
-	<entry id="4110" string="Preview">プレビュー</entry>
+	<entry id="4109" string="Would you like to perform the remaining queries again later?">残りの問い合わせを後で再度実行しますか？</entry>
+	<entry id="4110" string="none">なし</entry>
+	<entry id="4111" string="Preview">プレビュー</entry>
+	<entry id="4112" string="loading preview">プレビューの読み込み中</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">freedb サーバ接続の試行中に問題が発生しました。</entry>
@@ -253,6 +319,7 @@
 	<entry id="4203" string="Query all">全て問い合わせ</entry>
 	<entry id="4204" string="Query string">問い合わせ文字列</entry>
 	<entry id="4205" string="CDDB queries to perform">実行する CDDB 問い合わせ</entry>
+	<entry id="4206" string="Querying CD information">CD情報の問い合わせ</entry>
       </section>
 
       <section name="Manage submits">
@@ -289,9 +356,21 @@
       <entry id="5007" string="Tags">タグ情報</entry>
       <entry id="5008" string="Components">コンポーネント</entry>
       <entry id="5009" string="Decoders">デコーダ</entry>
+      <entry id="5010" string="Output">出力</entry>
+      <entry id="5011" string="DSP">DSP</entry>
       <entry id="5012" string="Extensions">エクステンション</entry>
+      <entry id="5013" string="Other">その他</entry>
+      <entry id="5014" string="Active configuration">有効な設定</entry>
+      <entry id="5015" string="New">新規設定</entry>
+      <entry id="5016" string="Delete">設定削除</entry>
+      <entry id="5017" string="Command line arguments">コマンドラインの引数</entry>
+      <entry id="5018" string="Resulting arguments string">結果の引数文字列</entry>
+      <entry id="5019" string="Default configuration">デフォルト設定</entry>
+      <entry id="5020" string="New configuration">新しい設定</entry>
       <entry id="5021" string="Ripper">リッパー</entry>
       <entry id="5022" string="Settings">設定</entry>
+      <entry id="5023" string="Resources">リソース</entry>
+      <entry id="5026" string="Processing">処理</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">エンコーダ設定</entry>
@@ -307,6 +386,11 @@
 	<entry id="5110" string="Keep ripped Wave files">リップした Wave ファイルを保持</entry>
 	<entry id="5111" string="Encode to a single file">一つのファイルにエンコード</entry>
 	<entry id="5112" string="Output filenames">出力ファイル名</entry>
+	<entry id="5113" string="Allow Unicode characters">Unicode文字を許可する</entry>
+	<entry id="5114" string="Replace spaces">スペースを置き換える</entry>
+	<entry id="5115" string="Remove processed tracks from joblist">ジョブリストから処理済みのトラックを削除する</entry>
+	<entry id="5116" string="Add encoded files to joblist">エンコードされたファイルをジョブリストに追加する</entry>
+	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">それ以外のファイル名に連続番号を付ける</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">出力先ディレクトリがありません。新規に作成しますか？</entry>
@@ -322,6 +406,8 @@
 	<entry id="5205" string="Filename pattern">ファイル名パターン</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">プレイリストがあるフォルダを選択してください</entry>
 	<entry id="5207" string="Output filenames">出力ファイル名</entry>
+	<entry id="5208" string="Configure plugin">プラグインの設定</entry>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">変換ごとに1つのプレイリストおよび/またはcueシートファイルのみを作成する</entry>
       </section>
 
       <section name="CDDB">
@@ -341,6 +427,7 @@
 	<entry id="5313" string="Prefer CDDB over CD Text">CD Text より CDDB を優先</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB キャッシュ有効</entry>
 	<entry id="5315" string="Automatization">自動化</entry>
+	<entry id="5316" string="Always select first entry">常に最初の項目を選択</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">拡張 CDDB 設定</entry>
@@ -376,17 +463,92 @@
 	<entry id="5503" string="Replace existing comments with default comment">既存のコメントをデフォルトのコメントに置き換え</entry>
 	<entry id="5504" string="Filename pattern">ファイル名パターン</entry>
 	<entry id="5505" string="Encoding">エンコード</entry>
+	<entry id="5506" string="Comments">コメント</entry>
+	<entry id="5507" string="Cover art">カバーアート</entry>
+	<entry id="5508" string="Read cover art">カバーアートを読み込む</entry>
+	<entry id="5509" string="Read cover art from tags">カバーアートをタグから読み込む</entry>
+	<entry id="5510" string="Read cover art from files">カバーアートをファイルから読み込む</entry>
+	<entry id="5511" string="Write cover art">カバーアートを書き込む</entry>
+	<entry id="5512" string="Write cover art to tags">カバーアートをタグに書き込む</entry>
+	<entry id="5513" string="Write cover art to files">カバーアートをファイルに書き込む</entry>
+	<entry id="5514" string="Add reference to audio file tag">オーディオファイルタグへの参照を追加する</entry>
+	<entry id="5515" string="Other">その他</entry>
+	<entry id="5516" string="Chapters">チャプター</entry>
+	<entry id="5517" string="Read chapters from files">チャプターをファイルから読み込む</entry>
+	<entry id="5518" string="Write chapters to files">チャプターをファイルに書き込む</entry>
+	<entry id="5520" string="Write CD table of contents">CDのtable of contentsを書き込む</entry>
+	<entry id="5521" string="Preserve Replay Gain information">Replaygain情報を保持する</entry>
+	<entry id="5522" string="Cue sheets">cueシート</entry>
+	<entry id="5523" string="Read cue sheets embedded in metadata">メタデータに埋め込まれたcueシートを読み込む</entry>
+	<entry id="5524" string="Prefer cue sheets over chapter information">チャプター情報よりもcueシートを優先する</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">10より小さいトラック番号に0を先頭に追加する</entry>
+	<entry id="5526" string="File size limit">ファイルサイズの制限</entry>
+	<entry id="5527" string="unlimited">無制限</entry>
       </section>
 
       <section name="Joblist">
 	<entry id="5600" string="Joblist">ジョブリスト</entry>
+	<entry id="5601" string="Columns">列</entry>
+	<entry id="5602" string="Name">名前</entry>
+	<entry id="5603" string="Description">説明</entry>
+	<entry id="5604" string="Up">上へ移動</entry>
+	<entry id="5605" string="Down">下へ移動</entry>
 	<entry id="5606" string="Jobs">ジョブ</entry>
+	<entry id="5607" string="Show Jobs tab">ジョブタブを表示する</entry>
 
 	<section name="Columns">
+	  <entry id="5650" string="Track artist">トラックアーティスト</entry>
+	  <entry id="5651" string="Track title">トラックタイトル</entry>
+	  <entry id="5652" string="Track genre">トラックジャンル</entry>
+	  <entry id="5653" string="Album title">アルバムタイトル</entry>
+	  <entry id="5654" string="Disc number">ディスクナンバー</entry>
+	  <entry id="5655" string="Track number">トラックナンバー</entry>
+	  <entry id="5656" string="Track rating">トラック評価</entry>
+	  <entry id="5657" string="Track length">トラックの長さ</entry>
+	  <entry id="5658" string="Track size">トラックのサイズ</entry>
 	  <entry id="5659" string="File name">ファイル名</entry>
 	  <entry id="5660" string="File type">ファイルタイプ</entry>
 	  <entry id="5661" string="Output file name">出力ファイル名</entry>
+	  <entry id="5662" string="Bitrate">ビットレート</entry>
+	  <entry id="5663" string="Sampling rate">サンプリング レート</entry>
+	  <entry id="5664" string="Channels">チャンネル</entry>
+	  <entry id="5665" string="Sample resolution">サンプル ビット数</entry>
 	</section>
+      </section>
+
+      <section name="Resources">
+	<entry id="5700" string="Parallel processing">並列処理</entry>
+	<entry id="5701" string="Enable parallel processing">並列処理を有効にする</entry>
+	<entry id="5702" string="Enable SuperFast mode (experimental)">SuperFastモードを有効にする（実験的）</entry>
+	<entry id="5703" string="Number of conversion threads">変換スレッドの数</entry>
+	<entry id="5704" string="auto">自動</entry>
+	<entry id="5705" string="Process priority">プロセスの優先度</entry>
+	<entry id="5706" string="lowest">低</entry>
+	<entry id="5707" string="lower">通常以下</entry>
+	<entry id="5708" string="normal">通常</entry>
+	<entry id="5709" string="higher">通常以上</entry>
+	<entry id="5710" string="highest">高</entry>
+      </section>
+
+      <section name="Verification">
+	<entry id="5800" string="Verification">ベリファイ</entry>
+	<entry id="5801" string="Enable input verification">入力時のベリファイを有効にする</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">可逆圧縮データが正確にデコードされていることを確認する&#10;それらはoriginallyから作成されました。</entry>
+	<entry id="5803" string="Enable output verification">出力時のベリファイを有効にする</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">可逆圧縮データが正確にデコードすることを確認する&#10;それらはをエンコード時に使用されます。</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="5900" string="Signal processing">アポダイゼーション</entry>
+	<entry id="5901" string="Enable signal processing">信号処理を有効にする</entry>
+	<entry id="5902" string="Enable processing during playback">再生中も処理を有効にする</entry>
+	<entry id="5903" string="Components">コンポーネント</entry>
+	<entry id="5904" string="Available">利用可能</entry>
+	<entry id="5905" string="Selected">選択中</entry>
+	<entry id="5906" string="Configure component">コンポーネントの設定</entry>
+	<entry id="5907" string="Conversion to a single output file">1つの出力ファイルへの変換</entry>
+	<entry id="5908" string="Process each track individually">各トラックを個別に処理する</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">結合されたトラックを単一のトラックのように扱う</entry>
       </section>
     </section>
 
@@ -418,6 +580,8 @@
       <entry id="7001" string="Currently converting">エンコード中です</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI ドライバがロードできません。 CD リッピングが出来ません。</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
+      <entry id="7004" string="Cannot play a CD track while ripping from the same drive!">同じドライブからリッピングしながらCDトラックを再生できません！</entry>
+      <entry id="7005" string="Cannot start ripping while playing a track from the same drive!">同じドライブからトラックを再生中にリッピングを開始できません！</entry>
       <entry id="7006" string="Delete original files after encoding">エンコード後に元ファイルを削除</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">このオプションはファイルをエンコードした後に元ファイルを&#10;コンピュータから削除します!&#10;&#10;本当にこの機能を有効にしますか？</entry>
       <entry id="7008" string="File already exists">ファイルが既に存在します</entry>
@@ -432,15 +596,37 @@
       <entry id="7017" string="Unknown file type">不明なファイル形式</entry>
       <entry id="7018" string="Unsupported audio format">未対応のオーディオ形式</entry>
       <entry id="7019" string="Unknown error">不明なエラー</entry>
+      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">次の設定ダイアログは使用できません：&#10;&#10;%1</entry>
+      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">非可逆圧縮から可逆圧縮に変換しようとしています。&#10;&#10;品質の低下は元に戻すことができないため、このプロセスでは&#10;品質が向上することはなく、ファイルサイズが増加する可能性が高いことにご注意ください。&#10;&#10;続行しますか？</entry>
+      <entry id="7022" string="Failed to verify input file: %1">入力ファイルの検証に失敗しました： %1</entry>
+      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">チェックサムの不一致がないか出力ファイルをベリファイしています：%1&#10;&#10;エンコードのチェックサム：%2&#10;ベリファイのチェックサム：%3</entry>
+      <entry id="7024" string="The selected folder does not exist anymore!">選択したフォルダはもう存在しません！</entry>
+      <entry id="7025" string="Keep this option enabled even after restarting %1">%1 を再起動してもこのオプションを有効にしておいてください</entry>
+      <entry id="7026" string="Invalid file format">無効なファイル形式です</entry>
     </section>
 
     <section name="Dialogs">
 
       <section name="Overwrite">
+	<entry id="8000" string="Confirm overwrite">上書きを確認</entry>
+	<entry id="8001" string="Confirm">確認</entry>
+	<entry id="8002" string="Skip all">全部スキップ</entry>
+	<entry id="8003" string="The following %1 files already exist and will be overwritten">次の%1ファイルが既に存在し、上書きされます</entry>
+	<entry id="8005" string="Overwrite">上書き</entry>
 	<entry id="8006" string="Skip">スキップ</entry>
       </section>
 
-      <section name="Errors"/>
+      <section name="Format">
+	<entry id="8100" string="Select sample format">サンプル形式を選択</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">選択したトラックのサンプル形式は異なります。 選択してください&#10;出力ファイルの望ましいサンプル形式：</entry>
+	<entry id="8102" string="Select">参照</entry>
+      </section>
+
+      <section name="Errors">
+	<entry id="8200" string="Errors">エラー</entry>
+	<entry id="8201" string="%1 errors while processing job">ジョブの処理中に%1個のエラーが発生しました</entry>
+	<entry id="8202" string="select an entry for details">詳細の項目を選択</entry>
+      </section>
     </section>
 
     <section name="Ripper">
@@ -464,7 +650,11 @@
       <entry id="9017" string="CD options">CD 設定</entry>
       <entry id="9018" string="Lock CD tray while ripping">リッピング中は CD トレイをロック</entry>
       <entry id="9019" string="Use native NT SCSI library">NT SCSI ライブラリを使用</entry>
+      <entry id="9020" string="Use read offset">読み取りオフセットを使用する</entry>
       <entry id="9021" string="samples">サンプル</entry>
+      <entry id="9022" string="Read ISRC when adding tracks to joblist">ジョブリストにトラックを追加するときにISRCを読む</entry>
+      <entry id="9023" string="Spin up before ripping">リッピングの前にスピンアップする</entry>
+      <entry id="9024" string="%1 seconds">%1 秒</entry>
     </section>
 
     <section name="Decoders">
@@ -473,6 +663,18 @@
 
       <section name="mpg123">
 	<entry id="11000" string="Decoder">デコーダ</entry>
+	<entry id="11001" string="Active decoder">有効なデコーダ</entry>
+	<entry id="11002" string="auto select">自動選択</entry>
+      </section>
+
+      <section name="CueSheet">
+	<entry id="12000" string="Title information">タイトル情報</entry>
+	<entry id="12001" string="Read tags from referenced files">参照ファイルからタグを読み込む</entry>
+	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">参照ファイルのタグよりもcueシートのメタデータを優先する</entry>
+	<entry id="12003" string="Alternative files">代替ファイル</entry>
+	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">参照されたWaveファイルが見つからない場合、圧縮された代替ファイルを探す</entry>
+	<entry id="12005" string="Error handling">エラー処理</entry>
+	<entry id="12006" string="Ignore errors during cue sheet processing">cueシート処理中にエラーを無視する</entry>
       </section>
     </section>
 
@@ -593,6 +795,7 @@
 	  <entry id="33300" string="MPEG version">MPEG バージョン</entry>
 	  <entry id="33301" string="AAC object type">AAC のタイプ</entry>
 	  <entry id="33302" string="File format">ファイル形式</entry>
+	  <entry id="33303" string="File extension">ファイル拡張子</entry>
 	  <entry id="33304" string="Tags">タグ情報</entry>
 	  <entry id="33305" string="Allow ID3v2 tags in AAC files">AAC ファイルで ID3v2 タグを使用</entry>
 	  <entry id="33306" string="Note">注意</entry>
@@ -647,6 +850,10 @@
 	<entry id="35002" string="Average Bitrate">平均ビットレート</entry>
 	<entry id="35003" string="Quality">品質</entry>
 	<entry id="35004" string="Bitrate">ビットレート</entry>
+	<entry id="35005" string="Minimum bitrate">最小ビットレート</entry>
+	<entry id="35006" string="Average bitrate">平均ビットレート</entry>
+	<entry id="35007" string="Maximum bitrate">最大ビットレート</entry>
+	<entry id="35008" string="File extension">ファイル拡張子</entry>
       </section>
 
       <section name="WMA">
@@ -670,31 +877,147 @@
 	<entry id="37003" string="Number of preselection candidates">事前選択候補の数</entry>
       </section>
 
-      <section name="Monkey's Audio"/>
+      <section name="Monkey's Audio">
+	<entry id="38000" string="Compression">圧縮</entry>
+	<entry id="38001" string="Compression mode">圧縮モード</entry>
+      </section>
 
       <section name="Speex">
+	<entry id="39000" string="Profile">プロファイル</entry>
+	<entry id="39001" string="Select encoding profile">エンコードプロファイルの選択</entry>
 	<entry id="39002" string="auto">自動</entry>
 	<entry id="39006" string="VBR mode">VBR モード</entry>
+	<entry id="39007" string="CBR (no VBR)">CBR（VBRなし）</entry>
+	<entry id="39008" string="VBR">VBR（可変）</entry>
+	<entry id="39009" string="ABR">ABR（平均）</entry>
 	<entry id="39010" string="Options">オプション</entry>
+	<entry id="39011" string="Voice Activity Detection">音声アクティビティの検出</entry>
+	<entry id="39015" string="CBR quality">CBR 品質</entry>
 	<entry id="39016" string="VBR quality">VBR 品質</entry>
 	<entry id="39017" string="ABR target bitrate">ABR 目標ビットレート</entry>
 	<entry id="39018" string="Bitrate">ビットレート</entry>
 	<entry id="39019" string="Quality">品質</entry>
+	<entry id="39020" string="Max. bitrate">最大ビットレート</entry>
       </section>
 
       <section name="Opus">
+	<entry id="40000" string="Basic settings">基本設定</entry>
+	<entry id="40001" string="Encoding mode">変換モード</entry>
 	<entry id="40002" string="auto">自動</entry>
+	<entry id="40005" string="Bandwidth">帯域幅</entry>
+	<entry id="40011" string="File extension">ファイル拡張子</entry>
+	<entry id="40012" string="Variable bitrate">可変ビットレート</entry>
+	<entry id="40013" string="Enable variable bitrate encoding">可変ビットレート変換を有効にする</entry>
+	<entry id="40014" string="Constrain bitrate to target value">ビットレートを目標値に制限する</entry>
 	<entry id="40015" string="Quality">品質</entry>
 	<entry id="40016" string="Bitrate">ビットレート</entry>
+	<entry id="40018" string="Stream">ストリーム</entry>
+	<entry id="40019" string="Frame length">フレームの長さ</entry>
 	<entry id="40020" string="Options">オプション</entry>
       </section>
 
       <section name="SndFile">
+	<entry id="41000" string="Output format">出力形式</entry>
 	<entry id="41001" string="File format">ファイル形式</entry>
 	<entry id="41002" string="Audio format">オーディオ形式</entry>
 	<entry id="41003" string="mono">モノラル</entry>
+	<entry id="41004" string="auto select">自動選択</entry>
 
-	<section name="Errors"/>
+	<section name="Errors">
+	  <entry id="41100" string="Could not find suitable audio format.">適切なオーディオ形式が見つかりませんでした。</entry>
+	  <entry id="41101" string="Unable to use selected audio format.">選択したオーディオ形式を使用できません。</entry>
+	</section>
+      </section>
+
+      <section name="meh!">
+	<entry id="42000" string="Encoders">エンコーダ</entry>
+	<entry id="42001" string="Available">利用可能</entry>
+	<entry id="42002" string="Selected">選択中</entry>
+	<entry id="42003" string="Configure encoder">エンコーダ設定</entry>
+	<entry id="42004" string="Encoder configuration">エンコーダの設定</entry>
+	<entry id="42005" string="Options">オプション</entry>
+	<entry id="42006" string="Create a separate folder for each output format">出力形式ごとに別々のフォルダを作成する</entry>
+      </section>
+    </section>
+
+    <section name="DSP">
+
+      <section name="Format">
+	<entry id="50000" string="Sample format">サンプル形式</entry>
+	<entry id="50001" string="Number format">番号形式</entry>
+	<entry id="50002" string="Sample resolution">サンプル ビット数</entry>
+      </section>
+
+      <section name="Channels">
+	<entry id="50100" string="Output channels">出力チャンネル</entry>
+	<entry id="50101" string="Channel configuration">チャネル設定</entry>
+	<entry id="50102" string="Mono">モノラル</entry>
+	<entry id="50103" string="Stereo">シンプル ステレオ</entry>
+      </section>
+
+      <section name="Resample">
+	<entry id="50200" string="Converter">変換</entry>
+	<entry id="50201" string="Sampling rate">サンプリング レート</entry>
+	<entry id="50202" string="Output sampling rate">出力サンプリングレート</entry>
+      </section>
+
+      <section name="RubberBand">
+	<entry id="50300" string="Basic controls">基本設定</entry>
+	<entry id="50301" string="Tempo">テンポ</entry>
+	<entry id="50302" string="Pitch">ピッチ</entry>
+	<entry id="50304" string="Advanced options">高度な設定</entry>
+	<entry id="50313" string="Transformation window">変換ウィンドウ</entry>
+      </section>
+    </section>
+
+    <section name="Taggers">
+
+      <section name="MP4">
+	<entry id="60000" string="Chapter format">チャプター形式</entry>
+	<entry id="60001" string="both">両方</entry>
+      </section>
+    </section>
+
+    <section name="External">
+      <entry id="80000" string="Downmix multi-channel audio to stereo">マルチチャンネルオーディオをステレオにダウンミックスする</entry>
+
+      <section name="Musepack Audio Encoder">
+	<entry id="80100" string="Quality">品質</entry>
+	<entry id="80101" string="poor">悪い</entry>
+	<entry id="80102" string="excellent">良い</entry>
+	<entry id="80103" string="Mid/Side stereo mode">ミッド/サイドステレオモード</entry>
+	<entry id="80105" string="reduced">削減</entry>
+	<entry id="80107" string="decoupled">分離</entry>
+      </section>
+
+      <section name="OptimFROG Lossless Encoder">
+	<entry id="80200" string="Encoding mode">変換モード</entry>
+	<entry id="80202" string="normal">通常</entry>
+	<entry id="80209" string="Store MD5 of original PCM data">元のPCMデータのMD5を保存</entry>
+	<entry id="80213" string="Optimization">最適化</entry>
+	<entry id="80214" string="disabled">無効化</entry>
+      </section>
+
+      <section name="Tom's Audiokompressor">
+	<entry id="80300" string="Encoder preset">エンコーダプリセット</entry>
+	<entry id="80303" string="Frame size limit">フレームサイズの制限</entry>
+	<entry id="80304" string="Add MD5 checksum">MD5チェックサムを追加</entry>
+      </section>
+
+      <section name="WavPack Audio Encoder">
+	<entry id="80400" string="Enable lossy compression">非可逆圧縮を有効にする</entry>
+	<entry id="80401" string="Compression mode">圧縮モード</entry>
+	<entry id="80407" string="better">高</entry>
+      </section>
+
+      <section name="Nero AAC Encoder">
+	<entry id="80500" string="Encoding mode">変換モード</entry>
+	<entry id="80501" string="auto">自動</entry>
+	<entry id="80502" string="Quality">品質</entry>
+	<entry id="80503" string="worse">低</entry>
+	<entry id="80504" string="better">高</entry>
+	<entry id="80505" string="Bitrate">ビットレート</entry>
+	<entry id="80506" string="Bitrate (Streaming)">ビットレート（ストリーミング）</entry>
       </section>
     </section>
 
@@ -708,6 +1031,7 @@
 	<entry id="100004" string="Thank you very much!">どうも有難うございます！</entry>
 	<entry id="100005" string="Remind me later">後でまた見る</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100007" string="Donate to the %1 project">%1プロジェクトに寄付する</entry>
 
 	<section name="PayPal">
 	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">PayPal を使って寄付するには下記ボタンのクリックしてください：</entry>
@@ -720,7 +1044,24 @@
 	</section>
 
 	<section name="Donorbox">
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorboxは、クレジットカードによる迅速かつ簡単な寄付を可能にします。&#10;Donorboxで寄付をするには、このボタンをクリックしてください：</entry>
+	  <entry id="100201" string="Donate">寄付する</entry>
 	  <entry id="100202" string="usd">jpy</entry>
+	</section>
+
+	<section name="Bitcoin">
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Bitcoinを寄付するには、QRコードをスキャンするか、&#10;以下のアドレスをコピーしてください：</entry>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">このアドレスは、Bitcoin Cashやその他のフォークも受け入れます。</entry>
+	</section>
+
+	<section name="Ethereum">
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Ethereumに寄付するには、QRコードをスキャンするか、&#10;次のアドレスをコピーしてください：</entry>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">このアドレスは、Ether ClassicおよびERC20トークンも受け入れます。</entry>
+	</section>
+
+	<section name="SEPA">
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">以下の口座に電子振替をして寄付することができます：</entry>
+	  <entry id="100501" string="Account holder:">口座名義人：</entry>
 	</section>
       </section>
 
@@ -731,19 +1072,40 @@
 
       <section name="Video Downloader">
 	<entry id="102000" string="Video">ビデオ</entry>
+	<entry id="102001" string="Enter video URL here">動画のURLをここに入力してください</entry>
 	<entry id="102002" string="Download">ダウンロード</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">クリップボードにコピーされたURLを自動的にダウンロードする</entry>
+	<entry id="102004" string="Save downloaded video files">ダウンロードしたビデオファイルを保存する</entry>
+	<entry id="102005" string="Video downloads">ビデオのダウンロード</entry>
+	<entry id="102006" string="Downloaded tracks">ダウンロードしたトラック</entry>
+	<entry id="102007" string="Uploader">アップローダー</entry>
+	<entry id="102009" string="Video title">Videoタイトル</entry>
+	<entry id="102010" string="Video description">Videoの説明</entry>
+	<entry id="102011" string="Site name">サイト名</entry>
+	<entry id="102012" string="Uploaded by">アップロード者</entry>
 	<entry id="102014" string="Length">時間</entry>
 	<entry id="102015" string="Size">サイズ</entry>
+	<entry id="102016" string="Cancel download">ダウンロードをキャンセルする</entry>
+	<entry id="102017" string="unknown">不明</entry>
 	<entry id="102018" string="Note">注意</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">自動化</entry>
 	  <entry id="102102" string="Video files">ビデオファイル</entry>
 	  <entry id="102103" string="Select">参照</entry>
+	  <entry id="102104" string="Select the folder to save downloaded video files to">ダウンロードしたビデオファイルを保存するフォルダを選択</entry>
 	  <entry id="102105" string="Downloads">ダウンロード</entry>
+	  <entry id="102106" string="Maximum number of simultaneous downloads">同時ダウンロードの最大数</entry>
+	  <entry id="102107" string="Output format">出力フォーマット</entry>
+	  <entry id="102108" string="keep original format">元のフォーマットを維持する</entry>
 	</section>
 
-	<section name="Errors"/>
+	<section name="Errors">
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">このURLはサポートされていないか、動画ページのURLではありません！</entry>
+	  <entry id="102202" string="Error downloading video!">動画のダウンロード中にエラーが発生しました！</entry>
+	  <entry id="102203" string="You are already downloading this video!">あなたはすでにこのビデオをダウンロードしています！</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">いくつかの必要なビデオデコーダが見つかりませんでした。 ビデオファイル&#10;オーディオファイルへの変換のためにジョブリストに追加することはできません。&#10;&#10;この問題を解決するには、avconvまたはFFmpegをインストールしてください！</entry>
+	</section>
       </section>
 
       <section name="Tag Editor">
@@ -754,22 +1116,68 @@
 	<entry id="103004" string="Files">ファイル</entry>
 	<entry id="103005" string="File">ファイル</entry>
 	<entry id="103006" string="Tracks">トラック</entry>
+	<entry id="103007" string="Save">保存</entry>
+	<entry id="103008" string="Save all">すべて保存</entry>
+	<entry id="103009" string="no audio files found">オーディオファイルが見つかりません</entry>
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">基本</entry>
+	  <entry id="103101" string="Title information">タイトル情報</entry>
 	  <entry id="103102" string="Disc">ディスク</entry>
+	  <entry id="103103" string="Cover art">カバーアート</entry>
+	  <entry id="103104" string="Covers">カバー</entry>
+	  <entry id="103105" string="Type">種類</entry>
+	  <entry id="103106" string="Description">説明</entry>
 	  <entry id="103107" string="Add">追加</entry>
 	  <entry id="103108" string="Remove">削除</entry>
 	</section>
 
 	<section name="Details">
+	  <entry id="103200" string="Details">詳細</entry>
+	  <entry id="103201" string="Detailed information">詳細な情報</entry>
+	  <entry id="103202" string="Band / orchestra">バンド/オーケストラ</entry>
+	  <entry id="103203" string="Conductor">指揮</entry>
+	  <entry id="103204" string="Composer">作曲</entry>
+	  <entry id="103205" string="Lyrics writer">作詞</entry>
+	  <entry id="103206" string="Modified / remixed by">変更/リミックス</entry>
+	  <entry id="103207" string="Publisher information">発行元の情報</entry>
+	  <entry id="103208" string="Publisher / label">発行元/レーベル</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>
+	  <entry id="103210" string="Tempo">テンポ</entry>
+	  <entry id="103211" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other"/>
+	<section name="Other">
+	  <entry id="103300" string="Other">その他</entry>
+	  <entry id="103301" string="Original information">元の情報</entry>
+	  <entry id="103302" string="Original artist">オリジナルのアーティスト</entry>
+	  <entry id="103303" string="Original album">オリジナルのアルバム</entry>
+	  <entry id="103304" string="Original lyrics writer">オリジナルの作詞</entry>
+	  <entry id="103305" string="Original release year">オリジナルのリリース年</entry>
+	  <entry id="103306" string="Webpage URLs">ウェブページのURL</entry>
+	  <entry id="103307" string="Artist webpage">アーティストのウェブページ</entry>
+	  <entry id="103308" string="Publisher webpage">発行元のウェブページ</entry>
+	  <entry id="103309" string="Internet radio station">インターネットラジオ局</entry>
+	  <entry id="103310" string="Audio source webpage">オーディオソースのウェブページ</entry>
+	  <entry id="103311" string="Copyright information">著作権情報</entry>
+	  <entry id="103312" string="Commercial information">Commercial情報</entry>
+	</section>
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">タグを更新できません：%1&#10;&#10;エラー：%2</entry>
+	</section>
+      </section>
+
+      <section name="Protocols">
+	<entry id="104002" string="Errors / Warnings">エラー/警告</entry>
+	<entry id="104003" string="Details">詳細</entry>
+	<entry id="104004" string="Time">時間</entry>
+	<entry id="104005" string="Message">メッセージ</entry>
+
+	<section name="Configuration">
+	  <entry id="104100" string="User interface">ユーザーインターフェース</entry>
+	  <entry id="104101" string="Show Protocols tab in main window">Protocols tabをメインウィンドウに表示</entry>
 	</section>
       </section>
     </section>
