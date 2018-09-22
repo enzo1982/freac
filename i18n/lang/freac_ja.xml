@@ -7,18 +7,21 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
-    <property name="author">original:REIKA,modify:BHCrusher1</property>
+    <property name="author">REIKA &amp; BHCrusher1</property>
     <property name="url">http://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">OK</entry>
     <entry id="101" string="Cancel">キャンセル</entry>
     <entry id="102" string="Close">閉じる</entry>
+
     <entry id="200" string="Error">エラー</entry>
     <entry id="201" string="Warning">警告</entry>
     <entry id="202" string="Info">情報</entry>
+
     <entry id="210" string="Do not display this warning again">この警告をもう一度表示しない</entry>
     <entry id="211" string="Do not display this note again">この注意をもう一度表示しない</entry>
+
     <entry id="300" string="Artist">アーティスト</entry>
     <entry id="301" string="Title">タイトル</entry>
     <entry id="302" string="Album">アルバム</entry>
@@ -31,6 +34,7 @@
     <entry id="309" string="File name">ファイル名</entry>
     <entry id="310" string="File type">ファイルタイプ</entry>
     <entry id="311" string="Album artist">アルバムアーティスト</entry>
+
     <entry id="350" string="unknown artist">アーティスト不明</entry>
     <entry id="351" string="unknown title">タイトル不明</entry>
     <entry id="352" string="unknown album">アルバム不明</entry>
@@ -39,6 +43,7 @@
     <entry id="355" string="unknown conductor">指揮者不明</entry>
     <entry id="356" string="unknown composer">作曲者不明</entry>
     <entry id="357" string="unknown album artist">アルバムアーティスト不明</entry>
+
     <entry id="380" string="hidden track">隠しトラック</entry>
 
     <section name="Characters">
@@ -528,9 +533,9 @@
       <section name="Verification">
 	<entry id="5800" string="Verification">ベリファイ</entry>
 	<entry id="5801" string="Enable input verification">入力時のベリファイを有効にする</entry>
-	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">可逆圧縮データが正確にデコードされていることを確認する&#13;&#10;それらはoriginallyから作成されました。</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">可逆圧縮データが正確にデコードされていることを確認する&#10;それらはoriginallyから作成されました。</entry>
 	<entry id="5803" string="Enable output verification">出力時のベリファイを有効にする</entry>
-	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">可逆圧縮データが正確にデコードすることを確認する&#13;&#10;それらはをエンコード時に使用されます。</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">可逆圧縮データが正確にデコードすることを確認する&#10;それらはをエンコード時に使用されます。</entry>
       </section>
 
       <section name="Processing">
@@ -592,9 +597,9 @@
       <entry id="7018" string="Unsupported audio format">未対応のオーディオ形式</entry>
       <entry id="7019" string="Unknown error">不明なエラー</entry>
       <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">次の設定ダイアログは使用できません：&#10;&#10;%1</entry>
-      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">非可逆圧縮から可逆圧縮に変換しようとしています。&#13;&#10;&#13;&#10;品質の低下は元に戻すことができないため、このプロセスでは&#10;品質が向上することはなく、ファイルサイズが増加する可能性が高いことにご注意ください。&#13;&#10;&#13;&#10;続行しますか？</entry>
+      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">非可逆圧縮から可逆圧縮に変換しようとしています。&#10;&#10;品質の低下は元に戻すことができないため、このプロセスでは&#10;品質が向上することはなく、ファイルサイズが増加する可能性が高いことにご注意ください。&#10;&#10;続行しますか？</entry>
       <entry id="7022" string="Failed to verify input file: %1">入力ファイルの検証に失敗しました： %1</entry>
-      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">チェックサムの不一致がないか出力ファイルをベリファイしています：%1&#13;&#10;&#13;&#10;エンコードのチェックサム：%2&#13;&#10;ベリファイのチェックサム：%3</entry>
+      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">チェックサムの不一致がないか出力ファイルをベリファイしています：%1&#10;&#10;エンコードのチェックサム：%2&#10;ベリファイのチェックサム：%3</entry>
       <entry id="7024" string="The selected folder does not exist anymore!">選択したフォルダはもう存在しません！</entry>
       <entry id="7025" string="Keep this option enabled even after restarting %1">%1 を再起動してもこのオプションを有効にしておいてください</entry>
       <entry id="7026" string="Invalid file format">無効なファイル形式です</entry>
@@ -613,7 +618,7 @@
 
       <section name="Format">
 	<entry id="8100" string="Select sample format">サンプル形式を選択</entry>
-	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">選択したトラックのサンプル形式は異なります。 選択してください&#13;&#10;出力ファイルの望ましいサンプル形式：</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">選択したトラックのサンプル形式は異なります。 選択してください&#10;出力ファイルの望ましいサンプル形式：</entry>
 	<entry id="8102" string="Select">参照</entry>
       </section>
 
@@ -1099,7 +1104,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">このURLはサポートされていないか、動画ページのURLではありません！</entry>
 	  <entry id="102202" string="Error downloading video!">動画のダウンロード中にエラーが発生しました！</entry>
 	  <entry id="102203" string="You are already downloading this video!">あなたはすでにこのビデオをダウンロードしています！</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">いくつかの必要なビデオデコーダが見つかりませんでした。 ビデオファイル&#13;&#10;オーディオファイルへの変換のためにジョブリストに追加することはできません。&#13;&#10;&#13;&#10;この問題を解決するには、avconvまたはFFmpegをインストールしてください！</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">いくつかの必要なビデオデコーダが見つかりませんでした。 ビデオファイル&#10;オーディオファイルへの変換のためにジョブリストに追加することはできません。&#10;&#10;この問題を解決するには、avconvまたはFFmpegをインストールしてください！</entry>
 	</section>
       </section>
 
@@ -1160,7 +1165,7 @@
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">タグを更新できません：%1&#13;&#10;&#13;&#10;エラー：%2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">タグを更新できません：%1&#10;&#10;エラー：%2</entry>
 	</section>
       </section>
 
