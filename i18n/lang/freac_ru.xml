@@ -536,7 +536,7 @@
 	<entry id="8000" string="Confirm overwrite">Подтвердить перезапись</entry>
 	<entry id="8001" string="Confirm">Подтвердить</entry>
 	<entry id="8002" string="Skip all">Пропустить все</entry>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten">Следующие файлы %1 уже существуют и будут перезаписаны</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">Следующие файлы %1 уже существуют и будут перезаписаны</entry>
 	<entry id="8004" string="Action">Действие</entry>
 	<entry id="8005" string="Overwrite">Перезаписать</entry>
 	<entry id="8006" string="Skip">Пропустить</entry>

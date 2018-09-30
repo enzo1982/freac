@@ -529,7 +529,7 @@
 	<entry id="8000" string="Confirm overwrite">Bekräfta överskrivning</entry>
 	<entry id="8001" string="Confirm">Bekräfta</entry>
 	<entry id="8002" string="Skip all">Hoppa över alla</entry>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten">Följande %1 filer finns redan och kommer att skrivas över</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">Följande %1 filer finns redan och kommer att skrivas över</entry>
 	<entry id="8004" string="Action">Åtgärd</entry>
 	<entry id="8005" string="Overwrite">Skriv över</entry>
 	<entry id="8006" string="Skip">Hoppa över</entry>

@@ -619,7 +619,7 @@
 	<entry id="8000" string="Confirm overwrite"/>
 	<entry id="8001" string="Confirm"/>
 	<entry id="8002" string="Skip all"/>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten"/>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names"/>
 	<entry id="8004" string="Action"/>
 	<entry id="8005" string="Overwrite"/>
 	<entry id="8006" string="Skip"/>

@@ -611,7 +611,7 @@
 	<entry id="8000" string="Confirm overwrite">上書きを確認</entry>
 	<entry id="8001" string="Confirm">確認</entry>
 	<entry id="8002" string="Skip all">全部スキップ</entry>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten">次の%1ファイルが既に存在し、上書きされます</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">次の%1ファイルが既に存在し、上書きされます</entry>
 	<entry id="8005" string="Overwrite">上書き</entry>
 	<entry id="8006" string="Skip">スキップ</entry>
       </section>

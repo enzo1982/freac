@@ -618,7 +618,7 @@
 	<entry id="8000" string="Confirm overwrite">Confirmar sobrescritura</entry>
 	<entry id="8001" string="Confirm">Confirmar</entry>
 	<entry id="8002" string="Skip all">Omitir todo</entry>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten">Los siguientes %1 archivos ya existen y serán sobrescritos</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">Los siguientes %1 archivos ya existen y serán sobrescritos</entry>
 	<entry id="8004" string="Action">Acción</entry>
 	<entry id="8005" string="Overwrite">Sobrescribir</entry>
 	<entry id="8006" string="Skip">Omitir</entry>

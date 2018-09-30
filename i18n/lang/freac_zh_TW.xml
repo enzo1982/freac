@@ -547,7 +547,7 @@
 	<entry id="8000" string="Confirm overwrite">確認覆寫</entry>
 	<entry id="8001" string="Confirm">確認</entry>
 	<entry id="8002" string="Skip all">全部跳過</entry>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten">將覆寫已存在的檔案 %1</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">將覆寫已存在的檔案 %1</entry>
 	<entry id="8004" string="Action">動作</entry>
 	<entry id="8005" string="Overwrite">覆寫</entry>
 	<entry id="8006" string="Skip">跳過</entry>

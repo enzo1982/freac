@@ -54,7 +54,7 @@ freac::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track> &
 	button_cancel->SetOrientation(OR_LOWERRIGHT);
 	button_cancel->SetX(103 + button_skip->GetWidth() + button_overwrite->GetWidth());
 
-	text_files		= new Text(i18n->AddColon(i18n->TranslateString("The following %1 files already exist and will be overwritten").Replace("%1", String::FromInt(tracks.Length()))), Point(7, 5));
+	text_files		= new Text(i18n->AddColon(i18n->TranslateString("The following %1 files already exist or have duplicate file names").Replace("%1", String::FromInt(tracks.Length()))), Point(7, 5));
 
 	Config	*freacConfig	= Config::Get();
 

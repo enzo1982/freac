@@ -565,7 +565,7 @@
 	<entry id="8000" string="Confirm overwrite">Потврди препис</entry>
 	<entry id="8001" string="Confirm">Потврди</entry>
 	<entry id="8002" string="Skip all">Прескочи све</entry>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten">Наредни  %1 фајлови већ постоје и биће преписани</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">Наредни  %1 фајлови већ постоје и биће преписани</entry>
 	<entry id="8004" string="Action">Акција</entry>
 	<entry id="8005" string="Overwrite">Препиши</entry>
 	<entry id="8006" string="Skip">Прескочи</entry>

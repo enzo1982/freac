@@ -619,7 +619,7 @@
 	<entry id="8000" string="Confirm overwrite">Überschreiben bestätigen</entry>
 	<entry id="8001" string="Confirm">Bestätigen</entry>
 	<entry id="8002" string="Skip all">Alle überspringen</entry>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten">Die folgenden %1 Dateien existieren bereits und werden überschrieben</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">Die folgenden %1 Dateien existieren bereits oder haben mehrfach vorhandene Dateinamen</entry>
 	<entry id="8004" string="Action">Aktion</entry>
 	<entry id="8005" string="Overwrite">Überschreiben</entry>
 	<entry id="8006" string="Skip">Überspringen</entry>
