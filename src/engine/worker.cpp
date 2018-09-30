@@ -248,6 +248,8 @@ Int freac::ConvertWorker::Convert()
 
 		if (!decoder->Create(in_filename, trackToConvert))
 		{
+			onReportError.Emit(decoder->GetErrorString());
+
 			delete decoder;
 
 			BoCA::Config::Free(encoderConfig);
@@ -292,6 +294,8 @@ Int freac::ConvertWorker::Convert()
 
 		if (conversionStep != ConversionStepVerify && !encoder->Create(activeEncoderID, out_filename, trackToEncode))
 		{
+			onReportError.Emit(encoder->GetErrorString());
+
 			delete decoder;
 			delete verifier;
 			delete processor;
@@ -393,6 +397,16 @@ Int freac::ConvertWorker::Convert()
 
 		/* Free decoder, verifier, processor and encoder.
 		 */
+		decoder->Destroy();
+		verifier->Destroy();
+		processor->Destroy();
+		encoder->Destroy();
+
+		if (decoder->GetErrorState())	onReportError.Emit(decoder->GetErrorString());
+		if (verifier->GetErrorState())	onReportError.Emit(verifier->GetErrorString());
+		if (processor->GetErrorState())	onReportError.Emit(processor->GetErrorString());
+		if (encoder->GetErrorState())	onReportError.Emit(encoder->GetErrorString());
+
 		delete decoder;
 		delete verifier;
 		delete processor;
@@ -567,6 +581,7 @@ Void freac::ConvertWorker::SetTrackToConvert(const BoCA::Track &nTrack)
 
 	idle		= False;
 	waiting		= True;
+	error		= False;
 }
 
 Int freac::ConvertWorker::Pause(Bool value)

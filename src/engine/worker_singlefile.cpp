@@ -101,6 +101,8 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	if (!decoder->Create(trackToConvert.origFilename, trackToConvert))
 	{
+		onReportError.Emit(decoder->GetErrorString());
+
 		delete decoder;
 
 		return Error();
@@ -212,6 +214,12 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Free decoder and verifier.
 	 */
+	decoder->Destroy();
+	verifier->Destroy();
+
+	if (decoder->GetErrorState())  onReportError.Emit(decoder->GetErrorString());
+	if (verifier->GetErrorState()) onReportError.Emit(verifier->GetErrorString());
+
 	delete decoder;
 	delete verifier;
 	delete converter;

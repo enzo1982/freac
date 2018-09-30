@@ -368,6 +368,8 @@ Error freac::JobConvert::Perform()
 
 		if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrackToEncode))
 		{
+			BoCA::Utilities::ErrorMessage(singleFileEncoder->GetErrorString());
+
 			delete singleFileProcessor;
 			delete singleFileEncoder;
 
@@ -475,9 +477,12 @@ Error freac::JobConvert::Perform()
 
 		/* Check for errors.
 		 */
-		foreach (ConvertWorker *worker, workerQueue)
+		if (encodeToSingleFile)
 		{
-			if (worker->IsError()) stopConversion = True;
+			foreach (ConvertWorker *worker, workerQueue)
+			{
+				if (worker->IsError()) stopConversion = True;
+			}
 		}
 
 		/* Cancel workers if stop requested.
@@ -933,6 +938,12 @@ Error freac::JobConvert::Perform()
 
 		/* Delete processor and encoder.
 		 */
+		singleFileProcessor->Destroy();
+		singleFileEncoder->Destroy();
+
+		if (singleFileProcessor->GetErrorState()) BoCA::Utilities::ErrorMessage(singleFileProcessor->GetErrorString());
+		if (singleFileEncoder->GetErrorState())	  BoCA::Utilities::ErrorMessage(singleFileEncoder->GetErrorString());
+
 		delete singleFileProcessor;
 		delete singleFileEncoder;
 
@@ -1262,7 +1273,10 @@ Void freac::JobConvert::UpdateTotalProgress(Int progressValue, Int secondsLeft)
 
 Void freac::JobConvert::OnWorkerReportError(const String &error)
 {
-	errors.Add(error);
+	Bool	 encodeToSingleFile = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+
+	if (encodeToSingleFile)	BoCA::Utilities::ErrorMessage(error);
+	else			errors.Add(error);
 }
 
 Void freac::JobConvert::OnWorkerReportWarning(const String &warning)
