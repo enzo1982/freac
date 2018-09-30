@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -13,27 +13,17 @@
 #ifndef H_FREAC_PROCESSOR
 #define H_FREAC_PROCESSOR
 
-#include <smooth.h>
-#include <boca.h>
-
-using namespace smooth;
+#include "component.h"
 
 namespace freac
 {
-	class Processor
+	class Processor : public Component
 	{
 		protected:
-			static Array<Threads::Mutex *, Void *>	 mutexes;
-			static Threads::Mutex			 managementMutex;
-
-			const BoCA::Config			*configuration;
-
 			BoCA::Format				 format;
 
 			Array<BoCA::AS::DSPComponent *, Void *>	 dsps;
 		public:
-			static Void				 FreeLockObjects();
-
 								 Processor(const BoCA::Config *);
 			virtual					~Processor();
 

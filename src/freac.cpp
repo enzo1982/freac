@@ -38,9 +38,7 @@ Void smooth::DetachDLL()
 #include <jobs/jobmanager.h>
 #include <cddb/cddbcache.h>
 
-#include <engine/decoder.h>
-#include <engine/processor.h>
-#include <engine/encoder.h>
+#include <engine/component.h>
 
 freac::freac	*freac::freac::instance = NIL;
 
@@ -162,9 +160,7 @@ freac::freac::~freac()
 
 	/* Free conversion locks.
 	 */
-	Decoder::FreeLockObjects();
-	Processor::FreeLockObjects();
-	Encoder::FreeLockObjects();
+	Component::FreeLockObjects();
 
 	/* Free the audio player.
 	 */

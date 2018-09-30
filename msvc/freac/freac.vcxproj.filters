@@ -279,6 +279,9 @@
     <ClCompile Include="..\..\src\engine\locking.cpp">
       <Filter>Quelldateien\engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\engine\component.cpp">
+      <Filter>Quelldateien\engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\config.h">
@@ -476,6 +479,9 @@
     <ClInclude Include="..\..\include\engine\locking.h">
       <Filter>Headerdateien\engine</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\engine\component.h">
+      <Filter>Headerdateien\engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\src\support\autorelease_osx.mm">
@@ -489,8 +495,5 @@
     <ResourceCompile Include="..\..\resources\resources.rc">
       <Filter>Ressourcendateien</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Natvis Include="smooth.natvis" />
   </ItemGroup>
 </Project>

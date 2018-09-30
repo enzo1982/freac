@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -17,12 +17,8 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-Array<Threads::Mutex *, Void *>	 freac::Processor::mutexes;
-Threads::Mutex			 freac::Processor::managementMutex;
-
-freac::Processor::Processor(const BoCA::Config *iConfiguration)
+freac::Processor::Processor(const BoCA::Config *iConfiguration) : Component(iConfiguration)
 {
-	configuration = iConfiguration;
 }
 
 freac::Processor::~Processor()
@@ -62,16 +58,7 @@ Bool freac::Processor::Create(const Track &track)
 
 		/* Lock processor if it's not thread safe.
 		 */
-		if (!dsp->IsThreadSafe())
-		{
-			managementMutex.Lock();
-
-			if (mutexes.Get(dsp->GetID().ComputeCRC32()) == NIL) mutexes.Add(new Threads::Mutex(), dsp->GetID().ComputeCRC32());
-
-			managementMutex.Release();
-
-			mutexes.Get(dsp->GetID().ComputeCRC32())->Lock();
-		}
+		LockComponent(dsp);
 
 		/* Activate DSP component.
 		 */
@@ -99,9 +86,9 @@ Bool freac::Processor::Destroy()
 	{
 		dsp->Deactivate();
 
-		if (dsp->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", dsp->GetErrorString());
+		if (dsp->GetErrorState()) SetError("Error: %1", dsp->GetErrorString());
 
-		if (!dsp->IsThreadSafe()) mutexes.Get(dsp->GetID().ComputeCRC32())->Release();
+		UnlockComponent(dsp);
 
 		boca.DeleteComponent(dsp);
 	}
@@ -144,11 +131,4 @@ Int freac::Processor::Finish(Buffer<UnsignedByte> &buffer)
 	}
 
 	return buffer.Size();
-}
-
-Void freac::Processor::FreeLockObjects()
-{
-	foreach (Threads::Mutex *mutex, mutexes) delete mutex;
-
-	mutexes.RemoveAll();
 }

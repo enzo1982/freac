@@ -172,6 +172,7 @@
     <ClCompile Include="..\..\src\dialogs\format.cpp" />
     <ClCompile Include="..\..\src\dialogs\overwrite.cpp" />
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
+    <ClCompile Include="..\..\src\engine\component.cpp" />
     <ClCompile Include="..\..\src\engine\locking.cpp" />
     <ClCompile Include="..\..\src\engine\processor.cpp" />
     <ClCompile Include="..\..\src\engine\verifier.cpp" />
@@ -274,6 +275,7 @@
     <ClInclude Include="..\..\include\dialogs\format.h" />
     <ClInclude Include="..\..\include\dialogs\overwrite.h" />
     <ClInclude Include="..\..\include\dllinterfaces.h" />
+    <ClInclude Include="..\..\include\engine\component.h" />
     <ClInclude Include="..\..\include\engine\locking.h" />
     <ClInclude Include="..\..\include\engine\processor.h" />
     <ClInclude Include="..\..\include\engine\verifier.h" />
@@ -352,9 +354,6 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">../..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Natvis Include="smooth.natvis" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

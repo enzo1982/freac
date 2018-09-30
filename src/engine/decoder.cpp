@@ -19,13 +19,8 @@ using namespace smooth::IO;
 using namespace BoCA;
 using namespace BoCA::AS;
 
-Array<Threads::Mutex *, Void *>	 freac::Decoder::mutexes;
-Threads::Mutex			 freac::Decoder::managementMutex;
-
-freac::Decoder::Decoder(const BoCA::Config *iConfiguration)
+freac::Decoder::Decoder(const BoCA::Config *iConfiguration) : Component(iConfiguration)
 {
-	configuration  = iConfiguration;
-
 	stream	       = NIL;
 	decoder	       = NIL;
 
@@ -53,7 +48,7 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 
 	if (stream->GetLastError() != IO_ERROR_OK)
 	{
-		BoCA::Utilities::ErrorMessage("Cannot access input file: %1", nFileName);
+		SetError("Cannot access input file: %1", nFileName);
 
 		delete stream;
 
@@ -68,7 +63,7 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 
 	if (decoder == NIL)
 	{
-		BoCA::Utilities::ErrorMessage("Cannot create decoder component for input file: %1", nFileName);
+		SetError("Cannot create decoder component for input file: %1", nFileName);
 
 		delete stream;
 
@@ -77,18 +72,9 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 		return False;
 	}
 
-	/* Lock decoder if it's not thread safe.
+	/* Lock component if it's not thread safe.
 	 */
-	if (!decoder->IsThreadSafe())
-	{
-		managementMutex.Lock();
-
-		if (mutexes.Get(decoder->GetID().ComputeCRC32()) == NIL) mutexes.Add(new Threads::Mutex(), decoder->GetID().ComputeCRC32());
-
-		managementMutex.Release();
-
-		mutexes.Get(decoder->GetID().ComputeCRC32())->Lock();
-	}
+	LockComponent(decoder);
 
 	/* Add decoder to stream.
 	 */
@@ -101,9 +87,9 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 
 	if (stream->SetFilter(decoder) == False)
 	{
-		BoCA::Utilities::ErrorMessage("Cannot set up decoder for input file: %1\n\nError: %2", File(nFileName).GetFileName(), decoder->GetErrorString());
+		SetError("Cannot set up decoder for input file: %1\n\nError: %2", File(nFileName).GetFileName(), decoder->GetErrorString());
 
-		if (!decoder->IsThreadSafe()) mutexes.Get(decoder->GetID().ComputeCRC32())->Release();
+		UnlockComponent(decoder);
 
 		delete stream;
 
@@ -144,9 +130,9 @@ Bool freac::Decoder::Destroy()
 
 	stream->RemoveFilter();
 
-	if (decoder->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", decoder->GetErrorString());
+	if (decoder->GetErrorState()) SetError("Error: %1", decoder->GetErrorString());
 
-	if (!decoder->IsThreadSafe()) mutexes.Get(decoder->GetID().ComputeCRC32())->Release();
+	UnlockComponent(decoder);
 
 	delete stream;
 
@@ -211,11 +197,4 @@ String freac::Decoder::GetMD5Checksum()
 	Destroy();
 
 	return md5Sum;
-}
-
-Void freac::Decoder::FreeLockObjects()
-{
-	foreach (Threads::Mutex *mutex, mutexes) delete mutex;
-
-	mutexes.RemoveAll();
 }
