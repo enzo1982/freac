@@ -238,6 +238,39 @@
       <entry id="3503" string="Details">Детайли</entry>
       <entry id="3504" string="Error details">Детайли за грешката</entry>
       <entry id="3505" string="Time left">Оставащо време</entry>
+      <entry id="3506" string="Waiting for other jobs to finish">Изчаква се да завършат други задания</entry>
+
+      <section name="Joblist">
+	<entry id="3600" string="Reading folders">Четене на папки</entry>
+	<entry id="3601" string="Filtering duplicates">Филтриране на дубликати</entry>
+	<entry id="3602" string="Adding files">Добавяне на файлове</entry>
+	<entry id="3603" string="Adding tracks">Добавяне на песни</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">Добавени са % 1 файлове, възникнаха % 2 грешки</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">Добавени са % 1 песни,  възникнаха % 2 грешки</entry>
+	<entry id="3606" string="Removing all tracks">Премахнати са всички песни</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">Премахнати са песните на диска в устройство % 1</entry>
+	<entry id="3608" string="Removed all tracks from joblist">Премахнати са всички песни от списъка със задачи</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">Премахнати са песните на диска в устройство% 1 от списъка със задачи</entry>
+      </section>
+
+      <section name="Convert">
+	<entry id="3700" string="Checking sample formats">Проверка на примерни формати</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">Проверка за загуба при преобразуване без загуба</entry>
+	<entry id="3702" string="Checking output file names">Проверка на имената на изходните файлове</entry>
+	<entry id="3703" string="Converting %1">Конвертиране на % 1</entry>
+	<entry id="3704" string="Verifying %1">Проверка на % 1</entry>
+	<entry id="3705" string="Conversion cancelled">Преобразуването е отменено</entry>
+	<entry id="3706" string="Conversion finished">Преобразуването е завършено</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">Преобразуването завърши с % 1 предупреждения</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">Преобразуването завърши с % 1 грешки</entry>
+      </section>
+
+      <section name="Update">
+	<entry id="3800" string="Preparing update check">Подготовка за проверка на актуализация</entry>
+	<entry id="3801" string="Contacting update server">Свързване със сървъра за актуализиране</entry>
+	<entry id="3802" string="Updates found">Открити са актуализации</entry>
+	<entry id="3803" string="No updates found">Няма намерени актуализации</entry>
+      </section>
     </section>
 
     <section name="CDDB">
@@ -334,8 +367,8 @@
       <entry id="5014" string="Active configuration">Активна конфигурация</entry>
       <entry id="5015" string="New">Нова</entry>
       <entry id="5016" string="Delete">Изтриване</entry>
-      <entry id="5017" string="Command line arguments">Аргументи на команден ред</entry>
-      <entry id="5018" string="Resulting arguments string">Резултат на низа от аргументи</entry>
+      <entry id="5017" string="Command line arguments">Аргументи на командния ред</entry>
+      <entry id="5018" string="Resulting arguments string">Резултат на поредицата от аргументи</entry>
       <entry id="5019" string="Default configuration">Конфигурация по подразбиране</entry>
       <entry id="5020" string="New configuration">Нова конфигурация</entry>
       <entry id="5021" string="Ripper">Рипър</entry>
@@ -553,6 +586,8 @@
       <entry id="7001" string="Currently converting">В момента се конвертира</entry>
       <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Невъзможно е да се заредят ASPI драйверите!&#10;CD извличането е изключено!</entry>
       <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Невъзможно е да се отвари файл: %1&#10;&#10;Грешка: %2</entry>
+      <entry id="7004" string="Cannot play a CD track while ripping from the same drive!">Не може да се възпроизвежда песен от CD, докато се извлича от същото устройство!</entry>
+      <entry id="7005" string="Cannot start ripping while playing a track from the same drive!">Не може да се стартира извличане, докато се възпроизвежда песен от същото устройство!</entry>
       <entry id="7006" string="Delete original files after encoding">Изтриване на оригиналните файлове след кодирането</entry>
       <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Тази опция ще изтрие оригиналните файлове&#10;от вашия компютър след процеса по кодиране!&#10;&#10;Сигурни ли сте, че искате да активирате тази функция?</entry>
       <entry id="7008" string="File already exists">Файлът вече съществува</entry>
@@ -573,6 +608,7 @@
       <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Несъответствие в контролна сума за проверка на изходния файл: %1&#10;&#10;Кодираща сума: %2&#10;Проверка на контролна сума: %3</entry>
       <entry id="7024" string="The selected folder does not exist anymore!">Избраната папка вече не съществува!</entry>
       <entry id="7025" string="Keep this option enabled even after restarting %1">Запазете тази опция включена дори след рестартиране %1</entry>
+      <entry id="7026" string="Invalid file format">Невалиден файлов формат</entry>
     </section>
 
     <section name="Dialogs">
@@ -693,7 +729,7 @@
 	  <entry id="32105" string="Extreme, Fast">Пределно, Бързо</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Качество</entry>
-	  <entry id="32108" string="Set bitrate">Зад. Bitrate</entry>
+	  <entry id="32108" string="Set bitrate">Зад. bitrate</entry>
 	  <entry id="32109" string="Set ratio">Зад. съотношение</entry>
 	  <entry id="32110" string="Set quality">Зададено качество</entry>
 	  <entry id="32111" string="worse">лошо</entry>
@@ -701,7 +737,7 @@
 	  <entry id="32113" string="VBR mode">VBR режим</entry>
 	  <entry id="32114" string="no VBR">без VBR</entry>
 	  <entry id="32115" string="VBR quality">VBR качество</entry>
-	  <entry id="32116" string="ABR target bitrate">ABR целеви битрейт</entry>
+	  <entry id="32116" string="ABR target bitrate">ABR целеви bitrate</entry>
 	</section>
 
 	<section name="Misc">
@@ -716,9 +752,9 @@
 	  <entry id="32208" string="Stereo">Стерео</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Принудително Joint Stereo</entry>
-	  <entry id="32211" string="VBR bitrate range">Диапазон на VBR битрейт</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Зад. миним. VBR битрейт</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Максимален VBR битрейт</entry>
+	  <entry id="32211" string="VBR bitrate range">Диапазон на VBR bitrate</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">Зад. миним. VBR bitrate</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">Максимален VBR bitrate</entry>
 	</section>
 
 	<section name="Expert">
@@ -879,7 +915,7 @@
 	<entry id="39014" string="Complexity">Сложност</entry>
 	<entry id="39015" string="CBR quality">CBR качество</entry>
 	<entry id="39016" string="VBR quality">VBR качество</entry>
-	<entry id="39017" string="ABR target bitrate">ABR целеви битрейт</entry>
+	<entry id="39017" string="ABR target bitrate">ABR целеви bitrate</entry>
 	<entry id="39018" string="Bitrate">Bitrate</entry>
 	<entry id="39019" string="Quality">Качество</entry>
 	<entry id="39020" string="Max. bitrate">Макс. bitrate</entry>
@@ -1003,6 +1039,78 @@
       </section>
     </section>
 
+    <section name="External">
+      <entry id="80000" string="Downmix multi-channel audio to stereo">Downmix многоканално аудио към стерео</entry>
+
+      <section name="Musepack Audio Encoder">
+	<entry id="80100" string="Quality">Качество</entry>
+	<entry id="80101" string="poor">лошо</entry>
+	<entry id="80102" string="excellent">отлично</entry>
+	<entry id="80103" string="Mid/Side stereo mode">Среден/Страничен стерео режим</entry>
+	<entry id="80104" string="off">слабо</entry>
+	<entry id="80105" string="reduced">ограничено</entry>
+	<entry id="80106" string="on">крайно</entry>
+	<entry id="80107" string="decoupled">отделено</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">подобрено 1.5/3 dB</entry>
+	<entry id="80109" string="enhanced 2/6 dB">подобрено 2/6 dB</entry>
+	<entry id="80110" string="enhanced 2.5/9 dB">подобрено 2.5/9 dB</entry>
+	<entry id="80111" string="enhanced 3/12 dB">подобрено 3/12 dB</entry>
+	<entry id="80112" string="enhanced 3/inf dB">подобрено 3/безкрайно dB</entry>
+	<entry id="80113" string="Adaptive noise shaping order">Ред за адаптивно оформяне на шума</entry>
+	<entry id="80114" string="high">високо</entry>
+	<entry id="80115" string="Clear Voice Detection">Ясно разпознаване на глас</entry>
+	<entry id="80116" string="dual">двойно</entry>
+      </section>
+
+      <section name="OptimFROG Lossless Encoder">
+	<entry id="80200" string="Encoding mode">Режим на кодиране</entry>
+	<entry id="80201" string="fast">бързо</entry>
+	<entry id="80202" string="normal">нормално</entry>
+	<entry id="80203" string="high">високо</entry>
+	<entry id="80204" string="extra">екстра</entry>
+	<entry id="80205" string="best">най-добро</entry>
+	<entry id="80206" string="high, new">високо, ново</entry>
+	<entry id="80207" string="extra, new">екстра, ново</entry>
+	<entry id="80208" string="best, new">най-добро, ново</entry>
+	<entry id="80209" string="Store MD5 of original PCM data">Съхраняване MD5 на оригиналните PCM данни</entry>
+	<entry id="80210" string="Seeking">Търсене</entry>
+	<entry id="80211" string="slow">бавно</entry>
+	<entry id="80212" string="minimum">минимално</entry>
+	<entry id="80213" string="Optimization">Оптимизация</entry>
+	<entry id="80214" string="disabled">изключено</entry>
+	<entry id="80215" string="low">ниско</entry>
+      </section>
+
+      <section name="Tom's Audiokompressor">
+	<entry id="80300" string="Encoder preset">Предварителна настройка на енкодера</entry>
+	<entry id="80301" string="fastest">най-бързо</entry>
+	<entry id="80302" string="strongest">най-силно</entry>
+	<entry id="80303" string="Frame size limit">Ограничение за размера на оформянето</entry>
+	<entry id="80304" string="Add MD5 checksum">Добавяне на MD5 контролна сума</entry>
+      </section>
+
+      <section name="WavPack Audio Encoder">
+	<entry id="80400" string="Enable lossy compression">Включена компресия със загуби</entry>
+	<entry id="80401" string="Compression mode">Режим на компресия</entry>
+	<entry id="80402" string="fast">бърза</entry>
+	<entry id="80403" string="high quality">високо качество</entry>
+	<entry id="80404" string="very high quality">много високо качество</entry>
+	<entry id="80405" string="Extra encode processing">Допълнителна обработка на кодиране</entry>
+	<entry id="80406" string="faster">по-бързо</entry>
+	<entry id="80407" string="better">по-добро</entry>
+      </section>
+
+      <section name="Nero AAC Encoder">
+	<entry id="80500" string="Encoding mode">Режим на кодиране</entry>
+	<entry id="80501" string="auto">автоматично</entry>
+	<entry id="80502" string="Quality">Качество</entry>
+	<entry id="80503" string="worse">лошо</entry>
+	<entry id="80504" string="better">добро</entry>
+	<entry id="80505" string="Bitrate">Bitrate</entry>
+	<entry id="80506" string="Bitrate (Streaming)">Bitrate (Поточно)</entry>
+      </section>
+    </section>
+
     <section name="Extensions">
 
       <section name="Donate">
@@ -1013,6 +1121,7 @@
 	<entry id="100004" string="Thank you very much!">Много Ви благодаря!</entry>
 	<entry id="100005" string="Remind me later">Напомни ми по-късно</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100007" string="Donate to the %1 project">Дарете на % 1 за проекта</entry>
 
 	<section name="PayPal">
 	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Щракнете един от бутоните по-долу за да направите дарение през PayPal:</entry>
@@ -1020,10 +1129,31 @@
 	  <entry id="100102" string="usd">bgn</entry>
 	  <entry id="100103" string="$%1">%1 лв.</entry>
 	  <entry id="100104" string="5,10,20,other amount">5,10,20,друга сума</entry>
+	  <entry id="100105" string="monthly recurring">ежемесечно повтарящи се</entry>
+	  <entry id="100106" string="Donate">Дарете</entry>
 	</section>
 
 	<section name="Donorbox">
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox позволява бързо и лесно дарения с кредитна карта.&#10;Щракнете върху този бутон, за да направите дарение с Donorbox:</entry>
+	  <entry id="100201" string="Donate">Дарете</entry>
 	  <entry id="100202" string="usd">eur</entry>
+	</section>
+
+	<section name="Bitcoin">
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Моля, сканирайте или кликнете върху QR кода или&#10;копирайте следния адрес, за да дарите с Bitcoin:</entry>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Този адрес приема също Bitcoin кеш и други.</entry>
+	</section>
+
+	<section name="Ethereum">
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Моля, сканирайте или кликнете върху QR кода или&#10;копирайте следния адрес, за да дарите с Ethereum:</entry>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">Този адрес също приема Ether Classic и ERC20 tokens.</entry>
+	</section>
+
+	<section name="SEPA">
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Можете да направите дарение, чрез електронен превод&#10;на следната сметка:</entry>
+	  <entry id="100501" string="Account holder:">Титуляр на сметката:</entry>
+	  <entry id="100502" string="IBAN:">IBAN:</entry>
+	  <entry id="100503" string="BIC:">BIC:</entry>
 	</section>
       </section>
 
