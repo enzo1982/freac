@@ -1,0 +1,85 @@
+SUMMARY="Free and open source audio converter"
+DESCRIPTION="fre:ac is a free and open source audio converter. It comes with \
+an integrated tag editor and converts between various formats.
+
+Features include:
+
+- Support for MP3, MP4/AAC, Opus, FLAC and other formats
+- Integrated player and tag editor
+- Support for playlists, cue sheets and chapters
+- Fast, multi-threaded conversion engine
+- Ability to convert to multiple formats at once
+- Can verify lossless input and output files
+- Support for freedb/CDDB queries and submits
+- Support for using command line codecs
+- User interface available in 40+ languages
+- Optional command line interface"
+HOMEPAGE="https://freac.org/"
+COPYRIGHT="2001-2018 by Robert Kausch"
+LICENSE="GNU GPL v2"
+REVISION="1"
+SOURCE_URI="https://github.com/enzo1982/freac/releases/download/<release>/<sourcefile>"
+CHECKSUM_SHA256="<checksum>"
+SOURCE_DIR="<sourcedir>"
+#PATCHES=""
+
+ARCHITECTURES="x86 x86_64"
+SECONDARY_ARCHITECTURES="x86"
+
+PROVIDES="
+	freac$secondaryArchSuffix = $portVersion
+	cmd:freac$secondaryArchSuffix = $portVersion
+	cmd:freaccmd$secondaryArchSuffix = $portVersion
+	"
+
+REQUIRES="
+	haiku$secondaryArchSuffix
+	cmd:ffmpeg
+	cmd:mpcdec
+	cmd:mpcenc
+	cmd:wavpack
+	cmd:wvunpack
+	lib:libsmooth$secondaryArchSuffix >= 0.8.74
+	lib:libboca$secondaryArchSuffix >= 1.0
+	lib:libcdio$secondaryArchSuffix
+	lib:libcdio_cdda$secondaryArchSuffix
+	lib:libcdio_paranoia$secondaryArchSuffix
+	lib:libfaac$secondaryArchSuffix
+	lib:libfaad$secondaryArchSuffix
+	lib:libFLAC$secondaryArchSuffix
+	lib:libmp3lame$secondaryArchSuffix
+	lib:libmp4v2$secondaryArchSuffix
+	lib:libmpg123$secondaryArchSuffix
+	lib:libogg$secondaryArchSuffix
+	lib:libopus$secondaryArchSuffix
+	lib:librubberband$secondaryArchSuffix
+	lib:libsamplerate$secondaryArchSuffix
+	lib:libsndfile$secondaryArchSuffix
+	lib:libspeex$secondaryArchSuffix
+	lib:libvorbis$secondaryArchSuffix
+	"
+
+BUILD_REQUIRES="
+	devel:libboca$secondaryArchSuffix >= 1.0
+	"
+
+BUILD_PREREQUIRES="
+	haiku_devel
+	cmd:make
+	cmd:gcc$secondaryArchSuffix
+	cmd:g++$secondaryArchSuffix
+	cmd:ld$secondaryArchSuffix
+	cmd:pkg_config
+	"
+
+BUILD()
+{
+	make $jobArgs
+}
+
+INSTALL()
+{
+	make prefix=$prefix install
+	
+	addAppDeskbarSymlink $prefix/bin/freac fre:ac
+}
