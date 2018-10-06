@@ -38,12 +38,18 @@ if [[ $uname != *FreeBSD* ]]; then
   export CC=gcc
   export CXX=gcc
   export MAKE=make
+  export SUDO=sudo
   export PATCH="patch --binary"
 else
   export CC=clang
   export CXX=clang
   export MAKE=gmake
+  export SUDO=sudo
   export PATCH=patch
+fi
+
+if [[ $uname == Haiku ]]; then
+  export SUDO=
 fi
 
 # Setup environment
@@ -58,6 +64,10 @@ else
   execext=
   sharedext=so
   sharedinfix=
+fi
+
+if [[ $uname == Haiku ]]; then
+  prefix="--prefix=/system/non-packaged"
 fi
 
 # Package versions
@@ -167,7 +177,7 @@ build () {
   done
 
   eval $prepare
-  eval $configure_exports ./configure $configure_flags
+  eval $configure_exports ./configure $configure_flags $prefix
   $MAKE -j$jobs
 
   index=0
@@ -191,7 +201,7 @@ build () {
       set -e
     done
   else
-    sudo $MAKE -j$jobs install
+    $SUDO $MAKE -j$jobs install
   fi
 
   cd ..
@@ -215,6 +225,8 @@ if [ ${#packages[0]} -eq 0 ]; then
 elif [ "${packages[0]}" == all ]; then
   if [[ $uname == Darwin ]]; then
     packages=( faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 opus speex vorbis wavpack )
+  elif [[ $uname == Haiku ]]; then
+    packages=( faac faad2 fdk-aac flac lame libogg mpg123 opus speex vorbis )
   else
     packages=( faac faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 opus rubberband speex vorbis wavpack )
   fi
