@@ -72,7 +72,4 @@
       <Filter>Quelldateien\methods</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Natvis Include="..\freac\smooth.natvis" />
-  </ItemGroup>
 </Project>

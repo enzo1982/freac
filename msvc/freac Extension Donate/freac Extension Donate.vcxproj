@@ -159,9 +159,6 @@
     <ClCompile Include="..\..\components\extension\donate\methods\paypal.cpp" />
     <ClCompile Include="..\..\components\extension\donate\methods\sepa.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <Natvis Include="..\freac\smooth.natvis" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
