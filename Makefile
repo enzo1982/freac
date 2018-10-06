@@ -242,13 +242,15 @@ endif
 $(EXENAME): $(EXEOBJECTS) $(RESOBJECTS)
 	$(LD) $(EXEOBJECTS) $(RESOBJECTS) $(LDOPTS) $(LDOPTS_GUI) $(LDFLAGS) -o $@
 ifeq ($(BUILD_HAIKU),True)
-	xres -o $(EXENAME) resources/binary/freac.rsrc
+	rc -o $(RESOURCES)/resources.rsrc $(RESOURCES)/resources.rdef
+	xres -o $(EXENAME) $(RESOURCES)/resources.rsrc
 endif
 
 $(CMDNAME): $(CMDOBJECTS) $(RESOBJECTS)
 	$(LD) $(CMDOBJECTS) $(RESOBJECTS) $(LDOPTS) $(LDOPTS_CMD) $(LDFLAGS) -o $@
 ifeq ($(BUILD_HAIKU),True)
-	xres -o $(CMDNAME) resources/binary/freac.rsrc
+	rc -o $(RESOURCES)/resources.rsrc $(RESOURCES)/resources.rdef
+	xres -o $(CMDNAME) $(RESOURCES)/resources.rsrc
 endif
 
 $(OBJECTS)/%.o: $(SRC)/%.cpp
