@@ -36,8 +36,6 @@ else
 		LDOPTS += -Wl,-headerpad,80
 	else ifeq ($(BUILD_NETBSD),True)
 		LDOPTS += -Wl,-rpath,/usr/pkg/lib -L/usr/pkg/lib
-	else ifeq ($(BUILD_HAIKU),True)
-		LDOPTS += -L/boot/common/lib
 	else
 		ifneq ($(BUILD_LINUX),True)
 		ifneq ($(BUILD_SOLARIS),True)
