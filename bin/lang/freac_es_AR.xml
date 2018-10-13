@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
-    <property name="author">José María Vera Somoza &lt;jmvs@gmx.net&gt;</property>
+    <property name="author">José María Vera Somoza &lt;jmvs@gmx.net&gt; &amp; Agustín Bou &lt;agusbou2015@outlook.com&gt;</property>
     <property name="url">http://www.dominiometal.com.ar/</property>
   </info>
   <data>
@@ -41,6 +41,7 @@
     <entry id="28" string="Configure the selected audio encoder">Configurar el codificador de audio seleccionado</entry>
     <entry id="29" string="Start the encoding process">Comenzar el proceso de codificación</entry>
     <entry id="30" string="Cannot modify the joblist while encoding!">¡No se puede modificar la lista de trabajo mientras se codifica!</entry>
+    <entry id="31" string="Error">Error</entry>
     <entry id="32" string="Audio Files">Archivos de audio</entry>
     <entry id="33" string="Apple Audio Files">Archivos de audio Apple</entry>
     <entry id="34" string="Creative Voice Files">Archivos de Creative Voice</entry>
@@ -75,6 +76,7 @@
     <entry id="63" string="Select the folder in which the encoded files will be placed:">Seleccione la carpeta donde los archivos codificados serán guardados:</entry>
     <entry id="64" string="Encoding">Codificación</entry>
     <entry id="65" string="Author">Autor</entry>
+    <entry id="66" string="URL">URL</entry>
     <entry id="67" string="Information">Información</entry>
     <entry id="68" string="Select language:">Seleccione idioma:</entry>
     <entry id="69" string="Active CD-ROM drive">Unidad de CD-ROM activa</entry>
@@ -90,6 +92,7 @@
     <entry id="79" string="Full cdparanoia mode">Modo CD Paranoia completo</entry>
     <entry id="80" string="Bitrate">Tasa de bits</entry>
     <entry id="81" string="Copyright bit">Bit de Derechos de Autor</entry>
+    <entry id="82" string="CRC">CRC</entry>
     <entry id="83" string="Original bit">Bit de Original</entry>
     <entry id="84" string="Channels">Canales</entry>
     <entry id="85" string="Private bit">Bit de Privado</entry>
@@ -116,12 +119,14 @@
     <entry id="106" string="Maximum bandwidth">Ancho de banda máximo</entry>
     <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Ancho de banda de frecuencia máx. a usar en AAC (en Hz):</entry>
     <entry id="108" string="Basic">Básico</entry>
+    <entry id="109" string="Misc">Misc</entry>
     <entry id="110" string="Audio processing">Procesamiento de audio</entry>
     <entry id="111" string="Set bitrate:">Tasa:</entry>
     <entry id="112" string="Set ratio:">Coeficiente:</entry>
     <entry id="113" string="Set quality:">Calidad:</entry>
     <entry id="114" string="worse">deficiente</entry>
     <entry id="115" string="better">óptima</entry>
+    <entry id="116" string="Auto">Auto</entry>
     <entry id="117" string="Stereo">Estéreo</entry>
     <entry id="118" string="Joint Stereo">Empalme estéreo</entry>
     <entry id="119" string="Force Joint Stereo">Forzar empalme estéreo</entry>
@@ -152,6 +157,7 @@
     <entry id="149" string="CDDB access mode:">Modo de acceso a CDDB:</entry>
     <entry id="150" string="CDDB server:">Servidor CDDB:</entry>
     <entry id="151" string="Port:">Puerto:</entry>
+    <entry id="152" string="Info">Info</entry>
     <entry id="153" string="No freedb entry for this disk.">No hay registro freedb para este disco.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Ocurrió un error al tratar de conectarse al servidor freedb.</entry>
     <entry id="155" string="Connecting to freedb server at">Conectando al servidor freedb en</entry>
@@ -184,7 +190,9 @@
     <entry id="186" string="Artist">Artista</entry>
     <entry id="187" string="Year">Año</entry>
     <entry id="188" string="Genre">Género</entry>
+    <entry id="189" string="Album">Album</entry>
     <entry id="190" string="Info tags">Etiquetas de información</entry>
+    <entry id="191" string="Default information">Información predeterminada</entry>
     <entry id="192" string="Default comment string:">Comentario predeterminado:</entry>
     <entry id="193" string="unknown artist">Artista desconocido</entry>
     <entry id="194" string="unknown title">Título desconocido</entry>
@@ -196,6 +204,7 @@
     <entry id="200" string="Submit">Enviar</entry>
     <entry id="201" string="No audio CD in drive!">¡No hay un CD de audio en la unidad!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Por favor, complete todos los campos y títulos de pista antes de enviar.</entry>
+    <entry id="203" string="Prefer CDDB over CD Text">Preferir CDDB a CD de texto</entry>
     <entry id="204" string="CD options">Opciones de CD</entry>
     <entry id="205" string="Submitting CD information">Enviando información de disco</entry>
     <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">No se puede abrir archivo: %1&#10;&#10;Error: %2</entry>
@@ -211,6 +220,8 @@
     <entry id="216" string="Stop">Detener</entry>
     <entry id="217" string="Cannot play a file while encoding!">¡No se puede reproducir durante el proceso de codificación!</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">¡No se puede comenzar la codificación durante la reproducción de un archivo!</entry>
+    <entry id="219" string="Enable remote CDDB database">Habilitar base de datos remota de CDDB</entry>
+    <entry id="220" string="ATH">ATH</entry>
     <entry id="221" string="Enable ATH:">Activar ATH:</entry>
     <entry id="222" string="Use default setting">Utilizar ajuste predeterminado</entry>
     <entry id="223" string="Psycho acoustic model">Modelo acústico-físico</entry>
@@ -243,6 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Mantener archs wav extraídos</entry>
     <entry id="251" string="ripping/decoding">extrayendo/decodificando</entry>
     <entry id="252" string="encoding">codificando</entry>
+    <entry id="253" string="Unicode">Unicode</entry>
     <entry id="254" string="Use Unicode filenames">Utilizar nombres Unicode</entry>
     <entry id="255" string="AAC Files">Archivos AAC</entry>
     <entry id="256" string="MP4 Files">Archivos MP4</entry>
@@ -255,6 +267,10 @@
     <entry id="263" string="Sampling rate">Velocidad de muestreo</entry>
     <entry id="264" string="Sample resolution">Resolución de la muestra</entry>
     <entry id="265" string="Number of samples">Número de muestras</entry>
+    <entry id="266" string="Mono">Mono</entry>
+    <entry id="267" string="bytes">bytes</entry>
+    <entry id="268" string="bit">bit</entry>
+    <entry id="269" string="min">min</entry>
     <entry id="270" string="Create playlist">Crear lista de reproducción</entry>
     <entry id="271" string="Create cue sheet">Crear lista de distribución de pistas</entry>
     <entry id="272" string="Write ID3v1 tags">Escribir etiquetas ID3v1</entry>
@@ -286,6 +302,7 @@
     <entry id="298" string="Exhaustive model search">Modelo de búsqueda exhaustiva</entry>
     <entry id="299" string="Optimize LPC quantization">Optimizar cuantización LPC</entry>
     <entry id="300" string="disabled">desactivado</entry>
+    <entry id="301" string="auto">auto</entry>
     <entry id="302" string="Residual coding">Código residual</entry>
     <entry id="303" string="Minimum partition order">Orden de partición mínima</entry>
     <entry id="304" string="Maximum partition order">Orden de partición máxima</entry>
@@ -375,7 +392,31 @@
     <entry id="388" string="Unknown file type">Tipo de archivo desconocido</entry>
     <entry id="389" string="Unsupported audio format">Formato de audio no soportado</entry>
     <entry id="390" string="Unknown error">Error desconocido</entry>
+    <entry id="391" string="Replace existing comments with default comment">Reemplazar comentarios existentes con el predeterminado</entry>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Los archivos seleccionados no se pudieron combinar&#10;en un solo archivo de salida debido a que tienen&#10;distintos formatos de muestreo.&#10;&#10;Convierta todos los archivos al mismo formato.</entry>
+    <entry id="393" string="Write WMA metadata info">Grabar información de metadatos WMA</entry>
+    <entry id="394" string="WMA metadata encoding:">Codificación metadatos WMA:</entry>
+    <entry id="395" string="Select codec">Seleccionar códec</entry>
+    <entry id="396" string="Select codec format">Seleccionar formato de códec</entry>
+    <entry id="397" string="Codec settings">Configuración del códec</entry>
+    <entry id="398" string="Use codec">Usar códec</entry>
+    <entry id="399" string="Use format">Usar formato</entry>
+    <entry id="400" string="Write uncompressed WMA files">Grabar archs WMA sin comprimir</entry>
+    <entry id="401" string="Automatically select format based on settings and input format">Selecc automáticamente formato basándose en config y formato de entrada</entry>
+    <entry id="402" string="Use VBR encoding">Usar codificación VBR</entry>
+    <entry id="403" string="Use 2-pass encoding">Usar codificación de 2 pasadas</entry>
+    <entry id="404" string="Target bitrate">Tasa de bits de destino</entry>
+    <entry id="405" string="Set drive speed limit:">Establecer límite veloc unidad:</entry>
+    <entry id="406" string="Support this project">Apoyar este proyecto</entry>
+    <entry id="407" string="Please support this project!">¡Apoye este proyecto!</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Ayude a mentener este software gratuito apoyando el proyecto de %1&#10;con una donación.&#10;&#10;Haga clic en uno de los botones de más abajo para donar con PayPal:</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Puede enviar dinero directamente a %1 con PayPal.&#10;&#10;Escriba a %1 si desea donar con transferencia electrónica&#10;o enviar un cheque o dinero por correo electrónico.</entry>
+    <entry id="410" string="usd">usd</entry>
+    <entry id="411" string="en">en</entry>
+    <entry id="412" string="Thank you very much!">¡Muchas gracias!</entry>
+    <entry id="413" string="Remind me later">Recordármelo más tarde</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="416" string="Default">Predeterminado</entry>
   </data>
 </LangFile>
