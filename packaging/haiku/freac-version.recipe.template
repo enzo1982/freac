@@ -1,4 +1,4 @@
-SUMMARY="Free and open source audio converter"
+SUMMARY="A free and open source audio converter"
 DESCRIPTION="fre:ac is a free and open source audio converter. It comes with \
 an integrated tag editor and converts between various formats.
 
@@ -15,23 +15,28 @@ Features include:
 - User interface available in 40+ languages
 - Optional command line interface"
 HOMEPAGE="https://freac.org/"
-COPYRIGHT="2001-2018 by Robert Kausch"
+COPYRIGHT="2001-2018 Robert Kausch"
 LICENSE="GNU GPL v2"
 REVISION="1"
-SOURCE_URI="https://github.com/enzo1982/freac/releases/download/<release>/<sourcefile>"
+SOURCE_URI="https://github.com/enzo1982/freac/releases/download/v${portVersion/\~alpha/-alpha-}/freac-${portVersion/\~alpha/-alpha-}.tar.gz"
 CHECKSUM_SHA256="<checksum>"
-SOURCE_DIR="<sourcedir>"
-#PATCHES=""
+SOURCE_DIR="freac-${portVersion/\~alpha/-alpha-}"
 
-ARCHITECTURES="x86 x86_64"
+ARCHITECTURES="!x86_gcc2 x86 x86_64"
+if [ "$targetArchitecture" = x86_gcc2 ]; then
 SECONDARY_ARCHITECTURES="x86"
+fi
+
+commandBinDir=$binDir
+if [ "$targetArchitecture" = x86_gcc2 ]; then
+	commandBinDir=$prefix/bin
+fi
 
 PROVIDES="
 	freac$secondaryArchSuffix = $portVersion
-	cmd:freac$secondaryArchSuffix = $portVersion
-	cmd:freaccmd$secondaryArchSuffix = $portVersion
+	app:freac = $portVersion
+	cmd:freaccmd = $portVersion
 	"
-
 REQUIRES="
 	haiku$secondaryArchSuffix
 	cmd:ffmpeg
@@ -39,8 +44,8 @@ REQUIRES="
 	cmd:mpcenc
 	cmd:wavpack
 	cmd:wvunpack
-	lib:libsmooth$secondaryArchSuffix >= 0.8.74
-	lib:libboca$secondaryArchSuffix >= 1.0
+	lib:libsmooth_0.8.74$secondaryArchSuffix >= 0
+	lib:libboca_1.0$secondaryArchSuffix >= 0
 	lib:libcdio$secondaryArchSuffix
 	lib:libcdio_cdda$secondaryArchSuffix
 	lib:libcdio_paranoia$secondaryArchSuffix
@@ -60,17 +65,28 @@ REQUIRES="
 	"
 
 BUILD_REQUIRES="
-	devel:libboca$secondaryArchSuffix >= 1.0
+	haiku${secondaryArchSuffix}_devel
+	devel:libboca_1.0$secondaryArchSuffix >= 0
+	"
+BUILD_PREREQUIRES="
+	cmd:g++$secondaryArchSuffix
+	cmd:gcc$secondaryArchSuffix
+	cmd:ld$secondaryArchSuffix
+	cmd:make
+	cmd:pkg_config$secondaryArchSuffix
 	"
 
-BUILD_PREREQUIRES="
-	haiku_devel
-	cmd:make
-	cmd:gcc$secondaryArchSuffix
-	cmd:g++$secondaryArchSuffix
-	cmd:ld$secondaryArchSuffix
-	cmd:pkg_config
-	"
+PATCH()
+{
+	if [ -n "$secondaryArchSuffix" ]; then
+		sed -i \
+			-e "s|/lib/freac|/$relativeLibDir/freac|" \
+			src/loader/console.cpp
+		sed -i \
+			-e "s|/lib/freac|/$relativeLibDir/freac|" \
+			src/loader/gui.cpp
+	fi
+}
 
 BUILD()
 {
@@ -79,7 +95,11 @@ BUILD()
 
 INSTALL()
 {
-	make prefix=$prefix install
-	
-	addAppDeskbarSymlink $prefix/bin/freac fre:ac
+	make prefix="$prefix" bindir="$commandBinDir" libdir="$libDir" \
+		includedir="$includeDir" datadir="$dataDir" install
+
+	mkdir -p "$appsDir"
+	mv "$commandBinDir"/freac "$appsDir"
+
+	addAppDeskbarSymlink "$appsDir"/freac fre:ac
 }
