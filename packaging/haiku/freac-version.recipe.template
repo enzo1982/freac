@@ -76,18 +76,6 @@ BUILD_PREREQUIRES="
 	cmd:pkg_config$secondaryArchSuffix
 	"
 
-PATCH()
-{
-	if [ -n "$secondaryArchSuffix" ]; then
-		sed -i \
-			-e "s|/lib/freac|/$relativeLibDir/freac|" \
-			src/loader/console.cpp
-		sed -i \
-			-e "s|/lib/freac|/$relativeLibDir/freac|" \
-			src/loader/gui.cpp
-	fi
-}
-
 BUILD()
 {
 	make $jobArgs
