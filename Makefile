@@ -2,12 +2,13 @@
 
 include $(dir $(firstword $(MAKEFILE_LIST)))/Makefile-options
 
-INCLUDE	= $(SRCDIR)/include
-OBJECTS	= objects
-SRC	= src
+INCLUDE	  = $(SRCDIR)/include
+OBJECTS	  = objects
+RESOURCES = resources
+SRC	  = src
 
-BIN	= bin
-LIB	= lib
+BIN	  = bin
+LIB	  = lib
 
 ifeq ($(BUILD_WIN32),True)
 ifeq ($(BUILD_X86_64),True)
@@ -15,9 +16,6 @@ ifeq ($(BUILD_X86_64),True)
 	LIB = lib64
 endif
 endif
-
-RESOURCES   = resources
-BINRES	    = $(RESOURCES)/binary
 
 DLLOBJECTS  = $(OBJECTS)/cddb.o $(OBJECTS)/cddbbatch.o $(OBJECTS)/cddbcache.o $(OBJECTS)/cddbinfo.o $(OBJECTS)/cddblocal.o $(OBJECTS)/cddbremote.o
 DLLOBJECTS += $(OBJECTS)/cddb_extsettings.o $(OBJECTS)/cddb_manage.o $(OBJECTS)/cddb_managequeries.o $(OBJECTS)/cddb_managesubmits.o $(OBJECTS)/cddb_multimatch.o $(OBJECTS)/cddb_query.o $(OBJECTS)/cddb_submit.o
@@ -50,6 +48,10 @@ ifeq ($(BUILD_WIN32),True)
 	endif
 endif
 
+ifeq ($(BUILD_HAIKU),True)
+	RESFILES = $(RESOURCES)/resources.rsrc
+endif
+
 EXEOBJECTS = $(OBJECTS)/gui.o
 CMDOBJECTS = $(OBJECTS)/console.o
 
@@ -58,11 +60,10 @@ CMDNAME	= $(BIN)/freaccmd$(EXECUTABLE)
 DLLNAME	= $(BIN)/freac$(SHARED)
 LIBNAME	= $(OBJECTS)/libfreac.a
 
-RESCOMP	     = windres
-REMOVER	     = rm
 CCOPTS	     = -I$(INCLUDE) -fvisibility=hidden -c
 LDOPTS	     = -lstdc++
-RESCOMP_OPTS = -O coff
+
+REMOVER	     = rm
 REMOVER_OPTS = -f
 
 ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
@@ -76,6 +77,9 @@ ifeq ($(BUILD_WIN32),True)
 
 	LDOPTS_DLL		+= --shared -lboca -lws2_32 -Wl,--out-implib,$(LIBNAME)
 	LDOPTS_GUI		+= -mwindows
+
+	RESCOMP			 = windres
+	RESCOMP_OPTS		 = -O coff
 
 	ifeq ($(BUILD_X86),True)
 		RESCOMP_OPTS	+= --target=pe-i386
@@ -115,18 +119,23 @@ else
 		LDOPTS_GUI	+= -L/usr/X11R6/lib -L/usr/local/lib -logg -lvorbis -lvorbisfile
 		LDOPTS_CMD	+= -L/usr/X11R6/lib -L/usr/local/lib -logg -lvorbis -lvorbisfile
 	endif
+
+	ifeq ($(BUILD_HAIKU),True)
+		RESCOMP		 = rc
+		RESLINKER	 = xres
+	endif
 endif
 
-.PHONY: all folders ressources install uninstall clean clean_ressources
+.PHONY: all folders resources install uninstall clean clean_resources
 
-all: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME) ressources
+all: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(RESFILES) $(DLLNAME) $(EXENAME) $(CMDNAME) resources
 
 	+ $(call makein,components)
 
 folders:
 	mkdir -p $(BIN) $(OBJECTS)
 
-ressources: folders
+resources: folders
 ifeq ($(BUILD_WIN32),True)
 	mkdir -p $(BIN)/icons
 
@@ -215,15 +224,15 @@ ifneq ($(BUILD_WIN32),True)
 	$(call makein,components,uninstall)
 endif
 
-clean: clean_ressources
-	$(REMOVER) $(REMOVER_OPTS) $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME) $(LIBNAME)
+clean: clean_resources
+	$(REMOVER) $(REMOVER_OPTS) $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(RESFILES) $(DLLNAME) $(EXENAME) $(CMDNAME) $(LIBNAME)
 ifneq ($(SRCDIR),$(CURDIR))
 	rmdir $(BIN) $(OBJECTS) 2> /dev/null || true
 endif
 
 	+ $(call cleanin,components)
 
-clean_ressources:
+clean_resources:
 ifeq ($(BUILD_WIN32),True)
 	rm -f -r $(BIN)/icons
 
@@ -239,19 +248,14 @@ ifeq ($(BUILD_X86),True)
 endif
 endif
 
-$(EXENAME): $(EXEOBJECTS) $(RESOBJECTS)
+$(EXENAME): $(EXEOBJECTS) $(RESOBJECTS) $(RESFILES)
 	$(LD) $(EXEOBJECTS) $(RESOBJECTS) $(LDOPTS) $(LDOPTS_GUI) $(LDFLAGS) -o $@
 ifeq ($(BUILD_HAIKU),True)
-	rc -o $(RESOURCES)/resources.rsrc $(RESOURCES)/resources.rdef
-	xres -o $(EXENAME) $(RESOURCES)/resources.rsrc
+	$(RESLINKER) -o $@ $(RESFILES)
 endif
 
 $(CMDNAME): $(CMDOBJECTS) $(RESOBJECTS)
 	$(LD) $(CMDOBJECTS) $(RESOBJECTS) $(LDOPTS) $(LDOPTS_CMD) $(LDFLAGS) -o $@
-ifeq ($(BUILD_HAIKU),True)
-	rc -o $(RESOURCES)/resources.rsrc $(RESOURCES)/resources.rdef
-	xres -o $(CMDNAME) $(RESOURCES)/resources.rsrc
-endif
 
 $(OBJECTS)/%.o: $(SRC)/%.cpp
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
@@ -299,4 +303,7 @@ $(OBJECTS)/%.o: $(SRC)/support/%.mm
 	$(OBJCXX) $(CCOPTS) $(OBJCXXFLAGS) $< -o $@
 
 $(OBJECTS)/%.o: $(RESOURCES)/%.rc $(INCLUDE)/resources.h
-	$(RESCOMP) $(RESCOMP_OPTS) $< -o $@
+	$(RESCOMP) $(RESCOMP_OPTS) -o $@ $<
+
+$(RESOURCES)/%.rsrc: $(RESOURCES)/%.rdef
+	$(RESCOMP) $(RESCOMP_OPTS) -o $@ $<

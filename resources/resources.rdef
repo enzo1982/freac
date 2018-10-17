@@ -1,4 +1,4 @@
-resource app_signature "application/x-vnd.freac-freac";
+resource app_signature "application/x-vnd.freac";
 
 resource app_flags B_MULTIPLE_LAUNCH;
 
