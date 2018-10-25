@@ -1708,7 +1708,7 @@ Void freac::freacGUI::FillMenus()
 
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Options"), NIL, menu_options);
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Encode"), NIL, menu_encode);
-	mainWnd_menubar->AddEntry()->SetOrientation(OR_RIGHT);
+
 	mainWnd_menubar->AddEntry(i18n->TranslateString("Help"), NIL, menu_help)->SetOrientation(OR_RIGHT);
 
 	mainWnd_iconbar->RemoveAllEntries();
