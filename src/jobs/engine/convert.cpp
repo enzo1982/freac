@@ -556,7 +556,7 @@ Error freac::JobConvert::Perform()
 
 			/* Delete input file if requested.
 			 */
-			if (Config::Get()->deleteAfterEncoding && !enableConsole)
+			if (Config::Get()->deleteAfterEncoding && track.outfile != track.origFilename && !enableConsole)
 			{
 				/* Check if this was the last track depending on this input file.
 				 */

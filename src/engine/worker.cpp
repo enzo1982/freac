@@ -182,8 +182,8 @@ Int freac::ConvertWorker::Convert()
 		 */
 		if (conversionStep == ConversionStepVerify)
 		{
-			if	(out_filename.ToLower() != String(in_filename.ToLower()).Append(".temp")) in_filename = out_filename;
-			else if (writeToInputDirectory && !allowOverwriteSource)			  in_filename = in_filename.Append(".new");
+			if	(out_filename.ToLower() != String(in_filename.ToLower()).Append(".temp"))		in_filename = out_filename;
+			else if (writeToInputDirectory && !allowOverwriteSource && !Config::Get()->deleteAfterEncoding) in_filename = in_filename.Append(".new");
 
 			if (!File(in_filename).Exists())
 			{
@@ -431,7 +431,7 @@ Int freac::ConvertWorker::Convert()
 		 */
 		if (out_filename.ToLower() == String(in_filename.ToLower()).Append(".temp") && File(out_filename).Exists())
 		{
-			if (!writeToInputDirectory || allowOverwriteSource || !File(in_filename).Exists())
+			if (!writeToInputDirectory || allowOverwriteSource || Config::Get()->deleteAfterEncoding || !File(in_filename).Exists())
 			{
 				File(in_filename).Delete();
 				File(out_filename).Move(in_filename);
