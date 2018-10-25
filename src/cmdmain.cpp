@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -42,7 +42,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	Array<String>	 files;
 	String		 encoder	= "LAME";
 	String		 helpenc;
-	String		 outdir		= ".";
+	String		 outdir		= Directory::GetActiveDirectory();
 	String		 outfile;
 	String		 pattern	= "<artist> - <title>";
 	String		 cdDrive	= "0";

@@ -92,12 +92,14 @@ Known problems
 History
 -------
 
-	Version 1.0.33 (May 2018)
+	Version 1.0.33 (October 2018)
 
+		- updated Spanish (Latin American) translation
 		- rip only tracks from the newly inserted disc when auto-ripping
 		- do not start ripping automatically if no freedb entry is found
 		- fixed hangs when trying to open some Windows Wave files
 		- fixed setup not running with elevated rights on non-administrator accounts
+		- fixed freaccmd issues with files without metadata
 
 	Version 1.0.32 (March 2018)
 
