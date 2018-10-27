@@ -230,21 +230,46 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		}
 		else if (type == PARAMETER_TYPE_SELECTION)
 		{
-			/* Set selection to given value.
+			/* Get selection value.
 			 */
 			String	 value;
 			Bool	 present = ScanForEncoderOption(String(spec).Trim(), &value);
 
+			/* Check if given value is allowed.
+			 */
+			if (present)
+			{
+				Bool	 found = False;
+
+				/* Check case sensitive.
+				 */
+				foreach (Option *option, options)
+				{
+					if (found || option->GetValue() != value) continue;
+
+					found = True;
+				}
+
+				/* Check ignoring case.
+				 */
+				value = value.ToLower();
+
+				foreach (Option *option, options)
+				{
+					if (found || option->GetValue().ToLower() != value) continue;
+
+					found = True;
+					value = option->GetValue();
+				}
+
+				if (!found) broken = True;
+			}
+
+			/* Set selection to given value.
+			 */
 			config->SetIntValue(component->GetID(), String("Set ").Append(name), present);
 			config->SetStringValue(component->GetID(), name, value);
 
-			/* Check if given value is allowed.
-			 */
-			Bool	 found = False;
-
-			foreach (Option *option, options) if (option->GetValue() == value) found = True;
-
-			if (present && !found) broken = True;
 		}
 		else if (type == PARAMETER_TYPE_RANGE)
 		{
