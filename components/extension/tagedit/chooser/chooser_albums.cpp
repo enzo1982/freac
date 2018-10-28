@@ -305,15 +305,24 @@ Void BoCA::ChooserAlbums::OnApplicationModifyTrack(const Track &track)
 	{
 		if (tracks.GetNth(i).GetTrackID() != track.GetTrackID()) continue;
 
-		Track	 album = tracks.GetNth(i);
+		Track	 trackAlbum = tracks.GetNth(i);
 
 		tracks.GetNthReference(i) = track;
 
 		AddToAlbumList(track);
-		RemoveFromAlbumList(album);
+
+		foreach (const Track &album, albums)
+		{
+			if (!IsAlbumIdentical(album, trackAlbum)) continue;
+
+			RemoveFromAlbumList(album);
+		}
 
 		break;
 	}
+
+
+	if (IsActiveChooser() && list_albums->GetSelectedEntry() == NIL) onSelectNone.Emit();
 }
 
 /* Called when a track is removed from the application joblist.
