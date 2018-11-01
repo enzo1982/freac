@@ -284,18 +284,13 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 
 	if (lastDot < lastBs) lastDot = track.origFilename.Length();
 
-	String	 shortInFileName;
-
-	for (Int i = 0; i < lastDot - lastBs - 1; i++) shortInFileName[i] = track.origFilename[i + lastBs + 1];
-
-	String	 inFileDirectory = track.origFilename;
+	String	 shortInFileName = track.origFilename.SubString(lastBs + 1, lastDot - lastBs - 1);
+	String	 inFileDirectory = track.origFilename.Head(lastBs);
 	Bool	 writeToInputDir = False;
-
-	inFileDirectory[lastBs + 1] = 0;
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && !track.isCDTrack)
 	{
-		String		 file = String(inFileDirectory).Append(String::FromInt(S::System::System::Clock())).Append(".temp");
+		String		 file = String(inFileDirectory).Append(Directory::GetDirectoryDelimiter()).Append(String::FromInt(S::System::System::Clock())).Append(".temp");
 		OutStream	*temp = new OutStream(STREAM_FILE, file, OS_REPLACE);
 
 		if (temp->GetLastError() == IO_ERROR_OK) writeToInputDir = True;
@@ -307,7 +302,7 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 
 	if (track.outfile == NIL)
 	{
-		if (writeToInputDir) outputFileName.Copy(inFileDirectory);
+		if (writeToInputDir) outputFileName.Copy(inFileDirectory).Append(Directory::GetDirectoryDelimiter());
 		else		     outputFileName.Copy(BoCA::Utilities::GetAbsolutePathName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 
 		/* Get file extension from selected encoder component
