@@ -77,6 +77,7 @@ freac::LayerPlayer::LayerPlayer(JobList *iJoblist)
 	slider_play	= new Slider(pos, size, OR_HORZ, NIL, 0, 1000);
 	slider_play->onMouseDragEnd.Connect(&LayerPlayer::OnChangePlayPosition, this);
 	slider_play->SetValue(i18n->IsActiveLanguageRightToLeft() ? 1000 : 0);
+	slider_play->Deactivate();
 
 	player->onProgress.Connect(&Slider::SetValue, slider_play);
 
@@ -128,58 +129,57 @@ Void freac::LayerPlayer::OnChangeLanguageSettings()
 
 	static Bool	 prevRTL = i18n->IsActiveLanguageRightToLeft();
 
+	if (i18n->IsActiveLanguageRightToLeft() == prevRTL) return;
+
 	/* Rearrange playback buttons if language direction changed.
 	 */
-	if (i18n->IsActiveLanguageRightToLeft() != prevRTL)
+	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
 	{
-		if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
-		{
-			button_play->Hide();
-			button_pause->Hide();
-			button_stop->Hide();
-			button_prev->Hide();
-			button_next->Hide();
-			button_open->Hide();
+		button_play->Hide();
+		button_pause->Hide();
+		button_stop->Hide();
+		button_prev->Hide();
+		button_next->Hide();
+		button_open->Hide();
 
-			Point	 pos;
+		Point	 pos;
 
-			pos.x = -1 + (i18n->IsActiveLanguageRightToLeft() ? 215 : 0);
-			pos.y = -1;
+		pos.x = -1 + (i18n->IsActiveLanguageRightToLeft() ? 215 : 0);
+		pos.y = -1;
 
-			button_play->SetPosition(pos);
+		button_play->SetPosition(pos);
 
-			pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
+		pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-			button_pause->SetPosition(pos);
+		button_pause->SetPosition(pos);
 
-			pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
+		pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-			button_stop->SetPosition(pos);
+		button_stop->SetPosition(pos);
 
-			pos.x += 127 - (i18n->IsActiveLanguageRightToLeft() ? 254 : 0);
+		pos.x += 127 - (i18n->IsActiveLanguageRightToLeft() ? 254 : 0);
 
-			button_prev->SetPosition(pos);
+		button_prev->SetPosition(pos);
 
-			pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
+		pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-			button_next->SetPosition(pos);
+		button_next->SetPosition(pos);
 
-			pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
+		pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
-			button_open->SetPosition(pos);
+		button_open->SetPosition(pos);
 
-			button_play->Show();
-			button_pause->Show();
-			button_stop->Show();
-			button_prev->Show();
-			button_next->Show();
-			button_open->Show();
+		button_play->Show();
+		button_pause->Show();
+		button_stop->Show();
+		button_prev->Show();
+		button_next->Show();
+		button_open->Show();
 
-			slider_play->SetValue(1000 - slider_play->GetValue());
-		}
-
-		prevRTL = i18n->IsActiveLanguageRightToLeft();
+		slider_play->SetValue(1000 - slider_play->GetValue());
 	}
+
+	prevRTL = i18n->IsActiveLanguageRightToLeft();
 }
 
 Void freac::LayerPlayer::OnJoblistRemoveTrack(const Track &track)
@@ -207,14 +207,13 @@ Void freac::LayerPlayer::PlayPreviousItem()
 	{
 		const Track	&track = joblist->GetNthTrack(i);
 
-		if (track.GetTrackID() == playingTrack.GetTrackID())
-		{
-			StopPlayback();
+		if (track.GetTrackID() != playingTrack.GetTrackID()) continue;
 
-			Play(joblist->GetNthTrack(i - 1));
+		StopPlayback();
 
-			break;
-		}
+		Play(joblist->GetNthTrack(i - 1));
+
+		break;
 	}
 }
 
@@ -224,14 +223,13 @@ Void freac::LayerPlayer::PlayNextItem()
 	{
 		const Track	&track = joblist->GetNthTrack(i);
 
-		if (track.GetTrackID() == playingTrack.GetTrackID())
-		{
-			StopPlayback();
+		if (track.GetTrackID() != playingTrack.GetTrackID()) continue;
 
-			Play(joblist->GetNthTrack(i + 1));
+		StopPlayback();
 
-			break;
-		}
+		Play(joblist->GetNthTrack(i + 1));
+
+		break;
 	}
 }
 
@@ -265,22 +263,27 @@ Void freac::LayerPlayer::StopPlayback()
 	if (!player->IsPlaying()) return;
 
 	player->Stop();
+
+	playingTrack = NIL;
 }
 
 Void freac::LayerPlayer::OnPlay(const Track &track)
 {
+	/* Activate slider.
+	 */
+	slider_play->Activate();
+
 	/* Set joblist entry color.
 	 */
 	ListEntry	*entry = joblist->GetEntryByTrack(track);
 
-	if (entry != NIL)
-	{
-		GUI::Font	 font = entry->GetFont();
+	if (entry == NIL) return;
 
-		font.SetColor(Color(255, 0, 0));
+	GUI::Font	 font = entry->GetFont();
 
-		entry->SetFont(font);
-	}
+	font.SetColor(Color(255, 0, 0));
+
+	entry->SetFont(font);
 }
 
 Void freac::LayerPlayer::OnFinish(const Track &track)
@@ -290,19 +293,19 @@ Void freac::LayerPlayer::OnFinish(const Track &track)
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	slider_play->SetValue(i18n->IsActiveLanguageRightToLeft() ? 1000 : 0);
+	slider_play->Deactivate();
 
 	/* Reset joblist entry color.
 	 */
 	ListEntry	*entry = joblist->GetEntryByTrack(track);
 
-	if (entry != NIL)
-	{
-		GUI::Font	 font = entry->GetFont();
+	if (entry == NIL) return;
 
-		font.SetColor(Setup::ClientTextColor);
+	GUI::Font	 font = entry->GetFont();
 
-		entry->SetFont(font);
-	}
+	font.SetColor(Setup::ClientTextColor);
+
+	entry->SetFont(font);
 }
 
 Void freac::LayerPlayer::OpenCDTray()
@@ -310,16 +313,15 @@ Void freac::LayerPlayer::OpenCDTray()
 	Registry		&boca = Registry::Get();
 	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
 
-	if (info != NIL)
-	{
-		BoCA::Config	*config = BoCA::Config::Get();
-		Int		 drive	= config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
+	if (info == NIL) return;
 
-		if (info->IsNthDeviceTrayOpen(drive)) info->CloseNthDeviceTray(drive);
-		else				      info->OpenNthDeviceTray(drive);
+	BoCA::Config	*config = BoCA::Config::Get();
+	Int		 drive	= config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
 
-		boca.DeleteComponent(info);
-	}
+	if (info->IsNthDeviceTrayOpen(drive)) info->CloseNthDeviceTray(drive);
+	else				      info->OpenNthDeviceTray(drive);
+
+	boca.DeleteComponent(info);
 }
 
 Void freac::LayerPlayer::OnChangePlayPosition()
