@@ -651,7 +651,7 @@
       <entry id="9009" string="No scratch repair"/>
       <entry id="9010" string="Full cdparanoia mode"/>
       <entry id="9011" string="Activate jitter correction"/>
-      <entry id="9012" string="Swap left/right channel"/>
+      <entry id="9012" string="Switch stereo channels"/>
       <entry id="9013" string="Automatization"/>
       <entry id="9014" string="Read CD contents on insert"/>
       <entry id="9015" string="Start ripping automatically"/>
@@ -990,6 +990,7 @@
 	<entry id="50101" string="Channel configuration"/>
 	<entry id="50102" string="Mono"/>
 	<entry id="50103" string="Stereo"/>
+	<entry id="50104" string="Switch stereo channels"/>
       </section>
 
       <section name="Resample">

@@ -427,7 +427,7 @@
       <entry id="9009" string="No scratch repair">bez naprawy uszkodzeń</entry>
       <entry id="9010" string="Full cdparanoia mode">pełny (wszystko)</entry>
       <entry id="9011" string="Activate jitter correction">Włącz korekcję drżenia</entry>
-      <entry id="9012" string="Swap left/right channel">Zamień kanały lewy&lt;-&gt;prawy</entry>
+      <entry id="9012" string="Switch stereo channels">Zamień kanały lewy&lt;-&gt;prawy</entry>
       <entry id="9013" string="Automatization">Automatyzacja</entry>
       <entry id="9014" string="Read CD contents on insert">Odczytaj CD po włożeniu</entry>
       <entry id="9015" string="Start ripping automatically">Automatyczny start zgrywania</entry>

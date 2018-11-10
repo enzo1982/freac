@@ -599,7 +599,7 @@
       <entry id="9009" string="No scratch repair">Sem reparo de arranhões</entry>
       <entry id="9010" string="Full cdparanoia mode">Modo cdparanoia completo</entry>
       <entry id="9011" string="Activate jitter correction">Ativar correção de Jitter (tremulações)</entry>
-      <entry id="9012" string="Swap left/right channel">Inverter canais esq./dir.</entry>
+      <entry id="9012" string="Switch stereo channels">Inverter canais esq./dir.</entry>
       <entry id="9013" string="Automatization">Automatização</entry>
       <entry id="9014" string="Read CD contents on insert">Ler o conteúdo do CD na inserção</entry>
       <entry id="9015" string="Start ripping automatically">Iniciar a extração automaticamente</entry>
@@ -938,6 +938,7 @@
 	<entry id="50101" string="Channel configuration">Configuração do canal</entry>
 	<entry id="50102" string="Mono">Mono</entry>
 	<entry id="50103" string="Stereo">Estéreo</entry>
+	<entry id="50104" string="Switch stereo channels">Inverter canais esq./dir.</entry>
       </section>
 
       <section name="Resample">

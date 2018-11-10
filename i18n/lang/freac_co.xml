@@ -444,7 +444,7 @@
       <entry id="9009" string="No scratch repair">Alcuna currezzione di sfrisgiatura</entry>
       <entry id="9010" string="Full cdparanoia mode">Modu cdparanoia sanu</entry>
       <entry id="9011" string="Activate jitter correction">Attivà currez. d'istabilità jitter</entry>
-      <entry id="9012" string="Swap left/right channel">Invertì canali manca/diritta</entry>
+      <entry id="9012" string="Switch stereo channels">Invertì canali manca/diritta</entry>
       <entry id="9013" string="Automatization">Autumatisazione</entry>
       <entry id="9014" string="Read CD contents on insert">Leghje u CD à l'intruduzzione</entry>
       <entry id="9015" string="Start ripping automatically">Principià à estrae autumatic.</entry>

@@ -425,7 +425,7 @@
       <entry id="9009" string="No scratch repair">Pattogás nincs javítva</entry>
       <entry id="9010" string="Full cdparanoia mode">Teljes ellenörzés mód</entry>
       <entry id="9011" string="Activate jitter correction">Jitter korrekció be</entry>
-      <entry id="9012" string="Swap left/right channel">Csatornák felcserélése</entry>
+      <entry id="9012" string="Switch stereo channels">Csatornák felcserélése</entry>
       <entry id="9013" string="Automatization">Automatizálás</entry>
       <entry id="9014" string="Read CD contents on insert">CD-tartalom beolvasása behelyezésnél</entry>
       <entry id="9015" string="Start ripping automatically">Automatikus másolás indítása</entry>

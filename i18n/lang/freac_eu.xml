@@ -426,7 +426,7 @@
       <entry id="9009" string="No scratch repair">Urradura konponketarik ez</entry>
       <entry id="9010" string="Full cdparanoia mode">cdparanoia osoa modua</entry>
       <entry id="9011" string="Activate jitter correction">Gaitu jitter zuzenketa</entry>
-      <entry id="9012" string="Swap left/right channel">Aldatu bidea ezker/eskuin</entry>
+      <entry id="9012" string="Switch stereo channels">Aldatu bidea ezker/eskuin</entry>
       <entry id="9013" string="Automatization">Berezgaitasuna</entry>
       <entry id="9014" string="Read CD contents on insert">Irakurri CD edukiak txertatzean</entry>
       <entry id="9015" string="Start ripping automatically">Hasi erauzten berezgaitasunez</entry>

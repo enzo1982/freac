@@ -316,7 +316,7 @@
       <entry id="9009" string="No scratch repair">스크래치 복구 없음</entry>
       <entry id="9010" string="Full cdparanoia mode">전체 CD 모드</entry>
       <entry id="9011" string="Activate jitter correction">지터 정정</entry>
-      <entry id="9012" string="Swap left/right channel">좌우 채널 스왑</entry>
+      <entry id="9012" string="Switch stereo channels">좌우 채널 스왑</entry>
       <entry id="9013" string="Automatization">자동화</entry>
       <entry id="9014" string="Read CD contents on insert">삽입 CD 내용 읽기</entry>
       <entry id="9016" string="Eject disk after ripping">리핑후 디스크 배출</entry>

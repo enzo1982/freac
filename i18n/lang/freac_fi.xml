@@ -426,7 +426,7 @@
       <entry id="9009" string="No scratch repair">Ei naarmujenkorjausta</entry>
       <entry id="9010" string="Full cdparanoia mode">Täysi cdparanoia-tila</entry>
       <entry id="9011" string="Activate jitter correction">Ota käyttöön värinän korjaus</entry>
-      <entry id="9012" string="Swap left/right channel">Vaihda vasen/oikea kanava</entry>
+      <entry id="9012" string="Switch stereo channels">Vaihda vasen/oikea kanava</entry>
       <entry id="9013" string="Automatization">Automaattinen</entry>
       <entry id="9014" string="Read CD contents on insert">Lue CD-levyn sisältö heti</entry>
       <entry id="9015" string="Start ripping automatically">Aloita kopiointi autom.</entry>

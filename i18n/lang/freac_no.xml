@@ -425,7 +425,7 @@
       <entry id="9009" string="No scratch repair">Ingen ripereperasjon</entry>
       <entry id="9010" string="Full cdparanoia mode">Full CD-paranoia modus</entry>
       <entry id="9011" string="Activate jitter correction">Aktiver jitterkorrektur</entry>
-      <entry id="9012" string="Swap left/right channel">Velg venstre/høyrekanal</entry>
+      <entry id="9012" string="Switch stereo channels">Velg venstre/høyrekanal</entry>
       <entry id="9013" string="Automatization">Automatisering</entry>
       <entry id="9014" string="Read CD contents on insert">Les CDer som settes inn</entry>
       <entry id="9015" string="Start ripping automatically">Start ripping automatisk</entry>

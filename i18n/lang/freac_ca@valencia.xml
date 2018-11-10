@@ -426,7 +426,7 @@
       <entry id="9009" string="No scratch repair">No reparar grinyols</entry>
       <entry id="9010" string="Full cdparanoia mode">Mode CD paranoia complet</entry>
       <entry id="9011" string="Activate jitter correction">Activar correcció Jitter</entry>
-      <entry id="9012" string="Swap left/right channel">Intercanviar canals</entry>
+      <entry id="9012" string="Switch stereo channels">Intercanviar canals</entry>
       <entry id="9013" string="Automatization">Automatització</entry>
       <entry id="9014" string="Read CD contents on insert">Llegir CD a l'inserir-lo</entry>
       <entry id="9015" string="Start ripping automatically">Extraure automàticament</entry>

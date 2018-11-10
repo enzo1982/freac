@@ -425,7 +425,7 @@
       <entry id="9009" string="No scratch repair">Neopravovať škrabance</entry>
       <entry id="9010" string="Full cdparanoia mode">Plný &quot;cdparanoia&quot; mód</entry>
       <entry id="9011" string="Activate jitter correction">Aktivovať jitter opravu</entry>
-      <entry id="9012" string="Swap left/right channel">Prehodiť ľavý/pravý kanál</entry>
+      <entry id="9012" string="Switch stereo channels">Prehodiť ľavý/pravý kanál</entry>
       <entry id="9013" string="Automatization">Automatizácia</entry>
       <entry id="9014" string="Read CD contents on insert">Čitať obsah CD pri jeho vložení</entry>
       <entry id="9015" string="Start ripping automatically">Začať automaticky rippovať</entry>

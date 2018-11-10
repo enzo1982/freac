@@ -562,7 +562,7 @@
       <entry id="9009" string="No scratch repair">Без коррекции царапин</entry>
       <entry id="9010" string="Full cdparanoia mode">Полный режим cd-параноя</entry>
       <entry id="9011" string="Activate jitter correction">Jitter коррекция</entry>
-      <entry id="9012" string="Swap left/right channel">Поменять левый/правый</entry>
+      <entry id="9012" string="Switch stereo channels">Поменять левый/правый</entry>
       <entry id="9013" string="Automatization">Автоматизация</entry>
       <entry id="9014" string="Read CD contents on insert">Содержимое читать сразу</entry>
       <entry id="9015" string="Start ripping automatically">Авт. начало копирования</entry>

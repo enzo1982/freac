@@ -650,7 +650,7 @@
       <entry id="9009" string="No scratch repair">No reparar chirridos</entry>
       <entry id="9010" string="Full cdparanoia mode">Modo CD paranoia completo</entry>
       <entry id="9011" string="Activate jitter correction">Activar corrección Jitter</entry>
-      <entry id="9012" string="Swap left/right channel">Intercambiar canales</entry>
+      <entry id="9012" string="Switch stereo channels">Intercambiar canales</entry>
       <entry id="9013" string="Automatization">Automatización</entry>
       <entry id="9014" string="Read CD contents on insert">Leer CD al insertarlo</entry>
       <entry id="9015" string="Start ripping automatically">Extraer automáticamente</entry>
@@ -989,6 +989,7 @@
 	<entry id="50101" string="Channel configuration">Configuración del canal</entry>
 	<entry id="50102" string="Mono">Mono</entry>
 	<entry id="50103" string="Stereo">Estéreo</entry>
+	<entry id="50104" string="Switch stereo channels">Intercambiar canales</entry>
       </section>
 
       <section name="Resample">

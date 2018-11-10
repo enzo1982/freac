@@ -591,7 +591,7 @@
       <entry id="9009" string="No scratch repair">Без поправки огреботина</entry>
       <entry id="9010" string="Full cdparanoia mode">Пун цдпараноја режим</entry>
       <entry id="9011" string="Activate jitter correction">Корекција преклапања (jittering)</entry>
-      <entry id="9012" string="Swap left/right channel">Замени леви/десни канал</entry>
+      <entry id="9012" string="Switch stereo channels">Замени леви/десни канал</entry>
       <entry id="9013" string="Automatization">Аутоматизација</entry>
       <entry id="9014" string="Read CD contents on insert">При убацивању ЦД-а очитај садржај</entry>
       <entry id="9015" string="Start ripping automatically">Аутоматски започни риповање</entry>

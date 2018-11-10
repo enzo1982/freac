@@ -427,7 +427,7 @@
       <entry id="9009" string="No scratch repair">Geen krasreparatie</entry>
       <entry id="9010" string="Full cdparanoia mode">Volledige paranoia mode</entry>
       <entry id="9011" string="Activate jitter correction">Jitter-correctie activeren</entry>
-      <entry id="9012" string="Swap left/right channel">Wissel linker/rechterkanaal</entry>
+      <entry id="9012" string="Switch stereo channels">Wissel linker/rechterkanaal</entry>
       <entry id="9013" string="Automatization">Automatisatie</entry>
       <entry id="9014" string="Read CD contents on insert">Cd-inhoud lezen bij plaatsing</entry>
       <entry id="9015" string="Start ripping automatically">Automatisch rippen starten</entry>

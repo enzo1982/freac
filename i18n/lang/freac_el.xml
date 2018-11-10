@@ -416,7 +416,7 @@
       <entry id="9009" string="No scratch repair">Όχι διόρθωση γρατζουνιών</entry>
       <entry id="9010" string="Full cdparanoia mode">Πλήρης λειτουργία cdparanoia</entry>
       <entry id="9011" string="Activate jitter correction">Διόρθωση jitter</entry>
-      <entry id="9012" string="Swap left/right channel">Εναλλαγή R/L καναλιού</entry>
+      <entry id="9012" string="Switch stereo channels">Εναλλαγή R/L καναλιού</entry>
       <entry id="9013" string="Automatization">Αυτοματοποίηση</entry>
       <entry id="9014" string="Read CD contents on insert">Ανάγνωση CD κατά την εισαγωγή</entry>
       <entry id="9015" string="Start ripping automatically">Έναρξη ripping αυτόματα</entry>

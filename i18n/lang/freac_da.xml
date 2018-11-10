@@ -425,7 +425,7 @@
       <entry id="9009" string="No scratch repair">Ingen skramme reperation</entry>
       <entry id="9010" string="Full cdparanoia mode">Fuld cdparanoia metode</entry>
       <entry id="9011" string="Activate jitter correction">Aktivér jitter correction</entry>
-      <entry id="9012" string="Swap left/right channel">Skift venstre/højre kanal</entry>
+      <entry id="9012" string="Switch stereo channels">Skift venstre/højre kanal</entry>
       <entry id="9013" string="Automatization">Fuld Automatisk</entry>
       <entry id="9014" string="Read CD contents on insert">Læs CD indhold ved isættelse</entry>
       <entry id="9015" string="Start ripping automatically">Start ripning automatisk</entry>

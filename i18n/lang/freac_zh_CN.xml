@@ -429,7 +429,7 @@
       <entry id="9009" string="No scratch repair">不进行刮痕修复</entry>
       <entry id="9010" string="Full cdparanoia mode">完整 cdparanoia 模式</entry>
       <entry id="9011" string="Activate jitter correction">激活抖动校正</entry>
-      <entry id="9012" string="Swap left/right channel">左/右声道互换</entry>
+      <entry id="9012" string="Switch stereo channels">左/右声道互换</entry>
       <entry id="9013" string="Automatization">自动化</entry>
       <entry id="9014" string="Read CD contents on insert">放入 CD 时读取内容</entry>
       <entry id="9015" string="Start ripping automatically">自动启动翻录</entry>

@@ -642,7 +642,7 @@
       <entry id="9009" string="No scratch repair">破損部の修復をしない</entry>
       <entry id="9010" string="Full cdparanoia mode">全て行う</entry>
       <entry id="9011" string="Activate jitter correction">ジッター補正有効</entry>
-      <entry id="9012" string="Swap left/right channel">左右チャンネルの入れ替え</entry>
+      <entry id="9012" string="Switch stereo channels">左右チャンネルの入れ替え</entry>
       <entry id="9013" string="Automatization">自動化</entry>
       <entry id="9014" string="Read CD contents on insert">CD 挿入時に読み込みを行う</entry>
       <entry id="9015" string="Start ripping automatically">自動でリッピング開始</entry>
@@ -953,6 +953,7 @@
 	<entry id="50101" string="Channel configuration">チャネル設定</entry>
 	<entry id="50102" string="Mono">モノラル</entry>
 	<entry id="50103" string="Stereo">シンプル ステレオ</entry>
+	<entry id="50104" string="Switch stereo channels">左右チャンネルの入れ替え</entry>
       </section>
 
       <section name="Resample">
