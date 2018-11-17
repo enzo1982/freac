@@ -523,19 +523,19 @@ String freac::Utilities::GetSingleOutputFileName(const Array<Track> &tracks)
 	const Array<FileFormat *>	&formats	  = encoder->GetFormats();
 	String				 defaultExtension = encoder->GetOutputFileExtension();
 
-	for (Int i = 0; i < formats.Length(); i++)
+	foreach (FileFormat *format, formats)
 	{
-		const Array<String>	&format_extensions = formats.GetNth(i)->GetExtensions();
+		const Array<String>	&formatExtensions = format->GetExtensions();
 		String			 extension;
 
-		for (Int j = 0; j < format_extensions.Length(); j++)
+		foreach (const String &formatExtension, formatExtensions)
 		{
-			extension.Append("*.").Append(format_extensions.GetNth(j));
+			extension.Append("*.").Append(formatExtension);
 
-			if (j < format_extensions.Length() - 1) extension.Append("; ");
+			if (foreachindex < formatExtensions.Length() - 1) extension.Append("; ");
 		}
 
-		dialog.AddFilter(formats.GetNth(i)->GetName().Append(extension != NIL ? String(" (").Append(extension).Append(")") : String()), extension);
+		dialog.AddFilter(format->GetName().Append(extension != NIL ? String(" (").Append(extension).Append(")") : String()), extension);
 	}
 
 	boca.DeleteComponent(encoder);

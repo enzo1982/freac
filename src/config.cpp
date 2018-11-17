@@ -1,4 +1,4 @@
-/* fre:ac - free audio converter
+ /* fre:ac - free audio converter
   * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or

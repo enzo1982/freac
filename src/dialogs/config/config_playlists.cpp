@@ -71,13 +71,13 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 
 		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
 
-		for (Int j = 0; j < formats.Length(); j++)
+		foreach (FileFormat *format, formats)
 		{
-			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+			const Array<String>	&formatExtensions = format->GetExtensions();
 
-			combo_formats->AddEntry(formats.GetNth(j)->GetName());
+			combo_formats->AddEntry(format->GetName());
 
-			if (config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault) == boca.GetComponentID(i).Append("-").Append(format_extensions.GetNth(0))) combo_formats->SelectNthEntry(combo_formats->Length() - 1);
+			if (config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault) == boca.GetComponentID(i).Append("-").Append(formatExtensions.GetNth(0))) combo_formats->SelectNthEntry(combo_formats->Length() - 1);
 		}
 	}
 
@@ -280,13 +280,13 @@ Int freac::ConfigurePlaylists::SaveSettings()
 
 		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
 
-		for (Int j = 0; j < formats.Length(); j++)
+		foreach (FileFormat *format, formats)
 		{
 			if (count++ < index) continue;
 
-			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+			const Array<String>	&formatExtensions = format->GetExtensions();
 
-			config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, boca.GetComponentID(i).Append("-").Append(format_extensions.GetNth(0)));
+			config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, boca.GetComponentID(i).Append("-").Append(formatExtensions.GetNth(0)));
 
 			break;
 		}

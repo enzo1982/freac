@@ -376,9 +376,9 @@ Void freac::cddbSubmitDlg::Submit()
 	cddbInfo.trackTitles.RemoveAll();
 	cddbInfo.trackComments.RemoveAll();
 
-	for (Int i = 0; i < artists.Length();  i++) cddbInfo.trackArtists.Add(artists.GetNth(i));
-	for (Int i = 0; i < titles.Length();   i++) cddbInfo.trackTitles.Add((titles.GetNth(i) == i18n->TranslateString("Data track") ? String("Data track") : titles.GetNth(i)));
-	for (Int i = 0; i < comments.Length(); i++) cddbInfo.trackComments.Add(comments.GetNth(i));
+	foreach (const String &artist,	artists	) cddbInfo.trackArtists.Add(artist);
+	foreach (const String &title,	titles	) cddbInfo.trackTitles.Add(title == i18n->TranslateString("Data track") ? String("Data track") : title);
+	foreach (const String &comment,	comments) cddbInfo.trackComments.Add(comment);
 
 	if (cddbInfo.category == NIL) cddbInfo.category = GetCDDBGenre(edit_genre->GetText());
 

@@ -299,33 +299,33 @@ Void freac::JobList::AddTrackByDialog()
 
 		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
 
-		for (Int j = 0; j < formats.Length(); j++)
+		foreach (FileFormat *format, formats)
 		{
-			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+			const Array<String>	&formatExtensions = format->GetExtensions();
 			String			 extension;
 
-			for (Int k = 0; k < format_extensions.Length(); k++)
+			foreach (const String &formatExtension, formatExtensions)
 			{
-				extension.Append("*.").Append(format_extensions.GetNth(k));
+				extension.Append("*.").Append(formatExtension);
 
-				if (k < format_extensions.Length() - 1) extension.Append("; ");
+				if (foreachindex < formatExtensions.Length() - 1) extension.Append("; ");
 			}
 
-			types.Add(formats.GetNth(j)->GetName().Append(" (").Append(extension).Append(")"));
+			types.Add(format->GetName().Append(" (").Append(extension).Append(")"));
 			extensions.Add(extension);
 		}
 	}
 
 	String	 fileTypes;
 
-	for (Int i = 0; i < extensions.Length(); i++)
+	foreach (const String &extension, extensions)
 	{
-		if (!fileTypes.Contains(extensions.GetNth(i))) fileTypes.Append(i > 0 ? ";" : NIL).Append(extensions.GetNth(i));
+		if (!fileTypes.Contains(extension)) fileTypes.Append(foreachindex > 0 ? ";" : NIL).Append(extension);
 	}
 
 	dialog.AddFilter(i18n->TranslateString("Audio Files"), fileTypes);
 
-	for (Int i = 0; i < types.Length(); i++) dialog.AddFilter(types.GetNth(i), extensions.GetNth(i));
+	foreach (const String &type, types) dialog.AddFilter(type, extensions.GetNth(foreachindex));
 
 	dialog.AddFilter(i18n->TranslateString("All Files"), "*.*");
 
@@ -472,18 +472,17 @@ Void freac::JobList::RemoveSelectedTrack()
 
 	for (Int i = 0; i < GetNOfTracks(); i++)
 	{
-		if (GetNthTrack(i).GetTrackID() == track.GetTrackID())
+		if (GetNthTrack(i).GetTrackID() != track.GetTrackID()) continue;
+
+		if (Length() > 1)
 		{
-			if (Length() > 1)
-			{
-				if (i < Length() - 1) SelectNthEntry(i + 1);
-				else		      SelectNthEntry(i - 1);
-			}
-
-			RemoveNthTrack(i);
-
-			break;
+			if (i < Length() - 1) SelectNthEntry(i + 1);
+			else		      SelectNthEntry(i - 1);
 		}
+
+		RemoveNthTrack(i);
+
+		break;
 	}
 }
 
@@ -537,33 +536,33 @@ Void freac::JobList::LoadList()
 
 		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
 
-		for (Int j = 0; j < formats.Length(); j++)
+		foreach (FileFormat *format, formats)
 		{
-			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+			const Array<String>	&formatExtensions = format->GetExtensions();
 			String			 extension;
 
-			for (Int k = 0; k < format_extensions.Length(); k++)
+			foreach (const String &formatExtension, formatExtensions)
 			{
-				extension.Append("*.").Append(format_extensions.GetNth(k));
+				extension.Append("*.").Append(formatExtension);
 
-				if (k < format_extensions.Length() - 1) extension.Append("; ");
+				if (foreachindex < formatExtensions.Length() - 1) extension.Append("; ");
 			}
 
-			types.Add(formats.GetNth(j)->GetName().Append(" (").Append(extension).Append(")"));
+			types.Add(format->GetName().Append(" (").Append(extension).Append(")"));
 			extensions.Add(extension);
 		}
 	}
 
 	String	 fileTypes;
 
-	for (Int i = 0; i < extensions.Length(); i++)
+	foreach (const String &extension, extensions)
 	{
-		if (!fileTypes.Contains(extensions.GetNth(i))) fileTypes.Append(i > 0 ? ";" : NIL).Append(extensions.GetNth(i));
+		if (!fileTypes.Contains(extension)) fileTypes.Append(foreachindex > 0 ? ";" : NIL).Append(extension);
 	}
 
 	dialog.AddFilter(i18n->TranslateString("Playlist Files"), fileTypes);
 
-	for (Int i = 0; i < types.Length(); i++) dialog.AddFilter(types.GetNth(i), extensions.GetNth(i));
+	foreach (const String &type, types) dialog.AddFilter(type, extensions.GetNth(foreachindex));
 
 	dialog.AddFilter(i18n->TranslateString("All Files"), "*.*");
 
@@ -598,7 +597,7 @@ Void freac::JobList::LoadList()
 			const Array<Track>	&tracks = playlist->ReadPlaylist(dialog.GetFileName());
 			Array<String>		 files;
 
-			for (Int i = 0; i < tracks.Length(); i++) files.Add(tracks.GetNth(i).origFilename);
+			foreach (const Track &track, tracks) files.Add(track.origFilename);
 
 			(new JobAddFiles(files))->Schedule();
 
@@ -637,23 +636,23 @@ Void freac::JobList::SaveList()
 
 		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
 
-		for (Int j = 0; j < formats.Length(); j++)
+		foreach (FileFormat *format, formats)
 		{
-			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+			const Array<String>	&formatExtensions = format->GetExtensions();
 			String			 extension;
 
-			for (Int k = 0; k < format_extensions.Length(); k++)
+			foreach (const String &formatExtension, formatExtensions)
 			{
-				if (first || format_extensions.GetNth(k) == "m3u8") defaultExtension = format_extensions.GetNth(k);
+				if (first || formatExtension == "m3u8") defaultExtension = formatExtension;
 
-				extension.Append("*.").Append(format_extensions.GetNth(k));
+				extension.Append("*.").Append(formatExtension);
 
-				if (k < format_extensions.Length() - 1) extension.Append("; ");
+				if (foreachindex < formatExtensions.Length() - 1) extension.Append("; ");
 
 				first = False;
 			}
 
-			dialog.AddFilter(formats.GetNth(j)->GetName().Append(" (").Append(extension).Append(")"), extension);
+			dialog.AddFilter(format->GetName().Append(" (").Append(extension).Append(")"), extension);
 		}
 	}
 
@@ -679,18 +678,17 @@ Void freac::JobList::SaveList()
 			const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
 			Bool				 found   = False;
 
-			for (Int j = 0; j < formats.Length(); j++)
+			foreach (FileFormat *format, formats)
 			{
-				const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+				const Array<String>	&formatExtensions = format->GetExtensions();
 
-				for (Int k = 0; k < format_extensions.Length(); k++)
+				foreach (const String &formatExtension, formatExtensions)
 				{
-					if (dialog.GetFileName().ToLower().EndsWith(String(".").Append(format_extensions.GetNth(k).ToLower())))
-					{
-						found = True;
+					if (!dialog.GetFileName().ToLower().EndsWith(String(".").Append(formatExtension.ToLower()))) continue;
 
-						break;
-					}
+					found = True;
+
+					break;
 				}
 
 				if (found) break;

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -227,7 +227,7 @@ Int freac::CDDBRemote::Query(const String &queryString)
 			if (str[s] == ' ')
 			{
 				for (Int i = 0; i < 8; i++)			  id[i]	   = str[s + i +  1];
-				for (Int j = 0; j < (str.Length() - s - 14); j++) title[j] = str[s + j + 10];
+				for (Int i = 0; i < (str.Length() - s - 14); i++) title[i] = str[s + i + 10];
 
 				break;
 			}
@@ -268,7 +268,7 @@ Int freac::CDDBRemote::Query(const String &queryString)
 				if (val[s] == ' ')
 				{
 					for (Int i = 0; i < 8; i++)			  id[i]	   = val[s + i +  1];
-					for (Int j = 0; j < (val.Length() - s - 10); j++) title[j] = val[s + j + 10];
+					for (Int i = 0; i < (val.Length() - s - 10); i++) title[i] = val[s + i + 10];
 
 					break;
 				}

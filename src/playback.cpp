@@ -326,14 +326,11 @@ Void freac::Playback::SetPosition(Int position)
 
 Void freac::Playback::Stop()
 {
-	if (!playing) return;
+	if (!playing || stop) return;
 
 	/* Request stop of playback.
 	 */
-	if (!stop)
-	{
-		stop = True;
+	stop = True;
 
-		while (playing) S::System::System::Sleep(10);
-	}
+	while (playing) S::System::System::Sleep(10);
 }

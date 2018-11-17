@@ -191,10 +191,10 @@ freac::freacGUI::freacGUI()
 	 */
 	InitExtensionComponents();
 
-	for (Int i = 0; i < extensionComponents.Length(); i++)
+	foreach (ExtensionComponent *extensionComponent, extensionComponents)
 	{
-		Layer	*mainTabLayer	= extensionComponents.GetNth(i)->getMainTabLayer.Emit();
-		Layer	*statusBarLayer = extensionComponents.GetNth(i)->getStatusBarLayer.Emit();
+		Layer	*mainTabLayer	= extensionComponent->getMainTabLayer.Emit();
+		Layer	*statusBarLayer = extensionComponent->getStatusBarLayer.Emit();
 
 		if (mainTabLayer   != NIL) tabs_main->Add(mainTabLayer);
 		if (statusBarLayer != NIL) mainWnd_statusbar->Add(statusBarLayer);
@@ -331,9 +331,9 @@ Void freac::freacGUI::FreeExtensionComponents()
 {
 	Registry	&boca = Registry::Get();
 
-	for (Int i = 0; i < extensionComponents.Length(); i++)
+	foreach (ExtensionComponent *extensionComponent, extensionComponents)
 	{
-		boca.DeleteComponent(extensionComponents.GetNth(i));
+		boca.DeleteComponent(extensionComponent);
 	}
 
 	extensionComponents.RemoveAll();
@@ -557,9 +557,9 @@ Void freac::freacGUI::OnChangeConfiguration()
 	tabs_main->Add(tab_layer_joblist);
 #endif
 
-	for (Int i = 0; i < extensionComponents.Length(); i++)
+	foreach (ExtensionComponent *extensionComponent, extensionComponents)
 	{
-		Layer	*mainTabLayer = extensionComponents.GetNth(i)->getMainTabLayer.Emit();
+		Layer	*mainTabLayer = extensionComponent->getMainTabLayer.Emit();
 
 		if (mainTabLayer != NIL) tabs_main->Add(mainTabLayer);
 	}
