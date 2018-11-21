@@ -336,6 +336,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 		JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
 
+		/* Check if input files exist.
+		 */
 		Array<String>	 jobFiles;
 		Bool		 addCDTracks = False;
 
@@ -355,6 +357,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			jobFiles.Add(file);
 		}
 
+		/* Add files to joblist.
+		 */
 		JobList	*joblist = new JobList(Point(0, 0), Size(0, 0));
 		Job	*job	 = addCDTracks ? (Job *) new JobAddTracks(jobFiles) : (Job *) new JobAddFiles(jobFiles);
 
@@ -364,6 +368,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		while (Job::GetPlannedJobs().Length()	> 0) S::System::System::Sleep(10);
 		while (Job::GetRunningJobs().Length()	> 0) S::System::System::Sleep(10);
 
+		/* Convert them.
+		 */
 		if (joblist->GetNOfTracks() > 0)
 		{
 			Converter().Convert(*joblist->GetTrackList(), False);
@@ -392,6 +398,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 				addCDTrack  = True;
 			}
 
+			/* Check if input file exists.
+			 */
 			InStream	 in(STREAM_FILE, file, IS_READ);
 
 			if (in.GetLastError() != IO_ERROR_OK && !file.StartsWith("device://"))
@@ -401,6 +409,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 				continue;
 			}
 
+			in.Close();
+
+			/* Add file to joblist.
+			 */
 			Array<String>	 jobFiles;
 
 			jobFiles.Add(file);
@@ -413,28 +425,28 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			while (Job::GetPlannedJobs().Length()	> 0) S::System::System::Sleep(10);
 			while (Job::GetRunningJobs().Length()	> 0) S::System::System::Sleep(10);
 
-			if (joblist->GetNOfTracks() > 0)
-			{
-				if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
-
-				Track	 track = joblist->GetNthTrack(0);
-
-				track.outfile = outfile;
-
-				joblist->UpdateTrackInfo(track);
-
-				Converter().Convert(*joblist->GetTrackList(), False);
-
-				joblist->RemoveNthTrack(0);
-
-				if (!quiet) Console::OutputString("done.\n");
-			}
-			else
+			if (joblist->GetNOfTracks() == 0)
 			{
 				Console::OutputString(String("Could not process file: ").Append(currentFile).Append("\n"));
 
 				continue;
 			}
+
+			/* Convert it.
+			 */
+			if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
+
+			Track	 track = joblist->GetNthTrack(0);
+
+			track.outfile = outfile;
+
+			joblist->UpdateTrackInfo(track);
+
+			Converter().Convert(*joblist->GetTrackList(), False);
+
+			joblist->RemoveNthTrack(0);
+
+			if (!quiet) Console::OutputString("done.\n");
 		}
 
 		delete joblist;

@@ -128,10 +128,10 @@ Int freac::ConvertWorker::Convert()
 	{
 		/* Setup file names.
 		 */
-		String	 in_filename  = trackToConvert.origFilename;
-		String	 out_filename = trackToConvert.outfile;
+		File	 inFile	 = trackToConvert.origFilename;
+		File	 outFile = trackToConvert.outfile;
 
-		if (out_filename.ToLower() == in_filename.ToLower()) out_filename.Append(".temp");
+		if (String(outFile).ToLower() == String(inFile).ToLower()) outFile = String(outFile).Append(".temp");
 
 		/* Set conversion step.
 		 */
@@ -163,14 +163,13 @@ Int freac::ConvertWorker::Convert()
 				encoderConfig->SetIntValue("SndFile", "SubFormat", 0x000000);
 			}
 
-			out_filename.Append(".wav");
+			outFile = String(outFile).Append(".wav");
 		}
 		else if (conversionStep == ConversionStepEncode)
 		{
 			activeEncoderID = selectedEncoderID;
 
-			in_filename = out_filename;
-			in_filename.Append(".wav");
+			inFile = String(outFile).Append(".wav");
 		}
 
 		/* Set number of threads to requested value.
@@ -182,14 +181,14 @@ Int freac::ConvertWorker::Convert()
 		 */
 		if (conversionStep == ConversionStepVerify)
 		{
-			if	(out_filename.ToLower() != String(in_filename.ToLower()).Append(".temp"))		in_filename = out_filename;
-			else if (writeToInputDirectory && !allowOverwriteSource && !Config::Get()->deleteAfterEncoding) in_filename = in_filename.Append(".new");
+			if	(String(outFile).ToLower() != String(inFile).ToLower().Append(".temp"))			inFile = outFile;
+			else if (writeToInputDirectory && !allowOverwriteSource && !Config::Get()->deleteAfterEncoding) inFile = String(inFile).Append(".new");
 
-			if (!File(in_filename).Exists())
+			if (!inFile.Exists())
 			{
-				onReportWarning.Emit(i18n->TranslateString("Skipped verification due to non existing output file: %1", "Messages").Replace("%1", File(in_filename).GetFileName()));
+				onReportWarning.Emit(i18n->TranslateString("Skipped verification due to non existing output file: %1", "Messages").Replace("%1", inFile.GetFileName()));
 
-				log->Write(String("\tSkipping verification due to non existing output file: ").Append(in_filename), MessageTypeWarning);
+				log->Write(String("\tSkipping verification due to non existing output file: ").Append(inFile), MessageTypeWarning);
 
 				trackPosition = trackToConvert.length;
 
@@ -205,13 +204,13 @@ Int freac::ConvertWorker::Convert()
 		 */
 		if (conversionStep == ConversionStepVerify)
 		{
-			DecoderComponent	*decoder = boca.CreateDecoderForStream(in_filename);
+			DecoderComponent	*decoder = boca.CreateDecoderForStream(inFile);
 
 			if (decoder != NIL)
 			{
 				Track	 outTrack;
 
-				decoder->GetStreamInfo(in_filename, outTrack);
+				decoder->GetStreamInfo(inFile, outTrack);
 
 				boca.DeleteComponent(decoder);
 
@@ -222,10 +221,10 @@ Int freac::ConvertWorker::Convert()
 				{
 					onReportWarning.Emit(i18n->TranslateString(String("Skipped verification due to format mismatch: %1\n\n")
 										  .Append("Original format: %2 Hz, %3 bit, %4 channels\n")
-										  .Append("Output format: %5 Hz, %6 bit, %7 channels"), "Messages").Replace("%1", File(in_filename).GetFileName()).Replace("%2", String::FromInt(format.rate)).Replace("%3", String::FromInt(format.bits)).Replace("%4", String::FromInt(format.channels))
-																								  .Replace("%5", String::FromInt(outFormat.rate)).Replace("%6", String::FromInt(outFormat.bits)).Replace("%7", String::FromInt(outFormat.channels)));
+										  .Append("Output format: %5 Hz, %6 bit, %7 channels"), "Messages").Replace("%1", inFile.GetFileName()).Replace("%2", String::FromInt(format.rate)).Replace("%3", String::FromInt(format.bits)).Replace("%4", String::FromInt(format.channels))
+																						       .Replace("%5", String::FromInt(outFormat.rate)).Replace("%6", String::FromInt(outFormat.bits)).Replace("%7", String::FromInt(outFormat.channels)));
 
-					log->Write(String("\tSkipping verification due to format mismatch: ").Append(in_filename), MessageTypeWarning);
+					log->Write(String("\tSkipping verification due to format mismatch: ").Append(inFile), MessageTypeWarning);
 
 					trackPosition = trackToConvert.length;
 
@@ -246,7 +245,7 @@ Int freac::ConvertWorker::Convert()
 		 */
 		Decoder	*decoder = new Decoder(configuration);
 
-		if (!decoder->Create(in_filename, trackToConvert))
+		if (!decoder->Create(inFile, trackToConvert))
 		{
 			onReportError.Emit(decoder->GetErrorString());
 
@@ -292,7 +291,7 @@ Int freac::ConvertWorker::Convert()
 		 */
 		Encoder	*encoder = new Encoder(encoderConfig);
 
-		if (conversionStep != ConversionStepVerify && !encoder->Create(activeEncoderID, out_filename, trackToEncode))
+		if (conversionStep != ConversionStepVerify && !encoder->Create(activeEncoderID, outFile, trackToEncode))
 		{
 			onReportError.Emit(encoder->GetErrorString());
 
@@ -301,7 +300,7 @@ Int freac::ConvertWorker::Convert()
 			delete processor;
 			delete encoder;
 
-			File(out_filename).Delete();
+			outFile.Delete();
 
 			BoCA::Config::Free(encoderConfig);
 
@@ -322,22 +321,22 @@ Int freac::ConvertWorker::Convert()
 		{
 			default:
 			case ConversionStepOnTheFly:
-				log->Write(String("\tConverting from: ").Append(in_filename));
-				log->Write(String("\t           to:   ").Append(out_filename));
+				log->Write(String("\tConverting from: ").Append(inFile));
+				log->Write(String("\t           to:   ").Append(outFile));
 
 				break;
 			case ConversionStepDecode:
-				log->Write(String("\tDecoding from: ").Append(in_filename));
-				log->Write(String("\t         to:   ").Append(out_filename));
+				log->Write(String("\tDecoding from: ").Append(inFile));
+				log->Write(String("\t         to:   ").Append(outFile));
 
 				break;
 			case ConversionStepEncode:
-				log->Write(String("\tEncoding from: ").Append(in_filename));
-				log->Write(String("\t         to:   ").Append(out_filename));
+				log->Write(String("\tEncoding from: ").Append(inFile));
+				log->Write(String("\t         to:   ").Append(outFile));
 
 				break;
 			case ConversionStepVerify:
-				log->Write(String("\tVerifying: ").Append(in_filename));
+				log->Write(String("\tVerifying: ").Append(inFile));
 
 				break;
 		}
@@ -350,13 +349,13 @@ Int freac::ConvertWorker::Convert()
 		 */
 		if (!cancel && verify && verifier->Verify())
 		{
-			log->Write(String("\tSuccessfully verified input file: ").Append(in_filename));
+			log->Write(String("\tSuccessfully verified input file: ").Append(inFile));
 		}
 		else if (!cancel && verify)
 		{
-			onReportError.Emit(i18n->TranslateString("Failed to verify input file: %1", "Messages").Replace("%1", in_filename.Contains("://") ? in_filename : File(in_filename).GetFileName()));
+			onReportError.Emit(i18n->TranslateString("Failed to verify input file: %1", "Messages").Replace("%1", String(inFile).Contains("://") ? String(inFile) : inFile.GetFileName()));
 
-			log->Write(String("\tFailed to verify input file: ").Append(in_filename), MessageTypeError);
+			log->Write(String("\tFailed to verify input file: ").Append(inFile), MessageTypeError);
 		}
 
 		/* Get MD5 checksums if we are to verify the output.
@@ -371,26 +370,26 @@ Int freac::ConvertWorker::Convert()
 		{
 			default:
 			case ConversionStepOnTheFly:
-				if (cancel) log->Write(String("\tCancelled converting: ").Append(in_filename), MessageTypeWarning);
-				else	    log->Write(String("\tFinished converting: ").Append(in_filename));
+				if (cancel) log->Write(String("\tCancelled converting: ").Append(inFile), MessageTypeWarning);
+				else	    log->Write(String("\tFinished converting: ").Append(inFile));
 
 				break;
 			case ConversionStepDecode:
-				if (cancel) log->Write(String("\tCancelled decoding: ").Append(in_filename), MessageTypeWarning);
-				else	    log->Write(String("\tFinished decoding: ").Append(in_filename));
+				if (cancel) log->Write(String("\tCancelled decoding: ").Append(inFile), MessageTypeWarning);
+				else	    log->Write(String("\tFinished decoding: ").Append(inFile));
 
 				break;
 			case ConversionStepEncode:
-				if (cancel) log->Write(String("\tCancelled encoding: ").Append(in_filename), MessageTypeWarning);
-				else	    log->Write(String("\tFinished encoding: ").Append(in_filename));
+				if (cancel) log->Write(String("\tCancelled encoding: ").Append(inFile), MessageTypeWarning);
+				else	    log->Write(String("\tFinished encoding: ").Append(inFile));
 
 				break;
 			case ConversionStepVerify:
-				if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Messages").Replace("%1", File(in_filename).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
+				if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Messages").Replace("%1", inFile.GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
 
-				if	(cancel)			   log->Write(String("\tCancelled verifying output file: ").Append(in_filename), MessageTypeWarning);
-				else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying output file: ").Append(in_filename), MessageTypeError);
-				else					   log->Write(String("\tSuccessfully verified output file: ").Append(in_filename));
+				if	(cancel)			   log->Write(String("\tCancelled verifying output file: ").Append(inFile), MessageTypeWarning);
+				else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying output file: ").Append(inFile), MessageTypeError);
+				else					   log->Write(String("\tSuccessfully verified output file: ").Append(inFile));
 
 				break;
 		}
@@ -416,34 +415,34 @@ Int freac::ConvertWorker::Convert()
 
 		/* Delete output file if it doesn't look sane.
 		 */
-		if (File(out_filename).GetFileSize() <= 0 || cancel) File(out_filename).Delete();
+		if (outFile.GetFileSize() <= 0 || cancel) outFile.Delete();
 
 		/* Delete intermediate file in non-on-the-fly mode.
 		 */
 		if (conversionStep == ConversionStepEncode)
 		{
-			if (!keepWaveFiles || cancel) File(in_filename).Delete();
+			if (!keepWaveFiles || cancel) inFile.Delete();
 
-			if (in_filename.EndsWith(".temp.wav")) in_filename[in_filename.Length() - 9] = 0;
+			if (String(inFile).EndsWith(".temp.wav")) inFile = String(inFile).Head(String(inFile).Length() - 9);
 		}
 
 		/* Move output file if temporary.
 		 */
-		if (out_filename.ToLower() == String(in_filename.ToLower()).Append(".temp") && File(out_filename).Exists())
+		if (String(outFile).ToLower() == String(inFile).ToLower().Append(".temp") && outFile.Exists())
 		{
-			if (!writeToInputDirectory || allowOverwriteSource || Config::Get()->deleteAfterEncoding || !File(in_filename).Exists())
+			if (!writeToInputDirectory || allowOverwriteSource || Config::Get()->deleteAfterEncoding || !inFile.Exists())
 			{
-				File(in_filename).Delete();
-				File(out_filename).Move(in_filename);
+				inFile.Delete();
+				outFile.Move(inFile);
 
-				out_filename = in_filename;
+				outFile = inFile;
 			}
 			else
 			{
-				File(String(in_filename).Append(".new")).Delete();
-				File(out_filename).Move(String(in_filename).Append(".new"));
+				File(String(inFile).Append(".new")).Delete();
+				outFile.Move(String(inFile).Append(".new"));
 
-				out_filename = String(in_filename).Append(".new");
+				outFile = String(inFile).Append(".new");
 			}
 		}
 
