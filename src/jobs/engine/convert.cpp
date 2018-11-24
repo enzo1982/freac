@@ -170,7 +170,7 @@ Error freac::JobConvert::Precheck()
 		{
 			track.outfile = Utilities::GetOutputFileName(track);
 
-			UnsignedInt64	 trackCRC = track.outfile.ComputeCRC64();
+			UnsignedInt64	 trackCRC = String(track.outfile).ToLower().ComputeCRC64();
 
 			if (newTrackCRCs.Get(trackCRC) != NIL || (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory)))
 			{
@@ -183,12 +183,13 @@ Error freac::JobConvert::Precheck()
 
 				for (Int i = 2; i >= 2; i++)
 				{
-					String	 result = String(name).Append(" [").Append(String::FromInt(i)).Append("]").Append(extension);
+					String		 result	   = String(name).Append(" [").Append(String::FromInt(i)).Append("]").Append(extension);
+					UnsignedInt64	 resultCRC = String(result).ToLower().ComputeCRC64();
 
-					if (newTrackCRCs.Get(result.ComputeCRC64()) == NIL && !File(result).Exists())
+					if (newTrackCRCs.Get(resultCRC) == NIL && !File(result).Exists())
 					{
 						track.outfile = result;
-						trackCRC      = result.ComputeCRC64();
+						trackCRC      = resultCRC;
 
 						break;
 					}

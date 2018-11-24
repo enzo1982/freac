@@ -430,19 +430,21 @@ Int freac::ConvertWorker::Convert()
 		 */
 		if (String(outFile).ToLower() == String(inFile).ToLower().Append(".temp") && outFile.Exists())
 		{
-			if (!writeToInputDirectory || allowOverwriteSource || Config::Get()->deleteAfterEncoding || !inFile.Exists())
-			{
-				inFile.Delete();
-				outFile.Move(inFile);
+			File	 targetOutFile = String(outFile).Head(String(outFile).Length() - 5);
 
-				outFile = inFile;
+			if (!writeToInputDirectory || allowOverwriteSource || Config::Get()->deleteAfterEncoding || !targetOutFile.Exists())
+			{
+				targetOutFile.Delete();
+				outFile.Move(targetOutFile);
+
+				outFile = targetOutFile;
 			}
 			else
 			{
-				File(String(inFile).Append(".new")).Delete();
-				outFile.Move(String(inFile).Append(".new"));
+				File(String(targetOutFile).Append(".new")).Delete();
+				outFile.Move(String(targetOutFile).Append(".new"));
 
-				outFile = String(inFile).Append(".new");
+				outFile = String(targetOutFile).Append(".new");
 			}
 		}
 

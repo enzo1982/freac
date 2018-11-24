@@ -45,6 +45,8 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 
 	/* Create output file.
 	 */
+	File(fileName).Delete();
+
 	stream = new OutStream(STREAM_FILE, BoCA::Utilities::CreateDirectoryForFile(fileName), OS_REPLACE);
 	stream->SetPackageSize(32768 * sourceFormat.channels * (sourceFormat.bits / 8));
 
