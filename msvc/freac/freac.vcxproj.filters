@@ -496,4 +496,7 @@
       <Filter>Ressourcendateien</Filter>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="smooth.natvis" />
+  </ItemGroup>
 </Project>
