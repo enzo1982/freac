@@ -42,6 +42,8 @@ fre:ac verwendet die CDRip-Bibliothek zum CD-Rippen unter Windows.
 fre:ac verwendet die cdio-Bibliothek zum CD-Rippen unter macOS, Linux, Solaris, FreeBSD und NetBSD.
 fre:ac verwendet die cdparanoia-Bibliothek zum CD-Rippen unter Linux, FreeBSD und OpenBSD.
 
+fre:ac verwendet Audiodateien von Little Robot Sound Factory, lizenziert unter der CC BY 3.0 Lizenz.
+
 Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 
 Installation
@@ -70,7 +72,7 @@ Voraussetzungen
 			- OpenBSD (getestet unter OpenBSD 5.3)
 			- Solaris (getestet unter Solaris 11)
 			- GNU Hurd (getestet unter Debian Sid)
-			- Haiku (getestet unter Haiku x86 GCC 5 Nightly)
+			- Haiku (getestet unter Haiku R1 Beta 1)
 
 		Minimale Hardwarevoraussetzungen:
 			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 oder ARMv5 Prozessor
@@ -124,7 +126,7 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.1 Alpha (September 2018)
+	Version 1.1 Alpha (November 2018)
 
 		- Auf macOS, Linux und BSD-Betriebssysteme portiert
 		- Framework für Erweiterungskomponenten implementiert, um fre:ac zu modularisieren
@@ -143,6 +145,7 @@ Geschichte
 		- Unterstützung für automatische Sampleformatkonvertierung je nach Anforderungen des Kodierers hinzugefügt
 		- Unterstützung für die Ausgabe von Tracks mit verschiedenen Sampleformaten in eine einzige Ausgabedatei hinzugefügt
 		- Einfachen Tag-Editor hinzugefügt
+		- Optionen zum Abspielen von Benachrichtigungstönen bei beendeter Konvertierung hinzugefügt
 		- Monkey's Audiokodierer/-dekodierer hinzugefügt
 		- Speex Sprachkodierer/-dekodierer hinzugefügt
 		- Opus Audiokodierer/-dekodierer hinzugefügt

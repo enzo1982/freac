@@ -686,8 +686,9 @@
       </section>
 
       <section name="Extensions">
-	<entry id="15000" string="Protocol Viewer"/>
-	<entry id="15001" string="YouTube Video Downloader"/>
+	<entry id="15000" string="Conversion Notifier"/>
+	<entry id="15001" string="Protocol Viewer"/>
+	<entry id="15002" string="YouTube Video Downloader"/>
       </section>
     </section>
 
@@ -1302,6 +1303,21 @@
 	<section name="Configuration">
 	  <entry id="104100" string="User interface"/>
 	  <entry id="104101" string="Show Protocols tab in main window"/>
+	</section>
+      </section>
+
+      <section name="Notifier">
+	<entry id="105000" string="Conversion process finished!"/>
+
+	<section name="Configuration">
+	  <entry id="105100" string="Notifications"/>
+	  <entry id="105101" string="Notify on finished conversion"/>
+	  <entry id="105102" string="Play sound"/>
+	  <entry id="105103" string="Display message"/>
+	  <entry id="105104" string="Select"/>
+	  <entry id="105105" string="Only for conversions running longer than"/>
+	  <entry id="105106" string="second(s)"/>
+	  <entry id="105107" string="minute(s)"/>
 	</section>
       </section>
     </section>

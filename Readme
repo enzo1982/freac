@@ -42,6 +42,8 @@ fre:ac uses the CDRip library for audio ripping on Windows.
 fre:ac uses the cdio library for audio ripping on macOS, Linux, Solaris, FreeBSD and NetBSD.
 fre:ac uses the cdparanoia library for audio ripping on Linux, FreeBSD and OpenBSD.
 
+fre:ac uses sound files by Little Robot Sound Factory licensed under the CC BY 3.0 license.
+
 Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 
 Installation
@@ -70,7 +72,7 @@ Requirements
 			- OpenBSD (tested on OpenBSD 5.3)
 			- Solaris (tested on Solaris 11)
 			- GNU Hurd (tested on Debian Sid)
-			- Haiku (tested on Haiku x86 GCC 5 Nightly)
+			- Haiku (tested on Haiku R1 beta 1)
 
 		Minimum hardware requirements:
 			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 or ARMv5 CPU
@@ -124,7 +126,7 @@ Known problems
 History
 -------
 
-	Version 1.1 Alpha (September 2018)
+	Version 1.1 Alpha (November 2018)
 
 		- ported to macOS, Linux and BSD operating systems
 		- implemented an extension component framework to modularize fre:ac
@@ -143,6 +145,7 @@ History
 		- added support for automatic sample format conversions to match encoder requirements
 		- added support for joining tracks with different sample formats into a single output file
 		- added a simple tag editor
+		- added options for playing notification sounds on finished conversions
 		- added Monkey's Audio encoder/decoder
 		- added Speex speech encoder/decoder
 		- added Opus audio encoder/decoder
