@@ -31,7 +31,7 @@ namespace freac
 		protected:
 			const BoCA::Config			*configuration;
 
-			Void					 SetError(const String &, const String & = NIL, const String & = NIL);
+			Void					 SetError(const String &, const String & = NIL, const String & = NIL, const String & = NIL);
 		public:
 			static Void				 FreeLockObjects();
 

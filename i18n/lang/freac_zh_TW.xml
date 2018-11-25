@@ -529,8 +529,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">已停用 CDDB 支援！請到設定&#10;啟用本機或遠端 CDDB 支援。</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">已停用遠端 CDDB 支援！&#10;請到設定啟用遠端 CDDB 支援。</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows 拒絕存取 CD-ROM 光碟機。&#10;&#10;請聯繫您的系統管理員以獲得&#10;存取 CD-ROM 光碟機的權限。</entry>
-      <entry id="7014" string="Cannot access input file: %1">無法存取輸入檔案: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">無法建立輸出檔案: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">無法存取輸入檔案: %1&#10;&#10;檔案: %1&#10;資料夾: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">無法建立輸出檔案: %1&#10;&#10;檔案: %1&#10;資料夾: %2</entry>
       <entry id="7016" string="File not found">找不到檔案</entry>
       <entry id="7017" string="Unknown file type">未知的檔案類型</entry>
       <entry id="7018" string="Unsupported audio format">不支援的音訊格式</entry>

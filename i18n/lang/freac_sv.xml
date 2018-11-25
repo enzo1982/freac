@@ -511,8 +511,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-funktionen är inaktiverad! Aktivera stöd&#10;för lokal eller extern CDDB i inställningarna.</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Stöd för extern CDDB är inaktiverat! Aktivera&#10;stöd för extern CDDB i inställningarna.</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Åtkomst till cd-romenheter nekades av Windows.&#10;&#10;Kontakta din systemadministratör för att&#10;få åtkomst till cd-romenheten.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Det gick inte att komma åt källfilen: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Det gick inte att skapa målfilen: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att komma åt källfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att skapa målfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>
       <entry id="7016" string="File not found">Det gick inte att hitta filen</entry>
       <entry id="7017" string="Unknown file type">Okänd filtyp</entry>
       <entry id="7018" string="Unsupported audio format">Ljudformatet stöds inte</entry>

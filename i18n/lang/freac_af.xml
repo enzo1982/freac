@@ -392,8 +392,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-ondersteuning is buite werking! Aktiveer&#10;asb. plaaslike of afstands-CDDB-ondersteuning&#10;in die konfigurasiedialoog.</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Afstands-CDDB-ondersteuning is afgeskakel! Stel dit&#10;asseblief in werking op die kofigurasieskerm.</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows het toegang tot CD-ROM-aandrywers geweier.&#10;&#10;Kontak asseblief u stelseladministrateur om toegang&#10;tot die CD-ROM-aandrywer te verkry.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Kan nie toegang tot invoerlêer kry nie: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Kan nie uitsetlêer skep nie: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Kan nie toegang tot invoerlêer kry nie: %1&#10;&#10;Lêer: %1&#10;Gids: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Kan nie uitsetlêer skep nie: %1&#10;&#10;Lêer: %1&#10;Gids: %2</entry>
       <entry id="7016" string="File not found">Lêer nie gevind nie</entry>
       <entry id="7017" string="Unknown file type">Onbekende lêertipe</entry>
       <entry id="7018" string="Unsupported audio format">Nie-ondersteunde oudioformaat</entry>

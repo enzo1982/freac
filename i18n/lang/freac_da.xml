@@ -395,8 +395,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB support er slået fra! Venligst slå lokal eller ekstern CDDB support til i indstillinger dialogen.</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Ekstern CDDB support er slået fra! Venligst slå det det til igen under ekstern CDDB support under indstillinger.</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Adgang til CD-ROM drev blev afslået af Windows.&#10;&#10;Kontak din system administrator for at få adgang til CD-ROM drevene.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Kan ikke få adgang til den indlæste fil: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Kan ikke oprette udgående fil: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Kan ikke få adgang til den indlæste fil: %1&#10;&#10;Filer: %1&#10;Mappe: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Kan ikke oprette udgående fil: %1&#10;&#10;Filer: %1&#10;Mappe: %2</entry>
       <entry id="7016" string="File not found">Fil ikke fundet</entry>
       <entry id="7017" string="Unknown file type">Ukendt fil type</entry>
       <entry id="7018" string="Unsupported audio format">Ikke understøttet lyd format</entry>

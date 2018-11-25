@@ -396,8 +396,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB sostengua ezgaituta dago! Mesedez gaitu tokiko&#10;edo hurruneko CDDB sostengua itxurapen elkarrizketan.</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Hurreneko CDDB sostengua ezgaituta! Mesedez gaitu&#10;hurruneko CDDB sostengua itxurapen elkarrizketan.</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows-ek ukatu egin du CD-ROM gidagailuetarako sarbidea.&#10;&#10;Mesedez jarri harremanetan zure sistemaren administratzailearekin&#10;CD-ROM gidagailura sarbide zuzena izatea bermatzeko.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Ez dago sarbiderik sarrera agirira: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Ezin da irteera agiria sortu: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ez dago sarbiderik sarrera agirira: %1&#10;&#10;Agiria: %1&#10;Agiritegiak: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ezin da irteera agiria sortu: %1&#10;&#10;Agiria: %1&#10;Agiritegiak: %2</entry>
       <entry id="7016" string="File not found">Agiria ez da aurkitu</entry>
       <entry id="7017" string="Unknown file type">Agiri mota ezezaguna</entry>
       <entry id="7018" string="Unsupported audio format">Audio heuskarri sostengu gabea</entry>

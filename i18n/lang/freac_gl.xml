@@ -395,8 +395,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">O soporte CDDB non está activado! Por favor active&#10;soporte CDDB local ou remoto na fiestra de configuración.</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">O soporte para a base de datos CDDB remota non está activado!&#10;Por favor active a base de datos CDDB remota na fiestra de configuración.</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">O acceso á unidade de CD-ROM foi denegado por Windows.&#10;&#10;Por favor contacte co seu administrador de sistemas para&#10;poder acceder á unidade de CD-ROM.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Non é posíbel acceder ao arquivo: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Non é posíbel crear o arquivo: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Non é posíbel acceder ao arquivo: %1&#10;&#10;Arquivo: %1&#10;Directorio: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Non é posíbel crear o arquivo: %1&#10;&#10;Arquivo: %1&#10;Directorio: %2</entry>
       <entry id="7016" string="File not found">Non se atopa o arquivo</entry>
       <entry id="7017" string="Unknown file type">Tipo de arquivo descoñecido</entry>
       <entry id="7018" string="Unsupported audio format">Formato de audio non soportado</entry>

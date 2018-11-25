@@ -396,8 +396,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-tuki ei ole käytössä! Ole hyvä ja&#10;ota paikallisten tai&#10;etäinen CDDB-tuki käyttöön asetuksista.</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Etäinen CDDB-tuki ei ole käytössä! Ole hyvä ja&#10;salli etäinen CDDB-tuki asetuksista.</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Pääsy CD-ROM-ajureille on Windowsista evätty.&#10;&#10;Ole hyvä ja ota yhteys järjestelmänvalvojaasi&#10;saadaksesi pääsyn CD-ROM-ajuriisi.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Syötetiedostoon ei päästä: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Ei pystytä tekemään tulostetiedostoa: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Syötetiedostoon ei päästä: %1&#10;&#10;Tiedosto: %1&#10;Kansio: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ei pystytä tekemään tulostetiedostoa: %1&#10;&#10;Tiedosto: %1&#10;Kansio: %2</entry>
       <entry id="7016" string="File not found">Tiedostoa ei löydy</entry>
       <entry id="7017" string="Unknown file type">Tuntematon tiedostotyyppi</entry>
       <entry id="7018" string="Unsupported audio format">Äänimuotoa ei tueta</entry>

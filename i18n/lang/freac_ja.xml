@@ -590,8 +590,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB サポートが無効になっています。 設定ダイアログで&#10;ローカルかリモート CDDB サポートを有効にしてください。</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">リモート CDDB サポートが無効になっています。&#10;設定ダイアログで有効にしてください。</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">CD-ROM ドライブへのアクセスが Windows により拒否されました。&#10;&#10;システム管理者に連絡して CD-ROM ドライブへの&#10;アクセス権限をもらってください。</entry>
-      <entry id="7014" string="Cannot access input file: %1">入力ファイルにアクセス不能： %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">出力ファイルを作成不能： %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">入力ファイルにアクセス不能： %1&#10;&#10;ファイル： %1&#10;ディレクトリ： %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">出力ファイルを作成不能： %1&#10;&#10;ファイル： %1&#10;ディレクトリ： %2</entry>
       <entry id="7016" string="File not found">ファイルがありません</entry>
       <entry id="7017" string="Unknown file type">不明なファイル形式</entry>
       <entry id="7018" string="Unsupported audio format">未対応のオーディオ形式</entry>

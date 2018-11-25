@@ -29,7 +29,7 @@ freac::ErrorDialog::ErrorDialog(const Array<String> &errors)
 
 	Rect	 workArea = S::System::Screen::GetActiveScreenWorkArea();
 
-	mainWnd			= new Window(i18n->TranslateString("Errors"), workArea.GetPosition() + Point((workArea.GetSize().cx - 450) / 2, (workArea.GetSize().cy - 400) / 2), Size(450, 400));
+	mainWnd			= new Window(i18n->TranslateString("Errors"), workArea.GetPosition() + Point((workArea.GetSize().cx - 480) / 2, (workArea.GetSize().cy - 400) / 2), Size(480, 400));
 	mainWnd->SetMinimumSize(Size(330, 220));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 	mainWnd->GetMainLayer()->onChangeSize.Connect(&ErrorDialog::OnChangeSize, this);
@@ -43,12 +43,12 @@ freac::ErrorDialog::ErrorDialog(const Array<String> &errors)
 
 	text_errors	= new Text(i18n->AddColon(i18n->TranslateString("%1 errors while processing job").Replace("%1", String::FromInt(errors.Length()))), Point(7, 5));
 
-	list_errors	= new ListBox(Point(7, 24), Size(378, 180));
+	list_errors	= new ListBox(Point(7, 24), Size(378, 157));
 	list_errors->onSelectEntry.Connect(&ErrorDialog::OnSelectError, this);
 
 	foreach (const String &error, errors) list_errors->AddEntry(error);
 
-	edit_details	= new MultiEdit(NIL, Point(7, 104), Size(378, 57));
+	edit_details	= new MultiEdit(NIL, Point(7, 127), Size(378, 80));
 	edit_details->SetOrientation(OR_LOWERLEFT);
 	edit_details->Deactivate();
 
@@ -104,7 +104,7 @@ Void freac::ErrorDialog::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = Rect(mainWnd->GetMainLayer()->GetPosition(), mainWnd->GetMainLayer()->GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	list_errors->SetSize(clientSize - Size(14, 136));
+	list_errors->SetSize(clientSize - Size(14, 159));
 
 	edit_details->SetWidth(clientSize.cx - 14);
 	text_details->SetPosition(edit_details->GetPosition() + Point((edit_details->GetWidth() - text_details->GetUnscaledTextWidth()) / 2, (-(edit_details->GetHeight() - text_details->GetUnscaledTextHeight())) / 2));

@@ -396,8 +396,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">El suport CDDB no està activat! Per favor, active un&#10;suport CDDB local o remot en la finestra de configuració.</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">El suport per a la base de dades CDDB remota no està activat!&#10;Per favor, active la base de dades CDDB remota en la finestra de configuració.</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">L'accés a la unitat de CD-ROM va ser denegat per Windows.&#10;&#10;Per favor, contacte amb el seu administrador de sistemes per a&#10;poder accedir a la unitat de CD-ROM.</entry>
-      <entry id="7014" string="Cannot access input file: %1">No es pot accedir a l'arxiu d'entrada: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">No es pot crear l'arxiu d'eixida: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">No es pot accedir a l'arxiu d'entrada: %1&#10;&#10;Arxiu: %1&#10;Carpeta: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">No es pot crear l'arxiu d'eixida: %1&#10;&#10;Arxiu: %1&#10;Carpeta: %2</entry>
       <entry id="7016" string="File not found">Arxiu no trobat</entry>
       <entry id="7017" string="Unknown file type">Tipus d'arxiu desconegut</entry>
       <entry id="7018" string="Unsupported audio format">Format d'àudio no suportat</entry>

@@ -546,8 +546,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB podrška je onemogućena! Molimo omogućite&#10;lokalnu ili udaljenu CDDB podršku u postavkama.</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Udaljena CDDB podrša onemogućena! Molimo&#10;omogućite CDDB podršku u postavkama podešenja.</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Pristup CD ROM uređaju odbijen od strane Windowsa.&#10;&#10;Molimo obratite se administratoru sistema&#10;da Vam odobri pristup CD ROM uređaju.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Ne mogu da pristupim ulaznom fajlu: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Ne mogu da kreiram izlazni fajl: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ne mogu da pristupim ulaznom fajlu: %1&#10;&#10;Fajl: %1&#10;Folder: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ne mogu da kreiram izlazni fajl: %1&#10;&#10;Fajl: %1&#10;Folder: %2</entry>
       <entry id="7016" string="File not found">Fajl nije nađen</entry>
       <entry id="7017" string="Unknown file type">Nepoznata vrsta fajla</entry>
       <entry id="7018" string="Unsupported audio format">Ovaj audio format nije podržan</entry>

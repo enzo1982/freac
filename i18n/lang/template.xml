@@ -598,8 +598,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."/>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog."/>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive."/>
-      <entry id="7014" string="Cannot access input file: %1"/>
-      <entry id="7015" string="Cannot create output file: %1"/>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2"/>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2"/>
       <entry id="7016" string="File not found"/>
       <entry id="7017" string="Unknown file type"/>
       <entry id="7018" string="Unsupported audio format"/>

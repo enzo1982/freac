@@ -414,8 +414,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">L'accessu à a CDDB lucale o alluntanata ùn hè micca attivu !&#10;Ci vole à attivà st'accessu in u dialogu di cunfigurazione.</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">L'accessu à a CDDB alluntanata ùn hè micca attivu !&#10;Ci vole à attivà st'accessu in u dialogu di cunfigurazione.</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows hà ricusatu l'accessu à i lettori CD-ROM.&#10;&#10;Ci vole à cuntattà l'amministratore di u vostru sistema&#10;per dumandallu u dirittu d'accessu à u lettore CD-ROM.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Ùn pò micca accede à u schedariu d'entrata : %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Ùn pò micca accede à u schedariu d'esciuta : %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn pò micca accede à u schedariu d'entrata : %1&#10;&#10;Schedariu : %1&#10;Cartulare : %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn pò micca accede à u schedariu d'esciuta : %1&#10;&#10;Schedariu : %1&#10;Cartulare : %2</entry>
       <entry id="7016" string="File not found">U schedariu ùn esiste micca</entry>
       <entry id="7017" string="Unknown file type">Tipu di schedariu scunnisciutu</entry>
       <entry id="7018" string="Unsupported audio format">Forma audio micca accettatu</entry>

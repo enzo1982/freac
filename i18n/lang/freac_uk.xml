@@ -395,8 +395,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB підтримка відключена! Будь-ласка ввімкніть локальну&#10;або віддалену підтримку CDDB у налаштуваннях</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Віддалена підтримка CDDB відключена! Будь-ласка ввімкніть&#10;віддалену підтримку CDDB у налаштуваннях</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Доступ до приводу CD-ROM був відхилений Windows.&#10;&#10;Будь-ласка зв'яжіться з вашим системним адміністратором щоб&#10;вам був наданий доступ до приводу CD-ROM</entry>
-      <entry id="7014" string="Cannot access input file: %1">Немає доступу до вхідного файлу: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Неможливо створити вихідний файл: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Немає доступу до вхідного файлу: %1&#10;&#10;Файл: %1&#10;Тека: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Неможливо створити вихідний файл: %1&#10;&#10;Файл: %1&#10;Тека: %2</entry>
       <entry id="7016" string="File not found">Файли не знайдено</entry>
       <entry id="7017" string="Unknown file type">Невідомий тип файлу</entry>
       <entry id="7018" string="Unsupported audio format">Даний аудіо-формат не підтримується</entry>

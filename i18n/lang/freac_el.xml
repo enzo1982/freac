@@ -391,8 +391,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Υποστήριξη CDDB απενεργοποιημένη! Παρακαλώ&#10;ενεργοποιήστε τοπική ή απομακρυσμένη βάση δεδομένων&#10;CDDB στις ρυθμίσεις.</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Απομακρυσμένη CDDB απενεργοποιημένη! Παρακαλώ ενεργοποιήστε&#10;την απομακρυσμένη CDDB στις ρυθμίσεις.</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Πρόσβαση στις συσκευές CD αποκλείστηκε από τα Windows&#10;&#10;Παρακαλώ επικοινωνήστε με τον διαχειριστή του συστήματός&#10;σας.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Αδύνατη πρόσβαση στο αρχείο εισόδου: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Αδύνατη η δημιουργία του αρχέιου εξόδου: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Αδύνατη πρόσβαση στο αρχείο εισόδου: %1&#10;&#10;Αρχείο: %1&#10;Φάκελος: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Αδύνατη η δημιουργία του αρχέιου εξόδου: %1&#10;&#10;Αρχείο: %1&#10;Φάκελος: %2</entry>
     </section>
 
     <section name="Dialogs">

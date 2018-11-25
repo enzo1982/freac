@@ -395,8 +395,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">A CDDB támogatás inaktív! Engedélyezd a&#10;helyi vagy távoli CDDB támogatást a konfig. menüben.</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">A távoli CDDB támogatás inaktív! Engedélyezd&#10;a távoli CDDB támogatást a konfig. menüben.</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">A CD-ROM meghajtók elérését blokkolta a Windows.&#10;&#10;Vedd fel a kapcsolatot a rendszer adminisztrátorral&#10;a CD-ROM-hoz való jogosultság megadásáért.</entry>
-      <entry id="7014" string="Cannot access input file: %1">A forrás fájl nem elérhető: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">A kimeneti fájl nem jött létre: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">A forrás fájl nem elérhető: %1&#10;&#10;Fájl: %1&#10;Könyvtár: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">A kimeneti fájl nem jött létre: %1&#10;&#10;Fájl: %1&#10;Könyvtár: %2</entry>
       <entry id="7016" string="File not found">A fájl nem található</entry>
       <entry id="7017" string="Unknown file type">Ismeretlen fájltípus</entry>
       <entry id="7018" string="Unsupported audio format">Nem támogatott audio formátum</entry>

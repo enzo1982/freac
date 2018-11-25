@@ -440,8 +440,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Podpora CDDB je vypnutá! Prosím, povolte lokální&#10;nebo vzdálenou CDDB podporu v dialogu Volby.</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Vzdálená CDDB podpora je vypnutá! Prosím povolte&#10;vzdálenou CDDB podporu v dialogu Volby.</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Přístup k CD-ROM mechanice byl Windows zamítnut.&#10;&#10;Prosím, kontaktujte vašeho systémového administrátora pro&#10;získaní přístupu k CD-ROM mechanice.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Nejde přistupovat k souboru: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Nejde vytvořit soubor: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Nejde přistupovat k souboru: %1&#10;&#10;Soubor: %1&#10;Složka: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Nejde vytvořit soubor: %1&#10;&#10;Soubor: %1&#10;Složka: %2</entry>
       <entry id="7016" string="File not found">Soubor nebyl nalezen</entry>
       <entry id="7017" string="Unknown file type">Neznámý typ souboru</entry>
       <entry id="7018" string="Unsupported audio format">Nepodporovaný audio formát</entry>

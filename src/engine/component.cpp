@@ -29,12 +29,14 @@ freac::Component::~Component()
 {
 }
 
-Void freac::Component::SetError(const String &message, const String &replace1, const String &replace2)
+Void freac::Component::SetError(const String &message, const String &replace1, const String &replace2, const String &replace3)
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 	errorState  = True;
-	errorString = i18n->TranslateString(message, "Messages").Replace("%1", replace1).Replace("%2", replace2);
+	errorString = i18n->TranslateString(message, "Messages").Replace("%1", replace1)
+								.Replace("%2", replace2)
+								.Replace("%3", replace3);
 }
 
 Bool freac::Component::LockComponent(StreamComponent *component)

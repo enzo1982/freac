@@ -395,8 +395,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB veritabanı aktif değil!&#10;Ayarlardan CDDB veritabanını aktif hale getirin.</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Uzak CDDB kullanımı desteklenmiyor!&#10;Ayarlardan uzak CDDB veritabanını aktif hale getirin.</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows CD-ROM'a erişimi engelliyor.&#10;&#10;Lütfen sistem yöneticinizle temas kurup gerekli ayarlamaları yaptırınız.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Çevrilecek dosyaya erişilemiyor: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Çevrilen dosya oluşturulamıyor: %1</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Çevrilecek dosyaya erişilemiyor: %1&#10;&#10;Dosya: %1&#10;Dizin: %2</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Çevrilen dosya oluşturulamıyor: %1&#10;&#10;Dosya: %1&#10;Dizin: %2</entry>
       <entry id="7016" string="File not found">Dosya bulunamadı</entry>
       <entry id="7017" string="Unknown file type">Bilinmeyen dosya biçimi</entry>
       <entry id="7018" string="Unsupported audio format">Desteklenmeyen ses formatı</entry>

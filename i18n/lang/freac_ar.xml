@@ -393,8 +393,8 @@
       <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">دعم قاعدة بيانات قرص مضغوط معطلة ، الرجاء&#10;تنشيط قاعدة بيانات قرص مضغوط محلية او بعيدة دعم التهيئة في نافدة الحوار</entry>
       <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">الدعم البعيد لقاعدة بيانات قرص مضغوط معطل، الرجاء تنشيط&#10;&#10;تهيئة الدعم البعيد لقاعدة بيانات قرص مضغوط</entry>
       <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">تم رفض الوصول إلى محركات الأقراص المضغوطة من قبل ويندوز.&#10;&#10;الرجاء الإتصال بمسؤول النظام من أجل&#10;الحصول على الحق في الوصول إلى محرك الأقراص المضغوطة.</entry>
-      <entry id="7014" string="Cannot access input file: %1">%1 لا يمكن فتح ملف المدخل</entry>
-      <entry id="7015" string="Cannot create output file: %1">%1 لا يمكن إنشاء ملف الناتج</entry>
+      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">%1 لا يمكن فتح ملف المدخل</entry>
+      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">%1 لا يمكن إنشاء ملف الناتج</entry>
       <entry id="7016" string="File not found">ملف لم يتم العثور عليه</entry>
       <entry id="7017" string="Unknown file type">نوع الملف مجهول</entry>
       <entry id="7018" string="Unsupported audio format">لا يدعم صيغة الصوت</entry>

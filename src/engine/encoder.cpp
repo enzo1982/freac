@@ -52,7 +52,7 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 
 	if (stream->GetLastError() != IO_ERROR_OK)
 	{
-		SetError("Cannot create output file: %1", File(fileName).GetFileName());
+		SetError("Cannot create output file: %1\n\nFile: %1\nPath: %2", File(fileName).GetFileName(), File(fileName).GetFilePath());
 
 		delete stream;
 
@@ -91,7 +91,7 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 
 	if (stream->SetFilter(encoder) == False)
 	{
-		SetError("Cannot set up encoder for output file: %1\n\nError: %2", File(fileName).GetFileName(), encoder->GetErrorString());
+		SetError("Cannot set up encoder for output file: %1\n\nFile: %1\nPath: %2\n\nError: %3", File(fileName).GetFileName(), File(fileName).GetFilePath(), encoder->GetErrorString());
 
 		UnlockComponent(encoder);
 
