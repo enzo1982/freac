@@ -580,24 +580,24 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="10000" string="Decoding">Декодирование</entry>
-	<entry id="10001" string="Enable 24 bit decoding">Разрешить 24 битное декодирование</entry>
+	<entry id="20000" string="Decoding">Декодирование</entry>
+	<entry id="20001" string="Enable 24 bit decoding">Разрешить 24 битное декодирование</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder">Декодер</entry>
-	<entry id="11001" string="Active decoder">Текущий декодер</entry>
-	<entry id="11002" string="auto select">автовыбор</entry>
+	<entry id="21000" string="Decoder">Декодер</entry>
+	<entry id="21001" string="Active decoder">Текущий декодер</entry>
+	<entry id="21002" string="auto select">автовыбор</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information">Информация о названии</entry>
-	<entry id="12001" string="Read tags from referenced files">Читать теги из связанных файлов</entry>
-	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">Предпочитать данные из cu esheet данным из связанных файлов</entry>
-	<entry id="12003" string="Alternative files">Альтернативные файлы</entry>
-	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">Искать сжатые альтернативные файлы если связанные Wave файлы не не могут быть обнаружены</entry>
-	<entry id="12005" string="Error handling">Ошибка обработки</entry>
-	<entry id="12006" string="Ignore errors during cue sheet processing">Игнорировать ошибки при обработке cue sheet</entry>
+	<entry id="22000" string="Title information">Информация о названии</entry>
+	<entry id="22001" string="Read tags from referenced files">Читать теги из связанных файлов</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Предпочитать данные из cu esheet данным из связанных файлов</entry>
+	<entry id="22003" string="Alternative files">Альтернативные файлы</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Искать сжатые альтернативные файлы если связанные Wave файлы не не могут быть обнаружены</entry>
+	<entry id="22005" string="Error handling">Ошибка обработки</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">Игнорировать ошибки при обработке cue sheet</entry>
       </section>
     </section>
 

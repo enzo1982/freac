@@ -666,27 +666,52 @@
       <entry id="9024" string="%1 seconds">%1 Sekunden</entry>
     </section>
 
+    <section name="Components">
+
+      <section name="Decoders">
+	<entry id="10000" string="Cue Sheet Reader">Cuesheet-Leser</entry>
+      </section>
+
+      <section name="Encoders">
+	<entry id="11000" string="meh! - multi encoder hub">meh! - Mehrfachkodierer</entry>
+	<entry id="11001" string="SndFile Output Component">SndFile Ausgabekomponente</entry>
+     </section>
+
+      <section name="DSP">
+	<entry id="12000" string="Channel Converter">Kanalkonvertierer</entry>
+	<entry id="12001" string="Sample Format Converter">Sampleformatkonvertierer</entry>
+	<entry id="12002" string="Sample Rate Converter">Sampleratenkonvertierer</entry>
+	<entry id="12003" string="RNNoise Speech Noise Reduction">RNNoise Rauschreduzierung für Sprache</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band Tempo-/Tonhöhenänderung</entry>
+      </section>
+
+      <section name="Extensions">
+	<entry id="15000" string="Protocol Viewer">Protokollanzeige</entry>
+	<entry id="15001" string="YouTube Video Downloader">YouTube Video-Downloader</entry>
+      </section>
+    </section>
+
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="10000" string="Decoding">Dekodierung</entry>
-	<entry id="10001" string="Enable 24 bit decoding">24-Bit-Dekodierung aktivieren</entry>
+	<entry id="20000" string="Decoding">Dekodierung</entry>
+	<entry id="20001" string="Enable 24 bit decoding">24-Bit-Dekodierung aktivieren</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder">Dekodierer</entry>
-	<entry id="11001" string="Active decoder">Aktiver Dekodierer</entry>
-	<entry id="11002" string="auto select">automatische Auswahl</entry>
+	<entry id="21000" string="Decoder">Dekodierer</entry>
+	<entry id="21001" string="Active decoder">Aktiver Dekodierer</entry>
+	<entry id="21002" string="auto select">automatische Auswahl</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information">Titelinformationen</entry>
-	<entry id="12001" string="Read tags from referenced files">Tags aus referenzierten Dateien lesen</entry>
-	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">Cuesheet-Metadaten gegenüber Tags aus referenzierten Dateien bevorzugen</entry>
-	<entry id="12003" string="Alternative files">Alternative Dateien</entry>
-	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">Suche nach komprimierten Alternativen, wenn referenzierte Wave-Dateien nicht gefunden werden</entry>
-	<entry id="12005" string="Error handling">Fehlerbehandlung</entry>
-	<entry id="12006" string="Ignore errors during cue sheet processing">Fehler bei Cuesheet-Verarbeitung ignorieren</entry>
+	<entry id="22000" string="Title information">Titelinformationen</entry>
+	<entry id="22001" string="Read tags from referenced files">Tags aus referenzierten Dateien lesen</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Cuesheet-Metadaten gegenüber Tags aus referenzierten Dateien bevorzugen</entry>
+	<entry id="22003" string="Alternative files">Alternative Dateien</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Suche nach komprimierten Alternativen, wenn referenzierte Wave-Dateien nicht gefunden werden</entry>
+	<entry id="22005" string="Error handling">Fehlerbehandlung</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">Fehler bei Cuesheet-Verarbeitung ignorieren</entry>
       </section>
     </section>
 

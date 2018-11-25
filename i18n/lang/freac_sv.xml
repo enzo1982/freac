@@ -573,14 +573,14 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="10000" string="Decoding">Avkodning</entry>
-	<entry id="10001" string="Enable 24 bit decoding">Aktivera 24-bitarsavkodning</entry>
+	<entry id="20000" string="Decoding">Avkodning</entry>
+	<entry id="20001" string="Enable 24 bit decoding">Aktivera 24-bitarsavkodning</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder">Avkodare</entry>
-	<entry id="11001" string="Active decoder">Aktiv avkodare</entry>
- 	<entry id="11002" string="auto select">Välj automatiskt</entry>
+	<entry id="21000" string="Decoder">Avkodare</entry>
+	<entry id="21001" string="Active decoder">Aktiv avkodare</entry>
+ 	<entry id="21002" string="auto select">Välj automatiskt</entry>
       </section>
     </section>
 

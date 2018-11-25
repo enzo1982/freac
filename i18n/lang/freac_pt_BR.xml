@@ -617,24 +617,24 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="10000" string="Decoding">Decodificando</entry>
-	<entry id="10001" string="Enable 24 bit decoding">Habilitar decodificação de 24 bits</entry>
+	<entry id="20000" string="Decoding">Decodificando</entry>
+	<entry id="20001" string="Enable 24 bit decoding">Habilitar decodificação de 24 bits</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder">Decodificador</entry>
-	<entry id="11001" string="Active decoder">Decodificador ativo</entry>
-	<entry id="11002" string="auto select">autosseleção</entry>
+	<entry id="21000" string="Decoder">Decodificador</entry>
+	<entry id="21001" string="Active decoder">Decodificador ativo</entry>
+	<entry id="21002" string="auto select">autosseleção</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information">Informação do título</entry>
-	<entry id="12001" string="Read tags from referenced files">Ler etiquetas de arquivos referenciados</entry>
-	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">Preferir metadados da folha de instruções às etiquetas dos arquivos referenciados</entry>
-	<entry id="12003" string="Alternative files">Arquivos alternativos</entry>
-	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">Procure por alternativas compactadas se os arquivos de Wave referenciados não puderem ser localizados</entry>
-	<entry id="12005" string="Error handling">Tratamento de erros</entry>
-	<entry id="12006" string="Ignore errors during cue sheet processing">Ignorar erros durante o processamento da folha de instruções</entry>
+	<entry id="22000" string="Title information">Informação do título</entry>
+	<entry id="22001" string="Read tags from referenced files">Ler etiquetas de arquivos referenciados</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Preferir metadados da folha de instruções às etiquetas dos arquivos referenciados</entry>
+	<entry id="22003" string="Alternative files">Arquivos alternativos</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Procure por alternativas compactadas se os arquivos de Wave referenciados não puderem ser localizados</entry>
+	<entry id="22005" string="Error handling">Tratamento de erros</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">Ignorar erros durante o processamento da folha de instruções</entry>
       </section>
     </section>
 

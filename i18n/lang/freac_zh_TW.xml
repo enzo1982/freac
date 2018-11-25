@@ -591,24 +591,24 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="10000" string="Decoding">解碼</entry>
-	<entry id="10001" string="Enable 24 bit decoding">啟用 24 位元解碼</entry>
+	<entry id="20000" string="Decoding">解碼</entry>
+	<entry id="20001" string="Enable 24 bit decoding">啟用 24 位元解碼</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder">解碼器</entry>
-	<entry id="11001" string="Active decoder">使用中的解碼器</entry>
-	<entry id="11002" string="auto select">自動選擇</entry>
+	<entry id="21000" string="Decoder">解碼器</entry>
+	<entry id="21001" string="Active decoder">使用中的解碼器</entry>
+	<entry id="21002" string="auto select">自動選擇</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information">標題資訊</entry>
-	<entry id="12001" string="Read tags from referenced files">從參照檔案讀取標籤</entry>
-	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">cue 描述檔後設資料優先於參照檔案標籤</entry>
-	<entry id="12003" string="Alternative files">替代檔案</entry>
-	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">若無法找到 Wave 參照檔案，則尋找已壓縮的替代檔案</entry>
-	<entry id="12005" string="Error handling">錯誤處理</entry>
-	<entry id="12006" string="Ignore errors during cue sheet processing">處理 cue 描述檔時，忽略錯誤</entry>
+	<entry id="22000" string="Title information">標題資訊</entry>
+	<entry id="22001" string="Read tags from referenced files">從參照檔案讀取標籤</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">cue 描述檔後設資料優先於參照檔案標籤</entry>
+	<entry id="22003" string="Alternative files">替代檔案</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">若無法找到 Wave 參照檔案，則尋找已壓縮的替代檔案</entry>
+	<entry id="22005" string="Error handling">錯誤處理</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">處理 cue 描述檔時，忽略錯誤</entry>
       </section>
     </section>
 

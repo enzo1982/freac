@@ -609,24 +609,24 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="10000" string="Decoding">Decodovanje</entry>
-	<entry id="10001" string="Enable 24 bit decoding">Omogući 24bitno dekodovanje</entry>
+	<entry id="20000" string="Decoding">Decodovanje</entry>
+	<entry id="20001" string="Enable 24 bit decoding">Omogući 24bitno dekodovanje</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder">Dekoder</entry>
-	<entry id="11001" string="Active decoder">Aktivni dekoder</entry>
-	<entry id="11002" string="auto select">samoodabirajuće</entry>
+	<entry id="21000" string="Decoder">Dekoder</entry>
+	<entry id="21001" string="Active decoder">Aktivni dekoder</entry>
+	<entry id="21002" string="auto select">samoodabirajuće</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information">Info o nazivu</entry>
-	<entry id="12001" string="Read tags from referenced files">Čitaj tagove iz referentnih fajlova</entry>
-	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">Preferiraj cue list podatke nad tagovima referentnih fajlova</entry>
-	<entry id="12003" string="Alternative files">Alternativni fajlovi</entry>
-	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">Potraži spakovane fajlove ako nije moguće lociranje referentnih fajlova</entry>
-	<entry id="12005" string="Error handling">Greška u upravljanju</entry>
-	<entry id="12006" string="Ignore errors during cue sheet processing">Ignoriši greške u toku procesuiranja cue listova</entry>
+	<entry id="22000" string="Title information">Info o nazivu</entry>
+	<entry id="22001" string="Read tags from referenced files">Čitaj tagove iz referentnih fajlova</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Preferiraj cue list podatke nad tagovima referentnih fajlova</entry>
+	<entry id="22003" string="Alternative files">Alternativni fajlovi</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Potraži spakovane fajlove ako nije moguće lociranje referentnih fajlova</entry>
+	<entry id="22005" string="Error handling">Greška u upravljanju</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">Ignoriši greške u toku procesuiranja cue listova</entry>
       </section>
     </section>
 
