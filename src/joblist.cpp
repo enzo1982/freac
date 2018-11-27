@@ -331,12 +331,7 @@ Void freac::JobList::AddTrackByDialog()
 
 	if (dialog.ShowDialog() == Success())
 	{
-		Array<String>	 files;
-
-		for (Int i = 0; i < dialog.GetNumberOfFiles(); i++)
-		{
-			files.Add(dialog.GetNthFileName(i));
-		}
+		const Array<String>	&files = dialog.GetFileNames();
 
 		if (files.Length() > 0) (new JobAddFiles(files))->Schedule();
 
@@ -348,10 +343,6 @@ Void freac::JobList::AddTrackByDialog()
 
 Void freac::JobList::AddTracksByDragAndDrop(const Array<String> &files)
 {
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
-
-	i18n->SetContext("Joblist::Errors");
-
 	Array<String>	 filesToAdd;
 	Array<String>	 directoriesToAdd;
 
