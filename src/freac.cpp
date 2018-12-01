@@ -112,12 +112,22 @@ freac::freac::freac() : Application(appName)
 	debug->Write("  Loading config...");
 
 	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	currentConfig = Config::Get();
 
+	/* Set interface language.
+	 */
+	String	 language = config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault);
+
+	if (language != NIL) i18n->ActivateLanguage(language);
+	else		     i18n->SelectUserDefaultLanguage();
+
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, i18n->GetActiveLanguageID());
+
 	/* Increment start count.
 	 */
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, BoCA::Config::Get()->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) + 1);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, config->GetIntValue(Config::CategorySettingsID, Config::SettingsStartCountID, Config::SettingsStartCountDefault) + 1);
 
 	/* Set process priority.
 	 */
@@ -125,7 +135,7 @@ freac::freac::freac() : Application(appName)
 
 	/* Set default comment unless already set.
 	 */
-	config->SetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, BoCA::Config::Get()->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, String(appLongName).Append(" <").Append(website).Append(">")));
+	config->SetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, config->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, String(appLongName).Append(" <").Append(website).Append(">")));
 
 	/* Connect version information to BoCA callbacks.
 	 */

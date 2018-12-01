@@ -52,13 +52,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
-	/* Set interface language.
-	 */
-	String	 language = config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault);
-
-	if (language != NIL) i18n->ActivateLanguage(language);
-	else		     i18n->SelectUserDefaultLanguage();
-
 	/* Don't save configuration settings set via command line.
 	 */
 	config->SetSaveSettingsOnExit(False);

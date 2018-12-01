@@ -95,15 +95,6 @@ freac::freacGUI::freacGUI()
 		notification->onDiscRemove.Connect(&freacGUI::OnDiscRemove, this);
 	}
 
-	/* Set interface language.
-	 */
-	String	 language = config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault);
-
-	if (language != NIL) i18n->ActivateLanguage(language);
-	else		     i18n->SelectUserDefaultLanguage();
-
-	config->SetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, i18n->GetActiveLanguageID());
-
 	/* Setup attributes.
 	 */
 	clicked_configuration = -1;
