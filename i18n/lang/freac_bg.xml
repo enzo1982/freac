@@ -617,7 +617,7 @@
 	<entry id="8000" string="Confirm overwrite">Потвърждаване на презаписа</entry>
 	<entry id="8001" string="Confirm">Потвърди</entry>
 	<entry id="8002" string="Skip all">Пропусни всички</entry>
-	<entry id="8003" string="The following %1 files already exist or have duplicate file names">Следните % 1 файла съществуват и ще бъдат презаписани</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">Следните %1 файлове вече съществуват или имат дублиращи се имена на файловете</entry>
 	<entry id="8004" string="Action">Действие</entry>
 	<entry id="8005" string="Overwrite">Презапис</entry>
 	<entry id="8006" string="Skip">Пропускане</entry>
@@ -649,7 +649,7 @@
       <entry id="9009" string="No scratch repair">Без поправка за надраскване</entry>
       <entry id="9010" string="Full cdparanoia mode">Пълен cdparanoia режим</entry>
       <entry id="9011" string="Activate jitter correction">Корекция на колебанията</entry>
-      <entry id="9012" string="Switch stereo channels">Размяна Ляв/Десен канал</entry>
+      <entry id="9012" string="Switch stereo channels">Превключване стерео каналите</entry>
       <entry id="9013" string="Automatization">Автоматизация</entry>
       <entry id="9014" string="Read CD contents on insert">Четене на CD при поставяне</entry>
       <entry id="9015" string="Start ripping automatically">Авт. старт на извличането</entry>
@@ -988,7 +988,7 @@
 	<entry id="50101" string="Channel configuration">Конфигурация на канала</entry>
 	<entry id="50102" string="Mono">Моно</entry>
 	<entry id="50103" string="Stereo">Стерео</entry>
-	<entry id="50104" string="Switch stereo channels">Размяна Ляв/Десен канал</entry>
+	<entry id="50104" string="Switch stereo channels">Превключване стерео каналите</entry>
       </section>
 
       <section name="Resample">
