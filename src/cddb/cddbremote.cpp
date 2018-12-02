@@ -248,8 +248,8 @@ Int freac::CDDBRemote::Query(const String &queryString)
 	 */
 	if (str.StartsWith("210") || str.StartsWith("211"))
 	{
-		String	 inputFormat = String::SetInputFormat("UTF-8");
-		String	 outputFormat = String::SetOutputFormat("UTF-8");
+		String::InputFormat	 inputFormat("UTF-8");
+		String::OutputFormat	 outputFormat("UTF-8");
 
 		do
 		{
@@ -284,9 +284,6 @@ Int freac::CDDBRemote::Query(const String &queryString)
 		}
 		while (true);
 
-		String::SetInputFormat(inputFormat);
-		String::SetOutputFormat(outputFormat);
-
 		if (str[2] == '0') return QUERY_RESULT_MULTIPLE;
 		else		   return QUERY_RESULT_FUZZY;
 	}
@@ -316,8 +313,8 @@ Bool freac::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbI
 	cddbInfo.discID   = discID;
 	cddbInfo.category = category;
 
-	String	 inputFormat = String::SetInputFormat("UTF-8");
-	String	 outputFormat = String::SetOutputFormat("UTF-8");
+	String::InputFormat	 inputFormat("UTF-8");
+	String::OutputFormat	 outputFormat("UTF-8");
 
 	result = NIL;
 
@@ -332,9 +329,6 @@ Bool freac::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbI
 		result.Append(val).Append("\n");
 	}
 	while (True);
-
-	String::SetInputFormat(inputFormat);
-	String::SetOutputFormat(outputFormat);
 
 	/* Parse result and add entry to cache.
 	 */

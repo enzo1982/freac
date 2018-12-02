@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -41,8 +41,8 @@ Bool freac::CDDBLocal::QueryUnixDB(const String &queryString)
 
 	String::ExplodeFinish();
 
-	String	 inputFormat = String::SetInputFormat("UTF-8");
-	String	 outputFormat = String::SetOutputFormat("UTF-8");
+	String::InputFormat	 inputFormat("UTF-8");
+	String::OutputFormat	 outputFormat("UTF-8");
 
 	for (Int i = 0; array[i] != NIL; i++)
 	{
@@ -76,9 +76,6 @@ Bool freac::CDDBLocal::QueryUnixDB(const String &queryString)
 		}
 	}
 
-	String::SetInputFormat(inputFormat);
-	String::SetOutputFormat(outputFormat);
-
 	return (results.Length() != 0);
 }
 
@@ -98,8 +95,8 @@ Bool freac::CDDBLocal::QueryWinDB(const String &queryString)
 
 	String::ExplodeFinish();
 
-	String	 inputFormat = String::SetInputFormat("UTF-8");
-	String	 outputFormat = String::SetOutputFormat("UTF-8");
+	String::InputFormat	 inputFormat("UTF-8");
+	String::OutputFormat	 outputFormat("UTF-8");
 
 	for (Int i = 0; array[i] != NIL; i++)
 	{
@@ -180,9 +177,6 @@ Bool freac::CDDBLocal::QueryWinDB(const String &queryString)
 			}
 		}
 	}
-
-	String::SetInputFormat(inputFormat);
-	String::SetOutputFormat(outputFormat);
 
 	return (results.Length() != 0);
 }
@@ -279,8 +273,8 @@ Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 		String		 idString = String("#FILENAME=").Append(DiscIDToString(cddbInfo.discID));
 		Bool		 written  = False;
 
-		String	 inputFormat = String::SetInputFormat("ISO-8859-1");
-		String	 outputFormat = String::SetOutputFormat("ISO-8859-1");
+		String::InputFormat	 inputFormat("ISO-8859-1");
+		String::OutputFormat	 outputFormat("ISO-8859-1");
 
 		while (in->GetPos() < in->Size())
 		{
@@ -309,9 +303,6 @@ Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 			out->OutputString(content.ConvertTo("UTF-8"));
 		}
 
-		String::SetInputFormat(inputFormat);
-		String::SetOutputFormat(outputFormat);
-
 		delete in;
 		delete out;
 
@@ -325,11 +316,9 @@ Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 
 		OutStream	*out = new OutStream(STREAM_FILE, String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(cddbInfo.discID)), OS_REPLACE);
 
-		String	 outputFormat = String::SetOutputFormat("UTF-8");
+		String::OutputFormat	 outputFormat("UTF-8");
 
 		out->OutputString(content);
-
-		String::SetOutputFormat(outputFormat);
 
 		delete out;
 	}

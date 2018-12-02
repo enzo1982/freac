@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -33,8 +33,8 @@ Bool freac::CDDBBatch::ReadEntries()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	String	 inputFormat = String::SetInputFormat("UTF-8");
-	String	 outputFormat = String::SetOutputFormat("UTF-8");
+	String::InputFormat	 inputFormat("UTF-8");
+	String::OutputFormat	 outputFormat("UTF-8");
 
 	/* Read saved queries from XML.
 	 */
@@ -67,9 +67,6 @@ Bool freac::CDDBBatch::ReadEntries()
 	}
 
 	delete document;
-
-	String::SetInputFormat(inputFormat);
-	String::SetOutputFormat(outputFormat);
 
 	return True;
 }
