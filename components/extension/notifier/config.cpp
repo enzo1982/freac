@@ -45,9 +45,9 @@ BoCA::ConfigureNotifier::ConfigureNotifier()
 
 	i18n->SetContext("Extensions::Notifier::Configuration");
 
-	group_notify	= new GroupBox(i18n->TranslateString("Notifications"), Point(7, 11), Size(444, 141));
+	group_notify	= new GroupBox(i18n->TranslateString("Notifications"), Point(7, 11), Size(450, 141));
 
-	check_notify	= new CheckBox(i18n->TranslateString("Notify on finished conversion"), Point(10, 13), Size(424, 0), &enableNotifications);
+	check_notify	= new CheckBox(i18n->TranslateString("Notify on finished conversion"), Point(10, 13), Size(group_notify->GetWidth() - 20, 0), &enableNotifications);
 	check_notify->onAction.Connect(&ConfigureNotifier::OnToggleNotifications, this);
 
 	/* Play a sound.
