@@ -24,6 +24,9 @@ BoCA::ChooserAlbums::ChooserAlbums() : Chooser("Albums")
 
 	list_albums->EnableLocking();
 
+	droparea_albums		= new DropArea(Point(7, 7), Size(100, 150));
+	droparea_albums->onDropFiles.Connect(&ChooserAlbums::OnDropFiles, this);
+
 	shortcut_previous	= new Shortcut(0, Input::Keyboard::KeyUp, list_albums);
 	shortcut_previous->onKeyDown.Connect(&ChooserAlbums::OnShortcutPrevious, this);
 
@@ -37,6 +40,7 @@ BoCA::ChooserAlbums::ChooserAlbums() : Chooser("Albums")
 	shortcut_last->onKeyDown.Connect(&ChooserAlbums::OnShortcutLast, this);
 
 	Add(list_albums);
+	Add(droparea_albums);
 
 	Add(shortcut_previous);
 	Add(shortcut_next);
@@ -45,28 +49,35 @@ BoCA::ChooserAlbums::ChooserAlbums() : Chooser("Albums")
 
 	onChangeSize.Connect(&ChooserAlbums::OnChangeSize, this);
 
-	Settings::Get()->onChangeLanguageSettings.Connect(&ChooserAlbums::OnChangeLanguageSettings, this);
+	Settings	*settings = Settings::Get();
+	JobList		*joblist  = JobList::Get();
 
-	JobList::Get()->onApplicationAddTrack.Connect(&ChooserAlbums::OnApplicationAddTrack, this);
-	JobList::Get()->onApplicationModifyTrack.Connect(&ChooserAlbums::OnApplicationModifyTrack, this);
-	JobList::Get()->onApplicationRemoveTrack.Connect(&ChooserAlbums::OnApplicationRemoveTrack, this);
-	JobList::Get()->onApplicationSelectTrack.Connect(&ChooserAlbums::OnApplicationSelectTrack, this);
+	settings->onChangeLanguageSettings.Connect(&ChooserAlbums::OnChangeLanguageSettings, this);
 
-	JobList::Get()->onApplicationRemoveAllTracks.Connect(&ChooserAlbums::OnApplicationRemoveAllTracks, this);
+	joblist->onApplicationAddTrack.Connect(&ChooserAlbums::OnApplicationAddTrack, this);
+	joblist->onApplicationModifyTrack.Connect(&ChooserAlbums::OnApplicationModifyTrack, this);
+	joblist->onApplicationRemoveTrack.Connect(&ChooserAlbums::OnApplicationRemoveTrack, this);
+	joblist->onApplicationSelectTrack.Connect(&ChooserAlbums::OnApplicationSelectTrack, this);
+
+	joblist->onApplicationRemoveAllTracks.Connect(&ChooserAlbums::OnApplicationRemoveAllTracks, this);
 }
 
 BoCA::ChooserAlbums::~ChooserAlbums()
 {
-	Settings::Get()->onChangeLanguageSettings.Disconnect(&ChooserAlbums::OnChangeLanguageSettings, this);
+	Settings	*settings = Settings::Get();
+	JobList		*joblist  = JobList::Get();
 
-	JobList::Get()->onApplicationAddTrack.Disconnect(&ChooserAlbums::OnApplicationAddTrack, this);
-	JobList::Get()->onApplicationModifyTrack.Disconnect(&ChooserAlbums::OnApplicationModifyTrack, this);
-	JobList::Get()->onApplicationRemoveTrack.Disconnect(&ChooserAlbums::OnApplicationRemoveTrack, this);
-	JobList::Get()->onApplicationSelectTrack.Disconnect(&ChooserAlbums::OnApplicationSelectTrack, this);
+	settings->onChangeLanguageSettings.Disconnect(&ChooserAlbums::OnChangeLanguageSettings, this);
 
-	JobList::Get()->onApplicationRemoveAllTracks.Disconnect(&ChooserAlbums::OnApplicationRemoveAllTracks, this);
+	joblist->onApplicationAddTrack.Disconnect(&ChooserAlbums::OnApplicationAddTrack, this);
+	joblist->onApplicationModifyTrack.Disconnect(&ChooserAlbums::OnApplicationModifyTrack, this);
+	joblist->onApplicationRemoveTrack.Disconnect(&ChooserAlbums::OnApplicationRemoveTrack, this);
+	joblist->onApplicationSelectTrack.Disconnect(&ChooserAlbums::OnApplicationSelectTrack, this);
+
+	joblist->onApplicationRemoveAllTracks.Disconnect(&ChooserAlbums::OnApplicationRemoveAllTracks, this);
 
 	DeleteObject(list_albums);
+	DeleteObject(droparea_albums);
 
 	DeleteObject(shortcut_previous);
 	DeleteObject(shortcut_next);
@@ -82,7 +93,8 @@ Void BoCA::ChooserAlbums::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	list_albums->SetSize(Size(clientSize.cx - 15, clientSize.cy - 15));
+	list_albums->SetSize(clientSize - Size(15, 15));
+	droparea_albums->SetSize(clientSize - Size(15, 15));
 }
 
 /* Called when application language is changed.
@@ -111,6 +123,17 @@ Void BoCA::ChooserAlbums::OnChangeLanguageSettings()
 	/* Show all widgets again.
 	 */
 	if (prevVisible) Show();
+}
+
+/* Called when files are dragged and dropped on the album list.
+ * ----
+ * Adds the files to the main program's joblist.
+ */
+Void BoCA::ChooserAlbums::OnDropFiles(const Array<String> &files)
+{
+	JobList	*joblist = JobList::Get();
+
+	joblist->doAddFiles.Call(files);
 }
 
 /* Called when an album entry is selected.
