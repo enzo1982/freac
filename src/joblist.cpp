@@ -48,17 +48,21 @@ freac::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iS
 
 	onClickTab.Connect(&JobList::OnClickTab, this);
 
-	BoCA::JobList::Get()->onComponentAddTrack.Connect(&JobList::AddTrack, this);
-	BoCA::JobList::Get()->onComponentRemoveTrack.Connect(&JobList::RemoveTrack, this);
-	BoCA::JobList::Get()->onComponentModifyTrack.Connect(&JobList::UpdateTrackInfo, this);
-	BoCA::JobList::Get()->onComponentSelectTrack.Connect(&JobList::OnComponentSelectTrack, this);
+	BoCA::JobList	*joblist = BoCA::JobList::Get();
 
-	BoCA::JobList::Get()->onComponentMarkTrack.Connect(&JobList::OnComponentMarkTrack, this);
-	BoCA::JobList::Get()->onComponentUnmarkTrack.Connect(&JobList::OnComponentUnmarkTrack, this);
+	joblist->onComponentAddTrack.Connect(&JobList::AddTrack, this);
+	joblist->onComponentRemoveTrack.Connect(&JobList::RemoveTrack, this);
+	joblist->onComponentModifyTrack.Connect(&JobList::UpdateTrackInfo, this);
+	joblist->onComponentSelectTrack.Connect(&JobList::OnComponentSelectTrack, this);
 
-	BoCA::JobList::Get()->doRemoveAllTracks.Connect(&JobList::RemoveAllTracks, this);
+	joblist->onComponentMarkTrack.Connect(&JobList::OnComponentMarkTrack, this);
+	joblist->onComponentUnmarkTrack.Connect(&JobList::OnComponentUnmarkTrack, this);
 
-	BoCA::JobList::Get()->getTrackList.Connect(&JobList::GetTrackList, this);
+	joblist->doAddFiles.Connect(&JobList::AddTracksByFileNames, this);
+
+	joblist->doRemoveAllTracks.Connect(&JobList::RemoveAllTracks, this);
+
+	joblist->getTrackList.Connect(&JobList::GetTrackList, this);
 
 	droparea = new DropArea(iPos, iSize);
 	droparea->onDropFiles.Connect(&JobList::AddTracksByDragAndDrop, this);
@@ -101,21 +105,27 @@ freac::JobList::~JobList()
 		else			    fieldSizes.Append(String::FromInt(GetNthTabWidth(i)));
 	}
 
-	BoCA::Config::Get()->SetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, fieldSizes);
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	config->SetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, fieldSizes);
 
 	/* Clean up.
 	 */
-	BoCA::JobList::Get()->onComponentAddTrack.Disconnect(&JobList::AddTrack, this);
-	BoCA::JobList::Get()->onComponentRemoveTrack.Disconnect(&JobList::RemoveTrack, this);
-	BoCA::JobList::Get()->onComponentModifyTrack.Disconnect(&JobList::UpdateTrackInfo, this);
-	BoCA::JobList::Get()->onComponentSelectTrack.Disconnect(&JobList::OnComponentSelectTrack, this);
+	BoCA::JobList	*joblist = BoCA::JobList::Get();
 
-	BoCA::JobList::Get()->onComponentMarkTrack.Disconnect(&JobList::OnComponentMarkTrack, this);
-	BoCA::JobList::Get()->onComponentUnmarkTrack.Disconnect(&JobList::OnComponentUnmarkTrack, this);
+	joblist->onComponentAddTrack.Disconnect(&JobList::AddTrack, this);
+	joblist->onComponentRemoveTrack.Disconnect(&JobList::RemoveTrack, this);
+	joblist->onComponentModifyTrack.Disconnect(&JobList::UpdateTrackInfo, this);
+	joblist->onComponentSelectTrack.Disconnect(&JobList::OnComponentSelectTrack, this);
 
-	BoCA::JobList::Get()->doRemoveAllTracks.Disconnect(&JobList::RemoveAllTracks, this);
+	joblist->onComponentMarkTrack.Disconnect(&JobList::OnComponentMarkTrack, this);
+	joblist->onComponentUnmarkTrack.Disconnect(&JobList::OnComponentUnmarkTrack, this);
 
-	BoCA::JobList::Get()->getTrackList.Disconnect(&JobList::GetTrackList, this);
+	joblist->doAddFiles.Disconnect(&JobList::AddTracksByFileNames, this);
+
+	joblist->doRemoveAllTracks.Disconnect(&JobList::RemoveAllTracks, this);
+
+	joblist->getTrackList.Disconnect(&JobList::GetTrackList, this);
 
 	onRegister.Disconnect(&JobList::OnRegister, this);
 	onUnregister.Disconnect(&JobList::OnUnregister, this);
@@ -333,7 +343,7 @@ Void freac::JobList::AddTrackByDialog()
 	{
 		const Array<String>	&files = dialog.GetFileNames();
 
-		if (files.Length() > 0) (new JobAddFiles(files))->Schedule();
+		AddTracksByFileNames(files);
 
 		/* Save selected path.
 		 */
@@ -341,7 +351,7 @@ Void freac::JobList::AddTrackByDialog()
 	}
 }
 
-Void freac::JobList::AddTracksByDragAndDrop(const Array<String> &files)
+Bool freac::JobList::AddTracksByFileNames(const Array<String> &files)
 {
 	Array<String>	 filesToAdd;
 	Array<String>	 directoriesToAdd;
@@ -358,6 +368,13 @@ Void freac::JobList::AddTracksByDragAndDrop(const Array<String> &files)
 	if (filesToAdd.Length() > 0) (new JobAddFiles(filesToAdd))->Schedule();
 
 	foreach (const String &directory, directoriesToAdd) (new JobAddDirectory(directory))->Schedule();
+
+	return True;
+}
+
+Void freac::JobList::AddTracksByDragAndDrop(const Array<String> &files)
+{
+	AddTracksByFileNames(files);
 }
 
 Void freac::JobList::AddTracksByPattern(const String &directory, const String &pattern, Bool searchSubDirectories)
@@ -374,10 +391,8 @@ Void freac::JobList::AddTracksByPattern(const String &directory, const String &p
 
 		BoCA::Utilities::ErrorMessage(i18n->TranslateString("No files found matching pattern: %1").Replace("%1", pattern));
 	}
-	else
-	{
-		(new JobAddFiles(jobFiles))->Schedule();
-	}
+
+	AddTracksByFileNames(jobFiles);
 }
 
 Void freac::JobList::FindTracksByPattern(Array<String> &jobFiles, const String &directory, const String &pattern, Bool searchSubDirectories) const
