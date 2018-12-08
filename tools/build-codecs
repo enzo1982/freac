@@ -425,11 +425,8 @@ for package in ${packages[@]}; do
     if [[ $x86_64 != true ]] && [[ $ppc != true ]]; then
       export CFLAGS="$cflags $cflags_unroll -mfpmath=sse"
     fi
-    configure_exports="X86_SSE4_1_CFLAGS=\"\" X86_AVX_CFLAGS=\"\""
     configure_flags="--enable-float-approx"
-    if [[ $uname != Darwin ]] || [[ $x86_64 == true ]]; then
-      configure_flags="$configure_flags --enable-intrinsics"
-    else
+    if [[ $uname == Darwin ]] && [[ $x86_64 != true ]]; then
       configure_flags="$configure_flags --disable-intrinsics"
     fi
     build $opus_location .libs/libopus$sharedinfix.$sharedext Opus.$sharedext
