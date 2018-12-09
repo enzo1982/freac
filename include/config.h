@@ -157,6 +157,8 @@ namespace freac
 			static const String	 SettingsDeleteAfterEncodingID;
 			static const Bool	 SettingsDeleteAfterEncodingDefault;
 
+			static const String	 SettingsNotificationAvailableID;
+
 			/* Category Dialogs
 			 */
 			static const String	 DialogsCDDBSubmitSizeXID;

@@ -167,6 +167,8 @@ const String	 freac::Config::SettingsLastSelectedJoblistDirID		= "LastSelectedJo
 const String	 freac::Config::SettingsDeleteAfterEncodingID			= "DeleteAfterEncoding";
 const Bool	 freac::Config::SettingsDeleteAfterEncodingDefault		= False;
 
+const String	 freac::Config::SettingsNotificationAvailableID			= "NotificationAvailable";
+
 /* Category Dialogs
  */
 const String	 freac::Config::DialogsCDDBSubmitSizeXID			= "CDDBSubmitSizeX";

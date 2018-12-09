@@ -95,6 +95,8 @@ freac::freacGUI::freacGUI()
 		notification->onDiscRemove.Connect(&freacGUI::OnDiscRemove, this);
 	}
 
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsNotificationAvailableID, notification != NIL && notification->IsNotificationAvailable());
+
 	/* Setup attributes.
 	 */
 	clicked_configuration = -1;
