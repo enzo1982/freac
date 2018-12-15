@@ -73,7 +73,7 @@ fi
 # Package versions
 faac_version=1.29.9.2
 faad2_version=2.8.8
-fdk_aac_version=0.1.6
+fdk_aac_version=2.0.0
 flac_version=1.3.2
 lame_version=3.100
 libav_version=12.3
