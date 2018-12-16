@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=fre:ac
+Comment=A free audio converter
+Exec=freac
+Type=Application
+Icon=org.freac.freac
+Categories=AudioVideo;Audio;
+

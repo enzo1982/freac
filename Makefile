@@ -200,6 +200,22 @@ ifneq ($(BUILD_WIN32),True)
 	cp -r $(SRCDIR)/i18n/manual $(DESTDIR)$(datadir)/doc/freac
 	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/doc/freac/manual
 
+ifneq ($(BUILD_OSX),True)
+ifneq ($(BUILD_HAIKU),True)
+	$(INSTALL) -d $(DESTDIR)$(datadir)/applications/
+	$(INSTALL) -d $(DESTDIR)$(datadir)/metainfo/
+
+	$(INSTALL_DATA) $(SRCDIR)/metadata/org.freac.freac.desktop $(DESTDIR)$(datadir)/applications
+	$(INSTALL_DATA) $(SRCDIR)/metadata/org.freac.freac.appdata.xml $(DESTDIR)$(datadir)/metainfo
+
+	$(INSTALL) -d $(DESTDIR)$(datadir)/icons/hicolor/64x64/apps/
+	$(INSTALL) -d $(DESTDIR)$(datadir)/icons/hicolor/128x128/apps/
+
+	$(INSTALL_DATA) $(SRCDIR)/icons/freac-64x64.png $(DESTDIR)$(datadir)/icons/hicolor/64x64/apps/org.freac.freac.png
+	$(INSTALL_DATA) $(SRCDIR)/icons/freac.png $(DESTDIR)$(datadir)/icons/hicolor/128x128/apps/org.freac.freac.png
+endif
+endif
+
 	$(call makein,components,install)
 endif
 
@@ -220,6 +236,16 @@ ifneq ($(BUILD_WIN32),True)
 	rm -f -r $(DESTDIR)$(datadir)/doc/freac/manual
 
 	rm -f -r $(DESTDIR)$(datadir)/doc/freac
+
+ifneq ($(BUILD_OSX),True)
+ifneq ($(BUILD_HAIKU),True)
+	rm -f $(DESTDIR)$(datadir)/applications/org.freac.freac.desktop
+	rm -f $(DESTDIR)$(datadir)/metainfo/org.freac.freac.appdata.xml
+
+	rm -f $(DESTDIR)$(datadir)/icons/hicolor/64x64/apps/org.freac.freac.png
+	rm -f $(DESTDIR)$(datadir)/icons/hicolor/128x128/apps/org.freac.freac.png
+endif
+endif
 
 	$(call makein,components,uninstall)
 endif
