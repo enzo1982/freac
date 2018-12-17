@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -12,9 +12,8 @@
 
 #include "chooser_files_utilities.h"
 
-BoCA::AS::DecoderComponent *BoCA::ChooserFilesUtilities::CreateDecoderComponent(const String &iFile)
+BoCA::AS::DecoderComponent *BoCA::ChooserFilesUtilities::CreateDecoderComponent(const String &file)
 {
-	String			 file = iFile.ToLower();
 	DecoderComponent	*component = NIL;
 	Registry		&boca = Registry::Get();
 
@@ -33,7 +32,7 @@ BoCA::AS::DecoderComponent *BoCA::ChooserFilesUtilities::CreateDecoderComponent(
 
 			foreach (const String &extension, extensions)
 			{
-				if (!file.EndsWith(String(".").Append(extension.ToLower()))) continue;
+				if (!file.ToLower().EndsWith(String(".").Append(extension.ToLower()))) continue;
 
 				component = (DecoderComponent *) Registry::Get().CreateComponentByID(boca.GetComponentID(i));
 
