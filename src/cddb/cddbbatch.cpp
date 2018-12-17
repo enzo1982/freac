@@ -40,7 +40,7 @@ Bool freac::CDDBBatch::ReadEntries()
 	 */
 	XML::Document	*document = new XML::Document();
 
-	if (document->LoadFile(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml")) == Success())
+	if (document->LoadFile(String(config->cacheDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml")) == Success())
 	{
 		XML::Node	*root = document->GetRootNode();
 
@@ -61,7 +61,7 @@ Bool freac::CDDBBatch::ReadEntries()
 	 */
 	document = new XML::Document();
 
-	if (document->LoadFile(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml")) == Success())
+	if (document->LoadFile(String(config->cacheDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml")) == Success())
 	{
 		ReadEntriesXML(document);
 	}
@@ -85,7 +85,7 @@ Bool freac::CDDBBatch::ReadEntriesXML(XML::Document *document)
 
 		if (node->GetName() == "submit")
 		{
-			InStream	*in = new InStream(STREAM_FILE, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(node->GetAttributeByName("category")->GetContent()).Append(Directory::GetDirectoryDelimiter()).Append(node->GetContent()), IS_READ);
+			InStream	*in = new InStream(STREAM_FILE, String(config->cacheDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(node->GetAttributeByName("category")->GetContent()).Append(Directory::GetDirectoryDelimiter()).Append(node->GetContent()), IS_READ);
 
 			if (in->Size() > 0)
 			{
@@ -126,11 +126,11 @@ Bool freac::CDDBBatch::SaveEntries()
 	{
 		/* Delete queries file if no more saved queries exist.
 		 */
-		File(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml")).Delete();
+		File(String(config->cacheDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml")).Delete();
 	}
 	else
 	{
-		Directory(String(config->configDir).Append("cddb")).Create();
+		Directory(String(config->cacheDir).Append("cddb")).Create();
 
 		XML::Document	*document = new XML::Document();
 		XML::Node	*root = new XML::Node("cddbQueries");
@@ -142,7 +142,7 @@ Bool freac::CDDBBatch::SaveEntries()
 			root->AddNode("query", queries.GetNth(i));
 		}
 
-		document->SaveFile(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml"));
+		document->SaveFile(String(config->cacheDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("queries.xml"));
 
 		delete document;
 		delete root;
@@ -154,11 +154,11 @@ Bool freac::CDDBBatch::SaveEntries()
 	{
 		/* Delete submits file if no more saved submits exist.
 		 */
-		File(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml")).Delete();
+		File(String(config->cacheDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml")).Delete();
 	}
 	else
 	{
-		Directory(String(config->configDir).Append("cddb")).Create();
+		Directory(String(config->cacheDir).Append("cddb")).Create();
 
 		XML::Document	*document = new XML::Document();
 		XML::Node	*root = new XML::Node("cddbSubmits");
@@ -172,7 +172,7 @@ Bool freac::CDDBBatch::SaveEntries()
 			node->SetAttribute("category", submits.GetNth(i).category);
 		}
 
-		document->SaveFile(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml"));
+		document->SaveFile(String(config->cacheDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append("submits.xml"));
 
 		delete document;
 		delete root;
@@ -210,11 +210,11 @@ Bool freac::CDDBBatch::AddSubmit(const CDDBInfo &oCddbInfo)
 
 	/* Create directory for entry.
 	 */
-	Directory	 cddbDir(String(config->configDir).Append("cddb"));
+	Directory	 cddbDir(String(config->cacheDir).Append("cddb"));
 
 	if (!cddbDir.Exists()) cddbDir.Create();
 
-	Directory	 categoryDir(String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.category));
+	Directory	 categoryDir(String(config->cacheDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.category));
 
 	if (!categoryDir.Exists()) categoryDir.Create();
 
@@ -222,7 +222,7 @@ Bool freac::CDDBBatch::AddSubmit(const CDDBInfo &oCddbInfo)
 	 */
 	String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
-	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
+	config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->cacheDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
 
 	/* Save entry to batch queue.
 	 */
@@ -300,7 +300,7 @@ Int freac::CDDBBatch::Query(Int n)
 		 */
 		String	 configFreedbDir = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 
-		config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->configDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
+		config->SetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, String(config->cacheDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()));
 
 		/* Save entry to local cache.
 		 */
