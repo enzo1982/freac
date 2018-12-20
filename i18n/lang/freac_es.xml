@@ -666,6 +666,32 @@
       <entry id="9024" string="%1 seconds">%1 segundos</entry>
     </section>
 
+    <section name="Components">
+
+      <section name="Decoders">
+	<entry id="10000" string="Cue Sheet Reader">Lector de Cue Sheet</entry>
+      </section>
+
+      <section name="Encoders">
+	<entry id="11000" string="meh! - multi encoder hub">meh! - Concentrador multicodificador</entry>
+	<entry id="11001" string="SndFile Output Component">Componente de salida SndFile</entry>
+      </section>
+
+      <section name="DSP">
+	<entry id="12000" string="Channel Converter">Conversor de canales</entry>
+	<entry id="12001" string="Sample Format Converter">Conversor de formato de muestras</entry>
+	<entry id="12002" string="Sample Rate Converter">Conversor de tasa de muestreo</entry>
+	<entry id="12003" string="RNNoise Speech Noise Reduction">RNNoise Reducción de ruido vocal</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Ajuste de tempo y tono Rubber Band</entry>
+      </section>
+
+      <section name="Extensions">
+	<entry id="15000" string="Conversion Notifier">Notificador de conversión</entry>
+	<entry id="15001" string="Protocol Viewer">Visor de protocolos</entry>
+	<entry id="15002" string="YouTube Video Downloader">Descargador de vídeo de YouTube</entry>
+      </section>
+    </section>
+
     <section name="Decoders">
 
       <section name="MAD">
@@ -1277,6 +1303,21 @@
 	<section name="Configuration">
 	  <entry id="104100" string="User interface">Interfaz de usuario</entry>
 	  <entry id="104101" string="Show Protocols tab in main window">Mostrar pestaña de protocolos en la ventana principal</entry>
+	</section>
+      </section>
+
+      <section name="Notifier">
+	<entry id="105000" string="Conversion process finished!">¡Conversión acabada!</entry>
+
+	<section name="Configuration">
+	  <entry id="105100" string="Notifications">Notificaciones</entry>
+	  <entry id="105101" string="Notify on finished conversion">Notificar al acabar la conversión</entry>
+	  <entry id="105102" string="Play sound">Reproducir</entry>
+	  <entry id="105103" string="Display message">Mostrar mensaje</entry>
+	  <entry id="105104" string="Select">Elegir</entry>
+	  <entry id="105105" string="Only for conversions running longer than">Sólo en conversiones que duren más de</entry>
+	  <entry id="105106" string="second(s)">segundo(s)</entry>
+	  <entry id="105107" string="minute(s)">minuto(s)</entry>
 	</section>
       </section>
     </section>
