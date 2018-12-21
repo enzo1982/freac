@@ -1,0 +1,358 @@
+{
+    "app-id": "org.freac.freac",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "freac",
+    "finish-args": [
+        "--device=all",
+        "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
+        "--filesystem=host",
+        "--filesystem=xdg-run/dconf",
+        "--filesystem=~/.config/dconf:ro",
+        "--share=ipc",
+        "--share=network",
+        "--socket=pulseaudio",
+        "--socket=x11",
+        "--talk-name=ca.desrt.dconf"
+    ],
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/info",
+        "/share/man",
+        "*.a",
+        "*.la"
+    ],
+    "modules": [
+        {
+            "name": "libcdio",
+            "config-opts": [
+                "--disable-cxx",
+                "--disable-example-progs",
+                "--without-cd-drive",
+                "--without-cd-info",
+                "--without-cd-read",
+                "--without-cdda-player",
+                "--without-iso-info",
+                "--without-iso-read"
+            ],
+            "cleanup": [
+                "/bin/mmc-tool",
+                "/lib/libiso9660.*",
+                "/lib/libudf.*"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ftp.gnu.org/gnu/libcdio/libcdio-2.0.0.tar.bz2",
+                    "sha256": "cd0da052a0e149e2526c41c5ac37b4865deb5c1cffe6faed18850154dbbd284b"
+                }
+            ]
+        },
+        {
+            "name": "libcdio-paranoia",
+            "config-opts": [
+                "--disable-cxx",
+                "--disable-example-progs"
+            ],
+            "cleanup": [
+                "/bin/cd-paranoia"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+0.94+2.tar.gz",
+                    "sha256": "d60f82ece97eeb92407a9ee03f3499c8983206672c28ae5e4e22179063c81941"
+                }
+            ]
+        },
+        {
+            "name": "libflac",
+            "config-opts": [
+                "--disable-cpp-libs"
+            ],
+            "cleanup": [
+                "/bin/flac",
+                "/bin/metaflac",
+                "/share/doc/flac*"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.3.2.tar.xz",
+                    "sha256": "91cfc3ed61dc40f47f050a109b08610667d73477af6ef36dcad31c31a4a8d53f"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/flac-1.3.2-fastcrc.diff"
+                }
+
+            ]
+        },
+        {
+            "name": "libmac",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make -f Source/Projects/NonWindows/Makefile prefix=/app all install"
+            ],
+            "cleanup": [
+                "/bin/mac"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://monkeysaudio.com/files/MAC_SDK_442.zip",
+                    "sha256": "3e5375cf253684635e6789686494ea21feb3d2a3f2ffed2a7d7d8ed5a214bef0",
+                    "strip-components": 0
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/mac-sdk-4.42-gcc.patch"
+                }
+            ]
+        },
+        {
+            "name": "libmp3lame",
+            "config-opts": [
+                 "--enable-nasm",
+                 "--disable-frontend"
+            ],
+            "cleanup": [
+                "/share/doc/lame"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://sourceforge.net/projects/lame/files/lame/3.100/lame-3.100.tar.gz",
+                    "sha256": "ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e"
+                },
+                {
+                    "only-arches": [ "x86_64" ],
+                    "type": "patch",
+                    "path": "patches/lame-3.100-sse-20171014.patch",
+                    "strip-components": 0
+                }
+            ]
+        },
+        {
+            "name": "libmp4v2",
+            "cleanup": [
+                "/bin/mp4*"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-2.0.0.tar.bz2",
+                    "sha256": "0319b9a60b667cf10ee0ec7505eb7bdc0a2e21ca7a93db96ec5bd758e3428338"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/mp4v2-2.0.0-fixes.patch"
+                },
+                {
+                    "type": "file",
+                    "url": "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=058639b",
+                    "sha256": "7d2f990c6c5161405933fd0d7da080d1502f69aa16984761ce3c305dca9b504f",
+                    "dest-filename": "autoaux/config.guess"
+                },
+                {
+                    "type": "file",
+                    "url": "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b",
+                    "sha256": "9afeeb8bf78f3ff549eb40f1364b54b4404ea1be27eee446af02790d9e39cc92",
+                    "dest-filename": "autoaux/config.sub"
+                }
+            ]
+        },
+        {
+            "name": "libogg",
+            "cleanup": [
+                "/share/doc/libogg"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-1.3.3.tar.gz",
+                    "sha256": "c2e8a485110b97550f453226ec644ebac6cb29d1caef2902c007edab4308d985"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/libogg-1.3.3-fastcrc.diff"
+                }
+
+            ]
+        },
+        {
+            "name": "liburiparser",
+            "config-opts": [
+                "--disable-doc",
+                "--disable-test"
+            ],
+            "cleanup": [
+                "/bin/uriparse"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/uriparser/uriparser/releases/download/uriparser-0.9.0/uriparser-0.9.0.tar.bz2",
+                    "sha256": "ec67eb34feda8eac166f281799f03ed48387694fca44f6f5852f61f8fb535e2c"
+                }
+            ]
+        },
+        {
+            "name": "libvorbis",
+            "cleanup": [
+                "/share/doc/libvorbis*"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.6.tar.gz",
+                    "sha256": "6ed40e0241089a42c48604dc00e362beee00036af2d8b3f46338031c9e0351cb"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/libvorbis-1.3.6-aotuv-b6.03.patch"
+                },
+                {
+                    "only-arches": [ "x86_64" ],
+                    "type": "patch",
+                    "path": "patches/libvorbis-1.3.6-aotuv-b6.03-lancer.patch"
+                }
+            ]
+        },
+        {
+            "name": "musepack",
+            "cleanup": [
+                "/bin/mpc2sv8",
+                "/bin/mpccut",
+                "/bin/wavcmp"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.musepack.net/source/musepack_src_r475.tar.gz",
+                    "sha256": "a4b1742f997f83e1056142d556a8c20845ba764b70365ff9ccf2e3f81c427b2b"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "touch include/config.h.in",
+                        "head -n 34 configure.in >> configure.ac",
+                        "echo \"AM_CONDITIONAL([HAVE_VISIBILITY], [false])\" >> configure.ac",
+                        "echo \"AC_CHECK_LIB([m],[cos])\" >> configure.ac",
+                        "tail -n 18 configure.in >> configure.ac",
+                        "rm configure.in",
+                        "autoreconf -i"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "rnnoise",
+            "cleanup": [
+                "/share/doc/rnnoise"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/xiph/rnnoise.git",
+                    "commit": "91ef401f4c3536c6de999ac609262691ec888c4c"
+                }
+            ]
+        },
+        {
+            "name": "rubberband",
+            "build-options": {
+            "env": { "Vamp_CFLAGS": " ", "Vamp_LIBS": " " }},
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://breakfastquay.com/files/releases/rubberband-1.8.2.tar.bz2",
+                    "sha256": "86bed06b7115b64441d32ae53634fcc0539a50b9b648ef87443f936782f6c3ca"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "sed -i -e \"s/^all\\:.*/all: bin lib \\$\\(DYNAMIC_TARGET\\)/\" Makefile.in",
+                        "head -n 169 Makefile.in >> Makefile.in.temp",
+                        "head -n 172 Makefile.in | tail -n 1 >> Makefile.in.temp",
+                        "head -n 185 Makefile.in | tail -n 6 >> Makefile.in.temp",
+                        "tail -n 100 Makefile.in >> Makefile.in.temp",
+                        "mv Makefile.in.temp Makefile.in"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "smooth",
+            "no-autogen": true,
+            "make-install-args": [ "prefix=/app" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://sourceforge.net/projects/smooth/files/smooth/0.8.74.0-pre5/smooth-0.8.74.0-pre5.tar.gz",
+                    "sha256": "1761c166b0a031ba43c67da46f4f8ddeb712fcd1c8f29531ac86dc3d4b0c6e10"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/smooth-0.8.74.0-pre5-flatpak.patch"
+                }
+            ]
+        },
+        {
+            "name": "BoCA",
+            "no-autogen": true,
+            "make-install-args": [ "prefix=/app" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/enzo1982/BoCA/releases/download/v1.1-alpha-20181201/freac-cdk-1.1-alpha-20181201.tar.gz",
+                    "sha256": "3a6a32d001cda5cf32dc657516aa3dffb16264e5cebc982ba9987a4ffdb03d56"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/freac-cdk-1.1-alpha-20181201-flatpak.patch"
+                }
+            ]
+        },
+        {
+            "name": "freac",
+            "no-autogen": true,
+            "make-install-args": [ "prefix=/app" ],
+            "build-options": {
+                "cxxflags": "-DFREAC_DATE=\\\"20181201a\\\""
+            },
+            "post-install": [
+                "install -Dm644 -t /app/share/applications org.freac.freac.desktop",
+                "install -Dm644 -t /app/share/metainfo org.freac.freac.appdata.xml",
+                "install -Dm644 org.freac.freac-64x64.png /app/share/icons/hicolor/64x64/apps/org.freac.freac.png",
+                "install -Dm644 icons/freac.png /app/share/icons/hicolor/128x128/apps/org.freac.freac.png"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/enzo1982/freac/releases/download/v1.1-alpha-20181201a/freac-1.1-alpha-20181201a.tar.gz",
+                    "sha256": "7f38c0e5716cd551d8636dddb343f700469217940fc0c1ef4ea43c20c19f2961"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/freac-1.1-alpha-20181201a-flatpak.patch"
+                },
+                {
+                    "type": "file",
+                    "path": "org.freac.freac.desktop"
+                },
+                {
+                    "type": "file",
+                    "path": "org.freac.freac.appdata.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "org.freac.freac-64x64.png"
+                }
+            ]
+        }
+    ]
+}
