@@ -268,10 +268,8 @@ endif
 
 $(DLLNAME): $(DLLOBJECTS)
 	$(LD) $(DLLOBJECTS) $(LDOPTS) $(LDOPTS_DLL) $(LDFLAGS) -o $@
-ifeq ($(BUILD_WIN32),True)
-ifeq ($(BUILD_X86),True)
-	countbuild BuildNumber
-endif
+ifeq ($(findstring release,$(config)),release)
+	-countbuild BuildNumber
 endif
 
 $(EXENAME): $(EXEOBJECTS) $(RESOBJECTS) $(RESFILES)

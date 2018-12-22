@@ -67,6 +67,11 @@ else
 	endif
 endif
 
+# Treat MSYS and MinGW the same
+ifneq ($(findstring MSYS,$(UNAME)),)
+	UNAME = MINGW
+endif
+
 ifneq ($(findstring MINGW,$(UNAME)),)
 #	Set executable and shared object extensions
 	EXECUTABLE = .exe
