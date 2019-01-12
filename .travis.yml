@@ -62,6 +62,7 @@ script:
       make install DESTDIR=$(readlink -f appdir)
       mkdir -p appdir/usr/lib ; cp -r /usr/lib/boca appdir/usr/lib
       mkdir -p appdir/usr/bin/ ; cp /usr/bin/smooth-translator appdir/usr/bin/
+      cp packaging/appimage/AppRun appdir/ ; chmod +x appdir/AppRun
       find appdir/
       wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
       chmod a+x linuxdeployqt-continuous-x86_64.AppImage
