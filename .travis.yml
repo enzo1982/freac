@@ -39,6 +39,9 @@ matrix:
             - libudev-dev
             - liburiparser-dev
             - libxml2-dev
+            - libcdio-paranoia1
+            - libasound2
+            - liburiparser1
 
     - os: osx
       compiler: gcc
@@ -68,7 +71,55 @@ script:
       chmod a+x linuxdeployqt-continuous-x86_64.AppImage
       ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage \
       -executable=appdir/usr/lib/freac/freac.so -executable=appdir/usr/bin/smooth-translator \
-      -executable=appdir/usr/bin/freaccmd
+      -executable=appdir/usr/bin/freaccmd \
+      -executable=appdir/usr/lib/boca/boca_verifier_md5.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_tagger_vorbis.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_tagger_riff.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_tagger_mp4.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_tagger_id3v2.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_tagger_id3v1.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_tagger_flac.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_tagger_cart.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_tagger_apev2.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_playlist_xspf.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_playlist_wpl.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_playlist_vclt.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_playlist_pls.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_playlist_m3u.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_playlist_cuesheet.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_output_alsa.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_extension_statustime.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_encoder_vorbis.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_encoder_voaacenc.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_encoder_speex.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_encoder_sndfile.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_encoder_opus.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_encoder_meh.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_encoder_mac.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_encoder_lame.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_encoder_flac.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_encoder_fdkaac.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_encoder_faac.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_dsp_rubberband.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_dsp_rnnoise.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_dsp_resample.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_dsp_format.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_dsp_channels.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_deviceinfo_cdio.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_decoder_vorbis.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_decoder_speex.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_decoder_sndfile.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_decoder_opus.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_decoder_mpg123.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_decoder_mad.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_decoder_mac.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_decoder_lame.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_decoder_flac.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_decoder_fdkaac.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_decoder_faad2.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_decoder_cuesheet.1.0.so \
+      -executable=appdir/usr/lib/boca/boca_decoder_cdio.1.0.so \
+      -executable=appdir/usr/lib/boca/boca.1.0.so
       wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
       bash upload.sh fre*.AppImage*
     fi
