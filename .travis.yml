@@ -51,8 +51,23 @@ before_install:
   - if [ $TRAVIS_OS_NAME = osx ]; then wget https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+0.94+2.tar.gz && tar xfz libcdio-paranoia-10.2+0.94+2.tar.gz && cd libcdio-paranoia-10.2+0.94+2 && ./configure --prefix=/usr/local && make && sudo make install && cd ..; fi
 
 install:
-  - git clone https://github.com/enzo1982/smooth.git enzo1982/smooth && cd enzo1982/smooth && make && sudo make install prefix=/usr/local && cd ../..
-  - git clone https://github.com/enzo1982/boca.git enzo1982/boca && cd enzo1982/boca && make && sudo make install prefix=/usr/local && cd ../..
+  - git clone https://github.com/enzo1982/smooth.git enzo1982/smooth && cd enzo1982/smooth && make && sudo make install prefix=/usr && cd ../..
+  - git clone https://github.com/enzo1982/boca.git enzo1982/boca && cd enzo1982/boca && make && sudo make install prefix=/usr && cd ../..
 
 script:
-  - make
+  - sed -i -e 's|/usr/local|/usr|g' Makefile-options
+  - make -j$(nproc)
+  - |
+    if [ $TRAVIS_OS_NAME = linux ] && [ $CC = clang ] ; then 
+      make install DESTDIR=$(readlink -f appdir) ; find appdir/
+      wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
+      chmod a+x linuxdeployqt-continuous-x86_64.AppImage
+      ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage -executable=appdir/usr/lib/freac/freac.so
+      wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
+      bash upload.sh fre*.AppImage*
+    fi
+
+branches:
+  except:
+    - # Do not build tags that we create when we upload to GitHub Releases
+    - /^(?i:continuous)/
