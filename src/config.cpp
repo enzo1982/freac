@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -151,6 +151,7 @@ const String	 freac::Config::SettingsExcludeExtensionsDefault		= String(".jpg|.j
 										 .Append(".m3u|.m3u8|.pls|.wpl|.xspf|")		  // playlists
 										 .Append(".exe|.dll|")				  // executables
 										 .Append(".zip|.rar|.gz|.bz2|.xz|.7z|")		  // archives
+										 .Append(".ini|")				  // configuration
 										 .Append(".htm|.html|.svg|.xml|")		  // HTML/SVG/XML
 										 .Append(".pdf|.ps|.xps|")			  // PDF etc.
 										 .Append(".doc|.docx|.odt|")			  // text documents
