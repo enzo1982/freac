@@ -42,6 +42,7 @@ matrix:
             - libcdio-paranoia1
             - libasound2
             - liburiparser1
+            - libav-tools
 
     - os: osx
       compiler: gcc
@@ -64,8 +65,10 @@ script:
     if [ $TRAVIS_OS_NAME = linux ] && [ $CC = clang ] ; then 
       make install DESTDIR=$(readlink -f appdir)
       mkdir -p appdir/usr/lib ; cp -r /usr/lib/boca appdir/usr/lib
-      mkdir -p appdir/usr/bin/ ; cp /usr/bin/smooth-translator appdir/usr/bin/
-      cp packaging/appimage/AppRun appdir/ ; chmod +x appdir/AppRun
+      install -Dm 0755 /usr/bin/smooth-translator appdir/usr/bin/smooth-translator
+      install -Dm 0755 packaging/appimage/AppRun appdir/AppRun
+      install -Dm 0755 /usr/bin/avprobe appdir/usr/bin/avprobe
+      install -Dm 0755 /usr/bin/avconv appdir/usr/bin/avconv
       find appdir/
       wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
       chmod a+x linuxdeployqt-continuous-x86_64.AppImage
@@ -119,7 +122,9 @@ script:
       -executable=appdir/usr/lib/boca/boca_decoder_faad2.1.0.so \
       -executable=appdir/usr/lib/boca/boca_decoder_cuesheet.1.0.so \
       -executable=appdir/usr/lib/boca/boca_decoder_cdio.1.0.so \
-      -executable=appdir/usr/lib/boca/boca.1.0.so
+      -executable=appdir/usr/lib/boca/boca.1.0.so \
+      -executable=appdir/usr/bin/avconv \
+      -executable=appdir/usr/bin/avprobe
       wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
       bash upload.sh fre*.AppImage*
     fi
