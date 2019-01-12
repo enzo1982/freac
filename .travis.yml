@@ -59,7 +59,9 @@ script:
   - make -j$(nproc)
   - |
     if [ $TRAVIS_OS_NAME = linux ] && [ $CC = clang ] ; then 
-      make install DESTDIR=$(readlink -f appdir) ; find appdir/
+      make install DESTDIR=$(readlink -f appdir)
+      mkdir -p appdir/usr/lib ; cp -r /usr/lib/boca appdir/usr/lib
+      find appdir/
       wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
       chmod a+x linuxdeployqt-continuous-x86_64.AppImage
       ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage -executable=appdir/usr/lib/freac/freac.so
