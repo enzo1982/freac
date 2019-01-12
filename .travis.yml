@@ -143,7 +143,7 @@ script:
       -executable=appdir/usr/lib/boca/boca_decoder_cdio.1.0.so \
       -executable=appdir/usr/lib/boca/boca.1.0.so \
       -executable=appdir/usr/bin/avconv \
-      -executable=appdir/usr/bin/avprobe\
+      -executable=appdir/usr/bin/avprobe \
       -executable=appdir/usr/lib/x86_64-linux-gnu/libvorbisenc.so.2.0.11 \
       -executable=appdir/usr/lib/x86_64-linux-gnu/libvorbis.so.0.4.8 \
       -executable=appdir/usr/lib/x86_64-linux-gnu/libspeex.so.1.5.0 \
