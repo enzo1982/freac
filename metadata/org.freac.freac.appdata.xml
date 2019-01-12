@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2018 Robert Kausch -->
+<!-- Copyright 2019 Robert Kausch -->
 <component type="desktop-application">
     <id>org.freac.freac</id>
     <launchable type="desktop-id">org.freac.freac.desktop</launchable>
     <name>fre:ac</name>
-    <summary>Free and open source audio converter</summary>
+    <summary>Audio converter and CD ripper</summary>
     <metadata_license>FSFAP</metadata_license>
     <project_license>GPL-2.0</project_license>
     <update_contact>support@freac.org</update_contact>
