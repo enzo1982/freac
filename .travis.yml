@@ -58,7 +58,6 @@ matrix:
             - libspeex1
             - libvorbis0a
             - libvorbisenc2
-            - libav-tools
             - musepack-tools
             - wavpack
 
@@ -82,7 +81,7 @@ script:
   - |
     if [ $TRAVIS_OS_NAME = linux ] && [ $CC = clang ] ; then 
       make install DESTDIR=$(readlink -f appdir)
-      apt download libmp3lame0 libmpg123-0 libfaac0 libfdk-aac0 libfaad2 libflac8 libmp4v2-2 libogg0 libopus0 librubberband2 libsamplerate0 libsndfile1 libspeex1 libvorbis0a libvorbisenc2 libav-tools musepack-tools wavpack
+      apt download libmp3lame0 libmpg123-0 libfaac0 libfdk-aac0 libfaad2 libflac8 libmp4v2-2 libogg0 libopus0 librubberband2 libsamplerate0 libsndfile1 libspeex1 libvorbis0a libvorbisenc2 musepack-tools wavpack
       ( cd appdir/ ; dpkg-deb -x ./*deb . )
       mkdir -p appdir/usr/lib ; cp -r /usr/lib/boca appdir/usr/lib
       install -Dm 0755 /usr/bin/smooth-translator appdir/usr/bin/smooth-translator
