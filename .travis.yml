@@ -159,7 +159,8 @@ script:
       -executable=appdir/usr/lib/x86_64-linux-gnu/libfaad_drm.so.2.0.0 \
       -executable=appdir/usr/lib/x86_64-linux-gnu/libfaad.so.2.0.0 \
       -executable=appdir/usr/lib/x86_64-linux-gnu/libfaac_drm.so.0.0.0 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libfaac.so.0.0.0
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libfaac.so.0.0.0 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libfdk-aac.so.0.0.3
       wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
       bash upload.sh fre*.AppImage*
     fi
