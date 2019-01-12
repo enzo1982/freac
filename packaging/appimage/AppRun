@@ -1,0 +1,25 @@
+#!/bin/bash
+
+HERE="$(dirname "$(readlink -f "${0}")")"
+
+# Allow the AppImage to be symlinked to e.g., /usr/bin/freaccmd
+# or called with ./Fre.ac*.AppImage freaccmd ...
+
+if [ ! -z $APPIMAGE ] ; then
+  BINARY_NAME=$(basename "$ARGV0")
+else
+  BINARY_NAME=$(basename "$0")
+fi
+if [ ! -z "$1" ] && [ -e "$HERE/bin/$1" ] ; then
+  MAIN="$HERE/bin/$1" ; shift
+elif [ ! -z "$1" ] && [ -e "$HERE/usr/bin/$1" ] ; then
+  MAIN="$HERE/usr/bin/$1" ; shift
+elif [ -e "$HERE/bin/$BINARY_NAME" ] ; then
+  MAIN="$HERE/bin/$BINARY_NAME"
+elif [ -e "$HERE/usr/bin/$BINARY_NAME" ] ; then
+  MAIN="$HERE/usr/bin/$BINARY_NAME"
+else
+  MAIN="$HERE/usr/bin/freac"
+fi
+
+exec "${MAIN}" "$@"
