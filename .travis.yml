@@ -144,23 +144,21 @@ script:
       -executable=appdir/usr/lib/boca/boca.1.0.so \
       -executable=appdir/usr/bin/avconv \
       -executable=appdir/usr/bin/avprobe \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libvorbisenc.so.2.0.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libvorbis.so.0.4.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libspeex.so.1.5.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libsndfile.so.1.0.*8 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libsamplerate.so.0.1.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/librubberband.so.2.1.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libopus.so.0.5.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libogg.so.0.8.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libmpg123.so.0.44.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libmp4v2.so.2.0.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libmp3lame.so.0.0.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libFLAC.so.8.3.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libfaad_drm.so.2.0.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libfaad.so.2.0.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libfaac_drm.so.0.0.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libfaac.so.0.0.* \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libfdk-aac.so.0.0.*
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libvorbisenc.so.2.0.8 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libvorbis.so.0.4.5 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libspeex.so.1.5.0 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libsndfile.so.1.0.25 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libsamplerate.so.0.1.8 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/librubberband.so.2.1.0 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libopus.so.0.5.0 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libogg.so.0.8.1 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libmpg123.so.0.38.4 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libmp4v2.so.2.0.0 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libmp3lame.so.0.0.0 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libFLAC.so.8.3.0 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libfaad.so.2.0.0 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libfaac.so.0.0.0 \
+      -executable=appdir/usr/lib/x86_64-linux-gnu/libfdk-aac.so.0.0.3
       wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
       bash upload.sh fre*.AppImage*
     fi
