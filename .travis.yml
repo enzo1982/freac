@@ -88,6 +88,7 @@ script:
       install -Dm 0755 packaging/appimage/AppRun appdir/AppRun
       install -Dm 0755 /usr/bin/avprobe appdir/usr/bin/avprobe
       install -Dm 0755 /usr/bin/avconv appdir/usr/bin/avconv
+      mv appdir/usr/lib/x86_64-linux-gnu/*.so* appdir/usr/lib/
       find appdir/
       wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
       chmod a+x linuxdeployqt-continuous-x86_64.AppImage
@@ -144,21 +145,21 @@ script:
       -executable=appdir/usr/lib/boca/boca.1.0.so \
       -executable=appdir/usr/bin/avconv \
       -executable=appdir/usr/bin/avprobe \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libvorbisenc.so.2.0.8 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libvorbis.so.0.4.5 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libspeex.so.1.5.0 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libsndfile.so.1.0.25 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libsamplerate.so.0.1.8 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/librubberband.so.2.1.0 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libopus.so.0.5.0 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libogg.so.0.8.1 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libmpg123.so.0.38.4 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libmp4v2.so.2.0.0 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libmp3lame.so.0.0.0 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libFLAC.so.8.3.0 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libfaad.so.2.0.0 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libfaac.so.0.0.0 \
-      -executable=appdir/usr/lib/x86_64-linux-gnu/libfdk-aac.so.0.0.3
+      -executable=appdir/usr/lib/libvorbisenc.so.2.0.8 \
+      -executable=appdir/usr/lib/libvorbis.so.0.4.5 \
+      -executable=appdir/usr/lib/libspeex.so.1.5.0 \
+      -executable=appdir/usr/lib/libsndfile.so.1.0.25 \
+      -executable=appdir/usr/lib/libsamplerate.so.0.1.8 \
+      -executable=appdir/usr/lib/librubberband.so.2.1.0 \
+      -executable=appdir/usr/lib/libopus.so.0.5.0 \
+      -executable=appdir/usr/lib/libogg.so.0.8.1 \
+      -executable=appdir/usr/lib/libmpg123.so.0.38.4 \
+      -executable=appdir/usr/lib/libmp4v2.so.2.0.0 \
+      -executable=appdir/usr/lib/libmp3lame.so.0.0.0 \
+      -executable=appdir/usr/lib/libFLAC.so.8.3.0 \
+      -executable=appdir/usr/lib/libfaad.so.2.0.0 \
+      -executable=appdir/usr/lib/libfaac.so.0.0.0 \
+      -executable=appdir/usr/lib/libfdk-aac.so.0.0.3
       wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
       bash upload.sh fre*.AppImage*
     fi
