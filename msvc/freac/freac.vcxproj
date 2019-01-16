@@ -183,14 +183,11 @@
     <ClCompile Include="..\..\src\jobs\engine\convert.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_convert.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\jobs\joblist\adddirectory.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_adddirectory.obj</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/job_adddirectory.obj</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)/job_adddirectory.obj</ObjectFileName>
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)/job_adddirectory.obj</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\src\jobs\joblist\addfiles.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_addfiles.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\jobs\joblist\addfolders.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_addfolders.obj</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\src\jobs\joblist\addtracks.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_addtracks.obj</ObjectFileName>
@@ -284,8 +281,8 @@
     <ClInclude Include="..\..\include\gui\player.h" />
     <ClInclude Include="..\..\include\joblist.h" />
     <ClInclude Include="..\..\include\jobs\engine\convert.h" />
-    <ClInclude Include="..\..\include\jobs\joblist\adddirectory.h" />
     <ClInclude Include="..\..\include\jobs\joblist\addfiles.h" />
+    <ClInclude Include="..\..\include\jobs\joblist\addfolders.h" />
     <ClInclude Include="..\..\include\jobs\joblist\addtracks.h" />
     <ClInclude Include="..\..\include\jobs\joblist\removeall.h" />
     <ClInclude Include="..\..\include\jobs\joblist\removedisc.h" />

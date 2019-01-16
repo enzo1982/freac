@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -16,8 +16,8 @@
 
 #include <gui/layer_tooltip.h>
 
-#include <jobs/joblist/adddirectory.h>
 #include <jobs/joblist/addfiles.h>
+#include <jobs/joblist/addfolders.h>
 #include <jobs/joblist/removeall.h>
 
 using namespace smooth::GUI::Dialogs;
@@ -354,20 +354,19 @@ Void freac::JobList::AddTrackByDialog()
 Bool freac::JobList::AddTracksByFileNames(const Array<String> &files)
 {
 	Array<String>	 filesToAdd;
-	Array<String>	 directoriesToAdd;
+	Array<String>	 foldersToAdd;
 
 	foreach (const String &file, files)
 	{
 		BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 		if	(File(file).Exists())	   filesToAdd.Add(file);
-		else if (Directory(file).Exists()) directoriesToAdd.Add(file);
+		else if (Directory(file).Exists()) foldersToAdd.Add(file);
 		else				   BoCA::Utilities::ErrorMessage("Unable to open file: %1\n\nError: %2", File(file).GetFileName(), i18n->TranslateString("File not found", "Messages"));
 	}
 
-	if (filesToAdd.Length() > 0) (new JobAddFiles(filesToAdd))->Schedule();
-
-	foreach (const String &directory, directoriesToAdd) (new JobAddDirectory(directory))->Schedule();
+	if (filesToAdd.Length()	  > 0) (new JobAddFiles(filesToAdd))->Schedule();
+	if (foldersToAdd.Length() > 0) (new JobAddFolders(foldersToAdd))->Schedule();
 
 	return True;
 }

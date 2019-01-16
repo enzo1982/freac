@@ -213,10 +213,10 @@
     <ClCompile Include="..\..\src\jobs\engine\convert.cpp">
       <Filter>Quelldateien\jobs\engine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\jobs\joblist\adddirectory.cpp">
+    <ClCompile Include="..\..\src\jobs\joblist\addfiles.cpp">
       <Filter>Quelldateien\jobs\joblist</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\jobs\joblist\addfiles.cpp">
+    <ClCompile Include="..\..\src\jobs\joblist\addfolders.cpp">
       <Filter>Quelldateien\jobs\joblist</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\jobs\joblist\addtracks.cpp">
@@ -419,10 +419,10 @@
     <ClInclude Include="..\..\include\jobs\engine\convert.h">
       <Filter>Headerdateien\jobs\engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\jobs\joblist\adddirectory.h">
+    <ClInclude Include="..\..\include\jobs\joblist\addfiles.h">
       <Filter>Headerdateien\jobs\joblist</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\jobs\joblist\addfiles.h">
+    <ClInclude Include="..\..\include\jobs\joblist\addfolders.h">
       <Filter>Headerdateien\jobs\joblist</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\jobs\joblist\addtracks.h">
