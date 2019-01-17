@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -537,93 +537,96 @@ Error freac::JobConvert::Perform()
 
 			const Track	&track = worker->GetTrackToConvert();
 
-			/* Remove track from joblist.
-			 */
-			if ((removeProcessedTracks || Config::Get()->deleteAfterEncoding) && !enableConsole)
+			if (!worker->IsError())
 			{
-				BoCA::JobList		*joblist = BoCA::JobList::Get();
-				const Array<Track>	*tracks	 = joblist->getTrackList.Call();
-
-				foreach (const Track &jltrack, *tracks)
+				/* Remove track from joblist.
+				 */
+				if ((removeProcessedTracks || Config::Get()->deleteAfterEncoding) && !enableConsole)
 				{
-					if (jltrack.GetTrackID() == track.GetTrackID())
-					{
-						joblist->onComponentRemoveTrack.Emit(jltrack);
+					BoCA::JobList		*joblist = BoCA::JobList::Get();
+					const Array<Track>	*tracks	 = joblist->getTrackList.Call();
 
-						break;
+					foreach (const Track &jltrack, *tracks)
+					{
+						if (jltrack.GetTrackID() == track.GetTrackID())
+						{
+							joblist->onComponentRemoveTrack.Emit(jltrack);
+
+							break;
+						}
 					}
 				}
-			}
 
-			/* Delete input file if requested.
-			 */
-			if (Config::Get()->deleteAfterEncoding && track.outfile != track.origFilename && !enableConsole)
-			{
-				/* Check if this was the last track depending on this input file.
+				/* Delete input file if requested.
 				 */
-				Bool	 deleteFile = True;
-
-				foreach (const Track &trackToCheck, tracks)
+				if (Config::Get()->deleteAfterEncoding && track.outfile != track.origFilename && !enableConsole)
 				{
-					if (trackToCheck.origFilename == track.origFilename) { deleteFile = False; break; }
-				}
+					/* Check if this was the last track depending on this input file.
+					 */
+					Bool	 deleteFile = True;
 
-				/* Delete file if no more tracks left.
-				 */
-				if (deleteFile) File(track.origFilename).Delete();
-			}
-
-			if (File(track.outfile).Exists())
-			{
-				/* Add encoded track to joblist if requested.
-				 */
-				if (addEncodedTracks && !encodeToSingleFile && !enableConsole)
-				{
-					Array<String>	 files;
-
-					files.Add(track.outfile);
-
-					(new JobAddFiles(files))->Schedule();
-				}
-
-				/* Add track to list of converted tracks.
-				 */
-				convertedTracks.Add(track, track.GetTrackID());
-			}
-
-			/* Eject CD if this was the last track from that disc.
-			 */
-			if (track.isCDTrack && ripperEjectDisc)
-			{
-				/* Check if this was the last track.
-				 */
-				Bool	 ejectDisk = True;
-
-				foreach (const Track &trackToCheck, tracks)
-				{
-					if (trackToCheck.drive == track.drive) { ejectDisk = False; break; }
-				}
-
-				/* Eject disc if no more tracks left.
-				 */
-				if (ejectDisk)
-				{
-					DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
-
-					if (info != NIL)
+					foreach (const Track &trackToCheck, tracks)
 					{
-						info->OpenNthDeviceTray(track.drive);
+						if (trackToCheck.origFilename == track.origFilename) { deleteFile = False; break; }
+					}
 
-						boca.DeleteComponent(info);
+					/* Delete file if no more tracks left.
+					 */
+					if (deleteFile) File(track.origFilename).Delete();
+				}
 
-						/* Notify application of removed disc.
-						 */
-						Notification::Get()->onDiscRemove.Emit(track.drive);
+				if (File(track.outfile).Exists())
+				{
+					/* Add encoded track to joblist if requested.
+					 */
+					if (addEncodedTracks && !encodeToSingleFile && !enableConsole)
+					{
+						Array<String>	 files;
+
+						files.Add(track.outfile);
+
+						(new JobAddFiles(files))->Schedule();
+					}
+
+					/* Add track to list of converted tracks.
+					 */
+					convertedTracks.Add(track, track.GetTrackID());
+				}
+
+				/* Eject CD if this was the last track from that disc.
+				 */
+				if (track.isCDTrack && ripperEjectDisc)
+				{
+					/* Check if this was the last track.
+					 */
+					Bool	 ejectDisk = True;
+
+					foreach (const Track &trackToCheck, tracks)
+					{
+						if (trackToCheck.drive == track.drive) { ejectDisk = False; break; }
+					}
+
+					/* Eject disc if no more tracks left.
+					 */
+					if (ejectDisk)
+					{
+						DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
+
+						if (info != NIL)
+						{
+							info->OpenNthDeviceTray(track.drive);
+
+							boca.DeleteComponent(info);
+
+							/* Notify application of removed disc.
+							 */
+							Notification::Get()->onDiscRemove.Emit(track.drive);
+						}
 					}
 				}
-			}
 
-			encodedTracks++;
+				encodedTracks++;
+			}
 
 			workerQueue.Remove(worker->GetThreadID());
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -120,6 +120,7 @@ Int freac::ConvertWorker::Convert()
 	/* Loop over conversion passes.
 	 */
 	Track	 trackToEncode = trackToConvert;
+	Bool	 error	       = False;
 
 	String	 encodeChecksum;
 	String	 verifyChecksum;
@@ -407,10 +408,10 @@ Int freac::ConvertWorker::Convert()
 		processor->Destroy();
 		encoder->Destroy();
 
-		if (decoder->GetErrorState())	onReportError.Emit(decoder->GetErrorString());
-		if (verifier->GetErrorState())	onReportError.Emit(verifier->GetErrorString());
-		if (processor->GetErrorState())	onReportError.Emit(processor->GetErrorString());
-		if (encoder->GetErrorState())	onReportError.Emit(encoder->GetErrorString());
+		if (decoder->GetErrorState())	{ error = True; onReportError.Emit(decoder->GetErrorString());	 }
+		if (verifier->GetErrorState())	{ error = True; onReportError.Emit(verifier->GetErrorString());	 }
+		if (processor->GetErrorState())	{ error = True; onReportError.Emit(processor->GetErrorString()); }
+		if (encoder->GetErrorState())	{ error = True; onReportError.Emit(encoder->GetErrorString());	 }
 
 		delete decoder;
 		delete verifier;
@@ -421,13 +422,13 @@ Int freac::ConvertWorker::Convert()
 
 		/* Delete output file if it doesn't look sane.
 		 */
-		if (outFile.GetFileSize() <= 0 || cancel) outFile.Delete();
+		if (outFile.GetFileSize() <= 0 || cancel || error) outFile.Delete();
 
 		/* Delete intermediate file in non-on-the-fly mode.
 		 */
 		if (conversionStep == ConversionStepEncode)
 		{
-			if (!keepWaveFiles || cancel) inFile.Delete();
+			if (!keepWaveFiles || cancel || error) inFile.Delete();
 
 			if (String(inFile).EndsWith(".temp.wav")) inFile = String(inFile).Head(String(inFile).Length() - 9);
 		}
@@ -475,7 +476,8 @@ Int freac::ConvertWorker::Convert()
 		onFixTotalSamples.Emit(track, trackToConvert);
 	}
 
-	return Success();
+	if (error) return Error();
+	else	   return Success();
 }
 
 Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatConverter *converter, Processor *processor, Encoder *encoder)
