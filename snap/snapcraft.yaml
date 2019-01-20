@@ -185,6 +185,12 @@ parts:
     source-checksum: sha256/0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1
     plugin: autotools
     configflags: [ --prefix=/usr ]
+    override-build: |
+      wget -O Cfg/config.guess "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=058639b"
+      wget -O Cfg/config.sub "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b"
+      snapcraftctl build
+    build-packages:
+      - wget
     prime:
       - usr/lib/libsamplerate.so*
 
