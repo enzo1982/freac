@@ -1,0 +1,73 @@
+--- a/components/extension/donate/methods/paypal.cpp	2018-07-09 20:46:17.000000000 +0200
++++ b/components/extension/donate/methods/paypal.cpp	2018-12-16 14:59:12.665000000 +0100
+@@ -78,7 +78,6 @@
+ 	check_monthly->SetWidth(Math::Max(combo_amount->GetFont().GetUnscaledTextSizeX(levels.GetNth(3)) + 24, check_monthly->GetUnscaledTextWidth() + 23));
+ 
+ 	combo_amount->SetWidth(check_monthly->GetWidth());
+-	combo_amount->SelectNthEntry(1);
+ 
+ 	Add(combo_amount);
+ 	Add(check_monthly);
+@@ -96,6 +95,8 @@
+ 	link_donate		= new Hyperlink(NIL, paypal, String("file:///").Append(S::System::System::GetTempDirectory()).Append("pp").Append(Number((Int64) this).ToHexString(8)).Append(".html").Replace("\\", "/"), Point(0, text_donate->GetUnscaledTextHeight() + 18), Size(96, 44));
+ 	text_donate_now		= new Text(i18n->TranslateString("Donate"), link_donate->GetPosition() + Point(10, 24));
+ 
++	combo_amount->SelectNthEntry(1);
++
+ 	Font	 font = text_donate_now->GetFont();
+ 
+ 	font.SetColor(Color(0, 45, 137));
+@@ -160,26 +161,16 @@
+ 		check_monthly->Activate();
+ 	}
+ 
+-	/* Get assets folder.
++	/* Update donation URL.
+ 	 */
+-	Directory	 dir(Utilities::GetBoCADirectory().Append("freac.extension.donate"));
++	String	 url = "https://freac.org/payments/paypal.php?amount=%amount%&currency=%currency%&subscription=%subscription%&method=%method%";
+ 
+-	if (!dir.Exists()) dir = Utilities::GetBoCADirectory().Append("../freac/freac.extension.donate");
+-
+-	/* Read HTML template.
+-	 */
+-	InStream	 in(STREAM_FILE, String(dir).Append("/paypal/paypal.html"), IS_READ);
+-	String		 html = in.InputString(in.Size());
+-
+-	/* Create output file with settings.
+-	 */
+-	String		 file = S::System::System::GetTempDirectory().Append("pp").Append(Number((Int64) this).ToHexString(8)).Append(".html");
+-	OutStream	 out(STREAM_FILE, file, OS_REPLACE);
++	url = String(url).Replace("%amount%",	    combo_amount->GetSelectedEntryNumber() < 3 ? levels.GetNth(combo_amount->GetSelectedEntryNumber()) : "0")
++			 .Replace("%currency%",	    i18n->TranslateString("usd").ToUpper())
++			 .Replace("%subscription%", monthly ? "1" : "0")
++			 .Replace("%method%",	    monthly ? "_xclick-subscriptions" : "_xclick");
+ 
+-	out.OutputString(String(html).Replace("%amount%",	combo_amount->GetSelectedEntryNumber() < 3 ? levels.GetNth(combo_amount->GetSelectedEntryNumber()) : "0")
+-				     .Replace("%currency%",	i18n->TranslateString("usd").ToUpper())
+-				     .Replace("%subscription%", monthly ? "1" : "0")
+-				     .Replace("%method%",	monthly ? "_xclick-subscriptions" : "_xclick"));
++	link_donate->SetURL(url);
+ 
+ 	String::ExplodeFinish();
+ }
+--- a/components/extension/tagedit/chooser/chooser_files_utilities.cpp	2017-08-22 01:30:17.000000000 +0200
++++ b/components/extension/tagedit/chooser/chooser_files_utilities.cpp	2018-12-17 22:11:51.505356776 +0100
+@@ -39,7 +39,7 @@
+ 
+ 				if (component != NIL)
+ 				{
+-					if (component->CanOpenStream(file)) return component;
++					if (component->CanOpenStream(iFile)) return component;
+ 
+ 					boca.DeleteComponent(component);
+ 				}
+@@ -57,7 +57,7 @@
+ 
+ 		if (component != NIL)
+ 		{
+-			if (component->CanOpenStream(file)) return component;
++			if (component->CanOpenStream(iFile)) return component;
+ 
+ 			boca.DeleteComponent(component);
+ 		}

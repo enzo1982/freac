@@ -1,0 +1,74 @@
+--- a/classes/system/dynamicloader.cpp	2018-10-18 19:27:18.000000000 +0200
++++ b/classes/system/dynamicloader.cpp	2018-12-16 15:18:03.825000000 +0100
+@@ -17,6 +17,7 @@
+ #ifdef __WIN32__
+ #	include <windows.h>
+ #else
++#	include <stdlib.h>
+ #	include <dlfcn.h>
+ #endif
+ 
+@@ -185,6 +186,14 @@
+ 		/* Parse /etc/ld.so.conf if it exists.
+ 		 */
+ 		if (File("/etc/ld.so.conf").Exists())	    ParseDirectoryList("/etc/ld.so.conf", directories);
++
++		/* Parse LD_LIBRARY_PATH environment variable.
++		 */
++		const Array<String>	&paths = String(getenv("LD_LIBRARY_PATH")).Explode(":");
++
++		foreach (const String &path, paths) if (Directory(path).Exists()) directories.Add(path);
++
++		String::ExplodeFinish();
+ #endif
+ 	}
+ #endif
+--- a/classes/system/system.cpp	2018-06-30 02:54:42.000000000 +0200
++++ b/classes/system/system.cpp	2018-12-16 15:43:34.217000000 +0100
+@@ -335,10 +335,17 @@
+ 
+ 	configDir = buffer;
+ #else
+-	passwd	*pw = getpwuid(getuid());
++	configDir = getenv("XDG_CONFIG_HOME");
++
++	if (configDir == NIL)
++	{
++		passwd	*pw = getpwuid(getuid());
++
++		if (pw != NIL)	configDir = pw->pw_dir;
++		else		configDir = "~";
+ 
+-	if (pw != NIL)	configDir = pw->pw_dir;
+-	else		configDir = "~";
++		configDir = configDir.Append("/.config");
++	}
+ #endif
+ 
+ 	if (!configDir.EndsWith(Directory::GetDirectoryDelimiter())) configDir.Append(Directory::GetDirectoryDelimiter());
+@@ -442,10 +449,14 @@
+ 		}
+ 	}
+ #else
+-	if (File(String(personalDir).Append("/.config/user-dirs.dirs")).Exists())
++	String	 configHome = getenv("XDG_CONFIG_HOME");
++
++	if (configHome == NIL) configHome = String(personalDir).Append("/.config");
++
++	if (File(String(configHome).Append("/user-dirs.dirs")).Exists())
+ 	{
+ 		String		 format = String::SetInputFormat("UTF-8");
+-		IO::InStream	 in(IO::STREAM_FILE, String(personalDir).Append("/.config/user-dirs.dirs"), IO::IS_READ);
++		IO::InStream	 in(IO::STREAM_FILE, String(configHome).Append("/user-dirs.dirs"), IO::IS_READ);
+ 
+ 		while (in.GetPos() < in.Size())
+ 		{
+@@ -517,7 +528,7 @@
+ 
+ 	tempDir = buffer;
+ #else
+-	tempDir = "/var/tmp";
++	tempDir = getenv("TMPDIR");
+ #endif
+ 
+ 	if (!tempDir.EndsWith(Directory::GetDirectoryDelimiter())) tempDir.Append(Directory::GetDirectoryDelimiter());
