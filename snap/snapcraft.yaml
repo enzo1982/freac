@@ -28,6 +28,7 @@ apps:
   freaccmd:
     command: desktop-launch alsa-launch freaccmd
     plugs:
+      - desktop
       - home
       - optical-drive
       - pulseaudio
