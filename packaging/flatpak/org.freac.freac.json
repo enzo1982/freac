@@ -103,13 +103,9 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://monkeysaudio.com/files/MAC_SDK_442.zip",
-                    "sha256": "3e5375cf253684635e6789686494ea21feb3d2a3f2ffed2a7d7d8ed5a214bef0",
+                    "url": "https://monkeysaudio.com/files/MAC_SDK_444.zip",
+                    "sha256": "e2af2e9d57b7cd66e5d6525fcd8fcde3839f48a623d31aca22a92cb0d0ea297c",
                     "strip-components": 0
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/mac-sdk-4.42-gcc.patch"
                 }
             ]
         },
@@ -219,6 +215,27 @@
                     "only-arches": [ "x86_64" ],
                     "type": "patch",
                     "path": "patches/libvorbis-1.3.6-aotuv-b6.03-lancer.patch"
+                }
+            ]
+        },
+        {
+            "name": "ffmpeg",
+            "config-opts": [
+                "--disable-autodetect",
+                "--enable-gpl",
+                "--enable-small",
+                "--enable-runtime-cpudetect"
+            ],
+             "cleanup": [
+                "/bin/ffprobe",
+                "/share/doc/ffmpeg",
+                "/share/ffmpeg"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ffmpeg.org/releases/ffmpeg-4.1.tar.bz2",
+                    "sha256": "b684fb43244a5c4caae652af9022ed5d85ce15210835bce054a33fb26033a1a5"
                 }
             ]
         },
