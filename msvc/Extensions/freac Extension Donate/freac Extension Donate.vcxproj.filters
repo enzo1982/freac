@@ -21,54 +21,54 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\components\extension\donate\dialog.h">
+    <ClInclude Include="..\..\..\components\extension\donate\dialog.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\donate\donate.h">
+    <ClInclude Include="..\..\..\components\extension\donate\donate.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\donate\methods\bitcoin.h">
+    <ClInclude Include="..\..\..\components\extension\donate\methods\bitcoin.h">
       <Filter>Headerdateien\methods</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\donate\methods\donorbox.h">
+    <ClInclude Include="..\..\..\components\extension\donate\methods\donorbox.h">
       <Filter>Headerdateien\methods</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\donate\methods\ethereum.h">
+    <ClInclude Include="..\..\..\components\extension\donate\methods\ethereum.h">
       <Filter>Headerdateien\methods</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\donate\methods\method.h">
+    <ClInclude Include="..\..\..\components\extension\donate\methods\method.h">
       <Filter>Headerdateien\methods</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\donate\methods\paypal.h">
+    <ClInclude Include="..\..\..\components\extension\donate\methods\paypal.h">
       <Filter>Headerdateien\methods</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\donate\methods\sepa.h">
+    <ClInclude Include="..\..\..\components\extension\donate\methods\sepa.h">
       <Filter>Headerdateien\methods</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\components\extension\donate\dialog.cpp">
+    <ClCompile Include="..\..\..\components\extension\donate\dialog.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\donate\donate.cpp">
+    <ClCompile Include="..\..\..\components\extension\donate\donate.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\donate\methods\bitcoin.cpp">
+    <ClCompile Include="..\..\..\components\extension\donate\methods\bitcoin.cpp">
       <Filter>Quelldateien\methods</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\donate\methods\donorbox.cpp">
+    <ClCompile Include="..\..\..\components\extension\donate\methods\donorbox.cpp">
       <Filter>Quelldateien\methods</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\donate\methods\ethereum.cpp">
+    <ClCompile Include="..\..\..\components\extension\donate\methods\ethereum.cpp">
       <Filter>Quelldateien\methods</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\donate\methods\method.cpp">
+    <ClCompile Include="..\..\..\components\extension\donate\methods\method.cpp">
       <Filter>Quelldateien\methods</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\donate\methods\paypal.cpp">
+    <ClCompile Include="..\..\..\components\extension\donate\methods\paypal.cpp">
       <Filter>Quelldateien\methods</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\donate\methods\sepa.cpp">
+    <ClCompile Include="..\..\..\components\extension\donate\methods\sepa.cpp">
       <Filter>Quelldateien\methods</Filter>
     </ClCompile>
   </ItemGroup>
