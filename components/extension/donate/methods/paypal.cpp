@@ -115,10 +115,6 @@ BoCA::LayerPayPal::LayerPayPal()
 
 BoCA::LayerPayPal::~LayerPayPal()
 {
-	I18n	*i18n = I18n::Get();
-
-	i18n->SetContext("Extensions::Donate::PayPal");
-
 	File(S::System::System::GetTempDirectory().Append("pp").Append(Number((Int64) this).ToHexString(8)).Append(".html")).Delete();
 
 	DeleteObject(text_donate);
