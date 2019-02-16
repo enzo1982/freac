@@ -89,6 +89,8 @@ Int freac::ConvertWorker::Convert()
 	Bool	 encodeOnTheFly		= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault);
 	Bool	 keepWaveFiles		= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, Config::SettingsKeepWaveFilesDefault);
 
+	Bool	 keepTimeStamps		= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesKeepTimeStampsID, Config::SettingsFilenamesKeepTimeStampsDefault);
+
 	Bool	 verifyInput		= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, Config::VerificationVerifyInputDefault);
 	Bool	 verifyOutput		= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
 
@@ -119,11 +121,13 @@ Int freac::ConvertWorker::Convert()
 
 	/* Loop over conversion passes.
 	 */
-	Track	 trackToEncode = trackToConvert;
-	Bool	 error	       = False;
+	Track		 trackToEncode	= trackToConvert;
+	Bool		 error		= False;
 
-	String	 encodeChecksum;
-	String	 verifyChecksum;
+	DateTime	 fileTime	= File(trackToConvert.origFilename).GetWriteTime();
+
+	String		 encodeChecksum;
+	String		 verifyChecksum;
 
 	for (Int step = 0; step < conversionSteps && !cancel; step++)
 	{
@@ -454,6 +458,10 @@ Int freac::ConvertWorker::Convert()
 				outFile = String(targetOutFile).Append(".new");
 			}
 		}
+
+		/* Set file time stamp to that of original file if requested.
+		 */
+		if (step == conversionSteps - 1 && keepTimeStamps && outFile.Exists()) outFile.SetWriteTime(fileTime);
 
 		/* Revert to waiting state when there are more steps left.
 		 */

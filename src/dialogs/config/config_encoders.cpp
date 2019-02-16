@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -38,6 +38,7 @@ freac::ConfigureEncoders::ConfigureEncoders()
 	addSeqNumbers	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAddSequentialNumbersID, Config::SettingsFilenamesAddSequentialNumbersDefault);
 	unicodeFiles	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
 	replaceSpaces	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
+	keepTimeStamps	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesKeepTimeStampsID, Config::SettingsFilenamesKeepTimeStampsDefault);
 
 	group_encoder	 = new GroupBox(i18n->TranslateString("Encoder"), Point(7, 11), Size(552, 43));
 
@@ -138,7 +139,7 @@ freac::ConfigureEncoders::ConfigureEncoders()
 	group_outdir->Add(edit_outdir);
 	group_outdir->Add(button_outdirBrowse);
 
-	group_filename	= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 271), Size(group_options->GetWidth(), 90));
+	group_filename	= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 271), Size(group_options->GetWidth(), 113));
 
 	text_filename	= new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(10, 15));
 	edit_filename	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault), Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(group_filename->GetWidth() - text_filename->GetUnscaledTextWidth() - 27, 0), 0);
@@ -172,20 +173,22 @@ freac::ConfigureEncoders::ConfigureEncoders()
 
 	check_addSeqNumbers	= new CheckBox(i18n->TranslateString("Append sequential numbers to otherwise identical filenames"), Point(10, 39), Size(group_filename->GetWidth() - 20, 0), &addSeqNumbers);
 	check_unicodeFiles	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 62), Size(check_onTheFly->GetWidth(), 0), &unicodeFiles);
-	check_replaceSpaces	= new CheckBox(i18n->TranslateString("Replace spaces with underscores"), Point(check_onTheFly->GetWidth() + 19, 62), Size(check_onTheFly->GetWidth(), 0), &replaceSpaces);
+	check_replaceSpaces	= new CheckBox(i18n->TranslateString("Replace spaces with underscores"), Point(10, 85), Size(check_onTheFly->GetWidth(), 0), &replaceSpaces);
+	check_keepTimeStamps	= new CheckBox(i18n->TranslateString("Keep time stamps of source files"), Point(check_onTheFly->GetWidth() + 19, 62), Size(check_onTheFly->GetWidth(), 0), &keepTimeStamps);
 
 	group_filename->Add(text_filename);
 	group_filename->Add(edit_filename);
 	group_filename->Add(check_addSeqNumbers);
 	group_filename->Add(check_unicodeFiles);
 	group_filename->Add(check_replaceSpaces);
+	group_filename->Add(check_keepTimeStamps);
 
 	Add(group_encoder);
 	Add(group_outdir);
 	Add(group_options);
 	Add(group_filename);
 
-	SetSize(Size(14 + group_encoder->GetWidth(), 368));
+	SetSize(Size(14 + group_encoder->GetWidth(), 391));
 }
 
 freac::ConfigureEncoders::~ConfigureEncoders()
@@ -215,6 +218,7 @@ freac::ConfigureEncoders::~ConfigureEncoders()
 	DeleteObject(check_addSeqNumbers);
 	DeleteObject(check_unicodeFiles);
 	DeleteObject(check_replaceSpaces);
+	DeleteObject(check_keepTimeStamps);
 }
 
 Void freac::ConfigureEncoders::SelectDir()
@@ -407,6 +411,7 @@ Int freac::ConfigureEncoders::SaveSettings()
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAddSequentialNumbersID, addSeqNumbers);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, unicodeFiles);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, replaceSpaces);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesKeepTimeStampsID, keepTimeStamps);
 
 	return Success();
 }
