@@ -394,7 +394,7 @@
 	<entry id="5111" string="Encode to a single file">編碼為單一檔案</entry>
 	<entry id="5112" string="Output filenames">輸出檔案名稱</entry>
 	<entry id="5113" string="Allow Unicode characters">允許 Unicode 字元</entry>
-	<entry id="5114" string="Replace spaces">使用底線取代空白符號</entry>
+	<entry id="5114" string="Replace spaces with underscores">使用底線取代空白符號</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">從工作清單移除已完成的項目</entry>
 	<entry id="5116" string="Add encoded files to joblist">將輸出檔案新增到工作清單</entry>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">在名稱重複的檔案後方加上序號</entry>

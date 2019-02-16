@@ -311,7 +311,7 @@
 	<entry id="5111" string="Encode to a single file">Kódovat do jediného souboru</entry>
 	<entry id="5112" string="Output filenames">Jméno výstupního souboru</entry>
 	<entry id="5113" string="Allow Unicode characters">Povolit znaky Unicode</entry>
-	<entry id="5114" string="Replace spaces">Nahradit mezery</entry>
+	<entry id="5114" string="Replace spaces with underscores">Nahradit mezery</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Výstupní složka neexistuje! Chcete jej vytvořit?</entry>

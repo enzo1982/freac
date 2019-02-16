@@ -350,7 +350,7 @@
 	<entry id="5111" string="Encode to a single file">Enkoduj u jedan fajl</entry>
 	<entry id="5112" string="Output filenames">Izlazni nazivi fajlova</entry>
 	<entry id="5113" string="Allow Unicode characters">Dozvoli Unikod karaktere</entry>
-	<entry id="5114" string="Replace spaces">Zameni razmake</entry>
+	<entry id="5114" string="Replace spaces with underscores">Zameni razmake</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Ukloni završene pesme sa liste zadataka</entry>
 	<entry id="5116" string="Add encoded files to joblist">Dodaj enkodovane fajlove na listu zadataka</entry>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Dodaj sekvencijalne brojeve u inače iste nazive fajlova</entry>

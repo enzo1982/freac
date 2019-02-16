@@ -342,7 +342,7 @@
 	<entry id="5111" string="Encode to a single file">Кодировать в один файл</entry>
 	<entry id="5112" string="Output filenames">Имена выходных файлов</entry>
 	<entry id="5113" string="Allow Unicode characters">Разрешить символы Юникод</entry>
-	<entry id="5114" string="Replace spaces">Заменить пробелы</entry>
+	<entry id="5114" string="Replace spaces with underscores">Заменить пробелы</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Удалить обработанное из списка</entry>
 	<entry id="5116" string="Add encoded files to joblist">Добавить закодированное в список</entry>
 

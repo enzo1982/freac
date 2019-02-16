@@ -350,7 +350,7 @@
 	<entry id="5111" string="Encode to a single file">Енкодуј у један фајл</entry>
 	<entry id="5112" string="Output filenames">Излазни називи фајлова</entry>
 	<entry id="5113" string="Allow Unicode characters">Дозволи Unikod карактере</entry>
-	<entry id="5114" string="Replace spaces">Замени размаке</entry>
+	<entry id="5114" string="Replace spaces with underscores">Замени размаке</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Уклони завршене песме са листе задатака</entry>
 	<entry id="5116" string="Add encoded files to joblist">Додај енкодоване фајлове на листу задатака</entry>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Додај секвенцијалне бројеве у иначе исте називе фајлова</entry>

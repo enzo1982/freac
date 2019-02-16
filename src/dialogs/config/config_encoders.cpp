@@ -172,7 +172,7 @@ freac::ConfigureEncoders::ConfigureEncoders()
 
 	check_addSeqNumbers	= new CheckBox(i18n->TranslateString("Append sequential numbers to otherwise identical filenames"), Point(10, 39), Size(group_filename->GetWidth() - 20, 0), &addSeqNumbers);
 	check_unicodeFiles	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 62), Size(check_onTheFly->GetWidth(), 0), &unicodeFiles);
-	check_replaceSpaces	= new CheckBox(i18n->TranslateString("Replace spaces"), Point(check_onTheFly->GetWidth() + 19, 62), Size(check_onTheFly->GetWidth(), 0), &replaceSpaces);
+	check_replaceSpaces	= new CheckBox(i18n->TranslateString("Replace spaces with underscores"), Point(check_onTheFly->GetWidth() + 19, 62), Size(check_onTheFly->GetWidth(), 0), &replaceSpaces);
 
 	group_filename->Add(text_filename);
 	group_filename->Add(edit_filename);
