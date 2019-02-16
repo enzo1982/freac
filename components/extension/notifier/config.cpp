@@ -85,6 +85,19 @@ BoCA::ConfigureNotifier::ConfigureNotifier()
 	btn_stop->onAction.Connect(&ConfigureNotifier::OnStop, this);
 	btn_stop->SetFlags(BF_NOFRAME);
 
+	Registry	&boca = Registry::Get();
+
+	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) == 0)
+	{
+		check_sound->Deactivate();
+		check_message->Deactivate();
+		list_soundfile->Deactivate();
+		edit_soundfile->Deactivate();
+		btn_browse->Deactivate();
+		btn_preview->Deactivate();
+		btn_stop->Deactivate();
+	}
+
 	/* Display a message.
 	 */
 	edit_message	= new EditBox(i18n->TranslateString(message), Point(check_message->GetWidth() + 35, 85), Size(group_notify->GetWidth() - check_message->GetWidth() - 45, 0));
@@ -177,13 +190,16 @@ Void BoCA::ConfigureNotifier::OnToggleNotifications()
 {
 	if (enableNotifications)
 	{
-		check_sound->Activate();
+		Registry	&boca = Registry::Get();
+
+		if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0) check_sound->Activate();
+
 		check_message->Activate();
 		check_time->Activate();
 
 		/* Play a sound.
 		 */
-		if (playSound)
+		if (playSound && check_sound->IsActive())
 		{
 			edit_soundfile->Activate();
 
