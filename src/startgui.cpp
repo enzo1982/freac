@@ -496,13 +496,19 @@ Void freac::freacGUI::ConfigureProcessor()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 
+	/* Open configuration dialog for selected processor.
+	 */
 	const Array<String>	&ids = config->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault).Explode(",");
 
 	ConfigureComponent(ids.GetNth(clicked_processor));
 
+	String::ExplodeFinish();
+
+	/* Reset selected processor.
+	 */
 	clicked_processor = -1;
 
-	String::ExplodeFinish();
+	OptionBox::internalCheckValues.Emit();
 }
 
 Void freac::freacGUI::OnSelectConfiguration()
@@ -1379,6 +1385,8 @@ Void freac::freacGUI::Convert()
 
 		tab_layer_joblist->UpdateEncoderText();
 
+		/* Reset selected encoder.
+		 */
 		clicked_encoder = -1;
 
 		OptionBox::internalCheckValues.Emit();
