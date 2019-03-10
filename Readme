@@ -92,9 +92,10 @@ Known problems
 History
 -------
 
-	Version 1.0.33 (October 2018)
+	Version 1.0.33 (March 2019)
 
 		- updated Spanish (Latin American) translation
+		- updated Spanish user guide
 		- rip only tracks from the newly inserted disc when auto-ripping
 		- do not start ripping automatically if no freedb entry is found
 		- fixed hangs when trying to open some Windows Wave files

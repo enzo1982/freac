@@ -93,9 +93,10 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.0.33 (Oktober 2018)
+	Version 1.0.33 (März 2019)
 
 		- Spanische (lateinamerikanisch) Übersetzung aktualisiert
+		- Spanische Anleitung aktualisiert
 		- Beim automatischen Rippen werden nur noch Tracks der neu eingelegten CD berücksichtigt
 		- Ripper wird nicht mehr automatisch gestartet, wenn kein freedb-Eintrag gefunden wird
 		- Einfrieren des Programms beim Öffnen einiger Windows Wave-Dateien behoben
