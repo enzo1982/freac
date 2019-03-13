@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -272,13 +272,15 @@ Void freac::Utilities::UpdateGenreList(List *list, const String &genre)
 
 String freac::Utilities::GetOutputFileName(const Track &track)
 {
+	if (track.outfile != NIL) return track.outfile;
+
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	const Info	&info	= track.GetInfo();
 
-	String	 outputFileName;
-
+	/* Check if input file folder is writable.
+	 */
 	Int	 lastBs	 = Math::Max(track.origFilename.FindLast("\\"), track.origFilename.FindLast("/"));
 	Int	 lastDot = track.origFilename.FindLast(".");
 
@@ -300,177 +302,174 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 		File(file).Delete();
 	}
 
-	if (track.outfile == NIL)
+	/* Construct output filename.
+	 */
+	String	 outputFileName;
+
+	if (writeToInputDir) outputFileName.Copy(inFileDirectory).Append(Directory::GetDirectoryDelimiter());
+	else		     outputFileName.Copy(BoCA::Utilities::GetAbsolutePathName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
+
+	/* Get file extension from selected encoder component
+	 * caching the result for requests in quick succession.
+	 */
+	static String		 fileExtension	 = NIL;
+	static String		 selectedEncoder = NIL;
+	static UnsignedInt64	 lastRequest	 = 0;
+
+	if (selectedEncoder != config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) || S::System::System::Clock() - lastRequest >= 750)
 	{
-		if (writeToInputDir) outputFileName.Copy(inFileDirectory).Append(Directory::GetDirectoryDelimiter());
-		else		     outputFileName.Copy(BoCA::Utilities::GetAbsolutePathName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
+		Registry		&boca	 = Registry::Get();
+		EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
 
-		/* Get file extension from selected encoder component
-		 * caching the result for requests in quick succession.
+		fileExtension	= (encoder != NIL) ? encoder->GetOutputFileExtension() : "audio";
+		selectedEncoder	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+
+		boca.DeleteComponent(encoder);
+	}
+
+	lastRequest = S::System::System::Clock();
+
+	/* Replace patterns.
+	 */
+	String	 filePattern = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
+
+	if (filePattern.Trim() == NIL) filePattern = Config::SettingsEncoderFilenamePatternDefault;
+
+	if (info.HasBasicInfo() || filePattern.Contains("<filename>") || filePattern.Contains("<currentdate>") || filePattern.Contains("<currenttime>"))
+	{
+		String		 shortOutFileName = filePattern;
+
+		DateTime	 currentDateTime  = DateTime::Current();
+		String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(currentDateTime.GetYear()))).Append(String::FromInt(currentDateTime.GetYear()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMonth())))).Append(String::FromInt(currentDateTime.GetMonth()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetDay())))).Append(String::FromInt(currentDateTime.GetDay()));
+		String		 currentTime	  = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()))).Append(String::FromInt(currentDateTime.GetHour()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute())))).Append(String::FromInt(currentDateTime.GetMinute()));
+
+		shortOutFileName.Replace("<artist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
+		shortOutFileName.Replace("<title>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")));
+		shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
+		shortOutFileName.Replace("<genre>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
+		shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
+		shortOutFileName.Replace("<filename>", BoCA::Utilities::ReplaceIncompatibleCharacters(shortInFileName));
+		shortOutFileName.Replace("<filetype>", fileExtension.ToUpper());
+		shortOutFileName.Replace("<currentdate>", currentDate);
+		shortOutFileName.Replace("<currenttime>", currentTime);
+
+		/* Replace <track> pattern.
 		 */
-		static String		 fileExtension	 = NIL;
-		static String		 selectedEncoder = NIL;
-		static UnsignedInt64	 lastRequest	 = 0;
+		shortOutFileName.Replace("<track>", String(info.track < 10 ? "0" : NIL).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
 
-		if (selectedEncoder != config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) || S::System::System::Clock() - lastRequest >= 750)
+		for (Int i = 1; i <= 4; i++)
 		{
-			Registry		&boca	 = Registry::Get();
-			EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
+			String	 pattern = String("<track(").Append(String::FromInt(i)).Append(")>");
 
-			fileExtension	= (encoder != NIL) ? encoder->GetOutputFileExtension() : "audio";
-			selectedEncoder	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
-
-			boca.DeleteComponent(encoder);
+			shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.track > 0 ? info.track : 1) + 1)).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
 		}
 
-		lastRequest = S::System::System::Clock();
-
-		/* Replace patterns.
+		/* Replace <disc> pattern.
 		 */
-		String	 filePattern = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
+		shortOutFileName.Replace("<disc>", String::FromInt(info.disc < 0 ? 0 : info.disc));
 
-		if (filePattern.Trim() == NIL) filePattern = Config::SettingsEncoderFilenamePatternDefault;
-
-		if (info.HasBasicInfo() || filePattern.Contains("<filename>") || filePattern.Contains("<currentdate>") || filePattern.Contains("<currenttime>"))
+		for (Int i = 1; i <= 4; i++)
 		{
-			String		 shortOutFileName = filePattern;
+			String	 pattern = String("<disc(").Append(String::FromInt(i)).Append(")>");
 
-			DateTime	 currentDateTime  = DateTime::Current();
-			String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(currentDateTime.GetYear()))).Append(String::FromInt(currentDateTime.GetYear()))
-						    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMonth())))).Append(String::FromInt(currentDateTime.GetMonth()))
-						    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetDay())))).Append(String::FromInt(currentDateTime.GetDay()));
-			String		 currentTime	  = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()))).Append(String::FromInt(currentDateTime.GetHour()))
-						    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute())))).Append(String::FromInt(currentDateTime.GetMinute()));
+			shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
+		}
 
-			shortOutFileName.Replace("<artist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
-			shortOutFileName.Replace("<title>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")));
-			shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
-			shortOutFileName.Replace("<genre>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
-			shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
-			shortOutFileName.Replace("<filename>", BoCA::Utilities::ReplaceIncompatibleCharacters(shortInFileName));
-			shortOutFileName.Replace("<filetype>", fileExtension.ToUpper());
-			shortOutFileName.Replace("<currentdate>", currentDate);
-			shortOutFileName.Replace("<currenttime>", currentTime);
+		/* Replace other text fields.
+		 */
+		foreach (const String &pair, info.other)
+		{
+			String	 key   = pair.Head(pair.Find(":"));
+			String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
 
-			/* Replace <track> pattern.
-			 */
-			shortOutFileName.Replace("<track>", String(info.track < 10 ? "0" : NIL).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
+			if (value == NIL) continue;
 
-			for (Int i = 1; i <= 4; i++)
+			if	(key == INFO_ALBUMARTIST) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_CONDUCTOR)	  shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_COMPOSER)	  shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+		}
+
+		if (info.artist.Length() > 0) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist));
+
+		shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
+		shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
+		shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
+
+		/* Replace <directory> pattern.
+		 */
+		String	 directory = inFileDirectory;
+
+		if	(directory[1] == ':')	       directory = directory.Tail(directory.Length() - 3);
+		else if (directory.StartsWith("\\\\")) directory = directory.Tail(directory.Length() - 2);
+
+		shortOutFileName.Replace("<directory>", directory);
+
+		for (Int i = 0; i < 10 && shortOutFileName.Contains("<directory+"); i++)
+		{
+			String	 pattern = String("<directory+").Append(String::FromInt(i)).Append(">");
+
+			if (shortOutFileName.Contains(pattern))
 			{
-				String	 pattern = String("<track(").Append(String::FromInt(i)).Append(")>");
+				String	 value = directory;
 
-				shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.track > 0 ? info.track : 1) + 1)).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
+				for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
+
+				shortOutFileName.Replace(pattern, value);
 			}
 
-			/* Replace <disc> pattern.
-			 */
-			shortOutFileName.Replace("<disc>", String::FromInt(info.disc < 0 ? 0 : info.disc));
-
-			for (Int i = 1; i <= 4; i++)
+			for (Int j = 0; j < 10 && shortOutFileName.Contains(String("<directory+").Append(String::FromInt(i)).Append("(")); j++)
 			{
-				String	 pattern = String("<disc(").Append(String::FromInt(i)).Append(")>");
+				String	 pattern = String("<directory+").Append(String::FromInt(i)).Append("(").Append(String::FromInt(j + 1)).Append(")>");
 
-				shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
-			}
+				if (!shortOutFileName.Contains(pattern)) continue;
 
-			/* Replace other text fields.
-			 */
-			foreach (const String &pair, info.other)
-			{
-				String	 key   = pair.Head(pair.Find(":"));
-				String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
+				String	 value = directory;
 
-				if (value == NIL) continue;
+				for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
 
-				if	(key == INFO_ALBUMARTIST) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
-				else if	(key == INFO_CONDUCTOR)	  shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
-				else if	(key == INFO_COMPOSER)	  shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
-			}
+				Int	 bsCount = 0;
 
-			if (info.artist.Length() > 0) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist));
-
-			shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
-			shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
-			shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
-
-			/* Replace <directory> pattern.
-			 */
-			String	 directory = inFileDirectory;
-
-			if	(directory[1] == ':')	       directory = directory.Tail(directory.Length() - 3);
-			else if (directory.StartsWith("\\\\")) directory = directory.Tail(directory.Length() - 2);
-
-			shortOutFileName.Replace("<directory>", directory);
-
-			for (Int i = 0; i < 10 && shortOutFileName.Contains("<directory+"); i++)
-			{
-				String	 pattern = String("<directory+").Append(String::FromInt(i)).Append(">");
-
-				if (shortOutFileName.Contains(pattern))
+				for (Int n = 0; n < value.Length(); n++)
 				{
-					String	 value = directory;
+					if (value[n] == '\\' || value[n] == '/') bsCount++;
 
-					for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
-
-					shortOutFileName.Replace(pattern, value);
-				}
-
-				for (Int j = 0; j < 10 && shortOutFileName.Contains(String("<directory+").Append(String::FromInt(i)).Append("(")); j++)
-				{
-					String	 pattern = String("<directory+").Append(String::FromInt(i)).Append("(").Append(String::FromInt(j + 1)).Append(")>");
-
-					if (!shortOutFileName.Contains(pattern)) continue;
-
-					String	 value = directory;
-
-					for (Int n = 0; n < i; n++) value = value.Tail(value.Length() - value.Find(Directory::GetDirectoryDelimiter()) - 1);
-
-					Int	 bsCount = 0;
-
-					for (Int n = 0; n < value.Length(); n++)
+					if (bsCount == j + 1)
 					{
-						if (value[n] == '\\' || value[n] == '/') bsCount++;
+						value[n] = 0;
 
-						if (bsCount == j + 1)
-						{
-							value[n] = 0;
-
-							break;
-						}
+						break;
 					}
-
-					shortOutFileName.Replace(pattern, value);
 				}
+
+				shortOutFileName.Replace(pattern, value);
 			}
-
-			Bool	 useUnicode    = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
-			Bool	 replaceSpaces = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
-
-			outputFileName.Append(BoCA::Utilities::ReplaceIncompatibleCharacters(shortOutFileName, useUnicode, False, replaceSpaces));
-			outputFileName = BoCA::Utilities::NormalizeFileName(outputFileName);
-		}
-		else if (track.isCDTrack)
-		{
-			outputFileName.Append("cd").Append(String::FromInt(track.drive)).Append("track");
-
-			if (info.track < 10) outputFileName.Append("0");
-
-			outputFileName.Append(String::FromInt(info.track));
-		}
-		else
-		{
-			outputFileName.Append(shortInFileName);
 		}
 
-		/* Append file extension.
-		 */
-		if (fileExtension != NIL) outputFileName.Append(".").Append(fileExtension);
+		Bool	 useUnicode    = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
+		Bool	 replaceSpaces = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
+
+		outputFileName.Append(BoCA::Utilities::ReplaceIncompatibleCharacters(shortOutFileName, useUnicode, False, replaceSpaces));
+		outputFileName = BoCA::Utilities::NormalizeFileName(outputFileName);
+	}
+	else if (track.isCDTrack)
+	{
+		outputFileName.Append("cd").Append(String::FromInt(track.drive)).Append("track");
+
+		if (info.track < 10) outputFileName.Append("0");
+
+		outputFileName.Append(String::FromInt(info.track));
 	}
 	else
 	{
-		outputFileName = track.outfile;
+		outputFileName.Append(shortInFileName);
 	}
+
+	/* Append file extension.
+	 */
+	if (fileExtension != NIL) outputFileName.Append(".").Append(fileExtension);
 
 	return outputFileName;
 }
