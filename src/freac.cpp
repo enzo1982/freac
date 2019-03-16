@@ -11,24 +11,9 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <smooth.h>
-#include <smooth/dll.h>
 
 #include <boca.h>
 #include <freac.h>
-
-Void smooth::AttachDLL(Void *instance)
-{
-	/* Init BoCA library.
-	 */
-	BoCA::Init("fre:ac");
-}
-
-Void smooth::DetachDLL()
-{
-	/* Free BoCA library.
-	 */
-	BoCA::Free();
-}
 
 #include <playback.h>
 #include <config.h>
@@ -101,6 +86,12 @@ String	 freac::freac::updatePath   = String("https://www.freac.org/eUpdate/eUpda
 
 freac::freac::freac() : Application(appName)
 {
+	/* Init BoCA library.
+	 */
+	BoCA::Init("fre:ac");
+
+	/* Setup debug protocol.
+	 */
 	BoCA::Protocol	*debug = BoCA::Protocol::Get("Debug output");
 
 	debug->Write("Starting fre:ac...");
@@ -193,4 +184,8 @@ freac::freac::~freac()
 	debug->Write("Leaving fre:ac...");
 
 	BoCA::Protocol::Free();
+
+	/* Free BoCA library.
+	 */
+	BoCA::Free();
 }
