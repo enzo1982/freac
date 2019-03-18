@@ -103,7 +103,7 @@ Requirements
 
 			Linux:
 
-				- libasound2, libcdio, libcdio-paranoia, libudev
+				- libcdio, libcdio-paranoia, libpulse, libudev
 
 			Solaris:
 
