@@ -1,0 +1,11 @@
+--- a/runtime/application/componentspecs.cpp	2018-11-25 14:16:45.000000000 +0100
++++ b/runtime/application/componentspecs.cpp	2018-12-17 21:48:03.414597108 +0100
+@@ -313,7 +313,7 @@
+ #elif defined __NetBSD__
+ 	static const char	*places[] = { "%APPDIR/codecs/cmdline/%COMMAND", "%APPDIR/%COMMAND", "/usr/bin/%COMMAND", "/usr/local/bin/%COMMAND", "/usr/pkg/bin/%COMMAND", NIL };
+ #else
+-	static const char	*places[] = { "%APPDIR/codecs/cmdline/%COMMAND", "%APPDIR/%COMMAND", "/usr/bin/%COMMAND", "/usr/local/bin/%COMMAND", NIL };
++	static const char	*places[] = { "%APPDIR/../usr/bin/%COMMAND", "%APPDIR/codecs/cmdline/%COMMAND", "%APPDIR/%COMMAND", "/usr/bin/%COMMAND", "/usr/local/bin/%COMMAND", NIL };
+ #endif
+ 
+ 	XML::Document	*document = new XML::Document();

@@ -1,5 +1,6 @@
 name: freac
-version: '1.1~alpha20181201a'
+version: '1.1~alpha'
+version-script: echo 1.1~alpha`date +"%Y%m%d"`
 summary: Audio converter and CD ripper
 description: |
   fre:ac is a free and open source audio converter. It comes with
@@ -12,7 +13,7 @@ icon: icons/freac.png
 
 apps:
   freac:
-    command: desktop-launch alsa-launch freac
+    command: desktop-launch freac
     desktop: share/applications/org.freac.freac.desktop
     plugs:
       - desktop
@@ -26,28 +27,17 @@ apps:
       - x11
 
   freaccmd:
-    command: desktop-launch alsa-launch freaccmd
+    command: desktop-launch freaccmd
     plugs:
       - desktop
       - home
+      - network
       - optical-drive
       - pulseaudio
       - removable-media
       - x11
 
 parts:
-  alsa:
-    after: [ alsa-lib, alsa-plugins ]
-
-  alsa-lib:
-    # configflags needed until LP#1766878 is fixed
-    configflags: [ --prefix=/usr, --sysconfdir=/etc, --libexec=/usr/lib, --libdir=/usr/lib, --localstatedir=/var, --with-configdir=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr/share/alsa, --with-plugindir=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr/lib/alsa-lib, --disable-alisp, --disable-aload, --disable-python, --disable-rawmidi, --disable-static, --disable-topology, --disable-ucm, --enable-symbolic-functions ]
-
-  alsa-plugins:
-    after: [ alsa-lib ]
-    # configflags needed until LP#1766878 is fixed
-    configflags: [ --prefix=/usr, --sysconfdir=/etc, --libexec=/usr/lib, --libdir=/usr/lib, --localstatedir=/var, --disable-arcamav, --disable-avcodec, --disable-jack, --disable-mix, --disable-oss, --disable-usbstream, --with-plugindir=/snap/$SNAPCRAFT_PROJECT_NAME/current/usr/lib/alsa-lib, --disable-static, LDFLAGS=-L$SNAPCRAFT_STAGE/usr/lib ]
-
   patches:
     source: packaging/snapcraft/patches
     plugin: dump
@@ -80,8 +70,8 @@ parts:
        - usr/lib/libfaad.so*
 
   libfdk-aac:
-    source: https://github.com/mstorsjo/fdk-aac/archive/v0.1.6.tar.gz
-    source-checksum: sha256/adbcd793e406e1b88b3c1c41382d49f8c27371485b823c0fdab69c9124fd2ce3
+    source: https://github.com/mstorsjo/fdk-aac/archive/v2.0.0.tar.gz
+    source-checksum: sha256/6e6c7921713788e31df655911e1d42620b057180b00bf16874f5d630e1d5b9a2
     plugin: autotools
     configflags: [ --prefix=/usr ]
     prime:
@@ -238,13 +228,9 @@ parts:
 
   smooth:
     after: [ curl, desktop-gtk3, patches ]
-    source: https://sourceforge.net/projects/smooth/files/smooth/0.8.74.0-pre5/smooth-0.8.74.0-pre5.tar.gz
-    source-checksum: sha256/1761c166b0a031ba43c67da46f4f8ddeb712fcd1c8f29531ac86dc3d4b0c6e10
+    source: https://github.com/enzo1982/smooth.git
     plugin: make
     make-parameters: [ prefix= ]
-    override-build: |
-      patch -p1 < $SNAPCRAFT_STAGE/smooth-0.8.74.0-pre5-snap.patch
-      snapcraftctl build
     build-packages:
       - g++
       - libbz2-dev
@@ -258,17 +244,18 @@ parts:
       - libxml2
 
   boca:
-    after: [ alsa, libcdio-paranoia, smooth ]
-    source: https://github.com/enzo1982/BoCA/releases/download/v1.1-alpha-20181201/freac-cdk-1.1-alpha-20181201.tar.gz
-    source-checksum: sha256/3a6a32d001cda5cf32dc657516aa3dffb16264e5cebc982ba9987a4ffdb03d56
+    after: [ libcdio-paranoia, smooth ]
+    source: https://github.com/enzo1982/BoCA.git
     plugin: make
     make-parameters: [ prefix= ]
     override-build: |
-      patch -p1 < $SNAPCRAFT_STAGE/freac-cdk-1.1-alpha-20181201-snap.patch
+      patch -p1 < $SNAPCRAFT_STAGE/freac-cdk-1.1-alpha-snap.patch
       snapcraftctl build
     build-packages:
+      - libpulse-dev
       - liburiparser-dev
     stage-packages:
+      - libpulse0
       - librubberband2v5
       - liburiparser1
       - musepack-tools
@@ -276,19 +263,10 @@ parts:
 
   freac:
     after: [ boca ]
-    source: https://github.com/enzo1982/freac/releases/download/v1.1-alpha-20181201a/freac-1.1-alpha-20181201a.tar.gz
-    source-checksum: sha256/7f38c0e5716cd551d8636dddb343f700469217940fc0c1ef4ea43c20c19f2961
+    source: https://github.com/enzo1982/freac.git
     plugin: make
-    make-parameters: [ prefix= ]
-    override-build: |
-      patch -p1 < $SNAPCRAFT_STAGE/freac-1.1-alpha-20181201a-snap.patch
-      snapcraftctl build
+    make-parameters: [ prefix=, CXXFLAGS+=-DFREAC_DATE=\"$(shell date +"%Y%m%d")\" ]
     build-packages:
       - libudev-dev
     stage-packages:
       - libudev1
-
-  freac-metadata:
-    source: packaging/snapcraft/metadata
-    plugin: dump
-
