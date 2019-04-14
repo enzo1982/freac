@@ -173,9 +173,9 @@ build () {
     wget $patch -O ../${patch##*/}
 
     if [ ${#patch_levels[index]} -gt 0 ]; then
-      $PATCH -p${patch_levels[index]} < ../${patch##*/}
+      $PATCH -E -p${patch_levels[index]} < ../${patch##*/}
     else
-      $PATCH -p1 < ../${patch##*/}
+      $PATCH -E -p1 < ../${patch##*/}
     fi
 
     set +e
