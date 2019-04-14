@@ -103,9 +103,13 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://monkeysaudio.com/files/MAC_SDK_444.zip",
-                    "sha256": "e2af2e9d57b7cd66e5d6525fcd8fcde3839f48a623d31aca22a92cb0d0ea297c",
+                    "url": "https://monkeysaudio.com/files/MAC_SDK_463b.zip",
+                    "sha256": "dff8bf6b31415539d38f5660a3bb35f5f306704da5ba06607bc30be33a2e6c0a",
                     "strip-components": 0
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/mac-sdk-4.63b-gcc.patch"
                 }
             ]
         },
@@ -308,13 +312,8 @@
             "make-install-args": [ "prefix=/app" ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://sourceforge.net/projects/smooth/files/smooth/0.8.74.0-pre5/smooth-0.8.74.0-pre5.tar.gz",
-                    "sha256": "1761c166b0a031ba43c67da46f4f8ddeb712fcd1c8f29531ac86dc3d4b0c6e10"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/smooth-0.8.74.0-pre5-flatpak.patch"
+                    "type": "git",
+                    "url": "https://github.com/enzo1982/smooth.git"
                 }
             ]
         },
@@ -324,13 +323,8 @@
             "make-install-args": [ "prefix=/app" ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/enzo1982/BoCA/releases/download/v1.1-alpha-20181201/freac-cdk-1.1-alpha-20181201.tar.gz",
-                    "sha256": "3a6a32d001cda5cf32dc657516aa3dffb16264e5cebc982ba9987a4ffdb03d56"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/freac-cdk-1.1-alpha-20181201-flatpak.patch"
+                    "type": "git",
+                    "url": "https://github.com/enzo1982/BoCA.git"
                 }
             ]
         },
@@ -339,35 +333,16 @@
             "no-autogen": true,
             "make-install-args": [ "prefix=/app" ],
             "build-options": {
-                "cxxflags": "-DFREAC_DATE=\\\"20181201a\\\""
+                "cxxflags": "-DFREAC_DATE=\\\"$(shell date +\"%Y%m%d\")\\\""
             },
-            "post-install": [
-                "install -Dm644 -t /app/share/applications org.freac.freac.desktop",
-                "install -Dm644 -t /app/share/metainfo org.freac.freac.appdata.xml",
-                "install -Dm644 org.freac.freac-64x64.png /app/share/icons/hicolor/64x64/apps/org.freac.freac.png",
-                "install -Dm644 icons/freac.png /app/share/icons/hicolor/128x128/apps/org.freac.freac.png"
-            ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/enzo1982/freac/releases/download/v1.1-alpha-20181201a/freac-1.1-alpha-20181201a.tar.gz",
-                    "sha256": "7f38c0e5716cd551d8636dddb343f700469217940fc0c1ef4ea43c20c19f2961"
+                    "type": "git",
+                    "url": "https://github.com/enzo1982/freac.git"
                 },
                 {
                     "type": "patch",
-                    "path": "patches/freac-1.1-alpha-20181201a-flatpak.patch"
-                },
-                {
-                    "type": "file",
-                    "path": "org.freac.freac.desktop"
-                },
-                {
-                    "type": "file",
-                    "path": "org.freac.freac.appdata.xml"
-                },
-                {
-                    "type": "file",
-                    "path": "org.freac.freac-64x64.png"
+                    "path": "patches/freac-1.1-alpha-noudev.patch"
                 }
             ]
         }

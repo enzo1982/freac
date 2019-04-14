@@ -1,0 +1,11 @@
+--- a/Makefile	2018-10-17 20:44:52.000000000 +0200
++++ b/Makefile	2018-12-16 14:11:55.717000000 +0100
+@@ -31,7 +31,7 @@
+ 	DLLOBJECTS += $(OBJECTS)/notification_win32.o
+ else ifeq ($(BUILD_LINUX),True)
+ 	DLLOBJECTS += $(OBJECTS)/autorelease_none.o
+-	DLLOBJECTS += $(OBJECTS)/notification_udev.o
++	DLLOBJECTS += $(OBJECTS)/notification_none.o
+ else ifeq ($(BUILD_OSX),True)
+ 	DLLOBJECTS += $(OBJECTS)/autorelease_osx.o
+ 	DLLOBJECTS += $(OBJECTS)/notification_osx.o
