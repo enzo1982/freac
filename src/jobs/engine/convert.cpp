@@ -412,7 +412,7 @@ Error freac::JobConvert::Perform()
 	/* Instantiate and start worker threads.
 	 */
 	Array<ConvertWorker *, Void *>	 workers;
-	Int				 numberOfWorkers = Math::Min(numberOfThreads, tracks.Length());
+	Int				 numberOfWorkers = GetNumberOfWorkers(numberOfThreads);
 
 	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, conversionID, singleTrackSampleFormat, singleFileProcessor, singleFileEncoder));
 	else			for (Int i = 0; i < numberOfWorkers; i++) workers.Add(new ConvertWorker(configuration, conversionID));
@@ -1286,6 +1286,35 @@ Void freac::JobConvert::OnWorkerReportError(const String &error)
 Void freac::JobConvert::OnWorkerReportWarning(const String &warning)
 {
 	warnings.Add(warning);
+}
+
+Int freac::JobConvert::GetNumberOfWorkers(Int threadsToUse) const
+{
+	Int	 numberOfWorkers = Math::Min(threadsToUse, tracks.Length());
+
+	Bool	 enableParallel	 = configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
+	Int	 numberOfThreads = configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault);
+
+	if (!enableParallel || numberOfThreads > 1) return numberOfWorkers;
+
+	/* See how many different devices we have in the track list.
+	 */
+	Array<Bool>	 drives;
+
+	foreach (const Track &track, tracks)
+	{
+		/* Fall back to regular number of workers if we have any non-device tracks.
+		 */
+		if (!track.origFilename.StartsWith("device://")) return numberOfWorkers;
+
+		String	 deviceID = track.origFilename.SubString(9, track.origFilename.Tail(track.origFilename.Length() - 9).Find("/"));
+
+		drives.Add(True, deviceID.ComputeCRC32());
+	}
+
+	/* Compute number of workers.
+	 */
+	return Math::Max(drives.Length(), numberOfWorkers);
 }
 
 Format freac::JobConvert::GetSingleTrackSampleFormat() const

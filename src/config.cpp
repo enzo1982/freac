@@ -405,8 +405,6 @@ freac::Config::Config()
 
 	/* Set default settings.
 	 */
-	maxActiveJobs		= 2;
-
 	deleteAfterEncoding	= config->GetIntValue(CategorySettingsID, SettingsDeleteAfterEncodingID, SettingsDeleteAfterEncodingDefault);
 	shutdownAfterEncoding	= False;
 

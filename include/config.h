@@ -398,8 +398,6 @@ namespace freac
 			String			 resourcesPath;
 			String			 documentationPath;
 
-			Int			 maxActiveJobs;
-
 			Bool			 deleteAfterEncoding;
 			Bool			 shutdownAfterEncoding;
 

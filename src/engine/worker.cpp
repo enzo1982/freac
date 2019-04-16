@@ -56,17 +56,24 @@ freac::ConvertWorker::~ConvertWorker()
 
 Int freac::ConvertWorker::Perform()
 {
+	Bool	 enableParallel	 = configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
+	Int	 numberOfThreads = configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault);
+
 	while (!quit)
 	{
 		if (idle) { S::System::System::Sleep(1); continue; }
 
+		/* Do not limit parallel CD ripping jobs in automatic mode.
+		 */
+		Bool	 allocateThread = !(enableParallel && numberOfThreads <= 1 && trackToConvert.origFilename.StartsWith("device://"));
+
 		/* Allocate thread and run conversion.
 		 */
-		Locking::AllocateThread();
+		if (allocateThread) Locking::AllocateThread();
 
 		if (Convert() != Success()) error = True;
 
-		Locking::FreeThread();
+		if (allocateThread) Locking::FreeThread();
 
 		/* Return to waiting state.
 		 */
