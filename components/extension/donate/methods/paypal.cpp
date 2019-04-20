@@ -168,7 +168,6 @@ Void BoCA::LayerPayPal::OnChangeSettings()
 			 .Replace("%currency%",	    i18n->TranslateString("usd").ToUpper())
 			 .Replace("%subscription%", monthly ? "1" : "0")
 			 .Replace("%method%",	    monthly ? "_xclick-subscriptions" : "_xclick")
-			 .Replace("%notify%",	    Encoding::URLEncode::Encode("https://www.freac.org/payments/ipn.php"))
 			 .Replace("%website%",	    Encoding::URLEncode::Encode("https://www.freac.org/"));
 
 	link_donate->SetURL(url);
