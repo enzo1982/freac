@@ -45,8 +45,8 @@ parts:
       - -*
 
   libcdio:
-    source: https://ftp.gnu.org/gnu/libcdio/libcdio-2.0.0.tar.bz2
-    source-checksum: sha256/cd0da052a0e149e2526c41c5ac37b4865deb5c1cffe6faed18850154dbbd284b
+    source: https://ftp.gnu.org/gnu/libcdio/libcdio-2.1.0.tar.bz2
+    source-checksum: sha256/8550e9589dbd594bfac93b81ecf129b1dc9d0d51e90f9696f1b2f9b2af32712b
     plugin: autotools
     configflags: [ --prefix=/usr, --disable-cxx, --disable-example-progs, --without-cd-drive, --without-cd-info, --without-cd-read, --without-cdda-player, --without-iso-info, --without-iso-read ]
     prime:
@@ -54,8 +54,8 @@ parts:
 
   libcdio-paranoia:
     after: [ libcdio ]
-    source: https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+0.94+2.tar.gz
-    source-checksum: sha256/d60f82ece97eeb92407a9ee03f3499c8983206672c28ae5e4e22179063c81941
+    source: https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+2.0.0.tar.bz2
+    source-checksum: sha256/4565c18caf401083c53733e6d2847b6671ba824cff1c7792b9039693d34713c1
     plugin: autotools
     configflags: [ --prefix=/usr, --disable-cxx, --disable-example-progs ]
     prime:
