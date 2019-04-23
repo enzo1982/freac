@@ -47,6 +47,33 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.1~alpha20190423" date="2019-04-23">
+            <description>
+                <p>New features:</p>
+                <ul>
+                    <li>Added support for ripping with more drives than CPU cores available</li>
+                    <li>Added an option to keep timestamps of source files</li>
+                    <li>Added support for PulseAudio output</li>
+                </ul>
+                <p>Enhancements:</p>
+                <ul>
+                    <li>Improved interoperability of playlist files with VLC</li>
+                    <li>Improved handling of cue sheets referencing multiple files</li>
+                    <li>Improved handling of WAV files with unknown length</li>
+                    <li>Added support for drag &amp; drop in the tag editor</li>
+                </ul>
+                <p>Bug fixes:</p>
+                <ul>
+                    <li>Fixed crash when showing freedb multi-match dialog</li>
+                    <li>Fixed float samples processing with Core Audio encoder</li>
+                    <li>Fixed MP4 output issues when in and out files are the same</li>
+                    <li>Fixed Opus granule pos calculation and vendor string</li>
+                    <li>Fixed Ogg serial number generation</li>
+                    <li>Fixed handling of very short Ogg files</li>
+                    <li>Fixed several stability issues</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1~alpha20181201a" date="2018-12-02">
             <description>
                 <p>Bug fixes:</p>

@@ -15,7 +15,9 @@ APPDIR=$1
 wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-$ARCH.AppImage"
 chmod a+x appimagetool-$ARCH.AppImage
 
-cp AppRun.release $APPDIR/AppRun
+cp AppRun $APPDIR
+chmod a+x $APPDIR/AppRun
+
 cp metadata/org.freac.freac.desktop $APPDIR
 cp $APPDIR/icons/freac.png $APPDIR/org.freac.freac.png
 
@@ -40,5 +42,6 @@ import_library libcurl.so
 import_library libssh2.so
 import_library libssl.so
 import_library libcrypto.so
+import_library libidn.so
 
 ./appimagetool-$ARCH.AppImage $APPDIR $APPDIR.AppImage

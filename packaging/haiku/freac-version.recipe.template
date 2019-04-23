@@ -15,7 +15,7 @@ Features include:
 - User interface available in 40+ languages
 - Optional command line interface"
 HOMEPAGE="https://freac.org/"
-COPYRIGHT="2001-2018 Robert Kausch"
+COPYRIGHT="2001-2019 Robert Kausch"
 LICENSE="GNU GPL v2"
 REVISION="1"
 SOURCE_URI="https://github.com/enzo1982/freac/releases/download/v${portVersion/\~alpha/-alpha-}/freac-${portVersion/\~alpha/-alpha-}.tar.gz"
@@ -39,13 +39,15 @@ PROVIDES="
 	"
 REQUIRES="
 	haiku$secondaryArchSuffix
+	boca$secondaryArchSuffix >= 1.0~alpha20190423
+	smooth$secondaryArchSuffix >= 0.8.74.0~pre6
 	cmd:ffmpeg
 	cmd:mpcdec
 	cmd:mpcenc
 	cmd:wavpack
 	cmd:wvunpack
-	lib:libsmooth_0.8.74$secondaryArchSuffix >= 0
-	lib:libboca_1.0$secondaryArchSuffix >= 0
+	lib:libsmooth_0.8.74$secondaryArchSuffix >= 1
+	lib:libboca_1.0$secondaryArchSuffix >= 1
 	lib:libcdio$secondaryArchSuffix
 	lib:libcdio_cdda$secondaryArchSuffix
 	lib:libcdio_paranoia$secondaryArchSuffix
@@ -67,7 +69,9 @@ REQUIRES="
 
 BUILD_REQUIRES="
 	haiku${secondaryArchSuffix}_devel
-	devel:libboca_1.0$secondaryArchSuffix >= 0
+	boca${secondaryArchSuffix}_devel >= 1.0~alpha20190423
+	smooth${secondaryArchSuffix}_devel >= 0.8.74.0~pre6
+	devel:libboca_1.0$secondaryArchSuffix >= 1
 	"
 BUILD_PREREQUIRES="
 	cmd:g++$secondaryArchSuffix
