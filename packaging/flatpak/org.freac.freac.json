@@ -185,9 +185,10 @@
         },
         {
             "name": "liburiparser",
+            "buildsystem": "cmake",
             "config-opts": [
-                "--disable-doc",
-                "--disable-test"
+                "-DURIPARSER_BUILD_DOCS=OFF",
+                "-DURIPARSER_BUILD_TESTS=OFF"
             ],
             "cleanup": [
                 "/bin/uriparse"
