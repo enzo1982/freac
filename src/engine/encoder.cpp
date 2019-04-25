@@ -172,6 +172,11 @@ Bool freac::Encoder::IsLossless() const
 	return encoder->IsLossless();
 }
 
+String freac::Encoder::GetEncoderName() const
+{
+	return encoder->GetName();
+}
+
 Void freac::Encoder::SetCalculateMD5(Bool calculateMD5)
 {
 	encoder->SetCalculateMD5(calculateMD5);

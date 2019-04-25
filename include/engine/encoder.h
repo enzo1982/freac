@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -45,6 +45,7 @@ namespace freac
 			Void				 SignalChapterChange();
 		accessors:
 			Bool				 IsLossless() const;
+			String				 GetEncoderName() const;
 
 			Int64				 GetEncodedSamples() const	{ return encodedSamples; }
 

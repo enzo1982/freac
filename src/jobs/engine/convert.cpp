@@ -46,7 +46,8 @@ Bool					 freac::JobConvert::conversionPaused	= False;
 Signal0<Void>				 freac::JobConvert::onStartEncoding;
 Signal1<Void, Bool>			 freac::JobConvert::onFinishEncoding;
 
-Signal3<Void, const BoCA::Track &,
+Signal4<Void, const BoCA::Track &,
+	      const String &,
 	      const String &,
 	      freac::ConversionStep>	 freac::JobConvert::onEncodeTrack;
 
@@ -408,6 +409,7 @@ Error freac::JobConvert::Perform()
 	Int		 trackID	= 0;
 	ConversionStep	 conversionStep = ConversionStepNone;
 	String		 decoderName;
+	String		 encoderName;
 
 	/* Instantiate and start worker threads.
 	 */
@@ -648,6 +650,7 @@ Error freac::JobConvert::Perform()
 				const Track	&workerTrack = worker->GetTrackToConvert();
 
 				if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+																		  encoderName    = worker->GetEncoderName(),
 																		  conversionStep = worker->GetConversionStep());
 
 				SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", workerTrack.origFilename));
@@ -702,7 +705,9 @@ Error freac::JobConvert::Perform()
 			if (first && conversionJobs.GetLast() == this && (this			      != lastConversion ||
 									  workerTrack.GetTrackID()    != trackID	||
 									  worker->GetConversionStep() != conversionStep ||
-									  worker->GetDecoderName()    != decoderName)) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+									  worker->GetDecoderName()    != decoderName	||
+									  worker->GetEncoderName()    != encoderName)) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+																								   encoderName    = worker->GetEncoderName(),
 																								   conversionStep = worker->GetConversionStep());
 
 			first = False;
@@ -878,6 +883,7 @@ Error freac::JobConvert::Perform()
 				if (!workerToUse->IsError())
 				{
 					if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = track.GetTrackID()), decoderName    = workerToUse->GetDecoderName(),
+																		    encoderName    = workerToUse->GetEncoderName(),
 																		    conversionStep = workerToUse->GetConversionStep());
 
 					SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", track.origFilename));
@@ -989,6 +995,7 @@ Error freac::JobConvert::Perform()
 			while (worker->IsWaiting() && !worker->IsIdle()) S::System::System::Sleep(1);
 
 			if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(singleTrackToEncode, decoderName    = worker->GetDecoderName(),
+												      encoderName    = worker->GetEncoderName(),
 												      conversionStep = worker->GetConversionStep());
 
 			SetText(i18n->AddEllipsis(i18n->TranslateString("Verifying %1", "Jobs::Convert")).Replace("%1", singleTrackToEncode.origFilename));

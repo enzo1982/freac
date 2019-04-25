@@ -64,7 +64,8 @@ namespace freac
 			static Signal0<Void>				 onStartEncoding;
 			static Signal1<Void, Bool>			 onFinishEncoding;
 
-			static Signal3<Void, const BoCA::Track &,
+			static Signal4<Void, const BoCA::Track &,
+					     const String &,
 					     const String &,
 					     ConversionStep>		 onEncodeTrack;
 
