@@ -1,6 +1,6 @@
-diff -Naur mac-sdk-4.66/Makefile mac-sdk-4.66-gcc/Makefile
---- mac-sdk-4.66/Makefile	1970-01-01 00:00:00 +0000
-+++ mac-sdk-4.66-gcc/Makefile	2019-04-20 10:32:45 +0000
+diff -Naur mac-sdk-4.69/Makefile mac-sdk-4.69-gcc/Makefile
+--- mac-sdk-4.69/Makefile	1970-01-01 00:00:00 +0000
++++ mac-sdk-4.69-gcc/Makefile	2019-04-20 10:32:45 +0000
 @@ -0,0 +1,103 @@
 +# Find system
 +UNAME	 = $(shell uname)
@@ -105,10 +105,10 @@ diff -Naur mac-sdk-4.66/Makefile mac-sdk-4.66-gcc/Makefile
 +
 +Source/Console/%.o: Source/Console/%.cpp
 +	$(CXX) $(CXXOPTS) $(CXXFLAGS) $< -o $@
-diff -Naur mac-sdk-4.66/Shared/All.h mac-sdk-4.66-gcc/Shared/All.h
---- mac-sdk-4.66/Shared/All.h	2019-04-18 21:42:56 +0000
-+++ mac-sdk-4.66-gcc/Shared/All.h	2019-04-20 10:31:47 +0000
-@@ -85,44 +85,17 @@
+diff -Naur mac-sdk-4.69/Shared/All.h mac-sdk-4.69-gcc/Shared/All.h
+--- mac-sdk-4.69/Shared/All.h	2019-04-25 20:02:21 +0000
++++ mac-sdk-4.69-gcc/Shared/All.h	2019-04-27 11:33:58 +0000
+@@ -87,44 +87,17 @@
  #define ENABLE_COMPRESSION_MODE_HIGH
  #define ENABLE_COMPRESSION_MODE_EXTRA_HIGH
  
@@ -157,7 +157,7 @@ diff -Naur mac-sdk-4.66/Shared/All.h mac-sdk-4.66-gcc/Shared/All.h
  
  	typedef uint64_t                                    uint64;
  	typedef uint32_t                                    uint32;
-@@ -174,9 +147,13 @@
+@@ -176,9 +149,13 @@
      #define TICK_COUNT_READ(VARIABLE)                   { struct timeval t; gettimeofday(&t, NULL); VARIABLE = t.tv_sec * 1000000LLU + t.tv_usec; }
      #define TICK_COUNT_FREQ                             1000000
      #define ASSERT(e)
@@ -173,9 +173,9 @@ diff -Naur mac-sdk-4.66/Shared/All.h mac-sdk-4.66-gcc/Shared/All.h
      #define strcpy_s(A, B, C) strcpy(A, C)
      #define _tcscat_s(A, B, C) _tcscat(A, C)
  #endif
-diff -Naur mac-sdk-4.66/Shared/MACDll.h mac-sdk-4.66-gcc/Shared/MACDll.h
---- mac-sdk-4.66/Shared/MACDll.h	2019-03-02 19:31:09 +0000
-+++ mac-sdk-4.66-gcc/Shared/MACDll.h	2019-04-13 17:50:31 +0000
+diff -Naur mac-sdk-4.69/Shared/MACDll.h mac-sdk-4.69-gcc/Shared/MACDll.h
+--- mac-sdk-4.69/Shared/MACDll.h	2019-03-02 19:31:09 +0000
++++ mac-sdk-4.69-gcc/Shared/MACDll.h	2019-04-13 17:50:31 +0000
 @@ -64,9 +64,9 @@
  {
      DLLEXPORT APE_COMPRESS_HANDLE __stdcall c_APECompress_Create(int * pErrorCode = NULL);
@@ -189,9 +189,9 @@ diff -Naur mac-sdk-4.66/Shared/MACDll.h mac-sdk-4.66-gcc/Shared/MACDll.h
      DLLEXPORT int __stdcall c_APECompress_GetBufferBytesAvailable(APE_COMPRESS_HANDLE hAPECompress);
      DLLEXPORT unsigned char * __stdcall c_APECompress_LockBuffer(APE_COMPRESS_HANDLE hAPECompress, APE::int64 * pBytesAvailable);
      DLLEXPORT int __stdcall c_APECompress_UnlockBuffer(APE_COMPRESS_HANDLE hAPECompress, int nBytesAdded, BOOL bProcess = true);
-diff -Naur mac-sdk-4.66/Source/Console/Console.cpp mac-sdk-4.66-gcc/Source/Console/Console.cpp
---- mac-sdk-4.66/Source/Console/Console.cpp	2019-03-02 19:31:09 +0000
-+++ mac-sdk-4.66-gcc/Source/Console/Console.cpp	2019-04-13 17:51:32 +0000
+diff -Naur mac-sdk-4.69/Source/Console/Console.cpp mac-sdk-4.69-gcc/Source/Console/Console.cpp
+--- mac-sdk-4.69/Source/Console/Console.cpp	2019-04-23 22:17:51 +0000
++++ mac-sdk-4.69-gcc/Source/Console/Console.cpp	2019-04-27 11:31:44 +0000
 @@ -21,7 +21,12 @@
  #define UNDEFINED_MODE		-1
  
@@ -206,9 +206,9 @@ diff -Naur mac-sdk-4.66/Source/Console/Console.cpp mac-sdk-4.66-gcc/Source/Conso
  	#define _tmain(argc, argv) main(argc, argv)
  	#define _tcscpy_s(dst, num, src) strcpy(dst, src)
  	#define _tcsncpy_s(dst, num, src, count) strncpy(dst, src, count)
-diff -Naur mac-sdk-4.66/Source/MACDll/MACDll.h mac-sdk-4.66-gcc/Source/MACDll/MACDll.h
---- mac-sdk-4.66/Source/MACDll/MACDll.h	2019-03-02 19:31:09 +0000
-+++ mac-sdk-4.66-gcc/Source/MACDll/MACDll.h	1970-01-01 00:00:00 +0000
+diff -Naur mac-sdk-4.69/Source/MACDll/MACDll.h mac-sdk-4.69-gcc/Source/MACDll/MACDll.h
+--- mac-sdk-4.69/Source/MACDll/MACDll.h	2019-03-02 19:31:09 +0000
++++ mac-sdk-4.69-gcc/Source/MACDll/MACDll.h	1970-01-01 00:00:00 +0000
 @@ -1,97 +0,0 @@
 -/*****************************************************************************************
 -Monkey's Audio MACDll.h (include for using MACDll.dll in your projects)
@@ -307,9 +307,9 @@ diff -Naur mac-sdk-4.66/Source/MACDll/MACDll.h mac-sdk-4.66-gcc/Source/MACDll/MA
 -    DLLEXPORT int __stdcall c_APEDecompress_Seek(APE_DECOMPRESS_HANDLE hAPEDecompress, int nBlockOffset);
 -    DLLEXPORT int __stdcall c_APEDecompress_GetInfo(APE_DECOMPRESS_HANDLE hAPEDecompress, APE::APE_DECOMPRESS_FIELDS Field, int nParam1 = 0, int nParam2 = 0);
 -}
-diff -Naur mac-sdk-4.66/Source/MACLib/APETag.h mac-sdk-4.66-gcc/Source/MACLib/APETag.h
---- mac-sdk-4.66/Source/MACLib/APETag.h	2019-04-15 21:00:59 +0000
-+++ mac-sdk-4.66-gcc/Source/MACLib/APETag.h	1970-01-01 00:00:00 +0000
+diff -Naur mac-sdk-4.69/Source/MACLib/APETag.h mac-sdk-4.69-gcc/Source/MACLib/APETag.h
+--- mac-sdk-4.69/Source/MACLib/APETag.h	2019-04-25 20:01:43 +0000
++++ mac-sdk-4.69-gcc/Source/MACLib/APETag.h	1970-01-01 00:00:00 +0000
 @@ -1,298 +0,0 @@
 -#pragma once
 -
@@ -406,7 +406,7 @@ diff -Naur mac-sdk-4.66/Source/MACLib/APETag.h mac-sdk-4.66-gcc/Source/MACLib/AP
 -/*****************************************************************************************
 -Footer (and header) flags
 -*****************************************************************************************/
--#define APE_TAG_FLAG_CONTAINS_HEADER            (1 << 31)
+-#define APE_TAG_FLAG_CONTAINS_HEADER            ((unsigned int) 1 << 31)
 -#define APE_TAG_FLAG_CONTAINS_FOOTER            (1 << 30)
 -#define APE_TAG_FLAG_IS_HEADER                  (1 << 29)
 -
@@ -610,9 +610,9 @@ diff -Naur mac-sdk-4.66/Source/MACLib/APETag.h mac-sdk-4.66-gcc/Source/MACLib/AP
 -
 -}
 \ No newline at end of file
-diff -Naur mac-sdk-4.66/Source/MACLib/MACLib.h mac-sdk-4.66-gcc/Source/MACLib/MACLib.h
---- mac-sdk-4.66/Source/MACLib/MACLib.h	2019-03-02 19:31:10 +0000
-+++ mac-sdk-4.66-gcc/Source/MACLib/MACLib.h	1970-01-01 00:00:00 +0000
+diff -Naur mac-sdk-4.69/Source/MACLib/MACLib.h mac-sdk-4.69-gcc/Source/MACLib/MACLib.h
+--- mac-sdk-4.69/Source/MACLib/MACLib.h	2019-03-02 19:31:10 +0000
++++ mac-sdk-4.69-gcc/Source/MACLib/MACLib.h	1970-01-01 00:00:00 +0000
 @@ -1,483 +0,0 @@
 -/*****************************************************************************************
 -Monkey's Audio MACLib.h (include for using MACLib.lib in your projects)
@@ -1097,9 +1097,9 @@ diff -Naur mac-sdk-4.66/Source/MACLib/MACLib.h mac-sdk-4.66-gcc/Source/MACLib/MA
 -    DLLEXPORT int __stdcall FillWaveFormatEx(APE::WAVEFORMATEX * pWaveFormatEx, int nSampleRate = 44100, int nBitsPerSample = 16, int nChannels = 2);
 -    DLLEXPORT int __stdcall FillWaveHeader(APE::WAVE_HEADER * pWAVHeader, APE::intn nAudioBytes, APE::WAVEFORMATEX * pWaveFormatEx, APE::intn nTerminatingBytes = 0);
 -}
-diff -Naur mac-sdk-4.66/Source/MACLib/Old/Anti-Predictor.cpp mac-sdk-4.66-gcc/Source/MACLib/Old/Anti-Predictor.cpp
---- mac-sdk-4.66/Source/MACLib/Old/Anti-Predictor.cpp	2019-03-02 19:31:10 +0000
-+++ mac-sdk-4.66-gcc/Source/MACLib/Old/Anti-Predictor.cpp	2019-04-13 17:49:12 +0000
+diff -Naur mac-sdk-4.69/Source/MACLib/Old/Anti-Predictor.cpp mac-sdk-4.69-gcc/Source/MACLib/Old/Anti-Predictor.cpp
+--- mac-sdk-4.69/Source/MACLib/Old/Anti-Predictor.cpp	2019-03-02 19:31:10 +0000
++++ mac-sdk-4.69-gcc/Source/MACLib/Old/Anti-Predictor.cpp	2019-04-13 17:49:12 +0000
 @@ -1,7 +1,7 @@
  #include "All.h"
  #ifdef APE_BACKWARDS_COMPATIBILITY
@@ -1109,9 +1109,9 @@ diff -Naur mac-sdk-4.66/Source/MACLib/Old/Anti-Predictor.cpp mac-sdk-4.66-gcc/So
  #include "Anti-Predictor.h"
  
  namespace APE
-diff -Naur mac-sdk-4.66/Source/Projects/NonWindows/Makefile mac-sdk-4.66-gcc/Source/Projects/NonWindows/Makefile
---- mac-sdk-4.66/Source/Projects/NonWindows/Makefile	2019-03-02 19:31:10 +0000
-+++ mac-sdk-4.66-gcc/Source/Projects/NonWindows/Makefile	2019-03-03 13:43:00 +0000
+diff -Naur mac-sdk-4.69/Source/Projects/NonWindows/Makefile mac-sdk-4.69-gcc/Source/Projects/NonWindows/Makefile
+--- mac-sdk-4.69/Source/Projects/NonWindows/Makefile	2019-03-02 19:31:10 +0000
++++ mac-sdk-4.69-gcc/Source/Projects/NonWindows/Makefile	2019-03-03 13:43:00 +0000
 @@ -3,7 +3,7 @@
  
  VERSION	  = 4
@@ -1121,10 +1121,10 @@ diff -Naur mac-sdk-4.66/Source/Projects/NonWindows/Makefile mac-sdk-4.66-gcc/Sou
  LDOPTS	  = -lstdc++
  
  DLLLDOPTS = -shared
-diff -Naur mac-sdk-4.66/Source/Shared/All.h mac-sdk-4.66-gcc/Source/Shared/All.h
---- mac-sdk-4.66/Source/Shared/All.h	2019-04-18 21:42:56 +0000
-+++ mac-sdk-4.66-gcc/Source/Shared/All.h	1970-01-01 00:00:00 +0000
-@@ -1,348 +0,0 @@
+diff -Naur mac-sdk-4.69/Source/Shared/All.h mac-sdk-4.69-gcc/Source/Shared/All.h
+--- mac-sdk-4.69/Source/Shared/All.h	2019-04-25 20:02:21 +0000
++++ mac-sdk-4.69-gcc/Source/Shared/All.h	1970-01-01 00:00:00 +0000
+@@ -1,350 +0,0 @@
 -#pragma once
 -
 -/*****************************************************************************************
@@ -1182,6 +1182,8 @@ diff -Naur mac-sdk-4.66/Source/Shared/All.h mac-sdk-4.66-gcc/Source/Shared/All.h
 -/*****************************************************************************************
 -Global compiler settings (useful for porting)
 -*****************************************************************************************/
+-#pragma warning(disable: 4100)
+-
 -// assembly code (helps performance, but limits portability)
 -#if !defined(PLATFORM_ARM) && !defined(PLATFORM_ANDROID)
 -	#if defined __SSE2__ || _M_IX86_FP == 2 || defined _M_X64
@@ -1332,12 +1334,12 @@ diff -Naur mac-sdk-4.66/Source/Shared/All.h mac-sdk-4.66-gcc/Source/Shared/All.h
 -Global defines
 -*****************************************************************************************/
 -#define MAC_FILE_VERSION_NUMBER                         3990
--#define MAC_VERSION_STRING                              _T("4.66")
--#define MAC_NAME                                        _T("Monkey's Audio 4.66")
--#define PLUGIN_NAME                                     "Monkey's Audio Player v4.66"
--#define MJ_PLUGIN_NAME                                  _T("APE Plugin (v4.66)")
--#define CONSOLE_NAME                                    _T("--- Monkey's Audio Console Front End (v 4.66) (c) Matthew T. Ashland ---\n")
--#define PLUGIN_ABOUT                                    _T("Monkey's Audio Player v4.66\nCopyrighted (c) 2000-2019 by Matthew T. Ashland")
+-#define MAC_VERSION_STRING                              _T("4.69")
+-#define MAC_NAME                                        _T("Monkey's Audio 4.69")
+-#define PLUGIN_NAME                                     "Monkey's Audio Player v4.69"
+-#define MJ_PLUGIN_NAME                                  _T("APE Plugin (v4.69)")
+-#define CONSOLE_NAME                                    _T("--- Monkey's Audio Console Front End (v 4.69) (c) Matthew T. Ashland ---\n")
+-#define PLUGIN_ABOUT                                    _T("Monkey's Audio Player v4.69\nCopyrighted (c) 2000-2019 by Matthew T. Ashland")
 -#define MAC_DLL_INTERFACE_VERSION_NUMBER                1000
 -#define ONE_MILLION										1000000
 -#ifdef PLATFORM_WINDOWS
@@ -1368,11 +1370,11 @@ diff -Naur mac-sdk-4.66/Source/Shared/All.h mac-sdk-4.66-gcc/Source/Shared/All.h
 -
 -#define CATCH_ERRORS(CODE) try { CODE } catch(...) { }
 -
--#define RETURN_ON_ERROR(FUNCTION) {    int nResult = FUNCTION; if (nResult != 0) { return nResult; } }
--#define RETURN_VALUE_ON_ERROR(FUNCTION, VALUE) { int nResult = FUNCTION; if (nResult != 0) { return VALUE; } }
+-#define RETURN_ON_ERROR(FUNCTION) {    int nFunctionResult = FUNCTION; if (nFunctionResult != 0) { return nFunctionResult; } }
+-#define RETURN_VALUE_ON_ERROR(FUNCTION, VALUE) { int nFunctionResult = FUNCTION; if (nFunctionResult != 0) { return VALUE; } }
 -#define RETURN_ON_EXCEPTION(CODE, VALUE) { try { CODE } catch(...) { return VALUE; } }
 -
--#define THROW_ON_ERROR(CODE) { intn nResult = (intn) CODE; if (nResult != 0) throw(nResult); }
+-#define THROW_ON_ERROR(CODE) { intn nThrowResult = (intn) CODE; if (nThrowResult != 0) throw(nThrowResult); }
 -
 -#define EXPAND_1_TIMES(CODE) CODE
 -#define EXPAND_2_TIMES(CODE) CODE CODE
@@ -1473,9 +1475,9 @@ diff -Naur mac-sdk-4.66/Source/Shared/All.h mac-sdk-4.66-gcc/Source/Shared/All.h
 -    { ERROR_BAD_PARAMETER                         , _T("bad parameter") },                          \
 -    { ERROR_APE_COMPRESS_TOO_MUCH_DATA            , _T("APE compress too much data") },             \
 -    { ERROR_UNDEFINED                             , _T("undefined") },
-diff -Naur mac-sdk-4.66/Source/Shared/IO.h mac-sdk-4.66-gcc/Source/Shared/IO.h
---- mac-sdk-4.66/Source/Shared/IO.h	2019-03-02 19:31:11 +0000
-+++ mac-sdk-4.66-gcc/Source/Shared/IO.h	1970-01-01 00:00:00 +0000
+diff -Naur mac-sdk-4.69/Source/Shared/IO.h mac-sdk-4.69-gcc/Source/Shared/IO.h
+--- mac-sdk-4.69/Source/Shared/IO.h	2019-03-02 19:31:11 +0000
++++ mac-sdk-4.69-gcc/Source/Shared/IO.h	1970-01-01 00:00:00 +0000
 @@ -1,58 +0,0 @@
 -#pragma once
 -
@@ -1535,9 +1537,9 @@ diff -Naur mac-sdk-4.66/Source/Shared/IO.h mac-sdk-4.66-gcc/Source/Shared/IO.h
 -};
 -
 -}
-diff -Naur mac-sdk-4.66/Source/Shared/MACDll.h mac-sdk-4.66-gcc/Source/Shared/MACDll.h
---- mac-sdk-4.66/Source/Shared/MACDll.h	2019-03-02 19:31:11 +0000
-+++ mac-sdk-4.66-gcc/Source/Shared/MACDll.h	1970-01-01 00:00:00 +0000
+diff -Naur mac-sdk-4.69/Source/Shared/MACDll.h mac-sdk-4.69-gcc/Source/Shared/MACDll.h
+--- mac-sdk-4.69/Source/Shared/MACDll.h	2019-03-02 19:31:11 +0000
++++ mac-sdk-4.69-gcc/Source/Shared/MACDll.h	1970-01-01 00:00:00 +0000
 @@ -1,97 +0,0 @@
 -/*****************************************************************************************
 -Monkey's Audio MACDll.h (include for using MACDll.dll in your projects)
@@ -1636,10 +1638,10 @@ diff -Naur mac-sdk-4.66/Source/Shared/MACDll.h mac-sdk-4.66-gcc/Source/Shared/MA
 -    DLLEXPORT int __stdcall c_APEDecompress_Seek(APE_DECOMPRESS_HANDLE hAPEDecompress, int nBlockOffset);
 -    DLLEXPORT int __stdcall c_APEDecompress_GetInfo(APE_DECOMPRESS_HANDLE hAPEDecompress, APE::APE_DECOMPRESS_FIELDS Field, int nParam1 = 0, int nParam2 = 0);
 -}
-diff -Naur mac-sdk-4.66/Source/Shared/NoWindows.h mac-sdk-4.66-gcc/Source/Shared/NoWindows.h
---- mac-sdk-4.66/Source/Shared/NoWindows.h	2019-03-02 19:31:11 +0000
-+++ mac-sdk-4.66-gcc/Source/Shared/NoWindows.h	1970-01-01 00:00:00 +0000
-@@ -1,53 +0,0 @@
+diff -Naur mac-sdk-4.69/Source/Shared/NoWindows.h mac-sdk-4.69-gcc/Source/Shared/NoWindows.h
+--- mac-sdk-4.69/Source/Shared/NoWindows.h	2019-04-24 20:25:14 +0000
++++ mac-sdk-4.69-gcc/Source/Shared/NoWindows.h	1970-01-01 00:00:00 +0000
+@@ -1,56 +0,0 @@
 -#pragma once
 -
 -#if !defined(PLATFORM_WINDOWS)
@@ -1677,6 +1679,9 @@ diff -Naur mac-sdk-4.66/Source/Shared/NoWindows.h mac-sdk-4.66-gcc/Source/Shared
 -
 -#define CALLBACK
 -
+-#ifdef _T
+-#undef _T
+-#endif
 -#define _T(x) L ## x
 -
 -#define _strnicmp strncasecmp
@@ -1693,9 +1698,9 @@ diff -Naur mac-sdk-4.66/Source/Shared/NoWindows.h mac-sdk-4.66-gcc/Source/Shared
 -}
 -
 -#endif // #ifndef _WIN32
-diff -Naur mac-sdk-4.66/Source/Shared/SmartPtr.h mac-sdk-4.66-gcc/Source/Shared/SmartPtr.h
---- mac-sdk-4.66/Source/Shared/SmartPtr.h	2019-03-02 19:31:11 +0000
-+++ mac-sdk-4.66-gcc/Source/Shared/SmartPtr.h	1970-01-01 00:00:00 +0000
+diff -Naur mac-sdk-4.69/Source/Shared/SmartPtr.h mac-sdk-4.69-gcc/Source/Shared/SmartPtr.h
+--- mac-sdk-4.69/Source/Shared/SmartPtr.h	2019-03-02 19:31:11 +0000
++++ mac-sdk-4.69-gcc/Source/Shared/SmartPtr.h	1970-01-01 00:00:00 +0000
 @@ -1,91 +0,0 @@
 -#pragma once
 -
@@ -1788,9 +1793,9 @@ diff -Naur mac-sdk-4.66/Source/Shared/SmartPtr.h mac-sdk-4.66-gcc/Source/Shared/
 -#endif
 -
 -}
-diff -Naur mac-sdk-4.66/Source/Shared/StdLibFileIO.cpp mac-sdk-4.66-gcc/Source/Shared/StdLibFileIO.cpp
---- mac-sdk-4.66/Source/Shared/StdLibFileIO.cpp	2019-03-02 19:31:11 +0000
-+++ mac-sdk-4.66-gcc/Source/Shared/StdLibFileIO.cpp	2019-04-14 13:20:10 +0000
+diff -Naur mac-sdk-4.69/Source/Shared/StdLibFileIO.cpp mac-sdk-4.69-gcc/Source/Shared/StdLibFileIO.cpp
+--- mac-sdk-4.69/Source/Shared/StdLibFileIO.cpp	2019-04-25 20:01:43 +0000
++++ mac-sdk-4.69-gcc/Source/Shared/StdLibFileIO.cpp	2019-04-27 11:30:19 +0000
 @@ -218,9 +218,7 @@
  {
  #ifdef PLATFORM_ANDROID
@@ -1802,9 +1807,9 @@ diff -Naur mac-sdk-4.66/Source/Shared/StdLibFileIO.cpp mac-sdk-4.66-gcc/Source/S
      return ftello(m_pFile);
  #else
  	return _ftelli64(m_pFile);
-diff -Naur mac-sdk-4.66/Source/Shared/WindowsEnvironment.h mac-sdk-4.66-gcc/Source/Shared/WindowsEnvironment.h
---- mac-sdk-4.66/Source/Shared/WindowsEnvironment.h	2019-03-02 19:31:11 +0000
-+++ mac-sdk-4.66-gcc/Source/Shared/WindowsEnvironment.h	1970-01-01 00:00:00 +0000
+diff -Naur mac-sdk-4.69/Source/Shared/WindowsEnvironment.h mac-sdk-4.69-gcc/Source/Shared/WindowsEnvironment.h
+--- mac-sdk-4.69/Source/Shared/WindowsEnvironment.h	2019-03-02 19:31:11 +0000
++++ mac-sdk-4.69-gcc/Source/Shared/WindowsEnvironment.h	1970-01-01 00:00:00 +0000
 @@ -1,27 +0,0 @@
 -#pragma once
 -
@@ -1834,8 +1839,8 @@ diff -Naur mac-sdk-4.66/Source/Shared/WindowsEnvironment.h mac-sdk-4.66-gcc/Sour
 -#define _CRT_NON_CONFORMING_SWPRINTFS
 -#define _AFX_NO_MFC_CONTROLS_IN_DIALOGS
 \ No newline at end of file
-diff -Naur mac-sdk-4.66/configure mac-sdk-4.66-gcc/configure
---- mac-sdk-4.66/configure	1970-01-01 00:00:00 +0000
-+++ mac-sdk-4.66-gcc/configure	2019-03-02 17:34:04 +0000
+diff -Naur mac-sdk-4.69/configure mac-sdk-4.69-gcc/configure
+--- mac-sdk-4.69/configure	1970-01-01 00:00:00 +0000
++++ mac-sdk-4.69-gcc/configure	2019-03-02 17:34:04 +0000
 @@ -0,0 +1 @@
 +#!/bin/sh
