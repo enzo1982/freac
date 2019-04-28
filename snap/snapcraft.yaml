@@ -91,14 +91,14 @@ parts:
 
   libmac:
     after: [ patches ]
-    source: https://monkeysaudio.com/files/MAC_SDK_469.zip
-    source-checksum: sha256/90e09014353ea2d1cfa6017ed74f40c02ba1f89fd86e1c492ffffd7e70441848
+    source: https://monkeysaudio.com/files/MAC_SDK_470.zip
+    source-checksum: sha256/442bffe3e36bd90b4cfe92a07de7a9cfc9744c4fd643afd0bdd4a8985b6d99bf
     source-subdir: .
     plugin: make
     make-parameters: [ prefix=/usr ]
     override-build: |
       if [ `lscpu | grep -i 'byte order' | awk '{ print tolower($3) }'` = "little" ]; then
-        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-4.69-gcc.patch
+        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-4.70-gcc.patch
         snapcraftctl build
       fi
     prime:
