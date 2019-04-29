@@ -132,6 +132,7 @@ Int freac::ConvertWorker::Convert()
 	Bool		 error		= False;
 
 	DateTime	 fileTime	= File(trackToConvert.origFilename).GetWriteTime();
+	Bool		 isFile		= !trackToConvert.origFilename.StartsWith("device://");
 
 	String		 encodeChecksum;
 	String		 verifyChecksum;
@@ -470,7 +471,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Set file time stamp to that of original file if requested.
 		 */
-		if (step == conversionSteps - 1 && keepTimeStamps && outFile.Exists()) outFile.SetWriteTime(fileTime);
+		if (step == conversionSteps - 1 && keepTimeStamps && isFile && outFile.Exists()) outFile.SetWriteTime(fileTime);
 
 		/* Revert to waiting state when there are more steps left.
 		 */
