@@ -1,13 +1,13 @@
 diff -Naur mac-sdk-4.70/Makefile mac-sdk-4.70-gcc/Makefile
 --- mac-sdk-4.70/Makefile	1970-01-01 00:00:00 +0000
-+++ mac-sdk-4.70-gcc/Makefile	2019-04-27 19:24:04 +0000
++++ mac-sdk-4.70-gcc/Makefile	2019-05-01 09:07:20 +0000
 @@ -0,0 +1,103 @@
 +# Find system
 +UNAME	 = $(shell uname)
 +
 +VERSION	  = 5
 +
-+CXXOPTS	  = -I Shared -I Source/Shared -I Source/MACLib -c
++CXXOPTS	  = -I Source/Shared -I Source/MACLib -c
 +LDOPTS	  = -lstdc++
 +
 +DLLLDOPTS = -shared
@@ -190,6 +190,18 @@ diff -Naur mac-sdk-4.70/Source/Console/Console.cpp mac-sdk-4.70-gcc/Source/Conso
  	#define _tmain(argc, argv) main(argc, argv)
  	#define _tcscpy_s(dst, num, src) strcpy(dst, src)
  	#define _tcsncpy_s(dst, num, src, count) strncpy(dst, src, count)
+diff -Naur mac-sdk-4.70/Source/Projects/NonWindows/Makefile mac-sdk-4.70-gcc/Source/Projects/NonWindows/Makefile
+--- mac-sdk-4.70/Source/Projects/NonWindows/Makefile	2019-04-27 19:24:04 +0000
++++ mac-sdk-4.70-gcc/Source/Projects/NonWindows/Makefile	2019-05-01 09:07:33 +0000
+@@ -3,7 +3,7 @@
+ 
+ VERSION	  = 5
+ 
+-CXXOPTS	  = -I Shared -I Source/Shared -I Source/MACLib -c
++CXXOPTS	  = -I Source/Shared -I Source/MACLib -c
+ LDOPTS	  = -lstdc++
+ 
+ DLLLDOPTS = -shared
 diff -Naur mac-sdk-4.70/Source/Shared/All.h mac-sdk-4.70-gcc/Source/Shared/All.h
 --- mac-sdk-4.70/Source/Shared/All.h	2019-04-27 23:48:24 +0000
 +++ mac-sdk-4.70-gcc/Source/Shared/All.h	2019-04-28 15:55:29 +0000
