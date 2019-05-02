@@ -130,7 +130,9 @@ freac::freac::freac() : Application(appName)
 
 	/* Connect version information to BoCA callbacks.
 	 */
-	BoCA::Application::Get()->getClientName.Connect(appLongName);
+	BoCA::Application::Get()->getScreenName.Connect(appLongName);
+
+	BoCA::Application::Get()->getClientName.Connect(appName);
 	BoCA::Application::Get()->getClientVersion.Connect(version);
 
 	/* Start job manager.
