@@ -103,13 +103,13 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://monkeysaudio.com/files/MAC_SDK_470.zip",
-                    "sha256": "442bffe3e36bd90b4cfe92a07de7a9cfc9744c4fd643afd0bdd4a8985b6d99bf",
+                    "url": "https://monkeysaudio.com/files/MAC_SDK_471.zip",
+                    "sha256": "557adc2ec6865bfb0ba6c26d461f4c6172f1d542f71b3cf47f0cef52f99ac664",
                     "strip-components": 0
                 },
                 {
                     "type": "patch",
-                    "path": "patches/mac-sdk-4.70-gcc.patch"
+                    "path": "patches/mac-sdk-4.71-gcc.patch"
                 }
             ]
         },
@@ -196,8 +196,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/uriparser/uriparser/releases/download/uriparser-0.9.2/uriparser-0.9.2.tar.bz2",
-                    "sha256": "759c1b6ad256bb5b14217480dee4f2d79dd605fb0dd0efa7d7404debe232ca14"
+                    "url": "https://github.com/uriparser/uriparser/releases/download/uriparser-0.9.3/uriparser-0.9.3.tar.bz2",
+                    "sha256": "28af4adb05e811192ab5f04566bebc5ebf1c30d9ec19138f944963d52419e28f"
                 }
             ]
         },
