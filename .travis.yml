@@ -49,10 +49,24 @@ matrix:
             - yasm
             - wine1.6-dev
 
+install:
+  - |
+    if [ $TRAVIS_OS_NAME = osx ]; then
+      brew install libcdio
+      wget https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+2.0.0.tar.bz2
+      tar xfj libcdio-paranoia-10.2+2.0.0.tar.bz2
+      cd libcdio-paranoia-10.2+2.0.0
+      ./configure --prefix=/usr/local
+      make && sudo make install
+      cd ..
+    fi
+
 script:
   - |
     # Build libcdio
-    ./tools/build-codecs libcdio libcdio-paranoia
+    if [ $TRAVIS_OS_NAME != osx ]; then
+      ./tools/build-codecs libcdio libcdio-paranoia
+    fi
   - |
     # Build libcurl
     if [ $AppImageBuild = True ]; then
