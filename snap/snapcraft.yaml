@@ -6,7 +6,7 @@ description: |
   fre:ac is a free and open source audio converter. It comes with
   an integrated tag editor and converts between various formats.
 
-grade: devel
+grade: stable
 confinement: strict
 
 icon: icons/freac.png
@@ -91,14 +91,14 @@ parts:
 
   libmac:
     after: [ patches ]
-    source: https://monkeysaudio.com/files/MAC_SDK_471.zip
-    source-checksum: sha256/557adc2ec6865bfb0ba6c26d461f4c6172f1d542f71b3cf47f0cef52f99ac664
+    source: https://monkeysaudio.com/files/MAC_SDK_472.zip
+    source-checksum: sha256/43554715ee4f6e7006b6d26db0804274f48af75ccf23848a083d5c09e7afcea6
     source-subdir: .
     plugin: make
     make-parameters: [ prefix=/usr ]
     override-build: |
       if [ `lscpu | grep -i 'byte order' | awk '{ print tolower($3) }'` = "little" ]; then
-        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-4.71-gcc.patch
+        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-4.72-gcc.patch
         snapcraftctl build
       fi
     prime:
