@@ -53,9 +53,9 @@ install:
   - |
     if [ $TRAVIS_OS_NAME = osx ]; then
       brew install libcdio
-      wget https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+2.0.0.tar.bz2
-      tar xfj libcdio-paranoia-10.2+2.0.0.tar.bz2
-      cd libcdio-paranoia-10.2+2.0.0
+      wget https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+0.94+2.tar.gz
+      tar xfz libcdio-paranoia-10.2+0.94+2.tar.gz
+      cd libcdio-paranoia-10.2+0.94+2
       ./configure --prefix=/usr/local
       make && sudo make install
       cd ..
