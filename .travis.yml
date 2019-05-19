@@ -11,55 +11,20 @@ matrix:
       addons:
         apt:
           packages:
-            - libasound2-dev
-            - libbz2-dev
-            - libcdio-paranoia-dev
             - libcurl4-openssl-dev
-            - libexpat1-dev
-            - libfribidi-dev
             - libgtk-3-dev
-            - libjpeg-dev
+            - libpulse-dev
             - libudev-dev
-            - liburiparser-dev
-            - libxml2-dev
 
     - os: linux
       compiler: clang
       addons:
         apt:
           packages:
-            - libasound2-dev
-            - libbz2-dev
-            - libcdio-paranoia-dev
             - libcurl4-openssl-dev
-            - libexpat1-dev
-            - libfribidi-dev
             - libgtk-3-dev
-            - libjpeg-dev
+            - libpulse-dev
             - libudev-dev
-            - liburiparser-dev
-            - libxml2-dev
-            - libcdio-paranoia1
-            - libasound2
-            - liburiparser1
-            - libav-tools
-            - libmp3lame0
-            - libmpg123-0
-            - libfaac0
-            - libfdk-aac0
-            - libfaad2
-            - libflac8
-            - libmp4v2-2
-            - libogg0
-            - libopus0
-            - librubberband2
-            - libsamplerate0
-            - libsndfile1
-            - libspeex1
-            - libvorbis0a
-            - libvorbisenc2
-            - musepack-tools
-            - wavpack
 
     - os: osx
       compiler: gcc
@@ -67,101 +32,138 @@ matrix:
     - os: osx
       compiler: clang
 
-before_install:
-  - if [ $TRAVIS_OS_NAME = osx ]; then brew install libcdio; fi
-  - if [ $TRAVIS_OS_NAME = osx ]; then wget https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+0.94+2.tar.gz && tar xfz libcdio-paranoia-10.2+0.94+2.tar.gz && cd libcdio-paranoia-10.2+0.94+2 && ./configure --prefix=/usr/local && make && sudo make install && cd ..; fi
-
-install:
-  - git clone https://github.com/enzo1982/smooth.git enzo1982/smooth && cd enzo1982/smooth && make && sudo make install prefix=/usr && cd ../..
-  - git clone https://github.com/enzo1982/boca.git enzo1982/boca && cd enzo1982/boca && make && sudo make install prefix=/usr && cd ../..
+    - os: linux
+      compiler: clang
+      env:
+        - AppImageBuild=True
+      addons:
+        apt:
+          packages:
+            - g++-multilib
+            - libasound2-dev
+            - libgtk-3-dev
+            - libpulse-dev
+            - libssl-dev
+            - libudev-dev
+            - nasm
+            - yasm
+            - wine1.6-dev
 
 script:
-  - sed -i -e 's|/usr/local|/usr|g' Makefile-options
-  - make -j$(nproc)
   - |
-    if [ $TRAVIS_OS_NAME = linux ] && [ $CC = clang ] ; then 
-      make install DESTDIR=$(readlink -f appdir)
-      apt download libmp3lame0 libmpg123-0 libfaac0 libfdk-aac0 libfaad2 libflac8 libmp4v2-2 libogg0 libopus0 librubberband2 libsamplerate0 libsndfile1 libspeex1 libvorbis0a libvorbisenc2 musepack-tools wavpack
-      ( cd appdir/ ; find ../ -name '*.deb' -exec dpkg-deb -x {} . \; )
-      mkdir -p appdir/usr/lib ; cp -r /usr/lib/boca appdir/usr/lib
-      install -Dm 0755 /usr/bin/smooth-translator appdir/usr/bin/smooth-translator
+    # Build libcdio
+    ./tools/build-codecs libcdio libcdio-paranoia
+  - |
+    # Build libcurl
+    if [ $AppImageBuild = True ]; then
+      wget -c https://curl.haxx.se/download/curl-7.64.1.tar.bz2
+      tar xfj curl-7.64.1.tar.bz2
+      cd curl-7.64.1
+      ./configure --with-ssl --without-librtmp --disable-ldap
+      make -j$(nproc) && sudo make install
+      cd ..
+    fi
+  - |
+    # Build smooth
+    git clone https://github.com/enzo1982/smooth.git enzo1982/smooth
+    cd enzo1982/smooth
+    if [ $AppImageBuild = True ]; then
+      CONFIG="release,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib"
+    fi
+    make config=$CONFIG BUILD_V8=False -j$(nproc) && sudo make config=$CONFIG BUILD_V8=False install
+    cd ../..
+  - |
+    # Build BoCA
+    git clone https://github.com/enzo1982/boca.git enzo1982/boca
+    cd enzo1982/boca
+    CONFIG="release,bundledlibexpat,bundledliburiparser,bundledzlib"
+    make config=$CONFIG -j$(nproc) && sudo make config=$CONFIG install
+    if [ $AppImageBuild = True ]; then
+      # Build 32 bit Core Audio connector
+      cd components/encoder/coreaudioconnect/connector
+      make BUILD_X86=True config=$CONFIG clean && make BUILD_X86=True config=$CONFIG -j$(nproc)
+      sudo install ../../../../bin/boca_encoder_coreaudioconnect.1.0 /usr/local/lib/boca
+      cd ../../../..
+    fi
+    cd ../..
+  - |
+    # Build fre:ac
+    CONFIG="release"
+    make config=$CONFIG USE_V8=False -j$(nproc) && sudo make config=$CONFIG USE_V8=False install
+  - |
+    # Create AppImage
+    if [ $AppImageBuild = True ]; then
+      OS=`uname`
+      ARCH=`uname -m`
+    # Build codecs
+      ./tools/build-codecs faad2 fdk-aac mp4v2
+      ./tools/build-codecs lame mpg123
+      ./tools/build-codecs libogg opus speex vorbis
+      ./tools/build-codecs flac mac musepack wavpack
+      ./tools/build-codecs libav libsndfile
+    # Build DSP libraries
+      ./tools/build-codecs libsamplerate rnnoise rubberband
+    # Install codecs
+      mkdir -p appdir/codecs
+      cp /usr/local/lib/libFLAC.so appdir/codecs/FLAC.so
+      cp /usr/local/lib/libMAC.so appdir/codecs/MAC.so
+      cp /usr/local/lib/libfaad.so appdir/codecs/faad.so
+      cp /usr/local/lib/libfdk-aac.so appdir/codecs/fdk-aac.so
+      cp /usr/local/lib/libmp3lame.so appdir/codecs/mp3lame.so
+      cp /usr/local/lib/libmp4v2.so appdir/codecs/mp4v2.so
+      cp /usr/local/lib/libmpg123.so appdir/codecs/mpg123.so
+      cp /usr/local/lib/libogg.so appdir/codecs/ogg.so
+      cp /usr/local/lib/libopus.so appdir/codecs/opus.so
+      cp /usr/local/lib/librnnoise.so appdir/codecs/rnnoise.so
+      cp /usr/local/lib/librubberband.so appdir/codecs/rubberband.so
+      cp /usr/local/lib/libsamplerate.so appdir/codecs/samplerate.so
+      cp /usr/local/lib/libsndfile.so appdir/codecs/sndfile.so
+      cp /usr/local/lib/libspeex.so appdir/codecs/speex.so
+      cp /usr/local/lib/libvorbis.so appdir/codecs/vorbis.so
+      cp /usr/local/lib/libvorbisenc.so appdir/codecs/vorbisenc.so
+      strip --strip-all appdir/codecs/*.so
+      install -Dm 0755 /usr/local/bin/avconv appdir/codecs/cmdline/avconv
+      install -Dm 0755 /usr/local/bin/mpcdec appdir/codecs/cmdline/mpcdec
+      install -Dm 0755 /usr/local/bin/mpcenc appdir/codecs/cmdline/mpcenc
+      install -Dm 0755 /usr/local/bin/wavpack appdir/codecs/cmdline/wavpack
+      install -Dm 0755 /usr/local/bin/wvunpack appdir/codecs/cmdline/wvunpack
+      strip --strip-all appdir/codecs/cmdline/*
+    # Copy smooth and BoCA
+      cp /usr/local/lib/libsmooth*.so.? appdir
+      cp -r /usr/local/lib/boca appdir
+      ln -s boca/boca.1.0.so appdir/libboca-1.0.so.1
+    # Copy fre:ac to appdir
+      cp COPYING Readme* appdir
+      rm appdir/Readme.md
+      cp -r /usr/local/lib/freac/* appdir/boca
+      cp -r /usr/local/share/freac/lang appdir
+      cp -r /usr/local/share/freac/icons appdir
+      cp -r /usr/local/share/doc/freac/manual appdir
+      mv appdir/boca/freac.so appdir
+      install -Dm 0755 /usr/local/bin/freac appdir/freac
+      install -Dm 0755 /usr/local/bin/freaccmd appdir/freaccmd
+      install -Dm 0755 /usr/local/bin/smooth-translator appdir/translator
       install -Dm 0755 packaging/appimage/AppRun appdir/AppRun
-      install -Dm 0755 /usr/bin/avprobe appdir/usr/bin/avprobe
-      install -Dm 0755 /usr/bin/avconv appdir/usr/bin/avconv
-      mv appdir/usr/lib/x86_64-linux-gnu/*.so* appdir/usr/lib/
-      find appdir/
-      wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
-      chmod a+x linuxdeployqt-continuous-x86_64.AppImage
-      ./linuxdeployqt-continuous-x86_64.AppImage appdir/usr/share/applications/*.desktop -appimage \
-      -executable=appdir/usr/lib/freac/freac.so -executable=appdir/usr/bin/smooth-translator \
-      -executable=appdir/usr/bin/freaccmd \
-      -executable=appdir/usr/lib/boca/boca_verifier_md5.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_tagger_vorbis.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_tagger_riff.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_tagger_mp4.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_tagger_id3v2.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_tagger_id3v1.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_tagger_flac.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_tagger_cart.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_tagger_apev2.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_playlist_xspf.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_playlist_wpl.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_playlist_vclt.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_playlist_pls.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_playlist_m3u.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_playlist_cuesheet.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_output_alsa.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_extension_statustime.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_encoder_vorbis.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_encoder_voaacenc.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_encoder_speex.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_encoder_sndfile.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_encoder_opus.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_encoder_meh.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_encoder_mac.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_encoder_lame.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_encoder_flac.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_encoder_fdkaac.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_encoder_faac.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_dsp_rubberband.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_dsp_rnnoise.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_dsp_resample.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_dsp_format.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_dsp_channels.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_deviceinfo_cdio.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_decoder_vorbis.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_decoder_speex.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_decoder_sndfile.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_decoder_opus.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_decoder_mpg123.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_decoder_mad.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_decoder_mac.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_decoder_lame.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_decoder_flac.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_decoder_fdkaac.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_decoder_faad2.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_decoder_cuesheet.1.0.so \
-      -executable=appdir/usr/lib/boca/boca_decoder_cdio.1.0.so \
-      -executable=appdir/usr/lib/boca/boca.1.0.so \
-      -executable=appdir/usr/bin/avconv \
-      -executable=appdir/usr/bin/avprobe \
-      -executable=appdir/usr/lib/libvorbisenc.so.2.0.8 \
-      -executable=appdir/usr/lib/libvorbis.so.0.4.5 \
-      -executable=appdir/usr/lib/libspeex.so.1.5.0 \
-      -executable=appdir/usr/lib/libsndfile.so.1.0.25 \
-      -executable=appdir/usr/lib/libsamplerate.so.0.1.8 \
-      -executable=appdir/usr/lib/librubberband.so.2.1.0 \
-      -executable=appdir/usr/lib/libopus.so.0.5.0 \
-      -executable=appdir/usr/lib/libogg.so.0.8.1 \
-      -executable=appdir/usr/lib/libmpg123.so.0.38.4 \
-      -executable=appdir/usr/lib/libmp4v2.so.2.0.0 \
-      -executable=appdir/usr/lib/libmp3lame.so.0.0.0 \
-      -executable=appdir/usr/lib/libFLAC.so.8.3.0 \
-      -executable=appdir/usr/lib/libfaad.so.2.0.0 \
-      -executable=appdir/usr/lib/libfaac.so.0.0.0 \
-      -executable=appdir/usr/lib/libfdk-aac.so.0.0.3
-      wget -c https://github.com/probonopd/uploadtool/raw/master/upload.sh
-      bash upload.sh fre*.AppImage*
+      mkdir -p appdir/usr/share
+      cp -r /usr/local/share/metainfo appdir/usr/share
+      cp /usr/local/share/applications/org.freac.freac.desktop appdir
+      cp /usr/local/share/icons/hicolor/128x128/apps/org.freac.freac.png appdir
+    # Copy other dependencies
+      cp /usr/local/lib/libcdio.so.19 appdir
+      cp /usr/local/lib/libcdio_cdda.so.2 appdir
+      cp /usr/local/lib/libcdio_paranoia.so.2 appdir
+      cp /usr/local/lib/libcurl.so.4 appdir
+      cp -P /lib/$ARCH-linux-gnu/libcrypto.so.1* appdir
+      cp -P /lib/$ARCH-linux-gnu/libssl.so.1* appdir
+      strip --strip-all appdir/lib*.so*
+    # List final appdir contents
+      ls -Rl appdir/
+    # Create AppImage using appimagetool
+      wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-$ARCH.AppImage"
+      chmod a+x appimagetool-$ARCH.AppImage
+      ARCH=$ARCH ./appimagetool-$ARCH.AppImage appdir freac-continuous-${OS,,}-$ARCH.AppImage
+    # Upload AppImage to GitHub
+      bash packaging/appimage/upload-appimage freac*.AppImage
     fi
 
 branches:
