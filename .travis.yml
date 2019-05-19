@@ -67,9 +67,7 @@ script:
     # Build smooth
     git clone https://github.com/enzo1982/smooth.git enzo1982/smooth
     cd enzo1982/smooth
-    if [ $AppImageBuild = True ]; then
-      CONFIG="release,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib"
-    fi
+    CONFIG="release,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib"
     make config=$CONFIG BUILD_V8=False -j$(nproc) && sudo make config=$CONFIG BUILD_V8=False install
     cd ../..
   - |
