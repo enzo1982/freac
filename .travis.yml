@@ -67,14 +67,20 @@ script:
     # Build smooth
     git clone https://github.com/enzo1982/smooth.git enzo1982/smooth
     cd enzo1982/smooth
-    CONFIG="release,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib"
+    CONFIG="bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib"
+    if [ $AppImageBuild = True ]; then
+      CONFIG+=",release"
+    fi
     make config=$CONFIG BUILD_V8=False -j$(nproc) && sudo make config=$CONFIG BUILD_V8=False install
     cd ../..
   - |
     # Build BoCA
     git clone https://github.com/enzo1982/boca.git enzo1982/boca
     cd enzo1982/boca
-    CONFIG="release,bundledlibexpat,bundledliburiparser,bundledzlib"
+    CONFIG="bundledlibexpat,bundledliburiparser,bundledzlib"
+    if [ $AppImageBuild = True ]; then
+      CONFIG+=",release"
+    fi
     make config=$CONFIG -j$(nproc) && sudo make config=$CONFIG install
     if [ $AppImageBuild = True ]; then
       # Build 32 bit Core Audio connector
@@ -86,7 +92,9 @@ script:
     cd ../..
   - |
     # Build fre:ac
-    CONFIG="release"
+    if [ $AppImageBuild = True ]; then
+      CONFIG="release"
+    fi
     make config=$CONFIG USE_V8=False -j$(nproc) && sudo make config=$CONFIG USE_V8=False install
   - |
     # Create AppImage
