@@ -394,10 +394,11 @@
 	<entry id="5111" string="Encode to a single file"/>
 	<entry id="5112" string="Output filenames"/>
 	<entry id="5113" string="Allow Unicode characters"/>
-	<entry id="5114" string="Replace spaces"/>
+	<entry id="5114" string="Replace spaces with underscores"/>
 	<entry id="5115" string="Remove processed tracks from joblist"/>
 	<entry id="5116" string="Add encoded files to joblist"/>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames"/>
+	<entry id="5118" string="Keep time stamps of source files"/>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?"/>

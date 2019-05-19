@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -152,8 +152,9 @@ Void BoCA::LayerProtocols::UpdateProtocolList()
 	/* Update protocol combo list.
 	 */
 	Surface	*surface = GetDrawSurface();
+	Bool	 visible = IsVisible();
 
-	if (IsVisible()) surface->StartPaint(Rect(combo_protocol->GetRealPosition(), combo_protocol->GetRealSize()));
+	if (visible) surface->StartPaint(Rect(combo_protocol->GetRealPosition(), combo_protocol->GetRealSize()));
 
 	combo_protocol->RemoveAllEntries();
 
@@ -174,7 +175,7 @@ Void BoCA::LayerProtocols::UpdateProtocolList()
 		}
 	}
 
-	if (IsVisible()) surface->EndPaint();
+	if (visible) surface->EndPaint();
 
 	if (combo_protocol->Length() > 0) Activate();
 }

@@ -1,0 +1,4946 @@
+diff -Naur libvorbis-1.3.6/aoTuV_README-1st.txt libvorbis-1.3.6-aotuv-b6.03/aoTuV_README-1st.txt
+--- libvorbis-1.3.6/aoTuV_README-1st.txt	1970-01-01 00:00:00 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/aoTuV_README-1st.txt	2018-03-26 10:35:12 +0000
+@@ -0,0 +1,13 @@
++aoTuV Beta 6.03
++
++"aoTuV" tunes up Xiph.Org's libvorbis uniquely. 
++A license is taken as "BSD-style license" as well as original libvorbis. 
++
++
++aoTuV based on <Xiph.Org libvorbis>
++
++Copyright (c) 2002-2018 Xiph.Org Foundation
++Copyright (c) 2003-2015 Aoyumi
++
++
++AUTHOR : Aoyumi <aoyumi@gmail.com>
+diff -Naur libvorbis-1.3.6/aoTuV_technical.txt libvorbis-1.3.6-aotuv-b6.03/aoTuV_technical.txt
+--- libvorbis-1.3.6/aoTuV_technical.txt	1970-01-01 00:00:00 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/aoTuV_technical.txt	2018-03-26 10:34:50 +0000
+@@ -0,0 +1,328 @@
++aoTuV beta6.03 (2018) technical information
++
++This version is based on Xiph.org libvorbis 1.3.6.
++The part related to sound quality is not changed from previous version.
++
++2018/03/26
++Robert Kausch <robert.kausch@freac.org>
++
++----------------------------------------------------------------------------
++
++aoTuV beta6.03 (2015) technical information
++
++This version is based on Xiph.org'libvorbis 1.3.5.
++The part related to sound quality is not changed from previous version.
++
++2014/08/08
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta6.03 (2014) technical information
++
++This version is based on Xiph.org'libvorbis 1.3.4.
++The part related to sound quality is not changed from previous version.
++
++2014/04/29
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta6.03 technical information
++
++The differences from the aoTuV beta 6.02...
++
++  1.  Fixed some causes that 5.1 channel coupling didn't work normally. And
++  tuning of lossy coupling is included in it.
++
++
++2011/04/24
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta6.02 technical information
++
++The differences from the aoTuV beta 6.01...
++
++  1.  When a change of the volume is very big, that a bit allotment became
++  superabundant was revised. It caused overflow. [M3]
++
++
++2011/02/27
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta6.01 technical information
++
++The differences from the aoTuV beta 6...
++
++  1.  When short blocks continued, that a bit allotment became superabundant
++  was revised. It caused overflow in the extreme case. [M3]
++
++
++2011/02/23
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta6 technical information
++
++The differences from the aoTuV beta 5.7...
++
++  1.  "libvorbis 1.3.2" was merged.
++
++  2.  A lot of bits are assigned in the part which strong post-echo produce.
++  [New M2]
++
++  3.  The search range of envelope is expanded. As a result, pre-echo by the
++  specific pattern was improved. [envelope.c]
++
++  4.  In the case that the strong tone and impulse ingredient coexisted, a
++  bit allotment to the tone ingredient was improved. [M7]
++
++  5.  The calculation method of dynamic thresholds of the stereo mode was 
++  changed.  This is more effective than former method. [New M6 & M9]
++
++  6.  The quantity of noise normalization is gained by a property of 
++  frequency signal domain. This reduces ringing by zero energy. [M8]
++
++  7.  M4 was revised. As for this change, more correct audio energy control
++  is formed in the low bitrate. [M4]
++
++
++In addition, some small revisions and tune up parameters are included.
++
++
++2011/02/21
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta5.7 technical information
++
++The differences from the aoTuV beta 5.61...
++
++  1.  Fixed the problem of floating point exception. (from xiph.org's libvorbis)
++
++  2.  "libvorbis SVN-Revision 15533" was merged. Some revisions are included
++  in it.
++
++  3.  The process of the frequency band without the need is omitted now.  
++  And the case that speed becomes fast occurs.  This change doesn't influence
++  the encoding result.
++
++  4.  Fixed the problem of a memory access violation. (beta5-M6 afterward)
++
++
++2009/03/03
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta5.61 technical information
++
++The differences from the aoTuV beta 5.6...
++
++  1.  Fixed the problem of floating point exception. (beta5.5-M3 afterward)
++
++
++2008/12/15
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta5.6 technical information
++
++The differences from the aoTuV beta 5.5...
++
++  1.  "libvorbis SVN-Revision 15530" was merged.  The revisions of the 
++  security problem are included in it. Therefore this update is important.
++
++  2.  The pre-amplitude processing was added newly.  This is the function 
++  to adjustment the volume of sources beforehand.Å@All the initial values 
++  are set now. 
++
++  3.  The part of M3 code was fixed.  This is bugfix of the beta5.5.
++
++...and I tune up a few parameters. 
++
++
++2008/12/09
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta5.5 technical information
++
++
++The differences from the aoTuV beta 5...
++
++  1.  The frequency domain width of M6 was revised.
++
++  2.  For q-1/-2, a pre-echo reduction code was applied (M3).  In addition,
++  the M3 code was improved.
++
++  3.  The floor setup parameters in the low bit-rate were changed.
++
++  4.  The part including bug of noise normalization was rewritten.
++
++  5.  "libvorbis 1.2.0" was merged. Furthermore, the revisions of Bug #300 and
++  #1229 were applied.
++
++  6.  The ATH curve of the high frequency area (more than 32kHz) was revised. 
++
++...and I tune up many parameters. 
++
++
++2008/03/30
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta5 technical information
++
++
++The differences from the aoTuV beta 4.51...
++
++  1.   In order to work noise normalization correctly, the value of tone 
++  masking is compressed under certain conditions. A floor curve approaches 
++  the original audio spectrum line as a result.  [New M4] 
++
++  2.   In order to cut down the bitrate, a part of M2 code of beta4 was 
++  deleted. 
++
++Å@3.   The ATH curve was changed slightly. 
++
++  4.   Pre-echo decreased slightly. This is based on change of M3 code. 
++
++  5.   In order to decrease artifact by collapse of audio energy, noise 
++  normalization processing of point stereo was extended. [32/44.1/48kHz only] 
++
++  6.   The threshold of channel coupling (lossless <=> point) is changed 
++  dynamically. This is a method based on a certain idea. [M6] 
++
++...and I tune up many parameters. 
++
++
++2006/10/24
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta4.51 technical information
++
++
++The differences from the aoTuV beta 4.5...
++
++  1.  The changed part of "scale.h" of Xiph.Org SVN was reflected in aoTuV. 
++  This will solve the problem of the compile by gcc4. 
++
++  2.  A part of portion added by beta4.5 had caused memory access violation. 
++  Depending on environment, a problem arises in qualiy-1/-2. This problem was 
++  corrected. 
++
++
++2005/11/17
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta4.5 technical information
++
++
++The differences from the aoTuV beta 4...
++
++  1.  M4 code of beta3 was deleted. M5 is added as what is replaced with it. 
++  The advantage of this method is that the result stabilized more is obtained. 
++  Instead, the change width of the bit rate becomes large rather than before. 
++  [32/44.1/48kHz only] 
++
++  2.  New M4 was added. There is this for the same purpose as M1. However, 
++  it is tuned up only in the low bit rate region according to work and 
++  individual parameters. [32/44.1/48kHz only] 
++
++  3.  M2 code was extended. This decreases a specific noise problem.  
++  [32/44.1/48kHz only] 
++
++...and I mainly tune up tone/noise masking and noise normalization parameters. 
++
++The above change is applied below quality3. 
++
++
++2005/11/05
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta4 technical information
++
++
++The differences from the aoTuV beta 3...
++
++  1.  Adoption of new hypot (point stereo). This works in general better than
++  dipole/round hypot. And when residue is likely to decrease greatly at the
++  time of a reverse phase, added code is made to increase the ratio of lossless.
++
++  2.  Change of ATH curve. This is not a big change. 
++
++  3.  Residue used for threshold calculation of channel coupling is changed.
++  This one seems to be good selection. 
++
++  4.  HF reduction code of beta3 was deleted. Now, this is not required. 
++
++  5.  The energy deficit of M4 code of beta3 -- correction of a bug Now.
++
++  6.  The code for pulling downward floor of the frequency range which can
++  be easy to be heard was added (New M2). This works by the low bit rate and
++  has a comparatively good trade-off. 
++
++  7.  Change of threshold calculation of noise normalization. Moreover, it
++  takes phase information into consideration. 
++
++
++...and I mainly tune up tone/noise masking and noise compander parameters. 
++
++
++2005/06/18
++Aoyumi
++
++----------------------------------------------------------------------------
++
++aoTuV beta3 technical information
++
++
++The differences from the aoTuV beta 2 and Vorbis 1.1...
++
++  1. Dynamic impulse block noise control(q0-10). [32/44.1/48kHz only] 
++  Conspicuous pre-echo is reduced.
++
++  2. New ATH curve. 
++
++  3. In order to cancel that a small sound becomes unstable, the noise level
++  of low frequency is lowered under specific conditions. (Only below q3) 
++  There is a greatest effect on a piano etc. [32/44.1/48kHz only]
++
++  4. The rate of lossless stereo is increased in specific conditions. This
++  improves many of conspicuous problems which a point stereo causes. (e.g 
++  drumus's hiss/voice, guitar and brass's distortion) [32/44.1/48kHz only]
++
++  5. The action of the noise normalization of point stereo is corrected. It
++  was set to one of the causes of distortion in a long tone (e.g 
++  strings/oboe/high tone voice). 
++
++  6. The HF reduction code was not working normally. This is corrected and
++  it retuned up according to the present condition. [32/44.1/48kHz only]
++
++  7. The q-2 mode was added in all sampling frequencies. And nominal bitrate
++  of q-1 are changed into a more nearly average value. Although nominal 
++  bitrate is more large at a low sampling frequency, average bitrate hardly
++  differs from the former version. 
++
++
++...and I mainly tune up tone/noise masking parameters. 
++
++
++2004/11/21
++Aoyumi
+diff -Naur libvorbis-1.3.6/lib/block.c libvorbis-1.3.6-aotuv-b6.03/lib/block.c
+--- libvorbis-1.3.6/lib/block.c	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/block.c	2018-03-26 10:37:06 +0000
+@@ -299,6 +299,12 @@
+   b=v->backend_state;
+   b->psy_g_look=_vp_global_look(vi);
+ 
++  /* Init (added by aoyumi) */
++  b->mblock = _ogg_calloc((2048*vi->channels), sizeof(*b->mblock));
++  b->tblock = _ogg_calloc((256*vi->channels), sizeof(*b->tblock));
++  b->lownoise_compand_level = _ogg_calloc(vi->channels, sizeof(*b->lownoise_compand_level));
++  b->impadnum = 0;
++
+   /* Initialize the envelope state storage */
+   b->ve=_ogg_calloc(1,sizeof(*b->ve));
+   _ve_envelope_init(b->ve,vi);
+@@ -364,6 +370,11 @@
+       drft_clear(&b->fft_look[0]);
+       drft_clear(&b->fft_look[1]);
+ 
++      /* added by aoyumi */
++      if(b->mblock) _ogg_free(b->mblock);
++      if(b->tblock) _ogg_free(b->tblock);
++      if(b->lownoise_compand_level) _ogg_free(b->lownoise_compand_level);
++
+     }
+ 
+     if(v->pcm){
+@@ -460,7 +471,18 @@
+ int vorbis_analysis_wrote(vorbis_dsp_state *v, int vals){
+   vorbis_info *vi=v->vi;
+   codec_setup_info *ci=vi->codec_setup;
++  highlevel_encode_setup *hi=&(ci->hi);
+ 
++  /* pre-amplitude */
++  {
++    int i,j;
++    for(i=0;i<vals;i++){
++      for(j=0;j<vi->channels;j++){
++        v->pcmret[j][i]*=hi->pre_amplitude;
++      }
++    }
++  }
++  
+   if(vals<=0){
+     int order=32;
+     int i;
+diff -Naur libvorbis-1.3.6/lib/codec_internal.h libvorbis-1.3.6-aotuv-b6.03/lib/codec_internal.h
+--- libvorbis-1.3.6/lib/codec_internal.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/codec_internal.h	2018-03-26 10:38:18 +0000
+@@ -81,6 +81,15 @@
+   bitrate_manager_state bms;
+ 
+   ogg_int64_t sample_count;
++
++  /* encode only
++     added by aoyumi */
++  float *lownoise_compand_level;
++  float *mblock; /* lW logmdct buffer */  
++  float *tblock; /* temporal masking buffer (impulse block) */
++  int lW_block_mode; /* last window blocktype, modenumber */
++  int lW_no; /* the number of continuous window blocks (last window) */
++  int impadnum; /* short block number (count after impulse->padding block) for M3 */
+ } private_state;
+ 
+ /* codec_setup_info contains all the setup information specific to the
+@@ -127,6 +136,7 @@
+                                 highly redundant structure, but
+                                 improves clarity of program flow. */
+   int         halfrate_flag; /* painless downsample for decode */
++  int         block_lowpassr[2];
+ } codec_setup_info;
+ 
+ extern vorbis_look_psy_global *_vp_global_look(vorbis_info *vi);
+diff -Naur libvorbis-1.3.6/lib/envelope.c libvorbis-1.3.6-aotuv-b6.03/lib/envelope.c
+--- libvorbis-1.3.6/lib/envelope.c	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/envelope.c	2018-03-26 10:38:28 +0000
+@@ -28,6 +28,14 @@
+ #include "mdct.h"
+ #include "misc.h"
+ 
++/* Origianl band */
++// band_begin[VE_BANDS]= {2, 4, 6, 9,13,17,22};
++// band_end[VE_BANDS]=   {4, 5, 6, 8, 8, 8, 8};
++
++/* Mod band */
++static const int band_begin[VE_BANDS]= {2, 4, 6, 9,13,17,22, 12, 8, 3, 2, 1};
++static const int band_end[VE_BANDS]=   {4, 5, 6, 8, 8, 8, 8,  4, 4, 3, 2, 4};
++
+ void _ve_envelope_init(envelope_lookup *e,vorbis_info *vi){
+   codec_setup_info *ci=vi->codec_setup;
+   vorbis_info_psy_global *gi=&ci->psy_g_param;
+@@ -48,14 +56,10 @@
+     e->mdct_win[i]*=e->mdct_win[i];
+   }
+ 
+-  /* magic follows */
+-  e->band[0].begin=2;  e->band[0].end=4;
+-  e->band[1].begin=4;  e->band[1].end=5;
+-  e->band[2].begin=6;  e->band[2].end=6;
+-  e->band[3].begin=9;  e->band[3].end=8;
+-  e->band[4].begin=13;  e->band[4].end=8;
+-  e->band[5].begin=17;  e->band[5].end=8;
+-  e->band[6].begin=22;  e->band[6].end=8;
++  for(i=0;i<VE_BANDS;i++){
++  	e->band[i].begin=band_begin[i];
++  	e->band[i].end=band_end[i];
++  }
+ 
+   for(j=0;j<VE_BANDS;j++){
+     n=e->band[j].end;
+diff -Naur libvorbis-1.3.6/lib/envelope.h libvorbis-1.3.6-aotuv-b6.03/lib/envelope.h
+--- libvorbis-1.3.6/lib/envelope.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/envelope.h	2018-03-26 10:38:38 +0000
+@@ -24,7 +24,7 @@
+ #define VE_POST   2
+ #define VE_AMP    (VE_PRE+VE_POST-1)
+ 
+-#define VE_BANDS  7
++#define VE_BANDS  12
+ #define VE_NEARDC 15
+ 
+ #define VE_MINSTRETCH 2   /* a bit less than short block */
+diff -Naur libvorbis-1.3.6/lib/highlevel.h libvorbis-1.3.6-aotuv-b6.03/lib/highlevel.h
+--- libvorbis-1.3.6/lib/highlevel.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/highlevel.h	2018-03-26 11:20:34 +0000
+@@ -52,6 +52,8 @@
+   double amplitude_track_dBpersec;
+   double trigger_setting;
+ 
++  float pre_amplitude;
++  
+   highlevel_byblocktype block[4]; /* padding, impulse, transition, long */
+ 
+ } highlevel_encode_setup;
+diff -Naur libvorbis-1.3.6/lib/info.c libvorbis-1.3.6-aotuv-b6.03/lib/info.c
+--- libvorbis-1.3.6/lib/info.c	2018-03-16 16:18:56 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/info.c	2018-03-26 10:43:38 +0000
+@@ -30,8 +30,8 @@
+ #include "misc.h"
+ #include "os.h"
+ 
+-#define GENERAL_VENDOR_STRING "Xiph.Org libVorbis 1.3.6"
+-#define ENCODE_VENDOR_STRING "Xiph.Org libVorbis I 20180316 (Now 100% fewer shells)"
++#define GENERAL_VENDOR_STRING "aoTuV Beta 6.03 (2018)"
++#define ENCODE_VENDOR_STRING "AO; aoTuV 6.03 (2018) (based on libVorbis 1.3.6)"
+ 
+ /* helpers */
+ static void _v_writestring(oggpack_buffer *o,const char *s, int bytes){
+@@ -267,6 +267,7 @@
+ static int _vorbis_unpack_books(vorbis_info *vi,oggpack_buffer *opb){
+   codec_setup_info     *ci=vi->codec_setup;
+   int i;
++  if(!ci)return(OV_EFAULT);
+ 
+   /* codebooks */
+   ci->books=oggpack_read(opb,8)+1;
+diff -Naur libvorbis-1.3.6/lib/mapping0.c libvorbis-1.3.6-aotuv-b6.03/lib/mapping0.c
+--- libvorbis-1.3.6/lib/mapping0.c	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/mapping0.c	2018-03-26 10:46:12 +0000
+@@ -154,7 +154,7 @@
+ #include "psy.h"
+ #include "scales.h"
+ 
+-#if 0
++#ifdef ANALYSIS
+ static long seq=0;
+ static ogg_int64_t total=0;
+ static float FLOOR1_fromdB_LOOKUP[256]={
+@@ -233,12 +233,16 @@
+   codec_setup_info      *ci=vi->codec_setup;
+   private_state         *b=vb->vd->backend_state;
+   vorbis_block_internal *vbi=(vorbis_block_internal *)vb->internal;
++  vorbis_info_floor1    *vif=ci->floor_param[vb->W];
+   int                    n=vb->pcmend;
+   int i,j,k;
+ 
+   int    *nonzero    = alloca(sizeof(*nonzero)*vi->channels);
++  float  *poste      = alloca(sizeof(*poste)*vi->channels);
+   float  **gmdct     = _vorbis_block_alloc(vb,vi->channels*sizeof(*gmdct));
+-  int    **iwork      = _vorbis_block_alloc(vb,vi->channels*sizeof(*iwork));
++  float  **epeak     = _vorbis_block_alloc(vb,vi->channels*sizeof(*epeak));
++  float  **npeak     = _vorbis_block_alloc(vb,vi->channels*sizeof(*npeak));
++  int    **iwork     = _vorbis_block_alloc(vb,vi->channels*sizeof(*iwork));
+   int ***floor_posts = _vorbis_block_alloc(vb,vi->channels*sizeof(*floor_posts));
+ 
+   float global_ampmax=vbi->ampmax;
+@@ -246,10 +250,27 @@
+   int blocktype=vbi->blocktype;
+ 
+   int modenumber=vb->W;
++  int block_mode;
++  int lowpass_residue;
+   vorbis_info_mapping0 *info=ci->map_param[modenumber];
+   vorbis_look_psy *psy_look=b->psy+blocktype+(vb->W?2:0);
++  int partition=(psy_look->vi->normal_p ? psy_look->vi->normal_partition : 16);
+ 
+   vb->mode=modenumber;
++  
++  /* set modenumber+blocktype
++     0=Impulse
++     1=Padding
++     2=Transition
++     3=Long             */
++  block_mode=blocktype;
++  block_mode|=(modenumber << 1);
++  
++  /* prepare lowpass filter of residue */
++  if(modenumber)lowpass_residue=ci->block_lowpassr[1];
++  else lowpass_residue=ci->block_lowpassr[0];
++  if(lowpass_residue % psy_look->vi->normal_partition)
++   lowpass_residue=(lowpass_residue/psy_look->vi->normal_partition+1) * psy_look->vi->normal_partition;
+ 
+   for(i=0;i<vi->channels;i++){
+     float scale=4.f/n;
+@@ -260,6 +281,8 @@
+ 
+     iwork[i]=_vorbis_block_alloc(vb,n/2*sizeof(**iwork));
+     gmdct[i]=_vorbis_block_alloc(vb,n/2*sizeof(**gmdct));
++    epeak[i]=_vorbis_block_alloc(vb,n/2*sizeof(**epeak));
++    npeak[i]=_vorbis_block_alloc(vb,n/2/partition*sizeof(**npeak));
+ 
+     scale_dB=todB(&scale) + .345; /* + .345 is a hack; the original
+                                      todB estimation used on IEEE 754
+@@ -287,6 +310,9 @@
+     }
+ #endif
+ 
++    /* set postnoise flag */
++    poste[i] = _postnoise_detection(pcm, n, block_mode, b->lW_block_mode);
++
+     /* window the PCM data */
+     _vorbis_apply_window(pcm,b->window,ci->blocksizes,vb->lW,vb->W,vb->nW);
+ 
+@@ -375,6 +401,13 @@
+ 
+       float *logmdct =logfft+n/2;
+       float *logmask =logfft;
++      float *enpeak  =epeak[i];
++      float *nepeak  =npeak[i];
++
++      float *lastmdct = b->mblock+i*2048; // 2048 is max block size (n/2)
++      float *tempmdct = b->tblock+i*256;  // 256 is max block size (n/2) for aoTuV M3
++
++      float *lowcomp = b->lownoise_compand_level+i;
+ 
+       vb->mode=modenumber;
+ 
+@@ -414,10 +447,38 @@
+          us a tonality estimate (the larger the value in the
+          'noise_depth' vector, the more tonal that area is) */
+ 
++      *lowcomp=
++        lb_loudnoise_fix(psy_look,
++                         *lowcomp,
++                         logmdct,
++                         block_mode,
++                         b->lW_block_mode);
++
+       _vp_noisemask(psy_look,
++                    *lowcomp,
+                     logmdct,
+-                    noise); /* noise does not have by-frequency offset
++                    lastmdct,
++                    enpeak,
++                    nepeak,
++                    noise, /* noise does not have by-frequency offset
+                                bias applied yet */
++                    poste[i],
++                    block_mode);
++
++
++// for _vp_noisemask
++#if 0
++      if(vi->channels==2){
++        if(i==0)
++          _analysis_output("enpeakL",seq,enpeak,n/2,1,0,0);
++        else
++          _analysis_output("enpeakR",seq,enpeak,n/2,1,0,0);
++      }else{
++        _analysis_output("enpeak",seq,enpeak,n/2,1,0,0);
++      }
++#endif
++
++
+ #if 0
+       if(vi->channels==2){
+         if(i==0)
+@@ -464,9 +525,18 @@
+                            noise,
+                            tone,
+                            1,
++                           vorbis_bitrate_managed(vb),
+                            logmask,
+                            mdct,
+-                           logmdct);
++                           logmdct,
++                           lastmdct, tempmdct,
++                           *lowcomp,
++                           nepeak,
++                           vif->n,
++                           block_mode,
++                           vb->nW,
++                           b->lW_block_mode,
++                           b->lW_no, b->impadnum);
+ 
+ #if 0
+         if(vi->channels==2){
+@@ -511,9 +581,18 @@
+                            noise,
+                            tone,
+                            2,
++                           vorbis_bitrate_managed(vb),
+                            logmask,
+                            mdct,
+-                           logmdct);
++                           logmdct,
++                           lastmdct, tempmdct,
++                           *lowcomp,
++                           nepeak,
++                           vif->n,
++                           block_mode,
++                           vb->nW,
++                           b->lW_block_mode,
++                           b->lW_no, b->impadnum);
+ 
+ #if 0
+         if(vi->channels==2){
+@@ -536,9 +615,18 @@
+                            noise,
+                            tone,
+                            0,
++                           vorbis_bitrate_managed(vb),
+                            logmask,
+                            mdct,
+-                           logmdct);
++                           logmdct,
++                           lastmdct, tempmdct,
++                           *lowcomp,
++                           nepeak,
++                           vif->n,
++                           block_mode,
++                           vb->nW,
++                           b->lW_block_mode,
++                           b->lW_no, b->impadnum);
+ 
+ #if 0
+         if(vi->channels==2){
+@@ -640,10 +728,13 @@
+                                     psy_look,
+                                     info,
+                                     gmdct,
++                                    epeak,
++                                    npeak,
+                                     iwork,
+                                     nonzero,
+                                     ci->psy_g_param.sliding_lowpass[vb->W][k],
+-                                    vi->channels);
++                                    vi->channels,
++                                    lowpass_residue);
+ 
+ #if 0
+       for(i=0;i<vi->channels;i++){
+@@ -683,12 +774,27 @@
+                   couple_bundle,zerobundle,ch_in_bundle,classifications,i);
+       }
+ 
++      // if (present window == (long or trans.) ) impadnum=0 [reset]
++      if(block_mode>=2) b->impadnum=0;
++      // if (last window == impulse) && (present window == padding) impadnum=1
++      if((!b->lW_block_mode) && (block_mode==1)) b->impadnum=1;
++      else if(b->impadnum && b->impadnum<8) b->impadnum++;
++      // if (current block type == last block type) lW_no++
++      if(b->lW_block_mode==block_mode) b->lW_no++;
++      else b->lW_no = 1;
++      b->lW_block_mode = block_mode;
+       /* ok, done encoding.  Next protopacket. */
++
++      // check block type
++      /*if(modenumber && blocktype)printf("[L]\n");
++      else if(modenumber && !blocktype)printf("[T]\n");
++      else if(!modenumber && blocktype)printf("[P]\n");
++      else if(!modenumber && !blocktype)printf("[I]\n");*/
+     }
+ 
+   }
+ 
+-#if 0
++#ifdef ANALYSIS
+   seq++;
+   total+=ci->blocksizes[vb->W]/4+ci->blocksizes[vb->nW]/4;
+ #endif
+diff -Naur libvorbis-1.3.6/lib/masking.h libvorbis-1.3.6-aotuv-b6.03/lib/masking.h
+--- libvorbis-1.3.6/lib/masking.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/masking.h	2018-03-26 10:47:04 +0000
+@@ -22,17 +22,30 @@
+ 
+ #define MAX_ATH 88
+ static const float ATH[]={
+-  /*15*/  -51, -52, -53, -54, -55, -56, -57, -58,
+-  /*31*/  -59, -60, -61, -62, -63, -64, -65, -66,
+-  /*63*/  -67, -68, -69, -70, -71, -72, -73, -74,
+-  /*125*/ -75, -76, -77, -78, -80, -81, -82, -83,
+-  /*250*/ -84, -85, -86, -87, -88, -88, -89, -89,
+-  /*500*/ -90, -91, -91, -92, -93, -94, -95, -96,
+-  /*1k*/  -96, -97, -98, -98, -99, -99,-100,-100,
+-  /*2k*/ -101,-102,-103,-104,-106,-107,-107,-107,
+-  /*4k*/ -107,-105,-103,-102,-101, -99, -98, -96,
+-  /*8k*/  -95, -95, -96, -97, -96, -95, -93, -90,
+-  /*16k*/ -80, -70, -50, -40, -30, -30, -30, -30
++/* original ATH */
++  /*15*/ // -51, -52, -53, -54, -55, -56, -57, -58,
++  /*31*/ // -59, -60, -61, -62, -63, -64, -65, -66,
++  /*63*/ // -67, -68, -69, -70, -71, -72, -73, -74,
++  /*125*/ // -75, -76, -77, -78, -80, -81, -82, -83,
++  /*250*/ //-84, -85, -86, -87, -88, -88, -89, -89,
++  /*500*/ //-90, -91, -91, -92, -93, -94, -95, -96,
++  /*1k*/  //-96, -97, -98, -98, -99, -99,-100,-100,
++  /*2k*/ //-101,-102,-103,-104,-106,-107,-107,-107,
++  /*4k*/ //-107,-105,-103,-102,-101, -99, -98, -96,
++  /*8k*/  //-95, -95, -96, -97, -96, -95, -93, -90,
++  /*16k*/ //-80, -70, -50, -40, -30, -30, -30, -30
++/*Aoyumi's ATH (v6+) */
++  /*15*/  -31, -33, -35, -37, -39, -41, -43, -45,
++  /*31*/  -47, -49, -51, -53, -55, -57, -59, -61,
++  /*63*/  -63, -65, -67, -69, -71, -73, -75, -77,
++  /*125*/ -79, -81, -83, -84, -85, -86, -87, -88,
++  /*250*/ -89, -90, -91, -92, -93, -94, -95, -96,
++  /*500*/ -96, -97, -97, -97, -98, -98, -98, -99,
++  /*1k*/  -98, -97, -97, -98, -99,-100,-101,-101,
++  /*2k*/ -102,-103,-104,-105,-106,-106,-107,-107,
++  /*4k*/ -105,-104,-103,-102,-101, -99, -98, -97,
++  /*8k*/  -96, -95, -95, -96, -97, -97, -93, -89,
++  /*16k*/ -80, -70, -50, -40, -30, -26, -22, -18
+ };
+ 
+ /* The tone masking curves from Ehmer's and Fielder's papers have been
+diff -Naur libvorbis-1.3.6/lib/modes/floor_all.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/floor_all.h
+--- libvorbis-1.3.6/lib/modes/floor_all.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/floor_all.h	2018-03-26 11:25:48 +0000
+@@ -148,7 +148,7 @@
+   0
+ };
+ 
+-static const static_codebook*const *const _floor_books[11]={
++static const static_codebook *const *const _floor_books[14]={
+   _floor_128x4_books,
+   _floor_256x4_books,
+   _floor_128x7_books,
+@@ -160,9 +160,13 @@
+   _floor_2048x27_books,
+   _floor_512x17_books,
+   _floor_Xx0_books,
++  
++  _floor_1024x27_books,
++  _floor_2048x27_books,
++  _floor_256x4low_books,
+ };
+ 
+-static const vorbis_info_floor1 _floor[11]={
++static const vorbis_info_floor1 _floor[14]={
+   /* 0: 128 x 4 */
+   {
+     1,{0},{4},{2},{0},
+@@ -256,4 +260,32 @@
+     60,30,500,   1.,18.,  10
+   },
+ 
++  /* 11: 1024 x 27 (44.1/48kHz low bitrate) */
++  {
++    8,{0,1,2,2,3,3,4,4},{3,4,3,4,3},{0,1,1,2,2},{-1,0,1,2,3},
++    {{4},{5,6},{7,8},{-1,9,10,11},{-1,12,13,14}},
++    2,{0,1024,   93,23,358, 6,46,186,750,  14,33,65, 130,260,485,
++       3,10,18,28,  39,55,79,111,  158,220,306,  418,650,560},
++
++    60,30,500,    3,18.,  1024
++  },
++
++  /* 12: 2048 x 27 (44.1/48kHz) */
++  {
++    8,{0,1,2,2,3,3,4,4},{3,4,3,4,3},{0,1,1,2,2},{-1,0,1,2,3},
++    {{4},{5,6},{7,8},{-1,9,10,11},{-1,12,13,14}},
++    2,{0,2048,   186,46,716, 12,92,372,1500,  28,66,130, 260,520,970,
++       6,20,36,56,  78,110,158,222,  316,440,612,  836,1300,1120},
++
++    60,30,500,    3,18.,  2048
++  },
++
++  /* 13: 512 x 4 (256 x 4) */
++  {
++    1,{0},{4},{2},{0},
++    {{1,2,3,4}},
++    4,{0,512, 132,32,64,280},
++
++    60,30,500,   1.,18.,  512
++  },
+ };
+diff -Naur libvorbis-1.3.6/lib/modes/psych_11.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/psych_11.h
+--- libvorbis-1.3.6/lib/modes/psych_11.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/psych_11.h	2018-03-26 11:26:18 +0000
+@@ -14,25 +14,23 @@
+ 
+  ********************************************************************/
+ 
+-static const double _psy_lowpass_11[3]={4.5,5.5,30.,};
+-
+-static const att3 _psy_tone_masteratt_11[3]={
+-  {{ 30,  25,  12},  0,   0},  /* 0 */
+-  {{ 30,  25,  12},  0,   0},  /* 0 */
+-  {{ 20,   0, -14},  0,   0}, /* 0 */
+-};
+-
+-static const vp_adjblock _vp_tonemask_adj_11[3]={
++/* tonal masking curve level adjustments *************************/
++static const vp_adjblock _vp_tonemask_adj_11[4]={
+   /* adjust for mode zero */
+   /* 63     125     250     500     1     2     4     8    16 */
+-  {{-20,-20,-20,-20,-20,-16,-10, 0, 0, 0, 0,10, 2, 0,99,99,99}}, /* 0 */
+-  {{-20,-20,-20,-20,-20,-16,-10, 0, 0, 0, 0, 5, 0, 0,99,99,99}}, /* 1 */
+-  {{-20,-20,-20,-20,-20,-16,-10, 0, 0, 0, 0, 0, 0, 0,99,99,99}}, /* 2 */
++  {{-16,-16,-16,-16,-16,-16,-10,-8,-4, 0, 0, 0, 3, 3,99,99,99}}, /* -2 */
++  {{-16,-16,-16,-16,-16,-16,-10,-8,-4, 0, 0, 0, 0, 0,99,99,99}}, /* -1 */
++  {{-20,-20,-20,-20,-20,-16,-10,-8,-4,-2, 0, 0, 0, 0,99,99,99}}, /*  0 */
++  {{-20,-20,-20,-20,-20,-16,-10,-8,-4,-2, 0, 0, 0, 0,99,99,99}}, /* 10 */
+ };
+ 
+-
+-static const noise3 _psy_noisebias_11[3]={
++/* noise bias */
++static const noise3 _psy_noisebias_11[4]={
+   /*  63     125     250     500      1k       2k      4k      8k     16k*/
++  {{{-10,-10,-10,-10, -5, -5, -4,  2,  4, 10, 10, 12, 12, 12, 99, 99, 99},
++    {-12,-12,-12,-12, -7, -7, -2,  3,  3,  4,  4,  5,  6, 12, 99, 99, 99},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, 99, 99, 99}}},
++
+   {{{-10,-10,-10,-10, -5, -5, -5,  0,  4, 10, 10, 12, 12, 12, 99, 99, 99},
+     {-15,-15,-15,-15,-10,-10, -5,  0,  0,  4,  4,  5,  5, 10, 99, 99, 99},
+     {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, 99, 99, 99}}},
+@@ -46,5 +44,16 @@
+     {-30,-30,-30,-30,-26,-26,-26,-26,-26,-26,-26,-26,-26,-24, 99, 99, 99}}},
+ };
+ 
+-static const double _noise_thresh_11[3]={ .3,.5,.5 };
++/* tone master attenuation by base quality mode and bitrate tweak */
++static const att3 _psy_tone_masteratt_11[4]={
++  {{ 31,  25,  13},  0,   0},  /* -2 */
++  {{ 30,  25,  12},  0,   0},  /* -1 */
++  {{ 30,  25,  12},  0,   0},  /*  0 */
++  {{ 20,   0, -14},  0,   0},  /* 10 */
++};
++
++/* lowpass by mode **************/
++static const double _psy_lowpass_11[4]={4.,4.5,5.5,30.,};
+ 
++/* noise normalization **********/
++static const double _noise_thresh_11[3]={ .3,.3,.5 };
+diff -Naur libvorbis-1.3.6/lib/modes/psych_16.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/psych_16.h
+--- libvorbis-1.3.6/lib/modes/psych_16.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/psych_16.h	2018-03-26 11:26:46 +0000
+@@ -14,53 +14,29 @@
+ 
+  ********************************************************************/
+ 
+-/* stereo mode by base quality level */
+-static const adj_stereo _psy_stereo_modes_16[4]={
+-  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  */
+-  {{  4,  4,  4,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3},
+-   {  6,  5,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4},
+-   {  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  3,  3,  4,  4},
+-   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+-  {{  4,  4,  4,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3},
+-   {  6,  5,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4},
+-   {  2,  2,  2,  2,  2,  2,  2,  2,  2,  3,  4,  4,  4,  4,  4},
+-   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+-  {{  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3},
+-   {  5,  4,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3},
+-   {  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4},
+-   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+-  {{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+-   {  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+-   {  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8},
+-   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+-};
+-
+-static const double _psy_lowpass_16[4]={6.5,8,30.,99.};
+-
+-static const att3 _psy_tone_masteratt_16[4]={
+-  {{ 30,  25,  12},  0,   0},  /* 0 */
+-  {{ 25,  22,  12},  0,   0},  /* 0 */
+-  {{ 20,  12,   0},  0,   0},  /* 0 */
+-  {{ 15,   0, -14},  0,   0}, /* 0 */
+-};
+-
+-static const vp_adjblock _vp_tonemask_adj_16[4]={
++/* tonal masking curve level adjustments *************************/
++static const vp_adjblock _vp_tonemask_adj_16[5]={
+   /* adjust for mode zero */
+   /* 63     125     250     500       1     2     4     8    16 */
+-  {{-20,-20,-20,-20,-20,-16,-10,  0,  0, 0, 0,10, 0, 0, 0, 0, 0}}, /* 0 */
+-  {{-20,-20,-20,-20,-20,-16,-10,  0,  0, 0, 0,10, 0, 0, 0, 0, 0}}, /* 1 */
+-  {{-20,-20,-20,-20,-20,-16,-10,  0,  0, 0, 0, 0, 0, 0, 0, 0, 0}}, /* 2 */
+-  {{-30,-30,-30,-30,-30,-26,-20,-10, -5, 0, 0, 0, 0, 0, 0, 0, 0}}, /* 2 */
++  {{-16,-16,-16,-16,-16,-16,-10, -8, -4, 0, 0, 0, 0, 0, 0, 0, 0}}, /* -2 */
++  {{-16,-16,-16,-16,-16,-16,-10, -8, -6,-2, 0, 0, 0, 0, 0, 0, 0}}, /* -1 */
++  {{-16,-16,-16,-16,-16,-16,-10, -8, -6,-4, 0, 0, 0, 0, 0, 0, 0}}, /* 0.5 */
++  {{-20,-20,-20,-20,-20,-16,-10,-10, -8,-6,-2,-2, 0, 0, 0, 0, 0}}, /*  5 */
++  {{-30,-30,-30,-30,-30,-26,-20,-10, -8,-6,-2,-2, 0, 0, 0, 0, 0}}, /* 10 */
+ };
+ 
+-
+-static const noise3 _psy_noisebias_16_short[4]={
++/* noise bias */
++static const noise3 _psy_noisebias_16_short[5]={
+   /*  63     125     250     500      1k       2k      4k      8k     16k*/
+-  {{{-15,-15,-15,-15,-15,-10,-10,-5,   4, 10, 10, 10, 10, 12, 12, 14, 20},
++  {{{-15,-15,-15,-15,-15,-10,-10, -5,  4, 10, 10, 10, 10, 12, 12, 14, 20},
++    {-12,-12,-12,-12,-12, -7, -7, -2,  3,  3,  4,  5,  6,  7,  8,  8, 15},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -6, -6}}},
++
++  {{{-15,-15,-15,-15,-15,-10,-10, -5,  4, 10, 10, 10, 10, 12, 12, 14, 20},
+     {-15,-15,-15,-15,-15,-10,-10, -5,  0,  0,  4,  5,  5,  6,  8,  8, 15},
+     {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -6, -6}}},
+ 
+-  {{{-15,-15,-15,-15,-15,-10,-10,-5,   4,  6,  6,  6,  6,  8, 10, 12, 20},
++  {{{-15,-15,-15,-15,-15,-10,-10, -5,  4,  6,  6,  6,  6,  8, 10, 12, 20},
+     {-15,-15,-15,-15,-15,-15,-15,-10, -5, -5, -5,  4,  5,  6,  8,  8, 15},
+     {-30,-30,-30,-30,-30,-24,-20,-14,-10,-10,-10,-10,-10,-10,-10,-10,-10}}},
+ 
+@@ -73,13 +49,17 @@
+     {-30,-30,-30,-30,-26,-26,-26,-26,-26,-26,-26,-26,-26,-24,-20,-20,-20}}},
+ };
+ 
+-static const noise3 _psy_noisebias_16_impulse[4]={
++static const noise3 _psy_noisebias_16_impulse[5]={
+   /*  63     125     250     500      1k       2k      4k      8k     16k*/
+-  {{{-15,-15,-15,-15,-15,-10,-10,-5,   4, 10, 10, 10, 10, 12, 12, 14, 20},
++  {{{-15,-15,-15,-15,-15,-10,-10, -5,  4, 10, 10, 10, 10, 12, 12, 14, 20},
++    {-12,-12,-12,-12,-12, -7, -7, -2,  3,  3,  4,  5,  6,  7,  8,  8, 15},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -6, -6}}},
++
++  {{{-15,-15,-15,-15,-15,-10,-10, -5,  4, 10, 10, 10, 10, 12, 12, 14, 20},
+     {-15,-15,-15,-15,-15,-10,-10, -5,  0,  0,  4,  5,  5,  6,  8,  8, 15},
+     {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -6, -6}}},
+ 
+-  {{{-15,-15,-15,-15,-15,-10,-10,-5,   4,  4,  4,  4,  5,  5,  6,  8, 15},
++  {{{-15,-15,-15,-15,-15,-10,-10, -5,  4,  4,  4,  4,  5,  5,  6,  8, 15},
+     {-15,-15,-15,-15,-15,-15,-15,-10, -5, -5, -5,  0,  0,  0,  0,  4, 10},
+     {-30,-30,-30,-30,-30,-24,-20,-14,-10,-10,-10,-10,-10,-10,-10,-10,-10}}},
+ 
+@@ -92,9 +72,13 @@
+     {-30,-30,-30,-30,-26,-26,-26,-26,-26,-26,-26,-26,-26,-24,-20,-20,-20}}},
+ };
+ 
+-static const noise3 _psy_noisebias_16[4]={
++static const noise3 _psy_noisebias_16[5]={
+   /*  63     125     250     500      1k       2k      4k      8k     16k*/
+   {{{-10,-10,-10,-10, -5, -5, -5,  0,  4,  6,  8,  8, 10, 10, 10, 14, 20},
++    {-10,-10,-10,-10,-10, -5, -2, -2,  2,  2,  2,  4,  5,  6,  8,  8, 15},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -6, -6}}},
++
++  {{{-10,-10,-10,-10, -5, -5, -5,  0,  4,  6,  8,  8, 10, 10, 10, 14, 20},
+     {-10,-10,-10,-10,-10, -5, -2, -2,  0,  0,  0,  4,  5,  6,  8,  8, 15},
+     {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -6, -6}}},
+ 
+@@ -118,15 +102,54 @@
+   {20,20,-1},
+ };
+ 
+-static const double _noise_thresh_16[4]={ .3,.5,.5,.5 };
+-
+-static const int _noise_start_16[3]={ 256,256,9999 };
+-static const int _noise_part_16[4]={ 8,8,8,8 };
++/* ath ****************/
++static const int _psy_ath_floater_16[5]={
++  -100,-100,-100,-100,-105,
++};
++static const int _psy_ath_abs_16[5]={
++  -130,-130,-130,-130,-140,
++};
+ 
+-static const int _psy_ath_floater_16[4]={
+-  -100,-100,-100,-105,
++/* stereo mode by base quality level */
++static const adj_stereo _psy_stereo_modes_16[5]={
++  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  */
++  {{  4,  4,  4,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3},
++   {  7,  7,  7,  7,  7,  7,  7,  7,  6,  6,  5,  5,  5,  4,  4},
++   {  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  3,  3,  4,  4},
++   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
++  {{  4,  4,  4,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3},
++   {  7,  7,  6,  6,  6,  6,  6,  6,  5,  5,  5,  4,  4,  4,  4},
++   {  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  2,  3,  3,  4,  4},
++   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
++  {{  4,  4,  4,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3},
++   {  6,  5,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4},
++   {  2,  2,  2,  2,  2,  2,  2,  2,  2,  3,  4,  4,  4,  4,  4},
++   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
++  {{  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3},
++   {  5,  4,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3},
++   {  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4},
++   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
++  {{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
++   {  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
++   {  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8},
++   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+ };
+ 
+-static const int _psy_ath_abs_16[4]={
+-  -130,-130,-130,-140,
++/* tone master attenuation by base quality mode and bitrate tweak */
++static const att3 _psy_tone_masteratt_16[5]={
++  {{ 30,  25,  12},  0,   0},  /* -2 */
++  {{ 30,  25,  12},  0,   0},  /* -1 */
++  {{ 25,  23,  12},  0,   0},  /* 0.5 */
++  {{ 20,  12,   0},  0,   0},  /*  5 */
++  {{ 15,   0, -14},  0,   0},  /* 10 */
+ };
++
++/* lowpass by mode **************/
++static const double _psy_lowpass_16[5]={6.,6.5,8,30.,99.};
++
++/* noise normalization **********/
++static const int _noise_start_16[4]={ 256,256,256,9999 };
++
++static const int _noise_part_16[4]={ 8,8,8,8 };
++
++static const double _noise_thresh_16[4]={ .3,.4,.5,.5 };
+diff -Naur libvorbis-1.3.6/lib/modes/psych_44.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/psych_44.h
+--- libvorbis-1.3.6/lib/modes/psych_44.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/psych_44.h	2018-03-26 10:51:20 +0000
+@@ -17,35 +17,54 @@
+ 
+ /* preecho trigger settings *****************************************/
+ 
+-static const vorbis_info_psy_global _psy_global_44[5]={
+-
++static const vorbis_info_psy_global _psy_global_44[6]={
++/*
++  { lines per eighth octave,
++   { pre-echo thresh.}, 
++   { post-echo thresh.}, stretch penalty, pre-echo minimum energy,
++   ampmax att 1/sec,
++   {coupling point(kHz)},{{coupling point limit0},{coupling point limit1}},
++     {coupling pre-point amp},{coupling post-point amp},{{sliding lowpass0},{sliding lowpass1}}
++  },
++*/
++/* q-2 */
+   {8,   /* lines per eighth octave */
+-   {20.f,14.f,12.f,12.f,12.f,12.f,12.f},
+-   {-60.f,-30.f,-40.f,-40.f,-40.f,-40.f,-40.f}, 2,-75.f,
++   {24.f,16.f,16.f,16.f,16.f,16.f,24.f,  16.f,16.f,16.f,16.f,12.f},
++   {-60.f,-30.f,-40.f,-40.f,-40.f,-40.f,-60.f,  -40.f,-40.f,-40.f,-60.f,-60.f}, 2,-70.f,
+    -6.f,
+    {99.},{{99.},{99.}},{0},{0},{{0.},{0.}}
+   },
+   {8,   /* lines per eighth octave */
+-   {14.f,10.f,10.f,10.f,10.f,10.f,10.f},
+-   {-40.f,-30.f,-25.f,-25.f,-25.f,-25.f,-25.f}, 2,-80.f,
++//   {20.f,14.f,12.f,12.f,12.f,12.f,12.f}, 
++   {20.f,14.f,14.f,14.f,14.f,14.f,14.f,  14.f,14.f,14.f,14.f,12.f},
++   {-60.f,-30.f,-40.f,-40.f,-40.f,-40.f,-40.f,  -40.f,-40.f,-40.f,-60.f,-60.f}, 2,-75.f,
+    -6.f,
+    {99.},{{99.},{99.}},{0},{0},{{0.},{0.}}
+   },
+   {8,   /* lines per eighth octave */
+-   {12.f,10.f,10.f,10.f,10.f,10.f,10.f},
+-   {-20.f,-20.f,-15.f,-15.f,-15.f,-15.f,-15.f}, 0,-80.f,
++   {14.f,10.f,10.f,10.f,10.f,10.f,10.f,  14.f,14.f,14.f,14.f,12.f},
++   {-40.f,-30.f,-25.f,-25.f,-25.f,-25.f,-25.f,  -25.f,-25.f,-35.f,-40.f,-40.f}, 2,-80.f,
+    -6.f,
+    {99.},{{99.},{99.}},{0},{0},{{0.},{0.}}
+   },
+   {8,   /* lines per eighth octave */
+-   {10.f,8.f,8.f,8.f,8.f,8.f,8.f},
+-   {-20.f,-15.f,-12.f,-12.f,-12.f,-12.f,-12.f}, 0,-80.f,
++   {12.f,10.f,10.f,10.f,10.f,10.f,10.f,  10.f,10.f,10.f,10.f,10.f},
++   {-20.f,-20.f,-15.f,-15.f,-15.f,-15.f,-15.f,  -15.f,-15.f,-20.f,-20.f,-20.f}, 0,-80.f,
+    -6.f,
+    {99.},{{99.},{99.}},{0},{0},{{0.},{0.}}
+   },
+   {8,   /* lines per eighth octave */
+-   {10.f,6.f,6.f,6.f,6.f,6.f,6.f},
+-   {-15.f,-15.f,-12.f,-12.f,-12.f,-12.f,-12.f}, 0,-85.f,
++//   {10.f,8.f,8.f,8.f,8.f,8.f,8.f}, 
++   {8.f,8.f,8.f,6.f,6.f,6.f,7.f,  8.f,8.f,8.f,8.f,8.f},
++   {-20.f,-15.f,-12.f,-12.f,-12.f,-12.f,-12.f,  -12.f,-12.f,-15.f,-20.f,-20.f}, 0,-80.f,
++   -6.f,
++   {99.},{{99.},{99.}},{0},{0},{{0.},{0.}}
++  },
++  {8,   /* lines per eighth octave */
++//   {10.f,6.f,6.f,6.f,6.f,6.f,6.f}, 
++   {6.f,6.f,6.f,6.f,6.f,6.f,6.f,  8.f,8.f,8.f,8.f,8.f},
++//   {-15.f,-15.f,-12.f,-12.f,-12.f,-12.f,-12.f}, 0,-85.f,
++   {-15.f,-14.f,-10.f,-10.f,-10.f,-11.f,-12.f,  -12.f,-12.f,-15.f,-20.f,-20.f}, 0,-85.f,
+    -6.f,
+    {99.},{{99.},{99.}},{0},{0},{{0.},{0.}}
+   },
+@@ -55,26 +74,41 @@
+ static const compandblock _psy_compand_44[6]={
+   /* sub-mode Z short */
+   {{
+-    0, 1, 2, 3, 4, 5, 6,  7,     /* 7dB */
+-    8, 9,10,11,12,13,14, 15,     /* 15dB */
+-    16,17,18,19,20,21,22, 23,     /* 23dB */
+-    24,25,26,27,28,29,30, 31,     /* 31dB */
+-    32,33,34,35,36,37,38, 39,     /* 39dB */
++//    0, 1, 2, 3, 4, 5, 6,  7,     /* 7dB */
++//    8, 9,10,11,12,13,14, 15,     /* 15dB */
++//    16,17,18,19,20,21,22, 23,     /* 23dB */
++//    24,25,26,27,28,29,30, 31,     /* 31dB */
++//    32,33,34,35,36,37,38, 39,     /* 39dB */
++    0, 1, 2, 3, 4, 5, 6,  6,     /* 7dB */
++    7, 7, 7, 8, 9, 9,10, 10,     /* 15dB */
++    11,12,13,14,15,15,15, 15,     /* 23dB */
++    16,16,17,17,17,18,18, 19,     /* 31dB */
++    19,19,20,21,22,23,24, 25,     /* 39dB */
+   }},
+   /* mode_Z nominal short */
+   {{
++//     0, 1, 2, 3, 4, 5, 6,  6,     /* 7dB */
++//     7, 7, 7, 7, 6, 6, 6,  7,     /* 15dB */
++//     7, 8, 9,10,11,12,13, 14,     /* 23dB */
++//    15,16,17,17,17,18,18, 19,     /* 31dB */
++//    19,19,20,21,22,23,24, 25,     /* 39dB */
+      0, 1, 2, 3, 4, 5, 6,  6,     /* 7dB */
+-     7, 7, 7, 7, 6, 6, 6,  7,     /* 15dB */
++     7, 7, 7, 7, 7, 7, 7,  7,     /* 15dB */
+      7, 8, 9,10,11,12,13, 14,     /* 23dB */
+     15,16,17,17,17,18,18, 19,     /* 31dB */
+     19,19,20,21,22,23,24, 25,     /* 39dB */
+   }},
+   /* mode A short */
+   {{
++//    0, 1, 2, 3, 4, 5, 5,  5,     /* 7dB */
++//    6, 6, 6, 5, 4, 4, 4,  4,     /* 15dB */
++//    4, 4, 5, 5, 5, 6, 6,  6,     /* 23dB */
++//    7, 7, 7, 8, 8, 8, 9, 10,     /* 31dB */
++//    11,12,13,14,15,16,17, 18,     /* 39dB */
+     0, 1, 2, 3, 4, 5, 5,  5,     /* 7dB */
+-    6, 6, 6, 5, 4, 4, 4,  4,     /* 15dB */
+-    4, 4, 5, 5, 5, 6, 6,  6,     /* 23dB */
+-    7, 7, 7, 8, 8, 8, 9, 10,     /* 31dB */
++    6, 6, 6, 6, 6, 6, 6,  6,     /* 15dB */
++    6, 6, 6, 6, 6, 7, 7,  7,     /* 23dB */
++    8, 8, 8, 9, 9, 9,10, 11,     /* 31dB */
+     11,12,13,14,15,16,17, 18,     /* 39dB */
+   }},
+   /* sub-mode Z long */
+@@ -95,172 +129,139 @@
+   }},
+   /* mode A long */
+   {{
++//    0, 1, 2, 3, 4, 5, 6,  7,     /* 7dB */
++//    8, 8, 7, 6, 5, 4, 4,  4,     /* 15dB */
++//    4, 4, 5, 5, 5, 6, 6,  6,     /* 23dB */
++//    7, 7, 7, 8, 8, 8, 9, 10,     /* 31dB */
++//    11,12,13,14,15,16,17, 18,     /* 39dB */
+     0, 1, 2, 3, 4, 5, 6,  7,     /* 7dB */
+-    8, 8, 7, 6, 5, 4, 4,  4,     /* 15dB */
+-    4, 4, 5, 5, 5, 6, 6,  6,     /* 23dB */
+-    7, 7, 7, 8, 8, 8, 9, 10,     /* 31dB */
++    7, 7, 7, 6, 6, 6, 6,  6,     /* 15dB */
++    6, 6, 6, 6, 6, 7, 7,  7,     /* 23dB */
++    8, 8, 8, 9, 9, 9,10, 11,     /* 31dB */
+     11,12,13,14,15,16,17, 18,     /* 39dB */
+   }}
+ };
+ 
+ /* tonal masking curve level adjustments *************************/
+-
+-static const vp_adjblock _vp_tonemask_adj_longblock[12]={
+-
++static const vp_adjblock _vp_tonemask_adj_longblock[13]={
+    /* 63     125     250     500       1       2       4       8      16 */
++   {{-16,-16,-16,-15,-15,-15,-15,-15,-14,-13,-12,-11,-11, -3,  1,  1,  4}}, /* -2(addition) */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-13,-13, -6, -1, -1,  3}}, /* -1  */
+ 
+-   {{ -3, -8,-13,-15,-10,-10,-10,-10,-10,-10,-10,  0,  0,  0,  0,  0,  0}}, /* -1 */
+-
+-/* {{-15,-15,-15,-15,-10, -8, -4, -2,  0,  0,  0, 10,  0,  0,  0,  0,  0}},    0 */
+-   {{ -4,-10,-14,-16,-15,-14,-13,-12,-12,-12,-11, -1, -1, -1, -1, -1,  0}}, /* 0 */
+-
+-/* {{-15,-15,-15,-15,-15,-12,-10, -8,  0,  0,  0,  5,  0,  0,  0,  0,  0}},    1 */
+-   {{ -6,-12,-14,-16,-15,-15,-14,-13,-13,-12,-12, -2, -2, -1, -1, -1,  0}}, /* 1 */
+-
+-/* {{-15,-15,-15,-15,-15,-12,-10, -8,  0,  0,  0,  0,  0,  0,  0,  0,  0}},    2 */
+-   {{-12,-13,-14,-16,-16,-16,-15,-14,-13,-12,-12, -6, -3, -1, -1, -1,  0}}, /* 2 */
+-
+-/* {{-15,-15,-15,-15,-15,-12,-10, -8,  0,  0,  0,  0,  0,  0,  0,  0,  0}},    3 */
+-   {{-15,-15,-15,-16,-16,-16,-16,-14,-13,-13,-13,-10, -4, -2, -1, -1,  0}}, /* 3 */
+-
+-/* {{-15,-15,-15,-15,-15,-12,-10, -8,  0,  0,  0,  0,  0,  0,  0,  0,  0}}, *//* 4 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-13,-11, -7  -3, -1, -1 , 0}}, /* 4 */
+-
+-/* {{-15,-15,-15,-15,-15,-12,-10, -8,  0,  0,  0,  0,  0,  0,  0,  0,  0}},    5 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-13,-11, -7  -3, -1, -1 , 0}}, /* 5 */
+-
+-/* {{-15,-15,-15,-15,-15,-12,-10, -8,  0,  0,  0,  0,  0,  0,  0,  0,  0}},    6 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-14,-12, -8, -4, -2, -2,  0}}, /* 6 */
+-
+-/* {{-15,-15,-15,-15,-15,-12,-10, -8,  0,  0,  0,  0,  0,  0,  0,  0,  0}},    7 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-14,-12, -9, -4, -2, -2,  0}}, /* 7 */
+-
+-/* {{-15,-15,-15,-15,-15,-12,-10, -8,  0,  0,  0,  0,  0,  0,  0,  0,  0}},    8 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-14,-12, -9, -4, -2, -2,  0}}, /* 8 */
+-
+-/* {{-15,-15,-15,-15,-15,-12,-10, -8,  0,  0,  0,  0,  0,  0,  0,  0,  0}},    9 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-14,-12, -9, -4, -2, -2,  0}}, /* 9 */
+-
+-/* {{-15,-15,-15,-15,-15,-12,-10, -8,  0,  0,  0,  0,  0,  0,  0,  0,  0}},    10 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-14,-12, -9, -4, -2, -2,  0}}, /* 10 */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-13, -6, -2, -2,  1}}, /*  0  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-13, -7, -4, -4,  0}}, /*  1  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14, -9, -5, -5,  0}}, /*  2  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-10, -7, -7,  0}}, /*  3  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11, -9, -9,  0}}, /*  4  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11, -9, -9,  0}}, /*  5  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11,-10,-10, -1}}, /*  6  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11,-10,-10, -1}}, /*  7  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11,-10,-10, -1}}, /*  8  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11,-10,-10, -1}}, /*  9  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11,-10,-10, -1}}, /* 10  */
+ };
+-
+-static const vp_adjblock _vp_tonemask_adj_otherblock[12]={
++static const vp_adjblock _vp_tonemask_adj_otherblock[13]={
+    /* 63     125     250     500       1       2       4       8      16 */
++   {{-16,-16,-16,-15,-15,-15,-15,-15,-14,-13,-12,-11,-11, -3,  1,  1,  4}}, /* -2(addition) */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-13,-13, -6, -1, -1,  3}}, /* -1  */
+ 
+-   {{ -3, -8,-13,-15,-10,-10, -9, -9, -9, -9, -9,  1,  1,  1,  1,  1,  1}}, /* -1 */
+-
+-/* {{-20,-20,-20,-20,-14,-12,-10, -8, -4,  0,  0, 10,  0,  0,  0,  0,  0}},    0 */
+-   {{ -4,-10,-14,-16,-14,-13,-12,-12,-11,-11,-10,  0,  0,  0,  0,  0,  0}}, /* 0 */
+-
+-/* {{-20,-20,-20,-20,-20,-18,-16,-14,-10,  0,  0,  5,  0,  0,  0,  0,  0}},    1 */
+-   {{ -6,-12,-14,-16,-15,-15,-14,-13,-13,-12,-12, -2, -2, -1,  0,  0,  0}}, /* 1 */
+-
+-/* {{-20,-20,-20,-20,-20,-18,-16,-14,-10,  0,  0,  0,  0,  0,  0,  0,  0}},    2 */
+-   {{-12,-13,-14,-16,-16,-16,-15,-14,-13,-12,-12, -5, -2, -1,  0,  0,  0}}, /* 2 */
+-
+-/* {{-20,-20,-20,-20,-20,-18,-16,-14,-10,  0,  0,  0,  0,  0,  0,  0,  0}},    3 */
+-   {{-15,-15,-15,-16,-16,-16,-16,-14,-13,-13,-13,-10, -4, -2,  0,  0,  0}}, /* 3 */
+-
+-/* {{-20,-20,-20,-20,-20,-18,-16,-14,-10,  0,  0,  0,  0,  0,  0,  0,  0}},    4 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-13,-11, -7  -3, -1, -1 , 0}}, /* 4 */
+-
+-/* {{-20,-20,-20,-20,-20,-18,-16,-14,-10,  0,  0,  0,  0,  0,  0,  0,  0}},    5 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-13,-11, -7  -3, -1, -1 , 0}}, /* 5 */
+-
+-/* {{-20,-20,-20,-20,-20,-18,-16,-14,-10,  0,  0,  0,  0,  0,  0,  0,  0}},    6 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-14,-12, -8, -4, -2, -2,  0}}, /* 6 */
+-
+-/* {{-20,-20,-20,-20,-20,-18,-16,-14,-10,  0,  0,  0,  0,  0,  0,  0,  0}},    7 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-14,-12, -9, -4, -2, -2,  0}}, /* 7 */
+-
+-/* {{-20,-20,-20,-20,-20,-18,-16,-14,-10,  0,  0,  0,  0,  0,  0,  0,  0}},    8 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-14,-12, -9, -4, -2, -2,  0}}, /* 8 */
+-
+-/* {{-20,-20,-20,-20,-20,-18,-16,-14,-10,  0,  0,  0,  0,  0,  0,  0,  0}},    9 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-14,-12, -9, -4, -2, -2,  0}}, /* 9 */
+-
+-/* {{-20,-20,-20,-20,-20,-18,-16,-14,-10,  0,  0,  0,  0,  0,  0,  0,  0}},    10 */
+-   {{-16,-16,-16,-16,-16,-16,-16,-15,-14,-14,-14,-12, -9, -4, -2, -2,  0}}, /* 10 */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-13, -6, -2, -2,  1}}, /*  0  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-13, -7, -4, -4,  0}}, /*  1  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14, -9, -5, -5,  0}}, /*  2  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-10, -7, -7,  0}}, /*  3  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11, -9, -9,  0}}, /*  4  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11, -9, -9,  0}}, /*  5  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11,-10,-10, -1}}, /*  6  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11,-10,-10, -1}}, /*  7  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11,-10,-10, -1}}, /*  8  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11,-10,-10, -1}}, /*  9  */
++   {{-16,-16,-16,-16,-16,-16,-16,-16,-15,-15,-14,-14,-14,-11,-10,-10, -1}}, /* 10  */
+ };
+ 
+ /* noise bias (transition block) */
+-static const noise3 _psy_noisebias_trans[12]={
++static const noise3 _psy_noisebias_trans[13]={
+   /*  63     125     250     500      1k       2k      4k      8k     16k*/
+-  /* -1 */
++  /* -2(addition mode) */
+   {{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  8,  8,  8,  8, 10, 12, 14, 20},
++    {-28,-28,-26,-26,-22,-18,-16,-10,  0,  2,  2,  2,  3,  5,  6,  7, 15},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -6, -6, -6, -4, -4, -4, -2}}},
++  /* -1 */
++/*{{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  8,  8,  8,  8, 10, 12, 14, 20},
+     {-30,-30,-30,-30,-26,-20,-16, -8, -6, -6, -2,  2,  2,  3,  6,  6, 15},
+-    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -4, -2}}},
+-  /* 0
+-  {{{-15,-15,-15,-15,-15,-12,-10, -8,  0,  2,  4,  4,  5,  5,  5,  8,  10},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -4, -2}}},*/
++  {{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  8,  8,  8,  8, 10, 12, 14, 20},
++    {-30,-30,-28,-28,-24,-20,-18,-12, -4,  0,  0,  0,  1,  3,  4,  5, 12},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -6, -6, -6, -4, -4, -4, -2}}},
++  /* 0 */
++/*{{{-15,-15,-15,-15,-15,-12,-10, -8,  0,  2,  4,  4,  5,  5,  5,  8,  10},
+     {-30,-30,-30,-30,-26,-22,-20,-14, -8, -4,  0,  0,  0,  0,  2,  4,  10},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -6, -4, -4, -4,  -2}}},*/
+-  {{{-15,-15,-15,-15,-15,-12, -6, -4,  0,  2,  4,  4,  5,  5,  5,  8,  10},
+-    {-30,-30,-30,-30,-26,-22,-20,-14, -8, -4,  0,  0,  0,  0,  2,  3,   6},
+-    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -6, -4, -4, -4,  -2}}},
+-  /* 1
+-  {{{-15,-15,-15,-15,-15,-12,-10, -8,  0,  2,  4,  4,  5,  5,  5,  8,  10},
++  {{{-15,-15,-15,-15,-15,-12, -6, -4,  0,  2,  4,  4,  5,  5,  5,  8, 10},
++    {-30,-30,-30,-30,-26,-22,-20,-14, -6,  0,  0,  0,  1,  1,  2,  3,  9},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -6, -4, -4, -4, -2}}},
++  /* 1 */
++/*{{{-15,-15,-15,-15,-15,-12,-10, -8,  0,  2,  4,  4,  5,  5,  5,  8, 10},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -2, -2, -2, -2,  0,  2,  8},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10, -8, -8, -8, -8, -6, -6, -6, -4}}},*/
+-  {{{-15,-15,-15,-15,-15,-12,-10, -8,  0,  2,  4,  4,  5,  5,  5,  8,  10},
+-    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -2, -2, -2, -2,  0,  1,   4},
+-    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -8, -8, -8, -8, -6, -6, -6,  -4}}},
+-  /* 2
+-  {{{-15,-15,-15,-15,-15,-12,-10, -8,  0,  2,  2,  2,  4,  4,  5,  6,  10},
++  {{{-15,-15,-15,-15,-15,-12,-10, -8,  0,  2,  4,  4,  5,  5,  5,  8, 10},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -2, -2, -2, -2, -1,  1,  7},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -8, -8, -8, -8, -6, -6, -6, -4}}},
++  /* 2 */
++/*{{{-15,-15,-15,-15,-15,-12,-10, -8,  0,  2,  2,  2,  4,  4,  5,  6, 10},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -2, -2, -2, -2,  0,  2,  6},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -4}}}, */
+-  {{{-15,-15,-15,-15,-15,-12,-10, -8,  0,  2,  2,  2,  4,  4,  5,  6,  10},
+-    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -3, -3, -3, -2, -1,  0,  3},
++  {{{-15,-15,-15,-15,-15,-12,-10, -8,  0,  2,  2,  2,  4,  4,  5,  6, 10},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -3, -3, -2, -2, -1,  1,  4},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10,-10,-10,-10,-10, -8, -8, -7, -4}}},
+-  /* 3
+-  {{{-15,-15,-15,-15,-15,-12,-10, -8,  0,  2,  2,  2,  4,  4,  4,  5,  8},
++  /* 3 */
++/*{{{-15,-15,-15,-15,-15,-12,-10, -8,  0,  2,  2,  2,  4,  4,  4,  5,  8},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -3, -3, -3, -3, -1,  1,  6},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -4}}},*/
+   {{{-15,-15,-15,-15,-15,-12,-10, -8,  0,  2,  2,  2,  4,  4,  4,  5,  8},
+-    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -3, -3, -3, -3, -2,  0,  2},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -3, -3, -3, -3, -2,  0,  4},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -4}}},
+-  /* 4
+-  {{{-20,-20,-20,-20,-20,-18,-14, -8, -1,  1,  1,  1,  2,  3,  3,  4,  7},
++  /* 4 */
++/*{{{-20,-20,-20,-20,-20,-18,-14, -8, -1,  1,  1,  1,  2,  3,  3,  4,  7},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -3, -3, -3, -3, -1,  1,  5},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -4}}},*/
+   {{{-20,-20,-20,-20,-20,-18,-14, -8, -1,  1,  1,  1,  2,  3,  3,  4,  7},
+-    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -3, -3, -3, -3, -2, -1,  1},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -3, -3, -3, -3, -2, -1,  4},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -4}}},
+-  /* 5
+-  {{{-24,-24,-24,-24,-20,-18,-14, -8, -1,  1,  1,  1,  2,  3,  3,  4,  7},
++  /* 5 */
++/*{{{-24,-24,-24,-24,-20,-18,-14, -8, -1,  1,  1,  1,  2,  3,  3,  4,  7},
+     {-32,-32,-32,-32,-28,-24,-22,-16,-12, -6, -4, -4, -4, -4, -2, -1,  2},
+     {-34,-34,-34,-34,-30,-24,-24,-18,-14,-12,-12,-12,-12,-10,-10, -9, -5}}}, */
+   {{{-24,-24,-24,-24,-20,-18,-14, -8, -1,  1,  1,  1,  2,  3,  3,  4,  7},
+-    {-32,-32,-32,-32,-28,-24,-22,-16,-12, -6, -4, -4, -4, -4, -3, -1,  0},
++    {-32,-32,-32,-32,-28,-24,-22,-16,-12, -6, -4, -4, -4, -4, -3, -2,  2},
+     {-34,-34,-34,-34,-30,-24,-24,-18,-14,-12,-12,-12,-12,-10,-10, -9, -5}}},
+-  /* 6
+-  {{{-24,-24,-24,-24,-20,-18,-14, -8, -1,  1,  1,  1,  2,  3,  3,  4,  7},
++  /* 6 */
++/*{{{-24,-24,-24,-24,-20,-18,-14, -8, -1,  1,  1,  1,  2,  3,  3,  4,  7},
+     {-32,-32,-32,-32,-28,-24,-24,-18,-14, -8, -6, -6, -6, -6, -4, -2,  1},
+     {-34,-34,-34,-34,-30,-26,-24,-18,-17,-15,-15,-15,-15,-13,-13,-12, -8}}},*/
+   {{{-24,-24,-24,-24,-20,-18,-14, -8, -1,  1,  1,  1,  2,  3,  3,  4,  7},
+-    {-32,-32,-32,-32,-28,-24,-24,-18,-14, -8, -6, -6, -6, -6, -5, -2,  0},
+-    {-34,-34,-34,-34,-30,-26,-26,-24,-22,-19,-19,-19,-19,-18,-17,-16,-12}}},
+-  /* 7
+-  {{{-24,-24,-24,-24,-20,-18,-14, -8, -1,  1,  1,  1,  2,  3,  3,  4,  7},
++    {-34,-34,-34,-34,-30,-30,-24,-20,-14, -8, -6, -6, -6, -6, -4, -2,  0},
++    {-34,-34,-34,-34,-30,-26,-24,-18,-17,-15,-15,-15,-15,-13,-13,-12, -8}}},
++  /* 7 */
++/*{{{-24,-24,-24,-24,-20,-18,-14, -8, -1,  1,  1,  1,  2,  3,  3,  4,  7},
+     {-32,-32,-32,-32,-28,-24,-24,-18,-14,-12,-10, -8, -8, -8, -6, -4,  0},
+     {-34,-34,-34,-34,-30,-26,-26,-24,-22,-19,-19,-19,-19,-18,-17,-16,-12}}},*/
+   {{{-24,-24,-24,-24,-20,-18,-14, -8, -1,  1,  1,  1,  2,  3,  3,  4,  7},
+-    {-32,-32,-32,-32,-28,-24,-24,-24,-18,-14,-12,-10,-10,-10, -8, -6, -2},
+-    {-34,-34,-34,-34,-30,-26,-26,-26,-24,-24,-24,-24,-24,-24,-24,-20,-16}}},
+-  /* 8
+-  {{{-24,-24,-24,-24,-22,-20,-15,-10, -8, -2,  0,  0,  0,  1,  2,  3,  7},
++    {-34,-34,-34,-34,-30,-30,-24,-20,-14,-12,-10, -8, -8, -8, -6, -4,  0},
++    {-34,-34,-34,-34,-30,-26,-26,-24,-22,-19,-19,-19,-19,-18,-17,-16,-12}}},
++  /* 8 */
++/*{{{-24,-24,-24,-24,-22,-20,-15,-10, -8, -2,  0,  0,  0,  1,  2,  3,  7},
+     {-36,-36,-36,-36,-30,-30,-30,-24,-18,-14,-12,-10,-10,-10, -8, -6, -2},
+     {-36,-36,-36,-36,-34,-30,-28,-26,-24,-24,-24,-24,-24,-24,-24,-20,-16}}},*/
+   {{{-24,-24,-24,-24,-22,-20,-15,-10, -8, -2,  0,  0,  0,  1,  2,  3,  7},
+-    {-36,-36,-36,-36,-30,-30,-30,-24,-20,-16,-16,-16,-16,-14,-12,-10, -7},
+-    {-36,-36,-36,-36,-34,-30,-28,-26,-24,-30,-30,-30,-30,-30,-30,-24,-20}}},
+-  /* 9
+-  {{{-28,-28,-28,-28,-28,-28,-28,-20,-14, -8, -4, -4, -4, -4, -4, -2,  2},
++    {-34,-34,-34,-34,-30,-30,-30,-24,-18,-14,-12,-10,-10,-10, -8, -6, -2},
++    {-36,-36,-36,-36,-34,-30,-28,-26,-24,-24,-24,-24,-24,-24,-24,-20,-16}}},
++  /* 9 */
++/*{{{-28,-28,-28,-28,-28,-28,-28,-20,-14, -8, -4, -4, -4, -4, -4, -2,  2},
+     {-36,-36,-36,-36,-34,-32,-32,-28,-20,-16,-16,-16,-16,-14,-12,-10, -7},
+     {-40,-40,-40,-40,-40,-40,-40,-32,-30,-30,-30,-30,-30,-30,-30,-24,-20}}},*/
+   {{{-28,-28,-28,-28,-28,-28,-28,-20,-14, -8, -4, -4, -4, -4, -4, -2,  2},
+-    {-38,-38,-38,-38,-36,-34,-34,-30,-24,-20,-20,-20,-20,-18,-16,-12,-10},
+-    {-40,-40,-40,-40,-40,-40,-40,-38,-35,-35,-35,-35,-35,-35,-35,-35,-30}}},
++    {-36,-36,-36,-36,-32,-32,-32,-28,-20,-16,-16,-16,-16,-14,-12,-10, -7},
++    {-40,-40,-40,-40,-40,-40,-40,-32,-30,-30,-30,-30,-30,-30,-30,-24,-20}}},
+   /* 10 */
+   {{{-30,-30,-30,-30,-30,-30,-30,-28,-20,-14,-14,-14,-14,-14,-14,-12,-10},
+     {-40,-40,-40,-40,-40,-40,-40,-40,-35,-30,-30,-30,-30,-30,-30,-30,-20},
+@@ -268,65 +269,74 @@
+ };
+ 
+ /*  noise bias (long block) */
+-static const noise3 _psy_noisebias_long[12]={
+-  /*63     125     250     500      1k       2k      4k      8k     16k*/
++static const noise3 _psy_noisebias_long[13]={
++  /*  63     125     250     500      1k       2k      4k      8k     16k*/
++  /* -2(addition mode) */
++  {{{-10,-10,-10,-10,-10, -4,  0,  0,  2,  6,  6,  6,  6, 10, 10, 12, 20},
++    {-20,-20,-20,-20,-20,-18,-12, -6,  0,  2,  2,  2,  3,  5,  6,  7, 15},
++    {-20,-20,-20,-20,-20,-20,-20,-10, -6, -6, -6, -6, -6, -4, -4, -4, -2}}},
+   /* -1 */
+-  {{{-10,-10,-10,-10,-10, -4,  0,  0,  0,  6,  6,  6,  6, 10, 10, 12,  20},
+-    {-20,-20,-20,-20,-20,-20,-10, -2,  0,  0,  0,  0,  0,  2,  4,  6,  15},
++/*{{{-10,-10,-10,-10,-10, -4,  0,  0,  0,  6,  6,  6,  6, 10, 10, 12, 20},
++    {-20,-20,-20,-20,-20,-20,-10, -2,  0,  0,  0,  0,  0,  2,  4,  6, 15},
++    {-20,-20,-20,-20,-20,-20,-20,-10, -6, -6, -6, -6, -6, -4, -4, -4, -2}}},*/
++  {{{-10,-10,-10,-10,-10, -4,  0,  0,  0,  6,  6,  6,  6, 10, 10, 12, 20},
++    {-20,-20,-20,-20,-20,-18,-12, -8, -2,  0,  0,  0,  1,  3,  4,  5, 12},
+     {-20,-20,-20,-20,-20,-20,-20,-10, -6, -6, -6, -6, -6, -4, -4, -4, -2}}},
+-
+   /* 0 */
+-  /*  {{{-10,-10,-10,-10,-10,-10, -8,  2,  2,  2,  4,  4,  5,  5,  5,  8,  10},
+-      {-20,-20,-20,-20,-20,-20,-20,-14, -6,  0,  0,  0,  0,  0,  2,  4,  10},
+-      {-20,-20,-20,-20,-20,-20,-20,-14, -8, -6, -6, -6, -6, -4, -4, -4, -2}}},*/
+-  {{{-10,-10,-10,-10,-10,-10, -8,  2,  2,  2,  4,  4,  5,  5,  5,  8,  10},
+-    {-20,-20,-20,-20,-20,-20,-20,-14, -6,  0,  0,  0,  0,  0,  2,  3,  6},
++/*{{{-10,-10,-10,-10,-10,-10, -8,  2,  2,  2,  4,  4,  5,  5,  5,  8,  10},
++    {-20,-20,-20,-20,-20,-20,-20,-14, -6,  0,  0,  0,  0,  0,  2,  4,  10},
++    {-20,-20,-20,-20,-20,-20,-20,-14, -8, -6, -6, -6, -6, -4, -4, -4, -2}}},*/
++  {{{-10,-10,-10,-10,-10,-10, -8,  2,  2,  2,  4,  4,  5,  5,  5,  8, 10},
++    {-20,-20,-20,-20,-20,-20,-20,-14, -6,  0,  0,  0,  1,  1,  2,  3,  9},
+     {-20,-20,-20,-20,-20,-20,-20,-14, -8, -6, -6, -6, -6, -4, -4, -4, -2}}},
+   /* 1 */
+-  /*  {{{-10,-10,-10,-10,-10,-10, -8, -4,  0,  2,  4,  4,  5,  5,  5,  8,  10},
+-      {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -2, -2, -2, -2,  0,  2,  8},
+-      {-20,-20,-20,-20,-20,-20,-20,-14,-10, -8, -8, -8, -8, -6, -6, -6, -4}}},*/
+-  {{{-10,-10,-10,-10,-10,-10, -8, -4,  0,  2,  4,  4,  5,  5,  5,  8,  10},
+-    {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -2, -2, -2, -2,  0,  1,  4},
++/*{{{-10,-10,-10,-10,-10,-10, -8, -4,  0,  2,  4,  4,  5,  5,  5,  8, 10},
++    {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -2, -2, -2, -2,  0,  2,  8},
++    {-20,-20,-20,-20,-20,-20,-20,-14,-10, -8, -8, -8, -8, -6, -6, -6, -4}}},*/
++  {{{-10,-10,-10,-10,-10,-10, -8, -4,  0,  2,  4,  4,  5,  5,  5,  8, 10},
++    {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -2, -2, -2, -2, -1,  1,  7},
+     {-20,-20,-20,-20,-20,-20,-20,-14,-10, -8, -8, -8, -8, -6, -6, -6, -4}}},
+   /* 2 */
+-  /*  {{{-10,-10,-10,-10,-10,-10,-10, -8,  0,  2,  2,  2,  4,  4,  5,  6,  10},
+-      {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -2, -2, -2, -2,  0,  2,  6},
+-      {-20,-20,-20,-20,-20,-20,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -4}}},*/
+-  {{{-10,-10,-10,-10,-10,-10,-10, -8,  0,  2,  2,  2,  4,  4,  5,  6,  10},
+-    {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -3, -3, -3, -2, -1,  0,  3},
++/*{{{-10,-10,-10,-10,-10,-10,-10, -8,  0,  2,  2,  2,  4,  4,  5,  6, 10},
++    {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -2, -2, -2, -2,  0,  2,  6},
++    {-20,-20,-20,-20,-20,-20,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -4}}},*/
++  {{{-10,-10,-10,-10,-10,-10,-10, -8,  0,  2,  2,  2,  4,  4,  5,  6, 10},
++    {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -3, -3, -2, -2, -1,  1,  4},
+     {-20,-20,-20,-20,-20,-20,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -4}}},
+   /* 3 */
+-  /*  {{{-10,-10,-10,-10,-10,-10,-10, -8,  0,  2,  2,  2,  4,  4,  4,  5,  8},
+-      {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -3, -3, -3, -3, -1,  1,  6},
+-      {-20,-20,-20,-20,-20,-20,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -4}}},*/
++/*{{{-10,-10,-10,-10,-10,-10,-10, -8,  0,  2,  2,  2,  4,  4,  4,  5,  8},
++    {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -3, -3, -3, -3, -1,  1,  6},
++    {-20,-20,-20,-20,-20,-20,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -4}}},*/
+   {{{-10,-10,-10,-10,-10,-10,-10, -8,  0,  2,  2,  2,  4,  4,  4,  5,  8},
+-    {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -3, -3, -3, -3, -2,  0,  2},
++    {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -3, -3, -3, -3, -2,  0,  4},
+     {-20,-20,-20,-20,-20,-20,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -5}}},
+   /* 4 */
+-  /*  {{{-15,-15,-15,-15,-15,-15,-15,-10, -4,  1,  1,  1,  2,  3,  3,  4,  7},
+-      {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -3, -3, -3, -3, -1,  1,  5},
+-      {-20,-20,-20,-20,-20,-20,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -4}}},*/
++/*{{{-15,-15,-15,-15,-15,-15,-15,-10, -4,  1,  1,  1,  2,  3,  3,  4,  7},
++    {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -3, -3, -3, -3, -1,  1,  5},
++    {-20,-20,-20,-20,-20,-20,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -4}}},*/
+   {{{-15,-15,-15,-15,-15,-15,-15,-10, -4,  1,  1,  1,  2,  3,  3,  4,  7},
+-    {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -3, -3, -3, -3, -2, -1,  1},
++    {-20,-20,-20,-20,-20,-20,-20,-14,-10, -4, -3, -3, -3, -3, -2, -1,  4},
+     {-20,-20,-20,-20,-20,-20,-20,-14,-10,-10,-10,-10,-10, -8, -8, -8, -7}}},
+   /* 5 */
+-  /*  {{{-15,-15,-15,-15,-15,-15,-15,-10, -4,  1,  1,  1,  2,  3,  3,  4,  7},
+-      {-22,-22,-22,-22,-22,-22,-22,-16,-12, -6, -4, -4, -4, -4, -2, -1,  2},
+-      {-24,-24,-24,-24,-24,-24,-24,-18,-14,-12,-12,-12,-12,-10,-10, -9, -5}}},*/
++/*{{{-15,-15,-15,-15,-15,-15,-15,-10, -4,  1,  1,  1,  2,  3,  3,  4,  7},
++    {-22,-22,-22,-22,-22,-22,-22,-16,-12, -6, -4, -4, -4, -4, -2, -1,  2},
++    {-24,-24,-24,-24,-24,-24,-24,-18,-14,-12,-12,-12,-12,-10,-10, -9, -5}}},*/
+   {{{-15,-15,-15,-15,-15,-15,-15,-10, -4,  1,  1,  1,  2,  3,  3,  4,  7},
+-    {-22,-22,-22,-22,-22,-22,-22,-16,-12, -6, -4, -4, -4, -4, -3, -1,  0},
++    {-22,-22,-22,-22,-22,-22,-22,-16,-12, -6, -4, -4, -4, -4, -3, -2,  2},
+     {-24,-24,-24,-24,-24,-24,-24,-18,-14,-12,-12,-12,-12,-10,-10, -9, -8}}},
+   /* 6 */
+-  /*  {{{-15,-15,-15,-15,-15,-15,-15,-10, -4,  1,  1,  1,  2,  3,  3,  4,  7},
+-      {-24,-24,-24,-24,-24,-24,-24,-18,-14, -8, -6, -6, -6, -6, -4, -2,  1},
+-      {-26,-26,-26,-26,-26,-26,-26,-18,-16,-15,-15,-15,-15,-13,-13,-12, -8}}},*/
++/*{{{-15,-15,-15,-15,-15,-15,-15,-10, -4,  1,  1,  1,  2,  3,  3,  4,  7},
++    {-24,-24,-24,-24,-24,-24,-24,-18,-14, -8, -6, -6, -6, -6, -4, -2,  1},
++    {-26,-26,-26,-26,-26,-26,-26,-18,-16,-15,-15,-15,-15,-13,-13,-12, -8}}},*/
+   {{{-15,-15,-15,-15,-15,-15,-15,-10, -4,  1,  1,  1,  2,  3,  3,  4,  7},
+-    {-24,-24,-24,-24,-24,-24,-24,-18,-14, -8, -6, -6, -6, -6, -5, -2,  0},
+-    {-26,-26,-26,-26,-26,-26,-26,-18,-16,-15,-15,-15,-15,-13,-13,-12,-10}}},
++    {-24,-24,-24,-24,-24,-24,-24,-18,-14, -8, -6, -6, -6, -6, -4, -2,  0},
++    {-26,-26,-26,-26,-26,-26,-26,-18,-16,-15,-15,-15,-15,-13,-13,-12, -8}}},
+   /* 7 */
++//  {{{-15,-15,-15,-15,-15,-15,-15,-10, -4,  1,  1,  1,  2,  3,  3,  4,  7},
++//    {-24,-24,-24,-24,-24,-24,-24,-18,-14,-10, -8, -8, -8, -8, -6, -4,  0},
++//    {-26,-26,-26,-26,-26,-26,-26,-22,-20,-19,-19,-19,-19,-18,-17,-16,-12}}},
+   {{{-15,-15,-15,-15,-15,-15,-15,-10, -4,  1,  1,  1,  2,  3,  3,  4,  7},
+-    {-24,-24,-24,-24,-24,-24,-24,-18,-14,-10, -8, -8, -8, -8, -6, -4,  0},
++    {-24,-24,-24,-24,-24,-24,-24,-18,-14,-12,-10, -8, -8, -8, -6, -4,  0},
+     {-26,-26,-26,-26,-26,-26,-26,-22,-20,-19,-19,-19,-19,-18,-17,-16,-12}}},
+   /* 8 */
+   {{{-15,-15,-15,-15,-15,-15,-15,-10, -4,  0,  0,  0,  0,  1,  2,  3,  7},
+@@ -343,67 +353,85 @@
+ };
+ 
+ /* noise bias (impulse block) */
+-static const noise3 _psy_noisebias_impulse[12]={
++static const noise3 _psy_noisebias_impulse[13]={
+   /*  63     125     250     500      1k      2k      4k      8k     16k*/
+-  /* -1 */
++  /* -2(addition mode) */
+   {{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  8,  8,  8,  8, 10, 12, 14, 20},
++    {-28,-28,-26,-26,-22,-18,-16,-10,  0,  2,  2,  2,  3,  5,  6,  7, 15},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -6, -6, -6, -6, -6, -4, -2}}},
++  /* -1 */
++/*{{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  8,  8,  8,  8, 10, 12, 14, 20},
+     {-30,-30,-30,-30,-26,-20,-16, -8, -6, -6, -2,  2,  2,  3,  6,  6, 15},
+-    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -4, -2}}},
+-
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -4, -2}}},*/
++  {{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  8,  8,  8,  8, 10, 12, 14, 20},
++    {-30,-30,-28,-28,-24,-20,-18,-12, -4,  0,  0,  0,  1,  3,  4,  5, 12},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -6, -6, -6, -6, -6, -4, -2}}},
+   /* 0 */
+-  /*  {{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  4,  8,  8,  8, 10, 12, 14, 20},
+-      {-30,-30,-30,-30,-26,-22,-20,-14, -6, -2,  0,  0,  0,  0,  2,  4,  10},
+-      {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -4, -2}}},*/
++/*{{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  4,  8,  8,  8, 10, 12, 14, 20},
++    {-30,-30,-30,-30,-26,-22,-20,-14, -6, -2,  0,  0,  0,  0,  2,  4, 10},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -4, -2}}},*/
+   {{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  4,  8,  8,  8, 10, 12, 14, 20},
+-    {-30,-30,-30,-30,-26,-22,-20,-14, -6, -2,  0,  0,  0,  0,  2,  3,  6},
+-    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -4, -2}}},
++    {-30,-30,-30,-30,-26,-22,-20,-14, -6,  0,  0,  0,  1,  1,  2,  3,  9},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -6, -6, -6, -6, -6, -4, -2}}},
+   /* 1 */
+-  {{{-12,-12,-12,-12,-12, -8, -6, -4,  0,  4,  4,  4,  4, 10, 12, 14, 20},
++/*{{{-12,-12,-12,-12,-12, -8, -6, -4,  0,  4,  4,  4,  4, 10, 12, 14, 20},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -4, -4, -2, -2, -2, -2,  2},
+-    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -8,-10,-10, -8, -8, -8, -6, -4}}},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -8,-10,-10, -8, -8, -8, -6, -4}}},*/
++  {{{-12,-12,-12,-12,-12, -8, -6, -4,  0,  4,  4,  4,  4, 10, 12, 14, 20},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -4, -4, -2, -2, -1,  1,  5},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10,-10,-10,-10, -8, -8, -8, -6, -4}}},
+   /* 2 */
++//  {{{-14,-14,-14,-14,-14,-10, -8, -6, -2,  2,  2,  2,  2,  8, 10, 10, 16},
++//    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -4, -4, -4, -2,  0},
++//    {-30,-30,-30,-30,-26,-22,-20,-14,-10,-10,-10,-10,-10,-10,-10, -8, -4}}},
+   {{{-14,-14,-14,-14,-14,-10, -8, -6, -2,  2,  2,  2,  2,  8, 10, 10, 16},
+-    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -4, -4, -4, -2,  0},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -4, -4, -3,  0,  1},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10,-10,-10,-10,-10,-10,-10, -8, -4}}},
+   /* 3 */
++//  {{{-14,-14,-14,-14,-14,-10, -8, -6, -2,  2,  2,  2,  2,  6,  8,  8, 14},
++//    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -4, -4, -4, -2,  0},
++//    {-30,-30,-30,-30,-26,-22,-20,-14,-10,-10,-10,-10,-10,-10,-10, -8, -4}}},
+   {{{-14,-14,-14,-14,-14,-10, -8, -6, -2,  2,  2,  2,  2,  6,  8,  8, 14},
+-    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -4, -4, -4, -2,  0},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -4, -4, -3,  0,  1},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10,-10,-10,-10,-10,-10,-10, -8, -4}}},
+   /* 4 */
++//  {{{-16,-16,-16,-16,-16,-12,-10, -6, -2,  0,  0,  0,  0,  4,  6,  6, 12},
++//    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -4, -4, -4, -2,  0},
++//    {-30,-30,-30,-30,-26,-22,-20,-14,-10,-10,-10,-10,-10,-10,-10, -8, -4}}},
+   {{{-16,-16,-16,-16,-16,-12,-10, -6, -2,  0,  0,  0,  0,  4,  6,  6, 12},
+-    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -4, -4, -4, -2,  0},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -4, -4, -3, -1,  1},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10,-10,-10,-10,-10,-10,-10, -8, -4}}},
+   /* 5 */
+-  {{{-20,-20,-20,-20,-20,-18,-14,-10, -4,  0,  0,  0,  0,  4,  4,  6, 11},
++/*{{{-20,-20,-20,-20,-20,-18,-14,-10, -4,  0,  0,  0,  0,  4,  4,  6, 11},
+     {-32,-32,-32,-32,-28,-24,-22,-16,-10, -6, -8, -8, -6, -6, -6, -4, -2},
+-    {-34,-34,-34,-34,-30,-26,-24,-18,-14,-12,-12,-12,-12,-12,-10, -9, -5}}},
+-  /* 6
++    {-34,-34,-34,-34,-30,-26,-24,-18,-14,-12,-12,-12,-12,-12,-10, -9, -5}}},*/
+   {{{-20,-20,-20,-20,-20,-18,-14,-10, -4,  0,  0,  0,  0,  4,  4,  6, 11},
+-      {-34,-34,-34,-34,-30,-30,-24,-20,-12,-12,-14,-14,-10, -9, -8, -6, -4},
+-      {-34,-34,-34,-34,-34,-30,-26,-20,-16,-15,-15,-15,-15,-15,-13,-12, -8}}},*/
++    {-32,-32,-32,-32,-28,-24,-22,-16,-12, -8, -8, -8, -6, -6, -5, -3, -1},
++    {-34,-34,-34,-34,-30,-26,-24,-18,-14,-12,-12,-12,-12,-12,-10, -9, -5}}},
++  /* 6 */
++/*{{{-20,-20,-20,-20,-20,-18,-14,-10, -4,  0,  0,  0,  0,  4,  4,  6, 11},
++    {-34,-34,-34,-34,-30,-30,-24,-20,-12,-12,-14,-14,-10, -9, -8, -6, -4},
++    {-34,-34,-34,-34,-34,-30,-26,-20,-16,-15,-15,-15,-15,-15,-13,-12, -8}}},*/
+   {{{-20,-20,-20,-20,-20,-18,-14,-10, -4,  0,  0,  0,  0,  4,  4,  6, 11},
+-    {-34,-34,-34,-34,-30,-30,-30,-24,-16,-16,-16,-16,-16,-16,-14,-14,-12},
+-    {-36,-36,-36,-36,-36,-34,-28,-24,-20,-20,-20,-20,-20,-20,-20,-18,-16}}},
++    {-34,-34,-34,-34,-30,-30,-24,-20,-14,-14,-14,-14,-10, -9, -8, -6, -4},
++    {-34,-34,-34,-34,-34,-30,-26,-20,-16,-15,-15,-15,-15,-15,-13,-12, -8}}},
+   /* 7 */
+-  /*  {{{-22,-22,-22,-22,-22,-20,-14,-10, -6,  0,  0,  0,  0,  4,  4,  6, 11},
+-      {-34,-34,-34,-34,-30,-30,-24,-20,-14,-14,-16,-16,-14,-12,-10,-10,-10},
+-      {-34,-34,-34,-34,-32,-32,-30,-24,-20,-19,-19,-19,-19,-19,-17,-16,-12}}},*/
++/*{{{-22,-22,-22,-22,-22,-20,-14,-10, -6,  0,  0,  0,  0,  4,  4,  6, 11},
++    {-34,-34,-34,-34,-30,-30,-24,-20,-14,-14,-16,-16,-14,-12,-10,-10,-10},
++    {-34,-34,-34,-34,-32,-32,-30,-24,-20,-19,-19,-19,-19,-19,-17,-16,-12}}},*/
+   {{{-22,-22,-22,-22,-22,-20,-14,-10, -6,  0,  0,  0,  0,  4,  4,  6, 11},
+-    {-34,-34,-34,-34,-30,-30,-30,-30,-26,-26,-26,-26,-26,-26,-26,-24,-22},
+-    {-40,-40,-40,-40,-40,-40,-40,-32,-30,-30,-30,-30,-30,-30,-30,-30,-24}}},
++    {-34,-34,-34,-34,-30,-30,-24,-20,-16,-16,-16,-16,-14,-12,-10,-10, -8},
++    {-34,-34,-34,-34,-32,-32,-30,-24,-20,-19,-19,-19,-19,-19,-17,-16,-12}}},
+   /* 8 */
+-  /*  {{{-24,-24,-24,-24,-24,-22,-14,-10, -6, -1, -1, -1, -1,  3,  3,  5, 10},
+-      {-34,-34,-34,-34,-30,-30,-30,-24,-20,-20,-20,-20,-20,-18,-16,-16,-14},
+-      {-36,-36,-36,-36,-36,-34,-28,-24,-24,-24,-24,-24,-24,-24,-24,-20,-16}}},*/
+   {{{-24,-24,-24,-24,-24,-22,-14,-10, -6, -1, -1, -1, -1,  3,  3,  5, 10},
+-    {-34,-34,-34,-34,-34,-32,-32,-30,-26,-26,-26,-26,-26,-26,-26,-26,-24},
+-    {-40,-40,-40,-40,-40,-40,-40,-32,-30,-30,-30,-30,-30,-30,-30,-30,-24}}},
++    {-34,-34,-34,-34,-30,-30,-30,-24,-20,-20,-20,-20,-20,-18,-16,-16,-14},
++    {-36,-36,-36,-36,-36,-34,-28,-24,-24,-24,-24,-24,-24,-24,-24,-20,-16}}},
+   /* 9 */
+-  /*  {{{-28,-28,-28,-28,-28,-28,-28,-20,-14, -8, -4, -4, -4, -4, -4, -2,  2},
+-      {-36,-36,-36,-36,-34,-32,-32,-30,-26,-26,-26,-26,-26,-22,-20,-20,-18},
+-      {-40,-40,-40,-40,-40,-40,-40,-32,-30,-30,-30,-30,-30,-30,-30,-24,-20}}},*/
++//  {{{-28,-28,-28,-28,-28,-28,-28,-20,-14, -8, -4, -4, -4, -4, -4, -2,  2},
++//    {-36,-36,-36,-36,-34,-32,-32,-30,-26,-26,-26,-26,-26,-22,-20,-20,-18},
++//    {-40,-40,-40,-40,-40,-40,-40,-32,-30,-30,-30,-30,-30,-30,-30,-24,-20}}},
+   {{{-28,-28,-28,-28,-28,-28,-28,-20,-14, -8, -4, -4, -4, -4, -4, -2,  2},
+-    {-36,-36,-36,-36,-34,-32,-32,-30,-26,-26,-26,-26,-26,-26,-26,-26,-26},
++    {-36,-36,-36,-36,-32,-32,-32,-28,-24,-24,-24,-24,-24,-22,-20,-20,-18},
+     {-40,-40,-40,-40,-40,-40,-40,-32,-30,-30,-30,-30,-30,-30,-30,-24,-20}}},
+   /* 10 */
+   {{{-30,-30,-30,-30,-30,-26,-24,-24,-24,-20,-16,-16,-16,-16,-16,-14,-12},
+@@ -412,28 +440,39 @@
+ };
+ 
+ /* noise bias (padding block) */
+-static const noise3 _psy_noisebias_padding[12]={
++static const noise3 _psy_noisebias_padding[13]={
+   /*  63     125     250     500      1k       2k      4k      8k     16k*/
+-
+-  /* -1 */
++  /* -2(addition mode) */
+   {{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  8,  8,  8,  8, 10, 12, 14, 20},
++    {-28,-28,-26,-26,-22,-18,-16,-10,  0,  2,  2,  2,  4,  6,  7,  8, 15},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -4, -4, -4, -4, -4, -2,  0,  2}}},
++  /* -1 */
++/*{{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  8,  8,  8,  8, 10, 12, 14, 20},
+     {-30,-30,-30,-30,-26,-20,-16, -8, -6, -6, -2,  2,  2,  3,  6,  6, 15},
+-    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -4, -2}}},
+-
+-  /* 0 */
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, -6, -4, -2}}},*/
+   {{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  8,  8,  8,  8, 10, 12, 14, 20},
++    {-30,-30,-28,-28,-24,-20,-18,-12, -4,  0,  0,  0,  2,  4,  5,  6, 12},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -4, -4, -4, -4, -4, -2,  0,  2}}},
++  /* 0 */
++/*{{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  8,  8,  8,  8, 10, 12, 14, 20},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -2,  2,  3,  6,  6,  8, 10},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -4, -4, -4, -4, -2,  0,  2}}},*/
++  {{{-10,-10,-10,-10,-10, -4,  0,  0,  4,  8,  8,  8,  8, 10, 12, 14, 20},
++    {-30,-30,-30,-30,-26,-22,-20,-14, -6,  0,  0,  0,  2,  2,  3,  5, 10},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4, -4, -4, -4, -4, -2,  0,  2}}},
+   /* 1 */
++//  {{{-12,-12,-12,-12,-12, -8, -6, -4,  0,  4,  4,  4,  4, 10, 12, 14, 20},
++//    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4,  0,  0,  0,  2,  2,  4,  8},
++//    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -6, -6, -4, -2,  0}}},
+   {{{-12,-12,-12,-12,-12, -8, -6, -4,  0,  4,  4,  4,  4, 10, 12, 14, 20},
+-    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4,  0,  0,  0,  2,  2,  4,  8},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4,  0,  0,  1,  1,  2,  4,  8},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -6, -6, -6, -6, -4, -2,  0}}},
+   /* 2 */
+-  /*  {{{-14,-14,-14,-14,-14,-10, -8, -6, -2,  2,  2,  2,  2,  8, 10, 10, 16},
+-      {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4,  0,  0,  0,  2,  2,  4,  8},
+-      {-30,-30,-30,-30,-26,-22,-20,-14,-10, -8, -8, -8, -8, -8, -6, -4, -2}}},*/
++//  {{{-14,-14,-14,-14,-14,-10, -8, -6, -2,  2,  2,  2,  2,  8, 10, 10, 16},
++//    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4,  0,  0,  0,  2,  2,  4,  8},
++//    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -8, -8, -8, -8, -8, -6, -4, -2}}},
+   {{{-14,-14,-14,-14,-14,-10, -8, -6, -2,  2,  2,  2,  2,  8, 10, 10, 16},
+-    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -1, -1, -1,  0,  0,  2,  6},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -4,  0,  0,  0,  0,  2,  4,  8},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10, -8, -8, -8, -8, -8, -6, -4, -2}}},
+   /* 3 */
+   {{{-14,-14,-14,-14,-14,-10, -8, -6, -2,  2,  2,  2,  2,  6,  8,  8, 14},
+@@ -441,27 +480,33 @@
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10, -8, -8, -8, -8, -8, -6, -4, -2}}},
+   /* 4 */
+   {{{-16,-16,-16,-16,-16,-12,-10, -6, -2,  0,  0,  0,  0,  4,  6,  6, 12},
+-    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -1, -1, -1, -1,  0,  2,  6},
++    {-30,-30,-30,-30,-26,-22,-20,-14,-10, -6, -1, -1, -1, -1, -1,  1,  6},
+     {-30,-30,-30,-30,-26,-22,-20,-14,-10, -8, -8, -8, -8, -8, -6, -4, -2}}},
+   /* 5 */
+   {{{-20,-20,-20,-20,-20,-18,-14,-10, -4,  0,  0,  0,  0,  4,  6,  6, 12},
+-    {-32,-32,-32,-32,-28,-24,-22,-16,-12, -6, -3, -3, -3, -3, -2,  0,  4},
++    {-32,-32,-32,-32,-28,-24,-22,-16,-12, -6, -3, -3, -3, -3, -2,  0,  5},
+     {-34,-34,-34,-34,-30,-26,-24,-18,-14,-10,-10,-10,-10,-10, -8, -5, -3}}},
+   /* 6 */
+   {{{-20,-20,-20,-20,-20,-18,-14,-10, -4,  0,  0,  0,  0,  4,  6,  6, 12},
+-    {-34,-34,-34,-34,-30,-30,-24,-20,-14, -8, -4, -4, -4, -4, -3, -1,  4},
++    {-34,-34,-34,-34,-30,-30,-24,-20,-14, -8, -4, -4, -4, -4, -3, -1,  3},
+     {-34,-34,-34,-34,-34,-30,-26,-20,-16,-13,-13,-13,-13,-13,-11, -8, -6}}},
+   /* 7 */
+-  {{{-20,-20,-20,-20,-20,-18,-14,-10, -4,  0,  0,  0,  0,  4,  6,  6, 12},
++/*{{{-20,-20,-20,-20,-20,-18,-14,-10, -4,  0,  0,  0,  0,  4,  6,  6, 12},
+     {-34,-34,-34,-34,-30,-30,-30,-24,-16,-10, -8, -6, -6, -6, -5, -3,  1},
++    {-34,-34,-34,-34,-32,-32,-28,-22,-18,-16,-16,-16,-16,-16,-14,-12,-10}}},*/
++  {{{-20,-20,-20,-20,-20,-18,-14,-10, -4,  0,  0,  0,  0,  4,  6,  6, 12},
++    {-34,-34,-34,-34,-30,-30,-24,-20,-14,-10, -8, -6, -6, -6, -5, -3,  1},
+     {-34,-34,-34,-34,-32,-32,-28,-22,-18,-16,-16,-16,-16,-16,-14,-12,-10}}},
+   /* 8 */
+   {{{-22,-22,-22,-22,-22,-20,-14,-10, -4,  0,  0,  0,  0,  3,  5,  5, 11},
+     {-34,-34,-34,-34,-30,-30,-30,-24,-16,-12,-10, -8, -8, -8, -7, -5, -2},
+     {-36,-36,-36,-36,-36,-34,-28,-22,-20,-20,-20,-20,-20,-20,-20,-16,-14}}},
+   /* 9 */
++//  {{{-28,-28,-28,-28,-28,-28,-28,-20,-14, -8, -2, -2, -2, -2,  0,  2,  6},
++//    {-36,-36,-36,-36,-34,-32,-32,-24,-16,-12,-12,-12,-12,-12,-10, -8, -5},
++//    {-40,-40,-40,-40,-40,-40,-40,-32,-26,-24,-24,-24,-24,-24,-24,-20,-18}}},
+   {{{-28,-28,-28,-28,-28,-28,-28,-20,-14, -8, -2, -2, -2, -2,  0,  2,  6},
+-    {-36,-36,-36,-36,-34,-32,-32,-24,-16,-12,-12,-12,-12,-12,-10, -8, -5},
++    {-36,-36,-36,-36,-32,-32,-32,-26,-18,-14,-12,-12,-12,-12,-10, -8, -5},
+     {-40,-40,-40,-40,-40,-40,-40,-32,-26,-24,-24,-24,-24,-24,-24,-20,-18}}},
+   /* 10 */
+   {{{-30,-30,-30,-30,-30,-26,-24,-24,-24,-20,-12,-12,-12,-12,-12,-10, -8},
+@@ -477,14 +522,17 @@
+   {10,10,100},
+ };
+ 
+-static const int _psy_tone_suppress[12]={
+-  -20,-20,-20,-20,-20,-24,-30,-40,-40,-45,-45,-45,
+-};
+-static const int _psy_tone_0dB[12]={
+-  90,90,95,95,95,95,105,105,105,105,105,105,
+-};
+-static const int _psy_noise_suppress[12]={
+-  -20,-20,-24,-24,-24,-24,-30,-40,-40,-45,-45,-45,
++static const int _psy_tone_suppress[13]={
++/*  -20,-20,-20,-20,-20,-24,-30,-40,-40,-45,-45,-45, */
++  -20,-20,-20,-20,-20,-20,-24,-30,-40,-40,-42,-45,-45,
++};
++static const int _psy_tone_0dB[13]={
++/*  90,90,95,95,95,95,105,105,105,105,105,105, */
++   90,90,90,92,95,95,95,105,105,105,105,105,105,
++};
++static const int _psy_noise_suppress[13]={
++/*  -20,-20,-24,-24,-24,-24,-30,-40,-40,-45,-45,-45, */
++  -20,-20,-20,-24,-24,-24,-24,-30,-40,-40,-42,-45,-45,
+ };
+ 
+ static const vorbis_info_psy _psy_info_template={
+@@ -497,19 +545,21 @@
+ 
+   /*noisemaskp,supp, low/high window, low/hi guard, minimum */
+   1,          -0.f,           .5f, .5f,         0,0,0,
+-  /* noiseoffset*3, noisecompand, max_curve_dB */
+-  {{-1},{-1},{-1}},{-1},105.f,
++  /* noiseoffset*3, noisecompand, noisecompand-high, flacint, max_curve_dB */
++  {{-1},{-1},{-1}},{-1},{-1},0., 105.f,
+   /* noise normalization - noise_p, start, partition, thresh. */
+   0,-1,-1,0.,
+ };
+ 
+ /* ath ****************/
+ 
+-static const int _psy_ath_floater[12]={
+-  -100,-100,-100,-100,-100,-100,-105,-105,-105,-105,-110,-120,
+-};
+-static const int _psy_ath_abs[12]={
+-  -130,-130,-130,-130,-140,-140,-140,-140,-140,-140,-140,-150,
++static const int _psy_ath_floater[13]={
++/*  -100,-100,-100,-100,-100,-100,-105,-105,-105,-105,-110,-120, */
++  -100,-100,-100,-100,-100,-100,-100,-105,-105,-105,-105,-110,-120,
++};
++static const int _psy_ath_abs[13]={
++/*  -130,-130,-130,-130,-140,-140,-140,-140,-140,-140,-140,-150, */
++  -130,-130,-130,-130,-130,-135,-140,-140,-140,-140,-140,-140,-150,
+ };
+ 
+ /* stereo setup.  These don't map directly to quality level, there's
+@@ -521,68 +571,96 @@
+ /* various stereo possibilities */
+ 
+ /* stereo mode by base quality level */
+-static const adj_stereo _psy_stereo_modes_44[12]={
+-  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14         -1  */
+-  {{  4,  4,  4,  4,  4,  4,  4,  3,  2,  2,  1,  0,  0,  0,  0},
++static const adj_stereo _psy_stereo_modes_44[13]={
++  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        -2(addition mode)  */
++  {{  4,  4,  4,  4,  4,  4,  4,  4,  3,  2,  1,  0,  0,  0,  0},
++   {  8,  8,  8,  8,  8,  8,  7,  7,  6,  6,  6,  6,  5,  4,  3},
++   {  1,  2,  2,  2,  2,  3,  3,  4,  4,  4,  5,  6,  7,  8,  8},
++   { 10,10.5, 11,11.5, 12,12.5, 13, 99, 99, 99, 99, 99, 99, 99, 99}},
++  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        -1  */
++/*{{  4,  4,  4,  4,  4,  4,  4,  3,  2,  2,  1,  0,  0,  0,  0},
+    {  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  5,  4,  3},
+    {  1,  2,  3,  4,  4,  4,  4,  4,  4,  5,  6,  7,  8,  8,  8},
++   { 12,12.5, 13,13.5, 14,14.5, 15, 99, 99, 99, 99, 99, 99, 99, 99}},*/
++  {{  4,  4,  4,  4,  4,  4,  4,  3,  2,  2,  1,  0,  0,  0,  0},
++   {  8,  8,  8,  8,  8,  7,  7,  6,  6,  6,  6,  6,  5,  4,  3},
++   {  1,  2,  3,  4,  4,  4,  4,  4,  4,  5,  6,  7,  8,  8,  8},
+    { 12,12.5, 13,13.5, 14,14.5, 15, 99, 99, 99, 99, 99, 99, 99, 99}},
+-
+-/*    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14         0  */
++ /*   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        0  */
++/*{{  4,  4,  4,  4,  4,  4,  4,  3,  2,  2,  1,  0,  0,  0,  0},
++   {  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  8,  5,  4,  3},
++   {  1,  2,  3,  4,  5,  5,  6,  6,  6,  6,  6,  7,  8,  8,  8},
++   { 12,12.5, 13,13.5, 14,14.5, 15, 99, 99, 99, 99, 99, 99, 99, 99}},*/
+   {{  4,  4,  4,  4,  4,  4,  4,  3,  2,  1,  0,  0,  0,  0,  0},
+-   {  8,  8,  8,  8,  6,  6,  5,  5,  5,  5,  5,  5,  5,  4,  3},
++   {  8,  8,  8,  8,  6,  6,  6,  6,  5,  5,  5,  5,  5,  4,  3},
+    {  1,  2,  3,  4,  4,  5,  6,  6,  6,  6,  6,  8,  8,  8,  8},
+    { 12,12.5, 13,13.5, 14,14.5, 15, 99, 99, 99, 99, 99, 99, 99, 99}},
+-
+-
+-  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14         1  */
++  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        1  */
+   {{  3,  3,  3,  3,  3,  3,  3,  3,  2,  1,  0,  0,  0,  0,  0},
+    {  8,  8,  8,  8,  6,  6,  5,  5,  5,  5,  5,  5,  5,  4,  3},
+    {  1,  2,  3,  4,  4,  5,  6,  6,  6,  6,  6,  8,  8,  8,  8},
+    { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+-
+-
+-  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14         2  */
++  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        2  */
++/*{{  3,  3,  3,  3,  3,  3,  2,  2,  2,  1,  0,  0,  0,  0,  0},
++   {  8,  8,  8,  6,  5,  5,  5,  5,  5,  5,  5,  4,  3,  2,  1},
++   {  3,  4,  4,  4,  5,  6,  6,  6,  6,  6,  6,  8,  8,  8,  8},
++   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}}, */
+   {{  3,  3,  3,  3,  3,  3,  3,  2,  1,  1,  0,  0,  0,  0,  0},
+    {  8,  8,  6,  6,  5,  5,  4,  4,  4,  4,  4,  4,  3,  2,  1},
+    {  3,  4,  4,  5,  5,  6,  6,  6,  6,  6,  6,  8,  8,  8,  8},
+    { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+-  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14         3  */
++  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        3  */
+   {{  2,  2,  2,  2,  2,  1,  1,  1,  1,  0,  0,  0,  0,  0,  0},
+    {  5,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  3,  2,  1},
+    {  4,  4,  5,  6,  6,  6,  6,  6,  8,  8, 10, 10, 10, 10, 10},
+    { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+-  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14         4  */
++  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        4  */
+   {{  2,  2,  2,  1,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  3,  3,  2,  1,  0},
+    {  6,  6,  6,  8,  8,  8,  8,  8,  8,  8, 10, 10, 10, 10, 10},
+    { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+-  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14         5  */
+-  {{  2,  2,  2,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
++  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        5  */
++/*{{  2,  2,  2,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {  3,  3,  3,  3,  3,  2,  2,  2,  2,  2,  2,  0,  0,  0,  0},
++   {  6,  6,  8,  8,  8,  8, 10, 10, 10, 10, 10, 10, 10, 10, 10},
++   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},*/
++  {{  2,  2,  2,  1,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
++   {  3,  3,  3,  3,  3,  3,  3,  2,  2,  2,  2,  0,  0,  0,  0},
+    {  6,  7,  8,  8,  8, 10, 10, 12, 12, 12, 12, 12, 12, 12, 12},
+    { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+-  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14         6  */
++  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        6  */
++/*{{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
++   {  3,  3,  3,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0},
++   {  8,  8,  8,  8, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
++   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}}, */
+   {{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {  3,  3,  3,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {  8,  8,  8, 10, 10, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12},
+    { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+-  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14         7  */
++  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        7  */
++/*{{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
++   {  3,  3,  3,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
++   {  8,  8,  8,  8, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
++   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},*/
+   {{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {  3,  3,  3,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {  8,  8, 10, 10, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12},
+    { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+-  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14         8  */
++  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        8  */
++/*{{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
++   {  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
++   {  8, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10},
++   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},*/
+   {{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {  2,  2,  2,  2,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {  8, 10, 10, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12, 12},
+    { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+-  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14         9  */
++  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        9  */
+   {{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4},
+    { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+-  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14        10  */
++  /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14       10  */
+   {{  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4},
+@@ -590,14 +668,17 @@
+ };
+ 
+ /* tone master attenuation by base quality mode and bitrate tweak */
+-static const att3 _psy_tone_masteratt_44[12]={
+-  {{ 35,  21,   9},  0,    0}, /* -1 */
+-  {{ 30,  20,   8}, -2, 1.25}, /* 0 */
+-  /*  {{ 25,  14,   4},  0,    0}, *//* 1 */
+-  {{ 25,  12,   2},  0,    0}, /* 1 */
+-  /*  {{ 20,  10,  -2},  0,    0}, *//* 2 */
+-  {{ 20,   9,  -3},  0,    0}, /* 2 */
+-  {{ 20,   9,  -4},  0,    0}, /* 3 */
++static const att3 _psy_tone_masteratt_44[13]={
++  {{ 40,  31,  16},  0,    0}, /* -2 */
++//  {{ 35,  21,   9},  0,    0}, /* -1 */
++  {{ 36,  24,  12},  0,    0}, /* -1 */
++//  {{ 30,  20,   8}, -2, 1.25}, /* 0 */
++  {{ 32,  22,   8},  0,    0}, /* 0 */
++//  {{ 26,  16,   4},  0,    0}, /* 1 */
++  {{ 28,  18,   4},  0,    0}, /* 1 */
++  {{ 20,  10,  -2},  0,    0}, /* 2 */
++//  {{ 20,   9,  -4},  0,    0}, /* 3 */
++  {{ 20,  10,  -3},  0,    0}, /* 3 */
+   {{ 20,   9,  -4},  0,    0}, /* 4 */
+   {{ 20,   6,  -6},  0,    0}, /* 5 */
+   {{ 20,   3, -10},  0,    0}, /* 6 */
+@@ -608,34 +689,51 @@
+ };
+ 
+ /* lowpass by mode **************/
+-static const double _psy_lowpass_44[12]={
++static const double _psy_lowpass_44[13]={
+   /*  15.1,15.8,16.5,17.9,20.5,48.,999.,999.,999.,999.,999. */
+-  13.9,15.1,15.8,16.5,17.2,18.9,20.1,48.,999.,999.,999.,999.
++//  13.9,15.1,15.8,16.5,17.2,18.9,20.1,48.,999.,999.,999.,999.
++  12.9,13.8,14.7,15.6,16.5,17.1,18.,19.5,48.,999.,999.,999.,999.
+ };
+ 
+ /* noise normalization **********/
+ 
+-static const int _noise_start_short_44[11]={
++static const int _noise_start_short_44[12]={
+   /*  16,16,16,16,32,32,9999,9999,9999,9999 */
+-  32,16,16,16,32,9999,9999,9999,9999,9999,9999
++//  32,16,16,16,32,9999,9999,9999,9999,9999,9999
++  32,32,16,16,16,64,9999,9999,9999,9999,9999,9999
+ };
+-static const int _noise_start_long_44[11]={
++static const int _noise_start_long_44[12]={
+   /*  128,128,128,256,512,512,9999,9999,9999,9999 */
+-  256,128,128,256,512,9999,9999,9999,9999,9999,9999
++//  256,128,128,256,512,9999,9999,9999,9999,9999,9999
++  256,256,128,128,128,512,9999,9999,9999,9999,9999,9999
+ };
+ 
+-static const int _noise_part_short_44[11]={
+-    8,8,8,8,8,8,8,8,8,8,8
++static const int _noise_part_short_44[12]={
++/*  8,8,8,8,8,8,8,8,8,8,8 */
++    8,8,8,8,8,8,8,8,8,8,8,8
+ };
+-static const int _noise_part_long_44[11]={
+-    32,32,32,32,32,32,32,32,32,32,32
++static const int _noise_part_long_44[12]={
++/*  32,32,32,32,32,32,32,32,32,32,32 */
++    32,32,32,32,32,32,32,32,32,32,32,32
+ };
+ 
+-static const double _noise_thresh_44[11]={
++static const double _noise_thresh_44[12]={
+   /*  .2,.2,.3,.4,.5,.5,9999.,9999.,9999.,9999., */
+-   .2,.2,.2,.4,.6,9999.,9999.,9999.,9999.,9999.,9999.,
++//   .2,.2,.2,.4,.6,9999.,9999.,9999.,9999.,9999.,9999.,
++   .15,.2,.2,.2,.35,.6,9999.,9999.,9999.,9999.,9999.,9999.,
+ };
+ 
+-static const double _noise_thresh_5only[2]={
+- .5,.5,
++/* 0~8kHz */
++static const double _noise_thresh_5only[3]={
++ .5,.5,.5
++};
++
++/* 32kHz only */
++static const int _noise_start_short_32[12]={
++//  40,40,20,20,40,80,9999,9999,9999,9999,9999,9999
++  24,48,24,24,40,80,9999,9999,9999,9999,9999,9999
++};
++static const int _noise_start_long_32[12]={
++//  320,320,160,160,320,640,9999,9999,9999,9999,9999,9999
++  160,320,160,160,320,640,9999,9999,9999,9999,9999,9999
+ };
+diff -Naur libvorbis-1.3.6/lib/modes/psych_8.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/psych_8.h
+--- libvorbis-1.3.6/lib/modes/psych_8.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/psych_8.h	2018-03-26 11:27:38 +0000
+@@ -14,23 +14,48 @@
+ 
+  ********************************************************************/
+ 
+-static const att3 _psy_tone_masteratt_8[3]={
+-  {{ 32,  25,  12},  0,   0},  /* 0 */
+-  {{ 30,  25,  12},  0,   0},  /* 0 */
+-  {{ 20,   0, -14},  0,   0}, /* 0 */
++/* noise compander lookups */
++static const compandblock _psy_compand_8[3]={
++  {{
++     0, 1, 2, 3, 4, 5, 6,  7,     /* 7dB */
++     8, 8, 9, 9,10,10,11, 11,     /* 15dB */
++    12,12,13,13,14,14,15, 16,     /* 23dB */
++    17,18,19,20,21,22,23, 24,     /* 31dB */
++    25,26,27,28,29,30,31, 32,     /* 39dB */
++  }},
++  {{
++     0, 1, 2, 3, 4, 5, 6,  7,     /* 7dB */
++     8, 8, 9, 9,10,10,11, 11,     /* 15dB */
++    12,12,13,13,14,14,15, 15,     /* 23dB */
++    16,16,17,17,17,18,18, 19,     /* 31dB */
++    19,19,20,21,22,23,24, 25,     /* 39dB */
++  }},
++  {{
++     0, 1, 2, 3, 4, 5, 6,  6,     /* 7dB */
++     7, 7, 6, 6, 5, 5, 4,  4,     /* 15dB */
++     3, 3, 3, 4, 5, 6, 7,  8,     /* 23dB */
++     9,10,11,12,13,14,15, 16,     /* 31dB */
++    17,18,19,20,21,22,23, 24,     /* 39dB */
++  }},
+ };
+ 
+-static const vp_adjblock _vp_tonemask_adj_8[3]={
++/* tonal masking curve level adjustments *************************/
++static const vp_adjblock _vp_tonemask_adj_8[4]={
+   /* adjust for mode zero */
+   /* 63     125     250     500     1     2     4     8    16 */
+-  {{-15,-15,-15,-15,-10,-10, -6, 0, 0, 0, 0,10, 0, 0,99,99,99}}, /* 1 */
+-  {{-15,-15,-15,-15,-10,-10, -6, 0, 0, 0, 0,10, 0, 0,99,99,99}}, /* 1 */
+-  {{-15,-15,-15,-15,-10,-10, -6, 0, 0, 0, 0, 0, 0, 0,99,99,99}}, /* 1 */
++  {{-15,-15,-15,-15,-10,-10, -6,-2, 0, 0, 0, 0, 3, 3,99,99,99}}, /* -2 */
++  {{-15,-15,-15,-15,-10,-10, -6,-2, 0, 0, 0, 0, 0, 0,99,99,99}}, /* -1 */
++  {{-15,-15,-15,-15,-10,-10, -6,-2, 0, 0, 0, 0, 0, 0,99,99,99}}, /*  0 */
++  {{-15,-15,-15,-15,-10,-10, -6,-2, 0, 0, 0, 0, 0, 0,99,99,99}}, /* 10 */
+ };
+ 
+-
+-static const noise3 _psy_noisebias_8[3]={
++/* noise bias */
++static const noise3 _psy_noisebias_8[4]={
+   /*  63     125     250     500      1k       2k      4k      8k     16k*/
++  {{{-10,-10,-10,-10, -5, -5, -5,  3,  4,  8,  8,  8, 10, 10, 99, 99, 99},
++    {-10,-10,-10,-10, -5, -2, -2,  3,  3,  4,  4,  5,  6,  8, 99, 99, 99},
++    {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, 99, 99, 99}}},
++
+   {{{-10,-10,-10,-10, -5, -5, -5,  0,  4,  8,  8,  8, 10, 10, 99, 99, 99},
+     {-10,-10,-10,-10, -5, -5, -5,  0,  0,  4,  4,  4,  4,  4, 99, 99, 99},
+     {-30,-30,-30,-30,-30,-24,-20,-14,-10, -6, -8, -8, -6, -6, 99, 99, 99}}},
+@@ -44,11 +69,30 @@
+     {-30,-30,-30,-30,-26,-26,-26,-26,-26,-26,-26,-26,-26,-24, 99, 99, 99}}},
+ };
+ 
++static const noiseguard _psy_noiseguards_8[3]={
++  {10,10,-1},
++  {10,10,-1},
++  {10,10,-1},
++};
++
++
++/* ath ****************/
++static const int _psy_ath_floater_8[4]={
++  -100,-100,-100,-105,
++};
++static const int _psy_ath_abs_8[4]={
++  -130,-130,-130,-140,
++};
++
+ /* stereo mode by base quality level */
+-static const adj_stereo _psy_stereo_modes_8[3]={
++static const adj_stereo _psy_stereo_modes_8[4]={
+   /*  0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  */
+   {{  4,  4,  4,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3},
+-   {  6,  5,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4,  4},
++   {  7,  7,  7,  7,  7,  7,  7,  7,  6,  6,  5,  5,  5,  4,  4},
++   {  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1},
++   { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
++  {{  4,  4,  4,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3},
++   {  6,  6,  6,  5,  5,  5,  5,  5,  4,  4,  4,  4,  4,  4,  4},
+    {  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1},
+    { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+   {{  4,  4,  4,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3},
+@@ -61,40 +105,21 @@
+    { 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99}},
+ };
+ 
+-static const noiseguard _psy_noiseguards_8[2]={
+-  {10,10,-1},
+-  {10,10,-1},
++/* tone master attenuation by base quality mode and bitrate tweak */
++static const att3 _psy_tone_masteratt_8[4]={
++  {{ 33,  25,  13},  0,   0},  /* -2 */
++  {{ 32,  25,  12},  0,   0},  /* -1 */
++  {{ 30,  25,  12},  0,   0},  /*  0 */
++  {{ 20,   0, -14},  0,   0},  /* 10 */
++};
++
++/* lowpass by mode **************/
++static const double _psy_lowpass_8[4]={2.6,3.,4.,4.};
++
++/* noise normalization **********/
++static const int _noise_start_8[3]={
++  64,64,64,
+ };
+-
+-static const compandblock _psy_compand_8[2]={
+-  {{
+-     0, 1, 2, 3, 4, 5, 6,  7,     /* 7dB */
+-     8, 8, 9, 9,10,10,11, 11,     /* 15dB */
+-    12,12,13,13,14,14,15, 15,     /* 23dB */
+-    16,16,17,17,17,18,18, 19,     /* 31dB */
+-    19,19,20,21,22,23,24, 25,     /* 39dB */
+-  }},
+-  {{
+-     0, 1, 2, 3, 4, 5, 6,  6,     /* 7dB */
+-     7, 7, 6, 6, 5, 5, 4,  4,     /* 15dB */
+-     3, 3, 3, 4, 5, 6, 7,  8,     /* 23dB */
+-     9,10,11,12,13,14,15, 16,     /* 31dB */
+-    17,18,19,20,21,22,23, 24,     /* 39dB */
+-  }},
+-};
+-
+-static const double _psy_lowpass_8[3]={3.,4.,4.};
+-static const int _noise_start_8[2]={
+-  64,64,
+-};
+-static const int _noise_part_8[2]={
+-  8,8,
+-};
+-
+-static const int _psy_ath_floater_8[3]={
+-  -100,-100,-105,
+-};
+-
+-static const int _psy_ath_abs_8[3]={
+-  -130,-130,-140,
++static const int _noise_part_8[3]={
++  8,8,8,
+ };
+diff -Naur libvorbis-1.3.6/lib/modes/residue_16.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/residue_16.h
+--- libvorbis-1.3.6/lib/modes/residue_16.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/residue_16.h	2018-03-26 10:53:30 +0000
+@@ -83,7 +83,8 @@
+    &_resbook_16s_2,&_resbook_16s_2}
+ };
+ 
+-static const vorbis_mapping_template _mapres_template_16_stereo[3]={
++static const vorbis_mapping_template _mapres_template_16_stereo[]={
++  { _map_nominal, _res_16s_0 }, /* -1 */
+   { _map_nominal, _res_16s_0 }, /* 0 */
+   { _map_nominal, _res_16s_1 }, /* 1 */
+   { _map_nominal, _res_16s_2 }, /* 2 */
+@@ -155,7 +156,8 @@
+ };
+ 
+ 
+-static const vorbis_mapping_template _mapres_template_16_uncoupled[3]={
++static const vorbis_mapping_template _mapres_template_16_uncoupled[]={
++  { _map_nominal_u, _res_16u_0 }, /* -1 */
+   { _map_nominal_u, _res_16u_0 }, /* 0 */
+   { _map_nominal_u, _res_16u_1 }, /* 1 */
+   { _map_nominal_u, _res_16u_2 }, /* 2 */
+diff -Naur libvorbis-1.3.6/lib/modes/residue_44.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/residue_44.h
+--- libvorbis-1.3.6/lib/modes/residue_44.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/residue_44.h	2018-03-26 10:53:42 +0000
+@@ -277,6 +277,7 @@
+ };
+ 
+ static const vorbis_mapping_template _mapres_template_44_stereo[]={
++  { _map_nominal, _res_44s_n1 }, /* -2 */
+   { _map_nominal, _res_44s_n1 }, /* -1 */
+   { _map_nominal, _res_44s_0 }, /* 0 */
+   { _map_nominal, _res_44s_1 }, /* 1 */
+diff -Naur libvorbis-1.3.6/lib/modes/residue_44p51.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/residue_44p51.h
+--- libvorbis-1.3.6/lib/modes/residue_44p51.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/residue_44p51.h	2018-03-26 10:53:50 +0000
+@@ -10,7 +10,7 @@
+  *                                                                  *
+  ********************************************************************
+ 
+- function: toplevel residue templates for 32/44.1/48kHz uncoupled
++ function: toplevel residue templates for 32/44.1/48kHz (5.1ch)
+ 
+  ********************************************************************/
+ 
+@@ -436,6 +436,7 @@
+ };
+ 
+ static const vorbis_mapping_template _mapres_template_44_51[]={
++  { _map_nominal_51, _res_44p51_n1 }, /* -2 */
+   { _map_nominal_51, _res_44p51_n1 }, /* -1 */
+   { _map_nominal_51, _res_44p51_0 }, /* 0 */
+   { _map_nominal_51, _res_44p51_1 }, /* 1 */
+diff -Naur libvorbis-1.3.6/lib/modes/residue_44u.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/residue_44u.h
+--- libvorbis-1.3.6/lib/modes/residue_44u.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/residue_44u.h	2018-03-26 10:54:00 +0000
+@@ -303,6 +303,7 @@
+ };
+ 
+ static const vorbis_mapping_template _mapres_template_44_uncoupled[]={
++  { _map_nominal_u, _res_44u_n1 }, /* -2 */
+   { _map_nominal_u, _res_44u_n1 }, /* -1 */
+   { _map_nominal_u, _res_44u_0 }, /* 0 */
+   { _map_nominal_u, _res_44u_1 }, /* 1 */
+diff -Naur libvorbis-1.3.6/lib/modes/residue_8.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/residue_8.h
+--- libvorbis-1.3.6/lib/modes/residue_8.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/residue_8.h	2018-03-26 10:54:10 +0000
+@@ -59,7 +59,8 @@
+    &_resbook_8s_1,&_resbook_8s_1},
+ };
+ 
+-static const vorbis_mapping_template _mapres_template_8_stereo[2]={
++static const vorbis_mapping_template _mapres_template_8_stereo[]={
++  { _map_nominal, _res_8s_0 }, /* -1 */
+   { _map_nominal, _res_8s_0 }, /* 0 */
+   { _map_nominal, _res_8s_1 }, /* 1 */
+ };
+@@ -102,7 +103,8 @@
+    &_resbook_8u_1,&_resbook_8u_1},
+ };
+ 
+-static const vorbis_mapping_template _mapres_template_8_uncoupled[2]={
++static const vorbis_mapping_template _mapres_template_8_uncoupled[]={
++  { _map_nominal_u, _res_8u_0 }, /* -1 */
+   { _map_nominal_u, _res_8u_0 }, /* 0 */
+   { _map_nominal_u, _res_8u_1 }, /* 1 */
+ };
+diff -Naur libvorbis-1.3.6/lib/modes/setup_11.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_11.h
+--- libvorbis-1.3.6/lib/modes/setup_11.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_11.h	2018-03-26 11:29:02 +0000
+@@ -16,33 +16,42 @@
+ 
+ #include "psych_11.h"
+ 
+-static const int blocksize_11[2]={
+-  512,512
++
++static const float preamp_11[4]={
++0.882, 0.882, 0.965, 1.f
++};
++
++static const int blocksize_11[3]={
++  512,512,512
+ };
+ 
+ static const int _floor_mapping_11a[]={
+-  6,6
++  6,6,6
+ };
+ static const int *_floor_mapping_11[]={
+   _floor_mapping_11a
+ };
+ 
+-static const double rate_mapping_11[3]={
+-  8000.,13000.,44000.,
++static const double rate_mapping_11[4]={
++//  8000.,13000.,44000.,
++  8000.,10000.,13000.,44000.,
+ };
+ 
+-static const double rate_mapping_11_uncoupled[3]={
+-  12000.,20000.,50000.,
++static const double rate_mapping_11_uncoupled[4]={
++//  12000.,20000.,50000.,
++  14000.,16000.,20000.,50000.,
+ };
+ 
+-static const double quality_mapping_11[3]={
+-  -.1,.0,1.
++static const double quality_mapping_11[4]={
++  -.2,-.1,.0,1.
+ };
+ 
+ static const ve_setup_data_template ve_setup_11_stereo={
+-  2,
++//  2,
++  3,
+   rate_mapping_11,
+   quality_mapping_11,
++  preamp_11,
+   2,
+   9000,
+   15000,
+@@ -91,9 +100,11 @@
+ };
+ 
+ static const ve_setup_data_template ve_setup_11_uncoupled={
+-  2,
++//  2,
++  3,
+   rate_mapping_11_uncoupled,
+   quality_mapping_11,
++  preamp_11,
+   -1,
+   9000,
+   15000,
+diff -Naur libvorbis-1.3.6/lib/modes/setup_16.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_16.h
+--- libvorbis-1.3.6/lib/modes/setup_16.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_16.h	2018-03-26 11:29:48 +0000
+@@ -17,42 +17,51 @@
+ #include "psych_16.h"
+ #include "residue_16.h"
+ 
+-static const int blocksize_16_short[3]={
+-  1024,512,512
++static const float preamp_16[5]={
++0.848, 0.855, 0.905,  0.963, 0.998
+ };
+-static const int blocksize_16_long[3]={
+-  1024,1024,1024
++
++static const int blocksize_16_short[4]={
++  1024,1024,512,512
++};
++static const int blocksize_16_long[4]={
++  1024,1024,1024,1024
+ };
+ 
+ static const int _floor_mapping_16a[]={
+-  9,3,3
++  9,9,3,3
+ };
+ static const int _floor_mapping_16b[]={
+-  9,9,9
++  9,9,9,9
+ };
+ static const int *_floor_mapping_16[]={
+   _floor_mapping_16a,
+   _floor_mapping_16b
+ };
+ 
+-static const double rate_mapping_16[4]={
+-  12000.,20000.,44000.,86000.
++static const double rate_mapping_16[5]={
++//  12000.,20000.,44000.,86000.
++  10000.,12000.,20000.,44000.,86000.
+ };
+ 
+-static const double rate_mapping_16_uncoupled[4]={
+-  16000.,28000.,64000.,100000.
++static const double rate_mapping_16_uncoupled[5]={
++//  16000.,28000.,64000.,100000.
++  16000.,18000.,28000.,64000.,100000.
+ };
+ 
+-static const double _global_mapping_16[4]={ 1., 2., 3., 4. };
++static const double _global_mapping_16[5]={ 2., 2., 3., 4., 5. };
+ 
+-static const double quality_mapping_16[4]={ -.1,.05,.5,1. };
++static const double quality_mapping_16[5]={ -.2,-.1,.05,.5,1. };
+ 
+-static const double _psy_compand_16_mapping[4]={ 0., .8, 1., 1.};
++//static const double _psy_compand_16_mapping[5]={ 0., 0., .8, 1., 1.};
++static const double _psy_compand_16_mapping[5]={ 0., 1., 1.8, 2., 2.};
+ 
+ static const ve_setup_data_template ve_setup_16_stereo={
+-  3,
++//  3,
++  4,
+   rate_mapping_16,
+   quality_mapping_16,
++  preamp_16,
+   2,
+   15000,
+   19000,
+@@ -101,9 +110,11 @@
+ };
+ 
+ static const ve_setup_data_template ve_setup_16_uncoupled={
+-  3,
++//  3,
++  4,
+   rate_mapping_16_uncoupled,
+   quality_mapping_16,
++  preamp_16,
+   -1,
+   15000,
+   19000,
+diff -Naur libvorbis-1.3.6/lib/modes/setup_22.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_22.h
+--- libvorbis-1.3.6/lib/modes/setup_22.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_22.h	2018-03-26 11:30:14 +0000
+@@ -14,20 +14,28 @@
+ 
+  ********************************************************************/
+ 
+-static const double rate_mapping_22[4]={
+-  15000.,20000.,44000.,86000.
++static const float preamp_22[5]={
++0.848, 0.850, 0.910, 0.963, 0.995
+ };
+ 
+-static const double rate_mapping_22_uncoupled[4]={
+-  16000.,28000.,50000.,90000.
++static const double rate_mapping_22[5]={
++//  15000.,20000.,44000.,86000.
++  14000.,16000.,20000.,44000.,86000.
+ };
+ 
+-static const double _psy_lowpass_22[4]={9.5,11.,30.,99.};
++static const double rate_mapping_22_uncoupled[5]={
++//  16000.,28000.,50000.,90000.
++  22000.,24000.,28000.,50000.,90000.
++};
++
++static const double _psy_lowpass_22[5]={8.5,9.5,11.,30.,99.};
+ 
+ static const ve_setup_data_template ve_setup_22_stereo={
+-  3,
++//  3,
++  4,
+   rate_mapping_22,
+   quality_mapping_16,
++  preamp_22,
+   2,
+   19000,
+   26000,
+@@ -76,9 +84,11 @@
+ };
+ 
+ static const ve_setup_data_template ve_setup_22_uncoupled={
+-  3,
++//  3,
++  4,
+   rate_mapping_22_uncoupled,
+   quality_mapping_16,
++  preamp_22,
+   -1,
+   19000,
+   26000,
+diff -Naur libvorbis-1.3.6/lib/modes/setup_32.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_32.h
+--- libvorbis-1.3.6/lib/modes/setup_32.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_32.h	2018-03-26 11:17:28 +0000
+@@ -14,24 +14,52 @@
+ 
+  ********************************************************************/
+ 
+-static const double rate_mapping_32[12]={
+-  18000.,28000.,35000.,45000.,56000.,60000.,
++static const float preamp_32[13]={
++0.990, 0.990,
++0.996, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f
++};
++
++static const double rate_mapping_32[13]={
++//  18000.,28000.,35000.,45000.,56000.,60000.,
++  14000.,21000.,28000.,35000.,45000.,56000.,60000.,
+   75000.,90000.,100000.,115000.,150000.,190000.,
+ };
+ 
+-static const double rate_mapping_32_un[12]={
+-  30000.,42000.,52000.,64000.,72000.,78000.,
++static const double rate_mapping_32_un[13]={
++//  30000.,42000.,52000.,64000.,72000.,78000.,
++  26000.,32000.,42000.,52000.,64000.,72000.,78000.,
+   86000.,92000.,110000.,120000.,140000.,190000.,
+ };
+ 
+-static const double _psy_lowpass_32[12]={
+-  12.3,13.,13.,14.,15.,99.,99.,99.,99.,99.,99.,99.
++static const double _psy_lowpass_32[13]={
++//  12.3,13.,13.,14.,15.,99.,99.,99.,99.,99.,99.,99.
++  12.1,12.6,13.,13.,14.,15.,99.,99.,99.,99.,99.,99.,99.
++};
++
++// short
++static const int _floor_mapping_32a[12]={
++  1,1,0,0,2,2,4,5,5,5,5,5
++};
++// long
++static const int _floor_mapping_32b[12]={
++  8,8,7,7,7,7,7,7,7,7,7,7
++};
++// LFE only
++static const int _floor_mapping_32c[12]={
++  10,10,10,10,10,10,10,10,10,10,10,10
++};
++static const int *_floor_mapping_32[]={
++  _floor_mapping_32a,
++  _floor_mapping_32b,
++  _floor_mapping_32c,
+ };
+ 
+ static const ve_setup_data_template ve_setup_32_stereo={
+-  11,
++//  11,
++  12,
+   rate_mapping_32,
+   quality_mapping_44,
++  preamp_32,
+   2,
+   26000,
+   40000,
+@@ -58,7 +86,7 @@
+   _psy_compand_short_mapping,
+   _psy_compand_long_mapping,
+ 
+-  {_noise_start_short_44,_noise_start_long_44},
++  {_noise_start_short_32,_noise_start_long_32},
+   {_noise_part_short_44,_noise_part_long_44},
+   _noise_thresh_44,
+ 
+@@ -74,15 +102,17 @@
+   _floor_books,
+   _floor,
+   2,
+-  _floor_mapping_44,
++  _floor_mapping_32,
+ 
+   _mapres_template_44_stereo
+ };
+ 
+ static const ve_setup_data_template ve_setup_32_uncoupled={
+-  11,
++//  11,
++  12,
+   rate_mapping_32_un,
+   quality_mapping_44,
++  preamp_32,
+   -1,
+   26000,
+   40000,
+@@ -109,7 +139,7 @@
+   _psy_compand_short_mapping,
+   _psy_compand_long_mapping,
+ 
+-  {_noise_start_short_44,_noise_start_long_44},
++  {_noise_start_short_32,_noise_start_long_32},
+   {_noise_part_short_44,_noise_part_long_44},
+   _noise_thresh_44,
+ 
+@@ -125,7 +155,7 @@
+   _floor_books,
+   _floor,
+   2,
+-  _floor_mapping_44,
++  _floor_mapping_32,
+ 
+   _mapres_template_44_uncoupled
+ };
+diff -Naur libvorbis-1.3.6/lib/modes/setup_44.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_44.h
+--- libvorbis-1.3.6/lib/modes/setup_44.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_44.h	2018-03-26 11:17:36 +0000
+@@ -18,44 +18,57 @@
+ #include "modes/residue_44.h"
+ #include "modes/psych_44.h"
+ 
+-static const double rate_mapping_44_stereo[12]={
+-  22500.,32000.,40000.,48000.,56000.,64000.,
+-  80000.,96000.,112000.,128000.,160000.,250001.
++static const float preamp_44[13]={
++0.995, 0.995,
++1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f
++};
++static const float preamp_48[13]={
++1.f, 1.f,
++1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f, 1.f
+ };
+ 
+-static const double quality_mapping_44[12]={
+-  -.1,.0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1.0
++static const double rate_mapping_44_stereo[13]={
++//  22500.,32000.,40000.,48000.,56000.,64000.,
++  16000.,24000.,32000.,40000.,48000.,56000.,64000.,
++  80000.,96000.,112000.,128000.,160000.,250001.
+ };
+ 
+-static const int blocksize_short_44[11]={
+-  512,256,256,256,256,256,256,256,256,256,256
+-};
+-static const int blocksize_long_44[11]={
+-  4096,2048,2048,2048,2048,2048,2048,2048,2048,2048,2048
++static const double quality_mapping_44[13]={
++  -.2,-.1,.0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1.0
+ };
+ 
+-static const double _psy_compand_short_mapping[12]={
+-  0.5, 1., 1., 1.3, 1.6, 2., 2., 2., 2., 2., 2., 2.
++static const int blocksize_short_44[12]={
++  512,512,256,256,256,256,256,256,256,256,256,256
+ };
+-static const double _psy_compand_long_mapping[12]={
+-  3.5, 4., 4., 4.3, 4.6, 5., 5., 5., 5., 5., 5., 5.
++static const int blocksize_long_44[12]={
++  4096,4096,2048,2048,2048,2048,2048,2048,2048,2048,2048,2048
+ };
+ 
+-static const double _global_mapping_44[12]={
+-  /* 1., 1., 1.5, 2., 2., 2.5, 2.7, 3.0, 3.5, 4., 4. */
+- 0., 1., 1., 1.5, 2., 2., 2.5, 2.7, 3.0, 3.7, 4., 4.
++static const double _psy_compand_short_mapping[13]={
++  0., 0., 1., 1., 1.3, 1.5, 2., 2., 2., 2., 2., 2., 2.
+ };
+-
+-static const int _floor_mapping_44a[11]={
+-  1,0,0,2,2,4,5,5,5,5,5
+-};
+-
+-static const int _floor_mapping_44b[11]={
+-  8,7,7,7,7,7,7,7,7,7,7
++static const double _psy_compand_long_mapping[13]={
++  4., 4., 4., 4., 4.3, 4.5, 5., 5., 5., 5., 5., 5., 5.
+ };
+ 
+-static const int _floor_mapping_44c[11]={
+-  10,10,10,10,10,10,10,10,10,10,10
++static const double _global_mapping_44[13]={
++  /* 1., 1., 1.5, 2., 2., 2.5, 2.7, 3.0, 3.5, 4., 4. */
++// 0., 1., 1., 1.5, 2., 2., 2.5, 2.7, 3.0, 3.7, 4., 4.
++  0., 1., 2., 2., 2.5, 3., 3., 3.5, 3.7, 4., 4., 5., 5. // low
++//  0., 1., 2., 2., 2.5, 3., 3.2, 4.0, 4.0, 4.0, 4.5, 5., 5. // high
++};
++
++// short
++static const int _floor_mapping_44a[12]={
++  1,1,0,0,2,2,4,5,5,5,5,5
++};
++// long
++static const int _floor_mapping_44b[12]={
++  12,12,11,11,11,7,7,7,7,7,7,7
++};
++// LFE only
++static const int _floor_mapping_44c[12]={
++  10,10,10,10,10,10,10,10,10,10,10,10
+ };
+ 
+ static const int *_floor_mapping_44[]={
+@@ -65,12 +78,14 @@
+ };
+ 
+ static const ve_setup_data_template ve_setup_44_stereo={
+-  11,
++//  11,
++  12,
+   rate_mapping_44_stereo,
+   quality_mapping_44,
++  preamp_44,
+   2,
+   40000,
+-  50000,
++  45000,
+ 
+   blocksize_short_44,
+   blocksize_long_44,
+@@ -79,7 +94,60 @@
+   _psy_tone_0dB,
+   _psy_tone_suppress,
+ 
++  _vp_tonemask_adj_otherblock, // impulse
++  _vp_tonemask_adj_longblock,
+   _vp_tonemask_adj_otherblock,
++
++  _psy_noiseguards_44,
++  _psy_noisebias_impulse,
++  _psy_noisebias_padding,
++  _psy_noisebias_trans,
++  _psy_noisebias_long,
++  _psy_noise_suppress,
++
++  _psy_compand_44,
++  _psy_compand_short_mapping,
++  _psy_compand_long_mapping,
++
++  {_noise_start_short_44,_noise_start_long_44},
++  {_noise_part_short_44,_noise_part_long_44},
++  _noise_thresh_44,
++
++  _psy_ath_floater,
++  _psy_ath_abs,
++
++  _psy_lowpass_44,
++
++  _psy_global_44,
++  _global_mapping_44,
++  _psy_stereo_modes_44,
++
++  _floor_books,
++  _floor,
++  2,
++  _floor_mapping_44,
++
++  _mapres_template_44_stereo
++};
++
++static const ve_setup_data_template ve_setup_48_stereo={
++//  11,
++  12,
++  rate_mapping_44_stereo,
++  quality_mapping_44,
++  preamp_48,
++  2,
++  45000,
++  50000,
++
++  blocksize_short_44,
++  blocksize_long_44,
++
++  _psy_tone_masteratt_44,
++  _psy_tone_0dB,
++  _psy_tone_suppress,
++
++  _vp_tonemask_adj_otherblock, // impulse
+   _vp_tonemask_adj_longblock,
+   _vp_tonemask_adj_otherblock,
+ 
+diff -Naur libvorbis-1.3.6/lib/modes/setup_44p51.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_44p51.h
+--- libvorbis-1.3.6/lib/modes/setup_44p51.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_44p51.h	2018-03-26 11:17:44 +0000
+@@ -16,15 +16,16 @@
+ 
+ #include "modes/residue_44p51.h"
+ 
+-static const double rate_mapping_44p51[12]={
+-  14000.,20000.,28000.,38000.,46000.,54000.,
++static const double rate_mapping_44p51[13]={
++  12000.,14000.,20000.,28000.,38000.,46000.,54000.,
+   75000.,96000.,120000.,140000.,180000.,240001.
+ };
+ 
+ static const ve_setup_data_template ve_setup_44_51={
+-  11,
++  12,
+   rate_mapping_44p51,
+   quality_mapping_44,
++  preamp_44,
+   6,
+   40000,
+   70000,
+diff -Naur libvorbis-1.3.6/lib/modes/setup_44u.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_44u.h
+--- libvorbis-1.3.6/lib/modes/setup_44u.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_44u.h	2018-03-26 11:17:54 +0000
+@@ -16,17 +16,73 @@
+ 
+ #include "modes/residue_44u.h"
+ 
+-static const double rate_mapping_44_un[12]={
+-  32000.,48000.,60000.,70000.,80000.,86000.,
++static const double rate_mapping_44_un[13]={
++//  32000.,48000.,60000.,70000.,80000.,86000.,
++  28000.,40000.,48000.,60000.,70000.,80000.,86000.,
+   96000.,110000.,120000.,140000.,160000.,240001.
+ };
+ 
+ static const ve_setup_data_template ve_setup_44_uncoupled={
+-  11,
++//  11,
++  12,
+   rate_mapping_44_un,
+   quality_mapping_44,
++  preamp_44,
+   -1,
+   40000,
++  45000,
++
++  blocksize_short_44,
++  blocksize_long_44,
++
++  _psy_tone_masteratt_44,
++  _psy_tone_0dB,
++  _psy_tone_suppress,
++
++  _vp_tonemask_adj_otherblock,
++  _vp_tonemask_adj_longblock,
++  _vp_tonemask_adj_otherblock,
++
++  _psy_noiseguards_44,
++  _psy_noisebias_impulse,
++  _psy_noisebias_padding,
++  _psy_noisebias_trans,
++  _psy_noisebias_long,
++  _psy_noise_suppress,
++
++  _psy_compand_44,
++  _psy_compand_short_mapping,
++  _psy_compand_long_mapping,
++
++  {_noise_start_short_44,_noise_start_long_44},
++  {_noise_part_short_44,_noise_part_long_44},
++  _noise_thresh_44,
++
++  _psy_ath_floater,
++  _psy_ath_abs,
++
++  _psy_lowpass_44,
++
++  _psy_global_44,
++  _global_mapping_44,
++  _psy_stereo_modes_44,
++
++  _floor_books,
++  _floor,
++  2,
++  _floor_mapping_44,
++
++  _mapres_template_44_uncoupled
++};
++
++static const ve_setup_data_template ve_setup_48_uncoupled={
++//  11,
++  12,
++  rate_mapping_44_un,
++  quality_mapping_44,
++  preamp_48,
++  -1,
++  45000,
+   50000,
+ 
+   blocksize_short_44,
+diff -Naur libvorbis-1.3.6/lib/modes/setup_8.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_8.h
+--- libvorbis-1.3.6/lib/modes/setup_8.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_8.h	2018-03-26 11:31:20 +0000
+@@ -17,38 +17,48 @@
+ #include "psych_8.h"
+ #include "residue_8.h"
+ 
+-static const int blocksize_8[2]={
+-  512,512
++static const float preamp_8[4]={
++0.965, 0.965, 0.965, 1.f
++};
++
++static const int blocksize_8[3]={
++  512,512,512
+ };
+ 
+ static const int _floor_mapping_8a[]={
+-  6,6
++  6,6,6
+ };
+ 
+ static const int *_floor_mapping_8[]={
+   _floor_mapping_8a
+ };
+ 
+-static const double rate_mapping_8[3]={
+-  6000.,9000.,32000.,
++static const double rate_mapping_8[4]={
++//  6000.,9000.,32000.,
++  5000.,6000.,9000.,32000.,
+ };
+ 
+-static const double rate_mapping_8_uncoupled[3]={
+-  8000.,14000.,42000.,
++static const double rate_mapping_8_uncoupled[4]={
++//  8000.,14000.,42000.,
++  8000.,10000.,14000.,42000.,
+ };
+ 
+-static const double quality_mapping_8[3]={
+-  -.1,.0,1.
++static const double quality_mapping_8[4]={
++  -.2,-.1,.0,1.
+ };
+ 
+-static const double _psy_compand_8_mapping[3]={ 0., 1., 1.};
++//static const double _psy_compand_8_mapping[3]={ 0., 1., 1.};
++static const double _psy_compand_8_mapping[4]={ 0., 1., 2., 2.};
+ 
+-static const double _global_mapping_8[3]={ 1., 2., 3. };
++//static const double _global_mapping_8[3]={ 1., 2., 3. };
++static const double _global_mapping_8[4]={ 2., 2., 3., 4. };
+ 
+ static const ve_setup_data_template ve_setup_8_stereo={
+-  2,
++//  2,
++  3,
+   rate_mapping_8,
+   quality_mapping_8,
++  preamp_8,
+   2,
+   8000,
+   9000,
+@@ -97,9 +107,11 @@
+ };
+ 
+ static const ve_setup_data_template ve_setup_8_uncoupled={
+-  2,
++//  2,
++  3,
+   rate_mapping_8_uncoupled,
+   quality_mapping_8,
++  preamp_8,
+   -1,
+   8000,
+   9000,
+diff -Naur libvorbis-1.3.6/lib/modes/setup_X.h libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_X.h
+--- libvorbis-1.3.6/lib/modes/setup_X.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/modes/setup_X.h	2018-03-26 11:31:46 +0000
+@@ -14,15 +14,17 @@
+ 
+  ********************************************************************/
+ 
+-static const double rate_mapping_X[12]={
+-  -1.,-1.,-1.,-1.,-1.,-1.,
++static const double rate_mapping_X[13]={
++  -1.,-1.,-1.,-1.,-1.,-1.,-1.
+   -1.,-1.,-1.,-1.,-1.,-1.
+ };
+ 
+ static const ve_setup_data_template ve_setup_X_stereo={
+-  11,
++//  11,
++  12,
+   rate_mapping_X,
+   quality_mapping_44,
++  preamp_48,
+   2,
+   50000,
+   200000,
+@@ -71,9 +73,11 @@
+ };
+ 
+ static const ve_setup_data_template ve_setup_X_uncoupled={
+-  11,
++//  11,
++  12,
+   rate_mapping_X,
+   quality_mapping_44,
++  preamp_48,
+   -1,
+   50000,
+   200000,
+@@ -122,9 +126,11 @@
+ };
+ 
+ static const ve_setup_data_template ve_setup_XX_stereo={
+-  2,
++//  2,
++  3,
+   rate_mapping_X,
+   quality_mapping_8,
++  preamp_8,
+   2,
+   0,
+   8000,
+@@ -173,9 +179,11 @@
+ };
+ 
+ static const ve_setup_data_template ve_setup_XX_uncoupled={
+-  2,
++//  2,
++  3,
+   rate_mapping_X,
+   quality_mapping_8,
++  preamp_8,
+   -1,
+   0,
+   8000,
+diff -Naur libvorbis-1.3.6/lib/psy.c libvorbis-1.3.6-aotuv-b6.03/lib/psy.c
+--- libvorbis-1.3.6/lib/psy.c	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/psy.c	2018-03-26 11:23:46 +0000
+@@ -29,8 +29,83 @@
+ #include "misc.h"
+ 
+ #define NEGINF -9999.f
+-static const double stereo_threshholds[]={0.0, .5, 1.0, 1.5, 2.5, 4.5, 8.5, 16.5, 9e10};
+-static const double stereo_threshholds_limited[]={0.0, .5, 1.0, 1.5, 2.0, 2.5, 4.5, 8.5, 9e10};
++
++#define existe(x,y) (x<-y || x>=y) // !existe(x,0.5f) is faster than (rint(x)==0.f). (By the same result)
++#define refer_phase(a,b) ((a>0. && b<0.) || (b>0. && a<0.))
++
++#define M3C 3
++                                           /*  0    1    2    3    4    5    6    7    8  */
++static const double stereo_threshholds[]=    {0.0, 0.5, 1.0, 1.5, 2.5, 4.5, 8.5,16.5, 9e10};
++static const double stereo_threshholds_X[]=  {0.0, 0.5, 0.5, 0.5, 0.5, 1.5, 4.0, 6.0, 9e10};
++
++static const int m3n32[M3C] = {13,10,4};
++static const int m3n44[M3C] = {9,7,3}; // 1550.390625, 1205.859375, 516.796875
++static const int m3n48[M3C] = {8,6,3};
++static const int m3n32x2[M3C] = {26,20,8};
++static const int m3n44x2[M3C] = {18,14,6};
++static const int m3n48x2[M3C] = {16,12,6};
++
++static const int freq_bfn128[128] = {
++ 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3,
++ 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7,
++ 8, 8, 8, 8, 9, 9, 9, 9,10,10,10,10,11,11,11,11,
++12,12,12,12,13,13,13,13,14,14,14,14,15,15,15,15,
++
++16,16,16,16,17,17,17,17,18,18,18,18,19,19,19,19,
++20,20,20,20,21,21,21,21,22,22,22,22,23,23,23,23,
++24,24,24,24,25,25,25,24,23,22,21,20,19,18,17,16,
++15,14,13,12,11,10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1,
++};
++static const int freq_bfn256[256] = {
++ 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3,
++ 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7, 7,
++ 8, 8, 8, 8, 9, 9, 9, 9,10,10,10,10,11,11,11,11,
++12,12,12,12,13,13,13,13,14,14,14,14,15,15,15,15,
++16,16,16,16,17,17,17,17,18,18,18,18,19,19,19,19,
++20,20,20,20,21,21,21,21,22,22,22,22,23,23,23,23,
++24,24,24,24,25,25,25,25,26,26,26,26,27,27,27,27,
++28,28,28,28,29,29,29,29,30,30,30,30,31,31,31,31,
++
++32,32,32,32,33,33,33,33,34,34,34,34,35,35,35,35,
++36,36,36,36,37,37,37,37,38,38,38,38,39,39,39,39,
++40,40,40,40,41,41,41,41,42,42,42,42,43,43,43,43,
++44,44,44,44,45,45,45,45,46,46,46,46,47,47,47,47,
++48,48,48,48,49,49,49,49,50,50,50,50,51,50,49,48,
++47,46,45,44,43,42,41,40,39,38,37,36,35,34,33,32,
++31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,
++15,14,13,12,11,10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1,
++};
++
++/* noise compander for stereo threshlod calc. */
++static const int stn_compand[]={ 
++     0, 1, 2, 3, 4, 5, 6,  7,
++     8, 9,10,10,11,11,12, 12,
++    13,13,14,14,15,15,15, 16,
++    16,16,17,17,18,18,18, 19,
++    19,19,20,21,22,23,24, 25,
++};
++
++static const float ntfix_offset[]={
++/*  63     125     250     500      1k      2k      4k      8k     16k*/
++    0,  0,  0,  0,  4,  8, 10, 16, 24, 30, 30, 30, 20, 14,  5,  1,  0};
++
++static const aotuv_preset set_aotuv_psy[12]={
++/* tc_end tc_th min_lp tonefix */
++  {  124, .9f,   120,     104}, // 32 short(N=128)
++  {  248, .9f,   240,     208}, // 32 short(N=256)
++  {  992, .9f,   960,     832}, // 32 long(N=1024)
++  { 1984, .9f,  1920,    1664}, // 32 long(N=2048)
++
++  {   83, .9f,    80,      70}, // 48 short(N=128)
++  {  166, .9f,   160,     140}, // 48 short(N=256)
++  {  664, .9f,   640,     560}, // 48 long(N=1024)
++  { 1328, .9f,  1280,    1120}, // 48 long(N=2048)
++
++  {   90, .9f,    87,      76}, // 44.1 short(N=128)
++  {  180, .9f,   174,     152}, // 44.1 short(N=256)
++  {  720, .9f,   696,     608}, // 44.1 long(N=1024)  13953.515625
++  { 1440, .9f,  1392,    1216}  // 44.1 long(N=2048)
++};
+ 
+ vorbis_look_psy_global *_vp_global_look(vorbis_info *vi){
+   codec_setup_info *ci=vi->codec_setup;
+@@ -266,7 +341,7 @@
+ void _vp_psy_init(vorbis_look_psy *p,vorbis_info_psy *vi,
+                   vorbis_info_psy_global *gi,int n,long rate){
+   long i,j,lo=-99,hi=1;
+-  long maxoc;
++  long maxoc, select=-1;
+   memset(p,0,sizeof(*p));
+ 
+   p->eighth_octave_lines=gi->eighth_octave_lines;
+@@ -283,11 +358,74 @@
+   p->n=n;
+   p->rate=rate;
+ 
+-  /* AoTuV HF weighting */
+-  p->m_val = 1.;
+-  if(rate < 26000) p->m_val = 0;
+-  else if(rate < 38000) p->m_val = .94;   /* 32kHz */
+-  else if(rate > 46000) p->m_val = 1.275; /* 48kHz */
++  /* AoTuV HF weighting etc. */
++  p->n25p=n/4;
++  p->n33p=n/3;
++  p->n75p=p->n25p*3;
++  p->nn25pt=vi->normal_partition/4;
++  p->nn50pt=p->nn25pt+p->nn25pt;
++  p->nn75pt=p->nn25pt*3;
++
++  if(rate < 26000){
++    /* below 26kHz */
++    p->m_val = 0;
++    select=-1;
++    for(i=0; i<M3C; i++) p->m3n[i] = 0;
++  }else if(rate < 38000){
++    /* 32kHz */
++    p->m_val = .93;
++    if(n==128){
++      select=0;
++      for(i=0; i<M3C; i++) p->m3n[i] = m3n32[i];
++    }else if(n==256){
++      select=1;
++      for(i=0; i<M3C; i++) p->m3n[i] = m3n32x2[i];
++    }else if(n==1024){
++      select=2;
++    }else if(n==2048){
++      select=3;
++    }
++  }else if(rate > 46000){
++    /* 48kHz */
++    p->m_val = 1.205;
++    if(n==128){
++      select=4;
++      for(i=0; i<M3C; i++) p->m3n[i] = m3n48[i];
++    }else if(n==256){
++      select=5;
++      for(i=0; i<M3C; i++) p->m3n[i] = m3n48x2[i];
++    }else if(n==1024){
++      select=6;
++    }else if(n==2048){
++      select=7;
++    }
++  }else{
++    /* 44.1kHz */
++    p->m_val = 1.;
++    if(n==128){
++      select=8;
++      for(i=0; i<M3C; i++) p->m3n[i] = m3n44[i];
++    }else if(n==256){
++      select=9;
++      for(i=0; i<M3C; i++) p->m3n[i] = m3n44x2[i];
++    }else if(n==1024){
++      select=10;
++    }else if(n==2048){
++      select=11;
++    }
++  }
++  
++  if(select<0){
++    p->tonecomp_endp=0; // dummy
++    p->tonecomp_thres=.25;
++    p->min_nn_lp=0;
++    p->tonefix_end=0;
++  }else{
++    p->tonecomp_endp=set_aotuv_psy[select].tonecomp_endp;
++    p->tonecomp_thres=set_aotuv_psy[select].tonecomp_thres;
++    p->min_nn_lp=set_aotuv_psy[select].min_nn_lp;
++    p->tonefix_end=set_aotuv_psy[select].tonefix_end;
++  }
+ 
+   /* set up the lookups for a given blocksize and sample rate */
+ 
+@@ -302,9 +440,12 @@
+       }
+     }
+   }
+-
+-  for(;j<n;j++){
+-    p->ath[j]=p->ath[j-1];
++  {
++    float cs=p->ath[j-1];
++    float ds=p->ath[j-1] - p->ath[j-2];
++    for(i=j; i<n; i++, cs+=ds){
++      p->ath[i]=cs;
++    }
+   }
+ 
+   for(i=0;i<n;i++){
+@@ -331,6 +472,8 @@
+   for(i=0;i<P_NOISECURVES;i++)
+     p->noiseoffset[i]=_ogg_malloc(n*sizeof(**p->noiseoffset));
+ 
++  p->ntfix_noiseoffset=_ogg_malloc(n*sizeof(*p->ntfix_noiseoffset));
++  
+   for(i=0;i<n;i++){
+     float halfoc=toOC((i+.5)*rate/(2.*n))*2.;
+     int inthalfoc;
+@@ -345,6 +488,10 @@
+       p->noiseoffset[j][i]=
+         p->vi->noiseoff[j][inthalfoc]*(1.-del) +
+         p->vi->noiseoff[j][inthalfoc+1]*del;
++    
++    /* setup ntfix offset */
++     p->ntfix_noiseoffset[i]=ntfix_offset[inthalfoc]*(1.-del) +
++                             ntfix_offset[inthalfoc+1]*del;
+ 
+   }
+ #if 0
+@@ -378,16 +525,59 @@
+       }
+       _ogg_free(p->noiseoffset);
+     }
++    if(p->ntfix_noiseoffset){
++      _ogg_free(p->ntfix_noiseoffset);
++    }
+     memset(p,0,sizeof(*p));
+   }
+ }
+ 
++/*
++  aoTuV M2
++  Check extreme noise (post-echo) strength.
++  This code is a temporary thing, but is effective in critical post-echo.
++    Only Trans. blocks. (nn>=2048)
++    ret: 'minus sign' does disable of postprocessing.
++  by Aoyumi @ 2010/09/12
++*/
++float _postnoise_detection(float *pcm, int nn, int mode, int lw_mode){
++  int i;
++  int sn=nn >> 2;
++  int mn=sn+sn;
++  int en=sn+(nn >> 1);
++  float ret=-1.0;
++  double upt=0, unt=0;
++
++  if(mode!=2)return ret; // only trans. block
++  if(lw_mode!=0)return ret;
++  if(nn<2048)return ret;
++
++  for(i=sn; i<mn; i++){
++    upt+=fabs(*(pcm+i));
++  }
++  for(i=mn; i<en; i++){
++    unt+=fabs(*(pcm+i));
++  }
++  if(unt/sn > 0.01)return ret;
++
++  upt*=upt;
++  unt*=unt;
++  unt*=15;
++
++  if(upt>unt){
++    ret=upt-unt;
++    if(ret<0.1)ret=-1.0;
++  }
++  return ret;
++}
++
++
+ /* octave/(8*eighth_octave_lines) x scale and dB y scale */
+ static void seed_curve(float *seed,
+                        const float **curves,
+-                       float amp,
+-                       int oc, int n,
+-                       int linesper,float dBoffset){
++                       const float amp,
++                       const int oc, const int n,
++                       const int linesper, const float dBoffset){
+   int i,post1;
+   int seedptr;
+   const float *posts,*curve;
+@@ -410,12 +600,12 @@
+   }
+ }
+ 
+-static void seed_loop(vorbis_look_psy *p,
++static void seed_loop(const vorbis_look_psy *p,
+                       const float ***curves,
+                       const float *f,
+                       const float *flr,
+                       float *seed,
+-                      float specmax){
++                      const float specmax){
+   vorbis_info_psy *vi=p->vi;
+   long n=p->n,i;
+   float dBoffset=vi->max_curve_dB-specmax;
+@@ -447,7 +637,7 @@
+   }
+ }
+ 
+-static void seed_chase(float *seeds, int linesper, long n){
++static void seed_chase(float *seeds, const int linesper, const long n){
+   long  *posstack=alloca(n*sizeof(*posstack));
+   float *ampstack=alloca(n*sizeof(*ampstack));
+   long   stack=0;
+@@ -505,7 +695,7 @@
+ 
+ /* bleaugh, this is more complicated than it needs to be */
+ #include<stdio.h>
+-static void max_seeds(vorbis_look_psy *p,
++static void max_seeds(const vorbis_look_psy *p,
+                       float *seed,
+                       float *flr){
+   long   n=p->total_octave_lines;
+@@ -695,11 +885,148 @@
+   }
+ }
+ 
+-void _vp_noisemask(vorbis_look_psy *p,
+-                   float *logmdct,
+-                   float *logmask){
++/*  aoTuV M7
++    This revise that a tone ingredient is underestimated by calculation of noise making.
++      [blocksize is 512/4096 or 256/2048]
++    by Aoyumi @ 2010/04/28 - 2011/01/30(v1.1)
++*/
++static void ntfix(const vorbis_look_psy *p,
++                    const float *spectral,
++                    float *noise,
++                    int block_mode){
++  int i,j,k;
++  int n=p->n;
++  int nx=p->tonefix_end;
++  float *temp, *inmod;
++  float limit=fabs(p->noiseoffset[1][0]);
++
++  if(!nx)return;
++
++  temp=alloca(256*sizeof(*temp));
++  inmod=alloca(256*sizeof(*inmod));
++
++  memset(temp, 0, 256*sizeof(*temp));
++  memset(inmod, 0, 256*sizeof(*inmod));
++
++  if(block_mode<=1){
++    //// short (impulse, padding)
++    const int freq_upc=3;
++    const int freq_unc=4;
++    int nxplus=nx+freq_unc;
++    
++    float tolerance=9.f;
++    float strength=.6f;
++    if(n==256)tolerance=15.f;
++    if(nxplus>n){
++      nx=n;
++      nxplus=n-freq_unc;
++    }
++
++    for(i=0; i<nxplus; i++){
++      if(spectral[i]<-70)inmod[i]=-70+(spectral[i]+70)*.1;
++      else inmod[i]=spectral[i];
++    }
++    for(i=freq_unc; i<nx; i++){   // nx is alredy small than n
++      if((spectral[i]>spectral[i-1]) && (spectral[i]>spectral[i+1])){ // peak detection
++        int ps=i-1;
++        int pe=i+1;
++        int upper=i-freq_upc;
++        int under=i+freq_unc;
++        // search a range
++        for(j=ps; j>upper; j--){
++          if(spectral[j+1]<spectral[j])break;
++          ps=j;
++        }
++        for(j=pe; j<under; j++){
++          if(spectral[j-1]<spectral[j])break;
++          pe=j;
++        }
++        {
++          float ss=inmod[i]-inmod[ps];
++          ss=max(ss, inmod[i]-inmod[pe]);
++          if(ss>tolerance){
++            if(spectral[i]>noise[i]){
++              ss-=tolerance;
++              ss*=strength;
++            }
++            //else{
++            //  float ts=noise[i]-spectral[i];
++            //  if(ts<9)ss-=ts;
++            //}
++            for(j=ps; j<=pe; j++){
++              temp[j]=max(ss, temp[j]);
++              if(temp[j]<0)temp[j]=0;
++            }
++          }
++        }
++        i=pe;
++      }
++    }
++    for(i=freq_unc-1; i<nx; i++){
++      float test=min(p->ntfix_noiseoffset[i], p->noiseoffset[1][i]+limit); // limit
++      if(temp[i]>test)temp[i]=test;
++      //if(temp[j]<0)temp[j]=0;
++      noise[i]-=temp[i];
++    }
++
++  }else if(block_mode==2){
++    //// transition (start/stop)
++    // become average every eight coefficients.
++    for(i=0,k=0; i<nx; i+=8,k++){
++      double na=0;
++      for(j=0; j<8; j++)na+=noise[i+j];
++      na/=8;
++      temp[k]=na;
++    }
++    nx/=8;
++    for(i=3; i<nx; i++){
++      if((temp[i]>temp[i-1]) && (temp[i]>temp[i+1])){ // peak detection
++        int a=0;
++        int b=0;
++        float thres=0;
++
++        if(temp[i-1]>temp[i-2]){
++          thres=temp[i-2];
++          a=i-3;
++        }else{
++          thres=temp[i-1];
++          a=i-2;
++        }
++        //if(temp[i+1]>temp[i+2]){
++        //  b=i+2;
++        //}else{
++        //  b=i+2;
++        //}
++        b=i+3;
++        thres=temp[i]-thres;
++        if(thres>2.){
++          int eightimes=i*8;
++          float test=min(p->ntfix_noiseoffset[eightimes], p->noiseoffset[1][eightimes]+limit); // limit
++          thres=min(thres-2, test);
++          a*=8;
++          b*=8;
++          //if(thres<0)thres=0;
++          for(j=a; j<=b; j++)noise[j]-=thres;
++        }
++      }
++    }
++  }/*else{
++    // long block
++  }*/
++}
++
++void _vp_noisemask(const vorbis_look_psy *p,
++                   const float noise_compand_level,
++                   const float *logmdct,
++                   const float *lastmdct,
++                   float *epeak,
++                   float *npeak,
++                   float *logmask,
++                   float poste,
++                   int block_mode){
+ 
+-  int i,n=p->n;
++  int i,j,k,n=p->n;
++  int partition=(p->vi->normal_p ? p->vi->normal_partition : 16);
+   float *work=alloca(n*sizeof(*work));
+ 
+   bark_noise_hybridmp(n,p->bark,logmdct,logmask,
+@@ -734,20 +1061,95 @@
+   }
+ #endif
+ 
+-  for(i=0;i<n;i++){
++  ntfix(p, logmdct, work, block_mode);
++  
++  /* noise compand & aoTuV M5 extension & pre sotre tone peak. */
++  i=0;
++  if(noise_compand_level > 0){
++    int thter = p->n33p;
++    for(;i<thter;i++){
++      int dB=logmask[i]+.5;
++      if(dB>=NOISE_COMPAND_LEVELS)dB=NOISE_COMPAND_LEVELS-1;
++      if(dB<0)dB=0;
++      epeak[i]= work[i]+stn_compand[dB];
++      logmask[i]= work[i]+p->vi->noisecompand[dB]-
++       ((p->vi->noisecompand[dB]-p->vi->noisecompand_high[dB])*noise_compand_level);
++    }
++  }
++  for(;i<n;i++){
+     int dB=logmask[i]+.5;
+     if(dB>=NOISE_COMPAND_LEVELS)dB=NOISE_COMPAND_LEVELS-1;
+     if(dB<0)dB=0;
++    epeak[i]= work[i]+stn_compand[dB];
+     logmask[i]= work[i]+p->vi->noisecompand[dB];
+   }
+ 
++  /* initialization of npeak(nepeak) */
++  for(i=0,k=0; i<n; i+=partition, k++)npeak[k]=0.f;
++  
++  /* reduction of post-echo. (postprocessing of aoTuV M2) */
++  if(poste>0){
++    for(i=0,k=0; i<p->min_nn_lp; i+=partition,k++){
++      float temp=min(min(poste,30.f), p->noiseoffset[1][i]+30.f); // limit
++      if(temp<=0)continue;
++      npeak[k]=-1.f; // this time, don't use noise normalization
++      for(j=0; j<partition; j++) logmask[i+j]-=temp;
++    }
++  }
++
++  /* AoTuV */
++  /** @ M8 MAIN **
++    store non peak logmask(floor) for noise normalization.
++    npeak (each partition) = min [0 ~ 1.0f] max
++    by Aoyumi @ 2010/09/28
++  */
++  for(k=0, i=0; i<p->min_nn_lp; i+=partition,k++){
++    const float nt=4;
++    float o=p->noiseoffset[1][i+partition-1]+6;  // threshold of offset
++    float me=0;  // max energy (per partition)
++    float avge=0; // average energy (per partition)
++
++    if(o<=0)continue;
++    if(npeak[k]<-0.5)continue;
++
++    for(j=0; j<partition; j++){
++      float temp=logmdct[i+j]-logmask[i+j];
++      if(me<temp)me=temp;
++      avge+=logmdct[i+j];
++    }
++    if(avge < (-95*partition))continue; // limit (MDCT AVG. /dB)
++
++    if(me<nt){
++      npeak[k]=(min(o, nt-me))/nt;
++    }
++  }
++
++  /* AoTuV */
++  /** @ M9 MAIN **
++    store peak impuse for coupling stereo. (to epeak)
++    by Aoyumi @ 2010/05/05
++  */
++  {
++    i=0;
++    if(block_mode>1){ // long and trans. block
++      for(; i<p->tonecomp_endp; i++){
++        float temp=logmdct[i]-epeak[i];
++        epeak[i]=0.f;
++        if(temp>=12.f){
++          float mi=logmdct[i]-lastmdct[i];
++          if(mi>=1)epeak[i]=mi;
++        }
++      }
++    }
++    memset(epeak+i,0,sizeof(epeak[0])*(n-i));
++  }
+ }
+ 
+-void _vp_tonemask(vorbis_look_psy *p,
+-                  float *logfft,
++void _vp_tonemask(const vorbis_look_psy *p,
++                  const float *logfft,
+                   float *logmask,
+-                  float global_specmax,
+-                  float local_specmax){
++                  const float global_specmax,
++                  const float local_specmax){
+ 
+   int i,n=p->n;
+ 
+@@ -768,65 +1170,367 @@
+ 
+ }
+ 
+-void _vp_offset_and_mix(vorbis_look_psy *p,
+-                        float *noise,
+-                        float *tone,
+-                        int offset_select,
++/*
++   @ M3 PRE
++     set parameters for aoTuV M3
++*/
++static void set_m3p(local_mod3_psy *mp, const int lW_no, const int impadnum,
++             const int n, const int hs_rate, const float toneatt, 
++             const float *logmdct, const float *lastmdct, float *tempmdct,
++             const int block_mode, const int lW_block_mode,
++             const int bit_managed, const int offset_select){
++
++  int i,j, count;
++  float freqbuf, cell;
++
++  /* lower sampling rate */
++  if(!hs_rate){
++    mp->sw = 0;
++    mp->mdctbuf_flag=0;
++    return;
++  }
++
++  /* set flag for lastmdct and tempmdct */
++  if(!bit_managed || offset_select==2){
++    mp->mdctbuf_flag=1;
++  }else{
++    mp->mdctbuf_flag=0;
++    if(offset_select==0){ // high noise scene
++      mp->sw = 0;
++      return;
++    }
++  }
++
++  /* non impulse */
++  if(block_mode){
++    mp->sw = 0;
++    return;
++  }
++
++  /** M3 PRE **/
++  switch(n){
++
++    case 128:
++      if(toneatt < 3) count = 2; // q6~
++      else count = 3;
++
++      if(!lW_block_mode){ /* last window "short" - type "impulse" */
++        if(lW_no < 8){
++          /* impulse - @impulse case1 */
++          mp->noise_rate = 0.7-(float)(lW_no-1)/17;
++          mp->noise_center = (float)(lW_no*count);
++          mp->tone_rate = 8-lW_no;
++        }else{
++          /* impulse - @impulse case2 */
++          mp->noise_rate = 0.3;
++          mp->noise_center = 25;
++          mp->tone_rate = 0;
++          if((lW_no*count) < 24) mp->noise_center = lW_no*count;
++        }
++          if(mp->mdctbuf_flag == 1){
++            for(i=0; i<n; i++) tempmdct[i] -= 5;
++          }
++      }else{ /* non_impulse - @Short(impulse) case */
++          mp->noise_rate = 0.7;
++          mp->noise_center = 0;
++          mp->tone_rate = 8.;
++          if(mp->mdctbuf_flag == 1){
++            for(i=0; i<n; i++) tempmdct[i] = lastmdct[i] - 5;
++          }
++      }
++      mp->noise_rate_low = 0;
++      mp->sw = 1;
++      if(impadnum) mp->noise_rate*=(impadnum*0.125);
++      for(i=0;i<n;i++){
++          cell=75/(float)freq_bfn128[i];
++          for(j=1; j<freq_bfn128[i]; j++){
++            freqbuf = logmdct[i]-(cell*j);
++            if((tempmdct[i+j] < freqbuf) && (mp->mdctbuf_flag == 1))
++             tempmdct[i+j] += (5./(float)freq_bfn128[i+j]);
++          }
++      }
++      break;
++
++    case 256:
++      // for q-1/-2 44.1kHz/48kHz
++      if(!lW_block_mode){ /* last window "short" - type "impulse" */
++          count = 6;
++          if(lW_no < 4){
++            /* impulse - @impulse case1 */
++            mp->noise_rate = 0.4-(float)(lW_no-1)/11;
++            mp->noise_center = (float)(lW_no*count+12);
++            mp->tone_rate = 8-lW_no*2;
++          }else{
++            /* impulse - @impulse case2 */
++            mp->noise_rate = 0.2;
++            mp->noise_center = 30;
++            mp->tone_rate = 0;
++          }
++          if(mp->mdctbuf_flag == 1){
++            for(i=0; i<n; i++) tempmdct[i] -= 10;
++          }
++      }else{ /* non_impulse - @Short(impulse) case */
++          mp->noise_rate = 0.6;
++          mp->noise_center = 12;
++          mp->tone_rate = 8.;
++          if(mp->mdctbuf_flag == 1){
++            for(i=0; i<n; i++) tempmdct[i] = lastmdct[i] - 10;
++          }
++      }
++      mp->noise_rate_low = 0;
++      mp->sw = 1;
++      if(impadnum) mp->noise_rate*=(impadnum*0.0625);
++      for(i=0;i<n;i++){
++          cell=75/(float)freq_bfn256[i];
++          for(j=1; j<freq_bfn256[i]; j++){
++            freqbuf = logmdct[i]-(cell*j);
++            if((tempmdct[i+j] < freqbuf) && (mp->mdctbuf_flag == 1))
++             tempmdct[i+j] += (10./(float)freq_bfn256[i+j]);
++          }
++      }
++      break;
++
++    default:
++      mp->sw = 0;
++      break;
++  }
++
++  /* higher noise curve (lower rate) && managed mode */ 
++  if(bit_managed && (offset_select==0) && mp->sw) mp->noise_rate*=0.2;
++
++}
++
++void _vp_offset_and_mix(const vorbis_look_psy *p,
++                        const float *noise,
++                        const float *tone,
++                        const int offset_select,
++                        const int bit_managed,
+                         float *logmask,
+                         float *mdct,
+-                        float *logmdct){
+-  int i,n=p->n;
+-  float de, coeffi, cx;/* AoTuV */
++                        float *logmdct,
++                        float *lastmdct, float *tempmdct,
++                        float low_compand,
++                        float *npeak,
++                        const int end_block,
++                        const int block_mode,
++                        const int nW_modenumber,
++                        const int lW_block_mode,
++                        const int lW_no, const int impadnum){
++
++  int i,j,k,n=p->n;
++  int hsrate=((p->rate<26000) ? 0 : 1); // high sampling rate is 1
++  int partition=(p->vi->normal_p ? p->vi->normal_partition : 16);
++  float m1_de, m1_coeffi; /* aoTuV for M1 */
+   float toneatt=p->vi->tone_masteratt[offset_select];
+ 
+-  cx = p->m_val;
++  local_mod3_psy mp3;
++  local_mod4_psy mp4;
++
++  /* Init for aoTuV M3 */
++  memset(&mp3,0,sizeof(mp3));
++
++  /* Init for aoTuV M4 */
++  mp4.start=p->vi->normal_start;
++  mp4.end = p->tonecomp_endp;
++  mp4.thres = p->tonecomp_thres;
++  mp4.lp_pos=9999;
++  mp4.end_block=end_block;
++
++  /* Collapse of low(mid) frequency is prevented. (for 32/44/48kHz q-2) */
++  if(low_compand<0 || toneatt<25.)low_compand=0;
++  else low_compand*=(toneatt-25.);
++
++  /** @ M3 PRE **/
++  set_m3p(&mp3, lW_no, impadnum, n, hsrate, toneatt, logmdct, lastmdct, tempmdct,
++          block_mode, lW_block_mode,
++          bit_managed, offset_select);
++
++  /** @ M4 PRE **/
++  mp4.end_block+=p->vi->normal_partition;
++  if(mp4.end_block>n)mp4.end_block=n;
++  if(!hsrate){
++    mp4.end=mp4.end_block; /* for M4 */
++  }else{
++    if(p->vi->normal_thresh>1.){
++      mp4.start = 9999;
++    }else{
++      if(mp4.end>mp4.end_block)mp4.lp_pos=mp4.end;
++      else mp4.lp_pos=mp4.end_block;
++    }
++  }
+ 
+   for(i=0;i<n;i++){
+     float val= noise[i]+p->noiseoffset[offset_select][i];
++    float tval= tone[i]+toneatt;
++    if(i<=mp4.start)tval-=low_compand;
+     if(val>p->vi->noisemaxsupp)val=p->vi->noisemaxsupp;
+-    logmask[i]=max(val,tone[i]+toneatt);
+ 
++    /* AoTuV */
++    /** @ M3 MAIN **
++    Dynamic impulse block noise control. (#7)
++    48/44.1/32kHz only.
++    by Aoyumi @ 2008/12/01 - 2011/02/27(fixed)
++    */
++    if(mp3.sw){
++      if(val>tval){
++        if( (val>lastmdct[i]) && (logmdct[i]>(tempmdct[i]+mp3.noise_center)) ){
++          int toneac=0;
++          float valmask=0;
++          float rate_mod;
++          float mainth;
++
++          if(mp3.mdctbuf_flag == 1)tempmdct[i] = logmdct[i]; // overwrite
++          if(logmdct[i]>lastmdct[i]){
++            rate_mod = mp3.noise_rate;
++          }else{
++            rate_mod = mp3.noise_rate_low;
++          }
++          // edit tone masking
++          if( !impadnum && (i < p->tonecomp_endp) && ((val-lastmdct[i])>20.f) ){
++            float dBsub=(logmdct[i]-lastmdct[i]);
++            if(dBsub>25.f){
++              toneac=1;
++              if(tval>-100.f && ((logmdct[i]-tval)<48.f)){ // limit
++                float tr_cur=mp3.tone_rate;
++                if(dBsub<35.f) tr_cur*=((35.f-dBsub)*.1f);
++                //if(dBsub<35.f) tr_cur*=((dBsub-25.f)*.1f);
++                tval-=tr_cur;
++                if(tval<-100.f)tval=-100.f; // lower limit = -100
++                if((logmdct[i]-tval)>48.f)tval=logmdct[i]-48.f; // limit
++              }
++            }
++          }
++          // main work
++          if(i > p->m3n[0]){
++            mainth=30.f;
++          }else if(i > p->m3n[1]){
++            mainth=20.f;
++          }else if(i > p->m3n[2]){
++            mainth=10.f; rate_mod*=.5f;
++          }else{
++            mainth=10.f; rate_mod*=.3f;
++          }
++          if((val-tval)>mainth) valmask=((val-tval-mainth)*.1f+mainth)*rate_mod;
++          else valmask=(val-tval)*rate_mod;
++
++          if((val-valmask)>lastmdct[i])val-=valmask;
++          else val=lastmdct[i];
++
++          if(toneac){
++            float temp=val-max(lastmdct[i], -140); // limit
++            if(temp>20.f) val-=(temp-20.f)*.2f;
++          }
++
++          // exception of npeak(nepeak) for M8
++          if(toneac==1)npeak[i/partition]=-1.f;
++          else if(npeak[i/partition]>0)npeak[i/partition]=0;
++        }
++      }
++    }
++
++    /* AoTuV */
++    /** @ M4 MAIN **
++    The purpose of this portion is working noise normalization more correctly. 
++    (There is this in order to prevent extreme boost of floor)
++      mp4.start = start point
++      mp4.end   = end point
++      mp4.thres = threshold
++    by Aoyumi @ 2006/03/20 - 2010/06/16(fixed)
++    */
++    //logmask[i]=max(val,tval);
++    if(val>tval){
++      logmask[i]=val;
++    }else if((i>mp4.start) && (i<mp4.end)){
++      if(logmdct[i]<tval){
++        if(logmdct[i]<val){
++          tval-=(tval-val)*mp4.thres;
++        }else{
++          tval=logmdct[i];
++        }
++      }
++      logmask[i]=tval;
++    }else logmask[i]=tval;
+ 
+     /* AoTuV */
+     /** @ M1 **
+-        The following codes improve a noise problem.
+-        A fundamental idea uses the value of masking and carries out
+-        the relative compensation of the MDCT.
+-        However, this code is not perfect and all noise problems cannot be solved.
+-        by Aoyumi @ 2004/04/18
++    The following codes improve a noise problem.
++    A fundamental idea uses the value of masking and carries out
++    the relative compensation of the MDCT.
++    However, this code is not perfect and all noise problems cannot be solved.
++    by Aoyumi @ 2004/04/18
+     */
+ 
+     if(offset_select == 1) {
+-      coeffi = -17.2;       /* coeffi is a -17.2dB threshold */
++      m1_coeffi = -17.2;       /* coeffi is a -17.2dB threshold */
+       val = val - logmdct[i];  /* val == mdct line value relative to floor in dB */
+-
+-      if(val > coeffi){
++      
++      if(val > m1_coeffi){
+         /* mdct value is > -17.2 dB below floor */
+ 
+-        de = 1.0-((val-coeffi)*0.005*cx);
++        m1_de = 1.0-((val-m1_coeffi)*0.005*p->m_val);
+         /* pro-rated attenuation:
+            -0.00 dB boost if mdct value is -17.2dB (relative to floor)
+            -0.77 dB boost if mdct value is 0dB (relative to floor)
+            -1.64 dB boost if mdct value is +17.2dB (relative to floor)
+            etc... */
+ 
+-        if(de < 0) de = 0.0001;
++        if(m1_de < 0) m1_de = 0.0001;
+       }else
+         /* mdct value is <= -17.2 dB below floor */
+ 
+-        de = 1.0-((val-coeffi)*0.0003*cx);
++        m1_de = 1.0-((val-m1_coeffi)*0.0003*p->m_val);
+       /* pro-rated attenuation:
+          +0.00 dB atten if mdct value is -17.2dB (relative to floor)
+          +0.45 dB atten if mdct value is -34.4dB (relative to floor)
+          etc... */
+ 
+-      mdct[i] *= de;
++      mdct[i] *= m1_de;
++    }
++  }
++  
++  /** @ M3 SET lastmdct **/
++  if(mp3.mdctbuf_flag==1){
++    const int mag=8;
++    switch(block_mode){
++      case 0: case 1:  // short block (n==128 or 256 only)
++        if(nW_modenumber){ // next long (trans.) block
++          for(i=0,k=0; i<n; i++,k+=mag){
++            for(j=0; j<mag; j++){
++              lastmdct[k+j]=logmdct[i];
++            }
++          }
++        }else{
++          memcpy(lastmdct, logmdct, n*sizeof(*lastmdct)); // next short block
++        }
++        break;
++        
++      case 2:  // trans. block
++        if(!nW_modenumber){ // next short block
++          int nsh = n >> 3; // 1/8
++          for(i=0; i<nsh; i++){
++            int ni=i*mag;
++            lastmdct[i] = logmdct[ni];
++            for(j=1; j<mag; j++){
++              if(lastmdct[i] > logmdct[ni+j]){
++                lastmdct[i] = logmdct[ni+j];
++              }
++            }
++          }
++        }else{
++          memcpy(lastmdct, logmdct, n*sizeof(*lastmdct)); // next long block
++        }
++        break;
++        
++      case 3:  // long block (n==1024 or 2048)
++        memcpy(lastmdct, logmdct, n*sizeof(*lastmdct));
++        break;
+ 
++      default: break;
+     }
+   }
+ }
+ 
+-float _vp_ampmax_decay(float amp,vorbis_dsp_state *vd){
++float _vp_ampmax_decay(float amp, const vorbis_dsp_state *vd){
+   vorbis_info *vi=vd->vi;
+   codec_setup_info *ci=vi->codec_setup;
+   vorbis_info_psy_global *gi=&ci->psy_g_param;
+@@ -906,23 +1610,147 @@
+   0.82788260F, 0.88168307F, 0.9389798F, 1.F,
+ };
+ 
++static void flag_lossless(int limit, float prepoint, float postpoint, float prepoint_r, float postpoint_r,
++                          float *res, float *mdct, float *enpeak, float *floor, int *flag, int i, int jn){
++  int j, ps=0;
++  int pointlimit=limit-i;
++  float point1, point2, bakp1, r;
++  float ps1, ps2;
++
++  if(pointlimit>0){
++    point1=prepoint;
++    point2=prepoint_r;
++    if((pointlimit-jn)<=0){ // pointlimit is 1~32.
++      ps1=(postpoint-prepoint)/jn;
++      ps2=(postpoint_r-prepoint_r)/jn;
++      ps=1;
++    }
++  }else{
++    point1=postpoint;
++    point2=postpoint_r;
++  }
++  for(j=0;j<jn;j++){
++    if(ps==1){
++      point1+=ps1;
++      point2+=ps2;
++    }
++    bakp1=point1;
++
++    res[j] = mdct[j]/floor[j];
++    r = fabs(res[j]);
++    point1-=enpeak[j]; // reflect enpeak
++    if(point1<prepoint)point1=prepoint;
++    if(r<point1){
++      if(r<point2){
++        flag[j]=0;
++      }else
++        flag[j]=-1;
++    }else{
++      flag[j]=1;
++    }
++    point1=bakp1;
++  }
++}
++
++static void lossless_coupling(int *Mag, int *Ang){
++  int A = *Mag;
++  int B = *Ang;
++  
++  if(abs(A)>abs(B)){
++    *Ang=(A>0?A-B:B-A);
++  }else{
++    *Ang=(B>0?A-B:B-A);
++    *Mag=B;
++  }
++   /* collapse two equivalent tuples to one */
++  if(*Ang>=abs(*Mag)*2){
++    *Ang= -*Ang;
++    *Mag= -*Mag;
++  }
++}
++
++static void lossless_couplingf(float *Mag, float *Ang){
++  float A = *Mag;
++  float B = *Ang;
++  
++  if(fabs(A)>fabs(B)){
++    *Ang=(A>0?A-B:B-A);
++  }else{
++    *Ang=(B>0?A-B:B-A);
++    *Mag=B;
++  }
++   /* collapse two equivalent tuples to one */
++  if(*Ang>=fabs(*Mag)*2){
++    *Ang= -*Ang;
++    *Mag= -*Mag;
++  }
++}
++
++static float min_indemnity_dipole_hypot(const float a, const float b, const float threv){
++  const float thnor=0.94;
++  float a2 = fabs(a*thnor);
++  float b2 = fabs(b*thnor);
++
++  if(a>0.){
++    if(b>0.)return (a2+b2);
++    if(a>-b)return (a2-b2*threv);
++    return -(b2-a2*threv);
++  }
++  if(b<0.)return -(a2+b2);
++  if(-a>b)return -(a2-b2*threv);
++  return (b2-a2*threv);
++}
++
++// OLD HYPOT
++/*   doing the real circular magnitude calculation is audibly superior
++   to (A+B)/sqrt(2) */
++/*static float dipole_hypot(const float a, const float b){
++  if(a>0.){
++    if(b>0.)return sqrt(a*a+b*b);
++    if(a>-b)return sqrt(a*a-b*b);
++    return -sqrt(b*b-a*a);
++  }
++  if(b<0.)return -sqrt(a*a+b*b);
++  if(-a>b)return -sqrt(a*a-b*b);
++  return sqrt(b*b-a*a);
++}
++static float round_hypot(const float a, const float b){
++  if(a>0.){
++    if(b>0.)return sqrt(a*a+b*b);
++    if(a>-b)return sqrt(a*a+b*b);
++    return -sqrt(b*b+a*a);
++  }
++  if(b<0.)return -sqrt(a*a+b*b);
++  if(-a>b)return -sqrt(a*a+b*b);
++  return sqrt(b*b+a*a);
++}*/
++
+ /* this is for per-channel noise normalization */
++/*
+ static int apsort(const void *a, const void *b){
+   float f1=**(float**)a;
+   float f2=**(float**)b;
+   return (f1<f2)-(f1>f2);
+-}
++}*/
+ 
+-static void flag_lossless(int limit, float prepoint, float postpoint, float *mdct,
+-                         float *floor, int *flag, int i, int jn){
+-  int j;
+-  for(j=0;j<jn;j++){
+-    float point = j>=limit-i ? postpoint : prepoint;
+-    float r = fabs(mdct[j])/floor[j];
+-    if(r<point)
+-      flag[j]=0;
+-    else
+-      flag[j]=1;
++
++/* Selection Sort+ */
++static void ssort(const int range, int bthresh, float **sort){
++  int i,j;
++  int large;
++  float *temp;
++
++  if(range<bthresh)bthresh=range;
++  for(i=0; i<bthresh; i++){
++    large=i;
++    for(j=i+1; j<range; j++){
++      // ascending order
++      if(*sort[large]<*sort[j])large=j;
++    }
++    // swap
++    temp=sort[i];
++    sort[i]=sort[large];
++    sort[large]=temp;
+   }
+ }
+ 
+@@ -930,70 +1758,123 @@
+    quantized energy (for elements with the flag set) or the absolute
+    values of the *r vector (for elements with flag unset).  On output,
+    *q holds the quantized energy for all elements */
+-static float noise_normalize(vorbis_look_psy *p, int limit, float *r, float *q, float *f, int *flags, float acc, int i, int n, int *out){
+-
++static float noise_normalize(const vorbis_look_psy *p, const int limit, float *r, float *q, const float *f, float *res,
++                             const int *flags, float acc, const float nepeak, const int i, const int n, int *out){
+   vorbis_info_psy *vi=p->vi;
+   float **sort = alloca(n*sizeof(*sort));
+-  int j,count=0;
++  int j,k,count=0;
+   int start = (vi->normal_p ? vi->normal_start-i : n);
+-  if(start>n)start=n;
+-
++  //if(start>n)start=n;
++  if((start>n) || (nepeak<-0.5))start=n;
++  
+   /* force classic behavior where only energy in the current band is considered */
+   acc=0.f;
+ 
+   /* still responsible for populating *out where noise norm not in
+      effect.  There's no need to [re]populate *q in these areas */
+-  for(j=0;j<start;j++){
+-    if(!flags || !flags[j]){ /* lossless coupling already quantized.
+-                                Don't touch; requantizing based on
+-                                energy would be incorrect. */
+-      float ve = q[j]/f[j];
+-      if(r[j]<0)
+-        out[j] = -rint(sqrt(ve));
+-      else
+-        out[j] = rint(sqrt(ve));
++  j=0;
++  if(!flags){                  /* per channel working (lossless and mono) */
++    for(;j<start;j++){
++      out[j] = rint(res[j]);
++    }
++  }else{
++    for(;j<start;j++){
++      if(flags[j]!=1){         /* lossless coupling already quantized.
++                                  Don't touch; requantizing based on
++                                  energy would be incorrect. */
++        //out[j] = rint(res[j]);
++        // set residue for M6
++        float ve = sqrt(q[j]/f[j]);
++        if(r[j]<0){
++          out[j] = -rint(ve);
++          res[j] = -ve;
++        }else{
++          out[j] = rint(ve);
++          res[j] = ve;
++        }
++      }
+     }
+   }
+ 
+   /* sort magnitudes for noise norm portion of partition */
+-  for(;j<n;j++){
+-    if(!flags || !flags[j]){ /* can't noise norm elements that have
+-                                already been loslessly coupled; we can
+-                                only account for their energy error */
+-      float ve = q[j]/f[j];
++  if(flags){
++    for(;j<n;j++){
++      float ve;
++    
++      /* flags[j]!=1 is lossy coupled element */
++      if(flags[j]!=1){   /* can't noise norm elements that have
++                          already been loslessly coupled; we can
++                          only account for their energy error */
++        ve = q[j]/f[j];
++      }else{
++        /* lossless coupled element (use per channel element) */
++        continue;
++        /* again, no energy adjustment for error in nonzero quant-- for now */
++      }
+       /* Despite all the new, more capable coupling code, for now we
+          implement noise norm as it has been up to this point. Only
+          consider promotions to unit magnitude from 0.  In addition
+          the only energy error counted is quantizations to zero. */
+       /* also-- the original point code only applied noise norm at > pointlimit */
+-      if(ve<.25f && (!flags || j>=limit-i)){
++      if(ve<.25f && j>=limit-i){
++        acc += ve;
++        sort[count++]=q+j; /* q is fabs(r) for unflagged element */
++        /* set residue for M6 */
++        if(r[j]<0){
++          res[j] = -sqrt(ve);
++        }else{
++          res[j] = sqrt(ve);
++        }
++      }else{
++        /* For now: no acc adjustment for nonzero quantization.  populate *out and q as this value is final. */
++        /* set residue for M6 */
++        ve=sqrt(ve);
++        if(r[j]<0){
++          out[j] = -rint(ve);
++          res[j] = -ve;
++        }else{
++          out[j] = rint(ve);
++          res[j] = ve;
++        }
++        q[j] = out[j]*out[j]*f[j];
++      }
++    }
++  }else{
++    /* per channel working (lossless and mono) */
++    for(;j<n;j++){
++      float ve=res[j]*res[j];
++      if(ve<.25f){
+         acc += ve;
+         sort[count++]=q+j; /* q is fabs(r) for unflagged element */
+       }else{
+         /* For now: no acc adjustment for nonzero quantization.  populate *out and q as this value is final. */
+-        if(r[j]<0)
+-          out[j] = -rint(sqrt(ve));
+-        else
+-          out[j] = rint(sqrt(ve));
++        /* set residue for M6 */
++        out[j]=rint(res[j]);
+         q[j] = out[j]*out[j]*f[j];
+       }
+-    }/* else{
+-        again, no energy adjustment for error in nonzero quant-- for now
+-        }*/
++    }
+   }
+ 
++  acc+=acc*nepeak*nepeak;
++
+   if(count){
+     /* noise norm to do */
+-    qsort(sort,count,sizeof(*sort),apsort);
+-    for(j=0;j<count;j++){
+-      int k=sort[j]-q;
++    int iacc=((int)acc)+1;
++    if(iacc>n)iacc=n;
++    // Selection Sort (when there are few elements, this is faster than qsort)
++    ssort(count, iacc, sort);
++    // Quick Sort
++    //qsort(sort,count,sizeof(*sort),apsort);
++
++    for(k=0;k<count;k++){
++      int e=sort[k]-q;
+       if(acc>=vi->normal_thresh){
+-        out[k]=unitnorm(r[k]);
++        out[e]=unitnorm(r[e]);
+         acc-=1.f;
+-        q[k]=f[k];
++        q[e]=f[e];
+       }else{
+-        out[k]=0;
+-        q[k]=0.f;
++        out[e]=0;
++        q[e]=0.f;
+       }
+     }
+   }
+@@ -1008,32 +1889,38 @@
+                                    vorbis_look_psy *p,
+                                    vorbis_info_mapping0 *vi,
+                                    float **mdct,
++                                   float **enpeak,
++                                   float **nepeak,
+                                    int   **iwork,
+                                    int    *nonzero,
+                                    int     sliding_lowpass,
+-                                   int     ch){
++                                   int     ch,
++                                   int     lowpassr){
+ 
+-  int i;
++  int i,pi;
+   int n = p->n;
+   int partition=(p->vi->normal_p ? p->vi->normal_partition : 16);
+   int limit = g->coupling_pointlimit[p->vi->blockflag][blobno];
+   float prepoint=stereo_threshholds[g->coupling_prepointamp[blobno]];
+   float postpoint=stereo_threshholds[g->coupling_postpointamp[blobno]];
+-#if 0
+-  float de=0.1*p->m_val; /* a blend of the AoTuV M2 and M3 code here and below */
+-#endif
++  float prepoint_x=stereo_threshholds_X[g->coupling_prepointamp[blobno]];
++  float postpoint_x=stereo_threshholds_X[g->coupling_postpointamp[blobno]];
++  float prae;
+ 
+   /* mdct is our raw mdct output, floor not removed. */
+   /* inout passes in the ifloor, passes back quantized result */
+ 
+   /* unquantized energy (negative indicates amplitude has negative sign) */
+   float **raw = alloca(ch*sizeof(*raw));
+-
+-  /* dual pupose; quantized energy (if flag set), othersize fabs(raw) */
++  
++  /* quantized energy (if flag set), otherwise mdct */
+   float **quant = alloca(ch*sizeof(*quant));
+ 
+   /* floor energy */
+   float **floor = alloca(ch*sizeof(*floor));
++  
++  /* residue for M6 */
++  float **res   = alloca(ch*sizeof(*res));
+ 
+   /* flags indicating raw/quantized status of elements in raw vector */
+   int   **flag  = alloca(ch*sizeof(*flag));
+@@ -1043,55 +1930,80 @@
+ 
+   /* energy surplus/defecit tracking */
+   float  *acc   = alloca((ch+vi->coupling_steps)*sizeof(*acc));
+-
+-  /* The threshold of a stereo is changed with the size of n */
+-  if(n > 1000)
+-    postpoint=stereo_threshholds_limited[g->coupling_postpointamp[blobno]];
++  
++  /* var for M6 */
++  float  *side_resdef= alloca(vi->coupling_steps*sizeof(*side_resdef));
+ 
+   raw[0]   = alloca(ch*partition*sizeof(**raw));
+   quant[0] = alloca(ch*partition*sizeof(**quant));
+   floor[0] = alloca(ch*partition*sizeof(**floor));
++  res[0]   = alloca(ch*partition*sizeof(**res));
+   flag[0]  = alloca(ch*partition*sizeof(**flag));
+ 
+   for(i=1;i<ch;i++){
+     raw[i]   = &raw[0][partition*i];
+     quant[i] = &quant[0][partition*i];
+     floor[i] = &floor[0][partition*i];
++    res[i]   = &res[0][partition*i];
+     flag[i]  = &flag[0][partition*i];
+   }
++  
+   for(i=0;i<ch+vi->coupling_steps;i++)
+     acc[i]=0.f;
+ 
+-  for(i=0;i<n;i+=partition){
++  // limit of rephase
++  if(prepoint_x < prepoint) prepoint_x=prepoint;
++  if(postpoint_x < prepoint) postpoint_x=prepoint;
++
++  // set initial val for M6
++  for(i=0;i<vi->coupling_steps;i++){
++    side_resdef[i] = -1.f;
++  }
++
++  // set phase ratio for M6
++  if(vi->coupling_steps==1) prae=0.34;
++  else prae=0.825;
++
++
++  // processing by every partition
++  for(i=0,pi=0;i<lowpassr;i+=partition,pi++){
+     int k,j,jn = partition > n-i ? n-i : partition;
+     int step,track = 0;
+ 
+     memcpy(nz,nonzero,sizeof(*nz)*ch);
+ 
+     /* prefill */
+-    memset(flag[0],0,ch*partition*sizeof(**flag));
++    memset(flag[0],0,ch*partition*sizeof(**flag)); // reset stereo flag
+     for(k=0;k<ch;k++){
+       int *iout = &iwork[k][i];
+       if(nz[k]){
+ 
+-        for(j=0;j<jn;j++)
++        for(j=0;j<jn;j++){
++          // compute floor mag
+           floor[k][j] = FLOOR1_fromdB_LOOKUP[iout[j]];
++        }
+ 
+-        flag_lossless(limit,prepoint,postpoint,&mdct[k][i],floor[k],flag[k],i,jn);
++        // compute residue
++        flag_lossless(limit,prepoint,postpoint,prepoint_x,postpoint_x,
++                      res[k], &mdct[k][i],&enpeak[k][i],floor[k],flag[k],i,jn);
+ 
+         for(j=0;j<jn;j++){
++          // initial setting for quant/raw
+           quant[k][j] = raw[k][j] = mdct[k][i+j]*mdct[k][i+j];
+           if(mdct[k][i+j]<0.f) raw[k][j]*=-1.f;
+           floor[k][j]*=floor[k][j];
+         }
+-
+-        acc[track]=noise_normalize(p,limit,raw[k],quant[k],floor[k],NULL,acc[track],i,jn,iout);
++        
++        // per-channel noise normalization
++        // for lossless or mono mode
++        acc[track]=noise_normalize(p,limit,raw[k],quant[k],floor[k],res[k],NULL,acc[track],nepeak[k][pi],i,jn,iout);
+ 
+       }else{
+         for(j=0;j<jn;j++){
+           floor[k][j] = 1e-10f;
+           raw[k][j] = 0.f;
+           quant[k][j] = 0.f;
++          res[k][j] = 0.f;
+           flag[k][j] = 0;
+           iout[j]=0;
+         }
+@@ -1112,86 +2024,140 @@
+       float *qeA = quant[Ai];
+       float *floorM = floor[Mi];
+       float *floorA = floor[Ai];
++      float *resM = res[Mi];
++      float *resA = res[Ai];
+       int *fM = flag[Mi];
+       int *fA = flag[Ai];
++      int pointflag=0;
+ 
+       if(nz[Mi] || nz[Ai]){
+         nz[Mi] = nz[Ai] = 1;
+ 
++        /** @ M6 MAIN **
++            The threshold of a stereo is changed dynamically. Ver3
++            by Aoyumi @ 2010/12/31 
++        */
++        /* In the case of specific depth coupling, invalidate this. */
++        if(p->tonefix_end>i){
++          int rp=0;
++          int pp=0;
++          int ap;
++          float residue_def=0;
++
++          // calculate phase ratio of audio energy and deflection of residue.
++          for(j=0;j<jn;j++){
++            if(existe(resM[j],0.5) || existe(resA[j],0.5)){
++              if(refer_phase(reM[j],reA[j])){
++                rp++;
++              }else pp++;
++              residue_def+=fabs(fabs(resM[j])-fabs(resA[j]));
++            }
++          }
++          ap=rp+pp;
++
++          // based on a calculation result, put up a lossless flag.
++          if(ap!=0){
++            // deflection of residue
++            float temp_def=residue_def=residue_def/ap; // normalization
++            if(side_resdef[step]>0)residue_def=temp_def*0.5 + side_resdef[step]*0.5;
++            side_resdef[step]=temp_def;
++            if(residue_def>1.f){
++              for(j=0;j<jn;j++){
++                if(fM[j]==-1 || fA[j]==-1) fM[j]=1;
++              }
++            }
++            // phase ratio of audio energy
++            if((float)rp/ap >= prae){
++              for(j=0;j<jn;j++){
++                if((fM[j]==-1 || fA[j]==-1) && refer_phase(reM[j],reA[j])) fM[j]=1;
++              }
++            }
++          }else side_resdef[step]=-1.f;
++        }
++
+         for(j=0;j<jn;j++){
+ 
+           if(j<sliding_lowpass-i){
+-            if(fM[j] || fA[j]){
++            if(fM[j]==1 || fA[j]==1){
+               /* lossless coupling */
+ 
+               reM[j] = fabs(reM[j])+fabs(reA[j]);
+               qeM[j] = qeM[j]+qeA[j];
+               fM[j]=fA[j]=1;
++              
++              lossless_couplingf(&resM[j], &resA[j]);
+ 
+               /* couple iM/iA */
+-              {
+-                int A = iM[j];
+-                int B = iA[j];
+-
+-                if(abs(A)>abs(B)){
+-                  iA[j]=(A>0?A-B:B-A);
+-                }else{
+-                  iA[j]=(B>0?A-B:B-A);
+-                  iM[j]=B;
+-                }
+-
+-                /* collapse two equivalent tuples to one */
+-                if(iA[j]>=abs(iM[j])*2){
+-                  iA[j]= -iA[j];
+-                  iM[j]= -iM[j];
+-                }
+-
+-              }
++              lossless_coupling(&iM[j], &iA[j]);
+ 
+             }else{
+               /* lossy (point) coupling */
++              // aotuv hypot
++              float hpL;
++              float hpH;
++              if(vi->coupling_steps==1 || step==3){// needed 'step==3' is for 5.1 channel coupling.
++                hpL=.18f;  hpH=.12f;
++              }else{
++                hpL=.18f;  hpH=.04f;
++              }
+               if(j<limit-i){
+-                /* dipole */
++                reM[j]=min_indemnity_dipole_hypot(reM[j], reA[j], hpL);
++              }else{
++                reM[j]=min_indemnity_dipole_hypot(reM[j], reA[j], hpH);
++              }
++
++              // aotuv hypot (sub)
++              //reM[j]=min_indemnity_dipole_hypotH(reM[j], reA[j]);
++              
++              // original hypot
++              /*if(j<limit-i){
++                // dipole
+                 reM[j] += reA[j];
+                 qeM[j] = fabs(reM[j]);
+               }else{
+-#if 0
+-                /* AoTuV */
+-                /** @ M2 **
+-                    The boost problem by the combination of noise normalization and point stereo is eased.
+-                    However, this is a temporary patch.
+-                    by Aoyumi @ 2004/04/18
+-                */
+-                float derate = (1.0 - de*((float)(j-limit+i) / (float)(n-limit)));
+-                /* elliptical */
+-                if(reM[j]+reA[j]<0){
+-                  reM[j] = - (qeM[j] = (fabs(reM[j])+fabs(reA[j]))*derate*derate);
+-                }else{
+-                  reM[j] =   (qeM[j] = (fabs(reM[j])+fabs(reA[j]))*derate*derate);
+-                }
+-#else
+-                /* elliptical */
++                //elliptical
+                 if(reM[j]+reA[j]<0){
+-                  reM[j] = - (qeM[j] = fabs(reM[j])+fabs(reA[j]));
++                  reM[j] = - (qeM[j] = (fabs(reM[j])+fabs(reA[j])));
+                 }else{
+-                  reM[j] =   (qeM[j] = fabs(reM[j])+fabs(reA[j]));
++                  reM[j] =   (qeM[j] = (fabs(reM[j])+fabs(reA[j])));
+                 }
+-#endif
++              }*/
+ 
+-              }
++              qeM[j]=fabs(reM[j]);
+               reA[j]=qeA[j]=0.f;
+               fA[j]=1;
+               iA[j]=0;
++              resA[j]=0;
++
++              if((nepeak[Mi][pi]<-0.5) || (nepeak[Ai][pi]<-0.5)){
++                nepeak[Mi][pi]=-1; // noise normalization is disable
++              }else{
++                nepeak[Mi][pi]=min(nepeak[Mi][pi], nepeak[Ai][pi]);
++              }
++
++              // set flag
++              pointflag|=1;
+             }
+-          }
++          }/*else{
++              iM[j]=0;
++              iA[j]=0;
++          }*/
+           floorM[j]=floorA[j]=floorM[j]+floorA[j];
+         }
+-        /* normalize the resulting mag vector */
+-        acc[track]=noise_normalize(p,limit,raw[Mi],quant[Mi],floor[Mi],flag[Mi],acc[track],i,jn,iM);
++        /* normalize the resulting mag vector (for point stereo) */
++        if(pointflag)
++          acc[track]=noise_normalize(p,limit,raw[Mi],quant[Mi],floor[Mi],res[Mi],flag[Mi],acc[track],nepeak[Mi][pi],i,jn,iM);
+         track++;
+       }
+     }
+   }
++  
++  if(lowpassr<n){
++    int j, block=n-lowpassr;
++    for(j=0;j<ch;j++){
++      memset(iwork[j]+lowpassr, 0, sizeof(**iwork)*block);
++    }
++  }
+ 
+   for(i=0;i<vi->coupling_steps;i++){
+     /* make sure coupling a zero and a nonzero channel results in two
+@@ -1203,3 +2169,41 @@
+     }
+   }
+ }
++
++/*  aoTuV M5
++    noise_compand_level of low frequency is determined from the level of high frequency. 
++    by Aoyumi @ 2005/09/14
++    
++    return value
++    [normal compander] 0 <> 1.0 [high compander] 
++    negative value are disable
++*/
++float lb_loudnoise_fix(const vorbis_look_psy *p,
++                       float noise_compand_level,
++                       const float *logmdct,
++                       const int block_mode,
++                       const int lW_block_mode){
++
++  int i, n=p->n, nq1=p->n25p, nq3=p->n75p;
++  double hi_th=0;
++
++  if(p->m_val < 0.5)return(-1); /* 48/44.1/32kHz only */
++  if(p->vi->normal_thresh>.45)return(-1); /* under q3 */
++
++  /* There is a specific limit for a threshold calculation. */
++  if( !((block_mode==2 && lW_block_mode==3) || (block_mode==3 && lW_block_mode==2)) )return(noise_compand_level);
++
++  /* calculation of a threshold. */
++  for(i=nq1; i<nq3; i++){
++    if(logmdct[i]>-130)hi_th += logmdct[i];
++    else hi_th += -130;
++  }
++  hi_th /= n;
++
++  /* calculation of a high_compand_level */
++  if(hi_th > -40.) noise_compand_level=-1;
++  else if(hi_th < -50.) noise_compand_level=1.;
++  else noise_compand_level=1.-((hi_th+50)/10);
++
++  return(noise_compand_level);
++}
+diff -Naur libvorbis-1.3.6/lib/psy.h libvorbis-1.3.6-aotuv-b6.03/lib/psy.h
+--- libvorbis-1.3.6/lib/psy.h	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/psy.h	2018-03-26 10:49:20 +0000
+@@ -53,6 +53,9 @@
+   int   noisewindowfixed;
+   float noiseoff[P_NOISECURVES][P_BANDS];
+   float noisecompand[NOISE_COMPAND_LEVELS];
++  float noisecompand_high[NOISE_COMPAND_LEVELS]; /* for aoTuV M5 */ 
++  
++  float flacint; /* for aoTuV M2 */
+ 
+   float max_curve_dB;
+ 
+@@ -108,10 +111,52 @@
+   int   total_octave_lines;
+   long  rate; /* cache it */
+ 
+-  float m_val; /* Masking compensation value */
+-
++  int m3n[4]; /* number for aoTuV M3 */
++  float m_val; /* masking compensation value */
++  
++  int tonecomp_endp; /* for aoTuV M4 (and M3, M9) */
++  float tonecomp_thres; /* threshold of aoTuV M4 */
++  float *ntfix_noiseoffset; /* offset of aoTuV M7 */
++  
++  int min_nn_lp; /* for aoTuV M2 (and M8) */
++  int endeg_start; /* for direct partial noise normalization [start] */
++  int endeg_end; /* for direct partial noise normalization [end] */
++  int tonefix_end; /* for aoTuV M6, M7 */
++  
++  int n25p; /* mdct n(25%) */
++  int n33p; /* mdct n(33%) */
++  int n75p; /* mdct n(75%) */
++  int nn75pt; /* 75 % partition for noise  normalization */
++  int nn50pt; /* half partition for noise normalization */
++  int nn25pt; /* quarter partition for noise normalization */
+ } vorbis_look_psy;
+ 
++/* typedef for aoTuV */
++typedef struct{
++  int tonecomp_endp;
++  float tonecomp_thres;
++
++  int min_nn_lp;
++  int tonefix_end;
++}aotuv_preset;
++
++typedef struct {
++  int sw;
++  int mdctbuf_flag;
++  float noise_rate;
++  float noise_rate_low;
++  float noise_center;
++  float tone_rate;
++} local_mod3_psy;
++
++typedef struct {
++  int start;
++  int end;
++  int lp_pos;
++  int end_block;
++  float thres;
++} local_mod4_psy;
++
+ extern void   _vp_psy_init(vorbis_look_psy *p,vorbis_info_psy *vi,
+                            vorbis_info_psy_global *gi,int n,long rate);
+ extern void   _vp_psy_clear(vorbis_look_psy *p);
+@@ -120,34 +165,60 @@
+ extern void   _vi_psy_free(vorbis_info_psy *i);
+ extern vorbis_info_psy *_vi_psy_copy(vorbis_info_psy *i);
+ 
+-extern void _vp_noisemask(vorbis_look_psy *p,
+-                          float *logmdct,
+-                          float *logmask);
++extern float  _postnoise_detection(float *pcm, int nn, int mode, int lW_mode);
+ 
+-extern void _vp_tonemask(vorbis_look_psy *p,
+-                         float *logfft,
++extern void _vp_noisemask(const vorbis_look_psy *p,
++                          const float noise_compand_level,
++                          const float *logmdct,
++                          const float *lastmdct,
++                          float *epeak,
++                          float *npeak,
++                          float *logmask,
++                          float poste,
++                          int block_mode);
++
++extern void _vp_tonemask(const vorbis_look_psy *p,
++                         const float *logfft,
+                          float *logmask,
+-                         float global_specmax,
+-                         float local_specmax);
++                         const float global_specmax,
++                         const float local_specmax);
+ 
+-extern void _vp_offset_and_mix(vorbis_look_psy *p,
+-                               float *noise,
+-                               float *tone,
+-                               int offset_select,
++extern void _vp_offset_and_mix(const vorbis_look_psy *p,
++                               const float *noise,
++                               const float *tone,
++                               const int offset_select,
++                               const int bit_managed,
+                                float *logmask,
+                                float *mdct,
+-                               float *logmdct);
++                               float *logmdct,
++                               float *lastmdct, float *tempmdct,
++                               float low_compand,
++                               float *npeak,
++                               const int end_block,
++                               const int block_mode,
++                               const int nW_modenumber,
++                               const int lW_block_mode,
++                               const int lW_no, const int impadnum);
+ 
+-extern float _vp_ampmax_decay(float amp,vorbis_dsp_state *vd);
++extern float _vp_ampmax_decay(float amp, const vorbis_dsp_state *vd);
+ 
+ extern void _vp_couple_quantize_normalize(int blobno,
+                                           vorbis_info_psy_global *g,
+                                           vorbis_look_psy *p,
+                                           vorbis_info_mapping0 *vi,
+                                           float **mdct,
++                                          float **enpeak,
++                                          float **nepeak,
+                                           int   **iwork,
+                                           int    *nonzero,
+                                           int     sliding_lowpass,
+-                                          int     ch);
++                                          int     ch,
++                                          int     lowpassr);
++
++extern float lb_loudnoise_fix(const vorbis_look_psy *p,
++                              float noise_compand_level,
++                              const float *logmdct,
++                              const int block_mode,
++                              const int lW_block_mode);
+ 
+ #endif
+diff -Naur libvorbis-1.3.6/lib/vorbisenc.c libvorbis-1.3.6-aotuv-b6.03/lib/vorbisenc.c
+--- libvorbis-1.3.6/lib/vorbisenc.c	2017-11-29 19:47:16 +0000
++++ libvorbis-1.3.6-aotuv-b6.03/lib/vorbisenc.c	2018-03-26 10:49:00 +0000
+@@ -92,6 +92,7 @@
+   int      mappings;
+   const double  *rate_mapping;
+   const double  *quality_mapping;
++  const float   *pre_amp;
+   int      coupling_restriction;
+   long     samplerate_min_restriction;
+   long     samplerate_max_restriction;
+@@ -162,8 +163,10 @@
+ #include "modes/setup_X.h"
+ 
+ static const ve_setup_data_template *const setup_list[]={
+-  &ve_setup_44_stereo,
+   &ve_setup_44_51,
++  &ve_setup_48_stereo,
++  &ve_setup_44_stereo,
++  &ve_setup_48_uncoupled,
+   &ve_setup_44_uncoupled,
+ 
+   &ve_setup_32_stereo,
+@@ -357,12 +360,22 @@
+ 
+ static void vorbis_encode_compand_setup(vorbis_info *vi,double s,int block,
+                                         const compandblock *in,
+-                                        const double *x){
+-  int i,is=s;
+-  double ds=s-is;
++                                        const double *x,
++                                        int mappings){
++  int i,is=s, ishcm;
++  double ds=s-is, dshcm;
++  int hcm_stop=5; // high compander limit
++  
+   codec_setup_info *ci=vi->codec_setup;
+   vorbis_info_psy *p=ci->psy_param[block];
+-
++  
++  /* check mapping limit */
++  if(hcm_stop > mappings)hcm_stop=mappings;
++  
++  /* the place was borrowed...  */
++  p->flacint=ds;
++  
++  /* interpolate the compander mapping */
+   ds=x[is]*(1.-ds)+x[is+1]*ds;
+   is=(int)ds;
+   ds-=is;
+@@ -370,10 +383,34 @@
+     is--;
+     ds=1.;
+   }
+-
++  
++  /* high compander setup */
++  ishcm = is;
++  dshcm = ds+.3;
++  if(dshcm > 1.0){
++    ishcm++;
++    dshcm=dshcm-1;
++  }
++  if(x[hcm_stop] < ((double)ishcm+dshcm)){
++    ishcm = x[hcm_stop];
++    dshcm = x[hcm_stop]-ishcm;
++    if( ((double)ishcm+dshcm) < ((double)is+ds)){
++      ishcm=is;
++      dshcm=ds;
++    }
++  }
++  if(dshcm==0 && ishcm>0){ // the same
++    ishcm--;
++    dshcm=1.;
++  }
++  
+   /* interpolate the compander settings */
+   for(i=0;i<NOISE_COMPAND_LEVELS;i++)
+     p->noisecompand[i]=in[is].data[i]*(1.-ds)+in[is+1].data[i]*ds;
++  /* interpolate the high compander settings */
++  for(i=0;i<NOISE_COMPAND_LEVELS;i++)
++    p->noisecompand_high[i]=in[ishcm].data[i]*(1.-dshcm)+in[ishcm+1].data[i]*dshcm;
++
+   return;
+ }
+ 
+@@ -452,6 +489,7 @@
+ 
+ }
+ 
++#define LFE_FRQLIMIT 250 /* limit frequency for LFE channel */
+ static void vorbis_encode_residue_setup(vorbis_info *vi,
+                                         int number, int block,
+                                         const vorbis_residue_template *res){
+@@ -538,7 +576,7 @@
+       if(freq>nyq)freq=nyq;
+       break;
+     case 2: /* LFE channel; lowpass at ~ 250Hz */
+-      freq=250;
++      freq=LFE_FRQLIMIT;
+       break;
+     default:
+       /* already set */
+@@ -569,6 +607,7 @@
+         r->grouping;
+       /* the blocksize and grouping may disagree at the end */
+       if(r->end>blocksize*ch)r->end=blocksize*ch/r->grouping*r->grouping;
++      if(freq!=LFE_FRQLIMIT)ci->block_lowpassr[block]=r->end/ch; /* lowpass (residue) */
+ 
+     }else{
+ 
+@@ -576,10 +615,13 @@
+         r->grouping;
+       /* the blocksize and grouping may disagree at the end */
+       if(r->end>blocksize)r->end=blocksize/r->grouping*r->grouping;
++      if(freq!=LFE_FRQLIMIT)ci->block_lowpassr[block]=r->end; /* lowpass (residue) */
+ 
+     }
+ 
+-    if(r->end==0)r->end=r->grouping; /* LFE channel */
++    if(r->end==0){   /* LFE channel */
++      r->end=r->grouping;
++    }
+ 
+   }
+ }
+@@ -771,17 +813,21 @@
+   /* noise companding setup */
+   vorbis_encode_compand_setup(vi,hi->block[i0].noise_compand_setting,0,
+                               setup->psy_noise_compand,
+-                              setup->psy_noise_compand_short_mapping);
++                              setup->psy_noise_compand_short_mapping,
++                              setup->mappings);
+   vorbis_encode_compand_setup(vi,hi->block[1].noise_compand_setting,1,
+                               setup->psy_noise_compand,
+-                              setup->psy_noise_compand_short_mapping);
++                              setup->psy_noise_compand_short_mapping,
++                              setup->mappings);
+   if(!singleblock){
+     vorbis_encode_compand_setup(vi,hi->block[2].noise_compand_setting,2,
+-                                setup->psy_noise_compand,
+-                                setup->psy_noise_compand_long_mapping);
++                              setup->psy_noise_compand,
++                              setup->psy_noise_compand_long_mapping,
++                              setup->mappings);
+     vorbis_encode_compand_setup(vi,hi->block[3].noise_compand_setting,3,
+-                                setup->psy_noise_compand,
+-                                setup->psy_noise_compand_long_mapping);
++                              setup->psy_noise_compand,
++                              setup->psy_noise_compand_long_mapping,
++                              setup->mappings);
+   }
+ 
+   /* peak guarding setup  */
+@@ -882,6 +928,10 @@
+     hi->lowpass_kHz=
+       setup->psy_lowpass[is]*(1.-ds)+setup->psy_lowpass[is+1]*ds;
+ 
++  /*  preamp  */
++  hi->pre_amplitude=
++    setup->pre_amp[is]*(1.-ds)+setup->pre_amp[is+1]*ds;
++
+   hi->ath_floating_dB=setup->psy_ath_float[is]*(1.-ds)+
+     setup->psy_ath_float[is+1]*ds;
+   hi->ath_absolute_dB=setup->psy_ath_abs[is]*(1.-ds)+

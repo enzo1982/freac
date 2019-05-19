@@ -81,11 +81,21 @@ freac::cddbQueryDlg::~cddbQueryDlg()
 
 const Error &freac::cddbQueryDlg::ShowDialog()
 {
-	mainWnd->Show();
+	/* Get config values.
+	 */
+	BoCA::Config	*config = BoCA::Config::Get();
 
+	Bool	 enableConsole = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+
+	/* Show dialog only in GUI mode.
+	 */
+	if (!enableConsole) mainWnd->Show();
+
+	/* Start query thread and wait for operations to complete.
+	 */
 	queryThread = NonBlocking0<>(&cddbQueryDlg::QueryThread, this).Call();
 
-	mainWnd->WaitUntilClosed();
+	if (!enableConsole) mainWnd->WaitUntilClosed();
 
 	queryThread->Wait();
 
@@ -96,6 +106,8 @@ Void freac::cddbQueryDlg::Cancel()
 {
 	if (queryThread == NIL) return;
 
+	/* Close window and signal thread to exit.
+	 */
 	mainWnd->Close();
 
 	stopQueryThread = True;
@@ -116,24 +128,35 @@ Void freac::cddbQueryDlg::Cancel()
 
 Int freac::cddbQueryDlg::QueryThread()
 {
+	/* Get config values.
+	 */
 	BoCA::Config	*config = BoCA::Config::Get();
 
+	Bool	 enableLocal  = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault);
+	Bool	 enableRemote = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault);
+
+	/* Query local CDDB.
+	 */
 	Bool	 result = False;
 
-	if (config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableLocalID, Config::FreedbEnableLocalDefault))
+	if (enableLocal)
 	{
 		CDDBLocal	 cddbLocal;
 
 		result = Query(cddbLocal);
 	}
 
-	if (!result && config->GetIntValue(Config::CategoryFreedbID, Config::FreedbEnableRemoteID, Config::FreedbEnableRemoteDefault))
+	/* Query remote CDDB.
+	 */
+	if (!result && enableRemote)
 	{
 		CDDBRemote	 cddbRemote;
 
 		result = Query(cddbRemote);
 	}
 
+	/* Close window and return.
+	 */
 	mainWnd->Close();
 
 	if (result) return Success();

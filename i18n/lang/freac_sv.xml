@@ -341,7 +341,7 @@
 	<entry id="5111" string="Encode to a single file">Koda till en enda fil</entry>
 	<entry id="5112" string="Output filenames">Målfilernas namn</entry>
 	<entry id="5113" string="Allow Unicode characters">Tillåt Unicode-tecken</entry>
-	<entry id="5114" string="Replace spaces">Ersätt mellanslag</entry>
+	<entry id="5114" string="Replace spaces with underscores">Ersätt mellanslag</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Ta bort bearbetade spår från jobblistan</entry>
 	<entry id="5116" string="Add encoded files to joblist">Lägg till kodade filer i jobblistan</entry>
 

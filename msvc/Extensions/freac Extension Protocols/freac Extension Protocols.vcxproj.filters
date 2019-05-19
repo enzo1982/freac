@@ -15,24 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\components\extension\protocols\layer.cpp">
+    <ClCompile Include="..\..\..\components\extension\protocols\layer.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\protocols\protocols.cpp">
+    <ClCompile Include="..\..\..\components\extension\protocols\protocols.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\protocols\config.cpp">
+    <ClCompile Include="..\..\..\components\extension\protocols\config.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\components\extension\protocols\layer.h">
+    <ClInclude Include="..\..\..\components\extension\protocols\layer.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\protocols\protocols.h">
+    <ClInclude Include="..\..\..\components\extension\protocols\protocols.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\protocols\config.h">
+    <ClInclude Include="..\..\..\components\extension\protocols\config.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

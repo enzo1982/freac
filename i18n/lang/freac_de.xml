@@ -394,10 +394,11 @@
 	<entry id="5111" string="Encode to a single file">In eine einzige Datei kodieren</entry>
 	<entry id="5112" string="Output filenames">Ausgabedateinamen</entry>
 	<entry id="5113" string="Allow Unicode characters">Unicode-Zeichen erlauben</entry>
-	<entry id="5114" string="Replace spaces">Leerzeichen ersetzen</entry>
+	<entry id="5114" string="Replace spaces with underscores">Leerzeichen durch Unterstriche ersetzen</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Fertige Tracks aus Jobliste entfernen</entry>
 	<entry id="5116" string="Add encoded files to joblist">Ausgabedateien in Liste aufnehmen</entry>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Laufende Nummern an ansonsten identische Dateinamen anhängen</entry>
+	<entry id="5118" string="Keep time stamps of source files">Zeitstempel von Quelldateien übernehmen</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Der Ausgabeordner existiert nicht! Soll er erzeugt werden?</entry>

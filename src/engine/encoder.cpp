@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -37,11 +37,13 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 {
 	Registry	&boca = Registry::Get();
 
-	sourceFormat = track.GetFormat();
+	sourceFormat  = track.GetFormat();
 
-	album	     = track;
-	chapter      = 0;
-	offset	     = 0;
+	album	      = track;
+	album.outfile = fileName;
+
+	chapter       = 0;
+	offset	      = 0;
 
 	/* Create output file.
 	 */
@@ -76,10 +78,6 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 		return False;
 	}
 
-	targetFormat = FormatConverter::GetBestTargetFormat(sourceFormat, encoder);
-
-	album.SetFormat(targetFormat);
-
 	/* Lock encoder if it's not thread safe.
 	 */
 	LockComponent(encoder);
@@ -87,7 +85,7 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 	/* Add encoder to stream.
 	 */
 	encoder->SetConfiguration(configuration);
-	encoder->SetAudioTrackInfo(track);
+	encoder->SetAudioTrackInfo(album);
 
 	if (stream->SetFilter(encoder) == False)
 	{
@@ -104,6 +102,12 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 
 		return False;
 	}
+
+	/* Set album target format.
+	 */
+	targetFormat = FormatConverter::GetBestTargetFormat(sourceFormat, encoder);
+
+	album.SetFormat(targetFormat);
 
 	return True;
 }
@@ -166,6 +170,11 @@ Void freac::Encoder::SignalChapterChange()
 Bool freac::Encoder::IsLossless() const
 {
 	return encoder->IsLossless();
+}
+
+String freac::Encoder::GetEncoderName() const
+{
+	return encoder->GetName();
 }
 
 Void freac::Encoder::SetCalculateMD5(Bool calculateMD5)

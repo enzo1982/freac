@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -42,6 +42,8 @@ namespace freac
 			Void						 UpdateTrackProgress(Int, Int);
 			Void						 UpdateTotalProgress(Int, Int);
 
+			Int						 GetNumberOfWorkers(Int) const;
+
 			BoCA::Format					 GetSingleTrackSampleFormat() const;
 			BoCA::Track					 ConsolidateTrackInfo();
 		public:
@@ -62,7 +64,8 @@ namespace freac
 			static Signal0<Void>				 onStartEncoding;
 			static Signal1<Void, Bool>			 onFinishEncoding;
 
-			static Signal3<Void, const BoCA::Track &,
+			static Signal4<Void, const BoCA::Track &,
+					     const String &,
 					     const String &,
 					     ConversionStep>		 onEncodeTrack;
 

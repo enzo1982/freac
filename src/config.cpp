@@ -123,6 +123,9 @@ const Bool	 freac::Config::SettingsFilenamesAllowUnicodeDefault		= True;
 const String	 freac::Config::SettingsFilenamesReplaceSpacesID		= "FilenamesReplaceSpaces";
 const Bool	 freac::Config::SettingsFilenamesReplaceSpacesDefault		= False;
 
+const String	 freac::Config::SettingsFilenamesKeepTimeStampsID		= "FilenamesKeepTimeStamps";
+const Bool	 freac::Config::SettingsFilenamesKeepTimeStampsDefault		= False;
+
 const String	 freac::Config::SettingsFilenamesAddSequentialNumbersID		= "FilenamesAddSequentialNumbers";
 const Bool	 freac::Config::SettingsFilenamesAddSequentialNumbersDefault	= False;
 
@@ -402,8 +405,6 @@ freac::Config::Config()
 
 	/* Set default settings.
 	 */
-	maxActiveJobs		= 2;
-
 	deleteAfterEncoding	= config->GetIntValue(CategorySettingsID, SettingsDeleteAfterEncodingID, SettingsDeleteAfterEncodingDefault);
 	shutdownAfterEncoding	= False;
 

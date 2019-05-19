@@ -387,7 +387,7 @@
 	<entry id="5111" string="Encode to a single file">一つのファイルにエンコード</entry>
 	<entry id="5112" string="Output filenames">出力ファイル名</entry>
 	<entry id="5113" string="Allow Unicode characters">Unicode文字を許可する</entry>
-	<entry id="5114" string="Replace spaces">スペースを置き換える</entry>
+	<entry id="5114" string="Replace spaces with underscores">スペースを置き換える</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">ジョブリストから処理済みのトラックを削除する</entry>
 	<entry id="5116" string="Add encoded files to joblist">エンコードされたファイルをジョブリストに追加する</entry>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">それ以外のファイル名に連続番号を付ける</entry>

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -20,6 +20,8 @@ Array<freac::Job *>		 freac::Job::planned;
 Array<freac::Job *>		 freac::Job::running;
 
 Array<freac::Job *>		 freac::Job::all;
+
+Threads::Mutex			 freac::Job::mutex;
 
 Signal0<Void>			 freac::Job::onChange;
 
@@ -77,7 +79,13 @@ freac::Job::Job() : ListEntry("Job")
 	startTicks	    = 0;
 	previousSecondsLeft = 0;
 
+	/* Notify about jobs change.
+	 */
+	mutex.Lock();
+
 	onChange.Emit();
+
+	mutex.Release();
 }
 
 freac::Job::~Job()
@@ -90,8 +98,16 @@ freac::Job::~Job()
 
 	all.Remove(GetHandle());
 
+	/* Notify about jobs change.
+	 */
+	mutex.Lock();
+
 	onChange.Emit();
 
+	mutex.Release();
+
+	/* Delete sub-objects.
+	 */
 	DeleteObject(progressLabel);
 	DeleteObject(progress);
 	DeleteObject(progressValue);
@@ -117,9 +133,15 @@ Int freac::Job::RunPrecheck()
 
 	planned.Add(this, GetHandle());
 
+	/* Notify about planned job.
+	 */
 	EnterProtectedRegion();
 
+	mutex.Lock();
+
 	onPlanJob.Emit(this);
+
+	mutex.Release();
 
 	LeaveProtectedRegion();
 
@@ -131,13 +153,21 @@ Int freac::Job::Run()
 	planned.Remove(GetHandle());
 	running.Add(this, GetHandle());
 
+	/* Notify about running job.
+	 */
 	EnterProtectedRegion();
+
+	mutex.Lock();
 
 	onRun.Emit();
 	onRunJob.Emit(this);
 
+	mutex.Release();
+
 	LeaveProtectedRegion();
 
+	/* Actually run job.
+	 */
 	startTicks	    = S::System::System::Clock();
 	previousSecondsLeft = 0;
 
@@ -147,10 +177,16 @@ Int freac::Job::Run()
 
 	closeHotspot->Activate();
 
+	/* Notify about finished job.
+	 */
 	EnterProtectedRegion();
+
+	mutex.Lock();
 
 	onFinish.Emit();
 	onFinishJob.Emit(this);
+
+	mutex.Release();
 
 	LeaveProtectedRegion();
 
@@ -208,10 +244,17 @@ Void freac::Job::OnDoubleClick()
 
 Void freac::Job::OnClickToClose()
 {
+	all.Remove(GetHandle());
+
+	/* Notify about jobs change.
+	 */
 	EnterProtectedRegion();
 
-	all.Remove(GetHandle());
+	mutex.Lock();
+
 	onChange.Emit();
+
+	mutex.Release();
 
 	Object::DeleteObject(this);
 

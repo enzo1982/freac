@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2018 Robert Kausch -->
+<!-- Copyright 2019 Robert Kausch -->
 <component type="desktop-application">
     <id>org.freac.freac</id>
     <launchable type="desktop-id">org.freac.freac.desktop</launchable>
     <name>fre:ac</name>
-    <summary>Free and open source audio converter</summary>
+    <summary>Audio converter and CD ripper</summary>
     <metadata_license>FSFAP</metadata_license>
     <project_license>GPL-2.0</project_license>
     <update_contact>support@freac.org</update_contact>
@@ -37,13 +37,13 @@
     <url type="donation">https://www.freac.org/donating.php</url>
     <screenshots>
         <screenshot type="default">
-            <image>https://www.freac.org/images/screenshots/freac-linux.png</image>
+            <image>https://raw.githubusercontent.com/flathub/org.freac.freac/master/screenshots/freac-linux.png</image>
         </screenshot>
         <screenshot>
-            <image>https://www.freac.org/images/screenshots/freac-linux-tageditor.png</image>
+            <image>https://raw.githubusercontent.com/flathub/org.freac.freac/master/screenshots/freac-linux-tageditor.png</image>
         </screenshot>
         <screenshot>
-            <image>https://www.freac.org/images/screenshots/freac-linux-settings.png</image>
+            <image>https://raw.githubusercontent.com/flathub/org.freac.freac/master/screenshots/freac-linux-settings.png</image>
         </screenshot>
     </screenshots>
     <releases>

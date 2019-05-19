@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -284,7 +284,7 @@ Void freac::Playback::Write(Buffer<UnsignedByte> &buffer, Int chunkSize)
 {
 	while (buffer.Size() > 0)
 	{
-		while (output->CanWrite() < chunkSize && !stop) S::System::System::Sleep(10);
+		while (!stop && (paused || output->CanWrite() < chunkSize)) S::System::System::Sleep(10);
 
 		if (stop) break;
 

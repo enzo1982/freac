@@ -103,7 +103,7 @@ Voraussetzungen
 
 			Linux:
 
-				- libasound2, libcdio, libcdio-paranoia, libudev
+				- libcdio, libcdio-paranoia, libpulse, libudev
 
 			Solaris:
 
@@ -126,7 +126,7 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.1 Alpha (Januar 2019)
+	Version 1.1 Alpha (April 2019)
 
 		- Auf macOS, Linux und BSD-Betriebssysteme portiert
 		- Framework für Erweiterungskomponenten implementiert, um fre:ac zu modularisieren

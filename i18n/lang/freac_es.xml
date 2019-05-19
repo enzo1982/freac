@@ -394,7 +394,7 @@
 	<entry id="5111" string="Encode to a single file">Unir en un solo archivo</entry>
 	<entry id="5112" string="Output filenames">Nombre de archivos de salida</entry>
 	<entry id="5113" string="Allow Unicode characters">Permitir caracteres Unicode</entry>
-	<entry id="5114" string="Replace spaces">Reemplazar espacios</entry>
+	<entry id="5114" string="Replace spaces with underscores">Reemplazar espacios</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Quitar archivos procesados de la lista</entry>
 	<entry id="5116" string="Add encoded files to joblist">Añadir archivos codificados a la lista</entry>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Numerar consecutivamente nombres de archivo iguales</entry>

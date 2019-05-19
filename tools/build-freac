@@ -89,6 +89,12 @@ if [[ $uname != *MINGW* ]] && [[ $uname != Darwin ]]; then
 fi
 $MAKE config=$config -j$jobs
 $SUDO $MAKE config=$config install -j$jobs
+if [[ $uname == Linux ]]; then
+  cd components/output/alsa
+  $MAKE config=$config -j$jobs
+  $SUDO $MAKE config=$config install -j$jobs
+  cd ../../..
+fi
 cd ..
 
 # Build fre:ac

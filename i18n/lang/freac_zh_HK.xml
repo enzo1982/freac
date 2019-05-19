@@ -343,7 +343,7 @@
 	<entry id="5111" string="Encode to a single file">編碼成單一檔案</entry>
 	<entry id="5112" string="Output filenames">輸出檔名</entry>
 	<entry id="5113" string="Allow Unicode characters">容許Unicode字元</entry>
-	<entry id="5114" string="Replace spaces">取代空格</entry>
+	<entry id="5114" string="Replace spaces with underscores">取代空格</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">從工作清單清除已處理曲目</entry>
 	<entry id="5116" string="Add encoded files to joblist">加入已編碼檔案到工作清單</entry>
 

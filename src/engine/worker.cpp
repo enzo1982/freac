@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -56,17 +56,24 @@ freac::ConvertWorker::~ConvertWorker()
 
 Int freac::ConvertWorker::Perform()
 {
+	Bool	 enableParallel	 = configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
+	Int	 numberOfThreads = configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault);
+
 	while (!quit)
 	{
 		if (idle) { S::System::System::Sleep(1); continue; }
 
+		/* Do not limit parallel CD ripping jobs in automatic mode.
+		 */
+		Bool	 allocateThread = !(enableParallel && numberOfThreads <= 1 && trackToConvert.origFilename.StartsWith("device://"));
+
 		/* Allocate thread and run conversion.
 		 */
-		Locking::AllocateThread();
+		if (allocateThread) Locking::AllocateThread();
 
 		if (Convert() != Success()) error = True;
 
-		Locking::FreeThread();
+		if (allocateThread) Locking::FreeThread();
 
 		/* Return to waiting state.
 		 */
@@ -88,6 +95,8 @@ Int freac::ConvertWorker::Convert()
 	 */
 	Bool	 encodeOnTheFly		= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault);
 	Bool	 keepWaveFiles		= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, Config::SettingsKeepWaveFilesDefault);
+
+	Bool	 keepTimeStamps		= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesKeepTimeStampsID, Config::SettingsFilenamesKeepTimeStampsDefault);
 
 	Bool	 verifyInput		= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, Config::VerificationVerifyInputDefault);
 	Bool	 verifyOutput		= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
@@ -119,10 +128,14 @@ Int freac::ConvertWorker::Convert()
 
 	/* Loop over conversion passes.
 	 */
-	Track	 trackToEncode = trackToConvert;
+	Track		 trackToEncode	= trackToConvert;
+	Bool		 error		= False;
 
-	String	 encodeChecksum;
-	String	 verifyChecksum;
+	DateTime	 fileTime	= File(trackToConvert.origFilename).GetWriteTime();
+	Bool		 isFile		= !trackToConvert.origFilename.StartsWith("device://");
+
+	String		 encodeChecksum;
+	String		 verifyChecksum;
 
 	for (Int step = 0; step < conversionSteps && !cancel; step++)
 	{
@@ -313,6 +326,8 @@ Int freac::ConvertWorker::Convert()
 			return Error();
 		}
 
+		encoderName = encoder->GetEncoderName();
+
 		trackToEncode.SetFormat(encoder->GetTargetFormat());
 
 		/* Enable MD5 and add a verification step if we are to verify the output.
@@ -407,10 +422,10 @@ Int freac::ConvertWorker::Convert()
 		processor->Destroy();
 		encoder->Destroy();
 
-		if (decoder->GetErrorState())	onReportError.Emit(decoder->GetErrorString());
-		if (verifier->GetErrorState())	onReportError.Emit(verifier->GetErrorString());
-		if (processor->GetErrorState())	onReportError.Emit(processor->GetErrorString());
-		if (encoder->GetErrorState())	onReportError.Emit(encoder->GetErrorString());
+		if (decoder->GetErrorState())	{ error = True; onReportError.Emit(decoder->GetErrorString());	 }
+		if (verifier->GetErrorState())	{ error = True; onReportError.Emit(verifier->GetErrorString());	 }
+		if (processor->GetErrorState())	{ error = True; onReportError.Emit(processor->GetErrorString()); }
+		if (encoder->GetErrorState())	{ error = True; onReportError.Emit(encoder->GetErrorString());	 }
 
 		delete decoder;
 		delete verifier;
@@ -421,13 +436,13 @@ Int freac::ConvertWorker::Convert()
 
 		/* Delete output file if it doesn't look sane.
 		 */
-		if (outFile.GetFileSize() <= 0 || cancel) outFile.Delete();
+		if (outFile.GetFileSize() <= 0 || cancel || error) outFile.Delete();
 
 		/* Delete intermediate file in non-on-the-fly mode.
 		 */
 		if (conversionStep == ConversionStepEncode)
 		{
-			if (!keepWaveFiles || cancel) inFile.Delete();
+			if (!keepWaveFiles || cancel || error) inFile.Delete();
 
 			if (String(inFile).EndsWith(".temp.wav")) inFile = String(inFile).Head(String(inFile).Length() - 9);
 		}
@@ -454,6 +469,10 @@ Int freac::ConvertWorker::Convert()
 			}
 		}
 
+		/* Set file time stamp to that of original file if requested.
+		 */
+		if (step == conversionSteps - 1 && keepTimeStamps && isFile && outFile.Exists()) outFile.SetWriteTime(fileTime);
+
 		/* Revert to waiting state when there are more steps left.
 		 */
 		if (step < conversionSteps - 1) waiting = True;
@@ -475,7 +494,8 @@ Int freac::ConvertWorker::Convert()
 		onFixTotalSamples.Emit(track, trackToConvert);
 	}
 
-	return Success();
+	if (error) return Error();
+	else	   return Success();
 }
 
 Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatConverter *converter, Processor *processor, Encoder *encoder)

@@ -355,7 +355,7 @@
 	<entry id="5111" string="Encode to a single file">Codificar para um único arquivo</entry>
 	<entry id="5112" string="Output filenames">Nomes dos arquivos de saída</entry>
 	<entry id="5113" string="Allow Unicode characters">Permitir caracteres Unicode</entry>
-	<entry id="5114" string="Replace spaces">Substituir espaços</entry>
+	<entry id="5114" string="Replace spaces with underscores">Substituir espaços</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Remover as faixas finalizadas da lista de tarefas</entry>
 	<entry id="5116" string="Add encoded files to joblist">Adicionar arquivos codificados à lista de tarefas</entry>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Anexar números sequenciais a nomes de arquivos que de outra forma seriam idênticos</entry>

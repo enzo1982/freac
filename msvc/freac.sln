@@ -3,24 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac DLL", "freac.vcxproj", "{F121548C-5FD2-4E54-89AB-37671DE3CC76}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac DLL", "freac\freac.vcxproj", "{F121548C-5FD2-4E54-89AB-37671DE3CC76}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac", "..\freacGUI\freacGUI.vcxproj", "{92DE9054-BD7A-4D35-9E87-1B48C3F892FE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac", "freacGUI\freacGUI.vcxproj", "{92DE9054-BD7A-4D35-9E87-1B48C3F892FE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Command Line Utility", "..\freacCMD\freacCMD.vcxproj", "{190BD1FD-37A3-4DC6-9CD8-D03599C2D86D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Command Line Utility", "freacCMD\freacCMD.vcxproj", "{190BD1FD-37A3-4DC6-9CD8-D03599C2D86D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension TagEdit", "..\freac Extension TagEdit\freac Extension TagEdit.vcxproj", "{F2561807-A735-4ED5-93C7-74649D06A94B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension TagEdit", "Extensions\freac Extension TagEdit\freac Extension TagEdit.vcxproj", "{F2561807-A735-4ED5-93C7-74649D06A94B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension Protocols", "..\freac Extension Protocols\freac Extension Protocols.vcxproj", "{362EBB5E-5D27-49B3-846A-02E3F9EFAE4F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension Protocols", "Extensions\freac Extension Protocols\freac Extension Protocols.vcxproj", "{362EBB5E-5D27-49B3-846A-02E3F9EFAE4F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{88A9765E-C213-4E4E-8E15-46C048ECB01E}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\Readme = ..\..\Readme
-		..\..\Readme.de = ..\..\Readme.de
-		..\..\Readme.md = ..\..\Readme.md
+		..\Readme = ..\Readme
+		..\Readme.de = ..\Readme.de
+		..\Readme.md = ..\Readme.md
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension Donate", "..\freac Extension Donate\freac Extension Donate.vcxproj", "{A34E222F-1D9B-4801-8A9C-629C78707BED}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension Donate", "Extensions\freac Extension Donate\freac Extension Donate.vcxproj", "{A34E222F-1D9B-4801-8A9C-629C78707BED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{BC255F5A-BE40-4FFF-954D-3B567D22513F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F2561807-A735-4ED5-93C7-74649D06A94B} = {BC255F5A-BE40-4FFF-954D-3B567D22513F}
+		{362EBB5E-5D27-49B3-846A-02E3F9EFAE4F} = {BC255F5A-BE40-4FFF-954D-3B567D22513F}
+		{A34E222F-1D9B-4801-8A9C-629C78707BED} = {BC255F5A-BE40-4FFF-954D-3B567D22513F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B699F6B-4AE4-4B5C-AB3A-BA8A53444F5A}

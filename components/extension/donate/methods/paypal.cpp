@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -70,6 +70,7 @@ BoCA::LayerPayPal::LayerPayPal()
 	for (Int i = 0; i < 3; i++) combo_amount->AddEntry(i18n->TranslateString("$%1").Replace("%1", levels.GetNth(i)));
 
 	combo_amount->AddEntry(levels.GetNth(3));
+	combo_amount->SelectNthEntry(1);
 
 	combo_amount->onSelectEntry.Connect(&LayerPayPal::OnChangeSettings, this);
 
@@ -78,7 +79,6 @@ BoCA::LayerPayPal::LayerPayPal()
 	check_monthly->SetWidth(Math::Max(combo_amount->GetFont().GetUnscaledTextSizeX(levels.GetNth(3)) + 24, check_monthly->GetUnscaledTextWidth() + 23));
 
 	combo_amount->SetWidth(check_monthly->GetWidth());
-	combo_amount->SelectNthEntry(1);
 
 	Add(combo_amount);
 	Add(check_monthly);
@@ -108,6 +108,8 @@ BoCA::LayerPayPal::LayerPayPal()
 	Add(link_donate);
 	Add(text_donate_now);
 
+	OnChangeSettings();
+
 	onChangeSize.Connect(&LayerPayPal::OnChangeSize, this);
 
 	SetSize(Size(Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_direct->GetUnscaledTextWidth()) + 15, text_donate->GetUnscaledTextHeight() + text_donate_direct->GetUnscaledTextHeight() + 79));
@@ -115,10 +117,6 @@ BoCA::LayerPayPal::LayerPayPal()
 
 BoCA::LayerPayPal::~LayerPayPal()
 {
-	I18n	*i18n = I18n::Get();
-
-	i18n->SetContext("Extensions::Donate::PayPal");
-
 	File(S::System::System::GetTempDirectory().Append("pp").Append(Number((Int64) this).ToHexString(8)).Append(".html")).Delete();
 
 	DeleteObject(text_donate);
@@ -160,26 +158,19 @@ Void BoCA::LayerPayPal::OnChangeSettings()
 		check_monthly->Activate();
 	}
 
-	/* Get assets folder.
+	/* Update donation URL.
 	 */
-	Directory	 dir(Utilities::GetBoCADirectory().Append("freac.extension.donate"));
+	String	 url = "https://www.paypal.com/cgi-bin/webscr?cmd=%method%&business=%email%&item_name=%reference%&no_note=1&no_shipping=1&amount=%amount%&a3=%amount%&p3=1&t3=M&src=%subscription%&notify_url=%notify%&return=%website%&cancel_return=%website%&currency_code=%currency%";
 
-	if (!dir.Exists()) dir = Utilities::GetBoCADirectory().Append("../freac/freac.extension.donate");
+	url = String(url).Replace("%reference%",    Encoding::URLEncode::Encode("fre:ac project donation"))
+			 .Replace("%email%",	    Encoding::URLEncode::Encode("donate@freac.org"))
+			 .Replace("%amount%",	    combo_amount->GetSelectedEntryNumber() < 3 ? levels.GetNth(combo_amount->GetSelectedEntryNumber()) : "0")
+			 .Replace("%currency%",	    i18n->TranslateString("usd").ToUpper())
+			 .Replace("%subscription%", monthly ? "1" : "0")
+			 .Replace("%method%",	    monthly ? "_xclick-subscriptions" : "_xclick")
+			 .Replace("%website%",	    Encoding::URLEncode::Encode("https://www.freac.org/"));
 
-	/* Read HTML template.
-	 */
-	InStream	 in(STREAM_FILE, String(dir).Append("/paypal/paypal.html"), IS_READ);
-	String		 html = in.InputString(in.Size());
-
-	/* Create output file with settings.
-	 */
-	String		 file = S::System::System::GetTempDirectory().Append("pp").Append(Number((Int64) this).ToHexString(8)).Append(".html");
-	OutStream	 out(STREAM_FILE, file, OS_REPLACE);
-
-	out.OutputString(String(html).Replace("%amount%",	combo_amount->GetSelectedEntryNumber() < 3 ? levels.GetNth(combo_amount->GetSelectedEntryNumber()) : "0")
-				     .Replace("%currency%",	i18n->TranslateString("usd").ToUpper())
-				     .Replace("%subscription%", monthly ? "1" : "0")
-				     .Replace("%method%",	monthly ? "_xclick-subscriptions" : "_xclick"));
+	link_donate->SetURL(url);
 
 	String::ExplodeFinish();
 }

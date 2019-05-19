@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -1413,7 +1413,7 @@ Void freac::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 	if (success && Job::GetPlannedJobs().Length() == 0 && Config::Get()->shutdownAfterEncoding) S::System::System::Shutdown();
 }
 
-Void freac::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String &decoderName, ConversionStep mode)
+Void freac::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String &decoderName, const String &encoderName, ConversionStep mode)
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -1458,6 +1458,8 @@ Void freac::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String 
 
 	edb_filename->SetText(fileInfo);
 	edb_format->SetText(decoderName);
+
+	combo_encoder->SelectEntry(encoderName);
 }
 
 Void freac::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsLeft)
