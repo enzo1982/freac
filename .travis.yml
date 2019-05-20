@@ -165,8 +165,9 @@ script:
       install -Dm 0755 /usr/local/bin/smooth-translator appdir/translator
       install -Dm 0755 packaging/appimage/AppRun appdir/AppRun
       mkdir -p appdir/usr/share
+      cp -r /usr/local/share/applications appdir/usr/share
       cp -r /usr/local/share/metainfo appdir/usr/share
-      cp /usr/local/share/applications/org.freac.freac.desktop appdir
+      ln -s usr/share/applications/org.freac.freac.desktop appdir/org.freac.freac.desktop
       cp /usr/local/share/icons/hicolor/128x128/apps/org.freac.freac.png appdir
     # Copy other dependencies
       cp /usr/local/lib/libcdio.so.19 appdir
@@ -176,8 +177,6 @@ script:
       cp -P /lib/$ARCH-linux-gnu/libcrypto.so.1* appdir
       cp -P /lib/$ARCH-linux-gnu/libssl.so.1* appdir
       strip --strip-all appdir/lib*.so*
-    # List final appdir contents
-      ls -Rl appdir/
     # Create AppImage using appimagetool
       wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-$ARCH.AppImage"
       chmod a+x appimagetool-$ARCH.AppImage

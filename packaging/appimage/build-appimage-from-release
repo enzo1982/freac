@@ -21,6 +21,9 @@ chmod a+x $APPDIR/AppRun
 cp metadata/org.freac.freac.desktop $APPDIR
 cp $APPDIR/icons/freac.png $APPDIR/org.freac.freac.png
 
+mkdir -p $APPDIR/usr/share/applications
+cp metadata/org.freac.freac.desktop $APPDIR/usr/share/applications
+
 mkdir -p $APPDIR/usr/share/metainfo
 cp metadata/org.freac.freac.appdata.xml $APPDIR/usr/share/metainfo
 

@@ -10,9 +10,9 @@ if [ ! -z $APPIMAGE ] ; then
 else
   BINARY_NAME=$(basename "$0")
 fi
-if [ ! -z "$1" ] && [ -e "$HERE/$1" ] ; then
+if [ ! -z "$1" ] && [ -x "$HERE/$1" ] && [ ! -d "$HERE/$1" ] ; then
   MAIN="$HERE/$1" ; shift
-elif [ -e "$HERE/$BINARY_NAME" ] ; then
+elif [ -x "$HERE/$BINARY_NAME" ] && [ ! -d "$HERE/$BINARY_NAME" ] ; then
   MAIN="$HERE/$BINARY_NAME"
 else
   MAIN="$HERE/freac"
