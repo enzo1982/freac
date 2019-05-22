@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -60,33 +60,31 @@ Void freac::LayerTooltip::UpdateFromTrack(const Track &nTrack)
 
 	if (text != NIL) DeleteObject(text);
 
-	text = new Text(GetTooltipText(track), Point(3 + (track.pictures.Length() > 0 ? 44 : 0), 3));
+	text = new Text(GetTrackInfo(track), Point(3 + (track.pictures.Length() > 0 ? 44 : 0), 3));
 
 	Add(text);
 
 	SetSize(Size(text->GetUnscaledTextWidth() + 7 + (track.pictures.Length() > 0 ? 44 : 0), text->GetUnscaledTextHeight() + 7));
 }
 
-const String &freac::LayerTooltip::GetTooltipText(const Track &track)
+String freac::LayerTooltip::GetTrackInfo(const Track &track)
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Joblist");
 
 	const Format	&format = track.GetFormat();
-	const Info	&info = track.GetInfo();
+	const Info	&info	= track.GetInfo();
 
-	static String	 tooltip;
-
-	tooltip = String(i18n->AddColon(i18n->TranslateString("File"))).Append(" ").Append(track.origFilename.Contains("://") ? track.origFilename : File(track.origFilename).GetFileName()).Append("\n").
-		  Append(i18n->AddColon(i18n->TranslateString("Size"))).Append(" ").Append(i18n->TranslateString("%1 bytes", "Technical").Replace("%1", track.GetFileSizeString())).Append("\n").
-		  Append(i18n->AddColon(i18n->TranslateString("Artist"))).Append(" ").Append(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append("\n").
-		  Append(i18n->AddColon(i18n->TranslateString("Title"))).Append(" ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")).Append("\n").
-		  Append(track.length > 0 || track.approxLength > 0 ? i18n->AddColon(i18n->TranslateString("Length")).Append(" ").Append(i18n->TranslateString("%1 min", "Technical").Replace("%1", track.GetLengthString())).Append("\n") : String()).
-		  Append(track.length > 0 ? i18n->AddColon(i18n->TranslateString("Number of samples")).Append(" ").Append(S::I18n::Number::GetLocalizedNumberString(track.length)).Append("\n") : String()).
-		  Append(i18n->AddColon(i18n->TranslateString("Sampling rate"))).Append(" ").Append(i18n->TranslateString("%1 Hz", "Technical").Replace("%1", S::I18n::Number::GetLocalizedNumberString(format.rate))).Append("\n").
-		  Append(i18n->AddColon(i18n->TranslateString("Sample resolution"))).Append(" ").Append(i18n->TranslateString("%1 bit", "Technical").Replace("%1", String::FromInt(format.bits))).Append("\n").
-		  Append(i18n->AddColon(i18n->TranslateString("Channels"))).Append(" ").Append(format.channels > 2 ? (format.channels != 4 && format.channels != 5 && format.channels <= 8 ? String::FromInt(format.channels - 1).Append(".1") : String::FromInt(format.channels)) : (format.channels == 1 ? i18n->TranslateString("Mono") : i18n->TranslateString("Stereo")));
+	String	 tooltip = String(i18n->AddColon(i18n->TranslateString("File"))).Append(" ").Append(track.origFilename.Contains("://") ? track.origFilename : File(track.origFilename).GetFileName()).Append("\n").
+			   Append(i18n->AddColon(i18n->TranslateString("Size"))).Append(" ").Append(i18n->TranslateString("%1 bytes", "Technical").Replace("%1", track.GetFileSizeString())).Append("\n").
+			   Append(i18n->AddColon(i18n->TranslateString("Artist"))).Append(" ").Append(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append("\n").
+			   Append(i18n->AddColon(i18n->TranslateString("Title"))).Append(" ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")).Append("\n").
+			   Append(track.length > 0 || track.approxLength > 0 ? i18n->AddColon(i18n->TranslateString("Length")).Append(" ").Append(i18n->TranslateString("%1 min", "Technical").Replace("%1", track.GetLengthString())).Append("\n") : String()).
+			   Append(track.length > 0 ? i18n->AddColon(i18n->TranslateString("Number of samples")).Append(" ").Append(S::I18n::Number::GetLocalizedNumberString(track.length)).Append("\n") : String()).
+			   Append(i18n->AddColon(i18n->TranslateString("Sampling rate"))).Append(" ").Append(i18n->TranslateString("%1 Hz", "Technical").Replace("%1", S::I18n::Number::GetLocalizedNumberString(format.rate))).Append("\n").
+			   Append(i18n->AddColon(i18n->TranslateString("Sample resolution"))).Append(" ").Append(i18n->TranslateString("%1 bit", "Technical").Replace("%1", String::FromInt(format.bits))).Append("\n").
+			   Append(i18n->AddColon(i18n->TranslateString("Channels"))).Append(" ").Append(format.channels > 2 ? (format.channels != 4 && format.channels != 5 && format.channels <= 8 ? String::FromInt(format.channels - 1).Append(".1") : String::FromInt(format.channels)) : (format.channels == 1 ? i18n->TranslateString("Mono") : i18n->TranslateString("Stereo")));
 
 	if (format.rate > 0)
 	{

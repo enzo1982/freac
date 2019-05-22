@@ -48,13 +48,10 @@ freac::JobManager::~JobManager()
 
 Void freac::JobManager::ManagerThread()
 {
-	Config	*config = Config::Get();
-
 	while (!exitThread)
 	{
 		const Array<Job *>	&scheduled = Job::GetScheduledJobs();
 		const Array<Job *>	&planned   = Job::GetPlannedJobs();
-		const Array<Job *>	&running   = Job::GetRunningJobs();
 
 		if (scheduled.Length() > 0)
 		{
