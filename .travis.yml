@@ -13,6 +13,7 @@ matrix:
           packages:
             - libcurl4-openssl-dev
             - libgtk-3-dev
+            - libncurses-dev
             - libpulse-dev
             - libudev-dev
 
@@ -23,6 +24,7 @@ matrix:
           packages:
             - libcurl4-openssl-dev
             - libgtk-3-dev
+            - libncurses-dev
             - libpulse-dev
             - libudev-dev
 
@@ -36,18 +38,50 @@ matrix:
       compiler: clang
       env:
         - AppImageBuild=True
+        - AppImageArch=x86_64
       addons:
         apt:
           packages:
             - g++-multilib
             - libasound2-dev
             - libgtk-3-dev
+            - libncurses-dev
             - libpulse-dev
             - libssl-dev
             - libudev-dev
             - nasm
             - yasm
             - wine1.6-dev
+
+    - os: linux
+      compiler: clang
+      env:
+        - AppImageBuild=True
+        - AppImageArch=i686
+      addons:
+        apt:
+          packages:
+            - g++-multilib
+            - gir1.2-atk-1.0:i386
+            - gir1.2-freedesktop:i386
+            - gir1.2-gdkpixbuf-2.0:i386
+            - gir1.2-glib-2.0:i386
+            - gir1.2-gtk-3.0:i386
+            - gir1.2-pango-1.0:i386
+            - libasound2-dev:i386
+            - libatk1.0-dev:i386
+            - libgdk-pixbuf2.0-dev:i386
+            - libgirepository-1.0-1:i386
+            - libgtk-3-dev:i386
+            - libncurses-dev:i386
+            - libpango1.0-dev:i386
+            - libpulse-dev:i386
+            - libssl-dev:i386
+            - libudev-dev:i386
+            - libxft-dev:i386
+            - nasm
+            - yasm
+            - wine1.6-dev:i386
 
 install:
   - |
@@ -63,6 +97,11 @@ install:
 
 script:
   - |
+    # Set environment variables
+    if [ $AppImageBuild = True ] && [ $AppImageArch = i686 ]; then
+      export BUILD_X86=True
+    fi
+  - |
     # Build libcdio
     if [ $TRAVIS_OS_NAME != osx ]; then
       ./tools/build-codecs libcdio libcdio-paranoia
@@ -73,7 +112,11 @@ script:
       wget -c https://curl.haxx.se/download/curl-7.64.1.tar.bz2
       tar xfj curl-7.64.1.tar.bz2
       cd curl-7.64.1
-      ./configure --with-ssl --without-librtmp --disable-ldap
+      if [ $AppImageArch = i686 ]; then
+        CFLAGS="-m32" ./configure --with-ssl --without-librtmp --disable-ldap
+      else
+        ./configure --with-ssl --without-librtmp --disable-ldap
+      fi
       make -j$(nproc) && sudo make install
       cd ..
     fi
@@ -84,8 +127,14 @@ script:
     CONFIG="bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib"
     if [ $AppImageBuild = True ]; then
       CONFIG+=",release"
+      if [ $AppImageArch = i686 ]; then
+        export PKG_CONFIG_PATH=/usr/lib/i386-linux-gnu/pkgconfig
+      fi
     fi
     make config=$CONFIG BUILD_V8=False -j$(nproc) && sudo make config=$CONFIG BUILD_V8=False install
+    if [ $AppImageBuild = True ] && [ $AppImageArch = i686 ]; then
+      unset PKG_CONFIG_PATH
+    fi
     cd ../..
   - |
     # Build BoCA
@@ -96,7 +145,7 @@ script:
       CONFIG+=",release"
     fi
     make config=$CONFIG -j$(nproc) && sudo make config=$CONFIG install
-    if [ $AppImageBuild = True ]; then
+    if [ $AppImageBuild = True ] && [ $AppImageArch = x86_64 ]; then
       # Build 32 bit Core Audio connector
       cd components/encoder/coreaudioconnect/connector
       make BUILD_X86=True config=$CONFIG clean && make BUILD_X86=True config=$CONFIG -j$(nproc)
@@ -115,6 +164,10 @@ script:
     if [ $AppImageBuild = True ]; then
       OS=`uname`
       ARCH=`uname -m`
+      LIBARCH=$AppImageArch
+      if [ $AppImageArch = i686 ]; then
+        LIBARCH=i386
+      fi
     # Build codecs
       ./tools/build-codecs faad2 fdk-aac mp4v2
       ./tools/build-codecs lame mpg123
@@ -174,13 +227,13 @@ script:
       cp /usr/local/lib/libcdio_cdda.so.2 appdir
       cp /usr/local/lib/libcdio_paranoia.so.2 appdir
       cp /usr/local/lib/libcurl.so.4 appdir
-      cp -P /lib/$ARCH-linux-gnu/libcrypto.so.1* appdir
-      cp -P /lib/$ARCH-linux-gnu/libssl.so.1* appdir
+      cp -P /lib/$LIBARCH-linux-gnu/libcrypto.so.1* appdir
+      cp -P /lib/$LIBARCH-linux-gnu/libssl.so.1* appdir
       strip --strip-all appdir/lib*.so*
     # Create AppImage using appimagetool
       wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-$ARCH.AppImage"
       chmod a+x appimagetool-$ARCH.AppImage
-      ARCH=$ARCH ./appimagetool-$ARCH.AppImage appdir freac-continuous-${OS,,}-$ARCH.AppImage
+      ARCH=$AppImageArch ./appimagetool-$ARCH.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
     # Upload AppImage to GitHub
       bash packaging/appimage/upload-appimage freac*.AppImage
     fi
