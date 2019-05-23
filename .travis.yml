@@ -61,6 +61,7 @@ matrix:
       addons:
         apt:
           packages:
+            - fuse:i386
             - g++-multilib
             - gir1.2-atk-1.0:i386
             - gir1.2-freedesktop:i386
@@ -163,7 +164,6 @@ script:
     # Create AppImage
     if [ $AppImageBuild = True ]; then
       OS=`uname`
-      ARCH=`uname -m`
       LIBARCH=$AppImageArch
       if [ $AppImageArch = i686 ]; then
         LIBARCH=i386
@@ -231,9 +231,9 @@ script:
       cp -P /lib/$LIBARCH-linux-gnu/libssl.so.1* appdir
       strip --strip-all appdir/lib*.so*
     # Create AppImage using appimagetool
-      wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-$ARCH.AppImage"
-      chmod a+x appimagetool-$ARCH.AppImage
-      ARCH=$AppImageArch ./appimagetool-$ARCH.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+      wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-$AppImageArch.AppImage"
+      chmod a+x appimagetool-$AppImageArch.AppImage
+      ARCH=$AppImageArch ./appimagetool-$AppImageArch.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
     # Upload AppImage to GitHub
       bash packaging/appimage/upload-appimage freac*.AppImage
     fi

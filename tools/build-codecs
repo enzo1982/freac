@@ -23,7 +23,7 @@ elif [[ $uname == Darwin ]]; then
   cflags="-arch x86_64 -O3 -march=core2"
   ldflags="-Wl,-x -arch x86_64"
   x86_64=true
-elif (( [[ $machine == *amd64* ]] || [[ $machine == *x86_64* ]] )) && [[ $BUILD_X86 != True ]] && (( [[ $uname != *MINGW* ]] || [[ $BUILD_X86_64 == True ]] )); then
+elif [[ $machine == *amd64* || $machine == *x86_64* ]] && [[ $BUILD_X86 != True ]] && [[ $uname != *MINGW* || $BUILD_X86_64 == True ]]; then
   cflags="-O3 -m64 -march=nocona -mno-sse3"
   ldflags="-m64"
   x86_64=true
