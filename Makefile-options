@@ -25,7 +25,7 @@ endif
 
 # Find architecture and system
 UNAME = $(shell uname)
-MACHINE = $(shell gcc -dumpmachine)
+MACHINE = $(shell $(CC) -dumpmachine)
 
 ifneq ($(findstring arm,$(MACHINE)),)
 	ifneq ($(BUILD_ARM),False)
