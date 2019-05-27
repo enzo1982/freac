@@ -18,14 +18,12 @@ else
 	ifneq ($(BUILD_HAIKU),True)
 		CCOPTS += -pthread
 
-		ifneq ($(BUILD_LINUX),True)
 		ifneq ($(BUILD_OSX),True)
 			ifeq ($(BUILD_NETBSD),True)
 				CCOPTS += -I/usr/pkg/include
 			else
 				CCOPTS += -I/usr/local/include
 			endif
-		endif
 		endif
 	endif
 	endif
