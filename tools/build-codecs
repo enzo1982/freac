@@ -28,8 +28,11 @@ elif [[ $machine == *amd64* || $machine == *x86_64* ]] && [[ $BUILD_X86 != True 
   ldflags="-m64"
   x86_64=true
 elif [[ $machine == *aarch64* ]]; then
-  cflags="-O3 -march=armv8-a"
+  cflags="-I/usr/local/include -O3 -march=armv8-a+simd"
   arm64=true
+elif [[ $machine == *arm* ]]; then
+  cflags="-I/usr/local/include -O3 -march=armv7-a"
+  arm=true
 else
   cflags="-O3 -m32 -march=pentium4"
   ldflags="-m32"
@@ -37,6 +40,19 @@ else
 fi
 
 cflags_unroll="-funroll-loops"
+
+# Set host triple on Linux
+if [[ $uname == Linux ]]; then
+  if [[ $x86_64 == true ]]; then
+    host="x86_64-linux-gnu"
+  elif [[ $x86 == true ]]; then
+    host="i386-linux-gnu"
+  elif [[ $arm64 == true ]]; then
+    host="aarch64-linux-gnu"
+  elif [[ $arm == true ]]; then
+    host="arm-linux-gnueabihf"
+  fi
+fi
 
 # Set compiler and tools
 if [[ $uname != *FreeBSD* ]]; then
@@ -159,7 +175,7 @@ build () {
   if [[ $archive == *.zip   ]]; then folder=${archive%.zip}; fi
 
   if [[ $1 == *://* ]]; then wget $1 -O $archive; fi
-  
+
   rm -fr $folder
 
   if [[ $archive == *.tar.gz  ]]; then tar xfz $archive; fi
@@ -186,7 +202,11 @@ build () {
   done
 
   eval $prepare
-  eval $configure_exports ./configure $configure_flags $prefix
+  if [[ -z $host_flags && ! -z $host ]]; then
+    eval $configure_exports ./configure --host=$host $configure_flags $prefix
+  else
+    eval $configure_exports ./configure $host_flags $configure_flags $prefix
+  fi
   $MAKE -j$jobs
 
   index=0
@@ -220,6 +240,7 @@ build () {
   unset prepare
   unset configure_exports
   unset configure_flags
+  unset host_flags
 
   export CFLAGS="$cflags $cflags_unroll"
   export LDFLAGS="$ldflags"
@@ -320,17 +341,30 @@ for package in ${packages[@]}; do
     # Build libav
     export CFLAGS="$cflags"
     configure_flags="--enable-gpl --enable-small --enable-runtime-cpudetect"
+    if [[ $arm == true || $arm64 == true ]] && [[ `uname -m` == x86_64 ]]; then
+      host_flags="--enable-cross-compile"
+      if [[ $arm == true ]]; then
+        host_flags="$host_flags --arch=arm"
+      else
+        host_flags="$host_flags --arch=aarch64"
+      fi
+      if [[ $uname == Linux ]]; then
+        host_flags="$host_flags --target-os=linux"
+      fi
+    else
+      host_flags=" "
+    fi
     if [[ $uname == *MINGW* ]]; then
       prepare="sed -i -e \"s/#if HAVE_DIRECT_H/#ifdef HAVE_DIRECT_H/\" libavformat/os_support.h && sed -i -e \"s/#if HAVE_ISATTY/#if HAVE_ISATTY_/\" libavutil/log.c && sed -i -e \"s/#include \x22version.h\x22/#include \x22version.h\x22\n#include \x22libavutil\/mathematics.h\x22/\" libavutil/common.h && sed -i -e \"s/#ifndef M_LOG2_10/#ifndef M_E\n#define M_E 2.7182818284590452354\n#endif\n#ifndef M_PI\n#define M_PI 3.14159265358979323846\n#endif\n#ifndef M_SQRT2\n#define M_SQRT2 1.41421356237309504880\n#endif\n#ifndef M_SQRT1_2\n#define M_SQRT1_2 0.70710678118654752440\n#endif\n#ifndef M_LN2\n#define M_LN2 0.69314718055994530942\n#endif\n#ifndef M_LN10\n#define M_LN10 2.30258509299404568402\n#endif\n#ifndef M_LOG2_10/\" libavutil/mathematics.h"
       configure_flags="$configure_flags --enable-memalign-hack --enable-w32threads"
     elif [[ $uname == Darwin ]]; then
       configure_flags="$configure_flags --enable-memalign-hack --disable-vda"
       if [[ $ppc == true ]]; then
-        configure_flags="$configure_flags --arch=ppc"
+        host_flags="--arch=ppc"
       elif [[ $x86_64 == true ]]; then
-        configure_flags="$configure_flags --arch=x86_64"
+        host_flags="--arch=x86_64"
       elif [[ $x86 == true ]]; then
-        configure_flags="$configure_flags --arch=i386"
+        host_flags="--arch=i386"
       fi
     fi
     build $libav_location avconv.$execext avconv.$execext
@@ -494,8 +528,6 @@ for package in ${packages[@]}; do
       configure_flags="$configure_flags --disable-asm"
     elif [[ $uname == Darwin ]]; then
       configure_flags="$configure_flags --disable-asm"
-    elif [[ $uname == Linux ]] && [[ $x86 == true ]]; then
-      configure_flags="$configure_flags --host=i686-linux-gnu"
     fi
     build $wavpack_location "cli/wavpack.$execext cli/wvunpack.$execext" "wavpack.$execext wvunpack.$execext"
   fi
