@@ -35,7 +35,8 @@ matrix:
       compiler: clang
 
     - os: linux
-      compiler: clang
+      dist: xenial
+      compiler: gcc
       env:
         - AppImageBuild=True
         - AppImageArch=x86_64
@@ -43,46 +44,92 @@ matrix:
         apt:
           packages:
             - g++-multilib
-            - libasound2-dev
-            - libgtk-3-dev
-            - libncurses-dev
-            - libpulse-dev
-            - libssl-dev
-            - libudev-dev
             - nasm
-            - yasm
             - wine1.6-dev
+            - yasm
 
     - os: linux
-      compiler: clang
+      dist: xenial
+      compiler: gcc
       env:
         - AppImageBuild=True
         - AppImageArch=i686
       addons:
         apt:
           packages:
-            - fuse:i386
             - g++-multilib
-            - gir1.2-atk-1.0:i386
-            - gir1.2-freedesktop:i386
-            - gir1.2-gdkpixbuf-2.0:i386
-            - gir1.2-glib-2.0:i386
-            - gir1.2-gtk-3.0:i386
-            - gir1.2-pango-1.0:i386
-            - libasound2-dev:i386
-            - libatk1.0-dev:i386
-            - libgdk-pixbuf2.0-dev:i386
-            - libgirepository-1.0-1:i386
-            - libgtk-3-dev:i386
-            - libncurses-dev:i386
-            - libpango1.0-dev:i386
-            - libpulse-dev:i386
-            - libssl-dev:i386
-            - libudev-dev:i386
-            - libxft-dev:i386
             - nasm
-            - yasm
             - wine1.6-dev:i386
+            - yasm
+
+    - os: linux
+      dist: xenial
+      compiler: gcc
+      env:
+        - AppImageBuild=True
+        - AppImageArch=armhf
+      addons:
+        apt:
+          packages:
+            - g++-arm-linux-gnueabihf
+            - nasm
+            - qemu
+            - qemu-user-static
+            - yasm
+
+    - os: linux
+      dist: xenial
+      compiler: gcc
+      env:
+        - AppImageBuild=True
+        - AppImageArch=aarch64
+      addons:
+        apt:
+          packages:
+            - g++-aarch64-linux-gnu
+            - nasm
+            - qemu
+            - qemu-user-static
+            - yasm
+
+before_install:
+  - |
+    # Set environment variables
+    if [ "$AppImageBuild" = True ]; then
+      export OS=`uname`
+      if [ "$AppImageArch" = i686 ]; then
+        export ARCH=i386
+        export HOST=i386-linux-gnu
+        export BUILD_X86=True
+      elif [ "$AppImageArch" = x86_64 ]; then
+        export ARCH=amd64
+        export HOST=x86_64-linux-gnu
+      elif [ "$AppImageArch" = armhf ]; then
+        export ARCH=armhf
+        export HOST=arm-linux-gnueabihf
+      elif [ "$AppImageArch" = aarch64 ]; then
+        export ARCH=arm64
+        export HOST=aarch64-linux-gnu
+      fi
+    fi
+  - |
+    if [ "$AppImageBuild" = True ]; then
+      if [[ "$AppImageArch" != i686 && "$AppImageArch" != x86_64 ]]; then
+        sudo dpkg --add-architecture $ARCH
+        sudo rm -f /usr/bin/gcc /usr/bin/g++ /usr/bin/cpp /usr/bin/ld /usr/bin/strip
+        sudo ln -s $HOST-gcc /usr/bin/gcc
+        sudo ln -s $HOST-g++ /usr/bin/g++
+        sudo ln -s $HOST-cpp /usr/bin/cpp
+        sudo ln -s $HOST-ld /usr/bin/ld
+        sudo ln -s $HOST-strip /usr/bin/strip
+        sudo echo "deb [arch=$ARCH] http://ports.ubuntu.com/ubuntu-ports xenial main restricted" >> /etc/apt/sources.list
+        sudo echo "deb [arch=$ARCH] http://ports.ubuntu.com/ubuntu-ports xenial-updates main restricted" >> /etc/apt/sources.list
+        sudo echo "deb [arch=$ARCH] http://ports.ubuntu.com/ubuntu-ports xenial-security main restricted" >> /etc/apt/sources.list
+        sudo sed -i 's/deb http/deb \[arch=amd64,i386\] http/g' /etc/apt/sources.list
+        sudo apt update
+      fi
+      sudo apt install -y libasound2-dev:$ARCH libblkid1:$ARCH libcairo2-dev:$ARCH libfuse2:$ARCH libgdk-pixbuf2.0-dev:$ARCH libgtk-3-dev:$ARCH libncurses-dev:$ARCH libpango1.0-dev:$ARCH libpulse-dev:$ARCH libsm-dev:$ARCH libsm6:$ARCH libsndfile1-dev:$ARCH libssl-dev:$ARCH libudev-dev:$ARCH libuuid1:$ARCH libxft-dev:$ARCH zlib1g-dev:$ARCH
+    fi
 
 install:
   - |
@@ -98,27 +145,23 @@ install:
 
 script:
   - |
-    # Set environment variables
-    if [ $AppImageBuild = True ] && [ $AppImageArch = i686 ]; then
-      export BUILD_X86=True
-    fi
-  - |
     # Build libcdio
     if [ $TRAVIS_OS_NAME != osx ]; then
       ./tools/build-codecs libcdio libcdio-paranoia
     fi
   - |
     # Build libcurl
-    if [ $AppImageBuild = True ]; then
+    if [ "$AppImageBuild" = True ]; then
       wget -c https://curl.haxx.se/download/curl-7.64.1.tar.bz2
       tar xfj curl-7.64.1.tar.bz2
       cd curl-7.64.1
       if [ $AppImageArch = i686 ]; then
         CFLAGS="-m32" ./configure --with-ssl --without-librtmp --disable-ldap
       else
-        ./configure --with-ssl --without-librtmp --disable-ldap
+        ./configure --host=$HOST --with-ssl --without-librtmp --disable-ldap
       fi
       make -j$(nproc) && sudo make install
+      sudo rm /usr/local/bin/curl
       cd ..
     fi
   - |
@@ -126,14 +169,12 @@ script:
     git clone https://github.com/enzo1982/smooth.git enzo1982/smooth
     cd enzo1982/smooth
     CONFIG="bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib"
-    if [ $AppImageBuild = True ]; then
+    if [ "$AppImageBuild" = True ]; then
       CONFIG+=",release"
-      if [ $AppImageArch = i686 ]; then
-        export PKG_CONFIG_PATH=/usr/lib/i386-linux-gnu/pkgconfig
-      fi
+      export PKG_CONFIG_PATH=/usr/lib/$HOST/pkgconfig
     fi
     make config=$CONFIG BUILD_V8=False -j$(nproc) && sudo make config=$CONFIG BUILD_V8=False install
-    if [ $AppImageBuild = True ] && [ $AppImageArch = i686 ]; then
+    if [ "$AppImageBuild" = True ]; then
       unset PKG_CONFIG_PATH
     fi
     cd ../..
@@ -142,11 +183,11 @@ script:
     git clone https://github.com/enzo1982/boca.git enzo1982/boca
     cd enzo1982/boca
     CONFIG="bundledlibexpat,bundledliburiparser,bundledzlib"
-    if [ $AppImageBuild = True ]; then
+    if [ "$AppImageBuild" = True ]; then
       CONFIG+=",release"
     fi
     make config=$CONFIG -j$(nproc) && sudo make config=$CONFIG install
-    if [ $AppImageBuild = True ] && [ $AppImageArch = x86_64 ]; then
+    if [ "$AppImageBuild" = True ] && [ "$AppImageArch" = x86_64 ]; then
       # Build 32 bit Core Audio connector
       cd components/encoder/coreaudioconnect/connector
       make BUILD_X86=True config=$CONFIG clean && make BUILD_X86=True config=$CONFIG -j$(nproc)
@@ -156,27 +197,23 @@ script:
     cd ../..
   - |
     # Build fre:ac
-    if [ $AppImageBuild = True ]; then
+    if [ "$AppImageBuild" = True ]; then
       CONFIG="release"
     fi
     make config=$CONFIG USE_V8=False -j$(nproc) && sudo make config=$CONFIG USE_V8=False install
   - |
-    # Create AppImage
-    if [ $AppImageBuild = True ]; then
-      OS=`uname`
-      LIBARCH=$AppImageArch
-      if [ $AppImageArch = i686 ]; then
-        LIBARCH=i386
-      fi
-    # Build codecs
+    # Build codecs and DSP libraries
+    if [ "$AppImageBuild" = True ]; then
       ./tools/build-codecs faad2 fdk-aac mp4v2
       ./tools/build-codecs lame mpg123
       ./tools/build-codecs libogg opus speex vorbis
       ./tools/build-codecs flac mac musepack wavpack
       ./tools/build-codecs libav libsndfile
-    # Build DSP libraries
       ./tools/build-codecs libsamplerate rnnoise rubberband
+    fi
+  - |
     # Install codecs
+    if [ "$AppImageBuild" = True ]; then
       mkdir -p appdir/codecs
       cp /usr/local/lib/libFLAC.so appdir/codecs/FLAC.so
       cp /usr/local/lib/libMAC.so appdir/codecs/MAC.so
@@ -201,11 +238,16 @@ script:
       install -Dm 0755 /usr/local/bin/wavpack appdir/codecs/cmdline/wavpack
       install -Dm 0755 /usr/local/bin/wvunpack appdir/codecs/cmdline/wvunpack
       strip --strip-all appdir/codecs/cmdline/*
-    # Copy smooth and BoCA
+    fi
+  - |
+    # Copy smooth, BoCA and fre:ac to appdir
+    if [ "$AppImageBuild" = True ]; then
+    # Copy smooth
       cp /usr/local/lib/libsmooth*.so.? appdir
+    # Copy BoCA
       cp -r /usr/local/lib/boca appdir
       ln -s boca/boca.1.0.so appdir/libboca-1.0.so.1
-    # Copy fre:ac to appdir
+    # Copy fre:ac
       cp COPYING Readme* appdir
       rm appdir/Readme.md
       cp -r /usr/local/lib/freac/* appdir/boca
@@ -222,19 +264,34 @@ script:
       cp -r /usr/local/share/metainfo appdir/usr/share
       ln -s usr/share/applications/org.freac.freac.desktop appdir/org.freac.freac.desktop
       cp /usr/local/share/icons/hicolor/128x128/apps/org.freac.freac.png appdir
+    fi
+  - |
     # Copy other dependencies
+    if [ "$AppImageBuild" = True ]; then
       cp /usr/local/lib/libcdio.so.19 appdir
       cp /usr/local/lib/libcdio_cdda.so.2 appdir
       cp /usr/local/lib/libcdio_paranoia.so.2 appdir
       cp /usr/local/lib/libcurl.so.4 appdir
-      cp -P /lib/$LIBARCH-linux-gnu/libcrypto.so.1* appdir
-      cp -P /lib/$LIBARCH-linux-gnu/libssl.so.1* appdir
+      cp -P /lib/$HOST/libcrypto.so.1* appdir
+      cp -P /lib/$HOST/libssl.so.1* appdir
       strip --strip-all appdir/lib*.so*
+    fi
+  - |
     # Create AppImage using appimagetool
+    if [ "$AppImageBuild" = True ]; then
       wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-$AppImageArch.AppImage"
       chmod a+x appimagetool-$AppImageArch.AppImage
-      ARCH=$AppImageArch ./appimagetool-$AppImageArch.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+      if [ "$AppImageArch" = armhf ]; then
+        qemu-arm-static ./appimagetool-$AppImageArch.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+      elif [ "$AppImageArch" = aarch64 ]; then
+        qemu-aarch64-static ./appimagetool-$AppImageArch.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+      else
+        ARCH=$AppImageArch ./appimagetool-$AppImageArch.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+      fi
+    fi
+  - |
     # Upload AppImage to GitHub
+    if [ "$AppImageBuild" = True ]; then
       bash packaging/appimage/upload-appimage freac*.AppImage
     fi
 
