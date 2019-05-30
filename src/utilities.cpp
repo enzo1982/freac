@@ -491,12 +491,16 @@ String freac::Utilities::GetSingleOutputFileName(const Array<Track> &tracks)
 	 */
 	Info	 info = tracks.GetFirst().GetInfo();
 
+	if (info.HasOtherInfo(INFO_ALBUMARTIST)) info.artist = info.GetOtherInfo(INFO_ALBUMARTIST);
+
 	foreach (const Track &chapterTrack, tracks)
 	{
 		const Info	&chapterInfo = chapterTrack.GetInfo();
 
-		if (chapterInfo.artist != info.artist) info.artist = NIL;
-		if (chapterInfo.album  != info.album)  info.album  = NIL;
+		if (( chapterInfo.HasOtherInfo(INFO_ALBUMARTIST) && chapterInfo.GetOtherInfo(INFO_ALBUMARTIST) != info.artist) ||
+		    (!chapterInfo.HasOtherInfo(INFO_ALBUMARTIST) && chapterInfo.artist			       != info.artist)) info.artist = NIL;
+
+		if (chapterInfo.album != info.album) info.album = NIL;
 	}
 
 	/* Instantiate selected encoder.
