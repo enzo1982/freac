@@ -1142,7 +1142,7 @@ Error freac::JobConvert::Perform()
 			/* Set playlist filename so it is written to the same place as a single output file.
 			 */
 			if (encodeToSingleFile) playlistFileNames.Add(singleOutFile.Head(singleOutFile.FindLast(".")));
-			else			playlistFileNames.Add(Utilities::GetPlaylistFileName(playlistTracks.GetFirst()));
+			else			playlistFileNames.Add(Utilities::GetPlaylistFileName(playlistTracks.GetFirst(), tracksToConvert));
 
 			playlistTrackLists.Add(new Array<Track>(playlistTracks));
 			cuesheetTrackLists.Add(new Array<Track>(cuesheetTracks));
@@ -1153,7 +1153,7 @@ Error freac::JobConvert::Perform()
 			{
 				/* Check if we already have a list for this playlist.
 				 */
-				String		 playlistFileName = Utilities::GetPlaylistFileName(track);
+				String		 playlistFileName = Utilities::GetPlaylistFileName(track, tracksToConvert);
 				UnsignedInt32	 playlistFileCRC  = playlistFileName.ComputeCRC32();
 
 				if (playlistFileNames.Add(playlistFileName, playlistFileCRC))

@@ -293,11 +293,11 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && !track.isCDTrack)
 	{
 		String		 file = String(inFileDirectory).Append(Directory::GetDirectoryDelimiter()).Append(String::FromInt(S::System::System::Clock())).Append(".temp");
-		OutStream	*temp = new OutStream(STREAM_FILE, file, OS_REPLACE);
+		OutStream	 temp(STREAM_FILE, file, OS_REPLACE);
 
-		if (temp->GetLastError() == IO_ERROR_OK) writeToInputDir = True;
+		if (temp.GetLastError() == IO_ERROR_OK) writeToInputDir = True;
 
-		delete temp;
+		temp.Close();
 
 		File(file).Delete();
 	}
@@ -563,18 +563,38 @@ String freac::Utilities::GetSingleOutputFileName(const Array<Track> &tracks)
 	return singleOutputFileName;
 }
 
-String freac::Utilities::GetPlaylistFileName(const Track &track)
+String freac::Utilities::GetPlaylistFileName(const Track &track, const Array<Track> &originalTracks)
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	const Info	&info	= track.GetInfo();
 
-	Bool	 enableConsole	   = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+	Bool	 enableConsole = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
 
 	if (enableConsole) return NIL;
 
-	String	 outputDir	   = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
+	/* Find playlist output folder.
+	 */
+	const Track	&originalTrack = originalTracks.Get(track.GetTrackID());
+
+	String		 outputDir     = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
+	String		 inputDir      = originalTrack.origFilename.Head(Math::Max(originalTrack.origFilename.FindLast("\\"), originalTrack.origFilename.FindLast("/")) + 1);
+
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && !originalTrack.isCDTrack)
+	{
+		String		 file = String(inputDir).Append(String::FromInt(S::System::System::Clock())).Append(".temp");
+		OutStream	 temp(STREAM_FILE, file, OS_REPLACE);
+
+		if (temp.GetLastError() == IO_ERROR_OK) outputDir = inputDir;
+
+		temp.Close();
+
+		File(file).Delete();
+	}
+
+	/* Generate playlist file name.
+	 */
 	Bool	 useUnicode	   = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
 	Bool	 replaceSpaces	   = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
 
