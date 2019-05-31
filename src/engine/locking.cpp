@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -74,9 +74,9 @@ Bool freac::Locking::LockDeviceForTrack(const Track &track)
 {
 	/* Check if the track is on a locked device.
 	 */
-	if (track.origFilename.StartsWith("device://"))
+	if (track.fileName.StartsWith("device://"))
 	{
-		String	 device = track.origFilename.SubString(9, track.origFilename.Tail(track.origFilename.Length() - 9).Find("/"));
+		String	 device = track.fileName.SubString(9, track.fileName.Tail(track.fileName.Length() - 9).Find("/"));
 		Lock	 lock(managementMutex);
 
 		if (deviceLocked.Get(device.ComputeCRC32())) return False;
@@ -87,12 +87,12 @@ Bool freac::Locking::LockDeviceForTrack(const Track &track)
 #if defined __APPLE__ || defined __HAIKU__
 	/* On macOS and Haiku, treat CDDA volumes like CD tracks.
 	 */
-	String	 filePath = File(track.origFilename).GetFilePath();
+	String	 filePath = File(track.fileName).GetFilePath();
 
 #if defined __APPLE__
-	if (track.origFilename.EndsWith(".aiff") && Directory(filePath).GetDirectoryPath() == "/Volumes" && File(String(filePath).Append("/.TOC.plist")).Exists())
+	if (track.fileName.EndsWith(".aiff") && Directory(filePath).GetDirectoryPath() == "/Volumes" && File(String(filePath).Append("/.TOC.plist")).Exists())
 #else
-	if (track.origFilename.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
+	if (track.fileName.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
 #endif
 	{
 		Lock	 lock(managementMutex);
@@ -110,9 +110,9 @@ Bool freac::Locking::UnlockDeviceForTrack(const Track &track)
 {
 	/* Unlock track device if necessary.
 	 */
-	if (track.origFilename.StartsWith("device://"))
+	if (track.fileName.StartsWith("device://"))
 	{
-		String	 device = track.origFilename.SubString(9, track.origFilename.Tail(track.origFilename.Length() - 9).Find("/"));
+		String	 device = track.fileName.SubString(9, track.fileName.Tail(track.fileName.Length() - 9).Find("/"));
 		Lock	 lock(managementMutex);
 
 		deviceLocked.Remove(device.ComputeCRC32());
@@ -121,12 +121,12 @@ Bool freac::Locking::UnlockDeviceForTrack(const Track &track)
 #if defined __APPLE__ || defined __HAIKU__
 	/* On macOS and Haiku, treat CDDA volumes like CD tracks.
 	 */
-	String	 filePath = File(track.origFilename).GetFilePath();
+	String	 filePath = File(track.fileName).GetFilePath();
 
 #if defined __APPLE__
-	if (track.origFilename.EndsWith(".aiff") && Directory(filePath).GetDirectoryPath() == "/Volumes" && File(String(filePath).Append("/.TOC.plist")).Exists())
+	if (track.fileName.EndsWith(".aiff") && Directory(filePath).GetDirectoryPath() == "/Volumes" && File(String(filePath).Append("/.TOC.plist")).Exists())
 #else
-	if (track.origFilename.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
+	if (track.fileName.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
 #endif
 	{
 		Lock	 lock(managementMutex);
@@ -142,13 +142,13 @@ Bool freac::Locking::LockOutputForTrack(const Track &track)
 {
 	/* Check if the track output file is currently locked.
 	 */
-	if (track.outfile != NIL)
+	if (track.outputFile != NIL)
 	{
 		Lock	 lock(managementMutex);
 
-		if (outputLocked.Get(track.outfile.ComputeCRC32())) return False;
+		if (outputLocked.Get(track.outputFile.ComputeCRC32())) return False;
 
-		outputLocked.Add(True, track.outfile.ComputeCRC32());
+		outputLocked.Add(True, track.outputFile.ComputeCRC32());
 	}
 
 	return True;
@@ -158,11 +158,11 @@ Bool freac::Locking::UnlockOutputForTrack(const Track &track)
 {
 	/* Unlock track output file if necessary.
 	 */
-	if (track.outfile != NIL)
+	if (track.outputFile != NIL)
 	{
 		Lock	 lock(managementMutex);
 
-		outputLocked.Remove(track.outfile.ComputeCRC32());
+		outputLocked.Remove(track.outputFile.ComputeCRC32());
 	}
 
 	return True;

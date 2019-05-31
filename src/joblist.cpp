@@ -602,7 +602,7 @@ Void freac::JobList::LoadList()
 			const Array<Track>	&tracks = playlist->ReadPlaylist(dialog.GetFileName());
 			Array<String>		 files;
 
-			foreach (const Track &track, tracks) files.Add(track.origFilename);
+			foreach (const Track &track, tracks) files.Add(track.fileName);
 
 			(new JobAddFiles(files))->Schedule();
 
@@ -837,8 +837,8 @@ Void freac::JobList::OnClickTab(Int n)
 	{
 		const Track	&track = tracks.Get(GetNthEntry(i)->GetHandle());
 
-		if	(track.origFilename.Contains("://")) fileTypes.Add(track.origFilename.Head(track.origFilename.Find("://")).ToUpper());
-		else if (track.origFilename.Contains("."))   fileTypes.Add(track.origFilename.Tail(track.origFilename.Length() - track.origFilename.FindLast(".") - 1).ToUpper());
+		if	(track.fileName.Contains("://")) fileTypes.Add(track.fileName.Head(track.fileName.Find("://")).ToUpper());
+		else if (track.fileName.Contains("."))   fileTypes.Add(track.fileName.Tail(track.fileName.Length() - track.fileName.FindLast(".") - 1).ToUpper());
 	}
 
 	for (Int i = 0; sortByOutput && i < tracks.Length(); i++)
@@ -857,14 +857,14 @@ Void freac::JobList::OnClickTab(Int n)
 		Info		 thisInfo   = thisTrack.GetInfo();
 		const Format	&thisFormat = thisTrack.GetFormat();
 
-		if	(sortByArtist)	    thisInfo.artist	   = thisInfo.artist.ToLower();
-		else if (sortByAlbum)	    thisInfo.album	   = thisInfo.album.ToLower();
-		else if (sortByTitle)	    thisInfo.title	   = thisInfo.title.ToLower();
-		else if (sortByGenre)	    thisInfo.genre	   = thisInfo.genre.ToLower();
+		if	(sortByArtist)	    thisInfo.artist    = thisInfo.artist.ToLower();
+		else if (sortByAlbum)	    thisInfo.album     = thisInfo.album.ToLower();
+		else if (sortByTitle)	    thisInfo.title     = thisInfo.title.ToLower();
+		else if (sortByGenre)	    thisInfo.genre     = thisInfo.genre.ToLower();
 
 		else if (sortByAlbumArtist) thisInfo.SetOtherInfo(INFO_ALBUMARTIST, thisInfo.GetOtherInfo(INFO_ALBUMARTIST).Length() > 0 ? thisInfo.GetOtherInfo(INFO_ALBUMARTIST).ToLower() : thisInfo.artist.ToLower());
 
-		else if (sortByFile)	    thisTrack.origFilename = thisTrack.origFilename.ToLower();
+		else if (sortByFile)	    thisTrack.fileName = thisTrack.fileName.ToLower();
 
 		else if (sortByType)	    fileTypes.SetNth(i, fileTypes.GetNth(i).ToLower());
 		else if (sortByOutput)	    outputFileNames.SetNth(i, outputFileNames.GetNth(i).ToLower());
@@ -893,7 +893,7 @@ Void freac::JobList::OnClickTab(Int n)
 			    (sortByAlbum       &&  SortsAfter(compInfo.album, thisInfo.album)										) ||
 			    (sortByTitle       &&  SortsAfter(compInfo.title, thisInfo.title)										) ||
 			    (sortByGenre       &&  SortsAfter(compInfo.genre, thisInfo.genre)										) ||
-			    (sortByFile	       &&  SortsAfter(compTrack.origFilename, thisTrack.origFilename)								) ||
+			    (sortByFile	       &&  SortsAfter(compTrack.fileName, thisTrack.fileName)								) ||
 			    (sortByType	       &&  SortsAfter(fileTypes.GetNth(m), fileTypes.GetNth(i))									) ||
 			    (sortByOutput      &&  SortsAfter(outputFileNames.GetNth(m), outputFileNames.GetNth(i))							) ||
 			    (sortByAlbumArtist &&  SortsAfter(compInfo.GetOtherInfo(INFO_ALBUMARTIST), thisInfo.GetOtherInfo(INFO_ALBUMARTIST))				) ||
@@ -1152,17 +1152,17 @@ String freac::JobList::GetEntryText(const Track &track) const
 			jlEntry.Append(drives.Get(track.drive));
 		}
 
-		else if (field == "<file>")	   jlEntry.Append(track.origFilename);
+		else if (field == "<file>")	   jlEntry.Append(track.fileName);
 
 		else if (field == "<filetype>")
 		{
-			if	(track.origFilename.Contains("://")) jlEntry.Append(track.origFilename.Head(track.origFilename.Find("://")).ToUpper());
-			else if (track.origFilename.Contains("."))   jlEntry.Append(track.origFilename.Tail(track.origFilename.Length() - track.origFilename.FindLast(".") - 1).ToUpper());
+			if	(track.fileName.Contains("://")) jlEntry.Append(track.fileName.Head(track.fileName.Find("://")).ToUpper());
+			else if (track.fileName.Contains("."))   jlEntry.Append(track.fileName.Tail(track.fileName.Length() - track.fileName.FindLast(".") - 1).ToUpper());
 		}
 
 		else if (field == "<outputfile>")
 		{
-			String	 inputDirectory	 = track.origFilename.Head(track.origFilename.FindLast(Directory::GetDirectoryDelimiter()) + 1);
+			String	 inputDirectory	 = track.fileName.Head(track.fileName.FindLast(Directory::GetDirectoryDelimiter()) + 1);
 			String	 outputDirectory = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
 
 			String	 fileName	 = Utilities::GetOutputFileName(track);

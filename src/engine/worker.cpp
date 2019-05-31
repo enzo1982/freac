@@ -65,7 +65,7 @@ Int freac::ConvertWorker::Perform()
 
 		/* Do not limit parallel CD ripping jobs in automatic mode.
 		 */
-		Bool	 allocateThread = !(enableParallel && numberOfThreads <= 1 && trackToConvert.origFilename.StartsWith("device://"));
+		Bool	 allocateThread = !(enableParallel && numberOfThreads <= 1 && trackToConvert.fileName.StartsWith("device://"));
 
 		/* Allocate thread and run conversion.
 		 */
@@ -131,8 +131,8 @@ Int freac::ConvertWorker::Convert()
 	Track		 trackToEncode	= trackToConvert;
 	Bool		 error		= False;
 
-	DateTime	 fileTime	= File(trackToConvert.origFilename).GetWriteTime();
-	Bool		 isFile		= !trackToConvert.origFilename.StartsWith("device://");
+	DateTime	 fileTime	= File(trackToConvert.fileName).GetWriteTime();
+	Bool		 isFile		= !trackToConvert.fileName.StartsWith("device://");
 
 	String		 encodeChecksum;
 	String		 verifyChecksum;
@@ -141,10 +141,10 @@ Int freac::ConvertWorker::Convert()
 	{
 		/* Setup file names.
 		 */
-		File	 inFile	    = trackToConvert.origFilename;
-		File	 outFile    = trackToConvert.outfile;
+		File	 inFile	    = trackToConvert.fileName;
+		File	 outFile    = trackToConvert.outputFile;
 
-		String	 inFileName = trackToConvert.origFilename;
+		String	 inFileName = trackToConvert.fileName;
 
 		if (String(outFile).ToLower() == String(inFile).ToLower()) outFile = String(outFile).Append(".temp");
 

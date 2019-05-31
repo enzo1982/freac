@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -227,7 +227,7 @@ Void BoCA::ChooserTracks::OnApplicationAddTrack(const Track &track)
 	const Info	&info = track.GetInfo();
 	String		 jlEntry;
 
-	if (info.artist == NIL && info.title == NIL) jlEntry = String(I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(track.origFilename).Append(ListEntry::tabDelimiter);
+	if (info.artist == NIL && info.title == NIL) jlEntry = String(I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(track.fileName).Append(ListEntry::tabDelimiter);
 	else					     jlEntry = String(info.artist.Length() > 0 ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(info.title.Length() > 0 ? info.title : I18n::Get()->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
 	jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String()).Append(ListEntry::tabDelimiter).Append(track.GetLengthString()).Append(ListEntry::tabDelimiter).Append(track.GetFileSizeString());
@@ -248,7 +248,7 @@ Void BoCA::ChooserTracks::OnApplicationModifyTrack(const Track &track)
 			const Info	&info = track.GetInfo();
 			String		 jlEntry;
 
-			if (info.artist == NIL && info.title == NIL) jlEntry = String(I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(track.origFilename).Append(ListEntry::tabDelimiter);
+			if (info.artist == NIL && info.title == NIL) jlEntry = String(I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(track.fileName).Append(ListEntry::tabDelimiter);
 			else					     jlEntry = String(info.artist.Length() > 0 ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(info.title.Length() > 0 ? info.title : I18n::Get()->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
 			jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String()).Append(ListEntry::tabDelimiter).Append(track.GetLengthString()).Append(ListEntry::tabDelimiter).Append(track.GetFileSizeString());

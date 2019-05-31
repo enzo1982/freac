@@ -37,13 +37,13 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 {
 	Registry	&boca = Registry::Get();
 
-	sourceFormat  = track.GetFormat();
+	sourceFormat	 = track.GetFormat();
 
-	album	      = track;
-	album.outfile = fileName;
+	album		 = track;
+	album.outputFile = fileName;
 
-	chapter       = 0;
-	offset	      = 0;
+	chapter		 = 0;
+	offset		 = 0;
 
 	/* Create output file.
 	 */

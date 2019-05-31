@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -80,7 +80,7 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 	 */
 	Track	 trackInfo = track;
 
-	trackInfo.origFilename = nFileName;
+	trackInfo.fileName = nFileName;
 
 	decoder->SetConfiguration(configuration);
 	decoder->SetAudioTrackInfo(trackInfo);

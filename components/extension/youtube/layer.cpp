@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -673,7 +673,7 @@ Void BoCA::LayerYouTube::OnApplicationModifyTrack(const Track &track)
 	const Info	&info = track.GetInfo();
 	String		 jlEntry;
 
-	if (info.artist == NIL && info.title == NIL) jlEntry = String(ListEntry::tabDelimiter).Append(track.origFilename).Append(ListEntry::tabDelimiter);
+	if (info.artist == NIL && info.title == NIL) jlEntry = String(ListEntry::tabDelimiter).Append(track.fileName).Append(ListEntry::tabDelimiter);
 	else					     jlEntry = String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown")).Append(ListEntry::tabDelimiter).Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
 	jlEntry.Append(track.GetLengthString()).Append(ListEntry::tabDelimiter).Append(track.GetFileSizeString());
@@ -707,7 +707,7 @@ Void BoCA::LayerYouTube::OnApplicationRemoveTrack(const Track &track)
 	{
 		if (tracks.Get(list_tracks->GetNthEntry(i)->GetHandle()).GetTrackID() == track.GetTrackID())
 		{
-			if (!config->GetIntValue(ConfigureYouTube::ConfigID, "SaveVideoFiles", False) || track.origFilename.StartsWith(S::System::System::GetTempDirectory())) File(track.origFilename).Delete();
+			if (!config->GetIntValue(ConfigureYouTube::ConfigID, "SaveVideoFiles", False) || track.fileName.StartsWith(S::System::System::GetTempDirectory())) File(track.fileName).Delete();
 
 			tracks.Remove(list_tracks->GetNthEntry(i)->GetHandle());
 
@@ -747,7 +747,7 @@ Void BoCA::LayerYouTube::OnApplicationRemoveAllTracks()
 
 	foreach (const Track &track, tracks)
 	{
-		if (!config->GetIntValue(ConfigureYouTube::ConfigID, "SaveVideoFiles", False) || track.origFilename.StartsWith(S::System::System::GetTempDirectory())) File(track.origFilename).Delete();
+		if (!config->GetIntValue(ConfigureYouTube::ConfigID, "SaveVideoFiles", False) || track.fileName.StartsWith(S::System::System::GetTempDirectory())) File(track.fileName).Delete();
 	}
 
 	tracks.RemoveAll();
@@ -872,9 +872,9 @@ Bool BoCA::LayerYouTube::FinishDownload(Video *video)
 
 	Track	 track;
 
-	track.origFilename = video->GetVideoFile();
+	track.fileName = video->GetVideoFile();
 
-	decoder->GetStreamInfo(track.origFilename, track);
+	decoder->GetStreamInfo(track.fileName, track);
 
 	boca.DeleteComponent(decoder);
 

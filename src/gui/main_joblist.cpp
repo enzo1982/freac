@@ -1434,7 +1434,7 @@ Void freac::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String 
 	previousTrackSeconds = -10;
 
 	const Info	&info	  = track.GetInfo();
-	String		 fileInfo = track.origFilename;
+	String		 fileInfo = track.fileName;
 
 	if (info.artist.Length() > 0 ||
 	    info.title.Length()	 > 0) fileInfo = String(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ").Append(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title"));

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -85,7 +85,7 @@ freac::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track> &
 
 	foreach (const BoCA::Track &track, tracks)
 	{
-		list_files->AddEntry(String(track.outfile).Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Overwrite")), True);
+		list_files->AddEntry(String(track.outputFile).Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Overwrite")), True);
 	}
 
 	Add(mainWnd);

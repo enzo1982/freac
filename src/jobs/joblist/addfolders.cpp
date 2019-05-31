@@ -104,7 +104,7 @@ Void freac::JobAddFolders::RemoveReferencedFiles()
 
 				/* Remove file from list if filename matches.
 				 */
-				if (file == track.origFilename)
+				if (file == track.fileName)
 				{
 					if (j < i) i--;
 

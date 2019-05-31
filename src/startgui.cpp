@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -791,17 +791,17 @@ Void freac::freacGUI::QueryCDDB()
 
 				if (trackNumber == -1) continue;
 
-				info.artist	= (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(trackNumber - 1) : cdInfo.dArtist);
-				info.title	= cdInfo.trackTitles.GetNth(trackNumber - 1);
-				info.album	= cdInfo.dTitle;
-				info.genre	= cdInfo.dGenre;
-				info.year	= cdInfo.dYear;
-				info.track	= trackNumber;
+				info.artist	 = (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(trackNumber - 1) : cdInfo.dArtist);
+				info.title	 = cdInfo.trackTitles.GetNth(trackNumber - 1);
+				info.album	 = cdInfo.dTitle;
+				info.genre	 = cdInfo.dGenre;
+				info.year	 = cdInfo.dYear;
+				info.track	 = trackNumber;
 
 				track.SetInfo(info);
 				track.SetOriginalInfo(info);
 
-				track.outfile	= NIL;
+				track.outputFile = NIL;
 
 				BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
 			}

@@ -169,18 +169,18 @@ Error freac::JobConvert::Precheck()
 
 		foreach (Track &track, tracks)
 		{
-			track.outfile = Utilities::GetOutputFileName(track);
+			track.outputFile = Utilities::GetOutputFileName(track);
 
-			UnsignedInt64	 trackCRC = String(track.outfile).ToLower().ComputeCRC64();
+			UnsignedInt64	 trackCRC = String(track.outputFile).ToLower().ComputeCRC64();
 
-			if (newTrackCRCs.Get(trackCRC) != NIL || (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory)))
+			if (newTrackCRCs.Get(trackCRC) != NIL || (File(track.outputFile).Exists() && !(track.outputFile.ToLower() == track.fileName.ToLower() && writeToInputDirectory)))
 			{
 				if (!configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAddSequentialNumbersID, Config::SettingsFilenamesAddSequentialNumbersDefault)) { existingTracks.Add(track); continue; }
 
 				/* Append sequential number to output file.
 				 */
-				String	 name	   = track.outfile.Head(track.outfile.FindLast("."));
-				String	 extension = track.outfile.Tail(track.outfile.Length() - track.outfile.FindLast("."));
+				String	 name	   = track.outputFile.Head(track.outputFile.FindLast("."));
+				String	 extension = track.outputFile.Tail(track.outputFile.Length() - track.outputFile.FindLast("."));
 
 				for (Int i = 2; i >= 2; i++)
 				{
@@ -189,8 +189,8 @@ Error freac::JobConvert::Precheck()
 
 					if (newTrackCRCs.Get(resultCRC) == NIL && !File(result).Exists())
 					{
-						track.outfile = result;
-						trackCRC      = resultCRC;
+						track.outputFile = result;
+						trackCRC	 = resultCRC;
 
 						break;
 					}
@@ -343,16 +343,16 @@ Error freac::JobConvert::Perform()
 
 		/* Set output file name and add track to playlist.
 		 */
-		singleTrack.origFilename = singleOutFile;
-		singleTrack.outfile	 = singleOutFile;
+		singleTrack.fileName   = singleOutFile;
+		singleTrack.outputFile = singleOutFile;
 
-		singleTrack.length	 = progress->GetTotalSamples();
+		singleTrack.length     = progress->GetTotalSamples();
 
 		/* Check if output file is one of the input files.
 		 */
 		foreach (Track &track, tracks)
 		{
-			if (track.origFilename == singleOutFile) { singleOutFile.Append(".temp"); break; }
+			if (track.fileName == singleOutFile) { singleOutFile.Append(".temp"); break; }
 		}
 
 		/* Create processor to get output format.
@@ -388,7 +388,7 @@ Error freac::JobConvert::Perform()
 
 		/* Set track output file in single file mode.
 		 */
-		foreach (Track &track, tracks) track.outfile = singleTrack.outfile;
+		foreach (Track &track, tracks) track.outputFile = singleTrack.outputFile;
 	}
 
 	/* Setup conversion log.
@@ -561,7 +561,7 @@ Error freac::JobConvert::Perform()
 
 				/* Delete input file if requested.
 				 */
-				if (Config::Get()->deleteAfterEncoding && track.outfile != track.origFilename && !enableConsole)
+				if (Config::Get()->deleteAfterEncoding && track.outputFile != track.fileName && !enableConsole)
 				{
 					/* Check if this was the last track depending on this input file.
 					 */
@@ -569,15 +569,15 @@ Error freac::JobConvert::Perform()
 
 					foreach (const Track &trackToCheck, tracks)
 					{
-						if (trackToCheck.origFilename == track.origFilename) { deleteFile = False; break; }
+						if (trackToCheck.fileName == track.fileName) { deleteFile = False; break; }
 					}
 
 					/* Delete file if no more tracks left.
 					 */
-					if (deleteFile) File(track.origFilename).Delete();
+					if (deleteFile) File(track.fileName).Delete();
 				}
 
-				if (File(track.outfile).Exists())
+				if (File(track.outputFile).Exists())
 				{
 					/* Add encoded track to joblist if requested.
 					 */
@@ -585,7 +585,7 @@ Error freac::JobConvert::Perform()
 					{
 						Array<String>	 files;
 
-						files.Add(track.outfile);
+						files.Add(track.outputFile);
 
 						(new JobAddFiles(files))->Schedule();
 					}
@@ -653,7 +653,7 @@ Error freac::JobConvert::Perform()
 																		  encoderName    = worker->GetEncoderName(),
 																		  conversionStep = worker->GetConversionStep());
 
-				SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", workerTrack.origFilename));
+				SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", workerTrack.fileName));
 
 				progress->UpdateTrack(workerTrack, worker->GetTrackPosition());
 
@@ -760,7 +760,7 @@ Error freac::JobConvert::Perform()
 			else if (conversionStep == ConversionStepVerify) conversionStepText = String(" (").Append(i18n->TranslateString("verifying", "Joblist")).Append(")");
 
 			text->SetY(42 + i * 20);
-			text->SetText(workerTrack.origFilename.Tail(workerTrack.origFilename.Length() - workerTrack.origFilename.FindLast(Directory::GetDirectoryDelimiter()) - 1).Append(conversionStepText));
+			text->SetText(workerTrack.fileName.Tail(workerTrack.fileName.Length() - workerTrack.fileName.FindLast(Directory::GetDirectoryDelimiter()) - 1).Append(conversionStepText));
 			text->Show();
 
 			progress->SetY(54 + i * 20);
@@ -822,13 +822,13 @@ Error freac::JobConvert::Perform()
 			{
 				/* Check track existence again as it might have been created in the meantime.
 				 */
-				if (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory))
+				if (File(track.outputFile).Exists() && !(track.outputFile.ToLower() == track.fileName.ToLower() && writeToInputDirectory))
 				{
 					BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 					i18n->SetContext("Messages");
 
-					MessageDlg	 confirmation(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", track.outfile), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAllFiles);
+					MessageDlg	 confirmation(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", track.outputFile), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAllFiles);
 
 					confirmation.ShowDialog();
 
@@ -886,7 +886,7 @@ Error freac::JobConvert::Perform()
 																		    encoderName    = workerToUse->GetEncoderName(),
 																		    conversionStep = workerToUse->GetConversionStep());
 
-					SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", track.origFilename));
+					SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", track.fileName));
 				}
 			}
 
@@ -965,12 +965,12 @@ Error freac::JobConvert::Perform()
 		{
 			/* Move single output file if temporary.
 			 */
-			if (singleOutFile == String(singleTrack.outfile).Append(".temp"))
+			if (singleOutFile == String(singleTrack.outputFile).Append(".temp"))
 			{
-				File(singleTrack.outfile).Delete();
-				File(singleOutFile).Move(singleTrack.outfile);
+				File(singleTrack.outputFile).Delete();
+				File(singleOutFile).Move(singleTrack.outputFile);
 
-				singleOutFile = singleTrack.outfile;
+				singleOutFile = singleTrack.outputFile;
 			}
 
 			/* Setup and start worker for verification.
@@ -998,7 +998,7 @@ Error freac::JobConvert::Perform()
 												      encoderName    = worker->GetEncoderName(),
 												      conversionStep = worker->GetConversionStep());
 
-			SetText(i18n->AddEllipsis(i18n->TranslateString("Verifying %1", "Jobs::Convert")).Replace("%1", singleTrackToEncode.origFilename));
+			SetText(i18n->AddEllipsis(i18n->TranslateString("Verifying %1", "Jobs::Convert")).Replace("%1", singleTrackToEncode.fileName));
 
 			progress->StartTrack(singleTrackToEncode);
 
@@ -1056,12 +1056,12 @@ Error freac::JobConvert::Perform()
 		{
 			/* Move single output file if temporary.
 			 */
-			if (singleOutFile == String(singleTrack.outfile).Append(".temp"))
+			if (singleOutFile == String(singleTrack.outputFile).Append(".temp"))
 			{
-				File(singleTrack.outfile).Delete();
-				File(singleOutFile).Move(singleTrack.outfile);
+				File(singleTrack.outputFile).Delete();
+				File(singleOutFile).Move(singleTrack.outputFile);
 
-				singleOutFile = singleTrack.outfile;
+				singleOutFile = singleTrack.outputFile;
 			}
 
 			/* Add single output file to playlist.
@@ -1102,8 +1102,8 @@ Error freac::JobConvert::Perform()
 		{
 			Track	 playlistTrack = track;
 
-			playlistTrack.isCDTrack	   = False;
-			playlistTrack.origFilename = track.outfile;
+			playlistTrack.isCDTrack	= False;
+			playlistTrack.fileName	= track.outputFile;
 
 			playlistTracks.Add(playlistTrack);
 			cuesheetTracks.Add(playlistTrack);
@@ -1117,7 +1117,7 @@ Error freac::JobConvert::Perform()
 			cuesheetTrack.isCDTrack	   = False;
 			cuesheetTrack.sampleOffset = track.sampleOffset;
 			cuesheetTrack.length	   = track.length;
-			cuesheetTrack.origFilename = singleOutFile;
+			cuesheetTrack.fileName	   = singleOutFile;
 
 			cuesheetTracks.Add(cuesheetTrack);
 		}
@@ -1312,9 +1312,9 @@ Int freac::JobConvert::GetNumberOfWorkers(Int threadsToUse) const
 	{
 		/* Fall back to regular number of workers if we have any non-device tracks.
 		 */
-		if (!track.origFilename.StartsWith("device://")) return numberOfWorkers;
+		if (!track.fileName.StartsWith("device://")) return numberOfWorkers;
 
-		String	 deviceID = track.origFilename.SubString(9, track.origFilename.Tail(track.origFilename.Length() - 9).Find("/"));
+		String	 deviceID = track.fileName.SubString(9, track.fileName.Tail(track.fileName.Length() - 9).Find("/"));
 
 		drives.Add(True, deviceID.ComputeCRC32());
 	}

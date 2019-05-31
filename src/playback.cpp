@@ -109,7 +109,7 @@ Int freac::Playback::PlayThread()
 	 */
 	Decoder	*decoder = new Decoder(config);
 
-	if (!decoder->Create(track.origFilename, track))
+	if (!decoder->Create(track.fileName, track))
 	{
 		delete decoder;
 

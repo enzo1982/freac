@@ -431,7 +431,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			Track	 track = joblist->GetNthTrack(0);
 
-			track.outfile = outfile;
+			track.outputFile = outfile;
 
 			joblist->UpdateTrackInfo(track);
 
@@ -462,7 +462,7 @@ Void freac::freacCommandline::OnEncodeTrack(const Track &track, const String &de
 		if (!firstTime) Console::OutputString("done.\n");
 		else		firstTime = False;
 
-		String	 currentFile = track.origFilename;
+		String	 currentFile = track.fileName;
 
 		if (currentFile.StartsWith("device://cdda:")) currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 16));
 

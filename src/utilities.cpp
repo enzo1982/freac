@@ -272,7 +272,7 @@ Void freac::Utilities::UpdateGenreList(List *list, const String &genre)
 
 String freac::Utilities::GetOutputFileName(const Track &track)
 {
-	if (track.outfile != NIL) return track.outfile;
+	if (track.outputFile != NIL) return track.outputFile;
 
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -281,13 +281,13 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 
 	/* Check if input file folder is writable.
 	 */
-	Int	 lastBs	 = Math::Max(track.origFilename.FindLast("\\"), track.origFilename.FindLast("/"));
-	Int	 lastDot = track.origFilename.FindLast(".");
+	Int	 lastBs	 = Math::Max(track.fileName.FindLast("\\"), track.fileName.FindLast("/"));
+	Int	 lastDot = track.fileName.FindLast(".");
 
-	if (lastDot < lastBs) lastDot = track.origFilename.Length();
+	if (lastDot < lastBs) lastDot = track.fileName.Length();
 
-	String	 shortInFileName = track.origFilename.SubString(lastBs + 1, lastDot - lastBs - 1);
-	String	 inFileDirectory = track.origFilename.Head(lastBs);
+	String	 shortInFileName = track.fileName.SubString(lastBs + 1, lastDot - lastBs - 1);
+	String	 inFileDirectory = track.fileName.Head(lastBs);
 	Bool	 writeToInputDir = False;
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && !track.isCDTrack)
@@ -579,7 +579,7 @@ String freac::Utilities::GetPlaylistFileName(const Track &track, const Array<Tra
 	const Track	&originalTrack = originalTracks.Get(track.GetTrackID());
 
 	String		 outputDir     = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
-	String		 inputDir      = originalTrack.origFilename.Head(Math::Max(originalTrack.origFilename.FindLast("\\"), originalTrack.origFilename.FindLast("/")) + 1);
+	String		 inputDir      = originalTrack.fileName.Head(Math::Max(originalTrack.fileName.FindLast("\\"), originalTrack.fileName.FindLast("/")) + 1);
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && !originalTrack.isCDTrack)
 	{
