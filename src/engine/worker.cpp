@@ -275,7 +275,8 @@ Int freac::ConvertWorker::Convert()
 			return Error();
 		}
 
-		decoderName = decoder->GetDecoderName();
+		if (conversionStep != ConversionStepEncode &&
+		    conversionStep != ConversionStepVerify) decoderName = decoder->GetDecoderName();
 
 		/* Create verifier.
 		 */
@@ -326,7 +327,8 @@ Int freac::ConvertWorker::Convert()
 			return Error();
 		}
 
-		encoderName = encoder->GetEncoderName();
+		if (conversionStep == ConversionStepOnTheFly ||
+		    conversionStep == ConversionStepEncode) encoderName = encoder->GetEncoderName();
 
 		trackToEncode.SetFormat(encoder->GetTargetFormat());
 
