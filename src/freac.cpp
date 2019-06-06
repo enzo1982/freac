@@ -47,13 +47,13 @@ String	 freac::freac::version	    = "v1.1 Alpha";
 #	endif
 #endif
 
-#if defined __i386__
+#if defined __i386__ || defined _M_IX86
 String	 freac::freac::architecture = "x86";
-#elif defined __x86_64__
+#elif defined __x86_64__ || defined _M_AMD64
 String	 freac::freac::architecture = "x86-64";
-#elif defined __arm__
+#elif defined __arm__ || defined _M_ARM
 String	 freac::freac::architecture = "ARM";
-#elif defined __aarch64__
+#elif defined __aarch64__ || defined _M_ARM64
 String	 freac::freac::architecture = "ARM64";
 #elif defined __mips__
 String	 freac::freac::architecture = "MIPS";
