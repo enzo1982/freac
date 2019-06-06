@@ -151,6 +151,8 @@ Bool freac::Decoder::Destroy()
 
 Bool freac::Decoder::GetStreamInfo(Track &track) const
 {
+	if (decoder == NIL) return False;
+
 	return decoder->GetStreamInfo(fileName, track);
 }
 
@@ -174,21 +176,29 @@ Int freac::Decoder::Read(Buffer<UnsignedByte> &buffer)
 
 Bool freac::Decoder::Seek(Int64 sample)
 {
+	if (decoder == NIL) return False;
+
 	return decoder->Seek(sampleOffset + sample);
 }
 
 Int64 freac::Decoder::GetInBytes() const
 {
+	if (decoder == NIL) return 0;
+
 	return decoder->GetInBytes();
 }
 
 String freac::Decoder::GetDecoderName() const
 {
+	if (decoder == NIL) return String();
+
 	return decoder->GetName();
 }
 
 Void freac::Decoder::SetCalculateMD5(Bool calculateMD5)
 {
+	if (decoder == NIL) return;
+
 	decoder->SetCalculateMD5(calculateMD5);
 }
 

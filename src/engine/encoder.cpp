@@ -169,16 +169,22 @@ Void freac::Encoder::SignalChapterChange()
 
 Bool freac::Encoder::IsLossless() const
 {
+	if (encoder == NIL) return False;
+
 	return encoder->IsLossless();
 }
 
 String freac::Encoder::GetEncoderName() const
 {
+	if (encoder == NIL) return String();
+
 	return encoder->GetName();
 }
 
 Void freac::Encoder::SetCalculateMD5(Bool calculateMD5)
 {
+	if (encoder == NIL) return;
+
 	encoder->SetCalculateMD5(calculateMD5);
 }
 
