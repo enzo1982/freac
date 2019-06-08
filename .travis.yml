@@ -171,7 +171,7 @@ script:
     CONFIG="bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib"
     if [ "$AppImageBuild" = True ]; then
       CONFIG+=",release"
-      export PKG_CONFIG_PATH=/usr/lib/$HOST/pkgconfig
+      export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/$HOST/pkgconfig
     fi
     make config=$CONFIG BUILD_V8=False -j$(nproc) && sudo make config=$CONFIG BUILD_V8=False install
     if [ "$AppImageBuild" = True ]; then
