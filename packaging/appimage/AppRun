@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 HERE="$(dirname "$(readlink -f "${0}")")"
 
 # Allow the AppImage to be symlinked to e.g., /usr/bin/freaccmd
 # or called with ./freac*.AppImage freaccmd ...
 
-if [ ! -z $APPIMAGE ] ; then
+if [ ! -z "$APPIMAGE" ] ; then
   BINARY_NAME=$(basename "$ARGV0")
 else
   BINARY_NAME=$(basename "$0")
