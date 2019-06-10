@@ -128,7 +128,9 @@ before_install:
         sudo sed -i 's/deb http/deb \[arch=amd64,i386\] http/g' /etc/apt/sources.list
         sudo apt update
       fi
-      sudo apt install -y libasound2-dev:$ARCH libblkid1:$ARCH libcairo2-dev:$ARCH libfuse2:$ARCH libgdk-pixbuf2.0-dev:$ARCH libgtk-3-dev:$ARCH libncurses-dev:$ARCH libpango1.0-dev:$ARCH libpulse-dev:$ARCH libsm-dev:$ARCH libsm6:$ARCH libsndfile1-dev:$ARCH libssl-dev:$ARCH libudev-dev:$ARCH libuuid1:$ARCH libxft-dev:$ARCH zlib1g-dev:$ARCH
+      sudo rm /etc/gtk-3.0/settings.ini
+      sudo apt remove -y libcups2
+      sudo apt install -y adwaita-icon-theme:$ARCH gir1.2-gtk-3.0:$ARCH libasound2-dev:$ARCH libblkid1:$ARCH libcairo2-dev:$ARCH libcups2:$ARCH libegl1-mesa-dev:$ARCH libfuse2:$ARCH libgdk-pixbuf2.0-dev:$ARCH libgtk-3-dev:$ARCH libgtk-3-0:$ARCH libgtk-3-common:$ARCH libncurses-dev:$ARCH libpango1.0-dev:$ARCH libpulse-dev:$ARCH libpulse0:$ARCH libpulse-mainloop-glib0:$ARCH libsm-dev:$ARCH libsm6:$ARCH libsndfile1-dev:$ARCH libsndfile1:$ARCH libssl-dev:$ARCH libudev-dev:$ARCH libuuid1:$ARCH libxft-dev:$ARCH zlib1g-dev:$ARCH
     fi
 
 install:
