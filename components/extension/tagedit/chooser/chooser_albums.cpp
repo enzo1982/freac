@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -412,14 +412,16 @@ Void BoCA::ChooserAlbums::ReselectEntry()
  */
 Bool BoCA::ChooserAlbums::IsAlbumIdentical(const Track &track1, const Track &track2)
 {
-	Info	 info1 = track1.GetInfo();
-	Info	 info2 = track2.GetInfo();
+	const Info	&info1	 = track1.GetInfo();
+	const Info	&info2	 = track2.GetInfo();
 
-	if (info1.GetOtherInfo(INFO_ALBUMARTIST) != NIL) info1.artist = info1.GetOtherInfo(INFO_ALBUMARTIST);
-	if (info2.GetOtherInfo(INFO_ALBUMARTIST) != NIL) info2.artist = info2.GetOtherInfo(INFO_ALBUMARTIST);
+	String		 artist1 = info1.artist;
+	String		 artist2 = info2.artist;
 
-	if ((info1.artist == NIL || info2.artist == NIL || info1.artist == info2.artist) &&
-							   info1.album  == info2.album) return True;
+	if (info1.HasOtherInfo(INFO_ALBUMARTIST)) artist1 = info1.GetOtherInfo(INFO_ALBUMARTIST);
+	if (info2.HasOtherInfo(INFO_ALBUMARTIST)) artist2 = info2.GetOtherInfo(INFO_ALBUMARTIST);
+
+	if ((artist1 == NIL || artist2 == NIL || artist1 == artist2) && info1.album == info2.album) return True;
 
 	return False;
 }
