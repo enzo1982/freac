@@ -34,6 +34,8 @@ namespace freac
 					 LayerTooltip(const BoCA::Track &);
 			virtual		~LayerTooltip();
 
+			virtual Int	 Show();
+
 			Void		 UpdateFromTrack(const BoCA::Track &);
 	};
 };

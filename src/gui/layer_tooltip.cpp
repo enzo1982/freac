@@ -28,17 +28,10 @@ freac::LayerTooltip::~LayerTooltip()
 	if (text  != NIL) DeleteObject(text);
 }
 
-Void freac::LayerTooltip::UpdateFromTrack(const Track &nTrack)
+Int freac::LayerTooltip::Show()
 {
-	if (cover != NIL && nTrack.pictures.GetFirst() != track.pictures.GetFirst())
-	{
-		DeleteObject(cover);
-
-		cover = NIL;
-	}
-
-	track = nTrack;
-
+	/* Create and add cover thumbnail.
+	 */
 	if (track.pictures.Length() > 0 && cover == NIL)
 	{
 		Bitmap	 bitmap = track.pictures.GetFirst().GetBitmap();
@@ -58,13 +51,45 @@ Void freac::LayerTooltip::UpdateFromTrack(const Track &nTrack)
 		Add(cover);
 	}
 
-	if (text != NIL) DeleteObject(text);
+	/* Create and add tooltip text.
+	 */
+	if (text == NIL)
+	{
+		text = new Text(GetTrackInfo(track), Point(3 + (track.pictures.Length() > 0 ? 44 : 0), 3));
 
-	text = new Text(GetTrackInfo(track), Point(3 + (track.pictures.Length() > 0 ? 44 : 0), 3));
+		Add(text);
 
-	Add(text);
+		/* Set tooltip size.
+		 */
+		SetSize(Size(text->GetUnscaledTextWidth() + 7 + (track.pictures.Length() > 0 ? 44 : 0), text->GetUnscaledTextHeight() + 7));
+	}
 
-	SetSize(Size(text->GetUnscaledTextWidth() + 7 + (track.pictures.Length() > 0 ? 44 : 0), text->GetUnscaledTextHeight() + 7));
+	return Layer::Show();
+}
+
+Void freac::LayerTooltip::UpdateFromTrack(const Track &nTrack)
+{
+	/* Clear cover thumbnail if different.
+	 */
+	if (cover != NIL && nTrack.pictures.GetFirst() != track.pictures.GetFirst())
+	{
+		DeleteObject(cover);
+
+		cover = NIL;
+	}
+
+	/* Create and add tooltip text.
+	 */
+	if (text != NIL)
+	{
+		DeleteObject(text);
+
+		text = NIL;
+	}
+
+	/* Update track info.
+	 */
+	track = nTrack;
 }
 
 String freac::LayerTooltip::GetTrackInfo(const Track &track)
