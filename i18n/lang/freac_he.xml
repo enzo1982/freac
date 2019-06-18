@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">אילן צמרת</property>
-    <property name="url">http://www.v-g.co.il</property>
+    <property name="url">https://www.v-g.co.il</property>
     <property name="incomplete">true</property>
   </info>
   <data>

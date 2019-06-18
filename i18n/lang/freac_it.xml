@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Marco D'Amato &lt;md@mdtzone.it&gt;, FSoft &lt;fsoftwares@live.it&gt;</property>
-    <property name="url">http://www.mdtzone.it/</property>
+    <property name="url">https://www.mdtzone.it/</property>
   </info>
   <data>
     <entry id="100" string="OK">OK</entry>
