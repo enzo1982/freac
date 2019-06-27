@@ -57,6 +57,12 @@ Int freac::LayerTooltip::Show()
 	{
 		text = new Text(GetTrackInfo(track), Point(3 + (track.pictures.Length() > 0 ? 44 : 0), 3));
 
+		Font	 font = text->GetFont();
+
+		font.SetColor(Setup::TooltipTextColor);
+
+		text->SetFont(font);
+
 		Add(text);
 
 		/* Set tooltip size.

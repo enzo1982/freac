@@ -168,7 +168,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	info_area_cover	= new ActiveArea(Setup::BackgroundColor, Point(7, 167), Size(46, 46));
 	info_area_cover->SetOrientation(OR_LOWERLEFT);
-	info_area_cover->SetColor(Color(255, 255, 255));
+	info_area_cover->SetColor(Setup::ClientColor);
 	info_area_cover->Hide();
 
 	info_image_cover = new Image(NIL, Point(8, 166), Size(44, 44));

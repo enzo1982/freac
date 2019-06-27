@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -64,15 +64,15 @@ BoCA::LayerSEPA::LayerSEPA()
 	text_iban	= new Text(i18n->TranslateString("IBAN:"), Point(15, text_owner->GetY() + text_owner->GetUnscaledTextHeight() + 5));
 	text_bic	= new Text(i18n->TranslateString("BIC:"), Point(15, text_iban->GetY() + text_iban->GetUnscaledTextHeight() + 5));
 
-	cursor_owner	= new Cursor(Point(15, text_owner->GetY() - 1), Size(150, text_owner->GetUnscaledTextHeight() + 4));
-	cursor_owner->SetText(String("Robert Kausch").Replace(" ", "\xA0"));
+	cursor_owner	= new Cursor(Point(15, text_owner->GetY() - 1), Size(175, text_owner->GetUnscaledTextHeight() + 4));
+	cursor_owner->SetText(String("Robert Kausch").Replace(" ", " "));
 	cursor_owner->Deactivate();
 
-	cursor_iban	= new Cursor(Point(15, text_iban->GetY() - 1), Size(150, text_iban->GetUnscaledTextHeight() + 4));
-	cursor_iban->SetText(String("DE11 2001 0020 0851 8512 07").Replace(" ", "\xA0"));
+	cursor_iban	= new Cursor(Point(15, text_iban->GetY() - 1), Size(175, text_iban->GetUnscaledTextHeight() + 4));
+	cursor_iban->SetText(String("DE11 2001 0020 0851 8512 07").Replace(" ", " "));
 	cursor_iban->Deactivate();
 
-	cursor_bic	= new Cursor(Point(15, text_bic->GetY() - 1), Size(150, text_bic->GetUnscaledTextHeight() + 4));
+	cursor_bic	= new Cursor(Point(15, text_bic->GetY() - 1), Size(175, text_bic->GetUnscaledTextHeight() + 4));
 	cursor_bic->SetText("PBNKDEFF");
 	cursor_bic->Deactivate();
 

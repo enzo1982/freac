@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -81,11 +81,11 @@ BoCA::LanguageNotifierDialog::LanguageNotifierDialog(Bool incomplete)
 	else		 text_info = new TransparentText(String("The translation for your native language seems to be incomplete.\n\nDid you know you can easily complete it and share the result with\nother users?\n\nPlease have a look at the Readme.lang file in the lang subfolder\nof ").Append(location).Append(" for instructions on how to edit a\ntranslation and submit it to the fre:ac project.\n\nIf you have any questions, please contact translate@freac.org."), Point(7, 45));
 
 	text_intro		= new TransparentText("Please help translate this project!", Point(7, 12));
-	text_intro->SetFont(Font(Font::Default, 12, Font::Bold));
+	text_intro->SetFont(Font(Font::Default, 12, Font::Bold, 0, text_intro->GetFont().GetColor()));
 	text_intro->SetX((Math::Max(text_intro->GetUnscaledTextWidth(), text_info->GetUnscaledTextWidth()) + 9 - text_intro->GetUnscaledTextWidth()) / 2);
 
 	text_thanks		= new TransparentText("Thank you very much!", Point(7, text_info->GetUnscaledTextHeight() + 58));
-	text_thanks->SetFont(Font(Font::Default, 12, Font::Bold));
+	text_thanks->SetFont(Font(Font::Default, 12, Font::Bold, 0, text_thanks->GetFont().GetColor()));
 	text_thanks->SetX((Math::Max(text_intro->GetUnscaledTextWidth(), text_info->GetUnscaledTextWidth()) + 9 - text_thanks->GetUnscaledTextWidth()) / 2);
 
 	image_background->SetPosition(Point((Math::Max(text_intro->GetUnscaledTextWidth(), text_info->GetUnscaledTextWidth()) - 178) / 2, (text_info->GetUnscaledTextHeight() - 94) / 2));

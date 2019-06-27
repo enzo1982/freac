@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -74,6 +74,7 @@ BoCA::LayerDonorbox::LayerDonorbox()
 
 	text_box->SetFont(font);
 	text_box->SetBackgroundColor(Color(45, 129, 197));
+	text_box->SetY(link_donate->GetY() + (link_donate->GetHeight() - 3 - text_box->GetUnscaledTextHeight()) / 2);
 
 	Add(link_donate);
 
