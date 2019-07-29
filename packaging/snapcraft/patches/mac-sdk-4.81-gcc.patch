@@ -1,6 +1,6 @@
-diff -Naur mac-sdk-4.78/Makefile mac-sdk-4.78-gcc/Makefile
---- mac-sdk-4.78/Makefile	1970-01-01 00:00:00 +0000
-+++ mac-sdk-4.78-gcc/Makefile	2019-05-01 09:07:20 +0000
+diff -Naur mac-sdk-4.81/Makefile mac-sdk-4.81-gcc/Makefile
+--- mac-sdk-4.81/Makefile	1970-01-01 00:00:00 +0000
++++ mac-sdk-4.81-gcc/Makefile	2019-05-01 09:07:20 +0000
 @@ -0,0 +1,103 @@
 +# Find system
 +UNAME	 = $(shell uname)
@@ -105,20 +105,24 @@ diff -Naur mac-sdk-4.78/Makefile mac-sdk-4.78-gcc/Makefile
 +
 +Source/Console/%.o: Source/Console/%.cpp
 +	$(CXX) $(CXXOPTS) $(CXXFLAGS) $< -o $@
-diff -Naur mac-sdk-4.78/Shared/All.h mac-sdk-4.78-gcc/Shared/All.h
---- mac-sdk-4.78/Shared/All.h	2019-06-18 21:02:09 +0000
-+++ mac-sdk-4.78-gcc/Shared/All.h	2019-06-27 18:54:42 +0000
-@@ -87,44 +87,17 @@
+diff -Naur mac-sdk-4.81/Shared/All.h mac-sdk-4.81-gcc/Shared/All.h
+--- mac-sdk-4.81/Shared/All.h	2019-07-28 23:04:34 +0000
++++ mac-sdk-4.81-gcc/Shared/All.h	2019-07-29 19:11:47 +0000
+@@ -87,46 +87,17 @@
  #define ENABLE_COMPRESSION_MODE_HIGH
  #define ENABLE_COMPRESSION_MODE_EXTRA_HIGH
  
 -// 64 bit platform
 -#ifdef PLATFORM_64BIT
--	#define PLATFORM_x64
+-	#ifndef PLATFORM_x64
+-		#define PLATFORM_x64
+-	#endif
 -#endif
 -
 -#if __x86_64__ || __aarch64__
--    #define PLATFORM_x64
+-	#ifndef PLATFORM_x64
+-		#define PLATFORM_x64
+-	#endif
 -#endif
 -
  /*****************************************************************************************
@@ -134,8 +138,6 @@ diff -Naur mac-sdk-4.78/Shared/All.h mac-sdk-4.78-gcc/Shared/All.h
 -	typedef	intptr_t                                    int32; // native integer, can safely hold a pointer
 -    typedef int64_t                                     int64;
 -#endif
--    //typedef intptr_t                                  intn;
--	//typedef uintptr_t                                 uintn;
 +	typedef int32_t                                     int32;
 +	typedef int64_t                                     int64;
  
@@ -157,9 +159,9 @@ diff -Naur mac-sdk-4.78/Shared/All.h mac-sdk-4.78-gcc/Shared/All.h
  
  	typedef uint64_t                                    uint64;
  	typedef uint32_t                                    uint32;
-@@ -176,9 +149,13 @@
-     #define TICK_COUNT_READ(VARIABLE)                   { struct timeval t; gettimeofday(&t, NULL); VARIABLE = t.tv_sec * 1000000LLU + t.tv_usec; }
+@@ -180,9 +151,13 @@
      #define TICK_COUNT_FREQ                             1000000
+     #undef	ASSERT
      #define ASSERT(e)
 -	#define wcsncpy_s(A, B, COUNT) wcsncpy(A, B, COUNT)
 +#endif
@@ -173,9 +175,9 @@ diff -Naur mac-sdk-4.78/Shared/All.h mac-sdk-4.78-gcc/Shared/All.h
      #define strcpy_s(A, B, C) strcpy(A, C)
      #define _tcscat_s(A, B, C) _tcscat(A, C)
  #endif
-diff -Naur mac-sdk-4.78/Source/Console/Console.cpp mac-sdk-4.78-gcc/Source/Console/Console.cpp
---- mac-sdk-4.78/Source/Console/Console.cpp	2019-04-23 22:17:51 +0000
-+++ mac-sdk-4.78-gcc/Source/Console/Console.cpp	2019-04-27 11:31:44 +0000
+diff -Naur mac-sdk-4.81/Source/Console/Console.cpp mac-sdk-4.81-gcc/Source/Console/Console.cpp
+--- mac-sdk-4.81/Source/Console/Console.cpp	2019-04-24 05:17:50 +0000
++++ mac-sdk-4.81-gcc/Source/Console/Console.cpp	2019-04-27 11:31:44 +0000
 @@ -21,7 +21,12 @@
  #define UNDEFINED_MODE		-1
  
@@ -190,9 +192,9 @@ diff -Naur mac-sdk-4.78/Source/Console/Console.cpp mac-sdk-4.78-gcc/Source/Conso
  	#define _tmain(argc, argv) main(argc, argv)
  	#define _tcscpy_s(dst, num, src) strcpy(dst, src)
  	#define _tcsncpy_s(dst, num, src, count) strncpy(dst, src, count)
-diff -Naur mac-sdk-4.78/Source/Projects/NonWindows/Makefile mac-sdk-4.78-gcc/Source/Projects/NonWindows/Makefile
---- mac-sdk-4.78/Source/Projects/NonWindows/Makefile	2019-04-27 19:24:04 +0000
-+++ mac-sdk-4.78-gcc/Source/Projects/NonWindows/Makefile	2019-05-01 09:07:33 +0000
+diff -Naur mac-sdk-4.81/Source/Projects/NonWindows/Makefile mac-sdk-4.81-gcc/Source/Projects/NonWindows/Makefile
+--- mac-sdk-4.81/Source/Projects/NonWindows/Makefile	2019-04-27 19:24:04 +0000
++++ mac-sdk-4.81-gcc/Source/Projects/NonWindows/Makefile	2019-05-01 09:07:20 +0000
 @@ -3,7 +3,7 @@
  
  VERSION	  = 5
@@ -202,20 +204,24 @@ diff -Naur mac-sdk-4.78/Source/Projects/NonWindows/Makefile mac-sdk-4.78-gcc/Sou
  LDOPTS	  = -lstdc++
  
  DLLLDOPTS = -shared
-diff -Naur mac-sdk-4.78/Source/Shared/All.h mac-sdk-4.78-gcc/Source/Shared/All.h
---- mac-sdk-4.78/Source/Shared/All.h	2019-06-18 21:02:09 +0000
-+++ mac-sdk-4.78-gcc/Source/Shared/All.h	2019-06-27 18:54:42 +0000
-@@ -87,44 +87,17 @@
+diff -Naur mac-sdk-4.81/Source/Shared/All.h mac-sdk-4.81-gcc/Source/Shared/All.h
+--- mac-sdk-4.81/Source/Shared/All.h	2019-07-28 23:04:34 +0000
++++ mac-sdk-4.81-gcc/Source/Shared/All.h	2019-07-29 19:11:47 +0000
+@@ -87,46 +87,17 @@
  #define ENABLE_COMPRESSION_MODE_HIGH
  #define ENABLE_COMPRESSION_MODE_EXTRA_HIGH
  
 -// 64 bit platform
 -#ifdef PLATFORM_64BIT
--	#define PLATFORM_x64
+-	#ifndef PLATFORM_x64
+-		#define PLATFORM_x64
+-	#endif
 -#endif
 -
 -#if __x86_64__ || __aarch64__
--    #define PLATFORM_x64
+-	#ifndef PLATFORM_x64
+-		#define PLATFORM_x64
+-	#endif
 -#endif
 -
  /*****************************************************************************************
@@ -231,8 +237,6 @@ diff -Naur mac-sdk-4.78/Source/Shared/All.h mac-sdk-4.78-gcc/Source/Shared/All.h
 -	typedef	intptr_t                                    int32; // native integer, can safely hold a pointer
 -    typedef int64_t                                     int64;
 -#endif
--    //typedef intptr_t                                  intn;
--	//typedef uintptr_t                                 uintn;
 +	typedef int32_t                                     int32;
 +	typedef int64_t                                     int64;
  
@@ -254,9 +258,9 @@ diff -Naur mac-sdk-4.78/Source/Shared/All.h mac-sdk-4.78-gcc/Source/Shared/All.h
  
  	typedef uint64_t                                    uint64;
  	typedef uint32_t                                    uint32;
-@@ -176,9 +149,13 @@
-     #define TICK_COUNT_READ(VARIABLE)                   { struct timeval t; gettimeofday(&t, NULL); VARIABLE = t.tv_sec * 1000000LLU + t.tv_usec; }
+@@ -180,9 +151,13 @@
      #define TICK_COUNT_FREQ                             1000000
+     #undef	ASSERT
      #define ASSERT(e)
 -	#define wcsncpy_s(A, B, COUNT) wcsncpy(A, B, COUNT)
 +#endif
@@ -270,9 +274,9 @@ diff -Naur mac-sdk-4.78/Source/Shared/All.h mac-sdk-4.78-gcc/Source/Shared/All.h
      #define strcpy_s(A, B, C) strcpy(A, C)
      #define _tcscat_s(A, B, C) _tcscat(A, C)
  #endif
-diff -Naur mac-sdk-4.78/Source/Shared/StdLibFileIO.cpp mac-sdk-4.78-gcc/Source/Shared/StdLibFileIO.cpp
---- mac-sdk-4.78/Source/Shared/StdLibFileIO.cpp	2019-04-25 20:01:43 +0000
-+++ mac-sdk-4.78-gcc/Source/Shared/StdLibFileIO.cpp	2019-04-27 11:30:19 +0000
+diff -Naur mac-sdk-4.81/Source/Shared/StdLibFileIO.cpp mac-sdk-4.81-gcc/Source/Shared/StdLibFileIO.cpp
+--- mac-sdk-4.81/Source/Shared/StdLibFileIO.cpp	2019-04-26 03:01:42 +0000
++++ mac-sdk-4.81-gcc/Source/Shared/StdLibFileIO.cpp	2019-04-27 11:30:19 +0000
 @@ -218,9 +218,7 @@
  {
  #ifdef PLATFORM_ANDROID
@@ -284,8 +288,8 @@ diff -Naur mac-sdk-4.78/Source/Shared/StdLibFileIO.cpp mac-sdk-4.78-gcc/Source/S
      return ftello(m_pFile);
  #else
  	return _ftelli64(m_pFile);
-diff -Naur mac-sdk-4.78/configure mac-sdk-4.78-gcc/configure
---- mac-sdk-4.78/configure	1970-01-01 00:00:00 +0000
-+++ mac-sdk-4.78-gcc/configure	2019-03-02 17:34:04 +0000
+diff -Naur mac-sdk-4.81/configure mac-sdk-4.81-gcc/configure
+--- mac-sdk-4.81/configure	1970-01-01 00:00:00 +0000
++++ mac-sdk-4.81-gcc/configure	2019-03-02 17:34:04 +0000
 @@ -0,0 +1 @@
 +#!/bin/sh
