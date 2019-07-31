@@ -1120,7 +1120,7 @@ Void freac::freacGUI::FillMenus()
 	menu_processing->AddEntry(i18n->TranslateString("Enable processing during playback"), NIL, NIL, (Bool *) &config->GetPersistentIntValue(Config::CategoryProcessingID, Config::ProcessingProcessPlaybackID, Config::ProcessingProcessPlaybackDefault));
 	menu_processing->AddEntry();
 
-	entry = menu_processing->AddEntry(i18n->TranslateString("Configure signal processing"));
+	entry = menu_processing->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Configure signal processing")));
 	entry->onAction.Connect(&freacGUI::ConfigureProcessing, this);
 
 	const Array<String>	&components = config->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault).Explode(",");
@@ -1236,6 +1236,14 @@ Void freac::freacGUI::FillMenus()
 	entry = menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Show Tip of the Day")));
 	entry->onAction.Connect(&freacGUI::ShowTipOfTheDay, this);
 	entry->SetShortcut(0, Keyboard::KeyF10, mainWnd);
+
+	menu_help->AddEntry();
+
+	entry = menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Report an issue")));
+	entry->onAction.Connect(&freacGUI::ReportIssue, this);
+
+	entry = menu_help->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Suggest a feature")));
+	entry->onAction.Connect(&freacGUI::SuggestFeature, this);
 
 	if (currentConfig->enable_eUpdate)
 	{
@@ -1539,6 +1547,16 @@ Void freac::freacGUI::ShowTipOfTheDay()
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, showTips);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsNextTipID, dialog.GetOffset());
+}
+
+Void freac::freacGUI::ReportIssue()
+{
+	S::System::System::OpenURL(issueTracker);
+}
+
+Void freac::freacGUI::SuggestFeature()
+{
+	S::System::System::OpenURL(featureTracker);
 }
 
 Void freac::freacGUI::CheckForUpdates()

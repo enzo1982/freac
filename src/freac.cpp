@@ -29,60 +29,63 @@ freac::freac	*freac::freac::instance = NIL;
 
 /* General application information and fixed settings.
  */
-String	 freac::freac::appName	    = "fre:ac";
+String	 freac::freac::appName	      = "fre:ac";
 
 #ifndef BUILD_VIDEO_DOWNLOADER
-String	 freac::freac::appLongName  = "fre:ac - free audio converter";
+String	 freac::freac::appLongName    = "fre:ac - free audio converter";
 #else
-String	 freac::freac::appLongName  = "fre:ac - free video downloader";
+String	 freac::freac::appLongName    = "fre:ac - free video downloader";
 #endif
 
 #ifdef FREAC_VERSION
-String	 freac::freac::version	    = FREAC_VERSION;
+String	 freac::freac::version	      = FREAC_VERSION;
 #else
 #	ifdef FREAC_DATE
-String	 freac::freac::version	    = "v1.1 Alpha " FREAC_DATE;
+String	 freac::freac::version	      = "v1.1 Alpha " FREAC_DATE;
 #	else
-String	 freac::freac::version	    = "v1.1 Alpha";
+String	 freac::freac::version	      = "v1.1 Alpha";
 #	endif
 #endif
 
 #if defined __i386__ || defined _M_IX86
-String	 freac::freac::architecture = "x86";
+String	 freac::freac::architecture   = "x86";
 #elif defined __x86_64__ || defined _M_AMD64
-String	 freac::freac::architecture = "x86-64";
+String	 freac::freac::architecture   = "x86-64";
 #elif defined __arm__ || defined _M_ARM
-String	 freac::freac::architecture = "ARM";
+String	 freac::freac::architecture   = "ARM";
 #elif defined __aarch64__ || defined _M_ARM64
-String	 freac::freac::architecture = "ARM64";
+String	 freac::freac::architecture   = "ARM64";
 #elif defined __mips__
-String	 freac::freac::architecture = "MIPS";
+String	 freac::freac::architecture   = "MIPS";
 #elif defined __ppc__
-String	 freac::freac::architecture = "PPC";
+String	 freac::freac::architecture   = "PPC";
 #elif defined __ppc64__
-String	 freac::freac::architecture = "PPC64";
+String	 freac::freac::architecture   = "PPC64";
 #else
-String	 freac::freac::architecture = "unknown";
+String	 freac::freac::architecture   = "unknown";
 #endif
 
-String	 freac::freac::shortVersion = "v1.1";
-String	 freac::freac::cddbVersion  = "v1.1beta1pre5";	// CDDB version may not contain spaces
-String	 freac::freac::cddbMode	    = "submit";
+String	 freac::freac::shortVersion   = "v1.1";
+String	 freac::freac::cddbVersion    = "v1.1beta1pre5"; // CDDB version may not contain spaces
+String	 freac::freac::cddbMode	      = "submit";
 
-String	 freac::freac::copyright    = "Copyright (C) 2001-2019 Robert Kausch";
+String	 freac::freac::copyright      = "Copyright (C) 2001-2019 Robert Kausch";
 
-String	 freac::freac::website	    = "https://www.freac.org/";
+String	 freac::freac::website	      = "https://www.freac.org/";
+
+String	 freac::freac::issueTracker   = "https://github.com/enzo1982/freac/issues/new?labels=bug&template=bug_report.md";
+String	 freac::freac::featureTracker = "https://github.com/enzo1982/freac/issues/new?labels=enhancement&template=feature_request.md";
 
 #if defined __i386__
-String	 freac::freac::updatePath   = "https://www.freac.org/eUpdate/eUpdate.xml";
+String	 freac::freac::updatePath     = "https://www.freac.org/eUpdate/eUpdate.xml";
 #else
-String	 freac::freac::updatePath   = String("https://www.freac.org/eUpdate/eUpdate-").Append(freac::freac::architecture).Append(".xml");
+String	 freac::freac::updatePath     = String("https://www.freac.org/eUpdate/eUpdate-").Append(freac::freac::architecture).Append(".xml");
 #endif
 
 /* Use these settings for debugging.
  */
-//String	 freac::freac::cddbMode	    = "test";
-//String	 freac::freac::updatePath   = "file://eUpdate/eUpdate.xml";
+//String	 freac::freac::cddbMode	      = "test";
+//String	 freac::freac::updatePath     = "file://eUpdate/eUpdate.xml";
 
 freac::freac::freac() : Application(appName)
 {

@@ -132,6 +132,8 @@
 	<entry id="1603" string="Check for updates at startup">Beim Start auf Aktualisierungen überprüfen</entry>
 	<entry id="1604" string="About %1">Über %1</entry>
 	<entry id="1605" string="index_en.html">index_de.html</entry>
+ 	<entry id="1606" string="Report an issue">Fehler melden</entry>
+	<entry id="1607" string="Suggest a feature">Verbesserung vorschlagen</entry>
       </section>
     </section>
 
