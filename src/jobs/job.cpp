@@ -42,6 +42,7 @@ freac::Job::Job() : ListEntry("Job")
 	progress	= new Progressbar(Point(progressLabel->GetX() + progressLabel->GetUnscaledTextWidth() + 7, progressLabel->GetY() - 3), Size(200, 0), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
 
 	timeValue	= new EditBox("00:00", Point(42, progress->GetY()), Size(34, 0), 0);
+	timeValue->SetWidth(Math::Max(34, timeValue->GetUnscaledTextWidth() + 6));
 	timeValue->SetOrientation(OR_UPPERRIGHT);
 	timeValue->Deactivate();
 
@@ -278,7 +279,7 @@ Int freac::Job::Paint(Int message)
 
 			SetVisibleDirect(False);
 
-			if (IsSelected() || IsMouseOver()) SetBackgroundColor(Setup::LightGrayColor);
+			if (IsSelected() || IsMouseOver()) SetBackgroundColor(Setup::BackgroundColor.Average(Setup::ClientColor));
 			else				   SetBackgroundColor(Setup::BackgroundColor);
 
 			SetVisibleDirect(True);
