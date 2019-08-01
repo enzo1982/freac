@@ -92,12 +92,13 @@ Known problems
 History
 -------
 
-	Version 1.0.33 (March 2019)
+	Version 1.0.33 (August 2019)
 
 		- updated Spanish (Latin American) translation
 		- updated Spanish user guide
 		- rip only tracks from the newly inserted disc when auto-ripping
 		- do not start ripping automatically if no freedb entry is found
+		- improved compatibility with ADTS AAC files
 		- fixed hangs when trying to open some Windows Wave files
 		- fixed setup not running with elevated rights on non-administrator accounts
 		- fixed freaccmd issues with files without metadata
@@ -597,7 +598,7 @@ Special thanks to
 
 -----------------------------------------------------------------------------------
 
-The official fre:ac homepage: http://www.freac.org/
+The official fre:ac homepage: https://www.freac.org/
 
 robert.kausch@freac.org,
 Robert Kausch

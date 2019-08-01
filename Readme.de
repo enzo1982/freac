@@ -93,12 +93,13 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.0.33 (März 2019)
+	Version 1.0.33 (August 2019)
 
 		- Spanische (lateinamerikanisch) Übersetzung aktualisiert
 		- Spanische Anleitung aktualisiert
 		- Beim automatischen Rippen werden nur noch Tracks der neu eingelegten CD berücksichtigt
 		- Ripper wird nicht mehr automatisch gestartet, wenn kein freedb-Eintrag gefunden wird
+		- Kompatibilität mit ADTS AAC-Dateien verbessert
 		- Einfrieren des Programms beim Öffnen einiger Windows Wave-Dateien behoben
 		- Problem mit Setup-Berechtigungen unter nicht-Administrator-Accounts behoben
 		- Probleme mit Dateien ohne Metadaten in freaccmd behoben
@@ -597,7 +598,7 @@ Besonderen Dank
 
 -----------------------------------------------------------------------------------
 
-Die offizielle fre:ac-Homepage: http://www.freac.org/
+Die offizielle fre:ac-Homepage: https://www.freac.org/
 
 robert.kausch@freac.org,
 Robert Kausch
