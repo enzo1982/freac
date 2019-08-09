@@ -88,7 +88,7 @@ parts:
 
   libmac:
     after: [ patches ]
-    source: https://monkeysaudio.com/files/MAC_SDK_481.zip
+    source: https://freac.org/patches/MAC_SDK_481.zip
     source-checksum: sha256/14c9817db5efe34372269a70de5c2ef624a51a48d6544bd1652b6732d5ca189f
     source-subdir: .
     plugin: make
