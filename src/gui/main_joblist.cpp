@@ -698,7 +698,7 @@ Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 
 	/* Update progress bar and time-left display.
 	 */
-	surface->StartPaint(Rect(progress->GetRealPosition(), Size(GetRealPosition().x + GetRealSize().cx - progress->GetRealPosition().x, edb_trackPercent->GetRealSize().cy)));
+	surface->StartPaint(Rect::EncloseRect(progress->GetVisibleArea(), edb_totalTime->GetVisibleArea()));
 
 	progress->Hide();
 	progress_total->Hide();
@@ -1468,7 +1468,7 @@ Void freac::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsL
 	 */
 	Surface	*surface = GetDrawSurface();
 
-	surface->StartPaint(Rect(progress->GetRealPosition(), Size(GetRealPosition().x + GetRealSize().cx - progress->GetRealPosition().x, edb_trackPercent->GetRealSize().cy)));
+	surface->StartPaint(Rect::EncloseRect(progress->GetVisibleArea(), edb_totalTime->GetVisibleArea()));
 
 	/* Update seconds only if estimate is less or
 	 * at least two seconds more than before.

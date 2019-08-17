@@ -933,7 +933,7 @@ Void freac::freacGUI::FillMenus()
 	Registry	&boca	 = Registry::Get();
 	Surface		*surface = mainWnd->GetDrawSurface();
 
-	surface->StartPaint(Rect(Point(0, 0), Size(mainWnd_iconbar->GetX(), mainWnd_iconbar->GetY()) + mainWnd_iconbar->GetSize()));
+	surface->StartPaint(Rect::EncloseRect(mainWnd_menubar->GetVisibleArea(), mainWnd_iconbar->GetVisibleArea()));
 
 	mainWnd_menubar->Hide();
 	mainWnd_iconbar->Hide();
