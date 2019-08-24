@@ -73,8 +73,8 @@ String	 freac::freac::copyright      = "Copyright (C) 2001-2019 Robert Kausch";
 
 String	 freac::freac::website	      = "https://www.freac.org/";
 
-String	 freac::freac::issueTracker   = "https://github.com/enzo1982/freac/issues/new?labels=bug&template=bug_report.md";
-String	 freac::freac::featureTracker = "https://github.com/enzo1982/freac/issues/new?labels=enhancement&template=feature_request.md";
+String	 freac::freac::issueTracker   = "https://github.com/enzo1982/freac/labels/bug";
+String	 freac::freac::featureTracker = "https://github.com/enzo1982/freac/labels/enhancement";
 
 #if defined __i386__
 String	 freac::freac::updatePath     = "https://www.freac.org/eUpdate/eUpdate.xml";
