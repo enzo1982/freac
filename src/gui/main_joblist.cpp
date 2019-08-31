@@ -1419,6 +1419,10 @@ Void freac::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String 
 
 	i18n->SetContext("Joblist");
 
+	Surface	*surface = GetDrawSurface();
+
+	surface->StartPaint(Rect::EncloseRect(edb_filename->GetVisibleArea(), edb_totalTime->GetVisibleArea()));
+
 	edb_trackPercent->SetText(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"));
 	edb_trackTime->SetText("00:00");
 
@@ -1460,6 +1464,8 @@ Void freac::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String 
 	edb_format->SetText(decoderName);
 
 	combo_encoder->SelectEntry(encoderName);
+
+	surface->EndPaint();
 }
 
 Void freac::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsLeft)

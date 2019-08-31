@@ -209,9 +209,9 @@ Void freac::Job::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	Surface	*surface    = GetDrawSurface();
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-	surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+	if (surface) surface->StartPaint(GetVisibleArea());
 
 	progress->Hide();
 	progressValue->Hide();
@@ -231,7 +231,7 @@ Void freac::Job::OnChangeSize(const Size &nSize)
 	timeLabel->Show();
 	timeValue->Show();
 
-	surface->EndPaint();
+	if (surface) surface->EndPaint();
 }
 
 Void freac::Job::OnDoubleClick()
@@ -312,26 +312,23 @@ Int freac::Job::SetText(const String &newText)
 {
 	if (text == newText) return Success();
 
-	if (IsRegistered() && IsVisible())
-	{
-		Surface	*surface = container->GetDrawSurface();
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-		surface->StartPaint(GetVisibleArea());
+	if (surface) surface->StartPaint(GetVisibleArea());
 
-		Widget::SetText(newText);
+	Widget::SetText(newText);
 
-		surface->EndPaint();
-	}
-	else
-	{
-		Widget::SetText(newText);
-	}
+	if (surface) surface->EndPaint();
 
 	return Success();
 }
 
 Int freac::Job::SetProgress(Int nValue)
 {
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
+
+	if (surface) surface->StartPaint(GetVisibleArea());
+
 	progress->SetValue(nValue);
 	progressValue->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(Float(nValue) / 10.0))));
 
@@ -353,6 +350,8 @@ Int freac::Job::SetProgress(Int nValue)
 
 		previousSecondsLeft = secondsLeft;
 	}
+
+	if (surface) surface->EndPaint();
 
 	return Success();
 }

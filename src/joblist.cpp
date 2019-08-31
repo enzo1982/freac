@@ -196,9 +196,9 @@ Bool freac::JobList::RemoveTrack(const Track &track)
 
 		/* Remove track from track list and joblist.
 		 */
-		Surface	*surface = GetDrawSurface();
+		Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-		surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+		if (surface) surface->StartPaint(GetVisibleArea());
 
 		tracks.Remove(entry->GetHandle());
 
@@ -213,7 +213,7 @@ Bool freac::JobList::RemoveTrack(const Track &track)
 
 		Remove(entry);
 
-		surface->EndPaint();
+		if (surface) surface->EndPaint();
 
 		UpdateTextLine();
 	}
@@ -233,9 +233,9 @@ Bool freac::JobList::RemoveNthTrack(Int n)
 
 Bool freac::JobList::RemoveAllTracks()
 {
-	Surface	*surface = GetDrawSurface();
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-	surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+	if (surface) surface->StartPaint(GetVisibleArea());
 
 	for (Int i = 0; i < tracks.Length(); i++)
 	{
@@ -251,7 +251,7 @@ Bool freac::JobList::RemoveAllTracks()
 		}
 	}
 
-	surface->EndPaint();
+	if (surface) surface->EndPaint();
 
 	/* Notify components that all tracks will be removed.
 	 */
@@ -436,9 +436,9 @@ Void freac::JobList::UpdateTrackInfo(const Track &track)
 		{
 			if (entry->GetTooltipLayer() != NIL)
 			{
-				Surface	*surface = GetDrawSurface();
+				Surface	*surface = (entry->IsVisible() ? GetDrawSurface() : NIL);
 
-				surface->StartPaint(Rect(entry->GetRealPosition(), entry->GetRealSize()));
+				if (surface) surface->StartPaint(entry->GetVisibleArea());
 
 				entry->Hide();
 
@@ -446,7 +446,7 @@ Void freac::JobList::UpdateTrackInfo(const Track &track)
 
 				entry->Show();
 
-				surface->EndPaint();
+				if (surface) surface->EndPaint();
 			}
 			else
 			{
@@ -1012,9 +1012,9 @@ Void freac::JobList::OnChangeLanguageSettings()
 
 Void freac::JobList::OnChangeHeaderColumns()
 {
-	Surface	*surface = GetDrawSurface();
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-	surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+	if (surface) surface->StartPaint(GetVisibleArea());
 
 	Hide();
 
@@ -1030,7 +1030,7 @@ Void freac::JobList::OnChangeHeaderColumns()
 
 	Show();
 
-	surface->EndPaint();
+	if (surface) surface->EndPaint();
 }
 
 Void freac::JobList::AddHeaderTabs()

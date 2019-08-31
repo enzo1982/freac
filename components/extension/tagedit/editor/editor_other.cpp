@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -251,9 +251,9 @@ Void BoCA::LayerTagOther::OnSelectTrack(const Track &nTrack)
 {
 	if (ignoreSelect || &nTrack == &track) return;
 
-	Surface	*surface = GetDrawSurface();
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-	surface->StartPaint(GetVisibleArea());
+	if (surface) surface->StartPaint(GetVisibleArea());
 
 	OnSelectNone();
 
@@ -290,7 +290,7 @@ Void BoCA::LayerTagOther::OnSelectTrack(const Track &nTrack)
 		activeEditBox->MarkAll();
 	}
 
-	surface->EndPaint();
+	if (surface) surface->EndPaint();
 }
 
 /* Called when an album is selected from the list.
@@ -301,9 +301,9 @@ Void BoCA::LayerTagOther::OnSelectAlbum(const Track &nTrack)
 {
 	if (ignoreSelect || &nTrack == &track) return;
 
-	Surface	*surface = GetDrawSurface();
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-	surface->StartPaint(GetVisibleArea());
+	if (surface) surface->StartPaint(GetVisibleArea());
 
 	OnSelectNone();
 
@@ -340,7 +340,7 @@ Void BoCA::LayerTagOther::OnSelectAlbum(const Track &nTrack)
 		activeEditBox->MarkAll();
 	}
 
-	surface->EndPaint();
+	if (surface) surface->EndPaint();
 }
 
 /* Called when the last track is removed from the list.
@@ -349,9 +349,9 @@ Void BoCA::LayerTagOther::OnSelectAlbum(const Track &nTrack)
  */
 Void BoCA::LayerTagOther::OnSelectNone()
 {
-	Surface	*surface = GetDrawSurface();
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-	surface->StartPaint(GetVisibleArea());
+	if (surface) surface->StartPaint(GetVisibleArea());
 
 	edit_oartist->SetText(NIL);
 	edit_oalbum->SetText(NIL);
@@ -368,7 +368,7 @@ Void BoCA::LayerTagOther::OnSelectNone()
 	group_original->Deactivate();
 	group_web->Deactivate();
 
-	surface->EndPaint();
+	if (surface) surface->EndPaint();
 
 	track = NIL;
 }

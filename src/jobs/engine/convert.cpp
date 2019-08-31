@@ -643,9 +643,10 @@ Error freac::JobConvert::Perform()
 			{
 				if (worker->IsWaiting()) continue;
 
-				Surface	*surface = GetDrawSurface();
+				Window	*window	 = GetContainerWindow();
+				Surface	*surface = (window ? window->GetDrawSurface() : NIL);
 
-				surface->StartPaint(Rect(Point(0, 0), surface->GetSize()));
+				if (surface) surface->StartPaint(window->GetVisibleArea());
 
 				const Track	&workerTrack = worker->GetTrackToConvert();
 
@@ -657,7 +658,7 @@ Error freac::JobConvert::Perform()
 
 				progress->UpdateTrack(workerTrack, worker->GetTrackPosition());
 
-				surface->EndPaint();
+				if (surface) surface->EndPaint();
 
 				break;
 			}
@@ -727,10 +728,9 @@ Error freac::JobConvert::Perform()
 			if (container != NIL) container->Paint(SP_PAINT);
 		}
 
-		Bool	 visible = IsVisible();
-		Surface	*surface = GetDrawSurface();
+		Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-		if (visible) surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+		if (surface) surface->StartPaint(GetVisibleArea());
 
 		for (Int i = 0; i < workers.Length(); i++)
 		{
@@ -772,7 +772,7 @@ Error freac::JobConvert::Perform()
 			progress->Show();
 		}
 
-		if (visible) surface->EndPaint();
+		if (surface) surface->EndPaint();
 
 		/* Sleep for 25ms and continue if no worker found.
 		 */

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -125,9 +125,9 @@ Void freac::LayerThreads::OnChangeLanguageSettings()
 
 Void freac::LayerThreads::OnChangeJobs()
 {
-	Surface	*surface = GetDrawSurface();
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-	surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+	if (surface) surface->StartPaint(GetVisibleArea());
 
 	list_threads->RemoveAllEntries();
 
@@ -148,7 +148,7 @@ Void freac::LayerThreads::OnChangeJobs()
 		if (job->IsSelected()) OnSelectJob(job);
 	}
 
-	surface->EndPaint();
+	if (surface) surface->EndPaint();
 }
 
 Void freac::LayerThreads::OnSelectJob(ListEntry *entry)
