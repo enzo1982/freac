@@ -229,8 +229,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://ffmpeg.org/releases/ffmpeg-4.1.tar.bz2",
-                    "sha256": "b684fb43244a5c4caae652af9022ed5d85ce15210835bce054a33fb26033a1a5"
+                    "url": "https://ffmpeg.org/releases/ffmpeg-4.2.tar.xz",
+                    "sha256": "023f10831a97ad93d798f53a3640e55cd564abfeba807ecbe8524dac4fedecd5"
                 }
             ]
         },
