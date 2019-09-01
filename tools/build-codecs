@@ -100,7 +100,7 @@ lame_version=3.100
 libav_version=12.3
 libcdio_version=2.1.0
 libcdio_paranoia_version=10.2+2.0.0
-libogg_version=1.3.3
+libogg_version=1.3.4
 libsamplerate_version=0.1.9
 libsndfile_version=1.0.28
 mac_version=4.91
@@ -146,9 +146,6 @@ lame_patch_levels=(0 1)
 
 lame_patches_ppc=(https://freac.org/patches/lame-$lame_version-altivec-20171014.diff https://freac.org/patches/lame-$lame_version-fastcrc.diff)
 lame_patch_levels_ppc=(0 1)
-
-libogg_patches=(https://freac.org/patches/libogg-$libogg_version-fastcrc.diff)
-libogg_patch_levels=(1)
 
 mac_patches=(https://freac.org/patches/mac-sdk-$mac_version-gcc.patch)
 mac_patch_levels=(1)
@@ -384,8 +381,6 @@ for package in ${packages[@]}; do
 
   elif [ $package == libogg ]; then
     # Build Ogg
-    patches=${libogg_patches[@]}
-    patch_levels=(${libogg_patch_levels[@]})
     build $libogg_location src/.libs/libogg$sharedinfix.$sharedext Ogg.$sharedext
 
   elif [ $package == libsamplerate ]; then
