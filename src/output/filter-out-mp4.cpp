@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -90,7 +90,7 @@ Bool freac::FilterOutMP4::Deactivate()
 
 		if (bytes > 0)
 		{
-			Int		 samplesLeft	= totalSamples - encodedSamples + delaySamples;
+			Int64		 samplesLeft	= totalSamples - encodedSamples + delaySamples;
 			MP4Duration	 dur		= samplesLeft > frameSize ? frameSize : samplesLeft;
 			MP4Duration	 ofs		= encodedSamples > 0 ? 0 : delaySamples;
 
@@ -200,7 +200,7 @@ Int freac::FilterOutMP4::WriteData(Buffer<UnsignedByte> &data, Int size)
 
 	if (bytes > 0)
 	{
-		Int		 samplesLeft	= totalSamples - encodedSamples + delaySamples;
+		Int64		 samplesLeft	= totalSamples - encodedSamples + delaySamples;
 		MP4Duration	 dur		= samplesLeft > frameSize ? frameSize : samplesLeft;
 		MP4Duration	 ofs		= encodedSamples > 0 ? 0 : delaySamples;
 

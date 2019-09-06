@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -22,8 +22,8 @@ namespace freac
 		private:
 			mpg123_handle		*context;
 
-			Int			 numBytes;
-			Int			 numFrames;
+			Int64			 numBytes;
+			Int64			 numFrames;
 
 			Int			 delaySamples;
 			Int			 padSamples;
