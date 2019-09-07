@@ -270,7 +270,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/xiph/rnnoise.git",
-                    "commit": "91ef401f4c3536c6de999ac609262691ec888c4c"
+                    "commit": "9acc1e5a633e0961a5895a73204df24744f199b6"
                 }
             ]
         },
