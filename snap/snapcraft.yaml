@@ -214,7 +214,7 @@ parts:
     source: https://ffmpeg.org/releases/ffmpeg-4.2.tar.xz
     source-checksum: sha256/023f10831a97ad93d798f53a3640e55cd564abfeba807ecbe8524dac4fedecd5
     plugin: autotools
-    configflags: [ --prefix=/usr, --disable-autodetect, --enable-gpl, --enable-small, --enable-runtime-cpudetect ]
+    configflags: [ --prefix=/usr, --disable-autodetect, --enable-gpl, --enable-small, --enable-runtime-cpudetect, --disable-vsx ]
     build-packages:
       - yasm
     prime:
