@@ -684,7 +684,7 @@
 	<entry id="12000" string="Channel Converter"/>
 	<entry id="12001" string="Sample Format Converter"/>
 	<entry id="12002" string="Sample Rate Converter"/>
-	<entry id="12003" string="RNNoise Speech Noise Reduction"/>
+	<entry id="12003" string="RNNoise Noise Reduction"/>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer"/>
       </section>
 
@@ -1060,6 +1060,16 @@
 	<entry id="50328" string="Stereo processing"/>
 	<entry id="50329" string="Separate"/>
 	<entry id="50330" string="Combined"/>
+      </section>
+
+      <section name="RNNoise">
+	<entry id="50400" string="Signal/noise type"/>
+	<entry id="50401" string="Signal type"/>
+	<entry id="50402" string="Noise type"/>
+	<entry id="50403" string="General"/>
+	<entry id="50404" string="Recording"/>
+	<entry id="50405" string="Voice (incl. laughter etc.)"/>
+	<entry id="50406" string="Speech"/>
       </section>
     </section>
 

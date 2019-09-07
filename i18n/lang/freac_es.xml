@@ -681,7 +681,7 @@
 	<entry id="12000" string="Channel Converter">Conversor de canales</entry>
 	<entry id="12001" string="Sample Format Converter">Conversor de formato de muestras</entry>
 	<entry id="12002" string="Sample Rate Converter">Conversor de tasa de muestreo</entry>
-	<entry id="12003" string="RNNoise Speech Noise Reduction">RNNoise Reducción de ruido vocal</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">RNNoise Reducción de ruido</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Ajuste de tempo y tono Rubber Band</entry>
       </section>
 

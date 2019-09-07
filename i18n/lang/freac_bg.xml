@@ -681,7 +681,7 @@
 	<entry id="12000" string="Channel Converter">Конвертор Канали</entry>
 	<entry id="12001" string="Sample Format Converter">Конвертор примерни формати</entry>
 	<entry id="12002" string="Sample Rate Converter">Конвертор Честота (Hz)</entry>
-	<entry id="12003" string="RNNoise Speech Noise Reduction">Намаляване шума на говор RNNoise</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">Намаляване шума RNNoise</entry>
 	<entry id="12004" string="RubberBand Tempo/Pitch Changer">Промяна Темпо/Тоналност на звука</entry>
       </section>
 

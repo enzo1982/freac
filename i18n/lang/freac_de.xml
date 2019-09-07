@@ -684,7 +684,7 @@
 	<entry id="12000" string="Channel Converter">Kanalkonvertierer</entry>
 	<entry id="12001" string="Sample Format Converter">Sampleformatkonvertierer</entry>
 	<entry id="12002" string="Sample Rate Converter">Sampleratenkonvertierer</entry>
-	<entry id="12003" string="RNNoise Speech Noise Reduction">RNNoise Rauschreduzierung für Sprache</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">RNNoise Geräuschreduzierung</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band Tempo-/Tonhöhenänderung</entry>
       </section>
 
@@ -1060,6 +1060,16 @@
 	<entry id="50328" string="Stereo processing">Stereoverarbeitung</entry>
 	<entry id="50329" string="Separate">Getrennt</entry>
 	<entry id="50330" string="Combined">Verbunden</entry>
+      </section>
+
+      <section name="RNNoise">
+	<entry id="50400" string="Signal/noise type">Signal-/Geräuschart</entry>
+	<entry id="50401" string="Signal type">Signalart</entry>
+	<entry id="50402" string="Noise type">Geräuschart</entry>
+	<entry id="50403" string="General">Allgemein</entry>
+	<entry id="50404" string="Recording">Aufnahme</entry>
+	<entry id="50405" string="Voice (incl. laughter etc.)">Stimme (inkl. Lachen etc.)</entry>
+	<entry id="50406" string="Speech">Sprache</entry>
       </section>
     </section>
 
