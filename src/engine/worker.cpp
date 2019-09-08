@@ -295,6 +295,8 @@ Int freac::ConvertWorker::Convert()
 		{
 			if (!processor->Create(trackToEncode))
 			{
+				onReportError.Emit(processor->GetErrorString());
+
 				delete decoder;
 				delete verifier;
 				delete processor;

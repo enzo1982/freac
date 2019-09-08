@@ -136,6 +136,8 @@ Int freac::ConvertWorkerSingleFile::Convert()
 		if ((conversionStep == ConversionStepOnTheFly ||
 		     conversionStep == ConversionStepDecode) && !processor->Create(trackToProcess))
 		{
+			onReportError.Emit(processor->GetErrorString());
+
 			delete decoder;
 			delete verifier;
 			delete converter;

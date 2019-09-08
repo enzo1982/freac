@@ -362,21 +362,33 @@ Error freac::JobConvert::Perform()
 
 		singleFileProcessor = new ProcessorSingleFile(configuration);
 
-		if (singleFileProcessor->Create(singleTrackToEncode)) singleTrackToEncode.SetFormat(singleFileProcessor->GetFormatInfo());
-
-		/* Create encoder for single file output.
-		 */
-		singleFileEncoder = new Encoder(configuration);
-
-		if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrackToEncode))
+		if (!singleFileProcessor->Create(singleTrackToEncode))
 		{
-			BoCA::Utilities::ErrorMessage(singleFileEncoder->GetErrorString());
+			BoCA::Utilities::ErrorMessage(singleFileProcessor->GetErrorString());
 
 			delete singleFileProcessor;
-			delete singleFileEncoder;
 
 			singleFileProcessor = NIL;
-			singleFileEncoder   = NIL;
+		}
+		
+		if (singleFileProcessor != NIL)
+		{
+			singleTrackToEncode.SetFormat(singleFileProcessor->GetFormatInfo());
+
+			/* Create encoder for single file output.
+			 */
+			singleFileEncoder = new Encoder(configuration);
+
+			if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrackToEncode))
+			{
+				BoCA::Utilities::ErrorMessage(singleFileEncoder->GetErrorString());
+
+				delete singleFileProcessor;
+				delete singleFileEncoder;
+
+				singleFileProcessor = NIL;
+				singleFileEncoder   = NIL;
+			}
 		}
 
 		if (singleFileEncoder != NIL)
@@ -1344,7 +1356,14 @@ Format freac::JobConvert::GetSingleTrackSampleFormat() const
 	{
 		Processor	*processor = new Processor(configuration);
 
-		if (!processor->Create(track)) { delete processor; continue; }
+		if (!processor->Create(track))
+		{
+			BoCA::Utilities::ErrorMessage(processor->GetErrorString());
+
+			delete processor;
+
+			return Format();
+		}
 
 		const Format	&sourceFormat	 = track.GetFormat();
 		const Format	&processorFormat = processor->GetFormatInfo();
@@ -1390,7 +1409,7 @@ Format freac::JobConvert::GetSingleTrackSampleFormat() const
 
 	boca.DeleteComponent(encoder);
 
-	if (targetFormats.Length() == 1) return sourceFormats.GetFirst();
+	if (targetFormats.Length() <= 1) return sourceFormats.GetFirst();
 
 	/* Display dialog to select output format.
 	 */
