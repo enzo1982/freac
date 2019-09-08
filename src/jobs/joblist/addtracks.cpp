@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -87,7 +87,7 @@ Error freac::JobAddTracks::Perform()
 		{
 			BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-			i18n->SetContext("Messages");
+			i18n->SetContext("Errors");
 
 			errors.Add(i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", url).Replace("%2", i18n->TranslateString("Unknown file type")));
 
@@ -106,7 +106,7 @@ Error freac::JobAddTracks::Perform()
 		{
 			BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-			i18n->SetContext("Messages");
+			i18n->SetContext("Errors");
 
 			errors.Add(i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", url).Replace("%2", i18n->TranslateString(errorString)));
 

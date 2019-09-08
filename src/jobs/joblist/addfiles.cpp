@@ -222,7 +222,7 @@ Int freac::JobAddFilesWorker::Run()
 	{
 		BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-		i18n->SetContext("Messages");
+		i18n->SetContext("Errors");
 
 		errorState  = True;
 		errorString = i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", File(fileName).GetFileName()).Replace("%2", i18n->TranslateString("Unknown file type"));
@@ -241,7 +241,7 @@ Int freac::JobAddFilesWorker::Run()
 		{
 			BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-			i18n->SetContext("Messages");
+			i18n->SetContext("Errors");
 
 			errorState  = True;
 			errorString = i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", File(fileName).GetFileName()).Replace("%2", i18n->TranslateString(errorText));

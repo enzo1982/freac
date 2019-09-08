@@ -534,29 +534,32 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Енкодовање у току! Да ли заиста желите да га откажете?</entry>
-      <entry id="7001" string="Currently converting">Енкодовање у току</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Није могуће учитати ASPI драјвере! Риповање ЦД-а отказано!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Немогуће отворити фајл: %1&#10;&#10;%2</entry>
-      <entry id="7006" string="Delete original files after encoding">Обриши изворни фајл након енкодовања</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ова опција брише изворне фајлове након енкодовања!&#10;&#10;Да ли сте сигурни да желите да наставите?</entry>
-      <entry id="7008" string="File already exists">Фајл већ постоји</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Излазни фајл %1&#10;већ постоји! Да ли желите да га препишете?</entry>
-      <entry id="7010" string="Overwrite all further files">Препиши све будуће фајлове</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB подршка је онемогућена! Молимо омогућите&#10;локалну или удаљену CDDB подршку у поставкама.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Удаљена CDDB подрша онемогућена! Молимо&#10;омогућите CDDB подршку у поставкама подешења.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Приступ ЦД РОМ уређају одбијен од стране Windows-а.&#10;&#10;Молимо обратите се администратору система&#10;да Вам одобри приступ ЦД РОМ уређају.</entry>
-      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Не могу да приступим улазном фајлу: %1&#10;&#10;Фајл: %1&#10;Фолдер: %2</entry>
-      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Не могу да креирам излазни фајл: %1&#10;&#10;Фајл: %1&#10;Фолдер: %2</entry>
-      <entry id="7016" string="File not found">Фајл није нађен</entry>
-      <entry id="7017" string="Unknown file type">Непозната врста фајла</entry>
-      <entry id="7018" string="Unsupported audio format">Овај аудио формат није подржан</entry>
-      <entry id="7019" string="Unknown error">Непозната грешка</entry>
-      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">Није расположив дијалог за поставке:&#10;&#10;%1</entry>
-      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Изгледа да конвертујете из формата са губицима у формат без губитака.&#10;&#10;Обратите пажњу да је губитак квалитета трајан и неповратан,&#10;тако да овај процес неће побољшати квалитет ни на који начин,&#10;а вероватно ће увећати величину фајла.&#10;&#10;Да ли желите да наставите без обзира на све?</entry>
-      <entry id="7022" string="Failed to verify input file: %1">Овера улазног фајла није успела: %1</entry>
-      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Чецксум се не поклапа приликом овере излазног фајла: %1&#10;&#10;Енкодовање чецксум: %2&#10;Овера чецксум: %3</entry>
-      <entry id="7024" string="The selected folder does not exist anymore!">Одабрани фолдер више не постоји!</entry>
+      <entry id="7000" string="Currently converting">Енкодовање у току</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Енкодовање у току! Да ли заиста желите да га откажете?</entry>
+      <entry id="7002" string="Delete original files after encoding">Обриши изворни фајл након енкодовања</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ова опција брише изворне фајлове након енкодовања!&#10;&#10;Да ли сте сигурни да желите да наставите?</entry>
+      <entry id="7005" string="File already exists">Фајл већ постоји</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Излазни фајл %1&#10;већ постоји! Да ли желите да га препишете?</entry>
+      <entry id="7007" string="Overwrite all further files">Препиши све будуће фајлове</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Изгледа да конвертујете из формата са губицима у формат без губитака.&#10;&#10;Обратите пажњу да је губитак квалитета трајан и неповратан,&#10;тако да овај процес неће побољшати квалитет ни на који начин,&#10;а вероватно ће увећати величину фајла.&#10;&#10;Да ли желите да наставите без обзира на све?</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Не могу да приступим улазном фајлу: %1&#10;&#10;Фајл: %1&#10;Фолдер: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Не могу да креирам излазни фајл: %1&#10;&#10;Фајл: %1&#10;Фолдер: %2</entry>
+      <entry id="7108" string="Failed to verify input file: %1">Овера улазног фајла није успела: %1</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Чецксум се не поклапа приликом овере излазног фајла: %1&#10;&#10;Енкодовање чецксум: %2&#10;Овера чецксум: %3</entry>
+      <entry id="7110" string="File not found">Фајл није нађен</entry>
+      <entry id="7111" string="Unknown file type">Непозната врста фајла</entry>
+      <entry id="7113" string="Unsupported audio format">Овај аудио формат није подржан</entry>
+      <entry id="7114" string="Unknown error">Непозната грешка</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Није могуће учитати ASPI драјвере! Риповање ЦД-а отказано!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Немогуће отворити фајл: %1&#10;&#10;%2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB подршка је онемогућена! Молимо омогућите&#10;локалну или удаљену CDDB подршку у поставкама.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Удаљена CDDB подрша онемогућена! Молимо&#10;омогућите CDDB подршку у поставкама подешења.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Приступ ЦД РОМ уређају одбијен од стране Windows-а.&#10;&#10;Молимо обратите се администратору система&#10;да Вам одобри приступ ЦД РОМ уређају.</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Није расположив дијалог за поставке:&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">Одабрани фолдер више не постоји!</entry>
     </section>
 
     <section name="Dialogs">

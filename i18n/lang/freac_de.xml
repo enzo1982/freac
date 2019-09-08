@@ -587,33 +587,42 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Ein Konvertierungsvorgang ist noch aktiv! Möchten sie das Programm dennoch beenden?</entry>
-      <entry id="7001" string="Currently converting">Konvertierungsvorgang aktiv</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Kann ASPI-Treiber nicht laden! CD-Rippen deaktiviert!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Kann Datei nicht öffnen: %1&#10;&#10;Fehler: %2</entry>
-      <entry id="7004" string="Cannot play a CD track while ripping from the same drive!">Kann keinen CD-Track abspielen, während vom selben Laufwerk gerippt wird!</entry>
-      <entry id="7005" string="Cannot start ripping while playing a track from the same drive!">Kann nicht Rippen, während ein Track vom selben Laufwerk abgespielt wird!</entry>
-      <entry id="7006" string="Delete original files after encoding">Originaldateien nach dem Kodieren löschen</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Diese Einstellung entfernt die Originaldateien nach der Kodierung&#10;von Ihrem Computer!&#10;&#10;Sind Sie sicher, dass Sie diese Funktion aktivieren möchten?</entry>
-      <entry id="7008" string="File already exists">Datei existiert bereits</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Die Ausgabedatei %1&#10;existiert bereits! Möchten Sie die Datei überschreiben?</entry>
-      <entry id="7010" string="Overwrite all further files">Alle weiteren Dateien überschreiben</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Die CDDB-Unterstützung ist deaktiviert! Bitte aktivieren Sie&#10;lokale oder entfernte CDDB-Abfragen im Konfigurationsdialog.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Die Unterstützung für die entfernte CDDB-Datenbank ist deaktiviert!&#10;Bitte aktivieren Sie die entfernte CDDB-Datenbank im Konfigurationsdialog.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Der Zugriff auf CD-ROM-Laufwerke wurde von Windows verweigert.&#10;&#10;Bitte kontaktieren Sie Ihren Systemadministrator, um&#10;das Recht zum Zugriff auf das CD-ROM-Laufwerk zu erhalten.</entry>
-      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Kann Eingabedatei nicht lesen: %1&#10;&#10;Datei: %1&#10;Pfad: %2</entry>
-      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Kann Ausgabedatei nicht öffnen: %1&#10;&#10;Datei: %1&#10;Pfad: %2</entry>
-      <entry id="7016" string="File not found">Datei nicht gefunden</entry>
-      <entry id="7017" string="Unknown file type">Unbekannter Dateityp</entry>
-      <entry id="7018" string="Unsupported audio format">Nicht unterstütztes Audioformat</entry>
-      <entry id="7019" string="Unknown error">Unbekannter Fehler</entry>
-      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">Kein Konfigurationsdialog verfügbar für:&#10;&#10;%1</entry>
-      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Sie scheinen dabei zu sein, von einem verlustbehafteten in ein verlustfreies Format zu konvertieren.&#10;&#10;Bitte beachten Sie, dass Qualitätsverlust nicht rückgängig gemacht werden kann und dieser Vorgang&#10;die Qualität in keiner Weise verbessern, aber sehr wahrscheinlich die Dateigröße erhöhen wird.&#10;&#10;Möchten Sie dennoch fortfahren?</entry>
-      <entry id="7022" string="Failed to verify input file: %1">Überprüfung der Eingabedatei fehlgeschlagen: %1</entry>
-      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Prüfsummenfehler beim Verifizieren der Ausgabedatei: %1&#10;&#10;Prüfsumme beim Kodieren: %2&#10;Prüfsumme bei Verifikation: %3</entry>
-      <entry id="7024" string="The selected folder does not exist anymore!">Der ausgewählte Ordner existiert nicht mehr!</entry>
-      <entry id="7025" string="Keep this option enabled even after restarting %1">Diese Funktion auch nach dem Neustart von %1 aktiviert lassen</entry>
-      <entry id="7026" string="Invalid file format">Ungültiges Dateiformat</entry>
+      <entry id="7000" string="Currently converting">Konvertierungsvorgang aktiv</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Ein Konvertierungsvorgang ist noch aktiv! Möchten sie das Programm dennoch beenden?</entry>
+      <entry id="7002" string="Delete original files after encoding">Originaldateien nach dem Kodieren löschen</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Diese Einstellung entfernt die Originaldateien nach der Kodierung&#10;von Ihrem Computer!&#10;&#10;Sind Sie sicher, dass Sie diese Funktion aktivieren möchten?</entry>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">Diese Funktion auch nach dem Neustart von %1 aktiviert lassen</entry>
+      <entry id="7005" string="File already exists">Datei existiert bereits</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Die Ausgabedatei %1&#10;existiert bereits! Möchten Sie die Datei überschreiben?</entry>
+      <entry id="7007" string="Overwrite all further files">Alle weiteren Dateien überschreiben</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Sie scheinen dabei zu sein, von einem verlustbehafteten in ein verlustfreies Format zu konvertieren.&#10;&#10;Bitte beachten Sie, dass Qualitätsverlust nicht rückgängig gemacht werden kann und dieser Vorgang&#10;die Qualität in keiner Weise verbessern, aber sehr wahrscheinlich die Dateigröße erhöhen wird.&#10;&#10;Möchten Sie dennoch fortfahren?</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7100" string="Error: %1">Fehler: %1</entry>
+      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Konnte Dekodierer nicht erzeugen: %1&#10;&#10;Datei: %1&#10;Pfad: %2</entry>
+      <entry id="7102" string="Could not create encoder component: %1">Konnte Kodierer nicht erzeugen: %1</entry>
+      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Konnte Dekodierer für Eingabedatei nicht starten: %1&#10;&#10;Datei: %1&#10;Pfad: %2&#10;&#10;Fehler: %2</entry>
+      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Konnte Dekodierer für Eingabedatei nicht starten: %1&#10;&#10;Datei: %1&#10;Pfad: %2&#10;&#10;Fehler: %2</entry>
+      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Konnte DSP-Prozessor nicht starten: %1&#10;&#10;Fehler: %2</entry>
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Kann Eingabedatei nicht lesen: %1&#10;&#10;Datei: %1&#10;Pfad: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Kann Ausgabedatei nicht öffnen: %1&#10;&#10;Datei: %1&#10;Pfad: %2</entry>
+      <entry id="7108" string="Failed to verify input file: %1">Überprüfung der Eingabedatei fehlgeschlagen: %1</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Prüfsummenfehler beim Verifizieren der Ausgabedatei: %1&#10;&#10;Prüfsumme beim Kodieren: %2&#10;Prüfsumme bei Verifikation: %3</entry>
+      <entry id="7110" string="File not found">Datei nicht gefunden</entry>
+      <entry id="7111" string="Unknown file type">Unbekannter Dateityp</entry>
+      <entry id="7112" string="Invalid file format">Ungültiges Dateiformat</entry>
+      <entry id="7113" string="Unsupported audio format">Nicht unterstütztes Audioformat</entry>
+      <entry id="7114" string="Unknown error">Unbekannter Fehler</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Kann ASPI-Treiber nicht laden! CD-Rippen deaktiviert!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Kann Datei nicht öffnen: %1&#10;&#10;Fehler: %2</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Kann keinen CD-Track abspielen, während vom selben Laufwerk gerippt wird!</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Kann nicht Rippen, während ein Track vom selben Laufwerk abgespielt wird!</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Die CDDB-Unterstützung ist deaktiviert! Bitte aktivieren Sie&#10;lokale oder entfernte CDDB-Abfragen im Konfigurationsdialog.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Die Unterstützung für die entfernte CDDB-Datenbank ist deaktiviert!&#10;Bitte aktivieren Sie die entfernte CDDB-Datenbank im Konfigurationsdialog.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Der Zugriff auf CD-ROM-Laufwerke wurde von Windows verweigert.&#10;&#10;Bitte kontaktieren Sie Ihren Systemadministrator, um&#10;das Recht zum Zugriff auf das CD-ROM-Laufwerk zu erhalten.</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Kein Konfigurationsdialog verfügbar für:&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">Der ausgewählte Ordner existiert nicht mehr!</entry>
     </section>
 
     <section name="Dialogs">

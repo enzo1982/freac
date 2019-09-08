@@ -382,18 +382,21 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">La kodado estas ankoraŭ faranta ! Ĉu vi volas tamen eliri ?</entry>
-      <entry id="7001" string="Currently converting">Ankoraŭ kodanta</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Ne eblas ŝarĝi la ASPI-pelilon! KD-ripanto malaktiviĝis!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Ne eblas malfermi la dosieron: %1&#10;&#10;%2</entry>
-      <entry id="7006" string="Delete original files after encoding">Forigi originalajn dosierojn post la kodado</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Tiu agordo forigas la originalajn dosierojn post la kodado el&#10;via komputilo!&#10;&#10;Ĉu vi estas certa, ke vi volas aktivigi tiun funkcion?</entry>
-      <entry id="7008" string="File already exists">La dosiero jam eksistas</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">La celdosiero %1&#10;jam eksistas! Ĉu vi volas transskribi ĝin?</entry>
-      <entry id="7010" string="Overwrite all further files">Anstataŭigi ĉiujn sekvontajn dosierojn</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">La CDDB-apogilo estas malaktivigita! Bonvolu aktivigi lokan&#10;aŭ forigitan CDDB-serĉadon en la konfiguracio-dialogo.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">La apogilo por la forigita CDDB-datumbanko estas malaktivigita!&#10;Bonvolu aktivigi forigitan CDDB-datumbankon en konfiguracio-dialogo.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">La atingo al KD-ROM-legilo estis malakzeptita de Vindozo.&#10;&#10;Bonvolu kontakti vian sistem-administranton por ricevi&#10;la ating-rajtojn de la KD-ROM-legilo.</entry>
+      <entry id="7000" string="Currently converting">Ankoraŭ kodanta</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">La kodado estas ankoraŭ faranta ! Ĉu vi volas tamen eliri ?</entry>
+      <entry id="7002" string="Delete original files after encoding">Forigi originalajn dosierojn post la kodado</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Tiu agordo forigas la originalajn dosierojn post la kodado el&#10;via komputilo!&#10;&#10;Ĉu vi estas certa, ke vi volas aktivigi tiun funkcion?</entry>
+      <entry id="7005" string="File already exists">La dosiero jam eksistas</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">La celdosiero %1&#10;jam eksistas! Ĉu vi volas transskribi ĝin?</entry>
+      <entry id="7007" string="Overwrite all further files">Anstataŭigi ĉiujn sekvontajn dosierojn</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Ne eblas ŝarĝi la ASPI-pelilon! KD-ripanto malaktiviĝis!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Ne eblas malfermi la dosieron: %1&#10;&#10;%2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">La CDDB-apogilo estas malaktivigita! Bonvolu aktivigi lokan&#10;aŭ forigitan CDDB-serĉadon en la konfiguracio-dialogo.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">La apogilo por la forigita CDDB-datumbanko estas malaktivigita!&#10;Bonvolu aktivigi forigitan CDDB-datumbankon en konfiguracio-dialogo.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">La atingo al KD-ROM-legilo estis malakzeptita de Vindozo.&#10;&#10;Bonvolu kontakti vian sistem-administranton por ricevi&#10;la ating-rajtojn de la KD-ROM-legilo.</entry>
     </section>
 
     <section name="Dialogs">

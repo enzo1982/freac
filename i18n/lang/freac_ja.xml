@@ -576,33 +576,36 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">エンコード処理を実行中です。本当に終了しますか？</entry>
-      <entry id="7001" string="Currently converting">エンコード中です</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI ドライバがロードできません。 CD リッピングが出来ません。</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
-      <entry id="7004" string="Cannot play a CD track while ripping from the same drive!">同じドライブからリッピングしながらCDトラックを再生できません！</entry>
-      <entry id="7005" string="Cannot start ripping while playing a track from the same drive!">同じドライブからトラックを再生中にリッピングを開始できません！</entry>
-      <entry id="7006" string="Delete original files after encoding">エンコード後に元ファイルを削除</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">このオプションはファイルをエンコードした後に元ファイルを&#10;コンピュータから削除します!&#10;&#10;本当にこの機能を有効にしますか？</entry>
-      <entry id="7008" string="File already exists">ファイルが既に存在します</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">出力ファイル (%1) は既に存在します。&#10;上書きしますか?</entry>
-      <entry id="7010" string="Overwrite all further files">すべて上書き</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB サポートが無効になっています。 設定ダイアログで&#10;ローカルかリモート CDDB サポートを有効にしてください。</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">リモート CDDB サポートが無効になっています。&#10;設定ダイアログで有効にしてください。</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">CD-ROM ドライブへのアクセスが Windows により拒否されました。&#10;&#10;システム管理者に連絡して CD-ROM ドライブへの&#10;アクセス権限をもらってください。</entry>
-      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">入力ファイルにアクセス不能： %1&#10;&#10;ファイル： %1&#10;ディレクトリ： %2</entry>
-      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">出力ファイルを作成不能： %1&#10;&#10;ファイル： %1&#10;ディレクトリ： %2</entry>
-      <entry id="7016" string="File not found">ファイルがありません</entry>
-      <entry id="7017" string="Unknown file type">不明なファイル形式</entry>
-      <entry id="7018" string="Unsupported audio format">未対応のオーディオ形式</entry>
-      <entry id="7019" string="Unknown error">不明なエラー</entry>
-      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">次の設定ダイアログは使用できません：&#10;&#10;%1</entry>
-      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">非可逆圧縮から可逆圧縮に変換しようとしています。&#10;&#10;品質の低下は元に戻すことができないため、このプロセスでは&#10;品質が向上することはなく、ファイルサイズが増加する可能性が高いことにご注意ください。&#10;&#10;続行しますか？</entry>
-      <entry id="7022" string="Failed to verify input file: %1">入力ファイルの検証に失敗しました： %1</entry>
-      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">チェックサムの不一致がないか出力ファイルをベリファイしています：%1&#10;&#10;エンコードのチェックサム：%2&#10;ベリファイのチェックサム：%3</entry>
-      <entry id="7024" string="The selected folder does not exist anymore!">選択したフォルダはもう存在しません！</entry>
-      <entry id="7025" string="Keep this option enabled even after restarting %1">%1 を再起動してもこのオプションを有効にしておいてください</entry>
-      <entry id="7026" string="Invalid file format">無効なファイル形式です</entry>
+      <entry id="7000" string="Currently converting">エンコード中です</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">エンコード処理を実行中です。本当に終了しますか？</entry>
+      <entry id="7002" string="Delete original files after encoding">エンコード後に元ファイルを削除</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">このオプションはファイルをエンコードした後に元ファイルを&#10;コンピュータから削除します!&#10;&#10;本当にこの機能を有効にしますか？</entry>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">%1 を再起動してもこのオプションを有効にしておいてください</entry>
+      <entry id="7005" string="File already exists">ファイルが既に存在します</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">出力ファイル (%1) は既に存在します。&#10;上書きしますか?</entry>
+      <entry id="7007" string="Overwrite all further files">すべて上書き</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">非可逆圧縮から可逆圧縮に変換しようとしています。&#10;&#10;品質の低下は元に戻すことができないため、このプロセスでは&#10;品質が向上することはなく、ファイルサイズが増加する可能性が高いことにご注意ください。&#10;&#10;続行しますか？</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">入力ファイルにアクセス不能： %1&#10;&#10;ファイル： %1&#10;ディレクトリ： %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">出力ファイルを作成不能： %1&#10;&#10;ファイル： %1&#10;ディレクトリ： %2</entry>
+      <entry id="7108" string="Failed to verify input file: %1">入力ファイルの検証に失敗しました： %1</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">チェックサムの不一致がないか出力ファイルをベリファイしています：%1&#10;&#10;エンコードのチェックサム：%2&#10;ベリファイのチェックサム：%3</entry>
+      <entry id="7110" string="File not found">ファイルがありません</entry>
+      <entry id="7111" string="Unknown file type">不明なファイル形式</entry>
+      <entry id="7112" string="Invalid file format">無効なファイル形式です</entry>
+      <entry id="7113" string="Unsupported audio format">未対応のオーディオ形式</entry>
+      <entry id="7114" string="Unknown error">不明なエラー</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI ドライバがロードできません。 CD リッピングが出来ません。</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">同じドライブからリッピングしながらCDトラックを再生できません！</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">同じドライブからトラックを再生中にリッピングを開始できません！</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB サポートが無効になっています。 設定ダイアログで&#10;ローカルかリモート CDDB サポートを有効にしてください。</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">リモート CDDB サポートが無効になっています。&#10;設定ダイアログで有効にしてください。</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">CD-ROM ドライブへのアクセスが Windows により拒否されました。&#10;&#10;システム管理者に連絡して CD-ROM ドライブへの&#10;アクセス権限をもらってください。</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">次の設定ダイアログは使用できません：&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">選択したフォルダはもう存在しません！</entry>
     </section>
 
     <section name="Dialogs">

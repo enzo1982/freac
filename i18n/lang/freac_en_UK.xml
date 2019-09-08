@@ -22,10 +22,10 @@
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialogue. If that does not help, try using one of the Paranoia modes.</entry>
     </section>
 
-    <section name="Messages">
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialogue.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialogue.</entry>
-      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">No configuration dialogue available for:&#10;&#10;%1</entry>
+    <section name="Errors">
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialogue.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialogue.</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">No configuration dialogue available for:&#10;&#10;%1</entry>
     </section>
 
     <section name="Ripper">

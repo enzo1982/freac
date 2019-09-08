@@ -402,24 +402,27 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">U flussu di cudificazione hè sempre in corsu ! Site sicuru di vulè chità quantunque ?</entry>
-      <entry id="7001" string="Currently converting">Cudificazione in corsu</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Impussibule di caricà i piloti ASPI ! Estrazzione CD disattivata !</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Impussibule d'apre u schedariu : %1&#10;&#10;Sbagliu : %2</entry>
-      <entry id="7006" string="Delete original files after encoding">Squassà u schedariu d'urigine dopu à a cudificazione</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">St'ozzione hà da caccià i schedarii d'urigine&#10;da l'urdinatore dopu à a cudificazione !&#10;&#10;Site sicuru di vulè attivà sta funzione ?</entry>
-      <entry id="7008" string="File already exists">U schedariu esiste dighjà</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">U schedariu in esciuta %1&#10;esiste dighjà ! Vulete rimpiazzallu ?</entry>
-      <entry id="7010" string="Overwrite all further files">Rimpiazzà tutti l'altri schedarii</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">L'accessu à a CDDB lucale o alluntanata ùn hè micca attivu !&#10;Ci vole à attivà st'accessu in u dialogu di cunfigurazione.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">L'accessu à a CDDB alluntanata ùn hè micca attivu !&#10;Ci vole à attivà st'accessu in u dialogu di cunfigurazione.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows hà ricusatu l'accessu à i lettori CD-ROM.&#10;&#10;Ci vole à cuntattà l'amministratore di u vostru sistema&#10;per dumandallu u dirittu d'accessu à u lettore CD-ROM.</entry>
-      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn pò micca accede à u schedariu d'entrata : %1&#10;&#10;Schedariu : %1&#10;Cartulare : %2</entry>
-      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn pò micca accede à u schedariu d'esciuta : %1&#10;&#10;Schedariu : %1&#10;Cartulare : %2</entry>
-      <entry id="7016" string="File not found">U schedariu ùn esiste micca</entry>
-      <entry id="7017" string="Unknown file type">Tipu di schedariu scunnisciutu</entry>
-      <entry id="7018" string="Unsupported audio format">Forma audio micca accettatu</entry>
-      <entry id="7019" string="Unknown error">Sbagliu scunnisciutu</entry>
+      <entry id="7000" string="Currently converting">Cudificazione in corsu</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">U flussu di cudificazione hè sempre in corsu ! Site sicuru di vulè chità quantunque ?</entry>
+      <entry id="7002" string="Delete original files after encoding">Squassà u schedariu d'urigine dopu à a cudificazione</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">St'ozzione hà da caccià i schedarii d'urigine&#10;da l'urdinatore dopu à a cudificazione !&#10;&#10;Site sicuru di vulè attivà sta funzione ?</entry>
+      <entry id="7005" string="File already exists">U schedariu esiste dighjà</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">U schedariu in esciuta %1&#10;esiste dighjà ! Vulete rimpiazzallu ?</entry>
+      <entry id="7007" string="Overwrite all further files">Rimpiazzà tutti l'altri schedarii</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn pò micca accede à u schedariu d'entrata : %1&#10;&#10;Schedariu : %1&#10;Cartulare : %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn pò micca accede à u schedariu d'esciuta : %1&#10;&#10;Schedariu : %1&#10;Cartulare : %2</entry>
+      <entry id="7110" string="File not found">U schedariu ùn esiste micca</entry>
+      <entry id="7111" string="Unknown file type">Tipu di schedariu scunnisciutu</entry>
+      <entry id="7113" string="Unsupported audio format">Forma audio micca accettatu</entry>
+      <entry id="7114" string="Unknown error">Sbagliu scunnisciutu</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Impussibule di caricà i piloti ASPI ! Estrazzione CD disattivata !</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Impussibule d'apre u schedariu : %1&#10;&#10;Sbagliu : %2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">L'accessu à a CDDB lucale o alluntanata ùn hè micca attivu !&#10;Ci vole à attivà st'accessu in u dialogu di cunfigurazione.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">L'accessu à a CDDB alluntanata ùn hè micca attivu !&#10;Ci vole à attivà st'accessu in u dialogu di cunfigurazione.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows hà ricusatu l'accessu à i lettori CD-ROM.&#10;&#10;Ci vole à cuntattà l'amministratore di u vostru sistema&#10;per dumandallu u dirittu d'accessu à u lettore CD-ROM.</entry>
     </section>
 
     <section name="Dialogs">

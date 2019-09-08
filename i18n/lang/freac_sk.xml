@@ -383,24 +383,27 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Proces kódovania stále beží! Skutočne chcete ukončiť program?</entry>
-      <entry id="7001" string="Currently converting">Práve kódujem</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Nemožno zaviesť ASPI ovládače! Rippovanie je nefunkčné!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Nemožno otvoriť súbor: %1&#10;&#10;%2</entry>
-      <entry id="7006" string="Delete original files after encoding">Po kódovaní zmazať pôvodné súbory</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Táto možnosť zmaže orig. súbory po kódovaní.&#10;Ste si istý že chcete pokračovať?</entry>
-      <entry id="7008" string="File already exists">Súbor už existuje</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Výstupný súbor %1&#10;už existuje! Chcete ho prepísať?</entry>
-      <entry id="7010" string="Overwrite all further files">Prepísať všetky ďalšie súbory</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Podpora CDDB je vypnutá! Prosím, povoľte lokálnu&#10;alebo vzdialenú CDDB podporu v nastaveniach.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Vzdialená CDDB podpora je vypnutá! Prosím povoľte&#10;vzdialenú CDDB podporu v nastaveniach.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Prístup k CD-ROM mechanike bol zamietnutý Windowsom.&#10;&#10;Prosím, kontaktujte vášho systémového administrátora pre&#10;získanie prístupu k CD-ROM mechanike.</entry>
-      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Nemožno pristupovať k súboru: %1&#10;&#10;Súbor: %1&#10;Adresár: %2</entry>
-      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Nemožno vytvoriť súbor: %1&#10;&#10;Súbor: %1&#10;Adresár: %2</entry>
-      <entry id="7016" string="File not found">Súbor nebol nájdený</entry>
-      <entry id="7017" string="Unknown file type">Neznámy typ súboru</entry>
-      <entry id="7018" string="Unsupported audio format">Nepodporovaný audio formát</entry>
-      <entry id="7019" string="Unknown error">Neznáma chyba</entry>
+      <entry id="7000" string="Currently converting">Práve kódujem</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Proces kódovania stále beží! Skutočne chcete ukončiť program?</entry>
+      <entry id="7002" string="Delete original files after encoding">Po kódovaní zmazať pôvodné súbory</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Táto možnosť zmaže orig. súbory po kódovaní.&#10;Ste si istý že chcete pokračovať?</entry>
+      <entry id="7005" string="File already exists">Súbor už existuje</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Výstupný súbor %1&#10;už existuje! Chcete ho prepísať?</entry>
+      <entry id="7007" string="Overwrite all further files">Prepísať všetky ďalšie súbory</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Nemožno pristupovať k súboru: %1&#10;&#10;Súbor: %1&#10;Adresár: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Nemožno vytvoriť súbor: %1&#10;&#10;Súbor: %1&#10;Adresár: %2</entry>
+      <entry id="7110" string="File not found">Súbor nebol nájdený</entry>
+      <entry id="7111" string="Unknown file type">Neznámy typ súboru</entry>
+      <entry id="7113" string="Unsupported audio format">Nepodporovaný audio formát</entry>
+      <entry id="7114" string="Unknown error">Neznáma chyba</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Nemožno zaviesť ASPI ovládače! Rippovanie je nefunkčné!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Nemožno otvoriť súbor: %1&#10;&#10;%2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Podpora CDDB je vypnutá! Prosím, povoľte lokálnu&#10;alebo vzdialenú CDDB podporu v nastaveniach.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Vzdialená CDDB podpora je vypnutá! Prosím povoľte&#10;vzdialenú CDDB podporu v nastaveniach.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Prístup k CD-ROM mechanike bol zamietnutý Windowsom.&#10;&#10;Prosím, kontaktujte vášho systémového administrátora pre&#10;získanie prístupu k CD-ROM mechanike.</entry>
     </section>
 
     <section name="Dialogs">

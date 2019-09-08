@@ -178,7 +178,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	}
 	else if (!cancel && verify)
 	{
-		onReportError.Emit(i18n->TranslateString("Failed to verify input file: %1", "Messages").Replace("%1", File(trackToConvert.fileName).GetFileName()));
+		onReportError.Emit(i18n->TranslateString("Failed to verify input file: %1", "Errors").Replace("%1", File(trackToConvert.fileName).GetFileName()));
 
 		log->Write(String("\tFailed to verify input file: ").Append(trackToConvert.fileName), MessageTypeError);
 	}
@@ -200,7 +200,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 			break;
 		case ConversionStepVerify:
-			if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Messages").Replace("%1", File(trackToConvert.fileName).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
+			if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Errors").Replace("%1", File(trackToConvert.fileName).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
 
 			if	(cancel)			   log->Write(String("\tCancelled verifying output file: ").Append(trackToConvert.fileName), MessageTypeWarning);
 			else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying output file: ").Append(trackToConvert.fileName));

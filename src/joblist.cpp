@@ -362,7 +362,7 @@ Bool freac::JobList::AddTracksByFileNames(const Array<String> &files)
 
 		if	(File(file).Exists())	   filesToAdd.Add(file);
 		else if (Directory(file).Exists()) foldersToAdd.Add(file);
-		else				   BoCA::Utilities::ErrorMessage("Unable to open file: %1\n\nError: %2", File(file).GetFileName(), i18n->TranslateString("File not found", "Messages"));
+		else				   BoCA::Utilities::ErrorMessage("Unable to open file: %1\n\nError: %2", File(file).GetFileName(), i18n->TranslateString("File not found", "Errors"));
 	}
 
 	if (filesToAdd.Length()	  > 0) (new JobAddFiles(filesToAdd))->Schedule();

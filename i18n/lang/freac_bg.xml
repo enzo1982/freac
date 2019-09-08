@@ -584,33 +584,36 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Процесът на конвертиране все още е активен!&#10;Наистина ли искате да затворите програмата?</entry>
-      <entry id="7001" string="Currently converting">В момента се конвертира</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Невъзможно е да се заредят ASPI драйверите!&#10;CD извличането е изключено!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Невъзможно е да се отвари файл: %1&#10;&#10;Грешка: %2</entry>
-      <entry id="7004" string="Cannot play a CD track while ripping from the same drive!">Не може да се възпроизвежда песен от CD, докато се извлича от същото устройство!</entry>
-      <entry id="7005" string="Cannot start ripping while playing a track from the same drive!">Не може да се стартира извличане, докато се възпроизвежда песен от същото устройство!</entry>
-      <entry id="7006" string="Delete original files after encoding">Изтриване на оригиналните файлове след кодирането</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Тази опция ще изтрие оригиналните файлове&#10;от вашия компютър след процеса по кодиране!&#10;&#10;Сигурни ли сте, че искате да активирате тази функция?</entry>
-      <entry id="7008" string="File already exists">Файлът вече съществува</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Изходния файл %1&#10;вече съществува! Искате ли да го презапишете?</entry>
-      <entry id="7010" string="Overwrite all further files">Презаписване на всички следващи файлове</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Поддръжката за CDDB е изключена! Включете поддръжка за&#10;местна или отдалечена CDDB в конфигурационния прозорец.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Отдалечената поддръжка за  CDDB е изключена! Включете&#10;поддръжка за отдалечена CDDB в конфигурационния прозорец.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Достъпът до CD-ROM устройствата е отказан от Windows.&#10;&#10;Свържете се с вашия системен администратор&#10;за да получите достъп до CD-ROM устройството.</entry>
-      <entry id="7014" string="Cannot access input file: %1&#10;&#10;File: %1&#10;Path: %2">Няма достъп до входния файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
-      <entry id="7015" string="Cannot create output file: %1&#10;&#10;File: %1&#10;Path: %2">Не може да се създаде изходен файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
-      <entry id="7016" string="File not found">Файлът не е открит</entry>
-      <entry id="7017" string="Unknown file type">Неизвестен тип файл</entry>
-      <entry id="7018" string="Unsupported audio format">Неподдържан аудио формат</entry>
-      <entry id="7019" string="Unknown error">Неизвестна грешка</entry>
-      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">Не е наличен конфигурационен прозорец за:&#10;&#10;%1</entry>
-      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Изглежда, че конвертирате от формат&#10;lossy(със загуба) в lossless(без загуба).&#10;Имайте предвид, че загубата на качеството не може да се отмени,&#10;така че този процес няма да подобри качеството по никакъв начин,&#10;и най-вероятно ще увеличи размера на файла.&#10;Искате ли да продължите?</entry>
-      <entry id="7022" string="Failed to verify input file: %1">Неуспешна проверка на входния файл: %1</entry>
-      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Несъответствие в контролна сума за проверка на изходния файл: %1&#10;&#10;Кодираща сума: %2&#10;Проверка на контролна сума: %3</entry>
-      <entry id="7024" string="The selected folder does not exist anymore!">Избраната папка вече не съществува!</entry>
-      <entry id="7025" string="Keep this option enabled even after restarting %1">Запазете тази опция включена дори след рестартиране %1</entry>
-      <entry id="7026" string="Invalid file format">Невалиден файлов формат</entry>
+      <entry id="7000" string="Currently converting">В момента се конвертира</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Процесът на конвертиране все още е активен!&#10;Наистина ли искате да затворите програмата?</entry>
+      <entry id="7002" string="Delete original files after encoding">Изтриване на оригиналните файлове след кодирането</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Тази опция ще изтрие оригиналните файлове&#10;от вашия компютър след процеса по кодиране!&#10;&#10;Сигурни ли сте, че искате да активирате тази функция?</entry>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">Запазете тази опция включена дори след рестартиране %1</entry>
+      <entry id="7005" string="File already exists">Файлът вече съществува</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Изходния файл %1&#10;вече съществува! Искате ли да го презапишете?</entry>
+      <entry id="7007" string="Overwrite all further files">Презаписване на всички следващи файлове</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Изглежда, че конвертирате от формат&#10;lossy(със загуба) в lossless(без загуба).&#10;Имайте предвид, че загубата на качеството не може да се отмени,&#10;така че този процес няма да подобри качеството по никакъв начин,&#10;и най-вероятно ще увеличи размера на файла.&#10;Искате ли да продължите?</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Няма достъп до входния файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Не може да се създаде изходен файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
+      <entry id="7108" string="Failed to verify input file: %1">Неуспешна проверка на входния файл: %1</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Несъответствие в контролна сума за проверка на изходния файл: %1&#10;&#10;Кодираща сума: %2&#10;Проверка на контролна сума: %3</entry>
+      <entry id="7110" string="File not found">Файлът не е открит</entry>
+      <entry id="7111" string="Unknown file type">Неизвестен тип файл</entry>
+      <entry id="7112" string="Invalid file format">Невалиден файлов формат</entry>
+      <entry id="7113" string="Unsupported audio format">Неподдържан аудио формат</entry>
+      <entry id="7114" string="Unknown error">Неизвестна грешка</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Невъзможно е да се заредят ASPI драйверите!&#10;CD извличането е изключено!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Невъзможно е да се отвари файл: %1&#10;&#10;Грешка: %2</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Не може да се възпроизвежда песен от CD, докато се извлича от същото устройство!</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Не може да се стартира извличане, докато се възпроизвежда песен от същото устройство!</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Поддръжката за CDDB е изключена! Включете поддръжка за&#10;местна или отдалечена CDDB в конфигурационния прозорец.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Отдалечената поддръжка за  CDDB е изключена! Включете&#10;поддръжка за отдалечена CDDB в конфигурационния прозорец.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Достъпът до CD-ROM устройствата е отказан от Windows.&#10;&#10;Свържете се с вашия системен администратор&#10;за да получите достъп до CD-ROM устройството.</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Не е наличен конфигурационен прозорец за:&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">Избраната папка вече не съществува!</entry>
     </section>
 
     <section name="Dialogs">

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -34,9 +34,9 @@ Void freac::Component::SetError(const String &message, const String &replace1, c
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 	errorState  = True;
-	errorString = i18n->TranslateString(message, "Messages").Replace("%1", replace1)
-								.Replace("%2", replace2)
-								.Replace("%3", replace3);
+	errorString = i18n->TranslateString(message, "Errors").Replace("%1", replace1)
+							      .Replace("%2", replace2)
+							      .Replace("%3", replace3);
 }
 
 Bool freac::Component::LockComponent(StreamComponent *component)
