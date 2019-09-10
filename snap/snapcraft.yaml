@@ -62,8 +62,8 @@ parts:
       - usr/lib/libcdio_*.so*
 
   libfaad:
-    source: https://sourceforge.net/projects/faac/files/faad2-src/faad2-2.8.0/faad2-2.8.8.tar.gz
-    source-checksum: sha256/985c3fadb9789d2815e50f4ff714511c79c2710ac27a4aaaf5c0c2662141426d
+    source: https://github.com/knik0/faad2/archive/2_9_0.tar.gz
+    source-checksum: sha256/be30fbb0ea7999fe04ea7a5d5298eec15c256ddff4d5d7c584d5344fb9b0d2d4
     plugin: autotools
     configflags: [ --prefix=/usr ]
     prime:
