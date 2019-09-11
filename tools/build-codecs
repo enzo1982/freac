@@ -464,7 +464,7 @@ for package in ${packages[@]}; do
 
   elif [ $package == musepack ]; then
     # Build MusePack
-    prepare="touch include/config.h.in; head -n 34 configure.in >> configure.ac; echo \"AM_CONDITIONAL([HAVE_VISIBILITY], [false])\" >> configure.ac; echo \"AC_CHECK_LIB([m],[cos])\" >> configure.ac; tail -n 18 configure.in >> configure.ac; rm configure.in; autoreconf -i"
+    prepare="touch include/config.h.in; head -n 34 configure.in >> configure.ac; echo \"AM_CONDITIONAL([HAVE_VISIBILITY], [false])\" >> configure.ac; echo \"AC_CHECK_LIB([m],[cos])\" >> configure.ac; tail -n 18 configure.in >> configure.ac; rm configure.in"
     configure_flags="--disable-shared"
     build $musepack_location "mpcenc/mpcenc.$execext mpcdec/mpcdec.$execext" "mpcenc.$execext mpcdec.$execext"
 
@@ -483,7 +483,6 @@ for package in ${packages[@]}; do
     # Build RNNoise
     archive=rnnoise-${rnnoise_location##*/}.zip
     wget $rnnoise_location -O $archive
-    prepare="autoreconf -i"
     build $archive .libs/librnnoise$sharedinfix.$sharedext RNNoise.$sharedext
 
   elif [ $package == rubberband ]; then
