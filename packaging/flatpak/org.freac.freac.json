@@ -1,7 +1,7 @@
 {
     "app-id": "org.freac.freac",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "18.08",
+    "runtime-version": "19.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "freac",
     "finish-args": [
@@ -157,19 +157,6 @@
                     "url": "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b",
                     "sha256": "9afeeb8bf78f3ff549eb40f1364b54b4404ea1be27eee446af02790d9e39cc92",
                     "dest-filename": "autoaux/config.sub"
-                }
-            ]
-        },
-        {
-            "name": "libogg",
-            "cleanup": [
-                "/share/doc/libogg"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-1.3.4.tar.xz",
-                    "sha256": "c163bc12bc300c401b6aa35907ac682671ea376f13ae0969a220f7ddf71893fe"
                 }
             ]
         },
