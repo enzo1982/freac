@@ -545,6 +545,8 @@ Void freac::freacGUI::OnChangeConfiguration()
 
 	/* Update tabs for new configuration.
 	 */
+	const Widget	*selectedTab = tabs_main->GetSelectedTab();
+
 	for (Int i = 0; i < tabs_main->GetNOfObjects(); i++)
 	{
 		if (tabs_main->GetNthObject(i)->GetObjectType() != Layer::classID) continue;
@@ -571,6 +573,7 @@ Void freac::freacGUI::OnChangeConfiguration()
 				Config::SettingsShowJobsTabID,
 				Config::SettingsShowJobsTabDefault)) tabs_main->Add(tab_layer_threads);
 
+	tabs_main->SelectTab(selectedTab);
 	tabs_main->Paint(SP_PAINT);
 
 	/* Do not use tab widget if there would be only one tab.
