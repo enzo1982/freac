@@ -223,7 +223,7 @@ Int freac::ConvertWorker::Convert()
 		 */
 		if (conversionStep == ConversionStepVerify)
 		{
-			DecoderComponent	*decoder = boca.CreateDecoderForStream(inFileName);
+			DecoderComponent	*decoder = boca.CreateDecoderForStream(inFileName, configuration);
 
 			if (decoder != NIL)
 			{

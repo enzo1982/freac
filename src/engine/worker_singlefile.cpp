@@ -60,7 +60,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	 */
 	if (conversionStep == ConversionStepVerify)
 	{
-		DecoderComponent	*decoder = boca.CreateDecoderForStream(trackToConvert.fileName);
+		DecoderComponent	*decoder = boca.CreateDecoderForStream(trackToConvert.fileName, configuration);
 
 		if (decoder != NIL)
 		{

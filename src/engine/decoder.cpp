@@ -59,7 +59,7 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 
 	/* Create decoder component.
 	 */
-	decoder = boca.CreateDecoderForStream(nFileName);
+	decoder = boca.CreateDecoderForStream(nFileName, configuration);
 
 	if (decoder == NIL)
 	{
