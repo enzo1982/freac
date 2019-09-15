@@ -11,12 +11,13 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <jobs/jobmanager.h>
-#include <jobs/job.h>
-#include <dialogs/error.h>
+
 #include <config.h>
 #include <utilities.h>
 
-#include <boca.h>
+#include <support/autorelease.h>
+
+#include <dialogs/error.h>
 
 freac::JobManager	*freac::JobManager::instance = NIL;
 
@@ -55,6 +56,8 @@ Void freac::JobManager::ManagerThread()
 
 		if (scheduled.Length() > 0)
 		{
+			AutoRelease	 autoRelease;
+
 			foreachreverse (Job *job, scheduled)
 			{
 				/* Call the job's precheck method.
@@ -67,6 +70,8 @@ Void freac::JobManager::ManagerThread()
 
 		if (planned.Length() > 0)
 		{
+			AutoRelease	 autoRelease;
+
 			foreach (Job *job, planned)
 			{
 				/* Check if the job is ready to run and if so start it.

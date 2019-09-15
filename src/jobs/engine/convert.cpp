@@ -490,6 +490,8 @@ Error freac::JobConvert::Perform()
 	{
 		if (encodeToSingleFile && singleFileEncoder == NIL) break;
 
+		AutoRelease	 autoRelease;
+
 		/* Check for errors.
 		 */
 		if (encodeToSingleFile)
@@ -710,8 +712,6 @@ Error freac::JobConvert::Perform()
 		foreach (ConvertWorker *worker, workerQueue)
 		{
 			if (worker->IsWaiting()) continue;
-
-			AutoRelease	 autoRelease;
 
 			const Track	&workerTrack = worker->GetTrackToConvert();
 
