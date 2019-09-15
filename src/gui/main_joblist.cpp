@@ -33,6 +33,8 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
+	drawSurface		= NIL;
+
 	dontUpdateInfo		= False;
 
 	clicked_charset		= -1;
@@ -1472,9 +1474,9 @@ Void freac::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsL
 {
 	/* Start painting here, end it in OnEncoderTotalProgress.
 	 */
-	Surface	*surface = GetDrawSurface();
+	drawSurface = GetDrawSurface();
 
-	surface->StartPaint(Rect::EncloseRect(progress->GetVisibleArea(), edb_totalTime->GetVisibleArea()));
+	drawSurface->StartPaint(Rect::EncloseRect(progress->GetVisibleArea(), edb_totalTime->GetVisibleArea()));
 
 	/* Update seconds only if estimate is less or
 	 * at least two seconds more than before.
@@ -1541,9 +1543,7 @@ Void freac::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int secondsL
 
 	/* End painting, started in OnEncoderTrackProgress.
 	 */
-	Surface	*surface = GetDrawSurface();
-
-	surface->EndPaint();
+	drawSurface->EndPaint();
 }
 
 Void freac::LayerJoblist::ShowHideTitleInfo()

@@ -127,6 +127,8 @@ namespace freac
 
 			LayerPlayer		*player;
 
+			Surface			*drawSurface;
+
 			BoCA::Picture		 currentCover;
 
 			Bool			 dontUpdateInfo;
