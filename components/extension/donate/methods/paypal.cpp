@@ -83,8 +83,6 @@ BoCA::LayerPayPal::LayerPayPal()
 	Add(combo_amount);
 	Add(check_monthly);
 
-	String::ExplodeFinish();
-
 	/* Donate button.
 	 */
 	Directory	 dir(Utilities::GetBoCADirectory().Append("freac.extension.donate"));
@@ -171,6 +169,4 @@ Void BoCA::LayerPayPal::OnChangeSettings()
 			 .Replace("%website%",	    Encoding::URLEncode::Encode("https://www.freac.org/"));
 
 	link_donate->SetURL(url);
-
-	String::ExplodeFinish();
 }

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -38,8 +38,6 @@ Bool freac::CDDBLocal::QueryUnixDB(const String &queryString)
 	Array<Int>	 discOffsets;
 
 	for (Int i = 0; i < numTocEntries; i++) discOffsets.Add(values.GetNth(i + 4).ToInt());
-
-	String::ExplodeFinish();
 
 	String::InputFormat	 inputFormat("UTF-8");
 	String::OutputFormat	 outputFormat("UTF-8");
@@ -92,8 +90,6 @@ Bool freac::CDDBLocal::QueryWinDB(const String &queryString)
 	Array<Int>	 discOffsets;
 
 	for (Int i = 0; i < numTocEntries; i++) discOffsets.Add(values.GetNth(i + 4).ToInt());
-
-	String::ExplodeFinish();
 
 	String::InputFormat	 inputFormat("UTF-8");
 	String::OutputFormat	 outputFormat("UTF-8");

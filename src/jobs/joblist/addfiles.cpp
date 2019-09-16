@@ -392,9 +392,4 @@ Void freac::JobAddFilesWorker::ExtractInfoFromPath(const String &path, Info &inf
 
 	if (info.title[length - 4] == '-' && info.title[length - 3] >= 'a' && info.title[length - 3] <= 'z' && info.title[length - 2] >= 'a' && info.title[length - 2] <= 'z' && info.title[length - 1] >= 'a' && info.title[length - 1] <= 'z') info.title = info.title.Head(info.title.Length() - 4);
 	if (info.title.ToLower().StartsWith(info.artist.ToLower().Append("-"))) info.title = info.title.Tail(info.title.Length() - info.artist.Length() - 1);
-
-	/* Finish operation.
-	 */
-	String::ExplodeFinish();
-	String::ExplodeFinish();
 }

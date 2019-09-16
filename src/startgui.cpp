@@ -502,8 +502,6 @@ Void freac::freacGUI::ConfigureProcessor()
 
 	ConfigureComponent(ids.GetNth(clicked_processor));
 
-	String::ExplodeFinish();
-
 	/* Reset selected processor.
 	 */
 	clicked_processor = -1;
@@ -1144,8 +1142,6 @@ Void freac::freacGUI::FillMenus()
 		menu_processing->AddEntry();
 		menu_processing->AddEntry(i18n->TranslateString("Selected signal processors"), NIL, menu_processors);
 	}
-
-	String::ExplodeFinish();
 
 	ToggleSignalProcessing();
 

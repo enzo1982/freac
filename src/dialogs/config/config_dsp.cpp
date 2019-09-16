@@ -159,8 +159,6 @@ Void freac::ConfigureDSP::AddComponents()
 			break;
 		}
 	}
-
-	String::ExplodeFinish();
 }
 
 Void freac::ConfigureDSP::OnToggleProcessing()

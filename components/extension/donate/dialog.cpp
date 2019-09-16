@@ -63,8 +63,6 @@ BoCA::DonateDialog::DonateDialog()
 		tab_methods->Add(layer, method->GetLogo());
 	}
 
-	String::ExplodeFinish();
-
 	text_intro		= new Text(i18n->TranslateString("Please support this project!"), Point(7, 12));
 	text_intro->SetFont(Font(Font::Default, 12, Font::Bold, 0, text_intro->GetFont().GetColor()));
 

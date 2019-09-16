@@ -826,8 +826,6 @@ Void freac::JobList::OnClickTab(Int n)
 		reverse = False;
 	}
 
-	String::ExplodeFinish();
-
 	/* Get file types and output file names.
 	 */
 	Array<String>	 fileTypes;
@@ -1077,9 +1075,6 @@ Void freac::JobList::AddHeaderTabs()
 
 		AddTab(tabName, tabSize, tabAlign);
 	}
-
-	String::ExplodeFinish();
-	String::ExplodeFinish();
 }
 
 Void freac::JobList::UpdateTextLine()
@@ -1173,8 +1168,6 @@ String freac::JobList::GetEntryText(const Track &track) const
 
 		jlEntry.Append(ListEntry::tabDelimiter);
 	}
-
-	String::ExplodeFinish();
 
 	return jlEntry;
 }

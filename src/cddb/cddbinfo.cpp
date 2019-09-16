@@ -140,8 +140,6 @@ Bool freac::CDDBInfo::UpdateFromQueryString(const String &queryString)
 	discLength = values.GetNth(numTocEntries + 4).ToInt();
 	discID	   = CDDB::StringToDiscID(values.GetNth(2));
 
-	String::ExplodeFinish();
-
 	return True;
 }
 

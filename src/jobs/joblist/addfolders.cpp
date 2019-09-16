@@ -66,8 +66,6 @@ Void freac::JobAddFolders::AddFolders(const Array<Directory> &folders)
 
 			if (add) files.Add(file);
 		}
-
-		String::ExplodeFinish();
 	}
 }
 
