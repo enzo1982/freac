@@ -332,5 +332,12 @@ Void freac::Playback::Stop()
 	 */
 	stop = True;
 
-	while (playing) S::System::System::Sleep(10);
+	while (playing)
+	{
+		Int	 suspendCount = GUI::Application::Lock::SuspendLock();
+
+		S::System::System::Sleep(10);
+
+		GUI::Application::Lock::ResumeLock(suspendCount);
+	}
 }

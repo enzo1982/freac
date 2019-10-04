@@ -566,6 +566,8 @@ Error freac::JobConvert::Perform()
 					{
 						if (jltrack.GetTrackID() == track.GetTrackID())
 						{
+							GUI::Application::Lock	 lock;
+
 							joblist->onComponentRemoveTrack.Emit(jltrack);
 
 							break;
