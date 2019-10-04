@@ -365,7 +365,11 @@ Void freac::cddbSubmitDlg::Submit()
 		return;
 	}
 
-	cddbInfo.dArtist	= (edit_artist->GetText() == i18n->TranslateString("Various artists") ? String("Various") : edit_artist->GetText());
+	/* Prepare CDDB info.
+	 */
+	String	 variousArtists = i18n->TranslateString("Various artists");
+
+	cddbInfo.dArtist	= (edit_artist->GetText() == variousArtists ? String("Various") : edit_artist->GetText());
 
 	cddbInfo.dTitle		= edit_album->GetText();
 	cddbInfo.dYear		= edit_year->GetText().ToInt();
@@ -384,6 +388,8 @@ Void freac::cddbSubmitDlg::Submit()
 
 	cddbInfo.revision++;
 
+	/* Submit CDDB info.
+	 */
 	check_updateJoblist->Hide();
 	check_submitLater->Hide();
 	text_status->SetText(i18n->AddEllipsis(i18n->TranslateString("Submitting CD information")));
@@ -427,6 +433,8 @@ Void freac::cddbSubmitDlg::Submit()
 
 	text_status->SetText(NIL);
 
+	/* Update joblist with new track info.
+	 */
 	if (updateJoblist)
 	{
 		const Array<Track>	*joblist = BoCA::JobList::Get()->getTrackList.Call();
@@ -439,24 +447,25 @@ Void freac::cddbSubmitDlg::Submit()
 
 			for (Int j = 0; j < titles.Length(); j++)
 			{
-				if (trackInfo.cdTrack == list_tracks->GetNthEntry(j)->GetText().ToInt())
-				{
-					Track	 track = joblist->GetNth(i);
-					Info	 info = track.GetInfo();
+				if (trackInfo.cdTrack != list_tracks->GetNthEntry(j)->GetText().ToInt()) continue;
 
-					if (edit_artist->GetText() == i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various")	info.artist = artists.GetNth(j);
-					else														info.artist = edit_artist->GetText();
+				Track	 track = trackInfo;
+				Info	 info  = track.GetInfo();
 
-					info.title	= titles.GetNth(j);
-					info.album	= edit_album->GetText();
-					info.year	= edit_year->GetText().ToInt();
-					info.genre	= edit_genre->GetText();
-					info.comment	= comments.GetNth(j);
+				if (edit_artist->GetText() == variousArtists || edit_artist->GetText() == "Various") info.artist = artists.GetNth(j);
+				else										     info.artist = edit_artist->GetText();
 
-					track.SetInfo(info);
+				info.title	= titles.GetNth(j);
+				info.album	= edit_album->GetText();
+				info.year	= edit_year->GetText().ToInt();
+				info.genre	= edit_genre->GetText();
+				info.comment	= comments.GetNth(j);
 
-					BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
-				}
+				track.SetInfo(info);
+
+				BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
+
+				break;
 			}
 		}
 	}
