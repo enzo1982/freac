@@ -54,14 +54,19 @@ Void freac::JobAddFolders::AddFolders(const Array<Directory> &folders)
 			String	 fileString = String(file).ToLower();
 			Bool	 add	    = True;
 
+			/* Skip files without a filename extension.
+			 */
+			if (!fileString.Contains(".")) continue;
+
+			/* Check excluded extensions.
+			 */
 			foreach (const String &extension, extensions)
 			{
-				if (fileString.EndsWith(extension))
-				{
-					add = False;
+				if (!fileString.EndsWith(extension)) continue;
 
-					break;
-				}
+				add = False;
+
+				break;
 			}
 
 			if (add) files.Add(file);
