@@ -257,7 +257,7 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 
 				if (				 key == INFO_BAND	   ||
 				    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
-				    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
+				    key == INFO_LYRICIST      || key == INFO_REMIXER	   ||
 
 				    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
 				    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
@@ -273,7 +273,7 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 
 				if (				 key == INFO_BAND	   ||
 				    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
-				    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
+				    key == INFO_LYRICIST      || key == INFO_REMIXER	   ||
 
 				    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
 				    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
@@ -466,7 +466,7 @@ Void BoCA::ChooserAlbums::AddToAlbumList(const Track &track)
 
 		if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
 		    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
-		    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
+		    key == INFO_LYRICIST      || key == INFO_REMIXER	   ||
 
 		    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
 		    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||

@@ -292,7 +292,7 @@ Void BoCA::LayerTagDetails::OnSelectTrack(const Track &nTrack)
 		else if	(key == INFO_CONDUCTOR)   edit_conductor->SetText(value);
 		else if	(key == INFO_COMPOSER)    edit_composer->SetText(value);
 		else if	(key == INFO_LYRICIST)    edit_textwriter->SetText(value);
-		else if	(key == INFO_REMIX)	  edit_remix->SetText(value);
+		else if	(key == INFO_REMIXER)	  edit_remix->SetText(value);
 		else if	(key == INFO_BPM)	  edit_bpm->SetText(value);
 	}
 
@@ -352,7 +352,7 @@ Void BoCA::LayerTagDetails::OnSelectAlbum(const Track &nTrack)
 		else if	(key == INFO_CONDUCTOR)   edit_conductor->SetText(value);
 		else if	(key == INFO_COMPOSER)    edit_composer->SetText(value);
 		else if	(key == INFO_LYRICIST)    edit_textwriter->SetText(value);
-		else if	(key == INFO_REMIX)	  edit_remix->SetText(value);
+		else if	(key == INFO_REMIXER)	  edit_remix->SetText(value);
 	}
 
 	EditBox	*activeEditBox = GetActiveEditBox();
@@ -413,7 +413,7 @@ Void BoCA::LayerTagDetails::OnModifyTrack()
 	info.SetOtherInfo(INFO_CONDUCTOR,   edit_conductor->GetText());
 	info.SetOtherInfo(INFO_COMPOSER,    edit_composer->GetText());
 	info.SetOtherInfo(INFO_LYRICIST,    edit_textwriter->GetText());
-	info.SetOtherInfo(INFO_REMIX,	    edit_remix->GetText());
+	info.SetOtherInfo(INFO_REMIXER,	    edit_remix->GetText());
 	info.SetOtherInfo(INFO_BPM,	    edit_bpm->GetText());
 
 	track.SetInfo(info);
