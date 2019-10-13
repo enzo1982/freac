@@ -65,11 +65,11 @@ BoCA::LayerSEPA::LayerSEPA()
 	text_bic	= new Text(i18n->TranslateString("BIC:"), Point(15, text_iban->GetY() + text_iban->GetUnscaledTextHeight() + 5));
 
 	cursor_owner	= new Cursor(Point(15, text_owner->GetY() - 1), Size(175, text_owner->GetUnscaledTextHeight() + 4));
-	cursor_owner->SetText(String("Robert Kausch").Replace(" ", " "));
+	cursor_owner->SetText("Robert Kausch");
 	cursor_owner->Deactivate();
 
 	cursor_iban	= new Cursor(Point(15, text_iban->GetY() - 1), Size(175, text_iban->GetUnscaledTextHeight() + 4));
-	cursor_iban->SetText(String("DE11 2001 0020 0851 8512 07").Replace(" ", " "));
+	cursor_iban->SetText("DE11 2001 0020 0851 8512 07");
 	cursor_iban->Deactivate();
 
 	cursor_bic	= new Cursor(Point(15, text_bic->GetY() - 1), Size(175, text_bic->GetUnscaledTextHeight() + 4));
