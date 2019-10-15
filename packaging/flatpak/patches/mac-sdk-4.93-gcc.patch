@@ -1,6 +1,6 @@
-diff -Naur mac-sdk-4.91/Makefile mac-sdk-4.91-gcc/Makefile
---- mac-sdk-4.91/Makefile	1970-01-01 00:00:00 +0000
-+++ mac-sdk-4.91-gcc/Makefile	2019-05-01 09:07:20 +0000
+diff -Naur mac-sdk-4.93/Makefile mac-sdk-4.93-gcc/Makefile
+--- mac-sdk-4.93/Makefile	1970-01-01 00:00:00 +0000
++++ mac-sdk-4.93-gcc/Makefile	2019-05-01 09:07:20 +0000
 @@ -0,0 +1,103 @@
 +# Find system
 +UNAME	 = $(shell uname)
@@ -105,9 +105,9 @@ diff -Naur mac-sdk-4.91/Makefile mac-sdk-4.91-gcc/Makefile
 +
 +Source/Console/%.o: Source/Console/%.cpp
 +	$(CXX) $(CXXOPTS) $(CXXFLAGS) $< -o $@
-diff -Naur mac-sdk-4.91/Shared/All.h mac-sdk-4.91-gcc/Shared/All.h
---- mac-sdk-4.91/Shared/All.h	2019-08-24 02:28:19 +0000
-+++ mac-sdk-4.91-gcc/Shared/All.h	2019-08-24 10:09:28 +0000
+diff -Naur mac-sdk-4.93/Shared/All.h mac-sdk-4.93-gcc/Shared/All.h
+--- mac-sdk-4.93/Shared/All.h	2019-10-15 20:32:14 +0000
++++ mac-sdk-4.93-gcc/Shared/All.h	2019-10-15 21:45:54 +0000
 @@ -87,46 +87,17 @@
  #define ENABLE_COMPRESSION_MODE_HIGH
  #define ENABLE_COMPRESSION_MODE_EXTRA_HIGH
@@ -175,9 +175,9 @@ diff -Naur mac-sdk-4.91/Shared/All.h mac-sdk-4.91-gcc/Shared/All.h
      #define strcpy_s(A, B, C) strcpy(A, C)
      #define _tcscat_s(A, B, C) _tcscat(A, C)
  #endif
-diff -Naur mac-sdk-4.91/Source/Console/Console.cpp mac-sdk-4.91-gcc/Source/Console/Console.cpp
---- mac-sdk-4.91/Source/Console/Console.cpp	2019-04-24 05:17:50 +0000
-+++ mac-sdk-4.91-gcc/Source/Console/Console.cpp	2019-04-27 11:31:44 +0000
+diff -Naur mac-sdk-4.93/Source/Console/Console.cpp mac-sdk-4.93-gcc/Source/Console/Console.cpp
+--- mac-sdk-4.93/Source/Console/Console.cpp	2019-10-15 20:42:22 +0000
++++ mac-sdk-4.93-gcc/Source/Console/Console.cpp	2019-10-15 21:46:27 +0000
 @@ -21,7 +21,12 @@
  #define UNDEFINED_MODE		-1
  
@@ -192,9 +192,9 @@ diff -Naur mac-sdk-4.91/Source/Console/Console.cpp mac-sdk-4.91-gcc/Source/Conso
  	#define _tmain(argc, argv) main(argc, argv)
  	#define _tcscpy_s(dst, num, src) strcpy(dst, src)
  	#define _tcsncpy_s(dst, num, src, count) strncpy(dst, src, count)
-diff -Naur mac-sdk-4.91/Source/Projects/NonWindows/Makefile mac-sdk-4.91-gcc/Source/Projects/NonWindows/Makefile
---- mac-sdk-4.91/Source/Projects/NonWindows/Makefile	2019-04-27 19:24:04 +0000
-+++ mac-sdk-4.91-gcc/Source/Projects/NonWindows/Makefile	2019-05-01 09:07:20 +0000
+diff -Naur mac-sdk-4.93/Source/Projects/NonWindows/Makefile mac-sdk-4.93-gcc/Source/Projects/NonWindows/Makefile
+--- mac-sdk-4.93/Source/Projects/NonWindows/Makefile	2019-04-27 19:24:04 +0000
++++ mac-sdk-4.93-gcc/Source/Projects/NonWindows/Makefile	2019-05-01 09:07:20 +0000
 @@ -3,7 +3,7 @@
  
  VERSION	  = 5
@@ -204,9 +204,9 @@ diff -Naur mac-sdk-4.91/Source/Projects/NonWindows/Makefile mac-sdk-4.91-gcc/Sou
  LDOPTS	  = -lstdc++
  
  DLLLDOPTS = -shared
-diff -Naur mac-sdk-4.91/Source/Shared/All.h mac-sdk-4.91-gcc/Source/Shared/All.h
---- mac-sdk-4.91/Source/Shared/All.h	2019-08-24 02:28:19 +0000
-+++ mac-sdk-4.91-gcc/Source/Shared/All.h	2019-08-24 10:09:28 +0000
+diff -Naur mac-sdk-4.93/Source/Shared/All.h mac-sdk-4.93-gcc/Source/Shared/All.h
+--- mac-sdk-4.93/Source/Shared/All.h	2019-10-15 20:32:14 +0000
++++ mac-sdk-4.93-gcc/Source/Shared/All.h	2019-10-15 21:45:54 +0000
 @@ -87,46 +87,17 @@
  #define ENABLE_COMPRESSION_MODE_HIGH
  #define ENABLE_COMPRESSION_MODE_EXTRA_HIGH
@@ -274,9 +274,9 @@ diff -Naur mac-sdk-4.91/Source/Shared/All.h mac-sdk-4.91-gcc/Source/Shared/All.h
      #define strcpy_s(A, B, C) strcpy(A, C)
      #define _tcscat_s(A, B, C) _tcscat(A, C)
  #endif
-diff -Naur mac-sdk-4.91/Source/Shared/StdLibFileIO.cpp mac-sdk-4.91-gcc/Source/Shared/StdLibFileIO.cpp
---- mac-sdk-4.91/Source/Shared/StdLibFileIO.cpp	2019-04-26 03:01:42 +0000
-+++ mac-sdk-4.91-gcc/Source/Shared/StdLibFileIO.cpp	2019-04-27 11:30:19 +0000
+diff -Naur mac-sdk-4.93/Source/Shared/StdLibFileIO.cpp mac-sdk-4.93-gcc/Source/Shared/StdLibFileIO.cpp
+--- mac-sdk-4.93/Source/Shared/StdLibFileIO.cpp	2019-04-26 03:01:42 +0000
++++ mac-sdk-4.93-gcc/Source/Shared/StdLibFileIO.cpp	2019-04-27 11:30:19 +0000
 @@ -218,9 +218,7 @@
  {
  #ifdef PLATFORM_ANDROID
@@ -288,8 +288,8 @@ diff -Naur mac-sdk-4.91/Source/Shared/StdLibFileIO.cpp mac-sdk-4.91-gcc/Source/S
      return ftello(m_pFile);
  #else
  	return _ftelli64(m_pFile);
-diff -Naur mac-sdk-4.91/configure mac-sdk-4.91-gcc/configure
---- mac-sdk-4.91/configure	1970-01-01 00:00:00 +0000
-+++ mac-sdk-4.91-gcc/configure	2019-03-02 17:34:04 +0000
+diff -Naur mac-sdk-4.93/configure mac-sdk-4.93-gcc/configure
+--- mac-sdk-4.93/configure	1970-01-01 00:00:00 +0000
++++ mac-sdk-4.93-gcc/configure	2019-03-02 17:34:04 +0000
 @@ -0,0 +1 @@
 +#!/bin/sh
