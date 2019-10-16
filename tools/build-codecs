@@ -60,17 +60,23 @@ if [[ $uname != *FreeBSD* ]]; then
   export CXX=gcc
   export MAKE=make
   export SUDO=sudo
+  export DL="wget -O"
   export PATCH="patch --binary"
 else
   export CC=clang
   export CXX=clang
   export MAKE=gmake
   export SUDO=sudo
+  export DL="wget -O"
   export PATCH=patch
 fi
 
 if [[ $uname == Haiku ]]; then
   export SUDO=
+fi
+
+if [[ $uname == Darwin ]]; then
+  export DL="curl -L -o"
 fi
 
 # Setup environment
@@ -118,7 +124,7 @@ wavpack_version=5.1.0
 faac_location=https://github.com/knik0/faac/archive/${faac_version//./_}.tar.gz
 faad2_location=https://github.com/knik0/faad2/archive/${faad2_version//./_}.tar.gz
 fdk_aac_location=https://sourceforge.net/projects/opencore-amr/files/fdk-aac/fdk-aac-$fdk_aac_version.tar.gz
-flac_location=https://ftp.osuosl.org/pub/xiph/releases/flac/flac-$flac_version.tar.xz 
+flac_location=https://ftp.osuosl.org/pub/xiph/releases/flac/flac-$flac_version.tar.xz
 lame_location=https://sourceforge.net/projects/lame/files/lame/$lame_version/lame-$lame_version.tar.gz
 libav_location=https://libav.org/releases/libav-$libav_version.tar.xz
 libcdio_location=https://ftp.gnu.org/gnu/libcdio/libcdio-$libcdio_version.tar.bz2
@@ -170,7 +176,7 @@ build () {
     if [[ $archive == *.zip   ]]; then folder=${archive%.zip}; fi
   fi
 
-  if [[ $1 == *://* ]]; then wget $1 -O $archive; fi
+  if [[ $1 == *://* ]]; then $DL $archive $1; fi
 
   rm -fr $folder
 
@@ -184,7 +190,7 @@ build () {
   index=0
 
   for patch in ${patches[@]}; do
-    wget $patch -O ../${patch##*/}
+    $DL ../${patch##*/} $patch
 
     if [ ${#patch_levels[index]} -gt 0 ]; then
       $PATCH -E -p${patch_levels[index]} < ../${patch##*/}
@@ -382,6 +388,9 @@ for package in ${packages[@]}; do
   elif [ $package == libcdio-paranoia ]; then
     # Build CDIO
     export CFLAGS="$cflags -Os"
+    if [[ $uname == Darwin ]]; then
+      prepare="sed -i -e \"s/-Wl,--version-script=.*\\.la\\.ver//\" lib/*/Makefile.in"
+    fi
     if [[ $uname != FreeBSD ]]; then
       configure_exports="LIBCDIO_CFLAGS=\"-I.\" LIBCDIO_LIBS=\"-lcdio\""
     else
@@ -395,7 +404,7 @@ for package in ${packages[@]}; do
 
   elif [ $package == libsamplerate ]; then
     # Build libsamplerate
-    prepare="wget -O Cfg/config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=058639b'; wget -O Cfg/config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b'"
+    prepare="$DL Cfg/config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=058639b'; $DL Cfg/config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b'"
     if [[ $uname == Darwin ]]; then
       prepare="$prepare; sed -i -e \"s/typedef struct AUDIO_OUT_s/struct AUDIO_OUT_s/\" examples/audio_out.c && sed -i -e \"s/} AUDIO_OUT ;/} AUDIO_OUT_s ;/\" examples/audio_out.c"
     elif [[ $uname != FreeBSD ]] && [[ $x86_64 == true ]]; then
@@ -417,7 +426,7 @@ for package in ${packages[@]}; do
     # Build Monkey's Audio
     archive=${mac_location##*/}
     folder=${archive%.zip}
-    wget $mac_location -O $archive
+    $DL $archive $mac_location
     rm -fr $folder; unzip -d $folder $archive
     rm $archive; zip -m -r $archive $folder
     export CXXFLAGS="$cflags $cflags_unroll"
@@ -438,7 +447,7 @@ for package in ${packages[@]}; do
       patches=${mp4v2_patches[@]}
       patch_levels=(${mp4v2_patch_levels[@]})
     fi
-    prepare="wget -O autoaux/config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=058639b'; wget -O autoaux/config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b'"
+    prepare="$DL autoaux/config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=058639b'; $DL autoaux/config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b'"
     build $mp4v2_location src/libmp4v2$sharedinfix.$sharedext MP4v2.$sharedext
 
   elif [ $package == mpg123 ]; then
@@ -477,7 +486,7 @@ for package in ${packages[@]}; do
   elif [ $package == rnnoise ]; then
     # Build RNNoise
     archive=rnnoise-${rnnoise_location##*/}.zip
-    wget $rnnoise_location -O $archive
+    $DL $archive $rnnoise_location
     build $archive .libs/librnnoise$sharedinfix.$sharedext RNNoise.$sharedext
 
   elif [ $package == rubberband ]; then
