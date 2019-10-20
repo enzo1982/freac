@@ -245,7 +245,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	 */
 	Track	 track	= trackToConvert;
 
-	trackToConvert.sampleOffset = Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75);
+	trackToConvert.sampleOffset = encodedSamples - trackLength;
 	trackToConvert.length	    = trackLength;
 
 	/* Fix total samples value in case we had
