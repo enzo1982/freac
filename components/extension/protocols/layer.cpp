@@ -213,12 +213,15 @@ Void BoCA::LayerProtocols::SelectProtocol()
 
 	const Array<String>	&messages = Protocol::Get(combo_protocol->GetSelectedEntry()->GetText())->GetMessages();
 
+	list_protocol->Hide();
 	list_protocol->RemoveAllEntries();
 
 	foreach (const String &message, messages)
 	{
 		list_protocol->AddEntry(message.SubString(0, 12).Append(ListEntry::tabDelimiter).Append(message.Tail(message.Length() - 15)));
 	}
+
+	list_protocol->Show();
 
 	if (visible) surface->EndPaint();
 }
