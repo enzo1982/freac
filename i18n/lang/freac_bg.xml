@@ -689,8 +689,8 @@
       </section>
 
       <section name="Extensions">
-	<entry id="15000" string="Conversion Notifier">Съобщение за Преобразуване</entry>
-	<entry id="15001" string="Protocol Viewer">Протокол Преглед</entry>
+	<entry id="15000" string="Notifications">Съобщение за Преобразуване</entry>
+	<entry id="15001" string="Logging">Протокол Преглед</entry>
 	<entry id="15002" string="YouTube Video Downloader">YouTube видео изтегляне</entry>
       </section>
     </section>
@@ -1295,9 +1295,9 @@
 	</section>
       </section>
 
-      <section name="Protocols">
-	<entry id="104000" string="Protocols">Протоколи</entry>
-	<entry id="104001" string="Protocol">Протокол</entry>
+      <section name="Logging">
+	<entry id="104000" string="Logs">Протоколи</entry>
+	<entry id="104001" string="Log">Протокол</entry>
 	<entry id="104002" string="Errors / Warnings">Грешки / Предупреждения</entry>
 	<entry id="104003" string="Details">Детайли</entry>
 	<entry id="104004" string="Time">Време</entry>
@@ -1305,7 +1305,7 @@
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface">Потребителски интерфейс</entry>
-	  <entry id="104101" string="Show Protocols tab in main window">Показване раздел &quot;протоколи&quot; в главния прозорец</entry>
+	  <entry id="104101" string="Show Logs tab in main window">Показване раздел &quot;протоколи&quot; в главния прозорец</entry>
 	</section>
       </section>
 

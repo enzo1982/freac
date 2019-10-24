@@ -12,7 +12,7 @@
 
 #include "layer.h"
 
-BoCA::LayerProtocols::LayerProtocols() : Layer("Protocols")
+BoCA::LayerProtocols::LayerProtocols() : Layer("Logs")
 {
 	text_protocol	= new Text(NIL, Point(7, 11));
 
@@ -105,9 +105,9 @@ Void BoCA::LayerProtocols::OnChangeLanguageSettings()
 {
 	I18n	*i18n	= I18n::Get();
 
-	i18n->SetContext("Extensions::Protocols");
+	i18n->SetContext("Extensions::Logging");
 
-	SetText(i18n->TranslateString("Protocols"));
+	SetText(i18n->TranslateString("Logs"));
 
 	/* Hide all affected widgets prior to changing
 	 * labels to avoid flickering.
@@ -118,7 +118,7 @@ Void BoCA::LayerProtocols::OnChangeLanguageSettings()
 
 	/* Set texts and positions.
 	 */
-	text_protocol->SetText(i18n->AddColon(i18n->TranslateString("Protocol")));
+	text_protocol->SetText(i18n->AddColon(i18n->TranslateString("Log")));
 
 	text_errors->SetText(i18n->AddColon(i18n->TranslateString("Errors / Warnings")));
 

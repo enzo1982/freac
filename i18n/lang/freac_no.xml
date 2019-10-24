@@ -696,9 +696,9 @@
 	</section>
       </section>
 
-      <section name="Protocols">
-	<entry id="104000" string="Protocols">Protokoller</entry>
-	<entry id="104001" string="Protocol">Protokoll</entry>
+      <section name="Logging">
+	<entry id="104000" string="Logs">Protokoller</entry>
+	<entry id="104001" string="Log">Protokoll</entry>
 	<entry id="104003" string="Details">Detaljer</entry>
 	<entry id="104005" string="Message">Melding</entry>
       </section>

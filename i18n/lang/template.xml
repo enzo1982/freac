@@ -698,8 +698,8 @@
       </section>
 
       <section name="Extensions">
-	<entry id="15000" string="Conversion Notifier"/>
-	<entry id="15001" string="Protocol Viewer"/>
+	<entry id="15000" string="Notifications"/>
+	<entry id="15001" string="Logging"/>
 	<entry id="15002" string="YouTube Video Downloader"/>
       </section>
     </section>
@@ -1314,9 +1314,9 @@
 	</section>
       </section>
 
-      <section name="Protocols">
-	<entry id="104000" string="Protocols"/>
-	<entry id="104001" string="Protocol"/>
+      <section name="Logging">
+	<entry id="104000" string="Logs"/>
+	<entry id="104001" string="Log"/>
 	<entry id="104002" string="Errors / Warnings"/>
 	<entry id="104003" string="Details"/>
 	<entry id="104004" string="Time"/>
@@ -1324,7 +1324,7 @@
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface"/>
-	  <entry id="104101" string="Show Protocols tab in main window"/>
+	  <entry id="104101" string="Show Logs tab in main window"/>
 	</section>
       </section>
 

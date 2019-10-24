@@ -1089,9 +1089,9 @@
 	</section>
       </section>
 
-      <section name="Protocols">
-	<entry id="104000" string="Protocols">Protocolos</entry>
-	<entry id="104001" string="Protocol">Protocolo</entry>
+      <section name="Logging">
+	<entry id="104000" string="Logs">Protocolos</entry>
+	<entry id="104001" string="Log">Protocolo</entry>
 	<entry id="104002" string="Errors / Warnings">Erros / Avisos</entry>
 	<entry id="104003" string="Details">Detalhes</entry>
 	<entry id="104004" string="Time">Tempo</entry>
@@ -1099,7 +1099,7 @@
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface">Interface do usuário</entry>
-	  <entry id="104101" string="Show Protocols tab in main window">Mostrar guia de protocolos na janela principal</entry>
+	  <entry id="104101" string="Show Logs tab in main window">Mostrar guia de protocolos na janela principal</entry>
 	</section>
       </section>
     </section>

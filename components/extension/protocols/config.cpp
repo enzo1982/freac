@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -14,20 +14,20 @@
 
 using namespace smooth::GUI::Dialogs;
 
-const String	 BoCA::ConfigureProtocols::ConfigID = "Protocols";
+const String	 BoCA::ConfigureProtocols::ConfigID = "Logging";
 
 BoCA::ConfigureProtocols::ConfigureProtocols()
 {
 	const Config	*config = Config::Get();
 	I18n		*i18n	= I18n::Get();
 
-	i18n->SetContext("Extensions::Protocols::Configuration");
+	i18n->SetContext("Extensions::Logging::Configuration");
 
-	showProtocolsTab	= config->GetIntValue(ConfigID, "ShowProtocolsTab", False);
+	showProtocolsTab	= config->GetIntValue(ConfigID, "ShowLogsTab", False);
 
 	group_ui		= new GroupBox(i18n->TranslateString("User interface"), Point(7, 11), Size(344, 41));
 
-	check_ui_showTab	= new CheckBox(i18n->TranslateString("Show Protocols tab in main window"), Point(10, 14), Size(324, 0), &showProtocolsTab);
+	check_ui_showTab	= new CheckBox(i18n->TranslateString("Show Logs tab in main window"), Point(10, 14), Size(324, 0), &showProtocolsTab);
 
 	group_ui->Add(check_ui_showTab);
 
@@ -46,7 +46,7 @@ Int BoCA::ConfigureProtocols::SaveSettings()
 {
 	Config	*config = Config::Get();
 
-	config->SetIntValue(ConfigID, "ShowProtocolsTab", showProtocolsTab);
+	config->SetIntValue(ConfigID, "ShowLogsTab", showProtocolsTab);
 
 	return Success();
 }

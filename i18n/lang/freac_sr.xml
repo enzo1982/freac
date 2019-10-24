@@ -1063,9 +1063,9 @@
 	</section>
       </section>
 
-      <section name="Protocols">
-	<entry id="104000" string="Protocols">Protokoli</entry>
-	<entry id="104001" string="Protocol">Protokol</entry>
+      <section name="Logging">
+	<entry id="104000" string="Logs">Protokoli</entry>
+	<entry id="104001" string="Log">Protokol</entry>
 	<entry id="104002" string="Errors / Warnings">Greške / Upozorenja</entry>
 	<entry id="104003" string="Details">Detalji</entry>
 	<entry id="104004" string="Time">Vreme</entry>
@@ -1073,7 +1073,7 @@
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface">Korisnikov interfejs</entry>
-	  <entry id="104101" string="Show Protocols tab in main window">Prikaži list protokola u glavnom meniju</entry>
+	  <entry id="104101" string="Show Logs tab in main window">Prikaži list protokola u glavnom meniju</entry>
 	</section>
       </section>
     </section>
