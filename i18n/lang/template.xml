@@ -1123,7 +1123,7 @@
 	<entry id="80206" string="high, new"/>
 	<entry id="80207" string="extra, new"/>
 	<entry id="80208" string="best, new"/>
-	<entry id="80209" string="Store MD5 of original PCM data"/>
+	<entry id="80209" string="Add MD5 checksum"/>
 	<entry id="80210" string="Seeking"/>
 	<entry id="80211" string="slow"/>
 	<entry id="80212" string="minimum"/>

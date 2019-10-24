@@ -1104,7 +1104,7 @@
 	<entry id="80206" string="high, new">alta, nueva</entry>
 	<entry id="80207" string="extra, new">extra, nueva</entry>
 	<entry id="80208" string="best, new">la mejor, nueva</entry>
-	<entry id="80209" string="Store MD5 of original PCM data">Guardar MD5 de los datos originales PCM</entry>
+	<entry id="80209" string="Add MD5 checksum">Guardar MD5 de los datos originales PCM</entry>
 	<entry id="80210" string="Seeking">Buscando</entry>
 	<entry id="80211" string="slow">lenta</entry>
 	<entry id="80212" string="minimum">mínimo</entry>

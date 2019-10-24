@@ -622,7 +622,7 @@
 	<entry id="8000" string="Confirm overwrite">確認覆寫</entry>
 	<entry id="8001" string="Confirm">確認</entry>
 	<entry id="8002" string="Skip all">全部跳過</entry>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten">將覆寫已存在的檔案 %1</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">將覆寫已存在的檔案 %1</entry>
 	<entry id="8004" string="Action">動作</entry>
 	<entry id="8005" string="Overwrite">覆寫</entry>
 	<entry id="8006" string="Skip">跳過</entry>
@@ -654,7 +654,7 @@
       <entry id="9009" string="No scratch repair">不修復光碟刮傷</entry>
       <entry id="9010" string="Full cdparanoia mode">完整模式</entry>
       <entry id="9011" string="Activate jitter correction">啟用抖動校正</entry>
-      <entry id="9012" string="Swap left/right channel">切換 左/右 聲道</entry>
+      <entry id="9012" string="Switch stereo channels">切換 左/右 聲道</entry>
       <entry id="9013" string="Automatization">自動化</entry>
       <entry id="9014" string="Read CD contents on insert">放入 CD 後立即讀取內容</entry>
       <entry id="9015" string="Start ripping automatically">自動開始轉檔</entry>
@@ -1077,7 +1077,7 @@
 	<entry id="80206" string="high, new">高，新版</entry>
 	<entry id="80207" string="extra, new">更高，新版</entry>
 	<entry id="80208" string="best, new">最佳，新版</entry>
-	<entry id="80209" string="Store MD5 of original PCM data">儲存原始 PCM 資料的 MD5</entry>
+	<entry id="80209" string="Add MD5 checksum">儲存原始 PCM 資料的 MD5</entry>
 	<entry id="80210" string="Seeking">探索</entry>
 	<entry id="80211" string="slow">慢</entry>
 	<entry id="80212" string="minimum">最小</entry>

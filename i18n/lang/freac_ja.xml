@@ -997,7 +997,7 @@
       <section name="OptimFROG Lossless Encoder">
 	<entry id="80200" string="Encoding mode">変換モード</entry>
 	<entry id="80202" string="normal">通常</entry>
-	<entry id="80209" string="Store MD5 of original PCM data">元のPCMデータのMD5を保存</entry>
+	<entry id="80209" string="Add MD5 checksum">元のPCMデータのMD5を保存</entry>
 	<entry id="80213" string="Optimization">最適化</entry>
 	<entry id="80214" string="disabled">無効化</entry>
       </section>
