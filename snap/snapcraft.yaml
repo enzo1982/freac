@@ -133,8 +133,8 @@ parts:
       - usr/lib/libmp4v2.so*
 
   libmpg123:
-    source: https://mpg123.de/download/mpg123-1.25.12.tar.bz2
-    source-checksum: sha256/1ffec7c9683dfb86ea9040d6a53d6ea819ecdda215df347f79def08f1fe731d1
+    source: https://mpg123.de/download/mpg123-1.25.13.tar.bz2
+    source-checksum: sha256/90306848359c793fd43b9906e52201df18775742dc3c81c06ab67a806509890a
     plugin: autotools
     configflags: [ --prefix=/usr ]
     prime:
