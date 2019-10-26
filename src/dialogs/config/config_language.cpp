@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -31,7 +31,7 @@ freac::ConfigureLanguage::ConfigureLanguage()
 	group_info	= new GroupBox(i18n->TranslateString("Information"), Point(7, 66), Size(552, 77));
 
 	text_info	= new Text(NIL, Point(9, 11));
-	link_url	= new Hyperlink(NIL, NIL, NIL, Point(37, text_info->GetFont().GetUnscaledTextSizeY() * 3 + 20));
+	link_url	= new Hyperlink(String(), NIL, Point(37, text_info->GetFont().GetUnscaledTextSizeY() * 3 + 20));
 
 	group_info->SetHeight(text_info->GetFont().GetUnscaledTextSizeY() * 4 + 29);
 
@@ -48,7 +48,7 @@ freac::ConfigureLanguage::ConfigureLanguage()
 	group_language->Add(text_language);
 	group_language->Add(combo_language);
 
-	btn_edit	= new Button(i18n->TranslateString("Edit language file"), NIL, Point(390, 11), Size(130, 0));
+	btn_edit	= new Button(i18n->TranslateString("Edit language file"), Point(390, 11), Size(130, 0));
 	btn_edit->onAction.Connect(&ConfigureLanguage::EditLanguageFile, this);
 
 	btn_edit->SetWidth(Math::Max(80, btn_edit->GetUnscaledTextWidth() + 14));

@@ -29,22 +29,22 @@ BoCA::LayerTagDetails::LayerTagDetails() : Editor("Details")
 	text_textwriter		= new Text(NIL, text_composer->GetPosition() + Point(0, 27));
 	text_remix		= new Text(NIL, text_textwriter->GetPosition() + Point(0, 27));
 
-	edit_albumartist	= new EditBox(NIL, text_albumartist->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_albumartist	= new EditBox(text_albumartist->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_albumartist->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
-	edit_band		= new EditBox(NIL, text_band->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_band		= new EditBox(text_band->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_band->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
-	edit_conductor		= new EditBox(NIL, text_conductor->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_conductor		= new EditBox(text_conductor->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_conductor->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
-	edit_composer		= new EditBox(NIL, text_composer->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_composer		= new EditBox(text_composer->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_composer->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
-	edit_textwriter		= new EditBox(NIL, text_textwriter->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_textwriter		= new EditBox(text_textwriter->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_textwriter->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
-	edit_remix		= new EditBox(NIL, text_remix->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_remix		= new EditBox(text_remix->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_remix->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
 	group_details->Add(text_albumartist);
@@ -67,10 +67,10 @@ BoCA::LayerTagDetails::LayerTagDetails() : Editor("Details")
 	text_publisher		= new Text(NIL, Point(9, 13));
 	text_isrc		= new Text(NIL, text_publisher->GetPosition() + Point(0, 27));
 
-	edit_publisher		= new EditBox(NIL, text_publisher->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_publisher		= new EditBox(text_publisher->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_publisher->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
-	edit_isrc		= new EditBox(NIL, text_isrc->GetPosition() + Point(7, -3), Size(300, 0), 12);
+	edit_isrc		= new EditBox(text_isrc->GetPosition() + Point(7, -3), Size(300, 0), 12);
 	edit_isrc->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
 	group_publisher->Add(text_publisher);
@@ -84,7 +84,7 @@ BoCA::LayerTagDetails::LayerTagDetails() : Editor("Details")
 
 	text_bpm		= new Text(NIL, Point(9, 13));
 
-	edit_bpm		= new EditBox(NIL, text_bpm->GetPosition() + Point(7, -3), Size(50, 0), 4);
+	edit_bpm		= new EditBox(text_bpm->GetPosition() + Point(7, -3), Size(50, 0), 4);
 	edit_bpm->SetFlags(EDB_NUMERIC);
 	edit_bpm->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 

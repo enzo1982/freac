@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -35,13 +35,13 @@ freac::DialogSelectFormat::DialogSelectFormat(const Array<BoCA::Format> &formats
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	button_confirm	= new Button(i18n->TranslateString("Select"), NIL, Point(87, 29), Size());
+	button_confirm	= new Button(i18n->TranslateString("Select"), Point(87, 29), Size());
 	button_confirm->onAction.Connect(&DialogSelectFormat::OnConfirm, this);
 	button_confirm->SetOrientation(OR_LOWERRIGHT);
 	button_confirm->SetWidth(Math::Max(80, button_confirm->GetUnscaledTextWidth() + 14));
 	button_confirm->SetX(7 + button_confirm->GetWidth());
 
-	button_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
+	button_cancel		= new Button(i18n->TranslateString("Cancel"), Point(175, 29), Size());
 	button_cancel->onAction.Connect(&DialogSelectFormat::OnCancel, this);
 	button_cancel->SetOrientation(OR_LOWERRIGHT);
 	button_cancel->SetX(95 + button_confirm->GetWidth());

@@ -37,12 +37,12 @@ freac::ConfigureInterface::ConfigureInterface()
 	 */
 	list_fields->onChangeEntryOrder.Connect(&ConfigureInterface::OnSelectJoblistField, this);
 
-	button_up	= new Button(i18n->TranslateString("Up"), NIL, Point(90, 10), Size());
+	button_up	= new Button(i18n->TranslateString("Up"), Point(90, 10), Size());
 	button_up->SetOrientation(OR_UPPERRIGHT);
 	button_up->Deactivate();
 	button_up->onAction.Connect(&ConfigureInterface::JoblistFieldMoveUp, this);
 
-	button_down	= new Button(i18n->TranslateString("Down"), NIL, Point(90, 40), Size());
+	button_down	= new Button(i18n->TranslateString("Down"), Point(90, 40), Size());
 	button_down->SetOrientation(OR_UPPERRIGHT);
 	button_down->Deactivate();
 	button_down->onAction.Connect(&ConfigureInterface::JoblistFieldMoveDown, this);

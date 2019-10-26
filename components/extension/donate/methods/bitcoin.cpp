@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -55,7 +55,7 @@ BoCA::LayerBitcoin::LayerBitcoin()
 
 	if (!dir.Exists()) dir = Utilities::GetBoCADirectory().Append("../freac/freac.extension.donate");
 
-	link_qrcode	= new Hyperlink(NIL, ImageLoader::Load(String(dir).Append("/bitcoin/qrcode.png")), "bitcoin:1Bdrs9J4sF5Mdu4L7qUacUjVdd1riuVDbT", Point(101, 4), Size(96, 96));
+	link_qrcode	= new Hyperlink(ImageLoader::Load(String(dir).Append("/bitcoin/qrcode.png")), "bitcoin:1Bdrs9J4sF5Mdu4L7qUacUjVdd1riuVDbT", Point(101, 4), Size(96, 96));
 	link_qrcode->SetOrientation(OR_UPPERRIGHT);
 
 	text_donate	= new Text(i18n->TranslateString("Please scan or click the QR code or copy the following\naddress to donate Bitcoin:"), Point(7, 4));

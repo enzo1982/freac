@@ -196,7 +196,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	size.cx = 180;
 	size.cy = 0;
 
-	info_edit_artist = new EditBox(NIL, pos, size, 0);
+	info_edit_artist = new EditBox(pos, size, 0);
 	info_edit_artist->onInput.Connect(&LayerJoblist::UpdateTitleInfo, this);
 	info_edit_artist->onEnter.Connect(&LayerJoblist::OnEditBoxEnterArtist, this);
 	info_edit_artist->SetOrientation(OR_LOWERLEFT);
@@ -215,7 +215,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	pos.y -= 27;
 
-	info_edit_album = new EditBox(NIL, pos, size, 0);
+	info_edit_album = new EditBox(pos, size, 0);
 	info_edit_album->onInput.Connect(&LayerJoblist::UpdateTitleInfo, this);
 	info_edit_album->onEnter.Connect(&LayerJoblist::OnEditBoxEnterAlbum, this);
 	info_edit_album->SetOrientation(OR_LOWERLEFT);
@@ -247,7 +247,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	pos.y += 30;
 	size.cx = 100;
 
-	info_edit_title = new EditBox(NIL, pos, size, 0);
+	info_edit_title = new EditBox(pos, size, 0);
 	info_edit_title->onInput.Connect(&LayerJoblist::UpdateTitleInfo, this);
 	info_edit_title->onEnter.Connect(&LayerJoblist::OnEditBoxEnterTitle, this);
 	info_edit_title->SetOrientation(OR_LOWERLEFT);
@@ -267,7 +267,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	pos.y -= 27;
 	size.cx = Font().GetUnscaledTextSizeX("000") + 7;
 
-	info_edit_track = new EditBox(NIL, pos, size, 3);
+	info_edit_track = new EditBox(pos, size, 3);
 	info_edit_track->SetFlags(EDB_NUMERIC);
 	info_edit_track->onInput.Connect(&LayerJoblist::UpdateTitleInfo, this);
 	info_edit_track->onEnter.Connect(&LayerJoblist::OnEditBoxEnterTrack, this);
@@ -283,7 +283,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	pos.y += 3;
 	size.cx = Font().GetUnscaledTextSizeX("0000") + 7;
 
-	info_edit_year = new EditBox(NIL, pos, size, 4);
+	info_edit_year = new EditBox(pos, size, 4);
 	info_edit_year->SetFlags(EDB_NUMERIC);
 	info_edit_year->onInput.Connect(&LayerJoblist::UpdateTitleInfo, this);
 	info_edit_year->onEnter.Connect(&LayerJoblist::OnEditBoxEnterYear, this);
@@ -314,7 +314,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	pos.y += 3;
 	size.cx = 135;
 
-	info_edit_genre = new EditBox(NIL, pos, size, 0);
+	info_edit_genre = new EditBox(pos, size, 0);
 	info_edit_genre->onInput.Connect(&LayerJoblist::UpdateTitleInfo, this);
 	info_edit_genre->onEnter.Connect(&LayerJoblist::OnEditBoxEnterGenre, this);
 	info_edit_genre->SetOrientation(OR_LOWERLEFT);
@@ -344,16 +344,16 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	info_edit_year->Deactivate();
 	info_edit_genre->Deactivate();
 
-	edb_filename = new EditBox(NIL, Point(0, 99), Size(0, 0), 1024);
+	edb_filename = new EditBox(Point(0, 99), Size(0, 0), 1024);
 	edb_filename->SetOrientation(OR_LOWERLEFT);
 	edb_filename->Deactivate();
 
-	btn_skip = new Button(NIL, NIL, Point(87, 100), Size(0, 0));
+	btn_skip = new Button(String(), Point(87, 100), Size(0, 0));
 	btn_skip->SetOrientation(OR_LOWERRIGHT);
 	btn_skip->onAction.Connect(&onRequestSkipTrack);
 	btn_skip->Deactivate();
 
-	edb_format = new EditBox(NIL, Point(0, 75), Size(0, 0), 4);
+	edb_format = new EditBox(Point(0, 75), Size(0, 0), 4);
 	edb_format->SetOrientation(OR_LOWERLEFT);
 	edb_format->Deactivate();
 
@@ -370,18 +370,18 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	UpdateEncoderText();
 
-	edb_outdir = new FolderEditBox(NIL, Point(0, 27), Size(0, 0), 1024);
+	edb_outdir = new FolderEditBox(Point(0, 27), Size(0, 0), 1024);
 	edb_outdir->SetOrientation(OR_LOWERLEFT);
 	edb_outdir->onSelectEntry.Connect(&LayerJoblist::OnSelectFolder, this);
 	list_outdir = new List();
 
 	UpdateOutputDir();
 
-	btn_open = new Button(NIL, NIL, Point(173, 28), Size(0, 0));
+	btn_open = new Button(String(), Point(173, 28), Size(0, 0));
 	btn_open->SetOrientation(OR_LOWERRIGHT);
 	btn_open->onAction.Connect(&LayerJoblist::OnOpenFolder, this);
 
-	btn_browse = new Button(NIL, NIL, Point(87, 28), Size(0, 0));
+	btn_browse = new Button(String(), Point(87, 28), Size(0, 0));
 	btn_browse->SetOrientation(OR_LOWERRIGHT);
 	btn_browse->onAction.Connect(&LayerJoblist::OnBrowseForFolder, this);
 
@@ -393,14 +393,14 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	progress_total->SetOrientation(OR_LOWERLEFT);
 	progress_total->Deactivate();
 
-	edb_trackPercent = new EditBox(NIL, Point(0, 51), Size(33, 0), 4);
+	edb_trackPercent = new EditBox(Point(0, 51), Size(33, 0), 4);
 	edb_trackPercent->SetOrientation(OR_LOWERLEFT);
 	edb_trackPercent->Deactivate();
 
 	txt_splitPercent		= new Text("/", Point(0, 48));
 	txt_splitPercent->SetOrientation(OR_LOWERLEFT);
 
-	edb_totalPercent = new EditBox(NIL, Point(0, 51), Size(33, 0), 4);
+	edb_totalPercent = new EditBox(Point(0, 51), Size(33, 0), 4);
 	edb_totalPercent->SetOrientation(OR_LOWERLEFT);
 	edb_totalPercent->Deactivate();
 
@@ -892,31 +892,31 @@ Void freac::LayerJoblist::FillMenus()
 	menu_charsets->RemoveAllEntries();
 	menu_charsets_all->RemoveAllEntries();
 
-	menu_charsets->AddEntry("ISO-8859-1", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
-	menu_charsets->AddEntry("ISO-8859-2", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
-	menu_charsets->AddEntry("ISO-8859-5", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_5)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
-	menu_charsets->AddEntry("ISO-8859-7", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_7)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
+	menu_charsets->AddEntry("ISO-8859-1", &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
+	menu_charsets->AddEntry("ISO-8859-2", &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
+	menu_charsets->AddEntry("ISO-8859-5", &clicked_charset, CHARSET_ISO_8859_5)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
+	menu_charsets->AddEntry("ISO-8859-7", &clicked_charset, CHARSET_ISO_8859_7)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 	menu_charsets->AddEntry();
-	menu_charsets->AddEntry("CP1251", NIL, NIL, NIL, &clicked_charset, CHARSET_CP1251)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
+	menu_charsets->AddEntry("CP1251", &clicked_charset, CHARSET_CP1251)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 	menu_charsets->AddEntry();
-	menu_charsets->AddEntry("SHIFT-JIS", NIL, NIL, NIL, &clicked_charset, CHARSET_SHIFT_JIS)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
-	menu_charsets->AddEntry("GBK", NIL, NIL, NIL, &clicked_charset, CHARSET_GBK)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
-	menu_charsets->AddEntry("BIG-5", NIL, NIL, NIL, &clicked_charset, CHARSET_BIG_5)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
+	menu_charsets->AddEntry("SHIFT-JIS", &clicked_charset, CHARSET_SHIFT_JIS)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
+	menu_charsets->AddEntry("GBK", &clicked_charset, CHARSET_GBK)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
+	menu_charsets->AddEntry("BIG-5", &clicked_charset, CHARSET_BIG_5)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 	menu_charsets->AddEntry();
-	menu_charsets->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Other")), NIL, NIL, NIL, &clicked_charset, CHARSET_OTHER)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
+	menu_charsets->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Other")), &clicked_charset, CHARSET_OTHER)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 
-	menu_charsets_all->AddEntry("ISO-8859-1", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
-	menu_charsets_all->AddEntry("ISO-8859-2", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
-	menu_charsets_all->AddEntry("ISO-8859-5", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_5)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
-	menu_charsets_all->AddEntry("ISO-8859-7", NIL, NIL, NIL, &clicked_charset, CHARSET_ISO_8859_7)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("ISO-8859-1", &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("ISO-8859-2", &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("ISO-8859-5", &clicked_charset, CHARSET_ISO_8859_5)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("ISO-8859-7", &clicked_charset, CHARSET_ISO_8859_7)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry();
-	menu_charsets_all->AddEntry("CP1251", NIL, NIL, NIL, &clicked_charset, CHARSET_CP1251)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("CP1251", &clicked_charset, CHARSET_CP1251)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry();
-	menu_charsets_all->AddEntry("SHIFT-JIS", NIL, NIL, NIL, &clicked_charset, CHARSET_SHIFT_JIS)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
-	menu_charsets_all->AddEntry("GBK", NIL, NIL, NIL, &clicked_charset, CHARSET_GBK)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
-	menu_charsets_all->AddEntry("BIG-5", NIL, NIL, NIL, &clicked_charset, CHARSET_BIG_5)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("SHIFT-JIS", &clicked_charset, CHARSET_SHIFT_JIS)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("GBK", &clicked_charset, CHARSET_GBK)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry("BIG-5", &clicked_charset, CHARSET_BIG_5)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry();
-	menu_charsets_all->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Other")), NIL, NIL, NIL, &clicked_charset, CHARSET_OTHER)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Other")), &clicked_charset, CHARSET_OTHER)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 
 	/* Fill metadata edit menus.
 	 */
@@ -928,29 +928,29 @@ Void freac::LayerJoblist::FillMenus()
 
 	menu_edit_artist->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&LayerJoblist::UseStringForSelectedTracks, this);
 	menu_edit_artist->AddEntry();
-	menu_edit_artist->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")), NIL, menu_case);
+	menu_edit_artist->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")), menu_case);
 	menu_edit_artist->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
 	menu_edit_artist->AddEntry();
-	menu_edit_artist->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")), NIL, menu_charsets);
+	menu_edit_artist->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")), menu_charsets);
 	menu_edit_artist->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
-	menu_edit_title->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")), NIL, menu_case);
+	menu_edit_title->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")), menu_case);
 	menu_edit_title->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
 	menu_edit_title->AddEntry();
-	menu_edit_title->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")), NIL, menu_charsets);
+	menu_edit_title->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")), menu_charsets);
 	menu_edit_title->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_album->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&LayerJoblist::UseStringForSelectedTracks, this);
 	menu_edit_album->AddEntry();
-	menu_edit_album->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")), NIL, menu_case);
+	menu_edit_album->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")), menu_case);
 	menu_edit_album->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Adjust upper/lower case")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_case_all);
 	menu_edit_album->AddEntry();
-	menu_edit_album->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")), NIL, menu_charsets);
+	menu_edit_album->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")), menu_charsets);
 	menu_edit_album->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_genre->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&LayerJoblist::UseStringForSelectedTracks, this);
 	menu_edit_genre->AddEntry();
-	menu_edit_genre->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")), NIL, menu_charsets);
+	menu_edit_genre->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")), menu_charsets);
 	menu_edit_genre->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Interpret string as")).Append(" (").Append(i18n->TranslateString("selected tracks")).Append(")"), NIL, menu_charsets_all);
 
 	menu_edit_year->AddEntry(i18n->TranslateString("Use for all selected tracks"))->onAction.Connect(&LayerJoblist::UseStringForSelectedTracks, this);
@@ -1810,17 +1810,17 @@ Void freac::LayerJoblist::ToggleEditPopup()
 	menu_case->RemoveAllEntries();
 	menu_case_all->RemoveAllEntries();
 
-	menu_case->AddEntry(AdjustCaseWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("all words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 0)->onAction.Connect(&LayerJoblist::AdjustStringCase, this);
-	menu_case->AddEntry(AdjustCaseLongWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("long words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 1)->onAction.Connect(&LayerJoblist::AdjustStringCase, this);
-	menu_case->AddEntry(AdjustCaseFirstCapital(string).Append(" (").Append(i18n->TranslateString("first letter upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 2)->onAction.Connect(&LayerJoblist::AdjustStringCase, this);
-	menu_case->AddEntry(string.ToLower().Append(" (").Append(i18n->TranslateString("all lower case")).Append(")"), NIL, NIL, NIL, &clicked_case, 3)->onAction.Connect(&LayerJoblist::AdjustStringCase, this);
-	menu_case->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 4)->onAction.Connect(&LayerJoblist::AdjustStringCase, this);
+	menu_case->AddEntry(AdjustCaseWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("all words upper case")).Append(")"), &clicked_case, 0)->onAction.Connect(&LayerJoblist::AdjustStringCase, this);
+	menu_case->AddEntry(AdjustCaseLongWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("long words upper case")).Append(")"), &clicked_case, 1)->onAction.Connect(&LayerJoblist::AdjustStringCase, this);
+	menu_case->AddEntry(AdjustCaseFirstCapital(string).Append(" (").Append(i18n->TranslateString("first letter upper case")).Append(")"), &clicked_case, 2)->onAction.Connect(&LayerJoblist::AdjustStringCase, this);
+	menu_case->AddEntry(string.ToLower().Append(" (").Append(i18n->TranslateString("all lower case")).Append(")"), &clicked_case, 3)->onAction.Connect(&LayerJoblist::AdjustStringCase, this);
+	menu_case->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), &clicked_case, 4)->onAction.Connect(&LayerJoblist::AdjustStringCase, this);
 
-	menu_case_all->AddEntry(AdjustCaseWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("all words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 0)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
-	menu_case_all->AddEntry(AdjustCaseLongWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("long words upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 1)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
-	menu_case_all->AddEntry(AdjustCaseFirstCapital(string).Append(" (").Append(i18n->TranslateString("first letter upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 2)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
-	menu_case_all->AddEntry(string.ToLower().Append(" (").Append(i18n->TranslateString("all lower case")).Append(")"), NIL, NIL, NIL, &clicked_case, 3)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
-	menu_case_all->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), NIL, NIL, NIL, &clicked_case, 4)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
+	menu_case_all->AddEntry(AdjustCaseWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("all words upper case")).Append(")"), &clicked_case, 0)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
+	menu_case_all->AddEntry(AdjustCaseLongWordsFirstCapital(string).Append(" (").Append(i18n->TranslateString("long words upper case")).Append(")"), &clicked_case, 1)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
+	menu_case_all->AddEntry(AdjustCaseFirstCapital(string).Append(" (").Append(i18n->TranslateString("first letter upper case")).Append(")"), &clicked_case, 2)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
+	menu_case_all->AddEntry(string.ToLower().Append(" (").Append(i18n->TranslateString("all lower case")).Append(")"), &clicked_case, 3)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
+	menu_case_all->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), &clicked_case, 4)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
 }
 
 String freac::LayerJoblist::AdjustCaseFirstCapital(const String &string)

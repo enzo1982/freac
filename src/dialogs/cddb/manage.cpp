@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -47,11 +47,11 @@ freac::cddbManageDlg::cddbManageDlg()
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	btn_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
+	btn_cancel		= new Button(i18n->TranslateString("Cancel"), Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&cddbManageDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	btn_ok		= new Button(i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
+	btn_ok		= new Button(i18n->TranslateString("OK"), Point(87, 29), Size());
 	btn_ok->onAction.Connect(&cddbManageDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -75,7 +75,7 @@ freac::cddbManageDlg::cddbManageDlg()
 
 	text_preview	= new Text(i18n->AddColon(i18n->TranslateString("Preview")), Point(276, 10));
 
-	edit_preview	= new MultiEdit(NIL, Point(276, 29), Size(261, 186), 0);
+	edit_preview	= new MultiEdit(Point(276, 29), Size(261, 186), 0);
 	edit_preview->Deactivate();
 
 	text_charset	= new Text(i18n->AddColon(i18n->TranslateString("Charset")), Point(276, 226));
@@ -90,17 +90,17 @@ freac::cddbManageDlg::cddbManageDlg()
 	list_charset->AddEntry("GBK");
 	list_charset->AddEntry("BIG-5");
 
-	edit_charset	= new EditBox(NIL, Point(283 + text_charset->GetUnscaledTextWidth(), 223), Size(254 - text_charset->GetUnscaledTextWidth(), 0), 0);
+	edit_charset	= new EditBox(Point(283 + text_charset->GetUnscaledTextWidth(), 223), Size(254 - text_charset->GetUnscaledTextWidth(), 0), 0);
 	edit_charset->SetDropDownList(list_charset);
 	edit_charset->onInput.Connect(&cddbManageDlg::SetCharset, this);
 
-	btn_delete	= new Button(i18n->TranslateString("Remove entry"), NIL, Point(188, 69), Size());
+	btn_delete	= new Button(i18n->TranslateString("Remove entry"), Point(188, 69), Size());
 	btn_delete->onAction.Connect(&cddbManageDlg::DeleteEntry, this);
 	btn_delete->SetWidth(Math::Max(80, btn_delete->GetUnscaledTextWidth() + 14));
 	btn_delete->SetX(268 - btn_delete->GetWidth());
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
-	btn_save	= new Button(i18n->TranslateString("Save entry"), NIL, Point(87, 69), Size());
+	btn_save	= new Button(i18n->TranslateString("Save entry"), Point(87, 69), Size());
 	btn_save->onAction.Connect(&cddbManageDlg::SaveEntry, this);
 	btn_save->SetWidth(Math::Max(80, btn_save->GetUnscaledTextWidth() + 14));
 	btn_save->SetX(btn_save->GetWidth() + 7);

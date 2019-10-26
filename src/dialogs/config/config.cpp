@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -48,11 +48,11 @@ freac::ConfigDialog::ConfigDialog()
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	btn_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
+	btn_cancel		= new Button(i18n->TranslateString("Cancel"), Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&ConfigDialog::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	btn_ok			= new Button(i18n->TranslateString("OK"), NIL, btn_cancel->GetPosition() - Point(88, 0), Size());
+	btn_ok			= new Button(i18n->TranslateString("OK"), btn_cancel->GetPosition() - Point(88, 0), Size());
 	btn_ok->onAction.Connect(&ConfigDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -71,16 +71,16 @@ freac::ConfigDialog::ConfigDialog()
 
 	combo_config->onSelectEntry.Connect(&ConfigDialog::OnSelectConfiguration, this);
 
-	edit_config		= new EditBox(NIL, Point(text_config->GetUnscaledTextWidth() + 15, 8), Size(), 0);
+	edit_config		= new EditBox(Point(text_config->GetUnscaledTextWidth() + 15, 8), Size(), 0);
 	edit_config->SetDropDownList(combo_config);
 	edit_config->onSelectEntry.Connect(&ConfigDialog::OnSelectConfigurationByName, this);
 	edit_config->onInput.Connect(&ConfigDialog::OnEditConfigurationName, this);
 
-	button_config_new	= new Button(i18n->TranslateString("New"), NIL, Point(175, 7), Size());
+	button_config_new	= new Button(i18n->TranslateString("New"), Point(175, 7), Size());
 	button_config_new->SetOrientation(OR_UPPERRIGHT);
 	button_config_new->onAction.Connect(&ConfigDialog::OnCreateConfig, this);
 
-	button_config_delete	= new Button(i18n->TranslateString("Delete"), NIL, Point(87, 7), Size());
+	button_config_delete	= new Button(i18n->TranslateString("Delete"), Point(87, 7), Size());
 	button_config_delete->SetOrientation(OR_UPPERRIGHT);
 	button_config_delete->onAction.Connect(&ConfigDialog::OnDeleteConfig, this);
 

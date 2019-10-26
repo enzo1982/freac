@@ -48,11 +48,11 @@ freac::ConfigureDSP::ConfigureDSP()
 	list_available		= new ListBox(Point(10, 32), Size(245, 148));
 	list_available->onSelectEntry.Connect(&ConfigureDSP::OnSelectAvailable, this);
 
-	btn_add			= new Button(i18n->IsActiveLanguageRightToLeft() ? "<-" : "->", NIL, Point(263, 80), Size(26, 0));
+	btn_add			= new Button(i18n->IsActiveLanguageRightToLeft() ? "<-" : "->", Point(263, 80), Size(26, 0));
 	btn_add->onAction.Connect(&ConfigureDSP::OnAddComponent, this);
 	btn_add->Deactivate();
 
-	btn_remove		= new Button(i18n->IsActiveLanguageRightToLeft() ? "->" : "<-", NIL, Point(263, 110), Size(26, 0));
+	btn_remove		= new Button(i18n->IsActiveLanguageRightToLeft() ? "->" : "<-", Point(263, 110), Size(26, 0));
 	btn_remove->onAction.Connect(&ConfigureDSP::OnRemoveComponent, this);
 	btn_remove->Deactivate();
 
@@ -62,7 +62,7 @@ freac::ConfigureDSP::ConfigureDSP()
 	list_selected->onSelectEntry.Connect(&ConfigureDSP::OnSelectComponent, this);
 	list_selected->SetFlags(LF_ALLOWREORDER);
 
-	btn_configure		= new Button(i18n->TranslateString("Configure component"), NIL, Point(382, 188), Size(160, 0));
+	btn_configure		= new Button(i18n->TranslateString("Configure component"), Point(382, 188), Size(160, 0));
 	btn_configure->onAction.Connect(&ConfigureDSP::OnConfigureComponent, this);
 	btn_configure->Deactivate();
 

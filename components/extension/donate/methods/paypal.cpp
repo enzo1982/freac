@@ -91,7 +91,7 @@ BoCA::LayerPayPal::LayerPayPal()
 
 	Bitmap	 paypal = ImageLoader::Load(String(dir).Append("/paypal/paypal.png"));
 
-	link_donate		= new Hyperlink(NIL, paypal, String("file:///").Append(S::System::System::GetTempDirectory()).Append("pp").Append(Number((Int64) this).ToHexString(8)).Append(".html").Replace("\\", "/"), Point(0, text_donate->GetUnscaledTextHeight() + 18), Size(96, 44));
+	link_donate		= new Hyperlink(paypal, String("file:///").Append(S::System::System::GetTempDirectory()).Append("pp").Append(Number((Int64) this).ToHexString(8)).Append(".html").Replace("\\", "/"), Point(0, text_donate->GetUnscaledTextHeight() + 18), Size(96, 44));
 	text_donate_now		= new Text(i18n->TranslateString("Donate"), link_donate->GetPosition() + Point(10, 24));
 
 	Font	 font = text_donate_now->GetFont();

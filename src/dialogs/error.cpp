@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -37,7 +37,7 @@ freac::ErrorDialog::ErrorDialog(const Array<String> &errors)
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	btn_ok			= new Button(i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
+	btn_ok			= new Button(i18n->TranslateString("OK"), Point(87, 29), Size());
 	btn_ok->onAction.Connect(&ErrorDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 
@@ -48,7 +48,7 @@ freac::ErrorDialog::ErrorDialog(const Array<String> &errors)
 
 	foreach (const String &error, errors) list_errors->AddEntry(error);
 
-	edit_details	= new MultiEdit(NIL, Point(7, 127), Size(378, 80));
+	edit_details	= new MultiEdit(Point(7, 127), Size(378, 80));
 	edit_details->SetOrientation(OR_LOWERLEFT);
 	edit_details->Deactivate();
 

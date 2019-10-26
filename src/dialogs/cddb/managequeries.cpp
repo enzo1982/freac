@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -37,7 +37,7 @@ freac::cddbManageQueriesDlg::cddbManageQueriesDlg()
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	btn_cancel	= new Button(i18n->TranslateString("Close"), NIL, Point(87, 29), Size());
+	btn_cancel	= new Button(i18n->TranslateString("Close"), Point(87, 29), Size());
 	btn_cancel->onAction.Connect(&cddbManageQueriesDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
@@ -47,18 +47,18 @@ freac::cddbManageQueriesDlg::cddbManageQueriesDlg()
 	list_entries->AddTab(i18n->TranslateString("Query string"), 0);
 	list_entries->onSelectEntry.Connect(&cddbManageQueriesDlg::SelectEntry, this);
 
-	btn_delete	= new Button(i18n->TranslateString("Remove entry"), NIL, Point(7, 69), Size());
+	btn_delete	= new Button(i18n->TranslateString("Remove entry"), Point(7, 69), Size());
 	btn_delete->onAction.Connect(&cddbManageQueriesDlg::DeleteEntry, this);
 	btn_delete->SetWidth(Math::Max(80, btn_delete->GetUnscaledTextWidth() + 14));
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
-	btn_query_all	= new Button(i18n->TranslateString("Query all"), NIL, Point(87, 69), Size());
+	btn_query_all	= new Button(i18n->TranslateString("Query all"), Point(87, 69), Size());
 	btn_query_all->onAction.Connect(&cddbManageQueriesDlg::QueryAllEntries, this);
 	btn_query_all->SetWidth(Math::Max(80, btn_query_all->GetUnscaledTextWidth() + 14));
 	btn_query_all->SetX(btn_query_all->GetWidth() + 7);
 	btn_query_all->SetOrientation(OR_LOWERRIGHT);
 
-	btn_query	= new Button(i18n->TranslateString("Query"), NIL, Point(175, 69), Size());
+	btn_query	= new Button(i18n->TranslateString("Query"), Point(175, 69), Size());
 	btn_query->onAction.Connect(&cddbManageQueriesDlg::QueryEntry, this);
 	btn_query->SetWidth(Math::Max(80, btn_query->GetUnscaledTextWidth() + 14));
 	btn_query->SetX(btn_query->GetWidth() + btn_query_all->GetWidth() + 15);

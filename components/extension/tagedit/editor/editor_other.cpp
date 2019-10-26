@@ -27,16 +27,16 @@ BoCA::LayerTagOther::LayerTagOther() : Editor("Other")
 	text_otextwriter	= new Text(NIL, text_oalbum->GetPosition() + Point(0, 27));
 	text_oyear		= new Text(NIL, text_otextwriter->GetPosition() + Point(0, 27));
 
-	edit_oartist		= new EditBox(NIL, text_oartist->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_oartist		= new EditBox(text_oartist->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_oartist->onInput.Connect(&LayerTagOther::OnModifyTrack, this);
 
-	edit_oalbum		= new EditBox(NIL, text_oalbum->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_oalbum		= new EditBox(text_oalbum->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_oalbum->onInput.Connect(&LayerTagOther::OnModifyTrack, this);
 
-	edit_otextwriter	= new EditBox(NIL, text_otextwriter->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_otextwriter	= new EditBox(text_otextwriter->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_otextwriter->onInput.Connect(&LayerTagOther::OnModifyTrack, this);
 
-	edit_oyear		= new EditBox(NIL, text_oyear->GetPosition() + Point(7, -3), Size(50, 0), 4);
+	edit_oyear		= new EditBox(text_oyear->GetPosition() + Point(7, -3), Size(50, 0), 4);
 	edit_oyear->SetFlags(EDB_NUMERIC);
 	edit_oyear->onInput.Connect(&LayerTagOther::OnModifyTrack, this);
 
@@ -60,22 +60,22 @@ BoCA::LayerTagOther::LayerTagOther() : Editor("Other")
 	text_wcopyright		= new Text(NIL, text_wsource->GetPosition() + Point(0, 27));
 	text_wcommercial	= new Text(NIL, text_wcopyright->GetPosition() + Point(0, 27));
 
-	edit_wartist		= new EditBox(NIL, text_wartist->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_wartist		= new EditBox(text_wartist->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_wartist->onInput.Connect(&LayerTagOther::OnModifyTrack, this);
 
-	edit_wpublisher		= new EditBox(NIL, text_wpublisher->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_wpublisher		= new EditBox(text_wpublisher->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_wpublisher->onInput.Connect(&LayerTagOther::OnModifyTrack, this);
 
-	edit_wradio		= new EditBox(NIL, text_wradio->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_wradio		= new EditBox(text_wradio->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_wradio->onInput.Connect(&LayerTagOther::OnModifyTrack, this);
 
-	edit_wsource		= new EditBox(NIL, text_wsource->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_wsource		= new EditBox(text_wsource->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_wsource->onInput.Connect(&LayerTagOther::OnModifyTrack, this);
 
-	edit_wcopyright		= new EditBox(NIL, text_wcopyright->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_wcopyright		= new EditBox(text_wcopyright->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_wcopyright->onInput.Connect(&LayerTagOther::OnModifyTrack, this);
 
-	edit_wcommercial	= new EditBox(NIL, text_wcommercial->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_wcommercial	= new EditBox(text_wcommercial->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_wcommercial->onInput.Connect(&LayerTagOther::OnModifyTrack, this);
 
 	group_web->Add(text_wartist);

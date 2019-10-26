@@ -37,19 +37,19 @@ freac::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track> &
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	button_overwrite	= new Button(i18n->TranslateString("Confirm"), NIL, Point(87, 29), Size());
+	button_overwrite	= new Button(i18n->TranslateString("Confirm"), Point(87, 29), Size());
 	button_overwrite->onAction.Connect(&DialogConfirmOverwrite::OnOverwrite, this);
 	button_overwrite->SetOrientation(OR_LOWERRIGHT);
 	button_overwrite->SetWidth(Math::Max(80, button_overwrite->GetUnscaledTextWidth() + 14));
 	button_overwrite->SetX(7 + button_overwrite->GetWidth());
 
-	button_skip		= new Button(i18n->TranslateString("Skip all"), NIL, Point(175, 29), Size());
+	button_skip		= new Button(i18n->TranslateString("Skip all"), Point(175, 29), Size());
 	button_skip->onAction.Connect(&DialogConfirmOverwrite::OnSkip, this);
 	button_skip->SetOrientation(OR_LOWERRIGHT);
 	button_skip->SetWidth(Math::Max(80, button_skip->GetUnscaledTextWidth() + 14));
 	button_skip->SetX(15 + button_overwrite->GetWidth() + button_skip->GetWidth());
 
-	button_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(183 + button_skip->GetWidth(), 29), Size());
+	button_cancel		= new Button(i18n->TranslateString("Cancel"), Point(183 + button_skip->GetWidth(), 29), Size());
 	button_cancel->onAction.Connect(&DialogConfirmOverwrite::OnCancel, this);
 	button_cancel->SetOrientation(OR_LOWERRIGHT);
 	button_cancel->SetX(103 + button_skip->GetWidth() + button_overwrite->GetWidth());
@@ -60,17 +60,17 @@ freac::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track> &
 
 	i18n->SetContext("Joblist");
 
-	button_select_all	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-all.png")), Point(-2, 20), Size(21, 21));
+	button_select_all	= new Button(ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-all.png")), Point(-2, 20), Size(21, 21));
 	button_select_all->onAction.Connect(&DialogConfirmOverwrite::SelectAll, this);
 	button_select_all->SetFlags(BF_NOFRAME);
 	button_select_all->SetTooltipText(i18n->TranslateString("Select all"));
 
-	button_select_none	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-none.png")), Point(-2, 34), Size(21, 21));
+	button_select_none	= new Button(ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-none.png")), Point(-2, 34), Size(21, 21));
 	button_select_none->onAction.Connect(&DialogConfirmOverwrite::SelectNone, this);
 	button_select_none->SetFlags(BF_NOFRAME);
 	button_select_none->SetTooltipText(i18n->TranslateString("Select none"));
 
-	button_select_toggle	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-toggle.png")), Point(-2, 48), Size(21, 21));
+	button_select_toggle	= new Button(ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-toggle.png")), Point(-2, 48), Size(21, 21));
 	button_select_toggle->onAction.Connect(&DialogConfirmOverwrite::ToggleSelection, this);
 	button_select_toggle->SetFlags(BF_NOFRAME);
 	button_select_toggle->SetTooltipText(i18n->TranslateString("Toggle selection"));

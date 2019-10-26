@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -37,7 +37,7 @@ freac::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	btn_cancel	= new Button(i18n->TranslateString("Close"), NIL, Point(87, 29), Size());
+	btn_cancel	= new Button(i18n->TranslateString("Close"), Point(87, 29), Size());
 	btn_cancel->onAction.Connect(&cddbManageSubmitsDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
@@ -50,22 +50,22 @@ freac::cddbManageSubmitsDlg::cddbManageSubmitsDlg()
 
 	text_preview	= new Text(i18n->AddColon(i18n->TranslateString("Preview")), Point(276, 10));
 
-	edit_preview	= new MultiEdit(NIL, Point(276, 29), Size(261, 213), 0);
+	edit_preview	= new MultiEdit(Point(276, 29), Size(261, 213), 0);
 	edit_preview->Deactivate();
 
-	btn_delete	= new Button(i18n->TranslateString("Remove entry"), NIL, Point(188, 69), Size());
+	btn_delete	= new Button(i18n->TranslateString("Remove entry"), Point(188, 69), Size());
 	btn_delete->onAction.Connect(&cddbManageSubmitsDlg::DeleteEntry, this);
 	btn_delete->SetWidth(Math::Max(80, btn_delete->GetUnscaledTextWidth() + 14));
 	btn_delete->SetX(268 - btn_delete->GetWidth());
 	btn_delete->SetOrientation(OR_LOWERLEFT);
 
-	btn_send_all	= new Button(i18n->TranslateString("Submit all"), NIL, Point(87, 69), Size());
+	btn_send_all	= new Button(i18n->TranslateString("Submit all"), Point(87, 69), Size());
 	btn_send_all->onAction.Connect(&cddbManageSubmitsDlg::SendAllEntries, this);
 	btn_send_all->SetWidth(Math::Max(80, btn_send_all->GetUnscaledTextWidth() + 14));
 	btn_send_all->SetX(btn_send_all->GetWidth() + 7);
 	btn_send_all->SetOrientation(OR_LOWERRIGHT);
 
-	btn_send	= new Button(i18n->TranslateString("Submit"), NIL, Point(175, 69), Size());
+	btn_send	= new Button(i18n->TranslateString("Submit"), Point(175, 69), Size());
 	btn_send->onAction.Connect(&cddbManageSubmitsDlg::SendEntry, this);
 	btn_send->SetWidth(Math::Max(80, btn_send->GetUnscaledTextWidth() + 14));
 	btn_send->SetX(btn_send->GetWidth() + btn_send_all->GetWidth() + 15);

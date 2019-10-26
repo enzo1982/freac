@@ -55,7 +55,7 @@ freac::ConfigureEncoders::ConfigureEncoders()
 		if (config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) == boca.GetComponentID(i)) combo_encoder->SelectNthEntry(combo_encoder->Length() - 1);
 	}
 
-	button_config	= new Button(i18n->TranslateString("Configure encoder"), NIL, Point(412, 11), Size(130, 0));
+	button_config	= new Button(i18n->TranslateString("Configure encoder"), Point(412, 11), Size(130, 0));
 	button_config->SetOrientation(OR_UPPERRIGHT);
 	button_config->onAction.Connect(&ConfigureEncoders::ConfigureEncoder, this);
 
@@ -130,7 +130,7 @@ freac::ConfigureEncoders::ConfigureEncoders()
 
 	edit_outdir->SetDropDownList(list_outdir);
 
-	button_outdirBrowse	= new Button(i18n->TranslateString("Select"), NIL, Point(90, 61), Size(0, 0));
+	button_outdirBrowse	= new Button(i18n->TranslateString("Select"), Point(90, 61), Size(0, 0));
 	button_outdirBrowse->SetOrientation(OR_UPPERRIGHT);
 	button_outdirBrowse->onAction.Connect(&ConfigureEncoders::SelectDir, this);
 

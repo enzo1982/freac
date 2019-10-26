@@ -49,7 +49,7 @@ BoCA::LanguageNotifierDialog::LanguageNotifierDialog(Bool incomplete)
 	mainWnd->Add(mainWnd_titlebar);
 	mainWnd->Add(divider);
 
-	button_close		= new Button("Close", NIL, Point(87, 29), Size());
+	button_close		= new Button("Close", Point(87, 29), Size());
 	button_close->onAction.Connect(&LanguageNotifierDialog::Close, this);
 	button_close->SetOrientation(OR_LOWERRIGHT);
 

@@ -36,10 +36,10 @@ BoCA::LayerYouTube::LayerYouTube() : Layer("Video")
 
 	Add(text_url);
 
-	edit_url		= new EditBox(NIL, Point(15, 7), Size(100, 0));
+	edit_url		= new EditBox(Point(15, 7), Size(100, 0));
 	edit_url->onInput.Connect(&LayerYouTube::OnEditDownloadURL, this);
 
-	button_add_url		= new Button(NIL, NIL, Point(88, 6), Size());
+	button_add_url		= new Button(String(), Point(88, 6), Size());
 	button_add_url->SetOrientation(OR_UPPERRIGHT);
 	button_add_url->Deactivate();
 	button_add_url->onAction.Connect(&LayerYouTube::OnDownloadTrack, this);
@@ -87,20 +87,20 @@ BoCA::LayerYouTube::LayerYouTube() : Layer("Video")
 	text_source		= new Text(NIL, Point(129, 109));
 	text_source->SetOrientation(OR_LOWERLEFT);
 
-	link_source		= new Hyperlink(NIL, NIL, NIL, Point(129, 109));
+	link_source		= new Hyperlink(String(), NIL, Point(129, 109));
 	link_source->SetOrientation(OR_LOWERLEFT);
 
 	text_title		= new Text(NIL, Point(129, 82));
 	text_title->SetOrientation(OR_LOWERLEFT);
 
-	edit_title		= new EditBox(NIL, Point(129, 85), Size(0, 0));
+	edit_title		= new EditBox(Point(129, 85), Size(0, 0));
 	edit_title->SetOrientation(OR_LOWERLEFT);
 	edit_title->onInput.Connect(&LayerYouTube::OnEditMetadata, this);
 
 	text_description	= new Text(NIL, Point(129, 55));
 	text_description->SetOrientation(OR_LOWERLEFT);
 
-	edit_description	= new MultiEdit(NIL, Point(129, 58), Size(0, 50));
+	edit_description	= new MultiEdit(Point(129, 58), Size(0, 50));
 	edit_description->SetOrientation(OR_LOWERLEFT);
 	edit_description->onInput.Connect(&LayerYouTube::OnEditMetadata, this);
 

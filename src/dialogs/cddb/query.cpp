@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -52,7 +52,7 @@ freac::cddbQueryDlg::cddbQueryDlg(const String &iQueryString)
 	text_status	 = new Text(NIL, Point(7, 5));
 	prog_status	 = new Progressbar(Point(7, 24), Size(200, 0), OR_HORZ, PB_NOTEXT, 0, 100, 0);
 
-	btn_cancel	 = new Button(i18n->TranslateString("Cancel"), NIL, Point(215, 23), Size());
+	btn_cancel	 = new Button(i18n->TranslateString("Cancel"), Point(215, 23), Size());
 	btn_cancel->onAction.Connect(&cddbQueryDlg::Cancel, this);
 
 	Add(mainWnd);

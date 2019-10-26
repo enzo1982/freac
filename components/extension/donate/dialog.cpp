@@ -30,7 +30,7 @@ BoCA::DonateDialog::DonateDialog()
 	mainWnd->Add(mainWnd_titlebar);
 	mainWnd->Add(divider);
 
-	button_close		= new Button(i18n->TranslateString("Close"), NIL, Point(87, 29), Size());
+	button_close		= new Button(i18n->TranslateString("Close"), Point(87, 29), Size());
 	button_close->onAction.Connect(&DonateDialog::Close, this);
 	button_close->SetOrientation(OR_LOWERRIGHT);
 

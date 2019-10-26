@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -81,7 +81,7 @@ freac::ConfigureTags::ConfigureTags()
 
 	list_encodings			= new List();
 
-	edit_encoding			= new EditBox(NIL, Point(text_encoding->GetUnscaledTextWidth() + 275, 13), Size(249 - text_encoding->GetUnscaledTextWidth(), 0));
+	edit_encoding			= new EditBox(Point(text_encoding->GetUnscaledTextWidth() + 275, 13), Size(249 - text_encoding->GetUnscaledTextWidth(), 0));
 	edit_encoding->onInput.Connect(&ConfigureTags::OnEditEncoding, this);
 
 	combo_encoding			= new ComboBox(Point(text_encoding->GetUnscaledTextWidth() + 275, 13), Size(249 - text_encoding->GetUnscaledTextWidth(), 0));

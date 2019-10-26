@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -60,11 +60,11 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(45, OR_HORZ | OR_BOTTOM);
 
-	btn_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(175, 32), Size());
+	btn_cancel		= new Button(i18n->TranslateString("Cancel"), Point(175, 32), Size());
 	btn_cancel->onAction.Connect(&cddbSubmitDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	btn_submit		= new Button(i18n->TranslateString("Submit"), NIL, Point(87, 32), Size());
+	btn_submit		= new Button(i18n->TranslateString("Submit"), Point(87, 32), Size());
 	btn_submit->onAction.Connect(&cddbSubmitDlg::Submit, this);
 	btn_submit->SetOrientation(OR_LOWERRIGHT);
 
@@ -112,7 +112,7 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 
 	Int	 maxTextSize = Math::Max(text_artist->GetUnscaledTextWidth(), text_album->GetUnscaledTextWidth());
 
-	edit_artist	= new EditBox(NIL, Point(14 + maxTextSize, 62), Size(200 - maxTextSize, 0), 0);
+	edit_artist	= new EditBox(Point(14 + maxTextSize, 62), Size(200 - maxTextSize, 0), 0);
 
 	list_artist	= new List();
 	list_artist->AddEntry(i18n->TranslateString("Various artists"));
@@ -120,7 +120,7 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 	edit_artist->SetDropDownList(list_artist);
 	edit_artist->onInput.Connect(&cddbSubmitDlg::SetArtist, this);
 
-	edit_album	= new EditBox(NIL, Point(14 + maxTextSize, 89), Size(200 - maxTextSize, 0), 0);
+	edit_album	= new EditBox(Point(14 + maxTextSize, 89), Size(200 - maxTextSize, 0), 0);
 
 	list_genre	= new List();
 	Utilities::FillGenreList(list_genre);
@@ -131,15 +131,15 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 
 	maxTextSize = Math::Max(text_year->GetUnscaledTextWidth(), text_disccomment->GetUnscaledTextWidth());
 
-	edit_year	= new EditBox(NIL, Point(228 + maxTextSize, 62), Size(31, 0), 4);
+	edit_year	= new EditBox(Point(228 + maxTextSize, 62), Size(31, 0), 4);
 	edit_year->SetFlags(EDB_NUMERIC);
 
 	text_genre	= new Text(i18n->AddColon(i18n->TranslateString("Genre")), Point(266 + maxTextSize, 65));
 
-	edit_genre	= new EditBox(NIL, Point(273 + maxTextSize + text_genre->GetUnscaledTextWidth(), 62), Size(214 - maxTextSize - text_genre->GetUnscaledTextWidth(), 0), 0);
+	edit_genre	= new EditBox(Point(273 + maxTextSize + text_genre->GetUnscaledTextWidth(), 62), Size(214 - maxTextSize - text_genre->GetUnscaledTextWidth(), 0), 0);
 	edit_genre->SetDropDownList(list_genre);
 
-	edit_disccomment= new MultiEdit(NIL, Point(228 + maxTextSize, 89), Size(259 - maxTextSize, 34), 0);
+	edit_disccomment= new MultiEdit(Point(228 + maxTextSize, 89), Size(259 - maxTextSize, 34), 0);
 
 	list_tracks	= new ListBox(Point(7, 131), Size(480, 140));
 	list_tracks->SetFlags(LF_ALLOWRESELECT);
@@ -162,7 +162,7 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 	text_track	= new Text(i18n->AddColon(i18n->TranslateString("Track")), Point(7, 138));
 	text_track->SetOrientation(OR_LOWERLEFT);
 
-	edit_track	= new EditBox(NIL, Point(13 + text_track->GetUnscaledTextWidth(), 141), Size(25, 0), 3);
+	edit_track	= new EditBox(Point(13 + text_track->GetUnscaledTextWidth(), 141), Size(25, 0), 3);
 	edit_track->SetOrientation(OR_LOWERLEFT);
 	edit_track->SetFlags(EDB_NUMERIC);
 	edit_track->Deactivate();
@@ -178,19 +178,19 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 
 	maxTextSize = Math::Max(text_title->GetUnscaledTextWidth(), text_comment->GetUnscaledTextWidth());
 
-	edit_trackartist= new EditBox(NIL, Point(52 + text_track->GetUnscaledTextWidth() + maxTextSize, 141), Size(435 - text_track->GetUnscaledTextWidth() - maxTextSize, 0), 0);
+	edit_trackartist= new EditBox(Point(52 + text_track->GetUnscaledTextWidth() + maxTextSize, 141), Size(435 - text_track->GetUnscaledTextWidth() - maxTextSize, 0), 0);
 	edit_trackartist->SetOrientation(OR_LOWERLEFT);
 	edit_trackartist->Deactivate();
 	edit_trackartist->onInput.Connect(&cddbSubmitDlg::UpdateTrack, this);
 	edit_trackartist->onEnter.Connect(&cddbSubmitDlg::FinishArtist, this);
 
-	edit_title	= new EditBox(NIL, Point(52 + text_track->GetUnscaledTextWidth() + maxTextSize, 114), Size(435 - text_track->GetUnscaledTextWidth() - maxTextSize, 0), 0);
+	edit_title	= new EditBox(Point(52 + text_track->GetUnscaledTextWidth() + maxTextSize, 114), Size(435 - text_track->GetUnscaledTextWidth() - maxTextSize, 0), 0);
 	edit_title->SetOrientation(OR_LOWERLEFT);
 	edit_title->Deactivate();
 	edit_title->onInput.Connect(&cddbSubmitDlg::UpdateTrack, this);
 	edit_title->onEnter.Connect(&cddbSubmitDlg::FinishTrack, this);
 
-	edit_comment	= new MultiEdit(NIL, Point(52 + text_track->GetUnscaledTextWidth() + maxTextSize, 87), Size(435 - text_track->GetUnscaledTextWidth() - maxTextSize, 34), 0);
+	edit_comment	= new MultiEdit(Point(52 + text_track->GetUnscaledTextWidth() + maxTextSize, 87), Size(435 - text_track->GetUnscaledTextWidth() - maxTextSize, 34), 0);
 	edit_comment->SetOrientation(OR_LOWERLEFT);
 	edit_comment->Deactivate();
 	edit_comment->onInput.Connect(&cddbSubmitDlg::UpdateComment, this);

@@ -31,7 +31,7 @@ BoCA::LayerProtocols::LayerProtocols() : Layer("Logs")
 	combo_errors	= new ComboBox(Point(text_errors->GetUnscaledTextWidth() + 47, 28), Size(250, 0));
 	combo_errors->SetOrientation(OR_LOWERLEFT);
 
-	button_details	= new Button(NIL, NIL, Point(87, 29), Size(80, 0));
+	button_details	= new Button(String(), Point(87, 29), Size(80, 0));
 	button_details->onAction.Connect(&LayerProtocols::ShowDetails, this);
 	button_details->SetOrientation(OR_LOWERRIGHT);
 
