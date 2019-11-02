@@ -797,7 +797,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 			{
 				String	 spec = parameter->GetArgument().Replace("%VALUE", "<val>");
 
-				maxTabs = Math::Max((Int64) maxTabs, Math::Ceil((spec.Length() + 1) / 8.0));
+				maxTabs = Math::Max(maxTabs, Math::Ceil((spec.Length() + 1) / 8.0));
 			}
 
 			/* Print formatted parameter list.

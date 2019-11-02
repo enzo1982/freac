@@ -110,7 +110,7 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 
 		while (bytesLeft)
 		{
-			buffer.Resize(Math::Min((Int64) 1024, bytesLeft));
+			buffer.Resize(Math::Min(Int64(1024), bytesLeft));
 
 			bytesLeft -= Read(buffer);
 		}
