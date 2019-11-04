@@ -95,7 +95,6 @@
     <Link>
       <AdditionalDependencies>smooth.lib;boca.1.0.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../../smooth/msvc/Debug;../../cdk/msvc/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <GenerateDebugInformation>Debug</GenerateDebugInformation>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
@@ -119,7 +118,6 @@
     <Link>
       <AdditionalDependencies>smooth.lib;boca.1.0.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../../smooth/msvc/x64/Debug;../../cdk/msvc/x64/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <GenerateDebugInformation>Debug</GenerateDebugInformation>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <ProgramDatabaseFile>$(OutDir)$(TargetName).dll.pdb</ProgramDatabaseFile>
@@ -135,7 +133,6 @@
     <Link>
       <AdditionalDependencies>smooth.lib;boca.1.0.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../../smooth/msvc/Release;../../cdk/msvc/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <GenerateDebugInformation>No</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <DataExecutionPrevention>
@@ -156,7 +153,6 @@
     <Link>
       <AdditionalDependencies>smooth.lib;boca.1.0.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>../../../smooth/msvc/x64/Release;../../cdk/msvc/x64/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <GenerateDebugInformation>No</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <DataExecutionPrevention>
