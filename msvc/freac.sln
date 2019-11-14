@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac DLL", "freac\freac.vcxproj", "{F121548C-5FD2-4E54-89AB-37671DE3CC76}"
 EndProject
@@ -23,6 +23,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension Donate", "Extensions\freac Extension Donate\freac Extension Donate.vcxproj", "{A34E222F-1D9B-4801-8A9C-629C78707BED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{BC255F5A-BE40-4FFF-954D-3B567D22513F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension Notifier", "Extensions\freac Extension Notifier\freac Extension Notifier.vcxproj", "{6345C470-0060-4971-9D94-A1F175DB090B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension LangNotify", "Extensions\freac Extension LangNotify\freac Extension LangNotify.vcxproj", "{3F283577-A0AA-4C1F-A933-D7A69773A0F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +84,22 @@ Global
 		{A34E222F-1D9B-4801-8A9C-629C78707BED}.Release|Win32.Build.0 = Release|Win32
 		{A34E222F-1D9B-4801-8A9C-629C78707BED}.Release|x64.ActiveCfg = Release|x64
 		{A34E222F-1D9B-4801-8A9C-629C78707BED}.Release|x64.Build.0 = Release|x64
+		{6345C470-0060-4971-9D94-A1F175DB090B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6345C470-0060-4971-9D94-A1F175DB090B}.Debug|Win32.Build.0 = Debug|Win32
+		{6345C470-0060-4971-9D94-A1F175DB090B}.Debug|x64.ActiveCfg = Debug|x64
+		{6345C470-0060-4971-9D94-A1F175DB090B}.Debug|x64.Build.0 = Debug|x64
+		{6345C470-0060-4971-9D94-A1F175DB090B}.Release|Win32.ActiveCfg = Release|Win32
+		{6345C470-0060-4971-9D94-A1F175DB090B}.Release|Win32.Build.0 = Release|Win32
+		{6345C470-0060-4971-9D94-A1F175DB090B}.Release|x64.ActiveCfg = Release|x64
+		{6345C470-0060-4971-9D94-A1F175DB090B}.Release|x64.Build.0 = Release|x64
+		{3F283577-A0AA-4C1F-A933-D7A69773A0F8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3F283577-A0AA-4C1F-A933-D7A69773A0F8}.Debug|Win32.Build.0 = Debug|Win32
+		{3F283577-A0AA-4C1F-A933-D7A69773A0F8}.Debug|x64.ActiveCfg = Debug|x64
+		{3F283577-A0AA-4C1F-A933-D7A69773A0F8}.Debug|x64.Build.0 = Debug|x64
+		{3F283577-A0AA-4C1F-A933-D7A69773A0F8}.Release|Win32.ActiveCfg = Release|Win32
+		{3F283577-A0AA-4C1F-A933-D7A69773A0F8}.Release|Win32.Build.0 = Release|Win32
+		{3F283577-A0AA-4C1F-A933-D7A69773A0F8}.Release|x64.ActiveCfg = Release|x64
+		{3F283577-A0AA-4C1F-A933-D7A69773A0F8}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +108,8 @@ Global
 		{F2561807-A735-4ED5-93C7-74649D06A94B} = {BC255F5A-BE40-4FFF-954D-3B567D22513F}
 		{362EBB5E-5D27-49B3-846A-02E3F9EFAE4F} = {BC255F5A-BE40-4FFF-954D-3B567D22513F}
 		{A34E222F-1D9B-4801-8A9C-629C78707BED} = {BC255F5A-BE40-4FFF-954D-3B567D22513F}
+		{6345C470-0060-4971-9D94-A1F175DB090B} = {BC255F5A-BE40-4FFF-954D-3B567D22513F}
+		{3F283577-A0AA-4C1F-A933-D7A69773A0F8} = {BC255F5A-BE40-4FFF-954D-3B567D22513F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B699F6B-4AE4-4B5C-AB3A-BA8A53444F5A}
