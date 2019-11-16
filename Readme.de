@@ -49,14 +49,43 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 Installation
 ------------
 
-	fre:ac steht in zwei Varianten bereit, als .exe-Datei, welche einen Installationsassistenten enthält,
-	oder alternativ als .zip-Archiv, welches nur die Anwendung ohne Installer beinhaltet.
+	Windows:
 
-	Wenn Sie die .exe-Datei heruntergeladen haben, führen Sie sie einfach aus und der Installationsassistent
-	wird Sie durch den Installationsprozess führen und Startmenüeinträge zum Starten von fre:ac anlegen.
+		fre:ac steht in zwei Varianten bereit, als .exe-Datei, welche einen Installationsassistenten enthält,
+		oder alternativ als .zip-Archiv, welches nur die Anwendung ohne Installer beinhaltet.
 
-	Wenn Sie das .zip-Archiv heruntergeladen haben, entpacken Sie bitte den Inhalt an einen Ort Ihrer Wahl
-	und starten Sie anschließend freac.exe um fre:ac auszuführen.
+		Wenn Sie die .exe-Datei heruntergeladen haben, führen Sie sie einfach aus und der Installationsassistent
+		wird Sie durch den Installationsprozess führen und Startmenüeinträge zum Starten von fre:ac anlegen.
+
+		Wenn Sie das .zip-Archiv heruntergeladen haben, entpacken Sie bitte den Inhalt an einen Ort Ihrer Wahl
+		und starten Sie anschließend freac.exe um fre:ac auszuführen.
+
+	macOS:
+
+		fre:ac steht als Apple Disk Image (.dmg) Datei bereit.
+
+		Um es zu installieren, öffnen Sie die .dmg-Datei und ziehen Sie die fre:ac Anwendung an einen Ort Ihrer Wahl,
+		z.B. den Desktop oder den Anwendungen Ordner. Doppelklicken Sie anschließend die Anwendung, um fre:ac zu starten.
+
+	Linux:
+
+		fre:ac steht als Snap-, Flatpak- oder AppImage-Paket bereit.
+
+		Die Snap- und Flatpak-Versionen können in den jeweiligen App-Stores gefunden und von dort installiert werden. Bitte
+		beachten Sie, dass diese Versionen in restriktiven Umgebungen laufen und ggf. eingeschränkte Funktionalität bieten.
+
+		Das AppImage-Paket muss nach dem Download mit folgendem Befehl als ausführbar markiert werden:
+
+			chmod a+x freac*.AppImage
+
+		Das AppImage kann anschließend ausgeführt werden, um fre:ac zu starten.
+
+	FreeBSD:
+
+		fre:ac steht als .tar.gz-Archiv bereit.
+
+		Bitte entpacken Sie den Inhalt an einen Ort Ihrer Wahl und führen Sie anschließend die Binärdatei freac aus,
+		um fre:ac zu starten.
 
 Voraussetzungen
 ---------------
@@ -67,7 +96,7 @@ Voraussetzungen
 			- Windows XP/Vista/7/8.x/10
 			- macOS 10.5 Leopard oder neuer
 			- Linux (die meisten modernen Distributionen sollten funktionieren)
-			- FreeBSD/PC-BSD (getestet unter FreeBSD 10.0)
+			- FreeBSD/PC-BSD (getestet unter FreeBSD 12.0)
 			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
 			- OpenBSD (getestet unter OpenBSD 5.3)
 			- Solaris (getestet unter Solaris 11)
@@ -75,20 +104,20 @@ Voraussetzungen
 			- Haiku (getestet unter Haiku R1 Beta 1)
 
 		Minimale Hardwarevoraussetzungen:
-			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 oder ARMv5 Prozessor
+			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 oder ARMv7 Prozessor
 			- 512 MB RAM
 			- 100 MB freier Festplattenplatz
 
 		Empfohlene Hardwarespezifikationen:
 			- Intel Core i3 oder AMD Phenom II Prozessor
-			- 1 GB RAM
+			- 2 GB RAM
 			- 1 GB freier Festplattenplatz
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		Alle Systeme:
 
-			- smooth v0.8.74.0 (http://www.smooth-project.org/)
+			- smooth v0.9 (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -111,30 +140,22 @@ Voraussetzungen
 
 	Zusätzliche optionale Software:
 
-		- Die 32 Bit Version für Windows kann Winamp-Plugins verwenden, wenn diese im "plugins"-Verzeichnis abgelegt werden.
+		- Die 32 Bit Version für Windows kann Winamp-Plugins verwenden, wenn diese im Ordner "plugins" abgelegt werden.
 
 		- Einige externe Codecs können von fre:ac verwendet werden. Mehr Informationen dazu finden Sie im Benutzerhandbuch.
-
-Bekannte Probleme
------------------
-
-	Linux- und Unix-spezifische Probleme:
-
-		- Es gibt noch keine Anwendungspakete für fre:ac, so dass Abhängigkeiten derzeit noch manuell installiert werden
-		  müssen. Bitte enpacken Sie den Inhalt des Archivs in Ihr Home-Verzeichnis.
 
 Geschichte
 ----------
 
-	Version 1.1 Alpha (April 2019)
+	Version 1.1 Alpha (November 2019)
 
 		- Auf macOS, Linux und BSD-Betriebssysteme portiert
 		- Framework für Erweiterungskomponenten implementiert, um fre:ac zu modularisieren
+		- Konvertierungen werden nun wenn möglich parallel ausgeführt
+		- SuperFast Kodierungstechnologie für Multithread-Verarbeitung integriert
 		- Vollständig überarbeiteter Konfigurationsdialog
 		- Unterstützung für mehrere Konfigurationen hinzugefügt
-		- Multi-Encoder-Hub-Komponente hinzugefügt
-		- SuperFast Kodierungstechnologie für Multithread-Verarbeitung integriert
-		- Konvertierungen werden nun wenn möglich parallel ausgeführt
+		- Multi-Encoder-Hub-Komponente für gleichzeitige Ausgabe in mehrere Formate hinzugefügt
 		- Neues Design des Fortschrittsanzeigebereichs
 		- Neuer Dialog zur Bestätigung des Überschreibens vorhandener Dateien vor der Konvertierung
 		- Formatauswahl für Kodierer, die mehrere Formate unterstützen, im Kodieren-Menü ermöglicht
@@ -174,7 +195,7 @@ Geschichte
 		- Unterstützung für CDDB-Abfrage per HTTP GET hinzugefügt
 		- Kontextmenü für Texteingabefelder hinzugefügt
 		- Unterstützung für das Auslesen von ISRC-Codes von CDs hinzugefügt
-		- Unterstützung für das Rippen von versteckten tracks (HTOA) hinzugefügt
+		- Unterstützung für das Rippen von versteckten Tracks (HTOA) hinzugefügt
 		- Konfigurationsoption für Offset beim Rippen hinzugefügt
 		- Konfigurationsoption hinzugefügt, konvertierte Tracks in der Jobliste stehen zu lassen
 		- Konfigurationsoption hinzugefügt, kodierte Dateien in die Jobliste aufzunehmen
@@ -202,7 +223,7 @@ Geschichte
 		- Benutzerfreundlichkeit der Titelinfopflege verbessert
 		- Metadaten-Extraktion aus Pfaden verbessert
 		- Native Unterstützung für die x64-Platform hinzugefügt
-		- CDRip auf Version 2.2 aktualisiert (mit cdparanoia III Version 10.2)
+		- CDRip auf Version 2.3 aktualisiert (mit cdparanoia III Version 10.2)
 
 Besonderen Dank
 ---------------

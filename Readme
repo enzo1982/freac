@@ -49,14 +49,43 @@ Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 Installation
 ------------
 
-	fre:ac is distributed in two variants, an .exe file containing a setup wizard or alternatively
-	a .zip archive that contains just the application without an installer.
+	Windows:
 
-	If you downloaded the .exe installer, simply run it and the setup wizard will guide you through
-	the installation process creating start menu icons that will run fre:ac.
+		fre:ac is distributed in two variants, an .exe file containing a setup wizard or alternatively
+		a .zip archive that contains just the application without an installer.
 
-	If you downloaded the .zip package, please extract/move the contents to a location of your
-	choice and run freac.exe to start fre:ac.
+		If you downloaded the .exe installer, simply run it and the setup wizard will guide you through
+		the installation process creating start menu icons that will run fre:ac.
+
+		If you downloaded the .zip package, please extract/move the contents to a location of your
+		choice and run freac.exe to start fre:ac.
+
+	macOS:
+
+		fre:ac is distributed as an Apple Disk Image (.dmg) file.
+
+		To install it, open the .dmg image and drag the fre:ac application to a location of your choice
+		like the desktop or the Applications folder. Then double click the application to start fre:ac.
+
+	Linux:
+
+		fre:ac is available as a Snap, Flatpak or AppImage package.
+
+		The Snap and Flatpak versions can be found and installed from the respective app stores. Please
+		note that these versions run in restriced environments and might offer limited functionality.
+
+		The AppImage package must be marked as executable after downloading using the following command:
+
+			chmod a+x freac*.AppImage
+
+		The AppImage can then be executed to start fre:ac.
+
+	FreeBSD:
+
+		fre:ac is distributed as a .tar.gz archive.
+
+		Please extract the contents to a location of your choice and execute the freac binary to start
+		fre:ac.
 
 Requirements
 ------------
@@ -67,7 +96,7 @@ Requirements
 			- Windows XP/Vista/7/8.x/10
 			- macOS 10.5 Leopard or later
 			- Linux (most modern distributions should work)
-			- FreeBSD/PC-BSD (tested on FreeBSD 10.0)
+			- FreeBSD/PC-BSD (tested on FreeBSD 12.0)
 			- NetBSD (tested on NetBSD 6.0, NetBSD 5.x and earlier releases are not supported)
 			- OpenBSD (tested on OpenBSD 5.3)
 			- Solaris (tested on Solaris 11)
@@ -75,20 +104,20 @@ Requirements
 			- Haiku (tested on Haiku R1 beta 1)
 
 		Minimum hardware requirements:
-			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 or ARMv5 CPU
+			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 or ARMv7 CPU
 			- 512 MB RAM
 			- 100 MB free disk space
 
 		Recommended hardware specs:
 			- Intel Core i3 or AMD Phenom II CPU
-			- 1 GB RAM
+			- 2 GB RAM
 			- 1 GB free disk space
 
 	Additional requirements for compiling the sources:
 
 		All platforms:
 
-			- smooth v0.8.74.0 (http://www.smooth-project.org/)
+			- smooth v0.9 (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -111,30 +140,22 @@ Requirements
 
 	Additional optional software:
 
-		- The 32 bit version for Windows can use Winamp plug-ins if they are present in the 'plugins' directory.
+		- The 32 bit version for Windows can use Winamp plug-ins if they are present in the 'plugins' folder.
 
 		- Several external codecs can be used with fre:ac. Please see the manual for more details.
-
-Known problems
---------------
-
-	Linux and Unix specific problems:
-
-		- There are no application packages for fre:ac yet, so you need to install dependencies manually for now.
-		  Please extract the contents of the archive to your home directory.
 
 History
 -------
 
-	Version 1.1 Alpha (April 2019)
+	Version 1.1 Alpha (November 2019)
 
 		- ported to macOS, Linux and BSD operating systems
 		- implemented an extension component framework to modularize fre:ac
+		- conversions are now done in parallel if possible
+		- integrated SuperFast encoding technology for multi-threaded processing
 		- completely reworked configuration dialog
 		- added support for multiple configurations
-		- added multi encoder hub component
-		- integrated SuperFast encoding technology for multi-threaded processing
-		- conversions are now done in parallel if possible
+		- added multi encoder hub component for simultaneous output to multiple formats
 		- redesigned progress display area
 		- new dialog to confirm overwriting of existing files before conversion
 		- allowed format selection from the encode menu for encoders supporting multiple formats
@@ -202,7 +223,7 @@ History
 		- improved title info editing user friendliness
 		- improved metadata extraction from paths
 		- added native x64 platform support
-		- upgraded CDRip to version 2.2 (with cdparanoia III version 10.2)
+		- upgraded CDRip to version 2.3 (with cdparanoia III version 10.2)
 
 Special thanks to
 -----------------
