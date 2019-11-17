@@ -527,7 +527,7 @@
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Proceso paralelo</entry>
 	<entry id="5701" string="Enable parallel processing">Habilitar proceso paralelo</entry>
-	<entry id="5702" string="Enable SuperFast mode (experimental)">Habilitar modo Superrápido (experimental)</entry>
+	<entry id="5702" string="Enable SuperFast mode">Habilitar modo Superrápido</entry>
 	<entry id="5703" string="Number of conversion threads">Número de hilos de conversión</entry>
 	<entry id="5704" string="auto">automático</entry>
 	<entry id="5705" string="Process priority">Prioridad del proceso</entry>

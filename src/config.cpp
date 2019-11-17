@@ -233,7 +233,7 @@ const String	 freac::Config::ResourcesEnableParallelConversionsID		= "EnablePara
 const Bool	 freac::Config::ResourcesEnableParallelConversionsDefault	= True;
 
 const String	 freac::Config::ResourcesEnableSuperFastModeID			= "EnableSuperFastMode";
-const Bool	 freac::Config::ResourcesEnableSuperFastModeDefault		= False;
+const Bool	 freac::Config::ResourcesEnableSuperFastModeDefault		= True;
 
 const String	 freac::Config::ResourcesNumberOfConversionThreadsID		= "NumberOfConversionThreads";
 const Int	 freac::Config::ResourcesNumberOfConversionThreadsDefault	= 0;

@@ -519,7 +519,7 @@
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">並列処理</entry>
 	<entry id="5701" string="Enable parallel processing">並列処理を有効にする</entry>
-	<entry id="5702" string="Enable SuperFast mode (experimental)">SuperFastモードを有効にする（実験的）</entry>
+	<entry id="5702" string="Enable SuperFast mode">SuperFastモードを有効にする</entry>
 	<entry id="5703" string="Number of conversion threads">変換スレッドの数</entry>
 	<entry id="5704" string="auto">自動</entry>
 	<entry id="5705" string="Process priority">プロセスの優先度</entry>

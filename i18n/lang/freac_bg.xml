@@ -527,7 +527,7 @@
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Паралелна обработка</entry>
 	<entry id="5701" string="Enable parallel processing">Включена паралелна обработка</entry>
-	<entry id="5702" string="Enable SuperFast mode (experimental)">Активиране Супер бърз режим (експериментален)</entry>
+	<entry id="5702" string="Enable SuperFast mode">Активиране Супер бърз режим</entry>
 	<entry id="5703" string="Number of conversion threads">Брой теми за преобразуване</entry>
 	<entry id="5704" string="auto">автоматично</entry>
 	<entry id="5705" string="Process priority">Приоритет на процеса</entry>

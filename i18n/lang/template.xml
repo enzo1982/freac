@@ -530,7 +530,7 @@
       <section name="Resources">
 	<entry id="5700" string="Parallel processing"/>
 	<entry id="5701" string="Enable parallel processing"/>
-	<entry id="5702" string="Enable SuperFast mode (experimental)"/>
+	<entry id="5702" string="Enable SuperFast mode"/>
 	<entry id="5703" string="Number of conversion threads"/>
 	<entry id="5704" string="auto"/>
 	<entry id="5705" string="Process priority"/>

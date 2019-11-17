@@ -728,7 +728,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 			boca.DeleteComponent(info);
 		}
 
-		Console::OutputString("  --superfast\t\t\tEnable SuperFast mode (experimental)\n");
+		Console::OutputString("  --superfast\t\t\tEnable SuperFast mode\n");
 		Console::OutputString("  --threads=<n>\t\t\tSpecify number of threads to use in SuperFast mode\n\n");
 
 		Console::OutputString("  --list-configs\t\tPrint a list of available configurations\n");

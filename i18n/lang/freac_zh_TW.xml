@@ -527,7 +527,7 @@
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">平行處理</entry>
 	<entry id="5701" string="Enable parallel processing">啟用平行處理</entry>
-	<entry id="5702" string="Enable SuperFast mode (experimental)">啟用 SuperFast 模式 (實驗性)</entry>
+	<entry id="5702" string="Enable SuperFast mode">啟用 SuperFast 模式</entry>
 	<entry id="5703" string="Number of conversion threads">執行緒數量</entry>
 	<entry id="5704" string="auto">自動</entry>
 	<entry id="5705" string="Process priority">優先順序</entry>

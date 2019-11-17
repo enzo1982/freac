@@ -9,6 +9,7 @@
     <property name="template">[template]</property>
     <property name="author">[author] &lt;[author@server.tld]&gt;</property>
     <property name="url">https://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">OK</entry>
@@ -530,7 +531,7 @@
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Parallel processing</entry>
 	<entry id="5701" string="Enable parallel processing">Enable parallel processing</entry>
-	<entry id="5702" string="Enable SuperFast mode (experimental)">Enable SuperFast mode (experimental)</entry>
+	<entry id="5702" string="Enable SuperFast mode">Enable SuperFast mode</entry>
 	<entry id="5703" string="Number of conversion threads">Number of conversion threads</entry>
 	<entry id="5704" string="auto">auto</entry>
 	<entry id="5705" string="Process priority">Process priority</entry>
