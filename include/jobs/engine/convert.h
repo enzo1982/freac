@@ -29,6 +29,7 @@ namespace freac
 			static Bool					 conversionPaused;
 
 			Int						 conversionID;
+			String						 logName;
 
 			Array<BoCA::Track>				 tracks;
 			Array<Int>					 trackActions;
@@ -46,6 +47,9 @@ namespace freac
 
 			BoCA::Format					 GetSingleTrackSampleFormat() const;
 			BoCA::Track					 ConsolidateTrackInfo();
+
+			Void						 LogSettings(const String &, Int) const;
+			Void						 LogCDInfo() const;
 		public:
 			static Bool					 IsConverting()	{ return conversionJobs.Length(); }
 			static Bool					 IsPaused()	{ return conversionPaused;  }

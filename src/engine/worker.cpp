@@ -87,8 +87,6 @@ Int freac::ConvertWorker::Perform()
 
 Int freac::ConvertWorker::Convert()
 {
-	BoCA::I18n	*i18n = BoCA::I18n::Get();
-
 	Registry	&boca = Registry::Get();
 
 	/* Get config values.
@@ -121,10 +119,6 @@ Int freac::ConvertWorker::Convert()
 	/* Set initial number of conversion passes.
 	 */
 	Int	 conversionSteps	= encodeOnTheFly ? 1 : 2;
-
-	/* Setup conversion log.
-	 */
-	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
 
 	/* Loop over conversion passes.
 	 */
@@ -205,9 +199,12 @@ Int freac::ConvertWorker::Convert()
 
 			if (!inFile.Exists())
 			{
+				BoCA::I18n	*i18n = BoCA::I18n::Get();
+				BoCA::Protocol	*log  = BoCA::Protocol::Get(logName);
+
 				onReportWarning.Emit(i18n->TranslateString("Skipped verification due to non existing output file: %1", "Messages").Replace("%1", inFile.GetFileName()));
 
-				log->Write(String("\tSkipping verification due to non existing output file: ").Append(inFileName), MessageTypeWarning);
+				log->Write(String("    Skipping verification due to non existing output file: ").Append(inFileName), MessageTypeWarning);
 
 				trackPosition = trackToConvert.length;
 
@@ -238,12 +235,15 @@ Int freac::ConvertWorker::Convert()
 
 				if (format != outFormat)
 				{
+					BoCA::I18n	*i18n = BoCA::I18n::Get();
+					BoCA::Protocol	*log  = BoCA::Protocol::Get(logName);
+
 					onReportWarning.Emit(i18n->TranslateString(String("Skipped verification due to format mismatch: %1\n\n")
 										  .Append("Original format: %2 Hz, %3 bit, %4 channels\n")
 										  .Append("Output format: %5 Hz, %6 bit, %7 channels"), "Messages").Replace("%1", inFile.GetFileName()).Replace("%2", String::FromInt(format.rate)).Replace("%3", String::FromInt(format.bits)).Replace("%4", String::FromInt(format.channels))
 																						       .Replace("%5", String::FromInt(outFormat.rate)).Replace("%6", String::FromInt(outFormat.bits)).Replace("%7", String::FromInt(outFormat.channels)));
 
-					log->Write(String("\tSkipping verification due to format mismatch: ").Append(inFileName), MessageTypeWarning);
+					log->Write(String("    Skipping verification due to format mismatch: ").Append(inFileName), MessageTypeWarning);
 
 					trackPosition = trackToConvert.length;
 
@@ -342,29 +342,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Output log messages.
 		 */
-		switch (conversionStep)
-		{
-			default:
-			case ConversionStepOnTheFly:
-				log->Write(String("\tConverting from: ").Append(inFileName));
-				log->Write(String("\t           to:   ").Append(outFile));
-
-				break;
-			case ConversionStepDecode:
-				log->Write(String("\tDecoding from: ").Append(inFileName));
-				log->Write(String("\t         to:   ").Append(outFile));
-
-				break;
-			case ConversionStepEncode:
-				log->Write(String("\tEncoding from: ").Append(inFileName));
-				log->Write(String("\t         to:   ").Append(outFile));
-
-				break;
-			case ConversionStepVerify:
-				log->Write(String("\tVerifying: ").Append(inFileName));
-
-				break;
-		}
+		LogConversionStart(inFileName, outFile);
 
 		/* Run main conversion loop.
 		 */
@@ -372,16 +350,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Verify input.
 		 */
-		if (!cancel && verify && verifier->Verify())
-		{
-			log->Write(String("\tSuccessfully verified input file: ").Append(inFileName));
-		}
-		else if (!cancel && verify)
-		{
-			onReportError.Emit(i18n->TranslateString("Failed to verify input file: %1", "Errors").Replace("%1", inFileName.Contains("://") ? inFileName : inFile.GetFileName()));
-
-			log->Write(String("\tFailed to verify input file: ").Append(inFileName), MessageTypeError);
-		}
+		if (!cancel && verify) VerifyInput(inFileName, verifier);
 
 		/* Get MD5 checksums if we are to verify the output.
 		 */
@@ -391,33 +360,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Output log messages.
 		 */
-		switch (conversionStep)
-		{
-			default:
-			case ConversionStepOnTheFly:
-				if (cancel) log->Write(String("\tCancelled converting: ").Append(inFileName), MessageTypeWarning);
-				else	    log->Write(String("\tFinished converting: ").Append(inFileName));
-
-				break;
-			case ConversionStepDecode:
-				if (cancel) log->Write(String("\tCancelled decoding: ").Append(inFileName), MessageTypeWarning);
-				else	    log->Write(String("\tFinished decoding: ").Append(inFileName));
-
-				break;
-			case ConversionStepEncode:
-				if (cancel) log->Write(String("\tCancelled encoding: ").Append(inFileName), MessageTypeWarning);
-				else	    log->Write(String("\tFinished encoding: ").Append(inFileName));
-
-				break;
-			case ConversionStepVerify:
-				if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Errors").Replace("%1", inFile.GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
-
-				if	(cancel)			   log->Write(String("\tCancelled verifying output file: ").Append(inFileName), MessageTypeWarning);
-				else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying output file: ").Append(inFileName), MessageTypeError);
-				else					   log->Write(String("\tSuccessfully verified output file: ").Append(inFileName));
-
-				break;
-		}
+		LogConversionEnd(inFileName, encodeChecksum, verifyChecksum);
 
 		/* Free decoder, verifier, processor and encoder.
 		 */
@@ -602,6 +545,73 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 
 	if (encoder->GetEncodedSamples() > 0) return encoder->GetEncodedSamples() - trackOffset;
 	else				      return decoder->GetDecodedSamples();
+}
+
+Void freac::ConvertWorker::VerifyInput(const String &inFile, Verifier *verifier)
+{
+	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
+
+	if (verifier->Verify())
+	{
+		log->Write(String("    Successfully verified input file: ").Append(inFile));
+	}
+	else
+	{
+		BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+		onReportError.Emit(i18n->TranslateString("Failed to verify input file: %1", "Errors").Replace("%1", inFile.Contains("://") ? inFile : File(inFile).GetFileName()));
+
+		log->Write(String("    Failed to verify input file: ").Append(inFile), MessageTypeError);
+	}
+}
+
+Void freac::ConvertWorker::LogConversionStart(const String &inFile, const String &outFile) const
+{
+	String	 verb = "Converting";
+
+	if	(inFile.StartsWith("device://"))	 verb = "Ripping";
+	else if	(conversionStep == ConversionStepDecode) verb = "Decoding";
+	else if (conversionStep == ConversionStepEncode) verb = "Encoding";
+	else if (conversionStep == ConversionStepVerify) verb = "Verifying";
+
+	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
+
+	log->Lock();
+	log->Write(String("    ").Append(verb).Append(": ").Append(inFile));
+
+	if (outFile != NIL && conversionStep != ConversionStepVerify)
+	{
+		log->Write(String("    ").Append(String().FillN(' ', verb.Length() - 2)).Append("to: ").Append(outFile));
+	}
+
+	log->Release();
+}
+
+Void freac::ConvertWorker::LogConversionEnd(const String &inFile, const String &encodeChecksum, const String &verifyChecksum)
+{
+	String	 verb = "converting";
+
+	if	(inFile.StartsWith("device://"))	 verb = "ripping";
+	else if	(conversionStep == ConversionStepDecode) verb = "decoding";
+	else if (conversionStep == ConversionStepEncode) verb = "encoding";
+
+	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
+
+	if (conversionStep != ConversionStepVerify)
+	{
+		if (cancel) log->Write(String("    Cancelled ").Append(verb).Append(": ").Append(inFile), MessageTypeWarning);
+		else	    log->Write(String("    Finished ").Append(verb).Append(": ").Append(inFile));
+	}
+	else
+	{
+		BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+		if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Errors").Replace("%1", File(inFile).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
+
+		if	(cancel)			   log->Write(String("    Cancelled verifying output file: ").Append(inFile), MessageTypeWarning);
+		else if (encodeChecksum != verifyChecksum) log->Write(String("    Checksum mismatch verifying output file: ").Append(inFile), MessageTypeError);
+		else					   log->Write(String("    Successfully verified output file: ").Append(inFile));
+	}
 }
 
 Void freac::ConvertWorker::SetTrackToConvert(const BoCA::Track &nTrack)

@@ -38,8 +38,6 @@ freac::ConvertWorkerSingleFile::~ConvertWorkerSingleFile()
 
 Int freac::ConvertWorkerSingleFile::Convert()
 {
-	BoCA::I18n	*i18n = BoCA::I18n::Get();
-
 	Registry	&boca = Registry::Get();
 
 	/* Get config values.
@@ -47,10 +45,6 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	Int	 singleFileMode	= configuration->GetIntValue(Config::CategoryProcessingID, Config::ProcessingSingleFileModeID, Config::ProcessingSingleFileModeDefault);
 
 	Bool	 verifyInput	= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, Config::VerificationVerifyInputDefault);
-
-	/* Setup conversion log.
-	 */
-	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
 
 	/* Set conversion step.
 	 */
@@ -75,12 +69,15 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 			if (format != outFormat)
 			{
+				BoCA::I18n	*i18n = BoCA::I18n::Get();
+				BoCA::Protocol	*log  = BoCA::Protocol::Get(logName);
+
 				onReportWarning.Emit(i18n->TranslateString(String("Skipped verification due to format mismatch: %1\n\n")
 									  .Append("Original format: %2 Hz, %3 bit, %4 channels\n")
 									  .Append("Output format: %5 Hz, %6 bit, %7 channels"), "Messages").Replace("%1", File(trackToConvert.fileName).GetFileName()).Replace("%2", String::FromInt(format.rate)).Replace("%3", String::FromInt(format.bits)).Replace("%4", String::FromInt(format.channels))
 																									  .Replace("%5", String::FromInt(outFormat.rate)).Replace("%6", String::FromInt(outFormat.bits)).Replace("%7", String::FromInt(outFormat.channels)));
 
-				log->Write(String("\tSkipping verification due to format mismatch: ").Append(trackToConvert.fileName), MessageTypeWarning);
+				log->Write(String("    Skipping verification due to format mismatch: ").Append(trackToConvert.fileName), MessageTypeWarning);
 
 				trackPosition = trackToConvert.length;
 
@@ -153,18 +150,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Output log messages.
 	 */
-	switch (conversionStep)
-	{
-		default:
-		case ConversionStepOnTheFly:
-			log->Write(String("\tConverting from: ").Append(trackToConvert.fileName));
-
-			break;
-		case ConversionStepVerify:
-			log->Write(String("\tVerifying: ").Append(trackToConvert.fileName));
-
-			break;
-	}
+	LogConversionStart(trackToConvert.fileName);
 
 	/* Run main conversion loop.
 	 */
@@ -172,16 +158,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Verify input.
 	 */
-	if (!cancel && verify && verifier->Verify())
-	{
-		log->Write(String("\tSuccessfully verified input file: ").Append(trackToConvert.fileName));
-	}
-	else if (!cancel && verify)
-	{
-		onReportError.Emit(i18n->TranslateString("Failed to verify input file: %1", "Errors").Replace("%1", File(trackToConvert.fileName).GetFileName()));
-
-		log->Write(String("\tFailed to verify input file: ").Append(trackToConvert.fileName), MessageTypeError);
-	}
+	if (!cancel && verify) VerifyInput(trackToConvert.fileName, verifier);
 
 	/* Get MD5 checksum if we are to verify the output.
 	 */
@@ -191,23 +168,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Output log messages.
 	 */
-	switch (conversionStep)
-	{
-		default:
-		case ConversionStepOnTheFly:
-			if (cancel) log->Write(String("\tCancelled converting: ").Append(trackToConvert.fileName), MessageTypeWarning);
-			else	    log->Write(String("\tFinished converting: ").Append(trackToConvert.fileName));
-
-			break;
-		case ConversionStepVerify:
-			if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Errors").Replace("%1", File(trackToConvert.fileName).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
-
-			if	(cancel)			   log->Write(String("\tCancelled verifying output file: ").Append(trackToConvert.fileName), MessageTypeWarning);
-			else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying output file: ").Append(trackToConvert.fileName));
-			else					   log->Write(String("\tSuccessfully verified output file: ").Append(trackToConvert.fileName));
-
-			break;
-	}
+	LogConversionEnd(trackToConvert.fileName, encodeChecksum, verifyChecksum);
 
 	/* Get output format info.
 	 */

@@ -242,7 +242,9 @@ Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 	BoCA::Config	*config	  = BoCA::Config::Get();
 	BoCA::Protocol	*protocol = BoCA::Protocol::Get("CDDB communication");
 
-	protocol->Write("Entering method: CDDBLocal::Submit(const CDDBInfo &)");
+	String	  cddbFolder  = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
+
+	protocol->Write(String("Writing info to local CDDB database at: ").Append(cddbFolder));
 
 	CDDBInfo  cddbInfo = oCddbInfo;
 
@@ -252,7 +254,6 @@ Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 
 	/* See if we have a Windows or Unix style DB.
 	 */
-	String	  cddbFolder  = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
 	Directory categoryDir = Directory(String(cddbFolder).Append(cddbInfo.category));
 	String	  pattern     = String("??to??");
 
@@ -262,7 +263,7 @@ Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 
 	if (categoryDir.GetFilesByPattern(pattern).Length() >= 1)
 	{
-		protocol->Write("Found Windows style DB.");
+		protocol->Write("    Found Windows style DB.");
 
 		pattern = String().CopyN(DiscIDToString(cddbInfo.discID), 2).Append("to??");
 
@@ -285,7 +286,7 @@ Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 			}
 		}
 
-		protocol->Write(String("Writing to ").Append(fileName));
+		protocol->Write(String("    Writing to: ").Append(String(fileName).Tail(fileName.Length() - cddbFolder.Length())));
 
 		InStream	 in(STREAM_FILE, fileName, IS_READ);
 		OutStream	 out(STREAM_FILE, String(fileName).Append(".new"), OS_REPLACE);
@@ -330,11 +331,11 @@ Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 	}
 	else
 	{
-		protocol->Write("Found Unix style DB.");
+		protocol->Write("    Found Unix style DB.");
 
 		String		 fileName = String(categoryDir).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(cddbInfo.discID));
 
-		protocol->Write(String("Writing to ").Append(fileName));
+		protocol->Write(String("    Writing to: ").Append(String(fileName).Tail(fileName.Length() - cddbFolder.Length())));
 
 		OutStream	 out(STREAM_FILE, fileName, OS_REPLACE);
 
@@ -343,7 +344,7 @@ Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 		out.OutputString(content);
 	}
 
-	protocol->Write("Leaving method.");
+	protocol->Write("Finished CDDB transaction.");
 
 	return True;
 }

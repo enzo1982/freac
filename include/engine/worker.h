@@ -55,6 +55,11 @@ namespace freac
 			Int						 Perform();
 			Int64						 Loop(Decoder *, Verifier *, BoCA::FormatConverter *, Processor *, Encoder *);
 
+			Void						 VerifyInput(const String &, Verifier *);
+
+			Void						 LogConversionStart(const String &, const String & = NIL) const;
+			Void						 LogConversionEnd(const String &, const String &, const String &);
+
 			virtual Int					 Convert();
 		public:
 									 ConvertWorker(const BoCA::Config *, Int);
