@@ -1298,8 +1298,6 @@
       <section name="Logging">
 	<entry id="104000" string="Logs">Protocolos</entry>
 	<entry id="104001" string="Log">Protocolo</entry>
-	<entry id="104002" string="Errors / Warnings">Errores / Avisos</entry>
-	<entry id="104003" string="Details">Detalles</entry>
 	<entry id="104004" string="Time">Hora</entry>
 	<entry id="104005" string="Message">Mensaje</entry>
 

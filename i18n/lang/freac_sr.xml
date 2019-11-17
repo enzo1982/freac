@@ -1066,8 +1066,6 @@
       <section name="Logging">
 	<entry id="104000" string="Logs">Protokoli</entry>
 	<entry id="104001" string="Log">Protokol</entry>
-	<entry id="104002" string="Errors / Warnings">Greške / Upozorenja</entry>
-	<entry id="104003" string="Details">Detalji</entry>
 	<entry id="104004" string="Time">Vreme</entry>
 	<entry id="104005" string="Message">Poruka</entry>
 

@@ -1317,14 +1317,25 @@
       <section name="Logging">
 	<entry id="104000" string="Logs"/>
 	<entry id="104001" string="Log"/>
-	<entry id="104002" string="Errors / Warnings"/>
-	<entry id="104003" string="Details"/>
+	<entry id="104002" string="Save as"/>
+	<entry id="104003" string="Log Files"/>
 	<entry id="104004" string="Time"/>
 	<entry id="104005" string="Message"/>
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface"/>
 	  <entry id="104101" string="Show Logs tab in main window"/>
+	  <entry id="104102" string="Log files"/>
+	  <entry id="104103" string="Archive log files"/>
+	  <entry id="104104" string="Log file folder"/>
+	  <entry id="104105" string="Select"/>
+	  <entry id="104106" string="Select the folder for saving log files"/>
+	  <entry id="104107" string="Delete old log files after"/>
+	  <entry id="104108" string="days"/>
+	  <entry id="104109" string="Conversion logs"/>
+	  <entry id="104110" string="Save conversion logs with audio files"/>
+	  <entry id="104111" string="Audio CD ripping logs only"/>
+	  <entry id="104112" string="Filename pattern"/>
 	</section>
       </section>
 

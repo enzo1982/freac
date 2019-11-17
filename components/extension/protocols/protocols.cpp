@@ -59,6 +59,32 @@ BoCA::Protocols::~Protocols()
 {
 	if (configLayer	 != NIL) Object::DeleteObject(configLayer);
 	if (mainTabLayer != NIL) Object::DeleteObject(mainTabLayer);
+
+	DeleteOldProtocols();
+}
+
+Void BoCA::Protocols::DeleteOldProtocols()
+{
+	const Config	*config = GetConfiguration();
+
+	if (!config->GetIntValue(ConfigureProtocols::ConfigID, "DeleteLogs", True)) return;
+
+	DateTime	 date	= DateTime::Current();
+	Int		 today	= date.GetYear() * 365 + date.GetMonth() * 30 + date.GetDay();
+	Int		 time	= date.GetHour() * 60 + date.GetMinute();
+	Int		 days	= config->GetIntValue(ConfigureProtocols::ConfigID, "DeleteLogsDays", 30);
+	Directory	 folder = config->GetStringValue(ConfigureProtocols::ConfigID, "LogsFolder", String(config->cacheDir).Append("logs"));
+
+	const Array<File>	&files = folder.GetFilesByPattern("[* *] *.log");
+
+	foreach (const File &file, files)
+	{
+		DateTime	 fileDate = file.GetWriteTime();
+		Int		 fileDay  = fileDate.GetYear() * 365 + fileDate.GetMonth() * 30 + fileDate.GetDay();
+		Int		 fileTime = fileDate.GetHour() * 60 + fileDate.GetMinute();
+
+		if (fileDay < today - days || (fileDay == today - days && fileTime < time)) File(file).Delete();
+	}
 }
 
 ConfigLayer *BoCA::Protocols::GetConfigurationLayer()

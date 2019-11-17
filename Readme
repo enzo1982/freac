@@ -156,6 +156,7 @@ History
 		- completely reworked configuration dialog
 		- added support for multiple configurations
 		- added multi encoder hub component for simultaneous output to multiple formats
+		- added support for writing conversion log files
 		- redesigned progress display area
 		- new dialog to confirm overwriting of existing files before conversion
 		- allowed format selection from the encode menu for encoders supporting multiple formats

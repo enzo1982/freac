@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -29,7 +29,28 @@ namespace BoCA
 			GroupBox		*group_ui;
 			CheckBox		*check_ui_showTab;
 
-			Bool			 showProtocolsTab;
+			GroupBox		*group_logs;
+			CheckBox		*check_logs_archive;
+			Text			*text_logs_folder;
+			EditBox			*edit_logs_folder;
+			Button			*btn_logs_select;
+			CheckBox		*check_logs_delete;
+			EditBox			*edit_logs_days;
+			Text			*text_logs_days;
+
+			GroupBox		*group_conversion;
+			CheckBox		*check_conversion_logs;
+			CheckBox		*check_conversion_ripping;
+			Text			*text_conversion_filename;
+			EditBox			*edit_conversion_filename;
+			List			*list_conversion_filename;
+
+			Bool			 showLogsTab;
+
+			Bool			 archiveLogs;
+			Bool			 deleteLogs;
+			Bool			 saveConversionLogsWithFiles;
+			Bool			 saveRippingLogsOnly;
 		public:
 			static const String	 ConfigID;
 
@@ -37,6 +58,12 @@ namespace BoCA
 						~ConfigureProtocols();
 
 			Int			 SaveSettings();
+		slots:
+			Void			 ToggleArchiveLogs();
+			Void			 ToggleDeleteLogs();
+			Void			 ToggleSaveConversionLogsWithFiles();
+
+			Void			 SelectFolder();
 	};
 };
 

@@ -1174,8 +1174,6 @@
       </section>
 
       <section name="Logging">
-	<entry id="104002" string="Errors / Warnings">エラー/警告</entry>
-	<entry id="104003" string="Details">詳細</entry>
 	<entry id="104004" string="Time">時間</entry>
 	<entry id="104005" string="Message">メッセージ</entry>
 

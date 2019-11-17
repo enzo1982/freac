@@ -1317,14 +1317,25 @@
       <section name="Logging">
 	<entry id="104000" string="Logs">Protokolle</entry>
 	<entry id="104001" string="Log">Protokoll</entry>
-	<entry id="104002" string="Errors / Warnings">Fehler / Warnungen</entry>
-	<entry id="104003" string="Details">Details</entry>
+	<entry id="104002" string="Save as">Sichern als</entry>
+	<entry id="104003" string="Log Files">Protokolldateien</entry>
 	<entry id="104004" string="Time">Zeit</entry>
 	<entry id="104005" string="Message">Nachricht</entry>
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface">Benutzeroberfläche</entry>
 	  <entry id="104101" string="Show Logs tab in main window">Registerkarte Protokolle im Hauptfenster anzeigen</entry>
+	  <entry id="104102" string="Log files">Protokolldateien</entry>
+	  <entry id="104103" string="Archive log files">Protokolldateien archivieren</entry>
+	  <entry id="104104" string="Log file folder">Ordner für Protokolldateien</entry>
+	  <entry id="104105" string="Select">Wählen</entry>
+	  <entry id="104106" string="Select the folder for saving log files">Wählen Sie den Ordner für Protokolldateien</entry>
+	  <entry id="104107" string="Delete old log files after">Alte Protokolldateien löschen nach</entry>
+	  <entry id="104108" string="days">Tagen</entry>
+	  <entry id="104109" string="Conversion logs">Konvertierungsprotokolle</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">Konvertierungsprotokolle mit Audiodateien speichern</entry>
+	  <entry id="104111" string="Audio CD ripping logs only">Nur für Audio CD-Ripping-Protokolle</entry>
+	  <entry id="104112" string="Filename pattern">Vorlage für Dateinamen</entry>
 	</section>
       </section>
 

@@ -24,6 +24,12 @@
     <ClCompile Include="..\..\..\components\extension\protocols\config.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\components\extension\protocols\writer.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\components\extension\protocols\systeminfo.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\components\extension\protocols\layer.h">
@@ -33,6 +39,12 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\components\extension\protocols\config.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\components\extension\protocols\writer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\components\extension\protocols\systeminfo.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

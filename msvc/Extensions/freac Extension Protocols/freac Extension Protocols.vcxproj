@@ -139,11 +139,15 @@
     <ClCompile Include="..\..\..\components\extension\protocols\config.cpp" />
     <ClCompile Include="..\..\..\components\extension\protocols\layer.cpp" />
     <ClCompile Include="..\..\..\components\extension\protocols\protocols.cpp" />
+    <ClCompile Include="..\..\..\components\extension\protocols\systeminfo.cpp" />
+    <ClCompile Include="..\..\..\components\extension\protocols\writer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\components\extension\protocols\config.h" />
     <ClInclude Include="..\..\..\components\extension\protocols\layer.h" />
     <ClInclude Include="..\..\..\components\extension\protocols\protocols.h" />
+    <ClInclude Include="..\..\..\components\extension\protocols\systeminfo.h" />
+    <ClInclude Include="..\..\..\components\extension\protocols\writer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

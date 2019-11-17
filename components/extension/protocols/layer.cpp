@@ -11,39 +11,30 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include "layer.h"
+#include "writer.h"
+#include "config.h"
+
+using namespace smooth::GUI::Dialogs;
 
 BoCA::LayerProtocols::LayerProtocols() : Layer("Logs")
 {
-	text_protocol	= new Text(NIL, Point(7, 11));
+	text_protocol	= new Text(NIL, Point(7, 10));
 
-	combo_protocol	= new ComboBox(Point(358, 8), Size(350, 0));
+	combo_protocol	= new ComboBox(Point(396, 7), Size(300, 0));
 	combo_protocol->onSelectEntry.Connect(&LayerProtocols::SelectProtocol, this);
 	combo_protocol->SetOrientation(OR_UPPERRIGHT);
 
-	list_protocol	= new ListBox(Point(7, 35), Size(500, 360));
+	btn_save	= new Button(String(), Point(88, 6), Size());
+	btn_save->onAction.Connect(&LayerProtocols::SaveProtocol, this);
+	btn_save->SetOrientation(OR_UPPERRIGHT);
 
-	text_errors	= new Text(NIL, Point(7, 25));
-	text_errors->SetOrientation(OR_LOWERLEFT);
-
-	edit_errors	= new EditBox("0/0", Point(text_errors->GetUnscaledTextWidth() + 14, 28), Size(25, 0));
-	edit_errors->SetOrientation(OR_LOWERLEFT);
-
-	combo_errors	= new ComboBox(Point(text_errors->GetUnscaledTextWidth() + 47, 28), Size(250, 0));
-	combo_errors->SetOrientation(OR_LOWERLEFT);
-
-	button_details	= new Button(String(), Point(87, 29), Size(80, 0));
-	button_details->onAction.Connect(&LayerProtocols::ShowDetails, this);
-	button_details->SetOrientation(OR_LOWERRIGHT);
+	list_protocol	= new ListBox(Point(7, 34), Size(500, 360));
 
 	Add(text_protocol);
 	Add(combo_protocol);
+	Add(btn_save);
 
 	Add(list_protocol);
-
-	Add(text_errors);
-	Add(edit_errors);
-	Add(combo_errors);
-	Add(button_details);
 
 	Deactivate();
 
@@ -76,13 +67,9 @@ BoCA::LayerProtocols::~LayerProtocols()
 	 */
 	DeleteObject(text_protocol);
 	DeleteObject(combo_protocol);
+	DeleteObject(btn_save);
 
 	DeleteObject(list_protocol);
-
-	DeleteObject(text_errors);
-	DeleteObject(edit_errors);
-	DeleteObject(combo_errors);
-	DeleteObject(button_details);
 }
 
 /* Called when component canvas size changes.
@@ -93,9 +80,7 @@ Void BoCA::LayerProtocols::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.GetWidth(), clientRect.GetHeight());
 
-	list_protocol->SetSize(clientSize - Size(15, 72));
-
-	combo_errors->SetWidth(clientSize.cx - text_errors->GetUnscaledTextWidth() - 142);
+	list_protocol->SetSize(clientSize - Size(15, 42));
 }
 
 /* Called when application language is changed.
@@ -119,13 +104,7 @@ Void BoCA::LayerProtocols::OnChangeLanguageSettings()
 	/* Set texts and positions.
 	 */
 	text_protocol->SetText(i18n->AddColon(i18n->TranslateString("Log")));
-
-	text_errors->SetText(i18n->AddColon(i18n->TranslateString("Errors / Warnings")));
-
-	edit_errors->SetX(text_errors->GetUnscaledTextWidth() + 14);
-	combo_errors->SetX(text_errors->GetUnscaledTextWidth() + 47);
-
-	button_details->SetText(i18n->TranslateString("Details"));
+	btn_save->SetText(i18n->TranslateString("Save as"));
 
 	list_protocol->RemoveAllTabs();
 
@@ -145,9 +124,9 @@ Void BoCA::LayerProtocols::UpdateProtocolList()
 {
 	/* Save selected protocol name.
 	 */
-	String	 name;
+	String	 selectedName;
 
-	if (combo_protocol->GetSelectedEntry() != NIL) name = combo_protocol->GetSelectedEntry()->GetText();
+	if (combo_protocol->GetSelectedEntry() != NIL) selectedName = combo_protocol->GetSelectedEntry()->GetText();
 
 	/* Update protocol combo list.
 	 */
@@ -165,10 +144,27 @@ Void BoCA::LayerProtocols::UpdateProtocolList()
 #ifndef DEBUG
 		if (protocol->GetName() == "Debug output") continue;
 #endif
+		/* Get protocol display name.
+		 */
+		Int	 index	     = Int64(protocol) & 0xFFFFFFFF;
+		String	 displayName = displayNames.Get(index);
 
-		ListEntry	*entry = combo_protocol->AddEntry(protocol->GetName());
+		if (displayName == NIL)
+		{
+			DateTime	 currentTime = DateTime::Current();
 
-		if (protocol->GetName() == name)
+			displayName = String(currentTime.GetHour()   < 10 ? "0" : NIL).Append(String::FromInt(currentTime.GetHour())).Append(":")
+			      .Append(String(currentTime.GetMinute() < 10 ? "0" : NIL).Append(String::FromInt(currentTime.GetMinute()))).Append(":")
+			      .Append(String(currentTime.GetSecond() < 10 ? "0" : NIL).Append(String::FromInt(currentTime.GetSecond()))).Append(" - ").Append(protocol->GetName());
+
+			displayNames.Add(displayName, index);
+		}
+
+		/* Add protocol to list.
+		 */
+		ListEntry	*entry = combo_protocol->AddEntry(displayName);
+
+		if (displayName == selectedName)
 		{
 			combo_protocol->SelectEntry(entry);
 			combo_protocol->Paint(SP_PAINT);
@@ -184,14 +180,19 @@ Void BoCA::LayerProtocols::UpdateProtocol(const String &name)
 {
 	if (combo_protocol->GetSelectedEntry() == NIL) return;
 
-	if (name == combo_protocol->GetSelectedEntry()->GetText())
+	String		 displayName  = combo_protocol->GetSelectedEntry()->GetText();
+	String		 protocolName = displayName.Tail(displayName.Length() - 11);
+
+	Protocol	*protocol     = Protocol::Get(protocolName);
+
+	if (name == protocol->GetName())
 	{
 		Surface	*surface = GetDrawSurface();
 		Bool	 visible = IsVisible();
 
 		if (visible) surface->StartPaint(Rect(list_protocol->GetRealPosition(), list_protocol->GetRealSize()));
 
-		const Array<String>	&messages = Protocol::Get(combo_protocol->GetSelectedEntry()->GetText())->GetMessages();
+		const Array<String>	&messages = protocol->GetMessages();
 
 		for (Int i = list_protocol->Length(); i < messages.Length(); i++)
 		{
@@ -211,7 +212,10 @@ Void BoCA::LayerProtocols::SelectProtocol()
 
 	if (visible) surface->StartPaint(Rect(list_protocol->GetRealPosition(), list_protocol->GetRealSize()));
 
-	const Array<String>	&messages = Protocol::Get(combo_protocol->GetSelectedEntry()->GetText())->GetMessages();
+	String			 displayName  = combo_protocol->GetSelectedEntry()->GetText();
+	String			 protocolName = displayName.Tail(displayName.Length() - 11);
+
+	const Array<String>	&messages     = Protocol::Get( protocolName)->GetMessages();
 
 	list_protocol->Hide();
 	list_protocol->RemoveAllEntries();
@@ -226,9 +230,45 @@ Void BoCA::LayerProtocols::SelectProtocol()
 	if (visible) surface->EndPaint();
 }
 
-Void BoCA::LayerProtocols::ShowDetails()
+Void BoCA::LayerProtocols::SaveProtocol()
 {
-// TODO: Implement error detail view
+	Config	*config = Config::Get();
+	I18n	*i18n	= I18n::Get();
 
-	Dialogs::QuickMessage("Not implemented, yet!", "Error", Dialogs::Message::Buttons::Ok, Dialogs::Message::Icon::Error);
+	i18n->SetContext("Extensions::Logging");
+
+	/* Get protocol.
+	 */
+	String		 displayName  = combo_protocol->GetSelectedEntry()->GetText();
+	String		 protocolName = displayName.Tail(displayName.Length() - 11);
+
+	Protocol	*protocol     = Protocol::Get(protocolName);
+
+	/* Create dialog.
+	 */
+	FileSelection	 dialog;
+	String		 fileName = Application::Get()->getClientName.Call().Replace(":", NIL).Append(" ").Append(protocol->GetName().Replace(":", "'")).Append(".log");
+
+	dialog.SetParentWindow(GetContainerWindow());
+	dialog.SetMode(SFM_SAVE);
+	dialog.SetFlags(SFD_CONFIRMOVERWRITE);
+
+	dialog.AddFilter(i18n->TranslateString("Log Files"), "*.log");
+
+	dialog.SetFileName(fileName);
+	dialog.SetInitialPath(config->GetStringValue(ConfigureProtocols::ConfigID, "LastSaveDirectory", NIL));
+
+	/* Show dialog.
+	 */
+	if (dialog.ShowDialog() != Success()) return;
+
+	fileName = dialog.GetFileName();
+
+	/* Save selected path.
+	 */
+	config->SetStringValue(ConfigureProtocols::ConfigID, "LastSaveDirectory", File(fileName).GetFilePath());
+
+	/* Save log.
+	 */
+	ProtocolWriter::SaveProtocol(protocol, fileName);
 }

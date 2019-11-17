@@ -8,7 +8,7 @@ VERSION	  = 1.0
 FREAC_PATH = ../../..
 
 # Enter object files here:
-OBJECTS	  = config.o layer.o protocols.o
+OBJECTS	  = config.o layer.o protocols.o systeminfo.o writer.o
 
 # Enter additional defines here:
 DEFINE	  =

@@ -1317,14 +1317,25 @@
       <section name="Logging">
 	<entry id="104000" string="Logs">Logs</entry>
 	<entry id="104001" string="Log">Log</entry>
-	<entry id="104002" string="Errors / Warnings">Errors / Warnings</entry>
-	<entry id="104003" string="Details">Details</entry>
+	<entry id="104002" string="Save as">Save as</entry>
+	<entry id="104003" string="Log Files">Log Files</entry>
 	<entry id="104004" string="Time">Time</entry>
 	<entry id="104005" string="Message">Message</entry>
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface">User interface</entry>
 	  <entry id="104101" string="Show Logs tab in main window">Show Logs tab in main window</entry>
+	  <entry id="104102" string="Log files">Log files</entry>
+	  <entry id="104103" string="Archive log files">Archive log files</entry>
+	  <entry id="104104" string="Log file folder">Log file folder</entry>
+	  <entry id="104105" string="Select">Select</entry>
+	  <entry id="104106" string="Select the folder for saving log files">Select the folder for saving log files</entry>
+	  <entry id="104107" string="Delete old log files after">Delete old log files after</entry>
+	  <entry id="104108" string="days">days</entry>
+	  <entry id="104109" string="Conversion logs">Conversion logs</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">Save conversion logs with audio files</entry>
+	  <entry id="104111" string="Audio CD ripping logs only">Audio CD ripping logs only</entry>
+	  <entry id="104112" string="Filename pattern">Filename pattern</entry>
 	</section>
       </section>
 

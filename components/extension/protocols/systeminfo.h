@@ -10,41 +10,23 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef H_PROTOCOLS_LAYER
-#define H_PROTOCOLS_LAYER
+#ifndef H_PROTOCOLS_SYSTEMINFO
+#define H_PROTOCOLS_SYSTEMINFO
 
 #include <smooth.h>
 #include <boca.h>
 
 using namespace smooth;
-using namespace smooth::GUI;
-
-using namespace BoCA;
 
 namespace BoCA
 {
-	class LayerProtocols : public Layer
+	class SystemInfo
 	{
-		private:
-			Text		*text_protocol;
-			ComboBox	*combo_protocol;
-			Button		*btn_save;
-
-			ListBox		*list_protocol;
-
-			Array<String>	 displayNames;
-		slots:
-			Void		 UpdateProtocolList();
-			Void		 UpdateProtocol(const String &);
-
-			Void		 SelectProtocol();
-			Void		 SaveProtocol();
-
-			Void		 OnChangeSize(const Size &);
-			Void		 OnChangeLanguageSettings();
 		public:
-					 LayerProtocols();
-					~LayerProtocols();
+			static const String	&GetOperatingSystem();
+			static const String	&GetArchitecture();
+			static const String	&GetCPUModel();
+			static const String	&GetNewLineCharacters();
 	};
 };
 
