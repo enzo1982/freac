@@ -95,7 +95,7 @@ Requirements
 		Supported operating systems:
 			- Windows XP/Vista/7/8.x/10
 			- macOS 10.5 Leopard or later
-			- Linux (most modern distributions should work)
+			- Linux (most modern distributions are supported)
 			- FreeBSD/PC-BSD (tested on FreeBSD 12.0)
 			- NetBSD (tested on NetBSD 6.0, NetBSD 5.x and earlier releases are not supported)
 			- OpenBSD (tested on OpenBSD 5.3)
@@ -109,9 +109,9 @@ Requirements
 			- 100 MB free disk space
 
 		Recommended hardware specs:
-			- Intel Core i3 or AMD Phenom II CPU
-			- 2 GB RAM
-			- 1 GB free disk space
+			- Intel Core i5, AMD Ryzen 5 or ARMv8 CPU
+			- 4 GB RAM
+			- 4 GB free disk space
 
 	Additional requirements for compiling the sources:
 
@@ -149,82 +149,126 @@ History
 
 	Version 1.1 Alpha (November 2019)
 
-		- ported to macOS, Linux and BSD operating systems
 		- implemented an extension component framework to modularize fre:ac
-		- conversions are now done in parallel if possible
-		- integrated SuperFast encoding technology for multi-threaded processing
-		- completely reworked configuration dialog
-		- added support for multiple configurations
-		- added multi encoder hub component for simultaneous output to multiple formats
-		- added support for writing conversion log files
-		- redesigned progress display area
-		- new dialog to confirm overwriting of existing files before conversion
-		- allowed format selection from the encode menu for encoders supporting multiple formats
-		- added support for editing configurations during conversions
-		- added support for verifying lossless input and output files
-		- added support for processing input with DSP filters
-		- added DSP components for resampling, channel up-/downmixing and sample format conversion
-		- added support for automatic sample format conversions to match encoder requirements
-		- added support for joining tracks with different sample formats into a single output file
-		- added a simple tag editor
-		- added options for playing notification sounds on finished conversions
-		- added Monkey's Audio encoder/decoder
-		- added Speex speech encoder/decoder
-		- added Opus audio encoder/decoder
-		- added Core Audio AAC/ALAC encoder
-		- added support for command line encoders/decoders
-		- added TwinVQ VQF decoder support
-		- added support for the VisualOn AAC encoder
-		- added support for the Fraunhofer FDK AAC encoder/decoder
-		- added support for reading simple audio files using libsndfile
-		- added support for ID3v2, MP4, WMA and Vorbis Comment chapters
-		- added support for MCDI frame in ID3v2 tags
-		- added support for ID3v1 tags in AAC files
-		- added support for RF64 and Wave64 files
-		- added RIFF tagging support (using LIST INFO and Cart chunks)
-		- added support for Ogg FLAC files
-		- the FLAC encoder now writes seektable metadata blocks
-		- completely reworked arguments of freacmd
-		- added support for selecting configuration in freaccmd
-		- added support for encoding to single file with freaccmd
-		- added an option to append sequential numbers to otherwise identical filenames
-		- added <composer>, <conductor> and <disc> patterns
-		- allow CDDB queries even when no CD drive is present
-		- allow CDDB dialogs to be resized
-		- added preview to CDDB match selection dialog
-		- added an option to automatically select the first CDDB match
-		- added support for CDDB queries using HTTP GET
-		- added context menu for text edit fields
-		- added support for reading ISRC codes from CDs
-		- added support for ripping hidden tracks (HTOA)
-		- added CD read offset configuration option
-		- added configuration option to keep converted tracks in joblist
-		- added configuration option to add encoded files to joblist
-		- added support for loading cue sheets
-		- added support for reading and writing Vorbis files with .oga extension
-		- added support for XSPF, Windows Media and PLS playlists
-		- added a slider for seeking during playback
-		- allow playback while a conversion is running
-		- added a warning when converting from lossy to lossless formats
-		- added the ability to sort the joblist by clicking headers
-		- added basic multi-channel audio support
-		- added support for setting process priority on Windows
-		- added a button to open the output folder
-		- added support for creating one playlist or cue sheet per album in a single conversion
-		- added RNNoise speech noise reduction DSP component
-		- added Rubber Band time stretching DSP component
-		- the time left indicator now shows hours if necessary
-		- the five last used output folders are now saved for later use
-		- the five last used file name patterns are now saved for later use
-		- the button to open the CD tray now closes it if already open
-		- greatly improved case conversion functions
-		- conversion progress is now shown in the taskbar on Windows 7 and later
-		- skipping tracks is no longer possible when converting to a single file
-		- fixed creation of cue sheets for multiple tracks in a single file
-		- improved title info editing user friendliness
-		- improved metadata extraction from paths
-		- added native x64 platform support
-		- upgraded CDRip to version 2.3 (with cdparanoia III version 10.2)
+
+		- ported to macOS, Linux and BSD operating systems
+		- added native 64 bit Windows platform support
+
+		- Multi threading support
+
+			- conversions are now done in parallel if possible
+			- integrated SuperFast encoding technology for multi-threaded processing
+			- adding files to the joblist can now use multiple threads
+
+		- Major new features
+
+			- added support for multi-channel audio
+			- added support for verifying lossless input and output files
+			- added support for processing input with DSP filters
+			- added support for writing conversion log files
+			- added support for managing multiple configurations
+			- added a tag editor component
+			- added multi encoder component for simultaneous output to multiple formats
+
+		- User interface improvements
+
+			- completely reworked configuration dialog
+			- added support for editing configurations during conversions
+			- added the ability to sort the joblist by clicking headers
+			- allow format selection from the encode menu for encoders supporting multiple formats
+			- new dialog to confirm overwriting of existing files before conversion
+			- redesigned progress display area
+			- added a button to open the output folder
+			- the time left indicator now shows hours if necessary
+			- the five last used output folders are now saved for later use
+			- the five last used file name patterns are now saved for later use
+
+		- File conversion improvements
+
+			- added support for automatic sample format conversions to match encoder requirements
+			- added support for joining tracks with different sample formats into a single output file
+			- added options for playing notification sounds on finished conversions
+			- added an option to append sequential numbers to otherwise identical filenames
+			- added <composer>, <conductor> and <disc> filename patterns
+			- added configuration option to keep converted tracks in joblist
+			- added configuration option to add encoded files to joblist
+			- added a warning when converting from lossy to lossless formats
+			- skipping tracks is no longer possible when converting to a single file
+			- conversion progress is now shown in the taskbar on Windows 7 and later
+			- added support for setting process priority on Windows
+
+		- CD ripping improvements
+
+			- added support for ripping hidden tracks (HTOA)
+			- added support for reading ISRC codes from CDs
+			- added CD read offset configuration option
+			- upgraded CDRip to version 2.3 (with cdparanoia III version 10.2)
+
+		- CDDB support improvements
+
+			- added preview to CDDB match selection dialog
+			- added an option to automatically select the first CDDB match
+			- added support for CDDB queries using HTTP GET
+			- allow CDDB queries even when no CD drive is present
+			- allow CDDB dialogs to be resized
+
+		- Playback improvements
+
+			- allow playback while a conversion is running
+			- added a slider for seeking during playback
+			- the button to open the CD tray now closes it if already open
+
+		- New and updated codecs
+
+			- added support for command line encoders/decoders
+			- added Core Audio AAC/ALAC encoder
+			- added Opus audio encoder/decoder
+			- added Speex speech encoder/decoder
+			- added Monkey's Audio encoder/decoder
+			- added Musepack encoder/decoder
+			- added WavPack encoder/decoder
+			- added OptimFROG encoder/decoder
+			- added TAK lossless encoder/decoder
+			- added support for the Fraunhofer FDK AAC encoder/decoder
+			- added support for the VisualOn AAC encoder
+			- added support for the TwinVQ VQF decoder
+			- added support for Ogg FLAC files
+			- added support for RF64 and Wave64 files
+			- added support for libsndfile for reading simple audio files
+			- added support for reading and writing Vorbis files with .oga extension
+
+		- New DSP components
+
+			- added DSP components for resampling, channel up-/downmixing and sample format conversion
+			- added RNNoise speech noise reduction DSP component
+			- added Rubber Band time stretching DSP component
+
+		- Tagging improvements
+
+			- added support for chapters in ID3v2, MP4, WMA and Vorbis Comment tags
+			- added support for handling gapless playback information
+			- added support for changing album art
+			- added support for MCDI frame in ID3v2 tags
+			- added support for ID3v1 tags in AAC files
+			- added RIFF tagging support (using LIST INFO and Cart chunks)
+			- improved metadata extraction from path names
+			- improved title info editing user friendliness
+			- added context menu for text edit fields
+			- greatly improved case conversion functions
+			- the FLAC encoder now writes seektable metadata blocks
+
+		- Playlist and cue sheet improvements
+
+			- added support for XSPF, Windows Media and PLS playlists
+			- added support for creating one playlist or cue sheet per album in a single conversion
+			- fixed creation of cue sheets for multiple tracks in a single file
+			- added support for loading cue sheets
+
+		- freaccmd improvements
+
+			- completely reworked arguments of freacmd
+			- added support for selecting configuration in freaccmd
+			- added support for encoding to a single file with freaccmd
 
 Special thanks to
 -----------------
