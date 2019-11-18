@@ -132,6 +132,8 @@
 	<entry id="1603" string="Check for updates at startup">啟動時檢查更新</entry>
 	<entry id="1604" string="About %1">關於 %1</entry>
 	<entry id="1605" string="index_en.html">index.html</entry>
+	<entry id="1606" string="Report an issue">回報問題</entry>
+	<entry id="1607" string="Suggest a feature">提出建議</entry>
       </section>
     </section>
 
@@ -222,8 +224,8 @@
       </section>
 
       <section name="Character set">
-	<entry id="3300" string="Character set">字元編碼</entry>
-	<entry id="3301" string="Choose character set">選擇字元編碼</entry>
+	<entry id="3300" string="Character set">字元集</entry>
+	<entry id="3301" string="Choose character set">選擇字元集</entry>
       </section>
 
       <section name="Errors">
@@ -341,7 +343,7 @@
       <section name="Manage cache">
 	<entry id="4400" string="CDDB data">CDDB 資料</entry>
 	<entry id="4401" string="Update joblist with this information">使用這項資訊更新工作清單</entry>
-	<entry id="4402" string="Charset">字元編碼</entry>
+	<entry id="4402" string="Charset">字元集</entry>
 	<entry id="4403" string="Downloaded CDDB entries">已下載的 CDDB 項目</entry>
 	<entry id="4404" string="Disc name">光碟名稱</entry>
 	<entry id="4405" string="Preview">預覽</entry>
@@ -398,6 +400,7 @@
 	<entry id="5115" string="Remove processed tracks from joblist">從工作清單移除已完成的項目</entry>
 	<entry id="5116" string="Add encoded files to joblist">將輸出檔案新增到工作清單</entry>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">在名稱重複的檔案後方加上序號</entry>
+	<entry id="5118" string="Keep time stamps of source files">保留原始檔案的時間戳記</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">輸出資料夾不存在！您想要建立該資料夾嗎？</entry>
@@ -596,10 +599,16 @@
     </section>
 
     <section name="Errors">
-      <entry id="7106" string="Unable to access input file: %1">無法存取輸入檔案: %1</entry>
-      <entry id="7107" string="Unable to create output file: %1">無法建立輸出檔案: %1</entry>
+      <entry id="7100" string="Error: %1">錯誤: %1</entry>
+      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">無法建立解碼器元件: %1&#10;&#10;檔案: %1&#10;路徑: %2</entry>
+      <entry id="7102" string="Could not create encoder component: %1">無法建立編碼器元件: %1</entry>
+      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">無法設定解碼器於輸入檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2&#10;&#10;錯誤: %3</entry>
+      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">無法設定編碼器於輸出檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2&#10;&#10;錯誤: %3</entry>
+      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">無法設定 DSP 處理器: %1&#10;&#10;錯誤: %2</entry>
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">無法存取輸入檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">無法建立輸出檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2</entry>
       <entry id="7108" string="Failed to verify input file: %1">無法驗證輸入檔案: %1</entry>
-      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">輸出檔案校驗錯誤: %1&#10;&#10;編碼校驗: %2&#10;驗證核對: %3</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">輸出檔案的校驗碼不相符: %1&#10;&#10;編碼校驗: %2&#10;驗證核對: %3</entry>
       <entry id="7110" string="File not found">找不到檔案</entry>
       <entry id="7111" string="Unknown file type">未知的檔案類型</entry>
       <entry id="7112" string="Invalid file format">無效的檔案格式</entry>
@@ -622,7 +631,7 @@
 	<entry id="8000" string="Confirm overwrite">確認覆寫</entry>
 	<entry id="8001" string="Confirm">確認</entry>
 	<entry id="8002" string="Skip all">全部跳過</entry>
-	<entry id="8003" string="The following %1 files already exist or have duplicate file names">將覆寫已存在的檔案 %1</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">已存在或名稱重複的檔案 %1</entry>
 	<entry id="8004" string="Action">動作</entry>
 	<entry id="8005" string="Overwrite">覆寫</entry>
 	<entry id="8006" string="Skip">跳過</entry>
@@ -656,7 +665,7 @@
       <entry id="9011" string="Activate jitter correction">啟用抖動校正</entry>
       <entry id="9012" string="Switch stereo channels">切換 左/右 聲道</entry>
       <entry id="9013" string="Automatization">自動化</entry>
-      <entry id="9014" string="Read CD contents on insert">放入 CD 後立即讀取內容</entry>
+      <entry id="9014" string="Read CD contents on insert">放入 CD 時立即讀取內容</entry>
       <entry id="9015" string="Start ripping automatically">自動開始轉檔</entry>
       <entry id="9016" string="Eject disk after ripping">轉檔完成後退出光碟</entry>
       <entry id="9017" string="CD options">CD 選項</entry>
@@ -667,6 +676,32 @@
       <entry id="9022" string="Read ISRC when adding tracks to joblist">新增音軌到工作清單時讀取 ISRC</entry>
       <entry id="9023" string="Spin up before ripping">轉檔前讓光碟機預轉</entry>
       <entry id="9024" string="%1 seconds">%1 秒</entry>
+    </section>
+
+    <section name="Components">
+
+      <section name="Decoders">
+	<entry id="10000" string="Cue Sheet Reader">cue 敘述檔閱讀器</entry>
+      </section>
+
+      <section name="Encoders">
+	<entry id="11000" string="meh! - multi encoder hub">meh! - multi encoder hub</entry>
+	<entry id="11001" string="SndFile Output Component">SndFile 輸出元件</entry>
+      </section>
+
+      <section name="DSP">
+	<entry id="12000" string="Channel Converter">聲道轉換器</entry>
+	<entry id="12001" string="Sample Format Converter">取樣格式轉換器</entry>
+	<entry id="12002" string="Sample Rate Converter">取樣頻率轉換器</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">RNNoise 噪音抑制</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band 節奏/音高調整器</entry>
+      </section>
+
+      <section name="Extensions">
+	<entry id="15000" string="Notifications">通知</entry>
+	<entry id="15001" string="Logging">記錄</entry>
+	<entry id="15002" string="YouTube Video Downloader">YouTube 影片下載器</entry>
+      </section>
     </section>
 
     <section name="Decoders">
@@ -698,7 +733,7 @@
       <section name="BladeEnc">
 	<entry id="30000" string="Bitrate">位元率</entry>
 	<entry id="30001" string="Copyright bit">版權位元</entry>
-	<entry id="30002" string="CRC">CRC 校驗</entry>
+	<entry id="30002" string="CRC">CRC</entry>
 	<entry id="30003" string="Original bit">原始版本位元</entry>
 	<entry id="30004" string="Channels">聲道</entry>
 	<entry id="30005" string="Private bit">私有位元</entry>
@@ -750,7 +785,7 @@
 	  <entry id="32201" string="Set Copyright bit">設定版權位元</entry>
 	  <entry id="32202" string="Set Original bit">設定原始版本位元</entry>
 	  <entry id="32203" string="Set Private bit">設定私有位元</entry>
-	  <entry id="32204" string="CRC">CRC 校驗</entry>
+	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">啟用 CRC</entry>
 	  <entry id="32206" string="Stereo mode">立體聲模式</entry>
 	  <entry id="32207" string="auto">自動</entry>
@@ -803,7 +838,7 @@
 	  <entry id="33206" string="Temporal Noise Shaping">時域噪音修整</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">使用時域噪音修整</entry>
 	  <entry id="33208" string="Maximum bandwidth">最大頻寬</entry>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">AAC 頻率的最大使用頻寬 (Hz)</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">AAC 頻率使用的最大頻寬 (Hz)</entry>
 	</section>
 
 	<section name="Format">
@@ -814,7 +849,7 @@
 	  <entry id="33304" string="Tags">標籤</entry>
 	  <entry id="33305" string="Allow ID3v2 tags in AAC files">允許 AAC 檔案使用 ID3v2 標籤</entry>
 	  <entry id="33306" string="Note">備註</entry>
-	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">有些播放器無法播放含有 ID3 標籤的 AAC 檔案。&#10;啟用前，請先確定您的播放器支援這項功能。</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">有些播放器無法播放包含 ID3 標籤的 AAC 檔案。&#10;啟用前，請先確定您的播放器支援這項功能。</entry>
 	</section>
       </section>
 
@@ -993,17 +1028,18 @@
 	<entry id="50101" string="Channel configuration">聲道組態</entry>
 	<entry id="50102" string="Mono">單聲道</entry>
 	<entry id="50103" string="Stereo">立體聲</entry>
+	<entry id="50104" string="Switch stereo channels">切換左/右聲道</entry>
       </section>
 
       <section name="Resample">
 	<entry id="50200" string="Converter">轉換器</entry>
 	<entry id="50201" string="Sampling rate">取樣頻率</entry>
-	<entry id="50202" string="Output sampling rate">輸出取樣率</entry>
+	<entry id="50202" string="Output sampling rate">輸出取樣頻率</entry>
       </section>
 
       <section name="RubberBand">
 	<entry id="50300" string="Basic controls">基本設定</entry>
-	<entry id="50301" string="Tempo">速度</entry>
+	<entry id="50301" string="Tempo">節奏</entry>
 	<entry id="50302" string="Pitch">音高</entry>
 	<entry id="50303" string="%1 Semitones">%1 半音</entry>
 	<entry id="50304" string="Advanced options">進階選項</entry>
@@ -1034,13 +1070,23 @@
 	<entry id="50329" string="Separate">分離</entry>
 	<entry id="50330" string="Combined">混合</entry>
       </section>
+
+      <section name="RNNoise">
+	<entry id="50400" string="Signal/noise type">訊號/噪音類型</entry>
+	<entry id="50401" string="Signal type">訊號類型</entry>
+	<entry id="50402" string="Noise type">噪音類型</entry>
+	<entry id="50403" string="General">一般</entry>
+	<entry id="50404" string="Recording">錄音</entry>
+	<entry id="50405" string="Voice (incl. laughter etc.)">人聲 (包含笑聲等)</entry>
+	<entry id="50406" string="Speech">演說</entry>
+      </section>
     </section>
 
     <section name="Taggers">
 
       <section name="MP4">
 	<entry id="60000" string="Chapter format">章節格式</entry>
-	<entry id="60001" string="both">兩者皆是</entry>
+	<entry id="60001" string="both">兩者皆用</entry>
       </section>
     </section>
 
@@ -1077,7 +1123,7 @@
 	<entry id="80206" string="high, new">高，新版</entry>
 	<entry id="80207" string="extra, new">更高，新版</entry>
 	<entry id="80208" string="best, new">最佳，新版</entry>
-	<entry id="80209" string="Add MD5 checksum">儲存原始 PCM 資料的 MD5</entry>
+	<entry id="80209" string="Add MD5 checksum">新增 MD5 校驗碼</entry>
 	<entry id="80210" string="Seeking">探索</entry>
 	<entry id="80211" string="slow">慢</entry>
 	<entry id="80212" string="minimum">最小</entry>
@@ -1242,7 +1288,7 @@
 	  <entry id="103207" string="Publisher information">發行者資訊</entry>
 	  <entry id="103208" string="Publisher / label">發行者</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">速度</entry>
+	  <entry id="103210" string="Tempo">節奏</entry>
 	  <entry id="103211" string="BPM">BPM</entry>
 	</section>
 
@@ -1252,7 +1298,7 @@
 	  <entry id="103302" string="Original artist">原始演出者</entry>
 	  <entry id="103303" string="Original album">原始專輯</entry>
 	  <entry id="103304" string="Original lyrics writer">原始作詞者</entry>
-	  <entry id="103305" string="Original release year">原始年份</entry>
+	  <entry id="103305" string="Original release year">原始發行年份</entry>
 	  <entry id="103306" string="Webpage URLs">網站地址</entry>
 	  <entry id="103307" string="Artist webpage">演出者網站</entry>
 	  <entry id="103308" string="Publisher webpage">發行者網站</entry>
@@ -1269,14 +1315,42 @@
       </section>
 
       <section name="Logging">
-	<entry id="104000" string="Logs">通訊協定</entry>
-	<entry id="104001" string="Log">通訊協定</entry>
+	<entry id="104000" string="Logs">記錄</entry>
+	<entry id="104001" string="Log">記錄</entry>
+	<entry id="104002" string="Save as">另存新檔</entry>
+	<entry id="104003" string="Log Files">記錄檔</entry>
 	<entry id="104004" string="Time">時間</entry>
 	<entry id="104005" string="Message">訊息</entry>
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface">使用者介面</entry>
-	  <entry id="104101" string="Show Logs tab in main window">在主視窗顯示通訊協定頁籤</entry>
+	  <entry id="104101" string="Show Logs tab in main window">在主視窗顯示記錄頁籤</entry>
+	  <entry id="104102" string="Log files">記錄檔</entry>
+	  <entry id="104103" string="Archive log files">封存記錄檔</entry>
+	  <entry id="104104" string="Log file folder">記錄檔資料夾</entry>
+	  <entry id="104105" string="Select">瀏覽</entry>
+	  <entry id="104106" string="Select the folder for saving log files">選擇儲存記錄檔的資料夾</entry>
+	  <entry id="104107" string="Delete old log files after">刪除舊的紀錄檔</entry>
+	  <entry id="104108" string="days">天後</entry>
+	  <entry id="104109" string="Conversion logs">轉換記錄</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">和音訊檔案儲存於相同位置</entry>
+	  <entry id="104111" string="Audio CD ripping logs only">僅限音訊 CD 轉檔記錄</entry>
+	  <entry id="104112" string="Filename pattern">檔名規則</entry>
+	</section>
+      </section>
+
+      <section name="Notifier">
+	<entry id="105000" string="Conversion process finished!">轉換完成！</entry>
+
+	<section name="Configuration">
+	  <entry id="105100" string="Notifications">通知</entry>
+	  <entry id="105101" string="Notify on finished conversion">轉換完成時通知</entry>
+	  <entry id="105102" string="Play sound">播放音效</entry>
+	  <entry id="105103" string="Display message">顯示訊息</entry>
+	  <entry id="105104" string="Select">瀏覽</entry>
+	  <entry id="105105" string="Only for conversions running longer than">僅限轉換時間超過</entry>
+	  <entry id="105106" string="second(s)">秒</entry>
+	  <entry id="105107" string="minute(s)">分鐘</entry>
 	</section>
       </section>
     </section>
