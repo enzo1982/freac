@@ -132,6 +132,8 @@
 	<entry id="1603" string="Check for updates at startup">Проверка за обновяване при стартиране</entry>
 	<entry id="1604" string="About %1">Относно %1</entry>
 	<entry id="1605" string="index_en.html">index_en.html</entry>
+	<entry id="1606" string="Report an issue">Докладвайте за проблем</entry>
+	<entry id="1607" string="Suggest a feature">Предложете функция</entry>
       </section>
     </section>
 
@@ -398,6 +400,7 @@
 	<entry id="5115" string="Remove processed tracks from joblist">Премахване обработените песни от задачите</entry>
 	<entry id="5116" string="Add encoded files to joblist">Добавяне кодираните файлове в задачите</entry>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Добавяне последователни номера към файловете с еднакви имена</entry>
+	<entry id="5118" string="Keep time stamps of source files">Запазване времето на оригиналните файлове</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Изходната папка не съществува! Искате ли да я създадете?</entry>
@@ -597,6 +600,12 @@
     </section>
 
     <section name="Errors">
+      <entry id="7100" string="Error: %1">Грешка: %1</entry>
+      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Не може да се създаде компонент за декодер: %1&#10;&#10;Файл: %1&#10;Път: %2</entry>
+      <entry id="7102" string="Could not create encoder component: %1">Не може да се създаде компонент за енкодер: %1</entry>
+      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Не може да се създаде декодер за входния файл: %1&#10;&#10;Файл: %1&#10;Път: %2</entry>
+      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Не може да се създаде енкодер за изходния файл: %1&#10;&#10;Файл: %1&#10;Път: %2</entry>
+      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Не може да се създаде DSP процесор: %1&#10;&#10;Грешка: %2</entry>
       <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Няма достъп до входния файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
       <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Не може да се създаде изходен файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
       <entry id="7108" string="Failed to verify input file: %1">Неуспешна проверка на входния файл: %1</entry>
@@ -1062,6 +1071,16 @@
 	<entry id="50329" string="Separate">Поотделно</entry>
 	<entry id="50330" string="Combined">Комбинирано</entry>
       </section>
+
+      <section name="RNNoise">
+	<entry id="50400" string="Signal/noise type">Тип - Сигнал/Шум</entry>
+	<entry id="50401" string="Signal type">Тип сигнал</entry>
+	<entry id="50402" string="Noise type">Тип шум</entry>
+	<entry id="50403" string="General">Общо</entry>
+	<entry id="50404" string="Recording">Запис</entry>
+	<entry id="50405" string="Voice (incl. laughter etc.)">Глас (вкл. смях и др.)</entry>
+	<entry id="50406" string="Speech">Говор</entry>
+      </section>
     </section>
 
     <section name="Taggers">
@@ -1073,7 +1092,7 @@
     </section>
 
     <section name="External">
-      <entry id="80000" string="Downmix multi-channel audio to stereo">Downmix многоканално аудио към стерео</entry>
+      <entry id="80000" string="Downmix multi-channel audio to stereo">Низходящ микс многоканално аудио към стерео</entry>
 
       <section name="Musepack Audio Encoder">
 	<entry id="80100" string="Quality">Качество</entry>
@@ -1299,12 +1318,25 @@
       <section name="Logging">
 	<entry id="104000" string="Logs">Протоколи</entry>
 	<entry id="104001" string="Log">Протокол</entry>
+	<entry id="104002" string="Save as">Запиши като</entry>
+	<entry id="104003" string="Log Files">Лог файлове</entry>
 	<entry id="104004" string="Time">Време</entry>
 	<entry id="104005" string="Message">Съобщение</entry>
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface">Потребителски интерфейс</entry>
 	  <entry id="104101" string="Show Logs tab in main window">Показване раздел &quot;протоколи&quot; в главния прозорец</entry>
+	  <entry id="104102" string="Log files">Лог файлове</entry>
+	  <entry id="104103" string="Archive log files">Архив на лог файлове</entry>
+	  <entry id="104104" string="Log file folder">Папка за лог файлове</entry>
+	  <entry id="104105" string="Select">Избиране...</entry>
+	  <entry id="104106" string="Select the folder for saving log files">Изберете папка за записване на лог файлове</entry>
+	  <entry id="104107" string="Delete old log files after">Изтриване стари лог файлове след</entry>
+	  <entry id="104108" string="days">дни</entry>
+	  <entry id="104109" string="Conversion logs">Дневници (лог файлове) за конвертиране</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">Запазване на дневниците за конвертиране с аудио файлове</entry>
+	  <entry id="104111" string="Audio CD ripping logs only">Само за извличане на Аудио CD</entry>
+	  <entry id="104112" string="Filename pattern">Шаблон за име на файла</entry>
 	</section>
       </section>
 
