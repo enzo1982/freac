@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Dutch / Nederlands</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -56,7 +56,7 @@
     <entry id="43" string="CDDB query">CDDB-aanvraag</entry>
     <entry id="44" string="About %1">Over %1</entry>
     <entry id="45" string="No options can be configured for Windows Wave file output!">Voor Windows Wave File Output kunnen geen opties gekozen worden!</entry>
-    <entry id="46" string="Windows Wave file output">Windows Wave file output</entry>
+    <entry id="46" string="Windows Wave file output"/>
     <entry id="47" string="Cannot change settings while encoding!">De instellingen kunnen niet gewijzigd worden tijdens het coderen!</entry>
     <entry id="48" string="%1 encoder configuration">%1 encoder configuratie</entry>
     <entry id="49" string="OK">OK</entry>
@@ -65,7 +65,7 @@
     <entry id="52" string="Variable Bitrate">Variabele bitrate</entry>
     <entry id="53" string="Average Bitrate">Gemiddelde bitrate</entry>
     <entry id="54" string="Quality">Kwaliteit</entry>
-    <entry id="55" string="Encoders">Encoders</entry>
+    <entry id="55" string="Encoders">Vertaald door %1.</entry>
     <entry id="56" string="Language">Taal</entry>
     <entry id="57" string="Show title info">Titelinfo weergeven</entry>
     <entry id="58" string="General settings setup">Algemene instellingen</entry>
@@ -157,7 +157,7 @@
     <entry id="149" string="CDDB access mode:">CDDB-toegangsmode:</entry>
     <entry id="150" string="CDDB server:">CDDB-server:</entry>
     <entry id="151" string="Port:">Poort:</entry>
-    <entry id="152" string="Info">Info</entry>
+    <entry id="152" string="Info">Artiest</entry>
     <entry id="153" string="No freedb entry for this disk.">Geen freedb info voor deze schijf.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Er is een fout opgetreden bij het verbinden met de freedb server.</entry>
     <entry id="155" string="Connecting to freedb server at">Bezig met verbinden met server op</entry>
@@ -189,9 +189,9 @@
     <entry id="185" string="Size">Grootte</entry>
     <entry id="186" string="Artist">Artiest</entry>
     <entry id="187" string="Year">Jaar</entry>
-    <entry id="188" string="Genre">Genre</entry>
-    <entry id="189" string="Album">Album</entry>
-    <entry id="190" string="Info tags">Info tags</entry>
+    <entry id="188" string="Genre">onbekende artiest</entry>
+    <entry id="189" string="Album">Commentaar</entry>
+    <entry id="190" string="Info tags"/>
     <entry id="191" string="Default information">Standaardinformatie</entry>
     <entry id="192" string="Default comment string:">Standaardcommentaar:</entry>
     <entry id="193" string="unknown artist">onbekende artiest</entry>
@@ -211,7 +211,7 @@
     <entry id="207" string="Query CDDB database">Aanvragen bij CDDB-database</entry>
     <entry id="208" string="Help">Help</entry>
     <entry id="209" string="index_en.html">index.html</entry>
-    <entry id="210" string="Plug-ins">Plug-ins</entry>
+    <entry id="210" string="Plug-ins"/>
     <entry id="211" string="Input plug-ins">Invoer plug-ins</entry>
     <entry id="212" string="Output plug-ins">Uitvoer plug-ins</entry>
     <entry id="213" string="Configure">Configureren</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Geripte bestanden houden</entry>
     <entry id="251" string="ripping/decoding">rippen/decoderen</entry>
     <entry id="252" string="encoding">coderen</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Unicode bestandsnamen</entry>
     <entry id="255" string="AAC Files">AAC bestanden</entry>
     <entry id="256" string="MP4 Files">MP4 bestanden</entry>
@@ -268,9 +268,9 @@
     <entry id="264" string="Sample resolution">Sample resolutie</entry>
     <entry id="265" string="Number of samples">Aantal samples</entry>
     <entry id="266" string="Mono">Mono</entry>
-    <entry id="267" string="bytes">bytes</entry>
+    <entry id="267" string="bytes"/>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Afspeellijst maken</entry>
     <entry id="271" string="Create cue sheet">Cue sheet aanmaken</entry>
     <entry id="272" string="Write ID3v1 tags">ID3v1-tags schrijven</entry>
@@ -326,7 +326,7 @@
     <entry id="322" string="first letter upper case">eerste letter hoofdletter</entry>
     <entry id="323" string="all lower case">allemaal kleine letters</entry>
     <entry id="324" string="all upper case">allemaal hoofdletters</entry>
-    <entry id="325" string="Status">Status</entry>
+    <entry id="325" string="Status">Map van invoerbestand gebruiken indien mogelijk</entry>
     <entry id="326" string="Successfully read CD!">Cd succesvol gelezen!</entry>
     <entry id="327" string="Comment">Commentaar</entry>
     <entry id="328" string="Manage CDDB cache entries...">CDDB-cache-ingaven beheren...</entry>
@@ -412,7 +412,7 @@
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Houd deze software gratis door het %1-project te ondersteunen&#10;met een donatie.&#10;&#10;Klik op een van onderstaande knoppen om een donatie via PayPal te maken:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">U kan ook direct geld sturen naar %1 door middel van PayPal.&#10;&#10;Schrijf naar %1 als u wil doneren via elektronische overdracht,&#10;of door een cheque of geld te verzenden met de post.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Heel erg bedankt!</entry>
     <entry id="413" string="Remind me later">Me later herinneren</entry>
     <entry id="414" string="CDDB">CDDB</entry>
