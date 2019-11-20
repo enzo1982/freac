@@ -382,39 +382,41 @@
     <entry id="378" string="CD information">Информация о CD</entry>
     <entry id="379" string="Read CD Text">Читать CD Текст</entry>
     <entry id="380" string="Read cdplayer.ini">Читать cdplayer.ini</entry>
-    <entry id="383" string="You can specify multiple functions separated by semicolons.">Несколько функций разделяются ;</entry>
-    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 может проверять наличие обновлений при запуске.&#10;&#10;Хотите, чтобы %1 проверял наличе обновлений при запуске?</entry>
-    <entry id="385" string="Cannot access input file: %1">Нет доступа к входному файлу: %1</entry>
-    <entry id="386" string="Cannot create output file: %1">Невозможно создать выходной файл: %1</entry>
-    <entry id="387" string="File not found">Файл не найден</entry>
-    <entry id="388" string="Unknown file type">Неизвестный тип файла</entry>
-    <entry id="389" string="Unsupported audio format">Неподдерживаемый звуковой формат</entry>
-    <entry id="390" string="Unknown error">Неизвестная ошибка</entry>
-    <entry id="391" string="Replace existing comments with default comment">Заменить существующий комментарий комментарием по умолчанию</entry>
-    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Выбранные файлы не могут быть объединены в один&#10;выходной файл из-за разного разрешения.&#10;&#10;Пожалуйста, преобразуйте сначала все файлы к одинаковому разрешению.</entry>
-    <entry id="393" string="Write WMA metadata info">Записывать метаданные WMA</entry>
-    <entry id="394" string="WMA metadata encoding:">Кодировка метаданных WMA:</entry>
-    <entry id="395" string="Select codec">Выбор кодека</entry>
-    <entry id="396" string="Select codec format">Выбор формата кодека</entry>
-    <entry id="397" string="Codec settings">Настройки кодека</entry>
-    <entry id="398" string="Use codec">Использовать кодек</entry>
-    <entry id="399" string="Use format">Использовать формат</entry>
-    <entry id="400" string="Write uncompressed WMA files">Записывать несжатые WMA файлы</entry>
-    <entry id="401" string="Automatically select format based on settings and input format">Автоматичекски выбирать формат</entry>
-    <entry id="402" string="Use VBR encoding">VBR</entry>
-    <entry id="403" string="Use 2-pass encoding">2-прохода</entry>
-    <entry id="404" string="Target bitrate">Битрейт</entry>
-    <entry id="405" string="Set drive speed limit:">Предел скорости привода:</entry>
-    <entry id="406" string="Support this project">Поддержать этот проект</entry>
-    <entry id="407" string="Please support this project!">Пожалуйста поддержите этот проект!</entry>
-    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Помогите пожалуйста сохранить эту программу свободной&#10;поддержав проект %1&#10;&#10;Нажмите одну из кнопок ниже для помощи через PayPal:</entry>
-    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Также вы можете отправить деньги %1 через PayPal напрямую&#10;&#10;Пожалуйста напишите %1 если вы хотите помочь через&#10;электронный перевод, прислать чек или деньги письмом</entry>
-    <entry id="410" string="usd">usd</entry>
-    <entry id="411" string="en">en</entry>
-    <entry id="412" string="Thank you very much!">Большое спасибо!</entry>
-    <entry id="413" string="Remind me later">Напомнить позже</entry>
-    <entry id="414" string="CDDB">CDDB</entry>
+    <entry id="381" string="Apodization">Несколько функций разделяются ;</entry>
+    <entry id="382" string="Apodization function(s):">%1 может проверять наличие обновлений при запуске.&#10;&#10;Хотите, чтобы %1 проверял наличе обновлений при запуске?</entry>
+    <entry id="383" string="You can specify multiple functions separated by semicolons.">Нет доступа к входному файлу: %1</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">Невозможно создать выходной файл: %1</entry>
+    <entry id="385" string="Cannot access input file: %1">Файл не найден</entry>
+    <entry id="386" string="Cannot create output file: %1">Неизвестный тип файла</entry>
+    <entry id="387" string="File not found">Неподдерживаемый звуковой формат</entry>
+    <entry id="388" string="Unknown file type">Неизвестная ошибка</entry>
+    <entry id="389" string="Unsupported audio format">Заменить существующий комментарий комментарием по умолчанию</entry>
+    <entry id="390" string="Unknown error">Выбранные файлы не могут быть объединены в один&#10;выходной файл из-за разного разрешения.&#10;&#10;Пожалуйста, преобразуйте сначала все файлы к одинаковому разрешению.</entry>
+    <entry id="391" string="Replace existing comments with default comment">Записывать метаданные WMA</entry>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Кодировка метаданных WMA:</entry>
+    <entry id="393" string="Write WMA metadata info">Выбор кодека</entry>
+    <entry id="394" string="WMA metadata encoding:">Выбор формата кодека</entry>
+    <entry id="395" string="Select codec">Настройки кодека</entry>
+    <entry id="396" string="Select codec format">Использовать кодек</entry>
+    <entry id="397" string="Codec settings">Использовать формат</entry>
+    <entry id="398" string="Use codec">Записывать несжатые WMA файлы</entry>
+    <entry id="399" string="Use format">Автоматичекски выбирать формат</entry>
+    <entry id="400" string="Write uncompressed WMA files">VBR</entry>
+    <entry id="401" string="Automatically select format based on settings and input format">2-прохода</entry>
+    <entry id="402" string="Use VBR encoding">Битрейт</entry>
+    <entry id="403" string="Use 2-pass encoding">Предел скорости привода:</entry>
+    <entry id="404" string="Target bitrate">Поддержать этот проект</entry>
+    <entry id="405" string="Set drive speed limit:">Пожалуйста поддержите этот проект!</entry>
+    <entry id="406" string="Support this project">Помогите пожалуйста сохранить эту программу свободной&#10;поддержав проект %1&#10;&#10;Нажмите одну из кнопок ниже для помощи через PayPal:</entry>
+    <entry id="407" string="Please support this project!">Также вы можете отправить деньги %1 через PayPal напрямую&#10;&#10;Пожалуйста напишите %1 если вы хотите помочь через&#10;электронный перевод, прислать чек или деньги письмом</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">usd</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">en</entry>
+    <entry id="410" string="usd">Большое спасибо!</entry>
+    <entry id="411" string="en">Напомнить позже</entry>
+    <entry id="412" string="Thank you very much!">CDDB</entry>
+    <entry id="413" string="Remind me later">Граббер</entry>
+    <entry id="414" string="CDDB">Умолчание</entry>
     <entry id="415" string="Ripper">Граббер</entry>
-    <entry id="416" string="Default">Умолчание</entry>
+    <entry id="416" string="Default">По умолчанию</entry>
   </data>
 </LangFile>
