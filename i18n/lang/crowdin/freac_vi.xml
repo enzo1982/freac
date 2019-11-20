@@ -1002,7 +1002,7 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders">Phiên dịch bởi %1.</entry>
+	<entry id="42000" string="Encoders">Chuyển mã</entry>
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
 	<entry id="42003" string="Configure encoder">Chỉnh sửa chuyển mã</entry>
@@ -1188,7 +1188,7 @@
 	<section name="Donorbox">
 	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:"/>
 	  <entry id="100201" string="Donate"/>
-	  <entry id="100202" string="usd"/>
+	  <entry id="100202" string="usd">vnd</entry>
 	</section>
 
 	<section name="Bitcoin">
@@ -1233,7 +1233,7 @@
 	<entry id="102015" string="Size">Kích thước</entry>
 	<entry id="102016" string="Cancel download"/>
 	<entry id="102017" string="unknown"/>
-	<entry id="102018" string="Note"/>
+	<entry id="102018" string="Note">Ghi chú</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Tự động</entry>
