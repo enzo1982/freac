@@ -155,9 +155,9 @@
     <entry id="147" string="Bonk Files">Bonk súbory</entry>
     <entry id="148" string="Automatic CDDB queries">Automatické požiadavky na CDDB</entry>
     <entry id="149" string="CDDB access mode:">CDDB prístupový mód:</entry>
-    <entry id="150" string="CDDB server:">CDDB server:</entry>
-    <entry id="151" string="Port:">Port:</entry>
-    <entry id="152" string="Info">Info</entry>
+    <entry id="150" string="CDDB server:"/>
+    <entry id="151" string="Port:"/>
+    <entry id="152" string="Info">Umelec</entry>
     <entry id="153" string="No freedb entry for this disk.">Nepodarilo sa načítať názvy skladieb, pretože tento disk nie je v databáze freedb.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Počas pokusu o spojenie s freedb serverom došlo k chybe.</entry>
     <entry id="155" string="Connecting to freedb server at">Pripájam sa k freedb serveru </entry>
@@ -176,7 +176,7 @@
     <entry id="168" string="Proxy settings">Proxy nastavenia</entry>
     <entry id="169" string="no proxy">žiadne proxy</entry>
     <entry id="170" string="Proxy type:">Typ proxy:</entry>
-    <entry id="171" string="Proxy server:">Proxy server:</entry>
+    <entry id="171" string="Proxy server:"/>
     <entry id="172" string="Presets">Prednastavenia</entry>
     <entry id="173" string="Use preset:">Použiť prednastavenia:</entry>
     <entry id="174" string="Custom settings">Vlastné nastavenia</entry>
@@ -190,7 +190,7 @@
     <entry id="186" string="Artist">Umelec</entry>
     <entry id="187" string="Year">Rok</entry>
     <entry id="188" string="Genre">Žáner</entry>
-    <entry id="189" string="Album">Album</entry>
+    <entry id="189" string="Album">Komentár</entry>
     <entry id="190" string="Info tags">Info tagy</entry>
     <entry id="191" string="Default information">Základné ino</entry>
     <entry id="192" string="Default comment string:">Prednastavený komentár:</entry>
@@ -237,11 +237,11 @@
     <entry id="233" string="Toggle selection">Prehodiť výber</entry>
     <entry id="234" string="Show Tip of the Day">Ukázať Tip Dňa</entry>
     <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 je dostupný v %2 jazykoch. Ak váš jazyk nie je&#10;dostupný, môžete ho jednoducho preložiť použitím aplikácie&#10;&quot;smooth Translator&quot;.</entry>
-    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 podporuje LAME, Ogg Vorbis, FAAC, FLAC a Bonk&#10;kodeky. Kodek pre VQF formát je dostupný na stránke %1:&#10;%2</entry>
+    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">Práve kódujem</entry>
     <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 môže použiť Winamp 2 vstupné pluginy pre podporu&#10;viacerých typov súborov. Skopírujte in_*.dll súbory do adresára&#10;%1\plugins pre sprístupnenie týchto formátov.</entry>
     <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Pomocou %1 môžete poslať freedb CDDB položky&#10;obsahujúce Unicode znaky. Teda ak máte CD s non-Latin&#10;interpretmi alebo názvami, môžete odoslať správne freedb&#10;položky pomocou %1.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Pre opravu chýb počas načítavania môžete povoliť&#10;Jitter korekciu v Nastaveniach -&gt; CDRip. Ak toto nepomôže,&#10;skúste použiť jeden z Paranoia módov.</entry>
-    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">V prípade pripomienok alebo návrhov ako zlepšiť %1&#10;pošlite ich Trackerom na stránke %1 SourceForge&#10;projektu - %2 alebo pošlite majl na %3.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Táto možnosť zmaže orig. súbory po kódovaní.&#10;Ste si istý že chcete pokračovať?</entry>
     <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Máte radi %1? %1 je voľne dostupný, ale môžeš&#10;Podporiť vývoj %1 projektu môžeš sponzorským darom.&#10;Peniaze možno poslať na %2 pomocou PayPal.&#10;Pozri %3 pre ďalšie podrobnosti.</entry>
     <entry id="242" string="Bitrate / Quality">Bitrate / Kvalita</entry>
     <entry id="243" string="Check for updates now">Zistiť Updaty</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Uchovať rippnuté Wave súbory</entry>
     <entry id="251" string="ripping/decoding">rippovanie/dekódovanie</entry>
     <entry id="252" string="encoding">kódovanie</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Použiť Unicode názvy súborov</entry>
     <entry id="255" string="AAC Files">AAC súbory</entry>
     <entry id="256" string="MP4 Files">MP4 súbory</entry>
@@ -270,7 +270,7 @@
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">bytov</entry>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Vytvoriť playlist</entry>
     <entry id="271" string="Create cue sheet">Vytvoriť .cue hárok</entry>
     <entry id="272" string="Write ID3v1 tags">Zapísať ID3v1 tagy</entry>
@@ -326,7 +326,7 @@
     <entry id="322" string="first letter upper case">Veľké prvé písmeno</entry>
     <entry id="323" string="all lower case">všetko malými písmenami</entry>
     <entry id="324" string="all upper case">všetko veľkými písmenami</entry>
-    <entry id="325" string="Status">Status</entry>
+    <entry id="325" string="Status">Použiť vstupný adresár ak je to možné</entry>
     <entry id="326" string="Successfully read CD!">CD úspešne prečítané!</entry>
     <entry id="327" string="Comment">Komentár</entry>
     <entry id="328" string="Manage CDDB cache entries...">Usporiadať CDDB cache položky...</entry>
@@ -412,7 +412,7 @@
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Prosím, prispejte aj vy %1 projektu&#10;finančným darom.&#10;&#10;Kliknite na jedno z tlačidiel dole aby ste nám poslali platbou pomocou PayPal:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Finančný dar %1 môžete zaslať pomocou PayPal.&#10;&#10;Môžete však aj napísať %1 ak nám chcete darovať peniaze prevodom, šekom alebo poštou.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Ďakujeme pekne!</entry>
     <entry id="413" string="Remind me later">Upozorni ma neskôr</entry>
     <entry id="414" string="CDDB">CDDB</entry>
