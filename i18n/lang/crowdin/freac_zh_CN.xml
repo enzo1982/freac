@@ -517,7 +517,7 @@
 	  <entry id="5656" string="Track rating"/>
 	  <entry id="5657" string="Track length"/>
 	  <entry id="5658" string="Track size"/>
-	  <entry id="5659" string="File name">未知年份</entry>
+	  <entry id="5659" string="File name">文件名</entry>
 	  <entry id="5660" string="File type"/>
 	  <entry id="5661" string="Output file name"/>
 	  <entry id="5662" string="Bitrate">比特率</entry>
@@ -1002,7 +1002,7 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders">翻译 %1。</entry>
+	<entry id="42000" string="Encoders">编码器</entry>
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
 	<entry id="42003" string="Configure encoder">设置编码器</entry>
@@ -1188,7 +1188,7 @@
 	<section name="Donorbox">
 	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:"/>
 	  <entry id="100201" string="Donate"/>
-	  <entry id="100202" string="usd"/>
+	  <entry id="100202" string="usd">cny</entry>
 	</section>
 
 	<section name="Bitcoin">
@@ -1233,7 +1233,7 @@
 	<entry id="102015" string="Size">大小</entry>
 	<entry id="102016" string="Cancel download"/>
 	<entry id="102017" string="unknown"/>
-	<entry id="102018" string="Note"/>
+	<entry id="102018" string="Note">注意</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">自动化</entry>
