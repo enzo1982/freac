@@ -9,7 +9,6 @@
     <property name="template">[template]</property>
     <property name="author">[author] &lt;[author@server.tld]&gt;</property>
     <property name="url">https://www.freac.org/</property>
-    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">OK</entry>
@@ -602,7 +601,7 @@
 
     <section name="Errors">
       <entry id="7100" string="Error: %1">Error: %1</entry>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">ould not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2</entry>
+      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2</entry>
       <entry id="7102" string="Could not create encoder component: %1">Could not create encoder component: %1</entry>
       <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3</entry>
       <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3</entry>
@@ -1181,13 +1180,13 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">You can also send money directly to %1 with PayPal.</entry>
 	  <entry id="100102" string="usd">usd</entry>
 	  <entry id="100103" string="$%1">$%1</entry>
-	  <entry id="100104" string="5,10,20,other amount">5,10,20other amount</entry>
+	  <entry id="100104" string="5,10,20,other amount">5,10,20,other amount</entry>
 	  <entry id="100105" string="monthly recurring">monthly recurring</entry>
 	  <entry id="100106" string="Donate">Donate</entry>
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:">Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation using Donorbox:</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:</entry>
 	  <entry id="100201" string="Donate">Donate</entry>
 	  <entry id="100202" string="usd">usd</entry>
 	</section>
