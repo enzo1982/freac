@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Portuguese (Brazilian) / Português (Brasil)</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -114,7 +114,7 @@
     <entry id="101" string="MPEG version">Versão MPEG</entry>
     <entry id="102" string="AAC object type">Tipo de objeto AAC</entry>
     <entry id="103" string="Allow Joint Stereo">Permitir joint-estéreo</entry>
-    <entry id="104" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
+    <entry id="104" string="Temporal Noise Shaping">TNS (Temporal Noise Shaping)</entry>
     <entry id="105" string="Use Temporal Noise Shaping">Usar &quot;Temporal Noise Shaping&quot;</entry>
     <entry id="106" string="Maximum bandwidth">Largura máxima de banda</entry>
     <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Largura máxima de banda para AAC (Hz):</entry>
@@ -126,7 +126,7 @@
     <entry id="113" string="Set quality:">Qualidade:</entry>
     <entry id="114" string="worse">pior</entry>
     <entry id="115" string="better">melhor</entry>
-    <entry id="116" string="Auto">Auto</entry>
+    <entry id="116" string="Auto">auto</entry>
     <entry id="117" string="Stereo">Estéreo</entry>
     <entry id="118" string="Joint Stereo">Joint-estéreo</entry>
     <entry id="119" string="Force Joint Stereo">Forçar joint-estéreo</entry>
@@ -157,7 +157,7 @@
     <entry id="149" string="CDDB access mode:">Modo de acesso ao CDDB:</entry>
     <entry id="150" string="CDDB server:">Servidor CDDB:</entry>
     <entry id="151" string="Port:">Porta:</entry>
-    <entry id="152" string="Info">Info</entry>
+    <entry id="152" string="Info">Informação</entry>
     <entry id="153" string="No freedb entry for this disk.">Sem dados no freedb para este disco.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Ocorreu um erro ao conectar ao servidor freedb.</entry>
     <entry id="155" string="Connecting to freedb server at">Conectando ao servidor freedb em</entry>
@@ -177,7 +177,7 @@
     <entry id="169" string="no proxy">sem proxy</entry>
     <entry id="170" string="Proxy type:">Tipo de proxy:</entry>
     <entry id="171" string="Proxy server:">Servidor proxy:</entry>
-    <entry id="172" string="Presets">Presets</entry>
+    <entry id="172" string="Presets">Pré-ajustes</entry>
     <entry id="173" string="Use preset:">Usar preset:</entry>
     <entry id="174" string="Custom settings">Opções personalizadas</entry>
     <entry id="179" string="Medium, Fast">Médio e rápido</entry>
@@ -211,7 +211,7 @@
     <entry id="207" string="Query CDDB database">Pesquisar a base de dados do CDDB</entry>
     <entry id="208" string="Help">Ajuda</entry>
     <entry id="209" string="index_en.html">index_pt.html</entry>
-    <entry id="210" string="Plug-ins">Plug-ins</entry>
+    <entry id="210" string="Plug-ins"/>
     <entry id="211" string="Input plug-ins">Pug-ins de entrada</entry>
     <entry id="212" string="Output plug-ins">Plug-ins de saída</entry>
     <entry id="213" string="Configure">Configurar</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Manter os arquivos wav</entry>
     <entry id="251" string="ripping/decoding">extraindo/codificando</entry>
     <entry id="252" string="encoding">codificando</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Usar nomes Unicode</entry>
     <entry id="255" string="AAC Files">Arquivos AAC</entry>
     <entry id="256" string="MP4 Files">Arquivos MP4</entry>
@@ -268,9 +268,9 @@
     <entry id="264" string="Sample resolution">Resolução da amostragem</entry>
     <entry id="265" string="Number of samples">Número de amostras</entry>
     <entry id="266" string="Mono">Mono</entry>
-    <entry id="267" string="bytes">bytes</entry>
+    <entry id="267" string="bytes"/>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Criar lista de execução</entry>
     <entry id="271" string="Create cue sheet">Criar lista de trilhas (cue sheet)</entry>
     <entry id="272" string="Write ID3v1 tags">Escrever campos ID3v1</entry>
@@ -302,7 +302,7 @@
     <entry id="298" string="Exhaustive model search">Busca exaustiva</entry>
     <entry id="299" string="Optimize LPC quantization">Quantização otimizada</entry>
     <entry id="300" string="disabled">desabilitado</entry>
-    <entry id="301" string="auto">auto</entry>
+    <entry id="301" string="auto">Prioridade do processo</entry>
     <entry id="302" string="Residual coding">Codificação residual</entry>
     <entry id="303" string="Minimum partition order">Partição mínima</entry>
     <entry id="304" string="Maximum partition order">Partição máxima</entry>
@@ -407,7 +407,16 @@
     <entry id="403" string="Use 2-pass encoding">Codificar em 2 passes</entry>
     <entry id="404" string="Target bitrate">Taxa de bits desejada</entry>
     <entry id="405" string="Set drive speed limit:">Velocidade máx do drive:</entry>
+    <entry id="406" string="Support this project">CDDB</entry>
+    <entry id="407" string="Please support this project!">CDRip</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
+    <entry id="410" string="usd">brl</entry>
+    <entry id="411" string="en"/>
+    <entry id="412" string="Thank you very much!">Muito obrigado!</entry>
+    <entry id="413" string="Remind me later">Lembrar-me mais tarde</entry>
     <entry id="414" string="CDDB">CDDB</entry>
-    <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="415" string="Ripper">Extrator</entry>
+    <entry id="416" string="Default">Padrão</entry>
   </data>
 </LangFile>
