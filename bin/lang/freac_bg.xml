@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Bulgarian / Български</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Запазване Wave файловете</entry>
     <entry id="251" string="ripping/decoding">извличане/декодиране</entry>
     <entry id="252" string="encoding">кодиране</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Разр. на Unicode символи</entry>
     <entry id="255" string="AAC Files">Файлове AAC</entry>
     <entry id="256" string="MP4 Files">Файлове MP4</entry>
@@ -268,7 +268,7 @@
     <entry id="264" string="Sample resolution">Семплираща резолюция</entry>
     <entry id="265" string="Number of samples">Брой семпли</entry>
     <entry id="266" string="Mono">Моно</entry>
-    <entry id="267" string="bytes">bytes</entry>
+    <entry id="267" string="bytes"/>
     <entry id="268" string="bit">bit</entry>
     <entry id="269" string="min">мин</entry>
     <entry id="270" string="Create playlist">Създаване на плейлист</entry>
@@ -411,12 +411,12 @@
     <entry id="407" string="Please support this project!">Моля, подкрепете този проект!</entry>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Помогнете за развитието на този безплатен софтуер,&#10;като подкрепите проекта %1 с дарение.&#10;&#10;Щракнете един от бутоните по-долу за да направите дарение през PayPal:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Можете също да пратите пари директно до %1 през PayPal.&#10;&#10;Пишете до %1, ако желаете да направите дарение,&#10;използвайки електронното разплащане,&#10;изпращане на чек или пари по пощата.</entry>
-    <entry id="410" string="usd">usd</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="410" string="usd">bgn</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Много Ви благодаря!</entry>
     <entry id="413" string="Remind me later">Напомни ми по-късно</entry>
     <entry id="414" string="CDDB">CDDB</entry>
-    <entry id="415" string="Ripper">Ripper</entry>
+    <entry id="415" string="Ripper">Рипър</entry>
     <entry id="416" string="Default">По подразбиране</entry>
   </data>
 </LangFile>
