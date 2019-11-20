@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Valencian / Valencià</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -156,8 +156,8 @@
     <entry id="148" string="Automatic CDDB queries">Consultes CDDB automàtiques</entry>
     <entry id="149" string="CDDB access mode:">Mode d'accés CDDB:</entry>
     <entry id="150" string="CDDB server:">Servidor CDDB:</entry>
-    <entry id="151" string="Port:">Port:</entry>
-    <entry id="152" string="Info">Info</entry>
+    <entry id="151" string="Port:"/>
+    <entry id="152" string="Info">Artista</entry>
     <entry id="153" string="No freedb entry for this disk.">Sense registre freedb d'este CD.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Va haver-hi un error a l'intentar connectar amb el servidor freedb.</entry>
     <entry id="155" string="Connecting to freedb server at">Connectant al servidor freedb en</entry>
@@ -237,11 +237,11 @@
     <entry id="233" string="Toggle selection">Invertir selecció</entry>
     <entry id="234" string="Show Tip of the Day">Mostrar Suggeriment del Dia</entry>
     <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 s'ha traduït ja a %2 idiomes. Si no ho està&#10;en el seu, pot traduir fàcilment&#10;%1 utilitzant l'aplicació 'smooth Translator'.</entry>
-    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 inclou suport per a codificar LLEPA, Ogg Vorbis, FAAC,&#10;FLAC i Bonk. Un codificador per al format VQF està&#10;disponible en el lloc de %1: %2</entry>
+    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">Compressió iniciada</entry>
     <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 pot usar els plugins d'entrada de Winamp 2 per a&#10;manejar més formats. Copie els arxius in_*.dll a la carpeta&#10;1\plugins perquè %1 Llija eixos formats.</entry>
     <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Amb %1 pot enviar registres de CD freedb que continguen&#10;caràcters unicode. D'esta manera, si posseïx CDs amb noms&#10;d'artistes o títols que no estiguen en alfabetització llatina, pot&#10;enviar les dades correctes a freedb amb %1.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Per a corregir els errors de lectura durant el procés&#10;d'extracció, pot activar la funció Correcció Jitter en la&#10;fitxa Extractor de la configuració. Si això no ajuda, intente utilitzar&#10;algun dels modes paranoia.</entry>
-    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Té algun suggeriment per a millorar %1? Pot&#10;enviar les seues idees a través del Tracker en el lloc de %1&#10;ubicat en SourceForge - %2&#10;o enviar un correu a %3.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Esta opció elimina els arxius originals a l'acabar &#10;la codificació!&#10;&#10;Està vosté segur d'activar esta funció?</entry>
     <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Li agrada %1? %1 és gratuït,&#10;però pot ajudar al seu desenrotllament&#10;fent una donació. Pot enviar diners a&#10;%2 a través de PayPal.&#10;Veja %3 per a més detalls.</entry>
     <entry id="242" string="Bitrate / Quality">Taxa de bits / Qualitat</entry>
     <entry id="243" string="Check for updates now">Buscar actualitzacions ara</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Mantindre arxius Wav extrets</entry>
     <entry id="251" string="ripping/decoding">Extraient/descodificant</entry>
     <entry id="252" string="encoding">Codificant</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Usar noms unicode</entry>
     <entry id="255" string="AAC Files">Arxius AAC</entry>
     <entry id="256" string="MP4 Files">Arxius MP4</entry>
@@ -412,7 +412,7 @@
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Per favor, ajude a mantindre este programari gratuït&#10;recolzant el projecte %1 amb una donació.&#10;&#10;Polse un dels botons de baix per a donar usant PayPal:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">També pot enviar diners directament a %1 usant PayPal.&#10;&#10;Per favor, escriga a %1 si desitja donar usant una&#10;transferència electrònica o enviant un xec o diners per correu.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Moltes gràcies!</entry>
     <entry id="413" string="Remind me later">Recordar-m'ho més tard</entry>
     <entry id="414" string="CDDB">CDDB</entry>
