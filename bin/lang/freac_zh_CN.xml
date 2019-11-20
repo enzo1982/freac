@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">保留翻录的 WAVE 文件</entry>
     <entry id="251" string="ripping/decoding">正在翻录/解码</entry>
     <entry id="252" string="encoding">编码</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">使用 Unicode 文件名</entry>
     <entry id="255" string="AAC Files">AAC 文件</entry>
     <entry id="256" string="MP4 Files">MP4 文件</entry>
@@ -407,8 +407,16 @@
     <entry id="403" string="Use 2-pass encoding">使用双通道编码</entry>
     <entry id="404" string="Target bitrate">目标比特率</entry>
     <entry id="405" string="Set drive speed limit:">限定驱动器速率：</entry>
-    <entry id="414" string="CDDB">CDDB</entry>
-    <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="406" string="Support this project">CDDB</entry>
+    <entry id="407" string="Please support this project!">CDRip</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">默认</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
+    <entry id="410" string="usd">cny</entry>
+    <entry id="411" string="en"/>
+    <entry id="412" string="Thank you very much!"/>
+    <entry id="413" string="Remind me later"/>
+    <entry id="414" string="CDDB"/>
+    <entry id="415" string="Ripper"/>
     <entry id="416" string="Default">默认</entry>
   </data>
 </LangFile>
