@@ -1233,7 +1233,7 @@
 	<entry id="102015" string="Size">Dimensione</entry>
 	<entry id="102016" string="Cancel download"/>
 	<entry id="102017" string="unknown"/>
-	<entry id="102018" string="Note">Ci sò lettori chì anu penseri per sunà i schedarii AAC&#10;chì anu etichette ID3 ligate. Impiegate st'ozzione solu s'è&#10;voi site sicuru chì u vostru lettore pò gestì st'etichette.</entry>
+	<entry id="102018" string="Note">Nota</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Autumatisazione</entry>
