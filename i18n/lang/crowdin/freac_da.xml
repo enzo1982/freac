@@ -641,7 +641,7 @@
       <section name="Format">
 	<entry id="8100" string="Select sample format"/>
 	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:"/>
-	<entry id="8102" string="Select">Gennemse</entry>
+	<entry id="8102" string="Select">Vælg</entry>
       </section>
 
       <section name="Errors">
@@ -1002,7 +1002,7 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders">Oversat af %1.</entry>
+	<entry id="42000" string="Encoders">Kodere</entry>
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
 	<entry id="42003" string="Configure encoder">Indstil koder</entry>
@@ -1233,7 +1233,7 @@
 	<entry id="102015" string="Size">Størrelse</entry>
 	<entry id="102016" string="Cancel download"/>
 	<entry id="102017" string="unknown"/>
-	<entry id="102018" string="Note"/>
+	<entry id="102018" string="Note">Notat</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Fuld Automatisk</entry>
@@ -1329,7 +1329,7 @@
 	  <entry id="104102" string="Log files"/>
 	  <entry id="104103" string="Archive log files"/>
 	  <entry id="104104" string="Log file folder"/>
-	  <entry id="104105" string="Select">Gennemse</entry>
+	  <entry id="104105" string="Select">Vælg</entry>
 	  <entry id="104106" string="Select the folder for saving log files"/>
 	  <entry id="104107" string="Delete old log files after"/>
 	  <entry id="104108" string="days"/>
@@ -1348,7 +1348,7 @@
 	  <entry id="105101" string="Notify on finished conversion"/>
 	  <entry id="105102" string="Play sound"/>
 	  <entry id="105103" string="Display message"/>
-	  <entry id="105104" string="Select">Gennemse</entry>
+	  <entry id="105104" string="Select">Vælg</entry>
 	  <entry id="105105" string="Only for conversions running longer than"/>
 	  <entry id="105106" string="second(s)"/>
 	  <entry id="105107" string="minute(s)"/>
