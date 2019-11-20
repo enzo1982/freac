@@ -113,7 +113,7 @@
       <section name="Help">
 	<entry id="1600" string="Help topics">Помощь</entry>
 	<entry id="1601" string="Show Tip of the Day">Совет дня</entry>
-	<entry id="1602" string="Check for updates now">Проверить сейчас обновления</entry>
+	<entry id="1602" string="Check for updates now">Проверить обновления сейчас</entry>
 	<entry id="1603" string="Check for updates at startup">Проверять обновления при запуске программы</entry>
 	<entry id="1604" string="About %1">О %1</entry>
 	<entry id="1605" string="index_en.html">index_ru.html</entry>
@@ -139,7 +139,7 @@
       <entry id="3001" string="Time left">Осталось времени</entry>
       <entry id="3002" string="Selected encoder">Выбор кодека</entry>
       <entry id="3003" string="File progress">Процесс</entry>
-      <entry id="3004" string="Output folder">Папка</entry>
+      <entry id="3004" string="Output folder">Конечная папка</entry>
       <entry id="3005" string="%1 file(s) in joblist">%1 Файл(ов) в списке</entry>
       <entry id="3006" string="none">пусто</entry>
       <entry id="3007" string="Show title info">Показывать теги</entry>
@@ -475,9 +475,9 @@
 
       <section name="Verification">
 	<entry id="5800" string="Verification">Проверка</entry>
-	<entry id="5801" string="Enable input verification">Разрешить входную проверку</entry>
+	<entry id="5801" string="Enable input verification">Включить проверку входных данных</entry>
 	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Проверяет чтобы декодированные данные из входа&#10;без потерь точно соответствовали источнику.</entry>
-	<entry id="5803" string="Enable output verification">Включить входную проверку</entry>
+	<entry id="5803" string="Enable output verification">Включить проверку выходных данных</entry>
 	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Проверяет чтобы декодированные данные выхода&#10;без потерь точно соответствовали источнику.</entry>
       </section>
     </section>
@@ -563,18 +563,18 @@
       <entry id="9007" string="Overlap only">Только перекрывать</entry>
       <entry id="9008" string="No verify">Без проверки</entry>
       <entry id="9009" string="No scratch repair">Без коррекции царапин</entry>
-      <entry id="9010" string="Full cdparanoia mode">Полный режим cd-параноя</entry>
+      <entry id="9010" string="Full cdparanoia mode">Полный режим cdparanoia</entry>
       <entry id="9011" string="Activate jitter correction">Jitter коррекция</entry>
       <entry id="9012" string="Switch stereo channels">Поменять левый/правый</entry>
       <entry id="9013" string="Automatization">Автоматизация</entry>
-      <entry id="9014" string="Read CD contents on insert">Содержимое читать сразу</entry>
+      <entry id="9014" string="Read CD contents on insert">Читать содержимое при вставке диска</entry>
       <entry id="9015" string="Start ripping automatically">Авт. начало копирования</entry>
       <entry id="9016" string="Eject disk after ripping">Извлечь диск после работы</entry>
       <entry id="9017" string="CD options">Настройка CD</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Блокировка CD при работе </entry>
+      <entry id="9018" string="Lock CD tray while ripping">Блокировка лотка CD при работе </entry>
       <entry id="9019" string="Use native NT SCSI library">Родные NT SCSI библиотеки</entry>
       <entry id="9020" string="Use read offset">Использовать смещение при чтении</entry>
-      <entry id="9021" string="samples">семплы</entry>
+      <entry id="9021" string="samples">сэмплы</entry>
       <entry id="9022" string="Read ISRC when adding tracks to joblist">Читать ISRC при добавлении дорожек в список задач</entry>
       <entry id="9023" string="Spin up before ripping">Раскрутить перед копированием</entry>
       <entry id="9024" string="%1 seconds">%1 секунд</entry>
@@ -584,7 +584,7 @@
 
       <section name="MAD">
 	<entry id="20000" string="Decoding">Декодирование</entry>
-	<entry id="20001" string="Enable 24 bit decoding">Разрешить 24 битное декодирование</entry>
+	<entry id="20001" string="Enable 24 bit decoding">Разрешить 24-битное декодирование</entry>
       </section>
 
       <section name="mpg123">
@@ -596,9 +596,9 @@
       <section name="CueSheet">
 	<entry id="22000" string="Title information">Информация о названии</entry>
 	<entry id="22001" string="Read tags from referenced files">Читать теги из связанных файлов</entry>
-	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Предпочитать данные из cu esheet данным из связанных файлов</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Предпочитать данные из cue sheet данным из связанных файлов</entry>
 	<entry id="22003" string="Alternative files">Альтернативные файлы</entry>
-	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Искать сжатые альтернативные файлы если связанные Wave файлы не не могут быть обнаружены</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Искать сжатые альтернативные файлы если связанные Wave файлы не могут быть обнаружены</entry>
 	<entry id="22005" string="Error handling">Ошибка обработки</entry>
 	<entry id="22006" string="Ignore errors during cue sheet processing">Игнорировать ошибки при обработке cue sheet</entry>
       </section>
@@ -626,20 +626,20 @@
 	<entry id="31002" string="Quantization">Квантование</entry>
 	<entry id="31003" string="Downsampling ratio">Нижне-дискретный коэфф.</entry>
 	<entry id="31004" string="Predictor size">Прогноз размера</entry>
-	<entry id="31005" string="Enable lossless encoding">С мин. потерями</entry>
-	<entry id="31006" string="Enable Joint Stereo">Соединять стерео</entry>
+	<entry id="31005" string="Enable lossless encoding">Кодирование без потерь</entry>
+	<entry id="31006" string="Enable Joint Stereo">Включить Joint Stereo</entry>
       </section>
 
       <section name="LAME">
 	<entry id="32000" string="Basic">Основное</entry>
 	<entry id="32001" string="Misc">Прочее</entry>
 	<entry id="32002" string="Expert">Эксперт</entry>
-	<entry id="32003" string="Audio processing">Аудио процесс</entry>
+	<entry id="32003" string="Audio processing">Обработка аудио</entry>
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets">Настройка</entry>
 	  <entry id="32101" string="Use preset">Выберите вариант</entry>
-	  <entry id="32102" string="Custom settings">Указать настройки в ручную</entry>
+	  <entry id="32102" string="Custom settings">Указать настройки вручную</entry>
 	  <entry id="32103" string="Medium, Fast">Средний, Быстрый</entry>
 	  <entry id="32104" string="Standard, Fast">Стандартный, Быстрый</entry>
 	  <entry id="32105" string="Extreme, Fast">Предельный, Быстрый</entry>
@@ -666,9 +666,9 @@
 	  <entry id="32206" string="Stereo mode">Стерео режим</entry>
 	  <entry id="32207" string="auto">авто</entry>
 	  <entry id="32208" string="Stereo">Стерео</entry>
-	  <entry id="32209" string="Joint Stereo">Соединять стерео</entry>
-	  <entry id="32210" string="Force Joint Stereo">принудительно</entry>
-	  <entry id="32211" string="VBR bitrate range">диапазон VBR битрейт</entry>
+	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
+	  <entry id="32210" string="Force Joint Stereo">Принудительно</entry>
+	  <entry id="32211" string="VBR bitrate range">диапазон VBR битрейта</entry>
 	  <entry id="32212" string="Set minimum VBR bitrate">Минимальный VBR битрейт</entry>
 	  <entry id="32213" string="Set maximum VBR bitrate">Максимальный VBR битрейт</entry>
 	</section>
@@ -707,10 +707,10 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">Битрейт</entry>
 	  <entry id="33201" string="Bitrate / Quality">Битрейт/Качество</entry>
-	  <entry id="33202" string="Bitrate per channel">Битрейт по каналам</entry>
+	  <entry id="33202" string="Bitrate per channel">Битрейт на канал</entry>
 	  <entry id="33203" string="Set quality">Качество</entry>
 	  <entry id="33204" string="Stereo mode">Стерео режим</entry>
-	  <entry id="33205" string="Allow Joint Stereo">Соединять стерео</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Разрешить Joint Stereo</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">Формирование врем. шума</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Использовать</entry>
 	  <entry id="33208" string="Maximum bandwidth">Макс. ширина полосы частот</entry>
@@ -719,13 +719,13 @@
 
 	<section name="Format">
 	  <entry id="33300" string="MPEG version">Версия MPEG</entry>
-	  <entry id="33301" string="AAC object type">Объект типа AAC</entry>
-	  <entry id="33302" string="File format">Тип файла</entry>
+	  <entry id="33301" string="AAC object type">Тип объекта AAC</entry>
+	  <entry id="33302" string="File format">Формат файла</entry>
 	  <entry id="33303" string="File extension">Расширение файла</entry>
-	  <entry id="33304" string="Tags">Тэги</entry>
+	  <entry id="33304" string="Tags">Теги</entry>
 	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Разрешить теги ID3v2 в AAC файлах</entry>
 	  <entry id="33306" string="Note">Примечание</entry>
-	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Некоторые плееры воспроизводящие AAC файлы&#10;могут иметь проблемы с ID3 тегами</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Некоторые плееры, воспроизводящие AAC файлы,&#10;могут иметь проблемы с ID3-тегами</entry>
 	</section>
       </section>
 
@@ -737,13 +737,13 @@
 	<section name="Basic">
 	  <entry id="34100" string="Presets">Настройка</entry>
 	  <entry id="34101" string="Use preset">Выберите вариант</entry>
-	  <entry id="34102" string="Custom settings">Указать настройки в ручную</entry>
+	  <entry id="34102" string="Custom settings">Указать настройки вручную</entry>
 	  <entry id="34103" string="Fastest encoding">Быстрейшее кодирование</entry>
 	  <entry id="34104" string="Best compression">Лучшее сжатие</entry>
 	  <entry id="34105" string="Stereo mode">Стерео режим</entry>
-	  <entry id="34106" string="Joint Stereo">Соединять стерео</entry>
+	  <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Адаптивное Joint Stereo</entry>
-	  <entry id="34108" string="File format">Тип файла</entry>
+	  <entry id="34108" string="File format">Формат файла</entry>
 	  <entry id="34109" string="Default">По умолчанию</entry>
 	</section>
 
@@ -793,7 +793,7 @@
 	<entry id="36007" string="Use VBR encoding">VBR</entry>
 	<entry id="36008" string="Quality">Качество</entry>
 	<entry id="36009" string="Target bitrate">Битрейт</entry>
-	<entry id="36010" string="Use 2-pass encoding">2-прохода</entry>
+	<entry id="36010" string="Use 2-pass encoding">2 прохода</entry>
       </section>
 
       <section name="TwinVQ">
@@ -850,7 +850,7 @@
 	<entry id="40009" string="Superwideband">Сверхширокополосный</entry>
 	<entry id="40010" string="Fullband">Полный диапазон</entry>
 	<entry id="40011" string="File extension">Расширение</entry>
-	<entry id="40012" string="Variable bitrate">Переменный ьитрейт</entry>
+	<entry id="40012" string="Variable bitrate">Переменный битрейт</entry>
 	<entry id="40013" string="Enable variable bitrate encoding">Разрешить кодирование с переменным битрейтом</entry>
 	<entry id="40014" string="Constrain bitrate to target value">Ограничить битрейт до</entry>
 	<entry id="40015" string="Quality">Качество</entry>
@@ -1020,7 +1020,7 @@
 	  <entry id="103306" string="Webpage URLs">URLы вебстраниц</entry>
 	  <entry id="103307" string="Artist webpage">Вебстраница артиста</entry>
 	  <entry id="103308" string="Publisher webpage">Вебстраница издателя</entry>
-	  <entry id="103309" string="Internet radio station">Интернет радиостанция</entry>
+	  <entry id="103309" string="Internet radio station">Интернет-радиостанция</entry>
 	  <entry id="103310" string="Audio source webpage">Вебстраница источника аудио</entry>
 	  <entry id="103311" string="Copyright information">Информация об авторских правах</entry>
 	  <entry id="103312" string="Commercial information">Коммерческая информация</entry>
