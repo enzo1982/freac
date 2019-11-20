@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
     <property name="program">freac</property>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">保留翻錄後的Wave檔案</entry>
     <entry id="251" string="ripping/decoding">翻錄中╱解碼中</entry>
     <entry id="252" string="encoding">編碼中</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">使用Unicode檔名</entry>
     <entry id="255" string="AAC Files">AAC檔案</entry>
     <entry id="256" string="MP4 Files">MP4檔案</entry>
@@ -411,8 +411,8 @@
     <entry id="407" string="Please support this project!">請支持本企劃</entry>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">%1雖然免費，但持續開發需要資金。&#10;&#10;請按以下任何按鈕透過PayPal捐助：</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">本企劃接受PayPal：%1直接捐助。&#10;&#10;電子轉帳或郵寄支票，請聯絡%1。</entry>
-    <entry id="410" string="usd">usd</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="410" string="usd">hkd</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">多謝</entry>
     <entry id="413" string="Remind me later">稍後再提示</entry>
     <entry id="414" string="CDDB">CDDB</entry>
