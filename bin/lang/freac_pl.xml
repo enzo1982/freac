@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Polish / Polski</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -156,7 +156,7 @@
     <entry id="148" string="Automatic CDDB queries">Automatyczne zapytania CDDB</entry>
     <entry id="149" string="CDDB access mode:">Tryb dostępu do CDDB:</entry>
     <entry id="150" string="CDDB server:">Serwer CDDB:</entry>
-    <entry id="151" string="Port:">Port:</entry>
+    <entry id="151" string="Port:"/>
     <entry id="152" string="Info">Informacje</entry>
     <entry id="153" string="No freedb entry for this disk.">Baza freedb nie zawiera danych tej płyty CD.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Przy połączeniu z serwerem freedb wystąpił błąd.</entry>
@@ -190,7 +190,7 @@
     <entry id="186" string="Artist">Artysta</entry>
     <entry id="187" string="Year">Rok</entry>
     <entry id="188" string="Genre">Rodzaj</entry>
-    <entry id="189" string="Album">Album</entry>
+    <entry id="189" string="Album">Komentarz</entry>
     <entry id="190" string="Info tags">Identyfikatory</entry>
     <entry id="191" string="Default information">Domyślne informacje</entry>
     <entry id="192" string="Default comment string:">Domyślny opis:</entry>
@@ -270,7 +270,7 @@
     <entry id="266" string="Mono">mono</entry>
     <entry id="267" string="bytes">B</entry>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Utwórz listę odtwarzania</entry>
     <entry id="271" string="Create cue sheet">Utwórz tabelę cue</entry>
     <entry id="272" string="Write ID3v1 tags">Zapisz identyfikatory ID3v1</entry>
@@ -412,7 +412,7 @@
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Pomóż w utrzymaniu bezpłatnego statusu programu %1,&#10;dokonując wpłaty.&#10;&#10;Kliknij jeden z poniższych przycisków, by dokonać wpłaty przez PayPal:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Pieniądze możesz także wysłać bezpośrednio do %1 przez PayPal.&#10;&#10;Napisz do %1, jeśli chcesz wesprzeć projekt przelewem&#10;bankowym albo wysłać czek lub pieniądze pocztą.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Dziękujemy!</entry>
     <entry id="413" string="Remind me later">Przypomnij później</entry>
     <entry id="414" string="CDDB">CDDB</entry>
