@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Vietnamese / Việt Nam</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -184,13 +184,13 @@
     <entry id="180" string="Standard, Fast">Tiêu chuẩn, Nhanh</entry>
     <entry id="181" string="Extreme, Fast">Cực kỳ, Nhanh</entry>
     <entry id="182" string="Title">Tiêu đề</entry>
-    <entry id="183" string="Track">Track</entry>
+    <entry id="183" string="Track">Năm</entry>
     <entry id="184" string="Length">Độ dài</entry>
     <entry id="185" string="Size">Kích thước</entry>
     <entry id="186" string="Artist">Nghệ sĩ</entry>
     <entry id="187" string="Year">Năm</entry>
     <entry id="188" string="Genre">Loại</entry>
-    <entry id="189" string="Album">Album</entry>
+    <entry id="189" string="Album">Bình luận</entry>
     <entry id="190" string="Info tags">Tab thông tin</entry>
     <entry id="191" string="Default information">Thông tin mặc định</entry>
     <entry id="192" string="Default comment string:">Chuỗi nhận xét mặc định:</entry>
@@ -237,11 +237,11 @@
     <entry id="233" string="Toggle selection">Chuyển đổi lựa chọn</entry>
     <entry id="234" string="Show Tip of the Day">Hiển thị các mánh hay</entry>
     <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 hỗ trợ %2 ngôn ngữ. Đây là một phần mềm mã&#10;nguồn mở và miễn phí.&#10;Phiên bản này được phiên dịch bởi dịch giả Phan Anh.&#10;Hãy email tôi theo địa chỉ ppanhh@gmail.com nếu bạn&#10;thấy quan tâm hoặc truy cập vào trang iamphananh.blogspot.com&#10;để biết thêm thông tin hoặc đơn giản là sẻ chia&#10;những gì bạn thắc mắc.</entry>
-    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 hỗ trợ LAME, Ogg Vorbis, FAAC,&#10;FLAC và Bonk encoders. Bộ chuyển mã cho&#10;định dạng VQF được&#10;hỗ trợ tại %1 website: %2</entry>
+    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">Đang chuyển mã hiện tại</entry>
     <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 có thể sử dụng các plugin của Winamp2 để có thể&#10;hỗ trợ thêm nhiều loại định dạng. Hãy sao chép tập tin có&#10;phần mở rộng là _*.dll vào thư mục plugin của %1&#10;để chương trình %1 có thể thao tác với các loại&#10;định dạng mới này</entry>
     <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Với %1 bạn có thể chỉnh sửa các thông tin của hệ cơ&#10;sở dữ liệu của đĩa CD bằng các ký tự theo định dạng&#10;Unicode. Bởi thế nếu bạn có bất kỳ đĩa CD nào chứa tên&#10;bài hát hay ca sĩ nhưng là định dạng non-Latin, bạn&#10;hoàn toàn có thể sử dụng %1 để chọn lựa các&#10;chỉnh sửa theo định dạng Unicode theo ý mình.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Để sửa những lỗi phát sinh khi bạn đang rip nhạc, bạn&#10;có thể dùng Jitter correction ở tab CDRip của phần&#10;thiết lập %1. Nếu không thể sửa được lỗi đó, bạn có thể&#10;sử dụng phương thức Paranoia.</entry>
-    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Bạn có bất kỳ gợi ý để hoàn thiện %1 không?&#10;Hãy thể hiện ý tưởng của bạn thông qua mục chia sẻ&#10;ý tưởng của %1.Trang web dự án %1 trên&#10;SourceForge - %2&#10;hoặc gửi email đến %3</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Phần lựa chọn này sẽ xóa tập tin gốc khỏi hệ thông sau&#10;khi quá trình chuyển mã hoàn tất!&#10;&#10;Bạn có thực sự muốn kích hoạt tính năng&#10;này không?</entry>
     <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Bạn có thích %1 không? Vì đây là chương trình&#10;hoàn toàn miễn phí, và hãy dành chút ít thời gian để hỗ&#10;trợ cho dự án của chúng tôi.&#10;Bạn cũng có thể đóng góp tiền %2&#10;thông qua hệ thống&#10;PayPal của eBay.&#10;Xem %3 để biết thêm chi tiết.</entry>
     <entry id="242" string="Bitrate / Quality">Bitrate / Chất lượng</entry>
     <entry id="243" string="Check for updates now">Kiểm tra cập nhật phiên bản mới</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Giữ các tập tin Wave đã rip</entry>
     <entry id="251" string="ripping/decoding">đang rip/đang giải mã</entry>
     <entry id="252" string="encoding">đang mã hóa</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Sử dụng tên Unicode</entry>
     <entry id="255" string="AAC Files">Tập tin AAC</entry>
     <entry id="256" string="MP4 Files">Tập tin MP4</entry>
@@ -268,9 +268,9 @@
     <entry id="264" string="Sample resolution">Độ phân giải mẫu</entry>
     <entry id="265" string="Number of samples">Số lượng các mẫu</entry>
     <entry id="266" string="Mono">Mono</entry>
-    <entry id="267" string="bytes">bytes</entry>
+    <entry id="267" string="bytes"/>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Tạo danh sách</entry>
     <entry id="271" string="Create cue sheet">Tạo cue sheet</entry>
     <entry id="272" string="Write ID3v1 tags">Viết ID3v1 tags</entry>
@@ -394,7 +394,29 @@
     <entry id="390" string="Unknown error">Lỗi không biết</entry>
     <entry id="391" string="Replace existing comments with default comment">Thay thế bình luận đã tồn tại bằng bình luận mặc định</entry>
     <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Các file được chọn không thể nối lại với nhau.&#10;Sample formats for the files are different.&#10;&#10;Please convert all files to the same sample format first.</entry>
-    <entry id="414" string="CDDB">CDDB</entry>
-    <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="393" string="Write WMA metadata info">CDDB</entry>
+    <entry id="394" string="WMA metadata encoding:">CDRip</entry>
+    <entry id="395" string="Select codec"/>
+    <entry id="396" string="Select codec format"/>
+    <entry id="397" string="Codec settings"/>
+    <entry id="398" string="Use codec"/>
+    <entry id="399" string="Use format"/>
+    <entry id="400" string="Write uncompressed WMA files"/>
+    <entry id="401" string="Automatically select format based on settings and input format"/>
+    <entry id="402" string="Use VBR encoding"/>
+    <entry id="403" string="Use 2-pass encoding"/>
+    <entry id="404" string="Target bitrate"/>
+    <entry id="405" string="Set drive speed limit:"/>
+    <entry id="406" string="Support this project"/>
+    <entry id="407" string="Please support this project!"/>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
+    <entry id="410" string="usd">vnd</entry>
+    <entry id="411" string="en"/>
+    <entry id="412" string="Thank you very much!"/>
+    <entry id="413" string="Remind me later"/>
+    <entry id="414" string="CDDB"/>
+    <entry id="415" string="Ripper"/>
+    <entry id="416" string="Default"/>
   </data>
 </LangFile>
