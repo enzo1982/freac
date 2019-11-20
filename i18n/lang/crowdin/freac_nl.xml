@@ -1233,7 +1233,7 @@
 	<entry id="102015" string="Size">Grootte</entry>
 	<entry id="102016" string="Cancel download"/>
 	<entry id="102017" string="unknown"/>
-	<entry id="102018" string="Note"/>
+	<entry id="102018" string="Note">Opmerking</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatisatie</entry>
