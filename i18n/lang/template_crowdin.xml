@@ -496,7 +496,7 @@
 	<entry id="5525" string="Prepend zero to track numbers below 10">Prepend zero to track numbers below 10</entry>
 	<entry id="5526" string="File size limit">File size limit</entry>
 	<entry id="5527" string="unlimited">unlimited</entry>
-       </section>
+      </section>
 
       <section name="Joblist">
 	<entry id="5600" string="Joblist">Joblist</entry>
@@ -689,7 +689,7 @@
       <section name="Encoders">
 	<entry id="11000" string="meh! - multi encoder hub">meh! - multi encoder hub</entry>
 	<entry id="11001" string="SndFile Output Component">SndFile Output Component</entry>
-     </section>
+      </section>
 
       <section name="DSP">
 	<entry id="12000" string="Channel Converter">Channel Converter</entry>

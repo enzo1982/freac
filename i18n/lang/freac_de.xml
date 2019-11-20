@@ -688,7 +688,7 @@
       <section name="Encoders">
 	<entry id="11000" string="meh! - multi encoder hub">meh! - Mehrfachkodierer</entry>
 	<entry id="11001" string="SndFile Output Component">SndFile Ausgabekomponente</entry>
-     </section>
+      </section>
 
       <section name="DSP">
 	<entry id="12000" string="Channel Converter">Kanalkonvertierer</entry>
