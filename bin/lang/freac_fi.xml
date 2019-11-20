@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Finnish / Suomi</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Pidä kopioidut aaltotiedostot</entry>
     <entry id="251" string="ripping/decoding">kopiointi/muuntaminen</entry>
     <entry id="252" string="encoding">muuntaminen</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Käytä Unicode-tiedostonimeä</entry>
     <entry id="255" string="AAC Files">AAC-tiedosto</entry>
     <entry id="256" string="MP4 Files">MP4-tiedosto</entry>
@@ -270,7 +270,7 @@
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">bittejä</entry>
     <entry id="268" string="bit">bitti</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Luo soittolista</entry>
     <entry id="271" string="Create cue sheet">Luo vihjetaso</entry>
     <entry id="272" string="Write ID3v1 tags">Kirjoita ID3v1-tagit</entry>
@@ -412,10 +412,11 @@
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Ole hyvä ja auta tätä ohjelman tukemista lahjoittamalla %1-projektille.&#10;&#10;Paina tästä napista tehdäkseen lahjoituksen PayPal-käytännöllä:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Voit myös lahjoittaa rahaa projektille&#10;käyttämällä PayPal-käytäntöä.&#10;&#10;Ole hyvä ja kysy lisätetoa kirjoittamalla englanninkielellä osoitteeseen&#10;%1, jos haluat lahjoittaa&#10;sähköisesti, shekillä tai lähettämällä suoraan rahaa postitse.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Erittäin paljon kiitoksia!</entry>
     <entry id="413" string="Remind me later">Muistuta minua myöhemmin</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">Kopioitsin</entry>
+    <entry id="416" string="Default"/>
   </data>
 </LangFile>
