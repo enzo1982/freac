@@ -386,8 +386,8 @@
     <entry id="382" string="Apodization function(s):">Функција(е) аподизације:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Можете задати више функција одвајајући их тачка-зарезом.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">Приликом покретања %1 може аутоматски&#10;проверити да ли има надоградњи на интернету.&#10;&#10;Да ли желите да %1 потражи надоградње приликом покретања?</entry>
-    <entry id="385" string="Cannot access input file: %1">Не могу да приступим улазном фајлу: %1</entry>
-    <entry id="386" string="Cannot create output file: %1">Не могу да креирам излазни фајл: %1</entry>
+    <entry id="385" string="Cannot access input file: %1">Фајл није нађен</entry>
+    <entry id="386" string="Cannot create output file: %1">Непозната врста фајла</entry>
     <entry id="387" string="File not found">Фајл није нађен</entry>
     <entry id="388" string="Unknown file type">Непозната врста фајла</entry>
     <entry id="389" string="Unsupported audio format">Овај аудио формат није подржан</entry>
@@ -411,8 +411,8 @@
     <entry id="407" string="Please support this project!">Молимо подржите овај пројекат!</entry>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Молимо помозите да овај програм остане бесплатан подржавајући %1&#10;пројекат донацијом.&#10;&#10;Кликните на једно од дугмића испод за донацију преко PayPal-а:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Такође, можете изравно послати новац %1 путем PayPal-а.&#10;&#10;Молимо пишите %1 ако желите да донирате преко електрон-&#10;ског трансфера, пошаљете чек поштом, или да пошаљете новац поштом.</entry>
-    <entry id="410" string="usd">usd</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="410" string="usd">rsd</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Хвала Вам пуно!</entry>
     <entry id="413" string="Remind me later">Подсети ме касније</entry>
     <entry id="414" string="CDDB">CDDB</entry>
