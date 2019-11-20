@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Catalan / Català</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -156,8 +156,8 @@
     <entry id="148" string="Automatic CDDB queries">Consultes CDDB automàtiques</entry>
     <entry id="149" string="CDDB access mode:">Mode d'accés CDDB:</entry>
     <entry id="150" string="CDDB server:">Servidor CDDB</entry>
-    <entry id="151" string="Port:">Port:</entry>
-    <entry id="152" string="Info">Info</entry>
+    <entry id="151" string="Port:"/>
+    <entry id="152" string="Info">Artista</entry>
     <entry id="153" string="No freedb entry for this disk.">No hi ha un registre freedb d'aquest CD</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Ha ocorregut un error a l'intentar connectar amb el servidor.</entry>
     <entry id="155" string="Connecting to freedb server at">Connectant al servidor freedb a</entry>
@@ -254,160 +254,169 @@
     <entry id="250" string="Keep ripped Wave files">Mantenir fitxers wav extrets</entry>
     <entry id="251" string="ripping/decoding">extraient/decodificando</entry>
     <entry id="252" string="encoding">codificant</entry>
-    <entry id="254" string="Use Unicode filenames">Utilitzar nom d'arxius Unicode</entry>
-    <entry id="255" string="AAC Files">Fitxers AAC</entry>
-    <entry id="256" string="MP4 Files">Fitxers MP4</entry>
-    <entry id="257" string="Format">Format</entry>
-    <entry id="258" string="File format">Format de fitxer</entry>
-    <entry id="259" string="Allow ID3v2 tags in AAC files">Permetre etiquetes ID3v2 en fitxers AAC</entry>
-    <entry id="260" string="Note:">Nota:</entry>
-    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Alguns reproductors poden arribar a tenir problemes al reproduir&#10;fitxers AAC amb etiquetes ID3. Sols utilitzi aquesta opció si està&#10;segur que el reproductor pot manejar aquest tipus d'arxius.</entry>
-    <entry id="262" string="FLAC Files">Fitxers FLAC</entry>
-    <entry id="263" string="Sampling rate">Velocitat de mostreig</entry>
-    <entry id="264" string="Sample resolution">Resolució de la mostra</entry>
-    <entry id="265" string="Number of samples">Nombre de mostres</entry>
-    <entry id="266" string="Mono">Mono</entry>
-    <entry id="267" string="bytes">octets</entry>
-    <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
-    <entry id="270" string="Create playlist">Crear llista de reproducció</entry>
-    <entry id="271" string="Create cue sheet">Crear cua</entry>
-    <entry id="272" string="Write ID3v1 tags">Gravar Etiquetes-ID3v1</entry>
-    <entry id="273" string="Write ID3v2 tags">Gravar Etiquetes-ID3v2</entry>
-    <entry id="274" string="Write Vorbis Comment tags">Gravar Etiquetes Vorbis Comentari-</entry>
-    <entry id="275" string="Write MP4 metadata info">Gravar metadades MP4</entry>
-    <entry id="276" string="ID3v1 tag encoding:">Codificació ID3v1:</entry>
-    <entry id="277" string="ID3v2 tag encoding:">Codificació ID3v2:</entry>
-    <entry id="278" string="Vorbis Comment tag encoding:">Codificació Vorbis Comment:</entry>
-    <entry id="279" string="MP4 metadata encoding:">Codificació metadades MP4:</entry>
-    <entry id="280" string="Tag encodings">Codificació Tag</entry>
-    <entry id="281" string="Update joblist with this information">Actualitzar llista de tasques amb aquesta informació</entry>
-    <entry id="282" string="unknown genre">Gènere desconegut</entry>
-    <entry id="283" string="Load joblist...">Carregar llista de tasques...</entry>
-    <entry id="284" string="Save joblist...">Guardar llista de tasques...</entry>
-    <entry id="285" string="Pause/resume encoding">Pausar/continuar codificació</entry>
-    <entry id="286" string="Shutdown after encoding">Apagar la PC a l'acabar la codificació</entry>
-    <entry id="287" string="Playlist Files">Arxius de llista de reproducció</entry>
-    <entry id="288" string="unknown year">Any desconegut</entry>
-    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">No es va poder inicialitzar el %1 Codificador! Per favor verifiqui la configuració!</entry>
-    <entry id="290" string="Blocksize:">Tamany de bloc:</entry>
-    <entry id="291" string="Use streamable subset">Utilitzar Streamable Subset</entry>
-    <entry id="292" string="Adaptive Joint Stereo">Joint Stereo adaptivo</entry>
-    <entry id="293" string="Fastest encoding">Codificació més veloç</entry>
-    <entry id="294" string="Best compression">Millor compresió</entry>
-    <entry id="295" string="Linear predictor">Predictor linear</entry>
-    <entry id="296" string="Maximum LPC order">màxim grau LPC</entry>
-    <entry id="297" string="Quantized LPC precision">Precisió LPC quantificada</entry>
-    <entry id="298" string="Exhaustive model search">Optimitzar grau LPC</entry>
-    <entry id="299" string="Optimize LPC quantization">Optimitzar cuantizació LPC</entry>
-    <entry id="300" string="disabled">desactivat</entry>
-    <entry id="301" string="auto">automàtic</entry>
-    <entry id="302" string="Residual coding">Codificació residual</entry>
-    <entry id="303" string="Minimum partition order">El meu grau de partició</entry>
-    <entry id="304" string="Maximum partition order">màxim grau de partició</entry>
-    <entry id="305" string="By pattern">Per patró</entry>
-    <entry id="306" string="From folder">Des de carpeta</entry>
-    <entry id="307" string="Folder">Carpeta</entry>
-    <entry id="308" string="Add folder">Agregar carpeta</entry>
-    <entry id="309" string="Choose folder:">Seleccionar carpeta:</entry>
-    <entry id="310" string="Select the folder to add to the joblist:">Seleccioni la carpeta per a agragar a la llista de tasques:</entry>
-    <entry id="311" string="Add files by pattern">Agregar fitxers per patró</entry>
-    <entry id="312" string="Pattern">Patró</entry>
-    <entry id="313" string="Start folder">Carpeta d'inici</entry>
-    <entry id="314" string="No files found matching pattern:">No es van trobar arxius corresponents al patró:</entry>
-    <entry id="315" string="Edit language file">Editar arxiu d'idioma</entry>
-    <entry id="316" string="Use for all selected tracks">Utilitzar per a tots els tracks seleccionats</entry>
-    <entry id="317" string="Interpret string as">Interpretar el text com:</entry>
-    <entry id="318" string="selected tracks">Tracks seleccionats</entry>
-    <entry id="319" string="Adjust upper/lower case">Ajustar majúscules i minúscules</entry>
-    <entry id="320" string="all words upper case">Totes les paraules en majúscules</entry>
-    <entry id="321" string="long words upper case">Paraules llargues en majúscules</entry>
-    <entry id="322" string="first letter upper case">Primera lletra en majúscules</entry>
-    <entry id="323" string="all lower case">tot en minúscules</entry>
-    <entry id="324" string="all upper case">tot en majúscules</entry>
-    <entry id="325" string="Status">Estat</entry>
-    <entry id="326" string="Successfully read CD!">El CD es llegeix satisfactòriament!</entry>
-    <entry id="327" string="Comment">Comentari</entry>
-    <entry id="328" string="Manage CDDB cache entries...">Administrar registres del CDDB-Cache...</entry>
-    <entry id="329" string="Save entry">Guardar</entry>
-    <entry id="330" string="Remove entry">Esborrar</entry>
-    <entry id="331" string="Disc name">títol del CD</entry>
-    <entry id="332" string="Charset">Sistema de caràcters</entry>
-    <entry id="333" string="Preview">Vista prèvia</entry>
-    <entry id="334" string="Downloaded CDDB entries:">Registres CDDB baixats:</entry>
-    <entry id="335" string="User name:">Nom d'usuari:</entry>
-    <entry id="336" string="Password:">Contrasenya:</entry>
-    <entry id="337" string="Delete original files after encoding">Eliminar els fitxers originals a l'acabar la codificació</entry>
-    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Aquesta opció elimina els fitxers originals&#10;a l'acabar la codificació!&#10;&#10;Està Vè. segur d'activar è funció?</entry>
-    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">El protocol CDDBP de freedb no pot ser utilitzat a travèS&#10;d'un servidor proxy HTTP!&#10;&#10;Desitja canviar el protocol a HTTP?</entry>
-    <entry id="340" string="Playlists">Llistes de reproducció</entry>
-    <entry id="341" string="Create playlists">Generar llistes de reproducció</entry>
-    <entry id="342" string="Create cue sheets">Generar cuesheets</entry>
-    <entry id="343" string="Use encoder output folder">Utilitzar carpeta de sortida del codificador</entry>
-    <entry id="344" string="Various artists">Artistes varis</entry>
-    <entry id="345" string="Data track">Pista de dades</entry>
-    <entry id="346" string="Select the folder in which the playlist files will be placed:">Esculli una carpeta per a guardar les llistes de reproducció:</entry>
-    <entry id="347" string="Use input file folder if possible">Utilitzar carpeta d'entrada, si és possible</entry>
-    <entry id="348" string="Encode to input file folder if possible">Codificar cap a carpeta d'entrada, si és possible</entry>
-    <entry id="349" string="Allow overwriting input file">Permetre sobreescriure el fitxer d'entrada</entry>
-    <entry id="350" string="Encode to a single file">Codificar a un sol fitxer</entry>
-    <entry id="351" string="Encoder options">Opcions de codificador</entry>
-    <entry id="352" string="Skip">Ometre</entry>
-    <entry id="353" string="Enable local CDDB database">Utilitzar base de dades CDDB local</entry>
-    <entry id="354" string="CDDB path:">Carpeta CDDB:</entry>
-    <entry id="355" string="Select the folder of the CDDB database:">Seleccioni la carpeta de la base de dades CDDB:</entry>
-    <entry id="356" string="File already exists">Fitxer ja existeix</entry>
-    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">El fitxer de sortida %1&#10;ja existeix! Desitja sobreescriure'l?</entry>
-    <entry id="358" string="Overwrite all further files">Sobreescriure tots els fitxers següents</entry>
-    <entry id="359" string="Start ripping automatically">Començar automàticamente el ripeig</entry>
-    <entry id="360" string="Submit to online database later">Enviar després a força de dades remota</entry>
-    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">El suport CDDB no està activat! Per favor activi&#10;suport CDDB local o remot en la finestra de configuració.</entry>
-    <entry id="362" string="CDDB entries to submit:">Registres CDDB per a enviar:</entry>
-    <entry id="363" string="Show queued CDDB entries...">Mostrar registres CDDB guardats...</entry>
-    <entry id="364" string="Submit all">Enviar tots</entry>
-    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">El suport per a la base de dades CDDB remota no està activat!&#10;Per favor activi la base de dades CDDB remota en la finestra de configuració.</entry>
-    <entry id="366" string="Category">Categoria</entry>
-    <entry id="367" string="Close">Tancar</entry>
-    <entry id="368" string="Automatization">Automatizació</entry>
-    <entry id="369" string="Query CDDB database later">Consultar base de dades CDDB després</entry>
-    <entry id="370" string="Show queued CDDB queries...">Mostrar les consultes CDDB guardades...</entry>
-    <entry id="371" string="CDDB queries">Consultes CDDB</entry>
-    <entry id="372" string="Query">Consultar</entry>
-    <entry id="373" string="Query all">Consultar totes</entry>
-    <entry id="374" string="Query string">String de consulta</entry>
-    <entry id="375" string="CDDB queries to perform:">Consultes CDDB planejades:</entry>
-    <entry id="376" string="Would you like to perform this query again later?">Desitja realitzar aquesta consulta després novament?</entry>
-    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">L'accés a la unitat de CDROM va ser denegat per Windows.&#10;&#10;Per favor contacti el seu administrador de sistemes&#10;per a poder accedir a la unitat de CDROM.</entry>
-    <entry id="378" string="CD information">Informacions del CD</entry>
-    <entry id="379" string="Read CD Text">Llegir el CD-Text</entry>
-    <entry id="380" string="Read cdplayer.ini">Llegir cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodització</entry>
-    <entry id="382" string="Apodization function(s):">Funció(és) de apodització:</entry>
-    <entry id="383" string="You can specify multiple functions separated by semicolons.">Pot especificar diverses funcions separades per punt i coma.</entry>
-    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 pot buscar actualitzacions automàticament cada vegada que s'inicia.Desitja que %1 busqui actualitzacions a l'inici?</entry>
-    <entry id="385" string="Cannot access input file: %1">No s'ha pogut accedir a l'arxiu d'entrada.</entry>
-    <entry id="386" string="Cannot create output file: %1">No es pot crear l'arxiu de sortida.</entry>
-    <entry id="387" string="File not found">Arxiu no trobat</entry>
-    <entry id="388" string="Unknown file type">Tipus d'arxiu desconegut</entry>
-    <entry id="389" string="Unsupported audio format">Format d'àudio no suportat</entry>
-    <entry id="390" string="Unknown error">Error desconegut</entry>
-    <entry id="391" string="Replace existing comments with default comment">Reemplaça els comentaris existents amb el comentari per defecte</entry>
-    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Els arxius seleccionats no poden ser combinats en&#10;un arxiu únic de sortida a causa dels formats diferents.&#10;&#10;Si us plau converteix tots esl arxius al mateix format primer.</entry>
-    <entry id="393" string="Write WMA metadata info">Escriu la informació de metadada WMA</entry>
-    <entry id="394" string="WMA metadata encoding:">Codificació de metadades WMA:</entry>
-    <entry id="395" string="Select codec">Selecciona còdec</entry>
-    <entry id="396" string="Select codec format">Selecciona el còdec del format</entry>
-    <entry id="397" string="Codec settings">Configuració del còdec</entry>
-    <entry id="398" string="Use codec">Ús del còdec</entry>
-    <entry id="399" string="Use format">Ús del format</entry>
-    <entry id="400" string="Write uncompressed WMA files">Escriu arxius WMA no comprimits</entry>
-    <entry id="401" string="Automatically select format based on settings and input format">Automàticament selecciona el format bassant-se en la configuració i format d'entrada</entry>
-    <entry id="402" string="Use VBR encoding">Usa codificació de Ràtio Variable (VBR)</entry>
-    <entry id="403" string="Use 2-pass encoding">Usa una codificació a 2 passades</entry>
-    <entry id="404" string="Target bitrate">Ràtio de bits de destí</entry>
-    <entry id="405" string="Set drive speed limit:">Selecciona el límit de velocitat del dispositiu:</entry>
+    <entry id="253" string="Unicode">Utilitzar nom d'arxius Unicode</entry>
+    <entry id="254" string="Use Unicode filenames">Fitxers AAC</entry>
+    <entry id="255" string="AAC Files">Fitxers MP4</entry>
+    <entry id="256" string="MP4 Files">Format</entry>
+    <entry id="257" string="Format">Format de fitxer</entry>
+    <entry id="258" string="File format">Permetre etiquetes ID3v2 en fitxers AAC</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">Nota:</entry>
+    <entry id="260" string="Note:">Alguns reproductors poden arribar a tenir problemes al reproduir&#10;fitxers AAC amb etiquetes ID3. Sols utilitzi aquesta opció si està&#10;segur que el reproductor pot manejar aquest tipus d'arxius.</entry>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Fitxers FLAC</entry>
+    <entry id="262" string="FLAC Files">Velocitat de mostreig</entry>
+    <entry id="263" string="Sampling rate">Resolució de la mostra</entry>
+    <entry id="264" string="Sample resolution">Nombre de mostres</entry>
+    <entry id="265" string="Number of samples">Mono</entry>
+    <entry id="266" string="Mono">octets</entry>
+    <entry id="267" string="bytes">bit</entry>
+    <entry id="268" string="bit">min</entry>
+    <entry id="269" string="min">Crear llista de reproducció</entry>
+    <entry id="270" string="Create playlist">Crear cua</entry>
+    <entry id="271" string="Create cue sheet">Gravar Etiquetes-ID3v1</entry>
+    <entry id="272" string="Write ID3v1 tags">Gravar Etiquetes-ID3v2</entry>
+    <entry id="273" string="Write ID3v2 tags">Gravar Etiquetes Vorbis Comentari-</entry>
+    <entry id="274" string="Write Vorbis Comment tags">Gravar metadades MP4</entry>
+    <entry id="275" string="Write MP4 metadata info">Codificació ID3v1:</entry>
+    <entry id="276" string="ID3v1 tag encoding:">Codificació ID3v2:</entry>
+    <entry id="277" string="ID3v2 tag encoding:">Codificació Vorbis Comment:</entry>
+    <entry id="278" string="Vorbis Comment tag encoding:">Codificació metadades MP4:</entry>
+    <entry id="279" string="MP4 metadata encoding:">Codificació Tag</entry>
+    <entry id="280" string="Tag encodings">Actualitzar llista de tasques amb aquesta informació</entry>
+    <entry id="281" string="Update joblist with this information">Gènere desconegut</entry>
+    <entry id="282" string="unknown genre">Carregar llista de tasques...</entry>
+    <entry id="283" string="Load joblist...">Guardar llista de tasques...</entry>
+    <entry id="284" string="Save joblist...">Pausar/continuar codificació</entry>
+    <entry id="285" string="Pause/resume encoding">Apagar la PC a l'acabar la codificació</entry>
+    <entry id="286" string="Shutdown after encoding">Arxius de llista de reproducció</entry>
+    <entry id="287" string="Playlist Files">Any desconegut</entry>
+    <entry id="288" string="unknown year">No es va poder inicialitzar el %1 Codificador! Per favor verifiqui la configuració!</entry>
+    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Tamany de bloc:</entry>
+    <entry id="290" string="Blocksize:">Utilitzar Streamable Subset</entry>
+    <entry id="291" string="Use streamable subset">Joint Stereo adaptivo</entry>
+    <entry id="292" string="Adaptive Joint Stereo">Codificació més veloç</entry>
+    <entry id="293" string="Fastest encoding">Millor compresió</entry>
+    <entry id="294" string="Best compression">Predictor linear</entry>
+    <entry id="295" string="Linear predictor">màxim grau LPC</entry>
+    <entry id="296" string="Maximum LPC order">Precisió LPC quantificada</entry>
+    <entry id="297" string="Quantized LPC precision">Optimitzar grau LPC</entry>
+    <entry id="298" string="Exhaustive model search">Optimitzar cuantizació LPC</entry>
+    <entry id="299" string="Optimize LPC quantization">desactivat</entry>
+    <entry id="300" string="disabled">automàtic</entry>
+    <entry id="301" string="auto">Codificació residual</entry>
+    <entry id="302" string="Residual coding">El meu grau de partició</entry>
+    <entry id="303" string="Minimum partition order">màxim grau de partició</entry>
+    <entry id="304" string="Maximum partition order">Per patró</entry>
+    <entry id="305" string="By pattern">Des de carpeta</entry>
+    <entry id="306" string="From folder">Carpeta</entry>
+    <entry id="307" string="Folder">Agregar carpeta</entry>
+    <entry id="308" string="Add folder">Seleccionar carpeta:</entry>
+    <entry id="309" string="Choose folder:">Seleccioni la carpeta per a agragar a la llista de tasques:</entry>
+    <entry id="310" string="Select the folder to add to the joblist:">Agregar fitxers per patró</entry>
+    <entry id="311" string="Add files by pattern">Patró</entry>
+    <entry id="312" string="Pattern">Carpeta d'inici</entry>
+    <entry id="313" string="Start folder">No es van trobar arxius corresponents al patró:</entry>
+    <entry id="314" string="No files found matching pattern:">Editar arxiu d'idioma</entry>
+    <entry id="315" string="Edit language file">Utilitzar per a tots els tracks seleccionats</entry>
+    <entry id="316" string="Use for all selected tracks">Interpretar el text com:</entry>
+    <entry id="317" string="Interpret string as">Tracks seleccionats</entry>
+    <entry id="318" string="selected tracks">Ajustar majúscules i minúscules</entry>
+    <entry id="319" string="Adjust upper/lower case">Totes les paraules en majúscules</entry>
+    <entry id="320" string="all words upper case">Paraules llargues en majúscules</entry>
+    <entry id="321" string="long words upper case">Primera lletra en majúscules</entry>
+    <entry id="322" string="first letter upper case">tot en minúscules</entry>
+    <entry id="323" string="all lower case">tot en majúscules</entry>
+    <entry id="324" string="all upper case">Estat</entry>
+    <entry id="325" string="Status">El CD es llegeix satisfactòriament!</entry>
+    <entry id="326" string="Successfully read CD!">Comentari</entry>
+    <entry id="327" string="Comment">Administrar registres del CDDB-Cache...</entry>
+    <entry id="328" string="Manage CDDB cache entries...">Guardar</entry>
+    <entry id="329" string="Save entry">Esborrar</entry>
+    <entry id="330" string="Remove entry">títol del CD</entry>
+    <entry id="331" string="Disc name">Sistema de caràcters</entry>
+    <entry id="332" string="Charset">Vista prèvia</entry>
+    <entry id="333" string="Preview">Registres CDDB baixats:</entry>
+    <entry id="334" string="Downloaded CDDB entries:">Nom d'usuari:</entry>
+    <entry id="335" string="User name:">Contrasenya:</entry>
+    <entry id="336" string="Password:">Eliminar els fitxers originals a l'acabar la codificació</entry>
+    <entry id="337" string="Delete original files after encoding">Aquesta opció elimina els fitxers originals&#10;a l'acabar la codificació!&#10;&#10;Està Vè. segur d'activar è funció?</entry>
+    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">El protocol CDDBP de freedb no pot ser utilitzat a travèS&#10;d'un servidor proxy HTTP!&#10;&#10;Desitja canviar el protocol a HTTP?</entry>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Llistes de reproducció</entry>
+    <entry id="340" string="Playlists">Generar llistes de reproducció</entry>
+    <entry id="341" string="Create playlists">Generar cuesheets</entry>
+    <entry id="342" string="Create cue sheets">Utilitzar carpeta de sortida del codificador</entry>
+    <entry id="343" string="Use encoder output folder">Artistes varis</entry>
+    <entry id="344" string="Various artists">Pista de dades</entry>
+    <entry id="345" string="Data track">Esculli una carpeta per a guardar les llistes de reproducció:</entry>
+    <entry id="346" string="Select the folder in which the playlist files will be placed:">Utilitzar carpeta d'entrada, si és possible</entry>
+    <entry id="347" string="Use input file folder if possible">Codificar cap a carpeta d'entrada, si és possible</entry>
+    <entry id="348" string="Encode to input file folder if possible">Permetre sobreescriure el fitxer d'entrada</entry>
+    <entry id="349" string="Allow overwriting input file">Codificar a un sol fitxer</entry>
+    <entry id="350" string="Encode to a single file">Opcions de codificador</entry>
+    <entry id="351" string="Encoder options">Ometre</entry>
+    <entry id="352" string="Skip">Utilitzar base de dades CDDB local</entry>
+    <entry id="353" string="Enable local CDDB database">Carpeta CDDB:</entry>
+    <entry id="354" string="CDDB path:">Seleccioni la carpeta de la base de dades CDDB:</entry>
+    <entry id="355" string="Select the folder of the CDDB database:">Fitxer ja existeix</entry>
+    <entry id="356" string="File already exists">El fitxer de sortida %1&#10;ja existeix! Desitja sobreescriure'l?</entry>
+    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Sobreescriure tots els fitxers següents</entry>
+    <entry id="358" string="Overwrite all further files">Començar automàticamente el ripeig</entry>
+    <entry id="359" string="Start ripping automatically">Enviar després a força de dades remota</entry>
+    <entry id="360" string="Submit to online database later">El suport CDDB no està activat! Per favor activi&#10;suport CDDB local o remot en la finestra de configuració.</entry>
+    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Registres CDDB per a enviar:</entry>
+    <entry id="362" string="CDDB entries to submit:">Mostrar registres CDDB guardats...</entry>
+    <entry id="363" string="Show queued CDDB entries...">Enviar tots</entry>
+    <entry id="364" string="Submit all">El suport per a la base de dades CDDB remota no està activat!&#10;Per favor activi la base de dades CDDB remota en la finestra de configuració.</entry>
+    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Categoria</entry>
+    <entry id="366" string="Category">Tancar</entry>
+    <entry id="367" string="Close">Automatizació</entry>
+    <entry id="368" string="Automatization">Consultar base de dades CDDB després</entry>
+    <entry id="369" string="Query CDDB database later">Mostrar les consultes CDDB guardades...</entry>
+    <entry id="370" string="Show queued CDDB queries...">Consultes CDDB</entry>
+    <entry id="371" string="CDDB queries">Consultar</entry>
+    <entry id="372" string="Query">Consultar totes</entry>
+    <entry id="373" string="Query all">String de consulta</entry>
+    <entry id="374" string="Query string">Consultes CDDB planejades:</entry>
+    <entry id="375" string="CDDB queries to perform:">Desitja realitzar aquesta consulta després novament?</entry>
+    <entry id="376" string="Would you like to perform this query again later?">L'accés a la unitat de CDROM va ser denegat per Windows.&#10;&#10;Per favor contacti el seu administrador de sistemes&#10;per a poder accedir a la unitat de CDROM.</entry>
+    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Informacions del CD</entry>
+    <entry id="378" string="CD information">Llegir el CD-Text</entry>
+    <entry id="379" string="Read CD Text">Llegir cdplayer.ini</entry>
+    <entry id="380" string="Read cdplayer.ini">Apodització</entry>
+    <entry id="381" string="Apodization">Funció(és) de apodització:</entry>
+    <entry id="382" string="Apodization function(s):">Pot especificar diverses funcions separades per punt i coma.</entry>
+    <entry id="383" string="You can specify multiple functions separated by semicolons.">%1 pot buscar actualitzacions automàticament cada vegada que s'inicia.Desitja que %1 busqui actualitzacions a l'inici?</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">No s'ha pogut accedir a l'arxiu d'entrada.</entry>
+    <entry id="385" string="Cannot access input file: %1">No es pot crear l'arxiu de sortida.</entry>
+    <entry id="386" string="Cannot create output file: %1">Arxiu no trobat</entry>
+    <entry id="387" string="File not found">Tipus d'arxiu desconegut</entry>
+    <entry id="388" string="Unknown file type">Format d'àudio no suportat</entry>
+    <entry id="389" string="Unsupported audio format">Error desconegut</entry>
+    <entry id="390" string="Unknown error">Reemplaça els comentaris existents amb el comentari per defecte</entry>
+    <entry id="391" string="Replace existing comments with default comment">Els arxius seleccionats no poden ser combinats en&#10;un arxiu únic de sortida a causa dels formats diferents.&#10;&#10;Si us plau converteix tots esl arxius al mateix format primer.</entry>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Escriu la informació de metadada WMA</entry>
+    <entry id="393" string="Write WMA metadata info">Codificació de metadades WMA:</entry>
+    <entry id="394" string="WMA metadata encoding:">Selecciona còdec</entry>
+    <entry id="395" string="Select codec">Selecciona el còdec del format</entry>
+    <entry id="396" string="Select codec format">Configuració del còdec</entry>
+    <entry id="397" string="Codec settings">Ús del còdec</entry>
+    <entry id="398" string="Use codec">Ús del format</entry>
+    <entry id="399" string="Use format">Escriu arxius WMA no comprimits</entry>
+    <entry id="400" string="Write uncompressed WMA files">Automàticament selecciona el format bassant-se en la configuració i format d'entrada</entry>
+    <entry id="401" string="Automatically select format based on settings and input format">Usa codificació de Ràtio Variable (VBR)</entry>
+    <entry id="402" string="Use VBR encoding">Usa una codificació a 2 passades</entry>
+    <entry id="403" string="Use 2-pass encoding">Ràtio de bits de destí</entry>
+    <entry id="404" string="Target bitrate">Selecciona el límit de velocitat del dispositiu:</entry>
+    <entry id="405" string="Set drive speed limit:">eur</entry>
+    <entry id="406" string="Support this project">CDDB</entry>
+    <entry id="407" string="Please support this project!">CDRip</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
     <entry id="410" string="usd">eur</entry>
-    <entry id="414" string="CDDB">CDDB</entry>
-    <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="411" string="en"/>
+    <entry id="412" string="Thank you very much!"/>
+    <entry id="413" string="Remind me later"/>
+    <entry id="414" string="CDDB"/>
+    <entry id="415" string="Ripper"/>
+    <entry id="416" string="Default"/>
   </data>
 </LangFile>
