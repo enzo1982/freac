@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">轉檔完成後保留 Wave 檔案</entry>
     <entry id="251" string="ripping/decoding">正在轉檔 / 解碼</entry>
     <entry id="252" string="encoding">正在編碼</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">使用 Unicode 檔名</entry>
     <entry id="255" string="AAC Files">AAC 檔案</entry>
     <entry id="256" string="MP4 Files">MP4 檔案</entry>
@@ -411,8 +411,8 @@
     <entry id="407" string="Please support this project!">請支援本專案！</entry>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">透過捐款，您可以幫助 %1 專案 繼續維持免費。&#10;&#10;&#10;點擊下列任一按鈕，使用 PayPal 捐款：</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">您也可以使用 PayPal 直接付款給 %1。&#10;&#10;如果您想使用電子轉帳、支票或郵寄現金，&#10;請先寄電子郵件給 %1。</entry>
-    <entry id="410" string="usd">usd</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="410" string="usd">twd</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">感激不盡！</entry>
     <entry id="413" string="Remind me later">稍後提醒我</entry>
     <entry id="414" string="CDDB">CDDB</entry>
