@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.0</property>
+    <property name="language">Arabic / العربية</property>
+    <property name="righttoleft">true</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
+    <property name="author">Eman Ali Fhoula (إيمان علي فحولة) &lt;ali.fhoula@lycos.com&gt;</property>
+    <property name="url">http://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="1" string="File">ملف</entry>
+    <entry id="2" string="Options">خيارات</entry>
+    <entry id="3" string="Encode">ترميز</entry>
+    <entry id="4" string="Add">إضافة</entry>
+    <entry id="5" string="Remove">إزالة</entry>
+    <entry id="6" string="Clear joblist">مسح قائمة العمل</entry>
+    <entry id="7" string="Exit">خروج</entry>
+    <entry id="8" string="General settings...">إعدادات عامة</entry>
+    <entry id="9" string="Configure selected encoder...">تهيئة الترميز المحدد</entry>
+    <entry id="10" string="Audio file(s)">ملف/ـات صوتي/ـة</entry>
+    <entry id="11" string="Audio CD contents">محتوى قرص مدمج صوتي</entry>
+    <entry id="12" string="Start encoding">بدء الترميز</entry>
+    <entry id="13" string="Stop encoding">إيقاف الترميز</entry>
+    <entry id="14" string="Encoding file:">ترميز الملف:</entry>
+    <entry id="15" string="Time left:">الوقت المتبقي:</entry>
+    <entry id="16" string="Percent done:">نسبة الإكتمال:</entry>
+    <entry id="17" string="Selected encoder:">تحديد الترميز:</entry>
+    <entry id="18" string="File progress:">تقدم الملف:</entry>
+    <entry id="19" string="Output dir.:">مجلد الناتج:</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 ملف/ـات في قائمة (%2 د):</entry>
+    <entry id="21" string="none">لاشيء</entry>
+    <entry id="22" string="Help topics...">موضوعات المساعدة</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">إضافة ملف/ـات صوت/ـية إلى قائمة العمل</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">إضافة محتوى القرص المدمج الصوتي إلى قائمة العمل</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">إزلة ما تم تحديده من قائمة العمل هذه</entry>
+    <entry id="26" string="Clear the entire joblist">مسح كامل قائمة العمل</entry>
+    <entry id="27" string="Configure general settings">تهئية الاعدادات العامة</entry>
+    <entry id="28" string="Configure the selected audio encoder">تهيئة ترميز الصوت المحدد</entry>
+    <entry id="29" string="Start the encoding process">بدء عملية الترميز</entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">لا يمكن تغيير قائمة العمل عند الترميز!</entry>
+    <entry id="31" string="Error">خطأ</entry>
+    <entry id="32" string="Audio Files">ملفات صوتية</entry>
+    <entry id="33" string="Apple Audio Files">ملفات صوت أبل</entry>
+    <entry id="34" string="Creative Voice Files">ملفات كرياتيف فويص</entry>
+    <entry id="35" string="Sun Audio Files">ملفات صوت سون</entry>
+    <entry id="36" string="Wave Files">ملفات صوت</entry>
+    <entry id="37" string="Windows CD Audio Track">نافدة مسارت صوت قرص مضغوة</entry>
+    <entry id="38" string="All Files">كافة الملفات</entry>
+    <entry id="39" string="You did not select a track!">لم تقم بتحديد أي ملف!</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">الترميز لا يزال قيد العمل، هل تريد حقا إنهائه؟</entry>
+    <entry id="41" string="Currently encoding">الترميز الحالي</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">هذا البرنامج يتم توزيعه وفق لأحكام&#10;من رخصة العمومية العامة (الترخيص).</entry>
+    <entry id="43" string="CDDB query">إستعلام قاعدة بيانات قرص مدمج</entry>
+    <entry id="44" string="About %1">%1 بخصوص</entry>
+    <entry id="45" string="No options can be configured for Windows Wave file output!">الخيارات لا يمكن تهيئتها لملف ناتج ويندوز صوتي!</entry>
+    <entry id="46" string="Windows Wave file output">ملف ويندوز صوتي الناتج</entry>
+    <entry id="47" string="Cannot change settings while encoding!">لا يمكن تغيير الإعدادات عند الترميز!</entry>
+    <entry id="48" string="%1 encoder configuration">%1 تهيئة الترميز</entry>
+    <entry id="49" string="OK">موافق</entry>
+    <entry id="50" string="Cancel">إلغاء</entry>
+    <entry id="51" string="Encoding Mode">طريقة الترميز</entry>
+    <entry id="52" string="Variable Bitrate">معدل بايت متغير</entry>
+    <entry id="53" string="Average Bitrate">متوسط معدل بايت</entry>
+    <entry id="54" string="Quality">النوعية</entry>
+    <entry id="55" string="Encoders">الترميز</entry>
+    <entry id="56" string="Language">اللغة</entry>
+    <entry id="57" string="Show title info">عرض معلومات العنوان</entry>
+    <entry id="58" string="General settings setup">إعدادات عامة للتثبيت</entry>
+    <entry id="59" string="Configure encoder">تهيئة الترميز</entry>
+    <entry id="60" string="Encoder">الترميز</entry>
+    <entry id="61" string="Output folder">مجلد الناتج</entry>
+    <entry id="62" string="Browse">تصفح</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">حدد المجلد الذي سيتم وضع فيه الملفات المشفرة:</entry>
+    <entry id="64" string="Encoding">الترميز</entry>
+    <entry id="65" string="Author">المؤلف</entry>
+    <entry id="66" string="URL">الموقع</entry>
+    <entry id="67" string="Information">معلومات</entry>
+    <entry id="68" string="Select language:">حدد اللغة:</entry>
+    <entry id="69" string="Active CD-ROM drive">تنشيط محرك القراص المضغوطة</entry>
+    <entry id="70" string="Ripper settings">إعدادات الإشتقاق</entry>
+    <entry id="71" string="Activate cdparanoia mode:">تنشيط اسلوب تكبير قرص مضغوط:</entry>
+    <entry id="72" string="Activate jitter correction">تنشيط تصحيح النرفزة</entry>
+    <entry id="73" string="Swap left/right channel">مبادلة القناة يمين/يسار</entry>
+    <entry id="74" string="Lock CD tray while ripping">قفل القرص المضغوط عند الاشتقاق</entry>
+    <entry id="75" string="Use native NT SCSI library">NT SCSI استخدم المكتبة الاصلية</entry>
+    <entry id="76" string="Overlap only">فقط التداخل</entry>
+    <entry id="77" string="No verify">بدون تثبت</entry>
+    <entry id="78" string="No scratch repair">لا لإصلاح الخدوش</entry>
+    <entry id="79" string="Full cdparanoia mode">اسلوب كامل العرض لقرص مضغوط</entry>
+    <entry id="80" string="Bitrate">معدل بايت</entry>
+    <entry id="81" string="Copyright bit">بايت حقوق الؤلف</entry>
+    <entry id="82" string="CRC">التحقق من التكرار الدوري</entry>
+    <entry id="83" string="Original bit">بايت اصلي</entry>
+    <entry id="84" string="Channels">القنوات</entry>
+    <entry id="85" string="Private bit">بايت خاص</entry>
+    <entry id="86" string="Set Copyright bit">ثبت بايت حقوق المؤلف</entry>
+    <entry id="87" string="Enable CRC">تنشيط التحقق من التكرار الدوري</entry>
+    <entry id="88" string="Set Original bit">ثبت البايت الاصلي</entry>
+    <entry id="89" string="Dual channel encoding">ترميز ثنائي القناة</entry>
+    <entry id="90" string="Set Private bit">ثبت البايت الخاص</entry>
+    <entry id="91" string="Encoder mode">طريقة الترميز</entry>
+    <entry id="92" string="Stereo mode">طريقة صوتي مجسم</entry>
+    <entry id="93" string="Quantization">الكميات</entry>
+    <entry id="94" string="Downsampling ratio">نسبة الاختزال</entry>
+    <entry id="95" string="Predictor size">توقع الحجم</entry>
+    <entry id="96" string="Enable lossless encoding">تمكين ضياع الترميز</entry>
+    <entry id="97" string="Enable Joint Stereo">تمكين ربط صوت مجسم</entry>
+    <entry id="98" string="Bitrate per channel:">معدل بايت بالقناة:</entry>
+    <entry id="99" string="Preselection">اختيار مسبق</entry>
+    <entry id="100" string="Number of preselection candidates:">عدد الترشحات الاختيار الأولي:</entry>
+    <entry id="101" string="MPEG version">MPEG إصدار</entry>
+    <entry id="102" string="AAC object type">AAC نوع المكون</entry>
+    <entry id="103" string="Allow Joint Stereo">السماح بربط صوت مجسم</entry>
+    <entry id="104" string="Temporal Noise Shaping">تشكيل وقتي للضوضاء</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">استخدام وقتي لتشكيل الضوضاء</entry>
+    <entry id="106" string="Maximum bandwidth">أقصى سعة الحيز</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">بالهرتز AAC أقصى تردد سعة الحيز لاستخدام:</entry>
+    <entry id="108" string="Basic">أساسي</entry>
+    <entry id="109" string="Misc">متفرقات</entry>
+    <entry id="110" string="Audio processing">معالجة الصوت</entry>
+    <entry id="111" string="Set bitrate:">ثبت معدل بايت:</entry>
+    <entry id="112" string="Set ratio:">ثبت النسبة:</entry>
+    <entry id="113" string="Set quality:">ثبت النوعية:</entry>
+    <entry id="114" string="worse">أسوأ</entry>
+    <entry id="115" string="better">أحسن</entry>
+    <entry id="116" string="Auto">تلقائي</entry>
+    <entry id="117" string="Stereo">صوت مجسم</entry>
+    <entry id="118" string="Joint Stereo">صوت مجسم مشترك</entry>
+    <entry id="119" string="Force Joint Stereo">فرض صوت مجسم مشترك</entry>
+    <entry id="120" string="VBR mode">طريقة معدل بايت متغير</entry>
+    <entry id="121" string="no VBR">لا لمعدل بايت متغير</entry>
+    <entry id="122" string="VBR quality">نوعية معدل بايت متغير</entry>
+    <entry id="123" string="ABR target bitrate">معدل بايت متوفر هدف معدل بايت</entry>
+    <entry id="124" string="VBR bitrate range">محموعة معدل بايت لمعدل بايت متغير</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">ثبت أدنى معدل بايت متغير:</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">ثبت أقصى معدل بايت متغير:</entry>
+    <entry id="127" string="Control bits">بايت المراقبة</entry>
+    <entry id="128" string="Stream format">صيغة التدفق</entry>
+    <entry id="129" string="Enforce strict ISO compliance">ISO الفرض الصارم الامثل لـ</entry>
+    <entry id="135" string="Output sampling rate">معدل عيينات الناتج</entry>
+    <entry id="136" string="no resampling">بدون اختزال</entry>
+    <entry id="137" string="Highpass filter">مرشح تمرير عالية</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">ثبت تمرير مرتفع الترددات بالهرتز:</entry>
+    <entry id="139" string="Set Highpass width (Hz):">ثبت تمرير مرتفع بالعرض بالهرتز:</entry>
+    <entry id="140" string="Lowpass filter">مرشح تمرير منخفض</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">ثبت تمرير منخفض بالتردد بالهرتز:</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">ثبت تمرير منخفض بالعرض بالهرتز:</entry>
+    <entry id="143" string="Misc settings">إعدادات متفرقة</entry>
+    <entry id="144" string="Disable all filtering">تعطيل كافة المرشحات</entry>
+    <entry id="145" string="MP3 Files">MP3 ملفات</entry>
+    <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis ملفات</entry>
+    <entry id="147" string="Bonk Files">Bonk ملفات</entry>
+    <entry id="148" string="Automatic CDDB queries">إستعلام تلقائي لقاعدة بيانات قرص مدمج</entry>
+    <entry id="149" string="CDDB access mode:">طريقة الاتصال في قاعدة بيانات قرص مدمج:</entry>
+    <entry id="150" string="CDDB server:">خادم قاعدة بيانات قرص مدمج:</entry>
+    <entry id="151" string="Port:">المنفذ:</entry>
+    <entry id="152" string="Info">معلومات</entry>
+    <entry id="153" string="No freedb entry for this disk.">لهذا القرص لا تدخل قاعدة بيانات مجانية.</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">حصلت بعض الأخطأ عند محاولة الاتصال في خادم قاعدة بيانات مجانية.</entry>
+    <entry id="155" string="Connecting to freedb server at">الاتصال بخادم قاعدة بيانات مجانية في</entry>
+    <entry id="156" string="Requesting CD information">طلب معلومات عن قرص مضغوط</entry>
+    <entry id="157" string="eMail address:">عنوان بريد إلكتروني:</entry>
+    <entry id="158" string="Please enter a valid eMail address.">الرجاء ادخل عنوان بريد إلكتروني صالح.</entry>
+    <entry id="159" string="No exact matches found">لم يتم العثور على مطابقة تامة</entry>
+    <entry id="160" string="Multiple matches found">وجدت مطابقات متعدد</entry>
+    <entry id="161" string="Matches">تطابقات</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">حدد الإدخال الذي يناسب قرصك المضغوط:</entry>
+    <entry id="163" string="Extended CDDB settings">إعدادات تمديد قاعدة بيانات قرص مدمج</entry>
+    <entry id="164" string="CGI scripts">الكلمات لواجهة العبارة الشائعة</entry>
+    <entry id="165" string="CDDB query script:">نص الاستعلام قاعدة بيانات قرص مدمج:</entry>
+    <entry id="166" string="CDDB submit script:">تسليم النص لقاعدة بيانات قرص مضغوط:</entry>
+    <entry id="167" string="HTTP settings">إعدادات بروتوكول نقل النص التشعبي</entry>
+    <entry id="168" string="Proxy settings">إعدادات الوكيل</entry>
+    <entry id="169" string="no proxy">بدون وكيل</entry>
+    <entry id="170" string="Proxy type:">نوع الوكيل:</entry>
+    <entry id="171" string="Proxy server:">خادم وكيل:</entry>
+    <entry id="172" string="Presets">المسبقات</entry>
+    <entry id="173" string="Use preset:">استخدم المسبقات:</entry>
+    <entry id="174" string="Custom settings">إعدادات مخصصة</entry>
+    <entry id="179" string="Medium, Fast">متوسط،تقريبا</entry>
+    <entry id="180" string="Standard, Fast">قياسي،تقريبا</entry>
+    <entry id="181" string="Extreme, Fast">أقصى،تقريبا</entry>
+    <entry id="182" string="Title">العنوان</entry>
+    <entry id="183" string="Track">المسار</entry>
+    <entry id="184" string="Length">المدة</entry>
+    <entry id="185" string="Size">الحجم</entry>
+    <entry id="186" string="Artist">الفنان</entry>
+    <entry id="187" string="Year">السنة</entry>
+    <entry id="188" string="Genre">الصنف</entry>
+    <entry id="189" string="Album">الإصدار</entry>
+    <entry id="190" string="Info tags">معلومات بطاقة</entry>
+    <entry id="191" string="Default information">معلومات إفتراضية</entry>
+    <entry id="192" string="Default comment string:">اصطفاف تعليق افتراضي:</entry>
+    <entry id="193" string="unknown artist">فنان مجهول</entry>
+    <entry id="194" string="unknown title">عنوان مجهول</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">اشتقاق القرص المضغوط معطل ASPI غير قادر على تحميل!</entry>
+    <entry id="196" string="Database">قاعدة بيانات</entry>
+    <entry id="197" string="Submit CDDB data...">تسليم بيانات قاعدة بيانات قرص مدمج...</entry>
+    <entry id="198" string="Enable CDDB cache">تمكين التخزين المؤقت لقاعدة بيانات قرص مدمج</entry>
+    <entry id="199" string="CDDB data">بيانات قاعدة بيانات قرص مدمج</entry>
+    <entry id="200" string="Submit">تسليم</entry>
+    <entry id="201" string="No audio CD in drive!">لا يوجد قرص مضغوط صوتي في المقراءة!</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">يرجى ملء جميع الحقول وعناوين المسارات قبل تقديمه.</entry>
+    <entry id="203" string="Prefer CDDB over CD Text">تفضيل قاعدة بيانات قرص مضغوط عبر النص لقرص مضغوط</entry>
+    <entry id="204" string="CD options">خيارات قرص مدمج</entry>
+    <entry id="205" string="Submitting CD information">تقديم معلومات قرص مضغوط</entry>
+    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">غير قادر على فتح الملف: %1&#10;&#10;خطأ: %2</entry>
+    <entry id="207" string="Query CDDB database">إستعلام قاعدة بيانات قرص مدمج</entry>
+    <entry id="208" string="Help">مساعدة</entry>
+    <entry id="209" string="index_en.html">index.html</entry>
+    <entry id="210" string="Plug-ins">المكونات الاضافية</entry>
+    <entry id="211" string="Input plug-ins">المكونات الاضافية الإدخال</entry>
+    <entry id="212" string="Output plug-ins">المكونات الإضافية للناتج</entry>
+    <entry id="213" string="Configure">تهيئة</entry>
+    <entry id="214" string="About">بخصوص</entry>
+    <entry id="215" string="Play">شغل</entry>
+    <entry id="216" string="Stop">توقف</entry>
+    <entry id="217" string="Cannot play a file while encoding!">لا يمكن تشغيل ملف عندما يتم الترميز!</entry>
+    <entry id="218" string="Cannot start encoding while playing a file!">عند تشغيل ملف لا يمكن بدء الترميز!</entry>
+    <entry id="219" string="Enable remote CDDB database">تمكين قاعدة بيانات قرص مضغوط بعيدة</entry>
+    <entry id="220" string="ATH">عتبة السمع المطلقة</entry>
+    <entry id="221" string="Enable ATH:">تنشيط عتبة السمع المطلقة:</entry>
+    <entry id="222" string="Use default setting">استخدم الإعدادات الإفتراضية</entry>
+    <entry id="223" string="Psycho acoustic model">النموذج الصوتي النفسي</entry>
+    <entry id="224" string="Use Temporal Masking Effect">استخدم وقتيا تأثير الإخفاء</entry>
+    <entry id="225" string="Expert">خبير</entry>
+    <entry id="226" string="Cannot configure encoder while encoding!">لا يمكن تهيئة التشفير بينما يتم التشفير!</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">مجلد الناتج غير موجود ، هل تريد إنشائه؟</entry>
+    <entry id="228" string="Filename pattern">نمط اسم ملف</entry>
+    <entry id="229" string="unknown album">الإصدار مجهول</entry>
+    <entry id="230" string="Translated by %1.">المترجم: %1</entry>
+    <entry id="231" string="Select all">حددالكل</entry>
+    <entry id="232" string="Select none">بدون تحديد</entry>
+    <entry id="233" string="Toggle selection">تبديل التحديد</entry>
+    <entry id="234" string="Show Tip of the Day">عرض نصيحة هذا اليوم</entry>
+    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 متوفرفي لغات عديدة %2. باستخدام %1 اذا كانت&#10;لغتك غير متوفرة يمكنك بسهولة ترجمة 'smooth Translator' البرنامج.</entry>
+    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 يأتي مع الدعم من أجل LAME, Ogg Vorbis, FAAC,&#10;و المشفر Bonk. ولكل مشفر VQF الصيغة متوفرة&#10;على الموقع ‪%2 :%1‬</entry>
+    <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 يمكن أن يستخدم المكونات الإضافية لوين&#10;أمب لدعم المزيد من الملفات و الصيغات.</entry>
+    <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">مع %1 يمكنك ، يقدم مجانا قاعدة البيانات. إدخالات ضغط قاعدة&#10;بيانات القرص تحتوي على أحرف يونيكود. إذا كان لديك أي أقراص&#10;مدمجة تحتوي على غير اللاتينية الفنان أو عنوان أسماء ، يمكنك تقديم&#10;التصويبات تحرير إدخالات قاعدة البيانات مع %1.</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes."/>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3."/>
+    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details."/>
+    <entry id="242" string="Bitrate / Quality">معدل بايت/النوعية</entry>
+    <entry id="243" string="Check for updates now">تحقق من توفر تحيينات الآن</entry>
+    <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">هناك تحديثات جديدة على الانترنت %1 المتاحة!&#10;هل تريد ان ترى قائمة من التحديثات المتوفرة الآن؟</entry>
+    <entry id="245" string="There are no updates available at the moment!">لا توجد تحديثات متوفرة في الوقت الراهن!</entry>
+    <entry id="246" string="Check for updates at startup">التحقق من التحديثات عند بدء التشغيل</entry>
+    <entry id="247" string="Read CD contents on insert">قراء محتويات القرص المضغوط عند الإدراج</entry>
+    <entry id="248" string="Eject disk after ripping">لفظ القرص بعد الإشتقاق</entry>
+    <entry id="249" string="Encode 'On-The-Fly'">الترميز على الطاير</entry>
+    <entry id="250" string="Keep ripped Wave files">إبقاء ملفات الصوت المشتقة</entry>
+    <entry id="251" string="ripping/decoding">أشتقاق/فك ترميز</entry>
+    <entry id="252" string="encoding">ترميز</entry>
+    <entry id="253" string="Unicode">وحيد الرمز</entry>
+    <entry id="254" string="Use Unicode filenames">استخدم وحيد الترميز اسم ملف</entry>
+    <entry id="255" string="AAC Files">AAC ملفات</entry>
+    <entry id="256" string="MP4 Files">MP4 ملفات</entry>
+    <entry id="257" string="Format">الصيغة</entry>
+    <entry id="258" string="File format">صيغة الملف</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">AAC بطاقات لملفات ID3v2 السماح</entry>
+    <entry id="260" string="Note:">مذكرة:</entry>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags."/>
+    <entry id="262" string="FLAC Files">FLAC ملفات</entry>
+    <entry id="263" string="Sampling rate">معدل العينات</entry>
+    <entry id="264" string="Sample resolution">دقة العينة</entry>
+    <entry id="265" string="Number of samples">عدد العينات</entry>
+    <entry id="266" string="Mono">وحيد</entry>
+    <entry id="267" string="bytes">بايت</entry>
+    <entry id="268" string="bit">بيت</entry>
+    <entry id="269" string="min">دق</entry>
+    <entry id="270" string="Create playlist">إنشاء قائمة أغاني</entry>
+    <entry id="271" string="Create cue sheet">إنشاء ورقة جدلية</entry>
+    <entry id="272" string="Write ID3v1 tags">البطاقات ID3v1 كتابة</entry>
+    <entry id="273" string="Write ID3v2 tags">البطاقات ID3v2 كتابة</entry>
+    <entry id="274" string="Write Vorbis Comment tags"> للتعليق البطاقات Vorbis كتابة</entry>
+    <entry id="275" string="Write MP4 metadata info">معلومات وصفية MP4 كتابة</entry>
+    <entry id="276" string="ID3v1 tag encoding:">ID3v1 ترميز البطاقات:</entry>
+    <entry id="277" string="ID3v2 tag encoding:">ID3v2 ترميز البطاقات:</entry>
+    <entry id="278" string="Vorbis Comment tag encoding:">Vorbis تعليق ترميز البطاقات:</entry>
+    <entry id="279" string="MP4 metadata encoding:">MP4 ترميز البطاقات الوصفية:</entry>
+    <entry id="280" string="Tag encodings">ترميز البطاقات</entry>
+    <entry id="281" string="Update joblist with this information">تحديث قائمة الوظائف مع هذه المعلومات</entry>
+    <entry id="282" string="unknown genre">النوع مجهول</entry>
+    <entry id="283" string="Load joblist...">تحميل قائمة العمل</entry>
+    <entry id="284" string="Save joblist...">حفظ قائمة العمل</entry>
+    <entry id="285" string="Pause/resume encoding">وقفة/استعادة الترميز</entry>
+    <entry id="286" string="Shutdown after encoding">غلق الحاسب بعد الترميز</entry>
+    <entry id="287" string="Playlist Files">ملفات قائمة الأغاني</entry>
+    <entry id="288" string="unknown year">مجهول السنة</entry>
+    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">لا يمكن تهيئة الترميز %1!&#10;يرجى التحقق من التهيئة!</entry>
+    <entry id="290" string="Blocksize:">حجم الكتلة:</entry>
+    <entry id="291" string="Use streamable subset">استخدم التدفق الفرعي</entry>
+    <entry id="292" string="Adaptive Joint Stereo">تكيفية ربط نظام صزت مجسم</entry>
+    <entry id="293" string="Fastest encoding">ترميز سريع</entry>
+    <entry id="294" string="Best compression">أفضل ضغط</entry>
+    <entry id="295" string="Linear predictor">توقع خطي</entry>
+    <entry id="296" string="Maximum LPC order">أقصى ترتيب الترميز الخطي التنبؤي</entry>
+    <entry id="297" string="Quantized LPC precision">دقة كميات الترميز الخطي التنبؤي</entry>
+    <entry id="298" string="Exhaustive model search">نموذج بحث شامل</entry>
+    <entry id="299" string="Optimize LPC quantization">تحسين كميات الترميز الخطي التنبؤي</entry>
+    <entry id="300" string="disabled">معطل</entry>
+    <entry id="301" string="auto">تلقائي</entry>
+    <entry id="302" string="Residual coding">الترميز الفاضل</entry>
+    <entry id="303" string="Minimum partition order">أدنى أمر التقسيم</entry>
+    <entry id="304" string="Maximum partition order">أقصى أمر التقسيم</entry>
+    <entry id="305" string="By pattern">بالنمط</entry>
+    <entry id="306" string="From folder">حسب المجلد</entry>
+    <entry id="307" string="Folder">مجلد</entry>
+    <entry id="308" string="Add folder">إضافة للمجلد</entry>
+    <entry id="309" string="Choose folder:">إختيار مجلد:</entry>
+    <entry id="310" string="Select the folder to add to the joblist:">حدد مجلد لإضافة قائمة العمل:</entry>
+    <entry id="311" string="Add files by pattern">إضافة ملفات بالنمط</entry>
+    <entry id="312" string="Pattern">النمط</entry>
+    <entry id="313" string="Start folder">مجلد البدء</entry>
+    <entry id="314" string="No files found matching pattern:">لا توجد ملفات مطابقة للنمط:</entry>
+    <entry id="315" string="Edit language file">تحرير ملف اللغة</entry>
+    <entry id="316" string="Use for all selected tracks">استخدام لجميع المسارات المحددة</entry>
+    <entry id="317" string="Interpret string as">تفسير السلسلة كـ</entry>
+    <entry id="318" string="selected tracks">المسارات المحددة</entry>
+    <entry id="319" string="Adjust upper/lower case">ضبط الحالةالعلوية/السفلية</entry>
+    <entry id="320" string="all words upper case">كل كلمات الحالة العلوية</entry>
+    <entry id="321" string="long words upper case">الكلمات الطويلة الحالة العلوية</entry>
+    <entry id="322" string="first letter upper case">أول الحرف الحالة العلوية</entry>
+    <entry id="323" string="all lower case">كل الحالة السفلية</entry>
+    <entry id="324" string="all upper case">كل الحالة العلوية</entry>
+    <entry id="325" string="Status">الحالة</entry>
+    <entry id="326" string="Successfully read CD!">تمت قراءة القرص المضغوط بنجاح!</entry>
+    <entry id="327" string="Comment">التعليق</entry>
+    <entry id="328" string="Manage CDDB cache entries...">إدارة المدخلات المخفية لقاعدة بيانات قرص مضغوط</entry>
+    <entry id="329" string="Save entry">حفظ القيد</entry>
+    <entry id="330" string="Remove entry">إزالة القيد</entry>
+    <entry id="331" string="Disc name">اسم القرص</entry>
+    <entry id="332" string="Charset">محارف</entry>
+    <entry id="333" string="Preview">معاينة</entry>
+    <entry id="334" string="Downloaded CDDB entries:">يتم تحميل قاعدة بيانات قرص مضغوط المدخلات:</entry>
+    <entry id="335" string="User name:">اسم المستخدم:</entry>
+    <entry id="336" string="Password:">كلمة المرور:</entry>
+    <entry id="337" string="Delete original files after encoding">حذف الملف الأصلي بعد الترميز</entry>
+    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">بهذا الخيار سيتم إزالة الملفات الأصلية&#10;من الحاسب الخاص بك بعد عملية الترميز&#10;&#10;هل أنت متأكد تريد تنشيط هذه الوظيفة؟</entry>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">لا يمكن لقاعدة البيانات الحرة لقاعدة بيانات قرص مضغوط أن&#10;تستخدامها عبر بروتوكول النص المتشعب وكلاء للأمام!&#10;&#10;هل تريد تغيير على بروتوكول النص المتشعب؟</entry>
+    <entry id="340" string="Playlists">قائمة الأغاني</entry>
+    <entry id="341" string="Create playlists">إنشاء قائمة الأغاني</entry>
+    <entry id="342" string="Create cue sheets">إنشاء بطاقات متلاصقة</entry>
+    <entry id="343" string="Use encoder output folder">يستخدم التشفير مجلد الناتج</entry>
+    <entry id="344" string="Various artists">فنانين مختلفين</entry>
+    <entry id="345" string="Data track">بيانات المسار</entry>
+    <entry id="346" string="Select the folder in which the playlist files will be placed:">حدد المجلد الذي ستضع فيه قائمة الأغاني</entry>
+    <entry id="347" string="Use input file folder if possible">استخدم مجلد ملفات المدخل اذا ممكن</entry>
+    <entry id="348" string="Encode to input file folder if possible">إذا كان ذلك ممكنا الترميز ‘إلى مجلد ملف الناتج</entry>
+    <entry id="349" string="Allow overwriting input file">السماح بالكتابة على ملف الادخال</entry>
+    <entry id="350" string="Encode to a single file">ملف و حيد للترميز</entry>
+    <entry id="351" string="Encoder options">خيارات الترميز</entry>
+    <entry id="352" string="Skip">تخطي</entry>
+    <entry id="353" string="Enable local CDDB database">تمكن قاعدة بيانات قرص مضغوط محلية</entry>
+    <entry id="354" string="CDDB path:">مجلد قاعدة بيانات قرص مضغوط:</entry>
+    <entry id="355" string="Select the folder of the CDDB database:">حدد المجلد لقاعدة بيانات قرص مضغوط:</entry>
+    <entry id="356" string="File already exists">الملف موجود مسبقا</entry>
+    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">%1ملف الناتج&#10;موجود مسبقا، هل تريد الكتابة فوقه؟</entry>
+    <entry id="358" string="Overwrite all further files">الكتابة فوق جميع الملفات</entry>
+    <entry id="359" string="Start ripping automatically">تبدء الإشتقاق تلقائيا</entry>
+    <entry id="360" string="Submit to online database later">تسليمهم إلى قاعدة البيانات قرص مضغوط في وقت لاحق</entry>
+    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">دعم قاعدة بيانات قرص مضغوط معطلة ، الرجاء&#10;تنشيط قاعدة بيانات قرص مضغوط محلية او بعيدة دعم التهيئة في نافدة الحوار</entry>
+    <entry id="362" string="CDDB entries to submit:">مدخلات قاعدة بيانات قرص مضغوط للتسليم:</entry>
+    <entry id="363" string="Show queued CDDB entries...">عرض قائمة الانتظار لمدخلات قاعدة بيانات قرص مضغوط</entry>
+    <entry id="364" string="Submit all">تسليم الكل</entry>
+    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">الدعم البعيد لقاعدة بيانات قرص مضغوط معطل، الرجاء تنشيط&#10;&#10;تهيئة الدعم البعيد لقاعدة بيانات قرص مضغوط</entry>
+    <entry id="366" string="Category">الصنف</entry>
+    <entry id="367" string="Close">غلق</entry>
+    <entry id="368" string="Automatization">التلقائية</entry>
+    <entry id="369" string="Query CDDB database later">استعلام قاعدة بيانات قرص مضغوط في وقت لاحق</entry>
+    <entry id="370" string="Show queued CDDB queries...">عرض قائمة الانتضار لاستعلام قاعدة بيانات قرص مضغوط</entry>
+    <entry id="371" string="CDDB queries">استعلامات قاعدة بيانات قرص مضغوط </entry>
+    <entry id="372" string="Query">استعلام</entry>
+    <entry id="373" string="Query all">استعلام الكل</entry>
+    <entry id="374" string="Query string">مرادفات الاستعلام</entry>
+    <entry id="375" string="CDDB queries to perform:">إستعلامات قاعدة بيانات قرص مضغوط للتنفيذ:</entry>
+    <entry id="376" string="Would you like to perform this query again later?">هل ترغب في تنفيذ هذا الاستعلام مرة أخرى لاحقا؟</entry>
+    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">تم رفض الوصول إلى محركات الأقراص المضغوطة من قبل ويندوز.&#10;&#10;الرجاء الإتصال بمسؤول النظام من أجل&#10;الحصول على الحق في الوصول إلى محرك الأقراص المضغوطة.</entry>
+    <entry id="378" string="CD information">معلومات القرص المضغوط</entry>
+    <entry id="379" string="Read CD Text">قراءة نص مضغوط</entry>
+    <entry id="380" string="Read cdplayer.ini">cdplayer.ini قراءة</entry>
+    <entry id="381" string="Apodization">تحليل الطيف</entry>
+    <entry id="382" string="Apodization function(s):">وظيفة أو وظائف تحليل الطيف:</entry>
+    <entry id="383" string="You can specify multiple functions separated by semicolons.">يمكنك تحديد وظائف متعددة مفصولة بفواصل منقوطة</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 يمكن إجراء فحص تلقائي على الانترنت&#10;تحديثات البرنامج عند بدء التشغيل.&#10;&#10;هل ترغب في أن يبحث عن التحديثات عند بدء التشغيل؟</entry>
+    <entry id="385" string="Cannot access input file: %1">%1 لا يمكن فتح ملف المدخل</entry>
+    <entry id="386" string="Cannot create output file: %1">%1 لا يمكن إنشاء ملف الناتج</entry>
+    <entry id="387" string="File not found">ملف لم يتم العثور عليه</entry>
+    <entry id="388" string="Unknown file type">نوع الملف مجهول</entry>
+    <entry id="389" string="Unsupported audio format">لا يدعم صيغة الصوت</entry>
+    <entry id="390" string="Unknown error">خطأ مجهول</entry>
+    <entry id="391" string="Replace existing comments with default comment">تعويض التعليقات الموجودة بالتعليق الإفتراضي</entry>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">الملفات المحددة لا يمكن دمجها في ملف&#10;واحد للناتج بسبب صيغات عينة مختلفة&#10;&#10;يرجى تحويل جميع الملفات إلى صيغة نفس العينة الأولى</entry>
+    <entry id="393" string="Write WMA metadata info">WMA كتابة معلومات فوقية لـ</entry>
+    <entry id="394" string="WMA metadata encoding:">WMA ترميز البيانات الوصفية:</entry>
+    <entry id="395" string="Select codec">حدد الترميز</entry>
+    <entry id="396" string="Select codec format">حدد صيغة الترميز</entry>
+    <entry id="397" string="Codec settings">إعدادات الترميز</entry>
+    <entry id="398" string="Use codec">إستخدم الترميز</entry>
+    <entry id="399" string="Use format">استخدم الصيغة</entry>
+    <entry id="400" string="Write uncompressed WMA files">WMA كتابة الملفات الغير المضغوطة لـ</entry>
+    <entry id="401" string="Automatically select format based on settings and input format">تلقائيا حدد التنسيق استنادا إلى إعدادات وتنسيق المدخلات</entry>
+    <entry id="402" string="Use VBR encoding">استخدام الترميز متغير معدل البت</entry>
+    <entry id="403" string="Use 2-pass encoding">استخدام اثنين من تمرير الترميز</entry>
+    <entry id="404" string="Target bitrate">هدف معدل بايت</entry>
+    <entry id="405" string="Set drive speed limit:">ثبت سرعة محرك الأقراص:</entry>
+    <entry id="406" string="Support this project">دعم هذا المشروع</entry>
+    <entry id="407" string="Please support this project!">يرجى دعم هذا المشروع!</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">الرجاء المساعدة على جعل هذا البرنامج مجانا من خلال دعم المشروع %1 بتبرع.&#10;&#10;انقر فوق أحد الأزرار الموجودة أدناه للتبرع به باي بال:</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">يمكنك أيضا إرسال المال مباشرة إلى %1 باستخدام باي بال.&#10;&#10;يرجى الكتابة إلى %1 إذا كنت ترغب في التبرع به&#10;التحويل الالكتروني والبريد الاختيار أو إرسال المال عن طريق البريد.</entry>
+    <entry id="410" string="usd">usd</entry>
+    <entry id="411" string="en">en</entry>
+    <entry id="412" string="Thank you very much!">شكرا جزيلا لكم!</entry>
+    <entry id="413" string="Remind me later">ذكرني لاحقا</entry>
+    <entry id="414" string="CDDB">كدب</entry>
+    <entry id="415" string="Ripper">الممزق</entry>
+    <entry id="416" string="Default"/>
+  </data>
+</LangFile>

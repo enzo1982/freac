@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.0</property>
+    <property name="language">Bulgarian / Български</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
+    <property name="author">Martin Deyanov &lt;martin.deyanov@gmail.com&gt;, KalinM &lt;kalinm@gbg.bg&gt;</property>
+    <property name="url">http://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="1" string="File">Файл</entry>
+    <entry id="2" string="Options">Настройки</entry>
+    <entry id="3" string="Encode">Кодиране</entry>
+    <entry id="4" string="Add">Добавяне</entry>
+    <entry id="5" string="Remove">Премахване</entry>
+    <entry id="6" string="Clear joblist">Изчистване на списъка със задачи</entry>
+    <entry id="7" string="Exit">Изход</entry>
+    <entry id="8" string="General settings...">Основни настройки...</entry>
+    <entry id="9" string="Configure selected encoder...">Конфигуриране на избрания енкодер...</entry>
+    <entry id="10" string="Audio file(s)">Аудио файл(ове)...</entry>
+    <entry id="11" string="Audio CD contents">Съдържание на аудио CD</entry>
+    <entry id="12" string="Start encoding">Старт на кодирането</entry>
+    <entry id="13" string="Stop encoding">Стоп на кодирането</entry>
+    <entry id="14" string="Encoding file:">Кодиране на файл:</entry>
+    <entry id="15" string="Time left:">Оставащо време:</entry>
+    <entry id="16" string="Percent done:">Процент:</entry>
+    <entry id="17" string="Selected encoder:">Избран енкодер:</entry>
+    <entry id="18" string="File progress:">Прогрес:</entry>
+    <entry id="19" string="Output dir.:">Изходна папка:</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 файл(ове) в списъка със задачи (%2 мин):</entry>
+    <entry id="21" string="none">празно</entry>
+    <entry id="22" string="Help topics...">Теми за помощ...</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">Добавяне на аудио файл(ове) към списъка със задачи</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">Добавяне аудио CD съдържанието на към списъка със задачи</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">Премахване на избраните от списъка със задачи</entry>
+    <entry id="26" string="Clear the entire joblist">Изтриване целия списък със задачи</entry>
+    <entry id="27" string="Configure general settings">Конфигуриране на основните настройки</entry>
+    <entry id="28" string="Configure the selected audio encoder">Конфигуриране на избрания аудио енкодер</entry>
+    <entry id="29" string="Start the encoding process">Старт на процеса на кодиране</entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">Невъзможност за промяна на списъка със задачи по време да кодирането!</entry>
+    <entry id="31" string="Error">Грешка</entry>
+    <entry id="32" string="Audio Files">Аудио файлове</entry>
+    <entry id="33" string="Apple Audio Files">Аудио файлове Apple</entry>
+    <entry id="34" string="Creative Voice Files">Файлове Creative Voice</entry>
+    <entry id="35" string="Sun Audio Files">Аудио файлове Sun</entry>
+    <entry id="36" string="Wave Files">Файлове Wave</entry>
+    <entry id="37" string="Windows CD Audio Track">Аудио CD песен</entry>
+    <entry id="38" string="All Files">Всички файлове</entry>
+    <entry id="39" string="You did not select a track!">Не сте избрали песен!</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Процеса по кодиране все още върви! Наистина ли искате да затворите програмата?</entry>
+    <entry id="41" string="Currently encoding">В момента се кодира</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Тази програма се разпространява под условията&#10;на GNU General Public License (GPL).</entry>
+    <entry id="43" string="CDDB query">Заявка към CDDB</entry>
+    <entry id="44" string="About %1">Относно %1</entry>
+    <entry id="45" string="No options can be configured for Windows Wave file output!">Няма опции за конфигуриране изх. файл на Windows Wave!</entry>
+    <entry id="46" string="Windows Wave file output">Изх. файл Windows Wave</entry>
+    <entry id="47" string="Cannot change settings while encoding!">Не може да се променят настройки по време на кодирането!</entry>
+    <entry id="48" string="%1 encoder configuration">%1 конфигурация на енкодера</entry>
+    <entry id="49" string="OK">OK</entry>
+    <entry id="50" string="Cancel">Отказ</entry>
+    <entry id="51" string="Encoding Mode">Режим на кодиране</entry>
+    <entry id="52" string="Variable Bitrate">Променлив Bitrate</entry>
+    <entry id="53" string="Average Bitrate">Среден Bitrate</entry>
+    <entry id="54" string="Quality">Качество</entry>
+    <entry id="55" string="Encoders">Енкодери</entry>
+    <entry id="56" string="Language">Език</entry>
+    <entry id="57" string="Show title info">Показване на заглавието</entry>
+    <entry id="58" string="General settings setup">Основни настройки</entry>
+    <entry id="59" string="Configure encoder">Конфигурация на енкодер</entry>
+    <entry id="60" string="Encoder">Енкодер</entry>
+    <entry id="61" string="Output folder">Изходна папка</entry>
+    <entry id="62" string="Browse">Отваряне...</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Изберете папката, в която кодираните файлове ще бъдат поставени:</entry>
+    <entry id="64" string="Encoding">Кодиране</entry>
+    <entry id="65" string="Author">Автор</entry>
+    <entry id="66" string="URL">Адрес</entry>
+    <entry id="67" string="Information">Информация</entry>
+    <entry id="68" string="Select language:">Изберете език:</entry>
+    <entry id="69" string="Active CD-ROM drive">Активно CD-ROM устройство</entry>
+    <entry id="70" string="Ripper settings">Ripper настройки</entry>
+    <entry id="71" string="Activate cdparanoia mode:">CD параноя режим:</entry>
+    <entry id="72" string="Activate jitter correction">Корекция на колебанията</entry>
+    <entry id="73" string="Swap left/right channel">Размяна Ляв/Десен канал</entry>
+    <entry id="74" string="Lock CD tray while ripping">Заключ. на CD при извличане</entry>
+    <entry id="75" string="Use native NT SCSI library">Изп. на NT SCSI библиотека</entry>
+    <entry id="76" string="Overlap only">Само препокриване</entry>
+    <entry id="77" string="No verify">Без проверка</entry>
+    <entry id="78" string="No scratch repair">Без поправка за надраскване</entry>
+    <entry id="79" string="Full cdparanoia mode">Пълен режим cdparanoia</entry>
+    <entry id="80" string="Bitrate">Bitrate</entry>
+    <entry id="81" string="Copyright bit">Авт. право</entry>
+    <entry id="82" string="CRC">CRC</entry>
+    <entry id="83" string="Original bit">Оригинал</entry>
+    <entry id="84" string="Channels">Канали</entry>
+    <entry id="85" string="Private bit">Личен право</entry>
+    <entry id="86" string="Set Copyright bit">Зад. авт, право</entry>
+    <entry id="87" string="Enable CRC">Добавяне на CRC</entry>
+    <entry id="88" string="Set Original bit">Зад. Ориг. bit</entry>
+    <entry id="89" string="Dual channel encoding">Кодиране на два канала</entry>
+    <entry id="90" string="Set Private bit">Зад. Лично право</entry>
+    <entry id="91" string="Encoder mode">Метод на кодиране</entry>
+    <entry id="92" string="Stereo mode">Стерео режим</entry>
+    <entry id="93" string="Quantization">Квантуване</entry>
+    <entry id="94" string="Downsampling ratio">Коефиц.на понижено семплиране</entry>
+    <entry id="95" string="Predictor size">Предсказване на размера</entry>
+    <entry id="96" string="Enable lossless encoding">Кодиране без загуба</entry>
+    <entry id="97" string="Enable Joint Stereo">Включено Joint Stereo</entry>
+    <entry id="98" string="Bitrate per channel:">Bitrate на канал:</entry>
+    <entry id="99" string="Preselection">Предварителен избор</entry>
+    <entry id="100" string="Number of preselection candidates:">OK</entry>
+    <entry id="101" string="MPEG version">Отказ</entry>
+    <entry id="102" string="AAC object type">Затваряне</entry>
+    <entry id="103" string="Allow Joint Stereo">Позволено Joint Stereo</entry>
+    <entry id="104" string="Temporal Noise Shaping">Временно ограничение на шума</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">Използв.вр.огранич.на шума</entry>
+    <entry id="106" string="Maximum bandwidth">Макс. широколентова честота</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Макс. използв. широколентова честота на AAC (Hz):</entry>
+    <entry id="108" string="Basic">Основни</entry>
+    <entry id="109" string="Misc">Разни</entry>
+    <entry id="110" string="Audio processing">Аудио процесинг</entry>
+    <entry id="111" string="Set bitrate:">Зад. Bitrate:</entry>
+    <entry id="112" string="Set ratio:">Зад. съотношение:</entry>
+    <entry id="113" string="Set quality:">Зададено качество:</entry>
+    <entry id="114" string="worse">лошо</entry>
+    <entry id="115" string="better">добро</entry>
+    <entry id="116" string="Auto">Автоматично</entry>
+    <entry id="117" string="Stereo">Стерео</entry>
+    <entry id="118" string="Joint Stereo">Joint Stereo</entry>
+    <entry id="119" string="Force Joint Stereo">Принудително Joint Stereo</entry>
+    <entry id="120" string="VBR mode">VBR режим</entry>
+    <entry id="121" string="no VBR">без VBR</entry>
+    <entry id="122" string="VBR quality">VBR качество</entry>
+    <entry id="123" string="ABR target bitrate">ABR bitrate</entry>
+    <entry id="124" string="VBR bitrate range">Диапазон на VBR bitrate</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">Минимален VBR bitrate:</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">Максимален VBR bitrate:</entry>
+    <entry id="127" string="Control bits">Контролни маркери</entry>
+    <entry id="128" string="Stream format">Формат на потока</entry>
+    <entry id="129" string="Enforce strict ISO compliance">Стриктно прилагане спазването на ISO</entry>
+    <entry id="135" string="Output sampling rate">Изходна семплираща честота</entry>
+    <entry id="136" string="no resampling">без пресемплиране</entry>
+    <entry id="137" string="Highpass filter">Филтър за ВИСОКИ честоти</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">Зад. висока честота (Hz)</entry>
+    <entry id="139" string="Set Highpass width (Hz):">Зад.ширина висока честота(Hz)</entry>
+    <entry id="140" string="Lowpass filter">Филтър за ниски честоти</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">Зад. ниска честота (Hz)</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">Зад.ширина ниска честота (Hz)</entry>
+    <entry id="143" string="Misc settings">Разни настройки</entry>
+    <entry id="144" string="Disable all filtering">Изкл. всички филтри</entry>
+    <entry id="145" string="MP3 Files">Файлове MP3</entry>
+    <entry id="146" string="Ogg Vorbis Files">Файлове Ogg Vorbis</entry>
+    <entry id="147" string="Bonk Files">Файлове Bonk</entry>
+    <entry id="148" string="Automatic CDDB queries">Авт. заявки към CDDB</entry>
+    <entry id="149" string="CDDB access mode:">Режим за достъп до CDDB:</entry>
+    <entry id="150" string="CDDB server:">CDDB сървър:</entry>
+    <entry id="151" string="Port:">Порт:</entry>
+    <entry id="152" string="Info">Информация</entry>
+    <entry id="153" string="No freedb entry for this disk.">Няма записи в freedb за този диск</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">Възникна грешка при опит за свързване към freedb сървъра.</entry>
+    <entry id="155" string="Connecting to freedb server at">Свързване към freedb сървъра</entry>
+    <entry id="156" string="Requesting CD information">Заявка на информация за CD</entry>
+    <entry id="157" string="eMail address:">eMail адрес:</entry>
+    <entry id="158" string="Please enter a valid eMail address.">Въведете валиден eMail адрес.</entry>
+    <entry id="159" string="No exact matches found">Няма открити точни съответствия</entry>
+    <entry id="160" string="Multiple matches found">Намерени са множество съответствия</entry>
+    <entry id="161" string="Matches">Съответствия</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">Изберете записа, който най-добре отговаря на вашия CD:</entry>
+    <entry id="163" string="Extended CDDB settings">Разширени настройки на CDDB</entry>
+    <entry id="164" string="CGI scripts">CGI скриптове</entry>
+    <entry id="165" string="CDDB query script:">Скрипт за CDDB заявка:</entry>
+    <entry id="166" string="CDDB submit script:">Скрипт за CDDB изпращане:</entry>
+    <entry id="167" string="HTTP settings">HTTP настройки</entry>
+    <entry id="168" string="Proxy settings">Прокси настройки</entry>
+    <entry id="169" string="no proxy">без прокси</entry>
+    <entry id="170" string="Proxy type:">Тип прокси:</entry>
+    <entry id="171" string="Proxy server:">Прокси сървър:</entry>
+    <entry id="172" string="Presets">Предварителна настройки</entry>
+    <entry id="173" string="Use preset:">Използвана преднастройка:</entry>
+    <entry id="174" string="Custom settings">Собствени настройки</entry>
+    <entry id="179" string="Medium, Fast">Средно, Бързо</entry>
+    <entry id="180" string="Standard, Fast">Стандартно, Бързо</entry>
+    <entry id="181" string="Extreme, Fast">Пределно, Бързо</entry>
+    <entry id="182" string="Title">Заглавие</entry>
+    <entry id="183" string="Track">Песен №</entry>
+    <entry id="184" string="Length">Времетраене</entry>
+    <entry id="185" string="Size">Размер</entry>
+    <entry id="186" string="Artist">Изпълнител</entry>
+    <entry id="187" string="Year">Година</entry>
+    <entry id="188" string="Genre">Жанр</entry>
+    <entry id="189" string="Album">Албум</entry>
+    <entry id="190" string="Info tags">Тагове</entry>
+    <entry id="191" string="Default information">Подразбираем коментар</entry>
+    <entry id="192" string="Default comment string:">Подразбираем коментар:</entry>
+    <entry id="193" string="unknown artist">неизвестен изпълнител</entry>
+    <entry id="194" string="unknown title">неизвестно заглавие</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">Невъзможно е да се заредят ASPI драйверите! CD извличането е изключено!</entry>
+    <entry id="196" string="Database">База Данни</entry>
+    <entry id="197" string="Submit CDDB data...">Изпращане на CDDB данни...</entry>
+    <entry id="198" string="Enable CDDB cache">Включване на CDDB кеш</entry>
+    <entry id="199" string="CDDB data">CDDB данни</entry>
+    <entry id="200" string="Submit">Грешка</entry>
+    <entry id="201" string="No audio CD in drive!">Няма аудио CD в устройството!</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">Попълнете всички полета и заглавията на песните преди изпращане.</entry>
+    <entry id="203" string="Prefer CDDB over CD Text">Предп. на CDDB пред CD Текст</entry>
+    <entry id="204" string="CD options">CD настройки</entry>
+    <entry id="205" string="Submitting CD information">Изпращане на информация за CD</entry>
+    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Невъзможно е да се отвари файл: %1&#10;&#10;Грешка: %2</entry>
+    <entry id="207" string="Query CDDB database">Заявка към CDDB база данни</entry>
+    <entry id="208" string="Help">Помощ</entry>
+    <entry id="209" string="index_en.html">index_en.html</entry>
+    <entry id="210" string="Plug-ins">Плъгини</entry>
+    <entry id="211" string="Input plug-ins">Входящи плъгини</entry>
+    <entry id="212" string="Output plug-ins">Изходящи плъгини</entry>
+    <entry id="213" string="Configure">Конфигурация</entry>
+    <entry id="214" string="About">Относно</entry>
+    <entry id="215" string="Play">Възпроизвеждане</entry>
+    <entry id="216" string="Stop">Спиране</entry>
+    <entry id="217" string="Cannot play a file while encoding!">Не може да се възпроизвежда файл по време на кодиране!</entry>
+    <entry id="218" string="Cannot start encoding while playing a file!">Не може да се стартира кодиране по време на възпроизвеждане на файл!</entry>
+    <entry id="219" string="Enable remote CDDB database">Включване на отдалечена CDDB база данни</entry>
+    <entry id="220" string="ATH">ATH</entry>
+    <entry id="221" string="Enable ATH:">Използване на ATH:</entry>
+    <entry id="222" string="Use default setting">Използване на настройка по подразбиране</entry>
+    <entry id="223" string="Psycho acoustic model">Психо акустичен модел</entry>
+    <entry id="224" string="Use Temporal Masking Effect">Използване времеви маскиращ ефект</entry>
+    <entry id="225" string="Expert">Експертни</entry>
+    <entry id="226" string="Cannot configure encoder while encoding!">Не може да се променят настройки по време на кодирането!</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">Изходната папка не съществува! Искате ли да я създадете?</entry>
+    <entry id="228" string="Filename pattern">Шаблон за име на файла</entry>
+    <entry id="229" string="unknown album">неизвестен албум</entry>
+    <entry id="230" string="Translated by %1.">Преведено от %1.</entry>
+    <entry id="231" string="Select all">Избиране на всичко</entry>
+    <entry id="232" string="Select none">Празен избор</entry>
+    <entry id="233" string="Toggle selection">Превключване на избора</entry>
+    <entry id="234" string="Show Tip of the Day">Показване на Съвети за деня</entry>
+    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 е наличен на %2 езика.&#10;Ако вашият език не е наличен,&#10;можете лесно да преведете %1,&#10;използвайки приложението 'smooth Translator'.</entry>
+    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 поддържа енкодерите&#10;LAME, Ogg Vorbis, FAAC, FLAC и Bonk.&#10;Енкодер за формата VQF е наличен&#10;на сайта на %1 на адрес: %2</entry>
+    <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 може да ползва входящи плъгини на Winamp 2&#10;за поддържане на повече формати.&#10;Копирайте файловете in_*.dll в директорията&#10;%1 / plugins за да може %1 да чете тези формати.</entry>
+    <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">С %1 може да изратите записи към freedb CD базата&#10;данни съдържащи Уникод символи. Така че, ако имате&#10;CD-та с не-латински имена на изпълнителя или песните,&#10;можете да изпратите правилни записи към freedb с %1.</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">За коригиране на грешките при четене по време на&#10;извличането може да влючите 'Корекция на трептенията'&#10;в таба 'CD Извличане' в конфигурационния прозорец на %1.&#10;Ако това не помогне, опитайте някой от Paranoia режимите.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Имате предложения за усъвършенстване на %1?&#10;Може да изпращате всякакви идеи&#10;през Тракера на SourceForge страницата&#10;на %1 - %2&#10;или да изпратите eMail до %3.</entry>
+    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Харесвате ли %1? %1 е безплатен, но вие може да&#10;подпомогнете разработването като направите дарение&#10;за проекта %1. Може да изпратите пари до %2&#10;през PayPal.&#10;Вижте %3 за повече подробности.</entry>
+    <entry id="242" string="Bitrate / Quality">Bitrate / Качество</entry>
+    <entry id="243" string="Check for updates now">Проверка за обновяване сега</entry>
+    <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Налични са обновления за %1!&#10;Желаете ли да разгледате списък с наличните обновления сега?</entry>
+    <entry id="245" string="There are no updates available at the moment!">Няма налични обновления в момента!</entry>
+    <entry id="246" string="Check for updates at startup">Проверка за обновяване при стартиране</entry>
+    <entry id="247" string="Read CD contents on insert">Четене на CD при поставяне</entry>
+    <entry id="248" string="Eject disk after ripping">Извади диска след извличането</entry>
+    <entry id="249" string="Encode 'On-The-Fly'">ПаралелноКодиране(в движение)</entry>
+    <entry id="250" string="Keep ripped Wave files">Запазване Wave файловете</entry>
+    <entry id="251" string="ripping/decoding">извличане/декодиране</entry>
+    <entry id="252" string="encoding">кодиране</entry>
+    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="254" string="Use Unicode filenames">Разр. на Unicode символи</entry>
+    <entry id="255" string="AAC Files">Файлове AAC</entry>
+    <entry id="256" string="MP4 Files">Файлове MP4</entry>
+    <entry id="257" string="Format">Формат</entry>
+    <entry id="258" string="File format">Файлов формат</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">Разрешаване на ID3v2 тагове в AAC файлове</entry>
+    <entry id="260" string="Note:">Забележка:</entry>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Някои устройства могат да имат проблем с AAC&#10;файлове с ID3 тагове. Използвайте само ако сте&#10;сигурни, че вашия плейър може да прочете тези тагове.</entry>
+    <entry id="262" string="FLAC Files">Файлове FLAC</entry>
+    <entry id="263" string="Sampling rate">Семплираща честота</entry>
+    <entry id="264" string="Sample resolution">Семплираща резолюция</entry>
+    <entry id="265" string="Number of samples">Брой семпли</entry>
+    <entry id="266" string="Mono">Моно</entry>
+    <entry id="267" string="bytes">bytes</entry>
+    <entry id="268" string="bit">bit</entry>
+    <entry id="269" string="min">мин</entry>
+    <entry id="270" string="Create playlist">Създаване на плейлист</entry>
+    <entry id="271" string="Create cue sheet">Създаване на cue лист</entry>
+    <entry id="272" string="Write ID3v1 tags">Запис на ID3v1 тагове</entry>
+    <entry id="273" string="Write ID3v2 tags">Запис на ID3v2 тагове</entry>
+    <entry id="274" string="Write Vorbis Comment tags">Запис на Vorbis коментар тагове</entry>
+    <entry id="275" string="Write MP4 metadata info">Запис на MP4 метаданни инфо</entry>
+    <entry id="276" string="ID3v1 tag encoding:">ID3v1 таг кодиране:</entry>
+    <entry id="277" string="ID3v2 tag encoding:">ID3v2 таг кодиране:</entry>
+    <entry id="278" string="Vorbis Comment tag encoding:">Vorbis коментар таг кодиране:</entry>
+    <entry id="279" string="MP4 metadata encoding:">MP4 метаданни инфо кодиране:</entry>
+    <entry id="280" string="Tag encodings">Таг кодиране</entry>
+    <entry id="281" string="Update joblist with this information">Обновяване на списъка със задачи с тази информация</entry>
+    <entry id="282" string="unknown genre">неизвестен жанр</entry>
+    <entry id="283" string="Load joblist...">Зареждане на списък със задачи...</entry>
+    <entry id="284" string="Save joblist...">Запис на списъка със задачи...</entry>
+    <entry id="285" string="Pause/resume encoding">Пауза/продължаване на кодирането</entry>
+    <entry id="286" string="Shutdown after encoding">Изключване след кодирането</entry>
+    <entry id="287" string="Playlist Files">Плейлист файлове</entry>
+    <entry id="288" string="unknown year">неизвестна година</entry>
+    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Не може да се инициализира %1 енкодер! Проверете конфигурацията!</entry>
+    <entry id="290" string="Blocksize:">Размер на блока:</entry>
+    <entry id="291" string="Use streamable subset">Използване поточна поднастройка</entry>
+    <entry id="292" string="Adaptive Joint Stereo">Адаптивно Joint Stereo</entry>
+    <entry id="293" string="Fastest encoding">Бързо кодиране</entry>
+    <entry id="294" string="Best compression">Добра компресия</entry>
+    <entry id="295" string="Linear predictor">Линейно предсказване</entry>
+    <entry id="296" string="Maximum LPC order">Максимално LPC подреждане</entry>
+    <entry id="297" string="Quantized LPC precision">Квантувана точност на LPC</entry>
+    <entry id="298" string="Exhaustive model search">Пълен модел за търсене</entry>
+    <entry id="299" string="Optimize LPC quantization">Оптимизиране на LPC квантуването</entry>
+    <entry id="300" string="disabled">Изпълнител</entry>
+    <entry id="301" string="auto">Заглавие</entry>
+    <entry id="302" string="Residual coding">Албум</entry>
+    <entry id="303" string="Minimum partition order">Песен</entry>
+    <entry id="304" string="Maximum partition order">Жанр</entry>
+    <entry id="305" string="By pattern">Коментар</entry>
+    <entry id="306" string="From folder">Година</entry>
+    <entry id="307" string="Folder">Диск</entry>
+    <entry id="308" string="Add folder">Добавяне на папка</entry>
+    <entry id="309" string="Choose folder:">Изберете папка:</entry>
+    <entry id="310" string="Select the folder to add to the joblist:">Изберете папка за добавяне към списъка със задачи:</entry>
+    <entry id="311" string="Add files by pattern">Добавяне на файлове по шаблон</entry>
+    <entry id="312" string="Pattern">Шаблон</entry>
+    <entry id="313" string="Start folder">Начална папка</entry>
+    <entry id="314" string="No files found matching pattern:">Няма открити файлове отговарящи на шаблона:</entry>
+    <entry id="315" string="Edit language file">Редакция на езиковия файл</entry>
+    <entry id="316" string="Use for all selected tracks">Използвай за всички избрани песни</entry>
+    <entry id="317" string="Interpret string as">Интерпретиране на реда като</entry>
+    <entry id="318" string="selected tracks">избрани песни</entry>
+    <entry id="319" string="Adjust upper/lower case">Настройване на главни/малки букви</entry>
+    <entry id="320" string="all words upper case">всички думи с главни букви</entry>
+    <entry id="321" string="long words upper case">дълги думи с главни букви</entry>
+    <entry id="322" string="first letter upper case">първата буква с главна буква</entry>
+    <entry id="323" string="all lower case">всичко с малки букви</entry>
+    <entry id="324" string="all upper case">всичко с главни букви</entry>
+    <entry id="325" string="Status">Състояние</entry>
+    <entry id="326" string="Successfully read CD!">Успешно прочетено CD!</entry>
+    <entry id="327" string="Comment">Коментар</entry>
+    <entry id="328" string="Manage CDDB cache entries...">Управление на кеша със записи на CDDB...</entry>
+    <entry id="329" string="Save entry">Запазване</entry>
+    <entry id="330" string="Remove entry">Премахване</entry>
+    <entry id="331" string="Disc name">Име на диска</entry>
+    <entry id="332" string="Charset">Набор символи</entry>
+    <entry id="333" string="Preview">Преглед</entry>
+    <entry id="334" string="Downloaded CDDB entries:">Изтеглени CDDB записи:</entry>
+    <entry id="335" string="User name:">Потребителско име:</entry>
+    <entry id="336" string="Password:">Парола:</entry>
+    <entry id="337" string="Delete original files after encoding">Изтриване на оригиналните файлове след кодирането</entry>
+    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Тази опция ще изтрие оригиналните файлове&#10;от вашия компютър след процеса по кодиране!&#10;&#10;Сигурни ли сте, че искате да активирате тази функция?</entry>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Протокола freedb CDDBP не може да бъде използван&#10;с HTTP пренасочващи проксита!&#10;&#10;Желаете ли да промените протокола на HTTP?</entry>
+    <entry id="340" string="Playlists">Плейлисти</entry>
+    <entry id="341" string="Create playlists">Създаване на плейлисти</entry>
+    <entry id="342" string="Create cue sheets">Създаване на cue листи</entry>
+    <entry id="343" string="Use encoder output folder">Изходната папка на енкодера</entry>
+    <entry id="344" string="Various artists">Разни изпълнители</entry>
+    <entry id="345" string="Data track">Пътечка с данни</entry>
+    <entry id="346" string="Select the folder in which the playlist files will be placed:">Изберете папката в която плейлистите ще бъдат поставени:</entry>
+    <entry id="347" string="Use input file folder if possible">Папката на входния файл (ако е възможно)</entry>
+    <entry id="348" string="Encode to input file folder if possible">Кодиране в папката на входния файл (ако е възможно)</entry>
+    <entry id="349" string="Allow overwriting input file">Разрешаване на презаписването на входния файл</entry>
+    <entry id="350" string="Encode to a single file">неизвестен изпълнител</entry>
+    <entry id="351" string="Encoder options">неизвестно заглавие</entry>
+    <entry id="352" string="Skip">неизвестен албум</entry>
+    <entry id="353" string="Enable local CDDB database">неизвестен жанр</entry>
+    <entry id="354" string="CDDB path:">неизвестна година</entry>
+    <entry id="355" string="Select the folder of the CDDB database:">Изберете папката на CDDB базата данни:</entry>
+    <entry id="356" string="File already exists">Файлът вече съществува</entry>
+    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Изходния файл %1&#10;вече съществува! Искате ли да го презапишете?</entry>
+    <entry id="358" string="Overwrite all further files">Презаписване на всички следващи файлове</entry>
+    <entry id="359" string="Start ripping automatically">Авт.стартиране на извличането</entry>
+    <entry id="360" string="Submit to online database later">Изпращане към онлайн базата с данни по-късно</entry>
+    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Поддръжката на CDDB е изключена! Моля включете поддръжка&#10;за местна или отдалечена CDDB в конфигурационния прозорец.</entry>
+    <entry id="362" string="CDDB entries to submit:">CDDB записи за изпращане:</entry>
+    <entry id="363" string="Show queued CDDB entries...">Показване на чакащите CDDB запис...</entry>
+    <entry id="364" string="Submit all">Изпращане на вс.</entry>
+    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Поддръжката за отдалечена CDDB е изключена! Моля, включете&#10;поддръжка за отдалечена CDDB в конфигурационния прозорец.</entry>
+    <entry id="366" string="Category">Категория</entry>
+    <entry id="367" string="Close">Затваряне</entry>
+    <entry id="368" string="Automatization">Автоматизация</entry>
+    <entry id="369" string="Query CDDB database later">Заявка към CDDB база данни по-късно</entry>
+    <entry id="370" string="Show queued CDDB queries...">Показване на опашката със CDDB заявки...</entry>
+    <entry id="371" string="CDDB queries">CDDB заявки</entry>
+    <entry id="372" string="Query">Заявка</entry>
+    <entry id="373" string="Query all">Заявка на вс.</entry>
+    <entry id="374" string="Query string">Заявка на ред</entry>
+    <entry id="375" string="CDDB queries to perform:">CDDB заявки за изпълнение:</entry>
+    <entry id="376" string="Would you like to perform this query again later?">Искате ли да изпълните тази заявка отново по-късно?</entry>
+    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Достъпът до CD-ROM устройствата е отказан от Windows.&#10;&#10;Моля свържете се с вашия системен администратор&#10;за да получите достъп до CD-ROM устройството.</entry>
+    <entry id="378" string="CD information">CD информация</entry>
+    <entry id="379" string="Read CD Text">Четене на CD Текст</entry>
+    <entry id="380" string="Read cdplayer.ini">Четене на cdplayer.ini</entry>
+    <entry id="381" string="Apodization">Аподизация</entry>
+    <entry id="382" string="Apodization function(s):">Функция/и на аподизация</entry>
+    <entry id="383" string="You can specify multiple functions separated by semicolons.">Може да посочите повече функции разделени с ;</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 може да извърши автоматична проверка за&#10;обновяване на програмата при стартиране.&#10;&#10;Желаете ли %1 да потърси обновления при стартиране?</entry>
+    <entry id="385" string="Cannot access input file: %1">Няма достъп до входния файл: %1</entry>
+    <entry id="386" string="Cannot create output file: %1">Не може да се създаде изходен файл: %1</entry>
+    <entry id="387" string="File not found">Файлът не е открит</entry>
+    <entry id="388" string="Unknown file type">Неизвестен тип файл</entry>
+    <entry id="389" string="Unsupported audio format">Неподдържан аудио формат</entry>
+    <entry id="390" string="Unknown error">Неизвестна грешка</entry>
+    <entry id="391" string="Replace existing comments with default comment">Замяна на съществуващите коментари с подразбираемия</entry>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Избраните файлове не могат да се комбинират в един&#10;изходен файл поради различни семплиращи формати.&#10;&#10;Моля конвертирайте всички файлове в еднакъв семплиращ формат.</entry>
+    <entry id="393" string="Write WMA metadata info">Запис на WMA метаданни инфо</entry>
+    <entry id="394" string="WMA metadata encoding:">WMA метаданни инфо кодиране:</entry>
+    <entry id="395" string="Select codec">Изберете кодек</entry>
+    <entry id="396" string="Select codec format">Изберете формат на кодека</entry>
+    <entry id="397" string="Codec settings">Настройки на кодека</entry>
+    <entry id="398" string="Use codec">Използван кодек</entry>
+    <entry id="399" string="Use format">Използван формат</entry>
+    <entry id="400" string="Write uncompressed WMA files">Записване на некомпресирани WMA файлове</entry>
+    <entry id="401" string="Automatically select format based on settings and input format">Автоматично избиране въз основа на настройките и входния формат</entry>
+    <entry id="402" string="Use VBR encoding">VBR кодиране</entry>
+    <entry id="403" string="Use 2-pass encoding">Кодиране на 2 етапа</entry>
+    <entry id="404" string="Target bitrate">Целеви bitrate</entry>
+    <entry id="405" string="Set drive speed limit:">Пределна скорост:</entry>
+    <entry id="406" string="Support this project">Подкрепа за този проект</entry>
+    <entry id="407" string="Please support this project!">Моля, подкрепете този проект!</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Помогнете за развитието на този безплатен софтуер,&#10;като подкрепите проекта %1 с дарение.&#10;&#10;Щракнете един от бутоните по-долу за да направите дарение през PayPal:</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Можете също да пратите пари директно до %1 през PayPal.&#10;&#10;Пишете до %1, ако желаете да направите дарение,&#10;използвайки електронното разплащане,&#10;изпращане на чек или пари по пощата.</entry>
+    <entry id="410" string="usd">usd</entry>
+    <entry id="411" string="en">en</entry>
+    <entry id="412" string="Thank you very much!">Много Ви благодаря!</entry>
+    <entry id="413" string="Remind me later">Напомни ми по-късно</entry>
+    <entry id="414" string="CDDB">CDDB</entry>
+    <entry id="415" string="Ripper">Ripper</entry>
+    <entry id="416" string="Default">По подразбиране</entry>
+  </data>
+</LangFile>

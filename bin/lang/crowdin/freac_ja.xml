@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.0.16</property>
+    <property name="language">Japanese / 日本語</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
+    <property name="author">REIKA</property>
+    <property name="url">http://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="1" string="File">ファイル</entry>
+    <entry id="2" string="Options">オプション</entry>
+    <entry id="3" string="Encode">エンコード</entry>
+    <entry id="4" string="Add">追加</entry>
+    <entry id="5" string="Remove">削除</entry>
+    <entry id="6" string="Clear joblist">リストのクリア</entry>
+    <entry id="7" string="Exit">終了</entry>
+    <entry id="8" string="General settings...">一般設定...</entry>
+    <entry id="9" string="Configure selected encoder...">選択エンコーダの設定...</entry>
+    <entry id="10" string="Audio file(s)">オーディオ ファイル</entry>
+    <entry id="11" string="Audio CD contents">オーディオ CD コンテンツ</entry>
+    <entry id="12" string="Start encoding">エンコード開始</entry>
+    <entry id="13" string="Stop encoding">エンコード停止</entry>
+    <entry id="14" string="Encoding file:">エンコード ファイル：</entry>
+    <entry id="15" string="Time left:">残り時間：</entry>
+    <entry id="16" string="Percent done:">進捗：</entry>
+    <entry id="17" string="Selected encoder:">選択エンコーダ：</entry>
+    <entry id="18" string="File progress:">処理状況：</entry>
+    <entry id="19" string="Output dir.:">出力先：</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 個のファイルがリストにあります（総時間 %2）：</entry>
+    <entry id="21" string="none">なし</entry>
+    <entry id="22" string="Help topics...">ヘルプ...</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">ファイルをリストに追加</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">CD コンテンツをリストに追加</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">選択項目をリストから削除</entry>
+    <entry id="26" string="Clear the entire joblist">リストをクリア</entry>
+    <entry id="27" string="Configure general settings">一般設定</entry>
+    <entry id="28" string="Configure the selected audio encoder">選択エンコーダの設定</entry>
+    <entry id="29" string="Start the encoding process">エンコードを開始</entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">エンコード中はリスト修正は出来ません</entry>
+    <entry id="31" string="Error">エラー</entry>
+    <entry id="32" string="Audio Files">オーディオ ファイル</entry>
+    <entry id="33" string="Apple Audio Files">Apple オーディオ ファイル</entry>
+    <entry id="34" string="Creative Voice Files">Creative オーディオ ファイル</entry>
+    <entry id="35" string="Sun Audio Files">Sun オーディオ ファイル</entry>
+    <entry id="36" string="Wave Files">Wave ファイル</entry>
+    <entry id="37" string="Windows CD Audio Track">Windows CD オーディオ トラック</entry>
+    <entry id="38" string="All Files">全てのファイル</entry>
+    <entry id="39" string="You did not select a track!">ファイルが選択されていません</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">エンコード処理を実行中です。本当に終了しますか？</entry>
+    <entry id="41" string="Currently encoding">エンコード中です</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">このプログラムは、GNU General Public License&#10;(GPL) の条件下で配布されています。</entry>
+    <entry id="43" string="CDDB query">CDDB 問い合わせ</entry>
+    <entry id="44" string="About %1">%1 について</entry>
+    <entry id="45" string="No options can be configured for Windows Wave file output!">Wave 出力フィルタには設定項目はありません</entry>
+    <entry id="46" string="Windows Wave file output">Wave 出力フィルタ</entry>
+    <entry id="47" string="Cannot change settings while encoding!">エンコード中に設定変更は出来ません</entry>
+    <entry id="48" string="%1 encoder configuration">%1 エンコーダの設定</entry>
+    <entry id="49" string="OK">OK</entry>
+    <entry id="50" string="Cancel">キャンセル</entry>
+    <entry id="51" string="Encoding Mode">エンコード モード</entry>
+    <entry id="52" string="Variable Bitrate">可変ビットレート</entry>
+    <entry id="53" string="Average Bitrate">平均ビットレート</entry>
+    <entry id="54" string="Quality">品質</entry>
+    <entry id="55" string="Encoders">エンコーダ</entry>
+    <entry id="56" string="Language">言語</entry>
+    <entry id="57" string="Show title info">ファイル情報を表示</entry>
+    <entry id="58" string="General settings setup">一般設定</entry>
+    <entry id="59" string="Configure encoder">エンコーダ設定</entry>
+    <entry id="60" string="Encoder">エンコーダ</entry>
+    <entry id="61" string="Output folder">出力先ディレクトリ</entry>
+    <entry id="62" string="Browse">参照</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">出力先ディレクトリを選択：</entry>
+    <entry id="64" string="Encoding">エンコード</entry>
+    <entry id="65" string="Author">作者</entry>
+    <entry id="66" string="URL">URL</entry>
+    <entry id="67" string="Information">情報</entry>
+    <entry id="68" string="Select language:">言語の選択：</entry>
+    <entry id="69" string="Active CD-ROM drive">アクティブな CD-ROM ドライブ</entry>
+    <entry id="70" string="Ripper settings">リッパー設定</entry>
+    <entry id="71" string="Activate cdparanoia mode:">CD 詳細設定モード有効：</entry>
+    <entry id="72" string="Activate jitter correction">ジッター補正有効</entry>
+    <entry id="73" string="Swap left/right channel">左右チャンネルの入れ替え</entry>
+    <entry id="74" string="Lock CD tray while ripping">リッピング中は CD トレイをロック</entry>
+    <entry id="75" string="Use native NT SCSI library">NT SCSI ライブラリを使用</entry>
+    <entry id="76" string="Overlap only">オーバーラップのみ</entry>
+    <entry id="77" string="No verify">ベリファイを行わない</entry>
+    <entry id="78" string="No scratch repair">破損部の修復をしない</entry>
+    <entry id="79" string="Full cdparanoia mode">全て行う</entry>
+    <entry id="80" string="Bitrate">ビットレート</entry>
+    <entry id="81" string="Copyright bit">著作権ビット</entry>
+    <entry id="82" string="CRC">CRC</entry>
+    <entry id="83" string="Original bit">オリジナル ビット</entry>
+    <entry id="84" string="Channels">チャンネル</entry>
+    <entry id="85" string="Private bit">プライベート ビット</entry>
+    <entry id="86" string="Set Copyright bit">著作権ビットをセット</entry>
+    <entry id="87" string="Enable CRC">CRC チェック有効</entry>
+    <entry id="88" string="Set Original bit">オリジナル ビットをセット</entry>
+    <entry id="89" string="Dual channel encoding">デュアル チャンネル エンコード</entry>
+    <entry id="90" string="Set Private bit">プライベート ビットをセット</entry>
+    <entry id="91" string="Encoder mode">エンコーダのモード</entry>
+    <entry id="92" string="Stereo mode">ステレオ モード</entry>
+    <entry id="93" string="Quantization">量子化</entry>
+    <entry id="94" string="Downsampling ratio">ダウンサンプリング比率</entry>
+    <entry id="95" string="Predictor size">予測サイズ</entry>
+    <entry id="96" string="Enable lossless encoding">可逆圧縮を使用</entry>
+    <entry id="97" string="Enable Joint Stereo">ジョイント ステレオ使用</entry>
+    <entry id="98" string="Bitrate per channel:">チャンネル毎ビットレート：</entry>
+    <entry id="99" string="Preselection">事前選択</entry>
+    <entry id="100" string="Number of preselection candidates:">事前選択候補の数</entry>
+    <entry id="101" string="MPEG version">MPEG バージョン</entry>
+    <entry id="102" string="AAC object type">AAC のタイプ</entry>
+    <entry id="103" string="Allow Joint Stereo">ジョイント ステレオを許可</entry>
+    <entry id="104" string="Temporal Noise Shaping">TNS （時間軸ノイズ調整）</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">TNS を使用する</entry>
+    <entry id="106" string="Maximum bandwidth">最大帯域幅</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">AAC 最大周波数帯域幅(Hz)：</entry>
+    <entry id="108" string="Basic">基本</entry>
+    <entry id="109" string="Misc">その他</entry>
+    <entry id="110" string="Audio processing">オーディオ処理</entry>
+    <entry id="111" string="Set bitrate:">ビットレート：</entry>
+    <entry id="112" string="Set ratio:">圧縮比：</entry>
+    <entry id="113" string="Set quality:">品質：</entry>
+    <entry id="114" string="worse">低</entry>
+    <entry id="115" string="better">高</entry>
+    <entry id="116" string="Auto">自動</entry>
+    <entry id="117" string="Stereo">シンプル ステレオ</entry>
+    <entry id="118" string="Joint Stereo">ジョイント ステレオ</entry>
+    <entry id="119" string="Force Joint Stereo">強制 M/S ステレオ</entry>
+    <entry id="120" string="VBR mode">VBR モード</entry>
+    <entry id="121" string="no VBR">VBR 非使用</entry>
+    <entry id="122" string="VBR quality">VBR 品質</entry>
+    <entry id="123" string="ABR target bitrate">ABR 目標ビットレート</entry>
+    <entry id="124" string="VBR bitrate range">VBR ビットレート範囲</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">VBR 最小ビットレート：</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">VBR 最大ビットレート：</entry>
+    <entry id="127" string="Control bits">コントロール ビット</entry>
+    <entry id="128" string="Stream format">ストリーム フォーマット</entry>
+    <entry id="129" string="Enforce strict ISO compliance">厳格に ISO 規格に準拠</entry>
+    <entry id="135" string="Output sampling rate">出力サンプリング レート</entry>
+    <entry id="136" string="no resampling">リサンプリングしない</entry>
+    <entry id="137" string="Highpass filter">低域カット フィルタ</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">低域カット 周波数 (Hz)：</entry>
+    <entry id="139" string="Set Highpass width (Hz):">低域カット減衰幅 (Hz)：</entry>
+    <entry id="140" string="Lowpass filter">高域カット フィルタ</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">高域カット周波数 (Hz)：</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">高域カット減衰幅 (Hz)：</entry>
+    <entry id="143" string="Misc settings">その他の設定</entry>
+    <entry id="144" string="Disable all filtering">フィルタを使用しない</entry>
+    <entry id="145" string="MP3 Files">MP3 ファイル</entry>
+    <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis ファイル</entry>
+    <entry id="147" string="Bonk Files">Bonk ファイル</entry>
+    <entry id="148" string="Automatic CDDB queries">自動 CDDB 問い合わせ</entry>
+    <entry id="149" string="CDDB access mode:">CDDB アクセス モード：</entry>
+    <entry id="150" string="CDDB server:">CDDB サーバ：</entry>
+    <entry id="151" string="Port:">ポート：</entry>
+    <entry id="152" string="Info">情報</entry>
+    <entry id="153" string="No freedb entry for this disk.">このディスクの情報は freedb にありません。</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">freedb サーバ接続の試行中に問題が発生しました。</entry>
+    <entry id="155" string="Connecting to freedb server at">freedb サーバに接続しています</entry>
+    <entry id="156" string="Requesting CD information">CD 情報をリクエスト中</entry>
+    <entry id="157" string="eMail address:">メール アドレス：</entry>
+    <entry id="158" string="Please enter a valid eMail address.">正しいメール アドレスを入力してください。</entry>
+    <entry id="159" string="No exact matches found">一致する物がありません</entry>
+    <entry id="160" string="Multiple matches found">複数の物が一致</entry>
+    <entry id="161" string="Matches">一致</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">この CD に最適な項目を選択：</entry>
+    <entry id="163" string="Extended CDDB settings">拡張 CDDB 設定</entry>
+    <entry id="164" string="CGI scripts">CGI スクリプト</entry>
+    <entry id="165" string="CDDB query script:">CDDB 問い合わせ：</entry>
+    <entry id="166" string="CDDB submit script:">CDDB 送信：</entry>
+    <entry id="167" string="HTTP settings">HTTP 設定</entry>
+    <entry id="168" string="Proxy settings">プロクシ設定</entry>
+    <entry id="169" string="no proxy">プロクシを使用しない</entry>
+    <entry id="170" string="Proxy type:">プロクシの種類：</entry>
+    <entry id="171" string="Proxy server:">プロクシ サーバー：</entry>
+    <entry id="172" string="Presets">プリセット</entry>
+    <entry id="173" string="Use preset:">プリセット使用：</entry>
+    <entry id="174" string="Custom settings">カスタム設定</entry>
+    <entry id="179" string="Medium, Fast">Medium （VBR -V 4, 140-185kbps）, Fast</entry>
+    <entry id="180" string="Standard, Fast">Standard （VBR -V 2, 170-210kbps）, Fast</entry>
+    <entry id="181" string="Extreme, Fast">Extreme （VBR -V 0, 220-260kbps）, Fast</entry>
+    <entry id="182" string="Title">タイトル</entry>
+    <entry id="183" string="Track">トラック</entry>
+    <entry id="184" string="Length">時間</entry>
+    <entry id="185" string="Size">サイズ</entry>
+    <entry id="186" string="Artist">アーティスト</entry>
+    <entry id="187" string="Year">年</entry>
+    <entry id="188" string="Genre">ジャンル</entry>
+    <entry id="189" string="Album">アルバム</entry>
+    <entry id="190" string="Info tags">タグ情報</entry>
+    <entry id="191" string="Default information">デフォルト情報</entry>
+    <entry id="192" string="Default comment string:">デフォルト コメント：</entry>
+    <entry id="193" string="unknown artist">アーティスト不明</entry>
+    <entry id="194" string="unknown title">タイトル不明</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI ドライバがロードできません。 CD リッピングが出来ません。</entry>
+    <entry id="196" string="Database">データベース</entry>
+    <entry id="197" string="Submit CDDB data...">CDDB にデータを送信...</entry>
+    <entry id="198" string="Enable CDDB cache">CDDB キャッシュ有効</entry>
+    <entry id="199" string="CDDB data">CDDB データ</entry>
+    <entry id="200" string="Submit">送信</entry>
+    <entry id="201" string="No audio CD in drive!">オーディオ CD がセットされていません</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">送信前に全フィールドとタイトルを入力してください。</entry>
+    <entry id="203" string="Prefer CDDB over CD Text">CD Text より CDDB を優先</entry>
+    <entry id="204" string="CD options">CD 設定</entry>
+    <entry id="205" string="Submitting CD information">CD 情報を送信</entry>
+    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
+    <entry id="207" string="Query CDDB database">CDDB へ問い合わせ</entry>
+    <entry id="208" string="Help">ヘルプ</entry>
+    <entry id="209" string="index_en.html">index.html</entry>
+    <entry id="210" string="Plug-ins">プラグイン</entry>
+    <entry id="211" string="Input plug-ins">入力プラグイン</entry>
+    <entry id="212" string="Output plug-ins">出力プラグイン</entry>
+    <entry id="213" string="Configure">設定</entry>
+    <entry id="214" string="About">プラグイン情報</entry>
+    <entry id="215" string="Play">再生</entry>
+    <entry id="216" string="Stop">停止</entry>
+    <entry id="217" string="Cannot play a file while encoding!">エンコード中はファイル再生はできません</entry>
+    <entry id="218" string="Cannot start encoding while playing a file!">ファイル再生中はエンコードを開始できません</entry>
+    <entry id="219" string="Enable remote CDDB database">リモート CDDB 有効</entry>
+    <entry id="220" string="ATH">ATH （絶対可聴閾値）</entry>
+    <entry id="221" string="Enable ATH:">ATH 有効：</entry>
+    <entry id="222" string="Use default setting">デフォルト設定を使用</entry>
+    <entry id="223" string="Psycho acoustic model">心理音響モデル</entry>
+    <entry id="224" string="Use Temporal Masking Effect">継時マスキング効果を使用</entry>
+    <entry id="225" string="Expert">高度な設定</entry>
+    <entry id="226" string="Cannot configure encoder while encoding!">エンコード中はエンコーダ設定を変更できません</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">出力先ディレクトリがありません。新規に作成しますか？</entry>
+    <entry id="228" string="Filename pattern">ファイル名パターン</entry>
+    <entry id="229" string="unknown album">アルバム不明</entry>
+    <entry id="230" string="Translated by %1.">%1 により翻訳されました。</entry>
+    <entry id="231" string="Select all">すべて選択</entry>
+    <entry id="232" string="Select none">すべて選択解除</entry>
+    <entry id="233" string="Toggle selection">選択の切り替え</entry>
+    <entry id="234" string="Show Tip of the Day">今日の Tip を表示</entry>
+    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 は %2 種類の言語で利用可能です。もしあなたの&#10;使用言語が利用できない場合、'smooth Translator' を&#10;使って簡単に %1 を翻訳する事が出来ます。</entry>
+    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 は LAME、Ogg Vorbis、FAAC、FLAC、及び Bonk&#10;エンコーダをサポートしています。&#10;VQF 形式のエンコーダは下記で公開されています。&#10;%1 のウェブサイト：%2</entry>
+    <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 は Winamp2 入力プラグインを使って対応形式を&#10;追加する事が出来ます。%1 で他の形式を読み込める&#10;ようにするには、in_*.dll を %1/plugins にコピー&#10;してください。</entry>
+    <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1 で freedb CD データベースに Unicode 文字を含む&#10;データを送信できます。あなたの持っている英文字以外の&#10;アーティスト名やタイトル名の CD データを、%1 で&#10;freedb に送信できます。</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">リッピングの読み込みエラー補正には、設定ダイアログの&#10;CD Rip タブの 'ジッター補正有効' をチェックしてください。&#10;それで解決しない場合は、CD 詳細設定モードのいずれかを&#10;試してください。</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">%1 の改善につき意見があれば、SourceForge にある&#10;%1 のプロジェクトページ(%2)&#10;のトラッカーか、%3 へのメールで&#10;あなたのアイディアを送信する事が出来ます。</entry>
+    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">%1 が気に入りましたか？ これは無料で利用できますが、&#10;%1 プロジェクトに寄付する事で開発を資金援助が出来ます。&#10;あなたは %2 へ PayPal を使って送金できます。&#10;詳細は %3 を参照してください。</entry>
+    <entry id="242" string="Bitrate / Quality">ビットレート/品質</entry>
+    <entry id="243" string="Check for updates now">アップデートを確認</entry>
+    <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">%1 の新規アップデートがオンラインで利用可能です。&#10;利用できるアップデートのリストを表示しますか？</entry>
+    <entry id="245" string="There are no updates available at the moment!">現在利用できるアップデートはありません。</entry>
+    <entry id="246" string="Check for updates at startup">起動時にアップデートを確認</entry>
+    <entry id="247" string="Read CD contents on insert">CD 挿入時に読み込みを行う</entry>
+    <entry id="248" string="Eject disk after ripping">リッピング後ディスクを取り出す</entry>
+    <entry id="249" string="Encode 'On-The-Fly'">オン ザ フライでエンコード</entry>
+    <entry id="250" string="Keep ripped Wave files">リップした Wave ファイルを保持</entry>
+    <entry id="251" string="ripping/decoding">リッピング/デコード</entry>
+    <entry id="252" string="encoding">エンコード</entry>
+    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="254" string="Use Unicode filenames">Unicode ファイル名を使用</entry>
+    <entry id="255" string="AAC Files">AAC ファイル</entry>
+    <entry id="256" string="MP4 Files">MP4 ファイル</entry>
+    <entry id="257" string="Format">形式</entry>
+    <entry id="258" string="File format">ファイル形式</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">AAC ファイルで ID3v2 タグを使用</entry>
+    <entry id="260" string="Note:">注意：</entry>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">幾つかのプレイヤーでは ID3 タグ付き AAC ファイル再生で&#10;問題が発生する場合が有ります。このオプションはあなたの&#10;プレイヤーで ID3 タグが扱えるか確認後に使用してください。</entry>
+    <entry id="262" string="FLAC Files">FLAC ファイル</entry>
+    <entry id="263" string="Sampling rate">サンプリング レート</entry>
+    <entry id="264" string="Sample resolution">サンプル ビット数</entry>
+    <entry id="265" string="Number of samples">サンプル数</entry>
+    <entry id="266" string="Mono">モノラル</entry>
+    <entry id="267" string="bytes">bytes</entry>
+    <entry id="268" string="bit">ビット</entry>
+    <entry id="269" string="min">分：秒</entry>
+    <entry id="270" string="Create playlist">プレイリスト作成</entry>
+    <entry id="271" string="Create cue sheet">cue シート作成</entry>
+    <entry id="272" string="Write ID3v1 tags">ID3v1 の書き込み</entry>
+    <entry id="273" string="Write ID3v2 tags">ID3v2 の書き込み</entry>
+    <entry id="274" string="Write Vorbis Comment tags">Vorbis コメントの書き込み</entry>
+    <entry id="275" string="Write MP4 metadata info">MP4 メタデータの書き込み</entry>
+    <entry id="276" string="ID3v1 tag encoding:">ID3v1 の文字コード：</entry>
+    <entry id="277" string="ID3v2 tag encoding:">ID3v2 の文字コード：</entry>
+    <entry id="278" string="Vorbis Comment tag encoding:">Vorbis コメントの文字コード：</entry>
+    <entry id="279" string="MP4 metadata encoding:">MP4 メタデータの文字コード：</entry>
+    <entry id="280" string="Tag encodings">タグの文字コード</entry>
+    <entry id="281" string="Update joblist with this information">この情報でリストを更新</entry>
+    <entry id="282" string="unknown genre">ジャンル不明</entry>
+    <entry id="283" string="Load joblist...">リストを読み込み...</entry>
+    <entry id="284" string="Save joblist...">リストを保存...</entry>
+    <entry id="285" string="Pause/resume encoding">エンコードを中断/再開</entry>
+    <entry id="286" string="Shutdown after encoding">エンコード終了後にシャットダウン</entry>
+    <entry id="287" string="Playlist Files">プレイリスト ファイル</entry>
+    <entry id="288" string="unknown year">年不明</entry>
+    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">%1 エンコーダを初期化できませんでした。設定を確認してください。</entry>
+    <entry id="290" string="Blocksize:">ブロック サイズ：</entry>
+    <entry id="291" string="Use streamable subset">streamable subset 使用</entry>
+    <entry id="292" string="Adaptive Joint Stereo">適応型ジョイント ステレオ</entry>
+    <entry id="293" string="Fastest encoding">最高速エンコード</entry>
+    <entry id="294" string="Best compression">最高圧縮</entry>
+    <entry id="295" string="Linear predictor">線形予測器</entry>
+    <entry id="296" string="Maximum LPC order">LPC の最大次数</entry>
+    <entry id="297" string="Quantized LPC precision">量子化された LPC の精度</entry>
+    <entry id="298" string="Exhaustive model search">徹底的なモデル検索</entry>
+    <entry id="299" string="Optimize LPC quantization">LPC 量子化の最適化</entry>
+    <entry id="300" string="disabled">無効化</entry>
+    <entry id="301" string="auto">自動</entry>
+    <entry id="302" string="Residual coding">残余信号の符号化</entry>
+    <entry id="303" string="Minimum partition order">最小分割次数</entry>
+    <entry id="304" string="Maximum partition order">最大分割次数</entry>
+    <entry id="305" string="By pattern">パターンで追加</entry>
+    <entry id="306" string="From folder">ディレクトリから追加</entry>
+    <entry id="307" string="Folder">ディレクトリ</entry>
+    <entry id="308" string="Add folder">ディレクトリを追加</entry>
+    <entry id="309" string="Choose folder:">ディレクトリを選択：</entry>
+    <entry id="310" string="Select the folder to add to the joblist:">リストに追加するフォルダ：</entry>
+    <entry id="311" string="Add files by pattern">パターンによりファイルを追加</entry>
+    <entry id="312" string="Pattern">パターン</entry>
+    <entry id="313" string="Start folder">基準ディレクトリ</entry>
+    <entry id="314" string="No files found matching pattern:">パターンに適合するファイルはありませんでした：</entry>
+    <entry id="315" string="Edit language file">言語ファイルを編集</entry>
+    <entry id="316" string="Use for all selected tracks">すべての選択トラックに適用</entry>
+    <entry id="317" string="Interpret string as">文字列の解釈エンコード</entry>
+    <entry id="318" string="selected tracks">選択済みトラック</entry>
+    <entry id="319" string="Adjust upper/lower case">大/小文字を合わせる</entry>
+    <entry id="320" string="all words upper case">全単語の先頭を大文字にする</entry>
+    <entry id="321" string="long words upper case">長い単語の先頭を大文字にする</entry>
+    <entry id="322" string="first letter upper case">最初の文字を大文字にする</entry>
+    <entry id="323" string="all lower case">すべて小文字にする</entry>
+    <entry id="324" string="all upper case">すべて大文字にする</entry>
+    <entry id="325" string="Status">状況</entry>
+    <entry id="326" string="Successfully read CD!">CD の読み取りに成功しました!</entry>
+    <entry id="327" string="Comment">コメント</entry>
+    <entry id="328" string="Manage CDDB cache entries...">CDDB キャッシュの管理</entry>
+    <entry id="329" string="Save entry">項目を保存</entry>
+    <entry id="330" string="Remove entry">項目を削除</entry>
+    <entry id="331" string="Disc name">ディスク名</entry>
+    <entry id="332" string="Charset">文字コード</entry>
+    <entry id="333" string="Preview">プレビュー</entry>
+    <entry id="334" string="Downloaded CDDB entries:">ダウンロード済みの CDDB 項目：</entry>
+    <entry id="335" string="User name:">ユーザ名：</entry>
+    <entry id="336" string="Password:">パスワード：</entry>
+    <entry id="337" string="Delete original files after encoding">エンコード後に元ファイルを削除</entry>
+    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">このオプションはファイルをエンコードした後に元ファイルを&#10;コンピュータから削除します!&#10;&#10;本当にこの機能を有効にしますか？</entry>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP プロトコルは HTTP プロキシを用いることはできません!&#10;&#10;HTTP プロトコルを使用するよう変更しますか?</entry>
+    <entry id="340" string="Playlists">プレイリスト</entry>
+    <entry id="341" string="Create playlists">プレイリスト作成</entry>
+    <entry id="342" string="Create cue sheets">cue シート作成</entry>
+    <entry id="343" string="Use encoder output folder">エンコーダの出力ディレクトリを使用</entry>
+    <entry id="344" string="Various artists">Various artists</entry>
+    <entry id="345" string="Data track">データ トラック</entry>
+    <entry id="346" string="Select the folder in which the playlist files will be placed:">プレイリストがあるフォルダを選択してください：</entry>
+    <entry id="347" string="Use input file folder if possible">可能なら入力ファイルのディレクトリを用いる</entry>
+    <entry id="348" string="Encode to input file folder if possible">可能なら入力ファイルのディレクトリにエンコード</entry>
+    <entry id="349" string="Allow overwriting input file">入力ファイルへ上書きを許可</entry>
+    <entry id="350" string="Encode to a single file">一つのファイルにエンコード</entry>
+    <entry id="351" string="Encoder options">エンコーダの設定</entry>
+    <entry id="352" string="Skip">スキップ</entry>
+    <entry id="353" string="Enable local CDDB database">ローカル CDDB 有効</entry>
+    <entry id="354" string="CDDB path:">CDDB ディレクトリ：</entry>
+    <entry id="355" string="Select the folder of the CDDB database:">CDDB データベースのディレクトリを選択：</entry>
+    <entry id="356" string="File already exists">ファイルが既に存在します</entry>
+    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">出力ファイル (%1) は既に存在します。&#10;上書きしますか?</entry>
+    <entry id="358" string="Overwrite all further files">すべて上書き</entry>
+    <entry id="359" string="Start ripping automatically">自動でリッピング開始</entry>
+    <entry id="360" string="Submit to online database later">後でオンライン データベースに送信</entry>
+    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB サポートが無効になっています。 設定ダイアログで&#10;ローカルかリモート CDDB サポートを有効にしてください。</entry>
+    <entry id="362" string="CDDB entries to submit:">送信する CDDB エントリ：</entry>
+    <entry id="363" string="Show queued CDDB entries...">送信予定の CDDB エントリを表示...</entry>
+    <entry id="364" string="Submit all">すべて送信</entry>
+    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">リモート CDDB サポートが無効になっています。&#10;設定ダイアログで有効にしてください。</entry>
+    <entry id="366" string="Category">カテゴリ</entry>
+    <entry id="367" string="Close">閉じる</entry>
+    <entry id="368" string="Automatization">自動化</entry>
+    <entry id="369" string="Query CDDB database later">後で CDDB に問い合わせる</entry>
+    <entry id="370" string="Show queued CDDB queries...">送信予定の CDDB 問い合わせを表示...</entry>
+    <entry id="371" string="CDDB queries">CDDB 問い合わせ</entry>
+    <entry id="372" string="Query">問い合わせ</entry>
+    <entry id="373" string="Query all">全て問い合わせ</entry>
+    <entry id="374" string="Query string">問い合わせ文字列</entry>
+    <entry id="375" string="CDDB queries to perform:">実行する CDDB 問い合わせ：</entry>
+    <entry id="376" string="Would you like to perform this query again later?">この問い合わせを後で再度実行しますか？</entry>
+    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">CD-ROM ドライブへのアクセスが Windows により拒否されました。&#10;&#10;システム管理者に連絡して CD-ROM ドライブへの&#10;アクセス権限をもらってください。</entry>
+    <entry id="378" string="CD information">CD 情報</entry>
+    <entry id="379" string="Read CD Text">CD Text を読み込む</entry>
+    <entry id="380" string="Read cdplayer.ini">cdplayer.ini を読み込む</entry>
+    <entry id="381" string="Apodization">アポダイゼーション</entry>
+    <entry id="382" string="Apodization function(s):">アポダイゼーション関数：</entry>
+    <entry id="383" string="You can specify multiple functions separated by semicolons.">セミコロンで区切って複数の関数を指定できます。</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 は起動時に自動でオンライン更新チェックを&#10;行うことが可能です。&#10;&#10;起動時に更新をチェクしますか？</entry>
+    <entry id="385" string="Cannot access input file: %1">入力ファイルにアクセス不能： %1</entry>
+    <entry id="386" string="Cannot create output file: %1">出力ファイルを作成不能： %1</entry>
+    <entry id="387" string="File not found">ファイルがありません</entry>
+    <entry id="388" string="Unknown file type">不明なファイル形式</entry>
+    <entry id="389" string="Unsupported audio format">未対応のオーディオ形式</entry>
+    <entry id="390" string="Unknown error">不明なエラー</entry>
+    <entry id="391" string="Replace existing comments with default comment">既存のコメントをデフォルトのコメントに置き換え</entry>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">サンプル形式が異なる為、選択ファイル群を１つの&#10;ファイルに結合出来ません。&#10;&#10;最初に全てのファイルを同じサンプル形式に変換して下さい。</entry>
+    <entry id="393" string="Write WMA metadata info">WMA メタデータ情報を書き込む</entry>
+    <entry id="394" string="WMA metadata encoding:">WMA メタデータの文字コード：</entry>
+    <entry id="395" string="Select codec">コーデックの選択</entry>
+    <entry id="396" string="Select codec format">コーデック形式の選択</entry>
+    <entry id="397" string="Codec settings">コーデック設定</entry>
+    <entry id="398" string="Use codec">使用コーデック</entry>
+    <entry id="399" string="Use format">使用形式</entry>
+    <entry id="400" string="Write uncompressed WMA files">非圧縮 WMA ファイルで書き込み</entry>
+    <entry id="401" string="Automatically select format based on settings and input format">設定と入力形式より自動で形式を選択</entry>
+    <entry id="402" string="Use VBR encoding">VBRエンコードを使用</entry>
+    <entry id="403" string="Use 2-pass encoding">2-pass エンコードを使用</entry>
+    <entry id="404" string="Target bitrate">目標ビットレート</entry>
+    <entry id="405" string="Set drive speed limit:">ドライブ速度制限の設定：</entry>
+    <entry id="406" string="Support this project">このプロジェクトの応援</entry>
+    <entry id="407" string="Please support this project!">このプロジェクトを応援してください！</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">%1 プロジェクトを寄付で応援することで、このソフトがフリーで存続&#10;出来るよう助力してください。&#10;&#10;PayPal を使って寄付するには下記ボタンの１つをクリックしてください：</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">PayPal を使って %1 へ直接送金することも可能です。&#10;&#10;もし電子振り込み、小切手の郵送、或いは現金の郵送をご希望なら、&#10;%1 へメールしてください。</entry>
+    <entry id="410" string="usd">jpy</entry>
+    <entry id="411" string="en">ja</entry>
+    <entry id="412" string="Thank you very much!">どうも有難うございます！</entry>
+    <entry id="413" string="Remind me later">後でまた見る</entry>
+    <entry id="414" string="CDDB">CDDB</entry>
+    <entry id="415" string="Ripper">リッパー</entry>
+    <entry id="416" string="Default">デフォルト</entry>
+  </data>
+</LangFile>

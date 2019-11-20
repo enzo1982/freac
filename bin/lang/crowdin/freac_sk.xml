@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.0.16</property>
+    <property name="language">Slovak / Slovenčina</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
+    <property name="author">Peter Krajcár &lt;krajcar.peter@gmail.com&gt; a Miro Babinský</property>
+    <property name="url">http://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="1" string="File">Súbor</entry>
+    <entry id="2" string="Options">Možnosti</entry>
+    <entry id="3" string="Encode">Zakódovať</entry>
+    <entry id="4" string="Add">Pridať</entry>
+    <entry id="5" string="Remove">Odstrániť</entry>
+    <entry id="6" string="Clear joblist">Vyprázdniť zoznam</entry>
+    <entry id="7" string="Exit">Ukončiť</entry>
+    <entry id="8" string="General settings...">Hlavné nastavenia...</entry>
+    <entry id="9" string="Configure selected encoder...">Nastaviť vybraný kodek...</entry>
+    <entry id="10" string="Audio file(s)">Audio súbor(y)</entry>
+    <entry id="11" string="Audio CD contents">Obsah Audio CD</entry>
+    <entry id="12" string="Start encoding">Začať kódovať</entry>
+    <entry id="13" string="Stop encoding">Zastaviť kódovanie</entry>
+    <entry id="14" string="Encoding file:">Kóduje sa súbor:</entry>
+    <entry id="15" string="Time left:">Zvyšný čas:</entry>
+    <entry id="16" string="Percent done:">Hotovo:</entry>
+    <entry id="17" string="Selected encoder:">Vybraný kodek:</entry>
+    <entry id="18" string="File progress:">Priebeh súboru:</entry>
+    <entry id="19" string="Output dir.:">Výstupná zložka:</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 súbor(ov) v zozname (%2 min):</entry>
+    <entry id="21" string="none">žiadny</entry>
+    <entry id="22" string="Help topics...">Témy pomocníka...</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">Pridať audio súbor(y) do zoznamu</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">Pridať audio z CD do zoznamu</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">Odstrániť vybranú položku zo zoznamu</entry>
+    <entry id="26" string="Clear the entire joblist">Vyčistiť celý zoznam</entry>
+    <entry id="27" string="Configure general settings">Prispôsobiť hlavné nastavenia</entry>
+    <entry id="28" string="Configure the selected audio encoder">Nastaviť vybraný kodek</entry>
+    <entry id="29" string="Start the encoding process">Začať kódovanie</entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">Nemožno upraviť zoznam počas kódovania</entry>
+    <entry id="31" string="Error">Chyba</entry>
+    <entry id="32" string="Audio Files">Audio súbory</entry>
+    <entry id="33" string="Apple Audio Files">Apple Audio súbory</entry>
+    <entry id="34" string="Creative Voice Files">Creative Voice súbory</entry>
+    <entry id="35" string="Sun Audio Files">Sun Audio súbory</entry>
+    <entry id="36" string="Wave Files">Wave súbory</entry>
+    <entry id="37" string="Windows CD Audio Track">Windows CD Audio skladba</entry>
+    <entry id="38" string="All Files">Všetky súbory</entry>
+    <entry id="39" string="You did not select a track!">Nevybrali ste žiaden súbor!</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Proces kódovania stále beží! Skutočne chcete ukončiť program?</entry>
+    <entry id="41" string="Currently encoding">Práve kódujem</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tento program je šírený pod&#10;General Public License (GPL).</entry>
+    <entry id="43" string="CDDB query">Požiadavka na CDDB</entry>
+    <entry id="44" string="About %1">O %1</entry>
+    <entry id="45" string="No options can be configured for Windows Wave file output!">Pre WaveOut filter nemožno meniť žiadne nastavenia!</entry>
+    <entry id="46" string="Windows Wave file output">WAVE Out filter</entry>
+    <entry id="47" string="Cannot change settings while encoding!">Nemožno zmeniť nastavenia počas kódovania!</entry>
+    <entry id="48" string="%1 encoder configuration">%1 nastavenia kodeku</entry>
+    <entry id="49" string="OK">OK</entry>
+    <entry id="50" string="Cancel">Zrušiť</entry>
+    <entry id="51" string="Encoding Mode">Mód kódovania</entry>
+    <entry id="52" string="Variable Bitrate">Variabilný Bitrate</entry>
+    <entry id="53" string="Average Bitrate">Stály Bitrate</entry>
+    <entry id="54" string="Quality">Kvalita</entry>
+    <entry id="55" string="Encoders">Kodeky</entry>
+    <entry id="56" string="Language">Jazyk</entry>
+    <entry id="57" string="Show title info">Zobraziť info</entry>
+    <entry id="58" string="General settings setup">Setup hlavných nastavení</entry>
+    <entry id="59" string="Configure encoder">Nastaviť kodek</entry>
+    <entry id="60" string="Encoder">Kodek</entry>
+    <entry id="61" string="Output folder">Výstupná zložka</entry>
+    <entry id="62" string="Browse">Prehľadať</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Vyberte zložku, v ktorej budú umiestnené zakódované súbory:</entry>
+    <entry id="64" string="Encoding">Kódovanie</entry>
+    <entry id="65" string="Author">Autor</entry>
+    <entry id="66" string="URL">URL</entry>
+    <entry id="67" string="Information">Informácie</entry>
+    <entry id="68" string="Select language:">Vyberte jazyk:</entry>
+    <entry id="69" string="Active CD-ROM drive">Aktívna CD-ROM mechanika</entry>
+    <entry id="70" string="Ripper settings">Nastaviť rippovanie</entry>
+    <entry id="71" string="Activate cdparanoia mode:">Aktivovať &quot;cdparanoia&quot; mód:</entry>
+    <entry id="72" string="Activate jitter correction">Aktivovať jitter opravu</entry>
+    <entry id="73" string="Swap left/right channel">Prehodiť ľavý/pravý kanál</entry>
+    <entry id="74" string="Lock CD tray while ripping">Uzamknúť CD počas rippovania</entry>
+    <entry id="75" string="Use native NT SCSI library">Použiť natívne NT SCSI knižnice</entry>
+    <entry id="76" string="Overlap only">Len overlap</entry>
+    <entry id="77" string="No verify">Bez kontroly</entry>
+    <entry id="78" string="No scratch repair">Neopravovať škrabance</entry>
+    <entry id="79" string="Full cdparanoia mode">Plný &quot;cdparanoia&quot; mód</entry>
+    <entry id="80" string="Bitrate">Bitrate</entry>
+    <entry id="81" string="Copyright bit">Copyright bit</entry>
+    <entry id="82" string="CRC">CRC</entry>
+    <entry id="83" string="Original bit">Original bit</entry>
+    <entry id="84" string="Channels">Kanály</entry>
+    <entry id="85" string="Private bit">Private bit</entry>
+    <entry id="86" string="Set Copyright bit">Nastaviť Copyright</entry>
+    <entry id="87" string="Enable CRC">Povoliť CRC</entry>
+    <entry id="88" string="Set Original bit">Nastaviť Original bit</entry>
+    <entry id="89" string="Dual channel encoding">Dvojkanálové kódovanie</entry>
+    <entry id="90" string="Set Private bit">Nastaviť Private bit</entry>
+    <entry id="91" string="Encoder mode">Mód kodeku</entry>
+    <entry id="92" string="Stereo mode">Stereo mód</entry>
+    <entry id="93" string="Quantization">Kvantifikácia</entry>
+    <entry id="94" string="Downsampling ratio">Downsampling ratio</entry>
+    <entry id="95" string="Predictor size">Veľkosť Predictor</entry>
+    <entry id="96" string="Enable lossless encoding">Povoliť bezstratové kódovanie</entry>
+    <entry id="97" string="Enable Joint Stereo">Povoliť Joint Stereo</entry>
+    <entry id="98" string="Bitrate per channel:">Bitrate na kanál:</entry>
+    <entry id="99" string="Preselection">Pred-výber</entry>
+    <entry id="100" string="Number of preselection candidates:">Počet pred-vybraných kandidátov:</entry>
+    <entry id="101" string="MPEG version">Verzia MPEG</entry>
+    <entry id="102" string="AAC object type">Objekt typu AAC</entry>
+    <entry id="103" string="Allow Joint Stereo">Umožniť Joint Stereo</entry>
+    <entry id="104" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">Použiť Temporal Noise Shaping</entry>
+    <entry id="106" string="Maximum bandwidth">Max. šírka pásma</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Max. použiteľná frekvencia šírky pásma AAC (Hz):</entry>
+    <entry id="108" string="Basic">Základné</entry>
+    <entry id="109" string="Misc">Doplnky</entry>
+    <entry id="110" string="Audio processing">Načítanie Audia</entry>
+    <entry id="111" string="Set bitrate:">Nastaviť bitrate:</entry>
+    <entry id="112" string="Set ratio:">Nastaviť ratio:</entry>
+    <entry id="113" string="Set quality:">Nastaviť kvalitu:</entry>
+    <entry id="114" string="worse">horší</entry>
+    <entry id="115" string="better">lepší</entry>
+    <entry id="116" string="Auto">Auto</entry>
+    <entry id="117" string="Stereo">Stereo</entry>
+    <entry id="118" string="Joint Stereo">Joint Stereo</entry>
+    <entry id="119" string="Force Joint Stereo">Vnútiť Joint Stereo</entry>
+    <entry id="120" string="VBR mode">VBR mód</entry>
+    <entry id="121" string="no VBR">bez VBR</entry>
+    <entry id="122" string="VBR quality">Kvalita VBR</entry>
+    <entry id="123" string="ABR target bitrate">Cieľový ABR bitrate</entry>
+    <entry id="124" string="VBR bitrate range">Rozsah VBR bitrate</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">Min. VBR bitrate:</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">Max. VBR bitrate:</entry>
+    <entry id="127" string="Control bits">Kontrolné bity</entry>
+    <entry id="128" string="Stream format">Formát streamu</entry>
+    <entry id="129" string="Enforce strict ISO compliance">Vnútiť úplnú ISO kompatibilitu</entry>
+    <entry id="135" string="Output sampling rate">Výstupná vzorkovacia frekvencia</entry>
+    <entry id="136" string="no resampling">bez vzorkovania</entry>
+    <entry id="137" string="Highpass filter">Highpass filter</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">Nastaviť Highpass frekv. (Hz):</entry>
+    <entry id="139" string="Set Highpass width (Hz):">Nastaviť Highpass šírku (Hz):</entry>
+    <entry id="140" string="Lowpass filter">Lowpass filter</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">Nastaviť Lowpass frekv. (Hz):</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">Nastaviť Lowpass šírku (Hz):</entry>
+    <entry id="143" string="Misc settings">Ďalšie nastavenia</entry>
+    <entry id="144" string="Disable all filtering">Zrušiť filtrovanie</entry>
+    <entry id="145" string="MP3 Files">MP3 súbory</entry>
+    <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis súbory</entry>
+    <entry id="147" string="Bonk Files">Bonk súbory</entry>
+    <entry id="148" string="Automatic CDDB queries">Automatické požiadavky na CDDB</entry>
+    <entry id="149" string="CDDB access mode:">CDDB prístupový mód:</entry>
+    <entry id="150" string="CDDB server:">CDDB server:</entry>
+    <entry id="151" string="Port:">Port:</entry>
+    <entry id="152" string="Info">Info</entry>
+    <entry id="153" string="No freedb entry for this disk.">Nepodarilo sa načítať názvy skladieb, pretože tento disk nie je v databáze freedb.</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">Počas pokusu o spojenie s freedb serverom došlo k chybe.</entry>
+    <entry id="155" string="Connecting to freedb server at">Pripájam sa k freedb serveru </entry>
+    <entry id="156" string="Requesting CD information">Požadujem CD info</entry>
+    <entry id="157" string="eMail address:">e-mail adresa:</entry>
+    <entry id="158" string="Please enter a valid eMail address.">Prosím, zadajte správnu e-mail adresu.</entry>
+    <entry id="159" string="No exact matches found">Žiadne zhody sa nenašli</entry>
+    <entry id="160" string="Multiple matches found">Našlo sa viacero zhôd</entry>
+    <entry id="161" string="Matches">Zhody</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">Vyberte položku najviac odpovedajúcu vášmu CD:</entry>
+    <entry id="163" string="Extended CDDB settings">Rozšírené CDDB nastavenia</entry>
+    <entry id="164" string="CGI scripts">CGI skripty</entry>
+    <entry id="165" string="CDDB query script:">Skript CDDB požiadavky:</entry>
+    <entry id="166" string="CDDB submit script:">Skript odoslania CDDB:</entry>
+    <entry id="167" string="HTTP settings">Nastavenia HTTP</entry>
+    <entry id="168" string="Proxy settings">Proxy nastavenia</entry>
+    <entry id="169" string="no proxy">žiadne proxy</entry>
+    <entry id="170" string="Proxy type:">Typ proxy:</entry>
+    <entry id="171" string="Proxy server:">Proxy server:</entry>
+    <entry id="172" string="Presets">Prednastavenia</entry>
+    <entry id="173" string="Use preset:">Použiť prednastavenia:</entry>
+    <entry id="174" string="Custom settings">Vlastné nastavenia</entry>
+    <entry id="179" string="Medium, Fast">Medium, Fast</entry>
+    <entry id="180" string="Standard, Fast">Standard, Fast</entry>
+    <entry id="181" string="Extreme, Fast">Extreme, Fast</entry>
+    <entry id="182" string="Title">Názov</entry>
+    <entry id="183" string="Track">Skladba</entry>
+    <entry id="184" string="Length">Dĺžka</entry>
+    <entry id="185" string="Size">Veľkosť</entry>
+    <entry id="186" string="Artist">Umelec</entry>
+    <entry id="187" string="Year">Rok</entry>
+    <entry id="188" string="Genre">Žáner</entry>
+    <entry id="189" string="Album">Album</entry>
+    <entry id="190" string="Info tags">Info tagy</entry>
+    <entry id="191" string="Default information">Základné ino</entry>
+    <entry id="192" string="Default comment string:">Prednastavený komentár:</entry>
+    <entry id="193" string="unknown artist">neznámy umelec</entry>
+    <entry id="194" string="unknown title">neznámy názov</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">Nemožno zaviesť ASPI ovládače! Rippovanie je nefunkčné!</entry>
+    <entry id="196" string="Database">Databáza</entry>
+    <entry id="197" string="Submit CDDB data...">Predložiť CDDB dáta...</entry>
+    <entry id="198" string="Enable CDDB cache">Povoliť CDDB cache</entry>
+    <entry id="199" string="CDDB data">CDDB dáta</entry>
+    <entry id="200" string="Submit">Predložiť</entry>
+    <entry id="201" string="No audio CD in drive!">V mechanike nie je CD!</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">Prosím, vyplňte všetky polia pred Predložením CDDB</entry>
+    <entry id="203" string="Prefer CDDB over CD Text">Uprednostniť CDDB pred CD-textom</entry>
+    <entry id="204" string="CD options">Možnosti CD</entry>
+    <entry id="205" string="Submitting CD information">Poslať informácie o CD</entry>
+    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Nemožno otvoriť súbor: %1&#10;&#10;%2</entry>
+    <entry id="207" string="Query CDDB database">Požiadať CDDB databázu</entry>
+    <entry id="208" string="Help">Pomoc</entry>
+    <entry id="209" string="index_en.html">index.html</entry>
+    <entry id="210" string="Plug-ins">Pluginy</entry>
+    <entry id="211" string="Input plug-ins">Vstupné pluginy</entry>
+    <entry id="212" string="Output plug-ins">Výstupné pluginy</entry>
+    <entry id="213" string="Configure">Konfigurovať</entry>
+    <entry id="214" string="About">O programe</entry>
+    <entry id="215" string="Play">Prehrať</entry>
+    <entry id="216" string="Stop">Zastaviť</entry>
+    <entry id="217" string="Cannot play a file while encoding!">Nemožno prehrávať počas kódovania!</entry>
+    <entry id="218" string="Cannot start encoding while playing a file!">Nemožno začať kódovať počas hrania!</entry>
+    <entry id="219" string="Enable remote CDDB database">Povoliť vzdialenú CDDB databázu</entry>
+    <entry id="220" string="ATH">ATH</entry>
+    <entry id="221" string="Enable ATH:">Povoliť ATH:</entry>
+    <entry id="222" string="Use default setting">Pôvodné nastavenia</entry>
+    <entry id="223" string="Psycho acoustic model">Psycho akustický model</entry>
+    <entry id="224" string="Use Temporal Masking Effect">Použiť Efekt Dočasného Maskovania</entry>
+    <entry id="225" string="Expert">Expert</entry>
+    <entry id="226" string="Cannot configure encoder while encoding!">Nemožno nastaviť Enkoder počas kódovania!</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">Výstupný adresár neexistuje! Chcete ho vytvoriť?</entry>
+    <entry id="228" string="Filename pattern">Vzor súborovej cesty</entry>
+    <entry id="229" string="unknown album">neznámy album</entry>
+    <entry id="230" string="Translated by %1.">Preložil %1.</entry>
+    <entry id="231" string="Select all">Vybrať všetko</entry>
+    <entry id="232" string="Select none">Zrušiť výber</entry>
+    <entry id="233" string="Toggle selection">Prehodiť výber</entry>
+    <entry id="234" string="Show Tip of the Day">Ukázať Tip Dňa</entry>
+    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 je dostupný v %2 jazykoch. Ak váš jazyk nie je&#10;dostupný, môžete ho jednoducho preložiť použitím aplikácie&#10;&quot;smooth Translator&quot;.</entry>
+    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 podporuje LAME, Ogg Vorbis, FAAC, FLAC a Bonk&#10;kodeky. Kodek pre VQF formát je dostupný na stránke %1:&#10;%2</entry>
+    <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 môže použiť Winamp 2 vstupné pluginy pre podporu&#10;viacerých typov súborov. Skopírujte in_*.dll súbory do adresára&#10;%1\plugins pre sprístupnenie týchto formátov.</entry>
+    <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Pomocou %1 môžete poslať freedb CDDB položky&#10;obsahujúce Unicode znaky. Teda ak máte CD s non-Latin&#10;interpretmi alebo názvami, môžete odoslať správne freedb&#10;položky pomocou %1.</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Pre opravu chýb počas načítavania môžete povoliť&#10;Jitter korekciu v Nastaveniach -&gt; CDRip. Ak toto nepomôže,&#10;skúste použiť jeden z Paranoia módov.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">V prípade pripomienok alebo návrhov ako zlepšiť %1&#10;pošlite ich Trackerom na stránke %1 SourceForge&#10;projektu - %2 alebo pošlite majl na %3.</entry>
+    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Máte radi %1? %1 je voľne dostupný, ale môžeš&#10;Podporiť vývoj %1 projektu môžeš sponzorským darom.&#10;Peniaze možno poslať na %2 pomocou PayPal.&#10;Pozri %3 pre ďalšie podrobnosti.</entry>
+    <entry id="242" string="Bitrate / Quality">Bitrate / Kvalita</entry>
+    <entry id="243" string="Check for updates now">Zistiť Updaty</entry>
+    <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Nové updaty pre %1 sú pripravené online!&#10;Prajete si vidieť zoznam dostupných updatov?</entry>
+    <entry id="245" string="There are no updates available at the moment!">Momentálne nie sú žiadne updaty dostupné!</entry>
+    <entry id="246" string="Check for updates at startup">Kontrolovať updaty pri štarte programu</entry>
+    <entry id="247" string="Read CD contents on insert">Čitať obsah CD pri jeho vložení</entry>
+    <entry id="248" string="Eject disk after ripping">Vysunúť disk po rippovaní</entry>
+    <entry id="249" string="Encode 'On-The-Fly'">Kódovať &quot;On-The-Fly&quot;</entry>
+    <entry id="250" string="Keep ripped Wave files">Uchovať rippnuté Wave súbory</entry>
+    <entry id="251" string="ripping/decoding">rippovanie/dekódovanie</entry>
+    <entry id="252" string="encoding">kódovanie</entry>
+    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="254" string="Use Unicode filenames">Použiť Unicode názvy súborov</entry>
+    <entry id="255" string="AAC Files">AAC súbory</entry>
+    <entry id="256" string="MP4 Files">MP4 súbory</entry>
+    <entry id="257" string="Format">Formát</entry>
+    <entry id="258" string="File format">Formát súboru</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">Povoliť ID3v2 tagy v AAC súboroch</entry>
+    <entry id="260" string="Note:">Poznámky:</entry>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Niektoré prehrávače môžu mať problémy pri prehrávaní&#10;AAC súborov s ID3 tagmi. Prosím, použite túto možnosť&#10;len ak ste si istý, že váš prehrávač zvládne tieto tagy.</entry>
+    <entry id="262" string="FLAC Files">FLAC súbory</entry>
+    <entry id="263" string="Sampling rate">Rýchlosť vzorkovania</entry>
+    <entry id="264" string="Sample resolution">Rozlíšenie vzorkovania</entry>
+    <entry id="265" string="Number of samples">Počet vzoriek</entry>
+    <entry id="266" string="Mono">Mono</entry>
+    <entry id="267" string="bytes">bytov</entry>
+    <entry id="268" string="bit">bit</entry>
+    <entry id="269" string="min">min</entry>
+    <entry id="270" string="Create playlist">Vytvoriť playlist</entry>
+    <entry id="271" string="Create cue sheet">Vytvoriť .cue hárok</entry>
+    <entry id="272" string="Write ID3v1 tags">Zapísať ID3v1 tagy</entry>
+    <entry id="273" string="Write ID3v2 tags">Zapísať ID3v2 tagy</entry>
+    <entry id="274" string="Write Vorbis Comment tags">Zapísať Vorbis tagy</entry>
+    <entry id="275" string="Write MP4 metadata info">Zapísať MP4 metadata info</entry>
+    <entry id="276" string="ID3v1 tag encoding:">ID3v1 tag kódovanie:</entry>
+    <entry id="277" string="ID3v2 tag encoding:">ID3v2 tag kódovanie:</entry>
+    <entry id="278" string="Vorbis Comment tag encoding:">Vorbis tag kódovanie:</entry>
+    <entry id="279" string="MP4 metadata encoding:">MP4 metadata kódovanie:</entry>
+    <entry id="280" string="Tag encodings">Kódovanie tagu</entry>
+    <entry id="281" string="Update joblist with this information">Updatovať zoznam touto info</entry>
+    <entry id="282" string="unknown genre">neznámy žáner</entry>
+    <entry id="283" string="Load joblist...">Načítať zoznam...</entry>
+    <entry id="284" string="Save joblist...">Uložiť zoznam...</entry>
+    <entry id="285" string="Pause/resume encoding">Puaza/Pokračovať kódovanie</entry>
+    <entry id="286" string="Shutdown after encoding">Vypnúť PC po kódovaní</entry>
+    <entry id="287" string="Playlist Files">Súbory Playlistu</entry>
+    <entry id="288" string="unknown year">neznámy rok</entry>
+    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Nomožno inicializovať %1 enkodér! Prosím skontrolujte nastavenia!</entry>
+    <entry id="290" string="Blocksize:">Veľkosť bloku:</entry>
+    <entry id="291" string="Use streamable subset">Use streamable subset</entry>
+    <entry id="292" string="Adaptive Joint Stereo">Adaptive Joint Stereo</entry>
+    <entry id="293" string="Fastest encoding">Najrýchlejšie kódovanie</entry>
+    <entry id="294" string="Best compression">Najlepšia kompresia</entry>
+    <entry id="295" string="Linear predictor">Linear predictor</entry>
+    <entry id="296" string="Maximum LPC order">Max. LPC poradie</entry>
+    <entry id="297" string="Quantized LPC precision">Quantized LPC precision</entry>
+    <entry id="298" string="Exhaustive model search">Exhaustive model search</entry>
+    <entry id="299" string="Optimize LPC quantization">Optimize LPC quantization</entry>
+    <entry id="300" string="disabled">zakázaný</entry>
+    <entry id="301" string="auto">auto</entry>
+    <entry id="302" string="Residual coding">Residuálne kódovanie</entry>
+    <entry id="303" string="Minimum partition order">Min. partition order</entry>
+    <entry id="304" string="Maximum partition order">Max.partition order</entry>
+    <entry id="305" string="By pattern">Podľa vzoru</entry>
+    <entry id="306" string="From folder">Z adresára</entry>
+    <entry id="307" string="Folder">Adresár</entry>
+    <entry id="308" string="Add folder">Pridať adresár</entry>
+    <entry id="309" string="Choose folder:">Zvoľte adresár:</entry>
+    <entry id="310" string="Select the folder to add to the joblist:">Zvoľte zložku na pridanie do zoznamu:</entry>
+    <entry id="311" string="Add files by pattern">Pridať súbory podľa vzoru</entry>
+    <entry id="312" string="Pattern">Vzor</entry>
+    <entry id="313" string="Start folder">Počiatočný adresár</entry>
+    <entry id="314" string="No files found matching pattern:">Žiadne súbory nevyhovujú vzoru:</entry>
+    <entry id="315" string="Edit language file">Editovať jazykový súbor</entry>
+    <entry id="316" string="Use for all selected tracks">Použiť pre všetky označené skladby</entry>
+    <entry id="317" string="Interpret string as">Autor(reťazec) ako</entry>
+    <entry id="318" string="selected tracks">zvolené skladby</entry>
+    <entry id="319" string="Adjust upper/lower case">Nastav použitie malých/veľkých p.</entry>
+    <entry id="320" string="all words upper case">všetky slová veľkými písmenami</entry>
+    <entry id="321" string="long words upper case">dlhé slová veľ.písmenami</entry>
+    <entry id="322" string="first letter upper case">Veľké prvé písmeno</entry>
+    <entry id="323" string="all lower case">všetko malými písmenami</entry>
+    <entry id="324" string="all upper case">všetko veľkými písmenami</entry>
+    <entry id="325" string="Status">Status</entry>
+    <entry id="326" string="Successfully read CD!">CD úspešne prečítané!</entry>
+    <entry id="327" string="Comment">Komentár</entry>
+    <entry id="328" string="Manage CDDB cache entries...">Usporiadať CDDB cache položky...</entry>
+    <entry id="329" string="Save entry">Uložiť položku</entry>
+    <entry id="330" string="Remove entry">Odstrániť položku</entry>
+    <entry id="331" string="Disc name">Názov Disku</entry>
+    <entry id="332" string="Charset">Znaková sada</entry>
+    <entry id="333" string="Preview">Prehľad</entry>
+    <entry id="334" string="Downloaded CDDB entries:">Stiahnuté CDDB položky:</entry>
+    <entry id="335" string="User name:">Užívateľ:</entry>
+    <entry id="336" string="Password:">Heslo:</entry>
+    <entry id="337" string="Delete original files after encoding">Po kódovaní zmazať pôvodné súbory</entry>
+    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Táto možnosť zmaže orig. súbory po kódovaní.&#10;Ste si istý že chcete pokračovať?</entry>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDB Protocol nemôže byť použitý pre HTTP&#10;Proxy servery!&#10;&#10;Prajete si zmeniť protokol na HTTP?</entry>
+    <entry id="340" string="Playlists">Playlisty</entry>
+    <entry id="341" string="Create playlists">Vytvorť playlisty</entry>
+    <entry id="342" string="Create cue sheets">Vytvoriť .cue hárky</entry>
+    <entry id="343" string="Use encoder output folder">Použiť výstupný adresár</entry>
+    <entry id="344" string="Various artists">Rôzni umelci</entry>
+    <entry id="345" string="Data track">Poradové číslo skladby</entry>
+    <entry id="346" string="Select the folder in which the playlist files will be placed:">Zvoľte priečinok, kam sa uložia playlisty:</entry>
+    <entry id="347" string="Use input file folder if possible">Použiť vstupný adresár ak je to možné</entry>
+    <entry id="348" string="Encode to input file folder if possible">Kódovať do vstupného adresára ak je to možné</entry>
+    <entry id="349" string="Allow overwriting input file">Povoliť prepisovanie vstupného súboru</entry>
+    <entry id="350" string="Encode to a single file">Kódovať do jedného súboru</entry>
+    <entry id="351" string="Encoder options">Možnosti kodeku</entry>
+    <entry id="352" string="Skip">Preskočiť</entry>
+    <entry id="353" string="Enable local CDDB database">Povoliť lokálnu CDDB databázu</entry>
+    <entry id="354" string="CDDB path:">CDDB adresár:</entry>
+    <entry id="355" string="Select the folder of the CDDB database:">Zvoľte zložku CDDB databázy:</entry>
+    <entry id="356" string="File already exists">Súbor už existuje</entry>
+    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Výstupný súbor %1&#10;už existuje! Chcete ho prepísať?</entry>
+    <entry id="358" string="Overwrite all further files">Prepísať všetky ďalšie súbory</entry>
+    <entry id="359" string="Start ripping automatically">Začať automaticky rippovať</entry>
+    <entry id="360" string="Submit to online database later">Odoslať do online databázy neskôr</entry>
+    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Podpora CDDB je vypnutá! Prosím, povoľte lokálnu&#10;alebo vzdialenú CDDB podporu v nastaveniach.</entry>
+    <entry id="362" string="CDDB entries to submit:">CDDB položky na odoslanie:</entry>
+    <entry id="363" string="Show queued CDDB entries...">Ukázať čakajúce CDDB položky...</entry>
+    <entry id="364" string="Submit all">Potvrdiť všetko</entry>
+    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Vzdialená CDDB podpora je vypnutá! Prosím povoľte&#10;vzdialenú CDDB podporu v nastaveniach.</entry>
+    <entry id="366" string="Category">Kategória</entry>
+    <entry id="367" string="Close">Zavrieť</entry>
+    <entry id="368" string="Automatization">Automatizácia</entry>
+    <entry id="369" string="Query CDDB database later">Poslať dotaz na CDDB neskôr</entry>
+    <entry id="370" string="Show queued CDDB queries...">Zobraziť čakajúce CDDB požiadavky...</entry>
+    <entry id="371" string="CDDB queries">CDDB požiadavky</entry>
+    <entry id="372" string="Query">Požiadavka</entry>
+    <entry id="373" string="Query all">Požiadať všetko</entry>
+    <entry id="374" string="Query string">Požadovací reťazec</entry>
+    <entry id="375" string="CDDB queries to perform:">CDDB požiadavky:</entry>
+    <entry id="376" string="Would you like to perform this query again later?">Želáte si previesť túto požiadavku znovu neskôr?</entry>
+    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Prístup k CD-ROM mechanike bol zamietnutý Windowsom.&#10;&#10;Prosím, kontaktujte vášho systémového administrátora pre&#10;získanie prístupu k CD-ROM mechanike.</entry>
+    <entry id="378" string="CD information">CD info</entry>
+    <entry id="379" string="Read CD Text">Prečítať CD text</entry>
+    <entry id="380" string="Read cdplayer.ini">Prečítať cdplayer.ini</entry>
+    <entry id="381" string="Apodization">Apodizácia</entry>
+    <entry id="382" string="Apodization function(s):">Apodizačná funkcia</entry>
+    <entry id="383" string="You can specify multiple functions separated by semicolons.">Môžete špecifikovať viacero funkcií oddelených bodkočiarkou.</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 môže automaticky zistiť online updaty&#10;pri štarte programu.&#10;&#10;Želáte si aby %1 zisťoval pri štarte updaty?</entry>
+    <entry id="385" string="Cannot access input file: %1">Nemožno pristupovať k súboru: %1</entry>
+    <entry id="386" string="Cannot create output file: %1">Nemožno vytvoriť súbor: %1</entry>
+    <entry id="387" string="File not found">Súbor nebol nájdený</entry>
+    <entry id="388" string="Unknown file type">Neznámy typ súboru</entry>
+    <entry id="389" string="Unsupported audio format">Nepodporovaný audio formát</entry>
+    <entry id="390" string="Unknown error">Neznáma chyba</entry>
+    <entry id="391" string="Replace existing comments with default comment">Nahradiť existujúce komentáre defaultnými komentármi</entry>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Zvolené súbory nemôžu byť skombinované do jedného&#10;výstupného súboru z dôvodu rôznych vzorkovacích formátov.&#10;&#10;Preveďte, prosím, najprv všetky súbory do rovnakého vzorkovacieho formátu.</entry>
+    <entry id="393" string="Write WMA metadata info">Zapísať WMA metadata</entry>
+    <entry id="394" string="WMA metadata encoding:">Kódovanie WMA metadata:</entry>
+    <entry id="395" string="Select codec">Zvoľte kodek</entry>
+    <entry id="396" string="Select codec format">Zvoľte formát kodeku</entry>
+    <entry id="397" string="Codec settings">Nastaviť vybraný kodek</entry>
+    <entry id="398" string="Use codec">Použiť kodek</entry>
+    <entry id="399" string="Use format">Použiť formát</entry>
+    <entry id="400" string="Write uncompressed WMA files">Zapísať nekomprimované WMA súbory</entry>
+    <entry id="401" string="Automatically select format based on settings and input format">Automaticky zvoliť formát na základe nastavení a vstupného formátu</entry>
+    <entry id="402" string="Use VBR encoding">Použiť VBR kódovanie</entry>
+    <entry id="403" string="Use 2-pass encoding">Použiť 2-cestné kódovanie</entry>
+    <entry id="404" string="Target bitrate">Cieľový bitrate</entry>
+    <entry id="405" string="Set drive speed limit:">Maximálna rýchlosť mechaniky:</entry>
+    <entry id="406" string="Support this project">Podporte tento projekt</entry>
+    <entry id="407" string="Please support this project!">Prosím podporte tento projekt!</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Prosím, prispejte aj vy %1 projektu&#10;finančným darom.&#10;&#10;Kliknite na jedno z tlačidiel dole aby ste nám poslali platbou pomocou PayPal:</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Finančný dar %1 môžete zaslať pomocou PayPal.&#10;&#10;Môžete však aj napísať %1 ak nám chcete darovať peniaze prevodom, šekom alebo poštou.</entry>
+    <entry id="410" string="usd">eur</entry>
+    <entry id="411" string="en">en</entry>
+    <entry id="412" string="Thank you very much!">Ďakujeme pekne!</entry>
+    <entry id="413" string="Remind me later">Upozorni ma neskôr</entry>
+    <entry id="414" string="CDDB">CDDB</entry>
+    <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="416" string="Default">Prednastavené</entry>
+  </data>
+</LangFile>
