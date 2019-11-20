@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">リップした Wave ファイルを保持</entry>
     <entry id="251" string="ripping/decoding">リッピング/デコード</entry>
     <entry id="252" string="encoding">エンコード</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Unicode ファイル名を使用</entry>
     <entry id="255" string="AAC Files">AAC ファイル</entry>
     <entry id="256" string="MP4 Files">MP4 ファイル</entry>
@@ -268,7 +268,7 @@
     <entry id="264" string="Sample resolution">サンプル ビット数</entry>
     <entry id="265" string="Number of samples">サンプル数</entry>
     <entry id="266" string="Mono">モノラル</entry>
-    <entry id="267" string="bytes">bytes</entry>
+    <entry id="267" string="bytes"/>
     <entry id="268" string="bit">ビット</entry>
     <entry id="269" string="min">分：秒</entry>
     <entry id="270" string="Create playlist">プレイリスト作成</entry>
@@ -415,7 +415,7 @@
     <entry id="411" string="en">ja</entry>
     <entry id="412" string="Thank you very much!">どうも有難うございます！</entry>
     <entry id="413" string="Remind me later">後でまた見る</entry>
-    <entry id="414" string="CDDB">CDDB</entry>
+    <entry id="414" string="CDDB">インターフェース</entry>
     <entry id="415" string="Ripper">リッパー</entry>
     <entry id="416" string="Default">デフォルト</entry>
   </data>
