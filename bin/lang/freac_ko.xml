@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Korean / 한국어</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -192,83 +192,231 @@
     <entry id="188" string="Genre">장르</entry>
     <entry id="189" string="Album">앨범</entry>
     <entry id="190" string="Info tags">정보 태그</entry>
-    <entry id="192" string="Default comment string:">초기 멘트:</entry>
-    <entry id="193" string="unknown artist">(알수없는 아티스트)</entry>
-    <entry id="194" string="unknown title">(알수없는 제목)</entry>
-    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI 드라이버 로드할수 없습니다! CD 리핑 불가!</entry>
-    <entry id="196" string="Database">데이타베이스</entry>
-    <entry id="197" string="Submit CDDB data...">CDDB 데이타 전송...</entry>
-    <entry id="198" string="Enable CDDB cache">CDDB 캐쉬 허용</entry>
-    <entry id="199" string="CDDB data">CDDB 데이타</entry>
-    <entry id="200" string="Submit">전송</entry>
-    <entry id="201" string="No audio CD in drive!">드라이브에 CD 없음!</entry>
-    <entry id="202" string="Please fill all fields and track titles before submitting.">전송 전에 모든 항목과 트랙 제목을 입력하시오.</entry>
-    <entry id="204" string="CD options">CD 옵션</entry>
-    <entry id="205" string="Submitting CD information">CD 정보 전송중</entry>
-    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">파일 열기 실패: %1&#10;&#10;%2</entry>
-    <entry id="207" string="Query CDDB database">CDDB 데이타베이스 쿼리</entry>
-    <entry id="208" string="Help">도움말</entry>
-    <entry id="209" string="index_en.html">index.html</entry>
-    <entry id="210" string="Plug-ins">플러그인</entry>
-    <entry id="211" string="Input plug-ins">입력 플러그인</entry>
-    <entry id="212" string="Output plug-ins">출력 플러그인</entry>
-    <entry id="213" string="Configure">설정</entry>
-    <entry id="214" string="About">About</entry>
-    <entry id="215" string="Play">재생</entry>
-    <entry id="216" string="Stop">정지</entry>
-    <entry id="217" string="Cannot play a file while encoding!">인코딩 중에는 파일을 재생할 수 없습니다!</entry>
-    <entry id="218" string="Cannot start encoding while playing a file!">파일재생 중에는 인코딩을 시작할 수 없습니다!</entry>
-    <entry id="220" string="ATH">ATH</entry>
-    <entry id="221" string="Enable ATH:">ATH 허용:</entry>
-    <entry id="222" string="Use default setting">초기설정 사용</entry>
-    <entry id="223" string="Psycho acoustic model">청각 모델</entry>
-    <entry id="224" string="Use Temporal Masking Effect">마스킹효과 사용</entry>
-    <entry id="225" string="Expert">고급 설정</entry>
-    <entry id="226" string="Cannot configure encoder while encoding!">인코딩 중에는 인코더를 설정할 수 없습니다!</entry>
-    <entry id="227" string="The output folder does not exist! Do you want to create it?">디렉토리가 없습니다. 새로 만들겠습니까?</entry>
-    <entry id="228" string="Filename pattern">파일명 방식</entry>
-    <entry id="229" string="unknown album">(알수없는 앨범)</entry>
-    <entry id="230" string="Translated by %1.">%1 번역.</entry>
-    <entry id="231" string="Select all">전체 선택</entry>
-    <entry id="232" string="Select none">선택 없음</entry>
-    <entry id="233" string="Toggle selection">선택 반전</entry>
-    <entry id="234" string="Show Tip of the Day">오늘의 팁 표시</entry>
-    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1는 %2 개의 언어로 공개되어 있습니다. 만일 당신의&#10;언어로 되어 있지 않다면, 'smooth Translator'를 사용하여, 쉽게&#10;번역할 수 있습니다.</entry>
-    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1는 LAME, Ogg Vorbis, FAAC, 그리고 Bonk 인코더를&#10;지원합니다. VQF포맷을 지원하는 %1 웹사이트에서&#10;찾을 수 있습니다: %2</entry>
-    <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1는 보다 많은 파일포맷을 지원하기 위해 Winamp 2&#10;입력 플러그인을 지원합니다. %1는 이러한 파일포맷을&#10;지원하려면, in_*.dll 파일을 %1/plugins에 복사하십시오.</entry>
-    <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1로 유니코드 문자를 포함한 freedb CD&#10;데이타베이스를 전송할 수 있습니다. 그리고 비(非)라틴&#10;아티스트나 제목의 CD를 갖고 계시면, %1를 이용하여&#10;freedb 엔트리를 수정하여 전송할 수 있습니다.</entry>
-    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">에러 정정을 위해 %1의 대화창의 CDRip 탭에서 지터&#10;정정이 가능합니다. 또는, 파라노어 모드를 사용할 수도&#10;있습니다.</entry>
-    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">%1를 개선하기 위한 제안사항은 %1 SourceForge&#10;프로젝트 페이지(%2)에 리플을&#10;달아주시거나 %3 로 메일을&#10;보내주십시오.</entry>
-    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">%1가 마음에 드십니까? %1는 무료이며, %1&#10;프로젝트를 이용하여 개발하면 당신도 상용화 가능합니다.&#10;PayPal을 통하여 %2 로 송금가능합니다.&#10;자세한 사항은 %3 을&#10;참조하십시오.</entry>
-    <entry id="242" string="Bitrate / Quality">비트레이트 / 음질</entry>
-    <entry id="243" string="Check for updates now">최신 업데이트 체크</entry>
-    <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">%1에 업데이트 사항이 있습니다.&#10;지금 업데이트 목록을 보시겠습니까?</entry>
-    <entry id="245" string="There are no updates available at the moment!">현재 업데이트 사항이 없습니다!</entry>
-    <entry id="246" string="Check for updates at startup">시작시 업데이트 체크</entry>
-    <entry id="247" string="Read CD contents on insert">삽입 CD 내용 읽기</entry>
-    <entry id="248" string="Eject disk after ripping">리핑후 디스크 배출</entry>
-    <entry id="249" string="Encode 'On-The-Fly'">실시간 패킷 인코드</entry>
-    <entry id="250" string="Keep ripped Wave files">웨이브 파일 리핑유지</entry>
-    <entry id="251" string="ripping/decoding">리핑/디코딩</entry>
-    <entry id="252" string="encoding">인코딩</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
-    <entry id="254" string="Use Unicode filenames">Unicode 파일명 사용</entry>
-    <entry id="255" string="AAC Files">AAC 파일</entry>
-    <entry id="256" string="MP4 Files">MP4 파일</entry>
-    <entry id="257" string="Format">포맷</entry>
-    <entry id="258" string="File format">파일 포맷</entry>
-    <entry id="259" string="Allow ID3v2 tags in AAC files">AAC 파일에서 ID3v2 태그 지원</entry>
-    <entry id="260" string="Note:">주의:</entry>
-    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">ID3 태그가 포함된 AAC파일은 문제가 될 수&#10;있습니다. 태그를 플레이어에서 사용할 경우에만,&#10;이 옵션을 사용하기 바랍니다. </entry>
-    <entry id="262" string="FLAC Files">FLAC 파일</entry>
-    <entry id="263" string="Sampling rate">샘플링 레이트</entry>
-    <entry id="264" string="Sample resolution">샘플 해상도</entry>
-    <entry id="265" string="Number of samples">샘플 수</entry>
-    <entry id="266" string="Mono">모노</entry>
-    <entry id="267" string="bytes">바이트</entry>
-    <entry id="268" string="bit">비트</entry>
-    <entry id="269" string="min">분</entry>
-    <entry id="414" string="CDDB">CDDB</entry>
-    <entry id="415" string="Ripper">리퍼</entry>
+    <entry id="191" string="Default information">초기 멘트:</entry>
+    <entry id="192" string="Default comment string:">(알수없는 아티스트)</entry>
+    <entry id="193" string="unknown artist">(알수없는 제목)</entry>
+    <entry id="194" string="unknown title">ASPI 드라이버 로드할수 없습니다! CD 리핑 불가!</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">데이타베이스</entry>
+    <entry id="196" string="Database">CDDB 데이타 전송...</entry>
+    <entry id="197" string="Submit CDDB data...">CDDB 캐쉬 허용</entry>
+    <entry id="198" string="Enable CDDB cache">CDDB 데이타</entry>
+    <entry id="199" string="CDDB data">전송</entry>
+    <entry id="200" string="Submit">드라이브에 CD 없음!</entry>
+    <entry id="201" string="No audio CD in drive!">전송 전에 모든 항목과 트랙 제목을 입력하시오.</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">CD 옵션</entry>
+    <entry id="203" string="Prefer CDDB over CD Text">CD 정보 전송중</entry>
+    <entry id="204" string="CD options">파일 열기 실패: %1&#10;&#10;%2</entry>
+    <entry id="205" string="Submitting CD information">CDDB 데이타베이스 쿼리</entry>
+    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">도움말</entry>
+    <entry id="207" string="Query CDDB database">index.html</entry>
+    <entry id="208" string="Help">플러그인</entry>
+    <entry id="209" string="index_en.html">입력 플러그인</entry>
+    <entry id="210" string="Plug-ins">출력 플러그인</entry>
+    <entry id="211" string="Input plug-ins">설정</entry>
+    <entry id="212" string="Output plug-ins">About</entry>
+    <entry id="213" string="Configure">재생</entry>
+    <entry id="214" string="About">정지</entry>
+    <entry id="215" string="Play">인코딩 중에는 파일을 재생할 수 없습니다!</entry>
+    <entry id="216" string="Stop">파일재생 중에는 인코딩을 시작할 수 없습니다!</entry>
+    <entry id="217" string="Cannot play a file while encoding!">ATH</entry>
+    <entry id="218" string="Cannot start encoding while playing a file!">ATH 허용:</entry>
+    <entry id="219" string="Enable remote CDDB database">초기설정 사용</entry>
+    <entry id="220" string="ATH">청각 모델</entry>
+    <entry id="221" string="Enable ATH:">마스킹효과 사용</entry>
+    <entry id="222" string="Use default setting">고급 설정</entry>
+    <entry id="223" string="Psycho acoustic model">인코딩 중에는 인코더를 설정할 수 없습니다!</entry>
+    <entry id="224" string="Use Temporal Masking Effect">디렉토리가 없습니다. 새로 만들겠습니까?</entry>
+    <entry id="225" string="Expert">파일명 방식</entry>
+    <entry id="226" string="Cannot configure encoder while encoding!">(알수없는 앨범)</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">%1 번역.</entry>
+    <entry id="228" string="Filename pattern">전체 선택</entry>
+    <entry id="229" string="unknown album">선택 없음</entry>
+    <entry id="230" string="Translated by %1.">선택 반전</entry>
+    <entry id="231" string="Select all">오늘의 팁 표시</entry>
+    <entry id="232" string="Select none">%1는 %2 개의 언어로 공개되어 있습니다. 만일 당신의&#10;언어로 되어 있지 않다면, 'smooth Translator'를 사용하여, 쉽게&#10;번역할 수 있습니다.</entry>
+    <entry id="233" string="Toggle selection">%1는 LAME, Ogg Vorbis, FAAC, 그리고 Bonk 인코더를&#10;지원합니다. VQF포맷을 지원하는 %1 웹사이트에서&#10;찾을 수 있습니다: %2</entry>
+    <entry id="234" string="Show Tip of the Day">%1는 보다 많은 파일포맷을 지원하기 위해 Winamp 2&#10;입력 플러그인을 지원합니다. %1는 이러한 파일포맷을&#10;지원하려면, in_*.dll 파일을 %1/plugins에 복사하십시오.</entry>
+    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1로 유니코드 문자를 포함한 freedb CD&#10;데이타베이스를 전송할 수 있습니다. 그리고 비(非)라틴&#10;아티스트나 제목의 CD를 갖고 계시면, %1를 이용하여&#10;freedb 엔트리를 수정하여 전송할 수 있습니다.</entry>
+    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">에러 정정을 위해 %1의 대화창의 CDRip 탭에서 지터&#10;정정이 가능합니다. 또는, 파라노어 모드를 사용할 수도&#10;있습니다.</entry>
+    <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1를 개선하기 위한 제안사항은 %1 SourceForge&#10;프로젝트 페이지(%2)에 리플을&#10;달아주시거나 %3 로 메일을&#10;보내주십시오.</entry>
+    <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1가 마음에 드십니까? %1는 무료이며, %1&#10;프로젝트를 이용하여 개발하면 당신도 상용화 가능합니다.&#10;PayPal을 통하여 %2 로 송금가능합니다.&#10;자세한 사항은 %3 을&#10;참조하십시오.</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">비트레이트 / 음질</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">최신 업데이트 체크</entry>
+    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">%1에 업데이트 사항이 있습니다.&#10;지금 업데이트 목록을 보시겠습니까?</entry>
+    <entry id="242" string="Bitrate / Quality">현재 업데이트 사항이 없습니다!</entry>
+    <entry id="243" string="Check for updates now">시작시 업데이트 체크</entry>
+    <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">삽입 CD 내용 읽기</entry>
+    <entry id="245" string="There are no updates available at the moment!">리핑후 디스크 배출</entry>
+    <entry id="246" string="Check for updates at startup">실시간 패킷 인코드</entry>
+    <entry id="247" string="Read CD contents on insert">웨이브 파일 리핑유지</entry>
+    <entry id="248" string="Eject disk after ripping">리핑/디코딩</entry>
+    <entry id="249" string="Encode 'On-The-Fly'">인코딩</entry>
+    <entry id="250" string="Keep ripped Wave files">Unicode</entry>
+    <entry id="251" string="ripping/decoding">Unicode 파일명 사용</entry>
+    <entry id="252" string="encoding">AAC 파일</entry>
+    <entry id="253" string="Unicode">MP4 파일</entry>
+    <entry id="254" string="Use Unicode filenames">포맷</entry>
+    <entry id="255" string="AAC Files">파일 포맷</entry>
+    <entry id="256" string="MP4 Files">AAC 파일에서 ID3v2 태그 지원</entry>
+    <entry id="257" string="Format">주의:</entry>
+    <entry id="258" string="File format">ID3 태그가 포함된 AAC파일은 문제가 될 수&#10;있습니다. 태그를 플레이어에서 사용할 경우에만,&#10;이 옵션을 사용하기 바랍니다. </entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">FLAC 파일</entry>
+    <entry id="260" string="Note:">샘플링 레이트</entry>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">샘플 해상도</entry>
+    <entry id="262" string="FLAC Files">샘플 수</entry>
+    <entry id="263" string="Sampling rate">모노</entry>
+    <entry id="264" string="Sample resolution">바이트</entry>
+    <entry id="265" string="Number of samples">비트</entry>
+    <entry id="266" string="Mono">분</entry>
+    <entry id="267" string="bytes">CDDB</entry>
+    <entry id="268" string="bit">리퍼</entry>
+    <entry id="269" string="min"/>
+    <entry id="270" string="Create playlist">브라우즈</entry>
+    <entry id="271" string="Create cue sheet">건너 뛰기</entry>
+    <entry id="272" string="Write ID3v1 tags"/>
+    <entry id="273" string="Write ID3v2 tags"/>
+    <entry id="274" string="Write Vorbis Comment tags"/>
+    <entry id="275" string="Write MP4 metadata info"/>
+    <entry id="276" string="ID3v1 tag encoding:"/>
+    <entry id="277" string="ID3v2 tag encoding:"/>
+    <entry id="278" string="Vorbis Comment tag encoding:"/>
+    <entry id="279" string="MP4 metadata encoding:"/>
+    <entry id="280" string="Tag encodings"/>
+    <entry id="281" string="Update joblist with this information">인코드 파일이 위치할 폴더를 선택하시오</entry>
+    <entry id="282" string="unknown genre"/>
+    <entry id="283" string="Load joblist..."/>
+    <entry id="284" string="Save joblist..."/>
+    <entry id="285" string="Pause/resume encoding">시작시 업데이트 체크</entry>
+    <entry id="286" string="Shutdown after encoding"/>
+    <entry id="287" string="Playlist Files"/>
+    <entry id="288" string="unknown year"/>
+    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!"/>
+    <entry id="290" string="Blocksize:"/>
+    <entry id="291" string="Use streamable subset"/>
+    <entry id="292" string="Adaptive Joint Stereo"/>
+    <entry id="293" string="Fastest encoding"/>
+    <entry id="294" string="Best compression"/>
+    <entry id="295" string="Linear predictor"/>
+    <entry id="296" string="Maximum LPC order"/>
+    <entry id="297" string="Quantized LPC precision"/>
+    <entry id="298" string="Exhaustive model search"/>
+    <entry id="299" string="Optimize LPC quantization"/>
+    <entry id="300" string="disabled"/>
+    <entry id="301" string="auto"/>
+    <entry id="302" string="Residual coding"/>
+    <entry id="303" string="Minimum partition order"/>
+    <entry id="304" string="Maximum partition order"/>
+    <entry id="305" string="By pattern"/>
+    <entry id="306" string="From folder"/>
+    <entry id="307" string="Folder"/>
+    <entry id="308" string="Add folder"/>
+    <entry id="309" string="Choose folder:"/>
+    <entry id="310" string="Select the folder to add to the joblist:"/>
+    <entry id="311" string="Add files by pattern">파일명 방식</entry>
+    <entry id="312" string="Pattern"/>
+    <entry id="313" string="Start folder"/>
+    <entry id="314" string="No files found matching pattern:"/>
+    <entry id="315" string="Edit language file"/>
+    <entry id="316" string="Use for all selected tracks">샘플 수</entry>
+    <entry id="317" string="Interpret string as">채널</entry>
+    <entry id="318" string="selected tracks">모노</entry>
+    <entry id="319" string="Adjust upper/lower case">스테레오</entry>
+    <entry id="320" string="all words upper case">시간</entry>
+    <entry id="321" string="long words upper case">파일</entry>
+    <entry id="322" string="first letter upper case">크기</entry>
+    <entry id="323" string="all lower case">비트레이트</entry>
+    <entry id="324" string="all upper case">오디오 파일</entry>
+    <entry id="325" string="Status">옵션</entry>
+    <entry id="326" string="Successfully read CD!">파일명 방식</entry>
+    <entry id="327" string="Comment"/>
+    <entry id="328" string="Manage CDDB cache entries..."/>
+    <entry id="329" string="Save entry">실시간 패킷 인코드</entry>
+    <entry id="330" string="Remove entry">브라우즈</entry>
+    <entry id="331" string="Disc name"/>
+    <entry id="332" string="Charset">파일명 방식</entry>
+    <entry id="333" string="Preview"/>
+    <entry id="334" string="Downloaded CDDB entries:"/>
+    <entry id="335" string="User name:"/>
+    <entry id="336" string="Password:"/>
+    <entry id="337" string="Delete original files after encoding"/>
+    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?"/>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?"/>
+    <entry id="340" string="Playlists">이 프로그램은 GNU General Public License (GPL)의&#10;조항에 의거하여 배포되고 있습니다.</entry>
+    <entry id="341" string="Create playlists"/>
+    <entry id="342" string="Create cue sheets"/>
+    <entry id="343" string="Use encoder output folder"/>
+    <entry id="344" string="Various artists">웨이브 파일 리핑유지</entry>
+    <entry id="345" string="Data track"/>
+    <entry id="346" string="Select the folder in which the playlist files will be placed:"/>
+    <entry id="347" string="Use input file folder if possible"/>
+    <entry id="348" string="Encode to input file folder if possible"/>
+    <entry id="349" string="Allow overwriting input file"/>
+    <entry id="350" string="Encode to a single file"/>
+    <entry id="351" string="Encoder options">index.html</entry>
+    <entry id="352" string="Skip">건너 뛰기</entry>
+    <entry id="353" string="Enable local CDDB database"/>
+    <entry id="354" string="CDDB path:"/>
+    <entry id="355" string="Select the folder of the CDDB database:"/>
+    <entry id="356" string="File already exists"/>
+    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?"/>
+    <entry id="358" string="Overwrite all further files"/>
+    <entry id="359" string="Start ripping automatically"/>
+    <entry id="360" string="Submit to online database later"/>
+    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."/>
+    <entry id="362" string="CDDB entries to submit:"/>
+    <entry id="363" string="Show queued CDDB entries..."/>
+    <entry id="364" string="Submit all">인코딩</entry>
+    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog."/>
+    <entry id="366" string="Category"/>
+    <entry id="367" string="Close">에러</entry>
+    <entry id="368" string="Automatization">자동화</entry>
+    <entry id="369" string="Query CDDB database later">CDDB 캐쉬 허용</entry>
+    <entry id="370" string="Show queued CDDB queries..."/>
+    <entry id="371" string="CDDB queries">CDDB 억세스모드</entry>
+    <entry id="372" string="Query">CDDB 서버</entry>
+    <entry id="373" string="Query all">포트</entry>
+    <entry id="374" string="Query string">메일주소</entry>
+    <entry id="375" string="CDDB queries to perform:"/>
+    <entry id="376" string="Would you like to perform this query again later?"/>
+    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive."/>
+    <entry id="378" string="CD information"/>
+    <entry id="379" string="Read CD Text"/>
+    <entry id="380" string="Read cdplayer.ini"/>
+    <entry id="381" string="Apodization"/>
+    <entry id="382" string="Apodization function(s):"/>
+    <entry id="383" string="You can specify multiple functions separated by semicolons."/>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1로 유니코드 문자를 포함한 freedb CD&#10;데이타베이스를 전송할 수 있습니다. 그리고 비(非)라틴&#10;아티스트나 제목의 CD를 갖고 계시면, %1를 이용하여&#10;freedb 엔트리를 수정하여 전송할 수 있습니다.</entry>
+    <entry id="385" string="Cannot access input file: %1"/>
+    <entry id="386" string="Cannot create output file: %1"/>
+    <entry id="387" string="File not found"/>
+    <entry id="388" string="Unknown file type"/>
+    <entry id="389" string="Unsupported audio format"/>
+    <entry id="390" string="Unknown error"/>
+    <entry id="391" string="Replace existing comments with default comment"/>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first."/>
+    <entry id="393" string="Write WMA metadata info"/>
+    <entry id="394" string="WMA metadata encoding:"/>
+    <entry id="395" string="Select codec"/>
+    <entry id="396" string="Select codec format"/>
+    <entry id="397" string="Codec settings"/>
+    <entry id="398" string="Use codec"/>
+    <entry id="399" string="Use format"/>
+    <entry id="400" string="Write uncompressed WMA files"/>
+    <entry id="401" string="Automatically select format based on settings and input format"/>
+    <entry id="402" string="Use VBR encoding"/>
+    <entry id="403" string="Use 2-pass encoding"/>
+    <entry id="404" string="Target bitrate"/>
+    <entry id="405" string="Set drive speed limit:"/>
+    <entry id="406" string="Support this project"/>
+    <entry id="407" string="Please support this project!"/>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
+    <entry id="410" string="usd">krw</entry>
+    <entry id="411" string="en"/>
+    <entry id="412" string="Thank you very much!"/>
+    <entry id="413" string="Remind me later"/>
+    <entry id="414" string="CDDB"/>
+    <entry id="415" string="Ripper"/>
+    <entry id="416" string="Default"/>
   </data>
 </LangFile>
