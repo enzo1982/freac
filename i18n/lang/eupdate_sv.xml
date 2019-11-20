@@ -23,7 +23,7 @@
     <entry id="11" string="Yes">Ja</entry>
     <entry id="12" string="No">Nej</entry>
     <entry id="13" string="unknown">i.u.</entry>
-    <entry id="14" string="Installing files...">Installerar filer …</entry>
+    <entry id="14" string="Installing files...">Installerar filer &#8230;</entry>
     <entry id="15" string="Installing file:">Installerar fil:</entry>
     <entry id="16" string="Downloading file:">Hämtar fil:</entry>
     <entry id="17" string="Update complete">Uppdateringen har slutförts</entry>
