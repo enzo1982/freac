@@ -1002,7 +1002,7 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders">Traduit par %1.</entry>
+	<entry id="42000" string="Encoders">Encodeurs</entry>
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
 	<entry id="42003" string="Configure encoder">Configurer l'encodeur</entry>
@@ -1233,7 +1233,7 @@
 	<entry id="102015" string="Size">Taille</entry>
 	<entry id="102016" string="Cancel download"/>
 	<entry id="102017" string="unknown"/>
-	<entry id="102018" string="Note"/>
+	<entry id="102018" string="Note">Remarque</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatisation</entry>
