@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Italian / Italiano</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -157,7 +157,7 @@
     <entry id="149" string="CDDB access mode:">Modalità di accesso CDDB:</entry>
     <entry id="150" string="CDDB server:">Server CDDB:</entry>
     <entry id="151" string="Port:">Porta:</entry>
-    <entry id="152" string="Info">Info</entry>
+    <entry id="152" string="Info">Artista</entry>
     <entry id="153" string="No freedb entry for this disk.">Nessuna informazione per questo disco.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Si sono verificati errori durante la connessione al server freedb.</entry>
     <entry id="155" string="Connecting to freedb server at">Connessione al server freedb su</entry>
@@ -190,7 +190,7 @@
     <entry id="186" string="Artist">Artista</entry>
     <entry id="187" string="Year">Anno</entry>
     <entry id="188" string="Genre">Genere</entry>
-    <entry id="189" string="Album">Album</entry>
+    <entry id="189" string="Album">Commenti</entry>
     <entry id="190" string="Info tags">Tag</entry>
     <entry id="191" string="Default information">Informazione predefinita</entry>
     <entry id="192" string="Default comment string:">Commento predefinito:</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Non eliminare file wave estratti</entry>
     <entry id="251" string="ripping/decoding">estrazione/decodifica</entry>
     <entry id="252" string="encoding">codifica</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Nomi file in formato Unicode</entry>
     <entry id="255" string="AAC Files">File AAC</entry>
     <entry id="256" string="MP4 Files">File MP4</entry>
@@ -270,7 +270,7 @@
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">byte</entry>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Crea playlist</entry>
     <entry id="271" string="Create cue sheet">Crea cue sheet</entry>
     <entry id="272" string="Write ID3v1 tags">Scrivi tag ID3v1</entry>
@@ -337,7 +337,7 @@
     <entry id="333" string="Preview">Anteprima</entry>
     <entry id="334" string="Downloaded CDDB entries:">Elementi CDDB scaricati:</entry>
     <entry id="335" string="User name:">Nome utente:</entry>
-    <entry id="336" string="Password:">Password:</entry>
+    <entry id="336" string="Password:"/>
     <entry id="337" string="Delete original files after encoding">Elimina file originali a codifica completata</entry>
     <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Se si seleziona questa opzione, i file originali saranno&#10;eliminati una volta codificati. Vuoi continuare?</entry>
     <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">Il protocollo CDDBP freedb non può essere usato con i server proxy HTTP.&#10;&#10;Vuoi usare invece il protocollo HTTP?</entry>
@@ -412,7 +412,7 @@
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Aiutaci a mantenere questo sofwtare gratuito supportando il progetto %1&#10;con una donazione&#10;&#10;Fai clic su uno dei pulsanti sottostanti per fare una donazione con PayPal:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Puoi inviare anche direttamente del denaro a %1 usando PayPal.&#10;&#10;Per favore scrivi a %1 se vuoi donare usando&#10;un pagamento elettronico, inviarci un cheque o inviarci denaro via mail.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Molte grazie!</entry>
     <entry id="413" string="Remind me later">Ricordamelo più tardi</entry>
     <entry id="414" string="CDDB">CDDB</entry>
