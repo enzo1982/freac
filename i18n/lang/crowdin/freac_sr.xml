@@ -1117,7 +1117,7 @@
       <section name="OptimFROG Lossless Encoder">
 	<entry id="80200" string="Encoding mode">Režim enkodovanja</entry>
 	<entry id="80201" string="fast"/>
-	<entry id="80202" string="normal">viši</entry>
+	<entry id="80202" string="normal">normalan</entry>
 	<entry id="80203" string="high"/>
 	<entry id="80204" string="extra"/>
 	<entry id="80205" string="best"/>
@@ -1154,7 +1154,7 @@
 
       <section name="Nero AAC Encoder">
 	<entry id="80500" string="Encoding mode">Režim enkodovanja</entry>
-	<entry id="80501" string="auto">Prioritet procesa</entry>
+	<entry id="80501" string="auto">samo</entry>
 	<entry id="80502" string="Quality">Kvalitet</entry>
 	<entry id="80503" string="worse">lošije</entry>
 	<entry id="80504" string="better">bolje</entry>
