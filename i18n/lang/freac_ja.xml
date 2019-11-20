@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">REIKA &amp; BHCrusher1</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">OK</entry>
@@ -387,7 +387,7 @@
 	<entry id="5111" string="Encode to a single file">一つのファイルにエンコード</entry>
 	<entry id="5112" string="Output filenames">出力ファイル名</entry>
 	<entry id="5113" string="Allow Unicode characters">Unicode文字を許可する</entry>
-	<entry id="5114" string="Replace spaces">スペースを置き換える</entry>
+	<entry id="5114" string="Replace spaces with underscores">スペースをアンダースコアに置き換える</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">ジョブリストから処理済みのトラックを削除する</entry>
 	<entry id="5116" string="Add encoded files to joblist">エンコードされたファイルをジョブリストに追加する</entry>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">それ以外のファイル名に連続番号を付ける</entry>
@@ -513,13 +513,14 @@
 	  <entry id="5663" string="Sampling rate">サンプリング レート</entry>
 	  <entry id="5664" string="Channels">チャンネル</entry>
 	  <entry id="5665" string="Sample resolution">サンプル ビット数</entry>
+	  <entry id="5666" string="CD drive">CDドライブ</entry>
 	</section>
       </section>
 
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">並列処理</entry>
 	<entry id="5701" string="Enable parallel processing">並列処理を有効にする</entry>
-	<entry id="5702" string="Enable SuperFast mode (experimental)">SuperFastモードを有効にする（実験的）</entry>
+	<entry id="5702" string="Enable SuperFast mode">SuperFastモードを有効にする</entry>
 	<entry id="5703" string="Number of conversion threads">変換スレッドの数</entry>
 	<entry id="5704" string="auto">自動</entry>
 	<entry id="5705" string="Process priority">プロセスの優先度</entry>
@@ -567,42 +568,45 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 は %2 種類の言語で利用可能です。もしあなたの&#10;使用言語が利用できない場合、'smooth Translator' を&#10;使って簡単に %1 を翻訳する事が出来ます。</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 は LAME、Ogg Vorbis、FAAC、FLAC、及び Bonk&#10;エンコーダをサポートしています。&#10;VQF 形式のエンコーダは下記で公開されています。&#10;%1 のウェブサイト：%2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 は LAME、Ogg Vorbis、FAAC、FLAC、及び Opus&#10;エンコーダをサポートしています。&#10;VQF 形式のエンコーダは下記で公開されています。&#10;%1 のウェブサイト：%2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 は Winamp2 入力プラグインを使って対応形式を&#10;追加する事が出来ます。%1 で他の形式を読み込める&#10;ようにするには、in_*.dll を %1/plugins にコピー&#10;してください。</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1 で freedb CD データベースに Unicode 文字を含む&#10;データを送信できます。あなたの持っている英文字以外の&#10;アーティスト名やタイトル名の CD データを、%1 で&#10;freedb に送信できます。</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">リッピングの読み込みエラー補正には、設定ダイアログの&#10;Ripper タブの 'ジッター補正有効' をチェックしてください。&#10;それで解決しない場合は、CD 詳細設定モードのいずれかを&#10;試してください。</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">%1 の改善につき意見があれば、SourceForge にある&#10;%1 のプロジェクトページ(%2)&#10;のトラッカーか、%3 へのメールで&#10;あなたのアイディアを送信する事が出来ます。</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">%1 の改善につき意見があれば、%2 にある&#10;%1 のプロジェクトページ(%3)&#10;のトラッカーか、%4 へのメールで&#10;あなたのアイディアを送信する事が出来ます。</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">%1 が気に入りましたか？ これは無料で利用できますが、&#10;%1 プロジェクトに寄付する事で開発を資金援助が出来ます。&#10;あなたは %2 へ PayPal を使って送金できます。&#10;詳細は %3 を参照してください。</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">エンコード処理を実行中です。本当に終了しますか？</entry>
-      <entry id="7001" string="Currently converting">エンコード中です</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI ドライバがロードできません。 CD リッピングが出来ません。</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
-      <entry id="7004" string="Cannot play a CD track while ripping from the same drive!">同じドライブからリッピングしながらCDトラックを再生できません！</entry>
-      <entry id="7005" string="Cannot start ripping while playing a track from the same drive!">同じドライブからトラックを再生中にリッピングを開始できません！</entry>
-      <entry id="7006" string="Delete original files after encoding">エンコード後に元ファイルを削除</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">このオプションはファイルをエンコードした後に元ファイルを&#10;コンピュータから削除します!&#10;&#10;本当にこの機能を有効にしますか？</entry>
-      <entry id="7008" string="File already exists">ファイルが既に存在します</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">出力ファイル (%1) は既に存在します。&#10;上書きしますか?</entry>
-      <entry id="7010" string="Overwrite all further files">すべて上書き</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB サポートが無効になっています。 設定ダイアログで&#10;ローカルかリモート CDDB サポートを有効にしてください。</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">リモート CDDB サポートが無効になっています。&#10;設定ダイアログで有効にしてください。</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">CD-ROM ドライブへのアクセスが Windows により拒否されました。&#10;&#10;システム管理者に連絡して CD-ROM ドライブへの&#10;アクセス権限をもらってください。</entry>
-      <entry id="7014" string="Cannot access input file: %1">入力ファイルにアクセス不能： %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">出力ファイルを作成不能： %1</entry>
-      <entry id="7016" string="File not found">ファイルがありません</entry>
-      <entry id="7017" string="Unknown file type">不明なファイル形式</entry>
-      <entry id="7018" string="Unsupported audio format">未対応のオーディオ形式</entry>
-      <entry id="7019" string="Unknown error">不明なエラー</entry>
-      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">次の設定ダイアログは使用できません：&#10;&#10;%1</entry>
-      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">非可逆圧縮から可逆圧縮に変換しようとしています。&#10;&#10;品質の低下は元に戻すことができないため、このプロセスでは&#10;品質が向上することはなく、ファイルサイズが増加する可能性が高いことにご注意ください。&#10;&#10;続行しますか？</entry>
-      <entry id="7022" string="Failed to verify input file: %1">入力ファイルの検証に失敗しました： %1</entry>
-      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">チェックサムの不一致がないか出力ファイルをベリファイしています：%1&#10;&#10;エンコードのチェックサム：%2&#10;ベリファイのチェックサム：%3</entry>
-      <entry id="7024" string="The selected folder does not exist anymore!">選択したフォルダはもう存在しません！</entry>
-      <entry id="7025" string="Keep this option enabled even after restarting %1">%1 を再起動してもこのオプションを有効にしておいてください</entry>
-      <entry id="7026" string="Invalid file format">無効なファイル形式です</entry>
+      <entry id="7000" string="Currently converting">エンコード中です</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">エンコード処理を実行中です。本当に終了しますか？</entry>
+      <entry id="7002" string="Delete original files after encoding">エンコード後に元ファイルを削除</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">このオプションはファイルをエンコードした後に元ファイルを&#10;コンピュータから削除します!&#10;&#10;本当にこの機能を有効にしますか？</entry>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">%1 を再起動してもこのオプションを有効にしておいてください</entry>
+      <entry id="7005" string="File already exists">ファイルが既に存在します</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">出力ファイル (%1) は既に存在します。&#10;上書きしますか?</entry>
+      <entry id="7007" string="Overwrite all further files">すべて上書き</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">非可逆圧縮から可逆圧縮に変換しようとしています。&#10;&#10;品質の低下は元に戻すことができないため、このプロセスでは&#10;品質が向上することはなく、ファイルサイズが増加する可能性が高いことにご注意ください。&#10;&#10;続行しますか？</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">入力ファイルにアクセス不能： %1&#10;&#10;ファイル： %1&#10;ディレクトリ： %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">出力ファイルを作成不能： %1&#10;&#10;ファイル： %1&#10;ディレクトリ： %2</entry>
+      <entry id="7108" string="Failed to verify input file: %1">入力ファイルの検証に失敗しました： %1</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">チェックサムの不一致がないか出力ファイルをベリファイしています：%1&#10;&#10;エンコードのチェックサム：%2&#10;ベリファイのチェックサム：%3</entry>
+      <entry id="7110" string="File not found">ファイルがありません</entry>
+      <entry id="7111" string="Unknown file type">不明なファイル形式</entry>
+      <entry id="7112" string="Invalid file format">無効なファイル形式です</entry>
+      <entry id="7113" string="Unsupported audio format">未対応のオーディオ形式</entry>
+      <entry id="7114" string="Unknown error">不明なエラー</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI ドライバがロードできません。 CD リッピングが出来ません。</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">同じドライブからリッピングしながらCDトラックを再生できません！</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">同じドライブからトラックを再生中にリッピングを開始できません！</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB サポートが無効になっています。 設定ダイアログで&#10;ローカルかリモート CDDB サポートを有効にしてください。</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">リモート CDDB サポートが無効になっています。&#10;設定ダイアログで有効にしてください。</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">CD-ROM ドライブへのアクセスが Windows により拒否されました。&#10;&#10;システム管理者に連絡して CD-ROM ドライブへの&#10;アクセス権限をもらってください。</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">次の設定ダイアログは使用できません：&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">選択したフォルダはもう存在しません！</entry>
     </section>
 
     <section name="Dialogs">
@@ -611,7 +615,7 @@
 	<entry id="8000" string="Confirm overwrite">上書きを確認</entry>
 	<entry id="8001" string="Confirm">確認</entry>
 	<entry id="8002" string="Skip all">全部スキップ</entry>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten">次の%1ファイルが既に存在し、上書きされます</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">次の%1ファイルが既に存在するか、ファイル名が重複しています</entry>
 	<entry id="8005" string="Overwrite">上書き</entry>
 	<entry id="8006" string="Skip">スキップ</entry>
       </section>
@@ -642,7 +646,7 @@
       <entry id="9009" string="No scratch repair">破損部の修復をしない</entry>
       <entry id="9010" string="Full cdparanoia mode">全て行う</entry>
       <entry id="9011" string="Activate jitter correction">ジッター補正有効</entry>
-      <entry id="9012" string="Swap left/right channel">左右チャンネルの入れ替え</entry>
+      <entry id="9012" string="Switch stereo channels">左右チャンネルの入れ替え</entry>
       <entry id="9013" string="Automatization">自動化</entry>
       <entry id="9014" string="Read CD contents on insert">CD 挿入時に読み込みを行う</entry>
       <entry id="9015" string="Start ripping automatically">自動でリッピング開始</entry>
@@ -662,19 +666,19 @@
       <section name="MAD"/>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder">デコーダ</entry>
-	<entry id="11001" string="Active decoder">有効なデコーダ</entry>
-	<entry id="11002" string="auto select">自動選択</entry>
+	<entry id="21000" string="Decoder">デコーダ</entry>
+	<entry id="21001" string="Active decoder">有効なデコーダ</entry>
+	<entry id="21002" string="auto select">自動選択</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information">タイトル情報</entry>
-	<entry id="12001" string="Read tags from referenced files">参照ファイルからタグを読み込む</entry>
-	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">参照ファイルのタグよりもcueシートのメタデータを優先する</entry>
-	<entry id="12003" string="Alternative files">代替ファイル</entry>
-	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">参照されたWaveファイルが見つからない場合、圧縮された代替ファイルを探す</entry>
-	<entry id="12005" string="Error handling">エラー処理</entry>
-	<entry id="12006" string="Ignore errors during cue sheet processing">cueシート処理中にエラーを無視する</entry>
+	<entry id="22000" string="Title information">タイトル情報</entry>
+	<entry id="22001" string="Read tags from referenced files">参照ファイルからタグを読み込む</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">参照ファイルのタグよりもcueシートのメタデータを優先する</entry>
+	<entry id="22003" string="Alternative files">代替ファイル</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">参照されたWaveファイルが見つからない場合、圧縮された代替ファイルを探す</entry>
+	<entry id="22005" string="Error handling">エラー処理</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">cueシート処理中にエラーを無視する</entry>
       </section>
     </section>
 
@@ -953,6 +957,7 @@
 	<entry id="50101" string="Channel configuration">チャネル設定</entry>
 	<entry id="50102" string="Mono">モノラル</entry>
 	<entry id="50103" string="Stereo">シンプル ステレオ</entry>
+	<entry id="50104" string="Switch stereo channels">左右チャンネルの入れ替え</entry>
       </section>
 
       <section name="Resample">
@@ -993,7 +998,7 @@
       <section name="OptimFROG Lossless Encoder">
 	<entry id="80200" string="Encoding mode">変換モード</entry>
 	<entry id="80202" string="normal">通常</entry>
-	<entry id="80209" string="Store MD5 of original PCM data">元のPCMデータのMD5を保存</entry>
+	<entry id="80209" string="Add MD5 checksum">MD5チェックサムを追加する</entry>
 	<entry id="80213" string="Optimization">最適化</entry>
 	<entry id="80214" string="disabled">無効化</entry>
       </section>
@@ -1169,15 +1174,13 @@
 	</section>
       </section>
 
-      <section name="Protocols">
-	<entry id="104002" string="Errors / Warnings">エラー/警告</entry>
-	<entry id="104003" string="Details">詳細</entry>
+      <section name="Logging">
 	<entry id="104004" string="Time">時間</entry>
 	<entry id="104005" string="Message">メッセージ</entry>
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface">ユーザーインターフェース</entry>
-	  <entry id="104101" string="Show Protocols tab in main window">Protocols tabをメインウィンドウに表示</entry>
+	  <entry id="104101" string="Show Logs tab in main window">メインウィンドウに[ログ]タブを表示する</entry>
 	</section>
       </section>
     </section>
