@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Esperanto</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -270,7 +270,7 @@
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">bajtoj</entry>
     <entry id="268" string="bit">bito</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Krei legliston</entry>
     <entry id="271" string="Create cue sheet">Krei replikfolion</entry>
     <entry id="272" string="Write ID3v1 tags">Skribi ID3v1-etiketojn</entry>
@@ -386,8 +386,37 @@
     <entry id="382" string="Apodization function(s):">Apodiz-funkcio(j):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Vi povas apartigi pluraj funkcioj per punktokomoj.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 povas okazigi dum la startigo aŭtomatan&#10;retserĉadon al program-aktualigo.&#10;&#10;Ĉu vi volas, ke %1 serĉas al aktualigoj dum la startigo?</entry>
+    <entry id="385" string="Cannot access input file: %1">eur</entry>
+    <entry id="386" string="Cannot create output file: %1">CDDB</entry>
+    <entry id="387" string="File not found">CDRip</entry>
+    <entry id="388" string="Unknown file type"/>
+    <entry id="389" string="Unsupported audio format"/>
+    <entry id="390" string="Unknown error"/>
+    <entry id="391" string="Replace existing comments with default comment"/>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first."/>
+    <entry id="393" string="Write WMA metadata info"/>
+    <entry id="394" string="WMA metadata encoding:"/>
+    <entry id="395" string="Select codec"/>
+    <entry id="396" string="Select codec format"/>
+    <entry id="397" string="Codec settings"/>
+    <entry id="398" string="Use codec"/>
+    <entry id="399" string="Use format"/>
+    <entry id="400" string="Write uncompressed WMA files"/>
+    <entry id="401" string="Automatically select format based on settings and input format"/>
+    <entry id="402" string="Use VBR encoding"/>
+    <entry id="403" string="Use 2-pass encoding"/>
+    <entry id="404" string="Target bitrate"/>
+    <entry id="405" string="Set drive speed limit:"/>
+    <entry id="406" string="Support this project"/>
+    <entry id="407" string="Please support this project!"/>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
     <entry id="410" string="usd">eur</entry>
-    <entry id="414" string="CDDB">CDDB</entry>
-    <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="411" string="en"/>
+    <entry id="412" string="Thank you very much!"/>
+    <entry id="413" string="Remind me later"/>
+    <entry id="414" string="CDDB"/>
+    <entry id="415" string="Ripper"/>
+    <entry id="416" string="Default"/>
   </data>
 </LangFile>
