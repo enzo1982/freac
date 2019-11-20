@@ -211,7 +211,7 @@
     <entry id="207" string="Query CDDB database">Pesquisar a base de dados do CDDB</entry>
     <entry id="208" string="Help">Ajuda</entry>
     <entry id="209" string="index_en.html">index_pt.html</entry>
-    <entry id="210" string="Plug-ins">Plug-ins</entry>
+    <entry id="210" string="Plug-ins"/>
     <entry id="211" string="Input plug-ins">Pug-ins de entrada</entry>
     <entry id="212" string="Output plug-ins">Plug-ins de saída</entry>
     <entry id="213" string="Configure">Configurar</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Manter os ficheiros wav</entry>
     <entry id="251" string="ripping/decoding">extraindo/codificando</entry>
     <entry id="252" string="encoding">codificando</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Usar nomes Unicode</entry>
     <entry id="255" string="AAC Files">Ficheiros AAC</entry>
     <entry id="256" string="MP4 Files">Ficheiros MP4</entry>
@@ -268,9 +268,9 @@
     <entry id="264" string="Sample resolution">Resolução da amostragem</entry>
     <entry id="265" string="Number of samples">Número de amostras</entry>
     <entry id="266" string="Mono">Mono</entry>
-    <entry id="267" string="bytes">bytes</entry>
+    <entry id="267" string="bytes"/>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Criar lista de execução</entry>
     <entry id="271" string="Create cue sheet">Criar lista das pistas (cue sheet)</entry>
     <entry id="272" string="Write ID3v1 tags">Escrever campos ID3v1</entry>
@@ -407,8 +407,16 @@
     <entry id="403" string="Use 2-pass encoding">Utilizar codificação de dupla passagem</entry>
     <entry id="404" string="Target bitrate">Razão de bit alvo</entry>
     <entry id="405" string="Set drive speed limit:">Especificar velocidade limite do leitor:</entry>
+    <entry id="406" string="Support this project">eur</entry>
+    <entry id="407" string="Please support this project!">CDDB</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">CDRip</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
     <entry id="410" string="usd">eur</entry>
-    <entry id="414" string="CDDB">CDDB</entry>
-    <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="411" string="en"/>
+    <entry id="412" string="Thank you very much!"/>
+    <entry id="413" string="Remind me later"/>
+    <entry id="414" string="CDDB"/>
+    <entry id="415" string="Ripper"/>
+    <entry id="416" string="Default"/>
   </data>
 </LangFile>
