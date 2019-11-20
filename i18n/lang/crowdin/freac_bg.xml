@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">KalinM &lt;kalinm@gbg.bg&gt;</property>
-    <property name="url"/>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">OK</entry>
@@ -1204,8 +1204,8 @@
 	<section name="SEPA">
 	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Можете да направите дарение, чрез електронен превод&#10;на следната сметка:</entry>
 	  <entry id="100501" string="Account holder:">Титуляр на сметката:</entry>
-	  <entry id="100502" string="IBAN:"/>
-	  <entry id="100503" string="BIC:"/>
+	  <entry id="100502" string="IBAN:">IBAN:</entry>
+	  <entry id="100503" string="BIC:">BIC:</entry>
 	</section>
       </section>
 
