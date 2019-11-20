@@ -33,22 +33,22 @@
     <entry id="308" string="Rating">Betyg</entry>
     <entry id="309" string="File name">Filnamn</entry>
     <entry id="310" string="File type">Filtyp</entry>
-    <entry id="311" string="Album artist"/>
+    <entry id="311" string="Album artist">Albumartist</entry>
 
     <entry id="350" string="unknown artist">okänd artist</entry>
     <entry id="351" string="unknown title">okänd titel</entry>
     <entry id="352" string="unknown album">okänt album</entry>
     <entry id="353" string="unknown genre">okänd genre</entry>
     <entry id="354" string="unknown year">okänt år</entry>
-    <entry id="355" string="unknown conductor"/>
-    <entry id="356" string="unknown composer"/>
-    <entry id="357" string="unknown album artist"/>
+    <entry id="355" string="unknown conductor">okänd dirigent</entry>
+    <entry id="356" string="unknown composer">okänd kompositör</entry>
+    <entry id="357" string="unknown album artist">okänd albumartist</entry>
 
     <entry id="380" string="hidden track">dolt spår</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
-      <entry id="501" string="%1...">%1 …</entry>
+      <entry id="501" string="%1...">%1 &#8230;</entry>
       <entry id="502" string="%1 (%2)">%1 (%2)</entry>
     </section>
 
@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 byte</entry>
-      <entry id="517" string="%1 kB"/>
+      <entry id="517" string="%1 kB">%1 kB</entry>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
@@ -68,7 +68,7 @@
       <entry id="1000" string="File">Arkiv</entry>
       <entry id="1001" string="Options">Inställningar</entry>
       <entry id="1002" string="Database">Databas</entry>
-      <entry id="1003" string="Processing"/>
+      <entry id="1003" string="Processing">Signalbehandling</entry>
       <entry id="1004" string="Encode">Koda</entry>
       <entry id="1005" string="Help">Hjälp</entry>
 
@@ -105,15 +105,15 @@
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing"/>
-	<entry id="1401" string="Enable processing during playback"/>
-	<entry id="1402" string="Configure signal processing"/>
-	<entry id="1403" string="Selected signal processors"/>
+	<entry id="1400" string="Enable signal processing">Aktivera signalbehandling</entry>
+	<entry id="1401" string="Enable processing during playback">Aktivera signalbehandling under uppspelning</entry>
+	<entry id="1402" string="Configure signal processing">Konfigurera signalbehandling</entry>
+	<entry id="1403" string="Selected signal processors">Aktuella signalbehandlare</entry>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Starta kodning</entry>
-	<entry id="1501" string="Start encoding (deleting original files)"/>
+	<entry id="1501" string="Start encoding (deleting original files)">Starta kodning (ta bort originalfiler)</entry>
 	<entry id="1502" string="Start encoding with">Starta kodning med</entry>
 	<entry id="1503" string="Pause/resume encoding">Pausa/återuppta kodning</entry>
 	<entry id="1504" string="Stop encoding">Stoppa kodning</entry>
@@ -132,8 +132,8 @@
 	<entry id="1603" string="Check for updates at startup">Sök efter uppdateringar vid programstart</entry>
 	<entry id="1604" string="About %1">Om %1</entry>
 	<entry id="1605" string="index_en.html">index.html</entry>
- 	<entry id="1606" string="Report an issue"/>
-	<entry id="1607" string="Suggest a feature"/>
+ 	<entry id="1606" string="Report an issue">Rapportera ett problem</entry>
+	<entry id="1607" string="Suggest a feature">Föreslå en funktion</entry>
       </section>
     </section>
 
@@ -147,7 +147,7 @@
       <entry id="2006" string="Configure general settings">Allmänna inställningar</entry>
       <entry id="2007" string="Configure the selected audio encoder">Inställningar för aktuell kodare</entry>
       <entry id="2008" string="Start the encoding process">Starta kodning</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)"/>
+      <entry id="2009" string="Start the encoding process (deleting original files)">Starta kodning (ta bort originalfiler)</entry>
       <entry id="2010" string="Pause/resume encoding">Pausa/återuppta kodning</entry>
       <entry id="2011" string="Stop encoding">Stoppa kodning</entry>
     </section>
@@ -170,7 +170,7 @@
       <entry id="3014" string="encoding">kodning</entry>
       <entry id="3015" string="Create playlist">Skapa spelningslista</entry>
       <entry id="3016" string="Create cue sheet">Skapa CUE-fil</entry>
-      <entry id="3017" string="Select">Bläddra …</entry>
+      <entry id="3017" string="Select">Bläddra &#8230;</entry>
       <entry id="3018" string="Skip">Hoppa över</entry>
       <entry id="3019" string="Encode to a single file">Koda till en enda fil</entry>
       <entry id="3020" string="Remove">Ta bort</entry>
@@ -204,8 +204,8 @@
       <entry id="3048" string="Other">Annan</entry>
       <entry id="3049" string="Output file name">Målfilens namn</entry>
       <entry id="3050" string="verifying">verifierar</entry>
-      <entry id="3051" string="Open"/>
-      <entry id="3052" string="CD drive"/>
+      <entry id="3051" string="Open">Öppna</entry>
+      <entry id="3052" string="CD drive">Cd-enhet</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Mapp</entry>
@@ -241,38 +241,38 @@
       <entry id="3503" string="Details">Information</entry>
       <entry id="3504" string="Error details">Felinformation</entry>
       <entry id="3505" string="Time left">Återstående tid</entry>
-      <entry id="3506" string="Waiting for other jobs to finish"/>
+      <entry id="3506" string="Waiting for other jobs to finish">Väntar på att andra jobb skall avslutas</entry>
 
       <section name="Joblist">
-	<entry id="3600" string="Reading folders"/>
-	<entry id="3601" string="Filtering duplicates"/>
-	<entry id="3602" string="Adding files"/>
-	<entry id="3603" string="Adding tracks"/>
-	<entry id="3604" string="Added %1 files, %2 errors occurred"/>
-	<entry id="3605" string="Added %1 tracks, %2 errors occurred"/>
-	<entry id="3606" string="Removing all tracks"/>
-	<entry id="3607" string="Removing tracks of disc in drive %1"/>
-	<entry id="3608" string="Removed all tracks from joblist"/>
-	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist"/>
+	<entry id="3600" string="Reading folders">Läser mappar</entry>
+	<entry id="3601" string="Filtering duplicates">Filtrerar dubbletter</entry>
+	<entry id="3602" string="Adding files">Lägger till filer</entry>
+	<entry id="3603" string="Adding tracks">Lägger till spår</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">%1 filer lades till, %2 fel inträffade</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">%1 spår lades till, %2 fel inträffade</entry>
+	<entry id="3606" string="Removing all tracks">Tar bort alla spår</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">Tar bort spår från skivan i enhet %1</entry>
+	<entry id="3608" string="Removed all tracks from joblist">Alla spår i jobblistan har tagits bort</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">Spår från skivan i enhet %1 har tagits bort från jobblistan</entry>
       </section>
 
       <section name="Convert">
-	<entry id="3700" string="Checking sample formats"/>
-	<entry id="3701" string="Checking for lossy to lossless conversion"/>
-	<entry id="3702" string="Checking output file names"/>
-	<entry id="3703" string="Converting %1"/>
-	<entry id="3704" string="Verifying %1"/>
-	<entry id="3705" string="Conversion cancelled"/>
-	<entry id="3706" string="Conversion finished"/>
-	<entry id="3707" string="Conversion finished with %1 warnings"/>
-	<entry id="3708" string="Conversion finished with %1 errors"/>
+	<entry id="3700" string="Checking sample formats">Kontrollerar sampelformat</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">Kontrollerar ev. förlustgivande till förlustfri konvertering</entry>
+	<entry id="3702" string="Checking output file names">Kontrollerar målfilnamn</entry>
+	<entry id="3703" string="Converting %1">Konverterar %1</entry>
+	<entry id="3704" string="Verifying %1">Verifierar %1</entry>
+	<entry id="3705" string="Conversion cancelled">Konverteringen har avbrutits</entry>
+	<entry id="3706" string="Conversion finished">Konverteringen har slutförts</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">Konverteringen har slutförts med %1 varningar</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">Konverteringen har slutförts med %1 fel</entry>
       </section>
 
       <section name="Update">
-	<entry id="3800" string="Preparing update check"/>
-	<entry id="3801" string="Contacting update server"/>
-	<entry id="3802" string="Updates found"/>
-	<entry id="3803" string="No updates found"/>
+	<entry id="3800" string="Preparing update check">Förbereder uppdateringskontroll</entry>
+	<entry id="3801" string="Contacting update server">Kontaktar uppdateringsserver</entry>
+	<entry id="3802" string="Updates found">Uppdateringar hittades</entry>
+	<entry id="3803" string="No updates found">Inga uppdateringar hittades</entry>
       </section>
     </section>
 
@@ -365,7 +365,7 @@
       <entry id="5009" string="Decoders">Avkodare</entry>
       <entry id="5010" string="Output">Utdata</entry>
       <entry id="5011" string="DSP">Digital signalbehandling</entry>
-      <entry id="5012" string="Extensions">Filtillägg</entry>
+      <entry id="5012" string="Extensions">Tilläggsfunktioner</entry>
       <entry id="5013" string="Other">Övrigt</entry>
       <entry id="5014" string="Active configuration">Aktiv konfiguration</entry>
       <entry id="5015" string="New">Ny</entry>
@@ -377,15 +377,15 @@
       <entry id="5021" string="Ripper">Rippning</entry>
       <entry id="5022" string="Settings">Inställningar</entry>
       <entry id="5023" string="Resources">Resurser</entry>
-      <entry id="5024" string="Verifiers"/>
-      <entry id="5025" string="Taggers"/>
-      <entry id="5026" string="Processing"/>
+      <entry id="5024" string="Verifiers">Verifierare</entry>
+      <entry id="5025" string="Taggers">Taggare</entry>
+      <entry id="5026" string="Processing">Signalbehandling</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Inställningar för kodare</entry>
 	<entry id="5101" string="Encoder">Kodare</entry>
 	<entry id="5102" string="Output folder">Målmapp</entry>
-	<entry id="5103" string="Select">Bläddra …</entry>
+	<entry id="5103" string="Select">Bläddra &#8230;</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Välj den mapp där de kodade filerna skall placeras</entry>
 	<entry id="5105" string="Use input file folder if possible">Använd originalfilens mapp, om möjligt</entry>
 	<entry id="5106" string="Allow overwriting input file">Tillåt överskrivning av originalfilen</entry>
@@ -399,8 +399,8 @@
 	<entry id="5114" string="Replace spaces with underscores">Ersätt mellanslag</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Ta bort bearbetade spår från jobblistan</entry>
 	<entry id="5116" string="Add encoded files to joblist">Lägg till kodade filer i jobblistan</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames"/>
-	<entry id="5118" string="Keep time stamps of source files"/>
+	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Lägg till löpnummer för att skilja annars identiska filnamn</entry>
+	<entry id="5118" string="Keep time stamps of source files">Behåll källfilernas tidsstämplar</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Målmappen finns inte! Vill du skapa den?</entry>
@@ -411,20 +411,20 @@
 	<entry id="5200" string="Create playlists">Skapa spelningslistor</entry>
 	<entry id="5201" string="Create cue sheets">Skapa CUE-filer</entry>
 	<entry id="5202" string="Output folder">Målmapp</entry>
-	<entry id="5203" string="Select">Bläddra …</entry>
+	<entry id="5203" string="Select">Bläddra &#8230;</entry>
 	<entry id="5204" string="Use encoder output folder">Använd kodarens målmapp</entry>
 	<entry id="5205" string="Filename pattern">Filnamnsmönster</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Välj den mapp där spelningslistefilerna skall sparas</entry>
 	<entry id="5207" string="Output filenames">Målfilernas namn</entry>
 	<entry id="5208" string="Configure plugin">Konfigurera</entry>
-	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion"/>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Skapa endast en spelningslista och/eller CUE-fil per konvertering</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Använd lokal CDDB-databas</entry>
 	<entry id="5301" string="Enable remote CDDB database">Aktivera extern CDDB-databas</entry>
 	<entry id="5302" string="CDDB path">CDDB-sökväg</entry>
-	<entry id="5303" string="Select">Bläddra …</entry>
+	<entry id="5303" string="Select">Bläddra &#8230;</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Välj mapp för CDDB-databasen</entry>
 	<entry id="5305" string="CDDB access mode">Anslutningsläge</entry>
 	<entry id="5306" string="CDDB server">CDDB-server</entry>
@@ -434,7 +434,7 @@
 	<entry id="5310" string="Proxy settings">Proxyinställningar</entry>
 	<entry id="5311" string="Options">Inställningar</entry>
 	<entry id="5312" string="Automatic CDDB queries">Automatisk CDDB-sökning</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Föredra CDDB-info framför cd-text</entry>
+	<entry id="5313" string="Prefer CDDB over CD Text">Prioritera CDDB-info framför cd-text</entry>
 	<entry id="5314" string="Enable CDDB cache">Aktivera CDDB-cache</entry>
 	<entry id="5315" string="Automatization">Automatisering</entry>
 	<entry id="5316" string="Always select first entry">Välj alltid första posten</entry>
@@ -489,12 +489,12 @@
 	<entry id="5519" string="Special fields">Särskilda fält</entry>
 	<entry id="5520" string="Write CD table of contents">Skriv innehållsförteckning för cd</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Behåll uppspelningsförstärkningsinfo</entry>
-	<entry id="5522" string="Cue sheets"/>
-	<entry id="5523" string="Read cue sheets embedded in metadata"/>
-	<entry id="5524" string="Prefer cue sheets over chapter information"/>
-	<entry id="5525" string="Prepend zero to track numbers below 10"/>
-	<entry id="5526" string="File size limit"/>
-	<entry id="5527" string="unlimited"/>
+	<entry id="5522" string="Cue sheets">CUE-filer</entry>
+	<entry id="5523" string="Read cue sheets embedded in metadata">Läs CUE-filer inbäddade i metadata</entry>
+	<entry id="5524" string="Prefer cue sheets over chapter information">Prioritera CUE-filer framför kapitelinformation</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">Lägg till en inledande nolla till spårnummer lägre än 10</entry>
+	<entry id="5526" string="File size limit">Filstorleksbegränsning</entry>
+	<entry id="5527" string="unlimited">obegränsad</entry>
       </section>
 
       <section name="Joblist">
@@ -520,26 +520,26 @@
 	  <entry id="5659" string="File name">Filnamn</entry>
 	  <entry id="5660" string="File type">Filtyp</entry>
 	  <entry id="5661" string="Output file name">Målfilens namn</entry>
-	  <entry id="5662" string="Bitrate"/>
-	  <entry id="5663" string="Sampling rate"/>
-	  <entry id="5664" string="Channels"/>
-	  <entry id="5665" string="Sample resolution"/>
-	  <entry id="5666" string="CD drive"/>
+	  <entry id="5662" string="Bitrate">Bithastighet</entry>
+	  <entry id="5663" string="Sampling rate">Samplingshastighet</entry>
+	  <entry id="5664" string="Channels">Kanaler</entry>
+	  <entry id="5665" string="Sample resolution">Sampelupplösning</entry>
+	  <entry id="5666" string="CD drive">Cd-enhet</entry>
 	</section>
       </section>
 
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Parallell bearbetning</entry>
 	<entry id="5701" string="Enable parallel processing">Aktivera parallell bearbetning</entry>
-	<entry id="5702" string="Enable SuperFast mode"/>
+	<entry id="5702" string="Enable SuperFast mode">Aktivera supersnabbt läge (SuperFast)</entry>
 	<entry id="5703" string="Number of conversion threads">Antal konverteringstrådar</entry>
 	<entry id="5704" string="auto">automatisk</entry>
-	<entry id="5705" string="Process priority"/>
-	<entry id="5706" string="lowest"/>
-	<entry id="5707" string="lower"/>
-	<entry id="5708" string="normal"/>
-	<entry id="5709" string="higher"/>
-	<entry id="5710" string="highest"/>
+	<entry id="5705" string="Process priority">Processprioritet</entry>
+	<entry id="5706" string="lowest">lägsta</entry>
+	<entry id="5707" string="lower">lägre</entry>
+	<entry id="5708" string="normal">normal</entry>
+	<entry id="5709" string="higher">högre</entry>
+	<entry id="5710" string="highest">högsta</entry>
       </section>
 
       <section name="Verification">
@@ -551,16 +551,16 @@
       </section>
 
       <section name="Processing">
-	<entry id="5900" string="Signal processing"/>
-	<entry id="5901" string="Enable signal processing"/>
-	<entry id="5902" string="Enable processing during playback"/>
-	<entry id="5903" string="Components"/>
-	<entry id="5904" string="Available"/>
-	<entry id="5905" string="Selected"/>
-	<entry id="5906" string="Configure component"/>
-	<entry id="5907" string="Conversion to a single output file"/>
-	<entry id="5908" string="Process each track individually"/>
-	<entry id="5909" string="Treat the combined tracks like a single track"/>
+	<entry id="5900" string="Signal processing">Signalbehandling</entry>
+	<entry id="5901" string="Enable signal processing">Aktivera signalbehandling</entry>
+	<entry id="5902" string="Enable processing during playback">Aktivera signalbehandling under uppspelning</entry>
+	<entry id="5903" string="Components">Komponenter</entry>
+	<entry id="5904" string="Available">Tillgängliga</entry>
+	<entry id="5905" string="Selected">Valda</entry>
+	<entry id="5906" string="Configure component">Konfigurera komponent</entry>
+	<entry id="5907" string="Conversion to a single output file">Konvertering till en enda målfil</entry>
+	<entry id="5908" string="Process each track individually">Bearbeta varje spår individuellt</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">Hantera de kombinerade spåren som ett enda spår</entry>
       </section>
     </section>
 
@@ -592,7 +592,7 @@
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Programmet kodar fortfarande!&#10;Är du helt säker på att du vill avsluta?</entry>
       <entry id="7002" string="Delete original files after encoding">Ta bort originalfiler efter kodning</entry>
       <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denna funktion kommer att ta bort originalfilerna&#10;efter att de har blivit kodade! Är du säker på att&#10;du vill fortsätta?</entry>
-      <entry id="7004" string="Keep this option enabled even after restarting %1"/>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">Behåll denna funktion aktiverad även efter omstart av %1</entry>
       <entry id="7005" string="File already exists">Filen finns redan</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Målfilen %1&#10;finns redan! Vill du skriva över den?</entry>
       <entry id="7007" string="Overwrite all further files">Skriv över alla andra filer</entry>
@@ -600,30 +600,30 @@
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Error: %1"/>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2"/>
-      <entry id="7102" string="Could not create encoder component: %1"/>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3"/>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3"/>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2"/>
+      <entry id="7100" string="Error: %1">Fel: %1</entry>
+      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att skapa avkodarkomponenten: %1&#10;&#10;Fil: %1&#10;Sökväg: %2</entry>
+      <entry id="7102" string="Could not create encoder component: %1">Det gick inte att skapa kodarkomponenten: %1</entry>
+      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Det gick inte att konfigurera avkodare för källfilen: %1&#10;&#10;Fil: %1&#10;Sökväg: %2&#10;&#10;Fel: %3</entry>
+      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Det gick inte att konfigurera kodare för målfilen: %1&#10;&#10;Fil: %1&#10;Sökväg: %2&#10;&#10;Fel: %3</entry>
+      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Det gick inte att konfigurera digital signalbehandlare: %1&#10;&#10;Fel: %2</entry>
       <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att komma åt källfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att skapa målfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att skapa målfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>																					   
       <entry id="7108" string="Failed to verify input file: %1">Det gick inte att verifiera källfilen: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Kontrollsummefel vid verifiering av målfil: %1&#10;&#10;Förväntad kontrollsumma: %2&#10;Verklig kontrollsumma: %3</entry>
       <entry id="7110" string="File not found">Det gick inte att hitta filen</entry>
       <entry id="7111" string="Unknown file type">Okänd filtyp</entry>
-      <entry id="7112" string="Invalid file format"/>
+      <entry id="7112" string="Invalid file format">Ogiltigt filformat</entry>
       <entry id="7113" string="Unsupported audio format">Ljudformatet stöds inte</entry>
       <entry id="7114" string="Unknown error">Okänt fel</entry>
       <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Det gick inte att läsa in ASPI-drivrutinerna! Cd-rippning har inaktiverats!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Det gick inte att öppna fil: %1&#10;&#10;Fel: %2</entry>
-      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!"/>
-      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!"/>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Det går inte att spela ett cd-spår under rippning från samma enhet!</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Det går inte att påbörja rippning under uppspelning av spår på samma enhet!</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-funktionen är inaktiverad! Aktivera stöd&#10;för lokal eller extern CDDB i inställningarna.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Stöd för extern CDDB är inaktiverat! Aktivera&#10;stöd för extern CDDB i inställningarna.</entry>
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Åtkomst till cd-romenheter nekades av Windows.&#10;&#10;Kontakta din systemadministratör för att&#10;få åtkomst till cd-romenheten.</entry>
-      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Det finns ingen konfigurationsdialog för&#10;&#10;%1</entry>
-      <entry id="7123" string="The selected folder does not exist anymore!"/>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Det finns ingen konfigurationsdialog för:&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">Den valda mappen finns inte längre!</entry>
     </section>
 
     <section name="Dialogs">
@@ -639,9 +639,9 @@
       </section>
 
       <section name="Format">
-	<entry id="8100" string="Select sample format"/>
-	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:"/>
-	<entry id="8102" string="Select"/>
+	<entry id="8100" string="Select sample format">Välj sampelformat</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">De markerade spåren har olika sampelformat.&#10;Välj önskat sampelformat för målfilen:</entry>
+	<entry id="8102" string="Select">Bläddra &#8230;</entry>
       </section>
 
       <section name="Errors">
@@ -682,26 +682,26 @@
     <section name="Components">
 
       <section name="Decoders">
-	<entry id="10000" string="Cue Sheet Reader"/>
+	<entry id="10000" string="Cue Sheet Reader">CUE-filläsare</entry>
       </section>
 
       <section name="Encoders">
-	<entry id="11000" string="meh! - multi encoder hub"/>
-	<entry id="11001" string="SndFile Output Component"/>
+	<entry id="11000" string="meh! - multi encoder hub">meh! &#x2013; multi encoder hub</entry>
+	<entry id="11001" string="SndFile Output Component">SndFile Output Component</entry>
       </section>
 
       <section name="DSP">
-	<entry id="12000" string="Channel Converter"/>
-	<entry id="12001" string="Sample Format Converter"/>
-	<entry id="12002" string="Sample Rate Converter"/>
-	<entry id="12003" string="RNNoise Noise Reduction"/>
-	<entry id="12004" string="Rubber Band Tempo/Pitch Changer"/>
+	<entry id="12000" string="Channel Converter">Kanalkonverterare</entry>
+	<entry id="12001" string="Sample Format Converter">Sampelformatkonverterare</entry>
+	<entry id="12002" string="Sample Rate Converter">Samplingshastighetskonverterare</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">RNNoise &#x2013; brusreduktion</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band &#x2013; tempo-/tonhöjdsväxlare</entry>
       </section>
 
       <section name="Extensions">
-	<entry id="15000" string="Notifications"/>
-	<entry id="15001" string="Logging"/>
-	<entry id="15002" string="YouTube Video Downloader"/>
+	<entry id="15000" string="Notifications">Aviseringar</entry>
+	<entry id="15001" string="Logging">Loggning</entry>
+	<entry id="15002" string="YouTube Video Downloader">YouTube-videohämtare</entry>
       </section>
     </section>
 
@@ -719,13 +719,13 @@
       </section>
 
       <section name="CueSheet">
-	<entry id="22000" string="Title information"/>
-	<entry id="22001" string="Read tags from referenced files"/>
-	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags"/>
-	<entry id="22003" string="Alternative files"/>
-	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
-	<entry id="22005" string="Error handling"/>
-	<entry id="22006" string="Ignore errors during cue sheet processing"/>
+	<entry id="22000" string="Title information">Titelinformation</entry>
+	<entry id="22001" string="Read tags from referenced files">Läs in taggar från refererade filer</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Prioritera CUE-filmetadata framför refererade filers taggar</entry>
+	<entry id="22003" string="Alternative files">Filalternativ</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Sök efter komprimerade alternativ om refererade wave-filer inte kan hittas</entry>
+	<entry id="22005" string="Error handling">Felhantering</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">Ignorera fel som inträffar under CUE-filbearbetning</entry>   
       </section>
     </section>
 
@@ -752,7 +752,7 @@
 	<entry id="31003" string="Downsampling ratio">Nedsamplingsförhållande</entry>
 	<entry id="31004" string="Predictor size">Prediktorstorlek</entry>
 	<entry id="31005" string="Enable lossless encoding">Förlustfri kodning</entry>
-	<entry id="31006" string="Enable Joint Stereo">Sammanslagen stereo</entry>
+	<entry id="31006" string="Enable Joint Stereo">Stereosammanslagning</entry>
       </section>
 
       <section name="LAME">
@@ -791,8 +791,8 @@
 	  <entry id="32206" string="Stereo mode">Stereoläge</entry>
 	  <entry id="32207" string="auto">automatisk</entry>
 	  <entry id="32208" string="Stereo">Stereo</entry>
-	  <entry id="32209" string="Joint Stereo">Sammanslagen stereo</entry>
-	  <entry id="32210" string="Force Joint Stereo">Tvinga samm. stereo</entry>
+	  <entry id="32209" string="Joint Stereo">Stereosammanslagning</entry>
+	  <entry id="32210" string="Force Joint Stereo">Tvinga stereosamm.sl.</entry>
 	  <entry id="32211" string="VBR bitrate range">Bithastighetsomfång för VBR</entry>
 	  <entry id="32212" string="Set minimum VBR bitrate">Lägsta VBR-bithastighet</entry>
 	  <entry id="32213" string="Set maximum VBR bitrate">Högsta VBR-bithastighet</entry>
@@ -835,7 +835,7 @@
 	  <entry id="33202" string="Bitrate per channel">Bithastighet per kanal</entry>
 	  <entry id="33203" string="Set quality">Kvalitet</entry>
 	  <entry id="33204" string="Stereo mode">Stereoläge</entry>
-	  <entry id="33205" string="Allow Joint Stereo">Tillåt sammanslagen stereo</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Tillåt stereosammanslagning</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">Brusformning (TNS)</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Använd brusformning (TNS)</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maximibandbredd</entry>
@@ -866,8 +866,8 @@
 	  <entry id="34103" string="Fastest encoding">Snabbast kodning</entry>
 	  <entry id="34104" string="Best compression">Bästa komprimering</entry>
 	  <entry id="34105" string="Stereo mode">Stereoläge</entry>
-	  <entry id="34106" string="Joint Stereo">Sammanslagen stereo</entry>
-	  <entry id="34107" string="Adaptive Joint Stereo">Adaptiv sammanslagen stereo</entry>
+	  <entry id="34106" string="Joint Stereo">Stereosammanslagning</entry>
+	  <entry id="34107" string="Adaptive Joint Stereo">Adaptiv stereosammanslagning</entry>
 	  <entry id="34108" string="File format">Filformat</entry>
 	  <entry id="34109" string="Default">Standard</entry>
 	</section>
@@ -977,7 +977,7 @@
 	<entry id="40011" string="File extension">Filtillägg</entry>
 	<entry id="40012" string="Variable bitrate">Variabel bithastighet</entry>
 	<entry id="40013" string="Enable variable bitrate encoding">Aktivera kodning med variabel bithastighet</entry>
-	<entry id="40014" string="Constrain bitrate to target value">Begränsa bithastighet till målvärde</entry>
+	<entry id="40014" string="Constrain bitrate to target value">Begränsa bithastighet till målvärdet</entry>
 	<entry id="40015" string="Quality">Kvalitet</entry>
 	<entry id="40016" string="Bitrate">Bithastighet</entry>
 	<entry id="40017" string="Complexity">Komplexitet</entry>
@@ -1002,84 +1002,84 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders"/>
-	<entry id="42001" string="Available"/>
-	<entry id="42002" string="Selected"/>
-	<entry id="42003" string="Configure encoder"/>
-	<entry id="42004" string="Encoder configuration"/>
-	<entry id="42005" string="Options"/>
-	<entry id="42006" string="Create a separate folder for each output format"/>
+	<entry id="42000" string="Encoders">Kodare</entry>
+	<entry id="42001" string="Available">Tillgängliga</entry>
+	<entry id="42002" string="Selected">Valda</entry>
+	<entry id="42003" string="Configure encoder">Konfigurera kodare</entry>
+	<entry id="42004" string="Encoder configuration">Kodarkonfiguration</entry>
+	<entry id="42005" string="Options">Alternativ</entry>
+	<entry id="42006" string="Create a separate folder for each output format">Skapa en separat mapp för varje utdataformat</entry>
       </section>
     </section>
 
     <section name="DSP">
 
       <section name="Format">
-	<entry id="50000" string="Sample format"/>
-	<entry id="50001" string="Number format"/>
-	<entry id="50002" string="Sample resolution"/>
-	<entry id="50003" string="bit"/>
-	<entry id="50004" string="unsigned"/>
-	<entry id="50005" string="Integer"/>
-	<entry id="50006" string="Float"/>
+	<entry id="50000" string="Sample format">Sampelformat</entry>
+	<entry id="50001" string="Number format">Talformat</entry>
+	<entry id="50002" string="Sample resolution">Sampelupplösning</entry>
+	<entry id="50003" string="bit">bitar</entry>
+	<entry id="50004" string="unsigned">utan tecken</entry>
+	<entry id="50005" string="Integer">Heltal</entry>
+	<entry id="50006" string="Float">Flytande</entry>
       </section>
 
       <section name="Channels">
-	<entry id="50100" string="Output channels"/>
-	<entry id="50101" string="Channel configuration"/>
-	<entry id="50102" string="Mono"/>
-	<entry id="50103" string="Stereo"/>
-	<entry id="50104" string="Switch stereo channels"/>
+	<entry id="50100" string="Output channels">Utdatakanaler</entry>
+	<entry id="50101" string="Channel configuration">Kanalkonfiguration</entry>
+	<entry id="50102" string="Mono">Mono</entry>
+	<entry id="50103" string="Stereo">Stereo</entry>
+	<entry id="50104" string="Switch stereo channels">Växla stereokanaler</entry>
       </section>
 
       <section name="Resample">
-	<entry id="50200" string="Converter"/>
-	<entry id="50201" string="Sampling rate"/>
-	<entry id="50202" string="Output sampling rate"/>
+	<entry id="50200" string="Converter">Konverterare</entry>
+	<entry id="50201" string="Sampling rate">Samplingshastighet</entry>
+	<entry id="50202" string="Output sampling rate">Utdatasamplingshastighet</entry>
       </section>
 
       <section name="RubberBand">
-	<entry id="50300" string="Basic controls"/>
-	<entry id="50301" string="Tempo"/>
-	<entry id="50302" string="Pitch"/>
-	<entry id="50303" string="%1 Semitones"/>
-	<entry id="50304" string="Advanced options"/>
-	<entry id="50305" string="Transient detection"/>
-	<entry id="50306" string="Compound"/>
-	<entry id="50307" string="Percussive"/>
-	<entry id="50308" string="Soft"/>
-	<entry id="50309" string="Transient handling"/>
-	<entry id="50310" string="Crisp"/>
-	<entry id="50311" string="Mixed"/>
-	<entry id="50312" string="Smooth"/>
-	<entry id="50313" string="Transformation window"/>
-	<entry id="50314" string="Standard"/>
-	<entry id="50315" string="Short"/>
-	<entry id="50316" string="Long"/>
-	<entry id="50317" string="Use time-domain smoothing"/>
-	<entry id="50318" string="Phase handling"/>
-	<entry id="50319" string="Laminar"/>
-	<entry id="50320" string="Independent"/>
-	<entry id="50321" string="Formant handling"/>
-	<entry id="50322" string="Shift"/>
-	<entry id="50323" string="Preserve"/>
-	<entry id="50324" string="Pitch processing"/>
-	<entry id="50325" string="High quality"/>
-	<entry id="50326" string="High speed"/>
-	<entry id="50327" string="High consistency"/>
-	<entry id="50328" string="Stereo processing"/>
-	<entry id="50329" string="Separate"/>
-	<entry id="50330" string="Combined"/>
+	<entry id="50300" string="Basic controls">Grundläggande kontroller</entry>
+	<entry id="50301" string="Tempo">Tempo</entry>
+	<entry id="50302" string="Pitch">Tonhöjd</entry>
+	<entry id="50303" string="%1 Semitones">%1 halvtoner</entry>
+	<entry id="50304" string="Advanced options">Avancerade inställningar</entry>
+	<entry id="50305" string="Transient detection">Övergående identifiering</entry>
+	<entry id="50306" string="Compound">Sammansatt</entry>
+	<entry id="50307" string="Percussive">Slående</entry>
+	<entry id="50308" string="Soft">Mjuk</entry>
+	<entry id="50309" string="Transient handling">Övergående hantering</entry>
+	<entry id="50310" string="Crisp">Skarp</entry>
+	<entry id="50311" string="Mixed">Blandad</entry>
+	<entry id="50312" string="Smooth">Jämn</entry>
+	<entry id="50313" string="Transformation window">Omvandlingstidsfönster</entry>
+	<entry id="50314" string="Standard">Standard</entry>
+	<entry id="50315" string="Short">Kort</entry>
+	<entry id="50316" string="Long">Långt</entry>
+	<entry id="50317" string="Use time-domain smoothing">Använd tidsdomänutjämning</entry>
+	<entry id="50318" string="Phase handling">Fashantering</entry>
+	<entry id="50319" string="Laminar">Laminär</entry>
+	<entry id="50320" string="Independent">Oberoende</entry>
+	<entry id="50321" string="Formant handling">Formanthantering</entry>
+	<entry id="50322" string="Shift">Växla</entry>
+	<entry id="50323" string="Preserve">Bevara</entry>
+	<entry id="50324" string="Pitch processing">Tonhöjdsbearbetning</entry>
+	<entry id="50325" string="High quality">Hög kvalitet</entry>
+	<entry id="50326" string="High speed">Hög hastighet</entry>
+	<entry id="50327" string="High consistency">Hög konsekvens</entry>
+	<entry id="50328" string="Stereo processing">Stereobearbetning</entry>
+	<entry id="50329" string="Separate">Separat</entry>
+	<entry id="50330" string="Combined">Kombinerad</entry>
       </section>
 
       <section name="RNNoise">
-	<entry id="50400" string="Signal/noise type"/>
-	<entry id="50401" string="Signal type"/>
-	<entry id="50402" string="Noise type"/>
-	<entry id="50403" string="General"/>
-	<entry id="50404" string="Recording"/>
-	<entry id="50405" string="Voice (incl. laughter etc.)"/>
-	<entry id="50406" string="Speech"/>
+	<entry id="50400" string="Signal/noise type">Signal-/brustyp</entry>
+	<entry id="50401" string="Signal type">Signaltyp</entry>
+	<entry id="50402" string="Noise type">Brustyp</entry>
+	<entry id="50403" string="General">Allmän</entry>
+	<entry id="50404" string="Recording">Inspelning</entry>
+	<entry id="50405" string="Voice (incl. laughter etc.)">Röst (inkl. skratt etc.)</entry>
+	<entry id="50406" string="Speech">Tal</entry>
       </section>
     </section>
 
@@ -1092,74 +1092,74 @@
     </section>
 
     <section name="External">
-      <entry id="80000" string="Downmix multi-channel audio to stereo"/>
+      <entry id="80000" string="Downmix multi-channel audio to stereo">Nedblanda flerkanalsljud till stereo</entry>
 
       <section name="Musepack Audio Encoder">
-	<entry id="80100" string="Quality"/>
-	<entry id="80101" string="poor"/>
-	<entry id="80102" string="excellent"/>
-	<entry id="80103" string="Mid/Side stereo mode"/>
-	<entry id="80104" string="off"/>
-	<entry id="80105" string="reduced"/>
-	<entry id="80106" string="on"/>
-	<entry id="80107" string="decoupled"/>
-	<entry id="80108" string="enhanced 1.5/3 dB"/>
-	<entry id="80109" string="enhanced 2/6 dB"/>
-	<entry id="80110" string="enhanced 2.5/9 dB"/>
-	<entry id="80111" string="enhanced 3/12 dB"/>
-	<entry id="80112" string="enhanced 3/inf dB"/>
-	<entry id="80113" string="Adaptive noise shaping order"/>
-	<entry id="80114" string="high"/>
-	<entry id="80115" string="Clear Voice Detection"/>
-	<entry id="80116" string="dual"/>
+	<entry id="80100" string="Quality">Kvalitet</entry>
+	<entry id="80101" string="poor">dålig</entry>
+	<entry id="80102" string="excellent">utmärkt</entry>
+	<entry id="80103" string="Mid/Side stereo mode">Central-/sidostereoläge</entry>
+	<entry id="80104" string="off">av</entry>
+	<entry id="80105" string="reduced">reducerad</entry>
+	<entry id="80106" string="on">på</entry>
+	<entry id="80107" string="decoupled">fristående</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">utökad 1,5/3 dB</entry>
+	<entry id="80109" string="enhanced 2/6 dB">utökad 2/6 dB</entry>
+	<entry id="80110" string="enhanced 2.5/9 dB">utökad 2,5/9 dB</entry>
+	<entry id="80111" string="enhanced 3/12 dB">utökad 3/12 dB</entry>
+	<entry id="80112" string="enhanced 3/inf dB">utökad 3/&#x221e; dB</entry>
+	<entry id="80113" string="Adaptive noise shaping order">Adaptiv brusformningsordning</entry>
+	<entry id="80114" string="high">hög</entry>
+	<entry id="80115" string="Clear Voice Detection">Clear Voice-identifiering</entry>
+	<entry id="80116" string="dual">dubbel</entry>
       </section>
 
       <section name="OptimFROG Lossless Encoder">
-	<entry id="80200" string="Encoding mode"/>
-	<entry id="80201" string="fast"/>
-	<entry id="80202" string="normal"/>
-	<entry id="80203" string="high"/>
-	<entry id="80204" string="extra"/>
-	<entry id="80205" string="best"/>
-	<entry id="80206" string="high, new"/>
-	<entry id="80207" string="extra, new"/>
-	<entry id="80208" string="best, new"/>
-	<entry id="80209" string="Add MD5 checksum"/>
-	<entry id="80210" string="Seeking"/>
-	<entry id="80211" string="slow"/>
-	<entry id="80212" string="minimum"/>
-	<entry id="80213" string="Optimization"/>
-	<entry id="80214" string="disabled"/>
-	<entry id="80215" string="low"/>
+	<entry id="80200" string="Encoding mode">Kodningsläge</entry>
+	<entry id="80201" string="fast">snabb</entry>
+	<entry id="80202" string="normal">normal</entry>
+	<entry id="80203" string="high">hög</entry>
+	<entry id="80204" string="extra">extra</entry>
+	<entry id="80205" string="best">bäst</entry>
+	<entry id="80206" string="high, new">hög, ny</entry>
+	<entry id="80207" string="extra, new">extra, ny</entry>
+	<entry id="80208" string="best, new">bäst, ny</entry>
+	<entry id="80209" string="Add MD5 checksum">Lägg till MD5-kontrollsumma</entry>
+	<entry id="80210" string="Seeking">Sökning</entry>
+	<entry id="80211" string="slow">långsam</entry>
+	<entry id="80212" string="minimum">minimal</entry>
+	<entry id="80213" string="Optimization">Optimering</entry>
+	<entry id="80214" string="disabled">inaktiverad</entry>
+	<entry id="80215" string="low">låg</entry>
       </section>
 
       <section name="Tom's Audiokompressor">
-	<entry id="80300" string="Encoder preset"/>
-	<entry id="80301" string="fastest"/>
-	<entry id="80302" string="strongest"/>
-	<entry id="80303" string="Frame size limit"/>
-	<entry id="80304" string="Add MD5 checksum"/>
+	<entry id="80300" string="Encoder preset">Kodarförval</entry>
+	<entry id="80301" string="fastest">snabbast</entry>
+	<entry id="80302" string="strongest">starkast</entry>
+	<entry id="80303" string="Frame size limit">Ramstorleksgräns</entry>
+	<entry id="80304" string="Add MD5 checksum">Lägg till MD5-kontrollsumma</entry>
       </section>
 
       <section name="WavPack Audio Encoder">
-	<entry id="80400" string="Enable lossy compression"/>
-	<entry id="80401" string="Compression mode"/>
-	<entry id="80402" string="fast"/>
-	<entry id="80403" string="high quality"/>
-	<entry id="80404" string="very high quality"/>
-	<entry id="80405" string="Extra encode processing"/>
-	<entry id="80406" string="faster"/>
-	<entry id="80407" string="better"/>
+	<entry id="80400" string="Enable lossy compression">Aktivera förlustgivande komprimering</entry>
+	<entry id="80401" string="Compression mode">Komprimeringsläge</entry>
+	<entry id="80402" string="fast">snabb</entry>
+	<entry id="80403" string="high quality">hög kvalitet</entry>
+	<entry id="80404" string="very high quality">mycket hög kvalitet</entry>
+	<entry id="80405" string="Extra encode processing">Ytterligare kodningsbearbetning</entry>
+	<entry id="80406" string="faster">snabbare</entry>
+	<entry id="80407" string="better">bättre</entry>
       </section>
 
       <section name="Nero AAC Encoder">
-	<entry id="80500" string="Encoding mode"/>
-	<entry id="80501" string="auto"/>
-	<entry id="80502" string="Quality"/>
-	<entry id="80503" string="worse"/>
-	<entry id="80504" string="better"/>
-	<entry id="80505" string="Bitrate"/>
-	<entry id="80506" string="Bitrate (Streaming)"/>
+	<entry id="80500" string="Encoding mode">Kodningsläge</entry>
+	<entry id="80501" string="auto">automatisk</entry>
+	<entry id="80502" string="Quality">Kvalitet</entry>
+	<entry id="80503" string="worse">sämre</entry>
+	<entry id="80504" string="better">bättre</entry>
+	<entry id="80505" string="Bitrate">Bithastighet</entry>
+	<entry id="80506" string="Bitrate (Streaming)">Bithastighet (strömning)</entry>
       </section>
     </section>
 
@@ -1172,8 +1172,8 @@
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Skriv till %1 om du önskar göra en donation via elektronisk&#10;överföring, eller en check/pengar via posten.</entry>
 	<entry id="100004" string="Thank you very much!">Tusen tack!</entry>
 	<entry id="100005" string="Remind me later">Påminn mig senare</entry>
-	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
-	<entry id="100007" string="Donate to the %1 project"/>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100007" string="Donate to the %1 project">Donera till projektet %1</entry>
 
 	<section name="PayPal">
 	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Klicka på en av knapparna nedan för att donera via PayPal:</entry>
@@ -1181,31 +1181,31 @@
 	  <entry id="100102" string="usd">sek</entry>
 	  <entry id="100103" string="$%1">%1 kr</entry>
 	  <entry id="100104" string="5,10,20,other amount">50,100,200,annan summa</entry>
-	  <entry id="100105" string="monthly recurring"/>
-	  <entry id="100106" string="Donate"/>
+	  <entry id="100105" string="monthly recurring">månatlig debitering</entry>
+	  <entry id="100106" string="Donate">Donera</entry>
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:"/>
-	  <entry id="100201" string="Donate"/>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox erbjuder snabba och enkla donationer via kreditkort.&#10;Klicka på denna knapp för att donera via Donorbox:</entry>
+	  <entry id="100201" string="Donate">Donera</entry>
 	  <entry id="100202" string="usd">eur</entry>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:"/>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks."/>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Läs in eller klicka på QR-koden, eller kopiera följande&#10;adress för att donera Bitcoin:</entry>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Denna adress accepterar även Bitcoin Cash och andra förgreningar.</entry>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:"/>
-	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens."/>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Läs in eller klicka på QR-koden, eller kopiera följande&#10;adress för att donera Ethereum:</entry>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">Denna adress accepterar även Ether Classic och ERC20-token.</entry>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:"/>
-	  <entry id="100501" string="Account holder:"/>
-	  <entry id="100502" string="IBAN:"/>
-	  <entry id="100503" string="BIC:"/>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Du kan donera genom att göra en elektronisk överföring&#10;till följande konto:</entry>
+	  <entry id="100501" string="Account holder:">Kontoinnehavare:</entry>
+	  <entry id="100502" string="IBAN:">IBAN:</entry>
+	  <entry id="100503" string="BIC:">BIC:</entry>
 	</section>
       </section>
 
@@ -1238,7 +1238,7 @@
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatisering</entry>
 	  <entry id="102102" string="Video files">Videofiler</entry>
-	  <entry id="102103" string="Select">Bläddra …</entry>
+	  <entry id="102103" string="Select">Bläddra &#8230;</entry>
 	  <entry id="102104" string="Select the folder to save downloaded video files to">Välj den mapp där videofilerna skall sparas</entry>
 	  <entry id="102105" string="Downloads">Hämtningar</entry>
 	  <entry id="102106" string="Maximum number of simultaneous downloads">Största antal samtidiga hämtningar</entry>
@@ -1284,13 +1284,13 @@
 	  <entry id="103202" string="Band / orchestra">Band/orkester</entry>
 	  <entry id="103203" string="Conductor">Artistinformation</entry>
 	  <entry id="103204" string="Composer">Kompositör</entry>
-	  <entry id="103205" string="Lyrics writer">Textförfattare/librettist</entry>
+	  <entry id="103205" string="Lyrics writer">Textförfattare</entry>
 	  <entry id="103206" string="Modified / remixed by">Modifierad/ommixad av</entry>
 	  <entry id="103207" string="Publisher information">Information om utgivare</entry>
 	  <entry id="103208" string="Publisher / label">Utgivare/skivmärke</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo"/>
-	  <entry id="103211" string="BPM"/>
+	  <entry id="103210" string="Tempo">Tempo</entry>
+	  <entry id="103211" string="BPM">BPM</entry>
 	</section>
 
 	<section name="Other">
@@ -1316,42 +1316,42 @@
       </section>
 
       <section name="Logging">
-	<entry id="104000" string="Logs"/>
-	<entry id="104001" string="Log"/>
-	<entry id="104002" string="Save as"/>
-	<entry id="104003" string="Log Files"/>
-	<entry id="104004" string="Time"/>
-	<entry id="104005" string="Message"/>
+	<entry id="104000" string="Logs">Loggar</entry>
+	<entry id="104001" string="Log">Logg</entry>
+	<entry id="104002" string="Save as">Spara som</entry>
+	<entry id="104003" string="Log Files">Loggfiler</entry>
+	<entry id="104004" string="Time">Tid</entry>
+	<entry id="104005" string="Message">Meddelande</entry>
 
 	<section name="Configuration">
-	  <entry id="104100" string="User interface"/>
-	  <entry id="104101" string="Show Logs tab in main window"/>
-	  <entry id="104102" string="Log files"/>
-	  <entry id="104103" string="Archive log files"/>
-	  <entry id="104104" string="Log file folder"/>
-	  <entry id="104105" string="Select"/>
-	  <entry id="104106" string="Select the folder for saving log files"/>
-	  <entry id="104107" string="Delete old log files after"/>
-	  <entry id="104108" string="days"/>
-	  <entry id="104109" string="Conversion logs"/>
-	  <entry id="104110" string="Save conversion logs with audio files"/>
-	  <entry id="104111" string="Audio CD ripping logs only"/>
-	  <entry id="104112" string="Filename pattern"/>
+	  <entry id="104100" string="User interface">Användargränssnitt</entry>
+	  <entry id="104101" string="Show Logs tab in main window">Visa fliken Loggar i huvudfönstret</entry>
+	  <entry id="104102" string="Log files">Loggfiler</entry>
+	  <entry id="104103" string="Archive log files">Arkivera loggfiler</entry>
+	  <entry id="104104" string="Log file folder">Loggfilmapp</entry>
+	  <entry id="104105" string="Select">Bläddra &#8230;</entry>
+	  <entry id="104106" string="Select the folder for saving log files">Välj den mapp där loggfiler skall sparas</entry>
+	  <entry id="104107" string="Delete old log files after">Ta bort gamla loggfiler efter</entry>
+	  <entry id="104108" string="days">dagar</entry>
+	  <entry id="104109" string="Conversion logs">Konverteringsloggar</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">Spara konverteringsloggar med ljudfiler</entry>
+	  <entry id="104111" string="Audio CD ripping logs only">Endast ljud-cd-rippningsloggar</entry>
+	  <entry id="104112" string="Filename pattern">Filnamnsmönster</entry>
 	</section>
       </section>
 
       <section name="Notifier">
-	<entry id="105000" string="Conversion process finished!"/>
+	<entry id="105000" string="Conversion process finished!">Konverteringen har slutförts!</entry>
 
 	<section name="Configuration">
-	  <entry id="105100" string="Notifications"/>
-	  <entry id="105101" string="Notify on finished conversion"/>
-	  <entry id="105102" string="Play sound"/>
-	  <entry id="105103" string="Display message"/>
-	  <entry id="105104" string="Select"/>
-	  <entry id="105105" string="Only for conversions running longer than"/>
-	  <entry id="105106" string="second(s)"/>
-	  <entry id="105107" string="minute(s)"/>
+	  <entry id="105100" string="Notifications">Aviseringar</entry>
+	  <entry id="105101" string="Notify on finished conversion">Meddela när konvertering har slutförts</entry>
+	  <entry id="105102" string="Play sound">Spela upp ljud</entry>
+	  <entry id="105103" string="Display message">Visa meddelande</entry>
+	  <entry id="105104" string="Select">Bläddra &#8230;</entry>
+	  <entry id="105105" string="Only for conversions running longer than">Endast för konverteringar som körs längre än</entry>
+	  <entry id="105106" string="second(s)">s</entry>
+	  <entry id="105107" string="minute(s)">min</entry>
 	</section>
       </section>
     </section>
