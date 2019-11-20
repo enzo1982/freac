@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Czech / Česky</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -155,9 +155,9 @@
     <entry id="147" string="Bonk Files">Bonk soubory</entry>
     <entry id="148" string="Automatic CDDB queries">Automatický dotaz na CDDB</entry>
     <entry id="149" string="CDDB access mode:">CDDB - způsob přístupu:</entry>
-    <entry id="150" string="CDDB server:">CDDB server:</entry>
-    <entry id="151" string="Port:">Port:</entry>
-    <entry id="152" string="Info">Info</entry>
+    <entry id="150" string="CDDB server:"/>
+    <entry id="151" string="Port:"/>
+    <entry id="152" string="Info">Umělec</entry>
     <entry id="153" string="No freedb entry for this disk.">Pro toto CD není na freedb záznam</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Chyba při spojení s freedb serverem.</entry>
     <entry id="155" string="Connecting to freedb server at">Připojit na freedb server u</entry>
@@ -176,7 +176,7 @@
     <entry id="168" string="Proxy settings">Proxy nastavení</entry>
     <entry id="169" string="no proxy">bez proxy</entry>
     <entry id="170" string="Proxy type:">Typ proxy:</entry>
-    <entry id="171" string="Proxy server:">Proxy server:</entry>
+    <entry id="171" string="Proxy server:"/>
     <entry id="172" string="Presets">Předvolby</entry>
     <entry id="173" string="Use preset:">Použít předvolby:</entry>
     <entry id="174" string="Custom settings">Vlastní nastavení</entry>
@@ -190,7 +190,7 @@
     <entry id="186" string="Artist">Umělec</entry>
     <entry id="187" string="Year">Rok</entry>
     <entry id="188" string="Genre">Žánr</entry>
-    <entry id="189" string="Album">Album</entry>
+    <entry id="189" string="Album">Komentář</entry>
     <entry id="190" string="Info tags">Info tagy</entry>
     <entry id="191" string="Default information">Standardní informace</entry>
     <entry id="192" string="Default comment string:">Standardní komentář:</entry>
@@ -200,7 +200,7 @@
     <entry id="196" string="Database">Databanka</entry>
     <entry id="197" string="Submit CDDB data...">Poslat CDDB data...</entry>
     <entry id="198" string="Enable CDDB cache">Zapnout CDDB cache</entry>
-    <entry id="199" string="CDDB data">CDDB data</entry>
+    <entry id="199" string="CDDB data">Konfigurovat enkodér</entry>
     <entry id="200" string="Submit">Poslat</entry>
     <entry id="201" string="No audio CD in drive!">Žádné Audio-CD v mechanice!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Vyplňte všechna pole a názvy stop před odesláním.</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Ponechat soubory wav</entry>
     <entry id="251" string="ripping/decoding">ripování/dekódování</entry>
     <entry id="252" string="encoding">kódování</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Jména souborů v Unicode</entry>
     <entry id="255" string="AAC Files">AAC soubory</entry>
     <entry id="256" string="MP4 Files">MP4 soubory</entry>
@@ -270,7 +270,7 @@
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">bytů</entry>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Vytvořit playlist</entry>
     <entry id="271" string="Create cue sheet">Vytvořit cue sheet</entry>
     <entry id="272" string="Write ID3v1 tags">Zapsat ID3v1 tagy</entry>
@@ -412,7 +412,7 @@
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Prosím, pomozte zachovat tento software zdarma (free) podporou %1 projektu&#10;libovolným darem.&#10;&#10;Klikněte na jedno z tlačítek níže - darovat nyní přes PayPal:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Můžete také poslat peníze přímo na %1 s použitím PayPalu.&#10;&#10;Prosím napište nám na %1, pokud chcete darovat pomocí e-bankovnictví nebo&#10;chcete-li zaslat peníze poštovní poukázkou nebo jiným způsobem.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Děkujeme moc!</entry>
     <entry id="413" string="Remind me later">Připomenout později</entry>
     <entry id="414" string="CDDB">CDDB</entry>
