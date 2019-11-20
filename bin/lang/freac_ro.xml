@@ -156,8 +156,8 @@
     <entry id="148" string="Automatic CDDB queries">Interogăre automată CDDB</entry>
     <entry id="149" string="CDDB access mode:">Mod acces CDDB:</entry>
     <entry id="150" string="CDDB server:">Server CDDB:</entry>
-    <entry id="151" string="Port:">Port:</entry>
-    <entry id="152" string="Info">Info</entry>
+    <entry id="151" string="Port:"/>
+    <entry id="152" string="Info">Artist</entry>
     <entry id="153" string="No freedb entry for this disk.">Nu există date despre acest disc.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Eroare de conectare la serverul freedb.</entry>
     <entry id="155" string="Connecting to freedb server at">Conectare server freedb la</entry>
@@ -187,10 +187,10 @@
     <entry id="183" string="Track">Melodie</entry>
     <entry id="184" string="Length">Lungime</entry>
     <entry id="185" string="Size">Mărime</entry>
-    <entry id="186" string="Artist">Artist</entry>
+    <entry id="186" string="Artist">Melodie</entry>
     <entry id="187" string="Year">An</entry>
     <entry id="188" string="Genre">Gen</entry>
-    <entry id="189" string="Album">Album</entry>
+    <entry id="189" string="Album">Comentariu</entry>
     <entry id="190" string="Info tags">Tag-uri Info</entry>
     <entry id="191" string="Default information">Informaţie implicită</entry>
     <entry id="192" string="Default comment string:">Text implicit comentariu:</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Păstrează fişierele Wave copiate</entry>
     <entry id="251" string="ripping/decoding">copiere/decodare</entry>
     <entry id="252" string="encoding">codare</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Foloseşte Unicode pentru numele fişierelor</entry>
     <entry id="255" string="AAC Files">Fişiere AAC</entry>
     <entry id="256" string="MP4 Files">Fişiere MP4</entry>
@@ -268,9 +268,9 @@
     <entry id="264" string="Sample resolution">Rezoluţie eşantion</entry>
     <entry id="265" string="Number of samples">Numărul de eşantioane</entry>
     <entry id="266" string="Mono">Mono</entry>
-    <entry id="267" string="bytes">bytes</entry>
+    <entry id="267" string="bytes"/>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Creare listă</entry>
     <entry id="271" string="Create cue sheet">Creare program</entry>
     <entry id="272" string="Write ID3v1 tags">Scriere tag-uri ID3v1</entry>
@@ -412,10 +412,11 @@
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Vă rog să ajutaţi păstrarea acestui proiect gratuit prin suportarea&#10;%1 cu o donaţie.&#10;&#10;Da-ţi click pe unul dintre butoanele de mai jos pentru a face o&#10;donaţie utilizând PayPal:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Puteţi deasemenea trimite bani direct la %1 cu PayPal.&#10;&#10;Scrie te rog către %1 dacă te-ai decis să faci o donaţie&#10;folosind transfer electronic, cec sau bani prin poştă.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Mulţumesc foarte mult!</entry>
     <entry id="413" string="Remind me later">Adu-mi aminte mai târziu</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="416" string="Default"/>
   </data>
 </LangFile>
