@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Cunservà sched. Wave estratti</entry>
     <entry id="251" string="ripping/decoding">estrazzione/dicudificazione</entry>
     <entry id="252" string="encoding">cudificazione</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Impiegà per i nomi di schedariu</entry>
     <entry id="255" string="AAC Files">Schedarii AAC</entry>
     <entry id="256" string="MP4 Files">Schedarii MP4</entry>
@@ -270,7 +270,7 @@
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">ottetti</entry>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Creà a lista di lettura</entry>
     <entry id="271" string="Create cue sheet">Creà u fogliu di mischiera cue</entry>
     <entry id="272" string="Write ID3v1 tags">Scrive l'etichette ID3v1</entry>
@@ -412,10 +412,10 @@
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Per piacè aiutateci à cunservà liberu stu prugramma facendu&#10;un rigalu à u prughjettu %1.&#10;&#10;Cliccà unu di sti buttoni sottu per dà qualchì soldu grazia à PayPal :</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Pudete dinù mandà i soldi à %1 cù PayPal.&#10;&#10;Ci vole à scrive à %1 s'è voi preferite aiutaci facendu un&#10;trasferimentu elettronicu, mandà un sceccu o i soldi da un currieru.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Vi ringraziemu assai !</entry>
     <entry id="413" string="Remind me later">Rammintatemi un altra volta</entry>
-    <entry id="414" string="CDDB">CDDB</entry>
+    <entry id="414" string="CDDB">Estrazzione</entry>
     <entry id="415" string="Ripper">Estrazzione</entry>
     <entry id="416" string="Default">Predefinitu</entry>
   </data>
