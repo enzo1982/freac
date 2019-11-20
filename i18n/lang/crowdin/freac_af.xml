@@ -1002,7 +1002,7 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders">Vertaal deur %1.</entry>
+	<entry id="42000" string="Encoders">Enkodeerders</entry>
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
 	<entry id="42003" string="Configure encoder">Konfigureer enkodeerder</entry>
@@ -1129,7 +1129,7 @@
 	<entry id="80211" string="slow"/>
 	<entry id="80212" string="minimum"/>
 	<entry id="80213" string="Optimization"/>
-	<entry id="80214" string="disabled">buite werking gestel</entry>
+	<entry id="80214" string="disabled">gestremde</entry>
 	<entry id="80215" string="low"/>
       </section>
 
@@ -1188,7 +1188,7 @@
 	<section name="Donorbox">
 	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:"/>
 	  <entry id="100201" string="Donate"/>
-	  <entry id="100202" string="usd">usd</entry>
+	  <entry id="100202" string="usd">zar</entry>
 	</section>
 
 	<section name="Bitcoin">
@@ -1233,7 +1233,7 @@
 	<entry id="102015" string="Size">Grootte</entry>
 	<entry id="102016" string="Cancel download"/>
 	<entry id="102017" string="unknown"/>
-	<entry id="102018" string="Note"/>
+	<entry id="102018" string="Note">Opmerking</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Outomatisasie</entry>
