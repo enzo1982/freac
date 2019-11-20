@@ -189,8 +189,8 @@
     <entry id="185" string="Size">Taille</entry>
     <entry id="186" string="Artist">Artiste</entry>
     <entry id="187" string="Year">Année</entry>
-    <entry id="188" string="Genre">Genre</entry>
-    <entry id="189" string="Album">Album</entry>
+    <entry id="188" string="Genre">artiste inconnu</entry>
+    <entry id="189" string="Album">Commentaire</entry>
     <entry id="190" string="Info tags">Balises infos</entry>
     <entry id="191" string="Default information">Informations par défaut</entry>
     <entry id="192" string="Default comment string:">Commentaires par défaut :</entry>
@@ -211,7 +211,7 @@
     <entry id="207" string="Query CDDB database">Interroger la base de données CDDB</entry>
     <entry id="208" string="Help">Aide</entry>
     <entry id="209" string="index_en.html">index.html</entry>
-    <entry id="210" string="Plug-ins">Plug-ins</entry>
+    <entry id="210" string="Plug-ins"/>
     <entry id="211" string="Input plug-ins">Plug-ins d'entrée</entry>
     <entry id="212" string="Output plug-ins">Plug-ins de sortie</entry>
     <entry id="213" string="Configure">Configurer</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Conserver fich. Wave extraits</entry>
     <entry id="251" string="ripping/decoding">extraction/décodage</entry>
     <entry id="252" string="encoding">encodage</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Utiliser noms fichiers Unicode</entry>
     <entry id="255" string="AAC Files">Fichiers AAC</entry>
     <entry id="256" string="MP4 Files">Fichiers MP4</entry>
@@ -270,7 +270,7 @@
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">octets</entry>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Créer sélection</entry>
     <entry id="271" string="Create cue sheet">Créer feuille mixage</entry>
     <entry id="272" string="Write ID3v1 tags">Ecrire balises ID3v1</entry>
@@ -412,7 +412,7 @@
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">S'il vous plait aider à conserver gratuit ce programme en supportant le projet %1&#10;avec un don.&#10;&#10;Cliquer sur un des boutons ci-dessous pour faire un don en utilisant PayPal :</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Vous pouvez aussi envoyer de l'argent directement à %1 en utilisant PayPal.&#10;&#10;S'il vous plait écrivez à %1 si vous voulez faire un don en utilisant&#10;le transfert électronique, le chèque par mail ou envoyer de l'argent par mail.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Merci beaucoup!</entry>
     <entry id="413" string="Remind me later">Me rappeler plus tard</entry>
     <entry id="414" string="CDDB">CDDB</entry>
