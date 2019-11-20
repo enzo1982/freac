@@ -1002,10 +1002,10 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders">Μετάφραση από τον %1.</entry>
+	<entry id="42000" string="Encoders">Κωδικοποιητές</entry>
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
-	<entry id="42003" string="Configure encoder">Κωδικοποιητής</entry>
+	<entry id="42003" string="Configure encoder">Ρύθμιση κωδικοποιητή</entry>
 	<entry id="42004" string="Encoder configuration"/>
 	<entry id="42005" string="Options">Επιλογές</entry>
 	<entry id="42006" string="Create a separate folder for each output format"/>
@@ -1129,7 +1129,7 @@
 	<entry id="80211" string="slow"/>
 	<entry id="80212" string="minimum"/>
 	<entry id="80213" string="Optimization"/>
-	<entry id="80214" string="disabled">Ελάχιστη partition order</entry>
+	<entry id="80214" string="disabled">απενεργοποιημένο</entry>
 	<entry id="80215" string="low"/>
       </section>
 
@@ -1149,15 +1149,15 @@
 	<entry id="80404" string="very high quality"/>
 	<entry id="80405" string="Extra encode processing"/>
 	<entry id="80406" string="faster"/>
-	<entry id="80407" string="better">Joint Stereo</entry>
+	<entry id="80407" string="better">καλύτερη</entry>
       </section>
 
       <section name="Nero AAC Encoder">
 	<entry id="80500" string="Encoding mode"/>
 	<entry id="80501" string="auto">Μέγιστη partition order</entry>
 	<entry id="80502" string="Quality">Ποιότητα</entry>
-	<entry id="80503" string="worse">Stereo</entry>
-	<entry id="80504" string="better">Joint Stereo</entry>
+	<entry id="80503" string="worse">χειρότερη</entry>
+	<entry id="80504" string="better">καλύτερη</entry>
 	<entry id="80505" string="Bitrate">Ρυθμός μετάδοσης</entry>
 	<entry id="80506" string="Bitrate (Streaming)"/>
       </section>
@@ -1233,7 +1233,7 @@
 	<entry id="102015" string="Size">Μέγεθος</entry>
 	<entry id="102016" string="Cancel download"/>
 	<entry id="102017" string="unknown"/>
-	<entry id="102018" string="Note"/>
+	<entry id="102018" string="Note">Σημείωση</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Αυτοματοποίηση</entry>
