@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -20,8 +20,38 @@
 
 #include <support/autorelease.h>
 
+using namespace smooth::Threads;
+
 using namespace BoCA;
 using namespace BoCA::AS;
+
+namespace freac
+{
+	class JobAddFilesWorker : public Thread
+	{
+		private:
+			String		 fileName;
+			Semaphore	&semaphore;
+
+			Track		 track;
+			Bool		 ready;
+
+			Bool		 errorState;
+			String		 errorString;
+
+			Int		 Run();
+
+			static Void	 ExtractInfoFromPath(const String &, Info &);
+		public:
+					 JobAddFilesWorker(const String &, Semaphore &);
+
+			Bool		 IsReady() const	{ return ready; }
+			const Track	&GetTrack() const	{ return track; }
+
+			Bool		 GetErrorState() const	{ return errorState; }
+			const String	&GetErrorString() const	{ return errorString; }
+	};
+};
 
 freac::JobAddFiles::JobAddFiles(const Array<String> &iFiles)
 {
@@ -61,94 +91,93 @@ Error freac::JobAddFiles::Perform()
  
 	Array<CDDBInfo>	 cdInfos;
 	Array<Bool>	 cddbsQueried;
-	
-	for (Int i = 0; i < files.Length(); i++)
-	{
-		if (abort) break;
 
+	/* Get number of threads to use.
+	 */
+	Bool	 enableParallel	 = configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
+	Int	 numberOfThreads = configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault);
+
+	if	(!enableParallel)      numberOfThreads = 1;
+	else if (numberOfThreads <= 1) numberOfThreads = CPU().GetNumCores() + (CPU().GetNumLogicalCPUs() - CPU().GetNumCores()) / 2;
+
+	/* Process and add files.
+	 */
+	Array<JobAddFilesWorker *>	 workers;
+	Semaphore			 semaphore(numberOfThreads);
+
+	for (Int i = 0; (i < files.Length() && !abort) || workers.Length() > 0; )
+	{
 		AutoRelease	 autoRelease;
 
-		/* Get file name.
+		/* Start next worker.
 		 */
-		const String	&file = files.GetNth(i);
-
-		SetText(i18n->AddEllipsis(i18n->TranslateString("Adding files", "Jobs::Joblist")).Append(" - ").Append(file));
-
-		/* Create decoder component.
-		 */
-		DecoderComponent	*decoder = Registry::Get().CreateDecoderForStream(file);
-
-		if (decoder == NIL)
+		if (i < files.Length() && !abort)
 		{
-			BoCA::I18n	*i18n = BoCA::I18n::Get();
+			/* Wait for a free slot.
+			 */
+			semaphore.Wait();
 
-			i18n->SetContext("Messages");
+			/* Get file name.
+			*/
+			const String	&file = files.GetNth(i++);
 
-			errors.Add(i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", File(file).GetFileName()).Replace("%2", i18n->TranslateString("Unknown file type")));
+			SetText(i18n->AddEllipsis(i18n->TranslateString("Adding files", "Jobs::Joblist")).Append(" - ").Append(file));
 
-			continue;
+			/* Create and start worker thread.
+			 */
+			workers.Add(new JobAddFilesWorker(file, semaphore));
+			workers.GetLast()->Start();
 		}
 
-		/* Query stream info.
+		/* Finish when no more workers left.
 		 */
-		Track	 track;
-		Error	 error = decoder->GetStreamInfo(file, track);
-		String	 errorString = decoder->GetErrorString();
+		if (workers.Length() == 0) break;
 
-		Registry::Get().DeleteComponent(decoder);
-
-		if (error == Error())
+		/* Process next result.
+		 */
+		if (workers.GetFirst()->IsReady())
 		{
-			BoCA::I18n	*i18n = BoCA::I18n::Get();
+			/* Get next worker and check for error.
+			 */
+			JobAddFilesWorker	*worker = workers.GetFirst();
 
-			i18n->SetContext("Messages");
+			if (worker->GetErrorState()) errors.Add(worker->GetErrorString());
 
-			errors.Add(i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", File(file).GetFileName()).Replace("%2", i18n->TranslateString(errorString)));
+			/* Get track from worker.
+			 */
+			Track	 track = worker->GetTrack();
 
-			continue;
-		}
-
-		/* Continue if no data present.
-		 */
-		if (track == NIL) continue;
-
-		/* Add disc ID to CD tracks.
-		 */
-		if (track.isCDTrack) track.discid = CDDB::DiscIDFromMCDI(track.GetInfo().mcdi);
-
-		/* Extract title info from path names.
-		 */
-		Info	 info = track.GetInfo();
-
-		if (info.artist == NIL && info.title == NIL && !file.StartsWith("device://")) ExtractInfoFromPath(file, info);
-
-		track.SetInfo(info);
-
-		/* Add cover art from external files.
-		 */
-		track.LoadCoverArtFiles();
-
-		/* Query CDDB and update track info.
-		 */
-		if (track.isCDTrack && configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault))
-		{
-			if (!cddbsQueried.Get(track.discid))
+			if (track != NIL && !worker->GetErrorState() && !abort)
 			{
-				cdInfos.Add(cddbQueryDlg::QueryCDDB(track), track.discid);
-				cddbsQueried.Add(True, track.discid);
+				/* Query CDDB and update track info.
+				 */
+				if (track.isCDTrack && configuration->GetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, Config::FreedbAutoQueryDefault))
+				{
+					if (!cddbsQueried.Get(track.discid))
+					{
+						cdInfos.Add(cddbQueryDlg::QueryCDDB(track), track.discid);
+						cddbsQueried.Add(True, track.discid);
+					}
+
+					const CDDBInfo	&cdInfo = cdInfos.Get(track.discid);
+
+					if (cdInfo != NIL) cdInfo.UpdateTrack(track);
+				}
+
+				/* Add track(s) to joblist.
+				 */
+				if (track.tracks.Length() > 0) foreach (const Track &iTrack, track.tracks) joblist->onComponentAddTrack.Emit(iTrack);
+				else									   joblist->onComponentAddTrack.Emit(track);
+
+				SetProgress((i - workers.Length() + 1) * 1000 / files.Length());
 			}
 
-			const CDDBInfo	&cdInfo = cdInfos.Get(track.discid);
+			/* Delete worker.
+			 */
+			workers.RemoveNth(0);
 
-			if (cdInfo != NIL) cdInfo.UpdateTrack(track);
+			delete worker;
 		}
-
-		/* Add track(s) to joblist.
-		 */
-		if (track.tracks.Length() > 0) foreach (const Track &iTrack, track.tracks) joblist->onComponentAddTrack.Emit(iTrack);
-		else									   joblist->onComponentAddTrack.Emit(track);
-
-		SetProgress((i + 1) * 1000 / files.Length());
 	}
 
 	if (abort) errors.RemoveAll();
@@ -171,7 +200,84 @@ Void freac::JobAddFiles::OnRemoveAllTracksJobScheduled()
 	abort = True;
 }
 
-Void freac::JobAddFiles::ExtractInfoFromPath(const String &path, Info &info)
+freac::JobAddFilesWorker::JobAddFilesWorker(const String &iFileName, Semaphore &iSemaphore) : semaphore(iSemaphore)
+{
+	fileName   = iFileName;
+	ready	   = False;
+
+	errorState = False;
+
+	threadMain.Connect(&JobAddFilesWorker::Run, this);
+}
+
+Int freac::JobAddFilesWorker::Run()
+{
+	Registry	&boca = Registry::Get();
+
+	/* Create decoder component.
+	 */
+	DecoderComponent	*decoder = boca.CreateDecoderForStream(fileName);
+
+	if (decoder == NIL)
+	{
+		BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+		i18n->SetContext("Errors");
+
+		errorState  = True;
+		errorString = i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", File(fileName).GetFileName()).Replace("%2", i18n->TranslateString("Unknown file type"));
+	}
+
+	/* Query stream info.
+	 */
+	if (!errorState)
+	{
+		Error	 error	   = decoder->GetStreamInfo(fileName, track);
+		String	 errorText = decoder->GetErrorString();
+
+		boca.DeleteComponent(decoder);
+
+		if (error == Error())
+		{
+			BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+			i18n->SetContext("Errors");
+
+			errorState  = True;
+			errorString = i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", File(fileName).GetFileName()).Replace("%2", i18n->TranslateString(errorText));
+		}
+	}
+
+	/* Process track.
+	 */
+	if (!errorState)
+	{
+		/* Add disc ID to CD tracks.
+		 */
+		if (track.isCDTrack) track.discid = CDDB::DiscIDFromMCDI(track.GetInfo().mcdi);
+
+		/* Extract title info from path names.
+		 */
+		Info	 info = track.GetInfo();
+
+		if (info.artist == NIL && info.title == NIL && !fileName.StartsWith("device://")) ExtractInfoFromPath(fileName, info);
+
+		track.SetInfo(info);
+
+		/* Add cover art from external files.
+		 */
+		track.LoadCoverArtFiles();
+	}
+
+	Access::Set(ready, True);
+
+	semaphore.Release();
+
+	if (errorState) return Error();
+	else		return Success();
+}
+
+Void freac::JobAddFilesWorker::ExtractInfoFromPath(const String &path, Info &info)
 {
 	String	 fileName   = File(path).GetFileName().Replace("_", " ");
 	String	 folderName = Directory(File(path).GetFilePath()).GetDirectoryName();
@@ -286,9 +392,4 @@ Void freac::JobAddFiles::ExtractInfoFromPath(const String &path, Info &info)
 
 	if (info.title[length - 4] == '-' && info.title[length - 3] >= 'a' && info.title[length - 3] <= 'z' && info.title[length - 2] >= 'a' && info.title[length - 2] <= 'z' && info.title[length - 1] >= 'a' && info.title[length - 1] <= 'z') info.title = info.title.Head(info.title.Length() - 4);
 	if (info.title.ToLower().StartsWith(info.artist.ToLower().Append("-"))) info.title = info.title.Tail(info.title.Length() - info.artist.Length() - 1);
-
-	/* Finish operation.
-	 */
-	String::ExplodeFinish();
-	String::ExplodeFinish();
 }

@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Mikael Hiort af Ornäs &lt;mikael.hafo@hotmail.com&gt;</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">OK</entry>
@@ -341,7 +341,7 @@
 	<entry id="5111" string="Encode to a single file">Koda till en enda fil</entry>
 	<entry id="5112" string="Output filenames">Målfilernas namn</entry>
 	<entry id="5113" string="Allow Unicode characters">Tillåt Unicode-tecken</entry>
-	<entry id="5114" string="Replace spaces">Ersätt mellanslag</entry>
+	<entry id="5114" string="Replace spaces with underscores">Ersätt mellanslag</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Ta bort bearbetade spår från jobblistan</entry>
 	<entry id="5116" string="Add encoded files to joblist">Lägg till kodade filer i jobblistan</entry>
 
@@ -490,37 +490,40 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 finns på %2 språk.&#10;Om ditt språk inte finns tillgängligt kan&#10;du enkelt översätta %1 med hjälp av&#10;programmet &quot;Smooth Translator&quot;.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 installeras med stöd för&#10;LAME-, Ogg Vorbis-, FAAC- och Bonk-kodare.&#10;En kodare för formatet VQF finns&#10;tillgänglig på %1s webbplats: %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 installeras med stöd för&#10;LAME-, Ogg Vorbis-, FAAC- och Opus-kodare.&#10;En kodare för formatet VQF finns&#10;tillgänglig på %1s webbplats: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 kan använda indatatillägg för Winamp 2&#10;för att få stöd för fler format.&#10;Kopiera &quot;in_*.dll&quot;-filer till mappen %1/plugins&#10;för att möjliggöra läsning av dessa format.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Med %1 kan du registrera freedb-poster för cd-skivor.&#10;Dessa måste bestå av Unicode-tecken. Så om du har en cd där&#10;artistnamnet eller titeln innehåller udda/diakritiska tecken&#10;kan du registrera det korrekta namnet i freedb-databasen&#10;med %1.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">För att korrigera läsfel kan du aktivera jitterkorrigering&#10;under fliken &quot;Rippning&quot; i inställningarna.&#10;Om det inte hjälper, så kan du testa att&#10;använda ett av cdparanoia-lägena.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Har du förslag på förbättringar av %1?&#10;Du kan föreslå vilka idéer som helst genom spåraren på %1s&#10;projektsida på SourceForge, %2.&#10;Eller skicka ett e-postmeddelande till %3.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Har du förslag på förbättringar av %1?&#10;&#10;Du kan föreslå vilka idéer som helst genom spåraren på %1s&#10;projektsida på %2, %3.&#10;Eller skicka ett e-postmeddelande till %4.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Tycker du om %1? %1 är gratis, men du&#10;kan hjälpa utvecklingsgruppen genom att&#10;donera pengar till %1-projektet.&#10;Du kan skicka pengar till %2 via PayPal.&#10;Läs mer på %3.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Programmet kodar fortfarande!&#10;Är du helt säker på att du vill avsluta?</entry>
-      <entry id="7001" string="Currently converting">Just nu kodas</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Det gick inte att läsa in ASPI-drivrutinerna! Cd-rippning har inaktiverats!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Det gick inte att öppna fil: %1&#10;&#10;Fel: %2</entry>
-      <entry id="7006" string="Delete original files after encoding">Ta bort originalfiler efter kodning</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denna funktion kommer att ta bort originalfilerna&#10;efter att de har blivit kodade! Är du säker på att&#10;du vill fortsätta?</entry>
-      <entry id="7008" string="File already exists">Filen finns redan</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Målfilen %1&#10;finns redan! Vill du skriva över den?</entry>
-      <entry id="7010" string="Overwrite all further files">Skriv över alla andra filer</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-funktionen är inaktiverad! Aktivera stöd&#10;för lokal eller extern CDDB i inställningarna.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Stöd för extern CDDB är inaktiverat! Aktivera&#10;stöd för extern CDDB i inställningarna.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Åtkomst till cd-romenheter nekades av Windows.&#10;&#10;Kontakta din systemadministratör för att&#10;få åtkomst till cd-romenheten.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Det gick inte att komma åt källfilen: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Det gick inte att skapa målfilen: %1</entry>
-      <entry id="7016" string="File not found">Det gick inte att hitta filen</entry>
-      <entry id="7017" string="Unknown file type">Okänd filtyp</entry>
-      <entry id="7018" string="Unsupported audio format">Ljudformatet stöds inte</entry>
-      <entry id="7019" string="Unknown error">Okänt fel</entry>
-      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">Det finns ingen konfigurationsdialog för&#10;&#10;%1</entry>
-      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Det verkar som att du konverterar från ett förlustgivande format&#10;till ett förlustfritt format.&#10;&#10;Observera att kvalitetsförlusten inte kan göras ogjord och att&#10;denna konvertering således inte kommer att förbättra kvaliteten&#10;överhuvudtaget, men antagligen öka filstorleken.&#10;&#10;Vill du ändå fortsätta?</entry>
-      <entry id="7022" string="Failed to verify input file: %1">Det gick inte att verifiera källfilen: %1</entry>
-      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Kontrollsummefel vid verifiering av målfil: %1&#10;&#10;Förväntad kontrollsumma: %2&#10;Verklig kontrollsumma: %3</entry>
+      <entry id="7000" string="Currently converting">Just nu kodas</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Programmet kodar fortfarande!&#10;Är du helt säker på att du vill avsluta?</entry>
+      <entry id="7002" string="Delete original files after encoding">Ta bort originalfiler efter kodning</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denna funktion kommer att ta bort originalfilerna&#10;efter att de har blivit kodade! Är du säker på att&#10;du vill fortsätta?</entry>
+      <entry id="7005" string="File already exists">Filen finns redan</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Målfilen %1&#10;finns redan! Vill du skriva över den?</entry>
+      <entry id="7007" string="Overwrite all further files">Skriv över alla andra filer</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Det verkar som att du konverterar från ett förlustgivande format&#10;till ett förlustfritt format.&#10;&#10;Observera att kvalitetsförlusten inte kan göras ogjord och att&#10;denna konvertering således inte kommer att förbättra kvaliteten&#10;överhuvudtaget, men antagligen öka filstorleken.&#10;&#10;Vill du ändå fortsätta?</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att komma åt källfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att skapa målfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>
+      <entry id="7108" string="Failed to verify input file: %1">Det gick inte att verifiera källfilen: %1</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Kontrollsummefel vid verifiering av målfil: %1&#10;&#10;Förväntad kontrollsumma: %2&#10;Verklig kontrollsumma: %3</entry>
+      <entry id="7110" string="File not found">Det gick inte att hitta filen</entry>
+      <entry id="7111" string="Unknown file type">Okänd filtyp</entry>
+      <entry id="7113" string="Unsupported audio format">Ljudformatet stöds inte</entry>
+      <entry id="7114" string="Unknown error">Okänt fel</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Det gick inte att läsa in ASPI-drivrutinerna! Cd-rippning har inaktiverats!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Det gick inte att öppna fil: %1&#10;&#10;Fel: %2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-funktionen är inaktiverad! Aktivera stöd&#10;för lokal eller extern CDDB i inställningarna.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Stöd för extern CDDB är inaktiverat! Aktivera&#10;stöd för extern CDDB i inställningarna.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Åtkomst till cd-romenheter nekades av Windows.&#10;&#10;Kontakta din systemadministratör för att&#10;få åtkomst till cd-romenheten.</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Det finns ingen konfigurationsdialog för&#10;&#10;%1</entry>
     </section>
 
     <section name="Dialogs">
@@ -529,7 +532,7 @@
 	<entry id="8000" string="Confirm overwrite">Bekräfta överskrivning</entry>
 	<entry id="8001" string="Confirm">Bekräfta</entry>
 	<entry id="8002" string="Skip all">Hoppa över alla</entry>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten">Följande %1 filer finns redan och kommer att skrivas över</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">Följande %1 filer finns redan och kommer att skrivas över</entry>
 	<entry id="8004" string="Action">Åtgärd</entry>
 	<entry id="8005" string="Overwrite">Skriv över</entry>
 	<entry id="8006" string="Skip">Hoppa över</entry>
@@ -555,7 +558,7 @@
       <entry id="9009" string="No scratch repair">Reparera inte repor/hack</entry>
       <entry id="9010" string="Full cdparanoia mode">Fullständigt cdparanoia-läge</entry>
       <entry id="9011" string="Activate jitter correction">Aktivera jitterkorrigering</entry>
-      <entry id="9012" string="Swap left/right channel">Kasta om vänster/höger kanal</entry>
+      <entry id="9012" string="Switch stereo channels">Kasta om vänster/höger kanal</entry>
       <entry id="9013" string="Automatization">Automatisering</entry>
       <entry id="9014" string="Read CD contents on insert">Läs cd-innehåll vid inmatning</entry>
       <entry id="9015" string="Start ripping automatically">Starta rippning automatiskt</entry>
@@ -573,14 +576,14 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="10000" string="Decoding">Avkodning</entry>
-	<entry id="10001" string="Enable 24 bit decoding">Aktivera 24-bitarsavkodning</entry>
+	<entry id="20000" string="Decoding">Avkodning</entry>
+	<entry id="20001" string="Enable 24 bit decoding">Aktivera 24-bitarsavkodning</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder">Avkodare</entry>
-	<entry id="11001" string="Active decoder">Aktiv avkodare</entry>
- 	<entry id="11002" string="auto select">Välj automatiskt</entry>
+	<entry id="21000" string="Decoder">Avkodare</entry>
+	<entry id="21001" string="Active decoder">Aktiv avkodare</entry>
+ 	<entry id="21002" string="auto select">Välj automatiskt</entry>
       </section>
     </section>
 

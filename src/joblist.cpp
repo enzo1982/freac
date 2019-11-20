@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -16,8 +16,8 @@
 
 #include <gui/layer_tooltip.h>
 
-#include <jobs/joblist/adddirectory.h>
 #include <jobs/joblist/addfiles.h>
+#include <jobs/joblist/addfolders.h>
 #include <jobs/joblist/removeall.h>
 
 using namespace smooth::GUI::Dialogs;
@@ -48,17 +48,21 @@ freac::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iS
 
 	onClickTab.Connect(&JobList::OnClickTab, this);
 
-	BoCA::JobList::Get()->onComponentAddTrack.Connect(&JobList::AddTrack, this);
-	BoCA::JobList::Get()->onComponentRemoveTrack.Connect(&JobList::RemoveTrack, this);
-	BoCA::JobList::Get()->onComponentModifyTrack.Connect(&JobList::UpdateTrackInfo, this);
-	BoCA::JobList::Get()->onComponentSelectTrack.Connect(&JobList::OnComponentSelectTrack, this);
+	BoCA::JobList	*joblist = BoCA::JobList::Get();
 
-	BoCA::JobList::Get()->onComponentMarkTrack.Connect(&JobList::OnComponentMarkTrack, this);
-	BoCA::JobList::Get()->onComponentUnmarkTrack.Connect(&JobList::OnComponentUnmarkTrack, this);
+	joblist->onComponentAddTrack.Connect(&JobList::AddTrack, this);
+	joblist->onComponentRemoveTrack.Connect(&JobList::RemoveTrack, this);
+	joblist->onComponentModifyTrack.Connect(&JobList::UpdateTrackInfo, this);
+	joblist->onComponentSelectTrack.Connect(&JobList::OnComponentSelectTrack, this);
 
-	BoCA::JobList::Get()->doRemoveAllTracks.Connect(&JobList::RemoveAllTracks, this);
+	joblist->onComponentMarkTrack.Connect(&JobList::OnComponentMarkTrack, this);
+	joblist->onComponentUnmarkTrack.Connect(&JobList::OnComponentUnmarkTrack, this);
 
-	BoCA::JobList::Get()->getTrackList.Connect(&JobList::GetTrackList, this);
+	joblist->doAddFiles.Connect(&JobList::AddTracksByFileNames, this);
+
+	joblist->doRemoveAllTracks.Connect(&JobList::RemoveAllTracks, this);
+
+	joblist->getTrackList.Connect(&JobList::GetTrackList, this);
 
 	droparea = new DropArea(iPos, iSize);
 	droparea->onDropFiles.Connect(&JobList::AddTracksByDragAndDrop, this);
@@ -67,17 +71,17 @@ freac::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iS
 
 	text			= new Text(NIL, iPos - Point(9, 19));
 
-	button_sel_all		= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-all.png")), iPos - Point(19, 4), Size(21, 21));
+	button_sel_all		= new Button(ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-all.png")), iPos - Point(19, 4), Size(21, 21));
 	button_sel_all->onAction.Connect(&JobList::SelectAll, this);
 	button_sel_all->SetFlags(BF_NOFRAME);
 	button_sel_all->SetTooltipText(i18n->TranslateString("Select all"));
 
-	button_sel_none		= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-none.png")), iPos - Point(19, -10), Size(21, 21));
+	button_sel_none		= new Button(ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-none.png")), iPos - Point(19, -10), Size(21, 21));
 	button_sel_none->onAction.Connect(&JobList::SelectNone, this);
 	button_sel_none->SetFlags(BF_NOFRAME);
 	button_sel_none->SetTooltipText(i18n->TranslateString("Select none"));
 
-	button_sel_toggle	= new Button(NIL, ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-toggle.png")), iPos - Point(19, -24), Size(21, 21));
+	button_sel_toggle	= new Button(ImageLoader::Load(String(freacConfig->resourcesPath).Append("icons/select/select-toggle.png")), iPos - Point(19, -24), Size(21, 21));
 	button_sel_toggle->onAction.Connect(&JobList::ToggleSelection, this);
 	button_sel_toggle->SetFlags(BF_NOFRAME);
 	button_sel_toggle->SetTooltipText(i18n->TranslateString("Toggle selection"));
@@ -101,21 +105,27 @@ freac::JobList::~JobList()
 		else			    fieldSizes.Append(String::FromInt(GetNthTabWidth(i)));
 	}
 
-	BoCA::Config::Get()->SetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, fieldSizes);
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	config->SetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, fieldSizes);
 
 	/* Clean up.
 	 */
-	BoCA::JobList::Get()->onComponentAddTrack.Disconnect(&JobList::AddTrack, this);
-	BoCA::JobList::Get()->onComponentRemoveTrack.Disconnect(&JobList::RemoveTrack, this);
-	BoCA::JobList::Get()->onComponentModifyTrack.Disconnect(&JobList::UpdateTrackInfo, this);
-	BoCA::JobList::Get()->onComponentSelectTrack.Disconnect(&JobList::OnComponentSelectTrack, this);
+	BoCA::JobList	*joblist = BoCA::JobList::Get();
 
-	BoCA::JobList::Get()->onComponentMarkTrack.Disconnect(&JobList::OnComponentMarkTrack, this);
-	BoCA::JobList::Get()->onComponentUnmarkTrack.Disconnect(&JobList::OnComponentUnmarkTrack, this);
+	joblist->onComponentAddTrack.Disconnect(&JobList::AddTrack, this);
+	joblist->onComponentRemoveTrack.Disconnect(&JobList::RemoveTrack, this);
+	joblist->onComponentModifyTrack.Disconnect(&JobList::UpdateTrackInfo, this);
+	joblist->onComponentSelectTrack.Disconnect(&JobList::OnComponentSelectTrack, this);
 
-	BoCA::JobList::Get()->doRemoveAllTracks.Disconnect(&JobList::RemoveAllTracks, this);
+	joblist->onComponentMarkTrack.Disconnect(&JobList::OnComponentMarkTrack, this);
+	joblist->onComponentUnmarkTrack.Disconnect(&JobList::OnComponentUnmarkTrack, this);
 
-	BoCA::JobList::Get()->getTrackList.Disconnect(&JobList::GetTrackList, this);
+	joblist->doAddFiles.Disconnect(&JobList::AddTracksByFileNames, this);
+
+	joblist->doRemoveAllTracks.Disconnect(&JobList::RemoveAllTracks, this);
+
+	joblist->getTrackList.Disconnect(&JobList::GetTrackList, this);
 
 	onRegister.Disconnect(&JobList::OnRegister, this);
 	onUnregister.Disconnect(&JobList::OnUnregister, this);
@@ -186,9 +196,9 @@ Bool freac::JobList::RemoveTrack(const Track &track)
 
 		/* Remove track from track list and joblist.
 		 */
-		Surface	*surface = GetDrawSurface();
+		Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-		surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+		if (surface) surface->StartPaint(GetVisibleArea());
 
 		tracks.Remove(entry->GetHandle());
 
@@ -203,7 +213,7 @@ Bool freac::JobList::RemoveTrack(const Track &track)
 
 		Remove(entry);
 
-		surface->EndPaint();
+		if (surface) surface->EndPaint();
 
 		UpdateTextLine();
 	}
@@ -223,9 +233,9 @@ Bool freac::JobList::RemoveNthTrack(Int n)
 
 Bool freac::JobList::RemoveAllTracks()
 {
-	Surface	*surface = GetDrawSurface();
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-	surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+	if (surface) surface->StartPaint(GetVisibleArea());
 
 	for (Int i = 0; i < tracks.Length(); i++)
 	{
@@ -241,7 +251,7 @@ Bool freac::JobList::RemoveAllTracks()
 		}
 	}
 
-	surface->EndPaint();
+	if (surface) surface->EndPaint();
 
 	/* Notify components that all tracks will be removed.
 	 */
@@ -299,46 +309,41 @@ Void freac::JobList::AddTrackByDialog()
 
 		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
 
-		for (Int j = 0; j < formats.Length(); j++)
+		foreach (FileFormat *format, formats)
 		{
-			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+			const Array<String>	&formatExtensions = format->GetExtensions();
 			String			 extension;
 
-			for (Int k = 0; k < format_extensions.Length(); k++)
+			foreach (const String &formatExtension, formatExtensions)
 			{
-				extension.Append("*.").Append(format_extensions.GetNth(k));
+				extension.Append("*.").Append(formatExtension);
 
-				if (k < format_extensions.Length() - 1) extension.Append("; ");
+				if (foreachindex < formatExtensions.Length() - 1) extension.Append("; ");
 			}
 
-			types.Add(formats.GetNth(j)->GetName().Append(" (").Append(extension).Append(")"));
+			types.Add(format->GetName().Append(" (").Append(extension).Append(")"));
 			extensions.Add(extension);
 		}
 	}
 
 	String	 fileTypes;
 
-	for (Int i = 0; i < extensions.Length(); i++)
+	foreach (const String &extension, extensions)
 	{
-		if (!fileTypes.Contains(extensions.GetNth(i))) fileTypes.Append(i > 0 ? ";" : NIL).Append(extensions.GetNth(i));
+		if (!fileTypes.Contains(extension)) fileTypes.Append(foreachindex > 0 ? ";" : NIL).Append(extension);
 	}
 
 	dialog.AddFilter(i18n->TranslateString("Audio Files"), fileTypes);
 
-	for (Int i = 0; i < types.Length(); i++) dialog.AddFilter(types.GetNth(i), extensions.GetNth(i));
+	foreach (const String &type, types) dialog.AddFilter(type, extensions.GetNth(foreachindex));
 
 	dialog.AddFilter(i18n->TranslateString("All Files"), "*.*");
 
 	if (dialog.ShowDialog() == Success())
 	{
-		Array<String>	 files;
+		const Array<String>	&files = dialog.GetFileNames();
 
-		for (Int i = 0; i < dialog.GetNumberOfFiles(); i++)
-		{
-			files.Add(dialog.GetNthFileName(i));
-		}
-
-		if (files.Length() > 0) (new JobAddFiles(files))->Schedule();
+		AddTracksByFileNames(files);
 
 		/* Save selected path.
 		 */
@@ -346,27 +351,29 @@ Void freac::JobList::AddTrackByDialog()
 	}
 }
 
-Void freac::JobList::AddTracksByDragAndDrop(const Array<String> &files)
+Bool freac::JobList::AddTracksByFileNames(const Array<String> &files)
 {
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
-
-	i18n->SetContext("Joblist::Errors");
-
 	Array<String>	 filesToAdd;
-	Array<String>	 directoriesToAdd;
+	Array<String>	 foldersToAdd;
 
 	foreach (const String &file, files)
 	{
 		BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 		if	(File(file).Exists())	   filesToAdd.Add(file);
-		else if (Directory(file).Exists()) directoriesToAdd.Add(file);
-		else				   BoCA::Utilities::ErrorMessage("Unable to open file: %1\n\nError: %2", File(file).GetFileName(), i18n->TranslateString("File not found", "Messages"));
+		else if (Directory(file).Exists()) foldersToAdd.Add(file);
+		else				   BoCA::Utilities::ErrorMessage("Unable to open file: %1\n\nError: %2", File(file).GetFileName(), i18n->TranslateString("File not found", "Errors"));
 	}
 
-	if (filesToAdd.Length() > 0) (new JobAddFiles(filesToAdd))->Schedule();
+	if (filesToAdd.Length()	  > 0) (new JobAddFiles(filesToAdd))->Schedule();
+	if (foldersToAdd.Length() > 0) (new JobAddFolders(foldersToAdd))->Schedule();
 
-	foreach (const String &directory, directoriesToAdd) (new JobAddDirectory(directory))->Schedule();
+	return True;
+}
+
+Void freac::JobList::AddTracksByDragAndDrop(const Array<String> &files)
+{
+	AddTracksByFileNames(files);
 }
 
 Void freac::JobList::AddTracksByPattern(const String &directory, const String &pattern, Bool searchSubDirectories)
@@ -383,10 +390,8 @@ Void freac::JobList::AddTracksByPattern(const String &directory, const String &p
 
 		BoCA::Utilities::ErrorMessage(i18n->TranslateString("No files found matching pattern: %1").Replace("%1", pattern));
 	}
-	else
-	{
-		(new JobAddFiles(jobFiles))->Schedule();
-	}
+
+	AddTracksByFileNames(jobFiles);
 }
 
 Void freac::JobList::FindTracksByPattern(Array<String> &jobFiles, const String &directory, const String &pattern, Bool searchSubDirectories) const
@@ -431,9 +436,9 @@ Void freac::JobList::UpdateTrackInfo(const Track &track)
 		{
 			if (entry->GetTooltipLayer() != NIL)
 			{
-				Surface	*surface = GetDrawSurface();
+				Surface	*surface = (entry->IsVisible() ? GetDrawSurface() : NIL);
 
-				surface->StartPaint(Rect(entry->GetRealPosition(), entry->GetRealSize()));
+				if (surface) surface->StartPaint(entry->GetVisibleArea());
 
 				entry->Hide();
 
@@ -441,7 +446,7 @@ Void freac::JobList::UpdateTrackInfo(const Track &track)
 
 				entry->Show();
 
-				surface->EndPaint();
+				if (surface) surface->EndPaint();
 			}
 			else
 			{
@@ -472,18 +477,17 @@ Void freac::JobList::RemoveSelectedTrack()
 
 	for (Int i = 0; i < GetNOfTracks(); i++)
 	{
-		if (GetNthTrack(i).GetTrackID() == track.GetTrackID())
+		if (GetNthTrack(i).GetTrackID() != track.GetTrackID()) continue;
+
+		if (Length() > 1)
 		{
-			if (Length() > 1)
-			{
-				if (i < Length() - 1) SelectNthEntry(i + 1);
-				else		      SelectNthEntry(i - 1);
-			}
-
-			RemoveNthTrack(i);
-
-			break;
+			if (i < Length() - 1) SelectNthEntry(i + 1);
+			else		      SelectNthEntry(i - 1);
 		}
+
+		RemoveNthTrack(i);
+
+		break;
 	}
 }
 
@@ -537,33 +541,33 @@ Void freac::JobList::LoadList()
 
 		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
 
-		for (Int j = 0; j < formats.Length(); j++)
+		foreach (FileFormat *format, formats)
 		{
-			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+			const Array<String>	&formatExtensions = format->GetExtensions();
 			String			 extension;
 
-			for (Int k = 0; k < format_extensions.Length(); k++)
+			foreach (const String &formatExtension, formatExtensions)
 			{
-				extension.Append("*.").Append(format_extensions.GetNth(k));
+				extension.Append("*.").Append(formatExtension);
 
-				if (k < format_extensions.Length() - 1) extension.Append("; ");
+				if (foreachindex < formatExtensions.Length() - 1) extension.Append("; ");
 			}
 
-			types.Add(formats.GetNth(j)->GetName().Append(" (").Append(extension).Append(")"));
+			types.Add(format->GetName().Append(" (").Append(extension).Append(")"));
 			extensions.Add(extension);
 		}
 	}
 
 	String	 fileTypes;
 
-	for (Int i = 0; i < extensions.Length(); i++)
+	foreach (const String &extension, extensions)
 	{
-		if (!fileTypes.Contains(extensions.GetNth(i))) fileTypes.Append(i > 0 ? ";" : NIL).Append(extensions.GetNth(i));
+		if (!fileTypes.Contains(extension)) fileTypes.Append(foreachindex > 0 ? ";" : NIL).Append(extension);
 	}
 
 	dialog.AddFilter(i18n->TranslateString("Playlist Files"), fileTypes);
 
-	for (Int i = 0; i < types.Length(); i++) dialog.AddFilter(types.GetNth(i), extensions.GetNth(i));
+	foreach (const String &type, types) dialog.AddFilter(type, extensions.GetNth(foreachindex));
 
 	dialog.AddFilter(i18n->TranslateString("All Files"), "*.*");
 
@@ -598,7 +602,7 @@ Void freac::JobList::LoadList()
 			const Array<Track>	&tracks = playlist->ReadPlaylist(dialog.GetFileName());
 			Array<String>		 files;
 
-			for (Int i = 0; i < tracks.Length(); i++) files.Add(tracks.GetNth(i).origFilename);
+			foreach (const Track &track, tracks) files.Add(track.fileName);
 
 			(new JobAddFiles(files))->Schedule();
 
@@ -637,23 +641,23 @@ Void freac::JobList::SaveList()
 
 		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
 
-		for (Int j = 0; j < formats.Length(); j++)
+		foreach (FileFormat *format, formats)
 		{
-			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+			const Array<String>	&formatExtensions = format->GetExtensions();
 			String			 extension;
 
-			for (Int k = 0; k < format_extensions.Length(); k++)
+			foreach (const String &formatExtension, formatExtensions)
 			{
-				if (first || format_extensions.GetNth(k) == "m3u8") defaultExtension = format_extensions.GetNth(k);
+				if (first || formatExtension == "m3u8") defaultExtension = formatExtension;
 
-				extension.Append("*.").Append(format_extensions.GetNth(k));
+				extension.Append("*.").Append(formatExtension);
 
-				if (k < format_extensions.Length() - 1) extension.Append("; ");
+				if (foreachindex < formatExtensions.Length() - 1) extension.Append("; ");
 
 				first = False;
 			}
 
-			dialog.AddFilter(formats.GetNth(j)->GetName().Append(" (").Append(extension).Append(")"), extension);
+			dialog.AddFilter(format->GetName().Append(" (").Append(extension).Append(")"), extension);
 		}
 	}
 
@@ -679,18 +683,17 @@ Void freac::JobList::SaveList()
 			const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
 			Bool				 found   = False;
 
-			for (Int j = 0; j < formats.Length(); j++)
+			foreach (FileFormat *format, formats)
 			{
-				const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+				const Array<String>	&formatExtensions = format->GetExtensions();
 
-				for (Int k = 0; k < format_extensions.Length(); k++)
+				foreach (const String &formatExtension, formatExtensions)
 				{
-					if (dialog.GetFileName().ToLower().EndsWith(String(".").Append(format_extensions.GetNth(k).ToLower())))
-					{
-						found = True;
+					if (!dialog.GetFileName().ToLower().EndsWith(String(".").Append(formatExtension.ToLower()))) continue;
 
-						break;
-					}
+					found = True;
+
+					break;
 				}
 
 				if (found) break;
@@ -823,8 +826,6 @@ Void freac::JobList::OnClickTab(Int n)
 		reverse = False;
 	}
 
-	String::ExplodeFinish();
-
 	/* Get file types and output file names.
 	 */
 	Array<String>	 fileTypes;
@@ -834,8 +835,8 @@ Void freac::JobList::OnClickTab(Int n)
 	{
 		const Track	&track = tracks.Get(GetNthEntry(i)->GetHandle());
 
-		if	(track.origFilename.Contains("://")) fileTypes.Add(track.origFilename.Head(track.origFilename.Find("://")).ToUpper());
-		else if (track.origFilename.Contains("."))   fileTypes.Add(track.origFilename.Tail(track.origFilename.Length() - track.origFilename.FindLast(".") - 1).ToUpper());
+		if	(track.fileName.Contains("://")) fileTypes.Add(track.fileName.Head(track.fileName.Find("://")).ToUpper());
+		else if (track.fileName.Contains("."))   fileTypes.Add(track.fileName.Tail(track.fileName.Length() - track.fileName.FindLast(".") - 1).ToUpper());
 	}
 
 	for (Int i = 0; sortByOutput && i < tracks.Length(); i++)
@@ -854,14 +855,14 @@ Void freac::JobList::OnClickTab(Int n)
 		Info		 thisInfo   = thisTrack.GetInfo();
 		const Format	&thisFormat = thisTrack.GetFormat();
 
-		if	(sortByArtist)	    thisInfo.artist	   = thisInfo.artist.ToLower();
-		else if (sortByAlbum)	    thisInfo.album	   = thisInfo.album.ToLower();
-		else if (sortByTitle)	    thisInfo.title	   = thisInfo.title.ToLower();
-		else if (sortByGenre)	    thisInfo.genre	   = thisInfo.genre.ToLower();
+		if	(sortByArtist)	    thisInfo.artist    = thisInfo.artist.ToLower();
+		else if (sortByAlbum)	    thisInfo.album     = thisInfo.album.ToLower();
+		else if (sortByTitle)	    thisInfo.title     = thisInfo.title.ToLower();
+		else if (sortByGenre)	    thisInfo.genre     = thisInfo.genre.ToLower();
 
 		else if (sortByAlbumArtist) thisInfo.SetOtherInfo(INFO_ALBUMARTIST, thisInfo.GetOtherInfo(INFO_ALBUMARTIST).Length() > 0 ? thisInfo.GetOtherInfo(INFO_ALBUMARTIST).ToLower() : thisInfo.artist.ToLower());
 
-		else if (sortByFile)	    thisTrack.origFilename = thisTrack.origFilename.ToLower();
+		else if (sortByFile)	    thisTrack.fileName = thisTrack.fileName.ToLower();
 
 		else if (sortByType)	    fileTypes.SetNth(i, fileTypes.GetNth(i).ToLower());
 		else if (sortByOutput)	    outputFileNames.SetNth(i, outputFileNames.GetNth(i).ToLower());
@@ -890,7 +891,7 @@ Void freac::JobList::OnClickTab(Int n)
 			    (sortByAlbum       &&  SortsAfter(compInfo.album, thisInfo.album)										) ||
 			    (sortByTitle       &&  SortsAfter(compInfo.title, thisInfo.title)										) ||
 			    (sortByGenre       &&  SortsAfter(compInfo.genre, thisInfo.genre)										) ||
-			    (sortByFile	       &&  SortsAfter(compTrack.origFilename, thisTrack.origFilename)								) ||
+			    (sortByFile	       &&  SortsAfter(compTrack.fileName, thisTrack.fileName)								) ||
 			    (sortByType	       &&  SortsAfter(fileTypes.GetNth(m), fileTypes.GetNth(i))									) ||
 			    (sortByOutput      &&  SortsAfter(outputFileNames.GetNth(m), outputFileNames.GetNth(i))							) ||
 			    (sortByAlbumArtist &&  SortsAfter(compInfo.GetOtherInfo(INFO_ALBUMARTIST), thisInfo.GetOtherInfo(INFO_ALBUMARTIST))				) ||
@@ -1009,9 +1010,9 @@ Void freac::JobList::OnChangeLanguageSettings()
 
 Void freac::JobList::OnChangeHeaderColumns()
 {
-	Surface	*surface = GetDrawSurface();
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-	surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+	if (surface) surface->StartPaint(GetVisibleArea());
 
 	Hide();
 
@@ -1027,7 +1028,7 @@ Void freac::JobList::OnChangeHeaderColumns()
 
 	Show();
 
-	surface->EndPaint();
+	if (surface) surface->EndPaint();
 }
 
 Void freac::JobList::AddHeaderTabs()
@@ -1074,9 +1075,6 @@ Void freac::JobList::AddHeaderTabs()
 
 		AddTab(tabName, tabSize, tabAlign);
 	}
-
-	String::ExplodeFinish();
-	String::ExplodeFinish();
 }
 
 Void freac::JobList::UpdateTextLine()
@@ -1149,17 +1147,17 @@ String freac::JobList::GetEntryText(const Track &track) const
 			jlEntry.Append(drives.Get(track.drive));
 		}
 
-		else if (field == "<file>")	   jlEntry.Append(track.origFilename);
+		else if (field == "<file>")	   jlEntry.Append(track.fileName);
 
 		else if (field == "<filetype>")
 		{
-			if	(track.origFilename.Contains("://")) jlEntry.Append(track.origFilename.Head(track.origFilename.Find("://")).ToUpper());
-			else if (track.origFilename.Contains("."))   jlEntry.Append(track.origFilename.Tail(track.origFilename.Length() - track.origFilename.FindLast(".") - 1).ToUpper());
+			if	(track.fileName.Contains("://")) jlEntry.Append(track.fileName.Head(track.fileName.Find("://")).ToUpper());
+			else if (track.fileName.Contains("."))   jlEntry.Append(track.fileName.Tail(track.fileName.Length() - track.fileName.FindLast(".") - 1).ToUpper());
 		}
 
 		else if (field == "<outputfile>")
 		{
-			String	 inputDirectory	 = track.origFilename.Head(track.origFilename.FindLast(Directory::GetDirectoryDelimiter()) + 1);
+			String	 inputDirectory	 = track.fileName.Head(track.fileName.FindLast(Directory::GetDirectoryDelimiter()) + 1);
 			String	 outputDirectory = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
 
 			String	 fileName	 = Utilities::GetOutputFileName(track);
@@ -1170,8 +1168,6 @@ String freac::JobList::GetEntryText(const Track &track) const
 
 		jlEntry.Append(ListEntry::tabDelimiter);
 	}
-
-	String::ExplodeFinish();
 
 	return jlEntry;
 }

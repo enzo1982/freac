@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -23,7 +23,7 @@ BoCA::ChooserFiles::ChooserFiles() : Chooser("Files")
 	div_split		= new Divider(210, OR_VERT | DIV_MOVABLE);
 	div_split->onDrag.Connect(&ChooserFiles::OnDragDivider, this);
 
-	edit_directory		= new EditBox(NIL, Point(215, 7), Size(100, 0));
+	edit_directory		= new EditBox(Point(215, 7), Size(100, 0));
 	edit_directory->Deactivate();
 
 	list_files		= new ListBox(Point(215, 34), Size(100, 150));
@@ -45,12 +45,12 @@ BoCA::ChooserFiles::ChooserFiles() : Chooser("Files")
 	shortcut_last		= new Shortcut(0, Input::Keyboard::KeyEnd, list_files);
 	shortcut_last->onKeyDown.Connect(&ChooserFiles::OnShortcutLast, this);
 
-	btn_save		= new Button(NIL, NIL, Point(176, 30), Size());
+	btn_save		= new Button(String(), Point(176, 30), Size());
 	btn_save->SetOrientation(OR_LOWERRIGHT);
 	btn_save->Deactivate();
 	btn_save->onAction.Connect(&ChooserFiles::OnSave, this);
 
-	btn_saveall		= new Button(NIL, NIL, Point(88, 30), Size());
+	btn_saveall		= new Button(String(), Point(88, 30), Size());
 	btn_saveall->SetOrientation(OR_LOWERRIGHT);
 	btn_saveall->Deactivate();
 	btn_saveall->onAction.Connect(&ChooserFiles::OnSaveAll, this);
@@ -329,7 +329,7 @@ Void BoCA::ChooserFiles::OnSelectFile(ListEntry *entry)
 		return;
 	}
 
-	track.origFilename = file;
+	track.fileName = file;
 
 	btn_save->Deactivate();
 
@@ -486,11 +486,11 @@ Int BoCA::ChooserFiles::SaveFileTag(const Track &track)
 
 	/* Create decoder component.
 	 */
-	DecoderComponent	*decoder = ChooserFilesUtilities::CreateDecoderComponent(track.origFilename);
+	DecoderComponent	*decoder = ChooserFilesUtilities::CreateDecoderComponent(track.fileName);
 
 	/* Loop over supported formats.
 	 */
-	String	 lcURI = track.origFilename.ToLower();
+	String	 lcURI = track.fileName.ToLower();
 
 	foreach (FileFormat *format, decoder->GetFormats())
 	{
@@ -520,7 +520,7 @@ Int BoCA::ChooserFiles::SaveFileTag(const Track &track)
 
 						if (config->GetIntValue("Tags", String("Enable").Append(tagFormat.GetName().Replace(" ", NIL)), spec->IsDefault()))
 						{
-							error	    = tagger->UpdateStreamInfo(track.origFilename, track);
+							error	    = tagger->UpdateStreamInfo(track.fileName, track);
 							errorString = tagger->GetErrorString();
 						}
 
@@ -550,7 +550,7 @@ Int BoCA::ChooserFiles::SaveFileTag(const Track &track)
 
 		i18n->SetContext("Extensions::Tag Editor::Errors");
 
-		Utilities::ErrorMessage(i18n->TranslateString("Unable to update tag: %1\n\nError: %2").Replace("%1", track.origFilename).Replace("%2", i18n->TranslateString(errorString, "Messages")));
+		Utilities::ErrorMessage(i18n->TranslateString("Unable to update tag: %1\n\nError: %2").Replace("%1", track.fileName).Replace("%2", i18n->TranslateString(errorString, "Messages")));
 
 		return Error();
 	}

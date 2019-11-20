@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -21,6 +21,9 @@ BoCA::ChooserTracks::ChooserTracks() : Chooser("Tracks")
 
 	list_tracks->EnableLocking();
 
+	droparea_tracks		= new DropArea(Point(7, 7), Size(100, 150));
+	droparea_tracks->onDropFiles.Connect(&ChooserTracks::OnDropFiles, this);
+
 	shortcut_previous	= new Shortcut(0, Input::Keyboard::KeyUp, list_tracks);
 	shortcut_previous->onKeyDown.Connect(&ChooserTracks::OnShortcutPrevious, this);
 
@@ -37,6 +40,7 @@ BoCA::ChooserTracks::ChooserTracks() : Chooser("Tracks")
 	shortcut_remove->onKeyDown.Connect(&ChooserTracks::OnShortcutRemove, this);
 
 	Add(list_tracks);
+	Add(droparea_tracks);
 
 	Add(shortcut_previous);
 	Add(shortcut_next);
@@ -46,28 +50,35 @@ BoCA::ChooserTracks::ChooserTracks() : Chooser("Tracks")
 
 	onChangeSize.Connect(&ChooserTracks::OnChangeSize, this);
 
-	Settings::Get()->onChangeLanguageSettings.Connect(&ChooserTracks::OnChangeLanguageSettings, this);
+	Settings	*settings = Settings::Get();
+	JobList		*joblist  = JobList::Get();
 
-	JobList::Get()->onApplicationAddTrack.Connect(&ChooserTracks::OnApplicationAddTrack, this);
-	JobList::Get()->onApplicationModifyTrack.Connect(&ChooserTracks::OnApplicationModifyTrack, this);
-	JobList::Get()->onApplicationRemoveTrack.Connect(&ChooserTracks::OnApplicationRemoveTrack, this);
-	JobList::Get()->onApplicationSelectTrack.Connect(&ChooserTracks::OnApplicationSelectTrack, this);
+	settings->onChangeLanguageSettings.Connect(&ChooserTracks::OnChangeLanguageSettings, this);
 
-	JobList::Get()->onApplicationRemoveAllTracks.Connect(&ChooserTracks::OnApplicationRemoveAllTracks, this);
+	joblist->onApplicationAddTrack.Connect(&ChooserTracks::OnApplicationAddTrack, this);
+	joblist->onApplicationModifyTrack.Connect(&ChooserTracks::OnApplicationModifyTrack, this);
+	joblist->onApplicationRemoveTrack.Connect(&ChooserTracks::OnApplicationRemoveTrack, this);
+	joblist->onApplicationSelectTrack.Connect(&ChooserTracks::OnApplicationSelectTrack, this);
+
+	joblist->onApplicationRemoveAllTracks.Connect(&ChooserTracks::OnApplicationRemoveAllTracks, this);
 }
 
 BoCA::ChooserTracks::~ChooserTracks()
 {
-	Settings::Get()->onChangeLanguageSettings.Disconnect(&ChooserTracks::OnChangeLanguageSettings, this);
+	Settings	*settings = Settings::Get();
+	JobList		*joblist  = JobList::Get();
 
-	JobList::Get()->onApplicationAddTrack.Disconnect(&ChooserTracks::OnApplicationAddTrack, this);
-	JobList::Get()->onApplicationModifyTrack.Disconnect(&ChooserTracks::OnApplicationModifyTrack, this);
-	JobList::Get()->onApplicationRemoveTrack.Disconnect(&ChooserTracks::OnApplicationRemoveTrack, this);
-	JobList::Get()->onApplicationSelectTrack.Disconnect(&ChooserTracks::OnApplicationSelectTrack, this);
+	settings->onChangeLanguageSettings.Disconnect(&ChooserTracks::OnChangeLanguageSettings, this);
 
-	JobList::Get()->onApplicationRemoveAllTracks.Disconnect(&ChooserTracks::OnApplicationRemoveAllTracks, this);
+	joblist->onApplicationAddTrack.Disconnect(&ChooserTracks::OnApplicationAddTrack, this);
+	joblist->onApplicationModifyTrack.Disconnect(&ChooserTracks::OnApplicationModifyTrack, this);
+	joblist->onApplicationRemoveTrack.Disconnect(&ChooserTracks::OnApplicationRemoveTrack, this);
+	joblist->onApplicationSelectTrack.Disconnect(&ChooserTracks::OnApplicationSelectTrack, this);
+
+	joblist->onApplicationRemoveAllTracks.Disconnect(&ChooserTracks::OnApplicationRemoveAllTracks, this);
 
 	DeleteObject(list_tracks);
+	DeleteObject(droparea_tracks);
 
 	DeleteObject(shortcut_previous);
 	DeleteObject(shortcut_next);
@@ -84,7 +95,8 @@ Void BoCA::ChooserTracks::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	list_tracks->SetSize(Size(clientSize.cx - 15, clientSize.cy - 15));
+	list_tracks->SetSize(clientSize - Size(15, 15));
+	droparea_tracks->SetSize(clientSize - Size(15, 15));
 }
 
 /* Called when application language is changed.
@@ -116,6 +128,17 @@ Void BoCA::ChooserTracks::OnChangeLanguageSettings()
 	/* Show all widgets again.
 	 */
 	if (prevVisible) Show();
+}
+
+/* Called when files are dragged and dropped on the track list.
+ * ----
+ * Adds the files to the main program's joblist.
+ */
+Void BoCA::ChooserTracks::OnDropFiles(const Array<String> &files)
+{
+	JobList	*joblist = JobList::Get();
+
+	joblist->doAddFiles.Call(files);
 }
 
 /* Called when a list entry is selected.
@@ -204,7 +227,7 @@ Void BoCA::ChooserTracks::OnApplicationAddTrack(const Track &track)
 	const Info	&info = track.GetInfo();
 	String		 jlEntry;
 
-	if (info.artist == NIL && info.title == NIL) jlEntry = String(I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(track.origFilename).Append(ListEntry::tabDelimiter);
+	if (info.artist == NIL && info.title == NIL) jlEntry = String(I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(track.fileName).Append(ListEntry::tabDelimiter);
 	else					     jlEntry = String(info.artist.Length() > 0 ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(info.title.Length() > 0 ? info.title : I18n::Get()->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
 	jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String()).Append(ListEntry::tabDelimiter).Append(track.GetLengthString()).Append(ListEntry::tabDelimiter).Append(track.GetFileSizeString());
@@ -225,7 +248,7 @@ Void BoCA::ChooserTracks::OnApplicationModifyTrack(const Track &track)
 			const Info	&info = track.GetInfo();
 			String		 jlEntry;
 
-			if (info.artist == NIL && info.title == NIL) jlEntry = String(I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(track.origFilename).Append(ListEntry::tabDelimiter);
+			if (info.artist == NIL && info.title == NIL) jlEntry = String(I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(track.fileName).Append(ListEntry::tabDelimiter);
 			else					     jlEntry = String(info.artist.Length() > 0 ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter).Append(info.title.Length() > 0 ? info.title : I18n::Get()->TranslateString("unknown title")).Append(ListEntry::tabDelimiter);
 
 			jlEntry.Append(info.track > 0 ? (info.track < 10 ? String("0").Append(String::FromInt(info.track)) : String::FromInt(info.track)) : String()).Append(ListEntry::tabDelimiter).Append(track.GetLengthString()).Append(ListEntry::tabDelimiter).Append(track.GetFileSizeString());

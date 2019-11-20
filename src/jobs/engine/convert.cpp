@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -46,7 +46,8 @@ Bool					 freac::JobConvert::conversionPaused	= False;
 Signal0<Void>				 freac::JobConvert::onStartEncoding;
 Signal1<Void, Bool>			 freac::JobConvert::onFinishEncoding;
 
-Signal3<Void, const BoCA::Track &,
+Signal4<Void, const BoCA::Track &,
+	      const String &,
 	      const String &,
 	      freac::ConversionStep>	 freac::JobConvert::onEncodeTrack;
 
@@ -55,7 +56,7 @@ Signal2<Void, Int, Int>			 freac::JobConvert::onTotalProgress;
 
 freac::JobConvert::JobConvert(const Array<BoCA::Track> &iTracks)
 {
-	conversionID	 = conversionCount++;
+	conversionID	 = ++conversionCount;
 
 	tracks		 = iTracks;
 
@@ -168,27 +169,28 @@ Error freac::JobConvert::Precheck()
 
 		foreach (Track &track, tracks)
 		{
-			track.outfile = Utilities::GetOutputFileName(track);
+			track.outputFile = Utilities::GetOutputFileName(track);
 
-			UnsignedInt64	 trackCRC = track.outfile.ComputeCRC64();
+			UnsignedInt64	 trackCRC = String(track.outputFile).ToLower().ComputeCRC64();
 
-			if (newTrackCRCs.Get(trackCRC) != NIL || (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory)))
+			if (newTrackCRCs.Get(trackCRC) != NIL || (File(track.outputFile).Exists() && !(track.outputFile.ToLower() == track.fileName.ToLower() && writeToInputDirectory)))
 			{
 				if (!configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAddSequentialNumbersID, Config::SettingsFilenamesAddSequentialNumbersDefault)) { existingTracks.Add(track); continue; }
 
 				/* Append sequential number to output file.
 				 */
-				String	 name	   = track.outfile.Head(track.outfile.FindLast("."));
-				String	 extension = track.outfile.Tail(track.outfile.Length() - track.outfile.FindLast("."));
+				String	 name	   = track.outputFile.Head(track.outputFile.FindLast("."));
+				String	 extension = track.outputFile.Tail(track.outputFile.Length() - track.outputFile.FindLast("."));
 
 				for (Int i = 2; i >= 2; i++)
 				{
-					String	 result = String(name).Append(" [").Append(String::FromInt(i)).Append("]").Append(extension);
+					String		 result	   = String(name).Append(" [").Append(String::FromInt(i)).Append("]").Append(extension);
+					UnsignedInt64	 resultCRC = String(result).ToLower().ComputeCRC64();
 
-					if (newTrackCRCs.Get(result.ComputeCRC64()) == NIL && !File(result).Exists())
+					if (newTrackCRCs.Get(resultCRC) == NIL && !File(result).Exists())
 					{
-						track.outfile = result;
-						trackCRC      = result.ComputeCRC64();
+						track.outputFile = result;
+						trackCRC	 = resultCRC;
 
 						break;
 					}
@@ -341,16 +343,16 @@ Error freac::JobConvert::Perform()
 
 		/* Set output file name and add track to playlist.
 		 */
-		singleTrack.origFilename = singleOutFile;
-		singleTrack.outfile	 = singleOutFile;
+		singleTrack.fileName   = singleOutFile;
+		singleTrack.outputFile = singleOutFile;
 
-		singleTrack.length	 = progress->GetTotalSamples();
+		singleTrack.length     = progress->GetTotalSamples();
 
 		/* Check if output file is one of the input files.
 		 */
-		foreach (Track &track, tracks)
+		foreach (const Track &track, tracks)
 		{
-			if (track.origFilename == singleOutFile) { singleOutFile.Append(".temp"); break; }
+			if (track.fileName == singleOutFile) { singleOutFile.Append(".temp"); break; }
 		}
 
 		/* Create processor to get output format.
@@ -360,19 +362,33 @@ Error freac::JobConvert::Perform()
 
 		singleFileProcessor = new ProcessorSingleFile(configuration);
 
-		if (singleFileProcessor->Create(singleTrackToEncode)) singleTrackToEncode.SetFormat(singleFileProcessor->GetFormatInfo());
-
-		/* Create encoder for single file output.
-		 */
-		singleFileEncoder = new Encoder(configuration);
-
-		if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrackToEncode))
+		if (!singleFileProcessor->Create(singleTrackToEncode))
 		{
+			BoCA::Utilities::ErrorMessage(singleFileProcessor->GetErrorString());
+
 			delete singleFileProcessor;
-			delete singleFileEncoder;
 
 			singleFileProcessor = NIL;
-			singleFileEncoder   = NIL;
+		}
+		
+		if (singleFileProcessor != NIL)
+		{
+			singleTrackToEncode.SetFormat(singleFileProcessor->GetFormatInfo());
+
+			/* Create encoder for single file output.
+			 */
+			singleFileEncoder = new Encoder(configuration);
+
+			if (!singleFileEncoder->Create(selectedEncoderID, singleOutFile, singleTrackToEncode))
+			{
+				BoCA::Utilities::ErrorMessage(singleFileEncoder->GetErrorString());
+
+				delete singleFileProcessor;
+				delete singleFileEncoder;
+
+				singleFileProcessor = NIL;
+				singleFileEncoder   = NIL;
+			}
 		}
 
 		if (singleFileEncoder != NIL)
@@ -384,20 +400,23 @@ Error freac::JobConvert::Perform()
 
 		/* Set track output file in single file mode.
 		 */
-		foreach (Track &track, tracks) track.outfile = singleTrack.outfile;
+		foreach (Track &track, tracks) track.outputFile = singleTrack.outputFile;
+
+		/* Notify components of single file conversion.
+		 */
+		engine->onSingleFileConversion.Emit(conversionID, singleOutFile);
 	}
 
 	/* Setup conversion log.
 	 */
-	DateTime	 currentDateTime = DateTime::Current();
-	String		 currentTime	 = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()))).Append(String::FromInt(currentDateTime.GetHour())).Append(":")
-				   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute())))).Append(String::FromInt(currentDateTime.GetMinute())).Append(":")
-				   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetSecond())))).Append(String::FromInt(currentDateTime.GetSecond()));
+	logName = String("Conversion #%1 - %2 tracks").Replace("%1", String::FromInt(conversionID)).Replace("%2", String::FromInt(tracks.Length()));
 
-	String		 logName = String("Conversion of %1 tracks at %2").Replace("%1", String::FromInt(tracks.Length())).Replace("%2", currentTime);
-	BoCA::Protocol	*log	 = BoCA::Protocol::Get(logName);
+	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
 
-	log->Write("Conversion process started...");
+	log->Write("Starting conversion process...");
+
+	LogSettings(singleOutFile, numberOfThreads);
+	LogCDInfo();
 
 	/* Enter actual conversion routines.
 	 */
@@ -405,11 +424,12 @@ Error freac::JobConvert::Perform()
 	Int		 trackID	= 0;
 	ConversionStep	 conversionStep = ConversionStepNone;
 	String		 decoderName;
+	String		 encoderName;
 
 	/* Instantiate and start worker threads.
 	 */
 	Array<ConvertWorker *, Void *>	 workers;
-	Int				 numberOfWorkers = Math::Min(numberOfThreads, tracks.Length());
+	Int				 numberOfWorkers = GetNumberOfWorkers(numberOfThreads);
 
 	if (encodeToSingleFile)						  workers.Add(new ConvertWorkerSingleFile(configuration, conversionID, singleTrackSampleFormat, singleFileProcessor, singleFileEncoder));
 	else			for (Int i = 0; i < numberOfWorkers; i++) workers.Add(new ConvertWorker(configuration, conversionID));
@@ -473,11 +493,16 @@ Error freac::JobConvert::Perform()
 	{
 		if (encodeToSingleFile && singleFileEncoder == NIL) break;
 
+		AutoRelease	 autoRelease;
+
 		/* Check for errors.
 		 */
-		foreach (ConvertWorker *worker, workerQueue)
+		if (encodeToSingleFile)
 		{
-			if (worker->IsError()) stopConversion = True;
+			foreach (ConvertWorker *worker, workerQueue)
+			{
+				if (worker->IsError()) stopConversion = True;
+			}
 		}
 
 		/* Cancel workers if stop requested.
@@ -531,93 +556,98 @@ Error freac::JobConvert::Perform()
 
 			const Track	&track = worker->GetTrackToConvert();
 
-			/* Remove track from joblist.
-			 */
-			if ((removeProcessedTracks || Config::Get()->deleteAfterEncoding) && !enableConsole)
+			if (!worker->IsError())
 			{
-				BoCA::JobList		*joblist = BoCA::JobList::Get();
-				const Array<Track>	*tracks	 = joblist->getTrackList.Call();
-
-				foreach (const Track &jltrack, *tracks)
+				/* Remove track from joblist.
+				 */
+				if ((removeProcessedTracks || Config::Get()->deleteAfterEncoding) && !enableConsole)
 				{
-					if (jltrack.GetTrackID() == track.GetTrackID())
-					{
-						joblist->onComponentRemoveTrack.Emit(jltrack);
+					BoCA::JobList		*joblist = BoCA::JobList::Get();
+					const Array<Track>	*tracks	 = joblist->getTrackList.Call();
 
-						break;
+					foreach (const Track &jltrack, *tracks)
+					{
+						if (jltrack.GetTrackID() == track.GetTrackID())
+						{
+							GUI::Application::Lock	 lock;
+
+							joblist->onComponentRemoveTrack.Emit(jltrack);
+
+							break;
+						}
 					}
 				}
-			}
 
-			/* Delete input file if requested.
-			 */
-			if (Config::Get()->deleteAfterEncoding && !enableConsole)
-			{
-				/* Check if this was the last track depending on this input file.
+				/* Delete input file if requested.
 				 */
-				Bool	 deleteFile = True;
-
-				foreach (const Track &trackToCheck, tracks)
+				if (Config::Get()->deleteAfterEncoding && track.outputFile != track.fileName && !enableConsole)
 				{
-					if (trackToCheck.origFilename == track.origFilename) { deleteFile = False; break; }
-				}
+					/* Check if this was the last track depending on this input file.
+					 */
+					Bool	 deleteFile = True;
 
-				/* Delete file if no more tracks left.
-				 */
-				if (deleteFile) File(track.origFilename).Delete();
-			}
-
-			if (File(track.outfile).Exists())
-			{
-				/* Add encoded track to joblist if requested.
-				 */
-				if (addEncodedTracks && !encodeToSingleFile && !enableConsole)
-				{
-					Array<String>	 files;
-
-					files.Add(track.outfile);
-
-					(new JobAddFiles(files))->Schedule();
-				}
-
-				/* Add track to list of converted tracks.
-				 */
-				convertedTracks.Add(track, track.GetTrackID());
-			}
-
-			/* Eject CD if this was the last track from that disc.
-			 */
-			if (track.isCDTrack && ripperEjectDisc)
-			{
-				/* Check if this was the last track.
-				 */
-				Bool	 ejectDisk = True;
-
-				foreach (const Track &trackToCheck, tracks)
-				{
-					if (trackToCheck.drive == track.drive) { ejectDisk = False; break; }
-				}
-
-				/* Eject disc if no more tracks left.
-				 */
-				if (ejectDisk)
-				{
-					DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
-
-					if (info != NIL)
+					foreach (const Track &trackToCheck, tracks)
 					{
-						info->OpenNthDeviceTray(track.drive);
+						if (trackToCheck.fileName == track.fileName) { deleteFile = False; break; }
+					}
 
-						boca.DeleteComponent(info);
+					/* Delete file if no more tracks left.
+					 */
+					if (deleteFile) File(track.fileName).Delete();
+				}
 
-						/* Notify application of removed disc.
-						 */
-						Notification::Get()->onDiscRemove.Emit(track.drive);
+				if (File(track.outputFile).Exists())
+				{
+					/* Add encoded track to joblist if requested.
+					 */
+					if (addEncodedTracks && !encodeToSingleFile && !enableConsole)
+					{
+						Array<String>	 files;
+
+						files.Add(track.outputFile);
+
+						(new JobAddFiles(files))->Schedule();
+					}
+
+					/* Add track to list of converted tracks.
+					 */
+					convertedTracks.Add(track, track.GetTrackID());
+				}
+
+				/* Eject CD if this was the last track from that disc.
+				 */
+				if (track.isCDTrack && ripperEjectDisc)
+				{
+					/* Check if this was the last track.
+					 */
+					Bool	 ejectDisk = True;
+
+					foreach (const Track &trackToCheck, tracks)
+					{
+						if (trackToCheck.drive == track.drive) { ejectDisk = False; break; }
+					}
+
+					/* Eject disc if no more tracks left.
+					 */
+					if (ejectDisk)
+					{
+						DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
+
+						if (info != NIL)
+						{
+							info->OpenNthDeviceTray(track.drive);
+
+							boca.DeleteComponent(info);
+
+							/* Notify application of removed disc.
+							 */
+							Notification::Get()->onDiscRemove.Emit(track.drive);
+						}
 					}
 				}
-			}
 
-			encodedTracks++;
+				encodedTracks++;
+			}
 
 			workerQueue.Remove(worker->GetThreadID());
 
@@ -632,20 +662,22 @@ Error freac::JobConvert::Perform()
 			{
 				if (worker->IsWaiting()) continue;
 
-				Surface	*surface = GetDrawSurface();
+				Window	*window	 = GetContainerWindow();
+				Surface	*surface = (window ? window->GetDrawSurface() : NIL);
 
-				surface->StartPaint(Rect(Point(0, 0), surface->GetSize()));
+				if (surface) surface->StartPaint(window->GetVisibleArea());
 
 				const Track	&workerTrack = worker->GetTrackToConvert();
 
 				if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+																		  encoderName    = worker->GetEncoderName(),
 																		  conversionStep = worker->GetConversionStep());
 
-				SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", workerTrack.origFilename));
+				SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", workerTrack.fileName));
 
 				progress->UpdateTrack(workerTrack, worker->GetTrackPosition());
 
-				surface->EndPaint();
+				if (surface) surface->EndPaint();
 
 				break;
 			}
@@ -686,14 +718,14 @@ Error freac::JobConvert::Perform()
 		{
 			if (worker->IsWaiting()) continue;
 
-			AutoRelease	 autoRelease;
-
 			const Track	&workerTrack = worker->GetTrackToConvert();
 
 			if (first && conversionJobs.GetLast() == this && (this			      != lastConversion ||
 									  workerTrack.GetTrackID()    != trackID	||
 									  worker->GetConversionStep() != conversionStep ||
-									  worker->GetDecoderName()    != decoderName)) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+									  worker->GetDecoderName()    != decoderName	||
+									  worker->GetEncoderName()    != encoderName)) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+																								   encoderName    = worker->GetEncoderName(),
 																								   conversionStep = worker->GetConversionStep());
 
 			first = False;
@@ -713,10 +745,9 @@ Error freac::JobConvert::Perform()
 			if (container != NIL) container->Paint(SP_PAINT);
 		}
 
-		Bool	 visible = IsVisible();
-		Surface	*surface = GetDrawSurface();
+		Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-		if (visible) surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+		if (surface) surface->StartPaint(GetVisibleArea());
 
 		for (Int i = 0; i < workers.Length(); i++)
 		{
@@ -746,7 +777,7 @@ Error freac::JobConvert::Perform()
 			else if (conversionStep == ConversionStepVerify) conversionStepText = String(" (").Append(i18n->TranslateString("verifying", "Joblist")).Append(")");
 
 			text->SetY(42 + i * 20);
-			text->SetText(workerTrack.origFilename.Tail(workerTrack.origFilename.Length() - workerTrack.origFilename.FindLast(Directory::GetDirectoryDelimiter()) - 1).Append(conversionStepText));
+			text->SetText(workerTrack.fileName.Tail(workerTrack.fileName.Length() - workerTrack.fileName.FindLast(Directory::GetDirectoryDelimiter()) - 1).Append(conversionStepText));
 			text->Show();
 
 			progress->SetY(54 + i * 20);
@@ -758,7 +789,7 @@ Error freac::JobConvert::Perform()
 			progress->Show();
 		}
 
-		if (visible) surface->EndPaint();
+		if (surface) surface->EndPaint();
 
 		/* Sleep for 25ms and continue if no worker found.
 		 */
@@ -808,13 +839,13 @@ Error freac::JobConvert::Perform()
 			{
 				/* Check track existence again as it might have been created in the meantime.
 				 */
-				if (File(track.outfile).Exists() && !(track.outfile.ToLower() == track.origFilename.ToLower() && writeToInputDirectory))
+				if (File(track.outputFile).Exists() && !(track.outputFile.ToLower() == track.fileName.ToLower() && writeToInputDirectory))
 				{
 					BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 					i18n->SetContext("Messages");
 
-					MessageDlg	 confirmation(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", track.outfile), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAllFiles);
+					MessageDlg	 confirmation(i18n->TranslateString("The output file %1\nalready exists! Do you want to overwrite it?").Replace("%1", track.outputFile), i18n->TranslateString("File already exists"), Message::Buttons::YesNoCancel, Message::Icon::Question, i18n->TranslateString("Overwrite all further files"), &overwriteAllFiles);
 
 					confirmation.ShowDialog();
 
@@ -869,9 +900,10 @@ Error freac::JobConvert::Perform()
 				if (!workerToUse->IsError())
 				{
 					if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = track.GetTrackID()), decoderName    = workerToUse->GetDecoderName(),
+																		    encoderName    = workerToUse->GetEncoderName(),
 																		    conversionStep = workerToUse->GetConversionStep());
 
-					SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", track.origFilename));
+					SetText(i18n->AddEllipsis(i18n->TranslateString("Converting %1", "Jobs::Convert")).Replace("%1", track.fileName));
 				}
 			}
 
@@ -933,6 +965,12 @@ Error freac::JobConvert::Perform()
 
 		/* Delete processor and encoder.
 		 */
+		singleFileProcessor->Destroy();
+		singleFileEncoder->Destroy();
+
+		if (singleFileProcessor->GetErrorState()) BoCA::Utilities::ErrorMessage(singleFileProcessor->GetErrorString());
+		if (singleFileEncoder->GetErrorState())	  BoCA::Utilities::ErrorMessage(singleFileEncoder->GetErrorString());
+
 		delete singleFileProcessor;
 		delete singleFileEncoder;
 
@@ -944,12 +982,12 @@ Error freac::JobConvert::Perform()
 		{
 			/* Move single output file if temporary.
 			 */
-			if (singleOutFile == String(singleTrack.outfile).Append(".temp"))
+			if (singleOutFile == String(singleTrack.outputFile).Append(".temp"))
 			{
-				File(singleTrack.outfile).Delete();
-				File(singleOutFile).Move(singleTrack.outfile);
+				File(singleTrack.outputFile).Delete();
+				File(singleOutFile).Move(singleTrack.outputFile);
 
-				singleOutFile = singleTrack.outfile;
+				singleOutFile = singleTrack.outputFile;
 			}
 
 			/* Setup and start worker for verification.
@@ -974,9 +1012,10 @@ Error freac::JobConvert::Perform()
 			while (worker->IsWaiting() && !worker->IsIdle()) S::System::System::Sleep(1);
 
 			if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(singleTrackToEncode, decoderName    = worker->GetDecoderName(),
+												      encoderName    = worker->GetEncoderName(),
 												      conversionStep = worker->GetConversionStep());
 
-			SetText(i18n->AddEllipsis(i18n->TranslateString("Verifying %1", "Jobs::Convert")).Replace("%1", singleTrackToEncode.origFilename));
+			SetText(i18n->AddEllipsis(i18n->TranslateString("Verifying %1", "Jobs::Convert")).Replace("%1", singleTrackToEncode.fileName));
 
 			progress->StartTrack(singleTrackToEncode);
 
@@ -1034,12 +1073,12 @@ Error freac::JobConvert::Perform()
 		{
 			/* Move single output file if temporary.
 			 */
-			if (singleOutFile == String(singleTrack.outfile).Append(".temp"))
+			if (singleOutFile == String(singleTrack.outputFile).Append(".temp"))
 			{
-				File(singleTrack.outfile).Delete();
-				File(singleOutFile).Move(singleTrack.outfile);
+				File(singleTrack.outputFile).Delete();
+				File(singleOutFile).Move(singleTrack.outputFile);
 
-				singleOutFile = singleTrack.outfile;
+				singleOutFile = singleTrack.outputFile;
 			}
 
 			/* Add single output file to playlist.
@@ -1080,8 +1119,8 @@ Error freac::JobConvert::Perform()
 		{
 			Track	 playlistTrack = track;
 
-			playlistTrack.isCDTrack	   = False;
-			playlistTrack.origFilename = track.outfile;
+			playlistTrack.isCDTrack	= False;
+			playlistTrack.fileName	= track.outputFile;
 
 			playlistTracks.Add(playlistTrack);
 			cuesheetTracks.Add(playlistTrack);
@@ -1095,7 +1134,7 @@ Error freac::JobConvert::Perform()
 			cuesheetTrack.isCDTrack	   = False;
 			cuesheetTrack.sampleOffset = track.sampleOffset;
 			cuesheetTrack.length	   = track.length;
-			cuesheetTrack.origFilename = singleOutFile;
+			cuesheetTrack.fileName	   = singleOutFile;
 
 			cuesheetTracks.Add(cuesheetTrack);
 		}
@@ -1120,7 +1159,7 @@ Error freac::JobConvert::Perform()
 			/* Set playlist filename so it is written to the same place as a single output file.
 			 */
 			if (encodeToSingleFile) playlistFileNames.Add(singleOutFile.Head(singleOutFile.FindLast(".")));
-			else			playlistFileNames.Add(Utilities::GetPlaylistFileName(playlistTracks.GetFirst()));
+			else			playlistFileNames.Add(Utilities::GetPlaylistFileName(playlistTracks.GetFirst(), tracksToConvert));
 
 			playlistTrackLists.Add(new Array<Track>(playlistTracks));
 			cuesheetTrackLists.Add(new Array<Track>(cuesheetTracks));
@@ -1131,7 +1170,7 @@ Error freac::JobConvert::Perform()
 			{
 				/* Check if we already have a list for this playlist.
 				 */
-				String		 playlistFileName = Utilities::GetPlaylistFileName(track);
+				String		 playlistFileName = Utilities::GetPlaylistFileName(track, tracksToConvert);
 				UnsignedInt32	 playlistFileCRC  = playlistFileName.ComputeCRC32();
 
 				if (playlistFileNames.Add(playlistFileName, playlistFileCRC))
@@ -1157,6 +1196,8 @@ Error freac::JobConvert::Perform()
 
 			if (playlist != NIL)
 			{
+				log->Write(String("    Writing playlist: ").Append(playlistFileNames.GetNth(i).Append(".").Append(playlistExtension)));
+
 				playlist->SetTrackList(*playlistTrackLists.GetNth(i));
 				playlist->WritePlaylist(String(playlistFileNames.GetNth(i)).Append(".").Append(playlistExtension));
 
@@ -1169,8 +1210,10 @@ Error freac::JobConvert::Perform()
 
 			if (cuesheet != NIL)
 			{
+				log->Write(String("    Writing cue sheet: ").Append(playlistFileNames.GetNth(i).Append(".cue")));
+
 				cuesheet->SetTrackList(*cuesheetTrackLists.GetNth(i));
-				cuesheet->WritePlaylist(String(playlistFileNames.GetNth(i)).Append(".cue"));
+				cuesheet->WritePlaylist(playlistFileNames.GetNth(i).Append(".cue"));
 
 				boca.DeleteComponent(cuesheet);
 			}
@@ -1262,12 +1305,44 @@ Void freac::JobConvert::UpdateTotalProgress(Int progressValue, Int secondsLeft)
 
 Void freac::JobConvert::OnWorkerReportError(const String &error)
 {
-	errors.Add(error);
+	Bool	 encodeToSingleFile = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+
+	if (encodeToSingleFile)	BoCA::Utilities::ErrorMessage(error);
+	else			errors.Add(error);
 }
 
 Void freac::JobConvert::OnWorkerReportWarning(const String &warning)
 {
 	warnings.Add(warning);
+}
+
+Int freac::JobConvert::GetNumberOfWorkers(Int threadsToUse) const
+{
+	Int	 numberOfWorkers = Math::Min(threadsToUse, tracks.Length());
+
+	Bool	 enableParallel	 = configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
+	Int	 numberOfThreads = configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault);
+
+	if (!enableParallel || numberOfThreads > 1) return numberOfWorkers;
+
+	/* See how many different devices we have in the track list.
+	 */
+	Array<Bool>	 drives;
+
+	foreach (const Track &track, tracks)
+	{
+		/* Fall back to regular number of workers if we have any non-device tracks.
+		 */
+		if (!track.fileName.StartsWith("device://")) return numberOfWorkers;
+
+		String	 deviceID = track.fileName.SubString(9, track.fileName.Tail(track.fileName.Length() - 9).Find("/"));
+
+		drives.Add(True, deviceID.ComputeCRC32());
+	}
+
+	/* Compute number of workers.
+	 */
+	return Math::Max(drives.Length(), numberOfWorkers);
 }
 
 Format freac::JobConvert::GetSingleTrackSampleFormat() const
@@ -1290,7 +1365,14 @@ Format freac::JobConvert::GetSingleTrackSampleFormat() const
 	{
 		Processor	*processor = new Processor(configuration);
 
-		if (!processor->Create(track)) { delete processor; continue; }
+		if (!processor->Create(track))
+		{
+			BoCA::Utilities::ErrorMessage(processor->GetErrorString());
+
+			delete processor;
+
+			return Format();
+		}
 
 		const Format	&sourceFormat	 = track.GetFormat();
 		const Format	&processorFormat = processor->GetFormatInfo();
@@ -1336,7 +1418,7 @@ Format freac::JobConvert::GetSingleTrackSampleFormat() const
 
 	boca.DeleteComponent(encoder);
 
-	if (targetFormats.Length() == 1) return sourceFormats.GetFirst();
+	if (targetFormats.Length() <= 1) return sourceFormats.GetFirst();
 
 	/* Display dialog to select output format.
 	 */
@@ -1513,4 +1595,164 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 	foreach (const Track &chapterTrack, tracks) singleTrack.tracks.Add(chapterTrack);
 
 	return singleTrack;
+}
+
+Void freac::JobConvert::LogSettings(const String &singleOutFile, Int numberOfThreads) const
+{
+	/* Get configuration.
+	 */
+	String	 selectedEncoderID	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+
+	Bool	 enableParallel		= configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
+	Bool	 enableSuperFast	= configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, Config::ResourcesEnableSuperFastModeDefault);
+
+	Bool	 encodeToSingleFile	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+
+	Bool	 verifyOutput		= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, Config::VerificationVerifyOutputDefault);
+
+	String	 encoderOutputDirectory	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
+	Bool	 writeToInputDirectory	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
+
+	String	 filenamePattern	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
+
+	/* Get encoder properties.
+	 */
+	Registry		&boca	 = Registry::Get();
+	EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(selectedEncoderID);
+
+	String			 selectedEncoderName;
+	Bool			 selectedEncoderLossless = False;
+
+	if (encoder != NIL)
+	{
+		encoder->SetConfiguration(configuration);
+
+		selectedEncoderName	= encoder->GetName();
+		selectedEncoderLossless = encoder->IsLossless();
+
+		boca.DeleteComponent(encoder);
+	}
+
+	/* Write settings to log.
+	 */
+	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
+
+	log->Write(String("    Selected encoder:     ").Append(selectedEncoderName));
+	log->Write(String("    Parallel processing:  ").Append(numberOfThreads > 1 ? String("Enabled (up to %1 threads)").Replace("%1", String::FromInt(numberOfThreads)) : "Disabled"));
+
+	if (enableParallel) log->Write(String("        SuperFast mode:   ").Append(enableSuperFast ? "Enabled" : "Disabled"));
+
+	/* Output settings.
+	 */
+	log->Write(NIL);
+	log->Write(String("    Output settings:      ").Append(encodeToSingleFile ? "Single file" : "Multiple files"));
+
+	if (encodeToSingleFile)
+	{
+		log->Write(String("        Output file:      ").Append(singleOutFile));
+		log->Write(NIL);
+	}
+	else
+	{
+		log->Write(String("        Output folder:    ").Append(writeToInputDirectory ? String("Using input file folders") : encoderOutputDirectory));
+
+		if (writeToInputDirectory) log->Write(String("            Fallback:     ").Append(encoderOutputDirectory));
+
+		log->Write(String("        Filename pattern: ").Append(filenamePattern));
+		log->Write(NIL);
+	}
+
+	/* Lossless output verfification.
+	 */
+	if (selectedEncoderLossless)
+	{
+		log->Write(String("    Output verification:  ").Append(verifyOutput ? "Enabled" : "Disabled"));
+		log->Write(NIL);
+	}
+}
+
+Void freac::JobConvert::LogCDInfo() const
+{
+	/* Get a list of all drives used in this conversion.
+	 */
+	Array<Int>	 drives;
+
+	foreach (const Track &track, tracks)
+	{
+		if (track.isCDTrack) drives.Add(track.drive, track.drive);
+	}
+
+	if (drives.Length() == 0) return;
+
+	/* Create device info component.
+	 */
+	Registry		&boca = Registry::Get();
+	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
+
+	if (info == NIL) return;
+
+	/* Log drive and disc information for each drive.
+	 */
+	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
+
+	foreach (Int drive, drives)
+	{
+		const Device	&device = info->GetNthDeviceInfo(drive);
+		const MCDI	&mcdi	= info->GetNthDeviceMCDI(drive);
+
+		log->Write(String("    Using drive:          ").Append("device://cdda:").Append(String::FromInt(drive)).Append("/"));
+		log->Write(String("        Drive model:      ").Append(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision));
+		log->Write(String("        SCSI address:     ").Append(device.path));
+
+		if (configuration->GetIntValue(Config::CategoryRipperID, String("UseOffsetDrive").Append(String::FromInt(drive)), 0)) log->Write(String("        Read offset:      ").Append(String::FromInt(configuration->GetIntValue(Config::CategoryRipperID, String("ReadOffsetDrive").Append(String::FromInt(drive)), 0))).Append(" samples"));
+
+		log->Write(NIL);
+		log->Write("    Disc TOC:");
+		log->Write(NIL);
+		log->Write("        Track |   Start  |  Length  | Start sector | End sector");
+		log->Write("        -------------------------------------------------------");
+
+		for (Int i = 0; i < mcdi.GetNumberOfEntries(); i++)
+		{
+			Int	 trackNumber	    = mcdi.GetNthEntryTrackNumber(i);
+			Int	 trackLength	    = mcdi.GetNthEntryTrackLength(i);
+			Int	 trackStartSector   = mcdi.GetNthEntryOffset(i);
+			Int	 trackEndSector	    = trackStartSector + trackLength - 1;
+
+			Int	 trackStartMinutes  = trackStartSector / 75 / 60;
+			Int	 trackStartSeconds  = trackStartSector / 75 % 60;
+			Int	 trackStartFrames   = trackStartSector % 75;
+
+			Int	 trackLengthMinutes = trackLength / 75 / 60;
+			Int	 trackLengthSeconds = trackLength / 75 % 60;
+			Int	 trackLengthFrames  = trackLength % 75;
+
+			String	 trackStartString   = String(trackStartMinutes	< 10 ? "0" : NIL).Append(String::FromInt(trackStartMinutes )).Append(":").Append(trackStartSeconds  < 10 ? "0" : NIL).Append(String::FromInt(trackStartSeconds )).Append(".").Append(trackStartFrames  < 10 ? "0" : NIL).Append(String::FromInt(trackStartFrames ));
+			String	 trackLengthString  = String(trackLengthMinutes	< 10 ? "0" : NIL).Append(String::FromInt(trackLengthMinutes)).Append(":").Append(trackLengthSeconds < 10 ? "0" : NIL).Append(String::FromInt(trackLengthSeconds)).Append(".").Append(trackLengthFrames < 10 ? "0" : NIL).Append(String::FromInt(trackLengthFrames));
+
+			String	 entry = String("        ");
+
+			if (mcdi.GetNthEntryType(i) == ENTRY_AUDIO)
+			{
+				entry.Append("   ").Append(String().FillN(' ', 1 - Math::Floor(Math::Log10(trackNumber)))).Append(String::FromInt(trackNumber)).Append(" | ")
+						   .Append(trackStartString)											       .Append(" | ")
+						   .Append(trackLengthString)											       .Append(" | ");
+			}
+			else
+			{
+				entry.Append(" ").Append("DATA")    .Append(" | ")
+						 .Append("        ").Append(" | ")
+						 .Append("        ").Append(" | ");
+			}
+
+			entry.Append("      ").Append(String().FillN(' ', 5 - Math::Floor(Math::Log10(trackStartSector)))).Append(String::FromInt(trackStartSector)).Append(" | ")
+			     .Append("    ")  .Append(String().FillN(' ', 5 - Math::Floor(Math::Log10(trackEndSector))))  .Append(String::FromInt(trackEndSector));
+
+			log->Write(entry);
+		}
+
+		log->Write(NIL);
+	}
+
+	boca.DeleteComponent(info);
 }

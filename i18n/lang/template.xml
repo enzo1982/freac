@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">[template]</property>
     <property name="author">[author] &lt;[author@server.tld]&gt;</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK"/>
@@ -132,7 +132,9 @@
 	<entry id="1603" string="Check for updates at startup"/>
 	<entry id="1604" string="About %1"/>
 	<entry id="1605" string="index_en.html"/>
-      </section>
+ 	<entry id="1606" string="Report an issue"/>
+	<entry id="1607" string="Suggest a feature"/>
+     </section>
     </section>
 
     <section name="Toolbar">
@@ -394,10 +396,11 @@
 	<entry id="5111" string="Encode to a single file"/>
 	<entry id="5112" string="Output filenames"/>
 	<entry id="5113" string="Allow Unicode characters"/>
-	<entry id="5114" string="Replace spaces"/>
+	<entry id="5114" string="Replace spaces with underscores"/>
 	<entry id="5115" string="Remove processed tracks from joblist"/>
 	<entry id="5116" string="Add encoded files to joblist"/>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames"/>
+	<entry id="5118" string="Keep time stamps of source files"/>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?"/>
@@ -521,13 +524,14 @@
 	  <entry id="5663" string="Sampling rate"/>
 	  <entry id="5664" string="Channels"/>
 	  <entry id="5665" string="Sample resolution"/>
+	  <entry id="5666" string="CD drive"/>
 	</section>
       </section>
 
       <section name="Resources">
 	<entry id="5700" string="Parallel processing"/>
 	<entry id="5701" string="Enable parallel processing"/>
-	<entry id="5702" string="Enable SuperFast mode (experimental)"/>
+	<entry id="5702" string="Enable SuperFast mode"/>
 	<entry id="5703" string="Number of conversion threads"/>
 	<entry id="5704" string="auto"/>
 	<entry id="5705" string="Process priority"/>
@@ -575,42 +579,51 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application."/>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2"/>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2"/>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats."/>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1."/>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes."/>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3."/>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4."/>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details."/>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?"/>
-      <entry id="7001" string="Currently converting"/>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!"/>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2"/>
-      <entry id="7004" string="Cannot play a CD track while ripping from the same drive!"/>
-      <entry id="7005" string="Cannot start ripping while playing a track from the same drive!"/>
-      <entry id="7006" string="Delete original files after encoding"/>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?"/>
-      <entry id="7008" string="File already exists"/>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?"/>
-      <entry id="7010" string="Overwrite all further files"/>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."/>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog."/>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive."/>
-      <entry id="7014" string="Cannot access input file: %1"/>
-      <entry id="7015" string="Cannot create output file: %1"/>
-      <entry id="7016" string="File not found"/>
-      <entry id="7017" string="Unknown file type"/>
-      <entry id="7018" string="Unsupported audio format"/>
-      <entry id="7019" string="Unknown error"/>
-      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1"/>
-      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?"/>
-      <entry id="7022" string="Failed to verify input file: %1"/>
-      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
-      <entry id="7024" string="The selected folder does not exist anymore!"/>
-      <entry id="7025" string="Keep this option enabled even after restarting %1"/>
-      <entry id="7026" string="Invalid file format"/>
+      <entry id="7000" string="Currently converting"/>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?"/>
+      <entry id="7002" string="Delete original files after encoding"/>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?"/>
+      <entry id="7004" string="Keep this option enabled even after restarting %1"/>
+      <entry id="7005" string="File already exists"/>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?"/>
+      <entry id="7007" string="Overwrite all further files"/>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?"/>
+    </section>
+
+    <section name="Errors">
+      <entry id="7100" string="Error: %1"/>
+      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2"/>
+      <entry id="7102" string="Could not create encoder component: %1"/>
+      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3"/>
+      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3"/>
+      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2"/>
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2"/>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2"/>
+      <entry id="7108" string="Failed to verify input file: %1"/>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
+      <entry id="7110" string="File not found"/>
+      <entry id="7111" string="Unknown file type"/>
+      <entry id="7112" string="Invalid file format"/>
+      <entry id="7113" string="Unsupported audio format"/>
+      <entry id="7114" string="Unknown error"/>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!"/>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2"/>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!"/>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!"/>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."/>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog."/>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive."/>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1"/>
+      <entry id="7123" string="The selected folder does not exist anymore!"/>
     </section>
 
     <section name="Dialogs">
@@ -619,7 +632,7 @@
 	<entry id="8000" string="Confirm overwrite"/>
 	<entry id="8001" string="Confirm"/>
 	<entry id="8002" string="Skip all"/>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten"/>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names"/>
 	<entry id="8004" string="Action"/>
 	<entry id="8005" string="Overwrite"/>
 	<entry id="8006" string="Skip"/>
@@ -651,7 +664,7 @@
       <entry id="9009" string="No scratch repair"/>
       <entry id="9010" string="Full cdparanoia mode"/>
       <entry id="9011" string="Activate jitter correction"/>
-      <entry id="9012" string="Swap left/right channel"/>
+      <entry id="9012" string="Switch stereo channels"/>
       <entry id="9013" string="Automatization"/>
       <entry id="9014" string="Read CD contents on insert"/>
       <entry id="9015" string="Start ripping automatically"/>
@@ -666,27 +679,53 @@
       <entry id="9024" string="%1 seconds"/>
     </section>
 
+    <section name="Components">
+
+      <section name="Decoders">
+	<entry id="10000" string="Cue Sheet Reader"/>
+      </section>
+
+      <section name="Encoders">
+	<entry id="11000" string="meh! - multi encoder hub"/>
+	<entry id="11001" string="SndFile Output Component"/>
+     </section>
+
+      <section name="DSP">
+	<entry id="12000" string="Channel Converter"/>
+	<entry id="12001" string="Sample Format Converter"/>
+	<entry id="12002" string="Sample Rate Converter"/>
+	<entry id="12003" string="RNNoise Noise Reduction"/>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer"/>
+      </section>
+
+      <section name="Extensions">
+	<entry id="15000" string="Notifications"/>
+	<entry id="15001" string="Logging"/>
+	<entry id="15002" string="YouTube Video Downloader"/>
+      </section>
+    </section>
+
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="10000" string="Decoding"/>
-	<entry id="10001" string="Enable 24 bit decoding"/>
+	<entry id="20000" string="Decoding"/>
+	<entry id="20001" string="Enable 24 bit decoding"/>
       </section>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder"/>
-	<entry id="11001" string="Active decoder"/>
- 	<entry id="11002" string="auto select"/>
+	<entry id="21000" string="Decoder"/>
+	<entry id="21001" string="Active decoder"/>
+ 	<entry id="21002" string="auto select"/>
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information"/>
-	<entry id="12001" string="Read tags from referenced files"/>
-	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags"/>
-	<entry id="12003" string="Alternative files"/>
-	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
-	<entry id="12005" string="Error handling"/>
-	<entry id="12006" string="Ignore errors during cue sheet processing"/>
+	<entry id="22000" string="Title information"/>
+	<entry id="22001" string="Read tags from referenced files"/>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags"/>
+	<entry id="22003" string="Alternative files"/>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
+	<entry id="22005" string="Error handling"/>
+	<entry id="22006" string="Ignore errors during cue sheet processing"/>
       </section>
     </section>
 
@@ -990,6 +1029,7 @@
 	<entry id="50101" string="Channel configuration"/>
 	<entry id="50102" string="Mono"/>
 	<entry id="50103" string="Stereo"/>
+	<entry id="50104" string="Switch stereo channels"/>
       </section>
 
       <section name="Resample">
@@ -1030,6 +1070,16 @@
 	<entry id="50328" string="Stereo processing"/>
 	<entry id="50329" string="Separate"/>
 	<entry id="50330" string="Combined"/>
+      </section>
+
+      <section name="RNNoise">
+	<entry id="50400" string="Signal/noise type"/>
+	<entry id="50401" string="Signal type"/>
+	<entry id="50402" string="Noise type"/>
+	<entry id="50403" string="General"/>
+	<entry id="50404" string="Recording"/>
+	<entry id="50405" string="Voice (incl. laughter etc.)"/>
+	<entry id="50406" string="Speech"/>
       </section>
     </section>
 
@@ -1074,7 +1124,7 @@
 	<entry id="80206" string="high, new"/>
 	<entry id="80207" string="extra, new"/>
 	<entry id="80208" string="best, new"/>
-	<entry id="80209" string="Store MD5 of original PCM data"/>
+	<entry id="80209" string="Add MD5 checksum"/>
 	<entry id="80210" string="Seeking"/>
 	<entry id="80211" string="slow"/>
 	<entry id="80212" string="minimum"/>
@@ -1265,17 +1315,43 @@
 	</section>
       </section>
 
-      <section name="Protocols">
-	<entry id="104000" string="Protocols"/>
-	<entry id="104001" string="Protocol"/>
-	<entry id="104002" string="Errors / Warnings"/>
-	<entry id="104003" string="Details"/>
+      <section name="Logging">
+	<entry id="104000" string="Logs"/>
+	<entry id="104001" string="Log"/>
+	<entry id="104002" string="Save as"/>
+	<entry id="104003" string="Log Files"/>
 	<entry id="104004" string="Time"/>
 	<entry id="104005" string="Message"/>
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface"/>
-	  <entry id="104101" string="Show Protocols tab in main window"/>
+	  <entry id="104101" string="Show Logs tab in main window"/>
+	  <entry id="104102" string="Log files"/>
+	  <entry id="104103" string="Archive log files"/>
+	  <entry id="104104" string="Log file folder"/>
+	  <entry id="104105" string="Select"/>
+	  <entry id="104106" string="Select the folder for saving log files"/>
+	  <entry id="104107" string="Delete old log files after"/>
+	  <entry id="104108" string="days"/>
+	  <entry id="104109" string="Conversion logs"/>
+	  <entry id="104110" string="Save conversion logs with audio files"/>
+	  <entry id="104111" string="Audio CD ripping logs only"/>
+	  <entry id="104112" string="Filename pattern"/>
+	</section>
+      </section>
+
+      <section name="Notifier">
+	<entry id="105000" string="Conversion process finished!"/>
+
+	<section name="Configuration">
+	  <entry id="105100" string="Notifications"/>
+	  <entry id="105101" string="Notify on finished conversion"/>
+	  <entry id="105102" string="Play sound"/>
+	  <entry id="105103" string="Display message"/>
+	  <entry id="105104" string="Select"/>
+	  <entry id="105105" string="Only for conversions running longer than"/>
+	  <entry id="105106" string="second(s)"/>
+	  <entry id="105107" string="minute(s)"/>
 	</section>
       </section>
     </section>

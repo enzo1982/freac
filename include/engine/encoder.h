@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -13,55 +13,46 @@
 #ifndef H_FREAC_ENCODER
 #define H_FREAC_ENCODER
 
-#include <smooth.h>
-#include <boca.h>
-
-using namespace smooth;
+#include "component.h"
 
 namespace freac
 {
-	class Encoder
+	class Encoder : public Component
 	{
 		protected:
-			static Array<Threads::Mutex *, Void *>	 mutexes;
-			static Threads::Mutex			 managementMutex;
+			IO::OutStream			*stream;
+			BoCA::AS::EncoderComponent	*encoder;
 
-			const BoCA::Config			*configuration;
+			BoCA::Track			 album;
+			Int				 chapter;
+			Int64				 offset;
 
-			IO::OutStream				*stream;
-			BoCA::AS::EncoderComponent		*encoder;
+			BoCA::Format			 sourceFormat;
+			BoCA::Format			 targetFormat;
 
-			BoCA::Track				 album;
-			Int					 chapter;
-			Int64					 offset;
+			Int64				 encodedSamples;
 
-			BoCA::Format				 sourceFormat;
-			BoCA::Format				 targetFormat;
-
-			Int64					 encodedSamples;
-
-			String					 md5Sum;
+			String				 md5Sum;
 		public:
-			static Void				 FreeLockObjects();
+							 Encoder(const BoCA::Config *);
+			virtual				~Encoder();
 
-								 Encoder(const BoCA::Config *);
-			virtual					~Encoder();
+			Bool				 Create(const String &, const String &, const BoCA::Track &);
+			Bool				 Destroy();
 
-			Bool					 Create(const String &, const String &, const BoCA::Track &);
-			Bool					 Destroy();
+			Int				 Write(Buffer<UnsignedByte> &);
 
-			Int					 Write(Buffer<UnsignedByte> &);
-
-			Void					 SignalChapterChange();
+			Void				 SignalChapterChange();
 		accessors:
-			Bool					 IsLossless() const;
+			Bool				 IsLossless() const;
+			String				 GetEncoderName() const;
 
-			Int64					 GetEncodedSamples() const	{ return encodedSamples; }
+			Int64				 GetEncodedSamples() const	{ return encodedSamples; }
 
-			const BoCA::Format			&GetTargetFormat() const	{ return targetFormat; }
+			const BoCA::Format		&GetTargetFormat() const	{ return targetFormat; }
 
-			Void					 SetCalculateMD5(Bool);
-			String					 GetMD5Checksum();
+			Void				 SetCalculateMD5(Bool);
+			String				 GetMD5Checksum();
 	};
 };
 

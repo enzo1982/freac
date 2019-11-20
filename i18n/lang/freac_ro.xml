@@ -374,33 +374,36 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 este disponibil în %2 limbi. Dacă limba&#10;dumneavoastră nu este disponibilă, puteţi traduce uşor&#10;interfaţa %1 folosind aplicaţia &quot;smooth Translator'.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 vine cu suport pentru codecurile LAME, Ogg Vorbis,&#10;FACC, FLAC şi Bonk. Un codec pentru formatul VQF este&#10;disponibil pe site-ul %1: %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 vine cu suport pentru codecurile LAME, Ogg Vorbis,&#10;FACC, FLAC şi Opus. Un codec pentru formatul VQF este&#10;disponibil pe site-ul %1: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 poate folosi plugin-uri Winamp 2 pentru a utiliza şi alte&#10;formate de fişier. Copiaţi fişierele in_*.dll în folderul %1/plugins&#10;pentru ca %1 să poată folosi aceste formate.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Cu %1 puteţi trimite informaţii către baza CDDB folosind&#10;caractere Unicode. Deci, chiar dacă aveţi CD-uri cu denumiri&#10;format non-Latin în numele artistului sau al melodiei, le puteţi&#10;trimite corect către CDDB cu %1.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Pentru corecţia erorilor la copiere, puteţi activa modul de corecţie&#10;Jitter din tab-ul Ripper a modului de configurare a %1.&#10;Dacă nu ajută la nimic, încercaţi folosirea modurilor Paranoia.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Aveti sugestii pentru îmbunătăţirea %1?&#10;Puteti trimite orice idee către Tracker-ul de pe pagina SourceForge&#10;a proiectului %1 - %2&#10;sau puteţi trimite un eMail la %3.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Aveti sugestii pentru îmbunătăţirea %1?&#10;&#10;Puteti trimite orice idee către tracker-ul de pe pagina %2&#10;a proiectului %1 - %3&#10;sau puteţi trimite un eMail la %4.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Vă place %1? %1 este distribuit gratuit, dar puteţi ajuta&#10;la dezvoltarea sa, donând pentru proiectul %1.&#10;Puteţi trimite bani la %2 prin PayPal.&#10;Pentru mai multe detalii vizitaţi %3</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Procesul de codare este activ! Doriţi să-l întrerupeţi?</entry>
-      <entry id="7001" string="Currently converting">Proces activ de codare</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Eroare la încărcarea driver-elor ASPI! Extragerea nu poate fi efectuată!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Nu pot deschide fişierul: %1&#10;&#10;%2</entry>
-      <entry id="7006" string="Delete original files after encoding">Ştergere fişiere originale după codare</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Această opţiune determină ştergerea fişierelor originale&#10;după terminarea codării! Continuaţi?</entry>
-      <entry id="7008" string="File already exists">Fişierul există deja</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Fişierul de ieşire %1 există! Doriţi să-l suprascrieţi?</entry>
-      <entry id="7010" string="Overwrite all further files">Suprascrie toate fişierele</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Suportul pentru CDDB este dezactivat! Activaţi baza&#10;locală sau cea online în dialogul de configurare!</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Suportul pentru baza CDDB online este dezactivat!&#10;Activaţi suportul din dialogul de configurare!</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Accesul la CD-ROM nu este permis de Windows.&#10;&#10;Contactaţi administratorul sistemului pentru a vă&#10;permite accesul la CD-ROM.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Nu pot accesa fişierul intrare: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Nu pot accesa fişierul ieşire: %1</entry>
-      <entry id="7016" string="File not found">Fişierul nu a fost găsit</entry>
-      <entry id="7017" string="Unknown file type">Tip fişier necunoscut</entry>
-      <entry id="7018" string="Unsupported audio format">Format audio nesuportat</entry>
-      <entry id="7019" string="Unknown error">Eroare necunoscută</entry>
+      <entry id="7000" string="Currently converting">Proces activ de codare</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Procesul de codare este activ! Doriţi să-l întrerupeţi?</entry>
+      <entry id="7002" string="Delete original files after encoding">Ştergere fişiere originale după codare</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Această opţiune determină ştergerea fişierelor originale&#10;după terminarea codării! Continuaţi?</entry>
+      <entry id="7005" string="File already exists">Fişierul există deja</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Fişierul de ieşire %1 există! Doriţi să-l suprascrieţi?</entry>
+      <entry id="7007" string="Overwrite all further files">Suprascrie toate fişierele</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Nu pot accesa fişierul intrare: %1&#10;&#10;Fişier: %1&#10;Folder: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Nu pot accesa fişierul ieşire: %1&#10;&#10;Fişier: %1&#10;Folder: %2</entry>
+      <entry id="7110" string="File not found">Fişierul nu a fost găsit</entry>
+      <entry id="7111" string="Unknown file type">Tip fişier necunoscut</entry>
+      <entry id="7113" string="Unsupported audio format">Format audio nesuportat</entry>
+      <entry id="7114" string="Unknown error">Eroare necunoscută</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Eroare la încărcarea driver-elor ASPI! Extragerea nu poate fi efectuată!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Nu pot deschide fişierul: %1&#10;&#10;%2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Suportul pentru CDDB este dezactivat! Activaţi baza&#10;locală sau cea online în dialogul de configurare!</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Suportul pentru baza CDDB online este dezactivat!&#10;Activaţi suportul din dialogul de configurare!</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Accesul la CD-ROM nu este permis de Windows.&#10;&#10;Contactaţi administratorul sistemului pentru a vă&#10;permite accesul la CD-ROM.</entry>
     </section>
 
     <section name="Dialogs">
@@ -425,7 +428,7 @@
       <entry id="9009" string="No scratch repair">Fără reparare zgârieturi</entry>
       <entry id="9010" string="Full cdparanoia mode">Mod complet cdparanoia</entry>
       <entry id="9011" string="Activate jitter correction">Activare corecţie jitter</entry>
-      <entry id="9012" string="Swap left/right channel">Inversare stânga/dreapta</entry>
+      <entry id="9012" string="Switch stereo channels">Inversare stânga/dreapta</entry>
       <entry id="9013" string="Automatization">Automatizare</entry>
       <entry id="9014" string="Read CD contents on insert">Citire automată CD la introducere</entry>
       <entry id="9015" string="Start ripping automatically">Porneşte copierea automat</entry>

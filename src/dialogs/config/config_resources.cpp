@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -36,7 +36,7 @@ freac::ConfigureResources::ConfigureResources()
 	check_enable_parallel	= new CheckBox(i18n->TranslateString("Enable parallel processing"), Point(10, 14), Size(group_cpu->GetWidth() - 20, 0), &enableParallel);
 	check_enable_parallel->onAction.Connect(&ConfigureResources::ToggleParallel, this);
 
-	check_enable_superfast	= new CheckBox(i18n->TranslateString("Enable SuperFast mode (experimental)"), Point(27, 37), Size(group_cpu->GetWidth() - 37, 0), &enableSuperFast);
+	check_enable_superfast	= new CheckBox(i18n->TranslateString("Enable SuperFast mode"), Point(27, 37), Size(group_cpu->GetWidth() - 37, 0), &enableSuperFast);
 
 	text_threads		= new Text(i18n->AddColon(i18n->TranslateString("Number of conversion threads")), Point(10, 64));
 	text_threads_value	= new Text(i18n->TranslateString("auto"), Point(350, 64));

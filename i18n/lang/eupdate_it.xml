@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Marco D'Amato &lt;md@mdtzone.it&gt;</property>
-    <property name="url">http://www.mdtzone.it/</property>
+    <property name="url">https://www.mdtzone.it/</property>
   </info>
   <data>
     <entry id="1" string="Cancel">Annulla</entry>

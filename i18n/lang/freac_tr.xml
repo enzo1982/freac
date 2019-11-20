@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">cako &lt;gakhgit@gmail.com&gt;</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">Tamam</entry>
@@ -374,33 +374,36 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 %2 dile çevrilmiştir. Eğer kullanımı kolaylaştırmak&#10;isterseniz &quot;Smooth Translator&quot; aracı ile çeviri yapabilirsiniz.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 LAME, Ogg Vorbis, FAAC, FLAC ve Bonk&#10;türlerini destekler.&#10;&#10;VQF için kodlayıcı %1 web sitesinde vardır:&#10;%2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 LAME, Ogg Vorbis, FAAC, FLAC ve Opus&#10;türlerini destekler.&#10;&#10;VQF için kodlayıcı %1 web sitesinde vardır:&#10;%2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 Winamp 2 eklentilerini kullanarak&#10;daha fazla dosya biçimi destekleyebilir.&#10;Winamp klasöründeki in_*.DLL dosyalarını&#10;%1 deki %1/plugins klasörüne&#10;kopyalayarak bu biçimleri de okutabilirsiniz.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1 ile freedb CD veritabanına eklemeler yapabilirsiniz.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">CD deki okuma hatalarını düzeltmek için %1 ayar bölümünde&#10;Ripper sekmesindeki Jitter düzeltme yi etkin hale getirebilirsiniz.&#10;Eğer bu da işe yaramazsa Paranoya modlarını deneyiniz.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">%1 in nasıl geliştirileceği hakkında önerileriniz mi var?&#10;%1 Sourforge sayfasından ya da mail göndererek&#10;fikirlerinizi belirtebilirsiniz.&#10;Sourceforge proje sayfası - %2&#10;E-Mail - %3</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">%1 in nasıl geliştirileceği hakkında önerileriniz mi var?&#10;&#10;%1 %2 sayfasından ya da mail göndererek&#10;fikirlerinizi belirtebilirsiniz.&#10;&#10;%2 proje sayfası - %3&#10;E-Mail - %4</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">%1 i seviyor musunuz? %1 ücretsiz&#10;kullanılabilir fakat %1 projesine bagış yaparak&#10;gelişmesine katkıda da bulunabilirsiniz.&#10;&#10;Paypal aracılığı ile %2 e para gönderebilirsiniz.&#10;Daha fazla detay için %3&#10;adresine bakınız.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Çevirme işlemi devam ediyor! Çıkmak istediğinizden emin misiniz?</entry>
-      <entry id="7001" string="Currently converting">Çevriliyor</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI sürücüleri yüklenemedi! Cd riplenemiyor.</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Açılamayan dosya: %1&#10;&#10;Hata: %2</entry>
-      <entry id="7006" string="Delete original files after encoding">Çevirdikten sonra orjinal dosyaları sil</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Bu seçim çevirme bittikten sonra orjinal dosyaları silecektir!&#10;Orjinal dosyaları silmek istediğinize emin misiniz?</entry>
-      <entry id="7008" string="File already exists">Dosya zaten mevcut</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">%1&#10;dosyası mevcut. Üstüne yazılsın mı?</entry>
-      <entry id="7010" string="Overwrite all further files">Tüm diğer dosyaların üstüne de yaz</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB veritabanı aktif değil!&#10;Ayarlardan CDDB veritabanını aktif hale getirin.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Uzak CDDB kullanımı desteklenmiyor!&#10;Ayarlardan uzak CDDB veritabanını aktif hale getirin.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows CD-ROM'a erişimi engelliyor.&#10;&#10;Lütfen sistem yöneticinizle temas kurup gerekli ayarlamaları yaptırınız.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Çevrilecek dosyaya erişilemiyor: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Çevrilen dosya oluşturulamıyor: %1</entry>
-      <entry id="7016" string="File not found">Dosya bulunamadı</entry>
-      <entry id="7017" string="Unknown file type">Bilinmeyen dosya biçimi</entry>
-      <entry id="7018" string="Unsupported audio format">Desteklenmeyen ses formatı</entry>
-      <entry id="7019" string="Unknown error">Bilinmeyen hata</entry>
+      <entry id="7000" string="Currently converting">Çevriliyor</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Çevirme işlemi devam ediyor! Çıkmak istediğinizden emin misiniz?</entry>
+      <entry id="7002" string="Delete original files after encoding">Çevirdikten sonra orjinal dosyaları sil</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Bu seçim çevirme bittikten sonra orjinal dosyaları silecektir!&#10;Orjinal dosyaları silmek istediğinize emin misiniz?</entry>
+      <entry id="7005" string="File already exists">Dosya zaten mevcut</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">%1&#10;dosyası mevcut. Üstüne yazılsın mı?</entry>
+      <entry id="7007" string="Overwrite all further files">Tüm diğer dosyaların üstüne de yaz</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Çevrilecek dosyaya erişilemiyor: %1&#10;&#10;Dosya: %1&#10;Dizin: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Çevrilen dosya oluşturulamıyor: %1&#10;&#10;Dosya: %1&#10;Dizin: %2</entry>
+      <entry id="7110" string="File not found">Dosya bulunamadı</entry>
+      <entry id="7111" string="Unknown file type">Bilinmeyen dosya biçimi</entry>
+      <entry id="7113" string="Unsupported audio format">Desteklenmeyen ses formatı</entry>
+      <entry id="7114" string="Unknown error">Bilinmeyen hata</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI sürücüleri yüklenemedi! Cd riplenemiyor.</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Açılamayan dosya: %1&#10;&#10;Hata: %2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB veritabanı aktif değil!&#10;Ayarlardan CDDB veritabanını aktif hale getirin.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Uzak CDDB kullanımı desteklenmiyor!&#10;Ayarlardan uzak CDDB veritabanını aktif hale getirin.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows CD-ROM'a erişimi engelliyor.&#10;&#10;Lütfen sistem yöneticinizle temas kurup gerekli ayarlamaları yaptırınız.</entry>
     </section>
 
     <section name="Dialogs">
@@ -425,7 +428,7 @@
       <entry id="9009" string="No scratch repair">çizikleri onarma</entry>
       <entry id="9010" string="Full cdparanoia mode">Cdparanoia modu tüm özellikler</entry>
       <entry id="9011" string="Activate jitter correction">Jitter düzeltmesini aktifleştir</entry>
-      <entry id="9012" string="Swap left/right channel">Sağ/sol kanalları tersine çevir</entry>
+      <entry id="9012" string="Switch stereo channels">Sağ/sol kanalları tersine çevir</entry>
       <entry id="9013" string="Automatization">Otomatik olarak yap</entry>
       <entry id="9014" string="Read CD contents on insert">CD takıldığında içindekileri oku</entry>
       <entry id="9015" string="Start ripping automatically">Ripleme işlemine otomatik başla</entry>

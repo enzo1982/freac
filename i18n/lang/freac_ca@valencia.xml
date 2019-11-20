@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Agustín Bou</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">Acceptar</entry>
@@ -375,33 +375,36 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 s'ha traduït ja a %2 idiomes. Si no ho està&#10;en el seu, pot traduir fàcilment&#10;%1 utilitzant l'aplicació 'smooth Translator'.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 inclou suport per a codificar LLEPA, Ogg Vorbis, FAAC,&#10;FLAC i Bonk. Un codificador per al format VQF està&#10;disponible en el lloc de %1: %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 inclou suport per a codificar LLEPA, Ogg Vorbis, FAAC,&#10;FLAC i Opus. Un codificador per al format VQF està&#10;disponible en el lloc de %1: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 pot usar els plugins d'entrada de Winamp 2 per a&#10;manejar més formats. Copie els arxius in_*.dll a la carpeta&#10;1\plugins perquè %1 Llija eixos formats.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Amb %1 pot enviar registres de CD freedb que continguen&#10;caràcters unicode. D'esta manera, si posseïx CDs amb noms&#10;d'artistes o títols que no estiguen en alfabetització llatina, pot&#10;enviar les dades correctes a freedb amb %1.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Per a corregir els errors de lectura durant el procés&#10;d'extracció, pot activar la funció Correcció Jitter en la&#10;fitxa Extractor de la configuració. Si això no ajuda, intente utilitzar&#10;algun dels modes paranoia.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Té algun suggeriment per a millorar %1? Pot&#10;enviar les seues idees a través del Tracker en el lloc de %1&#10;ubicat en SourceForge - %2&#10;o enviar un correu a %3.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Té algun suggeriment per a millorar %1?&#10;&#10;Pot enviar les seues idees a través del tracker en el lloc de %1&#10;ubicat en %2 - %3&#10;o enviar un correu a %4.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Li agrada %1? %1 és gratuït,&#10;però pot ajudar al seu desenrotllament&#10;fent una donació. Pot enviar diners a&#10;%2 a través de PayPal.&#10;Veja %3 per a més detalls.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">El procés de compressió encara no ha acabat! Realment vol eixir?</entry>
-      <entry id="7001" string="Currently converting">Compressió iniciada</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Impossible carregar controladors ASPI! Extracció del CD desactivada!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">No es pot obrir l'arxiu: %1&#10;&#10;%2</entry>
-      <entry id="7006" string="Delete original files after encoding">Eliminar els arxius originals a l'acabar la codificació</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Esta opció elimina els arxius originals a l'acabar &#10;la codificació!&#10;&#10;Està vosté segur d'activar esta funció?</entry>
-      <entry id="7008" string="File already exists">L'arxiu ja existix</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">L'arxiu d'eixida %1&#10;ja existix! Desitja sobreescriure'l?</entry>
-      <entry id="7010" string="Overwrite all further files">Sobreescriure tots els arxius següents</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">El suport CDDB no està activat! Per favor, active un&#10;suport CDDB local o remot en la finestra de configuració.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">El suport per a la base de dades CDDB remota no està activat!&#10;Per favor, active la base de dades CDDB remota en la finestra de configuració.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">L'accés a la unitat de CD-ROM va ser denegat per Windows.&#10;&#10;Per favor, contacte amb el seu administrador de sistemes per a&#10;poder accedir a la unitat de CD-ROM.</entry>
-      <entry id="7014" string="Cannot access input file: %1">No es pot accedir a l'arxiu d'entrada: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">No es pot crear l'arxiu d'eixida: %1</entry>
-      <entry id="7016" string="File not found">Arxiu no trobat</entry>
-      <entry id="7017" string="Unknown file type">Tipus d'arxiu desconegut</entry>
-      <entry id="7018" string="Unsupported audio format">Format d'àudio no suportat</entry>
-      <entry id="7019" string="Unknown error">Error desconegut</entry>
+      <entry id="7000" string="Currently converting">Compressió iniciada</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">El procés de compressió encara no ha acabat! Realment vol eixir?</entry>
+      <entry id="7002" string="Delete original files after encoding">Eliminar els arxius originals a l'acabar la codificació</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Esta opció elimina els arxius originals a l'acabar &#10;la codificació!&#10;&#10;Està vosté segur d'activar esta funció?</entry>
+      <entry id="7005" string="File already exists">L'arxiu ja existix</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">L'arxiu d'eixida %1&#10;ja existix! Desitja sobreescriure'l?</entry>
+      <entry id="7007" string="Overwrite all further files">Sobreescriure tots els arxius següents</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">No es pot accedir a l'arxiu d'entrada: %1&#10;&#10;Arxiu: %1&#10;Carpeta: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">No es pot crear l'arxiu d'eixida: %1&#10;&#10;Arxiu: %1&#10;Carpeta: %2</entry>
+      <entry id="7110" string="File not found">Arxiu no trobat</entry>
+      <entry id="7111" string="Unknown file type">Tipus d'arxiu desconegut</entry>
+      <entry id="7113" string="Unsupported audio format">Format d'àudio no suportat</entry>
+      <entry id="7114" string="Unknown error">Error desconegut</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Impossible carregar controladors ASPI! Extracció del CD desactivada!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">No es pot obrir l'arxiu: %1&#10;&#10;%2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">El suport CDDB no està activat! Per favor, active un&#10;suport CDDB local o remot en la finestra de configuració.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">El suport per a la base de dades CDDB remota no està activat!&#10;Per favor, active la base de dades CDDB remota en la finestra de configuració.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">L'accés a la unitat de CD-ROM va ser denegat per Windows.&#10;&#10;Per favor, contacte amb el seu administrador de sistemes per a&#10;poder accedir a la unitat de CD-ROM.</entry>
     </section>
 
     <section name="Dialogs">
@@ -426,7 +429,7 @@
       <entry id="9009" string="No scratch repair">No reparar grinyols</entry>
       <entry id="9010" string="Full cdparanoia mode">Mode CD paranoia complet</entry>
       <entry id="9011" string="Activate jitter correction">Activar correcció Jitter</entry>
-      <entry id="9012" string="Swap left/right channel">Intercanviar canals</entry>
+      <entry id="9012" string="Switch stereo channels">Intercanviar canals</entry>
       <entry id="9013" string="Automatization">Automatització</entry>
       <entry id="9014" string="Read CD contents on insert">Llegir CD a l'inserir-lo</entry>
       <entry id="9015" string="Start ripping automatically">Extraure automàticament</entry>

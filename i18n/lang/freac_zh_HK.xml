@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Kin Kwok</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">確定</entry>
@@ -343,7 +343,7 @@
 	<entry id="5111" string="Encode to a single file">編碼成單一檔案</entry>
 	<entry id="5112" string="Output filenames">輸出檔名</entry>
 	<entry id="5113" string="Allow Unicode characters">容許Unicode字元</entry>
-	<entry id="5114" string="Replace spaces">取代空格</entry>
+	<entry id="5114" string="Replace spaces with underscores">取代空格</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">從工作清單清除已處理曲目</entry>
 	<entry id="5116" string="Add encoded files to joblist">加入已編碼檔案到工作清單</entry>
 
@@ -498,37 +498,40 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1目前支援%2種語言。如果你的語言不在其中。&#10;&#10;你可下載%1的Translator Kit自行翻譯。</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1原生支援LAME、Ogg Vorbis、FAAC、FLAC和Bonk;編碼器。&#10;&#10;VQF的編碼器可於%1網站（%2）下載。</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1原生支援LAME、Ogg Vorbis、FAAC、FLAC和Opus;編碼器。&#10;&#10;VQF的編碼器可於%1網站（%2）下載。</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1可使用Winamp 2輸入外掛程式以支援更多檔案格式。&#10;&#10;請將in_*.dll複製到%1/plugins資料夾。</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">藉由%1可提交使用Unicode字集的項目到freedb資料庫。&#10;&#10;藉由%1提交，非拉丁字元不成問題。</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">如須修正翻錄時的讀取錯誤，可啟用「顫動糾正」功能&#10;（於喜好設定的CDRip分頁）。&#10;&#10;啟用此功能後若問題持續，可嘗試Paranoia模式。</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">有改良%1的建議嗎？&#10;&#10;可於本程式SourceForge企劃網站（%2）的&#10;追蹤器上提交，或電郵到%3。</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">有改良%1的建議嗎？&#10;&#10;可於本程式%2企劃網站（%3）的&#10;追蹤器上提交，或電郵到%4。</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">喜歡%1嗎？&#10;&#10;%1雖然免費，但持續開發需要資金。&#10;&#10;請捐助%1（PayPal：%2）。&#10;&#10;詳情請查閱%3。</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">編碼進行中。確定要終止？</entry>
-      <entry id="7001" string="Currently converting">編碼進行中</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">無法載入ASPI驅動程式，翻錄鐳射唱片功能被停用。</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案：%1&#10;&#10;錯誤：%2</entry>
-      <entry id="7006" string="Delete original files after encoding">完成編碼後刪除原始檔案</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">啟用此項會於每次完成編碼後刪除電腦內的原始檔案。&#10;&#10;確定啟用嗎？</entry>
-      <entry id="7008" string="File already exists">檔案已經存在</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">輸出檔案%1&#10;已經存在。將其覆寫嗎？</entry>
-      <entry id="7010" string="Overwrite all further files">覆寫往後的全部檔案</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB支援停用中。請於喜好設定啟用本地或&#10;遙距CDDB支援。</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">遙距CDDB支援停用中。請於喜好設定啟用&#10;遙距CDDB支援。</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">存取CD-ROM機被Windows拒絕。&#10;&#10;請聯絡系統管理員以取得存取CD-ROM機的&#10;權限。</entry>
-      <entry id="7014" string="Cannot access input file: %1">無法存取輸入檔案：%1</entry>
-      <entry id="7015" string="Cannot create output file: %1">無法建立輸出檔案：%1</entry>
-      <entry id="7016" string="File not found">未找到檔案</entry>
-      <entry id="7017" string="Unknown file type">未知檔案類型</entry>
-      <entry id="7018" string="Unsupported audio format">未支援的聲音格式</entry>
-      <entry id="7019" string="Unknown error">未知錯誤</entry>
-      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">無選項予：&#10;&#10;%1</entry>
-      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">有損編碼聲音檔轉成無損編碼聲音檔無助改善音質。&#10;&#10;繼續嗎？</entry>
-      <entry id="7022" string="Failed to verify input file: %1">無法驗證輸入檔案</entry>
-      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">檔案%1的編碼驗證失敗&#10;&#10;編碼加總：%2&#10;虛擬編碼加總：%3</entry>
+      <entry id="7000" string="Currently converting">編碼進行中</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">編碼進行中。確定要終止？</entry>
+      <entry id="7002" string="Delete original files after encoding">完成編碼後刪除原始檔案</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">啟用此項會於每次完成編碼後刪除電腦內的原始檔案。&#10;&#10;確定啟用嗎？</entry>
+      <entry id="7005" string="File already exists">檔案已經存在</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">輸出檔案%1&#10;已經存在。將其覆寫嗎？</entry>
+      <entry id="7007" string="Overwrite all further files">覆寫往後的全部檔案</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">有損編碼聲音檔轉成無損編碼聲音檔無助改善音質。&#10;&#10;繼續嗎？</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">無法存取輸入檔案：%1&#10;&#10;檔案：%1&#10;資料夾：%2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">無法建立輸出檔案：%1&#10;&#10;檔案：%1&#10;資料夾：%2</entry>
+      <entry id="7108" string="Failed to verify input file: %1">無法驗證輸入檔案</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">檔案%1的編碼驗證失敗&#10;&#10;編碼加總：%2&#10;虛擬編碼加總：%3</entry>
+      <entry id="7110" string="File not found">未找到檔案</entry>
+      <entry id="7111" string="Unknown file type">未知檔案類型</entry>
+      <entry id="7113" string="Unsupported audio format">未支援的聲音格式</entry>
+      <entry id="7114" string="Unknown error">未知錯誤</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">無法載入ASPI驅動程式，翻錄鐳射唱片功能被停用。</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案：%1&#10;&#10;錯誤：%2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB支援停用中。請於喜好設定啟用本地或&#10;遙距CDDB支援。</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">遙距CDDB支援停用中。請於喜好設定啟用&#10;遙距CDDB支援。</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">存取CD-ROM機被Windows拒絕。&#10;&#10;請聯絡系統管理員以取得存取CD-ROM機的&#10;權限。</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">無選項予：&#10;&#10;%1</entry>
     </section>
 
     <section name="Dialogs">
@@ -537,7 +540,7 @@
 	<entry id="8000" string="Confirm overwrite">確定覆寫</entry>
 	<entry id="8001" string="Confirm">確定</entry>
 	<entry id="8002" string="Skip all">略過全部</entry>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten">下方%1個檔案將被覆寫</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">下方%1個檔案將被覆寫</entry>
 	<entry id="8004" string="Action">動作</entry>
 	<entry id="8005" string="Overwrite">覆寫</entry>
 	<entry id="8006" string="Skip">略過</entry>
@@ -563,7 +566,7 @@
       <entry id="9009" string="No scratch repair">不修復刮痕</entry>
       <entry id="9010" string="Full cdparanoia mode">全面cdparanoia模式</entry>
       <entry id="9011" string="Activate jitter correction">啟用顫動糾正</entry>
-      <entry id="9012" string="Swap left/right channel">左右聲道互換</entry>
+      <entry id="9012" string="Switch stereo channels">左右聲道互換</entry>
       <entry id="9013" string="Automatization">自動化</entry>
       <entry id="9014" string="Read CD contents on insert">放入唱片時讀取內容</entry>
       <entry id="9015" string="Start ripping automatically">自動開始翻錄</entry>
@@ -581,24 +584,24 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="10000" string="Decoding">解碼</entry>
-	<entry id="10001" string="Enable 24 bit decoding">啟用24位元解碼</entry>
+	<entry id="20000" string="Decoding">解碼</entry>
+	<entry id="20001" string="Enable 24 bit decoding">啟用24位元解碼</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder">解碼器</entry>
-	<entry id="11001" string="Active decoder">使用的解碼器</entry>
-	<entry id="11002" string="auto select">自動選取</entry>
+	<entry id="21000" string="Decoder">解碼器</entry>
+	<entry id="21001" string="Active decoder">使用的解碼器</entry>
+	<entry id="21002" string="auto select">自動選取</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information">標籤</entry>
-	<entry id="12001" string="Read tags from referenced files">從參考檔案讀最標籤</entry>
-	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">CUE元資料凌駕參考檔案標籤</entry>
-	<entry id="12003" string="Alternative files">替代檔案</entry>
-	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">無可供參考Wave檔案時使用的替代檔案</entry>
-	<entry id="12005" string="Error handling">錯誤處理</entry>
-	<entry id="12006" string="Ignore errors during cue sheet processing">處理CUE期間忽略錯誤</entry>
+	<entry id="22000" string="Title information">標籤</entry>
+	<entry id="22001" string="Read tags from referenced files">從參考檔案讀最標籤</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">CUE元資料凌駕參考檔案標籤</entry>
+	<entry id="22003" string="Alternative files">替代檔案</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">無可供參考Wave檔案時使用的替代檔案</entry>
+	<entry id="22005" string="Error handling">錯誤處理</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">處理CUE期間忽略錯誤</entry>
       </section>
     </section>
 

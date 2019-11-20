@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -11,7 +11,9 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <boca.h>
+
 #include "layer.h"
+#include "writer.h"
 
 BoCA_BEGIN_COMPONENT(Protocols)
 
@@ -22,7 +24,10 @@ namespace BoCA
 		private:
 			ConfigLayer		*configLayer;
 
+			ProtocolWriter		 protocolWriter;
 			LayerProtocols		*mainTabLayer;
+
+			Void			 DeleteOldProtocols();
 		public:
 			static const String	&GetComponentSpecs();
 

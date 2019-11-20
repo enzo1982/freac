@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -32,14 +32,14 @@ freac::LayerThreads::LayerThreads() : Layer("Jobs")
 	text_errors	= new Text(NIL, Point(7, 25));
 	text_errors->SetOrientation(OR_LOWERLEFT);
 
-	edit_errors	= new EditBox(NIL, Point(text_errors->GetUnscaledTextWidth() + 14, 28), Size(25, 0));
+	edit_errors	= new EditBox(Point(text_errors->GetUnscaledTextWidth() + 14, 28), Size(25, 0));
 	edit_errors->SetOrientation(OR_LOWERLEFT);
 	edit_errors->Deactivate();
 
 	combo_errors	= new ComboBox(Point(text_errors->GetUnscaledTextWidth() + 47, 28), Size(250, 0));
 	combo_errors->SetOrientation(OR_LOWERLEFT);
 
-	button_details	= new Button(NIL, NIL, Point(87, 29), Size(80, 0));
+	button_details	= new Button(String(), Point(87, 29), Size(80, 0));
 	button_details->onAction.Connect(&LayerThreads::ShowDetails, this);
 	button_details->SetOrientation(OR_LOWERRIGHT);
 
@@ -125,9 +125,9 @@ Void freac::LayerThreads::OnChangeLanguageSettings()
 
 Void freac::LayerThreads::OnChangeJobs()
 {
-	Surface	*surface = GetDrawSurface();
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-	surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+	if (surface) surface->StartPaint(GetVisibleArea());
 
 	list_threads->RemoveAllEntries();
 
@@ -148,7 +148,7 @@ Void freac::LayerThreads::OnChangeJobs()
 		if (job->IsSelected()) OnSelectJob(job);
 	}
 
-	surface->EndPaint();
+	if (surface) surface->EndPaint();
 }
 
 Void freac::LayerThreads::OnSelectJob(ListEntry *entry)

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -51,13 +51,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
-
-	/* Set interface language.
-	 */
-	String	 language = config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault);
-
-	if (language != NIL) i18n->ActivateLanguage(language);
-	else		     i18n->SelectUserDefaultLanguage();
 
 	/* Don't save configuration settings set via command line.
 	 */
@@ -230,21 +223,46 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		}
 		else if (type == PARAMETER_TYPE_SELECTION)
 		{
-			/* Set selection to given value.
+			/* Get selection value.
 			 */
 			String	 value;
 			Bool	 present = ScanForEncoderOption(String(spec).Trim(), &value);
 
+			/* Check if given value is allowed.
+			 */
+			if (present)
+			{
+				Bool	 found = False;
+
+				/* Check case sensitive.
+				 */
+				foreach (Option *option, options)
+				{
+					if (found || option->GetValue() != value) continue;
+
+					found = True;
+				}
+
+				/* Check ignoring case.
+				 */
+				value = value.ToLower();
+
+				foreach (Option *option, options)
+				{
+					if (found || option->GetValue().ToLower() != value) continue;
+
+					found = True;
+					value = option->GetValue();
+				}
+
+				if (!found) broken = True;
+			}
+
+			/* Set selection to given value.
+			 */
 			config->SetIntValue(component->GetID(), String("Set ").Append(name), present);
 			config->SetStringValue(component->GetID(), name, value);
 
-			/* Check if given value is allowed.
-			 */
-			Bool	 found = False;
-
-			foreach (Option *option, options) if (option->GetValue() == value) found = True;
-
-			if (present && !found) broken = True;
 		}
 		else if (type == PARAMETER_TYPE_RANGE)
 		{
@@ -311,6 +329,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 		JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
 
+		/* Check if input files exist.
+		 */
 		Array<String>	 jobFiles;
 		Bool		 addCDTracks = False;
 
@@ -330,6 +350,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			jobFiles.Add(file);
 		}
 
+		/* Add files to joblist.
+		 */
 		JobList	*joblist = new JobList(Point(0, 0), Size(0, 0));
 		Job	*job	 = addCDTracks ? (Job *) new JobAddTracks(jobFiles) : (Job *) new JobAddFiles(jobFiles);
 
@@ -339,6 +361,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		while (Job::GetPlannedJobs().Length()	> 0) S::System::System::Sleep(10);
 		while (Job::GetRunningJobs().Length()	> 0) S::System::System::Sleep(10);
 
+		/* Convert them.
+		 */
 		if (joblist->GetNOfTracks() > 0)
 		{
 			Converter().Convert(*joblist->GetTrackList(), False);
@@ -367,6 +391,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 				addCDTrack  = True;
 			}
 
+			/* Check if input file exists.
+			 */
 			InStream	 in(STREAM_FILE, file, IS_READ);
 
 			if (in.GetLastError() != IO_ERROR_OK && !file.StartsWith("device://"))
@@ -376,6 +402,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 				continue;
 			}
 
+			in.Close();
+
+			/* Add file to joblist.
+			 */
 			Array<String>	 jobFiles;
 
 			jobFiles.Add(file);
@@ -388,28 +418,28 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			while (Job::GetPlannedJobs().Length()	> 0) S::System::System::Sleep(10);
 			while (Job::GetRunningJobs().Length()	> 0) S::System::System::Sleep(10);
 
-			if (joblist->GetNOfTracks() > 0)
-			{
-				if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
-
-				Track	 track = joblist->GetNthTrack(0);
-
-				track.outfile = outfile;
-
-				joblist->UpdateTrackInfo(track);
-
-				Converter().Convert(*joblist->GetTrackList(), False);
-
-				joblist->RemoveNthTrack(0);
-
-				if (!quiet) Console::OutputString("done.\n");
-			}
-			else
+			if (joblist->GetNOfTracks() == 0)
 			{
 				Console::OutputString(String("Could not process file: ").Append(currentFile).Append("\n"));
 
 				continue;
 			}
+
+			/* Convert it.
+			 */
+			if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
+
+			Track	 track = joblist->GetNthTrack(0);
+
+			track.outputFile = outfile;
+
+			joblist->UpdateTrackInfo(track);
+
+			Converter().Convert(*joblist->GetTrackList(), False);
+
+			joblist->RemoveNthTrack(0);
+
+			if (!quiet) Console::OutputString("done.\n");
 		}
 
 		delete joblist;
@@ -420,7 +450,7 @@ freac::freacCommandline::~freacCommandline()
 {
 }
 
-Void freac::freacCommandline::OnEncodeTrack(const Track &track, const String &decoderName, ConversionStep mode)
+Void freac::freacCommandline::OnEncodeTrack(const Track &track, const String &decoderName, const String &encoderName, ConversionStep mode)
 {
 	static Bool	 firstTime = True;
 
@@ -432,7 +462,7 @@ Void freac::freacCommandline::OnEncodeTrack(const Track &track, const String &de
 		if (!firstTime) Console::OutputString("done.\n");
 		else		firstTime = False;
 
-		String	 currentFile = track.origFilename;
+		String	 currentFile = track.fileName;
 
 		if (currentFile.StartsWith("device://cdda:")) currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 16));
 
@@ -698,7 +728,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 			boca.DeleteComponent(info);
 		}
 
-		Console::OutputString("  --superfast\t\t\tEnable SuperFast mode (experimental)\n");
+		Console::OutputString("  --superfast\t\t\tEnable SuperFast mode\n");
 		Console::OutputString("  --threads=<n>\t\t\tSpecify number of threads to use in SuperFast mode\n\n");
 
 		Console::OutputString("  --list-configs\t\tPrint a list of available configurations\n");
@@ -767,7 +797,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 			{
 				String	 spec = parameter->GetArgument().Replace("%VALUE", "<val>");
 
-				maxTabs = Math::Max((Int64) maxTabs, Math::Ceil((spec.Length() + 1) / 8.0));
+				maxTabs = Math::Max(maxTabs, Math::Ceil((spec.Length() + 1) / 8.0));
 			}
 
 			/* Print formatted parameter list.

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -41,6 +41,7 @@ namespace freac
 			Int64						 trackPosition;
 
 			String						 decoderName;
+			String						 encoderName;
 			ConversionStep					 conversionStep;
 
 			Bool						 idle;
@@ -53,6 +54,11 @@ namespace freac
 
 			Int						 Perform();
 			Int64						 Loop(Decoder *, Verifier *, BoCA::FormatConverter *, Processor *, Encoder *);
+
+			Void						 VerifyInput(const String &, Verifier *);
+
+			Void						 LogConversionStart(const String &, const String & = NIL) const;
+			Void						 LogConversionEnd(const String &, const String &, const String &);
 
 			virtual Int					 Convert();
 		public:
@@ -75,6 +81,7 @@ namespace freac
 			Void						 SetTrackToConvert(const BoCA::Track &);
 
 			const String					&GetDecoderName() const				{ return decoderName; }
+			const String					&GetEncoderName() const				{ return encoderName; }
 			ConversionStep					 GetConversionStep() const			{ return conversionStep; }
 
 			UnsignedInt64					 GetTrackStartTicks() const			{ return trackStartTicks; }

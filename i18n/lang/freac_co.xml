@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Patriccollu di Santa Maria è Sichè</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">Vai</entry>
@@ -393,33 +393,36 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 hè dispunibule in %2 lingue. S'è a vostra lingua&#10;ùn hè micca dispunibule, pudete traduce %1 cù&#10;l'appiecazione 'smooth Translator'.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 ghjunghje cù i cudificatori per LAME, Ogg Vorbis, FAAC,&#10;FLAC è Bonk. Un cudificatore per a forma VQF he dispunibule&#10;à u situ web di %1 : %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 ghjunghje cù i cudificatori per LAME, Ogg Vorbis, FAAC,&#10;FLAC è Opus. Un cudificatore per a forma VQF he dispunibule&#10;à u situ web di %1 : %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 pò impiegà l'estensioni d'entrata di Winamp 2 per accettà più&#10;di forme di schedariu. Cupià i schedarii in_*.dll ver di u cartulare&#10;%1/plugins per permette à %1 di ricunnosce ste forme.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1 permette di sottumette l'entrate di banca di dati di CD freedb&#10;chì cuntenenu caratteri Unicode. È cusì e richieste chì sò fatte&#10;per i CD chì anu artiste o tituli micca latinu sò trasmesse à&#10;freedb da %1 cù una forma curretta.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Per currege i sbaglii di lettura durante l'estrazzione, pudete attivà a&#10;currezzione Jitter in l'unghjetta Estrazzione di u dialogu di cunfigurazione&#10;di %1. Osinnò ci vole à pruvà d'impiegà unu di i modi Paranoia.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Avete qualchì suggestione per megliurà %1 ?&#10;Pudete sottumette st'idee grazia à Tracker nant'à a pagina&#10;di prughjettu %1 ind'è SourceForge - %2&#10;o mandà un messaghju à %3.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Avete qualchì suggestione per megliurà %1 ?&#10;&#10;Pudete sottumette st'idee grazia à tracker nant'à a pagina&#10;di prughjettu %1 ind'è %2 - %3&#10;o mandà un messaghju à %4.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">%1 vi piace ? Bench'è %1 sia dispunibule senza pagà,&#10;pudete aiutà u so sviluppu cù una dunazione à u prughjettu %1.&#10;Pudete mandà i soldi à %2 grazia à PayPal.&#10;Fighjate a pagina %3 per sapene di più.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">U flussu di cudificazione hè sempre in corsu ! Site sicuru di vulè chità quantunque ?</entry>
-      <entry id="7001" string="Currently converting">Cudificazione in corsu</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Impussibule di caricà i piloti ASPI ! Estrazzione CD disattivata !</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Impussibule d'apre u schedariu : %1&#10;&#10;Sbagliu : %2</entry>
-      <entry id="7006" string="Delete original files after encoding">Squassà u schedariu d'urigine dopu à a cudificazione</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">St'ozzione hà da caccià i schedarii d'urigine&#10;da l'urdinatore dopu à a cudificazione !&#10;&#10;Site sicuru di vulè attivà sta funzione ?</entry>
-      <entry id="7008" string="File already exists">U schedariu esiste dighjà</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">U schedariu in esciuta %1&#10;esiste dighjà ! Vulete rimpiazzallu ?</entry>
-      <entry id="7010" string="Overwrite all further files">Rimpiazzà tutti l'altri schedarii</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">L'accessu à a CDDB lucale o alluntanata ùn hè micca attivu !&#10;Ci vole à attivà st'accessu in u dialogu di cunfigurazione.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">L'accessu à a CDDB alluntanata ùn hè micca attivu !&#10;Ci vole à attivà st'accessu in u dialogu di cunfigurazione.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows hà ricusatu l'accessu à i lettori CD-ROM.&#10;&#10;Ci vole à cuntattà l'amministratore di u vostru sistema&#10;per dumandallu u dirittu d'accessu à u lettore CD-ROM.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Ùn pò micca accede à u schedariu d'entrata : %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Ùn pò micca accede à u schedariu d'esciuta : %1</entry>
-      <entry id="7016" string="File not found">U schedariu ùn esiste micca</entry>
-      <entry id="7017" string="Unknown file type">Tipu di schedariu scunnisciutu</entry>
-      <entry id="7018" string="Unsupported audio format">Forma audio micca accettatu</entry>
-      <entry id="7019" string="Unknown error">Sbagliu scunnisciutu</entry>
+      <entry id="7000" string="Currently converting">Cudificazione in corsu</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">U flussu di cudificazione hè sempre in corsu ! Site sicuru di vulè chità quantunque ?</entry>
+      <entry id="7002" string="Delete original files after encoding">Squassà u schedariu d'urigine dopu à a cudificazione</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">St'ozzione hà da caccià i schedarii d'urigine&#10;da l'urdinatore dopu à a cudificazione !&#10;&#10;Site sicuru di vulè attivà sta funzione ?</entry>
+      <entry id="7005" string="File already exists">U schedariu esiste dighjà</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">U schedariu in esciuta %1&#10;esiste dighjà ! Vulete rimpiazzallu ?</entry>
+      <entry id="7007" string="Overwrite all further files">Rimpiazzà tutti l'altri schedarii</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn pò micca accede à u schedariu d'entrata : %1&#10;&#10;Schedariu : %1&#10;Cartulare : %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn pò micca accede à u schedariu d'esciuta : %1&#10;&#10;Schedariu : %1&#10;Cartulare : %2</entry>
+      <entry id="7110" string="File not found">U schedariu ùn esiste micca</entry>
+      <entry id="7111" string="Unknown file type">Tipu di schedariu scunnisciutu</entry>
+      <entry id="7113" string="Unsupported audio format">Forma audio micca accettatu</entry>
+      <entry id="7114" string="Unknown error">Sbagliu scunnisciutu</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Impussibule di caricà i piloti ASPI ! Estrazzione CD disattivata !</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Impussibule d'apre u schedariu : %1&#10;&#10;Sbagliu : %2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">L'accessu à a CDDB lucale o alluntanata ùn hè micca attivu !&#10;Ci vole à attivà st'accessu in u dialogu di cunfigurazione.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">L'accessu à a CDDB alluntanata ùn hè micca attivu !&#10;Ci vole à attivà st'accessu in u dialogu di cunfigurazione.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows hà ricusatu l'accessu à i lettori CD-ROM.&#10;&#10;Ci vole à cuntattà l'amministratore di u vostru sistema&#10;per dumandallu u dirittu d'accessu à u lettore CD-ROM.</entry>
     </section>
 
     <section name="Dialogs">
@@ -444,7 +447,7 @@
       <entry id="9009" string="No scratch repair">Alcuna currezzione di sfrisgiatura</entry>
       <entry id="9010" string="Full cdparanoia mode">Modu cdparanoia sanu</entry>
       <entry id="9011" string="Activate jitter correction">Attivà currez. d'istabilità jitter</entry>
-      <entry id="9012" string="Swap left/right channel">Invertì canali manca/diritta</entry>
+      <entry id="9012" string="Switch stereo channels">Invertì canali manca/diritta</entry>
       <entry id="9013" string="Automatization">Autumatisazione</entry>
       <entry id="9014" string="Read CD contents on insert">Leghje u CD à l'intruduzzione</entry>
       <entry id="9015" string="Start ripping automatically">Principià à estrae autumatic.</entry>

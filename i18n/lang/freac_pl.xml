@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Michał Trzebiatowski, Darek Rzeźnicki</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">Akceptuj</entry>
@@ -376,33 +376,36 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">Program %1 jest dostępny w %2 wersjach językowych.&#10;Łatwo można przetłumaczyć go na dowolny język, wykorzystując&#10;dołączony program smooth Translator.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">Program %1 zawiera konwertery dla formatów LAME, Ogg Vorbis,&#10;FAAC, FLAC oraz Bonk. Konwerter formatu VQF można&#10;pobrać z witryny programu: %2.</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">Program %1 zawiera konwertery dla formatów LAME, Ogg Vorbis,&#10;FAAC, FLAC oraz Opus. Konwerter formatu VQF można&#10;pobrać z witryny programu: %2.</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">Program %1 może korzystać z rozszerzeń wejściowych&#10;programu WinAmp 2 do obsługi innych formatów plików.&#10;W tym celu skopiuj pliki in_*.dll do katalogu %1/plugins.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Możliwe jest wysyłanie do bazy CD freedb danych zawierających&#10;znaki w formacie Unicode. Dzięki temu można wysyłać dane CD,&#10;w których nazwa wykonawcy czy tytuł utworu zawierają znaki&#10;spoza podstawowego zestawu, na przykład akcentowane&#10;specyficzne dla danego języka.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Jeśli podczas zgrywania CD występują błędy odczytu, można to&#10;skorygować, włączając korekcję drżenia na zakładce Zgrywanie CD&#10;konfiguracji programu. Jeśli to nie pomoże, można użyć któregoś z&#10;trybów „cdparanoia”.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Czy masz jakiś pomysł, jak ulepszyć program %1?&#10;Swoje sugestie możesz przekazać poprzez stronę WWW projektu&#10;%1 w serwisie SourceForge – %2&#10;lub poprzez e-mail do %3.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Czy masz jakiś pomysł, jak ulepszyć program %1?&#10;&#10;Swoje sugestie możesz przekazać poprzez stronę WWW projektu&#10;%1 w serwisie %2 – %3&#10;lub poprzez e-mail do %4.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Czy podoba Ci się program %1? Jest on dostępny&#10;bezpłatnie, ale możesz wspomóc jego rozwój, dotując projekt&#10;%1. Pieniądze możesz przesłać do %2&#10;przez serwis PayPal. Więcej szczegółów znajdziesz na&#10;stronie %3.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Wątek konwersji jeszcze trwa! Na pewno zakończyć program?</entry>
-      <entry id="7001" string="Currently converting">Trwa konwersja</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Nie można załadować sterowników ASPI! Zgrywanie płyt CD zostało wyłączone!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Nie można otworzyć pliku %1&#10;&#10;Błąd %2</entry>
-      <entry id="7006" string="Delete original files after encoding">Usuń oryginalne pliki po zakończeniu konwersji</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Zaznaczenie tej opcji spowoduje skasowanie&#10;oryginalnych plików po konwersji. Kontynuować?</entry>
-      <entry id="7008" string="File already exists">Plik o tej nazwie już istnieje</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Plik wynikowy %1&#10;już istnieje! Czy chcesz go nadpisać?</entry>
-      <entry id="7010" string="Overwrite all further files">Zastąp wszystkie kolejne pliki</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Obsługa CDDB jest wyłączona! Uaktywnij zdalną&#10;bądź lokalna bazę CDDB w opcjach konfiguracji.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Obsługa zdalnej bazy CDDB jest wyłączona! Uaktywnij&#10;obsługę zdalnej bazy CDDB w opcjach konfiguracji.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows odmawia dostępu do napędów CD-ROM.&#10;&#10;Skontaktuj się z administratorem systemu&#10;celem uzyskania dostępu do napędu CD-ROM.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Brak dostępu do pliku wejściowego: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Nie można utworzyć pliku wyjściowego: %1</entry>
-      <entry id="7016" string="File not found">Nie znaleziono pliku</entry>
-      <entry id="7017" string="Unknown file type">Nieznany typ pliku</entry>
-      <entry id="7018" string="Unsupported audio format">Nieobsługiwany format audio</entry>
-      <entry id="7019" string="Unknown error">Nieznany błąd</entry>
+      <entry id="7000" string="Currently converting">Trwa konwersja</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Wątek konwersji jeszcze trwa! Na pewno zakończyć program?</entry>
+      <entry id="7002" string="Delete original files after encoding">Usuń oryginalne pliki po zakończeniu konwersji</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Zaznaczenie tej opcji spowoduje skasowanie&#10;oryginalnych plików po konwersji. Kontynuować?</entry>
+      <entry id="7005" string="File already exists">Plik o tej nazwie już istnieje</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Plik wynikowy %1&#10;już istnieje! Czy chcesz go nadpisać?</entry>
+      <entry id="7007" string="Overwrite all further files">Zastąp wszystkie kolejne pliki</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Brak dostępu do pliku wejściowego: %1&#10;&#10;Plik: %1&#10;Katalog: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Nie można utworzyć pliku wyjściowego: %1&#10;&#10;Plik: %1&#10;Katalog: %2</entry>
+      <entry id="7110" string="File not found">Nie znaleziono pliku</entry>
+      <entry id="7111" string="Unknown file type">Nieznany typ pliku</entry>
+      <entry id="7113" string="Unsupported audio format">Nieobsługiwany format audio</entry>
+      <entry id="7114" string="Unknown error">Nieznany błąd</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Nie można załadować sterowników ASPI! Zgrywanie płyt CD zostało wyłączone!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Nie można otworzyć pliku %1&#10;&#10;Błąd %2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Obsługa CDDB jest wyłączona! Uaktywnij zdalną&#10;bądź lokalna bazę CDDB w opcjach konfiguracji.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Obsługa zdalnej bazy CDDB jest wyłączona! Uaktywnij&#10;obsługę zdalnej bazy CDDB w opcjach konfiguracji.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows odmawia dostępu do napędów CD-ROM.&#10;&#10;Skontaktuj się z administratorem systemu&#10;celem uzyskania dostępu do napędu CD-ROM.</entry>
     </section>
 
     <section name="Dialogs">
@@ -427,7 +430,7 @@
       <entry id="9009" string="No scratch repair">bez naprawy uszkodzeń</entry>
       <entry id="9010" string="Full cdparanoia mode">pełny (wszystko)</entry>
       <entry id="9011" string="Activate jitter correction">Włącz korekcję drżenia</entry>
-      <entry id="9012" string="Swap left/right channel">Zamień kanały lewy&lt;-&gt;prawy</entry>
+      <entry id="9012" string="Switch stereo channels">Zamień kanały lewy&lt;-&gt;prawy</entry>
       <entry id="9013" string="Automatization">Automatyzacja</entry>
       <entry id="9014" string="Read CD contents on insert">Odczytaj CD po włożeniu</entry>
       <entry id="9015" string="Start ripping automatically">Automatyczny start zgrywania</entry>

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -18,7 +18,6 @@ using namespace smooth::IO;
 
 freac::CDDBLocal::CDDBLocal()
 {
-	protocol = BoCA::Protocol::Get("CDDB communication");
 }
 
 freac::CDDBLocal::~CDDBLocal()
@@ -29,7 +28,14 @@ Bool freac::CDDBLocal::QueryUnixDB(const String &queryString)
 {
 	static String	 array[] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data", NIL };
 
-	BoCA::Config		*config = BoCA::Config::Get();
+	/* Get configuration.
+	 */
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	String	  cddbFolder = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
+
+	/* Parse query string.
+	 */
 	const Array<String>	&values = queryString.Explode(" ");
 
 	Int		 numTocEntries = values.GetNth(3).ToInt();
@@ -39,20 +45,22 @@ Bool freac::CDDBLocal::QueryUnixDB(const String &queryString)
 
 	for (Int i = 0; i < numTocEntries; i++) discOffsets.Add(values.GetNth(i + 4).ToInt());
 
-	String::ExplodeFinish();
-
-	String	 inputFormat = String::SetInputFormat("UTF-8");
-	String	 outputFormat = String::SetOutputFormat("UTF-8");
+	String::InputFormat	 inputFormat("UTF-8");
+	String::OutputFormat	 outputFormat("UTF-8");
 
 	for (Int i = 0; array[i] != NIL; i++)
 	{
-		if (!File(String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discID))).Exists()) continue;
+		String	 fileName = String(cddbFolder).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discID));
 
-		InStream	*in = new InStream(STREAM_FILE, String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(array[i]).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(discID)), IS_READ);
-		String		 result = in->InputString(in->Size());
+		if (!File(fileName).Exists()) continue;
 
-		delete in;
+		/* Read CDDB record.
+		 */
+		InStream	 in(STREAM_FILE, fileName, IS_READ);
+		String		 result = in.InputString(in.Size());
 
+		/* Parse CDDB record.
+		 */
 		CDDBInfo	 cddbInfo;
 
 		ParseCDDBRecord(result, cddbInfo);
@@ -76,9 +84,6 @@ Bool freac::CDDBLocal::QueryUnixDB(const String &queryString)
 		}
 	}
 
-	String::SetInputFormat(inputFormat);
-	String::SetOutputFormat(outputFormat);
-
 	return (results.Length() != 0);
 }
 
@@ -86,7 +91,14 @@ Bool freac::CDDBLocal::QueryWinDB(const String &queryString)
 {
 	static String	 array[] = { "rock", "misc", "newage", "soundtrack", "blues", "jazz", "folk", "country", "reggae", "classical", "data", NIL };
 
-	BoCA::Config		*config = BoCA::Config::Get();
+	/* Get configuration.
+	 */
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	String	  cddbFolder = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
+
+	/* Parse query string.
+	 */
 	const Array<String>	&values = queryString.Explode(" ");
 
 	Int		 numTocEntries = values.GetNth(3).ToInt();
@@ -96,22 +108,22 @@ Bool freac::CDDBLocal::QueryWinDB(const String &queryString)
 
 	for (Int i = 0; i < numTocEntries; i++) discOffsets.Add(values.GetNth(i + 4).ToInt());
 
-	String::ExplodeFinish();
-
-	String	 inputFormat = String::SetInputFormat("UTF-8");
-	String	 outputFormat = String::SetOutputFormat("UTF-8");
+	String::InputFormat	 inputFormat("UTF-8");
+	String::OutputFormat	 outputFormat("UTF-8");
 
 	for (Int i = 0; array[i] != NIL; i++)
 	{
-		Directory dir	  = Directory(String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(array[i]));
-		String	  pattern = String().CopyN(DiscIDToString(discID), 2).Append("to??");
-		String	  found;
+		/* Find file containing CDDB record.
+		 */
+		Directory categoryDir = Directory(String(cddbFolder).Append(array[i]));
+		String	  pattern     = String().CopyN(DiscIDToString(discID), 2).Append("to??");
+		String	  fileName;
 
 		do
 		{
-			const Array<File> &files = dir.GetFilesByPattern(pattern);
+			const Array<File> &files = categoryDir.GetFilesByPattern(pattern);
 
-			if (files.Length() == 1) found = files.GetFirst();
+			if (files.Length() == 1) fileName = files.GetFirst();
 
 			if	(pattern[1] == 'a') pattern[1] = '9';
 			else if (pattern[1] == '0') pattern[1] = 'f';
@@ -124,40 +136,42 @@ Bool freac::CDDBLocal::QueryWinDB(const String &queryString)
 				else			    pattern[0] -= 1;
 			}
 		}
-		while (found == NIL && !(pattern[0] == 'f' && pattern[1] == 'f'));
+		while (fileName == NIL && !(pattern[0] == 'f' && pattern[1] == 'f'));
 
-		if (found == NIL) continue;
+		if (fileName == NIL) continue;
 
-		InStream	*in = new InStream(STREAM_FILE, found, IS_READ);
+		/* Read CDDB record.
+		 */
+		InStream	 in(STREAM_FILE, fileName, IS_READ);
 		String		 idString = String("#FILENAME=").Append(DiscIDToString(discID));
 		String		 result;
 
-		while (in->GetPos() < in->Size())
+		while (in.GetPos() < in.Size())
 		{
-			if (in->InputLine() == idString)
+			if (in.InputLine() == idString)
 			{
-				Int	 start = in->GetPos();
-				Int	 end = in->GetPos();
+				Int	 start = in.GetPos();
+				Int	 end   = in.GetPos();
 
-				while (in->GetPos() < in->Size())
+				while (in.GetPos() < in.Size())
 				{
-					end = in->GetPos();
+					end = in.GetPos();
 
-					if (in->InputLine().StartsWith("#FILENAME=")) break;
+					if (in.InputLine().StartsWith("#FILENAME=")) break;
 				}
 
-				in->Seek(start);
+				in.Seek(start);
 
-				result = in->InputString(end - start);
+				result = in.InputString(end - start);
 
 				break;
 			}
 		}
 
-		delete in;
-
 		if (result == NIL) continue;
 
+		/* Parse CDDB record.
+		 */
 		CDDBInfo	 cddbInfo;
 
 		ParseCDDBRecord(result, cddbInfo);
@@ -180,9 +194,6 @@ Bool freac::CDDBLocal::QueryWinDB(const String &queryString)
 			}
 		}
 	}
-
-	String::SetInputFormat(inputFormat);
-	String::SetOutputFormat(outputFormat);
 
 	return (results.Length() != 0);
 }
@@ -228,9 +239,12 @@ Bool freac::CDDBLocal::Read(const String &category, Int discID, CDDBInfo &cddbIn
 
 Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 {
-	protocol->Write("Entering method: CDDBLocal::Submit(const CDDBInfo &)");
+	BoCA::Config	*config	  = BoCA::Config::Get();
+	BoCA::Protocol	*protocol = BoCA::Protocol::Get("CDDB communication");
 
-	BoCA::Config	*config = BoCA::Config::Get();
+	String	  cddbFolder  = config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault);
+
+	protocol->Write(String("Writing info to local CDDB database at: ").Append(cddbFolder));
 
 	CDDBInfo  cddbInfo = oCddbInfo;
 
@@ -240,26 +254,26 @@ Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 
 	/* See if we have a Windows or Unix style DB.
 	 */
-	Directory dir	  = Directory(String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(cddbInfo.category));
-	String	  pattern = String("??to??");
+	Directory categoryDir = Directory(String(cddbFolder).Append(cddbInfo.category));
+	String	  pattern     = String("??to??");
 
 	/* Create directory if it doesn't exist.
 	 */
-	dir.Create();
+	categoryDir.Create();
 
-	if (dir.GetFilesByPattern(pattern).Length() >= 1) // Windows style DB
+	if (categoryDir.GetFilesByPattern(pattern).Length() >= 1)
 	{
-		protocol->Write("Found Windows style DB.");
+		protocol->Write("    Found Windows style DB.");
 
 		pattern = String().CopyN(DiscIDToString(cddbInfo.discID), 2).Append("to??");
 
-		String	  found;
+		String	  fileName;
 
-		while (found == NIL && !(pattern[0] == '0' && pattern[1] == '0'))
+		while (fileName == NIL && !(pattern[0] == '0' && pattern[1] == '0'))
 		{
-			const Array<File> &files = dir.GetFilesByPattern(pattern);
+			const Array<File> &files = categoryDir.GetFilesByPattern(pattern);
 
-			if (files.Length() == 1) found = files.GetFirst();
+			if (files.Length() == 1) fileName = files.GetFirst();
 
 			if (pattern[1] == 'a')	    pattern[1] = '9';
 			else if (pattern[1] == '0') pattern[1] = 'f';
@@ -272,31 +286,31 @@ Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 			}
 		}
 
-		protocol->Write(String("Writing to ").Append(found));
+		protocol->Write(String("    Writing to: ").Append(String(fileName).Tail(fileName.Length() - cddbFolder.Length())));
 
-		InStream	*in	  = new InStream(STREAM_FILE, found, IS_READ);
-		OutStream	*out	  = new OutStream(STREAM_FILE, String(found).Append(".new"), OS_REPLACE);
+		InStream	 in(STREAM_FILE, fileName, IS_READ);
+		OutStream	 out(STREAM_FILE, String(fileName).Append(".new"), OS_REPLACE);
 		String		 idString = String("#FILENAME=").Append(DiscIDToString(cddbInfo.discID));
 		Bool		 written  = False;
 
-		String	 inputFormat = String::SetInputFormat("ISO-8859-1");
-		String	 outputFormat = String::SetOutputFormat("ISO-8859-1");
+		String::InputFormat	 inputFormat("ISO-8859-1");
+		String::OutputFormat	 outputFormat("ISO-8859-1");
 
-		while (in->GetPos() < in->Size())
+		while (in.GetPos() < in.Size())
 		{
-			String	 line = in->InputLine();
+			String	 line = in.InputLine();
 
-			out->OutputString(String(line).Append("\n"));
+			out.OutputString(String(line).Append("\n"));
 
 			if (line == idString)
 			{
-				out->OutputString(content.ConvertTo("UTF-8"));
+				out.OutputString(content.ConvertTo("UTF-8"));
 
-				while (in->GetPos() < in->Size())
+				while (in.GetPos() < in.Size())
 				{
-					line = in->InputLine();
+					line = in.InputLine();
 
-					if (line.StartsWith("#FILENAME=")) { out->OutputString(String(line).Append("\n")); break; }
+					if (line.StartsWith("#FILENAME=")) { out.OutputString(String(line).Append("\n")); break; }
 				}
 
 				written = True;
@@ -305,36 +319,32 @@ Bool freac::CDDBLocal::Submit(const CDDBInfo &oCddbInfo)
 
 		if (!written)
 		{
-			out->OutputString(String(idString).Append("\n"));
-			out->OutputString(content.ConvertTo("UTF-8"));
+			out.OutputString(String(idString).Append("\n"));
+			out.OutputString(content.ConvertTo("UTF-8"));
 		}
 
-		String::SetInputFormat(inputFormat);
-		String::SetOutputFormat(outputFormat);
+		in.Close();
+		out.Close();
 
-		delete in;
-		delete out;
-
-		File(found).Delete();
-		File(String(found).Append(".new")).Move(found);
+		File(fileName).Delete();
+		File(String(fileName).Append(".new")).Move(fileName);
 	}
-	else						  // Unix style DB
+	else
 	{
-		protocol->Write("Found Unix style DB.");
-		protocol->Write(String("Writing to ").Append(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(cddbInfo.discID)));
+		protocol->Write("    Found Unix style DB.");
 
-		OutStream	*out = new OutStream(STREAM_FILE, String(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault)).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(cddbInfo.discID)), OS_REPLACE);
+		String		 fileName = String(categoryDir).Append(Directory::GetDirectoryDelimiter()).Append(DiscIDToString(cddbInfo.discID));
 
-		String	 outputFormat = String::SetOutputFormat("UTF-8");
+		protocol->Write(String("    Writing to: ").Append(String(fileName).Tail(fileName.Length() - cddbFolder.Length())));
 
-		out->OutputString(content);
+		OutStream	 out(STREAM_FILE, fileName, OS_REPLACE);
 
-		String::SetOutputFormat(outputFormat);
+		String::OutputFormat	 outputFormat("UTF-8");
 
-		delete out;
+		out.OutputString(content);
 	}
 
-	protocol->Write("Leaving method.");
+	protocol->Write("Finished CDDB transaction.");
 
 	return True;
 }

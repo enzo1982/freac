@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Goran Bekić &lt;goranbekic1911@gmail.com&gt;</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">OK</entry>
@@ -374,33 +374,36 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 je dostupan u %2 jezika. Ako vaš jezik nije&#10;dostupan, lako i sami možete napraviti prijevod&#10;koristeći &quot;smooth translator&quot; aplikaciju.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 dolazi s podrškom za LAME, OGG Vorbis, FAAC,&#10;FLAC i Bonk enkoderom. Enkoder za VQF format je&#10;dostupan na %1 webu: %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 dolazi s podrškom za LAME, OGG Vorbis, FAAC,&#10;FLAC i Opus enkoderom. Enkoder za VQF format je&#10;dostupan na %1 webu: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 može koristiti Winamp 2 ulazne plug-inove kako bi&#10;podržao još formata datoteka. Kopirajte in_*.dll datoteke u&#10;%1/plug-in mapu kako biste omogućili da %1&#10;čita te formate.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Sa %1om možete poslati unos za fredb CD bazu podataka&#10;koja sadrži Unicode znakove. Ako imate CD s nelatiničnim&#10;izvođačima ili naslovima,&#10;Možete poslati ispravne unose s %1.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Kako bi ispravili greške pri čitanju možete omogućiti Jitter&#10;ispravljanje na Ripper tabu %1ovih postavki. Ako to ne&#10;pomogne, pokušajte neki od paranoja modova.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Imate li prijedloga kako poboljšati %1?&#10;Možete poslati bilo koju ideju preko Trackera na %1&#10;SourceForge projektnoj stranici - %2&#10;ili pošaljite eMail na %3.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Imate li prijedloga kako poboljšati %1?&#10;&#10;Možete poslati bilo koju ideju preko trackera na %1&#10;%2 projektnoj stranici - %3&#10;ili pošaljite eMail na %4.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Pomozite plaćanje razvoja %1 projekta donacijom.&#10;Možete poslati novac na %2 kroz PayPal.&#10;Pogledajte %3 za više detalja.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Enkodiranje u tijeku! Da li zaista želite prekinuti?</entry>
-      <entry id="7001" string="Currently converting">Enkodiram</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Ne mogu učitati ASPI driver! CD ripanje onemogućeno!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Ne mogu otvoriti datoteku: %1&#10;&#10;Greška: %2</entry>
-      <entry id="7006" string="Delete original files after encoding">Obriši originalnu datoteku nakon enkodiranja</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ova opcija izbrisat će originalnu datoteku sa vašeg računala&#10;nakon što enkodiranje završi!&#10;&#10;Da li ste sigurni da želite aktivirati ovu funkciju?</entry>
-      <entry id="7008" string="File already exists">Datoteka već postoji</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Izlazna datoteka %1&#10;već postoji! Želite li je prepisati?</entry>
-      <entry id="7010" string="Overwrite all further files">Prepiši sve daljnje datoteke</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB podrška je onemogućena! Molim omogućite&#10;lokalnu ili remote CDDB podršku u postavkama.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Remote CDDB podrška je onemogućena! Molim&#10;omogućite remote CDDB u postavkama.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Pristup CD-ROMu je onemogućen od strane Windowsa.&#10;&#10;Molim kontaktirajte svog sistem administratora kako bi vam&#10;povisio prava pristupa CD-ROM pogonu.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Ne mogu pristupiti ulaznoj datoteci: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Ne mogu kreirati izlaznu datoteku: %1</entry>
-      <entry id="7016" string="File not found">Datoteka nije pronađena</entry>
-      <entry id="7017" string="Unknown file type">Nepoznat tip datoteke</entry>
-      <entry id="7018" string="Unsupported audio format">Nepodržani audio format</entry>
-      <entry id="7019" string="Unknown error">Nepoznata greška</entry>
+      <entry id="7000" string="Currently converting">Enkodiram</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Enkodiranje u tijeku! Da li zaista želite prekinuti?</entry>
+      <entry id="7002" string="Delete original files after encoding">Obriši originalnu datoteku nakon enkodiranja</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ova opcija izbrisat će originalnu datoteku sa vašeg računala&#10;nakon što enkodiranje završi!&#10;&#10;Da li ste sigurni da želite aktivirati ovu funkciju?</entry>
+      <entry id="7005" string="File already exists">Datoteka već postoji</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Izlazna datoteka %1&#10;već postoji! Želite li je prepisati?</entry>
+      <entry id="7007" string="Overwrite all further files">Prepiši sve daljnje datoteke</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ne mogu pristupiti ulaznoj datoteci: %1&#10;&#10;Datoteka: %1&#10;Mapa: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ne mogu kreirati izlaznu datoteku: %1&#10;&#10;Datoteka: %1&#10;Mapa: %2</entry>
+      <entry id="7110" string="File not found">Datoteka nije pronađena</entry>
+      <entry id="7111" string="Unknown file type">Nepoznat tip datoteke</entry>
+      <entry id="7113" string="Unsupported audio format">Nepodržani audio format</entry>
+      <entry id="7114" string="Unknown error">Nepoznata greška</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Ne mogu učitati ASPI driver! CD ripanje onemogućeno!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Ne mogu otvoriti datoteku: %1&#10;&#10;Greška: %2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB podrška je onemogućena! Molim omogućite&#10;lokalnu ili remote CDDB podršku u postavkama.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Remote CDDB podrška je onemogućena! Molim&#10;omogućite remote CDDB u postavkama.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Pristup CD-ROMu je onemogućen od strane Windowsa.&#10;&#10;Molim kontaktirajte svog sistem administratora kako bi vam&#10;povisio prava pristupa CD-ROM pogonu.</entry>
     </section>
 
     <section name="Dialogs">
@@ -425,7 +428,7 @@
       <entry id="9009" string="No scratch repair">Bez popravka ogrebotina</entry>
       <entry id="9010" string="Full cdparanoia mode">Puni CD paranoja mod</entry>
       <entry id="9011" string="Activate jitter correction">Aktiviraj ispravak jittera</entry>
-      <entry id="9012" string="Swap left/right channel">Zamijeni lijevi/desni kanal</entry>
+      <entry id="9012" string="Switch stereo channels">Zamijeni lijevi/desni kanal</entry>
       <entry id="9013" string="Automatization">Automatizacija</entry>
       <entry id="9014" string="Read CD contents on insert">Čitaj CD sadržaj kod ubacivanja</entry>
       <entry id="9015" string="Start ripping automatically">Počni ripanje automatski</entry>

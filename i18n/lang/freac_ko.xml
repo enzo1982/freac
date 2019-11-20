@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">ODYSSEY &lt;sebastian_ryu@hotmail.com&gt;</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
     <property name="incomplete">true</property>
   </info>
   <data>
@@ -283,19 +283,22 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1는 %2 개의 언어로 공개되어 있습니다. 만일 당신의&#10;언어로 되어 있지 않다면, 'smooth Translator'를 사용하여, 쉽게&#10;번역할 수 있습니다.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1는 LAME, Ogg Vorbis, FAAC, 그리고 Bonk 인코더를&#10;지원합니다. VQF포맷을 지원하는 %1 웹사이트에서&#10;찾을 수 있습니다: %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1는 LAME, Ogg Vorbis, FAAC, 그리고 Opus 인코더를&#10;지원합니다. VQF포맷을 지원하는 %1 웹사이트에서&#10;찾을 수 있습니다: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1는 보다 많은 파일포맷을 지원하기 위해 Winamp 2&#10;입력 플러그인을 지원합니다. %1는 이러한 파일포맷을&#10;지원하려면, in_*.dll 파일을 %1/plugins에 복사하십시오.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1로 유니코드 문자를 포함한 freedb CD&#10;데이타베이스를 전송할 수 있습니다. 그리고 비(非)라틴&#10;아티스트나 제목의 CD를 갖고 계시면, %1를 이용하여&#10;freedb 엔트리를 수정하여 전송할 수 있습니다.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">에러 정정을 위해 %1의 대화창의 Ripper 탭에서 지터&#10;정정이 가능합니다. 또는, 파라노어 모드를 사용할 수도&#10;있습니다.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">%1를 개선하기 위한 제안사항은 %1 SourceForge&#10;프로젝트 페이지(%2)에 리플을&#10;달아주시거나 %3 로 메일을&#10;보내주십시오.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">%1를 개선하기 위한 제안사항은 %1 %2&#10;프로젝트 페이지(%3)에 리플을&#10;달아주시거나 %4 로 메일을&#10;보내주십시오.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">%1가 마음에 드십니까? %1는 무료이며, %1&#10;프로젝트를 이용하여 개발하면 당신도 상용화 가능합니다.&#10;PayPal을 통하여 %2 로 송금가능합니다.&#10;자세한 사항은 %3 을&#10;참조하십시오.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">인코딩 중입니다. 정말로 끝내시겠습니까?</entry>
-      <entry id="7001" string="Currently converting">현재 인코딩 중</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI 드라이버 로드할수 없습니다! CD 리핑 불가!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">파일 열기 실패: %1&#10;&#10;%2</entry>
+      <entry id="7000" string="Currently converting">현재 인코딩 중</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">인코딩 중입니다. 정말로 끝내시겠습니까?</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI 드라이버 로드할수 없습니다! CD 리핑 불가!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">파일 열기 실패: %1&#10;&#10;%2</entry>
     </section>
 
     <section name="Dialogs">
@@ -316,7 +319,7 @@
       <entry id="9009" string="No scratch repair">스크래치 복구 없음</entry>
       <entry id="9010" string="Full cdparanoia mode">전체 CD 모드</entry>
       <entry id="9011" string="Activate jitter correction">지터 정정</entry>
-      <entry id="9012" string="Swap left/right channel">좌우 채널 스왑</entry>
+      <entry id="9012" string="Switch stereo channels">좌우 채널 스왑</entry>
       <entry id="9013" string="Automatization">자동화</entry>
       <entry id="9014" string="Read CD contents on insert">삽입 CD 내용 읽기</entry>
       <entry id="9016" string="Eject disk after ripping">리핑후 디스크 배출</entry>

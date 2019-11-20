@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -46,6 +46,7 @@ namespace freac
 			CheckBox			*check_addSeqNumbers;
 			CheckBox			*check_unicodeFiles;
 			CheckBox			*check_replaceSpaces;
+			CheckBox			*check_keepTimeStamps;
 
 			Bool				 singleFile;
 			Bool				 onTheFly;
@@ -58,6 +59,7 @@ namespace freac
 			Bool				 addSeqNumbers;
 			Bool				 unicodeFiles;
 			Bool				 replaceSpaces;
+			Bool				 keepTimeStamps;
 		slots:
 			Void				 SelectDir();
 			Void				 ConfigureEncoder();

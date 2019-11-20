@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -10,7 +10,7 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <jobs/joblist/adddirectory.h>
+#include <jobs/joblist/addfolders.h>
 
 #include <cddb/cddbremote.h>
 
@@ -22,53 +22,59 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-freac::JobAddDirectory::JobAddDirectory(const String &iDirectory) : JobAddFiles(Array<String>())
+freac::JobAddFolders::JobAddFolders(const Array<String> &iFolders) : JobAddFiles(Array<String>())
 {
-	directory = iDirectory;
+	folders = iFolders;
 }
 
-freac::JobAddDirectory::~JobAddDirectory()
+freac::JobAddFolders::~JobAddFolders()
 {
 }
 
-Void freac::JobAddDirectory::AddDirectory(const Directory &directory)
+Void freac::JobAddFolders::AddFolders(const Array<Directory> &folders)
 {
-	if (!directory.Exists()) return;
-
-	/* Recurse into subdirectories.
-	 */
-	const Array<Directory>	&myDirectories = directory.GetDirectories();
-	const Array<File>	&myFiles       = directory.GetFiles();
-
-	foreach (const Directory &directory, myDirectories) AddDirectory(directory);
-
-	/* Find extensions to exclude and add files.
-	 */
-	String			 configString  = configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsExcludeExtensionsID, Config::SettingsExcludeExtensionsDefault).ToLower();
-	const Array<String>	&extensions    = configString.Explode("|");
-
-	foreach (const File &file, myFiles)
+	foreach (const Directory &folder, folders)
 	{
-		String	 fileString = String(file).ToLower();
-		Bool	 add	    = True;
+		if (!folder.Exists()) continue;
 
-		foreach (const String &extension, extensions)
+		/* Recurse into subfolders.
+		 */
+		const Array<Directory>	&myFolders = folder.GetDirectories();
+		const Array<File>	&myFiles   = folder.GetFiles();
+
+		AddFolders(myFolders);
+
+		/* Find extensions to exclude and add files.
+		 */
+		String			 configString  = configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsExcludeExtensionsID, Config::SettingsExcludeExtensionsDefault).ToLower();
+		const Array<String>	&extensions    = configString.Explode("|");
+
+		foreach (const File &file, myFiles)
 		{
-			if (fileString.EndsWith(extension))
+			String	 fileString = String(file).ToLower();
+			Bool	 add	    = True;
+
+			/* Skip files without a filename extension.
+			 */
+			if (!fileString.Contains(".")) continue;
+
+			/* Check excluded extensions.
+			 */
+			foreach (const String &extension, extensions)
 			{
+				if (!fileString.EndsWith(extension)) continue;
+
 				add = False;
 
 				break;
 			}
+
+			if (add) files.Add(file);
 		}
-
-		if (add) files.Add(file);
 	}
-
-	String::ExplodeFinish();
 }
 
-Void freac::JobAddDirectory::RemoveReferencedFiles()
+Void freac::JobAddFolders::RemoveReferencedFiles()
 {
 	/* Find and remove files referenced by
 	 * cuesheets to avoid adding them twice.
@@ -101,7 +107,7 @@ Void freac::JobAddDirectory::RemoveReferencedFiles()
 
 				/* Remove file from list if filename matches.
 				 */
-				if (file == track.origFilename)
+				if (file == track.fileName)
 				{
 					if (j < i) i--;
 
@@ -114,7 +120,7 @@ Void freac::JobAddDirectory::RemoveReferencedFiles()
 	}
 }
 
-Bool freac::JobAddDirectory::ReadyToRun()
+Bool freac::JobAddFolders::ReadyToRun()
 {
 	BoCA::JobList	*joblist = BoCA::JobList::Get();
 
@@ -125,7 +131,7 @@ Bool freac::JobAddDirectory::ReadyToRun()
 	return True;
 }
 
-Error freac::JobAddDirectory::Perform()
+Error freac::JobAddFolders::Perform()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -133,7 +139,11 @@ Error freac::JobAddDirectory::Perform()
  
 	SetText(i18n->AddEllipsis(i18n->TranslateString("Reading folders")));
 
-	AddDirectory(directory);
+	Array<Directory>	 directories;
+
+	foreach (const String &folder, folders) directories.Add(folder);
+
+	AddFolders(directories);
 
 	SetText(i18n->AddEllipsis(i18n->TranslateString("Filtering duplicates")));
 

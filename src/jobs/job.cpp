@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -21,6 +21,8 @@ Array<freac::Job *>		 freac::Job::running;
 
 Array<freac::Job *>		 freac::Job::all;
 
+Threads::Mutex			 freac::Job::mutex;
+
 Signal0<Void>			 freac::Job::onChange;
 
 Signal1<Void, freac::Job *>	 freac::Job::onPlanJob;
@@ -40,6 +42,7 @@ freac::Job::Job() : ListEntry("Job")
 	progress	= new Progressbar(Point(progressLabel->GetX() + progressLabel->GetUnscaledTextWidth() + 7, progressLabel->GetY() - 3), Size(200, 0), OR_HORZ, PB_NOTEXT, 0, 1000, 0);
 
 	timeValue	= new EditBox("00:00", Point(42, progress->GetY()), Size(34, 0), 0);
+	timeValue->SetWidth(Math::Max(34, timeValue->GetUnscaledTextWidth() + 6));
 	timeValue->SetOrientation(OR_UPPERRIGHT);
 	timeValue->Deactivate();
 
@@ -77,7 +80,13 @@ freac::Job::Job() : ListEntry("Job")
 	startTicks	    = 0;
 	previousSecondsLeft = 0;
 
+	/* Notify about jobs change.
+	 */
+	mutex.Lock();
+
 	onChange.Emit();
+
+	mutex.Release();
 }
 
 freac::Job::~Job()
@@ -90,8 +99,16 @@ freac::Job::~Job()
 
 	all.Remove(GetHandle());
 
+	/* Notify about jobs change.
+	 */
+	mutex.Lock();
+
 	onChange.Emit();
 
+	mutex.Release();
+
+	/* Delete sub-objects.
+	 */
 	DeleteObject(progressLabel);
 	DeleteObject(progress);
 	DeleteObject(progressValue);
@@ -117,9 +134,15 @@ Int freac::Job::RunPrecheck()
 
 	planned.Add(this, GetHandle());
 
+	/* Notify about planned job.
+	 */
 	EnterProtectedRegion();
 
+	mutex.Lock();
+
 	onPlanJob.Emit(this);
+
+	mutex.Release();
 
 	LeaveProtectedRegion();
 
@@ -131,13 +154,21 @@ Int freac::Job::Run()
 	planned.Remove(GetHandle());
 	running.Add(this, GetHandle());
 
+	/* Notify about running job.
+	 */
 	EnterProtectedRegion();
+
+	mutex.Lock();
 
 	onRun.Emit();
 	onRunJob.Emit(this);
 
+	mutex.Release();
+
 	LeaveProtectedRegion();
 
+	/* Actually run job.
+	 */
 	startTicks	    = S::System::System::Clock();
 	previousSecondsLeft = 0;
 
@@ -147,10 +178,16 @@ Int freac::Job::Run()
 
 	closeHotspot->Activate();
 
+	/* Notify about finished job.
+	 */
 	EnterProtectedRegion();
+
+	mutex.Lock();
 
 	onFinish.Emit();
 	onFinishJob.Emit(this);
+
+	mutex.Release();
 
 	LeaveProtectedRegion();
 
@@ -172,9 +209,9 @@ Void freac::Job::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	Surface	*surface    = GetDrawSurface();
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-	surface->StartPaint(Rect(GetRealPosition(), GetRealSize()));
+	if (surface) surface->StartPaint(GetVisibleArea());
 
 	progress->Hide();
 	progressValue->Hide();
@@ -194,7 +231,7 @@ Void freac::Job::OnChangeSize(const Size &nSize)
 	timeLabel->Show();
 	timeValue->Show();
 
-	surface->EndPaint();
+	if (surface) surface->EndPaint();
 }
 
 Void freac::Job::OnDoubleClick()
@@ -208,10 +245,17 @@ Void freac::Job::OnDoubleClick()
 
 Void freac::Job::OnClickToClose()
 {
+	all.Remove(GetHandle());
+
+	/* Notify about jobs change.
+	 */
 	EnterProtectedRegion();
 
-	all.Remove(GetHandle());
+	mutex.Lock();
+
 	onChange.Emit();
+
+	mutex.Release();
 
 	Object::DeleteObject(this);
 
@@ -235,7 +279,7 @@ Int freac::Job::Paint(Int message)
 
 			SetVisibleDirect(False);
 
-			if (IsSelected() || IsMouseOver()) SetBackgroundColor(Setup::LightGrayColor);
+			if (IsSelected() || IsMouseOver()) SetBackgroundColor(Setup::BackgroundColor.Average(Setup::ClientColor));
 			else				   SetBackgroundColor(Setup::BackgroundColor);
 
 			SetVisibleDirect(True);
@@ -268,26 +312,23 @@ Int freac::Job::SetText(const String &newText)
 {
 	if (text == newText) return Success();
 
-	if (IsRegistered() && IsVisible())
-	{
-		Surface	*surface = container->GetDrawSurface();
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
 
-		surface->StartPaint(GetVisibleArea());
+	if (surface) surface->StartPaint(GetVisibleArea());
 
-		Widget::SetText(newText);
+	Widget::SetText(newText);
 
-		surface->EndPaint();
-	}
-	else
-	{
-		Widget::SetText(newText);
-	}
+	if (surface) surface->EndPaint();
 
 	return Success();
 }
 
 Int freac::Job::SetProgress(Int nValue)
 {
+	Surface	*surface = (IsVisible() ? GetDrawSurface() : NIL);
+
+	if (surface) surface->StartPaint(GetVisibleArea());
+
 	progress->SetValue(nValue);
 	progressValue->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(Float(nValue) / 10.0))));
 
@@ -309,6 +350,8 @@ Int freac::Job::SetProgress(Int nValue)
 
 		previousSecondsLeft = secondsLeft;
 	}
+
+	if (surface) surface->EndPaint();
 
 	return Success();
 }

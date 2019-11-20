@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -180,8 +180,8 @@ Metadata BoCA::VideoSite::QueryMetadata(const String &html)
 
 	/* Extract data from return value.
 	 */
-	Metadata	 metadata;
-	String		 previous = String::SetInputFormat("UTF-8");
+	Metadata		 metadata;
+	String::InputFormat	 inputFormat("UTF-8");
 
 	metadata.title	     = object->Get(v8::String::New("title"))->IsString()	? ReplaceInnerHTML((char *) *v8::String::Utf8Value(object->Get(v8::String::New("title"))))	 : String(i18n->TranslateString("unknown title"));
 	metadata.description = object->Get(v8::String::New("description"))->IsString()	? ReplaceInnerHTML((char *) *v8::String::Utf8Value(object->Get(v8::String::New("description")))) : String();
@@ -190,8 +190,6 @@ Metadata BoCA::VideoSite::QueryMetadata(const String &html)
 	metadata.thumbnail   = object->Get(v8::String::New("thumbnail"))->IsString()	? ReplaceInnerHTML((char *) *v8::String::Utf8Value(object->Get(v8::String::New("thumbnail"))))	 : String();
 
 	metadata.uploader    = object->Get(v8::String::New("uploader"))->IsString()	? ReplaceInnerHTML((char *) *v8::String::Utf8Value(object->Get(v8::String::New("uploader"))))	 : String(i18n->TranslateString("unknown"));
-
-	String::SetInputFormat(previous);
 
 	return metadata;
 }
@@ -326,7 +324,7 @@ String BoCA::VideoSite::ReplaceInnerHTML(const String &text)
 
 	/* Set input format to ISO-8859-1.
 	 */
-	String	 prevInputFormat = String::SetInputFormat("ISO-8859-1");
+	String::InputFormat	 inputFormat("ISO-8859-1");
 
 	/* Remove multiple whitespaces.
 	 */
@@ -606,10 +604,6 @@ String BoCA::VideoSite::ReplaceInnerHTML(const String &text)
 	       result.EndsWith("\t")) result[result.Length() - 1] = 0;
 
 	result.Replace("\n ", "\n");
-
-	/* Restore previous input format.
-	 */
-	String::SetInputFormat(prevInputFormat);
 
 	return result;
 }

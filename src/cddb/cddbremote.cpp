@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -31,8 +31,6 @@ freac::CDDBRemote::CDDBRemote()
 {
 	connected = False;
 
-	protocol  = Protocol::Get("CDDB communication");
-
 	socket	  = NIL;
 
 	in	  = NIL;
@@ -45,7 +43,8 @@ freac::CDDBRemote::~CDDBRemote()
 
 String freac::CDDBRemote::SendCommand(const String &iCommand)
 {
-	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::Config	*config   = BoCA::Config::Get();
+	BoCA::Protocol	*protocol = BoCA::Protocol::Get("CDDB communication");
 
 	Int	 freedbMode = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault);
 
@@ -146,7 +145,8 @@ String freac::CDDBRemote::SendCommand(const String &iCommand)
 
 Bool freac::CDDBRemote::ConnectToServer()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::Config	*config   = BoCA::Config::Get();
+	BoCA::Protocol	*protocol = BoCA::Protocol::Get("CDDB communication");
 
 	Int	 freedbMode = config->GetIntValue(Config::CategoryFreedbID, Config::FreedbModeID, Config::FreedbModeDefault);
 
@@ -204,6 +204,8 @@ Bool freac::CDDBRemote::ConnectToServer()
 
 Int freac::CDDBRemote::Query(const String &queryString)
 {
+	BoCA::Protocol	*protocol = BoCA::Protocol::Get("CDDB communication");
+
 	String	 str = SendCommand(queryString);
 
 	ids.RemoveAll();
@@ -227,7 +229,7 @@ Int freac::CDDBRemote::Query(const String &queryString)
 			if (str[s] == ' ')
 			{
 				for (Int i = 0; i < 8; i++)			  id[i]	   = str[s + i +  1];
-				for (Int j = 0; j < (str.Length() - s - 14); j++) title[j] = str[s + j + 10];
+				for (Int i = 0; i < (str.Length() - s - 14); i++) title[i] = str[s + i + 10];
 
 				break;
 			}
@@ -248,8 +250,8 @@ Int freac::CDDBRemote::Query(const String &queryString)
 	 */
 	if (str.StartsWith("210") || str.StartsWith("211"))
 	{
-		String	 inputFormat = String::SetInputFormat("UTF-8");
-		String	 outputFormat = String::SetOutputFormat("UTF-8");
+		String::InputFormat	 inputFormat("UTF-8");
+		String::OutputFormat	 outputFormat("UTF-8");
 
 		do
 		{
@@ -268,7 +270,7 @@ Int freac::CDDBRemote::Query(const String &queryString)
 				if (val[s] == ' ')
 				{
 					for (Int i = 0; i < 8; i++)			  id[i]	   = val[s + i +  1];
-					for (Int j = 0; j < (val.Length() - s - 10); j++) title[j] = val[s + j + 10];
+					for (Int i = 0; i < (val.Length() - s - 10); i++) title[i] = val[s + i + 10];
 
 					break;
 				}
@@ -284,9 +286,6 @@ Int freac::CDDBRemote::Query(const String &queryString)
 		}
 		while (true);
 
-		String::SetInputFormat(inputFormat);
-		String::SetOutputFormat(outputFormat);
-
 		if (str[2] == '0') return QUERY_RESULT_MULTIPLE;
 		else		   return QUERY_RESULT_FUZZY;
 	}
@@ -296,6 +295,8 @@ Int freac::CDDBRemote::Query(const String &queryString)
 
 Bool freac::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbInfo)
 {
+	BoCA::Protocol	*protocol = BoCA::Protocol::Get("CDDB communication");
+
 	/* Check cache of already read entries.
 	 */
 	foreach (const CDDBInfo &entry, readEntries)
@@ -316,8 +317,8 @@ Bool freac::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbI
 	cddbInfo.discID   = discID;
 	cddbInfo.category = category;
 
-	String	 inputFormat = String::SetInputFormat("UTF-8");
-	String	 outputFormat = String::SetOutputFormat("UTF-8");
+	String::InputFormat	 inputFormat("UTF-8");
+	String::OutputFormat	 outputFormat("UTF-8");
 
 	result = NIL;
 
@@ -333,9 +334,6 @@ Bool freac::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbI
 	}
 	while (True);
 
-	String::SetInputFormat(inputFormat);
-	String::SetOutputFormat(outputFormat);
-
 	/* Parse result and add entry to cache.
 	 */
 	if (!ParseCDDBRecord(result, cddbInfo)) return False;
@@ -347,7 +345,8 @@ Bool freac::CDDBRemote::Read(const String &category, Int discID, CDDBInfo &cddbI
 
 Bool freac::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 {
-	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::Config	*config   = BoCA::Config::Get();
+	BoCA::Protocol	*protocol = BoCA::Protocol::Get("CDDB communication");
 
 	CDDBInfo cddbInfo = oCddbInfo;
 

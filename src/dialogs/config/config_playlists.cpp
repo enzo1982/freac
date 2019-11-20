@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -71,17 +71,17 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 
 		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
 
-		for (Int j = 0; j < formats.Length(); j++)
+		foreach (FileFormat *format, formats)
 		{
-			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+			const Array<String>	&formatExtensions = format->GetExtensions();
 
-			combo_formats->AddEntry(formats.GetNth(j)->GetName());
+			combo_formats->AddEntry(format->GetName());
 
-			if (config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault) == boca.GetComponentID(i).Append("-").Append(format_extensions.GetNth(0))) combo_formats->SelectNthEntry(combo_formats->Length() - 1);
+			if (config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, Config::PlaylistFormatDefault) == boca.GetComponentID(i).Append("-").Append(formatExtensions.GetNth(0))) combo_formats->SelectNthEntry(combo_formats->Length() - 1);
 		}
 	}
 
-	button_config	= new Button(i18n->TranslateString("Configure plugin"), NIL, Point(412, 11), Size(130, 0));
+	button_config	= new Button(i18n->TranslateString("Configure plugin"), Point(412, 11), Size(130, 0));
 	button_config->onAction.Connect(&ConfigurePlaylists::ConfigureFormat, this);
 
 	group_options->Add(check_createPlaylists);
@@ -96,7 +96,7 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 
 	edit_outdir		= new EditBox(playlistOutputDir, Point(10, 39), Size(444, 0), 0);
 
-	button_outdir_browse	= new Button(i18n->TranslateString("Select"), NIL, Point(462, 38), Size(0, 0));
+	button_outdir_browse	= new Button(i18n->TranslateString("Select"), Point(462, 38), Size(0, 0));
 	button_outdir_browse->onAction.Connect(&ConfigurePlaylists::SelectDir, this);
 
 	group_outdir->Add(check_useEncOutdir);
@@ -280,13 +280,13 @@ Int freac::ConfigurePlaylists::SaveSettings()
 
 		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
 
-		for (Int j = 0; j < formats.Length(); j++)
+		foreach (FileFormat *format, formats)
 		{
 			if (count++ < index) continue;
 
-			const Array<String>	&format_extensions = formats.GetNth(j)->GetExtensions();
+			const Array<String>	&formatExtensions = format->GetExtensions();
 
-			config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, boca.GetComponentID(i).Append("-").Append(format_extensions.GetNth(0)));
+			config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, boca.GetComponentID(i).Append("-").Append(formatExtensions.GetNth(0)));
 
 			break;
 		}

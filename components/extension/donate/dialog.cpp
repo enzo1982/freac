@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -30,7 +30,7 @@ BoCA::DonateDialog::DonateDialog()
 	mainWnd->Add(mainWnd_titlebar);
 	mainWnd->Add(divider);
 
-	button_close		= new Button(i18n->TranslateString("Close"), NIL, Point(87, 29), Size());
+	button_close		= new Button(i18n->TranslateString("Close"), Point(87, 29), Size());
 	button_close->onAction.Connect(&DonateDialog::Close, this);
 	button_close->SetOrientation(OR_LOWERRIGHT);
 
@@ -63,16 +63,14 @@ BoCA::DonateDialog::DonateDialog()
 		tab_methods->Add(layer, method->GetLogo());
 	}
 
-	String::ExplodeFinish();
-
 	text_intro		= new Text(i18n->TranslateString("Please support this project!"), Point(7, 12));
-	text_intro->SetFont(Font(Font::Default, 12, Font::Bold));
+	text_intro->SetFont(Font(Font::Default, 12, Font::Bold, 0, text_intro->GetFont().GetColor()));
 
 	text_donate		= new Text(i18n->TranslateString("Please help keep this software free by supporting the %1 project with a\ndonation.").Replace("%1", "fre:ac"), Point(7, text_intro->GetUnscaledTextHeight() + 25));
 	text_donate_other	= new Text(i18n->TranslateString("Please write to %1 if you would like to mail a check or send\nmoney by mail.").Replace("%1", "donate@freac.org"), Point(7, text_donate->GetY() + text_donate->GetUnscaledTextHeight() + tabSize.cy + 40));
 
 	text_thanks		= new Text(i18n->TranslateString("Thank you very much!"), Point(7, text_donate_other->GetY() + text_donate_other->GetUnscaledTextHeight() + 13));
-	text_thanks->SetFont(Font(Font::Default, 12, Font::Bold));
+	text_thanks->SetFont(Font(Font::Default, 12, Font::Bold, 0, text_thanks->GetFont().GetColor()));
 
 	Int	 maxElementSize = Math::Max(tabSize.cx + 2, Math::Max(Math::Max(text_intro->GetUnscaledTextWidth(), text_thanks->GetUnscaledTextWidth()), Math::Max(text_donate->GetUnscaledTextWidth(), text_donate_other->GetUnscaledTextWidth())));
 

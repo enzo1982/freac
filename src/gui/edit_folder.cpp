@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -12,7 +12,7 @@
 
 #include <gui/edit_folder.h>
 
-freac::FolderEditBox::FolderEditBox(const String &iText, const Point &iPos, const Size &iSize, Int maxSize) : EditBox(iText, iPos, iSize, maxSize)
+freac::FolderEditBox::FolderEditBox(const Point &iPos, const Size &iSize, Int maxSize) : EditBox(iPos, iSize, maxSize)
 {
 	cursor->Deactivate();
 }

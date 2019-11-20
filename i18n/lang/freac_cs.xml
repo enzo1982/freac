@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Julius Faltus &lt;jfc.faltus@seznam.cz&gt;</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">OK</entry>
@@ -311,7 +311,7 @@
 	<entry id="5111" string="Encode to a single file">Kódovat do jediného souboru</entry>
 	<entry id="5112" string="Output filenames">Jméno výstupního souboru</entry>
 	<entry id="5113" string="Allow Unicode characters">Povolit znaky Unicode</entry>
-	<entry id="5114" string="Replace spaces">Nahradit mezery</entry>
+	<entry id="5114" string="Replace spaces with underscores">Nahradit mezery</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Výstupní složka neexistuje! Chcete jej vytvořit?</entry>
@@ -419,34 +419,37 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 je dostupný v %2 jazycích. Není-li váš jazyk dostupný,&#10;můžete jej lehce vytvořit s využitím aplikace 'smooth Translator'.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 podporuje kódování LAME, Ogg Vorbis, FAAC, FLAC&#10;a kodek Bonk. VQF kodek najdete na webu %1:&#10; %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 podporuje kódování LAME, Ogg Vorbis, FAAC, FLAC&#10;a kodek Opus. VQF kodek najdete na webu %1:&#10; %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 může použít vstupní pluginy 'Winampu 2' pro podporu&#10;více formátů souborů.&#10;Zkopírujte soubory in_*.dll do složky %1/plugins, aby byly&#10;pro %1 dostupné.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">S %1 můžete zpracovávat data o CD pro freedb znakovou&#10;sadou Unicode. Máte-li CD s jmény umělce či názvy s diakritikou,&#10;můžete s %1 nabídnout freedb správné (opravené) záznamy.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Pro korekci chyb čtení při ripování CD můžete aktivovat&#10;Jitter korekci na záložce Obecná nastavení/Ripper.&#10;Pokud to nepomůže, zkuste aktivovat jeden z Paranoia režimů.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Máte návrhy na vylepšení %1?&#10;Své nápady pošlete na %1 SourceForge, stránka projektů&#10; %2, nebo na e-mail&#10; %3.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Máte návrhy na vylepšení %1?&#10;&#10;Své nápady pošlete na %1 %2, stránka projektů&#10;%3, nebo na e-mail&#10;%4.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Líbí se vám %1? %1 je volně dostupný, ale můžete&#10;nám pomoci podpořit %1-projekt.&#10;Peníze můžete poslat na %2 přes PayPal.&#10;Podívej se na %3 pro více&#10;podrobností.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Proces kódování ještě běží! Chcete přesto program ukončit?</entry>
-      <entry id="7001" string="Currently converting">Proces kódování je ještě aktivní</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Nemohu načíst ASPI ovladače! Ripování CD deaktivováno!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Nemohu otevřít soubor: %1&#10;&#10;Chyba: %2</entry>
-      <entry id="7006" string="Delete original files after encoding">Po kódování smazat původní soubory</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Tato volba smaže originální soubory po kódování z PC.&#10;&#10;Jste si jistý, že chcete pokračovat ve smazání souborů?</entry>
-      <entry id="7008" string="File already exists">soubor už existuje</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Výstupní soubor %1&#10;již existuje! Chcete jej přepsat?</entry>
-      <entry id="7010" string="Overwrite all further files">Přepsat všechny další soubory</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Podpora CDDB je vypnutá! Prosím, povolte lokální&#10;nebo vzdálenou CDDB podporu v dialogu Volby.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Vzdálená CDDB podpora je vypnutá! Prosím povolte&#10;vzdálenou CDDB podporu v dialogu Volby.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Přístup k CD-ROM mechanice byl Windows zamítnut.&#10;&#10;Prosím, kontaktujte vašeho systémového administrátora pro&#10;získaní přístupu k CD-ROM mechanice.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Nejde přistupovat k souboru: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Nejde vytvořit soubor: %1</entry>
-      <entry id="7016" string="File not found">Soubor nebyl nalezen</entry>
-      <entry id="7017" string="Unknown file type">Neznámý typ souboru</entry>
-      <entry id="7018" string="Unsupported audio format">Nepodporovaný audio formát</entry>
-      <entry id="7019" string="Unknown error">Neznámá chyba</entry>
-      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">Žádný konfigurační dialog pro:&#10;&#10;%1</entry>
+      <entry id="7000" string="Currently converting">Proces kódování je ještě aktivní</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Proces kódování ještě běží! Chcete přesto program ukončit?</entry>
+      <entry id="7002" string="Delete original files after encoding">Po kódování smazat původní soubory</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Tato volba smaže originální soubory po kódování z PC.&#10;&#10;Jste si jistý, že chcete pokračovat ve smazání souborů?</entry>
+      <entry id="7005" string="File already exists">soubor už existuje</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Výstupní soubor %1&#10;již existuje! Chcete jej přepsat?</entry>
+      <entry id="7007" string="Overwrite all further files">Přepsat všechny další soubory</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Nejde přistupovat k souboru: %1&#10;&#10;Soubor: %1&#10;Složka: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Nejde vytvořit soubor: %1&#10;&#10;Soubor: %1&#10;Složka: %2</entry>
+      <entry id="7110" string="File not found">Soubor nebyl nalezen</entry>
+      <entry id="7111" string="Unknown file type">Neznámý typ souboru</entry>
+      <entry id="7113" string="Unsupported audio format">Nepodporovaný audio formát</entry>
+      <entry id="7114" string="Unknown error">Neznámá chyba</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Nemohu načíst ASPI ovladače! Ripování CD deaktivováno!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Nemohu otevřít soubor: %1&#10;&#10;Chyba: %2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Podpora CDDB je vypnutá! Prosím, povolte lokální&#10;nebo vzdálenou CDDB podporu v dialogu Volby.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Vzdálená CDDB podpora je vypnutá! Prosím povolte&#10;vzdálenou CDDB podporu v dialogu Volby.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Přístup k CD-ROM mechanice byl Windows zamítnut.&#10;&#10;Prosím, kontaktujte vašeho systémového administrátora pro&#10;získaní přístupu k CD-ROM mechanice.</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Žádný konfigurační dialog pro:&#10;&#10;%1</entry>
     </section>
 
     <section name="Dialogs">
@@ -471,7 +474,7 @@
       <entry id="9009" string="No scratch repair">Neopravovat škrábance</entry>
       <entry id="9010" string="Full cdparanoia mode">Plný cd-paranoia režim</entry>
       <entry id="9011" string="Activate jitter correction">Aktivovat Jitter korekci</entry>
-      <entry id="9012" string="Swap left/right channel">Prohodit Levý/Pravý kanál</entry>
+      <entry id="9012" string="Switch stereo channels">Prohodit Levý/Pravý kanál</entry>
       <entry id="9013" string="Automatization">Automatizace</entry>
       <entry id="9014" string="Read CD contents on insert">Číst obsah CD po vložení</entry>
       <entry id="9015" string="Start ripping automatically">Začít automaticky ripovat</entry>

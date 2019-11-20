@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -37,11 +37,11 @@ freac::ConfigComponentDialog::ConfigComponentDialog(ConfigLayer *iLayer)
 	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
 	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	btn_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
+	btn_cancel		= new Button(i18n->TranslateString("Cancel"), Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&ConfigComponentDialog::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	btn_ok			= new Button(i18n->TranslateString("OK"), NIL, btn_cancel->GetPosition() - Point(88, 0), Size());
+	btn_ok			= new Button(i18n->TranslateString("OK"), btn_cancel->GetPosition() - Point(88, 0), Size());
 	btn_ok->onAction.Connect(&ConfigComponentDialog::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 

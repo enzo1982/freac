@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -13,18 +13,13 @@
 #ifndef H_FREAC_VERIFIER
 #define H_FREAC_VERIFIER
 
-#include <smooth.h>
-#include <boca.h>
-
-using namespace smooth;
+#include "component.h"
 
 namespace freac
 {
-	class Verifier
+	class Verifier : public Component
 	{
 		protected:
-			const BoCA::Config		*configuration;
-
 			BoCA::AS::VerifierComponent	*verifier;
 		public:
 							 Verifier(const BoCA::Config *);

@@ -1,114 +1,114 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\components\extension\tagedit\layer.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\layer.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\tagedit.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\tagedit.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\tagspec.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\tagspec.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\utilities.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\utilities.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\chooser\chooser.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser.cpp">
       <Filter>Quelldateien\chooser</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\chooser\chooser_albums.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_albums.cpp">
       <Filter>Quelldateien\chooser</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\chooser\chooser_files.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_files.cpp">
       <Filter>Quelldateien\chooser</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\chooser\chooser_files_tree.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_files_tree.cpp">
       <Filter>Quelldateien\chooser</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\chooser\chooser_files_utilities.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_files_utilities.cpp">
       <Filter>Quelldateien\chooser</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\chooser\chooser_tracks.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_tracks.cpp">
       <Filter>Quelldateien\chooser</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_advanced.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_advanced.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_advanced_number.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_advanced_number.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_advanced_text.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_advanced_text.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_basic.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_basic.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_basic_cover.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_basic_cover.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_details.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_details.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_other.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_other.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\components\extension\tagedit\layer.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\layer.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\tagedit.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\tagedit.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\tagspec.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\tagspec.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\utilities.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\utilities.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\chooser\chooser.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\chooser\chooser.h">
       <Filter>Headerdateien\chooser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\chooser\chooser_albums.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\chooser\chooser_albums.h">
       <Filter>Headerdateien\chooser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\chooser\chooser_files.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\chooser\chooser_files.h">
       <Filter>Headerdateien\chooser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\chooser\chooser_files_tree.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\chooser\chooser_files_tree.h">
       <Filter>Headerdateien\chooser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\chooser\chooser_files_utilities.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\chooser\chooser_files_utilities.h">
       <Filter>Headerdateien\chooser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\chooser\chooser_tracks.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\chooser\chooser_tracks.h">
       <Filter>Headerdateien\chooser</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_advanced.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_advanced.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_advanced_number.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_advanced_number.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_advanced_text.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_advanced_text.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_basic.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_basic.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_basic_cover.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_basic_cover.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_details.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_details.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_other.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_other.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Andreas Normann Aanonsen &lt;andreasaa@gmail.com&gt;</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">Ok</entry>
@@ -375,33 +375,36 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 er tilgjengelig på %2 Språk. Om ditt språk ikke er&#10;oversatt, kan du lett oversette %1 med 'glatt&#10;oversetter'-applikasjonen.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 har støtte for LAME, Ogg Vorbis, FAAC, FLAC og&#10;Bonk-koder. En koder for VQF-formatet er tilgjengelig på&#10;%1-hjemmesiden: %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 har støtte for LAME, Ogg Vorbis, FAAC, FLAC og&#10;Opus-koder. En koder for VQF-formatet er tilgjengelig på&#10;%1-hjemmesiden: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 kan bruke Winamp 2 input plugins for støtte til flere&#10;filformater. Kopier inn_*.dll filene til %1/plugins-mappen,&#10; for å gjøre %1 i stand til å lese disse formatene</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Med %1 lan du laste opp freedb-CD-&#10;databaseoppføringer som inneholder Unicode-tegn. Så hvis&#10;du har cder som har ikke-latinske artister og/eller titler, kan&#10;du laste opp den korrekte freedb-oppføringen med %1.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">For å rette opp lesefeil under ripping kan du aktivere&#10;jitterkorrektur i Ripper-fanen i %1s konfigurasjonsvindu.&#10;Hvis det ikke hjelper kan du prøve å bruke Paranoia-modus.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Har du forslag til hvordan %1 kan forbedres?&#10; Du kan sende inn ideer til forbedring gjennom Tracker på&#10; %1s Sourceforge-prosjektside - %2&#10;eller send en e-post til %3.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Har du forslag til hvordan %1 kan forbedres?&#10;&#10;Du kan sende inn ideer til forbedring gjennom tracker på&#10; %1s %2-prosjektside - %3&#10;eller send en e-post til %4.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Liker du %1? %1 er tilgjengelig gratis, men du kan&#10;bidra til finansieringen av %1-prosjektet.&#10;Du kan sende penger til %2 gjennom PayPal.&#10;For mer informasjon, se %3.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Koding pågår! Vil du virkelig avslutte?</entry>
-      <entry id="7001" string="Currently converting">Koding pågår</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Kan ikke laste ASPI-drivere! CD-ripping deaktiviert!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åpne filen: %1&#10;&#10;Feil: %2</entry>
-      <entry id="7006" string="Delete original files after encoding">Slett originale filer etter koding</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denne innstillingen vil fjerne de originale filene fra datamaskinen din&#10;etter koding!&#10;&#10;Er du sikker på at du vil aktivere denne funksjonen?</entry>
-      <entry id="7008" string="File already exists">Fil finnes allerede</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Utdatafilen %1&#10;finnes allerede! Vil du erstatte over den??</entry>
-      <entry id="7010" string="Overwrite all further files">Erstatt alle framtidige filer</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Støtte for CDDB er deaktiviert! Vennligst aktiver støtte for&#10;lokal eller fjern CDDB i konfigurasjonsdialogen.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Støtte for fjern CDDB er deaktiviert! Vennligst aktiver støtte for&#10;fjern CDDB i konfigurasjonsdialogen.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Tilgang til CD-ROM-stasjonen var nektet av Windows.&#10;&#10;Vennligst kontakt din systemadministrator for å få&#10;rettigheter til å få tilgang til CD-ROM-stasjonen.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Kan ikke lese inndatafil: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Kan ikke lage utdatafil: %1</entry>
-      <entry id="7016" string="File not found">Fil ikke funnet</entry>
-      <entry id="7017" string="Unknown file type">Ukjent filtype</entry>
-      <entry id="7018" string="Unsupported audio format">Lydformatet er ikke støttet</entry>
-      <entry id="7019" string="Unknown error">Ukjent feil</entry>
+      <entry id="7000" string="Currently converting">Koding pågår</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Koding pågår! Vil du virkelig avslutte?</entry>
+      <entry id="7002" string="Delete original files after encoding">Slett originale filer etter koding</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denne innstillingen vil fjerne de originale filene fra datamaskinen din&#10;etter koding!&#10;&#10;Er du sikker på at du vil aktivere denne funksjonen?</entry>
+      <entry id="7005" string="File already exists">Fil finnes allerede</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Utdatafilen %1&#10;finnes allerede! Vil du erstatte over den??</entry>
+      <entry id="7007" string="Overwrite all further files">Erstatt alle framtidige filer</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Kan ikke lese inndatafil: %1&#10;&#10;Fil: %1&#10;Mappe: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Kan ikke lage utdatafil: %1&#10;&#10;Fil: %1&#10;Mappe: %2</entry>
+      <entry id="7110" string="File not found">Fil ikke funnet</entry>
+      <entry id="7111" string="Unknown file type">Ukjent filtype</entry>
+      <entry id="7113" string="Unsupported audio format">Lydformatet er ikke støttet</entry>
+      <entry id="7114" string="Unknown error">Ukjent feil</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Kan ikke laste ASPI-drivere! CD-ripping deaktiviert!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åpne filen: %1&#10;&#10;Feil: %2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Støtte for CDDB er deaktiviert! Vennligst aktiver støtte for&#10;lokal eller fjern CDDB i konfigurasjonsdialogen.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Støtte for fjern CDDB er deaktiviert! Vennligst aktiver støtte for&#10;fjern CDDB i konfigurasjonsdialogen.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Tilgang til CD-ROM-stasjonen var nektet av Windows.&#10;&#10;Vennligst kontakt din systemadministrator for å få&#10;rettigheter til å få tilgang til CD-ROM-stasjonen.</entry>
     </section>
 
     <section name="Dialogs">
@@ -425,7 +428,7 @@
       <entry id="9009" string="No scratch repair">Ingen ripereperasjon</entry>
       <entry id="9010" string="Full cdparanoia mode">Full CD-paranoia modus</entry>
       <entry id="9011" string="Activate jitter correction">Aktiver jitterkorrektur</entry>
-      <entry id="9012" string="Swap left/right channel">Velg venstre/høyrekanal</entry>
+      <entry id="9012" string="Switch stereo channels">Velg venstre/høyrekanal</entry>
       <entry id="9013" string="Automatization">Automatisering</entry>
       <entry id="9014" string="Read CD contents on insert">Les CDer som settes inn</entry>
       <entry id="9015" string="Start ripping automatically">Start ripping automatisk</entry>
@@ -693,10 +696,9 @@
 	</section>
       </section>
 
-      <section name="Protocols">
-	<entry id="104000" string="Protocols">Protokoller</entry>
-	<entry id="104001" string="Protocol">Protokoll</entry>
-	<entry id="104003" string="Details">Detaljer</entry>
+      <section name="Logging">
+	<entry id="104000" string="Logs">Protokoller</entry>
+	<entry id="104001" string="Log">Protokoll</entry>
 	<entry id="104005" string="Message">Melding</entry>
       </section>
     </section>

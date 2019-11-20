@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -37,11 +37,11 @@ freac::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	register_layer_http	= new Layer(i18n->TranslateString("HTTP settings"));
 	register_layer_proxy	= new Layer(i18n->TranslateString("Proxy settings"));
 
-	btn_cancel		= new Button(i18n->TranslateString("Cancel"), NIL, Point(175, 29), Size());
+	btn_cancel		= new Button(i18n->TranslateString("Cancel"), Point(175, 29), Size());
 	btn_cancel->onAction.Connect(&cddbExtendedSettingsDlg::Cancel, this);
 	btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	btn_ok			= new Button(i18n->TranslateString("OK"), NIL, Point(87, 29), Size());
+	btn_ok			= new Button(i18n->TranslateString("OK"), Point(87, 29), Size());
 	btn_ok->onAction.Connect(&cddbExtendedSettingsDlg::OK, this);
 	btn_ok->SetOrientation(OR_LOWERRIGHT);
 

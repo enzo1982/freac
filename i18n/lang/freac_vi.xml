@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Phan Anh &lt;ppanhh@gmail.com&gt;</property>
-    <property name="url">http://iamphananh.blogspot.com/</property>
+    <property name="url">https://iamphananh.blogspot.com/</property>
   </info>
   <data>
     <entry id="100" string="OK">Đồng ý</entry>
@@ -374,33 +374,36 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 hỗ trợ %2 ngôn ngữ. Đây là một phần mềm mã&#10;nguồn mở và miễn phí.&#10;Phiên bản này được phiên dịch bởi dịch giả Phan Anh.&#10;Hãy email tôi theo địa chỉ ppanhh@gmail.com nếu bạn&#10;thấy quan tâm hoặc truy cập vào trang iamphananh.blogspot.com&#10;để biết thêm thông tin hoặc đơn giản là sẻ chia&#10;những gì bạn thắc mắc.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 hỗ trợ LAME, Ogg Vorbis, FAAC,&#10;FLAC và Bonk encoders. Bộ chuyển mã cho&#10;định dạng VQF được&#10;hỗ trợ tại %1 website: %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 hỗ trợ LAME, Ogg Vorbis, FAAC,&#10;FLAC và Opus encoders. Bộ chuyển mã cho&#10;định dạng VQF được&#10;hỗ trợ tại %1 website: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 có thể sử dụng các plugin của Winamp2 để có thể&#10;hỗ trợ thêm nhiều loại định dạng. Hãy sao chép tập tin có&#10;phần mở rộng là _*.dll vào thư mục plugin của %1&#10;để chương trình %1 có thể thao tác với các loại&#10;định dạng mới này</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Với %1 bạn có thể chỉnh sửa các thông tin của hệ cơ&#10;sở dữ liệu của đĩa CD bằng các ký tự theo định dạng&#10;Unicode. Bởi thế nếu bạn có bất kỳ đĩa CD nào chứa tên&#10;bài hát hay ca sĩ nhưng là định dạng non-Latin, bạn&#10;hoàn toàn có thể sử dụng %1 để chọn lựa các&#10;chỉnh sửa theo định dạng Unicode theo ý mình.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Để sửa những lỗi phát sinh khi bạn đang rip nhạc, bạn&#10;có thể dùng Jitter correction ở tab Ripper của phần&#10;thiết lập %1. Nếu không thể sửa được lỗi đó, bạn có thể&#10;sử dụng phương thức Paranoia.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Bạn có bất kỳ gợi ý để hoàn thiện %1 không?&#10;Hãy thể hiện ý tưởng của bạn thông qua mục chia sẻ&#10;ý tưởng của %1.Trang web dự án %1 trên&#10;SourceForge - %2&#10;hoặc gửi email đến %3</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Bạn có bất kỳ gợi ý để hoàn thiện %1 không?&#10;&#10;Hãy thể hiện ý tưởng của bạn thông qua mục chia sẻ&#10;ý tưởng của %1. Trang web dự án %1 trên&#10;%2 - %3&#10;hoặc gửi email đến %4.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Bạn có thích %1 không? Vì đây là chương trình&#10;hoàn toàn miễn phí, và hãy dành chút ít thời gian để hỗ&#10;trợ cho dự án của chúng tôi.&#10;Bạn cũng có thể đóng góp tiền %2&#10;thông qua hệ thống&#10;PayPal của eBay.&#10;Xem %3 để biết thêm chi tiết.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Quá trình chuyển mã vẫn đang chạy, bạn có thực sự muốn thoát?</entry>
-      <entry id="7001" string="Currently converting">Đang chuyển mã hiện tại</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Không thể tải driver của ASPI! Việc rip đĩa CD bị vô hiệu!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Không thể mở file: %1&#10;&#10;Error: %2</entry>
-      <entry id="7006" string="Delete original files after encoding">Xóa file gốc sau khi chuyển mã</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Phần lựa chọn này sẽ xóa tập tin gốc khỏi hệ thông sau&#10;khi quá trình chuyển mã hoàn tất!&#10;&#10;Bạn có thực sự muốn kích hoạt tính năng&#10;này không?</entry>
-      <entry id="7008" string="File already exists">Tập tin đó đã tồn tại</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Tập tin xuất ra %1!&#10;Do you want to overwrite it?</entry>
-      <entry id="7010" string="Overwrite all further files">Ghi đè lên các tập tin sau đó</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Hỗ trợ CDDB bị tạm khóa! Hãy bật hỗ trợ từ xa&#10;của CDDB hoặc nội tuyến trong khung&#10;chỉnh sửa.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Điều khiển từ xa của CDDB bị vô hiệu!&#10;Hãy bật chế độ điều khiển từ xa của CDDB&#10;từ phần tùy chỉnh.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Việc truy cập vào ổ đĩa CD-ROM bị từ chối.&#10;&#10;Hãy liên hệ người quản trị hệ thống nhằm cho phép&#10;bạn quyền được truy cập sử dụng ổ đĩa.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Không thể xử lý tập tin nhập vào: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Không thể tạo tập tin xuất ra: %1</entry>
-      <entry id="7016" string="File not found">Không tìm thấy file</entry>
-      <entry id="7017" string="Unknown file type">Không biết dạng file</entry>
-      <entry id="7018" string="Unsupported audio format">Định dạng audio không được hỗ trợ</entry>
-      <entry id="7019" string="Unknown error">Lỗi không biết</entry>
+      <entry id="7000" string="Currently converting">Đang chuyển mã hiện tại</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Quá trình chuyển mã vẫn đang chạy, bạn có thực sự muốn thoát?</entry>
+      <entry id="7002" string="Delete original files after encoding">Xóa file gốc sau khi chuyển mã</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Phần lựa chọn này sẽ xóa tập tin gốc khỏi hệ thông sau&#10;khi quá trình chuyển mã hoàn tất!&#10;&#10;Bạn có thực sự muốn kích hoạt tính năng&#10;này không?</entry>
+      <entry id="7005" string="File already exists">Tập tin đó đã tồn tại</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Tập tin xuất ra %1!&#10;Do you want to overwrite it?</entry>
+      <entry id="7007" string="Overwrite all further files">Ghi đè lên các tập tin sau đó</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Không thể xử lý tập tin nhập vào: %1&#10;&#10;Tập tin: %1&#10;Thư mục: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Không thể tạo tập tin xuất ra: %1&#10;&#10;Tập tin: %1&#10;Thư mục: %2</entry>
+      <entry id="7110" string="File not found">Không tìm thấy file</entry>
+      <entry id="7111" string="Unknown file type">Không biết dạng file</entry>
+      <entry id="7113" string="Unsupported audio format">Định dạng audio không được hỗ trợ</entry>
+      <entry id="7114" string="Unknown error">Lỗi không biết</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Không thể tải driver của ASPI! Việc rip đĩa CD bị vô hiệu!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Không thể mở file: %1&#10;&#10;Error: %2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Hỗ trợ CDDB bị tạm khóa! Hãy bật hỗ trợ từ xa&#10;của CDDB hoặc nội tuyến trong khung&#10;chỉnh sửa.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Điều khiển từ xa của CDDB bị vô hiệu!&#10;Hãy bật chế độ điều khiển từ xa của CDDB&#10;từ phần tùy chỉnh.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Việc truy cập vào ổ đĩa CD-ROM bị từ chối.&#10;&#10;Hãy liên hệ người quản trị hệ thống nhằm cho phép&#10;bạn quyền được truy cập sử dụng ổ đĩa.</entry>
     </section>
 
     <section name="Dialogs">
@@ -424,7 +427,7 @@
       <entry id="9009" string="No scratch repair">Không có mảnh xước để sửa chữa</entry>
       <entry id="9010" string="Full cdparanoia mode">Chế độ đầy đủ cdparanoia</entry>
       <entry id="9011" string="Activate jitter correction">Cho phép jitter correction</entry>
-      <entry id="9012" string="Swap left/right channel">Chuyển đổi kênh trái/phải</entry>
+      <entry id="9012" string="Switch stereo channels">Chuyển đổi kênh trái/phải</entry>
       <entry id="9013" string="Automatization">Tự động</entry>
       <entry id="9014" string="Read CD contents on insert">Đọc dữ liệu đĩa CD khi đưa đĩa vào</entry>
       <entry id="9015" string="Start ripping automatically">Tự động bắt đầu rip</entry>

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -19,13 +19,8 @@ using namespace smooth::IO;
 using namespace BoCA;
 using namespace BoCA::AS;
 
-Array<Threads::Mutex *, Void *>	 freac::Decoder::mutexes;
-Threads::Mutex			 freac::Decoder::managementMutex;
-
-freac::Decoder::Decoder(const BoCA::Config *iConfiguration)
+freac::Decoder::Decoder(const BoCA::Config *iConfiguration) : Component(iConfiguration)
 {
-	configuration  = iConfiguration;
-
 	stream	       = NIL;
 	decoder	       = NIL;
 
@@ -53,7 +48,7 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 
 	if (stream->GetLastError() != IO_ERROR_OK)
 	{
-		BoCA::Utilities::ErrorMessage("Cannot access input file: %1", nFileName);
+		SetError("Unable to access input file: %1\n\nFile: %1\nPath: %2", File(nFileName).GetFileName(), File(nFileName).GetFilePath());
 
 		delete stream;
 
@@ -64,11 +59,19 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 
 	/* Create decoder component.
 	 */
-	decoder = boca.CreateDecoderForStream(nFileName);
+	if (track.decoderID != NIL && track.fileName == nFileName)
+	{
+		decoder = (DecoderComponent *) boca.CreateComponentByID(track.decoderID);
+		decoder->SetConfiguration(configuration);
+	}
+	else
+	{
+		decoder = boca.CreateDecoderForStream(nFileName, configuration);
+	}
 
 	if (decoder == NIL)
 	{
-		BoCA::Utilities::ErrorMessage("Cannot create decoder component for input file: %1", nFileName);
+		SetError("Could not create decoder component for input file: %1\n\nFile: %1\nPath: %2", File(nFileName).GetFileName(), File(nFileName).GetFilePath());
 
 		delete stream;
 
@@ -77,33 +80,24 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 		return False;
 	}
 
-	/* Lock decoder if it's not thread safe.
+	/* Lock component if it's not thread safe.
 	 */
-	if (!decoder->IsThreadSafe())
-	{
-		managementMutex.Lock();
-
-		if (mutexes.Get(decoder->GetID().ComputeCRC32()) == NIL) mutexes.Add(new Threads::Mutex(), decoder->GetID().ComputeCRC32());
-
-		managementMutex.Release();
-
-		mutexes.Get(decoder->GetID().ComputeCRC32())->Lock();
-	}
+	LockComponent(decoder);
 
 	/* Add decoder to stream.
 	 */
 	Track	 trackInfo = track;
 
-	trackInfo.origFilename = nFileName;
+	trackInfo.fileName = nFileName;
 
 	decoder->SetConfiguration(configuration);
 	decoder->SetAudioTrackInfo(trackInfo);
 
 	if (stream->SetFilter(decoder) == False)
 	{
-		BoCA::Utilities::ErrorMessage("Cannot set up decoder for input file: %1\n\nError: %2", File(nFileName).GetFileName(), decoder->GetErrorString());
+		SetError("Could not set up decoder for input file: %1\n\nFile: %1\nPath: %2\n\nError: %3", File(nFileName).GetFileName(), File(nFileName).GetFilePath(), decoder->GetErrorString());
 
-		if (!decoder->IsThreadSafe()) mutexes.Get(decoder->GetID().ComputeCRC32())->Release();
+		UnlockComponent(decoder);
 
 		delete stream;
 
@@ -124,7 +118,7 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 
 		while (bytesLeft)
 		{
-			buffer.Resize(Math::Min((Int64) 1024, bytesLeft));
+			buffer.Resize(Math::Min(Int64(1024), bytesLeft));
 
 			bytesLeft -= Read(buffer);
 		}
@@ -144,9 +138,9 @@ Bool freac::Decoder::Destroy()
 
 	stream->RemoveFilter();
 
-	if (decoder->GetErrorState()) BoCA::Utilities::ErrorMessage("Error: %1", decoder->GetErrorString());
+	if (decoder->GetErrorState()) SetError("Error: %1", decoder->GetErrorString());
 
-	if (!decoder->IsThreadSafe()) mutexes.Get(decoder->GetID().ComputeCRC32())->Release();
+	UnlockComponent(decoder);
 
 	delete stream;
 
@@ -165,6 +159,8 @@ Bool freac::Decoder::Destroy()
 
 Bool freac::Decoder::GetStreamInfo(Track &track) const
 {
+	if (decoder == NIL) return False;
+
 	return decoder->GetStreamInfo(fileName, track);
 }
 
@@ -188,21 +184,29 @@ Int freac::Decoder::Read(Buffer<UnsignedByte> &buffer)
 
 Bool freac::Decoder::Seek(Int64 sample)
 {
+	if (decoder == NIL) return False;
+
 	return decoder->Seek(sampleOffset + sample);
 }
 
 Int64 freac::Decoder::GetInBytes() const
 {
+	if (decoder == NIL) return 0;
+
 	return decoder->GetInBytes();
 }
 
 String freac::Decoder::GetDecoderName() const
 {
+	if (decoder == NIL) return String();
+
 	return decoder->GetName();
 }
 
 Void freac::Decoder::SetCalculateMD5(Bool calculateMD5)
 {
+	if (decoder == NIL) return;
+
 	decoder->SetCalculateMD5(calculateMD5);
 }
 
@@ -211,11 +215,4 @@ String freac::Decoder::GetMD5Checksum()
 	Destroy();
 
 	return md5Sum;
-}
-
-Void freac::Decoder::FreeLockObjects()
-{
-	foreach (Threads::Mutex *mutex, mutexes) delete mutex;
-
-	mutexes.RemoveAll();
 }

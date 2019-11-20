@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Eric Le Carre &lt;e.lecarre@hotmail.com&gt;, Grégoire Chabord, Philippe Grivel &lt;phgrivel@gmail.com&gt;</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">OK</entry>
@@ -374,33 +374,36 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 est disponible en %2 langues. Si votre langue n'est pas&#10;disponible, vous pouvez facilement traduire %1 à l'aide de&#10;l'application 'smooth Translator'.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 prend en charge les encodeurs LAME, Ogg Vorbis,&#10;FAAC, FLAC et Bonk. L'encodeur pour le format VQF est&#10;disponible sur le site Web de %1 : %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 prend en charge les encodeurs LAME, Ogg Vorbis,&#10;FAAC, FLAC et Opus. L'encodeur pour le format VQF est&#10;disponible sur le site Web de %1 : %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 peut exploiter les plug-ins d'entrée de Winamp 2 afin de&#10;prendre en charge un plus grand nombre de formats de fichiers.&#10;Copiez les fichiers in_*.dll dans le répertoire %1/plugins pour&#10;faire en sorte que %1 lise ces formats.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1 vous permet de soumettre des entrées de base de&#10;données de CD freedb comportant des caractères Unicode.&#10;Si vous avez des CD comportant des noms d'artistes ou des&#10;titres non latins, vous pouvez soumettre les bonnes entrées&#10;freedb avec %1.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Pour corriger les erreurs de lecture lors de l'extraction, vous pouvez&#10;activer la correction d'instabilité dans l'onglet Ripper de la boîte&#10;de dialogue de configuration de %1. Si cela ne marche pas,&#10;essayez d'utiliser l'un des modes Paranoïa.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Vous avez des idées sur la manière d'améliorer %1 ?&#10;Vous pouvez les soumettre à l'aide du Tracker sur la page du&#10;projet %1 chez SourceForge - %2&#10;ou envoyer un message à %3.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Vous avez des idées sur la manière d'améliorer %1 ?&#10;&#10;Vous pouvez les soumettre à l'aide du tracker sur la page du&#10;projet %1 chez %2 - %3&#10;ou envoyer un message à %4.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Vous appréciez %1 ? %1 est disponible gratuitement,&#10;mais vous pouvez aider à son financement en faisant un don&#10;au projet %1. Vous pouvez envoyer de l'argent à&#10;%2 grâce à PayPal.&#10;Voir %3 pour plus de détails.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">La tâche d'encodage est toujours en cours d'exécution ! Voulez-vous vraiment quitter ?</entry>
-      <entry id="7001" string="Currently converting">Encodage en cours</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Impossible de charger les pilotes ASPI ! Extraction du CD désactivée !</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Impossible d'ouvrir le fichier : %1&#10;&#10;%2</entry>
-      <entry id="7006" string="Delete original files after encoding">Supprimer fichiers initiaux après encodage</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Cette option va supprimer les fichiers initiaux après leur&#10;encodage ! Voulez-vous vraiment continuer ?</entry>
-      <entry id="7008" string="File already exists">Le fichier existe déjà.</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Le fichier de sortie %1&#10;existe déjà ! Voulez-vous le remplacer ?</entry>
-      <entry id="7010" string="Overwrite all further files">Ecraser tous les autres fichiers</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">La prise en charge CDDB est désactivée ! Activez la prise en charge locale ou&#10;distante dans la boîte de dialogue de configuration.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">La prise en charge CDDB distante est désactivée ! Activez la prise en charge&#10;distante dans la boîte de dialogue de configuration.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows a refusé l'accès aux lecteurs de CD-ROM.&#10;&#10;Adressez-vous à votre administrateur système pour&#10;obtenir le droit d'accès au lecteur de CD-ROM.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Impossible d'accéder au fichier d'entrée : %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Impossible d'accéder au fichier de sortie : %1</entry>
-      <entry id="7016" string="File not found">Fichier non trouvé</entry>
-      <entry id="7017" string="Unknown file type">Type de fichier inconnu</entry>
-      <entry id="7018" string="Unsupported audio format">Format audio non supporté</entry>
-      <entry id="7019" string="Unknown error">Erreur inconnue</entry>
+      <entry id="7000" string="Currently converting">Encodage en cours</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">La tâche d'encodage est toujours en cours d'exécution ! Voulez-vous vraiment quitter ?</entry>
+      <entry id="7002" string="Delete original files after encoding">Supprimer fichiers initiaux après encodage</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Cette option va supprimer les fichiers initiaux après leur&#10;encodage ! Voulez-vous vraiment continuer ?</entry>
+      <entry id="7005" string="File already exists">Le fichier existe déjà.</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Le fichier de sortie %1&#10;existe déjà ! Voulez-vous le remplacer ?</entry>
+      <entry id="7007" string="Overwrite all further files">Ecraser tous les autres fichiers</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Impossible d'accéder au fichier d'entrée : %1&#10;&#10;Fichier : %1&#10;Répertoire : %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Impossible d'accéder au fichier de sortie : %1&#10;&#10;Fichier : %1&#10;Répertoire : %2</entry>
+      <entry id="7110" string="File not found">Fichier non trouvé</entry>
+      <entry id="7111" string="Unknown file type">Type de fichier inconnu</entry>
+      <entry id="7113" string="Unsupported audio format">Format audio non supporté</entry>
+      <entry id="7114" string="Unknown error">Erreur inconnue</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Impossible de charger les pilotes ASPI ! Extraction du CD désactivée !</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Impossible d'ouvrir le fichier : %1&#10;&#10;%2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">La prise en charge CDDB est désactivée ! Activez la prise en charge locale ou&#10;distante dans la boîte de dialogue de configuration.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">La prise en charge CDDB distante est désactivée ! Activez la prise en charge&#10;distante dans la boîte de dialogue de configuration.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows a refusé l'accès aux lecteurs de CD-ROM.&#10;&#10;Adressez-vous à votre administrateur système pour&#10;obtenir le droit d'accès au lecteur de CD-ROM.</entry>
     </section>
 
     <section name="Dialogs">
@@ -425,7 +428,7 @@
       <entry id="9009" string="No scratch repair">Ne pas corriger les éraflures</entry>
       <entry id="9010" string="Full cdparanoia mode">Mode cdparanoia complet</entry>
       <entry id="9011" string="Activate jitter correction">Activer correction d'instabilité</entry>
-      <entry id="9012" string="Swap left/right channel">Intervertir canal gauche/droit</entry>
+      <entry id="9012" string="Switch stereo channels">Intervertir canal gauche/droit</entry>
       <entry id="9013" string="Automatization">Automatisation</entry>
       <entry id="9014" string="Read CD contents on insert">Lire le CD à l'insertion</entry>
       <entry id="9015" string="Start ripping automatically">Lancer extraction auto.</entry>

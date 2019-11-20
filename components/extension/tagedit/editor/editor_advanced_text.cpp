@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -15,7 +15,7 @@
 BoCA::LayerEditText::LayerEditText() : Layer()
 {
 	text_label	= new Text("Value:", Point(7, 10));
-	edit_value	= new EditBox(NIL, Point(text_label->GetUnscaledTextWidth() + 14, 7), Size(280, 0), 255);
+	edit_value	= new EditBox(Point(text_label->GetUnscaledTextWidth() + 14, 7), Size(280, 0), 255);
 
 	Add(text_label);
 	Add(edit_value);

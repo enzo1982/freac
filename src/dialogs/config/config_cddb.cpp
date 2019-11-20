@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -62,7 +62,7 @@ freac::ConfigureCDDB::ConfigureCDDB()
 	text_dir	= new Text(i18n->AddColon(i18n->TranslateString("CDDB path")), Point(16, 26));
 	edit_dir	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbDirectoryID, Config::FreedbDirectoryDefault), Point(122, 23), Size(119, 0), 0);
 
-	button_browse	= new Button(i18n->TranslateString("Select"), NIL, Point(271, 22), Size());
+	button_browse	= new Button(i18n->TranslateString("Select"), Point(271, 22), Size());
 	button_browse->onAction.Connect(&ConfigureCDDB::SelectDir, this);
 
 	group_cddb	= new GroupBox(NIL, Point(7, 66), Size(354, 125));
@@ -81,16 +81,16 @@ freac::ConfigureCDDB::ConfigureCDDB()
 	text_port	= new Text(i18n->AddColon(i18n->TranslateString("Port")), Point(285, 108));
 	text_port->SetX(306 - text_port->GetUnscaledTextWidth());
 
-	edit_port	= new EditBox(NIL, Point(314, 105), Size(37, 0), 5);
+	edit_port	= new EditBox(Point(314, 105), Size(37, 0), 5);
 	edit_port->SetFlags(EDB_NUMERIC);
 
 	text_email	= new Text(i18n->AddColon(i18n->TranslateString("eMail address")), Point(16, 135));
 	edit_email	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault), Point(122, 132), Size(146, 0), 0);
 
-	button_http	= new Button(i18n->TranslateString("HTTP settings"), NIL, Point(17, 159), Size(163, 0));
+	button_http	= new Button(i18n->TranslateString("HTTP settings"), Point(17, 159), Size(163, 0));
 	button_http->onAction.Connect(&ConfigureCDDB::HTTPSettings, this);
 
-	button_proxy	= new Button(i18n->TranslateString("Proxy settings"), NIL, Point(188, 159), Size(163, 0));
+	button_proxy	= new Button(i18n->TranslateString("Proxy settings"), Point(188, 159), Size(163, 0));
 	button_proxy->onAction.Connect(&ConfigureCDDB::ProxySettings, this);
 
 	group_cddb_auto = new GroupBox(i18n->TranslateString("Automatization"), Point(369, 11), Size(190, 68));

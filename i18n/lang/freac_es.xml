@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Will</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">Aceptar</entry>
@@ -203,6 +203,7 @@
       <entry id="3049" string="Output file name">Nombre de archivo de salida</entry>
       <entry id="3050" string="verifying">comprobando</entry>
       <entry id="3051" string="Open">Abrir</entry>
+      <entry id="3052" string="CD drive">Lector CD</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Carpeta</entry>
@@ -393,7 +394,7 @@
 	<entry id="5111" string="Encode to a single file">Unir en un solo archivo</entry>
 	<entry id="5112" string="Output filenames">Nombre de archivos de salida</entry>
 	<entry id="5113" string="Allow Unicode characters">Permitir caracteres Unicode</entry>
-	<entry id="5114" string="Replace spaces">Reemplazar espacios</entry>
+	<entry id="5114" string="Replace spaces with underscores">Reemplazar espacios</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Quitar archivos procesados de la lista</entry>
 	<entry id="5116" string="Add encoded files to joblist">Añadir archivos codificados a la lista</entry>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Numerar consecutivamente nombres de archivo iguales</entry>
@@ -520,13 +521,14 @@
 	  <entry id="5663" string="Sampling rate">Tasa de muestreo</entry>
 	  <entry id="5664" string="Channels">Canales</entry>
 	  <entry id="5665" string="Sample resolution">Resolución de la muestra</entry>
+	  <entry id="5666" string="CD drive">Lector CD</entry>
 	</section>
       </section>
 
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Proceso paralelo</entry>
 	<entry id="5701" string="Enable parallel processing">Habilitar proceso paralelo</entry>
-	<entry id="5702" string="Enable SuperFast mode (experimental)">Habilitar modo Superrápido (experimental)</entry>
+	<entry id="5702" string="Enable SuperFast mode">Habilitar modo Superrápido</entry>
 	<entry id="5703" string="Number of conversion threads">Número de hilos de conversión</entry>
 	<entry id="5704" string="auto">automático</entry>
 	<entry id="5705" string="Process priority">Prioridad del proceso</entry>
@@ -574,42 +576,45 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 se ha traducido ya a %2 idiomas. Si no lo está&#10;en el suyo, puede traducir fácilmente&#10;%1 utilizando la aplicación 'smooth Translator'.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 incluye soporte para codificar LAME, Ogg Vorbis, FAAC,&#10;FLAC y Bonk. Un codificador para el formato VQF está&#10;disponible en el sitio de %1: %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 incluye soporte para codificar LAME, Ogg Vorbis, FAAC,&#10;FLAC y Opus. Un codificador para el formato VQF está&#10;disponible en el sitio de %1: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 puede usar los plugins de entrada de Winamp 2 para&#10;manejar más formatos. Copie los archivos in_*.dll a la carpeta&#10;%1\plugins para que %1 lea esos formatos.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Con %1 puede enviar registros de CD freedb que contengan&#10;caracteres Unicode. De esta manera, si posee CDs con nombres&#10;de artistas o títulos que no estén en alfabetización latina, puede&#10;enviar los datos correctos a freedb con %1.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Para corregir los errores de lectura durante el proceso de&#10;extracción, puede activar la función Correción Jitter en la&#10;ficha Extractor de la configuración. Si eso no ayuda, intente utilizar&#10;alguno de los modos paranoia.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">¿Tiene alguna sugerencia para mejorar %1? Puede&#10;enviar sus ideas a través del Tracker en el sitio de %1&#10;ubicado en SourceForge - %2&#10;o enviar un correo a %3.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">¿Tiene alguna sugerencia para mejorar %1?&#10;&#10;Puede enviar sus ideas a través del tracker en el sitio de %1&#10;ubicado en %2 - %3&#10;o enviar un correo a %4.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">¿Le gusta %1? %1 es gratuito,&#10;pero puede ayudar a su desarrollo&#10;haciendo una donación. Puede enviar dinero a&#10;%2 a través de PayPal.&#10;Vea %3 para más detalles.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">¡El proceso de compresión todavía no ha terminado! ¿Realmente quiere salir?</entry>
-      <entry id="7001" string="Currently converting">Compresión iniciada</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">¡Imposible cargar controladores ASPI! ¡Extracción del CD desactivada!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">No se puede abrir el archivo: %1&#10;&#10;%2</entry>
-      <entry id="7004" string="Cannot play a CD track while ripping from the same drive!">¡Imposible reproducir una pista de CD mientras se convierte desde el mismo disco!</entry>
-      <entry id="7005" string="Cannot start ripping while playing a track from the same drive!">¡Imposible convertir una pista desde el mismo disco mientras se reproduce!</entry>
-      <entry id="7006" string="Delete original files after encoding">Eliminar los archivos originales al terminar la codificación</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">¡Esta opción elimina los archivos originales al terminar &#10;la codificación!&#10;&#10;¿Está Ud. seguro de activar esta función?</entry>
-      <entry id="7008" string="File already exists">El archivo ya existe</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">¡El archivo de salida %1&#10;ya existe! ¿Desea sobrescribirlo?</entry>
-      <entry id="7010" string="Overwrite all further files">Sobrescribir todos los archivos siguientes</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">¡El soporte CDDB no está activado! Por favor, active un&#10;soporte CDDB local o remoto en la ventana de configuración.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">¡El soporte para la base de datos CDDB remota no está activado!&#10;Por favor, active la base de datos CDDB remota en la ventana de configuración.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">El acceso a la unidad de CD-ROM fue denegado por Windows.&#10;&#10;Por favor, contacte con su administrador de sistemas para&#10;poder acceder a la unidad de CD-ROM.</entry>
-      <entry id="7014" string="Cannot access input file: %1">No se puede acceder al archivo de entrada: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">No se puede crear el archivo de salida: %1</entry>
-      <entry id="7016" string="File not found">Archivo no encontrado</entry>
-      <entry id="7017" string="Unknown file type">Tipo de archivo desconocido</entry>
-      <entry id="7018" string="Unsupported audio format">Formato de audio no soportado</entry>
-      <entry id="7019" string="Unknown error">Error desconocido</entry>
-      <entry id="7020" string="No configuration dialog available for:&#10;&#10;%1">No hay diálogo de configuración para:&#10;&#10;%1</entry>
-      <entry id="7021" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Parece que quiere convertir un formato con pérdida en uno sin ella.&#10;&#10;Por favor, compruebe si puede deshacer la pérdida de calidad, porque este&#10;proceso no puede mejorar la calidad pero sí aumentará el tamaño del archivo.</entry>
-      <entry id="7022" string="Failed to verify input file: %1">Fallo al verificar el archivo de entrada:  %1</entry>
-      <entry id="7023" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">La suma de verificación difiere en el archivo de salida: %1&#10;&#10;Suma de codificación: %2&#10;Suma de verificación: %3</entry>
-      <entry id="7024" string="The selected folder does not exist anymore!">¡La carpeta elegida ya no existe!</entry>
-      <entry id="7025" string="Keep this option enabled even after restarting %1">Mantener activa esta opción incluso después de reiniciar %1</entry>
-      <entry id="7026" string="Invalid file format">Formato de archivo inválido</entry>
+      <entry id="7000" string="Currently converting">Compresión iniciada</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">¡El proceso de compresión todavía no ha terminado! ¿Realmente quiere salir?</entry>
+      <entry id="7002" string="Delete original files after encoding">Eliminar los archivos originales al terminar la codificación</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">¡Esta opción elimina los archivos originales al terminar &#10;la codificación!&#10;&#10;¿Está Ud. seguro de activar esta función?</entry>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">Mantener activa esta opción incluso después de reiniciar %1</entry>
+      <entry id="7005" string="File already exists">El archivo ya existe</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">¡El archivo de salida %1&#10;ya existe! ¿Desea sobrescribirlo?</entry>
+      <entry id="7007" string="Overwrite all further files">Sobrescribir todos los archivos siguientes</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Parece que quiere convertir un formato con pérdida en uno sin ella.&#10;&#10;Por favor, compruebe si puede deshacer la pérdida de calidad, porque este&#10;proceso no puede mejorar la calidad pero sí aumentará el tamaño del archivo.</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">No se puede acceder al archivo de entrada: %1&#10;&#10;Archivo: %1&#10;Carpeta: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">No se puede crear el archivo de salida: %1&#10;&#10;Archivo: %1&#10;Carpeta: %2</entry>
+      <entry id="7108" string="Failed to verify input file: %1">Fallo al verificar el archivo de entrada: %1</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">La suma de verificación difiere en el archivo de salida: %1&#10;&#10;Suma de codificación: %2&#10;Suma de verificación: %3</entry>
+      <entry id="7110" string="File not found">Archivo no encontrado</entry>
+      <entry id="7111" string="Unknown file type">Tipo de archivo desconocido</entry>
+      <entry id="7112" string="Invalid file format">Formato de archivo inválido</entry>
+      <entry id="7113" string="Unsupported audio format">Formato de audio no soportado</entry>
+      <entry id="7114" string="Unknown error">Error desconocido</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">¡Imposible cargar controladores ASPI! ¡Extracción del CD desactivada!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">No se puede abrir el archivo: %1&#10;&#10;%2</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">¡Imposible reproducir una pista de CD mientras se convierte desde el mismo disco!</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">¡Imposible convertir una pista desde el mismo disco mientras se reproduce!</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">¡El soporte CDDB no está activado! Por favor, active un&#10;soporte CDDB local o remoto en la ventana de configuración.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">¡El soporte para la base de datos CDDB remota no está activado!&#10;Por favor, active la base de datos CDDB remota en la ventana de configuración.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">El acceso a la unidad de CD-ROM fue denegado por Windows.&#10;&#10;Por favor, contacte con su administrador de sistemas para&#10;poder acceder a la unidad de CD-ROM.</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">No hay diálogo de configuración para:&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">¡La carpeta elegida ya no existe!</entry>
     </section>
 
     <section name="Dialogs">
@@ -618,7 +623,7 @@
 	<entry id="8000" string="Confirm overwrite">Confirmar sobrescritura</entry>
 	<entry id="8001" string="Confirm">Confirmar</entry>
 	<entry id="8002" string="Skip all">Omitir todo</entry>
-	<entry id="8003" string="The following %1 files already exist and will be overwritten">Los siguientes %1 archivos ya existen y serán sobrescritos</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">Los siguientes %1 archivos ya existen y serán sobrescritos</entry>
 	<entry id="8004" string="Action">Acción</entry>
 	<entry id="8005" string="Overwrite">Sobrescribir</entry>
 	<entry id="8006" string="Skip">Omitir</entry>
@@ -650,7 +655,7 @@
       <entry id="9009" string="No scratch repair">No reparar chirridos</entry>
       <entry id="9010" string="Full cdparanoia mode">Modo CD paranoia completo</entry>
       <entry id="9011" string="Activate jitter correction">Activar corrección Jitter</entry>
-      <entry id="9012" string="Swap left/right channel">Intercambiar canales</entry>
+      <entry id="9012" string="Switch stereo channels">Intercambiar canales</entry>
       <entry id="9013" string="Automatization">Automatización</entry>
       <entry id="9014" string="Read CD contents on insert">Leer CD al insertarlo</entry>
       <entry id="9015" string="Start ripping automatically">Extraer automáticamente</entry>
@@ -665,27 +670,53 @@
       <entry id="9024" string="%1 seconds">%1 segundos</entry>
     </section>
 
+    <section name="Components">
+
+      <section name="Decoders">
+	<entry id="10000" string="Cue Sheet Reader">Lector de Cue Sheet</entry>
+      </section>
+
+      <section name="Encoders">
+	<entry id="11000" string="meh! - multi encoder hub">meh! - Concentrador multicodificador</entry>
+	<entry id="11001" string="SndFile Output Component">Componente de salida SndFile</entry>
+      </section>
+
+      <section name="DSP">
+	<entry id="12000" string="Channel Converter">Conversor de canales</entry>
+	<entry id="12001" string="Sample Format Converter">Conversor de formato de muestras</entry>
+	<entry id="12002" string="Sample Rate Converter">Conversor de tasa de muestreo</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">RNNoise Reducción de ruido</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Ajuste de tempo y tono Rubber Band</entry>
+      </section>
+
+      <section name="Extensions">
+	<entry id="15000" string="Notifications">Notificador de conversión</entry>
+	<entry id="15001" string="Logging">Visor de protocolos</entry>
+	<entry id="15002" string="YouTube Video Downloader">Descargador de vídeo de YouTube</entry>
+      </section>
+    </section>
+
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="10000" string="Decoding">Decodificar</entry>
-	<entry id="10001" string="Enable 24 bit decoding">Activar decodificación de 24 bits</entry>
+	<entry id="20000" string="Decoding">Decodificar</entry>
+	<entry id="20001" string="Enable 24 bit decoding">Activar decodificación de 24 bits</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="11000" string="Decoder">Decodificador</entry>
-	<entry id="11001" string="Active decoder">Decodificador activo</entry>
-	<entry id="11002" string="auto select">autoselección</entry>
+	<entry id="21000" string="Decoder">Decodificador</entry>
+	<entry id="21001" string="Active decoder">Decodificador activo</entry>
+	<entry id="21002" string="auto select">autoselección</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="12000" string="Title information">Información del título</entry>
-	<entry id="12001" string="Read tags from referenced files">Leer etiquetas de los archivos de referencia</entry>
-	<entry id="12002" string="Prefer cue sheet metadata over referenced files' tags">Preferir metadatos de cue sheet que etiquetas de los archivos de referencia</entry>
-	<entry id="12003" string="Alternative files">Archivos alternativos</entry>
-	<entry id="12004" string="Look for compressed alternatives if referenced Wave files cannot be located">Buscar alternativas de compresión si los archivos Wave de referencia no pueden localizarse</entry>
-	<entry id="12005" string="Error handling">Error en proceso</entry>
-	<entry id="12006" string="Ignore errors during cue sheet processing">Ignorar errores al procesar cue sheet</entry>
+	<entry id="22000" string="Title information">Información del título</entry>
+	<entry id="22001" string="Read tags from referenced files">Leer etiquetas de los archivos de referencia</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Preferir metadatos de cue sheet que etiquetas de los archivos de referencia</entry>
+	<entry id="22003" string="Alternative files">Archivos alternativos</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Buscar alternativas de compresión si los archivos Wave de referencia no pueden localizarse</entry>
+	<entry id="22005" string="Error handling">Error en proceso</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">Ignorar errores al procesar cue sheet</entry>
       </section>
     </section>
 
@@ -989,6 +1020,7 @@
 	<entry id="50101" string="Channel configuration">Configuración del canal</entry>
 	<entry id="50102" string="Mono">Mono</entry>
 	<entry id="50103" string="Stereo">Estéreo</entry>
+	<entry id="50104" string="Switch stereo channels">Intercambiar canales</entry>
       </section>
 
       <section name="Resample">
@@ -1073,7 +1105,7 @@
 	<entry id="80206" string="high, new">alta, nueva</entry>
 	<entry id="80207" string="extra, new">extra, nueva</entry>
 	<entry id="80208" string="best, new">la mejor, nueva</entry>
-	<entry id="80209" string="Store MD5 of original PCM data">Guardar MD5 de los datos originales PCM</entry>
+	<entry id="80209" string="Add MD5 checksum">Guardar MD5 de los datos originales PCM</entry>
 	<entry id="80210" string="Seeking">Buscando</entry>
 	<entry id="80211" string="slow">lenta</entry>
 	<entry id="80212" string="minimum">mínimo</entry>
@@ -1122,6 +1154,7 @@
 	<entry id="100004" string="Thank you very much!">¡Muchas gracias!</entry>
 	<entry id="100005" string="Remind me later">Recordármelo más tarde</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100007" string="Donate to the %1 project">Donar al proyecto %1</entry>
 
 	<section name="PayPal">
 	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Escoja una cantidad y clique el botón para donar con Paypal:</entry>
@@ -1263,17 +1296,30 @@
 	</section>
       </section>
 
-      <section name="Protocols">
-	<entry id="104000" string="Protocols">Protocolos</entry>
-	<entry id="104001" string="Protocol">Protocolo</entry>
-	<entry id="104002" string="Errors / Warnings">Errores / Avisos</entry>
-	<entry id="104003" string="Details">Detalles</entry>
+      <section name="Logging">
+	<entry id="104000" string="Logs">Protocolos</entry>
+	<entry id="104001" string="Log">Protocolo</entry>
 	<entry id="104004" string="Time">Hora</entry>
 	<entry id="104005" string="Message">Mensaje</entry>
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface">Interfaz de usuario</entry>
-	  <entry id="104101" string="Show Protocols tab in main window">Mostrar pestaña de protocolos en la ventana principal</entry>
+	  <entry id="104101" string="Show Logs tab in main window">Mostrar pestaña de protocolos en la ventana principal</entry>
+	</section>
+      </section>
+
+      <section name="Notifier">
+	<entry id="105000" string="Conversion process finished!">¡Conversión acabada!</entry>
+
+	<section name="Configuration">
+	  <entry id="105100" string="Notifications">Notificaciones</entry>
+	  <entry id="105101" string="Notify on finished conversion">Notificar al acabar la conversión</entry>
+	  <entry id="105102" string="Play sound">Reproducir</entry>
+	  <entry id="105103" string="Display message">Mostrar mensaje</entry>
+	  <entry id="105104" string="Select">Elegir</entry>
+	  <entry id="105105" string="Only for conversions running longer than">Sólo en conversiones que duren más de</entry>
+	  <entry id="105106" string="second(s)">segundo(s)</entry>
+	  <entry id="105107" string="minute(s)">minuto(s)</entry>
 	</section>
       </section>
     </section>

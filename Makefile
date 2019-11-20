@@ -2,12 +2,13 @@
 
 include $(dir $(firstword $(MAKEFILE_LIST)))/Makefile-options
 
-INCLUDE	= $(SRCDIR)/include
-OBJECTS	= objects
-SRC	= src
+INCLUDE	  = $(SRCDIR)/include
+OBJECTS	  = objects
+RESOURCES = resources
+SRC	  = src
 
-BIN	= bin
-LIB	= lib
+BIN	  = bin
+LIB	  = lib
 
 ifeq ($(BUILD_WIN32),True)
 ifeq ($(BUILD_X86_64),True)
@@ -16,16 +17,13 @@ ifeq ($(BUILD_X86_64),True)
 endif
 endif
 
-RESOURCES   = resources
-BINRES	    = $(RESOURCES)/binary
-
 DLLOBJECTS  = $(OBJECTS)/cddb.o $(OBJECTS)/cddbbatch.o $(OBJECTS)/cddbcache.o $(OBJECTS)/cddbinfo.o $(OBJECTS)/cddblocal.o $(OBJECTS)/cddbremote.o
 DLLOBJECTS += $(OBJECTS)/cddb_extsettings.o $(OBJECTS)/cddb_manage.o $(OBJECTS)/cddb_managequeries.o $(OBJECTS)/cddb_managesubmits.o $(OBJECTS)/cddb_multimatch.o $(OBJECTS)/cddb_query.o $(OBJECTS)/cddb_submit.o
 DLLOBJECTS += $(OBJECTS)/dialog_config.o $(OBJECTS)/config_cddb.o $(OBJECTS)/config_dsp.o $(OBJECTS)/config_encoders.o $(OBJECTS)/config_interface.o $(OBJECTS)/config_language.o $(OBJECTS)/config_playlists.o $(OBJECTS)/config_resources.o $(OBJECTS)/config_tags.o $(OBJECTS)/config_verification.o $(OBJECTS)/configcomponent.o $(OBJECTS)/configentry.o
 DLLOBJECTS += $(OBJECTS)/adddirectory.o $(OBJECTS)/addpattern.o $(OBJECTS)/charset.o $(OBJECTS)/error.o $(OBJECTS)/format.o $(OBJECTS)/overwrite.o
-DLLOBJECTS += $(OBJECTS)/engine_converter.o $(OBJECTS)/engine_decoder.o $(OBJECTS)/engine_encoder.o $(OBJECTS)/engine_locking.o $(OBJECTS)/engine_processor.o $(OBJECTS)/engine_verifier.o $(OBJECTS)/engine_worker.o $(OBJECTS)/engine_worker_singlefile.o
+DLLOBJECTS += $(OBJECTS)/engine_component.o $(OBJECTS)/engine_converter.o $(OBJECTS)/engine_decoder.o $(OBJECTS)/engine_encoder.o $(OBJECTS)/engine_locking.o $(OBJECTS)/engine_processor.o $(OBJECTS)/engine_verifier.o $(OBJECTS)/engine_worker.o $(OBJECTS)/engine_worker_singlefile.o
 DLLOBJECTS += $(OBJECTS)/edit_folder.o $(OBJECTS)/layer_tooltip.o $(OBJECTS)/main_joblist.o $(OBJECTS)/main_threads.o $(OBJECTS)/player.o
-DLLOBJECTS += $(OBJECTS)/job_convert.o $(OBJECTS)/job_adddirectory.o $(OBJECTS)/job_addfiles.o $(OBJECTS)/job_addtracks.o $(OBJECTS)/job_removeall.o $(OBJECTS)/job_removedisc.o $(OBJECTS)/job_checkforupdates.o $(OBJECTS)/job.o $(OBJECTS)/jobmanager.o
+DLLOBJECTS += $(OBJECTS)/job_convert.o $(OBJECTS)/job_addfiles.o $(OBJECTS)/job_addfolders.o $(OBJECTS)/job_addtracks.o $(OBJECTS)/job_removeall.o $(OBJECTS)/job_removedisc.o $(OBJECTS)/job_checkforupdates.o $(OBJECTS)/job.o $(OBJECTS)/jobmanager.o
 DLLOBJECTS += $(OBJECTS)/config.o $(OBJECTS)/dllinterfaces.o $(OBJECTS)/freac.o $(OBJECTS)/joblist.o $(OBJECTS)/playback.o $(OBJECTS)/progress.o $(OBJECTS)/startconsole.o $(OBJECTS)/startgui.o $(OBJECTS)/utilities.o
 
 ifeq ($(BUILD_WIN32),True)
@@ -50,6 +48,10 @@ ifeq ($(BUILD_WIN32),True)
 	endif
 endif
 
+ifeq ($(BUILD_HAIKU),True)
+	RESFILES = $(RESOURCES)/resources.rsrc
+endif
+
 EXEOBJECTS = $(OBJECTS)/gui.o
 CMDOBJECTS = $(OBJECTS)/console.o
 
@@ -58,11 +60,10 @@ CMDNAME	= $(BIN)/freaccmd$(EXECUTABLE)
 DLLNAME	= $(BIN)/freac$(SHARED)
 LIBNAME	= $(OBJECTS)/libfreac.a
 
-RESCOMP	     = windres
-REMOVER	     = rm
 CCOPTS	     = -I$(INCLUDE) -fvisibility=hidden -c
 LDOPTS	     = -lstdc++
-RESCOMP_OPTS = -O coff
+
+REMOVER	     = rm
 REMOVER_OPTS = -f
 
 ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
@@ -77,6 +78,9 @@ ifeq ($(BUILD_WIN32),True)
 	LDOPTS_DLL		+= --shared -lboca -lws2_32 -Wl,--out-implib,$(LIBNAME)
 	LDOPTS_GUI		+= -mwindows
 
+	RESCOMP			 = windres
+	RESCOMP_OPTS		 = -O coff
+
 	ifeq ($(BUILD_X86),True)
 		RESCOMP_OPTS	+= --target=pe-i386
 	else ifeq ($(BUILD_X86_64),True)
@@ -89,14 +93,12 @@ else
 	ifneq ($(BUILD_HAIKU),True)
 		CCOPTS	+= -pthread
 
-		ifneq ($(BUILD_LINUX),True)
 		ifneq ($(BUILD_OSX),True)
 			ifeq ($(BUILD_NETBSD),True)
 				CCOPTS += -I/usr/pkg/include
 			else
 				CCOPTS += -I/usr/local/include
 			endif
-		endif
 		endif
 	endif
 	endif
@@ -115,18 +117,23 @@ else
 		LDOPTS_GUI	+= -L/usr/X11R6/lib -L/usr/local/lib -logg -lvorbis -lvorbisfile
 		LDOPTS_CMD	+= -L/usr/X11R6/lib -L/usr/local/lib -logg -lvorbis -lvorbisfile
 	endif
+
+	ifeq ($(BUILD_HAIKU),True)
+		RESCOMP		 = rc
+		RESLINKER	 = xres
+	endif
 endif
 
-.PHONY: all folders ressources install uninstall clean clean_ressources
+.PHONY: all folders resources install uninstall clean clean_resources
 
-all: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME) ressources
+all: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(RESFILES) $(DLLNAME) $(EXENAME) $(CMDNAME) resources
 
 	+ $(call makein,components)
 
 folders:
 	mkdir -p $(BIN) $(OBJECTS)
 
-ressources: folders
+resources: folders
 ifeq ($(BUILD_WIN32),True)
 	mkdir -p $(BIN)/icons
 
@@ -191,6 +198,22 @@ ifneq ($(BUILD_WIN32),True)
 	cp -r $(SRCDIR)/i18n/manual $(DESTDIR)$(datadir)/doc/freac
 	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/doc/freac/manual
 
+ifneq ($(BUILD_OSX),True)
+ifneq ($(BUILD_HAIKU),True)
+	$(INSTALL) -d $(DESTDIR)$(datadir)/applications/
+	$(INSTALL) -d $(DESTDIR)$(datadir)/metainfo/
+
+	$(INSTALL_DATA) $(SRCDIR)/metadata/org.freac.freac.desktop $(DESTDIR)$(datadir)/applications
+	$(INSTALL_DATA) $(SRCDIR)/metadata/org.freac.freac.appdata.xml $(DESTDIR)$(datadir)/metainfo
+
+	$(INSTALL) -d $(DESTDIR)$(datadir)/icons/hicolor/64x64/apps/
+	$(INSTALL) -d $(DESTDIR)$(datadir)/icons/hicolor/128x128/apps/
+
+	$(INSTALL_DATA) $(SRCDIR)/icons/freac-64x64.png $(DESTDIR)$(datadir)/icons/hicolor/64x64/apps/org.freac.freac.png
+	$(INSTALL_DATA) $(SRCDIR)/icons/freac.png $(DESTDIR)$(datadir)/icons/hicolor/128x128/apps/org.freac.freac.png
+endif
+endif
+
 	$(call makein,components,install)
 endif
 
@@ -212,18 +235,28 @@ ifneq ($(BUILD_WIN32),True)
 
 	rm -f -r $(DESTDIR)$(datadir)/doc/freac
 
+ifneq ($(BUILD_OSX),True)
+ifneq ($(BUILD_HAIKU),True)
+	rm -f $(DESTDIR)$(datadir)/applications/org.freac.freac.desktop
+	rm -f $(DESTDIR)$(datadir)/metainfo/org.freac.freac.appdata.xml
+
+	rm -f $(DESTDIR)$(datadir)/icons/hicolor/64x64/apps/org.freac.freac.png
+	rm -f $(DESTDIR)$(datadir)/icons/hicolor/128x128/apps/org.freac.freac.png
+endif
+endif
+
 	$(call makein,components,uninstall)
 endif
 
-clean: clean_ressources
-	$(REMOVER) $(REMOVER_OPTS) $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME) $(LIBNAME)
+clean: clean_resources
+	$(REMOVER) $(REMOVER_OPTS) $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(RESFILES) $(DLLNAME) $(EXENAME) $(CMDNAME) $(LIBNAME)
 ifneq ($(SRCDIR),$(CURDIR))
 	rmdir $(BIN) $(OBJECTS) 2> /dev/null || true
 endif
 
 	+ $(call cleanin,components)
 
-clean_ressources:
+clean_resources:
 ifeq ($(BUILD_WIN32),True)
 	rm -f -r $(BIN)/icons
 
@@ -233,23 +266,18 @@ endif
 
 $(DLLNAME): $(DLLOBJECTS)
 	$(LD) $(DLLOBJECTS) $(LDOPTS) $(LDOPTS_DLL) $(LDFLAGS) -o $@
-ifeq ($(BUILD_WIN32),True)
-ifeq ($(BUILD_X86),True)
-	countbuild BuildNumber
-endif
+ifeq ($(findstring release,$(config)),release)
+	-countbuild BuildNumber
 endif
 
-$(EXENAME): $(EXEOBJECTS) $(RESOBJECTS)
+$(EXENAME): $(EXEOBJECTS) $(RESOBJECTS) $(RESFILES)
 	$(LD) $(EXEOBJECTS) $(RESOBJECTS) $(LDOPTS) $(LDOPTS_GUI) $(LDFLAGS) -o $@
 ifeq ($(BUILD_HAIKU),True)
-	xres -o $(EXENAME) resources/binary/freac.rsrc
+	$(RESLINKER) -o $@ $(RESFILES)
 endif
 
 $(CMDNAME): $(CMDOBJECTS) $(RESOBJECTS)
 	$(LD) $(CMDOBJECTS) $(RESOBJECTS) $(LDOPTS) $(LDOPTS_CMD) $(LDFLAGS) -o $@
-ifeq ($(BUILD_HAIKU),True)
-	xres -o $(CMDNAME) resources/binary/freac.rsrc
-endif
 
 $(OBJECTS)/%.o: $(SRC)/%.cpp
 	$(CXX) $(CCOPTS) $(CXXFLAGS) $< -o $@
@@ -297,4 +325,7 @@ $(OBJECTS)/%.o: $(SRC)/support/%.mm
 	$(OBJCXX) $(CCOPTS) $(OBJCXXFLAGS) $< -o $@
 
 $(OBJECTS)/%.o: $(RESOURCES)/%.rc $(INCLUDE)/resources.h
-	$(RESCOMP) $(RESCOMP_OPTS) $< -o $@
+	$(RESCOMP) $(RESCOMP_OPTS) -o $@ $<
+
+$(RESOURCES)/%.rsrc: $(RESOURCES)/%.rdef
+	$(RESCOMP) $(RESCOMP_OPTS) -o $@ $<

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -28,19 +28,17 @@ namespace BoCA
 		private:
 			Text		*text_protocol;
 			ComboBox	*combo_protocol;
+			Button		*btn_save;
 
 			ListBox		*list_protocol;
 
-			Text		*text_errors;
-			EditBox		*edit_errors;
-			ComboBox	*combo_errors;
-			Button		*button_details;
+			Array<String>	 displayNames;
 		slots:
 			Void		 UpdateProtocolList();
 			Void		 UpdateProtocol(const String &);
 
 			Void		 SelectProtocol();
-			Void		 ShowDetails();
+			Void		 SaveProtocol();
 
 			Void		 OnChangeSize(const Size &);
 			Void		 OnChangeLanguageSettings();

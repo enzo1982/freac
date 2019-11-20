@@ -42,19 +42,50 @@ fre:ac verwendet die CDRip-Bibliothek zum CD-Rippen unter Windows.
 fre:ac verwendet die cdio-Bibliothek zum CD-Rippen unter macOS, Linux, Solaris, FreeBSD und NetBSD.
 fre:ac verwendet die cdparanoia-Bibliothek zum CD-Rippen unter Linux, FreeBSD und OpenBSD.
 
+fre:ac verwendet Audiodateien von Little Robot Sound Factory, lizenziert unter der CC BY 3.0 Lizenz.
+
 Code from FAAD2 is Copyright (c) Nero AG, www.nero.com
 
 Installation
 ------------
 
-	fre:ac steht in zwei Varianten bereit, als .exe-Datei, welche einen Installationsassistenten enthält,
-	oder alternativ als .zip-Archiv, welches nur die Anwendung ohne Installer beinhaltet.
+	Windows:
 
-	Wenn Sie die .exe-Datei heruntergeladen haben, führen Sie sie einfach aus und der Installationsassistent
-	wird Sie durch den Installationsprozess führen und Startmenüeinträge zum Starten von fre:ac anlegen.
+		fre:ac steht in zwei Varianten bereit, als .exe-Datei, welche einen Installationsassistenten enthält,
+		oder alternativ als .zip-Archiv, welches nur die Anwendung ohne Installer beinhaltet.
 
-	Wenn Sie das .zip-Archiv heruntergeladen haben, entpacken Sie bitte den Inhalt an einen Ort Ihrer Wahl
-	und starten Sie anschließend freac.exe um fre:ac auszuführen.
+		Wenn Sie die .exe-Datei heruntergeladen haben, führen Sie sie einfach aus und der Installationsassistent
+		wird Sie durch den Installationsprozess führen und Startmenüeinträge zum Starten von fre:ac anlegen.
+
+		Wenn Sie das .zip-Archiv heruntergeladen haben, entpacken Sie bitte den Inhalt an einen Ort Ihrer Wahl
+		und starten Sie anschließend freac.exe um fre:ac auszuführen.
+
+	macOS:
+
+		fre:ac steht als Apple Disk Image (.dmg) Datei bereit.
+
+		Um es zu installieren, öffnen Sie die .dmg-Datei und ziehen Sie die fre:ac Anwendung an einen Ort Ihrer Wahl,
+		z.B. den Desktop oder den Ordner Programme. Doppelklicken Sie anschließend die Anwendung, um fre:ac zu starten.
+
+	Linux:
+
+		fre:ac steht als Snap-, Flatpak- oder AppImage-Paket bereit.
+
+		Die Snap- und Flatpak-Versionen können in den jeweiligen App-Stores gefunden und von dort installiert werden. Bitte
+		beachten Sie, dass diese Versionen in restriktiven Umgebungen laufen und ggf. eingeschränkte Funktionalität bieten.
+
+		Das AppImage-Paket muss nach dem Download mit folgendem Befehl als ausführbar markiert werden:
+
+			chmod a+x freac*.AppImage
+
+		Das AppImage kann anschließend ausgeführt werden, um fre:ac zu starten.
+
+	FreeBSD:
+
+		fre:ac steht als .tar.gz-Archiv bereit.
+
+		Bitte entpacken Sie den Inhalt an einen Ort Ihrer Wahl und führen Sie anschließend die Binärdatei freac aus,
+		um fre:ac zu starten.
 
 Voraussetzungen
 ---------------
@@ -64,29 +95,29 @@ Voraussetzungen
 		Unterstützte Betriebsysteme:
 			- Windows XP/Vista/7/8.x/10
 			- macOS 10.5 Leopard oder neuer
-			- Linux (die meisten modernen Distributionen sollten funktionieren)
-			- FreeBSD/PC-BSD (getestet unter FreeBSD 10.0)
+			- Linux (die meisten modernen Distributionen werden unterstützt)
+			- FreeBSD/PC-BSD (getestet unter FreeBSD 12.0)
 			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
 			- OpenBSD (getestet unter OpenBSD 5.3)
 			- Solaris (getestet unter Solaris 11)
 			- GNU Hurd (getestet unter Debian Sid)
-			- Haiku (getestet unter Haiku x86 GCC 5 Nightly)
+			- Haiku (getestet unter Haiku R1 Beta 1)
 
 		Minimale Hardwarevoraussetzungen:
-			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 oder ARMv5 Prozessor
+			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 oder ARMv7-Prozessor
 			- 512 MB RAM
 			- 100 MB freier Festplattenplatz
 
 		Empfohlene Hardwarespezifikationen:
-			- Intel Core i3 oder AMD Phenom II Prozessor
-			- 1 GB RAM
-			- 1 GB freier Festplattenplatz
+			- Intel Core i5, AMD Ryzen 5 oder ARMv8-Prozessor
+			- 4 GB RAM
+			- 4 GB freier Festplattenplatz
 
 	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
 
 		Alle Systeme:
 
-			- smooth v0.8.74.0 (http://www.smooth-project.org/)
+			- smooth v0.9 (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -101,7 +132,7 @@ Voraussetzungen
 
 			Linux:
 
-				- libasound2, libcdio, libcdio-paranoia, libudev
+				- libcdio, libcdio-paranoia, libpulse, libudev
 
 			Solaris:
 
@@ -109,97 +140,135 @@ Voraussetzungen
 
 	Zusätzliche optionale Software:
 
-		- Die 32 Bit Version für Windows kann Winamp-Plugins verwenden, wenn diese im "plugins"-Verzeichnis abgelegt werden.
+		- Die 32 Bit Version für Windows kann Winamp-Plugins verwenden, wenn diese im Ordner "plugins" abgelegt werden.
 
 		- Einige externe Codecs können von fre:ac verwendet werden. Mehr Informationen dazu finden Sie im Benutzerhandbuch.
-
-Bekannte Probleme
------------------
-
-	Linux- und Unix-spezifische Probleme:
-
-		- Es gibt noch keine Anwendungspakete für fre:ac, so dass Abhängigkeiten derzeit noch manuell installiert werden
-		  müssen. Bitte enpacken Sie den Inhalt des Archivs in Ihr Home-Verzeichnis.
 
 Geschichte
 ----------
 
-	Version 1.1 Alpha (September 2018)
+	Version 1.1 Alpha (November 2019)
+
+		- Framework für Erweiterungskomponenten implementiert, um fre:ac zu modularisieren
 
 		- Auf macOS, Linux und BSD-Betriebssysteme portiert
-		- Framework für Erweiterungskomponenten implementiert, um fre:ac zu modularisieren
-		- Vollständig überarbeiteter Konfigurationsdialog
-		- Unterstützung für mehrere Konfigurationen hinzugefügt
-		- Multi-Encoder-Hub-Komponente hinzugefügt
-		- SuperFast Kodierungstechnologie für Multithread-Verarbeitung integriert
-		- Konvertierungen werden nun wenn möglich parallel ausgeführt
-		- Neues Design des Fortschrittsanzeigebereichs
-		- Neuer Dialog zur Bestätigung des Überschreibens vorhandener Dateien vor der Konvertierung
-		- Formatauswahl für Kodierer, die mehrere Formate unterstützen, im Kodieren-Menü ermöglicht
-		- Möglichkeit zum Bearbeiten der Konfiguration während der Konvertierung hinzugefügt
-		- Untersützung für Verifikation von verlustfreien Ein- und Ausgabedateien hinzugefügt
-		- Unterstützung für die Verarbeitung von Eingabedaten mit DSP-Filtern hinzugefügt
-		- DSP-Komponenten für Resampling, Kanal-Up-/Downmixing und Sampleformatkonvertierung hinzugefügt
-		- Unterstützung für automatische Sampleformatkonvertierung je nach Anforderungen des Kodierers hinzugefügt
-		- Unterstützung für die Ausgabe von Tracks mit verschiedenen Sampleformaten in eine einzige Ausgabedatei hinzugefügt
-		- Einfachen Tag-Editor hinzugefügt
-		- Monkey's Audiokodierer/-dekodierer hinzugefügt
-		- Speex Sprachkodierer/-dekodierer hinzugefügt
-		- Opus Audiokodierer/-dekodierer hinzugefügt
-		- Core Audio AAC-/ALAC-Kodierer hinzugefügt
-		- Unterstützung für Kommandozeilenkodierer/-dekodierer hinzugefügt
-		- Unterstützung für den TwinVQ VQF-Dekodierer hinzugefügt
-		- Unterstützung für den VisualOn AAC-Kodierer hinzugefügt
-		- Unterstützung für den Fraunhofer FDK AAC-Kodierer/-Dekodierer hinzugefügt
-		- Unterstützung für das Lesen von einfachen Audiodateien mittels libsndfile hinzugefügt
-		- Unterstützung für ID3v2-, MP4-, WMA- und Vorbis Comment-Kapitel hinzugefügt
-		- Unterstützung für das MCDI-Frame in ID3v2-Tags hinzugefügt
-		- Unterstützung für ID3v1-Tags in AAC-Dateien hinzugefügt
-		- Unterstützung für RF64- und Wave64-Dateien hinzugefügt
-		- Unterstützung für RIFF-Tagging hinzugefügt (über LIST-INFO- und Cart-Chunks)
-		- Unterstützung für Ogg FLAC-Dateien hinzugefügt
-		- Der FLAC-Kodierer schreibt jetzt Seektable Metadaten-Blöcke
-		- Parameter von freaccmd komplett überarbeitet
-		- Unterstützung für Konfigurationsauswahl in freaccmd hinzugefügt
-		- Unterstützung für Ausgabe in einzelne Datei mit freaccmd hinzugefügt
-		- Option zum Anhängen von laufenden Nummern an ansonsten identische Dateinamen hinzugefügt
-		- Platzhalter <composer>, <conductor> und <disc> hinzugefügt
-		- CDDB-Abfrage auch dann ermöglicht, wenn kein CD-Laufwerk vorhanden ist
-		- Größe der CDDB-Dialoge änderbar gemacht
-		- Vorschau zum CDDB-Trefferauswahldialog hinzugefügt
-		- Option für automatische Auswahl des ersten CDDB-Treffers hinzugefügt
-		- Unterstützung für CDDB-Abfrage per HTTP GET hinzugefügt
-		- Kontextmenü für Texteingabefelder hinzugefügt
-		- Unterstützung für das Auslesen von ISRC-Codes von CDs hinzugefügt
-		- Unterstützung für das Rippen von versteckten tracks (HTOA) hinzugefügt
-		- Konfigurationsoption für Offset beim Rippen hinzugefügt
-		- Konfigurationsoption hinzugefügt, konvertierte Tracks in der Jobliste stehen zu lassen
-		- Konfigurationsoption hinzugefügt, kodierte Dateien in die Jobliste aufzunehmen
-		- Unterstützung für das Öffnen von Cuesheets hinzugefügt
-		- Unterstützung für Vorbis-Dateien mit der Dateiendung .oga hinzugefügt
-		- Unterstützung für XSPF-, Windows Media- und PLS-Playlisten hinzugefügt
-		- Slider zum Springen während der Wiedergabe hinzugefügt
-		- Wiedergabe während laufender Konvertierung ermöglicht
-		- Warnung beim Konvertieren von verlustbehafteten in verlustfreie Formate hinzugefügt
-		- Möglichkeit zur Sortierung der Jobliste durch Klick auf Überschriften hinzugefügt
-		- Grundlegende Untersützung für Mehrkanal-Audio hinzugefügt
-		- Möglichkeit zur Einstellung der Prozesspriorität unter Windows hinzugefügt
-		- Schaltfläche zum Öffnen des Ausgabeordners hinzugefügt
-		- Unterstützung zum Erzeugen getrennter Playlisten bzw. Cuesheets pro Album in einer Konvertierung hinzugefügt
-		- RNNoise DSP-Komponente zur Rauschreduzierung bei Sprachaufnahmen hinzugefügt
-		- Rubber Band Time-Stretching DSP-Komponente hinzugefügt
-		- Die Restzeitanzeige zeigt falls notwendig nun auch Stunden an
-		- Die fünf zuletzt verwendeten Ausgabeordner werden jetzt für späteren Zugriff gespeichert
-		- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
-		- Die Schaltfläche zum Öffnen des CD-Laufwerks schließt das Laufwerk nun, wenn es bereits offen ist
-		- Groß-/Kleinschreibungs-Konvertierungsfunktionen stark verbessert
-		- Der Fortschritt einer Konvertierung wird unter Windows 7 und neuer in der Taskleiste angezeigt
-		- Überspringen von Tracks ist beim Konvertieren in eine einzige Datei nicht mehr möglich
-		- Fehler in Cuesheets für mehrere Titel in einer Datei behoben
-		- Benutzerfreundlichkeit der Titelinfopflege verbessert
-		- Metadaten-Extraktion aus Pfaden verbessert
-		- Native Unterstützung für die x64-Platform hinzugefügt
-		- CDRip auf Version 2.2 aktualisiert (mit cdparanoia III Version 10.2)
+		- Native Unterstützung für die 64 Bit Windows-Platform hinzugefügt
+
+		- Unterstützung für Multi-Threading
+
+			- Konvertierungen werden nun wenn möglich parallel ausgeführt
+			- SuperFast Kodierungstechnologie für Multithread-Verarbeitung integriert
+			- Hinzufügen von Dateien zur Jobliste kann nun mehrere Threads nutzen
+
+		- Größere neue Funktionen
+
+			- Untersützung für Mehrkanal-Audio hinzugefügt
+			- Unterstützung für Verifikation von verlustfreien Ein- und Ausgabedateien hinzugefügt
+			- Unterstützung für die Verarbeitung von Eingabedaten mit DSP-Filtern hinzugefügt
+			- Unterstützung für das Schreiben von Konvertierungsprotokolldateien hinzugefügt
+			- Unterstützung für die Verwaltung mehrerer Konfigurationen hinzugefügt
+			- Tag-Editor-Komponente hinzugefügt
+			- Multi-Encoder-Komponente für gleichzeitige Ausgabe in mehrere Formate hinzugefügt
+
+		- Verbesserungen der Benutzeroberfläche
+
+			- Vollständig überarbeiteter Konfigurationsdialog
+			- Möglichkeit zum Bearbeiten der Konfiguration während der Konvertierung hinzugefügt
+			- Möglichkeit zur Sortierung der Jobliste durch Klick auf Überschriften hinzugefügt
+			- Formatauswahl für Kodierer, die mehrere Formate unterstützen, im Kodieren-Menü ermöglicht
+			- Neuer Dialog zur Bestätigung des Überschreibens vorhandener Dateien vor der Konvertierung
+			- Neues Design des Fortschrittsanzeigebereichs
+			- Schaltfläche zum Öffnen des Ausgabeordners hinzugefügt
+			- Die Restzeitanzeige zeigt falls notwendig nun auch Stunden an
+			- Die fünf zuletzt verwendeten Ausgabeordner werden jetzt für späteren Zugriff gespeichert
+			- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
+
+		- Verbesserungen bei Dateikonvertierungen
+
+			- Unterstützung für automatische Sampleformatkonvertierung je nach Anforderungen des Kodierers hinzugefügt
+			- Unterstützung für die Ausgabe von Tracks mit verschiedenen Sampleformaten in eine einzige Ausgabedatei hinzugefügt
+			- Optionen zum Abspielen von Benachrichtigungstönen bei beendeter Konvertierung hinzugefügt
+			- Option zum Anhängen von laufenden Nummern an ansonsten identische Dateinamen hinzugefügt
+			- Dateinamensplatzhalter <composer>, <conductor> und <disc> hinzugefügt
+			- Konfigurationsoption hinzugefügt, konvertierte Tracks in der Jobliste stehen zu lassen
+			- Konfigurationsoption hinzugefügt, kodierte Dateien in die Jobliste aufzunehmen
+			- Warnung beim Konvertieren von verlustbehafteten in verlustfreie Formate hinzugefügt
+			- Überspringen von Tracks ist beim Konvertieren in eine einzige Datei nicht mehr möglich
+			- Der Fortschritt einer Konvertierung wird unter Windows 7 und neuer in der Taskleiste angezeigt
+			- Möglichkeit zur Einstellung der Prozesspriorität unter Windows hinzugefügt
+
+		- CD-Ripping-Verbesserungen
+
+			- Unterstützung für das Rippen von versteckten Tracks (HTOA) hinzugefügt
+			- Unterstützung für das Auslesen von ISRC-Codes von CDs hinzugefügt
+			- Konfigurationsoption für Offset beim Rippen hinzugefügt
+			- CDRip auf Version 2.3 aktualisiert (mit cdparanoia III Version 10.2)
+
+		- Verbesserungen der CDDB-Unterstützung
+
+			- Vorschau zum CDDB-Trefferauswahldialog hinzugefügt
+			- Option für automatische Auswahl des ersten CDDB-Treffers hinzugefügt
+			- Unterstützung für CDDB-Abfrage per HTTP GET hinzugefügt
+			- CDDB-Abfrage auch dann ermöglicht, wenn kein CD-Laufwerk vorhanden ist
+			- Größe der CDDB-Dialoge änderbar gemacht
+
+		- Playback-Verbesserungen
+
+			- Wiedergabe während laufender Konvertierung ermöglicht
+			- Slider zum Springen während der Wiedergabe hinzugefügt
+			- Die Schaltfläche zum Öffnen des CD-Laufwerks schließt das Laufwerk nun, wenn es bereits offen ist
+
+		- Neue und aktualisierte Kodierer
+
+			- Unterstützung für Kommandozeilenkodierer/-dekodierer hinzugefügt
+			- Core Audio AAC-/ALAC-Kodierer hinzugefügt
+			- Opus Audio Kodierer/Dekodierer hinzugefügt
+			- Speex Sprachkodierer/Dekodierer hinzugefügt
+			- Monkey's Audio Kodierer/Dekodierer hinzugefügt
+			- Musepack Kodierer/Dekodierer hinzugefügt
+			- WavPack Kodierer/Dekodierer hinzugefügt
+			- OptimFROG Kodierer/Dekodierer hinzugefügt
+			- TAK Lossless Kodierer/Dekodierer hinzugefügt
+			- Unterstützung für den Fraunhofer FDK AAC-Kodierer/-Dekodierer hinzugefügt
+			- Unterstützung für den VisualOn AAC-Kodierer hinzugefügt
+			- Unterstützung für den TwinVQ VQF-Dekodierer hinzugefügt
+			- Unterstützung für Ogg FLAC-Dateien hinzugefügt
+			- Unterstützung für RF64- und Wave64-Dateien hinzugefügt
+			- Unterstützung für libsndfile zum Lesen von einfachen Audiodateien hinzugefügt
+			- Unterstützung für Vorbis-Dateien mit der Dateiendung .oga hinzugefügt
+
+		- Neue DSP-Komponenten
+
+			- DSP-Komponenten für Resampling, Kanal-Up-/Downmixing und Sampleformatkonvertierung hinzugefügt
+			- RNNoise DSP-Komponente zur Rauschreduzierung bei Sprachaufnahmen hinzugefügt
+			- Rubber Band Time-Stretching DSP-Komponente hinzugefügt
+
+		- Tagging-Verbesserungen
+
+			- Unterstützung für Kapitel in ID3v2-, MP4-, WMA- und Vorbis Comment-Tags hinzugefügt
+			- Unterstützung für den Umgang mit Informationen zur lückenlosen Wiedergabe hinzugefügt
+			- Unterstützung für das Ändern von Cover-Bildern hinzugefügt
+			- Unterstützung für das MCDI-Frame in ID3v2-Tags hinzugefügt
+			- Unterstützung für ID3v1-Tags in AAC-Dateien hinzugefügt
+			- Unterstützung für RIFF-Tagging hinzugefügt (über LIST-INFO- und Cart-Chunks)
+			- Metadaten-Extraktion aus Pfadnamen verbessert
+			- Benutzerfreundlichkeit der Titelinfopflege verbessert
+			- Kontextmenü für Texteingabefelder hinzugefügt
+			- Groß-/Kleinschreibungs-Konvertierungsfunktionen stark verbessert
+			- Der FLAC-Kodierer schreibt jetzt Seektable Metadaten-Blöcke
+
+		- Verbesserungen für Playlisten und Cuesheets
+
+			- Unterstützung für XSPF-, Windows Media- und PLS-Playlisten hinzugefügt
+			- Unterstützung zum Erzeugen getrennter Playlisten bzw. Cuesheets pro Album in einer Konvertierung hinzugefügt
+			- Fehler in Cuesheets für mehrere Titel in einer Datei behoben
+			- Unterstützung für das Öffnen von Cuesheets hinzugefügt
+
+		- Verbesserungen für freaccmd
+
+			- Parameter von freaccmd komplett überarbeitet
+			- Unterstützung für Konfigurationsauswahl in freaccmd hinzugefügt
+			- Unterstützung für Ausgabe in eine einzige Datei mit freaccmd hinzugefügt
 
 Besonderen Dank
 ---------------

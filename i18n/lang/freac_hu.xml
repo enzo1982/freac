@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Tóth Péter &lt;golbat72@gportal.hu&gt;</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">Rendben!</entry>
@@ -374,33 +374,36 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">A %1 %2 nyelvet támogat jelenleg. Ha az általad&#10;beszélt nyelv nincs közöttük, könnyen lefordíthatod a&#10;%1 'smooth Translator' programjával.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">A %1 támogatja a LAME, Ogg Vorbis, FAAC, FLAC és&#10;Bonk tömörítőket. VQF formátumhoz tömörítőt a %1&#10;honlapján találhatsz: %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">A %1 támogatja a LAME, Ogg Vorbis, FAAC, FLAC és&#10;Opus tömörítőket. VQF formátumhoz tömörítőt a %1&#10;honlapján találhatsz: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">A %1 kezeli a Winamp 2 bemeneti plugin-jait, így még több&#10;formátumot támogathat. Másold be az in_*.dll fájlokat a&#10;%1/plugins könyvtárába, igy a program kezeli ezeket a&#10;formátumokat is!</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">A %1-en keresztül küldhetünk unikódos CD bejegyzéseket&#10;is a freedb adatbázisába. Ha olyan CD-id is vannak, melyeken&#10;nem latin betűkkel vannak megadva az adatok, a %1&#10;segítségével korrekt adatokat küldhetünk a freedb adatbázisába.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">A másolási hibák javítására bekapcsolható a Jitter korrekció&#10;az Általános beállítások menüpont Ripper panelje alatt.&#10;Ha ez sem segít, próbáld ki a Paranoia módokat!</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Van egy jó ötleted a %1 fejlesztésével kapcsolatban?&#10;Bármely ötletedet közzéteheted a Tracker-en keresztül a %1&#10;Sourceforge-os oldalán - %2&#10;vagy küldj eMailt: %3</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Van egy jó ötleted a %1 fejlesztésével kapcsolatban?&#10;&#10;Bármely ötletedet közzéteheted a tracker-en keresztül a %1&#10;%2-os oldalán - %3&#10;vagy küldj eMailt: %4</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Kedveled a %1-et? A program ingyenes, de támogathatod&#10;is a fejlesztést pénzadománnyal. A pénztadományt a&#10;%2-ra utalhatod át Paypal-on keresztül.&#10;A részletek itt olvashatók: %3</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">A tömörítés még fut! Megállítsam?</entry>
-      <entry id="7001" string="Currently converting">Tömörítés folyamatban</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Az ASPI meghajtókat nem tudom betölteni! CD-másolás kikapcsolva!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">A fájl megnyithatatlan: %1&#10;&#10;%2</entry>
-      <entry id="7006" string="Delete original files after encoding">Eredeti fájlok törlése tömörítés után</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ez a beállítás letörli az eredeti fájlokat a kódolás&#10;után. Biztos folytatja a műveletet? </entry>
-      <entry id="7008" string="File already exists">A fájl már létezik!</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">A %1 kimeneti fájl&#10;már létezik! Felül szeretnéd írni?</entry>
-      <entry id="7010" string="Overwrite all further files">További fájlok felülírása</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">A CDDB támogatás inaktív! Engedélyezd a&#10;helyi vagy távoli CDDB támogatást a konfig. menüben.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">A távoli CDDB támogatás inaktív! Engedélyezd&#10;a távoli CDDB támogatást a konfig. menüben.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">A CD-ROM meghajtók elérését blokkolta a Windows.&#10;&#10;Vedd fel a kapcsolatot a rendszer adminisztrátorral&#10;a CD-ROM-hoz való jogosultság megadásáért.</entry>
-      <entry id="7014" string="Cannot access input file: %1">A forrás fájl nem elérhető: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">A kimeneti fájl nem jött létre: %1</entry>
-      <entry id="7016" string="File not found">A fájl nem található</entry>
-      <entry id="7017" string="Unknown file type">Ismeretlen fájltípus</entry>
-      <entry id="7018" string="Unsupported audio format">Nem támogatott audio formátum</entry>
-      <entry id="7019" string="Unknown error">Ismeretlen hiba</entry>
+      <entry id="7000" string="Currently converting">Tömörítés folyamatban</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">A tömörítés még fut! Megállítsam?</entry>
+      <entry id="7002" string="Delete original files after encoding">Eredeti fájlok törlése tömörítés után</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ez a beállítás letörli az eredeti fájlokat a kódolás&#10;után. Biztos folytatja a műveletet? </entry>
+      <entry id="7005" string="File already exists">A fájl már létezik!</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">A %1 kimeneti fájl&#10;már létezik! Felül szeretnéd írni?</entry>
+      <entry id="7007" string="Overwrite all further files">További fájlok felülírása</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">A forrás fájl nem elérhető: %1&#10;&#10;Fájl: %1&#10;Könyvtár: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">A kimeneti fájl nem jött létre: %1&#10;&#10;Fájl: %1&#10;Könyvtár: %2</entry>
+      <entry id="7110" string="File not found">A fájl nem található</entry>
+      <entry id="7111" string="Unknown file type">Ismeretlen fájltípus</entry>
+      <entry id="7113" string="Unsupported audio format">Nem támogatott audio formátum</entry>
+      <entry id="7114" string="Unknown error">Ismeretlen hiba</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Az ASPI meghajtókat nem tudom betölteni! CD-másolás kikapcsolva!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">A fájl megnyithatatlan: %1&#10;&#10;%2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">A CDDB támogatás inaktív! Engedélyezd a&#10;helyi vagy távoli CDDB támogatást a konfig. menüben.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">A távoli CDDB támogatás inaktív! Engedélyezd&#10;a távoli CDDB támogatást a konfig. menüben.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">A CD-ROM meghajtók elérését blokkolta a Windows.&#10;&#10;Vedd fel a kapcsolatot a rendszer adminisztrátorral&#10;a CD-ROM-hoz való jogosultság megadásáért.</entry>
     </section>
 
     <section name="Dialogs">
@@ -425,7 +428,7 @@
       <entry id="9009" string="No scratch repair">Pattogás nincs javítva</entry>
       <entry id="9010" string="Full cdparanoia mode">Teljes ellenörzés mód</entry>
       <entry id="9011" string="Activate jitter correction">Jitter korrekció be</entry>
-      <entry id="9012" string="Swap left/right channel">Csatornák felcserélése</entry>
+      <entry id="9012" string="Switch stereo channels">Csatornák felcserélése</entry>
       <entry id="9013" string="Automatization">Automatizálás</entry>
       <entry id="9014" string="Read CD contents on insert">CD-tartalom beolvasása behelyezésnél</entry>
       <entry id="9015" string="Start ripping automatically">Automatikus másolás indítása</entry>

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -11,12 +11,13 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include <jobs/jobmanager.h>
-#include <jobs/job.h>
-#include <dialogs/error.h>
+
 #include <config.h>
 #include <utilities.h>
 
-#include <boca.h>
+#include <support/autorelease.h>
+
+#include <dialogs/error.h>
 
 freac::JobManager	*freac::JobManager::instance = NIL;
 
@@ -48,16 +49,15 @@ freac::JobManager::~JobManager()
 
 Void freac::JobManager::ManagerThread()
 {
-	Config	*config = Config::Get();
-
 	while (!exitThread)
 	{
 		const Array<Job *>	&scheduled = Job::GetScheduledJobs();
 		const Array<Job *>	&planned   = Job::GetPlannedJobs();
-		const Array<Job *>	&running   = Job::GetRunningJobs();
 
 		if (scheduled.Length() > 0)
 		{
+			AutoRelease	 autoRelease;
+
 			foreachreverse (Job *job, scheduled)
 			{
 				/* Call the job's precheck method.
@@ -68,8 +68,10 @@ Void freac::JobManager::ManagerThread()
 			continue;
 		}
 
-		if (planned.Length() > 0 && running.Length() < config->maxActiveJobs)
+		if (planned.Length() > 0)
 		{
+			AutoRelease	 autoRelease;
+
 			foreach (Job *job, planned)
 			{
 				/* Check if the job is ready to run and if so start it.

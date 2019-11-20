@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -207,9 +207,9 @@ String freac::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 	content.Append("# ").Append("\n");
 	content.Append("# Track frame offsets:").Append("\n");
 
-	for (Int i = 0; i < cddbInfo.trackOffsets.Length(); i++)
+	foreach (Int trackOffset, cddbInfo.trackOffsets)
 	{
-		content.Append("#     ").Append(String::FromInt(cddbInfo.trackOffsets.GetNth(i))).Append("\n");
+		content.Append("#     ").Append(String::FromInt(trackOffset)).Append("\n");
 	}
 
 	content.Append("# ").Append("\n");
@@ -224,17 +224,17 @@ String freac::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 	content.Append(FormatCDDBEntry("DYEAR", String::FromInt(cddbInfo.dYear)));
 	content.Append(FormatCDDBEntry("DGENRE", cddbInfo.dGenre.Replace("\n", " ").Trim()));
 
-	for (Int j = 0; j < cddbInfo.trackTitles.Length(); j++)
+	for (Int i = 0; i < cddbInfo.trackTitles.Length(); i++)
 	{
-		if (cddbInfo.dArtist == "Various") content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), cddbInfo.trackArtists.GetNth(j).Replace("\n", " ").Trim().Append(" / ").Append(cddbInfo.trackTitles.GetNth(j).Replace("\n", " ").Trim())));
-		else				   content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(j)), cddbInfo.trackTitles.GetNth(j).Replace("\n", " ").Trim()));
+		if (cddbInfo.dArtist == "Various") content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(i)), cddbInfo.trackArtists.GetNth(i).Replace("\n", " ").Trim().Append(" / ").Append(cddbInfo.trackTitles.GetNth(i).Replace("\n", " ").Trim())));
+		else				   content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(i)), cddbInfo.trackTitles.GetNth(i).Replace("\n", " ").Trim()));
 	}
 
 	content.Append(FormatCDDBEntry("EXTD", cddbInfo.comment));
 
-	for (Int k = 0; k < cddbInfo.trackComments.Length(); k++)
+	for (Int i = 0; i < cddbInfo.trackComments.Length(); i++)
 	{
-		content.Append(FormatCDDBEntry(String("EXTT").Append(String::FromInt(k)), cddbInfo.trackComments.GetNth(k)));
+		content.Append(FormatCDDBEntry(String("EXTT").Append(String::FromInt(i)), cddbInfo.trackComments.GetNth(i)));
 	}
 
 	content.Append(FormatCDDBEntry("PLAYORDER", cddbInfo.playOrder.Replace("\n", " ").Trim()));
@@ -529,7 +529,7 @@ String freac::CDDB::ParseCDDBEntry(const String &cddb, Int &index)
 
 		if (!line.StartsWith(String(entry).Append("="))) { index = oldIndex; break; }
 
-		for (Int j = entry.Length() + 1; j < line.Length(); j++) result[result.Length()] = line[j];
+		for (Int i = entry.Length() + 1; i < line.Length(); i++) result[result.Length()] = line[i];
 
 		index++;
 	}

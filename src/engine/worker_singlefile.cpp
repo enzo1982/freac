@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -38,8 +38,6 @@ freac::ConvertWorkerSingleFile::~ConvertWorkerSingleFile()
 
 Int freac::ConvertWorkerSingleFile::Convert()
 {
-	BoCA::I18n	*i18n = BoCA::I18n::Get();
-
 	Registry	&boca = Registry::Get();
 
 	/* Get config values.
@@ -47,10 +45,6 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	Int	 singleFileMode	= configuration->GetIntValue(Config::CategoryProcessingID, Config::ProcessingSingleFileModeID, Config::ProcessingSingleFileModeDefault);
 
 	Bool	 verifyInput	= configuration->GetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, Config::VerificationVerifyInputDefault);
-
-	/* Setup conversion log.
-	 */
-	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
 
 	/* Set conversion step.
 	 */
@@ -60,13 +54,13 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	 */
 	if (conversionStep == ConversionStepVerify)
 	{
-		DecoderComponent	*decoder = boca.CreateDecoderForStream(trackToConvert.origFilename);
+		DecoderComponent	*decoder = boca.CreateDecoderForStream(trackToConvert.fileName, configuration);
 
 		if (decoder != NIL)
 		{
 			Track	 outTrack;
 
-			decoder->GetStreamInfo(trackToConvert.origFilename, outTrack);
+			decoder->GetStreamInfo(trackToConvert.fileName, outTrack);
 
 			boca.DeleteComponent(decoder);
 
@@ -75,12 +69,15 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 			if (format != outFormat)
 			{
+				BoCA::I18n	*i18n = BoCA::I18n::Get();
+				BoCA::Protocol	*log  = BoCA::Protocol::Get(logName);
+
 				onReportWarning.Emit(i18n->TranslateString(String("Skipped verification due to format mismatch: %1\n\n")
 									  .Append("Original format: %2 Hz, %3 bit, %4 channels\n")
-									  .Append("Output format: %5 Hz, %6 bit, %7 channels"), "Messages").Replace("%1", File(trackToConvert.origFilename).GetFileName()).Replace("%2", String::FromInt(format.rate)).Replace("%3", String::FromInt(format.bits)).Replace("%4", String::FromInt(format.channels))
+									  .Append("Output format: %5 Hz, %6 bit, %7 channels"), "Messages").Replace("%1", File(trackToConvert.fileName).GetFileName()).Replace("%2", String::FromInt(format.rate)).Replace("%3", String::FromInt(format.bits)).Replace("%4", String::FromInt(format.channels))
 																									  .Replace("%5", String::FromInt(outFormat.rate)).Replace("%6", String::FromInt(outFormat.bits)).Replace("%7", String::FromInt(outFormat.channels)));
 
-				log->Write(String("\tSkipping verification due to format mismatch: ").Append(trackToConvert.origFilename), MessageTypeWarning);
+				log->Write(String("    Skipping verification due to format mismatch: ").Append(trackToConvert.fileName), MessageTypeWarning);
 
 				trackPosition = trackToConvert.length;
 
@@ -99,14 +96,17 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	 */
 	Decoder	*decoder = new Decoder(configuration);
 
-	if (!decoder->Create(trackToConvert.origFilename, trackToConvert))
+	if (!decoder->Create(trackToConvert.fileName, trackToConvert))
 	{
+		onReportError.Emit(decoder->GetErrorString());
+
 		delete decoder;
 
 		return Error();
 	}
 
 	decoderName = decoder->GetDecoderName();
+	encoderName = encoder->GetEncoderName();
 
 	/* Create verifier.
 	 */
@@ -133,6 +133,8 @@ Int freac::ConvertWorkerSingleFile::Convert()
 		if ((conversionStep == ConversionStepOnTheFly ||
 		     conversionStep == ConversionStepDecode) && !processor->Create(trackToProcess))
 		{
+			onReportError.Emit(processor->GetErrorString());
+
 			delete decoder;
 			delete verifier;
 			delete converter;
@@ -148,18 +150,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Output log messages.
 	 */
-	switch (conversionStep)
-	{
-		default:
-		case ConversionStepOnTheFly:
-			log->Write(String("\tConverting from: ").Append(trackToConvert.origFilename));
-
-			break;
-		case ConversionStepVerify:
-			log->Write(String("\tVerifying: ").Append(trackToConvert.origFilename));
-
-			break;
-	}
+	LogConversionStart(trackToConvert.fileName);
 
 	/* Run main conversion loop.
 	 */
@@ -167,16 +158,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Verify input.
 	 */
-	if (!cancel && verify && verifier->Verify())
-	{
-		log->Write(String("\tSuccessfully verified input file: ").Append(trackToConvert.origFilename));
-	}
-	else if (!cancel && verify)
-	{
-		onReportError.Emit(i18n->TranslateString("Failed to verify input file: %1", "Messages").Replace("%1", File(trackToConvert.origFilename).GetFileName()));
-
-		log->Write(String("\tFailed to verify input file: ").Append(trackToConvert.origFilename), MessageTypeError);
-	}
+	if (!cancel && verify) VerifyInput(trackToConvert.fileName, verifier);
 
 	/* Get MD5 checksum if we are to verify the output.
 	 */
@@ -186,23 +168,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Output log messages.
 	 */
-	switch (conversionStep)
-	{
-		default:
-		case ConversionStepOnTheFly:
-			if (cancel) log->Write(String("\tCancelled converting: ").Append(trackToConvert.origFilename), MessageTypeWarning);
-			else	    log->Write(String("\tFinished converting: ").Append(trackToConvert.origFilename));
-
-			break;
-		case ConversionStepVerify:
-			if (!cancel && encodeChecksum != verifyChecksum) onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Messages").Replace("%1", File(trackToConvert.origFilename).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
-
-			if	(cancel)			   log->Write(String("\tCancelled verifying output file: ").Append(trackToConvert.origFilename), MessageTypeWarning);
-			else if (encodeChecksum != verifyChecksum) log->Write(String("\tChecksum mismatch verifying output file: ").Append(trackToConvert.origFilename));
-			else					   log->Write(String("\tSuccessfully verified output file: ").Append(trackToConvert.origFilename));
-
-			break;
-	}
+	LogConversionEnd(trackToConvert.fileName, encodeChecksum, verifyChecksum);
 
 	/* Get output format info.
 	 */
@@ -212,6 +178,12 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Free decoder and verifier.
 	 */
+	decoder->Destroy();
+	verifier->Destroy();
+
+	if (decoder->GetErrorState())  onReportError.Emit(decoder->GetErrorString());
+	if (verifier->GetErrorState()) onReportError.Emit(verifier->GetErrorString());
+
 	delete decoder;
 	delete verifier;
 	delete converter;
@@ -234,7 +206,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	 */
 	Track	 track	= trackToConvert;
 
-	trackToConvert.sampleOffset = Math::Round((Float) (encodedSamples - trackLength) / format.rate * 75);
+	trackToConvert.sampleOffset = encodedSamples - trackLength;
 	trackToConvert.length	    = trackLength;
 
 	/* Fix total samples value in case we had

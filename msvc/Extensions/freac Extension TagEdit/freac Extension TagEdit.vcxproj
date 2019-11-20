@@ -28,23 +28,23 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -86,9 +86,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../cdk/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../cdk/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;__WIN32__;_DEBUG;_WINDOWS;_USRDLL;UNICODE;_UNICODE;BOCA_COMPONENT_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>
@@ -97,8 +96,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>smooth.lib;boca.1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/Debug;../../cdk/msvc/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <GenerateDebugInformation>Debug</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../../../smooth/msvc/Debug;../../../cdk/msvc/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
@@ -107,19 +105,17 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>../../cdk/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../cdk/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;__WIN32__;_DEBUG;_WINDOWS;_USRDLL;UNICODE;_UNICODE;BOCA_COMPONENT_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <MinimalRebuild>true</MinimalRebuild>
     </ClCompile>
     <Link>
       <AdditionalDependencies>smooth.lib;boca.1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/x64/Debug;../../cdk/msvc/x64/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <GenerateDebugInformation>Debug</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>../../../../smooth/msvc/x64/Debug;../../../cdk/msvc/x64/debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
     </Link>
@@ -129,15 +125,14 @@
       <PreprocessorDefinitions>WIN32;__WIN32__;NDEBUG;_WINDOWS;_USRDLL;UNICODE;_UNICODE;BOCA_COMPONENT_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <AdditionalIncludeDirectories>../../cdk/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../cdk/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>No</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/Release;../../cdk/msvc/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../../../smooth/msvc/Release;../../../cdk/msvc/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>smooth.lib;boca.1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -146,57 +141,56 @@
       <PreprocessorDefinitions>WIN32;__WIN32__;NDEBUG;_WINDOWS;_USRDLL;UNICODE;_UNICODE;BOCA_COMPONENT_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <AdditionalIncludeDirectories>../../cdk/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../../cdk/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>No</GenerateDebugInformation>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <AdditionalLibraryDirectories>../../../smooth/msvc/smooth/x64/Release;../../cdk/msvc/x64/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../../../smooth/msvc/x64/Release;../../../cdk/msvc/x64/Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>smooth.lib;boca.1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\components\extension\tagedit\layer.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\tagedit.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\tagspec.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\utilities.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_advanced.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_advanced_number.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_advanced_text.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_basic.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_basic_cover.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_details.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\editor\editor_other.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\chooser\chooser.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\chooser\chooser_albums.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\chooser\chooser_files.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\chooser\chooser_files_tree.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\chooser\chooser_files_utilities.cpp" />
-    <ClCompile Include="..\..\components\extension\tagedit\chooser\chooser_tracks.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\layer.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\tagedit.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\tagspec.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\utilities.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_advanced.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_advanced_number.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_advanced_text.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_basic.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_basic_cover.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_details.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_other.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_albums.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_files.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_files_tree.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_files_utilities.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_tracks.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\components\extension\tagedit\layer.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\tagedit.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\tagspec.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\utilities.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\chooser\chooser.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\chooser\chooser_albums.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\chooser\chooser_files.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\chooser\chooser_files_tree.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\chooser\chooser_files_utilities.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\chooser\chooser_tracks.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_advanced.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_advanced_number.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_advanced_text.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_basic.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_basic_cover.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_details.h" />
-    <ClInclude Include="..\..\components\extension\tagedit\editor\editor_other.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\layer.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\tagedit.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\tagspec.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\utilities.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\chooser\chooser.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\chooser\chooser_albums.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\chooser\chooser_files.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\chooser\chooser_files_tree.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\chooser\chooser_files_utilities.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\chooser\chooser_tracks.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_advanced.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_advanced_number.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_advanced_text.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_basic.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_basic_cover.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_details.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_other.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

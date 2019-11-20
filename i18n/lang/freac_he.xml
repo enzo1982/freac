@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">אילן צמרת</property>
-    <property name="url">http://www.v-g.co.il</property>
+    <property name="url">https://www.v-g.co.il</property>
     <property name="incomplete">true</property>
   </info>
   <data>
@@ -284,20 +284,23 @@
     <section name="Tips"/>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">?ההמרה בעבוד, האם לסיים</entry>
-      <entry id="7001" string="Currently converting">ממיר כרגע</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">לא יכול לתקשר עם כונן, מבטל יכולת קריאה מדיסק</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>
-      <entry id="7006" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">פונקציה זו תמחק את קבצי המקור לאחר ההמרה&#10;האם אתה בטוח שברצונך לאפשר זאת?</entry>
-      <entry id="7008" string="File already exists">קובץ כבר קיים</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">הקובץ %1 כבר קיים&#10; האם לדרוס אותו ?</entry>
-      <entry id="7010" string="Overwrite all further files">דרוס את כל הקבצים להבא</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">אין הרשאה לגישה לכונן CD</entry>
-      <entry id="7016" string="File not found">קובץ לא קיים</entry>
-      <entry id="7017" string="Unknown file type">סוג קובץ לא נתמך</entry>
-      <entry id="7018" string="Unsupported audio format">פורמט שמע לא נתמך</entry>
-      <entry id="7019" string="Unknown error">שגיאה לא ידועה</entry>
+      <entry id="7000" string="Currently converting">ממיר כרגע</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">?ההמרה בעבוד, האם לסיים</entry>
+      <entry id="7002" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">פונקציה זו תמחק את קבצי המקור לאחר ההמרה&#10;האם אתה בטוח שברצונך לאפשר זאת?</entry>
+      <entry id="7005" string="File already exists">קובץ כבר קיים</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">הקובץ %1 כבר קיים&#10; האם לדרוס אותו ?</entry>
+      <entry id="7007" string="Overwrite all further files">דרוס את כל הקבצים להבא</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7110" string="File not found">קובץ לא קיים</entry>
+      <entry id="7111" string="Unknown file type">סוג קובץ לא נתמך</entry>
+      <entry id="7113" string="Unsupported audio format">פורמט שמע לא נתמך</entry>
+      <entry id="7114" string="Unknown error">שגיאה לא ידועה</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">לא יכול לתקשר עם כונן, מבטל יכולת קריאה מדיסק</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">אין הרשאה לגישה לכונן CD</entry>
     </section>
 
     <section name="Dialogs">
@@ -316,7 +319,7 @@
       <entry id="9008" string="No verify">ללא אימות</entry>
       <entry id="9009" string="No scratch repair">ללא תיקון שריטות</entry>
       <entry id="9011" string="Activate jitter correction">הפעל תיקון טעויות קריאה</entry>
-      <entry id="9012" string="Swap left/right channel">החלף בין ערוצי שמאל וימין</entry>
+      <entry id="9012" string="Switch stereo channels">החלף בין ערוצי שמאל וימין</entry>
       <entry id="9013" string="Automatization">אוטומטיזציה</entry>
       <entry id="9015" string="Start ripping automatically">התחל המרה באופן אוטומטי</entry>
       <entry id="9016" string="Eject disk after ripping">הוצא דיסק לאחר המרה</entry>

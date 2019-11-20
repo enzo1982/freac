@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -41,28 +41,28 @@ freac::ConfigureDSP::ConfigureDSP()
 
 	Add(group_dsp);
 
-	group_components	= new GroupBox(i18n->TranslateString("Components"), Point(7, 87), Size(552, 197));
+	group_components	= new GroupBox(i18n->TranslateString("Components"), Point(7, 87), Size(552, 220));
 
 	text_available		= new Text(i18n->AddColon(i18n->TranslateString("Available")), Point(10, 12));
 
-	list_available		= new ListBox(Point(10, 32), Size(245, 125));
+	list_available		= new ListBox(Point(10, 32), Size(245, 148));
 	list_available->onSelectEntry.Connect(&ConfigureDSP::OnSelectAvailable, this);
 
-	btn_add			= new Button(i18n->IsActiveLanguageRightToLeft() ? "<-" : "->", NIL, Point(263, 68), Size(26, 0));
+	btn_add			= new Button(i18n->IsActiveLanguageRightToLeft() ? "<-" : "->", Point(263, 80), Size(26, 0));
 	btn_add->onAction.Connect(&ConfigureDSP::OnAddComponent, this);
 	btn_add->Deactivate();
 
-	btn_remove		= new Button(i18n->IsActiveLanguageRightToLeft() ? "->" : "<-", NIL, Point(263, 98), Size(26, 0));
+	btn_remove		= new Button(i18n->IsActiveLanguageRightToLeft() ? "->" : "<-", Point(263, 110), Size(26, 0));
 	btn_remove->onAction.Connect(&ConfigureDSP::OnRemoveComponent, this);
 	btn_remove->Deactivate();
 
 	text_selected		= new Text(i18n->AddColon(i18n->TranslateString("Selected")), Point(297, 12));
 
-	list_selected		= new ListBox(Point(297, 32), Size(245, 125));
+	list_selected		= new ListBox(Point(297, 32), Size(245, 148));
 	list_selected->onSelectEntry.Connect(&ConfigureDSP::OnSelectComponent, this);
 	list_selected->SetFlags(LF_ALLOWREORDER);
 
-	btn_configure		= new Button(i18n->TranslateString("Configure component"), NIL, Point(382, 165), Size(160, 0));
+	btn_configure		= new Button(i18n->TranslateString("Configure component"), Point(382, 188), Size(160, 0));
 	btn_configure->onAction.Connect(&ConfigureDSP::OnConfigureComponent, this);
 	btn_configure->Deactivate();
 
@@ -84,7 +84,7 @@ freac::ConfigureDSP::ConfigureDSP()
 
 	AddComponents();
 
-	group_single_file	= new GroupBox(i18n->TranslateString("Conversion to a single output file"), Point(7, 296), Size(552, 65));
+	group_single_file	= new GroupBox(i18n->TranslateString("Conversion to a single output file"), Point(7, 319), Size(552, 65));
 
 	option_individual	= new OptionBox(i18n->TranslateString("Process each track individually"), Point(10, 14), Size(532, 0), &singleFileMode, 0);
 	option_combined		= new OptionBox(i18n->TranslateString("Treat the combined tracks like a single track"), Point(10, 37), Size(532, 0), &singleFileMode, 1);
@@ -96,7 +96,7 @@ freac::ConfigureDSP::ConfigureDSP()
 
 	OnToggleProcessing();
 
-	SetSize(Size(566, 368));
+	SetSize(Size(566, 391));
 }
 
 freac::ConfigureDSP::~ConfigureDSP()
@@ -159,8 +159,6 @@ Void freac::ConfigureDSP::AddComponents()
 			break;
 		}
 	}
-
-	String::ExplodeFinish();
 }
 
 Void freac::ConfigureDSP::OnToggleProcessing()

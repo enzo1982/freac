@@ -1,5 +1,5 @@
-/* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+ /* fre:ac - free audio converter
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -123,6 +123,9 @@ const Bool	 freac::Config::SettingsFilenamesAllowUnicodeDefault		= True;
 const String	 freac::Config::SettingsFilenamesReplaceSpacesID		= "FilenamesReplaceSpaces";
 const Bool	 freac::Config::SettingsFilenamesReplaceSpacesDefault		= False;
 
+const String	 freac::Config::SettingsFilenamesKeepTimeStampsID		= "FilenamesKeepTimeStamps";
+const Bool	 freac::Config::SettingsFilenamesKeepTimeStampsDefault		= False;
+
 const String	 freac::Config::SettingsFilenamesAddSequentialNumbersID		= "FilenamesAddSequentialNumbers";
 const Bool	 freac::Config::SettingsFilenamesAddSequentialNumbersDefault	= False;
 
@@ -151,6 +154,7 @@ const String	 freac::Config::SettingsExcludeExtensionsDefault		= String(".jpg|.j
 										 .Append(".m3u|.m3u8|.pls|.wpl|.xspf|")		  // playlists
 										 .Append(".exe|.dll|")				  // executables
 										 .Append(".zip|.rar|.gz|.bz2|.xz|.7z|")		  // archives
+										 .Append(".ini|")				  // configuration
 										 .Append(".htm|.html|.svg|.xml|")		  // HTML/SVG/XML
 										 .Append(".pdf|.ps|.xps|")			  // PDF etc.
 										 .Append(".doc|.docx|.odt|")			  // text documents
@@ -166,6 +170,8 @@ const String	 freac::Config::SettingsLastSelectedJoblistDirID		= "LastSelectedJo
 
 const String	 freac::Config::SettingsDeleteAfterEncodingID			= "DeleteAfterEncoding";
 const Bool	 freac::Config::SettingsDeleteAfterEncodingDefault		= False;
+
+const String	 freac::Config::SettingsNotificationAvailableID			= "NotificationAvailable";
 
 /* Category Dialogs
  */
@@ -227,7 +233,7 @@ const String	 freac::Config::ResourcesEnableParallelConversionsID		= "EnablePara
 const Bool	 freac::Config::ResourcesEnableParallelConversionsDefault	= True;
 
 const String	 freac::Config::ResourcesEnableSuperFastModeID			= "EnableSuperFastMode";
-const Bool	 freac::Config::ResourcesEnableSuperFastModeDefault		= False;
+const Bool	 freac::Config::ResourcesEnableSuperFastModeDefault		= True;
 
 const String	 freac::Config::ResourcesNumberOfConversionThreadsID		= "NumberOfConversionThreads";
 const Int	 freac::Config::ResourcesNumberOfConversionThreadsDefault	= 0;
@@ -399,8 +405,6 @@ freac::Config::Config()
 
 	/* Set default settings.
 	 */
-	maxActiveJobs		= 2;
-
 	deleteAfterEncoding	= config->GetIntValue(CategorySettingsID, SettingsDeleteAfterEncodingID, SettingsDeleteAfterEncodingDefault);
 	shutdownAfterEncoding	= False;
 

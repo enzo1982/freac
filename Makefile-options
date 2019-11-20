@@ -1,6 +1,6 @@
 ########## fre:ac options makefile ##########
 
-SMOOTHVER = 0.8.74
+SMOOTHVER = 0.9
 BOCAVER	  = 1.0
 
 # Find source folder and set vpath
@@ -25,7 +25,7 @@ endif
 
 # Find architecture and system
 UNAME = $(shell uname)
-MACHINE = $(shell gcc -dumpmachine)
+MACHINE = $(shell $(CC) -dumpmachine)
 
 ifneq ($(findstring arm,$(MACHINE)),)
 	ifneq ($(BUILD_ARM),False)
@@ -65,6 +65,11 @@ else
 		BUILD_X86 = True
 	endif
 	endif
+endif
+
+# Treat MSYS and MinGW the same
+ifneq ($(findstring MSYS,$(UNAME)),)
+	UNAME = MINGW
 endif
 
 ifneq ($(findstring MINGW,$(UNAME)),)

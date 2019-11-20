@@ -375,33 +375,36 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 %2 hizkuntzatan dago eskuragarri. Zure hizkuntza ez&#10;badago eskuragarri, erraz itzuli dezakezu %1 'smooth' Translator&#10;aplikazioa erabiliz.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 LAME, Ogg Vorbis, FAAC, FLAC eta Bonk kodeatzaile&#10;sostenguarekin dator. VQF heuskarrirako kodeatzaile bat&#10;eskuragarri dago hemen, %1 webgunea: %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 LAME, Ogg Vorbis, FAAC, FLAC eta Opus kodeatzaile&#10;sostenguarekin dator. VQF heuskarrirako kodeatzaile bat&#10;eskuragarri dago hemen, %1 webgunea: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1-k Winmap 2 sarrera plug-inak erabili ditzake agiri heuskarri&#10;gehiago sostengatzeko. Kopiatu in_*.dll agiriak %1/plugins&#10;zuzenbidera %1 heuskarri hauek irakurtzeko gai izateko.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1-rekin freedb CD datubase sarrerak aurkeztu ditzakezu&#10;Unicode hizkiak dituztela. Hortaz ez-Latinezko artista edo&#10;izenburu izenak dituen CD-ren bat baduzu freedb sarrera&#10;zuzenak aurkeztu ditzakezu %1-rekin</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Erauzketan zeharko irakurketa akatsak zuzentzeko Jitter&#10;zuzenketa gaitu dezakezu %1 itxurapen elkarrizketako&#10;CD Erauzketa hegatsean. Ez badu laguntzen, saiatu&#10;Paranoia moduetako bat erabiliz.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">%1 hobetzeko iradokizunen bat duzu?&#10;Edozein ideia aurkeztu dezakezu Aztarnariaren bidez %1-ren&#10;SourceForge egitasmo orrialdean - %2&#10;edo bidali posta bat %3-ra.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">%1 hobetzeko iradokizunen bat duzu?&#10;&#10;Edozein ideia aurkeztu dezakezu Aztarnariaren bidez %1-ren&#10;%2 egitasmo orrialdean - %3&#10;edo bidali posta bat %4-ra.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Gogoko duzu %1? %1 dohainik dago eskuragarri, baina&#10;bere garapenean lagundu dezakezu dirulaguntza bat emanez&#10;%1 egitasmoari. Dirua %2-ra bidali dezakezu&#10;PayPal bidez. Ikusi %3&#10;xehetasun gehiagorako.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Kodeaketa haria oraindik ekinean dago! Egitan nahi duzu uztea?</entry>
-      <entry id="7001" string="Currently converting">Orain kodeatzen</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">Ezinezkoa ASPI gidatzaileak gertatzea! CD erauzketa ezgaituta!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Ezinezkoa agiria irekitzea: %1&#10;&#10;Akatsa: %2</entry>
-      <entry id="7006" string="Delete original files after encoding">Ezabatu jatorrizko agiriak kodeatu ondoren</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Aukera honek jatorrizko agiriak ezabatuko ditu zure&#10;ordenagailutik kodeaketa garapenaren ondoren!&#10;&#10;Zihur zaude eginkizun hau gaitzea nahi duzula?</entry>
-      <entry id="7008" string="File already exists">Agiria badago jadanik</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">%1 irteera agiria jadanik badago!&#10;Gainidaztea nahi duzu?</entry>
-      <entry id="7010" string="Overwrite all further files">Gainidatzi gainontzeko agiri guztiak</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB sostengua ezgaituta dago! Mesedez gaitu tokiko&#10;edo hurruneko CDDB sostengua itxurapen elkarrizketan.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Hurreneko CDDB sostengua ezgaituta! Mesedez gaitu&#10;hurruneko CDDB sostengua itxurapen elkarrizketan.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows-ek ukatu egin du CD-ROM gidagailuetarako sarbidea.&#10;&#10;Mesedez jarri harremanetan zure sistemaren administratzailearekin&#10;CD-ROM gidagailura sarbide zuzena izatea bermatzeko.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Ez dago sarbiderik sarrera agirira: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Ezin da irteera agiria sortu: %1</entry>
-      <entry id="7016" string="File not found">Agiria ez da aurkitu</entry>
-      <entry id="7017" string="Unknown file type">Agiri mota ezezaguna</entry>
-      <entry id="7018" string="Unsupported audio format">Audio heuskarri sostengu gabea</entry>
-      <entry id="7019" string="Unknown error">Akats ezezaguna</entry>
+      <entry id="7000" string="Currently converting">Orain kodeatzen</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Kodeaketa haria oraindik ekinean dago! Egitan nahi duzu uztea?</entry>
+      <entry id="7002" string="Delete original files after encoding">Ezabatu jatorrizko agiriak kodeatu ondoren</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Aukera honek jatorrizko agiriak ezabatuko ditu zure&#10;ordenagailutik kodeaketa garapenaren ondoren!&#10;&#10;Zihur zaude eginkizun hau gaitzea nahi duzula?</entry>
+      <entry id="7005" string="File already exists">Agiria badago jadanik</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">%1 irteera agiria jadanik badago!&#10;Gainidaztea nahi duzu?</entry>
+      <entry id="7007" string="Overwrite all further files">Gainidatzi gainontzeko agiri guztiak</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ez dago sarbiderik sarrera agirira: %1&#10;&#10;Agiria: %1&#10;Agiritegiak: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ezin da irteera agiria sortu: %1&#10;&#10;Agiria: %1&#10;Agiritegiak: %2</entry>
+      <entry id="7110" string="File not found">Agiria ez da aurkitu</entry>
+      <entry id="7111" string="Unknown file type">Agiri mota ezezaguna</entry>
+      <entry id="7113" string="Unsupported audio format">Audio heuskarri sostengu gabea</entry>
+      <entry id="7114" string="Unknown error">Akats ezezaguna</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Ezinezkoa ASPI gidatzaileak gertatzea! CD erauzketa ezgaituta!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Ezinezkoa agiria irekitzea: %1&#10;&#10;Akatsa: %2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB sostengua ezgaituta dago! Mesedez gaitu tokiko&#10;edo hurruneko CDDB sostengua itxurapen elkarrizketan.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Hurreneko CDDB sostengua ezgaituta! Mesedez gaitu&#10;hurruneko CDDB sostengua itxurapen elkarrizketan.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows-ek ukatu egin du CD-ROM gidagailuetarako sarbidea.&#10;&#10;Mesedez jarri harremanetan zure sistemaren administratzailearekin&#10;CD-ROM gidagailura sarbide zuzena izatea bermatzeko.</entry>
     </section>
 
     <section name="Dialogs">
@@ -426,7 +429,7 @@
       <entry id="9009" string="No scratch repair">Urradura konponketarik ez</entry>
       <entry id="9010" string="Full cdparanoia mode">cdparanoia osoa modua</entry>
       <entry id="9011" string="Activate jitter correction">Gaitu jitter zuzenketa</entry>
-      <entry id="9012" string="Swap left/right channel">Aldatu bidea ezker/eskuin</entry>
+      <entry id="9012" string="Switch stereo channels">Aldatu bidea ezker/eskuin</entry>
       <entry id="9013" string="Automatization">Berezgaitasuna</entry>
       <entry id="9014" string="Read CD contents on insert">Irakurri CD edukiak txertatzean</entry>
       <entry id="9015" string="Start ripping automatically">Hasi erauzten berezgaitasunez</entry>

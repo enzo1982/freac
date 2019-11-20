@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Phan Anh</property>
-    <property name="url">http://www.iamphananh.blogspot.com/</property>
+    <property name="url">https://www.iamphananh.blogspot.com/</property>
   </info>
   <data>
     <entry id="1" string="Cancel">Hủy bỏ</entry>

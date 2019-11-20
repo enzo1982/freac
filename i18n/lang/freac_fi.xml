@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Jan Parttimaa &lt;jan.parttimaa@gmail.com&gt;</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">OK</entry>
@@ -375,33 +375,36 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1iin on saatavilla %2 kielivaihtoehtoa.&#10;Jos kieltäsi tähän ohjelmaan ei ole saatavilla,&#10;voit kääntää %1in &quot;smooth Translator&quot;-sovelluksella.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1issa tulee mukana tuki LAME, Ogg Vorbis, FAAC, FLAC ja&#10;Bonk-muuntimiin. VQF-formaattimuunnin on saatavilla %1in&#10;internetsivuilta: %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1issa tulee mukana tuki LAME, Ogg Vorbis, FAAC, FLAC ja&#10;Opus-muuntimiin. VQF-formaattimuunnin on saatavilla %1in&#10;internetsivuilta: %2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 voi käyttää Winamp 2-syöttöliitännäisiä tukeakseen monia&#10;tiedostomuotoja. Kopioi in_*.dll-tiedosto %1/plugins-kansioon&#10;käyttääksesi %1ia näiden tiedostomuotojen lukemiseen.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1illa voit muuntaa freedb CD-tietokantamerkintöjä, jotka&#10;sisältävät Unicode-merkkejä. Joten jos sinulla on yhtään CD-levyä,&#10;joka ei ole latinalaisella artisti-tai otsikkonimellä varustettua, voit&#10;syöttää %1illa oikeat freedb-merkinnät.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Varmistaaksesi kopioinnin lukemisvirheet voi salllia Jitter-&#10;korjaajan CD:n Poltto-välilehdestä %1in asetuksista. Jos tästä&#10;ei ole apua, yritä käyttää Paranoia-tilaa.</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Onko sinulla yhtään ehdotuksia kuinka kehittää %1ia&#10;paremmaksi? Voit lähettää ideat käyttäen Trackeria %1in&#10;SourceForge-projektisivulta: %2 tai&#10;lähettämällä sähköpostia englanninkielellä&#10;osoitteseen: %3.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Onko sinulla yhtään ehdotuksia kuinka kehittää %1ia paremmaksi?&#10;&#10;Voit lähettää ideat käyttäen trackeria %1in&#10;%2-projektisivulta: %3 tai&#10;lähettämällä sähköpostia englanninkielellä&#10;osoitteseen: %4.</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Pidätkö %1ista? %1 on saatavalla ilmaiseksi, mutta voit&#10;auttaa sen kehittämistä lahjoittamalla rahaa %1-projektille.&#10;Voit lahjoittaa rahaa lähettämällä sähköpostia englanninkielellä&#10;osoitteseen %2 PayPal-palvelun avulla.&#10;Katso tästä %3 saadaksesi&#10;lisätietoa aiheesta.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">Muuntaminen on edelleen käynnissä! Haluatko silti lopettaa?</entry>
-      <entry id="7001" string="Currently converting">Parhaillaan muunnetaan</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI-ajureiden lataaminen ei onnistu! CD:n kopiointi on pois käytöstä!</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">Ei voida avata tiedostoa: %1&#10;&#10;Virhe: %2</entry>
-      <entry id="7006" string="Delete original files after encoding">Poista alkuperäiset tiedostot muuntamisen jälkeen</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Tämä valinta poistaa alkuperäiset tiedostot tietokoneeltasi&#10;muuntamisen jälkeen!&#10;&#10;Haluatko varmasti hyväksyä valintasi?</entry>
-      <entry id="7008" string="File already exists">Tiedosto on jo olemassa</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">Tulostetiedosto %1&#10;on jo olemassa! Haluatko korvata sen?</entry>
-      <entry id="7010" string="Overwrite all further files">Korvaa kaikki muut tiedostot</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-tuki ei ole käytössä! Ole hyvä ja&#10;ota paikallisten tai&#10;etäinen CDDB-tuki käyttöön asetuksista.</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Etäinen CDDB-tuki ei ole käytössä! Ole hyvä ja&#10;salli etäinen CDDB-tuki asetuksista.</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Pääsy CD-ROM-ajureille on Windowsista evätty.&#10;&#10;Ole hyvä ja ota yhteys järjestelmänvalvojaasi&#10;saadaksesi pääsyn CD-ROM-ajuriisi.</entry>
-      <entry id="7014" string="Cannot access input file: %1">Syötetiedostoon ei päästä: %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">Ei pystytä tekemään tulostetiedostoa: %1</entry>
-      <entry id="7016" string="File not found">Tiedostoa ei löydy</entry>
-      <entry id="7017" string="Unknown file type">Tuntematon tiedostotyyppi</entry>
-      <entry id="7018" string="Unsupported audio format">Äänimuotoa ei tueta</entry>
-      <entry id="7019" string="Unknown error">Tuntematon virhe</entry>
+      <entry id="7000" string="Currently converting">Parhaillaan muunnetaan</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Muuntaminen on edelleen käynnissä! Haluatko silti lopettaa?</entry>
+      <entry id="7002" string="Delete original files after encoding">Poista alkuperäiset tiedostot muuntamisen jälkeen</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Tämä valinta poistaa alkuperäiset tiedostot tietokoneeltasi&#10;muuntamisen jälkeen!&#10;&#10;Haluatko varmasti hyväksyä valintasi?</entry>
+      <entry id="7005" string="File already exists">Tiedosto on jo olemassa</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Tulostetiedosto %1&#10;on jo olemassa! Haluatko korvata sen?</entry>
+      <entry id="7007" string="Overwrite all further files">Korvaa kaikki muut tiedostot</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Syötetiedostoon ei päästä: %1&#10;&#10;Tiedosto: %1&#10;Kansio: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ei pystytä tekemään tulostetiedostoa: %1&#10;&#10;Tiedosto: %1&#10;Kansio: %2</entry>
+      <entry id="7110" string="File not found">Tiedostoa ei löydy</entry>
+      <entry id="7111" string="Unknown file type">Tuntematon tiedostotyyppi</entry>
+      <entry id="7113" string="Unsupported audio format">Äänimuotoa ei tueta</entry>
+      <entry id="7114" string="Unknown error">Tuntematon virhe</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI-ajureiden lataaminen ei onnistu! CD:n kopiointi on pois käytöstä!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Ei voida avata tiedostoa: %1&#10;&#10;Virhe: %2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-tuki ei ole käytössä! Ole hyvä ja&#10;ota paikallisten tai&#10;etäinen CDDB-tuki käyttöön asetuksista.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Etäinen CDDB-tuki ei ole käytössä! Ole hyvä ja&#10;salli etäinen CDDB-tuki asetuksista.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Pääsy CD-ROM-ajureille on Windowsista evätty.&#10;&#10;Ole hyvä ja ota yhteys järjestelmänvalvojaasi&#10;saadaksesi pääsyn CD-ROM-ajuriisi.</entry>
     </section>
 
     <section name="Dialogs">
@@ -426,7 +429,7 @@
       <entry id="9009" string="No scratch repair">Ei naarmujenkorjausta</entry>
       <entry id="9010" string="Full cdparanoia mode">Täysi cdparanoia-tila</entry>
       <entry id="9011" string="Activate jitter correction">Ota käyttöön värinän korjaus</entry>
-      <entry id="9012" string="Swap left/right channel">Vaihda vasen/oikea kanava</entry>
+      <entry id="9012" string="Switch stereo channels">Vaihda vasen/oikea kanava</entry>
       <entry id="9013" string="Automatization">Automaattinen</entry>
       <entry id="9014" string="Read CD contents on insert">Lue CD-levyn sisältö heti</entry>
       <entry id="9015" string="Start ripping automatically">Aloita kopiointi autom.</entry>

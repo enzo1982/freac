@@ -13,53 +13,43 @@
 #ifndef H_FREAC_DECODER
 #define H_FREAC_DECODER
 
-#include <smooth.h>
-#include <boca.h>
-
-using namespace smooth;
+#include "component.h"
 
 namespace freac
 {
-	class Decoder
+	class Decoder : public Component
 	{
 		protected:
-			static Array<Threads::Mutex *, Void *>	 mutexes;
-			static Threads::Mutex			 managementMutex;
+			String				 fileName;
+			Int64				 sampleOffset;
 
-			const BoCA::Config			*configuration;
+			BoCA::Format			 format;
+			Int64				 decodedSamples;
 
-			String					 fileName;
-			Int64					 sampleOffset;
+			IO::InStream			*stream;
+			BoCA::AS::DecoderComponent	*decoder;
 
-			BoCA::Format				 format;
-			Int64					 decodedSamples;
-
-			IO::InStream				*stream;
-			BoCA::AS::DecoderComponent		*decoder;
-
-			String					 md5Sum;
+			String				 md5Sum;
 		public:
-			static Void				 FreeLockObjects();
+							 Decoder(const BoCA::Config *);
+			virtual				~Decoder();
 
-								 Decoder(const BoCA::Config *);
-			virtual					~Decoder();
+			Bool				 Create(const String &, const BoCA::Track &);
+			Bool				 Destroy();
 
-			Bool					 Create(const String &, const BoCA::Track &);
-			Bool					 Destroy();
+			Bool				 GetStreamInfo(BoCA::Track &) const;
 
-			Bool					 GetStreamInfo(BoCA::Track &) const;
+			Int				 Read(Buffer<UnsignedByte> &);
 
-			Int					 Read(Buffer<UnsignedByte> &);
-
-			Bool					 Seek(Int64);
+			Bool				 Seek(Int64);
 		accessors:
-			Int64					 GetInBytes() const;
-			String					 GetDecoderName() const;
+			Int64				 GetInBytes() const;
+			String				 GetDecoderName() const;
 
-			Int64					 GetDecodedSamples() const	{ return decodedSamples; }
+			Int64				 GetDecodedSamples() const	{ return decodedSamples; }
 
-			Void					 SetCalculateMD5(Bool);
-			String					 GetMD5Checksum();
+			Void				 SetCalculateMD5(Bool);
+			String				 GetMD5Checksum();
 	};
 };
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -24,6 +24,9 @@ BoCA::ChooserAlbums::ChooserAlbums() : Chooser("Albums")
 
 	list_albums->EnableLocking();
 
+	droparea_albums		= new DropArea(Point(7, 7), Size(100, 150));
+	droparea_albums->onDropFiles.Connect(&ChooserAlbums::OnDropFiles, this);
+
 	shortcut_previous	= new Shortcut(0, Input::Keyboard::KeyUp, list_albums);
 	shortcut_previous->onKeyDown.Connect(&ChooserAlbums::OnShortcutPrevious, this);
 
@@ -37,6 +40,7 @@ BoCA::ChooserAlbums::ChooserAlbums() : Chooser("Albums")
 	shortcut_last->onKeyDown.Connect(&ChooserAlbums::OnShortcutLast, this);
 
 	Add(list_albums);
+	Add(droparea_albums);
 
 	Add(shortcut_previous);
 	Add(shortcut_next);
@@ -45,28 +49,35 @@ BoCA::ChooserAlbums::ChooserAlbums() : Chooser("Albums")
 
 	onChangeSize.Connect(&ChooserAlbums::OnChangeSize, this);
 
-	Settings::Get()->onChangeLanguageSettings.Connect(&ChooserAlbums::OnChangeLanguageSettings, this);
+	Settings	*settings = Settings::Get();
+	JobList		*joblist  = JobList::Get();
 
-	JobList::Get()->onApplicationAddTrack.Connect(&ChooserAlbums::OnApplicationAddTrack, this);
-	JobList::Get()->onApplicationModifyTrack.Connect(&ChooserAlbums::OnApplicationModifyTrack, this);
-	JobList::Get()->onApplicationRemoveTrack.Connect(&ChooserAlbums::OnApplicationRemoveTrack, this);
-	JobList::Get()->onApplicationSelectTrack.Connect(&ChooserAlbums::OnApplicationSelectTrack, this);
+	settings->onChangeLanguageSettings.Connect(&ChooserAlbums::OnChangeLanguageSettings, this);
 
-	JobList::Get()->onApplicationRemoveAllTracks.Connect(&ChooserAlbums::OnApplicationRemoveAllTracks, this);
+	joblist->onApplicationAddTrack.Connect(&ChooserAlbums::OnApplicationAddTrack, this);
+	joblist->onApplicationModifyTrack.Connect(&ChooserAlbums::OnApplicationModifyTrack, this);
+	joblist->onApplicationRemoveTrack.Connect(&ChooserAlbums::OnApplicationRemoveTrack, this);
+	joblist->onApplicationSelectTrack.Connect(&ChooserAlbums::OnApplicationSelectTrack, this);
+
+	joblist->onApplicationRemoveAllTracks.Connect(&ChooserAlbums::OnApplicationRemoveAllTracks, this);
 }
 
 BoCA::ChooserAlbums::~ChooserAlbums()
 {
-	Settings::Get()->onChangeLanguageSettings.Disconnect(&ChooserAlbums::OnChangeLanguageSettings, this);
+	Settings	*settings = Settings::Get();
+	JobList		*joblist  = JobList::Get();
 
-	JobList::Get()->onApplicationAddTrack.Disconnect(&ChooserAlbums::OnApplicationAddTrack, this);
-	JobList::Get()->onApplicationModifyTrack.Disconnect(&ChooserAlbums::OnApplicationModifyTrack, this);
-	JobList::Get()->onApplicationRemoveTrack.Disconnect(&ChooserAlbums::OnApplicationRemoveTrack, this);
-	JobList::Get()->onApplicationSelectTrack.Disconnect(&ChooserAlbums::OnApplicationSelectTrack, this);
+	settings->onChangeLanguageSettings.Disconnect(&ChooserAlbums::OnChangeLanguageSettings, this);
 
-	JobList::Get()->onApplicationRemoveAllTracks.Disconnect(&ChooserAlbums::OnApplicationRemoveAllTracks, this);
+	joblist->onApplicationAddTrack.Disconnect(&ChooserAlbums::OnApplicationAddTrack, this);
+	joblist->onApplicationModifyTrack.Disconnect(&ChooserAlbums::OnApplicationModifyTrack, this);
+	joblist->onApplicationRemoveTrack.Disconnect(&ChooserAlbums::OnApplicationRemoveTrack, this);
+	joblist->onApplicationSelectTrack.Disconnect(&ChooserAlbums::OnApplicationSelectTrack, this);
+
+	joblist->onApplicationRemoveAllTracks.Disconnect(&ChooserAlbums::OnApplicationRemoveAllTracks, this);
 
 	DeleteObject(list_albums);
+	DeleteObject(droparea_albums);
 
 	DeleteObject(shortcut_previous);
 	DeleteObject(shortcut_next);
@@ -82,7 +93,8 @@ Void BoCA::ChooserAlbums::OnChangeSize(const Size &nSize)
 	Rect	 clientRect = Rect(GetPosition(), GetSize());
 	Size	 clientSize = Size(clientRect.right - clientRect.left, clientRect.bottom - clientRect.top);
 
-	list_albums->SetSize(Size(clientSize.cx - 15, clientSize.cy - 15));
+	list_albums->SetSize(clientSize - Size(15, 15));
+	droparea_albums->SetSize(clientSize - Size(15, 15));
 }
 
 /* Called when application language is changed.
@@ -111,6 +123,17 @@ Void BoCA::ChooserAlbums::OnChangeLanguageSettings()
 	/* Show all widgets again.
 	 */
 	if (prevVisible) Show();
+}
+
+/* Called when files are dragged and dropped on the album list.
+ * ----
+ * Adds the files to the main program's joblist.
+ */
+Void BoCA::ChooserAlbums::OnDropFiles(const Array<String> &files)
+{
+	JobList	*joblist = JobList::Get();
+
+	joblist->doAddFiles.Call(files);
 }
 
 /* Called when an album entry is selected.
@@ -234,7 +257,7 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 
 				if (				 key == INFO_BAND	   ||
 				    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
-				    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
+				    key == INFO_LYRICIST      || key == INFO_REMIXER	   ||
 
 				    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
 				    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
@@ -250,7 +273,7 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 
 				if (				 key == INFO_BAND	   ||
 				    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
-				    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
+				    key == INFO_LYRICIST      || key == INFO_REMIXER	   ||
 
 				    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
 				    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
@@ -305,15 +328,24 @@ Void BoCA::ChooserAlbums::OnApplicationModifyTrack(const Track &track)
 	{
 		if (tracks.GetNth(i).GetTrackID() != track.GetTrackID()) continue;
 
-		Track	 album = tracks.GetNth(i);
+		Track	 trackAlbum = tracks.GetNth(i);
 
 		tracks.GetNthReference(i) = track;
 
 		AddToAlbumList(track);
-		RemoveFromAlbumList(album);
+
+		foreach (const Track &album, albums)
+		{
+			if (!IsAlbumIdentical(album, trackAlbum)) continue;
+
+			RemoveFromAlbumList(album);
+		}
 
 		break;
 	}
+
+
+	if (IsActiveChooser() && list_albums->GetSelectedEntry() == NIL) onSelectNone.Emit();
 }
 
 /* Called when a track is removed from the application joblist.
@@ -380,14 +412,16 @@ Void BoCA::ChooserAlbums::ReselectEntry()
  */
 Bool BoCA::ChooserAlbums::IsAlbumIdentical(const Track &track1, const Track &track2)
 {
-	Info	 info1 = track1.GetInfo();
-	Info	 info2 = track2.GetInfo();
+	const Info	&info1	 = track1.GetInfo();
+	const Info	&info2	 = track2.GetInfo();
 
-	if (info1.GetOtherInfo(INFO_ALBUMARTIST) != NIL) info1.artist = info1.GetOtherInfo(INFO_ALBUMARTIST);
-	if (info2.GetOtherInfo(INFO_ALBUMARTIST) != NIL) info2.artist = info2.GetOtherInfo(INFO_ALBUMARTIST);
+	String		 artist1 = info1.artist;
+	String		 artist2 = info2.artist;
 
-	if ((info1.artist == NIL || info2.artist == NIL || info1.artist == info2.artist) &&
-							   info1.album  == info2.album) return True;
+	if (info1.HasOtherInfo(INFO_ALBUMARTIST)) artist1 = info1.GetOtherInfo(INFO_ALBUMARTIST);
+	if (info2.HasOtherInfo(INFO_ALBUMARTIST)) artist2 = info2.GetOtherInfo(INFO_ALBUMARTIST);
+
+	if ((artist1 == NIL || artist2 == NIL || artist1 == artist2) && info1.album == info2.album) return True;
 
 	return False;
 }
@@ -432,7 +466,7 @@ Void BoCA::ChooserAlbums::AddToAlbumList(const Track &track)
 
 		if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
 		    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
-		    key == INFO_LYRICIST      || key == INFO_REMIX	   ||
+		    key == INFO_LYRICIST      || key == INFO_REMIXER	   ||
 
 		    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
 		    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||

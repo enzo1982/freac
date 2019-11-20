@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Joeyong Jen</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">确定</entry>
@@ -378,33 +378,36 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 有 %2 种语言版本，如果您没有找到您所要的语言，&#10; 您可以使用“Smooth 翻译器”进行 %1 的翻译。</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 支持 LAME，Ogg Vorbis，FAAC，FLAC 和 Bonk&#10;等编码器。VQF 格式的编码器可以在 %1 网站上下载：&#10;%2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 支持 LAME，Ogg Vorbis，FAAC，FLAC 和 Opus&#10;等编码器。VQF 格式的编码器可以在 %1 网站上下载：&#10;%2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 使用 Winamp 2 输入插件后可以支持更多的格式。&#10;将 in_*.dll 文件复制到 %1/plugins 目录后就可以使用&#10;%1 读取这些格式了。</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">使用 %1 您可以提交采用 Unicode 字符集的 freedb CD&#10;数据库项目。&#10;因此，如果您的 CD 是非拉丁语系艺术家或标题名称，&#10;也可以使用 %1提交正确的 freedb 项目。</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">为了修正翻录时出现读取错误，您可以在 %1 常规设置&#10;的 Ripper 标签中开启抖动校正功能。如果这样不能&#10;解决问题，您可以尝试另外的 Paranoia 模式。</entry>
-      <entry id="6205" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">您对 %1 在功能上有更好的建议吗？&#10;您可以通过 %1 在 SourceForge project 页面下的&#10;软件追踪器提交您的任何建议。&#10;地址是： %2&#10;或直接发送电子邮件到 %3 。</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">您对 %1 在功能上有更好的建议吗？&#10;&#10;您可以通过 %1 在 %2 project 页面下的&#10;软件追踪器提交您的任何建议。&#10;地址是： %3&#10;或直接发送电子邮件到 %4 。</entry>
       <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">您喜欢 %1 吗？&#10;&#10;它是免费的。&#10;&#10;不过您也可以捐点小钱赞助 %1 计划。&#10;您可以通过 PayPal 赞助给 %2。&#10;详情请参阅 %3 。</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="A conversion process is still active! Do you really want to quit?">编码进程正在运行！ 你确定要退出吗？</entry>
-      <entry id="7001" string="Currently converting">正在编码</entry>
-      <entry id="7002" string="Unable to load ASPI drivers! CD ripping disabled!">不能加载 ASPI 驱动器！ 不能进行 CD 翻录！</entry>
-      <entry id="7003" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件： %1&#10;&#10;错误： %2</entry>
-      <entry id="7006" string="Delete original files after encoding">编码完成后删除源文件</entry>
-      <entry id="7007" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">该选项将会在编码完成后删除源文件！&#10;您确定要使用此设置吗？</entry>
-      <entry id="7008" string="File already exists">文件已经存在</entry>
-      <entry id="7009" string="The output file %1&#10;already exists! Do you want to overwrite it?">输出文件 %1&#10;已经存在！您要覆盖它吗？</entry>
-      <entry id="7010" string="Overwrite all further files">覆盖之后所有的文件</entry>
-      <entry id="7011" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB 支持已停用！请在设置对话框中&#10;启用本地或远程 CDDB 支持。</entry>
-      <entry id="7012" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">远程 CDDB 支持已停用！请在设置对话框中&#10;启用远程 CDDB 支持。</entry>
-      <entry id="7013" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">访问 CD-ROM 光驱被 Windows 拒绝。&#10;请联系您的系统管理员以&#10;取得访问 CD-ROM 光驱的权限。</entry>
-      <entry id="7014" string="Cannot access input file: %1">不能访问输入文件： %1</entry>
-      <entry id="7015" string="Cannot create output file: %1">不能创建输出文件： %1</entry>
-      <entry id="7016" string="File not found">找到文件</entry>
-      <entry id="7017" string="Unknown file type">未知文件类型</entry>
-      <entry id="7018" string="Unsupported audio format">不支持的音频格式</entry>
-      <entry id="7019" string="Unknown error">未知错误</entry>
+      <entry id="7000" string="Currently converting">正在编码</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">编码进程正在运行！ 你确定要退出吗？</entry>
+      <entry id="7002" string="Delete original files after encoding">编码完成后删除源文件</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">该选项将会在编码完成后删除源文件！&#10;您确定要使用此设置吗？</entry>
+      <entry id="7005" string="File already exists">文件已经存在</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">输出文件 %1&#10;已经存在！您要覆盖它吗？</entry>
+      <entry id="7007" string="Overwrite all further files">覆盖之后所有的文件</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">不能访问输入文件： %1&#10;&#10;文件： %1&#10;目录： %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">不能创建输出文件： %1&#10;&#10;文件： %1&#10;目录： %2</entry>
+      <entry id="7110" string="File not found">找到文件</entry>
+      <entry id="7111" string="Unknown file type">未知文件类型</entry>
+      <entry id="7113" string="Unsupported audio format">不支持的音频格式</entry>
+      <entry id="7114" string="Unknown error">未知错误</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">不能加载 ASPI 驱动器！ 不能进行 CD 翻录！</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件： %1&#10;&#10;错误： %2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB 支持已停用！请在设置对话框中&#10;启用本地或远程 CDDB 支持。</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">远程 CDDB 支持已停用！请在设置对话框中&#10;启用远程 CDDB 支持。</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">访问 CD-ROM 光驱被 Windows 拒绝。&#10;请联系您的系统管理员以&#10;取得访问 CD-ROM 光驱的权限。</entry>
     </section>
 
     <section name="Dialogs">
@@ -429,7 +432,7 @@
       <entry id="9009" string="No scratch repair">不进行刮痕修复</entry>
       <entry id="9010" string="Full cdparanoia mode">完整 cdparanoia 模式</entry>
       <entry id="9011" string="Activate jitter correction">激活抖动校正</entry>
-      <entry id="9012" string="Swap left/right channel">左/右声道互换</entry>
+      <entry id="9012" string="Switch stereo channels">左/右声道互换</entry>
       <entry id="9013" string="Automatization">自动化</entry>
       <entry id="9014" string="Read CD contents on insert">放入 CD 时读取内容</entry>
       <entry id="9015" string="Start ripping automatically">自动启动翻录</entry>

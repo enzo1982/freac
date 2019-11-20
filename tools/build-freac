@@ -28,6 +28,15 @@ else
   export MAKE=gmake
 fi
 
+# Set sudo tool
+if [[ $uname == Haiku ]]; then
+  export SUDO=
+elif [[ $uname == *MINGW* ]]; then
+  export SUDO=true
+else
+  export SUDO=sudo
+fi
+
 # Package locations
 smooth_location=https://github.com/enzo1982/smooth/archive/master.zip
 boca_location=https://github.com/enzo1982/boca/archive/master.zip
@@ -40,16 +49,16 @@ rm -fr smooth-master
 unzip smooth-master.zip
 
 cd smooth-master
-if [[ $uname == *MINGW* ]] || [[ $uname == Darwin ]]; then
-  $MAKE config=release -j$jobs
+config=release
+if [[ $uname != *MINGW* ]] && [[ $uname != Darwin ]]; then
+  config=$config,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib
 
-  if [[ $uname == Darwin ]]; then
-    sudo $MAKE config=release install -j$jobs
+  if [[ $uname == Haiku ]]; then
+    config=$config,bundledlibiconv
   fi
-else
-  $MAKE config=release,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib -j$jobs
-  sudo $MAKE config=release,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib install -j$jobs
 fi
+$MAKE config=$config -j$jobs
+$SUDO $MAKE config=$config install -j$jobs
 cd ..
 
 # Build BoCA
@@ -74,15 +83,17 @@ if [[ $uname == *MINGW* ]]; then
 fi
 
 cd BoCA-master
-if [[ $uname == *MINGW* ]] || [[ $uname == Darwin ]]; then
-  $MAKE config=release -j$jobs
-
-  if [[ $uname == Darwin ]]; then
-    sudo $MAKE config=release install -j$jobs
-  fi
-else
-  $MAKE config=release,bundledlibexpat,bundledliburiparser,bundledzlib -j$jobs
-  sudo $MAKE config=release,bundledlibexpat,bundledliburiparser,bundledzlib install -j$jobs
+config=release
+if [[ $uname != *MINGW* ]] && [[ $uname != Darwin ]]; then
+  config=$config,bundledlibexpat,bundledliburiparser,bundledzlib
+fi
+$MAKE config=$config -j$jobs
+$SUDO $MAKE config=$config install -j$jobs
+if [[ $uname == Linux ]]; then
+  cd components/output/alsa
+  $MAKE config=$config -j$jobs
+  $SUDO $MAKE config=$config install -j$jobs
+  cd ../../..
 fi
 cd ..
 
@@ -105,8 +116,7 @@ if [[ $uname == *MINGW* ]]; then
 fi
 
 cd freac-master
-$MAKE config=release -j$jobs
-if [[ $uname != *MINGW* ]]; then
-	sudo $MAKE config=release install -j$jobs
-fi
+config=release
+$MAKE config=$config -j$jobs
+$SUDO $MAKE config=$config install -j$jobs
 cd ..

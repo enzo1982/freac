@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -140,8 +140,6 @@ Bool freac::CDDBInfo::UpdateFromQueryString(const String &queryString)
 	discLength = values.GetNth(numTocEntries + 4).ToInt();
 	discID	   = CDDB::StringToDiscID(values.GetNth(2));
 
-	String::ExplodeFinish();
-
 	return True;
 }
 
@@ -177,7 +175,7 @@ Bool freac::CDDBInfo::UpdateTrack(BoCA::Track &track) const
 
 		track.SetInfo(info);
 
-		track.outfile = NIL;
+		track.outputFile = NIL;
 	}
 
 	return True;
