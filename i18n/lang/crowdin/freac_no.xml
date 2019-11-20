@@ -1002,7 +1002,7 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders">Oversatt av %1.</entry>
+	<entry id="42000" string="Encoders">Kodere</entry>
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
 	<entry id="42003" string="Configure encoder">Konfigurer koder</entry>
@@ -1129,7 +1129,7 @@
 	<entry id="80211" string="slow"/>
 	<entry id="80212" string="minimum"/>
 	<entry id="80213" string="Optimization"/>
-	<entry id="80214" string="disabled">Automatisk</entry>
+	<entry id="80214" string="disabled">deaktivert</entry>
 	<entry id="80215" string="low"/>
       </section>
 
@@ -1233,7 +1233,7 @@
 	<entry id="102015" string="Size">Størrelse</entry>
 	<entry id="102016" string="Cancel download"/>
 	<entry id="102017" string="unknown"/>
-	<entry id="102018" string="Note"/>
+	<entry id="102018" string="Note">Notat</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatisering</entry>
