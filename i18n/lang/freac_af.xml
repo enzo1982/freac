@@ -9,6 +9,7 @@
     <property name="template">template.xml</property>
     <property name="author">Cois Wiid</property>
     <property name="url">https://www.freac.org/</property>
+    <property name="incomplete">true</property>
   </info>
   <data>
     <entry id="100" string="OK">Reg</entry>
