@@ -554,7 +554,7 @@
 	<entry id="5900" string="Signal processing"/>
 	<entry id="5901" string="Enable signal processing">Spustit kódování</entry>
 	<entry id="5902" string="Enable processing during playback">Spustit kódování s</entry>
-	<entry id="5903" string="Components"/>
+	<entry id="5903" string="Components">Součásti</entry>
 	<entry id="5904" string="Available"/>
 	<entry id="5905" string="Selected"/>
 	<entry id="5906" string="Configure component"/>
@@ -1002,7 +1002,7 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders">Přeložil %1.</entry>
+	<entry id="42000" string="Encoders">Enkodér</entry>
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
 	<entry id="42003" string="Configure encoder">Konfigurovat enkodér</entry>
@@ -1143,7 +1143,7 @@
 
       <section name="WavPack Audio Encoder">
 	<entry id="80400" string="Enable lossy compression"/>
-	<entry id="80401" string="Compression mode"/>
+	<entry id="80401" string="Compression mode">Režim komprese</entry>
 	<entry id="80402" string="fast"/>
 	<entry id="80403" string="high quality"/>
 	<entry id="80404" string="very high quality"/>
@@ -1233,7 +1233,7 @@
 	<entry id="102015" string="Size">Velikost</entry>
 	<entry id="102016" string="Cancel download">Storno stahování</entry>
 	<entry id="102017" string="unknown">neznámý</entry>
-	<entry id="102018" string="Note"/>
+	<entry id="102018" string="Note">Poznámka</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatizace</entry>
