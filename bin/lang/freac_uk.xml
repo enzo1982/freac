@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Ukrainian / Українська</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -237,11 +237,11 @@
     <entry id="233" string="Toggle selection">Вибрати виділені</entry>
     <entry id="234" string="Show Tip of the Day">Порада дня</entry>
     <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 доступний на %2 мовах.&#10;Якщо вашої мови немає, ви можете легко перекласти&#10;використовуючи 'smooth Translator'.</entry>
-    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 підтримує LAME, Ogg Vorbis, Bonk.&#10;Кодеки AAC і VQF доступні на сайті %1.</entry>
+    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">Кодується</entry>
     <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 може використовувати вхідні плагіни Winamp 2 для&#10;підтримки більшої кількості форматів файлів.&#10;Скопіюйте файли in_*.dll у теку %1/plugins для того&#10;щоб він почав розуміти нові формати.</entry>
     <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">За допомогою %1 ви можете поповнювати&#10;базу даних freedb CD.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Для корекції помилок читання під час захоплення&#10;даних ви можете вкл.</entry>
-    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Ви маєте будь-які побажання як покращити %1?&#10;Ви можете викласти їх на форумі проекту %1,&#10;на SourceForge або відіслати по е-мaіl.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Дана опція знищить оригінали після їх кодування!&#10;&#10;Продовжувати?</entry>
     <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Вам подобається %1? %1 вільний&#10;для розповсюдження, але ви можете профінансувати&#10;розробку проекту. Переслати гроші на %2&#10;через PayPal.&#10;Подробиці на %3.</entry>
     <entry id="242" string="Bitrate / Quality">Бітрейт/Якість</entry>
     <entry id="243" string="Check for updates now">Перевірити зараз поновлення</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Залишати Wave</entry>
     <entry id="251" string="ripping/decoding">захоплення/декодування</entry>
     <entry id="252" string="encoding">кодування</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Викор. Unicode імена файлів</entry>
     <entry id="255" string="AAC Files">ААС файли</entry>
     <entry id="256" string="MP4 Files">МР4 файли</entry>
@@ -407,7 +407,16 @@
     <entry id="403" string="Use 2-pass encoding">2 прохідне кодування</entry>
     <entry id="404" string="Target bitrate">Бітрейт джерела:</entry>
     <entry id="405" string="Set drive speed limit:">Обмеження швид. приводу:</entry>
-    <entry id="414" string="CDDB">CDDB</entry>
-    <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="406" string="Support this project">CDDB</entry>
+    <entry id="407" string="Please support this project!">CDRip</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
+    <entry id="410" string="usd"/>
+    <entry id="411" string="en"/>
+    <entry id="412" string="Thank you very much!"/>
+    <entry id="413" string="Remind me later"/>
+    <entry id="414" string="CDDB"/>
+    <entry id="415" string="Ripper"/>
+    <entry id="416" string="Default"/>
   </data>
 </LangFile>
