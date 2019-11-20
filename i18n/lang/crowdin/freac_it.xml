@@ -61,7 +61,7 @@
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 byte</entry>
       <entry id="517" string="%1 kB">%1%</entry>
-      <entry id="518" string="%1%"/>
+      <entry id="518" string="%1%">%1%</entry>
     </section>
 
     <section name="Menu">
@@ -199,7 +199,7 @@
       <entry id="3043" string="All Files">Tutti i file (*.*)</entry>
       <entry id="3044" string="Playlist Files">File della playlist</entry>
       <entry id="3045" string="Active decoder">Decodificatore attivo</entry>
-      <entry id="3046" string="Joblist"/>
+      <entry id="3046" string="Joblist">Joblist</entry>
       <entry id="3047" string="unknown">sconosciuto</entry>
       <entry id="3048" string="Other">Altro</entry>
       <entry id="3049" string="Output file name">File di destinazione</entry>
@@ -364,7 +364,7 @@
       <entry id="5008" string="Components">Componenti</entry>
       <entry id="5009" string="Decoders">Decodificatori</entry>
       <entry id="5010" string="Output">Destinazione</entry>
-      <entry id="5011" string="DSP"/>
+      <entry id="5011" string="DSP">DSP</entry>
       <entry id="5012" string="Extensions">Estensioni</entry>
       <entry id="5013" string="Other">Altro</entry>
       <entry id="5014" string="Active configuration">Configurazione attiva</entry>
@@ -448,7 +448,7 @@
 	  <entry id="5335" string="Proxy type">Tipo proxy</entry>
 	  <entry id="5336" string="Proxy server">Server proxy</entry>
 	  <entry id="5337" string="User name">Nome utente</entry>
-	  <entry id="5338" string="Password"/>
+	  <entry id="5338" string="Password">Password</entry>
 	</section>
 
 	<section name="Errors">
@@ -498,7 +498,7 @@
       </section>
 
       <section name="Joblist">
-	<entry id="5600" string="Joblist"/>
+	<entry id="5600" string="Joblist">Joblist</entry>
 	<entry id="5601" string="Columns">Colonne</entry>
 	<entry id="5602" string="Name">Nome</entry>
 	<entry id="5603" string="Description">Descrizione</entry>
@@ -821,7 +821,7 @@
       </section>
 
       <section name="AAC">
-	<entry id="33000" string="Codec"/>
+	<entry id="33000" string="Codec">Codec</entry>
 	<entry id="33001" string="Quality">Qualità</entry>
 	<entry id="33002" string="Format">Formato</entry>
 
@@ -946,9 +946,9 @@
 	<entry id="39004" string="Wideband (16 kHz)">Banda larga (16 kHz)</entry>
 	<entry id="39005" string="Ultra-Wideband (32 kHz)">Banda ultra larga (32 kHz)</entry>
 	<entry id="39006" string="VBR mode">Modalità VBR</entry>
-	<entry id="39007" string="CBR (no VBR)"/>
-	<entry id="39008" string="VBR"/>
-	<entry id="39009" string="ABR"/>
+	<entry id="39007" string="CBR (no VBR)">CBR (no VBR)</entry>
+	<entry id="39008" string="VBR">VBR</entry>
+	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Opzioni</entry>
 	<entry id="39011" string="Voice Activity Detection">Rilevamento attività vocale</entry>
 	<entry id="39012" string="Discontinued Transmission">Trasmissione discontinua</entry>
@@ -992,7 +992,7 @@
 	<entry id="41000" string="Output format">Formato destinazione</entry>
 	<entry id="41001" string="File format">Formato file</entry>
 	<entry id="41002" string="Audio format">Formato audio</entry>
-	<entry id="41003" string="mono"/>
+	<entry id="41003" string="mono">mono</entry>
 	<entry id="41004" string="auto select">selezione automatica</entry>
 
 	<section name="Errors">
@@ -1040,20 +1040,20 @@
 
       <section name="RubberBand">
 	<entry id="50300" string="Basic controls">Controlli di base</entry>
-	<entry id="50301" string="Tempo"/>
+	<entry id="50301" string="Tempo">Tempo</entry>
 	<entry id="50302" string="Pitch">Tonalità</entry>
 	<entry id="50303" string="%1 Semitones">%1 semitoni</entry>
 	<entry id="50304" string="Advanced options">Opzioni avanzate</entry>
 	<entry id="50305" string="Transient detection">Rilevamento transiente</entry>
 	<entry id="50306" string="Compound">Composto</entry>
 	<entry id="50307" string="Percussive">Percussivo</entry>
-	<entry id="50308" string="Soft"/>
+	<entry id="50308" string="Soft">Soft</entry>
 	<entry id="50309" string="Transient handling">Gestione transiente</entry>
 	<entry id="50310" string="Crisp">Nitido</entry>
 	<entry id="50311" string="Mixed">Misto</entry>
 	<entry id="50312" string="Smooth">Regolare</entry>
 	<entry id="50313" string="Transformation window">Finestra di trasformazione</entry>
-	<entry id="50314" string="Standard"/>
+	<entry id="50314" string="Standard">Standard</entry>
 	<entry id="50315" string="Short">Breve</entry>
 	<entry id="50316" string="Long">Lunga</entry>
 	<entry id="50317" string="Use time-domain smoothing">Usa elaborazione nel dominio del tempo</entry>
@@ -1119,7 +1119,7 @@
 	<entry id="80201" string="fast">veloce</entry>
 	<entry id="80202" string="normal">normale</entry>
 	<entry id="80203" string="high">elevato</entry>
-	<entry id="80204" string="extra"/>
+	<entry id="80204" string="extra">extra</entry>
 	<entry id="80205" string="best">migliore</entry>
 	<entry id="80206" string="high, new">elevato, nuovo</entry>
 	<entry id="80207" string="extra, new">extra, nuovo</entry>
@@ -1159,7 +1159,7 @@
 	<entry id="80503" string="worse">peggiore</entry>
 	<entry id="80504" string="better">migliore</entry>
 	<entry id="80505" string="Bitrate">Bitrate</entry>
-	<entry id="80506" string="Bitrate (Streaming)"/>
+	<entry id="80506" string="Bitrate (Streaming)">Bitrate (Streaming)</entry>
       </section>
     </section>
 
@@ -1204,8 +1204,8 @@
 	<section name="SEPA">
 	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Puoi fare una donazione effettuando un bonifico&#10;bancario sul seguente conto:</entry>
 	  <entry id="100501" string="Account holder:">Titolare del conto:</entry>
-	  <entry id="100502" string="IBAN:"/>
-	  <entry id="100503" string="BIC:"/>
+	  <entry id="100502" string="IBAN:">IBAN:</entry>
+	  <entry id="100503" string="BIC:">BIC:</entry>
 	</section>
       </section>
 
@@ -1215,14 +1215,14 @@
       </section>
 
       <section name="Video Downloader">
-	<entry id="102000" string="Video"/>
+	<entry id="102000" string="Video">Video</entry>
 	<entry id="102001" string="Enter video URL here">Inserire qui l'URL video</entry>
-	<entry id="102002" string="Download"/>
+	<entry id="102002" string="Download">Download</entry>
 	<entry id="102003" string="Automatically download URLs copied to clipboard">Scarica automaticamente gli URL copiati negli Appunti</entry>
 	<entry id="102004" string="Save downloaded video files">Salva i file video scaricati</entry>
 	<entry id="102005" string="Video downloads">Download video</entry>
 	<entry id="102006" string="Downloaded tracks">Tracce scaricate</entry>
-	<entry id="102007" string="Uploader"/>
+	<entry id="102007" string="Uploader">Uploader</entry>
 	<entry id="102008" string="Video URL">URL video</entry>
 	<entry id="102009" string="Video title">Titolo video</entry>
 	<entry id="102010" string="Video description">Descrizione video</entry>
@@ -1288,9 +1288,9 @@
 	  <entry id="103206" string="Modified / remixed by">Modificato/remixato da</entry>
 	  <entry id="103207" string="Publisher information">Informazioni sull'editore</entry>
 	  <entry id="103208" string="Publisher / label">Editore/etichetta</entry>
-	  <entry id="103209" string="ISRC"/>
-	  <entry id="103210" string="Tempo"/>
-	  <entry id="103211" string="BPM"/>
+	  <entry id="103209" string="ISRC">ISRC</entry>
+	  <entry id="103210" string="Tempo">Tempo</entry>
+	  <entry id="103211" string="BPM">BPM</entry>
 	</section>
 
 	<section name="Other">
@@ -1317,7 +1317,7 @@
 
       <section name="Logging">
 	<entry id="104000" string="Logs">Log</entry>
-	<entry id="104001" string="Log"/>
+	<entry id="104001" string="Log">Log</entry>
 	<entry id="104002" string="Save as">Salva con nome</entry>
 	<entry id="104003" string="Log Files">File di log</entry>
 	<entry id="104004" string="Time">Tempo</entry>
