@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Afrikaans</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -189,8 +189,8 @@
     <entry id="185" string="Size">Grootte</entry>
     <entry id="186" string="Artist">Kunstenaar</entry>
     <entry id="187" string="Year">Jaar</entry>
-    <entry id="188" string="Genre">Genre</entry>
-    <entry id="189" string="Album">Album</entry>
+    <entry id="188" string="Genre">onbekende kunstenaar</entry>
+    <entry id="189" string="Album">Kommentaar</entry>
     <entry id="190" string="Info tags">Inligtingsetikette</entry>
     <entry id="191" string="Default information">Verstekinformasie</entry>
     <entry id="192" string="Default comment string:">Verstekkommentaarstring:</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Behou gestroopte Wave-lêers</entry>
     <entry id="251" string="ripping/decoding">stroping/dekodering</entry>
     <entry id="252" string="encoding">enkodering</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Gebruik Unicode-lêername</entry>
     <entry id="255" string="AAC Files">AAC-lêers</entry>
     <entry id="256" string="MP4 Files">MP4-lêers</entry>
@@ -270,7 +270,7 @@
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">grepe (bytes)</entry>
     <entry id="268" string="bit">bis (bit)</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Skep speellys</entry>
     <entry id="271" string="Create cue sheet">Skep wenkblad</entry>
     <entry id="272" string="Write ID3v1 tags">Skryf ID3v1-etikette</entry>
@@ -326,7 +326,7 @@
     <entry id="322" string="first letter upper case">eerste letter bokas</entry>
     <entry id="323" string="all lower case">alles onderkas</entry>
     <entry id="324" string="all upper case">alles bokas</entry>
-    <entry id="325" string="Status">Status</entry>
+    <entry id="325" string="Status">Gebruik die invoerlêergids indien moontlik</entry>
     <entry id="326" string="Successfully read CD!">CD suksesvol gelees!</entry>
     <entry id="327" string="Comment">Kommentaar</entry>
     <entry id="328" string="Manage CDDB cache entries...">Beheer CDDB cache-inskrywings...</entry>
@@ -411,8 +411,8 @@
     <entry id="407" string="Please support this project!">Help asseblief hierdie projek!</entry>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Help asseblief om hierdie sagteware gratis te hou deur die %1 projek&#10;met 'n donasie te ondersteun.&#10;&#10;Klik op een van die knoppies hieronder om 'n donasie te maak via PayPal:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Jy kan ook 'n donasie direk aan %1 stuur deur PayPal te gebruik.&#10;&#10;Skryf asseblief aan %1 as jy graag 'n donasie wil maak via&#10;elektroniese oordrag, of 'n tjek wil pos, of geld per pos wil stuur.</entry>
-    <entry id="410" string="usd">usd</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="410" string="usd">zar</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Baie dankie!</entry>
     <entry id="413" string="Remind me later">Herinner my later</entry>
     <entry id="414" string="CDDB">CDDB</entry>
