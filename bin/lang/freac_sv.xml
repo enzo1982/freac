@@ -156,7 +156,7 @@
     <entry id="148" string="Automatic CDDB queries">Automatisk CDDB-sökning</entry>
     <entry id="149" string="CDDB access mode:">Anslutningsläge:</entry>
     <entry id="150" string="CDDB server:">CDDB-server:</entry>
-    <entry id="151" string="Port:">Port:</entry>
+    <entry id="151" string="Port:"/>
     <entry id="152" string="Info">Information</entry>
     <entry id="153" string="No freedb entry for this disk.">Det finns ingen freedb-post för denna skiva.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Ett fel inträffade när programmet försökte ansluta till freedb-servern.</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Behåll rippade wave-filer</entry>
     <entry id="251" string="ripping/decoding">rippning/avkodning</entry>
     <entry id="252" string="encoding">kodning</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Använd Unicode för filnamn</entry>
     <entry id="255" string="AAC Files">AAC-filer</entry>
     <entry id="256" string="MP4 Files">MP4-filer</entry>
@@ -270,7 +270,7 @@
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">byte</entry>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Skapa spelningslista</entry>
     <entry id="271" string="Create cue sheet">Skapa CUE-fil</entry>
     <entry id="272" string="Write ID3v1 tags">Skriv ID3v1-taggar</entry>
@@ -386,8 +386,8 @@
     <entry id="382" string="Apodization function(s):">Apodiseringsfunktion(er):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Du kan ange flera funktioner samtidigt, åtskilda av semikolon.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 kan söka efter programuppdateringar&#10;automatiskt vid programstart.&#10;&#10;Vill du att %1 ska söka efter uppdateringar vid programstart?</entry>
-    <entry id="385" string="Cannot access input file: %1">Det gick inte att komma åt källfilen: %1</entry>
-    <entry id="386" string="Cannot create output file: %1">Det gick inte att skapa målfilen: %1</entry>
+    <entry id="385" string="Cannot access input file: %1">Det gick inte att hitta filen</entry>
+    <entry id="386" string="Cannot create output file: %1">Okänd filtyp</entry>
     <entry id="387" string="File not found">Det gick inte att hitta filen</entry>
     <entry id="388" string="Unknown file type">Okänd filtyp</entry>
     <entry id="389" string="Unsupported audio format">Ljudformatet stöds inte</entry>
@@ -412,7 +412,7 @@
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Hjälp oss att även i framtiden kunna erbjuda detta program helt&#10;gratis genom att donera en slant till projektet %1.&#10;&#10;Klicka på en av knapparna nedan för att donera via PayPal:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Du kan även skicka pengar direkt till %1 via PayPal.&#10;&#10;Skriv till %1 om du önskar göra en donation via&#10;elektronisk överföring, eller en check/pengar via posten.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en">en</entry>
+    <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">Tusen tack!</entry>
     <entry id="413" string="Remind me later">Påminn mig senare</entry>
     <entry id="414" string="CDDB">CDDB</entry>
