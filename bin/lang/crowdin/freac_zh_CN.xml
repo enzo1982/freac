@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.0.15</property>
+    <property name="language">Chinese (simplified) / 简体中文</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
+    <property name="author">Joeyong Jen</property>
+    <property name="url"/>
+  </info>
+  <data>
+    <entry id="1" string="File">文件</entry>
+    <entry id="2" string="Options">选项</entry>
+    <entry id="3" string="Encode">编码</entry>
+    <entry id="4" string="Add">添加</entry>
+    <entry id="5" string="Remove">删除</entry>
+    <entry id="6" string="Clear joblist">清除任务列表</entry>
+    <entry id="7" string="Exit">退出</entry>
+    <entry id="8" string="General settings...">常规设置...</entry>
+    <entry id="9" string="Configure selected encoder...">设置选定的编码器...</entry>
+    <entry id="10" string="Audio file(s)">音频文件</entry>
+    <entry id="11" string="Audio CD contents">音频 CD 内容</entry>
+    <entry id="12" string="Start encoding">启动编码</entry>
+    <entry id="13" string="Stop encoding">停止编码</entry>
+    <entry id="14" string="Encoding file:">编码文件：</entry>
+    <entry id="15" string="Time left:">剩余时间：</entry>
+    <entry id="16" string="Percent done:">已完成百分比：</entry>
+    <entry id="17" string="Selected encoder:">选定的编码器：</entry>
+    <entry id="18" string="File progress:">任务进度：</entry>
+    <entry id="19" string="Output dir.:">输出路径：</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">任务列表中包含 %1 个文件 (共%2 分钟)：</entry>
+    <entry id="21" string="none">无</entry>
+    <entry id="22" string="Help topics...">帮助主题...</entry>
+    <entry id="23" string="Add audio file(s) to the joblist">添加音频文件到任务列表</entry>
+    <entry id="24" string="Add audio CD contents to the joblist">添加音频 CD 内容到任务列表</entry>
+    <entry id="25" string="Remove the selected entry from the joblist">从任务列表中删除选中的项目</entry>
+    <entry id="26" string="Clear the entire joblist">清除整个任务列表</entry>
+    <entry id="27" string="Configure general settings">设置常规选项</entry>
+    <entry id="28" string="Configure the selected audio encoder">设置选中的音频编码器</entry>
+    <entry id="29" string="Start the encoding process">启动编码处理</entry>
+    <entry id="30" string="Cannot modify the joblist while encoding!">不能在编码过程中编辑任务列表！</entry>
+    <entry id="31" string="Error">错误</entry>
+    <entry id="32" string="Audio Files">音频文件</entry>
+    <entry id="33" string="Apple Audio Files">Apple 音频文件</entry>
+    <entry id="34" string="Creative Voice Files">Creative Voice 文件</entry>
+    <entry id="35" string="Sun Audio Files">Sun 音频文件</entry>
+    <entry id="36" string="Wave Files">Wave 文件</entry>
+    <entry id="37" string="Windows CD Audio Track">Windows CD 音轨</entry>
+    <entry id="38" string="All Files">所有文件</entry>
+    <entry id="39" string="You did not select a track!">你没有选择文件！</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">编码进程正在运行！ 你确定要退出吗？</entry>
+    <entry id="41" string="Currently encoding">正在编码</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">本程序遵照 GNU 通用公共许可证(GPL) 进行分发。</entry>
+    <entry id="43" string="CDDB query">CDDB 查询</entry>
+    <entry id="44" string="About %1">关于 %1</entry>
+    <entry id="45" string="No options can be configured for Windows Wave file output!">WAVE 输出滤镜没有可以设置的选项！</entry>
+    <entry id="46" string="Windows Wave file output">WAVE 输出滤镜</entry>
+    <entry id="47" string="Cannot change settings while encoding!">不能在编码过程中改变设置！</entry>
+    <entry id="48" string="%1 encoder configuration">%1 编码设置</entry>
+    <entry id="49" string="OK">确定</entry>
+    <entry id="50" string="Cancel">取消</entry>
+    <entry id="51" string="Encoding Mode">编码模式</entry>
+    <entry id="52" string="Variable Bitrate">可变比特率</entry>
+    <entry id="53" string="Average Bitrate">平均比特率</entry>
+    <entry id="54" string="Quality">品质</entry>
+    <entry id="55" string="Encoders">编码器</entry>
+    <entry id="56" string="Language">语言</entry>
+    <entry id="57" string="Show title info">显示标题信息</entry>
+    <entry id="58" string="General settings setup">常规设置</entry>
+    <entry id="59" string="Configure encoder">设置编码器</entry>
+    <entry id="60" string="Encoder">编码器</entry>
+    <entry id="61" string="Output folder">输出目录</entry>
+    <entry id="62" string="Browse">浏览</entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">选择存放编码文件的目录：</entry>
+    <entry id="64" string="Encoding">编码</entry>
+    <entry id="65" string="Author">作者</entry>
+    <entry id="66" string="URL">URL</entry>
+    <entry id="67" string="Information">信息</entry>
+    <entry id="68" string="Select language:">选择语言：</entry>
+    <entry id="69" string="Active CD-ROM drive">可用的 CD-ROM 驱动器</entry>
+    <entry id="70" string="Ripper settings">翻录设置</entry>
+    <entry id="71" string="Activate cdparanoia mode:">激活 cdparanoia 模式：</entry>
+    <entry id="72" string="Activate jitter correction">激活抖动校正</entry>
+    <entry id="73" string="Swap left/right channel">左/右声道互换</entry>
+    <entry id="74" string="Lock CD tray while ripping">翻录时锁定 CD 托盘</entry>
+    <entry id="75" string="Use native NT SCSI library">使用原生 NT SCSI 库</entry>
+    <entry id="76" string="Overlap only">仅覆盖</entry>
+    <entry id="77" string="No verify">不校验</entry>
+    <entry id="78" string="No scratch repair">不进行刮痕修复</entry>
+    <entry id="79" string="Full cdparanoia mode">完整 cdparanoia 模式</entry>
+    <entry id="80" string="Bitrate">比特率</entry>
+    <entry id="81" string="Copyright bit">版权比特</entry>
+    <entry id="82" string="CRC">CRC</entry>
+    <entry id="83" string="Original bit">原声比特</entry>
+    <entry id="84" string="Channels">声道</entry>
+    <entry id="85" string="Private bit">私有比特</entry>
+    <entry id="86" string="Set Copyright bit">设置版权比特</entry>
+    <entry id="87" string="Enable CRC">启用 CRC</entry>
+    <entry id="88" string="Set Original bit">设置原声比特</entry>
+    <entry id="89" string="Dual channel encoding">双声道编码</entry>
+    <entry id="90" string="Set Private bit">设置私有比特</entry>
+    <entry id="91" string="Encoder mode">编码模式</entry>
+    <entry id="92" string="Stereo mode">立体声模式</entry>
+    <entry id="93" string="Quantization">量化</entry>
+    <entry id="94" string="Downsampling ratio">降低采样率</entry>
+    <entry id="95" string="Predictor size">预测器尺寸</entry>
+    <entry id="96" string="Enable lossless encoding">启用无损编码</entry>
+    <entry id="97" string="Enable Joint Stereo">启用混合立体声</entry>
+    <entry id="98" string="Bitrate per channel:">声道比特率：</entry>
+    <entry id="99" string="Preselection">预选</entry>
+    <entry id="100" string="Number of preselection candidates:">预选数量：</entry>
+    <entry id="101" string="MPEG version">MPEG 版本</entry>
+    <entry id="102" string="AAC object type">AAC 对象类型</entry>
+    <entry id="103" string="Allow Joint Stereo">允许使用混合立体声</entry>
+    <entry id="104" string="Temporal Noise Shaping">时序噪音修整</entry>
+    <entry id="105" string="Use Temporal Noise Shaping">使用时序噪音修整</entry>
+    <entry id="106" string="Maximum bandwidth">最大带宽</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">可用的最大 AAC 频率带宽(Hz)</entry>
+    <entry id="108" string="Basic">基本</entry>
+    <entry id="109" string="Misc">杂项</entry>
+    <entry id="110" string="Audio processing">音频处理</entry>
+    <entry id="111" string="Set bitrate:">设置比特率：</entry>
+    <entry id="112" string="Set ratio:">设置比率</entry>
+    <entry id="113" string="Set quality:">设置品质：</entry>
+    <entry id="114" string="worse">较差</entry>
+    <entry id="115" string="better">较好</entry>
+    <entry id="116" string="Auto">自动</entry>
+    <entry id="117" string="Stereo">立体声</entry>
+    <entry id="118" string="Joint Stereo">混合立体声</entry>
+    <entry id="119" string="Force Joint Stereo">强制混合立体声</entry>
+    <entry id="120" string="VBR mode">VBR 模式</entry>
+    <entry id="121" string="no VBR">无 VBR</entry>
+    <entry id="122" string="VBR quality">VBR 品质</entry>
+    <entry id="123" string="ABR target bitrate">ABR 目标比特率</entry>
+    <entry id="124" string="VBR bitrate range">VBR 比特率范围</entry>
+    <entry id="125" string="Set minimum VBR bitrate:">设置最小 VBR 比特率：</entry>
+    <entry id="126" string="Set maximum VBR bitrate:">设置最大 VBR 比特率：</entry>
+    <entry id="127" string="Control bits">控制比特</entry>
+    <entry id="128" string="Stream format">流格式</entry>
+    <entry id="129" string="Enforce strict ISO compliance">采用严格的 ISO 标准</entry>
+    <entry id="135" string="Output sampling rate">输出采样率</entry>
+    <entry id="136" string="no resampling">不重新采样</entry>
+    <entry id="137" string="Highpass filter">高通滤镜</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">设置高通滤波频率(Hz)：</entry>
+    <entry id="139" string="Set Highpass width (Hz):">设置高通滤波带宽(Hz)：</entry>
+    <entry id="140" string="Lowpass filter">低通滤镜</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">设置低通滤波频率(Hz)：</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">设置低通滤波带宽(Hz)：</entry>
+    <entry id="143" string="Misc settings">杂项设置</entry>
+    <entry id="144" string="Disable all filtering">禁用所有滤镜</entry>
+    <entry id="145" string="MP3 Files">MP3 文件</entry>
+    <entry id="146" string="Ogg Vorbis Files">Ogg Vorbis 文件</entry>
+    <entry id="147" string="Bonk Files">Bonk 文件</entry>
+    <entry id="148" string="Automatic CDDB queries">自动 CDDB 查询</entry>
+    <entry id="149" string="CDDB access mode:">CDDB 访问模式：</entry>
+    <entry id="150" string="CDDB server:">CDDB 服务器：</entry>
+    <entry id="151" string="Port:">端口：</entry>
+    <entry id="152" string="Info">信息</entry>
+    <entry id="153" string="No freedb entry for this disk.">没有此光盘的 freedb 项目。</entry>
+    <entry id="154" string="Some error occurred trying to connect to the freedb server.">尝试连接至 freedb 服务器时出错。</entry>
+    <entry id="155" string="Connecting to freedb server at">正在连接 freedb 服务器</entry>
+    <entry id="156" string="Requesting CD information">正在索取 CD 信息</entry>
+    <entry id="157" string="eMail address:">e-Mail 地址</entry>
+    <entry id="158" string="Please enter a valid eMail address.">请输入一个有效的 e-Mai l地址。</entry>
+    <entry id="159" string="No exact matches found">未找到相匹配的项目</entry>
+    <entry id="160" string="Multiple matches found">找到多个匹配的项目</entry>
+    <entry id="161" string="Matches">匹配项目</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">请选择最适合您 CD 的项目：</entry>
+    <entry id="163" string="Extended CDDB settings">CDDB 扩展设置</entry>
+    <entry id="164" string="CGI scripts">CGI 脚本</entry>
+    <entry id="165" string="CDDB query script:">CDDB 查询脚本：</entry>
+    <entry id="166" string="CDDB submit script:">CDDB 提交脚本：</entry>
+    <entry id="167" string="HTTP settings">HTTP 设置</entry>
+    <entry id="168" string="Proxy settings">代理设置</entry>
+    <entry id="169" string="no proxy">不使用代理</entry>
+    <entry id="170" string="Proxy type:">代理类型</entry>
+    <entry id="171" string="Proxy server:">代理服务器：</entry>
+    <entry id="172" string="Presets">预设</entry>
+    <entry id="173" string="Use preset:">使用预设：</entry>
+    <entry id="174" string="Custom settings">自定义设置</entry>
+    <entry id="179" string="Medium, Fast">中等，快速</entry>
+    <entry id="180" string="Standard, Fast">标准，快速</entry>
+    <entry id="181" string="Extreme, Fast">极端，快速</entry>
+    <entry id="182" string="Title">标题</entry>
+    <entry id="183" string="Track">音轨</entry>
+    <entry id="184" string="Length">长度</entry>
+    <entry id="185" string="Size">大小</entry>
+    <entry id="186" string="Artist">艺术家</entry>
+    <entry id="187" string="Year">年份</entry>
+    <entry id="188" string="Genre">流派</entry>
+    <entry id="189" string="Album">专辑</entry>
+    <entry id="190" string="Info tags">信息标签</entry>
+    <entry id="191" string="Default information">默认信息</entry>
+    <entry id="192" string="Default comment string:">默认注释：</entry>
+    <entry id="193" string="unknown artist">未知艺术家</entry>
+    <entry id="194" string="unknown title">未知标题</entry>
+    <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">不能加载 ASPI 驱动器！ 不能进行 CD 翻录！</entry>
+    <entry id="196" string="Database">数据库</entry>
+    <entry id="197" string="Submit CDDB data...">提交 CDDB 数据...</entry>
+    <entry id="198" string="Enable CDDB cache">启用 CDDB 缓存</entry>
+    <entry id="199" string="CDDB data">CDDB 数据</entry>
+    <entry id="200" string="Submit">提交</entry>
+    <entry id="201" string="No audio CD in drive!">驱动器中没有音频 CD ！</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting.">请填入所有字段和音轨标题后再提交。</entry>
+    <entry id="203" string="Prefer CDDB over CD Text">使用 CDDB 代替 CD 文本</entry>
+    <entry id="204" string="CD options">CD 选项</entry>
+    <entry id="205" string="Submitting CD information">正在提交 CD 信息</entry>
+    <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件： %1&#10;&#10;错误： %2</entry>
+    <entry id="207" string="Query CDDB database">查询 CDDB 数据库</entry>
+    <entry id="208" string="Help">帮助</entry>
+    <entry id="209" string="index_en.html">index.html</entry>
+    <entry id="210" string="Plug-ins">插件</entry>
+    <entry id="211" string="Input plug-ins">输入插件</entry>
+    <entry id="212" string="Output plug-ins">输出插件</entry>
+    <entry id="213" string="Configure">设置</entry>
+    <entry id="214" string="About">关于</entry>
+    <entry id="215" string="Play">播放</entry>
+    <entry id="216" string="Stop">停止</entry>
+    <entry id="217" string="Cannot play a file while encoding!">编码过程中不能播放文件！</entry>
+    <entry id="218" string="Cannot start encoding while playing a file!">不能在播放文件时启动编码！</entry>
+    <entry id="219" string="Enable remote CDDB database">启用远程 CDDB 数据库</entry>
+    <entry id="220" string="ATH">ATH</entry>
+    <entry id="221" string="Enable ATH:">启用 ATH：</entry>
+    <entry id="222" string="Use default setting">使用默认设置</entry>
+    <entry id="223" string="Psycho acoustic model">心理声学模型</entry>
+    <entry id="224" string="Use Temporal Masking Effect">使用时序遮盖效果</entry>
+    <entry id="225" string="Expert">专家</entry>
+    <entry id="226" string="Cannot configure encoder while encoding!">编码过程中不能配置编码器！</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">输出目录不存在！您要创建此目录吗？</entry>
+    <entry id="228" string="Filename pattern">文件名样式</entry>
+    <entry id="229" string="unknown album">未知专辑</entry>
+    <entry id="230" string="Translated by %1.">翻译 %1。</entry>
+    <entry id="231" string="Select all">全选</entry>
+    <entry id="232" string="Select none">取消全选</entry>
+    <entry id="233" string="Toggle selection">反选</entry>
+    <entry id="234" string="Show Tip of the Day">显示每日提示</entry>
+    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 有 %2 种语言版本，如果您没有找到您所要的语言，&#10; 您可以使用“Smooth 翻译器”进行 %1 的翻译。</entry>
+    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 支持 LAME，Ogg Vorbis，FAAC，FLAC 和 Bonk&#10;等编码器。VQF 格式的编码器可以在 %1 网站上下载：&#10;%2</entry>
+    <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 使用 Winamp 2 输入插件后可以支持更多的格式。&#10;将 in_*.dll 文件复制到 %1/plugins 目录后就可以使用&#10;%1 读取这些格式了。</entry>
+    <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">使用 %1 您可以提交采用 Unicode 字符集的 freedb CD&#10;数据库项目。&#10;因此，如果您的 CD 是非拉丁语系艺术家或标题名称，&#10;也可以使用 %1提交正确的 freedb 项目。</entry>
+    <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">为了修正翻录时出现读取错误，您可以在 %1 常规设置&#10;的 CD Rip 标签中开启抖动校正功能。如果这样不能&#10;解决问题，您可以尝试另外的 Paranoia 模式。</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">您对 %1 在功能上有更好的建议吗？&#10;您可以通过 %1 在 SourceForge project 页面下的&#10;软件追踪器提交您的任何建议。&#10;地址是： %2&#10;或直接发送电子邮件到 %3 。</entry>
+    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">您喜欢 %1 吗？&#10;&#10;它是免费的。&#10;&#10;不过您也可以捐点小钱赞助 %1 计划。&#10;您可以通过 PayPal 赞助给 %2。&#10;详情请参阅 %3 。</entry>
+    <entry id="242" string="Bitrate / Quality">比特率/品质</entry>
+    <entry id="243" string="Check for updates now">检查更新</entry>
+    <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">有新的 %1 更新可用！&#10;您想要現在检查可用的更新清单吗？</entry>
+    <entry id="245" string="There are no updates available at the moment!">目前没有可用的更新！</entry>
+    <entry id="246" string="Check for updates at startup">启动时检查更新</entry>
+    <entry id="247" string="Read CD contents on insert">放入 CD 时读取内容</entry>
+    <entry id="248" string="Eject disk after ripping">翻录完成后弹出光盘</entry>
+    <entry id="249" string="Encode 'On-The-Fly'">使用即时编码</entry>
+    <entry id="250" string="Keep ripped Wave files">保留翻录的 WAVE 文件</entry>
+    <entry id="251" string="ripping/decoding">正在翻录/解码</entry>
+    <entry id="252" string="encoding">编码</entry>
+    <entry id="253" string="Unicode"/>
+    <entry id="254" string="Use Unicode filenames">使用 Unicode 文件名</entry>
+    <entry id="255" string="AAC Files">AAC 文件</entry>
+    <entry id="256" string="MP4 Files">MP4 文件</entry>
+    <entry id="257" string="Format">格式</entry>
+    <entry id="258" string="File format">文件格式</entry>
+    <entry id="259" string="Allow ID3v2 tags in AAC files">在 AAC 文件中使用 ID3v2 标签</entry>
+    <entry id="260" string="Note:">注意：</entry>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">某些播放器在播放包含 ID3 标签的 AAC 文件时会发生问题。&#10;使用这个选项时请确保您的播放器支持 ID3 标签。</entry>
+    <entry id="262" string="FLAC Files">FLAC 文件</entry>
+    <entry id="263" string="Sampling rate">采样率</entry>
+    <entry id="264" string="Sample resolution">采样分辨率</entry>
+    <entry id="265" string="Number of samples">采样数</entry>
+    <entry id="266" string="Mono">单声道</entry>
+    <entry id="267" string="bytes">字节</entry>
+    <entry id="268" string="bit">比特</entry>
+    <entry id="269" string="min">分钟</entry>
+    <entry id="270" string="Create playlist">创建播放列表</entry>
+    <entry id="271" string="Create cue sheet">创建 cue 表单</entry>
+    <entry id="272" string="Write ID3v1 tags">写入 ID3v1 标签</entry>
+    <entry id="273" string="Write ID3v2 tags">写入 ID3v2 标签</entry>
+    <entry id="274" string="Write Vorbis Comment tags">写入 Vorbis 注释标签</entry>
+    <entry id="275" string="Write MP4 metadata info">写入 MP4 元数据信息</entry>
+    <entry id="276" string="ID3v1 tag encoding:">ID3v1 标签编码：</entry>
+    <entry id="277" string="ID3v2 tag encoding:">ID3v2 标签编码：</entry>
+    <entry id="278" string="Vorbis Comment tag encoding:">Vorbis 注释标签编码：</entry>
+    <entry id="279" string="MP4 metadata encoding:">MP4 元数据编码：</entry>
+    <entry id="280" string="Tag encodings">标签编码</entry>
+    <entry id="281" string="Update joblist with this information">使用下列信息更新任务列表</entry>
+    <entry id="282" string="unknown genre">未知流派</entry>
+    <entry id="283" string="Load joblist...">加载任务列表...</entry>
+    <entry id="284" string="Save joblist...">保存任务列表...</entry>
+    <entry id="285" string="Pause/resume encoding">暂停/继续编码</entry>
+    <entry id="286" string="Shutdown after encoding">编码完成后关闭</entry>
+    <entry id="287" string="Playlist Files">播放列表文件</entry>
+    <entry id="288" string="unknown year">未知年份</entry>
+    <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">不能初始化 %1 编码器！请您检查设置！</entry>
+    <entry id="290" string="Blocksize:">区块大小：</entry>
+    <entry id="291" string="Use streamable subset">使用符合流媒体格式的子集</entry>
+    <entry id="292" string="Adaptive Joint Stereo">兼容格式的混合立体声</entry>
+    <entry id="293" string="Fastest encoding">最快编码</entry>
+    <entry id="294" string="Best compression">最佳压缩</entry>
+    <entry id="295" string="Linear predictor">线性预测器</entry>
+    <entry id="296" string="Maximum LPC order">最大 LPC 顺序</entry>
+    <entry id="297" string="Quantized LPC precision">量化 LPC 精度</entry>
+    <entry id="298" string="Exhaustive model search">穷举模型搜寻</entry>
+    <entry id="299" string="Optimize LPC quantization">优化 LPC 量化</entry>
+    <entry id="300" string="disabled">禁用</entry>
+    <entry id="301" string="auto">自动</entry>
+    <entry id="302" string="Residual coding">差异量记录</entry>
+    <entry id="303" string="Minimum partition order">最小分区顺序</entry>
+    <entry id="304" string="Maximum partition order">最大分区顺序</entry>
+    <entry id="305" string="By pattern">按照样式</entry>
+    <entry id="306" string="From folder">来源目录</entry>
+    <entry id="307" string="Folder">目录</entry>
+    <entry id="308" string="Add folder">添加目录</entry>
+    <entry id="309" string="Choose folder:">选择目录：</entry>
+    <entry id="310" string="Select the folder to add to the joblist:">请选择要加入任务列表的文件夹：</entry>
+    <entry id="311" string="Add files by pattern">按照样式添加文件</entry>
+    <entry id="312" string="Pattern">样式</entry>
+    <entry id="313" string="Start folder">开始目录</entry>
+    <entry id="314" string="No files found matching pattern:">找不到符合样式的文件：</entry>
+    <entry id="315" string="Edit language file">编辑语言文件</entry>
+    <entry id="316" string="Use for all selected tracks">应用到所有选择的音轨</entry>
+    <entry id="317" string="Interpret string as">将字符串翻译为</entry>
+    <entry id="318" string="selected tracks">选择的音轨</entry>
+    <entry id="319" string="Adjust upper/lower case">调整大小写</entry>
+    <entry id="320" string="all words upper case">全部词大写</entry>
+    <entry id="321" string="long words upper case">长词大写</entry>
+    <entry id="322" string="first letter upper case">首字母大写</entry>
+    <entry id="323" string="all lower case">全部小写</entry>
+    <entry id="324" string="all upper case">全部大写</entry>
+    <entry id="325" string="Status">状态</entry>
+    <entry id="326" string="Successfully read CD!">读入 CD 成功！</entry>
+    <entry id="327" string="Comment">注释</entry>
+    <entry id="328" string="Manage CDDB cache entries...">管理 CDDB 缓存项目...</entry>
+    <entry id="329" string="Save entry">保存项目</entry>
+    <entry id="330" string="Remove entry">移除项目</entry>
+    <entry id="331" string="Disc name">光盘名称</entry>
+    <entry id="332" string="Charset">字符集</entry>
+    <entry id="333" string="Preview">预览</entry>
+    <entry id="334" string="Downloaded CDDB entries:">已下载的 CDDB 项目：</entry>
+    <entry id="335" string="User name:">用户名：</entry>
+    <entry id="336" string="Password:">密码：</entry>
+    <entry id="337" string="Delete original files after encoding">编码完成后删除源文件</entry>
+    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">该选项将会在编码完成后删除源文件！&#10;您确定要使用此设置吗？</entry>
+    <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb 的 CDDBP 通讯协议无法使用 HTTP 正向代理服务器！&#10;您是否要更换 HTTP 通讯协议？</entry>
+    <entry id="340" string="Playlists">播放列表</entry>
+    <entry id="341" string="Create playlists">创建播放列表</entry>
+    <entry id="342" string="Create cue sheets">创建 cue 清单</entry>
+    <entry id="343" string="Use encoder output folder">使用编码器输出目录</entry>
+    <entry id="344" string="Various artists">合辑</entry>
+    <entry id="345" string="Data track">数据轨段</entry>
+    <entry id="346" string="Select the folder in which the playlist files will be placed:">请选择用于存放播放列表文件的文件夹：</entry>
+    <entry id="347" string="Use input file folder if possible">如果存在则使用输入文件目录</entry>
+    <entry id="348" string="Encode to input file folder if possible">如果存在则将编码后的文件存放于输入文件目录</entry>
+    <entry id="349" string="Allow overwriting input file">允许覆盖输入文件</entry>
+    <entry id="350" string="Encode to a single file">编码为单独文件</entry>
+    <entry id="351" string="Encoder options">编码器选项</entry>
+    <entry id="352" string="Skip">跳过</entry>
+    <entry id="353" string="Enable local CDDB database">使用本地 CDDB 数据库</entry>
+    <entry id="354" string="CDDB path:">CDDB 目录：</entry>
+    <entry id="355" string="Select the folder of the CDDB database:">选择 CDDB 数据库的文件夹：</entry>
+    <entry id="356" string="File already exists">文件已经存在</entry>
+    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">输出文件 %1&#10;已经存在！您要覆盖它吗？</entry>
+    <entry id="358" string="Overwrite all further files">覆盖之后所有的文件</entry>
+    <entry id="359" string="Start ripping automatically">自动启动翻录</entry>
+    <entry id="360" string="Submit to online database later">稍后提交到在线数据库</entry>
+    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB 支持已停用！请在设置对话框中&#10;启用本地或远程 CDDB 支持。</entry>
+    <entry id="362" string="CDDB entries to submit:">要提交的 CDDB 项目：</entry>
+    <entry id="363" string="Show queued CDDB entries...">显示队列中的 CDDB 项目...</entry>
+    <entry id="364" string="Submit all">全部提交</entry>
+    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">远程 CDDB 支持已停用！请在设置对话框中&#10;启用远程 CDDB 支持。</entry>
+    <entry id="366" string="Category">类别</entry>
+    <entry id="367" string="Close">关闭</entry>
+    <entry id="368" string="Automatization">自动化</entry>
+    <entry id="369" string="Query CDDB database later">稍后查询 CDDB 数据库</entry>
+    <entry id="370" string="Show queued CDDB queries...">显示队列中的 CDDB 查询...</entry>
+    <entry id="371" string="CDDB queries">CDDB 查询</entry>
+    <entry id="372" string="Query">查询</entry>
+    <entry id="373" string="Query all">查询全部</entry>
+    <entry id="374" string="Query string">查询字符串</entry>
+    <entry id="375" string="CDDB queries to perform:">要执行的 CDDB 查询：</entry>
+    <entry id="376" string="Would you like to perform this query again later?">您想要稍后再执行一次本查询吗？</entry>
+    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">访问 CD-ROM 光驱被 Windows 拒绝。&#10;请联系您的系统管理员以&#10;取得访问 CD-ROM 光驱的权限。</entry>
+    <entry id="378" string="CD information">CD 信息</entry>
+    <entry id="379" string="Read CD Text">读入 CD 文本</entry>
+    <entry id="380" string="Read cdplayer.ini">读入 cdplayer.ini</entry>
+    <entry id="381" string="Apodization">切趾</entry>
+    <entry id="382" string="Apodization function(s):">切趾函数：</entry>
+    <entry id="383" string="You can specify multiple functions separated by semicolons.">您可以指定多个函数，每个函数使用分号隔开。</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 可以在启动时自动执行更新检查。&#10;您想要 %1 在启动时检查有无更新吗？</entry>
+    <entry id="385" string="Cannot access input file: %1">不能访问输入文件： %1</entry>
+    <entry id="386" string="Cannot create output file: %1">不能创建输出文件： %1</entry>
+    <entry id="387" string="File not found">找到文件</entry>
+    <entry id="388" string="Unknown file type">未知文件类型</entry>
+    <entry id="389" string="Unsupported audio format">不支持的音频格式</entry>
+    <entry id="390" string="Unknown error">未知错误</entry>
+    <entry id="391" string="Replace existing comments with default comment">使用默认注释替换当前注释</entry>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">您所选的文件因采用不同的采样格式&#10;而无法合并成单一输出文件，&#10;请先转换所有文件为相同采样格式。</entry>
+    <entry id="393" string="Write WMA metadata info">写入 WMA 元数据信息</entry>
+    <entry id="394" string="WMA metadata encoding:">WMA 元数据编码：</entry>
+    <entry id="395" string="Select codec">选择编码</entry>
+    <entry id="396" string="Select codec format">选择编码格式</entry>
+    <entry id="397" string="Codec settings">编码设置</entry>
+    <entry id="398" string="Use codec">使用编码</entry>
+    <entry id="399" string="Use format">使用格式</entry>
+    <entry id="400" string="Write uncompressed WMA files">写入不压缩的 WMA 文件</entry>
+    <entry id="401" string="Automatically select format based on settings and input format">根据设置及输入的格式自动选择格式</entry>
+    <entry id="402" string="Use VBR encoding">使用 VBR 编码</entry>
+    <entry id="403" string="Use 2-pass encoding">使用双通道编码</entry>
+    <entry id="404" string="Target bitrate">目标比特率</entry>
+    <entry id="405" string="Set drive speed limit:">限定驱动器速率：</entry>
+    <entry id="406" string="Support this project">CDDB</entry>
+    <entry id="407" string="Please support this project!">CDRip</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
+    <entry id="410" string="usd">cny</entry>
+    <entry id="411" string="en"/>
+    <entry id="412" string="Thank you very much!"/>
+    <entry id="413" string="Remind me later"/>
+    <entry id="414" string="CDDB"/>
+    <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="416" string="Default">默认</entry>
+  </data>
+</LangFile>
