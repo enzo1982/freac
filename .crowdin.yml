@@ -1,6 +1,6 @@
 files:
-  - source: /bin/lang/template_crowdin.xml
-    translation: /bin/lang/freac_%two_letters_code%.xml
+  - source: /bin/lang/crowdin/template.xml
+    translation: /bin/lang/crowdin/freac_%two_letters_code%.xml
     languages_mapping:
       two_letters_code:
         pt-BR: pt_BR
