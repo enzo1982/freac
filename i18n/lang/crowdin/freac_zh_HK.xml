@@ -1117,7 +1117,7 @@
       <section name="OptimFROG Lossless Encoder">
 	<entry id="80200" string="Encoding mode">編碼模式</entry>
 	<entry id="80201" string="fast"/>
-	<entry id="80202" string="normal">較高</entry>
+	<entry id="80202" string="normal">一般</entry>
 	<entry id="80203" string="high"/>
 	<entry id="80204" string="extra"/>
 	<entry id="80205" string="best"/>
@@ -1154,7 +1154,7 @@
 
       <section name="Nero AAC Encoder">
 	<entry id="80500" string="Encoding mode">編碼模式</entry>
-	<entry id="80501" string="auto">優先權</entry>
+	<entry id="80501" string="auto">自動</entry>
 	<entry id="80502" string="Quality">品質</entry>
 	<entry id="80503" string="worse">較差</entry>
 	<entry id="80504" string="better">較好</entry>
