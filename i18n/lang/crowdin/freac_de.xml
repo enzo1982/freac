@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Robert Kausch &lt;robert.kausch@freac.org&gt;</property>
-    <property name="url"/>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="OK">OK</entry>
@@ -1111,7 +1111,7 @@
 	<entry id="80113" string="Adaptive noise shaping order">Adaptive Rauschformung</entry>
 	<entry id="80114" string="high">stark</entry>
 	<entry id="80115" string="Clear Voice Detection">Clear Voice-Erkennung</entry>
-	<entry id="80116" string="dual"/>
+	<entry id="80116" string="dual">dual</entry>
       </section>
 
       <section name="OptimFROG Lossless Encoder">
@@ -1119,13 +1119,13 @@
 	<entry id="80201" string="fast">schnell</entry>
 	<entry id="80202" string="normal">normal</entry>
 	<entry id="80203" string="high">hoch</entry>
-	<entry id="80204" string="extra"/>
+	<entry id="80204" string="extra">extra</entry>
 	<entry id="80205" string="best">beste</entry>
 	<entry id="80206" string="high, new">hoch, neu</entry>
 	<entry id="80207" string="extra, new">extra, neu</entry>
 	<entry id="80208" string="best, new">beste, neu</entry>
 	<entry id="80209" string="Add MD5 checksum">MD5-Checksumme hinzufügen</entry>
-	<entry id="80210" string="Seeking"/>
+	<entry id="80210" string="Seeking">Seeking</entry>
 	<entry id="80211" string="slow">langsam</entry>
 	<entry id="80212" string="minimum">minimal</entry>
 	<entry id="80213" string="Optimization">Optimierung</entry>
@@ -1159,7 +1159,7 @@
 	<entry id="80503" string="worse">schlechter</entry>
 	<entry id="80504" string="better">besser</entry>
 	<entry id="80505" string="Bitrate">Bitrate</entry>
-	<entry id="80506" string="Bitrate (Streaming)"/>
+	<entry id="80506" string="Bitrate (Streaming)">Bitrate (Streaming)</entry>
       </section>
     </section>
 
