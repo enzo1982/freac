@@ -2,7 +2,7 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version">1.0</property>
+    <property name="version"/>
     <property name="language">Estonian / Eesti</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
@@ -155,9 +155,9 @@
     <entry id="147" string="Bonk Files">Bonk Failid</entry>
     <entry id="148" string="Automatic CDDB queries">Automaatne CDDB päring</entry>
     <entry id="149" string="CDDB access mode:">CDDB juurdepääsu moodus:</entry>
-    <entry id="150" string="CDDB server:">CDDB server:</entry>
-    <entry id="151" string="Port:">Port:</entry>
-    <entry id="152" string="Info">Info</entry>
+    <entry id="150" string="CDDB server:"/>
+    <entry id="151" string="Port:"/>
+    <entry id="152" string="Info">Esitaja</entry>
     <entry id="153" string="No freedb entry for this disk.">Plaadi kohta puuduvad andmed.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Viga freedb serveriga ühenduse saamisel.</entry>
     <entry id="155" string="Connecting to freedb server at">Ühendamine freedb serveriga</entry>
@@ -176,7 +176,7 @@
     <entry id="168" string="Proxy settings">Proxy sätted</entry>
     <entry id="169" string="no proxy">ilma proxyta</entry>
     <entry id="170" string="Proxy type:">Proxy tüüp:</entry>
-    <entry id="171" string="Proxy server:">Proxy server:</entry>
+    <entry id="171" string="Proxy server:"/>
     <entry id="172" string="Presets">Presets</entry>
     <entry id="173" string="Use preset:">Valige variant</entry>
     <entry id="174" string="Custom settings">Käsi sätted</entry>
@@ -190,7 +190,7 @@
     <entry id="186" string="Artist">Esitaja</entry>
     <entry id="187" string="Year">Aasta</entry>
     <entry id="188" string="Genre">Suunitlus</entry>
-    <entry id="189" string="Album">Album</entry>
+    <entry id="189" string="Album">Kommentaarid</entry>
     <entry id="190" string="Info tags">Tagid</entry>
     <entry id="191" string="Default information">Vaikimisi info</entry>
     <entry id="192" string="Default comment string:">Komentaarid vaikimisi</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Säilitada Wave failid</entry>
     <entry id="251" string="ripping/decoding">rippimine/dekodeerimine</entry>
     <entry id="252" string="encoding">kodeerimine</entry>
-    <entry id="253" string="Unicode">Unicode</entry>
+    <entry id="253" string="Unicode"/>
     <entry id="254" string="Use Unicode filenames">Kasutada Unicode failinimesid</entry>
     <entry id="255" string="AAC Files">AAC Failid</entry>
     <entry id="256" string="MP4 Files">MP4 Failid</entry>
@@ -270,7 +270,7 @@
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">baidid</entry>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min">min</entry>
+    <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Luua playlist</entry>
     <entry id="271" string="Create cue sheet">Luua cue sheet</entry>
     <entry id="272" string="Write ID3v1 tags">Kirjutada ID3v1 tägid</entry>
@@ -329,7 +329,7 @@
     <entry id="325" string="Status">Seisund</entry>
     <entry id="326" string="Successfully read CD!">CD edukalt loetud!</entry>
     <entry id="327" string="Comment">Kommentaarid</entry>
-    <entry id="328" string="Manage CDDB cache entries...">Manage CDDB cache entries...</entry>
+    <entry id="328" string="Manage CDDB cache entries..."/>
     <entry id="329" string="Save entry">Säilita märkmed</entry>
     <entry id="330" string="Remove entry">Kustuta märkmed</entry>
     <entry id="331" string="Disc name">Plaadi nimi</entry>
@@ -341,58 +341,82 @@
     <entry id="337" string="Delete original files after encoding">Kustuta originaal failid peale kodeerimist</entry>
     <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">See säte kustutab originaal failid peale seda kui nad on kodeeritud! Kas soovite jätkata?</entry>
     <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP protokoli ei saa kasutada läbi&#10;HTTP Proxi ette!&#10;&#10;Tahate muuta protokoli HTTP vastu?</entry>
-    <entry id="340" string="Playlists">Playlists</entry>
+    <entry id="340" string="Playlists">Seda programmi levitatakse GNU&#10;General Public License (GPL) raames.</entry>
     <entry id="341" string="Create playlists">Luua playlistid</entry>
     <entry id="342" string="Create cue sheets">Luua cue sheets</entry>
-    <entry id="344" string="Various artists">Erinevad artistid</entry>
-    <entry id="345" string="Data track">Data track</entry>
-    <entry id="346" string="Select the folder in which the playlist files will be placed:">Valige kaust, kuhu paigutatakse playlistid</entry>
-    <entry id="347" string="Use input file folder if possible">Kasuta sisendfaili kausta kui on võimalik</entry>
-    <entry id="348" string="Encode to input file folder if possible">Kodeeri otse sisendfaili kausta kui on võimalik</entry>
-    <entry id="349" string="Allow overwriting input file">Kirjutada üle sisend fail</entry>
-    <entry id="350" string="Encode to a single file">Kodeerida ühte faili</entry>
-    <entry id="351" string="Encoder options">Kodeki sätted</entry>
-    <entry id="352" string="Skip">Jätta vahele</entry>
-    <entry id="353" string="Enable local CDDB database">Lokaalne CDDB andmebaas</entry>
-    <entry id="354" string="CDDB path:">CDDB kaust:</entry>
-    <entry id="355" string="Select the folder of the CDDB database:">Valige CDDB andmetebaasi kaust:</entry>
-    <entry id="356" string="File already exists">Fail eksisteerib</entry>
-    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Sisendi fail %1 juba eksisteerib! Soovite üle kirjutada?</entry>
-    <entry id="358" string="Overwrite all further files">Kirjutada üle kõik vanad failid</entry>
-    <entry id="359" string="Start ripping automatically">Käivitada rippimine autom.</entry>
-    <entry id="360" string="Submit to online database later">Saata online baasi hiljem</entry>
-    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB tugi välja lülitatud! Palun lülitage sisse lokaalse või kauge CDDB tugi dialoogaknas.</entry>
-    <entry id="362" string="CDDB entries to submit:">CDDB märkmed saatmiseks:</entry>
-    <entry id="363" string="Show queued CDDB entries...">Näidata CDDB märkmeid järjekorras...</entry>
-    <entry id="364" string="Submit all">Saata kõik</entry>
-    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Kauge CDDB tugi on välja lülitatud! Palun lülitage kauge CDDB tugi sisse dialoog aknas.</entry>
-    <entry id="366" string="Category">Kategooria</entry>
-    <entry id="367" string="Close">Sulge</entry>
-    <entry id="368" string="Automatization">Automatiseerimine</entry>
-    <entry id="369" string="Query CDDB database later">Teha päring CDDB andmebaasi hiljem</entry>
-    <entry id="370" string="Show queued CDDB queries...">Näidata CDDB päringuid järjekorras...</entry>
-    <entry id="371" string="CDDB queries">CDDB päringud</entry>
-    <entry id="372" string="Query">Päring</entry>
-    <entry id="373" string="Query all">Saata kõik päringud</entry>
-    <entry id="374" string="Query string">Query string</entry>
-    <entry id="375" string="CDDB queries to perform:">CDDB päringud teostamiseks:</entry>
-    <entry id="376" string="Would you like to perform this query again later?">Tahate korrata seda päringut hiljem?</entry>
-    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Juurdepääs CD-ROM-le Windowsi poolt suletud.&#10;&#10;Palun võtke ühendust oma süsteemi administraatoriga,&#10;et saada juurdepääsu luba CD-ROM-le.</entry>
-    <entry id="378" string="CD information">CD informatsioon</entry>
-    <entry id="379" string="Read CD Text">Lugeda CD Teksti</entry>
-    <entry id="380" string="Read cdplayer.ini">Lugeda cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodization</entry>
-    <entry id="382" string="Apodization function(s):">Apodization function(s):</entry>
-    <entry id="383" string="You can specify multiple functions separated by semicolons.">Mõned funktsioonid eraldatakse ;</entry>
-    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 võib kontrollida uuendusi käivitusel.&#10;&#10;Soovite et %1 kontrolliks uuendusi käivitusel?</entry>
-    <entry id="385" string="Cannot access input file: %1">Puudub juurdepääs sisend failile: %1</entry>
-    <entry id="386" string="Cannot create output file: %1">Ei saa luua väljund faili: %1</entry>
-    <entry id="387" string="File not found">Faili ei leitud</entry>
-    <entry id="388" string="Unknown file type">Tundmatu faili tüüp</entry>
-    <entry id="389" string="Unsupported audio format">Mittetoetatav audio formaat</entry>
-    <entry id="390" string="Unknown error">Tundmatu viga</entry>
+    <entry id="343" string="Use encoder output folder">Erinevad artistid</entry>
+    <entry id="344" string="Various artists">Data track</entry>
+    <entry id="345" string="Data track">Valige kaust, kuhu paigutatakse playlistid</entry>
+    <entry id="346" string="Select the folder in which the playlist files will be placed:">Kasuta sisendfaili kausta kui on võimalik</entry>
+    <entry id="347" string="Use input file folder if possible">Kodeeri otse sisendfaili kausta kui on võimalik</entry>
+    <entry id="348" string="Encode to input file folder if possible">Kirjutada üle sisend fail</entry>
+    <entry id="349" string="Allow overwriting input file">Kodeerida ühte faili</entry>
+    <entry id="350" string="Encode to a single file">Kodeki sätted</entry>
+    <entry id="351" string="Encoder options">Jätta vahele</entry>
+    <entry id="352" string="Skip">Lokaalne CDDB andmebaas</entry>
+    <entry id="353" string="Enable local CDDB database">CDDB kaust:</entry>
+    <entry id="354" string="CDDB path:">Valige CDDB andmetebaasi kaust:</entry>
+    <entry id="355" string="Select the folder of the CDDB database:">Fail eksisteerib</entry>
+    <entry id="356" string="File already exists">Sisendi fail %1 juba eksisteerib! Soovite üle kirjutada?</entry>
+    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Kirjutada üle kõik vanad failid</entry>
+    <entry id="358" string="Overwrite all further files">Käivitada rippimine autom.</entry>
+    <entry id="359" string="Start ripping automatically">Saata online baasi hiljem</entry>
+    <entry id="360" string="Submit to online database later">CDDB tugi välja lülitatud! Palun lülitage sisse lokaalse või kauge CDDB tugi dialoogaknas.</entry>
+    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB märkmed saatmiseks:</entry>
+    <entry id="362" string="CDDB entries to submit:">Näidata CDDB märkmeid järjekorras...</entry>
+    <entry id="363" string="Show queued CDDB entries...">Saata kõik</entry>
+    <entry id="364" string="Submit all">Kauge CDDB tugi on välja lülitatud! Palun lülitage kauge CDDB tugi sisse dialoog aknas.</entry>
+    <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Kategooria</entry>
+    <entry id="366" string="Category">Sulge</entry>
+    <entry id="367" string="Close">Automatiseerimine</entry>
+    <entry id="368" string="Automatization">Teha päring CDDB andmebaasi hiljem</entry>
+    <entry id="369" string="Query CDDB database later">Näidata CDDB päringuid järjekorras...</entry>
+    <entry id="370" string="Show queued CDDB queries...">CDDB päringud</entry>
+    <entry id="371" string="CDDB queries">Päring</entry>
+    <entry id="372" string="Query">Saata kõik päringud</entry>
+    <entry id="373" string="Query all">Query string</entry>
+    <entry id="374" string="Query string">CDDB päringud teostamiseks:</entry>
+    <entry id="375" string="CDDB queries to perform:">Tahate korrata seda päringut hiljem?</entry>
+    <entry id="376" string="Would you like to perform this query again later?">Juurdepääs CD-ROM-le Windowsi poolt suletud.&#10;&#10;Palun võtke ühendust oma süsteemi administraatoriga,&#10;et saada juurdepääsu luba CD-ROM-le.</entry>
+    <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">CD informatsioon</entry>
+    <entry id="378" string="CD information">Lugeda CD Teksti</entry>
+    <entry id="379" string="Read CD Text">Lugeda cdplayer.ini</entry>
+    <entry id="380" string="Read cdplayer.ini">Apodization</entry>
+    <entry id="381" string="Apodization">Apodization function(s):</entry>
+    <entry id="382" string="Apodization function(s):">Mõned funktsioonid eraldatakse ;</entry>
+    <entry id="383" string="You can specify multiple functions separated by semicolons.">%1 võib kontrollida uuendusi käivitusel.&#10;&#10;Soovite et %1 kontrolliks uuendusi käivitusel?</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">Puudub juurdepääs sisend failile: %1</entry>
+    <entry id="385" string="Cannot access input file: %1">Ei saa luua väljund faili: %1</entry>
+    <entry id="386" string="Cannot create output file: %1">Faili ei leitud</entry>
+    <entry id="387" string="File not found">Tundmatu faili tüüp</entry>
+    <entry id="388" string="Unknown file type">Mittetoetatav audio formaat</entry>
+    <entry id="389" string="Unsupported audio format">Tundmatu viga</entry>
+    <entry id="390" string="Unknown error">eur</entry>
+    <entry id="391" string="Replace existing comments with default comment">CDDB</entry>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">CDRip</entry>
+    <entry id="393" string="Write WMA metadata info"/>
+    <entry id="394" string="WMA metadata encoding:"/>
+    <entry id="395" string="Select codec"/>
+    <entry id="396" string="Select codec format"/>
+    <entry id="397" string="Codec settings"/>
+    <entry id="398" string="Use codec"/>
+    <entry id="399" string="Use format"/>
+    <entry id="400" string="Write uncompressed WMA files"/>
+    <entry id="401" string="Automatically select format based on settings and input format"/>
+    <entry id="402" string="Use VBR encoding"/>
+    <entry id="403" string="Use 2-pass encoding"/>
+    <entry id="404" string="Target bitrate"/>
+    <entry id="405" string="Set drive speed limit:"/>
+    <entry id="406" string="Support this project"/>
+    <entry id="407" string="Please support this project!"/>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
     <entry id="410" string="usd">eur</entry>
-    <entry id="414" string="CDDB">CDDB</entry>
-    <entry id="415" string="Ripper">CDRip</entry>
+    <entry id="411" string="en"/>
+    <entry id="412" string="Thank you very much!"/>
+    <entry id="413" string="Remind me later"/>
+    <entry id="414" string="CDDB"/>
+    <entry id="415" string="Ripper"/>
+    <entry id="416" string="Default"/>
   </data>
 </LangFile>
