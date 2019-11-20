@@ -1002,7 +1002,7 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders">Itzultzailea: %1</entry>
+	<entry id="42000" string="Encoders">Kodeatzaileak</entry>
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
 	<entry id="42003" string="Configure encoder">Itxuratu kodeatzailea</entry>
