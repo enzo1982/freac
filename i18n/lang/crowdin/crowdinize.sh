@@ -20,7 +20,7 @@ for file in ${files[@]}; do
       output=${output}$'\n'
     fi
 
-    if [ $template == 1 ]; then
+    if [ "$template" == 1 ]; then
 #     Duplicate string attribute in content
       if [ "$line" != "${line/<entry id=/}" ]; then
         string=${line##*string=\"}
