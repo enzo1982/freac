@@ -520,9 +520,9 @@
 	  <entry id="5659" string="File name"/>
 	  <entry id="5660" string="File type"/>
 	  <entry id="5661" string="Output file name"/>
-	  <entry id="5662" string="Bitrate">הפעל זכויות יוצרים</entry>
+	  <entry id="5662" string="Bitrate">קצב העברת נתונים</entry>
 	  <entry id="5663" string="Sampling rate">רשימת השמעה</entry>
-	  <entry id="5664" string="Channels">מצב מקודד</entry>
+	  <entry id="5664" string="Channels">צרוצים</entry>
 	  <entry id="5665" string="Sample resolution"/>
 	  <entry id="5666" string="CD drive"/>
 	</section>
@@ -641,7 +641,7 @@
       <section name="Format">
 	<entry id="8100" string="Select sample format"/>
 	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:"/>
-	<entry id="8102" string="Select">דלג</entry>
+	<entry id="8102" string="Select">דפדף</entry>
       </section>
 
       <section name="Errors">
@@ -957,8 +957,8 @@
 	<entry id="39015" string="CBR quality"/>
 	<entry id="39016" string="VBR quality">איכות VBR</entry>
 	<entry id="39017" string="ABR target bitrate">התאמות</entry>
-	<entry id="39018" string="Bitrate">הפעל זכויות יוצרים</entry>
-	<entry id="39019" string="Quality">מקודדים</entry>
+	<entry id="39018" string="Bitrate">קצב העברת נתונים</entry>
+	<entry id="39019" string="Quality">איכות</entry>
 	<entry id="39020" string="Max. bitrate"/>
       </section>
 
@@ -979,7 +979,7 @@
 	<entry id="40013" string="Enable variable bitrate encoding"/>
 	<entry id="40014" string="Constrain bitrate to target value"/>
 	<entry id="40015" string="Quality">איכות</entry>
-	<entry id="40016" string="Bitrate">הפעל זכויות יוצרים</entry>
+	<entry id="40016" string="Bitrate">קצב העברת נתונים</entry>
 	<entry id="40017" string="Complexity"/>
 	<entry id="40018" string="Stream"/>
 	<entry id="40019" string="Frame length"/>
@@ -1002,10 +1002,10 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders">תורגם ע&quot;י %1.</entry>
+	<entry id="42000" string="Encoders">מקודדים</entry>
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
-	<entry id="42003" string="Configure encoder">מקודד</entry>
+	<entry id="42003" string="Configure encoder">הגדרות מקודד</entry>
 	<entry id="42004" string="Encoder configuration"/>
 	<entry id="42005" string="Options">אפשרויות</entry>
 	<entry id="42006" string="Create a separate folder for each output format"/>
@@ -1095,7 +1095,7 @@
       <entry id="80000" string="Downmix multi-channel audio to stereo"/>
 
       <section name="Musepack Audio Encoder">
-	<entry id="80100" string="Quality">מקודדים</entry>
+	<entry id="80100" string="Quality">איכות</entry>
 	<entry id="80101" string="poor"/>
 	<entry id="80102" string="excellent"/>
 	<entry id="80103" string="Mid/Side stereo mode"/>
@@ -1129,7 +1129,7 @@
 	<entry id="80211" string="slow"/>
 	<entry id="80212" string="minimum"/>
 	<entry id="80213" string="Optimization"/>
-	<entry id="80214" string="disabled"/>
+	<entry id="80214" string="disabled">מבוטל</entry>
 	<entry id="80215" string="low"/>
       </section>
 
@@ -1155,10 +1155,10 @@
       <section name="Nero AAC Encoder">
 	<entry id="80500" string="Encoding mode"/>
 	<entry id="80501" string="auto"/>
-	<entry id="80502" string="Quality">מקודדים</entry>
+	<entry id="80502" string="Quality">איכות</entry>
 	<entry id="80503" string="worse">קריאת מידע CD אוטומטית</entry>
 	<entry id="80504" string="better">גישה למידע CD:</entry>
-	<entry id="80505" string="Bitrate">הפעל זכויות יוצרים</entry>
+	<entry id="80505" string="Bitrate">קצב העברת נתונים</entry>
 	<entry id="80506" string="Bitrate (Streaming)"/>
       </section>
     </section>
@@ -1188,7 +1188,7 @@
 	<section name="Donorbox">
 	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:"/>
 	  <entry id="100201" string="Donate"/>
-	  <entry id="100202" string="usd"/>
+	  <entry id="100202" string="usd">ils</entry>
 	</section>
 
 	<section name="Bitcoin">
@@ -1329,14 +1329,14 @@
 	  <entry id="104102" string="Log files"/>
 	  <entry id="104103" string="Archive log files"/>
 	  <entry id="104104" string="Log file folder"/>
-	  <entry id="104105" string="Select">דלג</entry>
+	  <entry id="104105" string="Select">דפדף</entry>
 	  <entry id="104106" string="Select the folder for saving log files"/>
 	  <entry id="104107" string="Delete old log files after"/>
 	  <entry id="104108" string="days"/>
 	  <entry id="104109" string="Conversion logs"/>
 	  <entry id="104110" string="Save conversion logs with audio files"/>
 	  <entry id="104111" string="Audio CD ripping logs only"/>
-	  <entry id="104112" string="Filename pattern">CDRip</entry>
+	  <entry id="104112" string="Filename pattern">צורת שם קובץ</entry>
 	</section>
       </section>
 
@@ -1348,7 +1348,7 @@
 	  <entry id="105101" string="Notify on finished conversion"/>
 	  <entry id="105102" string="Play sound"/>
 	  <entry id="105103" string="Display message"/>
-	  <entry id="105104" string="Select">דלג</entry>
+	  <entry id="105104" string="Select">דפדף</entry>
 	  <entry id="105105" string="Only for conversions running longer than"/>
 	  <entry id="105106" string="second(s)"/>
 	  <entry id="105107" string="minute(s)"/>
