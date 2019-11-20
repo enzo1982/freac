@@ -521,9 +521,9 @@
 	  <entry id="5660" string="File type"/>
 	  <entry id="5661" string="Output file name"/>
 	  <entry id="5662" string="Bitrate">비트레이트</entry>
-	  <entry id="5663" string="Sampling rate">모노</entry>
+	  <entry id="5663" string="Sampling rate">샘플링 레이트</entry>
 	  <entry id="5664" string="Channels">채널</entry>
-	  <entry id="5665" string="Sample resolution">바이트</entry>
+	  <entry id="5665" string="Sample resolution">샘플 해상도</entry>
 	  <entry id="5666" string="CD drive"/>
 	</section>
       </section>
@@ -641,7 +641,7 @@
       <section name="Format">
 	<entry id="8100" string="Select sample format"/>
 	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:"/>
-	<entry id="8102" string="Select">제거</entry>
+	<entry id="8102" string="Select">브라우즈</entry>
       </section>
 
       <section name="Errors">
@@ -1002,7 +1002,7 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders">%1 번역.</entry>
+	<entry id="42000" string="Encoders">인코더</entry>
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
 	<entry id="42003" string="Configure encoder">인코더 설정</entry>
@@ -1017,7 +1017,7 @@
       <section name="Format">
 	<entry id="50000" string="Sample format"/>
 	<entry id="50001" string="Number format"/>
-	<entry id="50002" string="Sample resolution">바이트</entry>
+	<entry id="50002" string="Sample resolution">샘플 해상도</entry>
 	<entry id="50003" string="bit">리퍼</entry>
 	<entry id="50004" string="unsigned"/>
 	<entry id="50005" string="Integer"/>
@@ -1027,14 +1027,14 @@
       <section name="Channels">
 	<entry id="50100" string="Output channels"/>
 	<entry id="50101" string="Channel configuration"/>
-	<entry id="50102" string="Mono">분</entry>
+	<entry id="50102" string="Mono">모노</entry>
 	<entry id="50103" string="Stereo">스테레오</entry>
 	<entry id="50104" string="Switch stereo channels">좌우 채널 스왑</entry>
       </section>
 
       <section name="Resample">
 	<entry id="50200" string="Converter"/>
-	<entry id="50201" string="Sampling rate">모노</entry>
+	<entry id="50201" string="Sampling rate">샘플링 레이트</entry>
 	<entry id="50202" string="Output sampling rate">출력 샘플레이트</entry>
       </section>
 
@@ -1188,7 +1188,7 @@
 	<section name="Donorbox">
 	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:"/>
 	  <entry id="100201" string="Donate"/>
-	  <entry id="100202" string="usd"/>
+	  <entry id="100202" string="usd">krw</entry>
 	</section>
 
 	<section name="Bitcoin">
@@ -1233,7 +1233,7 @@
 	<entry id="102015" string="Size">크기</entry>
 	<entry id="102016" string="Cancel download"/>
 	<entry id="102017" string="unknown"/>
-	<entry id="102018" string="Note"/>
+	<entry id="102018" string="Note">주의</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">자동화</entry>
@@ -1329,14 +1329,14 @@
 	  <entry id="104102" string="Log files"/>
 	  <entry id="104103" string="Archive log files"/>
 	  <entry id="104104" string="Log file folder"/>
-	  <entry id="104105" string="Select">제거</entry>
+	  <entry id="104105" string="Select">브라우즈</entry>
 	  <entry id="104106" string="Select the folder for saving log files"/>
 	  <entry id="104107" string="Delete old log files after"/>
 	  <entry id="104108" string="days"/>
 	  <entry id="104109" string="Conversion logs"/>
 	  <entry id="104110" string="Save conversion logs with audio files"/>
 	  <entry id="104111" string="Audio CD ripping logs only"/>
-	  <entry id="104112" string="Filename pattern">전체 선택</entry>
+	  <entry id="104112" string="Filename pattern">파일명 방식</entry>
 	</section>
       </section>
 
@@ -1348,7 +1348,7 @@
 	  <entry id="105101" string="Notify on finished conversion"/>
 	  <entry id="105102" string="Play sound"/>
 	  <entry id="105103" string="Display message"/>
-	  <entry id="105104" string="Select">제거</entry>
+	  <entry id="105104" string="Select">브라우즈</entry>
 	  <entry id="105105" string="Only for conversions running longer than"/>
 	  <entry id="105106" string="second(s)"/>
 	  <entry id="105107" string="minute(s)"/>
