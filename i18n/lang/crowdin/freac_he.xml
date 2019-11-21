@@ -3,41 +3,41 @@
   <info>
     <property name="program">freac</property>
     <property name="version">1.1</property>
-    <property name="language">[english name] / [native name]</property>
-    <property name="righttoleft">false</property>
+    <property name="language">Hebrew / עברית</property>
+    <property name="righttoleft">true</property>
     <property name="encoding">UTF-8</property>
-    <property name="template">[template]</property>
-    <property name="author">[author] &lt;[author@server.tld]&gt;</property>
-    <property name="url">https://www.freac.org/</property>
+    <property name="template">template.xml</property>
+    <property name="author">אילן צמרת</property>
+    <property name="url">https://www.v-g.co.il</property>
   </info>
   <data>
-    <entry id="100" string="OK"/>
-    <entry id="101" string="Cancel"/>
-    <entry id="102" string="Close"/>
+    <entry id="100" string="OK">OK</entry>
+    <entry id="101" string="Cancel">ביטול</entry>
+    <entry id="102" string="Close">סגור</entry>
 
-    <entry id="200" string="Error"/>
+    <entry id="200" string="Error">שגיאה</entry>
     <entry id="201" string="Warning"/>
-    <entry id="202" string="Info"/>
+    <entry id="202" string="Info">מידע</entry>
 
     <entry id="210" string="Do not display this warning again"/>
     <entry id="211" string="Do not display this note again"/>
 
-    <entry id="300" string="Artist"/>
-    <entry id="301" string="Title"/>
-    <entry id="302" string="Album"/>
-    <entry id="303" string="Track"/>
-    <entry id="304" string="Genre"/>
-    <entry id="305" string="Comment"/>
-    <entry id="306" string="Year"/>
+    <entry id="300" string="Artist">אמן</entry>
+    <entry id="301" string="Title">שם</entry>
+    <entry id="302" string="Album">אלבום</entry>
+    <entry id="303" string="Track">פס קול</entry>
+    <entry id="304" string="Genre">סוג</entry>
+    <entry id="305" string="Comment">הערות</entry>
+    <entry id="306" string="Year">שנה</entry>
     <entry id="307" string="Disc"/>
     <entry id="308" string="Rating"/>
     <entry id="309" string="File name"/>
     <entry id="310" string="File type"/>
     <entry id="311" string="Album artist"/>
 
-    <entry id="350" string="unknown artist"/>
-    <entry id="351" string="unknown title"/>
-    <entry id="352" string="unknown album"/>
+    <entry id="350" string="unknown artist">אמן לא ידוע</entry>
+    <entry id="351" string="unknown title">דיסק לא ידוע</entry>
+    <entry id="352" string="unknown album">אלבום לא מוכר</entry>
     <entry id="353" string="unknown genre"/>
     <entry id="354" string="unknown year"/>
     <entry id="355" string="unknown conductor"/>
@@ -47,42 +47,42 @@
     <entry id="380" string="hidden track"/>
 
     <section name="Characters">
-      <entry id="500" string="%1:"/>
-      <entry id="501" string="%1..."/>
-      <entry id="502" string="%1 (%2)"/>
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
     </section>
 
     <section name="Technical">
-      <entry id="510" string="%1 kbps"/>
-      <entry id="511" string="%1 Hz"/>
-      <entry id="512" string="%1 kHz"/>
-      <entry id="513" string="%1 ms"/>
-      <entry id="514" string="%1 min"/>
-      <entry id="515" string="%1 bit"/>
-      <entry id="516" string="%1 bytes"/>
+      <entry id="510" string="%1 kbps">%1 קס"ש</entry>
+      <entry id="511" string="%1 Hz">%1 הרץ</entry>
+      <entry id="512" string="%1 kHz">%1 קה"צ</entry>
+      <entry id="513" string="%1 ms">%1 מילישנייה</entry>
+      <entry id="514" string="%1 min">%1 דקות</entry>
+      <entry id="515" string="%1 bit">%1 ביטים</entry>
+      <entry id="516" string="%1 bytes">%1 בתים</entry>
       <entry id="517" string="%1 kB"/>
-      <entry id="518" string="%1%"/>
+      <entry id="518" string="%1%">%1%</entry>
     </section>
 
     <section name="Menu">
-      <entry id="1000" string="File"/>
-      <entry id="1001" string="Options"/>
-      <entry id="1002" string="Database"/>
+      <entry id="1000" string="File">קובץ</entry>
+      <entry id="1001" string="Options">אפשרויות</entry>
+      <entry id="1002" string="Database">בסיס נתונים</entry>
       <entry id="1003" string="Processing"/>
-      <entry id="1004" string="Encode"/>
-      <entry id="1005" string="Help"/>
+      <entry id="1004" string="Encode">המרה</entry>
+      <entry id="1005" string="Help">עזרה</entry>
 
       <section name="File">
-	<entry id="1100" string="Add"/>
-	<entry id="1101" string="Remove"/>
-	<entry id="1102" string="Load joblist"/>
-	<entry id="1103" string="Save joblist"/>
-	<entry id="1104" string="Clear joblist"/>
-	<entry id="1105" string="Exit"/>
-	<entry id="1106" string="Audio file(s)"/>
-	<entry id="1107" string="Audio CD contents"/>
+	<entry id="1100" string="Add">הוסף</entry>
+	<entry id="1101" string="Remove">הסר</entry>
+	<entry id="1102" string="Load joblist">טען רשימת מטלות</entry>
+	<entry id="1103" string="Save joblist">שמור רשימת מטלות</entry>
+	<entry id="1104" string="Clear joblist">נקה רשימת מטלות</entry>
+	<entry id="1105" string="Exit">צא מהתכנה</entry>
+	<entry id="1106" string="Audio file(s)">קבצי אודיו</entry>
+	<entry id="1107" string="Audio CD contents">תכולת CD</entry>
 	<entry id="1108" string="By pattern"/>
-	<entry id="1109" string="From folder"/>
+	<entry id="1109" string="From folder">מתקיה</entry>
       </section>
 
       <section name="Database">
@@ -93,13 +93,13 @@
 	<entry id="1204" string="Show queued CDDB queries"/>
 	<entry id="1205" string="Enable CDDB cache"/>
 	<entry id="1206" string="Manage CDDB cache entries"/>
-	<entry id="1207" string="Automatic CDDB queries"/>
+	<entry id="1207" string="Automatic CDDB queries">קריאת מידע CD אוטומטית</entry>
       </section>
 
       <section name="Options">
-	<entry id="1300" string="General settings"/>
-	<entry id="1301" string="Configure selected encoder"/>
-	<entry id="1302" string="Active CD-ROM drive"/>
+	<entry id="1300" string="General settings">הגדרות</entry>
+	<entry id="1301" string="Configure selected encoder">הגדרות מקודד</entry>
+	<entry id="1302" string="Active CD-ROM drive">בחר כונן CD-ROM</entry>
 	<entry id="1303" string="Active configuration"/>
 	<entry id="1304" string="Default configuration"/>
       </section>
@@ -112,92 +112,92 @@
       </section>
 
       <section name="Encode">
-	<entry id="1500" string="Start encoding"/>
+	<entry id="1500" string="Start encoding">התחל המרה</entry>
 	<entry id="1501" string="Start encoding (deleting original files)"/>
-	<entry id="1502" string="Start encoding with"/>
-	<entry id="1503" string="Pause/resume encoding"/>
-	<entry id="1504" string="Stop encoding"/>
-	<entry id="1505" string="Encoder options"/>
-	<entry id="1506" string="Encode to a single file"/>
+	<entry id="1502" string="Start encoding with">התחל המרה</entry>
+	<entry id="1503" string="Pause/resume encoding">השהה / חדש המרה</entry>
+	<entry id="1504" string="Stop encoding">עצור המרה</entry>
+	<entry id="1505" string="Encoder options">אפשרויות המרה</entry>
+	<entry id="1506" string="Encode to a single file">המר לקובץ אחד</entry>
 	<entry id="1507" string="Encode to input file folder if possible"/>
-	<entry id="1508" string="Allow overwriting input file"/>
-	<entry id="1509" string="Delete original files after encoding"/>
-	<entry id="1510" string="Shutdown after encoding"/>
+	<entry id="1508" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
+	<entry id="1509" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
+	<entry id="1510" string="Shutdown after encoding">כבה מחשב לאחר המרה</entry>
       </section>
 
       <section name="Help">
-	<entry id="1600" string="Help topics"/>
-	<entry id="1601" string="Show Tip of the Day"/>
-	<entry id="1602" string="Check for updates now"/>
-	<entry id="1603" string="Check for updates at startup"/>
-	<entry id="1604" string="About %1"/>
-	<entry id="1605" string="index_en.html"/>
+	<entry id="1600" string="Help topics">נושאי עזרה</entry>
+	<entry id="1601" string="Show Tip of the Day">הצג טיפ יומי</entry>
+	<entry id="1602" string="Check for updates now">בדיקת עדכונים</entry>
+	<entry id="1603" string="Check for updates at startup">בדוק עדכונים בהפעלה</entry>
+	<entry id="1604" string="About %1">על התכנה</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
  	<entry id="1606" string="Report an issue"/>
 	<entry id="1607" string="Suggest a feature"/>
       </section>
     </section>
 
     <section name="Toolbar">
-      <entry id="2000" string="Add audio file(s) to the joblist"/>
-      <entry id="2001" string="Add audio CD contents to the joblist"/>
-      <entry id="2002" string="Remove the selected entry from the joblist"/>
-      <entry id="2003" string="Clear the entire joblist"/>
+      <entry id="2000" string="Add audio file(s) to the joblist">הוסף קבצים לרשימת ביצוע</entry>
+      <entry id="2001" string="Add audio CD contents to the joblist">הוסף תוכן CD לרשימת ביצוע</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">הסר מרשימת ביצוע</entry>
+      <entry id="2003" string="Clear the entire joblist">נקה רשימת ביצוע</entry>
       <entry id="2004" string="Query CDDB database"/>
       <entry id="2005" string="Submit CDDB data"/>
-      <entry id="2006" string="Configure general settings"/>
-      <entry id="2007" string="Configure the selected audio encoder"/>
-      <entry id="2008" string="Start the encoding process"/>
+      <entry id="2006" string="Configure general settings">הגדר מאפיינים</entry>
+      <entry id="2007" string="Configure the selected audio encoder">הגדר מקודד</entry>
+      <entry id="2008" string="Start the encoding process">החל תהליך קידוד</entry>
       <entry id="2009" string="Start the encoding process (deleting original files)"/>
-      <entry id="2010" string="Pause/resume encoding"/>
-      <entry id="2011" string="Stop encoding"/>
+      <entry id="2010" string="Pause/resume encoding">השהה / חדש המרה</entry>
+      <entry id="2011" string="Stop encoding">עצור המרה</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file"/>
-      <entry id="3001" string="Time left"/>
-      <entry id="3002" string="Selected encoder"/>
-      <entry id="3003" string="File progress"/>
-      <entry id="3004" string="Output folder"/>
-      <entry id="3005" string="%1 file(s) in joblist"/>
-      <entry id="3006" string="none"/>
-      <entry id="3007" string="Show title info"/>
-      <entry id="3008" string="Play"/>
-      <entry id="3009" string="Stop"/>
-      <entry id="3010" string="Select all"/>
-      <entry id="3011" string="Select none"/>
-      <entry id="3012" string="Toggle selection"/>
-      <entry id="3013" string="ripping/decoding"/>
-      <entry id="3014" string="encoding"/>
-      <entry id="3015" string="Create playlist"/>
+      <entry id="3000" string="Encoding file">ממיר קובץ</entry>
+      <entry id="3001" string="Time left">זמן שנותר</entry>
+      <entry id="3002" string="Selected encoder">מקודד שנבחר</entry>
+      <entry id="3003" string="File progress">התקדמות קובץ</entry>
+      <entry id="3004" string="Output folder">שמור לתקייה</entry>
+      <entry id="3005" string="%1 file(s) in joblist">%1 קבצים מתוך</entry>
+      <entry id="3006" string="none">לא פעיל</entry>
+      <entry id="3007" string="Show title info">הצג מידע</entry>
+      <entry id="3008" string="Play">נגן</entry>
+      <entry id="3009" string="Stop">עצור</entry>
+      <entry id="3010" string="Select all">בחר הכל</entry>
+      <entry id="3011" string="Select none">בטל כל הבחירות</entry>
+      <entry id="3012" string="Toggle selection">הפוך בחירה</entry>
+      <entry id="3013" string="ripping/decoding">המרה</entry>
+      <entry id="3014" string="encoding">המרה</entry>
+      <entry id="3015" string="Create playlist">צור רשימת השמעה</entry>
       <entry id="3016" string="Create cue sheet"/>
-      <entry id="3017" string="Select"/>
-      <entry id="3018" string="Skip"/>
-      <entry id="3019" string="Encode to a single file"/>
-      <entry id="3020" string="Remove"/>
-      <entry id="3021" string="Clear joblist"/>
-      <entry id="3022" string="Use for all selected tracks"/>
+      <entry id="3017" string="Select">דפדף</entry>
+      <entry id="3018" string="Skip">דלג</entry>
+      <entry id="3019" string="Encode to a single file">המר לקובץ אחד</entry>
+      <entry id="3020" string="Remove">הסר</entry>
+      <entry id="3021" string="Clear joblist">נקה רשימת מטלות</entry>
+      <entry id="3022" string="Use for all selected tracks">השתמש בכל הנבחרים</entry>
       <entry id="3023" string="Interpret string as"/>
-      <entry id="3024" string="selected tracks"/>
+      <entry id="3024" string="selected tracks">בחר פסי קול</entry>
       <entry id="3025" string="Adjust upper/lower case"/>
       <entry id="3026" string="all words upper case"/>
       <entry id="3027" string="long words upper case"/>
       <entry id="3028" string="first letter upper case"/>
       <entry id="3029" string="all lower case"/>
       <entry id="3030" string="all upper case"/>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed"/>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">בחר בתקייה בה ישמרו הקבצים לאחר הקידוד</entry>
       <entry id="3032" string="Sampling rate"/>
       <entry id="3033" string="Sample resolution"/>
       <entry id="3034" string="Number of samples"/>
-      <entry id="3035" string="Channels"/>
+      <entry id="3035" string="Channels">צרוצים</entry>
       <entry id="3036" string="Mono"/>
-      <entry id="3037" string="Stereo"/>
-      <entry id="3038" string="Length"/>
-      <entry id="3039" string="File"/>
-      <entry id="3040" string="Size"/>
-      <entry id="3041" string="Bitrate"/>
-      <entry id="3042" string="Audio Files"/>
-      <entry id="3043" string="All Files"/>
-      <entry id="3044" string="Playlist Files"/>
+      <entry id="3037" string="Stereo">Stereo</entry>
+      <entry id="3038" string="Length">אורך</entry>
+      <entry id="3039" string="File">קובץ</entry>
+      <entry id="3040" string="Size">גודל</entry>
+      <entry id="3041" string="Bitrate">קצב העברת נתונים</entry>
+      <entry id="3042" string="Audio Files">קבצי שמע</entry>
+      <entry id="3043" string="All Files">כל הקבצים</entry>
+      <entry id="3044" string="Playlist Files">רשימת השמעה</entry>
       <entry id="3045" string="Active decoder"/>
       <entry id="3046" string="Joblist"/>
       <entry id="3047" string="unknown"/>
@@ -208,19 +208,19 @@
       <entry id="3052" string="CD drive"/>
 
       <section name="Add folder">
-	<entry id="3100" string="Folder"/>
+	<entry id="3100" string="Folder">תיקייה</entry>
 	<entry id="3101" string="Add folder"/>
 	<entry id="3102" string="Choose folder"/>
-	<entry id="3103" string="Select the folder to add to the joblist"/>
+	<entry id="3103" string="Select the folder to add to the joblist">בחר תיקיה להוספה לרשימת מטלות</entry>
       </section>
 
       <section name="Add by pattern">
 	<entry id="3200" string="Add files by pattern"/>
 	<entry id="3201" string="Pattern"/>
 	<entry id="3202" string="Start folder"/>
-	<entry id="3203" string="Filename pattern"/>
+	<entry id="3203" string="Filename pattern">צורת שם קובץ</entry>
 	<entry id="3204" string="Search subfolders"/>
-	<entry id="3205" string="Select the folder to add to the joblist"/>
+	<entry id="3205" string="Select the folder to add to the joblist">בחר תיקיה להוספה לרשימת מטלות</entry>
       </section>
 
       <section name="Character set">
@@ -229,7 +229,7 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="You did not select a track!"/>
+	<entry id="3400" string="You did not select a track!">! לא נבחר קובץ</entry>
 	<entry id="3401" string="No files found matching pattern: %1"/>
       </section>
     </section>
@@ -281,40 +281,40 @@
       <section name="Submit">
 	<entry id="4000" string="CDDB data"/>
 	<entry id="4001" string="Submit"/>
-	<entry id="4002" string="No audio CD in drive!"/>
+	<entry id="4002" string="No audio CD in drive!">לא נמצא CD בכונן</entry>
 	<entry id="4003" string="Submitting CD information"/>
 	<entry id="4004" string="Update joblist with this information"/>
-	<entry id="4005" string="Status"/>
-	<entry id="4006" string="Successfully read CD!"/>
+	<entry id="4005" string="Status">מצב</entry>
+	<entry id="4006" string="Successfully read CD!">קריאת CD עברה בהצלחה</entry>
 	<entry id="4007" string="Save entry"/>
 	<entry id="4008" string="Various artists"/>
-	<entry id="4009" string="Data track"/>
+	<entry id="4009" string="Data track">דיסק מידע</entry>
 	<entry id="4010" string="Submit to online database later"/>
-	<entry id="4011" string="Active CD-ROM drive"/>
+	<entry id="4011" string="Active CD-ROM drive">בחר כונן CD-ROM</entry>
 
 	<section name="Errors">
-	  <entry id="4050" string="Some error occurred trying to connect to the freedb server."/>
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">תקלה בגישה לשרת מידע חינמי</entry>
 	  <entry id="4051" string="Please fill all fields and track titles before submitting."/>
 	</section>
       </section>
 
       <section name="Query">
-	<entry id="4100" string="CDDB query"/>
-	<entry id="4101" string="No freedb entry for this disk."/>
+	<entry id="4100" string="CDDB query">CDDB בדיקת</entry>
+	<entry id="4101" string="No freedb entry for this disk.">אין מידע חינם לגבי דיסק זה</entry>
 	<entry id="4102" string="Connecting to freedb server at"/>
-	<entry id="4103" string="Requesting CD information"/>
-	<entry id="4104" string="No exact matches found"/>
-	<entry id="4105" string="Multiple matches found"/>
-	<entry id="4106" string="Matches"/>
-	<entry id="4107" string="Select the entry that best fits your CD"/>
+	<entry id="4103" string="Requesting CD information">מבקש מידע CD</entry>
+	<entry id="4104" string="No exact matches found">לא נמצאו התאמות</entry>
+	<entry id="4105" string="Multiple matches found">נמצאו מספר התאמות</entry>
+	<entry id="4106" string="Matches">התאמות</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">בחר בשם שתואם לCD שלך</entry>
 	<entry id="4108" string="Would you like to perform this query again later?"/>
 	<entry id="4109" string="Would you like to perform the remaining queries again later?"/>
-	<entry id="4110" string="none"/>
+	<entry id="4110" string="none">לא פעיל</entry>
 	<entry id="4111" string="Preview"/>
 	<entry id="4112" string="loading preview"/>
 
 	<section name="Errors">
-	  <entry id="4150" string="Some error occurred trying to connect to the freedb server."/>
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">תקלה בגישה לשרת מידע חינמי</entry>
 	</section>
       </section>
 
@@ -334,9 +334,9 @@
 	<entry id="4302" string="Submit all"/>
 	<entry id="4303" string="CDDB data"/>
 	<entry id="4304" string="Submit"/>
-	<entry id="4305" string="Disc name"/>
+	<entry id="4305" string="Disc name">שם דיסק</entry>
 	<entry id="4306" string="Preview"/>
-	<entry id="4307" string="Category"/>
+	<entry id="4307" string="Category">קטגוריה</entry>
 	<entry id="4308" string="Submitting CD information"/>
       </section>
 
@@ -345,7 +345,7 @@
 	<entry id="4401" string="Update joblist with this information"/>
 	<entry id="4402" string="Charset"/>
 	<entry id="4403" string="Downloaded CDDB entries"/>
-	<entry id="4404" string="Disc name"/>
+	<entry id="4404" string="Disc name">שם דיסק</entry>
 	<entry id="4405" string="Preview"/>
 	<entry id="4406" string="Remove entry"/>
 	<entry id="4407" string="Save entry"/>
@@ -353,14 +353,14 @@
     </section>
 
     <section name="Configuration">
-      <entry id="5000" string="General settings setup"/>
-      <entry id="5001" string="Encoders"/>
-      <entry id="5002" string="Playlists"/>
-      <entry id="5003" string="Language"/>
+      <entry id="5000" string="General settings setup">הגדרות כלליות</entry>
+      <entry id="5001" string="Encoders">מקודדים</entry>
+      <entry id="5002" string="Playlists">רשימת השמעה</entry>
+      <entry id="5003" string="Language">שפה</entry>
       <entry id="5004" string="Component configuration"/>
       <entry id="5005" string="CDDB"/>
       <entry id="5006" string="Interface"/>
-      <entry id="5007" string="Tags"/>
+      <entry id="5007" string="Tags">תגיות מידע</entry>
       <entry id="5008" string="Components"/>
       <entry id="5009" string="Decoders"/>
       <entry id="5010" string="Output"/>
@@ -382,18 +382,18 @@
       <entry id="5026" string="Processing"/>
 
       <section name="Encoders">
-	<entry id="5100" string="Configure encoder"/>
-	<entry id="5101" string="Encoder"/>
-	<entry id="5102" string="Output folder"/>
-	<entry id="5103" string="Select"/>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed"/>
+	<entry id="5100" string="Configure encoder">הגדרות מקודד</entry>
+	<entry id="5101" string="Encoder">מקודד</entry>
+	<entry id="5102" string="Output folder">תקיית יעד</entry>
+	<entry id="5103" string="Select">דפדף</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">בחר בתקייה בה ישמרו הקבצים לאחר הקידוד</entry>
 	<entry id="5105" string="Use input file folder if possible"/>
-	<entry id="5106" string="Allow overwriting input file"/>
-	<entry id="5107" string="Options"/>
-	<entry id="5108" string="Filename pattern"/>
+	<entry id="5106" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
+	<entry id="5107" string="Options">אפשרויות</entry>
+	<entry id="5108" string="Filename pattern">צורת שם קובץ</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'"/>
 	<entry id="5110" string="Keep ripped Wave files"/>
-	<entry id="5111" string="Encode to a single file"/>
+	<entry id="5111" string="Encode to a single file">המר לקובץ אחד</entry>
 	<entry id="5112" string="Output filenames"/>
 	<entry id="5113" string="Allow Unicode characters"/>
 	<entry id="5114" string="Replace spaces with underscores"/>
@@ -403,18 +403,18 @@
 	<entry id="5118" string="Keep time stamps of source files"/>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?"/>
+	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">תקית היעד אינה קיימת, האם ליצור אותה?</entry>
 	</section>
       </section>
 
       <section name="Playlists">
-	<entry id="5200" string="Create playlists"/>
+	<entry id="5200" string="Create playlists">צור רשימת השמעה</entry>
 	<entry id="5201" string="Create cue sheets"/>
-	<entry id="5202" string="Output folder"/>
-	<entry id="5203" string="Select"/>
+	<entry id="5202" string="Output folder">תקיית יעד</entry>
+	<entry id="5203" string="Select">דפדף</entry>
 	<entry id="5204" string="Use encoder output folder"/>
-	<entry id="5205" string="Filename pattern"/>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed"/>
+	<entry id="5205" string="Filename pattern">צורת שם קובץ</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">בחר תיקייה לרשימת השמעה</entry>
 	<entry id="5207" string="Output filenames"/>
 	<entry id="5208" string="Configure plugin"/>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion"/>
@@ -424,23 +424,23 @@
 	<entry id="5300" string="Enable local CDDB database"/>
 	<entry id="5301" string="Enable remote CDDB database"/>
 	<entry id="5302" string="CDDB path"/>
-	<entry id="5303" string="Select"/>
-	<entry id="5304" string="Select the folder of the CDDB database"/>
-	<entry id="5305" string="CDDB access mode"/>
+	<entry id="5303" string="Select">דפדף</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">בחר תיקייה למידע הדיסק</entry>
+	<entry id="5305" string="CDDB access mode">גישה למידע CD</entry>
 	<entry id="5306" string="CDDB server"/>
 	<entry id="5307" string="Port"/>
 	<entry id="5308" string="eMail address"/>
 	<entry id="5309" string="HTTP settings"/>
 	<entry id="5310" string="Proxy settings"/>
-	<entry id="5311" string="Options"/>
-	<entry id="5312" string="Automatic CDDB queries"/>
+	<entry id="5311" string="Options">אפשרויות</entry>
+	<entry id="5312" string="Automatic CDDB queries">קריאת מידע CD אוטומטית</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text"/>
 	<entry id="5314" string="Enable CDDB cache"/>
-	<entry id="5315" string="Automatization"/>
+	<entry id="5315" string="Automatization">אוטומטיזציה</entry>
 	<entry id="5316" string="Always select first entry"/>
 
 	<section name="Extended">
-	  <entry id="5330" string="Extended CDDB settings"/>
+	  <entry id="5330" string="Extended CDDB settings">מידע CD מורחב</entry>
 	  <entry id="5331" string="CGI scripts"/>
 	  <entry id="5332" string="CDDB query script"/>
 	  <entry id="5333" string="CDDB submit script"/>
@@ -448,31 +448,31 @@
 	  <entry id="5335" string="Proxy type"/>
 	  <entry id="5336" string="Proxy server"/>
 	  <entry id="5337" string="User name"/>
-	  <entry id="5338" string="Password"/>
+	  <entry id="5338" string="Password">סיסמה</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="5350" string="Please enter a valid eMail address."/>
+	  <entry id="5350" string="Please enter a valid eMail address.">אנא הכנס כתובת דוא&quot;ל</entry>
 	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?"/>
 	</section>
       </section>
 
       <section name="Language">
-	<entry id="5400" string="Select language"/>
-	<entry id="5401" string="Edit language file"/>
-	<entry id="5402" string="Information"/>
-	<entry id="5403" string="Encoding"/>
-	<entry id="5404" string="Author"/>
-	<entry id="5405" string="URL"/>
+	<entry id="5400" string="Select language">בחר שפת ממשק</entry>
+	<entry id="5401" string="Edit language file">ערוך קובץ שפה</entry>
+	<entry id="5402" string="Information">מידע</entry>
+	<entry id="5403" string="Encoding">מבצע קידוד</entry>
+	<entry id="5404" string="Author">מחבר</entry>
+	<entry id="5405" string="URL">‫URL</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags"/>
+	<entry id="5500" string="Tags">תגיות מידע</entry>
 	<entry id="5501" string="Tag formats"/>
 	<entry id="5502" string="Default comment string"/>
 	<entry id="5503" string="Replace existing comments with default comment"/>
-	<entry id="5504" string="Filename pattern"/>
-	<entry id="5505" string="Encoding"/>
+	<entry id="5504" string="Filename pattern">צורת שם קובץ</entry>
+	<entry id="5505" string="Encoding">מבצע קידוד</entry>
 	<entry id="5506" string="Comments"/>
 	<entry id="5507" string="Cover art"/>
 	<entry id="5508" string="Read cover art"/>
@@ -565,15 +565,15 @@
     </section>
 
     <section name="About">
-      <entry id="6000" string="About %1"/>
-      <entry id="6001" string="Translated by %1."/>
+      <entry id="6000" string="About %1">על התכנה</entry>
+      <entry id="6001" string="Translated by %1.">תורגם ע&quot;י %1.</entry>
       <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL)."/>
     </section>
 
     <section name="Updates">
       <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?"/>
-      <entry id="6101" string="There are no updates available at the moment!"/>
-      <entry id="6102" string="Check for updates at startup"/>
+      <entry id="6101" string="There are no updates available at the moment!">אין עדכונים זמינים</entry>
+      <entry id="6102" string="Check for updates at startup">בדוק עדכונים בהפעלה</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?"/>
     </section>
 
@@ -588,14 +588,14 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="Currently converting"/>
-      <entry id="7001" string="A conversion process is still active! Do you really want to quit?"/>
-      <entry id="7002" string="Delete original files after encoding"/>
-      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?"/>
+      <entry id="7000" string="Currently converting">ממיר כרגע</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">?ההמרה בעבוד, האם לסיים</entry>
+      <entry id="7002" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">פונקציה זו תמחק את קבצי המקור לאחר ההמרה&#10;האם אתה בטוח שברצונך לאפשר זאת?</entry>
       <entry id="7004" string="Keep this option enabled even after restarting %1"/>
-      <entry id="7005" string="File already exists"/>
-      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?"/>
-      <entry id="7007" string="Overwrite all further files"/>
+      <entry id="7005" string="File already exists">קובץ כבר קיים</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">הקובץ %1 כבר קיים&#10; האם לדרוס אותו ?</entry>
+      <entry id="7007" string="Overwrite all further files">דרוס את כל הקבצים להבא</entry>
       <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?"/>
     </section>
 
@@ -610,18 +610,18 @@
       <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2"/>
       <entry id="7108" string="Failed to verify input file: %1"/>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
-      <entry id="7110" string="File not found"/>
-      <entry id="7111" string="Unknown file type"/>
+      <entry id="7110" string="File not found">קובץ לא קיים</entry>
+      <entry id="7111" string="Unknown file type">סוג קובץ לא נתמך</entry>
       <entry id="7112" string="Invalid file format"/>
-      <entry id="7113" string="Unsupported audio format"/>
-      <entry id="7114" string="Unknown error"/>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!"/>
-      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2"/>
+      <entry id="7113" string="Unsupported audio format">פורמט שמע לא נתמך</entry>
+      <entry id="7114" string="Unknown error">שגיאה לא ידועה</entry>
+      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">לא יכול לתקשר עם כונן, מבטל יכולת קריאה מדיסק</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!"/>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!"/>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."/>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog."/>
-      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive."/>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">אין הרשאה לגישה לכונן CD</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1"/>
       <entry id="7123" string="The selected folder does not exist anymore!"/>
     </section>
@@ -635,7 +635,7 @@
 	<entry id="8003" string="The following %1 files already exist or have duplicate file names"/>
 	<entry id="8004" string="Action"/>
 	<entry id="8005" string="Overwrite"/>
-	<entry id="8006" string="Skip"/>
+	<entry id="8006" string="Skip">דלג</entry>
       </section>
 
       <section name="Format">
@@ -652,25 +652,25 @@
     </section>
 
     <section name="Ripper">
-      <entry id="9000" string="Active CD-ROM drive"/>
+      <entry id="9000" string="Active CD-ROM drive">בחר כונן CD-ROM</entry>
       <entry id="9001" string="Set drive speed limit"/>
       <entry id="9002" string="CD information"/>
       <entry id="9003" string="Read CD Text"/>
       <entry id="9004" string="Read cdplayer.ini"/>
-      <entry id="9005" string="Ripper settings"/>
+      <entry id="9005" string="Ripper settings">הגדרות ממיר מCD</entry>
       <entry id="9006" string="Activate cdparanoia mode"/>
-      <entry id="9007" string="Overlap only"/>
-      <entry id="9008" string="No verify"/>
-      <entry id="9009" string="No scratch repair"/>
+      <entry id="9007" string="Overlap only">חפיפה בלבד</entry>
+      <entry id="9008" string="No verify">ללא אימות</entry>
+      <entry id="9009" string="No scratch repair">ללא תיקון שריטות</entry>
       <entry id="9010" string="Full cdparanoia mode"/>
-      <entry id="9011" string="Activate jitter correction"/>
-      <entry id="9012" string="Switch stereo channels"/>
-      <entry id="9013" string="Automatization"/>
+      <entry id="9011" string="Activate jitter correction">הפעל תיקון טעויות קריאה</entry>
+      <entry id="9012" string="Switch stereo channels">החלף בין ערוצי שמאל וימין</entry>
+      <entry id="9013" string="Automatization">אוטומטיזציה</entry>
       <entry id="9014" string="Read CD contents on insert"/>
-      <entry id="9015" string="Start ripping automatically"/>
-      <entry id="9016" string="Eject disk after ripping"/>
-      <entry id="9017" string="CD options"/>
-      <entry id="9018" string="Lock CD tray while ripping"/>
+      <entry id="9015" string="Start ripping automatically">התחל המרה באופן אוטומטי</entry>
+      <entry id="9016" string="Eject disk after ripping">הוצא דיסק לאחר המרה</entry>
+      <entry id="9017" string="CD options">אופציות CD</entry>
+      <entry id="9018" string="Lock CD tray while ripping">נעל מגש כונן בזמן המרה</entry>
       <entry id="9019" string="Use native NT SCSI library"/>
       <entry id="9020" string="Use read offset"/>
       <entry id="9021" string="samples"/>
@@ -732,76 +732,76 @@
     <section name="Encoders">
 
       <section name="BladeEnc">
-	<entry id="30000" string="Bitrate"/>
-	<entry id="30001" string="Copyright bit"/>
-	<entry id="30002" string="CRC"/>
+	<entry id="30000" string="Bitrate">קצב העברת נתונים</entry>
+	<entry id="30001" string="Copyright bit">זכויות יוצרים</entry>
+	<entry id="30002" string="CRC">CRC</entry>
 	<entry id="30003" string="Original bit"/>
-	<entry id="30004" string="Channels"/>
+	<entry id="30004" string="Channels">צרוצים</entry>
 	<entry id="30005" string="Private bit"/>
-	<entry id="30006" string="Set Copyright bit"/>
-	<entry id="30007" string="Enable CRC"/>
-	<entry id="30008" string="Set Original bit"/>
-	<entry id="30009" string="Dual channel encoding"/>
+	<entry id="30006" string="Set Copyright bit">הפעל זכויות יוצרים</entry>
+	<entry id="30007" string="Enable CRC">אפשר CRC</entry>
+	<entry id="30008" string="Set Original bit">קבע BIT מקורי</entry>
+	<entry id="30009" string="Dual channel encoding">קידוד דו ערוצי</entry>
 	<entry id="30010" string="Set Private bit"/>
       </section>
 
       <section name="Bonk">
-	<entry id="31000" string="Encoder mode"/>
-	<entry id="31001" string="Stereo mode"/>
+	<entry id="31000" string="Encoder mode">מצב מקודד</entry>
+	<entry id="31001" string="Stereo mode">מצב Stereo</entry>
 	<entry id="31002" string="Quantization"/>
-	<entry id="31003" string="Downsampling ratio"/>
-	<entry id="31004" string="Predictor size"/>
-	<entry id="31005" string="Enable lossless encoding"/>
-	<entry id="31006" string="Enable Joint Stereo"/>
+	<entry id="31003" string="Downsampling ratio">יחס דחיסה</entry>
+	<entry id="31004" string="Predictor size">גודל קובץ משוער</entry>
+	<entry id="31005" string="Enable lossless encoding">הפעל קידוד lossless</entry>
+	<entry id="31006" string="Enable Joint Stereo">אפשר מיזוג ערוצים</entry>
       </section>
 
       <section name="LAME">
 	<entry id="32000" string="Basic"/>
-	<entry id="32001" string="Misc"/>
-	<entry id="32002" string="Expert"/>
-	<entry id="32003" string="Audio processing"/>
+	<entry id="32001" string="Misc">שונות</entry>
+	<entry id="32002" string="Expert">למומחים</entry>
+	<entry id="32003" string="Audio processing">עיבוד שמע</entry>
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets"/>
 	  <entry id="32101" string="Use preset"/>
-	  <entry id="32102" string="Custom settings"/>
-	  <entry id="32103" string="Medium, Fast"/>
-	  <entry id="32104" string="Standard, Fast"/>
-	  <entry id="32105" string="Extreme, Fast"/>
-	  <entry id="32106" string="Bitrate"/>
-	  <entry id="32107" string="Quality"/>
-	  <entry id="32108" string="Set bitrate"/>
-	  <entry id="32109" string="Set ratio"/>
-	  <entry id="32110" string="Set quality"/>
+	  <entry id="32102" string="Custom settings">קביעת הגדרות ידנית</entry>
+	  <entry id="32103" string="Medium, Fast">בינוני, מהיר</entry>
+	  <entry id="32104" string="Standard, Fast">רגיל, מהיר</entry>
+	  <entry id="32105" string="Extreme, Fast">קיצוני, מהיר</entry>
+	  <entry id="32106" string="Bitrate">קצב העברת נתונים</entry>
+	  <entry id="32107" string="Quality">איכות</entry>
+	  <entry id="32108" string="Set bitrate">קבע קצב ביטים</entry>
+	  <entry id="32109" string="Set ratio">יחס</entry>
+	  <entry id="32110" string="Set quality">הגדר איכות</entry>
 	  <entry id="32111" string="worse"/>
 	  <entry id="32112" string="better"/>
-	  <entry id="32113" string="VBR mode"/>
-	  <entry id="32114" string="no VBR"/>
-	  <entry id="32115" string="VBR quality"/>
+	  <entry id="32113" string="VBR mode">מצב VBR</entry>
+	  <entry id="32114" string="no VBR">ללא VBR</entry>
+	  <entry id="32115" string="VBR quality">איכות VBR</entry>
 	  <entry id="32116" string="ABR target bitrate"/>
 	</section>
 
 	<section name="Misc">
 	  <entry id="32200" string="Control bits"/>
-	  <entry id="32201" string="Set Copyright bit"/>
-	  <entry id="32202" string="Set Original bit"/>
+	  <entry id="32201" string="Set Copyright bit">הפעל זכויות יוצרים</entry>
+	  <entry id="32202" string="Set Original bit">קבע BIT מקורי</entry>
 	  <entry id="32203" string="Set Private bit"/>
-	  <entry id="32204" string="CRC"/>
-	  <entry id="32205" string="Enable CRC"/>
-	  <entry id="32206" string="Stereo mode"/>
-	  <entry id="32207" string="auto"/>
-	  <entry id="32208" string="Stereo"/>
-	  <entry id="32209" string="Joint Stereo"/>
-	  <entry id="32210" string="Force Joint Stereo"/>
+	  <entry id="32204" string="CRC">CRC</entry>
+	  <entry id="32205" string="Enable CRC">אפשר CRC</entry>
+	  <entry id="32206" string="Stereo mode">מצב Stereo</entry>
+	  <entry id="32207" string="auto">אוטומטי</entry>
+	  <entry id="32208" string="Stereo">Stereo</entry>
+	  <entry id="32209" string="Joint Stereo">ערוצי Stereo ממוזגים</entry>
+	  <entry id="32210" string="Force Joint Stereo">אלץ מיזוג ערוצים</entry>
 	  <entry id="32211" string="VBR bitrate range"/>
-	  <entry id="32212" string="Set minimum VBR bitrate"/>
-	  <entry id="32213" string="Set maximum VBR bitrate"/>
+	  <entry id="32212" string="Set minimum VBR bitrate">קבע VBR bitrate מינימלי</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">קבע VBR bitrate מקסימלי</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="32300" string="ATH"/>
+	  <entry id="32300" string="ATH">ATH</entry>
 	  <entry id="32301" string="Enable ATH"/>
-	  <entry id="32302" string="Use default setting"/>
+	  <entry id="32302" string="Use default setting">השתמש בהגדרות כלליות</entry>
 	  <entry id="32303" string="Psycho acoustic model"/>
 	  <entry id="32304" string="Use Temporal Masking Effect"/>
 	  <entry id="32305" string="Stream format"/>
@@ -815,14 +815,14 @@
 	  <entry id="32403" string="Lowpass filter"/>
 	  <entry id="32404" string="Set Lowpass frequency (Hz)"/>
 	  <entry id="32405" string="Set Lowpass width (Hz)"/>
-	  <entry id="32406" string="Misc settings"/>
-	  <entry id="32407" string="Disable all filtering"/>
+	  <entry id="32406" string="Misc settings">הגדרות שונות</entry>
+	  <entry id="32407" string="Disable all filtering">בטל את כל הפילטרים</entry>
 	</section>
       </section>
 
       <section name="AAC">
 	<entry id="33000" string="Codec"/>
-	<entry id="33001" string="Quality"/>
+	<entry id="33001" string="Quality">איכות</entry>
 	<entry id="33002" string="Format"/>
 
 	<section name="Codec">
@@ -830,24 +830,24 @@
 	</section>
 
 	<section name="Quality">
-	  <entry id="33200" string="Bitrate"/>
-	  <entry id="33201" string="Bitrate / Quality"/>
-	  <entry id="33202" string="Bitrate per channel"/>
-	  <entry id="33203" string="Set quality"/>
-	  <entry id="33204" string="Stereo mode"/>
+	  <entry id="33200" string="Bitrate">קצב העברת נתונים</entry>
+	  <entry id="33201" string="Bitrate / Quality">קצב העברת נתונים / איכות</entry>
+	  <entry id="33202" string="Bitrate per channel">Bitrate לערוץ</entry>
+	  <entry id="33203" string="Set quality">הגדר איכות</entry>
+	  <entry id="33204" string="Stereo mode">מצב Stereo</entry>
 	  <entry id="33205" string="Allow Joint Stereo"/>
 	  <entry id="33206" string="Temporal Noise Shaping"/>
 	  <entry id="33207" string="Use Temporal Noise Shaping"/>
-	  <entry id="33208" string="Maximum bandwidth"/>
+	  <entry id="33208" string="Maximum bandwidth">רוחב פס מירבי</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)"/>
 	</section>
 
 	<section name="Format">
-	  <entry id="33300" string="MPEG version"/>
+	  <entry id="33300" string="MPEG version">גרסת MPEG</entry>
 	  <entry id="33301" string="AAC object type"/>
-	  <entry id="33302" string="File format"/>
+	  <entry id="33302" string="File format">פורמט קובץ</entry>
 	  <entry id="33303" string="File extension"/>
-	  <entry id="33304" string="Tags"/>
+	  <entry id="33304" string="Tags">תגיות מידע</entry>
 	  <entry id="33305" string="Allow ID3v2 tags in AAC files"/>
 	  <entry id="33306" string="Note"/>
 	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags."/>
@@ -857,18 +857,18 @@
       <section name="FLAC">
 	<entry id="34000" string="Basic"/>
 	<entry id="34001" string="Format"/>
-	<entry id="34002" string="Expert"/>
+	<entry id="34002" string="Expert">למומחים</entry>
 
 	<section name="Basic">
 	  <entry id="34100" string="Presets"/>
 	  <entry id="34101" string="Use preset"/>
-	  <entry id="34102" string="Custom settings"/>
+	  <entry id="34102" string="Custom settings">קביעת הגדרות ידנית</entry>
 	  <entry id="34103" string="Fastest encoding"/>
 	  <entry id="34104" string="Best compression"/>
-	  <entry id="34105" string="Stereo mode"/>
-	  <entry id="34106" string="Joint Stereo"/>
+	  <entry id="34105" string="Stereo mode">מצב Stereo</entry>
+	  <entry id="34106" string="Joint Stereo">ערוצי Stereo ממוזגים</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo"/>
-	  <entry id="34108" string="File format"/>
+	  <entry id="34108" string="File format">פורמט קובץ</entry>
 	  <entry id="34109" string="Default"/>
 	</section>
 
@@ -884,10 +884,10 @@
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons."/>
 	  <entry id="34304" string="Linear predictor"/>
 	  <entry id="34305" string="Maximum LPC order"/>
-	  <entry id="34306" string="disabled"/>
+	  <entry id="34306" string="disabled">מבוטל</entry>
 	  <entry id="34307" string="Exhaustive model search"/>
 	  <entry id="34308" string="Quantized LPC precision"/>
-	  <entry id="34309" string="auto"/>
+	  <entry id="34309" string="auto">אוטומטי</entry>
 	  <entry id="34310" string="Optimize LPC quantization"/>
 	  <entry id="34311" string="Residual coding"/>
 	  <entry id="34312" string="Minimum partition order"/>
@@ -896,11 +896,11 @@
       </section>
 
       <section name="Vorbis">
-	<entry id="35000" string="Encoding Mode"/>
-	<entry id="35001" string="Variable Bitrate"/>
-	<entry id="35002" string="Average Bitrate"/>
-	<entry id="35003" string="Quality"/>
-	<entry id="35004" string="Bitrate"/>
+	<entry id="35000" string="Encoding Mode">מצב המרה</entry>
+	<entry id="35001" string="Variable Bitrate">Bitrate משתנה</entry>
+	<entry id="35002" string="Average Bitrate">Bitrate ממוצע</entry>
+	<entry id="35003" string="Quality">איכות</entry>
+	<entry id="35004" string="Bitrate">קצב העברת נתונים</entry>
 	<entry id="35005" string="Minimum bitrate"/>
 	<entry id="35006" string="Average bitrate"/>
 	<entry id="35007" string="Maximum bitrate"/>
@@ -916,16 +916,16 @@
 	<entry id="36005" string="Write uncompressed WMA files"/>
 	<entry id="36006" string="Automatically select format based on settings and input format"/>
 	<entry id="36007" string="Use VBR encoding"/>
-	<entry id="36008" string="Quality"/>
+	<entry id="36008" string="Quality">איכות</entry>
 	<entry id="36009" string="Target bitrate"/>
 	<entry id="36010" string="Use 2-pass encoding"/>
       </section>
 
       <section name="TwinVQ">
-	<entry id="37000" string="Bitrate"/>
-	<entry id="37001" string="Bitrate per channel"/>
-	<entry id="37002" string="Preselection"/>
-	<entry id="37003" string="Number of preselection candidates"/>
+	<entry id="37000" string="Bitrate">קצב העברת נתונים</entry>
+	<entry id="37001" string="Bitrate per channel">Bitrate לערוץ</entry>
+	<entry id="37002" string="Preselection">בחירה מקדימה</entry>
+	<entry id="37003" string="Number of preselection candidates">מספר בחירות אפשרי</entry>
       </section>
 
       <section name="Monkey's Audio">
@@ -941,21 +941,21 @@
       <section name="Speex">
 	<entry id="39000" string="Profile"/>
 	<entry id="39001" string="Select encoding profile"/>
-	<entry id="39002" string="auto"/>
+	<entry id="39002" string="auto">אוטומטי</entry>
 	<entry id="39003" string="Narrowband (8 kHz)"/>
 	<entry id="39004" string="Wideband (16 kHz)"/>
 	<entry id="39005" string="Ultra-Wideband (32 kHz)"/>
-	<entry id="39006" string="VBR mode"/>
+	<entry id="39006" string="VBR mode">מצב VBR</entry>
 	<entry id="39007" string="CBR (no VBR)"/>
 	<entry id="39008" string="VBR"/>
 	<entry id="39009" string="ABR"/>
-	<entry id="39010" string="Options"/>
+	<entry id="39010" string="Options">אפשרויות</entry>
 	<entry id="39011" string="Voice Activity Detection"/>
 	<entry id="39012" string="Discontinued Transmission"/>
 	<entry id="39013" string="Algorithm complexity"/>
 	<entry id="39014" string="Complexity"/>
 	<entry id="39015" string="CBR quality"/>
-	<entry id="39016" string="VBR quality"/>
+	<entry id="39016" string="VBR quality">איכות VBR</entry>
 	<entry id="39017" string="ABR target bitrate"/>
 	<entry id="39018" string="Bitrate"/>
 	<entry id="39019" string="Quality"/>
@@ -965,7 +965,7 @@
       <section name="Opus">
 	<entry id="40000" string="Basic settings"/>
 	<entry id="40001" string="Encoding mode"/>
-	<entry id="40002" string="auto"/>
+	<entry id="40002" string="auto">אוטומטי</entry>
 	<entry id="40003" string="Voice"/>
 	<entry id="40004" string="Music"/>
 	<entry id="40005" string="Bandwidth"/>
@@ -978,20 +978,20 @@
 	<entry id="40012" string="Variable bitrate"/>
 	<entry id="40013" string="Enable variable bitrate encoding"/>
 	<entry id="40014" string="Constrain bitrate to target value"/>
-	<entry id="40015" string="Quality"/>
+	<entry id="40015" string="Quality">איכות</entry>
 	<entry id="40016" string="Bitrate"/>
 	<entry id="40017" string="Complexity"/>
 	<entry id="40018" string="Stream"/>
 	<entry id="40019" string="Frame length"/>
-	<entry id="40020" string="Options"/>
+	<entry id="40020" string="Options">אפשרויות</entry>
 	<entry id="40021" string="Enable discontinous transmission"/>
 	<entry id="40022" string="Expected packet loss"/>
       </section>
 
       <section name="SndFile">
 	<entry id="41000" string="Output format"/>
-	<entry id="41001" string="File format"/>
-	<entry id="41002" string="Audio format"/>
+	<entry id="41001" string="File format">פורמט קובץ</entry>
+	<entry id="41002" string="Audio format">פורמט שמע</entry>
 	<entry id="41003" string="mono"/>
 	<entry id="41004" string="auto select"/>
 
@@ -1172,15 +1172,15 @@
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail."/>
 	<entry id="100004" string="Thank you very much!"/>
 	<entry id="100005" string="Remind me later"/>
-	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum"/>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
 	<entry id="100007" string="Donate to the %1 project"/>
 
 	<section name="PayPal">
 	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:"/>
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal."/>
-	  <entry id="100102" string="usd"/>
-	  <entry id="100103" string="$%1"/>
-	  <entry id="100104" string="5,10,20,other amount"/>
+	  <entry id="100102" string="usd">ils</entry>
+	  <entry id="100103" string="$%1">₪%1</entry>
+	  <entry id="100104" string="5,10,20,other amount">25,50,100,סכום אחר</entry>
 	  <entry id="100105" string="monthly recurring"/>
 	  <entry id="100106" string="Donate"/>
 	</section>
@@ -1188,7 +1188,7 @@
 	<section name="Donorbox">
 	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:"/>
 	  <entry id="100201" string="Donate"/>
-	  <entry id="100202" string="usd"/>
+	  <entry id="100202" string="usd">usd</entry>
 	</section>
 
 	<section name="Bitcoin">
@@ -1210,8 +1210,8 @@
       </section>
 
       <section name="Winamp Adapter">
-	<entry id="101000" string="Configure"/>
-	<entry id="101001" string="About"/>
+	<entry id="101000" string="Configure">הגדרות</entry>
+	<entry id="101001" string="About">על...</entry>
       </section>
 
       <section name="Video Downloader">
@@ -1229,16 +1229,16 @@
 	<entry id="102011" string="Site name"/>
 	<entry id="102012" string="Uploaded by"/>
 	<entry id="102013" string="Uploaded on"/>
-	<entry id="102014" string="Length"/>
-	<entry id="102015" string="Size"/>
+	<entry id="102014" string="Length">אורך</entry>
+	<entry id="102015" string="Size">גודל</entry>
 	<entry id="102016" string="Cancel download"/>
 	<entry id="102017" string="unknown"/>
 	<entry id="102018" string="Note"/>
 
 	<section name="Configuration">
-	  <entry id="102101" string="Automatization"/>
+	  <entry id="102101" string="Automatization">אוטומטיזציה</entry>
 	  <entry id="102102" string="Video files"/>
-	  <entry id="102103" string="Select"/>
+	  <entry id="102103" string="Select">דפדף</entry>
 	  <entry id="102104" string="Select the folder to save downloaded video files to"/>
 	  <entry id="102105" string="Downloads"/>
 	  <entry id="102106" string="Maximum number of simultaneous downloads"/>
@@ -1255,12 +1255,12 @@
       </section>
 
       <section name="Tag Editor">
-	<entry id="103000" string="Tags"/>
-	<entry id="103001" string="Length"/>
-	<entry id="103002" string="Size"/>
+	<entry id="103000" string="Tags">תגיות מידע</entry>
+	<entry id="103001" string="Length">אורך</entry>
+	<entry id="103002" string="Size">גודל</entry>
 	<entry id="103003" string="Albums"/>
 	<entry id="103004" string="Files"/>
-	<entry id="103005" string="File"/>
+	<entry id="103005" string="File">קובץ</entry>
 	<entry id="103006" string="Tracks"/>
 	<entry id="103007" string="Save"/>
 	<entry id="103008" string="Save all"/>
@@ -1274,8 +1274,8 @@
 	  <entry id="103104" string="Covers"/>
 	  <entry id="103105" string="Type"/>
 	  <entry id="103106" string="Description"/>
-	  <entry id="103107" string="Add"/>
-	  <entry id="103108" string="Remove"/>
+	  <entry id="103107" string="Add">הוסף</entry>
+	  <entry id="103108" string="Remove">הסר</entry>
 	</section>
 
 	<section name="Details">
@@ -1310,7 +1310,7 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2"/>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>
 	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2"/>
 	</section>
       </section>
