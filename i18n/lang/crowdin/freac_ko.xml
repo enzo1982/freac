@@ -850,7 +850,7 @@
 	  <entry id="33304" string="Tags">정보 태그</entry>
 	  <entry id="33305" string="Allow ID3v2 tags in AAC files">AAC 파일에서 ID3v2 태그 지원</entry>
 	  <entry id="33306" string="Note">주의</entry>
-	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">ID3 태그가 포함된 AAC파일은 문제가 될 수&#10;있습니다. 태그를 플레이어에서 사용할 경우에만,&#10;이 옵션을 사용하기 바랍니다. </entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">ID3 태그가 포함된 AAC파일은 문제가 될 수&#10;있습니다. 태그를 플레이어에서 사용할 경우에만,&#10;이 옵션을 사용하기 바랍니다.</entry>
 	</section>
       </section>
 

@@ -320,7 +320,7 @@
 
       <section name="Manage queries">
 	<entry id="4200" string="Remove entry">إزالة القيد</entry>
-	<entry id="4201" string="CDDB queries">استعلامات قاعدة بيانات قرص مضغوط </entry>
+	<entry id="4201" string="CDDB queries">استعلامات قاعدة بيانات قرص مضغوط</entry>
 	<entry id="4202" string="Query">استعلام</entry>
 	<entry id="4203" string="Query all">استعلام الكل</entry>
 	<entry id="4204" string="Query string">مرادفات الاستعلام</entry>

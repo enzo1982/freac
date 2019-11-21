@@ -301,7 +301,7 @@
       <section name="Query">
 	<entry id="4100" string="CDDB query">Požiadavka na CDDB</entry>
 	<entry id="4101" string="No freedb entry for this disk.">Nepodarilo sa načítať názvy skladieb, pretože tento disk nie je v databáze freedb.</entry>
-	<entry id="4102" string="Connecting to freedb server at">Pripájam sa k freedb serveru </entry>
+	<entry id="4102" string="Connecting to freedb server at">Pripájam sa k freedb serveru</entry>
 	<entry id="4103" string="Requesting CD information">Požadujem CD info</entry>
 	<entry id="4104" string="No exact matches found">Žiadne zhody sa nenašli</entry>
 	<entry id="4105" string="Multiple matches found">Našlo sa viacero zhôd</entry>

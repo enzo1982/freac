@@ -749,7 +749,7 @@
 	<entry id="31000" string="Encoder mode">Chế độ chuyển mã</entry>
 	<entry id="31001" string="Stereo mode">Chế độ Stereo</entry>
 	<entry id="31002" string="Quantization">Quantization</entry>
-	<entry id="31003" string="Downsampling ratio">Tỉ lệ Downsampling </entry>
+	<entry id="31003" string="Downsampling ratio">Tỉ lệ Downsampling</entry>
 	<entry id="31004" string="Predictor size">Kích thước dự đoán</entry>
 	<entry id="31005" string="Enable lossless encoding">Cho phép chuyển mã các phần bị mất</entry>
 	<entry id="31006" string="Enable Joint Stereo">Cho phép nối Stereo</entry>

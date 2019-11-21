@@ -914,11 +914,11 @@
 	<entry id="36003" string="Use codec">Conversor utilizado</entry>
 	<entry id="36004" string="Use format">Formato utilizado</entry>
 	<entry id="36005" string="Write uncompressed WMA files">Crear arquivos WMA descomprimidos</entry>
-	<entry id="36006" string="Automatically select format based on settings and input format">Seleccionar automaticamente o formato en base aos formatos de configuración e entrada </entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">Seleccionar automaticamente o formato en base aos formatos de configuración e entrada</entry>
 	<entry id="36007" string="Use VBR encoding">Utilizar conversor VBR</entry>
 	<entry id="36008" string="Quality">Calidade</entry>
 	<entry id="36009" string="Target bitrate">Bitrate promedio</entry>
-	<entry id="36010" string="Use 2-pass encoding">Utilizar conversor en 2 pasos </entry>
+	<entry id="36010" string="Use 2-pass encoding">Utilizar conversor en 2 pasos</entry>
       </section>
 
       <section name="TwinVQ">

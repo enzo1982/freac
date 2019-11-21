@@ -299,7 +299,7 @@
       </section>
 
       <section name="Query">
-	<entry id="4100" string="CDDB query">Dotaz na CDDB </entry>
+	<entry id="4100" string="CDDB query">Dotaz na CDDB</entry>
 	<entry id="4101" string="No freedb entry for this disk.">Pro toto CD není na freedb záznam</entry>
 	<entry id="4102" string="Connecting to freedb server at">Připojit na freedb serverem</entry>
 	<entry id="4103" string="Requesting CD information">Žádám informace o CD</entry>
@@ -671,7 +671,7 @@
       <entry id="9016" string="Eject disk after ripping">Vysunout disk po ripovaní</entry>
       <entry id="9017" string="CD options">CD volby</entry>
       <entry id="9018" string="Lock CD tray while ripping">Uzamknout CD při ripování</entry>
-      <entry id="9019" string="Use native NT SCSI library">Použít NT SCSI DLL </entry>
+      <entry id="9019" string="Use native NT SCSI library">Použít NT SCSI DLL</entry>
       <entry id="9020" string="Use read offset"/>
       <entry id="9021" string="samples"/>
       <entry id="9022" string="Read ISRC when adding tracks to joblist"/>

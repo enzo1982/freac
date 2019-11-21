@@ -1108,7 +1108,7 @@
 	<entry id="80110" string="enhanced 2.5/9 dB">aumentato 2.5/9 dB</entry>
 	<entry id="80111" string="enhanced 3/12 dB">aumentato 3/12 dB</entry>
 	<entry id="80112" string="enhanced 3/inf dB">aumentato 3/inf dB</entry>
-	<entry id="80113" string="Adaptive noise shaping order">Adaptive noise shaping order</entry>
+	<entry id="80113" string="Adaptive noise shaping order"/>
 	<entry id="80114" string="high">alto</entry>
 	<entry id="80115" string="Clear Voice Detection">Rilevamento voce chiara</entry>
 	<entry id="80116" string="dual">duale</entry>
