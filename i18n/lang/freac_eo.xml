@@ -114,10 +114,10 @@
       <entry id="2000" string="Add audio file(s) to the joblist">Aldoni aŭdiodosiero(j)n al farenda listo</entry>
       <entry id="2001" string="Add audio CD contents to the joblist">Aldoni aŭdio-KD-enhavon al farenda listo</entry>
       <entry id="2002" string="Remove the selected entry from the joblist">Forigi la elektan enskribon el la farenda listo</entry>
-      <entry id="2003" string="Clear the entire joblist">Forigi la kompletan farendan liston </entry>
+      <entry id="2003" string="Clear the entire joblist">Forigi la kompletan farendan liston</entry>
       <entry id="2004" string="Query CDDB database">Demandi CDDB-datumbankon</entry>
       <entry id="2005" string="Submit CDDB data">Sendi CDDB-datumon</entry>
-      <entry id="2006" string="Configure general settings">Agordi ĝeneralajn agordojn </entry>
+      <entry id="2006" string="Configure general settings">Agordi ĝeneralajn agordojn</entry>
       <entry id="2007" string="Configure the selected audio encoder">Agordi la elektan kodilon</entry>
       <entry id="2008" string="Start the encoding process">Starti la kodadon</entry>
       <entry id="2010" string="Pause/resume encoding">Paŭzigi/daŭrigi la kodadon</entry>
@@ -444,7 +444,7 @@
 	<entry id="30007" string="Enable CRC">Aktivigi CRC</entry>
 	<entry id="30008" string="Set Original bit">Igi originalan biton</entry>
 	<entry id="30009" string="Dual channel encoding">Stereo-ŝanela kodadi</entry>
-	<entry id="30010" string="Set Private bit">Igi privatan biton </entry>
+	<entry id="30010" string="Set Private bit">Igi privatan biton</entry>
       </section>
 
       <section name="Bonk">
@@ -487,7 +487,7 @@
 	  <entry id="32200" string="Control bits">Kontrolaj bitoj</entry>
 	  <entry id="32201" string="Set Copyright bit">Igi kopirajtan biton</entry>
 	  <entry id="32202" string="Set Original bit">Igi originalan biton</entry>
-	  <entry id="32203" string="Set Private bit">Igi privatan biton </entry>
+	  <entry id="32203" string="Set Private bit">Igi privatan biton</entry>
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">Aktivigi CRC</entry>
 	  <entry id="32206" string="Stereo mode">Stereomoduso</entry>

@@ -440,7 +440,7 @@
 	<entry id="5517" string="Read chapters from files">Očitaj poglavlja iz fajlova</entry>
 	<entry id="5518" string="Write chapters to files">Upiši poglavlja u fajlove</entry>
 	<entry id="5519" string="Special fields">Posebna polja</entry>
-	<entry id="5520" string="Write CD table of contents">Upiši tabelu sadržaja CD-a </entry>
+	<entry id="5520" string="Write CD table of contents">Upiši tabelu sadržaja CD-a</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Očuvaj Replay Gain informaciju</entry>
 	<entry id="5522" string="Cue sheets">Cue listovi</entry>
 	<entry id="5523" string="Read cue sheets embedded in metadata">Očitaj cue listove usađene u podacima</entry>

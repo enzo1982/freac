@@ -617,7 +617,7 @@
 	<entry id="36007" string="Use VBR encoding">Käytä VBR-muuntamista</entry>
 	<entry id="36008" string="Quality">Laatu</entry>
 	<entry id="36009" string="Target bitrate">Bittinopeuskohde</entry>
-	<entry id="36010" string="Use 2-pass encoding">Käytä 2-tie muuntamista </entry>
+	<entry id="36010" string="Use 2-pass encoding">Käytä 2-tie muuntamista</entry>
       </section>
 
       <section name="TwinVQ">

@@ -14,11 +14,14 @@
     <entry id="100" string="OK">OK</entry>
     <entry id="101" string="Cancel">キャンセル</entry>
     <entry id="102" string="Close">閉じる</entry>
+
     <entry id="200" string="Error">エラー</entry>
     <entry id="201" string="Warning">警告</entry>
     <entry id="202" string="Info">情報</entry>
+
     <entry id="210" string="Do not display this warning again">この警告をもう一度表示しない</entry>
     <entry id="211" string="Do not display this note again">この注意をもう一度表示しない</entry>
+
     <entry id="300" string="Artist">アーティスト</entry>
     <entry id="301" string="Title">タイトル</entry>
     <entry id="302" string="Album">アルバム</entry>
@@ -31,6 +34,7 @@
     <entry id="309" string="File name">ファイル名</entry>
     <entry id="310" string="File type">ファイルタイプ</entry>
     <entry id="311" string="Album artist">アルバムアーティスト</entry>
+
     <entry id="350" string="unknown artist">不明なアーティスト</entry>
     <entry id="351" string="unknown title">不明なタイトル</entry>
     <entry id="352" string="unknown album">不明なアルバム</entry>
@@ -39,6 +43,7 @@
     <entry id="355" string="unknown conductor">指揮者不明</entry>
     <entry id="356" string="unknown composer">作曲者不明</entry>
     <entry id="357" string="unknown album artist">不明なアルバムアーティスト</entry>
+
     <entry id="380" string="hidden track">隠しトラック</entry>
 
     <section name="Characters">

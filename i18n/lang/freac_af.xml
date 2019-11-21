@@ -456,7 +456,7 @@
 	<entry id="31002" string="Quantization">Kwantisering</entry>
 	<entry id="31003" string="Downsampling ratio">Afwaartse monsterneming</entry>
 	<entry id="31004" string="Predictor size">Voorspeller grootte</entry>
-	<entry id="31005" string="Enable lossless encoding">Plaas verlieslose enkodering in werking </entry>
+	<entry id="31005" string="Enable lossless encoding">Plaas verlieslose enkodering in werking</entry>
 	<entry id="31006" string="Enable Joint Stereo">Plaas medestereo in werking</entry>
       </section>
 
@@ -510,7 +510,7 @@
 	  <entry id="32303" string="Psycho acoustic model">Psigo-akoestiese model</entry>
 	  <entry id="32304" string="Use Temporal Masking Effect">Gebruik tydelike maskeringseffek</entry>
 	  <entry id="32305" string="Stream format">Stroomformaat</entry>
-	  <entry id="32306" string="Enforce strict ISO compliance">Dwing streng ISO nakoming af </entry>
+	  <entry id="32306" string="Enforce strict ISO compliance">Dwing streng ISO nakoming af</entry>
 	</section>
 
 	<section name="Audio processing">
