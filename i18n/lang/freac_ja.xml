@@ -77,7 +77,7 @@
 	<entry id="1106" string="Audio file(s)">オーディオ ファイル</entry>
 	<entry id="1107" string="Audio CD contents">オーディオ CD コンテンツ</entry>
 	<entry id="1108" string="By pattern">パターンで追加</entry>
-	<entry id="1109" string="From folder">ディレクトリから追加</entry>
+	<entry id="1109" string="From folder">フォルダから追加</entry>
       </section>
 
       <section name="Database">
@@ -114,7 +114,7 @@
 	<entry id="1504" string="Stop encoding">エンコード停止</entry>
 	<entry id="1505" string="Encoder options">エンコーダの設定</entry>
 	<entry id="1506" string="Encode to a single file">一つのファイルにエンコード</entry>
-	<entry id="1507" string="Encode to input file folder if possible">可能なら入力ファイルのディレクトリにエンコード</entry>
+	<entry id="1507" string="Encode to input file folder if possible">可能なら入力ファイルのフォルダにエンコード</entry>
 	<entry id="1508" string="Allow overwriting input file">入力ファイルへ上書きを許可</entry>
 	<entry id="1509" string="Delete original files after encoding">エンコード後に元ファイルを削除</entry>
 	<entry id="1510" string="Shutdown after encoding">エンコード終了後にシャットダウン</entry>
@@ -179,7 +179,7 @@
       <entry id="3028" string="first letter upper case">最初の文字を大文字にする</entry>
       <entry id="3029" string="all lower case">すべて小文字にする</entry>
       <entry id="3030" string="all upper case">すべて大文字にする</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">出力先ディレクトリを選択</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">出力先フォルダを選択</entry>
       <entry id="3032" string="Sampling rate">サンプリング レート</entry>
       <entry id="3033" string="Sample resolution">サンプル ビット数</entry>
       <entry id="3034" string="Number of samples">サンプル数</entry>
@@ -203,16 +203,16 @@
       <entry id="3052" string="CD drive">CDドライブ</entry>
 
       <section name="Add folder">
-	<entry id="3100" string="Folder">ディレクトリ</entry>
-	<entry id="3101" string="Add folder">ディレクトリを追加</entry>
-	<entry id="3102" string="Choose folder">ディレクトリを選択</entry>
+	<entry id="3100" string="Folder">フォルダ</entry>
+	<entry id="3101" string="Add folder">フォルダを追加</entry>
+	<entry id="3102" string="Choose folder">フォルダを選択</entry>
 	<entry id="3103" string="Select the folder to add to the joblist">リストに追加するフォルダ</entry>
       </section>
 
       <section name="Add by pattern">
 	<entry id="3200" string="Add files by pattern">パターンによりファイルを追加</entry>
 	<entry id="3201" string="Pattern">パターン</entry>
-	<entry id="3202" string="Start folder">基準ディレクトリ</entry>
+	<entry id="3202" string="Start folder">基準フォルダ</entry>
 	<entry id="3203" string="Filename pattern">ファイル名パターン</entry>
 	<entry id="3204" string="Search subfolders">サブフォルダを検索する</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">リストに追加するフォルダ</entry>
@@ -379,10 +379,10 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">エンコーダ設定</entry>
 	<entry id="5101" string="Encoder">エンコーダ</entry>
-	<entry id="5102" string="Output folder">出力先ディレクトリ</entry>
+	<entry id="5102" string="Output folder">出力先フォルダ</entry>
 	<entry id="5103" string="Select">参照</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">出力先ディレクトリを選択</entry>
-	<entry id="5105" string="Use input file folder if possible">可能なら入力ファイルのディレクトリを用いる</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">出力先フォルダを選択</entry>
+	<entry id="5105" string="Use input file folder if possible">可能なら入力ファイルのフォルダを用いる</entry>
 	<entry id="5106" string="Allow overwriting input file">入力ファイルへ上書きを許可</entry>
 	<entry id="5107" string="Options">オプション</entry>
 	<entry id="5108" string="Filename pattern">ファイル名パターン</entry>
@@ -398,16 +398,16 @@
 	<entry id="5118" string="Keep time stamps of source files">タイムスタンプを保持する</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">出力先ディレクトリがありません。新規に作成しますか？</entry>
+	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">出力先フォルダがありません。新規に作成しますか？</entry>
 	</section>
       </section>
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">プレイリスト作成</entry>
 	<entry id="5201" string="Create cue sheets">cue シート作成</entry>
-	<entry id="5202" string="Output folder">出力先ディレクトリ</entry>
+	<entry id="5202" string="Output folder">出力先フォルダ</entry>
 	<entry id="5203" string="Select">参照</entry>
-	<entry id="5204" string="Use encoder output folder">エンコーダの出力ディレクトリを使用</entry>
+	<entry id="5204" string="Use encoder output folder">エンコーダの出力フォルダを使用</entry>
 	<entry id="5205" string="Filename pattern">ファイル名パターン</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">プレイリストがあるフォルダを選択してください</entry>
 	<entry id="5207" string="Output filenames">出力ファイル名</entry>
@@ -596,10 +596,10 @@
 
     <section name="Errors">
       <entry id="7100" string="Error: %1">エラー: %1</entry>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">デコーダーの構成を作成できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2</entry>
-      <entry id="7102" string="Could not create encoder component: %1">エンコーダーの構成を作成できませんでした: %1</entry>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">入力ファイルのデコーダーを設定できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2&#10;&#10;エラー: %3</entry>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">入力ファイルのエンコーダーを設定できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2&#10;&#10;エラー: %3</entry>
+      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">デコーダの構成を作成できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2</entry>
+      <entry id="7102" string="Could not create encoder component: %1">エンコーダの構成を作成できませんでした: %1</entry>
+      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">入力ファイルのデコーダを設定できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2&#10;&#10;エラー: %3</entry>
+      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">入力ファイルのエンコーダを設定できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2&#10;&#10;エラー: %3</entry>
       <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">DSP処理を設定できませんでした: %1&#10;&#10;エラー: %2</entry>
       <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">入力ファイルにアクセスできませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2</entry>
       <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">出力ファイルを作成できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2</entry>
@@ -693,7 +693,7 @@
 
       <section name="Extensions">
 	<entry id="15000" string="Notifications">通知</entry>
-	<entry id="15001" string="Logging">記録</entry>
+	<entry id="15001" string="Logging">ログ</entry>
 	<entry id="15002" string="YouTube Video Downloader">YouTube動画ダウンローダー</entry>
       </section>
     </section>
@@ -1042,6 +1042,7 @@
 	<entry id="50307" string="Percussive">打楽器</entry>
 	<entry id="50308" string="Soft">ソフト</entry>
 	<entry id="50309" string="Transient handling">トランジェント処理</entry>
+	<entry id="50310" string="Crisp">Crisp</entry>
 	<entry id="50311" string="Mixed">混合</entry>
 	<entry id="50312" string="Smooth">スムーズ</entry>
 	<entry id="50313" string="Transformation window">変換ウィンドウ</entry>
@@ -1050,8 +1051,8 @@
 	<entry id="50316" string="Long">長</entry>
 	<entry id="50317" string="Use time-domain smoothing">時間領域平滑化を使用する</entry>
 	<entry id="50318" string="Phase handling">フェーズ処理</entry>
-	<entry id="50319" string="Laminar">層</entry>
-	<entry id="50320" string="Independent">独立</entry>
+	<entry id="50319" string="Laminar">Laminar</entry>
+	<entry id="50320" string="Independent">Independent</entry>
 	<entry id="50321" string="Formant handling">フォルマント処理</entry>
 	<entry id="50322" string="Shift">シフト</entry>
 	<entry id="50323" string="Preserve">保存</entry>
@@ -1168,7 +1169,7 @@
 	<entry id="100007" string="Donate to the %1 project">%1プロジェクトに寄付する</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">PayPal を使って寄付するには下記ボタンのクリックしてください：</entry>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">PayPal を使って寄付するには下記ボタンのクリックしてください:</entry>
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">PayPal を使って %1 へ直接送金することも可能です。</entry>
 	  <entry id="100102" string="usd">jpy</entry>
 	  <entry id="100103" string="$%1">%1 円</entry>
@@ -1178,24 +1179,24 @@
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorboxは、クレジットカードによる迅速かつ簡単な寄付を可能にします。&#10;Donorboxで寄付をするには、このボタンをクリックしてください：</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorboxは、クレジットカードによる迅速かつ簡単な寄付を可能にします。&#10;Donorboxで寄付をするには、このボタンをクリックしてください:</entry>
 	  <entry id="100201" string="Donate">寄付する</entry>
 	  <entry id="100202" string="usd">jpy</entry>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Bitcoinを寄付するには、QRコードをスキャンするか、&#10;以下のアドレスをコピーしてください：</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Bitcoinを寄付するには、QRコードをスキャンするか、&#10;以下のアドレスをコピーしてください:</entry>
 	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">このアドレスは、Bitcoin Cashやその他のフォークも受け入れます。</entry>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Ethereumに寄付するには、QRコードをスキャンするか、&#10;次のアドレスをコピーしてください：</entry>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Ethereumに寄付するには、QRコードをスキャンするか、&#10;次のアドレスをコピーしてください:</entry>
 	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">このアドレスは、Ether ClassicおよびERC20トークンも受け入れます。</entry>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">以下の口座に電子振替をして寄付することができます：</entry>
-	  <entry id="100501" string="Account holder:">口座名義人：</entry>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">以下の口座に電子振替をして寄付することができます:</entry>
+	  <entry id="100501" string="Account holder:">口座名義人:</entry>
 	  <entry id="100502" string="IBAN:">IBAN:</entry>
 	  <entry id="100503" string="BIC:">BIC:</entry>
 	</section>
@@ -1302,8 +1303,8 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません： %1&#10;&#10;エラー： %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">タグを更新できません：%1&#10;&#10;エラー：%2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません: %1&#10;&#10;エラー: %2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">タグを更新できません: %1&#10;&#10;エラー: %2</entry>
 	</section>
       </section>
 
@@ -1341,6 +1342,7 @@
 	  <entry id="105102" string="Play sound">音を鳴らす</entry>
 	  <entry id="105103" string="Display message">メッセージを表示する</entry>
 	  <entry id="105104" string="Select">参照</entry>
+	  <entry id="105105" string="Only for conversions running longer than">変換時間が超えた場合次の時間を超えた場合のみ通知</entry>
 	  <entry id="105106" string="second(s)">秒</entry>
 	  <entry id="105107" string="minute(s)">分</entry>
 	</section>
