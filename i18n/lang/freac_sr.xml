@@ -558,7 +558,7 @@
 	<entry id="5904" string="Available">Raspoloživo</entry>
 	<entry id="5905" string="Selected">Odabrano</entry>
 	<entry id="5906" string="Configure component">Postavka komponente</entry>
-	<entry id="5907" string="Conversion to a single output file">Pretvaranje u jedan izlazni fajl</entry>
+	<entry id="5907" string="Conversion to a single output file">Konverzija u jedan izlazni fajl</entry>
 	<entry id="5908" string="Process each track individually">Obrada svake pesme zasebno</entry>
 	<entry id="5909" string="Treat the combined tracks like a single track">Tretiraj kombinovane pesme kao jednu pesmu</entry>
       </section>
