@@ -123,8 +123,8 @@ parts:
     configflags: [ --prefix=/usr ]
     override-build: |
       patch -p1 < $SNAPCRAFT_STAGE/mp4v2-2.0.0-fixes.patch
-      wget -O autoaux/config.guess "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=058639b"
-      wget -O autoaux/config.sub "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b"
+      wget -O autoaux/config.guess "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.guess"
+      wget -O autoaux/config.sub "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.sub"
       snapcraftctl build
     build-packages:
       - g++
@@ -171,8 +171,8 @@ parts:
     plugin: autotools
     configflags: [ --prefix=/usr ]
     override-build: |
-      wget -O Cfg/config.guess "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=058639b"
-      wget -O Cfg/config.sub "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b"
+      wget -O Cfg/config.guess "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.guess"
+      wget -O Cfg/config.sub "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.sub"
       snapcraftctl build
     build-packages:
       - wget

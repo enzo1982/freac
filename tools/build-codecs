@@ -405,7 +405,7 @@ for package in ${packages[@]}; do
 
   elif [ $package == libsamplerate ]; then
     # Build libsamplerate
-    prepare="$DL Cfg/config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=058639b'; $DL Cfg/config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b'"
+    prepare="$DL Cfg/config.guess 'https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.guess'; $DL Cfg/config.sub 'https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.sub'"
     if [[ $uname == Darwin ]]; then
       prepare="$prepare; sed -i -e \"s/typedef struct AUDIO_OUT_s/struct AUDIO_OUT_s/\" examples/audio_out.c && sed -i -e \"s/} AUDIO_OUT ;/} AUDIO_OUT_s ;/\" examples/audio_out.c"
     elif [[ $uname != FreeBSD ]] && [[ $x86_64 == true ]]; then
@@ -448,7 +448,7 @@ for package in ${packages[@]}; do
       patches=${mp4v2_patches[@]}
       patch_levels=(${mp4v2_patch_levels[@]})
     fi
-    prepare="$DL autoaux/config.guess 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=058639b'; $DL autoaux/config.sub 'http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b'"
+    prepare="$DL autoaux/config.guess 'https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.guess'; $DL autoaux/config.sub 'https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.sub'"
     build $mp4v2_location src/libmp4v2$sharedinfix.$sharedext MP4v2.$sharedext
 
   elif [ $package == mpg123 ]; then

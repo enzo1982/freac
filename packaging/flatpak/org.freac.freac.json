@@ -148,14 +148,14 @@
                 },
                 {
                     "type": "file",
-                    "url": "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=058639b",
-                    "sha256": "7d2f990c6c5161405933fd0d7da080d1502f69aa16984761ce3c305dca9b504f",
+                    "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.guess",
+                    "sha256": "8202b7fde008212d6d36cccf219480f5d54cddb5452b241f47c51cb5c054193b",
                     "dest-filename": "autoaux/config.guess"
                 },
                 {
                     "type": "file",
-                    "url": "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b",
-                    "sha256": "9afeeb8bf78f3ff549eb40f1364b54b4404ea1be27eee446af02790d9e39cc92",
+                    "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.sub",
+                    "sha256": "729711e8aa3228db4a3adea9ca5d60de184969a1537ac874477ce5676bee8464",
                     "dest-filename": "autoaux/config.sub"
                 }
             ]
