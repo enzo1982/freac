@@ -134,7 +134,7 @@
 	<entry id="1605" string="index_en.html">index.html</entry>
  	<entry id="1606" string="Report an issue">Indsend et problem</entry>
 	<entry id="1607" string="Suggest a feature">Foreslå en funktion</entry>
-     </section>
+      </section>
     </section>
 
     <section name="Toolbar">
@@ -495,7 +495,7 @@
 	<entry id="5525" string="Prepend zero to track numbers below 10">Tilføj tallet "0" til spornumre under 10</entry>
 	<entry id="5526" string="File size limit">Fil størrelse begrænsning</entry>
 	<entry id="5527" string="unlimited">ubegrænset</entry>
-       </section>
+      </section>
 
       <section name="Joblist">
 	<entry id="5600" string="Joblist">Opgaveliste</entry>
@@ -597,7 +597,7 @@
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Uddata filen %1 eksisterer allerede! Vil du overskrive den?</entry>
       <entry id="7007" string="Overwrite all further files">Overskriv alle tidligere filer</entry>
       <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Det ser ud til at du konventerer fra lossy til lossless format.&#10;&#10;Vær opmærksom på at kvalitetstab kan ikke genoprettes, så denne behandling&#10;vil IKKE forbedre kvaliteten på nogen måder, og vil med stor sandsyndlighed øge fil størrelsen.&#10;&#10;Vil du fortsætte alligevel?</entry>
-	</section>
+    </section>
 
     <section name="Errors">
       <entry id="7100" string="Error: %1">FEJL: %1</entry>
@@ -688,7 +688,7 @@
       <section name="Encoders">
 	<entry id="11000" string="meh! - multi encoder hub">mkh! - multi koder hub</entry>
 	<entry id="11001" string="SndFile Output Component">SndFile Output Komponent</entry>
-     </section>
+      </section>
 
       <section name="DSP">
 	<entry id="12000" string="Channel Converter">Kanal konverter</entry>
