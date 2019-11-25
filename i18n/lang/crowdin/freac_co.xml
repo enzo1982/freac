@@ -403,7 +403,7 @@
 	<entry id="5118" string="Keep time stamps of source files"/>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">U cartulare di destinazione ùn esiste micca !  Vulete creallu ?</entry>
+	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">U cartulare di destinazione ùn esiste micca ! Vulete creallu ?</entry>
 	</section>
       </section>
 
