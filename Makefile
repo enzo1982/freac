@@ -136,6 +136,7 @@ folders:
 resources: folders
 ifeq ($(BUILD_WIN32),True)
 	mkdir -p $(BIN)/icons
+	mkdir -p $(BIN)/lang
 
 	cp $(SRCDIR)/icons/freac.png $(BIN)/icons
 
@@ -147,7 +148,10 @@ ifeq ($(BUILD_WIN32),True)
 	cp -r $(SRCDIR)/icons/select $(BIN)/icons
 	cp -r $(SRCDIR)/icons/settings $(BIN)/icons
 
-	cp -r $(SRCDIR)/i18n/lang $(BIN)
+	cp $(SRCDIR)/i18n/lang/Changes $(BIN)/lang
+	cp $(SRCDIR)/i18n/lang/Readme.lang $(BIN)/lang
+	cp $(SRCDIR)/i18n/lang/eupdate_*.xml $(BIN)/lang
+	cp $(SRCDIR)/i18n/lang/freac_*.xml $(BIN)/lang
 	cp -r $(SRCDIR)/i18n/manual $(BIN)
 endif
 
@@ -164,8 +168,11 @@ ifneq ($(BUILD_WIN32),True)
 
 	$(INSTALL) -d $(DESTDIR)$(datadir)/freac
 	$(INSTALL) -d $(DESTDIR)$(datadir)/freac/icons
+	$(INSTALL) -d $(DESTDIR)$(datadir)/freac/lang
 
-	cp -r $(SRCDIR)/i18n/lang $(DESTDIR)$(datadir)/freac
+	cp $(SRCDIR)/i18n/lang/Changes $(DESTDIR)$(datadir)/freac/lang
+	cp $(SRCDIR)/i18n/lang/Readme.lang $(DESTDIR)$(datadir)/freac/lang
+	cp $(SRCDIR)/i18n/lang/freac_*.xml $(DESTDIR)$(datadir)/freac/lang
 	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/lang
 
 	$(INSTALL_DATA) $(SRCDIR)/icons/freac.png $(DESTDIR)$(datadir)/freac/icons
