@@ -147,7 +147,7 @@ Void freac::ConfigureLanguage::EditLanguageFile()
 	else 													command = String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("translator.app/Contents/MacOS/translator\"");
 #endif
 
-	const char	*cmd = command.Append(" \"").Append(String(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Replace(" ", "\\ ")).Append("\"");
+	const char	*cmd = command.Append(" \"").Append(String(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()))).Append("\"");
 
 	if (!fork()) { execl("/bin/sh", "sh", "-c", cmd, NULL); exit(0); }
 #endif
