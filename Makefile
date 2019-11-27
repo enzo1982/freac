@@ -152,6 +152,7 @@ ifeq ($(BUILD_WIN32),True)
 	cp $(SRCDIR)/i18n/lang/Readme.lang $(BIN)/lang
 	cp $(SRCDIR)/i18n/lang/eupdate_*.xml $(BIN)/lang
 	cp $(SRCDIR)/i18n/lang/freac_*.xml $(BIN)/lang
+	cp $(SRCDIR)/i18n/lang/template.xml $(BIN)/lang
 	cp -r $(SRCDIR)/i18n/manual $(BIN)
 endif
 
@@ -173,6 +174,7 @@ ifneq ($(BUILD_WIN32),True)
 	cp $(SRCDIR)/i18n/lang/Changes $(DESTDIR)$(datadir)/freac/lang
 	cp $(SRCDIR)/i18n/lang/Readme.lang $(DESTDIR)$(datadir)/freac/lang
 	cp $(SRCDIR)/i18n/lang/freac_*.xml $(DESTDIR)$(datadir)/freac/lang
+	cp $(SRCDIR)/i18n/lang/template.xml $(DESTDIR)$(datadir)/freac/lang
 	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/lang
 
 	$(INSTALL_DATA) $(SRCDIR)/icons/freac.png $(DESTDIR)$(datadir)/freac/icons
