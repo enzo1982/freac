@@ -9,6 +9,7 @@
     <property name="template">template.xml</property>
     <property name="author">Eric Le Carre &lt;e.lecarre@hotmail.com&gt;, Grégoire Chabord, Philippe Grivel &lt;phgrivel@gmail.com&gt;</property>
     <property name="url">https://www.freac.org/</property>
+    <property name="incomplete">true</property>
   </info>
   <data>
     <entry id="100" string="OK">OK</entry>
