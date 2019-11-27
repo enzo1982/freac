@@ -92,7 +92,7 @@
 	<entry id="1203" string="Show queued CDDB entries">Показать записи CDDB в очереди</entry>
 	<entry id="1204" string="Show queued CDDB queries">Показать запросы в CDDB в очереди</entry>
 	<entry id="1205" string="Enable CDDB cache">Кэширование CDDB</entry>
-	<entry id="1206" string="Manage CDDB cache entries">Управление записями кеша CDDB</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Управление записями кэша CDDB</entry>
 	<entry id="1207" string="Automatic CDDB queries">Авто запрос к CDDB</entry>
       </section>
 
@@ -108,7 +108,7 @@
 	<entry id="1400" string="Enable signal processing">Включить обработку сигнала</entry>
 	<entry id="1401" string="Enable processing during playback">Включить обработку во время воспроизведения</entry>
 	<entry id="1402" string="Configure signal processing">Настройка обработки сигнала</entry>
-	<entry id="1403" string="Selected signal processors">Выбранные процессоры сигнала</entry>
+	<entry id="1403" string="Selected signal processors">Выбранные обработчики сигнала</entry>
       </section>
 
       <section name="Encode">
@@ -120,7 +120,7 @@
 	<entry id="1505" string="Encoder options">Настройки кодека</entry>
 	<entry id="1506" string="Encode to a single file">Кодировать в один файл</entry>
 	<entry id="1507" string="Encode to input file folder if possible">Кодировать в папку входного файла если возможно</entry>
-	<entry id="1508" string="Allow overwriting input file">Перезаписать входной файл</entry>
+	<entry id="1508" string="Allow overwriting input file">Разрешить перезапись входного файла</entry>
 	<entry id="1509" string="Delete original files after encoding">Удалить исходные файлы после кодирования</entry>
 	<entry id="1510" string="Shutdown after encoding">Выключить компьютер после кодирования</entry>
       </section>
@@ -155,7 +155,7 @@
     <section name="Joblist">
       <entry id="3000" string="Encoding file">Кодируемый файл</entry>
       <entry id="3001" string="Time left">Осталось времени</entry>
-      <entry id="3002" string="Selected encoder">Выбор кодека</entry>
+      <entry id="3002" string="Selected encoder">Выбранный кодек</entry>
       <entry id="3003" string="File progress">Процесс</entry>
       <entry id="3004" string="Output folder">Конечная папка</entry>
       <entry id="3005" string="%1 file(s) in joblist">%1 Файл(ов) в списке</entry>
@@ -184,7 +184,7 @@
       <entry id="3028" string="first letter upper case">Первая буква большая</entry>
       <entry id="3029" string="all lower case">все маленькими буквами</entry>
       <entry id="3030" string="all upper case">ВСЕ БОЛЬШИМИ БУКВАМИ</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Выбрать папку в который будут помещены кодируемые файлы</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Выбрать папку, в которую будут помещены кодируемые файлы</entry>
       <entry id="3032" string="Sampling rate">Частота дискретизации</entry>
       <entry id="3033" string="Sample resolution">Разрешение сэмпла</entry>
       <entry id="3034" string="Number of samples">Количество сэмплов</entry>
@@ -197,7 +197,7 @@
       <entry id="3041" string="Bitrate">Битрейт</entry>
       <entry id="3042" string="Audio Files">Аудио файлы</entry>
       <entry id="3043" string="All Files">Все файлы</entry>
-      <entry id="3044" string="Playlist Files">Файлы Плейлистов</entry>
+      <entry id="3044" string="Playlist Files">Файлы плейлистов</entry>
       <entry id="3045" string="Active decoder">Текущий декодер</entry>
       <entry id="3046" string="Joblist">Список задач</entry>
       <entry id="3047" string="unknown">неизвестно</entry>
@@ -218,7 +218,7 @@
 	<entry id="3200" string="Add files by pattern">Добавить файлы по образцу</entry>
 	<entry id="3201" string="Pattern">Образец</entry>
 	<entry id="3202" string="Start folder">Начальная папка</entry>
-	<entry id="3203" string="Filename pattern">Формирование названия файла</entry>
+	<entry id="3203" string="Filename pattern">Формирование имени файла</entry>
 	<entry id="3204" string="Search subfolders">Искать в подпапках</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">Выберите папку для добавления в список задач</entry>
       </section>
@@ -253,24 +253,24 @@
 	<entry id="3606" string="Removing all tracks">Удаление всех дорожек</entry>
 	<entry id="3607" string="Removing tracks of disc in drive %1">Удаление дорожек диска в устройстве %1</entry>
 	<entry id="3608" string="Removed all tracks from joblist">Все дорожки из списка задач удалены</entry>
-	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">Удаление дорожек диска в устройстве %1 из списка задач</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">Дорожки диска в устройстве %1 удалены из списка задач</entry>
       </section>
 
       <section name="Convert">
-	<entry id="3700" string="Checking sample formats">Проверка форматов сэмпла</entry>
+	<entry id="3700" string="Checking sample formats">Проверка форматов сэмплов</entry>
 	<entry id="3701" string="Checking for lossy to lossless conversion">Проверка преобразования с потерей данных в без потери данных</entry>
 	<entry id="3702" string="Checking output file names">Проверка имен файлов вывода</entry>
 	<entry id="3703" string="Converting %1">Конвертация %1</entry>
-	<entry id="3704" string="Verifying %1">Подтверждение %1</entry>
+	<entry id="3704" string="Verifying %1">Проверка %1</entry>
 	<entry id="3705" string="Conversion cancelled">Преобразование отменено</entry>
 	<entry id="3706" string="Conversion finished">Преобразование завершено</entry>
-	<entry id="3707" string="Conversion finished with %1 warnings">Преобразование завершено с предупреждениями %1</entry>
-	<entry id="3708" string="Conversion finished with %1 errors">Преобразование завершено с ошибками %1</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">Преобразование завершено с %1 предупреждениями</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">Преобразование завершено с %1 ошибками</entry>
       </section>
 
       <section name="Update">
 	<entry id="3800" string="Preparing update check">Подготовка проверки обновлений</entry>
-	<entry id="3801" string="Contacting update server">Соединение с сервером обновления</entry>
+	<entry id="3801" string="Contacting update server">Соединение с сервером обновлений</entry>
 	<entry id="3802" string="Updates found">Найдены обновления</entry>
 	<entry id="3803" string="No updates found">Обновления не найдены</entry>
       </section>
@@ -282,18 +282,18 @@
 	<entry id="4000" string="CDDB data">Данные CDDB</entry>
 	<entry id="4001" string="Submit">Переслать</entry>
 	<entry id="4002" string="No audio CD in drive!">В CD-приводе нет аудио диска</entry>
-	<entry id="4003" string="Submitting CD information">Передать информацию о CD</entry>
+	<entry id="4003" string="Submitting CD information">Передача информации о CD</entry>
 	<entry id="4004" string="Update joblist with this information">Обновить список задач этой информацией</entry>
 	<entry id="4005" string="Status">Состояние</entry>
 	<entry id="4006" string="Successfully read CD!">CD успешно прочитан!</entry>
 	<entry id="4007" string="Save entry">Сохранить</entry>
 	<entry id="4008" string="Various artists">Разные артисты (сборка)</entry>
 	<entry id="4009" string="Data track">Дорожка с данными</entry>
-	<entry id="4010" string="Submit to online database later">Переслать в он-лайн базу данных позже</entry>
+	<entry id="4010" string="Submit to online database later">Переслать в онлайн базу данных позже</entry>
 	<entry id="4011" string="Active CD-ROM drive">Текущий привод CD-ROM</entry>
 
 	<section name="Errors">
-	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Ошибка в процессе подключения к серверу.</entry>
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Ошибка в процессе подключения к серверу freedb.</entry>
 	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Пожалуйста заполните все поля перед передачей.</entry>
 	</section>
       </section>
@@ -301,12 +301,12 @@
       <section name="Query">
 	<entry id="4100" string="CDDB query">Запрос в CDDB</entry>
 	<entry id="4101" string="No freedb entry for this disk.">Нет данных об этом CD.</entry>
-	<entry id="4102" string="Connecting to freedb server at">Подключение к серверу</entry>
+	<entry id="4102" string="Connecting to freedb server at">Подключение к серверу freedb</entry>
 	<entry id="4103" string="Requesting CD information">Получение информации о CD</entry>
 	<entry id="4104" string="No exact matches found">Не найдено точного соответствия</entry>
-	<entry id="4105" string="Multiple matches found">Найдены некоторые соответствия</entry>
+	<entry id="4105" string="Multiple matches found">Найдено несколько соответствий</entry>
 	<entry id="4106" string="Matches">Соответствия</entry>
-	<entry id="4107" string="Select the entry that best fits your CD">Выберите пункт наиболее подходящий для CD</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">Выберите пункт, наиболее подходящий для этого CD</entry>
 	<entry id="4108" string="Would you like to perform this query again later?">Хотите повторить этот запрос снова позже?</entry>
 	<entry id="4109" string="Would you like to perform the remaining queries again later?">Хотите повторить оставшиеся запросы позже?</entry>
 	<entry id="4110" string="none">пусто</entry>
@@ -314,7 +314,7 @@
 	<entry id="4112" string="loading preview">загрузка предпросмотра</entry>
 
 	<section name="Errors">
-	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Ошибка в процессе подключения к серверу.</entry>
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Ошибка в процессе подключения к серверу freedb.</entry>
 	</section>
       </section>
 
@@ -337,7 +337,7 @@
 	<entry id="4305" string="Disc name">Название диска</entry>
 	<entry id="4306" string="Preview">Предпросмотр</entry>
 	<entry id="4307" string="Category">Категория</entry>
-	<entry id="4308" string="Submitting CD information">Передать информацию о CD</entry>
+	<entry id="4308" string="Submitting CD information">Передача информации о CD</entry>
       </section>
 
       <section name="Manage cache">
@@ -363,7 +363,7 @@
       <entry id="5007" string="Tags">Тэги</entry>
       <entry id="5008" string="Components">Компоненты</entry>
       <entry id="5009" string="Decoders">Декодеры</entry>
-      <entry id="5010" string="Output">Выход</entry>
+      <entry id="5010" string="Output">Вывод</entry>
       <entry id="5011" string="DSP">DSP</entry>
       <entry id="5012" string="Extensions">Расширения</entry>
       <entry id="5013" string="Other">Другое</entry>
@@ -386,9 +386,9 @@
 	<entry id="5101" string="Encoder">Кодек</entry>
 	<entry id="5102" string="Output folder">Папка для сохранения</entry>
 	<entry id="5103" string="Select">Выбрать</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Выбрать папку в который будут помещены кодируемые файлы</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Выбрать папку, в которую будут помещены кодируемые файлы</entry>
 	<entry id="5105" string="Use input file folder if possible">Исп. папку входного файла если возможно</entry>
-	<entry id="5106" string="Allow overwriting input file">Перезаписать входной файл</entry>
+	<entry id="5106" string="Allow overwriting input file">Разрешить перезапись входного файла</entry>
 	<entry id="5107" string="Options">Настройки</entry>
 	<entry id="5108" string="Filename pattern">Формирование названия файла</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Кодирование &quot;На лету&quot;</entry>
@@ -396,7 +396,7 @@
 	<entry id="5111" string="Encode to a single file">Кодировать в один файл</entry>
 	<entry id="5112" string="Output filenames">Имена выходных файлов</entry>
 	<entry id="5113" string="Allow Unicode characters">Разрешить символы Юникод</entry>
-	<entry id="5114" string="Replace spaces with underscores">Заменить пробелы</entry>
+	<entry id="5114" string="Replace spaces with underscores">Заменить пробелы на символы подчеркивания</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Удалить обработанное из списка</entry>
 	<entry id="5116" string="Add encoded files to joblist">Добавить закодированное в список</entry>
 	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Добавить последовательные номера к идентичным именам файлов</entry>
@@ -437,7 +437,7 @@
 	<entry id="5313" string="Prefer CDDB over CD Text">Предпочитать CDDB</entry>
 	<entry id="5314" string="Enable CDDB cache">Кэширование CDDB</entry>
 	<entry id="5315" string="Automatization">Автоматизация</entry>
-	<entry id="5316" string="Always select first entry">Выбирать первую запись</entry>
+	<entry id="5316" string="Always select first entry">Всегда выбирать первую запись</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Дополнительные настройки CDDB</entry>
