@@ -603,8 +603,8 @@
       <entry id="7100" string="Error: %1">Fehler: %1</entry>
       <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Konnte Dekodierer nicht erzeugen: %1&#10;&#10;Datei: %1&#10;Pfad: %2</entry>
       <entry id="7102" string="Could not create encoder component: %1">Konnte Kodierer nicht erzeugen: %1</entry>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Konnte Dekodierer für Eingabedatei nicht starten: %1&#10;&#10;Datei: %1&#10;Pfad: %2&#10;&#10;Fehler: %2</entry>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Konnte Dekodierer für Eingabedatei nicht starten: %1&#10;&#10;Datei: %1&#10;Pfad: %2&#10;&#10;Fehler: %2</entry>
+      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Konnte Dekodierer für Eingabedatei nicht starten: %1&#10;&#10;Datei: %1&#10;Pfad: %2&#10;&#10;Fehler: %3</entry>
+      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Konnte Dekodierer für Eingabedatei nicht starten: %1&#10;&#10;Datei: %1&#10;Pfad: %2&#10;&#10;Fehler: %3</entry>
       <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Konnte DSP-Prozessor nicht starten: %1&#10;&#10;Fehler: %2</entry>
       <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Kann Eingabedatei nicht lesen: %1&#10;&#10;Datei: %1&#10;Pfad: %2</entry>
       <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Kann Ausgabedatei nicht öffnen: %1&#10;&#10;Datei: %1&#10;Pfad: %2</entry>
