@@ -239,7 +239,7 @@
       <entry id="3501" string="Progress">Прогресс</entry>
       <entry id="3502" string="Errors / Warnings">Ошибки / Предупреждения</entry>
       <entry id="3503" string="Details">Подробно</entry>
-      <entry id="3504" string="Error details">Описание ошибки</entry>
+      <entry id="3504" string="Error details">Подробности ошибки</entry>
       <entry id="3505" string="Time left">Осталось времени</entry>
       <entry id="3506" string="Waiting for other jobs to finish">Ожидание завершения других задач</entry>
 
@@ -472,7 +472,7 @@
 	<entry id="5502" string="Default comment string">Комментарии по умолчанию</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Заменить существующий комментарий комментарием по умолчанию</entry>
 	<entry id="5504" string="Filename pattern">Формирование названия файла</entry>
-	<entry id="5505" string="Encoding">Кодируется</entry>
+	<entry id="5505" string="Encoding">Кодировка</entry>
 	<entry id="5506" string="Comments">Комментарии</entry>
 	<entry id="5507" string="Cover art">Обложка</entry>
 	<entry id="5508" string="Read cover art">Читать обложку</entry>
@@ -491,7 +491,7 @@
 	<entry id="5521" string="Preserve Replay Gain information">Сохранять информацию Replay Gain</entry>
 	<entry id="5522" string="Cue sheets">Cue sheets</entry>
 	<entry id="5523" string="Read cue sheets embedded in metadata">Читать cue sheets, включенные в метаданные</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">Предпочтительнее использовать cue sheets вместо информации о главе</entry>
+	<entry id="5524" string="Prefer cue sheets over chapter information">Предпочтительнее использовать cue sheets вместо информации о разделе</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Добавлять 0 в начало номеров дорожек меньше 10</entry>
 	<entry id="5526" string="File size limit">Ограничение размера файла</entry>
 	<entry id="5527" string="unlimited">неограниченный</entry>
@@ -521,17 +521,17 @@
 	  <entry id="5660" string="File type">Тип файла</entry>
 	  <entry id="5661" string="Output file name">Имя выходного файла</entry>
 	  <entry id="5662" string="Bitrate">Битрейт</entry>
-	  <entry id="5663" string="Sampling rate">Частота сэмпла</entry>
+	  <entry id="5663" string="Sampling rate">Частота сэмплов</entry>
 	  <entry id="5664" string="Channels">Каналы</entry>
-	  <entry id="5665" string="Sample resolution">Разрешение сэмпла</entry>
+	  <entry id="5665" string="Sample resolution">Разрешение сэмплов</entry>
 	  <entry id="5666" string="CD drive">CD дисковод</entry>
 	</section>
       </section>
 
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Параллельная обработка</entry>
-	<entry id="5701" string="Enable parallel processing">Разрешить параллельную обработку</entry>
-	<entry id="5702" string="Enable SuperFast mode">Разрешить режим SuperFast</entry>
+	<entry id="5701" string="Enable parallel processing">Включить параллельную обработку</entry>
+	<entry id="5702" string="Enable SuperFast mode">Включить режим SuperFast</entry>
 	<entry id="5703" string="Number of conversion threads">Количество потоков преобразования</entry>
 	<entry id="5704" string="auto">авто</entry>
 	<entry id="5705" string="Process priority">Приоритет процесса</entry>
@@ -571,7 +571,7 @@
     </section>
 
     <section name="Updates">
-      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Новая версия %1 доступна!</entry>
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Вышла новая версия %1! Хотите посмотреть список доступных обновлений?</entry>
       <entry id="6101" string="There are no updates available at the moment!">На данный момент обновлений нет!</entry>
       <entry id="6102" string="Check for updates at startup">Проверять обновления при запуске программы</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 может проверять наличие обновлений при запуске.&#10;&#10;Хотите, чтобы %1 проверял наличе обновлений при запуске?</entry>
@@ -589,13 +589,13 @@
 
     <section name="Messages">
       <entry id="7000" string="Currently converting">Сейчас кодируется</entry>
-      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Кодирование в процессе! Выйти?</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Кодирование в процессе! Вы уверены, что хотите выйти?</entry>
       <entry id="7002" string="Delete original files after encoding">Удалать исходные файлы после кодирования</entry>
       <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Эта установка удалит исходные файлы после того, как они&#10;будут закодированы! Вы уверены, что хотите продолжить?</entry>
       <entry id="7004" string="Keep this option enabled even after restarting %1">Сохранять эту настройку включенной даже после перезапуска %1</entry>
       <entry id="7005" string="File already exists">Файл уже существует</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Выходной файл %1&#10;уже существует! Хотите перезаписать его?</entry>
-      <entry id="7007" string="Overwrite all further files">Перезаписать все старые файлы</entry>
+      <entry id="7007" string="Overwrite all further files">Перезаписать все последующие файлы</entry>
       <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Вы собираетесь преобразовывать из формата с потерями в формат без потерь.&#10;&#10;Имейте в виду, что потеря качества необратима, поэтому этот процесс&#10;никак не улучшит качество и скорее всего увеличит размер файла.&#10;&#10;Вы все равно хотите продолжить?</entry>
     </section>
 
@@ -605,7 +605,7 @@
       <entry id="7102" string="Could not create encoder component: %1">Невозможно создать компонент кодека: %1</entry>
       <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Невозможно установить декодер для входного файла: %1&#10;&#10;Файл: %1&#10;Путь: %2&#10;&#10;Ошибка: %3</entry>
       <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Невозможно установить кодек для выходного файла: %1&#10;&#10;Файл: %1&#10;Путь: %2&#10;&#10;Ошибка: %3</entry>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Невозможно установить процессор DSP: %1&#10;&#10;Ошибка: %2</entry>
+      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Невозможно установить обработчик DSP: %1&#10;&#10;Ошибка: %2</entry>
       <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Нет доступа к входному файлу: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
       <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Невозможно создать выходной файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
       <entry id="7108" string="Failed to verify input file: %1">Ошибка проверки входного файла: %1</entry>
@@ -618,7 +618,7 @@
       <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Не могу загрузить драйвер ASPI! CD граббер отключен!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Не могу открыть файл: %1&#10;&#10;%2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Невохможно воспроизводить дорожку CD при копировании с этого же диска!</entry>
-      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Невозможно начать копирование пока проигрывается дорожка с этого же диска!</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Невозможно начать копирование, пока проигрывается дорожка с этого же диска!</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Поддержка CDDB выключена! Пожалуйста включите&#10;поддержку местной или удаленной CDDB в диалоговом окне.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Поддержка удаленной CDDB выключена! Пожалуйста&#10;включите поддержку удаленной CDDB в диалоговом окне.</entry>
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Доступ к приводу CD-ROM перекрыт Windows.&#10;&#10;Пожалуйста свяжитесь со своим системным администратором,&#10;чтобы получить право доступа к приводу CD-ROM</entry>
@@ -639,7 +639,7 @@
       </section>
 
       <section name="Format">
-	<entry id="8100" string="Select sample format">Выбрать формат сэмпла</entry>
+	<entry id="8100" string="Select sample format">Выбрать формат сэмплов</entry>
 	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">У выбранных дорожек другой формат сэмплов. Пожалуйста,&#10;установите желаемый формат сэмплов выходного файла:</entry>
 	<entry id="8102" string="Select">Выбрать</entry>
       </section>
@@ -658,7 +658,7 @@
       <entry id="9003" string="Read CD Text">Читать CD Текст</entry>
       <entry id="9004" string="Read cdplayer.ini">Читать cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Настройки захвата данных (граббера)</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Режим cd-параноя</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Режим cdparanoia</entry>
       <entry id="9007" string="Overlap only">Только перекрывать</entry>
       <entry id="9008" string="No verify">Без проверки</entry>
       <entry id="9009" string="No scratch repair">Без коррекции царапин</entry>
@@ -695,7 +695,7 @@
 	<entry id="12001" string="Sample Format Converter">Преобразователь формата сэмплов</entry>
 	<entry id="12002" string="Sample Rate Converter">Преобразователь частоты сэмплов</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">Подавление шумов RNNoise</entry>
-	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Изменение Темп/Высота Rubber Band</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Изменение темпа/высоты</entry>
       </section>
 
       <section name="Extensions">
@@ -724,7 +724,7 @@
 	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Предпочитать данные из cue sheet данным из связанных файлов</entry>
 	<entry id="22003" string="Alternative files">Альтернативные файлы</entry>
 	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Искать сжатые альтернативные файлы если связанные Wave файлы не могут быть обнаружены</entry>
-	<entry id="22005" string="Error handling">Ошибка обработки</entry>
+	<entry id="22005" string="Error handling">Обработка ошибок</entry>
 	<entry id="22006" string="Ignore errors during cue sheet processing">Игнорировать ошибки при обработке cue sheet</entry>
       </section>
     </section>
@@ -739,7 +739,7 @@
 	<entry id="30004" string="Channels">Каналы</entry>
 	<entry id="30005" string="Private bit">Private Bit</entry>
 	<entry id="30006" string="Set Copyright bit">Copyright Bit</entry>
-	<entry id="30007" string="Enable CRC">Разрешить CRC</entry>
+	<entry id="30007" string="Enable CRC">Включить CRC</entry>
 	<entry id="30008" string="Set Original bit">Original Bit</entry>
 	<entry id="30009" string="Dual channel encoding">2-канальное кодирование</entry>
 	<entry id="30010" string="Set Private bit">Private Bit</entry>
