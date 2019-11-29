@@ -1099,9 +1099,9 @@
 	<entry id="80101" string="poor">špatná</entry>
 	<entry id="80102" string="excellent">vynikající</entry>
 	<entry id="80103" string="Mid/Side stereo mode">Střední/boční stereo režim</entry>
-	<entry id="80104" string="off">deaktivován</entry>
+	<entry id="80104" string="off">deaktivována</entry>
 	<entry id="80105" string="reduced">omezený</entry>
-	<entry id="80106" string="on">aktivován</entry>
+	<entry id="80106" string="on">aktivována</entry>
 	<entry id="80107" string="decoupled">oddělený</entry>
 	<entry id="80108" string="enhanced 1.5/3 dB">zvýšený 1.5/3 dB</entry>
 	<entry id="80109" string="enhanced 2/6 dB">zvýšený 2/6 dB</entry>
@@ -1110,7 +1110,7 @@
 	<entry id="80112" string="enhanced 3/inf dB">zvýšený 3/inf dB</entry>
 	<entry id="80113" string="Adaptive noise shaping order">Adaptivní formování šumu</entry>
 	<entry id="80114" string="high">vysoké</entry>
-	<entry id="80115" string="Clear Voice Detection">Clear detekce hlasu</entry>
+	<entry id="80115" string="Clear Voice Detection">Zlepšená detekce hlasu</entry>
 	<entry id="80116" string="dual">duální</entry>
       </section>
 
