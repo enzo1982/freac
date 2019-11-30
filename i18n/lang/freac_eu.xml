@@ -9,6 +9,7 @@
     <property name="template">template.xml</property>
     <property name="author">Xabier Aramendi &lt;azpidatziak@gmail.com&gt;</property>
     <property name="url">https://sites.google.com/site/euskarazkosoftwareakeusxa/</property>
+    <property name="incomplete">true</property>
   </info>
   <data>
     <entry id="100" string="OK">Ongi</entry>

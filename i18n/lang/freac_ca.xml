@@ -9,6 +9,7 @@
     <property name="template">template.xml</property>
     <property name="author">el_libre &lt;el.libre@gmail.com&gt;</property>
     <property name="url">https://www.catmidia.cat/</property>
+    <property name="incomplete">true</property>
   </info>
   <data>
     <entry id="100" string="OK">Acceptar</entry>

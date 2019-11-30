@@ -9,6 +9,7 @@
     <property name="template">template.xml</property>
     <property name="author">Νικόλαος-Ιωάννης Γαλάνης &lt;useasdf_4444@yahoo.com&gt;</property>
     <property name="url">https://www.freac.org/</property>
+    <property name="incomplete">true</property>
   </info>
   <data>
     <entry id="100" string="OK">ΟΚ</entry>

@@ -9,6 +9,7 @@
     <property name="template">template.xml</property>
     <property name="author">Ілечко Андрій &lt;toelik@ukr.net&gt;</property>
     <property name="url">https://www.freac.org/</property>
+    <property name="incomplete">true</property>
   </info>
   <data>
     <entry id="100" string="OK">Добре</entry>

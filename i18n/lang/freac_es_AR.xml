@@ -9,6 +9,7 @@
     <property name="template">template.xml</property>
     <property name="author">José María Vera Somoza &lt;jmvs@gmx.net&gt; &amp; Agustín Bou &lt;agusbou2015@outlook.com&gt;</property>
     <property name="url">https://www.freac.org/</property>
+    <property name="incomplete">true</property>
   </info>
   <data>
     <entry id="100" string="OK">Aceptar</entry>
