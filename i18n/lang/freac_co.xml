@@ -16,6 +16,7 @@
     <entry id="102" string="Close">Chjode</entry>
 
     <entry id="200" string="Error">Sbagliu</entry>
+    <entry id="201" string="Warning">Avertimentu</entry>
     <entry id="202" string="Info">Infurmazione</entry>
 
     <entry id="300" string="Artist">Artista</entry>
@@ -189,7 +190,7 @@
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Ùn avete selezziunatu alcuna traccia !</entry>
-	<entry id="3401" string="No files found matching pattern">Alcunu schedariu trovu chì currisponde à u mudellu</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Alcunu schedariu trovu chì currisponde à u mudellu: %1</entry>
       </section>
     </section>
 
@@ -612,7 +613,7 @@
 
 	<section name="Expert">
 	  <entry id="34300" string="Signal processing">Apodisazione</entry>
-	  <entry id="34301" string="Window function(s):">Funzione(i) d'apodisazione :</entry>
+	  <entry id="34301" string="Window function(s)">Funzione(i) d'apodisazione</entry>
 	  <entry id="34302" string="Note">Nota</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Pudete specificà parechje funzioni staccate da punti virgule.</entry>
 	  <entry id="34304" string="Linear predictor">Predizzione lineare</entry>
