@@ -47,7 +47,7 @@
     <entry id="380" string="hidden track">Traccia piattata</entry>
 
     <section name="Characters">
-      <entry id="500" string="%1:">%1:</entry>
+      <entry id="500" string="%1:">%1 :</entry>
       <entry id="501" string="%1...">%1…</entry>
       <entry id="502" string="%1 (%2)">%1 (%2)</entry>
     </section>
@@ -879,7 +879,7 @@
 
 	<section name="Expert">
 	 <entry id="34300" string="Signal processing">Trattamentu di u signale</entry>
-	 <entry id="34301" string="Window function(s)">Funzioni di finestra (apodizzazione)</entry>
+	 <entry id="34301" string="Window function(s)">Funzione(i) di finestra (apodisazione)</entry>
 	 <entry id="34302" string="Note">Nota</entry>
 	 <entry id="34303" string="You can specify multiple functions separated by semicolons.">Pudete specificà parechje funzioni staccate da punti virgule.</entry>
 	 <entry id="34304" string="Linear predictor">Predizzione lineare</entry>
