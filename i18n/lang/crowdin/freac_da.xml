@@ -622,8 +622,8 @@
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB support er slået fra! Venligst slå lokal eller ekstern CDDB support til i indstillinger.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Ekstern CDDB support er slået fra! Venligst slå det det til igen under ekstern CDDB support under indstillinger.</entry>
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Adgang til CD-ROM drev blev afslået af Windows.&#10;&#10;Kontakt din system administrator for at få adgang til CD-ROM drevene.</entry>
-      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Ingen opsætnings dialog tilgængelig for: &#10;&#10;%1</entry>
-      <entry id="7123" string="The selected folder does not exist anymore!">Den valgte folder eksisterer ikke mere</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Ingen opsætnings dialog tilgængelig for:&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">Den valgte folder eksisterer ikke mere!</entry>
     </section>
 
     <section name="Dialogs">
@@ -1167,10 +1167,10 @@
 
       <section name="Donate">
 	<entry id="100000" string="Support this project">Støt projektet</entry>
-	<entry id="100001" string="Please support this project!">Venligst støt projektet</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Hjælp med at holde dette program gratis ved at støtte %1 projektet med en &#10;donation.</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Skriv til %1 hvis du ønsker at sende en check eller sende &#10;penge med posten.</entry>
-	<entry id="100004" string="Thank you very much!">Tusind tab</entry>
+	<entry id="100001" string="Please support this project!">Venligst støt projektet!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Hjælp med at holde dette program gratis ved at støtte %1 projektet med en&#10;donation.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Skriv til %1 hvis du ønsker at sende en check eller sende&#10;penge med posten.</entry>
+	<entry id="100004" string="Thank you very much!">Tusind tab!</entry>
 	<entry id="100005" string="Remind me later">Påmind mig senere</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 	<entry id="100007" string="Donate to the %1 project">Donér til %1 projektet</entry>

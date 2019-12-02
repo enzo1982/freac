@@ -591,7 +591,7 @@
       <entry id="7000" string="Currently converting">Compresión iniciada</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">¡El proceso de compresión todavía no ha terminado! ¿Realmente quiere salir?</entry>
       <entry id="7002" string="Delete original files after encoding">Eliminar los archivos originales al terminar la codificación</entry>
-      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">¡Esta opción elimina los archivos originales al terminar &#10;la codificación!&#10;&#10;¿Está Ud. seguro de activar esta función?</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">¡Esta opción elimina los archivos originales al terminar&#10;la codificación!&#10;&#10;¿Está Ud. seguro de activar esta función?</entry>
       <entry id="7004" string="Keep this option enabled even after restarting %1">Mantener activa esta opción incluso después de reiniciar %1</entry>
       <entry id="7005" string="File already exists">El archivo ya existe</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">¡El archivo de salida %1&#10;ya existe! ¿Desea sobrescribirlo?</entry>
