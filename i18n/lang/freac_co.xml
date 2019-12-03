@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Patriccollu di Santa Maria è Sichè</property>
-    <property name="url">https://www.freac.org/</property>
+    <property name="url">https://sourceforge.net/u/patriccollu/wiki/Home/#669b</property>
   </info>
   <data>
     <entry id="100" string="OK">Vai</entry>
@@ -19,6 +19,9 @@
     <entry id="201" string="Warning">Avertimentu</entry>
     <entry id="202" string="Info">Infurmazione</entry>
 
+    <entry id="210" string="Do not display this warning again">Ùn affissà più st’avertimentu</entry>
+    <entry id="211" string="Do not display this note again">Ùn affissà più sta nota</entry>
+
     <entry id="300" string="Artist">Artista</entry>
     <entry id="301" string="Title">Titulu</entry>
     <entry id="302" string="Album">Albumu</entry>
@@ -26,16 +29,26 @@
     <entry id="304" string="Genre">Generu</entry>
     <entry id="305" string="Comment">Cummentu</entry>
     <entry id="306" string="Year">Annu</entry>
+    <entry id="307" string="Disc">Discu</entry>
+    <entry id="308" string="Rating">Valutazione</entry>
+    <entry id="309" string="File name">Nome di schedariu</entry>
+    <entry id="310" string="File type">Tipu di schedariu</entry>
+    <entry id="311" string="Album artist">Artista di l’albumu</entry>
 
     <entry id="350" string="unknown artist">artista scunnisciutu</entry>
     <entry id="351" string="unknown title">titulu scunnisciutu</entry>
     <entry id="352" string="unknown album">albumu scunnisciutu</entry>
     <entry id="353" string="unknown genre">generu scunnisciutu</entry>
     <entry id="354" string="unknown year">annu scunnisciutu</entry>
+    <entry id="355" string="unknown conductor">sceffu d’orchestru scunnisciutu</entry>
+    <entry id="356" string="unknown composer">cumpositore scunnisciutu</entry>
+    <entry id="357" string="unknown album artist">Artista di l’albumu scunnisciutu</entry>
+
+    <entry id="380" string="hidden track">Traccia piattata</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1 :</entry>
-      <entry id="501" string="%1...">%1...</entry>
+      <entry id="501" string="%1...">%1…</entry>
       <entry id="502" string="%1 (%2)">%1 (%2)</entry>
     </section>
 
@@ -47,6 +60,7 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 ottetti</entry>
+      <entry id="517" string="%1 kB">%1 kO</entry>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
@@ -54,6 +68,7 @@
       <entry id="1000" string="File">Schedariu</entry>
       <entry id="1001" string="Options">Ozzioni</entry>
       <entry id="1002" string="Database">Banca di dati</entry>
+      <entry id="1003" string="Processing">Trattamentu</entry>
       <entry id="1004" string="Encode">Cudificà</entry>
       <entry id="1005" string="Help">Aiutu</entry>
 
@@ -62,7 +77,7 @@
 	<entry id="1101" string="Remove">Caccià</entry>
 	<entry id="1102" string="Load joblist">Caricà a lista di travagliu</entry>
 	<entry id="1103" string="Save joblist">Arregistrà a lista di travagliu</entry>
-	<entry id="1104" string="Clear joblist">Viutà a lista di i travaglii</entry>
+	<entry id="1104" string="Clear joblist">Viutà a lista di travagliu</entry>
 	<entry id="1105" string="Exit">Esce</entry>
 	<entry id="1106" string="Audio file(s)">Schedariu(i) Audio</entry>
 	<entry id="1107" string="Audio CD contents">Cuntenutu di u CD Audio</entry>
@@ -74,10 +89,10 @@
 	<entry id="1200" string="Query CDDB database">Interrugà a banca di dati CDDB</entry>
 	<entry id="1201" string="Submit CDDB data">Sottumette i dati CDDB</entry>
 	<entry id="1202" string="Query CDDB database later">Interrugà a banca di dati CDDB più tardi</entry>
-	<entry id="1203" string="Show queued CDDB entries">Affissà l'entrate CCDB in a fila d'attesa</entry>
-	<entry id="1204" string="Show queued CDDB queries">Affissà e richieste CCDB in a fila d'attesa</entry>
-	<entry id="1205" string="Enable CDDB cache">Attivà l'impiatta CDDB</entry>
-	<entry id="1206" string="Manage CDDB cache entries">Gestì l'entrate d'impiatta CDDB</entry>
+	<entry id="1203" string="Show queued CDDB entries">Affissà l’entrate CDDB in a fila d’attesa</entry>
+	<entry id="1204" string="Show queued CDDB queries">Affissà e richieste CDDB in a fila d’attesa</entry>
+	<entry id="1205" string="Enable CDDB cache">Attivà l’impiatta CDDB</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Urganizà l’entrate d’impiatta CDDB</entry>
 	<entry id="1207" string="Automatic CDDB queries">Richieste CDDB autumatiche</entry>
       </section>
 
@@ -85,42 +100,55 @@
 	<entry id="1300" string="General settings">Preferenze generale</entry>
 	<entry id="1301" string="Configure selected encoder">Cunfigurà u cudificatore selezziunatu</entry>
 	<entry id="1302" string="Active CD-ROM drive">Lettore CD-ROM attivu</entry>
+	<entry id="1303" string="Active configuration">Cunfigurazione attiva</entry>
+	<entry id="1304" string="Default configuration">Cunfigurazione predefinita</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">Attivà u trattamentu di u signale</entry>
+	<entry id="1401" string="Enable processing during playback">Attivà u trattamentu durante a ripruduzzione</entry>
+	<entry id="1402" string="Configure signal processing">Cunfigurà u trattamentu di u signale</entry>
+	<entry id="1403" string="Selected signal processors">Prucessori di signale selezziunati</entry>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Principià a cudificazione</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">Principià a cudificazione (cù a squassatura di i schedarii uriginale)</entry>
 	<entry id="1502" string="Start encoding with">Principià a cudificazione cù</entry>
-	<entry id="1503" string="Pause/resume encoding">Piantà/ripiglià a cudificazione</entry>
+	<entry id="1503" string="Pause/resume encoding">Interrompe / cuntinuà a cudificazione</entry>
 	<entry id="1504" string="Stop encoding">Piantà a cudificazione</entry>
 	<entry id="1505" string="Encoder options">Ozzioni di cudificatore</entry>
-	<entry id="1506" string="Encode to a single file">Cudificà ver di sched. unicu</entry>
-	<entry id="1507" string="Encode to input file folder if possible">Cudificà ver di u cartulare di u schedariu d'urigine s'ellu hè pussibule</entry>
-	<entry id="1508" string="Allow overwriting input file">Permette di rimpiazzà u schedariu d'urigine</entry>
-	<entry id="1509" string="Delete original files after encoding">Squassà u schedariu d'urigine dopu à a cudificazione</entry>
+	<entry id="1506" string="Encode to a single file">Cudificà ver di un schedariu unicu</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Cudificà s’ellu hè pussibule ver di u cartulare di u schedariu d’urigine</entry>
+	<entry id="1508" string="Allow overwriting input file">Permette di rimpiazzà u schedariu d’urigine</entry>
+	<entry id="1509" string="Delete original files after encoding">Squassà u schedariu d’urigine dopu à a cudificazione</entry>
 	<entry id="1510" string="Shutdown after encoding">Chjusura di u sistema dopu à a cudificazione</entry>
       </section>
 
       <section name="Help">
-	<entry id="1600" string="Help topics">Rubriche d'aiutu</entry>
-	<entry id="1601" string="Show Tip of the Day">Affissà a Minichichja Oghjinca</entry>
-	<entry id="1602" string="Check for updates now">Cuntrollà i rinnovi avà</entry>
-	<entry id="1603" string="Check for updates at startup">Circà i rinnovi à l'iniziu di u prugramma</entry>
+	<entry id="1600" string="Help topics">Rubriche d’aiutu</entry>
+	<entry id="1601" string="Show Tip of the Day">Affissà a minichichja oghjinca</entry>
+	<entry id="1602" string="Check for updates now">Circà e nove versioni subitu</entry>
+	<entry id="1603" string="Check for updates at startup">Circà e nove versioni à l’iniziu di u prugramma</entry>
 	<entry id="1604" string="About %1">Apprupositu di %1</entry>
 	<entry id="1605" string="index_en.html">index.html</entry>
+	<entry id="1606" string="Report an issue">Signalà un penseru</entry>
+	<entry id="1607" string="Suggest a feature">Sugerisce una funzione</entry>
       </section>
     </section>
 
     <section name="Toolbar">
       <entry id="2000" string="Add audio file(s) to the joblist">Aghjunghje schedariu(i) audio à a lista di travagliu</entry>
       <entry id="2001" string="Add audio CD contents to the joblist">Aghjunghje u cuntenutu di u CD audio à a lista di travagliu</entry>
-      <entry id="2002" string="Remove the selected entry from the joblist">Caccià l'elementu selezziunatu da a lista di travagliu</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">Caccià l’elementu selezziunatu da a lista di travagliu</entry>
       <entry id="2003" string="Clear the entire joblist">Viutà tutta a lista di travagliu</entry>
       <entry id="2004" string="Query CDDB database">Interrugà a banca di dati CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Sottumette i dati CDDB</entry>
       <entry id="2006" string="Configure general settings">Cunfigurà e preferenze generale</entry>
       <entry id="2007" string="Configure the selected audio encoder">Cunfigurà u cudificatore audio selezziunatu</entry>
       <entry id="2008" string="Start the encoding process">Principià u trattamentu di cudificazione</entry>
-      <entry id="2010" string="Pause/resume encoding">Piantà/ripiglià a cudificazione</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)">Principià u trattamentu di cudificazione (cù a squassatura di i schedarii uriginale)</entry>
+      <entry id="2010" string="Pause/resume encoding">Interrompe / cuntinuà a cudificazione</entry>
       <entry id="2011" string="Stop encoding">Piantà a cudificazione</entry>
     </section>
 
@@ -132,7 +160,7 @@
       <entry id="3004" string="Output folder">Cartulare di destinazione</entry>
       <entry id="3005" string="%1 file(s) in joblist">%1 schedariu(i) in a lista di travagliu</entry>
       <entry id="3006" string="none">nisunu</entry>
-      <entry id="3007" string="Show title info">Affissà l'infurmazione di titulu</entry>
+      <entry id="3007" string="Show title info">Affissà l’infurmazione di titulu</entry>
       <entry id="3008" string="Play">Sunà</entry>
       <entry id="3009" string="Stop">Fermà</entry>
       <entry id="3010" string="Select all">Selezziunà tuttu</entry>
@@ -142,13 +170,13 @@
       <entry id="3014" string="encoding">cudificazione</entry>
       <entry id="3015" string="Create playlist">Creà a lista di lettura</entry>
       <entry id="3016" string="Create cue sheet">Creà u fogliu di mischiera cue</entry>
-      <entry id="3017" string="Select">Sfuglià</entry>
+      <entry id="3017" string="Select">Selezziunà</entry>
       <entry id="3018" string="Skip">Ignurà</entry>
-      <entry id="3019" string="Encode to a single file">Cudificà ver di sched. unicu</entry>
+      <entry id="3019" string="Encode to a single file">Cudificà ver di un schedariu unicu</entry>
       <entry id="3020" string="Remove">Caccià</entry>
-      <entry id="3021" string="Clear joblist">Viutà a lista di i travaglii</entry>
+      <entry id="3021" string="Clear joblist">Viutà a lista di travagliu</entry>
       <entry id="3022" string="Use for all selected tracks">Impiegà per tutte e traccie selezziunate</entry>
-      <entry id="3023" string="Interpret string as">Interpretà a catena cum'è</entry>
+      <entry id="3023" string="Interpret string as">Interpretà a catena cum’è</entry>
       <entry id="3024" string="selected tracks">traccie selezziunate</entry>
       <entry id="3025" string="Adjust upper/lower case">Aggalabà maiuscule/minuscule</entry>
       <entry id="3026" string="all words upper case">tutte e parolle in maiuscule</entry>
@@ -163,13 +191,21 @@
       <entry id="3035" string="Channels">Canali</entry>
       <entry id="3036" string="Mono">Mono</entry>
       <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Longhezza</entry>
+      <entry id="3038" string="Length">Durata</entry>
       <entry id="3039" string="File">Schedariu</entry>
       <entry id="3040" string="Size">Dimensione</entry>
       <entry id="3041" string="Bitrate">Bitrate</entry>
-      <entry id="3042" string="Audio Files">Schedarii Audio</entry>
-      <entry id="3043" string="All Files">Tutti i Schedarii</entry>
-      <entry id="3044" string="Playlist Files">Schedarii di Lista di Lettura</entry>
+      <entry id="3042" string="Audio Files">Schedarii audio</entry>
+      <entry id="3043" string="All Files">Tutti i schedarii</entry>
+      <entry id="3044" string="Playlist Files">Schedarii di lista di lettura</entry>
+      <entry id="3045" string="Active decoder">Discudificatore attivu</entry>
+      <entry id="3046" string="Joblist">Lista di travagliu</entry>
+      <entry id="3047" string="unknown">scunnisciutu</entry>
+      <entry id="3048" string="Other">Altra</entry>
+      <entry id="3049" string="Output file name">Nome di schedariu d’esciuta</entry>
+      <entry id="3050" string="verifying">verificazione</entry>
+      <entry id="3051" string="Open">Apre</entry>
+      <entry id="3052" string="CD drive">Lettore CD</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Cartulare</entry>
@@ -183,18 +219,62 @@
 	<entry id="3201" string="Pattern">Mudellu</entry>
 	<entry id="3202" string="Start folder">Cartulare di principiu</entry>
 	<entry id="3203" string="Filename pattern">Mudellu di nome di schedariu</entry>
+	<entry id="3204" string="Search subfolders">Circà in i sottucartulari</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">Selezziunà u cartulare à aghjunghje à a lista di travagliu</entry>
       </section>
 
-      <section name="Character set"/>
+      <section name="Character set">
+	<entry id="3300" string="Character set">Inseme di caratteri</entry>
+	<entry id="3301" string="Choose character set">Sceglie l’inseme di caratteri</entry>
+      </section>
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Ùn avete selezziunatu alcuna traccia !</entry>
-	<entry id="3401" string="No files found matching pattern: %1">Alcunu schedariu trovu chì currisponde à u mudellu: %1</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Alcunu schedariu trovu chì currisponde à u mudellu : %1</entry>
       </section>
     </section>
 
-    <section name="Jobs"/>
+    <section name="Jobs">
+      <entry id="3500" string="Jobs">Travaglii</entry>
+      <entry id="3501" string="Progress">Prugressione</entry>
+      <entry id="3502" string="Errors / Warnings">Sbaglii / Avertimenti</entry>
+      <entry id="3503" string="Details">Detaglii</entry>
+      <entry id="3504" string="Error details">Detaglii di sbagliu</entry>
+      <entry id="3505" string="Time left">Durata rimanente</entry>
+      <entry id="3506" string="Waiting for other jobs to finish">In attesa di a cumpiitura di l’altri travaglii</entry>
+
+      <section name="Joblist">
+	<entry id="3600" string="Reading folders">Lettura di i cartulari</entry>
+	<entry id="3601" string="Filtering duplicates">Filtratura di i duplicazioni</entry>
+	<entry id="3602" string="Adding files">Aghjuntu di schedarii</entry>
+	<entry id="3603" string="Adding tracks">Aghjuntu di traccie</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">%1schedarii aghjunti, %2 sbaglii scuntrati</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">%traccie aghjunte, %2 sbaglii scuntrati</entry>
+	<entry id="3606" string="Removing all tracks">Cacciatura di tutte e traccie</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">Cacciatura di e traccie di u discu in u lettore %1</entry>
+	<entry id="3608" string="Removed all tracks from joblist">Tutte e traccie di a lista di travagliu sò state cacciate</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">Traccie di u discu in lettore %1 cacciate da a lista di travagliu</entry>
+      </section>
+
+      <section name="Convert">
+	<entry id="3700" string="Checking sample formats">Cuntrollu di i furmati di campiunariu</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">Cuntrollu di a cunversione da lossy ver di lossless</entry>
+	<entry id="3702" string="Checking output file names">Cuntrollu di i nomi di schedarii d’esciuta</entry>
+	<entry id="3703" string="Converting %1">Cunversione di %1</entry>
+	<entry id="3704" string="Verifying %1">Verificazione di %1</entry>
+	<entry id="3705" string="Conversion cancelled">Cunversione abbandunata</entry>
+	<entry id="3706" string="Conversion finished">Cunversione compia</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">Cunversione compia cù %1 avertimentu(i)</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">Cunversione compia cù %1 sbagliu(i)</entry>
+      </section>
+
+      <section name="Update">
+	<entry id="3800" string="Preparing update check">Preparazione à u cuntrollu di e nove versioni</entry>
+	<entry id="3801" string="Contacting update server">Cuntattu di u servitore di e nove versioni</entry>
+	<entry id="3802" string="Updates found">Nova versione trova</entry>
+	<entry id="3803" string="No updates found">Alcuna nova versione trova</entry>
+      </section>
+    </section>
 
     <section name="CDDB">
 
@@ -202,70 +282,73 @@
 	<entry id="4000" string="CDDB data">Dati CDDB</entry>
 	<entry id="4001" string="Submit">Sottumette</entry>
 	<entry id="4002" string="No audio CD in drive!">Alcunu CD audio in u lettore !</entry>
-	<entry id="4003" string="Submitting CD information">Sottumette l'infurmazione CD</entry>
-	<entry id="4004" string="Update joblist with this information">Rinfrescà a lista di travagliu cù st'infurmazione</entry>
+	<entry id="4003" string="Submitting CD information">Sottumette l’infurmazione CD</entry>
+	<entry id="4004" string="Update joblist with this information">Rinfrescà a lista di travagliu cù st’infurmazione</entry>
 	<entry id="4005" string="Status">Statu</entry>
 	<entry id="4006" string="Successfully read CD!">U CD hè statu lettu bè !</entry>
-	<entry id="4007" string="Save entry">Arregistrà l'entrata</entry>
+	<entry id="4007" string="Save entry">Arregistrà l’entrata</entry>
 	<entry id="4008" string="Various artists">Artisti diversi</entry>
 	<entry id="4009" string="Data track">Traccia di dati</entry>
 	<entry id="4010" string="Submit to online database later">Sottumette più tardi à a banca di dati inlinea</entry>
 	<entry id="4011" string="Active CD-ROM drive">Lettore CD-ROM attivu</entry>
 
 	<section name="Errors">
-	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Qualchì sbagliu s'hè accadutu pruvendu di cunnettà à u servu freedb.</entry>
-	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Ci vole à riempie tutti i campi è i tituli di e traccie nanzu di sottumette.</entry>
+	 <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Qualchì sbagliu hè accadutu pruvendu di cunnettassi à u servitore freedb.</entry>
+	 <entry id="4051" string="Please fill all fields and track titles before submitting.">Ci vole à riempie tutti i campi è i tituli di e traccie nanzu di sottumette.</entry>
 	</section>
       </section>
 
       <section name="Query">
 	<entry id="4100" string="CDDB query">Richiesta CDDB</entry>
 	<entry id="4101" string="No freedb entry for this disk.">Alcuna entrata freeDB per stu discu.</entry>
-	<entry id="4102" string="Connecting to freedb server at">Cunnessione à u servu freedb à</entry>
-	<entry id="4103" string="Requesting CD information">Dumanda d'infurmazione nant'à u CD</entry>
+	<entry id="4102" string="Connecting to freedb server at">Cunnessione à u servitore freedb à</entry>
+	<entry id="4103" string="Requesting CD information">Dumanda d’infurmazione nant’à u CD</entry>
 	<entry id="4104" string="No exact matches found">Alcuna cuncurdanza esatta trova</entry>
 	<entry id="4105" string="Multiple matches found">Parechje cuncurdanze trove</entry>
 	<entry id="4106" string="Matches">Cuncurdanze</entry>
-	<entry id="4107" string="Select the entry that best fits your CD">Selezziunà l'lementu chì currisponde u più à u CD</entry>
-	<entry id="4108" string="Would you like to perform this query again later?">Vulete eseguisce sta richiesta torna un altra volta ?</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">Selezziunà l’lementu chì currisponde u più à u CD</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">Vulete eseguisce sta richiesta un altra volta più tardi ?</entry>
+	<entry id="4109" string="Would you like to perform the remaining queries again later?">Vulete eseguisce e richieste rimanente un altra volta più tardi ?</entry>
 	<entry id="4110" string="none">nisunu</entry>
-	<entry id="4111" string="Preview">Avvistu</entry>
+	<entry id="4111" string="Preview">Previsualizà</entry>
+	<entry id="4112" string="loading preview">caricamentu di previsualizazione</entry>
 
 	<section name="Errors">
-	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Qualchì sbagliu s'hè accadutu pruvendu di cunnettà à u servu freedb.</entry>
+	 <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Qualchì sbagliu hè accadutu pruvendu di cunnettassi à u servitore freedb.</entry>
 	</section>
       </section>
 
       <section name="Manage queries">
-	<entry id="4200" string="Remove entry">Caccià l'entrata</entry>
+	<entry id="4200" string="Remove entry">Caccià l’entrata</entry>
 	<entry id="4201" string="CDDB queries">Richieste CDDB</entry>
 	<entry id="4202" string="Query">Interrugà</entry>
 	<entry id="4203" string="Query all">Interrugà tuttu</entry>
 	<entry id="4204" string="Query string">Catena di richiesta</entry>
 	<entry id="4205" string="CDDB queries to perform">Richieste CDDB à eseguisce</entry>
+	<entry id="4206" string="Querying CD information">Richiesta d’infurmazione nant’à u CD</entry>
       </section>
 
       <section name="Manage submits">
-	<entry id="4300" string="Remove entry">Caccià l'entrata</entry>
+	<entry id="4300" string="Remove entry">Caccià l’entrata</entry>
 	<entry id="4301" string="CDDB entries to submit">Entrate CCDB à sottumette</entry>
 	<entry id="4302" string="Submit all">Sottumette tuttu</entry>
 	<entry id="4303" string="CDDB data">Dati CDDB</entry>
 	<entry id="4304" string="Submit">Sottumette</entry>
 	<entry id="4305" string="Disc name">Nome di discu</entry>
-	<entry id="4306" string="Preview">Avvistu</entry>
+	<entry id="4306" string="Preview">Previsualizà</entry>
 	<entry id="4307" string="Category">Categuria</entry>
-	<entry id="4308" string="Submitting CD information">Sottumette l'infurmazione CD</entry>
+	<entry id="4308" string="Submitting CD information">Sottumette l’infurmazione CD</entry>
       </section>
 
       <section name="Manage cache">
 	<entry id="4400" string="CDDB data">Dati CDDB</entry>
-	<entry id="4401" string="Update joblist with this information">Rinfrescà a lista di travagliu cù st'infurmazione</entry>
+	<entry id="4401" string="Update joblist with this information">Rinfrescà a lista di travagliu cù st’infurmazione</entry>
 	<entry id="4402" string="Charset">Gruppu di caratteri</entry>
 	<entry id="4403" string="Downloaded CDDB entries">Entrate CDDB telecaricate</entry>
 	<entry id="4404" string="Disc name">Nome di discu</entry>
-	<entry id="4405" string="Preview">Avvistu</entry>
-	<entry id="4406" string="Remove entry">Caccià l'entrata</entry>
-	<entry id="4407" string="Save entry">Arregistrà l'entrata</entry>
+	<entry id="4405" string="Preview">Previsualizà</entry>
+	<entry id="4406" string="Remove entry">Caccià l’entrata</entry>
+	<entry id="4407" string="Save entry">Arregistrà l’entrata</entry>
       </section>
     </section>
 
@@ -274,25 +357,53 @@
       <entry id="5001" string="Encoders">Cudificatori</entry>
       <entry id="5002" string="Playlists">Liste di lettura</entry>
       <entry id="5003" string="Language">Lingua</entry>
+      <entry id="5004" string="Component configuration">Cunfigurazione di u cumpunenti</entry>
       <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5021" string="Ripper">Estrazzione</entry>
+      <entry id="5006" string="Interface">Interfaccia</entry>
+      <entry id="5007" string="Tags">Etichette</entry>
+      <entry id="5008" string="Components">Cumpunenti</entry>
+      <entry id="5009" string="Decoders">Discudificatori</entry>
+      <entry id="5010" string="Output">Destinazione</entry>
+      <entry id="5011" string="DSP">DSP</entry>
+      <entry id="5012" string="Extensions">Estensioni</entry>
+      <entry id="5013" string="Other">Altra</entry>
+      <entry id="5014" string="Active configuration">Cunfigurazione attiva</entry>
+      <entry id="5015" string="New">Nove</entry>
+      <entry id="5016" string="Delete">Squassà</entry>
+      <entry id="5017" string="Command line arguments">Argumenti di linea di cummanda</entry>
+      <entry id="5018" string="Resulting arguments string">Catena risultante d’argumenti</entry>
+      <entry id="5019" string="Default configuration">Cunfigurazione predefinita</entry>
+      <entry id="5020" string="New configuration">Nova cunfigurazione</entry>
+      <entry id="5021" string="Ripper">Estrattore</entry>
+      <entry id="5022" string="Settings">Preferenze</entry>
+      <entry id="5023" string="Resources">Risorse</entry>
+      <entry id="5024" string="Verifiers">Parametri di controllu</entry>
+      <entry id="5025" string="Taggers">Creatori d’etichetta</entry>
+      <entry id="5026" string="Processing">Trattamentu</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Cunfigurà u cudificatore</entry>
 	<entry id="5101" string="Encoder">Cudificatore</entry>
 	<entry id="5102" string="Output folder">Cartulare di destinazione</entry>
-	<entry id="5103" string="Select">Sfuglià</entry>
+	<entry id="5103" string="Select">Selezziunà</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Selezziunà u cartulare di destinazione di i schedarii cudificati</entry>
-	<entry id="5105" string="Use input file folder if possible">Impiegà u cartulare d'urigine s'ellu hè pussibule</entry>
-	<entry id="5106" string="Allow overwriting input file">Permette di rimpiazzà u schedariu d'urigine</entry>
+	<entry id="5105" string="Use input file folder if possible">Impiegà s’ellu hè pussibule u cartulare di u schedariu d’urigine</entry>
+	<entry id="5106" string="Allow overwriting input file">Permette di rimpiazzà u schedariu d’urigine</entry>
 	<entry id="5107" string="Options">Ozzioni</entry>
 	<entry id="5108" string="Filename pattern">Mudellu di nome di schedariu</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Cudificà da volu 'On-The-Fly'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Cunservà sched. Wave estratti</entry>
-	<entry id="5111" string="Encode to a single file">Cudificà ver di sched. unicu</entry>
+	<entry id="5109" string="Encode 'On-The-Fly'">Cudificà da volu</entry>
+	<entry id="5110" string="Keep ripped Wave files">Cunservà i schedarii Wave estratti</entry>
+	<entry id="5111" string="Encode to a single file">Cudificà ver di un schedariu unicu</entry>
+	<entry id="5112" string="Output filenames">Nomi di schedariu d’esciuta</entry>
+	<entry id="5113" string="Allow Unicode characters">Permette i caratteri Unicode</entry>
+	<entry id="5114" string="Replace spaces with underscores">Rimpiazzà i spazii cù lineette basse (spaziu sottulineatu)</entry>
+	<entry id="5115" string="Remove processed tracks from joblist">Caccià da a lista di travagliu e traccie trattate</entry>
+	<entry id="5116" string="Add encoded files to joblist">Aghjunghje à a lista di travagliu i schedarii cudificati</entry>
+	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Aghjunghje un numeru sequenziale à i nomi di schedariu uguali</entry>
+	<entry id="5118" string="Keep time stamps of source files">Cunservà a data è l’ora di i schedarii d’urigine</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">U cartulare di destinazione ùn esiste micca ! Vulete creallu ?</entry>
+	 <entry id="5150" string="The output folder does not exist! Do you want to create it?">U cartulare di destinazione ùn esiste micca ! Vulete creallu ?</entry>
 	</section>
       </section>
 
@@ -300,20 +411,23 @@
 	<entry id="5200" string="Create playlists">Creà e liste di lettura</entry>
 	<entry id="5201" string="Create cue sheets">Creà e foglii di mischiera cue</entry>
 	<entry id="5202" string="Output folder">Cartulare di destinazione</entry>
-	<entry id="5203" string="Select">Sfuglià</entry>
-	<entry id="5204" string="Use encoder output folder">Impiegà cartulare di destinazione di cudificatore</entry>
+	<entry id="5203" string="Select">Selezziunà</entry>
+	<entry id="5204" string="Use encoder output folder">Impiegà u cartulare di destinazione di u cudificatore</entry>
 	<entry id="5205" string="Filename pattern">Mudellu di nome di schedariu</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Selezziunà u cartulare di destinazione di e liste di lettura cudificate</entry>
+	<entry id="5207" string="Output filenames">Nomi di schedariu d’esciuta</entry>
+	<entry id="5208" string="Configure plugin">Cunfigurà l’estensione</entry>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Creà solu una lista di lettura è/o un fogliu di mischiera cue à a cunversione</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Attivà a banca di dati CDDB lucale</entry>
 	<entry id="5301" string="Enable remote CDDB database">Attivà a banca di dati CDDB alluntanata</entry>
-	<entry id="5302" string="CDDB path">Passeghju CDDB</entry>
-	<entry id="5303" string="Select">Sfuglià</entry>
+	<entry id="5302" string="CDDB path">Chjassu CDDB</entry>
+	<entry id="5303" string="Select">Selezziunà</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Selezziunà u cartulare di a banca di dati CDDB</entry>
-	<entry id="5305" string="CDDB access mode">Modu d'accessu CDDB</entry>
-	<entry id="5306" string="CDDB server">Servu CDDB</entry>
+	<entry id="5305" string="CDDB access mode">Modu d’accessu CDDB</entry>
+	<entry id="5306" string="CDDB server">Servitore CDDB</entry>
 	<entry id="5307" string="Port">Portu</entry>
 	<entry id="5308" string="eMail address">Indirizzu elettronicu</entry>
 	<entry id="5309" string="HTTP settings">Preferenze HTTP</entry>
@@ -321,24 +435,25 @@
 	<entry id="5311" string="Options">Ozzioni</entry>
 	<entry id="5312" string="Automatic CDDB queries">Richieste CDDB autumatiche</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">Preferisce CDDB à u testu CD</entry>
-	<entry id="5314" string="Enable CDDB cache">Attivà l'impiatta CDDB</entry>
+	<entry id="5314" string="Enable CDDB cache">Attivà l’impiatta CDDB</entry>
 	<entry id="5315" string="Automatization">Autumatisazione</entry>
+	<entry id="5316" string="Always select first entry">Selezziunà sempre u primu elementu</entry>
 
 	<section name="Extended">
-	  <entry id="5330" string="Extended CDDB settings">Preferenze CDDB avanzate</entry>
-	  <entry id="5331" string="CGI scripts">Scripts CGI</entry>
-	  <entry id="5332" string="CDDB query script">Script di richiesta CDDB</entry>
-	  <entry id="5333" string="CDDB submit script">Script di sottumissione CDDB</entry>
-	  <entry id="5334" string="no proxy">alcunu proxy</entry>
-	  <entry id="5335" string="Proxy type">Tipu di proxy</entry>
-	  <entry id="5336" string="Proxy server">Servu di proxy</entry>
-	  <entry id="5337" string="User name">Nome d'utilizatore</entry>
-	  <entry id="5338" string="Password">Parolla d'intrata</entry>
+	 <entry id="5330" string="Extended CDDB settings">Preferenze CDDB avanzate</entry>
+	 <entry id="5331" string="CGI scripts">Scritti CGI</entry>
+	 <entry id="5332" string="CDDB query script">Scrittu di richiesta CDDB</entry>
+	 <entry id="5333" string="CDDB submit script">Scrittu di sottumissione CDDB</entry>
+	 <entry id="5334" string="no proxy">alcunu proxy</entry>
+	 <entry id="5335" string="Proxy type">Tipu di proxy</entry>
+	 <entry id="5336" string="Proxy server">Servitore di proxy</entry>
+	 <entry id="5337" string="User name">Nome d’utilizatore</entry>
+	 <entry id="5338" string="Password">Parolla d’entrata</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="5350" string="Please enter a valid eMail address.">Ci vole à scrive un indirizzu elettronicu accettevule.</entry>
-	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">U protocollu CDDBP di freedb ùn pò micca esse impiegatu&#10;nant'à i servi proxy HTTP Forward !&#10;&#10;Vulete cambià u protocollu è impiegà HTTP avà ?</entry>
+	 <entry id="5350" string="Please enter a valid eMail address.">Ci vole à scrive un indirizzu elettronicu accettevule.</entry>
+	 <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">U protocollu CDDBP di freedb ùn pò micca esse&#10;impiegatu nant’à i servi proxy HTTP Forward !&#10;&#10;Vulete cambià u protocollu è impiegà HTTP avà ?</entry>
 	</section>
       </section>
 
@@ -352,31 +467,101 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Etichette d'infurmazione</entry>
-	<entry id="5501" string="Tag formats">Cudificazioni d'etichette</entry>
+	<entry id="5500" string="Tags">Etichette</entry>
+	<entry id="5501" string="Tag formats">Furmati d’etichetta</entry>
 	<entry id="5502" string="Default comment string">Cummentu predefinitu</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Rimpiazzà i cummenti chì esistenu da quellu predefinitu</entry>
 	<entry id="5504" string="Filename pattern">Mudellu di nome di schedariu</entry>
 	<entry id="5505" string="Encoding">Cudificazione</entry>
+	<entry id="5506" string="Comments">Cummenti</entry>
+	<entry id="5507" string="Cover art">Cuprendula</entry>
+	<entry id="5508" string="Read cover art">Lettura di a cuprendula</entry>
+	<entry id="5509" string="Read cover art from tags">Leghje a cuprendula da l’etichette</entry>
+	<entry id="5510" string="Read cover art from files">Leghje a cuprendula da i schedarii</entry>
+	<entry id="5511" string="Write cover art">Scrittura di a cuprendula</entry>
+	<entry id="5512" string="Write cover art to tags">Scrive a cuprendula ver di l’etichette</entry>
+	<entry id="5513" string="Write cover art to files">Scrive a cuprendula ver di i schedarii</entry>
+	<entry id="5514" string="Add reference to audio file tag">Aghjunghje una referenza à l’etichetta di u schedariu audio</entry>
+	<entry id="5515" string="Other">Altra</entry>
+	<entry id="5516" string="Chapters">Capituli</entry>
+	<entry id="5517" string="Read chapters from files">Leghje i capituli da i schedarii</entry>
+	<entry id="5518" string="Write chapters to files">Scrive i capituli ver di i schedarii</entry>
+	<entry id="5519" string="Special fields">Campi speziali</entry>
+	<entry id="5520" string="Write CD table of contents">Scrive l’indice di cuntenutu di u CD</entry>
+	<entry id="5521" string="Preserve Replay Gain information">Preservà l’infurmazione di guadagnu di ripruduzzione</entry>
+	<entry id="5522" string="Cue sheets">Foglii di mischiera Cue</entry>
+	<entry id="5523" string="Read cue sheets embedded in metadata">Leghje i foglii di mischiera Cue incurpurati à i metadati</entry>
+	<entry id="5524" string="Prefer cue sheets over chapter information">Preferisce i foglii di mischiera Cue à l’infurmazione di capitulu</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">Principià da un zeru i numeri di traccia sottu 10</entry>
+	<entry id="5526" string="File size limit">Limitu di dimensione di schedariu</entry>
+	<entry id="5527" string="unlimited">senza limitu</entry>
       </section>
 
       <section name="Joblist">
+	<entry id="5600" string="Joblist">Lista di travagliu</entry>
+	<entry id="5601" string="Columns">Culonne</entry>
+	<entry id="5602" string="Name">Nome</entry>
+	<entry id="5603" string="Description">Discrizzione</entry>
+	<entry id="5604" string="Up">Sù</entry>
+	<entry id="5605" string="Down">Ghjò</entry>
+	<entry id="5606" string="Jobs">Travaglii</entry>
+	<entry id="5607" string="Show Jobs tab">Affissà l’unghjetta di i travaglii</entry>
 
 	<section name="Columns">
-	  <entry id="5662" string="Bitrate">Bitrate</entry>
-	  <entry id="5663" string="Sampling rate">Frequenza di campiunariu</entry>
-	  <entry id="5664" string="Channels">Canali</entry>
-	  <entry id="5665" string="Sample resolution">Risuluzione di campiunariu</entry>
+	 <entry id="5650" string="Track artist">Artista di a traccia</entry>
+	 <entry id="5651" string="Track title">Titulu di a traccia</entry>
+	 <entry id="5652" string="Track genre">Generu di a traccia</entry>
+	 <entry id="5653" string="Album title">Titulu di l’albumu</entry>
+	 <entry id="5654" string="Disc number">Numeru di u discu</entry>
+	 <entry id="5655" string="Track number">Numeru di a traccia</entry>
+	 <entry id="5656" string="Track rating">Valutazione di a traccia</entry>
+	 <entry id="5657" string="Track length">Longhezza di a traccia</entry>
+	 <entry id="5658" string="Track size">Dimensione di a traccia</entry>
+	 <entry id="5659" string="File name">Nome di schedariu</entry>
+	 <entry id="5660" string="File type">Tipu di schedariu</entry>
+	 <entry id="5661" string="Output file name">Nome di schedariu d’esciuta</entry>
+	 <entry id="5662" string="Bitrate">Bitrate</entry>
+	 <entry id="5663" string="Sampling rate">Frequenza di campiunariu</entry>
+	 <entry id="5664" string="Channels">Canali</entry>
+	 <entry id="5665" string="Sample resolution">Risuluzione di campiunariu</entry>
+	 <entry id="5666" string="CD drive">Lettore CD</entry>
 	</section>
       </section>
 
       <section name="Resources">
+	<entry id="5700" string="Parallel processing">Trattamentu parallelu</entry>
+	<entry id="5701" string="Enable parallel processing">Attivà u trattamentu parallelu</entry>
+	<entry id="5702" string="Enable SuperFast mode">Attivà u modu assai in furia</entry>
+	<entry id="5703" string="Number of conversion threads">Numeru di flussi di cunversione</entry>
 	<entry id="5704" string="auto">autumaticu</entry>
+	<entry id="5705" string="Process priority">Priurità di trattamentu</entry>
+	<entry id="5706" string="lowest">a più bassa</entry>
+	<entry id="5707" string="lower">bassa</entry>
+	<entry id="5708" string="normal">nurmale</entry>
+	<entry id="5709" string="higher">alta</entry>
+	<entry id="5710" string="highest">a più alta</entry>
       </section>
 
-      <section name="Verification"/>
+      <section name="Verification">
+	<entry id="5800" string="Verification">Verificazione</entry>
+	<entry id="5801" string="Enable input verification">Attivà a verificazione di l’urigine</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Verificà chì i schedarii lossless d’urigine discudifiche-&#10;ghjinu esattamente cum’è i dati impiegati per crealli.</entry>
+	<entry id="5803" string="Enable output verification">Attivà a verificazione di destinazione</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Verificà chì i schedarii lossless di destinazione discudifi-&#10;cheghjinu esattamente cum’è i dati impiegati per crealli.</entry>
+      </section>
 
-      <section name="Processing"/>
+      <section name="Processing">
+	<entry id="5900" string="Signal processing">Trattamentu di u signale</entry>
+	<entry id="5901" string="Enable signal processing">Attivà u trattamentu di u signale</entry>
+	<entry id="5902" string="Enable processing during playback">Attivà u trattamentu durante a ripruduzzione</entry>
+	<entry id="5903" string="Components">Cumpunenti</entry>
+	<entry id="5904" string="Available">Dispunibule</entry>
+	<entry id="5905" string="Selected">Selezziunati</entry>
+	<entry id="5906" string="Configure component">Cunfigurà u cumpunente</entry>
+	<entry id="5907" string="Conversion to a single output file">Cunversione in un schedariu unicu di destinazione</entry>
+	<entry id="5908" string="Process each track individually">Trattà ogni traccia individualmente</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">Trattà e traccie unite cum’è una traccia unica</entry>
+      </section>
     </section>
 
     <section name="About">
@@ -387,84 +572,161 @@
 
     <section name="Updates">
       <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Ci hè qualchì rinnovu per %1 chì hè dispunibule inlinea !&#10;Vulete ottene avà a lista di i rinnovi chì sò dispunibule ?</entry>
-      <entry id="6101" string="There are no updates available at the moment!">Ùn ci hè alcunu rinnovu dispunibule à st'ora !</entry>
-      <entry id="6102" string="Check for updates at startup">Circà i rinnovi à l'iniziu di u prugramma</entry>
+      <entry id="6101" string="There are no updates available at the moment!">Ùn ci hè alcunu rinnovu dispunibule à st’ora !</entry>
+      <entry id="6102" string="Check for updates at startup">Circà e nove versioni à l’iniziu di u prugramma</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 pò cuntrollà autumaticamente à u principiu&#10;i rinnovi inlinea di u prugramma.&#10;&#10;Vulete chì %1 cerchi i rinnovi à u principiu ?</entry>
     </section>
 
     <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 hè dispunibule in %2 lingue. S'è a vostra lingua&#10;ùn hè micca dispunibule, pudete traduce %1 cù&#10;l'appiecazione 'smooth Translator'.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 ghjunghje cù i cudificatori per LAME, Ogg Vorbis, FAAC,&#10;FLAC è Opus. Un cudificatore per a forma VQF he dispunibule&#10;à u situ web di %1 : %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 pò impiegà l'estensioni d'entrata di Winamp 2 per accettà più&#10;di forme di schedariu. Cupià i schedarii in_*.dll ver di u cartulare&#10;%1/plugins per permette à %1 di ricunnosce ste forme.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1 permette di sottumette l'entrate di banca di dati di CD freedb&#10;chì cuntenenu caratteri Unicode. È cusì e richieste chì sò fatte&#10;per i CD chì anu artiste o tituli micca latinu sò trasmesse à&#10;freedb da %1 cù una forma curretta.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Per currege i sbaglii di lettura durante l'estrazzione, pudete attivà a&#10;currezzione Jitter in l'unghjetta Estrazzione di u dialogu di cunfigurazione&#10;di %1. Osinnò ci vole à pruvà d'impiegà unu di i modi Paranoia.</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Avete qualchì suggestione per megliurà %1 ?&#10;&#10;Pudete sottumette st'idee grazia à tracker nant'à a pagina&#10;di prughjettu %1 ind'è %2 - %3&#10;o mandà un messaghju à %4.</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">%1 vi piace ? Bench'è %1 sia dispunibule senza pagà,&#10;pudete aiutà u so sviluppu cù una dunazione à u prughjettu %1.&#10;Pudete mandà i soldi à %2 grazia à PayPal.&#10;Fighjate a pagina %3 per sapene di più.</entry>
+      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 hè dispunibule in %2 lingue. S’è a vostra lingua&#10;nùn hè micca dispunibule, pudete traduce %1 cù&#10;nl’appiecazione « smooth Translator ».</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 ghjunghje cù i cudificatori per LAME, Ogg Vorbis,&#10;FAAC, FLAC è Opus. Un cudificatore per u furmatu VQF&#10;he dispunibule nant’à u situ web di %1 : %2</entry>
+      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 pò impiegà l’estensioni d’entrata di Winamp 2 per&#10;accettà più di furmati di schedariu. Cupià i schedarii in_*.dll&#10;ver di u cartulare %1/plugins per chì %1 possa ricunnosce sti furmati.</entry>
+      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1 permette di sottumette l’entrate di banca di dati&#10;di CD freedb chì cuntenenu caratteri Unicode. È cusì e&#10;richieste chì sò fatte per i CD chì anu artiste o tituli&#10;micca latinu sò trasmesse à freedb da %1 cù una forma curretta.</entry>
+      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Per currege i sbaglii di lettura durante l’estrazzione, pudete attivà&#10;a currezzione Jitter in l’unghjetta Estrazzione di u dialogu di cunfigurazione&#10;di %1. Osinnò ci vole à pruvà d’impiegà unu di i modi Paranoia.</entry>
+      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Avete qualchì suggestione per megliurà %1 ?&#10;&#10;Pudete sottumette e vostre idee grazia à Tracker&#10;nant’à a pagina %2 di u prughjettu %1 à %3&#10;o mandà un messaghju à %4.</entry>
+      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Vi piace %1 ? Bench’è %1 sia dispunibule senza pagà,&#10;pudete aiutà u so sviluppu cù una dunazione à u prughjettu %1.&#10;Pudete mandà i soldi à %2 grazia à PayPal.&#10;Fighjate puru a pagina %3 per sapene di più.</entry>
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="Currently converting">Cudificazione in corsu</entry>
-      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">U flussu di cudificazione hè sempre in corsu ! Site sicuru di vulè chità quantunque ?</entry>
-      <entry id="7002" string="Delete original files after encoding">Squassà u schedariu d'urigine dopu à a cudificazione</entry>
-      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">St'ozzione hà da caccià i schedarii d'urigine&#10;da l'urdinatore dopu à a cudificazione !&#10;&#10;Site sicuru di vulè attivà sta funzione ?</entry>
+      <entry id="7000" string="Currently converting">Cunversione in corsu</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Un trattamentu di cunversione hè sempre attivu ! Site sicuru di vulè chità quantunque ?</entry>
+      <entry id="7002" string="Delete original files after encoding">Squassà u schedariu d’urigine dopu à a cudificazione</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">St’ozzione hà da caccià i schedarii d’urigine da l’urdinatore&#10;dopu à a cudificazione !&#10;&#10;Site sicuru di vulè attivà sta funzione ?</entry>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">Cunservà st’ozzione attiva ancu dopu u rilanciu di %1</entry>
       <entry id="7005" string="File already exists">U schedariu esiste dighjà</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">U schedariu in esciuta %1&#10;esiste dighjà ! Vulete rimpiazzallu ?</entry>
-      <entry id="7007" string="Overwrite all further files">Rimpiazzà tutti l'altri schedarii</entry>
+      <entry id="7007" string="Overwrite all further files">Rimpiazzà tutti l’altri schedarii</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Site prontu(a) à cunvertisce un furmatu cù perdita d’infurmazione&#10;ver di un furmatu senza perdita d’infurmazione. Ci vole à sapè chì a&#10;perdita di qualità ùn si pò riacquistà, dunque stu trattamentu ùn&#10;migliorerà micca a qualità, è increscerà a dimensione di u schedariu.&#10;Vulete cuntinuà quantunque ?</entry>
     </section>
 
     <section name="Errors">
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn pò micca accede à u schedariu d'entrata : %1&#10;&#10;Schedariu : %1&#10;Cartulare : %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn pò micca accede à u schedariu d'esciuta : %1&#10;&#10;Schedariu : %1&#10;Cartulare : %2</entry>
+      <entry id="7100" string="Error: %1">Sbagliu : %1</entry>
+      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Ùn si pò micca creà u cumpunente di discudificazione : %1&#10;&#10;Schedariu : %1&#10;Chjassu : %2</entry>
+      <entry id="7102" string="Could not create encoder component: %1">Ùn si pò micca creà u cumpunente di cudificazione : %1</entry>
+      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Ùn si pò definisce u discudificatore per u schedariu d’urigine : %1&#10;&#10;Schedariu : %1&#10;Chjassu : %2&#10;&#10;Sbagliu : %3</entry>
+      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Ùn si pò definisce u cudificatore per u schedariu di destinazione : %1&#10;&#10;Schedariu : %1&#10;Chjassu : %2&#10;&#10;Sbagliu : %3</entry>
+      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Ùn si pò definisce u prucessore DSP : %1&#10;&#10;Sbagliu : %2</entry>
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn si pò accede à u schedariu d’urigine : %1&#10;&#10;Schedariu : %1&#10;Chjassu : %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn si pò creà u schedariu di destinazione : %1&#10;&#10;Schedariu : %1&#10;Chjassu : %2</entry>
+      <entry id="7108" string="Failed to verify input file: %1">Fiascu di a verificazione di u schedariu d’urigine : %1</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Sfarenza di somma di cuntrollu à a verificazione di u schedariu di destinazione : %1&#10;&#10;Somma cudificata : %2&#10;Somma verificata : %3</entry>
       <entry id="7110" string="File not found">U schedariu ùn esiste micca</entry>
       <entry id="7111" string="Unknown file type">Tipu di schedariu scunnisciutu</entry>
-      <entry id="7113" string="Unsupported audio format">Forma audio micca accettatu</entry>
+      <entry id="7112" string="Invalid file format">Furmatu di schedariu inaccettevule</entry>
+      <entry id="7113" string="Unsupported audio format">Furmatu audio micca accettatu</entry>
       <entry id="7114" string="Unknown error">Sbagliu scunnisciutu</entry>
       <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Impussibule di caricà i piloti ASPI ! Estrazzione CD disattivata !</entry>
-      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Impussibule d'apre u schedariu : %1&#10;&#10;Sbagliu : %2</entry>
-      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">L'accessu à a CDDB lucale o alluntanata ùn hè micca attivu !&#10;Ci vole à attivà st'accessu in u dialogu di cunfigurazione.</entry>
-      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">L'accessu à a CDDB alluntanata ùn hè micca attivu !&#10;Ci vole à attivà st'accessu in u dialogu di cunfigurazione.</entry>
-      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows hà ricusatu l'accessu à i lettori CD-ROM.&#10;&#10;Ci vole à cuntattà l'amministratore di u vostru sistema&#10;per dumandallu u dirittu d'accessu à u lettore CD-ROM.</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Impussibule d’apre u schedariu : %1&#10;&#10;Sbagliu : %2</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Ùn pò micca sunà una traccia di CD quandu si face l’estrazzione cù u listessu lettore !</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Ùn pò micca principià l’estrazzione quandu si sona una traccia cù u listessu lettore !</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">L’accessu à a CDDB lucale o alluntanata ùn hè micca attivu !&#10;Ci vole à attivà st’accessu in u dialogu di cunfigurazione.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">L’accessu à a CDDB alluntanata ùn hè micca attivu ! Ci&#10;vole à attivà st’accessu in u dialogu di cunfigurazione.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows hà ricusatu l’accessu à i lettori CD-ROM.&#10;Ci vole à cuntattà l’amministratore di u vostru sistema&#10;per dumandallu u dirittu d’accessu à u lettore CD-ROM.</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Alcunu dialogu di cunfigurazione dispunibule per :&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">U cartulare selezziunatu ùn esiste più !</entry>
     </section>
 
     <section name="Dialogs">
 
       <section name="Overwrite">
+	<entry id="8000" string="Confirm overwrite">Cunfirmà u rimpiazzamentu ?</entry>
+	<entry id="8001" string="Confirm">Cunfirmà</entry>
+	<entry id="8002" string="Skip all">Tralascià tuttu</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">I %1 schedarii chì seguitanu esistenu dighjà o anu un nome in doppiu</entry>
+	<entry id="8004" string="Action">Azzione</entry>
+	<entry id="8005" string="Overwrite">Rimpiazzà</entry>
 	<entry id="8006" string="Skip">Ignurà</entry>
       </section>
 
-      <section name="Errors"/>
+      <section name="Format">
+	<entry id="8100" string="Select sample format">Selezziunà u furmatu di campiunariu</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">E traccie selezziunate anu furmati di campiunariu sfarente. Ci vole à&#10;selezziunà u furmatu di campiunariu di u schedariu di destinazione :</entry>
+	<entry id="8102" string="Select">Selezziunà</entry>
+      </section>
+
+      <section name="Errors">
+	<entry id="8200" string="Errors">Sbaglii</entry>
+	<entry id="8201" string="%1 errors while processing job">%1 sbaglii trovi durante u travagliu di trattamentu</entry>
+	<entry id="8202" string="select an entry for details">selezziunà un elementu per avè più di detaglii</entry>
+      </section>
     </section>
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Lettore CD-ROM attivu</entry>
-      <entry id="9001" string="Set drive speed limit">Limitu di velocità di u lettore</entry>
+      <entry id="9001" string="Set drive speed limit">Definisce u limitu di velocità di u lettore</entry>
       <entry id="9002" string="CD information">Infurmazione CD</entry>
-      <entry id="9003" string="Read CD Text">Leghje Testu di CD</entry>
+      <entry id="9003" string="Read CD Text">Leghje u testu di u CD</entry>
       <entry id="9004" string="Read cdplayer.ini">Leghje cdplayer.ini</entry>
-      <entry id="9005" string="Ripper settings">Preferenze d'Estrazzione</entry>
+      <entry id="9005" string="Ripper settings">Preferenze d’estrazzione</entry>
       <entry id="9006" string="Activate cdparanoia mode">Attivà u modu cdparanoia</entry>
       <entry id="9007" string="Overlap only">Accavalcatura solu</entry>
       <entry id="9008" string="No verify">Senza verificazione</entry>
-      <entry id="9009" string="No scratch repair">Alcuna currezzione di sfrisgiatura</entry>
+      <entry id="9009" string="No scratch repair">Alcuna curreziò di sfrisgiatura</entry>
       <entry id="9010" string="Full cdparanoia mode">Modu cdparanoia sanu</entry>
-      <entry id="9011" string="Activate jitter correction">Attivà currez. d'istabilità jitter</entry>
-      <entry id="9012" string="Switch stereo channels">Invertì canali manca/diritta</entry>
+      <entry id="9011" string="Activate jitter correction">Attivà a currezzione d’istabilità jitter</entry>
+      <entry id="9012" string="Switch stereo channels">Invertisce i canali stereo</entry>
       <entry id="9013" string="Automatization">Autumatisazione</entry>
-      <entry id="9014" string="Read CD contents on insert">Leghje u CD à l'intruduzzione</entry>
-      <entry id="9015" string="Start ripping automatically">Principià à estrae autumatic.</entry>
-      <entry id="9016" string="Eject disk after ripping">Espulsione CD dopu estrazzione</entry>
+      <entry id="9014" string="Read CD contents on insert">Leghje u cuntenutu di u CD à l’intruduzzione</entry>
+      <entry id="9015" string="Start ripping automatically">Principià à estrae autumaticamente</entry>
+      <entry id="9016" string="Eject disk after ripping">Espulsione di u CD dopu l’estrazzione</entry>
       <entry id="9017" string="CD options">Ozzioni di u CD</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Immubulizà CD à l'estrazzione</entry>
-      <entry id="9019" string="Use native NT SCSI library">Impiegà bibl. SCSI NT nativa</entry>
+      <entry id="9018" string="Lock CD tray while ripping">Immubulizà u lettore CD durante l’estrazzione</entry>
+      <entry id="9019" string="Use native NT SCSI library">Impiegà a biblioteca SCSI nativa di NT</entry>
+      <entry id="9020" string="Use read offset">Impiegà u spiazzamentu di lettura</entry>
+      <entry id="9021" string="samples">campioni</entry>
+      <entry id="9022" string="Read ISRC when adding tracks to joblist">Leghje u codice ISRC à l’aghjuntu di e traccie à a lista di travagliu</entry>
+      <entry id="9023" string="Spin up before ripping">Mette in ballu u CD nanzu l’estrazzione</entry>
+      <entry id="9024" string="%1 seconds">%1 seconde</entry>
+    </section>
+
+    <section name="Components">
+
+      <section name="Decoders">
+	<entry id="10000" string="Cue Sheet Reader">Lettore di fogliu di mischiera Cue</entry>
+      </section>
+
+      <section name="Encoders">
+	<entry id="11000" string="meh! - multi encoder hub">meh ! - noghja multi cudificatore</entry>
+	<entry id="11001" string="SndFile Output Component">Cumpunente d’esciuta SndFile</entry>
+      </section>
+
+      <section name="DSP">
+	<entry id="12000" string="Channel Converter">Cunvertidore di canali</entry>
+	<entry id="12001" string="Sample Format Converter">Cunvertidore di furmatu di campiunariu</entry>
+	<entry id="12002" string="Sample Rate Converter">Cunvertidore di frequenza di campiunariu</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">Riduzzione di trostu RNNoise</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Cambià a tunalità/tempo di Rubber Band</entry>
+      </section>
+
+      <section name="Extensions">
+	<entry id="15000" string="Notifications">Nutificazioni</entry>
+	<entry id="15001" string="Logging">Arregistramentu di i messaghji</entry>
+	<entry id="15002" string="YouTube Video Downloader">Scaricadore di video YouTube</entry>
+      </section>
     </section>
 
     <section name="Decoders">
 
-      <section name="MAD"/>
+      <section name="MAD">
+	<entry id="20000" string="Decoding">Discudificazione</entry>
+	<entry id="20001" string="Enable 24 bit decoding">Permette a discudificazione à 24 bit</entry>
+      </section>
 
-      <section name="mpg123"/>
+      <section name="mpg123">
+	<entry id="21000" string="Decoder">Discudificatore</entry>
+	<entry id="21001" string="Active decoder">Discudificatore attivu</entry>
+	<entry id="21002" string="auto select">Selezzione autumatica</entry>
+      </section>
 
-      <section name="CueSheet"/>
+      <section name="CueSheet">
+	<entry id="22000" string="Title information">Infurmazione di titulu</entry>
+	<entry id="22001" string="Read tags from referenced files">Leghje l’etichette da i schedarii referenzati</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Preferisce i metadati di fogliu di mischiera Cue à l’etichette di i schedarii referenzati</entry>
+	<entry id="22003" string="Alternative files">Schedarii alternativi</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Circà schedarii alternativi cumpressi s’è ùn si trovanu micca quelli Wave di referenza</entry>
+	<entry id="22005" string="Error handling">Ghjestione di sbagliu</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">Ignurà i sbaglii durante u trattamentu di fogliu di mischiera Cue</entry>
+      </section>
     </section>
 
     <section name="Encoders">
@@ -476,11 +738,11 @@
 	<entry id="30003" string="Original bit">Bit Uriginale</entry>
 	<entry id="30004" string="Channels">Canali</entry>
 	<entry id="30005" string="Private bit">Bit Privatu</entry>
-	<entry id="30006" string="Set Copyright bit">Bit Dirittu di copia</entry>
+	<entry id="30006" string="Set Copyright bit">Definisce u bit Dirittu di copia</entry>
 	<entry id="30007" string="Enable CRC">Permette CRC</entry>
-	<entry id="30008" string="Set Original bit">Bit Uriginale</entry>
+	<entry id="30008" string="Set Original bit">Definisce u bit Uriginale</entry>
 	<entry id="30009" string="Dual channel encoding">Cudificazione canale doppiu</entry>
-	<entry id="30010" string="Set Private bit">Bit Privatu</entry>
+	<entry id="30010" string="Set Private bit">Definisce u bit Privatu</entry>
       </section>
 
       <section name="Bonk">
@@ -489,7 +751,7 @@
 	<entry id="31002" string="Quantization">Quantificazione</entry>
 	<entry id="31003" string="Downsampling ratio">Reditu di campiunariu</entry>
 	<entry id="31004" string="Predictor size">Dimensione di a predizzione</entry>
-	<entry id="31005" string="Enable lossless encoding">Cudificazione senza perdita</entry>
+	<entry id="31005" string="Enable lossless encoding">Attivà a cudificazione senza perdita</entry>
 	<entry id="31006" string="Enable Joint Stereo">Attivà Joint Stereo</entry>
       </section>
 
@@ -500,132 +762,136 @@
 	<entry id="32003" string="Audio processing">Trattamentu audio</entry>
 
 	<section name="Basic">
-	  <entry id="32100" string="Presets">Parametri predefiniti</entry>
-	  <entry id="32101" string="Use preset">Impiegà parametru predefinitu</entry>
-	  <entry id="32102" string="Custom settings">Preferenze persunalizate</entry>
-	  <entry id="32103" string="Medium, Fast">Medianu, Rapidu</entry>
-	  <entry id="32104" string="Standard, Fast">Classicu, Rapidu</entry>
-	  <entry id="32105" string="Extreme, Fast">Estremu, Rapidu</entry>
-	  <entry id="32106" string="Bitrate">Bitrate</entry>
-	  <entry id="32107" string="Quality">Qualità</entry>
-	  <entry id="32108" string="Set bitrate">Bitrate</entry>
-	  <entry id="32109" string="Set ratio">Percentuale</entry>
-	  <entry id="32110" string="Set quality">Qualità</entry>
-	  <entry id="32111" string="worse">pechju</entry>
-	  <entry id="32112" string="better">megliu</entry>
-	  <entry id="32113" string="VBR mode">Modu VBR</entry>
-	  <entry id="32114" string="no VBR">senza VBR</entry>
-	  <entry id="32115" string="VBR quality">Qualità VBR</entry>
-	  <entry id="32116" string="ABR target bitrate">Bitrate ABR di destinazione</entry>
+	 <entry id="32100" string="Presets">Parametri predefiniti</entry>
+	 <entry id="32101" string="Use preset">Impiegà parametru predefinitu</entry>
+	 <entry id="32102" string="Custom settings">Preferenze persunalizate</entry>
+	 <entry id="32103" string="Medium, Fast">Medianu, Rapidu</entry>
+	 <entry id="32104" string="Standard, Fast">Classicu, Rapidu</entry>
+	 <entry id="32105" string="Extreme, Fast">Estremu, Rapidu</entry>
+	 <entry id="32106" string="Bitrate">Bitrate</entry>
+	 <entry id="32107" string="Quality">Qualità</entry>
+	 <entry id="32108" string="Set bitrate">Definisce u bitrate</entry>
+	 <entry id="32109" string="Set ratio">Definisce u percentuale</entry>
+	 <entry id="32110" string="Set quality">Definisce a qualità</entry>
+	 <entry id="32111" string="worse">pechju</entry>
+	 <entry id="32112" string="better">più bona</entry>
+	 <entry id="32113" string="VBR mode">Modu VBR</entry>
+	 <entry id="32114" string="no VBR">senza VBR</entry>
+	 <entry id="32115" string="VBR quality">Qualità VBR</entry>
+	 <entry id="32116" string="ABR target bitrate">Bitrate ABR di destinazione</entry>
 	</section>
 
 	<section name="Misc">
-	  <entry id="32200" string="Control bits">Bits di cuntrollu</entry>
-	  <entry id="32201" string="Set Copyright bit">Bit Dirittu di copia</entry>
-	  <entry id="32202" string="Set Original bit">Bit Uriginale</entry>
-	  <entry id="32203" string="Set Private bit">Bit Privatu</entry>
-	  <entry id="32204" string="CRC">CRC</entry>
-	  <entry id="32205" string="Enable CRC">Permette CRC</entry>
-	  <entry id="32206" string="Stereo mode">Modu stereo</entry>
-	  <entry id="32207" string="auto">autumaticu</entry>
-	  <entry id="32208" string="Stereo">Stereo</entry>
-	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
-	  <entry id="32210" string="Force Joint Stereo">Furzà Joint Stereo</entry>
-	  <entry id="32211" string="VBR bitrate range">Stesa di bitrate VBR</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Bitrate VBR minimu</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Bitrate VBR massimu</entry>
+	 <entry id="32200" string="Control bits">Bits di cuntrollu</entry>
+	 <entry id="32201" string="Set Copyright bit">Definisce u bit Dirittu di copia</entry>
+	 <entry id="32202" string="Set Original bit">Definisce u bit Uriginale</entry>
+	 <entry id="32203" string="Set Private bit">Definisce u bit Privatu</entry>
+	 <entry id="32204" string="CRC">CRC</entry>
+	 <entry id="32205" string="Enable CRC">Permette CRC</entry>
+	 <entry id="32206" string="Stereo mode">Modu stereo</entry>
+	 <entry id="32207" string="auto">autumaticu</entry>
+	 <entry id="32208" string="Stereo">Stereo</entry>
+	 <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
+	 <entry id="32210" string="Force Joint Stereo">Furzà Joint Stereo</entry>
+	 <entry id="32211" string="VBR bitrate range">Stesa di bitrate VBR</entry>
+	 <entry id="32212" string="Set minimum VBR bitrate">Definisce u bitrate VBR minimu</entry>
+	 <entry id="32213" string="Set maximum VBR bitrate">Definisce u bitrate VBR massimu</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="32300" string="ATH">ATH</entry>
-	  <entry id="32301" string="Enable ATH">Attivà ATH</entry>
-	  <entry id="32302" string="Use default setting">Impiegà a preferenza predefinita</entry>
-	  <entry id="32303" string="Psycho acoustic model">Mudellu Psycho-acoustic</entry>
-	  <entry id="32304" string="Use Temporal Masking Effect">Impiega l'Effettu di Maschera Tempurale</entry>
-	  <entry id="32305" string="Stream format">Forma di flussu</entry>
-	  <entry id="32306" string="Enforce strict ISO compliance">Mette in cunfurmità ISO stretta</entry>
+	 <entry id="32300" string="ATH">ATH</entry>
+	 <entry id="32301" string="Enable ATH">Attivà ATH</entry>
+	 <entry id="32302" string="Use default setting">Impiegà a preferenza predefinita</entry>
+	 <entry id="32303" string="Psycho acoustic model">Mudellu Psycho-acoustic</entry>
+	 <entry id="32304" string="Use Temporal Masking Effect">Impiega l’Effettu di Maschera Tempurale</entry>
+	 <entry id="32305" string="Stream format">Furmatu di flussu</entry>
+	 <entry id="32306" string="Enforce strict ISO compliance">Mette in cunfurmità ISO stretta</entry>
 	</section>
 
 	<section name="Audio processing">
-	  <entry id="32400" string="Highpass filter">Filtru passa-altu</entry>
-	  <entry id="32401" string="Set Highpass frequency (Hz)">Frequenza passa-altu (Hz)</entry>
-	  <entry id="32402" string="Set Highpass width (Hz)">Larghezza passa-altu (Hz)</entry>
-	  <entry id="32403" string="Lowpass filter">Filtru passa-bassu</entry>
-	  <entry id="32404" string="Set Lowpass frequency (Hz)">Frequenza passa-bassu (Hz)</entry>
-	  <entry id="32405" string="Set Lowpass width (Hz)">Larghezza passa-bassu (Hz)</entry>
-	  <entry id="32406" string="Misc settings">Preferenze diverse</entry>
-	  <entry id="32407" string="Disable all filtering">Disattivà tutti i filtri</entry>
+	 <entry id="32400" string="Highpass filter">Filtru passa-altu</entry>
+	 <entry id="32401" string="Set Highpass frequency (Hz)">Definisce a frequenza passa-altu (Hz)</entry>
+	 <entry id="32402" string="Set Highpass width (Hz)">Definisce a larghezza passa-altu (Hz)</entry>
+	 <entry id="32403" string="Lowpass filter">Filtru passa-bassu</entry>
+	 <entry id="32404" string="Set Lowpass frequency (Hz)">Definisce a frequenza passa-bassu (Hz)</entry>
+	 <entry id="32405" string="Set Lowpass width (Hz)">Definisce a larghezza passa-bassu (Hz)</entry>
+	 <entry id="32406" string="Misc settings">Preferenze diverse</entry>
+	 <entry id="32407" string="Disable all filtering">Disattivà tutti i filtri</entry>
 	</section>
       </section>
 
       <section name="AAC">
+	<entry id="33000" string="Codec">Cudecu</entry>
 	<entry id="33001" string="Quality">Qualità</entry>
-	<entry id="33002" string="Format">Forma</entry>
+	<entry id="33002" string="Format">Furmatu</entry>
 
-	<section name="Codec"/>
+	<section name="Codec">
+	 <entry id="33100" string="Audio codec">Cudecu audio</entry>
+	</section>
 
 	<section name="Quality">
-	  <entry id="33200" string="Bitrate">Bitrate</entry>
-	  <entry id="33201" string="Bitrate / Quality">Bitrate / Qualità</entry>
-	  <entry id="33202" string="Bitrate per channel">Bitrate per canale</entry>
-	  <entry id="33203" string="Set quality">Qualità</entry>
-	  <entry id="33204" string="Stereo mode">Modu stereo</entry>
-	  <entry id="33205" string="Allow Joint Stereo">Permette Joint Stereo</entry>
-	  <entry id="33206" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
-	  <entry id="33207" string="Use Temporal Noise Shaping">Impiegà Temporal Noise Shap.</entry>
-	  <entry id="33208" string="Maximum bandwidth">Larghezza di fascia massima</entry>
-	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Frequenza AAC massima à impiegà (Hz)</entry>
+	 <entry id="33200" string="Bitrate">Bitrate</entry>
+	 <entry id="33201" string="Bitrate / Quality">Bitrate / Qualità</entry>
+	 <entry id="33202" string="Bitrate per channel">Bitrate per canale</entry>
+	 <entry id="33203" string="Set quality">Definisce a qualità</entry>
+	 <entry id="33204" string="Stereo mode">Modu stereo</entry>
+	 <entry id="33205" string="Allow Joint Stereo">Permette Joint Stereo</entry>
+	 <entry id="33206" string="Temporal Noise Shaping">Fattura di trostu tempurale (TNS)</entry>
+	 <entry id="33207" string="Use Temporal Noise Shaping">Impiegà a fattura di trostu tempurale (TNS)</entry>
+	 <entry id="33208" string="Maximum bandwidth">Larghezza di fascia massima</entry>
+	 <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Larghezza di fascia massima di frequenza AAC à impiegà (Hz)</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="33300" string="MPEG version">Versione MPEG</entry>
-	  <entry id="33301" string="AAC object type">Tipu d'oghjettu AAC</entry>
-	  <entry id="33302" string="File format">Forma di schedariu</entry>
-	  <entry id="33304" string="Tags">Etichette d'infurmazione</entry>
-	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Permette l'etichette ID3v2 in i schedarii AAC</entry>
-	  <entry id="33306" string="Note">Nota</entry>
-	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Ci sò lettori chì anu penseri per sunà i schedarii AAC&#10;chì anu etichette ID3 ligate. Impiegate st'ozzione solu s'è&#10;voi site sicuru chì u vostru lettore pò gestì st'etichette.</entry>
+	 <entry id="33300" string="MPEG version">Versione MPEG</entry>
+	 <entry id="33301" string="AAC object type">Tipu d’oghjettu AAC</entry>
+	 <entry id="33302" string="File format">Furmatu di schedariu</entry>
+	 <entry id="33303" string="File extension">Estensione di schedariu</entry>
+	 <entry id="33304" string="Tags">Etichette</entry>
+	 <entry id="33305" string="Allow ID3v2 tags in AAC files">Permette l’etichette ID3v2 in i schedarii AAC</entry>
+	 <entry id="33306" string="Note">Nota</entry>
+	 <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Ci sò lettori chì anu penseri per sunà i schedarii AAC chì&#10;anu etichette ID3 assuciate. Impiegate st’ozzione solu s’è&#10;voi site sicuru chì u vostru lettore pò gestì st’etichette.</entry>
 	</section>
       </section>
 
       <section name="FLAC">
 	<entry id="34000" string="Basic">Basicu</entry>
-	<entry id="34001" string="Format">Forma</entry>
+	<entry id="34001" string="Format">Furmatu</entry>
 	<entry id="34002" string="Expert">Espertu</entry>
 
 	<section name="Basic">
-	  <entry id="34100" string="Presets">Parametri predefiniti</entry>
-	  <entry id="34101" string="Use preset">Impiegà parametru predefinitu</entry>
-	  <entry id="34102" string="Custom settings">Preferenze persunalizate</entry>
-	  <entry id="34103" string="Fastest encoding">Cudificazione a più rapida</entry>
-	  <entry id="34104" string="Best compression">Cumpressione ottimale</entry>
-	  <entry id="34105" string="Stereo mode">Modu stereo</entry>
-	  <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
-	  <entry id="34107" string="Adaptive Joint Stereo">Adaptive Joint Stereo</entry>
-	  <entry id="34108" string="File format">Forma di schedariu</entry>
-	  <entry id="34109" string="Default">Predefinitu</entry>
+	 <entry id="34100" string="Presets">Parametri predefiniti</entry>
+	 <entry id="34101" string="Use preset">Impiegà parametru predefinitu</entry>
+	 <entry id="34102" string="Custom settings">Preferenze persunalizate</entry>
+	 <entry id="34103" string="Fastest encoding">Cudificazione a più rapida</entry>
+	 <entry id="34104" string="Best compression">Cumpressione ottimale</entry>
+	 <entry id="34105" string="Stereo mode">Modu stereo</entry>
+	 <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
+	 <entry id="34107" string="Adaptive Joint Stereo">Adaptive Joint Stereo</entry>
+	 <entry id="34108" string="File format">Furmatu di schedariu</entry>
+	 <entry id="34109" string="Default">Predefinitu</entry>
 	</section>
 
 	<section name="Format">
-	  <entry id="34200" string="Use streamable subset">Impiegà un sott'inseme di flussu di cuntinuu</entry>
-	  <entry id="34201" string="Blocksize">Dimensione di bloccu</entry>
+	 <entry id="34200" string="Use streamable subset">Impiegà un sott’inseme di flussu di cuntinuu</entry>
+	 <entry id="34201" string="Blocksize">Dimensione di bloccu</entry>
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Signal processing">Apodisazione</entry>
-	  <entry id="34301" string="Window function(s)">Funzione(i) d'apodisazione</entry>
-	  <entry id="34302" string="Note">Nota</entry>
-	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Pudete specificà parechje funzioni staccate da punti virgule.</entry>
-	  <entry id="34304" string="Linear predictor">Predizzione lineare</entry>
-	  <entry id="34305" string="Maximum LPC order">Ordine LPC massimale</entry>
-	  <entry id="34306" string="disabled">disattivatu</entry>
-	  <entry id="34307" string="Exhaustive model search">Ricerca cumpleta</entry>
-	  <entry id="34308" string="Quantized LPC precision">Pricisione LPC quantificata</entry>
-	  <entry id="34309" string="auto">autumaticu</entry>
-	  <entry id="34310" string="Optimize LPC quantization">Megliurà quantific. LPC</entry>
-	  <entry id="34311" string="Residual coding">Cudificazione residuale</entry>
-	  <entry id="34312" string="Minimum partition order">Ordine minimale di partizione</entry>
-	  <entry id="34313" string="Maximum partition order">Ordine massimale di partizione</entry>
+	 <entry id="34300" string="Signal processing">Trattamentu di u signale</entry>
+	 <entry id="34301" string="Window function(s)">Funzione(i) di finestra (apodisazione)</entry>
+	 <entry id="34302" string="Note">Nota</entry>
+	 <entry id="34303" string="You can specify multiple functions separated by semicolons.">Pudete specificà parechje funzioni staccate da punti virgule.</entry>
+	 <entry id="34304" string="Linear predictor">Predizzione lineare</entry>
+	 <entry id="34305" string="Maximum LPC order">Ordine LPC massimale</entry>
+	 <entry id="34306" string="disabled">disattivatu</entry>
+	 <entry id="34307" string="Exhaustive model search">Ricerca cumpleta di mudellu</entry>
+	 <entry id="34308" string="Quantized LPC precision">Pricisione LPC quantificata</entry>
+	 <entry id="34309" string="auto">autumaticu</entry>
+	 <entry id="34310" string="Optimize LPC quantization">Megliurà quantificazione LPC</entry>
+	 <entry id="34311" string="Residual coding">Cudificazione residuale</entry>
+	 <entry id="34312" string="Minimum partition order">Ordine minimale di partizione</entry>
+	 <entry id="34313" string="Maximum partition order">Ordine massimale di partizione</entry>
 	</section>
       </section>
 
@@ -635,20 +901,24 @@
 	<entry id="35002" string="Average Bitrate">Bitrate Mezu</entry>
 	<entry id="35003" string="Quality">Qualità</entry>
 	<entry id="35004" string="Bitrate">Bitrate</entry>
+	<entry id="35005" string="Minimum bitrate">Bitrate minimu</entry>
+	<entry id="35006" string="Average bitrate">Bitrate medianu</entry>
+	<entry id="35007" string="Maximum bitrate">Bitrate massimu</entry>
+	<entry id="35008" string="File extension">Estensione di schedariu</entry>
       </section>
 
       <section name="WMA">
 	<entry id="36000" string="Select codec">Selezziunà u codec</entry>
-	<entry id="36001" string="Select codec format">Selezziunà a forma di codec</entry>
+	<entry id="36001" string="Select codec format">Selezziunà u furmatu di codec</entry>
 	<entry id="36002" string="Codec settings">Preferenze di codec</entry>
 	<entry id="36003" string="Use codec">Impiegà u codec</entry>
-	<entry id="36004" string="Use format">Impiegà a forma</entry>
+	<entry id="36004" string="Use format">Impiegà u furmatu</entry>
 	<entry id="36005" string="Write uncompressed WMA files">Scrittura di i schedarii WMA micca cumpressi</entry>
-	<entry id="36006" string="Automatically select format based on settings and input format">Selezzione autumatica basata nant'à e preferenze è a forma d'entrata</entry>
-	<entry id="36007" string="Use VBR encoding">Impiegà cudificaz. VBR</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">Selezziunà u furmatu autumaticamente basatu nant’à e preferenze è à u furmatu d’entrata</entry>
+	<entry id="36007" string="Use VBR encoding">Impiegà a cudificazione VBR</entry>
 	<entry id="36008" string="Quality">Qualità</entry>
 	<entry id="36009" string="Target bitrate">Bitrate di destinazione</entry>
-	<entry id="36010" string="Use 2-pass encoding">Impiegà cudificaz. 2-passi</entry>
+	<entry id="36010" string="Use 2-pass encoding">Impiegà a cudificazione 2-passi</entry>
       </section>
 
       <section name="TwinVQ">
@@ -658,45 +928,237 @@
 	<entry id="37003" string="Number of preselection candidates">Numeru di preselezzioni pussibule</entry>
       </section>
 
-      <section name="Monkey's Audio"/>
+      <section name="Monkey's Audio">
+	<entry id="38000" string="Compression">Cumpressione</entry>
+	<entry id="38001" string="Compression mode">Modu di cumpressione</entry>
+	<entry id="38002" string="Fast">Rapidu</entry>
+	<entry id="38003" string="Normal">Nurmale</entry>
+	<entry id="38004" string="High">Altu</entry>
+	<entry id="38005" string="Extra high">Altu altu</entry>
+	<entry id="38006" string="Insane">Scemu</entry>
+      </section>
 
       <section name="Speex">
+	<entry id="39000" string="Profile">Prufilu</entry>
+	<entry id="39001" string="Select encoding profile">Selezziunà u prufilu di cudificazione</entry>
 	<entry id="39002" string="auto">autumaticu</entry>
+	<entry id="39003" string="Narrowband (8 kHz)">Fascia stretta (8 kHz)</entry>
+	<entry id="39004" string="Wideband (16 kHz)">Fascia larga (16 kHz)</entry>
+	<entry id="39005" string="Ultra-Wideband (32 kHz)">Fascia ultra larga (32 kHz)</entry>
 	<entry id="39006" string="VBR mode">Modu VBR</entry>
+	<entry id="39007" string="CBR (no VBR)">CBR (micca VBR)</entry>
+	<entry id="39008" string="VBR">VBR</entry>
+	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Ozzioni</entry>
+	<entry id="39011" string="Voice Activity Detection">Avventata di l’attivazione vucale</entry>
+	<entry id="39012" string="Discontinued Transmission">Trasmissione discuntinuu</entry>
+	<entry id="39013" string="Algorithm complexity">Cumplessità di cudificazione</entry>
+	<entry id="39014" string="Complexity">Cumplessità</entry>
+	<entry id="39015" string="CBR quality">Qualità CBR</entry>
 	<entry id="39016" string="VBR quality">Qualità VBR</entry>
 	<entry id="39017" string="ABR target bitrate">Bitrate ABR di destinazione</entry>
 	<entry id="39018" string="Bitrate">Bitrate</entry>
 	<entry id="39019" string="Quality">Qualità</entry>
+	<entry id="39020" string="Max. bitrate">Bitrate massimu</entry>
       </section>
 
       <section name="Opus">
+	<entry id="40000" string="Basic settings">Preferenze di basa</entry>
+	<entry id="40001" string="Encoding mode">Modu di cudificazione</entry>
 	<entry id="40002" string="auto">autumaticu</entry>
+	<entry id="40003" string="Voice">Voce</entry>
+	<entry id="40004" string="Music">Musica</entry>
+	<entry id="40005" string="Bandwidth">Larghezza di fascia</entry>
+	<entry id="40006" string="Narrowband">Fascia stretta</entry>
+	<entry id="40007" string="Mediumband">Fascia mediana</entry>
+	<entry id="40008" string="Wideband">Fascia larga</entry>
+	<entry id="40009" string="Superwideband">Fascia super larga</entry>
+	<entry id="40010" string="Fullband">Fascia sana</entry>
+	<entry id="40011" string="File extension">Estensione di schedariu</entry>
+	<entry id="40012" string="Variable bitrate">Bitrate variabile</entry>
+	<entry id="40013" string="Enable variable bitrate encoding">Permette a cudificazione di bitrate variabile</entry>
+	<entry id="40014" string="Constrain bitrate to target value">Limità u bitrate à u valore di destinazione</entry>
 	<entry id="40015" string="Quality">Qualità</entry>
 	<entry id="40016" string="Bitrate">Bitrate</entry>
+	<entry id="40017" string="Complexity">Cumplessità</entry>
+	<entry id="40018" string="Stream">Flussu</entry>
+	<entry id="40019" string="Frame length">Durata di sequenza</entry>
 	<entry id="40020" string="Options">Ozzioni</entry>
+	<entry id="40021" string="Enable discontinous transmission">Attivà a trasmissione discuntinuu</entry>
+	<entry id="40022" string="Expected packet loss">Perdita aspettata di pacchettu</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41001" string="File format">Forma di schedariu</entry>
-	<entry id="41002" string="Audio format">Forma audio</entry>
+	<entry id="41000" string="Output format">Furmatu d’esciuta</entry>
+	<entry id="41001" string="File format">Furmatu di schedariu</entry>
+	<entry id="41002" string="Audio format">Furmatu audio</entry>
 	<entry id="41003" string="mono">mono</entry>
-
-	<section name="Errors"/>
+	<entry id="41004" string="auto select">Selezzione autumatica</entry>
+	<section name="Errors">
+	 <entry id="41100" string="Could not find suitable audio format.">Ùn si pò truvà un furmatu audio adattatu.</entry>
+	 <entry id="41101" string="Unable to use selected audio format.">Ùn si pò impiegà u furmatu audio selezziunatu.</entry>
+	</section>
       </section>
 
       <section name="meh!">
 	<entry id="42000" string="Encoders">Cudificatori</entry>
+	<entry id="42001" string="Available">Dispunibule</entry>
+	<entry id="42002" string="Selected">Selezziunati</entry>
 	<entry id="42003" string="Configure encoder">Cunfigurà u cudificatore</entry>
+	<entry id="42004" string="Encoder configuration">Cunfigurazione di u cudificatore</entry>
 	<entry id="42005" string="Options">Ozzioni</entry>
+	<entry id="42006" string="Create a separate folder for each output format">Creà un cartulare staccatu per ogni furmatu d’esciuta</entry>
       </section>
     </section>
 
     <section name="DSP">
 
+      <section name="Format">
+	<entry id="50000" string="Sample format">Furmatu di campiunariu</entry>
+	<entry id="50001" string="Number format">Furmatu di numeru</entry>
+	<entry id="50002" string="Sample resolution">Risuluzione di campiunariu</entry>
+	<entry id="50003" string="bit">bit</entry>
+	<entry id="50004" string="unsigned">senza segnu</entry>
+	<entry id="50005" string="Integer">Interu</entry>
+	<entry id="50006" string="Float">Decimale</entry>
+      </section>
+
+      <section name="Channels">
+	<entry id="50100" string="Output channels">Canali d’esciuta</entry>
+	<entry id="50101" string="Channel configuration">Cunfigurazione di canale</entry>
+	<entry id="50102" string="Mono">Mono</entry>
+	<entry id="50103" string="Stereo">Stereo</entry>
+	<entry id="50104" string="Switch stereo channels">Invertisce i canali stereo</entry>
+      </section>
+
       <section name="Resample">
+	<entry id="50200" string="Converter">Cunvertidore</entry>
 	<entry id="50201" string="Sampling rate">Frequenza di campiunariu</entry>
-	<entry id="50202" string="Output sampling rate">Frequenza campiunariu d'esciuta</entry>
+	<entry id="50202" string="Output sampling rate">Frequenza di campiunariu d’esciuta</entry>
+      </section>
+
+      <section name="RubberBand">
+	<entry id="50300" string="Basic controls">Cuntrolli di basa</entry>
+	<entry id="50301" string="Tempo">Tempo</entry>
+	<entry id="50302" string="Pitch">Tunalità</entry>
+	<entry id="50303" string="%1 Semitones">%1 semitoni</entry>
+	<entry id="50304" string="Advanced options">Ozzioni esperte</entry>
+	<entry id="50305" string="Transient detection">Avvintata transitoria</entry>
+	<entry id="50306" string="Compound">Cumpostu</entry>
+	<entry id="50307" string="Percussive">Percutente</entry>
+	<entry id="50308" string="Soft">Dolce</entry>
+	<entry id="50309" string="Transient handling">Ghjestione transitoria</entry>
+	<entry id="50310" string="Crisp">Vivace</entry>
+	<entry id="50311" string="Mixed">Mistu</entry>
+	<entry id="50312" string="Smooth">Lisciu</entry>
+	<entry id="50313" string="Transformation window">Finestra di trasfurmazione</entry>
+	<entry id="50314" string="Standard">Classica</entry>
+	<entry id="50315" string="Short">Corta</entry>
+	<entry id="50316" string="Long">Longa</entry>
+	<entry id="50317" string="Use time-domain smoothing">Impiegà un’allisciata di duminiu di tempu</entry>
+	<entry id="50318" string="Phase handling">Ghjestione di fasa</entry>
+	<entry id="50319" string="Laminar">Laminariu</entry>
+	<entry id="50320" string="Independent">Indipendente</entry>
+	<entry id="50321" string="Formant handling">Ghjestione di formante</entry>
+	<entry id="50322" string="Shift">Sculiscera</entry>
+	<entry id="50323" string="Preserve">Cunservazione</entry>
+	<entry id="50324" string="Pitch processing">Trattamentu di tunalità</entry>
+	<entry id="50325" string="High quality">Alta qualità</entry>
+	<entry id="50326" string="High speed">Alta vitezza</entry>
+	<entry id="50327" string="High consistency">Alta unifurmità</entry>
+	<entry id="50328" string="Stereo processing">Trattamentu stereo</entry>
+	<entry id="50329" string="Separate">Separatu</entry>
+	<entry id="50330" string="Combined">Cumbinatu</entry>
+      </section>
+
+      <section name="RNNoise">
+	<entry id="50400" string="Signal/noise type">Tipu signale/trostu</entry>
+	<entry id="50401" string="Signal type">Tipu signale</entry>
+	<entry id="50402" string="Noise type">Tipu trostu</entry>
+	<entry id="50403" string="General">Generale</entry>
+	<entry id="50404" string="Recording">Arregistramentu</entry>
+	<entry id="50405" string="Voice (incl. laughter etc.)">Voce (incl. risata, ecc.)</entry>
+	<entry id="50406" string="Speech">Parlatu</entry>
+      </section>
+    </section>
+
+    <section name="Taggers">
+
+      <section name="MP4">
+	<entry id="60000" string="Chapter format">Furmatu di capitulu</entry>
+	<entry id="60001" string="both">tramindui</entry>
+      </section>
+    </section>
+
+    <section name="External">
+      <entry id="80000" string="Downmix multi-channel audio to stereo">Cunvertisce in stereo i canali audio multipli</entry>
+
+      <section name="Musepack Audio Encoder">
+	<entry id="80100" string="Quality">Qualità</entry>
+	<entry id="80101" string="poor">bassa</entry>
+	<entry id="80102" string="excellent">eccellente</entry>
+	<entry id="80103" string="Mid/Side stereo mode">Modu stereo Mid/Side</entry>
+	<entry id="80104" string="off">spintu</entry>
+	<entry id="80105" string="reduced">riduttu</entry>
+	<entry id="80106" string="on">accesu</entry>
+	<entry id="80107" string="decoupled">scuppiatu</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">aummentatu 1.5/3 dB</entry>
+	<entry id="80109" string="enhanced 2/6 dB">aummentatu 2/6 dB</entry>
+	<entry id="80110" string="enhanced 2.5/9 dB">aummentatu 2.5/9 dB</entry>
+	<entry id="80111" string="enhanced 3/12 dB">aummentatu 3/12 dB</entry>
+	<entry id="80112" string="enhanced 3/inf dB">aummentatu 3/inf dB</entry>
+	<entry id="80113" string="Adaptive noise shaping order">Ordine di fattura di trostu adattata</entry>
+	<entry id="80114" string="high">altu</entry>
+	<entry id="80115" string="Clear Voice Detection">Avventata di voce chjara</entry>
+	<entry id="80116" string="dual">doppiu</entry>
+      </section>
+
+      <section name="OptimFROG Lossless Encoder">
+	<entry id="80200" string="Encoding mode">Modu di cudificazione</entry>
+	<entry id="80201" string="fast">rapidu</entry>
+	<entry id="80202" string="normal">nurmale</entry>
+	<entry id="80203" string="high">altu</entry>
+	<entry id="80204" string="extra">estrà</entry>
+	<entry id="80205" string="best">megliu</entry>
+	<entry id="80206" string="high, new">altu, novu</entry>
+	<entry id="80207" string="extra, new">estrà, novu</entry>
+	<entry id="80208" string="best, new">megliu, novu</entry>
+	<entry id="80209" string="Add MD5 checksum">Aghjunghje somma di cuntrollu MD5</entry>
+	<entry id="80210" string="Seeking">Ricerca</entry>
+	<entry id="80211" string="slow">piana</entry>
+	<entry id="80212" string="minimum">minima</entry>
+	<entry id="80213" string="Optimization">Migliuramentu</entry>
+	<entry id="80214" string="disabled">disattivatu</entry>
+	<entry id="80215" string="low">bassu</entry>
+      </section>
+
+      <section name="Tom's Audiokompressor">
+	<entry id="80300" string="Encoder preset">Predefinizione di cudificatore</entry>
+	<entry id="80301" string="fastest">u più rapidu</entry>
+	<entry id="80302" string="strongest">u più forte</entry>
+	<entry id="80303" string="Frame size limit">Limitu di dimensione di sequenza</entry>
+	<entry id="80304" string="Add MD5 checksum">Aghjunghje somma di cuntrollu MD5</entry>
+      </section>
+
+      <section name="WavPack Audio Encoder">
+	<entry id="80400" string="Enable lossy compression">Attivà a cumpressione cù perdita d’infurmazione</entry>
+	<entry id="80401" string="Compression mode">Modu di cumpressione</entry>
+	<entry id="80402" string="fast">rapidu</entry>
+	<entry id="80403" string="high quality">alta qualità</entry>
+	<entry id="80404" string="very high quality">assai alta qualità</entry>
+	<entry id="80405" string="Extra encode processing">Trattamentu di cudificazione estrà</entry>
+	<entry id="80406" string="faster">più rapida</entry>
+	<entry id="80407" string="better">più bona</entry>
+      </section>
+
+      <section name="Nero AAC Encoder">
+	<entry id="80500" string="Encoding mode">Modu di cudificazione</entry>
+	<entry id="80501" string="auto">autumaticu</entry>
+	<entry id="80502" string="Quality">Qualità</entry>
+	<entry id="80503" string="worse">pechju</entry>
+	<entry id="80504" string="better">più bona</entry>
+	<entry id="80505" string="Bitrate">Bitrate</entry>
+	<entry id="80506" string="Bitrate (Streaming)">Bitrate (Diffusione)</entry>
       </section>
     </section>
 
@@ -705,22 +1167,44 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Aiutà stu prughjettu</entry>
 	<entry id="100001" string="Please support this project!">Per piacè aiutate stu prughjettu !</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Per piacè aiutateci à cunservà liberu stu prugramma facendu un rigalu à u&#10;prughjettu %1.</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Ci vole à scrive à %1 s'è voi preferite aiutaci facendu un&#10;trasferimentu elettronicu, mandà un sceccu o i soldi da un currieru.</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Aiutateci a cunservà stu prugramma gratuitu sustenendu u prughjettu %1&#10;cù una dunazione.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Per piacè scrivite à %1 s’è voi vulete mandà un sceccu&#10;o trasmette soldi da messaghju elettronicu.</entry>
 	<entry id="100004" string="Thank you very much!">Vi ringraziemu assai !</entry>
 	<entry id="100005" string="Remind me later">Rammintatemi un altra volta</entry>
-	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum,sepa</entry>
+	<entry id="100007" string="Donate to the %1 project">Fate una dunazione à u prughjettu %1</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Cliccà unu di sti buttoni sottu per dà qualchì soldu grazia à PayPal :</entry>
-	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Pudete dinù mandà i soldi à %1 cù PayPal.</entry>
-	  <entry id="100102" string="usd">eur</entry>
-	  <entry id="100103" string="$%1">%1€</entry>
-	  <entry id="100104" string="5,10,20,other amount">5,10,20,altra quantità</entry>
+	 <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Sciglite una quantità è impiegate u buttone per dà qualchì soldu cù PayPal :</entry>
+	 <entry id="100101" string="You can also send money directly to %1 with PayPal.">Pudete dinù mandà i soldi à %1 cù PayPal.</entry>
+	 <entry id="100102" string="usd">eur</entry>
+	 <entry id="100103" string="$%1">%1€</entry>
+	 <entry id="100104" string="5,10,20,other amount">5,10,20,altra somma</entry>
+	 <entry id="100105" string="monthly recurring">ricurrente misincu</entry>
+	 <entry id="100106" string="Donate">Dunazione</entry>
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100202" string="usd">eur</entry>
+	 <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox permette dunazioni rapide è simplice impieghendu una carta&#10;di creditu. Impiegà stu buttone per dà qualchì soldu cù Donorbox :</entry>
+	 <entry id="100201" string="Donate">Dunazione</entry>
+	 <entry id="100202" string="usd">eur</entry>
+	</section>
+
+	<section name="Bitcoin">
+	 <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Per fà una dunazione via Bitcoin, ci vole à fà un scan&#10;o cliccà nant’à u codice QR, o ancu cupià st’indirizzu :</entry>
+	 <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">St’indirizzu accetteghja dinù pagamenti via Bitcoin Cash è altri imbrancamenti.</entry>
+	</section>
+
+	<section name="Ethereum">
+	 <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Per fà una dunazione via Ethereum, ci vole à fà un scan&#10;o cliccà nant’à u codice QR, o ancu cupià st’indirizzu :</entry>
+	 <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">St’indirizzu accetteghja dinù e marche ERC20 è Ether Classic.</entry>
+	</section>
+
+	<section name="SEPA">
+	 <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Pudete dà qualchì soldu facendu un trasferimentu&#10;elettronicu ver di stu contu :</entry>
+	 <entry id="100501" string="Account holder:">Titulare di u contu :</entry>
+	 <entry id="100502" string="IBAN:">IBAN :</entry>
+	 <entry id="100503" string="BIC:">BIC :</entry>
 	</section>
       </section>
 
@@ -730,35 +1214,142 @@
       </section>
 
       <section name="Video Downloader">
-	<entry id="102014" string="Length">Longhezza</entry>
+	<entry id="102000" string="Video">Video</entry>
+	<entry id="102001" string="Enter video URL here">Indicà l’indirizzu di a video quì</entry>
+	<entry id="102002" string="Download">Scaricà</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">Scaricà autumaticamente l’indirizzi cupiati ver di u preme’papei</entry>
+	<entry id="102004" string="Save downloaded video files">Arregistrà i schedarii video scaricati</entry>
+	<entry id="102005" string="Video downloads">Scaricamenti video</entry>
+	<entry id="102006" string="Downloaded tracks">Traccie scaricate</entry>
+	<entry id="102007" string="Uploader">Incaricadore</entry>
+	<entry id="102008" string="Video URL">Indirizzu di a video</entry>
+	<entry id="102009" string="Video title">Titulu di a video</entry>
+	<entry id="102010" string="Video description">Discrizzione di a video</entry>
+	<entry id="102011" string="Site name">Nome di u situ</entry>
+	<entry id="102012" string="Uploaded by">Incaricatu da</entry>
+	<entry id="102013" string="Uploaded on">Incaricatu u</entry>
+	<entry id="102014" string="Length">Durata</entry>
 	<entry id="102015" string="Size">Dimensione</entry>
+	<entry id="102016" string="Cancel download">Abbandunà u scaricamentu</entry>
+	<entry id="102017" string="unknown">scunnisciutu</entry>
+	<entry id="102018" string="Note">Nota</entry>
 
 	<section name="Configuration">
-	  <entry id="102101" string="Automatization">Autumatisazione</entry>
-	  <entry id="102103" string="Select">Sfuglià</entry>
+	 <entry id="102101" string="Automatization">Autumatisazione</entry>
+	 <entry id="102102" string="Video files">Schedarii video</entry>
+	 <entry id="102103" string="Select">Selezziunà</entry>
+	 <entry id="102104" string="Select the folder to save downloaded video files to">Selezziunà u cartulare induve arregistrà i schedarii video scaricati</entry>
+	 <entry id="102105" string="Downloads">Scaricamenti</entry>
+	 <entry id="102106" string="Maximum number of simultaneous downloads">Numeru massimu di scaricamenti simultanei</entry>
+	 <entry id="102107" string="Output format">Furmatu d’esciuta</entry>
+	 <entry id="102108" string="keep original format">cunservà u furmatu d’urigine</entry>
 	</section>
 
-	<section name="Errors"/>
+	<section name="Errors">
+	 <entry id="102201" string="This URL is not supported or not a video page URL!">St’indirizzu ùn hè micca accettata o micca una pagina di video.</entry>
+	 <entry id="102202" string="Error downloading video!">Sbagliu durante u scaricamentu di a video !</entry>
+	 <entry id="102203" string="You are already downloading this video!">Site dighjà in treccia di scaricà sta video !</entry>
+	 <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Qualchì discudificatore video richiestu ùn si trova micca.&#10;I schedarii video ùn ponu micca esse aghjunti à a lista di&#10;travagliu per una cunversione audio. Ci cole à installà&#10;avconv o FFmpeg per currege stu penseru !</entry>
+	</section>
       </section>
 
       <section name="Tag Editor">
-	<entry id="103000" string="Tags">Etichette d'infurmazione</entry>
-	<entry id="103001" string="Length">Longhezza</entry>
+	<entry id="103000" string="Tags">Etichette</entry>
+	<entry id="103001" string="Length">Durata</entry>
 	<entry id="103002" string="Size">Dimensione</entry>
+	<entry id="103003" string="Albums">Albumi</entry>
+	<entry id="103004" string="Files">Schedarii</entry>
 	<entry id="103005" string="File">Schedariu</entry>
+	<entry id="103006" string="Tracks">Traccie</entry>
+	<entry id="103007" string="Save">Arregistrà</entry>
+	<entry id="103008" string="Save all">Tuttu arregistrà</entry>
+	<entry id="103009" string="no audio files found">alcunu schedariu audio trovu</entry>
 
 	<section name="Basic">
-	  <entry id="103100" string="Basic">Basicu</entry>
-	  <entry id="103107" string="Add">Aghjunghje</entry>
-	  <entry id="103108" string="Remove">Caccià</entry>
+	 <entry id="103100" string="Basic">Basicu</entry>
+	 <entry id="103101" string="Title information">Infurmazione di titulu</entry>
+	 <entry id="103102" string="Disc">Discu</entry>
+	 <entry id="103103" string="Cover art">Cuprendula</entry>
+	 <entry id="103104" string="Covers">Cuprendule</entry>
+	 <entry id="103105" string="Type">Tipu</entry>
+	 <entry id="103106" string="Description">Discrizzione</entry>
+	 <entry id="103107" string="Add">Aghjunghje</entry>
+	 <entry id="103108" string="Remove">Caccià</entry>
 	</section>
 
-	<section name="Details"/>
+	<section name="Details">
+	 <entry id="103200" string="Details">Detaglii</entry>
+	 <entry id="103201" string="Detailed information">Infurmazioni ditagliate</entry>
+	 <entry id="103202" string="Band / orchestra">Gruppu / orchestru</entry>
+	 <entry id="103203" string="Conductor">Sceffu d’orchestru</entry>
+	 <entry id="103204" string="Composer">Cumpositore</entry>
+	 <entry id="103205" string="Lyrics writer">Parullaghju</entry>
+	 <entry id="103206" string="Modified / remixed by">Mudificatu / mischiatu da</entry>
+	 <entry id="103207" string="Publisher information">Infurmazione di l’editore</entry>
+	 <entry id="103208" string="Publisher / label">Editore / casa</entry>
+	 <entry id="103209" string="ISRC">Codice ISRC</entry>
+	 <entry id="103210" string="Tempo">Tempo</entry>
+	 <entry id="103211" string="BPM">Ritmu BPM</entry>
+	</section>
 
-	<section name="Other"/>
+	<section name="Other">
+	 <entry id="103300" string="Other">Altra</entry>
+	 <entry id="103301" string="Original information">Infurmazioni d’urigine</entry>
+	 <entry id="103302" string="Original artist">Artista d’urigine</entry>
+	 <entry id="103303" string="Original album">Albumu d’urigine</entry>
+	 <entry id="103304" string="Original lyrics writer">Parullaghju d’urigine</entry>
+	 <entry id="103305" string="Original release year">Annu d’urigine di publicazione</entry>
+	 <entry id="103306" string="Webpage URLs">Indirizzi web</entry>
+	 <entry id="103307" string="Artist webpage">Pagina web di l’artista</entry>
+	 <entry id="103308" string="Publisher webpage">Pagina web di l’editore</entry>
+	 <entry id="103309" string="Internet radio station">Radio nant’à Internet</entry>
+	 <entry id="103310" string="Audio source webpage">Pagina web di a fonte audio</entry>
+	 <entry id="103311" string="Copyright information">Infurmazioni nant’à i diritti di copia</entry>
+	 <entry id="103312" string="Commercial information">Infurmazioni cummerciali</entry>
+	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Impussibule d'apre u schedariu : %1&#10;&#10;Sbagliu : %2</entry>
+	 <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Impussibule d’apre u schedariu : %1&#10;&#10;Sbagliu : %2</entry>
+	 <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Impussibule di mudificà l’etichetta : %1&#10;&#10;Sbagliu : %2</entry>
+	</section>
+      </section>
+
+      <section name="Logging">
+	<entry id="104000" string="Logs">Ghjurnali di messaghji</entry>
+	<entry id="104001" string="Log">Ghjurnale di messaghji</entry>
+	<entry id="104002" string="Save as">Arregistrà cù u nome</entry>
+	<entry id="104003" string="Log Files">Schedarii di ghjurnali</entry>
+	<entry id="104004" string="Time">Ora</entry>
+	<entry id="104005" string="Message">Messaghju</entry>
+
+	<section name="Configuration">
+	 <entry id="104100" string="User interface">Interfaccia di l’utilizatore</entry>
+	 <entry id="104101" string="Show Logs tab in main window">Affissa l’unghjetta Ghjurnali di messaghji in a finestra principale</entry>
+	 <entry id="104102" string="Log files">Schedarii di ghjurnali</entry>
+	 <entry id="104103" string="Archive log files">Archivii di i ghjurnali di messaghji</entry>
+	 <entry id="104104" string="Log file folder">Cartulare di i ghjurnali di messaghji</entry>
+	 <entry id="104105" string="Select">Selezziunà</entry>
+	 <entry id="104106" string="Select the folder for saving log files">Selezziunà u cartulare induve arregistrà i ghjurnali di messaghji</entry>
+	 <entry id="104107" string="Delete old log files after">Squassà i ghjurnali di messaghji più vechji chì</entry>
+	 <entry id="104108" string="days">ghjorni</entry>
+	 <entry id="104109" string="Conversion logs">Ghjurnali di cunversione</entry>
+	 <entry id="104110" string="Save conversion logs with audio files">Arregistrà i ghjurnali di cunversione cù i schedarii audio</entry>
+	 <entry id="104111" string="Audio CD ripping logs only">Creà i ghjurnali solu per l’estrazzione di e traccie d’un CD audio</entry>
+	 <entry id="104112" string="Filename pattern">Mudellu di nome di schedariu</entry>
+	</section>
+      </section>
+
+      <section name="Notifier">
+	<entry id="105000" string="Conversion process finished!">Trattamentu di cunversione compiu !</entry>
+	<section name="Configuration">
+	 <entry id="105100" string="Notifications">Nutificazioni</entry>
+	 <entry id="105101" string="Notify on finished conversion">Avisà à a fine d’una cunversione</entry>
+	 <entry id="105102" string="Play sound">Sente un sonu</entry>
+	 <entry id="105103" string="Display message">Affissà un messaghju</entry>
+	 <entry id="105104" string="Select">Selezziunà</entry>
+	 <entry id="105105" string="Only for conversions running longer than">Solu per e cunversioni più longhe chì</entry>
+	 <entry id="105106" string="second(s)">seconda(e)</entry>
+	 <entry id="105107" string="minute(s)">minutu(i)</entry>
 	</section>
       </section>
     </section>

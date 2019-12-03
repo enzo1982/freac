@@ -2,12 +2,12 @@
 <LangFile>
   <info>
     <property name="program">easyUpdate</property>
-    <property name="version">0.3</property>
+    <property name="version">1.1</property>
     <property name="language">Corsican / Corsu</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="author">Patriccollu di Santa Maria è Sichè</property>
-    <property name="url">https://www.freac.org/</property>
+    <property name="url">http://www.chapter0.net/easyUpdate/</property>
   </info>
   <data>
     <entry id="1" string="Cancel">Abbandunà</entry>
@@ -23,12 +23,12 @@
     <entry id="11" string="Yes">Iè</entry>
     <entry id="12" string="No">Innò</entry>
     <entry id="13" string="unknown">scunnisciutu</entry>
-    <entry id="14" string="Installing files...">Installazione in corsu di i schedarii...</entry>
-    <entry id="15" string="Installing file:">Installazione in corsu di u schedariu :</entry>
-    <entry id="16" string="Downloading file:">Telecaricamentu in corsu di u schedariu :</entry>
+    <entry id="14" string="Installing files...">Installazione di i schedarii…</entry>
+    <entry id="15" string="Installing file:">Installazione di u schedariu :</entry>
+    <entry id="16" string="Downloading file:">Scaricamentu di u schedariu :</entry>
     <entry id="17" string="Update complete">Rinnovu compiu</entry>
-    <entry id="18" string="Your application has been successfully updated!">A vostr"appiecazione hè stata rinnovata bè !</entry>
+    <entry id="18" string="Your application has been successfully updated!">A vostr’appiecazione hè stata rinnovata bè !</entry>
     <entry id="19" string="Error">Sbagliu</entry>
-    <entry id="20" string="Error downloading package!">Sbagliu durante u telecaricamentu di u pacchettu !</entry>
+    <entry id="20" string="Error downloading package!">Sbagliu durante u scaricamentu di u pacchettu !</entry>
   </data>
 </LangFile>
