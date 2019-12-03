@@ -994,6 +994,7 @@
 	<entry id="41002" string="Audio format">Furmatu audio</entry>
 	<entry id="41003" string="mono">mono</entry>
 	<entry id="41004" string="auto select">Selezzione autumatica</entry>
+
 	<section name="Errors">
 	 <entry id="41100" string="Could not find suitable audio format.">Ùn si pò truvà un furmatu audio adattatu.</entry>
 	 <entry id="41101" string="Unable to use selected audio format.">Ùn si pò impiegà u furmatu audio selezziunatu.</entry>
@@ -1341,6 +1342,7 @@
 
       <section name="Notifier">
 	<entry id="105000" string="Conversion process finished!">Trattamentu di cunversione compiu !</entry>
+
 	<section name="Configuration">
 	 <entry id="105100" string="Notifications">Nutificazioni</entry>
 	 <entry id="105101" string="Notify on finished conversion">Avisà à a fine d’una cunversione</entry>
