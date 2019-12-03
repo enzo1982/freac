@@ -715,7 +715,7 @@
       <section name="mpg123">
 	<entry id="21000" string="Decoder">Decoder</entry>
 	<entry id="21001" string="Active decoder">Active decoder</entry>
- 	<entry id="21002" string="auto select">auto select</entry>
+	<entry id="21002" string="auto select">auto select</entry>
       </section>
 
       <section name="CueSheet">

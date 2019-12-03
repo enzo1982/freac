@@ -9,6 +9,7 @@
     <property name="template">template.xml</property>
     <property name="author">Phan Anh &lt;ppanhh@gmail.com&gt;</property>
     <property name="url">https://iamphananh.blogspot.com/</property>
+    <property name="incomplete">true</property>
   </info>
   <data>
     <entry id="100" string="OK">Đồng ý</entry>

@@ -591,7 +591,7 @@
       <entry id="7000" string="Currently converting">Compressió iniciada</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">El procés de compressió encara no ha acabat! Realment vol eixir?</entry>
       <entry id="7002" string="Delete original files after encoding">Eliminar els arxius originals a l'acabar la codificació</entry>
-      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Esta opció elimina els arxius originals a l'acabar &#10;la codificació!&#10;&#10;Està vosté segur d'activar esta funció?</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Esta opció elimina els arxius originals a l'acabar&#10;la codificació!&#10;&#10;Està vosté segur d'activar esta funció?</entry>
       <entry id="7004" string="Keep this option enabled even after restarting %1"/>
       <entry id="7005" string="File already exists">L'arxiu ja existix</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">L'arxiu d'eixida %1&#10;ja existix! Desitja sobreescriure'l?</entry>

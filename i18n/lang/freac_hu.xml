@@ -9,6 +9,7 @@
     <property name="template">template.xml</property>
     <property name="author">Tóth Péter &lt;golbat72@gportal.hu&gt;</property>
     <property name="url">https://www.freac.org/</property>
+    <property name="incomplete">true</property>
   </info>
   <data>
     <entry id="100" string="OK">Rendben!</entry>

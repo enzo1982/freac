@@ -715,7 +715,7 @@
       <section name="mpg123">
 	<entry id="21000" string="Decoder"/>
 	<entry id="21001" string="Active decoder"/>
- 	<entry id="21002" string="auto select"/>
+	<entry id="21002" string="auto select"/>
       </section>
 
       <section name="CueSheet">
@@ -1172,7 +1172,7 @@
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Please write to %1 if you would like to mail a cheque or send&#10;money by mail.</entry>
 	<entry id="100004" string="Thank you very much!"/>
 	<entry id="100005" string="Remind me later"/>
-	<entry id="100006" string="paypal,donorbox,sepa,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 	<entry id="100007" string="Donate to the %1 project"/>
 
 	<section name="PayPal">
