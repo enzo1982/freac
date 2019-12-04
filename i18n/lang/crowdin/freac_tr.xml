@@ -16,21 +16,21 @@
     <entry id="102" string="Close">Kapat</entry>
 
     <entry id="200" string="Error">Hata</entry>
-    <entry id="201" string="Warning">Bilgi</entry>
+    <entry id="201" string="Warning"/>
     <entry id="202" string="Info">Bilgi</entry>
 
-    <entry id="210" string="Do not display this warning again">Başlık</entry>
-    <entry id="211" string="Do not display this note again">Albüm</entry>
+    <entry id="210" string="Do not display this warning again"/>
+    <entry id="211" string="Do not display this note again"/>
 
     <entry id="300" string="Artist">Sanatçı</entry>
     <entry id="301" string="Title">Başlık</entry>
     <entry id="302" string="Album">Albüm</entry>
-    <entry id="303" string="Track">Yıl</entry>
+    <entry id="303" string="Track"/>
     <entry id="304" string="Genre">Tür</entry>
     <entry id="305" string="Comment">Yorum</entry>
     <entry id="306" string="Year">Yıl</entry>
-    <entry id="307" string="Disc">Bilinmeyen tür</entry>
-    <entry id="308" string="Rating">Bilinmeyen yıl</entry>
+    <entry id="307" string="Disc"/>
+    <entry id="308" string="Rating"/>
     <entry id="309" string="File name"/>
     <entry id="310" string="File type"/>
     <entry id="311" string="Album artist"/>
@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 bytes</entry>
-      <entry id="517" string="%1 kB">%1%</entry>
+      <entry id="517" string="%1 kB"/>
       <entry id="518" string="%1%"/>
     </section>
 
@@ -68,7 +68,7 @@
       <entry id="1000" string="File">Dosya</entry>
       <entry id="1001" string="Options">Ayarlar</entry>
       <entry id="1002" string="Database">Veritabanı</entry>
-      <entry id="1003" string="Processing">Çevir</entry>
+      <entry id="1003" string="Processing"/>
       <entry id="1004" string="Encode">Çevir</entry>
       <entry id="1005" string="Help">Yardım</entry>
 
@@ -105,15 +105,15 @@
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing">Çevirmeye başla</entry>
-	<entry id="1401" string="Enable processing during playback">Çevirmeye başla</entry>
-	<entry id="1402" string="Configure signal processing">Çeviriyi duraklat/devam ettir</entry>
-	<entry id="1403" string="Selected signal processors">Çevirmeyi durdur</entry>
+	<entry id="1400" string="Enable signal processing"/>
+	<entry id="1401" string="Enable processing during playback"/>
+	<entry id="1402" string="Configure signal processing"/>
+	<entry id="1403" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Çevirmeye başla</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">Günün İpucunu göster</entry>
+	<entry id="1501" string="Start encoding (deleting original files)"/>
 	<entry id="1502" string="Start encoding with">Çevirmeye başla</entry>
 	<entry id="1503" string="Pause/resume encoding">Çeviriyi duraklat/devam ettir</entry>
 	<entry id="1504" string="Stop encoding">Çevirmeyi durdur</entry>
@@ -147,7 +147,7 @@
       <entry id="2006" string="Configure general settings">Genel ayarları değiştir</entry>
       <entry id="2007" string="Configure the selected audio encoder">Seçilen çevirici ayarlarını değiştir</entry>
       <entry id="2008" string="Start the encoding process">Çevirmeye başla</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Çeviriyi duraklat/devam ettir</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)"/>
       <entry id="2010" string="Pause/resume encoding">Çeviriyi duraklat/devam ettir</entry>
       <entry id="2011" string="Stop encoding">Çevirmeyi durdur</entry>
     </section>
@@ -176,7 +176,7 @@
       <entry id="3020" string="Remove">Sil</entry>
       <entry id="3021" string="Clear joblist">Görev listesini temizle</entry>
       <entry id="3022" string="Use for all selected tracks">Tüm seçilmiş dosyalar için kullan</entry>
-      <entry id="3023" string="Interpret string as">Interpret string as</entry>
+      <entry id="3023" string="Interpret string as"/>
       <entry id="3024" string="selected tracks">seçilen dosyalar</entry>
       <entry id="3025" string="Adjust upper/lower case">BÜYÜK/küçük harf değiştir</entry>
       <entry id="3026" string="all words upper case">Tüm kelimeler BÜYÜK HARFLE</entry>
@@ -219,7 +219,7 @@
 	<entry id="3201" string="Pattern">Şablon</entry>
 	<entry id="3202" string="Start folder">Başlangıç dizini</entry>
 	<entry id="3203" string="Filename pattern">Dosya adı şablonu</entry>
-	<entry id="3204" string="Search subfolders">Görev listesine eklenecek klasörü seçin</entry>
+	<entry id="3204" string="Search subfolders"/>
 	<entry id="3205" string="Select the folder to add to the joblist">Görev listesine eklenecek klasörü seçin</entry>
       </section>
 
@@ -325,7 +325,7 @@
 	<entry id="4203" string="Query all">Hepsini sorgula</entry>
 	<entry id="4204" string="Query string">Sorgu metni</entry>
 	<entry id="4205" string="CDDB queries to perform">Yapılacak CDDB sorgusu</entry>
-	<entry id="4206" string="Querying CD information">CDDB sunucu</entry>
+	<entry id="4206" string="Querying CD information"/>
       </section>
 
       <section name="Manage submits">
@@ -379,7 +379,7 @@
       <entry id="5023" string="Resources"/>
       <entry id="5024" string="Verifiers"/>
       <entry id="5025" string="Taggers"/>
-      <entry id="5026" string="Processing">Çevir</entry>
+      <entry id="5026" string="Processing"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Çevirici ayarları</entry>
@@ -552,8 +552,8 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing"/>
-	<entry id="5901" string="Enable signal processing">Çevirmeye başla</entry>
-	<entry id="5902" string="Enable processing during playback">Çevirmeye başla</entry>
+	<entry id="5901" string="Enable signal processing"/>
+	<entry id="5902" string="Enable processing during playback"/>
 	<entry id="5903" string="Components"/>
 	<entry id="5904" string="Available"/>
 	<entry id="5905" string="Selected"/>
@@ -708,19 +708,19 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="20000" string="Decoding">Bu projeyi destekle</entry>
-	<entry id="20001" string="Enable 24 bit decoding">Lütfen bu projeyi destekleyin!</entry>
+	<entry id="20000" string="Decoding"/>
+	<entry id="20001" string="Enable 24 bit decoding"/>
       </section>
 
       <section name="mpg123">
-	<entry id="21000" string="Decoder">Ayarla</entry>
+	<entry id="21000" string="Decoder"/>
 	<entry id="21001" string="Active decoder"/>
- 	<entry id="21002" string="auto select"/>
+	<entry id="21002" string="auto select"/>
       </section>
 
       <section name="CueSheet">
-	<entry id="22000" string="Title information">Uzunluk</entry>
-	<entry id="22001" string="Read tags from referenced files">Boyut</entry>
+	<entry id="22000" string="Title information"/>
+	<entry id="22001" string="Read tags from referenced files"/>
 	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags"/>
 	<entry id="22003" string="Alternative files"/>
 	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
@@ -738,11 +738,11 @@
 	<entry id="30003" string="Original bit">Original bit</entry>
 	<entry id="30004" string="Channels">Kanallar</entry>
 	<entry id="30005" string="Private bit">Private bit</entry>
-	<entry id="30006" string="Set Copyright bit">Set Copyright bit</entry>
+	<entry id="30006" string="Set Copyright bit"/>
 	<entry id="30007" string="Enable CRC">CRC aktif</entry>
-	<entry id="30008" string="Set Original bit">Set Original bit</entry>
+	<entry id="30008" string="Set Original bit"/>
 	<entry id="30009" string="Dual channel encoding">Çift kanal çeviri</entry>
-	<entry id="30010" string="Set Private bit">Set Private bit</entry>
+	<entry id="30010" string="Set Private bit"/>
       </section>
 
       <section name="Bonk">
@@ -783,9 +783,9 @@
 
 	<section name="Misc">
 	  <entry id="32200" string="Control bits">Kontrol bitleri</entry>
-	  <entry id="32201" string="Set Copyright bit">Set Copyright bit</entry>
-	  <entry id="32202" string="Set Original bit">Set Original bit</entry>
-	  <entry id="32203" string="Set Private bit">Set Private bit</entry>
+	  <entry id="32201" string="Set Copyright bit"/>
+	  <entry id="32202" string="Set Original bit"/>
+	  <entry id="32203" string="Set Private bit"/>
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">CRC aktif</entry>
 	  <entry id="32206" string="Stereo mode">Stereo biçimi</entry>
@@ -873,7 +873,7 @@
 	</section>
 
 	<section name="Format">
-	  <entry id="34200" string="Use streamable subset">Use streamable subset</entry>
+	  <entry id="34200" string="Use streamable subset"/>
 	  <entry id="34201" string="Blocksize">Blok boyutu</entry>
 	</section>
 
@@ -882,16 +882,16 @@
 	  <entry id="34301" string="Window function(s)">Düzeltme fonksiyonu(ları)</entry>
 	  <entry id="34302" string="Note">Not</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Noktalı virgülle ayırarak birden çok fonksiyon kullanabilirsiniz.</entry>
-	  <entry id="34304" string="Linear predictor">Linear predictor</entry>
-	  <entry id="34305" string="Maximum LPC order">Maximum LPC order</entry>
+	  <entry id="34304" string="Linear predictor"/>
+	  <entry id="34305" string="Maximum LPC order"/>
 	  <entry id="34306" string="disabled">aktif değil</entry>
-	  <entry id="34307" string="Exhaustive model search">Exhaustive model search</entry>
-	  <entry id="34308" string="Quantized LPC precision">Quantized LPC precision</entry>
+	  <entry id="34307" string="Exhaustive model search"/>
+	  <entry id="34308" string="Quantized LPC precision"/>
 	  <entry id="34309" string="auto">otomatik</entry>
-	  <entry id="34310" string="Optimize LPC quantization">Optimize LPC quantization</entry>
-	  <entry id="34311" string="Residual coding">Residual coding</entry>
-	  <entry id="34312" string="Minimum partition order">Minimum partition order</entry>
-	  <entry id="34313" string="Maximum partition order">Maximum partition order</entry>
+	  <entry id="34310" string="Optimize LPC quantization"/>
+	  <entry id="34311" string="Residual coding"/>
+	  <entry id="34312" string="Minimum partition order"/>
+	  <entry id="34313" string="Maximum partition order"/>
 	</section>
       </section>
 
@@ -1268,8 +1268,8 @@
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Temel</entry>
-	  <entry id="103101" string="Title information">Uzunluk</entry>
-	  <entry id="103102" string="Disc">Bilinmeyen tür</entry>
+	  <entry id="103101" string="Title information"/>
+	  <entry id="103102" string="Disc"/>
 	  <entry id="103103" string="Cover art"/>
 	  <entry id="103104" string="Covers"/>
 	  <entry id="103105" string="Type"/>
