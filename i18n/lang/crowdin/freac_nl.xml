@@ -16,21 +16,21 @@
     <entry id="102" string="Close">Sluiten</entry>
 
     <entry id="200" string="Error">Fout</entry>
-    <entry id="201" string="Warning">Info</entry>
-    <entry id="202" string="Info">Artiest</entry>
+    <entry id="201" string="Warning"/>
+    <entry id="202" string="Info"/>
 
-    <entry id="210" string="Do not display this warning again">Titel</entry>
-    <entry id="211" string="Do not display this note again">Album</entry>
+    <entry id="210" string="Do not display this warning again"/>
+    <entry id="211" string="Do not display this note again"/>
 
     <entry id="300" string="Artist">Artiest</entry>
     <entry id="301" string="Title">Titel</entry>
-    <entry id="302" string="Album">Commentaar</entry>
+    <entry id="302" string="Album"/>
     <entry id="303" string="Track">Nummer</entry>
-    <entry id="304" string="Genre">onbekende artiest</entry>
+    <entry id="304" string="Genre"/>
     <entry id="305" string="Comment">Commentaar</entry>
     <entry id="306" string="Year">Jaar</entry>
-    <entry id="307" string="Disc">onbekend genre</entry>
-    <entry id="308" string="Rating">onbekend jaar</entry>
+    <entry id="307" string="Disc"/>
+    <entry id="308" string="Rating"/>
     <entry id="309" string="File name"/>
     <entry id="310" string="File type"/>
     <entry id="311" string="Album artist"/>
@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 bytes</entry>
-      <entry id="517" string="%1 kB">%1%</entry>
+      <entry id="517" string="%1 kB"/>
       <entry id="518" string="%1%"/>
     </section>
 
@@ -68,7 +68,7 @@
       <entry id="1000" string="File">Bestand</entry>
       <entry id="1001" string="Options">Opties</entry>
       <entry id="1002" string="Database">Databank</entry>
-      <entry id="1003" string="Processing">Coderen</entry>
+      <entry id="1003" string="Processing"/>
       <entry id="1004" string="Encode">Coderen</entry>
       <entry id="1005" string="Help">Help</entry>
 
@@ -105,15 +105,15 @@
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing">Coderen starten</entry>
-	<entry id="1401" string="Enable processing during playback">Coderen starten met</entry>
-	<entry id="1402" string="Configure signal processing">Coderen pauzeren/hervatten</entry>
-	<entry id="1403" string="Selected signal processors">Coderen stoppen</entry>
+	<entry id="1400" string="Enable signal processing"/>
+	<entry id="1401" string="Enable processing during playback"/>
+	<entry id="1402" string="Configure signal processing"/>
+	<entry id="1403" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Coderen starten</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">Tip van de dag tonen</entry>
+	<entry id="1501" string="Start encoding (deleting original files)"/>
 	<entry id="1502" string="Start encoding with">Coderen starten met</entry>
 	<entry id="1503" string="Pause/resume encoding">Coderen pauzeren/hervatten</entry>
 	<entry id="1504" string="Stop encoding">Coderen stoppen</entry>
@@ -147,7 +147,7 @@
       <entry id="2006" string="Configure general settings">Algemene instellingen configureren</entry>
       <entry id="2007" string="Configure the selected audio encoder">Geselecteerde encoder configureren</entry>
       <entry id="2008" string="Start the encoding process">Het coderingsproces starten</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Coderen pauzeren/hervatten</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)"/>
       <entry id="2010" string="Pause/resume encoding">Coderen pauzeren/hervatten</entry>
       <entry id="2011" string="Stop encoding">Coderen stoppen</entry>
     </section>
@@ -219,7 +219,7 @@
 	<entry id="3201" string="Pattern">Patroon</entry>
 	<entry id="3202" string="Start folder">Beginmap</entry>
 	<entry id="3203" string="Filename pattern">Bestandspatroon</entry>
-	<entry id="3204" string="Search subfolders">Selecteer de map om toe te voegen aan de takenlijst</entry>
+	<entry id="3204" string="Search subfolders"/>
 	<entry id="3205" string="Select the folder to add to the joblist">Selecteer de map om toe te voegen aan de takenlijst</entry>
       </section>
 
@@ -284,7 +284,7 @@
 	<entry id="4002" string="No audio CD in drive!">Geen audio-cd in het station!</entry>
 	<entry id="4003" string="Submitting CD information">Cd-info wordt verzonden</entry>
 	<entry id="4004" string="Update joblist with this information">Takenlijst updaten met deze informatie</entry>
-	<entry id="4005" string="Status">Map van invoerbestand gebruiken indien mogelijk</entry>
+	<entry id="4005" string="Status"/>
 	<entry id="4006" string="Successfully read CD!">Cd succesvol gelezen!</entry>
 	<entry id="4007" string="Save entry">Ingave opslaan</entry>
 	<entry id="4008" string="Various artists">Verschillende artiesten</entry>
@@ -325,7 +325,7 @@
 	<entry id="4203" string="Query all">Alles opzoeken</entry>
 	<entry id="4204" string="Query string">String opzoeken</entry>
 	<entry id="4205" string="CDDB queries to perform">Uit te voeren CDDB-zoekopdrachten</entry>
-	<entry id="4206" string="Querying CD information">CDDB-server</entry>
+	<entry id="4206" string="Querying CD information"/>
       </section>
 
       <section name="Manage submits">
@@ -354,7 +354,7 @@
 
     <section name="Configuration">
       <entry id="5000" string="General settings setup">Algemene instellingen</entry>
-      <entry id="5001" string="Encoders">Vertaald door %1.</entry>
+      <entry id="5001" string="Encoders"/>
       <entry id="5002" string="Playlists">Afspeellijsten</entry>
       <entry id="5003" string="Language">Taal</entry>
       <entry id="5004" string="Component configuration"/>
@@ -379,7 +379,7 @@
       <entry id="5023" string="Resources"/>
       <entry id="5024" string="Verifiers"/>
       <entry id="5025" string="Taggers"/>
-      <entry id="5026" string="Processing">Coderen</entry>
+      <entry id="5026" string="Processing"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Encoder configureren</entry>
@@ -552,8 +552,8 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing"/>
-	<entry id="5901" string="Enable signal processing">Coderen starten</entry>
-	<entry id="5902" string="Enable processing during playback">Coderen starten met</entry>
+	<entry id="5901" string="Enable signal processing"/>
+	<entry id="5902" string="Enable processing during playback"/>
 	<entry id="5903" string="Components"/>
 	<entry id="5904" string="Available"/>
 	<entry id="5905" string="Selected"/>
@@ -708,19 +708,19 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="20000" string="Decoding">Dit project ondersteunen</entry>
-	<entry id="20001" string="Enable 24 bit decoding">Ondersteun dit project!</entry>
+	<entry id="20000" string="Decoding"/>
+	<entry id="20001" string="Enable 24 bit decoding"/>
       </section>
 
       <section name="mpg123">
-	<entry id="21000" string="Decoder">Configureren</entry>
+	<entry id="21000" string="Decoder"/>
 	<entry id="21001" string="Active decoder"/>
- 	<entry id="21002" string="auto select"/>
+	<entry id="21002" string="auto select"/>
       </section>
 
       <section name="CueSheet">
-	<entry id="22000" string="Title information">Lengte</entry>
-	<entry id="22001" string="Read tags from referenced files">Grootte</entry>
+	<entry id="22000" string="Title information"/>
+	<entry id="22001" string="Read tags from referenced files"/>
 	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags"/>
 	<entry id="22003" string="Alternative files"/>
 	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
@@ -1002,7 +1002,7 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders">Vertaald door %1.</entry>
+	<entry id="42000" string="Encoders"/>
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
 	<entry id="42003" string="Configure encoder">Encoder configureren</entry>
@@ -1035,7 +1035,7 @@
       <section name="Resample">
 	<entry id="50200" string="Converter"/>
 	<entry id="50201" string="Sampling rate">Samplerate</entry>
-	<entry id="50202" string="Output sampling rate">Samplingrate</entry>
+	<entry id="50202" string="Output sampling rate"/>
       </section>
 
       <section name="RubberBand">
@@ -1268,8 +1268,8 @@
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Algemeen</entry>
-	  <entry id="103101" string="Title information">Lengte</entry>
-	  <entry id="103102" string="Disc">onbekend genre</entry>
+	  <entry id="103101" string="Title information"/>
+	  <entry id="103102" string="Disc"/>
 	  <entry id="103103" string="Cover art"/>
 	  <entry id="103104" string="Covers"/>
 	  <entry id="103105" string="Type"/>
