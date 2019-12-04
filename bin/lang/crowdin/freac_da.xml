@@ -189,8 +189,8 @@
     <entry id="185" string="Size">Størrelse</entry>
     <entry id="186" string="Artist">Kunstner</entry>
     <entry id="187" string="Year">År</entry>
-    <entry id="188" string="Genre">ukendt kunstner</entry>
-    <entry id="189" string="Album">Kommentar</entry>
+    <entry id="188" string="Genre"/>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags">Info skilt</entry>
     <entry id="191" string="Default information">Standard information</entry>
     <entry id="192" string="Default comment string:">Standard kommentar streng:</entry>
@@ -200,7 +200,7 @@
     <entry id="196" string="Database">Database</entry>
     <entry id="197" string="Submit CDDB data...">Indsend CDDB data...</entry>
     <entry id="198" string="Enable CDDB cache">Brug CDDB cache</entry>
-    <entry id="199" string="CDDB data">Indstil koder</entry>
+    <entry id="199" string="CDDB data"/>
     <entry id="200" string="Submit">Indsend</entry>
     <entry id="201" string="No audio CD in drive!">Ingen lyd cd i drevet!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Venligst udfyld alle felter og spor titler før du indsender.</entry>
@@ -326,7 +326,7 @@
     <entry id="322" string="first letter upper case">første bogstav med stort</entry>
     <entry id="323" string="all lower case">alt med små bogstaver</entry>
     <entry id="324" string="all upper case">alt med store bogstaver</entry>
-    <entry id="325" string="Status">Brug inddata fil mappe om muligt</entry>
+    <entry id="325" string="Status"/>
     <entry id="326" string="Successfully read CD!">CD læst med SUCCES!</entry>
     <entry id="327" string="Comment">Kommentar</entry>
     <entry id="328" string="Manage CDDB cache entries...">Rediger CDDB cache indgange...</entry>
@@ -407,14 +407,14 @@
     <entry id="403" string="Use 2-pass encoding">Brug 2-pass kodning</entry>
     <entry id="404" string="Target bitrate">Mål bitrate</entry>
     <entry id="405" string="Set drive speed limit:">Sæt drev hastigheds begrænsning:</entry>
-    <entry id="406" string="Support this project">eur</entry>
-    <entry id="407" string="Please support this project!">CDDB</entry>
+    <entry id="406" string="Support this project">Støt projektet</entry>
+    <entry id="407" string="Please support this project!">Venligst støt projektet!</entry>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
     <entry id="410" string="usd">eur</entry>
     <entry id="411" string="en"/>
-    <entry id="412" string="Thank you very much!"/>
-    <entry id="413" string="Remind me later"/>
+    <entry id="412" string="Thank you very much!">Tusind tab</entry>
+    <entry id="413" string="Remind me later">Påmind mig senere</entry>
     <entry id="414" string="CDDB"/>
     <entry id="415" string="Ripper">CDRip</entry>
     <entry id="416" string="Default">Standard</entry>
