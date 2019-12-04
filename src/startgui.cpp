@@ -413,7 +413,7 @@ Void freac::freacGUI::About()
 
 	i18n->SetContext("About");
 
-	QuickMessage(String(freac::appLongName).Append(" ").Append(freac::version).Append(" (").Append(freac::architecture).Append(")\n").Append(freac::copyright).Append("\n\n").Append(i18n->TranslateString("Translated by %1.").Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About %1").Replace("%1", freac::appName), Message::Buttons::Ok, (wchar_t *) IDI_ICON);
+	QuickMessage(String(freac::appLongName).Append(" ").Append(freac::version).Append(" (").Append(freac::architecture).Append(")\n").Append(freac::copyright).Append("\n\n").Append(i18n->TranslateString("Translated by %1.").Replace("%1", i18n->GetActiveLanguageAuthor())).Append("\n\n").Append(i18n->TranslateString("This program is being distributed under the terms\nof the GNU General Public License (GPL).")), i18n->TranslateString("About %1").Replace("%1", freac::appName), Message::Buttons::Ok, ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freac.png")));
 }
 
 Void freac::freacGUI::ConfigureSettings(ConfigurePage page)
