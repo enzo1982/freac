@@ -52,7 +52,7 @@
     <entry id="39" string="You did not select a track!">! לא נבחר קובץ</entry>
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">?ההמרה בעבוד, האם לסיים</entry>
     <entry id="41" string="Currently encoding">ממיר כרגע</entry>
-    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">CDDB בדיקת</entry>
+    <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL)."/>
     <entry id="43" string="CDDB query">CDDB בדיקת</entry>
     <entry id="44" string="About %1">על התכנה</entry>
     <entry id="45" string="No options can be configured for Windows Wave file output!">לא ניתן לבצע שינויים ב Windows Wave file output!</entry>
@@ -85,25 +85,25 @@
     <entry id="72" string="Activate jitter correction">הפעל תיקון טעויות קריאה</entry>
     <entry id="73" string="Swap left/right channel">החלף בין ערוצי שמאל וימין</entry>
     <entry id="74" string="Lock CD tray while ripping">נעל מגש כונן בזמן המרה</entry>
-    <entry id="75" string="Use native NT SCSI library">ללא תיקון שריטות</entry>
+    <entry id="75" string="Use native NT SCSI library"/>
     <entry id="76" string="Overlap only">חפיפה בלבד</entry>
     <entry id="77" string="No verify">ללא אימות</entry>
     <entry id="78" string="No scratch repair">ללא תיקון שריטות</entry>
-    <entry id="79" string="Full cdparanoia mode">צרוצים</entry>
+    <entry id="79" string="Full cdparanoia mode"/>
     <entry id="80" string="Bitrate">קצב העברת נתונים</entry>
     <entry id="81" string="Copyright bit">זכויות יוצרים</entry>
-    <entry id="82" string="CRC">קבע BIT מקורי</entry>
-    <entry id="83" string="Original bit">קידוד דו ערוצי</entry>
+    <entry id="82" string="CRC"/>
+    <entry id="83" string="Original bit"/>
     <entry id="84" string="Channels">צרוצים</entry>
-    <entry id="85" string="Private bit">מצב Stereo</entry>
+    <entry id="85" string="Private bit"/>
     <entry id="86" string="Set Copyright bit">הפעל זכויות יוצרים</entry>
     <entry id="87" string="Enable CRC">אפשר CRC</entry>
     <entry id="88" string="Set Original bit">קבע BIT מקורי</entry>
     <entry id="89" string="Dual channel encoding">קידוד דו ערוצי</entry>
-    <entry id="90" string="Set Private bit">Bitrate לערוץ:</entry>
+    <entry id="90" string="Set Private bit"/>
     <entry id="91" string="Encoder mode">מצב מקודד</entry>
     <entry id="92" string="Stereo mode">מצב Stereo</entry>
-    <entry id="93" string="Quantization">גרסת MPEG</entry>
+    <entry id="93" string="Quantization"/>
     <entry id="94" string="Downsampling ratio">יחס דחיסה</entry>
     <entry id="95" string="Predictor size">גודל קובץ משוער</entry>
     <entry id="96" string="Enable lossless encoding">הפעל קידוד lossless</entry>
@@ -112,40 +112,40 @@
     <entry id="99" string="Preselection">בחירה מקדימה</entry>
     <entry id="100" string="Number of preselection candidates:">מספר בחירות אפשרי:</entry>
     <entry id="101" string="MPEG version">גרסת MPEG</entry>
-    <entry id="102" string="AAC object type">ערוצי Stereo ממוזגים</entry>
-    <entry id="103" string="Allow Joint Stereo">אלץ מיזוג ערוצים</entry>
-    <entry id="104" string="Temporal Noise Shaping">מצב VBR</entry>
-    <entry id="105" string="Use Temporal Noise Shaping">ללא VBR</entry>
+    <entry id="102" string="AAC object type"/>
+    <entry id="103" string="Allow Joint Stereo"/>
+    <entry id="104" string="Temporal Noise Shaping"/>
+    <entry id="105" string="Use Temporal Noise Shaping"/>
     <entry id="106" string="Maximum bandwidth">רוחב פס מירבי</entry>
     <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):"/>
-    <entry id="108" string="Basic">קבע VBR bitrate מקסימלי:</entry>
+    <entry id="108" string="Basic"/>
     <entry id="109" string="Misc">שונות</entry>
     <entry id="110" string="Audio processing">עיבוד שמע</entry>
     <entry id="111" string="Set bitrate:">קבע קצב ביטים:</entry>
     <entry id="112" string="Set ratio:">יחס:</entry>
     <entry id="113" string="Set quality:">הגדר איכות:</entry>
-    <entry id="114" string="worse">קריאת מידע CD אוטומטית</entry>
-    <entry id="115" string="better">גישה למידע CD:</entry>
+    <entry id="114" string="worse"/>
+    <entry id="115" string="better"/>
     <entry id="116" string="Auto">אוטומטי</entry>
-    <entry id="117" string="Stereo">אין מידע חינם לגבי דיסק זה</entry>
+    <entry id="117" string="Stereo"/>
     <entry id="118" string="Joint Stereo">ערוצי Stereo ממוזגים</entry>
     <entry id="119" string="Force Joint Stereo">אלץ מיזוג ערוצים</entry>
     <entry id="120" string="VBR mode">מצב VBR</entry>
     <entry id="121" string="no VBR">ללא VBR</entry>
     <entry id="122" string="VBR quality">איכות VBR</entry>
-    <entry id="123" string="ABR target bitrate">התאמות</entry>
-    <entry id="124" string="VBR bitrate range">בחר בשם שתואם לCD שלך:</entry>
+    <entry id="123" string="ABR target bitrate"/>
+    <entry id="124" string="VBR bitrate range"/>
     <entry id="125" string="Set minimum VBR bitrate:">קבע VBR bitrate מינימלי:</entry>
     <entry id="126" string="Set maximum VBR bitrate:">קבע VBR bitrate מקסימלי:</entry>
-    <entry id="127" string="Control bits">בינוני, מהיר</entry>
-    <entry id="128" string="Stream format">רגיל, מהיר</entry>
-    <entry id="129" string="Enforce strict ISO compliance">קיצוני, מהיר</entry>
-    <entry id="135" string="Output sampling rate">שם</entry>
+    <entry id="127" string="Control bits"/>
+    <entry id="128" string="Stream format"/>
+    <entry id="129" string="Enforce strict ISO compliance"/>
+    <entry id="135" string="Output sampling rate"/>
     <entry id="136" string="no resampling">ללא דחיסה מחדש</entry>
-    <entry id="137" string="Highpass filter">אורך</entry>
+    <entry id="137" string="Highpass filter"/>
     <entry id="138" string="Set Highpass frequency (Hz):"/>
     <entry id="139" string="Set Highpass width (Hz):"/>
-    <entry id="140" string="Lowpass filter">שנה</entry>
+    <entry id="140" string="Lowpass filter"/>
     <entry id="141" string="Set Lowpass frequency (Hz):"/>
     <entry id="142" string="Set Lowpass width (Hz):"/>
     <entry id="143" string="Misc settings">הגדרות שונות</entry>
@@ -160,7 +160,7 @@
     <entry id="152" string="Info">מידע</entry>
     <entry id="153" string="No freedb entry for this disk.">אין מידע חינם לגבי דיסק זה</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">תקלה בגישה לשרת מידע חינמי</entry>
-    <entry id="155" string="Connecting to freedb server at">דפדף</entry>
+    <entry id="155" string="Connecting to freedb server at"/>
     <entry id="156" string="Requesting CD information">מבקש מידע CD</entry>
     <entry id="157" string="eMail address:"/>
     <entry id="158" string="Please enter a valid eMail address.">אנא הכנס כתובת דוא&quot;ל</entry>
@@ -169,15 +169,15 @@
     <entry id="161" string="Matches">התאמות</entry>
     <entry id="162" string="Select the entry that best fits your CD:">בחר בשם שתואם לCD שלך:</entry>
     <entry id="163" string="Extended CDDB settings">מידע CD מורחב</entry>
-    <entry id="164" string="CGI scripts">לא ניתן לשנות במהלך המרה !</entry>
+    <entry id="164" string="CGI scripts"/>
     <entry id="165" string="CDDB query script:"/>
     <entry id="166" string="CDDB submit script:"/>
-    <entry id="167" string="HTTP settings">אלבום לא מוכר</entry>
-    <entry id="168" string="Proxy settings">תורגם ע&quot;י %1.</entry>
-    <entry id="169" string="no proxy">בחר הכל</entry>
+    <entry id="167" string="HTTP settings"/>
+    <entry id="168" string="Proxy settings"/>
+    <entry id="169" string="no proxy"/>
     <entry id="170" string="Proxy type:"/>
     <entry id="171" string="Proxy server:"/>
-    <entry id="172" string="Presets">הצג טיפ יומי</entry>
+    <entry id="172" string="Presets"/>
     <entry id="173" string="Use preset:"/>
     <entry id="174" string="Custom settings">קביעת הגדרות ידנית</entry>
     <entry id="179" string="Medium, Fast">בינוני, מהיר</entry>
@@ -199,16 +199,16 @@
     <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">לא יכול לתקשר עם כונן, מבטל יכולת קריאה מדיסק</entry>
     <entry id="196" string="Database">בסיס נתונים</entry>
     <entry id="197" string="Submit CDDB data..."/>
-    <entry id="198" string="Enable CDDB cache">בחר פסי קול</entry>
-    <entry id="199" string="CDDB data">הגדרות מקודד</entry>
-    <entry id="200" string="Submit">מקודד</entry>
+    <entry id="198" string="Enable CDDB cache"/>
+    <entry id="199" string="CDDB data"/>
+    <entry id="200" string="Submit"/>
     <entry id="201" string="No audio CD in drive!">לא נמצא CD בכונן</entry>
-    <entry id="202" string="Please fill all fields and track titles before submitting.">שם דיסק</entry>
-    <entry id="203" string="Prefer CDDB over CD Text">סיסמה:</entry>
+    <entry id="202" string="Please fill all fields and track titles before submitting."/>
+    <entry id="203" string="Prefer CDDB over CD Text"/>
     <entry id="204" string="CD options">אופציות CD</entry>
-    <entry id="205" string="Submitting CD information">דפדף</entry>
+    <entry id="205" string="Submitting CD information"/>
     <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>
-    <entry id="207" string="Query CDDB database">קריאת מידע CD אוטומטית</entry>
+    <entry id="207" string="Query CDDB database"/>
     <entry id="208" string="Help">עזרה</entry>
     <entry id="209" string="index_en.html">index.html</entry>
     <entry id="210" string="Plug-ins">תוספים</entry>
@@ -220,12 +220,12 @@
     <entry id="216" string="Stop">עצור</entry>
     <entry id="217" string="Cannot play a file while encoding!">לא יכול לנגן בסמן המרה!</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">לא יכול להתחיל המרה בזמן ניגון !</entry>
-    <entry id="219" string="Enable remote CDDB database">קטגוריה</entry>
-    <entry id="220" string="ATH">סגור</entry>
+    <entry id="219" string="Enable remote CDDB database"/>
+    <entry id="220" string="ATH"/>
     <entry id="221" string="Enable ATH:"/>
     <entry id="222" string="Use default setting">השתמש בהגדרות כלליות</entry>
-    <entry id="223" string="Psycho acoustic model">סוג קובץ לא נתמך</entry>
-    <entry id="224" string="Use Temporal Masking Effect">פורמט שמע לא נתמך</entry>
+    <entry id="223" string="Psycho acoustic model"/>
+    <entry id="224" string="Use Temporal Masking Effect"/>
     <entry id="225" string="Expert">למומחים</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">לא ניתן לשנות במהלך המרה !</entry>
     <entry id="227" string="The output folder does not exist! Do you want to create it?">תקית היעד אינה קיימת, האם ליצור אותה?</entry>
@@ -236,13 +236,13 @@
     <entry id="232" string="Select none">בטל כל הבחירות</entry>
     <entry id="233" string="Toggle selection">הפוך בחירה</entry>
     <entry id="234" string="Show Tip of the Day">הצג טיפ יומי</entry>
-    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">?ההמרה בעבוד, האם לסיים</entry>
+    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application."/>
     <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2"/>
-    <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">לא יכול לתקשר עם כונן, מבטל יכולת קריאה מדיסק</entry>
-    <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>
+    <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats."/>
+    <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1."/>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes."/>
     <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3."/>
-    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">קובץ כבר קיים</entry>
+    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details."/>
     <entry id="242" string="Bitrate / Quality">קצב העברת נתונים / איכות</entry>
     <entry id="243" string="Check for updates now">בדיקת עדכונים</entry>
     <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?"/>
@@ -264,7 +264,7 @@
     <entry id="260" string="Note:"/>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags."/>
     <entry id="262" string="FLAC Files"/>
-    <entry id="263" string="Sampling rate">רשימת השמעה</entry>
+    <entry id="263" string="Sampling rate"/>
     <entry id="264" string="Sample resolution"/>
     <entry id="265" string="Number of samples"/>
     <entry id="266" string="Mono"/>
@@ -272,7 +272,7 @@
     <entry id="268" string="bit"/>
     <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">צור רשימת השמעה</entry>
-    <entry id="271" string="Create cue sheet">דפדף</entry>
+    <entry id="271" string="Create cue sheet"/>
     <entry id="272" string="Write ID3v1 tags"/>
     <entry id="273" string="Write ID3v2 tags"/>
     <entry id="274" string="Write Vorbis Comment tags"/>
@@ -282,7 +282,7 @@
     <entry id="278" string="Vorbis Comment tag encoding:"/>
     <entry id="279" string="MP4 metadata encoding:"/>
     <entry id="280" string="Tag encodings"/>
-    <entry id="281" string="Update joblist with this information">בחר בתקייה בה ישמרו הקבצים לאחר הקידוד</entry>
+    <entry id="281" string="Update joblist with this information"/>
     <entry id="282" string="unknown genre"/>
     <entry id="283" string="Load joblist...">טען רשימת מטלות...</entry>
     <entry id="284" string="Save joblist...">שמור רשימת מטלות...</entry>
@@ -306,34 +306,34 @@
     <entry id="302" string="Residual coding"/>
     <entry id="303" string="Minimum partition order"/>
     <entry id="304" string="Maximum partition order"/>
-    <entry id="305" string="By pattern">מתקיה</entry>
+    <entry id="305" string="By pattern"/>
     <entry id="306" string="From folder">מתקיה</entry>
     <entry id="307" string="Folder">תיקייה</entry>
-    <entry id="308" string="Add folder">בחר תיקיה להוספה לרשימת מטלות</entry>
+    <entry id="308" string="Add folder"/>
     <entry id="309" string="Choose folder:"/>
     <entry id="310" string="Select the folder to add to the joblist:">בחר תיקיה להוספה לרשימת מטלות:</entry>
-    <entry id="311" string="Add files by pattern">צורת שם קובץ</entry>
-    <entry id="312" string="Pattern">בחר תיקיה להוספה לרשימת מטלות</entry>
+    <entry id="311" string="Add files by pattern"/>
+    <entry id="312" string="Pattern"/>
     <entry id="313" string="Start folder"/>
     <entry id="314" string="No files found matching pattern:"/>
     <entry id="315" string="Edit language file">ערוך קובץ שפה</entry>
     <entry id="316" string="Use for all selected tracks">השתמש בכל הנבחרים</entry>
-    <entry id="317" string="Interpret string as">בחר בתקייה בה ישמרו הקבצים לאחר הקידוד</entry>
+    <entry id="317" string="Interpret string as"/>
     <entry id="318" string="selected tracks">בחר פסי קול</entry>
-    <entry id="319" string="Adjust upper/lower case">Stereo</entry>
-    <entry id="320" string="all words upper case">אורך</entry>
-    <entry id="321" string="long words upper case">קובץ</entry>
-    <entry id="322" string="first letter upper case">גודל</entry>
-    <entry id="323" string="all lower case">קצב העברת נתונים</entry>
-    <entry id="324" string="all upper case">קבצי שמע</entry>
+    <entry id="319" string="Adjust upper/lower case"/>
+    <entry id="320" string="all words upper case"/>
+    <entry id="321" string="long words upper case"/>
+    <entry id="322" string="first letter upper case"/>
+    <entry id="323" string="all lower case"/>
+    <entry id="324" string="all upper case"/>
     <entry id="325" string="Status">מצב</entry>
     <entry id="326" string="Successfully read CD!">קריאת CD עברה בהצלחה</entry>
     <entry id="327" string="Comment">הערות</entry>
     <entry id="328" string="Manage CDDB cache entries..."/>
-    <entry id="329" string="Save entry">צורת שם קובץ</entry>
-    <entry id="330" string="Remove entry">דפדף</entry>
+    <entry id="329" string="Save entry"/>
+    <entry id="330" string="Remove entry"/>
     <entry id="331" string="Disc name">שם דיסק</entry>
-    <entry id="332" string="Charset">מבצע קידוד</entry>
+    <entry id="332" string="Charset"/>
     <entry id="333" string="Preview"/>
     <entry id="334" string="Downloaded CDDB entries:"/>
     <entry id="335" string="User name:"/>
@@ -345,7 +345,7 @@
     <entry id="341" string="Create playlists">צור רשימת השמעה</entry>
     <entry id="342" string="Create cue sheets"/>
     <entry id="343" string="Use encoder output folder"/>
-    <entry id="344" string="Various artists">המר לקובץ אחד</entry>
+    <entry id="344" string="Various artists"/>
     <entry id="345" string="Data track">דיסק מידע</entry>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">בחר תיקייה לרשימת השמעה:</entry>
     <entry id="347" string="Use input file folder if possible"/>
@@ -365,17 +365,17 @@
     <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."/>
     <entry id="362" string="CDDB entries to submit:"/>
     <entry id="363" string="Show queued CDDB entries..."/>
-    <entry id="364" string="Submit all">מידע</entry>
+    <entry id="364" string="Submit all"/>
     <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog."/>
     <entry id="366" string="Category">קטגוריה</entry>
     <entry id="367" string="Close">סגור</entry>
     <entry id="368" string="Automatization">אוטומטיזציה</entry>
     <entry id="369" string="Query CDDB database later"/>
     <entry id="370" string="Show queued CDDB queries..."/>
-    <entry id="371" string="CDDB queries">בחר תיקייה למידע הדיסק</entry>
-    <entry id="372" string="Query">גישה למידע CD</entry>
-    <entry id="373" string="Query all">אפשרויות</entry>
-    <entry id="374" string="Query string">קריאת מידע CD אוטומטית</entry>
+    <entry id="371" string="CDDB queries"/>
+    <entry id="372" string="Query"/>
+    <entry id="373" string="Query all"/>
+    <entry id="374" string="Query string"/>
     <entry id="375" string="CDDB queries to perform:"/>
     <entry id="376" string="Would you like to perform this query again later?"/>
     <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">אין הרשאה לגישה לכונן CD</entry>
