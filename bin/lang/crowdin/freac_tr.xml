@@ -96,11 +96,11 @@
     <entry id="83" string="Original bit">Original bit</entry>
     <entry id="84" string="Channels">Kanallar</entry>
     <entry id="85" string="Private bit">Private bit</entry>
-    <entry id="86" string="Set Copyright bit">Set Copyright bit</entry>
+    <entry id="86" string="Set Copyright bit"/>
     <entry id="87" string="Enable CRC">CRC aktif</entry>
-    <entry id="88" string="Set Original bit">Set Original bit</entry>
+    <entry id="88" string="Set Original bit"/>
     <entry id="89" string="Dual channel encoding">Çift kanal çeviri</entry>
-    <entry id="90" string="Set Private bit">Set Private bit</entry>
+    <entry id="90" string="Set Private bit"/>
     <entry id="91" string="Encoder mode">Çeviri biçimi</entry>
     <entry id="92" string="Stereo mode">Stereo biçimi</entry>
     <entry id="93" string="Quantization">Quantization</entry>
@@ -184,7 +184,7 @@
     <entry id="180" string="Standard, Fast">Standart, hızlı</entry>
     <entry id="181" string="Extreme, Fast">Üstün, hızlı</entry>
     <entry id="182" string="Title">Başlık</entry>
-    <entry id="183" string="Track">Yıl</entry>
+    <entry id="183" string="Track"/>
     <entry id="184" string="Length">Uzunluk</entry>
     <entry id="185" string="Size">Boyut</entry>
     <entry id="186" string="Artist">Sanatçı</entry>
@@ -292,20 +292,20 @@
     <entry id="288" string="unknown year">Bilinmeyen yıl</entry>
     <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">%1 çeviricisi başlatılamadı! Lütfen ayarları kontrol ediniz!</entry>
     <entry id="290" string="Blocksize:">Blok boyutu:</entry>
-    <entry id="291" string="Use streamable subset">Use streamable subset</entry>
+    <entry id="291" string="Use streamable subset"/>
     <entry id="292" string="Adaptive Joint Stereo">Adaptive Joint Stereo</entry>
     <entry id="293" string="Fastest encoding">En hızlı çeviri</entry>
     <entry id="294" string="Best compression">En iyi sıkıştırma</entry>
-    <entry id="295" string="Linear predictor">Linear predictor</entry>
-    <entry id="296" string="Maximum LPC order">Maximum LPC order</entry>
-    <entry id="297" string="Quantized LPC precision">Quantized LPC precision</entry>
-    <entry id="298" string="Exhaustive model search">Exhaustive model search</entry>
-    <entry id="299" string="Optimize LPC quantization">Optimize LPC quantization</entry>
+    <entry id="295" string="Linear predictor"/>
+    <entry id="296" string="Maximum LPC order"/>
+    <entry id="297" string="Quantized LPC precision"/>
+    <entry id="298" string="Exhaustive model search"/>
+    <entry id="299" string="Optimize LPC quantization"/>
     <entry id="300" string="disabled">aktif değil</entry>
     <entry id="301" string="auto">otomatik</entry>
-    <entry id="302" string="Residual coding">Residual coding</entry>
-    <entry id="303" string="Minimum partition order">Minimum partition order</entry>
-    <entry id="304" string="Maximum partition order">Maximum partition order</entry>
+    <entry id="302" string="Residual coding"/>
+    <entry id="303" string="Minimum partition order"/>
+    <entry id="304" string="Maximum partition order"/>
     <entry id="305" string="By pattern">Şablona göre</entry>
     <entry id="306" string="From folder">Dizinden oku</entry>
     <entry id="307" string="Folder">Dizin</entry>
@@ -318,7 +318,7 @@
     <entry id="314" string="No files found matching pattern:">Şablona uyan dosya yok:</entry>
     <entry id="315" string="Edit language file">Dil dosyasını düzenle</entry>
     <entry id="316" string="Use for all selected tracks">Tüm seçilmiş dosyalar için kullan</entry>
-    <entry id="317" string="Interpret string as">Interpret string as</entry>
+    <entry id="317" string="Interpret string as"/>
     <entry id="318" string="selected tracks">seçilen dosyalar</entry>
     <entry id="319" string="Adjust upper/lower case">BÜYÜK/küçük harf değiştir</entry>
     <entry id="320" string="all words upper case">Tüm kelimeler BÜYÜK HARFLE</entry>
