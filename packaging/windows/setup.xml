@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proSetupConfig>
+  <setup>
+    <version>v0.2</version>
+    <background value="false"/>
+  </setup>
+  <application>
+    <name>fre:ac</name>
+    <longname>fre:ac - free audio converter</longname>
+    <version>v1.1 Beta 1</version>
+    <logo>setup.pci:0</logo>
+  </application>
+  <uninstall createLog="true">
+    <icon>freac.exe,0</icon>
+    <file>freaccmd.ini</file>
+    <file>freac.ini</file>
+    <file>freac.xml</file>
+    <file>plugins/plugins.ini</file>
+    <file>eUpdate.xml</file>
+  </uninstall>
+  <dialogs>
+    <dialog id="intro">
+      <title>%LONGNAME% Setup</title>
+      <text>Welcome to the %NAME% Setup Wizard&#10;&#10;&#10;This will install %NAME% %VERSION% on your computer.&#10;&#10;It is recommended that you close all other applications you have running&#10;before continuing. This will help avoiding possible conflicts during the&#10;installation process.&#10;&#10;Click Next to continue, or Cancel to exit Setup.</text>
+    </dialog>
+    <dialog id="license">
+      <title>Setup - License Agreement</title>
+      <text>Please read the following license agreement. Click Yes to accept&#10;the agreement, or No to cancel the Setup.</text>
+      <licensefile>Copying</licensefile>
+    </dialog>
+    <dialog id="directory">
+      <title>Setup - Destination Directory</title>
+      <text>Setup will install %NAME% in the following folder.&#10;&#10;To install into a different folder, click Browse, and select another folder.</text>
+      <defaultdir>%NAME%</defaultdir>
+    </dialog>
+    <dialog id="components">
+      <title>Setup - Components to install</title>
+      <text>Select the components you want to install.</text>
+    </dialog>
+    <dialog id="links">
+      <title>Setup - Start Menu and Desktop Shortcuts</title>
+      <text>Setup can create shortcuts to the installed program.&#10;Please select which shortcuts shall be created.</text>
+    </dialog>
+    <dialog id="summary">
+      <title>Setup - Ready to install</title>
+      <text>Setup is now ready to install %NAME% on your computer.&#10;&#10;Click Next to install the program files on your computer, or Cancel&#10;to exit Setup.</text>
+    </dialog>
+    <dialog id="installation">
+      <title>Setup - Copying files</title>
+      <text>Setup is copying the program files to your computer.&#10;&#10;Please wait until the installation process has finished. You can then&#10;start working with the installed program.</text>
+    </dialog>
+    <dialog id="finish">
+      <title>Setup - Installation finished</title>
+      <text>Congratulations! %NAME% %VERSION% has been successfully installed&#10;on your computer.&#10;&#10;You can now start %NAME% from the Windows Start menu.&#10;&#10;Click Finish to close the setup wizard.</text>
+    </dialog>
+  </dialogs>
+  <components>
+    <component name="%NAME% %VERSION% program files (required)" required="true">
+      <archive>data/main.psa</archive>
+      <file>smooth.dll</file>
+      <file>libgcc.dll</file>
+      <file>libstdc++.dll</file>
+    </component>
+    <component name="easyUpdate online updater" default="true">
+      <archive>data/eupdate.psa</archive>
+      <text>Install an online update&#10;component that will notify&#10;you about new software&#10;versions</text>
+    </component>
+    <component name="%NAME% command line interface" default="false">
+      <archive>data/cmd.psa</archive>
+      <text>Install a command line&#10;interface useful for use&#10;in batch scripts</text>
+    </component>
+    <component name="smooth Translator utility" id="translator" default="false">
+      <archive>data/translator.psa</archive>
+      <text>Install an easy to use&#10;application for editing&#10;%NAME% XML language&#10;files</text>
+    </component>
+    <component name="%NAME% source code" subdir="source" default="false">
+      <archive>data/source.psa</archive>
+      <text>Install the complete C++&#10;source code to %NAME%</text>
+    </component>
+  </components>
+  <links>
+    <startmenu subdir="%LONGNAME%">
+      <link file="freac.exe">%LONGNAME%</link>
+      <link file="manual\index.html">%NAME% User Guide</link>
+      <link file="uninstall.exe">Uninstall %NAME%</link>
+      <link file="translator.exe" depends="translator">smooth Translator</link>
+    </startmenu>
+    <desktop>
+      <link file="freac.exe">%LONGNAME%</link>
+    </desktop>
+    <quicklaunch>
+      <link file="freac.exe">%LONGNAME%</link>
+    </quicklaunch>
+  </links>
+</proSetupConfig>
