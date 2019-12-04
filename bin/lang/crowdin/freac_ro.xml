@@ -157,7 +157,7 @@
     <entry id="149" string="CDDB access mode:">Mod acces CDDB:</entry>
     <entry id="150" string="CDDB server:">Server CDDB:</entry>
     <entry id="151" string="Port:"/>
-    <entry id="152" string="Info">Artist</entry>
+    <entry id="152" string="Info"/>
     <entry id="153" string="No freedb entry for this disk.">Nu există date despre acest disc.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Eroare de conectare la serverul freedb.</entry>
     <entry id="155" string="Connecting to freedb server at">Conectare server freedb la</entry>
@@ -187,10 +187,10 @@
     <entry id="183" string="Track">Melodie</entry>
     <entry id="184" string="Length">Lungime</entry>
     <entry id="185" string="Size">Mărime</entry>
-    <entry id="186" string="Artist">Melodie</entry>
+    <entry id="186" string="Artist"/>
     <entry id="187" string="Year">An</entry>
     <entry id="188" string="Genre">Gen</entry>
-    <entry id="189" string="Album">Comentariu</entry>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags">Tag-uri Info</entry>
     <entry id="191" string="Default information">Informaţie implicită</entry>
     <entry id="192" string="Default comment string:">Text implicit comentariu:</entry>
