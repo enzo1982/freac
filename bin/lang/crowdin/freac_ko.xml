@@ -204,7 +204,7 @@
     <entry id="200" string="Submit">전송</entry>
     <entry id="201" string="No audio CD in drive!">드라이브에 CD 없음!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">전송 전에 모든 항목과 트랙 제목을 입력하시오.</entry>
-    <entry id="203" string="Prefer CDDB over CD Text">CD 정보 전송중</entry>
+    <entry id="203" string="Prefer CDDB over CD Text"/>
     <entry id="204" string="CD options">CD 옵션</entry>
     <entry id="205" string="Submitting CD information">CD 정보 전송중</entry>
     <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">파일 열기 실패: %1&#10;&#10;%2</entry>
@@ -215,12 +215,12 @@
     <entry id="211" string="Input plug-ins">입력 플러그인</entry>
     <entry id="212" string="Output plug-ins">출력 플러그인</entry>
     <entry id="213" string="Configure">설정</entry>
-    <entry id="214" string="About">정지</entry>
+    <entry id="214" string="About"/>
     <entry id="215" string="Play">재생</entry>
     <entry id="216" string="Stop">정지</entry>
     <entry id="217" string="Cannot play a file while encoding!">인코딩 중에는 파일을 재생할 수 없습니다!</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">파일재생 중에는 인코딩을 시작할 수 없습니다!</entry>
-    <entry id="219" string="Enable remote CDDB database">초기설정 사용</entry>
+    <entry id="219" string="Enable remote CDDB database"/>
     <entry id="220" string="ATH">청각 모델</entry>
     <entry id="221" string="Enable ATH:">ATH 허용:</entry>
     <entry id="222" string="Use default setting">초기설정 사용</entry>
@@ -271,8 +271,8 @@
     <entry id="267" string="bytes">바이트</entry>
     <entry id="268" string="bit">비트</entry>
     <entry id="269" string="min">분</entry>
-    <entry id="270" string="Create playlist">브라우즈</entry>
-    <entry id="271" string="Create cue sheet">건너 뛰기</entry>
+    <entry id="270" string="Create playlist"/>
+    <entry id="271" string="Create cue sheet"/>
     <entry id="272" string="Write ID3v1 tags"/>
     <entry id="273" string="Write ID3v2 tags"/>
     <entry id="274" string="Write Vorbis Comment tags"/>
@@ -282,11 +282,11 @@
     <entry id="278" string="Vorbis Comment tag encoding:"/>
     <entry id="279" string="MP4 metadata encoding:"/>
     <entry id="280" string="Tag encodings"/>
-    <entry id="281" string="Update joblist with this information">인코드 파일이 위치할 폴더를 선택하시오</entry>
+    <entry id="281" string="Update joblist with this information"/>
     <entry id="282" string="unknown genre"/>
     <entry id="283" string="Load joblist..."/>
     <entry id="284" string="Save joblist..."/>
-    <entry id="285" string="Pause/resume encoding">시작시 업데이트 체크</entry>
+    <entry id="285" string="Pause/resume encoding"/>
     <entry id="286" string="Shutdown after encoding"/>
     <entry id="287" string="Playlist Files"/>
     <entry id="288" string="unknown year"/>
@@ -312,28 +312,28 @@
     <entry id="308" string="Add folder"/>
     <entry id="309" string="Choose folder:"/>
     <entry id="310" string="Select the folder to add to the joblist:"/>
-    <entry id="311" string="Add files by pattern">파일명 방식</entry>
+    <entry id="311" string="Add files by pattern"/>
     <entry id="312" string="Pattern"/>
     <entry id="313" string="Start folder"/>
     <entry id="314" string="No files found matching pattern:"/>
     <entry id="315" string="Edit language file"/>
-    <entry id="316" string="Use for all selected tracks">샘플 수</entry>
-    <entry id="317" string="Interpret string as">채널</entry>
-    <entry id="318" string="selected tracks">모노</entry>
-    <entry id="319" string="Adjust upper/lower case">스테레오</entry>
-    <entry id="320" string="all words upper case">시간</entry>
-    <entry id="321" string="long words upper case">파일</entry>
-    <entry id="322" string="first letter upper case">크기</entry>
-    <entry id="323" string="all lower case">비트레이트</entry>
-    <entry id="324" string="all upper case">오디오 파일</entry>
-    <entry id="325" string="Status">옵션</entry>
-    <entry id="326" string="Successfully read CD!">파일명 방식</entry>
+    <entry id="316" string="Use for all selected tracks"/>
+    <entry id="317" string="Interpret string as"/>
+    <entry id="318" string="selected tracks"/>
+    <entry id="319" string="Adjust upper/lower case"/>
+    <entry id="320" string="all words upper case"/>
+    <entry id="321" string="long words upper case"/>
+    <entry id="322" string="first letter upper case"/>
+    <entry id="323" string="all lower case"/>
+    <entry id="324" string="all upper case"/>
+    <entry id="325" string="Status"/>
+    <entry id="326" string="Successfully read CD!"/>
     <entry id="327" string="Comment"/>
     <entry id="328" string="Manage CDDB cache entries..."/>
-    <entry id="329" string="Save entry">실시간 패킷 인코드</entry>
-    <entry id="330" string="Remove entry">브라우즈</entry>
+    <entry id="329" string="Save entry"/>
+    <entry id="330" string="Remove entry"/>
     <entry id="331" string="Disc name"/>
-    <entry id="332" string="Charset">파일명 방식</entry>
+    <entry id="332" string="Charset"/>
     <entry id="333" string="Preview"/>
     <entry id="334" string="Downloaded CDDB entries:"/>
     <entry id="335" string="User name:"/>
@@ -341,18 +341,18 @@
     <entry id="337" string="Delete original files after encoding"/>
     <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?"/>
     <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?"/>
-    <entry id="340" string="Playlists">이 프로그램은 GNU General Public License (GPL)의&#10;조항에 의거하여 배포되고 있습니다.</entry>
+    <entry id="340" string="Playlists"/>
     <entry id="341" string="Create playlists"/>
     <entry id="342" string="Create cue sheets"/>
     <entry id="343" string="Use encoder output folder"/>
-    <entry id="344" string="Various artists">웨이브 파일 리핑유지</entry>
+    <entry id="344" string="Various artists"/>
     <entry id="345" string="Data track"/>
     <entry id="346" string="Select the folder in which the playlist files will be placed:"/>
     <entry id="347" string="Use input file folder if possible"/>
     <entry id="348" string="Encode to input file folder if possible"/>
     <entry id="349" string="Allow overwriting input file"/>
     <entry id="350" string="Encode to a single file"/>
-    <entry id="351" string="Encoder options">index.html</entry>
+    <entry id="351" string="Encoder options"/>
     <entry id="352" string="Skip">건너 뛰기</entry>
     <entry id="353" string="Enable local CDDB database"/>
     <entry id="354" string="CDDB path:"/>
@@ -365,17 +365,17 @@
     <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."/>
     <entry id="362" string="CDDB entries to submit:"/>
     <entry id="363" string="Show queued CDDB entries..."/>
-    <entry id="364" string="Submit all">인코딩</entry>
+    <entry id="364" string="Submit all"/>
     <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog."/>
     <entry id="366" string="Category"/>
-    <entry id="367" string="Close">에러</entry>
+    <entry id="367" string="Close"/>
     <entry id="368" string="Automatization">자동화</entry>
-    <entry id="369" string="Query CDDB database later">CDDB 캐쉬 허용</entry>
+    <entry id="369" string="Query CDDB database later"/>
     <entry id="370" string="Show queued CDDB queries..."/>
-    <entry id="371" string="CDDB queries">CDDB 억세스모드</entry>
-    <entry id="372" string="Query">CDDB 서버</entry>
-    <entry id="373" string="Query all">포트</entry>
-    <entry id="374" string="Query string">메일주소</entry>
+    <entry id="371" string="CDDB queries"/>
+    <entry id="372" string="Query"/>
+    <entry id="373" string="Query all"/>
+    <entry id="374" string="Query string"/>
     <entry id="375" string="CDDB queries to perform:"/>
     <entry id="376" string="Would you like to perform this query again later?"/>
     <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive."/>
@@ -385,7 +385,7 @@
     <entry id="381" string="Apodization"/>
     <entry id="382" string="Apodization function(s):"/>
     <entry id="383" string="You can specify multiple functions separated by semicolons."/>
-    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1로 유니코드 문자를 포함한 freedb CD&#10;데이타베이스를 전송할 수 있습니다. 그리고 비(非)라틴&#10;아티스트나 제목의 CD를 갖고 계시면, %1를 이용하여&#10;freedb 엔트리를 수정하여 전송할 수 있습니다.</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?"/>
     <entry id="385" string="Cannot access input file: %1"/>
     <entry id="386" string="Cannot create output file: %1"/>
     <entry id="387" string="File not found"/>
