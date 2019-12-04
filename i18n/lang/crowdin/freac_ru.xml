@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
-    <property name="author">Евгений Козлов &lt;evgenykozlov80@mail.ru&gt;</property>
+    <property name="author">Евгений Козлов &lt;evgeny.kozlov.mailbox@gmail.com&gt;</property>
     <property name="url"/>
   </info>
   <data>
@@ -20,7 +20,7 @@
     <entry id="202" string="Info">Информация</entry>
 
     <entry id="210" string="Do not display this warning again">Не показывать это предупреждение снова</entry>
-    <entry id="211" string="Do not display this note again">Не показывать это предупреждение снова</entry>
+    <entry id="211" string="Do not display this note again">Не показывать эту заметку снова</entry>
 
     <entry id="300" string="Artist">Исполнитель</entry>
     <entry id="301" string="Title">Название</entry>
@@ -33,16 +33,16 @@
     <entry id="308" string="Rating">Рейтинг</entry>
     <entry id="309" string="File name">Имя файла</entry>
     <entry id="310" string="File type">Тип файла</entry>
-    <entry id="311" string="Album artist">неизвестное название</entry>
+    <entry id="311" string="Album artist">Исполнитель альбома</entry>
 
-    <entry id="350" string="unknown artist">неизвестный артист</entry>
+    <entry id="350" string="unknown artist">неизвестный исполнитель</entry>
     <entry id="351" string="unknown title">неизвестное название</entry>
     <entry id="352" string="unknown album">неизвестный альбом</entry>
     <entry id="353" string="unknown genre">неизвестный жанр</entry>
     <entry id="354" string="unknown year">неизвестный год</entry>
-    <entry id="355" string="unknown conductor"/>
-    <entry id="356" string="unknown composer"/>
-    <entry id="357" string="unknown album artist"/>
+    <entry id="355" string="unknown conductor">неизвестный дирижер</entry>
+    <entry id="356" string="unknown composer">неизвестный композитор</entry>
+    <entry id="357" string="unknown album artist">неизвестный исполнитель альбома</entry>
 
     <entry id="380" string="hidden track">скрытая дорожка</entry>
 
@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1 мин</entry>
       <entry id="515" string="%1 bit">%1 бит</entry>
       <entry id="516" string="%1 bytes">%1 б</entry>
-      <entry id="517" string="%1 kB">%1%</entry>
+      <entry id="517" string="%1 kB">%1 Кбайт</entry>
       <entry id="518" string="%1%"/>
     </section>
 
@@ -68,7 +68,7 @@
       <entry id="1000" string="File">Файл</entry>
       <entry id="1001" string="Options">Настройки</entry>
       <entry id="1002" string="Database">База данных</entry>
-      <entry id="1003" string="Processing">Кодирование</entry>
+      <entry id="1003" string="Processing">Обработка</entry>
       <entry id="1004" string="Encode">Кодирование</entry>
       <entry id="1005" string="Help">Помощь</entry>
 
@@ -92,7 +92,7 @@
 	<entry id="1203" string="Show queued CDDB entries">Показать записи CDDB в очереди</entry>
 	<entry id="1204" string="Show queued CDDB queries">Показать запросы в CDDB в очереди</entry>
 	<entry id="1205" string="Enable CDDB cache">Кэширование CDDB</entry>
-	<entry id="1206" string="Manage CDDB cache entries">Управление записями кеша CDDB</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Управление записями кэша CDDB</entry>
 	<entry id="1207" string="Automatic CDDB queries">Авто запрос к CDDB</entry>
       </section>
 
@@ -105,35 +105,35 @@
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing">Начать кодирование</entry>
-	<entry id="1401" string="Enable processing during playback">Начать кодирование с</entry>
-	<entry id="1402" string="Configure signal processing">Пауза/Возобновить кодирование</entry>
-	<entry id="1403" string="Selected signal processors">Остановить кодирование</entry>
+	<entry id="1400" string="Enable signal processing">Включить обработку сигнала</entry>
+	<entry id="1401" string="Enable processing during playback">Включить обработку во время воспроизведения</entry>
+	<entry id="1402" string="Configure signal processing">Настройка обработки сигнала</entry>
+	<entry id="1403" string="Selected signal processors">Выбранные обработчики сигнала</entry>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Начать кодирование</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">Совет дня</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">Начать кодирование (удалить исходные файлы)</entry>
 	<entry id="1502" string="Start encoding with">Начать кодирование с</entry>
 	<entry id="1503" string="Pause/resume encoding">Пауза/Возобновить кодирование</entry>
 	<entry id="1504" string="Stop encoding">Остановить кодирование</entry>
 	<entry id="1505" string="Encoder options">Настройки кодека</entry>
 	<entry id="1506" string="Encode to a single file">Кодировать в один файл</entry>
 	<entry id="1507" string="Encode to input file folder if possible">Кодировать в папку входного файла если возможно</entry>
-	<entry id="1508" string="Allow overwriting input file">Перезаписать входной файл</entry>
-	<entry id="1509" string="Delete original files after encoding">Удалать исходные файлы после кодирования</entry>
+	<entry id="1508" string="Allow overwriting input file">Разрешить перезапись входного файла</entry>
+	<entry id="1509" string="Delete original files after encoding">Удалить исходные файлы после кодирования</entry>
 	<entry id="1510" string="Shutdown after encoding">Выключить компьютер после кодирования</entry>
       </section>
 
       <section name="Help">
 	<entry id="1600" string="Help topics">Помощь</entry>
 	<entry id="1601" string="Show Tip of the Day">Совет дня</entry>
-	<entry id="1602" string="Check for updates now">Проверить сейчас обновления</entry>
+	<entry id="1602" string="Check for updates now">Проверить обновления сейчас</entry>
 	<entry id="1603" string="Check for updates at startup">Проверять обновления при запуске программы</entry>
 	<entry id="1604" string="About %1">О %1</entry>
 	<entry id="1605" string="index_en.html">index_ru.html</entry>
- 	<entry id="1606" string="Report an issue"/>
-	<entry id="1607" string="Suggest a feature"/>
+ 	<entry id="1606" string="Report an issue">Сообщить о проблеме</entry>
+	<entry id="1607" string="Suggest a feature">Предложить улучшение</entry>
       </section>
     </section>
 
@@ -146,8 +146,8 @@
       <entry id="2005" string="Submit CDDB data">Переслать данные CDDB</entry>
       <entry id="2006" string="Configure general settings">Настройка основных параметров</entry>
       <entry id="2007" string="Configure the selected audio encoder">Настройка выбранного кодека</entry>
-      <entry id="2008" string="Start the encoding process">Старт процесс кодирования</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Пауза/Возобновить кодирование</entry>
+      <entry id="2008" string="Start the encoding process">Начать процесс кодирования</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)">Начать процесс кодирования (удалить исходные файлы)</entry>
       <entry id="2010" string="Pause/resume encoding">Пауза/Возобновить кодирование</entry>
       <entry id="2011" string="Stop encoding">Остановить кодирование</entry>
     </section>
@@ -155,9 +155,9 @@
     <section name="Joblist">
       <entry id="3000" string="Encoding file">Кодируемый файл</entry>
       <entry id="3001" string="Time left">Осталось времени</entry>
-      <entry id="3002" string="Selected encoder">Выбор кодека</entry>
+      <entry id="3002" string="Selected encoder">Выбранный кодек</entry>
       <entry id="3003" string="File progress">Процесс</entry>
-      <entry id="3004" string="Output folder">Папка</entry>
+      <entry id="3004" string="Output folder">Конечная папка</entry>
       <entry id="3005" string="%1 file(s) in joblist">%1 Файл(ов) в списке</entry>
       <entry id="3006" string="none">пусто</entry>
       <entry id="3007" string="Show title info">Показывать теги</entry>
@@ -184,7 +184,7 @@
       <entry id="3028" string="first letter upper case">Первая буква большая</entry>
       <entry id="3029" string="all lower case">все маленькими буквами</entry>
       <entry id="3030" string="all upper case">ВСЕ БОЛЬШИМИ БУКВАМИ</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Выбрать папку в который будут помещены кодируемые файлы</entry>
+      <entry id="3031" string="Select the folder in which the encoded files will be placed">Выбрать папку, в которую будут помещены кодируемые файлы</entry>
       <entry id="3032" string="Sampling rate">Частота дискретизации</entry>
       <entry id="3033" string="Sample resolution">Разрешение сэмпла</entry>
       <entry id="3034" string="Number of samples">Количество сэмплов</entry>
@@ -197,15 +197,15 @@
       <entry id="3041" string="Bitrate">Битрейт</entry>
       <entry id="3042" string="Audio Files">Аудио файлы</entry>
       <entry id="3043" string="All Files">Все файлы</entry>
-      <entry id="3044" string="Playlist Files">Файлы Плейлистов</entry>
+      <entry id="3044" string="Playlist Files">Файлы плейлистов</entry>
       <entry id="3045" string="Active decoder">Текущий декодер</entry>
       <entry id="3046" string="Joblist">Список задач</entry>
       <entry id="3047" string="unknown">неизвестно</entry>
       <entry id="3048" string="Other">Другое</entry>
       <entry id="3049" string="Output file name">Имя выходного файла</entry>
       <entry id="3050" string="verifying">проверяется</entry>
-      <entry id="3051" string="Open"/>
-      <entry id="3052" string="CD drive"/>
+      <entry id="3051" string="Open">Открыть</entry>
+      <entry id="3052" string="CD drive">CD дисковод</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Папка</entry>
@@ -218,7 +218,7 @@
 	<entry id="3200" string="Add files by pattern">Добавить файлы по образцу</entry>
 	<entry id="3201" string="Pattern">Образец</entry>
 	<entry id="3202" string="Start folder">Начальная папка</entry>
-	<entry id="3203" string="Filename pattern">Формирование названия файла</entry>
+	<entry id="3203" string="Filename pattern">Формирование имени файла</entry>
 	<entry id="3204" string="Search subfolders">Искать в подпапках</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">Выберите папку для добавления в список задач</entry>
       </section>
@@ -239,40 +239,40 @@
       <entry id="3501" string="Progress">Прогресс</entry>
       <entry id="3502" string="Errors / Warnings">Ошибки / Предупреждения</entry>
       <entry id="3503" string="Details">Подробно</entry>
-      <entry id="3504" string="Error details">Описание ошибки</entry>
+      <entry id="3504" string="Error details">Подробности ошибки</entry>
       <entry id="3505" string="Time left">Осталось времени</entry>
-      <entry id="3506" string="Waiting for other jobs to finish"/>
+      <entry id="3506" string="Waiting for other jobs to finish">Ожидание завершения других задач</entry>
 
       <section name="Joblist">
-	<entry id="3600" string="Reading folders"/>
-	<entry id="3601" string="Filtering duplicates"/>
-	<entry id="3602" string="Adding files"/>
-	<entry id="3603" string="Adding tracks"/>
-	<entry id="3604" string="Added %1 files, %2 errors occurred"/>
-	<entry id="3605" string="Added %1 tracks, %2 errors occurred"/>
-	<entry id="3606" string="Removing all tracks"/>
-	<entry id="3607" string="Removing tracks of disc in drive %1"/>
-	<entry id="3608" string="Removed all tracks from joblist"/>
-	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist"/>
+	<entry id="3600" string="Reading folders">Чтение папок</entry>
+	<entry id="3601" string="Filtering duplicates">Фильтрация дубликатов</entry>
+	<entry id="3602" string="Adding files">Добавление файлов</entry>
+	<entry id="3603" string="Adding tracks">Добавление дорожек</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">Добавлено %1 файлов, ошибок %2</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">Добавлено %1 дорожек, ошибок %2</entry>
+	<entry id="3606" string="Removing all tracks">Удаление всех дорожек</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">Удаление дорожек диска в устройстве %1</entry>
+	<entry id="3608" string="Removed all tracks from joblist">Все дорожки из списка задач удалены</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">Дорожки диска в устройстве %1 удалены из списка задач</entry>
       </section>
 
       <section name="Convert">
-	<entry id="3700" string="Checking sample formats"/>
-	<entry id="3701" string="Checking for lossy to lossless conversion"/>
-	<entry id="3702" string="Checking output file names"/>
-	<entry id="3703" string="Converting %1"/>
-	<entry id="3704" string="Verifying %1"/>
-	<entry id="3705" string="Conversion cancelled"/>
-	<entry id="3706" string="Conversion finished"/>
-	<entry id="3707" string="Conversion finished with %1 warnings"/>
-	<entry id="3708" string="Conversion finished with %1 errors"/>
+	<entry id="3700" string="Checking sample formats">Проверка форматов сэмплов</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">Проверка преобразования с потерей данных в без потери данных</entry>
+	<entry id="3702" string="Checking output file names">Проверка имен файлов вывода</entry>
+	<entry id="3703" string="Converting %1">Конвертация %1</entry>
+	<entry id="3704" string="Verifying %1">Проверка %1</entry>
+	<entry id="3705" string="Conversion cancelled">Преобразование отменено</entry>
+	<entry id="3706" string="Conversion finished">Преобразование завершено</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">Преобразование завершено с %1 предупреждениями</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">Преобразование завершено с %1 ошибками</entry>
       </section>
 
       <section name="Update">
-	<entry id="3800" string="Preparing update check"/>
-	<entry id="3801" string="Contacting update server"/>
-	<entry id="3802" string="Updates found"/>
-	<entry id="3803" string="No updates found"/>
+	<entry id="3800" string="Preparing update check">Подготовка проверки обновлений</entry>
+	<entry id="3801" string="Contacting update server">Соединение с сервером обновлений</entry>
+	<entry id="3802" string="Updates found">Найдены обновления</entry>
+	<entry id="3803" string="No updates found">Обновления не найдены</entry>
       </section>
     </section>
 
@@ -282,18 +282,18 @@
 	<entry id="4000" string="CDDB data">Данные CDDB</entry>
 	<entry id="4001" string="Submit">Переслать</entry>
 	<entry id="4002" string="No audio CD in drive!">В CD-приводе нет аудио диска</entry>
-	<entry id="4003" string="Submitting CD information">Передать информацию о CD</entry>
+	<entry id="4003" string="Submitting CD information">Передача информации о CD</entry>
 	<entry id="4004" string="Update joblist with this information">Обновить список задач этой информацией</entry>
 	<entry id="4005" string="Status">Состояние</entry>
 	<entry id="4006" string="Successfully read CD!">CD успешно прочитан!</entry>
 	<entry id="4007" string="Save entry">Сохранить</entry>
 	<entry id="4008" string="Various artists">Разные артисты (сборка)</entry>
 	<entry id="4009" string="Data track">Дорожка с данными</entry>
-	<entry id="4010" string="Submit to online database later">Переслать в он-лайн базу данных позже</entry>
+	<entry id="4010" string="Submit to online database later">Переслать в онлайн базу данных позже</entry>
 	<entry id="4011" string="Active CD-ROM drive">Текущий привод CD-ROM</entry>
 
 	<section name="Errors">
-	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Ошибка в процессе подключения к серверу.</entry>
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Ошибка в процессе подключения к серверу freedb.</entry>
 	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Пожалуйста заполните все поля перед передачей.</entry>
 	</section>
       </section>
@@ -301,12 +301,12 @@
       <section name="Query">
 	<entry id="4100" string="CDDB query">Запрос в CDDB</entry>
 	<entry id="4101" string="No freedb entry for this disk.">Нет данных об этом CD.</entry>
-	<entry id="4102" string="Connecting to freedb server at">Подключение к серверу</entry>
+	<entry id="4102" string="Connecting to freedb server at">Подключение к серверу freedb</entry>
 	<entry id="4103" string="Requesting CD information">Получение информации о CD</entry>
 	<entry id="4104" string="No exact matches found">Не найдено точного соответствия</entry>
-	<entry id="4105" string="Multiple matches found">Найдены некоторые соответствия</entry>
+	<entry id="4105" string="Multiple matches found">Найдено несколько соответствий</entry>
 	<entry id="4106" string="Matches">Соответствия</entry>
-	<entry id="4107" string="Select the entry that best fits your CD">Выберите пункт наиболее подходящий для CD</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">Выберите пункт, наиболее подходящий для этого CD</entry>
 	<entry id="4108" string="Would you like to perform this query again later?">Хотите повторить этот запрос снова позже?</entry>
 	<entry id="4109" string="Would you like to perform the remaining queries again later?">Хотите повторить оставшиеся запросы позже?</entry>
 	<entry id="4110" string="none">пусто</entry>
@@ -314,7 +314,7 @@
 	<entry id="4112" string="loading preview">загрузка предпросмотра</entry>
 
 	<section name="Errors">
-	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Ошибка в процессе подключения к серверу.</entry>
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Ошибка в процессе подключения к серверу freedb.</entry>
 	</section>
       </section>
 
@@ -337,7 +337,7 @@
 	<entry id="4305" string="Disc name">Название диска</entry>
 	<entry id="4306" string="Preview">Предпросмотр</entry>
 	<entry id="4307" string="Category">Категория</entry>
-	<entry id="4308" string="Submitting CD information">Передать информацию о CD</entry>
+	<entry id="4308" string="Submitting CD information">Передача информации о CD</entry>
       </section>
 
       <section name="Manage cache">
@@ -363,7 +363,7 @@
       <entry id="5007" string="Tags">Тэги</entry>
       <entry id="5008" string="Components">Компоненты</entry>
       <entry id="5009" string="Decoders">Декодеры</entry>
-      <entry id="5010" string="Output">Выход</entry>
+      <entry id="5010" string="Output">Вывод</entry>
       <entry id="5011" string="DSP">DSP</entry>
       <entry id="5012" string="Extensions">Расширения</entry>
       <entry id="5013" string="Other">Другое</entry>
@@ -379,16 +379,16 @@
       <entry id="5023" string="Resources">Ресурсы</entry>
       <entry id="5024" string="Verifiers">Проверяющие</entry>
       <entry id="5025" string="Taggers">Указатели</entry>
-      <entry id="5026" string="Processing">Кодирование</entry>
+      <entry id="5026" string="Processing">Обработка</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Настроить кодек</entry>
 	<entry id="5101" string="Encoder">Кодек</entry>
 	<entry id="5102" string="Output folder">Папка для сохранения</entry>
 	<entry id="5103" string="Select">Выбрать</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Выбрать папку в который будут помещены кодируемые файлы</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Выбрать папку, в которую будут помещены кодируемые файлы</entry>
 	<entry id="5105" string="Use input file folder if possible">Исп. папку входного файла если возможно</entry>
-	<entry id="5106" string="Allow overwriting input file">Перезаписать входной файл</entry>
+	<entry id="5106" string="Allow overwriting input file">Разрешить перезапись входного файла</entry>
 	<entry id="5107" string="Options">Настройки</entry>
 	<entry id="5108" string="Filename pattern">Формирование названия файла</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Кодирование &quot;На лету&quot;</entry>
@@ -396,11 +396,11 @@
 	<entry id="5111" string="Encode to a single file">Кодировать в один файл</entry>
 	<entry id="5112" string="Output filenames">Имена выходных файлов</entry>
 	<entry id="5113" string="Allow Unicode characters">Разрешить символы Юникод</entry>
-	<entry id="5114" string="Replace spaces with underscores">Заменить пробелы</entry>
+	<entry id="5114" string="Replace spaces with underscores">Заменить пробелы на символы подчеркивания</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">Удалить обработанное из списка</entry>
 	<entry id="5116" string="Add encoded files to joblist">Добавить закодированное в список</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames"/>
-	<entry id="5118" string="Keep time stamps of source files"/>
+	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Добавить последовательные номера к идентичным именам файлов</entry>
+	<entry id="5118" string="Keep time stamps of source files">Сохранять временные метки исходных файлов</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Директории для сохранения не существует! Создать?</entry>
@@ -417,7 +417,7 @@
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Выберите папку, в которую будут помещены плейлисты</entry>
 	<entry id="5207" string="Output filenames">Имена выходных файлов</entry>
 	<entry id="5208" string="Configure plugin">Настроить плагин</entry>
-	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion"/>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Создавать только один плейлист и\или cue sheet файл</entry>
       </section>
 
       <section name="CDDB">
@@ -437,7 +437,7 @@
 	<entry id="5313" string="Prefer CDDB over CD Text">Предпочитать CDDB</entry>
 	<entry id="5314" string="Enable CDDB cache">Кэширование CDDB</entry>
 	<entry id="5315" string="Automatization">Автоматизация</entry>
-	<entry id="5316" string="Always select first entry">Выбирать первую запись</entry>
+	<entry id="5316" string="Always select first entry">Всегда выбирать первую запись</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Дополнительные настройки CDDB</entry>
@@ -472,7 +472,7 @@
 	<entry id="5502" string="Default comment string">Комментарии по умолчанию</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Заменить существующий комментарий комментарием по умолчанию</entry>
 	<entry id="5504" string="Filename pattern">Формирование названия файла</entry>
-	<entry id="5505" string="Encoding">Кодируется</entry>
+	<entry id="5505" string="Encoding">Кодировка</entry>
 	<entry id="5506" string="Comments">Комментарии</entry>
 	<entry id="5507" string="Cover art">Обложка</entry>
 	<entry id="5508" string="Read cover art">Читать обложку</entry>
@@ -490,11 +490,11 @@
 	<entry id="5520" string="Write CD table of contents">Записать содержание CD</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Сохранять информацию Replay Gain</entry>
 	<entry id="5522" string="Cue sheets"/>
-	<entry id="5523" string="Read cue sheets embedded in metadata"/>
-	<entry id="5524" string="Prefer cue sheets over chapter information"/>
-	<entry id="5525" string="Prepend zero to track numbers below 10"/>
-	<entry id="5526" string="File size limit"/>
-	<entry id="5527" string="unlimited"/>
+	<entry id="5523" string="Read cue sheets embedded in metadata">Читать cue sheets, включенные в метаданные</entry>
+	<entry id="5524" string="Prefer cue sheets over chapter information">Предпочтительнее использовать cue sheets вместо информации о разделе</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">Добавлять 0 в начало номеров дорожек меньше 10</entry>
+	<entry id="5526" string="File size limit">Ограничение размера файла</entry>
+	<entry id="5527" string="unlimited">неограниченный</entry>
       </section>
 
       <section name="Joblist">
@@ -521,17 +521,17 @@
 	  <entry id="5660" string="File type">Тип файла</entry>
 	  <entry id="5661" string="Output file name">Имя выходного файла</entry>
 	  <entry id="5662" string="Bitrate">Битрейт</entry>
-	  <entry id="5663" string="Sampling rate">Частота дискретизации</entry>
+	  <entry id="5663" string="Sampling rate">Частота сэмплов</entry>
 	  <entry id="5664" string="Channels">Каналы</entry>
-	  <entry id="5665" string="Sample resolution">Разрешение сэмпла</entry>
-	  <entry id="5666" string="CD drive"/>
+	  <entry id="5665" string="Sample resolution">Разрешение сэмплов</entry>
+	  <entry id="5666" string="CD drive">CD дисковод</entry>
 	</section>
       </section>
 
       <section name="Resources">
 	<entry id="5700" string="Parallel processing">Параллельная обработка</entry>
-	<entry id="5701" string="Enable parallel processing">Разрешить параллельную обработку</entry>
-	<entry id="5702" string="Enable SuperFast mode"/>
+	<entry id="5701" string="Enable parallel processing">Включить параллельную обработку</entry>
+	<entry id="5702" string="Enable SuperFast mode">Включить режим SuperFast</entry>
 	<entry id="5703" string="Number of conversion threads">Количество потоков преобразования</entry>
 	<entry id="5704" string="auto">авто</entry>
 	<entry id="5705" string="Process priority">Приоритет процесса</entry>
@@ -544,23 +544,23 @@
 
       <section name="Verification">
 	<entry id="5800" string="Verification">Проверка</entry>
-	<entry id="5801" string="Enable input verification">Разрешить входную проверку</entry>
+	<entry id="5801" string="Enable input verification">Включить проверку входных данных</entry>
 	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Проверяет чтобы декодированные данные из входа&#10;без потерь точно соответствовали источнику.</entry>
-	<entry id="5803" string="Enable output verification">Включить входную проверку</entry>
+	<entry id="5803" string="Enable output verification">Включить проверку выходных данных</entry>
 	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Проверяет чтобы декодированные данные выхода&#10;без потерь точно соответствовали источнику.</entry>
       </section>
 
       <section name="Processing">
-	<entry id="5900" string="Signal processing"/>
-	<entry id="5901" string="Enable signal processing">Начать кодирование</entry>
-	<entry id="5902" string="Enable processing during playback">Начать кодирование с</entry>
+	<entry id="5900" string="Signal processing">Обработка сигнала</entry>
+	<entry id="5901" string="Enable signal processing">Включить обработку сигнала</entry>
+	<entry id="5902" string="Enable processing during playback">Включить обработку во время воспроизведения</entry>
 	<entry id="5903" string="Components">Компоненты</entry>
-	<entry id="5904" string="Available"/>
-	<entry id="5905" string="Selected"/>
-	<entry id="5906" string="Configure component"/>
-	<entry id="5907" string="Conversion to a single output file"/>
-	<entry id="5908" string="Process each track individually"/>
-	<entry id="5909" string="Treat the combined tracks like a single track"/>
+	<entry id="5904" string="Available">Доступные</entry>
+	<entry id="5905" string="Selected">Выбранные</entry>
+	<entry id="5906" string="Configure component">Настройка компонента</entry>
+	<entry id="5907" string="Conversion to a single output file">Кодирование в один выходной файл</entry>
+	<entry id="5908" string="Process each track individually">Обрабатывать каждую дорожку отдельно</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">Воспринимать объединенные дорожки как одну</entry>
       </section>
     </section>
 
@@ -571,7 +571,7 @@
     </section>
 
     <section name="Updates">
-      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Новая версия %1 доступна!</entry>
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">Вышла новая версия %1! Хотите посмотреть список доступных обновлений?</entry>
       <entry id="6101" string="There are no updates available at the moment!">На данный момент обновлений нет!</entry>
       <entry id="6102" string="Check for updates at startup">Проверять обновления при запуске программы</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 может проверять наличие обновлений при запуске.&#10;&#10;Хотите, чтобы %1 проверял наличе обновлений при запуске?</entry>
@@ -589,41 +589,41 @@
 
     <section name="Messages">
       <entry id="7000" string="Currently converting">Сейчас кодируется</entry>
-      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Кодирование в процессе! Выйти?</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Кодирование в процессе! Вы уверены, что хотите выйти?</entry>
       <entry id="7002" string="Delete original files after encoding">Удалать исходные файлы после кодирования</entry>
       <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Эта установка удалит исходные файлы после того, как они&#10;будут закодированы! Вы уверены, что хотите продолжить?</entry>
-      <entry id="7004" string="Keep this option enabled even after restarting %1"/>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">Сохранять эту настройку включенной даже после перезапуска %1</entry>
       <entry id="7005" string="File already exists">Файл уже существует</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Выходной файл %1&#10;уже существует! Хотите перезаписать его?</entry>
-      <entry id="7007" string="Overwrite all further files">Перезаписать все старые файлы</entry>
+      <entry id="7007" string="Overwrite all further files">Перезаписать все последующие файлы</entry>
       <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Вы собираетесь преобразовывать из формата с потерями в формат без потерь.&#10;&#10;Имейте в виду, что потеря качества необратима, поэтому этот процесс&#10;никак не улучшит качество и скорее всего увеличит размер файла.&#10;&#10;Вы все равно хотите продолжить?</entry>
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Error: %1"/>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2"/>
-      <entry id="7102" string="Could not create encoder component: %1"/>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3"/>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3"/>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2"/>
+      <entry id="7100" string="Error: %1">Ошибка %1</entry>
+      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Невозможно создать компонент декодера: %1&#10;&#10;Файл: %1&#10;Путь: %2</entry>
+      <entry id="7102" string="Could not create encoder component: %1">Невозможно создать компонент кодека: %1</entry>
+      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Невозможно установить декодер для входного файла: %1&#10;&#10;Файл: %1&#10;Путь: %2&#10;&#10;Ошибка: %3</entry>
+      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Невозможно установить кодек для выходного файла: %1&#10;&#10;Файл: %1&#10;Путь: %2&#10;&#10;Ошибка: %3</entry>
+      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Невозможно установить обработчик DSP: %1&#10;&#10;Ошибка: %2</entry>
       <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Нет доступа к входному файлу: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
       <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Невозможно создать выходной файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
       <entry id="7108" string="Failed to verify input file: %1">Ошибка проверки входного файла: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Несоответствие контрольной суммы при проверке выходного файла: %1&#10;&#10;Контрольная сумма кодирования: %2&#10;Контрольная сумма проверки: %3</entry>
       <entry id="7110" string="File not found">Файл не найден</entry>
       <entry id="7111" string="Unknown file type">Неизвестный тип файла</entry>
-      <entry id="7112" string="Invalid file format"/>
+      <entry id="7112" string="Invalid file format">Недопустимый формат файла</entry>
       <entry id="7113" string="Unsupported audio format">Неподдерживаемый звуковой формат</entry>
       <entry id="7114" string="Unknown error">Неизвестная ошибка</entry>
       <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Не могу загрузить драйвер ASPI! CD граббер отключен!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Не могу открыть файл: %1&#10;&#10;%2</entry>
-      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Удалать исходные файлы после кодирования</entry>
-      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Эта установка удалит исходные файлы после того, как они&#10;будут закодированы! Вы уверены, что хотите продолжить?</entry>
-      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Поддержка CDDB выключена! Пожалуйста включите&#10;поддержку местной или удаленной CDDB в диалоговом окне. </entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Невохможно воспроизводить дорожку CD при копировании с этого же диска!</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Невозможно начать копирование, пока проигрывается дорожка с этого же диска!</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Поддержка CDDB выключена! Пожалуйста включите&#10;поддержку местной или удаленной CDDB в диалоговом окне.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Поддержка удаленной CDDB выключена! Пожалуйста&#10;включите поддержку удаленной CDDB в диалоговом окне.</entry>
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Доступ к приводу CD-ROM перекрыт Windows.&#10;&#10;Пожалуйста свяжитесь со своим системным администратором,&#10;чтобы получить право доступа к приводу CD-ROM</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Нет доступного диалога настроек для:&#10;&#10;%1</entry>
-      <entry id="7123" string="The selected folder does not exist anymore!"/>
+      <entry id="7123" string="The selected folder does not exist anymore!">Выбранная папка больше не существует!</entry>
     </section>
 
     <section name="Dialogs">
@@ -639,8 +639,8 @@
       </section>
 
       <section name="Format">
-	<entry id="8100" string="Select sample format">Ошибки</entry>
-	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">%1 ошибок при обработке задания</entry>
+	<entry id="8100" string="Select sample format">Выбрать формат сэмплов</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">У выбранных дорожек другой формат сэмплов. Пожалуйста,&#10;установите желаемый формат сэмплов выходного файла:</entry>
 	<entry id="8102" string="Select">Выбрать</entry>
       </section>
 
@@ -658,22 +658,22 @@
       <entry id="9003" string="Read CD Text">Читать CD Текст</entry>
       <entry id="9004" string="Read cdplayer.ini">Читать cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Настройки захвата данных (граббера)</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Режим cd-параноя</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Режим cdparanoia</entry>
       <entry id="9007" string="Overlap only">Только перекрывать</entry>
       <entry id="9008" string="No verify">Без проверки</entry>
       <entry id="9009" string="No scratch repair">Без коррекции царапин</entry>
-      <entry id="9010" string="Full cdparanoia mode">Полный режим cd-параноя</entry>
+      <entry id="9010" string="Full cdparanoia mode">Полный режим cdparanoia</entry>
       <entry id="9011" string="Activate jitter correction">Jitter коррекция</entry>
       <entry id="9012" string="Switch stereo channels">Поменять левый/правый</entry>
       <entry id="9013" string="Automatization">Автоматизация</entry>
-      <entry id="9014" string="Read CD contents on insert">Содержимое читать сразу</entry>
+      <entry id="9014" string="Read CD contents on insert">Читать содержимое при вставке диска</entry>
       <entry id="9015" string="Start ripping automatically">Авт. начало копирования</entry>
       <entry id="9016" string="Eject disk after ripping">Извлечь диск после работы</entry>
       <entry id="9017" string="CD options">Настройка CD</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Блокировка CD при работе </entry>
+      <entry id="9018" string="Lock CD tray while ripping">Блокировка лотка CD при работе</entry>
       <entry id="9019" string="Use native NT SCSI library">Родные NT SCSI библиотеки</entry>
       <entry id="9020" string="Use read offset">Использовать смещение при чтении</entry>
-      <entry id="9021" string="samples">семплы</entry>
+      <entry id="9021" string="samples">сэмплы</entry>
       <entry id="9022" string="Read ISRC when adding tracks to joblist">Читать ISRC при добавлении дорожек в список задач</entry>
       <entry id="9023" string="Spin up before ripping">Раскрутить перед копированием</entry>
       <entry id="9024" string="%1 seconds">%1 секунд</entry>
@@ -682,26 +682,26 @@
     <section name="Components">
 
       <section name="Decoders">
-	<entry id="10000" string="Cue Sheet Reader"/>
+	<entry id="10000" string="Cue Sheet Reader">Считыватель Cue Sheet</entry>
       </section>
 
       <section name="Encoders">
 	<entry id="11000" string="meh! - multi encoder hub"/>
-	<entry id="11001" string="SndFile Output Component"/>
+	<entry id="11001" string="SndFile Output Component">Выходной компонент SndFile</entry>
       </section>
 
       <section name="DSP">
-	<entry id="12000" string="Channel Converter"/>
-	<entry id="12001" string="Sample Format Converter"/>
-	<entry id="12002" string="Sample Rate Converter"/>
-	<entry id="12003" string="RNNoise Noise Reduction"/>
-	<entry id="12004" string="Rubber Band Tempo/Pitch Changer"/>
+	<entry id="12000" string="Channel Converter">Преобразователь каналов</entry>
+	<entry id="12001" string="Sample Format Converter">Преобразователь формата сэмплов</entry>
+	<entry id="12002" string="Sample Rate Converter">Преобразователь частоты сэмплов</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">Подавление шумов RNNoise</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Изменение темпа/высоты</entry>
       </section>
 
       <section name="Extensions">
-	<entry id="15000" string="Notifications"/>
-	<entry id="15001" string="Logging"/>
-	<entry id="15002" string="YouTube Video Downloader"/>
+	<entry id="15000" string="Notifications">Уведомления</entry>
+	<entry id="15001" string="Logging">Журналирование</entry>
+	<entry id="15002" string="YouTube Video Downloader">Загрузчик видео YouTube</entry>
       </section>
     </section>
 
@@ -709,22 +709,22 @@
 
       <section name="MAD">
 	<entry id="20000" string="Decoding">Декодирование</entry>
-	<entry id="20001" string="Enable 24 bit decoding">Разрешить 24 битное декодирование</entry>
+	<entry id="20001" string="Enable 24 bit decoding">Разрешить 24-битное декодирование</entry>
       </section>
 
       <section name="mpg123">
 	<entry id="21000" string="Decoder">Декодер</entry>
 	<entry id="21001" string="Active decoder">Текущий декодер</entry>
- 	<entry id="21002" string="auto select">автовыбор</entry>
+	<entry id="21002" string="auto select">автовыбор</entry>
       </section>
 
       <section name="CueSheet">
 	<entry id="22000" string="Title information">Информация о названии</entry>
 	<entry id="22001" string="Read tags from referenced files">Читать теги из связанных файлов</entry>
-	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Предпочитать данные из cu esheet данным из связанных файлов</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Предпочитать данные из cue sheet данным из связанных файлов</entry>
 	<entry id="22003" string="Alternative files">Альтернативные файлы</entry>
-	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Искать сжатые альтернативные файлы если связанные Wave файлы не не могут быть обнаружены</entry>
-	<entry id="22005" string="Error handling">Ошибка обработки</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Искать сжатые альтернативные файлы если связанные Wave файлы не могут быть обнаружены</entry>
+	<entry id="22005" string="Error handling">Обработка ошибок</entry>
 	<entry id="22006" string="Ignore errors during cue sheet processing">Игнорировать ошибки при обработке cue sheet</entry>
       </section>
     </section>
@@ -739,7 +739,7 @@
 	<entry id="30004" string="Channels">Каналы</entry>
 	<entry id="30005" string="Private bit">Private Bit</entry>
 	<entry id="30006" string="Set Copyright bit">Copyright Bit</entry>
-	<entry id="30007" string="Enable CRC">Разрешить CRC</entry>
+	<entry id="30007" string="Enable CRC">Включить CRC</entry>
 	<entry id="30008" string="Set Original bit">Original Bit</entry>
 	<entry id="30009" string="Dual channel encoding">2-канальное кодирование</entry>
 	<entry id="30010" string="Set Private bit">Private Bit</entry>
@@ -751,20 +751,20 @@
 	<entry id="31002" string="Quantization">Квантование</entry>
 	<entry id="31003" string="Downsampling ratio">Нижне-дискретный коэфф.</entry>
 	<entry id="31004" string="Predictor size">Прогноз размера</entry>
-	<entry id="31005" string="Enable lossless encoding">С мин. потерями</entry>
-	<entry id="31006" string="Enable Joint Stereo">Соединять стерео</entry>
+	<entry id="31005" string="Enable lossless encoding">Кодирование без потерь</entry>
+	<entry id="31006" string="Enable Joint Stereo">Включить Joint Stereo</entry>
       </section>
 
       <section name="LAME">
 	<entry id="32000" string="Basic">Основное</entry>
 	<entry id="32001" string="Misc">Прочее</entry>
 	<entry id="32002" string="Expert">Эксперт</entry>
-	<entry id="32003" string="Audio processing">Аудио процесс</entry>
+	<entry id="32003" string="Audio processing">Обработка аудио</entry>
 
 	<section name="Basic">
 	  <entry id="32100" string="Presets">Настройка</entry>
 	  <entry id="32101" string="Use preset">Выберите вариант</entry>
-	  <entry id="32102" string="Custom settings">Указать настройки в ручную</entry>
+	  <entry id="32102" string="Custom settings">Указать настройки вручную</entry>
 	  <entry id="32103" string="Medium, Fast">Средний, Быстрый</entry>
 	  <entry id="32104" string="Standard, Fast">Стандартный, Быстрый</entry>
 	  <entry id="32105" string="Extreme, Fast">Предельный, Быстрый</entry>
@@ -791,9 +791,9 @@
 	  <entry id="32206" string="Stereo mode">Стерео режим</entry>
 	  <entry id="32207" string="auto">авто</entry>
 	  <entry id="32208" string="Stereo">Стерео</entry>
-	  <entry id="32209" string="Joint Stereo">Соединять стерео</entry>
-	  <entry id="32210" string="Force Joint Stereo">принудительно</entry>
-	  <entry id="32211" string="VBR bitrate range">диапазон VBR битрейт</entry>
+	  <entry id="32209" string="Joint Stereo"/>
+	  <entry id="32210" string="Force Joint Stereo">Принудительно</entry>
+	  <entry id="32211" string="VBR bitrate range">диапазон VBR битрейта</entry>
 	  <entry id="32212" string="Set minimum VBR bitrate">Минимальный VBR битрейт</entry>
 	  <entry id="32213" string="Set maximum VBR bitrate">Максимальный VBR битрейт</entry>
 	</section>
@@ -832,10 +832,10 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">Битрейт</entry>
 	  <entry id="33201" string="Bitrate / Quality">Битрейт/Качество</entry>
-	  <entry id="33202" string="Bitrate per channel">Битрейт по каналам</entry>
+	  <entry id="33202" string="Bitrate per channel">Битрейт на канал</entry>
 	  <entry id="33203" string="Set quality">Качество</entry>
 	  <entry id="33204" string="Stereo mode">Стерео режим</entry>
-	  <entry id="33205" string="Allow Joint Stereo">Соединять стерео</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Разрешить Joint Stereo</entry>
 	  <entry id="33206" string="Temporal Noise Shaping">Формирование врем. шума</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Использовать</entry>
 	  <entry id="33208" string="Maximum bandwidth">Макс. ширина полосы частот</entry>
@@ -844,13 +844,13 @@
 
 	<section name="Format">
 	  <entry id="33300" string="MPEG version">Версия MPEG</entry>
-	  <entry id="33301" string="AAC object type">Объект типа AAC</entry>
-	  <entry id="33302" string="File format">Тип файла</entry>
+	  <entry id="33301" string="AAC object type">Тип объекта AAC</entry>
+	  <entry id="33302" string="File format">Формат файла</entry>
 	  <entry id="33303" string="File extension">Расширение файла</entry>
-	  <entry id="33304" string="Tags">Тэги</entry>
+	  <entry id="33304" string="Tags">Теги</entry>
 	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Разрешить теги ID3v2 в AAC файлах</entry>
 	  <entry id="33306" string="Note">Примечание</entry>
-	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Некоторые плееры воспроизводящие AAC файлы&#10;могут иметь проблемы с ID3 тегами</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Некоторые плееры, воспроизводящие AAC файлы,&#10;могут иметь проблемы с ID3-тегами.</entry>
 	</section>
       </section>
 
@@ -862,13 +862,13 @@
 	<section name="Basic">
 	  <entry id="34100" string="Presets">Настройка</entry>
 	  <entry id="34101" string="Use preset">Выберите вариант</entry>
-	  <entry id="34102" string="Custom settings">Указать настройки в ручную</entry>
+	  <entry id="34102" string="Custom settings">Указать настройки вручную</entry>
 	  <entry id="34103" string="Fastest encoding">Быстрейшее кодирование</entry>
 	  <entry id="34104" string="Best compression">Лучшее сжатие</entry>
 	  <entry id="34105" string="Stereo mode">Стерео режим</entry>
-	  <entry id="34106" string="Joint Stereo">Соединять стерео</entry>
+	  <entry id="34106" string="Joint Stereo"/>
 	  <entry id="34107" string="Adaptive Joint Stereo">Адаптивное Joint Stereo</entry>
-	  <entry id="34108" string="File format">Тип файла</entry>
+	  <entry id="34108" string="File format">Формат файла</entry>
 	  <entry id="34109" string="Default">По умолчанию</entry>
 	</section>
 
@@ -878,7 +878,7 @@
 	</section>
 
 	<section name="Expert">
-	  <entry id="34300" string="Signal processing">Аподизация</entry>
+	  <entry id="34300" string="Signal processing">Обработка сигнала</entry>
 	  <entry id="34301" string="Window function(s)">Функции аподизации</entry>
 	  <entry id="34302" string="Note">Примечание</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Несколько функций разделяются ;</entry>
@@ -918,7 +918,7 @@
 	<entry id="36007" string="Use VBR encoding">VBR</entry>
 	<entry id="36008" string="Quality">Качество</entry>
 	<entry id="36009" string="Target bitrate">Битрейт</entry>
-	<entry id="36010" string="Use 2-pass encoding">2-прохода</entry>
+	<entry id="36010" string="Use 2-pass encoding">2 прохода</entry>
       </section>
 
       <section name="TwinVQ">
@@ -975,7 +975,7 @@
 	<entry id="40009" string="Superwideband">Сверхширокополосный</entry>
 	<entry id="40010" string="Fullband">Полный диапазон</entry>
 	<entry id="40011" string="File extension">Расширение</entry>
-	<entry id="40012" string="Variable bitrate">Переменный ьитрейт</entry>
+	<entry id="40012" string="Variable bitrate">Переменный битрейт</entry>
 	<entry id="40013" string="Enable variable bitrate encoding">Разрешить кодирование с переменным битрейтом</entry>
 	<entry id="40014" string="Constrain bitrate to target value">Ограничить битрейт до</entry>
 	<entry id="40015" string="Quality">Качество</entry>
@@ -1015,18 +1015,18 @@
     <section name="DSP">
 
       <section name="Format">
-	<entry id="50000" string="Sample format">Преобразователь</entry>
-	<entry id="50001" string="Number format">Частота дискретизации</entry>
+	<entry id="50000" string="Sample format">Формат сэмпла</entry>
+	<entry id="50001" string="Number format">Формат чисел</entry>
 	<entry id="50002" string="Sample resolution">Разрешение сэмпла</entry>
 	<entry id="50003" string="bit">бит</entry>
-	<entry id="50004" string="unsigned"/>
-	<entry id="50005" string="Integer"/>
-	<entry id="50006" string="Float"/>
+	<entry id="50004" string="unsigned">без знака</entry>
+	<entry id="50005" string="Integer">Целое</entry>
+	<entry id="50006" string="Float">С плавающей точкой</entry>
       </section>
 
       <section name="Channels">
-	<entry id="50100" string="Output channels"/>
-	<entry id="50101" string="Channel configuration"/>
+	<entry id="50100" string="Output channels">Выходные каналы</entry>
+	<entry id="50101" string="Channel configuration">Конфигурация каналов</entry>
 	<entry id="50102" string="Mono">Моно</entry>
 	<entry id="50103" string="Stereo">Стерео</entry>
 	<entry id="50104" string="Switch stereo channels">Поменять левый/правый</entry>
@@ -1039,47 +1039,47 @@
       </section>
 
       <section name="RubberBand">
-	<entry id="50300" string="Basic controls"/>
-	<entry id="50301" string="Tempo"/>
-	<entry id="50302" string="Pitch"/>
-	<entry id="50303" string="%1 Semitones"/>
-	<entry id="50304" string="Advanced options"/>
-	<entry id="50305" string="Transient detection"/>
-	<entry id="50306" string="Compound"/>
-	<entry id="50307" string="Percussive"/>
-	<entry id="50308" string="Soft"/>
-	<entry id="50309" string="Transient handling"/>
-	<entry id="50310" string="Crisp"/>
-	<entry id="50311" string="Mixed"/>
-	<entry id="50312" string="Smooth"/>
-	<entry id="50313" string="Transformation window"/>
-	<entry id="50314" string="Standard"/>
-	<entry id="50315" string="Short"/>
-	<entry id="50316" string="Long"/>
-	<entry id="50317" string="Use time-domain smoothing"/>
-	<entry id="50318" string="Phase handling"/>
-	<entry id="50319" string="Laminar"/>
-	<entry id="50320" string="Independent"/>
-	<entry id="50321" string="Formant handling"/>
-	<entry id="50322" string="Shift"/>
-	<entry id="50323" string="Preserve"/>
-	<entry id="50324" string="Pitch processing"/>
-	<entry id="50325" string="High quality"/>
-	<entry id="50326" string="High speed"/>
-	<entry id="50327" string="High consistency"/>
-	<entry id="50328" string="Stereo processing"/>
-	<entry id="50329" string="Separate"/>
-	<entry id="50330" string="Combined"/>
+	<entry id="50300" string="Basic controls">Основные настройки</entry>
+	<entry id="50301" string="Tempo">Темп</entry>
+	<entry id="50302" string="Pitch">Высота</entry>
+	<entry id="50303" string="%1 Semitones">Полутона %1</entry>
+	<entry id="50304" string="Advanced options">Расширенные настройки</entry>
+	<entry id="50305" string="Transient detection">Обнаружение переходных процессов</entry>
+	<entry id="50306" string="Compound">Объединение</entry>
+	<entry id="50307" string="Percussive">Ударный</entry>
+	<entry id="50308" string="Soft">Мягкий</entry>
+	<entry id="50309" string="Transient handling">Обработка переходных процессов</entry>
+	<entry id="50310" string="Crisp">Четкий</entry>
+	<entry id="50311" string="Mixed">Смешанный</entry>
+	<entry id="50312" string="Smooth">Сглаженный</entry>
+	<entry id="50313" string="Transformation window">Окно преобразования</entry>
+	<entry id="50314" string="Standard">Стандартное</entry>
+	<entry id="50315" string="Short">Короткое</entry>
+	<entry id="50316" string="Long">Длиннное</entry>
+	<entry id="50317" string="Use time-domain smoothing">Использовать сглаживание по времени</entry>
+	<entry id="50318" string="Phase handling">Обработка фазы</entry>
+	<entry id="50319" string="Laminar">Плавно</entry>
+	<entry id="50320" string="Independent">Независимо</entry>
+	<entry id="50321" string="Formant handling">Обработка формата</entry>
+	<entry id="50322" string="Shift">Сдвиг</entry>
+	<entry id="50323" string="Preserve">Сохранять</entry>
+	<entry id="50324" string="Pitch processing">Обработка высоты</entry>
+	<entry id="50325" string="High quality">Высокое качество</entry>
+	<entry id="50326" string="High speed">Высокая скорость</entry>
+	<entry id="50327" string="High consistency">Высокая плотность</entry>
+	<entry id="50328" string="Stereo processing">Обработка стерео</entry>
+	<entry id="50329" string="Separate">Раздельно</entry>
+	<entry id="50330" string="Combined">Вместе</entry>
       </section>
 
       <section name="RNNoise">
-	<entry id="50400" string="Signal/noise type"/>
-	<entry id="50401" string="Signal type"/>
-	<entry id="50402" string="Noise type"/>
-	<entry id="50403" string="General"/>
-	<entry id="50404" string="Recording"/>
-	<entry id="50405" string="Voice (incl. laughter etc.)"/>
-	<entry id="50406" string="Speech"/>
+	<entry id="50400" string="Signal/noise type">Вид сигнала/шума</entry>
+	<entry id="50401" string="Signal type">Вид сигнала</entry>
+	<entry id="50402" string="Noise type">Вид шума</entry>
+	<entry id="50403" string="General">Обычный</entry>
+	<entry id="50404" string="Recording">Запись</entry>
+	<entry id="50405" string="Voice (incl. laughter etc.)">Голос (включая Смех и т.п.)</entry>
+	<entry id="50406" string="Speech">Речь</entry>
       </section>
     </section>
 
@@ -1092,63 +1092,63 @@
     </section>
 
     <section name="External">
-      <entry id="80000" string="Downmix multi-channel audio to stereo"/>
+      <entry id="80000" string="Downmix multi-channel audio to stereo">Преобразовывать многоканальный звук в стерео</entry>
 
       <section name="Musepack Audio Encoder">
 	<entry id="80100" string="Quality">Качество</entry>
-	<entry id="80101" string="poor"/>
-	<entry id="80102" string="excellent"/>
-	<entry id="80103" string="Mid/Side stereo mode"/>
-	<entry id="80104" string="off"/>
-	<entry id="80105" string="reduced"/>
-	<entry id="80106" string="on"/>
-	<entry id="80107" string="decoupled"/>
-	<entry id="80108" string="enhanced 1.5/3 dB"/>
+	<entry id="80101" string="poor">плохое</entry>
+	<entry id="80102" string="excellent">отличное</entry>
+	<entry id="80103" string="Mid/Side stereo mode">Режим стерео Центр/Бок</entry>
+	<entry id="80104" string="off">выкл</entry>
+	<entry id="80105" string="reduced">уменьшенный</entry>
+	<entry id="80106" string="on">вкл</entry>
+	<entry id="80107" string="decoupled">раздельно</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">улучшенный 1.5/3 dB</entry>
 	<entry id="80109" string="enhanced 2/6 dB"/>
 	<entry id="80110" string="enhanced 2.5/9 dB"/>
 	<entry id="80111" string="enhanced 3/12 dB"/>
-	<entry id="80112" string="enhanced 3/inf dB"/>
-	<entry id="80113" string="Adaptive noise shaping order"/>
-	<entry id="80114" string="high"/>
-	<entry id="80115" string="Clear Voice Detection"/>
-	<entry id="80116" string="dual"/>
+	<entry id="80112" string="enhanced 3/inf dB">enhanced 1.5/беск dB</entry>
+	<entry id="80113" string="Adaptive noise shaping order">Адаптивный порядок определения шума&#10;&#10;</entry>
+	<entry id="80114" string="high">высокий</entry>
+	<entry id="80115" string="Clear Voice Detection">Определение чистого голоса</entry>
+	<entry id="80116" string="dual">двойной</entry>
       </section>
 
       <section name="OptimFROG Lossless Encoder">
 	<entry id="80200" string="Encoding mode">Режим кодирования</entry>
-	<entry id="80201" string="fast"/>
+	<entry id="80201" string="fast">быстрый</entry>
 	<entry id="80202" string="normal">нормальный</entry>
-	<entry id="80203" string="high"/>
-	<entry id="80204" string="extra"/>
-	<entry id="80205" string="best"/>
-	<entry id="80206" string="high, new"/>
-	<entry id="80207" string="extra, new"/>
-	<entry id="80208" string="best, new"/>
-	<entry id="80209" string="Add MD5 checksum"/>
-	<entry id="80210" string="Seeking"/>
-	<entry id="80211" string="slow"/>
-	<entry id="80212" string="minimum"/>
-	<entry id="80213" string="Optimization"/>
+	<entry id="80203" string="high">высокий</entry>
+	<entry id="80204" string="extra">экстра</entry>
+	<entry id="80205" string="best">лучший</entry>
+	<entry id="80206" string="high, new">высокий, новый</entry>
+	<entry id="80207" string="extra, new">экстра, новый</entry>
+	<entry id="80208" string="best, new">лучший, новый</entry>
+	<entry id="80209" string="Add MD5 checksum">Добавить контрольные суммы MD5</entry>
+	<entry id="80210" string="Seeking">Поиск</entry>
+	<entry id="80211" string="slow">медленный</entry>
+	<entry id="80212" string="minimum">минимальный</entry>
+	<entry id="80213" string="Optimization">Оптимизация</entry>
 	<entry id="80214" string="disabled">отключено</entry>
-	<entry id="80215" string="low"/>
+	<entry id="80215" string="low">низкая</entry>
       </section>
 
       <section name="Tom's Audiokompressor">
-	<entry id="80300" string="Encoder preset"/>
-	<entry id="80301" string="fastest"/>
-	<entry id="80302" string="strongest"/>
-	<entry id="80303" string="Frame size limit"/>
-	<entry id="80304" string="Add MD5 checksum"/>
+	<entry id="80300" string="Encoder preset">Предустановка кодека</entry>
+	<entry id="80301" string="fastest">самый быстрый</entry>
+	<entry id="80302" string="strongest">самый сильный</entry>
+	<entry id="80303" string="Frame size limit">Ограничение размера кадра</entry>
+	<entry id="80304" string="Add MD5 checksum">Добавить контрольные суммы MD5</entry>
       </section>
 
       <section name="WavPack Audio Encoder">
-	<entry id="80400" string="Enable lossy compression"/>
+	<entry id="80400" string="Enable lossy compression">Разрешить сжатие с потерями</entry>
 	<entry id="80401" string="Compression mode">Режим сжатия</entry>
-	<entry id="80402" string="fast"/>
-	<entry id="80403" string="high quality"/>
-	<entry id="80404" string="very high quality"/>
-	<entry id="80405" string="Extra encode processing"/>
-	<entry id="80406" string="faster"/>
+	<entry id="80402" string="fast">быстрое</entry>
+	<entry id="80403" string="high quality">высокое качество</entry>
+	<entry id="80404" string="very high quality">очень высокое качество</entry>
+	<entry id="80405" string="Extra encode processing">Дополнительная обработка кодирования</entry>
+	<entry id="80406" string="faster">быстрее</entry>
 	<entry id="80407" string="better">лучше</entry>
       </section>
 
@@ -1159,7 +1159,7 @@
 	<entry id="80503" string="worse">хуже</entry>
 	<entry id="80504" string="better">лучше</entry>
 	<entry id="80505" string="Bitrate">Битрейт</entry>
-	<entry id="80506" string="Bitrate (Streaming)"/>
+	<entry id="80506" string="Bitrate (Streaming)">Битрейт (потоковый)</entry>
       </section>
     </section>
 
@@ -1173,7 +1173,7 @@
 	<entry id="100004" string="Thank you very much!">Большое спасибо!</entry>
 	<entry id="100005" string="Remind me later">Напомнить позже</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
-	<entry id="100007" string="Donate to the %1 project"/>
+	<entry id="100007" string="Donate to the %1 project">Пожертвовать проекту %1</entry>
 
 	<section name="PayPal">
 	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Нажмите одну из кнопок ниже для помощи через PayPal:</entry>
@@ -1181,29 +1181,29 @@
 	  <entry id="100102" string="usd">rub</entry>
 	  <entry id="100103" string="$%1">%1 руб.</entry>
 	  <entry id="100104" string="5,10,20,other amount">250,500,1000,другая сумма</entry>
-	  <entry id="100105" string="monthly recurring"/>
-	  <entry id="100106" string="Donate"/>
+	  <entry id="100105" string="monthly recurring">повторять ещемесячно</entry>
+	  <entry id="100106" string="Donate">Пожертвовать</entry>
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:"/>
-	  <entry id="100201" string="Donate"/>
-	  <entry id="100202" string="usd">rub</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox позволяет быстро и просто выполнять пожертвования при помощи&#10;кредитной карты. Нажмите эту кнопку, чтобы пожертвовать с Donorbox:</entry>
+	  <entry id="100201" string="Donate">Пожертвовать</entry>
+	  <entry id="100202" string="usd">usd</entry>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:"/>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks."/>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Пожалуйста отсканируйте или нажмите QR код или скопируйте&#10;следующий адрес, чтобы пожертвовать Bitcoin:</entry>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Этот адрес также принимает Bitcoin Cash и другие варианты.</entry>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:"/>
-	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens."/>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Пожалуйста отсканируйте или нажмите QR код или скопируйте&#10;следующий адрес, чтобы пожертвовать Ethereum:</entry>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">Этот адрес также принимает Ether Classic и ERC20.</entry>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:"/>
-	  <entry id="100501" string="Account holder:"/>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Вы можете пожертвовать, выполнив электронный перевод на&#10;следующий счет:</entry>
+	  <entry id="100501" string="Account holder:">Владелец счета:</entry>
 	  <entry id="100502" string="IBAN:"/>
 	  <entry id="100503" string="BIC:"/>
 	</section>
@@ -1289,8 +1289,8 @@
 	  <entry id="103207" string="Publisher information">Информация об издателе</entry>
 	  <entry id="103208" string="Publisher / label">Издатель / лэйбл</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo"/>
-	  <entry id="103211" string="BPM"/>
+	  <entry id="103210" string="Tempo">Темп</entry>
+	  <entry id="103211" string="BPM">Уд. в мин.</entry>
 	</section>
 
 	<section name="Other">
@@ -1303,7 +1303,7 @@
 	  <entry id="103306" string="Webpage URLs">URLы вебстраниц</entry>
 	  <entry id="103307" string="Artist webpage">Вебстраница артиста</entry>
 	  <entry id="103308" string="Publisher webpage">Вебстраница издателя</entry>
-	  <entry id="103309" string="Internet radio station">Интернет радиостанция</entry>
+	  <entry id="103309" string="Internet radio station">Интернет-радиостанция</entry>
 	  <entry id="103310" string="Audio source webpage">Вебстраница источника аудио</entry>
 	  <entry id="103311" string="Copyright information">Информация об авторских правах</entry>
 	  <entry id="103312" string="Commercial information">Коммерческая информация</entry>
@@ -1316,42 +1316,42 @@
       </section>
 
       <section name="Logging">
-	<entry id="104000" string="Logs"/>
-	<entry id="104001" string="Log"/>
-	<entry id="104002" string="Save as"/>
-	<entry id="104003" string="Log Files"/>
-	<entry id="104004" string="Time"/>
-	<entry id="104005" string="Message"/>
+	<entry id="104000" string="Logs">Журналы</entry>
+	<entry id="104001" string="Log">Журнал</entry>
+	<entry id="104002" string="Save as">Сохранить как</entry>
+	<entry id="104003" string="Log Files">Файлы журналов</entry>
+	<entry id="104004" string="Time">Время</entry>
+	<entry id="104005" string="Message">Сообщение</entry>
 
 	<section name="Configuration">
-	  <entry id="104100" string="User interface"/>
-	  <entry id="104101" string="Show Logs tab in main window"/>
-	  <entry id="104102" string="Log files"/>
-	  <entry id="104103" string="Archive log files"/>
-	  <entry id="104104" string="Log file folder"/>
+	  <entry id="104100" string="User interface">Интерфейс пользователя</entry>
+	  <entry id="104101" string="Show Logs tab in main window">Показывать вкладку Журналы в главном окне</entry>
+	  <entry id="104102" string="Log files">Файлы журналов</entry>
+	  <entry id="104103" string="Archive log files">Архивировать файлы журналов</entry>
+	  <entry id="104104" string="Log file folder">Папка файлов журналов</entry>
 	  <entry id="104105" string="Select">Выбрать</entry>
-	  <entry id="104106" string="Select the folder for saving log files"/>
-	  <entry id="104107" string="Delete old log files after"/>
-	  <entry id="104108" string="days"/>
-	  <entry id="104109" string="Conversion logs"/>
-	  <entry id="104110" string="Save conversion logs with audio files"/>
-	  <entry id="104111" string="Audio CD ripping logs only"/>
+	  <entry id="104106" string="Select the folder for saving log files">Выберите папку для сохранения файлов журналов</entry>
+	  <entry id="104107" string="Delete old log files after">Удалять старые файлы журналов после</entry>
+	  <entry id="104108" string="days">дней</entry>
+	  <entry id="104109" string="Conversion logs">Журналы преобразований</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">Сохранять журналы преобразования вместе с аудио файлами</entry>
+	  <entry id="104111" string="Audio CD ripping logs only">Только журналы копирования с аудио CD</entry>
 	  <entry id="104112" string="Filename pattern">Формирование названия файла</entry>
 	</section>
       </section>
 
       <section name="Notifier">
-	<entry id="105000" string="Conversion process finished!"/>
+	<entry id="105000" string="Conversion process finished!">Процесс преобразования закончен!</entry>
 
 	<section name="Configuration">
-	  <entry id="105100" string="Notifications"/>
-	  <entry id="105101" string="Notify on finished conversion"/>
-	  <entry id="105102" string="Play sound"/>
-	  <entry id="105103" string="Display message"/>
+	  <entry id="105100" string="Notifications">Уведомления</entry>
+	  <entry id="105101" string="Notify on finished conversion">Уведомлять о завершении преобразования</entry>
+	  <entry id="105102" string="Play sound">Проигрывать звук</entry>
+	  <entry id="105103" string="Display message">Показать сообщение</entry>
 	  <entry id="105104" string="Select">Выбрать</entry>
-	  <entry id="105105" string="Only for conversions running longer than"/>
-	  <entry id="105106" string="second(s)"/>
-	  <entry id="105107" string="minute(s)"/>
+	  <entry id="105105" string="Only for conversions running longer than">Только для преобразований, длящихся более</entry>
+	  <entry id="105106" string="second(s)">секунд</entry>
+	  <entry id="105107" string="minute(s)">минут</entry>
 	</section>
       </section>
     </section>
