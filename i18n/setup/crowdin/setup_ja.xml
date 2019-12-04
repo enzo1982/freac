@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">fre:ac Setup</property>
+    <property name="version">1.1</property>
+    <property name="language">Japanese / 日本語</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
+    <property name="author">REIKA</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="&lt;- Back">&lt;- 戻る</entry>
+    <entry id="101" string="Next -&gt;">次へ -&gt;</entry>
+    <entry id="102" string="Cancel">キャンセル</entry>
+    <entry id="103" string="Finish">完了</entry>
+    <entry id="104" string="Yes">はい</entry>
+    <entry id="105" string="No">いいえ</entry>
+
+    <entry id="200" string="Current file progress:">現在のファイルの進捗:</entry>
+    <entry id="201" string="Total installation progress:">インストール全体の進捗:</entry>
+    <entry id="202" string="Do you really want to exit Setup now?&#10;&#10;If you quit now, the program will not be installed on your computer.&#10;You may run Setup again later to complete the installation.">本当にセットアップを終了しますか？&#10;&#10;ここで終了するとプログラムは貴方のPCにインストールされません。&#10;後で再度セットアップを実行すれば、インストールを完了させる事が出来ます。</entry>
+    <entry id="203" string="Exit Setup">セットアップを終える</entry>
+    <entry id="204" string="The Setup will be cancelled now!">セットアップは中止されました</entry>
+    <entry id="205" string="Info">情報</entry>
+
+    <entry id="300" string="Destination directory">インストール・ディレクトリ</entry>
+    <entry id="301" string="Select">参照</entry>
+    <entry id="302" string="Select the folder in which the program will be installed:">インストール先フォルダを選択:</entry>
+    <entry id="303" string="Available components">利用可能なコンポーネント</entry>
+    <entry id="304" string="Description">説明</entry>
+    <entry id="305" string="Move the mouse over a&#10;component entry to&#10;show a description">マウスをコンポーネント上に&#10;動かすと、説明が表示されます</entry>
+    <entry id="306" string="Create Start Menu group">スタートメニューの作成</entry>
+    <entry id="307" string="Create Desktop icon">デスクトップアイコンの作成</entry>
+    <entry id="308" string="Create Quick Launch icon">クイック起動アイコンの作成</entry>
+
+    <entry id="1" string="%LONGNAME% Setup">%LONGNAME% セットアップ</entry>
+    <entry id="2" string="Welcome to the %NAME% Setup Wizard&#10;&#10;&#10;This will install %NAME% %VERSION% on your computer.&#10;&#10;It is recommended that you close all other applications you have running&#10;before continuing. This will help avoiding possible conflicts during the&#10;installation process.&#10;&#10;Click Next to continue, or Cancel to exit Setup.">%NAME% セットアップ・ウィザードへようこそ&#10;&#10;&#10;ここでは、%NAME% %VERSION% を貴方のPCへインストールします。&#10;&#10;続ける前に、実行中の他の全てのアプリケーションを終了することを推奨します。&#10;これは、インストール中の競合の可能性を回避するためです。&#10;&#10;「次へ」で続けます。「キャンセル」でセットアップを終了します。</entry>
+    <entry id="3" string="Setup - License Agreement">セットアップ - 許諾契約</entry>
+    <entry id="4" string="Please read the following license agreement. Click Yes to accept&#10;the agreement, or No to cancel the Setup.">以下の許諾契約をお読み頂き、契約を受諾して続けるなら「はい」を、&#10;セットアップを中止するなら「いいえ」をクリックして下さい。</entry>
+    <entry id="5" string="Setup - Destination Directory">セットアップ - インストール・ディレクトリ</entry>
+    <entry id="6" string="Setup will install %NAME% in the following folder.&#10;&#10;To install into a different folder, click Browse, and select another folder.">セットアップは %NAME% を以下のフォルダにインストールします。&#10;&#10;別のフォルダにインストールするには、「参照」をクリックしてフォルダを選択します。</entry>
+    <entry id="7" string="Setup - Components to install">セットアップ - インストールするコンポーネント</entry>
+    <entry id="8" string="Select the components you want to install.">インストールしたいコンポーネントを選択</entry>
+    <entry id="9" string="Setup - Start Menu and Desktop Shortcuts">セットアップ - スタートメニューとデスクトップ・ショートカット</entry>
+    <entry id="10" string="Setup can create shortcuts to the installed program.&#10;Please select which shortcuts shall be created.">セットアップはプログラムのショートカットを作成します。&#10;作成するショートカットを選択してください。</entry>
+    <entry id="11" string="Setup - Ready to install">セットアップ - インストールの開始</entry>
+    <entry id="12" string="Setup is now ready to install %NAME% on your computer.&#10;&#10;Click Next to install the program files on your computer, or Cancel&#10;to exit Setup.">セットアップは %NAME% を貴方のPCへインストールする準備が出来ました。&#10;&#10;「次へ」をクリックするとインストールを開始します。「キャンセル」でセットアップを&#10;終了します。</entry>
+    <entry id="13" string="Setup - Copying files">セットアップ - ファイルのコピー</entry>
+    <entry id="14" string="Setup is copying the program files to your computer.&#10;&#10;Please wait until the installation process has finished. You can then&#10;start working with the installed program.">セットアップはプログラムファイルを貴方のPCへコピーしています。&#10;&#10;インストールが完了するまでお待ち下さい。完了後には貴方はプログラムの&#10;使用を開始することが出来ます。</entry>
+    <entry id="15" string="Setup - Installation finished">セットアップ - インストールの完了</entry>
+    <entry id="16" string="Congratulations! %NAME% %VERSION% has been successfully installed&#10;on your computer.&#10;&#10;You can now start %NAME% from the Windows Start menu.&#10;&#10;Click Finish to close the setup wizard.">おめでとうございます！ %NAME% %VERSION% のインストールが成功しました。&#10;&#10;Windowsのスタートメニューから %NAME% を開始出来ます。&#10;&#10;「完了」をクリックして、セットアップ・ウィザードを閉じて下さい。</entry>
+    <entry id="17" string="%NAME% %VERSION% program files (required)">%NAME% %VERSION% プログラムファイル (必須)</entry>
+    <entry id="18" string="easyUpdate online updater">簡単オンラインアップデート</entry>
+    <entry id="19" string="Install an online update&#10;component that will notify&#10;you about new software&#10;versions">新バージョンを通知する&#10;オンラインアップデートの&#10;コンポーネントをインストール</entry>
+    <entry id="20" string="%NAME% command line interface">%NAME% コマンドライン・インターフェイス</entry>
+    <entry id="21" string="Install a command line&#10;interface useful for use&#10;in batch scripts">バッチスクリプトでの使用に便利な&#10;コマンドライン・インターフェイスの&#10;インストール</entry>
+    <entry id="22" string="smooth Translator utility">スムーズ翻訳ユーティリティ</entry>
+    <entry id="23" string="Install an easy to use&#10;application for editing&#10;%NAME% XML language&#10;files">%NAME% XML言語ファイルを&#10;簡単編集出来るアプリケーション&#10;のインストール</entry>
+    <entry id="24" string="%NAME% source code">%NAME% ソースコード</entry>
+    <entry id="25" string="Install the complete C++&#10;source code to %NAME%">%NAME% C++ ソースコード&#10;のインストール</entry>
+    <entry id="26" string="%NAME% User Guide">%NAME% ユーザー・ガイド</entry>
+    <entry id="27" string="Uninstall %NAME%">%NAME% アンインストール</entry>
+  </data>
+</LangFile>

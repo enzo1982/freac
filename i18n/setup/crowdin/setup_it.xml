@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">fre:ac Setup</property>
+    <property name="version">1.1</property>
+    <property name="language">Italian / Italiano</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
+    <property name="author">Marco D'Amato &lt;md@mdtzone.it&gt;</property>
+    <property name="url">https://www.mdtzone.it/</property>
+  </info>
+  <data>
+    <entry id="100" string="&lt;- Back">&lt;- Indietro</entry>
+    <entry id="101" string="Next -&gt;">Avanti -&gt;</entry>
+    <entry id="102" string="Cancel">Annulla</entry>
+    <entry id="103" string="Finish">Fine</entry>
+    <entry id="104" string="Yes">Sì</entry>
+    <entry id="105" string="No">No</entry>
+
+    <entry id="200" string="Current file progress:">Avanzamento file attuale:</entry>
+    <entry id="201" string="Total installation progress:">Avanzamento totale:</entry>
+    <entry id="202" string="Do you really want to exit Setup now?&#10;&#10;If you quit now, the program will not be installed on your computer.&#10;You may run Setup again later to complete the installation.">Si desidera uscire adesso dall'installazione?&#10;&#10;Se si esce ora, il programma non sarà installato nel computer.&#10;Per completare l'installazione, è possibile eseguire il programma in un secondo momento.</entry>
+    <entry id="203" string="Exit Setup">Interruzione installazione</entry>
+    <entry id="204" string="The Setup will be cancelled now!">L'installazione sarà interrotta.</entry>
+    <entry id="205" string="Info">Informazioni</entry>
+
+    <entry id="300" string="Destination directory">Cartella di destinazione</entry>
+    <entry id="301" string="Select">Sfoglia...</entry>
+    <entry id="302" string="Select the folder in which the program will be installed:">Selezionare la cartella in cui si desidera installare il programma:</entry>
+    <entry id="303" string="Available components">Componenti disponibili</entry>
+    <entry id="304" string="Description">Descrizione</entry>
+    <entry id="305" string="Move the mouse over a&#10;component entry to&#10;show a description">Spostare il puntatore del&#10;mouse su un componente per&#10;visualizzarne la descrizione</entry>
+    <entry id="306" string="Create Start Menu group">Crea gruppo nel menu Start</entry>
+    <entry id="307" string="Create Desktop icon">Aggiungi icona sul desktop</entry>
+    <entry id="308" string="Create Quick Launch icon">Aggiungi icona in Avvio veloce</entry>
+
+    <entry id="1" string="%LONGNAME% Setup">Installazione di %LONGNAME%</entry>
+    <entry id="2" string="Welcome to the %NAME% Setup Wizard&#10;&#10;&#10;This will install %NAME% %VERSION% on your computer.&#10;&#10;It is recommended that you close all other applications you have running&#10;before continuing. This will help avoiding possible conflicts during the&#10;installation process.&#10;&#10;Click Next to continue, or Cancel to exit Setup.">Benvenuti nel programma di installazione di %NAME%.&#10;&#10;&#10;Questo programma installerà %NAME% %VERSION% nel computer.&#10;&#10;Prima di continuare, si consiglia di chiudere tutte le applicazioni&#10;in esecuzione, per impedire eventuali conflitti durante la fase&#10;di installazione.&#10;&#10;Fare clic su Avanti per continuare oppure scegliere Annulla per uscire.</entry>
+    <entry id="3" string="Setup - License Agreement">Installazione - Contratto di licenza</entry>
+    <entry id="4" string="Please read the following license agreement. Click Yes to accept&#10;the agreement, or No to cancel the Setup.">Leggere attentamente il Contratto di licenza. Fare clic su Sì per accettare&#10;il contratto oppure scegliere No per uscire dall'installazione.</entry>
+    <entry id="5" string="Setup - Destination Directory">Installazione - Cartella di destinazione</entry>
+    <entry id="6" string="Setup will install %NAME% in the following folder.&#10;&#10;To install into a different folder, click Browse, and select another folder.">%NAME% verrà installato nella seguente cartella di destinazione.&#10;&#10;Per installare il programma in una cartella differente, fare clic su Sfoglia e&#10;quindi selezionare la cartella desiderata.</entry>
+    <entry id="7" string="Setup - Components to install">Installazione - Componenti da installare</entry>
+    <entry id="8" string="Select the components you want to install.">Selezionare i componenti da installare.</entry>
+    <entry id="9" string="Setup - Start Menu and Desktop Shortcuts">Installazione - Collegamenti sul desktop e nel menu Start</entry>
+    <entry id="10" string="Setup can create shortcuts to the installed program.&#10;Please select which shortcuts shall be created.">È possibile creare collegamenti al programma installato.&#10;Selezionare quali collegamenti creare.</entry>
+    <entry id="11" string="Setup - Ready to install">Installazione - Pronto</entry>
+    <entry id="12" string="Setup is now ready to install %NAME% on your computer.&#10;&#10;Click Next to install the program files on your computer, or Cancel&#10;to exit Setup.">%NAME% è pronto per essere installato nel computer.&#10;&#10;Fare clic su Avanti per installare i file del programma oppure&#10;scegliere Annulla per uscire dall'installazione.</entry>
+    <entry id="13" string="Setup - Copying files">Installazione - Copia dei file</entry>
+    <entry id="14" string="Setup is copying the program files to your computer.&#10;&#10;Please wait until the installation process has finished. You can then&#10;start working with the installed program.">È in corso la copia dei file nel computer.&#10;&#10;Attendere il completamento del processo di installazione. Una volta completata la&#10;copia dei file, sarà possibile iniziare a usare il programma installato.</entry>
+    <entry id="15" string="Setup - Installation finished">Installazione - Completata</entry>
+    <entry id="16" string="Congratulations! %NAME% %VERSION% has been successfully installed&#10;on your computer.&#10;&#10;You can now start %NAME% from the Windows Start menu.&#10;&#10;Click Finish to close the setup wizard.">Procedura completata. %NAME% %VERSION% è stato installato correttamente&#10;nel computer.&#10;&#10;Ora è possibile avviare %NAME% dal menu Start di Windows.&#10;&#10;Fare clic su Fine per chiudere la procedura guidata.</entry>
+    <entry id="17" string="%NAME% %VERSION% program files (required)">File del programma %NAME% %VERSION% (necessari)</entry>
+    <entry id="18" string="easyUpdate online updater">Aggiornamento online easyUpdate</entry>
+    <entry id="19" string="Install an online update&#10;component that will notify&#10;you about new software&#10;versions">Installa un componente per&#10;l'aggiornamento online che&#10;consente di ricevere notifiche&#10;sulla disponibilità di nuove&#10;versioni del programma</entry>
+    <entry id="20" string="%NAME% command line interface">Interfaccia a riga di comando di %NAME%</entry>
+    <entry id="21" string="Install a command line&#10;interface useful for use&#10;in batch scripts">Installa un'interfaccia a riga di&#10;comando utile per la creazione&#10;di script batch</entry>
+    <entry id="22" string="smooth Translator utility">Utilità smooth Translator</entry>
+    <entry id="23" string="Install an easy to use&#10;application for editing&#10;%NAME% XML language&#10;files">Installa un'applicazione&#10;semplice da utilizzare che&#10;consente di modificare i&#10;moduli delle lingue di %NAME%</entry>
+    <entry id="24" string="%NAME% source code">Codice sorgente di %NAME%</entry>
+    <entry id="25" string="Install the complete C++&#10;source code to %NAME%">Installa il codice sorgente C++&#10;completo di %NAME%</entry>
+    <entry id="26" string="%NAME% User Guide">Guida utente di %NAME%</entry>
+    <entry id="27" string="Uninstall %NAME%">Disinstalla %NAME%</entry>
+  </data>
+</LangFile>
