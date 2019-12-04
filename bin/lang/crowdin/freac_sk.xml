@@ -157,7 +157,7 @@
     <entry id="149" string="CDDB access mode:">CDDB prístupový mód:</entry>
     <entry id="150" string="CDDB server:"/>
     <entry id="151" string="Port:"/>
-    <entry id="152" string="Info">Umelec</entry>
+    <entry id="152" string="Info"/>
     <entry id="153" string="No freedb entry for this disk.">Nepodarilo sa načítať názvy skladieb, pretože tento disk nie je v databáze freedb.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Počas pokusu o spojenie s freedb serverom došlo k chybe.</entry>
     <entry id="155" string="Connecting to freedb server at">Pripájam sa k freedb serveru </entry>
@@ -190,7 +190,7 @@
     <entry id="186" string="Artist">Umelec</entry>
     <entry id="187" string="Year">Rok</entry>
     <entry id="188" string="Genre">Žáner</entry>
-    <entry id="189" string="Album">Komentár</entry>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags">Info tagy</entry>
     <entry id="191" string="Default information">Základné ino</entry>
     <entry id="192" string="Default comment string:">Prednastavený komentár:</entry>
@@ -292,15 +292,15 @@
     <entry id="288" string="unknown year">neznámy rok</entry>
     <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Nomožno inicializovať %1 enkodér! Prosím skontrolujte nastavenia!</entry>
     <entry id="290" string="Blocksize:">Veľkosť bloku:</entry>
-    <entry id="291" string="Use streamable subset">Use streamable subset</entry>
+    <entry id="291" string="Use streamable subset"/>
     <entry id="292" string="Adaptive Joint Stereo">Adaptive Joint Stereo</entry>
     <entry id="293" string="Fastest encoding">Najrýchlejšie kódovanie</entry>
     <entry id="294" string="Best compression">Najlepšia kompresia</entry>
-    <entry id="295" string="Linear predictor">Linear predictor</entry>
+    <entry id="295" string="Linear predictor"/>
     <entry id="296" string="Maximum LPC order">Max. LPC poradie</entry>
-    <entry id="297" string="Quantized LPC precision">Quantized LPC precision</entry>
-    <entry id="298" string="Exhaustive model search">Exhaustive model search</entry>
-    <entry id="299" string="Optimize LPC quantization">Optimize LPC quantization</entry>
+    <entry id="297" string="Quantized LPC precision"/>
+    <entry id="298" string="Exhaustive model search"/>
+    <entry id="299" string="Optimize LPC quantization"/>
     <entry id="300" string="disabled">zakázaný</entry>
     <entry id="301" string="auto">auto</entry>
     <entry id="302" string="Residual coding">Residuálne kódovanie</entry>
@@ -326,7 +326,7 @@
     <entry id="322" string="first letter upper case">Veľké prvé písmeno</entry>
     <entry id="323" string="all lower case">všetko malými písmenami</entry>
     <entry id="324" string="all upper case">všetko veľkými písmenami</entry>
-    <entry id="325" string="Status">Použiť vstupný adresár ak je to možné</entry>
+    <entry id="325" string="Status"/>
     <entry id="326" string="Successfully read CD!">CD úspešne prečítané!</entry>
     <entry id="327" string="Comment">Komentár</entry>
     <entry id="328" string="Manage CDDB cache entries...">Usporiadať CDDB cache položky...</entry>
