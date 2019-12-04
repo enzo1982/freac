@@ -157,7 +157,7 @@
     <entry id="149" string="CDDB access mode:">CDDB hozzáférési mód:</entry>
     <entry id="150" string="CDDB server:">CDDB szerver:</entry>
     <entry id="151" string="Port:"/>
-    <entry id="152" string="Info">Elöadó</entry>
+    <entry id="152" string="Info"/>
     <entry id="153" string="No freedb entry for this disk.">Nem találtam bejegyzést ehhez a CD-hez.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Hiba történt a freedb szervehez kapcsolódás közben.</entry>
     <entry id="155" string="Connecting to freedb server at">Kapcsoldás a freedb szerverhez</entry>
@@ -190,7 +190,7 @@
     <entry id="186" string="Artist">Elöadó</entry>
     <entry id="187" string="Year">Év</entry>
     <entry id="188" string="Genre">Mûfaj</entry>
-    <entry id="189" string="Album">Megjegyzés</entry>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags">Info Tag-ek</entry>
     <entry id="191" string="Default information">Alap információ</entry>
     <entry id="192" string="Default comment string:">Alap megjegyzés:</entry>
@@ -407,8 +407,8 @@
     <entry id="403" string="Use 2-pass encoding">Kétmenetes kódolás alkalmazása</entry>
     <entry id="404" string="Target bitrate">Célzott bitráta</entry>
     <entry id="405" string="Set drive speed limit:">Meghajtó sebességlimit:</entry>
-    <entry id="406" string="Support this project">eur</entry>
-    <entry id="407" string="Please support this project!">CDDB</entry>
+    <entry id="406" string="Support this project"/>
+    <entry id="407" string="Please support this project!"/>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
     <entry id="410" string="usd">eur</entry>
