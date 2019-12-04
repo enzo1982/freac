@@ -242,7 +242,7 @@
     <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">مع %1 يمكنك ، يقدم مجانا قاعدة البيانات. إدخالات ضغط قاعدة&#10;بيانات القرص تحتوي على أحرف يونيكود. إذا كان لديك أي أقراص&#10;مدمجة تحتوي على غير اللاتينية الفنان أو عنوان أسماء ، يمكنك تقديم&#10;التصويبات تحرير إدخالات قاعدة البيانات مع %1.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes."/>
     <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3."/>
-    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">الملف موجود مسبقا</entry>
+    <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details."/>
     <entry id="242" string="Bitrate / Quality">معدل بايت/النوعية</entry>
     <entry id="243" string="Check for updates now">تحقق من توفر تحيينات الآن</entry>
     <entry id="244" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">هناك تحديثات جديدة على الانترنت %1 المتاحة!&#10;هل تريد ان ترى قائمة من التحديثات المتوفرة الآن؟</entry>
@@ -262,7 +262,7 @@
     <entry id="258" string="File format">صيغة الملف</entry>
     <entry id="259" string="Allow ID3v2 tags in AAC files">AAC بطاقات لملفات ID3v2 السماح</entry>
     <entry id="260" string="Note:">مذكرة:</entry>
-    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">عدد العينات</entry>
+    <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags."/>
     <entry id="262" string="FLAC Files">FLAC ملفات</entry>
     <entry id="263" string="Sampling rate">معدل العينات</entry>
     <entry id="264" string="Sample resolution">دقة العينة</entry>
@@ -411,7 +411,7 @@
     <entry id="407" string="Please support this project!">يرجى دعم هذا المشروع!</entry>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">الرجاء المساعدة على جعل هذا البرنامج مجانا من خلال دعم المشروع %1 بتبرع.&#10;&#10;انقر فوق أحد الأزرار الموجودة أدناه للتبرع به باي بال:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">يمكنك أيضا إرسال المال مباشرة إلى %1 باستخدام باي بال.&#10;&#10;يرجى الكتابة إلى %1 إذا كنت ترغب في التبرع به&#10;التحويل الالكتروني والبريد الاختيار أو إرسال المال عن طريق البريد.</entry>
-    <entry id="410" string="usd">كدب</entry>
+    <entry id="410" string="usd">usd</entry>
     <entry id="411" string="en"/>
     <entry id="412" string="Thank you very much!">شكرا جزيلا لكم!</entry>
     <entry id="413" string="Remind me later">ذكرني لاحقا</entry>
