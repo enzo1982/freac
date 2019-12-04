@@ -189,8 +189,8 @@
     <entry id="185" string="Size">Grootte</entry>
     <entry id="186" string="Artist">Kunstenaar</entry>
     <entry id="187" string="Year">Jaar</entry>
-    <entry id="188" string="Genre">onbekende kunstenaar</entry>
-    <entry id="189" string="Album">Kommentaar</entry>
+    <entry id="188" string="Genre"/>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags">Inligtingsetikette</entry>
     <entry id="191" string="Default information">Verstekinformasie</entry>
     <entry id="192" string="Default comment string:">Verstekkommentaarstring:</entry>
@@ -210,7 +210,7 @@
     <entry id="206" string="Unable to open file: %1&#10;&#10;Error: %2">Kan nie lêer open nie: %1</entry>
     <entry id="207" string="Query CDDB database">Navraag by CDDB-databank</entry>
     <entry id="208" string="Help">Hulp</entry>
-    <entry id="209" string="index_en.html">index_en.html</entry>
+    <entry id="209" string="index_en.html">index.html</entry>
     <entry id="210" string="Plug-ins">Inproppe (plug-ins)</entry>
     <entry id="211" string="Input plug-ins">Inset-inproppe</entry>
     <entry id="212" string="Output plug-ins">Uitset-inproppe</entry>
@@ -326,7 +326,7 @@
     <entry id="322" string="first letter upper case">eerste letter bokas</entry>
     <entry id="323" string="all lower case">alles onderkas</entry>
     <entry id="324" string="all upper case">alles bokas</entry>
-    <entry id="325" string="Status">Gebruik die invoerlêergids indien moontlik</entry>
+    <entry id="325" string="Status"/>
     <entry id="326" string="Successfully read CD!">CD suksesvol gelees!</entry>
     <entry id="327" string="Comment">Kommentaar</entry>
     <entry id="328" string="Manage CDDB cache entries...">Beheer CDDB cache-inskrywings...</entry>
