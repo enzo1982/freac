@@ -16,21 +16,21 @@
     <entry id="102" string="Close">Sulge</entry>
 
     <entry id="200" string="Error">Viga</entry>
-    <entry id="201" string="Warning">Info</entry>
-    <entry id="202" string="Info">Esitaja</entry>
+    <entry id="201" string="Warning"/>
+    <entry id="202" string="Info"/>
 
-    <entry id="210" string="Do not display this warning again">Nimi</entry>
-    <entry id="211" string="Do not display this note again">Album</entry>
+    <entry id="210" string="Do not display this warning again"/>
+    <entry id="211" string="Do not display this note again"/>
 
     <entry id="300" string="Artist">Esitaja</entry>
     <entry id="301" string="Title">Nimi</entry>
-    <entry id="302" string="Album">Kommentaarid</entry>
+    <entry id="302" string="Album"/>
     <entry id="303" string="Track">Trekk</entry>
     <entry id="304" string="Genre">Suunitlus</entry>
     <entry id="305" string="Comment">Kommentaarid</entry>
     <entry id="306" string="Year">Aasta</entry>
-    <entry id="307" string="Disc">teadmata suunitlus</entry>
-    <entry id="308" string="Rating">teadmata aasta</entry>
+    <entry id="307" string="Disc"/>
+    <entry id="308" string="Rating"/>
     <entry id="309" string="File name"/>
     <entry id="310" string="File type"/>
     <entry id="311" string="Album artist"/>
@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 baidid</entry>
-      <entry id="517" string="%1 kB">%1%</entry>
+      <entry id="517" string="%1 kB"/>
       <entry id="518" string="%1%"/>
     </section>
 
@@ -68,7 +68,7 @@
       <entry id="1000" string="File">Fail</entry>
       <entry id="1001" string="Options">Sätted</entry>
       <entry id="1002" string="Database">Andmebaas</entry>
-      <entry id="1003" string="Processing">Kodeerimine</entry>
+      <entry id="1003" string="Processing"/>
       <entry id="1004" string="Encode">Kodeerimine</entry>
       <entry id="1005" string="Help">Abi</entry>
 
@@ -92,7 +92,7 @@
 	<entry id="1203" string="Show queued CDDB entries">Näidata CDDB märkmeid järjekorras</entry>
 	<entry id="1204" string="Show queued CDDB queries">Näidata CDDB päringuid järjekorras</entry>
 	<entry id="1205" string="Enable CDDB cache">CDDB cacheerimine</entry>
-	<entry id="1206" string="Manage CDDB cache entries">Manage CDDB cache entries</entry>
+	<entry id="1206" string="Manage CDDB cache entries"/>
 	<entry id="1207" string="Automatic CDDB queries">Automaatne CDDB päring</entry>
       </section>
 
@@ -105,15 +105,15 @@
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing">Alusta kodeerimist</entry>
-	<entry id="1401" string="Enable processing during playback">Alusta kodeerimist koos</entry>
-	<entry id="1402" string="Configure signal processing">Paus/jätkata kodeerimist</entry>
-	<entry id="1403" string="Selected signal processors">Lõpeta Kodeerimine</entry>
+	<entry id="1400" string="Enable signal processing"/>
+	<entry id="1401" string="Enable processing during playback"/>
+	<entry id="1402" string="Configure signal processing"/>
+	<entry id="1403" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Alusta kodeerimist</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">Hüva nõu</entry>
+	<entry id="1501" string="Start encoding (deleting original files)"/>
 	<entry id="1502" string="Start encoding with">Alusta kodeerimist koos</entry>
 	<entry id="1503" string="Pause/resume encoding">Paus/jätkata kodeerimist</entry>
 	<entry id="1504" string="Stop encoding">Lõpeta Kodeerimine</entry>
@@ -147,7 +147,7 @@
       <entry id="2006" string="Configure general settings">Põhisätete häälestamine</entry>
       <entry id="2007" string="Configure the selected audio encoder">Häälesta valitud audio kodek</entry>
       <entry id="2008" string="Start the encoding process">Käivita kodeerimine</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Paus/jätkata kodeerimist</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)"/>
       <entry id="2010" string="Pause/resume encoding">Paus/jätkata kodeerimist</entry>
       <entry id="2011" string="Stop encoding">Lõpeta Kodeerimine</entry>
     </section>
@@ -219,7 +219,7 @@
 	<entry id="3201" string="Pattern">Näidis</entry>
 	<entry id="3202" string="Start folder">Algne kaust</entry>
 	<entry id="3203" string="Filename pattern">Faili nime formeerimine</entry>
-	<entry id="3204" string="Search subfolders">Valige kaust ülesannete nimekirja lisamiseks</entry>
+	<entry id="3204" string="Search subfolders"/>
 	<entry id="3205" string="Select the folder to add to the joblist">Valige kaust ülesannete nimekirja lisamiseks</entry>
       </section>
 
@@ -288,7 +288,7 @@
 	<entry id="4006" string="Successfully read CD!">CD edukalt loetud!</entry>
 	<entry id="4007" string="Save entry">Säilita märkmed</entry>
 	<entry id="4008" string="Various artists">Erinevad artistid</entry>
-	<entry id="4009" string="Data track">Kodeerimine &quot;Lennult&quot;</entry>
+	<entry id="4009" string="Data track"/>
 	<entry id="4010" string="Submit to online database later">Saata online baasi hiljem</entry>
 	<entry id="4011" string="Active CD-ROM drive">CD-ROM-i valik</entry>
 
@@ -323,9 +323,9 @@
 	<entry id="4201" string="CDDB queries">CDDB päringud</entry>
 	<entry id="4202" string="Query">Päring</entry>
 	<entry id="4203" string="Query all">Saata kõik päringud</entry>
-	<entry id="4204" string="Query string">Valige CDDB andmetebaasi kaust</entry>
+	<entry id="4204" string="Query string"/>
 	<entry id="4205" string="CDDB queries to perform">CDDB päringud teostamiseks</entry>
-	<entry id="4206" string="Querying CD information">CDDB server</entry>
+	<entry id="4206" string="Querying CD information"/>
       </section>
 
       <section name="Manage submits">
@@ -355,7 +355,7 @@
     <section name="Configuration">
       <entry id="5000" string="General settings setup">Põhisätted</entry>
       <entry id="5001" string="Encoders">Kodekid</entry>
-      <entry id="5002" string="Playlists">Seda programmi levitatakse GNU&#10;General Public License (GPL) raames.</entry>
+      <entry id="5002" string="Playlists"/>
       <entry id="5003" string="Language">Keel</entry>
       <entry id="5004" string="Component configuration"/>
       <entry id="5005" string="CDDB"/>
@@ -379,7 +379,7 @@
       <entry id="5023" string="Resources"/>
       <entry id="5024" string="Verifiers"/>
       <entry id="5025" string="Taggers"/>
-      <entry id="5026" string="Processing">Kodeerimine</entry>
+      <entry id="5026" string="Processing"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Kodeki sätted</entry>
@@ -412,7 +412,7 @@
 	<entry id="5201" string="Create cue sheets">Luua cue sheets</entry>
 	<entry id="5202" string="Output folder">Väljundi kaust</entry>
 	<entry id="5203" string="Select">Valik</entry>
-	<entry id="5204" string="Use encoder output folder">Erinevad artistid</entry>
+	<entry id="5204" string="Use encoder output folder"/>
 	<entry id="5205" string="Filename pattern">Faili nime formeerimine</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Valige kaust, kuhu paigutatakse playlistid</entry>
 	<entry id="5207" string="Output filenames"/>
@@ -470,7 +470,7 @@
 	<entry id="5500" string="Tags">Tagid</entry>
 	<entry id="5501" string="Tag formats">Tägide kodeerimine</entry>
 	<entry id="5502" string="Default comment string">Komentaarid vaikimisi</entry>
-	<entry id="5503" string="Replace existing comments with default comment">CDDB</entry>
+	<entry id="5503" string="Replace existing comments with default comment"/>
 	<entry id="5504" string="Filename pattern">Faili nime formeerimine</entry>
 	<entry id="5505" string="Encoding">Kodeerimine</entry>
 	<entry id="5506" string="Comments"/>
@@ -552,8 +552,8 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing"/>
-	<entry id="5901" string="Enable signal processing">Alusta kodeerimist</entry>
-	<entry id="5902" string="Enable processing during playback">Alusta kodeerimist koos</entry>
+	<entry id="5901" string="Enable signal processing"/>
+	<entry id="5902" string="Enable processing during playback"/>
 	<entry id="5903" string="Components"/>
 	<entry id="5904" string="Available"/>
 	<entry id="5905" string="Selected"/>
@@ -708,19 +708,19 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="20000" string="Decoding">sepa,paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="20000" string="Decoding"/>
 	<entry id="20001" string="Enable 24 bit decoding"/>
       </section>
 
       <section name="mpg123">
-	<entry id="21000" string="Decoder">Sätted</entry>
+	<entry id="21000" string="Decoder"/>
 	<entry id="21001" string="Active decoder"/>
- 	<entry id="21002" string="auto select"/>
+	<entry id="21002" string="auto select"/>
       </section>
 
       <section name="CueSheet">
-	<entry id="22000" string="Title information">Pikkus</entry>
-	<entry id="22001" string="Read tags from referenced files">Suurus</entry>
+	<entry id="22000" string="Title information"/>
+	<entry id="22001" string="Read tags from referenced files"/>
 	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags"/>
 	<entry id="22003" string="Alternative files"/>
 	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
@@ -738,11 +738,11 @@
 	<entry id="30003" string="Original bit">Original bit</entry>
 	<entry id="30004" string="Channels">Kanalid</entry>
 	<entry id="30005" string="Private bit">Private bit</entry>
-	<entry id="30006" string="Set Copyright bit">Set Copyright bit</entry>
+	<entry id="30006" string="Set Copyright bit"/>
 	<entry id="30007" string="Enable CRC">CRC lubatud</entry>
-	<entry id="30008" string="Set Original bit">Set Original bit</entry>
+	<entry id="30008" string="Set Original bit"/>
 	<entry id="30009" string="Dual channel encoding">2-kanaliline kodeerimine</entry>
-	<entry id="30010" string="Set Private bit">Set Private bit</entry>
+	<entry id="30010" string="Set Private bit"/>
       </section>
 
       <section name="Bonk">
@@ -783,9 +783,9 @@
 
 	<section name="Misc">
 	  <entry id="32200" string="Control bits">Juhtivad bitid</entry>
-	  <entry id="32201" string="Set Copyright bit">Set Copyright bit</entry>
-	  <entry id="32202" string="Set Original bit">Set Original bit</entry>
-	  <entry id="32203" string="Set Private bit">Set Private bit</entry>
+	  <entry id="32201" string="Set Copyright bit"/>
+	  <entry id="32202" string="Set Original bit"/>
+	  <entry id="32203" string="Set Private bit"/>
 	  <entry id="32204" string="CRC">CRC (kontrollsumma)</entry>
 	  <entry id="32205" string="Enable CRC">CRC lubatud</entry>
 	  <entry id="32206" string="Stereo mode">Stereo reziim</entry>
@@ -835,7 +835,7 @@
 	  <entry id="33202" string="Bitrate per channel">Bitikiirus kanalile</entry>
 	  <entry id="33203" string="Set quality">Kvaliteet</entry>
 	  <entry id="33204" string="Stereo mode">Stereo reziim</entry>
-	  <entry id="33205" string="Allow Joint Stereo">Allow Joint Stereo</entry>
+	  <entry id="33205" string="Allow Joint Stereo"/>
 	  <entry id="33206" string="Temporal Noise Shaping">Müra aja formeerimine</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Kasutada müra aja formeerimist</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maks. sagetuste riba laius</entry>
@@ -873,7 +873,7 @@
 	</section>
 
 	<section name="Format">
-	  <entry id="34200" string="Use streamable subset">Use streamable subset</entry>
+	  <entry id="34200" string="Use streamable subset"/>
 	  <entry id="34201" string="Blocksize">Bloki suurus</entry>
 	</section>
 
@@ -1268,8 +1268,8 @@
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Põhiline</entry>
-	  <entry id="103101" string="Title information">Pikkus</entry>
-	  <entry id="103102" string="Disc">teadmata suunitlus</entry>
+	  <entry id="103101" string="Title information"/>
+	  <entry id="103102" string="Disc"/>
 	  <entry id="103103" string="Cover art"/>
 	  <entry id="103104" string="Covers"/>
 	  <entry id="103105" string="Type"/>
