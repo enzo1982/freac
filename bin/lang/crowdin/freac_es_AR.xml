@@ -41,7 +41,7 @@
     <entry id="28" string="Configure the selected audio encoder">Configurar el codificador de audio seleccionado</entry>
     <entry id="29" string="Start the encoding process">Comenzar el proceso de codificación</entry>
     <entry id="30" string="Cannot modify the joblist while encoding!">¡No se puede modificar la lista de trabajo mientras se codifica!</entry>
-    <entry id="31" string="Error">Artista</entry>
+    <entry id="31" string="Error"/>
     <entry id="32" string="Audio Files">Archivos de audio</entry>
     <entry id="33" string="Apple Audio Files">Archivos de audio Apple</entry>
     <entry id="34" string="Creative Voice Files">Archivos de Creative Voice</entry>
@@ -76,7 +76,7 @@
     <entry id="63" string="Select the folder in which the encoded files will be placed:">Seleccione la carpeta donde los archivos codificados serán guardados:</entry>
     <entry id="64" string="Encoding">Codificación</entry>
     <entry id="65" string="Author">Autor</entry>
-    <entry id="66" string="URL">Seleccione idioma:</entry>
+    <entry id="66" string="URL"/>
     <entry id="67" string="Information">Información</entry>
     <entry id="68" string="Select language:">Seleccione idioma:</entry>
     <entry id="69" string="Active CD-ROM drive">Unidad de CD-ROM activa</entry>
@@ -92,7 +92,7 @@
     <entry id="79" string="Full cdparanoia mode">Modo CD Paranoia completo</entry>
     <entry id="80" string="Bitrate">Tasa de bits</entry>
     <entry id="81" string="Copyright bit">Bit de Derechos de Autor</entry>
-    <entry id="82" string="CRC">Bit de Privado</entry>
+    <entry id="82" string="CRC"/>
     <entry id="83" string="Original bit">Bit de Original</entry>
     <entry id="84" string="Channels">Canales</entry>
     <entry id="85" string="Private bit">Bit de Privado</entry>
@@ -119,7 +119,7 @@
     <entry id="106" string="Maximum bandwidth">Ancho de banda máximo</entry>
     <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Ancho de banda de frecuencia máx. a usar en AAC (en Hz):</entry>
     <entry id="108" string="Basic">Básico</entry>
-    <entry id="109" string="Misc">Calidad:</entry>
+    <entry id="109" string="Misc"/>
     <entry id="110" string="Audio processing">Procesamiento de audio</entry>
     <entry id="111" string="Set bitrate:">Tasa:</entry>
     <entry id="112" string="Set ratio:">Coeficiente:</entry>
@@ -157,7 +157,7 @@
     <entry id="149" string="CDDB access mode:">Modo de acceso a CDDB:</entry>
     <entry id="150" string="CDDB server:">Servidor CDDB:</entry>
     <entry id="151" string="Port:">Puerto:</entry>
-    <entry id="152" string="Info">Pista</entry>
+    <entry id="152" string="Info"/>
     <entry id="153" string="No freedb entry for this disk.">No hay registro freedb para este disco.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Ocurrió un error al tratar de conectarse al servidor freedb.</entry>
     <entry id="155" string="Connecting to freedb server at">Conectando al servidor freedb en</entry>
@@ -190,7 +190,7 @@
     <entry id="186" string="Artist">Artista</entry>
     <entry id="187" string="Year">Año</entry>
     <entry id="188" string="Genre">Género</entry>
-    <entry id="189" string="Album">Título desconocido</entry>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags">Etiquetas de información</entry>
     <entry id="191" string="Default information">Información predeterminada</entry>
     <entry id="192" string="Default comment string:">Comentario predeterminado:</entry>
@@ -221,7 +221,7 @@
     <entry id="217" string="Cannot play a file while encoding!">¡No se puede reproducir durante el proceso de codificación!</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">¡No se puede comenzar la codificación durante la reproducción de un archivo!</entry>
     <entry id="219" string="Enable remote CDDB database">Habilitar base de datos remota de CDDB</entry>
-    <entry id="220" string="ATH">Seleccionar todo</entry>
+    <entry id="220" string="ATH"/>
     <entry id="221" string="Enable ATH:">Activar ATH:</entry>
     <entry id="222" string="Use default setting">Utilizar ajuste predeterminado</entry>
     <entry id="223" string="Psycho acoustic model">Modelo acústico-físico</entry>
@@ -267,9 +267,9 @@
     <entry id="263" string="Sampling rate">Velocidad de muestreo</entry>
     <entry id="264" string="Sample resolution">Resolución de la muestra</entry>
     <entry id="265" string="Number of samples">Número de muestras</entry>
-    <entry id="266" string="Mono">Estéreo</entry>
+    <entry id="266" string="Mono"/>
     <entry id="267" string="bytes"/>
-    <entry id="268" string="bit">Guardar lista de trabajo...</entry>
+    <entry id="268" string="bit"/>
     <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Crear lista de reproducción</entry>
     <entry id="271" string="Create cue sheet">Crear lista de distribución de pistas</entry>
@@ -302,7 +302,7 @@
     <entry id="298" string="Exhaustive model search">Modelo de búsqueda exhaustiva</entry>
     <entry id="299" string="Optimize LPC quantization">Optimizar cuantización LPC</entry>
     <entry id="300" string="disabled">desactivado</entry>
-    <entry id="301" string="auto">pistas seleccionadas</entry>
+    <entry id="301" string="auto"/>
     <entry id="302" string="Residual coding">Código residual</entry>
     <entry id="303" string="Minimum partition order">Orden de partición mínima</entry>
     <entry id="304" string="Maximum partition order">Orden de partición máxima</entry>
