@@ -17,14 +17,14 @@
 
     <entry id="200" string="Error">Errore</entry>
     <entry id="201" string="Warning">Avviso</entry>
-    <entry id="202" string="Info">Artista</entry>
+    <entry id="202" string="Info"/>
 
     <entry id="210" string="Do not display this warning again">Non mostrare questo avviso in futuro</entry>
     <entry id="211" string="Do not display this note again">Non mostrare questa nota in futuro</entry>
 
     <entry id="300" string="Artist">Artista</entry>
     <entry id="301" string="Title">Titolo</entry>
-    <entry id="302" string="Album">Commenti</entry>
+    <entry id="302" string="Album"/>
     <entry id="303" string="Track">Traccia</entry>
     <entry id="304" string="Genre">Genere</entry>
     <entry id="305" string="Comment">Commenti</entry>
@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 byte</entry>
-      <entry id="517" string="%1 kB">%1%</entry>
+      <entry id="517" string="%1 kB"/>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
@@ -715,7 +715,7 @@
       <section name="mpg123">
 	<entry id="21000" string="Decoder">Decodificatore</entry>
 	<entry id="21001" string="Active decoder">Decodificatore attivo</entry>
- 	<entry id="21002" string="auto select">selezione automatica</entry>
+	<entry id="21002" string="auto select">selezione automatica</entry>
       </section>
 
       <section name="CueSheet">
