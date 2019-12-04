@@ -189,8 +189,8 @@
     <entry id="185" string="Size">Taille</entry>
     <entry id="186" string="Artist">Artiste</entry>
     <entry id="187" string="Year">Année</entry>
-    <entry id="188" string="Genre">artiste inconnu</entry>
-    <entry id="189" string="Album">Commentaire</entry>
+    <entry id="188" string="Genre"/>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags">Balises infos</entry>
     <entry id="191" string="Default information">Informations par défaut</entry>
     <entry id="192" string="Default comment string:">Commentaires par défaut :</entry>
