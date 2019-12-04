@@ -90,7 +90,7 @@
     <entry id="77" string="No verify">Neověřovat</entry>
     <entry id="78" string="No scratch repair">Neopravovat škrábance</entry>
     <entry id="79" string="Full cdparanoia mode">Plný cd-paranoia režim</entry>
-    <entry id="80" string="Bitrate">Bitrate</entry>
+    <entry id="80" string="Bitrate">Datový tok</entry>
     <entry id="81" string="Copyright bit">Copyright Bit</entry>
     <entry id="82" string="CRC">CRC (kontrolní součet)</entry>
     <entry id="83" string="Original bit">Originál bit</entry>
@@ -157,7 +157,7 @@
     <entry id="149" string="CDDB access mode:">CDDB - způsob přístupu:</entry>
     <entry id="150" string="CDDB server:"/>
     <entry id="151" string="Port:"/>
-    <entry id="152" string="Info">Umělec</entry>
+    <entry id="152" string="Info"/>
     <entry id="153" string="No freedb entry for this disk.">Pro toto CD není na freedb záznam</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Chyba při spojení s freedb serverem.</entry>
     <entry id="155" string="Connecting to freedb server at">Připojit na freedb server u</entry>
@@ -190,7 +190,7 @@
     <entry id="186" string="Artist">Umělec</entry>
     <entry id="187" string="Year">Rok</entry>
     <entry id="188" string="Genre">Žánr</entry>
-    <entry id="189" string="Album">Komentář</entry>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags">Info tagy</entry>
     <entry id="191" string="Default information">Standardní informace</entry>
     <entry id="192" string="Default comment string:">Standardní komentář:</entry>
@@ -200,7 +200,7 @@
     <entry id="196" string="Database">Databanka</entry>
     <entry id="197" string="Submit CDDB data...">Poslat CDDB data...</entry>
     <entry id="198" string="Enable CDDB cache">Zapnout CDDB cache</entry>
-    <entry id="199" string="CDDB data">Konfigurovat enkodér</entry>
+    <entry id="199" string="CDDB data"/>
     <entry id="200" string="Submit">Poslat</entry>
     <entry id="201" string="No audio CD in drive!">Žádné Audio-CD v mechanice!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Vyplňte všechna pole a názvy stop před odesláním.</entry>
@@ -293,7 +293,7 @@
     <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Nemohu inicializovat %1 enkodér! Prosím zkontrolujte nastavení!</entry>
     <entry id="290" string="Blocksize:">Velikost bloku:</entry>
     <entry id="291" string="Use streamable subset">Použít podskupinu streamů</entry>
-    <entry id="292" string="Adaptive Joint Stereo">Adaptive Joint Stereo</entry>
+    <entry id="292" string="Adaptive Joint Stereo">Adaptivní Joint Stereo</entry>
     <entry id="293" string="Fastest encoding">Nejrychlejší kódování</entry>
     <entry id="294" string="Best compression">Nejlepší komprese</entry>
     <entry id="295" string="Linear predictor">Lineární predictor (prognóza)</entry>
@@ -302,7 +302,7 @@
     <entry id="298" string="Exhaustive model search">Úplný model hledání</entry>
     <entry id="299" string="Optimize LPC quantization">Optimalizace dávkování</entry>
     <entry id="300" string="disabled">zakázaný</entry>
-    <entry id="301" string="auto">auto</entry>
+    <entry id="301" string="auto">automaticky</entry>
     <entry id="302" string="Residual coding">Kódování rozdílového signálu</entry>
     <entry id="303" string="Minimum partition order">Min. stupeň oblasti</entry>
     <entry id="304" string="Maximum partition order">Max. stupeň oblasti</entry>
