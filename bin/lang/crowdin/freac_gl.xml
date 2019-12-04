@@ -157,7 +157,7 @@
     <entry id="149" string="CDDB access mode:">Modo de acceso CDDB:</entry>
     <entry id="150" string="CDDB server:">Servidor CDDB</entry>
     <entry id="151" string="Port:">Porto:</entry>
-    <entry id="152" string="Info">Artista</entry>
+    <entry id="152" string="Info"/>
     <entry id="153" string="No freedb entry for this disk.">Non hai un rexistro freedb deste CD</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Produciuse un erro ao tentar conectar co servidor.</entry>
     <entry id="155" string="Connecting to freedb server at">Conectando co servidor freedb en</entry>
@@ -407,8 +407,8 @@
     <entry id="403" string="Use 2-pass encoding">Utilizar conversor en 2 pasos </entry>
     <entry id="404" string="Target bitrate">Bitrate promedio</entry>
     <entry id="405" string="Set drive speed limit:">Límite de velocidade da unidade:</entry>
-    <entry id="406" string="Support this project">eur</entry>
-    <entry id="407" string="Please support this project!">CDDB</entry>
+    <entry id="406" string="Support this project"/>
+    <entry id="407" string="Please support this project!"/>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
     <entry id="410" string="usd">eur</entry>
