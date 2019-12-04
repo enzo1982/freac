@@ -407,8 +407,8 @@
     <entry id="403" string="Use 2-pass encoding">使用双通道编码</entry>
     <entry id="404" string="Target bitrate">目标比特率</entry>
     <entry id="405" string="Set drive speed limit:">限定驱动器速率：</entry>
-    <entry id="406" string="Support this project">CDDB</entry>
-    <entry id="407" string="Please support this project!">CDRip</entry>
+    <entry id="406" string="Support this project"/>
+    <entry id="407" string="Please support this project!"/>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
     <entry id="410" string="usd">cny</entry>
