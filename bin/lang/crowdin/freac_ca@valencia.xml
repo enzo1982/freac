@@ -226,7 +226,7 @@
     <entry id="222" string="Use default setting">Utilitzar ajust predeterminat</entry>
     <entry id="223" string="Psycho acoustic model">Model psico-acústico</entry>
     <entry id="224" string="Use Temporal Masking Effect">Utilitzar efecte de màscara temporal</entry>
-    <entry id="225" string="Expert">Expert</entry>
+    <entry id="225" string="Expert"/>
     <entry id="226" string="Cannot configure encoder while encoding!">No es pot configurar el codificador durant la codificació!</entry>
     <entry id="227" string="The output folder does not exist! Do you want to create it?">La carpeta de destí no existix. Desitja crear-la?</entry>
     <entry id="228" string="Filename pattern">Patró de nom d'arxiu</entry>
