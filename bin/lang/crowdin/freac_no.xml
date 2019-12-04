@@ -157,7 +157,7 @@
     <entry id="149" string="CDDB access mode:">CDDB-tilgangsmodus:</entry>
     <entry id="150" string="CDDB server:">CDDB-server:</entry>
     <entry id="151" string="Port:"/>
-    <entry id="152" string="Info">Artist</entry>
+    <entry id="152" string="Info"/>
     <entry id="153" string="No freedb entry for this disk.">Ingen freedb-oppføring for denne CDen.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">En feil har oppstått i forsøket på å kontakte freedb-serveren.</entry>
     <entry id="155" string="Connecting to freedb server at">Kontakter freedb-servern på</entry>
@@ -187,10 +187,10 @@
     <entry id="183" string="Track">Spor</entry>
     <entry id="184" string="Length">Lengde</entry>
     <entry id="185" string="Size">Størrelse</entry>
-    <entry id="186" string="Artist">Spor</entry>
+    <entry id="186" string="Artist"/>
     <entry id="187" string="Year">År</entry>
     <entry id="188" string="Genre">Sjanger</entry>
-    <entry id="189" string="Album">Kommentar</entry>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags">Info-merke</entry>
     <entry id="191" string="Default information">Standardinformasjon</entry>
     <entry id="192" string="Default comment string:">Standardkommentar:</entry>
@@ -269,7 +269,7 @@
     <entry id="265" string="Number of samples">Antall samplinger</entry>
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes"/>
-    <entry id="268" string="bit">min</entry>
+    <entry id="268" string="bit"/>
     <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Lag spilleliste</entry>
     <entry id="271" string="Create cue sheet">Lag køark</entry>
@@ -326,7 +326,7 @@
     <entry id="322" string="first letter upper case">første bokstav stor </entry>
     <entry id="323" string="all lower case">bare små bokstaver</entry>
     <entry id="324" string="all upper case">bare store bokstaver</entry>
-    <entry id="325" string="Status">Bruk inndatamålmappe om mulig</entry>
+    <entry id="325" string="Status"/>
     <entry id="326" string="Successfully read CD!">Vellykket lest CD!</entry>
     <entry id="327" string="Comment">Kommentar</entry>
     <entry id="328" string="Manage CDDB cache entries...">Organiser CDDB-hurtigminne-oppføringer...</entry>
@@ -392,7 +392,7 @@
     <entry id="388" string="Unknown file type">Ukjent filtype</entry>
     <entry id="389" string="Unsupported audio format">Lydformatet er ikke støttet</entry>
     <entry id="390" string="Unknown error">Ukjent feil</entry>
-    <entry id="391" string="Replace existing comments with default comment">CDDB</entry>
+    <entry id="391" string="Replace existing comments with default comment"/>
     <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first."/>
     <entry id="393" string="Write WMA metadata info"/>
     <entry id="394" string="WMA metadata encoding:"/>
