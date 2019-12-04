@@ -65,7 +65,7 @@
     <entry id="52" string="Variable Bitrate">Variabele bitrate</entry>
     <entry id="53" string="Average Bitrate">Gemiddelde bitrate</entry>
     <entry id="54" string="Quality">Kwaliteit</entry>
-    <entry id="55" string="Encoders">Vertaald door %1.</entry>
+    <entry id="55" string="Encoders"/>
     <entry id="56" string="Language">Taal</entry>
     <entry id="57" string="Show title info">Titelinfo weergeven</entry>
     <entry id="58" string="General settings setup">Algemene instellingen</entry>
@@ -157,7 +157,7 @@
     <entry id="149" string="CDDB access mode:">CDDB-toegangsmode:</entry>
     <entry id="150" string="CDDB server:">CDDB-server:</entry>
     <entry id="151" string="Port:">Poort:</entry>
-    <entry id="152" string="Info">Artiest</entry>
+    <entry id="152" string="Info"/>
     <entry id="153" string="No freedb entry for this disk.">Geen freedb info voor deze schijf.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Er is een fout opgetreden bij het verbinden met de freedb server.</entry>
     <entry id="155" string="Connecting to freedb server at">Bezig met verbinden met server op</entry>
@@ -189,8 +189,8 @@
     <entry id="185" string="Size">Grootte</entry>
     <entry id="186" string="Artist">Artiest</entry>
     <entry id="187" string="Year">Jaar</entry>
-    <entry id="188" string="Genre">onbekende artiest</entry>
-    <entry id="189" string="Album">Commentaar</entry>
+    <entry id="188" string="Genre"/>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags"/>
     <entry id="191" string="Default information">Standaardinformatie</entry>
     <entry id="192" string="Default comment string:">Standaardcommentaar:</entry>
@@ -326,7 +326,7 @@
     <entry id="322" string="first letter upper case">eerste letter hoofdletter</entry>
     <entry id="323" string="all lower case">allemaal kleine letters</entry>
     <entry id="324" string="all upper case">allemaal hoofdletters</entry>
-    <entry id="325" string="Status">Map van invoerbestand gebruiken indien mogelijk</entry>
+    <entry id="325" string="Status"/>
     <entry id="326" string="Successfully read CD!">Cd succesvol gelezen!</entry>
     <entry id="327" string="Comment">Commentaar</entry>
     <entry id="328" string="Manage CDDB cache entries...">CDDB-cache-ingaven beheren...</entry>
