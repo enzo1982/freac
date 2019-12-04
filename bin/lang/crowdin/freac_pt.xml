@@ -114,7 +114,7 @@
     <entry id="101" string="MPEG version">Versão MPEG</entry>
     <entry id="102" string="AAC object type">Tipo de objecto AAC</entry>
     <entry id="103" string="Allow Joint Stereo">Permitir joint-estéreo</entry>
-    <entry id="104" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
+    <entry id="104" string="Temporal Noise Shaping">Modelagem de Ruído Temporal</entry>
     <entry id="105" string="Use Temporal Noise Shaping">Usar &quot;Temporal Noise Shaping&quot;</entry>
     <entry id="106" string="Maximum bandwidth">Largura máxima de banda</entry>
     <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Largura máxima de banda para AAC (Hz):</entry>
@@ -177,7 +177,7 @@
     <entry id="169" string="no proxy">sem proxy</entry>
     <entry id="170" string="Proxy type:">Tipo de proxy:</entry>
     <entry id="171" string="Proxy server:">Servidor proxy:</entry>
-    <entry id="172" string="Presets">Presets</entry>
+    <entry id="172" string="Presets">Ajustes prévios</entry>
     <entry id="173" string="Use preset:">Usar preset:</entry>
     <entry id="174" string="Custom settings">Opções personalizadas</entry>
     <entry id="179" string="Medium, Fast">Médio e rápido</entry>
@@ -226,7 +226,7 @@
     <entry id="222" string="Use default setting">Usar padrão</entry>
     <entry id="223" string="Psycho acoustic model">Modelo psico-acústico</entry>
     <entry id="224" string="Use Temporal Masking Effect">Usar 'Temporal Mask Effect'</entry>
-    <entry id="225" string="Expert">Expert</entry>
+    <entry id="225" string="Expert">Especialista</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">Não se pode configurar o codificador durante a codificação!</entry>
     <entry id="227" string="The output folder does not exist! Do you want to create it?">A pasta de saída não existe! Deseja criá-la?</entry>
     <entry id="228" string="Filename pattern">Sintaxe do nome do ficheiro</entry>
@@ -407,16 +407,16 @@
     <entry id="403" string="Use 2-pass encoding">Utilizar codificação de dupla passagem</entry>
     <entry id="404" string="Target bitrate">Razão de bit alvo</entry>
     <entry id="405" string="Set drive speed limit:">Especificar velocidade limite do leitor:</entry>
-    <entry id="406" string="Support this project">eur</entry>
-    <entry id="407" string="Please support this project!">CDDB</entry>
+    <entry id="406" string="Support this project">Suporte este projeto</entry>
+    <entry id="407" string="Please support this project!">Por favor, apoiem este projeto!</entry>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
     <entry id="410" string="usd">eur</entry>
     <entry id="411" string="en"/>
-    <entry id="412" string="Thank you very much!"/>
-    <entry id="413" string="Remind me later"/>
+    <entry id="412" string="Thank you very much!">Obrigado!</entry>
+    <entry id="413" string="Remind me later">Lembre-me mais tarde</entry>
     <entry id="414" string="CDDB"/>
     <entry id="415" string="Ripper">CDRip</entry>
-    <entry id="416" string="Default"/>
+    <entry id="416" string="Default">Padrão</entry>
   </data>
 </LangFile>
