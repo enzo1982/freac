@@ -184,13 +184,13 @@
     <entry id="180" string="Standard, Fast">Tiêu chuẩn, Nhanh</entry>
     <entry id="181" string="Extreme, Fast">Cực kỳ, Nhanh</entry>
     <entry id="182" string="Title">Tiêu đề</entry>
-    <entry id="183" string="Track">Năm</entry>
+    <entry id="183" string="Track"/>
     <entry id="184" string="Length">Độ dài</entry>
     <entry id="185" string="Size">Kích thước</entry>
     <entry id="186" string="Artist">Nghệ sĩ</entry>
     <entry id="187" string="Year">Năm</entry>
     <entry id="188" string="Genre">Loại</entry>
-    <entry id="189" string="Album">Bình luận</entry>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags">Tab thông tin</entry>
     <entry id="191" string="Default information">Thông tin mặc định</entry>
     <entry id="192" string="Default comment string:">Chuỗi nhận xét mặc định:</entry>
