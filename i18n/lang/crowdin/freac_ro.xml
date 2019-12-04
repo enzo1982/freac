@@ -16,21 +16,21 @@
     <entry id="102" string="Close">Închide</entry>
 
     <entry id="200" string="Error">Eroare</entry>
-    <entry id="201" string="Warning">Info</entry>
-    <entry id="202" string="Info">Artist</entry>
+    <entry id="201" string="Warning"/>
+    <entry id="202" string="Info"/>
 
-    <entry id="210" string="Do not display this warning again">Titlu</entry>
-    <entry id="211" string="Do not display this note again">Album</entry>
+    <entry id="210" string="Do not display this warning again"/>
+    <entry id="211" string="Do not display this note again"/>
 
-    <entry id="300" string="Artist">Melodie</entry>
+    <entry id="300" string="Artist"/>
     <entry id="301" string="Title">Titlu</entry>
-    <entry id="302" string="Album">Comentariu</entry>
+    <entry id="302" string="Album"/>
     <entry id="303" string="Track">Melodie</entry>
     <entry id="304" string="Genre">Gen</entry>
     <entry id="305" string="Comment">Comentariu</entry>
     <entry id="306" string="Year">An</entry>
-    <entry id="307" string="Disc">gen necunoscut</entry>
-    <entry id="308" string="Rating">an necunoscut</entry>
+    <entry id="307" string="Disc"/>
+    <entry id="308" string="Rating"/>
     <entry id="309" string="File name"/>
     <entry id="310" string="File type"/>
     <entry id="311" string="Album artist"/>
@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 bytes</entry>
-      <entry id="517" string="%1 kB">%1%</entry>
+      <entry id="517" string="%1 kB"/>
       <entry id="518" string="%1%"/>
     </section>
 
@@ -68,7 +68,7 @@
       <entry id="1000" string="File">Fişier</entry>
       <entry id="1001" string="Options">Opţiuni</entry>
       <entry id="1002" string="Database">Baza de Date</entry>
-      <entry id="1003" string="Processing">Codare</entry>
+      <entry id="1003" string="Processing"/>
       <entry id="1004" string="Encode">Codare</entry>
       <entry id="1005" string="Help">Ajutor</entry>
 
@@ -105,15 +105,15 @@
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing">Start codare</entry>
-	<entry id="1401" string="Enable processing during playback">Start codare cu</entry>
-	<entry id="1402" string="Configure signal processing">Pauză/Continuare codare</entry>
-	<entry id="1403" string="Selected signal processors">Stop codare</entry>
+	<entry id="1400" string="Enable signal processing"/>
+	<entry id="1401" string="Enable processing during playback"/>
+	<entry id="1402" string="Configure signal processing"/>
+	<entry id="1403" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Start codare</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">Sfatul zilei</entry>
+	<entry id="1501" string="Start encoding (deleting original files)"/>
 	<entry id="1502" string="Start encoding with">Start codare cu</entry>
 	<entry id="1503" string="Pause/resume encoding">Pauză/Continuare codare</entry>
 	<entry id="1504" string="Stop encoding">Stop codare</entry>
@@ -147,7 +147,7 @@
       <entry id="2006" string="Configure general settings">Configurare setări generale</entry>
       <entry id="2007" string="Configure the selected audio encoder">Configurare codec audio</entry>
       <entry id="2008" string="Start the encoding process">Porneşte procesul de codare</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Pauză/Continuare codare</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)"/>
       <entry id="2010" string="Pause/resume encoding">Pauză/Continuare codare</entry>
       <entry id="2011" string="Stop encoding">Stop codare</entry>
     </section>
@@ -219,7 +219,7 @@
 	<entry id="3201" string="Pattern">Model</entry>
 	<entry id="3202" string="Start folder">Folder de start</entry>
 	<entry id="3203" string="Filename pattern">Model nume fisier</entry>
-	<entry id="3204" string="Search subfolders">Selecţie folder pentru adăugare la listă</entry>
+	<entry id="3204" string="Search subfolders"/>
 	<entry id="3205" string="Select the folder to add to the joblist">Selecţie folder pentru adăugare la listă</entry>
       </section>
 
@@ -325,7 +325,7 @@
 	<entry id="4203" string="Query all">Interogare multiplă</entry>
 	<entry id="4204" string="Query string">Text de interogare</entry>
 	<entry id="4205" string="CDDB queries to perform">Interogări CDDB de efectuat</entry>
-	<entry id="4206" string="Querying CD information">Server CDDB</entry>
+	<entry id="4206" string="Querying CD information"/>
       </section>
 
       <section name="Manage submits">
@@ -379,7 +379,7 @@
       <entry id="5023" string="Resources"/>
       <entry id="5024" string="Verifiers"/>
       <entry id="5025" string="Taggers"/>
-      <entry id="5026" string="Processing">Codare</entry>
+      <entry id="5026" string="Processing"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurare codec</entry>
@@ -552,8 +552,8 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing"/>
-	<entry id="5901" string="Enable signal processing">Start codare</entry>
-	<entry id="5902" string="Enable processing during playback">Start codare cu</entry>
+	<entry id="5901" string="Enable signal processing"/>
+	<entry id="5902" string="Enable processing during playback"/>
 	<entry id="5903" string="Components"/>
 	<entry id="5904" string="Available"/>
 	<entry id="5905" string="Selected"/>
@@ -708,19 +708,19 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="20000" string="Decoding">Ajută acest proiect</entry>
-	<entry id="20001" string="Enable 24 bit decoding">Vă rog ajutaţi acest proiect!</entry>
+	<entry id="20000" string="Decoding"/>
+	<entry id="20001" string="Enable 24 bit decoding"/>
       </section>
 
       <section name="mpg123">
-	<entry id="21000" string="Decoder">Configurare</entry>
+	<entry id="21000" string="Decoder"/>
 	<entry id="21001" string="Active decoder"/>
- 	<entry id="21002" string="auto select"/>
+	<entry id="21002" string="auto select"/>
       </section>
 
       <section name="CueSheet">
-	<entry id="22000" string="Title information">Lungime</entry>
-	<entry id="22001" string="Read tags from referenced files">Mărime</entry>
+	<entry id="22000" string="Title information"/>
+	<entry id="22001" string="Read tags from referenced files"/>
 	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags"/>
 	<entry id="22003" string="Alternative files"/>
 	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
@@ -1268,8 +1268,8 @@
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Setări de bază</entry>
-	  <entry id="103101" string="Title information">Lungime</entry>
-	  <entry id="103102" string="Disc">gen necunoscut</entry>
+	  <entry id="103101" string="Title information"/>
+	  <entry id="103102" string="Disc"/>
 	  <entry id="103103" string="Cover art"/>
 	  <entry id="103104" string="Covers"/>
 	  <entry id="103105" string="Type"/>
