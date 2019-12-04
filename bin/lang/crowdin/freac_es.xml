@@ -2,13 +2,13 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version"/>
+    <property name="version">1.0</property>
     <property name="language">Spanish / Español</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Will</property>
-    <property name="url"/>
+    <property name="url">http://www.freac.org/</property>
   </info>
   <data>
     <entry id="1" string="File">Archivo</entry>
@@ -126,7 +126,7 @@
     <entry id="113" string="Set quality:">Calidad:</entry>
     <entry id="114" string="worse">peor</entry>
     <entry id="115" string="better">mejor</entry>
-    <entry id="116" string="Auto"/>
+    <entry id="116" string="Auto">Auto</entry>
     <entry id="117" string="Stereo">Estéreo</entry>
     <entry id="118" string="Joint Stereo">Joint Stereo</entry>
     <entry id="119" string="Force Joint Stereo">Forzar Joint Stereo</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Mantener archivos Wav extraídos</entry>
     <entry id="251" string="ripping/decoding">extrayendo/decodificando</entry>
     <entry id="252" string="encoding">codificando</entry>
-    <entry id="253" string="Unicode"/>
+    <entry id="253" string="Unicode">Unicode</entry>
     <entry id="254" string="Use Unicode filenames">Usar nombres Unicode</entry>
     <entry id="255" string="AAC Files">Archivos AAC</entry>
     <entry id="256" string="MP4 Files">Archivos MP4</entry>
@@ -268,9 +268,9 @@
     <entry id="264" string="Sample resolution">Resolución de la muestra</entry>
     <entry id="265" string="Number of samples">Número de muestras</entry>
     <entry id="266" string="Mono">Mono</entry>
-    <entry id="267" string="bytes"/>
+    <entry id="267" string="bytes">bytes</entry>
     <entry id="268" string="bit">bit</entry>
-    <entry id="269" string="min"/>
+    <entry id="269" string="min">min</entry>
     <entry id="270" string="Create playlist">Crear lista de reproducción</entry>
     <entry id="271" string="Create cue sheet">Crear cue sheet</entry>
     <entry id="272" string="Write ID3v1 tags">Grabar etiqueta ID3v1</entry>
@@ -412,7 +412,7 @@
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Por favor, ayude a mantener este software gratuito apoyando el&#10;proyecto %1 con una donación.&#10;&#10;Pulse uno de los botones de abajo para donar usando PayPal:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">También puede enviar dinero directamente a %1&#10;usando PayPal.&#10;&#10;Por favor, escriba a %1 si desea donar usando una&#10;transferencia electrónica o enviando un cheque o dinero por correo.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en"/>
+    <entry id="411" string="en">es</entry>
     <entry id="412" string="Thank you very much!">¡Muchas gracias!</entry>
     <entry id="413" string="Remind me later">Recordármelo más tarde</entry>
     <entry id="414" string="CDDB">CDDB</entry>
