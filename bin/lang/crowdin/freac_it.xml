@@ -157,7 +157,7 @@
     <entry id="149" string="CDDB access mode:">Modalità di accesso CDDB:</entry>
     <entry id="150" string="CDDB server:">Server CDDB:</entry>
     <entry id="151" string="Port:">Porta:</entry>
-    <entry id="152" string="Info">Artista</entry>
+    <entry id="152" string="Info"/>
     <entry id="153" string="No freedb entry for this disk.">Nessuna informazione per questo disco.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Si sono verificati errori durante la connessione al server freedb.</entry>
     <entry id="155" string="Connecting to freedb server at">Connessione al server freedb su</entry>
@@ -190,7 +190,7 @@
     <entry id="186" string="Artist">Artista</entry>
     <entry id="187" string="Year">Anno</entry>
     <entry id="188" string="Genre">Genere</entry>
-    <entry id="189" string="Album">Commenti</entry>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags">Tag</entry>
     <entry id="191" string="Default information">Informazione predefinita</entry>
     <entry id="192" string="Default comment string:">Commento predefinito:</entry>
