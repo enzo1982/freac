@@ -56,11 +56,11 @@
       <entry id="510" string="%1 kbps">%1 kbps</entry>
       <entry id="511" string="%1 Hz">%1 Hz</entry>
       <entry id="512" string="%1 kHz">%1 kHz</entry>
-      <entry id="513" string="%1 ms">%1 毫秒</entry>
-      <entry id="514" string="%1 min">%1 分鐘</entry>
-      <entry id="515" string="%1 bit">%1 位元</entry>
-      <entry id="516" string="%1 bytes">%1 位元組</entry>
-      <entry id="517" string="%1 kB">%1%</entry>
+      <entry id="513" string="%1 ms"/>
+      <entry id="514" string="%1 min"/>
+      <entry id="515" string="%1 bit"/>
+      <entry id="516" string="%1 bytes"/>
+      <entry id="517" string="%1 kB"/>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
@@ -715,7 +715,7 @@
       <section name="mpg123">
 	<entry id="21000" string="Decoder">解碼器</entry>
 	<entry id="21001" string="Active decoder">使用中的解碼器</entry>
- 	<entry id="21002" string="auto select">自動選擇</entry>
+	<entry id="21002" string="auto select">自動選擇</entry>
       </section>
 
       <section name="CueSheet">
@@ -734,7 +734,7 @@
       <section name="BladeEnc">
 	<entry id="30000" string="Bitrate">位元率</entry>
 	<entry id="30001" string="Copyright bit">版權位元</entry>
-	<entry id="30002" string="CRC">CRC 校驗</entry>
+	<entry id="30002" string="CRC">CRC</entry>
 	<entry id="30003" string="Original bit">原始版本位元</entry>
 	<entry id="30004" string="Channels">聲道</entry>
 	<entry id="30005" string="Private bit">私有位元</entry>
@@ -786,7 +786,7 @@
 	  <entry id="32201" string="Set Copyright bit">設定版權位元</entry>
 	  <entry id="32202" string="Set Original bit">設定原始版本位元</entry>
 	  <entry id="32203" string="Set Private bit">設定私有位元</entry>
-	  <entry id="32204" string="CRC">CRC 校驗</entry>
+	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">啟用 CRC</entry>
 	  <entry id="32206" string="Stereo mode">立體聲模式</entry>
 	  <entry id="32207" string="auto">自動</entry>
@@ -1178,7 +1178,7 @@
 	<section name="PayPal">
 	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">要使用 PayPal 捐款，請選擇金額並按下捐款按鈕:</entry>
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">您也可以使用 PayPal 直接付款給 %1。</entry>
-	  <entry id="100102" string="usd">twd</entry>
+	  <entry id="100102" string="usd"/>
 	  <entry id="100103" string="$%1">$%1 美金</entry>
 	  <entry id="100104" string="5,10,20,other amount">5,10,20,元或其他金額</entry>
 	  <entry id="100105" string="monthly recurring">每個月自動捐款</entry>
@@ -1188,7 +1188,7 @@
 	<section name="Donorbox">
 	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox 讓信用卡捐款簡單又快速。&#10;請按下這個按鈕使用 Donorbox 捐款:</entry>
 	  <entry id="100201" string="Donate">捐款</entry>
-	  <entry id="100202" string="usd">twd</entry>
+	  <entry id="100202" string="usd"/>
 	</section>
 
 	<section name="Bitcoin">
