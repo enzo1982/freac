@@ -96,11 +96,11 @@
     <entry id="83" string="Original bit">Original bit</entry>
     <entry id="84" string="Channels">Kanalid</entry>
     <entry id="85" string="Private bit">Private bit</entry>
-    <entry id="86" string="Set Copyright bit">Set Copyright bit</entry>
+    <entry id="86" string="Set Copyright bit"/>
     <entry id="87" string="Enable CRC">CRC lubatud</entry>
-    <entry id="88" string="Set Original bit">Set Original bit</entry>
+    <entry id="88" string="Set Original bit"/>
     <entry id="89" string="Dual channel encoding">2-kanaliline kodeerimine</entry>
-    <entry id="90" string="Set Private bit">Set Private bit</entry>
+    <entry id="90" string="Set Private bit"/>
     <entry id="91" string="Encoder mode">Kodeerimise reziim</entry>
     <entry id="92" string="Stereo mode">Stereo reziim</entry>
     <entry id="93" string="Quantization">Kvantimine</entry>
@@ -113,7 +113,7 @@
     <entry id="100" string="Number of preselection candidates:">Varjantide hulk:</entry>
     <entry id="101" string="MPEG version">MPEG versioon</entry>
     <entry id="102" string="AAC object type">AAC objekti tüüp</entry>
-    <entry id="103" string="Allow Joint Stereo">Allow Joint Stereo</entry>
+    <entry id="103" string="Allow Joint Stereo"/>
     <entry id="104" string="Temporal Noise Shaping">Müra aja formeerimine</entry>
     <entry id="105" string="Use Temporal Noise Shaping">Kasutada müra aja formeerimist</entry>
     <entry id="106" string="Maximum bandwidth">Maks. sagetuste riba laius</entry>
@@ -157,7 +157,7 @@
     <entry id="149" string="CDDB access mode:">CDDB juurdepääsu moodus:</entry>
     <entry id="150" string="CDDB server:"/>
     <entry id="151" string="Port:"/>
-    <entry id="152" string="Info">Esitaja</entry>
+    <entry id="152" string="Info"/>
     <entry id="153" string="No freedb entry for this disk.">Plaadi kohta puuduvad andmed.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Viga freedb serveriga ühenduse saamisel.</entry>
     <entry id="155" string="Connecting to freedb server at">Ühendamine freedb serveriga</entry>
@@ -190,7 +190,7 @@
     <entry id="186" string="Artist">Esitaja</entry>
     <entry id="187" string="Year">Aasta</entry>
     <entry id="188" string="Genre">Suunitlus</entry>
-    <entry id="189" string="Album">Kommentaarid</entry>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags">Tagid</entry>
     <entry id="191" string="Default information">Vaikimisi info</entry>
     <entry id="192" string="Default comment string:">Komentaarid vaikimisi</entry>
@@ -292,7 +292,7 @@
     <entry id="288" string="unknown year">teadmata aasta</entry>
     <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">Ei saa initsialiseerida %1 kodekit! Palun kontrollige sätteid!</entry>
     <entry id="290" string="Blocksize:">Bloki suurus:</entry>
-    <entry id="291" string="Use streamable subset">Use streamable subset</entry>
+    <entry id="291" string="Use streamable subset"/>
     <entry id="292" string="Adaptive Joint Stereo">Adaptiivne Joint Stereo</entry>
     <entry id="293" string="Fastest encoding">Kiireim kodeerimine</entry>
     <entry id="294" string="Best compression">Parim kompressioon</entry>
@@ -341,12 +341,12 @@
     <entry id="337" string="Delete original files after encoding">Kustuta originaal failid peale kodeerimist</entry>
     <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">See säte kustutab originaal failid peale seda kui nad on kodeeritud! Kas soovite jätkata?</entry>
     <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP protokoli ei saa kasutada läbi&#10;HTTP Proxi ette!&#10;&#10;Tahate muuta protokoli HTTP vastu?</entry>
-    <entry id="340" string="Playlists">Seda programmi levitatakse GNU&#10;General Public License (GPL) raames.</entry>
+    <entry id="340" string="Playlists"/>
     <entry id="341" string="Create playlists">Luua playlistid</entry>
     <entry id="342" string="Create cue sheets">Luua cue sheets</entry>
-    <entry id="343" string="Use encoder output folder">Erinevad artistid</entry>
+    <entry id="343" string="Use encoder output folder"/>
     <entry id="344" string="Various artists">Erinevad artistid</entry>
-    <entry id="345" string="Data track">Kodeerimine &quot;Lennult&quot;</entry>
+    <entry id="345" string="Data track"/>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">Valige kaust, kuhu paigutatakse playlistid</entry>
     <entry id="347" string="Use input file folder if possible">Kasuta sisendfaili kausta kui on võimalik</entry>
     <entry id="348" string="Encode to input file folder if possible">Kodeeri otse sisendfaili kausta kui on võimalik</entry>
@@ -375,7 +375,7 @@
     <entry id="371" string="CDDB queries">CDDB päringud</entry>
     <entry id="372" string="Query">Päring</entry>
     <entry id="373" string="Query all">Saata kõik päringud</entry>
-    <entry id="374" string="Query string">Valige CDDB andmetebaasi kaust</entry>
+    <entry id="374" string="Query string"/>
     <entry id="375" string="CDDB queries to perform:">CDDB päringud teostamiseks:</entry>
     <entry id="376" string="Would you like to perform this query again later?">Tahate korrata seda päringut hiljem?</entry>
     <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Juurdepääs CD-ROM-le Windowsi poolt suletud.&#10;&#10;Palun võtke ühendust oma süsteemi administraatoriga,&#10;et saada juurdepääsu luba CD-ROM-le.</entry>
@@ -392,7 +392,7 @@
     <entry id="388" string="Unknown file type">Tundmatu faili tüüp</entry>
     <entry id="389" string="Unsupported audio format">Mittetoetatav audio formaat</entry>
     <entry id="390" string="Unknown error">Tundmatu viga</entry>
-    <entry id="391" string="Replace existing comments with default comment">CDDB</entry>
+    <entry id="391" string="Replace existing comments with default comment"/>
     <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first."/>
     <entry id="393" string="Write WMA metadata info"/>
     <entry id="394" string="WMA metadata encoding:"/>
