@@ -302,7 +302,7 @@
     <entry id="298" string="Exhaustive model search">Busca exaustiva</entry>
     <entry id="299" string="Optimize LPC quantization">Quantização otimizada</entry>
     <entry id="300" string="disabled">desabilitado</entry>
-    <entry id="301" string="auto">Prioridade do processo</entry>
+    <entry id="301" string="auto"/>
     <entry id="302" string="Residual coding">Codificação residual</entry>
     <entry id="303" string="Minimum partition order">Partição mínima</entry>
     <entry id="304" string="Maximum partition order">Partição máxima</entry>
