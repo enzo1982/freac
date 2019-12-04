@@ -16,11 +16,11 @@
     <entry id="102" string="Close">Κλείσιμο</entry>
 
     <entry id="200" string="Error">Σφάλμα</entry>
-    <entry id="201" string="Warning">Πληροφορίες</entry>
+    <entry id="201" string="Warning"/>
     <entry id="202" string="Info">Πληροφορίες</entry>
 
-    <entry id="210" string="Do not display this warning again">Τίτλος</entry>
-    <entry id="211" string="Do not display this note again">Άλμπουμ</entry>
+    <entry id="210" string="Do not display this warning again"/>
+    <entry id="211" string="Do not display this note again"/>
 
     <entry id="300" string="Artist">Καλλιτέχνης</entry>
     <entry id="301" string="Title">Τίτλος</entry>
@@ -29,8 +29,8 @@
     <entry id="304" string="Genre">Είδος</entry>
     <entry id="305" string="Comment">Σχόλιο</entry>
     <entry id="306" string="Year">Έτος</entry>
-    <entry id="307" string="Disc">άγνωστο είδος</entry>
-    <entry id="308" string="Rating">άγνωστο έτος</entry>
+    <entry id="307" string="Disc"/>
+    <entry id="308" string="Rating"/>
     <entry id="309" string="File name"/>
     <entry id="310" string="File type"/>
     <entry id="311" string="Album artist"/>
@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1 λεπτά</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 bytes</entry>
-      <entry id="517" string="%1 kB">%1%</entry>
+      <entry id="517" string="%1 kB"/>
       <entry id="518" string="%1%"/>
     </section>
 
@@ -68,7 +68,7 @@
       <entry id="1000" string="File">Αρχείο</entry>
       <entry id="1001" string="Options">Επιλογές</entry>
       <entry id="1002" string="Database">Βάση δεδομένων</entry>
-      <entry id="1003" string="Processing">Κωδικοποίηση</entry>
+      <entry id="1003" string="Processing"/>
       <entry id="1004" string="Encode">Κωδικοποίηση</entry>
       <entry id="1005" string="Help">Βοήθεια</entry>
 
@@ -105,15 +105,15 @@
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing">Έναρξη κωδικοποίησης</entry>
-	<entry id="1401" string="Enable processing during playback">Έναρξη κωδικοποίησης</entry>
-	<entry id="1402" string="Configure signal processing">Παύση/συνέχεια κωδικοποίησης</entry>
-	<entry id="1403" string="Selected signal processors">Διακοπή κωδικοποίησης</entry>
+	<entry id="1400" string="Enable signal processing"/>
+	<entry id="1401" string="Enable processing during playback"/>
+	<entry id="1402" string="Configure signal processing"/>
+	<entry id="1403" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Έναρξη κωδικοποίησης</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">Εμφάνιση συμβουλής της ημέρας</entry>
+	<entry id="1501" string="Start encoding (deleting original files)"/>
 	<entry id="1502" string="Start encoding with">Έναρξη κωδικοποίησης</entry>
 	<entry id="1503" string="Pause/resume encoding">Παύση/συνέχεια κωδικοποίησης</entry>
 	<entry id="1504" string="Stop encoding">Διακοπή κωδικοποίησης</entry>
@@ -147,7 +147,7 @@
       <entry id="2006" string="Configure general settings">Ρύθμιση γενικών επιλογών</entry>
       <entry id="2007" string="Configure the selected audio encoder">Ρύθμιση επιλεγμένου κωδικοποιητή</entry>
       <entry id="2008" string="Start the encoding process">Έναρξη της διαδικασίας κωδικοποίησης</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Παύση/συνέχεια κωδικοποίησης</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)"/>
       <entry id="2010" string="Pause/resume encoding">Παύση/συνέχεια κωδικοποίησης</entry>
       <entry id="2011" string="Stop encoding">Διακοπή κωδικοποίησης</entry>
     </section>
@@ -219,7 +219,7 @@
 	<entry id="3201" string="Pattern">Πρότυπο</entry>
 	<entry id="3202" string="Start folder">Φάκελος εκκίνησης</entry>
 	<entry id="3203" string="Filename pattern">Στυλ ονόματος αρχείου</entry>
-	<entry id="3204" string="Search subfolders">Επιλέξτε φάκελο για προσθήκη στη λίστα εργασιών</entry>
+	<entry id="3204" string="Search subfolders"/>
 	<entry id="3205" string="Select the folder to add to the joblist">Επιλέξτε φάκελο για προσθήκη στη λίστα εργασιών</entry>
       </section>
 
@@ -288,7 +288,7 @@
 	<entry id="4006" string="Successfully read CD!">Επιτυχής ανάγνωση CD!</entry>
 	<entry id="4007" string="Save entry">Αποθήκευση καταχώρησης</entry>
 	<entry id="4008" string="Various artists">Διάφοροι καλλιτέχνες</entry>
-	<entry id="4009" string="Data track">Κωδικοποίηση 'On-The-Fly'</entry>
+	<entry id="4009" string="Data track"/>
 	<entry id="4010" string="Submit to online database later">Καταχώρηση στη βάση δεδομένων αργότερα</entry>
 	<entry id="4011" string="Active CD-ROM drive">Ενεργός οδηγός CD-ROM</entry>
 
@@ -325,7 +325,7 @@
 	<entry id="4203" string="Query all">Ερώτηση για όλα</entry>
 	<entry id="4204" string="Query string">Ερώτηση string</entry>
 	<entry id="4205" string="CDDB queries to perform">Ερωτήσεις CDDB που θα γίνουν</entry>
-	<entry id="4206" string="Querying CD information">CDDB server</entry>
+	<entry id="4206" string="Querying CD information"/>
       </section>
 
       <section name="Manage submits">
@@ -356,7 +356,7 @@
       <entry id="5000" string="General settings setup">Ρύθμιση γενικών επιλογών</entry>
       <entry id="5001" string="Encoders">Κωδικοποιητές</entry>
       <entry id="5002" string="Playlists">Λίστες αναπαραγωγής</entry>
-      <entry id="5003" string="Language">Προβολή πληροφοριών τίτλου</entry>
+      <entry id="5003" string="Language"/>
       <entry id="5004" string="Component configuration"/>
       <entry id="5005" string="CDDB"/>
       <entry id="5006" string="Interface"/>
@@ -379,7 +379,7 @@
       <entry id="5023" string="Resources"/>
       <entry id="5024" string="Verifiers"/>
       <entry id="5025" string="Taggers"/>
-      <entry id="5026" string="Processing">Κωδικοποίηση</entry>
+      <entry id="5026" string="Processing"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Ρύθμιση κωδικοποιητή</entry>
@@ -441,7 +441,7 @@
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Εκτεταμένες επιλογές CDDB</entry>
-	  <entry id="5331" string="CGI scripts">Ρυθμίσεις HTTP</entry>
+	  <entry id="5331" string="CGI scripts"/>
 	  <entry id="5332" string="CDDB query script">Script για ερώτηση CDDB</entry>
 	  <entry id="5333" string="CDDB submit script">Script για καταχώρηση CDDB</entry>
 	  <entry id="5334" string="no proxy">Όχι proxy</entry>
@@ -462,8 +462,8 @@
 	<entry id="5401" string="Edit language file">Επεξεργασία αρχείου γλώσσας</entry>
 	<entry id="5402" string="Information">Πληροφορίες</entry>
 	<entry id="5403" string="Encoding">Κωδικοποίηση</entry>
-	<entry id="5404" string="Author">Επιλογή γλώσσας:</entry>
-	<entry id="5405" string="URL">Ενεργός οδηγός CD-ROM</entry>
+	<entry id="5404" string="Author"/>
+	<entry id="5405" string="URL"/>
       </section>
 
       <section name="Tags">
@@ -533,7 +533,7 @@
 	<entry id="5701" string="Enable parallel processing"/>
 	<entry id="5702" string="Enable SuperFast mode"/>
 	<entry id="5703" string="Number of conversion threads"/>
-	<entry id="5704" string="auto">Μέγιστη partition order</entry>
+	<entry id="5704" string="auto"/>
 	<entry id="5705" string="Process priority"/>
 	<entry id="5706" string="lowest"/>
 	<entry id="5707" string="lower"/>
@@ -552,8 +552,8 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing"/>
-	<entry id="5901" string="Enable signal processing">Έναρξη κωδικοποίησης</entry>
-	<entry id="5902" string="Enable processing during playback">Έναρξη κωδικοποίησης</entry>
+	<entry id="5901" string="Enable signal processing"/>
+	<entry id="5902" string="Enable processing during playback"/>
 	<entry id="5903" string="Components"/>
 	<entry id="5904" string="Available"/>
 	<entry id="5905" string="Selected"/>
@@ -708,19 +708,19 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="20000" string="Decoding">sepa,paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="20000" string="Decoding"/>
 	<entry id="20001" string="Enable 24 bit decoding"/>
       </section>
 
       <section name="mpg123">
-	<entry id="21000" string="Decoder">Ρύθμιση</entry>
+	<entry id="21000" string="Decoder"/>
 	<entry id="21001" string="Active decoder"/>
- 	<entry id="21002" string="auto select"/>
+	<entry id="21002" string="auto select"/>
       </section>
 
       <section name="CueSheet">
-	<entry id="22000" string="Title information">Διάρκεια</entry>
-	<entry id="22001" string="Read tags from referenced files">Μέγεθος</entry>
+	<entry id="22000" string="Title information"/>
+	<entry id="22001" string="Read tags from referenced files"/>
 	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags"/>
 	<entry id="22003" string="Alternative files"/>
 	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
@@ -734,7 +734,7 @@
       <section name="BladeEnc">
 	<entry id="30000" string="Bitrate">Ρυθμός μετάδοσης</entry>
 	<entry id="30001" string="Copyright bit">Bit πνευματικών δικαιωμάτων</entry>
-	<entry id="30002" string="CRC">Προσωπικό bit</entry>
+	<entry id="30002" string="CRC"/>
 	<entry id="30003" string="Original bit">Αυθεντικό bit</entry>
 	<entry id="30004" string="Channels">Κανάλια</entry>
 	<entry id="30005" string="Private bit">Προσωπικό bit</entry>
@@ -786,12 +786,12 @@
 	  <entry id="32201" string="Set Copyright bit">Τοποθέτηση bit πνευματικών δικαιωμάτων</entry>
 	  <entry id="32202" string="Set Original bit">Τοποθέτηση αυθεντικού bit</entry>
 	  <entry id="32203" string="Set Private bit">Τοποθέτηση προσωπικού bit</entry>
-	  <entry id="32204" string="CRC">Προσωπικό bit</entry>
+	  <entry id="32204" string="CRC"/>
 	  <entry id="32205" string="Enable CRC">Ενεργοποίηση CRC</entry>
 	  <entry id="32206" string="Stereo mode">Λειτουργία Stereo</entry>
 	  <entry id="32207" string="auto">αυτόματο</entry>
 	  <entry id="32208" string="Stereo">Stereo</entry>
-	  <entry id="32209" string="Joint Stereo">Όχι VBR</entry>
+	  <entry id="32209" string="Joint Stereo"/>
 	  <entry id="32210" string="Force Joint Stereo">Εξαναγκασμός Joint Stereo</entry>
 	  <entry id="32211" string="VBR bitrate range">Εύρος ρυθμού μετάδοσης VBR</entry>
 	  <entry id="32212" string="Set minimum VBR bitrate">Ελάχιστος ρυθμός μετάδοσης VBR</entry>
@@ -799,7 +799,7 @@
 	</section>
 
 	<section name="Expert">
-	  <entry id="32300" string="ATH">Ψυχοακουστικό μοντέλο</entry>
+	  <entry id="32300" string="ATH"/>
 	  <entry id="32301" string="Enable ATH">Ενεργοποίηση ΑΤΗ</entry>
 	  <entry id="32302" string="Use default setting">Χρήση προεπιλεγμένων ρυθμίσεων</entry>
 	  <entry id="32303" string="Psycho acoustic model">Ψυχοακουστικό μοντέλο</entry>
@@ -866,7 +866,7 @@
 	  <entry id="34103" string="Fastest encoding">Ταχύτατη κωδικοποίηση</entry>
 	  <entry id="34104" string="Best compression">Καλύτερη συμπίεση</entry>
 	  <entry id="34105" string="Stereo mode">Λειτουργία Stereo</entry>
-	  <entry id="34106" string="Joint Stereo">Όχι VBR</entry>
+	  <entry id="34106" string="Joint Stereo"/>
 	  <entry id="34107" string="Adaptive Joint Stereo">Προσαρμόσιμο Joint Stereo</entry>
 	  <entry id="34108" string="File format">Μορφή αρχείων</entry>
 	  <entry id="34109" string="Default"/>
@@ -1018,7 +1018,7 @@
 	<entry id="50000" string="Sample format"/>
 	<entry id="50001" string="Number format"/>
 	<entry id="50002" string="Sample resolution">Ανάλυση δείγματος</entry>
-	<entry id="50003" string="bit">Δημιουργία cue sheet</entry>
+	<entry id="50003" string="bit"/>
 	<entry id="50004" string="unsigned"/>
 	<entry id="50005" string="Integer"/>
 	<entry id="50006" string="Float"/>
@@ -1035,7 +1035,7 @@
       <section name="Resample">
 	<entry id="50200" string="Converter"/>
 	<entry id="50201" string="Sampling rate">Ρυθμός δειγματοληψίας</entry>
-	<entry id="50202" string="Output sampling rate">Συγχνότητα ανωδιαβατού φίλτρου (Hz):</entry>
+	<entry id="50202" string="Output sampling rate"/>
       </section>
 
       <section name="RubberBand">
@@ -1154,7 +1154,7 @@
 
       <section name="Nero AAC Encoder">
 	<entry id="80500" string="Encoding mode"/>
-	<entry id="80501" string="auto">Μέγιστη partition order</entry>
+	<entry id="80501" string="auto"/>
 	<entry id="80502" string="Quality">Ποιότητα</entry>
 	<entry id="80503" string="worse">χειρότερη</entry>
 	<entry id="80504" string="better">καλύτερη</entry>
@@ -1268,8 +1268,8 @@
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Βασικό</entry>
-	  <entry id="103101" string="Title information">Διάρκεια</entry>
-	  <entry id="103102" string="Disc">άγνωστο είδος</entry>
+	  <entry id="103101" string="Title information"/>
+	  <entry id="103102" string="Disc"/>
 	  <entry id="103103" string="Cover art"/>
 	  <entry id="103104" string="Covers"/>
 	  <entry id="103105" string="Type"/>
