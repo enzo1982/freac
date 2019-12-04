@@ -66,7 +66,7 @@
     <entry id="53" string="Average Bitrate">Μέσος Ρυθμός Μετάδοσης (ABR)</entry>
     <entry id="54" string="Quality">Ποιότητα</entry>
     <entry id="55" string="Encoders">Κωδικοποιητές</entry>
-    <entry id="56" string="Language">Προβολή πληροφοριών τίτλου</entry>
+    <entry id="56" string="Language"/>
     <entry id="57" string="Show title info">Προβολή πληροφοριών τίτλου</entry>
     <entry id="58" string="General settings setup">Ρύθμιση γενικών επιλογών</entry>
     <entry id="59" string="Configure encoder">Ρύθμιση κωδικοποιητή</entry>
@@ -75,8 +75,8 @@
     <entry id="62" string="Browse">Εξερεύνηση</entry>
     <entry id="63" string="Select the folder in which the encoded files will be placed:">Επιλέξτε φάκελο τοποθέτησης των κωδικοποιημένων αρχέιων: </entry>
     <entry id="64" string="Encoding">Κωδικοποίηση</entry>
-    <entry id="65" string="Author">Επιλογή γλώσσας:</entry>
-    <entry id="66" string="URL">Ενεργός οδηγός CD-ROM</entry>
+    <entry id="65" string="Author"/>
+    <entry id="66" string="URL"/>
     <entry id="67" string="Information">Πληροφορίες</entry>
     <entry id="68" string="Select language:">Επιλογή γλώσσας:</entry>
     <entry id="69" string="Active CD-ROM drive">Ενεργός οδηγός CD-ROM</entry>
@@ -92,7 +92,7 @@
     <entry id="79" string="Full cdparanoia mode">Πλήρης λειτουργία cdparanoia</entry>
     <entry id="80" string="Bitrate">Ρυθμός μετάδοσης</entry>
     <entry id="81" string="Copyright bit">Bit πνευματικών δικαιωμάτων</entry>
-    <entry id="82" string="CRC">Προσωπικό bit</entry>
+    <entry id="82" string="CRC"/>
     <entry id="83" string="Original bit">Αυθεντικό bit</entry>
     <entry id="84" string="Channels">Κανάλια</entry>
     <entry id="85" string="Private bit">Προσωπικό bit</entry>
@@ -128,7 +128,7 @@
     <entry id="115" string="better">καλύτερη</entry>
     <entry id="116" string="Auto">Αυτόματο</entry>
     <entry id="117" string="Stereo">Stereo</entry>
-    <entry id="118" string="Joint Stereo">Όχι VBR</entry>
+    <entry id="118" string="Joint Stereo"/>
     <entry id="119" string="Force Joint Stereo">Εξαναγκασμός Joint Stereo</entry>
     <entry id="120" string="VBR mode">Λειτουργία VBR</entry>
     <entry id="121" string="no VBR">Όχι VBR</entry>
@@ -169,7 +169,7 @@
     <entry id="161" string="Matches">Καταγραφές</entry>
     <entry id="162" string="Select the entry that best fits your CD:">Επιλέξτε την καταγραφή που ταιριάζει στο CD:</entry>
     <entry id="163" string="Extended CDDB settings">Εκτεταμένες επιλογές CDDB</entry>
-    <entry id="164" string="CGI scripts">Ρυθμίσεις HTTP</entry>
+    <entry id="164" string="CGI scripts"/>
     <entry id="165" string="CDDB query script:">Script για ερώτηση CDDB:</entry>
     <entry id="166" string="CDDB submit script:">Script για καταχώρηση CDDB</entry>
     <entry id="167" string="HTTP settings">Ρυθμίσεις HTTP</entry>
@@ -221,7 +221,7 @@
     <entry id="217" string="Cannot play a file while encoding!">Αδύνατη η αναπαραγωγή κατά την κωδικοποίηση!</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">Αδύνατη η κωδικοποίηση κατά την αναπαραγωγή!</entry>
     <entry id="219" string="Enable remote CDDB database">Ενεργοποίηση απομακρυσμένης βάσησ δεδομένων CDDB</entry>
-    <entry id="220" string="ATH">Ψυχοακουστικό μοντέλο</entry>
+    <entry id="220" string="ATH"/>
     <entry id="221" string="Enable ATH:">Ενεργοποίηση ΑΤΗ:</entry>
     <entry id="222" string="Use default setting">Χρήση προεπιλεγμένων ρυθμίσεων</entry>
     <entry id="223" string="Psycho acoustic model">Ψυχοακουστικό μοντέλο</entry>
@@ -269,7 +269,7 @@
     <entry id="265" string="Number of samples">Αριθμός δειγμάτων</entry>
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes"/>
-    <entry id="268" string="bit">Δημιουργία cue sheet</entry>
+    <entry id="268" string="bit"/>
     <entry id="269" string="min">λεπτά</entry>
     <entry id="270" string="Create playlist">Δημιουργία λίστας αναπαραγωγής</entry>
     <entry id="271" string="Create cue sheet">Δημιουργία cue sheet</entry>
@@ -346,7 +346,7 @@
     <entry id="342" string="Create cue sheets">Δημιουργία cue sheets</entry>
     <entry id="343" string="Use encoder output folder">Χρήση φακέλου αποθήκευσης κωδικοποιητή</entry>
     <entry id="344" string="Various artists">Διάφοροι καλλιτέχνες</entry>
-    <entry id="345" string="Data track">Κωδικοποίηση 'On-The-Fly'</entry>
+    <entry id="345" string="Data track"/>
     <entry id="346" string="Select the folder in which the playlist files will be placed:">Επιλέξτε φάκελο για αποθήκευση λιστών αναπαραγωγής:</entry>
     <entry id="347" string="Use input file folder if possible">Χρήση φακέλου εισόδου όπου είναι δυνατό</entry>
     <entry id="348" string="Encode to input file folder if possible">Κωδικοποίηση στο φάκελο εισόδου αν είναι δυνατό</entry>
