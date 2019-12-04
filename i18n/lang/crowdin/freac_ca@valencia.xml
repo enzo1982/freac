@@ -16,11 +16,11 @@
     <entry id="102" string="Close">Tancar</entry>
 
     <entry id="200" string="Error">Error</entry>
-    <entry id="201" string="Warning">Info</entry>
+    <entry id="201" string="Warning"/>
     <entry id="202" string="Info">Artista</entry>
 
-    <entry id="210" string="Do not display this warning again">Títol</entry>
-    <entry id="211" string="Do not display this note again">Àlbum</entry>
+    <entry id="210" string="Do not display this warning again"/>
+    <entry id="211" string="Do not display this note again"/>
 
     <entry id="300" string="Artist">Artista</entry>
     <entry id="301" string="Title">Títol</entry>
@@ -29,8 +29,8 @@
     <entry id="304" string="Genre">Gènere</entry>
     <entry id="305" string="Comment">Comentari</entry>
     <entry id="306" string="Year">Any</entry>
-    <entry id="307" string="Disc">Gènere desconegut</entry>
-    <entry id="308" string="Rating">Any desconegut</entry>
+    <entry id="307" string="Disc"/>
+    <entry id="308" string="Rating"/>
     <entry id="309" string="File name"/>
     <entry id="310" string="File type"/>
     <entry id="311" string="Album artist"/>
@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1 Min</entry>
       <entry id="515" string="%1 bit">%1 Bit</entry>
       <entry id="516" string="%1 bytes">%1 Bytes</entry>
-      <entry id="517" string="%1 kB">%1%</entry>
+      <entry id="517" string="%1 kB"/>
       <entry id="518" string="%1%"/>
     </section>
 
@@ -68,7 +68,7 @@
       <entry id="1000" string="File">Arxiu</entry>
       <entry id="1001" string="Options">Opcions</entry>
       <entry id="1002" string="Database">Base de dades</entry>
-      <entry id="1003" string="Processing">Comprimir</entry>
+      <entry id="1003" string="Processing"/>
       <entry id="1004" string="Encode">Comprimir</entry>
       <entry id="1005" string="Help">Ajuda</entry>
 
@@ -105,15 +105,15 @@
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing">Començar compressió</entry>
-	<entry id="1401" string="Enable processing during playback">Començar compressió</entry>
-	<entry id="1402" string="Configure signal processing">Interrompre/continuar la compressió</entry>
-	<entry id="1403" string="Selected signal processors">Parar compressió</entry>
+	<entry id="1400" string="Enable signal processing"/>
+	<entry id="1401" string="Enable processing during playback"/>
+	<entry id="1402" string="Configure signal processing"/>
+	<entry id="1403" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Començar compressió</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">Mostrar Suggeriment del Dia</entry>
+	<entry id="1501" string="Start encoding (deleting original files)"/>
 	<entry id="1502" string="Start encoding with">Començar compressió</entry>
 	<entry id="1503" string="Pause/resume encoding">Interrompre/continuar la compressió</entry>
 	<entry id="1504" string="Stop encoding">Parar compressió</entry>
@@ -147,7 +147,7 @@
       <entry id="2006" string="Configure general settings">Configuració general</entry>
       <entry id="2007" string="Configure the selected audio encoder">Configurar el compressor triat</entry>
       <entry id="2008" string="Start the encoding process">Començar el procés de compressió</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Interrompre/continuar la compressió</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)"/>
       <entry id="2010" string="Pause/resume encoding">Interrompre/continuar la compressió</entry>
       <entry id="2011" string="Stop encoding">Parar compressió</entry>
     </section>
@@ -219,7 +219,7 @@
 	<entry id="3201" string="Pattern">Patró</entry>
 	<entry id="3202" string="Start folder">Carpeta d'inici</entry>
 	<entry id="3203" string="Filename pattern">Patró de nom d'arxiu</entry>
-	<entry id="3204" string="Search subfolders">Seleccione la carpeta per a agregar a la llista de tasques</entry>
+	<entry id="3204" string="Search subfolders"/>
 	<entry id="3205" string="Select the folder to add to the joblist">Seleccione la carpeta per a agregar a la llista de tasques</entry>
       </section>
 
@@ -325,7 +325,7 @@
 	<entry id="4203" string="Query all">Consultar totes</entry>
 	<entry id="4204" string="Query string">Cadena de consulta</entry>
 	<entry id="4205" string="CDDB queries to perform">Consultes CDDB planejades</entry>
-	<entry id="4206" string="Querying CD information">Servidor CDDB</entry>
+	<entry id="4206" string="Querying CD information"/>
       </section>
 
       <section name="Manage submits">
@@ -379,7 +379,7 @@
       <entry id="5023" string="Resources"/>
       <entry id="5024" string="Verifiers"/>
       <entry id="5025" string="Taggers"/>
-      <entry id="5026" string="Processing">Comprimir</entry>
+      <entry id="5026" string="Processing"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar compressor</entry>
@@ -552,8 +552,8 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing"/>
-	<entry id="5901" string="Enable signal processing">Començar compressió</entry>
-	<entry id="5902" string="Enable processing during playback">Començar compressió</entry>
+	<entry id="5901" string="Enable signal processing"/>
+	<entry id="5902" string="Enable processing during playback"/>
 	<entry id="5903" string="Components"/>
 	<entry id="5904" string="Available"/>
 	<entry id="5905" string="Selected"/>
@@ -708,19 +708,19 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="20000" string="Decoding">Recolze este projecte</entry>
-	<entry id="20001" string="Enable 24 bit decoding">Per favor, recolze este projecte!</entry>
+	<entry id="20000" string="Decoding"/>
+	<entry id="20001" string="Enable 24 bit decoding"/>
       </section>
 
       <section name="mpg123">
-	<entry id="21000" string="Decoder">Configurar</entry>
+	<entry id="21000" string="Decoder"/>
 	<entry id="21001" string="Active decoder"/>
- 	<entry id="21002" string="auto select"/>
+	<entry id="21002" string="auto select"/>
       </section>
 
       <section name="CueSheet">
-	<entry id="22000" string="Title information">Duració</entry>
-	<entry id="22001" string="Read tags from referenced files">Grandària</entry>
+	<entry id="22000" string="Title information"/>
+	<entry id="22001" string="Read tags from referenced files"/>
 	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags"/>
 	<entry id="22003" string="Alternative files"/>
 	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
@@ -758,7 +758,7 @@
       <section name="LAME">
 	<entry id="32000" string="Basic">Bàsic</entry>
 	<entry id="32001" string="Misc">Miscel·lània</entry>
-	<entry id="32002" string="Expert">Expert</entry>
+	<entry id="32002" string="Expert"/>
 	<entry id="32003" string="Audio processing">Processament d'àudio</entry>
 
 	<section name="Basic">
@@ -857,7 +857,7 @@
       <section name="FLAC">
 	<entry id="34000" string="Basic">Bàsic</entry>
 	<entry id="34001" string="Format">Format</entry>
-	<entry id="34002" string="Expert">Expert</entry>
+	<entry id="34002" string="Expert"/>
 
 	<section name="Basic">
 	  <entry id="34100" string="Presets">Preconfiguracions</entry>
@@ -1035,7 +1035,7 @@
       <section name="Resample">
 	<entry id="50200" string="Converter"/>
 	<entry id="50201" string="Sampling rate">Taxa de mostratge</entry>
-	<entry id="50202" string="Output sampling rate">Mostratge d'eixida</entry>
+	<entry id="50202" string="Output sampling rate"/>
       </section>
 
       <section name="RubberBand">
@@ -1268,8 +1268,8 @@
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Bàsic</entry>
-	  <entry id="103101" string="Title information">Duració</entry>
-	  <entry id="103102" string="Disc">Gènere desconegut</entry>
+	  <entry id="103101" string="Title information"/>
+	  <entry id="103102" string="Disc"/>
 	  <entry id="103103" string="Cover art"/>
 	  <entry id="103104" string="Covers"/>
 	  <entry id="103105" string="Type"/>
