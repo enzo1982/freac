@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1 minuto(s)</entry>
       <entry id="515" string="%1 bit">%1 bit(s)</entry>
       <entry id="516" string="%1 bytes">%1 byte(s)</entry>
-      <entry id="517" string="%1 kB">%1%</entry>
+      <entry id="517" string="%1 kB"/>
       <entry id="518" string="%1%"/>
     </section>
 
@@ -113,7 +113,7 @@
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Iniciar a codificação</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">Iniciar a codificação com</entry>
+	<entry id="1501" string="Start encoding (deleting original files)"/>
 	<entry id="1502" string="Start encoding with">Iniciar a codificação com</entry>
 	<entry id="1503" string="Pause/resume encoding">Pausar / retomar a codificação</entry>
 	<entry id="1504" string="Stop encoding">Parar a codificação</entry>
@@ -147,7 +147,7 @@
       <entry id="2006" string="Configure general settings">Editar configurações gerais</entry>
       <entry id="2007" string="Configure the selected audio encoder">Configurar o codificador de áudio selecionado</entry>
       <entry id="2008" string="Start the encoding process">Começar o processo de codificação</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Pausar / retomar a codificação</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)"/>
       <entry id="2010" string="Pause/resume encoding">Pausar / retomar a codificação</entry>
       <entry id="2011" string="Stop encoding">Parar a codificação</entry>
     </section>
@@ -533,11 +533,11 @@
 	<entry id="5701" string="Enable parallel processing">Habilitar processamento paralelo</entry>
 	<entry id="5702" string="Enable SuperFast mode"/>
 	<entry id="5703" string="Number of conversion threads">Número de sub-tarefas de conversão</entry>
-	<entry id="5704" string="auto">Prioridade do processo</entry>
+	<entry id="5704" string="auto"/>
 	<entry id="5705" string="Process priority">Prioridade do processo</entry>
 	<entry id="5706" string="lowest">menor</entry>
 	<entry id="5707" string="lower">abaixar</entry>
-	<entry id="5708" string="normal">superior</entry>
+	<entry id="5708" string="normal"/>
 	<entry id="5709" string="higher">superior</entry>
 	<entry id="5710" string="highest">maior</entry>
       </section>
@@ -617,8 +617,8 @@
       <entry id="7114" string="Unknown error">Erro desconhecido</entry>
       <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Drivers ASPI não puderam ser carregados! A extração de áudio do CD está desabilitada!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Não foi possível abrir o arquivo: %1&#10;&#10;Erro: %2</entry>
-      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Excluir os arquivos originais após a codificação</entry>
-      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Esta opção causará a eliminação dos arquivos originais no seu computador&#10;depois do processo de codificação!&#10;Tem certeza que deseja ativar esta função?</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!"/>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!"/>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Suporte ao CDDB está desabilitado! Habilite o suporte local&#10;ou CDDB remoto na caixa de diálogo de configuração.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Suporte ao CDDB remoto está desabilitado! Ative o&#10;suporte ao CDDB remoto na caixa de diálogo de configuração.</entry>
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">O acesso ao drive de CD foi bloqueado pelo Windows.&#10;&#10;Contate o administrador do sistema para providenciar a&#10;liberação de acesso ao drive de CD-ROM.</entry>
@@ -639,8 +639,8 @@
       </section>
 
       <section name="Format">
-	<entry id="8100" string="Select sample format">Erros</entry>
-	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">%1 erros durante o processamento das tarefas</entry>
+	<entry id="8100" string="Select sample format"/>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:"/>
 	<entry id="8102" string="Select">Navegar</entry>
       </section>
 
@@ -715,7 +715,7 @@
       <section name="mpg123">
 	<entry id="21000" string="Decoder">Decodificador</entry>
 	<entry id="21001" string="Active decoder">Decodificador ativo</entry>
- 	<entry id="21002" string="auto select">autosseleção</entry>
+	<entry id="21002" string="auto select">autosseleção</entry>
       </section>
 
       <section name="CueSheet">
@@ -789,7 +789,7 @@
 	  <entry id="32204" string="CRC">CRC</entry>
 	  <entry id="32205" string="Enable CRC">Habilitar CRC</entry>
 	  <entry id="32206" string="Stereo mode">Modo estéreo</entry>
-	  <entry id="32207" string="auto">Prioridade do processo</entry>
+	  <entry id="32207" string="auto"/>
 	  <entry id="32208" string="Stereo">Estéreo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint-estéreo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forçar joint-estéreo</entry>
@@ -887,7 +887,7 @@
 	  <entry id="34306" string="disabled">desabilitado</entry>
 	  <entry id="34307" string="Exhaustive model search">Otimização do grau de LPC</entry>
 	  <entry id="34308" string="Quantized LPC precision">Quantização da precisão do LPC</entry>
-	  <entry id="34309" string="auto">Prioridade do processo</entry>
+	  <entry id="34309" string="auto"/>
 	  <entry id="34310" string="Optimize LPC quantization">Otimização da quantização do LPC</entry>
 	  <entry id="34311" string="Residual coding">Codificação dos resíduos</entry>
 	  <entry id="34312" string="Minimum partition order">Grau de particionamento mínimo</entry>
@@ -941,7 +941,7 @@
       <section name="Speex">
 	<entry id="39000" string="Profile">Perfil</entry>
 	<entry id="39001" string="Select encoding profile">Selecionar o perfil de codificação</entry>
-	<entry id="39002" string="auto">Prioridade do processo</entry>
+	<entry id="39002" string="auto"/>
 	<entry id="39003" string="Narrowband (8 kHz)">Banda estreita (8 kHz)</entry>
 	<entry id="39004" string="Wideband (16 kHz)">Banda larga (16 kHz)</entry>
 	<entry id="39005" string="Ultra-Wideband (32 kHz)">Ultra banda larga (32 kHz)</entry>
@@ -965,7 +965,7 @@
       <section name="Opus">
 	<entry id="40000" string="Basic settings">Configurações básicas</entry>
 	<entry id="40001" string="Encoding mode">Modo de codificação</entry>
-	<entry id="40002" string="auto">Prioridade do processo</entry>
+	<entry id="40002" string="auto"/>
 	<entry id="40003" string="Voice">Voz</entry>
 	<entry id="40004" string="Music">Música</entry>
 	<entry id="40005" string="Bandwidth">Largura de banda</entry>
@@ -1117,7 +1117,7 @@
       <section name="OptimFROG Lossless Encoder">
 	<entry id="80200" string="Encoding mode">Modo de codificação</entry>
 	<entry id="80201" string="fast"/>
-	<entry id="80202" string="normal">superior</entry>
+	<entry id="80202" string="normal"/>
 	<entry id="80203" string="high"/>
 	<entry id="80204" string="extra"/>
 	<entry id="80205" string="best"/>
@@ -1154,7 +1154,7 @@
 
       <section name="Nero AAC Encoder">
 	<entry id="80500" string="Encoding mode">Modo de codificação</entry>
-	<entry id="80501" string="auto">Prioridade do processo</entry>
+	<entry id="80501" string="auto"/>
 	<entry id="80502" string="Quality">Qualidade</entry>
 	<entry id="80503" string="worse">pior</entry>
 	<entry id="80504" string="better">melhor</entry>
@@ -1188,7 +1188,7 @@
 	<section name="Donorbox">
 	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:"/>
 	  <entry id="100201" string="Donate"/>
-	  <entry id="100202" string="usd">brl</entry>
+	  <entry id="100202" string="usd">usd</entry>
 	</section>
 
 	<section name="Bitcoin">
