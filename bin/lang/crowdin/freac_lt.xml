@@ -129,7 +129,7 @@
     <entry id="116" string="Auto"/>
     <entry id="117" string="Stereo">Stereo</entry>
     <entry id="118" string="Joint Stereo">Joint Stereo</entry>
-    <entry id="119" string="Force Joint Stereo">Force Joint Stereo</entry>
+    <entry id="119" string="Force Joint Stereo">Priverstinis „Joint Stereo“</entry>
     <entry id="120" string="VBR mode">VBR režimas</entry>
     <entry id="121" string="no VBR">jokio VBR</entry>
     <entry id="122" string="VBR quality">VBR kokybė</entry>
@@ -269,7 +269,7 @@
     <entry id="265" string="Number of samples">Rinkinių kiekis</entry>
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">baitai</entry>
-    <entry id="268" string="bit">bit</entry>
+    <entry id="268" string="bit">bitas</entry>
     <entry id="269" string="min"/>
     <entry id="270" string="Create playlist">Kurti grojaraštį</entry>
     <entry id="271" string="Create cue sheet">Kurti cue lentelę</entry>
@@ -412,11 +412,11 @@
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Prašome padėti išlaikyti šią programinę įrangą nemokama paremdami %1 projektą.&#10;&#10;Spustelėkite vieną iš žemiau esančių mygtukų, kad atlikti PayPal pervedimą:</entry>
     <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Naudodamiesi PayPal taip pat galite nusiųsti pinigų tiesiai %1.&#10;&#10;Prašome susisiekti %1 jei norite paaukoti&#10;elektroniniu pavedimu, atsiųsti čekį ar pinigų paštu.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en"/>
+    <entry id="411" string="en">en</entry>
     <entry id="412" string="Thank you very much!">Labai ačiū!</entry>
     <entry id="413" string="Remind me later">Priminti vėliau</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">CDRip</entry>
-    <entry id="416" string="Default"/>
+    <entry id="416" string="Default">Numatytasis</entry>
   </data>
 </LangFile>
