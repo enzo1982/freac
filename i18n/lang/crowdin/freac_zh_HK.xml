@@ -33,7 +33,7 @@
     <entry id="308" string="Rating">評分</entry>
     <entry id="309" string="File name">檔名</entry>
     <entry id="310" string="File type">檔案類型</entry>
-    <entry id="311" string="Album artist">未知演出者</entry>
+    <entry id="311" string="Album artist"/>
 
     <entry id="350" string="unknown artist">未知演出者</entry>
     <entry id="351" string="unknown title">未知標題</entry>
@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1分鐘</entry>
       <entry id="515" string="%1 bit">%1位元</entry>
       <entry id="516" string="%1 bytes">%1位元組</entry>
-      <entry id="517" string="%1 kB">%1%</entry>
+      <entry id="517" string="%1 kB"/>
       <entry id="518" string="%1%"/>
     </section>
 
@@ -68,7 +68,7 @@
       <entry id="1000" string="File">檔案</entry>
       <entry id="1001" string="Options">設定</entry>
       <entry id="1002" string="Database">資料庫</entry>
-      <entry id="1003" string="Processing">編碼</entry>
+      <entry id="1003" string="Processing"/>
       <entry id="1004" string="Encode">編碼</entry>
       <entry id="1005" string="Help">程式</entry>
 
@@ -105,15 +105,15 @@
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing">開始編碼</entry>
-	<entry id="1401" string="Enable processing during playback">開始編碼（選取編碼器）</entry>
-	<entry id="1402" string="Configure signal processing">暫停╱繼續編碼</entry>
-	<entry id="1403" string="Selected signal processors">停止編碼</entry>
+	<entry id="1400" string="Enable signal processing"/>
+	<entry id="1401" string="Enable processing during playback"/>
+	<entry id="1402" string="Configure signal processing"/>
+	<entry id="1403" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">開始編碼</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">每日提示</entry>
+	<entry id="1501" string="Start encoding (deleting original files)"/>
 	<entry id="1502" string="Start encoding with">開始編碼（選取編碼器）</entry>
 	<entry id="1503" string="Pause/resume encoding">暫停╱繼續編碼</entry>
 	<entry id="1504" string="Stop encoding">停止編碼</entry>
@@ -147,7 +147,7 @@
       <entry id="2006" string="Configure general settings">喜好設定</entry>
       <entry id="2007" string="Configure the selected audio encoder">設定所選聲音編碼</entry>
       <entry id="2008" string="Start the encoding process">開始編碼（可選取編碼器）</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">暫停╱繼續編碼</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)"/>
       <entry id="2010" string="Pause/resume encoding">暫停╱繼續編碼</entry>
       <entry id="2011" string="Stop encoding">停止編碼</entry>
     </section>
@@ -379,7 +379,7 @@
       <entry id="5023" string="Resources">系統資源</entry>
       <entry id="5024" string="Verifiers">驗證器</entry>
       <entry id="5025" string="Taggers">標籤器</entry>
-      <entry id="5026" string="Processing">編碼</entry>
+      <entry id="5026" string="Processing"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">設定編碼器</entry>
@@ -552,8 +552,8 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing"/>
-	<entry id="5901" string="Enable signal processing">開始編碼</entry>
-	<entry id="5902" string="Enable processing during playback">開始編碼（選取編碼器）</entry>
+	<entry id="5901" string="Enable signal processing"/>
+	<entry id="5902" string="Enable processing during playback"/>
 	<entry id="5903" string="Components">元件</entry>
 	<entry id="5904" string="Available"/>
 	<entry id="5905" string="Selected"/>
@@ -617,8 +617,8 @@
       <entry id="7114" string="Unknown error">未知錯誤</entry>
       <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">無法載入ASPI驅動程式，翻錄鐳射唱片功能被停用。</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案：%1&#10;&#10;錯誤：%2</entry>
-      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">完成編碼後刪除原始檔案</entry>
-      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">啟用此項會於每次完成編碼後刪除電腦內的原始檔案。&#10;&#10;確定啟用嗎？</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!"/>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!"/>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB支援停用中。請於喜好設定啟用本地或&#10;遙距CDDB支援。</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">遙距CDDB支援停用中。請於喜好設定啟用&#10;遙距CDDB支援。</entry>
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">存取CD-ROM機被Windows拒絕。&#10;&#10;請聯絡系統管理員以取得存取CD-ROM機的&#10;權限。</entry>
@@ -639,8 +639,8 @@
       </section>
 
       <section name="Format">
-	<entry id="8100" string="Select sample format">錯誤</entry>
-	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">處理期間發生%1個錯誤</entry>
+	<entry id="8100" string="Select sample format"/>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:"/>
 	<entry id="8102" string="Select">瀏覽</entry>
       </section>
 
@@ -715,7 +715,7 @@
       <section name="mpg123">
 	<entry id="21000" string="Decoder">解碼器</entry>
 	<entry id="21001" string="Active decoder">使用的解碼器</entry>
- 	<entry id="21002" string="auto select">自動選取</entry>
+	<entry id="21002" string="auto select">自動選取</entry>
       </section>
 
       <section name="CueSheet">
@@ -1015,8 +1015,8 @@
     <section name="DSP">
 
       <section name="Format">
-	<entry id="50000" string="Sample format">轉換器</entry>
-	<entry id="50001" string="Number format">取樣率</entry>
+	<entry id="50000" string="Sample format"/>
+	<entry id="50001" string="Number format"/>
 	<entry id="50002" string="Sample resolution">取樣解析度</entry>
 	<entry id="50003" string="bit">位元</entry>
 	<entry id="50004" string="unsigned"/>
@@ -1188,7 +1188,7 @@
 	<section name="Donorbox">
 	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:"/>
 	  <entry id="100201" string="Donate"/>
-	  <entry id="100202" string="usd">hkd</entry>
+	  <entry id="100202" string="usd">usd</entry>
 	</section>
 
 	<section name="Bitcoin">
