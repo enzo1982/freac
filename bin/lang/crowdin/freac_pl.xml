@@ -190,7 +190,7 @@
     <entry id="186" string="Artist">Artysta</entry>
     <entry id="187" string="Year">Rok</entry>
     <entry id="188" string="Genre">Rodzaj</entry>
-    <entry id="189" string="Album">Komentarz</entry>
+    <entry id="189" string="Album"/>
     <entry id="190" string="Info tags">Identyfikatory</entry>
     <entry id="191" string="Default information">Domyślne informacje</entry>
     <entry id="192" string="Default comment string:">Domyślny opis:</entry>
@@ -258,7 +258,7 @@
     <entry id="254" string="Use Unicode filenames">Wykorzystaj w nazwach plików</entry>
     <entry id="255" string="AAC Files">Pliki AAC</entry>
     <entry id="256" string="MP4 Files">Pliki MP4</entry>
-    <entry id="257" string="Format">Format</entry>
+    <entry id="257" string="Format"/>
     <entry id="258" string="File format">Format pliku</entry>
     <entry id="259" string="Allow ID3v2 tags in AAC files">Wykorzystaj identyfikatory ID3v2 w plikach AAC</entry>
     <entry id="260" string="Note:">Uwaga:</entry>
