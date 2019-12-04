@@ -2,13 +2,13 @@
 <LangFile>
   <info>
     <property name="program">freac</property>
-    <property name="version"/>
+    <property name="version">1.0</property>
     <property name="language">German / Deutsch</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Robert Kausch &lt;robert.kausch@freac.org&gt;</property>
-    <property name="url"/>
+    <property name="url">http://www.freac.org/</property>
   </info>
   <data>
     <entry id="1" string="File">Datei</entry>
@@ -156,7 +156,7 @@
     <entry id="148" string="Automatic CDDB queries">Automatische CDDB-Abfrage</entry>
     <entry id="149" string="CDDB access mode:">CDDB-Zugriffsmodus:</entry>
     <entry id="150" string="CDDB server:">CDDB-Server:</entry>
-    <entry id="151" string="Port:"/>
+    <entry id="151" string="Port:">Port:</entry>
     <entry id="152" string="Info">Info</entry>
     <entry id="153" string="No freedb entry for this disk.">Kein freedb-Eintrag für diese CD.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Fehler beim Verbinden mit dem freedb-Server.</entry>
@@ -254,7 +254,7 @@
     <entry id="250" string="Keep ripped Wave files">Wave-Dateien behalten</entry>
     <entry id="251" string="ripping/decoding">Rippen/Dekodieren</entry>
     <entry id="252" string="encoding">Kodieren</entry>
-    <entry id="253" string="Unicode"/>
+    <entry id="253" string="Unicode">Unicode</entry>
     <entry id="254" string="Use Unicode filenames">Dateinamen mit Unicode</entry>
     <entry id="255" string="AAC Files">AAC-Dateien</entry>
     <entry id="256" string="MP4 Files">MP4-Dateien</entry>
@@ -270,7 +270,7 @@
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">Bytes</entry>
     <entry id="268" string="bit">Bit</entry>
-    <entry id="269" string="min"/>
+    <entry id="269" string="min">min</entry>
     <entry id="270" string="Create playlist">Playliste erzeugen</entry>
     <entry id="271" string="Create cue sheet">Cuesheet erzeugen</entry>
     <entry id="272" string="Write ID3v1 tags">ID3v1-Tags schreiben</entry>
