@@ -16,21 +16,21 @@
     <entry id="102" string="Close">Zavrieť</entry>
 
     <entry id="200" string="Error">Chyba</entry>
-    <entry id="201" string="Warning">Info</entry>
-    <entry id="202" string="Info">Umelec</entry>
+    <entry id="201" string="Warning"/>
+    <entry id="202" string="Info"/>
 
-    <entry id="210" string="Do not display this warning again">Názov</entry>
-    <entry id="211" string="Do not display this note again">Album</entry>
+    <entry id="210" string="Do not display this warning again"/>
+    <entry id="211" string="Do not display this note again"/>
 
     <entry id="300" string="Artist">Umelec</entry>
     <entry id="301" string="Title">Názov</entry>
-    <entry id="302" string="Album">Komentár</entry>
+    <entry id="302" string="Album"/>
     <entry id="303" string="Track">Skladba</entry>
     <entry id="304" string="Genre">Žáner</entry>
     <entry id="305" string="Comment">Komentár</entry>
     <entry id="306" string="Year">Rok</entry>
-    <entry id="307" string="Disc">neznámy žáner</entry>
-    <entry id="308" string="Rating">neznámy rok</entry>
+    <entry id="307" string="Disc"/>
+    <entry id="308" string="Rating"/>
     <entry id="309" string="File name"/>
     <entry id="310" string="File type"/>
     <entry id="311" string="Album artist"/>
@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 bytov</entry>
-      <entry id="517" string="%1 kB">%1%</entry>
+      <entry id="517" string="%1 kB"/>
       <entry id="518" string="%1%"/>
     </section>
 
@@ -68,7 +68,7 @@
       <entry id="1000" string="File">Súbor</entry>
       <entry id="1001" string="Options">Možnosti</entry>
       <entry id="1002" string="Database">Databáza</entry>
-      <entry id="1003" string="Processing">Zakódovať</entry>
+      <entry id="1003" string="Processing"/>
       <entry id="1004" string="Encode">Zakódovať</entry>
       <entry id="1005" string="Help">Pomoc</entry>
 
@@ -105,15 +105,15 @@
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing">Začať kódovať</entry>
-	<entry id="1401" string="Enable processing during playback">Začať kódovať s</entry>
-	<entry id="1402" string="Configure signal processing">Puaza/Pokračovať kódovanie</entry>
-	<entry id="1403" string="Selected signal processors">Zastaviť kódovanie</entry>
+	<entry id="1400" string="Enable signal processing"/>
+	<entry id="1401" string="Enable processing during playback"/>
+	<entry id="1402" string="Configure signal processing"/>
+	<entry id="1403" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Začať kódovať</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">Ukázať Tip Dňa</entry>
+	<entry id="1501" string="Start encoding (deleting original files)"/>
 	<entry id="1502" string="Start encoding with">Začať kódovať s</entry>
 	<entry id="1503" string="Pause/resume encoding">Puaza/Pokračovať kódovanie</entry>
 	<entry id="1504" string="Stop encoding">Zastaviť kódovanie</entry>
@@ -147,7 +147,7 @@
       <entry id="2006" string="Configure general settings">Prispôsobiť hlavné nastavenia</entry>
       <entry id="2007" string="Configure the selected audio encoder">Nastaviť vybraný kodek</entry>
       <entry id="2008" string="Start the encoding process">Začať kódovanie</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Puaza/Pokračovať kódovanie</entry>
+      <entry id="2009" string="Start the encoding process (deleting original files)"/>
       <entry id="2010" string="Pause/resume encoding">Puaza/Pokračovať kódovanie</entry>
       <entry id="2011" string="Stop encoding">Zastaviť kódovanie</entry>
     </section>
@@ -219,7 +219,7 @@
 	<entry id="3201" string="Pattern">Vzor</entry>
 	<entry id="3202" string="Start folder">Počiatočný adresár</entry>
 	<entry id="3203" string="Filename pattern">Vzor súborovej cesty</entry>
-	<entry id="3204" string="Search subfolders">Zvoľte zložku na pridanie do zoznamu</entry>
+	<entry id="3204" string="Search subfolders"/>
 	<entry id="3205" string="Select the folder to add to the joblist">Zvoľte zložku na pridanie do zoznamu</entry>
       </section>
 
@@ -284,7 +284,7 @@
 	<entry id="4002" string="No audio CD in drive!">V mechanike nie je CD!</entry>
 	<entry id="4003" string="Submitting CD information">Poslať informácie o CD</entry>
 	<entry id="4004" string="Update joblist with this information">Updatovať zoznam touto info</entry>
-	<entry id="4005" string="Status">Použiť vstupný adresár ak je to možné</entry>
+	<entry id="4005" string="Status"/>
 	<entry id="4006" string="Successfully read CD!">CD úspešne prečítané!</entry>
 	<entry id="4007" string="Save entry">Uložiť položku</entry>
 	<entry id="4008" string="Various artists">Rôzni umelci</entry>
@@ -325,7 +325,7 @@
 	<entry id="4203" string="Query all">Požiadať všetko</entry>
 	<entry id="4204" string="Query string">Požadovací reťazec</entry>
 	<entry id="4205" string="CDDB queries to perform">CDDB požiadavky</entry>
-	<entry id="4206" string="Querying CD information">CDDB server</entry>
+	<entry id="4206" string="Querying CD information"/>
       </section>
 
       <section name="Manage submits">
@@ -379,7 +379,7 @@
       <entry id="5023" string="Resources"/>
       <entry id="5024" string="Verifiers"/>
       <entry id="5025" string="Taggers"/>
-      <entry id="5026" string="Processing">Zakódovať</entry>
+      <entry id="5026" string="Processing"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Nastaviť kodek</entry>
@@ -552,8 +552,8 @@
 
       <section name="Processing">
 	<entry id="5900" string="Signal processing"/>
-	<entry id="5901" string="Enable signal processing">Začať kódovať</entry>
-	<entry id="5902" string="Enable processing during playback">Začať kódovať s</entry>
+	<entry id="5901" string="Enable signal processing"/>
+	<entry id="5902" string="Enable processing during playback"/>
 	<entry id="5903" string="Components"/>
 	<entry id="5904" string="Available"/>
 	<entry id="5905" string="Selected"/>
@@ -708,19 +708,19 @@
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="20000" string="Decoding">Podporte tento projekt</entry>
-	<entry id="20001" string="Enable 24 bit decoding">Prosím podporte tento projekt!</entry>
+	<entry id="20000" string="Decoding"/>
+	<entry id="20001" string="Enable 24 bit decoding"/>
       </section>
 
       <section name="mpg123">
-	<entry id="21000" string="Decoder">Konfigurovať</entry>
+	<entry id="21000" string="Decoder"/>
 	<entry id="21001" string="Active decoder"/>
- 	<entry id="21002" string="auto select"/>
+	<entry id="21002" string="auto select"/>
       </section>
 
       <section name="CueSheet">
-	<entry id="22000" string="Title information">Dĺžka</entry>
-	<entry id="22001" string="Read tags from referenced files">Veľkosť</entry>
+	<entry id="22000" string="Title information"/>
+	<entry id="22001" string="Read tags from referenced files"/>
 	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags"/>
 	<entry id="22003" string="Alternative files"/>
 	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
@@ -873,7 +873,7 @@
 	</section>
 
 	<section name="Format">
-	  <entry id="34200" string="Use streamable subset">Use streamable subset</entry>
+	  <entry id="34200" string="Use streamable subset"/>
 	  <entry id="34201" string="Blocksize">Veľkosť bloku</entry>
 	</section>
 
@@ -882,13 +882,13 @@
 	  <entry id="34301" string="Window function(s)">Apodizačná funkcia</entry>
 	  <entry id="34302" string="Note">Poznámky</entry>
 	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Môžete špecifikovať viacero funkcií oddelených bodkočiarkou.</entry>
-	  <entry id="34304" string="Linear predictor">Linear predictor</entry>
+	  <entry id="34304" string="Linear predictor"/>
 	  <entry id="34305" string="Maximum LPC order">Max. LPC poradie</entry>
 	  <entry id="34306" string="disabled">zakázaný</entry>
-	  <entry id="34307" string="Exhaustive model search">Exhaustive model search</entry>
-	  <entry id="34308" string="Quantized LPC precision">Quantized LPC precision</entry>
+	  <entry id="34307" string="Exhaustive model search"/>
+	  <entry id="34308" string="Quantized LPC precision"/>
 	  <entry id="34309" string="auto">auto</entry>
-	  <entry id="34310" string="Optimize LPC quantization">Optimize LPC quantization</entry>
+	  <entry id="34310" string="Optimize LPC quantization"/>
 	  <entry id="34311" string="Residual coding">Residuálne kódovanie</entry>
 	  <entry id="34312" string="Minimum partition order">Min. partition order</entry>
 	  <entry id="34313" string="Maximum partition order">Max.partition order</entry>
@@ -1268,8 +1268,8 @@
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Základné</entry>
-	  <entry id="103101" string="Title information">Dĺžka</entry>
-	  <entry id="103102" string="Disc">neznámy žáner</entry>
+	  <entry id="103101" string="Title information"/>
+	  <entry id="103102" string="Disc"/>
 	  <entry id="103103" string="Cover art"/>
 	  <entry id="103104" string="Covers"/>
 	  <entry id="103105" string="Type"/>
