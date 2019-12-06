@@ -137,6 +137,7 @@ resources: folders
 ifeq ($(BUILD_WIN32),True)
 	mkdir -p $(BIN)/icons
 	mkdir -p $(BIN)/lang
+	mkdir -p packaging/windows/lang
 
 	cp $(SRCDIR)/icons/freac.png $(BIN)/icons
 
@@ -154,6 +155,9 @@ ifeq ($(BUILD_WIN32),True)
 	cp $(SRCDIR)/i18n/lang/template.xml $(BIN)/lang
 
 	cp $(SRCDIR)/i18n/updater/eupdate_*.xml $(BIN)/lang
+
+	cp $(SRCDIR)/i18n/setup/setup_*.xml packaging/windows/lang
+	cp $(SRCDIR)/i18n/setup/template.xml packaging/windows/lang
 
 	cp -r $(SRCDIR)/i18n/manual $(BIN)
 endif
