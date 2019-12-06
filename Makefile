@@ -150,9 +150,11 @@ ifeq ($(BUILD_WIN32),True)
 
 	cp $(SRCDIR)/i18n/lang/Changes $(BIN)/lang
 	cp $(SRCDIR)/i18n/lang/Readme.lang $(BIN)/lang
-	cp $(SRCDIR)/i18n/lang/eupdate_*.xml $(BIN)/lang
 	cp $(SRCDIR)/i18n/lang/freac_*.xml $(BIN)/lang
 	cp $(SRCDIR)/i18n/lang/template.xml $(BIN)/lang
+
+	cp $(SRCDIR)/i18n/updater/eupdate_*.xml $(BIN)/lang
+
 	cp -r $(SRCDIR)/i18n/manual $(BIN)
 endif
 

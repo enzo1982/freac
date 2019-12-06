@@ -6,6 +6,7 @@
     <property name="language">Cantonese (Hong Kong) / 香港正體字</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
     <property name="author">Kin Kwok</property>
     <property name="url">http://www.chapter0.net/easyUpdate/</property>
   </info>

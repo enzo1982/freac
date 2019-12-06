@@ -6,6 +6,7 @@
     <property name="language">Chinese (traditional) / 正體中文</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
     <property name="author">Meng Pang Wang (王孟邦) &lt;mengpangwang@gmail.com&gt;</property>
     <property name="url">http://www.chapter0.net/easyUpdate/</property>
   </info>
