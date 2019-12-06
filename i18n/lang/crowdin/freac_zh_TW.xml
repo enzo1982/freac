@@ -615,7 +615,7 @@
       <entry id="7112" string="Invalid file format">無效的檔案格式</entry>
       <entry id="7113" string="Unsupported audio format">不支援的音訊格式</entry>
       <entry id="7114" string="Unknown error">未知的錯誤</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">無法載入 ASPI 驅動程式！已停用 CD 轉檔功能！</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">無法載入 NT SCSI 驅動程式！已停用 CD 轉檔功能！</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案: %1&#10;&#10;錯誤: %2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">正在轉檔，無法播放相同光碟機中的 CD 音軌！</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">正在播放相同光碟機中的 CD 音軌，無法開始轉檔！</entry>
@@ -671,12 +671,11 @@
       <entry id="9016" string="Eject disk after ripping">轉檔完成後退出光碟</entry>
       <entry id="9017" string="CD options">CD 選項</entry>
       <entry id="9018" string="Lock CD tray while ripping">轉檔時鎖定光碟機托盤</entry>
-      <entry id="9019" string="Use native NT SCSI library">使用原生 NT SCSI 函式庫</entry>
-      <entry id="9020" string="Use read offset">使用讀取偏移</entry>
-      <entry id="9021" string="samples">個取樣數</entry>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist">新增音軌到工作清單時讀取 ISRC</entry>
-      <entry id="9023" string="Spin up before ripping">轉檔前讓光碟機預轉</entry>
-      <entry id="9024" string="%1 seconds">%1 秒</entry>
+      <entry id="9019" string="Use read offset">使用讀取偏移</entry>
+      <entry id="9020" string="samples">個取樣數</entry>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist">新增音軌到工作清單時讀取 ISRC</entry>
+      <entry id="9022" string="Spin up before ripping">轉檔前讓光碟機預轉</entry>
+      <entry id="9023" string="%1 seconds">%1 秒</entry>
     </section>
 
     <section name="Components">
@@ -875,6 +874,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">使用可串流子集</entry>
 	  <entry id="34201" string="Blocksize">區塊大小</entry>
+	  <entry id="34202" string="%1 samples">%1 個取樣數</entry>
 	</section>
 
 	<section name="Expert">

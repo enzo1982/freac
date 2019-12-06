@@ -398,7 +398,7 @@
       <entry id="7111" string="Unknown file type">Tundmatu faili tüüp</entry>
       <entry id="7113" string="Unsupported audio format">Mittetoetatav audio formaat</entry>
       <entry id="7114" string="Unknown error">Tundmatu viga</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Ei saa laadida ASPI draivereid! CD ripping ei tööta!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Ei saa laadida NT SCSI draivereid! CD ripping ei tööta!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Ei saa faili avada: %1&#10;&#10;Viga: %2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB tugi välja lülitatud! Palun lülitage sisse lokaalse või kauge CDDB tugi dialoogaknas.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Kauge CDDB tugi on välja lülitatud! Palun lülitage kauge CDDB tugi sisse dialoog aknas.</entry>
@@ -433,7 +433,6 @@
       <entry id="9016" string="Eject disk after ripping">Väljastada plaat peale rippimist</entry>
       <entry id="9017" string="CD options">CD sätted</entry>
       <entry id="9018" string="Lock CD tray while ripping">Blokeerida CD rippimise ajal</entry>
-      <entry id="9019" string="Use native NT SCSI library">Kasuta teeki native NT SCSI library</entry>
     </section>
 
     <section name="Encoders">

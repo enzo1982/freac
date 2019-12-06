@@ -400,7 +400,7 @@
       <entry id="7111" string="Unknown file type">Невідомий тип файлу</entry>
       <entry id="7113" string="Unsupported audio format">Даний аудіо-формат не підтримується</entry>
       <entry id="7114" string="Unknown error">Невідома помилка</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Не можу завантажити ASPI драйвери! CD захоплення відмінено!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Не можу завантажити NT SCSI драйвери! CD захоплення відмінено!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Не можу відкрити файл %1&#10;&#10;%2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB підтримка відключена! Будь-ласка ввімкніть локальну&#10;або віддалену підтримку CDDB у налаштуваннях</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Віддалена підтримка CDDB відключена! Будь-ласка ввімкніть&#10;віддалену підтримку CDDB у налаштуваннях</entry>
@@ -436,7 +436,6 @@
       <entry id="9016" string="Eject disk after ripping">Витягнути диск після роботи</entry>
       <entry id="9017" string="CD options">CD опції</entry>
       <entry id="9018" string="Lock CD tray while ripping">Блокувати CD під час роботи</entry>
-      <entry id="9019" string="Use native NT SCSI library">Викор. NT SCSI бібліотеки</entry>
     </section>
 
     <section name="Encoders">

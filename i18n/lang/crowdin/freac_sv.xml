@@ -615,7 +615,7 @@
       <entry id="7112" string="Invalid file format">Ogiltigt filformat</entry>
       <entry id="7113" string="Unsupported audio format">Ljudformatet stöds inte</entry>
       <entry id="7114" string="Unknown error">Okänt fel</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Det gick inte att läsa in ASPI-drivrutinerna! Cd-rippning har inaktiverats!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Det gick inte att läsa in NT SCSI-drivrutinerna! Cd-rippning har inaktiverats!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Det gick inte att öppna fil: %1&#10;&#10;Fel: %2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Det går inte att spela ett cd-spår under rippning från samma enhet!</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Det går inte att påbörja rippning under uppspelning av spår på samma enhet!</entry>
@@ -671,12 +671,11 @@
       <entry id="9016" string="Eject disk after ripping">Mata ut cd-skiva efter rippning</entry>
       <entry id="9017" string="CD options">Cd-inställningar</entry>
       <entry id="9018" string="Lock CD tray while ripping">Lås cd-luckan under rippning</entry>
-      <entry id="9019" string="Use native NT SCSI library">Anv. internt NT SCSI-bibliotek</entry>
-      <entry id="9020" string="Use read offset">Använd läsförskjutning</entry>
-      <entry id="9021" string="samples">sampel</entry>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist">Läs ISRC när spår läggs till i jobblistan</entry>
-      <entry id="9023" string="Spin up before ripping">Starta diskrotation innan rippning påbörjas</entry>
-      <entry id="9024" string="%1 seconds">%1 s</entry>
+      <entry id="9019" string="Use read offset">Använd läsförskjutning</entry>
+      <entry id="9020" string="samples">sampel</entry>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist">Läs ISRC när spår läggs till i jobblistan</entry>
+      <entry id="9022" string="Spin up before ripping">Starta diskrotation innan rippning påbörjas</entry>
+      <entry id="9023" string="%1 seconds">%1 s</entry>
     </section>
 
     <section name="Components">
@@ -875,6 +874,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Använd strömningsbar delmängd</entry>
 	  <entry id="34201" string="Blocksize">Blockstorlek</entry>
+	  <entry id="34202" string="%1 samples">%1 sampel</entry>
 	</section>
 
 	<section name="Expert">

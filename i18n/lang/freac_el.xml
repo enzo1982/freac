@@ -392,7 +392,7 @@
     <section name="Errors">
       <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Αδύνατη πρόσβαση στο αρχείο εισόδου: %1&#10;&#10;Αρχείο: %1&#10;Φάκελος: %2</entry>
       <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Αδύνατη η δημιουργία του αρχέιου εξόδου: %1&#10;&#10;Αρχείο: %1&#10;Φάκελος: %2</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Αδύνατο να φορτωθούν οι οδηγοί ASPI! Το CD ripping απενεργοποιήθηκε!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Αδύνατο να φορτωθούν οι οδηγοί NT SCSI! Το CD ripping απενεργοποιήθηκε!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Αδύνατο το άνοιγμα του αρχείου: %1&#10;&#10;%2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Υποστήριξη CDDB απενεργοποιημένη! Παρακαλώ&#10;ενεργοποιήστε τοπική ή απομακρυσμένη βάση δεδομένων&#10;CDDB στις ρυθμίσεις.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Απομακρυσμένη CDDB απενεργοποιημένη! Παρακαλώ ενεργοποιήστε&#10;την απομακρυσμένη CDDB στις ρυθμίσεις.</entry>
@@ -427,7 +427,6 @@
       <entry id="9016" string="Eject disk after ripping">Εξαγωγή μετά το rip</entry>
       <entry id="9017" string="CD options">Επιλογές CD</entry>
       <entry id="9018" string="Lock CD tray while ripping">Κλείδωμα οδηγού κατά το rip</entry>
-      <entry id="9019" string="Use native NT SCSI library">Χρήση NT SCSI βιβλιοθήκης</entry>
     </section>
 
     <section name="Encoders">

@@ -399,7 +399,7 @@
       <entry id="7111" string="Unknown file type">Tip fişier necunoscut</entry>
       <entry id="7113" string="Unsupported audio format">Format audio nesuportat</entry>
       <entry id="7114" string="Unknown error">Eroare necunoscută</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Eroare la încărcarea driver-elor ASPI! Extragerea nu poate fi efectuată!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Eroare la încărcarea driver-elor NT SCSI! Extragerea nu poate fi efectuată!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Nu pot deschide fişierul: %1&#10;&#10;%2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Suportul pentru CDDB este dezactivat! Activaţi baza&#10;locală sau cea online în dialogul de configurare!</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Suportul pentru baza CDDB online este dezactivat!&#10;Activaţi suportul din dialogul de configurare!</entry>
@@ -435,7 +435,6 @@
       <entry id="9016" string="Eject disk after ripping">Scoate disc-ul după copiere</entry>
       <entry id="9017" string="CD options">Opţiuni CD</entry>
       <entry id="9018" string="Lock CD tray while ripping">Blocare sertar CD</entry>
-      <entry id="9019" string="Use native NT SCSI library">Utilizare librarie NT SCSI</entry>
     </section>
 
     <section name="Encoders">

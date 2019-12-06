@@ -615,7 +615,7 @@
       <entry id="7112" string="Invalid file format"/>
       <entry id="7113" string="Unsupported audio format">Format audio non supporté</entry>
       <entry id="7114" string="Unknown error">Erreur inconnue</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Impossible de charger les pilotes ASPI ! Extraction du CD désactivée !</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Impossible de charger les pilotes SCSI NT ! Extraction du CD désactivée !</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Impossible d'ouvrir le fichier : %1&#10;&#10;%2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!"/>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!"/>
@@ -671,12 +671,11 @@
       <entry id="9016" string="Eject disk after ripping">Ejecter le CD après extraction</entry>
       <entry id="9017" string="CD options">Options du CD</entry>
       <entry id="9018" string="Lock CD tray while ripping">Verrouiller le CD à l'extraction</entry>
-      <entry id="9019" string="Use native NT SCSI library">Utiliser DLL SCSI NT native</entry>
-      <entry id="9020" string="Use read offset">Utiliser le décalage de lecture</entry>
-      <entry id="9021" string="samples">échantillons</entry>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist">Lire le code ISRC lors de l’ajout à la liste</entry>
-      <entry id="9023" string="Spin up before ripping">Lancer le CD avant l’extraction</entry>
-      <entry id="9024" string="%1 seconds">%1 secondes</entry>
+      <entry id="9019" string="Use read offset">Utiliser le décalage de lecture</entry>
+      <entry id="9020" string="samples">échantillons</entry>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist">Lire le code ISRC lors de l’ajout à la liste</entry>
+      <entry id="9022" string="Spin up before ripping">Lancer le CD avant l’extraction</entry>
+      <entry id="9023" string="%1 seconds">%1 secondes</entry>
     </section>
 
     <section name="Components">
@@ -715,7 +714,7 @@
       <section name="mpg123">
 	<entry id="21000" string="Decoder"/>
 	<entry id="21001" string="Active decoder"/>
- 	<entry id="21002" string="auto select"/>
+	<entry id="21002" string="auto select"/>
       </section>
 
       <section name="CueSheet">
@@ -875,6 +874,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Utiliser sous-ensemble diffusable</entry>
 	  <entry id="34201" string="Blocksize">Taille de bloc</entry>
+	  <entry id="34202" string="%1 samples">%1 échantillons</entry>
 	</section>
 
 	<section name="Expert">

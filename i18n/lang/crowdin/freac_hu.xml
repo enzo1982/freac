@@ -615,7 +615,7 @@
       <entry id="7112" string="Invalid file format"/>
       <entry id="7113" string="Unsupported audio format">Nem támogatott audio formátum</entry>
       <entry id="7114" string="Unknown error">Ismeretlen hiba</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Az ASPI meghajtókat nem tudom betölteni! CD-másolás kikapcsolva!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Az NT SCSI meghajtókat nem tudom betölteni! CD-másolás kikapcsolva!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">A fájl megnyithatatlan: %1&#10;&#10;%2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!"/>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!"/>
@@ -671,12 +671,11 @@
       <entry id="9016" string="Eject disk after ripping">Lemez kidobása másolás után</entry>
       <entry id="9017" string="CD options">Cd beállítások</entry>
       <entry id="9018" string="Lock CD tray while ripping">Tálca zárás másoláskor</entry>
-      <entry id="9019" string="Use native NT SCSI library">NT SCSI DLL használat</entry>
-      <entry id="9020" string="Use read offset"/>
-      <entry id="9021" string="samples"/>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist"/>
-      <entry id="9023" string="Spin up before ripping"/>
-      <entry id="9024" string="%1 seconds"/>
+      <entry id="9019" string="Use read offset"/>
+      <entry id="9020" string="samples"/>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist"/>
+      <entry id="9022" string="Spin up before ripping"/>
+      <entry id="9023" string="%1 seconds"/>
     </section>
 
     <section name="Components">
@@ -715,7 +714,7 @@
       <section name="mpg123">
 	<entry id="21000" string="Decoder"/>
 	<entry id="21001" string="Active decoder"/>
- 	<entry id="21002" string="auto select"/>
+	<entry id="21002" string="auto select"/>
       </section>
 
       <section name="CueSheet">
@@ -875,6 +874,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">&quot;Streamable subset&quot; használata</entry>
 	  <entry id="34201" string="Blocksize">Blokkméret</entry>
+	  <entry id="34202" string="%1 samples"/>
 	</section>
 
 	<section name="Expert">

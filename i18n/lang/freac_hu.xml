@@ -400,7 +400,7 @@
       <entry id="7111" string="Unknown file type">Ismeretlen fájltípus</entry>
       <entry id="7113" string="Unsupported audio format">Nem támogatott audio formátum</entry>
       <entry id="7114" string="Unknown error">Ismeretlen hiba</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Az ASPI meghajtókat nem tudom betölteni! CD-másolás kikapcsolva!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Az NT SCSI meghajtókat nem tudom betölteni! CD-másolás kikapcsolva!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">A fájl megnyithatatlan: %1&#10;&#10;%2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">A CDDB támogatás inaktív! Engedélyezd a&#10;helyi vagy távoli CDDB támogatást a konfig. menüben.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">A távoli CDDB támogatás inaktív! Engedélyezd&#10;a távoli CDDB támogatást a konfig. menüben.</entry>
@@ -436,7 +436,6 @@
       <entry id="9016" string="Eject disk after ripping">Lemez kidobása másolás után</entry>
       <entry id="9017" string="CD options">Cd beállítások</entry>
       <entry id="9018" string="Lock CD tray while ripping">Tálca zárás másoláskor</entry>
-      <entry id="9019" string="Use native NT SCSI library">NT SCSI DLL használat</entry>
     </section>
 
     <section name="Encoders">

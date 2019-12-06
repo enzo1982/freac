@@ -399,7 +399,7 @@
       <entry id="7111" string="Unknown file type">Nežinomas failo tipas</entry>
       <entry id="7113" string="Unsupported audio format">Nepalaikomas audio formatas</entry>
       <entry id="7114" string="Unknown error">Nežinoma klaida</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Neįmanoma įkelti ASPI tvarkyklių! CD skleidimas išjungtas!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Neįmanoma įkelti NT SCSI tvarkyklių! CD skleidimas išjungtas!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Nepavyksta atidaryti failo: %1&#10;&#10;Klaida: %2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."> Vietinės CDDB palaikymas išjungtas! Prašome&#10;įjungti vietinės CDDB palaikymą konfigūracijos kortelėje.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Nuotolinės CDDB palaikymas išjungtas! Prašome&#10;įjungti nuotolinės CDDB palaikymą konfigūracijos kortelėje.</entry>
@@ -435,7 +435,6 @@
       <entry id="9016" string="Eject disk after ripping">Išmesti diską po skleidimo</entry>
       <entry id="9017" string="CD options">CD pasirinktys</entry>
       <entry id="9018" string="Lock CD tray while ripping">Rakinti CD dėklą per skleidimą</entry>
-      <entry id="9019" string="Use native NT SCSI library">Naudoti grynąją NT SCSI biblioteką</entry>
     </section>
 
     <section name="Encoders">

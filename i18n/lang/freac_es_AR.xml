@@ -418,7 +418,7 @@
       <entry id="7111" string="Unknown file type">Tipo de archivo desconocido</entry>
       <entry id="7113" string="Unsupported audio format">Formato de audio no soportado</entry>
       <entry id="7114" string="Unknown error">Error desconocido</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">¡No se pudieron cargar los controladores ASPI! ¡Extracción de CD desactivada!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">¡No se pudieron cargar los controladores NT SCSI! ¡Extracción de CD desactivada!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">No se puede abrir archivo: %1&#10;&#10;Error: %2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">¡Soporte CDDB desactivado! Por favor, active el soporte local o&#10;remoto de CDDB en la configuración.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">¡Soporte remoto CDDB desactivado! Por favor,&#10;active el soporte de acceso remoto CDDB en la configuración.</entry>
@@ -456,7 +456,6 @@
       <entry id="9016" string="Eject disk after ripping">Expulsar disco luego de extraer</entry>
       <entry id="9017" string="CD options">Opciones de CD</entry>
       <entry id="9018" string="Lock CD tray while ripping">Bloquear bandeja de CD-ROM</entry>
-      <entry id="9019" string="Use native NT SCSI library">Usar librería SCSI nativa de NT</entry>
     </section>
 
     <section name="Encoders">

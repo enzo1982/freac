@@ -402,7 +402,7 @@
       <entry id="7111" string="Unknown file type">Onbekend bestandstype</entry>
       <entry id="7113" string="Unsupported audio format">Niet-ondersteund audioformaat</entry>
       <entry id="7114" string="Unknown error">Onbekende fout</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI drivers kunnen niet geladen worden! CD rippen gedeactiveerd!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">NT SCSI drivers kunnen niet geladen worden! CD rippen gedeactiveerd!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Kan het bestand niet openen: %1&#10;&#10;%2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-ondersteuning is uitgeschakeld! Gelieve CDDB-ondersteuning&#10;in te schakelen in het configuratievenster.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">CDDB-ondersteuning op afstand is uitgeschakeld! Gelieve&#10;dit in te schakelen in het configuratiescherm.</entry>
@@ -438,7 +438,6 @@
       <entry id="9016" string="Eject disk after ripping">Schijf uitwerpen na het rippen</entry>
       <entry id="9017" string="CD options">Cd-opties</entry>
       <entry id="9018" string="Lock CD tray while ripping">Vergrendelen tijdens rippen</entry>
-      <entry id="9019" string="Use native NT SCSI library">NT SCSI-dll gebruiken</entry>
     </section>
 
     <section name="Encoders">

@@ -401,7 +401,7 @@
       <entry id="7111" string="Unknown file type">Ukjent filtype</entry>
       <entry id="7113" string="Unsupported audio format">Lydformatet er ikke støttet</entry>
       <entry id="7114" string="Unknown error">Ukjent feil</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Kan ikke laste ASPI-drivere! CD-ripping deaktiviert!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Kan ikke laste NT-SCSI-drivere! CD-ripping deaktiviert!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åpne filen: %1&#10;&#10;Feil: %2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Støtte for CDDB er deaktiviert! Vennligst aktiver støtte for&#10;lokal eller fjern CDDB i konfigurasjonsdialogen.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Støtte for fjern CDDB er deaktiviert! Vennligst aktiver støtte for&#10;fjern CDDB i konfigurasjonsdialogen.</entry>
@@ -436,7 +436,6 @@
       <entry id="9016" string="Eject disk after ripping">Løs ut CD etter ripping</entry>
       <entry id="9017" string="CD options">CD-alternativer</entry>
       <entry id="9018" string="Lock CD tray while ripping">Lås CD-skuff mens ripping pågår</entry>
-      <entry id="9019" string="Use native NT SCSI library">Bruk NT-SCSI-bibliotek</entry>
     </section>
 
     <section name="Encoders">

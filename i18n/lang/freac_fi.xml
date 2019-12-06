@@ -401,7 +401,7 @@
       <entry id="7111" string="Unknown file type">Tuntematon tiedostotyyppi</entry>
       <entry id="7113" string="Unsupported audio format">Äänimuotoa ei tueta</entry>
       <entry id="7114" string="Unknown error">Tuntematon virhe</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI-ajureiden lataaminen ei onnistu! CD:n kopiointi on pois käytöstä!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">NT SCSI-ajureiden lataaminen ei onnistu! CD:n kopiointi on pois käytöstä!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Ei voida avata tiedostoa: %1&#10;&#10;Virhe: %2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-tuki ei ole käytössä! Ole hyvä ja&#10;ota paikallisten tai&#10;etäinen CDDB-tuki käyttöön asetuksista.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Etäinen CDDB-tuki ei ole käytössä! Ole hyvä ja&#10;salli etäinen CDDB-tuki asetuksista.</entry>
@@ -437,7 +437,6 @@
       <entry id="9016" string="Eject disk after ripping">Posta levy kopioinnin jälkeen</entry>
       <entry id="9017" string="CD options">CD-asetukset</entry>
       <entry id="9018" string="Lock CD tray while ripping">Lukitse CD-asema</entry>
-      <entry id="9019" string="Use native NT SCSI library">Käytä NT:n SCSI-kirjastoa</entry>
     </section>
 
     <section name="Encoders">

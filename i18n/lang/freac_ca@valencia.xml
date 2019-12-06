@@ -401,7 +401,7 @@
       <entry id="7111" string="Unknown file type">Tipus d'arxiu desconegut</entry>
       <entry id="7113" string="Unsupported audio format">Format d'àudio no suportat</entry>
       <entry id="7114" string="Unknown error">Error desconegut</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Impossible carregar controladors ASPI! Extracció del CD desactivada!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Impossible carregar controladors NT SCSI! Extracció del CD desactivada!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">No es pot obrir l'arxiu: %1&#10;&#10;%2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">El suport CDDB no està activat! Per favor, active un&#10;suport CDDB local o remot en la finestra de configuració.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">El suport per a la base de dades CDDB remota no està activat!&#10;Per favor, active la base de dades CDDB remota en la finestra de configuració.</entry>
@@ -437,7 +437,6 @@
       <entry id="9016" string="Eject disk after ripping">Expulsar disc després de l'extracció</entry>
       <entry id="9017" string="CD options">Opcions de CD</entry>
       <entry id="9018" string="Lock CD tray while ripping">Bloquejar safata del CD</entry>
-      <entry id="9019" string="Use native NT SCSI library">Usar llibreria nativa NT SCSI</entry>
     </section>
 
     <section name="Encoders">

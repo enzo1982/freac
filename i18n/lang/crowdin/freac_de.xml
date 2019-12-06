@@ -615,7 +615,7 @@
       <entry id="7112" string="Invalid file format">Ungültiges Dateiformat</entry>
       <entry id="7113" string="Unsupported audio format">Nicht unterstütztes Audioformat</entry>
       <entry id="7114" string="Unknown error">Unbekannter Fehler</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Kann ASPI-Treiber nicht laden! CD-Rippen deaktiviert!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Kann NT SCSI-Treiber nicht laden! CD-Rippen deaktiviert!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Kann Datei nicht öffnen: %1&#10;&#10;Fehler: %2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Kann keinen CD-Track abspielen, während vom selben Laufwerk gerippt wird!</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Kann nicht Rippen, während ein Track vom selben Laufwerk abgespielt wird!</entry>
@@ -670,13 +670,12 @@
       <entry id="9015" string="Start ripping automatically">Ripper automatisch starten</entry>
       <entry id="9016" string="Eject disk after ripping">Automatisch auswerfen</entry>
       <entry id="9017" string="CD options">CD-Optionen</entry>
-      <entry id="9018" string="Lock CD tray while ripping">CD beim Rippen sperren</entry>
-      <entry id="9019" string="Use native NT SCSI library">NT-SCSI-DLL verwenden</entry>
-      <entry id="9020" string="Use read offset">Offset verwenden</entry>
-      <entry id="9021" string="samples">Samples</entry>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist">ISRC beim Hinzufügen von Tracks zur Jobliste lesen</entry>
-      <entry id="9023" string="Spin up before ripping">Vor dem Rippen beschleunigen</entry>
-      <entry id="9024" string="%1 seconds">%1 Sekunden</entry>
+      <entry id="9018" string="Lock CD tray while ripping">Laufwerk beim Rippen sperren</entry>
+      <entry id="9019" string="Use read offset">Offset verwenden</entry>
+      <entry id="9020" string="samples">Samples</entry>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist">ISRC beim Hinzufügen von Tracks zur Jobliste lesen</entry>
+      <entry id="9022" string="Spin up before ripping">Vor dem Rippen beschleunigen</entry>
+      <entry id="9023" string="%1 seconds">%1 Sekunden</entry>
     </section>
 
     <section name="Components">
@@ -875,6 +874,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Streamable Subset verwenden</entry>
 	  <entry id="34201" string="Blocksize">Blockgröße</entry>
+	  <entry id="34202" string="%1 samples">%1 Samples</entry>
 	</section>
 
 	<section name="Expert">

@@ -561,7 +561,7 @@
       <entry id="7111" string="Unknown file type">Tipo de arquivo desconhecido</entry>
       <entry id="7113" string="Unsupported audio format">Formato de áudio não suportado</entry>
       <entry id="7114" string="Unknown error">Erro desconhecido</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Drivers ASPI não puderam ser carregados! A extração de áudio do CD está desabilitada!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Drivers NT SCSI não puderam ser carregados! A extração de áudio do CD está desabilitada!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Não foi possível abrir o arquivo: %1&#10;&#10;Erro: %2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Suporte ao CDDB está desabilitado! Habilite o suporte local&#10;ou CDDB remoto na caixa de diálogo de configuração.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Suporte ao CDDB remoto está desabilitado! Ative o&#10;suporte ao CDDB remoto na caixa de diálogo de configuração.</entry>
@@ -609,12 +609,11 @@
       <entry id="9016" string="Eject disk after ripping">Ejetar o disco após a extração</entry>
       <entry id="9017" string="CD options">Opções do CD</entry>
       <entry id="9018" string="Lock CD tray while ripping">Bloquear o CD durante a extração</entry>
-      <entry id="9019" string="Use native NT SCSI library">Usar a dll NT SCSI do sistema</entry>
-      <entry id="9020" string="Use read offset">Usar compensação de leitura</entry>
-      <entry id="9021" string="samples">amostras</entry>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist">Ler ISRC ao adicionar faixas à lista de tarefas</entry>
-      <entry id="9023" string="Spin up before ripping">Iniciar rotação antes da extração</entry>
-      <entry id="9024" string="%1 seconds">%1 segundos</entry>
+      <entry id="9019" string="Use read offset">Usar compensação de leitura</entry>
+      <entry id="9020" string="samples">amostras</entry>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist">Ler ISRC ao adicionar faixas à lista de tarefas</entry>
+      <entry id="9022" string="Spin up before ripping">Iniciar rotação antes da extração</entry>
+      <entry id="9023" string="%1 seconds">%1 segundos</entry>
     </section>
 
     <section name="Decoders">
@@ -787,6 +786,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Usar subconjunto transmissível</entry>
 	  <entry id="34201" string="Blocksize">Tamanho do bloco</entry>
+	  <entry id="34202" string="%1 samples">%1 amostras</entry>
 	</section>
 
 	<section name="Expert">

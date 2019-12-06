@@ -527,7 +527,7 @@
       <entry id="7111" string="Unknown file type">未知檔案類型</entry>
       <entry id="7113" string="Unsupported audio format">未支援的聲音格式</entry>
       <entry id="7114" string="Unknown error">未知錯誤</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">無法載入ASPI驅動程式，翻錄鐳射唱片功能被停用。</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">無法載入NT SCSI驅動程式，翻錄鐳射唱片功能被停用。</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案：%1&#10;&#10;錯誤：%2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB支援停用中。請於喜好設定啟用本地或&#10;遙距CDDB支援。</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">遙距CDDB支援停用中。請於喜好設定啟用&#10;遙距CDDB支援。</entry>
@@ -574,12 +574,11 @@
       <entry id="9016" string="Eject disk after ripping">翻錄完成後彈出光碟</entry>
       <entry id="9017" string="CD options">CD選項</entry>
       <entry id="9018" string="Lock CD tray while ripping">翻錄時防止彈出光碟</entry>
-      <entry id="9019" string="Use native NT SCSI library">使用原生NT SCSI函式庫</entry>
-      <entry id="9020" string="Use read offset">使用讀取偏移修正</entry>
-      <entry id="9021" string="samples">取樣</entry>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist">加入曲目到工作清單時讀取ISRC</entry>
-      <entry id="9023" string="Spin up before ripping">翻錄前先旋轉鐳射唱片</entry>
-      <entry id="9024" string="%1 seconds">%1秒</entry>
+      <entry id="9019" string="Use read offset">使用讀取偏移修正</entry>
+      <entry id="9020" string="samples">取樣</entry>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist">加入曲目到工作清單時讀取ISRC</entry>
+      <entry id="9022" string="Spin up before ripping">翻錄前先旋轉鐳射唱片</entry>
+      <entry id="9023" string="%1 seconds">%1秒</entry>
     </section>
 
     <section name="Decoders">
@@ -752,6 +751,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">使用可串流子集</entry>
 	  <entry id="34201" string="Blocksize">壓件大小</entry>
+	  <entry id="34202" string="%1 samples">%1 取樣</entry>
 	</section>
 
 	<section name="Expert">

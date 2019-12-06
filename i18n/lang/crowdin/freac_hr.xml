@@ -615,7 +615,7 @@
       <entry id="7112" string="Invalid file format">Nepoznat format datoteke</entry>
       <entry id="7113" string="Unsupported audio format">Nepodržani audio format</entry>
       <entry id="7114" string="Unknown error">Nepoznata greška</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Ne mogu učitati ASPI driver! CD ripanje onemogućeno!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Ne mogu učitati NT SCSI driver! CD ripanje onemogućeno!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Ne mogu otvoriti datoteku: %1&#10;&#10;Greška: %2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Ne mogu istovremeno svirati i ripati sa istog diska!</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Ne mogu početi ripati dok sviram trake s istog diska!</entry>
@@ -671,12 +671,11 @@
       <entry id="9016" string="Eject disk after ripping">Izbaci disk nakon ripanja</entry>
       <entry id="9017" string="CD options">CD opcije</entry>
       <entry id="9018" string="Lock CD tray while ripping">Zaključaj CD dok ripam</entry>
-      <entry id="9019" string="Use native NT SCSI library">Koristi ugrađenii NTSCSI lib</entry>
-      <entry id="9020" string="Use read offset">Koristi ofset za čitanje</entry>
-      <entry id="9021" string="samples">samples</entry>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist">Učitaj ISRC prilkom dodavanja traka na listu zadataka</entry>
-      <entry id="9023" string="Spin up before ripping">Zavrti prije ripanja</entry>
-      <entry id="9024" string="%1 seconds">%1 sekunde</entry>
+      <entry id="9019" string="Use read offset">Koristi ofset za čitanje</entry>
+      <entry id="9020" string="samples">samples</entry>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist">Učitaj ISRC prilkom dodavanja traka na listu zadataka</entry>
+      <entry id="9022" string="Spin up before ripping">Zavrti prije ripanja</entry>
+      <entry id="9023" string="%1 seconds">%1 sekunde</entry>
     </section>
 
     <section name="Components">
@@ -875,6 +874,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Koristi stream podsustav</entry>
 	  <entry id="34201" string="Blocksize">Veličina bloka</entry>
+	  <entry id="34202" string="%1 samples">%1 samples</entry>
 	</section>
 
 	<section name="Expert">

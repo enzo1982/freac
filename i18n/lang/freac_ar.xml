@@ -398,7 +398,7 @@
       <entry id="7111" string="Unknown file type">نوع الملف مجهول</entry>
       <entry id="7113" string="Unsupported audio format">لا يدعم صيغة الصوت</entry>
       <entry id="7114" string="Unknown error">خطأ مجهول</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">اشتقاق القرص المضغوط معطل ASPI غير قادر على تحميل!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">اشتقاق القرص المضغوط معطل NT SCSI غير قادر على تحميل!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">غير قادر على فتح الملف: %1&#10;&#10;خطأ: %2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">دعم قاعدة بيانات قرص مضغوط معطلة ، الرجاء&#10;تنشيط قاعدة بيانات قرص مضغوط محلية او بعيدة دعم التهيئة في نافدة الحوار</entry>
       <entry id="7129" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">الدعم البعيد لقاعدة بيانات قرص مضغوط معطل، الرجاء تنشيط&#10;&#10;تهيئة الدعم البعيد لقاعدة بيانات قرص مضغوط</entry>
@@ -434,7 +434,6 @@
       <entry id="9016" string="Eject disk after ripping">لفظ القرص بعد الإشتقاق</entry>
       <entry id="9017" string="CD options">خيارات قرص مدمج</entry>
       <entry id="9018" string="Lock CD tray while ripping">قفل القرص المضغوط عند الاشتقاق</entry>
-      <entry id="9019" string="Use native NT SCSI library">NT SCSI استخدم المكتبة الاصلية</entry>
     </section>
 
     <section name="Encoders">

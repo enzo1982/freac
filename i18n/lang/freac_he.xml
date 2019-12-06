@@ -298,7 +298,7 @@
       <entry id="7111" string="Unknown file type">סוג קובץ לא נתמך</entry>
       <entry id="7113" string="Unsupported audio format">פורמט שמע לא נתמך</entry>
       <entry id="7114" string="Unknown error">שגיאה לא ידועה</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">לא יכול לתקשר עם כונן, מבטל יכולת קריאה מדיסק</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">לא יכול לתקשר עם כונן, מבטל יכולת קריאה מדיסק</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">אין הרשאה לגישה לכונן CD</entry>
     </section>

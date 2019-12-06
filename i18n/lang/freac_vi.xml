@@ -400,7 +400,7 @@
       <entry id="7111" string="Unknown file type">Không biết dạng file</entry>
       <entry id="7113" string="Unsupported audio format">Định dạng audio không được hỗ trợ</entry>
       <entry id="7114" string="Unknown error">Lỗi không biết</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Không thể tải driver của ASPI! Việc rip đĩa CD bị vô hiệu!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Không thể tải driver của NT SCSI! Việc rip đĩa CD bị vô hiệu!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Không thể mở file: %1&#10;&#10;Error: %2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Hỗ trợ CDDB bị tạm khóa! Hãy bật hỗ trợ từ xa&#10;của CDDB hoặc nội tuyến trong khung&#10;chỉnh sửa.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Điều khiển từ xa của CDDB bị vô hiệu!&#10;Hãy bật chế độ điều khiển từ xa của CDDB&#10;từ phần tùy chỉnh.</entry>
@@ -435,7 +435,6 @@
       <entry id="9016" string="Eject disk after ripping">Mở ổ đĩa CD-ROM khi đã rip đĩa xong</entry>
       <entry id="9017" string="CD options">Tùy chọn CD</entry>
       <entry id="9018" string="Lock CD tray while ripping">Khóa ỗ đĩa CD khi đang rip</entry>
-      <entry id="9019" string="Use native NT SCSI library">Sử dụng native NT SCSI library</entry>
     </section>
 
     <section name="Encoders">

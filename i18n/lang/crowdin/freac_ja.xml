@@ -615,7 +615,7 @@
       <entry id="7112" string="Invalid file format">無効なファイル形式です</entry>
       <entry id="7113" string="Unsupported audio format">未対応のオーディオ形式</entry>
       <entry id="7114" string="Unknown error">不明なエラー</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI ドライバがロードできません。 CD リッピングが出来ません。</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">NT SCSI ドライバがロードできません。 CD リッピングが出来ません。</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません: %1&#10;&#10;エラー: %2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">同じドライブからリッピングしながらCDトラックを再生できません！</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">同じドライブからトラックを再生中にリッピングを開始できません！</entry>
@@ -671,12 +671,11 @@
       <entry id="9016" string="Eject disk after ripping">リッピング後ディスクを取り出す</entry>
       <entry id="9017" string="CD options">CD 設定</entry>
       <entry id="9018" string="Lock CD tray while ripping">リッピング中は CD トレイをロック</entry>
-      <entry id="9019" string="Use native NT SCSI library">NT SCSI ライブラリを使用</entry>
-      <entry id="9020" string="Use read offset">読み取りオフセットを使用する</entry>
-      <entry id="9021" string="samples">サンプル</entry>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist">ジョブリストにトラックを追加するときにISRCを読む</entry>
-      <entry id="9023" string="Spin up before ripping">リッピングの前にスピンアップする</entry>
-      <entry id="9024" string="%1 seconds">%1 秒</entry>
+      <entry id="9019" string="Use read offset">読み取りオフセットを使用する</entry>
+      <entry id="9020" string="samples">サンプル</entry>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist">ジョブリストにトラックを追加するときにISRCを読む</entry>
+      <entry id="9022" string="Spin up before ripping">リッピングの前にスピンアップする</entry>
+      <entry id="9023" string="%1 seconds">%1 秒</entry>
     </section>
 
     <section name="Components">
@@ -875,6 +874,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">ストリーミング可能なサブセットを使用する</entry>
 	  <entry id="34201" string="Blocksize">ブロック サイズ</entry>
+	  <entry id="34202" string="%1 samples">%1 サンプル</entry>
 	</section>
 
 	<section name="Expert">

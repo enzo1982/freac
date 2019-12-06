@@ -399,7 +399,7 @@
       <entry id="7111" string="Unknown file type">Bilinmeyen dosya biçimi</entry>
       <entry id="7113" string="Unsupported audio format">Desteklenmeyen ses formatı</entry>
       <entry id="7114" string="Unknown error">Bilinmeyen hata</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI sürücüleri yüklenemedi! Cd riplenemiyor.</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">NT SCSI sürücüleri yüklenemedi! Cd riplenemiyor.</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Açılamayan dosya: %1&#10;&#10;Hata: %2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB veritabanı aktif değil!&#10;Ayarlardan CDDB veritabanını aktif hale getirin.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Uzak CDDB kullanımı desteklenmiyor!&#10;Ayarlardan uzak CDDB veritabanını aktif hale getirin.</entry>
@@ -435,7 +435,6 @@
       <entry id="9016" string="Eject disk after ripping">Riplemeden sonra diski çıkar</entry>
       <entry id="9017" string="CD options">CD Seçenekleri</entry>
       <entry id="9018" string="Lock CD tray while ripping">Riplerken Cd-Rom a erişimi kapat</entry>
-      <entry id="9019" string="Use native NT SCSI library">NT SCSI kütüphanesini kullan</entry>
     </section>
 
     <section name="Encoders">

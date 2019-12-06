@@ -297,7 +297,7 @@
     </section>
 
     <section name="Errors">
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">ASPI 드라이버 로드할수 없습니다! CD 리핑 불가!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">NT SCSI 드라이버 로드할수 없습니다! CD 리핑 불가!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">파일 열기 실패: %1&#10;&#10;%2</entry>
     </section>
 
@@ -325,7 +325,6 @@
       <entry id="9016" string="Eject disk after ripping">리핑후 디스크 배출</entry>
       <entry id="9017" string="CD options">CD 옵션</entry>
       <entry id="9018" string="Lock CD tray while ripping">리핑 도증 CD트레이 잠김</entry>
-      <entry id="9019" string="Use native NT SCSI library">NT SCSI 라이브러리 사용</entry>
     </section>
 
     <section name="Encoders">

@@ -404,7 +404,7 @@
       <entry id="7111" string="Unknown file type">未知文件类型</entry>
       <entry id="7113" string="Unsupported audio format">不支持的音频格式</entry>
       <entry id="7114" string="Unknown error">未知错误</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">不能加载 ASPI 驱动器！ 不能进行 CD 翻录！</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">不能加载 NT SCSI 驱动器！ 不能进行 CD 翻录！</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件： %1&#10;&#10;错误： %2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB 支持已停用！请在设置对话框中&#10;启用本地或远程 CDDB 支持。</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">远程 CDDB 支持已停用！请在设置对话框中&#10;启用远程 CDDB 支持。</entry>
@@ -440,7 +440,6 @@
       <entry id="9016" string="Eject disk after ripping">翻录完成后弹出光盘</entry>
       <entry id="9017" string="CD options">CD 选项</entry>
       <entry id="9018" string="Lock CD tray while ripping">翻录时锁定 CD 托盘</entry>
-      <entry id="9019" string="Use native NT SCSI library">使用原生 NT SCSI 库</entry>
     </section>
 
     <section name="Encoders">

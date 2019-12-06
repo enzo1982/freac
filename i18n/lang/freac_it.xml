@@ -615,7 +615,7 @@
       <entry id="7112" string="Invalid file format">formato file non valido</entry>
       <entry id="7113" string="Unsupported audio format">Formato audio non supportato</entry>
       <entry id="7114" string="Unknown error">Errore sconosciuto</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Impossibile caricare i driver ASPI! Estrazione dati audio da CD disattivata!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Impossibile caricare i driver NT SCSI! Estrazione dati audio da CD disattivata!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Impossibile aprire il seguente file: %1&#10;&#10;Errore: %2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Impossibile riprodurre una traccia CD mentre è in corso l'estrazione dalla stessa unità!</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Impossibile effettuare l'estrazione mentre è in corso la riproduzione di una traccia dalla stessa unità!</entry>
@@ -671,12 +671,11 @@
       <entry id="9016" string="Eject disk after ripping">Espelli disco al termine</entry>
       <entry id="9017" string="CD options">Opzioni CD</entry>
       <entry id="9018" string="Lock CD tray while ripping">Blocca vassoio CD</entry>
-      <entry id="9019" string="Use native NT SCSI library">Usa libreria NT SCSI</entry>
-      <entry id="9020" string="Use read offset">Usa offset lettura</entry>
-      <entry id="9021" string="samples">campioni</entry>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist">Leggi ISRC quando aggiungi tracce alla joblist</entry>
-      <entry id="9023" string="Spin up before ripping">Avvia il motore prima dell'estrazione</entry>
-      <entry id="9024" string="%1 seconds">%1 secondi</entry>
+      <entry id="9019" string="Use read offset">Usa offset lettura</entry>
+      <entry id="9020" string="samples">campioni</entry>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist">Leggi ISRC quando aggiungi tracce alla joblist</entry>
+      <entry id="9022" string="Spin up before ripping">Avvia il motore prima dell'estrazione</entry>
+      <entry id="9023" string="%1 seconds">%1 secondi</entry>
     </section>
 
     <section name="Components">
@@ -875,6 +874,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Usa sotto set usabile come flusso</entry>
 	  <entry id="34201" string="Blocksize">Dim. blocco</entry>
+	  <entry id="34202" string="%1 samples">%1 campioni</entry>
 	</section>
 
 	<section name="Expert">

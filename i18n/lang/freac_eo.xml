@@ -393,7 +393,7 @@
     </section>
 
     <section name="Errors">
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Ne eblas ŝarĝi la ASPI-pelilon! KD-ripanto malaktiviĝis!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Ne eblas ŝarĝi la NT-SCSI-pelilon! KD-ripanto malaktiviĝis!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Ne eblas malfermi la dosieron: %1&#10;&#10;%2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">La CDDB-apogilo estas malaktivigita! Bonvolu aktivigi lokan&#10;aŭ forigitan CDDB-serĉadon en la konfiguracio-dialogo.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">La apogilo por la forigita CDDB-datumbanko estas malaktivigita!&#10;Bonvolu aktivigi forigitan CDDB-datumbankon en konfiguracio-dialogo.</entry>
@@ -428,7 +428,6 @@
       <entry id="9016" string="Eject disk after ripping">Elĵeti la diskon post la ripado</entry>
       <entry id="9017" string="CD options">KD-opcioj</entry>
       <entry id="9018" string="Lock CD tray while ripping">Ŝlosi la KD dum la ripado</entry>
-      <entry id="9019" string="Use native NT SCSI library">Uzi NT-SCSI-DLL</entry>
     </section>
 
     <section name="Encoders">

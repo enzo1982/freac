@@ -399,7 +399,7 @@
       <entry id="7111" string="Unknown file type">Neznámy typ súboru</entry>
       <entry id="7113" string="Unsupported audio format">Nepodporovaný audio formát</entry>
       <entry id="7114" string="Unknown error">Neznáma chyba</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Nemožno zaviesť ASPI ovládače! Rippovanie je nefunkčné!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Nemožno zaviesť NT SCSI ovládače! Rippovanie je nefunkčné!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Nemožno otvoriť súbor: %1&#10;&#10;%2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Podpora CDDB je vypnutá! Prosím, povoľte lokálnu&#10;alebo vzdialenú CDDB podporu v nastaveniach.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Vzdialená CDDB podpora je vypnutá! Prosím povoľte&#10;vzdialenú CDDB podporu v nastaveniach.</entry>
@@ -435,7 +435,6 @@
       <entry id="9016" string="Eject disk after ripping">Vysunúť disk po rippovaní</entry>
       <entry id="9017" string="CD options">Možnosti CD</entry>
       <entry id="9018" string="Lock CD tray while ripping">Uzamknúť CD počas rippovania</entry>
-      <entry id="9019" string="Use native NT SCSI library">Použiť natívne NT SCSI knižnice</entry>
     </section>
 
     <section name="Encoders">

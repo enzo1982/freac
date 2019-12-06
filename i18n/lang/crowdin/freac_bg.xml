@@ -615,7 +615,7 @@
       <entry id="7112" string="Invalid file format">Невалиден файлов формат</entry>
       <entry id="7113" string="Unsupported audio format">Неподдържан аудио формат</entry>
       <entry id="7114" string="Unknown error">Неизвестна грешка</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Невъзможно е да се заредят ASPI драйверите!&#10;CD извличането е изключено!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Невъзможно е да се заредят NT SCSI драйверите!&#10;CD извличането е изключено!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Невъзможно е да се отвари файл: %1&#10;&#10;Грешка: %2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Не може да се възпроизвежда песен от CD, докато се извлича от същото устройство!</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Не може да се стартира извличане, докато се възпроизвежда песен от същото устройство!</entry>
@@ -671,12 +671,11 @@
       <entry id="9016" string="Eject disk after ripping">Извади CD след извличането</entry>
       <entry id="9017" string="CD options">CD настройки</entry>
       <entry id="9018" string="Lock CD tray while ripping">Заключ. CD при извличане</entry>
-      <entry id="9019" string="Use native NT SCSI library">Изп. на NT SCSI библиотека</entry>
-      <entry id="9020" string="Use read offset">Изместване при четене</entry>
-      <entry id="9021" string="samples">образец</entry>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist">Четене на ISRC при добавяне на песни към задачите</entry>
-      <entry id="9023" string="Spin up before ripping">Завъртане преди извличане</entry>
-      <entry id="9024" string="%1 seconds">%1 секунди</entry>
+      <entry id="9019" string="Use read offset">Изместване при четене</entry>
+      <entry id="9020" string="samples">образец</entry>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist">Четене на ISRC при добавяне на песни към задачите</entry>
+      <entry id="9022" string="Spin up before ripping">Завъртане преди извличане</entry>
+      <entry id="9023" string="%1 seconds">%1 секунди</entry>
     </section>
 
     <section name="Components">
@@ -875,6 +874,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Използване поточна поднастройка</entry>
 	  <entry id="34201" string="Blocksize">Размер на блока</entry>
+	  <entry id="34202" string="%1 samples">%1 образец</entry>
 	</section>
 
 	<section name="Expert">

@@ -397,7 +397,7 @@
       <entry id="7111" string="Unknown file type">Onbekende lêertipe</entry>
       <entry id="7113" string="Unsupported audio format">Nie-ondersteunde oudioformaat</entry>
       <entry id="7114" string="Unknown error">Onbekende fout</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Kan nie ASPI-aandrywers laai nie! CD stroping gestaak!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Kan nie NT SCSI-aandrywers laai nie! CD stroping gestaak!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Kan nie lêer open nie: %1</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-ondersteuning is buite werking! Aktiveer&#10;asb. plaaslike of afstands-CDDB-ondersteuning&#10;in die konfigurasiedialoog.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Afstands-CDDB-ondersteuning is afgeskakel! Stel dit&#10;asseblief in werking op die kofigurasieskerm.</entry>
@@ -431,7 +431,6 @@
       <entry id="9016" string="Eject disk after ripping">Skiet skyf na stroping uit</entry>
       <entry id="9017" string="CD options">CD-opsies</entry>
       <entry id="9018" string="Lock CD tray while ripping">Sluit CD-laai tydens stroping</entry>
-      <entry id="9019" string="Use native NT SCSI library">Gebruik oorspronklike NT SCSI-biblioteek</entry>
     </section>
 
     <section name="Encoders">

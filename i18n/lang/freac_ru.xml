@@ -615,7 +615,7 @@
       <entry id="7112" string="Invalid file format">Недопустимый формат файла</entry>
       <entry id="7113" string="Unsupported audio format">Неподдерживаемый звуковой формат</entry>
       <entry id="7114" string="Unknown error">Неизвестная ошибка</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Не могу загрузить драйвер ASPI! CD граббер отключен!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Не могу загрузить драйвер NT SCSI! CD граббер отключен!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Не могу открыть файл: %1&#10;&#10;%2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Невохможно воспроизводить дорожку CD при копировании с этого же диска!</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Невозможно начать копирование, пока проигрывается дорожка с этого же диска!</entry>
@@ -671,12 +671,11 @@
       <entry id="9016" string="Eject disk after ripping">Извлечь диск после работы</entry>
       <entry id="9017" string="CD options">Настройка CD</entry>
       <entry id="9018" string="Lock CD tray while ripping">Блокировка лотка CD при работе</entry>
-      <entry id="9019" string="Use native NT SCSI library">Родные NT SCSI библиотеки</entry>
-      <entry id="9020" string="Use read offset">Использовать смещение при чтении</entry>
-      <entry id="9021" string="samples">сэмплы</entry>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist">Читать ISRC при добавлении дорожек в список задач</entry>
-      <entry id="9023" string="Spin up before ripping">Раскрутить перед копированием</entry>
-      <entry id="9024" string="%1 seconds">%1 секунд</entry>
+      <entry id="9019" string="Use read offset">Использовать смещение при чтении</entry>
+      <entry id="9020" string="samples">сэмплы</entry>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist">Читать ISRC при добавлении дорожек в список задач</entry>
+      <entry id="9022" string="Spin up before ripping">Раскрутить перед копированием</entry>
+      <entry id="9023" string="%1 seconds">%1 секунд</entry>
     </section>
 
     <section name="Components">
@@ -875,6 +874,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Использовать потоковый subset</entry>
 	  <entry id="34201" string="Blocksize">Размер блока</entry>
+	  <entry id="34202" string="%1 samples">%1 сэмплы</entry>
 	</section>
 
 	<section name="Expert">

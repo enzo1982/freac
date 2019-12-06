@@ -401,7 +401,7 @@
       <entry id="7111" string="Unknown file type">Agiri mota ezezaguna</entry>
       <entry id="7113" string="Unsupported audio format">Audio heuskarri sostengu gabea</entry>
       <entry id="7114" string="Unknown error">Akats ezezaguna</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Ezinezkoa ASPI gidatzaileak gertatzea! CD erauzketa ezgaituta!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Ezinezkoa NT SCSI gidatzaileak gertatzea! CD erauzketa ezgaituta!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Ezinezkoa agiria irekitzea: %1&#10;&#10;Akatsa: %2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB sostengua ezgaituta dago! Mesedez gaitu tokiko&#10;edo hurruneko CDDB sostengua itxurapen elkarrizketan.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Hurreneko CDDB sostengua ezgaituta! Mesedez gaitu&#10;hurruneko CDDB sostengua itxurapen elkarrizketan.</entry>
@@ -437,7 +437,6 @@
       <entry id="9016" string="Eject disk after ripping">Atera diska erauzi ondoren</entry>
       <entry id="9017" string="CD options">CD aukerak</entry>
       <entry id="9018" string="Lock CD tray while ripping">Blokeatu CD erretilua erauztean</entry>
-      <entry id="9019" string="Use native NT SCSI library">Erabili jator. NT SCSI liburutegia</entry>
     </section>
 
     <section name="Encoders">
