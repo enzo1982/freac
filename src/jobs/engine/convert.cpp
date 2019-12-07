@@ -1702,7 +1702,12 @@ Void freac::JobConvert::LogCDInfo() const
 
 		log->Write(String("    Using drive:          ").Append("device://cdda:").Append(String::FromInt(drive)).Append("/"));
 		log->Write(String("        Drive model:      ").Append(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision));
+
+#ifdef __WIN32__
 		log->Write(String("        SCSI address:     ").Append(device.path));
+#else
+		log->Write(String("        Device path:      ").Append(device.path));
+#endif
 
 		if (configuration->GetIntValue(Config::CategoryRipperID, String("UseOffsetDrive").Append(String::FromInt(drive)), 0)) log->Write(String("        Read offset:      ").Append(String::FromInt(configuration->GetIntValue(Config::CategoryRipperID, String("ReadOffsetDrive").Append(String::FromInt(drive)), 0))).Append(" samples"));
 

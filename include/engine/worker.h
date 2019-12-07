@@ -57,8 +57,8 @@ namespace freac
 
 			Void						 VerifyInput(const String &, Verifier *);
 
-			Void						 LogConversionStart(const String &, const String & = NIL) const;
-			Void						 LogConversionEnd(const String &, const String &, const String &);
+			Void						 LogConversionStart(Decoder *, const String &, const String & = NIL) const;
+			Void						 LogConversionEnd(const String &, const String &, const String &) const;
 
 			virtual Int					 Convert();
 		public:
