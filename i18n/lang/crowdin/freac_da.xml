@@ -132,7 +132,7 @@
 	<entry id="1603" string="Check for updates at startup">Kontrollér for opdateringer ved opstart</entry>
 	<entry id="1604" string="About %1">Om %1</entry>
 	<entry id="1605" string="index_en.html">index.html</entry>
- 	<entry id="1606" string="Report an issue">Indsend et problem</entry>
+	<entry id="1606" string="Report an issue">Indsend et problem</entry>
 	<entry id="1607" string="Suggest a feature">Foreslå en funktion</entry>
       </section>
     </section>
@@ -714,7 +714,7 @@
       <section name="mpg123">
 	<entry id="21000" string="Decoder">Dekoder</entry>
 	<entry id="21001" string="Active decoder">Aktiv dekoder</entry>
- 	<entry id="21002" string="auto select">Auto vælg</entry>
+	<entry id="21002" string="auto select">Auto vælg</entry>
       </section>
 
       <section name="CueSheet">
