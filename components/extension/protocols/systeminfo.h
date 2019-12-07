@@ -26,6 +26,7 @@ namespace BoCA
 			static const String	&GetOperatingSystem();
 			static const String	&GetArchitecture();
 			static const String	&GetCPUModel();
+			static const String	&GetInstalledRAM();
 			static const String	&GetNewLineCharacters();
 	};
 };
