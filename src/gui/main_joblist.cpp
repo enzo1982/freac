@@ -1823,17 +1823,40 @@ Void freac::LayerJoblist::ToggleEditPopup()
 	menu_case_all->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), &clicked_case, 4)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
 }
 
+Bool freac::LayerJoblist::IsWordBreakingCharacter(Int character)
+{
+	if (character == 0   ||
+	    character == ' ' ||
+	    character == '(' || character == ')'  ||
+	    character == '[' || character == ']'  ||
+	    character == '<' || character == '>'  ||
+	    character == '?' || character == 0xBF || // inverted question mark
+	    character == '!' || character == 0xA1 || // inverted exclamation mark
+	    character == '-' ||
+	    character == '+' ||
+	    character == '&' ||
+	    character == '.' ||
+	    character == ',' ||
+	    character == ':' ||
+	    character == ';' ||
+	    character == '\"') return True;
+
+	return False;
+}
+
 String freac::LayerJoblist::AdjustCaseFirstCapital(const String &string)
 {
 	String	 value = String(string).ToLower();
+	String	 character;
 
-	if (value.Length() > 0)
+	for (Int i = 0; i < value.Length(); i++)
 	{
-		String	 character;
+		if (IsWordBreakingCharacter(value[i]) || value[i] == '\'') continue;
 
-		character[0] = value[0];
+		character[0] = value[i];
+		value[i]     = character.ToTitle()[0];
 
-		value[0] = character.ToTitle()[0];
+		break;
 	}
 
 	return value;
@@ -1848,22 +1871,8 @@ String freac::LayerJoblist::AdjustCaseWordsFirstCapital(const String &string)
 	{
 		character[0] = value[i];
 
-		if (i		 == 0    ||
-		    value[i - 1] == ' '  ||
-		    value[i - 1] == '('  ||
-		    value[i - 1] == '['  ||
-		    value[i - 1] == '<'  ||
-		    value[i - 1] == '-'  ||
-		    value[i - 1] == '+'  ||
-		    value[i - 1] == '&'  ||
-		    value[i - 1] == '.'  ||
-		    value[i - 1] == ','  ||
-		    value[i - 1] == ':'  ||
-		    value[i - 1] == ';'  ||
-		    value[i - 1] == 0xBF ||	// inverted question mark
-		    value[i - 1] == 0xA1 ||	// inverted exclamation mark
-		    value[i - 1] == '\"' ||
-		    value[i - 1] == '\'') value[i] = character.ToTitle()[0];
+		if ( IsWordBreakingCharacter(value[i - 1]) || (value[i - 1] == '\'' &&
+		    (IsWordBreakingCharacter(value[i - 2]) ||  value[i - 2] == '\''))) value[i] = character.ToTitle()[0];
 	}
 
 	return value;
@@ -1874,25 +1883,22 @@ String freac::LayerJoblist::AdjustCaseLongWordsFirstCapital(const String &string
 	String	 value = AdjustCaseWordsFirstCapital(string);
 	String	 character;
 
-	for (Int i = 1; i < value.Length(); i++)
+	for (Int i = 0; i < value.Length(); i++)
 	{
-		character[0] = value[i];
+		if (IsWordBreakingCharacter(value[i]) || value[i] == '\'') continue;
 
-		if (value[i + 1] == ' '  || value[i + 2] == ' '  || value[i + 3] == ' '  ||
-		    value[i + 1] == ')'  || value[i + 2] == ')'  || value[i + 3] == ')'  ||
-		    value[i + 1] == ']'  || value[i + 2] == ']'  || value[i + 3] == ']'  ||
-		    value[i + 1] == '>'  || value[i + 2] == '>'  || value[i + 3] == '>'  ||
-		    value[i + 1] == '?'  || value[i + 2] == '?'  || value[i + 3] == '?'  ||
-		    value[i + 1] == '!'  || value[i + 2] == '!'  || value[i + 3] == '!'  ||
-		    value[i + 1] == ','  || value[i + 2] == ','  || value[i + 3] == ','  ||
-		    value[i + 1] == ':'  || value[i + 2] == ':'  || value[i + 3] == ':'  ||
-		    value[i + 1] == ';'  || value[i + 2] == ';'  || value[i + 3] == ';'  ||
-		    value[i + 1] == '\"' || value[i + 2] == '\"' || value[i + 3] == '\"' ||
-		    value[i + 1] == '\'' || value[i + 2] == '\'' || value[i + 3] == '\'' ||
-		    value[i + 1] == 0    || value[i + 2] == 0    || value[i + 3] == 0)
+		for (Int j = i + 1; j < value.Length(); j++)
 		{
-			if (value[i - 1] == ' ') value[i] = character.ToLower()[0];
+			character[0] = value[j];
+
+			if ((IsWordBreakingCharacter(value[j + 1]) ||
+			     IsWordBreakingCharacter(value[j + 2]) ||
+			     IsWordBreakingCharacter(value[j + 3])) &&
+			    ( IsWordBreakingCharacter(value[j - 1]) || (value[j - 1] == '\'' &&
+			     (IsWordBreakingCharacter(value[j - 2]) ||  value[j - 2] == '\'')))) value[j] = character.ToLower()[0];
 		}
+
+		break;
 	}
 
 	return value;

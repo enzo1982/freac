@@ -149,9 +149,11 @@ namespace freac
 			Void			 ShowCoverArea();
 			Void			 HideCoverArea();
 
-			String			 AdjustCaseFirstCapital(const String &);
-			String			 AdjustCaseWordsFirstCapital(const String &);
-			String			 AdjustCaseLongWordsFirstCapital(const String &);
+			static Bool		 IsWordBreakingCharacter(Int);
+
+			static String		 AdjustCaseFirstCapital(const String &);
+			static String		 AdjustCaseWordsFirstCapital(const String &);
+			static String		 AdjustCaseLongWordsFirstCapital(const String &);
 		public:
 						 LayerJoblist();
 						~LayerJoblist();
