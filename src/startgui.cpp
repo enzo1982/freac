@@ -467,19 +467,11 @@ Void freac::freacGUI::ConfigureComponent(const String &id)
 
 	if (component != NIL)
 	{
-		ConfigLayer	*layer = component->GetConfigurationLayer();
+		ConfigComponentDialog	 dlg(component);
 
-		if (layer != NIL)
-		{
-			ConfigComponentDialog	 dlg(layer);
+		dlg.SetParentWindow(mainWnd);
 
-			dlg.SetParentWindow(mainWnd);
-			dlg.ShowDialog();
-		}
-		else
-		{
-			BoCA::Utilities::ErrorMessage("No configuration dialog available for:\n\n%1", component->GetName());
-		}
+		if (dlg.ShowDialog() == Error()) BoCA::Utilities::ErrorMessage("No configuration dialog available for:\n\n%1", component->GetName());
 
 		boca.DeleteComponent(component);
 	}

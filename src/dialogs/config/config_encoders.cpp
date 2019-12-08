@@ -260,18 +260,8 @@ Void freac::ConfigureEncoders::ConfigureEncoder()
 
 	if (component != NIL)
 	{
-		ConfigLayer	*layer = component->GetConfigurationLayer();
-
-		if (layer != NIL)
-		{
-			ConfigComponentDialog(layer).ShowDialog();
-
-			onChangeComponentSettings.Emit(encoderID);
-		}
-		else
-		{
-			BoCA::Utilities::ErrorMessage("No configuration dialog available for:\n\n%1", component->GetName());
-		}
+		if (ConfigComponentDialog(component).ShowDialog() != Error()) onChangeComponentSettings.Emit(encoderID);
+		else							      BoCA::Utilities::ErrorMessage("No configuration dialog available for:\n\n%1", component->GetName());
 
 		boca.DeleteComponent(component);
 	}

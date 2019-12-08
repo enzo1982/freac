@@ -22,48 +22,53 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-freac::ConfigComponentDialog::ConfigComponentDialog(ConfigLayer *iLayer)
+freac::ConfigComponentDialog::ConfigComponentDialog(Component *component)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	i18n->SetContext("Configuration");
 
-	layer			= iLayer;
+	layer = component->GetConfigurationLayer();
 
-	mainWnd			= new Window(i18n->TranslateString("Component configuration"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(60, 60), layer->GetSize() + Size(8, 73));
-	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
+	if (layer != NIL)
+	{
+		mainWnd			= new Window(component->GetName(), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(60, 60), layer->GetSize() + Size(8, 73));
+		mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
-	mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
-	divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
+		mainWnd_titlebar	= new Titlebar(TB_CLOSEBUTTON);
+		divbar			= new Divider(39, OR_HORZ | OR_BOTTOM);
 
-	btn_cancel		= new Button(i18n->TranslateString("Cancel"), Point(175, 29), Size());
-	btn_cancel->onAction.Connect(&ConfigComponentDialog::Cancel, this);
-	btn_cancel->SetOrientation(OR_LOWERRIGHT);
+		btn_cancel		= new Button(i18n->TranslateString("Cancel"), Point(175, 29), Size());
+		btn_cancel->onAction.Connect(&ConfigComponentDialog::Cancel, this);
+		btn_cancel->SetOrientation(OR_LOWERRIGHT);
 
-	btn_ok			= new Button(i18n->TranslateString("OK"), btn_cancel->GetPosition() - Point(88, 0), Size());
-	btn_ok->onAction.Connect(&ConfigComponentDialog::OK, this);
-	btn_ok->SetOrientation(OR_LOWERRIGHT);
+		btn_ok			= new Button(i18n->TranslateString("OK"), btn_cancel->GetPosition() - Point(88, 0), Size());
+		btn_ok->onAction.Connect(&ConfigComponentDialog::OK, this);
+		btn_ok->SetOrientation(OR_LOWERRIGHT);
 
-	Add(mainWnd);
+		Add(mainWnd);
 
-	mainWnd->Add(mainWnd_titlebar);
-	mainWnd->Add(divbar);
-	mainWnd->Add(btn_ok);
-	mainWnd->Add(btn_cancel);
+		mainWnd->Add(mainWnd_titlebar);
+		mainWnd->Add(divbar);
+		mainWnd->Add(btn_ok);
+		mainWnd->Add(btn_cancel);
 
-	mainWnd->GetMainLayer()->Add(layer);
+		mainWnd->GetMainLayer()->Add(layer);
 
-	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON | WF_MODAL);
-	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
+		mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON | WF_MODAL);
+		mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 
 #ifdef __WIN32__
-	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
+		mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
 #endif
+	}
 }
 
 freac::ConfigComponentDialog::~ConfigComponentDialog()
 {
+	if (layer == NIL) return;
+
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
 	DeleteObject(btn_ok);
@@ -73,7 +78,8 @@ freac::ConfigComponentDialog::~ConfigComponentDialog()
 
 const Error &freac::ConfigComponentDialog::ShowDialog()
 {
-	mainWnd->WaitUntilClosed();
+	if (layer != NIL) mainWnd->WaitUntilClosed();
+	else		  error = Error();
 
 	return error;
 }
