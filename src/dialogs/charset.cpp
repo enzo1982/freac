@@ -86,7 +86,7 @@ const Error &freac::ChooseCharsetDialog::ShowDialog()
 	return error;
 }
 
-String freac::ChooseCharsetDialog::GetCharset()
+String freac::ChooseCharsetDialog::GetCharset() const
 {
 	return edit_charset->GetText();
 }
