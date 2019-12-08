@@ -357,29 +357,28 @@
       <entry id="5001" string="Encoders">Енкодери</entry>
       <entry id="5002" string="Playlists">Листе покретања</entry>
       <entry id="5003" string="Language">Језик</entry>
-      <entry id="5004" string="Component configuration">Поставка компоненте</entry>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5006" string="Interface">Изглед апликације</entry>
-      <entry id="5007" string="Tags">Инфо тагови</entry>
-      <entry id="5008" string="Components">Компоненте</entry>
-      <entry id="5009" string="Decoders">Декодери</entry>
-      <entry id="5010" string="Output">Излаз</entry>
-      <entry id="5011" string="DSP">DSP</entry>
-      <entry id="5012" string="Extensions">Екстензије</entry>
-      <entry id="5013" string="Other">Остало</entry>
-      <entry id="5014" string="Active configuration">Активна поставка</entry>
-      <entry id="5015" string="New">Ново</entry>
-      <entry id="5016" string="Delete">Обриши</entry>
-      <entry id="5017" string="Command line arguments">Аргументи командне линије</entry>
-      <entry id="5018" string="Resulting arguments string">Резултат низа аргумената</entry>
-      <entry id="5019" string="Default configuration">Усађена поставка</entry>
-      <entry id="5020" string="New configuration">Нова поставка</entry>
-      <entry id="5021" string="Ripper">Рипер</entry>
-      <entry id="5022" string="Settings">Подешења</entry>
-      <entry id="5023" string="Resources">Извори</entry>
-      <entry id="5024" string="Verifiers">Оверивачи</entry>
-      <entry id="5025" string="Taggers">Тагери</entry>
-      <entry id="5026" string="Processing">Обрада</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">Изглед апликације</entry>
+      <entry id="5006" string="Tags">Инфо тагови</entry>
+      <entry id="5007" string="Components">Компоненте</entry>
+      <entry id="5008" string="Decoders">Декодери</entry>
+      <entry id="5009" string="Output">Излаз</entry>
+      <entry id="5010" string="DSP">DSP</entry>
+      <entry id="5011" string="Extensions">Екстензије</entry>
+      <entry id="5012" string="Other">Остало</entry>
+      <entry id="5013" string="Active configuration">Активна поставка</entry>
+      <entry id="5014" string="New">Ново</entry>
+      <entry id="5015" string="Delete">Обриши</entry>
+      <entry id="5016" string="Command line arguments">Аргументи командне линије</entry>
+      <entry id="5017" string="Resulting arguments string">Резултат низа аргумената</entry>
+      <entry id="5018" string="Default configuration">Усађена поставка</entry>
+      <entry id="5019" string="New configuration">Нова поставка</entry>
+      <entry id="5020" string="Ripper">Рипер</entry>
+      <entry id="5021" string="Settings">Подешења</entry>
+      <entry id="5022" string="Resources">Извори</entry>
+      <entry id="5023" string="Verifiers">Оверивачи</entry>
+      <entry id="5024" string="Taggers">Тагери</entry>
+      <entry id="5025" string="Processing">Обрада</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Подеси енкодер</entry>
@@ -1006,9 +1005,8 @@
 	<entry id="42001" string="Available">Расположиво</entry>
 	<entry id="42002" string="Selected">Одабрано</entry>
 	<entry id="42003" string="Configure encoder">Подеси енкодер</entry>
-	<entry id="42004" string="Encoder configuration">Поставка енкодера</entry>
-	<entry id="42005" string="Options">Опције</entry>
-	<entry id="42006" string="Create a separate folder for each output format">Направи засебан фолдер за сваки излазни формат</entry>
+	<entry id="42004" string="Options">Опције</entry>
+	<entry id="42005" string="Create a separate folder for each output format">Направи засебан фолдер за сваки излазни формат</entry>
       </section>
     </section>
 

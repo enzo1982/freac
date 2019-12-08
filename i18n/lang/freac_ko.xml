@@ -199,7 +199,7 @@
       <entry id="5000" string="General settings setup">일반 설정</entry>
       <entry id="5001" string="Encoders">인코더</entry>
       <entry id="5003" string="Language">언어</entry>
-      <entry id="5007" string="Tags">정보 태그</entry>
+      <entry id="5006" string="Tags">정보 태그</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">인코더 설정</entry>

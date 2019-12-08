@@ -357,29 +357,28 @@
       <entry id="5001" string="Encoders">Kodare</entry>
       <entry id="5002" string="Playlists">Spelningslistor</entry>
       <entry id="5003" string="Language">Språk</entry>
-      <entry id="5004" string="Component configuration">Komponentkonfiguration</entry>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5006" string="Interface">Gränssnitt</entry>
-      <entry id="5007" string="Tags">Informationstaggar</entry>
-      <entry id="5008" string="Components">Komponenter</entry>
-      <entry id="5009" string="Decoders">Avkodare</entry>
-      <entry id="5010" string="Output">Utdata</entry>
-      <entry id="5011" string="DSP">Digital signalbehandling</entry>
-      <entry id="5012" string="Extensions">Tilläggsfunktioner</entry>
-      <entry id="5013" string="Other">Övrigt</entry>
-      <entry id="5014" string="Active configuration">Aktiv konfiguration</entry>
-      <entry id="5015" string="New">Ny</entry>
-      <entry id="5016" string="Delete">Ta bort</entry>
-      <entry id="5017" string="Command line arguments">Kommandoradsargument</entry>
-      <entry id="5018" string="Resulting arguments string">Resulterande argumentsträng</entry>
-      <entry id="5019" string="Default configuration">Standardkonfiguration</entry>
-      <entry id="5020" string="New configuration">Ny konfiguration</entry>
-      <entry id="5021" string="Ripper">Rippning</entry>
-      <entry id="5022" string="Settings">Inställningar</entry>
-      <entry id="5023" string="Resources">Resurser</entry>
-      <entry id="5024" string="Verifiers">Verifierare</entry>
-      <entry id="5025" string="Taggers">Taggare</entry>
-      <entry id="5026" string="Processing">Signalbehandling</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">Gränssnitt</entry>
+      <entry id="5006" string="Tags">Informationstaggar</entry>
+      <entry id="5007" string="Components">Komponenter</entry>
+      <entry id="5008" string="Decoders">Avkodare</entry>
+      <entry id="5009" string="Output">Utdata</entry>
+      <entry id="5010" string="DSP">Digital signalbehandling</entry>
+      <entry id="5011" string="Extensions">Tilläggsfunktioner</entry>
+      <entry id="5012" string="Other">Övrigt</entry>
+      <entry id="5013" string="Active configuration">Aktiv konfiguration</entry>
+      <entry id="5014" string="New">Ny</entry>
+      <entry id="5015" string="Delete">Ta bort</entry>
+      <entry id="5016" string="Command line arguments">Kommandoradsargument</entry>
+      <entry id="5017" string="Resulting arguments string">Resulterande argumentsträng</entry>
+      <entry id="5018" string="Default configuration">Standardkonfiguration</entry>
+      <entry id="5019" string="New configuration">Ny konfiguration</entry>
+      <entry id="5020" string="Ripper">Rippning</entry>
+      <entry id="5021" string="Settings">Inställningar</entry>
+      <entry id="5022" string="Resources">Resurser</entry>
+      <entry id="5023" string="Verifiers">Verifierare</entry>
+      <entry id="5024" string="Taggers">Taggare</entry>
+      <entry id="5025" string="Processing">Signalbehandling</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Inställningar för kodare</entry>
@@ -1006,9 +1005,8 @@
 	<entry id="42001" string="Available">Tillgängliga</entry>
 	<entry id="42002" string="Selected">Valda</entry>
 	<entry id="42003" string="Configure encoder">Konfigurera kodare</entry>
-	<entry id="42004" string="Encoder configuration">Kodarkonfiguration</entry>
-	<entry id="42005" string="Options">Alternativ</entry>
-	<entry id="42006" string="Create a separate folder for each output format">Skapa en separat mapp för varje utdataformat</entry>
+	<entry id="42004" string="Options">Alternativ</entry>
+	<entry id="42005" string="Create a separate folder for each output format">Skapa en separat mapp för varje utdataformat</entry>
       </section>
     </section>
 

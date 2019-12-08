@@ -272,7 +272,7 @@
       <entry id="5001" string="Encoders">Conversores</entry>
       <entry id="5002" string="Playlists">Listaxes de reprodución</entry>
       <entry id="5003" string="Language">Lingua</entry>
-      <entry id="5007" string="Tags">Tags de información</entry>
+      <entry id="5006" string="Tags">Tags de información</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar conversor</entry>

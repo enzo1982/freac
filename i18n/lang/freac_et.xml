@@ -272,7 +272,7 @@
       <entry id="5001" string="Encoders">Kodekid</entry>
       <entry id="5002" string="Playlists">Playlists</entry>
       <entry id="5003" string="Language">Keel</entry>
-      <entry id="5007" string="Tags">Tagid</entry>
+      <entry id="5006" string="Tags">Tagid</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Kodeki sätted</entry>

@@ -357,29 +357,28 @@
       <entry id="5001" string="Encoders">Кодеки</entry>
       <entry id="5002" string="Playlists">Плейлисты</entry>
       <entry id="5003" string="Language">Язык</entry>
-      <entry id="5004" string="Component configuration">Конфигурация компонентов</entry>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5006" string="Interface">Интерфейс</entry>
-      <entry id="5007" string="Tags">Тэги</entry>
-      <entry id="5008" string="Components">Компоненты</entry>
-      <entry id="5009" string="Decoders">Декодеры</entry>
-      <entry id="5010" string="Output">Вывод</entry>
-      <entry id="5011" string="DSP">DSP</entry>
-      <entry id="5012" string="Extensions">Расширения</entry>
-      <entry id="5013" string="Other">Другое</entry>
-      <entry id="5014" string="Active configuration">Текущая конфигурация</entry>
-      <entry id="5015" string="New">Новая</entry>
-      <entry id="5016" string="Delete">Удалить</entry>
-      <entry id="5017" string="Command line arguments">Аргументы командной строки</entry>
-      <entry id="5018" string="Resulting arguments string">Итоговая командная строка</entry>
-      <entry id="5019" string="Default configuration">Конфигурация по умолчанию</entry>
-      <entry id="5020" string="New configuration">Новая конфигурация</entry>
-      <entry id="5021" string="Ripper">Граббер</entry>
-      <entry id="5022" string="Settings">Настройки</entry>
-      <entry id="5023" string="Resources">Ресурсы</entry>
-      <entry id="5024" string="Verifiers">Проверяющие</entry>
-      <entry id="5025" string="Taggers">Указатели</entry>
-      <entry id="5026" string="Processing">Обработка</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">Интерфейс</entry>
+      <entry id="5006" string="Tags">Тэги</entry>
+      <entry id="5007" string="Components">Компоненты</entry>
+      <entry id="5008" string="Decoders">Декодеры</entry>
+      <entry id="5009" string="Output">Вывод</entry>
+      <entry id="5010" string="DSP">DSP</entry>
+      <entry id="5011" string="Extensions">Расширения</entry>
+      <entry id="5012" string="Other">Другое</entry>
+      <entry id="5013" string="Active configuration">Текущая конфигурация</entry>
+      <entry id="5014" string="New">Новая</entry>
+      <entry id="5015" string="Delete">Удалить</entry>
+      <entry id="5016" string="Command line arguments">Аргументы командной строки</entry>
+      <entry id="5017" string="Resulting arguments string">Итоговая командная строка</entry>
+      <entry id="5018" string="Default configuration">Конфигурация по умолчанию</entry>
+      <entry id="5019" string="New configuration">Новая конфигурация</entry>
+      <entry id="5020" string="Ripper">Граббер</entry>
+      <entry id="5021" string="Settings">Настройки</entry>
+      <entry id="5022" string="Resources">Ресурсы</entry>
+      <entry id="5023" string="Verifiers">Проверяющие</entry>
+      <entry id="5024" string="Taggers">Указатели</entry>
+      <entry id="5025" string="Processing">Обработка</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Настроить кодек</entry>
@@ -1006,9 +1005,8 @@
 	<entry id="42001" string="Available">Доступные</entry>
 	<entry id="42002" string="Selected">Выбранные</entry>
 	<entry id="42003" string="Configure encoder">Настроить кодек</entry>
-	<entry id="42004" string="Encoder configuration">Настройки кодека</entry>
-	<entry id="42005" string="Options">Настройки</entry>
-	<entry id="42006" string="Create a separate folder for each output format">Создавать отдельную папку для каждого выходного формата</entry>
+	<entry id="42004" string="Options">Настройки</entry>
+	<entry id="42005" string="Create a separate folder for each output format">Создавать отдельную папку для каждого выходного формата</entry>
       </section>
     </section>
 

@@ -272,7 +272,7 @@
       <entry id="5001" string="Encoders">Encodeurs</entry>
       <entry id="5002" string="Playlists">Sélections</entry>
       <entry id="5003" string="Language">Langue</entry>
-      <entry id="5007" string="Tags">Balises infos</entry>
+      <entry id="5006" string="Tags">Balises infos</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurer l'encodeur</entry>

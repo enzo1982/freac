@@ -272,9 +272,9 @@
       <entry id="5001" string="Encoders">Encoders</entry>
       <entry id="5002" string="Playlists">Afspeellijsten</entry>
       <entry id="5003" string="Language">Taal</entry>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5007" string="Tags">Info tags</entry>
-      <entry id="5021" string="Ripper">Ripper</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5006" string="Tags">Info tags</entry>
+      <entry id="5020" string="Ripper">Ripper</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Encoder configureren</entry>

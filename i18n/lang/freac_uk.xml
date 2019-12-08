@@ -272,7 +272,7 @@
       <entry id="5001" string="Encoders">Кодеки</entry>
       <entry id="5002" string="Playlists">Плейлисти</entry>
       <entry id="5003" string="Language">Мова</entry>
-      <entry id="5007" string="Tags">Заголовки</entry>
+      <entry id="5006" string="Tags">Заголовки</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Налаштувати кодек</entry>

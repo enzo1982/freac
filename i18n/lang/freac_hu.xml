@@ -272,7 +272,7 @@
       <entry id="5001" string="Encoders">Tömörítök</entry>
       <entry id="5002" string="Playlists">Lejátszási lista</entry>
       <entry id="5003" string="Language">Nyelv</entry>
-      <entry id="5007" string="Tags">Info Tag-ek</entry>
+      <entry id="5006" string="Tags">Info Tag-ek</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Tömörítö beállítása</entry>

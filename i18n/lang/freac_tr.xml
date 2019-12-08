@@ -271,7 +271,7 @@
       <entry id="5001" string="Encoders">Çeviriciler</entry>
       <entry id="5002" string="Playlists">Çalma listesi</entry>
       <entry id="5003" string="Language">Dil</entry>
-      <entry id="5007" string="Tags">Bilgi etiketleri</entry>
+      <entry id="5006" string="Tags">Bilgi etiketleri</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Çevirici ayarları</entry>

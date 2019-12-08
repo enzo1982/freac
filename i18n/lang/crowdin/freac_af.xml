@@ -357,29 +357,28 @@
       <entry id="5001" string="Encoders">Enkodeerders</entry>
       <entry id="5002" string="Playlists">Speellyste</entry>
       <entry id="5003" string="Language">Taal</entry>
-      <entry id="5004" string="Component configuration"/>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5006" string="Interface"/>
-      <entry id="5007" string="Tags"/>
-      <entry id="5008" string="Components"/>
-      <entry id="5009" string="Decoders"/>
-      <entry id="5010" string="Output"/>
-      <entry id="5011" string="DSP"/>
-      <entry id="5012" string="Extensions"/>
-      <entry id="5013" string="Other"/>
-      <entry id="5014" string="Active configuration"/>
-      <entry id="5015" string="New"/>
-      <entry id="5016" string="Delete"/>
-      <entry id="5017" string="Command line arguments"/>
-      <entry id="5018" string="Resulting arguments string"/>
-      <entry id="5019" string="Default configuration"/>
-      <entry id="5020" string="New configuration"/>
-      <entry id="5021" string="Ripper">Stroper</entry>
-      <entry id="5022" string="Settings"/>
-      <entry id="5023" string="Resources"/>
-      <entry id="5024" string="Verifiers"/>
-      <entry id="5025" string="Taggers"/>
-      <entry id="5026" string="Processing"/>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface"/>
+      <entry id="5006" string="Tags"/>
+      <entry id="5007" string="Components"/>
+      <entry id="5008" string="Decoders"/>
+      <entry id="5009" string="Output"/>
+      <entry id="5010" string="DSP"/>
+      <entry id="5011" string="Extensions"/>
+      <entry id="5012" string="Other"/>
+      <entry id="5013" string="Active configuration"/>
+      <entry id="5014" string="New"/>
+      <entry id="5015" string="Delete"/>
+      <entry id="5016" string="Command line arguments"/>
+      <entry id="5017" string="Resulting arguments string"/>
+      <entry id="5018" string="Default configuration"/>
+      <entry id="5019" string="New configuration"/>
+      <entry id="5020" string="Ripper">Stroper</entry>
+      <entry id="5021" string="Settings"/>
+      <entry id="5022" string="Resources"/>
+      <entry id="5023" string="Verifiers"/>
+      <entry id="5024" string="Taggers"/>
+      <entry id="5025" string="Processing"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Konfigureer enkodeerder</entry>
@@ -1006,9 +1005,8 @@
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
 	<entry id="42003" string="Configure encoder"/>
-	<entry id="42004" string="Encoder configuration"/>
-	<entry id="42005" string="Options"/>
-	<entry id="42006" string="Create a separate folder for each output format"/>
+	<entry id="42004" string="Options"/>
+	<entry id="42005" string="Create a separate folder for each output format"/>
       </section>
     </section>
 

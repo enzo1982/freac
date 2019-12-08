@@ -271,7 +271,7 @@
       <entry id="5001" string="Encoders">Kodeky</entry>
       <entry id="5002" string="Playlists">Playlisty</entry>
       <entry id="5003" string="Language">Jazyk</entry>
-      <entry id="5007" string="Tags">Info tagy</entry>
+      <entry id="5006" string="Tags">Info tagy</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Nastaviť kodek</entry>

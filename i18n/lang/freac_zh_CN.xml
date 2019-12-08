@@ -274,9 +274,9 @@
       <entry id="5001" string="Encoders">编码器</entry>
       <entry id="5002" string="Playlists">播放列表</entry>
       <entry id="5003" string="Language">语言</entry>
-      <entry id="5007" string="Tags">信息标签</entry>
-      <entry id="5015" string="New">新建</entry>
-      <entry id="5016" string="Delete">删除</entry>
+      <entry id="5006" string="Tags">信息标签</entry>
+      <entry id="5014" string="New">新建</entry>
+      <entry id="5015" string="Delete">删除</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">设置编码器</entry>

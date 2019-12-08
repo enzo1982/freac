@@ -272,7 +272,7 @@
       <entry id="5001" string="Encoders">Kodere</entry>
       <entry id="5002" string="Playlists">Spillelister</entry>
       <entry id="5003" string="Language">Språk</entry>
-      <entry id="5007" string="Tags">Info-merke</entry>
+      <entry id="5006" string="Tags">Info-merke</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Konfigurer koder</entry>

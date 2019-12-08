@@ -357,29 +357,28 @@
       <entry id="5001" string="Encoders">Codificadores</entry>
       <entry id="5002" string="Playlists">Listas de reprodução</entry>
       <entry id="5003" string="Language">Idioma</entry>
-      <entry id="5004" string="Component configuration">Configuração de componentes</entry>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5006" string="Interface">Interface</entry>
-      <entry id="5007" string="Tags">Etiquetas</entry>
-      <entry id="5008" string="Components">Componentes</entry>
-      <entry id="5009" string="Decoders">Decodificadores</entry>
-      <entry id="5010" string="Output">Saída</entry>
-      <entry id="5011" string="DSP">DSP</entry>
-      <entry id="5012" string="Extensions">Extensões</entry>
-      <entry id="5013" string="Other">Outros</entry>
-      <entry id="5014" string="Active configuration">Configuração ativa</entry>
-      <entry id="5015" string="New">Novo</entry>
-      <entry id="5016" string="Delete">Excluir</entry>
-      <entry id="5017" string="Command line arguments">Parâmetros da linha de comando</entry>
-      <entry id="5018" string="Resulting arguments string">Cadeia de parâmetros resultante</entry>
-      <entry id="5019" string="Default configuration">Configuração padrão</entry>
-      <entry id="5020" string="New configuration">Nova configuração</entry>
-      <entry id="5021" string="Ripper">Extrator</entry>
-      <entry id="5022" string="Settings">Configurações</entry>
-      <entry id="5023" string="Resources">Recursos</entry>
-      <entry id="5024" string="Verifiers">Verificadores</entry>
-      <entry id="5025" string="Taggers">Etiquetadores</entry>
-      <entry id="5026" string="Processing">Processando</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">Interface</entry>
+      <entry id="5006" string="Tags">Etiquetas</entry>
+      <entry id="5007" string="Components">Componentes</entry>
+      <entry id="5008" string="Decoders">Decodificadores</entry>
+      <entry id="5009" string="Output">Saída</entry>
+      <entry id="5010" string="DSP">DSP</entry>
+      <entry id="5011" string="Extensions">Extensões</entry>
+      <entry id="5012" string="Other">Outros</entry>
+      <entry id="5013" string="Active configuration">Configuração ativa</entry>
+      <entry id="5014" string="New">Novo</entry>
+      <entry id="5015" string="Delete">Excluir</entry>
+      <entry id="5016" string="Command line arguments">Parâmetros da linha de comando</entry>
+      <entry id="5017" string="Resulting arguments string">Cadeia de parâmetros resultante</entry>
+      <entry id="5018" string="Default configuration">Configuração padrão</entry>
+      <entry id="5019" string="New configuration">Nova configuração</entry>
+      <entry id="5020" string="Ripper">Extrator</entry>
+      <entry id="5021" string="Settings">Configurações</entry>
+      <entry id="5022" string="Resources">Recursos</entry>
+      <entry id="5023" string="Verifiers">Verificadores</entry>
+      <entry id="5024" string="Taggers">Etiquetadores</entry>
+      <entry id="5025" string="Processing">Processando</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar codificador</entry>
@@ -1006,9 +1005,8 @@
 	<entry id="42001" string="Available">Disponível</entry>
 	<entry id="42002" string="Selected">Selecionado</entry>
 	<entry id="42003" string="Configure encoder">Configurar codificador</entry>
-	<entry id="42004" string="Encoder configuration">Configuração do codificador</entry>
-	<entry id="42005" string="Options">Opções</entry>
-	<entry id="42006" string="Create a separate folder for each output format">Criar pasta separada para cada formato de saída</entry>
+	<entry id="42004" string="Options">Opções</entry>
+	<entry id="42005" string="Create a separate folder for each output format">Criar pasta separada para cada formato de saída</entry>
       </section>
     </section>
 

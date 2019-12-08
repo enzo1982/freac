@@ -271,9 +271,9 @@
       <entry id="5001" string="Encoders">Konwertery</entry>
       <entry id="5002" string="Playlists">Listy odtwarzania</entry>
       <entry id="5003" string="Language">Język</entry>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5007" string="Tags">Identyfikatory</entry>
-      <entry id="5021" string="Ripper">Zgrywanie CD</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5006" string="Tags">Identyfikatory</entry>
+      <entry id="5020" string="Ripper">Zgrywanie CD</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Ustawienia konwersji</entry>

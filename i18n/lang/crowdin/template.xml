@@ -357,29 +357,28 @@
       <entry id="5001" string="Encoders">Encoders</entry>
       <entry id="5002" string="Playlists">Playlists</entry>
       <entry id="5003" string="Language">Language</entry>
-      <entry id="5004" string="Component configuration">Component configuration</entry>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5006" string="Interface">Interface</entry>
-      <entry id="5007" string="Tags">Tags</entry>
-      <entry id="5008" string="Components">Components</entry>
-      <entry id="5009" string="Decoders">Decoders</entry>
-      <entry id="5010" string="Output">Output</entry>
-      <entry id="5011" string="DSP">DSP</entry>
-      <entry id="5012" string="Extensions">Extensions</entry>
-      <entry id="5013" string="Other">Other</entry>
-      <entry id="5014" string="Active configuration">Active configuration</entry>
-      <entry id="5015" string="New">New</entry>
-      <entry id="5016" string="Delete">Delete</entry>
-      <entry id="5017" string="Command line arguments">Command line arguments</entry>
-      <entry id="5018" string="Resulting arguments string">Resulting arguments string</entry>
-      <entry id="5019" string="Default configuration">Default configuration</entry>
-      <entry id="5020" string="New configuration">New configuration</entry>
-      <entry id="5021" string="Ripper">Ripper</entry>
-      <entry id="5022" string="Settings">Settings</entry>
-      <entry id="5023" string="Resources">Resources</entry>
-      <entry id="5024" string="Verifiers">Verifiers</entry>
-      <entry id="5025" string="Taggers">Taggers</entry>
-      <entry id="5026" string="Processing">Processing</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">Interface</entry>
+      <entry id="5006" string="Tags">Tags</entry>
+      <entry id="5007" string="Components">Components</entry>
+      <entry id="5008" string="Decoders">Decoders</entry>
+      <entry id="5009" string="Output">Output</entry>
+      <entry id="5010" string="DSP">DSP</entry>
+      <entry id="5011" string="Extensions">Extensions</entry>
+      <entry id="5012" string="Other">Other</entry>
+      <entry id="5013" string="Active configuration">Active configuration</entry>
+      <entry id="5014" string="New">New</entry>
+      <entry id="5015" string="Delete">Delete</entry>
+      <entry id="5016" string="Command line arguments">Command line arguments</entry>
+      <entry id="5017" string="Resulting arguments string">Resulting arguments string</entry>
+      <entry id="5018" string="Default configuration">Default configuration</entry>
+      <entry id="5019" string="New configuration">New configuration</entry>
+      <entry id="5020" string="Ripper">Ripper</entry>
+      <entry id="5021" string="Settings">Settings</entry>
+      <entry id="5022" string="Resources">Resources</entry>
+      <entry id="5023" string="Verifiers">Verifiers</entry>
+      <entry id="5024" string="Taggers">Taggers</entry>
+      <entry id="5025" string="Processing">Processing</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configure encoder</entry>
@@ -1006,9 +1005,8 @@
 	<entry id="42001" string="Available">Available</entry>
 	<entry id="42002" string="Selected">Selected</entry>
 	<entry id="42003" string="Configure encoder">Configure encoder</entry>
-	<entry id="42004" string="Encoder configuration">Encoder configuration</entry>
-	<entry id="42005" string="Options">Options</entry>
-	<entry id="42006" string="Create a separate folder for each output format">Create a separate folder for each output format</entry>
+	<entry id="42004" string="Options">Options</entry>
+	<entry id="42005" string="Create a separate folder for each output format">Create a separate folder for each output format</entry>
       </section>
     </section>
 

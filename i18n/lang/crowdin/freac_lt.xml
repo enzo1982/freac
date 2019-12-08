@@ -357,29 +357,28 @@
       <entry id="5001" string="Encoders">Koduotuvai</entry>
       <entry id="5002" string="Playlists">Grojaraščiai</entry>
       <entry id="5003" string="Language">Kalba</entry>
-      <entry id="5004" string="Component configuration">Komponentų konfigūracija</entry>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5006" string="Interface">Sąsaja</entry>
-      <entry id="5007" string="Tags">Žymės</entry>
-      <entry id="5008" string="Components">Komponentai</entry>
-      <entry id="5009" string="Decoders">Dekoderiai</entry>
-      <entry id="5010" string="Output">Išvestis</entry>
-      <entry id="5011" string="DSP">DSP</entry>
-      <entry id="5012" string="Extensions">Plėtiniai</entry>
-      <entry id="5013" string="Other">Kita</entry>
-      <entry id="5014" string="Active configuration">Aktyvi konfigūracija</entry>
-      <entry id="5015" string="New">Kurti naują</entry>
-      <entry id="5016" string="Delete">Ištrinti</entry>
-      <entry id="5017" string="Command line arguments">Komandinės eilutės argumentai</entry>
-      <entry id="5018" string="Resulting arguments string">Galutinė argumentų eilutė</entry>
-      <entry id="5019" string="Default configuration">Numatytoji konfigūracija</entry>
-      <entry id="5020" string="New configuration">Nauja konfigūracija</entry>
-      <entry id="5021" string="Ripper">Skleidyklė</entry>
-      <entry id="5022" string="Settings">Nuostatos</entry>
-      <entry id="5023" string="Resources">Ištekliai</entry>
-      <entry id="5024" string="Verifiers">Tikrintuvai</entry>
-      <entry id="5025" string="Taggers">Žymekliai</entry>
-      <entry id="5026" string="Processing">Apdorojimas</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">Sąsaja</entry>
+      <entry id="5006" string="Tags">Žymės</entry>
+      <entry id="5007" string="Components">Komponentai</entry>
+      <entry id="5008" string="Decoders">Dekoderiai</entry>
+      <entry id="5009" string="Output">Išvestis</entry>
+      <entry id="5010" string="DSP">DSP</entry>
+      <entry id="5011" string="Extensions">Plėtiniai</entry>
+      <entry id="5012" string="Other">Kita</entry>
+      <entry id="5013" string="Active configuration">Aktyvi konfigūracija</entry>
+      <entry id="5014" string="New">Kurti naują</entry>
+      <entry id="5015" string="Delete">Ištrinti</entry>
+      <entry id="5016" string="Command line arguments">Komandinės eilutės argumentai</entry>
+      <entry id="5017" string="Resulting arguments string">Galutinė argumentų eilutė</entry>
+      <entry id="5018" string="Default configuration">Numatytoji konfigūracija</entry>
+      <entry id="5019" string="New configuration">Nauja konfigūracija</entry>
+      <entry id="5020" string="Ripper">Skleidyklė</entry>
+      <entry id="5021" string="Settings">Nuostatos</entry>
+      <entry id="5022" string="Resources">Ištekliai</entry>
+      <entry id="5023" string="Verifiers">Tikrintuvai</entry>
+      <entry id="5024" string="Taggers">Žymekliai</entry>
+      <entry id="5025" string="Processing">Apdorojimas</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Konfigūruoti koduotuvą</entry>
@@ -1006,9 +1005,8 @@
 	<entry id="42001" string="Available">Galimi</entry>
 	<entry id="42002" string="Selected">Pasirinkti</entry>
 	<entry id="42003" string="Configure encoder">Konfigūruoti koduotuvą</entry>
-	<entry id="42004" string="Encoder configuration">Koduotuvo konfigūracija</entry>
-	<entry id="42005" string="Options">Pasirinktys</entry>
-	<entry id="42006" string="Create a separate folder for each output format">Sukurti atskirą aplanką kiekvienam išvesties formatui</entry>
+	<entry id="42004" string="Options">Pasirinktys</entry>
+	<entry id="42005" string="Create a separate folder for each output format">Sukurti atskirą aplanką kiekvienam išvesties formatui</entry>
       </section>
     </section>
 

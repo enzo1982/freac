@@ -274,7 +274,7 @@
       <entry id="5001" string="Encoders">Codificadores</entry>
       <entry id="5002" string="Playlists">Listas de reproducción</entry>
       <entry id="5003" string="Language">Lenguaje</entry>
-      <entry id="5007" string="Tags">Etiquetas de información</entry>
+      <entry id="5006" string="Tags">Etiquetas de información</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar codificador</entry>
@@ -673,7 +673,7 @@
       <section name="meh!">
 	<entry id="42000" string="Encoders">Codificadores</entry>
 	<entry id="42003" string="Configure encoder">Configurar codificador</entry>
-	<entry id="42005" string="Options">Opciones</entry>
+	<entry id="42004" string="Options">Opciones</entry>
       </section>
     </section>
 

@@ -209,7 +209,7 @@
       <entry id="5001" string="Encoders">מקודדים</entry>
       <entry id="5002" string="Playlists">רשימת השמעה</entry>
       <entry id="5003" string="Language">שפה</entry>
-      <entry id="5007" string="Tags">תגיות מידע</entry>
+      <entry id="5006" string="Tags">תגיות מידע</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">הגדרות מקודד</entry>

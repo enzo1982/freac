@@ -357,29 +357,28 @@
       <entry id="5001" string="Encoders">Enkodér</entry>
       <entry id="5002" string="Playlists">Playlisty</entry>
       <entry id="5003" string="Language">Jazyk</entry>
-      <entry id="5004" string="Component configuration">Nastavení součástí</entry>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5006" string="Interface">Rozhraní</entry>
-      <entry id="5007" string="Tags">Tagy</entry>
-      <entry id="5008" string="Components">Součásti</entry>
-      <entry id="5009" string="Decoders">Dekodér</entry>
-      <entry id="5010" string="Output">Výstup</entry>
-      <entry id="5011" string="DSP">DSP</entry>
-      <entry id="5012" string="Extensions">Rozšíření</entry>
-      <entry id="5013" string="Other">Další</entry>
-      <entry id="5014" string="Active configuration">Aktivní nastavení</entry>
-      <entry id="5015" string="New">Nový</entry>
-      <entry id="5016" string="Delete">Smazat</entry>
-      <entry id="5017" string="Command line arguments">Parametry příkazového řádku</entry>
-      <entry id="5018" string="Resulting arguments string">Výsledné parametry řetězce</entry>
-      <entry id="5019" string="Default configuration">Standardní nastavení</entry>
-      <entry id="5020" string="New configuration">Nové nastavení</entry>
-      <entry id="5021" string="Ripper">Ripper</entry>
-      <entry id="5022" string="Settings">Nastavení</entry>
-      <entry id="5023" string="Resources">Zdroje</entry>
-      <entry id="5024" string="Verifiers">Ověřovatelé</entry>
-      <entry id="5025" string="Taggers">Tagy</entry>
-      <entry id="5026" string="Processing">Zpracování</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">Rozhraní</entry>
+      <entry id="5006" string="Tags">Tagy</entry>
+      <entry id="5007" string="Components">Součásti</entry>
+      <entry id="5008" string="Decoders">Dekodér</entry>
+      <entry id="5009" string="Output">Výstup</entry>
+      <entry id="5010" string="DSP">DSP</entry>
+      <entry id="5011" string="Extensions">Rozšíření</entry>
+      <entry id="5012" string="Other">Další</entry>
+      <entry id="5013" string="Active configuration">Aktivní nastavení</entry>
+      <entry id="5014" string="New">Nový</entry>
+      <entry id="5015" string="Delete">Smazat</entry>
+      <entry id="5016" string="Command line arguments">Parametry příkazového řádku</entry>
+      <entry id="5017" string="Resulting arguments string">Výsledné parametry řetězce</entry>
+      <entry id="5018" string="Default configuration">Standardní nastavení</entry>
+      <entry id="5019" string="New configuration">Nové nastavení</entry>
+      <entry id="5020" string="Ripper">Ripper</entry>
+      <entry id="5021" string="Settings">Nastavení</entry>
+      <entry id="5022" string="Resources">Zdroje</entry>
+      <entry id="5023" string="Verifiers">Ověřovatelé</entry>
+      <entry id="5024" string="Taggers">Tagy</entry>
+      <entry id="5025" string="Processing">Zpracování</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Konfigurovat enkodér</entry>
@@ -1006,9 +1005,8 @@
 	<entry id="42001" string="Available">Dostupné</entry>
 	<entry id="42002" string="Selected">Vybrané</entry>
 	<entry id="42003" string="Configure encoder">Nakonfigurovat kodér</entry>
-	<entry id="42004" string="Encoder configuration">Konfigurace kodéru</entry>
-	<entry id="42005" string="Options">Možnosti</entry>
-	<entry id="42006" string="Create a separate folder for each output format">Vytvořit samostatnou složku pro každý výstupní formát</entry>
+	<entry id="42004" string="Options">Možnosti</entry>
+	<entry id="42005" string="Create a separate folder for each output format">Vytvořit samostatnou složku pro každý výstupní formát</entry>
       </section>
     </section>
 

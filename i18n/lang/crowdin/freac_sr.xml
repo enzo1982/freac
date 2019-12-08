@@ -357,29 +357,28 @@
       <entry id="5001" string="Encoders">Enkoderi</entry>
       <entry id="5002" string="Playlists">Liste pokretanja</entry>
       <entry id="5003" string="Language">Jezik</entry>
-      <entry id="5004" string="Component configuration">Postavka komponente</entry>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5006" string="Interface">Izgled aplikacije</entry>
-      <entry id="5007" string="Tags">Info tagovi</entry>
-      <entry id="5008" string="Components">Komponente</entry>
-      <entry id="5009" string="Decoders">Dekoderi</entry>
-      <entry id="5010" string="Output">Izlaz</entry>
-      <entry id="5011" string="DSP">DSP</entry>
-      <entry id="5012" string="Extensions">Ekstenzije</entry>
-      <entry id="5013" string="Other">Ostalo</entry>
-      <entry id="5014" string="Active configuration">Aktivna postavka</entry>
-      <entry id="5015" string="New">Novo</entry>
-      <entry id="5016" string="Delete">Obriši</entry>
-      <entry id="5017" string="Command line arguments">Argumenti komandne linije</entry>
-      <entry id="5018" string="Resulting arguments string">Rezultat niza argumenata</entry>
-      <entry id="5019" string="Default configuration">Usađena postavka</entry>
-      <entry id="5020" string="New configuration">Nova postavka</entry>
-      <entry id="5021" string="Ripper">Riper</entry>
-      <entry id="5022" string="Settings">Podešenja</entry>
-      <entry id="5023" string="Resources">Izvori</entry>
-      <entry id="5024" string="Verifiers">Overivači</entry>
-      <entry id="5025" string="Taggers">Tageri</entry>
-      <entry id="5026" string="Processing">Obrada</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">Izgled aplikacije</entry>
+      <entry id="5006" string="Tags">Info tagovi</entry>
+      <entry id="5007" string="Components">Komponente</entry>
+      <entry id="5008" string="Decoders">Dekoderi</entry>
+      <entry id="5009" string="Output">Izlaz</entry>
+      <entry id="5010" string="DSP">DSP</entry>
+      <entry id="5011" string="Extensions">Ekstenzije</entry>
+      <entry id="5012" string="Other">Ostalo</entry>
+      <entry id="5013" string="Active configuration">Aktivna postavka</entry>
+      <entry id="5014" string="New">Novo</entry>
+      <entry id="5015" string="Delete">Obriši</entry>
+      <entry id="5016" string="Command line arguments">Argumenti komandne linije</entry>
+      <entry id="5017" string="Resulting arguments string">Rezultat niza argumenata</entry>
+      <entry id="5018" string="Default configuration">Usađena postavka</entry>
+      <entry id="5019" string="New configuration">Nova postavka</entry>
+      <entry id="5020" string="Ripper">Riper</entry>
+      <entry id="5021" string="Settings">Podešenja</entry>
+      <entry id="5022" string="Resources">Izvori</entry>
+      <entry id="5023" string="Verifiers">Overivači</entry>
+      <entry id="5024" string="Taggers">Tageri</entry>
+      <entry id="5025" string="Processing">Obrada</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Podesi enkoder</entry>
@@ -1006,9 +1005,8 @@
 	<entry id="42001" string="Available">Raspoloživo</entry>
 	<entry id="42002" string="Selected">Odabrano</entry>
 	<entry id="42003" string="Configure encoder">Podesi enkoder</entry>
-	<entry id="42004" string="Encoder configuration">Postavka enkodera</entry>
-	<entry id="42005" string="Options">Opcije</entry>
-	<entry id="42006" string="Create a separate folder for each output format">Napravi zaseban folder za svaki izlazni format</entry>
+	<entry id="42004" string="Options">Opcije</entry>
+	<entry id="42005" string="Create a separate folder for each output format">Napravi zaseban folder za svaki izlazni format</entry>
       </section>
     </section>
 

@@ -357,29 +357,28 @@
       <entry id="5001" string="Encoders">編碼器</entry>
       <entry id="5002" string="Playlists">播放清單</entry>
       <entry id="5003" string="Language">語言</entry>
-      <entry id="5004" string="Component configuration">元件組態</entry>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5006" string="Interface">介面</entry>
-      <entry id="5007" string="Tags">標籤</entry>
-      <entry id="5008" string="Components">元件</entry>
-      <entry id="5009" string="Decoders">解碼器</entry>
-      <entry id="5010" string="Output">輸出</entry>
-      <entry id="5011" string="DSP">數位訊號處理</entry>
-      <entry id="5012" string="Extensions">擴充套件</entry>
-      <entry id="5013" string="Other">其他</entry>
-      <entry id="5014" string="Active configuration">使用中的組態</entry>
-      <entry id="5015" string="New">新增</entry>
-      <entry id="5016" string="Delete">刪除</entry>
-      <entry id="5017" string="Command line arguments">命令列引數</entry>
-      <entry id="5018" string="Resulting arguments string">產生的引數字串</entry>
-      <entry id="5019" string="Default configuration">預設組態</entry>
-      <entry id="5020" string="New configuration">新的組態</entry>
-      <entry id="5021" string="Ripper">轉檔</entry>
-      <entry id="5022" string="Settings">設定</entry>
-      <entry id="5023" string="Resources">資源</entry>
-      <entry id="5024" string="Verifiers">驗證</entry>
-      <entry id="5025" string="Taggers">標籤</entry>
-      <entry id="5026" string="Processing">處理</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">介面</entry>
+      <entry id="5006" string="Tags">標籤</entry>
+      <entry id="5007" string="Components">元件</entry>
+      <entry id="5008" string="Decoders">解碼器</entry>
+      <entry id="5009" string="Output">輸出</entry>
+      <entry id="5010" string="DSP">數位訊號處理</entry>
+      <entry id="5011" string="Extensions">擴充套件</entry>
+      <entry id="5012" string="Other">其他</entry>
+      <entry id="5013" string="Active configuration">使用中的組態</entry>
+      <entry id="5014" string="New">新增</entry>
+      <entry id="5015" string="Delete">刪除</entry>
+      <entry id="5016" string="Command line arguments">命令列引數</entry>
+      <entry id="5017" string="Resulting arguments string">產生的引數字串</entry>
+      <entry id="5018" string="Default configuration">預設組態</entry>
+      <entry id="5019" string="New configuration">新的組態</entry>
+      <entry id="5020" string="Ripper">轉檔</entry>
+      <entry id="5021" string="Settings">設定</entry>
+      <entry id="5022" string="Resources">資源</entry>
+      <entry id="5023" string="Verifiers">驗證</entry>
+      <entry id="5024" string="Taggers">標籤</entry>
+      <entry id="5025" string="Processing">處理</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">編碼器組態</entry>
@@ -1006,9 +1005,8 @@
 	<entry id="42001" string="Available">可用</entry>
 	<entry id="42002" string="Selected">已選擇</entry>
 	<entry id="42003" string="Configure encoder">編碼器組態</entry>
-	<entry id="42004" string="Encoder configuration">編碼器組態</entry>
-	<entry id="42005" string="Options">選項</entry>
-	<entry id="42006" string="Create a separate folder for each output format">為每種輸出格式分別建立資料夾</entry>
+	<entry id="42004" string="Options">選項</entry>
+	<entry id="42005" string="Create a separate folder for each output format">為每種輸出格式分別建立資料夾</entry>
       </section>
     </section>
 

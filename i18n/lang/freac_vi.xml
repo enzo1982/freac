@@ -272,7 +272,7 @@
       <entry id="5001" string="Encoders">Chuyển mã</entry>
       <entry id="5002" string="Playlists">Danh sách</entry>
       <entry id="5003" string="Language">Ngôn ngữ</entry>
-      <entry id="5007" string="Tags">Tab thông tin</entry>
+      <entry id="5006" string="Tags">Tab thông tin</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Chỉnh sửa chuyển mã</entry>

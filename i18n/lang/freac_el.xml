@@ -271,7 +271,7 @@
       <entry id="5000" string="General settings setup">Ρύθμιση γενικών επιλογών</entry>
       <entry id="5001" string="Encoders">Κωδικοποιητές</entry>
       <entry id="5002" string="Playlists">Λίστες αναπαραγωγής</entry>
-      <entry id="5007" string="Tags">Tag πληροφοριών</entry>
+      <entry id="5006" string="Tags">Tag πληροφοριών</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Ρύθμιση κωδικοποιητή</entry>

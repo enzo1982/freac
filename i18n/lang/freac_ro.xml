@@ -271,7 +271,7 @@
       <entry id="5001" string="Encoders">Codec-uri</entry>
       <entry id="5002" string="Playlists">Liste</entry>
       <entry id="5003" string="Language">Limba</entry>
-      <entry id="5007" string="Tags">Tag-uri Info</entry>
+      <entry id="5006" string="Tags">Tag-uri Info</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurare codec</entry>

@@ -272,8 +272,8 @@
       <entry id="5001" string="Encoders">الترميز</entry>
       <entry id="5002" string="Playlists">قائمة الأغاني</entry>
       <entry id="5003" string="Language">اللغة</entry>
-      <entry id="5005" string="CDDB">كدب</entry>
-      <entry id="5007" string="Tags">معلومات بطاقة</entry>
+      <entry id="5004" string="CDDB">كدب</entry>
+      <entry id="5006" string="Tags">معلومات بطاقة</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">تهيئة الترميز</entry>

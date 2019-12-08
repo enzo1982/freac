@@ -357,29 +357,28 @@
       <entry id="5001" string="Encoders">エンコーダ</entry>
       <entry id="5002" string="Playlists">プレイリスト</entry>
       <entry id="5003" string="Language">言語</entry>
-      <entry id="5004" string="Component configuration">構成設定</entry>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5006" string="Interface">インターフェース</entry>
-      <entry id="5007" string="Tags">タグ情報</entry>
-      <entry id="5008" string="Components">構成</entry>
-      <entry id="5009" string="Decoders">デコーダ</entry>
-      <entry id="5010" string="Output">出力</entry>
-      <entry id="5011" string="DSP">DSP</entry>
-      <entry id="5012" string="Extensions">拡張設定</entry>
-      <entry id="5013" string="Other">その他</entry>
-      <entry id="5014" string="Active configuration">有効な設定</entry>
-      <entry id="5015" string="New">新規設定</entry>
-      <entry id="5016" string="Delete">設定削除</entry>
-      <entry id="5017" string="Command line arguments">コマンドラインの引数</entry>
-      <entry id="5018" string="Resulting arguments string">結果の引数文字列</entry>
-      <entry id="5019" string="Default configuration">デフォルト設定</entry>
-      <entry id="5020" string="New configuration">新しい設定</entry>
-      <entry id="5021" string="Ripper">リッパー</entry>
-      <entry id="5022" string="Settings">設定</entry>
-      <entry id="5023" string="Resources">リソース</entry>
-      <entry id="5024" string="Verifiers">ベリファイ</entry>
-      <entry id="5025" string="Taggers">タグ</entry>
-      <entry id="5026" string="Processing">処理</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">インターフェース</entry>
+      <entry id="5006" string="Tags">タグ情報</entry>
+      <entry id="5007" string="Components">構成</entry>
+      <entry id="5008" string="Decoders">デコーダ</entry>
+      <entry id="5009" string="Output">出力</entry>
+      <entry id="5010" string="DSP">DSP</entry>
+      <entry id="5011" string="Extensions">拡張設定</entry>
+      <entry id="5012" string="Other">その他</entry>
+      <entry id="5013" string="Active configuration">有効な設定</entry>
+      <entry id="5014" string="New">新規設定</entry>
+      <entry id="5015" string="Delete">設定削除</entry>
+      <entry id="5016" string="Command line arguments">コマンドラインの引数</entry>
+      <entry id="5017" string="Resulting arguments string">結果の引数文字列</entry>
+      <entry id="5018" string="Default configuration">デフォルト設定</entry>
+      <entry id="5019" string="New configuration">新しい設定</entry>
+      <entry id="5020" string="Ripper">リッパー</entry>
+      <entry id="5021" string="Settings">設定</entry>
+      <entry id="5022" string="Resources">リソース</entry>
+      <entry id="5023" string="Verifiers">ベリファイ</entry>
+      <entry id="5024" string="Taggers">タグ</entry>
+      <entry id="5025" string="Processing">処理</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">エンコーダ設定</entry>
@@ -1006,9 +1005,8 @@
 	<entry id="42001" string="Available">利用可能</entry>
 	<entry id="42002" string="Selected">選択中</entry>
 	<entry id="42003" string="Configure encoder">エンコーダ設定</entry>
-	<entry id="42004" string="Encoder configuration">エンコーダの設定</entry>
-	<entry id="42005" string="Options">オプション</entry>
-	<entry id="42006" string="Create a separate folder for each output format">出力形式ごとに別々のフォルダを作成する</entry>
+	<entry id="42004" string="Options">オプション</entry>
+	<entry id="42005" string="Create a separate folder for each output format">出力形式ごとに別々のフォルダを作成する</entry>
       </section>
     </section>
 
