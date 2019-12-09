@@ -14,11 +14,14 @@
     <entry id="100" string="OK">Akceptuj</entry>
     <entry id="101" string="Cancel">Anuluj</entry>
     <entry id="102" string="Close">Zamknij</entry>
+
     <entry id="200" string="Error">Błąd</entry>
     <entry id="201" string="Warning">Ostrzeżenie</entry>
     <entry id="202" string="Info">Informacje</entry>
+
     <entry id="210" string="Do not display this warning again">Nie pokazuj więcej tego ostrzeżenia</entry>
     <entry id="211" string="Do not display this note again">Nie pokazuj więcej tej informacji</entry>
+
     <entry id="300" string="Artist">Wykonawca</entry>
     <entry id="301" string="Title">Tytuł</entry>
     <entry id="302" string="Album">Album</entry>
@@ -31,6 +34,7 @@
     <entry id="309" string="File name">Nazwa pliku</entry>
     <entry id="310" string="File type">Typ pliku</entry>
     <entry id="311" string="Album artist">Wykonawca albumu</entry>
+
     <entry id="350" string="unknown artist">nieznany wykonawca</entry>
     <entry id="351" string="unknown title">nieznany tytuł</entry>
     <entry id="352" string="unknown album">nieznany album</entry>
@@ -39,6 +43,7 @@
     <entry id="355" string="unknown conductor">nieznany dyrygent</entry>
     <entry id="356" string="unknown composer">nieznany kompozytor</entry>
     <entry id="357" string="unknown album artist">nieznany wykonawca albumu</entry>
+
     <entry id="380" string="hidden track">ukryta ścieżka</entry>
 
     <section name="Characters">
@@ -352,29 +357,28 @@
       <entry id="5001" string="Encoders">Konwertery</entry>
       <entry id="5002" string="Playlists">Listy odtwarzania</entry>
       <entry id="5003" string="Language">Język</entry>
-      <entry id="5004" string="Component configuration">Konfiguracja komponentów</entry>
-      <entry id="5005" string="CDDB">CDDB</entry>
-      <entry id="5006" string="Interface">Interfejs</entry>
-      <entry id="5007" string="Tags">Znaczniki</entry>
-      <entry id="5008" string="Components">Komponenty</entry>
-      <entry id="5009" string="Decoders">Dekodery</entry>
-      <entry id="5010" string="Output">Wyjście</entry>
-      <entry id="5011" string="DSP">Procesor sygnału DSP</entry>
-      <entry id="5012" string="Extensions">Rozszerzenia</entry>
-      <entry id="5013" string="Other">Inne</entry>
-      <entry id="5014" string="Active configuration">Bieżąca konfiguracja</entry>
-      <entry id="5015" string="New">Nowa</entry>
-      <entry id="5016" string="Delete">Usuń</entry>
-      <entry id="5017" string="Command line arguments">Argumenty wiersza poleceń</entry>
-      <entry id="5018" string="Resulting arguments string">Wynikowy łańcuch argumentów</entry>
-      <entry id="5019" string="Default configuration">Domyślna konfiguracja</entry>
-      <entry id="5020" string="New configuration">Nowa konfiguracja</entry>
-      <entry id="5021" string="Ripper">Zgrywanie CD</entry>
-      <entry id="5022" string="Settings">Ustawienia</entry>
-      <entry id="5023" string="Resources">Zasoby</entry>
-      <entry id="5024" string="Verifiers">Weryfikatory</entry>
-      <entry id="5025" string="Taggers">Edytory znaczników</entry>
-      <entry id="5026" string="Processing">Przetwarzanie</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">Interfejs</entry>
+      <entry id="5006" string="Tags">Znaczniki</entry>
+      <entry id="5007" string="Components">Komponenty</entry>
+      <entry id="5008" string="Decoders">Dekodery</entry>
+      <entry id="5009" string="Output">Wyjście</entry>
+      <entry id="5010" string="DSP">Procesor sygnału DSP</entry>
+      <entry id="5011" string="Extensions">Rozszerzenia</entry>
+      <entry id="5012" string="Other">Inne</entry>
+      <entry id="5013" string="Active configuration">Bieżąca konfiguracja</entry>
+      <entry id="5014" string="New">Nowa</entry>
+      <entry id="5015" string="Delete">Usuń</entry>
+      <entry id="5016" string="Command line arguments">Argumenty wiersza poleceń</entry>
+      <entry id="5017" string="Resulting arguments string">Wynikowy łańcuch argumentów</entry>
+      <entry id="5018" string="Default configuration">Domyślna konfiguracja</entry>
+      <entry id="5019" string="New configuration">Nowa konfiguracja</entry>
+      <entry id="5020" string="Ripper">Zgrywanie CD</entry>
+      <entry id="5021" string="Settings">Ustawienia</entry>
+      <entry id="5022" string="Resources">Zasoby</entry>
+      <entry id="5023" string="Verifiers">Weryfikatory</entry>
+      <entry id="5024" string="Taggers">Edytory znaczników</entry>
+      <entry id="5025" string="Processing">Przetwarzanie</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Ustawienia konwersji</entry>
@@ -610,7 +614,7 @@
       <entry id="7112" string="Invalid file format">Nieprawidłowy format pliku</entry>
       <entry id="7113" string="Unsupported audio format">Nieobsługiwany format audio</entry>
       <entry id="7114" string="Unknown error">Nieznany błąd</entry>
-      <entry id="7115" string="Unable to load ASPI drivers! CD ripping disabled!">Nie można załadować sterowników ASPI! Zgrywanie płyt CD zostało wyłączone!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Nie można załadować sterowników SCSI NT! Zgrywanie płyt CD zostało wyłączone!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Nie można otworzyć pliku %1&#10;&#10;Błąd %2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Nie można odtwarzać utworu z CD podczas zgrywania z tej samej płyty!</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Nie można rozpocząć zgrywania, gdy odtwarzany jest utwór z tej samej płyty!</entry>
@@ -666,12 +670,11 @@
       <entry id="9016" string="Eject disk after ripping">Wysuń CD po zgraniu</entry>
       <entry id="9017" string="CD options">Opcje CD</entry>
       <entry id="9018" string="Lock CD tray while ripping">Blokuj CD podczas zgrywania</entry>
-      <entry id="9019" string="Use native NT SCSI library">Wykorzystaj bibliotekę SCSI NT</entry>
-      <entry id="9020" string="Use read offset">Użyj offsetu odczytu</entry>
-      <entry id="9021" string="samples">próbek</entry>
-      <entry id="9022" string="Read ISRC when adding tracks to joblist">Odczytaj ISRC podczas dodawania utworów do listy</entry>
-      <entry id="9023" string="Spin up before ripping">Rozpędź płytę przed zgrywaniem</entry>
-      <entry id="9024" string="%1 seconds">Sekundy: %1</entry>
+      <entry id="9019" string="Use read offset">Użyj offsetu odczytu</entry>
+      <entry id="9020" string="samples">próbek</entry>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist">Odczytaj ISRC podczas dodawania utworów do listy</entry>
+      <entry id="9022" string="Spin up before ripping">Rozpędź płytę przed zgrywaniem</entry>
+      <entry id="9023" string="%1 seconds">Sekundy: %1</entry>
     </section>
 
     <section name="Components">
@@ -870,6 +873,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Wykorzystaj podzbiór strumieniowy</entry>
 	  <entry id="34201" string="Blocksize">Rozmiar bloku</entry>
+	  <entry id="34202" string="%1 samples">%1 próbek</entry>
 	</section>
 
 	<section name="Expert">
@@ -1001,9 +1005,8 @@
 	<entry id="42001" string="Available">Dostępne</entry>
 	<entry id="42002" string="Selected">Wybrane</entry>
 	<entry id="42003" string="Configure encoder">Ustawienia konwersji</entry>
-	<entry id="42004" string="Encoder configuration">Ustawienia konwertera</entry>
-	<entry id="42005" string="Options">Opcje</entry>
-	<entry id="42006" string="Create a separate folder for each output format">Utwórz osobny folder dla każdego formatu wyjściowego</entry>
+	<entry id="42004" string="Options">Opcje</entry>
+	<entry id="42005" string="Create a separate folder for each output format">Utwórz osobny folder dla każdego formatu wyjściowego</entry>
       </section>
     </section>
 
@@ -1167,7 +1170,7 @@
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Napisz do %1, jeśli chcesz wysłać czek lub pieniądze pocztą.</entry>
 	<entry id="100004" string="Thank you very much!">Bardzo dziękujemy!</entry>
 	<entry id="100005" string="Remind me later">Przypomnij później</entry>
-	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
 	<entry id="100007" string="Donate to the %1 project">Wesprzyj projekt %1</entry>
 
 	<section name="PayPal">
