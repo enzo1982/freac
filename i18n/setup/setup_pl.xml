@@ -2,13 +2,13 @@
 <LangFile>
   <info>
     <property name="program">fre:ac Setup</property>
-    <property name="version">1.0</property>
+    <property name="version">1.1</property>
     <property name="language">Polish / Polski</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">template.xml</property>
     <property name="author">Michał Trzebiatowski, Darek Rzeźnicki</property>
-    <property name="url">http://www.freac.org/</property>
+    <property name="url">https://www.freac.org/</property>
   </info>
   <data>
     <entry id="100" string="&lt;- Back">&lt;- Wstecz</entry>
@@ -17,12 +17,14 @@
     <entry id="103" string="Finish">Zakończ</entry>
     <entry id="104" string="Yes">Tak</entry>
     <entry id="105" string="No">Nie</entry>
+
     <entry id="200" string="Current file progress:">Postęp aktualnego pliku:</entry>
     <entry id="201" string="Total installation progress:">Ogólny postęp instalacji:</entry>
     <entry id="202" string="Do you really want to exit Setup now?&#10;&#10;If you quit now, the program will not be installed on your computer.&#10;You may run Setup again later to complete the installation.">Czy na pewno chcesz zakończyć teraz instalację?&#10;&#10;Jeżeli wyjdziesz, program nie zostanie zainstalowany na komputerze.&#10;Możesz później uruchomić program instalacyjny, aby dokończyć instalację.</entry>
     <entry id="203" string="Exit Setup">Zakończ instalację</entry>
     <entry id="204" string="The Setup will be cancelled now!">Instalacja zostanie teraz anulowana!</entry>
     <entry id="205" string="Info">Informacja</entry>
+
     <entry id="300" string="Destination directory">Katalog docelowy</entry>
     <entry id="301" string="Select">Przeglądaj</entry>
     <entry id="302" string="Select the folder in which the program will be installed:">Wybierz folder, w którym program zostanie zainstalowany:</entry>
@@ -32,6 +34,7 @@
     <entry id="306" string="Create Start Menu group">Utwórz grupę Menu Start</entry>
     <entry id="307" string="Create Desktop icon">Utwórz ikonę na pulpicie</entry>
     <entry id="308" string="Create Quick Launch icon">Utwórz ikonę szybkiego uruchamiania</entry>
+
     <entry id="1" string="%LONGNAME% Setup">Instalator programu %LONGNAME%</entry>
     <entry id="2" string="Welcome to the %NAME% Setup Wizard&#10;&#10;&#10;This will install %NAME% %VERSION% on your computer.&#10;&#10;It is recommended that you close all other applications you have running&#10;before continuing. This will help avoiding possible conflicts during the&#10;installation process.&#10;&#10;Click Next to continue, or Cancel to exit Setup.">Witamy w Kreatorze instalacji programu %NAME%&#10;&#10;&#10;Na Twoim komputerze zainstalowany zostanie program %NAME% %VERSION%.&#10;&#10;Zalecamy zakończenie pracy z wszystkimi innymi aplikacjami przed rozpoczęciem&#10;procesu instalacji. Dzięki temu będzie można uniknąć nieoczekiwanych&#10;konfliktów z innymi programami.&#10;&#10;Kliknij Dalej, aby kontynuować lub Anuluj, aby zakończyć instalację.</entry>
     <entry id="3" string="Setup - License Agreement">Instalator - Umowa licencyjna</entry>
