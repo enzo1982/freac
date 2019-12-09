@@ -3,10 +3,10 @@
   <info>
     <property name="program">easyUpdate</property>
     <property name="version">0.3</property>
-    <property name="language">&gt;Polish / Polski</property>
+    <property name="language">Polish / Polski</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
-    <property name="template"/>
+    <property name="template">template.xml</property>
     <property name="author">Krzysztof Konopacki, Darek Rzeźnicki</property>
     <property name="url">http://konopacki.eu/</property>
   </info>
