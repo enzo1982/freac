@@ -364,10 +364,6 @@ Int freac::ConvertWorker::Convert()
 					  conversionStep == ConversionStepEncode) && encoder->IsLossless()) encodeChecksum = encoder->GetMD5Checksum();
 		else if	(verifyOutput &&  conversionStep == ConversionStepVerify			  ) verifyChecksum = decoder->GetMD5Checksum();
 
-		/* Output log messages.
-		 */
-		LogConversionEnd(inFileName, encodeChecksum, verifyChecksum);
-
 		/* Free decoder, verifier, processor and encoder.
 		 */
 		decoder->Destroy();
@@ -386,6 +382,10 @@ Int freac::ConvertWorker::Convert()
 		delete encoder;
 
 		BoCA::Config::Free(encoderConfig);
+
+		/* Output log messages.
+		 */
+		LogConversionEnd(inFileName, encodeChecksum, verifyChecksum);
 
 		/* Delete output file if it doesn't look sane.
 		 */
