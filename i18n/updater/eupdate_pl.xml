@@ -31,5 +31,6 @@
     <entry id="18" string="Your application has been successfully updated!">Program został pomyślnie zaktualizowany.</entry>
     <entry id="19" string="Error">Błąd</entry>
     <entry id="20" string="Error downloading package!">Błąd pobierania pliku!</entry>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Błąd instalacji programu &quot;%1&quot;!&#10;&#10;Odmowa dostępu do katalogu aplikacji.</entry>
   </data>
 </LangFile>
