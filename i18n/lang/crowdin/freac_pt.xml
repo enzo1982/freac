@@ -544,9 +544,9 @@
       <section name="Verification">
 	<entry id="5800" string="Verification">Verificação</entry>
 	<entry id="5801" string="Enable input verification">Ativar verificação de entrada</entry>
-	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Verificar se as entradas sem perdas descodificam exatamente os dados&#13;&#10;apartir dos quais foram criados originalmente.</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Verificar se as entradas sem perdas descodificam exatamente os dados&#10;apartir dos quais foram criados originalmente.</entry>
 	<entry id="5803" string="Enable output verification">Ativar verificação de saída</entry>
-	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Verificar se as saídas sem perdas descodificam exatamente os dados&#13;&#10;usados quando codificados.</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Verificar se as saídas sem perdas descodificam exatamente os dados&#10;usados quando codificados.</entry>
       </section>
 
       <section name="Processing">
@@ -595,20 +595,20 @@
       <entry id="7005" string="File already exists">Ficheiro já existe</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">O ficheiro de saída %1&#10;já existe! Quer sobrescrevê-lo?</entry>
       <entry id="7007" string="Overwrite all further files">Sobrescreva todos os demais ficheiros</entry>
-      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Parece estar convertendo de um formato com perdas para um formato sem perdas.&#13;&#10;&#13;&#10;Esteja ciente de que a perda de qualidade não pode ser desfeita; assim, este processo&#13;&#10;não melhorará a qualidade e provavelmente aumentará o tamanho do ficheiro&#13;&#10;&#13;&#10;Gostaria de continuar, de qual forma?&#13;</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Parece estar convertendo de um formato com perdas para um formato sem perdas.&#10;&#10;Esteja ciente de que a perda de qualidade não pode ser desfeita; assim, este processo&#10;não melhorará a qualidade e provavelmente aumentará o tamanho do ficheiro&#10;&#10;Gostaria de continuar, de qual forma?</entry>
     </section>
 
     <section name="Errors">
       <entry id="7100" string="Error: %1">Erro: %1</entry>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Não foi possível criar o componente descodificador: %1&#13;&#10;&#13;&#10;Ficheiro: %1&#13;&#10;Caminho: %2</entry>
+      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Não foi possível criar o componente descodificador: %1&#10;&#10;Ficheiro: %1&#10;Caminho: %2</entry>
       <entry id="7102" string="Could not create encoder component: %1">Não foi possível criar o componente descodificador: %1</entry>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Não foi possível configurar o descodificador para o ficheiro de entrada: %1&#13;&#10;&#13;&#10;Ficheiro: %1&#13;&#10;Caminho: %2&#13;&#10;&#13;&#10;Erro: %3</entry>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Não foi possível configurar o descodificador para o ficheiro de saída: %1&#13;&#10;&#13;&#10;Ficheiro: %1&#13;&#10;Caminho: %2&#13;&#10;&#13;&#10;Erro: %3</entry>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Não foi possível configurar o processador DSP: %1&#13;&#10;&#13;&#10;Erro: %2</entry>
+      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Não foi possível configurar o descodificador para o ficheiro de entrada: %1&#10;&#10;Ficheiro: %1&#10;Caminho: %2&#10;&#10;Erro: %3</entry>
+      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Não foi possível configurar o descodificador para o ficheiro de saída: %1&#10;&#10;Ficheiro: %1&#10;Caminho: %2&#10;&#10;Erro: %3</entry>
+      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Não foi possível configurar o processador DSP: %1&#10;&#10;Erro: %2</entry>
       <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Não é possível aceder ao ficheiro de entrada: %1&#10;&#10;Ficheiro: %1&#10;Pasta: %2</entry>
       <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Não é possível criar ficheiro de saída: %1&#10;&#10;Ficheiro: %1&#10;Pasta: %2</entry>
       <entry id="7108" string="Failed to verify input file: %1">Falha ao verificar o ficheiro de entrada: %1</entry>
-      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Incompatibilidade da soma de verificação ao verificar o ficheiro de saída: %1&#13;&#10;&#13;&#10;Soma de verificação da codificação: %2&#13;&#10;Verificar soma de verificação: %3&#13;&#10;&#13;&#10;soma de verificação</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Incompatibilidade da soma de verificação ao verificar o ficheiro de saída: %1&#10;&#10;Soma de verificação da codificação: %2&#10;Verificar soma de verificação: %3&#10;&#10;soma de verificação</entry>
       <entry id="7110" string="File not found">Ficheiro não encontrado</entry>
       <entry id="7111" string="Unknown file type">Tipo de ficheiro desconhecido</entry>
       <entry id="7112" string="Invalid file format">Formato de ficheiro inválido</entry>
@@ -621,7 +621,7 @@
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Suporte CDDB está inativo! Ative o suporte CDDB&#10;local ou remoto no diálogo de configuração.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Suporte ao CDDB remoto está inativo! Ative o&#10;CDDB no diálogo de configuração.</entry>
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">O acesso ao drive de CD foi bloqueado pelo Windows.&#10;&#10;Contacte o administrador do sistema para permitir&#10;acesso à drive de CD-ROM.</entry>
-      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Nenhuma caixa de diálogo de configuração disponível para:&#13;&#10;&#13;&#10;% 1&#13;</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Nenhuma caixa de diálogo de configuração disponível para:&#10;&#10;% 1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">A pasta selecionada já não existe!</entry>
     </section>
 
@@ -639,7 +639,7 @@
 
       <section name="Format">
 	<entry id="8100" string="Select sample format">Selecionar formato da amostra</entry>
-	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">As faixas selecionadas têm diferentes formatos de amostra. Por favor selecione&#13;&#10;o formato de amostra desejado do ficheiro de saída:</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">As faixas selecionadas têm diferentes formatos de amostra. Por favor selecione&#10;o formato de amostra desejado do ficheiro de saída:</entry>
 	<entry id="8102" string="Select">Escolher</entry>
       </section>
 
@@ -995,7 +995,7 @@
 	<entry id="41004" string="auto select">seleção automática</entry>
 
 	<section name="Errors">
-	  <entry id="41100" string="Could not find suitable audio format.">Não foi possível encontrar o formato de áudio adequado.&#13;</entry>
+	  <entry id="41100" string="Could not find suitable audio format.">Não foi possível encontrar o formato de áudio adequado.</entry>
 	  <entry id="41101" string="Unable to use selected audio format.">Não foi possível usar o formato de áudio selecionado.</entry>
 	</section>
       </section>
@@ -1166,7 +1166,7 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Suporte este projeto</entry>
 	<entry id="100001" string="Please support this project!">Por favor, apoiem este projeto!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Ajude a manter este software livre, apoiando o projeto %1 com um&#13;&#10;donativo.</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Ajude a manter este software livre, apoiando o projeto %1 com um&#10;donativo.</entry>
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Escreva para %1 se desejar enviar um cheque ou&#10;dinheiro pelo correio.</entry>
 	<entry id="100004" string="Thank you very much!">Obrigado!</entry>
 	<entry id="100005" string="Remind me later">Lembre-me mais tarde</entry>
@@ -1184,18 +1184,18 @@
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">O Donorbox permite doações rápidas e simples com cartão de crédito. Clique aqui&#13;&#10;para fazer uma doação com o Donorbox:</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">O Donorbox permite doações rápidas e simples com cartão de crédito. Clique aqui&#10;para fazer uma doação com o Donorbox:</entry>
 	  <entry id="100201" string="Donate">Doar</entry>
 	  <entry id="100202" string="usd">eur</entry>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Digitalize ou clique no código QR ou copie o seguinte&#13;&#10;endereço para doar Bitcoin:</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Digitalize ou clique no código QR ou copie o seguinte&#10;endereço para doar Bitcoin:</entry>
 	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Este endereço também aceita Bitcoin Cash e outras confluências.</entry>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Digitalize ou clique no código QR ou copie o seguinte&#13;&#10;endereço para doar Ethereum:</entry>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Digitalize ou clique no código QR ou copie o seguinte&#10;endereço para doar Ethereum:</entry>
 	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">Este endereço também aceita tokens Ether Classic e ERC20.</entry>
 	</section>
 
@@ -1248,7 +1248,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Este URL não é suportado ou não é um URL da página de vídeo!</entry>
 	  <entry id="102202" string="Error downloading video!">Erro ao transferir o vídeo!</entry>
 	  <entry id="102203" string="You are already downloading this video!">Este vídeo já está a ser transferido!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Não foi possível encontrar alguns descodificadores de vídeo necessários. Ficheiros de vídeo&#13;&#10;não podem ser adicionados à lista de tarefas para conversão em ficheiros de áudio.&#13;&#10;&#13;&#10;Instale avconv ou FFmpeg para corrigir este problema!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Não foi possível encontrar alguns descodificadores de vídeo necessários. Ficheiros de vídeo&#10;não podem ser adicionados à lista de tarefas para conversão em ficheiros de áudio.&#10;&#10;Instale avconv ou FFmpeg para corrigir este problema!</entry>
 	</section>
       </section>
 

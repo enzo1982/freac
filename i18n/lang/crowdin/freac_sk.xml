@@ -721,7 +721,7 @@
 	<entry id="22001" string="Read tags from referenced files">Čítať tagy z odkazovaných súborov</entry>
 	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Uprednostniť metaúdaje cue zoznamu pred tagmi odkazovaných súborov</entry>
 	<entry id="22003" string="Alternative files">Alernatívne súbory</entry>
-	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Ak nie je možné nájsť odkazované súbory WAV, hľadaj  komprimované alternatívy</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Ak nie je možné nájsť odkazované súbory WAV, hľadaj komprimované alternatívy</entry>
 	<entry id="22005" string="Error handling">Spracovanie chýb</entry>
 	<entry id="22006" string="Ignore errors during cue sheet processing">Ignorovať chyby počas spracovania cue zoznamu</entry>
       </section>
@@ -969,7 +969,7 @@
 	<entry id="40004" string="Music">Hudba</entry>
 	<entry id="40005" string="Bandwidth">Širka pásma</entry>
 	<entry id="40006" string="Narrowband">Úzke pásmo</entry>
-	<entry id="40007" string="Mediumband">Stredné  pásmo</entry>
+	<entry id="40007" string="Mediumband">Stredné pásmo</entry>
 	<entry id="40008" string="Wideband">Široké pásmo</entry>
 	<entry id="40009" string="Superwideband">Super široké pásmo</entry>
 	<entry id="40010" string="Fullband">Plné pásmo</entry>
