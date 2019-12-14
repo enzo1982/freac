@@ -104,7 +104,12 @@ Void BoCA::LayerProtocols::OnChangeLanguageSettings()
 	/* Set texts and positions.
 	 */
 	text_protocol->SetText(i18n->AddColon(i18n->TranslateString("Log")));
+
 	btn_save->SetText(i18n->TranslateString("Save as"));
+	btn_save->SetWidth(btn_save->GetUnscaledTextWidth() + 14);
+	btn_save->SetX(btn_save->GetWidth() + 8);
+
+	combo_protocol->SetX(btn_save->GetWidth() + 316);
 
 	list_protocol->RemoveAllTabs();
 
