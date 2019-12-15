@@ -1,4 +1,4 @@
-fre:ac Version 1.1 Alpha
+fre:ac Version 1.1 Beta 1
 
 fre:ac ist ein freier Open-Source Audiokonverter. Das Programm unterstützt das Rippen
 von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate:
@@ -147,7 +147,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1 Alpha (November 2019)
+	Version 1.1 Beta 1 (Dezember 2019)
 
 		- Framework für Erweiterungskomponenten implementiert, um fre:ac zu modularisieren
 

@@ -1,6 +1,6 @@
 name: freac
-version: '1.1~alpha'
-version-script: echo 1.1~alpha`date +"%Y%m%d"`
+version: '1.1~beta1'
+#version-script: echo 1.1~beta1-`date +"%Y%m%d"`
 summary: Audio converter and CD ripper
 description: |
   fre:ac is a free and open source audio converter. It comes with
@@ -243,7 +243,7 @@ parts:
     plugin: make
     make-parameters: [ prefix= ]
     override-build: |
-      patch -p1 < $SNAPCRAFT_STAGE/freac-cdk-1.1-alpha-snap.patch
+      patch -p1 < $SNAPCRAFT_STAGE/freac-cdk-1.1-beta-snap.patch
       snapcraftctl build
     build-packages:
       - libpulse-dev

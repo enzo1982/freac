@@ -320,7 +320,7 @@
                 },
                 {
                     "type": "patch",
-                    "path": "patches/freac-1.1-alpha-noudev.patch"
+                    "path": "patches/freac-1.1-beta-noudev.patch"
                 }
             ]
         }

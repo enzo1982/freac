@@ -39,15 +39,15 @@ PROVIDES="
 	"
 REQUIRES="
 	haiku$secondaryArchSuffix
-	boca$secondaryArchSuffix >= 1.0~alpha20190423
+	boca$secondaryArchSuffix >= 1.0~beta1
 	smooth$secondaryArchSuffix >= 0.9.0
 	cmd:ffmpeg
 	cmd:mpcdec
 	cmd:mpcenc
 	cmd:wavpack
 	cmd:wvunpack
-	lib:libsmooth_0.9$secondaryArchSuffix >= 1
-	lib:libboca_1.0$secondaryArchSuffix >= 1
+	lib:libsmooth_0.9$secondaryArchSuffix >= 0
+	lib:libboca_1.0$secondaryArchSuffix >= 2
 	lib:libcdio$secondaryArchSuffix
 	lib:libcdio_cdda$secondaryArchSuffix
 	lib:libcdio_paranoia$secondaryArchSuffix
@@ -69,9 +69,9 @@ REQUIRES="
 
 BUILD_REQUIRES="
 	haiku${secondaryArchSuffix}_devel
-	boca${secondaryArchSuffix}_devel >= 1.0~alpha20190423
+	boca${secondaryArchSuffix}_devel >= 1.0~beta1
 	smooth${secondaryArchSuffix}_devel >= 0.9.0
-	devel:libboca_1.0$secondaryArchSuffix >= 1
+	devel:libboca_1.0$secondaryArchSuffix >= 2
 	"
 BUILD_PREREQUIRES="
 	cmd:g++$secondaryArchSuffix
