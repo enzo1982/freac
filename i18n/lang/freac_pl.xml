@@ -1148,6 +1148,7 @@
 	<entry id="80405" string="Extra encode processing">Dodatkowe przetwarzanie</entry>
 	<entry id="80406" string="faster">szybciej</entry>
 	<entry id="80407" string="better">lepiej</entry>
+	<entry id="80408" string="%1 kbps">%1 kb/s</entry>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1158,6 +1159,12 @@
 	<entry id="80504" string="better">lepsza</entry>
 	<entry id="80505" string="Bitrate">Przepływność bitów</entry>
 	<entry id="80506" string="Bitrate (Streaming)">Przepływność bitów (strumieniowanie)</entry>
+	<entry id="80507" string="%1 kbps">%1 kb/s</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">Przepływność bitów</entry>
+	<entry id="80601" string="%1 kbps">%1 kb/s</entry>
       </section>
     </section>
 

@@ -1146,6 +1146,7 @@
 	<entry id="80405" string="Extra encode processing">追加エンコード処理</entry>
 	<entry id="80406" string="faster">より速く</entry>
 	<entry id="80407" string="better">高</entry>
+	<entry id="80408" string="%1 kbps">%1 kbps</entry>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1156,6 +1157,12 @@
 	<entry id="80504" string="better">高</entry>
 	<entry id="80505" string="Bitrate">ビットレート</entry>
 	<entry id="80506" string="Bitrate (Streaming)">ビットレート（ストリーミング）</entry>
+	<entry id="80507" string="%1 kbps">%1 kbps</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">ビットレート</entry>
+	<entry id="80601" string="%1 kbps">%1 kbps</entry>
       </section>
     </section>
 

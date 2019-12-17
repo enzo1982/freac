@@ -1148,6 +1148,7 @@
 	<entry id="80405" string="Extra encode processing">Ekstra Koder behandling</entry>
 	<entry id="80406" string="faster">hurtigere</entry>
 	<entry id="80407" string="better">bedre</entry>
+	<entry id="80408" string="%1 kbps">%1 kbps</entry>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1158,6 +1159,12 @@
 	<entry id="80504" string="better">bedre</entry>
 	<entry id="80505" string="Bitrate">Bitrate</entry>
 	<entry id="80506" string="Bitrate (Streaming)">Bitrate (Streaming)</entry>
+	<entry id="80507" string="%1 kbps">%1 kbps</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">Bitrate</entry>
+	<entry id="80601" string="%1 kbps">%1 kbps</entry>
       </section>
     </section>
 
