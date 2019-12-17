@@ -98,13 +98,13 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://monkeysaudio.com/files/MAC_SDK_508b.zip",
-                    "sha256": "29a3b8f34f4121b1c391ec4ed7f84dedba3066bb66a99a46edb5bebaa4795392",
+                    "url": "https://monkeysaudio.com/files/MAC_SDK_510.zip",
+                    "sha256": "b65bc23150b9064b207de1ca1fd21687c9d10e0c7812a99b77f158c886522a9c",
                     "strip-components": 0
                 },
                 {
                     "type": "patch",
-                    "path": "patches/mac-sdk-5.08b-gcc.patch"
+                    "path": "patches/mac-sdk-5.10-gcc.patch"
                 }
             ]
         },
