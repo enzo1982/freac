@@ -950,7 +950,7 @@
 	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Opcje</entry>
 	<entry id="39011" string="Voice Activity Detection">Wykrywanie aktywności głosowej</entry>
-	<entry id="39012" string="Discontinued Transmission">Transmisja przerywana (DTX)</entry>
+	<entry id="39012" string="Discontinuous Transmission">Transmisja przerywana (DTX)</entry>
 	<entry id="39013" string="Algorithm complexity">Złożoność algorytmu</entry>
 	<entry id="39014" string="Complexity">Złożoność</entry>
 	<entry id="39015" string="CBR quality">Jakość CBR</entry>

@@ -950,7 +950,7 @@
 	<entry id="39009" string="ABR">ABR(Average Bitrate)</entry>
 	<entry id="39010" string="Options">Indstillinger</entry>
 	<entry id="39011" string="Voice Activity Detection">Stemme aktivitet opdagelse</entry>
-	<entry id="39012" string="Discontinued Transmission">Afbrudt udsendelse</entry>
+	<entry id="39012" string="Discontinuous Transmission">Afbrudt udsendelse</entry>
 	<entry id="39013" string="Algorithm complexity">Algoritme kompleksitet</entry>
 	<entry id="39014" string="Complexity">Kompleksitet</entry>
 	<entry id="39015" string="CBR quality">CBR Kvalitet</entry>

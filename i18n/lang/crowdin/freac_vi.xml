@@ -950,7 +950,7 @@
 	<entry id="39009" string="ABR"/>
 	<entry id="39010" string="Options">Tùy chọn</entry>
 	<entry id="39011" string="Voice Activity Detection"/>
-	<entry id="39012" string="Discontinued Transmission"/>
+	<entry id="39012" string="Discontinuous Transmission"/>
 	<entry id="39013" string="Algorithm complexity"/>
 	<entry id="39014" string="Complexity"/>
 	<entry id="39015" string="CBR quality"/>
@@ -1148,6 +1148,7 @@
 	<entry id="80405" string="Extra encode processing"/>
 	<entry id="80406" string="faster"/>
 	<entry id="80407" string="better"/>
+	<entry id="80408" string="%1 kbps"/>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1158,6 +1159,12 @@
 	<entry id="80504" string="better"/>
 	<entry id="80505" string="Bitrate"/>
 	<entry id="80506" string="Bitrate (Streaming)"/>
+	<entry id="80507" string="%1 kbps"/>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate"/>
+	<entry id="80601" string="%1 kbps"/>
       </section>
     </section>
 

@@ -950,7 +950,7 @@
 	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Opzioni</entry>
 	<entry id="39011" string="Voice Activity Detection">Rilevamento attività vocale</entry>
-	<entry id="39012" string="Discontinued Transmission">Trasmissione discontinua</entry>
+	<entry id="39012" string="Discontinuous Transmission">Trasmissione discontinua</entry>
 	<entry id="39013" string="Algorithm complexity">Complessità algoritmo</entry>
 	<entry id="39014" string="Complexity">Complessità</entry>
 	<entry id="39015" string="CBR quality">Qualità CBR</entry>

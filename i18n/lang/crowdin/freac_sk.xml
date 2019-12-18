@@ -950,7 +950,7 @@
 	<entry id="39009" string="ABR">ABR (Average BR)</entry>
 	<entry id="39010" string="Options">Možnosti</entry>
 	<entry id="39011" string="Voice Activity Detection">Detekcia hlasovej aktivity</entry>
-	<entry id="39012" string="Discontinued Transmission">Discontinued Transmission</entry>
+	<entry id="39012" string="Discontinuous Transmission">Discontinuous Transmission</entry>
 	<entry id="39013" string="Algorithm complexity">Zložitosť algoritmu</entry>
 	<entry id="39014" string="Complexity">Zložitosť</entry>
 	<entry id="39015" string="CBR quality">CBR kvalita</entry>
@@ -983,7 +983,7 @@
 	<entry id="40018" string="Stream">Stream</entry>
 	<entry id="40019" string="Frame length">Dĺžka rámca</entry>
 	<entry id="40020" string="Options">Možnosti</entry>
-	<entry id="40021" string="Enable discontinous transmission">Povoliť discontinued transmission</entry>
+	<entry id="40021" string="Enable discontinous transmission">Povoliť discontinuous transmission</entry>
 	<entry id="40022" string="Expected packet loss">Očakávaná strata</entry>
       </section>
 
