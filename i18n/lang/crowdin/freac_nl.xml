@@ -11,40 +11,40 @@
     <property name="url">https://www.freac.org/</property>
   </info>
   <data>
-    <entry id="100" string="OK">OK</entry>
+    <entry id="100" string="OK">Ok</entry>
     <entry id="101" string="Cancel">Annuleren</entry>
     <entry id="102" string="Close">Sluiten</entry>
 
     <entry id="200" string="Error">Fout</entry>
-    <entry id="201" string="Warning"/>
+    <entry id="201" string="Warning">Waarschuwing</entry>
     <entry id="202" string="Info">Info</entry>
 
-    <entry id="210" string="Do not display this warning again"/>
-    <entry id="211" string="Do not display this note again"/>
+    <entry id="210" string="Do not display this warning again">Deze waarschuwing niet meer weergeven</entry>
+    <entry id="211" string="Do not display this note again">Deze opmerking niet meer weergeven</entry>
 
     <entry id="300" string="Artist">Artiest</entry>
     <entry id="301" string="Title">Titel</entry>
     <entry id="302" string="Album">Album</entry>
-    <entry id="303" string="Track">Nummer</entry>
+    <entry id="303" string="Track">Track</entry>
     <entry id="304" string="Genre">Genre</entry>
-    <entry id="305" string="Comment">Commentaar</entry>
+    <entry id="305" string="Comment">Opmerking</entry>
     <entry id="306" string="Year">Jaar</entry>
-    <entry id="307" string="Disc"/>
-    <entry id="308" string="Rating"/>
-    <entry id="309" string="File name"/>
-    <entry id="310" string="File type"/>
-    <entry id="311" string="Album artist"/>
+    <entry id="307" string="Disc">Schijf</entry>
+    <entry id="308" string="Rating">Waardering</entry>
+    <entry id="309" string="File name">Bestandsnaam</entry>
+    <entry id="310" string="File type">Bestandstype</entry>
+    <entry id="311" string="Album artist">Albumartiest</entry>
 
     <entry id="350" string="unknown artist">onbekende artiest</entry>
     <entry id="351" string="unknown title">onbekende titel</entry>
     <entry id="352" string="unknown album">onbekend album</entry>
     <entry id="353" string="unknown genre">onbekend genre</entry>
     <entry id="354" string="unknown year">onbekend jaar</entry>
-    <entry id="355" string="unknown conductor"/>
-    <entry id="356" string="unknown composer"/>
-    <entry id="357" string="unknown album artist"/>
+    <entry id="355" string="unknown conductor">onbekende dirigent</entry>
+    <entry id="356" string="unknown composer">onbekende componist</entry>
+    <entry id="357" string="unknown album artist">onbekende albumartiest</entry>
 
-    <entry id="380" string="hidden track"/>
+    <entry id="380" string="hidden track">verborgen track</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 bytes</entry>
-      <entry id="517" string="%1 kB"/>
+      <entry id="517" string="%1 kB">%1 kB</entry>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
@@ -68,7 +68,7 @@
       <entry id="1000" string="File">Bestand</entry>
       <entry id="1001" string="Options">Opties</entry>
       <entry id="1002" string="Database">Databank</entry>
-      <entry id="1003" string="Processing"/>
+      <entry id="1003" string="Processing">Verwerking</entry>
       <entry id="1004" string="Encode">Coderen</entry>
       <entry id="1005" string="Help">Help</entry>
 
@@ -100,20 +100,20 @@
 	<entry id="1300" string="General settings">Algemene instellingen</entry>
 	<entry id="1301" string="Configure selected encoder">Geselecteerde encoder configureren</entry>
 	<entry id="1302" string="Active CD-ROM drive">Actief cd-romstation</entry>
-	<entry id="1303" string="Active configuration"/>
-	<entry id="1304" string="Default configuration"/>
+	<entry id="1303" string="Active configuration">Actieve configuratie</entry>
+	<entry id="1304" string="Default configuration">Standaardconfiguratie</entry>
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing"/>
-	<entry id="1401" string="Enable processing during playback"/>
-	<entry id="1402" string="Configure signal processing"/>
-	<entry id="1403" string="Selected signal processors"/>
+	<entry id="1400" string="Enable signal processing">Signaalverwerking inschakelen</entry>
+	<entry id="1401" string="Enable processing during playback">Verwerken tijdens afspelen inschakelen</entry>
+	<entry id="1402" string="Configure signal processing">Signaalverwerking configureren</entry>
+	<entry id="1403" string="Selected signal processors">Geselecteerde signaalverwerkers</entry>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Coderen starten</entry>
-	<entry id="1501" string="Start encoding (deleting original files)"/>
+	<entry id="1501" string="Start encoding (deleting original files)">Coderen starten (oorspronkelijke bestanden verwijderen)</entry>
 	<entry id="1502" string="Start encoding with">Coderen starten met</entry>
 	<entry id="1503" string="Pause/resume encoding">Coderen pauzeren/hervatten</entry>
 	<entry id="1504" string="Stop encoding">Coderen stoppen</entry>
@@ -132,8 +132,8 @@
 	<entry id="1603" string="Check for updates at startup">Bij het opstarten controleren op updates</entry>
 	<entry id="1604" string="About %1">Over %1</entry>
 	<entry id="1605" string="index_en.html">index.html</entry>
-	<entry id="1606" string="Report an issue"/>
-	<entry id="1607" string="Suggest a feature"/>
+	<entry id="1606" string="Report an issue">Een probleem melden</entry>
+	<entry id="1607" string="Suggest a feature">Een nieuwe functie voorstellen</entry>
       </section>
     </section>
 
@@ -147,7 +147,7 @@
       <entry id="2006" string="Configure general settings">Algemene instellingen configureren</entry>
       <entry id="2007" string="Configure the selected audio encoder">Geselecteerde encoder configureren</entry>
       <entry id="2008" string="Start the encoding process">Het coderingsproces starten</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)"/>
+      <entry id="2009" string="Start the encoding process (deleting original files)">Het codeerproces starten (oospronkelijke bestanden verwijderen)</entry>
       <entry id="2010" string="Pause/resume encoding">Coderen pauzeren/hervatten</entry>
       <entry id="2011" string="Stop encoding">Coderen stoppen</entry>
     </section>
@@ -198,14 +198,14 @@
       <entry id="3042" string="Audio Files">Audiobestanden</entry>
       <entry id="3043" string="All Files">Alle bestanden</entry>
       <entry id="3044" string="Playlist Files">Afspeellijst-bestanden</entry>
-      <entry id="3045" string="Active decoder"/>
-      <entry id="3046" string="Joblist"/>
-      <entry id="3047" string="unknown"/>
-      <entry id="3048" string="Other"/>
-      <entry id="3049" string="Output file name"/>
-      <entry id="3050" string="verifying"/>
-      <entry id="3051" string="Open"/>
-      <entry id="3052" string="CD drive"/>
+      <entry id="3045" string="Active decoder">Actieve decoder</entry>
+      <entry id="3046" string="Joblist">Takenlijst</entry>
+      <entry id="3047" string="unknown">onbekend</entry>
+      <entry id="3048" string="Other">Andere</entry>
+      <entry id="3049" string="Output file name">Uitvoerbestandsnaam</entry>
+      <entry id="3050" string="verifying">verifiëren</entry>
+      <entry id="3051" string="Open">Openen</entry>
+      <entry id="3052" string="CD drive">Cd-station</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Map</entry>
@@ -219,13 +219,13 @@
 	<entry id="3201" string="Pattern">Patroon</entry>
 	<entry id="3202" string="Start folder">Beginmap</entry>
 	<entry id="3203" string="Filename pattern">Bestandspatroon</entry>
-	<entry id="3204" string="Search subfolders"/>
+	<entry id="3204" string="Search subfolders">Submappen doorzoeken</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">Selecteer de map om toe te voegen aan de takenlijst</entry>
       </section>
 
       <section name="Character set">
-	<entry id="3300" string="Character set"/>
-	<entry id="3301" string="Choose character set"/>
+	<entry id="3300" string="Character set">Tekenset</entry>
+	<entry id="3301" string="Choose character set">Tekenset kiezen</entry>
       </section>
 
       <section name="Errors">
@@ -235,44 +235,44 @@
     </section>
 
     <section name="Jobs">
-      <entry id="3500" string="Jobs"/>
-      <entry id="3501" string="Progress"/>
-      <entry id="3502" string="Errors / Warnings"/>
-      <entry id="3503" string="Details"/>
-      <entry id="3504" string="Error details"/>
-      <entry id="3505" string="Time left"/>
-      <entry id="3506" string="Waiting for other jobs to finish"/>
+      <entry id="3500" string="Jobs">Taken</entry>
+      <entry id="3501" string="Progress">Voortgang</entry>
+      <entry id="3502" string="Errors / Warnings">Fouten/waarschuwingen</entry>
+      <entry id="3503" string="Details">Details</entry>
+      <entry id="3504" string="Error details">Foutdetails</entry>
+      <entry id="3505" string="Time left">Resterende tijd</entry>
+      <entry id="3506" string="Waiting for other jobs to finish">Wachten tot andere taken klaar zijn</entry>
 
       <section name="Joblist">
-	<entry id="3600" string="Reading folders"/>
-	<entry id="3601" string="Filtering duplicates"/>
-	<entry id="3602" string="Adding files"/>
-	<entry id="3603" string="Adding tracks"/>
-	<entry id="3604" string="Added %1 files, %2 errors occurred"/>
-	<entry id="3605" string="Added %1 tracks, %2 errors occurred"/>
-	<entry id="3606" string="Removing all tracks"/>
-	<entry id="3607" string="Removing tracks of disc in drive %1"/>
-	<entry id="3608" string="Removed all tracks from joblist"/>
-	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist"/>
+	<entry id="3600" string="Reading folders">Mappen lezen</entry>
+	<entry id="3601" string="Filtering duplicates">Duplicaten filteren</entry>
+	<entry id="3602" string="Adding files">Bestanden toevoegen</entry>
+	<entry id="3603" string="Adding tracks">Tracks toevoegen</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">%1 bestanden toegevoegd, %2 fouten</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">%1 tracks toegevoegd, %2 fouten</entry>
+	<entry id="3606" string="Removing all tracks">Alle tracks verwijderen</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">Tracks van schijf in station %1 verwijderen</entry>
+	<entry id="3608" string="Removed all tracks from joblist">Alle tracks uit takenlijst verwijderd</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">Tracks van schijf in station %1 verwijderd uit takenlijst</entry>
       </section>
 
       <section name="Convert">
-	<entry id="3700" string="Checking sample formats"/>
-	<entry id="3701" string="Checking for lossy to lossless conversion"/>
-	<entry id="3702" string="Checking output file names"/>
-	<entry id="3703" string="Converting %1"/>
-	<entry id="3704" string="Verifying %1"/>
-	<entry id="3705" string="Conversion cancelled"/>
-	<entry id="3706" string="Conversion finished"/>
-	<entry id="3707" string="Conversion finished with %1 warnings"/>
-	<entry id="3708" string="Conversion finished with %1 errors"/>
+	<entry id="3700" string="Checking sample formats">Sampleformaten controleren</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">Controleren op lossy naar lossless conversie</entry>
+	<entry id="3702" string="Checking output file names">Uitvoerbestandsnamen controleren</entry>
+	<entry id="3703" string="Converting %1">%1 converteren</entry>
+	<entry id="3704" string="Verifying %1">%1 verifiëren</entry>
+	<entry id="3705" string="Conversion cancelled">Conversie geannuleerd</entry>
+	<entry id="3706" string="Conversion finished">Conversie voltooid</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">Conversie voltooid met %1 waarschuwingen</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">Conversie voltooid met %1 fouten</entry>
       </section>
 
       <section name="Update">
-	<entry id="3800" string="Preparing update check"/>
-	<entry id="3801" string="Contacting update server"/>
-	<entry id="3802" string="Updates found"/>
-	<entry id="3803" string="No updates found"/>
+	<entry id="3800" string="Preparing update check">Controle op updates voorbereiden</entry>
+	<entry id="3801" string="Contacting update server">Update-server contacteren</entry>
+	<entry id="3802" string="Updates found">Updates gevonden</entry>
+	<entry id="3803" string="No updates found">Geen updates gevonden</entry>
       </section>
     </section>
 
@@ -308,10 +308,10 @@
 	<entry id="4106" string="Matches">Resultaten</entry>
 	<entry id="4107" string="Select the entry that best fits your CD">Selecteer het resultaat dat het best bij uw schijf past</entry>
 	<entry id="4108" string="Would you like to perform this query again later?">Wilt u deze zoekopdracht later nogmaals uitvoeren?</entry>
-	<entry id="4109" string="Would you like to perform the remaining queries again later?"/>
+	<entry id="4109" string="Would you like to perform the remaining queries again later?">Wilt u de resterende zoekopdrachten later opnieuw uitvoeren?</entry>
 	<entry id="4110" string="none">geen</entry>
 	<entry id="4111" string="Preview">Voorbeeld</entry>
-	<entry id="4112" string="loading preview"/>
+	<entry id="4112" string="loading preview">voorbeeld laden</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Er is een fout opgetreden bij het verbinden met de freedb server.</entry>
@@ -325,7 +325,7 @@
 	<entry id="4203" string="Query all">Alles opzoeken</entry>
 	<entry id="4204" string="Query string">String opzoeken</entry>
 	<entry id="4205" string="CDDB queries to perform">Uit te voeren CDDB-zoekopdrachten</entry>
-	<entry id="4206" string="Querying CD information"/>
+	<entry id="4206" string="Querying CD information">Cd-informatie opzoeken</entry>
       </section>
 
       <section name="Manage submits">
@@ -358,27 +358,27 @@
       <entry id="5002" string="Playlists">Afspeellijsten</entry>
       <entry id="5003" string="Language">Taal</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
-      <entry id="5005" string="Interface"/>
+      <entry id="5005" string="Interface">Interface</entry>
       <entry id="5006" string="Tags">Info tags</entry>
-      <entry id="5007" string="Components"/>
-      <entry id="5008" string="Decoders"/>
-      <entry id="5009" string="Output"/>
-      <entry id="5010" string="DSP"/>
-      <entry id="5011" string="Extensions"/>
-      <entry id="5012" string="Other"/>
-      <entry id="5013" string="Active configuration"/>
-      <entry id="5014" string="New"/>
-      <entry id="5015" string="Delete"/>
-      <entry id="5016" string="Command line arguments"/>
-      <entry id="5017" string="Resulting arguments string"/>
-      <entry id="5018" string="Default configuration"/>
-      <entry id="5019" string="New configuration"/>
-      <entry id="5020" string="Ripper">Ripper</entry>
-      <entry id="5021" string="Settings"/>
-      <entry id="5022" string="Resources"/>
-      <entry id="5023" string="Verifiers"/>
-      <entry id="5024" string="Taggers"/>
-      <entry id="5025" string="Processing"/>
+      <entry id="5007" string="Components">Onderdelen</entry>
+      <entry id="5008" string="Decoders">Decoders</entry>
+      <entry id="5009" string="Output">Uitvoer</entry>
+      <entry id="5010" string="DSP">DSP</entry>
+      <entry id="5011" string="Extensions">Extensies</entry>
+      <entry id="5012" string="Other">Andere</entry>
+      <entry id="5013" string="Active configuration">Actieve configuratie</entry>
+      <entry id="5014" string="New">Nieuw</entry>
+      <entry id="5015" string="Delete">Verwijderen</entry>
+      <entry id="5016" string="Command line arguments">Opdrachtregelparameters</entry>
+      <entry id="5017" string="Resulting arguments string">Resulterende parameters string</entry>
+      <entry id="5018" string="Default configuration">Standaardconfiguratie</entry>
+      <entry id="5019" string="New configuration">Nieuwe configuratie</entry>
+      <entry id="5020" string="Ripper">CDRip</entry>
+      <entry id="5021" string="Settings">Instellingen</entry>
+      <entry id="5022" string="Resources">Bronnen</entry>
+      <entry id="5023" string="Verifiers">Verifiers</entry>
+      <entry id="5024" string="Taggers">Taggers</entry>
+      <entry id="5025" string="Processing">Verwerking</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Encoder configureren</entry>
@@ -393,13 +393,13 @@
 	<entry id="5109" string="Encode 'On-The-Fly'">'On-The-Fly' coderen</entry>
 	<entry id="5110" string="Keep ripped Wave files">Geripte bestanden houden</entry>
 	<entry id="5111" string="Encode to a single file">Coderen naar enkel bestand</entry>
-	<entry id="5112" string="Output filenames"/>
-	<entry id="5113" string="Allow Unicode characters"/>
-	<entry id="5114" string="Replace spaces with underscores"/>
-	<entry id="5115" string="Remove processed tracks from joblist"/>
-	<entry id="5116" string="Add encoded files to joblist"/>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames"/>
-	<entry id="5118" string="Keep time stamps of source files"/>
+	<entry id="5112" string="Output filenames">Uitvoerbestandsnamen</entry>
+	<entry id="5113" string="Allow Unicode characters">Unicode-tekens toestaan</entry>
+	<entry id="5114" string="Replace spaces with underscores">Spaties vervangen door underscores</entry>
+	<entry id="5115" string="Remove processed tracks from joblist">Verwerkte tracks verwijderen uit takenlijst</entry>
+	<entry id="5116" string="Add encoded files to joblist">Gecodeerde bestanden toevoegen aan takenlijst</entry>
+	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Opeenvolgende getallen toevoegen aan anders identieke bestandsnamen</entry>
+	<entry id="5118" string="Keep time stamps of source files">Tijdstempels van bronbestanden behouden</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">De uitvoermap bestaat niet. Wilt u ze aanmaken?</entry>
@@ -414,9 +414,9 @@
 	<entry id="5204" string="Use encoder output folder">Uitvoermap van encoder gebruiken</entry>
 	<entry id="5205" string="Filename pattern">Bestandspatroon</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Selecteer de map waarin de afspeellijstbestanden geplaatst moeten worden</entry>
-	<entry id="5207" string="Output filenames"/>
-	<entry id="5208" string="Configure plugin"/>
-	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion"/>
+	<entry id="5207" string="Output filenames">Uitvoerbestandsnamen</entry>
+	<entry id="5208" string="Configure plugin">Plug-in configureren</entry>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Slechts één afspeellijst- en/of cue-sheet-bestand aanmaken per conversie</entry>
       </section>
 
       <section name="CDDB">
@@ -436,7 +436,7 @@
 	<entry id="5313" string="Prefer CDDB over CD Text">CDDB voorkeur boven cd-text</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB-cache activeren</entry>
 	<entry id="5315" string="Automatization">Automatisatie</entry>
-	<entry id="5316" string="Always select first entry"/>
+	<entry id="5316" string="Always select first entry">Altijd eerste item selecteren</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Uitgebreide CDDB-instellingen</entry>
@@ -472,94 +472,94 @@
 	<entry id="5503" string="Replace existing comments with default comment">Bestaande opmerkingen vervangen door standaardcommentaar</entry>
 	<entry id="5504" string="Filename pattern">Bestandspatroon</entry>
 	<entry id="5505" string="Encoding">Coderen</entry>
-	<entry id="5506" string="Comments"/>
-	<entry id="5507" string="Cover art"/>
-	<entry id="5508" string="Read cover art"/>
-	<entry id="5509" string="Read cover art from tags"/>
-	<entry id="5510" string="Read cover art from files"/>
-	<entry id="5511" string="Write cover art"/>
-	<entry id="5512" string="Write cover art to tags"/>
-	<entry id="5513" string="Write cover art to files"/>
-	<entry id="5514" string="Add reference to audio file tag"/>
-	<entry id="5515" string="Other"/>
-	<entry id="5516" string="Chapters"/>
-	<entry id="5517" string="Read chapters from files"/>
-	<entry id="5518" string="Write chapters to files"/>
-	<entry id="5519" string="Special fields"/>
-	<entry id="5520" string="Write CD table of contents"/>
-	<entry id="5521" string="Preserve Replay Gain information"/>
-	<entry id="5522" string="Cue sheets"/>
-	<entry id="5523" string="Read cue sheets embedded in metadata"/>
-	<entry id="5524" string="Prefer cue sheets over chapter information"/>
-	<entry id="5525" string="Prepend zero to track numbers below 10"/>
-	<entry id="5526" string="File size limit"/>
-	<entry id="5527" string="unlimited"/>
+	<entry id="5506" string="Comments">Opmerkingen</entry>
+	<entry id="5507" string="Cover art">Albumhoes</entry>
+	<entry id="5508" string="Read cover art">Albumhoes lezen</entry>
+	<entry id="5509" string="Read cover art from tags">Albumhoes lezen uit tags</entry>
+	<entry id="5510" string="Read cover art from files">Albumhoes lezen uit bestanden</entry>
+	<entry id="5511" string="Write cover art">Albumhoes schrijven</entry>
+	<entry id="5512" string="Write cover art to tags">Albumhoes schrijven naar tags</entry>
+	<entry id="5513" string="Write cover art to files">Albumhoes schrijven naar bestanden</entry>
+	<entry id="5514" string="Add reference to audio file tag">Referentie toevoegen aan audiobestand-tag</entry>
+	<entry id="5515" string="Other">Andere</entry>
+	<entry id="5516" string="Chapters">Hoofdstukken</entry>
+	<entry id="5517" string="Read chapters from files">Hoofdstukken lezen uit bestanden</entry>
+	<entry id="5518" string="Write chapters to files">Hoofdstukken schrijven naar bestanden</entry>
+	<entry id="5519" string="Special fields">Speciale velden</entry>
+	<entry id="5520" string="Write CD table of contents">Cd-inhoudsopgave schrijven</entry>
+	<entry id="5521" string="Preserve Replay Gain information">Replay-Gain-informatie</entry>
+	<entry id="5522" string="Cue sheets">Cue sheets</entry>
+	<entry id="5523" string="Read cue sheets embedded in metadata">Cue sheets ingebed in metadata lezen</entry>
+	<entry id="5524" string="Prefer cue sheets over chapter information">Cue sheets verkiezen boven hoofdstukinformatie</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">Nul tovoegen voor tracknummers onder 10</entry>
+	<entry id="5526" string="File size limit">Limiet bestandsgrootte</entry>
+	<entry id="5527" string="unlimited">ongelimiteerd</entry>
       </section>
 
       <section name="Joblist">
-	<entry id="5600" string="Joblist"/>
-	<entry id="5601" string="Columns"/>
-	<entry id="5602" string="Name"/>
-	<entry id="5603" string="Description"/>
-	<entry id="5604" string="Up"/>
-	<entry id="5605" string="Down"/>
-	<entry id="5606" string="Jobs"/>
-	<entry id="5607" string="Show Jobs tab"/>
+	<entry id="5600" string="Joblist">Takenlijst</entry>
+	<entry id="5601" string="Columns">Kolommen</entry>
+	<entry id="5602" string="Name">Naam</entry>
+	<entry id="5603" string="Description">Beschrijving</entry>
+	<entry id="5604" string="Up">Omhoog</entry>
+	<entry id="5605" string="Down">Omlaag</entry>
+	<entry id="5606" string="Jobs">Taken</entry>
+	<entry id="5607" string="Show Jobs tab">Taken-tab weergeven</entry>
 
 	<section name="Columns">
-	  <entry id="5650" string="Track artist"/>
-	  <entry id="5651" string="Track title"/>
-	  <entry id="5652" string="Track genre"/>
-	  <entry id="5653" string="Album title"/>
-	  <entry id="5654" string="Disc number"/>
-	  <entry id="5655" string="Track number"/>
-	  <entry id="5656" string="Track rating"/>
-	  <entry id="5657" string="Track length"/>
-	  <entry id="5658" string="Track size"/>
-	  <entry id="5659" string="File name"/>
-	  <entry id="5660" string="File type"/>
-	  <entry id="5661" string="Output file name"/>
-	  <entry id="5662" string="Bitrate"/>
-	  <entry id="5663" string="Sampling rate"/>
-	  <entry id="5664" string="Channels"/>
-	  <entry id="5665" string="Sample resolution"/>
-	  <entry id="5666" string="CD drive"/>
+	  <entry id="5650" string="Track artist">Track-artiest</entry>
+	  <entry id="5651" string="Track title">Track-titel</entry>
+	  <entry id="5652" string="Track genre">Track-genre</entry>
+	  <entry id="5653" string="Album title">Albumtitel</entry>
+	  <entry id="5654" string="Disc number">Schijfnummer</entry>
+	  <entry id="5655" string="Track number">Tracknummer</entry>
+	  <entry id="5656" string="Track rating">Trackbeoordeling</entry>
+	  <entry id="5657" string="Track length">Tracklengte</entry>
+	  <entry id="5658" string="Track size">Trackgrootte</entry>
+	  <entry id="5659" string="File name">Bestandsnaam</entry>
+	  <entry id="5660" string="File type">Bestandstype</entry>
+	  <entry id="5661" string="Output file name">Uitvoerbestandsnaam</entry>
+	  <entry id="5662" string="Bitrate">Bitrate</entry>
+	  <entry id="5663" string="Sampling rate">Samplerate</entry>
+	  <entry id="5664" string="Channels">Kanalen</entry>
+	  <entry id="5665" string="Sample resolution">Sample resolutie</entry>
+	  <entry id="5666" string="CD drive">Cd-station</entry>
 	</section>
       </section>
 
       <section name="Resources">
-	<entry id="5700" string="Parallel processing"/>
-	<entry id="5701" string="Enable parallel processing"/>
-	<entry id="5702" string="Enable SuperFast mode"/>
-	<entry id="5703" string="Number of conversion threads"/>
-	<entry id="5704" string="auto"/>
-	<entry id="5705" string="Process priority"/>
-	<entry id="5706" string="lowest"/>
-	<entry id="5707" string="lower"/>
-	<entry id="5708" string="normal"/>
-	<entry id="5709" string="higher"/>
-	<entry id="5710" string="highest"/>
+	<entry id="5700" string="Parallel processing">Parallel verwerken</entry>
+	<entry id="5701" string="Enable parallel processing">Parallelle verwerking inschakelen</entry>
+	<entry id="5702" string="Enable SuperFast mode">Supersnelle modus inschakelen</entry>
+	<entry id="5703" string="Number of conversion threads">Aantal conversie-threads</entry>
+	<entry id="5704" string="auto">auto</entry>
+	<entry id="5705" string="Process priority">Procesprioriteit</entry>
+	<entry id="5706" string="lowest">laagste</entry>
+	<entry id="5707" string="lower">lager</entry>
+	<entry id="5708" string="normal">normaal</entry>
+	<entry id="5709" string="higher">hoger</entry>
+	<entry id="5710" string="highest">hoogste</entry>
       </section>
 
       <section name="Verification">
-	<entry id="5800" string="Verification"/>
-	<entry id="5801" string="Enable input verification"/>
-	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from."/>
-	<entry id="5803" string="Enable output verification"/>
-	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them."/>
+	<entry id="5800" string="Verification">Verificatie</entry>
+	<entry id="5801" string="Enable input verification">Invoerverificatie inschakelen</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Verifiëren dat lossless invoeren naar de exacte gegevens&#10;decoderen waarvan ze origineel aangemaakt zijn.</entry>
+	<entry id="5803" string="Enable output verification">Uitvoerverificatie inschakelen</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Verifiëren dat lossless uitvoeren naar de exacte gegevens&#10;decoderen die gebruikt zijn bij het coderen.</entry>
       </section>
 
       <section name="Processing">
-	<entry id="5900" string="Signal processing"/>
-	<entry id="5901" string="Enable signal processing"/>
-	<entry id="5902" string="Enable processing during playback"/>
-	<entry id="5903" string="Components"/>
-	<entry id="5904" string="Available"/>
-	<entry id="5905" string="Selected"/>
-	<entry id="5906" string="Configure component"/>
-	<entry id="5907" string="Conversion to a single output file"/>
-	<entry id="5908" string="Process each track individually"/>
-	<entry id="5909" string="Treat the combined tracks like a single track"/>
+	<entry id="5900" string="Signal processing">Signaalverwerking</entry>
+	<entry id="5901" string="Enable signal processing">Signaalverwerking inschakelen</entry>
+	<entry id="5902" string="Enable processing during playback">Verwerken tijdens afspelen inschakelen</entry>
+	<entry id="5903" string="Components">Onderdelen</entry>
+	<entry id="5904" string="Available">Beschikbaar</entry>
+	<entry id="5905" string="Selected">Geselecteerd</entry>
+	<entry id="5906" string="Configure component">Onderdeel configureren</entry>
+	<entry id="5907" string="Conversion to a single output file">Conversie naar een enkelvoudig uitvoerbestand</entry>
+	<entry id="5908" string="Process each track individually">Elke track individueel verwerken</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">De gecombineerde tracks behandelen als een enkele track</entry>
       </section>
     </section>
 
@@ -591,62 +591,62 @@
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Het coderingsproces is nog bezig. Bent u zeker dat u wilt afsluiten?</entry>
       <entry id="7002" string="Delete original files after encoding">Originele bestanden wissen na coderen</entry>
       <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Deze optie zal de originele bestanden van uw computer&#10;verwijderen na het coderen!&#10;&#10;Weet u zeker dat u deze optie wil activeren?</entry>
-      <entry id="7004" string="Keep this option enabled even after restarting %1"/>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">Deze optie ingeschakeld houden na opnieuw starten van %1</entry>
       <entry id="7005" string="File already exists">Bestand bestaat al</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Uitvoerbestand %1&#10;bestaat al! Wilt u het overschrijven?</entry>
       <entry id="7007" string="Overwrite all further files">Verdere bestanden overschrijven</entry>
-      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?"/>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">U lijkt van een lossy naar een lossless formaat te converteren.&#10;&#10;Wees u ervan bewust dat kwaliteitsverlies niet ongedaan kan worden gemaakt,&#10;dus dit proces zal de kwaliteit op geen enkele manier verbeteren en waarschijnlijk de bestandsgrootte vergroten.&#10;&#10;Wilt u toch doorgaan?</entry>
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Error: %1"/>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2"/>
-      <entry id="7102" string="Could not create encoder component: %1"/>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3"/>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3"/>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2"/>
+      <entry id="7100" string="Error: %1">Fout: %1</entry>
+      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Kon decoder-onderdeel niet aanmaken: %1&#10;&#10;Bestand: %1&#10;Pad: %2</entry>
+      <entry id="7102" string="Could not create encoder component: %1">Kon encoder-onderdeel niet aanmaken: %1</entry>
+      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Kon decoder niet instellen voor invoerbestand: %1&#10;&#10;Bestand: %1&#10;Pad: %2&#10;&#10;Fout: %3</entry>
+      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Kon decoder niet instellen voor uitvoerbestand: %1&#10;&#10;Bestand: %1&#10;Pad: %2&#10;&#10;Fout: %3</entry>
+      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Kon DSP-processor niet instellen: %1&#10;&#10;Fout: %2</entry>
       <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Kan geen toegang krijgen tot invoerbestand: %1&#10;&#10;Bestand: %1&#10;Map: %2</entry>
       <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Kan geen toegang krijgen tot uitvoerbestand: %1&#10;&#10;Bestand: %1&#10;Map: %2</entry>
-      <entry id="7108" string="Failed to verify input file: %1"/>
-      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
+      <entry id="7108" string="Failed to verify input file: %1">Verifiëren van invoerbestand mislukt: %1</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Checksum komt niet overeen bij verifiëren van het uitvoerbestand: %1&#10;&#10;Codeer-checksum: %2&#10;Verificatie-checksum: %3</entry>
       <entry id="7110" string="File not found">Bestand niet gevonden</entry>
       <entry id="7111" string="Unknown file type">Onbekend bestandstype</entry>
-      <entry id="7112" string="Invalid file format"/>
+      <entry id="7112" string="Invalid file format">Ongeldig bestandsformaat</entry>
       <entry id="7113" string="Unsupported audio format">Niet-ondersteund audioformaat</entry>
       <entry id="7114" string="Unknown error">Onbekende fout</entry>
       <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">NT SCSI drivers kunnen niet geladen worden! CD rippen gedeactiveerd!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Kan het bestand niet openen: %1&#10;&#10;%2</entry>
-      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!"/>
-      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!"/>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Kan geen cd-track afspelen tijdens het rippen van hetzelfde station!</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Kan rippen niet starten tijdens het afspelen van een track vanaf hetzelfde station!</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-ondersteuning is uitgeschakeld! Gelieve CDDB-ondersteuning&#10;in te schakelen in het configuratievenster.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">CDDB-ondersteuning op afstand is uitgeschakeld! Gelieve&#10;dit in te schakelen in het configuratiescherm.</entry>
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Toegang tot cd-romstations werd geweigerd door Windows.&#10;&#10;Gelieve uw systeemadministrator te contacteren om toegang&#10;te krijgen tot het cd-romstation.</entry>
-      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1"/>
-      <entry id="7123" string="The selected folder does not exist anymore!"/>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Geen configuratievenster beschikbaar voor:&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">De geselecteerde map bestaat niet meer!</entry>
     </section>
 
     <section name="Dialogs">
 
       <section name="Overwrite">
-	<entry id="8000" string="Confirm overwrite"/>
-	<entry id="8001" string="Confirm"/>
-	<entry id="8002" string="Skip all"/>
-	<entry id="8003" string="The following %1 files already exist or have duplicate file names"/>
-	<entry id="8004" string="Action"/>
-	<entry id="8005" string="Overwrite"/>
+	<entry id="8000" string="Confirm overwrite">Overschrijven bevestigen</entry>
+	<entry id="8001" string="Confirm">Bevestigen</entry>
+	<entry id="8002" string="Skip all">Alles overslaan</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">De volgende %1 bestanden bestaan reeds of hebben dubbele bestandsnamen</entry>
+	<entry id="8004" string="Action">Handeling</entry>
+	<entry id="8005" string="Overwrite">Overschrijven</entry>
 	<entry id="8006" string="Skip">Overslaan</entry>
       </section>
 
       <section name="Format">
-	<entry id="8100" string="Select sample format"/>
-	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:"/>
-	<entry id="8102" string="Select"/>
+	<entry id="8100" string="Select sample format">Sampleformaat selecteren</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">De geselecteerde tracks hebben verschillende sampleformaten. Selecteer&#10;het gewenste sampleformaat van het uitvoerbestand:</entry>
+	<entry id="8102" string="Select">Bladeren</entry>
       </section>
 
       <section name="Errors">
-	<entry id="8200" string="Errors"/>
-	<entry id="8201" string="%1 errors while processing job"/>
-	<entry id="8202" string="select an entry for details"/>
+	<entry id="8200" string="Errors">Fouten</entry>
+	<entry id="8201" string="%1 errors while processing job">%1 fouten bij verwerken van taak</entry>
+	<entry id="8202" string="select an entry for details">selecteer een item voor details</entry>
       </section>
     </section>
 
@@ -670,60 +670,60 @@
       <entry id="9016" string="Eject disk after ripping">Schijf uitwerpen na het rippen</entry>
       <entry id="9017" string="CD options">Cd-opties</entry>
       <entry id="9018" string="Lock CD tray while ripping">Vergrendelen tijdens rippen</entry>
-      <entry id="9019" string="Use read offset"/>
-      <entry id="9020" string="samples"/>
-      <entry id="9021" string="Read ISRC when adding tracks to joblist"/>
-      <entry id="9022" string="Spin up before ripping"/>
-      <entry id="9023" string="%1 seconds"/>
+      <entry id="9019" string="Use read offset">Lees-offset gebruiken</entry>
+      <entry id="9020" string="samples">samples</entry>
+      <entry id="9021" string="Read ISRC when adding tracks to joblist">ISRC lezen bij toevoegen van tracks aan takenlijst</entry>
+      <entry id="9022" string="Spin up before ripping">"Spin up" vóór rippen</entry>
+      <entry id="9023" string="%1 seconds">%1 seconden</entry>
     </section>
 
     <section name="Components">
 
       <section name="Decoders">
-	<entry id="10000" string="Cue Sheet Reader"/>
+	<entry id="10000" string="Cue Sheet Reader">Cue sheet lezer</entry>
       </section>
 
       <section name="Encoders">
-	<entry id="11000" string="meh! - multi encoder hub"/>
-	<entry id="11001" string="SndFile Output Component"/>
+	<entry id="11000" string="meh! - multi encoder hub">meh! - multi encoder hub</entry>
+	<entry id="11001" string="SndFile Output Component">SndFile uitvoer-onderdeel</entry>
       </section>
 
       <section name="DSP">
-	<entry id="12000" string="Channel Converter"/>
-	<entry id="12001" string="Sample Format Converter"/>
-	<entry id="12002" string="Sample Rate Converter"/>
-	<entry id="12003" string="RNNoise Noise Reduction"/>
-	<entry id="12004" string="Rubber Band Tempo/Pitch Changer"/>
+	<entry id="12000" string="Channel Converter">Kanaalconverter</entry>
+	<entry id="12001" string="Sample Format Converter">Sampleformaat-converter</entry>
+	<entry id="12002" string="Sample Rate Converter">Samplerate-converter</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">RNNoise ruisonderdrukking</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band tempo/toonhoogte wijzigen</entry>
       </section>
 
       <section name="Extensions">
-	<entry id="15000" string="Notifications"/>
-	<entry id="15001" string="Logging"/>
-	<entry id="15002" string="YouTube Video Downloader"/>
+	<entry id="15000" string="Notifications">Meldingen</entry>
+	<entry id="15001" string="Logging">Loggen</entry>
+	<entry id="15002" string="YouTube Video Downloader">Youtube video downloader</entry>
       </section>
     </section>
 
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="20000" string="Decoding"/>
-	<entry id="20001" string="Enable 24 bit decoding"/>
+	<entry id="20000" string="Decoding">Decoderen</entry>
+	<entry id="20001" string="Enable 24 bit decoding">24-bit decodering inschakelen</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="21000" string="Decoder"/>
-	<entry id="21001" string="Active decoder"/>
-	<entry id="21002" string="auto select"/>
+	<entry id="21000" string="Decoder">Decoder</entry>
+	<entry id="21001" string="Active decoder">Actieve decoder</entry>
+	<entry id="21002" string="auto select">automatisch selecteren</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="22000" string="Title information"/>
-	<entry id="22001" string="Read tags from referenced files"/>
-	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags"/>
-	<entry id="22003" string="Alternative files"/>
-	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
-	<entry id="22005" string="Error handling"/>
-	<entry id="22006" string="Ignore errors during cue sheet processing"/>
+	<entry id="22000" string="Title information">Titel-informatie</entry>
+	<entry id="22001" string="Read tags from referenced files">Tags van gerefereerde bestanden lezen</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Cue sheet metadata verkiezen boven tags van gerefereerde bestanden</entry>
+	<entry id="22003" string="Alternative files">Alternatieve bestanden</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Zoeken naar gecomprimeerde alternatieven als gerefereerde wave-bestanden niet kunnen worden gevonden</entry>
+	<entry id="22005" string="Error handling">Foutafhandeling</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">Fouten tijdens verwerken van cue sheet negeren</entry>
       </section>
     </section>
 
@@ -819,12 +819,12 @@
       </section>
 
       <section name="AAC">
-	<entry id="33000" string="Codec"/>
+	<entry id="33000" string="Codec">Codec</entry>
 	<entry id="33001" string="Quality">Kwaliteit</entry>
 	<entry id="33002" string="Format">Formaat</entry>
 
 	<section name="Codec">
-	  <entry id="33100" string="Audio codec"/>
+	  <entry id="33100" string="Audio codec">Audiocodec</entry>
 	</section>
 
 	<section name="Quality">
@@ -844,7 +844,7 @@
 	  <entry id="33300" string="MPEG version">MPEG versie</entry>
 	  <entry id="33301" string="AAC object type">AAC objecttype</entry>
 	  <entry id="33302" string="File format">Bestandsformaat</entry>
-	  <entry id="33303" string="File extension"/>
+	  <entry id="33303" string="File extension">Bestandsextensie</entry>
 	  <entry id="33304" string="Tags">Info tags</entry>
 	  <entry id="33305" string="Allow ID3v2 tags in AAC files">ID3v2 tags in AAC bestanden toelaten</entry>
 	  <entry id="33306" string="Note">Opmerking</entry>
@@ -873,7 +873,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Streambare subset gebruiken</entry>
 	  <entry id="34201" string="Blocksize">Blokgrootte</entry>
-	  <entry id="34202" string="%1 samples"/>
+	  <entry id="34202" string="%1 samples">%1 samples</entry>
 	</section>
 
 	<section name="Expert">
@@ -900,10 +900,10 @@
 	<entry id="35002" string="Average Bitrate">Gemiddelde bitrate</entry>
 	<entry id="35003" string="Quality">Kwaliteit</entry>
 	<entry id="35004" string="Bitrate">Bitrate</entry>
-	<entry id="35005" string="Minimum bitrate"/>
-	<entry id="35006" string="Average bitrate"/>
-	<entry id="35007" string="Maximum bitrate"/>
-	<entry id="35008" string="File extension"/>
+	<entry id="35005" string="Minimum bitrate">Minimale bitrate</entry>
+	<entry id="35006" string="Average bitrate">Gemiddelde bitrate</entry>
+	<entry id="35007" string="Maximum bitrate">Maximale bitrate</entry>
+	<entry id="35008" string="File extension">Bestandsextensie</entry>
       </section>
 
       <section name="WMA">
@@ -928,243 +928,243 @@
       </section>
 
       <section name="Monkey's Audio">
-	<entry id="38000" string="Compression"/>
-	<entry id="38001" string="Compression mode"/>
-	<entry id="38002" string="Fast"/>
-	<entry id="38003" string="Normal"/>
-	<entry id="38004" string="High"/>
-	<entry id="38005" string="Extra high"/>
-	<entry id="38006" string="Insane"/>
+	<entry id="38000" string="Compression">Compressie</entry>
+	<entry id="38001" string="Compression mode">Compressiemodus</entry>
+	<entry id="38002" string="Fast">Snel</entry>
+	<entry id="38003" string="Normal">Normaal</entry>
+	<entry id="38004" string="High">Hoog</entry>
+	<entry id="38005" string="Extra high">Extra hoog</entry>
+	<entry id="38006" string="Insane">Krankzinnig</entry>
       </section>
 
       <section name="Speex">
-	<entry id="39000" string="Profile"/>
-	<entry id="39001" string="Select encoding profile"/>
+	<entry id="39000" string="Profile">Profiel</entry>
+	<entry id="39001" string="Select encoding profile">Selecteer codeerprofiel</entry>
 	<entry id="39002" string="auto">automatisch</entry>
-	<entry id="39003" string="Narrowband (8 kHz)"/>
-	<entry id="39004" string="Wideband (16 kHz)"/>
-	<entry id="39005" string="Ultra-Wideband (32 kHz)"/>
+	<entry id="39003" string="Narrowband (8 kHz)">Smalband (8 kHz)</entry>
+	<entry id="39004" string="Wideband (16 kHz)">Breedband (16 kHz)</entry>
+	<entry id="39005" string="Ultra-Wideband (32 kHz)">Ultra-breedband (32 kHz)</entry>
 	<entry id="39006" string="VBR mode">VBR Mode</entry>
-	<entry id="39007" string="CBR (no VBR)"/>
-	<entry id="39008" string="VBR"/>
-	<entry id="39009" string="ABR"/>
+	<entry id="39007" string="CBR (no VBR)">CBR (geen VBR)</entry>
+	<entry id="39008" string="VBR">VBR</entry>
+	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Opties</entry>
-	<entry id="39011" string="Voice Activity Detection"/>
-	<entry id="39012" string="Discontinuous Transmission"/>
-	<entry id="39013" string="Algorithm complexity"/>
-	<entry id="39014" string="Complexity"/>
-	<entry id="39015" string="CBR quality"/>
+	<entry id="39011" string="Voice Activity Detection">Stemactiviteit-detectie</entry>
+	<entry id="39012" string="Discontinuous Transmission">Discontinue transmissie</entry>
+	<entry id="39013" string="Algorithm complexity">Algoritme-complexiteit</entry>
+	<entry id="39014" string="Complexity">Complexiteit</entry>
+	<entry id="39015" string="CBR quality">CBR-kwaliteit</entry>
 	<entry id="39016" string="VBR quality">VBR kwaliteit</entry>
 	<entry id="39017" string="ABR target bitrate">ABR doelbitrate</entry>
-	<entry id="39018" string="Bitrate"/>
-	<entry id="39019" string="Quality"/>
-	<entry id="39020" string="Max. bitrate"/>
+	<entry id="39018" string="Bitrate">Bitrate</entry>
+	<entry id="39019" string="Quality">Kwaliteit</entry>
+	<entry id="39020" string="Max. bitrate">Max. bitrate</entry>
       </section>
 
       <section name="Opus">
-	<entry id="40000" string="Basic settings"/>
-	<entry id="40001" string="Encoding mode"/>
+	<entry id="40000" string="Basic settings">Basis</entry>
+	<entry id="40001" string="Encoding mode">Codeermodus</entry>
 	<entry id="40002" string="auto">automatisch</entry>
-	<entry id="40003" string="Voice"/>
-	<entry id="40004" string="Music"/>
-	<entry id="40005" string="Bandwidth"/>
-	<entry id="40006" string="Narrowband"/>
-	<entry id="40007" string="Mediumband"/>
-	<entry id="40008" string="Wideband"/>
-	<entry id="40009" string="Superwideband"/>
-	<entry id="40010" string="Fullband"/>
-	<entry id="40011" string="File extension"/>
-	<entry id="40012" string="Variable bitrate"/>
-	<entry id="40013" string="Enable variable bitrate encoding"/>
-	<entry id="40014" string="Constrain bitrate to target value"/>
+	<entry id="40003" string="Voice">Stem</entry>
+	<entry id="40004" string="Music">Muziek</entry>
+	<entry id="40005" string="Bandwidth">Bandbreedte</entry>
+	<entry id="40006" string="Narrowband">Smalband</entry>
+	<entry id="40007" string="Mediumband">Mediumband</entry>
+	<entry id="40008" string="Wideband">Breedband</entry>
+	<entry id="40009" string="Superwideband">Superbreedband</entry>
+	<entry id="40010" string="Fullband">Fullband</entry>
+	<entry id="40011" string="File extension">Bestandsextensie</entry>
+	<entry id="40012" string="Variable bitrate">Variabele bitrate</entry>
+	<entry id="40013" string="Enable variable bitrate encoding">Variabele bitrate codering inschakelen</entry>
+	<entry id="40014" string="Constrain bitrate to target value">Bitrate beperken naar doelwaarde</entry>
 	<entry id="40015" string="Quality">Kwaliteit</entry>
-	<entry id="40016" string="Bitrate"/>
-	<entry id="40017" string="Complexity"/>
-	<entry id="40018" string="Stream"/>
-	<entry id="40019" string="Frame length"/>
+	<entry id="40016" string="Bitrate">Bitrate</entry>
+	<entry id="40017" string="Complexity">Complexiteit</entry>
+	<entry id="40018" string="Stream">Stream</entry>
+	<entry id="40019" string="Frame length">Frame-lengte</entry>
 	<entry id="40020" string="Options">Opties</entry>
-	<entry id="40021" string="Enable discontinous transmission"/>
-	<entry id="40022" string="Expected packet loss"/>
+	<entry id="40021" string="Enable discontinous transmission">Discontinue transmissie inschakelen</entry>
+	<entry id="40022" string="Expected packet loss">Verwacht pakketverlies</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41000" string="Output format"/>
+	<entry id="41000" string="Output format">Uitvoerformaat</entry>
 	<entry id="41001" string="File format">Bestandsformaat</entry>
 	<entry id="41002" string="Audio format">Audioformaat</entry>
 	<entry id="41003" string="mono">mono</entry>
-	<entry id="41004" string="auto select"/>
+	<entry id="41004" string="auto select">automatisch selecteren</entry>
 
 	<section name="Errors">
-	  <entry id="41100" string="Could not find suitable audio format."/>
-	  <entry id="41101" string="Unable to use selected audio format."/>
+	  <entry id="41100" string="Could not find suitable audio format.">Kon geen geschikt audioformaat vinden.</entry>
+	  <entry id="41101" string="Unable to use selected audio format.">Kon geselecteerd audioformaat niet gebruiken.</entry>
 	</section>
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders"/>
-	<entry id="42001" string="Available"/>
-	<entry id="42002" string="Selected"/>
-	<entry id="42003" string="Configure encoder"/>
-	<entry id="42004" string="Options"/>
-	<entry id="42005" string="Create a separate folder for each output format"/>
+	<entry id="42000" string="Encoders">Encoders</entry>
+	<entry id="42001" string="Available">Beschikbaar</entry>
+	<entry id="42002" string="Selected">Geselecteerd</entry>
+	<entry id="42003" string="Configure encoder">Encoder configureren</entry>
+	<entry id="42004" string="Options">Opties</entry>
+	<entry id="42005" string="Create a separate folder for each output format">Een aparte map aanmaken voor elk uitvoerformaat</entry>
       </section>
     </section>
 
     <section name="DSP">
 
       <section name="Format">
-	<entry id="50000" string="Sample format"/>
-	<entry id="50001" string="Number format"/>
-	<entry id="50002" string="Sample resolution"/>
-	<entry id="50003" string="bit"/>
-	<entry id="50004" string="unsigned"/>
-	<entry id="50005" string="Integer"/>
-	<entry id="50006" string="Float"/>
+	<entry id="50000" string="Sample format">Sampleformaat</entry>
+	<entry id="50001" string="Number format">Nummerformaat</entry>
+	<entry id="50002" string="Sample resolution">Sample resolutie</entry>
+	<entry id="50003" string="bit">bit</entry>
+	<entry id="50004" string="unsigned">niet getekend</entry>
+	<entry id="50005" string="Integer">Integer</entry>
+	<entry id="50006" string="Float">Float</entry>
       </section>
 
       <section name="Channels">
-	<entry id="50100" string="Output channels"/>
-	<entry id="50101" string="Channel configuration"/>
-	<entry id="50102" string="Mono"/>
-	<entry id="50103" string="Stereo"/>
-	<entry id="50104" string="Switch stereo channels"/>
+	<entry id="50100" string="Output channels">Uitvoerkanalen</entry>
+	<entry id="50101" string="Channel configuration">Kanaalconfiguratie</entry>
+	<entry id="50102" string="Mono">Mono</entry>
+	<entry id="50103" string="Stereo">Stereo</entry>
+	<entry id="50104" string="Switch stereo channels">Wissel linker/rechterkanaal</entry>
       </section>
 
       <section name="Resample">
-	<entry id="50200" string="Converter"/>
-	<entry id="50201" string="Sampling rate"/>
-	<entry id="50202" string="Output sampling rate"/>
+	<entry id="50200" string="Converter">Converter</entry>
+	<entry id="50201" string="Sampling rate">Samplerate</entry>
+	<entry id="50202" string="Output sampling rate">Uitvoersamplerate</entry>
       </section>
 
       <section name="RubberBand">
-	<entry id="50300" string="Basic controls"/>
-	<entry id="50301" string="Tempo"/>
-	<entry id="50302" string="Pitch"/>
-	<entry id="50303" string="%1 Semitones"/>
-	<entry id="50304" string="Advanced options"/>
-	<entry id="50305" string="Transient detection"/>
-	<entry id="50306" string="Compound"/>
-	<entry id="50307" string="Percussive"/>
-	<entry id="50308" string="Soft"/>
-	<entry id="50309" string="Transient handling"/>
-	<entry id="50310" string="Crisp"/>
-	<entry id="50311" string="Mixed"/>
-	<entry id="50312" string="Smooth"/>
-	<entry id="50313" string="Transformation window"/>
-	<entry id="50314" string="Standard"/>
-	<entry id="50315" string="Short"/>
-	<entry id="50316" string="Long"/>
-	<entry id="50317" string="Use time-domain smoothing"/>
-	<entry id="50318" string="Phase handling"/>
-	<entry id="50319" string="Laminar"/>
-	<entry id="50320" string="Independent"/>
-	<entry id="50321" string="Formant handling"/>
-	<entry id="50322" string="Shift"/>
-	<entry id="50323" string="Preserve"/>
-	<entry id="50324" string="Pitch processing"/>
-	<entry id="50325" string="High quality"/>
-	<entry id="50326" string="High speed"/>
-	<entry id="50327" string="High consistency"/>
-	<entry id="50328" string="Stereo processing"/>
-	<entry id="50329" string="Separate"/>
-	<entry id="50330" string="Combined"/>
+	<entry id="50300" string="Basic controls">Baisbediening</entry>
+	<entry id="50301" string="Tempo">Tempo</entry>
+	<entry id="50302" string="Pitch">Toonhoogte</entry>
+	<entry id="50303" string="%1 Semitones">%1 semitonen</entry>
+	<entry id="50304" string="Advanced options">Geavanceerde opties</entry>
+	<entry id="50305" string="Transient detection">Transient-detectie</entry>
+	<entry id="50306" string="Compound">Compound</entry>
+	<entry id="50307" string="Percussive">Percussive</entry>
+	<entry id="50308" string="Soft">Soft</entry>
+	<entry id="50309" string="Transient handling">Transient-behandeling</entry>
+	<entry id="50310" string="Crisp">Crisp</entry>
+	<entry id="50311" string="Mixed">Gemengd</entry>
+	<entry id="50312" string="Smooth">Glad</entry>
+	<entry id="50313" string="Transformation window">Transformatievenster</entry>
+	<entry id="50314" string="Standard">Standaard</entry>
+	<entry id="50315" string="Short">Kort</entry>
+	<entry id="50316" string="Long">Lang</entry>
+	<entry id="50317" string="Use time-domain smoothing">Tijddomein afvlakking gebruiken</entry>
+	<entry id="50318" string="Phase handling">Fase-handeling</entry>
+	<entry id="50319" string="Laminar">Laminair</entry>
+	<entry id="50320" string="Independent">Onafhankelijk</entry>
+	<entry id="50321" string="Formant handling">Formant-handeling</entry>
+	<entry id="50322" string="Shift">Verschuiven</entry>
+	<entry id="50323" string="Preserve">Behouden</entry>
+	<entry id="50324" string="Pitch processing">Toonhoogte-verwerking</entry>
+	<entry id="50325" string="High quality">Hoge kwaliteit</entry>
+	<entry id="50326" string="High speed">Hoge snelheid</entry>
+	<entry id="50327" string="High consistency">Hoge consistentie</entry>
+	<entry id="50328" string="Stereo processing">Stereoverwerking</entry>
+	<entry id="50329" string="Separate">Gescheiden</entry>
+	<entry id="50330" string="Combined">Gecombineerd</entry>
       </section>
 
       <section name="RNNoise">
-	<entry id="50400" string="Signal/noise type"/>
-	<entry id="50401" string="Signal type"/>
-	<entry id="50402" string="Noise type"/>
-	<entry id="50403" string="General"/>
-	<entry id="50404" string="Recording"/>
-	<entry id="50405" string="Voice (incl. laughter etc.)"/>
-	<entry id="50406" string="Speech"/>
+	<entry id="50400" string="Signal/noise type">Signaal/ruis type</entry>
+	<entry id="50401" string="Signal type">Signaaltype</entry>
+	<entry id="50402" string="Noise type">Ruistype</entry>
+	<entry id="50403" string="General">Algemeen</entry>
+	<entry id="50404" string="Recording">Opnemen</entry>
+	<entry id="50405" string="Voice (incl. laughter etc.)">Stem (incl lachen etc.)</entry>
+	<entry id="50406" string="Speech">Spraak</entry>
       </section>
     </section>
 
     <section name="Taggers">
 
       <section name="MP4">
-	<entry id="60000" string="Chapter format"/>
-	<entry id="60001" string="both"/>
+	<entry id="60000" string="Chapter format">Hoofdstukformaat</entry>
+	<entry id="60001" string="both">beide</entry>
       </section>
     </section>
 
     <section name="External">
-      <entry id="80000" string="Downmix multi-channel audio to stereo"/>
+      <entry id="80000" string="Downmix multi-channel audio to stereo">Meerkanaals audio naar stereo downmixen</entry>
 
       <section name="Musepack Audio Encoder">
-	<entry id="80100" string="Quality"/>
-	<entry id="80101" string="poor"/>
-	<entry id="80102" string="excellent"/>
-	<entry id="80103" string="Mid/Side stereo mode"/>
-	<entry id="80104" string="off"/>
-	<entry id="80105" string="reduced"/>
-	<entry id="80106" string="on"/>
-	<entry id="80107" string="decoupled"/>
-	<entry id="80108" string="enhanced 1.5/3 dB"/>
-	<entry id="80109" string="enhanced 2/6 dB"/>
-	<entry id="80110" string="enhanced 2.5/9 dB"/>
-	<entry id="80111" string="enhanced 3/12 dB"/>
-	<entry id="80112" string="enhanced 3/inf dB"/>
-	<entry id="80113" string="Adaptive noise shaping order"/>
-	<entry id="80114" string="high"/>
-	<entry id="80115" string="Clear Voice Detection"/>
-	<entry id="80116" string="dual"/>
+	<entry id="80100" string="Quality">Kwaliteit</entry>
+	<entry id="80101" string="poor">slecht</entry>
+	<entry id="80102" string="excellent">uitstekend</entry>
+	<entry id="80103" string="Mid/Side stereo mode">Mid/side stereomodus</entry>
+	<entry id="80104" string="off">uit</entry>
+	<entry id="80105" string="reduced">verminderd</entry>
+	<entry id="80106" string="on">aan</entry>
+	<entry id="80107" string="decoupled">ontkoppeld</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">versterkt 1,5/3 dB</entry>
+	<entry id="80109" string="enhanced 2/6 dB">versterkt 2/6 dB</entry>
+	<entry id="80110" string="enhanced 2.5/9 dB">versterkt 2,5/9 dB</entry>
+	<entry id="80111" string="enhanced 3/12 dB">versterkt 3/12 dB</entry>
+	<entry id="80112" string="enhanced 3/inf dB">versterkt 3/oneindig dB</entry>
+	<entry id="80113" string="Adaptive noise shaping order">Adaptieve ruisvormings-volgorde</entry>
+	<entry id="80114" string="high">hoog</entry>
+	<entry id="80115" string="Clear Voice Detection">Duidelijke stemdetectie</entry>
+	<entry id="80116" string="dual">dubbel</entry>
       </section>
 
       <section name="OptimFROG Lossless Encoder">
-	<entry id="80200" string="Encoding mode"/>
-	<entry id="80201" string="fast"/>
-	<entry id="80202" string="normal"/>
-	<entry id="80203" string="high"/>
-	<entry id="80204" string="extra"/>
-	<entry id="80205" string="best"/>
-	<entry id="80206" string="high, new"/>
-	<entry id="80207" string="extra, new"/>
-	<entry id="80208" string="best, new"/>
-	<entry id="80209" string="Add MD5 checksum"/>
-	<entry id="80210" string="Seeking"/>
-	<entry id="80211" string="slow"/>
-	<entry id="80212" string="minimum"/>
-	<entry id="80213" string="Optimization"/>
-	<entry id="80214" string="disabled"/>
-	<entry id="80215" string="low"/>
+	<entry id="80200" string="Encoding mode">Codeermodus</entry>
+	<entry id="80201" string="fast">snel</entry>
+	<entry id="80202" string="normal">normaal</entry>
+	<entry id="80203" string="high">hoog</entry>
+	<entry id="80204" string="extra">extra</entry>
+	<entry id="80205" string="best">beste</entry>
+	<entry id="80206" string="high, new">hoog, nieuw</entry>
+	<entry id="80207" string="extra, new">extra, nieuw</entry>
+	<entry id="80208" string="best, new">beste, nieuw</entry>
+	<entry id="80209" string="Add MD5 checksum">MD5-checksum toevoegen</entry>
+	<entry id="80210" string="Seeking">Zoeken</entry>
+	<entry id="80211" string="slow">traag</entry>
+	<entry id="80212" string="minimum">minimaal</entry>
+	<entry id="80213" string="Optimization">Optimalisatie</entry>
+	<entry id="80214" string="disabled">uitgeschakeld</entry>
+	<entry id="80215" string="low">laag</entry>
       </section>
 
       <section name="Tom's Audiokompressor">
-	<entry id="80300" string="Encoder preset"/>
-	<entry id="80301" string="fastest"/>
-	<entry id="80302" string="strongest"/>
-	<entry id="80303" string="Frame size limit"/>
-	<entry id="80304" string="Add MD5 checksum"/>
+	<entry id="80300" string="Encoder preset">Encoder-preset</entry>
+	<entry id="80301" string="fastest">snelste</entry>
+	<entry id="80302" string="strongest">sterkste</entry>
+	<entry id="80303" string="Frame size limit">Framegrootte-limiet</entry>
+	<entry id="80304" string="Add MD5 checksum">MD5-checksum toevoegen</entry>
       </section>
 
       <section name="WavPack Audio Encoder">
-	<entry id="80400" string="Enable lossy compression"/>
-	<entry id="80401" string="Compression mode"/>
-	<entry id="80402" string="fast"/>
-	<entry id="80403" string="high quality"/>
-	<entry id="80404" string="very high quality"/>
-	<entry id="80405" string="Extra encode processing"/>
-	<entry id="80406" string="faster"/>
-	<entry id="80407" string="better"/>
-	<entry id="80408" string="%1 kbps"/>
+	<entry id="80400" string="Enable lossy compression">Lossy compressie inschakelen</entry>
+	<entry id="80401" string="Compression mode">Compressiemodus</entry>
+	<entry id="80402" string="fast">snel</entry>
+	<entry id="80403" string="high quality">hoge kwaliteit</entry>
+	<entry id="80404" string="very high quality">zeer hoge kwaliteit</entry>
+	<entry id="80405" string="Extra encode processing">Extra codeerverwerking</entry>
+	<entry id="80406" string="faster">sneller</entry>
+	<entry id="80407" string="better">beter</entry>
+	<entry id="80408" string="%1 kbps">%1 kbps</entry>
       </section>
 
       <section name="Nero AAC Encoder">
-	<entry id="80500" string="Encoding mode"/>
-	<entry id="80501" string="auto"/>
-	<entry id="80502" string="Quality"/>
-	<entry id="80503" string="worse"/>
-	<entry id="80504" string="better"/>
-	<entry id="80505" string="Bitrate"/>
-	<entry id="80506" string="Bitrate (Streaming)"/>
-	<entry id="80507" string="%1 kbps"/>
+	<entry id="80500" string="Encoding mode">Codeermodus</entry>
+	<entry id="80501" string="auto">auto</entry>
+	<entry id="80502" string="Quality">Kwaliteit</entry>
+	<entry id="80503" string="worse">slechter</entry>
+	<entry id="80504" string="better">beter</entry>
+	<entry id="80505" string="Bitrate">Bitrate</entry>
+	<entry id="80506" string="Bitrate (Streaming)">Bitrate (streaming)</entry>
+	<entry id="80507" string="%1 kbps">%1 kbps</entry>
       </section>
 
       <section name="Windows Media Audio Encoder">
-	<entry id="80600" string="Bitrate"/>
-	<entry id="80601" string="%1 kbps"/>
+	<entry id="80600" string="Bitrate">Bitrate</entry>
+	<entry id="80601" string="%1 kbps">%1 kbps</entry>
       </section>
     </section>
 
@@ -1178,7 +1178,7 @@
 	<entry id="100004" string="Thank you very much!">Heel erg bedankt!</entry>
 	<entry id="100005" string="Remind me later">Me later herinneren</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
-	<entry id="100007" string="Donate to the %1 project"/>
+	<entry id="100007" string="Donate to the %1 project">Doneren aan het %1-project</entry>
 
 	<section name="PayPal">
 	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Klik op een van onderstaande knoppen om een donatie via PayPal te maken:</entry>
@@ -1186,31 +1186,31 @@
 	  <entry id="100102" string="usd">eur</entry>
 	  <entry id="100103" string="$%1">%1€</entry>
 	  <entry id="100104" string="5,10,20,other amount">5,10,20,ander bedrag</entry>
-	  <entry id="100105" string="monthly recurring"/>
-	  <entry id="100106" string="Donate"/>
+	  <entry id="100105" string="monthly recurring">maandelijks herhalend</entry>
+	  <entry id="100106" string="Donate">Doneren</entry>
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:"/>
-	  <entry id="100201" string="Donate"/>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox laat snelle en eenvoudige donaties via kredietkaart toe. Klik op deze&#10;knop om een donatie te maken met Donorbox:</entry>
+	  <entry id="100201" string="Donate">Doneren</entry>
 	  <entry id="100202" string="usd">eur</entry>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:"/>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks."/>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Scan de QR-code of klik erop of kopieer het volgende&#10;adres om Bitcoin te doneren:</entry>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Dit adres accepteert ook Bitcoin Cash en andere forks.</entry>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:"/>
-	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens."/>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Scan de QR-code of klik ero of kopieer het volgende&#10;adres om Ethereum te doneren:</entry>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">Dit adres accepteert ook Ether Classic en ERC20 tokens.</entry>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:"/>
-	  <entry id="100501" string="Account holder:"/>
-	  <entry id="100502" string="IBAN:"/>
-	  <entry id="100503" string="BIC:"/>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">U kunt doneren door een elektronische overdracht te maken naar de&#10;volgende account:</entry>
+	  <entry id="100501" string="Account holder:">Rekeninghouder:</entry>
+	  <entry id="100502" string="IBAN:">IBAN:</entry>
+	  <entry id="100503" string="BIC:">BIC:</entry>
 	</section>
       </section>
 
@@ -1220,42 +1220,42 @@
       </section>
 
       <section name="Video Downloader">
-	<entry id="102000" string="Video"/>
-	<entry id="102001" string="Enter video URL here"/>
-	<entry id="102002" string="Download"/>
-	<entry id="102003" string="Automatically download URLs copied to clipboard"/>
-	<entry id="102004" string="Save downloaded video files"/>
-	<entry id="102005" string="Video downloads"/>
-	<entry id="102006" string="Downloaded tracks"/>
-	<entry id="102007" string="Uploader"/>
-	<entry id="102008" string="Video URL"/>
-	<entry id="102009" string="Video title"/>
-	<entry id="102010" string="Video description"/>
-	<entry id="102011" string="Site name"/>
-	<entry id="102012" string="Uploaded by"/>
-	<entry id="102013" string="Uploaded on"/>
+	<entry id="102000" string="Video">Video</entry>
+	<entry id="102001" string="Enter video URL here">Geef de video-URL hier op</entry>
+	<entry id="102002" string="Download">Downloaden</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">Naar klembord gekopieerde URL's automatisch downloaden</entry>
+	<entry id="102004" string="Save downloaded video files">Gedownloade videobestanden opslaan</entry>
+	<entry id="102005" string="Video downloads">Videodownloads</entry>
+	<entry id="102006" string="Downloaded tracks">Gedownloade tracks</entry>
+	<entry id="102007" string="Uploader">Uploader</entry>
+	<entry id="102008" string="Video URL">Video-URL</entry>
+	<entry id="102009" string="Video title">Videotitel</entry>
+	<entry id="102010" string="Video description">Videobeschrijving</entry>
+	<entry id="102011" string="Site name">Site</entry>
+	<entry id="102012" string="Uploaded by">Geüpload door</entry>
+	<entry id="102013" string="Uploaded on">Geüpload op</entry>
 	<entry id="102014" string="Length">Lengte</entry>
 	<entry id="102015" string="Size">Grootte</entry>
-	<entry id="102016" string="Cancel download"/>
-	<entry id="102017" string="unknown"/>
-	<entry id="102018" string="Note"/>
+	<entry id="102016" string="Cancel download">Downloaden annuleren</entry>
+	<entry id="102017" string="unknown">onbekend</entry>
+	<entry id="102018" string="Note">Opmerking</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatisatie</entry>
-	  <entry id="102102" string="Video files"/>
+	  <entry id="102102" string="Video files">Videobestanden</entry>
 	  <entry id="102103" string="Select">Bladeren</entry>
-	  <entry id="102104" string="Select the folder to save downloaded video files to"/>
-	  <entry id="102105" string="Downloads"/>
-	  <entry id="102106" string="Maximum number of simultaneous downloads"/>
-	  <entry id="102107" string="Output format"/>
-	  <entry id="102108" string="keep original format"/>
+	  <entry id="102104" string="Select the folder to save downloaded video files to">Selecteer de map om gedownloade videobestanden in op te slaan</entry>
+	  <entry id="102105" string="Downloads">Downloads</entry>
+	  <entry id="102106" string="Maximum number of simultaneous downloads">Maximaal aantal gelijktijdige downloads</entry>
+	  <entry id="102107" string="Output format">Uitvoerformaat</entry>
+	  <entry id="102108" string="keep original format">origineel formaat behouden</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="102201" string="This URL is not supported or not a video page URL!"/>
-	  <entry id="102202" string="Error downloading video!"/>
-	  <entry id="102203" string="You are already downloading this video!"/>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!"/>
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">Deze URL wordt niet ondersteund of is geen videopagina-URL!</entry>
+	  <entry id="102202" string="Error downloading video!">Fout bij downloaden van video!</entry>
+	  <entry id="102203" string="You are already downloading this video!">U bent deze video al aan het downloaden!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Sommige vereiste videodecoders konden niet gevonden worden. Videobestanden&#10;kunnen niet toegevoegd worden aan de takenlijst voor conversie naar audiobestanden.&#10;&#10;Installeer avconv of FFmpeg om dit probleem op te lossen!</entry>
 	</section>
       </section>
 
@@ -1263,100 +1263,100 @@
 	<entry id="103000" string="Tags">Info tags</entry>
 	<entry id="103001" string="Length">Lengte</entry>
 	<entry id="103002" string="Size">Grootte</entry>
-	<entry id="103003" string="Albums"/>
-	<entry id="103004" string="Files"/>
+	<entry id="103003" string="Albums">Albums</entry>
+	<entry id="103004" string="Files">Bestanden</entry>
 	<entry id="103005" string="File">Bestand</entry>
-	<entry id="103006" string="Tracks"/>
-	<entry id="103007" string="Save"/>
-	<entry id="103008" string="Save all"/>
-	<entry id="103009" string="no audio files found"/>
+	<entry id="103006" string="Tracks">Tracks</entry>
+	<entry id="103007" string="Save">Opslaan</entry>
+	<entry id="103008" string="Save all">Alles opslaan</entry>
+	<entry id="103009" string="no audio files found">geen audiobestanden gevonden</entry>
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Algemeen</entry>
-	  <entry id="103101" string="Title information"/>
-	  <entry id="103102" string="Disc"/>
-	  <entry id="103103" string="Cover art"/>
-	  <entry id="103104" string="Covers"/>
-	  <entry id="103105" string="Type"/>
-	  <entry id="103106" string="Description"/>
+	  <entry id="103101" string="Title information">Titel-informatie</entry>
+	  <entry id="103102" string="Disc">Schijf</entry>
+	  <entry id="103103" string="Cover art">Albumhoes</entry>
+	  <entry id="103104" string="Covers">Albumhoezen</entry>
+	  <entry id="103105" string="Type">Type</entry>
+	  <entry id="103106" string="Description">Beschrijving</entry>
 	  <entry id="103107" string="Add">Toevoegen</entry>
 	  <entry id="103108" string="Remove">Verwijderen</entry>
 	</section>
 
 	<section name="Details">
-	  <entry id="103200" string="Details"/>
-	  <entry id="103201" string="Detailed information"/>
-	  <entry id="103202" string="Band / orchestra"/>
-	  <entry id="103203" string="Conductor"/>
-	  <entry id="103204" string="Composer"/>
-	  <entry id="103205" string="Lyrics writer"/>
-	  <entry id="103206" string="Modified / remixed by"/>
-	  <entry id="103207" string="Publisher information"/>
-	  <entry id="103208" string="Publisher / label"/>
-	  <entry id="103209" string="ISRC"/>
-	  <entry id="103210" string="Tempo"/>
-	  <entry id="103211" string="BPM"/>
+	  <entry id="103200" string="Details">Details</entry>
+	  <entry id="103201" string="Detailed information">Gedetailleerde informatie</entry>
+	  <entry id="103202" string="Band / orchestra">Band /orkest</entry>
+	  <entry id="103203" string="Conductor">Dirigent</entry>
+	  <entry id="103204" string="Composer">Componist</entry>
+	  <entry id="103205" string="Lyrics writer">Songtekst-schrijver</entry>
+	  <entry id="103206" string="Modified / remixed by">Gewijzigd / geremixt door</entry>
+	  <entry id="103207" string="Publisher information">Uitgever-informatie</entry>
+	  <entry id="103208" string="Publisher / label">Uitgever / label</entry>
+	  <entry id="103209" string="ISRC">ISRC</entry>
+	  <entry id="103210" string="Tempo">Tempo</entry>
+	  <entry id="103211" string="BPM">BPM</entry>
 	</section>
 
 	<section name="Other">
-	  <entry id="103300" string="Other"/>
-	  <entry id="103301" string="Original information"/>
-	  <entry id="103302" string="Original artist"/>
-	  <entry id="103303" string="Original album"/>
-	  <entry id="103304" string="Original lyrics writer"/>
-	  <entry id="103305" string="Original release year"/>
-	  <entry id="103306" string="Webpage URLs"/>
-	  <entry id="103307" string="Artist webpage"/>
-	  <entry id="103308" string="Publisher webpage"/>
-	  <entry id="103309" string="Internet radio station"/>
-	  <entry id="103310" string="Audio source webpage"/>
-	  <entry id="103311" string="Copyright information"/>
-	  <entry id="103312" string="Commercial information"/>
+	  <entry id="103300" string="Other">Andere</entry>
+	  <entry id="103301" string="Original information">Originele informatie</entry>
+	  <entry id="103302" string="Original artist">Originele artiest</entry>
+	  <entry id="103303" string="Original album">Origineel album</entry>
+	  <entry id="103304" string="Original lyrics writer">Originele songtekst-schrijver</entry>
+	  <entry id="103305" string="Original release year">Origineel uitgavejaar</entry>
+	  <entry id="103306" string="Webpage URLs">Webpagina-URL's</entry>
+	  <entry id="103307" string="Artist webpage">Artiest-webpagina</entry>
+	  <entry id="103308" string="Publisher webpage">Uitgever-webpagina</entry>
+	  <entry id="103309" string="Internet radio station">Internet-radiostation</entry>
+	  <entry id="103310" string="Audio source webpage">Audiobron-webpagina</entry>
+	  <entry id="103311" string="Copyright information">Auteursrecht-informatie</entry>
+	  <entry id="103312" string="Commercial information">Commerciële informatie</entry>
 	</section>
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Kan het bestand niet openen: %1&#10;&#10;%2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2"/>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Bijwerken van tag mislukt: %1&#10;&#10;Fout: %2</entry>
 	</section>
       </section>
 
       <section name="Logging">
-	<entry id="104000" string="Logs"/>
-	<entry id="104001" string="Log"/>
-	<entry id="104002" string="Save as"/>
-	<entry id="104003" string="Log Files"/>
-	<entry id="104004" string="Time"/>
-	<entry id="104005" string="Message"/>
+	<entry id="104000" string="Logs">Logs</entry>
+	<entry id="104001" string="Log">Log</entry>
+	<entry id="104002" string="Save as">Opslaan als</entry>
+	<entry id="104003" string="Log Files">Logbestanden</entry>
+	<entry id="104004" string="Time">Tijdstip</entry>
+	<entry id="104005" string="Message">Bericht</entry>
 
 	<section name="Configuration">
-	  <entry id="104100" string="User interface"/>
-	  <entry id="104101" string="Show Logs tab in main window"/>
-	  <entry id="104102" string="Log files"/>
-	  <entry id="104103" string="Archive log files"/>
-	  <entry id="104104" string="Log file folder"/>
-	  <entry id="104105" string="Select"/>
-	  <entry id="104106" string="Select the folder for saving log files"/>
-	  <entry id="104107" string="Delete old log files after"/>
-	  <entry id="104108" string="days"/>
-	  <entry id="104109" string="Conversion logs"/>
-	  <entry id="104110" string="Save conversion logs with audio files"/>
-	  <entry id="104111" string="Audio CD ripping logs only"/>
-	  <entry id="104112" string="Filename pattern"/>
+	  <entry id="104100" string="User interface">Gebruikersinterface</entry>
+	  <entry id="104101" string="Show Logs tab in main window">Logboek-tabblad in hoofdvenster weergeven</entry>
+	  <entry id="104102" string="Log files">Logbestanden</entry>
+	  <entry id="104103" string="Archive log files">Logbestanden archiveren</entry>
+	  <entry id="104104" string="Log file folder">Logbestand-map</entry>
+	  <entry id="104105" string="Select">Bladeren</entry>
+	  <entry id="104106" string="Select the folder for saving log files">Selecteer de map voor het opslaan van logbestanden</entry>
+	  <entry id="104107" string="Delete old log files after">Oude logbestanden verwijderen na</entry>
+	  <entry id="104108" string="days">dagen</entry>
+	  <entry id="104109" string="Conversion logs">Conversielogs</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">Conversielogs opslaan met audiobestanden</entry>
+	  <entry id="104111" string="Audio CD ripping logs only">Alleen audio-cd-ripping logs</entry>
+	  <entry id="104112" string="Filename pattern">Bestandspatroon</entry>
 	</section>
       </section>
 
       <section name="Notifier">
-	<entry id="105000" string="Conversion process finished!"/>
+	<entry id="105000" string="Conversion process finished!">Conversieproces voltooid!</entry>
 
 	<section name="Configuration">
-	  <entry id="105100" string="Notifications"/>
-	  <entry id="105101" string="Notify on finished conversion"/>
-	  <entry id="105102" string="Play sound"/>
-	  <entry id="105103" string="Display message"/>
-	  <entry id="105104" string="Select"/>
-	  <entry id="105105" string="Only for conversions running longer than"/>
-	  <entry id="105106" string="second(s)"/>
-	  <entry id="105107" string="minute(s)"/>
+	  <entry id="105100" string="Notifications">Meldingen</entry>
+	  <entry id="105101" string="Notify on finished conversion">Melden bij voltooide conversie</entry>
+	  <entry id="105102" string="Play sound">Geluid afspelen</entry>
+	  <entry id="105103" string="Display message">Bericht weergeven</entry>
+	  <entry id="105104" string="Select">Bladeren</entry>
+	  <entry id="105105" string="Only for conversions running longer than">Alleen voor conversies die langer duren dan</entry>
+	  <entry id="105106" string="second(s)">seconden</entry>
+	  <entry id="105107" string="minute(s)">minuten</entry>
 	</section>
       </section>
     </section>
