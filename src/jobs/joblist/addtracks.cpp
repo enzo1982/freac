@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -178,9 +178,10 @@ Error freac::JobAddTracks::Perform()
 
 		/* Start automatic ripping if enabled.
 		 */
-		Bool	 autoRip = configuration->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault);
-
-		if (autoCDRead && autoRip && cdInfo != NIL) Converter().Convert(tracks);
+		Bool	 autoRip	 = configuration->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault);
+		String	 filenamePattern = configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
+ 
+		if (autoCDRead && autoRip && (cdInfo != NIL || filenamePattern.Contains("<currenttime>"))) Converter().Convert(tracks);
 	}
 
 	urls.RemoveAll();
