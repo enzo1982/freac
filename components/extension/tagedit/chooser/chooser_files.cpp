@@ -221,7 +221,7 @@ Void BoCA::ChooserFiles::OnDragDivider(Int pos)
 
 	div_split->SetPos(pos);
 
-	text_nofiles->SetPosition(list_files->GetPosition() + Point((list_files->GetWidth() - text_nofiles->GetUnscaledTextWidth()) / 2, (list_files->GetHeight() - text_nofiles->GetUnscaledTextHeight()) / 2));
+	text_nofiles->SetPosition(list_files->GetPosition() + Point((list_files->GetWidth() - text_nofiles->GetUnscaledTextWidth()) / 2, (list_files->GetHeight() - 13 - text_nofiles->GetUnscaledTextHeight()) / 2 + 13));
 
 	div_split->Show();
 	list_directories->Show();
