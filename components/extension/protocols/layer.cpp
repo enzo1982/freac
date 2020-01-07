@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -106,7 +106,7 @@ Void BoCA::LayerProtocols::OnChangeLanguageSettings()
 	text_protocol->SetText(i18n->AddColon(i18n->TranslateString("Log")));
 
 	btn_save->SetText(i18n->TranslateString("Save as"));
-	btn_save->SetWidth(btn_save->GetUnscaledTextWidth() + 14);
+	btn_save->SetWidth(Math::Max(btn_save->GetUnscaledTextWidth() + 14, 80));
 	btn_save->SetX(btn_save->GetWidth() + 8);
 
 	combo_protocol->SetX(btn_save->GetWidth() + 316);
