@@ -1,4 +1,4 @@
-fre:ac Version 1.1 Beta 1
+fre:ac Version 1.1 Beta 2
 
 fre:ac ist ein freier Open-Source Audiokonverter. Das Programm unterstützt das Rippen
 von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate:
@@ -96,7 +96,7 @@ Voraussetzungen
 			- Windows XP/Vista/7/8.x/10
 			- macOS 10.5 Leopard oder neuer
 			- Linux (die meisten modernen Distributionen werden unterstützt)
-			- FreeBSD/PC-BSD (getestet unter FreeBSD 12.0)
+			- FreeBSD/PC-BSD (getestet unter FreeBSD 12.1)
 			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
 			- OpenBSD (getestet unter OpenBSD 5.3)
 			- Solaris (getestet unter Solaris 11)
@@ -117,11 +117,11 @@ Voraussetzungen
 
 		Alle Systeme:
 
-			- smooth v0.9 (http://www.smooth-project.org/)
+			- smooth v0.9.1 (http://www.smooth-project.org/)
 
 		Windows:
 
-			- MinGW GCC v4.0+ (http://www.mingw.org/) oder Visual Studio 2017
+			- MinGW GCC v4.0+ (http://www.mingw.org/) oder Visual Studio 2019
 
 		Alle Linux- und Unix-Systeme:
 
@@ -146,6 +146,33 @@ Voraussetzungen
 
 Geschichte
 ----------
+
+	Version 1.1 Beta 2 (Januar 2019)
+
+		- Verbesserungen
+
+			- Verwende Akzentfarbe des Farbschemas unter Windows 10
+			- Schreibe Namen der aktivierten DSP-Komponenten in Log-Dateien
+			- Schreibe Gesamtdauer und Geschwindigkeit von Konvertierungen in Log-Dateien
+
+		- Behobene Fehler
+
+			- Fehler im IO-Subsystem behoben, durch den in einigen Fällen Ausgabedateien beschädigt werden konnten
+			- Fehler im SuperFast LAME-Repacker behoben, durch den in einigen Fällen Ausgabedateien beschädigt werden konnten
+			- Fehlerhafte Gapless-Dekodierung von mit FFmpeg erstellten MP3-Dateien korrigiert
+			- Unfähigkeit ID3v2- und APEv2-Tags im Tag-Editor zu aktualisieren behoben
+			- Unfähigkeit das Programm zu beenden behoben, nachdem eine CD während des Rippens ausgeworfen wurde
+			- Aufhängen des Programms behoben, wenn eine CD während des Hinzufügens ihrer Tracks zur Jobliste ausgeworfen wurde
+			- Vertauschte Werte für minimale und maximale Bitrate im Vorbis-Konfigurationsdialog korrigiert
+
+		- Aktualisierte Codecs
+
+			- Monkey's Audio auf Version 5.12 aktualisiert
+			- WavPack auf Version 5.2.0 aktualisiert
+
+		- Aktualisierte Übersetzungen
+
+			- Niederländische Übersetzung aktualisiert
 
 	Version 1.1 Beta 1 (Dezember 2019)
 
