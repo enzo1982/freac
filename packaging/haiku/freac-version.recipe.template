@@ -15,12 +15,12 @@ Features include:
 - User interface available in 40+ languages
 - Optional command line interface"
 HOMEPAGE="https://freac.org/"
-COPYRIGHT="2001-2019 Robert Kausch"
+COPYRIGHT="2001-2020 Robert Kausch"
 LICENSE="GNU GPL v2"
 REVISION="1"
-SOURCE_URI="https://github.com/enzo1982/freac/releases/download/v${portVersion/\~alpha/-alpha-}/freac-${portVersion/\~alpha/-alpha-}.tar.gz"
+SOURCE_URI="https://github.com/enzo1982/freac/releases/download/v${portVersion/\~/-}/freac-${portVersion/\~/-}.tar.gz"
 CHECKSUM_SHA256="<checksum>"
-SOURCE_DIR="freac-${portVersion/\~alpha/-alpha-}"
+SOURCE_DIR="freac-${portVersion/\~/-}"
 
 ARCHITECTURES="!x86_gcc2 x86 x86_64"
 if [ "$targetArchitecture" = x86_gcc2 ]; then
@@ -54,7 +54,7 @@ REQUIRES="
 	lib:libfaac$secondaryArchSuffix
 	lib:libfaad$secondaryArchSuffix
 	lib:libFLAC$secondaryArchSuffix
-	lib:libMAC$secondaryArchSuffix
+	lib:libMAC$secondaryArchSuffix >= 6
 	lib:libmp3lame$secondaryArchSuffix
 	lib:libmp4v2$secondaryArchSuffix
 	lib:libmpg123$secondaryArchSuffix
