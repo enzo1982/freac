@@ -1656,6 +1656,9 @@ Void freac::JobConvert::LogSettings(const String &singleOutFile, Int numberOfThr
 
 	String	 filenamePattern	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
 
+	Bool	 enableProcessing	= configuration->GetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault);
+	String	 selectedDSPs		= configuration->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault);
+
 	/* Get encoder properties.
 	 */
 	Registry		&boca	 = Registry::Get();
@@ -1708,6 +1711,29 @@ Void freac::JobConvert::LogSettings(const String &singleOutFile, Int numberOfThr
 	if (selectedEncoderLossless)
 	{
 		log->Write(String("    Output verification:  ").Append(verifyOutput ? "Enabled" : "Disabled"));
+		log->Write(NIL);
+	}
+
+	/* Processing settings.
+	 */
+	if (enableProcessing && selectedDSPs != NIL)
+	{
+		String			 componentNames;
+		const Array<String>	&components = selectedDSPs.Explode(",");
+
+		foreach (const String &component, components)
+		{
+			AS::Component	*dsp = boca.CreateComponentByID(component);
+
+			if (dsp == NIL) continue;
+
+			componentNames.Append(componentNames != NIL ? ", " : NIL).Append(dsp->GetName());
+
+			boca.DeleteComponent(dsp);
+		}
+
+		log->Write(String("    Signal processing:    Enabled"));
+		log->Write(String("        Selected DSPs:    ").Append(componentNames));
 		log->Write(NIL);
 	}
 }
