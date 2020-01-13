@@ -950,7 +950,7 @@
 	<entry id="39009" string="ABR">ABR (平均位元率)</entry>
 	<entry id="39010" string="Options">選項</entry>
 	<entry id="39011" string="Voice Activity Detection">語音活動偵測</entry>
-	<entry id="39012" string="Discontinued Transmission">非連續性傳輸</entry>
+	<entry id="39012" string="Discontinuous Transmission">非連續性傳輸</entry>
 	<entry id="39013" string="Algorithm complexity">演算法複雜性</entry>
 	<entry id="39014" string="Complexity">複雜度</entry>
 	<entry id="39015" string="CBR quality">CBR 品質</entry>
@@ -1148,6 +1148,7 @@
 	<entry id="80405" string="Extra encode processing">額外編碼處理</entry>
 	<entry id="80406" string="faster">較快</entry>
 	<entry id="80407" string="better">較好</entry>
+	<entry id="80408" string="%1 kbps">%1 kbps</entry>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1158,6 +1159,12 @@
 	<entry id="80504" string="better">較好</entry>
 	<entry id="80505" string="Bitrate">位元率</entry>
 	<entry id="80506" string="Bitrate (Streaming)">位元率 (串流)</entry>
+	<entry id="80507" string="%1 kbps">%1 kbps</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">位元率</entry>
+	<entry id="80601" string="%1 kbps">%1 kbps</entry>
       </section>
     </section>
 

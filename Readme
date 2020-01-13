@@ -1,4 +1,4 @@
-fre:ac version 1.1 Alpha
+fre:ac version 1.1 Beta 2
 
 fre:ac is a free and open source audio converter. It supports audio CD
 ripping and tag editing and converts the following audio formats:
@@ -96,7 +96,7 @@ Requirements
 			- Windows XP/Vista/7/8.x/10
 			- macOS 10.5 Leopard or later
 			- Linux (most modern distributions are supported)
-			- FreeBSD/PC-BSD (tested on FreeBSD 12.0)
+			- FreeBSD/PC-BSD (tested on FreeBSD 12.1)
 			- NetBSD (tested on NetBSD 6.0, NetBSD 5.x and earlier releases are not supported)
 			- OpenBSD (tested on OpenBSD 5.3)
 			- Solaris (tested on Solaris 11)
@@ -117,11 +117,11 @@ Requirements
 
 		All platforms:
 
-			- smooth v0.9 (http://www.smooth-project.org/)
+			- smooth v0.9.1 (http://www.smooth-project.org/)
 
 		Windows:
 
-			- MinGW GCC v4.0+ (http://www.mingw.org/) or Visual Studio 2017
+			- MinGW GCC v4.0+ (http://www.mingw.org/) or Visual Studio 2019
 
 		All Linux and Unix platforms:
 
@@ -147,7 +147,34 @@ Requirements
 History
 -------
 
-	Version 1.1 Alpha (November 2019)
+	Version 1.1 Beta 2 (January 2020)
+
+		- Improvements
+
+			- respect theme accent color on Windows 10
+			- log names of active DSP components
+			- log total duration and speed of conversions
+
+		- Bug fixes
+
+			- fixed an IO subsystem issue causing corrupted output files in some cases
+			- fixed SuperFast LAME repacker causing glitches in output files in some cases
+			- fixed gapless decoding of MP3 files created with FFmpeg
+			- fixed inability to update ID3v2 and APEv2 tags in tag editor
+			- fixed inability to exit application after ejecting a disc while ripping
+			- fixed hangup when ejecting a disc while adding its tracks to joblist
+			- fixed minimum and maximum bitrate values being mixed up in Vorbis configuration dialog
+
+		- Updated codecs
+
+			- updated Monkey's Audio to version 5.12
+			- updated WavPack to version 5.2.0
+
+		- Updated translations
+
+			- updated Dutch translation
+
+	Version 1.1 Beta 1 (December 2019)
 
 		- implemented an extension component framework to modularize fre:ac
 
@@ -276,9 +303,9 @@ Special thanks to
 	- Paul Francis Harrison for developing the Bonk format
 	- Albert L. Faber for his excellent CDRip Ripping Library
 
-	- the translators: Eric Le Carre (French),
+	- the translators: Eric Le Carre and Philippe Grivel (French),
 			   Marco D'Amato and Roberto Boriotti (Italian),
-			   REIKA (Japanese),
+			   REIKA and BHCrusher1 (Japanese),
 			   Federico Reddig and Will (Spanish),
 			   Jose Maria Vera Somoza (Spanish, Latin American),
 			   Nikolaos-Ioannis Galanis (Greek),
@@ -296,7 +323,7 @@ Special thanks to
 			   Odyssey (Korean),
 			   Jan Arni Jacobsen (Danish),
 			   Mikael Hiort af Ornäs and Anton Mjoernebrant (Swedish),
-			   Peter Krajcar (Slovak),
+			   Peter Krajcar and Miro Babinsky (Slovak),
 			   Andreas Normann Aanonsen (Norwegian),
 			   Vincent Rateau (Esperanto),
 			   Cako (Turkish),

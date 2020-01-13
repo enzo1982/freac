@@ -26,12 +26,22 @@
     <entry id="304" string="Genre">Género</entry>
     <entry id="305" string="Comment">Comentario</entry>
     <entry id="306" string="Year">Año</entry>
+    <entry id="307" string="Disc">Disco</entry>
+    <entry id="308" string="Rating">Clasificación</entry>
+    <entry id="309" string="File name">Nombre de archivo</entry>
+    <entry id="310" string="File type">Tipo de archivo</entry>
+    <entry id="311" string="Album artist">Intérprete del álbum</entry>
 
     <entry id="350" string="unknown artist">Artista desconocido</entry>
     <entry id="351" string="unknown title">Título desconocido</entry>
     <entry id="352" string="unknown album">Álbum desconocido</entry>
     <entry id="353" string="unknown genre">género desconocido</entry>
     <entry id="354" string="unknown year">año desconocido</entry>
+    <entry id="355" string="unknown conductor">conductor desconocido</entry>
+    <entry id="356" string="unknown composer">compositor desconocido</entry>
+    <entry id="357" string="unknown album artist">intérprete de álbum desconocido</entry>
+
+    <entry id="380" string="hidden track">pista oculta</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -85,6 +95,8 @@
 	<entry id="1300" string="General settings">Configuración general</entry>
 	<entry id="1301" string="Configure selected encoder">Configuración del codificador actual</entry>
 	<entry id="1302" string="Active CD-ROM drive">Unidad de CD-ROM activa</entry>
+	<entry id="1303" string="Active configuration">Configuración activa</entry>
+	<entry id="1304" string="Default configuration">Configuración predeterminada</entry>
       </section>
 
       <section name="Encode">
@@ -107,6 +119,8 @@
 	<entry id="1603" string="Check for updates at startup">Comprobar por actualizaciones al iniciar</entry>
 	<entry id="1604" string="About %1">Acerca de %1</entry>
 	<entry id="1605" string="index_en.html">index_es.html</entry>
+	<entry id="1606" string="Report an issue">Reportar un problema</entry>
+	<entry id="1607" string="Suggest a feature">Sugerir una función</entry>
       </section>
     </section>
 
@@ -170,6 +184,8 @@
       <entry id="3042" string="Audio Files">Archivos de audio</entry>
       <entry id="3043" string="All Files">Todos los archivos</entry>
       <entry id="3044" string="Playlist Files">Archivos de lista de reproducción</entry>
+      <entry id="3045" string="Active decoder">Decodificador activo</entry>
+      <entry id="3046" string="Joblist">Lista de trabajos</entry>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Carpeta</entry>
@@ -193,7 +209,13 @@
     </section>
 
     <section name="Jobs">
+      <entry id="3502" string="Errors / Warnings">Errores/advertencias</entry>
       <entry id="3505" string="Time left">Tiempo restante</entry>
+      <entry id="3506" string="Waiting for other jobs to finish">Esperando a que finalicen otros trabajos</entry>
+
+      <section name="Joblist">
+	<entry id="3608" string="Removed all tracks from joblist">Se quitaron todas las pistas de la lista de trabajos</entry>
+      </section>
     </section>
 
     <section name="CDDB">
@@ -687,6 +709,7 @@
       <section name="Channels">
 	<entry id="50102" string="Mono">Mono</entry>
 	<entry id="50103" string="Stereo">Estéreo</entry>
+	<entry id="50104" string="Switch stereo channels">Intercambiar canales izq./der.</entry>
       </section>
 
       <section name="Resample">

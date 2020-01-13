@@ -588,7 +588,7 @@
 
     <section name="Messages">
       <entry id="7000" string="Currently converting">Tans besig om te enkodeer</entry>
-      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Die enkoderingsproses is nog aan die gang!&#10; Wil jy regtig ophou?</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Die enkoderingsproses is nog aan die gang!&#10;Wil jy regtig ophou?</entry>
       <entry id="7002" string="Delete original files after encoding">Vee oorspronklike lêers na enkodering uit</entry>
       <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Hierdie opsie sal die oorspronklike lêers na die enkoderingsproses&#10;van jou rekenaar verwyder!&#10;&#10;Is jy seker jy wil hierdie funksie aktiveer?</entry>
       <entry id="7004" string="Keep this option enabled even after restarting %1"/>
@@ -950,7 +950,7 @@
 	<entry id="39009" string="ABR"/>
 	<entry id="39010" string="Options">Opsies</entry>
 	<entry id="39011" string="Voice Activity Detection"/>
-	<entry id="39012" string="Discontinued Transmission"/>
+	<entry id="39012" string="Discontinuous Transmission"/>
 	<entry id="39013" string="Algorithm complexity"/>
 	<entry id="39014" string="Complexity"/>
 	<entry id="39015" string="CBR quality"/>
@@ -1148,6 +1148,7 @@
 	<entry id="80405" string="Extra encode processing"/>
 	<entry id="80406" string="faster"/>
 	<entry id="80407" string="better"/>
+	<entry id="80408" string="%1 kbps"/>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1158,6 +1159,12 @@
 	<entry id="80504" string="better"/>
 	<entry id="80505" string="Bitrate"/>
 	<entry id="80506" string="Bitrate (Streaming)"/>
+	<entry id="80507" string="%1 kbps"/>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate"/>
+	<entry id="80601" string="%1 kbps"/>
       </section>
     </section>
 

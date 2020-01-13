@@ -169,10 +169,6 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	if (conversionStep == ConversionStepVerify) verifyChecksum = decoder->GetMD5Checksum();
 
-	/* Output log messages.
-	 */
-	LogConversionEnd(trackToConvert.fileName, encodeChecksum, verifyChecksum);
-
 	/* Get output format info.
 	 */
 	Format	 format = trackToConvert.GetFormat();
@@ -200,6 +196,10 @@ Int freac::ConvertWorkerSingleFile::Convert()
 		encoder->SignalChapterChange();
 		encodedSamples += trackLength;
 	}
+
+	/* Output log messages.
+	 */
+	LogConversionEnd(trackToConvert.fileName, encodeChecksum, verifyChecksum);
 
 	/* Report finished conversion.
 	 */

@@ -578,7 +578,7 @@
 
     <section name="Tips">
       <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 je dostupný v %2 jazycích. Není-li váš jazyk dostupný,&#10;můžete jej lehce vytvořit s využitím aplikace 'smooth Translator'.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 podporuje kódování LAME, Ogg Vorbis, FAAC, FLAC&#10;a kodek Opus. VQF kodek najdete na webu %1:&#10; %2</entry>
+      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 podporuje kódování LAME, Ogg Vorbis, FAAC, FLAC&#10;a kodek Opus. VQF kodek najdete na webu %1:&#10;%2</entry>
       <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 může použít vstupní pluginy 'Winampu 2' pro podporu&#10;více formátů souborů.&#10;Zkopírujte soubory in_*.dll do složky %1/plugins, aby byly&#10;pro %1 dostupné.</entry>
       <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">S %1 můžete zpracovávat data o CD pro freedb znakovou&#10;sadou Unicode. Máte-li CD s jmény umělce či názvy s diakritikou,&#10;můžete s %1 nabídnout freedb správné (opravené) záznamy.</entry>
       <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Pro korekci chyb čtení při ripování CD můžete aktivovat&#10;Jitter korekci na záložce Obecná nastavení/Ripper.&#10;Pokud to nepomůže, zkuste aktivovat jeden z Paranoia režimů.</entry>
@@ -950,7 +950,7 @@
 	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Volby</entry>
 	<entry id="39011" string="Voice Activity Detection">Detekce hlasové aktivity</entry>
-	<entry id="39012" string="Discontinued Transmission">Nespojitý přenos</entry>
+	<entry id="39012" string="Discontinuous Transmission">Nespojitý přenos</entry>
 	<entry id="39013" string="Algorithm complexity">Komplexní algorytmus</entry>
 	<entry id="39014" string="Complexity">Komplexní</entry>
 	<entry id="39015" string="CBR quality">CBR kvalita</entry>
@@ -1148,6 +1148,7 @@
 	<entry id="80405" string="Extra encode processing">Další možnosti zpracování</entry>
 	<entry id="80406" string="faster">rychlejší</entry>
 	<entry id="80407" string="better">lepší</entry>
+	<entry id="80408" string="%1 kbps">%1 kbps</entry>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1158,6 +1159,12 @@
 	<entry id="80504" string="better">lepší</entry>
 	<entry id="80505" string="Bitrate">Datový tok</entry>
 	<entry id="80506" string="Bitrate (Streaming)">Datový tok (Streaming)</entry>
+	<entry id="80507" string="%1 kbps">%1 kbps</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">Datový tok</entry>
+	<entry id="80601" string="%1 kbps">%1 kbps</entry>
       </section>
     </section>
 

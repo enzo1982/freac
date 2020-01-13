@@ -593,7 +593,7 @@
       <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">פונקציה זו תמחק את קבצי המקור לאחר ההמרה&#10;האם אתה בטוח שברצונך לאפשר זאת?</entry>
       <entry id="7004" string="Keep this option enabled even after restarting %1"/>
       <entry id="7005" string="File already exists">קובץ כבר קיים</entry>
-      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">הקובץ %1 כבר קיים&#10; האם לדרוס אותו ?</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">הקובץ %1 כבר קיים&#10;האם לדרוס אותו ?</entry>
       <entry id="7007" string="Overwrite all further files">דרוס את כל הקבצים להבא</entry>
       <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?"/>
     </section>
@@ -950,7 +950,7 @@
 	<entry id="39009" string="ABR"/>
 	<entry id="39010" string="Options">אפשרויות</entry>
 	<entry id="39011" string="Voice Activity Detection"/>
-	<entry id="39012" string="Discontinued Transmission"/>
+	<entry id="39012" string="Discontinuous Transmission"/>
 	<entry id="39013" string="Algorithm complexity"/>
 	<entry id="39014" string="Complexity"/>
 	<entry id="39015" string="CBR quality"/>
@@ -1148,6 +1148,7 @@
 	<entry id="80405" string="Extra encode processing"/>
 	<entry id="80406" string="faster"/>
 	<entry id="80407" string="better"/>
+	<entry id="80408" string="%1 kbps"/>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1158,6 +1159,12 @@
 	<entry id="80504" string="better"/>
 	<entry id="80505" string="Bitrate"/>
 	<entry id="80506" string="Bitrate (Streaming)"/>
+	<entry id="80507" string="%1 kbps"/>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate"/>
+	<entry id="80601" string="%1 kbps"/>
       </section>
     </section>
 

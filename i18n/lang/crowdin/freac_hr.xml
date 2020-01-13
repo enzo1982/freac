@@ -42,7 +42,7 @@
     <entry id="354" string="unknown year">nepoznata godina</entry>
     <entry id="355" string="unknown conductor">nepoznat dirigent</entry>
     <entry id="356" string="unknown composer">nepoznat skladatelj</entry>
-    <entry id="357" string="unknown album artist">nepoznat  izvođač albuma</entry>
+    <entry id="357" string="unknown album artist">nepoznat izvođač albuma</entry>
 
     <entry id="380" string="hidden track">skrivena traka</entry>
 
@@ -251,8 +251,8 @@
 	<entry id="3604" string="Added %1 files, %2 errors occurred">Dodano %1 datoteka, %2 grešaka</entry>
 	<entry id="3605" string="Added %1 tracks, %2 errors occurred">Dodano %1 traka, %2 grešaka</entry>
 	<entry id="3606" string="Removing all tracks">Uklanjanje svih traka</entry>
-	<entry id="3607" string="Removing tracks of disc in drive %1">Uklanjanje traka sa diska u jedinici %1 </entry>
-	<entry id="3608" string="Removed all tracks from joblist">Uklonjene sve  trake sa liste zadataka</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">Uklanjanje traka sa diska u jedinici %1</entry>
+	<entry id="3608" string="Removed all tracks from joblist">Uklonjene sve trake sa liste zadataka</entry>
 	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">Uklonjene trake sa diska u jedinici %1 iz liste zadataka</entry>
       </section>
 
@@ -544,9 +544,9 @@
       <section name="Verification">
 	<entry id="5800" string="Verification">Provjera</entry>
 	<entry id="5801" string="Enable input verification">Omogući provjeru ulaza</entry>
-	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Provjeri  da je lossless ulaz dekodiran točno u&#10;podatke iz kojih je originalno kreiran</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Provjeri da je lossless ulaz dekodiran točno u&#10;podatke iz kojih je originalno kreiran</entry>
 	<entry id="5803" string="Enable output verification">Omogući provjeru izlaza</entry>
-	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Provjeri  da je lossless izlaz dekodiran točno u&#10;podatke korištene za enkodiranje</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Provjeri da je lossless izlaz dekodiran točno u&#10;podatke korištene za enkodiranje</entry>
       </section>
 
       <section name="Processing">
@@ -633,7 +633,7 @@
 	<entry id="8002" string="Skip all">Preskoči sve</entry>
 	<entry id="8003" string="The following %1 files already exist or have duplicate file names">Sljedećih %1 datoteka već postoji ili postoji istoimena datoteka</entry>
 	<entry id="8004" string="Action">Akcija</entry>
-	<entry id="8005" string="Overwrite">Prepiši </entry>
+	<entry id="8005" string="Overwrite">Prepiši</entry>
 	<entry id="8006" string="Skip">Preskoči</entry>
       </section>
 
@@ -950,7 +950,7 @@
 	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Opcije</entry>
 	<entry id="39011" string="Voice Activity Detection">Detekcija glasa</entry>
-	<entry id="39012" string="Discontinued Transmission">Isprekidani prijenos</entry>
+	<entry id="39012" string="Discontinuous Transmission">Isprekidani prijenos</entry>
 	<entry id="39013" string="Algorithm complexity">Složenost algoritma</entry>
 	<entry id="39014" string="Complexity">Složenost</entry>
 	<entry id="39015" string="CBR quality">CBR kvaliteta</entry>
@@ -1148,6 +1148,7 @@
 	<entry id="80405" string="Extra encode processing">Ekstra obrada enkodiranja</entry>
 	<entry id="80406" string="faster">brže</entry>
 	<entry id="80407" string="better">bolje</entry>
+	<entry id="80408" string="%1 kbps">%1 kbps</entry>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1158,6 +1159,12 @@
 	<entry id="80504" string="better">bolje</entry>
 	<entry id="80505" string="Bitrate">Bitrate</entry>
 	<entry id="80506" string="Bitrate (Streaming)">Bitrate (Streaming)</entry>
+	<entry id="80507" string="%1 kbps">%1 kbps</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">Bitrate</entry>
+	<entry id="80601" string="%1 kbps">%1 kbps</entry>
       </section>
     </section>
 
@@ -1167,7 +1174,7 @@
 	<entry id="100000" string="Support this project">Podržite ovaj projekt</entry>
 	<entry id="100001" string="Please support this project!">Molim vas podržite ovaj projekt!</entry>
 	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Molim vas održite ovaj software besplatnim podržavajući %1 software&#10;donacijom.</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Molim pišite na  %1 ukoliko želite poslati ček ili novac poštom.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Molim pišite na %1 ukoliko želite poslati ček ili novac poštom.</entry>
 	<entry id="100004" string="Thank you very much!">Puno hvala!</entry>
 	<entry id="100005" string="Remind me later">Podsjeti me kasnije</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
@@ -1283,7 +1290,7 @@
 	  <entry id="103203" string="Conductor">Dirgent</entry>
 	  <entry id="103204" string="Composer">Skladatelj</entry>
 	  <entry id="103205" string="Lyrics writer">Pisac teksta</entry>
-	  <entry id="103206" string="Modified / remixed by">Izmjenio/remixao </entry>
+	  <entry id="103206" string="Modified / remixed by">Izmjenio/remixao</entry>
 	  <entry id="103207" string="Publisher information">Informacija o izdavaču</entry>
 	  <entry id="103208" string="Publisher / label">Izdavač</entry>
 	  <entry id="103209" string="ISRC">ISRC</entry>

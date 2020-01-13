@@ -26,6 +26,8 @@ freac::ConfigureEncoders::ConfigureEncoders()
 
 	i18n->SetContext("Configuration::Encoders");
 
+	/* Get configuration.
+	 */
 	singleFile	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
 	onTheFly	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, Config::SettingsEncodeOnTheFlyDefault);
 	keepWaves	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsKeepWaveFilesID, Config::SettingsKeepWaveFilesDefault);
@@ -40,6 +42,8 @@ freac::ConfigureEncoders::ConfigureEncoders()
 	replaceSpaces	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
 	keepTimeStamps	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesKeepTimeStampsID, Config::SettingsFilenamesKeepTimeStampsDefault);
 
+	/* Encoder group.
+	 */
 	group_encoder	 = new GroupBox(i18n->TranslateString("Encoder"), Point(7, 11), Size(552, 43));
 
 	combo_encoder	 = new ComboBox(Point(10, 12), Size(394, 0));
@@ -65,6 +69,8 @@ freac::ConfigureEncoders::ConfigureEncoders()
 	group_encoder->Add(combo_encoder);
 	group_encoder->Add(button_config);
 
+	/* Options group.
+	 */
 	group_options		= new GroupBox(i18n->TranslateString("Options"), Point(7, 66), Size(552, 88));
 
 	check_onTheFly		= new CheckBox(i18n->TranslateString("Encode \'On-The-Fly\'"), Point(10, 37), Size(261, 0), &onTheFly);
@@ -92,32 +98,18 @@ freac::ConfigureEncoders::ConfigureEncoders()
 	group_options->Add(check_removeTracks);
 	group_options->Add(check_addEncodedTracks);
 
-	Int	 maxTextSize = Math::Max(Math::Max(Math::Max(check_onTheFly->GetUnscaledTextWidth(), check_keepWaves->GetUnscaledTextWidth() + 17), check_singleFile->GetUnscaledTextWidth()), Math::Max(check_removeTracks->GetUnscaledTextWidth(), check_addEncodedTracks->GetUnscaledTextWidth() + 17));
+	/* Output folder group.
+	 */
+	group_outdir	= new GroupBox(i18n->TranslateString("Output folder"), Point(7, 166), Size(100, 93));
 
-	check_onTheFly->SetWidth(Math::Max(261, maxTextSize + 21));
-	check_keepWaves->SetWidth(check_onTheFly->GetWidth() - 17);
-	check_singleFile->SetWidth(check_onTheFly->GetWidth());
-
-	check_removeTracks->SetX(check_onTheFly->GetWidth() + 19);
-	check_removeTracks->SetWidth(check_onTheFly->GetWidth());
-	check_addEncodedTracks->SetX(check_onTheFly->GetWidth() + 36);
-	check_addEncodedTracks->SetWidth(check_onTheFly->GetWidth() - 17);
-
-	group_options->SetWidth(2 * check_onTheFly->GetWidth() + 30);
-
-	group_encoder->SetWidth(group_options->GetWidth());
-	combo_encoder->SetWidth(group_encoder->GetWidth() - button_config->GetWidth() - 28);
-
-	group_outdir	= new GroupBox(i18n->TranslateString("Output folder"), Point(7, 166), Size(group_options->GetWidth(), 93));
-
-	check_useInputDir	= new CheckBox(i18n->TranslateString("Use input file folder if possible"), Point(10, 14), Size(group_outdir->GetWidth() - 108, 0), &useInputDir);
+	check_useInputDir	= new CheckBox(i18n->TranslateString("Use input file folder if possible"), Point(10, 14), Size(), &useInputDir);
 	check_useInputDir->onAction.Connect(&ConfigureEncoders::ToggleUseInputDir, this);
 
-	check_allowOverwrite	= new CheckBox(i18n->TranslateString("Allow overwriting input file"), Point(27, 37), Size(check_useInputDir->GetWidth() - 17, 0), &allowOverwrite);
+	check_allowOverwrite	= new CheckBox(i18n->TranslateString("Allow overwriting input file"), Point(27, 37), Size(), &allowOverwrite);
 
 	ToggleUseInputDir();
 
-	edit_outdir	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault), Point(10, 62), Size(check_useInputDir->GetWidth(), 0), 0);
+	edit_outdir	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault), Point(10, 62), Size(), 0);
 	list_outdir	= new List();
 
 	for (Int i = 1; i <= 5; i++)
@@ -139,10 +131,12 @@ freac::ConfigureEncoders::ConfigureEncoders()
 	group_outdir->Add(edit_outdir);
 	group_outdir->Add(button_outdirBrowse);
 
-	group_filename	= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 271), Size(group_options->GetWidth(), 113));
+	/* Filename group.
+	 */
+	group_filename	= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 271), Size(100, 113));
 
 	text_filename	= new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(10, 15));
-	edit_filename	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault), Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(group_filename->GetWidth() - text_filename->GetUnscaledTextWidth() - 27, 0), 0);
+	edit_filename	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault), Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(), 0);
 	list_filename	= new List();
 
 	Int	 customEntries = 0;
@@ -171,10 +165,10 @@ freac::ConfigureEncoders::ConfigureEncoders()
 
 	edit_filename->SetDropDownList(list_filename);
 
-	check_addSeqNumbers	= new CheckBox(i18n->TranslateString("Append sequential numbers to otherwise identical filenames"), Point(10, 39), Size(group_filename->GetWidth() - 20, 0), &addSeqNumbers);
-	check_unicodeFiles	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 62), Size(check_onTheFly->GetWidth(), 0), &unicodeFiles);
-	check_replaceSpaces	= new CheckBox(i18n->TranslateString("Replace spaces with underscores"), Point(10, 85), Size(check_onTheFly->GetWidth(), 0), &replaceSpaces);
-	check_keepTimeStamps	= new CheckBox(i18n->TranslateString("Keep time stamps of source files"), Point(check_onTheFly->GetWidth() + 19, 62), Size(check_onTheFly->GetWidth(), 0), &keepTimeStamps);
+	check_addSeqNumbers	= new CheckBox(i18n->TranslateString("Append sequential numbers to otherwise identical filenames"), Point(10, 39), Size(), &addSeqNumbers);
+	check_unicodeFiles	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 62), Size(), &unicodeFiles);
+	check_replaceSpaces	= new CheckBox(i18n->TranslateString("Replace spaces with underscores"), Point(10, 85), Size(), &replaceSpaces);
+	check_keepTimeStamps	= new CheckBox(i18n->TranslateString("Keep time stamps of source files"), Point(10, 62), Size(), &keepTimeStamps);
 
 	group_filename->Add(text_filename);
 	group_filename->Add(edit_filename);
@@ -187,6 +181,44 @@ freac::ConfigureEncoders::ConfigureEncoders()
 	Add(group_outdir);
 	Add(group_options);
 	Add(group_filename);
+
+	/* Adjust element widths.
+	 */
+	Int	 maxTextSize = Math::Max(Math::Max(Math::Max(check_onTheFly->GetUnscaledTextWidth(), check_keepWaves->GetUnscaledTextWidth() + 17),
+						   Math::Max(check_singleFile->GetUnscaledTextWidth(), check_keepTimeStamps->GetUnscaledTextWidth())),
+					 Math::Max(Math::Max(check_removeTracks->GetUnscaledTextWidth(), check_addEncodedTracks->GetUnscaledTextWidth() + 17),
+						   Math::Max(check_unicodeFiles->GetUnscaledTextWidth(), check_replaceSpaces->GetUnscaledTextWidth())));
+
+	group_encoder->SetWidth(2 * Math::Max(261, maxTextSize + 21) + 30);
+	combo_encoder->SetWidth(group_encoder->GetWidth() - button_config->GetWidth() - 28);
+
+	group_options->SetWidth(group_encoder->GetWidth());
+
+	check_onTheFly->SetWidth(Math::Max(261, maxTextSize + 21));
+	check_keepWaves->SetWidth(check_onTheFly->GetWidth() - 17);
+	check_singleFile->SetWidth(check_onTheFly->GetWidth());
+
+	check_removeTracks->SetX(check_onTheFly->GetWidth() + 19);
+	check_removeTracks->SetWidth(check_onTheFly->GetWidth());
+
+	check_addEncodedTracks->SetX(check_onTheFly->GetWidth() + 36);
+	check_addEncodedTracks->SetWidth(check_onTheFly->GetWidth() - 17);
+
+	group_outdir->SetWidth(group_options->GetWidth());
+	edit_outdir->SetWidth(group_outdir->GetWidth() - 108);
+
+	check_useInputDir->SetWidth(edit_outdir->GetWidth());
+	check_allowOverwrite->SetWidth(edit_outdir->GetWidth() - 17);
+
+	group_filename->SetWidth(group_options->GetWidth());
+	edit_filename->SetWidth(group_filename->GetWidth() - text_filename->GetUnscaledTextWidth() - 27);
+
+	check_addSeqNumbers->SetWidth(group_filename->GetWidth() - 20);
+	check_unicodeFiles->SetWidth(check_onTheFly->GetWidth());
+	check_replaceSpaces->SetWidth(check_onTheFly->GetWidth());
+
+	check_keepTimeStamps->SetX(check_onTheFly->GetWidth() + 19);
+	check_keepTimeStamps->SetWidth(check_onTheFly->GetWidth());
 
 	SetSize(Size(14 + group_encoder->GetWidth(), 391));
 }

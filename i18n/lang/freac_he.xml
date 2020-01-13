@@ -289,7 +289,7 @@
       <entry id="7002" string="Delete original files after encoding">מחק קבצי מקור לאחר המרה</entry>
       <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">פונקציה זו תמחק את קבצי המקור לאחר ההמרה&#10;האם אתה בטוח שברצונך לאפשר זאת?</entry>
       <entry id="7005" string="File already exists">קובץ כבר קיים</entry>
-      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">הקובץ %1 כבר קיים&#10; האם לדרוס אותו ?</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">הקובץ %1 כבר קיים&#10;האם לדרוס אותו ?</entry>
       <entry id="7007" string="Overwrite all further files">דרוס את כל הקבצים להבא</entry>
     </section>
 

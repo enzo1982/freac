@@ -172,7 +172,13 @@ Void BoCA::ChooserFiles::OnChangeLanguageSettings()
 	text_nofiles->SetText(i18n->TranslateString("no audio files found"));
 
 	btn_save->SetText(i18n->TranslateString("Save"));
+	btn_save->SetWidth(Math::Max(80, btn_save->GetUnscaledTextWidth() + 14));
+
 	btn_saveall->SetText(i18n->TranslateString("Save all"));
+	btn_saveall->SetWidth(Math::Max(80, btn_saveall->GetUnscaledTextWidth() + 14));
+
+	btn_save->SetX(btn_save->GetWidth() + btn_saveall->GetWidth() + 16);
+	btn_saveall->SetX(btn_saveall->GetWidth() + 8);
 
 	/* OnChangeSize will correct sizes of any other widgets.
 	 */
@@ -215,7 +221,7 @@ Void BoCA::ChooserFiles::OnDragDivider(Int pos)
 
 	div_split->SetPos(pos);
 
-	text_nofiles->SetPosition(list_files->GetPosition() + Point((list_files->GetWidth() - text_nofiles->GetUnscaledTextWidth()) / 2, (list_files->GetHeight() - text_nofiles->GetUnscaledTextHeight()) / 2));
+	text_nofiles->SetPosition(list_files->GetPosition() + Point((list_files->GetWidth() - text_nofiles->GetUnscaledTextWidth()) / 2, (list_files->GetHeight() - 13 - text_nofiles->GetUnscaledTextHeight()) / 2 + 13));
 
 	div_split->Show();
 	list_directories->Show();

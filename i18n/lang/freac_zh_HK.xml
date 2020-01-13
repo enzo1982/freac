@@ -827,7 +827,7 @@
 	<entry id="39009" string="ABR">平均</entry>
 	<entry id="39010" string="Options">選項</entry>
 	<entry id="39011" string="Voice Activity Detection">聲動偵測</entry>
-	<entry id="39012" string="Discontinued Transmission">分段傳送</entry>
+	<entry id="39012" string="Discontinuous Transmission">分段傳送</entry>
 	<entry id="39013" string="Algorithm complexity">推算複合度</entry>
 	<entry id="39014" string="Complexity">複合度</entry>
 	<entry id="39015" string="CBR quality">固定位元率品質</entry>

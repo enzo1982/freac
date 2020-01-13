@@ -31,6 +31,6 @@
     <entry id="18" string="Your application has been successfully updated!">A vostr’appiecazione hè stata rinnovata bè !</entry>
     <entry id="19" string="Error">Sbagliu</entry>
     <entry id="20" string="Error downloading package!">Sbagliu durante u scaricamentu di u pacchettu !</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied."/>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Sbagliu durante l’installazione di « %1 » !&#10;&#10;L’accessu à u cartulare di l’appiecazione hè statu ricusatu.</entry>
   </data>
 </LangFile>

@@ -31,6 +31,8 @@ namespace freac
 
 			Bool			 exitThread;
 			Threads::Thread		*managerThread;
+
+			Array<Job *>		 finished;
 		public:
 			/* Methods to start and quit the JobManager
 			 */

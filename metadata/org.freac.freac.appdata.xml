@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2019 Robert Kausch -->
+<!-- Copyright 2020 Robert Kausch -->
 <component type="desktop-application">
     <id>org.freac.freac</id>
     <launchable type="desktop-id">org.freac.freac.desktop</launchable>
@@ -47,6 +47,49 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.1~beta2" date="2020-01-12">
+            <description>
+                <p>Improvements:</p>
+                <ul>
+                    <li>Log names of active DSP components</li>
+                    <li>Log total duration and speed of conversions</li>
+                </ul>
+                <p>Bug fixes:</p>
+                <ul>
+                   <li>Fixed an IO subsystem issue causing corrupted output files in some cases</li>
+                   <li>Fixed SuperFast LAME repacker causing glitches in output files in some cases</li>
+                   <li>Fixed gapless decoding of MP3 files created with FFmpeg</li>
+                   <li>Fixed inability to update ID3v2 and APEv2 tags in tag editor</li>
+                   <li>Fixed inability to exit application after ejecting a disc while ripping</li>
+                   <li>Fixed hangup when ejecting a disc while adding its tracks to joblist</li>
+                   <li>Fixed minimum and maximum bitrate values being mixed up in Vorbis configuration dialog</li>
+                </ul>
+                <p>Updated translations:</p>
+                <ul>
+                    <li>Updated Dutch translation</li>
+                </ul>
+            </description>
+        </release>
+        <release version="1.1~beta1" date="2019-12-15">
+            <description>
+                <p>New features:</p>
+                <ul>
+                    <li>Added support for saving log files</li>
+                </ul>
+                <p>Enhancements:</p>
+                <ul>
+                   <li>Greatly improved performance when output is on a HDD drive</li>
+                   <li>Adding files to the joblist can now use multiple threads</li>
+                   <li>Greatly improved tagging support (new fields and compatibility fixes)</li>
+                </ul>
+                <p>Bug fixes:</p>
+                <ul>
+                    <li>Fixed invalid file time for CD rips when using "Keep time stamps" option</li>
+                    <li>Fixed MP4 AAC files not always being gapless</li>
+                    <li>Fixed some keyboard input issues on Linux</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1~alpha20190423" date="2019-04-23">
             <description>
                 <p>New features:</p>

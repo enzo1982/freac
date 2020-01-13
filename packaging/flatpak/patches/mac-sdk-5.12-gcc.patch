@@ -1,6 +1,6 @@
-diff -Naur mac-sdk-5.07/Makefile mac-sdk-5.07-gcc/Makefile
---- mac-sdk-5.07/Makefile	1970-01-01 00:00:00 +0000
-+++ mac-sdk-5.07-gcc/Makefile	2019-11-21 10:39:43 +0000
+diff -Naur mac-sdk-5.12/Makefile mac-sdk-5.12-gcc/Makefile
+--- mac-sdk-5.12/Makefile	1970-01-01 00:00:00 +0000
++++ mac-sdk-5.12-gcc/Makefile	2019-11-21 21:28:57 +0000
 @@ -0,0 +1,8 @@
 +all:
 +	$(MAKE) -f Source/Projects/NonWindows/Makefile
@@ -10,10 +10,10 @@ diff -Naur mac-sdk-5.07/Makefile mac-sdk-5.07-gcc/Makefile
 +
 +clean:
 +	$(MAKE) -f Source/Projects/NonWindows/Makefile clean
-diff -Naur mac-sdk-5.07/Shared/All.h mac-sdk-5.07-gcc/Shared/All.h
---- mac-sdk-5.07/Shared/All.h	2019-11-18 20:48:52 +0000
-+++ mac-sdk-5.07-gcc/Shared/All.h	2019-11-21 10:49:22 +0000
-@@ -87,46 +87,17 @@
+diff -Naur mac-sdk-5.12/Shared/All.h mac-sdk-5.12-gcc/Shared/All.h
+--- mac-sdk-5.12/Shared/All.h	2020-01-02 14:25:42 +0000
++++ mac-sdk-5.12-gcc/Shared/All.h	2020-01-02 16:48:52 +0000
+@@ -86,46 +86,17 @@
  #define ENABLE_COMPRESSION_MODE_HIGH
  #define ENABLE_COMPRESSION_MODE_EXTRA_HIGH
  
@@ -37,10 +37,10 @@ diff -Naur mac-sdk-5.07/Shared/All.h mac-sdk-5.07-gcc/Shared/All.h
  {
      // integer types
 -#if defined(PLATFORM_x64)
--    typedef    int64_t                                     int64; // native integer, can safely hold a pointer
+-    typedef int64_t                                     int64; // native integer, can safely hold a pointer
      typedef int32_t                                     int32;
 -#else
--    typedef    intptr_t                                    int32; // native integer, can safely hold a pointer
+-    typedef intptr_t                                    int32; // native integer, can safely hold a pointer
      typedef int64_t                                     int64;
 -#endif
  
@@ -62,7 +62,7 @@ diff -Naur mac-sdk-5.07/Shared/All.h mac-sdk-5.07-gcc/Shared/All.h
  
      typedef uint64_t                                    uint64;
      typedef uint32_t                                    uint32;
-@@ -180,9 +151,13 @@
+@@ -179,9 +150,13 @@
      #define TICK_COUNT_FREQ                             1000000
      #undef    ASSERT
      #define ASSERT(e)
@@ -77,20 +77,21 @@ diff -Naur mac-sdk-5.07/Shared/All.h mac-sdk-5.07-gcc/Shared/All.h
      #define strcpy_s(A, B, C) strcpy(A, C)
      #define _tcscat_s(A, B, C) _tcscat(A, C)
  #endif
-diff -Naur mac-sdk-5.07/Shared/NoWindows.h mac-sdk-5.07-gcc/Shared/NoWindows.h
---- mac-sdk-5.07/Shared/NoWindows.h	2019-10-29 14:16:46 +0000
-+++ mac-sdk-5.07-gcc/Shared/NoWindows.h	2019-11-21 10:39:43 +0000
-@@ -42,6 +42,7 @@
- #define _T(x) L ## x
+diff -Naur mac-sdk-5.12/Shared/NoWindows.h mac-sdk-5.12-gcc/Shared/NoWindows.h
+--- mac-sdk-5.12/Shared/NoWindows.h	2019-12-03 22:21:06 +0000
++++ mac-sdk-5.12-gcc/Shared/NoWindows.h	2019-12-15 10:16:26 +0000
+@@ -48,7 +48,7 @@
+ #define _totlower towlower
+ #define _totupper towupper
+ #define _tcschr wcschr
+-#define _tcsicmp wcscasecmp
++#define _tcsicmp wcscmp
+ #define _tcscpy wcscpy
+ #define _tcslen wcslen
  
- #define _strnicmp strncasecmp
-+#define _wcsicmp wcscmp
- #define _wtoi(x) wcstol(x, NULL, 10)
- #define _tcscat wcscat
- #undef _totlower
-diff -Naur mac-sdk-5.07/Source/Console/Console.cpp mac-sdk-5.07-gcc/Source/Console/Console.cpp
---- mac-sdk-5.07/Source/Console/Console.cpp	2019-11-18 20:48:12 +0000
-+++ mac-sdk-5.07-gcc/Source/Console/Console.cpp	2019-11-21 10:50:28 +0000
+diff -Naur mac-sdk-5.12/Source/Console/Console.cpp mac-sdk-5.12-gcc/Source/Console/Console.cpp
+--- mac-sdk-5.12/Source/Console/Console.cpp	2019-12-15 17:33:59 +0000
++++ mac-sdk-5.12-gcc/Source/Console/Console.cpp	2019-12-16 20:08:17 +0000
 @@ -21,7 +21,12 @@
  #define UNDEFINED_MODE        -1
  
@@ -105,51 +106,10 @@ diff -Naur mac-sdk-5.07/Source/Console/Console.cpp mac-sdk-5.07-gcc/Source/Conso
      #define _tmain(argc, argv) main(argc, argv)
      #define _tcscpy_s(dst, num, src) strcpy(dst, src)
      #define _tcsncpy_s(dst, num, src, count) strncpy(dst, src, count)
-@@ -222,18 +227,18 @@
-     else if (nMode == DECOMPRESS_MODE) 
-     {
-         _ftprintf(stderr, _T("Decompressing...\n"));
--        if (_tcsicmp(spOutputFilename, _T("auto")) == 0)
-+        if (_wcsicmp(spOutputFilename, L"auto") == 0)
-         {
--            TCHAR cOutput[MAX_PATH];
--            TCHAR * pExtension = wcschr(spInputFilename, '.');
-+            wchar_t cOutput[MAX_PATH];
-+            wchar_t * pExtension = wcschr(spInputFilename, '.');
-             if (pExtension != NULL)
-                 *pExtension = 0;
--            _tcscpy(cOutput, spInputFilename);
-+            wcscpy(cOutput, spInputFilename);
-             if (pExtension != NULL)
-                 *pExtension = '.';
--            _tcscat(cOutput, _T(".wav"));
--            spOutputFilename.Assign(new TCHAR[_tcslen(cOutput) + 1], true);
--            _tcscpy(spOutputFilename, cOutput);
-+            wcscat(cOutput, L".wav");
-+            spOutputFilename.Assign(new wchar_t[wcslen(cOutput) + 1], true);
-+            wcscpy(spOutputFilename, cOutput);
-         }
-         nRetVal = DecompressFileW(spInputFilename, spOutputFilename, &nPercentageDone, ProgressCallback, &nKillFlag);
-     }    
-diff -Naur mac-sdk-5.07/Source/Projects/NonWindows/Makefile mac-sdk-5.07-gcc/Source/Projects/NonWindows/Makefile
---- mac-sdk-5.07/Source/Projects/NonWindows/Makefile	2019-04-27 12:24:04 +0000
-+++ mac-sdk-5.07-gcc/Source/Projects/NonWindows/Makefile	2019-11-21 10:39:43 +0000
-@@ -1,9 +1,9 @@
- # Find system
- UNAME	 = $(shell uname)
- 
--VERSION	  = 5
-+VERSION	  = 6
- 
--CXXOPTS	  = -I Shared -I Source/Shared -I Source/MACLib -c
-+CXXOPTS	  = -I Source/Shared -I Source/MACLib -c
- LDOPTS	  = -lstdc++
- 
- DLLLDOPTS = -shared
-diff -Naur mac-sdk-5.07/Source/Shared/All.h mac-sdk-5.07-gcc/Source/Shared/All.h
---- mac-sdk-5.07/Source/Shared/All.h	2019-11-18 20:48:52 +0000
-+++ mac-sdk-5.07-gcc/Source/Shared/All.h	2019-11-21 10:49:22 +0000
-@@ -87,46 +87,17 @@
+diff -Naur mac-sdk-5.12/Source/Shared/All.h mac-sdk-5.12-gcc/Source/Shared/All.h
+--- mac-sdk-5.12/Source/Shared/All.h	2020-01-02 14:25:42 +0000
++++ mac-sdk-5.12-gcc/Source/Shared/All.h	2020-01-02 16:48:52 +0000
+@@ -86,46 +86,17 @@
  #define ENABLE_COMPRESSION_MODE_HIGH
  #define ENABLE_COMPRESSION_MODE_EXTRA_HIGH
  
@@ -173,10 +133,10 @@ diff -Naur mac-sdk-5.07/Source/Shared/All.h mac-sdk-5.07-gcc/Source/Shared/All.h
  {
      // integer types
 -#if defined(PLATFORM_x64)
--    typedef    int64_t                                     int64; // native integer, can safely hold a pointer
+-    typedef int64_t                                     int64; // native integer, can safely hold a pointer
      typedef int32_t                                     int32;
 -#else
--    typedef    intptr_t                                    int32; // native integer, can safely hold a pointer
+-    typedef intptr_t                                    int32; // native integer, can safely hold a pointer
      typedef int64_t                                     int64;
 -#endif
  
@@ -198,7 +158,7 @@ diff -Naur mac-sdk-5.07/Source/Shared/All.h mac-sdk-5.07-gcc/Source/Shared/All.h
  
      typedef uint64_t                                    uint64;
      typedef uint32_t                                    uint32;
-@@ -180,9 +151,13 @@
+@@ -179,9 +150,13 @@
      #define TICK_COUNT_FREQ                             1000000
      #undef    ASSERT
      #define ASSERT(e)
@@ -213,33 +173,20 @@ diff -Naur mac-sdk-5.07/Source/Shared/All.h mac-sdk-5.07-gcc/Source/Shared/All.h
      #define strcpy_s(A, B, C) strcpy(A, C)
      #define _tcscat_s(A, B, C) _tcscat(A, C)
  #endif
-diff -Naur mac-sdk-5.07/Source/Shared/NoWindows.h mac-sdk-5.07-gcc/Source/Shared/NoWindows.h
---- mac-sdk-5.07/Source/Shared/NoWindows.h	2019-10-29 14:16:46 +0000
-+++ mac-sdk-5.07-gcc/Source/Shared/NoWindows.h	2019-11-21 10:39:43 +0000
-@@ -42,6 +42,7 @@
- #define _T(x) L ## x
+diff -Naur mac-sdk-5.12/Source/Shared/NoWindows.h mac-sdk-5.12-gcc/Source/Shared/NoWindows.h
+--- mac-sdk-5.12/Source/Shared/NoWindows.h	2019-12-03 22:21:06 +0000
++++ mac-sdk-5.12-gcc/Source/Shared/NoWindows.h	2019-12-15 10:16:26 +0000
+@@ -48,7 +48,7 @@
+ #define _totlower towlower
+ #define _totupper towupper
+ #define _tcschr wcschr
+-#define _tcsicmp wcscasecmp
++#define _tcsicmp wcscmp
+ #define _tcscpy wcscpy
+ #define _tcslen wcslen
  
- #define _strnicmp strncasecmp
-+#define _wcsicmp wcscmp
- #define _wtoi(x) wcstol(x, NULL, 10)
- #define _tcscat wcscat
- #undef _totlower
-diff -Naur mac-sdk-5.07/Source/Shared/StdLibFileIO.cpp mac-sdk-5.07-gcc/Source/Shared/StdLibFileIO.cpp
---- mac-sdk-5.07/Source/Shared/StdLibFileIO.cpp	2019-10-29 14:16:46 +0000
-+++ mac-sdk-5.07-gcc/Source/Shared/StdLibFileIO.cpp	2019-11-21 10:39:43 +0000
-@@ -218,9 +218,7 @@
- {
- #ifdef PLATFORM_ANDROID
-     return ftell(m_pFile);
--#elif defined(PLATFORM_LINUX)
--    return ftello64(m_pFile);
--#elif PLATFORM_APPLE
-+#elif !defined(PLATFORM_WINDOWS)
-     return ftello(m_pFile);
- #else
-     return _ftelli64(m_pFile);
-diff -Naur mac-sdk-5.07/configure mac-sdk-5.07-gcc/configure
---- mac-sdk-5.07/configure	1970-01-01 00:00:00 +0000
-+++ mac-sdk-5.07-gcc/configure	2019-11-21 10:39:43 +0000
+diff -Naur mac-sdk-5.12/configure mac-sdk-5.12-gcc/configure
+--- mac-sdk-5.12/configure	1970-01-01 00:00:00 +0000
++++ mac-sdk-5.12-gcc/configure	2019-11-21 21:28:57 +0000
 @@ -0,0 +1 @@
 +#!/bin/sh

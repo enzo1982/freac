@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -420,8 +420,11 @@ Error freac::JobConvert::Perform()
 
 	/* Enter actual conversion routines.
 	 */
+	UnsignedInt64	 startTicks	= S::System::System::Clock();
+
 	Int		 encodedTracks	= 0;
 	Int		 trackID	= 0;
+
 	ConversionStep	 conversionStep = ConversionStepNone;
 	String		 decoderName;
 	String		 encoderName;
@@ -1217,12 +1220,50 @@ Error freac::JobConvert::Perform()
 
 				boca.DeleteComponent(cuesheet);
 			}
+
+			/* Log an empty line as a separator.
+			 */
+			if (playlist != NIL && cuesheet != NIL) log->Write(NIL);
 		}
+
+		/* Log an empty line.
+		 */
+		if (createPlaylist != createCueSheet) log->Write(NIL);
 
 		/* Clean up playlist and cuesheet track lists.
 		 */
 		foreach (Array<Track> *trackList, playlistTrackLists) delete trackList;
 		foreach (Array<Track> *trackList, cuesheetTrackLists) delete trackList;
+	}
+
+	/* Log duration of conversion.
+	 */
+	if (!stopConversion && encodedTracks > 0)
+	{
+		/* Compute total play time of converted tracks.
+		 */
+		Float	  totalSeconds = 0;
+
+		foreach (const Track &track, tracksToConvert)
+		{
+			if (convertedTracks.Get(track.GetTrackID()) == NIL) continue;
+
+			if	(track.length	    >= 0) totalSeconds += Float(track.length) / track.GetFormat().rate;
+			else if (track.approxLength >= 0) totalSeconds += Float(track.approxLength) / track.GetFormat().rate;
+			else				  totalSeconds += 240;
+		}
+
+		/* Log conversion duration and speed.
+		 */
+		UnsignedInt64	 ticks	  = S::System::System::Clock() - startTicks;
+		String		 duration = String(ticks / 1000 / 60 % 60 <  10 ?			      "0"  : "").Append(String::FromInt(ticks / 1000 / 60 % 60)).Append(":")
+					   .Append(ticks / 1000 % 60	  <  10 ?			      "0"  : "").Append(String::FromInt(ticks / 1000 % 60     )).Append(".")
+					   .Append(ticks % 1000		  < 100 ? (ticks % 1000 < 10 ? "00" : "0") : "").Append(String::FromInt(ticks % 1000	      ));
+		String		 speed	  = String::FromFloat(Math::Round(totalSeconds / (Float(ticks) / 1000.0) * 10.0) / 10.0);
+
+		if (!speed.Contains(".")) speed.Append(".0");
+
+		log->Write(String("    Total duration: ").Append(duration).Append(" (").Append(speed).Append("x speed)"));
 	}
 
 	/* Remove ourselves from conversion jobs array.
@@ -1615,6 +1656,9 @@ Void freac::JobConvert::LogSettings(const String &singleOutFile, Int numberOfThr
 
 	String	 filenamePattern	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
 
+	Bool	 enableProcessing	= configuration->GetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault);
+	String	 selectedDSPs		= configuration->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault);
+
 	/* Get encoder properties.
 	 */
 	Registry		&boca	 = Registry::Get();
@@ -1667,6 +1711,29 @@ Void freac::JobConvert::LogSettings(const String &singleOutFile, Int numberOfThr
 	if (selectedEncoderLossless)
 	{
 		log->Write(String("    Output verification:  ").Append(verifyOutput ? "Enabled" : "Disabled"));
+		log->Write(NIL);
+	}
+
+	/* Processing settings.
+	 */
+	if (enableProcessing && selectedDSPs != NIL)
+	{
+		String			 componentNames;
+		const Array<String>	&components = selectedDSPs.Explode(",");
+
+		foreach (const String &component, components)
+		{
+			AS::Component	*dsp = boca.CreateComponentByID(component);
+
+			if (dsp == NIL) continue;
+
+			componentNames.Append(componentNames != NIL ? ", " : NIL).Append(dsp->GetName());
+
+			boca.DeleteComponent(dsp);
+		}
+
+		log->Write(String("    Signal processing:    Enabled"));
+		log->Write(String("        Selected DSPs:    ").Append(componentNames));
 		log->Write(NIL);
 	}
 }

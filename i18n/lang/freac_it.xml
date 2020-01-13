@@ -950,7 +950,7 @@
 	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Opzioni</entry>
 	<entry id="39011" string="Voice Activity Detection">Rilevamento attività vocale</entry>
-	<entry id="39012" string="Discontinued Transmission">Trasmissione discontinua</entry>
+	<entry id="39012" string="Discontinuous Transmission">Trasmissione discontinua</entry>
 	<entry id="39013" string="Algorithm complexity">Complessità algoritmo</entry>
 	<entry id="39014" string="Complexity">Complessità</entry>
 	<entry id="39015" string="CBR quality">Qualità CBR</entry>
@@ -1147,6 +1147,7 @@
 	<entry id="80405" string="Extra encode processing">Elaborazione extra codifica</entry>
 	<entry id="80406" string="faster">velocità massima</entry>
 	<entry id="80407" string="better">migliore</entry>
+	<entry id="80408" string="%1 kbps">%1 kbps</entry>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1157,6 +1158,12 @@
 	<entry id="80504" string="better">migliore</entry>
 	<entry id="80505" string="Bitrate">Bitrate</entry>
 	<entry id="80506" string="Bitrate (Streaming)">Bitrate (Streaming)</entry>
+	<entry id="80507" string="%1 kbps">%1 kbps</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">Bitrate</entry>
+	<entry id="80601" string="%1 kbps">%1 kbps</entry>
       </section>
     </section>
 

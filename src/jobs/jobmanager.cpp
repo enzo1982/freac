@@ -33,6 +33,8 @@ freac::JobManager::JobManager()
 
 	Job::GetAllJobs().EnableLocking();
 
+	finished.EnableLocking();
+
 	/* Start job manager thread.
 	 */
 	managerThread = NonBlocking0<>(&JobManager::ManagerThread, this).Call();
@@ -49,6 +51,11 @@ freac::JobManager::~JobManager()
 
 Void freac::JobManager::ManagerThread()
 {
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	Bool	 enableConsole = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+	Bool	 displayErrors = config->GetIntValue(Config::CategorySettingsID, Config::SettingsDisplayErrorsID, Config::SettingsDisplayErrorsDefault);
+
 	while (!exitThread)
 	{
 		const Array<Job *>	&scheduled = Job::GetScheduledJobs();
@@ -88,37 +95,50 @@ Void freac::JobManager::ManagerThread()
 			}
 		}
 
+		if (finished.Length() > 0)
+		{
+			AutoRelease	 autoRelease;
+
+			foreachreverse (Job *job, finished)
+			{
+				finished.Remove(job->GetHandle());
+
+				/* Check for errors and display error list if any.
+				 */
+				if (job->GetErrors().Length() > 0 && !enableConsole)
+				{
+					if (displayErrors)
+					{
+						ErrorDialog	 dialog(job->GetErrors());
+
+						dialog.ShowDialog();
+					}
+
+					continue;
+				}
+
+				/* Check for warnings and keep job object alive if any.
+				 */
+				if (job->GetWarnings().Length() > 0 && !enableConsole)
+				{
+					continue;
+				}
+
+				Object::DeleteObject(job);
+			}
+		}
+
 		S::System::System::Sleep(100);
 	}
 }
 
 Void freac::JobManager::OnFinishJob(Job *job)
 {
-	BoCA::Config	*config = BoCA::Config::Get();
-
-	Bool	 enableConsole = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
-	Bool	 displayErrors = config->GetIntValue(Config::CategorySettingsID, Config::SettingsDisplayErrorsID, Config::SettingsDisplayErrorsDefault);
-
 	job->onFinishJob.Disconnect(&JobManager::OnFinishJob, this);
 
-	if (job->GetErrors().Length() > 0 && !enableConsole)
-	{
-		if (displayErrors)
-		{
-			ErrorDialog	 dialog(job->GetErrors());
-
-			dialog.ShowDialog();
-		}
-
-		return;
-	}
-
-	if (job->GetWarnings().Length() > 0 && !enableConsole)
-	{
-		return;
-	}
-
-	Object::DeleteObject(job);
+	/* Add job object to finished list.
+	 */
+	finished.Add(job, job->GetHandle());
 }
 
 Error freac::JobManager::Start()
