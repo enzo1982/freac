@@ -201,7 +201,7 @@
       <entry id="3045" string="Active decoder">Bieżący dekoder</entry>
       <entry id="3046" string="Joblist">Lista zadań</entry>
       <entry id="3047" string="unknown">nieznany</entry>
-      <entry id="3048" string="Other">Inny</entry>
+      <entry id="3048" string="Other">Inne</entry>
       <entry id="3049" string="Output file name">Nazwa pliku wyjściowego</entry>
       <entry id="3050" string="verifying">weryfikacja</entry>
       <entry id="3051" string="Open">Otwórz</entry>
@@ -420,8 +420,8 @@
       </section>
 
       <section name="CDDB">
-	<entry id="5300" string="Enable local CDDB database">Uaktywnij lokalna bazę CDDB</entry>
-	<entry id="5301" string="Enable remote CDDB database">Uaktywnij zdalna bazę CDDB</entry>
+	<entry id="5300" string="Enable local CDDB database">Uaktywnij lokalną bazę CDDB</entry>
+	<entry id="5301" string="Enable remote CDDB database">Uaktywnij zdalną bazę CDDB</entry>
 	<entry id="5302" string="CDDB path">Katalog bazy CDDB</entry>
 	<entry id="5303" string="Select">Przeglądaj</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Wybierz folder dla bazy CDDB</entry>
@@ -481,7 +481,7 @@
 	<entry id="5512" string="Write cover art to tags">Zapisz okładkę do znaczników</entry>
 	<entry id="5513" string="Write cover art to files">Zapisz okładkę do plików</entry>
 	<entry id="5514" string="Add reference to audio file tag">Dodaj odnośnik do znacznika pliku audio</entry>
-	<entry id="5515" string="Other">Inny</entry>
+	<entry id="5515" string="Other">Inne</entry>
 	<entry id="5516" string="Chapters">Rozdziały</entry>
 	<entry id="5517" string="Read chapters from files">Odczytaj rozdziały z plików</entry>
 	<entry id="5518" string="Write chapters to files">Zapisz rozdziały do plików</entry>
@@ -1299,7 +1299,7 @@
 	</section>
 
 	<section name="Other">
-	  <entry id="103300" string="Other">Inny</entry>
+	  <entry id="103300" string="Other">Inne</entry>
 	  <entry id="103301" string="Original information">Oryginalne informacje</entry>
 	  <entry id="103302" string="Original artist">Wykonawca oryginalny</entry>
 	  <entry id="103303" string="Original album">Album oryginalny</entry>
