@@ -31,6 +31,6 @@
     <entry id="18" string="Your application has been successfully updated!">应用程序已成功更新！</entry>
     <entry id="19" string="Error">错误</entry>
     <entry id="20" string="Error downloading package!">下载程序包时发生错误！</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied."/>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">%1 安装出错！&#10;&#10;安装程序访问应用程序目录被禁止。</entry>
   </data>
 </LangFile>
