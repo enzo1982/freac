@@ -15,7 +15,7 @@
     <entry id="2" string="Install">安装</entry>
     <entry id="3" string="Show unstable releases">显示非稳定版本</entry>
     <entry id="4" string="Select the updated program version to be installed:">选择需要安装的更新程序版本：</entry>
-    <entry id="5" string="You can select optional components to be installed:">请选择要安裝的可选组件：</entry>
+    <entry id="5" string="You can select optional components to be installed:">请选择要安裝的可选插件：</entry>
     <entry id="6" string="Version ID">版本 ID</entry>
     <entry id="7" string="Package">程序包</entry>
     <entry id="8" string="Description">描述</entry>
