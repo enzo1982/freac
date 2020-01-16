@@ -220,6 +220,17 @@ parts:
     prime:
       - usr/bin/ffmpeg
 
+  icons:
+    plugin: nil
+    stage-packages:
+      - gnome-icon-theme
+    override-prime: |
+      mkdir -p share/icons/gnome/32x32/status
+      cp $SNAPCRAFT_STAGE/usr/share/icons/gnome/32x32/status/dialog-error.png share/icons/gnome/32x32/status
+      cp $SNAPCRAFT_STAGE/usr/share/icons/gnome/32x32/status/dialog-information.png share/icons/gnome/32x32/status
+      cp $SNAPCRAFT_STAGE/usr/share/icons/gnome/32x32/status/dialog-question.png share/icons/gnome/32x32/status
+      cp $SNAPCRAFT_STAGE/usr/share/icons/gnome/32x32/status/dialog-warning.png share/icons/gnome/32x32/status
+
   smooth:
     after: [ curl, desktop-gtk3, patches ]
     source: https://github.com/enzo1982/smooth.git
