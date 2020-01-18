@@ -11,7 +11,6 @@
  ********************************************************************
 
  function: libvorbis codec headers
- last mod: $Id$
 
  ********************************************************************/
 
@@ -23,7 +22,6 @@ extern "C"
 {
 #endif /* __cplusplus */
 
-//#include <ogg/ogg.h>
 #include "../ogg/ogg.h"
 
 typedef struct vorbis_info{

@@ -24,5 +24,3 @@
 
 #include "rpcsal.h"
 #include "wmsdkidl.h"
-#include "asferr.h"
-#include "nserror.h"

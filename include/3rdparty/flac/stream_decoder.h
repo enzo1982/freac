@@ -920,7 +920,7 @@ FLAC_API FLAC__bool FLAC__stream_decoder_get_md5_checking(const FLAC__StreamDeco
  * \param  decoder  A decoder instance to query.
  * \assert
  *    \code decoder != NULL \endcode
- * \retval unsigned
+ * \retval uint32_t
  *    See above.
  */
 FLAC_API FLAC__uint64 FLAC__stream_decoder_get_total_samples(const FLAC__StreamDecoder *decoder);
@@ -932,10 +932,10 @@ FLAC_API FLAC__uint64 FLAC__stream_decoder_get_total_samples(const FLAC__StreamD
  * \param  decoder  A decoder instance to query.
  * \assert
  *    \code decoder != NULL \endcode
- * \retval unsigned
+ * \retval uint32_t
  *    See above.
  */
-FLAC_API unsigned FLAC__stream_decoder_get_channels(const FLAC__StreamDecoder *decoder);
+FLAC_API uint32_t FLAC__stream_decoder_get_channels(const FLAC__StreamDecoder *decoder);
 
 /** Get the current channel assignment in the stream being decoded.
  *  Will only be valid after decoding has started and will contain the
@@ -956,10 +956,10 @@ FLAC_API FLAC__ChannelAssignment FLAC__stream_decoder_get_channel_assignment(con
  * \param  decoder  A decoder instance to query.
  * \assert
  *    \code decoder != NULL \endcode
- * \retval unsigned
+ * \retval uint32_t
  *    See above.
  */
-FLAC_API unsigned FLAC__stream_decoder_get_bits_per_sample(const FLAC__StreamDecoder *decoder);
+FLAC_API uint32_t FLAC__stream_decoder_get_bits_per_sample(const FLAC__StreamDecoder *decoder);
 
 /** Get the current sample rate in Hz of the stream being decoded.
  *  Will only be valid after decoding has started and will contain the
@@ -968,10 +968,10 @@ FLAC_API unsigned FLAC__stream_decoder_get_bits_per_sample(const FLAC__StreamDec
  * \param  decoder  A decoder instance to query.
  * \assert
  *    \code decoder != NULL \endcode
- * \retval unsigned
+ * \retval uint32_t
  *    See above.
  */
-FLAC_API unsigned FLAC__stream_decoder_get_sample_rate(const FLAC__StreamDecoder *decoder);
+FLAC_API uint32_t FLAC__stream_decoder_get_sample_rate(const FLAC__StreamDecoder *decoder);
 
 /** Get the current blocksize of the stream being decoded.
  *  Will only be valid after decoding has started and will contain the
@@ -980,10 +980,10 @@ FLAC_API unsigned FLAC__stream_decoder_get_sample_rate(const FLAC__StreamDecoder
  * \param  decoder  A decoder instance to query.
  * \assert
  *    \code decoder != NULL \endcode
- * \retval unsigned
+ * \retval uint32_t
  *    See above.
  */
-FLAC_API unsigned FLAC__stream_decoder_get_blocksize(const FLAC__StreamDecoder *decoder);
+FLAC_API uint32_t FLAC__stream_decoder_get_blocksize(const FLAC__StreamDecoder *decoder);
 
 /** Returns the decoder's current read position within the stream.
  *  The position is the byte offset from the start of the stream.
@@ -1184,7 +1184,7 @@ FLAC_API FLAC__StreamDecoderInitStatus FLAC__stream_decoder_init_ogg_stream(
  *                            Unless \a file is \c stdin, it will be closed
  *                            when FLAC__stream_decoder_finish() is called.
  *                            Note however that seeking will not work when
- *                            decoding from \c stdout since it is not seekable.
+ *                            decoding from \c stdin since it is not seekable.
  * \param  write_callback     See FLAC__StreamDecoderWriteCallback.  This
  *                            pointer must not be \c NULL.
  * \param  metadata_callback  See FLAC__StreamDecoderMetadataCallback.  This
@@ -1234,7 +1234,7 @@ FLAC_API FLAC__StreamDecoderInitStatus FLAC__stream_decoder_init_FILE(
  *                            Unless \a file is \c stdin, it will be closed
  *                            when FLAC__stream_decoder_finish() is called.
  *                            Note however that seeking will not work when
- *                            decoding from \c stdout since it is not seekable.
+ *                            decoding from \c stdin since it is not seekable.
  * \param  write_callback     See FLAC__StreamDecoderWriteCallback.  This
  *                            pointer must not be \c NULL.
  * \param  metadata_callback  See FLAC__StreamDecoderMetadataCallback.  This
@@ -1403,8 +1403,7 @@ FLAC_API FLAC__bool FLAC__stream_decoder_flush(FLAC__StreamDecoder *decoder);
  *  and is not seekable (i.e. no seek callback was provided or the seek
  *  callback returns \c FLAC__STREAM_DECODER_SEEK_STATUS_UNSUPPORTED), it
  *  is the duty of the client to start feeding data from the beginning of
- *  the stream on the next FLAC__stream_decoder_process() or
- *  FLAC__stream_decoder_process_interleaved() call.
+ *  the stream on the next FLAC__stream_decoder_process_*() call.
  *
  * \param  decoder  A decoder instance.
  * \assert

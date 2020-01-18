@@ -264,7 +264,7 @@ __inner_assume_bound_dec
 #ifdef  __cplusplus
 }
 #endif
-#include "specstrings_adt.h"
+
 #ifdef _PREFIX_
 /**************************************************************************
 * Defintion of __pfx_assume and __pfx_assert. Thse should be the only
@@ -286,13 +286,6 @@ void __pfx_assume(int, const char *);
 #define __analysis_assert(e) (__pfx_assert(e,"pfx_assert"),__assume(e));
 #endif /* ifdef _PREFIX_ */
 
-/**************************************************************************
-* This include should always be the last thing in this file. 
-* Must avoid redfinitions of macros to workaround rc.exe issues. 
-***************************************************************************/
-#if !(defined(RC_INVOKED) || defined(SORTPP_PASS))
-#include "specstrings_strict.h"
-#endif /* if !(defined(RC_INVOKED) || defined(SORTPP_PASS)) */
 #endif /* #ifndef SPECSTRINGS_H */
 
 

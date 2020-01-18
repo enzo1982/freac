@@ -472,7 +472,11 @@ nothing, and do not affect the compiled code.
     #define __exceptthat
     #define __execeptthat
     #define __inner_success(expr)
-    #define __inner_checkReturn
+
+    #ifndef __inner_checkReturn
+        #define __inner_checkReturn
+    #endif
+
     #define __inner_typefix(ctype)
     #define __inner_override
     #define __inner_callback

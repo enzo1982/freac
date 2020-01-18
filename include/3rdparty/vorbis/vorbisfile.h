@@ -11,7 +11,6 @@
  ********************************************************************
 
  function: stdio-based convenience library for opening/seeking/decoding
- last mod: $Id$
 
  ********************************************************************/
 

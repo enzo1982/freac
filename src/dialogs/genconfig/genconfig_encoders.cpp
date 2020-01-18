@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -93,7 +93,7 @@ freac::GeneralSettingsLayerEncoders::GeneralSettingsLayerEncoders() : Layer(frea
 
 	if (currentConfig->enable_flac)		combo_encoder->AddEntry(String("FLAC Audio Encoder v").Append(*ex_FLAC__VERSION_STRING));
 	if (currentConfig->enable_lame)		combo_encoder->AddEntry(String("LAME MP3 Encoder v").Append(ex_get_lame_short_version()));
-	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry(String("Ogg Vorbis Encoder v1.3.5"));
+	if (currentConfig->enable_vorbis)	combo_encoder->AddEntry(String("Ogg Vorbis Encoder v1.3.6"));
 
 	if (currentConfig->enable_tvq)
 	{
