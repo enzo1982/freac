@@ -407,7 +407,14 @@
     <entry id="403" string="Use 2-pass encoding">Brug 2-pass kodning</entry>
     <entry id="404" string="Target bitrate">Mål bitrate</entry>
     <entry id="405" string="Set drive speed limit:">Sæt drev hastigheds begrænsning:</entry>
+    <entry id="406" string="Support this project">Støt projektet</entry>
+    <entry id="407" string="Please support this project!">Venligst støt projektet!</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Hjælp med at holde dette program gratis ved at støtte %1 projektet med en&#10;donation.&#10;&#10;Tryk på knappen for at lave en donation med PayPal:</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Du kan også sende pengene til %1 med PayPal.&#10;&#10;Skriv til %1 hvis du ønsker at sende en check eller sende&#10;penge med posten.</entry>
     <entry id="410" string="usd">eur</entry>
+    <entry id="411" string="en">en</entry>
+    <entry id="412" string="Thank you very much!">Tusind tab!</entry>
+    <entry id="413" string="Remind me later">Påmind mig senere</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">CDRip</entry>
     <entry id="416" string="Default">Standard</entry>

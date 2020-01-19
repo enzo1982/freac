@@ -407,6 +407,14 @@
     <entry id="403" string="Use 2-pass encoding">使用双通道编码</entry>
     <entry id="404" string="Target bitrate">目标比特率</entry>
     <entry id="405" string="Set drive speed limit:">限定驱动器速率：</entry>
+    <entry id="406" string="Support this project">支持此项目</entry>
+    <entry id="407" string="Please support this project!">请支持此项目！</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">为了让此项目一直免费，请通过捐赠支持 %1 项目。&#10;&#10;点击按钮使用 PayPal 进行捐赠：</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">您也可以使用 PayPal 直接发送至 %1 。&#10;&#10;如果您想邮寄支票或邮寄现金，请写信至 %1 。</entry>
+    <entry id="410" string="usd">usd</entry>
+    <entry id="411" string="en">en</entry>
+    <entry id="412" string="Thank you very much!">非常感谢！</entry>
+    <entry id="413" string="Remind me later">稍后提醒我</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">CDRip</entry>
     <entry id="416" string="Default">默认</entry>

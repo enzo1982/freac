@@ -417,5 +417,6 @@
   <entry id="413" string="Remind me later">Priminti vėliau</entry>
   <entry id="414" string="CDDB">CDDB</entry>
   <entry id="415" string="Ripper">CDRip</entry>
+  <entry id="416" string="Default">Numatytasis</entry>
  </data>
 </LangFile>
