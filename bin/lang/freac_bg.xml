@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD информация</entry>
     <entry id="379" string="Read CD Text">Четене на CD Текст</entry>
     <entry id="380" string="Read cdplayer.ini">Четене на cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Аподизация</entry>
-    <entry id="382" string="Apodization function(s):">Функция/и на аподизация</entry>
+    <entry id="381" string="Signal processing">Обработка на сигнала</entry>
+    <entry id="382" string="Window function(s):">Функция(и) на прозореца</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Може да посочите повече функции разделени с ;</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 може да извърши автоматична проверка за&#10;обновяване на програмата при стартиране.&#10;&#10;Желаете ли %1 да потърси обновления при стартиране?</entry>
     <entry id="385" string="Cannot access input file: %1">Няма достъп до входния файл: %1</entry>

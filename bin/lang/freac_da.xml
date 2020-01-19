@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD information</entry>
     <entry id="379" string="Read CD Text">Læs CD Tekst</entry>
     <entry id="380" string="Read cdplayer.ini">Læs cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodization</entry>
-    <entry id="382" string="Apodization function(s):">Apodization funktion(er):</entry>
+    <entry id="381" string="Signal processing">Signal Processing</entry>
+    <entry id="382" string="Window function(s):">Vindue funktion(er):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Du kan angive flere funktioner sepearet af semi kolons.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 kan udføre automatisk check online efter program opdateringer ved opstart.&#10;&#10;Vil du have %1 til at kigge efter opdateringer ved opstart?</entry>
     <entry id="385" string="Cannot access input file: %1">Kan ikke få adgang til den indlæste fil: %1</entry>

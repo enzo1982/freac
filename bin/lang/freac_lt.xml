@@ -382,8 +382,8 @@
   <entry id="378" string="CD information">CD informacija</entry>
   <entry id="379" string="Read CD Text">Skaityti CD tekstą</entry>
   <entry id="380" string="Read cdplayer.ini">Skaityti cdplayer.ini</entry>
-  <entry id="381" string="Apodization">Apodizacija</entry>
-  <entry id="382" string="Apodization function(s):">Apodizacijos funkcija (-os):</entry>
+  <entry id="381" string="Signal processing">Signalų apdorojimas</entry>
+  <entry id="382" string="Window function(s):">Lango funkcija (-os):</entry>
   <entry id="383" string="You can specify multiple functions separated by semicolons.">Galite įvesti keletą funkcijų askirdami jas kabliataškiais.</entry>
   <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 paleidimo metu gali atomatiškai patikrinti,&#10;ar internete nėra programos atnaujinimų.&#10;&#10;Ar Jūs norėtumėte, kad %1 paleidimo metu tikrintų, ar yra atnaujinimų?</entry>
   <entry id="385" string="Cannot access input file: %1">Neįmanoma pasiekti įvesties failo: %1</entry>

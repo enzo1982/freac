@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD-tiedot</entry>
     <entry id="379" string="Read CD Text">Lue CD-teksti</entry>
     <entry id="380" string="Read cdplayer.ini">Lue cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodisoi</entry>
-    <entry id="382" string="Apodization function(s):">Apodisoi tehtävä(t):</entry>
+    <entry id="381" string="Signal processing">Apodisoi</entry>
+    <entry id="382" string="Window function(s):">Apodisoi tehtävä(t):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Voit määrittää useita toimintoja erottmalla ne toisistaan puolipisteellä.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 voi suorittaa automaattisesti päivitysten&#10;tarkistuksen käynnistyessään.&#10;&#10;Haluatko että %1 tarkistaa päivitykset heti ohjelman käynnistyessään?</entry>
     <entry id="385" string="Cannot access input file: %1">Syötetiedostoon ei päästä: %1</entry>

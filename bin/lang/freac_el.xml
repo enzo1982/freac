@@ -379,8 +379,8 @@
     <entry id="378" string="CD information">Πληροφορίες CD</entry>
     <entry id="379" string="Read CD Text">Ανάγνωση CD Text</entry>
     <entry id="380" string="Read cdplayer.ini">Ανάγνωση cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodization</entry>
-    <entry id="382" string="Apodization function(s):">Λειτουργία(ες) apodization:</entry>
+    <entry id="381" string="Signal processing">Apodization</entry>
+    <entry id="382" string="Window function(s):">Λειτουργία(ες) apodization:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Μπορείτε να ορίσετε πολλαπλές λειτουργίες χωρισμένες με ερωτηματικά.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">Το %1 μπορεί να κάνει αυτόματο έλεγχο για&#10;ενημερώσεις στην εκκίνηση.&#10;&#10;Θέλετε να γίνεται έλεγχος για ενημερώσεις στην εκκίνηση;</entry>
     <entry id="385" string="Cannot access input file: %1">Αδύνατη πρόσβαση στο αρχείο εισόδου: %1</entry>

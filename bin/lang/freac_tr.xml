@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD Bilgisi</entry>
     <entry id="379" string="Read CD Text">CD Metnini Oku</entry>
     <entry id="380" string="Read cdplayer.ini">cdplayer.ini dosyasını oku</entry>
-    <entry id="381" string="Apodization">Düzeltme</entry>
-    <entry id="382" string="Apodization function(s):">Düzeltme fonksiyonu(ları):</entry>
+    <entry id="381" string="Signal processing">Düzeltme</entry>
+    <entry id="382" string="Window function(s):">Düzeltme fonksiyonu(ları):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Noktalı virgülle ayırarak birden çok fonksiyon kullanabilirsiniz</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 güncellemeleri program başlangıcında otomatik&#10;olarak denetleyebilir.&#10;&#10;Program başlangıcında güncellemeleri otomatik denetlemek ister misiniz?</entry>
     <entry id="385" string="Cannot access input file: %1">Çevrilecek dosyaya erişilemiyor: %1</entry>

@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">Informaţii CD</entry>
     <entry id="379" string="Read CD Text">Citire CD Text</entry>
     <entry id="380" string="Read cdplayer.ini">Citire cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodizare</entry>
-    <entry id="382" string="Apodization function(s):">Funcţiile apodizare:</entry>
+    <entry id="381" string="Signal processing">Apodizare</entry>
+    <entry id="382" string="Window function(s):">Funcţiile apodizare:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Puteţi defini mai multe funcţii separate prin punct şi virgulă.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 poate verifica online, la pornire, dacă există&#10;actualizări.&#10;&#10;Doriţi ca %1 să verifice acest lucru la pornire?</entry>
     <entry id="385" string="Cannot access input file: %1">Nu pot accesa fişierul intrare: %1</entry>

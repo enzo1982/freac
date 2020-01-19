@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">KD-informoj</entry>
     <entry id="379" string="Read CD Text">Legi la KD-tekston</entry>
     <entry id="380" string="Read cdplayer.ini">Legi cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodizo</entry>
-    <entry id="382" string="Apodization function(s):">Apodiz-funkcio(j):</entry>
+    <entry id="381" string="Signal processing">Apodizo</entry>
+    <entry id="382" string="Window function(s):">Apodiz-funkcio(j):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Vi povas apartigi pluraj funkcioj per punktokomoj.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 povas okazigi dum la startigo aŭtomatan&#10;retserĉadon al program-aktualigo.&#10;&#10;Ĉu vi volas, ke %1 serĉas al aktualigoj dum la startigo?</entry>
     <entry id="410" string="usd">eur</entry>

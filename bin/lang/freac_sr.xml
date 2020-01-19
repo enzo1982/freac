@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD info</entry>
     <entry id="379" string="Read CD Text">Čitaj CD tekst</entry>
     <entry id="380" string="Read cdplayer.ini">Čitaj iz cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodizacija</entry>
-    <entry id="382" string="Apodization function(s):">Funkcija(e) apodizacije:</entry>
+    <entry id="381" string="Signal processing">Obrada signala</entry>
+    <entry id="382" string="Window function(s):">Funkcija(e) prozora:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Možete zadati više funkcija odvajajući ih tačka-zarezom.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">Prilikom pokretanja %1 može automatski&#10;proveriti da li ima nadogradnji na internetu.&#10;&#10;Da li želite da %1 potraži nadogradnje prilikom pokretanja?</entry>
     <entry id="385" string="Cannot access input file: %1">Ne mogu da pristupim ulaznom fajlu: %1</entry>

@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">Cd-informatie</entry>
     <entry id="379" string="Read CD Text">Cd-text lezen</entry>
     <entry id="380" string="Read cdplayer.ini">Cdplayer.ini lezen</entry>
-    <entry id="381" string="Apodization">Apodisatie</entry>
-    <entry id="382" string="Apodization function(s):">Apodisatiefunctie(s):</entry>
+    <entry id="381" string="Signal processing">Apodisatie</entry>
+    <entry id="382" string="Window function(s):">Apodisatiefunctie(s):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">U kan meerdere functies specifiëren, gescheiden door puntkomma's.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 kan een automatische controle op updates doen&#10;tijdens het opstarten.&#10;&#10;Wilt u dat %1 online naar updates zoekt bij het opstarten?</entry>
     <entry id="385" string="Cannot access input file: %1">Kan geen toegang krijgen tot invoerbestand: %1</entry>

@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD資訊</entry>
     <entry id="379" string="Read CD Text">讀取CD文字</entry>
     <entry id="380" string="Read cdplayer.ini">讀取cdplayer.ini</entry>
-    <entry id="381" string="Apodization">訊號處理</entry>
-    <entry id="382" string="Apodization function(s):">視窗功能：</entry>
+    <entry id="381" string="Signal processing">訊號處理</entry>
+    <entry id="382" string="Window function(s):">視窗功能：</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">可以指定多個函數，每個函數使用分號來分隔。</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">啟動%1時可自動進行更新檢查。&#10;&#10;要求%1於啟動時自動檢查更新嗎？</entry>
     <entry id="385" string="Cannot access input file: %1">無法存取原始檔案：%1</entry>

@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD 信息</entry>
     <entry id="379" string="Read CD Text">读入 CD 文本</entry>
     <entry id="380" string="Read cdplayer.ini">读入 cdplayer.ini</entry>
-    <entry id="381" string="Apodization">切趾</entry>
-    <entry id="382" string="Apodization function(s):">切趾函数：</entry>
+    <entry id="381" string="Signal processing">信号处理</entry>
+    <entry id="382" string="Window function(s):">窗口函数：</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">您可以指定多个函数，每个函数使用分号隔开。</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 可以在启动时自动执行更新检查。&#10;您想要 %1 在启动时检查有无更新吗？</entry>
     <entry id="385" string="Cannot access input file: %1">不能访问输入文件： %1</entry>

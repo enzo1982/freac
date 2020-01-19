@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -156,13 +156,13 @@ freac::ConfigureFLAC::ConfigureFLAC()
 	size.cx = 480;
 	size.cy = 56;
 
-	group_apodization	= new GroupBox(freac::i18n->TranslateString("Apodization"), pos, size);
+	group_apodization	= new GroupBox(freac::i18n->TranslateString("Signal processing"), pos, size);
 
 	pos.x += 9;
 	pos.y += 13;
 	size.cy = 0;
 
-	text_apodization	= new Text(freac::i18n->TranslateString("Apodization function(s):"), pos);
+	text_apodization	= new Text(freac::i18n->TranslateString("Window function(s):"), pos);
 
 	pos.x += text_apodization->GetUnscaledTextWidth() + 7;
 	pos.y -= 3;

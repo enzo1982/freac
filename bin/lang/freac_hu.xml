@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CI információ</entry>
     <entry id="379" string="Read CD Text">CD-Text beolvasás</entry>
     <entry id="380" string="Read cdplayer.ini">cdplayer.ini beolvasás</entry>
-    <entry id="381" string="Apodization">Apodizáció</entry>
-    <entry id="382" string="Apodization function(s):">Apodizációs funkció(k):</entry>
+    <entry id="381" string="Signal processing">Apodizáció</entry>
+    <entry id="382" string="Window function(s):">Apodizációs funkció(k):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Több, oszlopba rendezett funkciót is választhatsz.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">A %1 önállóan képes a program újabb verziójának&#10;online keresésére induláskor.&#10;&#10;Szeretnéd, ha a %1 frissítést keresne induláskor?</entry>
     <entry id="385" string="Cannot access input file: %1">A forrás fájl nem elérhető: %1</entry>

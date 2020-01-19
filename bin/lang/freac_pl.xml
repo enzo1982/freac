@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">Informacja o CD</entry>
     <entry id="379" string="Read CD Text">Czytaj dane CD Text</entry>
     <entry id="380" string="Read cdplayer.ini">Czytaj plik cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Funkcja czasowa</entry>
-    <entry id="382" string="Apodization function(s):">Funkcja czasowa:</entry>
+    <entry id="381" string="Signal processing">Przetwarzanie sygnału</entry>
+    <entry id="382" string="Window function(s):">Okno czasowe:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Możesz podać kilka funkcji, oddzielając je średnikami.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 może przeprowadzać automatyczne sprawdzanie&#10;uaktualnień programu podczas startu.&#10;&#10;Czy chcesz włączyć poszukiwanie aktualizacji podczas startu programu?</entry>
     <entry id="385" string="Cannot access input file: %1">Brak dostępu do pliku wejściowego: %1</entry>
