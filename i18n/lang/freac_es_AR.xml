@@ -394,10 +394,6 @@
       <section name="Resources">
 	<entry id="5704" string="auto">auto</entry>
       </section>
-
-      <section name="Processing">
-	<entry id="5900" string="Signal processing">Apodización</entry>
-      </section>
     </section>
 
     <section name="About">

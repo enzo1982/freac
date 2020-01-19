@@ -550,7 +550,7 @@
       </section>
 
       <section name="Processing">
-	<entry id="5900" string="Signal processing">Apodización</entry>
+	<entry id="5900" string="Signal processing"/>
 	<entry id="5901" string="Enable signal processing"/>
 	<entry id="5902" string="Enable processing during playback"/>
 	<entry id="5903" string="Components"/>
