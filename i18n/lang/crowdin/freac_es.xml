@@ -1177,7 +1177,7 @@
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Por favor, escriba a %1 si desea enviar un cheque o dinero por&#10;correo.</entry>
 	<entry id="100004" string="Thank you very much!">¡Muchas gracias!</entry>
 	<entry id="100005" string="Remind me later">Recordármelo más tarde</entry>
-	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
 	<entry id="100007" string="Donate to the %1 project">Donar al proyecto %1</entry>
 
 	<section name="PayPal">

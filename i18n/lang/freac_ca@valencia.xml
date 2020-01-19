@@ -660,7 +660,7 @@
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Per favor, escriga a %1 si desitja donar usant una transferència&#10;electrònica o enviant un xec o diners per correu.</entry>
 	<entry id="100004" string="Thank you very much!">Moltes gràcies!</entry>
 	<entry id="100005" string="Remind me later">Recordar-m'ho més tard</entry>
-	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
 	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Polse un dels botons de baix per a donar usant PayPal:</entry>

@@ -1177,7 +1177,7 @@
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Môžete však aj napísať %1 ak nám chcete darovať peniaze&#10;prevodom, šekom alebo poštou.</entry>
 	<entry id="100004" string="Thank you very much!">Ďakujeme pekne!</entry>
 	<entry id="100005" string="Remind me later">Upozorni ma neskôr</entry>
-	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
 	<entry id="100007" string="Donate to the %1 project">Darujte na %1 projekt!</entry>
 
 	<section name="PayPal">

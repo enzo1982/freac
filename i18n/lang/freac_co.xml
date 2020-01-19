@@ -1177,7 +1177,7 @@
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Per piacè scrivite à %1 s’è voi vulete mandà un sceccu&#10;o trasmette soldi da messaghju elettronicu.</entry>
 	<entry id="100004" string="Thank you very much!">Vi ringraziemu assai !</entry>
 	<entry id="100005" string="Remind me later">Rammintatemi un altra volta</entry>
-	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum,sepa</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
 	<entry id="100007" string="Donate to the %1 project">Fate una dunazione à u prughjettu %1</entry>
 
 	<section name="PayPal">

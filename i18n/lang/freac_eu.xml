@@ -663,7 +663,7 @@
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Mesedez idatzi %1-ra dirulaguntza bat ematea nahi baduzu&#10;eskualdaketa elektronikoz, posta txeke batez edo dirua postaz bidaltzeko.</entry>
 	<entry id="100004" string="Thank you very much!">Mila esker!</entry>
 	<entry id="100005" string="Remind me later">Gogoratu geroago</entry>
-	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
 	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Klikatu beheko botoietako bat dirulaguntza bat emateko PayPal bidez:</entry>

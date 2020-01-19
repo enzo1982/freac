@@ -659,7 +659,7 @@
 	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Ole hyvä ja kysy lisätetoa kirjoittamalla englanninkielellä osoitteeseen %1,&#10;jos haluat lahjoittaa sähköisesti, shekillä tai lähettämällä suoraan rahaa postitse.</entry>
 	<entry id="100004" string="Thank you very much!">Erittäin paljon kiitoksia!</entry>
 	<entry id="100005" string="Remind me later">Muistuta minua myöhemmin</entry>
-	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">sepa,paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
 	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Paina tästä napista tehdäkseen lahjoituksen PayPal-käytännöllä:</entry>
