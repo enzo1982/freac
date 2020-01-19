@@ -395,7 +395,7 @@
     <entry id="391" string="Replace existing comments with default comment">Remplacer les commentaires existant par ceux par défaut</entry>
     <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Les fichiers sélectionnés ne peuvent être combinés en&#10;un seul fichier de sortie parce que les formats sont différents.&#10;&#10;Veuillez d'abord convertir tous les fichiers au même format.</entry>
     <entry id="393" string="Write WMA metadata info">Ecriture des métadonnées WMA</entry>
-    <entry id="394" string="WMA metadata encoding:">Encodage des métadonnées WMA</entry>
+    <entry id="394" string="WMA metadata encoding:">Encodage des métadonnées WMA:</entry>
     <entry id="395" string="Select codec">Sélectioner le CoDec</entry>
     <entry id="396" string="Select codec format">Sélectionner le format de CoDec</entry>
     <entry id="397" string="Codec settings">Paramètres du CoDec</entry>
@@ -406,7 +406,7 @@
     <entry id="402" string="Use VBR encoding">Utiliser l'encodage VBR</entry>
     <entry id="403" string="Use 2-pass encoding">Utiliser l'encodage double passe</entry>
     <entry id="404" string="Target bitrate">Bitrate cible</entry>
-    <entry id="405" string="Set drive speed limit:">Définir la vitesse limite du lecteur</entry>
+    <entry id="405" string="Set drive speed limit:">Définir la vitesse limite du lecteur:</entry>
     <entry id="406" string="Support this project">Supporter ce projet</entry>
     <entry id="407" string="Please support this project!">S'il vous plait supporter ce projet!</entry>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">S'il vous plait aider à conserver gratuit ce programme en supportant le projet %1&#10;avec un don.&#10;&#10;Cliquer sur un des boutons ci-dessous pour faire un don en utilisant PayPal :</entry>

@@ -19,7 +19,7 @@
     <entry id="6" string="Clear joblist">Καθαρισμός Λίστας Εργασίας</entry>
     <entry id="7" string="Exit">Έξοδος</entry>
     <entry id="8" string="General settings...">Γενικές ρυθμίσεις...</entry>
-    <entry id="9" string="Configure selected encoder...">Ρύθμιση επιλεγμένου κωδικοποιητή</entry>
+    <entry id="9" string="Configure selected encoder...">Ρύθμιση επιλεγμένου κωδικοποιητή...</entry>
     <entry id="10" string="Audio file(s)">Αρχείο(α) ήχου</entry>
     <entry id="11" string="Audio CD contents">Περιεχόμενα CD ήχου</entry>
     <entry id="12" string="Start encoding">Έναρξη κωδικοποίησης</entry>
@@ -72,7 +72,7 @@
     <entry id="60" string="Encoder">Κωδικοποιητής</entry>
     <entry id="61" string="Output folder">Φάκελος αποθήκευσης</entry>
     <entry id="62" string="Browse">Εξερεύνηση</entry>
-    <entry id="63" string="Select the folder in which the encoded files will be placed:">Επιλέξτε φάκελο τοποθέτησης των κωδικοποιημένων αρχέιων: </entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Επιλέξτε φάκελο τοποθέτησης των κωδικοποιημένων αρχέιων:</entry>
     <entry id="64" string="Encoding">Κωδικοποίηση</entry>
     <entry id="67" string="Information">Πληροφορίες</entry>
     <entry id="68" string="Select language:">Επιλογή γλώσσας:</entry>
@@ -168,7 +168,7 @@
     <entry id="163" string="Extended CDDB settings">Εκτεταμένες επιλογές CDDB</entry>
     <entry id="164" string="CGI scripts">CGI scripts</entry>
     <entry id="165" string="CDDB query script:">Script για ερώτηση CDDB:</entry>
-    <entry id="166" string="CDDB submit script:">Script για καταχώρηση CDDB</entry>
+    <entry id="166" string="CDDB submit script:">Script για καταχώρηση CDDB:</entry>
     <entry id="167" string="HTTP settings">Ρυθμίσεις HTTP</entry>
     <entry id="168" string="Proxy settings">Ρυθμίσεις Proxy</entry>
     <entry id="169" string="no proxy">Όχι proxy</entry>
@@ -276,7 +276,7 @@
     <entry id="275" string="Write MP4 metadata info">Εγγραφή πληροφοριών MP4 metadata</entry>
     <entry id="276" string="ID3v1 tag encoding:">Κωδικοποίηση ID3v1 tag:</entry>
     <entry id="277" string="ID3v2 tag encoding:">Κωδικοποίηση ID3v2 tag:</entry>
-    <entry id="278" string="Vorbis Comment tag encoding:">Κωδικοποίηση tag σχολίων Vorbis </entry>
+    <entry id="278" string="Vorbis Comment tag encoding:">Κωδικοποίηση tag σχολίων Vorbis:</entry>
     <entry id="279" string="MP4 metadata encoding:">Κωδικοποίηση MP4 metadata:</entry>
     <entry id="280" string="Tag encodings">Κωδικοποίηση tag</entry>
     <entry id="281" string="Update joblist with this information">Ενημέρωση λίστας εργασιών με αυτές τις πληροφορίες</entry>

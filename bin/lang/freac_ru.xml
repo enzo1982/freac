@@ -18,7 +18,7 @@
     <entry id="5" string="Remove">Удалить</entry>
     <entry id="6" string="Clear joblist">Очистить список задач</entry>
     <entry id="7" string="Exit">Выход</entry>
-    <entry id="8" string="General settings...">Основные настройки</entry>
+    <entry id="8" string="General settings...">Основные настройки...</entry>
     <entry id="9" string="Configure selected encoder...">Настроить выбранный кодек...</entry>
     <entry id="10" string="Audio file(s)">Аудио файл(ы)</entry>
     <entry id="11" string="Audio CD contents">Содержимое Аудио CD</entry>
@@ -78,13 +78,13 @@
     <entry id="65" string="Author">Автор</entry>
     <entry id="66" string="URL">URL</entry>
     <entry id="67" string="Information">Информация</entry>
-    <entry id="68" string="Select language:">Выбрать язык</entry>
+    <entry id="68" string="Select language:">Выбрать язык:</entry>
     <entry id="69" string="Active CD-ROM drive">Выбор привода CD-ROM</entry>
     <entry id="70" string="Ripper settings">Настройки захвата данных (граббера)</entry>
     <entry id="71" string="Activate cdparanoia mode:">Режим cd-параноя:</entry>
     <entry id="72" string="Activate jitter correction">Jitter коррекция</entry>
     <entry id="73" string="Swap left/right channel">Поменять левый/правый</entry>
-    <entry id="74" string="Lock CD tray while ripping">Блокировка CD при работе </entry>
+    <entry id="74" string="Lock CD tray while ripping">Блокировка CD при работе</entry>
     <entry id="75" string="Use native NT SCSI library">Родные NT SCSI библиотеки</entry>
     <entry id="76" string="Overlap only">Только перекрывать</entry>
     <entry id="77" string="No verify">Без проверки</entry>
@@ -178,7 +178,7 @@
     <entry id="170" string="Proxy type:">Тип прокси:</entry>
     <entry id="171" string="Proxy server:">Прокси сервер:</entry>
     <entry id="172" string="Presets">Настройка</entry>
-    <entry id="173" string="Use preset:">Выберите вариант</entry>
+    <entry id="173" string="Use preset:">Выберите вариант:</entry>
     <entry id="174" string="Custom settings">Указать настройки в ручную</entry>
     <entry id="179" string="Medium, Fast">Средний, Быстрый</entry>
     <entry id="180" string="Standard, Fast">Стандартный, Быстрый</entry>
@@ -193,7 +193,7 @@
     <entry id="189" string="Album">Альбом</entry>
     <entry id="190" string="Info tags">Заголовки</entry>
     <entry id="191" string="Default information">Информация по умолчанию</entry>
-    <entry id="192" string="Default comment string:">Комментарии по умолчанию</entry>
+    <entry id="192" string="Default comment string:">Комментарии по умолчанию:</entry>
     <entry id="193" string="unknown artist">неизвестный артист</entry>
     <entry id="194" string="unknown title">неизвестное название</entry>
     <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">Не могу загрузить драйвер ASPI! CD граббер отключен!</entry>
@@ -261,7 +261,7 @@
     <entry id="257" string="Format">Формат</entry>
     <entry id="258" string="File format">Тип файла</entry>
     <entry id="259" string="Allow ID3v2 tags in AAC files">Разрешить ID3v2 заголовки в AAC файлах</entry>
-    <entry id="260" string="Note:">Примечание: </entry>
+    <entry id="260" string="Note:">Примечание:</entry>
     <entry id="261" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Некоторые плееры воспроизводящие AAC файлы&#10;могут иметь проблемы с ID3 заголовками.</entry>
     <entry id="262" string="FLAC Files">FLAC файлы</entry>
     <entry id="263" string="Sampling rate">Частота дискретизации</entry>
@@ -277,10 +277,10 @@
     <entry id="273" string="Write ID3v2 tags">Записывать теги ID3v2</entry>
     <entry id="274" string="Write Vorbis Comment tags">Записывать теги комментариев Vorbis</entry>
     <entry id="275" string="Write MP4 metadata info">Записывать информацию о метаданных MP4</entry>
-    <entry id="276" string="ID3v1 tag encoding:">ID3v1</entry>
-    <entry id="277" string="ID3v2 tag encoding:">ID3v2</entry>
-    <entry id="278" string="Vorbis Comment tag encoding:">Комментарии Vorbis</entry>
-    <entry id="279" string="MP4 metadata encoding:">Информация о метаданных MP4</entry>
+    <entry id="276" string="ID3v1 tag encoding:">ID3v1:</entry>
+    <entry id="277" string="ID3v2 tag encoding:">ID3v2:</entry>
+    <entry id="278" string="Vorbis Comment tag encoding:">Комментарии Vorbis:</entry>
+    <entry id="279" string="MP4 metadata encoding:">Информация о метаданных MP4:</entry>
     <entry id="280" string="Tag encodings">Кодировка тегов</entry>
     <entry id="281" string="Update joblist with this information">Обновить список задач этой информацией</entry>
     <entry id="282" string="unknown genre">неизвестный жанр</entry>
@@ -310,12 +310,12 @@
     <entry id="306" string="From folder">Из папки</entry>
     <entry id="307" string="Folder">Папка</entry>
     <entry id="308" string="Add folder">Добавить папку</entry>
-    <entry id="309" string="Choose folder:">Выбрать папку</entry>
-    <entry id="310" string="Select the folder to add to the joblist:">Выберите папку для добавления в список задач</entry>
+    <entry id="309" string="Choose folder:">Выбрать папку:</entry>
+    <entry id="310" string="Select the folder to add to the joblist:">Выберите папку для добавления в список задач:</entry>
     <entry id="311" string="Add files by pattern">Добавить файлы по образцу</entry>
     <entry id="312" string="Pattern">Образец</entry>
     <entry id="313" string="Start folder">Начальная папка</entry>
-    <entry id="314" string="No files found matching pattern:">Нет файлов, соответствующих образцу</entry>
+    <entry id="314" string="No files found matching pattern:">Нет файлов, соответствующих образцу:</entry>
     <entry id="315" string="Edit language file">Править языковой файл</entry>
     <entry id="316" string="Use for all selected tracks">Использовать для всех выбранных треков</entry>
     <entry id="317" string="Interpret string as">Интерпретировать строку как</entry>
@@ -347,7 +347,7 @@
     <entry id="343" string="Use encoder output folder">Использовать выходную папку кодека</entry>
     <entry id="344" string="Various artists">Разные артисты (сборка)</entry>
     <entry id="345" string="Data track">Дорожка с данными</entry>
-    <entry id="346" string="Select the folder in which the playlist files will be placed:">Выберите папку, в которую будут помещены плейлисты</entry>
+    <entry id="346" string="Select the folder in which the playlist files will be placed:">Выберите папку, в которую будут помещены плейлисты:</entry>
     <entry id="347" string="Use input file folder if possible">Исп. папку входного файла если возможно</entry>
     <entry id="348" string="Encode to input file folder if possible">Кодировать в папку входного файла если возможно</entry>
     <entry id="349" string="Allow overwriting input file">Перезаписать входной файл</entry>
@@ -355,14 +355,14 @@
     <entry id="351" string="Encoder options">Настройки кодека</entry>
     <entry id="352" string="Skip">Пропустить</entry>
     <entry id="353" string="Enable local CDDB database">Местная база данных CDDB</entry>
-    <entry id="354" string="CDDB path:">Папка CDDB</entry>
+    <entry id="354" string="CDDB path:">Папка CDDB:</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Выберите папку базы данных CDDB:</entry>
     <entry id="356" string="File already exists">Файл уже существует</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Выходной файл %1&#10;уже существует! Хотите перезаписать его?</entry>
     <entry id="358" string="Overwrite all further files">Перезаписать все старые файлы</entry>
     <entry id="359" string="Start ripping automatically">Авт. начало копирования</entry>
     <entry id="360" string="Submit to online database later">Переслать в он-лайн базу данных позже</entry>
-    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Поддержка CDDB выключена! Пожалуйста включите&#10;поддержку местной или удаленной CDDB в диалоговом окне. </entry>
+    <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Поддержка CDDB выключена! Пожалуйста включите&#10;поддержку местной или удаленной CDDB в диалоговом окне.</entry>
     <entry id="362" string="CDDB entries to submit:">Записи CDDB для передачи:</entry>
     <entry id="363" string="Show queued CDDB entries...">Показать записи CDDB в очереди...</entry>
     <entry id="364" string="Submit all">Переслать все</entry>

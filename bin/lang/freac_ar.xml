@@ -271,7 +271,7 @@
     <entry id="271" string="Create cue sheet">إنشاء ورقة جدلية</entry>
     <entry id="272" string="Write ID3v1 tags">البطاقات ID3v1 كتابة</entry>
     <entry id="273" string="Write ID3v2 tags">البطاقات ID3v2 كتابة</entry>
-    <entry id="274" string="Write Vorbis Comment tags"> للتعليق البطاقات Vorbis كتابة</entry>
+    <entry id="274" string="Write Vorbis Comment tags">للتعليق البطاقات Vorbis كتابة</entry>
     <entry id="275" string="Write MP4 metadata info">معلومات وصفية MP4 كتابة</entry>
     <entry id="276" string="ID3v1 tag encoding:">ID3v1 ترميز البطاقات:</entry>
     <entry id="277" string="ID3v2 tag encoding:">ID3v2 ترميز البطاقات:</entry>
@@ -343,7 +343,7 @@
     <entry id="343" string="Use encoder output folder">يستخدم التشفير مجلد الناتج</entry>
     <entry id="344" string="Various artists">فنانين مختلفين</entry>
     <entry id="345" string="Data track">بيانات المسار</entry>
-    <entry id="346" string="Select the folder in which the playlist files will be placed:">حدد المجلد الذي ستضع فيه قائمة الأغاني</entry>
+    <entry id="346" string="Select the folder in which the playlist files will be placed:">حدد المجلد الذي ستضع فيه قائمة الأغاني:</entry>
     <entry id="347" string="Use input file folder if possible">استخدم مجلد ملفات المدخل اذا ممكن</entry>
     <entry id="348" string="Encode to input file folder if possible">إذا كان ذلك ممكنا الترميز ‘إلى مجلد ملف الناتج</entry>
     <entry id="349" string="Allow overwriting input file">السماح بالكتابة على ملف الادخال</entry>
@@ -368,7 +368,7 @@
     <entry id="368" string="Automatization">التلقائية</entry>
     <entry id="369" string="Query CDDB database later">استعلام قاعدة بيانات قرص مضغوط في وقت لاحق</entry>
     <entry id="370" string="Show queued CDDB queries...">عرض قائمة الانتضار لاستعلام قاعدة بيانات قرص مضغوط</entry>
-    <entry id="371" string="CDDB queries">استعلامات قاعدة بيانات قرص مضغوط </entry>
+    <entry id="371" string="CDDB queries">استعلامات قاعدة بيانات قرص مضغوط</entry>
     <entry id="372" string="Query">استعلام</entry>
     <entry id="373" string="Query all">استعلام الكل</entry>
     <entry id="374" string="Query string">مرادفات الاستعلام</entry>

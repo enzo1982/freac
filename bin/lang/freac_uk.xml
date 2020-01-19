@@ -284,8 +284,8 @@
     <entry id="280" string="Tag encodings">Кодування тегів</entry>
     <entry id="281" string="Update joblist with this information">Оновити список завдань даною інформацією</entry>
     <entry id="282" string="unknown genre">невідомий жанр</entry>
-    <entry id="283" string="Load joblist...">Завантажити список завдань</entry>
-    <entry id="284" string="Save joblist...">Зберегти список завдань</entry>
+    <entry id="283" string="Load joblist...">Завантажити список завдань...</entry>
+    <entry id="284" string="Save joblist...">Зберегти список завдань...</entry>
     <entry id="285" string="Pause/resume encoding">Призупинити/продовжити</entry>
     <entry id="286" string="Shutdown after encoding">Виключити після кодування</entry>
     <entry id="287" string="Playlist Files">Файли плейлистів</entry>
@@ -329,7 +329,7 @@
     <entry id="325" string="Status">Статус</entry>
     <entry id="326" string="Successfully read CD!">CD успішно прочитано!</entry>
     <entry id="327" string="Comment">Коментар</entry>
-    <entry id="328" string="Manage CDDB cache entries...">Керувати CDDB кешом</entry>
+    <entry id="328" string="Manage CDDB cache entries...">Керувати CDDB кешом...</entry>
     <entry id="329" string="Save entry">Зберегти запис</entry>
     <entry id="330" string="Remove entry">Видалити запис</entry>
     <entry id="331" string="Disc name">Назва диску</entry>
@@ -380,7 +380,7 @@
     <entry id="376" string="Would you like to perform this query again later?">Чи хочете ви зробити даний запит пізніше?</entry>
     <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Доступ до приводу CD-ROM був відхилений Windows.&#10;&#10;Будь-ласка зв'яжіться з вашим системним адміністратором щоб&#10;вам був наданий доступ до приводу CD-ROM</entry>
     <entry id="378" string="CD information">Інформація CD</entry>
-    <entry id="379" string="Read CD Text">Читати CD текст </entry>
+    <entry id="379" string="Read CD Text">Читати CD текст</entry>
     <entry id="380" string="Read cdplayer.ini">Читати cdplayer.ini</entry>
     <entry id="381" string="Signal processing">Аподизація</entry>
     <entry id="382" string="Window function(s):">Функці(ї) аподизації:</entry>

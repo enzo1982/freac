@@ -171,7 +171,7 @@
     <entry id="163" string="Extended CDDB settings">Opções extras do CDDB</entry>
     <entry id="164" string="CGI scripts">Script CGI</entry>
     <entry id="165" string="CDDB query script:">Script de pesquisa no CDDB:</entry>
-    <entry id="166" string="CDDB submit script:">Script de envio ao CDDB</entry>
+    <entry id="166" string="CDDB submit script:">Script de envio ao CDDB:</entry>
     <entry id="167" string="HTTP settings">Opções HTTP</entry>
     <entry id="168" string="Proxy settings">Opções de proxy</entry>
     <entry id="169" string="no proxy">sem proxy</entry>

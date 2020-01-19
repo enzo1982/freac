@@ -117,12 +117,12 @@
     <entry id="104" string="Temporal Noise Shaping">时序噪音修整</entry>
     <entry id="105" string="Use Temporal Noise Shaping">使用时序噪音修整</entry>
     <entry id="106" string="Maximum bandwidth">最大带宽</entry>
-    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">可用的最大 AAC 频率带宽(Hz)</entry>
+    <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">可用的最大 AAC 频率带宽(Hz)：</entry>
     <entry id="108" string="Basic">基本</entry>
     <entry id="109" string="Misc">杂项</entry>
     <entry id="110" string="Audio processing">音频处理</entry>
     <entry id="111" string="Set bitrate:">设置比特率：</entry>
-    <entry id="112" string="Set ratio:">设置比率</entry>
+    <entry id="112" string="Set ratio:">设置比率：</entry>
     <entry id="113" string="Set quality:">设置品质：</entry>
     <entry id="114" string="worse">较差</entry>
     <entry id="115" string="better">较好</entry>
@@ -162,7 +162,7 @@
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">尝试连接至 freedb 服务器时出错。</entry>
     <entry id="155" string="Connecting to freedb server at">正在连接 freedb 服务器</entry>
     <entry id="156" string="Requesting CD information">正在索取 CD 信息</entry>
-    <entry id="157" string="eMail address:">e-Mail 地址</entry>
+    <entry id="157" string="eMail address:">e-Mail 地址：</entry>
     <entry id="158" string="Please enter a valid eMail address.">请输入一个有效的 e-Mai l地址。</entry>
     <entry id="159" string="No exact matches found">未找到相匹配的项目</entry>
     <entry id="160" string="Multiple matches found">找到多个匹配的项目</entry>
@@ -175,7 +175,7 @@
     <entry id="167" string="HTTP settings">HTTP 设置</entry>
     <entry id="168" string="Proxy settings">代理设置</entry>
     <entry id="169" string="no proxy">不使用代理</entry>
-    <entry id="170" string="Proxy type:">代理类型</entry>
+    <entry id="170" string="Proxy type:">代理类型：</entry>
     <entry id="171" string="Proxy server:">代理服务器：</entry>
     <entry id="172" string="Presets">预设</entry>
     <entry id="173" string="Use preset:">使用预设：</entry>
@@ -236,7 +236,7 @@
     <entry id="232" string="Select none">取消全选</entry>
     <entry id="233" string="Toggle selection">反选</entry>
     <entry id="234" string="Show Tip of the Day">显示每日提示</entry>
-    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 有 %2 种语言版本，如果您没有找到您所要的语言，&#10; 您可以使用“Smooth 翻译器”进行 %1 的翻译。</entry>
+    <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 有 %2 种语言版本，如果您没有找到您所要的语言，&#10;您可以使用“Smooth 翻译器”进行 %1 的翻译。</entry>
     <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 支持 LAME，Ogg Vorbis，FAAC，FLAC 和 Bonk&#10;等编码器。VQF 格式的编码器可以在 %1 网站上下载：&#10;%2</entry>
     <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 使用 Winamp 2 输入插件后可以支持更多的格式。&#10;将 in_*.dll 文件复制到 %1/plugins 目录后就可以使用&#10;%1 读取这些格式了。</entry>
     <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">使用 %1 您可以提交采用 Unicode 字符集的 freedb CD&#10;数据库项目。&#10;因此，如果您的 CD 是非拉丁语系艺术家或标题名称，&#10;也可以使用 %1提交正确的 freedb 项目。</entry>

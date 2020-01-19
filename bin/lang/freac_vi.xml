@@ -104,7 +104,7 @@
     <entry id="91" string="Encoder mode">Chế độ chuyển mã</entry>
     <entry id="92" string="Stereo mode">Chế độ Stereo</entry>
     <entry id="93" string="Quantization">Quantization</entry>
-    <entry id="94" string="Downsampling ratio">Tỉ lệ Downsampling </entry>
+    <entry id="94" string="Downsampling ratio">Tỉ lệ Downsampling</entry>
     <entry id="95" string="Predictor size">Kích thước dự đoán</entry>
     <entry id="96" string="Enable lossless encoding">Cho phép chuyển mã các phần bị mất</entry>
     <entry id="97" string="Enable Joint Stereo">Cho phép nối Stereo</entry>

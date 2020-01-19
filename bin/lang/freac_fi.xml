@@ -404,7 +404,7 @@
     <entry id="400" string="Write uncompressed WMA files">Kirjoita pakkaamattomat WMA-tiedostot</entry>
     <entry id="401" string="Automatically select format based on settings and input format">Automaattisesti valittu tiedostomuoto perustuu asetuksiin ja syötetiedostoihin</entry>
     <entry id="402" string="Use VBR encoding">Käytä VBR-muuntamista</entry>
-    <entry id="403" string="Use 2-pass encoding">Käytä 2-tie muuntamista </entry>
+    <entry id="403" string="Use 2-pass encoding">Käytä 2-tie muuntamista</entry>
     <entry id="404" string="Target bitrate">Bittinopeuskohde</entry>
     <entry id="405" string="Set drive speed limit:">Aseta nopeusrajoitus ajurille:</entry>
     <entry id="406" string="Support this project">Tue tätä projektia</entry>

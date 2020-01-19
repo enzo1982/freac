@@ -78,7 +78,7 @@
     <entry id="65" string="Author">Автор</entry>
     <entry id="66" string="URL">URL</entry>
     <entry id="67" string="Information">Informatsioon</entry>
-    <entry id="68" string="Select language:">Keele valik</entry>
+    <entry id="68" string="Select language:">Keele valik:</entry>
     <entry id="69" string="Active CD-ROM drive">CD-ROM-i valik</entry>
     <entry id="70" string="Ripper settings">Ripperi sätted</entry>
     <entry id="71" string="Activate cdparanoia mode:">Aktiveerida cdparanoia resiim:</entry>
@@ -178,7 +178,7 @@
     <entry id="170" string="Proxy type:">Proxy tüüp:</entry>
     <entry id="171" string="Proxy server:">Proxy server:</entry>
     <entry id="172" string="Presets">Presets</entry>
-    <entry id="173" string="Use preset:">Valige variant</entry>
+    <entry id="173" string="Use preset:">Valige variant:</entry>
     <entry id="174" string="Custom settings">Käsi sätted</entry>
     <entry id="179" string="Medium, Fast">Keskmine, Kiire</entry>
     <entry id="180" string="Standard, Fast">Standartne, Kiire</entry>
@@ -193,12 +193,12 @@
     <entry id="189" string="Album">Album</entry>
     <entry id="190" string="Info tags">Tagid</entry>
     <entry id="191" string="Default information">Vaikimisi info</entry>
-    <entry id="192" string="Default comment string:">Komentaarid vaikimisi</entry>
+    <entry id="192" string="Default comment string:">Komentaarid vaikimisi:</entry>
     <entry id="193" string="unknown artist">teadmata artist</entry>
     <entry id="194" string="unknown title">teadmata nimi</entry>
     <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">Ei saa laadida ASPI draivereid! CD ripping ei tööta!</entry>
     <entry id="196" string="Database">Andmebaas</entry>
-    <entry id="197" string="Submit CDDB data...">Saata andmed CDDB-se</entry>
+    <entry id="197" string="Submit CDDB data...">Saata andmed CDDB-se...</entry>
     <entry id="198" string="Enable CDDB cache">CDDB cacheerimine</entry>
     <entry id="199" string="CDDB data">CDDB andmed</entry>
     <entry id="200" string="Submit">Saata</entry>
@@ -277,8 +277,8 @@
     <entry id="273" string="Write ID3v2 tags">Kirjutada ID3v2 tägid</entry>
     <entry id="274" string="Write Vorbis Comment tags">Kirjutada Vorbis kommentaaride tägid</entry>
     <entry id="275" string="Write MP4 metadata info">Kirjutada MP4 metaandmete info</entry>
-    <entry id="276" string="ID3v1 tag encoding:">ID3v1</entry>
-    <entry id="277" string="ID3v2 tag encoding:">ID3v2</entry>
+    <entry id="276" string="ID3v1 tag encoding:">ID3v1:</entry>
+    <entry id="277" string="ID3v2 tag encoding:">ID3v2:</entry>
     <entry id="278" string="Vorbis Comment tag encoding:">Vorbis Comment tägide kodeerimine:</entry>
     <entry id="279" string="MP4 metadata encoding:">MP4 metaandmete kodeerimine:</entry>
     <entry id="280" string="Tag encodings">Tägide kodeerimine</entry>
@@ -310,8 +310,8 @@
     <entry id="306" string="From folder">Kaustast</entry>
     <entry id="307" string="Folder">Kaust</entry>
     <entry id="308" string="Add folder">Lisada kaust</entry>
-    <entry id="309" string="Choose folder:">Valida kaust</entry>
-    <entry id="310" string="Select the folder to add to the joblist:">Valige kaust ülesannete nimekirja lisamiseks</entry>
+    <entry id="309" string="Choose folder:">Valida kaust:</entry>
+    <entry id="310" string="Select the folder to add to the joblist:">Valige kaust ülesannete nimekirja lisamiseks:</entry>
     <entry id="311" string="Add files by pattern">Lisada failid näidise järgi</entry>
     <entry id="312" string="Pattern">Näidis</entry>
     <entry id="313" string="Start folder">Algne kaust</entry>
@@ -346,7 +346,7 @@
     <entry id="342" string="Create cue sheets">Luua cue sheets</entry>
     <entry id="344" string="Various artists">Erinevad artistid</entry>
     <entry id="345" string="Data track">Data track</entry>
-    <entry id="346" string="Select the folder in which the playlist files will be placed:">Valige kaust, kuhu paigutatakse playlistid</entry>
+    <entry id="346" string="Select the folder in which the playlist files will be placed:">Valige kaust, kuhu paigutatakse playlistid:</entry>
     <entry id="347" string="Use input file folder if possible">Kasuta sisendfaili kausta kui on võimalik</entry>
     <entry id="348" string="Encode to input file folder if possible">Kodeeri otse sisendfaili kausta kui on võimalik</entry>
     <entry id="349" string="Allow overwriting input file">Kirjutada üle sisend fail</entry>

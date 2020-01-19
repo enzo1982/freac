@@ -18,7 +18,7 @@
     <entry id="5" string="Remove">Forigi</entry>
     <entry id="6" string="Clear joblist">Ĉiuj forigi</entry>
     <entry id="7" string="Exit">Eliri</entry>
-    <entry id="8" string="General settings...">Ĝeneralaj agordoj</entry>
+    <entry id="8" string="General settings...">Ĝeneralaj agordoj...</entry>
     <entry id="9" string="Configure selected encoder...">Agordi elektitan kodilon...</entry>
     <entry id="10" string="Audio file(s)">Aŭdiodosiero(j)</entry>
     <entry id="11" string="Audio CD contents">Aŭdio-KD-enhavo</entry>
@@ -36,8 +36,8 @@
     <entry id="23" string="Add audio file(s) to the joblist">Aldoni aŭdiodosiero(j)n al farenda listo</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Aldoni aŭdio-KD-enhavon al farenda listo</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Forigi la elektan enskribon el la farenda listo</entry>
-    <entry id="26" string="Clear the entire joblist">Forigi la kompletan farendan liston </entry>
-    <entry id="27" string="Configure general settings">Agordi ĝeneralajn agordojn </entry>
+    <entry id="26" string="Clear the entire joblist">Forigi la kompletan farendan liston</entry>
+    <entry id="27" string="Configure general settings">Agordi ĝeneralajn agordojn</entry>
     <entry id="28" string="Configure the selected audio encoder">Agordi la elektan kodilon</entry>
     <entry id="29" string="Start the encoding process">Starti la kodadon</entry>
     <entry id="30" string="Cannot modify the joblist while encoding!">Ne eblas modifi la liston dum la kodado!</entry>
@@ -100,7 +100,7 @@
     <entry id="87" string="Enable CRC">Aktivigi CRC</entry>
     <entry id="88" string="Set Original bit">Igi originalan biton</entry>
     <entry id="89" string="Dual channel encoding">Stereo-ŝanela kodadi</entry>
-    <entry id="90" string="Set Private bit">Igi privatan biton </entry>
+    <entry id="90" string="Set Private bit">Igi privatan biton</entry>
     <entry id="91" string="Encoder mode">Kodmoduso</entry>
     <entry id="92" string="Stereo mode">Stereomoduso</entry>
     <entry id="93" string="Quantization">Kvantigo</entry>

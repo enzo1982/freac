@@ -30,7 +30,7 @@
     <entry id="17" string="Selected encoder:">目前的編碼器：</entry>
     <entry id="18" string="File progress:">檔案進度：</entry>
     <entry id="19" string="Output dir.:">輸出資料夾：</entry>
-    <entry id="20" string="%1 file(s) in joblist (%2 min):">工作清單有 %1 個檔案 (%2 分鐘)</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">工作清單有 %1 個檔案 (%2 分鐘)：</entry>
     <entry id="21" string="none">無</entry>
     <entry id="22" string="Help topics...">說明主題...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">新增音訊檔案</entry>

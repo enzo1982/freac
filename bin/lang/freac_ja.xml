@@ -110,7 +110,7 @@
     <entry id="97" string="Enable Joint Stereo">ジョイント ステレオ使用</entry>
     <entry id="98" string="Bitrate per channel:">チャンネル毎ビットレート：</entry>
     <entry id="99" string="Preselection">事前選択</entry>
-    <entry id="100" string="Number of preselection candidates:">事前選択候補の数</entry>
+    <entry id="100" string="Number of preselection candidates:">事前選択候補の数：</entry>
     <entry id="101" string="MPEG version">MPEG バージョン</entry>
     <entry id="102" string="AAC object type">AAC のタイプ</entry>
     <entry id="103" string="Allow Joint Stereo">ジョイント ステレオを許可</entry>
@@ -329,7 +329,7 @@
     <entry id="325" string="Status">状況</entry>
     <entry id="326" string="Successfully read CD!">CD の読み取りに成功しました!</entry>
     <entry id="327" string="Comment">コメント</entry>
-    <entry id="328" string="Manage CDDB cache entries...">CDDB キャッシュの管理</entry>
+    <entry id="328" string="Manage CDDB cache entries...">CDDB キャッシュの管理...</entry>
     <entry id="329" string="Save entry">項目を保存</entry>
     <entry id="330" string="Remove entry">項目を削除</entry>
     <entry id="331" string="Disc name">ディスク名</entry>

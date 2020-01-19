@@ -155,7 +155,7 @@
     <entry id="147" string="Bonk Files">Arquivos Bonk</entry>
     <entry id="148" string="Automatic CDDB queries">Consultas CDDB automáticas</entry>
     <entry id="149" string="CDDB access mode:">Modo de acceso CDDB:</entry>
-    <entry id="150" string="CDDB server:">Servidor CDDB</entry>
+    <entry id="150" string="CDDB server:">Servidor CDDB:</entry>
     <entry id="151" string="Port:">Porto:</entry>
     <entry id="152" string="Info">Info</entry>
     <entry id="153" string="No freedb entry for this disk.">Non hai un rexistro freedb deste CD</entry>
@@ -178,7 +178,7 @@
     <entry id="170" string="Proxy type:">Tipo de proxy:</entry>
     <entry id="171" string="Proxy server:">Servidor proxy:</entry>
     <entry id="172" string="Presets">Valores por defecto</entry>
-    <entry id="173" string="Use preset:">Usar valores por defecto</entry>
+    <entry id="173" string="Use preset:">Usar valores por defecto:</entry>
     <entry id="174" string="Custom settings">Configuración persoal</entry>
     <entry id="179" string="Medium, Fast">Medio, Rápido</entry>
     <entry id="180" string="Standard, Fast">Estándar, Rápido</entry>
@@ -402,9 +402,9 @@
     <entry id="398" string="Use codec">Conversor utilizado</entry>
     <entry id="399" string="Use format">Formato utilizado</entry>
     <entry id="400" string="Write uncompressed WMA files">Crear arquivos WMA descomprimidos</entry>
-    <entry id="401" string="Automatically select format based on settings and input format">Seleccionar automaticamente o formato en base aos formatos de configuración e entrada </entry>
+    <entry id="401" string="Automatically select format based on settings and input format">Seleccionar automaticamente o formato en base aos formatos de configuración e entrada</entry>
     <entry id="402" string="Use VBR encoding">Utilizar conversor VBR</entry>
-    <entry id="403" string="Use 2-pass encoding">Utilizar conversor en 2 pasos </entry>
+    <entry id="403" string="Use 2-pass encoding">Utilizar conversor en 2 pasos</entry>
     <entry id="404" string="Target bitrate">Bitrate promedio</entry>
     <entry id="405" string="Set drive speed limit:">Límite de velocidade da unidade:</entry>
     <entry id="410" string="usd">eur</entry>

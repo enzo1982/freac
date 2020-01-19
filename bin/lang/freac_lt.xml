@@ -18,7 +18,7 @@
   <entry id="5" string="Remove">Pašalinti</entry>
   <entry id="6" string="Clear joblist">Valyti darbų sąrašą</entry>
   <entry id="7" string="Exit">Išeiti</entry>
-  <entry id="8" string="General settings...">Bendros nuostatos</entry>
+  <entry id="8" string="General settings...">Bendros nuostatos...</entry>
   <entry id="9" string="Configure selected encoder...">Konfigūruoti pasirinktą koduotoją...</entry>
   <entry id="10" string="Audio file(s)">Audio failas(ai)</entry>
   <entry id="11" string="Audio CD contents">Audio CD turinys</entry>
@@ -108,9 +108,9 @@
   <entry id="95" string="Predictor size">Numatytojo dydis</entry>
   <entry id="96" string="Enable lossless encoding">Įjungti kokybės neprarandantį kodavimą</entry>
   <entry id="97" string="Enable Joint Stereo">Įjungti Joint Stereo</entry>
-  <entry id="98" string="Bitrate per channel:">Bitų srautas kanalui</entry>
+  <entry id="98" string="Bitrate per channel:">Bitų srautas kanalui:</entry>
   <entry id="99" string="Preselection">Išankstinis parinkimas</entry>
-  <entry id="100" string="Number of preselection candidates:">Išankstinio parinkimo kandidatų kiekis</entry>
+  <entry id="100" string="Number of preselection candidates:">Išankstinio parinkimo kandidatų kiekis:</entry>
   <entry id="101" string="MPEG version">MPEG versija</entry>
   <entry id="102" string="AAC object type">AAC objekto tipas</entry>
   <entry id="103" string="Allow Joint Stereo">Leisti Joint Stereo</entry>
@@ -222,7 +222,7 @@
   <entry id="218" string="Cannot start encoding while playing a file!">Negalima pradėti kodavimo, kol grojamas failas!</entry>
   <entry id="219" string="Enable remote CDDB database">Įjungti nuotolinę CDDB duomenų bazę</entry>
   <entry id="220" string="ATH">ATH</entry>
-  <entry id="221" string="Enable ATH:">Įjungti ATH</entry>
+  <entry id="221" string="Enable ATH:">Įjungti ATH:</entry>
   <entry id="222" string="Use default setting">Naudoti pradines nuostatas</entry>
   <entry id="223" string="Psycho acoustic model">Psycho akustinis modelis</entry>
   <entry id="224" string="Use Temporal Masking Effect">Naudoti laikiną maskavimo efektą</entry>
@@ -362,7 +362,7 @@
   <entry id="358" string="Overwrite all further files">Perrašyti visus ankstesnius failus</entry>
   <entry id="359" string="Start ripping automatically">Pradėti skleidimą automatiškai</entry>
   <entry id="360" string="Submit to online database later">Vėliau perduoti nuotolinei duomenų bazei</entry>
-  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog."> Vietinės CDDB palaikymas išjungtas! Prašome&#10;įjungti vietinės CDDB palaikymą konfigūracijos kortelėje.</entry>
+  <entry id="361" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Vietinės CDDB palaikymas išjungtas! Prašome&#10;įjungti vietinės CDDB palaikymą konfigūracijos kortelėje.</entry>
   <entry id="362" string="CDDB entries to submit:">CDDB įrašai perdavimui:</entry>
   <entry id="363" string="Show queued CDDB entries...">Rodyti užklaustus CDDB įrašus...</entry>
   <entry id="364" string="Submit all">Perduoti viską</entry>

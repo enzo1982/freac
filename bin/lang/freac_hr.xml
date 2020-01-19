@@ -395,7 +395,7 @@
     <entry id="391" string="Replace existing comments with default comment">Zamijeni postojeće komentare sa standardnima</entry>
     <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Izabrane datoteke ne mogu se kombinirati u jednu&#10;izlaznu datoteku zbog različitog sample formata.&#10;&#10;Molim pretvorite sve datoteke u datoteke s istim&#10;sample formatom prvo.</entry>
     <entry id="393" string="Write WMA metadata info">Upiši WMA metadata info</entry>
-    <entry id="394" string="WMA metadata encoding:">WMA metadata enkodiranje</entry>
+    <entry id="394" string="WMA metadata encoding:">WMA metadata enkodiranje:</entry>
     <entry id="395" string="Select codec">Izaberi kodek</entry>
     <entry id="396" string="Select codec format">Izaberi format kodeka</entry>
     <entry id="397" string="Codec settings">Postavke kodeka</entry>

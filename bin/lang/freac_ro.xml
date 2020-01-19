@@ -18,8 +18,8 @@
     <entry id="5" string="Remove">Ştergere</entry>
     <entry id="6" string="Clear joblist">Ştergere listă</entry>
     <entry id="7" string="Exit">Ieşire</entry>
-    <entry id="8" string="General settings...">Setări generale</entry>
-    <entry id="9" string="Configure selected encoder...">Configurare codec</entry>
+    <entry id="8" string="General settings...">Setări generale...</entry>
+    <entry id="9" string="Configure selected encoder...">Configurare codec...</entry>
     <entry id="10" string="Audio file(s)">Fişier(e) Audio</entry>
     <entry id="11" string="Audio CD contents">Conţinut CD Audio</entry>
     <entry id="12" string="Start encoding">Start codare</entry>
