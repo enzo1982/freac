@@ -50,7 +50,7 @@
     <entry id="37" string="Windows CD Audio Track">Windows CD-oudiosnit</entry>
     <entry id="38" string="All Files">Alle lêers</entry>
     <entry id="39" string="You did not select a track!">Jy het nie 'n snit gekies nie!</entry>
-    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Die enkoderingsproses is nog aan die gang!&#10; Wil jy regtig ophou?</entry>
+    <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Die enkoderingsproses is nog aan die gang!&#10;Wil jy regtig ophou?</entry>
     <entry id="41" string="Currently encoding">Tans besig om te enkodeer</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Hierdie program word versprei onder die voorwaardes&#10;van die &quot;GNU General Public License (GPL)&quot;.</entry>
     <entry id="43" string="CDDB query">CDDB-navraag</entry>
@@ -106,7 +106,7 @@
     <entry id="93" string="Quantization">Kwantisering</entry>
     <entry id="94" string="Downsampling ratio">Afwaartse monsterneming</entry>
     <entry id="95" string="Predictor size">Voorspeller grootte</entry>
-    <entry id="96" string="Enable lossless encoding">Plaas verlieslose enkodering in werking </entry>
+    <entry id="96" string="Enable lossless encoding">Plaas verlieslose enkodering in werking</entry>
     <entry id="97" string="Enable Joint Stereo">Plaas medestereo in werking</entry>
     <entry id="98" string="Bitrate per channel:">Biskoers per kanaal:</entry>
     <entry id="99" string="Preselection">Preseleksie</entry>
@@ -139,7 +139,7 @@
     <entry id="126" string="Set maximum VBR bitrate:">Stel maks. VBR-biskoers:</entry>
     <entry id="127" string="Control bits">Kontrole bisse</entry>
     <entry id="128" string="Stream format">Stroomformaat</entry>
-    <entry id="129" string="Enforce strict ISO compliance">Dwing streng ISO nakoming af </entry>
+    <entry id="129" string="Enforce strict ISO compliance">Dwing streng ISO nakoming af</entry>
     <entry id="135" string="Output sampling rate">Uitset monsternemingskoers</entry>
     <entry id="136" string="no resampling">geen hermonsterneming</entry>
     <entry id="137" string="Highpass filter">Hoë deurlaatfilter</entry>
@@ -276,7 +276,7 @@
     <entry id="272" string="Write ID3v1 tags">Skryf ID3v1-etikette</entry>
     <entry id="273" string="Write ID3v2 tags">Skryf ID3v2-etikette</entry>
     <entry id="274" string="Write Vorbis Comment tags">Skryf Vorbis-kommentaaretikette</entry>
-    <entry id="275" string="Write MP4 metadata info">Skryf MP4 metadata-info </entry>
+    <entry id="275" string="Write MP4 metadata info">Skryf MP4 metadata-info</entry>
     <entry id="276" string="ID3v1 tag encoding:">ID3v1 etiket-enkodering:</entry>
     <entry id="277" string="ID3v2 tag encoding:">ID3v2 etiket-enkodering:</entry>
     <entry id="278" string="Vorbis Comment tag encoding:">Vorbis kommentaaretiket-enkodering:</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD-informasie</entry>
     <entry id="379" string="Read CD Text">Lees die CD-teks</entry>
     <entry id="380" string="Read cdplayer.ini">Lees cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodisasie</entry>
-    <entry id="382" string="Apodization function(s):">Apodisasiefunksie(s):</entry>
+    <entry id="381" string="Signal processing">Apodisasie</entry>
+    <entry id="382" string="Window function(s):">Apodisasiefunksie(s):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Jy kan meerdere funksies, geskei deur kommapunte, spesifiseer.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 kan outomaties tydens aanskakeling&#10;kontroleer of daar opgraderings is.&#10;&#10;Wil jy hê dat %1 dit doen?</entry>
     <entry id="385" string="Cannot access input file: %1">Kan nie toegang tot invoerlêer kry nie: %1</entry>
@@ -406,7 +406,7 @@
     <entry id="402" string="Use VBR encoding">Gebruik VBR-enkodering</entry>
     <entry id="403" string="Use 2-pass encoding">Gebruik &quot;2-pass&quot;-enkodering</entry>
     <entry id="404" string="Target bitrate">Teikenbiskoers</entry>
-    <entry id="405" string="Set drive speed limit:">Stel aandrywerspoedlimiet</entry>
+    <entry id="405" string="Set drive speed limit:">Stel aandrywerspoedlimiet:</entry>
     <entry id="406" string="Support this project">Help hierdie projek</entry>
     <entry id="407" string="Please support this project!">Help asseblief hierdie projek!</entry>
     <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Help asseblief om hierdie sagteware gratis te hou deur die %1 projek&#10;met 'n donasie te ondersteun.&#10;&#10;Klik op een van die knoppies hieronder om 'n donasie te maak via PayPal:</entry>

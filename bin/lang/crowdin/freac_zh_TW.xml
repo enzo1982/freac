@@ -30,7 +30,7 @@
     <entry id="17" string="Selected encoder:">目前的編碼器：</entry>
     <entry id="18" string="File progress:">檔案進度：</entry>
     <entry id="19" string="Output dir.:">輸出資料夾：</entry>
-    <entry id="20" string="%1 file(s) in joblist (%2 min):">工作清單有 %1 個檔案 (%2 分鐘)</entry>
+    <entry id="20" string="%1 file(s) in joblist (%2 min):">工作清單有 %1 個檔案 (%2 分鐘)：</entry>
     <entry id="21" string="none">無</entry>
     <entry id="22" string="Help topics...">說明主題...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">新增音訊檔案</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD 資訊</entry>
     <entry id="379" string="Read CD Text">讀取 CD 資訊</entry>
     <entry id="380" string="Read cdplayer.ini">讀取 cdplayer.ini</entry>
-    <entry id="381" string="Apodization">切趾法</entry>
-    <entry id="382" string="Apodization function(s):">切趾函數：</entry>
+    <entry id="381" string="Signal processing">訊號處理</entry>
+    <entry id="382" string="Window function(s):">窗函數：</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">您可以使用分號 (;) 來分別指定多種函數。</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 能在啟動時自動檢查更新。&#10;&#10;&#10;請問您想要 %1 在啟動時檢查更新嗎？</entry>
     <entry id="385" string="Cannot access input file: %1">無法存取輸入檔案：%1</entry>

@@ -339,7 +339,7 @@
     <entry id="335" string="User name:">Nom d'usuari:</entry>
     <entry id="336" string="Password:">Contrasenya:</entry>
     <entry id="337" string="Delete original files after encoding">Eliminar els arxius originals a l'acabar la codificació</entry>
-    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Esta opció elimina els arxius originals a l'acabar &#10;la codificació!&#10;&#10;Està vosté segur d'activar esta funció?</entry>
+    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Esta opció elimina els arxius originals a l'acabar&#10;la codificació!&#10;&#10;Està vosté segur d'activar esta funció?</entry>
     <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">El protocol CDDBP de freedb no pot ser utilitzat a través&#10;d'un servidor proxy HTTP!&#10;&#10;Desitja canviar el protocol a HTTP?</entry>
     <entry id="340" string="Playlists">Llistes de reproducció</entry>
     <entry id="341" string="Create playlists">Generar llistes de reproducció</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">Informació del CD</entry>
     <entry id="379" string="Read CD Text">Llegir CD Text</entry>
     <entry id="380" string="Read cdplayer.ini">Llegir cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodización</entry>
-    <entry id="382" string="Apodization function(s):">Funció(és) d'apodización:</entry>
+    <entry id="381" string="Signal processing">Apodización</entry>
+    <entry id="382" string="Window function(s):">Funció(és) d'apodización:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Separe funcions múltiples amb punt i coma.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 pot buscar actualitzacions automàticament&#10;cada vegada que s'inicia.&#10;&#10;Desitja que %1 busque actualitzacions a l'inici?</entry>
     <entry id="385" string="Cannot access input file: %1">No es pot accedir a l'arxiu d'entrada: %1</entry>

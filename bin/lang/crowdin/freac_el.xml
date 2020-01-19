@@ -19,7 +19,7 @@
     <entry id="6" string="Clear joblist">Καθαρισμός Λίστας Εργασίας</entry>
     <entry id="7" string="Exit">Έξοδος</entry>
     <entry id="8" string="General settings...">Γενικές ρυθμίσεις...</entry>
-    <entry id="9" string="Configure selected encoder...">Ρύθμιση επιλεγμένου κωδικοποιητή</entry>
+    <entry id="9" string="Configure selected encoder...">Ρύθμιση επιλεγμένου κωδικοποιητή...</entry>
     <entry id="10" string="Audio file(s)">Αρχείο(α) ήχου</entry>
     <entry id="11" string="Audio CD contents">Περιεχόμενα CD ήχου</entry>
     <entry id="12" string="Start encoding">Έναρξη κωδικοποίησης</entry>
@@ -73,7 +73,7 @@
     <entry id="60" string="Encoder">Κωδικοποιητής</entry>
     <entry id="61" string="Output folder">Φάκελος αποθήκευσης</entry>
     <entry id="62" string="Browse">Εξερεύνηση</entry>
-    <entry id="63" string="Select the folder in which the encoded files will be placed:">Επιλέξτε φάκελο τοποθέτησης των κωδικοποιημένων αρχέιων: </entry>
+    <entry id="63" string="Select the folder in which the encoded files will be placed:">Επιλέξτε φάκελο τοποθέτησης των κωδικοποιημένων αρχέιων:</entry>
     <entry id="64" string="Encoding">Κωδικοποίηση</entry>
     <entry id="65" string="Author"/>
     <entry id="66" string="URL"/>
@@ -171,7 +171,7 @@
     <entry id="163" string="Extended CDDB settings">Εκτεταμένες επιλογές CDDB</entry>
     <entry id="164" string="CGI scripts">CGI scripts</entry>
     <entry id="165" string="CDDB query script:">Script για ερώτηση CDDB:</entry>
-    <entry id="166" string="CDDB submit script:">Script για καταχώρηση CDDB</entry>
+    <entry id="166" string="CDDB submit script:">Script για καταχώρηση CDDB:</entry>
     <entry id="167" string="HTTP settings">Ρυθμίσεις HTTP</entry>
     <entry id="168" string="Proxy settings">Ρυθμίσεις Proxy</entry>
     <entry id="169" string="no proxy">Όχι proxy</entry>
@@ -279,7 +279,7 @@
     <entry id="275" string="Write MP4 metadata info">Εγγραφή πληροφοριών MP4 metadata</entry>
     <entry id="276" string="ID3v1 tag encoding:">Κωδικοποίηση ID3v1 tag:</entry>
     <entry id="277" string="ID3v2 tag encoding:">Κωδικοποίηση ID3v2 tag:</entry>
-    <entry id="278" string="Vorbis Comment tag encoding:">Κωδικοποίηση tag σχολίων Vorbis </entry>
+    <entry id="278" string="Vorbis Comment tag encoding:">Κωδικοποίηση tag σχολίων Vorbis:</entry>
     <entry id="279" string="MP4 metadata encoding:">Κωδικοποίηση MP4 metadata:</entry>
     <entry id="280" string="Tag encodings">Κωδικοποίηση tag</entry>
     <entry id="281" string="Update joblist with this information">Ενημέρωση λίστας εργασιών με αυτές τις πληροφορίες</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">Πληροφορίες CD</entry>
     <entry id="379" string="Read CD Text">Ανάγνωση CD Text</entry>
     <entry id="380" string="Read cdplayer.ini">Ανάγνωση cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodization</entry>
-    <entry id="382" string="Apodization function(s):">Λειτουργία(ες) apodization:</entry>
+    <entry id="381" string="Signal processing">Apodization</entry>
+    <entry id="382" string="Window function(s):">Λειτουργία(ες) apodization:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Μπορείτε να ορίσετε πολλαπλές λειτουργίες χωρισμένες με ερωτηματικά.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">Το %1 μπορεί να κάνει αυτόματο έλεγχο για&#10;ενημερώσεις στην εκκίνηση.&#10;&#10;Θέλετε να γίνεται έλεγχος για ενημερώσεις στην εκκίνηση;</entry>
     <entry id="385" string="Cannot access input file: %1">Αδύνατη πρόσβαση στο αρχείο εισόδου: %1</entry>

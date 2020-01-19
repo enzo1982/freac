@@ -18,7 +18,7 @@
     <entry id="5" string="Remove">Remover</entry>
     <entry id="6" string="Clear joblist">Limpar a fila de trabalho</entry>
     <entry id="7" string="Exit">Sair</entry>
-    <entry id="8" string="General settings...">Configurações</entry>
+    <entry id="8" string="General settings...">Configurações...</entry>
     <entry id="9" string="Configure selected encoder...">Configurar codificador selecionado...</entry>
     <entry id="10" string="Audio file(s)">Arquivo(s) de áudio</entry>
     <entry id="11" string="Audio CD contents">Conteúdo do CD de áudio</entry>
@@ -171,7 +171,7 @@
     <entry id="163" string="Extended CDDB settings">Opções extras do CDDB</entry>
     <entry id="164" string="CGI scripts">Script CGI</entry>
     <entry id="165" string="CDDB query script:">Script de pesquisa no CDDB:</entry>
-    <entry id="166" string="CDDB submit script:">Script de envio ao CDDB</entry>
+    <entry id="166" string="CDDB submit script:">Script de envio ao CDDB:</entry>
     <entry id="167" string="HTTP settings">Opções HTTP</entry>
     <entry id="168" string="Proxy settings">Opções de proxy</entry>
     <entry id="169" string="no proxy">sem proxy</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">Informações do CD:</entry>
     <entry id="379" string="Read CD Text">Ler o CD-Text</entry>
     <entry id="380" string="Read cdplayer.ini">Ler cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodização</entry>
-    <entry id="382" string="Apodization function(s):">Funções de apodização:</entry>
+    <entry id="381" string="Signal processing">Processamento de sinal</entry>
+    <entry id="382" string="Window function(s):">Função(ões) de janela:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Pode-se especificar várias funções separadas por ponto e vírgula.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">Ao iniciar, o %1 pode verificar automaticamente&#10;se há alguma atualização disponível.&#10;&#10;Deseja que o %1 verifique as atualizações&#10;automaticamente ao iniciar?</entry>
     <entry id="385" string="Cannot access input file: %1">Sem acesso ao arquivo: %1</entry>

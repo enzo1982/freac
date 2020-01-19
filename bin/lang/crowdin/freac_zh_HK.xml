@@ -78,7 +78,7 @@
     <entry id="65" string="Author">譯者</entry>
     <entry id="66" string="URL">網址</entry>
     <entry id="67" string="Information">資訊</entry>
-    <entry id="68" string="Select language:">選取語言</entry>
+    <entry id="68" string="Select language:">選取語言：</entry>
     <entry id="69" string="Active CD-ROM drive">可用的CD-ROM機</entry>
     <entry id="70" string="Ripper settings">翻錄設定</entry>
     <entry id="71" string="Activate cdparanoia mode:">啟用cdparanoia模式：</entry>
@@ -193,7 +193,7 @@
     <entry id="189" string="Album">專輯</entry>
     <entry id="190" string="Info tags">標籤</entry>
     <entry id="191" string="Default information">預設資訊</entry>
-    <entry id="192" string="Default comment string:">預設評註字串</entry>
+    <entry id="192" string="Default comment string:">預設評註字串：</entry>
     <entry id="193" string="unknown artist">未知演出者</entry>
     <entry id="194" string="unknown title">未知標題</entry>
     <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">無法載入ASPI驅動程式，翻錄鐳射唱片功能被停用。</entry>
@@ -291,7 +291,7 @@
     <entry id="287" string="Playlist Files">播放清單檔案</entry>
     <entry id="288" string="unknown year">未知年份</entry>
     <entry id="289" string="Could not initialize %1 encoder! Please check the configuration!">無法初始化%1編碼器。請檢查設定。</entry>
-    <entry id="290" string="Blocksize:">壓件大小</entry>
+    <entry id="290" string="Blocksize:">壓件大小：</entry>
     <entry id="291" string="Use streamable subset">使用可串流子集</entry>
     <entry id="292" string="Adaptive Joint Stereo">適應型聯合立體聲</entry>
     <entry id="293" string="Fastest encoding">快速編碼</entry>
@@ -315,7 +315,7 @@
     <entry id="311" string="Add files by pattern">按式樣加入檔案</entry>
     <entry id="312" string="Pattern">式樣</entry>
     <entry id="313" string="Start folder">起首路徑</entry>
-    <entry id="314" string="No files found matching pattern:">無檔案包含相符式樣</entry>
+    <entry id="314" string="No files found matching pattern:">無檔案包含相符式樣：</entry>
     <entry id="315" string="Edit language file">編輯語言檔</entry>
     <entry id="316" string="Use for all selected tracks">用於所選曲目</entry>
     <entry id="317" string="Interpret string as">字串詮釋為</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD資訊</entry>
     <entry id="379" string="Read CD Text">讀取CD文字</entry>
     <entry id="380" string="Read cdplayer.ini">讀取cdplayer.ini</entry>
-    <entry id="381" string="Apodization">訊號處理</entry>
-    <entry id="382" string="Apodization function(s):">視窗功能：</entry>
+    <entry id="381" string="Signal processing">訊號處理</entry>
+    <entry id="382" string="Window function(s):">視窗功能：</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">可以指定多個函數，每個函數使用分號來分隔。</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">啟動%1時可自動進行更新檢查。&#10;&#10;要求%1於啟動時自動檢查更新嗎？</entry>
     <entry id="385" string="Cannot access input file: %1">無法存取原始檔案：%1</entry>

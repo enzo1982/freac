@@ -18,8 +18,8 @@
     <entry id="5" string="Remove">Eltávolítás</entry>
     <entry id="6" string="Clear joblist">Mindet töröl</entry>
     <entry id="7" string="Exit">Befejezés</entry>
-    <entry id="8" string="General settings...">Általános beállítások</entry>
-    <entry id="9" string="Configure selected encoder...">Választott tömörítö beállítása</entry>
+    <entry id="8" string="General settings...">Általános beállítások...</entry>
+    <entry id="9" string="Configure selected encoder...">Választott tömörítö beállítása...</entry>
     <entry id="10" string="Audio file(s)">Audio fájl(ok)</entry>
     <entry id="11" string="Audio CD contents">Audio CD tartalma</entry>
     <entry id="12" string="Start encoding">Tömörítés indítása</entry>
@@ -33,7 +33,7 @@
     <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 fájl(ok) a listán (%2 min):</entry>
     <entry id="21" string="none">nincs</entry>
     <entry id="22" string="Help topics...">Segítség fejezetek...</entry>
-    <entry id="23" string="Add audio file(s) to the joblist">Audiofájlok hozzáadása a listához </entry>
+    <entry id="23" string="Add audio file(s) to the joblist">Audiofájlok hozzáadása a listához</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Audio CD tartalma a listához</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Kiválasztott elem törlése a listából</entry>
     <entry id="26" string="Clear the entire joblist">Teljes lista törlése</entry>
@@ -81,7 +81,7 @@
     <entry id="68" string="Select language:">Válassz nyelvet:</entry>
     <entry id="69" string="Active CD-ROM drive">Aktív CD-ROM meghajtó</entry>
     <entry id="70" string="Ripper settings">Másoló beállítások</entry>
-    <entry id="71" string="Activate cdparanoia mode:">CdParanoia mód be</entry>
+    <entry id="71" string="Activate cdparanoia mode:">CdParanoia mód be:</entry>
     <entry id="72" string="Activate jitter correction">Jitter korrekció be</entry>
     <entry id="73" string="Swap left/right channel">Csatornák felcserélése</entry>
     <entry id="74" string="Lock CD tray while ripping">Tálca zárás másoláskor</entry>
@@ -167,7 +167,7 @@
     <entry id="159" string="No exact matches found">Nem találtam pontos megfelelelö</entry>
     <entry id="160" string="Multiple matches found">Több azonosságot találtam</entry>
     <entry id="161" string="Matches">Találatok</entry>
-    <entry id="162" string="Select the entry that best fits your CD:">Válassza ki a CD-nek leginkább megfelelö bejegyzést</entry>
+    <entry id="162" string="Select the entry that best fits your CD:">Válassza ki a CD-nek leginkább megfelelö bejegyzést:</entry>
     <entry id="163" string="Extended CDDB settings">Részletes CDDB beállítások</entry>
     <entry id="164" string="CGI scripts">CGI Scripts</entry>
     <entry id="165" string="CDDB query script:">CDDB kezdö script:</entry>
@@ -222,7 +222,7 @@
     <entry id="218" string="Cannot start encoding while playing a file!">Lejátszás alatt nem lehet tömöríteni!</entry>
     <entry id="219" string="Enable remote CDDB database">Távoli CDDB adatbázis engedélyezése</entry>
     <entry id="220" string="ATH">ATH</entry>
-    <entry id="221" string="Enable ATH:">ATH aktiválása</entry>
+    <entry id="221" string="Enable ATH:">ATH aktiválása:</entry>
     <entry id="222" string="Use default setting">Alapbeállítások használata</entry>
     <entry id="223" string="Psycho acoustic model">Pszichoakusztikai modell</entry>
     <entry id="224" string="Use Temporal Masking Effect">Idöbeli maszkolás használata</entry>
@@ -284,8 +284,8 @@
     <entry id="280" string="Tag encodings">Megjegyzés kódolása</entry>
     <entry id="281" string="Update joblist with this information">Feladatlista bővítése ezzel az infóval</entry>
     <entry id="282" string="unknown genre">ismeretlen műfaj</entry>
-    <entry id="283" string="Load joblist...">Feladatlista betöltés</entry>
-    <entry id="284" string="Save joblist...">Feladatlista mentés</entry>
+    <entry id="283" string="Load joblist...">Feladatlista betöltés...</entry>
+    <entry id="284" string="Save joblist...">Feladatlista mentés...</entry>
     <entry id="285" string="Pause/resume encoding">Tömörítés szünet/folytatás</entry>
     <entry id="286" string="Shutdown after encoding">Lekapcsolás a tömörítés végén</entry>
     <entry id="287" string="Playlist Files">Lejátszási listák</entry>
@@ -329,7 +329,7 @@
     <entry id="325" string="Status">Státusz</entry>
     <entry id="326" string="Successfully read CD!">Sikeres CD beolvasás!</entry>
     <entry id="327" string="Comment">Megjegyzés</entry>
-    <entry id="328" string="Manage CDDB cache entries...">CDDB cache bejegyzések rendezése</entry>
+    <entry id="328" string="Manage CDDB cache entries...">CDDB cache bejegyzések rendezése...</entry>
     <entry id="329" string="Save entry">Bejegyzés mentése</entry>
     <entry id="330" string="Remove entry">Bejegyzés törlése</entry>
     <entry id="331" string="Disc name">Lemez neve</entry>
@@ -339,7 +339,7 @@
     <entry id="335" string="User name:">Felhasználó neve:</entry>
     <entry id="336" string="Password:">Jelszó:</entry>
     <entry id="337" string="Delete original files after encoding">Eredeti fájlok törlése tömörítés után</entry>
-    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ez a beállítás letörli az eredeti fájlokat a kódolás&#10;után. Biztos folytatja a műveletet? </entry>
+    <entry id="338" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Ez a beállítás letörli az eredeti fájlokat a kódolás&#10;után. Biztos folytatja a műveletet?</entry>
     <entry id="339" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">A freedb CDDBP protokoll nem használható HTTP&#10;Forward proxi-k esetén!&#10;&#10;Szeretné megváltotratni a protokollt HTTP-re?</entry>
     <entry id="340" string="Playlists">Lejátszási lista</entry>
     <entry id="341" string="Create playlists">Lejátszási lista készítés</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CI információ</entry>
     <entry id="379" string="Read CD Text">CD-Text beolvasás</entry>
     <entry id="380" string="Read cdplayer.ini">cdplayer.ini beolvasás</entry>
-    <entry id="381" string="Apodization">Apodizáció</entry>
-    <entry id="382" string="Apodization function(s):">Apodizációs funkció(k):</entry>
+    <entry id="381" string="Signal processing">Apodizáció</entry>
+    <entry id="382" string="Window function(s):">Apodizációs funkció(k):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Több, oszlopba rendezett funkciót is választhatsz.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">A %1 önállóan képes a program újabb verziójának&#10;online keresésére induláskor.&#10;&#10;Szeretnéd, ha a %1 frissítést keresne induláskor?</entry>
     <entry id="385" string="Cannot access input file: %1">A forrás fájl nem elérhető: %1</entry>

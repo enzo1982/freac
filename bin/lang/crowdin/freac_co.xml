@@ -228,7 +228,7 @@
     <entry id="224" string="Use Temporal Masking Effect">Impiega l'Effettu di Maschera Tempurale</entry>
     <entry id="225" string="Expert">Espertu</entry>
     <entry id="226" string="Cannot configure encoder while encoding!">Ùn pò micca cunfigurà un cudificatore durante a cudificazione !</entry>
-    <entry id="227" string="The output folder does not exist! Do you want to create it?">U cartulare di destinazione ùn esiste micca !  Vulete creallu ?</entry>
+    <entry id="227" string="The output folder does not exist! Do you want to create it?">U cartulare di destinazione ùn esiste micca ! Vulete creallu ?</entry>
     <entry id="228" string="Filename pattern">Mudellu di nome di schedariu</entry>
     <entry id="229" string="unknown album">albumu scunnisciutu</entry>
     <entry id="230" string="Translated by %1.">Traduttu da %1.</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">Infurmazione CD</entry>
     <entry id="379" string="Read CD Text">Leghje Testu di CD</entry>
     <entry id="380" string="Read cdplayer.ini">Leghje cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodisazione</entry>
-    <entry id="382" string="Apodization function(s):">Funzione(i) d'apodisazione :</entry>
+    <entry id="381" string="Signal processing">Trattamentu di u signale</entry>
+    <entry id="382" string="Window function(s):">Funzione(i) di finestra (apodisazione) :</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Pudete specificà parechje funzioni staccate da punti virgule.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 pò cuntrollà autumaticamente à u principiu&#10;i rinnovi inlinea di u prugramma.&#10;&#10;Vulete chì %1 cerchi i rinnovi à u principiu ?</entry>
     <entry id="385" string="Cannot access input file: %1">Ùn pò micca accede à u schedariu d'entrata : %1</entry>

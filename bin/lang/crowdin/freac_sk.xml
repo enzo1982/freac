@@ -160,7 +160,7 @@
     <entry id="152" string="Info">Info</entry>
     <entry id="153" string="No freedb entry for this disk.">Nepodarilo sa načítať názvy skladieb, pretože tento disk nie je v databáze freedb.</entry>
     <entry id="154" string="Some error occurred trying to connect to the freedb server.">Počas pokusu o spojenie s freedb serverom došlo k chybe.</entry>
-    <entry id="155" string="Connecting to freedb server at">Pripájam sa k freedb serveru </entry>
+    <entry id="155" string="Connecting to freedb server at">Pripájam sa k freedb serveru</entry>
     <entry id="156" string="Requesting CD information">Požadujem CD info</entry>
     <entry id="157" string="eMail address:">e-mail adresa:</entry>
     <entry id="158" string="Please enter a valid eMail address.">Prosím, zadajte správnu e-mail adresu.</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD info</entry>
     <entry id="379" string="Read CD Text">Prečítať CD text</entry>
     <entry id="380" string="Read cdplayer.ini">Prečítať cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodizácia</entry>
-    <entry id="382" string="Apodization function(s):">Apodizačná funkcia</entry>
+    <entry id="381" string="Signal processing">Spracovanie signálu</entry>
+    <entry id="382" string="Window function(s):">Window funkcia(ie):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Môžete špecifikovať viacero funkcií oddelených bodkočiarkou.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 môže automaticky zistiť online updaty&#10;pri štarte programu.&#10;&#10;Želáte si aby %1 zisťoval pri štarte updaty?</entry>
     <entry id="385" string="Cannot access input file: %1">Nemožno pristupovať k súboru: %1</entry>

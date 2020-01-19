@@ -18,7 +18,7 @@
     <entry id="5" string="Remove">Sil</entry>
     <entry id="6" string="Clear joblist">Görev listesini temizle</entry>
     <entry id="7" string="Exit">Çıkış</entry>
-    <entry id="8" string="General settings...">Genel ayarlar</entry>
+    <entry id="8" string="General settings...">Genel ayarlar...</entry>
     <entry id="9" string="Configure selected encoder...">Seçilen çeviriciyi ayarla...</entry>
     <entry id="10" string="Audio file(s)">Ses dosyaları</entry>
     <entry id="11" string="Audio CD contents">Ses cdsi içeriği</entry>
@@ -32,7 +32,7 @@
     <entry id="19" string="Output dir.:">Kaydedilecek yer:</entry>
     <entry id="20" string="%1 file(s) in joblist (%2 min):">Görev listesinde %1 dosya var (%2 min):</entry>
     <entry id="21" string="none">Hiçbiri</entry>
-    <entry id="22" string="Help topics...">Yardım konuları</entry>
+    <entry id="22" string="Help topics...">Yardım konuları...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Görev listesine ses dosyası ekle</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Görev listesine Cd den dosya ekle</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Seçili olanı görev listesinden çıkar</entry>
@@ -329,7 +329,7 @@
     <entry id="325" string="Status">Durum</entry>
     <entry id="326" string="Successfully read CD!">CD okuma başarılı!</entry>
     <entry id="327" string="Comment">Yorum</entry>
-    <entry id="328" string="Manage CDDB cache entries...">CDDB önbelleğini yönet</entry>
+    <entry id="328" string="Manage CDDB cache entries...">CDDB önbelleğini yönet...</entry>
     <entry id="329" string="Save entry">Girişi kaydet</entry>
     <entry id="330" string="Remove entry">Girişi sil</entry>
     <entry id="331" string="Disc name">Disk adı</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD Bilgisi</entry>
     <entry id="379" string="Read CD Text">CD Metnini Oku</entry>
     <entry id="380" string="Read cdplayer.ini">cdplayer.ini dosyasını oku</entry>
-    <entry id="381" string="Apodization">Düzeltme</entry>
-    <entry id="382" string="Apodization function(s):">Düzeltme fonksiyonu(ları):</entry>
+    <entry id="381" string="Signal processing">Düzeltme</entry>
+    <entry id="382" string="Window function(s):">Düzeltme fonksiyonu(ları):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Noktalı virgülle ayırarak birden çok fonksiyon kullanabilirsiniz</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 güncellemeleri program başlangıcında otomatik&#10;olarak denetleyebilir.&#10;&#10;Program başlangıcında güncellemeleri otomatik denetlemek ister misiniz?</entry>
     <entry id="385" string="Cannot access input file: %1">Çevrilecek dosyaya erişilemiyor: %1</entry>

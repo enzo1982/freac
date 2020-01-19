@@ -358,7 +358,7 @@
     <entry id="354" string="CDDB path:"/>
     <entry id="355" string="Select the folder of the CDDB database:">בחר תיקייה למידע הדיסק:</entry>
     <entry id="356" string="File already exists">קובץ כבר קיים</entry>
-    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">הקובץ %1 כבר קיים&#10; האם לדרוס אותו ?</entry>
+    <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">הקובץ %1 כבר קיים&#10;האם לדרוס אותו ?</entry>
     <entry id="358" string="Overwrite all further files">דרוס את כל הקבצים להבא</entry>
     <entry id="359" string="Start ripping automatically">התחל המרה באופן אוטומטי</entry>
     <entry id="360" string="Submit to online database later"/>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information"/>
     <entry id="379" string="Read CD Text"/>
     <entry id="380" string="Read cdplayer.ini"/>
-    <entry id="381" string="Apodization"/>
-    <entry id="382" string="Apodization function(s):"/>
+    <entry id="381" string="Signal processing"/>
+    <entry id="382" string="Window function(s):"/>
     <entry id="383" string="You can specify multiple functions separated by semicolons."/>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?"/>
     <entry id="385" string="Cannot access input file: %1"/>

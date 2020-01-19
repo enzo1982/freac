@@ -155,7 +155,7 @@
     <entry id="147" string="Bonk Files">Fitxers d'Àudio Bonk</entry>
     <entry id="148" string="Automatic CDDB queries">Consultes CDDB automàtiques</entry>
     <entry id="149" string="CDDB access mode:">Mode d'accés CDDB:</entry>
-    <entry id="150" string="CDDB server:">Servidor CDDB</entry>
+    <entry id="150" string="CDDB server:">Servidor CDDB:</entry>
     <entry id="151" string="Port:">Port:</entry>
     <entry id="152" string="Info">Info</entry>
     <entry id="153" string="No freedb entry for this disk.">No hi ha un registre freedb d'aquest CD</entry>
@@ -178,7 +178,7 @@
     <entry id="170" string="Proxy type:">Tipus de proxy:</entry>
     <entry id="171" string="Proxy server:">Servidor proxy:</entry>
     <entry id="172" string="Presets">Preconfiguracions</entry>
-    <entry id="173" string="Use preset:">Usar preconfiguració</entry>
+    <entry id="173" string="Use preset:">Usar preconfiguració:</entry>
     <entry id="174" string="Custom settings">Configuracions personals</entry>
     <entry id="179" string="Medium, Fast">Mig, Ràpid</entry>
     <entry id="180" string="Standard, Fast">Estàndar, Ràpid</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">Informacions del CD</entry>
     <entry id="379" string="Read CD Text">Llegir el CD-Text</entry>
     <entry id="380" string="Read cdplayer.ini">Llegir cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodització</entry>
-    <entry id="382" string="Apodization function(s):">Funció(és) de apodització:</entry>
+    <entry id="381" string="Signal processing">Apodització</entry>
+    <entry id="382" string="Window function(s):">Funció(és) de apodització:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Pot especificar diverses funcions separades per punt i coma.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 pot buscar actualitzacions automàticament cada vegada que s'inicia.Desitja que %1 busqui actualitzacions a l'inici?</entry>
     <entry id="385" string="Cannot access input file: %1">No s'ha pogut accedir a l'arxiu d'entrada.</entry>

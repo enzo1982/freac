@@ -19,7 +19,7 @@
     <entry id="6" string="Clear joblist">Ryd jobliste</entry>
     <entry id="7" string="Exit">Afslut</entry>
     <entry id="8" string="General settings...">Generelle indstillinger...</entry>
-    <entry id="9" string="Configure selected encoder...">Indstil den valgte koder</entry>
+    <entry id="9" string="Configure selected encoder...">Indstil den valgte koder...</entry>
     <entry id="10" string="Audio file(s)">Lyd fil(er)</entry>
     <entry id="11" string="Audio CD contents">Lyd CD indhold</entry>
     <entry id="12" string="Start encoding">Begynd kodning</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD information</entry>
     <entry id="379" string="Read CD Text">Læs CD Tekst</entry>
     <entry id="380" string="Read cdplayer.ini">Læs cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodization</entry>
-    <entry id="382" string="Apodization function(s):">Apodization funktion(er):</entry>
+    <entry id="381" string="Signal processing">Signal Processing</entry>
+    <entry id="382" string="Window function(s):">Vindue funktion(er):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Du kan angive flere funktioner sepearet af semi kolons.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 kan udføre automatisk check online efter program opdateringer ved opstart.&#10;&#10;Vil du have %1 til at kigge efter opdateringer ved opstart?</entry>
     <entry id="385" string="Cannot access input file: %1">Kan ikke få adgang til den indlæste fil: %1</entry>
@@ -407,14 +407,14 @@
     <entry id="403" string="Use 2-pass encoding">Brug 2-pass kodning</entry>
     <entry id="404" string="Target bitrate">Mål bitrate</entry>
     <entry id="405" string="Set drive speed limit:">Sæt drev hastigheds begrænsning:</entry>
-    <entry id="406" string="Support this project"/>
-    <entry id="407" string="Please support this project!"/>
-    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
-    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
+    <entry id="406" string="Support this project">Støt projektet</entry>
+    <entry id="407" string="Please support this project!">Venligst støt projektet!</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Hjælp med at holde dette program gratis ved at støtte %1 projektet med en&#10;donation.&#10;&#10;Tryk på knappen for at lave en donation med PayPal:</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Du kan også sende pengene til %1 med PayPal.&#10;&#10;Skriv til %1 hvis du ønsker at sende en check eller sende&#10;penge med posten.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en"/>
-    <entry id="412" string="Thank you very much!"/>
-    <entry id="413" string="Remind me later"/>
+    <entry id="411" string="en">en</entry>
+    <entry id="412" string="Thank you very much!">Tusind tab!</entry>
+    <entry id="413" string="Remind me later">Påmind mig senere</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">CDRip</entry>
     <entry id="416" string="Default">Standard</entry>

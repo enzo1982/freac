@@ -32,7 +32,7 @@
     <entry id="19" string="Output dir.:">Destinazione:</entry>
     <entry id="20" string="%1 file(s) in joblist (%2 min):">%1 file da elaborare (%2 min):</entry>
     <entry id="21" string="none">nessuno</entry>
-    <entry id="22" string="Help topics...">Guida in linea</entry>
+    <entry id="22" string="Help topics...">Guida in linea...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Aggiungi file audio all'elenco</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Aggiungi brani da CD audio all'elenco</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Rimuovi le voci selezionate in elenco</entry>
@@ -81,7 +81,7 @@
     <entry id="68" string="Select language:">Scegli la lingua:</entry>
     <entry id="69" string="Active CD-ROM drive">Unità CD predefinita</entry>
     <entry id="70" string="Ripper settings">Impostazioni estrazione dati audio</entry>
-    <entry id="71" string="Activate cdparanoia mode:">Attiva modalità paranoia</entry>
+    <entry id="71" string="Activate cdparanoia mode:">Attiva modalità paranoia:</entry>
     <entry id="72" string="Activate jitter correction">Attiva correzione Jitter</entry>
     <entry id="73" string="Swap left/right channel">Inverti canali destro e sinistro</entry>
     <entry id="74" string="Lock CD tray while ripping">Blocca vassoio CD</entry>
@@ -198,7 +198,7 @@
     <entry id="194" string="unknown title">titolo sconosciuto</entry>
     <entry id="195" string="Unable to load ASPI drivers! CD ripping disabled!">Impossibile caricare i driver ASPI! Estrazione dati audio da CD disattivata!</entry>
     <entry id="196" string="Database">CDDB</entry>
-    <entry id="197" string="Submit CDDB data...">Invia dati CDDB</entry>
+    <entry id="197" string="Submit CDDB data...">Invia dati CDDB...</entry>
     <entry id="198" string="Enable CDDB cache">Attiva cache CDDB</entry>
     <entry id="199" string="CDDB data">Dati CDDB</entry>
     <entry id="200" string="Submit">Invia</entry>
@@ -356,7 +356,7 @@
     <entry id="352" string="Skip">Ignora</entry>
     <entry id="353" string="Enable local CDDB database">Attiva database CDDB locale</entry>
     <entry id="354" string="CDDB path:">Cartella CDDB:</entry>
-    <entry id="355" string="Select the folder of the CDDB database:">Seleziona la cartella del database CDDB.</entry>
+    <entry id="355" string="Select the folder of the CDDB database:">Seleziona la cartella del database CDDB:</entry>
     <entry id="356" string="File already exists">Il file esiste già</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Il file di destinazione %1&#10;esiste già. Vuoi sovrascriverlo?</entry>
     <entry id="358" string="Overwrite all further files">Sovrascrivi tutti i file</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">Informazioni CD</entry>
     <entry id="379" string="Read CD Text">Leggi CD Text</entry>
     <entry id="380" string="Read cdplayer.ini">Leggi cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodizzazione</entry>
-    <entry id="382" string="Apodization function(s):">Funzioni di apodizzazione:</entry>
+    <entry id="381" string="Signal processing">Apodizzazione</entry>
+    <entry id="382" string="Window function(s):">Funzioni di apodizzazione:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">È possibile specificare più funzioni separate da punto e virgola.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">All'avvio, è possibile verificare automaticamente la&#10;disponibilità di aggiornamenti di %1.&#10;&#10;Vuoi verificare la disponibilità di aggiornamenti all'avvio?</entry>
     <entry id="385" string="Cannot access input file: %1">Impossibile accedere al file sorgente: %1</entry>

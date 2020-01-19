@@ -32,7 +32,7 @@
     <entry id="19" string="Output dir.:">Výstupní složka:</entry>
     <entry id="20" string="%1 file(s) in joblist (%2 min):">Soubor(y) ke zpracování: %1 (%2 min hudby)</entry>
     <entry id="21" string="none">žádný</entry>
-    <entry id="22" string="Help topics...">Uživatelská příručka</entry>
+    <entry id="22" string="Help topics...">Uživatelská příručka...</entry>
     <entry id="23" string="Add audio file(s) to the joblist">Připojit audio soubor(y) k seznamu</entry>
     <entry id="24" string="Add audio CD contents to the joblist">Připojit ke zpracování obsah CD</entry>
     <entry id="25" string="Remove the selected entry from the joblist">Smazat vybranou položku ze seznamu</entry>
@@ -53,7 +53,7 @@
     <entry id="40" string="The encoding thread is still running! Do you really want to quit?">Proces kódování ještě běží! Chcete přesto program ukončit?</entry>
     <entry id="41" string="Currently encoding">Aktivní proces kódování</entry>
     <entry id="42" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Tento program je šířen pod General Public Lincence (GPL).</entry>
-    <entry id="43" string="CDDB query">Dotaz na CDDB </entry>
+    <entry id="43" string="CDDB query">Dotaz na CDDB</entry>
     <entry id="44" string="About %1">O programu %1</entry>
     <entry id="45" string="No options can be configured for Windows Wave file output!">Pro výstup do Windows Wave souboru není žádná možnost konfigurace!</entry>
     <entry id="46" string="Windows Wave file output">Výstup do Windows Wave souboru</entry>
@@ -85,7 +85,7 @@
     <entry id="72" string="Activate jitter correction">Aktivovat Jitter korekci</entry>
     <entry id="73" string="Swap left/right channel">Prohodit Levý/Pravý kanál</entry>
     <entry id="74" string="Lock CD tray while ripping">Uzamknout CD při ripování</entry>
-    <entry id="75" string="Use native NT SCSI library">Použít NT SCSI DLL </entry>
+    <entry id="75" string="Use native NT SCSI library">Použít NT SCSI DLL</entry>
     <entry id="76" string="Overlap only">Jen překrytí</entry>
     <entry id="77" string="No verify">Neověřovat</entry>
     <entry id="78" string="No scratch repair">Neopravovat škrábance</entry>
@@ -237,11 +237,11 @@
     <entry id="233" string="Toggle selection">Vybrat cíl</entry>
     <entry id="234" string="Show Tip of the Day">Zobrazit tip dne</entry>
     <entry id="235" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 je dostupný v %2 jazycích. Není-li váš jazyk dostupný,&#10;můžete jej lehce vytvořit s využitím aplikace 'smooth Translator'.</entry>
-    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 podporuje kódování LAME, Ogg Vorbis, FAAC, FLAC&#10;a kodek Bonk. VQF kodek najdete na webu %1:&#10; %2</entry>
+    <entry id="236" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Bonk encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 podporuje kódování LAME, Ogg Vorbis, FAAC, FLAC&#10;a kodek Bonk. VQF kodek najdete na webu %1:&#10;%2</entry>
     <entry id="237" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 může použít vstupní pluginy 'Winampu 2' pro podporu&#10;více formátů souborů.&#10;Zkopírujte soubory in_*.dll do složky %1/plugins, aby byly&#10;pro %1 dostupné.</entry>
     <entry id="238" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">S %1 můžete zpracovávat data o CD pro freedb znakovou&#10;sadou Unicode. Máte-li CD s jmény umělce či názvy s diakritikou,&#10;můžete s %1 nabídnout freedb správné (opravené) záznamy.</entry>
     <entry id="239" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the CDRip tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Pro korekci chyb čtení při ripování CD můžete aktivovat&#10;Jitter korekci na záložce Obecná nastavení/CDrip.&#10;Pokud to nepomůže, zkuste aktivovat jeden z Paranoia režimů.</entry>
-    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Máte návrhy na vylepšení %1?&#10;Své nápady pošlete na %1 SourceForge, stránka projektů&#10; %2, nebo na e-mail&#10; %3.</entry>
+    <entry id="240" string="Do you have any suggestions on how to improve %1?&#10;You can submit any ideas through the Tracker on the %1&#10;SourceForge project page - %2&#10;or send an eMail to %3.">Máte návrhy na vylepšení %1?&#10;Své nápady pošlete na %1 SourceForge, stránka projektů&#10;%2, nebo na e-mail&#10;%3.</entry>
     <entry id="241" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Líbí se vám %1? %1 je volně dostupný, ale můžete&#10;nám pomoci podpořit %1-projekt.&#10;Peníze můžete poslat na %2 přes PayPal.&#10;Podívej se na %3 pro více&#10;podrobností.</entry>
     <entry id="242" string="Bitrate / Quality">Bitrate / Kvalita</entry>
     <entry id="243" string="Check for updates now">Zkontrolovat aktualizaci nyní</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD informace</entry>
     <entry id="379" string="Read CD Text">Číst CD text</entry>
     <entry id="380" string="Read cdplayer.ini">Číst cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodizace (zužující funkce při zpracování signálu)</entry>
-    <entry id="382" string="Apodization function(s):">Apodizační funkce</entry>
+    <entry id="381" string="Signal processing">Apodizace (zužující funkce při zpracování signálu)</entry>
+    <entry id="382" string="Window function(s):">Apodizační funkce:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Můžete specifikovat více funkcí oddělených středníkem (;).</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 může automaticky zjistit online aktualizace&#10;při startu programu.&#10;&#10;Přejete si, aby %1 zjišťoval při startu aktualizace?</entry>
     <entry id="385" string="Cannot access input file: %1">Nejde přistupovat k souboru: %1</entry>

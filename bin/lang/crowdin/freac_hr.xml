@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD info</entry>
     <entry id="379" string="Read CD Text">Pročitaj CD tekst</entry>
     <entry id="380" string="Read cdplayer.ini">Pročitaj cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Apodizacija</entry>
-    <entry id="382" string="Apodization function(s):">Funkcije apodizacije:</entry>
+    <entry id="381" string="Signal processing">Obrada signala</entry>
+    <entry id="382" string="Window function(s):">Funkcije prozora:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Možete odrediti više funkcija odvojene sa točka zarezom.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 može automatski provjeriti za update programa&#10;prilikom startanja.&#10;&#10;Želite li da %1 potraži update prilikom startanja?</entry>
     <entry id="385" string="Cannot access input file: %1">Ne mogu pristupiti ulaznoj datoteci: %1</entry>
@@ -395,7 +395,7 @@
     <entry id="391" string="Replace existing comments with default comment">Zamijeni postojeće komentare sa standardnima</entry>
     <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Izabrane datoteke ne mogu se kombinirati u jednu&#10;izlaznu datoteku zbog različitog sample formata.&#10;&#10;Molim pretvorite sve datoteke u datoteke s istim&#10;sample formatom prvo.</entry>
     <entry id="393" string="Write WMA metadata info">Upiši WMA metadata info</entry>
-    <entry id="394" string="WMA metadata encoding:">WMA metadata enkodiranje</entry>
+    <entry id="394" string="WMA metadata encoding:">WMA metadata enkodiranje:</entry>
     <entry id="395" string="Select codec">Izaberi kodek</entry>
     <entry id="396" string="Select codec format">Izaberi format kodeka</entry>
     <entry id="397" string="Codec settings">Postavke kodeka</entry>
@@ -407,16 +407,16 @@
     <entry id="403" string="Use 2-pass encoding">Dvoprolazno enkodiranje</entry>
     <entry id="404" string="Target bitrate">Ciljani bitrate</entry>
     <entry id="405" string="Set drive speed limit:">Ograniči brzinu drivea:</entry>
-    <entry id="406" string="Support this project"/>
-    <entry id="407" string="Please support this project!"/>
-    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
-    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
+    <entry id="406" string="Support this project">Podržite ovaj projekt</entry>
+    <entry id="407" string="Please support this project!">Molim vas podržite ovaj projekt!</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Molim vas održite ovaj software besplatnim podržavajući %1 software&#10;donacijom.&#10;&#10;Pritisnite gumb za donaciju putem PayPal-a:</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Novac možete poslati direktno na %1 putem PayPal-a.&#10;&#10;Molim pišite na %1 ukoliko želite poslati ček ili novac poštom.</entry>
     <entry id="410" string="usd">eur</entry>
-    <entry id="411" string="en"/>
-    <entry id="412" string="Thank you very much!"/>
-    <entry id="413" string="Remind me later"/>
+    <entry id="411" string="en">en</entry>
+    <entry id="412" string="Thank you very much!">Puno hvala!</entry>
+    <entry id="413" string="Remind me later">Podsjeti me kasnije</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">CDRip</entry>
-    <entry id="416" string="Default"/>
+    <entry id="416" string="Default">Standardno</entry>
   </data>
 </LangFile>

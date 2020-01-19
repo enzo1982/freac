@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD argibideak</entry>
     <entry id="379" string="Read CD Text">Irakurri CD Text</entry>
     <entry id="380" string="Read cdplayer.ini">Irakurri cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Izenordepena</entry>
-    <entry id="382" string="Apodization function(s):">Izenordezte eginkizuna(k):</entry>
+    <entry id="381" string="Signal processing">Izenordepena</entry>
+    <entry id="382" string="Window function(s):">Izenordezte eginkizuna(k):</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Eginkizun anitz adierazi ditzakezu ';' bananduta.</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1-k berezgaitasunezko egiaztapen bat egin dezake&#10;programaren onlineko eguneraketentzat abiatzerakoan.&#10;&#10;Nahi duzu %1-k abiatzerakoan eguneraketak begiratzea?</entry>
     <entry id="385" string="Cannot access input file: %1">Ez dago sarbiderik sarrera agirira: %1</entry>

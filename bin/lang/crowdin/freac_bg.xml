@@ -110,9 +110,9 @@
     <entry id="97" string="Enable Joint Stereo">Включено Joint Stereo</entry>
     <entry id="98" string="Bitrate per channel:">Bitrate на канал:</entry>
     <entry id="99" string="Preselection">Предварителен избор</entry>
-    <entry id="100" string="Number of preselection candidates:">OK</entry>
-    <entry id="101" string="MPEG version">Отказ</entry>
-    <entry id="102" string="AAC object type">Затваряне</entry>
+    <entry id="100" string="Number of preselection candidates:">Брой предвар. избрани варианти:</entry>
+    <entry id="101" string="MPEG version">MPEG версия</entry>
+    <entry id="102" string="AAC object type">Тип AAC обект</entry>
     <entry id="103" string="Allow Joint Stereo">Позволено Joint Stereo</entry>
     <entry id="104" string="Temporal Noise Shaping">Временно ограничение на шума</entry>
     <entry id="105" string="Use Temporal Noise Shaping">Използв.вр.огранич.на шума</entry>
@@ -143,11 +143,11 @@
     <entry id="135" string="Output sampling rate">Изходна семплираща честота</entry>
     <entry id="136" string="no resampling">без пресемплиране</entry>
     <entry id="137" string="Highpass filter">Филтър за ВИСОКИ честоти</entry>
-    <entry id="138" string="Set Highpass frequency (Hz):">Зад. висока честота (Hz)</entry>
-    <entry id="139" string="Set Highpass width (Hz):">Зад.ширина висока честота(Hz)</entry>
+    <entry id="138" string="Set Highpass frequency (Hz):">Зад. висока честота (Hz):</entry>
+    <entry id="139" string="Set Highpass width (Hz):">Зад.ширина висока честота(Hz):</entry>
     <entry id="140" string="Lowpass filter">Филтър за ниски честоти</entry>
-    <entry id="141" string="Set Lowpass frequency (Hz):">Зад. ниска честота (Hz)</entry>
-    <entry id="142" string="Set Lowpass width (Hz):">Зад.ширина ниска честота (Hz)</entry>
+    <entry id="141" string="Set Lowpass frequency (Hz):">Зад. ниска честота (Hz):</entry>
+    <entry id="142" string="Set Lowpass width (Hz):">Зад.ширина ниска честота (Hz):</entry>
     <entry id="143" string="Misc settings">Разни настройки</entry>
     <entry id="144" string="Disable all filtering">Изкл. всички филтри</entry>
     <entry id="145" string="MP3 Files">Файлове MP3</entry>
@@ -201,7 +201,7 @@
     <entry id="197" string="Submit CDDB data...">Изпращане на CDDB данни...</entry>
     <entry id="198" string="Enable CDDB cache">Включване на CDDB кеш</entry>
     <entry id="199" string="CDDB data">CDDB данни</entry>
-    <entry id="200" string="Submit">Грешка</entry>
+    <entry id="200" string="Submit">Изпращане</entry>
     <entry id="201" string="No audio CD in drive!">Няма аудио CD в устройството!</entry>
     <entry id="202" string="Please fill all fields and track titles before submitting.">Попълнете всички полета и заглавията на песните преди изпращане.</entry>
     <entry id="203" string="Prefer CDDB over CD Text">Предп. на CDDB пред CD Текст</entry>
@@ -301,14 +301,14 @@
     <entry id="297" string="Quantized LPC precision">Квантувана точност на LPC</entry>
     <entry id="298" string="Exhaustive model search">Пълен модел за търсене</entry>
     <entry id="299" string="Optimize LPC quantization">Оптимизиране на LPC квантуването</entry>
-    <entry id="300" string="disabled">Изпълнител</entry>
-    <entry id="301" string="auto">Заглавие</entry>
-    <entry id="302" string="Residual coding">Албум</entry>
-    <entry id="303" string="Minimum partition order">Песен</entry>
-    <entry id="304" string="Maximum partition order">Жанр</entry>
-    <entry id="305" string="By pattern">Коментар</entry>
-    <entry id="306" string="From folder">Година</entry>
-    <entry id="307" string="Folder">Диск</entry>
+    <entry id="300" string="disabled">изключено</entry>
+    <entry id="301" string="auto">автоматично</entry>
+    <entry id="302" string="Residual coding">Остатъчно кодиране</entry>
+    <entry id="303" string="Minimum partition order">Миним. подреждане на дяловете</entry>
+    <entry id="304" string="Maximum partition order">Макс. подреждане на дяловете</entry>
+    <entry id="305" string="By pattern">От шаблон</entry>
+    <entry id="306" string="From folder">От папка</entry>
+    <entry id="307" string="Folder">Папка</entry>
     <entry id="308" string="Add folder">Добавяне на папка</entry>
     <entry id="309" string="Choose folder:">Изберете папка:</entry>
     <entry id="310" string="Select the folder to add to the joblist:">Изберете папка за добавяне към списъка със задачи:</entry>
@@ -351,11 +351,11 @@
     <entry id="347" string="Use input file folder if possible">Папката на входния файл (ако е възможно)</entry>
     <entry id="348" string="Encode to input file folder if possible">Кодиране в папката на входния файл (ако е възможно)</entry>
     <entry id="349" string="Allow overwriting input file">Разрешаване на презаписването на входния файл</entry>
-    <entry id="350" string="Encode to a single file">неизвестен изпълнител</entry>
-    <entry id="351" string="Encoder options">неизвестно заглавие</entry>
-    <entry id="352" string="Skip">неизвестен албум</entry>
-    <entry id="353" string="Enable local CDDB database">неизвестен жанр</entry>
-    <entry id="354" string="CDDB path:">неизвестна година</entry>
+    <entry id="350" string="Encode to a single file">Кодиране в един файл</entry>
+    <entry id="351" string="Encoder options">Настройки на енкодера</entry>
+    <entry id="352" string="Skip">Пропускане</entry>
+    <entry id="353" string="Enable local CDDB database">Включване на местна CDDB база данни</entry>
+    <entry id="354" string="CDDB path:">Път към CDDB:</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Изберете папката на CDDB базата данни:</entry>
     <entry id="356" string="File already exists">Файлът вече съществува</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">Изходния файл %1&#10;вече съществува! Искате ли да го презапишете?</entry>
@@ -382,8 +382,8 @@
     <entry id="378" string="CD information">CD информация</entry>
     <entry id="379" string="Read CD Text">Четене на CD Текст</entry>
     <entry id="380" string="Read cdplayer.ini">Четене на cdplayer.ini</entry>
-    <entry id="381" string="Apodization">Аподизация</entry>
-    <entry id="382" string="Apodization function(s):">Функция/и на аподизация</entry>
+    <entry id="381" string="Signal processing">Обработка на сигнала</entry>
+    <entry id="382" string="Window function(s):">Функция(и) на прозореца:</entry>
     <entry id="383" string="You can specify multiple functions separated by semicolons.">Може да посочите повече функции разделени с ;</entry>
     <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 може да извърши автоматична проверка за&#10;обновяване на програмата при стартиране.&#10;&#10;Желаете ли %1 да потърси обновления при стартиране?</entry>
     <entry id="385" string="Cannot access input file: %1">Няма достъп до входния файл: %1</entry>
