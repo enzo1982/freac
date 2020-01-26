@@ -6,7 +6,7 @@
     <property name="language">Chinese (simplified) / 简体中文</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
-    <property name="template">template.xml</property>
+    <property name="template">eupdate.xml</property>
     <property name="author">Joeyong Jen</property>
     <property name="url">http://www.chapter0.net/easyUpdate/</property>
   </info>

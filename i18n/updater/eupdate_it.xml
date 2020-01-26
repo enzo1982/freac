@@ -6,7 +6,7 @@
     <property name="language">Italian / Italiano</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
-    <property name="template">template.xml</property>
+    <property name="template">eupdate.xml</property>
     <property name="author">Marco D'Amato &lt;md@mdtzone.it&gt;</property>
     <property name="url">https://www.mdtzone.it/</property>
   </info>

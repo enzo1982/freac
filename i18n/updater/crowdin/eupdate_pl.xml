@@ -6,7 +6,7 @@
     <property name="language">Polish / Polski</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
-    <property name="template">template.xml</property>
+    <property name="template">eupdate.xml</property>
     <property name="author">Krzysztof Konopacki, Darek Rzeźnicki</property>
     <property name="url">http://konopacki.eu/</property>
   </info>

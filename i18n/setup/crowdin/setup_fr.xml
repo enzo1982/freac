@@ -6,7 +6,7 @@
     <property name="language">French / Français</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
-    <property name="template">template.xml</property>
+    <property name="template">setup.xml</property>
     <property name="author">Robert Kausch &lt;robert.kausch@freac.org&gt;</property>
     <property name="url">https://www.freac.org/</property>
   </info>

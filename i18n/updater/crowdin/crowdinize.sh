@@ -8,7 +8,7 @@ for file in ${files[@]}; do
   output=
   template=
 
-  if [ "$file" != "${file/%template*.xml/}" ]; then
+  if [ "$file" != "${file/%eupdate.xml/}" ]; then
     template=1
   fi
 
@@ -48,7 +48,7 @@ for file in ${files[@]}; do
     fi
 
     output=${output}${line}
-  done < "template.xml"
+  done < "eupdate.xml"
 
   echo "$output" > "$file"
 done

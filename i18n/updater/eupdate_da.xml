@@ -6,7 +6,7 @@
     <property name="language">Danish / Dansk</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
-    <property name="template">template.xml</property>
+    <property name="template">eupdate.xml</property>
     <property name="author">chapter.0 software solutions</property>
     <property name="url">http://www.chapter0.net/easyUpdate/</property>
   </info>

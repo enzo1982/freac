@@ -149,17 +149,13 @@ ifeq ($(BUILD_WIN32),True)
 	cp -r $(SRCDIR)/icons/select $(BIN)/icons
 	cp -r $(SRCDIR)/icons/settings $(BIN)/icons
 
-	cp $(SRCDIR)/i18n/lang/Changes $(BIN)/lang
-	cp $(SRCDIR)/i18n/lang/Readme.lang $(BIN)/lang
-	cp $(SRCDIR)/i18n/lang/freac_*.xml $(BIN)/lang
-	cp $(SRCDIR)/i18n/lang/template.xml $(BIN)/lang
+	cp $(SRCDIR)/i18n/Readme.lang $(BIN)/lang
+	cp $(SRCDIR)/i18n/freac/freac*.xml $(BIN)/lang
+	cp $(SRCDIR)/i18n/updater/eupdate*.xml $(BIN)/lang
 
-	cp $(SRCDIR)/i18n/updater/eupdate_*.xml $(BIN)/lang
+	cp $(SRCDIR)/i18n/setup/setup*.xml packaging/windows/lang
 
-	cp $(SRCDIR)/i18n/setup/setup_*.xml packaging/windows/lang
-	cp $(SRCDIR)/i18n/setup/template.xml packaging/windows/lang
-
-	cp -r $(SRCDIR)/i18n/manual $(BIN)
+	cp -r $(SRCDIR)/manual $(BIN)
 endif
 
 install: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME)
@@ -177,10 +173,9 @@ ifneq ($(BUILD_WIN32),True)
 	$(INSTALL) -d $(DESTDIR)$(datadir)/freac/icons
 	$(INSTALL) -d $(DESTDIR)$(datadir)/freac/lang
 
-	cp $(SRCDIR)/i18n/lang/Changes $(DESTDIR)$(datadir)/freac/lang
-	cp $(SRCDIR)/i18n/lang/Readme.lang $(DESTDIR)$(datadir)/freac/lang
-	cp $(SRCDIR)/i18n/lang/freac_*.xml $(DESTDIR)$(datadir)/freac/lang
-	cp $(SRCDIR)/i18n/lang/template.xml $(DESTDIR)$(datadir)/freac/lang
+	cp $(SRCDIR)/i18n/Readme.lang $(DESTDIR)$(datadir)/freac/lang
+	cp $(SRCDIR)/i18n/freac/freac*.xml $(DESTDIR)$(datadir)/freac/lang
+
 	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/lang
 
 	$(INSTALL_DATA) $(SRCDIR)/icons/freac.png $(DESTDIR)$(datadir)/freac/icons
@@ -210,7 +205,7 @@ ifneq ($(BUILD_WIN32),True)
 
 	$(INSTALL_DATA) $(SRCDIR)/Readme* $(DESTDIR)$(datadir)/doc/freac
 
-	cp -r $(SRCDIR)/i18n/manual $(DESTDIR)$(datadir)/doc/freac
+	cp -r $(SRCDIR)/manual $(DESTDIR)$(datadir)/doc/freac
 	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/doc/freac/manual
 
 ifneq ($(BUILD_OSX),True)

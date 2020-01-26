@@ -1,6 +1,6 @@
 files:
-  - source: /i18n/lang/crowdin/template.xml
-    translation: /i18n/lang/crowdin/freac_%osx_locale%.xml
+  - source: /i18n/freac/crowdin/freac.xml
+    translation: /i18n/freac/crowdin/freac_%osx_locale%.xml
     languages_mapping:
       osx_locale:
         en_GB: en_UK
@@ -14,7 +14,22 @@ files:
       - /LangFile/info/property
       - /LangFile/data/entry
       - /LangFile/data//entry
-  - source: /i18n/setup/crowdin/template.xml
+  - source: /i18n/tips/crowdin/tips.xml
+    translation: /i18n/tips/crowdin/tips_%osx_locale%.xml
+    languages_mapping:
+      osx_locale:
+        en_GB: en_UK
+        sr_Latn: sr
+        sr_Cyrl: sr@Cyrl
+        zh-Hans: zh_CN
+        zh-Hant: zh_TW
+        val: ca@valencia
+    content_segmentation: '0'
+    translatable_elements:
+      - /LangFile/info/property
+      - /LangFile/data/entry
+      - /LangFile/data//entry
+  - source: /i18n/setup/crowdin/setup.xml
     translation: /i18n/setup/crowdin/setup_%osx_locale%.xml
     languages_mapping:
       osx_locale:
@@ -29,7 +44,7 @@ files:
       - /LangFile/info/property
       - /LangFile/data/entry
       - /LangFile/data//entry
-  - source: /i18n/updater/crowdin/template.xml
+  - source: /i18n/updater/crowdin/eupdate.xml
     translation: /i18n/updater/crowdin/eupdate_%osx_locale%.xml
     languages_mapping:
       osx_locale:
