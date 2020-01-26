@@ -407,16 +407,16 @@
     <entry id="403" string="Use 2-pass encoding">2 прохідне кодування</entry>
     <entry id="404" string="Target bitrate">Бітрейт джерела:</entry>
     <entry id="405" string="Set drive speed limit:">Обмеження швид. приводу:</entry>
-    <entry id="406" string="Support this project"/>
-    <entry id="407" string="Please support this project!"/>
-    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:"/>
-    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail."/>
-    <entry id="410" string="usd"/>
-    <entry id="411" string="en"/>
-    <entry id="412" string="Thank you very much!"/>
-    <entry id="413" string="Remind me later"/>
+    <entry id="406" string="Support this project">Підтримати проект</entry>
+    <entry id="407" string="Please support this project!">Будь ласка підтримайте проект!</entry>
+    <entry id="408" string="Please help keep this software free by supporting the %1 project&#10;with a donation.&#10;&#10;Click one of the buttons below to make a donation using PayPal:">Щоб наша програма залишалась безкоштовною, будь ласка підтримайте %1&#10;її внеском.&#10;&#10;Натисніть одну з кнопок нижче, щоб зробити внесок через PayPal:</entry>
+    <entry id="409" string="You can also send money directly to %1 using PayPal.&#10;&#10;Please write to %1 if you would like to donate using&#10;electronic transfer, mail a cheque or send money by mail.">Ви також можете надіслати гроші напряму до %1 використовуючи&#10;PayPal.&#10;&#10;Напишіть до %1 якщо ви бажаєте зробити внесок електронним&#10;платежем, поштою, чеком або надіслати гроші поштою.</entry>
+    <entry id="410" string="usd">usd</entry>
+    <entry id="411" string="en">en</entry>
+    <entry id="412" string="Thank you very much!">Дякуємо!</entry>
+    <entry id="413" string="Remind me later">Нагадайте мені пізніше</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">CDRip</entry>
-    <entry id="416" string="Default"/>
+    <entry id="416" string="Default">За замовчуванням</entry>
   </data>
 </LangFile>

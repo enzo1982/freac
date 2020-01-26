@@ -94,7 +94,8 @@ History
 
 	Version 1.0.33 (January 2020)
 
-		- updated Chinese (simplified), Croatian, Danish, Portuguese and Spanish (Latin American) translations
+		- updated Chinese (simplified), Croatian, Danish, Portuguese, Spanish (Latin American) and Ukrainian translations
+		- added French and Bulgarian translations for the installer
 		- updated Spanish user guide
 		- rip only tracks from the newly inserted disc when auto-ripping
 		- do not start ripping automatically if no freedb entry is found
