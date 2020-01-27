@@ -147,21 +147,22 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1 Beta 3 (Januar 2019)
+	Version 1.1 Beta 3 (Januar 2020)
 
 		- Behobene Fehler
 
+			- Probleme mit FLAC-Dekodierung unter macOS behoben
 			- Probleme beim Öffnen von Opus-Dateien mit der Erweiterung .ogg behoben
 
 		- Aktualisierte Codecs
 
-			- Monkey's Audio auf Version 5.14 aktualisiert
+			- Monkey's Audio auf Version 5.17 aktualisiert
 
 		- Aktualisierte Übersetzungen
 
 			- Chinesische (vereinfacht) Übersetzung aktualisiert
 
-	Version 1.1 Beta 2 (Januar 2019)
+	Version 1.1 Beta 2 (Januar 2020)
 
 		- Verbesserungen
 

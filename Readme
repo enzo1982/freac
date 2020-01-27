@@ -151,11 +151,12 @@ History
 
 		- Bug fixes
 
+			- fixed FLAC decoding on macOS
 			- fixed issues opening Opus files with a .ogg extension
 
 		- Updated codecs
 
-			- updated Monkey's Audio to version 5.14
+			- updated Monkey's Audio to version 5.17
 
 		- Updated translations
 
