@@ -124,11 +124,15 @@ else
 	endif
 endif
 
-.PHONY: all folders resources install uninstall clean clean_resources
+.PHONY: all codesign folders resources install uninstall clean clean_resources
 
 all: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(RESFILES) $(DLLNAME) $(EXENAME) $(CMDNAME) resources
 
 	+ $(call makein,components)
+
+codesign: all
+	signtool sign -fd sha1 -tr http://timestamp.digicert.com -td sha1 $(BIN)/freac$(EXECUTABLE) $(BIN)/freaccmd$(EXECUTABLE) $(BIN)/freac$(SHARED) $(BIN)/boca/freac_*$(SHARED)
+	signtool sign -fd sha256 -tr http://timestamp.digicert.com -td sha256 -as $(BIN)/freac$(EXECUTABLE) $(BIN)/freaccmd$(EXECUTABLE) $(BIN)/freac$(SHARED) $(BIN)/boca/freac_*$(SHARED)
 
 folders:
 	mkdir -p $(BIN) $(OBJECTS)

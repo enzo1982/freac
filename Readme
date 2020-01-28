@@ -149,6 +149,10 @@ History
 
 	Version 1.1 Beta 3 (January 2020)
 
+		- Improvements
+
+			- the fre:ac installer is now digitally signed
+
 		- Bug fixes
 
 			- fixed FLAC decoding on macOS
