@@ -572,6 +572,7 @@
 	  <entry id="34106" string="Joint Stereo">Joint стерео</entry>
 	  <entry id="34107" string="Adaptive Joint Stereo">Адаптоване Joint Stereo</entry>
 	  <entry id="34108" string="File format">Файловий формат</entry>
+	  <entry id="34109" string="Default">За замовчуванням</entry>
 	</section>
 
 	<section name="Format">
@@ -652,9 +653,17 @@
     <section name="Extensions">
 
       <section name="Donate">
+	<entry id="100000" string="Support this project">Підтримати проект</entry>
+	<entry id="100001" string="Please support this project!">Будь ласка підтримайте проект!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Щоб наша програма залишалась безкоштовною, будь ласка підтримайте&#10;%1 її внеском.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Напишіть до %1 якщо ви бажаєте зробити внесок&#10;електронним платежем, поштою, чеком або надіслати гроші поштою.</entry>
+	<entry id="100004" string="Thank you very much!">Дякуємо!</entry>
+	<entry id="100005" string="Remind me later">Нагадайте мені пізніше</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
 
 	<section name="PayPal">
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Натисніть кнопку нижче, щоб зробити внесок через PayPal:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Ви також можете надіслати гроші напряму до %1&#10;використовуючи PayPal.</entry>
 	  <entry id="100102" string="usd">usd</entry>
 	  <entry id="100103" string="$%1">$%1</entry>
 	  <entry id="100104" string="5,10,20,other amount">5,10,20,інша сума</entry>
