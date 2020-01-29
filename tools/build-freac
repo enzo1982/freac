@@ -37,19 +37,26 @@ else
   export SUDO=sudo
 fi
 
+# Set download tool
+if [[ $uname != Darwin ]]; then
+  export DL="wget -O"
+else
+  export DL="curl -L -o"
+fi
+
 # Package locations
 smooth_location=https://github.com/enzo1982/smooth/archive/master.zip
 boca_location=https://github.com/enzo1982/boca/archive/master.zip
 freac_location=https://github.com/enzo1982/freac/archive/master.zip
 
 # Build smooth
-wget $smooth_location -O smooth-master.zip
+$DL smooth-master.zip $smooth_location
 
 rm -fr smooth-master
 unzip smooth-master.zip
 
 cd smooth-master
-config=release
+config=$1
 if [[ $uname != *MINGW* ]] && [[ $uname != Darwin ]]; then
   config=$config,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib
 
@@ -62,7 +69,7 @@ $SUDO $MAKE config=$config install -j$jobs
 cd ..
 
 # Build BoCA
-wget $boca_location -O boca-master.zip
+$DL boca-master.zip $boca_location
 
 rm -fr boca-master
 unzip boca-master.zip
@@ -83,7 +90,7 @@ if [[ $uname == *MINGW* ]]; then
 fi
 
 cd BoCA-master
-config=release
+config=$1
 if [[ $uname != *MINGW* ]] && [[ $uname != Darwin ]]; then
   config=$config,bundledlibexpat,bundledliburiparser,bundledzlib
 fi
@@ -98,7 +105,7 @@ fi
 cd ..
 
 # Build fre:ac
-wget $freac_location -O freac-master.zip
+$DL freac-master.zip $freac_location
 
 rm -fr freac-master
 unzip freac-master.zip
@@ -116,7 +123,7 @@ if [[ $uname == *MINGW* ]]; then
 fi
 
 cd freac-master
-config=release
+config=$1
 $MAKE config=$config -j$jobs
 $SUDO $MAKE config=$config install -j$jobs
 cd ..
