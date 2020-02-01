@@ -147,14 +147,16 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1 Beta 3 (Januar 2020)
+	Version 1.1 Beta 3 (Februar 2020)
 
 		- Verbesserungen
 
+			- Vorbereitung auf Abschaltung von freedb.org am 31. März 2020
 			- Das fre:ac-Installationsprogramm ist jetzt digital signiert
 
 		- Behobene Fehler
 
+			- Kompatibilitätsproblem mit UTF-8 Codepage-Einstellung unter Windows 10 behoben
 			- Probleme mit FLAC-Dekodierung unter macOS behoben
 			- Probleme beim Öffnen von Opus-Dateien mit der Erweiterung .ogg behoben
 

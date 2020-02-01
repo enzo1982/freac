@@ -147,14 +147,16 @@ Requirements
 History
 -------
 
-	Version 1.1 Beta 3 (January 2020)
+	Version 1.1 Beta 3 (February 2020)
 
 		- Improvements
 
+			- prepared for freedb.org shutdown on 31st March 2020
 			- the fre:ac installer is now digitally signed
 
 		- Bug fixes
 
+			- fixed compatibility issue with Windows 10 UTF-8 codepage setting
 			- fixed FLAC decoding on macOS
 			- fixed issues opening Opus files with a .ogg extension
 
@@ -335,13 +337,13 @@ Special thanks to
 			   Peter Toth (Hungarian),
 			   Andrij Ilechko (Ukrainian),
 			   Wim Garreyn and Thomas De Rocker (Dutch),
-			   Nebojša Nikolic (Serbian),
+			   Nebojï¿½a Nikolic (Serbian),
 			   Jan Parttimaa (Finnish),
 			   Julius Faltus (Czech),
-			   J. B. Escada Jr. and André C. Barros (Portuguese, Brazilian),
+			   J. B. Escada Jr. and Andrï¿½ C. Barros (Portuguese, Brazilian),
 			   Odyssey (Korean),
 			   Jan Arni Jacobsen (Danish),
-			   Mikael Hiort af Ornäs and Anton Mjoernebrant (Swedish),
+			   Mikael Hiort af Ornï¿½s and Anton Mjoernebrant (Swedish),
 			   Peter Krajcar and Miro Babinsky (Slovak),
 			   Andreas Normann Aanonsen (Norwegian),
 			   Vincent Rateau (Esperanto),
@@ -349,11 +351,11 @@ Special thanks to
 			   Naglis Jonaitis (Lithuanian),
 			   Borca Alin and Laurentiu Bubuianu (Romanian),
 			   El libre (Catalan),
-			   Agustín Bou (Valencian),
+			   Agustï¿½n Bou (Valencian),
 			   Jose Goncalves (Portuguese),
 			   Meelis Pasieko (Estonian),
 			   Goran Bekic (Croatian),
-			   Eduardo Estévez (Galician),
+			   Eduardo Estï¿½vez (Galician),
 			   Phan Anh (Vietnamese),
 			   Ilan Tsmeret (Hebrew),
 			   Eman Ali Fhoula (Arabic),
@@ -361,7 +363,7 @@ Special thanks to
 			   Cois Wiid (Afrikaans),
 			   Xabier Aramendi (Basque),
 			   Kin Kwok (Cantonese, Hong Kong),
-			   Patriccollu di Santa Maria è Sichè (Corsican)
+			   Patriccollu di Santa Maria ï¿½ Sichï¿½ (Corsican)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

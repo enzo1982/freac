@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -343,7 +343,7 @@ const String	 freac::Config::FreedbDirectoryID				= "Directory";
 const String	 freac::Config::FreedbDirectoryDefault				= String("freedb").Append(Directory::GetDirectoryDelimiter());
 
 const String	 freac::Config::FreedbServerID					= "Server";
-const String	 freac::Config::FreedbServerDefault				= "freedb.freedb.org";
+const String	 freac::Config::FreedbServerDefault				= "freedb.freac.org";
 
 const String	 freac::Config::FreedbModeID					= "Mode";
 const Int	 freac::Config::FreedbModeDefault				= 0;
@@ -440,6 +440,16 @@ freac::Config::Config()
 	/* Reset last output folder if it does not exist.
 	 */
 	if (config->GetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(1)), NIL) == NIL) config->SetStringValue(Config::CategorySettingsID, String(Config::SettingsLastOutputDirectoryID).Append(String::FromInt(1)), config->GetStringValue(CategorySettingsID, SettingsEncoderOutputDirectoryID, SettingsEncoderOutputDirectoryDefault));
+
+	/* Change freedb server after 31st March 2020.
+	 */
+	DateTime	 currentDate = DateTime::Current();
+
+	if ((currentDate.GetYear()  > 2020				) ||
+	    (currentDate.GetYear() == 2020 && currentDate.GetMonth() > 3))
+	{
+		if (config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault) == "freedb.freedb.org") config->SetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault);
+	}
 }
 
 freac::Config::~Config()
