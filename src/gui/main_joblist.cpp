@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -21,6 +21,8 @@
 
 #include <gui/player.h>
 #include <gui/edit_folder.h>
+
+#include <dialogs/config/configcomponent.h>
 
 #include <dialogs/charset.h>
 
@@ -370,6 +372,11 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	UpdateEncoderText();
 
+	btn_configure = new Button(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/settings/settings-codec.png")), Point(30, 79), Size(27, 27));
+	btn_configure->SetOrientation(OR_LOWERRIGHT);
+	btn_configure->SetFlags(BF_NOFRAME);
+	btn_configure->onAction.Connect(&LayerJoblist::OnConfigureEncoder, this);
+
 	edb_outdir = new FolderEditBox(Point(0, 27), Size(0, 0), 1024);
 	edb_outdir->SetOrientation(OR_LOWERLEFT);
 	edb_outdir->onSelectEntry.Connect(&LayerJoblist::OnSelectFolder, this);
@@ -467,6 +474,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	Add(combo_encoder);
 	Add(edb_outdir);
 	Add(btn_skip);
+	Add(btn_configure);
 	Add(btn_open);
 	Add(btn_browse);
 	Add(progress_total);
@@ -624,6 +632,7 @@ freac::LayerJoblist::~LayerJoblist()
 	DeleteObject(edb_outdir);
 	DeleteObject(list_outdir);
 	DeleteObject(btn_skip);
+	DeleteObject(btn_configure);
 	DeleteObject(btn_open);
 	DeleteObject(btn_browse);
 	DeleteObject(progress);
@@ -695,7 +704,7 @@ Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 
 	edb_filename->SetWidth(clientSize.cx - 27 - maxTextLength - btn_skip->GetWidth());
 	edb_format->SetWidth(clientSize.cx / 2 - 14 - maxTextLength);
-	combo_encoder->SetWidth(Math::Ceil(Float(clientSize.cx) / 2.0) - 21 - txt_encoder->GetUnscaledTextWidth());
+	combo_encoder->SetWidth(Math::Ceil(Float(clientSize.cx) / 2.0) - 44 - txt_encoder->GetUnscaledTextWidth());
 	edb_outdir->SetWidth(clientSize.cx - 33 - maxTextLength - btn_browse->GetWidth() - btn_open->GetWidth());
 
 	/* Update progress bar and time-left display.
@@ -786,6 +795,8 @@ Void freac::LayerJoblist::OnChangeLanguageSettings()
 	edb_format->SetText(i18n->TranslateString("unknown"));
 
 	btn_skip->SetText(i18n->TranslateString("Skip"));
+
+	btn_configure->SetTooltipText(i18n->TranslateString("Configure selected encoder", "Menu::Options"));
 
 	btn_open->SetText(i18n->TranslateString("Open"));
 	btn_browse->SetText(i18n->TranslateString("Select"));
@@ -1755,6 +1766,24 @@ Void freac::LayerJoblist::OnSelectEncoder()
 	/* Update joblist entries if output file name might need to be changed.
 	 */
 	if (config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Contains("<outputfile>")) joblist->OnChangeHeaderColumns();
+}
+
+Void freac::LayerJoblist::OnConfigureEncoder()
+{
+	BoCA::Config	*config	   = BoCA::Config::Get();
+	Registry	&boca	   = Registry::Get();
+	Component	*component = boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
+
+	if (component != NIL)
+	{
+		ConfigComponentDialog	 dlg(component);
+
+		dlg.SetParentWindow(Window::GetNthWindow(0));
+
+		if (dlg.ShowDialog() == Error()) BoCA::Utilities::ErrorMessage("No configuration dialog available for:\n\n%1", component->GetName());
+
+		boca.DeleteComponent(component);
+	}
 }
 
 Void freac::LayerJoblist::ToggleEditPopup()

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -89,6 +89,8 @@ namespace freac
 			List			*list_outdir;
 
 			Button			*btn_skip;
+
+			Button			*btn_configure;
 
 			Button			*btn_open;
 			Button			*btn_browse;
@@ -214,6 +216,8 @@ namespace freac
 
 			Void			 OnSelectFolder();
 			Void			 OnSelectEncoder();
+
+			Void			 OnConfigureEncoder();
 
 			Void			 ToggleEditPopup();
 
