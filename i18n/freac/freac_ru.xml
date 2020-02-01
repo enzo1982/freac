@@ -59,7 +59,7 @@
       <entry id="513" string="%1 ms">%1 мс</entry>
       <entry id="514" string="%1 min">%1 мин</entry>
       <entry id="515" string="%1 bit">%1 бит</entry>
-      <entry id="516" string="%1 bytes">%1 б</entry>
+      <entry id="516" string="%1 bytes">%1 байт</entry>
       <entry id="517" string="%1 kB">%1 Кбайт</entry>
       <entry id="518" string="%1%">%1%</entry>
     </section>
