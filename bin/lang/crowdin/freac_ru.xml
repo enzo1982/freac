@@ -383,9 +383,9 @@
     <entry id="379" string="Read CD Text">Читать CD Текст</entry>
     <entry id="380" string="Read cdplayer.ini">Читать cdplayer.ini</entry>
     <entry id="381" string="Signal processing">Обработка сигнала</entry>
-    <entry id="382" string="Window function(s):">Функции аподизации:</entry>
-    <entry id="383" string="You can specify multiple functions separated by semicolons.">Несколько функций разделяются ;</entry>
-    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 может проверять наличие обновлений при запуске.&#10;&#10;Хотите, чтобы %1 проверял наличе обновлений при запуске?</entry>
+    <entry id="382" string="Window function(s):">Функция(и) аподизации:</entry>
+    <entry id="383" string="You can specify multiple functions separated by semicolons.">Несколько функций разделяются знаком ;</entry>
+    <entry id="384" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 может проверять наличие обновлений при запуске.&#10;&#10;Хотите, чтобы %1 проверял наличие обновлений при запуске?</entry>
     <entry id="385" string="Cannot access input file: %1">Нет доступа к входному файлу: %1</entry>
     <entry id="386" string="Cannot create output file: %1">Невозможно создать выходной файл: %1</entry>
     <entry id="387" string="File not found">Файл не найден</entry>
@@ -393,7 +393,7 @@
     <entry id="389" string="Unsupported audio format">Неподдерживаемый звуковой формат</entry>
     <entry id="390" string="Unknown error">Неизвестная ошибка</entry>
     <entry id="391" string="Replace existing comments with default comment">Заменить существующий комментарий комментарием по умолчанию</entry>
-    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Выбранные файлы не могут быть объединены в один&#10;выходной файл из-за разного разрешения.&#10;&#10;Пожалуйста, преобразуйте сначала все файлы к одинаковому разрешению.</entry>
+    <entry id="392" string="The selected files cannot be combined into a single&#10;output file due to different sample formats.&#10;&#10;Please convert all files to the same sample format first.">Выбранные файлы не могут быть объединены в один&#10;выходной файл из-за разного формата сэмплов.&#10;&#10;Пожалуйста, преобразуйте сначала все файлы к одинаковому формату сэмплов.</entry>
     <entry id="393" string="Write WMA metadata info">Записывать метаданные WMA</entry>
     <entry id="394" string="WMA metadata encoding:">Кодировка метаданных WMA:</entry>
     <entry id="395" string="Select codec">Выбор кодека</entry>
@@ -417,6 +417,6 @@
     <entry id="413" string="Remind me later">Напомнить позже</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">Граббер</entry>
-    <entry id="416" string="Default">Умолчание</entry>
+    <entry id="416" string="Default">По умолчанию</entry>
   </data>
 </LangFile>
