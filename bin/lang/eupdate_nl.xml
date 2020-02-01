@@ -28,8 +28,9 @@
   <entry id="15" string="Installing file:">Bestand installeren:</entry>
   <entry id="16" string="Downloading file:">Bestand downloaden:</entry>
   <entry id="17" string="Update complete">Update voltooid</entry>
-  <entry id="18" string="Your application has been successfully updated!">De toepassing is succesvol bijgewerkt!</entry>
+  <entry id="18" string="Your application has been successfully updated!">De toepassing is met succes bijgewerkt!</entry>
   <entry id="19" string="Error">Fout</entry>
   <entry id="20" string="Error downloading package!">Fout bij downloaden van het pakket!</entry>
+  <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Fout bij installeren van &quot;%1&quot;!&#10;&#10;Toegang tot toepassingsmap is geweigerd.</entry>
  </data>
 </LangFile>

@@ -14,7 +14,7 @@
     <entry id="2" string="Install">安装</entry>
     <entry id="3" string="Show unstable releases">显示非稳定版本</entry>
     <entry id="4" string="Select the updated program version to be installed:">选择需要安装的更新程序版本：</entry>
-    <entry id="5" string="You can select optional components to be installed:">请选择要安裝的可选组件：</entry>
+    <entry id="5" string="You can select optional components to be installed:">请选择要安裝的可选插件：</entry>
     <entry id="6" string="Version ID">版本 ID</entry>
     <entry id="7" string="Package">程序包</entry>
     <entry id="8" string="Description">描述</entry>
@@ -30,5 +30,6 @@
     <entry id="18" string="Your application has been successfully updated!">应用程序已成功更新！</entry>
     <entry id="19" string="Error">错误</entry>
     <entry id="20" string="Error downloading package!">下载程序包时发生错误！</entry>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">%1 安装出错！&#10;&#10;安装程序访问应用程序目录被禁止。</entry>
   </data>
 </LangFile>

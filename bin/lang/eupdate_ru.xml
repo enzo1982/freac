@@ -6,7 +6,6 @@
     <property name="language">Russian / Русский</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
-    <property name="template"/>
     <property name="author">Евгений Козлов &lt;evgenykozlov80@mail.ru&gt;</property>
     <property name="url">http://www.chapter0.net/easyUpdate/</property>
   </info>
@@ -31,5 +30,6 @@
     <entry id="18" string="Your application has been successfully updated!">Ваше приложение успешно обновлено!</entry>
     <entry id="19" string="Error">Ошибка</entry>
     <entry id="20" string="Error downloading package!">Ошибка загрузки пакета!</entry>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Ошибка установки &quot;%1&quot;!&#10;&#10;Доступ к каталогу приложения запрещен.</entry>
   </data>
 </LangFile>
