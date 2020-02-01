@@ -93,23 +93,37 @@ Bekannte Probleme
 Geschichte
 ----------
 
-	Version 1.0.33 (Januar 2020)
+	Version 1.0.33 (Februar 2020)
 
-		- Chinesische (vereinfacht), kroatische, dänische, portugiesische, spanische (lateinamerikanisch) und ukrainische Übersetzungen aktualisiert
-		- Französische und bulgarische Übersetzungen für das Installationsprogramm hinzugefügt
-		- Spanische Anleitung aktualisiert
-		- Beim automatischen Rippen werden nur noch Tracks der neu eingelegten CD berücksichtigt
-		- Ripper wird nicht mehr automatisch gestartet, wenn kein freedb-Eintrag gefunden wird
-		- Kompatibilität mit ADTS AAC-Dateien verbessert
-		- Einfrieren des Programms beim Öffnen einiger Windows Wave-Dateien behoben
-		- Problem mit Setup-Berechtigungen unter nicht-Administrator-Accounts behoben
-		- Probleme mit Dateien ohne Metadaten in freaccmd behoben
-		- FLAC auf Version 1.3.3 aktualisiert
-		- FAAC auf Version 1.30 aktualisiert
-		- FAAD2 auf Version 2.9.1 aktualisiert
-		- mpg123 auf Version 1.25.13 aktualisiert
-		- Vorbis auf Version 1.3.6 + aoTuV Beta 6.03 aktualisiert
-		- Ogg-Bibliothek auf Version 1.3.3 aktualisiert
+		- Verbesserungen
+
+			- Das fre:ac-Installationsprogramm ist jetzt digital signiert
+			- Vorbereitung auf Abschaltung von freedb.org am 31. März 2020
+			- Beim automatischen Rippen werden nur noch Tracks der neu eingelegten CD berücksichtigt
+			- Ripper wird nicht mehr automatisch gestartet, wenn kein freedb-Eintrag gefunden wird
+			- Kompatibilität mit ADTS AAC-Dateien verbessert
+
+		- Behobene Fehler
+
+			- Kompatibilitätsprobleme mit UTF-8 Codepage-Einstellung unter Windows 10 behoben
+			- Einfrieren des Programms beim Öffnen einiger Windows Wave-Dateien behoben
+			- Problem mit Setup-Berechtigungen unter nicht-Administrator-Accounts behoben
+			- Probleme mit Dateien ohne Metadaten in freaccmd behoben
+
+		- Aktualisierte Codecs
+
+			- FLAC auf Version 1.3.3 aktualisiert
+			- FAAC auf Version 1.30 aktualisiert
+			- FAAD2 auf Version 2.9.1 aktualisiert
+			- mpg123 auf Version 1.25.13 aktualisiert
+			- Vorbis auf Version 1.3.6 + aoTuV Beta 6.03 aktualisiert
+			- Ogg-Bibliothek auf Version 1.3.3 aktualisiert
+
+		- Aktualisierte Übersetzungen
+
+			- Chinesische (vereinfacht), kroatische, dänische, portugiesische, spanische (lateinamerikanisch) und ukrainische Übersetzungen aktualisiert
+			- Französische und bulgarische Übersetzungen für das Installationsprogramm hinzugefügt
+			- Spanische Anleitung aktualisiert
 
 	Version 1.0.32 (März 2018)
 

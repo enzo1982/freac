@@ -92,23 +92,37 @@ Known problems
 History
 -------
 
-	Version 1.0.33 (January 2020)
+	Version 1.0.33 (February 2020)
 
-		- updated Chinese (simplified), Croatian, Danish, Portuguese, Spanish (Latin American) and Ukrainian translations
-		- added French and Bulgarian translations for the installer
-		- updated Spanish user guide
-		- rip only tracks from the newly inserted disc when auto-ripping
-		- do not start ripping automatically if no freedb entry is found
-		- improved compatibility with ADTS AAC files
-		- fixed hangs when trying to open some Windows Wave files
-		- fixed setup not running with elevated rights on non-administrator accounts
-		- fixed freaccmd issues with files without metadata
-		- upgraded FLAC to version 1.3.3
-		- upgraded FAAC to version 1.30
-		- upgraded FAAD2 to version 2.9.1
-		- upgraded mpg123 to version 1.25.13
-		- upgraded Vorbis to version 1.3.6 + aoTuV beta 6.03
-		- upgraded Ogg library to version 1.3.4
+		- Improvements
+
+			- the fre:ac installer is now digitally signed
+			- prepared for freedb.org shutdown on 31st March 2020
+			- rip only tracks from the newly inserted disc when auto-ripping
+			- do not start ripping automatically if no freedb entry is found
+			- improved compatibility with ADTS AAC files
+
+		- Bug fixes
+
+			- fixed compatibility issues with Windows 10 UTF-8 codepage setting
+			- fixed hangs when trying to open some Windows Wave files
+			- fixed setup not running with elevated rights on non-administrator accounts
+			- fixed freaccmd issues with files without metadata
+
+		- Updated codecs
+
+			- upgraded FLAC to version 1.3.3
+			- upgraded FAAC to version 1.30
+			- upgraded FAAD2 to version 2.9.1
+			- upgraded mpg123 to version 1.25.13
+			- upgraded Vorbis to version 1.3.6 + aoTuV beta 6.03
+			- upgraded Ogg library to version 1.3.4
+
+		- Updated translations
+
+			- updated Chinese (simplified), Croatian, Danish, Portuguese, Spanish (Latin American) and Ukrainian translations
+			- added French and Bulgarian translations for the installer
+			- updated Spanish user guide
 
 	Version 1.0.32 (March 2018)
 
@@ -572,13 +586,13 @@ Special thanks to
 			   Peter Toth (Hungarian),
 			   Andrij Ilechko (Ukrainian),
 			   Wim Garreyn and Thomas De Rocker (Dutch),
-			   Nebojša Nikolic (Serbian),
+			   Nebojï¿½a Nikolic (Serbian),
 			   Jan Parttimaa (Finnish),
 			   Julius Faltus (Czech),
 			   Escada (Portuguese, Brazilian),
 			   Odyssey (Korean),
 			   Jan Arni Jacobsen (Danish),
-			   Mikael Hiort af Ornäs and Anton Mjoernebrant (Swedish),
+			   Mikael Hiort af Ornï¿½s and Anton Mjoernebrant (Swedish),
 			   Peter Krajcar (Slovak),
 			   Andreas Normann Aanonsen (Norwegian),
 			   Vincent Rateau (Esperanto),
@@ -586,11 +600,11 @@ Special thanks to
 			   Naglis Jonaitis (Lithuanian),
 			   Borca Alin and Laurentiu Bubuianu (Romanian),
 			   El libre (Catalan),
-			   Agustín Bou (Valencian),
+			   Agustï¿½n Bou (Valencian),
 			   Jose Goncalves (Portuguese),
 			   Meelis Pasieko (Estonian),
 			   Goran Bekic (Croatian),
-			   Eduardo Estévez (Galician),
+			   Eduardo Estï¿½vez (Galician),
 			   Phan Anh (Vietnamese),
 			   Ilan Tsmeret (Hebrew),
 			   Eman Ali Fhoula (Arabic),
@@ -598,7 +612,7 @@ Special thanks to
 			   Cois Wiid (Afrikaans),
 			   Xabier Aramendi (Basque),
 			   Kin Kwok (Cantonese, Hong Kong),
-			   Patriccollu di Santa Maria è Sichè (Corsican)
+			   Patriccollu di Santa Maria ï¿½ Sichï¿½ (Corsican)
 
 	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

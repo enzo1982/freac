@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -11,6 +11,8 @@
 #include <config.h>
 #include <freac.h>
 #include <cddb/cddbcache.h>
+
+#include <time.h>
 
 freac::Config::Config()
 {
@@ -87,6 +89,19 @@ Bool freac::Config::LoadSettings()
 
 	Configuration	*config = new Configuration(configFile, False);
 
+	/* Change freedb server after 31st March 2020.
+	 */
+	__time64_t	 t  = _time64(0);
+	tm		*lt = _localtime64(&t);
+
+	if ((lt->tm_year + 1900  > 2020			     ) ||
+	    (lt->tm_year + 1900 == 2020 && lt->tm_mon + 1 > 3))
+	{
+		if (config->GetStringValue(categoryfreedb, "Server", "freedb.freac.org") == "freedb.freedb.org") config->SetStringValue(categoryfreedb, "Server", "freedb.freac.org");
+	}
+
+	/* Get configuration settings.
+	 */
 	firstStart				= config->GetIntValue(categorySettings, "FirstStart", 1);
 	language				= config->GetStringValue(categorySettings, "Language", NIL);
 	encoder					= config->GetIntValue(categorySettings, "Encoder", 3);
@@ -163,7 +178,7 @@ Bool freac::Config::LoadSettings()
 	enable_local_cddb			= config->GetIntValue(categoryfreedb, "EnableLocalCDDB", 0);
 	freedb_dir				= config->GetStringValue(categoryfreedb, "Directory", String("freedb").Append(Directory::GetDirectoryDelimiter()));
 	enable_remote_cddb			= config->GetIntValue(categoryfreedb, "EnableRemoteCDDB", 1);
-	freedb_server				= config->GetStringValue(categoryfreedb, "Server", "freedb.freedb.org");
+	freedb_server				= config->GetStringValue(categoryfreedb, "Server", "freedb.freac.org");
 	freedb_mode				= config->GetIntValue(categoryfreedb, "Mode", 0);
 	freedb_cddbp_port			= config->GetIntValue(categoryfreedb, "CDDBPPort", 8880);
 	freedb_http_port			= 80;
