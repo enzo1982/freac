@@ -83,8 +83,8 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Thiết lập chung</entry>
-	<entry id="1301" string="Configure selected encoder">Chỉnh sửa loại chuyển mã</entry>
-	<entry id="1302" string="Active CD-ROM drive">Cho phép CD-ROM drive</entry>
+	<entry id="1302" string="Configure selected encoder">Chỉnh sửa loại chuyển mã</entry>
+	<entry id="1303" string="Active CD-ROM drive">Cho phép CD-ROM drive</entry>
       </section>
 
       <section name="Encode">
@@ -118,10 +118,10 @@
       <entry id="2004" string="Query CDDB database">Truy vấn cơ sở dữ liệu CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Trình bày dữ liệu CDDB</entry>
       <entry id="2006" string="Configure general settings">Chỉnh sửa thiết lập chung</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Chỉnh sửa cách chuyển mã file audio được chọn</entry>
-      <entry id="2008" string="Start the encoding process">Bắt đầu chuyển mã</entry>
-      <entry id="2010" string="Pause/resume encoding">Tạm dừng/làm lại chuyển mã</entry>
-      <entry id="2011" string="Stop encoding">Dừng chuyển mã</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Chỉnh sửa cách chuyển mã file audio được chọn</entry>
+      <entry id="2009" string="Start the encoding process">Bắt đầu chuyển mã</entry>
+      <entry id="2011" string="Pause/resume encoding">Tạm dừng/làm lại chuyển mã</entry>
+      <entry id="2012" string="Stop encoding">Dừng chuyển mã</entry>
     </section>
 
     <section name="Joblist">

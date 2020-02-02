@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Generelle indstillinger</entry>
-	<entry id="1301" string="Configure selected encoder">Konfigurer den valgte koder</entry>
-	<entry id="1302" string="Active CD-ROM drive">Aktivt CD-ROM drev</entry>
-	<entry id="1303" string="Active configuration">Aktiv indstilling</entry>
-	<entry id="1304" string="Default configuration">Standard indstilling</entry>
+	<entry id="1301" string="Configure signal processing">Konfigurer signal behandling</entry>
+	<entry id="1302" string="Configure selected encoder">Konfigurer den valgte koder</entry>
+	<entry id="1303" string="Active CD-ROM drive">Aktivt CD-ROM drev</entry>
+	<entry id="1304" string="Active configuration">Aktiv indstilling</entry>
+	<entry id="1305" string="Default configuration">Standard indstilling</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Aktiver signal behandling</entry>
 	<entry id="1401" string="Enable processing during playback">Aktiver behandling under afspilning</entry> 
-	<entry id="1402" string="Configure signal processing">Konfigurer signal behandling</entry>
-	<entry id="1403" string="Selected signal processors">Valgte signal behandlere</entry>
+	<entry id="1402" string="Selected signal processors">Valgte signal behandlere</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">Forespørg CDDB databasen</entry>
       <entry id="2005" string="Submit CDDB data">Indsend CDDB data</entry>
       <entry id="2006" string="Configure general settings">Indstil generelle indstillinger</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Indstil den valgte lyd koder</entry>
-      <entry id="2008" string="Start the encoding process">Start kodning</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Start kodning (SLETTER OPRINDELIGE FILER)</entry>
-      <entry id="2010" string="Pause/resume encoding">Pause/forsæt kodning</entry>
-      <entry id="2011" string="Stop encoding">Stop kodning</entry>
+      <entry id="2007" string="Configure signal processing">Konfigurer signal behandling</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Indstil den valgte lyd koder</entry>
+      <entry id="2009" string="Start the encoding process">Start kodning</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Start kodning (SLETTER OPRINDELIGE FILER)</entry>
+      <entry id="2011" string="Pause/resume encoding">Pause/forsæt kodning</entry>
+      <entry id="2012" string="Stop encoding">Stop kodning</entry>
     </section>
 
     <section name="Joblist">

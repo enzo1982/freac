@@ -83,8 +83,8 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Algemene opstellings</entry>
-	<entry id="1301" string="Configure selected encoder">Konfigureer gekose enkodeerder</entry>
-	<entry id="1302" string="Active CD-ROM drive">Aktiewe CD-ROM aandrywer</entry>
+	<entry id="1302" string="Configure selected encoder">Konfigureer gekose enkodeerder</entry>
+	<entry id="1303" string="Active CD-ROM drive">Aktiewe CD-ROM aandrywer</entry>
       </section>
 
       <section name="Encode">
@@ -118,10 +118,10 @@
       <entry id="2004" string="Query CDDB database">Navraag by CDDB-databank</entry>
       <entry id="2005" string="Submit CDDB data">Stuur CDDB-data</entry>
       <entry id="2006" string="Configure general settings">Konfigureer algemene opstellings</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Konfigureer gekose oudio-enkodeerder</entry>
-      <entry id="2008" string="Start the encoding process">Begin enkoderingsproses</entry>
-      <entry id="2010" string="Pause/resume encoding">Pouseer/hervat enkodering</entry>
-      <entry id="2011" string="Stop encoding">Stop enkodering</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Konfigureer gekose oudio-enkodeerder</entry>
+      <entry id="2009" string="Start the encoding process">Begin enkoderingsproses</entry>
+      <entry id="2011" string="Pause/resume encoding">Pouseer/hervat enkodering</entry>
+      <entry id="2012" string="Stop encoding">Stop enkodering</entry>
     </section>
 
     <section name="Joblist">

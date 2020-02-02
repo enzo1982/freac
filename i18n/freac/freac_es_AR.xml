@@ -93,10 +93,10 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Configuración general</entry>
-	<entry id="1301" string="Configure selected encoder">Configuración del codificador actual</entry>
-	<entry id="1302" string="Active CD-ROM drive">Unidad de CD-ROM activa</entry>
-	<entry id="1303" string="Active configuration">Configuración activa</entry>
-	<entry id="1304" string="Default configuration">Configuración predeterminada</entry>
+	<entry id="1302" string="Configure selected encoder">Configuración del codificador actual</entry>
+	<entry id="1303" string="Active CD-ROM drive">Unidad de CD-ROM activa</entry>
+	<entry id="1304" string="Active configuration">Configuración activa</entry>
+	<entry id="1305" string="Default configuration">Configuración predeterminada</entry>
       </section>
 
       <section name="Encode">
@@ -132,10 +132,10 @@
       <entry id="2004" string="Query CDDB database">Consultar base de datos CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Enviar datos CDDB</entry>
       <entry id="2006" string="Configure general settings">Configurar las opciones generales</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Configurar el codificador de audio seleccionado</entry>
-      <entry id="2008" string="Start the encoding process">Comenzar el proceso de codificación</entry>
-      <entry id="2010" string="Pause/resume encoding">Pausar/Resumir codificación</entry>
-      <entry id="2011" string="Stop encoding">Detener codificación</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Configurar el codificador de audio seleccionado</entry>
+      <entry id="2009" string="Start the encoding process">Comenzar el proceso de codificación</entry>
+      <entry id="2011" string="Pause/resume encoding">Pausar/Resumir codificación</entry>
+      <entry id="2012" string="Stop encoding">Detener codificación</entry>
     </section>
 
     <section name="Joblist">

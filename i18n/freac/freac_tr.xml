@@ -82,8 +82,8 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Genel ayarlar</entry>
-	<entry id="1301" string="Configure selected encoder">Seçilen çeviriciyi ayarla</entry>
-	<entry id="1302" string="Active CD-ROM drive">Aktif CD-ROM sürücü</entry>
+	<entry id="1302" string="Configure selected encoder">Seçilen çeviriciyi ayarla</entry>
+	<entry id="1303" string="Active CD-ROM drive">Aktif CD-ROM sürücü</entry>
       </section>
 
       <section name="Encode">
@@ -117,10 +117,10 @@
       <entry id="2004" string="Query CDDB database">CDDB veritabanını sorgula</entry>
       <entry id="2005" string="Submit CDDB data">CDDB verisini gönder</entry>
       <entry id="2006" string="Configure general settings">Genel ayarları değiştir</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Seçilen çevirici ayarlarını değiştir</entry>
-      <entry id="2008" string="Start the encoding process">Çevirmeye başla</entry>
-      <entry id="2010" string="Pause/resume encoding">Çeviriyi duraklat/devam ettir</entry>
-      <entry id="2011" string="Stop encoding">Çevirmeyi durdur</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Seçilen çevirici ayarlarını değiştir</entry>
+      <entry id="2009" string="Start the encoding process">Çevirmeye başla</entry>
+      <entry id="2011" string="Pause/resume encoding">Çeviriyi duraklat/devam ettir</entry>
+      <entry id="2012" string="Stop encoding">Çevirmeyi durdur</entry>
     </section>
 
     <section name="Joblist">

@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Општа подешења</entry>
-	<entry id="1301" string="Configure selected encoder">Подеси изабрани енкодер</entry>
-	<entry id="1302" string="Active CD-ROM drive">Активан ЦД РОМ уређај</entry>
-	<entry id="1303" string="Active configuration">Активна поставка</entry>
-	<entry id="1304" string="Default configuration">Усађена поставка</entry>
+	<entry id="1301" string="Configure signal processing">Подеси обраду сигнала</entry>
+	<entry id="1302" string="Configure selected encoder">Подеси изабрани енкодер</entry>
+	<entry id="1303" string="Active CD-ROM drive">Активан ЦД РОМ уређај</entry>
+	<entry id="1304" string="Active configuration">Активна поставка</entry>
+	<entry id="1305" string="Default configuration">Усађена поставка</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Омогући обраду сигнала</entry>
 	<entry id="1401" string="Enable processing during playback">Омогући обраду сигналу у току репродукције</entry>
-	<entry id="1402" string="Configure signal processing">Подеси обраду сигнала</entry>
-	<entry id="1403" string="Selected signal processors">Одабрани процесори сигнала</entry>
+	<entry id="1402" string="Selected signal processors">Одабрани процесори сигнала</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">Упит CDDB бази</entry>
       <entry id="2005" string="Submit CDDB data">Пријава података CDDB-у</entry>
       <entry id="2006" string="Configure general settings">Уреди општа подешења</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Подеси изабрани аудио енкодер</entry>
-      <entry id="2008" string="Start the encoding process">Покрени енкодовање</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Започни енкодовање (обриши изворне фајлове)</entry>
-      <entry id="2010" string="Pause/resume encoding">Паузирај/настави енкодовање</entry>
-      <entry id="2011" string="Stop encoding">Прекид енкодовања</entry>
+      <entry id="2007" string="Configure signal processing">Подеси обраду сигнала</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Подеси изабрани аудио енкодер</entry>
+      <entry id="2009" string="Start the encoding process">Покрени енкодовање</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Започни енкодовање (обриши изворне фајлове)</entry>
+      <entry id="2011" string="Pause/resume encoding">Паузирај/настави енкодовање</entry>
+      <entry id="2012" string="Stop encoding">Прекид енкодовања</entry>
     </section>
 
     <section name="Joblist">

@@ -82,8 +82,8 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Setări generale</entry>
-	<entry id="1301" string="Configure selected encoder">Configurare codec</entry>
-	<entry id="1302" string="Active CD-ROM drive">CD-ROM activ</entry>
+	<entry id="1302" string="Configure selected encoder">Configurare codec</entry>
+	<entry id="1303" string="Active CD-ROM drive">CD-ROM activ</entry>
       </section>
 
       <section name="Encode">
@@ -117,10 +117,10 @@
       <entry id="2004" string="Query CDDB database">Interogare bază CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Trimitere date către CDDB</entry>
       <entry id="2006" string="Configure general settings">Configurare setări generale</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Configurare codec audio</entry>
-      <entry id="2008" string="Start the encoding process">Porneşte procesul de codare</entry>
-      <entry id="2010" string="Pause/resume encoding">Pauză/Continuare codare</entry>
-      <entry id="2011" string="Stop encoding">Stop codare</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Configurare codec audio</entry>
+      <entry id="2009" string="Start the encoding process">Porneşte procesul de codare</entry>
+      <entry id="2011" string="Pause/resume encoding">Pauză/Continuare codare</entry>
+      <entry id="2012" string="Stop encoding">Stop codare</entry>
     </section>
 
     <section name="Joblist">

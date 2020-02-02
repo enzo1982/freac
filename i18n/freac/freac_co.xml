@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Preferenze generale</entry>
-	<entry id="1301" string="Configure selected encoder">Cunfigurà u cudificatore selezziunatu</entry>
-	<entry id="1302" string="Active CD-ROM drive">Lettore CD-ROM attivu</entry>
-	<entry id="1303" string="Active configuration">Cunfigurazione attiva</entry>
-	<entry id="1304" string="Default configuration">Cunfigurazione predefinita</entry>
+	<entry id="1301" string="Configure signal processing">Cunfigurà u trattamentu di u signale</entry>
+	<entry id="1302" string="Configure selected encoder">Cunfigurà u cudificatore selezziunatu</entry>
+	<entry id="1303" string="Active CD-ROM drive">Lettore CD-ROM attivu</entry>
+	<entry id="1304" string="Active configuration">Cunfigurazione attiva</entry>
+	<entry id="1305" string="Default configuration">Cunfigurazione predefinita</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Attivà u trattamentu di u signale</entry>
 	<entry id="1401" string="Enable processing during playback">Attivà u trattamentu durante a ripruduzzione</entry>
-	<entry id="1402" string="Configure signal processing">Cunfigurà u trattamentu di u signale</entry>
-	<entry id="1403" string="Selected signal processors">Prucessori di signale selezziunati</entry>
+	<entry id="1402" string="Selected signal processors">Prucessori di signale selezziunati</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">Interrugà a banca di dati CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Sottumette i dati CDDB</entry>
       <entry id="2006" string="Configure general settings">Cunfigurà e preferenze generale</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Cunfigurà u cudificatore audio selezziunatu</entry>
-      <entry id="2008" string="Start the encoding process">Principià u trattamentu di cudificazione</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Principià u trattamentu di cudificazione (cù a squassatura di i schedarii uriginale)</entry>
-      <entry id="2010" string="Pause/resume encoding">Interrompe / cuntinuà a cudificazione</entry>
-      <entry id="2011" string="Stop encoding">Piantà a cudificazione</entry>
+      <entry id="2007" string="Configure signal processing">Cunfigurà u trattamentu di u signale</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Cunfigurà u cudificatore audio selezziunatu</entry>
+      <entry id="2009" string="Start the encoding process">Principià u trattamentu di cudificazione</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Principià u trattamentu di cudificazione (cù a squassatura di i schedarii uriginale)</entry>
+      <entry id="2011" string="Pause/resume encoding">Interrompe / cuntinuà a cudificazione</entry>
+      <entry id="2012" string="Stop encoding">Piantà a cudificazione</entry>
     </section>
 
     <section name="Joblist">

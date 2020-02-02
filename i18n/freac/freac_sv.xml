@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Allmänna inställningar</entry>
-	<entry id="1301" string="Configure selected encoder">Inställningar för aktuell kodare</entry>
-	<entry id="1302" string="Active CD-ROM drive">Aktiv cd-romenhet</entry>
-	<entry id="1303" string="Active configuration">Aktiv konfiguration</entry>
-	<entry id="1304" string="Default configuration">Standardkonfiguration</entry>
+	<entry id="1301" string="Configure signal processing">Konfigurera signalbehandling</entry>
+	<entry id="1302" string="Configure selected encoder">Inställningar för aktuell kodare</entry>
+	<entry id="1303" string="Active CD-ROM drive">Aktiv cd-romenhet</entry>
+	<entry id="1304" string="Active configuration">Aktiv konfiguration</entry>
+	<entry id="1305" string="Default configuration">Standardkonfiguration</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Aktivera signalbehandling</entry>
 	<entry id="1401" string="Enable processing during playback">Aktivera signalbehandling under uppspelning</entry>
-	<entry id="1402" string="Configure signal processing">Konfigurera signalbehandling</entry>
-	<entry id="1403" string="Selected signal processors">Aktuella signalbehandlare</entry>
+	<entry id="1402" string="Selected signal processors">Aktuella signalbehandlare</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">Sök i CDDB-databas</entry>
       <entry id="2005" string="Submit CDDB data">Registrera CDDB-data</entry>
       <entry id="2006" string="Configure general settings">Allmänna inställningar</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Inställningar för aktuell kodare</entry>
-      <entry id="2008" string="Start the encoding process">Starta kodning</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Starta kodning (ta bort originalfiler)</entry>
-      <entry id="2010" string="Pause/resume encoding">Pausa/återuppta kodning</entry>
-      <entry id="2011" string="Stop encoding">Stoppa kodning</entry>
+      <entry id="2007" string="Configure signal processing">Konfigurera signalbehandling</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Inställningar för aktuell kodare</entry>
+      <entry id="2009" string="Start the encoding process">Starta kodning</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Starta kodning (ta bort originalfiler)</entry>
+      <entry id="2011" string="Pause/resume encoding">Pausa/återuppta kodning</entry>
+      <entry id="2012" string="Stop encoding">Stoppa kodning</entry>
     </section>
 
     <section name="Joblist">

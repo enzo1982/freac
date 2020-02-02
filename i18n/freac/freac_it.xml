@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Impostazioni generali</entry>
-	<entry id="1301" string="Configure selected encoder">Imposta codec selezionato</entry>
-	<entry id="1302" string="Active CD-ROM drive">Unità CD predefinita</entry>
-	<entry id="1303" string="Active configuration">Configurazione attiva</entry>
-	<entry id="1304" string="Default configuration">Configurazione predefinita</entry>
+	<entry id="1301" string="Configure signal processing">Configura elaborazione segnale</entry>
+	<entry id="1302" string="Configure selected encoder">Imposta codec selezionato</entry>
+	<entry id="1303" string="Active CD-ROM drive">Unità CD predefinita</entry>
+	<entry id="1304" string="Active configuration">Configurazione attiva</entry>
+	<entry id="1305" string="Default configuration">Configurazione predefinita</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Abilita elaborazione segnale</entry>
 	<entry id="1401" string="Enable processing during playback">Abilta elaborazione durante la riproduzione</entry>
-	<entry id="1402" string="Configure signal processing">Configura elaborazione segnale</entry>
-	<entry id="1403" string="Selected signal processors">Processori di segnale selezionati</entry>
+	<entry id="1402" string="Selected signal processors">Processori di segnale selezionati</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">Interroga database CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Invia dati CDDB</entry>
       <entry id="2006" string="Configure general settings">Imposta le opzioni generali del programma</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Imposta il codec selezionato</entry>
-      <entry id="2008" string="Start the encoding process">Avvia il processo di codifica</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Avvia il processo di codifica (eliminando i file originali)</entry>
-      <entry id="2010" string="Pause/resume encoding">Sospendi/riprendi codifica</entry>
-      <entry id="2011" string="Stop encoding">Interrompi codifica</entry>
+      <entry id="2007" string="Configure signal processing">Configura elaborazione segnale</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Imposta il codec selezionato</entry>
+      <entry id="2009" string="Start the encoding process">Avvia il processo di codifica</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Avvia il processo di codifica (eliminando i file originali)</entry>
+      <entry id="2011" string="Pause/resume encoding">Sospendi/riprendi codifica</entry>
+      <entry id="2012" string="Stop encoding">Interrompi codifica</entry>
     </section>
 
     <section name="Joblist">

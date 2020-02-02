@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Allgemeine Einstellungen</entry>
-	<entry id="1301" string="Configure selected encoder">Ausgewählten Kodierer konfigurieren</entry>
-	<entry id="1302" string="Active CD-ROM drive">Aktives CD-ROM-Laufwerk</entry>
-	<entry id="1303" string="Active configuration">Aktive Konfiguration</entry>
-	<entry id="1304" string="Default configuration">Standardkonfiguration</entry>
+	<entry id="1301" string="Configure signal processing">Signalverarbeitung konfigurieren</entry>
+	<entry id="1302" string="Configure selected encoder">Ausgewählten Kodierer konfigurieren</entry>
+	<entry id="1303" string="Active CD-ROM drive">Aktives CD-ROM-Laufwerk</entry>
+	<entry id="1304" string="Active configuration">Aktive Konfiguration</entry>
+	<entry id="1305" string="Default configuration">Standardkonfiguration</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Signalverarbeitung aktivieren</entry>
 	<entry id="1401" string="Enable processing during playback">Verarbeitung während der Wiedergabe aktivieren</entry>
-	<entry id="1402" string="Configure signal processing">Signalverarbeitung konfigurieren</entry>
-	<entry id="1403" string="Selected signal processors">Ausgewählte Signalverarbeitungskomponenten</entry>
+	<entry id="1402" string="Selected signal processors">Ausgewählte Signalverarbeitungskomponenten</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">CDDB-Datenbank abfragen</entry>
       <entry id="2005" string="Submit CDDB data">CDDB-Daten senden</entry>
       <entry id="2006" string="Configure general settings">Allgemeine Einstellungen konfigurieren</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Den ausgewählten Kodierer konfigurieren</entry>
-      <entry id="2008" string="Start the encoding process">Den Kodierungsprozess starten</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Den Kodierungsprozess starten (und Originaldateien löschen)</entry>
-      <entry id="2010" string="Pause/resume encoding">Kodierung unterbrechen/fortsetzen</entry>
-      <entry id="2011" string="Stop encoding">Kodierung abbrechen</entry>
+      <entry id="2007" string="Configure signal processing">Signalverarbeitung konfigurieren</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Den ausgewählten Kodierer konfigurieren</entry>
+      <entry id="2009" string="Start the encoding process">Den Kodierungsprozess starten</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Den Kodierungsprozess starten (und Originaldateien löschen)</entry>
+      <entry id="2011" string="Pause/resume encoding">Kodierung unterbrechen/fortsetzen</entry>
+      <entry id="2012" string="Stop encoding">Kodierung abbrechen</entry>
     </section>
 
     <section name="Joblist">

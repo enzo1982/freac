@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -1077,6 +1077,10 @@ Void freac::freacGUI::FillMenus()
 	entry->onAction.Connect(&freacGUI::ConfigureSettings, this);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyC, mainWnd);
 
+	entry = menu_options->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Configure signal processing")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/settings/settings-dsp.png")));
+	entry->onAction.Connect(&freacGUI::ConfigureProcessing, this);
+	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyD, mainWnd);
+
 	entry = menu_options->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Configure selected encoder")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/settings/settings-codec.png")));
 	entry->onAction.Connect(&freacGUI::ConfigureEncoder, this);
 	entry->SetShortcut(SC_CONTROL | SC_SHIFT, Keyboard::KeyE, mainWnd);
@@ -1108,10 +1112,6 @@ Void freac::freacGUI::FillMenus()
 	entry->onAction.Connect(&freacGUI::ToggleSignalProcessing, this);
 
 	menu_processing->AddEntry(i18n->TranslateString("Enable processing during playback"), (Bool *) &config->GetPersistentIntValue(Config::CategoryProcessingID, Config::ProcessingProcessPlaybackID, Config::ProcessingProcessPlaybackDefault));
-	menu_processing->AddEntry();
-
-	entry = menu_processing->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Configure signal processing")));
-	entry->onAction.Connect(&freacGUI::ConfigureProcessing, this);
 
 	const Array<String>	&components = config->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault).Explode(",");
 
@@ -1296,6 +1296,10 @@ Void freac::freacGUI::FillMenus()
 	entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/settings/settings.png")), config->GetNOfConfigurations() > 1 ? menu_configurations : NIL);
 	entry->onAction.Connect(&freacGUI::ConfigureSettings, this);
 	entry->SetTooltipText(i18n->TranslateString("Configure general settings"));
+
+	entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/settings/settings-dsp.png")), menu_processors->Length() > 0 ? menu_processors : NIL);
+	entry->onAction.Connect(&freacGUI::ConfigureProcessing, this);
+	entry->SetTooltipText(i18n->TranslateString("Configure signal processing"));
 
 	entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/settings/settings-codec.png")));
 	entry->onAction.Connect(&freacGUI::ConfigureEncoder, this);

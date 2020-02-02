@@ -151,8 +151,10 @@ History
 
 		- Improvements
 
+			- added support for dark mode on Windows 10
 			- prepared for freedb.org shutdown on 31st March 2020
 			- the fre:ac installer is now digitally signed
+			- added a toolbar button to configure signal processing
 
 		- Bug fixes
 

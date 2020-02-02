@@ -83,8 +83,8 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">إعدادات عامة</entry>
-	<entry id="1301" string="Configure selected encoder">تهيئة الترميز المحدد</entry>
-	<entry id="1302" string="Active CD-ROM drive">تنشيط محرك القراص المضغوطة</entry>
+	<entry id="1302" string="Configure selected encoder">تهيئة الترميز المحدد</entry>
+	<entry id="1303" string="Active CD-ROM drive">تنشيط محرك القراص المضغوطة</entry>
       </section>
 
       <section name="Encode">
@@ -118,10 +118,10 @@
       <entry id="2004" string="Query CDDB database">إستعلام قاعدة بيانات قرص مدمج</entry>
       <entry id="2005" string="Submit CDDB data">تسليم بيانات قاعدة بيانات قرص مدمج</entry>
       <entry id="2006" string="Configure general settings">تهئية الاعدادات العامة</entry>
-      <entry id="2007" string="Configure the selected audio encoder">تهيئة ترميز الصوت المحدد</entry>
-      <entry id="2008" string="Start the encoding process">بدء عملية الترميز</entry>
-      <entry id="2010" string="Pause/resume encoding">وقفة/استعادة الترميز</entry>
-      <entry id="2011" string="Stop encoding">إيقاف الترميز</entry>
+      <entry id="2008" string="Configure the selected audio encoder">تهيئة ترميز الصوت المحدد</entry>
+      <entry id="2009" string="Start the encoding process">بدء عملية الترميز</entry>
+      <entry id="2011" string="Pause/resume encoding">وقفة/استعادة الترميز</entry>
+      <entry id="2012" string="Stop encoding">إيقاف الترميز</entry>
     </section>
 
     <section name="Joblist">

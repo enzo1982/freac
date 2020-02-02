@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Ustawienia ogólne</entry>
-	<entry id="1301" string="Configure selected encoder">Konfiguruj bieżący konwerter</entry>
-	<entry id="1302" string="Active CD-ROM drive">Bieżąca stacja CD-ROM</entry>
-	<entry id="1303" string="Active configuration">Bieżąca konfiguracja</entry>
-	<entry id="1304" string="Default configuration">Domyślna konfiguracja</entry>
+	<entry id="1301" string="Configure signal processing">Konfiguruj przetwarzanie sygnału</entry>
+	<entry id="1302" string="Configure selected encoder">Konfiguruj bieżący konwerter</entry>
+	<entry id="1303" string="Active CD-ROM drive">Bieżąca stacja CD-ROM</entry>
+	<entry id="1304" string="Active configuration">Bieżąca konfiguracja</entry>
+	<entry id="1305" string="Default configuration">Domyślna konfiguracja</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Włącz przetwarzanie sygnału</entry>
 	<entry id="1401" string="Enable processing during playback">Włącz przetwarzanie podczas odtwarzania</entry>
-	<entry id="1402" string="Configure signal processing">Konfiguruj przetwarzanie sygnału</entry>
-	<entry id="1403" string="Selected signal processors">Wybrane procesory sygnału</entry>
+	<entry id="1402" string="Selected signal processors">Wybrane procesory sygnału</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">Wyszukaj w bazie danych CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Wyślij dane do CDDB</entry>
       <entry id="2006" string="Configure general settings">Zmień ustawienia ogólne</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Konfiguruj bieżący konwerter</entry>
-      <entry id="2008" string="Start the encoding process">Rozpocznij proces konwersji</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Rozpocznij proces konwersji (z usuwaniem plików źródłowych)</entry>
-      <entry id="2010" string="Pause/resume encoding">Wstrzymaj/wznów konwersję</entry>
-      <entry id="2011" string="Stop encoding">Zatrzymaj konwersję</entry>
+      <entry id="2007" string="Configure signal processing">Konfiguruj przetwarzanie sygnału</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Konfiguruj bieżący konwerter</entry>
+      <entry id="2009" string="Start the encoding process">Rozpocznij proces konwersji</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Rozpocznij proces konwersji (z usuwaniem plików źródłowych)</entry>
+      <entry id="2011" string="Pause/resume encoding">Wstrzymaj/wznów konwersję</entry>
+      <entry id="2012" string="Stop encoding">Zatrzymaj konwersję</entry>
     </section>
 
     <section name="Joblist">

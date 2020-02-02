@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Obecná nastavení</entry>
-	<entry id="1301" string="Configure selected encoder">Nastavit vybraný enkodér</entry>
-	<entry id="1302" string="Active CD-ROM drive">Aktivní CD-ROM-mechanika</entry>
-	<entry id="1303" string="Active configuration">Aktivní nastavení</entry>
-	<entry id="1304" string="Default configuration">Standardní nastavení</entry>
+	<entry id="1301" string="Configure signal processing">Konfigurace zpracování signálu</entry>
+	<entry id="1302" string="Configure selected encoder">Nastavit vybraný enkodér</entry>
+	<entry id="1303" string="Active CD-ROM drive">Aktivní CD-ROM-mechanika</entry>
+	<entry id="1304" string="Active configuration">Aktivní nastavení</entry>
+	<entry id="1305" string="Default configuration">Standardní nastavení</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Povolit zpracování signálu</entry>
 	<entry id="1401" string="Enable processing during playback">Povolit zpracování během přehrávání</entry>
-	<entry id="1402" string="Configure signal processing">Konfigurace zpracování signálu</entry>
-	<entry id="1403" string="Selected signal processors">Vybrané komponenty pro zpracování signálu</entry>
+	<entry id="1402" string="Selected signal processors">Vybrané komponenty pro zpracování signálu</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">Dotaz na CDDB databázi</entry>
       <entry id="2005" string="Submit CDDB data">Poslat CDDB data</entry>
       <entry id="2006" string="Configure general settings">Konfigurovat obecná nastavení</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Konfigurovat vybraný audio kodek</entry>
-      <entry id="2008" string="Start the encoding process">Spustit proces kódování</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Spustit proces kódování (a smazat původní soubory)</entry>
-      <entry id="2010" string="Pause/resume encoding">Pauza/Pokračovat v kódování</entry>
-      <entry id="2011" string="Stop encoding">Přerušit kódování</entry>
+      <entry id="2007" string="Configure signal processing">Konfigurace zpracování signálu</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Konfigurovat vybraný audio kodek</entry>
+      <entry id="2009" string="Start the encoding process">Spustit proces kódování</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Spustit proces kódování (a smazat původní soubory)</entry>
+      <entry id="2011" string="Pause/resume encoding">Pauza/Pokračovat v kódování</entry>
+      <entry id="2012" string="Stop encoding">Přerušit kódování</entry>
     </section>
 
     <section name="Joblist">

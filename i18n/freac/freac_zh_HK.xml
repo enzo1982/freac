@@ -93,10 +93,10 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">喜好設定</entry>
-	<entry id="1301" string="Configure selected encoder">設定所選編碼器</entry>
-	<entry id="1302" string="Active CD-ROM drive">使用的CD-ROM機</entry>
-	<entry id="1303" string="Active configuration">使用的工作範本</entry>
-	<entry id="1304" string="Default configuration">預設工作範本</entry>
+	<entry id="1302" string="Configure selected encoder">設定所選編碼器</entry>
+	<entry id="1303" string="Active CD-ROM drive">使用的CD-ROM機</entry>
+	<entry id="1304" string="Active configuration">使用的工作範本</entry>
+	<entry id="1305" string="Default configuration">預設工作範本</entry>
       </section>
 
       <section name="Encode">
@@ -130,10 +130,10 @@
       <entry id="2004" string="Query CDDB database">查詢CDDB資料庫</entry>
       <entry id="2005" string="Submit CDDB data">提交CDDB資料</entry>
       <entry id="2006" string="Configure general settings">喜好設定</entry>
-      <entry id="2007" string="Configure the selected audio encoder">設定所選聲音編碼</entry>
-      <entry id="2008" string="Start the encoding process">開始編碼（可選取編碼器）</entry>
-      <entry id="2010" string="Pause/resume encoding">暫停╱繼續編碼</entry>
-      <entry id="2011" string="Stop encoding">停止編碼</entry>
+      <entry id="2008" string="Configure the selected audio encoder">設定所選聲音編碼</entry>
+      <entry id="2009" string="Start the encoding process">開始編碼（可選取編碼器）</entry>
+      <entry id="2011" string="Pause/resume encoding">暫停╱繼續編碼</entry>
+      <entry id="2012" string="Stop encoding">停止編碼</entry>
     </section>
 
     <section name="Joblist">

@@ -73,8 +73,8 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">הגדרות</entry>
-	<entry id="1301" string="Configure selected encoder">הגדרות מקודד</entry>
-	<entry id="1302" string="Active CD-ROM drive">בחר כונן CD-ROM</entry>
+	<entry id="1302" string="Configure selected encoder">הגדרות מקודד</entry>
+	<entry id="1303" string="Active CD-ROM drive">בחר כונן CD-ROM</entry>
       </section>
 
       <section name="Encode">
@@ -105,10 +105,10 @@
       <entry id="2002" string="Remove the selected entry from the joblist">הסר מרשימת ביצוע</entry>
       <entry id="2003" string="Clear the entire joblist">נקה רשימת ביצוע</entry>
       <entry id="2006" string="Configure general settings">הגדר מאפיינים</entry>
-      <entry id="2007" string="Configure the selected audio encoder">הגדר מקודד</entry>
-      <entry id="2008" string="Start the encoding process">החל תהליך קידוד</entry>
-      <entry id="2010" string="Pause/resume encoding">השהה / חדש המרה</entry>
-      <entry id="2011" string="Stop encoding">עצור המרה</entry>
+      <entry id="2008" string="Configure the selected audio encoder">הגדר מקודד</entry>
+      <entry id="2009" string="Start the encoding process">החל תהליך קידוד</entry>
+      <entry id="2011" string="Pause/resume encoding">השהה / חדש המרה</entry>
+      <entry id="2012" string="Stop encoding">עצור המרה</entry>
     </section>
 
     <section name="Joblist">

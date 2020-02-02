@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Configuración general</entry>
-	<entry id="1301" string="Configure selected encoder">Configurar compresor seleccionado</entry>
-	<entry id="1302" string="Active CD-ROM drive">Unidad CD-ROM activa</entry>
-	<entry id="1303" string="Active configuration">Configuración activa</entry>
-	<entry id="1304" string="Default configuration">Configuración por defecto</entry>
+	<entry id="1301" string="Configure signal processing">Configurar el proceso de la señal</entry>
+	<entry id="1302" string="Configure selected encoder">Configurar compresor seleccionado</entry>
+	<entry id="1303" string="Active CD-ROM drive">Unidad CD-ROM activa</entry>
+	<entry id="1304" string="Active configuration">Configuración activa</entry>
+	<entry id="1305" string="Default configuration">Configuración por defecto</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Habilitar el proceso de la señal</entry>
 	<entry id="1401" string="Enable processing during playback">Habilitar el proceso durante la reproducción</entry>
-	<entry id="1402" string="Configure signal processing">Configurar el proceso de la señal</entry>
-	<entry id="1403" string="Selected signal processors">Procesadores de la señal elegidos</entry>
+	<entry id="1402" string="Selected signal processors">Procesadores de la señal elegidos</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">Consultar base de datos CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Enviar datos CDDB</entry>
       <entry id="2006" string="Configure general settings">Configuración general</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Configurar el compresor elegido</entry>
-      <entry id="2008" string="Start the encoding process">Comenzar el proceso de compresión</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Comenzar el proceso de compresión (borrando los archivos originales)</entry>
-      <entry id="2010" string="Pause/resume encoding">Pausar/continuar la compresión</entry>
-      <entry id="2011" string="Stop encoding">Parar compresión</entry>
+      <entry id="2007" string="Configure signal processing">Configurar el proceso de la señal</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Configurar el compresor elegido</entry>
+      <entry id="2009" string="Start the encoding process">Comenzar el proceso de compresión</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Comenzar el proceso de compresión (borrando los archivos originales)</entry>
+      <entry id="2011" string="Pause/resume encoding">Pausar/continuar la compresión</entry>
+      <entry id="2012" string="Stop encoding">Parar compresión</entry>
     </section>
 
     <section name="Joblist">

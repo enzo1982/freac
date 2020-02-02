@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Opće postavke</entry>
-	<entry id="1301" string="Configure selected encoder">Postavke izabranog encodera</entry>
-	<entry id="1302" string="Active CD-ROM drive">Aktivni CD-ROM pogon</entry>
-	<entry id="1303" string="Active configuration">Aktivne postavke</entry>
-	<entry id="1304" string="Default configuration">Standardne postavke</entry>
+	<entry id="1301" string="Configure signal processing">Postavke obrade signala</entry>
+	<entry id="1302" string="Configure selected encoder">Postavke izabranog encodera</entry>
+	<entry id="1303" string="Active CD-ROM drive">Aktivni CD-ROM pogon</entry>
+	<entry id="1304" string="Active configuration">Aktivne postavke</entry>
+	<entry id="1305" string="Default configuration">Standardne postavke</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Omogući obradu signala</entry>
 	<entry id="1401" string="Enable processing during playback">Omogući obradu dok sviram</entry>
-	<entry id="1402" string="Configure signal processing">Postavke obrade signala</entry>
-	<entry id="1403" string="Selected signal processors">Odabrana obrada signala</entry>
+	<entry id="1402" string="Selected signal processors">Odabrana obrada signala</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">Upit CDDB bazi podataka</entry>
       <entry id="2005" string="Submit CDDB data">Pošalji CDDB podatke</entry>
       <entry id="2006" string="Configure general settings">Odredi opće postavke</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Odredi postavke izabranog audio enkodera</entry>
-      <entry id="2008" string="Start the encoding process">Počni proces enkodiranja</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Počni proces enkodiranja (brisanje izvornih datoteka)</entry>
-      <entry id="2010" string="Pause/resume encoding">Pauziraj/nastavi enkodiranje</entry>
-      <entry id="2011" string="Stop encoding">Zaustavi enkodiranje</entry>
+      <entry id="2007" string="Configure signal processing">Postavke obrade signala</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Odredi postavke izabranog audio enkodera</entry>
+      <entry id="2009" string="Start the encoding process">Počni proces enkodiranja</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Počni proces enkodiranja (brisanje izvornih datoteka)</entry>
+      <entry id="2011" string="Pause/resume encoding">Pauziraj/nastavi enkodiranje</entry>
+      <entry id="2012" string="Stop encoding">Zaustavi enkodiranje</entry>
     </section>
 
     <section name="Joblist">

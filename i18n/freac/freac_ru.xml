@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Основные настройки</entry>
-	<entry id="1301" string="Configure selected encoder">Настроить выбранный кодек</entry>
-	<entry id="1302" string="Active CD-ROM drive">Текущий привод CD-ROM</entry>
-	<entry id="1303" string="Active configuration">Текущая конфигурация</entry>
-	<entry id="1304" string="Default configuration">Конфигурация по умолчанию</entry>
+	<entry id="1301" string="Configure signal processing">Настройка обработки сигнала</entry>
+	<entry id="1302" string="Configure selected encoder">Настроить выбранный кодек</entry>
+	<entry id="1303" string="Active CD-ROM drive">Текущий привод CD-ROM</entry>
+	<entry id="1304" string="Active configuration">Текущая конфигурация</entry>
+	<entry id="1305" string="Default configuration">Конфигурация по умолчанию</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Включить обработку сигнала</entry>
 	<entry id="1401" string="Enable processing during playback">Включить обработку во время воспроизведения</entry>
-	<entry id="1402" string="Configure signal processing">Настройка обработки сигнала</entry>
-	<entry id="1403" string="Selected signal processors">Выбранные обработчики сигнала</entry>
+	<entry id="1402" string="Selected signal processors">Выбранные обработчики сигнала</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">Запрос в базу CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Переслать данные CDDB</entry>
       <entry id="2006" string="Configure general settings">Настройка основных параметров</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Настройка выбранного кодека</entry>
-      <entry id="2008" string="Start the encoding process">Начать процесс кодирования</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Начать процесс кодирования (удалить исходные файлы)</entry>
-      <entry id="2010" string="Pause/resume encoding">Пауза/Возобновить кодирование</entry>
-      <entry id="2011" string="Stop encoding">Остановить кодирование</entry>
+      <entry id="2007" string="Configure signal processing">Настройка обработки сигнала</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Настройка выбранного кодека</entry>
+      <entry id="2009" string="Start the encoding process">Начать процесс кодирования</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Начать процесс кодирования (удалить исходные файлы)</entry>
+      <entry id="2011" string="Pause/resume encoding">Пауза/Возобновить кодирование</entry>
+      <entry id="2012" string="Stop encoding">Остановить кодирование</entry>
     </section>
 
     <section name="Joblist">

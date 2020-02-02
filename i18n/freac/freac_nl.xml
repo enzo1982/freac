@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Algemene instellingen</entry>
-	<entry id="1301" string="Configure selected encoder">Geselecteerde encoder configureren</entry>
-	<entry id="1302" string="Active CD-ROM drive">Actief cd-romstation</entry>
-	<entry id="1303" string="Active configuration">Actieve configuratie</entry>
-	<entry id="1304" string="Default configuration">Standaardconfiguratie</entry>
+	<entry id="1301" string="Configure signal processing">Signaalverwerking configureren</entry>
+	<entry id="1302" string="Configure selected encoder">Geselecteerde encoder configureren</entry>
+	<entry id="1303" string="Active CD-ROM drive">Actief cd-romstation</entry>
+	<entry id="1304" string="Active configuration">Actieve configuratie</entry>
+	<entry id="1305" string="Default configuration">Standaardconfiguratie</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Signaalverwerking inschakelen</entry>
 	<entry id="1401" string="Enable processing during playback">Verwerken tijdens afspelen inschakelen</entry>
-	<entry id="1402" string="Configure signal processing">Signaalverwerking configureren</entry>
-	<entry id="1403" string="Selected signal processors">Geselecteerde signaalverwerkers</entry>
+	<entry id="1402" string="Selected signal processors">Geselecteerde signaalverwerkers</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">Aanvragen bij CDDB-database</entry>
       <entry id="2005" string="Submit CDDB data">CDDB-data verzenden</entry>
       <entry id="2006" string="Configure general settings">Algemene instellingen configureren</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Geselecteerde encoder configureren</entry>
-      <entry id="2008" string="Start the encoding process">Het coderingsproces starten</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Het codeerproces starten (oospronkelijke bestanden verwijderen)</entry>
-      <entry id="2010" string="Pause/resume encoding">Coderen pauzeren/hervatten</entry>
-      <entry id="2011" string="Stop encoding">Coderen stoppen</entry>
+      <entry id="2007" string="Configure signal processing">Signaalverwerking configureren</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Geselecteerde encoder configureren</entry>
+      <entry id="2009" string="Start the encoding process">Het coderingsproces starten</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Het codeerproces starten (oospronkelijke bestanden verwijderen)</entry>
+      <entry id="2011" string="Pause/resume encoding">Coderen pauzeren/hervatten</entry>
+      <entry id="2012" string="Stop encoding">Coderen stoppen</entry>
     </section>
 
     <section name="Joblist">

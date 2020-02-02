@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">一般設定</entry>
-	<entry id="1301" string="Configure selected encoder">選択したエンコーダの設定</entry>
-	<entry id="1302" string="Active CD-ROM drive">アクティブな CD-ROM ドライブ</entry>
-	<entry id="1303" string="Active configuration">有効な設定</entry>
-	<entry id="1304" string="Default configuration">デフォルト設定</entry>
+	<entry id="1301" string="Configure signal processing">信号処理を設定する</entry>
+	<entry id="1302" string="Configure selected encoder">選択したエンコーダの設定</entry>
+	<entry id="1303" string="Active CD-ROM drive">アクティブな CD-ROM ドライブ</entry>
+	<entry id="1304" string="Active configuration">有効な設定</entry>
+	<entry id="1305" string="Default configuration">デフォルト設定</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">信号処理を有効にする</entry>
 	<entry id="1401" string="Enable processing during playback">再生中に処理を有効にする</entry>
-	<entry id="1402" string="Configure signal processing">信号処理を設定する</entry>
-	<entry id="1403" string="Selected signal processors">選択された信号処理</entry>
+	<entry id="1402" string="Selected signal processors">選択された信号処理</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">CDDB へ問い合わせ</entry>
       <entry id="2005" string="Submit CDDB data">CDDB にデータを送信</entry>
       <entry id="2006" string="Configure general settings">一般設定</entry>
-      <entry id="2007" string="Configure the selected audio encoder">選択エンコーダの設定</entry>
-      <entry id="2008" string="Start the encoding process">エンコードを開始</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">エンコードを開始（元のファイルを削除する）</entry>
-      <entry id="2010" string="Pause/resume encoding">エンコードを中断/再開</entry>
-      <entry id="2011" string="Stop encoding">エンコード停止</entry>
+      <entry id="2007" string="Configure signal processing">信号処理を設定する</entry>
+      <entry id="2008" string="Configure the selected audio encoder">選択エンコーダの設定</entry>
+      <entry id="2009" string="Start the encoding process">エンコードを開始</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">エンコードを開始（元のファイルを削除する）</entry>
+      <entry id="2011" string="Pause/resume encoding">エンコードを中断/再開</entry>
+      <entry id="2012" string="Stop encoding">エンコード停止</entry>
     </section>
 
     <section name="Joblist">

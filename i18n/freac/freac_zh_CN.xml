@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">常规设置</entry>
-	<entry id="1301" string="Configure selected encoder">设置已选编码器</entry>
-	<entry id="1302" string="Active CD-ROM drive">当前使用的 CD-ROM 驱动器</entry>
-	<entry id="1303" string="Active configuration">当前使用的配置</entry>
-	<entry id="1304" string="Default configuration">默认配置</entry>
+	<entry id="1301" string="Configure signal processing">配置信号处理</entry>
+	<entry id="1302" string="Configure selected encoder">设置已选编码器</entry>
+	<entry id="1303" string="Active CD-ROM drive">当前使用的 CD-ROM 驱动器</entry>
+	<entry id="1304" string="Active configuration">当前使用的配置</entry>
+	<entry id="1305" string="Default configuration">默认配置</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">启用信号处理</entry>
 	<entry id="1401" string="Enable processing during playback">播放时开启处理</entry>
-	<entry id="1402" string="Configure signal processing">配置信号处理</entry>
-	<entry id="1403" string="Selected signal processors">已选择的信号处理器</entry>
+	<entry id="1402" string="Selected signal processors">已选择的信号处理器</entry>
       </section>
 
       <section name="Encode">
@@ -145,11 +145,12 @@
       <entry id="2004" string="Query CDDB database">查询 CDDB 数据库</entry>
       <entry id="2005" string="Submit CDDB data">提交 CDDB 数据</entry>
       <entry id="2006" string="Configure general settings">设置常规选项</entry>
-      <entry id="2007" string="Configure the selected audio encoder">设置选中的音频编码器</entry>
-      <entry id="2008" string="Start the encoding process">启动编码处理</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">启动编码处理（删除源文件）</entry>
-      <entry id="2010" string="Pause/resume encoding">暂停/继续编码</entry>
-      <entry id="2011" string="Stop encoding">停止编码</entry>
+      <entry id="2007" string="Configure signal processing">配置信号处理</entry>
+      <entry id="2008" string="Configure the selected audio encoder">设置选中的音频编码器</entry>
+      <entry id="2009" string="Start the encoding process">启动编码处理</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">启动编码处理（删除源文件）</entry>
+      <entry id="2011" string="Pause/resume encoding">暂停/继续编码</entry>
+      <entry id="2012" string="Stop encoding">停止编码</entry>
     </section>
 
     <section name="Joblist">
