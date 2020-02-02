@@ -53,9 +53,6 @@ Void freac::JobManager::ManagerThread()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	Bool	 enableConsole = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
-	Bool	 displayErrors = config->GetIntValue(Config::CategorySettingsID, Config::SettingsDisplayErrorsID, Config::SettingsDisplayErrorsDefault);
-
 	while (!exitThread)
 	{
 		const Array<Job *>	&scheduled = Job::GetScheduledJobs();
@@ -98,6 +95,9 @@ Void freac::JobManager::ManagerThread()
 		if (finished.Length() > 0)
 		{
 			AutoRelease	 autoRelease;
+
+			Bool	 enableConsole = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+			Bool	 displayErrors = config->GetIntValue(Config::CategorySettingsID, Config::SettingsDisplayErrorsID, Config::SettingsDisplayErrorsDefault);
 
 			foreachreverse (Job *job, finished)
 			{
