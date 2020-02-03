@@ -161,6 +161,7 @@ Geschichte
 			- Kompatibilitätsproblem mit UTF-8 Codepage-Einstellung unter Windows 10 behoben
 			- Probleme mit FLAC-Dekodierung unter macOS behoben
 			- Probleme beim Öffnen von Opus-Dateien mit der Erweiterung .ogg behoben
+			- Einige Probleme mit dem freaccmd-Kommandozeileninterface behoben
 
 		- Aktualisierte Codecs
 

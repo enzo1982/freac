@@ -361,11 +361,22 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		while (Job::GetPlannedJobs().Length()	> 0) S::System::System::Sleep(10);
 		while (Job::GetRunningJobs().Length()	> 0) S::System::System::Sleep(10);
 
-		/* Convert them.
-		 */
 		if (joblist->GetNOfTracks() > 0)
 		{
-			Converter().Convert(*joblist->GetTrackList(), False);
+			/* Create array of tracks to convert.
+			 */
+			Array<Track>	 tracks;
+
+			for (Int i = 0; i < joblist->GetNOfTracks(); i++)
+			{
+				const Track	&track = joblist->GetNthTrack(i);
+
+				tracks.Add(track, track.GetTrackID());
+			}
+
+			/* Convert them.
+			 */
+			Converter().Convert(tracks, False);
 
 			if (!quiet) Console::OutputString("done.\n");
 		}
@@ -425,17 +436,25 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 				continue;
 			}
 
-			/* Convert it.
+			/* Get track to convert.
 			 */
-			if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
-
 			Track	 track = joblist->GetNthTrack(0);
 
 			track.outputFile = outfile;
 
 			joblist->UpdateTrackInfo(track);
 
-			Converter().Convert(*joblist->GetTrackList(), False);
+			/* Add it to a track array.
+			 */
+			Array<Track>	 tracks;
+
+			tracks.Add(track, track.GetTrackID());
+
+			/* Convert it.
+			 */
+			if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
+
+			Converter().Convert(tracks, False);
 
 			joblist->RemoveNthTrack(0);
 
