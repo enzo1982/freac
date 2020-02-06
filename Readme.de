@@ -154,6 +154,7 @@ Geschichte
 			- Unterstützung für dunkles Farbschema unter Windows 10 hinzugefügt
 			- Vorbereitung auf Abschaltung von freedb.org am 31. März 2020
 			- Das fre:ac-Installationsprogramm ist jetzt digital signiert
+			- Separaten Eintrag für Windows Wave File Output zur Kodiererliste hinzugefügt
 			- Toolbar-Schaltfläche zum Konfigurieren der Signalverarbeitung hinzugefügt
 
 		- Behobene Fehler
