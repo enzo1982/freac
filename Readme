@@ -162,6 +162,7 @@ History
 			- fixed compatibility issue with Windows 10 UTF-8 codepage setting
 			- fixed FLAC decoding on macOS
 			- fixed issues opening Opus files with a .ogg extension
+			- fixed Monkey's Audio encoder not showing up in 64 bit builds
 			- fixed some issues with freaccmd command line interface
 
 		- Updated codecs

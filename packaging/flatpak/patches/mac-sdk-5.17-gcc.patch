@@ -107,6 +107,25 @@ diff -Naur mac-sdk-5.17/Source/Console/Console.cpp mac-sdk-5.17-gcc/Source/Conso
      #define _tmain(argc, argv) main(argc, argv)
      #define _tcscpy_s(dst, num, src) strcpy(dst, src)
      #define _tcsncpy_s(dst, num, src, count) strncpy(dst, src, count)
+diff -Naur mac-sdk-5.17/Source/MACDll/MACDll.cpp mac-sdk-5.17-gcc/Source/MACDll/MACDll.cpp
+--- mac-sdk-5.17/Source/MACDll/MACDll.cpp	2020-01-19 17:52:57 +0000
++++ mac-sdk-5.17-gcc/Source/MACDll/MACDll.cpp	2020-02-07 19:16:53 +0000
+@@ -212,13 +212,13 @@
+         delete pAPECompress;
+ }
+ 
+-int __stdcall c_APECompress_Start(APE_COMPRESS_HANDLE hAPECompress, const char * pOutputFilename, const APE::WAVEFORMATEX * pwfeInput, APE::int64 nMaxAudioBytes, APE::intn nCompressionLevel, const void * pHeaderData, APE::int64 nHeaderBytes)
++int __stdcall c_APECompress_Start(APE_COMPRESS_HANDLE hAPECompress, const char * pOutputFilename, const APE::WAVEFORMATEX * pwfeInput, APE::int64 nMaxAudioBytes, int nCompressionLevel, const void * pHeaderData, APE::int64 nHeaderBytes)
+ {
+     CSmartPtr<wchar_t> spOutputFilename(CAPECharacterHelper::GetUTF16FromANSI(pOutputFilename), TRUE);
+     return ((IAPECompress *) hAPECompress)->Start(spOutputFilename, pwfeInput, nMaxAudioBytes, nCompressionLevel, pHeaderData, nHeaderBytes);
+ }
+ 
+-int __stdcall c_APECompress_StartW(APE_COMPRESS_HANDLE hAPECompress, const str_utfn * pOutputFilename, const APE::WAVEFORMATEX * pwfeInput, APE::int64 nMaxAudioBytes, APE::intn nCompressionLevel, const void * pHeaderData, APE::int64 nHeaderBytes)
++int __stdcall c_APECompress_StartW(APE_COMPRESS_HANDLE hAPECompress, const str_utfn * pOutputFilename, const APE::WAVEFORMATEX * pwfeInput, APE::int64 nMaxAudioBytes, int nCompressionLevel, const void * pHeaderData, APE::int64 nHeaderBytes)
+ {
+     return ((IAPECompress *) hAPECompress)->Start(pOutputFilename, pwfeInput, nMaxAudioBytes, nCompressionLevel, pHeaderData, nHeaderBytes);
+ }
 diff -Naur mac-sdk-5.17/Source/Shared/All.h mac-sdk-5.17-gcc/Source/Shared/All.h
 --- mac-sdk-5.17/Source/Shared/All.h	2020-01-24 00:15:01 +0000
 +++ mac-sdk-5.17-gcc/Source/Shared/All.h	2020-01-27 22:38:31 +0000
