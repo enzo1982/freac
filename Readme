@@ -101,6 +101,7 @@ History
 			- rip only tracks from the newly inserted disc when auto-ripping
 			- do not start ripping automatically if no freedb entry is found
 			- improved compatibility with ADTS AAC files
+			- use high resolution icons from fre:ac 1.1 branch
 
 		- Bug fixes
 

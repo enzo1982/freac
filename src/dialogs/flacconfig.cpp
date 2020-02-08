@@ -362,7 +362,7 @@ freac::ConfigureFLAC::ConfigureFLAC()
 	layer_advanced->Add(text_max_part_order_value);
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON);
-	mainWnd->SetIcon(ImageLoader::Load("freac.pci:0"));
+	mainWnd->SetIcon(ImageLoader::Load("icons/freac.png"));
 }
 
 freac::ConfigureFLAC::~ConfigureFLAC()

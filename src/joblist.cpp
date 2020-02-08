@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the "GNU General Public License".
@@ -37,17 +37,17 @@ freac::JobList::JobList(const Point &iPos, const Size &iSize) : ListBox(iPos, iS
 
 	text = new Text(NIL, iPos - Point(9, 19));
 
-	button_sel_all		= new Button(NIL, ImageLoader::Load("freac.pci:18"), iPos - Point(19, 4), Size(21, 21));
+	button_sel_all		= new Button(NIL, ImageLoader::Load("icons/select/select-all.png"), iPos - Point(19, 4), Size(21, 21));
 	button_sel_all->onAction.Connect(&JobList::SelectAll, this);
 	button_sel_all->SetFlags(BF_NOFRAME);
 	button_sel_all->SetTooltipText(freac::i18n->TranslateString("Select all"));
 
-	button_sel_none		= new Button(NIL, ImageLoader::Load("freac.pci:19"), iPos - Point(19, -10), Size(21, 21));
+	button_sel_none		= new Button(NIL, ImageLoader::Load("icons/select/select-none.png"), iPos - Point(19, -10), Size(21, 21));
 	button_sel_none->onAction.Connect(&JobList::SelectNone, this);
 	button_sel_none->SetFlags(BF_NOFRAME);
 	button_sel_none->SetTooltipText(freac::i18n->TranslateString("Select none"));
 
-	button_sel_toggle	= new Button(NIL, ImageLoader::Load("freac.pci:20"), iPos - Point(19, -24), Size(21, 21));
+	button_sel_toggle	= new Button(NIL, ImageLoader::Load("icons/select/select-toggle.png"), iPos - Point(19, -24), Size(21, 21));
 	button_sel_toggle->onAction.Connect(&JobList::ToggleSelection, this);
 	button_sel_toggle->SetFlags(BF_NOFRAME);
 	button_sel_toggle->SetTooltipText(freac::i18n->TranslateString("Toggle selection"));
