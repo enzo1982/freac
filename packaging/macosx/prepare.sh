@@ -109,6 +109,9 @@ install_name_tool -change $PREFIX/lib/libcdio_paranoia.2.dylib @executable_path/
 
 install_name_tool -change $PREFIX/lib/libcdio.19.dylib @executable_path/../Resources/cdio.dylib freac.app/Contents/Resources/boca/boca_deviceinfo_cdio.1.0.dylib
 
+find freac.app/Contents/Resources/boca -name freac_*.dylib | xargs -I $ install_name_tool -change libboca-$BOCAVER.dylib @executable_path/../Frameworks/libboca-$BOCAVER.dylib $
+find freac.app/Contents/Resources/boca -name freac_*.dylib | xargs -I $ install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib $
+
 #install_name_tool -change libsmooth-js-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-js-$SMOOTHVER.dylib freac.app/Contents/Resources/boca/freac_extension_youtube.1.0.dylib
 
 install_name_tool -change $PREFIX/lib/libcdio.19.dylib @executable_path/../Resources/cdio.dylib freac.app/Contents/Resources/cdio_cdda.dylib
