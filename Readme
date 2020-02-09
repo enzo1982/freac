@@ -122,7 +122,7 @@ History
 		- Updated translations
 
 			- updated Chinese (simplified), Croatian, Danish, Portuguese, Spanish (Latin American) and Ukrainian translations
-			- added French and Bulgarian translations for the installer
+			- added Bulgarian translation for the installer
 			- updated Spanish user guide
 
 	Version 1.0.32 (March 2018)
@@ -587,13 +587,13 @@ Special thanks to
 			   Peter Toth (Hungarian),
 			   Andrij Ilechko (Ukrainian),
 			   Wim Garreyn and Thomas De Rocker (Dutch),
-			   Neboj�a Nikolic (Serbian),
+			   Nebojša Nikolic (Serbian),
 			   Jan Parttimaa (Finnish),
 			   Julius Faltus (Czech),
 			   Escada (Portuguese, Brazilian),
 			   Odyssey (Korean),
 			   Jan Arni Jacobsen (Danish),
-			   Mikael Hiort af Orn�s and Anton Mjoernebrant (Swedish),
+			   Mikael Hiort af Ornäs and Anton Mjoernebrant (Swedish),
 			   Peter Krajcar (Slovak),
 			   Andreas Normann Aanonsen (Norwegian),
 			   Vincent Rateau (Esperanto),
@@ -601,11 +601,11 @@ Special thanks to
 			   Naglis Jonaitis (Lithuanian),
 			   Borca Alin and Laurentiu Bubuianu (Romanian),
 			   El libre (Catalan),
-			   Agust�n Bou (Valencian),
+			   Agustín Bou (Valencian),
 			   Jose Goncalves (Portuguese),
 			   Meelis Pasieko (Estonian),
 			   Goran Bekic (Croatian),
-			   Eduardo Est�vez (Galician),
+			   Eduardo Estévez (Galician),
 			   Phan Anh (Vietnamese),
 			   Ilan Tsmeret (Hebrew),
 			   Eman Ali Fhoula (Arabic),
@@ -613,9 +613,9 @@ Special thanks to
 			   Cois Wiid (Afrikaans),
 			   Xabier Aramendi (Basque),
 			   Kin Kwok (Cantonese, Hong Kong),
-			   Patriccollu di Santa Maria � Sich� (Corsican)
+			   Patriccollu di Santa Maria è Sichè (Corsican)
 
-	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
+	- Hans-Jürgen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports
 
 -----------------------------------------------------------------------------------
