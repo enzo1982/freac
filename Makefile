@@ -155,6 +155,7 @@ ifeq ($(BUILD_WIN32),True)
 
 	cp $(SRCDIR)/i18n/Readme.lang $(BIN)/lang
 	cp $(SRCDIR)/i18n/freac/freac*.xml $(BIN)/lang
+	cp $(SRCDIR)/i18n/tips/tips*.xml $(BIN)/lang
 	cp $(SRCDIR)/i18n/updater/eupdate*.xml $(BIN)/lang
 
 	cp $(SRCDIR)/i18n/setup/setup*.xml packaging/windows/lang
@@ -179,6 +180,7 @@ ifneq ($(BUILD_WIN32),True)
 
 	cp $(SRCDIR)/i18n/Readme.lang $(DESTDIR)$(datadir)/freac/lang
 	cp $(SRCDIR)/i18n/freac/freac*.xml $(DESTDIR)$(datadir)/freac/lang
+	cp $(SRCDIR)/i18n/tips/tips*.xml $(DESTDIR)$(datadir)/freac/lang
 
 	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/lang
 

@@ -288,8 +288,6 @@
       <entry id="6102" string="Check for updates at startup">בדוק עדכונים בהפעלה</entry>
     </section>
 
-    <section name="Tips"/>
-
     <section name="Messages">
       <entry id="7000" string="Currently converting">ממיר כרגע</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">?ההמרה בעבוד, האם לסיים</entry>

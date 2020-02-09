@@ -592,16 +592,6 @@
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 môže automaticky zistiť online updaty&#10;pri štarte programu.&#10;&#10;Želáte si aby %1 zisťoval pri štarte updaty?</entry>
     </section>
 
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 je dostupný v %2 jazykoch. Ak váš jazyk nie je&#10;dostupný, môžete ho jednoducho preložiť použitím aplikácie&#10;&quot;smooth Translator&quot;.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 podporuje LAME, Ogg Vorbis, FAAC, FLAC a Opus&#10;kodeky. Kodek pre VQF formát je dostupný na stránke %1:&#10;%2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 môže použiť Winamp 2 vstupné pluginy pre podporu&#10;ďalších typov formátov súborov. Skopírujte in_*.dll súbory do adresára&#10;%1\plugins pre sprístupnenie týchto formátov.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Pomocou %1 môžete poslať freedb CDDB položky obsahujúce Unicode znaky.&#10;Teda ak máte CD s názvami interpretov alebo titulov, ktoré nie &quot;Latin&quot;, aj tak&#10;môžete odoslať správne freedb položky pomocou %1.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Pre opravu chýb počas načítavania môžete povoliť&#10;Jitter korekciu v Nastaveniach -&gt; Ripper. Ak toto nepomôže,&#10;skúste použiť jeden z Paranoia módov.</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">V prípade pripomienok alebo návrhov ako zlepšiť %1&#10;pošlite ich trackerom na stránke %1 %2&#10;projektu - %3&#10;alebo ich pošlite e-mailom na %4.</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Máte radi %1? %1 je voľne dostupný, ale aj ty môžeš&#10;podporiť vývoj %1 projektu sponzorským darom.&#10;Peniaze možno poslať na %2 pomocou PayPal.&#10;Pozri %3 pre ďalšie podrobnosti.</entry>
-    </section>
-
     <section name="Messages">
       <entry id="7000" string="Currently converting">Práve kódujem</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Proces kódovania stále beží! Skutočne chcete ukončiť program?</entry>

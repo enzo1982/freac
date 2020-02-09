@@ -51,6 +51,7 @@
 #endif
 
 using namespace smooth::GUI::Dialogs;
+using namespace smooth::I18n;
 using namespace smooth::Input;
 
 using namespace BoCA;
@@ -1509,25 +1510,48 @@ Void freac::freacGUI::ShowHelp()
 
 Void freac::freacGUI::ShowTipOfTheDay()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
-
-	i18n->SetContext("Tips");
+	BoCA::Config	*config   = BoCA::Config::Get();
+	BoCA::I18n	*i18n	  = BoCA::I18n::Get();
 
 	Bool		 showTips = config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault);
+	String		 language = config->GetStringValue(Config::CategorySettingsID, Config::SettingsLanguageID, Config::SettingsLanguageDefault);
+
 	TipOfTheDay	 dialog(&showTips);
+	Translator	 tips("Tips");
 
-	dialog.AddTip(i18n->TranslateString("%1 is available in %2 languages. If your language is\nnot available, you can easily translate %1 using the\n\'smooth Translator\' application.").Replace("%1", freac::appName).Replace("%2", String::FromInt(Math::Max(36, i18n->GetNOfLanguages()))));
-	dialog.AddTip(i18n->TranslateString("%1 comes with support for the LAME, Ogg Vorbis, FAAC,\nFLAC and Opus encoders. An encoder for the VQF format is\navailable at the %1 website: %2").Replace("%1", freac::appName).Replace("%2", freac::website));
+	tips.ActivateLanguage(String(language).Replace("freac", "tips"));
 
-#ifdef __WIN32__
-	dialog.AddTip(i18n->TranslateString("%1 can use Winamp 2 input plug-ins to support more file\nformats. Copy the in_*.dll files to the %1/plugins directory to\nenable %1 to read these formats.").Replace("%1", freac::appName));
+	dialog.AddTip(tips.TranslateString("%1 comes with support for a wide variety of audio formats\nincluding MP3, M4A/AAC, FLAC, ALAC, Opus, Ogg Vorbis and\nWMA.\n\nAdditional formats can be added by installing command line\nencoders.\n\nPlease refer to %2\nfor details.").Replace("%1", freac::appName).Replace("%2", "https://freac.org/manual/en/howto.html#codecs"));
+	dialog.AddTip(tips.TranslateString("%1 can combine multiple input files into a single output file.\n\nWhen loading such files back into %1 or another software\nsupporting chapters, the original tracks will show up there again.\n\nSelect the 'Encode to a single file' option to enable this mode.").Replace("%1", freac::appName));
+	dialog.AddTip(tips.TranslateString("%1 is optimized to take advantage of modern multi-core\nprocessors and will convert multiple files in parallel to speed up\nconversions.\n\nIn addition, %1's unique SuperFast technology speeds up\nsingle file conversions for select target formats.").Replace("%1", freac::appName));
+	dialog.AddTip(tips.TranslateString("%1 will verify lossless source formats like FLAC and alert you if\nsomething does not seem to be right.\n\nIn addition, it can verify lossless output files to make sure nothing\nwent wrong during the conversion process.\n\nCheck your settings in the configuration dialog if you would like\nto enable this.").Replace("%1", freac::appName));
+	dialog.AddTip(tips.TranslateString("%1's gapless encoding and decoding support ensures that your\nMP3s and other files start and stop at exactly the right sample.\n\nThis means perfect quality when advancing to the next song of a\ncontinuously recorded album without any clicks or pops.").Replace("%1", freac::appName));
+	dialog.AddTip(tips.TranslateString("%1 can apply filters to your audio during conversions to reduce\nnoise in voice recordings or speed up/slow down a record without\nchanging the pitch which is great for speed listening to audio\nbooks.\n\nCheck the 'Processing' page of the configuration dialog for these\nfilters.").Replace("%1", freac::appName));
+	dialog.AddTip(tips.TranslateString("The 'meh! - multi encoder hub' component can convert to multiple\noutput formats at once.\n\nUsing it, you can create e.g. FLAC and MP3 files of the same source\nin one go."));
+
+#if defined __WIN32__
+	dialog.AddTip(tips.TranslateString("%1 can use the Core Audio AAC/ALAC encoder included with\niTunes if that program is installed on your computer.\n\nThe Core Audio encoder provides great M4A/AAC encoding\nquality and performance.\n\nPlease refer to %2 for installing iTunes.", "Windows").Replace("%1", freac::appName).Replace("%2", "https://apple.com/itunes"));
+
+#if defined __i386__ || defined _M_IX86
+	dialog.AddTip(tips.TranslateString("%1 can use Winamp 2 input plug-ins to support more file\nformats.\n\nCopy the in_*.dll files to the %1/plugins directory to enable\n%1 to read these formats.", "Windows").Replace("%1", freac::appName));
+#endif
 #endif
 
-	dialog.AddTip(i18n->TranslateString("With %1 you can submit freedb CD database entries\ncontaining Unicode characters. So if you have any CDs with\nnon-Latin artist or title names, you can submit the correct\nfreedb entries with %1.").Replace("%1", freac::appName));
-	dialog.AddTip(i18n->TranslateString("To correct reading errors while ripping you can enable\nJitter correction in the Ripper tab of %1's configuration\ndialog. If that does not help, try using one of the Paranoia modes.").Replace("%1", freac::appName));
-	dialog.AddTip(i18n->TranslateString("Do you have suggestions on how to improve %1?\n\nYou can submit your ideas through the tracker on %1's %2\nproject page at %3\nor send an eMail to %4.").Replace("%1", freac::appName).Replace("%2", "GitHub").Replace("%3", "https://github.com/enzo1982/freac/issues").Replace("%4", "suggestions@freac.org"));
-	dialog.AddTip(i18n->TranslateString("Do you like %1? %1 is available for free, but you can\nhelp fund the development by donating to the %1 project.\nYou can send money to %2 through PayPal.\nSee %3 for more details.").Replace("%1", freac::appName).Replace("%2", "donate@freac.org").Replace("%3", String(freac::website).Append("donating.php")));
+#if defined __linux__ || defined __FreeBSD__
+#if defined __i386__ || defined __x86_64__
+	dialog.AddTip(tips.TranslateString("%1 can use the Core Audio AAC/ALAC encoder if Wine and the\nApple Application Support package are installed on your computer.\n\nThe Core Audio encoder provides great M4A/AAC encoding\nquality and performance.\n\nFor instructions on installing this encoder, please refer to the tutorial\nat: %2", "Linux").Replace("%1", freac::appName).Replace("%2", "https://freac.org/manual/en/howto.html#coreaudio"));
+#endif
+#endif
+
+	if (menu_drives->Length() >= 1)
+	{
+		dialog.AddTip(tips.TranslateString("%1 supports the freedb CD database to query artist and title\ninformation about CDs.\n\nIf you have a CD that is not in the database, you can submit new\nfreedb entries with %1.").Replace("%1", freac::appName));
+		dialog.AddTip(tips.TranslateString("To correct reading errors while ripping, you can enable Jitter\ncorrection in the Ripper tab of %1's configuration dialog.\n\nIf that does not help, try using one of the Paranoia modes.").Replace("%1", freac::appName));
+	}
+
+	dialog.AddTip(tips.TranslateString("%1 is available in %2 languages. If your language is not available\nor the translation is incomplete, you can easily translate %1\nusing the \'smooth Translator\' utility.\n\nTo contribute your translations back to the %1 project, please\nrefer to %3 for additional details.").Replace("%1", freac::appName).Replace("%2", String::FromInt(Math::Max(36, i18n->GetNOfLanguages()))).Replace("%3", "https://freac.org/translations"));
+	dialog.AddTip(tips.TranslateString("Do you have suggestions on how to improve %1?\n\nYou can submit your ideas through the tracker on %1's %2\nproject page at %3 or send\nan eMail to %4.").Replace("%1", freac::appName).Replace("%2", "GitHub").Replace("%3", "https://github.com/enzo1982/freac/issues").Replace("%4", "suggestions@freac.org"));
+	dialog.AddTip(tips.TranslateString("Do you like %1? %1 is free software, but you can help fund\nthe development by making a donation.\n\nDonations can be sent via PayPal to %2.\n\nOr select 'Help'->'Donate to the %1 project...' from the menu\nbar to see different ways to donate.").Replace("%1", freac::appName).Replace("%2", "donate@freac.org"));
 
 	dialog.SetMode(TIP_ORDERED, config->GetIntValue(Config::CategorySettingsID, Config::SettingsNextTipID, Config::SettingsNextTipDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault));
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Vietnamese / Việt Nam</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">tips.xml</property>
+    <property name="author">Phan Anh &lt;ppanhh@gmail.com&gt;</property>
+    <property name="url">https://iamphananh.blogspot.com/</property>
+  </info>
+  <data>
+    <entry id="100" string="%1 is available in %2 languages. If your language is not available&#10;or the translation is incomplete, you can easily translate %1&#10;using the 'smooth Translator' utility.&#10;&#10;To contribute your translations back to the %1 project, please&#10;refer to %3 for additional details.">%1 hỗ trợ %2 ngôn ngữ. Đây là một phần mềm mã nguồn&#10;mở và miễn phí. Phiên bản này được phiên dịch bởi dịch&#10;giả Phan Anh. Hãy email tôi theo địa chỉ ppanhh@gmail.com&#10;nếu bạn thấy quan tâm hoặc truy cập vào trang&#10;iamphananh.blogspot.com để biết thêm thông tin hoặc&#10;đơn giản là sẻ chia những gì bạn thắc mắc.</entry>
+    <entry id="101" string="%1 comes with support for a wide variety of audio formats&#10;including MP3, M4A/AAC, FLAC, ALAC, Opus, Ogg Vorbis and&#10;WMA.&#10;&#10;Additional formats can be added by installing command line&#10;encoders.&#10;&#10;Please refer to %2&#10;for details.">%1 hỗ trợ LAME, Ogg Vorbis, FAAC,FLAC và Opus encoders.&#10;&#10;Bộ chuyển mã cho định dạng VQF được hỗ trợ tại %1 website:&#10;%2</entry>
+    <entry id="102" string="%1 supports the freedb CD database to query artist and title&#10;information about CDs.&#10;&#10;If you have a CD that is not in the database, you can submit new&#10;freedb entries with %1.">Với %1 bạn có thể chỉnh sửa các thông tin của hệ cơ sở dữ&#10;liệu của đĩa CD bằng các ký tự theo định dạng Unicode.&#10;Bởi thế nếu bạn có bất kỳ đĩa CD nào chứa tên bài hát hay&#10;ca sĩ nhưng là định dạng non-Latin, bạn hoàn toàn có thể&#10;sử dụng %1 để chọn lựa các chỉnh sửa theo định dạng&#10;Unicode theo ý mình.</entry>
+    <entry id="103" string="To correct reading errors while ripping, you can enable Jitter&#10;correction in the Ripper tab of %1's configuration dialog.&#10;&#10;If that does not help, try using one of the Paranoia modes.">Để sửa những lỗi phát sinh khi bạn đang rip nhạc, bạn có thể&#10;dùng Jitter correction ở tab Ripper của phần thiết lập %1.&#10;&#10;Nếu không thể sửa được lỗi đó, bạn có thể sử dụng phương&#10;thức Paranoia.</entry>
+    <entry id="104" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3 or send&#10;an eMail to %4.">Bạn có bất kỳ gợi ý để hoàn thiện %1 không?&#10;&#10;Hãy thể hiện ý tưởng của bạn thông qua mục chia sẻ&#10;ý tưởng của %1. Trang web dự án %1 trên&#10;%2 - %3&#10;hoặc gửi email đến %4.</entry>
+    <entry id="105" string="Do you like %1? %1 is free software, but you can help fund&#10;the development by making a donation.&#10;&#10;Donations can be sent via PayPal to %2.&#10;&#10;Or select 'Help'-&gt;'Donate to the %1 project...' from the menu&#10;bar to see different ways to donate.">Bạn có thích %1 không? Vì đây là chương trình hoàn toàn&#10;miễn phí, và hãy dành chút ít thời gian để hỗ trợ cho dự án&#10;của chúng tôi.&#10;&#10;Bạn cũng có thể đóng góp tiền %2&#10;thông qua hệ thống PayPal của eBay.</entry>
+
+    <section name="Windows">
+      <entry id="200" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats.&#10;&#10;Copy the in_*.dll files to the %1/plugins directory to enable&#10;%1 to read these formats.">%1 có thể sử dụng các plugin của Winamp2 để có thể&#10;hỗ trợ thêm nhiều loại định dạng.&#10;&#10;Hãy sao chép tập tin có phần mở rộng là _*.dll vào thư&#10;mục plugin của %1 để chương trình %1 có thể thao tác&#10;với các loại định dạng mới này</entry>
+    </section>
+  </data>
+</LangFile>

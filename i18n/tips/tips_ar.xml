@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Arabic / العربية</property>
+    <property name="righttoleft">true</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">tips.xml</property>
+    <property name="author">Eman Ali Fhoula (إيمان علي فحولة) &lt;ali.fhoula@lycos.com&gt;</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="%1 is available in %2 languages. If your language is not available&#10;or the translation is incomplete, you can easily translate %1&#10;using the 'smooth Translator' utility.&#10;&#10;To contribute your translations back to the %1 project, please&#10;refer to %3 for additional details.">%1 متوفرفي لغات عديدة %2. باستخدام %1 اذا كانت&#10;لغتك غير متوفرة يمكنك بسهولة ترجمة 'smooth Translator' البرنامج.</entry>
+    <entry id="101" string="%1 comes with support for a wide variety of audio formats&#10;including MP3, M4A/AAC, FLAC, ALAC, Opus, Ogg Vorbis and&#10;WMA.&#10;&#10;Additional formats can be added by installing command line&#10;encoders.&#10;&#10;Please refer to %2&#10;for details.">%1 يأتي مع الدعم من أجل LAME, Ogg Vorbis, FAAC,&#10;و المشفر Opus.&#10;&#10;ولكل مشفر VQF الصيغة متوفرة على الموقع&#10;‪%2 :%1‬</entry>
+    <entry id="102" string="%1 supports the freedb CD database to query artist and title&#10;information about CDs.&#10;&#10;If you have a CD that is not in the database, you can submit new&#10;freedb entries with %1.">مع %1 يمكنك ، يقدم مجانا قاعدة البيانات. إدخالات ضغط قاعدة&#10;بيانات القرص تحتوي على أحرف يونيكود. إذا كان لديك أي أقراص&#10;مدمجة تحتوي على غير اللاتينية الفنان أو عنوان أسماء ، يمكنك تقديم&#10;التصويبات تحرير إدخالات قاعدة البيانات مع %1.</entry>
+
+    <section name="Windows">
+      <entry id="200" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats.&#10;&#10;Copy the in_*.dll files to the %1/plugins directory to enable&#10;%1 to read these formats.">%1 يمكن أن يستخدم المكونات الإضافية لوين&#10;أمب لدعم المزيد من الملفات و الصيغات.</entry>
+    </section>
+  </data>
+</LangFile>

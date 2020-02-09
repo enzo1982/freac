@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Corsican / Corsu</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">tips.xml</property>
+    <property name="author">Patriccollu di Santa Maria è Sichè</property>
+    <property name="url">https://sourceforge.net/u/patriccollu/wiki/Home/#669b</property>
+  </info>
+  <data>
+    <entry id="100" string="%1 is available in %2 languages. If your language is not available&#10;or the translation is incomplete, you can easily translate %1&#10;using the 'smooth Translator' utility.&#10;&#10;To contribute your translations back to the %1 project, please&#10;refer to %3 for additional details.">%1 hè dispunibule in %2 lingue. S’è a vostra lingua nùn hè&#10;micca dispunibule, pudete traduce %1 cù nl’appiecazione&#10;« smooth Translator ».</entry>
+    <entry id="101" string="%1 comes with support for a wide variety of audio formats&#10;including MP3, M4A/AAC, FLAC, ALAC, Opus, Ogg Vorbis and&#10;WMA.&#10;&#10;Additional formats can be added by installing command line&#10;encoders.&#10;&#10;Please refer to %2&#10;for details.">%1 ghjunghje cù i cudificatori per LAME, Ogg Vorbis, FAAC&#10;FLAC è Opus.&#10;&#10;Un cudificatore per u furmatu VQF he dispunibule nant’à&#10;u situ web di %1 : %2</entry>
+    <entry id="102" string="%1 supports the freedb CD database to query artist and title&#10;information about CDs.&#10;&#10;If you have a CD that is not in the database, you can submit new&#10;freedb entries with %1.">%1 permette di sottumette l’entrate di banca di dati di CD&#10;freedb chì cuntenenu caratteri Unicode. È cusì e richieste&#10;chì sò fatte per i CD chì anu artiste o tituli micca latinu sò&#10;trasmesse à freedb da %1 cù una forma curretta.</entry>
+    <entry id="103" string="To correct reading errors while ripping, you can enable Jitter&#10;correction in the Ripper tab of %1's configuration dialog.&#10;&#10;If that does not help, try using one of the Paranoia modes.">Per currege i sbaglii di lettura durante l’estrazzione, pudete&#10;attivà a currezzione Jitter in l’unghjetta Estrazzione di u dialogu&#10;di cunfigurazione di %1.&#10;&#10;Osinnò ci vole à pruvà d’impiegà unu di i modi Paranoia.</entry>
+    <entry id="104" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3 or send&#10;an eMail to %4.">Avete qualchì suggestione per megliurà %1 ?&#10;&#10;Pudete sottumette e vostre idee grazia à Tracker nant’à&#10;a pagina %2 di u prughjettu %1 à %3&#10;o mandà un messaghju à %4.</entry>
+    <entry id="105" string="Do you like %1? %1 is free software, but you can help fund&#10;the development by making a donation.&#10;&#10;Donations can be sent via PayPal to %2.&#10;&#10;Or select 'Help'-&gt;'Donate to the %1 project...' from the menu&#10;bar to see different ways to donate.">Vi piace %1 ? Bench’è %1 sia dispunibule senza pagà, pudete&#10;aiutà u so sviluppu cù una dunazione à u prughjettu %1.&#10;&#10;Pudete mandà i soldi à %2 grazia à PayPal.</entry>
+
+    <section name="Windows">
+      <entry id="200" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats.&#10;&#10;Copy the in_*.dll files to the %1/plugins directory to enable&#10;%1 to read these formats.">%1 pò impiegà l’estensioni d’entrata di Winamp 2 per&#10;accettà più di furmati di schedariu.&#10;&#10;Cupià i schedarii in_*.dll ver di u cartulare %1/plugins&#10;per chì %1 possa ricunnosce sti furmati.</entry>
+    </section>
+  </data>
+</LangFile>

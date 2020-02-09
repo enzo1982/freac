@@ -380,16 +380,6 @@
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">A %1 önállóan képes a program újabb verziójának&#10;online keresésére induláskor.&#10;&#10;Szeretnéd, ha a %1 frissítést keresne induláskor?</entry>
     </section>
 
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">A %1 %2 nyelvet támogat jelenleg. Ha az általad&#10;beszélt nyelv nincs közöttük, könnyen lefordíthatod a&#10;%1 'smooth Translator' programjával.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">A %1 támogatja a LAME, Ogg Vorbis, FAAC, FLAC és&#10;Opus tömörítőket. VQF formátumhoz tömörítőt a %1&#10;honlapján találhatsz: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">A %1 kezeli a Winamp 2 bemeneti plugin-jait, így még több&#10;formátumot támogathat. Másold be az in_*.dll fájlokat a&#10;%1/plugins könyvtárába, igy a program kezeli ezeket a&#10;formátumokat is!</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">A %1-en keresztül küldhetünk unikódos CD bejegyzéseket&#10;is a freedb adatbázisába. Ha olyan CD-id is vannak, melyeken&#10;nem latin betűkkel vannak megadva az adatok, a %1&#10;segítségével korrekt adatokat küldhetünk a freedb adatbázisába.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">A másolási hibák javítására bekapcsolható a Jitter korrekció&#10;az Általános beállítások menüpont Ripper panelje alatt.&#10;Ha ez sem segít, próbáld ki a Paranoia módokat!</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Van egy jó ötleted a %1 fejlesztésével kapcsolatban?&#10;&#10;Bármely ötletedet közzéteheted a tracker-en keresztül a %1&#10;%2-os oldalán - %3&#10;vagy küldj eMailt: %4</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Kedveled a %1-et? A program ingyenes, de támogathatod&#10;is a fejlesztést pénzadománnyal. A pénztadományt a&#10;%2-ra utalhatod át Paypal-on keresztül.&#10;A részletek itt olvashatók: %3</entry>
-    </section>
-
     <section name="Messages">
       <entry id="7000" string="Currently converting">Tömörítés folyamatban</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">A tömörítés még fut! Megállítsam?</entry>

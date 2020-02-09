@@ -592,16 +592,6 @@
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 は起動時に自動でオンライン更新チェックを&#10;行うことが可能です。&#10;&#10;起動時に更新をチェクしますか？</entry>
     </section>
 
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 は %2 種類の言語で利用可能です。もしあなたの&#10;使用言語が利用できない場合、'smooth Translator' を&#10;使って簡単に %1 を翻訳する事が出来ます。</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 は LAME、Ogg Vorbis、FAAC、FLAC、及び Opus&#10;エンコーダをサポートしています。&#10;VQF 形式のエンコーダは下記で公開されています。&#10;%1 のウェブサイト: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 は Winamp2 入力プラグインを使って対応形式を&#10;追加する事が出来ます。%1 で他の形式を読み込める&#10;ようにするには、in_*.dll を %1/plugins にコピー&#10;してください。</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1 で freedb CD データベースに Unicode 文字を含む&#10;データを送信できます。あなたの持っている英文字以外の&#10;アーティスト名やタイトル名の CD データを、%1 で&#10;freedb に送信できます。</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">リッピングの読み込みエラー補正には、設定ダイアログの&#10;Ripper タブの 'ジッター補正有効' をチェックしてください。&#10;それで解決しない場合は、CD 詳細設定モードのいずれかを&#10;試してください。</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">%1 の改善につき意見があれば、%2 にある&#10;%1 のプロジェクトページ(%3)&#10;のトラッカーか、%4 へのメールで&#10;あなたのアイディアを送信する事が出来ます。</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">%1 が気に入りましたか？ これは無料で利用できますが、&#10;%1 プロジェクトに寄付する事で開発を資金援助が出来ます。&#10;あなたは %2 へ PayPal を使って送金できます。&#10;詳細は %3 を参照してください。</entry>
-    </section>
-
     <section name="Messages">
       <entry id="7000" string="Currently converting">変換中です</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">変換処理を実行中です。本当に終了しますか？</entry>

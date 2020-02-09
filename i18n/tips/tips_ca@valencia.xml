@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Valencian / Valencià</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">tips.xml</property>
+    <property name="author">Agustín Bou</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="%1 is available in %2 languages. If your language is not available&#10;or the translation is incomplete, you can easily translate %1&#10;using the 'smooth Translator' utility.&#10;&#10;To contribute your translations back to the %1 project, please&#10;refer to %3 for additional details.">%1 s'ha traduït ja a %2 idiomes. Si no ho està en el seu, pot&#10;traduir fàcilment %1 utilitzant l'aplicació 'smooth Translator'.</entry>
+    <entry id="101" string="%1 comes with support for a wide variety of audio formats&#10;including MP3, M4A/AAC, FLAC, ALAC, Opus, Ogg Vorbis and&#10;WMA.&#10;&#10;Additional formats can be added by installing command line&#10;encoders.&#10;&#10;Please refer to %2&#10;for details.">%1 inclou suport per a codificar LLEPA, Ogg Vorbis, FAAC,&#10;FLAC i Opus.&#10;&#10;Un codificador per al format VQF està disponible en el&#10;lloc de %1: %2</entry>
+    <entry id="102" string="%1 supports the freedb CD database to query artist and title&#10;information about CDs.&#10;&#10;If you have a CD that is not in the database, you can submit new&#10;freedb entries with %1.">Amb %1 pot enviar registres de CD freedb que continguen&#10;caràcters unicode. D'esta manera, si posseïx CDs amb noms&#10;d'artistes o títols que no estiguen en alfabetització llatina, pot&#10;enviar les dades correctes a freedb amb %1.</entry>
+    <entry id="103" string="To correct reading errors while ripping, you can enable Jitter&#10;correction in the Ripper tab of %1's configuration dialog.&#10;&#10;If that does not help, try using one of the Paranoia modes.">Per a corregir els errors de lectura durant el procés d'extracció,&#10;pot activar la funció Correcció Jitter en la fitxa Extractor de la&#10;configuració.&#10;&#10;Si això no ajuda, intente utilitzar algun dels modes paranoia.</entry>
+    <entry id="104" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3 or send&#10;an eMail to %4.">Té algun suggeriment per a millorar %1?&#10;&#10;Pot enviar les seues idees a través del tracker en el lloc de %1&#10;ubicat en %2 - %3&#10;o enviar un correu a %4.</entry>
+    <entry id="105" string="Do you like %1? %1 is free software, but you can help fund&#10;the development by making a donation.&#10;&#10;Donations can be sent via PayPal to %2.&#10;&#10;Or select 'Help'-&gt;'Donate to the %1 project...' from the menu&#10;bar to see different ways to donate.">Li agrada %1? %1 és gratuït, però pot ajudar al seu&#10;desenrotllament fent una donació.&#10;&#10;Pot enviar diners a %2 a través de PayPal.</entry>
+
+    <section name="Windows">
+      <entry id="200" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats.&#10;&#10;Copy the in_*.dll files to the %1/plugins directory to enable&#10;%1 to read these formats.">%1 pot usar els plugins d'entrada de Winamp 2 per a&#10;manejar més formats.&#10;&#10;Copie els arxius in_*.dll a la carpeta 1\plugins perquè&#10;%1 Llija eixos formats.</entry>
+    </section>
+  </data>
+</LangFile>

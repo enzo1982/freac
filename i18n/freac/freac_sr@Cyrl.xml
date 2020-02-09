@@ -592,16 +592,6 @@
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">Приликом покретања %1 може аутоматски&#10;проверити да ли има надоградњи на интернету.&#10;&#10;Да ли желите да %1 потражи надоградње приликом покретања?</entry>
     </section>
 
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 је расположив у %2 језика.&#10;&#10;Ако Ваш језик није расположив, можете га лако превести користећи апликацију: &quot;Лаки преводилац&quot;.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 долази са подршком за LAME, Ogg Vorbis, FAAC, FLAC, и Opus енкодерима.&#10;&#10;Енкодер за VQF формат је расположив на %1 интернет страни: %2.</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 може да користи Winamp 2 улазне плагин-ове да подржи више формата.&#10;&#10;Копирајте in_*.dll фајлове у %1/plugins фолдер да омогућите %1-у да чита ове формате.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Са %1-ом можете послати упит CDDB бази која садржи Unikod карактере.&#10;&#10;Ако имате било који ЦД са не-Латин називом извођача или песме онда ове податке&#10;можете пријавити freedb-у преко %1-а.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">За исправке грешке читања у току риповања можете омогућити Jitter корекцију у табу Рипер %1 подешења.&#10;&#10;Ако то не помогне, покушајте са неким од Параноја режима.</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Имате предлоге како да побољшамо %1?&#10;&#10;Ваше идеје пријавите преко trackera на %1 %2 интернет страни пројекта - %3&#10;или пошаљите еМејл на %4.</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Допада Вам се што је %1? %1 бесплатан, и желите помоћи развој истог донирањем %1 пројекту?&#10;&#10;Можете послати новчани прилог на: %2 преко PayPal-а.&#10;&#10;Погледајте %3 за више детаља.</entry>
-    </section>
-
     <section name="Messages">
       <entry id="7000" string="Currently converting">Енкодовање у току</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Енкодовање у току! Да ли заиста желите да га откажете?</entry>

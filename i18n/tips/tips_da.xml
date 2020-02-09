@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Danish / Dansk</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">tips.xml</property>
+    <property name="author">Jan Arni Jacobsen &lt;janjacobsen1988@gmail.com&gt;</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="%1 is available in %2 languages. If your language is not available&#10;or the translation is incomplete, you can easily translate %1&#10;using the 'smooth Translator' utility.&#10;&#10;To contribute your translations back to the %1 project, please&#10;refer to %3 for additional details.">%1 kan fås i %2 sprog. Hvis dit sprog ikke er tilgængeligt,&#10;kan du nemt oversætte %1 ved hjælp af det med følgende&#10;'smooth Translator' program.</entry>
+    <entry id="101" string="%1 comes with support for a wide variety of audio formats&#10;including MP3, M4A/AAC, FLAC, ALAC, Opus, Ogg Vorbis and&#10;WMA.&#10;&#10;Additional formats can be added by installing command line&#10;encoders.&#10;&#10;Please refer to %2&#10;for details.">%1 kommer med support af LAME, Ogg Vorbis, FAAC, FLAC&#10;og Opus kodere.&#10;&#10;En koder for VQF formatet er tilængeligt på %1&#10;hjemmeside: %2</entry>
+    <entry id="102" string="%1 supports the freedb CD database to query artist and title&#10;information about CDs.&#10;&#10;If you have a CD that is not in the database, you can submit new&#10;freedb entries with %1.">Med %1 kan du indsende freedb CD database indgange&#10;indholdende Unicode karakterer. Så har du en CD med ikke&#10;latinske kunstner eller titel navne, kan du indsende disse&#10;rigtigt med freedb indgange med %1.</entry>
+    <entry id="103" string="To correct reading errors while ripping, you can enable Jitter&#10;correction in the Ripper tab of %1's configuration dialog.&#10;&#10;If that does not help, try using one of the Paranoia modes.">For at rette læse fejl mens du ripper kan du bruge Jitter&#10;correction under indstillinger af %1.&#10;&#10;Hvis dette ikke hjælper, prøv da at bruge en af Paranoia&#10;metoderne.</entry>
+    <entry id="104" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3 or send&#10;an eMail to %4.">Har du nogen forslag til at forbedre %1?&#10;&#10;Så kan du indsende dine ideer gennem trackeren på %1&#10;%2 projekt side - %3&#10;eller send en email til %4.</entry>
+    <entry id="105" string="Do you like %1? %1 is free software, but you can help fund&#10;the development by making a donation.&#10;&#10;Donations can be sent via PayPal to %2.&#10;&#10;Or select 'Help'-&gt;'Donate to the %1 project...' from the menu&#10;bar to see different ways to donate.">Kan du lide %1? %1 er gratis, men du kan hjælpe udviklingen&#10;af %1 projektet ved at donere.&#10;&#10;Du kan sende penge til %2 via PayPal.</entry>
+
+    <section name="Windows">
+      <entry id="200" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats.&#10;&#10;Copy the in_*.dll files to the %1/plugins directory to enable&#10;%1 to read these formats.">%1 kan bruge Winamp 2 plug-ins for at undstøtte flere&#10;fil formater.&#10;&#10;Kopier in_*.dll filer til %1/plugins mappe for at bruge&#10;%1 til at læse disse formater.</entry>
+    </section>
+  </data>
+</LangFile>

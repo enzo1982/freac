@@ -381,13 +381,6 @@
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 يمكن إجراء فحص تلقائي على الانترنت&#10;تحديثات البرنامج عند بدء التشغيل.&#10;&#10;هل ترغب في أن يبحث عن التحديثات عند بدء التشغيل؟</entry>
     </section>
 
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 متوفرفي لغات عديدة %2. باستخدام %1 اذا كانت&#10;لغتك غير متوفرة يمكنك بسهولة ترجمة 'smooth Translator' البرنامج.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 يأتي مع الدعم من أجل LAME, Ogg Vorbis, FAAC,&#10;و المشفر Opus. ولكل مشفر VQF الصيغة متوفرة&#10;على الموقع ‪%2 :%1‬</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 يمكن أن يستخدم المكونات الإضافية لوين&#10;أمب لدعم المزيد من الملفات و الصيغات.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">مع %1 يمكنك ، يقدم مجانا قاعدة البيانات. إدخالات ضغط قاعدة&#10;بيانات القرص تحتوي على أحرف يونيكود. إذا كان لديك أي أقراص&#10;مدمجة تحتوي على غير اللاتينية الفنان أو عنوان أسماء ، يمكنك تقديم&#10;التصويبات تحرير إدخالات قاعدة البيانات مع %1.</entry>
-    </section>
-
     <section name="Messages">
       <entry id="7000" string="Currently converting">الترميز الحالي</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">الترميز لا يزال قيد العمل، هل تريد حقا إنهائه؟</entry>

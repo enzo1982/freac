@@ -157,6 +157,7 @@ History
 			- added separate Windows Wave File Output entry to encoder list
 			- display current signal processing settings in status area
 			- added a toolbar button to configure signal processing
+			- added new tips to Tip of the Day dialog
 
 		- Bug fixes
 

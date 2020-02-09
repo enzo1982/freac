@@ -506,16 +506,6 @@
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">啟動%1時可自動進行更新檢查。&#10;&#10;要求%1於啟動時自動檢查更新嗎？</entry>
     </section>
 
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1目前支援%2種語言。如果你的語言不在其中。&#10;&#10;你可下載%1的Translator Kit自行翻譯。</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1原生支援LAME、Ogg Vorbis、FAAC、FLAC和Opus;編碼器。&#10;&#10;VQF的編碼器可於%1網站（%2）下載。</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1可使用Winamp 2輸入外掛程式以支援更多檔案格式。&#10;&#10;請將in_*.dll複製到%1/plugins資料夾。</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">藉由%1可提交使用Unicode字集的項目到freedb資料庫。&#10;&#10;藉由%1提交，非拉丁字元不成問題。</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">如須修正翻錄時的讀取錯誤，可啟用「顫動糾正」功能&#10;（於喜好設定的CDRip分頁）。&#10;&#10;啟用此功能後若問題持續，可嘗試Paranoia模式。</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">有改良%1的建議嗎？&#10;&#10;可於本程式%2企劃網站（%3）的&#10;追蹤器上提交，或電郵到%4。</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">喜歡%1嗎？&#10;&#10;%1雖然免費，但持續開發需要資金。&#10;&#10;請捐助%1（PayPal：%2）。&#10;&#10;詳情請查閱%3。</entry>
-    </section>
-
     <section name="Messages">
       <entry id="7000" string="Currently converting">編碼進行中</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">編碼進行中。確定要終止？</entry>

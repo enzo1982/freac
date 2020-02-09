@@ -377,16 +377,6 @@
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 kan outomaties tydens aanskakeling&#10;kontroleer of daar opgraderings is.&#10;&#10;Wil jy hê dat %1 dit doen?</entry>
     </section>
 
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 is beskikbaar in %2 tale. As jou taal nie beskikbaar&#10;is nie, kan jy %1 maklik met die 'Smooth Translator'&#10;toepassing vertaal.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 ondersteun reeds LAME, Ogg Vorbis, FAAC, FLAC en&#10;Opus enkodeerders. 'n Enkodeerder vir die VQF-formaat&#10;is beskikbaar by die %1 webblad: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 kan Winamp 2 inset-inproppe gebruik om meer&#10;formate te kan lees. Kopieer die in_*.dll lêers na die&#10;%1/inprop-gids sodat %1 hierdie formate kan lees.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Met %1 kan jy CD-informasie met Unicode-karakters&#10;by freedb indien. As jy dus CD's met nie-Latynse&#10;titel- en kunstenaarsname het, kan jy met %1 die&#10;korrekte freedb inskrywings indien.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Leesfoute kan tydens stroping gekorrigeer word deur&#10;die rittelkorreksie op die CD-stropingsoortjie van %1 se&#10;konfigurasiedialoog te druk. As dit nie help nie,&#10;probeer een van die paranoiamodusse.</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Het jy enige voorstelle om %1 te verbeter?&#10;&#10;Jy kan jou idees deurgee via die tracker op die %1&#10;%2 projekbladsy - %3,&#10;of deur 'n e-pos na %4 te stuur.</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Hou jy van %1? %1 is gratis verkrygbaar, maar jy kan&#10;die ontwikkeling befonds deur 'n donasie te maak aan die&#10;%1 projek. Jy kan deur PayPal geld aan %2 stuur.&#10;Besoek %3 vir meer inligting.</entry>
-    </section>
-
     <section name="Messages">
       <entry id="7000" string="Currently converting">Tans besig om te enkodeer</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Die enkoderingsproses is nog aan die gang!&#10;Wil jy regtig ophou?</entry>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">English (United Kingdom)</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">tips.xml</property>
+    <property name="author">Robert Kausch &lt;robert.kausch@freac.org&gt;</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="103" string="To correct reading errors while ripping, you can enable Jitter&#10;correction in the Ripper tab of %1's configuration dialog.&#10;&#10;If that does not help, try using one of the Paranoia modes.">To correct reading errors while ripping you can enable Jitter&#10;correction in the Ripper tab of %1's configuration dialogue.&#10;&#10;If that does not help, try using one of the Paranoia modes.</entry>
+    <entry id="108" string="%1 will verify lossless source formats like FLAC and alert you if&#10;something does not seem to be right.&#10;&#10;In addition, it can verify lossless output files to make sure nothing&#10;went wrong during the conversion process.&#10;&#10;Check your settings in the configuration dialog if you would like&#10;to enable this.">%1 will verify lossless source formats like FLAC and alert you if&#10;something does not seem to be right.&#10;&#10;In addition, it can verify lossless output files to make sure nothing&#10;went wrong during the conversion process.&#10;&#10;Check your settings in the configuration dialogue if you would&#10;like to enable this.</entry>
+    <entry id="110" string="%1 can apply filters to your audio during conversions to reduce&#10;noise in voice recordings or speed up/slow down a record without&#10;changing the pitch which is great for speed listening to audio&#10;books.&#10;&#10;Check the 'Processing' page of the configuration dialog for these&#10;filters.">%1 can apply filters to your audio during conversions to reduce&#10;noise in voice recordings or speed up/slow down a record without&#10;changing the pitch which is great for speed listening to audio&#10;books.&#10;&#10;Check the 'Processing' page of the configuration dialogue for&#10;these filters.</entry>
+  </data>
+</LangFile>
