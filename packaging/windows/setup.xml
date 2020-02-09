@@ -7,7 +7,7 @@
   <application>
     <name>fre:ac</name>
     <longname>fre:ac - free audio converter</longname>
-    <version>v1.1 Beta 2</version>
+    <version>v1.1 Beta 3</version>
     <logo>setup.pci:0</logo>
   </application>
   <uninstall createLog="true">

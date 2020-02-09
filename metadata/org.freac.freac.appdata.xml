@@ -47,6 +47,32 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.1~beta3" date="2020-02-09">
+            <description>
+                <p>Improvements:</p>
+                <ul>
+                    <li>Prepare for freedb.org shutdown on 31st March 2020</li>
+                    <li>Display current signal processing settings in status area</li>
+                    <li>Added a toolbar button to configure signal processing</li>
+                    <li>Added new tips to Tip of the Day dialog</li>
+                    <li>Added separate Windows Wave File Output entry to encoder list</li>
+                </ul>
+                <p>Bug fixes:</p>
+                <ul>
+                   <li>Fixed issues opening Opus files with a .ogg extension</li>
+                   <li>Fixed Monkey's Audio encoder not showing up in 64 bit builds</li>
+                   <li>Fixed some issues with freaccmd command line interface</li>
+                </ul>
+                <p>Updated codecs:</p>
+                <ul>
+                    <li>Updated Monkey's Audio to version 5.18</li>
+                </ul>
+                <p>Updated translations:</p>
+                <ul>
+                    <li>Updated Chinese (simplified) translation</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1~beta2" date="2020-01-12">
             <description>
                 <p>Improvements:</p>
@@ -87,63 +113,6 @@
                     <li>Fixed invalid file time for CD rips when using "Keep time stamps" option</li>
                     <li>Fixed MP4 AAC files not always being gapless</li>
                     <li>Fixed some keyboard input issues on Linux</li>
-                </ul>
-            </description>
-        </release>
-        <release version="1.1~alpha20190423" date="2019-04-23">
-            <description>
-                <p>New features:</p>
-                <ul>
-                    <li>Added support for ripping with more drives than CPU cores available</li>
-                    <li>Added an option to keep timestamps of source files</li>
-                    <li>Added support for PulseAudio output</li>
-                </ul>
-                <p>Enhancements:</p>
-                <ul>
-                    <li>Improved interoperability of playlist files with VLC</li>
-                    <li>Improved handling of cue sheets referencing multiple files</li>
-                    <li>Improved handling of WAV files with unknown length</li>
-                    <li>Added support for drag &amp; drop in the tag editor</li>
-                </ul>
-                <p>Bug fixes:</p>
-                <ul>
-                    <li>Fixed crash when showing freedb multi-match dialog</li>
-                    <li>Fixed float samples processing with Core Audio encoder</li>
-                    <li>Fixed MP4 output issues when in and out files are the same</li>
-                    <li>Fixed Opus granule pos calculation and vendor string</li>
-                    <li>Fixed Ogg serial number generation</li>
-                    <li>Fixed handling of very short Ogg files</li>
-                    <li>Fixed several stability issues</li>
-                </ul>
-            </description>
-        </release>
-        <release version="1.1~alpha20181201a" date="2018-12-02">
-            <description>
-                <p>Bug fixes:</p>
-                <ul>
-                    <li>Fixed CD ripping issues</li>
-                </ul>
-            </description>
-        </release>
-        <release version="1.1~alpha20181201" date="2018-12-01">
-            <description>
-                <p>New features:</p>
-                <ul>
-                    <li>Notification component</li>
-                    <li>Option to switch stereo channels</li>
-                </ul>
-                <p>Enhancements:</p>
-                <ul>
-                    <li>Read/write ID3v2 from/to .wav files</li>
-                    <li>Read cue sheets embedded in ID3v2 tags</li>
-                    <li>Improved performance when reading large MP4/M4A files</li>
-                    <li>Respect GDK_SCALE environment variable on X11 systems</li>
-                </ul>
-                <p>Bug fixes:</p>
-                <ul>
-                    <li>Fixed crash when using the channel converter to convert mono to stereo</li>
-                    <li>Fixed encoding mono MP3s with LAME</li>
-                    <li>Fixed issues writing MP4 files when &lt;directory&gt; pattern is used</li>
                 </ul>
             </description>
         </release>
