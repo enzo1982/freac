@@ -1555,6 +1555,17 @@ Void freac::freacGUI::ShowTipOfTheDay()
 
 	dialog.SetMode(TIP_ORDERED, config->GetIntValue(Config::CategorySettingsID, Config::SettingsNextTipID, Config::SettingsNextTipDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, Config::SettingsShowTipsDefault));
 
+	for (Int i = 0; i < dialog.GetNOfObjects(); i++)
+	{
+		if (dialog.GetNthObject(i)->GetObjectType() != Window::classID) continue;
+
+		Window	*dlgWnd = (Window *) dialog.GetNthObject(i);
+
+		dlgWnd->SetRightToLeft(tips.IsActiveLanguageRightToLeft());
+
+		break;
+	}
+
 	dialog.ShowDialog();
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, showTips);
