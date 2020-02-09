@@ -154,59 +154,74 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Кодиране на файл</entry>
-      <entry id="3001" string="Time left">Оставащо време</entry>
-      <entry id="3002" string="Selected encoder">Избран енкодер</entry>
-      <entry id="3003" string="File progress">Прогрес</entry>
-      <entry id="3004" string="Output folder">Изходна папка</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 файл(ове) в списъка със задачи</entry>
-      <entry id="3006" string="none">празно</entry>
-      <entry id="3007" string="Show title info">Показване на заглавието</entry>
-      <entry id="3008" string="Play">Възпроизвеждане</entry>
-      <entry id="3009" string="Stop">Стоп</entry>
-      <entry id="3010" string="Select all">Избиране на всичко</entry>
-      <entry id="3011" string="Select none">Празен избор</entry>
-      <entry id="3012" string="Toggle selection">Превключване на избора</entry>
-      <entry id="3013" string="ripping/decoding">извличане/декодиране</entry>
-      <entry id="3014" string="encoding">кодиране</entry>
-      <entry id="3015" string="Create playlist">Създаване на плейлист</entry>
-      <entry id="3016" string="Create cue sheet">Създаване на CUE лист</entry>
-      <entry id="3017" string="Select">Избиране...</entry>
-      <entry id="3018" string="Skip">Пропускане</entry>
-      <entry id="3019" string="Encode to a single file">Кодиране в един файл</entry>
-      <entry id="3020" string="Remove">Премахване</entry>
-      <entry id="3021" string="Clear joblist">Изчистване на списъка със задачи</entry>
-      <entry id="3022" string="Use for all selected tracks">Използвай за всички избрани песни</entry>
-      <entry id="3023" string="Interpret string as">Интерпретиране на реда като</entry>
-      <entry id="3024" string="selected tracks">избрани песни</entry>
-      <entry id="3025" string="Adjust upper/lower case">Настройване на главни/малки букви</entry>
-      <entry id="3026" string="all words upper case">всички думи с главни букви</entry>
-      <entry id="3027" string="long words upper case">дълги думи с главни букви</entry>
-      <entry id="3028" string="first letter upper case">първата буква с главна буква</entry>
-      <entry id="3029" string="all lower case">всичко с малки букви</entry>
-      <entry id="3030" string="all upper case">всичко с главни букви</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Изберете папка, където кодираните файлове ще бъдат поставени</entry>
-      <entry id="3032" string="Sampling rate">Семплираща честота</entry>
-      <entry id="3033" string="Sample resolution">Семплираща резолюция</entry>
-      <entry id="3034" string="Number of samples">Брой семпли</entry>
-      <entry id="3035" string="Channels">Канали</entry>
-      <entry id="3036" string="Mono">Моно</entry>
-      <entry id="3037" string="Stereo">Стерео</entry>
-      <entry id="3038" string="Length">Времетраене</entry>
-      <entry id="3039" string="File">Файл</entry>
-      <entry id="3040" string="Size">Размер</entry>
-      <entry id="3041" string="Bitrate">Bitrate</entry>
-      <entry id="3042" string="Audio Files">Аудио файлове</entry>
-      <entry id="3043" string="All Files">Всички файлове</entry>
-      <entry id="3044" string="Playlist Files">Плейлист файлове</entry>
-      <entry id="3045" string="Active decoder">Активен декодер</entry>
-      <entry id="3046" string="Joblist">Списък със задачи</entry>
-      <entry id="3047" string="unknown">неизвестно</entry>
-      <entry id="3048" string="Other">Друг</entry>
-      <entry id="3049" string="Output file name">Име на изходния файл</entry>
-      <entry id="3050" string="verifying">проверка</entry>
-      <entry id="3051" string="Open">Отвори</entry>
-      <entry id="3052" string="CD drive">CD устройство</entry>
+      <entry id="3000" string="Time left">Оставащо време</entry>
+      <entry id="3001" string="File progress">Прогрес</entry>
+      <entry id="3002" string="Output folder">Изходна папка</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 файл(ове) в списъка със задачи</entry>
+      <entry id="3004" string="Show title info">Показване на заглавието</entry>
+      <entry id="3005" string="Play">Възпроизвеждане</entry>
+      <entry id="3006" string="Stop">Стоп</entry>
+      <entry id="3007" string="Select all">Избиране на всичко</entry>
+      <entry id="3008" string="Select none">Празен избор</entry>
+      <entry id="3009" string="Toggle selection">Превключване на избора</entry>
+      <entry id="3010" string="ripping/decoding">извличане/декодиране</entry>
+      <entry id="3011" string="encoding">кодиране</entry>
+      <entry id="3012" string="Create playlist">Създаване на плейлист</entry>
+      <entry id="3013" string="Create cue sheet">Създаване на CUE лист</entry>
+      <entry id="3014" string="Select">Избиране...</entry>
+      <entry id="3015" string="Encode to a single file">Кодиране в един файл</entry>
+      <entry id="3016" string="Remove">Премахване</entry>
+      <entry id="3017" string="Clear joblist">Изчистване на списъка със задачи</entry>
+      <entry id="3018" string="Use for all selected tracks">Използвай за всички избрани песни</entry>
+      <entry id="3019" string="Interpret string as">Интерпретиране на реда като</entry>
+      <entry id="3020" string="selected tracks">избрани песни</entry>
+      <entry id="3021" string="Adjust upper/lower case">Настройване на главни/малки букви</entry>
+      <entry id="3022" string="all words upper case">всички думи с главни букви</entry>
+      <entry id="3023" string="long words upper case">дълги думи с главни букви</entry>
+      <entry id="3024" string="first letter upper case">първата буква с главна буква</entry>
+      <entry id="3025" string="all lower case">всичко с малки букви</entry>
+      <entry id="3026" string="all upper case">всичко с главни букви</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Изберете папка, където кодираните файлове ще бъдат поставени</entry>
+      <entry id="3028" string="Sampling rate">Семплираща честота</entry>
+      <entry id="3029" string="Sample resolution">Семплираща резолюция</entry>
+      <entry id="3030" string="Number of samples">Брой семпли</entry>
+      <entry id="3031" string="Channels">Канали</entry>
+      <entry id="3032" string="Mono">Моно</entry>
+      <entry id="3033" string="Stereo">Стерео</entry>
+      <entry id="3034" string="Length">Времетраене</entry>
+      <entry id="3035" string="File">Файл</entry>
+      <entry id="3036" string="Size">Размер</entry>
+      <entry id="3037" string="Bitrate">Bitrate</entry>
+      <entry id="3038" string="Audio Files">Аудио файлове</entry>
+      <entry id="3039" string="All Files">Всички файлове</entry>
+      <entry id="3040" string="Playlist Files">Плейлист файлове</entry>
+      <entry id="3041" string="Joblist">Списък със задачи</entry>
+      <entry id="3042" string="Other">Друг</entry>
+      <entry id="3043" string="Output file name">Име на изходния файл</entry>
+      <entry id="3044" string="verifying">проверка</entry>
+      <entry id="3045" string="Open">Отвори</entry>
+      <entry id="3046" string="CD drive">CD устройство</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Кодиране на файл</entry>
+        <entry id="3051" string="none">празно</entry>
+        <entry id="3052" string="Skip current file">Пропускане</entry>
+      </section>
+
+      <section name="Decoder">
+        <entry id="3060" string="Active decoder">Активен декодер</entry>
+        <entry id="3061" string="none">неизвестно</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">Избрани филтри</entry>
+	<entry id="3073" string="Configure signal processing">Конфигуриране обработката на сигнала</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Избран енкодер</entry>
+	<entry id="3081" string="Configure selected encoder">Конфигуриране на избрания енкодер</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Папка</entry>

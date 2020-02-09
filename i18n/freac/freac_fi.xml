@@ -125,51 +125,58 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Muunnettava tiedosto</entry>
-      <entry id="3001" string="Time left">Aikaa jäljellä</entry>
-      <entry id="3002" string="Selected encoder">Valittu muunnin</entry>
-      <entry id="3003" string="File progress">Muunnon edistyminen</entry>
-      <entry id="3004" string="Output folder">Tallennuskohde</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 tiedosto(a) työlistassa</entry>
-      <entry id="3006" string="none">ei mitään</entry>
-      <entry id="3007" string="Show title info">Näytä otsikon tiedot</entry>
-      <entry id="3008" string="Play">Toista</entry>
-      <entry id="3009" string="Stop">Pysäytä</entry>
-      <entry id="3010" string="Select all">Valitse kaikki</entry>
-      <entry id="3011" string="Select none">Älä valitse mitään</entry>
-      <entry id="3012" string="Toggle selection">Vaihda valinta</entry>
-      <entry id="3013" string="ripping/decoding">kopiointi/muuntaminen</entry>
-      <entry id="3014" string="encoding">muuntaminen</entry>
-      <entry id="3015" string="Create playlist">Luo soittolista</entry>
-      <entry id="3016" string="Create cue sheet">Luo vihjetaso</entry>
-      <entry id="3017" string="Select">Selaa</entry>
-      <entry id="3018" string="Skip">Ohita</entry>
-      <entry id="3019" string="Encode to a single file">Muunna yksittäinen tiedosto</entry>
-      <entry id="3020" string="Remove">Posta</entry>
-      <entry id="3021" string="Clear joblist">Tyhjennä työlista</entry>
-      <entry id="3022" string="Use for all selected tracks">Käytä kaikkia valittuja raitoja</entry>
-      <entry id="3023" string="Interpret string as">Tulkita merkkijono</entry>
-      <entry id="3024" string="selected tracks">valitut raidat</entry>
-      <entry id="3025" string="Adjust upper/lower case">Säädä isot/pienet kirjaimet</entry>
-      <entry id="3026" string="all words upper case">kaikki sanat isoilla kirjaimilla</entry>
-      <entry id="3027" string="long words upper case">pitkät sanat isoilla kirjaimilla</entry>
-      <entry id="3028" string="first letter upper case">Ensimmäinen kirjain isolla</entry>
-      <entry id="3029" string="all lower case">kaikki pienillä kirjaimilla</entry>
-      <entry id="3030" string="all upper case">kaikki isoilla kirjaimilla</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Valitse kohde minne muunnetut tiedostot laitetaan</entry>
-      <entry id="3032" string="Sampling rate">Näytteen nopeus</entry>
-      <entry id="3033" string="Sample resolution">Näytteen resoluutio</entry>
-      <entry id="3034" string="Number of samples">Näytteen numero</entry>
-      <entry id="3035" string="Channels">Kanavat</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Pituus</entry>
-      <entry id="3039" string="File">Tiedosto</entry>
-      <entry id="3040" string="Size">Koko</entry>
-      <entry id="3041" string="Bitrate">Bittivirran nopeus</entry>
-      <entry id="3042" string="Audio Files">Äänitiedosto</entry>
-      <entry id="3043" string="All Files">Kaikki tiedostot</entry>
-      <entry id="3044" string="Playlist Files">Toistolistatiedosto</entry>
+      <entry id="3000" string="Time left">Aikaa jäljellä</entry>
+      <entry id="3001" string="File progress">Muunnon edistyminen</entry>
+      <entry id="3002" string="Output folder">Tallennuskohde</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 tiedosto(a) työlistassa</entry>
+      <entry id="3004" string="Show title info">Näytä otsikon tiedot</entry>
+      <entry id="3005" string="Play">Toista</entry>
+      <entry id="3006" string="Stop">Pysäytä</entry>
+      <entry id="3007" string="Select all">Valitse kaikki</entry>
+      <entry id="3008" string="Select none">Älä valitse mitään</entry>
+      <entry id="3009" string="Toggle selection">Vaihda valinta</entry>
+      <entry id="3010" string="ripping/decoding">kopiointi/muuntaminen</entry>
+      <entry id="3011" string="encoding">muuntaminen</entry>
+      <entry id="3012" string="Create playlist">Luo soittolista</entry>
+      <entry id="3013" string="Create cue sheet">Luo vihjetaso</entry>
+      <entry id="3014" string="Select">Selaa</entry>
+      <entry id="3015" string="Encode to a single file">Muunna yksittäinen tiedosto</entry>
+      <entry id="3016" string="Remove">Posta</entry>
+      <entry id="3017" string="Clear joblist">Tyhjennä työlista</entry>
+      <entry id="3018" string="Use for all selected tracks">Käytä kaikkia valittuja raitoja</entry>
+      <entry id="3019" string="Interpret string as">Tulkita merkkijono</entry>
+      <entry id="3020" string="selected tracks">valitut raidat</entry>
+      <entry id="3021" string="Adjust upper/lower case">Säädä isot/pienet kirjaimet</entry>
+      <entry id="3022" string="all words upper case">kaikki sanat isoilla kirjaimilla</entry>
+      <entry id="3023" string="long words upper case">pitkät sanat isoilla kirjaimilla</entry>
+      <entry id="3024" string="first letter upper case">Ensimmäinen kirjain isolla</entry>
+      <entry id="3025" string="all lower case">kaikki pienillä kirjaimilla</entry>
+      <entry id="3026" string="all upper case">kaikki isoilla kirjaimilla</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Valitse kohde minne muunnetut tiedostot laitetaan</entry>
+      <entry id="3028" string="Sampling rate">Näytteen nopeus</entry>
+      <entry id="3029" string="Sample resolution">Näytteen resoluutio</entry>
+      <entry id="3030" string="Number of samples">Näytteen numero</entry>
+      <entry id="3031" string="Channels">Kanavat</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Pituus</entry>
+      <entry id="3035" string="File">Tiedosto</entry>
+      <entry id="3036" string="Size">Koko</entry>
+      <entry id="3037" string="Bitrate">Bittivirran nopeus</entry>
+      <entry id="3038" string="Audio Files">Äänitiedosto</entry>
+      <entry id="3039" string="All Files">Kaikki tiedostot</entry>
+      <entry id="3040" string="Playlist Files">Toistolistatiedosto</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Muunnettava tiedosto</entry>
+        <entry id="3051" string="none">ei mitään</entry>
+        <entry id="3052" string="Skip current file">Ohita</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Valittu muunnin</entry>
+	<entry id="3081" string="Configure selected encoder">Määritä valitun muuntimen asetukset</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Kansio</entry>

@@ -125,51 +125,58 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Файл для кодування</entry>
-      <entry id="3001" string="Time left">Залишилось часу</entry>
-      <entry id="3002" string="Selected encoder">Вибраний кодек</entry>
-      <entry id="3003" string="File progress">Прогрес</entry>
-      <entry id="3004" string="Output folder">Тека</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 файл(а/ів) у листі</entry>
-      <entry id="3006" string="none">немає</entry>
-      <entry id="3007" string="Show title info">Показати інформацію заголовків</entry>
-      <entry id="3008" string="Play">Відтворити</entry>
-      <entry id="3009" string="Stop">Стоп</entry>
-      <entry id="3010" string="Select all">Вибрати всі</entry>
-      <entry id="3011" string="Select none">Нічого не вибирати</entry>
-      <entry id="3012" string="Toggle selection">Вибрати виділені</entry>
-      <entry id="3013" string="ripping/decoding">захоплення/декодування</entry>
-      <entry id="3014" string="encoding">кодування</entry>
-      <entry id="3015" string="Create playlist">Створити плейлист</entry>
-      <entry id="3016" string="Create cue sheet">Створити командну сторінку</entry>
-      <entry id="3017" string="Select">Відкрити</entry>
-      <entry id="3018" string="Skip">Пропустити</entry>
-      <entry id="3019" string="Encode to a single file">Кодувати у єдиний файл</entry>
-      <entry id="3020" string="Remove">Видалити</entry>
-      <entry id="3021" string="Clear joblist">Очистити лист</entry>
-      <entry id="3022" string="Use for all selected tracks">Використати для всіх вибраних доріжок</entry>
-      <entry id="3023" string="Interpret string as">Розуміти рядки як</entry>
-      <entry id="3024" string="selected tracks">вибрані доріжки</entry>
-      <entry id="3025" string="Adjust upper/lower case">Встановити верхній/нижній регістр</entry>
-      <entry id="3026" string="all words upper case">всі слова у верхньому регістрі</entry>
-      <entry id="3027" string="long words upper case">довгі слова у верхньому регістрі</entry>
-      <entry id="3028" string="first letter upper case">перша буква у верхньому регістрі</entry>
-      <entry id="3029" string="all lower case">всі у нижньому регістрі</entry>
-      <entry id="3030" string="all upper case">всі у верхньому регістрі</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Обрати теку, де будуть збережені закодовані файли</entry>
-      <entry id="3032" string="Sampling rate">Рівень дискретизації</entry>
-      <entry id="3033" string="Sample resolution">Роздільча здатність вибірки</entry>
-      <entry id="3034" string="Number of samples">Кількість вибірок</entry>
-      <entry id="3035" string="Channels">Канали</entry>
-      <entry id="3036" string="Mono">Моно</entry>
-      <entry id="3037" string="Stereo">Cтерео</entry>
-      <entry id="3038" string="Length">Довжина</entry>
-      <entry id="3039" string="File">Файл</entry>
-      <entry id="3040" string="Size">Розмір</entry>
-      <entry id="3041" string="Bitrate">Бітрейт</entry>
-      <entry id="3042" string="Audio Files">Аудіо файли</entry>
-      <entry id="3043" string="All Files">Всі файли</entry>
-      <entry id="3044" string="Playlist Files">Файли плейлистів</entry>
+      <entry id="3000" string="Time left">Залишилось часу</entry>
+      <entry id="3001" string="File progress">Прогрес</entry>
+      <entry id="3002" string="Output folder">Тека</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 файл(а/ів) у листі</entry>
+      <entry id="3004" string="Show title info">Показати інформацію заголовків</entry>
+      <entry id="3005" string="Play">Відтворити</entry>
+      <entry id="3006" string="Stop">Стоп</entry>
+      <entry id="3007" string="Select all">Вибрати всі</entry>
+      <entry id="3008" string="Select none">Нічого не вибирати</entry>
+      <entry id="3009" string="Toggle selection">Вибрати виділені</entry>
+      <entry id="3010" string="ripping/decoding">захоплення/декодування</entry>
+      <entry id="3011" string="encoding">кодування</entry>
+      <entry id="3012" string="Create playlist">Створити плейлист</entry>
+      <entry id="3013" string="Create cue sheet">Створити командну сторінку</entry>
+      <entry id="3014" string="Select">Відкрити</entry>
+      <entry id="3015" string="Encode to a single file">Кодувати у єдиний файл</entry>
+      <entry id="3016" string="Remove">Видалити</entry>
+      <entry id="3017" string="Clear joblist">Очистити лист</entry>
+      <entry id="3018" string="Use for all selected tracks">Використати для всіх вибраних доріжок</entry>
+      <entry id="3019" string="Interpret string as">Розуміти рядки як</entry>
+      <entry id="3020" string="selected tracks">вибрані доріжки</entry>
+      <entry id="3021" string="Adjust upper/lower case">Встановити верхній/нижній регістр</entry>
+      <entry id="3022" string="all words upper case">всі слова у верхньому регістрі</entry>
+      <entry id="3023" string="long words upper case">довгі слова у верхньому регістрі</entry>
+      <entry id="3024" string="first letter upper case">перша буква у верхньому регістрі</entry>
+      <entry id="3025" string="all lower case">всі у нижньому регістрі</entry>
+      <entry id="3026" string="all upper case">всі у верхньому регістрі</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Обрати теку, де будуть збережені закодовані файли</entry>
+      <entry id="3028" string="Sampling rate">Рівень дискретизації</entry>
+      <entry id="3029" string="Sample resolution">Роздільча здатність вибірки</entry>
+      <entry id="3030" string="Number of samples">Кількість вибірок</entry>
+      <entry id="3031" string="Channels">Канали</entry>
+      <entry id="3032" string="Mono">Моно</entry>
+      <entry id="3033" string="Stereo">Cтерео</entry>
+      <entry id="3034" string="Length">Довжина</entry>
+      <entry id="3035" string="File">Файл</entry>
+      <entry id="3036" string="Size">Розмір</entry>
+      <entry id="3037" string="Bitrate">Бітрейт</entry>
+      <entry id="3038" string="Audio Files">Аудіо файли</entry>
+      <entry id="3039" string="All Files">Всі файли</entry>
+      <entry id="3040" string="Playlist Files">Файли плейлистів</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Файл для кодування</entry>
+        <entry id="3051" string="none">немає</entry>
+        <entry id="3052" string="Skip current file">Пропустити</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Вибраний кодек</entry>
+	<entry id="3081" string="Configure selected encoder">Налаштувати вибраний кодек</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Тека</entry>

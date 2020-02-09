@@ -154,59 +154,74 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Koder filen</entry>
-      <entry id="3001" string="Time left">Tid tilbage</entry>
-      <entry id="3002" string="Selected encoder">Valgt koder</entry>
-      <entry id="3003" string="File progress">Fil fremgang</entry>
-      <entry id="3004" string="Output folder">Ud mappe</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 fil(er) i Opgaveliste</entry>
-      <entry id="3006" string="none">tom</entry>
-      <entry id="3007" string="Show title info">Vis Titel information</entry>
-      <entry id="3008" string="Play">Afspil</entry>
-      <entry id="3009" string="Stop">Stop</entry>
-      <entry id="3010" string="Select all">Vælg alt</entry>
-      <entry id="3011" string="Select none">Vælg ingen</entry>
-      <entry id="3012" string="Toggle selection">Skift valg</entry>
-      <entry id="3013" string="ripping/decoding">ripning/dekodning</entry>
-      <entry id="3014" string="encoding">kodning</entry>
-      <entry id="3015" string="Create playlist">Lav afspilningsliste</entry>
-      <entry id="3016" string="Create cue sheet">Lav cue sheet</entry>
-      <entry id="3017" string="Select">Vælg</entry>
-      <entry id="3018" string="Skip">Spring over</entry>
-      <entry id="3019" string="Encode to a single file">Kod til en enkelt fil</entry>
-      <entry id="3020" string="Remove">Fjern</entry>
-      <entry id="3021" string="Clear joblist">Ryd Opgaveliste</entry>
-      <entry id="3022" string="Use for all selected tracks">Brug til alle valgte spor</entry>
-      <entry id="3023" string="Interpret string as">Fortolk streng som</entry>
-      <entry id="3024" string="selected tracks">valgte spor</entry>
-      <entry id="3025" string="Adjust upper/lower case">Juster store/små bogstaver</entry>
-      <entry id="3026" string="all words upper case">alle ord i store bogstaver</entry>
-      <entry id="3027" string="long words upper case">lange ord i store bogstaver</entry>
-      <entry id="3028" string="first letter upper case">første bogstav med stort</entry>
-      <entry id="3029" string="all lower case">alt med små bogstaver</entry>
-      <entry id="3030" string="all upper case">alt med store bogstaver</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Vælg den mappe som de kodede filer vil blive lagt i</entry>
-      <entry id="3032" string="Sampling rate">Sampling hastighed</entry>
-      <entry id="3033" string="Sample resolution">Sample opløsning</entry>
-      <entry id="3034" string="Number of samples">Antal af samples</entry>
-      <entry id="3035" string="Channels">Kanaler</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Længde</entry>
-      <entry id="3039" string="File">Filer</entry>
-      <entry id="3040" string="Size">Størrelse</entry>
-      <entry id="3041" string="Bitrate">Bit Hastighed</entry>
-      <entry id="3042" string="Audio Files">Lyd Filer</entry>
-      <entry id="3043" string="All Files">Alle Filer</entry>
-      <entry id="3044" string="Playlist Files">Afspilningsliste filer</entry>
-      <entry id="3045" string="Active decoder">Aktiv dekoder</entry>
-      <entry id="3046" string="Joblist">Opgaveliste</entry>
-      <entry id="3047" string="unknown">ukendt</entry>
-      <entry id="3048" string="Other">andet</entry>
-      <entry id="3049" string="Output file name">output filnavn</entry>
-      <entry id="3050" string="verifying">Bekræfter</entry>
-      <entry id="3051" string="Open">Åben</entry>
-      <entry id="3052" string="CD drive">CD drev</entry>
+      <entry id="3000" string="Time left">Tid tilbage</entry>
+      <entry id="3001" string="File progress">Fil fremgang</entry>
+      <entry id="3002" string="Output folder">Ud mappe</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 fil(er) i Opgaveliste</entry>
+      <entry id="3004" string="Show title info">Vis Titel information</entry>
+      <entry id="3005" string="Play">Afspil</entry>
+      <entry id="3006" string="Stop">Stop</entry>
+      <entry id="3007" string="Select all">Vælg alt</entry>
+      <entry id="3008" string="Select none">Vælg ingen</entry>
+      <entry id="3009" string="Toggle selection">Skift valg</entry>
+      <entry id="3010" string="ripping/decoding">ripning/dekodning</entry>
+      <entry id="3011" string="encoding">kodning</entry>
+      <entry id="3012" string="Create playlist">Lav afspilningsliste</entry>
+      <entry id="3013" string="Create cue sheet">Lav cue sheet</entry>
+      <entry id="3014" string="Select">Vælg</entry>
+      <entry id="3015" string="Encode to a single file">Kod til en enkelt fil</entry>
+      <entry id="3016" string="Remove">Fjern</entry>
+      <entry id="3017" string="Clear joblist">Ryd Opgaveliste</entry>
+      <entry id="3018" string="Use for all selected tracks">Brug til alle valgte spor</entry>
+      <entry id="3019" string="Interpret string as">Fortolk streng som</entry>
+      <entry id="3020" string="selected tracks">valgte spor</entry>
+      <entry id="3021" string="Adjust upper/lower case">Juster store/små bogstaver</entry>
+      <entry id="3022" string="all words upper case">alle ord i store bogstaver</entry>
+      <entry id="3023" string="long words upper case">lange ord i store bogstaver</entry>
+      <entry id="3024" string="first letter upper case">første bogstav med stort</entry>
+      <entry id="3025" string="all lower case">alt med små bogstaver</entry>
+      <entry id="3026" string="all upper case">alt med store bogstaver</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Vælg den mappe som de kodede filer vil blive lagt i</entry>
+      <entry id="3028" string="Sampling rate">Sampling hastighed</entry>
+      <entry id="3029" string="Sample resolution">Sample opløsning</entry>
+      <entry id="3030" string="Number of samples">Antal af samples</entry>
+      <entry id="3031" string="Channels">Kanaler</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Længde</entry>
+      <entry id="3035" string="File">Filer</entry>
+      <entry id="3036" string="Size">Størrelse</entry>
+      <entry id="3037" string="Bitrate">Bit Hastighed</entry>
+      <entry id="3038" string="Audio Files">Lyd Filer</entry>
+      <entry id="3039" string="All Files">Alle Filer</entry>
+      <entry id="3040" string="Playlist Files">Afspilningsliste filer</entry>
+      <entry id="3041" string="Joblist">Opgaveliste</entry>
+      <entry id="3042" string="Other">andet</entry>
+      <entry id="3043" string="Output file name">output filnavn</entry>
+      <entry id="3044" string="verifying">Bekræfter</entry>
+      <entry id="3045" string="Open">Åben</entry>
+      <entry id="3046" string="CD drive">CD drev</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Koder filen</entry>
+        <entry id="3051" string="none">tom</entry>
+        <entry id="3052" string="Skip current file">Spring over</entry>
+      </section>
+
+      <section name="Decoder">
+        <entry id="3060" string="Active decoder">Aktiv dekoder</entry>
+        <entry id="3061" string="none">ukendt</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">Valgte filtre</entry>
+	<entry id="3073" string="Configure signal processing">Konfigurer signal behandling</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Valgt koder</entry>
+	<entry id="3081" string="Configure selected encoder">Konfigurer den valgte koder</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Mappe</entry>

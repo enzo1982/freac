@@ -154,59 +154,74 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Cudificazione di u schedariu</entry>
-      <entry id="3001" string="Time left">Durata rimanente</entry>
-      <entry id="3002" string="Selected encoder">Cudificatore selezziunatu</entry>
-      <entry id="3003" string="File progress">Prugressione di schedariu</entry>
-      <entry id="3004" string="Output folder">Cartulare di destinazione</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 schedariu(i) in a lista di travagliu</entry>
-      <entry id="3006" string="none">nisunu</entry>
-      <entry id="3007" string="Show title info">Affissà l’infurmazione di titulu</entry>
-      <entry id="3008" string="Play">Sunà</entry>
-      <entry id="3009" string="Stop">Fermà</entry>
-      <entry id="3010" string="Select all">Selezziunà tuttu</entry>
-      <entry id="3011" string="Select none">Ùn selezziunà nunda</entry>
-      <entry id="3012" string="Toggle selection">Invertisce a selezzione</entry>
-      <entry id="3013" string="ripping/decoding">estrazzione/dicudificazione</entry>
-      <entry id="3014" string="encoding">cudificazione</entry>
-      <entry id="3015" string="Create playlist">Creà a lista di lettura</entry>
-      <entry id="3016" string="Create cue sheet">Creà u fogliu di mischiera cue</entry>
-      <entry id="3017" string="Select">Selezziunà</entry>
-      <entry id="3018" string="Skip">Ignurà</entry>
-      <entry id="3019" string="Encode to a single file">Cudificà ver di un schedariu unicu</entry>
-      <entry id="3020" string="Remove">Caccià</entry>
-      <entry id="3021" string="Clear joblist">Viutà a lista di travagliu</entry>
-      <entry id="3022" string="Use for all selected tracks">Impiegà per tutte e traccie selezziunate</entry>
-      <entry id="3023" string="Interpret string as">Interpretà a catena cum’è</entry>
-      <entry id="3024" string="selected tracks">traccie selezziunate</entry>
-      <entry id="3025" string="Adjust upper/lower case">Aggalabà maiuscule/minuscule</entry>
-      <entry id="3026" string="all words upper case">tutte e parolle in maiuscule</entry>
-      <entry id="3027" string="long words upper case">parolle longhe in maiuscule</entry>
-      <entry id="3028" string="first letter upper case">prima lettera in maiuscula</entry>
-      <entry id="3029" string="all lower case">tuttu in minuscula</entry>
-      <entry id="3030" string="all upper case">tuttu in maiuscula</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Selezziunà u cartulare di destinazione di i schedarii cudificati</entry>
-      <entry id="3032" string="Sampling rate">Frequenza di campiunariu</entry>
-      <entry id="3033" string="Sample resolution">Risuluzione di campiunariu</entry>
-      <entry id="3034" string="Number of samples">Numeru di campioni</entry>
-      <entry id="3035" string="Channels">Canali</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Durata</entry>
-      <entry id="3039" string="File">Schedariu</entry>
-      <entry id="3040" string="Size">Dimensione</entry>
-      <entry id="3041" string="Bitrate">Bitrate</entry>
-      <entry id="3042" string="Audio Files">Schedarii audio</entry>
-      <entry id="3043" string="All Files">Tutti i schedarii</entry>
-      <entry id="3044" string="Playlist Files">Schedarii di lista di lettura</entry>
-      <entry id="3045" string="Active decoder">Discudificatore attivu</entry>
-      <entry id="3046" string="Joblist">Lista di travagliu</entry>
-      <entry id="3047" string="unknown">scunnisciutu</entry>
-      <entry id="3048" string="Other">Altra</entry>
-      <entry id="3049" string="Output file name">Nome di schedariu d’esciuta</entry>
-      <entry id="3050" string="verifying">verificazione</entry>
-      <entry id="3051" string="Open">Apre</entry>
-      <entry id="3052" string="CD drive">Lettore CD</entry>
+      <entry id="3000" string="Time left">Durata rimanente</entry>
+      <entry id="3001" string="File progress">Prugressione di schedariu</entry>
+      <entry id="3002" string="Output folder">Cartulare di destinazione</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 schedariu(i) in a lista di travagliu</entry>
+      <entry id="3004" string="Show title info">Affissà l’infurmazione di titulu</entry>
+      <entry id="3005" string="Play">Sunà</entry>
+      <entry id="3006" string="Stop">Fermà</entry>
+      <entry id="3007" string="Select all">Selezziunà tuttu</entry>
+      <entry id="3008" string="Select none">Ùn selezziunà nunda</entry>
+      <entry id="3009" string="Toggle selection">Invertisce a selezzione</entry>
+      <entry id="3010" string="ripping/decoding">estrazzione/dicudificazione</entry>
+      <entry id="3011" string="encoding">cudificazione</entry>
+      <entry id="3012" string="Create playlist">Creà a lista di lettura</entry>
+      <entry id="3013" string="Create cue sheet">Creà u fogliu di mischiera cue</entry>
+      <entry id="3014" string="Select">Selezziunà</entry>
+      <entry id="3015" string="Encode to a single file">Cudificà ver di un schedariu unicu</entry>
+      <entry id="3016" string="Remove">Caccià</entry>
+      <entry id="3017" string="Clear joblist">Viutà a lista di travagliu</entry>
+      <entry id="3018" string="Use for all selected tracks">Impiegà per tutte e traccie selezziunate</entry>
+      <entry id="3019" string="Interpret string as">Interpretà a catena cum’è</entry>
+      <entry id="3020" string="selected tracks">traccie selezziunate</entry>
+      <entry id="3021" string="Adjust upper/lower case">Aggalabà maiuscule/minuscule</entry>
+      <entry id="3022" string="all words upper case">tutte e parolle in maiuscule</entry>
+      <entry id="3023" string="long words upper case">parolle longhe in maiuscule</entry>
+      <entry id="3024" string="first letter upper case">prima lettera in maiuscula</entry>
+      <entry id="3025" string="all lower case">tuttu in minuscula</entry>
+      <entry id="3026" string="all upper case">tuttu in maiuscula</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Selezziunà u cartulare di destinazione di i schedarii cudificati</entry>
+      <entry id="3028" string="Sampling rate">Frequenza di campiunariu</entry>
+      <entry id="3029" string="Sample resolution">Risuluzione di campiunariu</entry>
+      <entry id="3030" string="Number of samples">Numeru di campioni</entry>
+      <entry id="3031" string="Channels">Canali</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Durata</entry>
+      <entry id="3035" string="File">Schedariu</entry>
+      <entry id="3036" string="Size">Dimensione</entry>
+      <entry id="3037" string="Bitrate">Bitrate</entry>
+      <entry id="3038" string="Audio Files">Schedarii audio</entry>
+      <entry id="3039" string="All Files">Tutti i schedarii</entry>
+      <entry id="3040" string="Playlist Files">Schedarii di lista di lettura</entry>
+      <entry id="3041" string="Joblist">Lista di travagliu</entry>
+      <entry id="3042" string="Other">Altra</entry>
+      <entry id="3043" string="Output file name">Nome di schedariu d’esciuta</entry>
+      <entry id="3044" string="verifying">verificazione</entry>
+      <entry id="3045" string="Open">Apre</entry>
+      <entry id="3046" string="CD drive">Lettore CD</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Cudificazione di u schedariu</entry>
+        <entry id="3051" string="none">nisunu</entry>
+        <entry id="3052" string="Skip current file">Ignurà</entry>
+      </section>
+
+      <section name="Decoder">
+        <entry id="3060" string="Active decoder">Discudificatore attivu</entry>
+        <entry id="3061" string="none">scunnisciutu</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">Filtri selezziunati</entry>
+	<entry id="3073" string="Configure signal processing">Cunfigurà u trattamentu di u signale</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Cudificatore selezziunatu</entry>
+	<entry id="3081" string="Configure selected encoder">Cunfigurà u cudificatore selezziunatu</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Cartulare</entry>

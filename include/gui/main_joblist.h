@@ -66,11 +66,20 @@ namespace freac
 			Text			*txt_filename;
 			EditBox			*edb_filename;
 
+			Button			*btn_skip;
+
+			Text			*txt_filters;
+			EditBox			*edb_filters;
+
+			Button			*btn_configure_dsp;
+
 			Text			*txt_format;
 			EditBox			*edb_format;
 
 			Text			*txt_encoder;
 			ComboBox		*combo_encoder;
+
+			Button			*btn_configure_encoder;
 
 			Text			*txt_progress;
 			Progressbar		*progress;
@@ -87,10 +96,6 @@ namespace freac
 			Text			*txt_outdir;
 			EditBox			*edb_outdir;
 			List			*list_outdir;
-
-			Button			*btn_skip;
-
-			Button			*btn_configure;
 
 			Button			*btn_open;
 			Button			*btn_browse;
@@ -216,8 +221,6 @@ namespace freac
 
 			Void			 OnSelectFolder();
 			Void			 OnSelectEncoder();
-
-			Void			 OnConfigureEncoder();
 
 			Void			 ToggleEditPopup();
 

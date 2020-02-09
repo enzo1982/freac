@@ -125,51 +125,58 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Comprimint</entry>
-      <entry id="3001" string="Time left">Temps que falta.</entry>
-      <entry id="3002" string="Selected encoder">Compressor seleccionat</entry>
-      <entry id="3003" string="File progress">Progrés</entry>
-      <entry id="3004" string="Output folder">Ruta de sortida</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 fitxer(s) en llista</entry>
-      <entry id="3006" string="none">cap</entry>
-      <entry id="3007" string="Show title info">Mostrar Informació del títol</entry>
-      <entry id="3008" string="Play">Reproduir</entry>
-      <entry id="3009" string="Stop">Detenir</entry>
-      <entry id="3010" string="Select all">. Seleccionar tot</entry>
-      <entry id="3011" string="Select none">Seleccionar gens</entry>
-      <entry id="3012" string="Toggle selection">Invertir selecció</entry>
-      <entry id="3013" string="ripping/decoding">extraient/decodificando</entry>
-      <entry id="3014" string="encoding">codificant</entry>
-      <entry id="3015" string="Create playlist">Crear llista de reproducció</entry>
-      <entry id="3016" string="Create cue sheet">Crear cua</entry>
-      <entry id="3017" string="Select">Buscar</entry>
-      <entry id="3018" string="Skip">Ometre</entry>
-      <entry id="3019" string="Encode to a single file">Codificar a un sol fitxer</entry>
-      <entry id="3020" string="Remove">Eliminar</entry>
-      <entry id="3021" string="Clear joblist">Eliminar llesta</entry>
-      <entry id="3022" string="Use for all selected tracks">Utilitzar per a tots els tracks seleccionats</entry>
-      <entry id="3023" string="Interpret string as">Interpretar el text com:</entry>
-      <entry id="3024" string="selected tracks">Tracks seleccionats</entry>
-      <entry id="3025" string="Adjust upper/lower case">Ajustar majúscules i minúscules</entry>
-      <entry id="3026" string="all words upper case">Totes les paraules en majúscules</entry>
-      <entry id="3027" string="long words upper case">Paraules llargues en majúscules</entry>
-      <entry id="3028" string="first letter upper case">Primera lletra en majúscules</entry>
-      <entry id="3029" string="all lower case">tot en minúscules</entry>
-      <entry id="3030" string="all upper case">tot en majúscules</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Seleccioni la carpeta per als arxius comprimits</entry>
-      <entry id="3032" string="Sampling rate">Velocitat de mostreig</entry>
-      <entry id="3033" string="Sample resolution">Resolució de la mostra</entry>
-      <entry id="3034" string="Number of samples">Nombre de mostres</entry>
-      <entry id="3035" string="Channels">Canales</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Estèreo</entry>
-      <entry id="3038" string="Length">Duració</entry>
-      <entry id="3039" string="File">Arxiu</entry>
-      <entry id="3040" string="Size">Tamany</entry>
-      <entry id="3041" string="Bitrate">Ràtio de bits</entry>
-      <entry id="3042" string="Audio Files">Fitxers d'Àudio</entry>
-      <entry id="3043" string="All Files">Tots els fitxers</entry>
-      <entry id="3044" string="Playlist Files">Arxius de llista de reproducció</entry>
+      <entry id="3000" string="Time left">Temps que falta.</entry>
+      <entry id="3001" string="File progress">Progrés</entry>
+      <entry id="3002" string="Output folder">Ruta de sortida</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 fitxer(s) en llista</entry>
+      <entry id="3004" string="Show title info">Mostrar Informació del títol</entry>
+      <entry id="3005" string="Play">Reproduir</entry>
+      <entry id="3006" string="Stop">Detenir</entry>
+      <entry id="3007" string="Select all">. Seleccionar tot</entry>
+      <entry id="3008" string="Select none">Seleccionar gens</entry>
+      <entry id="3009" string="Toggle selection">Invertir selecció</entry>
+      <entry id="3010" string="ripping/decoding">extraient/decodificando</entry>
+      <entry id="3011" string="encoding">codificant</entry>
+      <entry id="3012" string="Create playlist">Crear llista de reproducció</entry>
+      <entry id="3013" string="Create cue sheet">Crear cua</entry>
+      <entry id="3014" string="Select">Buscar</entry>
+      <entry id="3015" string="Encode to a single file">Codificar a un sol fitxer</entry>
+      <entry id="3016" string="Remove">Eliminar</entry>
+      <entry id="3017" string="Clear joblist">Eliminar llesta</entry>
+      <entry id="3018" string="Use for all selected tracks">Utilitzar per a tots els tracks seleccionats</entry>
+      <entry id="3019" string="Interpret string as">Interpretar el text com:</entry>
+      <entry id="3020" string="selected tracks">Tracks seleccionats</entry>
+      <entry id="3021" string="Adjust upper/lower case">Ajustar majúscules i minúscules</entry>
+      <entry id="3022" string="all words upper case">Totes les paraules en majúscules</entry>
+      <entry id="3023" string="long words upper case">Paraules llargues en majúscules</entry>
+      <entry id="3024" string="first letter upper case">Primera lletra en majúscules</entry>
+      <entry id="3025" string="all lower case">tot en minúscules</entry>
+      <entry id="3026" string="all upper case">tot en majúscules</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Seleccioni la carpeta per als arxius comprimits</entry>
+      <entry id="3028" string="Sampling rate">Velocitat de mostreig</entry>
+      <entry id="3029" string="Sample resolution">Resolució de la mostra</entry>
+      <entry id="3030" string="Number of samples">Nombre de mostres</entry>
+      <entry id="3031" string="Channels">Canales</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Estèreo</entry>
+      <entry id="3034" string="Length">Duració</entry>
+      <entry id="3035" string="File">Arxiu</entry>
+      <entry id="3036" string="Size">Tamany</entry>
+      <entry id="3037" string="Bitrate">Ràtio de bits</entry>
+      <entry id="3038" string="Audio Files">Fitxers d'Àudio</entry>
+      <entry id="3039" string="All Files">Tots els fitxers</entry>
+      <entry id="3040" string="Playlist Files">Arxius de llista de reproducció</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Comprimint</entry>
+        <entry id="3051" string="none">cap</entry>
+        <entry id="3052" string="Skip current file">Ometre</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Compressor seleccionat</entry>
+	<entry id="3081" string="Configure selected encoder">Configurar compressor seleccionat</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Carpeta</entry>

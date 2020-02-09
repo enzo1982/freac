@@ -125,51 +125,58 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Kodeeritav fail</entry>
-      <entry id="3001" string="Time left">Jäänud aeg</entry>
-      <entry id="3002" string="Selected encoder">Valitud kodek</entry>
-      <entry id="3003" string="File progress">Protsess</entry>
-      <entry id="3004" string="Output folder">Kaust</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 Fail(i) nimekirjas</entry>
-      <entry id="3006" string="none">ei ole</entry>
-      <entry id="3007" string="Show title info">Näita pealkirja</entry>
-      <entry id="3008" string="Play">Play</entry>
-      <entry id="3009" string="Stop">Stop</entry>
-      <entry id="3010" string="Select all">Valida kõik</entry>
-      <entry id="3011" string="Select none">Valikud maha</entry>
-      <entry id="3012" string="Toggle selection">Valida märgitud</entry>
-      <entry id="3013" string="ripping/decoding">rippimine/dekodeerimine</entry>
-      <entry id="3014" string="encoding">kodeerimine</entry>
-      <entry id="3015" string="Create playlist">Luua playlist</entry>
-      <entry id="3016" string="Create cue sheet">Luua cue sheet</entry>
-      <entry id="3017" string="Select">Valik</entry>
-      <entry id="3018" string="Skip">Jätta vahele</entry>
-      <entry id="3019" string="Encode to a single file">Kodeerida ühte faili</entry>
-      <entry id="3020" string="Remove">Eemalda</entry>
-      <entry id="3021" string="Clear joblist">Puhasta nimekiri</entry>
-      <entry id="3022" string="Use for all selected tracks">Kasutada kõikide valitud trekkide jaoks</entry>
-      <entry id="3023" string="Interpret string as">Interpreteerida rida nagu</entry>
-      <entry id="3024" string="selected tracks">valitud trekid</entry>
-      <entry id="3025" string="Adjust upper/lower case">Häälestada ülemine/alumine register</entry>
-      <entry id="3026" string="all words upper case">Kõik sõnad ülemises registris</entry>
-      <entry id="3027" string="long words upper case">Pikad sõnad ülemises registris</entry>
-      <entry id="3028" string="first letter upper case">Esimene täht ülemises registris</entry>
-      <entry id="3029" string="all lower case">Kõik alumises registris</entry>
-      <entry id="3030" string="all upper case">Kõik ülemises registris</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Valida kaust kuhu paigutatakse kodeeritud failid</entry>
-      <entry id="3032" string="Sampling rate">Diskreetimise sagedus</entry>
-      <entry id="3033" string="Sample resolution">Resolutsiooni näidis</entry>
-      <entry id="3034" string="Number of samples">Näidiste hulk</entry>
-      <entry id="3035" string="Channels">Kanalid</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Pikkus</entry>
-      <entry id="3039" string="File">Fail</entry>
-      <entry id="3040" string="Size">Suurus</entry>
-      <entry id="3041" string="Bitrate">Bitikiirus</entry>
-      <entry id="3042" string="Audio Files">Audio Failid</entry>
-      <entry id="3043" string="All Files">Kõik Failid</entry>
-      <entry id="3044" string="Playlist Files">Playlist Failid</entry>
+      <entry id="3000" string="Time left">Jäänud aeg</entry>
+      <entry id="3001" string="File progress">Protsess</entry>
+      <entry id="3002" string="Output folder">Kaust</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 Fail(i) nimekirjas</entry>
+      <entry id="3004" string="Show title info">Näita pealkirja</entry>
+      <entry id="3005" string="Play">Play</entry>
+      <entry id="3006" string="Stop">Stop</entry>
+      <entry id="3007" string="Select all">Valida kõik</entry>
+      <entry id="3008" string="Select none">Valikud maha</entry>
+      <entry id="3009" string="Toggle selection">Valida märgitud</entry>
+      <entry id="3010" string="ripping/decoding">rippimine/dekodeerimine</entry>
+      <entry id="3011" string="encoding">kodeerimine</entry>
+      <entry id="3012" string="Create playlist">Luua playlist</entry>
+      <entry id="3013" string="Create cue sheet">Luua cue sheet</entry>
+      <entry id="3014" string="Select">Valik</entry>
+      <entry id="3015" string="Encode to a single file">Kodeerida ühte faili</entry>
+      <entry id="3016" string="Remove">Eemalda</entry>
+      <entry id="3017" string="Clear joblist">Puhasta nimekiri</entry>
+      <entry id="3018" string="Use for all selected tracks">Kasutada kõikide valitud trekkide jaoks</entry>
+      <entry id="3019" string="Interpret string as">Interpreteerida rida nagu</entry>
+      <entry id="3020" string="selected tracks">valitud trekid</entry>
+      <entry id="3021" string="Adjust upper/lower case">Häälestada ülemine/alumine register</entry>
+      <entry id="3022" string="all words upper case">Kõik sõnad ülemises registris</entry>
+      <entry id="3023" string="long words upper case">Pikad sõnad ülemises registris</entry>
+      <entry id="3024" string="first letter upper case">Esimene täht ülemises registris</entry>
+      <entry id="3025" string="all lower case">Kõik alumises registris</entry>
+      <entry id="3026" string="all upper case">Kõik ülemises registris</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Valida kaust kuhu paigutatakse kodeeritud failid</entry>
+      <entry id="3028" string="Sampling rate">Diskreetimise sagedus</entry>
+      <entry id="3029" string="Sample resolution">Resolutsiooni näidis</entry>
+      <entry id="3030" string="Number of samples">Näidiste hulk</entry>
+      <entry id="3031" string="Channels">Kanalid</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Pikkus</entry>
+      <entry id="3035" string="File">Fail</entry>
+      <entry id="3036" string="Size">Suurus</entry>
+      <entry id="3037" string="Bitrate">Bitikiirus</entry>
+      <entry id="3038" string="Audio Files">Audio Failid</entry>
+      <entry id="3039" string="All Files">Kõik Failid</entry>
+      <entry id="3040" string="Playlist Files">Playlist Failid</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Kodeeritav fail</entry>
+        <entry id="3051" string="none">ei ole</entry>
+        <entry id="3052" string="Skip current file">Jätta vahele</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Valitud kodek</entry>
+	<entry id="3081" string="Configure selected encoder">Häälesta valitud kodek</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Kaust</entry>

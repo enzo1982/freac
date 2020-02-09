@@ -124,51 +124,58 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Codare fişier</entry>
-      <entry id="3001" string="Time left">Timp rămas</entry>
-      <entry id="3002" string="Selected encoder">Codec utilizat</entry>
-      <entry id="3003" string="File progress">Progres fişier</entry>
-      <entry id="3004" string="Output folder">Folder salvare</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 fişier(e) în listă</entry>
-      <entry id="3006" string="none">niciunul</entry>
-      <entry id="3007" string="Show title info">Afişare titlu</entry>
-      <entry id="3008" string="Play">Play</entry>
-      <entry id="3009" string="Stop">Stop</entry>
-      <entry id="3010" string="Select all">Selectează tot</entry>
-      <entry id="3011" string="Select none">Niciunul</entry>
-      <entry id="3012" string="Toggle selection">Inversare selecţie</entry>
-      <entry id="3013" string="ripping/decoding">copiere/decodare</entry>
-      <entry id="3014" string="encoding">codare</entry>
-      <entry id="3015" string="Create playlist">Creare listă</entry>
-      <entry id="3016" string="Create cue sheet">Creare program</entry>
-      <entry id="3017" string="Select">Răsfoire</entry>
-      <entry id="3018" string="Skip">Sări peste</entry>
-      <entry id="3019" string="Encode to a single file">Codare într-un singur fişier</entry>
-      <entry id="3020" string="Remove">Ştergere</entry>
-      <entry id="3021" string="Clear joblist">Ştergere listă</entry>
-      <entry id="3022" string="Use for all selected tracks">Pentru toate melodiile selectate</entry>
-      <entry id="3023" string="Interpret string as">Utilizare şir caractere ca</entry>
-      <entry id="3024" string="selected tracks">melodii selectate</entry>
-      <entry id="3025" string="Adjust upper/lower case">Ajustare tip caracter mare/mic</entry>
-      <entry id="3026" string="all words upper case">toate cuvintele cu majuscule</entry>
-      <entry id="3027" string="long words upper case">cuvintele lungi cu majuscule</entry>
-      <entry id="3028" string="first letter upper case">majusculă doar la prima literă</entry>
-      <entry id="3029" string="all lower case">doar minuscule</entry>
-      <entry id="3030" string="all upper case">doar majuscule</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Selectaţi folderul în care vor fi salvate fişierele</entry>
-      <entry id="3032" string="Sampling rate">Rata de eşantionare</entry>
-      <entry id="3033" string="Sample resolution">Rezoluţie eşantion</entry>
-      <entry id="3034" string="Number of samples">Numărul de eşantioane</entry>
-      <entry id="3035" string="Channels">Canale</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Lungime</entry>
-      <entry id="3039" string="File">Fişier</entry>
-      <entry id="3040" string="Size">Mărime</entry>
-      <entry id="3041" string="Bitrate">Bitrate</entry>
-      <entry id="3042" string="Audio Files">Fişiere Audio</entry>
-      <entry id="3043" string="All Files">Toate Fişierele</entry>
-      <entry id="3044" string="Playlist Files">Fişiere Playlist</entry>
+      <entry id="3000" string="Time left">Timp rămas</entry>
+      <entry id="3001" string="File progress">Progres fişier</entry>
+      <entry id="3002" string="Output folder">Folder salvare</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 fişier(e) în listă</entry>
+      <entry id="3004" string="Show title info">Afişare titlu</entry>
+      <entry id="3005" string="Play">Play</entry>
+      <entry id="3006" string="Stop">Stop</entry>
+      <entry id="3007" string="Select all">Selectează tot</entry>
+      <entry id="3008" string="Select none">Niciunul</entry>
+      <entry id="3009" string="Toggle selection">Inversare selecţie</entry>
+      <entry id="3010" string="ripping/decoding">copiere/decodare</entry>
+      <entry id="3011" string="encoding">codare</entry>
+      <entry id="3012" string="Create playlist">Creare listă</entry>
+      <entry id="3013" string="Create cue sheet">Creare program</entry>
+      <entry id="3014" string="Select">Răsfoire</entry>
+      <entry id="3015" string="Encode to a single file">Codare într-un singur fişier</entry>
+      <entry id="3016" string="Remove">Ştergere</entry>
+      <entry id="3017" string="Clear joblist">Ştergere listă</entry>
+      <entry id="3018" string="Use for all selected tracks">Pentru toate melodiile selectate</entry>
+      <entry id="3019" string="Interpret string as">Utilizare şir caractere ca</entry>
+      <entry id="3020" string="selected tracks">melodii selectate</entry>
+      <entry id="3021" string="Adjust upper/lower case">Ajustare tip caracter mare/mic</entry>
+      <entry id="3022" string="all words upper case">toate cuvintele cu majuscule</entry>
+      <entry id="3023" string="long words upper case">cuvintele lungi cu majuscule</entry>
+      <entry id="3024" string="first letter upper case">majusculă doar la prima literă</entry>
+      <entry id="3025" string="all lower case">doar minuscule</entry>
+      <entry id="3026" string="all upper case">doar majuscule</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Selectaţi folderul în care vor fi salvate fişierele</entry>
+      <entry id="3028" string="Sampling rate">Rata de eşantionare</entry>
+      <entry id="3029" string="Sample resolution">Rezoluţie eşantion</entry>
+      <entry id="3030" string="Number of samples">Numărul de eşantioane</entry>
+      <entry id="3031" string="Channels">Canale</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Lungime</entry>
+      <entry id="3035" string="File">Fişier</entry>
+      <entry id="3036" string="Size">Mărime</entry>
+      <entry id="3037" string="Bitrate">Bitrate</entry>
+      <entry id="3038" string="Audio Files">Fişiere Audio</entry>
+      <entry id="3039" string="All Files">Toate Fişierele</entry>
+      <entry id="3040" string="Playlist Files">Fişiere Playlist</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Codare fişier</entry>
+        <entry id="3051" string="none">niciunul</entry>
+        <entry id="3052" string="Skip current file">Sări peste</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Codec utilizat</entry>
+	<entry id="3081" string="Configure selected encoder">Configurare codec</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Folder</entry>

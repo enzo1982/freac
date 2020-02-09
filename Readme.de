@@ -155,6 +155,7 @@ Geschichte
 			- Vorbereitung auf Abschaltung von freedb.org am 31. März 2020
 			- Das fre:ac-Installationsprogramm ist jetzt digital signiert
 			- Separaten Eintrag für Windows Wave File Output zur Kodiererliste hinzugefügt
+			- Einstellungen zur Signalverarbeitung werden jetzt im Statusbereich angezeigt
 			- Toolbar-Schaltfläche zum Konfigurieren der Signalverarbeitung hinzugefügt
 
 		- Behobene Fehler

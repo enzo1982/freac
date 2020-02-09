@@ -125,51 +125,58 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Jelenleg tömörítés alatt</entry>
-      <entry id="3001" string="Time left">Hátralévõ idõ</entry>
-      <entry id="3002" string="Selected encoder">Választott tömörítö</entry>
-      <entry id="3003" string="File progress">Folyamat állapot</entry>
-      <entry id="3004" string="Output folder">Cél könyvtár</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 fájl(ok) a listán</entry>
-      <entry id="3006" string="none">nincs</entry>
-      <entry id="3007" string="Show title info">Cím információ kijelzése</entry>
-      <entry id="3008" string="Play">Lejátszás</entry>
-      <entry id="3009" string="Stop">Állj</entry>
-      <entry id="3010" string="Select all">Mindet kijelöli</entry>
-      <entry id="3011" string="Select none">Kijelölés visszavonása</entry>
-      <entry id="3012" string="Toggle selection">Kijelölés megfordítása</entry>
-      <entry id="3013" string="ripping/decoding">másolás/dekódolás</entry>
-      <entry id="3014" string="encoding">tömörítés</entry>
-      <entry id="3015" string="Create playlist">Lejátszási lista készítés</entry>
-      <entry id="3016" string="Create cue sheet">Vágólap készítés</entry>
-      <entry id="3017" string="Select">Keresés</entry>
-      <entry id="3018" string="Skip">Átugrás</entry>
-      <entry id="3019" string="Encode to a single file">Egy fájlba tömörítés</entry>
-      <entry id="3020" string="Remove">Eltávolítás</entry>
-      <entry id="3021" string="Clear joblist">Mindet töröl</entry>
-      <entry id="3022" string="Use for all selected tracks">Használd az összes kiválasztott számhoz</entry>
-      <entry id="3023" string="Interpret string as">Sztring értelmezése mint</entry>
-      <entry id="3024" string="selected tracks">kiválasztott számok</entry>
-      <entry id="3025" string="Adjust upper/lower case">Kis/nagybetű beállítása</entry>
-      <entry id="3026" string="all words upper case">minden szó nagybetűvel</entry>
-      <entry id="3027" string="long words upper case">hosszű szavak nagybetűvel</entry>
-      <entry id="3028" string="first letter upper case">első betű nagybetű</entry>
-      <entry id="3029" string="all lower case">mind kisbetű</entry>
-      <entry id="3030" string="all upper case">mind nagybetű</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Célkönyvtár megadása</entry>
-      <entry id="3032" string="Sampling rate">Mintavételezés</entry>
-      <entry id="3033" string="Sample resolution">Minta felbontás</entry>
-      <entry id="3034" string="Number of samples">Minták száma</entry>
-      <entry id="3035" string="Channels">Csatornák</entry>
-      <entry id="3036" string="Mono">Monó</entry>
-      <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Hossz</entry>
-      <entry id="3039" string="File">Fájl</entry>
-      <entry id="3040" string="Size">Méret</entry>
-      <entry id="3041" string="Bitrate">Bitráta</entry>
-      <entry id="3042" string="Audio Files">Audio fájlok</entry>
-      <entry id="3043" string="All Files">Összes fájl</entry>
-      <entry id="3044" string="Playlist Files">Lejátszási listák</entry>
+      <entry id="3000" string="Time left">Hátralévõ idõ</entry>
+      <entry id="3001" string="File progress">Folyamat állapot</entry>
+      <entry id="3002" string="Output folder">Cél könyvtár</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 fájl(ok) a listán</entry>
+      <entry id="3004" string="Show title info">Cím információ kijelzése</entry>
+      <entry id="3005" string="Play">Lejátszás</entry>
+      <entry id="3006" string="Stop">Állj</entry>
+      <entry id="3007" string="Select all">Mindet kijelöli</entry>
+      <entry id="3008" string="Select none">Kijelölés visszavonása</entry>
+      <entry id="3009" string="Toggle selection">Kijelölés megfordítása</entry>
+      <entry id="3010" string="ripping/decoding">másolás/dekódolás</entry>
+      <entry id="3011" string="encoding">tömörítés</entry>
+      <entry id="3012" string="Create playlist">Lejátszási lista készítés</entry>
+      <entry id="3013" string="Create cue sheet">Vágólap készítés</entry>
+      <entry id="3014" string="Select">Keresés</entry>
+      <entry id="3015" string="Encode to a single file">Egy fájlba tömörítés</entry>
+      <entry id="3016" string="Remove">Eltávolítás</entry>
+      <entry id="3017" string="Clear joblist">Mindet töröl</entry>
+      <entry id="3018" string="Use for all selected tracks">Használd az összes kiválasztott számhoz</entry>
+      <entry id="3019" string="Interpret string as">Sztring értelmezése mint</entry>
+      <entry id="3020" string="selected tracks">kiválasztott számok</entry>
+      <entry id="3021" string="Adjust upper/lower case">Kis/nagybetű beállítása</entry>
+      <entry id="3022" string="all words upper case">minden szó nagybetűvel</entry>
+      <entry id="3023" string="long words upper case">hosszű szavak nagybetűvel</entry>
+      <entry id="3024" string="first letter upper case">első betű nagybetű</entry>
+      <entry id="3025" string="all lower case">mind kisbetű</entry>
+      <entry id="3026" string="all upper case">mind nagybetű</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Célkönyvtár megadása</entry>
+      <entry id="3028" string="Sampling rate">Mintavételezés</entry>
+      <entry id="3029" string="Sample resolution">Minta felbontás</entry>
+      <entry id="3030" string="Number of samples">Minták száma</entry>
+      <entry id="3031" string="Channels">Csatornák</entry>
+      <entry id="3032" string="Mono">Monó</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Hossz</entry>
+      <entry id="3035" string="File">Fájl</entry>
+      <entry id="3036" string="Size">Méret</entry>
+      <entry id="3037" string="Bitrate">Bitráta</entry>
+      <entry id="3038" string="Audio Files">Audio fájlok</entry>
+      <entry id="3039" string="All Files">Összes fájl</entry>
+      <entry id="3040" string="Playlist Files">Lejátszási listák</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Jelenleg tömörítés alatt</entry>
+        <entry id="3051" string="none">nincs</entry>
+        <entry id="3052" string="Skip current file">Átugrás</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Választott tömörítö</entry>
+	<entry id="3081" string="Configure selected encoder">Választott tömörítö beállítása</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Könyvtár</entry>

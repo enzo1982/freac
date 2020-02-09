@@ -125,51 +125,58 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Đang chuyển mã file</entry>
-      <entry id="3001" string="Time left">Thời gian còn lại</entry>
-      <entry id="3002" string="Selected encoder">Lựa chọn chuyển mã</entry>
-      <entry id="3003" string="File progress">Tiến độ tập tin</entry>
-      <entry id="3004" string="Output folder">Thư mục xuất ra</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 tập tin trong danh sách công việc</entry>
-      <entry id="3006" string="none">không</entry>
-      <entry id="3007" string="Show title info">Hiển thị thông tin tiêu đề</entry>
-      <entry id="3008" string="Play">Chơi</entry>
-      <entry id="3009" string="Stop">Dừng lại</entry>
-      <entry id="3010" string="Select all">Chọn tất cả</entry>
-      <entry id="3011" string="Select none">Không chọn cái nào</entry>
-      <entry id="3012" string="Toggle selection">Chuyển đổi lựa chọn</entry>
-      <entry id="3013" string="ripping/decoding">đang rip/đang giải mã</entry>
-      <entry id="3014" string="encoding">đang mã hóa</entry>
-      <entry id="3015" string="Create playlist">Tạo danh sách</entry>
-      <entry id="3016" string="Create cue sheet">Tạo cue sheet</entry>
-      <entry id="3017" string="Select">Duyệt</entry>
-      <entry id="3018" string="Skip">Bỏ qua</entry>
-      <entry id="3019" string="Encode to a single file">Chuyển mã thành 1 file</entry>
-      <entry id="3020" string="Remove">Loại bỏ</entry>
-      <entry id="3021" string="Clear joblist">Xóa danh sách công việc</entry>
-      <entry id="3022" string="Use for all selected tracks">Áp dụng cho tất cả các track được chọn</entry>
-      <entry id="3023" string="Interpret string as">Phiên dịch chuỗi dạng</entry>
-      <entry id="3024" string="selected tracks">các track được chọn</entry>
-      <entry id="3025" string="Adjust upper/lower case">Sửa chữ in hoa/in thường</entry>
-      <entry id="3026" string="all words upper case">tất cả chữ in hoa</entry>
-      <entry id="3027" string="long words upper case">in hoa các chữ chứa nhiều ký tự</entry>
-      <entry id="3028" string="first letter upper case">Chữ Đầu Tiên In Hoa</entry>
-      <entry id="3029" string="all lower case">tất cả chữ in thường</entry>
-      <entry id="3030" string="all upper case">tất cả chữ in hoa</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Chọn thư mục để lưu tập tin đã được chuyển mã</entry>
-      <entry id="3032" string="Sampling rate">Xếp hạng mẫu</entry>
-      <entry id="3033" string="Sample resolution">Độ phân giải mẫu</entry>
-      <entry id="3034" string="Number of samples">Số lượng các mẫu</entry>
-      <entry id="3035" string="Channels">Kênh</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Độ dài</entry>
-      <entry id="3039" string="File">Tập tin</entry>
-      <entry id="3040" string="Size">Kích thước</entry>
-      <entry id="3041" string="Bitrate">Bitrate</entry>
-      <entry id="3042" string="Audio Files">Tập tin Audio</entry>
-      <entry id="3043" string="All Files">Tất cả tập tin</entry>
-      <entry id="3044" string="Playlist Files">Tập tin danh sách</entry>
+      <entry id="3000" string="Time left">Thời gian còn lại</entry>
+      <entry id="3001" string="File progress">Tiến độ tập tin</entry>
+      <entry id="3002" string="Output folder">Thư mục xuất ra</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 tập tin trong danh sách công việc</entry>
+      <entry id="3004" string="Show title info">Hiển thị thông tin tiêu đề</entry>
+      <entry id="3005" string="Play">Chơi</entry>
+      <entry id="3006" string="Stop">Dừng lại</entry>
+      <entry id="3007" string="Select all">Chọn tất cả</entry>
+      <entry id="3008" string="Select none">Không chọn cái nào</entry>
+      <entry id="3009" string="Toggle selection">Chuyển đổi lựa chọn</entry>
+      <entry id="3010" string="ripping/decoding">đang rip/đang giải mã</entry>
+      <entry id="3011" string="encoding">đang mã hóa</entry>
+      <entry id="3012" string="Create playlist">Tạo danh sách</entry>
+      <entry id="3013" string="Create cue sheet">Tạo cue sheet</entry>
+      <entry id="3014" string="Select">Duyệt</entry>
+      <entry id="3015" string="Encode to a single file">Chuyển mã thành 1 file</entry>
+      <entry id="3016" string="Remove">Loại bỏ</entry>
+      <entry id="3017" string="Clear joblist">Xóa danh sách công việc</entry>
+      <entry id="3018" string="Use for all selected tracks">Áp dụng cho tất cả các track được chọn</entry>
+      <entry id="3019" string="Interpret string as">Phiên dịch chuỗi dạng</entry>
+      <entry id="3020" string="selected tracks">các track được chọn</entry>
+      <entry id="3021" string="Adjust upper/lower case">Sửa chữ in hoa/in thường</entry>
+      <entry id="3022" string="all words upper case">tất cả chữ in hoa</entry>
+      <entry id="3023" string="long words upper case">in hoa các chữ chứa nhiều ký tự</entry>
+      <entry id="3024" string="first letter upper case">Chữ Đầu Tiên In Hoa</entry>
+      <entry id="3025" string="all lower case">tất cả chữ in thường</entry>
+      <entry id="3026" string="all upper case">tất cả chữ in hoa</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Chọn thư mục để lưu tập tin đã được chuyển mã</entry>
+      <entry id="3028" string="Sampling rate">Xếp hạng mẫu</entry>
+      <entry id="3029" string="Sample resolution">Độ phân giải mẫu</entry>
+      <entry id="3030" string="Number of samples">Số lượng các mẫu</entry>
+      <entry id="3031" string="Channels">Kênh</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Độ dài</entry>
+      <entry id="3035" string="File">Tập tin</entry>
+      <entry id="3036" string="Size">Kích thước</entry>
+      <entry id="3037" string="Bitrate">Bitrate</entry>
+      <entry id="3038" string="Audio Files">Tập tin Audio</entry>
+      <entry id="3039" string="All Files">Tất cả tập tin</entry>
+      <entry id="3040" string="Playlist Files">Tập tin danh sách</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Đang chuyển mã file</entry>
+        <entry id="3051" string="none">không</entry>
+        <entry id="3052" string="Skip current file">Bỏ qua</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Lựa chọn chuyển mã</entry>
+	<entry id="3081" string="Configure selected encoder">Chỉnh sửa loại chuyển mã</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Thư mục</entry>

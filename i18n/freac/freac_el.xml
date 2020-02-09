@@ -125,51 +125,58 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Κωδικοποίηση αρχείου</entry>
-      <entry id="3001" string="Time left">Χρόνος που απομένει</entry>
-      <entry id="3002" string="Selected encoder">Επιλεγμένος κωδικοποιητής</entry>
-      <entry id="3003" string="File progress">Πρόοδος αρχείου</entry>
-      <entry id="3004" string="Output folder">Φάκελος αποθήκευσης</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 αρχείο(α) στη Λίστα Εργασίας</entry>
-      <entry id="3006" string="none">κανένα</entry>
-      <entry id="3007" string="Show title info">Προβολή πληροφοριών τίτλου</entry>
-      <entry id="3008" string="Play">Αναπαραγωγή</entry>
-      <entry id="3009" string="Stop">Διακοπή</entry>
-      <entry id="3010" string="Select all">Επιλογή όλων</entry>
-      <entry id="3011" string="Select none">Αποεπιλογή όλων</entry>
-      <entry id="3012" string="Toggle selection">Επιλογή</entry>
-      <entry id="3013" string="ripping/decoding">ripping/αποσυμπίεση</entry>
-      <entry id="3014" string="encoding">κωδικοποίηση</entry>
-      <entry id="3015" string="Create playlist">Δημιουργία λίστας αναπαραγωγής</entry>
-      <entry id="3016" string="Create cue sheet">Δημιουργία cue sheet</entry>
-      <entry id="3017" string="Select">Εξερεύνηση</entry>
-      <entry id="3018" string="Skip">Παράλειψη</entry>
-      <entry id="3019" string="Encode to a single file">Κωδικοποίηση ενός αρχείου</entry>
-      <entry id="3020" string="Remove">Διαγραφή</entry>
-      <entry id="3021" string="Clear joblist">Καθαρισμός Λίστας Εργασίας</entry>
-      <entry id="3022" string="Use for all selected tracks">Χρήση για όλα τα επιλεγμένα κομμάτια</entry>
-      <entry id="3023" string="Interpret string as">Ανάγνωση συμβολοσειράς ως</entry>
-      <entry id="3024" string="selected tracks">επιλεγμένα κομμάτια</entry>
-      <entry id="3025" string="Adjust upper/lower case">Ρύθμιση κεφαλαίων/πεζών</entry>
-      <entry id="3026" string="all words upper case">όλες οι λέξεις κεφαλαία</entry>
-      <entry id="3027" string="long words upper case">οι μεγάλες λέξεις κεφαλαία</entry>
-      <entry id="3028" string="first letter upper case">Πρώτο γράμμα κεφαλαίο</entry>
-      <entry id="3029" string="all lower case">Όλα πεζά</entry>
-      <entry id="3030" string="all upper case">Όλα κεφαλαία</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Επιλέξτε φάκελο τοποθέτησης των κωδικοποιημένων αρχέιων</entry>
-      <entry id="3032" string="Sampling rate">Ρυθμός δειγματοληψίας</entry>
-      <entry id="3033" string="Sample resolution">Ανάλυση δείγματος</entry>
-      <entry id="3034" string="Number of samples">Αριθμός δειγμάτων</entry>
-      <entry id="3035" string="Channels">Κανάλια</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Διάρκεια</entry>
-      <entry id="3039" string="File">Αρχείο</entry>
-      <entry id="3040" string="Size">Μέγεθος</entry>
-      <entry id="3041" string="Bitrate">Ρυθμός μετάδοσης</entry>
-      <entry id="3042" string="Audio Files">Αρχεία ήχου</entry>
-      <entry id="3043" string="All Files">Όλα τα αρχεία</entry>
-      <entry id="3044" string="Playlist Files">Αρχεία λίστας αναπαραγωγής</entry>
+      <entry id="3000" string="Time left">Χρόνος που απομένει</entry>
+      <entry id="3001" string="File progress">Πρόοδος αρχείου</entry>
+      <entry id="3002" string="Output folder">Φάκελος αποθήκευσης</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 αρχείο(α) στη Λίστα Εργασίας</entry>
+      <entry id="3004" string="Show title info">Προβολή πληροφοριών τίτλου</entry>
+      <entry id="3005" string="Play">Αναπαραγωγή</entry>
+      <entry id="3006" string="Stop">Διακοπή</entry>
+      <entry id="3007" string="Select all">Επιλογή όλων</entry>
+      <entry id="3008" string="Select none">Αποεπιλογή όλων</entry>
+      <entry id="3009" string="Toggle selection">Επιλογή</entry>
+      <entry id="3010" string="ripping/decoding">ripping/αποσυμπίεση</entry>
+      <entry id="3011" string="encoding">κωδικοποίηση</entry>
+      <entry id="3012" string="Create playlist">Δημιουργία λίστας αναπαραγωγής</entry>
+      <entry id="3013" string="Create cue sheet">Δημιουργία cue sheet</entry>
+      <entry id="3014" string="Select">Εξερεύνηση</entry>
+      <entry id="3015" string="Encode to a single file">Κωδικοποίηση ενός αρχείου</entry>
+      <entry id="3016" string="Remove">Διαγραφή</entry>
+      <entry id="3017" string="Clear joblist">Καθαρισμός Λίστας Εργασίας</entry>
+      <entry id="3018" string="Use for all selected tracks">Χρήση για όλα τα επιλεγμένα κομμάτια</entry>
+      <entry id="3019" string="Interpret string as">Ανάγνωση συμβολοσειράς ως</entry>
+      <entry id="3020" string="selected tracks">επιλεγμένα κομμάτια</entry>
+      <entry id="3021" string="Adjust upper/lower case">Ρύθμιση κεφαλαίων/πεζών</entry>
+      <entry id="3022" string="all words upper case">όλες οι λέξεις κεφαλαία</entry>
+      <entry id="3023" string="long words upper case">οι μεγάλες λέξεις κεφαλαία</entry>
+      <entry id="3024" string="first letter upper case">Πρώτο γράμμα κεφαλαίο</entry>
+      <entry id="3025" string="all lower case">Όλα πεζά</entry>
+      <entry id="3026" string="all upper case">Όλα κεφαλαία</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Επιλέξτε φάκελο τοποθέτησης των κωδικοποιημένων αρχέιων</entry>
+      <entry id="3028" string="Sampling rate">Ρυθμός δειγματοληψίας</entry>
+      <entry id="3029" string="Sample resolution">Ανάλυση δείγματος</entry>
+      <entry id="3030" string="Number of samples">Αριθμός δειγμάτων</entry>
+      <entry id="3031" string="Channels">Κανάλια</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Διάρκεια</entry>
+      <entry id="3035" string="File">Αρχείο</entry>
+      <entry id="3036" string="Size">Μέγεθος</entry>
+      <entry id="3037" string="Bitrate">Ρυθμός μετάδοσης</entry>
+      <entry id="3038" string="Audio Files">Αρχεία ήχου</entry>
+      <entry id="3039" string="All Files">Όλα τα αρχεία</entry>
+      <entry id="3040" string="Playlist Files">Αρχεία λίστας αναπαραγωγής</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Κωδικοποίηση αρχείου</entry>
+        <entry id="3051" string="none">κανένα</entry>
+        <entry id="3052" string="Skip current file">Παράλειψη</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Επιλεγμένος κωδικοποιητής</entry>
+	<entry id="3081" string="Configure selected encoder">Ρύθμιση επιλεγμένου κωδικοποιητή</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Φάκελος</entry>

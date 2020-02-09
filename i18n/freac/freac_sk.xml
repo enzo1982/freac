@@ -154,59 +154,74 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Kóduje sa súbor</entry>
-      <entry id="3001" string="Time left">Zvyšný čas</entry>
-      <entry id="3002" string="Selected encoder">Vybraný kodek</entry>
-      <entry id="3003" string="File progress">Priebeh spracovania</entry>
-      <entry id="3004" string="Output folder">Výstupný priečinok</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 súbor(ov) v zozname úloh</entry>
-      <entry id="3006" string="none">žiadny</entry>
-      <entry id="3007" string="Show title info">Zobraziť info</entry>
-      <entry id="3008" string="Play">Prehrať</entry>
-      <entry id="3009" string="Stop">Zastaviť</entry>
-      <entry id="3010" string="Select all">Vybrať všetko</entry>
-      <entry id="3011" string="Select none">Zrušiť výber</entry>
-      <entry id="3012" string="Toggle selection">Prehodiť výber</entry>
-      <entry id="3013" string="ripping/decoding">rippovanie/dekódovanie</entry>
-      <entry id="3014" string="encoding">kódovanie</entry>
-      <entry id="3015" string="Create playlist">Vytvoriť playlist</entry>
-      <entry id="3016" string="Create cue sheet">Vytvoriť .cue hárok</entry>
-      <entry id="3017" string="Select">Vybrať</entry>
-      <entry id="3018" string="Skip">Preskočiť</entry>
-      <entry id="3019" string="Encode to a single file">Kódovať do jedného súboru</entry>
-      <entry id="3020" string="Remove">Odstrániť</entry>
-      <entry id="3021" string="Clear joblist">Vyčistiť zoznam úloh</entry>
-      <entry id="3022" string="Use for all selected tracks">Použiť pre všetky označené skladby</entry>
-      <entry id="3023" string="Interpret string as">Autor(reťazec) ako</entry>
-      <entry id="3024" string="selected tracks">zvolené skladby</entry>
-      <entry id="3025" string="Adjust upper/lower case">Nastav použitie malých/veľkých p.</entry>
-      <entry id="3026" string="all words upper case">všetky slová veľkými písmenami</entry>
-      <entry id="3027" string="long words upper case">dlhé slová veľ.písmenami</entry>
-      <entry id="3028" string="first letter upper case">Veľké prvé písmeno</entry>
-      <entry id="3029" string="all lower case">všetko malými písmenami</entry>
-      <entry id="3030" string="all upper case">všetko veľkými písmenami</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Vyberte priečinok, v ktorom budú umiestnené zakódované súbory</entry>
-      <entry id="3032" string="Sampling rate">Rýchlosť vzorkovania</entry>
-      <entry id="3033" string="Sample resolution">Rozlíšenie vzorkovania</entry>
-      <entry id="3034" string="Number of samples">Počet vzoriek</entry>
-      <entry id="3035" string="Channels">Kanály</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Dĺžka</entry>
-      <entry id="3039" string="File">Súbor</entry>
-      <entry id="3040" string="Size">Veľkosť</entry>
-      <entry id="3041" string="Bitrate">Bitrate</entry>
-      <entry id="3042" string="Audio Files">Audio súbory</entry>
-      <entry id="3043" string="All Files">Všetky súbory</entry>
-      <entry id="3044" string="Playlist Files">Súbory Playlistu</entry>
-      <entry id="3045" string="Active decoder">Aktívny dekóder</entry>
-      <entry id="3046" string="Joblist">Zoznam úloh</entry>
-      <entry id="3047" string="unknown">neznámy</entry>
-      <entry id="3048" string="Other">Iné</entry>
-      <entry id="3049" string="Output file name">Názov výstupného súboru</entry>
-      <entry id="3050" string="verifying">overuje sa</entry>
-      <entry id="3051" string="Open">Otvoriť</entry>
-      <entry id="3052" string="CD drive">CD drive</entry>
+      <entry id="3000" string="Time left">Zvyšný čas</entry>
+      <entry id="3001" string="File progress">Priebeh spracovania</entry>
+      <entry id="3002" string="Output folder">Výstupný priečinok</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 súbor(ov) v zozname úloh</entry>
+      <entry id="3004" string="Show title info">Zobraziť info</entry>
+      <entry id="3005" string="Play">Prehrať</entry>
+      <entry id="3006" string="Stop">Zastaviť</entry>
+      <entry id="3007" string="Select all">Vybrať všetko</entry>
+      <entry id="3008" string="Select none">Zrušiť výber</entry>
+      <entry id="3009" string="Toggle selection">Prehodiť výber</entry>
+      <entry id="3010" string="ripping/decoding">rippovanie/dekódovanie</entry>
+      <entry id="3011" string="encoding">kódovanie</entry>
+      <entry id="3012" string="Create playlist">Vytvoriť playlist</entry>
+      <entry id="3013" string="Create cue sheet">Vytvoriť .cue hárok</entry>
+      <entry id="3014" string="Select">Vybrať</entry>
+      <entry id="3015" string="Encode to a single file">Kódovať do jedného súboru</entry>
+      <entry id="3016" string="Remove">Odstrániť</entry>
+      <entry id="3017" string="Clear joblist">Vyčistiť zoznam úloh</entry>
+      <entry id="3018" string="Use for all selected tracks">Použiť pre všetky označené skladby</entry>
+      <entry id="3019" string="Interpret string as">Autor(reťazec) ako</entry>
+      <entry id="3020" string="selected tracks">zvolené skladby</entry>
+      <entry id="3021" string="Adjust upper/lower case">Nastav použitie malých/veľkých p.</entry>
+      <entry id="3022" string="all words upper case">všetky slová veľkými písmenami</entry>
+      <entry id="3023" string="long words upper case">dlhé slová veľ.písmenami</entry>
+      <entry id="3024" string="first letter upper case">Veľké prvé písmeno</entry>
+      <entry id="3025" string="all lower case">všetko malými písmenami</entry>
+      <entry id="3026" string="all upper case">všetko veľkými písmenami</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Vyberte priečinok, v ktorom budú umiestnené zakódované súbory</entry>
+      <entry id="3028" string="Sampling rate">Rýchlosť vzorkovania</entry>
+      <entry id="3029" string="Sample resolution">Rozlíšenie vzorkovania</entry>
+      <entry id="3030" string="Number of samples">Počet vzoriek</entry>
+      <entry id="3031" string="Channels">Kanály</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Dĺžka</entry>
+      <entry id="3035" string="File">Súbor</entry>
+      <entry id="3036" string="Size">Veľkosť</entry>
+      <entry id="3037" string="Bitrate">Bitrate</entry>
+      <entry id="3038" string="Audio Files">Audio súbory</entry>
+      <entry id="3039" string="All Files">Všetky súbory</entry>
+      <entry id="3040" string="Playlist Files">Súbory Playlistu</entry>
+      <entry id="3041" string="Joblist">Zoznam úloh</entry>
+      <entry id="3042" string="Other">Iné</entry>
+      <entry id="3043" string="Output file name">Názov výstupného súboru</entry>
+      <entry id="3044" string="verifying">overuje sa</entry>
+      <entry id="3045" string="Open">Otvoriť</entry>
+      <entry id="3046" string="CD drive">CD drive</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Kóduje sa súbor</entry>
+        <entry id="3051" string="none">žiadny</entry>
+        <entry id="3052" string="Skip current file">Preskočiť</entry>
+      </section>
+
+      <section name="Decoder">
+        <entry id="3060" string="Active decoder">Aktívny dekóder</entry>
+        <entry id="3061" string="none">neznámy</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">Vybrané filtre</entry>
+	<entry id="3073" string="Configure signal processing">Nastaviť spracovanie</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Vybraný kodek</entry>
+	<entry id="3081" string="Configure selected encoder">Nastaviť vybraný kodek</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Priečinok</entry>

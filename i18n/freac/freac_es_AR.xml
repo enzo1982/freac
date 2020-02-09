@@ -139,53 +139,63 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Codificando archivo</entry>
-      <entry id="3001" string="Time left">Tiempo restante</entry>
-      <entry id="3002" string="Selected encoder">Codificador actual</entry>
-      <entry id="3003" string="File progress">Progreso de archivo</entry>
-      <entry id="3004" string="Output folder">Carpeta de destino</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 archivo(s) en la lista de trabajo</entry>
-      <entry id="3006" string="none">ninguno</entry>
-      <entry id="3007" string="Show title info">Mostrar información de título</entry>
-      <entry id="3008" string="Play">Reproducir</entry>
-      <entry id="3009" string="Stop">Detener</entry>
-      <entry id="3010" string="Select all">Seleccionar todo</entry>
-      <entry id="3011" string="Select none">Deseleccionar todo</entry>
-      <entry id="3012" string="Toggle selection">Invertir selección</entry>
-      <entry id="3013" string="ripping/decoding">extrayendo/decodificando</entry>
-      <entry id="3014" string="encoding">codificando</entry>
-      <entry id="3015" string="Create playlist">Crear lista de reproducción</entry>
-      <entry id="3016" string="Create cue sheet">Crear lista de distribución de pistas</entry>
-      <entry id="3017" string="Select">Examinar</entry>
-      <entry id="3018" string="Skip">Saltear</entry>
-      <entry id="3019" string="Encode to a single file">Codificar a un solo archivo</entry>
-      <entry id="3020" string="Remove">Quitar</entry>
-      <entry id="3021" string="Clear joblist">Limpiar lista de trabajo</entry>
-      <entry id="3022" string="Use for all selected tracks">Utilizar para todas las pistas seleccionadas</entry>
-      <entry id="3023" string="Interpret string as">Interpretar cadena como</entry>
-      <entry id="3024" string="selected tracks">pistas seleccionadas</entry>
-      <entry id="3025" string="Adjust upper/lower case">Ajustar mayúsculas/minúsculas</entry>
-      <entry id="3026" string="all words upper case">todas las palabras en mayúsculas</entry>
-      <entry id="3027" string="long words upper case">todas las palabras largas en mayúsculas</entry>
-      <entry id="3028" string="first letter upper case">primera letra en maýuculas</entry>
-      <entry id="3029" string="all lower case">todo en minúsculas</entry>
-      <entry id="3030" string="all upper case">todo en mayúsculas</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Seleccione la carpeta donde los archivos codificados serán guardados</entry>
-      <entry id="3032" string="Sampling rate">Velocidad de muestreo</entry>
-      <entry id="3033" string="Sample resolution">Resolución de la muestra</entry>
-      <entry id="3034" string="Number of samples">Número de muestras</entry>
-      <entry id="3035" string="Channels">Canales</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Estéreo</entry>
-      <entry id="3038" string="Length">Duración</entry>
-      <entry id="3039" string="File">Archivo</entry>
-      <entry id="3040" string="Size">Tamaño</entry>
-      <entry id="3041" string="Bitrate">Tasa de bits</entry>
-      <entry id="3042" string="Audio Files">Archivos de audio</entry>
-      <entry id="3043" string="All Files">Todos los archivos</entry>
-      <entry id="3044" string="Playlist Files">Archivos de lista de reproducción</entry>
-      <entry id="3045" string="Active decoder">Decodificador activo</entry>
-      <entry id="3046" string="Joblist">Lista de trabajos</entry>
+      <entry id="3000" string="Time left">Tiempo restante</entry>
+      <entry id="3001" string="File progress">Progreso de archivo</entry>
+      <entry id="3002" string="Output folder">Carpeta de destino</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 archivo(s) en la lista de trabajo</entry>
+      <entry id="3004" string="Show title info">Mostrar información de título</entry>
+      <entry id="3005" string="Play">Reproducir</entry>
+      <entry id="3006" string="Stop">Detener</entry>
+      <entry id="3007" string="Select all">Seleccionar todo</entry>
+      <entry id="3008" string="Select none">Deseleccionar todo</entry>
+      <entry id="3009" string="Toggle selection">Invertir selección</entry>
+      <entry id="3010" string="ripping/decoding">extrayendo/decodificando</entry>
+      <entry id="3011" string="encoding">codificando</entry>
+      <entry id="3012" string="Create playlist">Crear lista de reproducción</entry>
+      <entry id="3013" string="Create cue sheet">Crear lista de distribución de pistas</entry>
+      <entry id="3014" string="Select">Examinar</entry>
+      <entry id="3015" string="Encode to a single file">Codificar a un solo archivo</entry>
+      <entry id="3016" string="Remove">Quitar</entry>
+      <entry id="3017" string="Clear joblist">Limpiar lista de trabajo</entry>
+      <entry id="3018" string="Use for all selected tracks">Utilizar para todas las pistas seleccionadas</entry>
+      <entry id="3019" string="Interpret string as">Interpretar cadena como</entry>
+      <entry id="3020" string="selected tracks">pistas seleccionadas</entry>
+      <entry id="3021" string="Adjust upper/lower case">Ajustar mayúsculas/minúsculas</entry>
+      <entry id="3022" string="all words upper case">todas las palabras en mayúsculas</entry>
+      <entry id="3023" string="long words upper case">todas las palabras largas en mayúsculas</entry>
+      <entry id="3024" string="first letter upper case">primera letra en maýuculas</entry>
+      <entry id="3025" string="all lower case">todo en minúsculas</entry>
+      <entry id="3026" string="all upper case">todo en mayúsculas</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Seleccione la carpeta donde los archivos codificados serán guardados</entry>
+      <entry id="3028" string="Sampling rate">Velocidad de muestreo</entry>
+      <entry id="3029" string="Sample resolution">Resolución de la muestra</entry>
+      <entry id="3030" string="Number of samples">Número de muestras</entry>
+      <entry id="3031" string="Channels">Canales</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Estéreo</entry>
+      <entry id="3034" string="Length">Duración</entry>
+      <entry id="3035" string="File">Archivo</entry>
+      <entry id="3036" string="Size">Tamaño</entry>
+      <entry id="3037" string="Bitrate">Tasa de bits</entry>
+      <entry id="3038" string="Audio Files">Archivos de audio</entry>
+      <entry id="3039" string="All Files">Todos los archivos</entry>
+      <entry id="3040" string="Playlist Files">Archivos de lista de reproducción</entry>
+      <entry id="3041" string="Joblist">Lista de trabajos</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Codificando archivo</entry>
+        <entry id="3051" string="none">ninguno</entry>
+        <entry id="3052" string="Skip current file">Saltear</entry>
+      </section>
+
+      <section name="Decoder">
+        <entry id="3060" string="Active decoder">Decodificador activo</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Codificador actual</entry>
+	<entry id="3081" string="Configure selected encoder">Configuración del codificador actual</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Carpeta</entry>

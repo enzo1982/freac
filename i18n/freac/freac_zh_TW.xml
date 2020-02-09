@@ -154,59 +154,74 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">正在編碼</entry>
-      <entry id="3001" string="Time left">剩餘時間</entry>
-      <entry id="3002" string="Selected encoder">目前的編碼器</entry>
-      <entry id="3003" string="File progress">檔案進度</entry>
-      <entry id="3004" string="Output folder">輸出資料夾</entry>
-      <entry id="3005" string="%1 file(s) in joblist">工作清單有 %1 個檔案</entry>
-      <entry id="3006" string="none">無</entry>
-      <entry id="3007" string="Show title info">顯示標題資訊</entry>
-      <entry id="3008" string="Play">播放</entry>
-      <entry id="3009" string="Stop">停止</entry>
-      <entry id="3010" string="Select all">全選</entry>
-      <entry id="3011" string="Select none">全不選</entry>
-      <entry id="3012" string="Toggle selection">反選</entry>
-      <entry id="3013" string="ripping/decoding">正在轉檔 / 解碼</entry>
-      <entry id="3014" string="encoding">正在編碼</entry>
-      <entry id="3015" string="Create playlist">建立播放清單</entry>
-      <entry id="3016" string="Create cue sheet">建立 cue 描述檔</entry>
-      <entry id="3017" string="Select">瀏覽</entry>
-      <entry id="3018" string="Skip">跳過</entry>
-      <entry id="3019" string="Encode to a single file">編碼為單一檔案</entry>
-      <entry id="3020" string="Remove">移除</entry>
-      <entry id="3021" string="Clear joblist">清除工作清單</entry>
-      <entry id="3022" string="Use for all selected tracks">使用於所有選擇的音軌</entry>
-      <entry id="3023" string="Interpret string as">將字串轉換為</entry>
-      <entry id="3024" string="selected tracks">選擇的音軌</entry>
-      <entry id="3025" string="Adjust upper/lower case">調整 大/小寫</entry>
-      <entry id="3026" string="all words upper case">所有單字大寫</entry>
-      <entry id="3027" string="long words upper case">長單字字首大寫</entry>
-      <entry id="3028" string="first letter upper case">第一個字母大寫</entry>
-      <entry id="3029" string="all lower case">所有字母小寫</entry>
-      <entry id="3030" string="all upper case">所有字母大寫</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">選擇儲存輸出檔案的資料夾</entry>
-      <entry id="3032" string="Sampling rate">取樣頻率</entry>
-      <entry id="3033" string="Sample resolution">取樣解析度</entry>
-      <entry id="3034" string="Number of samples">取樣數</entry>
-      <entry id="3035" string="Channels">聲道</entry>
-      <entry id="3036" string="Mono">單聲道</entry>
-      <entry id="3037" string="Stereo">立體聲</entry>
-      <entry id="3038" string="Length">長度</entry>
-      <entry id="3039" string="File">檔案</entry>
-      <entry id="3040" string="Size">大小</entry>
-      <entry id="3041" string="Bitrate">位元率</entry>
-      <entry id="3042" string="Audio Files">音訊檔案</entry>
-      <entry id="3043" string="All Files">所有檔案</entry>
-      <entry id="3044" string="Playlist Files">播放清單的檔案</entry>
-      <entry id="3045" string="Active decoder">使用中的解碼器</entry>
-      <entry id="3046" string="Joblist">工作清單</entry>
-      <entry id="3047" string="unknown">未知</entry>
-      <entry id="3048" string="Other">其他</entry>
-      <entry id="3049" string="Output file name">輸出檔案名稱</entry>
-      <entry id="3050" string="verifying">正在驗證</entry>
-      <entry id="3051" string="Open">開啟</entry>
-      <entry id="3052" string="CD drive">CD 光碟機</entry>
+      <entry id="3000" string="Time left">剩餘時間</entry>
+      <entry id="3001" string="File progress">檔案進度</entry>
+      <entry id="3002" string="Output folder">輸出資料夾</entry>
+      <entry id="3003" string="%1 file(s) in joblist">工作清單有 %1 個檔案</entry>
+      <entry id="3004" string="Show title info">顯示標題資訊</entry>
+      <entry id="3005" string="Play">播放</entry>
+      <entry id="3006" string="Stop">停止</entry>
+      <entry id="3007" string="Select all">全選</entry>
+      <entry id="3008" string="Select none">全不選</entry>
+      <entry id="3009" string="Toggle selection">反選</entry>
+      <entry id="3010" string="ripping/decoding">正在轉檔 / 解碼</entry>
+      <entry id="3011" string="encoding">正在編碼</entry>
+      <entry id="3012" string="Create playlist">建立播放清單</entry>
+      <entry id="3013" string="Create cue sheet">建立 cue 描述檔</entry>
+      <entry id="3014" string="Select">瀏覽</entry>
+      <entry id="3015" string="Encode to a single file">編碼為單一檔案</entry>
+      <entry id="3016" string="Remove">移除</entry>
+      <entry id="3017" string="Clear joblist">清除工作清單</entry>
+      <entry id="3018" string="Use for all selected tracks">使用於所有選擇的音軌</entry>
+      <entry id="3019" string="Interpret string as">將字串轉換為</entry>
+      <entry id="3020" string="selected tracks">選擇的音軌</entry>
+      <entry id="3021" string="Adjust upper/lower case">調整 大/小寫</entry>
+      <entry id="3022" string="all words upper case">所有單字大寫</entry>
+      <entry id="3023" string="long words upper case">長單字字首大寫</entry>
+      <entry id="3024" string="first letter upper case">第一個字母大寫</entry>
+      <entry id="3025" string="all lower case">所有字母小寫</entry>
+      <entry id="3026" string="all upper case">所有字母大寫</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">選擇儲存輸出檔案的資料夾</entry>
+      <entry id="3028" string="Sampling rate">取樣頻率</entry>
+      <entry id="3029" string="Sample resolution">取樣解析度</entry>
+      <entry id="3030" string="Number of samples">取樣數</entry>
+      <entry id="3031" string="Channels">聲道</entry>
+      <entry id="3032" string="Mono">單聲道</entry>
+      <entry id="3033" string="Stereo">立體聲</entry>
+      <entry id="3034" string="Length">長度</entry>
+      <entry id="3035" string="File">檔案</entry>
+      <entry id="3036" string="Size">大小</entry>
+      <entry id="3037" string="Bitrate">位元率</entry>
+      <entry id="3038" string="Audio Files">音訊檔案</entry>
+      <entry id="3039" string="All Files">所有檔案</entry>
+      <entry id="3040" string="Playlist Files">播放清單的檔案</entry>
+      <entry id="3041" string="Joblist">工作清單</entry>
+      <entry id="3042" string="Other">其他</entry>
+      <entry id="3043" string="Output file name">輸出檔案名稱</entry>
+      <entry id="3044" string="verifying">正在驗證</entry>
+      <entry id="3045" string="Open">開啟</entry>
+      <entry id="3046" string="CD drive">CD 光碟機</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">正在編碼</entry>
+        <entry id="3051" string="none">無</entry>
+        <entry id="3052" string="Skip current file">跳過</entry>
+      </section>
+
+      <section name="Decoder">
+        <entry id="3060" string="Active decoder">使用中的解碼器</entry>
+        <entry id="3061" string="none">未知</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">選定的過濾器</entry>
+	<entry id="3073" string="Configure signal processing">訊號處理組態</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">目前的編碼器</entry>
+	<entry id="3081" string="Configure selected encoder">目前的編碼器組態</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">資料夾</entry>

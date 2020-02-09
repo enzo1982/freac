@@ -154,59 +154,74 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Konwersja pliku</entry>
-      <entry id="3001" string="Time left">Pozostało do końca</entry>
-      <entry id="3002" string="Selected encoder">Zastosowany konwerter</entry>
-      <entry id="3003" string="File progress">Postęp przetwarzania</entry>
-      <entry id="3004" string="Output folder">Katalog docelowy</entry>
-      <entry id="3005" string="%1 file(s) in joblist">Plików na liście: %1. Szczegóły</entry>
-      <entry id="3006" string="none">brak</entry>
-      <entry id="3007" string="Show title info">Wyświetl dane utworu</entry>
-      <entry id="3008" string="Play">Odtwórz</entry>
-      <entry id="3009" string="Stop">Zatrzymaj</entry>
-      <entry id="3010" string="Select all">Wybierz wszystko</entry>
-      <entry id="3011" string="Select none">Anuluj wybór</entry>
-      <entry id="3012" string="Toggle selection">Odwróć wybór</entry>
-      <entry id="3013" string="ripping/decoding">zgrywanie/dekodowanie</entry>
-      <entry id="3014" string="encoding">konwersja</entry>
-      <entry id="3015" string="Create playlist">Utwórz listę odtwarzania</entry>
-      <entry id="3016" string="Create cue sheet">Utwórz arkusz cue</entry>
-      <entry id="3017" string="Select">Przeglądaj</entry>
-      <entry id="3018" string="Skip">Pomiń</entry>
-      <entry id="3019" string="Encode to a single file">Konwertuj do jednego pliku</entry>
-      <entry id="3020" string="Remove">Usuń z listy</entry>
-      <entry id="3021" string="Clear joblist">Usuń wszystkie z listy</entry>
-      <entry id="3022" string="Use for all selected tracks">Użyj do wszystkich wybranych utworów</entry>
-      <entry id="3023" string="Interpret string as">Interpretuj łańcuch jako</entry>
-      <entry id="3024" string="selected tracks">wybrane utwory</entry>
-      <entry id="3025" string="Adjust upper/lower case">Koryguj wielkie/małe litery</entry>
-      <entry id="3026" string="all words upper case">wszystko wielkimi literami</entry>
-      <entry id="3027" string="long words upper case">długie wyrazy wielkimi literami</entry>
-      <entry id="3028" string="first letter upper case">zaczynaj wielką literą</entry>
-      <entry id="3029" string="all lower case">wszystko małymi literami</entry>
-      <entry id="3030" string="all upper case">wszystko wielkimi literami</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Wybierz katalog docelowy dla konwertowanych plików</entry>
-      <entry id="3032" string="Sampling rate">Próbkowanie</entry>
-      <entry id="3033" string="Sample resolution">Rozdzielczość próbki</entry>
-      <entry id="3034" string="Number of samples">Liczba próbek</entry>
-      <entry id="3035" string="Channels">Kanały</entry>
-      <entry id="3036" string="Mono">mono</entry>
-      <entry id="3037" string="Stereo">stereo</entry>
-      <entry id="3038" string="Length">Długość</entry>
-      <entry id="3039" string="File">Plik</entry>
-      <entry id="3040" string="Size">Rozmiar</entry>
-      <entry id="3041" string="Bitrate">Przepływność bitów</entry>
-      <entry id="3042" string="Audio Files">Pliki audio</entry>
-      <entry id="3043" string="All Files">Wszystkie pliki</entry>
-      <entry id="3044" string="Playlist Files">Pliki list odtwarzania</entry>
-      <entry id="3045" string="Active decoder">Bieżący dekoder</entry>
-      <entry id="3046" string="Joblist">Lista zadań</entry>
-      <entry id="3047" string="unknown">nieznany</entry>
-      <entry id="3048" string="Other">Inne</entry>
-      <entry id="3049" string="Output file name">Nazwa pliku wyjściowego</entry>
-      <entry id="3050" string="verifying">weryfikacja</entry>
-      <entry id="3051" string="Open">Otwórz</entry>
-      <entry id="3052" string="CD drive">Stacja CD</entry>
+      <entry id="3000" string="Time left">Pozostało do końca</entry>
+      <entry id="3001" string="File progress">Postęp przetwarzania</entry>
+      <entry id="3002" string="Output folder">Katalog docelowy</entry>
+      <entry id="3003" string="%1 file(s) in joblist">Plików na liście: %1. Szczegóły</entry>
+      <entry id="3004" string="Show title info">Wyświetl dane utworu</entry>
+      <entry id="3005" string="Play">Odtwórz</entry>
+      <entry id="3006" string="Stop">Zatrzymaj</entry>
+      <entry id="3007" string="Select all">Wybierz wszystko</entry>
+      <entry id="3008" string="Select none">Anuluj wybór</entry>
+      <entry id="3009" string="Toggle selection">Odwróć wybór</entry>
+      <entry id="3010" string="ripping/decoding">zgrywanie/dekodowanie</entry>
+      <entry id="3011" string="encoding">konwersja</entry>
+      <entry id="3012" string="Create playlist">Utwórz listę odtwarzania</entry>
+      <entry id="3013" string="Create cue sheet">Utwórz arkusz cue</entry>
+      <entry id="3014" string="Select">Przeglądaj</entry>
+      <entry id="3015" string="Encode to a single file">Konwertuj do jednego pliku</entry>
+      <entry id="3016" string="Remove">Usuń z listy</entry>
+      <entry id="3017" string="Clear joblist">Usuń wszystkie z listy</entry>
+      <entry id="3018" string="Use for all selected tracks">Użyj do wszystkich wybranych utworów</entry>
+      <entry id="3019" string="Interpret string as">Interpretuj łańcuch jako</entry>
+      <entry id="3020" string="selected tracks">wybrane utwory</entry>
+      <entry id="3021" string="Adjust upper/lower case">Koryguj wielkie/małe litery</entry>
+      <entry id="3022" string="all words upper case">wszystko wielkimi literami</entry>
+      <entry id="3023" string="long words upper case">długie wyrazy wielkimi literami</entry>
+      <entry id="3024" string="first letter upper case">zaczynaj wielką literą</entry>
+      <entry id="3025" string="all lower case">wszystko małymi literami</entry>
+      <entry id="3026" string="all upper case">wszystko wielkimi literami</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Wybierz katalog docelowy dla konwertowanych plików</entry>
+      <entry id="3028" string="Sampling rate">Próbkowanie</entry>
+      <entry id="3029" string="Sample resolution">Rozdzielczość próbki</entry>
+      <entry id="3030" string="Number of samples">Liczba próbek</entry>
+      <entry id="3031" string="Channels">Kanały</entry>
+      <entry id="3032" string="Mono">mono</entry>
+      <entry id="3033" string="Stereo">stereo</entry>
+      <entry id="3034" string="Length">Długość</entry>
+      <entry id="3035" string="File">Plik</entry>
+      <entry id="3036" string="Size">Rozmiar</entry>
+      <entry id="3037" string="Bitrate">Przepływność bitów</entry>
+      <entry id="3038" string="Audio Files">Pliki audio</entry>
+      <entry id="3039" string="All Files">Wszystkie pliki</entry>
+      <entry id="3040" string="Playlist Files">Pliki list odtwarzania</entry>
+      <entry id="3041" string="Joblist">Lista zadań</entry>
+      <entry id="3042" string="Other">Inne</entry>
+      <entry id="3043" string="Output file name">Nazwa pliku wyjściowego</entry>
+      <entry id="3044" string="verifying">weryfikacja</entry>
+      <entry id="3045" string="Open">Otwórz</entry>
+      <entry id="3046" string="CD drive">Stacja CD</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Konwersja pliku</entry>
+        <entry id="3051" string="none">brak</entry>
+        <entry id="3052" string="Skip current file">Pomiń</entry>
+      </section>
+
+      <section name="Decoder">
+        <entry id="3060" string="Active decoder">Bieżący dekoder</entry>
+        <entry id="3061" string="none">nieznany</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">Zastosowane filtry</entry>
+	<entry id="3073" string="Configure signal processing">Konfiguruj przetwarzanie sygnału</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Zastosowany konwerter</entry>
+	<entry id="3081" string="Configure selected encoder">Konfiguruj bieżący konwerter</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Katalog</entry>

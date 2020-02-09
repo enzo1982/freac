@@ -155,6 +155,7 @@ History
 			- prepared for freedb.org shutdown on 31st March 2020
 			- the fre:ac installer is now digitally signed
 			- added separate Windows Wave File Output entry to encoder list
+			- display current signal processing settings in status area
 			- added a toolbar button to configure signal processing
 
 		- Bug fixes

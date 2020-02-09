@@ -125,51 +125,58 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">ترميز الملف</entry>
-      <entry id="3001" string="Time left">الوقت المتبقي</entry>
-      <entry id="3002" string="Selected encoder">تحديد الترميز</entry>
-      <entry id="3003" string="File progress">تقدم الملف</entry>
-      <entry id="3004" string="Output folder">مجلد الناتج</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 ـات في قائمة</entry>
-      <entry id="3006" string="none">لاشيء</entry>
-      <entry id="3007" string="Show title info">عرض معلومات العنوان</entry>
-      <entry id="3008" string="Play">شغل</entry>
-      <entry id="3009" string="Stop">توقف</entry>
-      <entry id="3010" string="Select all">حددالكل</entry>
-      <entry id="3011" string="Select none">بدون تحديد</entry>
-      <entry id="3012" string="Toggle selection">تبديل التحديد</entry>
-      <entry id="3013" string="ripping/decoding">أشتقاق/فك ترميز</entry>
-      <entry id="3014" string="encoding">ترميز</entry>
-      <entry id="3015" string="Create playlist">إنشاء قائمة أغاني</entry>
-      <entry id="3016" string="Create cue sheet">إنشاء ورقة جدلية</entry>
-      <entry id="3017" string="Select">تصفح</entry>
-      <entry id="3018" string="Skip">تخطي</entry>
-      <entry id="3019" string="Encode to a single file">ملف و حيد للترميز</entry>
-      <entry id="3020" string="Remove">إزالة</entry>
-      <entry id="3021" string="Clear joblist">مسح قائمة العمل</entry>
-      <entry id="3022" string="Use for all selected tracks">استخدام لجميع المسارات المحددة</entry>
-      <entry id="3023" string="Interpret string as">تفسير السلسلة كـ</entry>
-      <entry id="3024" string="selected tracks">المسارات المحددة</entry>
-      <entry id="3025" string="Adjust upper/lower case">ضبط الحالةالعلوية/السفلية</entry>
-      <entry id="3026" string="all words upper case">كل كلمات الحالة العلوية</entry>
-      <entry id="3027" string="long words upper case">الكلمات الطويلة الحالة العلوية</entry>
-      <entry id="3028" string="first letter upper case">أول الحرف الحالة العلوية</entry>
-      <entry id="3029" string="all lower case">كل الحالة السفلية</entry>
-      <entry id="3030" string="all upper case">كل الحالة العلوية</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">حدد المجلد الذي سيتم وضع فيه الملفات المشفرة</entry>
-      <entry id="3032" string="Sampling rate">معدل العينات</entry>
-      <entry id="3033" string="Sample resolution">دقة العينة</entry>
-      <entry id="3034" string="Number of samples">عدد العينات</entry>
-      <entry id="3035" string="Channels">القنوات</entry>
-      <entry id="3036" string="Mono">وحيد</entry>
-      <entry id="3037" string="Stereo">صوت مجسم</entry>
-      <entry id="3038" string="Length">المدة</entry>
-      <entry id="3039" string="File">ملف</entry>
-      <entry id="3040" string="Size">الحجم</entry>
-      <entry id="3041" string="Bitrate">معدل بايت</entry>
-      <entry id="3042" string="Audio Files">ملفات صوتية</entry>
-      <entry id="3043" string="All Files">كافة الملفات</entry>
-      <entry id="3044" string="Playlist Files">ملفات قائمة الأغاني</entry>
+      <entry id="3000" string="Time left">الوقت المتبقي</entry>
+      <entry id="3001" string="File progress">تقدم الملف</entry>
+      <entry id="3002" string="Output folder">مجلد الناتج</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 ـات في قائمة</entry>
+      <entry id="3004" string="Show title info">عرض معلومات العنوان</entry>
+      <entry id="3005" string="Play">شغل</entry>
+      <entry id="3006" string="Stop">توقف</entry>
+      <entry id="3007" string="Select all">حددالكل</entry>
+      <entry id="3008" string="Select none">بدون تحديد</entry>
+      <entry id="3009" string="Toggle selection">تبديل التحديد</entry>
+      <entry id="3010" string="ripping/decoding">أشتقاق/فك ترميز</entry>
+      <entry id="3011" string="encoding">ترميز</entry>
+      <entry id="3012" string="Create playlist">إنشاء قائمة أغاني</entry>
+      <entry id="3013" string="Create cue sheet">إنشاء ورقة جدلية</entry>
+      <entry id="3014" string="Select">تصفح</entry>
+      <entry id="3015" string="Encode to a single file">ملف و حيد للترميز</entry>
+      <entry id="3016" string="Remove">إزالة</entry>
+      <entry id="3017" string="Clear joblist">مسح قائمة العمل</entry>
+      <entry id="3018" string="Use for all selected tracks">استخدام لجميع المسارات المحددة</entry>
+      <entry id="3019" string="Interpret string as">تفسير السلسلة كـ</entry>
+      <entry id="3020" string="selected tracks">المسارات المحددة</entry>
+      <entry id="3021" string="Adjust upper/lower case">ضبط الحالةالعلوية/السفلية</entry>
+      <entry id="3022" string="all words upper case">كل كلمات الحالة العلوية</entry>
+      <entry id="3023" string="long words upper case">الكلمات الطويلة الحالة العلوية</entry>
+      <entry id="3024" string="first letter upper case">أول الحرف الحالة العلوية</entry>
+      <entry id="3025" string="all lower case">كل الحالة السفلية</entry>
+      <entry id="3026" string="all upper case">كل الحالة العلوية</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">حدد المجلد الذي سيتم وضع فيه الملفات المشفرة</entry>
+      <entry id="3028" string="Sampling rate">معدل العينات</entry>
+      <entry id="3029" string="Sample resolution">دقة العينة</entry>
+      <entry id="3030" string="Number of samples">عدد العينات</entry>
+      <entry id="3031" string="Channels">القنوات</entry>
+      <entry id="3032" string="Mono">وحيد</entry>
+      <entry id="3033" string="Stereo">صوت مجسم</entry>
+      <entry id="3034" string="Length">المدة</entry>
+      <entry id="3035" string="File">ملف</entry>
+      <entry id="3036" string="Size">الحجم</entry>
+      <entry id="3037" string="Bitrate">معدل بايت</entry>
+      <entry id="3038" string="Audio Files">ملفات صوتية</entry>
+      <entry id="3039" string="All Files">كافة الملفات</entry>
+      <entry id="3040" string="Playlist Files">ملفات قائمة الأغاني</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">ترميز الملف</entry>
+        <entry id="3051" string="none">لاشيء</entry>
+        <entry id="3052" string="Skip current file">تخطي</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">تحديد الترميز</entry>
+	<entry id="3081" string="Configure selected encoder">تهيئة الترميز المحدد</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">مجلد</entry>

@@ -124,51 +124,58 @@
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Çevrilen dosya</entry>
-      <entry id="3001" string="Time left">Geçen zaman</entry>
-      <entry id="3002" string="Selected encoder">Seçilen çevirici</entry>
-      <entry id="3003" string="File progress">İlerleme</entry>
-      <entry id="3004" string="Output folder">Kaydedilecek yer</entry>
-      <entry id="3005" string="%1 file(s) in joblist">Görev listesinde %1 dosya var</entry>
-      <entry id="3006" string="none">Hiçbiri</entry>
-      <entry id="3007" string="Show title info">Dosya bilgisini göster</entry>
-      <entry id="3008" string="Play">Oynat</entry>
-      <entry id="3009" string="Stop">Durdur</entry>
-      <entry id="3010" string="Select all">Tümünü seç</entry>
-      <entry id="3011" string="Select none">Hiçbirini seçme</entry>
-      <entry id="3012" string="Toggle selection">Seçimi tersine çevir</entry>
-      <entry id="3013" string="ripping/decoding">Riple / Çöz</entry>
-      <entry id="3014" string="encoding">Çevrilen</entry>
-      <entry id="3015" string="Create playlist">Çalma listesi oluştur</entry>
-      <entry id="3016" string="Create cue sheet">Cue dosyası oluştur</entry>
-      <entry id="3017" string="Select">Gözat</entry>
-      <entry id="3018" string="Skip">Atla</entry>
-      <entry id="3019" string="Encode to a single file">Tek dosya haline getir</entry>
-      <entry id="3020" string="Remove">Sil</entry>
-      <entry id="3021" string="Clear joblist">Görev listesini temizle</entry>
-      <entry id="3022" string="Use for all selected tracks">Tüm seçilmiş dosyalar için kullan</entry>
-      <entry id="3023" string="Interpret string as">Interpret string as</entry>
-      <entry id="3024" string="selected tracks">seçilen dosyalar</entry>
-      <entry id="3025" string="Adjust upper/lower case">BÜYÜK/küçük harf değiştir</entry>
-      <entry id="3026" string="all words upper case">Tüm kelimeler BÜYÜK HARFLE</entry>
-      <entry id="3027" string="long words upper case">Uzun kelimeler BÜYÜK HARFLE</entry>
-      <entry id="3028" string="first letter upper case">İlk Harf Büyük</entry>
-      <entry id="3029" string="all lower case">Tüm kelimeler küçük harfle</entry>
-      <entry id="3030" string="all upper case">HEPSİ BÜYÜK HARF</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Çevirilen dosyaların gönderileceği yeri seçin</entry>
-      <entry id="3032" string="Sampling rate">Örnekleme oranı</entry>
-      <entry id="3033" string="Sample resolution">Örnek çözünürlüğü</entry>
-      <entry id="3034" string="Number of samples">Örnek sayısı</entry>
-      <entry id="3035" string="Channels">Kanallar</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Uzunluk</entry>
-      <entry id="3039" string="File">Dosya</entry>
-      <entry id="3040" string="Size">Boyut</entry>
-      <entry id="3041" string="Bitrate">Bit oranı</entry>
-      <entry id="3042" string="Audio Files">Ses dosyaları</entry>
-      <entry id="3043" string="All Files">Tüm dosyalar</entry>
-      <entry id="3044" string="Playlist Files">Çalma listesi dosyaları</entry>
+      <entry id="3000" string="Time left">Geçen zaman</entry>
+      <entry id="3001" string="File progress">İlerleme</entry>
+      <entry id="3002" string="Output folder">Kaydedilecek yer</entry>
+      <entry id="3003" string="%1 file(s) in joblist">Görev listesinde %1 dosya var</entry>
+      <entry id="3004" string="Show title info">Dosya bilgisini göster</entry>
+      <entry id="3005" string="Play">Oynat</entry>
+      <entry id="3006" string="Stop">Durdur</entry>
+      <entry id="3007" string="Select all">Tümünü seç</entry>
+      <entry id="3008" string="Select none">Hiçbirini seçme</entry>
+      <entry id="3009" string="Toggle selection">Seçimi tersine çevir</entry>
+      <entry id="3010" string="ripping/decoding">Riple / Çöz</entry>
+      <entry id="3011" string="encoding">Çevrilen</entry>
+      <entry id="3012" string="Create playlist">Çalma listesi oluştur</entry>
+      <entry id="3013" string="Create cue sheet">Cue dosyası oluştur</entry>
+      <entry id="3014" string="Select">Gözat</entry>
+      <entry id="3015" string="Encode to a single file">Tek dosya haline getir</entry>
+      <entry id="3016" string="Remove">Sil</entry>
+      <entry id="3017" string="Clear joblist">Görev listesini temizle</entry>
+      <entry id="3018" string="Use for all selected tracks">Tüm seçilmiş dosyalar için kullan</entry>
+      <entry id="3019" string="Interpret string as">Interpret string as</entry>
+      <entry id="3020" string="selected tracks">seçilen dosyalar</entry>
+      <entry id="3021" string="Adjust upper/lower case">BÜYÜK/küçük harf değiştir</entry>
+      <entry id="3022" string="all words upper case">Tüm kelimeler BÜYÜK HARFLE</entry>
+      <entry id="3023" string="long words upper case">Uzun kelimeler BÜYÜK HARFLE</entry>
+      <entry id="3024" string="first letter upper case">İlk Harf Büyük</entry>
+      <entry id="3025" string="all lower case">Tüm kelimeler küçük harfle</entry>
+      <entry id="3026" string="all upper case">HEPSİ BÜYÜK HARF</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Çevirilen dosyaların gönderileceği yeri seçin</entry>
+      <entry id="3028" string="Sampling rate">Örnekleme oranı</entry>
+      <entry id="3029" string="Sample resolution">Örnek çözünürlüğü</entry>
+      <entry id="3030" string="Number of samples">Örnek sayısı</entry>
+      <entry id="3031" string="Channels">Kanallar</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Uzunluk</entry>
+      <entry id="3035" string="File">Dosya</entry>
+      <entry id="3036" string="Size">Boyut</entry>
+      <entry id="3037" string="Bitrate">Bit oranı</entry>
+      <entry id="3038" string="Audio Files">Ses dosyaları</entry>
+      <entry id="3039" string="All Files">Tüm dosyalar</entry>
+      <entry id="3040" string="Playlist Files">Çalma listesi dosyaları</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Çevrilen dosya</entry>
+        <entry id="3051" string="none">Hiçbiri</entry>
+        <entry id="3052" string="Skip current file">Atla</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Seçilen çevirici</entry>
+	<entry id="3081" string="Configure selected encoder">Seçilen çeviriciyi ayarla</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Dizin</entry>
