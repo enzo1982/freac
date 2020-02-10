@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Основни настройки</entry>
-	<entry id="1301" string="Configure selected encoder">Конфигуриране на избрания енкодер</entry>
-	<entry id="1302" string="Active CD-ROM drive">Активно CD-ROM устройство</entry>
-	<entry id="1303" string="Active configuration">Активна конфигурация</entry>
-	<entry id="1304" string="Default configuration">Конфигурация по подразбиране</entry>
+	<entry id="1301" string="Configure signal processing">Конфигуриране обработката на сигнала</entry>
+	<entry id="1302" string="Configure selected encoder">Конфигуриране на избрания енкодер</entry>
+	<entry id="1303" string="Active CD-ROM drive">Активно CD-ROM устройство</entry>
+	<entry id="1304" string="Active configuration">Активна конфигурация</entry>
+	<entry id="1305" string="Default configuration">Конфигурация по подразбиране</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Разрешаване обработката на сигнала</entry>
 	<entry id="1401" string="Enable processing during playback">Разрешаване обработката при възпроизвеждане</entry>
-	<entry id="1402" string="Configure signal processing">Конфигуриране обработката на сигнала</entry>
-	<entry id="1403" string="Selected signal processors">Избиране процесор на сигнала</entry>
+	<entry id="1402" string="Selected signal processors">Избиране процесор на сигнала</entry>
       </section>
 
       <section name="Encode">
@@ -145,67 +145,85 @@
       <entry id="2004" string="Query CDDB database">Заявка към CDDB база данни</entry>
       <entry id="2005" string="Submit CDDB data">Изпращане на CDDB данни</entry>
       <entry id="2006" string="Configure general settings">Конфигуриране на основните настройки</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Конфигуриране на избрания аудио енкодер</entry>
-      <entry id="2008" string="Start the encoding process">Старт на процеса кодиране</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Старт на процеса кодиране (Изтриване на ориг. файлове)</entry>
-      <entry id="2010" string="Pause/resume encoding">Пауза/Продължаване на кодирането</entry>
-      <entry id="2011" string="Stop encoding">Стоп на кодирането</entry>
+      <entry id="2007" string="Configure signal processing">Конфигуриране обработката на сигнала</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Конфигуриране на избрания аудио енкодер</entry>
+      <entry id="2009" string="Start the encoding process">Старт на процеса кодиране</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Старт на процеса кодиране (Изтриване на ориг. файлове)</entry>
+      <entry id="2011" string="Pause/resume encoding">Пауза/Продължаване на кодирането</entry>
+      <entry id="2012" string="Stop encoding">Стоп на кодирането</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Кодиране на файл</entry>
-      <entry id="3001" string="Time left">Оставащо време</entry>
-      <entry id="3002" string="Selected encoder">Избран енкодер</entry>
-      <entry id="3003" string="File progress">Прогрес</entry>
-      <entry id="3004" string="Output folder">Изходна папка</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 файл(ове) в списъка със задачи</entry>
-      <entry id="3006" string="none">празно</entry>
-      <entry id="3007" string="Show title info">Показване на заглавието</entry>
-      <entry id="3008" string="Play">Възпроизвеждане</entry>
-      <entry id="3009" string="Stop">Стоп</entry>
-      <entry id="3010" string="Select all">Избиране на всичко</entry>
-      <entry id="3011" string="Select none">Празен избор</entry>
-      <entry id="3012" string="Toggle selection">Превключване на избора</entry>
-      <entry id="3013" string="ripping/decoding">извличане/декодиране</entry>
-      <entry id="3014" string="encoding">кодиране</entry>
-      <entry id="3015" string="Create playlist">Създаване на плейлист</entry>
-      <entry id="3016" string="Create cue sheet">Създаване на CUE лист</entry>
-      <entry id="3017" string="Select">Избиране...</entry>
-      <entry id="3018" string="Skip">Пропускане</entry>
-      <entry id="3019" string="Encode to a single file">Кодиране в един файл</entry>
-      <entry id="3020" string="Remove">Премахване</entry>
-      <entry id="3021" string="Clear joblist">Изчистване на списъка със задачи</entry>
-      <entry id="3022" string="Use for all selected tracks">Използвай за всички избрани песни</entry>
-      <entry id="3023" string="Interpret string as">Интерпретиране на реда като</entry>
-      <entry id="3024" string="selected tracks">избрани песни</entry>
-      <entry id="3025" string="Adjust upper/lower case">Настройване на главни/малки букви</entry>
-      <entry id="3026" string="all words upper case">всички думи с главни букви</entry>
-      <entry id="3027" string="long words upper case">дълги думи с главни букви</entry>
-      <entry id="3028" string="first letter upper case">първата буква с главна буква</entry>
-      <entry id="3029" string="all lower case">всичко с малки букви</entry>
-      <entry id="3030" string="all upper case">всичко с главни букви</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Изберете папка, където кодираните файлове ще бъдат поставени</entry>
-      <entry id="3032" string="Sampling rate">Семплираща честота</entry>
-      <entry id="3033" string="Sample resolution">Семплираща резолюция</entry>
-      <entry id="3034" string="Number of samples">Брой семпли</entry>
-      <entry id="3035" string="Channels">Канали</entry>
-      <entry id="3036" string="Mono">Моно</entry>
-      <entry id="3037" string="Stereo">Стерео</entry>
-      <entry id="3038" string="Length">Времетраене</entry>
-      <entry id="3039" string="File">Файл</entry>
-      <entry id="3040" string="Size">Размер</entry>
-      <entry id="3041" string="Bitrate">Bitrate</entry>
-      <entry id="3042" string="Audio Files">Аудио файлове</entry>
-      <entry id="3043" string="All Files">Всички файлове</entry>
-      <entry id="3044" string="Playlist Files">Плейлист файлове</entry>
-      <entry id="3045" string="Active decoder">Активен декодер</entry>
-      <entry id="3046" string="Joblist">Списък със задачи</entry>
-      <entry id="3047" string="unknown">неизвестно</entry>
-      <entry id="3048" string="Other">Друг</entry>
-      <entry id="3049" string="Output file name">Име на изходния файл</entry>
-      <entry id="3050" string="verifying">проверка</entry>
-      <entry id="3051" string="Open">Отвори</entry>
-      <entry id="3052" string="CD drive">CD устройство</entry>
+      <entry id="3000" string="Time left">Оставащо време</entry>
+      <entry id="3001" string="File progress">Прогрес</entry>
+      <entry id="3002" string="Output folder">Изходна папка</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 файл(ове) в списъка със задачи</entry>
+      <entry id="3004" string="Show title info">Показване на заглавието</entry>
+      <entry id="3005" string="Play">Възпроизвеждане</entry>
+      <entry id="3006" string="Stop">Стоп</entry>
+      <entry id="3007" string="Select all">Избиране на всичко</entry>
+      <entry id="3008" string="Select none">Празен избор</entry>
+      <entry id="3009" string="Toggle selection">Превключване на избора</entry>
+      <entry id="3010" string="ripping/decoding">извличане/декодиране</entry>
+      <entry id="3011" string="encoding">кодиране</entry>
+      <entry id="3012" string="Create playlist">Създаване на плейлист</entry>
+      <entry id="3013" string="Create cue sheet">Създаване на CUE лист</entry>
+      <entry id="3014" string="Select">Избиране...</entry>
+      <entry id="3015" string="Encode to a single file">Кодиране в един файл</entry>
+      <entry id="3016" string="Remove">Премахване</entry>
+      <entry id="3017" string="Clear joblist">Изчистване на списъка със задачи</entry>
+      <entry id="3018" string="Use for all selected tracks">Използвай за всички избрани песни</entry>
+      <entry id="3019" string="Interpret string as">Интерпретиране на реда като</entry>
+      <entry id="3020" string="selected tracks">избрани песни</entry>
+      <entry id="3021" string="Adjust upper/lower case">Настройване на главни/малки букви</entry>
+      <entry id="3022" string="all words upper case">всички думи с главни букви</entry>
+      <entry id="3023" string="long words upper case">дълги думи с главни букви</entry>
+      <entry id="3024" string="first letter upper case">първата буква с главна буква</entry>
+      <entry id="3025" string="all lower case">всичко с малки букви</entry>
+      <entry id="3026" string="all upper case">всичко с главни букви</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Изберете папка, където кодираните файлове ще бъдат поставени</entry>
+      <entry id="3028" string="Sampling rate">Семплираща честота</entry>
+      <entry id="3029" string="Sample resolution">Семплираща резолюция</entry>
+      <entry id="3030" string="Number of samples">Брой семпли</entry>
+      <entry id="3031" string="Channels">Канали</entry>
+      <entry id="3032" string="Mono">Моно</entry>
+      <entry id="3033" string="Stereo">Стерео</entry>
+      <entry id="3034" string="Length">Времетраене</entry>
+      <entry id="3035" string="File">Файл</entry>
+      <entry id="3036" string="Size">Размер</entry>
+      <entry id="3037" string="Bitrate">Bitrate</entry>
+      <entry id="3038" string="Audio Files">Аудио файлове</entry>
+      <entry id="3039" string="All Files">Всички файлове</entry>
+      <entry id="3040" string="Playlist Files">Плейлист файлове</entry>
+      <entry id="3041" string="Joblist">Списък със задачи</entry>
+      <entry id="3042" string="Other">Друг</entry>
+      <entry id="3043" string="Output file name">Име на изходния файл</entry>
+      <entry id="3044" string="verifying">проверка</entry>
+      <entry id="3045" string="Open">Отвори</entry>
+      <entry id="3046" string="CD drive">CD устройство</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Кодиране на файл</entry>
+        <entry id="3051" string="none">празно</entry>
+        <entry id="3052" string="Skip current file">Пропускане</entry>
+      </section>
+
+      <section name="Decoder">
+        <entry id="3060" string="Active decoder">Активен декодер</entry>
+        <entry id="3061" string="none">неизвестно</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">Избрани филтри</entry>
+	<entry id="3071" string="none"/>
+	<entry id="3072" string="disabled"/>
+	<entry id="3073" string="Configure signal processing">Конфигуриране обработката на сигнала</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Избран енкодер</entry>
+	<entry id="3081" string="Configure selected encoder">Конфигуриране на избрания енкодер</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Папка</entry>
@@ -574,16 +592,6 @@
       <entry id="6101" string="There are no updates available at the moment!">Няма налични обновления в момента!</entry>
       <entry id="6102" string="Check for updates at startup">Проверка за обновления при стартиране</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 може да извърши автоматична проверка онлайн&#10;за обновяване на програмата при стартиране.&#10;&#10;Желаете ли %1 да потърси обновления при стартиране?</entry>
-    </section>
-
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 е наличен на %2 езика.&#10;Ако вашият език не е наличен,&#10;можете лесно да преведете %1,&#10;използвайки приложението 'smooth Translator'.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 поддържа енкодерите&#10;LAME, Ogg Vorbis, FAAC, FLAC и Opus.&#10;Енкодер за формата VQF е наличен&#10;на сайта на %1 на адрес: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 може да ползва входящи плъгини на Winamp 2&#10;за поддъдържане на повече формати.&#10;Копирайте файловете in_*.dll в папката&#10;%1 / plugins за да може %1 да чете тези формати.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">С %1 може да изпратите записи към&#10;freedb CD базата данни съдържащи Unicode символи.&#10;Така че, ако имате CD-та без латински имена&#10;на изпълнителя или песните,&#10;може да изпратите верни записи към freedb с %1.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">За коригиране на грешките при четене по време на&#10;извличането може да включите 'Корекция на трептенията'&#10;в таба 'CD Извличане'&#10;в конфигурационния прозорец на %1.&#10;Ако това не помогне, опитайте някой от Paranoia режимите.</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Имате ли предложения за усъвършенстване на %1?&#10;&#10;Може да изпращате всякакви идеи&#10;през тракера на %2&#10;страницата на %1 - %3&#10;или да изпратите eMail до %4.</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Харесвате ли %1?&#10;&#10;%1 е безплатен, но вие може да подпомогнете&#10;разработването му чрез дарение за проекта %1.&#10;Можете да изпратите пари до %2 през PayPal.&#10;Вижте %3 за подробности.</entry>
     </section>
 
     <section name="Messages">

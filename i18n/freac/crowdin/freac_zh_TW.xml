@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">一般設定</entry>
-	<entry id="1301" string="Configure selected encoder">目前的編碼器組態</entry>
-	<entry id="1302" string="Active CD-ROM drive">使用中的 CD-ROM 光碟機</entry>
-	<entry id="1303" string="Active configuration">使用中的組態</entry>
-	<entry id="1304" string="Default configuration">預設組態</entry>
+	<entry id="1301" string="Configure signal processing">訊號處理組態</entry>
+	<entry id="1302" string="Configure selected encoder">目前的編碼器組態</entry>
+	<entry id="1303" string="Active CD-ROM drive">使用中的 CD-ROM 光碟機</entry>
+	<entry id="1304" string="Active configuration">使用中的組態</entry>
+	<entry id="1305" string="Default configuration">預設組態</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">啟用訊號處理</entry>
 	<entry id="1401" string="Enable processing during playback">啟用播放時執行處理</entry>
-	<entry id="1402" string="Configure signal processing">訊號處理組態</entry>
-	<entry id="1403" string="Selected signal processors">目前的訊號處理器</entry>
+	<entry id="1402" string="Selected signal processors">目前的訊號處理器</entry>
       </section>
 
       <section name="Encode">
@@ -145,67 +145,85 @@
       <entry id="2004" string="Query CDDB database">查詢 CDDB 資料庫</entry>
       <entry id="2005" string="Submit CDDB data">上傳 CDDB 資料</entry>
       <entry id="2006" string="Configure general settings">調整一般設定</entry>
-      <entry id="2007" string="Configure the selected audio encoder">調整目前的編碼器組態</entry>
-      <entry id="2008" string="Start the encoding process">開始編碼</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">開始編碼 (刪除原始檔案)</entry>
-      <entry id="2010" string="Pause/resume encoding">暫停 / 繼續編碼</entry>
-      <entry id="2011" string="Stop encoding">停止編碼</entry>
+      <entry id="2007" string="Configure signal processing">訊號處理組態</entry>
+      <entry id="2008" string="Configure the selected audio encoder">調整目前的編碼器組態</entry>
+      <entry id="2009" string="Start the encoding process">開始編碼</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">開始編碼 (刪除原始檔案)</entry>
+      <entry id="2011" string="Pause/resume encoding">暫停 / 繼續編碼</entry>
+      <entry id="2012" string="Stop encoding">停止編碼</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">正在編碼</entry>
-      <entry id="3001" string="Time left">剩餘時間</entry>
-      <entry id="3002" string="Selected encoder">目前的編碼器</entry>
-      <entry id="3003" string="File progress">檔案進度</entry>
-      <entry id="3004" string="Output folder">輸出資料夾</entry>
-      <entry id="3005" string="%1 file(s) in joblist">工作清單有 %1 個檔案</entry>
-      <entry id="3006" string="none">無</entry>
-      <entry id="3007" string="Show title info">顯示標題資訊</entry>
-      <entry id="3008" string="Play">播放</entry>
-      <entry id="3009" string="Stop">停止</entry>
-      <entry id="3010" string="Select all">全選</entry>
-      <entry id="3011" string="Select none">全不選</entry>
-      <entry id="3012" string="Toggle selection">反選</entry>
-      <entry id="3013" string="ripping/decoding">正在轉檔 / 解碼</entry>
-      <entry id="3014" string="encoding">正在編碼</entry>
-      <entry id="3015" string="Create playlist">建立播放清單</entry>
-      <entry id="3016" string="Create cue sheet">建立 cue 描述檔</entry>
-      <entry id="3017" string="Select">瀏覽</entry>
-      <entry id="3018" string="Skip">跳過</entry>
-      <entry id="3019" string="Encode to a single file">編碼為單一檔案</entry>
-      <entry id="3020" string="Remove">移除</entry>
-      <entry id="3021" string="Clear joblist">清除工作清單</entry>
-      <entry id="3022" string="Use for all selected tracks">使用於所有選擇的音軌</entry>
-      <entry id="3023" string="Interpret string as">將字串轉換為</entry>
-      <entry id="3024" string="selected tracks">選擇的音軌</entry>
-      <entry id="3025" string="Adjust upper/lower case">調整 大/小寫</entry>
-      <entry id="3026" string="all words upper case">所有單字大寫</entry>
-      <entry id="3027" string="long words upper case">長單字字首大寫</entry>
-      <entry id="3028" string="first letter upper case">第一個字母大寫</entry>
-      <entry id="3029" string="all lower case">所有字母小寫</entry>
-      <entry id="3030" string="all upper case">所有字母大寫</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">選擇儲存輸出檔案的資料夾</entry>
-      <entry id="3032" string="Sampling rate">取樣頻率</entry>
-      <entry id="3033" string="Sample resolution">取樣解析度</entry>
-      <entry id="3034" string="Number of samples">取樣數</entry>
-      <entry id="3035" string="Channels">聲道</entry>
-      <entry id="3036" string="Mono">單聲道</entry>
-      <entry id="3037" string="Stereo">立體聲</entry>
-      <entry id="3038" string="Length">長度</entry>
-      <entry id="3039" string="File">檔案</entry>
-      <entry id="3040" string="Size">大小</entry>
-      <entry id="3041" string="Bitrate">位元率</entry>
-      <entry id="3042" string="Audio Files">音訊檔案</entry>
-      <entry id="3043" string="All Files">所有檔案</entry>
-      <entry id="3044" string="Playlist Files">播放清單的檔案</entry>
-      <entry id="3045" string="Active decoder">使用中的解碼器</entry>
-      <entry id="3046" string="Joblist">工作清單</entry>
-      <entry id="3047" string="unknown">未知</entry>
-      <entry id="3048" string="Other">其他</entry>
-      <entry id="3049" string="Output file name">輸出檔案名稱</entry>
-      <entry id="3050" string="verifying">正在驗證</entry>
-      <entry id="3051" string="Open">開啟</entry>
-      <entry id="3052" string="CD drive">CD 光碟機</entry>
+      <entry id="3000" string="Time left">剩餘時間</entry>
+      <entry id="3001" string="File progress">檔案進度</entry>
+      <entry id="3002" string="Output folder">輸出資料夾</entry>
+      <entry id="3003" string="%1 file(s) in joblist">工作清單有 %1 個檔案</entry>
+      <entry id="3004" string="Show title info">顯示標題資訊</entry>
+      <entry id="3005" string="Play">播放</entry>
+      <entry id="3006" string="Stop">停止</entry>
+      <entry id="3007" string="Select all">全選</entry>
+      <entry id="3008" string="Select none">全不選</entry>
+      <entry id="3009" string="Toggle selection">反選</entry>
+      <entry id="3010" string="ripping/decoding">正在轉檔 / 解碼</entry>
+      <entry id="3011" string="encoding">正在編碼</entry>
+      <entry id="3012" string="Create playlist">建立播放清單</entry>
+      <entry id="3013" string="Create cue sheet">建立 cue 描述檔</entry>
+      <entry id="3014" string="Select">瀏覽</entry>
+      <entry id="3015" string="Encode to a single file">編碼為單一檔案</entry>
+      <entry id="3016" string="Remove">移除</entry>
+      <entry id="3017" string="Clear joblist">清除工作清單</entry>
+      <entry id="3018" string="Use for all selected tracks">使用於所有選擇的音軌</entry>
+      <entry id="3019" string="Interpret string as">將字串轉換為</entry>
+      <entry id="3020" string="selected tracks">選擇的音軌</entry>
+      <entry id="3021" string="Adjust upper/lower case">調整 大/小寫</entry>
+      <entry id="3022" string="all words upper case">所有單字大寫</entry>
+      <entry id="3023" string="long words upper case">長單字字首大寫</entry>
+      <entry id="3024" string="first letter upper case">第一個字母大寫</entry>
+      <entry id="3025" string="all lower case">所有字母小寫</entry>
+      <entry id="3026" string="all upper case">所有字母大寫</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">選擇儲存輸出檔案的資料夾</entry>
+      <entry id="3028" string="Sampling rate">取樣頻率</entry>
+      <entry id="3029" string="Sample resolution">取樣解析度</entry>
+      <entry id="3030" string="Number of samples">取樣數</entry>
+      <entry id="3031" string="Channels">聲道</entry>
+      <entry id="3032" string="Mono">單聲道</entry>
+      <entry id="3033" string="Stereo">立體聲</entry>
+      <entry id="3034" string="Length">長度</entry>
+      <entry id="3035" string="File">檔案</entry>
+      <entry id="3036" string="Size">大小</entry>
+      <entry id="3037" string="Bitrate">位元率</entry>
+      <entry id="3038" string="Audio Files">音訊檔案</entry>
+      <entry id="3039" string="All Files">所有檔案</entry>
+      <entry id="3040" string="Playlist Files">播放清單的檔案</entry>
+      <entry id="3041" string="Joblist">工作清單</entry>
+      <entry id="3042" string="Other">其他</entry>
+      <entry id="3043" string="Output file name">輸出檔案名稱</entry>
+      <entry id="3044" string="verifying">正在驗證</entry>
+      <entry id="3045" string="Open">開啟</entry>
+      <entry id="3046" string="CD drive">CD 光碟機</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">正在編碼</entry>
+        <entry id="3051" string="none">無</entry>
+        <entry id="3052" string="Skip current file">跳過</entry>
+      </section>
+
+      <section name="Decoder">
+        <entry id="3060" string="Active decoder">使用中的解碼器</entry>
+        <entry id="3061" string="none">未知</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">選定的過濾器</entry>
+	<entry id="3071" string="none"/>
+	<entry id="3072" string="disabled"/>
+	<entry id="3073" string="Configure signal processing">訊號處理組態</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">目前的編碼器</entry>
+	<entry id="3081" string="Configure selected encoder">目前的編碼器組態</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">資料夾</entry>
@@ -574,16 +592,6 @@
       <entry id="6101" string="There are no updates available at the moment!">目前沒有更新的版本！</entry>
       <entry id="6102" string="Check for updates at startup">啟動時檢查更新</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 能在啟動時自動檢查更新。&#10;&#10;&#10;請問您想要 %1 在啟動時檢查更新嗎？</entry>
-    </section>
-
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 支援 %2 種語言。如果找不到您的語言，&#10;您可以使用 'smooth Translator' 來翻譯。</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 支援 LAME, Ogg Vorbis, FAAC, FLAC, Opus 編碼器。&#10;您可以從 %1 網站下載 VQF 格式的編碼器:&#10;%2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 能透過 Winamp 2 輸入外掛支援更多格式。&#10;將 in_*.dll 檔案複製到 %1/plugins 資料夾即可&#10;讓 %1 讀取這些格式。</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">您可以透過 %1 上傳包含 Unicode 的 CDDB 資料。&#10;如果您的 CD 包含非拉丁字元的演出者或標題，&#10;您可以透過 %1 上傳正確的 freedb 資料。</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">您可以在 %1 一般設定的轉檔器選項&#10;啟用抖動校正來修正光碟讀取錯誤。&#10;如果無效，請嘗試使用任一種 Paranoia 模式。</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">您有任何改良 %1 的想法嗎？&#10;&#10;您可以在 %2 上的 %1 專案網頁&#10;%3 發表您的想法與建議！&#10;您也可以寄電子郵件給 %4。</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">您喜歡 %1 嗎？%1 是免費軟體，&#10;但您可以透過捐款幫助 %1 專案繼續開發。&#10;您也可以使用 Paypal 捐款。&#10;請查閱 %3 以了解更多資訊。</entry>
     </section>
 
     <section name="Messages">

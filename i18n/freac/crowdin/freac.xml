@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">General settings</entry>
-	<entry id="1301" string="Configure selected encoder">Configure selected encoder</entry>
-	<entry id="1302" string="Active CD-ROM drive">Active CD-ROM drive</entry>
-	<entry id="1303" string="Active configuration">Active configuration</entry>
-	<entry id="1304" string="Default configuration">Default configuration</entry>
+	<entry id="1301" string="Configure signal processing">Configure signal processing</entry>
+	<entry id="1302" string="Configure selected encoder">Configure selected encoder</entry>
+	<entry id="1303" string="Active CD-ROM drive">Active CD-ROM drive</entry>
+	<entry id="1304" string="Active configuration">Active configuration</entry>
+	<entry id="1305" string="Default configuration">Default configuration</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Enable signal processing</entry>
 	<entry id="1401" string="Enable processing during playback">Enable processing during playback</entry>
-	<entry id="1402" string="Configure signal processing">Configure signal processing</entry>
-	<entry id="1403" string="Selected signal processors">Selected signal processors</entry>
+	<entry id="1402" string="Selected signal processors">Selected signal processors</entry>
       </section>
 
       <section name="Encode">
@@ -145,67 +145,85 @@
       <entry id="2004" string="Query CDDB database">Query CDDB database</entry>
       <entry id="2005" string="Submit CDDB data">Submit CDDB data</entry>
       <entry id="2006" string="Configure general settings">Configure general settings</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Configure the selected audio encoder</entry>
-      <entry id="2008" string="Start the encoding process">Start the encoding process</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Start the encoding process (deleting original files)</entry>
-      <entry id="2010" string="Pause/resume encoding">Pause/resume encoding</entry>
-      <entry id="2011" string="Stop encoding">Stop encoding</entry>
+      <entry id="2007" string="Configure signal processing">Configure signal processing</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Configure the selected audio encoder</entry>
+      <entry id="2009" string="Start the encoding process">Start the encoding process</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Start the encoding process (deleting original files)</entry>
+      <entry id="2011" string="Pause/resume encoding">Pause/resume encoding</entry>
+      <entry id="2012" string="Stop encoding">Stop encoding</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Encoding file</entry>
-      <entry id="3001" string="Time left">Time left</entry>
-      <entry id="3002" string="Selected encoder">Selected encoder</entry>
-      <entry id="3003" string="File progress">File progress</entry>
-      <entry id="3004" string="Output folder">Output folder</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 file(s) in joblist</entry>
-      <entry id="3006" string="none">none</entry>
-      <entry id="3007" string="Show title info">Show title info</entry>
-      <entry id="3008" string="Play">Play</entry>
-      <entry id="3009" string="Stop">Stop</entry>
-      <entry id="3010" string="Select all">Select all</entry>
-      <entry id="3011" string="Select none">Select none</entry>
-      <entry id="3012" string="Toggle selection">Toggle selection</entry>
-      <entry id="3013" string="ripping/decoding">ripping/decoding</entry>
-      <entry id="3014" string="encoding">encoding</entry>
-      <entry id="3015" string="Create playlist">Create playlist</entry>
-      <entry id="3016" string="Create cue sheet">Create cue sheet</entry>
-      <entry id="3017" string="Select">Select</entry>
-      <entry id="3018" string="Skip">Skip</entry>
-      <entry id="3019" string="Encode to a single file">Encode to a single file</entry>
-      <entry id="3020" string="Remove">Remove</entry>
-      <entry id="3021" string="Clear joblist">Clear joblist</entry>
-      <entry id="3022" string="Use for all selected tracks">Use for all selected tracks</entry>
-      <entry id="3023" string="Interpret string as">Interpret string as</entry>
-      <entry id="3024" string="selected tracks">selected tracks</entry>
-      <entry id="3025" string="Adjust upper/lower case">Adjust upper/lower case</entry>
-      <entry id="3026" string="all words upper case">all words upper case</entry>
-      <entry id="3027" string="long words upper case">long words upper case</entry>
-      <entry id="3028" string="first letter upper case">first letter upper case</entry>
-      <entry id="3029" string="all lower case">all lower case</entry>
-      <entry id="3030" string="all upper case">all upper case</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Select the folder in which the encoded files will be placed</entry>
-      <entry id="3032" string="Sampling rate">Sampling rate</entry>
-      <entry id="3033" string="Sample resolution">Sample resolution</entry>
-      <entry id="3034" string="Number of samples">Number of samples</entry>
-      <entry id="3035" string="Channels">Channels</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Length</entry>
-      <entry id="3039" string="File">File</entry>
-      <entry id="3040" string="Size">Size</entry>
-      <entry id="3041" string="Bitrate">Bitrate</entry>
-      <entry id="3042" string="Audio Files">Audio Files</entry>
-      <entry id="3043" string="All Files">All Files</entry>
-      <entry id="3044" string="Playlist Files">Playlist Files</entry>
-      <entry id="3045" string="Active decoder">Active decoder</entry>
-      <entry id="3046" string="Joblist">Joblist</entry>
-      <entry id="3047" string="unknown">unknown</entry>
-      <entry id="3048" string="Other">Other</entry>
-      <entry id="3049" string="Output file name">Output file name</entry>
-      <entry id="3050" string="verifying">verifying</entry>
-      <entry id="3051" string="Open">Open</entry>
-      <entry id="3052" string="CD drive">CD drive</entry>
+      <entry id="3000" string="Time left">Time left</entry>
+      <entry id="3001" string="File progress">File progress</entry>
+      <entry id="3002" string="Output folder">Output folder</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 file(s) in joblist</entry>
+      <entry id="3004" string="Show title info">Show title info</entry>
+      <entry id="3005" string="Play">Play</entry>
+      <entry id="3006" string="Stop">Stop</entry>
+      <entry id="3007" string="Select all">Select all</entry>
+      <entry id="3008" string="Select none">Select none</entry>
+      <entry id="3009" string="Toggle selection">Toggle selection</entry>
+      <entry id="3010" string="ripping/decoding">ripping/decoding</entry>
+      <entry id="3011" string="encoding">encoding</entry>
+      <entry id="3012" string="Create playlist">Create playlist</entry>
+      <entry id="3013" string="Create cue sheet">Create cue sheet</entry>
+      <entry id="3014" string="Select">Select</entry>
+      <entry id="3015" string="Encode to a single file">Encode to a single file</entry>
+      <entry id="3016" string="Remove">Remove</entry>
+      <entry id="3017" string="Clear joblist">Clear joblist</entry>
+      <entry id="3018" string="Use for all selected tracks">Use for all selected tracks</entry>
+      <entry id="3019" string="Interpret string as">Interpret string as</entry>
+      <entry id="3020" string="selected tracks">selected tracks</entry>
+      <entry id="3021" string="Adjust upper/lower case">Adjust upper/lower case</entry>
+      <entry id="3022" string="all words upper case">all words upper case</entry>
+      <entry id="3023" string="long words upper case">long words upper case</entry>
+      <entry id="3024" string="first letter upper case">first letter upper case</entry>
+      <entry id="3025" string="all lower case">all lower case</entry>
+      <entry id="3026" string="all upper case">all upper case</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Select the folder in which the encoded files will be placed</entry>
+      <entry id="3028" string="Sampling rate">Sampling rate</entry>
+      <entry id="3029" string="Sample resolution">Sample resolution</entry>
+      <entry id="3030" string="Number of samples">Number of samples</entry>
+      <entry id="3031" string="Channels">Channels</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Length</entry>
+      <entry id="3035" string="File">File</entry>
+      <entry id="3036" string="Size">Size</entry>
+      <entry id="3037" string="Bitrate">Bitrate</entry>
+      <entry id="3038" string="Audio Files">Audio Files</entry>
+      <entry id="3039" string="All Files">All Files</entry>
+      <entry id="3040" string="Playlist Files">Playlist Files</entry>
+      <entry id="3041" string="Joblist">Joblist</entry>
+      <entry id="3042" string="Other">Other</entry>
+      <entry id="3043" string="Output file name">Output file name</entry>
+      <entry id="3044" string="verifying">verifying</entry>
+      <entry id="3045" string="Open">Open</entry>
+      <entry id="3046" string="CD drive">CD drive</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Current file</entry>
+	<entry id="3051" string="none">none</entry>
+	<entry id="3052" string="Skip current file">Skip current file</entry>
+      </section>
+
+      <section name="Decoder">
+	<entry id="3060" string="Active decoder">Active decoder</entry>
+	<entry id="3061" string="none">none</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">Selected filters</entry>
+	<entry id="3071" string="none">none</entry>
+	<entry id="3072" string="disabled">disabled</entry>
+	<entry id="3073" string="Configure signal processing">Configure signal processing</entry>
+      </section>
+
+      <section name="Encoder">
+	<entry id="3080" string="Selected encoder">Selected encoder</entry>
+	<entry id="3081" string="Configure selected encoder">Configure selected encoder</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Folder</entry>
@@ -574,16 +592,6 @@
       <entry id="6101" string="There are no updates available at the moment!">There are no updates available at the moment!</entry>
       <entry id="6102" string="Check for updates at startup">Check for updates at startup</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?</entry>
-    </section>
-
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.</entry>
     </section>
 
     <section name="Messages">

@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Configurações gerais</entry>
-	<entry id="1301" string="Configure selected encoder">Configurar codificador selecionado</entry>
-	<entry id="1302" string="Active CD-ROM drive">Unidade de CD-ROM ativa</entry>
-	<entry id="1303" string="Active configuration">Configuração ativa</entry>
-	<entry id="1304" string="Default configuration">Configuração padrão</entry>
+	<entry id="1301" string="Configure signal processing">Configurar processamento de sinal</entry>
+	<entry id="1302" string="Configure selected encoder">Configurar codificador selecionado</entry>
+	<entry id="1303" string="Active CD-ROM drive">Unidade de CD-ROM ativa</entry>
+	<entry id="1304" string="Active configuration">Configuração ativa</entry>
+	<entry id="1305" string="Default configuration">Configuração padrão</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Ativar processamento de sinal</entry>
 	<entry id="1401" string="Enable processing during playback">Ativar processamento durante a reprodução</entry>
-	<entry id="1402" string="Configure signal processing">Configurar processamento de sinal</entry>
-	<entry id="1403" string="Selected signal processors">Processadores de sinal selecionados</entry>
+	<entry id="1402" string="Selected signal processors">Processadores de sinal selecionados</entry>
       </section>
 
       <section name="Encode">
@@ -145,67 +145,85 @@
       <entry id="2004" string="Query CDDB database">Pesquisar a base de dados do CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Enviar dados ao CDDB</entry>
       <entry id="2006" string="Configure general settings">Configurar opções gerais</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Configurar o codificador de áudio selecionado</entry>
-      <entry id="2008" string="Start the encoding process">Iniciar o processo de codificação</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">Iniciar o processo de codificação (apagar ficheiros originais)</entry>
-      <entry id="2010" string="Pause/resume encoding">Parar/recomeçar a codificação</entry>
-      <entry id="2011" string="Stop encoding">Parar codificação</entry>
+      <entry id="2007" string="Configure signal processing">Configurar processamento de sinal</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Configurar o codificador de áudio selecionado</entry>
+      <entry id="2009" string="Start the encoding process">Iniciar o processo de codificação</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Iniciar o processo de codificação (apagar ficheiros originais)</entry>
+      <entry id="2011" string="Pause/resume encoding">Parar/recomeçar a codificação</entry>
+      <entry id="2012" string="Stop encoding">Parar codificação</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Codificando ficheiro</entry>
-      <entry id="3001" string="Time left">Tempo restante</entry>
-      <entry id="3002" string="Selected encoder">Selecionar codificador</entry>
-      <entry id="3003" string="File progress">Progresso do ficheiro</entry>
-      <entry id="3004" string="Output folder">Pasta de saída</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 ficheiro(s) na lista de trabalho</entry>
-      <entry id="3006" string="none">nenhum</entry>
-      <entry id="3007" string="Show title info">Mostrar título</entry>
-      <entry id="3008" string="Play">Tocar</entry>
-      <entry id="3009" string="Stop">Parar</entry>
-      <entry id="3010" string="Select all">Selecionar tudo</entry>
-      <entry id="3011" string="Select none">Remover seleção</entry>
-      <entry id="3012" string="Toggle selection">Inverter seleção</entry>
-      <entry id="3013" string="ripping/decoding">extraindo/codificando</entry>
-      <entry id="3014" string="encoding">codificando</entry>
-      <entry id="3015" string="Create playlist">Criar lista de execução</entry>
-      <entry id="3016" string="Create cue sheet">Criar lista das pistas</entry>
-      <entry id="3017" string="Select">Escolher</entry>
-      <entry id="3018" string="Skip">Pular</entry>
-      <entry id="3019" string="Encode to a single file">Codificar num ficheiro único</entry>
-      <entry id="3020" string="Remove">Remover</entry>
-      <entry id="3021" string="Clear joblist">Limpar a listagem de trabalho</entry>
-      <entry id="3022" string="Use for all selected tracks">Use em todas as faixas selecionadas</entry>
-      <entry id="3023" string="Interpret string as">Interprete o texto como</entry>
-      <entry id="3024" string="selected tracks">faixas seleccionadas</entry>
-      <entry id="3025" string="Adjust upper/lower case">Ajustar maiúsculas/minúsculas</entry>
-      <entry id="3026" string="all words upper case">todas as palavras em maiúsculas</entry>
-      <entry id="3027" string="long words upper case">palavras longas em maiúsculas</entry>
-      <entry id="3028" string="first letter upper case">primeira letra em maiúscula</entry>
-      <entry id="3029" string="all lower case">tudo em letras minúsculas</entry>
-      <entry id="3030" string="all upper case">tudo em letras maiúsculas</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Selecione a pasta para os ficheiros codificados</entry>
-      <entry id="3032" string="Sampling rate">Taxa de amostragem</entry>
-      <entry id="3033" string="Sample resolution">Resolução da amostra</entry>
-      <entry id="3034" string="Number of samples">Número de amostras</entry>
-      <entry id="3035" string="Channels">Canais</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Estéreo</entry>
-      <entry id="3038" string="Length">Comprimento</entry>
-      <entry id="3039" string="File">Ficheiro</entry>
-      <entry id="3040" string="Size">Tamanho</entry>
-      <entry id="3041" string="Bitrate">Taxa de bits</entry>
-      <entry id="3042" string="Audio Files">Ficheiros de áudio</entry>
-      <entry id="3043" string="All Files">Todos os Ficheiros</entry>
-      <entry id="3044" string="Playlist Files">Ficheiros de listas de execução</entry>
-      <entry id="3045" string="Active decoder">Descodificador ativo</entry>
-      <entry id="3046" string="Joblist">Lista de trabalho</entry>
-      <entry id="3047" string="unknown">desconhecido</entry>
-      <entry id="3048" string="Other">Outro</entry>
-      <entry id="3049" string="Output file name">Nome de saída do ficheiro</entry>
-      <entry id="3050" string="verifying">verificando</entry>
-      <entry id="3051" string="Open">Abrir</entry>
-      <entry id="3052" string="CD drive">Drive CD</entry>
+      <entry id="3000" string="Time left">Tempo restante</entry>
+      <entry id="3001" string="File progress">Progresso do ficheiro</entry>
+      <entry id="3002" string="Output folder">Pasta de saída</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 ficheiro(s) na lista de trabalho</entry>
+      <entry id="3004" string="Show title info">Mostrar título</entry>
+      <entry id="3005" string="Play">Tocar</entry>
+      <entry id="3006" string="Stop">Parar</entry>
+      <entry id="3007" string="Select all">Selecionar tudo</entry>
+      <entry id="3008" string="Select none">Remover seleção</entry>
+      <entry id="3009" string="Toggle selection">Inverter seleção</entry>
+      <entry id="3010" string="ripping/decoding">extraindo/codificando</entry>
+      <entry id="3011" string="encoding">codificando</entry>
+      <entry id="3012" string="Create playlist">Criar lista de execução</entry>
+      <entry id="3013" string="Create cue sheet">Criar lista das pistas</entry>
+      <entry id="3014" string="Select">Escolher</entry>
+      <entry id="3015" string="Encode to a single file">Codificar num ficheiro único</entry>
+      <entry id="3016" string="Remove">Remover</entry>
+      <entry id="3017" string="Clear joblist">Limpar a listagem de trabalho</entry>
+      <entry id="3018" string="Use for all selected tracks">Use em todas as faixas selecionadas</entry>
+      <entry id="3019" string="Interpret string as">Interprete o texto como</entry>
+      <entry id="3020" string="selected tracks">faixas seleccionadas</entry>
+      <entry id="3021" string="Adjust upper/lower case">Ajustar maiúsculas/minúsculas</entry>
+      <entry id="3022" string="all words upper case">todas as palavras em maiúsculas</entry>
+      <entry id="3023" string="long words upper case">palavras longas em maiúsculas</entry>
+      <entry id="3024" string="first letter upper case">primeira letra em maiúscula</entry>
+      <entry id="3025" string="all lower case">tudo em letras minúsculas</entry>
+      <entry id="3026" string="all upper case">tudo em letras maiúsculas</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Selecione a pasta para os ficheiros codificados</entry>
+      <entry id="3028" string="Sampling rate">Taxa de amostragem</entry>
+      <entry id="3029" string="Sample resolution">Resolução da amostra</entry>
+      <entry id="3030" string="Number of samples">Número de amostras</entry>
+      <entry id="3031" string="Channels">Canais</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Estéreo</entry>
+      <entry id="3034" string="Length">Comprimento</entry>
+      <entry id="3035" string="File">Ficheiro</entry>
+      <entry id="3036" string="Size">Tamanho</entry>
+      <entry id="3037" string="Bitrate">Taxa de bits</entry>
+      <entry id="3038" string="Audio Files">Ficheiros de áudio</entry>
+      <entry id="3039" string="All Files">Todos os Ficheiros</entry>
+      <entry id="3040" string="Playlist Files">Ficheiros de listas de execução</entry>
+      <entry id="3041" string="Joblist">Lista de trabalho</entry>
+      <entry id="3042" string="Other">Outro</entry>
+      <entry id="3043" string="Output file name">Nome de saída do ficheiro</entry>
+      <entry id="3044" string="verifying">verificando</entry>
+      <entry id="3045" string="Open">Abrir</entry>
+      <entry id="3046" string="CD drive">Drive CD</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Codificando ficheiro</entry>
+        <entry id="3051" string="none">nenhum</entry>
+        <entry id="3052" string="Skip current file">Pular</entry>
+      </section>
+
+      <section name="Decoder">
+        <entry id="3060" string="Active decoder">Descodificador ativo</entry>
+        <entry id="3061" string="none">desconhecido</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">Filtros selecionados</entry>
+	<entry id="3071" string="none"/>
+	<entry id="3072" string="disabled"/>
+	<entry id="3073" string="Configure signal processing">Configurar processamento de sinal</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Codificador selecionado</entry>
+	<entry id="3081" string="Configure selected encoder">Configurar codificador selecionado</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Pasta</entry>
@@ -574,16 +592,6 @@
       <entry id="6101" string="There are no updates available at the moment!">Não há atualizações disponíveis no momento!</entry>
       <entry id="6102" string="Check for updates at startup">Verificar atualizações na inicialização</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">Ao iniciar, o %1 pode verificar automaticamente&#10;se há alguma atualização disponível.&#10;&#10;Deseja que o %1 verifique as atualizaçãoes&#10;automaticamente ao iniciar?</entry>
-    </section>
-
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">O %1 está disponível em %2 idiomas. Se o seu&#10;não estiver disponível, poderá fazer a tradução&#10;facilmente, usando o programa 'smooth Translator'.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">O %1 suporta os codificadores LAME, Ogg Vorbis, FAAC&#10;e Opus. Um codificador para o formato VQF está disponível em %1 no sítio: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">O %1 pode usar os plug-ins do Winamp 2 para ler outros&#10;formatos de ficheiros. Copie os ficheiros in_*.dll para a pasta&#10;%1/plugins para permitir o %1 ler esses formatos.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Com o %1 poderá enviar ao freedb dados de CD&#10;que contenham caracteres Unicode. Se tiver CDs de&#10;artistas ou nomes de músicas com caracteres não-latinos,&#10;pode enviar os dados corretamente com o %1.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Para corrigir erros de leitura do CD ocorridos durante a extração pode&#10;ativar a correção Jitter na aba 'Ripper' no diálogo de configuração.&#10;Se mesmo assim não funcionar, tente usar um dos modos&#10;'paranóia'.</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Tem alguma sugestão para melhorar o %1?&#10;&#10;Envie suas idéias por meio do tracker em %1's %2&#10;na página do projeto %3&#10;ou envie um email para %4.</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Gostou do %1? O %1 é gratuito, mas pode ajudar&#10;no seu desenvolvimento fazendo uma doação para o projeto&#10;%1. Qualquer valor pode ser enviado através do Paypal&#10;para %2.&#10;Para maiores detalhes, veja %3.</entry>
     </section>
 
     <section name="Messages">

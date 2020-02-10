@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Ĝeneralaj agordoj</entry>
-	<entry id="1301" string="Configure selected encoder">Agordi elektitan kodilon</entry>
-	<entry id="1302" string="Active CD-ROM drive">Aktiva KD-ROM-diskligilo</entry>
-	<entry id="1303" string="Active configuration"/>
-	<entry id="1304" string="Default configuration"/>
+	<entry id="1301" string="Configure signal processing"/>
+	<entry id="1302" string="Configure selected encoder">Agordi elektitan kodilon</entry>
+	<entry id="1303" string="Active CD-ROM drive">Aktiva KD-ROM-diskligilo</entry>
+	<entry id="1304" string="Active configuration"/>
+	<entry id="1305" string="Default configuration"/>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing"/>
 	<entry id="1401" string="Enable processing during playback"/>
-	<entry id="1402" string="Configure signal processing"/>
-	<entry id="1403" string="Selected signal processors"/>
+	<entry id="1402" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
@@ -145,67 +145,85 @@
       <entry id="2004" string="Query CDDB database">Demandi CDDB-datumbankon</entry>
       <entry id="2005" string="Submit CDDB data">Sendi CDDB-datumon</entry>
       <entry id="2006" string="Configure general settings">Agordi ĝeneralajn agordojn</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Agordi la elektan kodilon</entry>
-      <entry id="2008" string="Start the encoding process">Starti la kodadon</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)"/>
-      <entry id="2010" string="Pause/resume encoding">Paŭzigi/daŭrigi la kodadon</entry>
-      <entry id="2011" string="Stop encoding">Stopi la kodadon</entry>
+      <entry id="2007" string="Configure signal processing"/>
+      <entry id="2008" string="Configure the selected audio encoder">Agordi la elektan kodilon</entry>
+      <entry id="2009" string="Start the encoding process">Starti la kodadon</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)"/>
+      <entry id="2011" string="Pause/resume encoding">Paŭzigi/daŭrigi la kodadon</entry>
+      <entry id="2012" string="Stop encoding">Stopi la kodadon</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Kodata dosiero</entry>
-      <entry id="3001" string="Time left">Restata tempo</entry>
-      <entry id="3002" string="Selected encoder">Elektita kodilo</entry>
-      <entry id="3003" string="File progress">Progreso</entry>
-      <entry id="3004" string="Output folder">Dosierujo</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 Dosiero(j) farenda(j)</entry>
-      <entry id="3006" string="none">neniu</entry>
-      <entry id="3007" string="Show title info">Montri titolinformon</entry>
-      <entry id="3008" string="Play">Legi</entry>
-      <entry id="3009" string="Stop">Halti</entry>
-      <entry id="3010" string="Select all">Elekti ĉiujn</entry>
-      <entry id="3011" string="Select none">Elekti neniun</entry>
-      <entry id="3012" string="Toggle selection">Inverti elektaĵon</entry>
-      <entry id="3013" string="ripping/decoding">Ripi/malkodi</entry>
-      <entry id="3014" string="encoding">Kodi</entry>
-      <entry id="3015" string="Create playlist">Krei legliston</entry>
-      <entry id="3016" string="Create cue sheet">Krei replikfolion</entry>
-      <entry id="3017" string="Select">Elekti ujon</entry>
-      <entry id="3018" string="Skip">Transsalti</entry>
-      <entry id="3019" string="Encode to a single file">Kodi al solaj dosieroj</entry>
-      <entry id="3020" string="Remove">Forigi</entry>
-      <entry id="3021" string="Clear joblist">Ĉiuj forigi</entry>
-      <entry id="3022" string="Use for all selected tracks">Uzi por ĉiuj elektitaj trakoj</entry>
-      <entry id="3023" string="Interpret string as">Interpreti tekston kiel</entry>
-      <entry id="3024" string="selected tracks">elektitaj trakoj</entry>
-      <entry id="3025" string="Adjust upper/lower case">Ĝustigi grandan/etan skribaĵon</entry>
-      <entry id="3026" string="all words upper case">skribi ĉiuj vortoj grandaj</entry>
-      <entry id="3027" string="long words upper case">grandskribi longajn vortojn</entry>
-      <entry id="3028" string="first letter upper case">grandskribi la unuan literon</entry>
-      <entry id="3029" string="all lower case">etskribi ĉion</entry>
-      <entry id="3030" string="all upper case">grandskribi ĉion</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Elektu dosierujon por la kodita(j) dosiero(j)</entry>
-      <entry id="3032" string="Sampling rate">Sampligado-kvoto</entry>
-      <entry id="3033" string="Sample resolution">Samplo-distingivo</entry>
-      <entry id="3034" string="Number of samples">Nombro da samploj</entry>
-      <entry id="3035" string="Channels">Aŭdioŝaneloj</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Daŭro</entry>
-      <entry id="3039" string="File">Dosiero</entry>
-      <entry id="3040" string="Size">Grandeco</entry>
-      <entry id="3041" string="Bitrate">Bitkvanto</entry>
-      <entry id="3042" string="Audio Files">Aŭdiodosieroj</entry>
-      <entry id="3043" string="All Files">Ĉiuj dosieroj</entry>
-      <entry id="3044" string="Playlist Files">Leglisto-dosieroj</entry>
-      <entry id="3045" string="Active decoder"/>
-      <entry id="3046" string="Joblist"/>
-      <entry id="3047" string="unknown"/>
-      <entry id="3048" string="Other"/>
-      <entry id="3049" string="Output file name"/>
-      <entry id="3050" string="verifying"/>
-      <entry id="3051" string="Open"/>
-      <entry id="3052" string="CD drive"/>
+      <entry id="3000" string="Time left">Restata tempo</entry>
+      <entry id="3001" string="File progress">Progreso</entry>
+      <entry id="3002" string="Output folder">Dosierujo</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 Dosiero(j) farenda(j)</entry>
+      <entry id="3004" string="Show title info">Montri titolinformon</entry>
+      <entry id="3005" string="Play">Legi</entry>
+      <entry id="3006" string="Stop">Halti</entry>
+      <entry id="3007" string="Select all">Elekti ĉiujn</entry>
+      <entry id="3008" string="Select none">Elekti neniun</entry>
+      <entry id="3009" string="Toggle selection">Inverti elektaĵon</entry>
+      <entry id="3010" string="ripping/decoding">Ripi/malkodi</entry>
+      <entry id="3011" string="encoding">Kodi</entry>
+      <entry id="3012" string="Create playlist">Krei legliston</entry>
+      <entry id="3013" string="Create cue sheet">Krei replikfolion</entry>
+      <entry id="3014" string="Select">Elekti ujon</entry>
+      <entry id="3015" string="Encode to a single file">Kodi al solaj dosieroj</entry>
+      <entry id="3016" string="Remove">Forigi</entry>
+      <entry id="3017" string="Clear joblist">Ĉiuj forigi</entry>
+      <entry id="3018" string="Use for all selected tracks">Uzi por ĉiuj elektitaj trakoj</entry>
+      <entry id="3019" string="Interpret string as">Interpreti tekston kiel</entry>
+      <entry id="3020" string="selected tracks">elektitaj trakoj</entry>
+      <entry id="3021" string="Adjust upper/lower case">Ĝustigi grandan/etan skribaĵon</entry>
+      <entry id="3022" string="all words upper case">skribi ĉiuj vortoj grandaj</entry>
+      <entry id="3023" string="long words upper case">grandskribi longajn vortojn</entry>
+      <entry id="3024" string="first letter upper case">grandskribi la unuan literon</entry>
+      <entry id="3025" string="all lower case">etskribi ĉion</entry>
+      <entry id="3026" string="all upper case">grandskribi ĉion</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Elektu dosierujon por la kodita(j) dosiero(j)</entry>
+      <entry id="3028" string="Sampling rate">Sampligado-kvoto</entry>
+      <entry id="3029" string="Sample resolution">Samplo-distingivo</entry>
+      <entry id="3030" string="Number of samples">Nombro da samploj</entry>
+      <entry id="3031" string="Channels">Aŭdioŝaneloj</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Daŭro</entry>
+      <entry id="3035" string="File">Dosiero</entry>
+      <entry id="3036" string="Size">Grandeco</entry>
+      <entry id="3037" string="Bitrate">Bitkvanto</entry>
+      <entry id="3038" string="Audio Files">Aŭdiodosieroj</entry>
+      <entry id="3039" string="All Files">Ĉiuj dosieroj</entry>
+      <entry id="3040" string="Playlist Files">Leglisto-dosieroj</entry>
+      <entry id="3041" string="Joblist"/>
+      <entry id="3042" string="Other"/>
+      <entry id="3043" string="Output file name"/>
+      <entry id="3044" string="verifying"/>
+      <entry id="3045" string="Open"/>
+      <entry id="3046" string="CD drive"/>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Kodata dosiero</entry>
+        <entry id="3051" string="none">neniu</entry>
+        <entry id="3052" string="Skip current file">Transsalti</entry>
+      </section>
+
+      <section name="Decoder">
+	<entry id="3060" string="Active decoder"/>
+	<entry id="3061" string="none"/>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters"/>
+	<entry id="3071" string="none"/>
+	<entry id="3072" string="disabled"/>
+	<entry id="3073" string="Configure signal processing"/>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Elektita kodilo</entry>
+	<entry id="3081" string="Configure selected encoder">Agordi elektitan kodilon</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Dosierujo</entry>
@@ -574,16 +592,6 @@
       <entry id="6101" string="There are no updates available at the moment!">Nuntempe ne estas novaj aktualigaĵoj haveblaj!</entry>
       <entry id="6102" string="Check for updates at startup">Kontrolu por aktualigaĵoj dum la startigo</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 povas okazigi dum la startigo aŭtomatan&#10;retserĉadon al program-aktualigo.&#10;&#10;Ĉu vi volas, ke %1 serĉas al aktualigoj dum la startigo?</entry>
-    </section>
-
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 estas havebla en %2 lingvojn. Se via lingvo ne&#10;estas havebla, vi povas facile traduki ĝin per la&#10;'smooth Translator'-programo.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 venas kun la LAME, Ogg Vorbis, FAAC, FLAC kaj&#10;Opus kodiloj. Unu kodilo por la VQF formato estas havebla ĉe&#10;la retpaĝo de %1: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 povas uzi la Winamp 2 eniga kromaĵoj por legi pli da&#10;dosierformatoj. Kopii la in_*.dll dosierojn en la %1/plugins-&#10;dosierujo por ebligi %1-on legi tiujn formatojn.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Kun %1 vi povas prilabori free-KD-datumbazskribaĵojn&#10;kiujn enhavas Unikod-aj literoj. Se vi havas KDjn kun ne-latinaj&#10;artistoj aŭ nomoj, vi povas kun %1 skribi (kaj sendi)&#10;korektajn freedb-skribaĵojn.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Por korekti legerarojn dum la ripado vi povas aktivigi la&#10;Jiter-korektadon ĉe la Ripper-klapeto de la agordilo de %1.&#10;Se tiu ne helpas, provu uzi unu el la paranoia-moduso.</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Ĉu vi havas sugestojn por plibonigi %1?&#10;&#10;Vi povas skribi viajn ideojn ĉe la %2-paĝo&#10;de %1 - %3&#10;aŭ sendu retmesaĝon al %4.</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Ĉu vi ŝatas %1? %1 estas havebla senpaga, sed vi&#10;povas helpi la %1-projekto per donaco. Vi povas sendi&#10;monon per PayPal al %2.&#10;Vizitu %3 por pli da informoj.</entry>
     </section>
 
     <section name="Messages">

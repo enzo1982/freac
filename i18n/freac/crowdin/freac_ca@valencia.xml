@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Configuració general</entry>
-	<entry id="1301" string="Configure selected encoder">Configurar compressor seleccionat</entry>
-	<entry id="1302" string="Active CD-ROM drive">Unitat CD-ROM activa</entry>
-	<entry id="1303" string="Active configuration"/>
-	<entry id="1304" string="Default configuration"/>
+	<entry id="1301" string="Configure signal processing"/>
+	<entry id="1302" string="Configure selected encoder">Configurar compressor seleccionat</entry>
+	<entry id="1303" string="Active CD-ROM drive">Unitat CD-ROM activa</entry>
+	<entry id="1304" string="Active configuration"/>
+	<entry id="1305" string="Default configuration"/>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing"/>
 	<entry id="1401" string="Enable processing during playback"/>
-	<entry id="1402" string="Configure signal processing"/>
-	<entry id="1403" string="Selected signal processors"/>
+	<entry id="1402" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
@@ -145,67 +145,85 @@
       <entry id="2004" string="Query CDDB database">Consultar base de senyes CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Enviar dades CDDB</entry>
       <entry id="2006" string="Configure general settings">Configuració general</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Configurar el compressor triat</entry>
-      <entry id="2008" string="Start the encoding process">Començar el procés de compressió</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)"/>
-      <entry id="2010" string="Pause/resume encoding">Interrompre/continuar la compressió</entry>
-      <entry id="2011" string="Stop encoding">Parar compressió</entry>
+      <entry id="2007" string="Configure signal processing"/>
+      <entry id="2008" string="Configure the selected audio encoder">Configurar el compressor triat</entry>
+      <entry id="2009" string="Start the encoding process">Començar el procés de compressió</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)"/>
+      <entry id="2011" string="Pause/resume encoding">Interrompre/continuar la compressió</entry>
+      <entry id="2012" string="Stop encoding">Parar compressió</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Comprimint</entry>
-      <entry id="3001" string="Time left">Temps restant</entry>
-      <entry id="3002" string="Selected encoder">Compressor triat</entry>
-      <entry id="3003" string="File progress">Progrés</entry>
-      <entry id="3004" string="Output folder">Carpeta d'eixida</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 arxiu(s) en llista</entry>
-      <entry id="3006" string="none">Cap</entry>
-      <entry id="3007" string="Show title info">Mostrar informació de l'arxiu</entry>
-      <entry id="3008" string="Play">Reproduir</entry>
-      <entry id="3009" string="Stop">Detindre</entry>
-      <entry id="3010" string="Select all">Seleccionar tot</entry>
-      <entry id="3011" string="Select none">Seleccionar res</entry>
-      <entry id="3012" string="Toggle selection">Invertir selecció</entry>
-      <entry id="3013" string="ripping/decoding">Extraient/descodificant</entry>
-      <entry id="3014" string="encoding">Codificant</entry>
-      <entry id="3015" string="Create playlist">Crear llista de reproducció</entry>
-      <entry id="3016" string="Create cue sheet">Crear cue sheet</entry>
-      <entry id="3017" string="Select">Buscar</entry>
-      <entry id="3018" string="Skip">Ometre</entry>
-      <entry id="3019" string="Encode to a single file">Unir en un sol arxiu</entry>
-      <entry id="3020" string="Remove">Eliminar</entry>
-      <entry id="3021" string="Clear joblist">Eliminar llista</entry>
-      <entry id="3022" string="Use for all selected tracks">Usar per a totes les pistes seleccionades</entry>
-      <entry id="3023" string="Interpret string as">Interpretar cadena com:</entry>
-      <entry id="3024" string="selected tracks">Pistes seleccionades</entry>
-      <entry id="3025" string="Adjust upper/lower case">Ajustar majúscules i minúscules</entry>
-      <entry id="3026" string="all words upper case">Totes les paraules en majúscules</entry>
-      <entry id="3027" string="long words upper case">Paraules llargues en majúscules</entry>
-      <entry id="3028" string="first letter upper case">Primera lletra en majúscules</entry>
-      <entry id="3029" string="all lower case">Tot en minúscules</entry>
-      <entry id="3030" string="all upper case">Tot en majúscules</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Seleccione la carpeta per als arxius comprimits</entry>
-      <entry id="3032" string="Sampling rate">Taxa de mostratge</entry>
-      <entry id="3033" string="Sample resolution">Resolució de la mostra</entry>
-      <entry id="3034" string="Number of samples">Nombre de mostres</entry>
-      <entry id="3035" string="Channels">Canals</entry>
-      <entry id="3036" string="Mono">Mona</entry>
-      <entry id="3037" string="Stereo">Estèreo</entry>
-      <entry id="3038" string="Length">Duració</entry>
-      <entry id="3039" string="File">Arxiu</entry>
-      <entry id="3040" string="Size">Grandària</entry>
-      <entry id="3041" string="Bitrate">Bitrate</entry>
-      <entry id="3042" string="Audio Files">Arxius d'àudio</entry>
-      <entry id="3043" string="All Files">Tots els arxius</entry>
-      <entry id="3044" string="Playlist Files">Arxius de llista de reproducció</entry>
-      <entry id="3045" string="Active decoder"/>
-      <entry id="3046" string="Joblist"/>
-      <entry id="3047" string="unknown"/>
-      <entry id="3048" string="Other"/>
-      <entry id="3049" string="Output file name"/>
-      <entry id="3050" string="verifying"/>
-      <entry id="3051" string="Open"/>
-      <entry id="3052" string="CD drive"/>
+      <entry id="3000" string="Time left">Temps restant</entry>
+      <entry id="3001" string="File progress">Progrés</entry>
+      <entry id="3002" string="Output folder">Carpeta d'eixida</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 arxiu(s) en llista</entry>
+      <entry id="3004" string="Show title info">Mostrar informació de l'arxiu</entry>
+      <entry id="3005" string="Play">Reproduir</entry>
+      <entry id="3006" string="Stop">Detindre</entry>
+      <entry id="3007" string="Select all">Seleccionar tot</entry>
+      <entry id="3008" string="Select none">Seleccionar res</entry>
+      <entry id="3009" string="Toggle selection">Invertir selecció</entry>
+      <entry id="3010" string="ripping/decoding">Extraient/descodificant</entry>
+      <entry id="3011" string="encoding">Codificant</entry>
+      <entry id="3012" string="Create playlist">Crear llista de reproducció</entry>
+      <entry id="3013" string="Create cue sheet">Crear cue sheet</entry>
+      <entry id="3014" string="Select">Buscar</entry>
+      <entry id="3015" string="Encode to a single file">Unir en un sol arxiu</entry>
+      <entry id="3016" string="Remove">Eliminar</entry>
+      <entry id="3017" string="Clear joblist">Eliminar llista</entry>
+      <entry id="3018" string="Use for all selected tracks">Usar per a totes les pistes seleccionades</entry>
+      <entry id="3019" string="Interpret string as">Interpretar cadena com:</entry>
+      <entry id="3020" string="selected tracks">Pistes seleccionades</entry>
+      <entry id="3021" string="Adjust upper/lower case">Ajustar majúscules i minúscules</entry>
+      <entry id="3022" string="all words upper case">Totes les paraules en majúscules</entry>
+      <entry id="3023" string="long words upper case">Paraules llargues en majúscules</entry>
+      <entry id="3024" string="first letter upper case">Primera lletra en majúscules</entry>
+      <entry id="3025" string="all lower case">Tot en minúscules</entry>
+      <entry id="3026" string="all upper case">Tot en majúscules</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Seleccione la carpeta per als arxius comprimits</entry>
+      <entry id="3028" string="Sampling rate">Taxa de mostratge</entry>
+      <entry id="3029" string="Sample resolution">Resolució de la mostra</entry>
+      <entry id="3030" string="Number of samples">Nombre de mostres</entry>
+      <entry id="3031" string="Channels">Canals</entry>
+      <entry id="3032" string="Mono">Mona</entry>
+      <entry id="3033" string="Stereo">Estèreo</entry>
+      <entry id="3034" string="Length">Duració</entry>
+      <entry id="3035" string="File">Arxiu</entry>
+      <entry id="3036" string="Size">Grandària</entry>
+      <entry id="3037" string="Bitrate">Bitrate</entry>
+      <entry id="3038" string="Audio Files">Arxius d'àudio</entry>
+      <entry id="3039" string="All Files">Tots els arxius</entry>
+      <entry id="3040" string="Playlist Files">Arxius de llista de reproducció</entry>
+      <entry id="3041" string="Joblist"/>
+      <entry id="3042" string="Other"/>
+      <entry id="3043" string="Output file name"/>
+      <entry id="3044" string="verifying"/>
+      <entry id="3045" string="Open"/>
+      <entry id="3046" string="CD drive"/>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Comprimint</entry>
+        <entry id="3051" string="none">Cap</entry>
+        <entry id="3052" string="Skip current file">Ometre</entry>
+      </section>
+
+      <section name="Decoder">
+	<entry id="3060" string="Active decoder"/>
+	<entry id="3061" string="none"/>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters"/>
+	<entry id="3071" string="none"/>
+	<entry id="3072" string="disabled"/>
+	<entry id="3073" string="Configure signal processing"/>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Compressor triat</entry>
+	<entry id="3081" string="Configure selected encoder">Configurar compressor seleccionat</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Carpeta</entry>
@@ -574,16 +592,6 @@
       <entry id="6101" string="There are no updates available at the moment!">No hi ha actualitzacions disponibles de moment!</entry>
       <entry id="6102" string="Check for updates at startup">Buscar actualitzacions a l'inici</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 pot buscar actualitzacions automàticament&#10;cada vegada que s'inicia.&#10;&#10;Desitja que %1 busque actualitzacions a l'inici?</entry>
-    </section>
-
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 s'ha traduït ja a %2 idiomes. Si no ho està&#10;en el seu, pot traduir fàcilment&#10;%1 utilitzant l'aplicació 'smooth Translator'.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 inclou suport per a codificar LLEPA, Ogg Vorbis, FAAC,&#10;FLAC i Opus. Un codificador per al format VQF està&#10;disponible en el lloc de %1: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 pot usar els plugins d'entrada de Winamp 2 per a&#10;manejar més formats. Copie els arxius in_*.dll a la carpeta&#10;1\plugins perquè %1 Llija eixos formats.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Amb %1 pot enviar registres de CD freedb que continguen&#10;caràcters unicode. D'esta manera, si posseïx CDs amb noms&#10;d'artistes o títols que no estiguen en alfabetització llatina, pot&#10;enviar les dades correctes a freedb amb %1.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Per a corregir els errors de lectura durant el procés&#10;d'extracció, pot activar la funció Correcció Jitter en la&#10;fitxa Extractor de la configuració. Si això no ajuda, intente utilitzar&#10;algun dels modes paranoia.</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Té algun suggeriment per a millorar %1?&#10;&#10;Pot enviar les seues idees a través del tracker en el lloc de %1&#10;ubicat en %2 - %3&#10;o enviar un correu a %4.</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Li agrada %1? %1 és gratuït,&#10;però pot ajudar al seu desenrotllament&#10;fent una donació. Pot enviar diners a&#10;%2 a través de PayPal.&#10;Veja %3 per a més detalls.</entry>
     </section>
 
     <section name="Messages">

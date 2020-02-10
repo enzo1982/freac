@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Configuración general</entry>
-	<entry id="1301" string="Configure selected encoder">Configuración del codificador actual</entry>
-	<entry id="1302" string="Active CD-ROM drive">Unidad de CD-ROM activa</entry>
-	<entry id="1303" string="Active configuration">Configuración activa</entry>
-	<entry id="1304" string="Default configuration">Configuración predeterminada</entry>
+	<entry id="1301" string="Configure signal processing"/>
+	<entry id="1302" string="Configure selected encoder">Configuración del codificador actual</entry>
+	<entry id="1303" string="Active CD-ROM drive">Unidad de CD-ROM activa</entry>
+	<entry id="1304" string="Active configuration">Configuración activa</entry>
+	<entry id="1305" string="Default configuration">Configuración predeterminada</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing"/>
 	<entry id="1401" string="Enable processing during playback"/>
-	<entry id="1402" string="Configure signal processing"/>
-	<entry id="1403" string="Selected signal processors"/>
+	<entry id="1402" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
@@ -145,67 +145,85 @@
       <entry id="2004" string="Query CDDB database">Consultar base de datos CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Enviar datos CDDB</entry>
       <entry id="2006" string="Configure general settings">Configurar las opciones generales</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Configurar el codificador de audio seleccionado</entry>
-      <entry id="2008" string="Start the encoding process">Comenzar el proceso de codificación</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)"/>
-      <entry id="2010" string="Pause/resume encoding">Pausar/Resumir codificación</entry>
-      <entry id="2011" string="Stop encoding">Detener codificación</entry>
+      <entry id="2007" string="Configure signal processing"/>
+      <entry id="2008" string="Configure the selected audio encoder">Configurar el codificador de audio seleccionado</entry>
+      <entry id="2009" string="Start the encoding process">Comenzar el proceso de codificación</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)"/>
+      <entry id="2011" string="Pause/resume encoding">Pausar/Resumir codificación</entry>
+      <entry id="2012" string="Stop encoding">Detener codificación</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Codificando archivo</entry>
-      <entry id="3001" string="Time left">Tiempo restante</entry>
-      <entry id="3002" string="Selected encoder">Codificador actual</entry>
-      <entry id="3003" string="File progress">Progreso de archivo</entry>
-      <entry id="3004" string="Output folder">Carpeta de destino</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 archivo(s) en la lista de trabajo</entry>
-      <entry id="3006" string="none">ninguno</entry>
-      <entry id="3007" string="Show title info">Mostrar información de título</entry>
-      <entry id="3008" string="Play">Reproducir</entry>
-      <entry id="3009" string="Stop">Detener</entry>
-      <entry id="3010" string="Select all">Seleccionar todo</entry>
-      <entry id="3011" string="Select none">Deseleccionar todo</entry>
-      <entry id="3012" string="Toggle selection">Invertir selección</entry>
-      <entry id="3013" string="ripping/decoding">extrayendo/decodificando</entry>
-      <entry id="3014" string="encoding">codificando</entry>
-      <entry id="3015" string="Create playlist">Crear lista de reproducción</entry>
-      <entry id="3016" string="Create cue sheet">Crear lista de distribución de pistas</entry>
-      <entry id="3017" string="Select">Examinar</entry>
-      <entry id="3018" string="Skip">Saltear</entry>
-      <entry id="3019" string="Encode to a single file">Codificar a un solo archivo</entry>
-      <entry id="3020" string="Remove">Quitar</entry>
-      <entry id="3021" string="Clear joblist">Limpiar lista de trabajo</entry>
-      <entry id="3022" string="Use for all selected tracks">Utilizar para todas las pistas seleccionadas</entry>
-      <entry id="3023" string="Interpret string as">Interpretar cadena como</entry>
-      <entry id="3024" string="selected tracks">pistas seleccionadas</entry>
-      <entry id="3025" string="Adjust upper/lower case">Ajustar mayúsculas/minúsculas</entry>
-      <entry id="3026" string="all words upper case">todas las palabras en mayúsculas</entry>
-      <entry id="3027" string="long words upper case">todas las palabras largas en mayúsculas</entry>
-      <entry id="3028" string="first letter upper case">primera letra en maýuculas</entry>
-      <entry id="3029" string="all lower case">todo en minúsculas</entry>
-      <entry id="3030" string="all upper case">todo en mayúsculas</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Seleccione la carpeta donde los archivos codificados serán guardados</entry>
-      <entry id="3032" string="Sampling rate">Velocidad de muestreo</entry>
-      <entry id="3033" string="Sample resolution">Resolución de la muestra</entry>
-      <entry id="3034" string="Number of samples">Número de muestras</entry>
-      <entry id="3035" string="Channels">Canales</entry>
-      <entry id="3036" string="Mono">Mono</entry>
-      <entry id="3037" string="Stereo">Estéreo</entry>
-      <entry id="3038" string="Length">Duración</entry>
-      <entry id="3039" string="File">Archivo</entry>
-      <entry id="3040" string="Size">Tamaño</entry>
-      <entry id="3041" string="Bitrate">Tasa de bits</entry>
-      <entry id="3042" string="Audio Files">Archivos de audio</entry>
-      <entry id="3043" string="All Files">Todos los archivos</entry>
-      <entry id="3044" string="Playlist Files">Archivos de lista de reproducción</entry>
-      <entry id="3045" string="Active decoder">Decodificador activo</entry>
-      <entry id="3046" string="Joblist">Lista de trabajos</entry>
-      <entry id="3047" string="unknown"/>
-      <entry id="3048" string="Other"/>
-      <entry id="3049" string="Output file name"/>
-      <entry id="3050" string="verifying"/>
-      <entry id="3051" string="Open"/>
-      <entry id="3052" string="CD drive"/>
+      <entry id="3000" string="Time left">Tiempo restante</entry>
+      <entry id="3001" string="File progress">Progreso de archivo</entry>
+      <entry id="3002" string="Output folder">Carpeta de destino</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 archivo(s) en la lista de trabajo</entry>
+      <entry id="3004" string="Show title info">Mostrar información de título</entry>
+      <entry id="3005" string="Play">Reproducir</entry>
+      <entry id="3006" string="Stop">Detener</entry>
+      <entry id="3007" string="Select all">Seleccionar todo</entry>
+      <entry id="3008" string="Select none">Deseleccionar todo</entry>
+      <entry id="3009" string="Toggle selection">Invertir selección</entry>
+      <entry id="3010" string="ripping/decoding">extrayendo/decodificando</entry>
+      <entry id="3011" string="encoding">codificando</entry>
+      <entry id="3012" string="Create playlist">Crear lista de reproducción</entry>
+      <entry id="3013" string="Create cue sheet">Crear lista de distribución de pistas</entry>
+      <entry id="3014" string="Select">Examinar</entry>
+      <entry id="3015" string="Encode to a single file">Codificar a un solo archivo</entry>
+      <entry id="3016" string="Remove">Quitar</entry>
+      <entry id="3017" string="Clear joblist">Limpiar lista de trabajo</entry>
+      <entry id="3018" string="Use for all selected tracks">Utilizar para todas las pistas seleccionadas</entry>
+      <entry id="3019" string="Interpret string as">Interpretar cadena como</entry>
+      <entry id="3020" string="selected tracks">pistas seleccionadas</entry>
+      <entry id="3021" string="Adjust upper/lower case">Ajustar mayúsculas/minúsculas</entry>
+      <entry id="3022" string="all words upper case">todas las palabras en mayúsculas</entry>
+      <entry id="3023" string="long words upper case">todas las palabras largas en mayúsculas</entry>
+      <entry id="3024" string="first letter upper case">primera letra en maýuculas</entry>
+      <entry id="3025" string="all lower case">todo en minúsculas</entry>
+      <entry id="3026" string="all upper case">todo en mayúsculas</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Seleccione la carpeta donde los archivos codificados serán guardados</entry>
+      <entry id="3028" string="Sampling rate">Velocidad de muestreo</entry>
+      <entry id="3029" string="Sample resolution">Resolución de la muestra</entry>
+      <entry id="3030" string="Number of samples">Número de muestras</entry>
+      <entry id="3031" string="Channels">Canales</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Estéreo</entry>
+      <entry id="3034" string="Length">Duración</entry>
+      <entry id="3035" string="File">Archivo</entry>
+      <entry id="3036" string="Size">Tamaño</entry>
+      <entry id="3037" string="Bitrate">Tasa de bits</entry>
+      <entry id="3038" string="Audio Files">Archivos de audio</entry>
+      <entry id="3039" string="All Files">Todos los archivos</entry>
+      <entry id="3040" string="Playlist Files">Archivos de lista de reproducción</entry>
+      <entry id="3041" string="Joblist">Lista de trabajos</entry>
+      <entry id="3042" string="Other"/>
+      <entry id="3043" string="Output file name"/>
+      <entry id="3044" string="verifying"/>
+      <entry id="3045" string="Open"/>
+      <entry id="3046" string="CD drive"/>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Codificando archivo</entry>
+        <entry id="3051" string="none">ninguno</entry>
+        <entry id="3052" string="Skip current file">Saltear</entry>
+      </section>
+
+      <section name="Decoder">
+        <entry id="3060" string="Active decoder">Decodificador activo</entry>
+	<entry id="3061" string="none"/>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters"/>
+	<entry id="3071" string="none"/>
+	<entry id="3072" string="disabled"/>
+	<entry id="3073" string="Configure signal processing"/>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Codificador actual</entry>
+	<entry id="3081" string="Configure selected encoder">Configuración del codificador actual</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Carpeta</entry>
@@ -574,16 +592,6 @@
       <entry id="6101" string="There are no updates available at the moment!">No hay actualizaciones disponibles por el momento</entry>
       <entry id="6102" string="Check for updates at startup">Comprobar por actualizaciones al iniciar</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 puede verificar automáticamente si se encuentran&#10;actualizaciones disponibles en línea al inicio del programa.&#10;&#10;¿Desea verificar por actulizaciones al inicio del programa?</entry>
-    </section>
-
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 se encuentra disponible en %2 lenguajes. Si su&#10;idioma no se encuentra disponible, puede traducir fácilmente&#10;%1 utilizando la aplicación 'smooth Translator'.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 tiene soporte para codificar LAME, Ogg Vorbis,&#10;FAAC y Opus. Un codificador para el formato VQF se encuentra&#10;disponible es el sitio de %1: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 puede utilizar los complementos de entrada de Winamp 2&#10;para soportar más formatos. Copie los archivos in_*.dll a la carpeta&#10;%1\plugins para permitir que %1 lea esos formatos.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">Con %1 puede enviar entradas de CD freedb conteniendo&#10;caracteres Unicode. De esta manera, si posee CDs con nombres&#10;de artisas o titulos no en Latin, puede enviar correctamente las&#10;entradas a freedb con %1.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Para corregir los errores de lectura mientras extrae, puede activar&#10;la función Correción de lectura en la ficha Ripper en la&#10;configuración. Si eso no ayuda, intente utilizar alguno de los&#10;modos paranoia.</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">¿Tiene alguna sugerencia para mejorar %1?&#10;&#10;Puede enviarnos sus ideas a través del tracker en el sitio de %1&#10;ubicado en %2 - %3 o&#10;enviar un email a %4.</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">¿Le gusta %1? %1 se encuentra disponible&#10;gratuitamente, pero puede ayudar al desarrollo del proyecto&#10;%1 haciendo una donación. Puede enviar dinero a&#10;%2 a través de PayPal.&#10;Vea %3 para más detalles.</entry>
     </section>
 
     <section name="Messages">

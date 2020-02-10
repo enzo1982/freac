@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">一般設定</entry>
-	<entry id="1301" string="Configure selected encoder">選択したエンコーダの設定</entry>
-	<entry id="1302" string="Active CD-ROM drive">アクティブな CD-ROM ドライブ</entry>
-	<entry id="1303" string="Active configuration">有効な設定</entry>
-	<entry id="1304" string="Default configuration">デフォルト設定</entry>
+	<entry id="1301" string="Configure signal processing">信号処理を設定する</entry>
+	<entry id="1302" string="Configure selected encoder">選択したエンコーダの設定</entry>
+	<entry id="1303" string="Active CD-ROM drive">アクティブな CD-ROM ドライブ</entry>
+	<entry id="1304" string="Active configuration">有効な設定</entry>
+	<entry id="1305" string="Default configuration">デフォルト設定</entry>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">信号処理を有効にする</entry>
 	<entry id="1401" string="Enable processing during playback">再生中に処理を有効にする</entry>
-	<entry id="1402" string="Configure signal processing">信号処理を設定する</entry>
-	<entry id="1403" string="Selected signal processors">選択された信号処理</entry>
+	<entry id="1402" string="Selected signal processors">選択された信号処理</entry>
       </section>
 
       <section name="Encode">
@@ -145,67 +145,85 @@
       <entry id="2004" string="Query CDDB database">CDDB へ問い合わせ</entry>
       <entry id="2005" string="Submit CDDB data">CDDB にデータを送信</entry>
       <entry id="2006" string="Configure general settings">一般設定</entry>
-      <entry id="2007" string="Configure the selected audio encoder">選択エンコーダの設定</entry>
-      <entry id="2008" string="Start the encoding process">エンコードを開始</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)">エンコードを開始（元のファイルを削除する）</entry>
-      <entry id="2010" string="Pause/resume encoding">エンコードを中断/再開</entry>
-      <entry id="2011" string="Stop encoding">エンコード停止</entry>
+      <entry id="2007" string="Configure signal processing">信号処理を設定する</entry>
+      <entry id="2008" string="Configure the selected audio encoder">選択エンコーダの設定</entry>
+      <entry id="2009" string="Start the encoding process">エンコードを開始</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">エンコードを開始（元のファイルを削除する）</entry>
+      <entry id="2011" string="Pause/resume encoding">エンコードを中断/再開</entry>
+      <entry id="2012" string="Stop encoding">エンコード停止</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">エンコード ファイル</entry>
-      <entry id="3001" string="Time left">残り時間</entry>
-      <entry id="3002" string="Selected encoder">選択エンコーダ</entry>
-      <entry id="3003" string="File progress">処理状況</entry>
-      <entry id="3004" string="Output folder">出力先</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 個のファイルがリストにあります</entry>
-      <entry id="3006" string="none">なし</entry>
-      <entry id="3007" string="Show title info">ファイル情報を表示</entry>
-      <entry id="3008" string="Play">再生</entry>
-      <entry id="3009" string="Stop">停止</entry>
-      <entry id="3010" string="Select all">すべて選択</entry>
-      <entry id="3011" string="Select none">すべて選択解除</entry>
-      <entry id="3012" string="Toggle selection">選択の切り替え</entry>
-      <entry id="3013" string="ripping/decoding">リッピング/デコード</entry>
-      <entry id="3014" string="encoding">エンコード</entry>
-      <entry id="3015" string="Create playlist">プレイリスト作成</entry>
-      <entry id="3016" string="Create cue sheet">cue シート作成</entry>
-      <entry id="3017" string="Select">参照</entry>
-      <entry id="3018" string="Skip">スキップ</entry>
-      <entry id="3019" string="Encode to a single file">一つのファイルにエンコード</entry>
-      <entry id="3020" string="Remove">削除</entry>
-      <entry id="3021" string="Clear joblist">リストのクリア</entry>
-      <entry id="3022" string="Use for all selected tracks">すべての選択トラックに適用</entry>
-      <entry id="3023" string="Interpret string as">文字列を次のように解釈します</entry>
-      <entry id="3024" string="selected tracks">選択済みトラック</entry>
-      <entry id="3025" string="Adjust upper/lower case">大/小文字を合わせる</entry>
-      <entry id="3026" string="all words upper case">全単語の先頭を大文字にする</entry>
-      <entry id="3027" string="long words upper case">長い単語の先頭を大文字にする</entry>
-      <entry id="3028" string="first letter upper case">最初の文字を大文字にする</entry>
-      <entry id="3029" string="all lower case">すべて小文字にする</entry>
-      <entry id="3030" string="all upper case">すべて大文字にする</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">出力先フォルダを選択</entry>
-      <entry id="3032" string="Sampling rate">サンプリング レート</entry>
-      <entry id="3033" string="Sample resolution">サンプル ビット数</entry>
-      <entry id="3034" string="Number of samples">サンプル数</entry>
-      <entry id="3035" string="Channels">チャンネル</entry>
-      <entry id="3036" string="Mono">モノラル</entry>
-      <entry id="3037" string="Stereo">ステレオ</entry>
-      <entry id="3038" string="Length">時間</entry>
-      <entry id="3039" string="File">ファイル</entry>
-      <entry id="3040" string="Size">サイズ</entry>
-      <entry id="3041" string="Bitrate">ビットレート</entry>
-      <entry id="3042" string="Audio Files">オーディオ ファイル</entry>
-      <entry id="3043" string="All Files">全てのファイル</entry>
-      <entry id="3044" string="Playlist Files">プレイリスト ファイル</entry>
-      <entry id="3045" string="Active decoder">処理中のデコーダ</entry>
-      <entry id="3046" string="Joblist">ジョブリスト</entry>
-      <entry id="3047" string="unknown">不明</entry>
-      <entry id="3048" string="Other">その他</entry>
-      <entry id="3049" string="Output file name">出力ファイル名</entry>
-      <entry id="3050" string="verifying">ベリファイ中</entry>
-      <entry id="3051" string="Open">開く</entry>
-      <entry id="3052" string="CD drive">CDドライブ</entry>
+      <entry id="3000" string="Time left">残り時間</entry>
+      <entry id="3001" string="File progress">処理状況</entry>
+      <entry id="3002" string="Output folder">出力先</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 個のファイルがリストにあります</entry>
+      <entry id="3004" string="Show title info">ファイル情報を表示</entry>
+      <entry id="3005" string="Play">再生</entry>
+      <entry id="3006" string="Stop">停止</entry>
+      <entry id="3007" string="Select all">すべて選択</entry>
+      <entry id="3008" string="Select none">すべて選択解除</entry>
+      <entry id="3009" string="Toggle selection">選択の切り替え</entry>
+      <entry id="3010" string="ripping/decoding">リッピング/デコード</entry>
+      <entry id="3011" string="encoding">エンコード</entry>
+      <entry id="3012" string="Create playlist">プレイリスト作成</entry>
+      <entry id="3013" string="Create cue sheet">cue シート作成</entry>
+      <entry id="3014" string="Select">参照</entry>
+      <entry id="3015" string="Encode to a single file">一つのファイルにエンコード</entry>
+      <entry id="3016" string="Remove">削除</entry>
+      <entry id="3017" string="Clear joblist">リストのクリア</entry>
+      <entry id="3018" string="Use for all selected tracks">すべての選択トラックに適用</entry>
+      <entry id="3019" string="Interpret string as">文字列を次のように解釈します</entry>
+      <entry id="3020" string="selected tracks">選択済みトラック</entry>
+      <entry id="3021" string="Adjust upper/lower case">大/小文字を合わせる</entry>
+      <entry id="3022" string="all words upper case">全単語の先頭を大文字にする</entry>
+      <entry id="3023" string="long words upper case">長い単語の先頭を大文字にする</entry>
+      <entry id="3024" string="first letter upper case">最初の文字を大文字にする</entry>
+      <entry id="3025" string="all lower case">すべて小文字にする</entry>
+      <entry id="3026" string="all upper case">すべて大文字にする</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">出力先フォルダを選択</entry>
+      <entry id="3028" string="Sampling rate">サンプリング レート</entry>
+      <entry id="3029" string="Sample resolution">サンプル ビット数</entry>
+      <entry id="3030" string="Number of samples">サンプル数</entry>
+      <entry id="3031" string="Channels">チャンネル</entry>
+      <entry id="3032" string="Mono">モノラル</entry>
+      <entry id="3033" string="Stereo">ステレオ</entry>
+      <entry id="3034" string="Length">時間</entry>
+      <entry id="3035" string="File">ファイル</entry>
+      <entry id="3036" string="Size">サイズ</entry>
+      <entry id="3037" string="Bitrate">ビットレート</entry>
+      <entry id="3038" string="Audio Files">オーディオ ファイル</entry>
+      <entry id="3039" string="All Files">全てのファイル</entry>
+      <entry id="3040" string="Playlist Files">プレイリスト ファイル</entry>
+      <entry id="3041" string="Joblist">ジョブリスト</entry>
+      <entry id="3042" string="Other">その他</entry>
+      <entry id="3043" string="Output file name">出力ファイル名</entry>
+      <entry id="3044" string="verifying">ベリファイ中</entry>
+      <entry id="3045" string="Open">開く</entry>
+      <entry id="3046" string="CD drive">CDドライブ</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">エンコード ファイル</entry>
+        <entry id="3051" string="none">なし</entry>
+        <entry id="3052" string="Skip current file">スキップ</entry>
+      </section>
+
+      <section name="Decoder">
+        <entry id="3060" string="Active decoder">処理中のデコーダ</entry>
+        <entry id="3061" string="none">不明</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">選択フィルター</entry>
+	<entry id="3071" string="none"/>
+	<entry id="3072" string="disabled"/>
+	<entry id="3073" string="Configure signal processing">信号処理を設定する</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">選択エンコーダ</entry>
+	<entry id="3081" string="Configure selected encoder">選択したエンコーダの設定</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">フォルダ</entry>
@@ -574,16 +592,6 @@
       <entry id="6101" string="There are no updates available at the moment!">現在利用できるアップデートはありません。</entry>
       <entry id="6102" string="Check for updates at startup">起動時にアップデートを確認</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 は起動時に自動でオンライン更新チェックを&#10;行うことが可能です。&#10;&#10;起動時に更新をチェクしますか？</entry>
-    </section>
-
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 は %2 種類の言語で利用可能です。もしあなたの&#10;使用言語が利用できない場合、'smooth Translator' を&#10;使って簡単に %1 を翻訳する事が出来ます。</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 は LAME、Ogg Vorbis、FAAC、FLAC、及び Opus&#10;エンコーダをサポートしています。&#10;VQF 形式のエンコーダは下記で公開されています。&#10;%1 のウェブサイト: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1 は Winamp2 入力プラグインを使って対応形式を&#10;追加する事が出来ます。%1 で他の形式を読み込める&#10;ようにするには、in_*.dll を %1/plugins にコピー&#10;してください。</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1 で freedb CD データベースに Unicode 文字を含む&#10;データを送信できます。あなたの持っている英文字以外の&#10;アーティスト名やタイトル名の CD データを、%1 で&#10;freedb に送信できます。</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">リッピングの読み込みエラー補正には、設定ダイアログの&#10;Ripper タブの 'ジッター補正有効' をチェックしてください。&#10;それで解決しない場合は、CD 詳細設定モードのいずれかを&#10;試してください。</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">%1 の改善につき意見があれば、%2 にある&#10;%1 のプロジェクトページ(%3)&#10;のトラッカーか、%4 へのメールで&#10;あなたのアイディアを送信する事が出来ます。</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">%1 が気に入りましたか？ これは無料で利用できますが、&#10;%1 プロジェクトに寄付する事で開発を資金援助が出来ます。&#10;あなたは %2 へ PayPal を使って送金できます。&#10;詳細は %3 を参照してください。</entry>
     </section>
 
     <section name="Messages">

@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Általános beállítások</entry>
-	<entry id="1301" string="Configure selected encoder">Választott tömörítö beállítása</entry>
-	<entry id="1302" string="Active CD-ROM drive">Aktív CD-ROM meghajtó</entry>
-	<entry id="1303" string="Active configuration"/>
-	<entry id="1304" string="Default configuration"/>
+	<entry id="1301" string="Configure signal processing"/>
+	<entry id="1302" string="Configure selected encoder">Választott tömörítö beállítása</entry>
+	<entry id="1303" string="Active CD-ROM drive">Aktív CD-ROM meghajtó</entry>
+	<entry id="1304" string="Active configuration"/>
+	<entry id="1305" string="Default configuration"/>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing"/>
 	<entry id="1401" string="Enable processing during playback"/>
-	<entry id="1402" string="Configure signal processing"/>
-	<entry id="1403" string="Selected signal processors"/>
+	<entry id="1402" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
@@ -145,67 +145,85 @@
       <entry id="2004" string="Query CDDB database">CDDB adatbázis lekérdezése</entry>
       <entry id="2005" string="Submit CDDB data">CDDB adatok küldése</entry>
       <entry id="2006" string="Configure general settings">Általános beállítások módosítása</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Kiválasztott tömörítö beállításai</entry>
-      <entry id="2008" string="Start the encoding process">Tömörítés indítása</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)"/>
-      <entry id="2010" string="Pause/resume encoding">Tömörítés szünet/folytatás</entry>
-      <entry id="2011" string="Stop encoding">Tömörítés megszakítása</entry>
+      <entry id="2007" string="Configure signal processing"/>
+      <entry id="2008" string="Configure the selected audio encoder">Kiválasztott tömörítö beállításai</entry>
+      <entry id="2009" string="Start the encoding process">Tömörítés indítása</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)"/>
+      <entry id="2011" string="Pause/resume encoding">Tömörítés szünet/folytatás</entry>
+      <entry id="2012" string="Stop encoding">Tömörítés megszakítása</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Jelenleg tömörítés alatt</entry>
-      <entry id="3001" string="Time left">Hátralévõ idõ</entry>
-      <entry id="3002" string="Selected encoder">Választott tömörítö</entry>
-      <entry id="3003" string="File progress">Folyamat állapot</entry>
-      <entry id="3004" string="Output folder">Cél könyvtár</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 fájl(ok) a listán</entry>
-      <entry id="3006" string="none">nincs</entry>
-      <entry id="3007" string="Show title info">Cím információ kijelzése</entry>
-      <entry id="3008" string="Play">Lejátszás</entry>
-      <entry id="3009" string="Stop">Állj</entry>
-      <entry id="3010" string="Select all">Mindet kijelöli</entry>
-      <entry id="3011" string="Select none">Kijelölés visszavonása</entry>
-      <entry id="3012" string="Toggle selection">Kijelölés megfordítása</entry>
-      <entry id="3013" string="ripping/decoding">másolás/dekódolás</entry>
-      <entry id="3014" string="encoding">tömörítés</entry>
-      <entry id="3015" string="Create playlist">Lejátszási lista készítés</entry>
-      <entry id="3016" string="Create cue sheet">Vágólap készítés</entry>
-      <entry id="3017" string="Select">Keresés</entry>
-      <entry id="3018" string="Skip">Átugrás</entry>
-      <entry id="3019" string="Encode to a single file">Egy fájlba tömörítés</entry>
-      <entry id="3020" string="Remove">Eltávolítás</entry>
-      <entry id="3021" string="Clear joblist">Mindet töröl</entry>
-      <entry id="3022" string="Use for all selected tracks">Használd az összes kiválasztott számhoz</entry>
-      <entry id="3023" string="Interpret string as">Sztring értelmezése mint</entry>
-      <entry id="3024" string="selected tracks">kiválasztott számok</entry>
-      <entry id="3025" string="Adjust upper/lower case">Kis/nagybetű beállítása</entry>
-      <entry id="3026" string="all words upper case">minden szó nagybetűvel</entry>
-      <entry id="3027" string="long words upper case">hosszű szavak nagybetűvel</entry>
-      <entry id="3028" string="first letter upper case">első betű nagybetű</entry>
-      <entry id="3029" string="all lower case">mind kisbetű</entry>
-      <entry id="3030" string="all upper case">mind nagybetű</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Célkönyvtár megadása</entry>
-      <entry id="3032" string="Sampling rate">Mintavételezés</entry>
-      <entry id="3033" string="Sample resolution">Minta felbontás</entry>
-      <entry id="3034" string="Number of samples">Minták száma</entry>
-      <entry id="3035" string="Channels">Csatornák</entry>
-      <entry id="3036" string="Mono">Monó</entry>
-      <entry id="3037" string="Stereo">Stereo</entry>
-      <entry id="3038" string="Length">Hossz</entry>
-      <entry id="3039" string="File">Fájl</entry>
-      <entry id="3040" string="Size">Méret</entry>
-      <entry id="3041" string="Bitrate">Bitráta</entry>
-      <entry id="3042" string="Audio Files">Audio fájlok</entry>
-      <entry id="3043" string="All Files">Összes fájl</entry>
-      <entry id="3044" string="Playlist Files">Lejátszási listák</entry>
-      <entry id="3045" string="Active decoder"/>
-      <entry id="3046" string="Joblist"/>
-      <entry id="3047" string="unknown"/>
-      <entry id="3048" string="Other"/>
-      <entry id="3049" string="Output file name"/>
-      <entry id="3050" string="verifying"/>
-      <entry id="3051" string="Open"/>
-      <entry id="3052" string="CD drive"/>
+      <entry id="3000" string="Time left">Hátralévõ idõ</entry>
+      <entry id="3001" string="File progress">Folyamat állapot</entry>
+      <entry id="3002" string="Output folder">Cél könyvtár</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 fájl(ok) a listán</entry>
+      <entry id="3004" string="Show title info">Cím információ kijelzése</entry>
+      <entry id="3005" string="Play">Lejátszás</entry>
+      <entry id="3006" string="Stop">Állj</entry>
+      <entry id="3007" string="Select all">Mindet kijelöli</entry>
+      <entry id="3008" string="Select none">Kijelölés visszavonása</entry>
+      <entry id="3009" string="Toggle selection">Kijelölés megfordítása</entry>
+      <entry id="3010" string="ripping/decoding">másolás/dekódolás</entry>
+      <entry id="3011" string="encoding">tömörítés</entry>
+      <entry id="3012" string="Create playlist">Lejátszási lista készítés</entry>
+      <entry id="3013" string="Create cue sheet">Vágólap készítés</entry>
+      <entry id="3014" string="Select">Keresés</entry>
+      <entry id="3015" string="Encode to a single file">Egy fájlba tömörítés</entry>
+      <entry id="3016" string="Remove">Eltávolítás</entry>
+      <entry id="3017" string="Clear joblist">Mindet töröl</entry>
+      <entry id="3018" string="Use for all selected tracks">Használd az összes kiválasztott számhoz</entry>
+      <entry id="3019" string="Interpret string as">Sztring értelmezése mint</entry>
+      <entry id="3020" string="selected tracks">kiválasztott számok</entry>
+      <entry id="3021" string="Adjust upper/lower case">Kis/nagybetű beállítása</entry>
+      <entry id="3022" string="all words upper case">minden szó nagybetűvel</entry>
+      <entry id="3023" string="long words upper case">hosszű szavak nagybetűvel</entry>
+      <entry id="3024" string="first letter upper case">első betű nagybetű</entry>
+      <entry id="3025" string="all lower case">mind kisbetű</entry>
+      <entry id="3026" string="all upper case">mind nagybetű</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Célkönyvtár megadása</entry>
+      <entry id="3028" string="Sampling rate">Mintavételezés</entry>
+      <entry id="3029" string="Sample resolution">Minta felbontás</entry>
+      <entry id="3030" string="Number of samples">Minták száma</entry>
+      <entry id="3031" string="Channels">Csatornák</entry>
+      <entry id="3032" string="Mono">Monó</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Hossz</entry>
+      <entry id="3035" string="File">Fájl</entry>
+      <entry id="3036" string="Size">Méret</entry>
+      <entry id="3037" string="Bitrate">Bitráta</entry>
+      <entry id="3038" string="Audio Files">Audio fájlok</entry>
+      <entry id="3039" string="All Files">Összes fájl</entry>
+      <entry id="3040" string="Playlist Files">Lejátszási listák</entry>
+      <entry id="3041" string="Joblist"/>
+      <entry id="3042" string="Other"/>
+      <entry id="3043" string="Output file name"/>
+      <entry id="3044" string="verifying"/>
+      <entry id="3045" string="Open"/>
+      <entry id="3046" string="CD drive"/>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Jelenleg tömörítés alatt</entry>
+        <entry id="3051" string="none">nincs</entry>
+        <entry id="3052" string="Skip current file">Átugrás</entry>
+      </section>
+
+      <section name="Decoder">
+	<entry id="3060" string="Active decoder"/>
+	<entry id="3061" string="none"/>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters"/>
+	<entry id="3071" string="none"/>
+	<entry id="3072" string="disabled"/>
+	<entry id="3073" string="Configure signal processing"/>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Választott tömörítö</entry>
+	<entry id="3081" string="Configure selected encoder">Választott tömörítö beállítása</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Könyvtár</entry>
@@ -574,16 +592,6 @@
       <entry id="6101" string="There are no updates available at the moment!">Jelenleg nincs újabb verzió.</entry>
       <entry id="6102" string="Check for updates at startup">Új verzió keresése induláskor</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">A %1 önállóan képes a program újabb verziójának&#10;online keresésére induláskor.&#10;&#10;Szeretnéd, ha a %1 frissítést keresne induláskor?</entry>
-    </section>
-
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">A %1 %2 nyelvet támogat jelenleg. Ha az általad&#10;beszélt nyelv nincs közöttük, könnyen lefordíthatod a&#10;%1 'smooth Translator' programjával.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">A %1 támogatja a LAME, Ogg Vorbis, FAAC, FLAC és&#10;Opus tömörítőket. VQF formátumhoz tömörítőt a %1&#10;honlapján találhatsz: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">A %1 kezeli a Winamp 2 bemeneti plugin-jait, így még több&#10;formátumot támogathat. Másold be az in_*.dll fájlokat a&#10;%1/plugins könyvtárába, igy a program kezeli ezeket a&#10;formátumokat is!</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">A %1-en keresztül küldhetünk unikódos CD bejegyzéseket&#10;is a freedb adatbázisába. Ha olyan CD-id is vannak, melyeken&#10;nem latin betűkkel vannak megadva az adatok, a %1&#10;segítségével korrekt adatokat küldhetünk a freedb adatbázisába.</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">A másolási hibák javítására bekapcsolható a Jitter korrekció&#10;az Általános beállítások menüpont Ripper panelje alatt.&#10;Ha ez sem segít, próbáld ki a Paranoia módokat!</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">Van egy jó ötleted a %1 fejlesztésével kapcsolatban?&#10;&#10;Bármely ötletedet közzéteheted a tracker-en keresztül a %1&#10;%2-os oldalán - %3&#10;vagy küldj eMailt: %4</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Kedveled a %1-et? A program ingyenes, de támogathatod&#10;is a fejlesztést pénzadománnyal. A pénztadományt a&#10;%2-ra utalhatod át Paypal-on keresztül.&#10;A részletek itt olvashatók: %3</entry>
     </section>
 
     <section name="Messages">

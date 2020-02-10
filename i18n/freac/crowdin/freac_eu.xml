@@ -98,17 +98,17 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Ezarpen orokorrak</entry>
-	<entry id="1301" string="Configure selected encoder">Itxuratu hautaturiko kodeatzailea</entry>
-	<entry id="1302" string="Active CD-ROM drive">Erabiltzeko CD-ROM gidagailua</entry>
-	<entry id="1303" string="Active configuration"/>
-	<entry id="1304" string="Default configuration"/>
+	<entry id="1301" string="Configure signal processing"/>
+	<entry id="1302" string="Configure selected encoder">Itxuratu hautaturiko kodeatzailea</entry>
+	<entry id="1303" string="Active CD-ROM drive">Erabiltzeko CD-ROM gidagailua</entry>
+	<entry id="1304" string="Active configuration"/>
+	<entry id="1305" string="Default configuration"/>
       </section>
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing"/>
 	<entry id="1401" string="Enable processing during playback"/>
-	<entry id="1402" string="Configure signal processing"/>
-	<entry id="1403" string="Selected signal processors"/>
+	<entry id="1402" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
@@ -145,67 +145,85 @@
       <entry id="2004" string="Query CDDB database">CDDB datubase eskabidea</entry>
       <entry id="2005" string="Submit CDDB data">Aurkeztu CDDB datuak</entry>
       <entry id="2006" string="Configure general settings">Itxuratu ezarpen orokorrak</entry>
-      <entry id="2007" string="Configure the selected audio encoder">Itxuratu hautaturiko audio kodeatzailea</entry>
-      <entry id="2008" string="Start the encoding process">Hasi kodeaketa garapena</entry>
-      <entry id="2009" string="Start the encoding process (deleting original files)"/>
-      <entry id="2010" string="Pause/resume encoding">Pausatu/berrekin kodeaketa</entry>
-      <entry id="2011" string="Stop encoding">Gelditu kodeaketa</entry>
+      <entry id="2007" string="Configure signal processing"/>
+      <entry id="2008" string="Configure the selected audio encoder">Itxuratu hautaturiko audio kodeatzailea</entry>
+      <entry id="2009" string="Start the encoding process">Hasi kodeaketa garapena</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)"/>
+      <entry id="2011" string="Pause/resume encoding">Pausatu/berrekin kodeaketa</entry>
+      <entry id="2012" string="Stop encoding">Gelditu kodeaketa</entry>
     </section>
 
     <section name="Joblist">
-      <entry id="3000" string="Encoding file">Kodeaketa agiria</entry>
-      <entry id="3001" string="Time left">Gelditzen da</entry>
-      <entry id="3002" string="Selected encoder">Hautaturiko kodeatzailea</entry>
-      <entry id="3003" string="File progress">Agiri garapena</entry>
-      <entry id="3004" string="Output folder">Irteera agiritegia</entry>
-      <entry id="3005" string="%1 file(s) in joblist">%1 agiri lan-zerrendan</entry>
-      <entry id="3006" string="none">ezer ez</entry>
-      <entry id="3007" string="Show title info">Erakutsi izenburu argibideak</entry>
-      <entry id="3008" string="Play">Irakurri</entry>
-      <entry id="3009" string="Stop">Gelditu</entry>
-      <entry id="3010" string="Select all">Hautatu denak</entry>
-      <entry id="3011" string="Select none">Ez hautatu ezer</entry>
-      <entry id="3012" string="Toggle selection">Aldatu hautapena</entry>
-      <entry id="3013" string="ripping/decoding">erauzten/dekodeatzen</entry>
-      <entry id="3014" string="encoding">kodeatzen</entry>
-      <entry id="3015" string="Create playlist">Sortu irakur-zerrenda</entry>
-      <entry id="3016" string="Create cue sheet">Sortu cue orria</entry>
-      <entry id="3017" string="Select">Bilatu</entry>
-      <entry id="3018" string="Skip">Jauzi</entry>
-      <entry id="3019" string="Encode to a single file">Kodeatu agiri bakarrera</entry>
-      <entry id="3020" string="Remove">Kendu</entry>
-      <entry id="3021" string="Clear joblist">Garbitu lan-zerrenda</entry>
-      <entry id="3022" string="Use for all selected tracks">Erabili hautaturiko bide guztientzat</entry>
-      <entry id="3023" string="Interpret string as">Ulertu katea honela</entry>
-      <entry id="3024" string="selected tracks">hautaturiko bideak</entry>
-      <entry id="3025" string="Adjust upper/lower case">Zehaztu hizki larri/xeheak</entry>
-      <entry id="3026" string="all words upper case">hitz guztiak larri</entry>
-      <entry id="3027" string="long words upper case">hitz luzeak larri</entry>
-      <entry id="3028" string="first letter upper case">lehen hizkia larri</entry>
-      <entry id="3029" string="all lower case">denak xehe</entry>
-      <entry id="3030" string="all upper case">denak larri</entry>
-      <entry id="3031" string="Select the folder in which the encoded files will be placed">Hautatu kodeatutako agiriak jarri behar diren agiritegia</entry>
-      <entry id="3032" string="Sampling rate">Laginketa neurria</entry>
-      <entry id="3033" string="Sample resolution">Laginketa bereizmena</entry>
-      <entry id="3034" string="Number of samples">Lagin zenbatekoa</entry>
-      <entry id="3035" string="Channels">Bideak</entry>
-      <entry id="3036" string="Mono">Monoa</entry>
-      <entry id="3037" string="Stereo">Estereoa</entry>
-      <entry id="3038" string="Length">Luzera</entry>
-      <entry id="3039" string="File">Agiria</entry>
-      <entry id="3040" string="Size">Neurria</entry>
-      <entry id="3041" string="Bitrate">Bitneurria</entry>
-      <entry id="3042" string="Audio Files">Audio Agiriak</entry>
-      <entry id="3043" string="All Files">Agiri Guztiak</entry>
-      <entry id="3044" string="Playlist Files">Irakur-zerrenda Agiriak</entry>
-      <entry id="3045" string="Active decoder"/>
-      <entry id="3046" string="Joblist"/>
-      <entry id="3047" string="unknown"/>
-      <entry id="3048" string="Other"/>
-      <entry id="3049" string="Output file name"/>
-      <entry id="3050" string="verifying"/>
-      <entry id="3051" string="Open"/>
-      <entry id="3052" string="CD drive"/>
+      <entry id="3000" string="Time left">Gelditzen da</entry>
+      <entry id="3001" string="File progress">Agiri garapena</entry>
+      <entry id="3002" string="Output folder">Irteera agiritegia</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 agiri lan-zerrendan</entry>
+      <entry id="3004" string="Show title info">Erakutsi izenburu argibideak</entry>
+      <entry id="3005" string="Play">Irakurri</entry>
+      <entry id="3006" string="Stop">Gelditu</entry>
+      <entry id="3007" string="Select all">Hautatu denak</entry>
+      <entry id="3008" string="Select none">Ez hautatu ezer</entry>
+      <entry id="3009" string="Toggle selection">Aldatu hautapena</entry>
+      <entry id="3010" string="ripping/decoding">erauzten/dekodeatzen</entry>
+      <entry id="3011" string="encoding">kodeatzen</entry>
+      <entry id="3012" string="Create playlist">Sortu irakur-zerrenda</entry>
+      <entry id="3013" string="Create cue sheet">Sortu cue orria</entry>
+      <entry id="3014" string="Select">Bilatu</entry>
+      <entry id="3015" string="Encode to a single file">Kodeatu agiri bakarrera</entry>
+      <entry id="3016" string="Remove">Kendu</entry>
+      <entry id="3017" string="Clear joblist">Garbitu lan-zerrenda</entry>
+      <entry id="3018" string="Use for all selected tracks">Erabili hautaturiko bide guztientzat</entry>
+      <entry id="3019" string="Interpret string as">Ulertu katea honela</entry>
+      <entry id="3020" string="selected tracks">hautaturiko bideak</entry>
+      <entry id="3021" string="Adjust upper/lower case">Zehaztu hizki larri/xeheak</entry>
+      <entry id="3022" string="all words upper case">hitz guztiak larri</entry>
+      <entry id="3023" string="long words upper case">hitz luzeak larri</entry>
+      <entry id="3024" string="first letter upper case">lehen hizkia larri</entry>
+      <entry id="3025" string="all lower case">denak xehe</entry>
+      <entry id="3026" string="all upper case">denak larri</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Hautatu kodeatutako agiriak jarri behar diren agiritegia</entry>
+      <entry id="3028" string="Sampling rate">Laginketa neurria</entry>
+      <entry id="3029" string="Sample resolution">Laginketa bereizmena</entry>
+      <entry id="3030" string="Number of samples">Lagin zenbatekoa</entry>
+      <entry id="3031" string="Channels">Bideak</entry>
+      <entry id="3032" string="Mono">Monoa</entry>
+      <entry id="3033" string="Stereo">Estereoa</entry>
+      <entry id="3034" string="Length">Luzera</entry>
+      <entry id="3035" string="File">Agiria</entry>
+      <entry id="3036" string="Size">Neurria</entry>
+      <entry id="3037" string="Bitrate">Bitneurria</entry>
+      <entry id="3038" string="Audio Files">Audio Agiriak</entry>
+      <entry id="3039" string="All Files">Agiri Guztiak</entry>
+      <entry id="3040" string="Playlist Files">Irakur-zerrenda Agiriak</entry>
+      <entry id="3041" string="Joblist"/>
+      <entry id="3042" string="Other"/>
+      <entry id="3043" string="Output file name"/>
+      <entry id="3044" string="verifying"/>
+      <entry id="3045" string="Open"/>
+      <entry id="3046" string="CD drive"/>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Kodeaketa agiria</entry>
+        <entry id="3051" string="none">ezer ez</entry>
+        <entry id="3052" string="Skip current file">Jauzi</entry>
+      </section>
+
+      <section name="Decoder">
+	<entry id="3060" string="Active decoder"/>
+	<entry id="3061" string="none"/>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters"/>
+	<entry id="3071" string="none"/>
+	<entry id="3072" string="disabled"/>
+	<entry id="3073" string="Configure signal processing"/>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Hautaturiko kodeatzailea</entry>
+	<entry id="3081" string="Configure selected encoder">Itxuratu hautaturiko kodeatzailea</entry>
+      </section>
 
       <section name="Add folder">
 	<entry id="3100" string="Folder">Agiritegiak</entry>
@@ -574,16 +592,6 @@
       <entry id="6101" string="There are no updates available at the moment!">Ez dago eguneraketarik eskuragarri une honetan!</entry>
       <entry id="6102" string="Check for updates at startup">Egiaztatu eguneraketak hasieran</entry>
       <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1-k berezgaitasunezko egiaztapen bat egin dezake&#10;programaren onlineko eguneraketentzat abiatzerakoan.&#10;&#10;Nahi duzu %1-k abiatzerakoan eguneraketak begiratzea?</entry>
-    </section>
-
-    <section name="Tips">
-      <entry id="6200" string="%1 is available in %2 languages. If your language is&#10;not available, you can easily translate %1 using the&#10;'smooth Translator' application.">%1 %2 hizkuntzatan dago eskuragarri. Zure hizkuntza ez&#10;badago eskuragarri, erraz itzuli dezakezu %1 'smooth' Translator&#10;aplikazioa erabiliz.</entry>
-      <entry id="6201" string="%1 comes with support for the LAME, Ogg Vorbis, FAAC,&#10;FLAC and Opus encoders. An encoder for the VQF format is&#10;available at the %1 website: %2">%1 LAME, Ogg Vorbis, FAAC, FLAC eta Opus kodeatzaile&#10;sostenguarekin dator. VQF heuskarrirako kodeatzaile bat&#10;eskuragarri dago hemen, %1 webgunea: %2</entry>
-      <entry id="6202" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats. Copy the in_*.dll files to the %1/plugins directory to&#10;enable %1 to read these formats.">%1-k Winmap 2 sarrera plug-inak erabili ditzake agiri heuskarri&#10;gehiago sostengatzeko. Kopiatu in_*.dll agiriak %1/plugins&#10;zuzenbidera %1 heuskarri hauek irakurtzeko gai izateko.</entry>
-      <entry id="6203" string="With %1 you can submit freedb CD database entries&#10;containing Unicode characters. So if you have any CDs with&#10;non-Latin artist or title names, you can submit the correct&#10;freedb entries with %1.">%1-rekin freedb CD datubase sarrerak aurkeztu ditzakezu&#10;Unicode hizkiak dituztela. Hortaz ez-Latinezko artista edo&#10;izenburu izenak dituen CD-ren bat baduzu freedb sarrera&#10;zuzenak aurkeztu ditzakezu %1-rekin</entry>
-      <entry id="6204" string="To correct reading errors while ripping you can enable&#10;Jitter correction in the Ripper tab of %1's configuration&#10;dialog. If that does not help, try using one of the Paranoia modes.">Erauzketan zeharko irakurketa akatsak zuzentzeko Jitter&#10;zuzenketa gaitu dezakezu %1 itxurapen elkarrizketako&#10;CD Erauzketa hegatsean. Ez badu laguntzen, saiatu&#10;Paranoia moduetako bat erabiliz.</entry>
-      <entry id="6205" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3&#10;or send an eMail to %4.">%1 hobetzeko iradokizunen bat duzu?&#10;&#10;Edozein ideia aurkeztu dezakezu Aztarnariaren bidez %1-ren&#10;%2 egitasmo orrialdean - %3&#10;edo bidali posta bat %4-ra.</entry>
-      <entry id="6206" string="Do you like %1? %1 is available for free, but you can&#10;help fund the development by donating to the %1 project.&#10;You can send money to %2 through PayPal.&#10;See %3 for more details.">Gogoko duzu %1? %1 dohainik dago eskuragarri, baina&#10;bere garapenean lagundu dezakezu dirulaguntza bat emanez&#10;%1 egitasmoari. Dirua %2-ra bidali dezakezu&#10;PayPal bidez. Ikusi %3&#10;xehetasun gehiagorako.</entry>
     </section>
 
     <section name="Messages">
