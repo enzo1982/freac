@@ -164,7 +164,7 @@ Error freac::JobAddTracks::Perform()
 		joblist->onComponentAddTrack.Emit(track);
 
 		track = joblist->getTrackList.Call()->GetLast();
-		tracks.Add(track, track.GetTrackID());
+		tracks.Add(track);
 
 		SetProgress((i + 1) * 1000 / urls.Length());
 	}

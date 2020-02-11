@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -363,20 +363,9 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 		if (joblist->GetNOfTracks() > 0)
 		{
-			/* Create array of tracks to convert.
+			/* Convert tracks in joblist.
 			 */
-			Array<Track>	 tracks;
-
-			for (Int i = 0; i < joblist->GetNOfTracks(); i++)
-			{
-				const Track	&track = joblist->GetNthTrack(i);
-
-				tracks.Add(track, track.GetTrackID());
-			}
-
-			/* Convert them.
-			 */
-			Converter().Convert(tracks, False);
+			Converter().Convert(*joblist->GetTrackList(), False);
 
 			if (!quiet) Console::OutputString("done.\n");
 		}
@@ -444,17 +433,11 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			joblist->UpdateTrackInfo(track);
 
-			/* Add it to a track array.
-			 */
-			Array<Track>	 tracks;
-
-			tracks.Add(track, track.GetTrackID());
-
-			/* Convert it.
+			/* Convert track in joblist.
 			 */
 			if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
 
-			Converter().Convert(tracks, False);
+			Converter().Convert(*joblist->GetTrackList(), False);
 
 			joblist->RemoveNthTrack(0);
 

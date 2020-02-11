@@ -1407,9 +1407,7 @@ Void freac::freacGUI::Convert()
 	{
 		if (!joblist->GetNthEntry(i)->IsMarked()) continue;
 
-		const Track	&track = joblist->GetNthTrack(i);
-
-		tracks.Add(track, track.GetTrackID());
+		tracks.Add(joblist->GetNthTrack(i));
 	}
 
 	/* Start conversion.

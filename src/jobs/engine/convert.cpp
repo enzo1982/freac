@@ -54,16 +54,18 @@ Signal4<Void, const BoCA::Track &,
 Signal2<Void, Int, Int>			 freac::JobConvert::onTrackProgress;
 Signal2<Void, Int, Int>			 freac::JobConvert::onTotalProgress;
 
-freac::JobConvert::JobConvert(const Array<BoCA::Track> &iTracks)
+freac::JobConvert::JobConvert(const Array<BoCA::Track> &tracksToConvert)
 {
 	conversionID	 = ++conversionCount;
-
-	tracks		 = iTracks;
 
 	conversionPaused = False;
 
 	skipTrack	 = False;
 	stopConversion   = False;
+
+	/* Copy array of tracks to convert using track IDs as indices.
+	 */
+	foreach (const Track &track, tracksToConvert) tracks.Add(track, track.GetTrackID());
 }
 
 freac::JobConvert::~JobConvert()
