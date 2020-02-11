@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">freac.xml</property>
-    <property name="author">KalinM &lt;kalinm@gbg.bg&gt;</property>
+    <property name="author">KalinM</property>
     <property name="url">https://www.freac.org/</property>
   </info>
   <data>
@@ -204,24 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Кодиране на файл</entry>
-        <entry id="3051" string="none">празно</entry>
-        <entry id="3052" string="Skip current file">Пропускане</entry>
+	<entry id="3051" string="none">празно</entry>
+	<entry id="3052" string="Skip current file">Пропускане</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Активен декодер</entry>
-        <entry id="3061" string="none">неизвестно</entry>
+	<entry id="3060" string="Active decoder">Активен декодер</entry>
+	<entry id="3061" string="none">неизвестно</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Избрани филтри</entry>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3071" string="none">празно</entry>
+	<entry id="3072" string="disabled">изключено</entry>
 	<entry id="3073" string="Configure signal processing">Конфигуриране обработката на сигнала</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Избран енкодер</entry>
+	<entry id="3080" string="Selected encoder">Избран енкодер</entry>
 	<entry id="3081" string="Configure selected encoder">Конфигуриране на избрания енкодер</entry>
       </section>
 
@@ -706,7 +706,7 @@
 
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Съобщение за Преобразуване</entry>
-	<entry id="15001" string="Logging">Протокол Преглед</entry>
+	<entry id="15001" string="Logging">Протокол</entry>
 	<entry id="15002" string="YouTube Video Downloader">YouTube видео изтегляне</entry>
       </section>
     </section>
@@ -1338,7 +1338,7 @@
 
 	<section name="Configuration">
 	  <entry id="104100" string="User interface">Потребителски интерфейс</entry>
-	  <entry id="104101" string="Show Logs tab in main window">Показване раздел &quot;протоколи&quot; в главния прозорец</entry>
+	  <entry id="104101" string="Show Logs tab in main window">Показване раздел «Протоколи» в главния прозорец</entry>
 	  <entry id="104102" string="Log files">Лог файлове</entry>
 	  <entry id="104103" string="Archive log files">Архив на лог файлове</entry>
 	  <entry id="104104" string="Log file folder">Папка за лог файлове</entry>
