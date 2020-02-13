@@ -147,6 +147,13 @@ Voraussetzungen
 Geschichte
 ----------
 
+	Version 1.1 Beta 3+ (February 2020)
+
+		- Bug fixes
+
+			- Problem mit verlorenen Dateiänderungsdaten bei aktivierter Ausgabeverifikation behoben
+			- Problem mit trotz aktivierter Option nicht beibehaltenen Dateierstellungsdaten behoben
+
 	Version 1.1 Beta 3 (Februar 2020)
 
 		- Verbesserungen

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -22,6 +22,46 @@
 
 using namespace BoCA;
 using namespace BoCA::AS;
+
+#ifdef __WIN32__
+#	include <windows.h>
+
+	/* ToDo: Move this to smooth::File with smooth 0.10.
+	 */
+	FILETIME DateTimeToFileTime(const DateTime &dateTime)
+	{
+		SYSTEMTIME	 time, utc;
+
+		memset(&time, 0, sizeof(time));
+
+		time.wYear   = dateTime.GetYear();
+		time.wMonth  = dateTime.GetMonth();
+		time.wDay    = dateTime.GetDay();
+
+		time.wHour   = dateTime.GetHour();
+		time.wMinute = dateTime.GetMinute();
+		time.wSecond = dateTime.GetSecond();
+
+		FILETIME	 fileTime;
+
+		TzSpecificLocalTimeToSystemTime(NIL, &time, &utc);
+		SystemTimeToFileTime(&utc, &fileTime);
+
+		return fileTime;
+	}
+
+	Bool SetFileCreateTime(const File &file, const FILETIME &createTime)
+	{
+		if (!file.Exists()) return False;
+
+		HANDLE	 handle = CreateFile(String(Directory::GetUnicodePathPrefix(file)).Append(file), GENERIC_WRITE, 0, NIL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NIL);
+
+		SetFileTime(handle, &createTime, NIL, NIL);
+		CloseHandle(handle);
+
+		return True;
+	}
+#endif
 
 freac::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration, Int iConversionID)
 {
@@ -125,7 +165,8 @@ Int freac::ConvertWorker::Convert()
 	Track		 trackToEncode	= trackToConvert;
 	Bool		 error		= False;
 
-	DateTime	 fileTime	= File(trackToConvert.fileName).GetWriteTime();
+	DateTime	 createTime	= File(trackToConvert.fileName).GetCreationTime();
+	DateTime	 modifyTime	= File(trackToConvert.fileName).GetWriteTime();
 	Bool		 isFile		= !trackToConvert.fileName.StartsWith("device://");
 
 	String		 encodeChecksum;
@@ -424,7 +465,14 @@ Int freac::ConvertWorker::Convert()
 
 		/* Set file time stamp to that of original file if requested.
 		 */
-		if (step == conversionSteps - 1 && keepTimeStamps && isFile && outFile.Exists()) outFile.SetWriteTime(fileTime);
+		if ((conversionStep == ConversionStepOnTheFly || conversionStep == ConversionStepEncode) && keepTimeStamps && isFile && outFile.Exists())
+		{
+#ifdef __WIN32__
+			SetFileCreateTime(outFile, DateTimeToFileTime(createTime));
+#endif
+
+			outFile.SetWriteTime(modifyTime);
+		}
 
 		/* Revert to waiting state when there are more steps left.
 		 */
