@@ -1197,7 +1197,7 @@
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox laat snelle en eenvoudige donaties via kredietkaart toe. Klik op deze&#10;knop om een donatie te maken met Donorbox:</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox laat snelle en eenvoudige donaties via kredietkaart toe. Klik op&#10;deze knop om een donatie te maken met Donorbox:</entry>
 	  <entry id="100201" string="Donate">Doneren</entry>
 	  <entry id="100202" string="usd">eur</entry>
 	</section>
@@ -1213,7 +1213,7 @@
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">U kunt doneren door een elektronische overdracht te maken naar de&#10;volgende account:</entry>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">U kunt doneren door een elektronische overdracht te&#10;maken naar de volgende account:</entry>
 	  <entry id="100501" string="Account holder:">Rekeninghouder:</entry>
 	  <entry id="100502" string="IBAN:">IBAN:</entry>
 	  <entry id="100503" string="BIC:">BIC:</entry>

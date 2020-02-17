@@ -14,24 +14,37 @@
   <data>
     <entry id="100" string="OK">موافق</entry>
     <entry id="101" string="Cancel">إلغاء</entry>
-    <entry id="102" string="Close">غلق</entry>
+    <entry id="102" string="Close">إغلاق</entry>
 
     <entry id="200" string="Error">خطأ</entry>
+    <entry id="201" string="Warning">تنبيه</entry>
     <entry id="202" string="Info">معلومات</entry>
+
+    <entry id="210" string="Do not display this warning again">لا تظهر هذا التنبيه مرة أخرى</entry>
 
     <entry id="300" string="Artist">الفنان</entry>
     <entry id="301" string="Title">العنوان</entry>
-    <entry id="302" string="Album">الإصدار</entry>
-    <entry id="303" string="Track">المسار</entry>
+    <entry id="302" string="Album">الألبوم</entry>
+    <entry id="303" string="Track">المقطع</entry>
     <entry id="304" string="Genre">الصنف</entry>
     <entry id="305" string="Comment">التعليق</entry>
     <entry id="306" string="Year">السنة</entry>
+    <entry id="307" string="Disc">أسطوانة</entry>
+    <entry id="308" string="Rating">التقييم</entry>
+    <entry id="309" string="File name">إسم الملف</entry>
+    <entry id="310" string="File type">نوع الملف</entry>
+    <entry id="311" string="Album artist">ألبوم الفنان</entry>
 
     <entry id="350" string="unknown artist">فنان مجهول</entry>
     <entry id="351" string="unknown title">عنوان مجهول</entry>
-    <entry id="352" string="unknown album">الإصدار مجهول</entry>
-    <entry id="353" string="unknown genre">النوع مجهول</entry>
-    <entry id="354" string="unknown year">مجهول السنة</entry>
+    <entry id="352" string="unknown album">ألبوم مجهول</entry>
+    <entry id="353" string="unknown genre">تصنيف مجهول</entry>
+    <entry id="354" string="unknown year">سنة مجهول</entry>
+    <entry id="355" string="unknown conductor">مايسترو مجهول</entry>
+    <entry id="356" string="unknown composer">مُلحّن مجهول</entry>
+    <entry id="357" string="unknown album artist">فنان الألبوم مجهول</entry>
+
+    <entry id="380" string="hidden track">مقطع مخفي</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -40,13 +53,14 @@
     </section>
 
     <section name="Technical">
-      <entry id="510" string="%1 kbps">‭kbps %1‬</entry>
-      <entry id="511" string="%1 Hz">%1 هرتز</entry>
-      <entry id="512" string="%1 kHz">%1 كيلوهرتز</entry>
+      <entry id="510" string="%1 kbps">%1 kbps</entry>
+      <entry id="511" string="%1 Hz">%1 Hz</entry>
+      <entry id="512" string="%1 kHz">%1 kHz</entry>
       <entry id="513" string="%1 ms">ms %1‬</entry>
       <entry id="514" string="%1 min">%1 دق</entry>
       <entry id="515" string="%1 bit">%1 بيت</entry>
       <entry id="516" string="%1 bytes">%1 بايت</entry>
+      <entry id="517" string="%1 kB">%1 kB</entry>
       <entry id="518" string="%1%">%%1</entry>
     </section>
 
@@ -173,6 +187,15 @@
         <entry id="3052" string="Skip current file">تخطي</entry>
       </section>
 
+      <section name="Decoder">
+	<entry id="3061" string="none">لاشيء</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3071" string="none">لاشيء</entry>
+	<entry id="3072" string="disabled">معطل</entry>
+      </section>
+
       <section name="Encoder">
         <entry id="3080" string="Selected encoder">تحديد الترميز</entry>
 	<entry id="3081" string="Configure selected encoder">تهيئة الترميز المحدد</entry>
@@ -199,6 +222,10 @@
 	<entry id="3400" string="You did not select a track!">لم تقم بتحديد أي ملف!</entry>
 	<entry id="3401" string="No files found matching pattern: %1">لا توجد ملفات مطابقة للنمط: %1</entry>
       </section>
+    </section>
+
+    <section name="Jobs">
+      <entry id="3505" string="Time left">الوقت المتبقي</entry>
     </section>
 
     <section name="CDDB">
@@ -281,6 +308,7 @@
       <entry id="5003" string="Language">اللغة</entry>
       <entry id="5004" string="CDDB">كدب</entry>
       <entry id="5006" string="Tags">معلومات بطاقة</entry>
+      <entry id="5020" string="Ripper">الممزق</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">تهيئة الترميز</entry>
@@ -365,7 +393,21 @@
 	<entry id="5505" string="Encoding">الترميز</entry>
       </section>
 
-      <section name="Joblist"/>
+      <section name="Joblist">
+
+	<section name="Columns">
+	  <entry id="5659" string="File name">إسم الملف</entry>
+	  <entry id="5660" string="File type">نوع الملف</entry>
+	  <entry id="5662" string="Bitrate">معدل بايت</entry>
+	  <entry id="5663" string="Sampling rate">معدل العينات</entry>
+	  <entry id="5664" string="Channels">القنوات</entry>
+	  <entry id="5665" string="Sample resolution">دقة العينة</entry>
+	</section>
+      </section>
+
+      <section name="Resources">
+	<entry id="5704" string="auto">تلقائي</entry>
+      </section>
     </section>
 
     <section name="About">
@@ -401,7 +443,7 @@
       <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">اشتقاق القرص المضغوط معطل NT SCSI غير قادر على تحميل!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">غير قادر على فتح الملف: %1&#10;&#10;خطأ: %2</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">دعم قاعدة بيانات قرص مضغوط معطلة ، الرجاء&#10;تنشيط قاعدة بيانات قرص مضغوط محلية او بعيدة دعم التهيئة في نافدة الحوار</entry>
-      <entry id="7129" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">الدعم البعيد لقاعدة بيانات قرص مضغوط معطل، الرجاء تنشيط&#10;&#10;تهيئة الدعم البعيد لقاعدة بيانات قرص مضغوط</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">الدعم البعيد لقاعدة بيانات قرص مضغوط معطل، الرجاء تنشيط&#10;&#10;تهيئة الدعم البعيد لقاعدة بيانات قرص مضغوط</entry>
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">تم رفض الوصول إلى محركات الأقراص المضغوطة من قبل ويندوز.&#10;&#10;الرجاء الإتصال بمسؤول النظام من أجل&#10;الحصول على الحق في الوصول إلى محرك الأقراص المضغوطة.</entry>
     </section>
 
@@ -409,6 +451,10 @@
 
       <section name="Overwrite">
 	<entry id="8006" string="Skip">تخطي</entry>
+      </section>
+
+      <section name="Format">
+	<entry id="8102" string="Select">تصفح</entry>
       </section>
 
       <section name="Errors"/>
@@ -631,11 +677,14 @@
 	<entry id="39010" string="Options">خيارات</entry>
 	<entry id="39016" string="VBR quality">نوعية معدل بايت متغير</entry>
 	<entry id="39017" string="ABR target bitrate">معدل بايت متوفر هدف معدل بايت</entry>
+	<entry id="39018" string="Bitrate">معدل بايت</entry>
+	<entry id="39019" string="Quality">النوعية</entry>
       </section>
 
       <section name="Opus">
 	<entry id="40002" string="auto">تلقائي</entry>
 	<entry id="40015" string="Quality">النوعية</entry>
+	<entry id="40016" string="Bitrate">معدل بايت</entry>
 	<entry id="40020" string="Options">خيارات</entry>
       </section>
 
@@ -643,6 +692,57 @@
 	<entry id="41001" string="File format">صيغة الملف</entry>
 	<entry id="41002" string="Audio format">صيغة الصوت</entry>
 	<entry id="41003" string="mono">وحيد</entry>
+      </section>
+
+      <section name="meh!">
+	<entry id="42000" string="Encoders">الترميز</entry>
+	<entry id="42003" string="Configure encoder">تهيئة الترميز</entry>
+	<entry id="42004" string="Options">خيارات</entry>
+      </section>
+    </section>
+
+    <section name="DSP">
+
+      <section name="Format">
+	<entry id="50002" string="Sample resolution">دقة العينة</entry>
+	<entry id="50003" string="bit">بيت</entry>
+      </section>
+
+      <section name="Channels">
+	<entry id="50102" string="Mono">وحيد</entry>
+	<entry id="50103" string="Stereo">صوت مجسم</entry>
+	<entry id="50104" string="Switch stereo channels">مبادلة القناة يمين/يسار</entry>
+      </section>
+
+      <section name="Resample">
+	<entry id="50201" string="Sampling rate">معدل العينات</entry>
+	<entry id="50202" string="Output sampling rate">معدل عيينات الناتج</entry>
+      </section>
+    </section>
+
+    <section name="External">
+
+      <section name="Musepack Audio Encoder">
+	<entry id="80100" string="Quality">النوعية</entry>
+
+      <section name="OptimFROG Lossless Encoder">
+	<entry id="80214" string="disabled">معطل</entry>
+      </section>
+
+      <section name="WavPack Audio Encoder">
+	<entry id="80407" string="better">أحسن</entry>
+      </section>
+
+      <section name="Nero AAC Encoder">
+	<entry id="80501" string="auto">تلقائي</entry>
+	<entry id="80502" string="Quality">النوعية</entry>
+	<entry id="80503" string="worse">أسوأ</entry>
+	<entry id="80504" string="better">أحسن</entry>
+	<entry id="80505" string="Bitrate">معدل بايت</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">معدل بايت</entry>
       </section>
     </section>
 
@@ -678,6 +778,7 @@
       <section name="Video Downloader">
 	<entry id="102014" string="Length">المدة</entry>
 	<entry id="102015" string="Size">الحجم</entry>
+	<entry id="102018" string="Note">مذكرة</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">التلقائية</entry>
@@ -695,6 +796,7 @@
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">أساسي</entry>
+	  <entry id="103102" string="Disc">أسطوانة</entry>
 	  <entry id="103107" string="Add">إضافة</entry>
 	  <entry id="103108" string="Remove">إزالة</entry>
 	</section>
@@ -705,6 +807,21 @@
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">غير قادر على فتح الملف: %1&#10;&#10;خطأ: %2</entry>
+	</section>
+      </section>
+
+      <section name="Logging">
+
+	<section name="Configuration">
+	  <entry id="104105" string="Select">تصفح</entry>
+	  <entry id="104112" string="Filename pattern">نمط اسم ملف</entry>
+	</section>
+      </section>
+
+      <section name="Notifier">
+
+	<section name="Configuration">
+	  <entry id="105104" string="Select">تصفح</entry>
 	</section>
       </section>
     </section>
