@@ -2,7 +2,7 @@
 
 include $(dir $(firstword $(MAKEFILE_LIST)))/Makefile-options
 
-INCLUDE	  = $(SRCDIR)/include
+INCLUDE	  = "$(SRCDIR)"/include
 OBJECTS	  = objects
 RESOURCES = resources
 SRC	  = src
@@ -71,9 +71,9 @@ ifeq ($(BUILD_VIDEO_DOWNLOADER),True)
 endif
 
 ifeq ($(BUILD_WIN32),True)
-	CCOPTS			+= -I$(CDK_INSTALL_PATH)/include
+	CCOPTS			+= -I"$(CDK_INSTALL_PATH)"/include
 
-	LDOPTS			+= -L$(CDK_INSTALL_PATH)/$(LIB) -lsmooth -Wl,--dynamicbase,--nxcompat
+	LDOPTS			+= -L"$(CDK_INSTALL_PATH)"/$(LIB) -lsmooth -Wl,--dynamicbase,--nxcompat
 
 	LDOPTS_DLL		+= --shared -lboca -lws2_32 -Wl,--out-implib,$(LIBNAME)
 	LDOPTS_GUI		+= -mwindows
@@ -143,90 +143,90 @@ ifeq ($(BUILD_WIN32),True)
 	mkdir -p $(BIN)/lang
 	mkdir -p packaging/windows/lang
 
-	cp $(SRCDIR)/icons/freac.png $(BIN)/icons
+	cp "$(SRCDIR)"/icons/freac.png $(BIN)/icons
 
-	cp -r $(SRCDIR)/icons/conversion $(BIN)/icons
-	cp -r $(SRCDIR)/icons/freedb $(BIN)/icons
-	cp -r $(SRCDIR)/icons/joblist $(BIN)/icons
-	cp -r $(SRCDIR)/icons/other $(BIN)/icons
-	cp -r $(SRCDIR)/icons/player $(BIN)/icons
-	cp -r $(SRCDIR)/icons/select $(BIN)/icons
-	cp -r $(SRCDIR)/icons/settings $(BIN)/icons
+	cp -r "$(SRCDIR)"/icons/conversion $(BIN)/icons
+	cp -r "$(SRCDIR)"/icons/freedb $(BIN)/icons
+	cp -r "$(SRCDIR)"/icons/joblist $(BIN)/icons
+	cp -r "$(SRCDIR)"/icons/other $(BIN)/icons
+	cp -r "$(SRCDIR)"/icons/player $(BIN)/icons
+	cp -r "$(SRCDIR)"/icons/select $(BIN)/icons
+	cp -r "$(SRCDIR)"/icons/settings $(BIN)/icons
 
-	cp $(SRCDIR)/i18n/Readme.lang $(BIN)/lang
-	cp $(SRCDIR)/i18n/freac/freac*.xml $(BIN)/lang
-	cp $(SRCDIR)/i18n/tips/tips*.xml $(BIN)/lang
-	cp $(SRCDIR)/i18n/updater/eupdate*.xml $(BIN)/lang
+	cp "$(SRCDIR)"/i18n/Readme.lang $(BIN)/lang
+	cp "$(SRCDIR)"/i18n/freac/freac*.xml $(BIN)/lang
+	cp "$(SRCDIR)"/i18n/tips/tips*.xml $(BIN)/lang
+	cp "$(SRCDIR)"/i18n/updater/eupdate*.xml $(BIN)/lang
 
-	cp $(SRCDIR)/i18n/setup/setup*.xml packaging/windows/lang
+	cp "$(SRCDIR)"/i18n/setup/setup*.xml packaging/windows/lang
 
-	cp -r $(SRCDIR)/manual $(BIN)
+	cp -r "$(SRCDIR)"/manual $(BIN)
 endif
 
 install: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME)
 ifneq ($(BUILD_WIN32),True)
-	$(INSTALL) -d $(DESTDIR)$(bindir)
+	$(INSTALL) -d "$(DESTDIR)"$(bindir)
 
-	$(INSTALL_PROGRAM) $(EXENAME) $(DESTDIR)$(bindir)
-	$(INSTALL_PROGRAM) $(CMDNAME) $(DESTDIR)$(bindir)
+	$(INSTALL_PROGRAM) $(EXENAME) "$(DESTDIR)"$(bindir)
+	$(INSTALL_PROGRAM) $(CMDNAME) "$(DESTDIR)"$(bindir)
 
-	$(INSTALL) -d $(DESTDIR)$(libdir)/freac
+	$(INSTALL) -d "$(DESTDIR)"$(libdir)/freac
 
-	$(INSTALL_DATA) $(DLLNAME) $(DESTDIR)$(libdir)/freac
+	$(INSTALL_DATA) $(DLLNAME) "$(DESTDIR)"$(libdir)/freac
 
-	$(INSTALL) -d $(DESTDIR)$(datadir)/freac
-	$(INSTALL) -d $(DESTDIR)$(datadir)/freac/icons
-	$(INSTALL) -d $(DESTDIR)$(datadir)/freac/lang
+	$(INSTALL) -d "$(DESTDIR)"$(datadir)/freac
+	$(INSTALL) -d "$(DESTDIR)"$(datadir)/freac/icons
+	$(INSTALL) -d "$(DESTDIR)"$(datadir)/freac/lang
 
-	cp $(SRCDIR)/i18n/Readme.lang $(DESTDIR)$(datadir)/freac/lang
-	cp $(SRCDIR)/i18n/freac/freac*.xml $(DESTDIR)$(datadir)/freac/lang
-	cp $(SRCDIR)/i18n/tips/tips*.xml $(DESTDIR)$(datadir)/freac/lang
+	cp "$(SRCDIR)"/i18n/Readme.lang "$(DESTDIR)"$(datadir)/freac/lang
+	cp "$(SRCDIR)"/i18n/freac/freac*.xml "$(DESTDIR)"$(datadir)/freac/lang
+	cp "$(SRCDIR)"/i18n/tips/tips*.xml "$(DESTDIR)"$(datadir)/freac/lang
 
-	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/lang
+	chmod -R a=rX,u=rwX "$(DESTDIR)"$(datadir)/freac/lang
 
-	$(INSTALL_DATA) $(SRCDIR)/icons/freac.png $(DESTDIR)$(datadir)/freac/icons
+	$(INSTALL_DATA) "$(SRCDIR)"/icons/freac.png "$(DESTDIR)"$(datadir)/freac/icons
 
-	cp -r $(SRCDIR)/icons/conversion $(DESTDIR)$(datadir)/freac/icons
-	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/conversion
+	cp -r "$(SRCDIR)"/icons/conversion "$(DESTDIR)"$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX "$(DESTDIR)"$(datadir)/freac/icons/conversion
 
-	cp -r $(SRCDIR)/icons/freedb $(DESTDIR)$(datadir)/freac/icons
-	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/freedb
+	cp -r "$(SRCDIR)"/icons/freedb "$(DESTDIR)"$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX "$(DESTDIR)"$(datadir)/freac/icons/freedb
 
-	cp -r $(SRCDIR)/icons/joblist $(DESTDIR)$(datadir)/freac/icons
-	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/joblist
+	cp -r "$(SRCDIR)"/icons/joblist "$(DESTDIR)"$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX "$(DESTDIR)"$(datadir)/freac/icons/joblist
 
-	cp -r $(SRCDIR)/icons/other $(DESTDIR)$(datadir)/freac/icons
-	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/other
+	cp -r "$(SRCDIR)"/icons/other "$(DESTDIR)"$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX "$(DESTDIR)"$(datadir)/freac/icons/other
 
-	cp -r $(SRCDIR)/icons/player $(DESTDIR)$(datadir)/freac/icons
-	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/player
+	cp -r "$(SRCDIR)"/icons/player "$(DESTDIR)"$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX "$(DESTDIR)"$(datadir)/freac/icons/player
 
-	cp -r $(SRCDIR)/icons/select $(DESTDIR)$(datadir)/freac/icons
-	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/select
+	cp -r "$(SRCDIR)"/icons/select "$(DESTDIR)"$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX "$(DESTDIR)"$(datadir)/freac/icons/select
 
-	cp -r $(SRCDIR)/icons/settings $(DESTDIR)$(datadir)/freac/icons
-	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/freac/icons/settings
+	cp -r "$(SRCDIR)"/icons/settings "$(DESTDIR)"$(datadir)/freac/icons
+	chmod -R a=rX,u=rwX "$(DESTDIR)"$(datadir)/freac/icons/settings
 
-	$(INSTALL) -d $(DESTDIR)$(datadir)/doc/freac
+	$(INSTALL) -d "$(DESTDIR)"$(datadir)/doc/freac
 
-	$(INSTALL_DATA) $(SRCDIR)/Readme* $(DESTDIR)$(datadir)/doc/freac
+	$(INSTALL_DATA) "$(SRCDIR)"/Readme* "$(DESTDIR)"$(datadir)/doc/freac
 
-	cp -r $(SRCDIR)/manual $(DESTDIR)$(datadir)/doc/freac
-	chmod -R a=rX,u=rwX $(DESTDIR)$(datadir)/doc/freac/manual
+	cp -r "$(SRCDIR)"/manual "$(DESTDIR)"$(datadir)/doc/freac
+	chmod -R a=rX,u=rwX "$(DESTDIR)"$(datadir)/doc/freac/manual
 
 ifneq ($(BUILD_OSX),True)
 ifneq ($(BUILD_HAIKU),True)
-	$(INSTALL) -d $(DESTDIR)$(datadir)/applications/
-	$(INSTALL) -d $(DESTDIR)$(datadir)/metainfo/
+	$(INSTALL) -d "$(DESTDIR)"$(datadir)/applications/
+	$(INSTALL) -d "$(DESTDIR)"$(datadir)/metainfo/
 
-	$(INSTALL_DATA) $(SRCDIR)/metadata/org.freac.freac.desktop $(DESTDIR)$(datadir)/applications
-	$(INSTALL_DATA) $(SRCDIR)/metadata/org.freac.freac.appdata.xml $(DESTDIR)$(datadir)/metainfo
+	$(INSTALL_DATA) "$(SRCDIR)"/metadata/org.freac.freac.desktop "$(DESTDIR)"$(datadir)/applications
+	$(INSTALL_DATA) "$(SRCDIR)"/metadata/org.freac.freac.appdata.xml "$(DESTDIR)"$(datadir)/metainfo
 
-	$(INSTALL) -d $(DESTDIR)$(datadir)/icons/hicolor/64x64/apps/
-	$(INSTALL) -d $(DESTDIR)$(datadir)/icons/hicolor/128x128/apps/
+	$(INSTALL) -d "$(DESTDIR)"$(datadir)/icons/hicolor/64x64/apps/
+	$(INSTALL) -d "$(DESTDIR)"$(datadir)/icons/hicolor/128x128/apps/
 
-	$(INSTALL_DATA) $(SRCDIR)/icons/freac-64x64.png $(DESTDIR)$(datadir)/icons/hicolor/64x64/apps/org.freac.freac.png
-	$(INSTALL_DATA) $(SRCDIR)/icons/freac.png $(DESTDIR)$(datadir)/icons/hicolor/128x128/apps/org.freac.freac.png
+	$(INSTALL_DATA) "$(SRCDIR)"/icons/freac-64x64.png "$(DESTDIR)"$(datadir)/icons/hicolor/64x64/apps/org.freac.freac.png
+	$(INSTALL_DATA) "$(SRCDIR)"/icons/freac.png "$(DESTDIR)"$(datadir)/icons/hicolor/128x128/apps/org.freac.freac.png
 endif
 endif
 
@@ -235,29 +235,29 @@ endif
 
 uninstall:
 ifneq ($(BUILD_WIN32),True)
-	rm -f $(DESTDIR)$(bindir)/freac
-	rm -f $(DESTDIR)$(bindir)/freaccmd
+	rm -f "$(DESTDIR)"$(bindir)/freac
+	rm -f "$(DESTDIR)"$(bindir)/freaccmd
 
-	rm -f $(DESTDIR)$(libdir)/freac/freac$(SHARED)
-	rm -f -r $(DESTDIR)$(libdir)/freac
+	rm -f "$(DESTDIR)"$(libdir)/freac/freac$(SHARED)
+	rm -f -r "$(DESTDIR)"$(libdir)/freac
 
-	rm -f -r $(DESTDIR)$(datadir)/freac/icons
-	rm -f -r $(DESTDIR)$(datadir)/freac/lang
+	rm -f -r "$(DESTDIR)"$(datadir)/freac/icons
+	rm -f -r "$(DESTDIR)"$(datadir)/freac/lang
 
-	rm -f -r $(DESTDIR)$(datadir)/freac
+	rm -f -r "$(DESTDIR)"$(datadir)/freac
 
-	rm -f $(DESTDIR)$(datadir)/doc/freac/Readme*
-	rm -f -r $(DESTDIR)$(datadir)/doc/freac/manual
+	rm -f "$(DESTDIR)"$(datadir)/doc/freac/Readme*
+	rm -f -r "$(DESTDIR)"$(datadir)/doc/freac/manual
 
-	rm -f -r $(DESTDIR)$(datadir)/doc/freac
+	rm -f -r "$(DESTDIR)"$(datadir)/doc/freac
 
 ifneq ($(BUILD_OSX),True)
 ifneq ($(BUILD_HAIKU),True)
-	rm -f $(DESTDIR)$(datadir)/applications/org.freac.freac.desktop
-	rm -f $(DESTDIR)$(datadir)/metainfo/org.freac.freac.appdata.xml
+	rm -f "$(DESTDIR)"$(datadir)/applications/org.freac.freac.desktop
+	rm -f "$(DESTDIR)"$(datadir)/metainfo/org.freac.freac.appdata.xml
 
-	rm -f $(DESTDIR)$(datadir)/icons/hicolor/64x64/apps/org.freac.freac.png
-	rm -f $(DESTDIR)$(datadir)/icons/hicolor/128x128/apps/org.freac.freac.png
+	rm -f "$(DESTDIR)"$(datadir)/icons/hicolor/64x64/apps/org.freac.freac.png
+	rm -f "$(DESTDIR)"$(datadir)/icons/hicolor/128x128/apps/org.freac.freac.png
 endif
 endif
 
@@ -266,7 +266,7 @@ endif
 
 clean: clean_resources
 	$(REMOVER) $(REMOVER_OPTS) $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(RESFILES) $(DLLNAME) $(EXENAME) $(CMDNAME) $(LIBNAME)
-ifneq ($(SRCDIR),$(CURDIR))
+ifneq ("$(SRCDIR)","$(CURDIR)")
 	rmdir $(BIN) $(OBJECTS) 2> /dev/null || true
 endif
 
@@ -340,7 +340,7 @@ $(OBJECTS)/%.o: $(SRC)/support/%.cpp
 $(OBJECTS)/%.o: $(SRC)/support/%.mm
 	$(OBJCXX) $(CCOPTS) $(OBJCXXFLAGS) $< -o $@
 
-$(OBJECTS)/%.o: $(RESOURCES)/%.rc $(INCLUDE)/resources.h
+$(OBJECTS)/%.o: $(RESOURCES)/%.rc
 	$(RESCOMP) $(RESCOMP_OPTS) -o $@ $<
 
 $(RESOURCES)/%.rsrc: $(RESOURCES)/%.rdef

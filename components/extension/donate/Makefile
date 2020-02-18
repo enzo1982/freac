@@ -23,9 +23,9 @@ ALLCMD1   =
 ALLCMD2   =
 CLEANCMD1 =
 CLEANCMD2 =
-INSTCMD1  = cp -r $(SRCDIR)/freac.extension.donate $(DESTDIR)$(libdir)/freac
-INSTCMD2  = chmod -R a=rX,u=rwX $(DESTDIR)$(libdir)/freac/freac.extension.donate
-UINSTCMD1 = rm -f -r $(DESTDIR)$(libdir)/freac/freac.extension.donate
+INSTCMD1  = cp -r "$(SRCDIR)"/freac.extension.donate "$(DESTDIR)"$(libdir)/freac
+INSTCMD2  = chmod -R a=rX,u=rwX "$(DESTDIR)"$(libdir)/freac/freac.extension.donate
+UINSTCMD1 = rm -f -r "$(DESTDIR)"$(libdir)/freac/freac.extension.donate
 UINSTCMD2 =
 
 ## Do not change anything below this line. ##

@@ -23,9 +23,9 @@ ALLCMD1   =
 ALLCMD2   =
 CLEANCMD1 =
 CLEANCMD2 =
-INSTCMD1  = cp -r $(SRCDIR)/freac.extension.langnotify $(DESTDIR)$(libdir)/freac
-INSTCMD2  = chmod -R a=rX,u=rwX $(DESTDIR)$(libdir)/freac/freac.extension.langnotify
-UINSTCMD1 = rm -f -r $(DESTDIR)$(libdir)/freac/freac.extension.langnotify
+INSTCMD1  = cp -r "$(SRCDIR)"/freac.extension.langnotify "$(DESTDIR)"$(libdir)/freac
+INSTCMD2  = chmod -R a=rX,u=rwX "$(DESTDIR)"$(libdir)/freac/freac.extension.langnotify
+UINSTCMD1 = rm -f -r "$(DESTDIR)"$(libdir)/freac/freac.extension.langnotify
 UINSTCMD2 =
 
 ## Do not change anything below this line. ##
