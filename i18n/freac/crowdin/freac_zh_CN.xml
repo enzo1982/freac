@@ -204,24 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">编码文件</entry>
-        <entry id="3051" string="none">无</entry>
-        <entry id="3052" string="Skip current file">跳过</entry>
+	<entry id="3051" string="none">无</entry>
+	<entry id="3052" string="Skip current file">跳过</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">当前使用的解码器</entry>
-        <entry id="3061" string="none">未知</entry>
+	<entry id="3060" string="Active decoder">当前使用的解码器</entry>
+	<entry id="3061" string="none">未知</entry>
       </section>
 
       <section name="Filters">
-	<entry id="3070" string="Selected filters">已选过滤器</entry>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3070" string="Selected filters">已选滤镜</entry>
+	<entry id="3071" string="none">无</entry>
+	<entry id="3072" string="disabled">禁用</entry>
 	<entry id="3073" string="Configure signal processing">配置信号处理</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">已选编码器</entry>
+	<entry id="3080" string="Selected encoder">已选编码器</entry>
 	<entry id="3081" string="Configure selected encoder">设置已选编码器</entry>
       </section>
 
@@ -1199,7 +1199,7 @@
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox 可以使用信用卡进行快速而简单的捐赠。点击此按钮使用 Donorbox 进行捐赠。</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox 可以使用信用卡进行快速而简单的捐赠。&#10;点击此按钮使用 Donorbox 进行捐赠。</entry>
 	  <entry id="100201" string="Donate">捐赠</entry>
 	  <entry id="100202" string="usd">usd</entry>
 	</section>
