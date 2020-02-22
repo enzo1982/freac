@@ -118,6 +118,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	String		 timeout	= "120";
 	Bool		 cddb		= ScanForProgramOption("--cddb");
 
+	Bool		 ignoreCoverArt	= ScanForProgramOption("--ignore-coverart");
+
 	Bool		 quiet		= ScanForProgramOption("--quiet");
 
 	encoderID = "lame";
@@ -315,6 +317,12 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, False);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, !ignoreCoverArt);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromFilesID, False);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, !ignoreCoverArt);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesID, False);
 
 	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, False);
 	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, False);
@@ -732,6 +740,8 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 
 		Console::OutputString("  --superfast\t\t\tEnable SuperFast mode\n");
 		Console::OutputString("  --threads=<n>\t\t\tSpecify number of threads to use in SuperFast mode\n\n");
+
+		Console::OutputString("  --ignore-coverart\t\tIgnore cover images in tags\n\n");
 
 		Console::OutputString("  --list-configs\t\tPrint a list of available configurations\n");
 		Console::OutputString("  --config=<cfg>\t\tSpecify configuration to use\n\n");
