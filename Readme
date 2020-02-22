@@ -149,6 +149,10 @@ History
 
 	Version 1.1 Beta 3+ (February 2020)
 
+		- Improvements
+
+			- added options to control chapter information and cover art to freaccmd
+
 		- Bug fixes
 
 			- fixed drag & drop not accepting long file paths on Windows

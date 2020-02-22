@@ -118,6 +118,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	String		 timeout	= "120";
 	Bool		 cddb		= ScanForProgramOption("--cddb");
 
+	Bool		 ignoreChapters	= ScanForProgramOption("--ignore-chapters");
 	Bool		 ignoreCoverArt	= ScanForProgramOption("--ignore-coverart");
 
 	Bool		 quiet		= ScanForProgramOption("--quiet");
@@ -317,6 +318,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, False);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersID, !ignoreChapters);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadEmbeddedCueSheetsID, False);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsPreferCueSheetsToChaptersID, Config::TagsPreferCueSheetsToChaptersDefault);
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, !ignoreCoverArt);
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromFilesID, False);
@@ -334,6 +339,9 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	{
 		config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, True);
 		config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outfile);
+
+		config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, False);
+		config->SetIntValue(Config::CategoryTagsID, Config::TagsReadEmbeddedCueSheetsID, False);
 
 		JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
 
@@ -741,7 +749,8 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		Console::OutputString("  --superfast\t\t\tEnable SuperFast mode\n");
 		Console::OutputString("  --threads=<n>\t\t\tSpecify number of threads to use in SuperFast mode\n\n");
 
-		Console::OutputString("  --ignore-coverart\t\tIgnore cover images in tags\n\n");
+		Console::OutputString("  --ignore-chapters\t\tDo not write chapter information to tags\n\n");
+		Console::OutputString("  --ignore-coverart\t\tDo not write cover images to tags\n\n");
 
 		Console::OutputString("  --list-configs\t\tPrint a list of available configurations\n");
 		Console::OutputString("  --config=<cfg>\t\tSpecify configuration to use\n\n");

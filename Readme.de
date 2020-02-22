@@ -149,6 +149,10 @@ Geschichte
 
 	Version 1.1 Beta 3+ (February 2020)
 
+		- Verbesserungen
+
+			- Optionen zum Steuern von Kapitelinformationen und Cover-Bildern zu freaccmd hinzugefügt
+
 		- Bug fixes
 
 			- Problem behoben, dass Drag & Drop unter Windows keine langen Dateipfade akzeptiert
