@@ -724,6 +724,7 @@
 
       <section name="Musepack Audio Encoder">
 	<entry id="80100" string="Quality">النوعية</entry>
+      </section>
 
       <section name="OptimFROG Lossless Encoder">
 	<entry id="80214" string="disabled">معطل</entry>
