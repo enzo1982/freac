@@ -151,8 +151,10 @@ History
 
 		- Bug fixes
 
+			- fixed drag & drop not accepting long file paths on Windows
 			- fixed file modification time stamp getting lost when output verification is active
 			- fixed file creation time stamp not being preserved despite option being enabled
+			- fixed online updater not working
 
 	Version 1.1 Beta 3 (February 2020)
 

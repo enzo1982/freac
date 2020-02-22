@@ -151,8 +151,10 @@ Geschichte
 
 		- Bug fixes
 
+			- Problem behoben, dass Drag & Drop unter Windows keine langen Dateipfade akzeptiert
 			- Problem mit verlorenen Dateiänderungsdaten bei aktivierter Ausgabeverifikation behoben
 			- Problem mit trotz aktivierter Option nicht beibehaltenen Dateierstellungsdaten behoben
+			- Probleme mit nicht funktionierendem Online-Update behoben
 
 	Version 1.1 Beta 3 (Februar 2020)
 
