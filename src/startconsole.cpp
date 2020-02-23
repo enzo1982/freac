@@ -12,6 +12,7 @@
 
 #include <startconsole.h>
 #include <joblist.h>
+#include <utilities.h>
 #include <config.h>
 
 #include <engine/converter.h>
@@ -303,7 +304,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, String(encoderID).Append("-enc"));
 
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, False);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, True);
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outfile);
 
 	config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, True);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsDeleteAfterEncodingID, False);
@@ -328,10 +330,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperLockTrayID, Config::RipperLockTrayDefault);
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
 
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, False);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, !ignoreChapters);
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersID, !ignoreChapters);
 
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadEmbeddedCueSheetsID, False);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadEmbeddedCueSheetsID, !ignoreChapters);
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsPreferCueSheetsToChaptersID, Config::TagsPreferCueSheetsToChaptersDefault);
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, !ignoreCoverArt);
@@ -345,12 +347,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	if (files.Length() > 1 && outfile != NIL)
 	{
-		config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, True);
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outfile);
-
-		config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, False);
-		config->SetIntValue(Config::CategoryTagsID, Config::TagsReadEmbeddedCueSheetsID, False);
-
 		JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
 
 		/* Check if input files exist.
@@ -449,13 +445,14 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 				continue;
 			}
 
-			/* Get track to convert.
+			/* Set output file name.
 			 */
-			Track	 track = joblist->GetNthTrack(0);
+			if (outfile == NIL)
+			{
+				Track	 track = joblist->GetNthTrack(0);
 
-			track.outputFile = outfile;
-
-			joblist->UpdateTrackInfo(track);
+				config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Utilities::GetOutputFileName(track));
+			}
 
 			/* Convert track in joblist.
 			 */
@@ -463,7 +460,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			Converter().Convert(*joblist->GetTrackList(), False);
 
-			joblist->RemoveNthTrack(0);
+			joblist->RemoveAllTracks();
 
 			if (!quiet) Console::OutputString("done.\n");
 		}
