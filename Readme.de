@@ -151,13 +151,16 @@ Geschichte
 
 		- Verbesserungen
 
+			- Übergebe Float-Samples direkt an LAME-Kodierer, wenn das Sampleformat Float ist
 			- Optionen zum Steuern von Kapitelinformationen und Cover-Bildern zu freaccmd hinzugefügt
+			- Verwende Fensterrahmenfarbe als Akzentfarbe unter Windows Vista, 7 und 8/8.1
 
 		- Bug fixes
 
 			- Problem behoben, dass Drag & Drop unter Windows keine langen Dateipfade akzeptiert
 			- Problem mit verlorenen Dateiänderungsdaten bei aktivierter Ausgabeverifikation behoben
 			- Problem mit trotz aktivierter Option nicht beibehaltenen Dateierstellungsdaten behoben
+			- Problem mit schwarzer Titelleiste unter Windows Vista, 7 und 8/8.1 behoben
 			- Probleme mit nicht funktionierendem Online-Update behoben
 
 	Version 1.1 Beta 3 (Februar 2020)
