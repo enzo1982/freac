@@ -303,8 +303,19 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, String(encoderID).Append("-enc"));
 
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, False);
+
+	config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, True);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsDeleteAfterEncodingID, False);
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, outdir);
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
+
+	config->SetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, False);
+
+	config->SetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, False);
+	config->SetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, False);
 
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, True);
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, superFast);
@@ -331,9 +342,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, False);
 	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, False);
-
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, False);
 
 	if (files.Length() > 1 && outfile != NIL)
 	{

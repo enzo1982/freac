@@ -1392,6 +1392,8 @@ Format freac::JobConvert::GetSingleTrackSampleFormat() const
 {
 	Registry	&boca = Registry::Get();
 
+	Bool	 enableConsole = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+
 	/* Create encoder instance.
 	 */
 	String			 encoderID = configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
@@ -1461,7 +1463,7 @@ Format freac::JobConvert::GetSingleTrackSampleFormat() const
 
 	boca.DeleteComponent(encoder);
 
-	if (targetFormats.Length() <= 1) return sourceFormats.GetFirst();
+	if (targetFormats.Length() <= 1 || enableConsole) return sourceFormats.GetFirst();
 
 	/* Display dialog to select output format.
 	 */
