@@ -160,6 +160,7 @@ History
 			- fixed drag & drop not accepting long file paths on Windows
 			- fixed file modification time stamp getting lost when output verification is active
 			- fixed file creation time stamp not being preserved despite option being enabled
+			- fixed freaccmd not correctly handling relative output folders
 			- fixed black title bar color on Windows Vista, 7 and 8/8.1
 			- fixed online updater not working
 

@@ -108,8 +108,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	Array<String>	 files;
 	String		 pattern	= "<filename>";
-	String		 outfile;
-	String		 outdir		= Directory::GetActiveDirectory();
+	String		 outputFile;
+	String		 outputFolder	= Directory::GetActiveDirectory();
 
 	Bool		 superFast	= ScanForProgramOption("--superfast");
 	String		 threads	= "0";
@@ -128,8 +128,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	if (!ScanForProgramOption("--encoder=%VALUE", &encoderID)) ScanForProgramOption("-e %VALUE", &encoderID);
 	if (!ScanForProgramOption("--help=%VALUE",    &helpenc))   ScanForProgramOption("-h %VALUE", &helpenc);
-								   ScanForProgramOption("-d %VALUE", &outdir);
-								   ScanForProgramOption("-o %VALUE", &outfile);
+								   ScanForProgramOption("-d %VALUE", &outputFolder);
+								   ScanForProgramOption("-o %VALUE", &outputFile);
 	if (!ScanForProgramOption("--pattern=%VALUE", &pattern))   ScanForProgramOption("-p %VALUE", &pattern);
 
 	ScanForProgramOption("--threads=%VALUE", &threads);
@@ -300,18 +300,16 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	/* Perform actual conversion.
 	 */
-	if (!outdir.EndsWith(Directory::GetDirectoryDelimiter())) outdir.Append(Directory::GetDirectoryDelimiter());
-
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, String(encoderID).Append("-enc"));
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, True);
-	config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outfile);
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outputFile);
 
 	config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, True);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsDeleteAfterEncodingID, False);
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
-	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, outdir);
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Directory(outputFolder));
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
 
 	config->SetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, False);
@@ -345,7 +343,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, False);
 	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, False);
 
-	if (files.Length() > 1 && outfile != NIL)
+	if (files.Length() > 1 && outputFile != NIL)
 	{
 		JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
 
@@ -447,7 +445,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			/* Set output file name.
 			 */
-			if (outfile == NIL)
+			if (outputFile == NIL)
 			{
 				Track	 track = joblist->GetNthTrack(0);
 
