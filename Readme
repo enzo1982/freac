@@ -154,6 +154,7 @@ History
 			- now passing float samples to LAME encoder directly if sample format is float
 			- added options to control chapter information and cover art to freaccmd
 			- respect colorization tint color on Windows Vista, 7 and 8/8.1
+			- log CDDB information when ripping
 
 		- Bug fixes
 

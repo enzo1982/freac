@@ -33,6 +33,8 @@
 #include <dialogs/overwrite.h>
 #include <dialogs/format.h>
 
+#include <cddb/cddbcache.h>
+
 using namespace smooth::GUI::Dialogs;
 
 using namespace BoCA;
@@ -1783,6 +1785,9 @@ Void freac::JobConvert::LogCDInfo() const
 		if (configuration->GetIntValue(Config::CategoryRipperID, String("UseOffsetDrive").Append(String::FromInt(drive)), 0)) log->Write(String("        Read offset:      ").Append(String::FromInt(configuration->GetIntValue(Config::CategoryRipperID, String("ReadOffsetDrive").Append(String::FromInt(drive)), 0))).Append(" samples"));
 
 		log->Write(NIL);
+
+		/* Log disc table of contents.
+		 */
 		log->Write("    Disc TOC:");
 		log->Write(NIL);
 		log->Write("        Track |   Start  |  Length  | Start sector | End sector");
@@ -1811,8 +1816,8 @@ Void freac::JobConvert::LogCDInfo() const
 			if (mcdi.GetNthEntryType(i) == ENTRY_AUDIO)
 			{
 				entry.Append("   ").Append(String().FillN(' ', 1 - Math::Floor(Math::Log10(trackNumber)))).Append(String::FromInt(trackNumber)).Append(" | ")
-						   .Append(trackStartString)											       .Append(" | ")
-						   .Append(trackLengthString)											       .Append(" | ");
+						   .Append(trackStartString)										       .Append(" | ")
+						   .Append(trackLengthString)										       .Append(" | ");
 			}
 			else
 			{
@@ -1825,6 +1830,52 @@ Void freac::JobConvert::LogCDInfo() const
 			     .Append("    ")  .Append(String().FillN(' ', 5 - Math::Floor(Math::Log10(trackEndSector))))  .Append(String::FromInt(trackEndSector));
 
 			log->Write(entry);
+		}
+
+		log->Write(NIL);
+
+		/* Log CDDB data if available.
+		 */
+		String		 queryString = CDDB::QueryStringFromMCDI(mcdi);
+		CDDBInfo	 cddbInfo    = CDDBCache::Get()->GetCacheEntry(queryString); 
+
+		log->Write("    Disc info:");
+
+		if (cddbInfo != NIL)
+		{
+			log->Write(String("        CDDB disc ID:  ").Append(CDDB::DiscIDToString(cddbInfo.discID)));
+			log->Write(String("        CDDB category: ").Append(cddbInfo.category));
+			log->Write(NIL);
+			log->Write(String("        Artist:        ").Append(cddbInfo.dArtist));
+			log->Write(String("        Album:         ").Append(cddbInfo.dTitle));
+			log->Write(String("        Genre:         ").Append(cddbInfo.dGenre));
+
+			if (cddbInfo.dYear > 0) log->Write(String("        Published:     ").Append(String::FromInt(cddbInfo.dYear)));
+
+			log->Write(NIL);
+			log->Write("        Track | Offset | Track title");
+			log->Write("        -------------------------------------------------------");
+
+			for (Int i = 0; i < cddbInfo.trackOffsets.Length(); i++)
+			{
+				Int	 trackNumber = mcdi.GetNthEntryTrackNumber(i);
+				Int	 trackOffset = cddbInfo.trackOffsets.GetNth(i);
+
+				String	 entry = String("        ");
+
+				if (mcdi.GetNthEntryType(i) == ENTRY_AUDIO) entry.Append("   ").Append(String().FillN(' ', 1 - Math::Floor(Math::Log10(trackNumber)))).Append(String::FromInt(trackNumber)).Append(" | ");
+				else					    entry.Append(" ").Append("DATA").Append(" | ");
+
+				entry.Append(String().FillN(' ', 5 - Math::Floor(Math::Log10(trackOffset)))).Append(String::FromInt(trackOffset)).Append(" | ")
+				     .Append(cddbInfo.trackArtists.GetNth(i) != NIL ? String(cddbInfo.trackArtists.GetNth(i)).Append(" / ") : String()).Append(cddbInfo.trackTitles.GetNth(i));
+
+				log->Write(entry);
+			}
+		}
+		else
+		{
+			log->Write(String("        CDDB disc ID: ").Append(CDDB::DiscIDToString(CDDB::DiscIDFromMCDI(mcdi))));
+			log->Write("        CDDB info:    No CDDB data available for this disc!");
 		}
 
 		log->Write(NIL);
