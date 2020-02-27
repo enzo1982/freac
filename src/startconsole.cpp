@@ -21,13 +21,43 @@
 #include <jobs/joblist/addfiles.h>
 #include <jobs/joblist/addtracks.h>
 
+#ifdef __WIN32__
+#	include <windows.h>
+#else
+#	include <signal.h>
+#endif
+
 using namespace smooth::IO;
 
 using namespace BoCA;
 using namespace BoCA::AS;
 
+#ifdef __WIN32__
+static BOOL WINAPI ConsoleCtrlHandler(DWORD ctrlType)
+{
+	if (ctrlType != CTRL_C_EVENT	  && ctrlType != CTRL_CLOSE_EVENT &&
+	    ctrlType != CTRL_LOGOFF_EVENT && ctrlType != CTRL_SHUTDOWN_EVENT) return FALSE;
+
+	freac::freacCommandline::Get()->Stop();
+
+	return TRUE;
+}
+#else
+static void ConsoleSignalHandler(int signal)
+{
+	freac::freacCommandline::Get()->Stop();
+}
+#endif
+
 Int StartConsole(const Array<String> &args)
 {
+#ifdef __WIN32__
+	SetConsoleCtrlHandler(&ConsoleCtrlHandler, TRUE);
+#else
+	signal(SIGINT, &ConsoleSignalHandler);
+	signal(SIGTERM, &ConsoleSignalHandler);
+#endif
+
 	freac::freacCommandline::Get(args);
 	freac::freacCommandline::Free();
 
@@ -136,6 +166,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	encoderID = encoderID.ToLower();
 	helpenc	  = helpenc.ToLower();
+	stopped	  = False;
 
 	DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
 	Int			 numDrives = 0;
@@ -385,7 +416,11 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			 */
 			Converter().Convert(*joblist->GetTrackList(), False);
 
-			if (!quiet) Console::OutputString("done.\n");
+			if (!quiet)
+			{
+				if (!stopped) Console::OutputString("done.\n");
+				else	      Console::OutputString("aborted.\n");
+			}
 		}
 		else
 		{
@@ -460,7 +495,13 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			joblist->RemoveAllTracks();
 
-			if (!quiet) Console::OutputString("done.\n");
+			if (!quiet)
+			{
+				if (!stopped) Console::OutputString("done.\n");
+				else	      Console::OutputString("aborted.\n");
+			}
+
+			if (stopped) break;
 		}
 
 		delete joblist;
@@ -717,6 +758,13 @@ Bool freac::freacCommandline::TracksToFiles(const String &tracks, Array<String> 
 	}
 
 	return True;
+}
+
+Void freac::freacCommandline::Stop()
+{
+	stopped = True;
+
+	JobConvert::Stop();
 }
 
 Void freac::freacCommandline::ShowHelp(const String &helpenc)

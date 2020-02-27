@@ -153,6 +153,7 @@ Geschichte
 
 			- Übergebe Float-Samples direkt an LAME-Kodierer, wenn das Sampleformat Float ist
 			- Optionen zum Steuern von Kapitelinformationen und Cover-Bildern zu freaccmd hinzugefügt
+			- Reagiere in freaccmd auf Strg+C, um bei Abbruch temporäre Dateien aufzuräumen
 			- Verwende Fensterrahmenfarbe als Akzentfarbe unter Windows Vista, 7 und 8/8.1
 			- Schreibe CDDB-Informationen beim Rippen in Log-Dateien
 
