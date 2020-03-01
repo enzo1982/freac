@@ -148,7 +148,7 @@
       <entry id="2007" string="Configure signal processing">Konfigūruoti signalų apdorojimą</entry>
       <entry id="2008" string="Configure the selected audio encoder">Konfigūruoti pasirinktą audio koduotuvą</entry>
       <entry id="2009" string="Start the encoding process">Pradėti užkodavimo procesą</entry>
-      <entry id="2010" string="Start the encoding process (deleting original files)">Pradėti užkodavimo procesą (ištrinant originalo failus)</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Pradėti kodavimo procesą (ištrinant originalo failus)</entry>
       <entry id="2011" string="Pause/resume encoding">Pristabdyti/Pratęsti užkodavimą</entry>
       <entry id="2012" string="Stop encoding">Stabdyti užkodavimą</entry>
     </section>
@@ -204,22 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Užkoduojamas failas</entry>
-        <entry id="3051" string="none">nieko</entry>
-        <entry id="3052" string="Skip current file">Praleisti</entry>
+	<entry id="3051" string="none">nieko</entry>
+	<entry id="3052" string="Skip current file">Praleisti</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Aktyvus dekoderis</entry>
-        <entry id="3061" string="none">nežinoma</entry>
+	<entry id="3060" string="Active decoder">Aktyvus dekoderis</entry>
+	<entry id="3061" string="none">nežinoma</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Pasirinkti filtrai</entry>
+	<entry id="3071" string="none">nieko</entry>
+	<entry id="3072" string="disabled">išjungta</entry>
 	<entry id="3073" string="Configure signal processing">Konfigūruoti signalų apdorojimą</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Pasirinktas koduotuvas</entry>
+	<entry id="3080" string="Selected encoder">Pasirinktas koduotuvas</entry>
 	<entry id="3081" string="Configure selected encoder">Konfigūruoti pasirinktą koduotuvą</entry>
       </section>
 
@@ -1180,7 +1182,7 @@
 	<entry id="100000" string="Support this project">Paremti projektą</entry>
 	<entry id="100001" string="Please support this project!">Prašome paremti šį projektą dabar!</entry>
 	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Prašome padėti išlaikyti šią programinę įrangą nemokama paremdami %1&#10;projektą.</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Prašome susisiekti %1 jei norite paaukoti elektroniniu&#10;pavedimu, atsiųsti čekį ar pinigų paštu.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Prašome susisiekti %1 jei norite paaukoti elektroniniu pavedimu,&#10;atsiųsti čekį ar pinigų paštu.</entry>
 	<entry id="100004" string="Thank you very much!">Labai ačiū!</entry>
 	<entry id="100005" string="Remind me later">Priminti vėliau</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
@@ -1197,23 +1199,23 @@
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">„Donorbox“ leidžia greitai bei paprastai paremti naudojantis kreditine kortele. Spustelėkite šį&#10;mygtuką, kad paremti naudojantis „Donorbox“:</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">„Donorbox“ leidžia greitai bei paprastai paremti naudojantis kreditine kortele.&#10;Spustelėkite šį mygtuką, kad paremti naudojantis „Donorbox“:</entry>
 	  <entry id="100201" string="Donate">Paaukoti</entry>
 	  <entry id="100202" string="usd">eur</entry>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Nuskenuokite arba spustelėkite QR kodą arba nukopijuokite šį&#10;adresą, kad paaukoti „Bitcoin“:</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Nuskenuokite arba spustelėkite QR kodą arba nukopijuokite&#10;šį adresą, kad paaukoti „Bitcoin“:</entry>
 	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Šis adresas taip pat priima „Bitcoin Cash“ bei kitus variantus.</entry>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Nuskenuokite arba spustelėkite QR kodą arba nukopijuokite šį&#10;adresą, kad paaukoti „Ethereum“:</entry>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Nuskenuokite arba spustelėkite QR kodą arba nukopijuokite&#10;šį adresą, kad paaukoti „Ethereum“:</entry>
 	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">Šis adresas taip pat priima „Ether Classic“ ir „ERC20“ žetonus.</entry>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Galite paremti atlikdami elektroninį pavedimą į&#10;šią sąskaitą:</entry>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Galite paremti atlikdami elektroninį pavedimą į šią&#10;sąskaitą:</entry>
 	  <entry id="100501" string="Account holder:">Sąskaitos savininkas:</entry>
 	  <entry id="100502" string="IBAN:">IBAN:</entry>
 	  <entry id="100503" string="BIC:">BIC:</entry>
