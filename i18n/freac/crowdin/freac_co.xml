@@ -215,8 +215,8 @@
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Filtri selezziunati</entry>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3071" string="none">nisunu</entry>
+	<entry id="3072" string="disabled">disattivatu</entry>
 	<entry id="3073" string="Configure signal processing">Cunfigurà u trattamentu di u signale</entry>
       </section>
 
@@ -1181,8 +1181,8 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Aiutà stu prughjettu</entry>
 	<entry id="100001" string="Please support this project!">Per piacè aiutate stu prughjettu !</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Aiutateci a cunservà stu prugramma gratuitu sustenendu u prughjettu %1&#10;cù una dunazione.</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Per piacè scrivite à %1 s’è voi vulete mandà un sceccu&#10;o trasmette soldi da messaghju elettronicu.</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Aiutateci a cunservà stu prugramma gratuitu sustenendu u prughjettu %1 cù una&#10;dunazione.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Per piacè scrivite à %1 s’è voi vulete mandà un sceccu o trasmette soldi&#10;da messaghju elettronicu.</entry>
 	<entry id="100004" string="Thank you very much!">Vi ringraziemu assai !</entry>
 	<entry id="100005" string="Remind me later">Rammintatemi un altra volta</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
@@ -1199,23 +1199,23 @@
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox permette dunazioni rapide è simplice impieghendu una carta&#10;di creditu. Impiegà stu buttone per dà qualchì soldu cù Donorbox :</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox permette dunazioni rapide è simplice impieghendu una carta di creditu.&#10;Impiegà stu buttone per dà qualchì soldu cù Donorbox :</entry>
 	  <entry id="100201" string="Donate">Dunazione</entry>
 	  <entry id="100202" string="usd">eur</entry>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Per fà una dunazione via Bitcoin, ci vole à fà un scan&#10;o cliccà nant’à u codice QR, o ancu cupià st’indirizzu :</entry>
-	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">St’indirizzu accetteghja dinù pagamenti via Bitcoin Cash è altri imbrancamenti.</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Per fà una dunazione via Bitcoin, ci vole à fà un scan o cliccà&#10;nant’à u codice QR, o ancu cupià st’indirizzu :</entry>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">St’indirizzu accetteghja dinù pagamenti via Bitcoin Cash è altri&#10;imbrancamenti.</entry>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Per fà una dunazione via Ethereum, ci vole à fà un scan&#10;o cliccà nant’à u codice QR, o ancu cupià st’indirizzu :</entry>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Per fà una dunazione via Ethereum, ci vole à fà un scan o cliccà&#10;nant’à u codice QR, o ancu cupià st’indirizzu :</entry>
 	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">St’indirizzu accetteghja dinù e marche ERC20 è Ether Classic.</entry>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Pudete dà qualchì soldu facendu un trasferimentu&#10;elettronicu ver di stu contu :</entry>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Pudete dà qualchì soldu facendu un trasferimentu elettronicu&#10;ver di stu contu :</entry>
 	  <entry id="100501" string="Account holder:">Titulare di u contu :</entry>
 	  <entry id="100502" string="IBAN:">IBAN :</entry>
 	  <entry id="100503" string="BIC:">BIC :</entry>
