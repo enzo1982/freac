@@ -5,9 +5,9 @@ include $(dir $(firstword $(MAKEFILE_LIST)))/$(FREAC_PATH)/Makefile-options
 CCOPTS = -fvisibility=hidden -DBOCA_COMPONENT_BUILD $(DEFINE)
 LDOPTS = $(LIBS)
 
-ifneq ($(CDK_INSTALL_PATH),)
-	CCOPTS += -I$(CDK_INSTALL_PATH)/include
-	LDOPTS += -L$(CDK_INSTALL_PATH)/$(LIBDIR)
+ifneq ("$(CDK_INSTALL_PATH)","")
+	CCOPTS += -I"$(CDK_INSTALL_PATH)"/include
+	LDOPTS += -L"$(CDK_INSTALL_PATH)"/$(LIBDIR)
 endif
 
 ifeq (,$(findstring -lstdc++,$(LIBS)))
@@ -69,15 +69,15 @@ clean:
 
 install: all
 ifneq ($(BUILD_WIN32),True)
-	$(INSTALL) -d $(DESTDIR)$(libdir)/freac
-	$(INSTALL_DATA) $(FREAC_PATH)/$(BINDIR)/boca/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED) $(DESTDIR)$(libdir)/freac
+	$(INSTALL) -d "$(DESTDIR)"$(libdir)/freac
+	$(INSTALL_DATA) $(FREAC_PATH)/$(BINDIR)/boca/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED) "$(DESTDIR)"$(libdir)/freac
 endif
 	$(INSTCMD1)
 	$(INSTCMD2)
 
 uninstall:
 ifneq ($(BUILD_WIN32),True)
-	rm -f $(DESTDIR)$(libdir)/freac/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED)
+	rm -f "$(DESTDIR)"$(libdir)/freac/freac_$(TYPE)_$(TARGET).$(VERSION)$(SHARED)
 endif
 	$(UINSTCMD1)
 	$(UINSTCMD2)
