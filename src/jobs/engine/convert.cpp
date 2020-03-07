@@ -56,11 +56,13 @@ Signal4<Void, const BoCA::Track &,
 Signal2<Void, Int, Int>			 freac::JobConvert::onTrackProgress;
 Signal2<Void, Int, Int>			 freac::JobConvert::onTotalProgress;
 
-freac::JobConvert::JobConvert(const Array<BoCA::Track> &tracksToConvert)
+freac::JobConvert::JobConvert(const Array<BoCA::Track> &tracksToConvert, Bool iAutoRip)
 {
 	conversionID	 = ++conversionCount;
 
 	conversionPaused = False;
+
+	autoRip		 = iAutoRip;
 
 	skipTrack	 = False;
 	stopConversion   = False;
@@ -82,12 +84,13 @@ Error freac::JobConvert::Precheck()
 
 	/* Get config values.
 	 */
-	Bool	 enableConsole	       = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+	Bool	 enableConsole		= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
 
-	Bool	 encodeToSingleFile    = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
-	Bool	 overwriteAllFiles     = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || enableConsole;
+	Bool	 encodeToSingleFile	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+	Bool	 overwriteAllFiles	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || enableConsole;
 
-	Bool	 writeToInputDirectory = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
+	String	 encoderOutputDirectory	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
+	Bool	 writeToInputDirectory	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 
 	/* When converting to a single file, query the
 	 * sample format for the combined output file.
@@ -157,7 +160,9 @@ Error freac::JobConvert::Precheck()
 	{
 		/* Get single file name.
 		 */
-		singleOutFile = Utilities::GetSingleOutputFileName(tracks);
+		if (!autoRip) singleOutFile = Utilities::GetSingleOutputFileName(tracks);
+		else	      singleOutFile = BoCA::Utilities::GetAbsolutePathName(encoderOutputDirectory).Append(Utilities::GetSingleOutputFileNameDefault(tracks));
+
 		singleOutFile = BoCA::Utilities::NormalizeFileName(singleOutFile);
 
 		if (singleOutFile == NIL) return Error();

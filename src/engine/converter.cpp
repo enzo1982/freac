@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -32,7 +32,7 @@ freac::Converter::~Converter()
 {
 }
 
-Void freac::Converter::Convert(const Array<Track> &tracks, Bool useThread)
+Void freac::Converter::Convert(const Array<Track> &tracks, Bool autoRip, Bool useThread)
 {
 	/* Check if currently playing a CD track.
 	 */
@@ -64,7 +64,7 @@ Void freac::Converter::Convert(const Array<Track> &tracks, Bool useThread)
 
 	/* Start conversion job.
 	 */
-	Job	*convert = new JobConvert(tracks);
+	Job	*convert = new JobConvert(tracks, autoRip);
 
 	if (!useThread)	convert->onFinish.Connect(&Converter::OnFinishJob, this);
 

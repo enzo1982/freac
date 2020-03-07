@@ -414,7 +414,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		{
 			/* Convert tracks in joblist.
 			 */
-			Converter().Convert(*joblist->GetTrackList(), False);
+			Converter().Convert(*joblist->GetTrackList(), False, False);
 
 			if (!quiet)
 			{
@@ -491,7 +491,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			 */
 			if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
 
-			Converter().Convert(*joblist->GetTrackList(), False);
+			Converter().Convert(*joblist->GetTrackList(), False, False);
 
 			joblist->RemoveAllTracks();
 

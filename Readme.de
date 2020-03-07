@@ -147,17 +147,18 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1 Beta 3+ (February 2020)
+	Version 1.1 Beta 3+ (März 2020)
 
 		- Verbesserungen
 
 			- Übergebe Float-Samples direkt an LAME-Kodierer, wenn das Sampleformat Float ist
+			- Automatisches Rippen funktioniert jetzt auch bei Ausage in eine einzige Datei
 			- Optionen zum Steuern von Kapitelinformationen und Cover-Bildern zu freaccmd hinzugefügt
 			- Reagiere in freaccmd auf Strg+C, um bei Abbruch temporäre Dateien aufzuräumen
 			- Verwende Fensterrahmenfarbe als Akzentfarbe unter Windows Vista, 7 und 8/8.1
 			- Schreibe CDDB-Informationen beim Rippen in Log-Dateien
 
-		- Bug fixes
+		- Behobene Fehler
 
 			- Problem behoben, dass Drag & Drop unter Windows keine langen Dateipfade akzeptiert
 			- Problem mit verlorenen Dateiänderungsdaten bei aktivierter Ausgabeverifikation behoben

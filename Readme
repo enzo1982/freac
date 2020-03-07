@@ -147,11 +147,12 @@ Requirements
 History
 -------
 
-	Version 1.1 Beta 3+ (February 2020)
+	Version 1.1 Beta 3+ (March 2020)
 
 		- Improvements
 
 			- now passing float samples to LAME encoder directly if sample format is float
+			- made automatic ripping work when using the single output file option
 			- added options to control chapter information and cover art to freaccmd
 			- handle Ctrl+C in freaccmd to clean up temporary files when aborted
 			- respect colorization tint color on Windows Vista, 7 and 8/8.1
