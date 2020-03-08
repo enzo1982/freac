@@ -47,6 +47,25 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.1~rc1" date="2020-03-08">
+            <description>
+                <p>Improvements:</p>
+                <ul>
+                    <li>Now passing float samples to LAME encoder directly if sample format is float</li>
+                    <li>Made automatic ripping work when using the single output file option</li>
+                    <li>Added options to control chapter information and cover art to freaccmd</li>
+                    <li>Handle Ctrl+C in freaccmd to clean up temporary files when aborted</li>
+                    <li>Improved HiDPI detection</li>
+                    <li>Log CDDB information when ripping</li>
+                </ul>
+                <p>Bug fixes:</p>
+                <ul>
+                   <li>Fixed file modification time stamp getting lost when output verification is active</li>
+                   <li>Fixed file creation time stamp not being preserved despite option being enabled</li>
+                   <li>Fixed freaccmd not correctly handling relative output folders</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1~beta3" date="2020-02-09">
             <description>
                 <p>Improvements:</p>
