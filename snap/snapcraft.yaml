@@ -88,14 +88,14 @@ parts:
 
   libmac:
     after: [ patches ]
-    source: https://freac.org/patches/MAC_SDK_518.zip
-    source-checksum: sha256/1bc882a170578ae931671c3eb6fc79930a9d2ea1a75a9764d7ff5380ed4a0dee
+    source: https://freac.org/patches/MAC_SDK_520.zip
+    source-checksum: sha256/93d8ef5c4b5938bcd38aec2577f4b760a2dfc376890aca53cce2b6d32fbd2545
     source-subdir: .
     plugin: make
     make-parameters: [ prefix=/usr ]
     override-build: |
       if [ `lscpu | grep -i 'byte order' | awk '{ print tolower($3) }'` = "little" ]; then
-        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-5.18-gcc.patch
+        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-5.20-gcc.patch
         snapcraftctl build
       fi
     prime:
