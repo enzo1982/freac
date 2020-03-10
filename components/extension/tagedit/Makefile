@@ -19,7 +19,7 @@ DEFINE	  =
 LIBS	  =
 
 # Enter addition commands for targets all and clean here:
-ifneq ($(SRCDIR),$(CURDIR))
+ifneq ("$(SRCDIR)","$(CURDIR)")
 	ALLCMD1   = mkdir -p chooser editor
 	ALLCMD2   =
 	CLEANCMD1 = rmdir chooser editor || true

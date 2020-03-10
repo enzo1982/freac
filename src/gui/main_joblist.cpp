@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -12,6 +12,7 @@
 
 #include <gui/main_joblist.h>
 
+#include <startgui.h>
 #include <joblist.h>
 #include <config.h>
 #include <utilities.h>
@@ -21,6 +22,8 @@
 
 #include <gui/player.h>
 #include <gui/edit_folder.h>
+
+#include <dialogs/config/configcomponent.h>
 
 #include <dialogs/charset.h>
 
@@ -53,6 +56,9 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 
 	txt_filename		= new Text(NIL, pos);
 	txt_filename->SetOrientation(OR_LOWERLEFT);
+
+	txt_filters		= new Text(NIL, pos);
+	txt_filters->SetOrientation(OR_LOWERLEFT);
 
 	pos.y -= 24;
 
@@ -348,10 +354,20 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	edb_filename->SetOrientation(OR_LOWERLEFT);
 	edb_filename->Deactivate();
 
-	btn_skip = new Button(String(), Point(87, 100), Size(0, 0));
-	btn_skip->SetOrientation(OR_LOWERRIGHT);
+	btn_skip = new Button(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/other/skip.png")), Point(0, 103), Size(27, 27));
+	btn_skip->SetOrientation(OR_LOWERLEFT);
+	btn_skip->SetFlags(BF_NOFRAME);
 	btn_skip->onAction.Connect(&onRequestSkipTrack);
 	btn_skip->Deactivate();
+
+	edb_filters = new EditBox(Point(0, 99), Size(0, 0), 1024);
+	edb_filters->SetOrientation(OR_LOWERLEFT);
+	edb_filters->Deactivate();
+
+	btn_configure_dsp = new Button(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/settings/settings-dsp.png")), Point(30, 103), Size(27, 27));
+	btn_configure_dsp->SetOrientation(OR_LOWERRIGHT);
+	btn_configure_dsp->SetFlags(BF_NOFRAME);
+	btn_configure_dsp->onAction.Connect(&freacGUI::ConfigureProcessing, freacGUI::Get());
 
 	edb_format = new EditBox(Point(0, 75), Size(0, 0), 4);
 	edb_format->SetOrientation(OR_LOWERLEFT);
@@ -369,6 +385,11 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	}
 
 	UpdateEncoderText();
+
+	btn_configure_encoder = new Button(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/settings/settings-codec.png")), Point(30, 79), Size(27, 27));
+	btn_configure_encoder->SetOrientation(OR_LOWERRIGHT);
+	btn_configure_encoder->SetFlags(BF_NOFRAME);
+	btn_configure_encoder->onAction.Connect(&freacGUI::ConfigureEncoder, freacGUI::Get());
 
 	edb_outdir = new FolderEditBox(Point(0, 27), Size(0, 0), 1024);
 	edb_outdir->SetOrientation(OR_LOWERLEFT);
@@ -450,27 +471,38 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	Add(info_edit_year);
 	Add(info_text_genre);
 	Add(info_edit_genre);
+
 	Add(txt_filename);
-	Add(txt_time);
-	Add(txt_format);
-	Add(txt_encoder);
-	Add(txt_progress);
-	Add(txt_outdir);
 	Add(edb_filename);
-	Add(edb_trackTime);
-	Add(txt_splitTime);
-	Add(edb_totalTime);
+	Add(btn_skip);
+
+	Add(txt_filters);
+	Add(edb_filters);
+	Add(btn_configure_dsp);
+
+	Add(txt_format);
+	Add(edb_format);
+
+	Add(txt_encoder);
+	Add(combo_encoder);
+	Add(btn_configure_encoder);
+
+	Add(txt_progress);
+	Add(progress_total);
+	Add(progress);
 	Add(edb_trackPercent);
 	Add(txt_splitPercent);
 	Add(edb_totalPercent);
-	Add(edb_format);
-	Add(combo_encoder);
+
+	Add(txt_time);
+	Add(edb_trackTime);
+	Add(txt_splitTime);
+	Add(edb_totalTime);
+
+	Add(txt_outdir);
 	Add(edb_outdir);
-	Add(btn_skip);
 	Add(btn_open);
 	Add(btn_browse);
-	Add(progress_total);
-	Add(progress);
 
 	Add(shortcut_first);
 	Add(shortcut_last);
@@ -508,6 +540,8 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 		info_text_genre->Hide();
 		info_edit_genre->Hide();
 	}
+
+	OnChangeConfigurationSettings();
 
 	/* Listen to configuration changes.
 	 */
@@ -606,28 +640,38 @@ freac::LayerJoblist::~LayerJoblist()
 	DeleteObject(info_text_genre);
 	DeleteObject(info_edit_genre);
 	DeleteObject(info_list_genre);
+
 	DeleteObject(txt_filename);
-	DeleteObject(txt_time);
-	DeleteObject(txt_format);
-	DeleteObject(txt_encoder);
-	DeleteObject(txt_progress);
-	DeleteObject(txt_outdir);
 	DeleteObject(edb_filename);
-	DeleteObject(edb_trackTime);
-	DeleteObject(txt_splitTime);
-	DeleteObject(edb_totalTime);
+	DeleteObject(btn_skip);
+
+	DeleteObject(txt_filters);
+	DeleteObject(edb_filters);
+	DeleteObject(btn_configure_dsp);
+
+	DeleteObject(txt_format);
+	DeleteObject(edb_format);
+
+	DeleteObject(txt_encoder);
+	DeleteObject(combo_encoder);
+	DeleteObject(btn_configure_encoder);
+
+	DeleteObject(txt_progress);
+	DeleteObject(progress_total);
+	DeleteObject(progress);
 	DeleteObject(edb_trackPercent);
 	DeleteObject(txt_splitPercent);
 	DeleteObject(edb_totalPercent);
-	DeleteObject(edb_format);
-	DeleteObject(combo_encoder);
+
+	DeleteObject(txt_time);
+	DeleteObject(edb_trackTime);
+	DeleteObject(txt_splitTime);
+	DeleteObject(edb_totalTime);
+
+	DeleteObject(txt_outdir);
 	DeleteObject(edb_outdir);
-	DeleteObject(list_outdir);
-	DeleteObject(btn_skip);
 	DeleteObject(btn_open);
 	DeleteObject(btn_browse);
-	DeleteObject(progress);
-	DeleteObject(progress_total);
 
 	DeleteObject(menu_edit_artist);
 	DeleteObject(htsp_edit_artist);
@@ -688,15 +732,22 @@ Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 
 	/* Update status area.
 	 */
-	Int	 maxTextLength = (Int) Math::Max(Math::Max(txt_progress->GetUnscaledTextWidth(), txt_outdir->GetUnscaledTextWidth()), Math::Max(txt_filename->GetUnscaledTextWidth(), txt_format->GetUnscaledTextWidth()));
+	Int	 maxTextSize = (Int) Math::Max(Math::Max(txt_progress->GetUnscaledTextWidth(), txt_outdir->GetUnscaledTextWidth()), Math::Max(txt_filename->GetUnscaledTextWidth(), txt_format->GetUnscaledTextWidth()));
+	Int	 maxTextSize2 = (Int) Math::Max(txt_filters->GetUnscaledTextWidth(), txt_encoder->GetUnscaledTextWidth());
 
-	txt_encoder->SetX(clientSize.cx / 2 + 7);
-	combo_encoder->SetX(clientSize.cx / 2 + txt_encoder->GetUnscaledTextWidth() + 14);
+	txt_filters->SetX(clientSize.cx / 2 + maxTextSize2 - txt_filters->GetUnscaledTextWidth() + 7);
+	edb_filters->SetX(clientSize.cx / 2 + maxTextSize2 + 14);
 
-	edb_filename->SetWidth(clientSize.cx - 27 - maxTextLength - btn_skip->GetWidth());
-	edb_format->SetWidth(clientSize.cx / 2 - 14 - maxTextLength);
-	combo_encoder->SetWidth(Math::Ceil(Float(clientSize.cx) / 2.0) - 21 - txt_encoder->GetUnscaledTextWidth());
-	edb_outdir->SetWidth(clientSize.cx - 33 - maxTextLength - btn_browse->GetWidth() - btn_open->GetWidth());
+	txt_encoder->SetX(clientSize.cx / 2 + maxTextSize2 - txt_encoder->GetUnscaledTextWidth() + 7);
+	combo_encoder->SetX(clientSize.cx / 2 + maxTextSize2 + 14);
+
+	edb_filename->SetWidth(clientSize.cx / 2 - 10 - maxTextSize - btn_skip->GetWidth());
+	edb_format->SetWidth(clientSize.cx / 2 - 14 - maxTextSize);
+	edb_filters->SetWidth(Math::Ceil(Float(clientSize.cx) / 2.0) - 44 - maxTextSize2);
+	combo_encoder->SetWidth(Math::Ceil(Float(clientSize.cx) / 2.0) - 44 - maxTextSize2);
+	edb_outdir->SetWidth(clientSize.cx - 33 - maxTextSize - btn_browse->GetWidth() - btn_open->GetWidth());
+
+	btn_skip->SetX(edb_filename->GetX() + edb_filename->GetWidth());
 
 	/* Update progress bar and time-left display.
 	 */
@@ -719,8 +770,8 @@ Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 	edb_trackTime->SetX(txt_splitTime->GetX() + edb_trackTime->GetWidth() + 3);
 	txt_time->SetX(edb_trackTime->GetX() + txt_time->GetUnscaledTextWidth() + 7);
 
-	progress->SetWidth(clientSize.cx - 125 - maxTextLength - txt_time->GetUnscaledTextWidth() - edb_trackTime->GetWidth() - edb_totalTime->GetWidth());
-	progress_total->SetWidth(clientSize.cx - 125 - maxTextLength - txt_time->GetUnscaledTextWidth() - edb_trackTime->GetWidth() - edb_totalTime->GetWidth());
+	progress->SetWidth(clientSize.cx - 125 - maxTextSize - txt_time->GetUnscaledTextWidth() - edb_trackTime->GetWidth() - edb_totalTime->GetWidth());
+	progress_total->SetWidth(clientSize.cx - 125 - maxTextSize - txt_time->GetUnscaledTextWidth() - edb_trackTime->GetWidth() - edb_totalTime->GetWidth());
 
 	edb_trackPercent->SetX(progress->GetX() + progress->GetWidth());
 	txt_splitPercent->SetX(progress->GetX() + progress->GetWidth() + 36);
@@ -753,9 +804,51 @@ Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 
 Void freac::LayerJoblist::OnChangeConfigurationSettings()
 {
+	/* Get configuration.
+	 */
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	Bool	 enableProcessing = config->GetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault);
+	String	 selectedFilters  = config->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault);
+
 	/* Update title info area state.
 	 */
 	ShowHideTitleInfo();
+
+	/* Update list of filters in status area.
+	 */
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	i18n->SetContext("Joblist::Filters");
+
+	String	 componentNames = i18n->TranslateString("disabled");
+
+	if (enableProcessing)
+	{
+		componentNames = i18n->TranslateString("none");
+
+		if (selectedFilters != NIL)
+		{
+			Registry	&boca = Registry::Get();
+
+			componentNames = NIL;
+
+			const Array<String>	&components = selectedFilters.Explode(",");
+
+			foreach (const String &component, components)
+			{
+				AS::Component	*dsp = boca.CreateComponentByID(component);
+
+				if (dsp == NIL) continue;
+
+				componentNames.Append(componentNames != NIL ? ", " : NIL).Append(dsp->GetName());
+
+				boca.DeleteComponent(dsp);
+			}
+		}
+	}
+
+	edb_filters->SetText(componentNames);
 }
 
 Void freac::LayerJoblist::OnChangeLanguageSettings()
@@ -775,17 +868,21 @@ Void freac::LayerJoblist::OnChangeLanguageSettings()
 
 	/* Change labels of joblist  widgets.
 	 */
-	txt_filename->SetText(i18n->AddColon(i18n->TranslateString("Encoding file")));
-	txt_time->SetText(i18n->AddColon(i18n->TranslateString("Time left")));
-	txt_format->SetText(i18n->AddColon(i18n->TranslateString("Active decoder")));
-	txt_encoder->SetText(i18n->AddColon(i18n->TranslateString("Selected encoder")));
+	txt_filename->SetText(i18n->AddColon(i18n->TranslateString("Current file", "Joblist::File")));
+	txt_filters->SetText(i18n->AddColon(i18n->TranslateString("Selected filters", "Joblist::Filters")));
+	txt_format->SetText(i18n->AddColon(i18n->TranslateString("Active decoder", "Joblist::Decoder")));
+	txt_encoder->SetText(i18n->AddColon(i18n->TranslateString("Selected encoder", "Joblist::Encoder")));
 	txt_progress->SetText(i18n->AddColon(i18n->TranslateString("File progress")));
+	txt_time->SetText(i18n->AddColon(i18n->TranslateString("Time left")));
 	txt_outdir->SetText(i18n->AddColon(i18n->TranslateString("Output folder")));
 
-	edb_filename->SetText(i18n->TranslateString("none"));
-	edb_format->SetText(i18n->TranslateString("unknown"));
+	edb_filename->SetText(i18n->TranslateString("none", "Joblist::File"));
+	edb_format->SetText(i18n->TranslateString("none", "Joblist::Decoder"));
 
-	btn_skip->SetText(i18n->TranslateString("Skip"));
+	btn_skip->SetTooltipText(i18n->TranslateString("Skip current file", "Joblist::File"));
+
+	btn_configure_dsp->SetTooltipText(i18n->TranslateString("Configure signal processing", "Joblist::Filters"));
+	btn_configure_encoder->SetTooltipText(i18n->TranslateString("Configure selected encoder", "Joblist::Encoder"));
 
 	btn_open->SetText(i18n->TranslateString("Open"));
 	btn_browse->SetText(i18n->TranslateString("Select"));
@@ -803,28 +900,25 @@ Void freac::LayerJoblist::OnChangeLanguageSettings()
 
 	/* Now correct position and size of affected widgets.
 	 */
-	Int	 maxTextLength = (Int) Math::Max(Math::Max(txt_progress->GetUnscaledTextWidth(), txt_outdir->GetUnscaledTextWidth()), Math::Max(txt_filename->GetUnscaledTextWidth(), txt_format->GetUnscaledTextWidth()));
+	Int	 maxTextSize = (Int) Math::Max(Math::Max(txt_progress->GetUnscaledTextWidth(), txt_outdir->GetUnscaledTextWidth()), Math::Max(txt_filename->GetUnscaledTextWidth(), txt_format->GetUnscaledTextWidth()));
 
-	txt_progress->SetX(maxTextLength + 7 - txt_progress->GetUnscaledTextWidth());
-	txt_outdir->SetX(maxTextLength + 7 - txt_outdir->GetUnscaledTextWidth());
-	txt_filename->SetX(maxTextLength + 7 - txt_filename->GetUnscaledTextWidth());
-	txt_format->SetX(maxTextLength + 7 - txt_format->GetUnscaledTextWidth());
+	txt_progress->SetX(maxTextSize + 7 - txt_progress->GetUnscaledTextWidth());
+	txt_outdir->SetX(maxTextSize + 7 - txt_outdir->GetUnscaledTextWidth());
+	txt_filename->SetX(maxTextSize + 7 - txt_filename->GetUnscaledTextWidth());
+	txt_format->SetX(maxTextSize + 7 - txt_format->GetUnscaledTextWidth());
 	txt_time->SetX(edb_trackTime->GetX() + txt_time->GetUnscaledTextWidth() + 7);
 
-	edb_filename->SetX(maxTextLength + 14);
-	edb_format->SetX(maxTextLength + 14);
-	edb_outdir->SetX(maxTextLength + 14);
+	edb_filename->SetX(maxTextSize + 14);
+	edb_format->SetX(maxTextSize + 14);
+	edb_outdir->SetX(maxTextSize + 14);
 
 	edb_trackPercent->SetText(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"));
 	edb_totalPercent->SetText(i18n->TranslateString("%1%", "Technical").Replace("%1", "0"));
 
-	progress->SetX(maxTextLength + 14);
-	progress_total->SetX(maxTextLength + 14);
+	progress->SetX(maxTextSize + 14);
+	progress_total->SetX(maxTextSize + 14);
 
-	Int	 maxButtonText = (Int) Math::Max(btn_skip->GetUnscaledTextWidth(), btn_browse->GetUnscaledTextWidth());
-
-	btn_skip->SetWidth(Math::Max(80, maxButtonText + 13));
-	btn_browse->SetWidth(Math::Max(80, maxButtonText + 13));
+	btn_browse->SetWidth(Math::Max(80, btn_browse->GetUnscaledTextWidth() + 13));
 
 	btn_skip->SetX(btn_skip->GetWidth() + 7);
 	btn_browse->SetX(btn_browse->GetWidth() + 7);
@@ -1401,8 +1495,8 @@ Void freac::LayerJoblist::OnEncoderFinishEncoding(Bool success)
 
 	if (JobConvert::IsConverting()) return;
 
-	edb_filename->SetText(i18n->TranslateString("none"));
-	edb_format->SetText(i18n->TranslateString("unknown"));
+	edb_filename->SetText(i18n->TranslateString("none", "Joblist::File"));
+	edb_format->SetText(i18n->TranslateString("none", "Joblist::Decoder"));
 
 	btn_skip->Deactivate();
 
@@ -1823,17 +1917,40 @@ Void freac::LayerJoblist::ToggleEditPopup()
 	menu_case_all->AddEntry(string.ToUpper().Append(" (").Append(i18n->TranslateString("all upper case")).Append(")"), &clicked_case, 4)->onAction.Connect(&LayerJoblist::AdjustStringCaseAll, this);
 }
 
+Bool freac::LayerJoblist::IsWordBreakingCharacter(Int character)
+{
+	if (character == 0   ||
+	    character == ' ' ||
+	    character == '(' || character == ')'  ||
+	    character == '[' || character == ']'  ||
+	    character == '<' || character == '>'  ||
+	    character == '?' || character == 0xBF || // inverted question mark
+	    character == '!' || character == 0xA1 || // inverted exclamation mark
+	    character == '-' ||
+	    character == '+' ||
+	    character == '&' ||
+	    character == '.' ||
+	    character == ',' ||
+	    character == ':' ||
+	    character == ';' ||
+	    character == '\"') return True;
+
+	return False;
+}
+
 String freac::LayerJoblist::AdjustCaseFirstCapital(const String &string)
 {
 	String	 value = String(string).ToLower();
+	String	 character;
 
-	if (value.Length() > 0)
+	for (Int i = 0; i < value.Length(); i++)
 	{
-		String	 character;
+		if (IsWordBreakingCharacter(value[i]) || value[i] == '\'') continue;
 
-		character[0] = value[0];
+		character[0] = value[i];
+		value[i]     = character.ToTitle()[0];
 
-		value[0] = character.ToTitle()[0];
+		break;
 	}
 
 	return value;
@@ -1848,22 +1965,8 @@ String freac::LayerJoblist::AdjustCaseWordsFirstCapital(const String &string)
 	{
 		character[0] = value[i];
 
-		if (i		 == 0    ||
-		    value[i - 1] == ' '  ||
-		    value[i - 1] == '('  ||
-		    value[i - 1] == '['  ||
-		    value[i - 1] == '<'  ||
-		    value[i - 1] == '-'  ||
-		    value[i - 1] == '+'  ||
-		    value[i - 1] == '&'  ||
-		    value[i - 1] == '.'  ||
-		    value[i - 1] == ','  ||
-		    value[i - 1] == ':'  ||
-		    value[i - 1] == ';'  ||
-		    value[i - 1] == 0xBF ||	// inverted question mark
-		    value[i - 1] == 0xA1 ||	// inverted exclamation mark
-		    value[i - 1] == '\"' ||
-		    value[i - 1] == '\'') value[i] = character.ToTitle()[0];
+		if ( IsWordBreakingCharacter(value[i - 1]) || (value[i - 1] == '\'' &&
+		    (IsWordBreakingCharacter(value[i - 2]) ||  value[i - 2] == '\''))) value[i] = character.ToTitle()[0];
 	}
 
 	return value;
@@ -1874,25 +1977,22 @@ String freac::LayerJoblist::AdjustCaseLongWordsFirstCapital(const String &string
 	String	 value = AdjustCaseWordsFirstCapital(string);
 	String	 character;
 
-	for (Int i = 1; i < value.Length(); i++)
+	for (Int i = 0; i < value.Length(); i++)
 	{
-		character[0] = value[i];
+		if (IsWordBreakingCharacter(value[i]) || value[i] == '\'') continue;
 
-		if (value[i + 1] == ' '  || value[i + 2] == ' '  || value[i + 3] == ' '  ||
-		    value[i + 1] == ')'  || value[i + 2] == ')'  || value[i + 3] == ')'  ||
-		    value[i + 1] == ']'  || value[i + 2] == ']'  || value[i + 3] == ']'  ||
-		    value[i + 1] == '>'  || value[i + 2] == '>'  || value[i + 3] == '>'  ||
-		    value[i + 1] == '?'  || value[i + 2] == '?'  || value[i + 3] == '?'  ||
-		    value[i + 1] == '!'  || value[i + 2] == '!'  || value[i + 3] == '!'  ||
-		    value[i + 1] == ','  || value[i + 2] == ','  || value[i + 3] == ','  ||
-		    value[i + 1] == ':'  || value[i + 2] == ':'  || value[i + 3] == ':'  ||
-		    value[i + 1] == ';'  || value[i + 2] == ';'  || value[i + 3] == ';'  ||
-		    value[i + 1] == '\"' || value[i + 2] == '\"' || value[i + 3] == '\"' ||
-		    value[i + 1] == '\'' || value[i + 2] == '\'' || value[i + 3] == '\'' ||
-		    value[i + 1] == 0    || value[i + 2] == 0    || value[i + 3] == 0)
+		for (Int j = i + 1; j < value.Length(); j++)
 		{
-			if (value[i - 1] == ' ') value[i] = character.ToLower()[0];
+			character[0] = value[j];
+
+			if ((IsWordBreakingCharacter(value[j + 1]) ||
+			     IsWordBreakingCharacter(value[j + 2]) ||
+			     IsWordBreakingCharacter(value[j + 3])) &&
+			    ( IsWordBreakingCharacter(value[j - 1]) || (value[j - 1] == '\'' &&
+			     (IsWordBreakingCharacter(value[j - 2]) ||  value[j - 2] == '\'')))) value[j] = character.ToLower()[0];
 		}
+
+		break;
 	}
 
 	return value;

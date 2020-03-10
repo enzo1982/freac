@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Afrikaans</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">tips.xml</property>
+    <property name="author">Cois Wiid</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="%1 is available in %2 languages. If your language is not available&#10;or the translation is incomplete, you can easily translate %1&#10;using the 'smooth Translator' utility.&#10;&#10;To contribute your translations back to the %1 project, please&#10;refer to %3 for additional details.">%1 is beskikbaar in %2 tale. As jou taal nie beskikbaar&#10;is nie, kan jy %1 maklik met die 'Smooth Translator'&#10;toepassing vertaal.</entry>
+    <entry id="101" string="%1 comes with support for a wide variety of audio formats&#10;including MP3, M4A/AAC, FLAC, ALAC, Opus, Ogg Vorbis and&#10;WMA.&#10;&#10;Additional formats can be added by installing command line&#10;encoders.&#10;&#10;Please refer to %2&#10;for details.">%1 ondersteun reeds LAME, Ogg Vorbis, FAAC, FLAC en&#10;Opus enkodeerders.&#10;&#10;'n Enkodeerder vir die VQF-formaat is beskikbaar by die&#10;%1 webblad: %2</entry>
+    <entry id="102" string="%1 supports the freedb CD database to query artist and title&#10;information about CDs.&#10;&#10;If you have a CD that is not in the database, you can submit new&#10;freedb entries with %1.">Met %1 kan jy CD-informasie met Unicode-karakters&#10;by freedb indien. As jy dus CD's met nie-Latynse&#10;titel- en kunstenaarsname het, kan jy met %1 die&#10;korrekte freedb inskrywings indien.</entry>
+    <entry id="103" string="To correct reading errors while ripping, you can enable Jitter&#10;correction in the Ripper tab of %1's configuration dialog.&#10;&#10;If that does not help, try using one of the Paranoia modes.">Leesfoute kan tydens stroping gekorrigeer word deur&#10;die rittelkorreksie op die CD-stropingsoortjie van %1 se&#10;konfigurasiedialoog te druk.&#10;&#10;As dit nie help nie, probeer een van die paranoia-&#10;modusse.</entry>
+    <entry id="104" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3 or send&#10;an eMail to %4.">Het jy enige voorstelle om %1 te verbeter?&#10;&#10;Jy kan jou idees deurgee via die tracker op die %1 %2&#10;projekbladsy - %3, of&#10;deur 'n e-pos na %4 te stuur.</entry>
+    <entry id="105" string="Do you like %1? %1 is free software, but you can help fund&#10;the development by making a donation.&#10;&#10;Donations can be sent via PayPal to %2.&#10;&#10;Or select 'Help'-&gt;'Donate to the %1 project...' from the menu&#10;bar to see different ways to donate.">Hou jy van %1? %1 is gratis verkrygbaar, maar jy kan&#10;die ontwikkeling befonds deur 'n donasie te maak aan die&#10;%1 projek.&#10;&#10;Jy kan deur PayPal geld aan %2 stuur.</entry>
+
+    <section name="Windows">
+      <entry id="200" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats.&#10;&#10;Copy the in_*.dll files to the %1/plugins directory to enable&#10;%1 to read these formats.">%1 kan Winamp 2 inset-inproppe gebruik om meer&#10;formate te kan lees.&#10;&#10;Kopieer die in_*.dll lêers na die %1/inprop-gids sodat&#10;%1 hierdie formate kan lees.</entry>
+    </section>
+  </data>
+</LangFile>

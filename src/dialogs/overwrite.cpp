@@ -139,12 +139,12 @@ const Error &freac::DialogConfirmOverwrite::ShowDialog()
 	return error;
 }
 
-Int freac::DialogConfirmOverwrite::GetUserAction()
+Int freac::DialogConfirmOverwrite::GetUserAction() const
 {
 	return userAction;
 }
 
-const Array<Int> &freac::DialogConfirmOverwrite::GetUserActions()
+const Array<Int> &freac::DialogConfirmOverwrite::GetUserActions() const
 {
 	static Array<Int>	 userActions;
 

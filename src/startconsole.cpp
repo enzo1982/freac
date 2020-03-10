@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -12,6 +12,7 @@
 
 #include <startconsole.h>
 #include <joblist.h>
+#include <utilities.h>
 #include <config.h>
 
 #include <engine/converter.h>
@@ -20,13 +21,43 @@
 #include <jobs/joblist/addfiles.h>
 #include <jobs/joblist/addtracks.h>
 
+#ifdef __WIN32__
+#	include <windows.h>
+#else
+#	include <signal.h>
+#endif
+
 using namespace smooth::IO;
 
 using namespace BoCA;
 using namespace BoCA::AS;
 
+#ifdef __WIN32__
+static BOOL WINAPI ConsoleCtrlHandler(DWORD ctrlType)
+{
+	if (ctrlType != CTRL_C_EVENT	  && ctrlType != CTRL_CLOSE_EVENT &&
+	    ctrlType != CTRL_LOGOFF_EVENT && ctrlType != CTRL_SHUTDOWN_EVENT) return FALSE;
+
+	freac::freacCommandline::Get()->Stop();
+
+	return TRUE;
+}
+#else
+static void ConsoleSignalHandler(int signal)
+{
+	freac::freacCommandline::Get()->Stop();
+}
+#endif
+
 Int StartConsole(const Array<String> &args)
 {
+#ifdef __WIN32__
+	SetConsoleCtrlHandler(&ConsoleCtrlHandler, TRUE);
+#else
+	signal(SIGINT, &ConsoleSignalHandler);
+	signal(SIGTERM, &ConsoleSignalHandler);
+#endif
+
 	freac::freacCommandline::Get(args);
 	freac::freacCommandline::Free();
 
@@ -107,8 +138,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	Array<String>	 files;
 	String		 pattern	= "<filename>";
-	String		 outfile;
-	String		 outdir		= Directory::GetActiveDirectory();
+	String		 outputFile;
+	String		 outputFolder	= Directory::GetActiveDirectory();
 
 	Bool		 superFast	= ScanForProgramOption("--superfast");
 	String		 threads	= "0";
@@ -118,20 +149,24 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	String		 timeout	= "120";
 	Bool		 cddb		= ScanForProgramOption("--cddb");
 
+	Bool		 ignoreChapters	= ScanForProgramOption("--ignore-chapters");
+	Bool		 ignoreCoverArt	= ScanForProgramOption("--ignore-coverart");
+
 	Bool		 quiet		= ScanForProgramOption("--quiet");
 
 	encoderID = "lame";
 
 	if (!ScanForProgramOption("--encoder=%VALUE", &encoderID)) ScanForProgramOption("-e %VALUE", &encoderID);
 	if (!ScanForProgramOption("--help=%VALUE",    &helpenc))   ScanForProgramOption("-h %VALUE", &helpenc);
-								   ScanForProgramOption("-d %VALUE", &outdir);
-								   ScanForProgramOption("-o %VALUE", &outfile);
+								   ScanForProgramOption("-d %VALUE", &outputFolder);
+								   ScanForProgramOption("-o %VALUE", &outputFile);
 	if (!ScanForProgramOption("--pattern=%VALUE", &pattern))   ScanForProgramOption("-p %VALUE", &pattern);
 
 	ScanForProgramOption("--threads=%VALUE", &threads);
 
 	encoderID = encoderID.ToLower();
 	helpenc	  = helpenc.ToLower();
+	stopped	  = False;
 
 	DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
 	Int			 numDrives = 0;
@@ -296,12 +331,22 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	/* Perform actual conversion.
 	 */
-	if (!outdir.EndsWith(Directory::GetDirectoryDelimiter())) outdir.Append(Directory::GetDirectoryDelimiter());
-
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, String(encoderID).Append("-enc"));
 
-	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, outdir);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, True);
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outputFile);
+
+	config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, True);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsDeleteAfterEncodingID, False);
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Directory(outputFolder));
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
+
+	config->SetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, False);
+
+	config->SetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, False);
+	config->SetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, False);
 
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, True);
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, superFast);
@@ -314,19 +359,23 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperLockTrayID, Config::RipperLockTrayDefault);
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
 
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, False);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, !ignoreChapters);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersID, !ignoreChapters);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadEmbeddedCueSheetsID, !ignoreChapters);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsPreferCueSheetsToChaptersID, Config::TagsPreferCueSheetsToChaptersDefault);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, !ignoreCoverArt);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromFilesID, False);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, !ignoreCoverArt);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesID, False);
 
 	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, False);
 	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, False);
 
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, False);
-
-	if (files.Length() > 1 && outfile != NIL)
+	if (files.Length() > 1 && outputFile != NIL)
 	{
-		config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, True);
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outfile);
-
 		JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
 
 		/* Check if input files exist.
@@ -361,13 +410,17 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		while (Job::GetPlannedJobs().Length()	> 0) S::System::System::Sleep(10);
 		while (Job::GetRunningJobs().Length()	> 0) S::System::System::Sleep(10);
 
-		/* Convert them.
-		 */
 		if (joblist->GetNOfTracks() > 0)
 		{
-			Converter().Convert(*joblist->GetTrackList(), False);
+			/* Convert tracks in joblist.
+			 */
+			Converter().Convert(*joblist->GetTrackList(), False, False);
 
-			if (!quiet) Console::OutputString("done.\n");
+			if (!quiet)
+			{
+				if (!stopped) Console::OutputString("done.\n");
+				else	      Console::OutputString("aborted.\n");
+			}
 		}
 		else
 		{
@@ -425,21 +478,30 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 				continue;
 			}
 
-			/* Convert it.
+			/* Set output file name.
+			 */
+			if (outputFile == NIL)
+			{
+				Track	 track = joblist->GetNthTrack(0);
+
+				config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Utilities::GetOutputFileName(track));
+			}
+
+			/* Convert track in joblist.
 			 */
 			if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
 
-			Track	 track = joblist->GetNthTrack(0);
+			Converter().Convert(*joblist->GetTrackList(), False, False);
 
-			track.outputFile = outfile;
+			joblist->RemoveAllTracks();
 
-			joblist->UpdateTrackInfo(track);
+			if (!quiet)
+			{
+				if (!stopped) Console::OutputString("done.\n");
+				else	      Console::OutputString("aborted.\n");
+			}
 
-			Converter().Convert(*joblist->GetTrackList(), False);
-
-			joblist->RemoveNthTrack(0);
-
-			if (!quiet) Console::OutputString("done.\n");
+			if (stopped) break;
 		}
 
 		delete joblist;
@@ -698,6 +760,13 @@ Bool freac::freacCommandline::TracksToFiles(const String &tracks, Array<String> 
 	return True;
 }
 
+Void freac::freacCommandline::Stop()
+{
+	stopped = True;
+
+	JobConvert::Stop();
+}
+
 Void freac::freacCommandline::ShowHelp(const String &helpenc)
 {
 	Console::OutputString(String(freac::appLongName).Append(" ").Append(freac::version).Append(" (").Append(freac::architecture).Append(") command line interface\n").Append(freac::copyright).Append("\n\n"));
@@ -730,6 +799,9 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 
 		Console::OutputString("  --superfast\t\t\tEnable SuperFast mode\n");
 		Console::OutputString("  --threads=<n>\t\t\tSpecify number of threads to use in SuperFast mode\n\n");
+
+		Console::OutputString("  --ignore-chapters\t\tDo not write chapter information to tags\n\n");
+		Console::OutputString("  --ignore-coverart\t\tDo not write cover images to tags\n\n");
 
 		Console::OutputString("  --list-configs\t\tPrint a list of available configurations\n");
 		Console::OutputString("  --config=<cfg>\t\tSpecify configuration to use\n\n");
@@ -823,7 +895,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 						{
 							if (foreachindex > 0) Console::OutputString(String().FillN('\t', maxTabs + 1).Append(String().FillN(' ', name.Length() + 2)));
 
-							Console::OutputString(option->GetValue().Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias()).Append(")") : String()).Append(def == option->GetValue() ? ", default" : NIL).Append("\n"));
+							Console::OutputString(option->GetValue().Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias().Replace("%1", option->GetValue())).Append(")") : String()).Append(def == option->GetValue() ? ", default" : NIL).Append("\n"));
 						}
 					}
 
@@ -833,8 +905,8 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 				{
 					Console::OutputString(String("\t").Append(spec).Append(String().FillN('\t', maxTabs - Math::Floor(spec.Length() / 8.0))).Append(name).Append(": "));
 
-					foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MIN) Console::OutputString(String(option->GetValue()).Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias()).Append(")") : String()).Append(" - "));
-					foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MAX) Console::OutputString(String(option->GetValue()).Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias()).Append(")") : String()));
+					foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MIN) Console::OutputString(String(option->GetValue()).Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias().Replace("%1", option->GetValue())).Append(")") : String()).Append(" - "));
+					foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MAX) Console::OutputString(String(option->GetValue()).Append(option->GetAlias() != option->GetValue() ? String(" (").Append(option->GetAlias().Replace("%1", option->GetValue())).Append(")") : String()));
 
 					if (def != NIL) Console::OutputString(String(", default ").Append(def));
 

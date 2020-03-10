@@ -146,6 +146,10 @@ Int freac::Playback::PlayThread()
 		trackToPlay.SetFormat(processor->GetFormatInfo());
 	}
 
+	/* Notify application about track playback.
+	 */
+	onPlay.Emit(track);
+
 	/* Create output component.
 	 */
 	Int		 error = Error();
@@ -187,7 +191,12 @@ Int freac::Playback::PlayThread()
 
 	BoCA::Config::Free(config);
 
-	playing = false;
+	stop	= True;
+	playing = False;
+
+	/* Notify application about finished playback.
+	 */
+	onFinish.Emit(track);
 
 	return error;
 }
@@ -195,10 +204,6 @@ Int freac::Playback::PlayThread()
 Void freac::Playback::Loop(Decoder *decoder, Processor *processor)
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
-
-	/* Notify application about track playback.
-	 */
-	onPlay.Emit(track);
 
 	/* Enter playback loop.
 	 */
@@ -272,12 +277,6 @@ Void freac::Playback::Loop(Decoder *decoder, Processor *processor)
 	if (!stop) output->Finish();
 
 	while (!stop && output->IsPlaying()) S::System::System::Sleep(20);
-
-	/* Notify application about finished playback.
-	 */
-	stop = True;
-
-	onFinish.Emit(track);
 }
 
 Void freac::Playback::Write(Buffer<UnsignedByte> &buffer, Int chunkSize)

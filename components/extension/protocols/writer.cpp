@@ -133,6 +133,7 @@ String BoCA::ProtocolWriter::FormatHeader(const Protocol *protocol)
 	const String	&operatingSystem = SystemInfo::GetOperatingSystem();
 	const String	&architecture	 = SystemInfo::GetArchitecture();
 	const String	&cpuModel	 = SystemInfo::GetCPUModel();
+	const String	&installedRAM	 = SystemInfo::GetInstalledRAM();
 	const String	&newLine	 = SystemInfo::GetNewLineCharacters();
 
 	Application	*app		 = Application::Get();
@@ -141,9 +142,10 @@ String BoCA::ProtocolWriter::FormatHeader(const Protocol *protocol)
 	fileHeader.Append(protocol->GetName()).Append(newLine)
 		  .Append(newLine)
 		  .Append("Client:  ").Append(app->getScreenName.Call()).Append(newLine)
-		  .Append("Version: ").Append(app->getClientVersion.Call()).Append(" (").Append(architecture).Append(")").Append(newLine)
+		  .Append("Version: ").Append(app->getClientVersion.Call()).Append(" (").Append(architecture).Append(")").Append(newLine).Append(newLine)
 		  .Append("System:  ").Append(operatingSystem).Append(newLine)
 		  .Append("CPU:     ").Append(cpuModel).Append(newLine)
+		  .Append("RAM:     ").Append(installedRAM).Append(newLine).Append(newLine)
 		  .Append("Date:    ").Append(String::FromInt(date.GetYear())).Append("-")
 				      .Append(date.GetMonth()  < 10 ? "0" : NIL).Append(String::FromInt(date.GetMonth())).Append("-")
 				      .Append(date.GetDay()    < 10 ? "0" : NIL).Append(String::FromInt(date.GetDay())).Append(newLine)

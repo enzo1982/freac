@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.0</property>
+    <property name="language">Basque / Euskara</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">tips.xml</property>
+    <property name="author">Xabier Aramendi &lt;azpidatziak@gmail.com&gt;</property>
+    <property name="url">https://sites.google.com/site/euskarazkosoftwareakeusxa/</property>
+  </info>
+  <data>
+    <entry id="100" string="%1 is available in %2 languages. If your language is not available&#10;or the translation is incomplete, you can easily translate %1&#10;using the 'smooth Translator' utility.&#10;&#10;To contribute your translations back to the %1 project, please&#10;refer to %3 for additional details.">%1 %2 hizkuntzatan dago eskuragarri. Zure hizkuntza ez&#10;badago eskuragarri, erraz itzuli dezakezu %1 'smooth Translator'&#10;aplikazioa erabiliz.</entry>
+    <entry id="101" string="%1 comes with support for a wide variety of audio formats&#10;including MP3, M4A/AAC, FLAC, ALAC, Opus, Ogg Vorbis and&#10;WMA.&#10;&#10;Additional formats can be added by installing command line&#10;encoders.&#10;&#10;Please refer to %2&#10;for details.">%1 LAME, Ogg Vorbis, FAAC, FLAC eta Opus kodeatzaile&#10;sostenguarekin dator.&#10;&#10;VQF heuskarrirako kodeatzaile bat eskuragarri dago hemen,&#10;%1 webgunea: %2</entry>
+    <entry id="102" string="%1 supports the freedb CD database to query artist and title&#10;information about CDs.&#10;&#10;If you have a CD that is not in the database, you can submit new&#10;freedb entries with %1.">%1-rekin freedb CD datubase sarrerak aurkeztu ditzakezu&#10;Unicode hizkiak dituztela. Hortaz ez-Latinezko artista edo&#10;izenburu izenak dituen CD-ren bat baduzu freedb sarrera&#10;zuzenak aurkeztu ditzakezu %1-rekin</entry>
+    <entry id="103" string="To correct reading errors while ripping, you can enable Jitter&#10;correction in the Ripper tab of %1's configuration dialog.&#10;&#10;If that does not help, try using one of the Paranoia modes.">Erauzketan zeharko irakurketa akatsak zuzentzeko Jitter&#10;zuzenketa gaitu dezakezu %1 itxurapen elkarrizketako CD&#10;Erauzketa hegatsean.&#10;&#10;Ez badu laguntzen, saiatu Paranoia moduetako bat erabiliz.</entry>
+    <entry id="104" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3 or send&#10;an eMail to %4.">%1 hobetzeko iradokizunen bat duzu?&#10;&#10;Edozein ideia aurkeztu dezakezu Aztarnariaren bidez %1-ren&#10;%2 egitasmo orrialdean - %3&#10;edo bidali posta bat %4-ra.</entry>
+    <entry id="105" string="Do you like %1? %1 is free software, but you can help fund&#10;the development by making a donation.&#10;&#10;Donations can be sent via PayPal to %2.&#10;&#10;Or select 'Help'-&gt;'Donate to the %1 project...' from the menu&#10;bar to see different ways to donate.">Gogoko duzu %1? %1 dohainik dago eskuragarri, baina&#10;bere garapenean lagundu dezakezu dirulaguntza bat&#10;emanez %1 egitasmoari.&#10;&#10;Dirua %2-ra bidali dezakezu PayPal bidez.</entry>
+
+    <section name="Windows">
+      <entry id="200" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats.&#10;&#10;Copy the in_*.dll files to the %1/plugins directory to enable&#10;%1 to read these formats.">%1-k Winmap 2 sarrera plug-inak erabili ditzake agiri&#10;heuskarri gehiago sostengatzeko.&#10;&#10;Kopiatu in_*.dll agiriak %1/plugins zuzenbidera %1&#10;heuskarri hauek irakurtzeko gai izateko.</entry>
+    </section>
+  </data>
+</LangFile>

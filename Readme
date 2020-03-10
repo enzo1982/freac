@@ -1,4 +1,4 @@
-fre:ac version 1.1 Alpha
+fre:ac version 1.1 RC 1
 
 fre:ac is a free and open source audio converter. It supports audio CD
 ripping and tag editing and converts the following audio formats:
@@ -96,7 +96,7 @@ Requirements
 			- Windows XP/Vista/7/8.x/10
 			- macOS 10.5 Leopard or later
 			- Linux (most modern distributions are supported)
-			- FreeBSD/PC-BSD (tested on FreeBSD 12.0)
+			- FreeBSD/PC-BSD (tested on FreeBSD 12.1)
 			- NetBSD (tested on NetBSD 6.0, NetBSD 5.x and earlier releases are not supported)
 			- OpenBSD (tested on OpenBSD 5.3)
 			- Solaris (tested on Solaris 11)
@@ -117,11 +117,11 @@ Requirements
 
 		All platforms:
 
-			- smooth v0.9 (http://www.smooth-project.org/)
+			- smooth v0.9.3 (http://www.smooth-project.org/)
 
 		Windows:
 
-			- MinGW GCC v4.0+ (http://www.mingw.org/) or Visual Studio 2017
+			- MinGW GCC v4.0+ (http://www.mingw.org/) or Visual Studio 2019
 
 		All Linux and Unix platforms:
 
@@ -147,7 +147,83 @@ Requirements
 History
 -------
 
-	Version 1.1 Alpha (November 2019)
+	Version 1.1 RC 1 (March 2020)
+
+		- Improvements
+
+			- now passing float samples to LAME encoder directly if sample format is float
+			- made automatic ripping work when using the single output file option
+			- added options to control chapter information and cover art to freaccmd
+			- handle Ctrl+C in freaccmd to clean up temporary files when aborted
+			- respect colorization tint color on Windows Vista, 7 and 8/8.1
+			- improved HiDPI detection on Linux/FreeBSD systems
+			- log CDDB information when ripping
+
+		- Bug fixes
+
+			- fixed drag & drop not accepting long file paths on Windows
+			- fixed file modification time stamp getting lost when output verification is active
+			- fixed file creation time stamp not being preserved despite option being enabled
+			- fixed freaccmd not correctly handling relative output folders
+			- fixed black title bar color on Windows Vista, 7 and 8/8.1
+			- fixed online updater not working
+
+	Version 1.1 Beta 3 (February 2020)
+
+		- Improvements
+
+			- added support for dark mode on Windows 10
+			- prepared for freedb.org shutdown on 31st March 2020
+			- the fre:ac installer is now digitally signed
+			- added separate Windows Wave File Output entry to encoder list
+			- display current signal processing settings in status area
+			- added a toolbar button to configure signal processing
+			- added new tips to Tip of the Day dialog
+
+		- Bug fixes
+
+			- fixed compatibility issue with Windows 10 UTF-8 codepage setting
+			- fixed FLAC decoding on macOS
+			- fixed issues opening Opus files with a .ogg extension
+			- fixed Monkey's Audio encoder not showing up in 64 bit builds
+			- fixed some issues with freaccmd command line interface
+
+		- Updated codecs
+
+			- updated Monkey's Audio to version 5.18
+
+		- Updated translations
+
+			- updated Chinese (simplified) translation
+
+	Version 1.1 Beta 2 (January 2020)
+
+		- Improvements
+
+			- respect theme accent color on Windows 10
+			- log names of active DSP components
+			- log total duration and speed of conversions
+
+		- Bug fixes
+
+			- fixed an IO subsystem issue causing corrupted output files in some cases
+			- fixed SuperFast LAME repacker causing glitches in output files in some cases
+			- fixed gapless decoding of MP3 files created with FFmpeg
+			- fixed inability to update ID3v2 and APEv2 tags in tag editor
+			- fixed inability to exit application after ejecting a disc while ripping
+			- fixed hangup when ejecting a disc while adding its tracks to joblist
+			- fixed minimum and maximum bitrate values being mixed up in Vorbis configuration dialog
+
+		- Updated codecs
+
+			- updated Monkey's Audio to version 5.12
+			- updated WavPack to version 5.2.0
+
+		- Updated translations
+
+			- updated Dutch translation
+
+	Version 1.1 Beta 1 (December 2019)
 
 		- implemented an extension component framework to modularize fre:ac
 
@@ -276,9 +352,9 @@ Special thanks to
 	- Paul Francis Harrison for developing the Bonk format
 	- Albert L. Faber for his excellent CDRip Ripping Library
 
-	- the translators: Eric Le Carre (French),
+	- the translators: Eric Le Carre and Philippe Grivel (French),
 			   Marco D'Amato and Roberto Boriotti (Italian),
-			   REIKA (Japanese),
+			   REIKA and BHCrusher1 (Japanese),
 			   Federico Reddig and Will (Spanish),
 			   Jose Maria Vera Somoza (Spanish, Latin American),
 			   Nikolaos-Ioannis Galanis (Greek),
@@ -289,25 +365,25 @@ Special thanks to
 			   Peter Toth (Hungarian),
 			   Andrij Ilechko (Ukrainian),
 			   Wim Garreyn and Thomas De Rocker (Dutch),
-			   Nebojöa Nikolic (Serbian),
+			   Neboj≈°a Nikolic (Serbian),
 			   Jan Parttimaa (Finnish),
 			   Julius Faltus (Czech),
-			   J. B. Escada Jr. and AndrÈ C. Barros (Portuguese, Brazilian),
+			   J. B. Escada Jr. and Andr√© C. Barros (Portuguese, Brazilian),
 			   Odyssey (Korean),
 			   Jan Arni Jacobsen (Danish),
-			   Mikael Hiort af Orn‰s and Anton Mjoernebrant (Swedish),
-			   Peter Krajcar (Slovak),
+			   Mikael Hiort af Orn√§s and Anton Mjoernebrant (Swedish),
+			   Peter Krajcar and Miro Babinsky (Slovak),
 			   Andreas Normann Aanonsen (Norwegian),
 			   Vincent Rateau (Esperanto),
 			   Cako (Turkish),
 			   Naglis Jonaitis (Lithuanian),
 			   Borca Alin and Laurentiu Bubuianu (Romanian),
 			   El libre (Catalan),
-			   AgustÌn Bou (Valencian),
+			   Agust√≠n Bou (Valencian),
 			   Jose Goncalves (Portuguese),
 			   Meelis Pasieko (Estonian),
 			   Goran Bekic (Croatian),
-			   Eduardo EstÈvez (Galician),
+			   Eduardo Est√©vez (Galician),
 			   Phan Anh (Vietnamese),
 			   Ilan Tsmeret (Hebrew),
 			   Eman Ali Fhoula (Arabic),
@@ -315,9 +391,9 @@ Special thanks to
 			   Cois Wiid (Afrikaans),
 			   Xabier Aramendi (Basque),
 			   Kin Kwok (Cantonese, Hong Kong),
-			   Patriccollu di Santa Maria Ë SichË (Corsican)
+			   Patriccollu di Santa Maria √® Sich√® (Corsican)
 
-	- Hans-Juergen Bardenhagen for his help and suggestions for the FAAC encoder
+	- Hans-J√ºrgen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports
 
 -----------------------------------------------------------------------------------

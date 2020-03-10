@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Greek / Ελληνικά</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">tips.xml</property>
+    <property name="author">Νικόλαος-Ιωάννης Γαλάνης &lt;useasdf_4444@yahoo.com&gt;</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="%1 is available in %2 languages. If your language is not available&#10;or the translation is incomplete, you can easily translate %1&#10;using the 'smooth Translator' utility.&#10;&#10;To contribute your translations back to the %1 project, please&#10;refer to %3 for additional details.">Ο %1 είναι διαθέσιμος σε %2 γλώσσες. Αν η γλώσσα σας δεν&#10;είναι διαθέσιμη, χρησιμοποιήστε εύκολα την εφαρμογή&#10;'smooth Translator' για να το μεταφράσετε!</entry>
+    <entry id="101" string="%1 comes with support for a wide variety of audio formats&#10;including MP3, M4A/AAC, FLAC, ALAC, Opus, Ogg Vorbis and&#10;WMA.&#10;&#10;Additional formats can be added by installing command line&#10;encoders.&#10;&#10;Please refer to %2&#10;for details.">Ο %1 υποστηρίζει τους κωδικοποιητές LAME, Ogg Vorbis,&#10;FAAC, FLAC και Opus.&#10;&#10;Κωδικοποιητής για τη μορφή VQF είναι διαθέσιμος στο&#10;website του %1: %2</entry>
+    <entry id="102" string="%1 supports the freedb CD database to query artist and title&#10;information about CDs.&#10;&#10;If you have a CD that is not in the database, you can submit new&#10;freedb entries with %1.">Με το %1 μπορείτε να καταχωρήσετε στοιχεία στη βάση&#10;δεδομένων CD freedb με Unicode χαρακτήρες. Αν έχετε&#10;CD με τίτλους ή ονόματα με μη-Λατινικούς χαρακτήρες,&#10;μπορείτε να τα καταχωρήσετε σωστά με το %1.</entry>
+    <entry id="103" string="To correct reading errors while ripping, you can enable Jitter&#10;correction in the Ripper tab of %1's configuration dialog.&#10;&#10;If that does not help, try using one of the Paranoia modes.">Για να διορθώσετε λάθη ανάγνωσης κατά το ripping&#10;ενεργοποιήστε τη διόρθωση Jitter στην καρτέλα για Ripper&#10;στις ρυθμίσεις του %1.&#10;&#10;Αν δεν βοηθάει, δοκιμάστε κάποια μέθοδο Paranoia.</entry>
+    <entry id="104" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3 or send&#10;an eMail to %4.">Έχετε προτάσεις για βελτίωση του %1;&#10;&#10;Καταχωρήστε τις στον Tracker του %1 στη&#10;σελίδα του %2 - %3&#10;ή στείλτε email sto %4.</entry>
+    <entry id="105" string="Do you like %1? %1 is free software, but you can help fund&#10;the development by making a donation.&#10;&#10;Donations can be sent via PayPal to %2.&#10;&#10;Or select 'Help'-&gt;'Donate to the %1 project...' from the menu&#10;bar to see different ways to donate.">Σας αρέσει το %1; Είναι διαθέσιμο δωρεάν, αλλά μπορείτε να&#10;βοηθήσετε τη χρηματοδότηση για την ανάπτυξη του&#10;προγράμματος κάνοντας μια δωρεά.&#10;&#10;Μπορείτε να στείλετε χρήματα στο %2 μέσω Paypal.</entry>
+
+    <section name="Windows">
+      <entry id="200" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats.&#10;&#10;Copy the in_*.dll files to the %1/plugins directory to enable&#10;%1 to read these formats.">Ο %1 μπορεί να χρησιμοποιήσει πρόσθετα του Winamp 2&#10;για υποστήριξη περισσότερων μορφών αρχείων.&#10;&#10;Αντιγράψτε τα in_*.dll αρχεία σοτν κατάλογο %1/plugins&#10;για να χρησιμοποιήσετε αυτές τις μορφές</entry>
+    </section>
+  </data>
+</LangFile>

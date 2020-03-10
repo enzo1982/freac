@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -66,11 +66,20 @@ namespace freac
 			Text			*txt_filename;
 			EditBox			*edb_filename;
 
+			Button			*btn_skip;
+
+			Text			*txt_filters;
+			EditBox			*edb_filters;
+
+			Button			*btn_configure_dsp;
+
 			Text			*txt_format;
 			EditBox			*edb_format;
 
 			Text			*txt_encoder;
 			ComboBox		*combo_encoder;
+
+			Button			*btn_configure_encoder;
 
 			Text			*txt_progress;
 			Progressbar		*progress;
@@ -87,8 +96,6 @@ namespace freac
 			Text			*txt_outdir;
 			EditBox			*edb_outdir;
 			List			*list_outdir;
-
-			Button			*btn_skip;
 
 			Button			*btn_open;
 			Button			*btn_browse;
@@ -149,9 +156,11 @@ namespace freac
 			Void			 ShowCoverArea();
 			Void			 HideCoverArea();
 
-			String			 AdjustCaseFirstCapital(const String &);
-			String			 AdjustCaseWordsFirstCapital(const String &);
-			String			 AdjustCaseLongWordsFirstCapital(const String &);
+			static Bool		 IsWordBreakingCharacter(Int);
+
+			static String		 AdjustCaseFirstCapital(const String &);
+			static String		 AdjustCaseWordsFirstCapital(const String &);
+			static String		 AdjustCaseLongWordsFirstCapital(const String &);
 		public:
 						 LayerJoblist();
 						~LayerJoblist();

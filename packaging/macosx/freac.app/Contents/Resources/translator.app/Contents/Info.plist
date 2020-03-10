@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+ <dict>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>English</string>
+  <key>CFBundleName</key>
+  <string>Translator</string>
+  <key>CFBundleDisplayName</key>
+  <string>smooth Translator</string>
+  <key>CFBundleExecutable</key>
+  <string>translator</string>
+  <key>CFBundleIdentifier</key>
+  <string>org.smooth-project.translator</string>
+  <key>CFBundleIconFile</key>
+  <string>translator.icns</string>
+  <key>CFBundleInfoDictionaryVersion</key>
+  <string>6.0</string>
+  <key>CFBundlePackageType</key>
+  <string>APPL</string>
+  <key>CFBundleSignature</key>
+  <string>stns</string>
+  <key>CFBundleVersion</key>
+  <string>0.9.3</string>
+  <key>LSBackgroundOnly</key>
+  <string>0</string>
+  <key>NSHighResolutionCapable</key>
+  <true/>
+ </dict>
+</plist>

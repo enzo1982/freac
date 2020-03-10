@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Estonian / Eesti</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">freac.xml</property>
+    <property name="author">KunDe &lt;meelis.pasieko@gmail.com&gt;</property>
+    <property name="url">https://www.freac.org/</property>
+    <property name="incomplete">true</property>
+  </info>
+  <data>
+    <entry id="100" string="OK">Jah</entry>
+    <entry id="101" string="Cancel">Tühista</entry>
+    <entry id="102" string="Close">Sulge</entry>
+
+    <entry id="200" string="Error">Viga</entry>
+    <entry id="202" string="Info">Info</entry>
+
+    <entry id="300" string="Artist">Esitaja</entry>
+    <entry id="301" string="Title">Nimi</entry>
+    <entry id="302" string="Album">Album</entry>
+    <entry id="303" string="Track">Trekk</entry>
+    <entry id="304" string="Genre">Suunitlus</entry>
+    <entry id="305" string="Comment">Kommentaarid</entry>
+    <entry id="306" string="Year">Aasta</entry>
+
+    <entry id="350" string="unknown artist">teadmata artist</entry>
+    <entry id="351" string="unknown title">teadmata nimi</entry>
+    <entry id="352" string="unknown album">teadmata album</entry>
+    <entry id="353" string="unknown genre">teadmata suunitlus</entry>
+    <entry id="354" string="unknown year">teadmata aasta</entry>
+
+    <section name="Characters">
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 kbps</entry>
+      <entry id="511" string="%1 Hz">%1 Hz</entry>
+      <entry id="512" string="%1 kHz">%1 kHz</entry>
+      <entry id="513" string="%1 ms">%1 ms</entry>
+      <entry id="514" string="%1 min">%1 min</entry>
+      <entry id="515" string="%1 bit">%1 bit</entry>
+      <entry id="516" string="%1 bytes">%1 baidid</entry>
+      <entry id="518" string="%1%">%1%</entry>
+    </section>
+
+    <section name="Menu">
+      <entry id="1000" string="File">Fail</entry>
+      <entry id="1001" string="Options">Sätted</entry>
+      <entry id="1002" string="Database">Andmebaas</entry>
+      <entry id="1004" string="Encode">Kodeerimine</entry>
+      <entry id="1005" string="Help">Abi</entry>
+
+      <section name="File">
+	<entry id="1100" string="Add">Lisa</entry>
+	<entry id="1101" string="Remove">Eemalda</entry>
+	<entry id="1102" string="Load joblist">Laadida ülesannete nimekiri</entry>
+	<entry id="1103" string="Save joblist">Säilitada ülesannete nimekiri</entry>
+	<entry id="1104" string="Clear joblist">Puhasta nimekiri</entry>
+	<entry id="1105" string="Exit">Välju</entry>
+	<entry id="1106" string="Audio file(s)">Audio fail(id)</entry>
+	<entry id="1107" string="Audio CD contents">Audio CD sisu</entry>
+	<entry id="1108" string="By pattern">Näidise järgi</entry>
+	<entry id="1109" string="From folder">Kaustast</entry>
+      </section>
+
+      <section name="Database">
+	<entry id="1200" string="Query CDDB database">Päring CDDB andmebaasi</entry>
+	<entry id="1201" string="Submit CDDB data">Saata andmed CDDB-se</entry>
+	<entry id="1202" string="Query CDDB database later">Teha päring CDDB andmebaasi hiljem</entry>
+	<entry id="1203" string="Show queued CDDB entries">Näidata CDDB märkmeid järjekorras</entry>
+	<entry id="1204" string="Show queued CDDB queries">Näidata CDDB päringuid järjekorras</entry>
+	<entry id="1205" string="Enable CDDB cache">CDDB cacheerimine</entry>
+	<entry id="1206" string="Manage CDDB cache entries">Manage CDDB cache entries</entry>
+	<entry id="1207" string="Automatic CDDB queries">Automaatne CDDB päring</entry>
+      </section>
+
+      <section name="Options">
+	<entry id="1300" string="General settings">Põhisätted</entry>
+	<entry id="1302" string="Configure selected encoder">Häälesta valitud kodek</entry>
+	<entry id="1303" string="Active CD-ROM drive">CD-ROM-i valik</entry>
+      </section>
+
+      <section name="Encode">
+	<entry id="1500" string="Start encoding">Alusta kodeerimist</entry>
+	<entry id="1502" string="Start encoding with">Alusta kodeerimist koos</entry>
+	<entry id="1503" string="Pause/resume encoding">Paus/jätkata kodeerimist</entry>
+	<entry id="1504" string="Stop encoding">Lõpeta Kodeerimine</entry>
+	<entry id="1505" string="Encoder options">Kodeki sätted</entry>
+	<entry id="1506" string="Encode to a single file">Kodeerida ühte faili</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Kodeeri otse sisendfaili kausta kui on võimalik</entry>
+	<entry id="1508" string="Allow overwriting input file">Kirjutada üle sisend fail</entry>
+	<entry id="1509" string="Delete original files after encoding">Kustuta originaal failid peale kodeerimist</entry>
+	<entry id="1510" string="Shutdown after encoding">Peale kodeerimist lülitada arvuti välja</entry>
+      </section>
+
+      <section name="Help">
+	<entry id="1600" string="Help topics">Abi</entry>
+	<entry id="1601" string="Show Tip of the Day">Hüva nõu</entry>
+	<entry id="1602" string="Check for updates now">Kontrolli uuendusi</entry>
+	<entry id="1603" string="Check for updates at startup">Kontrollida uuendusi programmi käivitusel</entry>
+	<entry id="1604" string="About %1">Info %1 kohta</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
+      </section>
+    </section>
+
+    <section name="Toolbar">
+      <entry id="2000" string="Add audio file(s) to the joblist">Lisa audio fail(id) nimekirja</entry>
+      <entry id="2001" string="Add audio CD contents to the joblist">Lisa audio CD sisu nimekirja</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">Kustuta valitud elemendid nimekirjast</entry>
+      <entry id="2003" string="Clear the entire joblist">Puhasta nimekiri</entry>
+      <entry id="2004" string="Query CDDB database">Päring CDDB andmebaasi</entry>
+      <entry id="2005" string="Submit CDDB data">Saata andmed CDDB-se</entry>
+      <entry id="2006" string="Configure general settings">Põhisätete häälestamine</entry>
+      <entry id="2008" string="Configure the selected audio encoder">Häälesta valitud audio kodek</entry>
+      <entry id="2009" string="Start the encoding process">Käivita kodeerimine</entry>
+      <entry id="2011" string="Pause/resume encoding">Paus/jätkata kodeerimist</entry>
+      <entry id="2012" string="Stop encoding">Lõpeta Kodeerimine</entry>
+    </section>
+
+    <section name="Joblist">
+      <entry id="3000" string="Time left">Jäänud aeg</entry>
+      <entry id="3001" string="File progress">Protsess</entry>
+      <entry id="3002" string="Output folder">Kaust</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 Fail(i) nimekirjas</entry>
+      <entry id="3004" string="Show title info">Näita pealkirja</entry>
+      <entry id="3005" string="Play">Play</entry>
+      <entry id="3006" string="Stop">Stop</entry>
+      <entry id="3007" string="Select all">Valida kõik</entry>
+      <entry id="3008" string="Select none">Valikud maha</entry>
+      <entry id="3009" string="Toggle selection">Valida märgitud</entry>
+      <entry id="3010" string="ripping/decoding">rippimine/dekodeerimine</entry>
+      <entry id="3011" string="encoding">kodeerimine</entry>
+      <entry id="3012" string="Create playlist">Luua playlist</entry>
+      <entry id="3013" string="Create cue sheet">Luua cue sheet</entry>
+      <entry id="3014" string="Select">Valik</entry>
+      <entry id="3015" string="Encode to a single file">Kodeerida ühte faili</entry>
+      <entry id="3016" string="Remove">Eemalda</entry>
+      <entry id="3017" string="Clear joblist">Puhasta nimekiri</entry>
+      <entry id="3018" string="Use for all selected tracks">Kasutada kõikide valitud trekkide jaoks</entry>
+      <entry id="3019" string="Interpret string as">Interpreteerida rida nagu</entry>
+      <entry id="3020" string="selected tracks">valitud trekid</entry>
+      <entry id="3021" string="Adjust upper/lower case">Häälestada ülemine/alumine register</entry>
+      <entry id="3022" string="all words upper case">Kõik sõnad ülemises registris</entry>
+      <entry id="3023" string="long words upper case">Pikad sõnad ülemises registris</entry>
+      <entry id="3024" string="first letter upper case">Esimene täht ülemises registris</entry>
+      <entry id="3025" string="all lower case">Kõik alumises registris</entry>
+      <entry id="3026" string="all upper case">Kõik ülemises registris</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Valida kaust kuhu paigutatakse kodeeritud failid</entry>
+      <entry id="3028" string="Sampling rate">Diskreetimise sagedus</entry>
+      <entry id="3029" string="Sample resolution">Resolutsiooni näidis</entry>
+      <entry id="3030" string="Number of samples">Näidiste hulk</entry>
+      <entry id="3031" string="Channels">Kanalid</entry>
+      <entry id="3032" string="Mono">Mono</entry>
+      <entry id="3033" string="Stereo">Stereo</entry>
+      <entry id="3034" string="Length">Pikkus</entry>
+      <entry id="3035" string="File">Fail</entry>
+      <entry id="3036" string="Size">Suurus</entry>
+      <entry id="3037" string="Bitrate">Bitikiirus</entry>
+      <entry id="3038" string="Audio Files">Audio Failid</entry>
+      <entry id="3039" string="All Files">Kõik Failid</entry>
+      <entry id="3040" string="Playlist Files">Playlist Failid</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">Kodeeritav fail</entry>
+        <entry id="3051" string="none">ei ole</entry>
+        <entry id="3052" string="Skip current file">Jätta vahele</entry>
+      </section>
+
+      <section name="Encoder">
+        <entry id="3080" string="Selected encoder">Valitud kodek</entry>
+	<entry id="3081" string="Configure selected encoder">Häälesta valitud kodek</entry>
+      </section>
+
+      <section name="Add folder">
+	<entry id="3100" string="Folder">Kaust</entry>
+	<entry id="3101" string="Add folder">Lisada kaust</entry>
+	<entry id="3102" string="Choose folder">Valida kaust</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Valige kaust ülesannete nimekirja lisamiseks</entry>
+      </section>
+
+      <section name="Add by pattern">
+	<entry id="3200" string="Add files by pattern">Lisada failid näidise järgi</entry>
+	<entry id="3201" string="Pattern">Näidis</entry>
+	<entry id="3202" string="Start folder">Algne kaust</entry>
+	<entry id="3203" string="Filename pattern">Faili nime formeerimine</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">Valige kaust ülesannete nimekirja lisamiseks</entry>
+      </section>
+
+      <section name="Character set"/>
+
+      <section name="Errors">
+	<entry id="3400" string="You did not select a track!">Fail ei ole valitud!</entry>
+	<entry id="3401" string="No files found matching pattern: %1">Puuduvad näidisele vastavad failid: %1</entry>
+      </section>
+    </section>
+
+    <section name="CDDB">
+
+      <section name="Submit">
+	<entry id="4000" string="CDDB data">CDDB andmed</entry>
+	<entry id="4001" string="Submit">Saata</entry>
+	<entry id="4002" string="No audio CD in drive!">Puudub plaat CD seadmes!</entry>
+	<entry id="4003" string="Submitting CD information">Saata info CD kohta</entry>
+	<entry id="4004" string="Update joblist with this information">Uuendada ülesannete nimekirja selle infoga</entry>
+	<entry id="4005" string="Status">Seisund</entry>
+	<entry id="4006" string="Successfully read CD!">CD edukalt loetud!</entry>
+	<entry id="4007" string="Save entry">Säilita märkmed</entry>
+	<entry id="4008" string="Various artists">Erinevad artistid</entry>
+	<entry id="4009" string="Data track">Data track</entry>
+	<entry id="4010" string="Submit to online database later">Saata online baasi hiljem</entry>
+	<entry id="4011" string="Active CD-ROM drive">CD-ROM-i valik</entry>
+
+	<section name="Errors">
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Viga freedb serveriga ühenduse saamisel.</entry>
+	  <entry id="4051" string="Please fill all fields and track titles before submitting.">Palun täitke kõik väljad enne saatmist.</entry>
+	</section>
+      </section>
+
+      <section name="Query">
+	<entry id="4100" string="CDDB query">CDDB päring</entry>
+	<entry id="4101" string="No freedb entry for this disk.">Plaadi kohta puuduvad andmed.</entry>
+	<entry id="4102" string="Connecting to freedb server at">Ühendamine freedb serveriga</entry>
+	<entry id="4103" string="Requesting CD information">Info saamine CD kohta</entry>
+	<entry id="4104" string="No exact matches found">Ei leitud täpset vastavust</entry>
+	<entry id="4105" string="Multiple matches found">Leiti mõningad vastavused</entry>
+	<entry id="4106" string="Matches">Vastavused</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">Valige sobivaim nimekiri teie CD-le</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">Tahate korrata seda päringut hiljem?</entry>
+	<entry id="4110" string="none">ei ole</entry>
+	<entry id="4111" string="Preview">Eelvaade</entry>
+
+	<section name="Errors">
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Viga freedb serveriga ühenduse saamisel.</entry>
+	</section>
+      </section>
+
+      <section name="Manage queries">
+	<entry id="4200" string="Remove entry">Kustuta märkmed</entry>
+	<entry id="4201" string="CDDB queries">CDDB päringud</entry>
+	<entry id="4202" string="Query">Päring</entry>
+	<entry id="4203" string="Query all">Saata kõik päringud</entry>
+	<entry id="4204" string="Query string">Query string</entry>
+	<entry id="4205" string="CDDB queries to perform">CDDB päringud teostamiseks</entry>
+      </section>
+
+      <section name="Manage submits">
+	<entry id="4300" string="Remove entry">Kustuta märkmed</entry>
+	<entry id="4301" string="CDDB entries to submit">CDDB märkmed saatmiseks</entry>
+	<entry id="4302" string="Submit all">Saata kõik</entry>
+	<entry id="4303" string="CDDB data">CDDB andmed</entry>
+	<entry id="4304" string="Submit">Saata</entry>
+	<entry id="4305" string="Disc name">Plaadi nimi</entry>
+	<entry id="4306" string="Preview">Eelvaade</entry>
+	<entry id="4307" string="Category">Kategooria</entry>
+	<entry id="4308" string="Submitting CD information">Saata info CD kohta</entry>
+      </section>
+
+      <section name="Manage cache">
+	<entry id="4400" string="CDDB data">CDDB andmed</entry>
+	<entry id="4401" string="Update joblist with this information">Uuendada ülesannete nimekirja selle infoga</entry>
+	<entry id="4402" string="Charset">Sümbolid</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Laetud CDDB märkmed</entry>
+	<entry id="4404" string="Disc name">Plaadi nimi</entry>
+	<entry id="4405" string="Preview">Eelvaade</entry>
+	<entry id="4406" string="Remove entry">Kustuta märkmed</entry>
+	<entry id="4407" string="Save entry">Säilita märkmed</entry>
+      </section>
+    </section>
+
+    <section name="Configuration">
+      <entry id="5000" string="General settings setup">Põhisätted</entry>
+      <entry id="5001" string="Encoders">Kodekid</entry>
+      <entry id="5002" string="Playlists">Playlists</entry>
+      <entry id="5003" string="Language">Keel</entry>
+      <entry id="5006" string="Tags">Tagid</entry>
+
+      <section name="Encoders">
+	<entry id="5100" string="Configure encoder">Kodeki sätted</entry>
+	<entry id="5101" string="Encoder">Kodek</entry>
+	<entry id="5102" string="Output folder">Väljundi kaust</entry>
+	<entry id="5103" string="Select">Valik</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Valida kaust kuhu paigutatakse kodeeritud failid</entry>
+	<entry id="5105" string="Use input file folder if possible">Kasuta sisendfaili kausta kui on võimalik</entry>
+	<entry id="5106" string="Allow overwriting input file">Kirjutada üle sisend fail</entry>
+	<entry id="5107" string="Options">Sätted</entry>
+	<entry id="5108" string="Filename pattern">Faili nime formeerimine</entry>
+	<entry id="5109" string="Encode 'On-The-Fly'">Kodeerimine &quot;Lennult&quot;</entry>
+	<entry id="5110" string="Keep ripped Wave files">Säilitada wave failid</entry>
+	<entry id="5111" string="Encode to a single file">Kodeerida ühte faili</entry>
+
+	<section name="Errors">
+	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Direktooriumi ei eksisteeri! Luua direktoorium?</entry>
+	</section>
+      </section>
+
+      <section name="Playlists">
+	<entry id="5200" string="Create playlists">Luua playlistid</entry>
+	<entry id="5201" string="Create cue sheets">Luua cue sheets</entry>
+	<entry id="5202" string="Output folder">Väljundi kaust</entry>
+	<entry id="5203" string="Select">Valik</entry>
+	<entry id="5205" string="Filename pattern">Faili nime formeerimine</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Valige kaust, kuhu paigutatakse playlistid</entry>
+      </section>
+
+      <section name="CDDB">
+	<entry id="5300" string="Enable local CDDB database">Lokaalne CDDB andmebaas</entry>
+	<entry id="5301" string="Enable remote CDDB database">Eemalt laetav CDDB andmebaas</entry>
+	<entry id="5302" string="CDDB path">CDDB kaust</entry>
+	<entry id="5303" string="Select">Valik</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Valige CDDB andmetebaasi kaust</entry>
+	<entry id="5305" string="CDDB access mode">CDDB juurdepääsu moodus</entry>
+	<entry id="5306" string="CDDB server">CDDB server</entry>
+	<entry id="5307" string="Port">Port</entry>
+	<entry id="5308" string="eMail address">E-mail aadres</entry>
+	<entry id="5309" string="HTTP settings">HTTP sätted</entry>
+	<entry id="5310" string="Proxy settings">Proxy sätted</entry>
+	<entry id="5311" string="Options">Sätted</entry>
+	<entry id="5312" string="Automatic CDDB queries">Automaatne CDDB päring</entry>
+	<entry id="5313" string="Prefer CDDB over CD Text">Lugeda üle CDDB</entry>
+	<entry id="5314" string="Enable CDDB cache">CDDB cacheerimine</entry>
+	<entry id="5315" string="Automatization">Automatiseerimine</entry>
+
+	<section name="Extended">
+	  <entry id="5330" string="Extended CDDB settings">CDDB lisa sätted</entry>
+	  <entry id="5331" string="CGI scripts">CGI skriptid</entry>
+	  <entry id="5332" string="CDDB query script">CDDB päringu skript</entry>
+	  <entry id="5333" string="CDDB submit script">CDDB saatmise skript</entry>
+	  <entry id="5334" string="no proxy">ilma proxyta</entry>
+	  <entry id="5335" string="Proxy type">Proxy tüüp</entry>
+	  <entry id="5336" string="Proxy server">Proxy server</entry>
+	  <entry id="5337" string="User name">Kasutaja nimi</entry>
+	  <entry id="5338" string="Password">Parool</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="5350" string="Please enter a valid eMail address.">Palun, sisestage õige e-mail.</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP protokoli ei saa kasutada läbi&#10;HTTP Proxi ette!&#10;&#10;Tahate muuta protokoli HTTP vastu?</entry>
+	</section>
+      </section>
+
+      <section name="Language">
+	<entry id="5400" string="Select language">Keele valik</entry>
+	<entry id="5401" string="Edit language file">Parandada keele faili</entry>
+	<entry id="5402" string="Information">Informatsioon</entry>
+	<entry id="5403" string="Encoding">Kodeerimine</entry>
+	<entry id="5404" string="Author">Автор</entry>
+	<entry id="5405" string="URL">URL</entry>
+      </section>
+
+      <section name="Tags">
+	<entry id="5500" string="Tags">Tagid</entry>
+	<entry id="5501" string="Tag formats">Tägide kodeerimine</entry>
+	<entry id="5502" string="Default comment string">Komentaarid vaikimisi</entry>
+	<entry id="5504" string="Filename pattern">Faili nime formeerimine</entry>
+	<entry id="5505" string="Encoding">Kodeerimine</entry>
+      </section>
+
+      <section name="Joblist"/>
+    </section>
+
+    <section name="About">
+      <entry id="6000" string="About %1">Info %1 kohta</entry>
+      <entry id="6001" string="Translated by %1.">Transleeritud %1</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Seda programmi levitatakse GNU&#10;General Public License (GPL) raames.</entry>
+    </section>
+
+    <section name="Updates">
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">%1 uus versioon on saadaval!</entry>
+      <entry id="6101" string="There are no updates available at the moment!">Antud momendil uuendusi ei ole!</entry>
+      <entry id="6102" string="Check for updates at startup">Kontrollida uuendusi programmi käivitusel</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 võib kontrollida uuendusi käivitusel.&#10;&#10;Soovite et %1 kontrolliks uuendusi käivitusel?</entry>
+    </section>
+
+    <section name="Messages">
+      <entry id="7000" string="Currently converting">Praegu kodeeritakse</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Käib kodeerimine! Soovite kindlalt katkestada?</entry>
+      <entry id="7002" string="Delete original files after encoding">Kustuta originaal failid peale kodeerimist</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">See säte kustutab originaal failid peale seda kui nad on kodeeritud! Kas soovite jätkata?</entry>
+      <entry id="7005" string="File already exists">Fail eksisteerib</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Sisendi fail %1 juba eksisteerib! Soovite üle kirjutada?</entry>
+      <entry id="7007" string="Overwrite all further files">Kirjutada üle kõik vanad failid</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Puudub juurdepääs sisend failile: %1&#10;&#10;Fail: %1&#10;Kaust: %2</entry>
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ei saa luua väljund faili: %1&#10;&#10;Fail: %1&#10;Kaust: %2</entry>
+      <entry id="7110" string="File not found">Faili ei leitud</entry>
+      <entry id="7111" string="Unknown file type">Tundmatu faili tüüp</entry>
+      <entry id="7113" string="Unsupported audio format">Mittetoetatav audio formaat</entry>
+      <entry id="7114" string="Unknown error">Tundmatu viga</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Ei saa laadida NT SCSI draivereid! CD ripping ei tööta!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Ei saa faili avada: %1&#10;&#10;Viga: %2</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB tugi välja lülitatud! Palun lülitage sisse lokaalse või kauge CDDB tugi dialoogaknas.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Kauge CDDB tugi on välja lülitatud! Palun lülitage kauge CDDB tugi sisse dialoog aknas.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Juurdepääs CD-ROM-le Windowsi poolt suletud.&#10;&#10;Palun võtke ühendust oma süsteemi administraatoriga,&#10;et saada juurdepääsu luba CD-ROM-le.</entry>
+    </section>
+
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">Jätta vahele</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">CD-ROM-i valik</entry>
+      <entry id="9002" string="CD information">CD informatsioon</entry>
+      <entry id="9003" string="Read CD Text">Lugeda CD Teksti</entry>
+      <entry id="9004" string="Read cdplayer.ini">Lugeda cdplayer.ini</entry>
+      <entry id="9005" string="Ripper settings">Ripperi sätted</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Aktiveerida cdparanoia resiim</entry>
+      <entry id="9007" string="Overlap only">Ainult üle katta</entry>
+      <entry id="9008" string="No verify">Mitte kontrollida</entry>
+      <entry id="9009" string="No scratch repair">Ilma kriimu korrektsioonita</entry>
+      <entry id="9010" string="Full cdparanoia mode">Täis cdparanoia reziim</entry>
+      <entry id="9011" string="Activate jitter correction">Aktiveerida jitter korrektsioon</entry>
+      <entry id="9012" string="Switch stereo channels">Vahetada vasak/parem kanal</entry>
+      <entry id="9013" string="Automatization">Automatiseerimine</entry>
+      <entry id="9014" string="Read CD contents on insert">Lugeda CD sisu sisestamisel</entry>
+      <entry id="9015" string="Start ripping automatically">Käivitada rippimine autom.</entry>
+      <entry id="9016" string="Eject disk after ripping">Väljastada plaat peale rippimist</entry>
+      <entry id="9017" string="CD options">CD sätted</entry>
+      <entry id="9018" string="Lock CD tray while ripping">Blokeerida CD rippimise ajal</entry>
+    </section>
+
+    <section name="Encoders">
+
+      <section name="BladeEnc">
+	<entry id="30000" string="Bitrate">Bitikiirus</entry>
+	<entry id="30001" string="Copyright bit">Copyright bit</entry>
+	<entry id="30002" string="CRC">CRC (kontrollsumma)</entry>
+	<entry id="30003" string="Original bit">Original bit</entry>
+	<entry id="30004" string="Channels">Kanalid</entry>
+	<entry id="30005" string="Private bit">Private bit</entry>
+	<entry id="30006" string="Set Copyright bit">Set Copyright bit</entry>
+	<entry id="30007" string="Enable CRC">CRC lubatud</entry>
+	<entry id="30008" string="Set Original bit">Set Original bit</entry>
+	<entry id="30009" string="Dual channel encoding">2-kanaliline kodeerimine</entry>
+	<entry id="30010" string="Set Private bit">Set Private bit</entry>
+      </section>
+
+      <section name="Bonk">
+	<entry id="31000" string="Encoder mode">Kodeerimise reziim</entry>
+	<entry id="31001" string="Stereo mode">Stereo reziim</entry>
+	<entry id="31002" string="Quantization">Kvantimine</entry>
+	<entry id="31003" string="Downsampling ratio">Alumine diskreetne koef.</entry>
+	<entry id="31004" string="Predictor size">Suuruse prognoos</entry>
+	<entry id="31005" string="Enable lossless encoding">Min. kadudega kodeerimine</entry>
+	<entry id="31006" string="Enable Joint Stereo">Lülitada sisse Joint Stereo</entry>
+      </section>
+
+      <section name="LAME">
+	<entry id="32000" string="Basic">Põhiline</entry>
+	<entry id="32001" string="Misc">Lisaks</entry>
+	<entry id="32002" string="Expert">Ekspert</entry>
+	<entry id="32003" string="Audio processing">Audio protsess</entry>
+
+	<section name="Basic">
+	  <entry id="32100" string="Presets">Presets</entry>
+	  <entry id="32101" string="Use preset">Valige variant</entry>
+	  <entry id="32102" string="Custom settings">Käsi sätted</entry>
+	  <entry id="32103" string="Medium, Fast">Keskmine, Kiire</entry>
+	  <entry id="32104" string="Standard, Fast">Standartne, Kiire</entry>
+	  <entry id="32105" string="Extreme, Fast">Extriim, Kiire</entry>
+	  <entry id="32106" string="Bitrate">Bitikiirus</entry>
+	  <entry id="32107" string="Quality">Kvaliteet</entry>
+	  <entry id="32108" string="Set bitrate">Bitikiirus</entry>
+	  <entry id="32109" string="Set ratio">Koefitsent</entry>
+	  <entry id="32110" string="Set quality">Kvaliteet</entry>
+	  <entry id="32111" string="worse">halvem</entry>
+	  <entry id="32112" string="better">parem</entry>
+	  <entry id="32113" string="VBR mode">VBR resiim</entry>
+	  <entry id="32114" string="no VBR">ilma VBR-ta</entry>
+	  <entry id="32115" string="VBR quality">VBR-i kvaliteet</entry>
+	  <entry id="32116" string="ABR target bitrate">ABR bitikiirus</entry>
+	</section>
+
+	<section name="Misc">
+	  <entry id="32200" string="Control bits">Juhtivad bitid</entry>
+	  <entry id="32201" string="Set Copyright bit">Set Copyright bit</entry>
+	  <entry id="32202" string="Set Original bit">Set Original bit</entry>
+	  <entry id="32203" string="Set Private bit">Set Private bit</entry>
+	  <entry id="32204" string="CRC">CRC (kontrollsumma)</entry>
+	  <entry id="32205" string="Enable CRC">CRC lubatud</entry>
+	  <entry id="32206" string="Stereo mode">Stereo reziim</entry>
+	  <entry id="32207" string="auto">auto</entry>
+	  <entry id="32208" string="Stereo">Stereo</entry>
+	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
+	  <entry id="32210" string="Force Joint Stereo">Sunniviisiline</entry>
+	  <entry id="32211" string="VBR bitrate range">VBR bitikiiruse vahemik</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">Min. VBR bitikiirus</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">Maks. VBR bitikiirus</entry>
+	</section>
+
+	<section name="Expert">
+	  <entry id="32300" string="ATH">ATH</entry>
+	  <entry id="32301" string="Enable ATH">ATH</entry>
+	  <entry id="32302" string="Use default setting">Kasutada vaikimisi sätteid</entry>
+	  <entry id="32303" string="Psycho acoustic model">Psühho-akustiline mudel</entry>
+	  <entry id="32304" string="Use Temporal Masking Effect">Kasutada maski effekti</entry>
+	  <entry id="32305" string="Stream format">Helivoo formaat</entry>
+	  <entry id="32306" string="Enforce strict ISO compliance">Range ISO-le vastavus</entry>
+	</section>
+
+	<section name="Audio processing">
+	  <entry id="32400" string="Highpass filter">Ülemine filter</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">Ülemine sageduse tase Hz</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Ülemine laiuse tase Hz</entry>
+	  <entry id="32403" string="Lowpass filter">Alumine filter</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">Alumine sageduse tase Hz</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">Alumine laiuse tase Hz</entry>
+	  <entry id="32406" string="Misc settings">Muud sätted</entry>
+	  <entry id="32407" string="Disable all filtering">Lülita filtrid välja</entry>
+	</section>
+      </section>
+
+      <section name="AAC">
+	<entry id="33001" string="Quality">Kvaliteet</entry>
+	<entry id="33002" string="Format">Formaat</entry>
+
+	<section name="Quality">
+	  <entry id="33200" string="Bitrate">Bitikiirus</entry>
+	  <entry id="33201" string="Bitrate / Quality">Bitikiirus/Kvaliteet</entry>
+	  <entry id="33202" string="Bitrate per channel">Bitikiirus kanalile</entry>
+	  <entry id="33203" string="Set quality">Kvaliteet</entry>
+	  <entry id="33204" string="Stereo mode">Stereo reziim</entry>
+	  <entry id="33205" string="Allow Joint Stereo">Allow Joint Stereo</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Müra aja formeerimine</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">Kasutada müra aja formeerimist</entry>
+	  <entry id="33208" string="Maximum bandwidth">Maks. sagetuste riba laius</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maks. AAC läbilaskeriba laius (Hz)</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="33300" string="MPEG version">MPEG versioon</entry>
+	  <entry id="33301" string="AAC object type">AAC objekti tüüp</entry>
+	  <entry id="33302" string="File format">Faili tüüp</entry>
+	  <entry id="33304" string="Tags">Tagid</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Lubada ID3v2 tagid AAC failides</entry>
+	  <entry id="33306" string="Note">Märge</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Mõningates playerites mis toetavad AAC faile võivad esineda probleemid ID3 tagidega.</entry>
+	</section>
+      </section>
+
+      <section name="FLAC">
+	<entry id="34000" string="Basic">Põhiline</entry>
+	<entry id="34001" string="Format">Formaat</entry>
+	<entry id="34002" string="Expert">Ekspert</entry>
+
+	<section name="Basic">
+	  <entry id="34100" string="Presets">Presets</entry>
+	  <entry id="34101" string="Use preset">Valige variant</entry>
+	  <entry id="34102" string="Custom settings">Käsi sätted</entry>
+	  <entry id="34103" string="Fastest encoding">Kiireim kodeerimine</entry>
+	  <entry id="34104" string="Best compression">Parim kompressioon</entry>
+	  <entry id="34105" string="Stereo mode">Stereo reziim</entry>
+	  <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
+	  <entry id="34107" string="Adaptive Joint Stereo">Adaptiivne Joint Stereo</entry>
+	  <entry id="34108" string="File format">Faili tüüp</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="34200" string="Use streamable subset">Use streamable subset</entry>
+	  <entry id="34201" string="Blocksize">Bloki suurus</entry>
+	</section>
+
+	<section name="Expert">
+	  <entry id="34300" string="Signal processing">Apodization</entry>
+	  <entry id="34301" string="Window function(s)">Apodization function(s)</entry>
+	  <entry id="34302" string="Note">Märge</entry>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">Mõned funktsioonid eraldatakse ;</entry>
+	  <entry id="34304" string="Linear predictor">Lineaarne predictor</entry>
+	  <entry id="34305" string="Maximum LPC order">Maksimaalne LPC kord</entry>
+	  <entry id="34306" string="disabled">välja lülitatud</entry>
+	  <entry id="34307" string="Exhaustive model search">Täielik mudeli otsing</entry>
+	  <entry id="34308" string="Quantized LPC precision">Kvantiseeritud LPC täpsus</entry>
+	  <entry id="34309" string="auto">auto</entry>
+	  <entry id="34310" string="Optimize LPC quantization">Optimiseeri LPC kvantisatsioon</entry>
+	  <entry id="34311" string="Residual coding">Jääk kodeerimine</entry>
+	  <entry id="34312" string="Minimum partition order">Minimaalne osade kord</entry>
+	  <entry id="34313" string="Maximum partition order">Maksimaalne osade kord</entry>
+	</section>
+      </section>
+
+      <section name="Vorbis">
+	<entry id="35000" string="Encoding Mode">Kodeerimise meetod</entry>
+	<entry id="35001" string="Variable Bitrate">Vahelduv Bitikiirus</entry>
+	<entry id="35002" string="Average Bitrate">Keskmine Bitikiirus</entry>
+	<entry id="35003" string="Quality">Kvaliteet</entry>
+	<entry id="35004" string="Bitrate">Bitikiirus</entry>
+      </section>
+
+      <section name="WMA">
+	<entry id="36008" string="Quality">Kvaliteet</entry>
+      </section>
+
+      <section name="TwinVQ">
+	<entry id="37000" string="Bitrate">Bitikiirus</entry>
+	<entry id="37001" string="Bitrate per channel">Bitikiirus kanalile</entry>
+	<entry id="37002" string="Preselection">Varjandid</entry>
+	<entry id="37003" string="Number of preselection candidates">Varjantide hulk</entry>
+      </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="auto">auto</entry>
+	<entry id="39006" string="VBR mode">VBR resiim</entry>
+	<entry id="39010" string="Options">Sätted</entry>
+	<entry id="39016" string="VBR quality">VBR-i kvaliteet</entry>
+	<entry id="39017" string="ABR target bitrate">ABR bitikiirus</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="auto">auto</entry>
+	<entry id="40015" string="Quality">Kvaliteet</entry>
+	<entry id="40020" string="Options">Sätted</entry>
+      </section>
+
+      <section name="SndFile">
+	<entry id="41001" string="File format">Faili tüüp</entry>
+	<entry id="41002" string="Audio format">Audio formaat</entry>
+	<entry id="41003" string="mono">mono</entry>
+      </section>
+    </section>
+
+    <section name="Extensions">
+
+      <section name="Donate">
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
+
+	<section name="PayPal">
+	  <entry id="100102" string="usd">eur</entry>
+	  <entry id="100103" string="$%1">%1€</entry>
+	  <entry id="100104" string="5,10,20,other amount">5,10,20,muu summa</entry>
+	</section>
+
+	<section name="Donorbox">
+	  <entry id="100202" string="usd">eur</entry>
+	</section>
+      </section>
+
+      <section name="Winamp Adapter">
+	<entry id="101000" string="Configure">Sätted</entry>
+	<entry id="101001" string="About">Plagini kohta</entry>
+      </section>
+
+      <section name="Video Downloader">
+	<entry id="102014" string="Length">Pikkus</entry>
+	<entry id="102015" string="Size">Suurus</entry>
+
+	<section name="Configuration">
+	  <entry id="102101" string="Automatization">Automatiseerimine</entry>
+	  <entry id="102103" string="Select">Valik</entry>
+	</section>
+
+	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<entry id="103000" string="Tags">Tagid</entry>
+	<entry id="103001" string="Length">Pikkus</entry>
+	<entry id="103002" string="Size">Suurus</entry>
+	<entry id="103005" string="File">Fail</entry>
+
+	<section name="Basic">
+	  <entry id="103100" string="Basic">Põhiline</entry>
+	  <entry id="103107" string="Add">Lisa</entry>
+	  <entry id="103108" string="Remove">Eemalda</entry>
+	</section>
+
+	<section name="Details"/>
+
+	<section name="Other"/>
+
+	<section name="Errors">
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Ei saa faili avada: %1&#10;&#10;Viga: %2</entry>
+	</section>
+      </section>
+    </section>
+  </data>
+</LangFile>

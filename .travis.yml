@@ -29,9 +29,11 @@ matrix:
             - libudev-dev
 
     - os: osx
+      osx_image: xcode10.2
       compiler: gcc
 
     - os: osx
+      osx_image: xcode10.2
       compiler: clang
 
     - os: linux
@@ -130,27 +132,13 @@ before_install:
       fi
       sudo rm /etc/gtk-3.0/settings.ini
       sudo apt remove -y libcups2
-      sudo apt install -y adwaita-icon-theme:$ARCH gir1.2-gtk-3.0:$ARCH libasound2-dev:$ARCH libblkid1:$ARCH libcairo2-dev:$ARCH libcups2:$ARCH libegl1-mesa-dev:$ARCH libfuse2:$ARCH libgdk-pixbuf2.0-dev:$ARCH libgtk-3-dev:$ARCH libgtk-3-0:$ARCH libgtk-3-common:$ARCH libncurses-dev:$ARCH libpango1.0-dev:$ARCH libpulse-dev:$ARCH libpulse0:$ARCH libpulse-mainloop-glib0:$ARCH librest-0.7-0:$ARCH libsm-dev:$ARCH libsm6:$ARCH libsndfile1-dev:$ARCH libsndfile1:$ARCH libssl-dev:$ARCH libudev-dev:$ARCH libuuid1:$ARCH libxft-dev:$ARCH zlib1g-dev:$ARCH
-    fi
-
-install:
-  - |
-    if [ $TRAVIS_OS_NAME = osx ]; then
-      brew install libcdio
-      wget https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+0.94+2.tar.gz
-      tar xfz libcdio-paranoia-10.2+0.94+2.tar.gz
-      cd libcdio-paranoia-10.2+0.94+2
-      ./configure --prefix=/usr/local
-      make && sudo make install
-      cd ..
+      sudo apt install -y adwaita-icon-theme gir1.2-gtk-3.0:$ARCH gnome-icon-theme libasound2-dev:$ARCH libblkid1:$ARCH libcairo2-dev:$ARCH libcups2:$ARCH libegl1-mesa-dev:$ARCH libfuse2:$ARCH libgdk-pixbuf2.0-dev:$ARCH libgtk-3-dev:$ARCH libgtk-3-0:$ARCH libgtk-3-common:$ARCH libncurses-dev:$ARCH libpango1.0-dev:$ARCH libpulse-dev:$ARCH libpulse0:$ARCH libpulse-mainloop-glib0:$ARCH librest-0.7-0:$ARCH libsm-dev:$ARCH libsm6:$ARCH libsndfile1-dev:$ARCH libsndfile1:$ARCH libssl-dev:$ARCH libudev-dev:$ARCH libuuid1:$ARCH libxft-dev:$ARCH zlib1g-dev:$ARCH
     fi
 
 script:
   - |
     # Build libcdio
-    if [ $TRAVIS_OS_NAME != osx ]; then
-      ./tools/build-codecs libcdio libcdio-paranoia
-    fi
+    ./tools/build-codecs libcdio libcdio-paranoia
   - |
     # Build libcurl
     if [ "$AppImageBuild" = True ]; then
@@ -244,11 +232,17 @@ script:
   - |
     # Copy smooth, BoCA and fre:ac to appdir
     if [ "$AppImageBuild" = True ]; then
+    # Copy icons
+      mkdir -p appdir/icons/gnome/32x32/status
+      cp /usr/share/icons/gnome/32x32/status/dialog-error.png appdir/icons/gnome/32x32/status
+      cp /usr/share/icons/gnome/32x32/status/dialog-information.png appdir/icons/gnome/32x32/status
+      cp /usr/share/icons/gnome/32x32/status/dialog-question.png appdir/icons/gnome/32x32/status
+      cp /usr/share/icons/gnome/32x32/status/dialog-warning.png appdir/icons/gnome/32x32/status
     # Copy smooth
       cp /usr/local/lib/libsmooth*.so.? appdir
     # Copy BoCA
       cp -r /usr/local/lib/boca appdir
-      ln -s boca/boca.1.0.so appdir/libboca-1.0.so.1
+      ln -s boca/boca.1.0.so appdir/libboca-1.0.so.2
     # Copy fre:ac
       cp COPYING Readme* appdir
       rm appdir/Readme.md

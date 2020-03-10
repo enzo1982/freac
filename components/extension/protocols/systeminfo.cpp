@@ -16,6 +16,12 @@
 #	include <windows.h>
 #else
 #	include <stdio.h>
+
+#	if defined __linux__
+#		include <sys/sysinfo.h>
+#	elif defined __APPLE__
+#		include <sys/sysctl.h>
+#	endif
 #endif
 
 #ifdef __WIN32__
@@ -68,7 +74,7 @@ const String &BoCA::SystemInfo::GetOperatingSystem()
 		buffer.Zero();
 
 #	if defined __linux__
-		FILE	*pstdin = popen("echo \"`lsb_release -ds` (`uname -o` `uname -r`)\"", "r");
+		FILE	*pstdin = popen("echo \"`lsb_release -ds || uname -o` (`uname -s` `uname -r`)\"", "r");
 #	elif defined __APPLE__
 		FILE	*pstdin = popen("echo \"`sw_vers -productName` `sw_vers -productVersion`\"", "r");
 #	elif defined __HAIKU__
@@ -126,6 +132,47 @@ const String &BoCA::SystemInfo::GetCPUModel()
 	}
 
 	return cpuModel;
+}
+
+const String &BoCA::SystemInfo::GetInstalledRAM()
+{
+	static String	 installedRAM;
+
+	if (installedRAM == NIL)
+	{
+		UnsignedInt64	 installedMemory = 0;
+
+#if defined __WIN32__
+		MEMORYSTATUSEX	 memory;
+
+		memory.dwLength = sizeof(MEMORYSTATUSEX);
+
+		if (GlobalMemoryStatusEx(&memory)) installedMemory = memory.ullTotalPhys;
+#elif defined __linux__
+		struct sysinfo	 info;
+
+		if (sysinfo(&info) == 0) installedMemory = UnsignedInt64(info.totalram) * info.mem_unit;
+#elif defined __APPLE__
+		int	 mib[2] = { CTL_HW, HW_MEMSIZE };
+		size_t	 size	= sizeof(installedMemory);
+
+		sysctl(mib, 2, &installedMemory, &size, NULL, 0);
+#endif
+
+		Float	 amount = Math::Ceil(Float(installedMemory) / 1024.0 / 128.0) / 8.0;
+		String	 unit	= "MB";
+
+		if (amount > 768)
+		{
+			amount = Math::Ceil(amount / 512.0) / 2.0;
+			unit   = "GB";
+		}
+
+		if (installedMemory) installedRAM = String::FromFloat(amount).Append(" ").Append(unit);
+		else		     installedRAM = "unknown";
+	}
+
+	return installedRAM;
 }
 
 const String &BoCA::SystemInfo::GetNewLineCharacters()

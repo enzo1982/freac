@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">easyUpdate</property>
+    <property name="version">0.3</property>
+    <property name="language">[english name] / [native name]</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">[template]</property>
+    <property name="author">[author] &lt;[author@server.tld]&gt;</property>
+    <property name="url">http://www.chapter0.net/easyUpdate/</property>
+  </info>
+  <data>
+    <entry id="1" string="Cancel">Cancel</entry>
+    <entry id="2" string="Install">Install</entry>
+    <entry id="3" string="Show unstable releases">Show unstable releases</entry>
+    <entry id="4" string="Select the updated program version to be installed:">Select the updated program version to be installed:</entry>
+    <entry id="5" string="You can select optional components to be installed:">You can select optional components to be installed:</entry>
+    <entry id="6" string="Version ID">Version ID</entry>
+    <entry id="7" string="Package">Package</entry>
+    <entry id="8" string="Description">Description</entry>
+    <entry id="9" string="Latest">Latest</entry>
+    <entry id="10" string="Size">Size</entry>
+    <entry id="11" string="Yes">Yes</entry>
+    <entry id="12" string="No">No</entry>
+    <entry id="13" string="unknown">unknown</entry>
+    <entry id="14" string="Installing files...">Installing files...</entry>
+    <entry id="15" string="Installing file:">Installing file:</entry>
+    <entry id="16" string="Downloading file:">Downloading file:</entry>
+    <entry id="17" string="Update complete">Update complete</entry>
+    <entry id="18" string="Your application has been successfully updated!">Your application has been successfully updated!</entry>
+    <entry id="19" string="Error">Error</entry>
+    <entry id="20" string="Error downloading package!">Error downloading package!</entry>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.</entry>
+  </data>
+</LangFile>

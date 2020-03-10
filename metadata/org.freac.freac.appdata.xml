@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2019 Robert Kausch -->
+<!-- Copyright 2020 Robert Kausch -->
 <component type="desktop-application">
     <id>org.freac.freac</id>
     <launchable type="desktop-id">org.freac.freac.desktop</launchable>
@@ -47,60 +47,91 @@
         </screenshot>
     </screenshots>
     <releases>
-        <release version="1.1~alpha20190423" date="2019-04-23">
+        <release version="1.1~rc1" date="2020-03-08">
             <description>
-                <p>New features:</p>
+                <p>Improvements:</p>
                 <ul>
-                    <li>Added support for ripping with more drives than CPU cores available</li>
-                    <li>Added an option to keep timestamps of source files</li>
-                    <li>Added support for PulseAudio output</li>
-                </ul>
-                <p>Enhancements:</p>
-                <ul>
-                    <li>Improved interoperability of playlist files with VLC</li>
-                    <li>Improved handling of cue sheets referencing multiple files</li>
-                    <li>Improved handling of WAV files with unknown length</li>
-                    <li>Added support for drag &amp; drop in the tag editor</li>
+                    <li>Now passing float samples to LAME encoder directly if sample format is float</li>
+                    <li>Made automatic ripping work when using the single output file option</li>
+                    <li>Added options to control chapter information and cover art to freaccmd</li>
+                    <li>Handle Ctrl+C in freaccmd to clean up temporary files when aborted</li>
+                    <li>Improved HiDPI detection</li>
+                    <li>Log CDDB information when ripping</li>
                 </ul>
                 <p>Bug fixes:</p>
                 <ul>
-                    <li>Fixed crash when showing freedb multi-match dialog</li>
-                    <li>Fixed float samples processing with Core Audio encoder</li>
-                    <li>Fixed MP4 output issues when in and out files are the same</li>
-                    <li>Fixed Opus granule pos calculation and vendor string</li>
-                    <li>Fixed Ogg serial number generation</li>
-                    <li>Fixed handling of very short Ogg files</li>
-                    <li>Fixed several stability issues</li>
+                   <li>Fixed file modification time stamp getting lost when output verification is active</li>
+                   <li>Fixed file creation time stamp not being preserved despite option being enabled</li>
+                   <li>Fixed freaccmd not correctly handling relative output folders</li>
                 </ul>
             </description>
         </release>
-        <release version="1.1~alpha20181201a" date="2018-12-02">
+        <release version="1.1~beta3" date="2020-02-09">
             <description>
+                <p>Improvements:</p>
+                <ul>
+                    <li>Prepare for freedb.org shutdown on 31st March 2020</li>
+                    <li>Display current signal processing settings in status area</li>
+                    <li>Added a toolbar button to configure signal processing</li>
+                    <li>Added new tips to Tip of the Day dialog</li>
+                    <li>Added separate Windows Wave File Output entry to encoder list</li>
+                </ul>
                 <p>Bug fixes:</p>
                 <ul>
-                    <li>Fixed CD ripping issues</li>
+                   <li>Fixed issues opening Opus files with a .ogg extension</li>
+                   <li>Fixed Monkey's Audio encoder not showing up in 64 bit builds</li>
+                   <li>Fixed some issues with freaccmd command line interface</li>
+                </ul>
+                <p>Updated codecs:</p>
+                <ul>
+                    <li>Updated Monkey's Audio to version 5.18</li>
+                </ul>
+                <p>Updated translations:</p>
+                <ul>
+                    <li>Updated Chinese (simplified) translation</li>
                 </ul>
             </description>
         </release>
-        <release version="1.1~alpha20181201" date="2018-12-01">
+        <release version="1.1~beta2" date="2020-01-12">
             <description>
-                <p>New features:</p>
+                <p>Improvements:</p>
                 <ul>
-                    <li>Notification component</li>
-                    <li>Option to switch stereo channels</li>
-                </ul>
-                <p>Enhancements:</p>
-                <ul>
-                    <li>Read/write ID3v2 from/to .wav files</li>
-                    <li>Read cue sheets embedded in ID3v2 tags</li>
-                    <li>Improved performance when reading large MP4/M4A files</li>
-                    <li>Respect GDK_SCALE environment variable on X11 systems</li>
+                    <li>Log names of active DSP components</li>
+                    <li>Log total duration and speed of conversions</li>
                 </ul>
                 <p>Bug fixes:</p>
                 <ul>
-                    <li>Fixed crash when using the channel converter to convert mono to stereo</li>
-                    <li>Fixed encoding mono MP3s with LAME</li>
-                    <li>Fixed issues writing MP4 files when &lt;directory&gt; pattern is used</li>
+                   <li>Fixed an IO subsystem issue causing corrupted output files in some cases</li>
+                   <li>Fixed SuperFast LAME repacker causing glitches in output files in some cases</li>
+                   <li>Fixed gapless decoding of MP3 files created with FFmpeg</li>
+                   <li>Fixed inability to update ID3v2 and APEv2 tags in tag editor</li>
+                   <li>Fixed inability to exit application after ejecting a disc while ripping</li>
+                   <li>Fixed hangup when ejecting a disc while adding its tracks to joblist</li>
+                   <li>Fixed minimum and maximum bitrate values being mixed up in Vorbis configuration dialog</li>
+                </ul>
+                <p>Updated translations:</p>
+                <ul>
+                    <li>Updated Dutch translation</li>
+                </ul>
+            </description>
+        </release>
+        <release version="1.1~beta1" date="2019-12-15">
+            <description>
+                <p>New features:</p>
+                <ul>
+                    <li>Added support for saving log files</li>
+                </ul>
+                <p>Enhancements:</p>
+                <ul>
+                   <li>Greatly improved performance when output is on a HDD drive</li>
+                   <li>Adding files to the joblist can now use multiple threads</li>
+                   <li>Greatly improved tagging support (new fields and compatibility fixes)</li>
+                </ul>
+                <p>Bug fixes:</p>
+                <ul>
+                    <li>Fixed invalid file time for CD rips when using "Keep time stamps" option</li>
+                    <li>Fixed MP4 AAC files not always being gapless</li>
+                    <li>Fixed some keyboard input issues on Linux</li>
                 </ul>
             </description>
         </release>

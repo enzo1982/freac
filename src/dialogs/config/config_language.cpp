@@ -125,8 +125,11 @@ Void freac::ConfigureLanguage::EditLanguageFile()
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
+	Float	 scaleFactor = Application::GetScaleFactor();
+	String	 scaleParam  = scaleFactor != 0 ? String("--scale:").Append(String::FromFloat(scaleFactor)) : String();
+
 #if defined __WIN32__
-	ShellExecute(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String("\"").Append(GUI::Application::GetApplicationDirectory().Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()))).Append("\""), String("."), SW_SHOW);
+	ShellExecute(0, String("open"), GUI::Application::GetApplicationDirectory().Append("translator.exe"), String(scaleParam).Append(" \"").Append(GUI::Application::GetApplicationDirectory().Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()))).Append("\""), String("."), SW_SHOW);
 #else
 	String	 command = String("\"").Append(GUI::Application::GetApplicationDirectory()).Append(File(GUI::Application::GetApplicationDirectory().Append("smooth-translator")).Exists() ? "smooth-translator" : "translator").Append("\"");
 
@@ -147,7 +150,7 @@ Void freac::ConfigureLanguage::EditLanguageFile()
 	else 													command = String("\"").Append(GUI::Application::GetApplicationDirectory()).Append("translator.app/Contents/MacOS/translator\"");
 #endif
 
-	const char	*cmd = command.Append(" \"").Append(String(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber())).Replace(" ", "\\ ")).Append("\"");
+	const char	*cmd = command.Append(" ").Append(scaleParam).Append(" \"").Append(String(Config::Get()->resourcesPath).Append("lang").Append(Directory::GetDirectoryDelimiter()).Append(i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()))).Append("\"");
 
 	if (!fork()) { execl("/bin/sh", "sh", "-c", cmd, NULL); exit(0); }
 #endif

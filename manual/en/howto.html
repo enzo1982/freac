@@ -1,0 +1,380 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>How to ...? - fre:ac User Guide</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+
+    <!-- Hack to avoid flash of unstyled content in IE -->
+    <script> </script>
+  </head>
+
+  <body id="onecolumn">
+    <div id="container">
+      <div class="wrapper">
+
+	<div id="header">
+	  <div class="wrapper">
+	    <h1 id="page-title">
+	      <div id="g_title">How to ...? - fre:ac User Guide</div>
+	    </h1>
+	    <p class="description"></p>
+	    <div id="g_description">
+	      <p>fre:ac setup and special features guide</p>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="main-content-oc">
+	  <div class="wrapper">
+	    <div class="content-item">
+	      <div id='g_body'>
+		<h4>Contents</h4>
+		<blockquote>
+		  <p><a href="#anchor_src">How to compile fre:ac from source?</a></p>
+		  <p><a href="#anchor_enc">How to install encoder/decoder xy?</a></p>
+		  <p><a href="#anchor_pat">How to use output file name patterns in fre:ac?</a></p>
+		  <p><a href="#anchor_tra">How to add a new translation to fre:ac?</a></p>
+		  <p><a href="#anchor_rem">How to remove fre:ac from my computer?</a></p>
+		</blockquote>
+		<h4 id="anchor_src">How to compile fre:ac from source?</h4>
+		<blockquote>
+		  <p>In order to build fre:ac from source you should download the latest version of the
+		    <b>fre:ac Component Development Kit</b> (CDK) from <a href="https://www.freac.org/">www.freac.org</a> first.</p>
+		  <p>You will also need the latest <b>smooth Class Library</b> sources from <a href="http://www.smooth-project.org/">www.smooth-project.org</a>
+		    and of course the <b>fre:ac source code</b> package or fre:ac sources checked out from Git.</p>
+		  <ul>
+		    <li>extract the contents of <b>freac-cdk-1.x.zip</b> to anywhere you like</li>
+		    <li>create a folder structure like this:
+		      <blockquote>
+			/cdk (contains folder <b>system</b> and <b>cdk.bat</b>)<br/>
+			/cdk/freac (rename folder from <b>freac-1.1.x.zip</b> package)<br/>
+			/cdk/smooth (rename folder from <b>smooth-0.8.x.y.zip</b> package)
+		      </blockquote>
+		    </li>
+		    <li>run <b>cdk.bat</b></li>
+		    <li>enter: <b>cd smooth && make programs && cd ../freac && make</b></li>
+		  </ul>
+		</blockquote>
+		<h4 id="anchor_enc">How to install encoder/decoder xy?</h4>
+		<blockquote>
+		  <h5>Nero Digital HE-AAC Encoder</h5>
+		  <blockquote>
+		    <p>To install the Nero Digital HE-AAC Encoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>Nero AAC Codec ZIP package</b> from <a href="https://www.free-codecs.com/download/nero_aac_codec.htm">www.free-codecs.com</a>.</li>
+		      <li>Copy the file <b>NeroAACEnc.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>QuickTime AAC Encoder</h5>
+		  <blockquote>
+		    <p>To install the QuickTime AAC Encoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>QuickTime AAC command line encoder ZIP package</b> from <a href="https://github.com/nu774/qaac/releases">github.com</a>.</li>
+		      <li>Copy the file <b>qaac.exe</b> or <b>qaac64.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>DivX AAC Encoder</h5>
+		  <blockquote>
+		    <p>To install the DivX AAC Encoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>DivX AAC Encoder setup package</b> from <a href="http://labs.divx.com/node/127866">labs.divx.com</a>.</li>
+		      <li>Run the setup executable and install the DivX AAC Encoder to a folder of your choice.</li>
+		      <li>Copy the file <b>DivXAACEnc.exe</b> from the DivX AAC Encoder installation folder to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>Helix DNA Producer RealAudio Encoder</h5>
+		  <blockquote>
+		    <p>To install the Helix DNA Producer RealAudio Encoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Create a <b>Helix Community account</b> at <a href="https://helixcommunity.org/account/register">helixcommunity.org</a>.
+			You will need this account in order to be able to download the Helix DNA Producer application.</li>
+		      <li>Download the <b>Helix DNA Producer Command Line App ZIP package</b> from <a href="https://helix-producer.helixcommunity.org/Downloads.htm">helix-producer.helixcommunity.org</a>.</li>
+		      <li>Create a new folder named <b>helix</b> inside the <b>codecs/cmdline</b> subfolder of your
+			fre:ac installation path.</li>
+		      <li>Copy the contents of the folder <b>producer</b> from the ZIP package to the newly created <b>codecs/cmdline/helix</b>
+			subfolder of your fre:ac installation path. The file <b>producer.exe</b> should now reside inside the <b>helix</b> folder
+			along with several other files and directories from the Helix DNA Producer package.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>TiMidity Software MIDI Synthesizer</h5>
+		  <blockquote>
+		    <p>To install the TiMidity Software MIDI Synthesizer for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>TiMidity CVS binary ZIP package</b> from <a href="https://sourceforge.net/projects/twsynth/files/">sourceforge.net</a>.</li>
+		      <li>Download the <b>Freepats ZIP package</b> from <a href="https://freepats.zenvoid.org/">freepats.zenvoid.org</a>.</li>
+		      <li>Create a new folder named <b>timidity</b> inside the <b>codecs/cmdline</b> subfolder of your
+			fre:ac installation path.</li>
+		      <li>Copy the file <b>timidity.exe</b> from the TiMidity ZIP package to the newly created <b>codecs/cmdline/timidity</b>
+			subfolder of your fre:ac installation path.</li>
+		      <li>Copy the contents of the folder <b>freepats</b> from the Freepats ZIP package to the newly created <b>codecs/cmdline/timidity</b>
+			subfolder of your fre:ac installation path. The file <b>crude.cfg</b> should now reside inside the <b>timidity</b> folder
+			along with several other files and directories from the Freepats package.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>MPEG-4 Audio Lossless Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>To install the MPEG-4 Audio Lossless Encoder / Decoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>MPEG-4 ALS Windows Codec ZIP package</b> from <a href="https://www.nue.tu-berlin.de/menue/forschung/forschungsgebiete/datenkompression_und_uebertragung/mpeg_4_audio_lossless_coding_als">www.nue.tu-berlin.de</a>.</li>
+		      <li>Copy the .exe file found in the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path <b>renaming it to mp4als.exe</b>.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>True Audio Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>To install the True Audio Encoder / Decoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>TTA compressor for Windows ZIP package</b> from <a href="http://tausoft.org/wiki/Main_Page">tausoft.org</a>.</li>
+		      <li>Copy the file <b>ttaenc.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>Flake FLAC Encoder</h5>
+		  <blockquote>
+		    <p>To install the Flake FLAC Encoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>Flake Windows binary ZIP package</b> from <a href="http://flake-enc.sourceforge.net/download.html">flake-enc.sourceforge.net</a>.</li>
+		      <li>Copy the file <b>flake.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>FLACCL OpenCL FLAC Encoder</h5>
+		  <blockquote>
+		    <p>To install the FLACCL OpenCL FLAC Encoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>FLACCL RAR package</b> from <a href="http://cue.tools/wiki/FLACCL">cue.tools</a>.</li>
+		      <li>Create a new folder named <b>flaccl</b> inside the <b>codecs/cmdline</b> subfolder of your
+			fre:ac installation path.</li>
+		      <li>Copy all files from the RAR package to the <b>codecs/cmdline/flaccl</b> subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>LAME MP3 Command Line Encoder</h5>
+		  <blockquote>
+		    <p>To install the LAME MP3 Command Line Encoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>LAME release ZIP package</b> from <a href="https://rarewares.org/mp3-lame-bundle.php">rarewares.org</a>.</li>
+		      <li>Copy the file <b>lame.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>TwoLAME MP2 Encoder</h5>
+		  <blockquote>
+		    <p>To install the TwoLAME MP2 Encoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>TwoLAME binary ZIP package</b> from <a href="https://rarewares.org/mp3-others.php#twolame">rarewares.org</a>.</li>
+		      <li>Copy the file <b>twolame.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>Aften AC-3 Encoder</h5>
+		  <blockquote>
+		    <p>To install the Aften AC-3 Encoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>Aften Win32 binary ZIP package</b> from <a href="https://sourceforge.net/projects/win32builds/files/">sourceforge.net</a>.</li>
+		      <li>Copy the file <b>aften.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>Apple Lossless Decoder</h5>
+		  <blockquote>
+		    <p>The Apple Lossless Decoder is bundled with the original fre:ac
+		      distribution so you normally do not need to install it manually.</p>
+		    <p>If you still need to install or update the Apple Lossless Decoder
+		      manually, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>generic Win32 compile ZIP package</b> from <a href="https://www.rarewares.org/lossless.php#alac">www.rarewares.org</a>.</li>
+		      <li>Copy the file <b>alac.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>TAK Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>The TAK Encoder / Decoder is bundled with the original fre:ac
+		      distribution so you normally do not need to install it manually.</p>
+		    <p>If you still need to install or update the TAK Encoder / Decoder
+		      manually, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>TAK ZIP package</b> from <a href="http://thbeck.de/Tak/Tak.html">thbeck.de</a>.</li>
+		      <li>Copy the file <b>takc.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>Musepack Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>The Musepack Encoder / Decoder is bundled with the original fre:ac
+		      distribution so you normally do not need to install it manually.</p>
+		    <p>If you still need to install or update the Musepack Encoder / Decoder
+		      manually, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>Musepack tools ZIP package</b> from <a href="https://www.musepack.net/index.php?pg=win">www.musepack.net</a>.</li>
+		      <li>Copy the files <b>mpcenc.exe</b> and <b>mpcdec.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>WavPack Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>The WavPack Encoder / Decoder is bundled with the original fre:ac
+		      distribution so you normally do not need to install it manually.</p>
+		    <p>If you still need to install or update the WavPack Encoder / Decoder
+		      manually, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>WavPack Win32 ZIP package</b> from <a href="http://www.wavpack.com/downloads.html">www.wavpack.com</a>.</li>
+		      <li>Copy the files <b>wavpack.exe</b> and <b>wvunpack.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>OptimFROG Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>To install the OptimFROG Encoder / Decoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>OptimFROG Win32 console ZIP package</b> from <a href="http://losslessaudio.org/Downloads.php">losslessaudio.org</a>.</li>
+		      <li>Copy the file <b>ofr.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>Shorten Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>To install the Shorten Encoder / Decoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>Shorten ZIP package</b> from <a href="https://www.free-codecs.com/download/shorten.htm">www.free-codecs.com</a>.</li>
+		      <li>Copy the file <b>shorten.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>La Lossless Audio Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>To install the La Lossless Audio Encoder / Decoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>La Windows setup package</b> from <a href="http://www.lossless-audio.com/download.htm">www.lossless-audio.com</a>.</li>
+		      <li>Run the setup executable and install the La encoder to a folder of your choice.</li>
+		      <li>Copy the file <b>la.exe</b> from the La installation folder to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		      <li>Please note that the La encoder needs to stay installed on your system in order to
+			use it in fre:ac.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>RK Audio Encoder / Decoder</h5>
+		  <blockquote>
+		    <p>To install the RK Audio Encoder / Decoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>RK Audio compressor ZIP package</b> from <a href="https://www.free-codecs.com/download/rk_audio_compressor.htm">www.free-codecs.com</a>.</li>
+		      <li>Copy the file <b>rkau.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>DTS Coherent Acoustics Encoder</h5>
+		  <blockquote>
+		    <p>To install the DTS Coherent Audio Encoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>ffdcaenc binary ZIP package</b> from <a href="https://github.com/filler56789/ffdcaenc-2/releases">GitHub</a>.</li>
+		      <li>Copy the file <b>ffdcaenc.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		  <h5>Extended Module Player (XMP) Decoder</h5>
+		  <blockquote>
+		    <p>To install the Extended Module Player (XMP) Decoder for use with fre:ac, follow these steps:</p>
+		    <ul>
+		      <li>Download the <b>Extended Module Player 7z package</b> from <a href="https://modland.com/pub/software/players/Windows/XMP%20(eXtended%20Module%20Player)/">modland.com</a>.</li>
+		      <li>Copy the files <b>XMP.exe</b> and <b>LibXMP.dll</b> from the 7z package to the <b>codecs/cmdline</b>
+			subfolder of your fre:ac installation path.</li>
+		    </ul>
+		  </blockquote>
+		</blockquote>
+		<h4 id="anchor_pat">How to use output file name patterns in fre:ac?</h4>
+		<blockquote>
+		  <p>The output file name pattern can be configured on the <b>Encoder</b> page of the configuration dialog. You can
+		    use backslashes to specify directories and placeholders for referring to meta information. The following
+		    placeholders are available:</p>
+		  <ul>
+		    <li><b>&lt;artist&gt;</b> - The song artist</li>
+		    <li><b>&lt;title&gt;</b> - The song title</li>
+		    <li><b>&lt;album&gt;</b> - The album title</li>
+		    <li><b>&lt;disc&gt;</b> - The disc number</li>
+		    <li><b>&lt;track&gt;</b> - The song track number</li>
+		    <li><b>&lt;genre&gt;</b> - The song genre</li>
+		    <br/>
+		    <li><b>&lt;albumartist&gt;</b> - The album artist</li>
+		    <br/>
+		    <li><b>&lt;composer&gt;</b> - The song composer</li>
+		    <li><b>&lt;conductor&gt;</b> - The performance conductor</li>
+		    <br/>
+		    <li><b>&lt;year&gt;</b> - The year the song was published</li>
+		    <br/>
+		    <li><b>&lt;currentdate&gt;</b> - The current date formatted as yyyymmdd</li>
+		    <li><b>&lt;currenttime&gt;</b> - The current time formatted as hhmm</li>
+		  </ul>
+		  <p>The <b>&lt;disc&gt;</b> and <b>&lt;track&gt;</b> placeholders can be modified like <b>&lt;disc(n)&gt;</b> and <b>&lt;track(n)&gt;</b> where the <b>(n)</b>
+		    part specifies the minimum length of the disc or track number. Zeroes will be prepended if the actual number is too small. <b>n</b> may be in the range of
+		    <b>1</b> to <b>4</b> where <b>1</b> is the default for disc and <b>2</b> is the default for track numbers if the <b>(n)</b> part is omitted.</p>
+		  <p>The above placeholders refer to song and album information. The following placeholder resolves to the type of the output file:</p>
+		  <ul>
+		    <li><b>&lt;filetype&gt;</b> - The type of the output file</li>
+		  </ul>
+		  <p>A common use case for this placeholder is if you are regularly encoding to different formats (e.g. FLAC for archival and M4A for your
+		    mobile player) and would like to keep the encoded files in separate directory trees.</p>
+		  <p>In addition to the above there are two placeholders that refer
+		    to the original file name of a file being encoded in fre:ac:</p>
+		  <ul>
+		    <li><b>&lt;filename&gt;</b> - The file name of the input file</li>
+		    <li><b>&lt;directory&gt;</b> - The folder the input file is found in</li>
+		  </ul>
+		  <p>The <b>&lt;directory&gt;</b> pattern is special as you can modify its meaning using two numerical arguments.
+		    You can use it like <b>&lt;directory+n&gt;</b> or <b>&lt;directory+n(m)&gt;</b>. In these expressions, the <b>n</b>
+		    specifies the number of path components that should be stripped from the beginning. The <b>m</b> specifies
+		    the number of components to use from what is left. Omitting the <b>(m)</b> part will use all components left in the path after stripping
+		    <b>n</b> components from the beginning. <b>&lt;directory&gt;</b> without any arguments will resolve to the complete path.<p>
+		  <p>So how to use this in practice? Assuming you have your music collection ordered like this:</p>
+		  <blockquote>
+		    <p>C:\Music\[other criteria]\[artist]\[album]\[track] - [title]</p>
+		  </blockquote>
+		  <p>You might have a file called <b>C:\Music\Favorites\Starsailor\Silence is Easy\01 - Music was Saved.flac</b>.</p>
+		  <p>Now let's say you want to encode some music files for use on your portable player and put them in <b>C:\Encoded\</b>.
+		    In order to keep your <b>[other criteria]</b> field, you need to use the <b>&lt;directory&gt;</b> pattern.
+		    If your encoder output folder is set to <b>C:\Encoded\</b>, your complete filename pattern could look like this:</p>
+		  <blockquote>
+		    <p>&lt;directory+1(1)&gt;\&lt;artist&gt; - &lt;album&gt;\&lt;artist&gt; - &lt;album&gt; - &lt;track&gt; - &lt;title&gt;</p>
+		  </blockquote>
+		  <p>This would encode the beforementioned file to <b>C:\Encoded\Favorites\Starsailor - Silence is Easy\Starsailor - Silence
+		    is Easy - 01 - Music was Saved.m4a</b>.</p>
+		</blockquote>
+		<h4 id="anchor_tra">How to add a new translation to fre:ac?</h4>
+		<blockquote>
+		  <p>Please use the <b>smooth Translator</b> utility included in the fre:ac distribution and open an existing
+		    translation file (found in the <b>freac/lang</b> folder). Then change the language settings to reflect
+		    the translation you want to create and start translating the individual text strings. Save your translation
+		    as a new file matching the pattern <b>freac_??.xml</b> (replace ?? with your language code), restart fre:ac
+		    and try selecting the new translation in the configuration dialog.</p>
+		  <p>Please submit your translation to <a href="mailto:translations@freac.org">translations@freac.org</a>, so it can be included in the official distribution.</p>
+		</blockquote>
+		<h4 id="anchor_rem">How to remove fre:ac from my computer?</h4>
+		<blockquote>
+		  <p>Recent versions of fre:ac come with an uninstaller that you can execute from the <b>Start</b> menu.</p>
+		  <p>In case you removed the Start menu group or are unable to find it, it is completely sufficient to delete
+		    the application folder to uninstall fre:ac. fre:ac does neither create any Windows registry entries
+		    nor store any active components outside its installation folder.</p>
+		</blockquote>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="footer">
+	  <div class="wrapper">
+	    <p></p>
+	    <div id='g_footer'>
+	      <p>Copyright (C) 2006 Joseph Nahmias<br/>
+		Copyright (C) 2007-2020 the fre:ac project</p>
+	    </div>
+	    <p></p>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+  </body>
+</html>

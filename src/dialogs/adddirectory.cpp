@@ -95,7 +95,7 @@ const Error &freac::AddDirectoryDialog::ShowDialog()
 	return error;
 }
 
-String freac::AddDirectoryDialog::GetDirectory()
+String freac::AddDirectoryDialog::GetDirectory() const
 {
 	return edit_directory->GetText();
 }

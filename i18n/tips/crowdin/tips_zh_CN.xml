@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Chinese (simplified) / 简体中文</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">tips.xml</property>
+    <property name="author">Joeyong Jen</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="%1 is available in %2 languages. If your language is not available&#10;or the translation is incomplete, you can easily translate %1&#10;using the 'smooth Translator' utility.&#10;&#10;To contribute your translations back to the %1 project, please&#10;refer to %3 for additional details.">%1 有 %2 种语言版本，如果您没有找到您所要的语言，&#10;您可以使用 “smooth 翻译器” 进行 %1 的翻译。</entry>
+    <entry id="101" string="%1 comes with support for a wide variety of audio formats&#10;including MP3, M4A/AAC, FLAC, ALAC, Opus, Ogg Vorbis and&#10;WMA.&#10;&#10;Additional formats can be added by installing command line&#10;encoders.&#10;&#10;Please refer to %2&#10;for details.">%1 支持 LAME，Ogg Vorbis，FAAC，FLAC 和 Opus&#10;等编码器。&#10;&#10;VQF 格式的编码器可以在 %1 网站上下载：&#10;%2</entry>
+    <entry id="102" string="%1 supports the freedb CD database to query artist and title&#10;information about CDs.&#10;&#10;If you have a CD that is not in the database, you can submit new&#10;freedb entries with %1.">使用 %1 您可以提交采用 Unicode 字符集的 freedb CD&#10;数据库条目。&#10;&#10;因此，如果您的 CD 是非拉丁字符艺术家或标题名称，&#10;您可以使用 %1 提交正确的 freedb 条目。</entry>
+    <entry id="103" string="To correct reading errors while ripping, you can enable Jitter&#10;correction in the Ripper tab of %1's configuration dialog.&#10;&#10;If that does not help, try using one of the Paranoia modes.">为了修正翻录时出现读取错误，您可以在 %1 常规设置&#10;的 Ripper 标签中开启抖动校正功能。&#10;&#10;如果这样不能解决问题，您可以尝试另外的 Paranoia 模式。</entry>
+    <entry id="104" string="Do you have suggestions on how to improve %1?&#10;&#10;You can submit your ideas through the tracker on %1's %2&#10;project page at %3 or send&#10;an eMail to %4.">您对 %1 在功能上有更好的建议吗？&#10;&#10;您可以通过 %1 在 %2 project 页面下的&#10;项目跟踪（tracker）标签下提交您的任何建议。&#10;地址是： %3&#10;或直接发送电子邮件到 %4 。</entry>
+    <entry id="105" string="Do you like %1? %1 is free software, but you can help fund&#10;the development by making a donation.&#10;&#10;Donations can be sent via PayPal to %2.&#10;&#10;Or select 'Help'-&gt;'Donate to the %1 project...' from the menu&#10;bar to see different ways to donate.">您喜欢 %1 吗？它是免费的。&#10;&#10;不过您也可以捐点小钱赞助 %1 计划。&#10;&#10;您可以通过 PayPal 赞助给 %2。</entry>
+    <entry id="106" string="%1 can combine multiple input files into a single output file.&#10;&#10;When loading such files back into %1 or another software&#10;supporting chapters, the original tracks will show up there again.&#10;&#10;Select the 'Encode to a single file' option to enable this mode.">%1 可以将多个输入文件合并为一个输出文件。&#10;&#10;将这些文件载入到 %1 或其他支持章节的软件时，&#10;原来的曲目将再次出现在那里。&#10;&#10;选择”编码到单个文件“选项以启用此模式。</entry>
+    <entry id="107" string="%1 is optimized to take advantage of modern multi-core&#10;processors and will convert multiple files in parallel to speed up&#10;conversions.&#10;&#10;In addition, %1's unique SuperFast technology speeds up&#10;single file conversions for select target formats.">%1 针对现代多核处理器所具有的优势进行优化，&#10;能同时快速进行多个文件的转换。&#10;&#10;另外，%1 独特的超高速技术加快了单文件的转换速度。</entry>
+    <entry id="108" string="%1 will verify lossless source formats like FLAC and alert you if&#10;something does not seem to be right.&#10;&#10;In addition, it can verify lossless output files to make sure nothing&#10;went wrong during the conversion process.&#10;&#10;Check your settings in the configuration dialog if you would like&#10;to enable this.">%1 将对无损源格式进行校验（如：FLAC），&#10;如果有问题存在将提示您。&#10;&#10;此外，还将检验无损输出文件，&#10;以确保没有在转换过程中出错。&#10;&#10;如果需要，请检查“配置”对话框中的设置以实现这一点。</entry>
+    <entry id="109" string="%1's gapless encoding and decoding support ensures that your&#10;MP3s and other files start and stop at exactly the right sample.&#10;&#10;This means perfect quality when advancing to the next song of a&#10;continuously recorded album without any clicks or pops.">%1 对无缝编码和解码的支持能确保您的 MP3&#10;和其他文件在正确的采样率上开始和停止。&#10;&#10;这意味着您进入连续唱片集处理时可以获得完美品质，&#10;不会出现任何咔嗒声或爆裂声。</entry>
+    <entry id="110" string="%1 can apply filters to your audio during conversions to reduce&#10;noise in voice recordings or speed up/slow down a record without&#10;changing the pitch which is great for speed listening to audio&#10;books.&#10;&#10;Check the 'Processing' page of the configuration dialog for these&#10;filters.">%1 可以在转换期间对音频应用滤镜以减少录音中的噪音&#10;或在没有改变音高情况下提高和降低录制速度，&#10;特别是在快速浏览音频集时很有用。&#10;&#10;检查配置对话框的“处理”页进行滤镜的配置。</entry>
+    <entry id="111" string="The 'meh! - multi encoder hub' component can convert to multiple&#10;output formats at once.&#10;&#10;Using it, you can create e.g. FLAC and MP3 files of the same source&#10;in one go.">”嗯！- 多编码器集成“ 组件可以实现多个输出格式同时转换。&#10;&#10;使用它，您可以一次完成两种格式（如：FLAC 和 MP3）&#10;文件的转换。</entry>
+
+    <section name="Windows">
+      <entry id="200" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats.&#10;&#10;Copy the in_*.dll files to the %1/plugins directory to enable&#10;%1 to read these formats.">%1 使用 Winamp 2 输入插件后可以支持更多的格式。&#10;&#10;将 in_*.dll 文件复制到 %1/plugins 目录后就可以使用&#10;%1 读取这些格式了。</entry>
+      <entry id="201" string="%1 can use the Core Audio AAC/ALAC encoder included with&#10;iTunes if that program is installed on your computer.&#10;&#10;The Core Audio encoder provides great M4A/AAC encoding&#10;quality and performance.&#10;&#10;Please refer to %2 for installing iTunes.">如果你的电脑上已安装了 iTunes 的话，%1 可以使用&#10;iTunes 的核心音频 AAC/ALAC 编码器。&#10;&#10;核心音频编码器提供出色的 M4A/AAC 编码质量和性能。&#10;&#10;请参阅 %2 以安装 iTunes。</entry>
+    </section>
+
+    <section name="Linux">
+      <entry id="300" string="%1 can use the Core Audio AAC/ALAC encoder if Wine and the&#10;Apple Application Support package are installed on your computer.&#10;&#10;The Core Audio encoder provides great M4A/AAC encoding&#10;quality and performance.&#10;&#10;For instructions on installing this encoder, please refer to the tutorial&#10;at: %2">如果 Wine 和 Apple 应用程序支持包已安装在您的计算机上，&#10;%1 就可以使用核心音频编码器 AAC/ALAC 。&#10;&#10;该编码器提供出色的 M4A/AAC 编码质量和性能。&#10;&#10;有关安装此编码器的说明，请参阅教程：&#10;%2</entry>
+    </section>
+  </data>
+</LangFile>

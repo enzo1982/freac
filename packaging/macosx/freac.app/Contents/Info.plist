@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+ <dict>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>English</string>
+  <key>CFBundleName</key>
+  <string>fre:ac</string>
+  <key>CFBundleDisplayName</key>
+  <string>fre:ac - free audio converter</string>
+  <key>CFBundleSpokenName</key>
+  <string>freak</string>
+  <key>CFBundleExecutable</key>
+  <string>freac</string>
+  <key>CFBundleIdentifier</key>
+  <string>org.freac.freac</string>
+  <key>CFBundleIconFile</key>
+  <string>freac.icns</string>
+  <key>CFBundleInfoDictionaryVersion</key>
+  <string>6.0</string>
+  <key>CFBundlePackageType</key>
+  <string>APPL</string>
+  <key>CFBundleSignature</key>
+  <string>f:ac</string>
+  <key>CFBundleVersion</key>
+  <string>1.1.0.5158</string>
+  <key>CFBundleShortVersionString</key>
+  <string>1.1.0</string>
+  <key>LSBackgroundOnly</key>
+  <false/>
+  <key>LSMinimumSystemVersion</key>
+  <string>10.5.0</string>
+  <key>NSHighResolutionCapable</key>
+  <true/>
+  <key>NSRequiresAquaSystemAppearance</key>
+  <false/>
+  <key>NSHumanReadableCopyright</key>
+  <string>Copyright © 2001-2020 Robert Kausch</string>
+ </dict>
+</plist>

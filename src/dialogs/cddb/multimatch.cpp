@@ -236,7 +236,7 @@ Void freac::cddbMultiMatchDlg::CleanUpPreviews()
 	foreach (Threads::Thread *thread, loadPreviewThreads) thread->Stop();
 }
 
-Int freac::cddbMultiMatchDlg::GetSelectedEntryNumber()
+Int freac::cddbMultiMatchDlg::GetSelectedEntryNumber() const
 {
 	return combo_match->GetSelectedEntryNumber();
 }

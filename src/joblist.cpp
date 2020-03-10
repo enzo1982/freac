@@ -722,7 +722,7 @@ Void freac::JobList::SaveList()
 	}
 }
 
-Bool freac::JobList::SortsAfter(const String &str1, const String &str2) const
+Bool freac::JobList::SortsAfter(const String &str1, const String &str2)
 {
 	Int	 length = Math::Min(str1.Length(), str2.Length());
 
@@ -1086,7 +1086,7 @@ Void freac::JobList::UpdateTextLine()
 	text->SetText(i18n->AddColon(i18n->TranslateString("%1 file(s) in joblist").Replace("%1", String::FromInt(GetNOfTracks()))));
 }
 
-String freac::JobList::GetEntryText(const Track &track) const
+String freac::JobList::GetEntryText(const Track &track)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();

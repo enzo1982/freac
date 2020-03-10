@@ -938,7 +938,7 @@ Void freac::cddbSubmitDlg::ToggleSubmitLater()
 	else																    btn_submit->SetText(i18n->TranslateString("Save entry"));
 }
 
-Bool freac::cddbSubmitDlg::IsDataValid()
+Bool freac::cddbSubmitDlg::IsDataValid() const
 {
 	Bool	 sane = True;
 

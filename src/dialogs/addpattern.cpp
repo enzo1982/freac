@@ -108,17 +108,17 @@ const Error &freac::AddPatternDialog::ShowDialog()
 	return error;
 }
 
-String freac::AddPatternDialog::GetDirectory()
+String freac::AddPatternDialog::GetDirectory() const
 {
 	return edit_directory->GetText();
 }
 
-String freac::AddPatternDialog::GetPattern()
+String freac::AddPatternDialog::GetPattern() const
 {
 	return edit_pattern->GetText();
 }
 
-Bool freac::AddPatternDialog::GetSearchSubFolders()
+Bool freac::AddPatternDialog::GetSearchSubFolders() const
 {
 	return check_subfolders->IsChecked();
 }

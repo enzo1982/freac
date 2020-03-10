@@ -77,7 +77,10 @@ Int freac::ConvertWorkerSingleFile::Convert()
 									  .Append("Output format: %5 Hz, %6 bit, %7 channels"), "Messages").Replace("%1", File(trackToConvert.fileName).GetFileName()).Replace("%2", String::FromInt(format.rate)).Replace("%3", String::FromInt(format.bits)).Replace("%4", String::FromInt(format.channels))
 																									  .Replace("%5", String::FromInt(outFormat.rate)).Replace("%6", String::FromInt(outFormat.bits)).Replace("%7", String::FromInt(outFormat.channels)));
 
+				log->Lock();
 				log->Write(String("    Skipping verification due to format mismatch: ").Append(trackToConvert.fileName), MessageTypeWarning);
+				log->Write(NIL);
+				log->Release();
 
 				trackPosition = trackToConvert.length;
 
@@ -150,7 +153,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Output log messages.
 	 */
-	LogConversionStart(trackToConvert.fileName);
+	LogConversionStart(decoder, trackToConvert.fileName);
 
 	/* Run main conversion loop.
 	 */
@@ -165,10 +168,6 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	String	 verifyChecksum;
 
 	if (conversionStep == ConversionStepVerify) verifyChecksum = decoder->GetMD5Checksum();
-
-	/* Output log messages.
-	 */
-	LogConversionEnd(trackToConvert.fileName, encodeChecksum, verifyChecksum);
 
 	/* Get output format info.
 	 */
@@ -197,6 +196,10 @@ Int freac::ConvertWorkerSingleFile::Convert()
 		encoder->SignalChapterChange();
 		encodedSamples += trackLength;
 	}
+
+	/* Output log messages.
+	 */
+	LogConversionEnd(trackToConvert.fileName, encodeChecksum, verifyChecksum);
 
 	/* Report finished conversion.
 	 */

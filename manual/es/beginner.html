@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>Guía del principiante - Guía del usuario fre:ac</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+
+    <!-- Hack to avoid flash of unstyled content in IE -->
+    <script> </script>
+  </head>
+
+  <body id="onecolumn">
+    <div id="container">
+      <div class="wrapper">
+
+	<div id="header">
+	  <div class="wrapper">
+	    <h1 id="page-title">
+	      <div id="g_title">Guía del principiante - Guía del usuario fre:ac</div>
+	    </h1>
+	    <p class="description"></p>
+	    <div id="g_description">
+	      <p>Guía del principiante para ripeos desde CD con fre:ac</p>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="main-content-oc">
+	  <div class="wrapper">
+	    <div class="content-item">
+	      <div id='g_body'>
+		<p>Descargue la última versión de fre:ac desde <a href="https://github.com/enzo1982/freac/releases">GitHub</a> o desde la <a href="https://www.freac.org/">página principal de fre:ac</a>. Instale el programa y ejecútelo. Ponga un CD de audio en su unidad de CD / DVD. Las pistas del CD, por lo general, se mostrarán automáticamente en la ventana principal de fre:ac. Si no, pulse en "Añadir contenido de CD de audio a la lista" para añadir las pistas a la lista de tareas.</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="../en/images/joblist_plain.png"/>
+		<p>Si no desea introducir manualmente los datos de los CDs, puede consultar la base de datos de CDs de freedb en línea para obtenerlos. Para ello sólo tiene que ir a "Base de datos" en el menú y pulsar "Consultar base de datos CDDB". Tendrá una pantalla parecida a ésta:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="../en/images/query_cddb.png"/>
+		<p>El programa rellenará automáticamente la información de las pistas:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="../en/images/joblist_info.png"/>
+		<p>Una vez hecho esto debemos configurar los parámetros generales del programa. Vaya al menú "Opciones" y seleccione "Configuración general". Se mostrará el siguiente diálogo:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="../en/images/config_settings.png"/>
+		<p>En la primera pantalla puede establecer la configuración del codificador. fre:ac utiliza de forma predeterminada el codificador MP3 LAME, que vamos a utilizar en este tutorial. Asegúrese de que "Codificar 'Al vuelo'" esté marcado. También debe elegir el directorio de salida donde desea guardar los archivos MP3 obtenidos. He establecido mi directorio de música para este fin.</p>
+		<p>En la ventana 'Patrón de nombre de archivo' puede establecerse cómo se nombrarán los archivos. A mí me gusta tener los míos en directorios con el nombre del artista y el álbum y las pistas, con el número de pista seguido por su título. El patrón de nombre de archivo correspondiente es "<b>&lt;artist&gt; - &lt;album&gt; \ &lt;track&gt; - &lt;title&gt;</b>". Así que, en este caso, obtendrá nombres de archivo como los siguientes:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="../en/images/explorer.png"/>
+		<p>Para los usuarios más avanzados hay muchas otras opciones que pueden ser modificadas para adaptarse a gustos personales o necesidades.</p>
+		<p>Ahora debemos configurar el codificador LAME para que tengamos una salida MP3 decente. Vaya al menú "Opciones" y seleccione "Configurar compresor seleccionado".</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="../en/images/configure_encoder.png"/>
+		<p>Usted debe ver una pantalla similar a la que se muestra a continuación.</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="../en/images/config_lame.png"/>
+		<p>fre:ac cuenta con diferentes preajustes para el codificador LAME. Todos ellos ofrecen diferentes ajustes para el codificador con cualidades diferentes. Cuanto más alto sea el valor (por ejemplo, "Extreme"), el espacio que ocuparán en su disco duro los archivos MP3 será mayor, pero sonarán mejor. Yo prefiero usar una configuración personalizada y establecer las calidades de forma individual. Puede ver aquí los ajustes realizados. Por ahora, dejar el valor preestablecido es la norma. Pulse 'Aceptar' y ya podemos seleccionar las pistas que desea extraer y codificar.</p>
+		<p>De vuelta en la pantalla principal se pueden seleccionar las pistas que desea obtener. A la izquierda de cada pista hay una casilla de verificación. Las que tienen × son las marcadas para la compresión. Si quiere extraer todo el CD deje todas marcadas, pero si sólo quiere una pista, desmarque todas menos ésa.</p>
+		<p>Ya podemos pulsar el botón que iniciará el proceso de compresión.</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="../en/images/start_encoding.png"/>
+		<p>La parte inferior de la ventana empezará a mostrar una barra de progreso:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="../en/images/encoding.png"/>
+		<p>Cuando termina una canción, se elimina automáticamente de la lista de tareas (donde se muestran todos los títulos).</p>
+		<p>¡Enhorabuena! Usted acaba de ripear y comprimir su primer CD con fre:ac!</p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="footer">
+	  <div class="wrapper">
+	    <p></p>
+	    <div id='g_footer'>
+	      <p>Copyright (C) 2006 Joseph Nahmias<br/>
+		Copyright (C) 2007-2020 the fre:ac project</p>
+	    </div>
+	    <p></p>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+  </body>
+</html>

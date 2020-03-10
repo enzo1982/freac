@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">fre:ac Setup</property>
+    <property name="version">1.1</property>
+    <property name="language">Russian / Русский</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">setup.xml</property>
+    <property name="author">Robert Kausch &lt;robert.kausch@freac.org&gt;</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="&lt;- Back">&lt;- Назад</entry>
+    <entry id="101" string="Next -&gt;">Дальше -&gt;</entry>
+    <entry id="102" string="Cancel">Отмена</entry>
+    <entry id="103" string="Finish">Завершить</entry>
+    <entry id="104" string="Yes">Да</entry>
+    <entry id="105" string="No">Нет</entry>
+
+    <entry id="200" string="Current file progress:">Прогресс текущего файла:</entry>
+    <entry id="201" string="Total installation progress:">Общий прогресс установки:</entry>
+    <entry id="202" string="Do you really want to exit Setup now?&#10;&#10;If you quit now, the program will not be installed on your computer.&#10;You may run Setup again later to complete the installation.">Вы действительно хотите прервать установку?&#10;&#10;Если вы сейчас выйдете из Программы установки, то программа не будет установлена на ваш компьютер.&#10;Чтобы завершить установку Вы можете запустить Программу установки позже.</entry>
+    <entry id="203" string="Exit Setup">Прервать установку</entry>
+    <entry id="204" string="The Setup will be cancelled now!">Сейчас Программа установки будет прервана!</entry>
+    <entry id="205" string="Info">Инфо</entry>
+
+    <entry id="300" string="Destination directory">Папка назначения</entry>
+    <entry id="301" string="Select">Просмотр</entry>
+    <entry id="302" string="Select the folder in which the program will be installed:">Выберите папку, в которую будет установлена программа:</entry>
+    <entry id="303" string="Available components">Доступные компоненты</entry>
+    <entry id="304" string="Description">Описание</entry>
+    <entry id="305" string="Move the mouse over a&#10;component entry to&#10;show a description">Наведите мышь на компонент&#10;для просмотра описания</entry>
+    <entry id="306" string="Create Start Menu group">Создать группу в меню Пуск</entry>
+    <entry id="307" string="Create Desktop icon">Создать значок на Рабочем столе</entry>
+    <entry id="308" string="Create Quick Launch icon">Создать значок в панели Быстрого запуска</entry>
+
+    <entry id="1" string="%LONGNAME% Setup">Программа установки %LONGNAME%</entry>
+    <entry id="2" string="Welcome to the %NAME% Setup Wizard&#10;&#10;&#10;This will install %NAME% %VERSION% on your computer.&#10;&#10;It is recommended that you close all other applications you have running&#10;before continuing. This will help avoiding possible conflicts during the&#10;installation process.&#10;&#10;Click Next to continue, or Cancel to exit Setup.">Добро пожаловать в Программу установки %NAME%&#10;&#10;&#10;На ваш компьютер будет установлен %NAME% %VERSION%.&#10;&#10;Рекомендуем закрыть все запущенные приложения&#10;перед продолжением. Это позволит исключить возможные конфликты&#10;в прцессе установки.&#10;&#10;Для продолжения нажмите Дальше, или Отмена для выхода из&#10;Программы установки.</entry>
+    <entry id="3" string="Setup - License Agreement">Программа установки - Лицензионное соглашение</entry>
+    <entry id="4" string="Please read the following license agreement. Click Yes to accept&#10;the agreement, or No to cancel the Setup.">Пожалуйста, прочтите следующее лицензионное соглашение. Нажмите Да&#10;чтобы принять соглашение, или Нет для отмены установки.</entry>
+    <entry id="5" string="Setup - Destination Directory">Программа установки - Папка назначения</entry>
+    <entry id="6" string="Setup will install %NAME% in the following folder.&#10;&#10;To install into a different folder, click Browse, and select another folder.">%NAME% будет установлена в следующую папку.&#10;&#10;Для установки в другую папку, нажмите Просмотр и укажите другую папку.</entry>
+    <entry id="7" string="Setup - Components to install">Программа установки - Компоненты для установки</entry>
+    <entry id="8" string="Select the components you want to install.">Выберите компонеты, которые Вы хотите установить.</entry>
+    <entry id="9" string="Setup - Start Menu and Desktop Shortcuts">Программа установки - Ярлыки в меню Пуск и на Рабочем столе</entry>
+    <entry id="10" string="Setup can create shortcuts to the installed program.&#10;Please select which shortcuts shall be created.">Программа установки может создать ярлыки для установленной программы.&#10;Пожалуйста, выберите, какие ярлыки должны быть созданы.</entry>
+    <entry id="11" string="Setup - Ready to install">Программа установки - Готовность к установке</entry>
+    <entry id="12" string="Setup is now ready to install %NAME% on your computer.&#10;&#10;Click Next to install the program files on your computer, or Cancel&#10;to exit Setup.">Программа установки готова к установке %NAME% на Ваш компьютер.&#10;&#10;Нажмите Дальше для установки программы на ваш компьютер, или Отмена&#10;Для выхода из Программы установки.</entry>
+    <entry id="13" string="Setup - Copying files">Программа установки - Копирование файлов</entry>
+    <entry id="14" string="Setup is copying the program files to your computer.&#10;&#10;Please wait until the installation process has finished. You can then&#10;start working with the installed program.">Программа установки копирует файлы на Ваш компьютер.&#10;&#10;Пожалуйста, подождите, пока процесс установки будет завершен. Затем&#10;Вы сможете начать работу с установленной программой.</entry>
+    <entry id="15" string="Setup - Installation finished">Программа установки - Установка завершена</entry>
+    <entry id="16" string="Congratulations! %NAME% %VERSION% has been successfully installed&#10;on your computer.&#10;&#10;You can now start %NAME% from the Windows Start menu.&#10;&#10;Click Finish to close the setup wizard.">Поздравляем! %NAME% %VERSION% успешно установлена&#10;на Ваш компьютер.&#10;&#10;Теперь Вы сможете запустить %NAME% из меню Пуск Windows.&#10;&#10;Нажмите Завершить для выхода из Программы установки.</entry>
+    <entry id="17" string="%NAME% %VERSION% program files (required)">Файлы программы %NAME% %VERSION% (необходимо)</entry>
+    <entry id="18" string="easyUpdate online updater">Модуль обновления через сеть easyUpdate</entry>
+    <entry id="19" string="Install an online update&#10;component that will notify&#10;you about new software&#10;versions">Установить компонент для&#10;обновления через сеть,&#10;который будет сообщать&#10;Вам о новых версиях&#10;программы</entry>
+    <entry id="20" string="%NAME% command line interface">Интерфейс командной строки %NAME%</entry>
+    <entry id="21" string="Install a command line&#10;interface useful for use&#10;in batch scripts">Установить интерфейс&#10;командной строки для&#10;использования в пакетных&#10;скриптах</entry>
+    <entry id="22" string="smooth Translator utility">Модуль smooth Translator</entry>
+    <entry id="23" string="Install an easy to use&#10;application for editing&#10;%NAME% XML language&#10;files">Установить легкое для&#10;использования приложение&#10;для редактирования языковых&#10;XML файлов %NAME%</entry>
+    <entry id="24" string="%NAME% source code">Исходный код %NAME%</entry>
+    <entry id="25" string="Install the complete C++&#10;source code to %NAME%">Установить полный исходный&#10;C++ код %NAME%</entry>
+    <entry id="26" string="%NAME% User Guide">Руководство пользователя %NAME%</entry>
+    <entry id="27" string="Uninstall %NAME%">Удалить %NAME%</entry>
+  </data>
+</LangFile>

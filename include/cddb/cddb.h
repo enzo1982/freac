@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -38,11 +38,11 @@ namespace freac
 
 			Bool		 UpdateEntry(CDDBInfo &);
 
-			String		 FormatCDDBEntry(const String &, const String &);
-			String		 ParseCDDBEntry(const String &, Int &);
+			static String	 FormatCDDBEntry(const String &, const String &);
+			static String	 ParseCDDBEntry(const String &, Int &);
 
-			String		 FormatCDDBRecord(const CDDBInfo &);
-			Bool		 ParseCDDBRecord(const String &, CDDBInfo &);
+			static String	 FormatCDDBRecord(const CDDBInfo &);
+			static Bool	 ParseCDDBRecord(const String &, CDDBInfo &);
 		public:
 					 CDDB();
 			virtual		~CDDB();
@@ -53,10 +53,10 @@ namespace freac
 			virtual Bool	 Submit(const CDDBInfo &)		= 0;
 			virtual Bool	 CloseConnection()			= 0;
 
-			Int		 GetNumberOfMatches()	{ return ids.Length(); }
-			Int		 GetNthDiscID(Int n)	{ return ids.GetNth(n); }
-			const String	&GetNthTitle(Int n)	{ return titles.GetNth(n); }
-			const String	&GetNthCategory(Int n)	{ return categories.GetNth(n); }
+			Int		 GetNumberOfMatches() const	{ return ids.Length(); }
+			Int		 GetNthDiscID(Int n) const	{ return ids.GetNth(n); }
+			const String	&GetNthTitle(Int n) const	{ return titles.GetNth(n); }
+			const String	&GetNthCategory(Int n) const	{ return categories.GetNth(n); }
 
 			static String	 DiscIDToString(Int);
 			static Int	 StringToDiscID(const String &);

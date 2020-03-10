@@ -230,7 +230,7 @@ Void BoCA::LayerTagBasic::OnChangeSize(const Size &nSize)
 
 	Int	 maxTextSize = Math::Max(Math::Max(Math::Max(text_artist->GetUnscaledTextWidth(), text_genre->GetUnscaledTextWidth()), text_title->GetUnscaledTextWidth()), Math::Max(text_album->GetUnscaledTextWidth(), text_comment->GetUnscaledTextWidth()));
 	Int	 maxTextSize2 = Math::Max(Math::Max(text_track->GetUnscaledTextWidth(), text_disc->GetUnscaledTextWidth()), text_year->GetUnscaledTextWidth());
-	Int	 maxTextSize3 = Math::Max(text_cover_type->GetUnscaledTextWidth(), text_cover_desc->GetUnscaledTextWidth());
+	Int	 maxTextSize3 = Math::Max(Math::Max(text_covers->GetUnscaledTextWidth(), text_cover_type->GetUnscaledTextWidth()), text_cover_desc->GetUnscaledTextWidth());
 
 	edit_artist->SetWidth(group_info->GetWidth() - 26 - maxTextSize);
 	edit_title->SetWidth(group_info->GetWidth() - 91 - maxTextSize - maxTextSize2);

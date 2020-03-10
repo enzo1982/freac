@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>Cómo ...? - Guía del usuario fre:ac</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+
+    <!-- Hack to avoid flash of unstyled content in IE -->
+    <script> </script>
+  </head>
+
+  <body id="onecolumn">
+    <div id="container">
+      <div class="wrapper">
+
+	<div id="header">
+	  <div class="wrapper">
+	    <h1 id="page-title">
+	      <div id="g_title">Cómo ...? - Guía del usuario fre:ac</div>
+	    </h1>
+	    <p class="description"></p>
+	    <div id="g_description">
+	      <p>Guía de configuración y características especiales de fre:ac</p>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="main-content-oc">
+	  <div class="wrapper">
+	    <div class="content-item">
+	      <div id='g_body'>
+		<h4>Contenido</h4>
+		<blockquote>
+		  <p><a href="../en/howto.html#anchor_src">How to compile fre:ac from source?</a> (<img style="width: 17px; height: 10px;" src="../images/en.png" alt="en"/>)</p>
+		  <p><a href="../en/howto.html#anchor_enc">How to install encoder/decoder xy?</a> (<img style="width: 17px; height: 10px;" src="../images/en.png" alt="en"/>)</p>
+		  <p><a href="#anchor_pat">Cómo usar los patrones de nombre de archivo en fre:ac</a></p>
+		  <p><a href="#anchor_tra">Cómo agregar una nueva traducción de fre:ac</a></p>
+		  <p><a href="#anchor_rem">Cómo quitar fre:ac de mi ordenador</a></p>
+		</blockquote>
+		<h4 id="anchor_pat">Cómo usar los patrones de nombre de archivo en fre:ac</h4>
+		<blockquote>
+		  <p>El patrón del nombre del archivo de salida puede ser configurado en la ventana ad hoc del diálogo de Configuración general. Puede utilizar barras invertidas para especificar directorios y marcadores de posición para referirse a la metainformación. Están disponibles los siguientes marcadores de posición:</p>
+		  <ul>
+		    <li><b>&lt;artist&gt;</b> - Artista de la canción</li>
+		    <li><b>&lt;title&gt;</b> - Título de la canción</li>
+		    <li><b>&lt;album&gt;</b> - Título del álbum</li>
+		    <li><b>&lt;disc&gt;</b> - Número del disco</li>
+		    <li><b>&lt;track&gt;</b> - Número de pista de la canción</li>
+		    <li><b>&lt;genre&gt;</b> - Género de la canción</li>
+		    <li><b>&lt;albumartist&gt;</b> - Artista del álbum</li>
+		    <li><b>&lt;composer&gt;</b> - Compositor de la canción</li>
+		    <li><b>&lt;conductor&gt;</b> - Director</li>
+		    <li><b>&lt;year&gt;</b> - Año en que se publicó la canción</li>
+		    <li><b>&lt;currentdate&gt;</b> - Fecha actual en formato yyyymmdd</li>
+		    <li><b>&lt;currenttime&gt;</b> - Hora actual en formato hhmm</li>
+		  </ul>
+			<p>Los marcadores de posición <b>&lt;disc&gt;</b> y <b>&lt;track&gt;</b> pueden ser modificados como <b>&lt;disc(n)&gt;</b> y <b>&lt;track(n)&gt;</b>; (n) especifica la longitud mínima del número de disco o pista. Se antepondrán ceros si el número real es demasiado pequeño. (n) puede variar entre 1 y 4, siendo 1 el valor predeterminado para el disco y 2 el predeterminado para el número de pista si se omite la parte (n).</p>
+		  <p>Los marcadores de posición anteriores se refieren a la información de la canción y el álbum. El siguiente marcador de posición decide el tipo de archivo de salida:
+		  <ul>
+		    <li><b>&lt;filetype&gt;</b> - Tipo del archivo de salida</li>
+		  </ul>
+			<p>Un caso de uso común para este marcador de posición es si usted está codificando regularmente a diferentes formatos (por ejemplo, FLAC para el archivo y M4A para su reproductor móvil) y le gustaría mantener los archivos codificados en árboles de directorios separados.</p>
+			<p>Además hay dos marcadores de posición que hacen referencia al nombre original de un archivo que se está codificando en fre:ac:</p>
+		  <ul>
+		    <li><b>&lt;filename&gt;</b> - El nombre del archivo de entrada</li>
+		    <li><b>&lt;directory&gt;</b> - El directorio del archivo de entrada</li>
+		  </ul>
+		  <p>El patrón <b>&lt;directory&gt;</b> es especial, ya que puede modificar su significado utilizando dos argumentos numéricos. Usted puede usar <b>&lt;directory+n&gt;</b> o <b>&lt;directory+n(m)&gt;</b>. En estas expresiones, <b>n</b> especifica el número de componentes de la ruta que deben ser eliminados del principio. <b>m</b> especifica el número de componentes a utilizar de lo que queda. Omitiendo la parte <b>(m)</b>, se usarán todos los componentes que queden de la ruta tras eliminar <b>n</b> componentes del principio. <b>&lt;directory&gt;</b> sin ningún tipo de argumentos usará la ruta completa.<p>
+		  <p>Entonces, ¿cómo usar esto en la práctica? Asumiendo que tiene su colección de música ordenada así:</p>
+		  <blockquote>
+		    <p>C:\Música\[otros criterios]\[artista]\[disco]\[nº de pista] - [título]</p>
+		  </blockquote>
+		  <p>Es posible que tenga un archivo llamado <b>C:\Música\Favoritos\Starsailor\Silence is Easy\01 - Music was Saved.flac</b>.</p>
+		  <p>Ahora digamos que usted desea codificar algunos archivos de música para usar en su reproductor portátil y ponerlos en <b>C:\Codificados\</b>. Con el fin de mantener su campo <b>[otros criterios]</b>, es necesario utilizar el patrón <b>&lt;directory&gt;</b>. Si el directorio de salida del codificador se establece en <b>C:\Codificados\</b>, el patrón de nombre de archivo completo quedaría así:</p>
+		  <blockquote>
+		    <p>&lt;directory+1(1)&gt;\&lt;artist&gt; - &lt;album&gt;\&lt;artist&gt; - &lt;album&gt; - &lt;track&gt; - &lt;title&gt;</p>
+		  </blockquote>
+		  <p>Esto guardará el archivo de salida en <b>C:\Codificados\Favoritos\Starsailor - Silence is Easy\Starsailor - Silence is Easy - 01 - Music was Saved.m4a</b>.</p>
+		</blockquote>
+		<h4 id="anchor_tra">Cómo agregar una nueva traducción de fre:ac</h4>
+		<blockquote>
+		  <p>Por favor, use la utilidad <b>smooth Translator</b> incluida en la distribución fre:ac y abra un archivo de traducción ya existente (están en el directorio <b>freac/lang</b>). A continuación, cambie la configuración de idioma para reflejar la traducción que desea crear y empiece a traducir las cadenas de texto individuales. Guarde su traducción como un archivo nuevo que coincida con el patrón <b>freac_??.xml</b> (reemplace ?? con el código de la lengua), reinicie fre:ac y trate de seleccionar la nueva traducción en el diálogo de configuración.</p>
+		  <p>Por favor, envíe su traducción a <a href="mailto:translations@freac.org">translations@freac.org</a> para que pueda ser incluida en la distribución oficial.</p>
+		</blockquote>
+		<h4 id="anchor_rem">Cómo quitar fre:ac de mi ordenador</h4>
+		<blockquote>
+		  <p>Las versiones recientes de fre:ac traen un programa de desinstalación que puede ejecutar desde el menú <b>Inicio</b>.</p>
+		  <p>En caso de que haya eliminado el grupo del menú Inicio o no pueda encontrarlo, basta con borrar la carpeta de la aplicación para desinstalar fre:ac. fre:ac no crea ninguna entrada en el Registro de Windows ni almacena ningún componente activo fuera de su carpeta de instalación.</p>
+		</blockquote>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="footer">
+	  <div class="wrapper">
+	    <p></p>
+	    <div id='g_footer'>
+	      <p>Copyright (C) 2006 Joseph Nahmias<br/>
+		Copyright (C) 2007-2020 the fre:ac project</p>
+	    </div>
+	    <p></p>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+  </body>
+</html>

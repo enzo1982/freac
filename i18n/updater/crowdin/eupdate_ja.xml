@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">easyUpdate</property>
+    <property name="version">0.3</property>
+    <property name="language">Japanese / 日本語</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">eupdate.xml</property>
+    <property name="author">BHCrusher1</property>
+    <property name="url">http://www.chapter0.net/easyUpdate/</property>
+  </info>
+  <data>
+    <entry id="1" string="Cancel">キャンセル</entry>
+    <entry id="2" string="Install">インストール</entry>
+    <entry id="3" string="Show unstable releases">不安定なリリースを表示する</entry>
+    <entry id="4" string="Select the updated program version to be installed:">インストールする更新プログラムのバージョンを選択します：</entry>
+    <entry id="5" string="You can select optional components to be installed:">インストールするオプションのコンポーネントを選択できます：</entry>
+    <entry id="6" string="Version ID">Version ID</entry>
+    <entry id="7" string="Package">パッケージ</entry>
+    <entry id="8" string="Description">説明</entry>
+    <entry id="9" string="Latest">最新</entry>
+    <entry id="10" string="Size">サイズ</entry>
+    <entry id="11" string="Yes">はい</entry>
+    <entry id="12" string="No">いいえ</entry>
+    <entry id="13" string="unknown">不明</entry>
+    <entry id="14" string="Installing files...">ファイルのインストール中...</entry>
+    <entry id="15" string="Installing file:">ファイルのインストール：</entry>
+    <entry id="16" string="Downloading file:">ファイルのダウンロード：</entry>
+    <entry id="17" string="Update complete">更新完了</entry>
+    <entry id="18" string="Your application has been successfully updated!">あなたのアプリケーションは正常に更新されました！</entry>
+    <entry id="19" string="Error">エラー</entry>
+    <entry id="20" string="Error downloading package!">パッケージのダウンロード中にエラーが発生しました。</entry>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">&quot;%1&quot;のインストール中にエラーが発生しました！&#10;&#10;アプリケーションディレクトリへのアクセスが拒否されました。</entry>
+  </data>
+</LangFile>

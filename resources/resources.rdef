@@ -7,7 +7,7 @@ resource app_version {
 	middle = 1,
 	minor  = 0,
 
-	variety = B_APPV_ALPHA,
+	variety = B_APPV_BETA,
 	internal = 0,
 
 	short_info = "fre:ac - free audio converter",

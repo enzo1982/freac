@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -47,6 +47,7 @@ namespace freac
 			const Array<String>	&args;
 
 			String			 encoderID;
+			Bool			 stopped;
 
 			Bool			 ScanForProgramOption(const String &, String * = NIL);
 			Bool			 ScanForEncoderOption(const String &, String * = NIL);
@@ -57,9 +58,11 @@ namespace freac
 		public:
 			Void			 ShowHelp(const String &);
 
+			Void			 Stop();
+
 			/* Returns a new or existing instance of freacCommandline
 			 */
-			static freacCommandline	*Get(const Array<String> &);
+			static freacCommandline	*Get(const Array<String> & = Array<String>());
 
 			/* Destroys an existing instance of freacCommandline
 			 */

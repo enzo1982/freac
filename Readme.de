@@ -1,6 +1,6 @@
-fre:ac Version 1.1 Alpha
+fre:ac Version 1.1 RC 1
 
-fre:ac ist ein freier Open-Source Audiokonverter. Das Programm unterstützt das Rippen
+fre:ac ist ein freier Open-Source Audiokonverter. Das Programm unterstÃ¼tzt das Rippen
 von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate:
 
 	- MP3
@@ -35,8 +35,8 @@ von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate
 		- mit der libsndfile Bibliothek		(http://www.mega-nerd.com/)
 		- mit der libav Codec-Bibliothek	(http://www.libav.org/)
 
-Weitere Codecs (z.B. Neros HE-AAC-Kodierer) können als externe Plug-Ins
-eingebunden werden (siehe Benutzerhandbuch für Installationshinweise).
+Weitere Codecs (z.B. Neros HE-AAC-Kodierer) kÃ¶nnen als externe Plug-Ins
+eingebunden werden (siehe Benutzerhandbuch fÃ¼r Installationshinweise).
 
 fre:ac verwendet die CDRip-Bibliothek zum CD-Rippen unter Windows.
 fre:ac verwendet die cdio-Bibliothek zum CD-Rippen unter macOS, Linux, Solaris, FreeBSD und NetBSD.
@@ -51,53 +51,53 @@ Installation
 
 	Windows:
 
-		fre:ac steht in zwei Varianten bereit, als .exe-Datei, welche einen Installationsassistenten enthält,
+		fre:ac steht in zwei Varianten bereit, als .exe-Datei, welche einen Installationsassistenten enthÃ¤lt,
 		oder alternativ als .zip-Archiv, welches nur die Anwendung ohne Installer beinhaltet.
 
-		Wenn Sie die .exe-Datei heruntergeladen haben, führen Sie sie einfach aus und der Installationsassistent
-		wird Sie durch den Installationsprozess führen und Startmenüeinträge zum Starten von fre:ac anlegen.
+		Wenn Sie die .exe-Datei heruntergeladen haben, fÃ¼hren Sie sie einfach aus und der Installationsassistent
+		wird Sie durch den Installationsprozess fÃ¼hren und StartmenÃ¼eintrÃ¤ge zum Starten von fre:ac anlegen.
 
 		Wenn Sie das .zip-Archiv heruntergeladen haben, entpacken Sie bitte den Inhalt an einen Ort Ihrer Wahl
-		und starten Sie anschließend freac.exe um fre:ac auszuführen.
+		und starten Sie anschlieÃŸend freac.exe um fre:ac auszufÃ¼hren.
 
 	macOS:
 
 		fre:ac steht als Apple Disk Image (.dmg) Datei bereit.
 
-		Um es zu installieren, öffnen Sie die .dmg-Datei und ziehen Sie die fre:ac Anwendung an einen Ort Ihrer Wahl,
-		z.B. den Desktop oder den Ordner Programme. Doppelklicken Sie anschließend die Anwendung, um fre:ac zu starten.
+		Um es zu installieren, Ã¶ffnen Sie die .dmg-Datei und ziehen Sie die fre:ac Anwendung an einen Ort Ihrer Wahl,
+		z.B. den Desktop oder den Ordner Programme. Doppelklicken Sie anschlieÃŸend die Anwendung, um fre:ac zu starten.
 
 	Linux:
 
 		fre:ac steht als Snap-, Flatpak- oder AppImage-Paket bereit.
 
-		Die Snap- und Flatpak-Versionen können in den jeweiligen App-Stores gefunden und von dort installiert werden. Bitte
-		beachten Sie, dass diese Versionen in restriktiven Umgebungen laufen und ggf. eingeschränkte Funktionalität bieten.
+		Die Snap- und Flatpak-Versionen kÃ¶nnen in den jeweiligen App-Stores gefunden und von dort installiert werden. Bitte
+		beachten Sie, dass diese Versionen in restriktiven Umgebungen laufen und ggf. eingeschrÃ¤nkte FunktionalitÃ¤t bieten.
 
-		Das AppImage-Paket muss nach dem Download mit folgendem Befehl als ausführbar markiert werden:
+		Das AppImage-Paket muss nach dem Download mit folgendem Befehl als ausfÃ¼hrbar markiert werden:
 
 			chmod a+x freac*.AppImage
 
-		Das AppImage kann anschließend ausgeführt werden, um fre:ac zu starten.
+		Das AppImage kann anschlieÃŸend ausgefÃ¼hrt werden, um fre:ac zu starten.
 
 	FreeBSD:
 
 		fre:ac steht als .tar.gz-Archiv bereit.
 
-		Bitte entpacken Sie den Inhalt an einen Ort Ihrer Wahl und führen Sie anschließend die Binärdatei freac aus,
+		Bitte entpacken Sie den Inhalt an einen Ort Ihrer Wahl und fÃ¼hren Sie anschlieÃŸend die BinÃ¤rdatei freac aus,
 		um fre:ac zu starten.
 
 Voraussetzungen
 ---------------
 
-	Voraussetzungen zum Ausführen von fre:ac:
+	Voraussetzungen zum AusfÃ¼hren von fre:ac:
 
-		Unterstützte Betriebsysteme:
+		UnterstÃ¼tzte Betriebsysteme:
 			- Windows XP/Vista/7/8.x/10
 			- macOS 10.5 Leopard oder neuer
-			- Linux (die meisten modernen Distributionen werden unterstützt)
-			- FreeBSD/PC-BSD (getestet unter FreeBSD 12.0)
-			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
+			- Linux (die meisten modernen Distributionen werden unterstÃ¼tzt)
+			- FreeBSD/PC-BSD (getestet unter FreeBSD 12.1)
+			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frÃ¼here Versionen werden nicht unterstÃ¼tzt)
 			- OpenBSD (getestet unter OpenBSD 5.3)
 			- Solaris (getestet unter Solaris 11)
 			- GNU Hurd (getestet unter Debian Sid)
@@ -113,15 +113,15 @@ Voraussetzungen
 			- 4 GB RAM
 			- 4 GB freier Festplattenplatz
 
-	Zusätzliche Vorraussetzungen zur Übersetzung der Quellen:
+	ZusÃ¤tzliche Vorraussetzungen zur Ãœbersetzung der Quellen:
 
 		Alle Systeme:
 
-			- smooth v0.9 (http://www.smooth-project.org/)
+			- smooth v0.9.3 (http://www.smooth-project.org/)
 
 		Windows:
 
-			- MinGW GCC v4.0+ (http://www.mingw.org/) oder Visual Studio 2017
+			- MinGW GCC v4.0+ (http://www.mingw.org/) oder Visual Studio 2019
 
 		Alle Linux- und Unix-Systeme:
 
@@ -138,147 +138,223 @@ Voraussetzungen
 
 				- audio headers
 
-	Zusätzliche optionale Software:
+	ZusÃ¤tzliche optionale Software:
 
-		- Die 32 Bit Version für Windows kann Winamp-Plugins verwenden, wenn diese im Ordner "plugins" abgelegt werden.
+		- Die 32 Bit Version fÃ¼r Windows kann Winamp-Plugins verwenden, wenn diese im Ordner "plugins" abgelegt werden.
 
-		- Einige externe Codecs können von fre:ac verwendet werden. Mehr Informationen dazu finden Sie im Benutzerhandbuch.
+		- Einige externe Codecs kÃ¶nnen von fre:ac verwendet werden. Mehr Informationen dazu finden Sie im Benutzerhandbuch.
 
 Geschichte
 ----------
 
-	Version 1.1 Alpha (November 2019)
+	Version 1.1 RC 1 (MÃ¤rz 2020)
 
-		- Framework für Erweiterungskomponenten implementiert, um fre:ac zu modularisieren
+		- Verbesserungen
+
+			- Ãœbergebe Float-Samples direkt an LAME-Kodierer, wenn das Sampleformat Float ist
+			- Automatisches Rippen funktioniert jetzt auch bei Ausage in eine einzige Datei
+			- Optionen zum Steuern von Kapitelinformationen und Cover-Bildern zu freaccmd hinzugefÃ¼gt
+			- Reagiere in freaccmd auf Strg+C, um bei Abbruch temporÃ¤re Dateien aufzurÃ¤umen
+			- Verwende Fensterrahmenfarbe als Akzentfarbe unter Windows Vista, 7 und 8/8.1
+			- HiDPI-Erkennung unter Linux-/FreeBSD-Systemen verbessert
+			- Schreibe CDDB-Informationen beim Rippen in Log-Dateien
+
+		- Behobene Fehler
+
+			- Problem behoben, dass Drag & Drop unter Windows keine langen Dateipfade akzeptiert
+			- Problem mit verlorenen DateiÃ¤nderungsdaten bei aktivierter Ausgabeverifikation behoben
+			- Problem mit trotz aktivierter Option nicht beibehaltenen Dateierstellungsdaten behoben
+			- Problem mit nicht korrekt verarbeiteten relativen Ausgabeordnern in freaccmd behoben
+			- Problem mit schwarzer Titelleiste unter Windows Vista, 7 und 8/8.1 behoben
+			- Probleme mit nicht funktionierendem Online-Update behoben
+
+	Version 1.1 Beta 3 (Februar 2020)
+
+		- Verbesserungen
+
+			- UnterstÃ¼tzung fÃ¼r dunkles Farbschema unter Windows 10 hinzugefÃ¼gt
+			- Vorbereitung auf Abschaltung von freedb.org am 31. MÃ¤rz 2020
+			- Das fre:ac-Installationsprogramm ist jetzt digital signiert
+			- Separaten Eintrag fÃ¼r Windows Wave File Output zur Kodiererliste hinzugefÃ¼gt
+			- Einstellungen zur Signalverarbeitung werden jetzt im Statusbereich angezeigt
+			- Toolbar-SchaltflÃ¤che zum Konfigurieren der Signalverarbeitung hinzugefÃ¼gt
+			- Neue Tipps zum Tipp des Tages-Dialog hinzugefÃ¼gt
+
+		- Behobene Fehler
+
+			- KompatibilitÃ¤tsproblem mit UTF-8 Codepage-Einstellung unter Windows 10 behoben
+			- Probleme mit FLAC-Dekodierung unter macOS behoben
+			- Probleme beim Ã–ffnen von Opus-Dateien mit der Erweiterung .ogg behoben
+			- Problem des in 64 Bit-Versionen fehlenden Monkey's Audio Kodierers behoben
+			- Einige Probleme mit dem freaccmd-Kommandozeileninterface behoben
+
+		- Aktualisierte Codecs
+
+			- Monkey's Audio auf Version 5.18 aktualisiert
+
+		- Aktualisierte Ãœbersetzungen
+
+			- Chinesische (vereinfacht) Ãœbersetzung aktualisiert
+
+	Version 1.1 Beta 2 (Januar 2020)
+
+		- Verbesserungen
+
+			- Verwende Akzentfarbe des Farbschemas unter Windows 10
+			- Schreibe Namen der aktivierten DSP-Komponenten in Log-Dateien
+			- Schreibe Gesamtdauer und Geschwindigkeit von Konvertierungen in Log-Dateien
+
+		- Behobene Fehler
+
+			- Fehler im IO-Subsystem behoben, durch den in einigen FÃ¤llen Ausgabedateien beschÃ¤digt werden konnten
+			- Fehler im SuperFast LAME-Repacker behoben, durch den in einigen FÃ¤llen Ausgabedateien beschÃ¤digt werden konnten
+			- Fehlerhafte Gapless-Dekodierung von mit FFmpeg erstellten MP3-Dateien korrigiert
+			- UnfÃ¤higkeit ID3v2- und APEv2-Tags im Tag-Editor zu aktualisieren behoben
+			- UnfÃ¤higkeit das Programm zu beenden behoben, nachdem eine CD wÃ¤hrend des Rippens ausgeworfen wurde
+			- AufhÃ¤ngen des Programms behoben, wenn eine CD wÃ¤hrend des HinzufÃ¼gens ihrer Tracks zur Jobliste ausgeworfen wurde
+			- Vertauschte Werte fÃ¼r minimale und maximale Bitrate im Vorbis-Konfigurationsdialog korrigiert
+
+		- Aktualisierte Codecs
+
+			- Monkey's Audio auf Version 5.12 aktualisiert
+			- WavPack auf Version 5.2.0 aktualisiert
+
+		- Aktualisierte Ãœbersetzungen
+
+			- NiederlÃ¤ndische Ãœbersetzung aktualisiert
+
+	Version 1.1 Beta 1 (Dezember 2019)
+
+		- Framework fÃ¼r Erweiterungskomponenten implementiert, um fre:ac zu modularisieren
 
 		- Auf macOS, Linux und BSD-Betriebssysteme portiert
-		- Native Unterstützung für die 64 Bit Windows-Platform hinzugefügt
+		- Native UnterstÃ¼tzung fÃ¼r die 64 Bit Windows-Platform hinzugefÃ¼gt
 
-		- Unterstützung für Multi-Threading
+		- UnterstÃ¼tzung fÃ¼r Multi-Threading
 
-			- Konvertierungen werden nun wenn möglich parallel ausgeführt
-			- SuperFast Kodierungstechnologie für Multithread-Verarbeitung integriert
-			- Hinzufügen von Dateien zur Jobliste kann nun mehrere Threads nutzen
+			- Konvertierungen werden nun wenn mÃ¶glich parallel ausgefÃ¼hrt
+			- SuperFast Kodierungstechnologie fÃ¼r Multithread-Verarbeitung integriert
+			- HinzufÃ¼gen von Dateien zur Jobliste kann nun mehrere Threads nutzen
 
-		- Größere neue Funktionen
+		- GrÃ¶ÃŸere neue Funktionen
 
-			- Untersützung für Mehrkanal-Audio hinzugefügt
-			- Unterstützung für Verifikation von verlustfreien Ein- und Ausgabedateien hinzugefügt
-			- Unterstützung für die Verarbeitung von Eingabedaten mit DSP-Filtern hinzugefügt
-			- Unterstützung für das Schreiben von Konvertierungsprotokolldateien hinzugefügt
-			- Unterstützung für die Verwaltung mehrerer Konfigurationen hinzugefügt
-			- Tag-Editor-Komponente hinzugefügt
-			- Multi-Encoder-Komponente für gleichzeitige Ausgabe in mehrere Formate hinzugefügt
+			- UntersÃ¼tzung fÃ¼r Mehrkanal-Audio hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r Verifikation von verlustfreien Ein- und Ausgabedateien hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r die Verarbeitung von Eingabedaten mit DSP-Filtern hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r das Schreiben von Konvertierungsprotokolldateien hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r die Verwaltung mehrerer Konfigurationen hinzugefÃ¼gt
+			- Tag-Editor-Komponente hinzugefÃ¼gt
+			- Multi-Encoder-Komponente fÃ¼r gleichzeitige Ausgabe in mehrere Formate hinzugefÃ¼gt
 
-		- Verbesserungen der Benutzeroberfläche
+		- Verbesserungen der BenutzeroberflÃ¤che
 
-			- Vollständig überarbeiteter Konfigurationsdialog
-			- Möglichkeit zum Bearbeiten der Konfiguration während der Konvertierung hinzugefügt
-			- Möglichkeit zur Sortierung der Jobliste durch Klick auf Überschriften hinzugefügt
-			- Formatauswahl für Kodierer, die mehrere Formate unterstützen, im Kodieren-Menü ermöglicht
-			- Neuer Dialog zur Bestätigung des Überschreibens vorhandener Dateien vor der Konvertierung
+			- VollstÃ¤ndig Ã¼berarbeiteter Konfigurationsdialog
+			- MÃ¶glichkeit zum Bearbeiten der Konfiguration wÃ¤hrend der Konvertierung hinzugefÃ¼gt
+			- MÃ¶glichkeit zur Sortierung der Jobliste durch Klick auf Ãœberschriften hinzugefÃ¼gt
+			- Formatauswahl fÃ¼r Kodierer, die mehrere Formate unterstÃ¼tzen, im Kodieren-MenÃ¼ ermÃ¶glicht
+			- Neuer Dialog zur BestÃ¤tigung des Ãœberschreibens vorhandener Dateien vor der Konvertierung
 			- Neues Design des Fortschrittsanzeigebereichs
-			- Schaltfläche zum Öffnen des Ausgabeordners hinzugefügt
+			- SchaltflÃ¤che zum Ã–ffnen des Ausgabeordners hinzugefÃ¼gt
 			- Die Restzeitanzeige zeigt falls notwendig nun auch Stunden an
-			- Die fünf zuletzt verwendeten Ausgabeordner werden jetzt für späteren Zugriff gespeichert
-			- Die fünf zuletzt verwendeten Dateinamensvorlagen werden jetzt für späteren Zugriff gespeichert
+			- Die fÃ¼nf zuletzt verwendeten Ausgabeordner werden jetzt fÃ¼r spÃ¤teren Zugriff gespeichert
+			- Die fÃ¼nf zuletzt verwendeten Dateinamensvorlagen werden jetzt fÃ¼r spÃ¤teren Zugriff gespeichert
 
 		- Verbesserungen bei Dateikonvertierungen
 
-			- Unterstützung für automatische Sampleformatkonvertierung je nach Anforderungen des Kodierers hinzugefügt
-			- Unterstützung für die Ausgabe von Tracks mit verschiedenen Sampleformaten in eine einzige Ausgabedatei hinzugefügt
-			- Optionen zum Abspielen von Benachrichtigungstönen bei beendeter Konvertierung hinzugefügt
-			- Option zum Anhängen von laufenden Nummern an ansonsten identische Dateinamen hinzugefügt
-			- Dateinamensplatzhalter <composer>, <conductor> und <disc> hinzugefügt
-			- Konfigurationsoption hinzugefügt, konvertierte Tracks in der Jobliste stehen zu lassen
-			- Konfigurationsoption hinzugefügt, kodierte Dateien in die Jobliste aufzunehmen
-			- Warnung beim Konvertieren von verlustbehafteten in verlustfreie Formate hinzugefügt
-			- Überspringen von Tracks ist beim Konvertieren in eine einzige Datei nicht mehr möglich
+			- UnterstÃ¼tzung fÃ¼r automatische Sampleformatkonvertierung je nach Anforderungen des Kodierers hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r die Ausgabe von Tracks mit verschiedenen Sampleformaten in eine einzige Ausgabedatei hinzugefÃ¼gt
+			- Optionen zum Abspielen von BenachrichtigungstÃ¶nen bei beendeter Konvertierung hinzugefÃ¼gt
+			- Option zum AnhÃ¤ngen von laufenden Nummern an ansonsten identische Dateinamen hinzugefÃ¼gt
+			- Dateinamensplatzhalter <composer>, <conductor> und <disc> hinzugefÃ¼gt
+			- Konfigurationsoption hinzugefÃ¼gt, konvertierte Tracks in der Jobliste stehen zu lassen
+			- Konfigurationsoption hinzugefÃ¼gt, kodierte Dateien in die Jobliste aufzunehmen
+			- Warnung beim Konvertieren von verlustbehafteten in verlustfreie Formate hinzugefÃ¼gt
+			- Ãœberspringen von Tracks ist beim Konvertieren in eine einzige Datei nicht mehr mÃ¶glich
 			- Der Fortschritt einer Konvertierung wird unter Windows 7 und neuer in der Taskleiste angezeigt
-			- Möglichkeit zur Einstellung der Prozesspriorität unter Windows hinzugefügt
+			- MÃ¶glichkeit zur Einstellung der ProzessprioritÃ¤t unter Windows hinzugefÃ¼gt
 
 		- CD-Ripping-Verbesserungen
 
-			- Unterstützung für das Rippen von versteckten Tracks (HTOA) hinzugefügt
-			- Unterstützung für das Auslesen von ISRC-Codes von CDs hinzugefügt
-			- Konfigurationsoption für Offset beim Rippen hinzugefügt
+			- UnterstÃ¼tzung fÃ¼r das Rippen von versteckten Tracks (HTOA) hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r das Auslesen von ISRC-Codes von CDs hinzugefÃ¼gt
+			- Konfigurationsoption fÃ¼r Offset beim Rippen hinzugefÃ¼gt
 			- CDRip auf Version 2.3 aktualisiert (mit cdparanoia III Version 10.2)
 
-		- Verbesserungen der CDDB-Unterstützung
+		- Verbesserungen der CDDB-UnterstÃ¼tzung
 
-			- Vorschau zum CDDB-Trefferauswahldialog hinzugefügt
-			- Option für automatische Auswahl des ersten CDDB-Treffers hinzugefügt
-			- Unterstützung für CDDB-Abfrage per HTTP GET hinzugefügt
-			- CDDB-Abfrage auch dann ermöglicht, wenn kein CD-Laufwerk vorhanden ist
-			- Größe der CDDB-Dialoge änderbar gemacht
+			- Vorschau zum CDDB-Trefferauswahldialog hinzugefÃ¼gt
+			- Option fÃ¼r automatische Auswahl des ersten CDDB-Treffers hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r CDDB-Abfrage per HTTP GET hinzugefÃ¼gt
+			- CDDB-Abfrage auch dann ermÃ¶glicht, wenn kein CD-Laufwerk vorhanden ist
+			- GrÃ¶ÃŸe der CDDB-Dialoge Ã¤nderbar gemacht
 
 		- Playback-Verbesserungen
 
-			- Wiedergabe während laufender Konvertierung ermöglicht
-			- Slider zum Springen während der Wiedergabe hinzugefügt
-			- Die Schaltfläche zum Öffnen des CD-Laufwerks schließt das Laufwerk nun, wenn es bereits offen ist
+			- Wiedergabe wÃ¤hrend laufender Konvertierung ermÃ¶glicht
+			- Slider zum Springen wÃ¤hrend der Wiedergabe hinzugefÃ¼gt
+			- Die SchaltflÃ¤che zum Ã–ffnen des CD-Laufwerks schlieÃŸt das Laufwerk nun, wenn es bereits offen ist
 
 		- Neue und aktualisierte Kodierer
 
-			- Unterstützung für Kommandozeilenkodierer/-dekodierer hinzugefügt
-			- Core Audio AAC-/ALAC-Kodierer hinzugefügt
-			- Opus Audio Kodierer/Dekodierer hinzugefügt
-			- Speex Sprachkodierer/Dekodierer hinzugefügt
-			- Monkey's Audio Kodierer/Dekodierer hinzugefügt
-			- Musepack Kodierer/Dekodierer hinzugefügt
-			- WavPack Kodierer/Dekodierer hinzugefügt
-			- OptimFROG Kodierer/Dekodierer hinzugefügt
-			- TAK Lossless Kodierer/Dekodierer hinzugefügt
-			- Unterstützung für den Fraunhofer FDK AAC-Kodierer/-Dekodierer hinzugefügt
-			- Unterstützung für den VisualOn AAC-Kodierer hinzugefügt
-			- Unterstützung für den TwinVQ VQF-Dekodierer hinzugefügt
-			- Unterstützung für Ogg FLAC-Dateien hinzugefügt
-			- Unterstützung für RF64- und Wave64-Dateien hinzugefügt
-			- Unterstützung für libsndfile zum Lesen von einfachen Audiodateien hinzugefügt
-			- Unterstützung für Vorbis-Dateien mit der Dateiendung .oga hinzugefügt
+			- UnterstÃ¼tzung fÃ¼r Kommandozeilenkodierer/-dekodierer hinzugefÃ¼gt
+			- Core Audio AAC-/ALAC-Kodierer hinzugefÃ¼gt
+			- Opus Audio Kodierer/Dekodierer hinzugefÃ¼gt
+			- Speex Sprachkodierer/Dekodierer hinzugefÃ¼gt
+			- Monkey's Audio Kodierer/Dekodierer hinzugefÃ¼gt
+			- Musepack Kodierer/Dekodierer hinzugefÃ¼gt
+			- WavPack Kodierer/Dekodierer hinzugefÃ¼gt
+			- OptimFROG Kodierer/Dekodierer hinzugefÃ¼gt
+			- TAK Lossless Kodierer/Dekodierer hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r den Fraunhofer FDK AAC-Kodierer/-Dekodierer hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r den VisualOn AAC-Kodierer hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r den TwinVQ VQF-Dekodierer hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r Ogg FLAC-Dateien hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r RF64- und Wave64-Dateien hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r libsndfile zum Lesen von einfachen Audiodateien hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r Vorbis-Dateien mit der Dateiendung .oga hinzugefÃ¼gt
 
 		- Neue DSP-Komponenten
 
-			- DSP-Komponenten für Resampling, Kanal-Up-/Downmixing und Sampleformatkonvertierung hinzugefügt
-			- RNNoise DSP-Komponente zur Rauschreduzierung bei Sprachaufnahmen hinzugefügt
-			- Rubber Band Time-Stretching DSP-Komponente hinzugefügt
+			- DSP-Komponenten fÃ¼r Resampling, Kanal-Up-/Downmixing und Sampleformatkonvertierung hinzugefÃ¼gt
+			- RNNoise DSP-Komponente zur Rauschreduzierung bei Sprachaufnahmen hinzugefÃ¼gt
+			- Rubber Band Time-Stretching DSP-Komponente hinzugefÃ¼gt
 
 		- Tagging-Verbesserungen
 
-			- Unterstützung für Kapitel in ID3v2-, MP4-, WMA- und Vorbis Comment-Tags hinzugefügt
-			- Unterstützung für den Umgang mit Informationen zur lückenlosen Wiedergabe hinzugefügt
-			- Unterstützung für das Ändern von Cover-Bildern hinzugefügt
-			- Unterstützung für das MCDI-Frame in ID3v2-Tags hinzugefügt
-			- Unterstützung für ID3v1-Tags in AAC-Dateien hinzugefügt
-			- Unterstützung für RIFF-Tagging hinzugefügt (über LIST-INFO- und Cart-Chunks)
+			- UnterstÃ¼tzung fÃ¼r Kapitel in ID3v2-, MP4-, WMA- und Vorbis Comment-Tags hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r den Umgang mit Informationen zur lÃ¼ckenlosen Wiedergabe hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r das Ã„ndern von Cover-Bildern hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r das MCDI-Frame in ID3v2-Tags hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r ID3v1-Tags in AAC-Dateien hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r RIFF-Tagging hinzugefÃ¼gt (Ã¼ber LIST-INFO- und Cart-Chunks)
 			- Metadaten-Extraktion aus Pfadnamen verbessert
 			- Benutzerfreundlichkeit der Titelinfopflege verbessert
-			- Kontextmenü für Texteingabefelder hinzugefügt
-			- Groß-/Kleinschreibungs-Konvertierungsfunktionen stark verbessert
-			- Der FLAC-Kodierer schreibt jetzt Seektable Metadaten-Blöcke
+			- KontextmenÃ¼ fÃ¼r Texteingabefelder hinzugefÃ¼gt
+			- GroÃŸ-/Kleinschreibungs-Konvertierungsfunktionen stark verbessert
+			- Der FLAC-Kodierer schreibt jetzt Seektable Metadaten-BlÃ¶cke
 
-		- Verbesserungen für Playlisten und Cuesheets
+		- Verbesserungen fÃ¼r Playlisten und Cuesheets
 
-			- Unterstützung für XSPF-, Windows Media- und PLS-Playlisten hinzugefügt
-			- Unterstützung zum Erzeugen getrennter Playlisten bzw. Cuesheets pro Album in einer Konvertierung hinzugefügt
-			- Fehler in Cuesheets für mehrere Titel in einer Datei behoben
-			- Unterstützung für das Öffnen von Cuesheets hinzugefügt
+			- UnterstÃ¼tzung fÃ¼r XSPF-, Windows Media- und PLS-Playlisten hinzugefÃ¼gt
+			- UnterstÃ¼tzung zum Erzeugen getrennter Playlisten bzw. Cuesheets pro Album in einer Konvertierung hinzugefÃ¼gt
+			- Fehler in Cuesheets fÃ¼r mehrere Titel in einer Datei behoben
+			- UnterstÃ¼tzung fÃ¼r das Ã–ffnen von Cuesheets hinzugefÃ¼gt
 
-		- Verbesserungen für freaccmd
+		- Verbesserungen fÃ¼r freaccmd
 
-			- Parameter von freaccmd komplett überarbeitet
-			- Unterstützung für Konfigurationsauswahl in freaccmd hinzugefügt
-			- Unterstützung für Ausgabe in eine einzige Datei mit freaccmd hinzugefügt
+			- Parameter von freaccmd komplett Ã¼berarbeitet
+			- UnterstÃ¼tzung fÃ¼r Konfigurationsauswahl in freaccmd hinzugefÃ¼gt
+			- UnterstÃ¼tzung fÃ¼r Ausgabe in eine einzige Datei mit freaccmd hinzugefÃ¼gt
 
 Besonderen Dank
 ---------------
 
-	- Paul Francis Harrison für die Entwicklung des Bonk-Formats
-	- Albert L. Faber für die exzellente CDRip Ripper Bibliothek
+	- Paul Francis Harrison fÃ¼r die Entwicklung des Bonk-Formats
+	- Albert L. Faber fÃ¼r die exzellente CDRip Ripper Bibliothek
 
-	- den Übersetzern: Eric Le Carre (Französisch),
+	- den Ãœbersetzern: Eric Le Carre und Philippe Grivel (FranzÃ¶sisch),
 			   Marco D'Amato und Roberto Boriotti (Italienisch),
-			   REIKA (Japanisch),
+			   REIKA und BHCrusher1 (Japanisch),
 			   Federico Reddig und Will (Spanisch),
 			   Jose Maria Vera Somoza (Spanisch, Latinamerikanisch),
 			   Nikolaos-Ioannis Galanis (Griechisch),
@@ -288,36 +364,36 @@ Besonderen Dank
 			   Michal Trzebiatowski und Darek Rzeznicki (Polnisch),
 			   Peter Toth (Ungarisch),
 			   Andrij Iletschko (Ukrainisch),
-			   Wim Garreyn und Thomas De Rocker (Niederländisch),
-			   Nebojša Nikolic (Serbisch),
+			   Wim Garreyn und Thomas De Rocker (NiederlÃ¤ndisch),
+			   NebojÅ¡a Nikolic (Serbisch),
 			   Jan Parttimaa (Finnisch),
 			   Julius Faltus (Tschechisch),
-			   J. B. Escada Jr. und André C. Barros (Portugiesisch, Brasilianisch),
+			   J. B. Escada Jr. und AndrÃ© C. Barros (Portugiesisch, Brasilianisch),
 			   Odyssey (Koreanisch),
-			   Jan Arni Jacobsen (Dänisch),
-			   Mikael Hiort af Ornäs und Anton Mjörnebrant (Schwedisch),
-			   Peter Krajcár (Slowakisch),
+			   Jan Arni Jacobsen (DÃ¤nisch),
+			   Mikael Hiort af OrnÃ¤s und Anton MjÃ¶rnebrant (Schwedisch),
+			   Peter KrajcÃ¡r und Miro Babinsky (Slowakisch),
 			   Andreas Normann Aanonsen (Norwegian),
 			   Vincent Rateau (Esperanto),
-			   Cako (Türkisch),
+			   Cako (TÃ¼rkisch),
 			   Naglis Jonaitis (Litauisch),
-			   Borca Alin und Laurentiu Bubuianu (Rumänisch),
+			   Borca Alin und Laurentiu Bubuianu (RumÃ¤nisch),
 			   El libre (Katalanisch),
-			   Agustín Bou (Valencianisch),
+			   AgustÃ­n Bou (Valencianisch),
 			   Jose Goncalves (Portugiesisch),
 			   Meelis Pasieko (Estnisch),
 			   Goran Bekic (Kroatisch),
-			   Eduardo Estévez (Galizisch),
+			   Eduardo EstÃ©vez (Galizisch),
 			   Phan Anh (Vietnamesisch),
-			   Ilan Tsmeret (Hebräisch),
+			   Ilan Tsmeret (HebrÃ¤isch),
 			   Eman Ali Fhoula (Arabisch),
 			   Martin Deyanov und KalinM (Bulgarisch),
 			   Cois Wiid (Afrikaans),
 			   Xabier Aramendi (Baskisch),
 			   Kin Kwok (Kantonesisch, Hong Kong),
-			   Patriccollu di Santa Maria è Sichè (Korsisch)
+			   Patriccollu di Santa Maria Ã¨ SichÃ¨ (Korsisch)
 
-	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC-Kodierer
+	- Hans-JÃ¼rgen Bardenhagen fÃ¼r seine Hilfe und VorschlÃ¤ge zum FAAC-Kodierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat
 
 -----------------------------------------------------------------------------------

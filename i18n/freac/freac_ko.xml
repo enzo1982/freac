@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Korean / 한국어</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">freac.xml</property>
+    <property name="author">ODYSSEY &lt;sebastian_ryu@hotmail.com&gt;</property>
+    <property name="url">https://www.freac.org/</property>
+    <property name="incomplete">true</property>
+  </info>
+  <data>
+    <entry id="100" string="OK">확인</entry>
+    <entry id="101" string="Cancel">취소</entry>
+    <entry id="102" string="Close">닫기</entry>
+
+    <entry id="200" string="Error">오류</entry>
+    <entry id="201" string="Warning">경고</entry>
+    <entry id="202" string="Info">정보</entry>
+
+    <entry id="210" string="Do not display this warning again">이 경고를 다시 표시하지 않음</entry>
+    <entry id="211" string="Do not display this note again">이 노트를 다시 표시하지 않음</entry>
+
+    <entry id="300" string="Artist">아티스트</entry>
+    <entry id="301" string="Title">이름</entry>
+    <entry id="302" string="Album">앨범</entry>
+    <entry id="303" string="Track">트랙</entry>
+    <entry id="304" string="Genre">장르</entry>
+    <entry id="305" string="Comment">코멘트</entry>
+    <entry id="306" string="Year">년</entry>
+    <entry id="307" string="Disc">디스크</entry>
+    <entry id="308" string="Rating">평점</entry>
+    <entry id="309" string="File name">파일명</entry>
+    <entry id="310" string="File type">파일 형식</entry>
+    <entry id="311" string="Album artist">앨범 아티스트</entry>
+
+    <entry id="350" string="unknown artist">알 수 없는 아티스트</entry>
+    <entry id="351" string="unknown title">알 수 없는 이름</entry>
+    <entry id="352" string="unknown album">알 수 없는 앨범</entry>
+    <entry id="353" string="unknown genre">알 수 없는 장르</entry>
+    <entry id="354" string="unknown year">알 수 없는 연도</entry>
+    <entry id="355" string="unknown conductor">알 수 없는 지휘자</entry>
+    <entry id="356" string="unknown composer">알 수 없는 작곡가</entry>
+    <entry id="357" string="unknown album artist">알 수 없는 앨범 아티스트</entry>
+
+    <entry id="380" string="hidden track">히든 트랙</entry>
+
+    <section name="Characters">
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 kbps</entry>
+      <entry id="511" string="%1 Hz">%1 Hz</entry>
+      <entry id="512" string="%1 kHz">%1 kHz</entry>
+      <entry id="513" string="%1 ms">%1 ms</entry>
+      <entry id="514" string="%1 min">%1 분</entry>
+      <entry id="515" string="%1 bit">%1 bit</entry>
+      <entry id="516" string="%1 bytes">%1 bytes</entry>
+      <entry id="517" string="%1 kB">%1 kB</entry>
+      <entry id="518" string="%1%">%1%</entry>
+    </section>
+
+    <section name="Menu">
+      <entry id="1000" string="File">파일</entry>
+      <entry id="1001" string="Options">옵션</entry>
+      <entry id="1002" string="Database">데이터베이스</entry>
+      <entry id="1003" string="Processing">처리중</entry>
+      <entry id="1004" string="Encode">인코딩</entry>
+      <entry id="1005" string="Help">도움말</entry>
+
+      <section name="File">
+	<entry id="1100" string="Add">추가</entry>
+	<entry id="1101" string="Remove">제거</entry>
+	<entry id="1102" string="Load joblist">작업 목록 불러오기</entry>
+	<entry id="1103" string="Save joblist">작업 목록 저장</entry>
+	<entry id="1104" string="Clear joblist">작업 목록 초기화</entry>
+	<entry id="1105" string="Exit">종료</entry>
+	<entry id="1106" string="Audio file(s)">오디오 파일</entry>
+	<entry id="1107" string="Audio CD contents">오디오 CD 트랙</entry>
+	<entry id="1108" string="By pattern">패턴으로 추가</entry>
+	<entry id="1109" string="From folder">폴더에서 추가</entry>
+      </section>
+
+      <section name="Database">
+	<entry id="1200" string="Query CDDB database">CDDB 데이터베이스에 쿼리</entry>
+	<entry id="1201" string="Submit CDDB data">CDDB에 데이터 전송</entry>
+	<entry id="1202" string="Query CDDB database later">나중에 CDDB 데이터베이스에 쿼리</entry>
+	<entry id="1203" string="Show queued CDDB entries">CDDB에 전송 예정인 항목 보기</entry>
+	<entry id="1204" string="Show queued CDDB queries">CDDB에 쿼리할 예정인 항목 보기</entry>
+	<entry id="1205" string="Enable CDDB cache">CDDB 캐시 허용</entry>
+	<entry id="1206" string="Manage CDDB cache entries">CDDB 캐시 목록 관리</entry>
+	<entry id="1207" string="Automatic CDDB queries">자동으로 CDDB에 쿼리</entry>
+      </section>
+
+      <section name="Options">
+	<entry id="1300" string="General settings">일반 설정</entry>
+	<entry id="1301" string="Configure signal processing">시그널 프로세싱 설정</entry>
+	<entry id="1302" string="Configure selected encoder">선택된 인코더 설정</entry>
+	<entry id="1303" string="Active CD-ROM drive">활성화된 CD-ROM 드라이브</entry>
+	<entry id="1304" string="Active configuration">현재 설정</entry>
+	<entry id="1305" string="Default configuration">기본 설정</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">시그널 프로세싱 활성화</entry>
+	<entry id="1401" string="Enable processing during playback">재생 중 프로세싱 활성화</entry>
+	<entry id="1402" string="Selected signal processors">선택된 시그널 프로세서</entry>
+      </section>
+
+      <section name="Encode">
+	<entry id="1500" string="Start encoding">인코딩 시작</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">인코딩 시작 (기존 파일 삭제)</entry>
+	<entry id="1502" string="Start encoding with">옵션과 함께 인코딩 시작</entry>
+	<entry id="1503" string="Pause/resume encoding">인코딩 일시 정지/재개</entry>
+	<entry id="1504" string="Stop encoding">인코딩 정지</entry>
+	<entry id="1505" string="Encoder options">인코더 옵션</entry>
+	<entry id="1506" string="Encode to a single file">단일 파일로 인코딩</entry>
+	<entry id="1507" string="Encode to input file folder if possible">기존 파일 경로에 내보내기</entry>
+	<entry id="1508" string="Allow overwriting input file">기존 파일 덮어쓰기 허용</entry>
+	<entry id="1509" string="Delete original files after encoding">인코딩 완료 후 원본 파일 삭제</entry>
+	<entry id="1510" string="Shutdown after encoding">인코딩 완료 후 시스템 종료</entry>
+      </section>
+
+      <section name="Help">
+	<entry id="1600" string="Help topics">도움말</entry>
+	<entry id="1601" string="Show Tip of the Day">오늘의 팁 표시</entry>
+	<entry id="1602" string="Check for updates now">최신 업데이트 체크</entry>
+	<entry id="1603" string="Check for updates at startup">시작 시 업데이트 체크</entry>
+	<entry id="1604" string="About %1">%1 에 대하여</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
+	<entry id="1606" string="Report an issue">버그 리포트</entry>
+	<entry id="1607" string="Suggest a feature">기능 추가 요청</entry>
+      </section>
+    </section>
+
+    <section name="Toolbar">
+      <entry id="2000" string="Add audio file(s) to the joblist">오디오 파일을 작업 목록에 추가</entry>
+      <entry id="2001" string="Add audio CD contents to the joblist">오디오 CD 트랙을 작업 목록에 추가</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">선택된 항목을 작업 목록에서 제거</entry>
+      <entry id="2003" string="Clear the entire joblist">작업 목록 초기화</entry>
+      <entry id="2004" string="Query CDDB database">CDDB 데이터베이스에 쿼리</entry>
+      <entry id="2005" string="Submit CDDB data">CDDB에 데이터 전송</entry>
+      <entry id="2006" string="Configure general settings">일반 설정</entry>
+      <entry id="2007" string="Configure signal processing">시그널 프로세싱 설정</entry>
+      <entry id="2008" string="Configure the selected audio encoder">선택된 오디오 인코더 설정</entry>
+      <entry id="2009" string="Start the encoding process">인코딩 작업 시작</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">인코딩 작업 시작 (원본 파일 삭제)</entry>
+      <entry id="2011" string="Pause/resume encoding">인코딩 일시 정지/재개</entry>
+      <entry id="2012" string="Stop encoding">인코딩 정지</entry>
+    </section>
+
+    <section name="Joblist">
+      <entry id="3000" string="Time left">남은 시간</entry>
+      <entry id="3001" string="File progress">파일 진행</entry>
+      <entry id="3002" string="Output folder">내보낼 위치</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 개의 파일이 작업목록에 있습니다</entry>
+      <entry id="3004" string="Show title info">정보 표시</entry>
+      <entry id="3005" string="Play">재생</entry>
+      <entry id="3006" string="Stop">정지</entry>
+      <entry id="3007" string="Select all">전체 선택</entry>
+      <entry id="3008" string="Select none">전부 선택 해제</entry>
+      <entry id="3009" string="Toggle selection">선택 반전</entry>
+      <entry id="3010" string="ripping/decoding">리핑/디코딩</entry>
+      <entry id="3011" string="encoding">인코딩</entry>
+      <entry id="3012" string="Create playlist">재생 목록 생성</entry>
+      <entry id="3013" string="Create cue sheet">큐시트 생성</entry>
+      <entry id="3014" string="Select">찾아보기</entry>
+      <entry id="3015" string="Encode to a single file">단일 파일로 인코딩</entry>
+      <entry id="3016" string="Remove">제거</entry>
+      <entry id="3017" string="Clear joblist">작업 목록 초기화</entry>
+      <entry id="3018" string="Use for all selected tracks">선택된 모든 트랙에 적용</entry>
+      <entry id="3019" string="Interpret string as">문자열을 다음과 같이 해석</entry>
+      <entry id="3020" string="selected tracks">선택된 트랙</entry>
+      <entry id="3021" string="Adjust upper/lower case">대/소문자 처리</entry>
+      <entry id="3022" string="all words upper case">모든 단어를 대문자로 시작</entry>
+      <entry id="3023" string="long words upper case">긴 단어만 대문자로 시작</entry>
+      <entry id="3024" string="first letter upper case">첫 글자를 대문자로</entry>
+      <entry id="3025" string="all lower case">전부 소문자로</entry>
+      <entry id="3026" string="all upper case">전부 대문자로</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">인코딩된 파일을 내보낼 위치 선택</entry>
+      <entry id="3028" string="Sampling rate">샘플 레이트</entry>
+      <entry id="3029" string="Sample resolution">샘플 해상도</entry>
+      <entry id="3030" string="Number of samples">샘플 수</entry>
+      <entry id="3031" string="Channels">채널</entry>
+      <entry id="3032" string="Mono">모노</entry>
+      <entry id="3033" string="Stereo">스테레오</entry>
+      <entry id="3034" string="Length">길이</entry>
+      <entry id="3035" string="File">파일</entry>
+      <entry id="3036" string="Size">크기</entry>
+      <entry id="3037" string="Bitrate">비트레이트</entry>
+      <entry id="3038" string="Audio Files">오디오 파일</entry>
+      <entry id="3039" string="All Files">모든 파일</entry>
+      <entry id="3040" string="Playlist Files">재생 목록 파일</entry>
+      <entry id="3041" string="Joblist">작업 목록</entry>
+      <entry id="3042" string="Other">기타</entry>
+      <entry id="3043" string="Output file name">내보낼 파일 이름</entry>
+      <entry id="3044" string="verifying">무결성 검증 중</entry>
+      <entry id="3045" string="Open">열기</entry>
+      <entry id="3046" string="CD drive">CD 드라이브</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">현재 파일</entry>
+        <entry id="3051" string="none">없음</entry>
+	<entry id="3052" string="Skip current file">건너뛰기</entry>
+      </section>
+
+      <section name="Decoder">
+	<entry id="3060" string="Active decoder">사용중인 디코더</entry>
+	<entry id="3061" string="none">없음</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">선택된 필터</entry>
+	<entry id="3071" string="none">없음</entry>
+	<entry id="3072" string="disabled">비활성화됨</entry>
+	<entry id="3073" string="Configure signal processing">시그널 프로세싱 설정</entry>
+      </section>
+
+      <section name="Encoder">
+	<entry id="3080" string="Selected encoder">선택된 인코더</entry>
+	<entry id="3081" string="Configure selected encoder">선택된 인코더 설정</entry>
+      </section>
+
+      <section name="Add folder">
+	<entry id="3100" string="Folder">폴더</entry>
+	<entry id="3101" string="Add folder">폴더 추가</entry>
+	<entry id="3102" string="Choose folder">폴더 선택</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">작업 목록에 추가할 폴더를 선택</entry>
+      </section>
+
+      <section name="Add by pattern">
+	<entry id="3200" string="Add files by pattern">패턴에 따라 파일 추가</entry>
+	<entry id="3201" string="Pattern">패턴</entry>
+	<entry id="3202" string="Start folder">시작할 폴더</entry>
+	<entry id="3203" string="Filename pattern">파일명 패턴</entry>
+	<entry id="3204" string="Search subfolders">하위 폴더 검색</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">작업 목록에 추가할 폴더를 선택</entry>
+      </section>
+
+      <section name="Character set">
+	<entry id="3300" string="Character set">캐릭터 집합</entry>
+	<entry id="3301" string="Choose character set">캐릭터 집합 선택</entry>
+      </section>
+
+      <section name="Errors">
+	<entry id="3400" string="You did not select a track!">트랙이 선택되지 않았습니다!</entry>
+	<entry id="3401" string="No files found matching pattern: %1">패턴에 매칭하는 파일이 없습니다: %1</entry>
+      </section>
+    </section>
+
+    <section name="Jobs">
+      <entry id="3500" string="Jobs">작업</entry>
+      <entry id="3501" string="Progress">진행중</entry>
+      <entry id="3502" string="Errors / Warnings">오류 / 경고</entry>
+      <entry id="3503" string="Details">더 보기</entry>
+      <entry id="3504" string="Error details">오류 내용</entry>
+      <entry id="3505" string="Time left">남은 시간</entry>
+      <entry id="3506" string="Waiting for other jobs to finish">다른 작업이 완료되기를 기다리는 중입니다</entry>
+
+      <section name="Joblist">
+	<entry id="3600" string="Reading folders">폴더를 읽는 중</entry>
+	<entry id="3601" string="Filtering duplicates">중복 파일을 필터링하는 중</entry>
+	<entry id="3602" string="Adding files">파일을 추가하는 중</entry>
+	<entry id="3603" string="Adding tracks">트랙을 추가하는 중</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">%1 개의 파일을 추가했습니다, %2 개 오류가 발생하였습니다</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">%1 개의 트랙을 추가했습니다, %2 개 오류가 발생하였습니다</entry>
+	<entry id="3606" string="Removing all tracks">모든 트랙을 제거하는 중</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">드라이브 %1 의 디스크 트랙을 제거하는 중</entry>
+	<entry id="3608" string="Removed all tracks from joblist">작업 목록에서 모든 트랙을 제거하였습니다</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">작업 목록에서 드라이브 %1 의 디스크 트랙을 제거하였습니다</entry>
+      </section>
+
+      <section name="Convert">
+	<entry id="3700" string="Checking sample formats">샘플 형식을 확인하는 중</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">무손실 코덱에서 손실 코덱으로의 변환을 확인하는 중</entry>
+	<entry id="3702" string="Checking output file names">내보낼 파일 이름을 확인하는 중</entry>
+	<entry id="3703" string="Converting %1">변환 중 %1</entry>
+	<entry id="3704" string="Verifying %1">검증하는 중 %1</entry>
+	<entry id="3705" string="Conversion cancelled">변환이 취소되었습니다</entry>
+	<entry id="3706" string="Conversion finished">변환이 완료되었습니다</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">변환이 완료되었습니다. %1 개의 경고 발생</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">변환이 완료되었습니다. %1 개의 오류 발생</entry>
+      </section>
+
+      <section name="Update">
+	<entry id="3800" string="Preparing update check">업데이트 체크를 준비하는 중</entry>
+	<entry id="3801" string="Contacting update server">업데이트 서버에 연결하는 중</entry>
+	<entry id="3802" string="Updates found">새로운 업데이트가 있습니다</entry>
+	<entry id="3803" string="No updates found">새로운 업데이트를 찾을 수 없습니다</entry>
+      </section>
+    </section>
+
+    <section name="CDDB">
+
+      <section name="Submit">
+	<entry id="4000" string="CDDB data">CDDB 데이터</entry>
+	<entry id="4001" string="Submit">전송</entry>
+	<entry id="4002" string="No audio CD in drive!">드라이브에 오디오 CD가 존재하지 않습니다!</entry>
+	<entry id="4003" string="Submitting CD information">CD 정보를 전송하는 중</entry>
+	<entry id="4004" string="Update joblist with this information">이 정보로 작업 목록을 업데이트</entry>
+	<entry id="4005" string="Status">상태</entry>
+	<entry id="4006" string="Successfully read CD!">CD를 성공적으로 읽었습니다!</entry>
+	<entry id="4007" string="Save entry">항목 저장</entry>
+	<entry id="4008" string="Various artists">Various artists</entry>
+	<entry id="4009" string="Data track">데이터 트랙</entry>
+	<entry id="4010" string="Submit to online database later">나중에 온라인 데이터베이스에 전송</entry>
+	<entry id="4011" string="Active CD-ROM drive">활성화된 CD-ROM 드라이브</entry>
+
+	<section name="Errors">
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">freedb 서버로 접속중 오류가 발생하였습니다.</entry>
+	  <entry id="4051" string="Please fill all fields and track titles before submitting.">전송하기 전에 모든 항목과 트랙 이름을 입력하십시오.</entry>
+	</section>
+      </section>
+
+      <section name="Query">
+	<entry id="4100" string="CDDB query">CDDB 쿼리</entry>
+	<entry id="4101" string="No freedb entry for this disk.">이 디스크에 대한 freedb 항목이 존재하지 않습니다.</entry>
+	<entry id="4102" string="Connecting to freedb server at">freedb 서버에 접속하는 중</entry>
+	<entry id="4103" string="Requesting CD information">CD 정보를 요청하는 중</entry>
+	<entry id="4104" string="No exact matches found">검색 결과가 없습니다</entry>
+	<entry id="4105" string="Multiple matches found">여러 항목이 발견되었습니다</entry>
+	<entry id="4106" string="Matches">검색 결과</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">이 CD에 대한 항목을 선택하십시오</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">이 쿼리를 나중에 다시 시도하시겠습니까?</entry>
+	<entry id="4109" string="Would you like to perform the remaining queries again later?">남은 쿼리를 나중에 다시 시도하시겠습니까?</entry>
+	<entry id="4110" string="none">없음</entry>
+	<entry id="4111" string="Preview">미리보기</entry>
+	<entry id="4112" string="loading preview">로드 중</entry>
+
+	<section name="Errors">
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">freedb 서버에 접속하는 중에 오류가 발생하였습니다.</entry>
+	</section>
+      </section>
+
+      <section name="Manage queries">
+	<entry id="4200" string="Remove entry">항목 제거</entry>
+	<entry id="4201" string="CDDB queries">CDDB 쿼리</entry>
+	<entry id="4202" string="Query">쿼리</entry>
+	<entry id="4203" string="Query all">전부 쿼리</entry>
+	<entry id="4204" string="Query string">쿼리 문자열</entry>
+	<entry id="4205" string="CDDB queries to perform">실행할 CDDB 쿼리</entry>
+	<entry id="4206" string="Querying CD information">CD 정보를 쿼리하는 중</entry>
+      </section>
+
+      <section name="Manage submits">
+	<entry id="4300" string="Remove entry">항목 제거</entry>
+	<entry id="4301" string="CDDB entries to submit">CDDB에 전송할 항목</entry>
+	<entry id="4302" string="Submit all">전부 전송</entry>
+	<entry id="4303" string="CDDB data">CDDB 데이터</entry>
+	<entry id="4304" string="Submit">전송</entry>
+	<entry id="4305" string="Disc name">디스크 이름</entry>
+	<entry id="4306" string="Preview">미리보기</entry>
+	<entry id="4307" string="Category">카테고리</entry>
+	<entry id="4308" string="Submitting CD information">CD 정보를 전송하는 중</entry>
+      </section>
+
+      <section name="Manage cache">
+	<entry id="4400" string="CDDB data">CDDB 데이터</entry>
+	<entry id="4401" string="Update joblist with this information">이 정보로 작업 목록을 업데이트</entry>
+	<entry id="4402" string="Charset">문자 집합</entry>
+	<entry id="4403" string="Downloaded CDDB entries">다운로드된 CDDB 항목</entry>
+	<entry id="4404" string="Disc name">디스크 이름</entry>
+	<entry id="4405" string="Preview">미리보기</entry>
+	<entry id="4406" string="Remove entry">항목 제거</entry>
+	<entry id="4407" string="Save entry">항목 저장</entry>
+      </section>
+    </section>
+
+    <section name="Configuration">
+      <entry id="5000" string="General settings setup">일반 설정</entry>
+      <entry id="5001" string="Encoders">인코더</entry>
+      <entry id="5002" string="Playlists">재생목록</entry>
+      <entry id="5003" string="Language">언어</entry>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">인터페이스</entry>
+      <entry id="5006" string="Tags">태그</entry>
+      <entry id="5007" string="Components">구성 요소</entry>
+      <entry id="5008" string="Decoders">디코더</entry>
+      <entry id="5009" string="Output">내보내기</entry>
+      <entry id="5010" string="DSP">DSP</entry>
+      <entry id="5011" string="Extensions">확장 기능</entry>
+      <entry id="5012" string="Other">기타</entry>
+      <entry id="5013" string="Active configuration">현재 설정</entry>
+      <entry id="5014" string="New">새 구성</entry>
+      <entry id="5015" string="Delete">구성 삭제</entry>
+      <entry id="5016" string="Command line arguments">커맨드라인 인수</entry>
+      <entry id="5017" string="Resulting arguments string">인수 미리보기</entry>
+      <entry id="5018" string="Default configuration">기본 설정</entry>
+      <entry id="5019" string="New configuration">새로운 구성</entry>
+      <entry id="5020" string="Ripper">리퍼</entry>
+      <entry id="5021" string="Settings">옵션</entry>
+      <entry id="5022" string="Resources">리소스 관리</entry>
+      <entry id="5023" string="Verifiers">무결성 검증</entry>
+      <entry id="5024" string="Taggers">태그 옵션</entry>
+      <entry id="5025" string="Processing">처리중</entry>
+
+      <section name="Encoders">
+	<entry id="5100" string="Configure encoder">인코더 설정</entry>
+	<entry id="5101" string="Encoder">인코더</entry>
+	<entry id="5102" string="Output folder">내보낼 위치</entry>
+	<entry id="5103" string="Select">찾아보기</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">인코딩된 파일을 내보낼 위치를 선택하십시오</entry>
+	<entry id="5105" string="Use input file folder if possible">기존 파일 경로에 내보내기</entry>
+	<entry id="5106" string="Allow overwriting input file">기존 파일 덮어쓰기 허용</entry>
+	<entry id="5107" string="Options">옵션</entry>
+	<entry id="5108" string="Filename pattern">파일명 패턴</entry>
+	<entry id="5109" string="Encode 'On-The-Fly'">실시간 패킷 인코딩</entry>
+	<entry id="5110" string="Keep ripped Wave files">리핑된 wav 파일 유지</entry>
+	<entry id="5111" string="Encode to a single file">단일 파일로 인코딩</entry>
+	<entry id="5112" string="Output filenames">내보낼 파일 이름</entry>
+	<entry id="5113" string="Allow Unicode characters">유니코드 허용</entry>
+	<entry id="5114" string="Replace spaces with underscores">공백을 _로 변환</entry>
+	<entry id="5115" string="Remove processed tracks from joblist">처리된 트랙을 작업목록에서 제거</entry>
+	<entry id="5116" string="Add encoded files to joblist">인코딩된 파일을 작업목록에 추가</entry>
+	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">같은 이름의 파일이 존재할 시 숫자를 붙여서 구분하기</entry>
+	<entry id="5118" string="Keep time stamps of source files">원본 파일의 타임스탬프 유지</entry>
+
+	<section name="Errors">
+	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">내보낼 폴더가 존재하지 않습니다! 폴더를 생성하시겠습니까?</entry>
+	</section>
+      </section>
+
+      <section name="Playlists">
+	<entry id="5200" string="Create playlists">재생목록 생성</entry>
+	<entry id="5201" string="Create cue sheets">큐시트 생성</entry>
+	<entry id="5202" string="Output folder">내보낼 폴더</entry>
+	<entry id="5203" string="Select">찾아보기</entry>
+	<entry id="5204" string="Use encoder output folder">인코더의 내보낼 폴더 설정 사용</entry>
+	<entry id="5205" string="Filename pattern">파일명 패턴</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">재생목록을 내보낼 폴더를 선택하십시오</entry>
+	<entry id="5207" string="Output filenames">내보낼 파일 이름</entry>
+	<entry id="5208" string="Configure plugin">플러그인 설정</entry>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">작업당 1개의 재생목록/큐시트만 생성</entry>
+      </section>
+
+      <section name="CDDB">
+	<entry id="5300" string="Enable local CDDB database">로컬 CDDB 데이터베이스 활성화</entry>
+	<entry id="5301" string="Enable remote CDDB database">외부 CDDB 데이터베이스 활성화</entry>
+	<entry id="5302" string="CDDB path">CDDB 주소</entry>
+	<entry id="5303" string="Select">찾아보기</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">CDDB 데이터베이스 폴더를 선택하십시오</entry>
+	<entry id="5305" string="CDDB access mode">CDDB 엑세스 모드</entry>
+	<entry id="5306" string="CDDB server">CDDB 서버</entry>
+	<entry id="5307" string="Port">포트</entry>
+	<entry id="5308" string="eMail address">이메일 주소</entry>
+	<entry id="5309" string="HTTP settings">HTTP 설정</entry>
+	<entry id="5310" string="Proxy settings">프록시 설정</entry>
+	<entry id="5311" string="Options">옵션</entry>
+	<entry id="5312" string="Automatic CDDB queries">자동으로 CDDB에 쿼리</entry>
+	<entry id="5313" string="Prefer CDDB over CD Text">CD 텍스트보다 CDDB를 우선</entry>
+	<entry id="5314" string="Enable CDDB cache">CDDB 캐시 허용</entry>
+	<entry id="5315" string="Automatization">자동화</entry>
+	<entry id="5316" string="Always select first entry">항상 첫번째 항목을 선택</entry>
+
+	<section name="Extended">
+	  <entry id="5330" string="Extended CDDB settings">CDDB 설정 더보기</entry>
+	  <entry id="5331" string="CGI scripts">CGI 스크립트</entry>
+	  <entry id="5332" string="CDDB query script">CDDB 쿼리 스크립트</entry>
+	  <entry id="5333" string="CDDB submit script">CDDB 전송 스크립트</entry>
+	  <entry id="5334" string="no proxy">프록시 없음</entry>
+	  <entry id="5335" string="Proxy type">프록시 유형</entry>
+	  <entry id="5336" string="Proxy server">프록시 서버</entry>
+	  <entry id="5337" string="User name">유저네임</entry>
+	  <entry id="5338" string="Password">패스워드</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="5350" string="Please enter a valid eMail address.">유효한 이메일 주소를 입력하십시오.</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDBP 프로토콜은 HTTP&#10;포워드 프록시를 사용할 수 없습니다!&#10;&#10;프로토콜을 HTTP로 변경하시겠습니까?</entry>
+	</section>
+      </section>
+
+      <section name="Language">
+	<entry id="5400" string="Select language">언어 선택</entry>
+	<entry id="5401" string="Edit language file">언어 파일 수정</entry>
+	<entry id="5402" string="Information">정보</entry>
+	<entry id="5403" string="Encoding">인코딩</entry>
+	<entry id="5404" string="Author">번역자</entry>
+	<entry id="5405" string="URL">URL</entry>
+      </section>
+
+      <section name="Tags">
+	<entry id="5500" string="Tags">태그</entry>
+	<entry id="5501" string="Tag formats">태그 포맷</entry>
+	<entry id="5502" string="Default comment string">주석 기본값</entry>
+	<entry id="5503" string="Replace existing comments with default comment">기존 주석이 존재할 경우 덮어쓰기</entry>
+	<entry id="5504" string="Filename pattern">파일명 패턴</entry>
+	<entry id="5505" string="Encoding">인코딩</entry>
+	<entry id="5506" string="Comments">주석</entry>
+	<entry id="5507" string="Cover art">앨범 아트</entry>
+	<entry id="5508" string="Read cover art">앨범 아트 읽기</entry>
+	<entry id="5509" string="Read cover art from tags">태그에서 엘범 아트 읽어오기</entry>
+	<entry id="5510" string="Read cover art from files">파일에서 앨범 아트 읽어오기</entry>
+	<entry id="5511" string="Write cover art">앨범 아트 쓰기</entry>
+	<entry id="5512" string="Write cover art to tags">앨범 아트를 태그에 작성하기</entry>
+	<entry id="5513" string="Write cover art to files">앨범 아트를 파일에 작성하기</entry>
+	<entry id="5514" string="Add reference to audio file tag">오디오 파일에 태그 레퍼런스 추가하기</entry>
+	<entry id="5515" string="Other">기타</entry>
+	<entry id="5516" string="Chapters">챕터</entry>
+	<entry id="5517" string="Read chapters from files">파일에서 챕터 읽어오기</entry>
+	<entry id="5518" string="Write chapters to files">챕터를 파일에 작성하기</entry>
+	<entry id="5519" string="Special fields">특수한 필드</entry>
+	<entry id="5520" string="Write CD table of contents">CD 목차 작성하기</entry>
+	<entry id="5521" string="Preserve Replay Gain information">Replay Gain 정보 유지하기</entry>
+	<entry id="5522" string="Cue sheets">큐시트</entry>
+	<entry id="5523" string="Read cue sheets embedded in metadata">메타데이터에서 큐시트 읽어오기</entry>
+	<entry id="5524" string="Prefer cue sheets over chapter information">챕터 정보보다 큐시트를 우선</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">10보다 작은 트랙 번호 앞에 0을 추가</entry>
+	<entry id="5526" string="File size limit">파일 크기 제한</entry>
+	<entry id="5527" string="unlimited">제한 없음</entry>
+      </section>
+
+      <section name="Joblist">
+	<entry id="5600" string="Joblist">작업 목록</entry>
+	<entry id="5601" string="Columns">열</entry>
+	<entry id="5602" string="Name">이름</entry>
+	<entry id="5603" string="Description">설명</entry>
+	<entry id="5604" string="Up">올리기</entry>
+	<entry id="5605" string="Down">내리기</entry>
+	<entry id="5606" string="Jobs">작업</entry>
+	<entry id="5607" string="Show Jobs tab">작업 탭 보이기</entry>
+
+	<section name="Columns">
+	  <entry id="5650" string="Track artist">트랙 아티스트</entry>
+	  <entry id="5651" string="Track title">트랙 이름</entry>
+	  <entry id="5652" string="Track genre">트랙 장르</entry>
+	  <entry id="5653" string="Album title">앨범 이름</entry>
+	  <entry id="5654" string="Disc number">디스크 번호</entry>
+	  <entry id="5655" string="Track number">트랙 번호</entry>
+	  <entry id="5656" string="Track rating">트랙 평점</entry>
+	  <entry id="5657" string="Track length">트랙 길이</entry>
+	  <entry id="5658" string="Track size">트랙 크기</entry>
+	  <entry id="5659" string="File name">파일명</entry>
+	  <entry id="5660" string="File type">파일 형식</entry>
+	  <entry id="5661" string="Output file name">내보낼 파일 이름</entry>
+	  <entry id="5662" string="Bitrate">비트레이트</entry>
+	  <entry id="5663" string="Sampling rate">샘플 레이트</entry>
+	  <entry id="5664" string="Channels">채널</entry>
+	  <entry id="5665" string="Sample resolution">샘플 해상도</entry>
+	  <entry id="5666" string="CD drive">CD 드라이브</entry>
+	</section>
+      </section>
+
+      <section name="Resources">
+	<entry id="5700" string="Parallel processing">병렬 프로세싱</entry>
+	<entry id="5701" string="Enable parallel processing">병렬 프로세싱 활성화</entry>
+	<entry id="5702" string="Enable SuperFast mode">SuperFast 모드 활성화</entry>
+	<entry id="5703" string="Number of conversion threads">변환할 스레드 수</entry>
+	<entry id="5704" string="auto">자동</entry>
+	<entry id="5705" string="Process priority">프로세스 우선순위</entry>
+	<entry id="5706" string="lowest">가장 낮음</entry>
+	<entry id="5707" string="lower">낮음</entry>
+	<entry id="5708" string="normal">보통</entry>
+	<entry id="5709" string="higher">높음</entry>
+	<entry id="5710" string="highest">가장 높음</entry>
+      </section>
+
+      <section name="Verification">
+	<entry id="5800" string="Verification">무결성 검증</entry>
+	<entry id="5801" string="Enable input verification">읽어올 때 무결성 검증 활성화</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">무손실 음원과 디코딩된 데이터가 일치하는지 확인합니다.</entry>
+	<entry id="5803" string="Enable output verification">내보낼 때 무결성 검증 활성화</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">무손실 출력 파일과 인코딩된 데이터가 일치하는지 확인합니다.</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="5900" string="Signal processing">시그널 프로세싱</entry>
+	<entry id="5901" string="Enable signal processing">시그널 프로세싱 활성화</entry>
+	<entry id="5902" string="Enable processing during playback">재생 중 프로세싱 활성화</entry>
+	<entry id="5903" string="Components">구성 요소</entry>
+	<entry id="5904" string="Available">사용 가능</entry>
+	<entry id="5905" string="Selected">선택됨</entry>
+	<entry id="5906" string="Configure component">컴포넌트 구성</entry>
+	<entry id="5907" string="Conversion to a single output file">단일 파일로 변환하기</entry>
+	<entry id="5908" string="Process each track individually">각 파일을 개별적으로 처리</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">합쳐진 파일을 한 트랙으로 취급하기</entry>
+      </section>
+    </section>
+
+    <section name="About">
+      <entry id="6000" string="About %1">%1 에 대하여</entry>
+      <entry id="6001" string="Translated by %1.">번역자: %1</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">이 프로그램은 GNU General Public License (GPL)의&#10;조항에 의거하여 배포되고 있습니다.</entry>
+    </section>
+
+    <section name="Updates">
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">%1 의 신규 업데이트가 존재합니다!&#10;사용 가능한 업데이트 목록을 보시겠습니까?</entry>
+      <entry id="6101" string="There are no updates available at the moment!">새로운 업데이트가 존재하지 않습니다!</entry>
+      <entry id="6102" string="Check for updates at startup">시작 시 업데이트 체크</entry>
+    </section>
+
+    <section name="Messages">
+      <entry id="7000" string="Currently converting">현재 인코딩 중</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">인코딩 중입니다. 정말로 끝내시겠습니까?</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">NT SCSI 드라이버 로드할수 없습니다! CD 리핑 불가!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">파일 열기 실패: %1&#10;&#10;%2</entry>
+    </section>
+
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8006" string="Skip">건너 뛰기</entry>
+      </section>
+
+      <section name="Format">
+	<entry id="8102" string="Select">찾아보기</entry>
+      </section>
+
+      <section name="Errors"/>
+    </section>
+
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">CD-ROM 드라이브 활성화</entry>
+      <entry id="9005" string="Ripper settings">리퍼 세팅</entry>
+      <entry id="9006" string="Activate cdparanoia mode">CD 파라노어 모드</entry>
+      <entry id="9007" string="Overlap only">오버랩</entry>
+      <entry id="9008" string="No verify">확인 안함</entry>
+      <entry id="9009" string="No scratch repair">스크래치 복구 없음</entry>
+      <entry id="9010" string="Full cdparanoia mode">전체 CD 모드</entry>
+      <entry id="9011" string="Activate jitter correction">지터 정정</entry>
+      <entry id="9012" string="Switch stereo channels">좌우 채널 스왑</entry>
+      <entry id="9013" string="Automatization">자동화</entry>
+      <entry id="9014" string="Read CD contents on insert">삽입 CD 내용 읽기</entry>
+      <entry id="9016" string="Eject disk after ripping">리핑후 디스크 배출</entry>
+      <entry id="9017" string="CD options">CD 옵션</entry>
+      <entry id="9018" string="Lock CD tray while ripping">리핑 도증 CD트레이 잠김</entry>
+    </section>
+
+    <section name="Decoders">
+
+      <section name="mpg123">
+	<entry id="21001" string="Active decoder">사용중인 디코더</entry>
+      </section>
+    </section>
+
+    <section name="Encoders">
+
+      <section name="BladeEnc">
+	<entry id="30000" string="Bitrate">비트레이트</entry>
+	<entry id="30001" string="Copyright bit">저작권 비트</entry>
+	<entry id="30002" string="CRC">CRC</entry>
+	<entry id="30003" string="Original bit">오리지널 비트</entry>
+	<entry id="30004" string="Channels">채널</entry>
+	<entry id="30005" string="Private bit">비공개 비트</entry>
+	<entry id="30006" string="Set Copyright bit">저작권 비트 설정</entry>
+	<entry id="30007" string="Enable CRC">CRC 사용</entry>
+	<entry id="30008" string="Set Original bit">오리지널 비트 설정</entry>
+	<entry id="30009" string="Dual channel encoding">듀얼 채널 인코드</entry>
+	<entry id="30010" string="Set Private bit">비공개 비트 설정</entry>
+      </section>
+
+      <section name="Bonk">
+	<entry id="31000" string="Encoder mode">인코더 모드</entry>
+	<entry id="31001" string="Stereo mode">스테레오</entry>
+	<entry id="31002" string="Quantization">양자화</entry>
+	<entry id="31003" string="Downsampling ratio">다운샘플링 비율</entry>
+	<entry id="31004" string="Predictor size">프레딕터 크기</entry>
+	<entry id="31005" string="Enable lossless encoding">무손실 인코딩 사용</entry>
+	<entry id="31006" string="Enable Joint Stereo">조인트스테레오 사용</entry>
+      </section>
+
+      <section name="LAME">
+	<entry id="32000" string="Basic">기본</entry>
+	<entry id="32001" string="Misc">기타</entry>
+	<entry id="32002" string="Expert">고급 설정</entry>
+	<entry id="32003" string="Audio processing">오디오 처리</entry>
+
+	<section name="Basic">
+	  <entry id="32100" string="Presets">초기설정</entry>
+	  <entry id="32101" string="Use preset">초기설정 사용</entry>
+	  <entry id="32102" string="Custom settings">사용자 정의</entry>
+	  <entry id="32103" string="Medium, Fast">보통, 빠르기</entry>
+	  <entry id="32104" string="Standard, Fast">표준, 빠르기</entry>
+	  <entry id="32105" string="Extreme, Fast">최저, 빠르기</entry>
+	  <entry id="32106" string="Bitrate">비트레이트</entry>
+	  <entry id="32107" string="Quality">음질</entry>
+	  <entry id="32108" string="Set bitrate">비트레이트</entry>
+	  <entry id="32109" string="Set ratio">비율</entry>
+	  <entry id="32110" string="Set quality">음질</entry>
+	  <entry id="32111" string="worse">고</entry>
+	  <entry id="32112" string="better">저</entry>
+	  <entry id="32113" string="VBR mode">VBR 모드</entry>
+	  <entry id="32114" string="no VBR">VBR 사용안함</entry>
+	  <entry id="32115" string="VBR quality">VBR 음질</entry>
+	  <entry id="32116" string="ABR target bitrate">ABR 타겟 비트레이트</entry>
+	</section>
+
+	<section name="Misc">
+	  <entry id="32200" string="Control bits">컨트롤 비트</entry>
+	  <entry id="32201" string="Set Copyright bit">저작권 비트 설정</entry>
+	  <entry id="32202" string="Set Original bit">오리지널 비트 설정</entry>
+	  <entry id="32203" string="Set Private bit">비공개 비트 설정</entry>
+	  <entry id="32204" string="CRC">CRC</entry>
+	  <entry id="32205" string="Enable CRC">CRC 사용</entry>
+	  <entry id="32206" string="Stereo mode">스테레오</entry>
+	  <entry id="32207" string="auto">자동</entry>
+	  <entry id="32208" string="Stereo">스테레오</entry>
+	  <entry id="32209" string="Joint Stereo">조인트 스테레오</entry>
+	  <entry id="32210" string="Force Joint Stereo">조인트스테레오 사용</entry>
+	  <entry id="32211" string="VBR bitrate range">VBR 비트레이트 영역</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">최소 VBR 비트레이트 설정</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">최대 VBR 비트레이트 설정</entry>
+	</section>
+
+	<section name="Expert">
+	  <entry id="32300" string="ATH">ATH</entry>
+	  <entry id="32301" string="Enable ATH">ATH 허용</entry>
+	  <entry id="32302" string="Use default setting">초기설정 사용</entry>
+	  <entry id="32303" string="Psycho acoustic model">청각 모델</entry>
+	  <entry id="32304" string="Use Temporal Masking Effect">마스킹효과 사용</entry>
+	  <entry id="32305" string="Stream format">스트림 포맷</entry>
+	  <entry id="32306" string="Enforce strict ISO compliance">ISO 표준에 따라 제한</entry>
+	</section>
+
+	<section name="Audio processing">
+	  <entry id="32400" string="Highpass filter">HPF</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">하이패스 주파수설정(Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">하이패스 대역폭설정(Hz)</entry>
+	  <entry id="32403" string="Lowpass filter">로우패스 필터</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">로우패스 주파수설정(Hz)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">로우패스 대역폭설정(Hz)</entry>
+	  <entry id="32406" string="Misc settings">기타 설정</entry>
+	  <entry id="32407" string="Disable all filtering">모든 필터링 허용안함</entry>
+	</section>
+      </section>
+
+      <section name="AAC">
+	<entry id="33001" string="Quality">음질</entry>
+	<entry id="33002" string="Format">포맷</entry>
+
+	<section name="Quality">
+	  <entry id="33200" string="Bitrate">비트레이트</entry>
+	  <entry id="33201" string="Bitrate / Quality">비트레이트 / 음질</entry>
+	  <entry id="33202" string="Bitrate per channel">채널당 비트레이트</entry>
+	  <entry id="33203" string="Set quality">음질</entry>
+	  <entry id="33204" string="Stereo mode">스테레오</entry>
+	  <entry id="33205" string="Allow Joint Stereo">조인트 스테레오 허용</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">노이즈 제거</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">노이즈제거 사용</entry>
+	  <entry id="33208" string="Maximum bandwidth">최대 대역폭</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">사용가능 최대 AAC주파수 대역폭(Hz)</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="33300" string="MPEG version">MPEG 버전</entry>
+	  <entry id="33301" string="AAC object type">AAC 오브젝트 형태</entry>
+	  <entry id="33302" string="File format">파일 포맷</entry>
+	  <entry id="33304" string="Tags">정보 태그</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">AAC 파일에서 ID3v2 태그 지원</entry>
+	  <entry id="33306" string="Note">주의</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">ID3 태그가 포함된 AAC파일은 문제가 될 수&#10;있습니다. 태그를 플레이어에서 사용할 경우에만,&#10;이 옵션을 사용하기 바랍니다.</entry>
+	</section>
+      </section>
+
+      <section name="FLAC">
+	<entry id="34000" string="Basic">기본</entry>
+	<entry id="34001" string="Format">포맷</entry>
+	<entry id="34002" string="Expert">고급 설정</entry>
+
+	<section name="Basic">
+	  <entry id="34100" string="Presets">초기설정</entry>
+	  <entry id="34101" string="Use preset">초기설정 사용</entry>
+	  <entry id="34102" string="Custom settings">사용자 정의</entry>
+	  <entry id="34105" string="Stereo mode">스테레오</entry>
+	  <entry id="34106" string="Joint Stereo">조인트 스테레오</entry>
+	  <entry id="34108" string="File format">파일 포맷</entry>
+	</section>
+
+	<section name="Format"/>
+
+	<section name="Expert">
+	  <entry id="34300" string="Signal processing">시그널 프로세싱</entry>
+	  <entry id="34302" string="Note">주의</entry>
+	</section>
+      </section>
+
+      <section name="Vorbis">
+	<entry id="35000" string="Encoding Mode">인코딩 모드</entry>
+	<entry id="35001" string="Variable Bitrate">VBR 사용</entry>
+	<entry id="35002" string="Average Bitrate">ABR 사용</entry>
+	<entry id="35003" string="Quality">음질</entry>
+	<entry id="35004" string="Bitrate">비트레이트</entry>
+      </section>
+
+      <section name="WMA">
+	<entry id="36008" string="Quality">음질</entry>
+      </section>
+
+      <section name="TwinVQ">
+	<entry id="37000" string="Bitrate">비트레이트</entry>
+	<entry id="37001" string="Bitrate per channel">채널당 비트레이트</entry>
+	<entry id="37002" string="Preselection">초기선택</entry>
+	<entry id="37003" string="Number of preselection candidates">초기선택 수</entry>
+      </section>
+
+      <section name="Monkey's Audio"/>
+
+      <section name="Speex">
+	<entry id="39002" string="auto">자동</entry>
+	<entry id="39006" string="VBR mode">VBR 모드</entry>
+	<entry id="39010" string="Options">옵션</entry>
+	<entry id="39016" string="VBR quality">VBR 음질</entry>
+	<entry id="39017" string="ABR target bitrate">ABR 타겟 비트레이트</entry>
+	<entry id="39018" string="Bitrate">비트레이트</entry>
+	<entry id="39019" string="Quality">음질</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40002" string="auto">자동</entry>
+	<entry id="40015" string="Quality">음질</entry>
+	<entry id="40016" string="Bitrate">비트레이트</entry>
+	<entry id="40020" string="Options">옵션</entry>
+      </section>
+
+      <section name="SndFile">
+	<entry id="41001" string="File format">파일 포맷</entry>
+	<entry id="41003" string="mono">모노</entry>
+      </section>
+
+      <section name="meh!">
+	<entry id="42000" string="Encoders">인코더</entry>
+	<entry id="42001" string="Available">사용 가능</entry>
+	<entry id="42002" string="Selected">선택됨</entry>
+	<entry id="42003" string="Configure encoder">인코더 설정</entry>
+	<entry id="42004" string="Options">옵션</entry>
+      </section>
+    </section>
+
+    <section name="DSP">
+
+      <section name="Format">
+	<entry id="50002" string="Sample resolution">샘플 해상도</entry>
+	<entry id="50003" string="bit">비트</entry>
+      </section>
+
+      <section name="Channels">
+	<entry id="50102" string="Mono">모노</entry>
+	<entry id="50103" string="Stereo">스테레오</entry>
+	<entry id="50104" string="Switch stereo channels">좌우 채널 스왑</entry>
+      </section>
+
+      <section name="Resample">
+	<entry id="50201" string="Sampling rate">샘플링 레이트</entry>
+	<entry id="50202" string="Output sampling rate">출력 샘플레이트</entry>
+      </section>
+    </section>
+
+    <section name="External">
+
+      <section name="Musepack Audio Encoder">
+	<entry id="80100" string="Quality">음질</entry>
+      </section>
+
+      <section name="OptimFROG Lossless Encoder">
+	<entry id="80202" string="normal">보통</entry>
+      </section>
+
+      <section name="WavPack Audio Encoder">
+	<entry id="80407" string="better">저</entry>
+	<entry id="80408" string="%1 kbps">%1 kbps</entry>
+      </section>
+
+      <section name="Nero AAC Encoder">
+	<entry id="80502" string="Quality">음질</entry>
+	<entry id="80503" string="worse">고</entry>
+	<entry id="80504" string="better">저</entry>
+	<entry id="80505" string="Bitrate">비트레이트</entry>
+	<entry id="80507" string="%1 kbps">%1 kbps</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">비트레이트</entry>
+	<entry id="80601" string="%1 kbps">%1 kbps</entry>
+      </section>
+    </section>
+
+    <section name="Extensions">
+
+      <section name="Donate">
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
+
+	<section name="PayPal">
+	  <entry id="100102" string="usd">krw</entry>
+	  <entry id="100103" string="$%1">₩%1</entry>
+	  <entry id="100104" string="5,10,20,other amount">5000,10000,20000,다른 금액</entry>
+	</section>
+
+	<section name="Donorbox">
+	  <entry id="100202" string="usd">usd</entry>
+	</section>
+      </section>
+
+      <section name="Winamp Adapter">
+	<entry id="101000" string="Configure">설정</entry>
+	<entry id="101001" string="About">About</entry>
+      </section>
+
+      <section name="Video Downloader">
+	<entry id="102014" string="Length">시간</entry>
+	<entry id="102015" string="Size">크기</entry>
+	<entry id="102018" string="Note">주의</entry>
+
+	<section name="Configuration">
+	  <entry id="102101" string="Automatization">자동화</entry>
+	  <entry id="102103" string="Select">브라우즈</entry>
+	</section>
+
+	<section name="Errors"/>
+      </section>
+
+      <section name="Tag Editor">
+	<entry id="103000" string="Tags">정보 태그</entry>
+	<entry id="103001" string="Length">시간</entry>
+	<entry id="103002" string="Size">크기</entry>
+	<entry id="103005" string="File">파일</entry>
+
+	<section name="Basic">
+	  <entry id="103100" string="Basic">기본</entry>
+	  <entry id="103102" string="Disc">디스크</entry>
+	  <entry id="103103" string="Cover art">앨범 아트</entry>
+	  <entry id="103106" string="Description">설명</entry>
+	  <entry id="103107" string="Add">추가</entry>
+	  <entry id="103108" string="Remove">제거</entry>
+	</section>
+
+	<section name="Details">
+	  <entry id="103200" string="Details">더 보기</entry>
+	</section>
+
+	<section name="Other">
+	  <entry id="103300" string="Other">기타</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">파일 열기 실패: %1&#10;&#10;%2</entry>
+	</section>
+      </section>
+
+      <section name="Logging">
+
+	<section name="Configuration">
+	  <entry id="104105" string="Select">찾아보기</entry>
+	  <entry id="104112" string="Filename pattern">파일명 방식</entry>
+	</section>
+      </section>
+
+      <section name="Notifier">
+
+	<section name="Configuration">
+	  <entry id="105104" string="Select">찾아보기</entry>
+	</section>
+      </section>
+    </section>
+  </data>
+</LangFile>

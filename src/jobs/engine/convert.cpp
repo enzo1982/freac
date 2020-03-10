@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -33,6 +33,8 @@
 #include <dialogs/overwrite.h>
 #include <dialogs/format.h>
 
+#include <cddb/cddbcache.h>
+
 using namespace smooth::GUI::Dialogs;
 
 using namespace BoCA;
@@ -54,16 +56,20 @@ Signal4<Void, const BoCA::Track &,
 Signal2<Void, Int, Int>			 freac::JobConvert::onTrackProgress;
 Signal2<Void, Int, Int>			 freac::JobConvert::onTotalProgress;
 
-freac::JobConvert::JobConvert(const Array<BoCA::Track> &iTracks)
+freac::JobConvert::JobConvert(const Array<BoCA::Track> &tracksToConvert, Bool iAutoRip)
 {
 	conversionID	 = ++conversionCount;
 
-	tracks		 = iTracks;
-
 	conversionPaused = False;
+
+	autoRip		 = iAutoRip;
 
 	skipTrack	 = False;
 	stopConversion   = False;
+
+	/* Copy array of tracks to convert using track IDs as indices.
+	 */
+	foreach (const Track &track, tracksToConvert) tracks.Add(track, track.GetTrackID());
 }
 
 freac::JobConvert::~JobConvert()
@@ -78,12 +84,13 @@ Error freac::JobConvert::Precheck()
 
 	/* Get config values.
 	 */
-	Bool	 enableConsole	       = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+	Bool	 enableConsole		= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
 
-	Bool	 encodeToSingleFile    = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
-	Bool	 overwriteAllFiles     = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || enableConsole;
+	Bool	 encodeToSingleFile	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+	Bool	 overwriteAllFiles	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault) || enableConsole;
 
-	Bool	 writeToInputDirectory = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
+	String	 encoderOutputDirectory	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
+	Bool	 writeToInputDirectory	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 
 	/* When converting to a single file, query the
 	 * sample format for the combined output file.
@@ -153,7 +160,9 @@ Error freac::JobConvert::Precheck()
 	{
 		/* Get single file name.
 		 */
-		singleOutFile = Utilities::GetSingleOutputFileName(tracks);
+		if (!autoRip) singleOutFile = Utilities::GetSingleOutputFileName(tracks);
+		else	      singleOutFile = BoCA::Utilities::GetAbsolutePathName(encoderOutputDirectory).Append(Utilities::GetSingleOutputFileNameDefault(tracks));
+
 		singleOutFile = BoCA::Utilities::NormalizeFileName(singleOutFile);
 
 		if (singleOutFile == NIL) return Error();
@@ -420,8 +429,11 @@ Error freac::JobConvert::Perform()
 
 	/* Enter actual conversion routines.
 	 */
+	UnsignedInt64	 startTicks	= S::System::System::Clock();
+
 	Int		 encodedTracks	= 0;
 	Int		 trackID	= 0;
+
 	ConversionStep	 conversionStep = ConversionStepNone;
 	String		 decoderName;
 	String		 encoderName;
@@ -1217,12 +1229,50 @@ Error freac::JobConvert::Perform()
 
 				boca.DeleteComponent(cuesheet);
 			}
+
+			/* Log an empty line as a separator.
+			 */
+			if (playlist != NIL && cuesheet != NIL) log->Write(NIL);
 		}
+
+		/* Log an empty line.
+		 */
+		if (createPlaylist != createCueSheet) log->Write(NIL);
 
 		/* Clean up playlist and cuesheet track lists.
 		 */
 		foreach (Array<Track> *trackList, playlistTrackLists) delete trackList;
 		foreach (Array<Track> *trackList, cuesheetTrackLists) delete trackList;
+	}
+
+	/* Log duration of conversion.
+	 */
+	if (!stopConversion && encodedTracks > 0)
+	{
+		/* Compute total play time of converted tracks.
+		 */
+		Float	  totalSeconds = 0;
+
+		foreach (const Track &track, tracksToConvert)
+		{
+			if (convertedTracks.Get(track.GetTrackID()) == NIL) continue;
+
+			if	(track.length	    >= 0) totalSeconds += Float(track.length) / track.GetFormat().rate;
+			else if (track.approxLength >= 0) totalSeconds += Float(track.approxLength) / track.GetFormat().rate;
+			else				  totalSeconds += 240;
+		}
+
+		/* Log conversion duration and speed.
+		 */
+		UnsignedInt64	 ticks	  = S::System::System::Clock() - startTicks;
+		String		 duration = String(ticks / 1000 / 60 % 60 <  10 ?			      "0"  : "").Append(String::FromInt(ticks / 1000 / 60 % 60)).Append(":")
+					   .Append(ticks / 1000 % 60	  <  10 ?			      "0"  : "").Append(String::FromInt(ticks / 1000 % 60     )).Append(".")
+					   .Append(ticks % 1000		  < 100 ? (ticks % 1000 < 10 ? "00" : "0") : "").Append(String::FromInt(ticks % 1000	      ));
+		String		 speed	  = String::FromFloat(Math::Round(totalSeconds / (Float(ticks) / 1000.0) * 10.0) / 10.0);
+
+		if (!speed.Contains(".")) speed.Append(".0");
+
+		log->Write(String("    Total duration: ").Append(duration).Append(" (").Append(speed).Append("x speed)"));
 	}
 
 	/* Remove ourselves from conversion jobs array.
@@ -1349,6 +1399,8 @@ Format freac::JobConvert::GetSingleTrackSampleFormat() const
 {
 	Registry	&boca = Registry::Get();
 
+	Bool	 enableConsole = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+
 	/* Create encoder instance.
 	 */
 	String			 encoderID = configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
@@ -1418,7 +1470,7 @@ Format freac::JobConvert::GetSingleTrackSampleFormat() const
 
 	boca.DeleteComponent(encoder);
 
-	if (targetFormats.Length() <= 1) return sourceFormats.GetFirst();
+	if (targetFormats.Length() <= 1 || enableConsole) return sourceFormats.GetFirst();
 
 	/* Display dialog to select output format.
 	 */
@@ -1615,6 +1667,9 @@ Void freac::JobConvert::LogSettings(const String &singleOutFile, Int numberOfThr
 
 	String	 filenamePattern	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
 
+	Bool	 enableProcessing	= configuration->GetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault);
+	String	 selectedDSPs		= configuration->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault);
+
 	/* Get encoder properties.
 	 */
 	Registry		&boca	 = Registry::Get();
@@ -1669,6 +1724,29 @@ Void freac::JobConvert::LogSettings(const String &singleOutFile, Int numberOfThr
 		log->Write(String("    Output verification:  ").Append(verifyOutput ? "Enabled" : "Disabled"));
 		log->Write(NIL);
 	}
+
+	/* Processing settings.
+	 */
+	if (enableProcessing && selectedDSPs != NIL)
+	{
+		String			 componentNames;
+		const Array<String>	&components = selectedDSPs.Explode(",");
+
+		foreach (const String &component, components)
+		{
+			AS::Component	*dsp = boca.CreateComponentByID(component);
+
+			if (dsp == NIL) continue;
+
+			componentNames.Append(componentNames != NIL ? ", " : NIL).Append(dsp->GetName());
+
+			boca.DeleteComponent(dsp);
+		}
+
+		log->Write(String("    Signal processing:    Enabled"));
+		log->Write(String("        Selected DSPs:    ").Append(componentNames));
+		log->Write(NIL);
+	}
 }
 
 Void freac::JobConvert::LogCDInfo() const
@@ -1702,11 +1780,19 @@ Void freac::JobConvert::LogCDInfo() const
 
 		log->Write(String("    Using drive:          ").Append("device://cdda:").Append(String::FromInt(drive)).Append("/"));
 		log->Write(String("        Drive model:      ").Append(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision));
+
+#ifdef __WIN32__
 		log->Write(String("        SCSI address:     ").Append(device.path));
+#else
+		log->Write(String("        Device path:      ").Append(device.path));
+#endif
 
 		if (configuration->GetIntValue(Config::CategoryRipperID, String("UseOffsetDrive").Append(String::FromInt(drive)), 0)) log->Write(String("        Read offset:      ").Append(String::FromInt(configuration->GetIntValue(Config::CategoryRipperID, String("ReadOffsetDrive").Append(String::FromInt(drive)), 0))).Append(" samples"));
 
 		log->Write(NIL);
+
+		/* Log disc table of contents.
+		 */
 		log->Write("    Disc TOC:");
 		log->Write(NIL);
 		log->Write("        Track |   Start  |  Length  | Start sector | End sector");
@@ -1735,8 +1821,8 @@ Void freac::JobConvert::LogCDInfo() const
 			if (mcdi.GetNthEntryType(i) == ENTRY_AUDIO)
 			{
 				entry.Append("   ").Append(String().FillN(' ', 1 - Math::Floor(Math::Log10(trackNumber)))).Append(String::FromInt(trackNumber)).Append(" | ")
-						   .Append(trackStartString)											       .Append(" | ")
-						   .Append(trackLengthString)											       .Append(" | ");
+						   .Append(trackStartString)										       .Append(" | ")
+						   .Append(trackLengthString)										       .Append(" | ");
 			}
 			else
 			{
@@ -1749,6 +1835,52 @@ Void freac::JobConvert::LogCDInfo() const
 			     .Append("    ")  .Append(String().FillN(' ', 5 - Math::Floor(Math::Log10(trackEndSector))))  .Append(String::FromInt(trackEndSector));
 
 			log->Write(entry);
+		}
+
+		log->Write(NIL);
+
+		/* Log CDDB data if available.
+		 */
+		String		 queryString = CDDB::QueryStringFromMCDI(mcdi);
+		CDDBInfo	 cddbInfo    = CDDBCache::Get()->GetCacheEntry(queryString); 
+
+		log->Write("    Disc info:");
+
+		if (cddbInfo != NIL)
+		{
+			log->Write(String("        CDDB disc ID:  ").Append(CDDB::DiscIDToString(cddbInfo.discID)));
+			log->Write(String("        CDDB category: ").Append(cddbInfo.category));
+			log->Write(NIL);
+			log->Write(String("        Artist:        ").Append(cddbInfo.dArtist));
+			log->Write(String("        Album:         ").Append(cddbInfo.dTitle));
+			log->Write(String("        Genre:         ").Append(cddbInfo.dGenre));
+
+			if (cddbInfo.dYear > 0) log->Write(String("        Published:     ").Append(String::FromInt(cddbInfo.dYear)));
+
+			log->Write(NIL);
+			log->Write("        Track | Offset | Track title");
+			log->Write("        -------------------------------------------------------");
+
+			for (Int i = 0; i < cddbInfo.trackOffsets.Length(); i++)
+			{
+				Int	 trackNumber = mcdi.GetNthEntryTrackNumber(i);
+				Int	 trackOffset = cddbInfo.trackOffsets.GetNth(i);
+
+				String	 entry = String("        ");
+
+				if (mcdi.GetNthEntryType(i) == ENTRY_AUDIO) entry.Append("   ").Append(String().FillN(' ', 1 - Math::Floor(Math::Log10(trackNumber)))).Append(String::FromInt(trackNumber)).Append(" | ");
+				else					    entry.Append(" ").Append("DATA").Append(" | ");
+
+				entry.Append(String().FillN(' ', 5 - Math::Floor(Math::Log10(trackOffset)))).Append(String::FromInt(trackOffset)).Append(" | ")
+				     .Append(cddbInfo.trackArtists.GetNth(i) != NIL ? String(cddbInfo.trackArtists.GetNth(i)).Append(" / ") : String()).Append(cddbInfo.trackTitles.GetNth(i));
+
+				log->Write(entry);
+			}
+		}
+		else
+		{
+			log->Write(String("        CDDB disc ID: ").Append(CDDB::DiscIDToString(CDDB::DiscIDFromMCDI(mcdi))));
+			log->Write("        CDDB info:    No CDDB data available for this disc!");
 		}
 
 		log->Write(NIL);

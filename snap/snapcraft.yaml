@@ -1,6 +1,6 @@
 name: freac
-version: '1.1~alpha'
-version-script: echo 1.1~alpha`date +"%Y%m%d"`
+version: '1.1~rc1'
+#version-script: echo 1.1~rc`date +"%Y%m%d"`
 summary: Audio converter and CD ripper
 description: |
   fre:ac is a free and open source audio converter. It comes with
@@ -88,14 +88,14 @@ parts:
 
   libmac:
     after: [ patches ]
-    source: https://freac.org/patches/MAC_SDK_502.zip
-    source-checksum: sha256/a7716b27353d85c42f3205127b0e1545dd44b7b4f48e6d38947cac254bf3d49b
+    source: https://freac.org/patches/MAC_SDK_520.zip
+    source-checksum: sha256/93d8ef5c4b5938bcd38aec2577f4b760a2dfc376890aca53cce2b6d32fbd2545
     source-subdir: .
     plugin: make
     make-parameters: [ prefix=/usr ]
     override-build: |
       if [ `lscpu | grep -i 'byte order' | awk '{ print tolower($3) }'` = "little" ]; then
-        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-5.02-gcc.patch
+        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-5.20-gcc.patch
         snapcraftctl build
       fi
     prime:
@@ -123,8 +123,8 @@ parts:
     configflags: [ --prefix=/usr ]
     override-build: |
       patch -p1 < $SNAPCRAFT_STAGE/mp4v2-2.0.0-fixes.patch
-      wget -O autoaux/config.guess "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=058639b"
-      wget -O autoaux/config.sub "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b"
+      wget -O autoaux/config.guess "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.guess"
+      wget -O autoaux/config.sub "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.sub"
       snapcraftctl build
     build-packages:
       - g++
@@ -171,8 +171,8 @@ parts:
     plugin: autotools
     configflags: [ --prefix=/usr ]
     override-build: |
-      wget -O Cfg/config.guess "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=058639b"
-      wget -O Cfg/config.sub "http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=058639b"
+      wget -O Cfg/config.guess "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.guess"
+      wget -O Cfg/config.sub "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.sub"
       snapcraftctl build
     build-packages:
       - wget
@@ -220,6 +220,17 @@ parts:
     prime:
       - usr/bin/ffmpeg
 
+  icons:
+    plugin: nil
+    stage-packages:
+      - gnome-icon-theme
+    override-prime: |
+      mkdir -p share/icons/gnome/32x32/status
+      cp $SNAPCRAFT_STAGE/usr/share/icons/gnome/32x32/status/dialog-error.png share/icons/gnome/32x32/status
+      cp $SNAPCRAFT_STAGE/usr/share/icons/gnome/32x32/status/dialog-information.png share/icons/gnome/32x32/status
+      cp $SNAPCRAFT_STAGE/usr/share/icons/gnome/32x32/status/dialog-question.png share/icons/gnome/32x32/status
+      cp $SNAPCRAFT_STAGE/usr/share/icons/gnome/32x32/status/dialog-warning.png share/icons/gnome/32x32/status
+
   smooth:
     after: [ curl, desktop-gtk3, patches ]
     source: https://github.com/enzo1982/smooth.git
@@ -243,7 +254,7 @@ parts:
     plugin: make
     make-parameters: [ prefix= ]
     override-build: |
-      patch -p1 < $SNAPCRAFT_STAGE/freac-cdk-1.1-alpha-snap.patch
+      patch -p1 < $SNAPCRAFT_STAGE/freac-cdk-1.1-beta-snap.patch
       snapcraftctl build
     build-packages:
       - libpulse-dev
@@ -260,6 +271,9 @@ parts:
     source: https://github.com/enzo1982/freac.git
     plugin: make
     make-parameters: [ prefix=, CXXFLAGS+=-DFREAC_DATE=\"$(shell date +"%Y%m%d")\" ]
+    override-pull: |
+      snapcraftctl pull
+      sed -i -e 's|Icon=org.freac.freac|Icon=${SNAP}/share/icons/hicolor/128x128/apps/org.freac.freac.png|g' metadata/org.freac.freac.desktop
     build-packages:
       - libudev-dev
     stage-packages:
