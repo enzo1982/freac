@@ -204,22 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Codificando ficheiro</entry>
-        <entry id="3051" string="none">nenhum</entry>
-        <entry id="3052" string="Skip current file">Pular</entry>
+	<entry id="3051" string="none">nenhum</entry>
+	<entry id="3052" string="Skip current file">Pular</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Descodificador ativo</entry>
-        <entry id="3061" string="none">desconhecido</entry>
+	<entry id="3060" string="Active decoder">Descodificador ativo</entry>
+	<entry id="3061" string="none">desconhecido</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Filtros selecionados</entry>
+	<entry id="3071" string="none">nenhum</entry>
+	<entry id="3072" string="disabled">desabilitado</entry>
 	<entry id="3073" string="Configure signal processing">Configurar processamento de sinal</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Codificador selecionado</entry>
+	<entry id="3080" string="Selected encoder">Codificador selecionado</entry>
 	<entry id="3081" string="Configure selected encoder">Configurar codificador selecionado</entry>
       </section>
 
@@ -1179,8 +1181,8 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Suporte este projeto</entry>
 	<entry id="100001" string="Please support this project!">Por favor, apoiem este projeto!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Ajude a manter este software livre, apoiando o projeto %1 com um&#10;donativo.</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Escreva para %1 se desejar enviar um cheque ou&#10;dinheiro pelo correio.</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Ajude a manter este software livre, apoiando o projeto %1 com um donativo.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Escreva para %1 se desejar enviar um cheque ou dinheiro pelo correio.</entry>
 	<entry id="100004" string="Thank you very much!">Obrigado!</entry>
 	<entry id="100005" string="Remind me later">Lembre-me mais tarde</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
@@ -1203,17 +1205,17 @@
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Digitalize ou clique no código QR ou copie o seguinte&#10;endereço para doar Bitcoin:</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Digitalize ou clique no código QR ou copie o seguinte endereço&#10;para doar Bitcoin:</entry>
 	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Este endereço também aceita Bitcoin Cash e outras confluências.</entry>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Digitalize ou clique no código QR ou copie o seguinte&#10;endereço para doar Ethereum:</entry>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Digitalize ou clique no código QR ou copie o seguinte endereço&#10;para doar Ethereum:</entry>
 	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">Este endereço também aceita tokens Ether Classic e ERC20.</entry>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Pode doar fazendo uma transferência eletrónica para a&#10;seguinte conta:</entry>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Pode doar fazendo uma transferência eletrónica para a seguinte&#10;conta:</entry>
 	  <entry id="100501" string="Account holder:">Titular da conta:</entry>
 	  <entry id="100502" string="IBAN:">IBAN:</entry>
 	  <entry id="100503" string="BIC:">BIC:</entry>
