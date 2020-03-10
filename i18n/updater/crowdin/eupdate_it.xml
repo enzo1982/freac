@@ -31,6 +31,6 @@
     <entry id="18" string="Your application has been successfully updated!">L'applicazione è stata aggiornata correttamente.</entry>
     <entry id="19" string="Error">Errore</entry>
     <entry id="20" string="Error downloading package!">Si è verificato un errore durante il download del pacchetto.</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied."/>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Si è verificato un errore durante l'installazione di &quot;%1&quot;.&#10;&#10;È stato negato l'accesso alla cartella dell'applicazione.</entry>
   </data>
 </LangFile>
