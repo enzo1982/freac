@@ -204,24 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Kódovaný soubor</entry>
-        <entry id="3051" string="none">žádný</entry>
-        <entry id="3052" string="Skip current file">Přeskočit</entry>
+	<entry id="3051" string="none">žádný</entry>
+	<entry id="3052" string="Skip current file">Přeskočit</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Aktivní dekodér</entry>
-        <entry id="3061" string="none">neznámý</entry>
+	<entry id="3060" string="Active decoder">Aktivní dekodér</entry>
+	<entry id="3061" string="none">neznámý</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Vybrané filtry</entry>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3071" string="none">žádný</entry>
+	<entry id="3072" string="disabled">deaktivovaný</entry>
 	<entry id="3073" string="Configure signal processing">Konfigurace zpracování signálu</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Vybraný enkodér</entry>
+	<entry id="3080" string="Selected encoder">Vybraný enkodér</entry>
 	<entry id="3081" string="Configure selected encoder">Nastavit vybraný enkodér</entry>
       </section>
 
