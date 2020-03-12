@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">fre:ac Setup</property>
+    <property name="version">1.1</property>
+    <property name="language">Serbian (Cyrillic script) / Српски (Ћирилица)</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">template.xml</property>
+    <property name="author">Небојша Николић &lt;nebek2000@gmail.com&gt;</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="&lt;- Back">&lt;- Назад</entry>
+    <entry id="101" string="Next -&gt;">Настави -&gt;</entry>
+    <entry id="102" string="Cancel">Откажи</entry>
+    <entry id="103" string="Finish">Заврши</entry>
+    <entry id="104" string="Yes">Да</entry>
+    <entry id="105" string="No">Не</entry>
+
+    <entry id="200" string="Current file progress:">Напредовање тренутног фајла:</entry>
+    <entry id="201" string="Total installation progress:">Укупан напредак инсталације:</entry>
+    <entry id="202" string="Do you really want to exit Setup now?&#10;&#10;If you quit now, the program will not be installed on your computer.&#10;You may run Setup again later to complete the installation.">Да ли заиста желите да откажате инсталацију сада?&#10;&#10;Уколико исту откажете сада, програм неће бити инсалиран на Вашем рачунару.&#10;Можете касније поново покренути ову инсталацију и исту у потпуности завршити.</entry>
+    <entry id="203" string="Exit Setup">Излаз из инсталације</entry>
+    <entry id="204" string="The Setup will be cancelled now!">Инсталација ће сада бити отказана!</entry>
+    <entry id="205" string="Info">Инфо</entry>
+
+    <entry id="300" string="Destination directory">Инсталациони фолдер</entry>
+    <entry id="301" string="Select">Одабир</entry>
+    <entry id="302" string="Select the folder in which the program will be installed:">Одаберите фолдер у коме ће програм бити инсталиран:</entry>
+    <entry id="303" string="Available components">Расположиве компоненте</entry>
+    <entry id="304" string="Description">Опис</entry>
+    <entry id="305" string="Move the mouse over a&#10;component entry to&#10;show a description">Поставите миша изнад&#10;компоненте да се&#10;прикаже опис</entry>
+    <entry id="306" string="Create Start Menu group">Креирај групу у Старт Менију</entry>
+    <entry id="307" string="Create Desktop icon">Креирај икону на десктопу</entry>
+    <entry id="308" string="Create Quick Launch icon">Креирај икону брзог покретања</entry>
+
+    <entry id="1" string="%LONGNAME% Setup">%LONGNAME% подешење</entry>
+  </data>
+</LangFile>

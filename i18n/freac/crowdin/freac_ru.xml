@@ -204,24 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Кодируемый файл</entry>
-        <entry id="3051" string="none">пусто</entry>
-        <entry id="3052" string="Skip current file">Пропустить</entry>
+	<entry id="3051" string="none">пусто</entry>
+	<entry id="3052" string="Skip current file">Пропустить</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Текущий декодер</entry>
-        <entry id="3061" string="none">неизвестно</entry>
+	<entry id="3060" string="Active decoder">Текущий декодер</entry>
+	<entry id="3061" string="none">неизвестно</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Выбранные фильтры</entry>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3071" string="none">пусто</entry>
+	<entry id="3072" string="disabled">отключено</entry>
 	<entry id="3073" string="Configure signal processing">Настройка обработки сигнала</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Выбранный кодек</entry>
+	<entry id="3080" string="Selected encoder">Выбранный кодек</entry>
 	<entry id="3081" string="Configure selected encoder">Настроить выбранный кодек</entry>
       </section>
 
@@ -1181,8 +1181,8 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Поддержать этот проект</entry>
 	<entry id="100001" string="Please support this project!">Пожалуйста поддержите этот проект!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Помогите пожалуйста сохранить эту программу свободной&#10;поддержав проект %1.</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Пожалуйста напишите %1 если вы хотите помочь через&#10;электронный перевод, прислать чек или деньги письмом.</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Помогите пожалуйста сохранить эту программу свободной поддержав проект %1.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Пожалуйста напишите %1 если вы хотите помочь через электронный&#10;перевод, прислать чек или деньги письмом.</entry>
 	<entry id="100004" string="Thank you very much!">Большое спасибо!</entry>
 	<entry id="100005" string="Remind me later">Напомнить позже</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
