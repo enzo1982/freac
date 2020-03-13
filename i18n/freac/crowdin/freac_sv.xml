@@ -204,24 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Kodar fil</entry>
-        <entry id="3051" string="none">ingen</entry>
-        <entry id="3052" string="Skip current file">Hoppa över</entry>
+	<entry id="3051" string="none">ingen</entry>
+	<entry id="3052" string="Skip current file">Hoppa över</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Aktiv avkodare</entry>
-        <entry id="3061" string="none">i.u.</entry>
+	<entry id="3060" string="Active decoder">Aktiv avkodare</entry>
+	<entry id="3061" string="none">i.u.</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Valda filter</entry>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3071" string="none">ingen</entry>
+	<entry id="3072" string="disabled">inaktiverad</entry>
 	<entry id="3073" string="Configure signal processing">Konfigurera signalbehandling</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Vald kodare</entry>
+	<entry id="3080" string="Selected encoder">Vald kodare</entry>
 	<entry id="3081" string="Configure selected encoder">Inställningar för aktuell kodare</entry>
       </section>
 
@@ -614,7 +614,7 @@
       <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Det gick inte att konfigurera kodare för målfilen: %1&#10;&#10;Fil: %1&#10;Sökväg: %2&#10;&#10;Fel: %3</entry>
       <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Det gick inte att konfigurera digital signalbehandlare: %1&#10;&#10;Fel: %2</entry>
       <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att komma åt källfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att skapa målfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>																					   
+      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att skapa målfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>
       <entry id="7108" string="Failed to verify input file: %1">Det gick inte att verifiera källfilen: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Kontrollsummefel vid verifiering av målfil: %1&#10;&#10;Förväntad kontrollsumma: %2&#10;Verklig kontrollsumma: %3</entry>
       <entry id="7110" string="File not found">Det gick inte att hitta filen</entry>
@@ -731,7 +731,7 @@
 	<entry id="22003" string="Alternative files">Filalternativ</entry>
 	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Sök efter komprimerade alternativ om refererade wave-filer inte kan hittas</entry>
 	<entry id="22005" string="Error handling">Felhantering</entry>
-	<entry id="22006" string="Ignore errors during cue sheet processing">Ignorera fel som inträffar under CUE-filbearbetning</entry>   
+	<entry id="22006" string="Ignore errors during cue sheet processing">Ignorera fel som inträffar under CUE-filbearbetning</entry>
       </section>
     </section>
 
@@ -1181,8 +1181,8 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Stöd det här projektet</entry>
 	<entry id="100001" string="Please support this project!">Det här projektet behöver ditt stöd!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Hjälp oss att även i framtiden kunna erbjuda detta program helt gratis genom&#10;att donera en slant till projektet %1.</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Skriv till %1 om du önskar göra en donation via elektronisk&#10;överföring, eller en check/pengar via posten.</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Hjälp oss att även i framtiden kunna erbjuda detta program helt gratis genom att&#10;donera en slant till projektet %1.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Skriv till %1 om du önskar göra en donation via elektronisk överföring,&#10;eller en check/pengar via posten.</entry>
 	<entry id="100004" string="Thank you very much!">Tusen tack!</entry>
 	<entry id="100005" string="Remind me later">Påminn mig senare</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
@@ -1199,23 +1199,23 @@
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox erbjuder snabba och enkla donationer via kreditkort.&#10;Klicka på denna knapp för att donera via Donorbox:</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox erbjuder snabba och enkla donationer via kreditkort. Klicka på denna&#10;knapp för att donera via Donorbox:</entry>
 	  <entry id="100201" string="Donate">Donera</entry>
 	  <entry id="100202" string="usd">eur</entry>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Läs in eller klicka på QR-koden, eller kopiera följande&#10;adress för att donera Bitcoin:</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Läs in eller klicka på QR-koden, eller kopiera följande adress för&#10;att donera Bitcoin:</entry>
 	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Denna adress accepterar även Bitcoin Cash och andra förgreningar.</entry>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Läs in eller klicka på QR-koden, eller kopiera följande&#10;adress för att donera Ethereum:</entry>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Läs in eller klicka på QR-koden, eller kopiera följande adress för&#10;att donera Ethereum:</entry>
 	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">Denna adress accepterar även Ether Classic och ERC20-token.</entry>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Du kan donera genom att göra en elektronisk överföring&#10;till följande konto:</entry>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Du kan donera genom att göra en elektronisk överföring till&#10;följande konto:</entry>
 	  <entry id="100501" string="Account holder:">Kontoinnehavare:</entry>
 	  <entry id="100502" string="IBAN:">IBAN:</entry>
 	  <entry id="100503" string="BIC:">BIC:</entry>

@@ -31,5 +31,6 @@
     <entry id="18" string="Your application has been successfully updated!">Ditt program har uppdaterats!</entry>
     <entry id="19" string="Error">Fel</entry>
     <entry id="20" string="Error downloading package!">Fel vid hämtning av paket!</entry>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Fel vid installation av &quot;%1&quot;!&#10;&#10;Åtkomst till programmappen nekades.</entry>
   </data>
 </LangFile>
