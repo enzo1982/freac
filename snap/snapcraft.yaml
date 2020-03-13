@@ -1,4 +1,5 @@
 name: freac
+base: core18
 version: '1.1~rc1'
 version-script: echo 1.1~rc`date +"%Y%m%d"`
 summary: Audio converter and CD ripper
@@ -13,29 +14,26 @@ icon: icons/freac.png
 
 apps:
   freac:
-    command: desktop-launch freac
+    command: freac
     desktop: share/applications/org.freac.freac.desktop
+    extensions: [ gnome-3-28 ]
     plugs:
-      - desktop
-      - desktop-legacy
       - gsettings
       - home
       - network
       - optical-drive
       - pulseaudio
       - removable-media
-      - x11
 
   freaccmd:
-    command: desktop-launch freaccmd
+    command: freaccmd
+    extensions: [ gnome-3-28 ]
     plugs:
-      - desktop
       - home
       - network
       - optical-drive
       - pulseaudio
       - removable-media
-      - x11
 
 parts:
   patches:
@@ -127,7 +125,6 @@ parts:
       wget -O autoaux/config.sub "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.sub"
       snapcraftctl build
     build-packages:
-      - g++
       - wget
     prime:
       - usr/lib/libmp4v2.so*
@@ -165,28 +162,6 @@ parts:
     prime:
       - usr/lib/librnnoise.so*
 
-  libsamplerate:
-    source: http://www.mega-nerd.com/SRC/libsamplerate-0.1.9.tar.gz
-    source-checksum: sha256/0a7eb168e2f21353fb6d84da152e4512126f7dc48ccb0be80578c565413444c1
-    plugin: autotools
-    configflags: [ --prefix=/usr ]
-    override-build: |
-      wget -O Cfg/config.guess "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.guess"
-      wget -O Cfg/config.sub "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.sub"
-      snapcraftctl build
-    build-packages:
-      - wget
-    prime:
-      - usr/lib/libsamplerate.so*
-
-  libsndfile:
-    source: http://www.mega-nerd.com/libsndfile/files/libsndfile-1.0.28.tar.gz
-    source-checksum: sha256/1ff33929f042fa333aed1e8923aa628c3ee9e1eb85512686c55092d1e5a9dfa9
-    plugin: autotools
-    configflags: [ --prefix=/usr ]
-    prime:
-      - usr/lib/libsndfile.so*
-
   libspeex:
     source: https://ftp.osuosl.org/pub/xiph/releases/speex/speex-1.2.0.tar.gz
     source-checksum: sha256/eaae8af0ac742dc7d542c9439ac72f1f385ce838392dc849cae4536af9210094
@@ -211,8 +186,8 @@ parts:
       - usr/lib/libvorbis*.so*
 
   ffmpeg:
-    source: https://ffmpeg.org/releases/ffmpeg-4.2.tar.xz
-    source-checksum: sha256/023f10831a97ad93d798f53a3640e55cd564abfeba807ecbe8524dac4fedecd5
+    source: https://ffmpeg.org/releases/ffmpeg-4.2.2.tar.xz
+    source-checksum: sha256/cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c
     plugin: autotools
     configflags: [ --prefix=/usr, --disable-autodetect, --enable-gpl, --enable-small, --enable-runtime-cpudetect, --disable-vsx ]
     build-packages:
@@ -232,21 +207,19 @@ parts:
       cp $SNAPCRAFT_STAGE/usr/share/icons/gnome/32x32/status/dialog-warning.png share/icons/gnome/32x32/status
 
   smooth:
-    after: [ curl, desktop-gtk3, patches ]
+    after: [ patches ]
     source: https://github.com/enzo1982/smooth.git
     plugin: make
     make-parameters: [ prefix= ]
     build-packages:
-      - g++
       - libbz2-dev
+      - libcurl4-gnutls-dev
       - libfribidi-dev
       - libjpeg8-dev
       - libxml2-dev
     stage-packages:
-      - libbz2-1.0
+      - libcurl4
       - libfribidi0
-      - libjpeg8
-      - libxml2
 
   boca:
     after: [ libcdio-paranoia, smooth ]
@@ -260,8 +233,7 @@ parts:
       - libpulse-dev
       - liburiparser-dev
     stage-packages:
-      - libpulse0
-      - librubberband2v5
+      - librubberband2
       - liburiparser1
       - musepack-tools
       - wavpack
@@ -276,5 +248,3 @@ parts:
       sed -i -e 's|Icon=org.freac.freac|Icon=${SNAP}/share/icons/hicolor/128x128/apps/org.freac.freac.png|g' metadata/org.freac.freac.desktop
     build-packages:
       - libudev-dev
-    stage-packages:
-      - libudev1
