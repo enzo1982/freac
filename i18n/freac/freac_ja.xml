@@ -204,22 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">エンコード ファイル</entry>
-        <entry id="3051" string="none">なし</entry>
-        <entry id="3052" string="Skip current file">スキップ</entry>
+	<entry id="3051" string="none">なし</entry>
+	<entry id="3052" string="Skip current file">スキップ</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">処理中のデコーダ</entry>
-        <entry id="3061" string="none">不明</entry>
+	<entry id="3060" string="Active decoder">処理中のデコーダ</entry>
+	<entry id="3061" string="none">不明</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">選択フィルター</entry>
+	<entry id="3071" string="none">なし</entry>
+	<entry id="3072" string="disabled">無効化</entry>
 	<entry id="3073" string="Configure signal processing">信号処理を設定する</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">選択エンコーダ</entry>
+	<entry id="3080" string="Selected encoder">選択エンコーダ</entry>
 	<entry id="3081" string="Configure selected encoder">選択したエンコーダの設定</entry>
       </section>
 
