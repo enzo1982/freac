@@ -14,11 +14,14 @@
     <entry id="100" string="OK">OK</entry>
     <entry id="101" string="Cancel">キャンセル</entry>
     <entry id="102" string="Close">閉じる</entry>
+
     <entry id="200" string="Error">エラー</entry>
     <entry id="201" string="Warning">警告</entry>
     <entry id="202" string="Info">情報</entry>
+
     <entry id="210" string="Do not display this warning again">この警告をもう一度表示しない</entry>
     <entry id="211" string="Do not display this note again">この注意をもう一度表示しない</entry>
+
     <entry id="300" string="Artist">アーティスト</entry>
     <entry id="301" string="Title">タイトル</entry>
     <entry id="302" string="Album">アルバム</entry>
@@ -201,24 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">エンコード ファイル</entry>
-        <entry id="3051" string="none">なし</entry>
-        <entry id="3052" string="Skip current file">スキップ</entry>
+	<entry id="3051" string="none">なし</entry>
+	<entry id="3052" string="Skip current file">スキップ</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">処理中のデコーダ</entry>
-        <entry id="3061" string="none">不明</entry>
+	<entry id="3060" string="Active decoder">処理中のデコーダ</entry>
+	<entry id="3061" string="none">不明</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">選択フィルター</entry>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3071" string="none">なし</entry>
+	<entry id="3072" string="disabled">無効化</entry>
 	<entry id="3073" string="Configure signal processing">信号処理を設定する</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">選択エンコーダ</entry>
+	<entry id="3080" string="Selected encoder">選択エンコーダ</entry>
 	<entry id="3081" string="Configure selected encoder">選択したエンコーダの設定</entry>
       </section>
 
@@ -690,31 +693,6 @@
 
       <section name="Encoders">
 	<entry id="11000" string="meh! - multi encoder hub"/>
-	<entry id="11001" string="SndFile Output Component">SndFile出力構成</entry>
-      </section>
-
-      <section name="DSP">
-	<entry id="12000" string="Channel Converter">チャンネル変換</entry>
-	<entry id="12001" string="Sample Format Converter">サンプリング形式変換</entry>
-	<entry id="12002" string="Sample Rate Converter">サンプリングレート変換</entry>
-	<entry id="12003" string="RNNoise Noise Reduction">RNNoiseによるノイズ低減</entry>
-	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band テンポ/ピッチ チェンジャー</entry>
-      </section>
-
-      <section name="Extensions">
-	<entry id="15000" string="Notifications">通知</entry>
-	<entry id="15001" string="Logging">ログ</entry>
-	<entry id="15002" string="YouTube Video Downloader">YouTube動画ダウンローダー</entry>
-      </section>
-    </section>
-
-    <section name="Components">
-
-      <section name="Decoders">
-	<entry id="10000" string="Cue Sheet Reader">cueシートリーダー</entry>
-      </section>
-
-      <section name="Encoders">
 	<entry id="11001" string="SndFile Output Component">SndFile出力構成</entry>
       </section>
 
