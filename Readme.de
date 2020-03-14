@@ -149,9 +149,13 @@ Geschichte
 
 	Version 1.1 (März 2020)
 
+		- Behobene Fehler
+
+			- Probleme beim Einlesen von Raw-AAC-Dateien mit dem FAAD2-Dekoder behoben
+
 		- Aktualisierte Codecs
 
-			- Monkey's Audio auf Version 5.20 aktualisiert
+			- Monkey's Audio auf Version 5.23 aktualisiert
 
 	Version 1.1 RC 1 (März 2020)
 

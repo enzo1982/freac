@@ -1,6 +1,6 @@
-diff -Naur mac-sdk-5.20/Makefile mac-sdk-5.20-gcc/Makefile
---- mac-sdk-5.20/Makefile	1970-01-01 00:00:00 +0000
-+++ mac-sdk-5.20-gcc/Makefile	2019-11-21 21:28:57 +0000
+diff -Naur mac-sdk-5.23/Makefile mac-sdk-5.23-gcc/Makefile
+--- mac-sdk-5.23/Makefile	1970-01-01 00:00:00 +0000
++++ mac-sdk-5.23-gcc/Makefile	2019-11-21 21:28:57 +0000
 @@ -0,0 +1,8 @@
 +all:
 +	$(MAKE) -f Source/Projects/NonWindows/Makefile
@@ -10,9 +10,9 @@ diff -Naur mac-sdk-5.20/Makefile mac-sdk-5.20-gcc/Makefile
 +
 +clean:
 +	$(MAKE) -f Source/Projects/NonWindows/Makefile clean
-diff -Naur mac-sdk-5.20/Shared/All.h mac-sdk-5.20-gcc/Shared/All.h
---- mac-sdk-5.20/Shared/All.h	2020-02-24 23:35:45 +0000
-+++ mac-sdk-5.20-gcc/Shared/All.h	2020-03-08 18:57:14 +0000
+diff -Naur mac-sdk-5.23/Shared/All.h mac-sdk-5.23-gcc/Shared/All.h
+--- mac-sdk-5.23/Shared/All.h	2020-03-12 23:31:00 +0000
++++ mac-sdk-5.23-gcc/Shared/All.h	2020-03-14 11:49:57 +0000
 @@ -86,46 +86,17 @@
  #define ENABLE_COMPRESSION_MODE_HIGH
  #define ENABLE_COMPRESSION_MODE_EXTRA_HIGH
@@ -78,9 +78,9 @@ diff -Naur mac-sdk-5.20/Shared/All.h mac-sdk-5.20-gcc/Shared/All.h
      #define strcpy_s(A, B, C) strcpy(A, C)
      #define _tcscat_s(A, B, C) _tcscat(A, C)
  #endif
-diff -Naur mac-sdk-5.20/Shared/NoWindows.h mac-sdk-5.20-gcc/Shared/NoWindows.h
---- mac-sdk-5.20/Shared/NoWindows.h	2019-12-03 22:21:06 +0000
-+++ mac-sdk-5.20-gcc/Shared/NoWindows.h	2019-12-15 10:16:26 +0000
+diff -Naur mac-sdk-5.23/Shared/NoWindows.h mac-sdk-5.23-gcc/Shared/NoWindows.h
+--- mac-sdk-5.23/Shared/NoWindows.h	2019-12-03 22:21:06 +0000
++++ mac-sdk-5.23-gcc/Shared/NoWindows.h	2019-12-15 10:16:26 +0000
 @@ -48,7 +48,7 @@
  #define _totlower towlower
  #define _totupper towupper
@@ -90,9 +90,9 @@ diff -Naur mac-sdk-5.20/Shared/NoWindows.h mac-sdk-5.20-gcc/Shared/NoWindows.h
  #define _tcscpy wcscpy
  #define _tcslen wcslen
  
-diff -Naur mac-sdk-5.20/Source/Console/Console.cpp mac-sdk-5.20-gcc/Source/Console/Console.cpp
---- mac-sdk-5.20/Source/Console/Console.cpp	2020-01-16 23:41:58 +0000
-+++ mac-sdk-5.20-gcc/Source/Console/Console.cpp	2020-01-27 22:39:38 +0000
+diff -Naur mac-sdk-5.23/Source/Console/Console.cpp mac-sdk-5.23-gcc/Source/Console/Console.cpp
+--- mac-sdk-5.23/Source/Console/Console.cpp	2020-01-16 23:41:58 +0000
++++ mac-sdk-5.23-gcc/Source/Console/Console.cpp	2020-01-27 22:39:38 +0000
 @@ -21,7 +21,12 @@
  #define UNDEFINED_MODE        -1
  
@@ -107,9 +107,9 @@ diff -Naur mac-sdk-5.20/Source/Console/Console.cpp mac-sdk-5.20-gcc/Source/Conso
      #define _tmain(argc, argv) main(argc, argv)
      #define _tcscpy_s(dst, num, src) strcpy(dst, src)
      #define _tcsncpy_s(dst, num, src, count) strncpy(dst, src, count)
-diff -Naur mac-sdk-5.20/Source/Shared/All.h mac-sdk-5.20-gcc/Source/Shared/All.h
---- mac-sdk-5.20/Source/Shared/All.h	2020-02-24 23:35:45 +0000
-+++ mac-sdk-5.20-gcc/Source/Shared/All.h	2020-03-08 18:57:14 +0000
+diff -Naur mac-sdk-5.23/Source/Shared/All.h mac-sdk-5.23-gcc/Source/Shared/All.h
+--- mac-sdk-5.23/Source/Shared/All.h	2020-03-12 23:31:00 +0000
++++ mac-sdk-5.23-gcc/Source/Shared/All.h	2020-03-14 11:49:57 +0000
 @@ -86,46 +86,17 @@
  #define ENABLE_COMPRESSION_MODE_HIGH
  #define ENABLE_COMPRESSION_MODE_EXTRA_HIGH
@@ -175,9 +175,9 @@ diff -Naur mac-sdk-5.20/Source/Shared/All.h mac-sdk-5.20-gcc/Source/Shared/All.h
      #define strcpy_s(A, B, C) strcpy(A, C)
      #define _tcscat_s(A, B, C) _tcscat(A, C)
  #endif
-diff -Naur mac-sdk-5.20/Source/Shared/NoWindows.h mac-sdk-5.20-gcc/Source/Shared/NoWindows.h
---- mac-sdk-5.20/Source/Shared/NoWindows.h	2019-12-03 22:21:06 +0000
-+++ mac-sdk-5.20-gcc/Source/Shared/NoWindows.h	2019-12-15 10:16:26 +0000
+diff -Naur mac-sdk-5.23/Source/Shared/NoWindows.h mac-sdk-5.23-gcc/Source/Shared/NoWindows.h
+--- mac-sdk-5.23/Source/Shared/NoWindows.h	2019-12-03 22:21:06 +0000
++++ mac-sdk-5.23-gcc/Source/Shared/NoWindows.h	2019-12-15 10:16:26 +0000
 @@ -48,7 +48,7 @@
  #define _totlower towlower
  #define _totupper towupper
@@ -187,8 +187,8 @@ diff -Naur mac-sdk-5.20/Source/Shared/NoWindows.h mac-sdk-5.20-gcc/Source/Shared
  #define _tcscpy wcscpy
  #define _tcslen wcslen
  
-diff -Naur mac-sdk-5.20/configure mac-sdk-5.20-gcc/configure
---- mac-sdk-5.20/configure	1970-01-01 00:00:00 +0000
-+++ mac-sdk-5.20-gcc/configure	2019-11-21 21:28:57 +0000
+diff -Naur mac-sdk-5.23/configure mac-sdk-5.23-gcc/configure
+--- mac-sdk-5.23/configure	1970-01-01 00:00:00 +0000
++++ mac-sdk-5.23-gcc/configure	2019-11-21 21:28:57 +0000
 @@ -0,0 +1 @@
 +#!/bin/sh
