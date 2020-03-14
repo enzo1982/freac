@@ -48,7 +48,7 @@
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
-      <entry id="501" string="%1...">%1 ...</entry>
+      <entry id="501" string="%1...">%1...</entry>
       <entry id="502" string="%1 (%2)">%1 (%2)</entry>
     </section>
 
@@ -89,7 +89,7 @@
 	<entry id="1200" string="Query CDDB database">Упит CDDB бази</entry>
 	<entry id="1201" string="Submit CDDB data">Пријава података CDDB-у</entry>
 	<entry id="1202" string="Query CDDB database later">Упит CDDB бази касније</entry>
-	<entry id="1203" string="Show queued CDDB entries">Прикажи CDDB уписе на чекању</entry>
+	<entry id="1203" string="Show queued CDDB entries">Прикажи CDDB записе на чекању</entry>
 	<entry id="1204" string="Show queued CDDB queries">Прикажи упите CDDB-у на чекању</entry>
 	<entry id="1205" string="Enable CDDB cache">Омогући CDDB кеш</entry>
 	<entry id="1206" string="Manage CDDB cache entries">Управљај CDDB кеш записима</entry>
@@ -107,7 +107,7 @@
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Омогући обраду сигнала</entry>
-	<entry id="1401" string="Enable processing during playback">Омогући обраду сигналу у току репродукције</entry>
+	<entry id="1401" string="Enable processing during playback">Омогући обраду у току репродукције</entry>
 	<entry id="1402" string="Selected signal processors">Одабрани процесори сигнала</entry>
       </section>
 
@@ -204,22 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Енкодовање фајла</entry>
-        <entry id="3051" string="none">ниједан</entry>
-        <entry id="3052" string="Skip current file">Прескочи</entry>
+	<entry id="3051" string="none">ниједан</entry>
+	<entry id="3052" string="Skip current file">Прескочи тренутни фајл</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Активни декодер</entry>
-        <entry id="3061" string="none">непознато</entry>
+	<entry id="3060" string="Active decoder">Активни декодер</entry>
+	<entry id="3061" string="none">непознато</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Изабрани филтери</entry>
+	<entry id="3071" string="none">ниједан</entry>
+	<entry id="3072" string="disabled">онемогућено</entry>
 	<entry id="3073" string="Configure signal processing">Подеси обраду сигнала</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Изабрани енкодер</entry>
+	<entry id="3080" string="Selected encoder">Изабрани енкодер</entry>
 	<entry id="3081" string="Configure selected encoder">Подеси изабрани енкодер</entry>
       </section>
 
@@ -262,7 +264,7 @@
       <section name="Joblist">
 	<entry id="3600" string="Reading folders">Учитавање фолдера</entry>
 	<entry id="3601" string="Filtering duplicates">Филтеровање дупликата</entry>
-	<entry id="3602" string="Adding files">Додавање фајл-а/ова</entry>
+	<entry id="3602" string="Adding files">Додавање фајла/ова</entry>
 	<entry id="3603" string="Adding tracks">Додавање песама</entry>
 	<entry id="3604" string="Added %1 files, %2 errors occurred">Додато %1 фајлова, %2 грешака се појавило</entry>
 	<entry id="3605" string="Added %1 tracks, %2 errors occurred">Додато %1 песама, %2 грешака се појавило</entry>
@@ -301,11 +303,11 @@
 	<entry id="4003" string="Submitting CD information">Пријава ЦД информација</entry>
 	<entry id="4004" string="Update joblist with this information">Ажурирај листу задатака овом информацијом</entry>
 	<entry id="4005" string="Status">Статус</entry>
-	<entry id="4006" string="Successfully read CD!">Успешно очитан ЦД!</entry>
+	<entry id="4006" string="Successfully read CD!">ЦД успешно очитан!</entry>
 	<entry id="4007" string="Save entry">Сачувај запис</entry>
 	<entry id="4008" string="Various artists">Разни извођачи</entry>
 	<entry id="4009" string="Data track">Податковни запис</entry>
-	<entry id="4010" string="Submit to online database later">Касније пријави онлајн бази</entry>
+	<entry id="4010" string="Submit to online database later">Пријави онлајн бази касније</entry>
 	<entry id="4011" string="Active CD-ROM drive">Активан ЦД РОМ уређај</entry>
 
 	<section name="Errors">
@@ -323,8 +325,8 @@
 	<entry id="4105" string="Multiple matches found">Нађено више поклапања</entry>
 	<entry id="4106" string="Matches">Поклапања</entry>
 	<entry id="4107" string="Select the entry that best fits your CD">Изаберите податак који највише одговара Вашем ЦД-у</entry>
-	<entry id="4108" string="Would you like to perform this query again later?">Желите ли да поновите овај упит касније?</entry>
-	<entry id="4109" string="Would you like to perform the remaining queries again later?">Желите ли да поновите преостале упите касније?</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">Желите ли да касније поновите овај упит?</entry>
+	<entry id="4109" string="Would you like to perform the remaining queries again later?">Желите ли да касније поновите преостале упите?</entry>
 	<entry id="4110" string="none">ниједан</entry>
 	<entry id="4111" string="Preview">Преглед</entry>
 	<entry id="4112" string="loading preview">учитавање прегледа</entry>
@@ -341,12 +343,12 @@
 	<entry id="4203" string="Query all">Упит свега</entry>
 	<entry id="4204" string="Query string">Стринг упита</entry>
 	<entry id="4205" string="CDDB queries to perform">CDDB упити за урадити</entry>
-	<entry id="4206" string="Querying CD information">Упитивање за информације о ЦД-у</entry>
+	<entry id="4206" string="Querying CD information">Упити за информације о ЦД-у</entry>
       </section>
 
       <section name="Manage submits">
 	<entry id="4300" string="Remove entry">Уклони запис</entry>
-	<entry id="4301" string="CDDB entries to submit">CDDB уписи за пријаву</entry>
+	<entry id="4301" string="CDDB entries to submit">CDDB подаци за пријаву</entry>
 	<entry id="4302" string="Submit all">Пријави све</entry>
 	<entry id="4303" string="CDDB data">CDDB подаци</entry>
 	<entry id="4304" string="Submit">Пријави</entry>
@@ -363,8 +365,8 @@
 	<entry id="4403" string="Downloaded CDDB entries">Преузети CDDB подаци</entry>
 	<entry id="4404" string="Disc name">Назив диска</entry>
 	<entry id="4405" string="Preview">Преглед</entry>
-	<entry id="4406" string="Remove entry">Уклони запис</entry>
-	<entry id="4407" string="Save entry">Сачувај запис</entry>
+	<entry id="4406" string="Remove entry">Уклони податак</entry>
+	<entry id="4407" string="Save entry">Сачувај податак</entry>
       </section>
     </section>
 

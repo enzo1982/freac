@@ -48,7 +48,7 @@
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
-      <entry id="501" string="%1...">%1 ...</entry>
+      <entry id="501" string="%1...">%1...</entry>
       <entry id="502" string="%1 (%2)">%1 (%2)</entry>
     </section>
 
@@ -69,7 +69,7 @@
       <entry id="1001" string="Options">Opcije</entry>
       <entry id="1002" string="Database">Baza podataka</entry>
       <entry id="1003" string="Processing">Obrada</entry>
-      <entry id="1004" string="Encode">Enkoduj</entry>
+      <entry id="1004" string="Encode">Enkodovanje</entry>
       <entry id="1005" string="Help">Pomoć</entry>
 
       <section name="File">
@@ -89,7 +89,7 @@
 	<entry id="1200" string="Query CDDB database">Upit CDDB bazi</entry>
 	<entry id="1201" string="Submit CDDB data">Prijava podataka CDDB-u</entry>
 	<entry id="1202" string="Query CDDB database later">Upit CDDB baze kasnije</entry>
-	<entry id="1203" string="Show queued CDDB entries">Prikaži CDDB upise na čekanju</entry>
+	<entry id="1203" string="Show queued CDDB entries">Prikaži CDDB zapise na čekanju</entry>
 	<entry id="1204" string="Show queued CDDB queries">Prikaži upite CDDB-u na čekanju</entry>
 	<entry id="1205" string="Enable CDDB cache">Omogući CDDB keš</entry>
 	<entry id="1206" string="Manage CDDB cache entries">Upravljaj CDDB keš zapisima</entry>
@@ -99,7 +99,7 @@
       <section name="Options">
 	<entry id="1300" string="General settings">Opšta podešenja</entry>
 	<entry id="1301" string="Configure signal processing">Podesi obradu signala</entry>
-	<entry id="1302" string="Configure selected encoder">Podesi izabrani enkoder</entry>
+	<entry id="1302" string="Configure selected encoder">Podesi odabrani enkoder</entry>
 	<entry id="1303" string="Active CD-ROM drive">Aktivan CD ROM uređaj</entry>
 	<entry id="1304" string="Active configuration">Aktivna postavka</entry>
 	<entry id="1305" string="Default configuration">Usađena postavka</entry>
@@ -107,7 +107,7 @@
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Omogući obradu signala</entry>
-	<entry id="1401" string="Enable processing during playback">Omogući obradu signalu u toku sviranja pesme</entry>
+	<entry id="1401" string="Enable processing during playback">Omogući obradu u toku reprodukcije</entry>
 	<entry id="1402" string="Selected signal processors">Odabrani procesori signala</entry>
       </section>
 
@@ -157,14 +157,14 @@
       <entry id="3000" string="Time left">Preostalo vreme</entry>
       <entry id="3001" string="File progress">Napredovanje fajla/posla</entry>
       <entry id="3002" string="Output folder">Izlazni folder</entry>
-      <entry id="3003" string="%1 file(s) in joblist">%1 fajl(ova) u listi zadataka</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 fajl/a/ova u listi zadataka</entry>
       <entry id="3004" string="Show title info">Prikaži info o nazivu</entry>
       <entry id="3005" string="Play">Pokreni</entry>
       <entry id="3006" string="Stop">Zaustavi</entry>
       <entry id="3007" string="Select all">Izaberi sve</entry>
       <entry id="3008" string="Select none">Ne izaberi ništa</entry>
       <entry id="3009" string="Toggle selection">Obrni izbor</entry>
-      <entry id="3010" string="ripping/decoding">ripovanje / dekodovanje</entry>
+      <entry id="3010" string="ripping/decoding">ripovanje/dekodovanje</entry>
       <entry id="3011" string="encoding">enkodovanje</entry>
       <entry id="3012" string="Create playlist">Kreiraj listu</entry>
       <entry id="3013" string="Create cue sheet">Kreiraj cue list</entry>
@@ -174,7 +174,7 @@
       <entry id="3017" string="Clear joblist">Očisti listu zadataka</entry>
       <entry id="3018" string="Use for all selected tracks">Koristi za sve izabrane stavke</entry>
       <entry id="3019" string="Interpret string as">Prevedi string kao</entry>
-      <entry id="3020" string="selected tracks">odabrane stavke</entry>
+      <entry id="3020" string="selected tracks">odabrana/e stavka/e</entry>
       <entry id="3021" string="Adjust upper/lower case">Podesi VELIKA/mala slova</entry>
       <entry id="3022" string="all words upper case">sve reči VELIKIM slovima</entry>
       <entry id="3023" string="long words upper case">dugačke reči VELIKIM slovima</entry>
@@ -192,9 +192,9 @@
       <entry id="3035" string="File">Fajl</entry>
       <entry id="3036" string="Size">Veličina</entry>
       <entry id="3037" string="Bitrate">Stopa bitova</entry>
-      <entry id="3038" string="Audio Files">Audio fajl(ovi)</entry>
+      <entry id="3038" string="Audio Files">Audio fajl/ovi</entry>
       <entry id="3039" string="All Files">Svi fajlovi</entry>
-      <entry id="3040" string="Playlist Files">Fajlovi liste</entry>
+      <entry id="3040" string="Playlist Files">Fajlovi sa liste</entry>
       <entry id="3041" string="Joblist">Lista zadataka</entry>
       <entry id="3042" string="Other">Ostalo</entry>
       <entry id="3043" string="Output file name">Izlazni naziv fajla</entry>
@@ -204,24 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Enkodovanje fajla</entry>
-        <entry id="3051" string="none">nijedan</entry>
-        <entry id="3052" string="Skip current file">Preskoči</entry>
+	<entry id="3051" string="none">nijedan</entry>
+	<entry id="3052" string="Skip current file">Preskoči trenutni fajl</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Aktivni dekoder</entry>
-        <entry id="3061" string="none">nepoznato</entry>
+	<entry id="3060" string="Active decoder">Aktivni dekoder</entry>
+	<entry id="3061" string="none">nepoznato</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Izabrani filteri</entry>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3071" string="none">nijedan</entry>
+	<entry id="3072" string="disabled">onemogućeno</entry>
 	<entry id="3073" string="Configure signal processing">Podesi obradu signala</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Izabrani enkoder</entry>
+	<entry id="3080" string="Selected encoder">Izabrani enkoder</entry>
 	<entry id="3081" string="Configure selected encoder">Podesi izabrani enkoder</entry>
       </section>
 
@@ -264,7 +264,7 @@
       <section name="Joblist">
 	<entry id="3600" string="Reading folders">Očitavanje foldera</entry>
 	<entry id="3601" string="Filtering duplicates">Filterovanje duplikata</entry>
-	<entry id="3602" string="Adding files">Dodavanje fajlova</entry>
+	<entry id="3602" string="Adding files">Dodavanje fajla/ova</entry>
 	<entry id="3603" string="Adding tracks">Dodavanje pesama</entry>
 	<entry id="3604" string="Added %1 files, %2 errors occurred">Dodato %1 fajlova, %2 grešaka se pojavilo</entry>
 	<entry id="3605" string="Added %1 tracks, %2 errors occurred">Dodato %1 pesama, %2 grešaka se pojavilo</entry>
@@ -275,7 +275,7 @@
       </section>
 
       <section name="Convert">
-	<entry id="3700" string="Checking sample formats">Provera formata uzorka</entry>
+	<entry id="3700" string="Checking sample formats">Provera formata sempla</entry>
 	<entry id="3701" string="Checking for lossy to lossless conversion">Provera za konverziju sa gubicima u konveziju bez gubitaka</entry>
 	<entry id="3702" string="Checking output file names">Provera izlaznih naziva fajlova</entry>
 	<entry id="3703" string="Converting %1">Konverzija %1</entry>
@@ -337,7 +337,7 @@
       </section>
 
       <section name="Manage queries">
-	<entry id="4200" string="Remove entry">Ukloni zapis</entry>
+	<entry id="4200" string="Remove entry">Ukloni podatak</entry>
 	<entry id="4201" string="CDDB queries">CDDB upiti</entry>
 	<entry id="4202" string="Query">Upit</entry>
 	<entry id="4203" string="Query all">Upit svega</entry>
@@ -347,8 +347,8 @@
       </section>
 
       <section name="Manage submits">
-	<entry id="4300" string="Remove entry">Ukloni zapis</entry>
-	<entry id="4301" string="CDDB entries to submit">CDDB upisi za prijavu</entry>
+	<entry id="4300" string="Remove entry">Ukloni podatak</entry>
+	<entry id="4301" string="CDDB entries to submit">CDDB podaci za prijavu</entry>
 	<entry id="4302" string="Submit all">Prijavi sve</entry>
 	<entry id="4303" string="CDDB data">CDDB podaci</entry>
 	<entry id="4304" string="Submit">Prijavi</entry>
@@ -361,12 +361,12 @@
       <section name="Manage cache">
 	<entry id="4400" string="CDDB data">CDDB podaci</entry>
 	<entry id="4401" string="Update joblist with this information">Ažuriraj listu zadataka ovom informacijom</entry>
-	<entry id="4402" string="Charset">Karakteri</entry>
-	<entry id="4403" string="Downloaded CDDB entries">Preuzeti CDDB ulazi</entry>
+	<entry id="4402" string="Charset">Set karaktera</entry>
+	<entry id="4403" string="Downloaded CDDB entries">Preuzeti CDDB podaci</entry>
 	<entry id="4404" string="Disc name">Naziv diska</entry>
 	<entry id="4405" string="Preview">Pregled</entry>
-	<entry id="4406" string="Remove entry">Ukloni zapis</entry>
-	<entry id="4407" string="Save entry">Sačuvaj zapis</entry>
+	<entry id="4406" string="Remove entry">Ukloni podatak</entry>
+	<entry id="4407" string="Save entry">Sačuvaj podatak</entry>
       </section>
     </section>
 
@@ -404,7 +404,7 @@
 	<entry id="5102" string="Output folder">Izlazni folder</entry>
 	<entry id="5103" string="Select">Pretraži</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Odaberi folder za smeštaj enkodovanih fajlova</entry>
-	<entry id="5105" string="Use input file folder if possible">Ako je moguće, koristi ulazni folder</entry>
+	<entry id="5105" string="Use input file folder if possible">Ako je moguće koristi ulazni folder</entry>
 	<entry id="5106" string="Allow overwriting input file">Dozvoli prepisivanje ulaznih fajlova</entry>
 	<entry id="5107" string="Options">Opcije</entry>
 	<entry id="5108" string="Filename pattern">Šablon naziva</entry>
