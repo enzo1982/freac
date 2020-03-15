@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -62,6 +62,16 @@ freac::ConfigComponentDialog::ConfigComponentDialog(Component *component)
 #ifdef __WIN32__
 		mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
 #endif
+	}
+	else
+	{
+		mainWnd			= NIL;
+		mainWnd_titlebar	= NIL;
+
+		btn_cancel		= NIL;
+		btn_ok			= NIL;
+
+		divbar			= NIL;
 	}
 }
 

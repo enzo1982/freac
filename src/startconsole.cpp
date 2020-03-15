@@ -76,7 +76,7 @@ Void freac::freacCommandline::Free()
 	if (instance != NIL) delete (freacCommandline *) instance;
 }
 
-freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args(arguments)
+freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args(arguments), stopped(False)
 {
 	Registry	&boca	= Registry::Get();
 
@@ -166,7 +166,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	encoderID = encoderID.ToLower();
 	helpenc	  = helpenc.ToLower();
-	stopped	  = False;
 
 	DeviceInfoComponent	*info	   = boca.CreateDeviceInfoComponent();
 	Int			 numDrives = 0;
