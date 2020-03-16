@@ -22,7 +22,7 @@ apps:
       - home
       - network
       - optical-drive
-      - pulseaudio
+      - audio-playback
       - removable-media
 
   freaccmd:
@@ -32,7 +32,6 @@ apps:
       - home
       - network
       - optical-drive
-      - pulseaudio
       - removable-media
 
 parts:
