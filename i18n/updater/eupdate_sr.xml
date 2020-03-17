@@ -3,10 +3,10 @@
   <info>
     <property name="program">easyUpdate</property>
     <property name="version">0.3</property>
-    <property name="language">Serbian (Latin script) / Srpski (Latinica)</property>
+    <property name="language">Serbian (Latin) / Srpski (Latinica)</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
-    <property name="template">template.xml</property>
+    <property name="template">eupdate.xml</property>
     <property name="author">Nebojša Nikolić &lt;nebek2000@gmail.com&gt;</property>
     <property name="url">http://www.chapter0.net/easyUpdate/</property>
   </info>
@@ -16,7 +16,7 @@
     <entry id="3" string="Show unstable releases">Prikaži nestabilne verzije</entry>
     <entry id="4" string="Select the updated program version to be installed:">Odaberite ažuriranu verziju za instalaciju:</entry>
     <entry id="5" string="You can select optional components to be installed:">Možete odabrati opcione komponente za instalaciju:</entry>
-    <entry id="6" string="Version ID">Verzija ID</entry>
+    <entry id="6" string="Version ID">ID Verzije</entry>
     <entry id="7" string="Package">Paket</entry>
     <entry id="8" string="Description">Opis</entry>
     <entry id="9" string="Latest">Poslednje</entry>
@@ -30,7 +30,7 @@
     <entry id="17" string="Update complete">Ažuriranje završeno</entry>
     <entry id="18" string="Your application has been successfully updated!">Vaša aplikacija je uspešno ažurirana!</entry>
     <entry id="19" string="Error">Greška</entry>
-    <entry id="20" string="Error downloading package!">Grežka prilikom preuzimanja paketa!</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Greška priliko instaliranja &quot;%1&quot;!&#10;&#10;Pristup instalacionem folderu je odbijen.</entry>
+    <entry id="20" string="Error downloading package!">Greška prilikom preuzimanja paketa!</entry>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Greška prilikom instaliranja &quot;%1&quot;!&#10;&#10;Pristup instalacionom folderu je odbijen.</entry>
   </data>
 </LangFile>

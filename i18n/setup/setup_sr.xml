@@ -3,7 +3,7 @@
   <info>
     <property name="program">fre:ac Setup</property>
     <property name="version">1.1</property>
-    <property name="language">Serbian / Srpski</property>
+    <property name="language">Serbian (Latin) / Srpski (Latinica)</property>
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">setup.xml</property>
@@ -19,46 +19,46 @@
     <entry id="105" string="No">Ne</entry>
 
     <entry id="200" string="Current file progress:">Trenutni napredak:</entry>
-    <entry id="201" string="Total installation progress:">Ukupno napredovanje nstaliranja:</entry>
-    <entry id="202" string="Do you really want to exit Setup now?&#10;&#10;If you quit now, the program will not be installed on your computer.&#10;You may run Setup again later to complete the installation.">Da li zaista želite da sada otkažete instaliranje?&#10;&#10;Ako isto otkažete sada, program neće biti instaliran na Vašem računaru.&#10;Možete kasnije ponovo pokrenuti instalaciju kako bi u celini završili sa istom.</entry>
-    <entry id="203" string="Exit Setup">Izađi iz Setup-a</entry>
-    <entry id="204" string="The Setup will be cancelled now!">Setup će biti otkazan sada!</entry>
+    <entry id="201" string="Total installation progress:">Ukupno napredovanje instalacije:</entry>
+    <entry id="202" string="Do you really want to exit Setup now?&#10;&#10;If you quit now, the program will not be installed on your computer.&#10;You may run Setup again later to complete the installation.">Da li zaista želite sada da otkažete instalaciju?&#10;&#10;Ukoliko istu otkažete sada, program neće biti instaliran na Vašem računaru.&#10;Možete kasnije ponovo pokrenuti ovu instalaciju i istu u potpunosti završiti.</entry>
+    <entry id="203" string="Exit Setup">Izlaz iz instalacije</entry>
+    <entry id="204" string="The Setup will be cancelled now!">Instalacija će sada biti otkazana!</entry>
     <entry id="205" string="Info">Info</entry>
 
-    <entry id="300" string="Destination directory">Folder smeštaja programa</entry>
-    <entry id="301" string="Select">Pretraži</entry>
+    <entry id="300" string="Destination directory">Instalacioni folder</entry>
+    <entry id="301" string="Select">Odabir</entry>
     <entry id="302" string="Select the folder in which the program will be installed:">Odaberite folder u kome će program biti instaliran:</entry>
     <entry id="303" string="Available components">Raspoložive komponente</entry>
     <entry id="304" string="Description">Opis</entry>
-    <entry id="305" string="Move the mouse over a&#10;component entry to&#10;show a description">Postavite miša (ali nemojte&#10;kliknuti!) na a komponentu&#10;da vidite opis</entry>
+    <entry id="305" string="Move the mouse over a&#10;component entry to&#10;show a description">Postavite miša iznad&#10;komponente (ali nemojte&#10;kliknuti!) da se prikaže&#10;opis iste</entry>
     <entry id="306" string="Create Start Menu group">Napravite grupu u Start Meniju</entry>
-    <entry id="307" string="Create Desktop icon">Napravite iconu na Desktopu</entry>
-    <entry id="308" string="Create Quick Launch icon">Napravite iconu brzog pokretanja</entry>
+    <entry id="307" string="Create Desktop icon">Napravi ikonu na Desktopu</entry>
+    <entry id="308" string="Create Quick Launch icon">Kreiraj ikonu brzog pokretanja</entry>
 
-    <entry id="1" string="%LONGNAME% Setup">%LONGNAME% Setup</entry>
-    <entry id="2" string="Welcome to the %NAME% Setup Wizard&#10;&#10;&#10;This will install %NAME% %VERSION% on your computer.&#10;&#10;It is recommended that you close all other applications you have running&#10;before continuing. This will help avoiding possible conflicts during the&#10;installation process.&#10;&#10;Click Next to continue, or Cancel to exit Setup.">Dobrodošli u %NAME% pomoćnika instaliranja&#10;&#10;&#10;Ovo će instalirati %NAME% %VERSION% na Vašem računaru.&#10;&#10;Preporučujemo da zatvorite sve ostale aplikaciju koje su pokrenute&#10;pre nastavka. Ovo će pomoći u izbegavanju mogućih konflikata u toku&#10;procesa instalacije.&#10;&#10;Kliknite Nastavi za nastavak, ili Otkaži da izađete iz Setup-a.</entry>
-    <entry id="3" string="Setup - License Agreement">Setup - Saglasnost sa licencom</entry>
-    <entry id="4" string="Please read the following license agreement. Click Yes to accept&#10;the agreement, or No to cancel the Setup.">Molimo pažljivo pročitajte sledeću saglasnost sa licencom. Kliknite Da da prihvatite&#10;saglasnost, ili Ne da otkažete Setup.</entry>
+    <entry id="1" string="%LONGNAME% Setup">%LONGNAME% Podešenje</entry>
+    <entry id="2" string="Welcome to the %NAME% Setup Wizard&#10;&#10;&#10;This will install %NAME% %VERSION% on your computer.&#10;&#10;It is recommended that you close all other applications you have running&#10;before continuing. This will help avoiding possible conflicts during the&#10;installation process.&#10;&#10;Click Next to continue, or Cancel to exit Setup.">Dobrodošli u %NAME% Instalacioni Pomoćnik&#10;&#10;&#10;isti će instalirati %NAME% %VERSION% na Vašem računaru.&#10;&#10;Preporučujemo da zatvorite sve ostale pokrenute aplikacije pre nastavka.&#10;Ovo će pomoći u izbegavanju mogućih konflikata tokom instalacije.&#10;&#10;Kliknite na &quot;Nastavi&quot; da nastavite, ili na &quot;Otkaži&quot; da napustite instalaciju.</entry>
+    <entry id="3" string="Setup - License Agreement">Postavke - Saglasnost sa licencom</entry>
+    <entry id="4" string="Please read the following license agreement. Click Yes to accept&#10;the agreement, or No to cancel the Setup.">Molimo pažljivo pročitajte sledeću saglasnost sa licencom.&#10;Kliknite na &quot;Da&quot; za prihvatanje iste, ili na &quot;Ne&quot; da otkažete instalaciju.</entry>
     <entry id="5" string="Setup - Destination Directory">Setup - Folder za instalaciju</entry>
-    <entry id="6" string="Setup will install %NAME% in the following folder.&#10;&#10;To install into a different folder, click Browse, and select another folder.">Setup će instalirati %NAME% u sledeći folder.&#10;&#10;Da instalirate u drugi folder, kliknite Pretraži, i odaberite željeni folder.</entry>
-    <entry id="7" string="Setup - Components to install">Setup - komponente za instalaciju</entry>
+    <entry id="6" string="Setup will install %NAME% in the following folder.&#10;&#10;To install into a different folder, click Browse, and select another folder.">Setup će instalirati %NAME% u sledeći folder.&#10;&#10;Da instalirate u drugi folder, kliknite na &quot;Pretraži&quot;, i odaberite željeni folder.</entry>
+    <entry id="7" string="Setup - Components to install">Setup - Кomponente za instalaciju</entry>
     <entry id="8" string="Select the components you want to install.">Odaberite komponente koje želite da instalirate.</entry>
-    <entry id="9" string="Setup - Start Menu and Desktop Shortcuts">Setup - Start Menu i Desktop prečice</entry>
-    <entry id="10" string="Setup can create shortcuts to the installed program.&#10;Please select which shortcuts shall be created.">Setup može napraviti prečice u instaliranom programu.&#10;Molimo odaberite koje će prečice biti kreirane.</entry>
+    <entry id="9" string="Setup - Start Menu and Desktop Shortcuts">Setup - Start Meni i Desktop prečice</entry>
+    <entry id="10" string="Setup can create shortcuts to the installed program.&#10;Please select which shortcuts shall be created.">Setup može napraviti prečice za instalirani program.&#10;Molimo odaberite koje prečice će biti kreirane.</entry>
     <entry id="11" string="Setup - Ready to install">Setup - Spremno za instalaciju</entry>
-    <entry id="12" string="Setup is now ready to install %NAME% on your computer.&#10;&#10;Click Next to install the program files on your computer, or Cancel&#10;to exit Setup.">Setup je sada spreman da instalira %NAME% na Vašem računaru.&#10;&#10;Kliknite Nastavi da instalirate aplikaciju na Vaš računar, ili Otkaži&#10;da izađete iz Setup-a.</entry>
+    <entry id="12" string="Setup is now ready to install %NAME% on your computer.&#10;&#10;Click Next to install the program files on your computer, or Cancel&#10;to exit Setup.">Setup je sada spreman da instalira %NAME% na Vašem računaru.&#10;&#10;Kliknite na &quot;Nastavi&quot; da instalirate aplikaciju na Vašem računaru,&#10;ili na &quot;Otkaži&quot; da izađete iz Setup-a.</entry>
     <entry id="13" string="Setup - Copying files">Setup - Kopiranje fajlova</entry>
-    <entry id="14" string="Setup is copying the program files to your computer.&#10;&#10;Please wait until the installation process has finished. You can then&#10;start working with the installed program.">Setup kopira programske fajlove na Vaš računar.&#10;&#10;Molimo sačekajte da se proces instalacije završi. Onda možete&#10;zapoeti sa korišćenjem instaliranog programa.</entry>
+    <entry id="14" string="Setup is copying the program files to your computer.&#10;&#10;Please wait until the installation process has finished. You can then&#10;start working with the installed program.">Setup kopira programske fajlove na Vaš računar.&#10;&#10;Molimo sačekajte da se proces instalacije završi.&#10;Onda možete započeti sa korišćenjem instaliranog programa.</entry>
     <entry id="15" string="Setup - Installation finished">Setup - instalacija završena</entry>
-    <entry id="16" string="Congratulations! %NAME% %VERSION% has been successfully installed&#10;on your computer.&#10;&#10;You can now start %NAME% from the Windows Start menu.&#10;&#10;Click Finish to close the setup wizard.">Čestitamo! %NAME% %VERSION% je uspešno instaliran&#10;na Vašem računaru.&#10;&#10;Sada možete započeti %NAME% iz Windows Start menija.&#10;&#10;Kliknite Završi da zatvorite pomoćnika instalacije.</entry>
+    <entry id="16" string="Congratulations! %NAME% %VERSION% has been successfully installed&#10;on your computer.&#10;&#10;You can now start %NAME% from the Windows Start menu.&#10;&#10;Click Finish to close the setup wizard.">Čestitamo! %NAME% %VERSION% je uspešno instaliran&#10;na Vašem računaru.&#10;&#10;Sada možete pokrenuti %NAME% iz Windows Start menija.&#10;&#10;Kliknite na &quot;Završi&quot; da zatvorite instalacioni pomoćnik.</entry>
     <entry id="17" string="%NAME% %VERSION% program files (required)">%NAME% %VERSION% programski fajlovi (neophodni)</entry>
-    <entry id="18" string="easyUpdate online updater">easyUpdate online updater</entry>
-    <entry id="19" string="Install an online update&#10;component that will notify&#10;you about new software&#10;versions">Instaliraj online auriranje&#10;komponentu koja će Vas&#10;obaveštavati o novim&#10;verzijama</entry>
+    <entry id="18" string="easyUpdate online updater">easyUpdate onlajn ažuriranje</entry>
+    <entry id="19" string="Install an online update&#10;component that will notify&#10;you about new software&#10;versions">Instaliraj komponentu&#10;onlajn ažuriranja, koja će&#10;Vas obaveštavati o novim&#10;verzijama aplikacije</entry>
     <entry id="20" string="%NAME% command line interface">%NAME% command line prikaz</entry>
-    <entry id="21" string="Install a command line&#10;interface useful for use&#10;in batch scripts">Instaliraj command line&#10;prikaz koji je koristan u &#10;batch skriptama</entry>
-    <entry id="22" string="smooth Translator utility">smooth Translator utility</entry>
-    <entry id="23" string="Install an easy to use&#10;application for editing&#10;%NAME% XML language&#10;files">Instaliraj laku za korišćenje&#10;aplikaciju za izmene %NAME%&#10;XML jezičkih fajlova</entry>
-    <entry id="24" string="%NAME% source code">%NAME% source code</entry>
+    <entry id="21" string="Install a command line&#10;interface useful for use&#10;in batch scripts">Instaliraj command line prikaz&#10;koji je koristan u beč skriptama</entry>
+    <entry id="22" string="smooth Translator utility">Laki Prevodilac alat</entry>
+    <entry id="23" string="Install an easy to use&#10;application for editing&#10;%NAME% XML language&#10;files">Instaliraj, laku za korišćenje,&#10;aplikaciju za izmene %NAME%&#10;XML jezičkih fajlova</entry>
+    <entry id="24" string="%NAME% source code">%NAME% izvorni kod</entry>
     <entry id="25" string="Install the complete C++&#10;source code to %NAME%">Instaliraj kompletan C++&#10;izvorni kod za %NAME%</entry>
     <entry id="26" string="%NAME% User Guide">%NAME% Pomoć za korišćenje</entry>
     <entry id="27" string="Uninstall %NAME%">Deinstaliraj %NAME%</entry>
