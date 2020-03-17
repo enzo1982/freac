@@ -107,7 +107,7 @@
 
       <section name="Processing">
 	<entry id="1400" string="Enable signal processing">Aktiver signal behandling</entry>
-	<entry id="1401" string="Enable processing during playback">Aktiver behandling under afspilning</entry> 
+	<entry id="1401" string="Enable processing during playback">Aktiver behandling under afspilning</entry>
 	<entry id="1402" string="Selected signal processors">Valgte signal behandlere</entry>
       </section>
 
@@ -597,7 +597,7 @@
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Kodningstråden kører stadig! Vil du stadig afslutte?</entry>
       <entry id="7002" string="Delete original files after encoding">Slet orginale filer efter endt kodning</entry>
       <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Denne indstilling vil slette de orginale filer efter de er blevet kodet! Ønsker du at forsætte?</entry>
-      <entry id="7004" string="Keep this option enabled even after restarting %1">Behold dette valg aktiveret selv efter genstart %1</entry> 
+      <entry id="7004" string="Keep this option enabled even after restarting %1">Behold dette valg aktiveret selv efter genstart %1</entry>
       <entry id="7005" string="File already exists">Filen eksisterer allerede</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Uddata filen %1 eksisterer allerede! Vil du overskrive den?</entry>
       <entry id="7007" string="Overwrite all further files">Overskriv alle tidligere filer</entry>
@@ -645,7 +645,7 @@
 
       <section name="Format">
 	<entry id="8100" string="Select sample format">Vælg sample format</entry>
-	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">De valgte spor har forskellige sample formater. Vælg den ønskede&#10;sample format til output filen:</entry> 
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">De valgte spor har forskellige sample formater. Vælg den ønskede&#10;sample format til output filen:</entry>
 	<entry id="8102" string="Select">Vælg</entry>
       </section>
 
