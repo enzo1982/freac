@@ -91,8 +91,8 @@ parts:
 
   libmac:
     after: [ patches ]
-    source: https://freac.org/patches/MAC_SDK_523.zip
-    source-checksum: sha256/1c7e3c9e774fa9212ee8f1f79e38926959a9928576e77274745c3ef3ab8a6286
+    source: https://freac.org/patches/MAC_SDK_524.zip
+    source-checksum: sha256/dec92080e06e30fabb3565ad6f9987394c77b3af105291d2965ddf0a3b473fb8
     source-subdir: .
     plugin: make
     make-parameters: [ prefix=/usr ]
@@ -100,7 +100,7 @@ parts:
       - CXXFLAGS: "$CXXFLAGS -O3 -funroll-loops"
     override-build: |
       if [ `lscpu | grep -i 'byte order' | awk '{ print tolower($3) }'` = "little" ]; then
-        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-5.23-gcc.patch
+        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-5.24-gcc.patch
         snapcraftctl build
       fi
     prime:
