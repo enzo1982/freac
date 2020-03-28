@@ -335,8 +335,9 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, True);
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outputFile);
 
-	config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, True);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, True);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsDeleteAfterEncodingID, False);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsAddEncodedTracksID, False);
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Directory(outputFolder));
@@ -357,6 +358,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperLockTrayID, Config::RipperLockTrayDefault);
 	config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
+
+	config->SetIntValue(Config::CategoryRipperID, Config::RipperEjectAfterRippingID, False);
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, !ignoreChapters);
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersID, !ignoreChapters);

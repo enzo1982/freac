@@ -152,6 +152,7 @@ History
 		- Bug fixes
 
 			- Fixed parallel processing being active for CD track reference files on Windows
+			- Fixed freaccmd ejecting the CD after ripping 1 track with eject option is enabled in fre:ac
 
 	Version 1.1 RC 2 (March 2020)
 
