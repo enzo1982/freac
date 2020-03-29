@@ -153,6 +153,7 @@ Geschichte
 
 			- Problem mit aktiver Parallelverarbeitung für CD-Track-Referenzdateien unter Windows behoben
 			- Problem mit Auswurf der CD nach dem Rippen eines Tracks in freaccmd bei aktivierter Auswurf-Option in fre:ac behoben
+			- Absturz von freaccmd bei nicht gesetzter DISPLAY-Variable unter Linux/FreeBSD behoben
 
 	Version 1.1 RC 2 (März 2020)
 

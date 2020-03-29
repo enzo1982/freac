@@ -47,6 +47,15 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.1" date="2020-03-29">
+            <description>
+                <p>Bug fixes:</p>
+                <ul>
+                   <li>Fixed freaccmd ejecting the CD after ripping 1 track with eject option is enabled in fre:ac</li>
+                   <li>Fixed crash of freaccmd when DISPLAY variable is not set</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1~rc2" date="2020-03-22">
             <description>
                 <p>Bug fixes:</p>

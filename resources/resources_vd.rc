@@ -2,8 +2,8 @@
 #include "../include/resources.h"
 
 IDR_VERSION		VERSIONINFO
-  FILEVERSION		1,1,0,5160
-  PRODUCTVERSION	1,1,0,5160
+  FILEVERSION		1,1,0,5163
+  PRODUCTVERSION	1,1,0,5163
   FILEOS		VOS_NT_WINDOWS32
   FILETYPE		VFT_APP
 BEGIN
@@ -12,7 +12,7 @@ BEGIN
         BLOCK "000004B0"	// Block: language ID = Multilingual, char set = Unicode
         BEGIN
             VALUE	"FileDescription",	"fre:ac - free video downloader\0"
-            VALUE	"FileVersion",		"1.1.0.5160\0"
+            VALUE	"FileVersion",		"1.1.0.5163\0"
             VALUE	"InternalName",		"FREAC\0"
             VALUE	"OriginalFilename",	"freac.exe\0"
             VALUE	"ProductName",		"fre:ac\0"
