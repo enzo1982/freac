@@ -128,9 +128,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		config->SetActiveConfiguration(configName);
 	}
 
-	/* Set console mode.
+	/* Set console mode and activate English language.
 	 */
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, True);
+	i18n->ActivateLanguage("internal");
 
 	/* Configure the converter.
 	 */
