@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -44,10 +44,18 @@ freac::cddbQueryDlg::cddbQueryDlg(const String &iQueryString)
 
 	stopQueryThread	 = False;
 
-	mainWnd		 = new Window(i18n->TranslateString("CDDB query"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(310, 84));
-	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
+	if (!config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault))
+	{
+		mainWnd		 = new Window(i18n->TranslateString("CDDB query"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(40, 40), Size(310, 84));
+		mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
-	mainWnd_titlebar = new Titlebar(TB_CLOSEBUTTON);
+		mainWnd_titlebar = new Titlebar(TB_CLOSEBUTTON);
+	}
+	else
+	{
+		mainWnd		 = NIL;
+		mainWnd_titlebar = NIL;
+	}
 
 	text_status	 = new Text(NIL, Point(7, 5));
 	prog_status	 = new Progressbar(Point(7, 24), Size(200, 0), OR_HORZ, PB_NOTEXT, 0, 100, 0);
@@ -55,23 +63,28 @@ freac::cddbQueryDlg::cddbQueryDlg(const String &iQueryString)
 	btn_cancel	 = new Button(i18n->TranslateString("Cancel"), Point(215, 23), Size());
 	btn_cancel->onAction.Connect(&cddbQueryDlg::Cancel, this);
 
-	Add(mainWnd);
+	if (mainWnd != NIL)
+	{
+		Add(mainWnd);
 
-	mainWnd->Add(btn_cancel);
-	mainWnd->Add(text_status);
-	mainWnd->Add(prog_status);
-	mainWnd->Add(mainWnd_titlebar);
+		mainWnd->Add(btn_cancel);
+		mainWnd->Add(text_status);
+		mainWnd->Add(prog_status);
+		mainWnd->Add(mainWnd_titlebar);
 
-	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON | WF_MODAL);
-	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
+		mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON | WF_MODAL);
+		mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
 
 #ifdef __WIN32__
-	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
+		mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
 #endif
+	}
 }
 
 freac::cddbQueryDlg::~cddbQueryDlg()
 {
+	if (mainWnd == NIL) return;
+
 	DeleteObject(mainWnd_titlebar);
 	DeleteObject(mainWnd);
 	DeleteObject(text_status);
@@ -81,21 +94,15 @@ freac::cddbQueryDlg::~cddbQueryDlg()
 
 const Error &freac::cddbQueryDlg::ShowDialog()
 {
-	/* Get config values.
-	 */
-	BoCA::Config	*config = BoCA::Config::Get();
-
-	Bool	 enableConsole = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
-
 	/* Show dialog only in GUI mode.
 	 */
-	if (!enableConsole) mainWnd->Show();
+	if (mainWnd != NIL) mainWnd->Show();
 
 	/* Start query thread and wait for operations to complete.
 	 */
 	queryThread = NonBlocking0<>(&cddbQueryDlg::QueryThread, this).Call();
 
-	if (!enableConsole) mainWnd->WaitUntilClosed();
+	if (mainWnd != NIL) mainWnd->WaitUntilClosed();
 
 	queryThread->Wait();
 
@@ -157,7 +164,7 @@ Int freac::cddbQueryDlg::QueryThread()
 
 	/* Close window and return.
 	 */
-	mainWnd->Close();
+	if (mainWnd != NIL) mainWnd->Close();
 
 	if (result) return Success();
 	else	    return Error();
@@ -303,20 +310,24 @@ freac::CDDBInfo freac::cddbQueryDlg::QueryCDDB(const BoCA::Track &track)
 	{
 		cddbQueryDlg	 dlg(queryString);
 
-		if (dlg.ShowDialog() == Error())
+		Error	 errorStatus = dlg.ShowDialog();
+		String	 errorString = dlg.GetErrorString();
+
+		if (errorStatus == Error() && !config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault))
 		{
 			/* Ask whether to perform this query later.
 			 */
-			if (QuickMessage(dlg.GetErrorString().Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
+			if (QuickMessage(String(errorString).Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
 			{
 				CDDBBatch().AddQuery(queryString);
 			}
 		}
-		else if (dlg.GetErrorString() != NIL)
+		else if (errorString != NIL)
 		{
-			/* Display info message if any.
+			/* Display error or info message.
 			 */
-			BoCA::Utilities::InfoMessage(dlg.GetErrorString());
+			if (errorStatus == Error()) BoCA::Utilities::ErrorMessage(errorString);
+			else			    BoCA::Utilities::InfoMessage(errorString);
 		}
 
 		cdInfo = dlg.GetCDDBInfo();
