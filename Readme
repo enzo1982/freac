@@ -149,6 +149,10 @@ History
 
 	Version 1.1.1 (April 2020)
 
+		- Improvements
+
+			- Allow specifying device path instead of drive number in freaccmd
+
 		- Bug fixes
 
 			- Fixed crash of freaccmd when querying CDDB while DISPLAY variable is not set

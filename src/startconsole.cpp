@@ -100,6 +100,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			else	    Console::OutputString(String("\t").Append(config->GetNthConfigurationName(i)).Append("\n"));
 		}
 
+#ifndef __WIN32__
+		Console::OutputString("\n");
+#endif
+
 		return;
 	}
 
@@ -173,15 +177,51 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	if (info != NIL)
 	{
-		if (info->GetNumberOfDevices() > 0)
+		numDrives = info->GetNumberOfDevices();
+
+		/* List drives if requested.
+		 */
+		if (ScanForProgramOption("--list-drives"))
+		{
+			Console::OutputString(String(freac::appLongName).Append(" ").Append(freac::version).Append(" (").Append(freac::architecture).Append(") command line interface\n").Append(freac::copyright).Append("\n\n"));
+			Console::OutputString("Available CD drives:\n\n");
+			Console::OutputString("\tNumber\tDevice path\tDesignation\n");
+			Console::OutputString("\t------------------------------------------------\n");
+
+			for (Int i = 0; i < numDrives; i++)
+			{
+				const Device	&device = info->GetNthDeviceInfo(i);
+
+				Console::OutputString(String("\t").Append(String::FromInt(i)).Append("\t").Append(device.path).Append(device.path.Length() < 8 ? "\t\t" : "\t").Append(String(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision).Trim()).Append("\n"));
+			}
+
+#ifndef __WIN32__
+			Console::OutputString("\n");
+#endif
+
+			return;
+		}
+
+		/* Scan for CD ripping options.
+		 */
+		if (numDrives > 0)
 		{
 			if (!ScanForProgramOption("--drive=%VALUE", &cdDrive)) ScanForProgramOption("-cd %VALUE", &cdDrive);
 			if (!ScanForProgramOption("--track=%VALUE", &tracks))  ScanForProgramOption("-t %VALUE",  &tracks);
 
 			ScanForProgramOption("--timeout=%VALUE", &timeout);
-		}
 
-		numDrives = info->GetNumberOfDevices();
+			for (Int i = 0; i < numDrives; i++)
+			{
+				const Device	&device = info->GetNthDeviceInfo(i);
+
+				if (device.path != cdDrive) continue;
+
+				cdDrive = String::FromInt(i);
+
+				break;
+			}
+		}
 
 		boca.DeleteComponent(info);
 	}
@@ -206,7 +246,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			return;
 		}
 	}
-	else if (tracks != NIL)
+	else if (tracks != NIL || ScanForProgramOption("--list-drives"))
 	{
 		Console::OutputString("Error: CD ripping disabled!");
 	}
@@ -791,7 +831,8 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		{
 			if (info->GetNumberOfDevices() > 0)
 			{
-				Console::OutputString("  --drive=<n>     | -cd <n>\tSpecify active CD drive (0..n)\n");
+				Console::OutputString("  --list-drives\t\t\tPrint a list of available CD drives\n\n");
+				Console::OutputString("  --drive=<n|id>  | -cd <n|id>\tSpecify active CD drive (0..n or device path)\n");
 				Console::OutputString("  --track=<n>     | -t <n>\tSpecify input track(s) to rip (e.g. 1-5,7,9 or 'all')\n");
 				Console::OutputString("  --timeout=<s>\t\t\tTimeout for CD track ripping (default is 120 seconds)\n");
 				Console::OutputString("  --cddb\t\t\tEnable CDDB database lookup\n\n");
