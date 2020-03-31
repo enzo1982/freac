@@ -151,28 +151,29 @@ History
 
 		- Improvements
 
-			- Allow specifying device path instead of drive number in freaccmd
+			- added an option to eject the disc after ripping to freaccmd
+			- allow specifying device path instead of drive number in freaccmd
 
 		- Bug fixes
 
-			- Fixed crash of freaccmd when querying CDDB while DISPLAY variable is not set
+			- fixed crash of freaccmd when querying CDDB while DISPLAY variable is not set
 
 	Version 1.1 (March 2020)
 
 		- Bug fixes
 
-			- Fixed parallel processing being active for CD track reference files on Windows
-			- Fixed freaccmd ejecting the CD after ripping 1 track with eject option is enabled in fre:ac
-			- Fixed crash of freaccmd when DISPLAY variable is not set on Linux/FreeBSD
+			- fixed parallel processing being active for CD track reference files on Windows
+			- fixed freaccmd ejecting the CD after ripping 1 track with eject option enabled in fre:ac
+			- fixed crash of freaccmd when DISPLAY variable is not set on Linux/FreeBSD
 
 	Version 1.1 RC 2 (March 2020)
 
 		- Bug fixes
 
-			- Fixed inability to read raw AAC files with the FAAD2 decoder
-			- Fixed inability to create WMA files with long path names
-			- Fixed cursor positioning and text selection in right-to-left mode
-			- Fixed cursor position calculation not respecting kerning on Windows 10
+			- fixed inability to read raw AAC files with the FAAD2 decoder
+			- fixed inability to create WMA files with long path names
+			- fixed cursor positioning and text selection in right-to-left mode
+			- fixed cursor position calculation not respecting kerning on Windows 10
 
 		- Updated codecs
 

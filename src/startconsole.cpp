@@ -199,6 +199,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			Console::OutputString("\n");
 #endif
 
+			boca.DeleteComponent(info);
+
 			return;
 		}
 
@@ -253,7 +255,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	Console::SetTitle(String(freac::appName).Append(" ").Append(freac::version));
 
-	if (files.Length() == 0 || helpenc != NIL)
+	if ((files.Length() == 0 && !ScanForProgramOption("--eject")) || helpenc != NIL)
 	{
 		ShowHelp(helpenc);
 
@@ -549,6 +551,20 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 		delete joblist;
 	}
+
+	/* Eject disc if requested.
+	 */
+	if (ScanForProgramOption("--eject") && !stopped)
+	{
+		DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
+
+		if (info != NIL)
+		{
+			info->OpenNthDeviceTray(cdDrive.ToInt() < numDrives ? cdDrive.ToInt() : 0);
+
+			boca.DeleteComponent(info);
+		}
+	}
 }
 
 freac::freacCommandline::~freacCommandline()
@@ -835,7 +851,8 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 				Console::OutputString("  --drive=<n|id>  | -cd <n|id>\tSpecify active CD drive (0..n or device path)\n");
 				Console::OutputString("  --track=<n>     | -t <n>\tSpecify input track(s) to rip (e.g. 1-5,7,9 or 'all')\n");
 				Console::OutputString("  --timeout=<s>\t\t\tTimeout for CD track ripping (default is 120 seconds)\n");
-				Console::OutputString("  --cddb\t\t\tEnable CDDB database lookup\n\n");
+				Console::OutputString("  --cddb\t\t\tEnable CDDB database lookup\n");
+				Console::OutputString("  --eject\t\t\tEject disc after ripping\n\n");
 			}
 
 			boca.DeleteComponent(info);
