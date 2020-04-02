@@ -24,7 +24,13 @@
 #ifdef __WIN32__
 #	include <windows.h>
 #else
+#	include <unistd.h>
 #	include <signal.h>
+#	include <limits.h>
+
+#	ifndef PATH_MAX
+#		define PATH_MAX 32768
+#	endif
 #endif
 
 using namespace smooth::IO;
@@ -213,6 +219,23 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			ScanForProgramOption("--timeout=%VALUE", &timeout);
 
+#ifndef __WIN32__
+			/* Resolve links to devices.
+			 */
+			Buffer<char>	 buffer(PATH_MAX + 1);
+
+			buffer.Zero();
+
+			while (readlink(cdDrive, buffer, buffer.Size() - 1) != -1)
+			{
+				cdDrive = buffer;
+
+				buffer.Zero();
+			}
+#endif
+
+			/* Find drive number for path.
+			 */
 			for (Int i = 0; i < numDrives; i++)
 			{
 				const Device	&device = info->GetNthDeviceInfo(i);
