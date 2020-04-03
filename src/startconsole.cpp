@@ -228,10 +228,13 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			while (readlink(cdDrive, buffer, buffer.Size() - 1) != -1)
 			{
-				cdDrive = buffer;
+				if (buffer[0] == '/') cdDrive = buffer;
+				else		      cdDrive = File(cdDrive).GetFilePath().Append("/").Append(String(buffer));
 
 				buffer.Zero();
 			}
+
+			cdDrive = File(cdDrive);
 #endif
 
 			/* Find drive number for path.
