@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -12,6 +12,8 @@
 
 #include <utilities.h>
 #include <config.h>
+
+#include <cddb/cddb.h>
 
 #ifdef __WIN32__
 #	include <windows.h>
@@ -351,6 +353,7 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 		shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
 		shortOutFileName.Replace("<genre>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
 		shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
+		shortOutFileName.Replace("<discid>", CDDB::DiscIDToString(track.discid));
 		shortOutFileName.Replace("<filename>", BoCA::Utilities::ReplaceIncompatibleCharacters(shortInFileName));
 		shortOutFileName.Replace("<filetype>", fileExtension.ToUpper());
 		shortOutFileName.Replace("<currentdate>", currentDate);
@@ -642,6 +645,7 @@ String freac::Utilities::GetPlaylistFileName(const Track &track, const Array<Tra
 		shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
 		shortOutFileName.Replace("<genre>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
 		shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
+		shortOutFileName.Replace("<discid>", CDDB::DiscIDToString(track.discid));
 		shortOutFileName.Replace("<currentdate>", currentDate);
 		shortOutFileName.Replace("<currenttime>", currentTime);
 

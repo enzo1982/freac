@@ -147,10 +147,11 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.1 (März 2020)
+	Version 1.1.1 (April 2020)
 
 		- Verbesserungen
 
+			- Dateinamensplatzhalter <discid> hinzugefügt
 			- Option zum Auswerfen der CD nach dem Rippen zu freaccmd hinzugefügt
 			- Erlaube Angabe des Gerätepfads statt der Laufwerksnummer in freaccmd
 
