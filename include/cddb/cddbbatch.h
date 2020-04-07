@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -30,16 +30,16 @@ namespace freac
 
 			Bool			 SaveEntries();
 
-			Bool			 ConnectToServer()			{ return True; }
-			Int			 Query(const String &)			{ return QUERY_RESULT_NONE; }
-			Bool			 Read(const String &, Int, CDDBInfo &)	{ return False; }
-			Bool			 CloseConnection()			{ return True; }
+			Bool			 ConnectToServer()					{ return True; }
+			Int			 Query(const String &)					{ return QUERY_RESULT_NONE; }
+			Bool			 Read(const String &, UnsignedInt32, CDDBInfo &)	{ return False; }
+			Bool			 CloseConnection()					{ return True; }
 		public:
 						 CDDBBatch();
 			virtual			~CDDBBatch();
 
-			const Array<String>	&GetQueries() const			{ return queries; }
-			const Array<CDDBInfo>	&GetSubmits() const			{ return submits; }
+			const Array<String>	&GetQueries() const					{ return queries; }
+			const Array<CDDBInfo>	&GetSubmits() const					{ return submits; }
 
 			Bool			 AddQuery(const String &);
 			Bool			 DeleteQuery(Int);

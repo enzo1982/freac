@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -43,7 +43,7 @@ const freac::CDDBInfo &freac::CDDBCache::GetCacheEntry(const String &queryString
 	BoCA::Config	*config = BoCA::Config::Get();
 
 	const Array<String>	&values	  = queryString.Explode(" ");
-	Int			 discID	  = CDDB::StringToDiscID(values.GetNth(2));
+	UnsignedInt32		 discID	  = CDDB::StringToDiscID(values.GetNth(2));
 	const CDDBInfo		&cddbInfo = infoCache.Get(discID);
 
 	if (cddbInfo != NIL)
@@ -124,8 +124,8 @@ Int freac::CDDBCache::RemoveNthEntry(Int n)
 {
 	if (n >= GetNOfEntries()) return Error();
 
-	BoCA::Config	*config = BoCA::Config::Get();
-	Int		 discID = infoCache.GetNthIndex(n);
+	BoCA::Config	*config	  = BoCA::Config::Get();
+	UnsignedInt32	 discID	  = infoCache.GetNthIndex(n);
 	const CDDBInfo	&cddbInfo = infoCache.Get(discID);
 
 	File(String(config->cacheDir).Append("cddb").Append(Directory::GetDirectoryDelimiter()).Append(cddbInfo.category).Append(Directory::GetDirectoryDelimiter()).Append(CDDB::DiscIDToString(cddbInfo.discID))).Delete();

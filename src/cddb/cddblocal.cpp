@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -39,7 +39,7 @@ Bool freac::CDDBLocal::QueryUnixDB(const String &queryString)
 	const Array<String>	&values = queryString.Explode(" ");
 
 	Int		 numTocEntries = values.GetNth(3).ToInt();
-	Int		 discID	       = StringToDiscID(values.GetNth(2));
+	UnsignedInt32	 discID	       = StringToDiscID(values.GetNth(2));
 	Int		 discLength    = values.GetNth(numTocEntries + 4).ToInt();
 	Array<Int>	 discOffsets;
 
@@ -102,7 +102,7 @@ Bool freac::CDDBLocal::QueryWinDB(const String &queryString)
 	const Array<String>	&values = queryString.Explode(" ");
 
 	Int		 numTocEntries = values.GetNth(3).ToInt();
-	Int		 discID	       = StringToDiscID(values.GetNth(2));
+	UnsignedInt32	 discID	       = StringToDiscID(values.GetNth(2));
 	Int		 discLength    = values.GetNth(numTocEntries + 4).ToInt();
 	Array<Int>	 discOffsets;
 
@@ -224,7 +224,7 @@ Int freac::CDDBLocal::Query(const String &queryString)
 	return QUERY_RESULT_ERROR;
 }
 
-Bool freac::CDDBLocal::Read(const String &category, Int discID, CDDBInfo &cddbInfo)
+Bool freac::CDDBLocal::Read(const String &category, UnsignedInt32 discID, CDDBInfo &cddbInfo)
 {
 	cddbInfo.discID   = discID;
 	cddbInfo.category = category;

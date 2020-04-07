@@ -200,9 +200,9 @@ Bool freac::cddbQueryDlg::Query(CDDB &cddb)
 
 	/* Process result.
 	 */
-	String	 category;
-	Int	 discID	= 0;
-	Bool	 fuzzy	= False;
+	String		 category;
+	UnsignedInt32	 discID	= 0;
+	Bool		 fuzzy	= False;
 
 	if (result == QUERY_RESULT_NONE)
 	{

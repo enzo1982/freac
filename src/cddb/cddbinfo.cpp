@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -17,7 +17,7 @@ freac::CDDBInfo::CDDBInfo()
 {
 	charset	   = "UTF-8";
 
-	discID	   = -1;
+	discID	   = 0;
 	revision   = -1;
 
 	discLength = 0;
@@ -48,7 +48,7 @@ bool freac::CDDBInfo::operator !=(const CDDBInfo &oInfo) const
 
 bool freac::CDDBInfo::operator ==(int nil) const
 {
-	return discID == 0 || discID == -1;
+	return discID == 0;
 }
 
 bool freac::CDDBInfo::operator !=(int nil) const
@@ -58,7 +58,7 @@ bool freac::CDDBInfo::operator !=(int nil) const
 
 freac::CDDBInfo &freac::CDDBInfo::operator =(int nil)
 {
-	discID	   = -1;
+	discID	   = 0;
 	revision   = -1;
 
 	discLength = 0;

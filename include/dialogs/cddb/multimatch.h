@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -47,7 +47,7 @@ namespace freac
 			CDDB					&cddb;
 
 			Array<String>				 categories;
-			Array<Int>				 discIDs;
+			Array<UnsignedInt32>			 discIDs;
 
 			Array<Threads::Thread *, Void *>	 loadPreviewThreads;
 
@@ -59,7 +59,7 @@ namespace freac
 
 			const Error				&ShowDialog();
 
-			Int					 AddEntry(const String &, const String &, Int);
+			Int					 AddEntry(const String &, const String &, UnsignedInt32);
 			Int					 GetSelectedEntryNumber() const;
 		slots:
 			Void					 OnChangeSize(const Size &);
