@@ -201,6 +201,7 @@
       <entry id="3044" string="verifying">Überprüfen</entry>
       <entry id="3045" string="Open">Öffnen</entry>
       <entry id="3046" string="CD drive">CD-Laufwerk</entry>
+      <entry id="3047" string="Disc ID">Disk-ID</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">Aktuelle Datei</entry>
@@ -542,7 +543,7 @@
 	  <entry id="5664" string="Channels">Audiokanäle</entry>
 	  <entry id="5665" string="Sample resolution">Sampleauflösung</entry>
 	  <entry id="5666" string="CD drive">CD-Laufwerk</entry>
-	  <entry id="5667" string="Disc ID">Disc-ID</entry>
+	  <entry id="5667" string="Disc ID">Disk-ID</entry>
 	</section>
       </section>
 

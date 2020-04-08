@@ -152,7 +152,7 @@ Geschichte
 		- Verbesserungen
 
 			- Dateinamensplatzhalter <discid> hinzugefügt
-			- Optionale Disc-ID-Spalte zur Jobliste hinzugefügt
+			- Optionale Disk-ID-Spalte zur Jobliste hinzugefügt
 			- Option zum Auswerfen der CD nach dem Rippen zu freaccmd hinzugefügt
 			- Erlaube Angabe des Gerätepfads statt der Laufwerksnummer in freaccmd
 

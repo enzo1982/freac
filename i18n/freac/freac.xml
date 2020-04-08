@@ -201,6 +201,7 @@
       <entry id="3044" string="verifying"/>
       <entry id="3045" string="Open"/>
       <entry id="3046" string="CD drive"/>
+      <entry id="3047" string="Disc ID"/>
 
       <section name="File">
 	<entry id="3050" string="Current file"/>
