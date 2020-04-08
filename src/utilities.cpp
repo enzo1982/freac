@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -12,6 +12,8 @@
 
 #include <utilities.h>
 #include <config.h>
+
+#include <cddb/cddb.h>
 
 #ifdef __WIN32__
 #	include <windows.h>
@@ -351,6 +353,7 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 		shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
 		shortOutFileName.Replace("<genre>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
 		shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
+		shortOutFileName.Replace("<discid>", CDDB::DiscIDToString(track.discid));
 		shortOutFileName.Replace("<filename>", BoCA::Utilities::ReplaceIncompatibleCharacters(shortInFileName));
 		shortOutFileName.Replace("<filetype>", fileExtension.ToUpper());
 		shortOutFileName.Replace("<currentdate>", currentDate);
@@ -487,22 +490,6 @@ String freac::Utilities::GetSingleOutputFileName(const Array<Track> &tracks)
 
 	if (singleOutputFileName != NIL || enableConsole) return singleOutputFileName;
 
-	/* Find artist and album to use for file name.
-	 */
-	Info	 info = tracks.GetFirst().GetInfo();
-
-	if (info.HasOtherInfo(INFO_ALBUMARTIST)) info.artist = info.GetOtherInfo(INFO_ALBUMARTIST);
-
-	foreach (const Track &chapterTrack, tracks)
-	{
-		const Info	&chapterInfo = chapterTrack.GetInfo();
-
-		if (( chapterInfo.HasOtherInfo(INFO_ALBUMARTIST) && chapterInfo.GetOtherInfo(INFO_ALBUMARTIST) != info.artist) ||
-		    (!chapterInfo.HasOtherInfo(INFO_ALBUMARTIST) && chapterInfo.artist			       != info.artist)) info.artist = NIL;
-
-		if (chapterInfo.album != info.album) info.album = NIL;
-	}
-
 	/* Instantiate selected encoder.
 	 */
 	Registry		&boca	 = Registry::Get();
@@ -546,8 +533,7 @@ String freac::Utilities::GetSingleOutputFileName(const Array<Track> &tracks)
 	dialog.AddFilter(i18n->TranslateString("All Files", "Joblist"), "*.*");
 
 	dialog.SetDefaultExtension(defaultExtension);
-	dialog.SetFileName(BoCA::Utilities::NormalizeFileName(BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ")
-						      .Append(BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length()  > 0 ? info.album  : i18n->TranslateString("unknown album")))).Append(defaultExtension != NIL ? "." : NIL).Append(defaultExtension));
+	dialog.SetFileName(GetSingleOutputFileNameDefault(tracks));
 
 	dialog.SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedSaveDirID, NIL));
 
@@ -561,6 +547,47 @@ String freac::Utilities::GetSingleOutputFileName(const Array<Track> &tracks)
 	}
 
 	return singleOutputFileName;
+}
+
+String freac::Utilities::GetSingleOutputFileNameDefault(const Array<Track> &tracks)
+{
+	/* Get configuration.
+	 */
+	BoCA::Config	*config = BoCA::Config::Get();
+
+	String	 selectedEncoder = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+
+	/* Instantiate selected encoder and get file extension.
+	 */
+	Registry		&boca	       = Registry::Get();
+	EncoderComponent	*encoder       = (EncoderComponent *) boca.CreateComponentByID(selectedEncoder);
+
+	String			 fileExtension = (encoder != NIL) ? encoder->GetOutputFileExtension() : "audio";
+
+	boca.DeleteComponent(encoder);
+
+	/* Find artist and album to use for file name.
+	 */
+	Info	 info = tracks.GetFirst().GetInfo();
+
+	if (info.HasOtherInfo(INFO_ALBUMARTIST)) info.artist = info.GetOtherInfo(INFO_ALBUMARTIST);
+
+	foreach (const Track &chapterTrack, tracks)
+	{
+		const Info	&chapterInfo = chapterTrack.GetInfo();
+
+		if (( chapterInfo.HasOtherInfo(INFO_ALBUMARTIST) && chapterInfo.GetOtherInfo(INFO_ALBUMARTIST) != info.artist) ||
+		    (!chapterInfo.HasOtherInfo(INFO_ALBUMARTIST) && chapterInfo.artist			       != info.artist)) info.artist = NIL;
+
+		if (chapterInfo.album != info.album) info.album = NIL;
+	}
+
+	/* Get file name and return.
+	 */
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	return BoCA::Utilities::NormalizeFileName(BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ")
+					  .Append(BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length()  > 0 ? info.album  : i18n->TranslateString("unknown album")))).Append(fileExtension != NIL ? "." : NIL).Append(fileExtension);
 }
 
 String freac::Utilities::GetPlaylistFileName(const Track &track, const Array<Track> &originalTracks)
@@ -618,6 +645,7 @@ String freac::Utilities::GetPlaylistFileName(const Track &track, const Array<Tra
 		shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
 		shortOutFileName.Replace("<genre>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
 		shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
+		shortOutFileName.Replace("<discid>", CDDB::DiscIDToString(track.discid));
 		shortOutFileName.Replace("<currentdate>", currentDate);
 		shortOutFileName.Replace("<currenttime>", currentTime);
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -24,7 +24,7 @@ using namespace smooth::System;
 Int smooth::Main(const Array<String> &args)
 {
 #ifdef __WIN32__
-	SetEnvironmentVariableW(L"PATH", String("%PATH%;").Append(GUI::Application::GetApplicationDirectory()).Append("boca"));
+	SetDllDirectory(GUI::Application::GetApplicationDirectory().Append("boca"));
 #endif
 
 	DynamicLoader	*loader = new DynamicLoader("freac");

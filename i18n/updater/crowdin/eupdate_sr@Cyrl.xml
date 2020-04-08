@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">easyUpdate</property>
+    <property name="version">0.3</property>
+    <property name="language">Serbian (Cyrillic) / Српски (Ћирилица)</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">eupdate.xml</property>
+    <property name="author">Небојша Николић &lt;nebek2000@gmail.com&gt;</property>
+    <property name="url">http://www.chapter0.net/easyUpdate/</property>
+  </info>
+  <data>
+    <entry id="1" string="Cancel">Откажи</entry>
+    <entry id="2" string="Install">Инсталација</entry>
+    <entry id="3" string="Show unstable releases">Прикажи нестабилне верзије</entry>
+    <entry id="4" string="Select the updated program version to be installed:">Одаберите ажурирану верзију за инсталацију:</entry>
+    <entry id="5" string="You can select optional components to be installed:">Можете одабрати опционе компоненте за инсталацију:</entry>
+    <entry id="6" string="Version ID">ID Верзије</entry>
+    <entry id="7" string="Package">Пакет</entry>
+    <entry id="8" string="Description">Опис</entry>
+    <entry id="9" string="Latest">Последње</entry>
+    <entry id="10" string="Size">Величина</entry>
+    <entry id="11" string="Yes">Да</entry>
+    <entry id="12" string="No">Не</entry>
+    <entry id="13" string="unknown">непознато</entry>
+    <entry id="14" string="Installing files...">Инсталирање у току...</entry>
+    <entry id="15" string="Installing file:">Инсталирање фајла:</entry>
+    <entry id="16" string="Downloading file:">Преузимање фајла:</entry>
+    <entry id="17" string="Update complete">Ажурирање завршено</entry>
+    <entry id="18" string="Your application has been successfully updated!">Ваша апликација је успешно ажурирана!</entry>
+    <entry id="19" string="Error">Грешка</entry>
+    <entry id="20" string="Error downloading package!">Грешка приликом преузимања пакета!</entry>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Грешка приликом инсталирања &quot;%1&quot;!&#10;&#10;Приступ инсталационом фолдеру је одбијен.</entry>
+  </data>
+</LangFile>

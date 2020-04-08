@@ -1,4 +1,4 @@
-fre:ac Version 1.1 Beta 3
+fre:ac Version 1.1.1
 
 fre:ac ist ein freier Open-Source Audiokonverter. Das Programm unterstützt das Rippen
 von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate:
@@ -117,7 +117,7 @@ Voraussetzungen
 
 		Alle Systeme:
 
-			- smooth v0.9.1 (http://www.smooth-project.org/)
+			- smooth v0.9.4 (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -147,19 +147,62 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1 Beta 3+ (February 2020)
+	Version 1.1.1 (April 2020)
+
+		- Verbesserungen
+
+			- Dateinamensplatzhalter <discid> hinzugefügt
+			- Optionale Disc-ID-Spalte zur Jobliste hinzugefügt
+			- Option zum Auswerfen der CD nach dem Rippen zu freaccmd hinzugefügt
+			- Erlaube Angabe des Gerätepfads statt der Laufwerksnummer in freaccmd
+
+		- Behobene Fehler
+
+			- Absturz von freaccmd bei CDDB-Abfrage mit nicht gesetzter DISPLAY-Variable behoben
+
+	Version 1.1 (März 2020)
+
+		- Behobene Fehler
+
+			- Problem mit aktiver Parallelverarbeitung für CD-Track-Referenzdateien unter Windows behoben
+			- Problem mit Auswurf der CD nach dem Rippen eines Tracks in freaccmd bei aktivierter Auswurf-Option in fre:ac behoben
+			- Absturz von freaccmd bei nicht gesetzter DISPLAY-Variable unter Linux/FreeBSD behoben
+
+	Version 1.1 RC 2 (März 2020)
+
+		- Behobene Fehler
+
+			- Probleme beim Einlesen von Raw-AAC-Dateien mit dem FAAD2-Dekoder behoben
+			- Problem beim Erzeugen von WMA-Dateien mit langen Pfadnamen behoben behoben
+			- Probleme mit Cursor-Positionierung und Text-Selektion im Rechts-nach-Links Modus behoben
+			- Problem mit nicht beachtetem Kerning bei Cursor-Positonsberechnung unter Windows 10 behoben
+
+		- Aktualisierte Codecs
+
+			- Monkey's Audio auf Version 5.24 aktualisiert
+
+		- Aktualisierte Übersetzungen
+
+			- Serbische Übersetzungen aktualisiert
+
+	Version 1.1 RC 1 (März 2020)
 
 		- Verbesserungen
 
 			- Übergebe Float-Samples direkt an LAME-Kodierer, wenn das Sampleformat Float ist
+			- Automatisches Rippen funktioniert jetzt auch bei Ausage in eine einzige Datei
 			- Optionen zum Steuern von Kapitelinformationen und Cover-Bildern zu freaccmd hinzugefügt
+			- Reagiere in freaccmd auf Strg+C, um bei Abbruch temporäre Dateien aufzuräumen
 			- Verwende Fensterrahmenfarbe als Akzentfarbe unter Windows Vista, 7 und 8/8.1
+			- HiDPI-Erkennung unter Linux-/FreeBSD-Systemen verbessert
+			- Schreibe CDDB-Informationen beim Rippen in Log-Dateien
 
-		- Bug fixes
+		- Behobene Fehler
 
 			- Problem behoben, dass Drag & Drop unter Windows keine langen Dateipfade akzeptiert
 			- Problem mit verlorenen Dateiänderungsdaten bei aktivierter Ausgabeverifikation behoben
 			- Problem mit trotz aktivierter Option nicht beibehaltenen Dateierstellungsdaten behoben
+			- Problem mit nicht korrekt verarbeiteten relativen Ausgabeordnern in freaccmd behoben
 			- Problem mit schwarzer Titelleiste unter Windows Vista, 7 und 8/8.1 behoben
 			- Probleme mit nicht funktionierendem Online-Update behoben
 

@@ -69,13 +69,13 @@
     text-align: center;
   }
   #container {
-    width: 718px;
+    width: 850px;
     text-align: left;
     margin: 0 auto;
   }
   #main-content {
     float: right;
-    width: 500px;
+    width: 632px;
   }
   #main-content-oc {
   }
@@ -428,6 +428,7 @@
   body {
   	color: #323229;
   	background: #BFBFBF url(images/body-bg.gif) repeat-y center top;
+  	background-size: 850px auto;
   }
   caption {
   	color: #fff;

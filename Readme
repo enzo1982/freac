@@ -1,4 +1,4 @@
-fre:ac version 1.1 Beta 3
+fre:ac version 1.1.1
 
 fre:ac is a free and open source audio converter. It supports audio CD
 ripping and tag editing and converts the following audio formats:
@@ -117,7 +117,7 @@ Requirements
 
 		All platforms:
 
-			- smooth v0.9.1 (http://www.smooth-project.org/)
+			- smooth v0.9.4 (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -147,19 +147,62 @@ Requirements
 History
 -------
 
-	Version 1.1 Beta 3+ (February 2020)
+	Version 1.1.1 (April 2020)
+
+		- Improvements
+
+			- added <discid> placeholder for use in filename patterns
+			- added an optional disc ID column to the joblist
+			- added an option to eject the disc after ripping to freaccmd
+			- allow specifying device path instead of drive number in freaccmd
+
+		- Bug fixes
+
+			- fixed crash of freaccmd when querying CDDB while DISPLAY variable is not set
+
+	Version 1.1 (March 2020)
+
+		- Bug fixes
+
+			- fixed parallel processing being active for CD track reference files on Windows
+			- fixed freaccmd ejecting the CD after ripping 1 track with eject option enabled in fre:ac
+			- fixed crash of freaccmd when DISPLAY variable is not set on Linux/FreeBSD
+
+	Version 1.1 RC 2 (March 2020)
+
+		- Bug fixes
+
+			- fixed inability to read raw AAC files with the FAAD2 decoder
+			- fixed inability to create WMA files with long path names
+			- fixed cursor positioning and text selection in right-to-left mode
+			- fixed cursor position calculation not respecting kerning on Windows 10
+
+		- Updated codecs
+
+			- updated Monkey's Audio to version 5.24
+
+		- Updated translations
+
+			- updated Serbian translations
+
+	Version 1.1 RC 1 (March 2020)
 
 		- Improvements
 
 			- now passing float samples to LAME encoder directly if sample format is float
+			- made automatic ripping work when using the single output file option
 			- added options to control chapter information and cover art to freaccmd
+			- handle Ctrl+C in freaccmd to clean up temporary files when aborted
 			- respect colorization tint color on Windows Vista, 7 and 8/8.1
+			- improved HiDPI detection on Linux/FreeBSD systems
+			- log CDDB information when ripping
 
 		- Bug fixes
 
 			- fixed drag & drop not accepting long file paths on Windows
 			- fixed file modification time stamp getting lost when output verification is active
 			- fixed file creation time stamp not being preserved despite option being enabled
+			- fixed freaccmd not correctly handling relative output folders
 			- fixed black title bar color on Windows Vista, 7 and 8/8.1
 			- fixed online updater not working
 

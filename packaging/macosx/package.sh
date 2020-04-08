@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#RELEASE=1.1-beta3
-RELEASE=1.1-beta3-`date +"%Y%m%d"`
+#RELEASE=1.1
+RELEASE=1.1-`date +"%Y%m%d"`
 
-VERSION="v1.1 Beta 3"
+VERSION="v1.1"
 
 UNAME=macosx
 

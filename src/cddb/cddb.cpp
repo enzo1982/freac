@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -42,19 +42,19 @@ freac::CDDB::~CDDB()
 	categories.RemoveAll();
 }
 
-String freac::CDDB::DiscIDToString(Int discID)
+String freac::CDDB::DiscIDToString(UnsignedInt32 discID)
 {
 	String	 discIDString = Number((Int64) discID).ToHexString(8);
 
 	return discIDString;
 }
 
-Int freac::CDDB::StringToDiscID(const String &string)
+UnsignedInt32 freac::CDDB::StringToDiscID(const String &string)
 {
 	return (Int64) Number::FromHexString(string);
 }
 
-Int freac::CDDB::DiscIDFromMCDI(const MCDI &mcdi)
+UnsignedInt32 freac::CDDB::DiscIDFromMCDI(const MCDI &mcdi)
 {
 	Int	 numTocEntries = mcdi.GetNumberOfEntries();
 	Int	 n = 0;
@@ -88,7 +88,7 @@ String freac::CDDB::QueryStringFromMCDI(const MCDI &mcdi)
 	return str;
 }
 
-Int freac::CDDB::DiscIDFromOffsets(const String &offsets)
+UnsignedInt32 freac::CDDB::DiscIDFromOffsets(const String &offsets)
 {
 	Int	 numTocEntries = (Int64) Number::FromHexString(offsets);
 	Int	 n = 0;

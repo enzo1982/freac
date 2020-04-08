@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -157,7 +157,7 @@ Void freac::cddbMultiMatchDlg::Cancel()
 	mainWnd->Close();
 }
 
-Int freac::cddbMultiMatchDlg::AddEntry(const String &category, const String &title, Int discID)
+Int freac::cddbMultiMatchDlg::AddEntry(const String &category, const String &title, UnsignedInt32 discID)
 {
 	combo_match->AddEntry(String("(").Append(category).Append(") ").Append(title));
 

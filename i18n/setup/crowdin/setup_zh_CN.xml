@@ -57,7 +57,7 @@
     <entry id="20" string="%NAME% command line interface">%NAME% 命令行界面</entry>
     <entry id="21" string="Install a command line&#10;interface useful for use&#10;in batch scripts">安装便于使用批处理脚本的&#10;命令行界面</entry>
     <entry id="22" string="smooth Translator utility">smooth 翻译工具</entry>
-    <entry id="23" string="Install an easy to use&#10;application for editing&#10;%NAME% XML language&#10;files">安装 %NAME% XML &#10;语言文件编辑程序</entry>
+    <entry id="23" string="Install an easy to use&#10;application for editing&#10;%NAME% XML language&#10;files">安装 %NAME% XML&#10;语言文件编辑程序</entry>
     <entry id="24" string="%NAME% source code">%NAME% 源码</entry>
     <entry id="25" string="Install the complete C++&#10;source code to %NAME%">安装完整的 C++&#10;源码至 %NAME%</entry>
     <entry id="26" string="%NAME% User Guide">%NAME% 用户指南</entry>

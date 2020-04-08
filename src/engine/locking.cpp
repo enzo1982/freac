@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -84,15 +84,16 @@ Bool freac::Locking::LockDeviceForTrack(const Track &track)
 		deviceLocked.Add(True, device.ComputeCRC32());
 	}
 
-#if defined __APPLE__ || defined __HAIKU__
-	/* On macOS and Haiku, treat CDDA volumes like CD tracks.
+	/* Treat .cda files and CDDA volumes like CD tracks.
 	 */
 	String	 filePath = File(track.fileName).GetFilePath();
 
 #if defined __APPLE__
 	if (track.fileName.EndsWith(".aiff") && Directory(filePath).GetDirectoryPath() == "/Volumes" && File(String(filePath).Append("/.TOC.plist")).Exists())
-#else
+#elif defined __HAIKU__
 	if (track.fileName.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
+#else
+	if (track.fileName.EndsWith(".cda"))
 #endif
 	{
 		Lock	 lock(managementMutex);
@@ -101,7 +102,6 @@ Bool freac::Locking::LockDeviceForTrack(const Track &track)
 
 		deviceLocked.Add(True, filePath.ComputeCRC32());
 	}
-#endif
 
 	return True;
 }
@@ -118,22 +118,22 @@ Bool freac::Locking::UnlockDeviceForTrack(const Track &track)
 		deviceLocked.Remove(device.ComputeCRC32());
 	}
 
-#if defined __APPLE__ || defined __HAIKU__
-	/* On macOS and Haiku, treat CDDA volumes like CD tracks.
+	/* Treat .cda files and CDDA volumes like CD tracks.
 	 */
 	String	 filePath = File(track.fileName).GetFilePath();
 
 #if defined __APPLE__
 	if (track.fileName.EndsWith(".aiff") && Directory(filePath).GetDirectoryPath() == "/Volumes" && File(String(filePath).Append("/.TOC.plist")).Exists())
-#else
+#elif defined __HAIKU__
 	if (track.fileName.EndsWith(".wav") && filePath != NIL && Directory(filePath).GetDirectoryPath() == NIL)
+#else
+	if (track.fileName.EndsWith(".cda"))
 #endif
 	{
 		Lock	 lock(managementMutex);
 
 		deviceLocked.Remove(filePath.ComputeCRC32());
 	}
-#endif
 
 	return True;
 }

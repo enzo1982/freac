@@ -204,22 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Comprimiendo</entry>
-        <entry id="3051" string="none">ninguno</entry>
-        <entry id="3052" string="Skip current file">Omitir</entry>
+	<entry id="3051" string="none">ninguno</entry>
+	<entry id="3052" string="Skip current file">Omitir</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Decodificador activo</entry>
-        <entry id="3061" string="none">ninguno</entry>
+	<entry id="3060" string="Active decoder">Decodificador activo</entry>
+	<entry id="3061" string="none">ninguno</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Filtros elegidos</entry>
+	<entry id="3071" string="none">ninguno</entry>
+	<entry id="3072" string="disabled">desactivado</entry>
 	<entry id="3073" string="Configure signal processing">Configurar el proceso de la señal</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Compresor elegido</entry>
+	<entry id="3080" string="Selected encoder">Compresor elegido</entry>
 	<entry id="3081" string="Configure selected encoder">Configurar compresor seleccionado</entry>
       </section>
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -13,6 +13,8 @@
 #include <joblist.h>
 #include <config.h>
 #include <utilities.h>
+
+#include <cddb/cddb.h>
 
 #include <gui/layer_tooltip.h>
 
@@ -793,6 +795,7 @@ Void freac::JobList::OnClickTab(Int n)
 	Bool	 sortByTitle	   = (fields.GetNth(n) == "<title>");
 	Bool	 sortByGenre	   = (fields.GetNth(n) == "<genre>");
 	Bool	 sortByDrive	   = (fields.GetNth(n) == "<drive>");
+	Bool	 sortByDiscID	   = (fields.GetNth(n) == "<discid>");
 	Bool	 sortByFile	   = (fields.GetNth(n) == "<file>");
 	Bool	 sortByType	   = (fields.GetNth(n) == "<filetype>");
 	Bool	 sortByOutput	   = (fields.GetNth(n) == "<outputfile>");
@@ -896,6 +899,7 @@ Void freac::JobList::OnClickTab(Int n)
 			    (sortByOutput      &&  SortsAfter(outputFileNames.GetNth(m), outputFileNames.GetNth(i))							) ||
 			    (sortByAlbumArtist &&  SortsAfter(compInfo.GetOtherInfo(INFO_ALBUMARTIST), thisInfo.GetOtherInfo(INFO_ALBUMARTIST))				) ||
 			    (sortByDrive       &&  compTrack.drive					       >  thisTrack.drive					) ||
+			    (sortByDiscID      &&  compTrack.discid					       >  thisTrack.discid					) ||
 			    (sortByDisc	       &&  compInfo.disc					       >  thisInfo.disc						) ||
 			    (sortByTrack       &&  compInfo.track					       >  thisInfo.track					) ||
 			    (sortByRating      &&  compInfo.rating					       >  thisInfo.rating					) ||
@@ -1063,6 +1067,7 @@ Void freac::JobList::AddHeaderTabs()
 		else if (field == "<channels>")	   { tabName = "Channels";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
 		else if (field == "<resolution>")  { tabName = "Sample resolution"; tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ? 100 : tabSize; }
 		else if (field == "<drive>")	   { tabName = "CD drive";				 tabSize = tabSize <= 0 ? 180 : tabSize; }
+		else if (field == "<discid>")	   { tabName = "Disc ID";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
 		else if (field == "<file>")	   { tabName = "File name";				 tabSize = 0;				 }
 		else if (field == "<filetype>")	   { tabName = "File type";				 tabSize = tabSize <= 0 ?  60 : tabSize; }
 		else if (field == "<outputfile>")  { tabName = "Output file name";			 tabSize = tabSize <= 0 ? 240 : tabSize; }
@@ -1147,6 +1152,7 @@ String freac::JobList::GetEntryText(const Track &track)
 			jlEntry.Append(drives.Get(track.drive));
 		}
 
+		else if (field == "<discid>")	   jlEntry.Append(CDDB::DiscIDToString(track.discid));
 		else if (field == "<file>")	   jlEntry.Append(track.fileName);
 
 		else if (field == "<filetype>")

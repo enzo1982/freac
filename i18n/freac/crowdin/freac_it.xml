@@ -204,24 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">File elaborato</entry>
-        <entry id="3051" string="none">nessuno</entry>
-        <entry id="3052" string="Skip current file">Ignora</entry>
+	<entry id="3051" string="none">nessuno</entry>
+	<entry id="3052" string="Skip current file">Ignora</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Decodificatore attivo</entry>
-        <entry id="3061" string="none">sconosciuto</entry>
+	<entry id="3060" string="Active decoder">Decodificatore attivo</entry>
+	<entry id="3061" string="none">sconosciuto</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Filtri selezionati</entry>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3071" string="none">nessuno</entry>
+	<entry id="3072" string="disabled">disattivato</entry>
 	<entry id="3073" string="Configure signal processing">Configura elaborazione segnale</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Codifica selezionata</entry>
+	<entry id="3080" string="Selected encoder">Codifica selezionata</entry>
 	<entry id="3081" string="Configure selected encoder">Imposta codec selezionato</entry>
       </section>
 
@@ -1181,8 +1181,8 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">Supporta questo progetto</entry>
 	<entry id="100001" string="Please support this project!">Per favore supporta questo progetto!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Aiutaci a mantenere questo software gratuito supportando il progetto %1&#10;con una donazione.</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Per favore scrivi a %1 se vuoi donare usando un pagamento&#10;elettronico, inviarci un cheque o inviarci denaro via mail.</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Aiutaci a mantenere questo software gratuito supportando il progetto %1 con una&#10;donazione.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Per favore scrivi a %1 se vuoi donare usando un pagamento elettronico,&#10;inviarci un cheque o inviarci denaro via mail.</entry>
 	<entry id="100004" string="Thank you very much!">Molte grazie!</entry>
 	<entry id="100005" string="Remind me later">Ricordamelo più tardi</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
@@ -1199,23 +1199,23 @@
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox consente di effettuare donazioni rapide e semplici con carta&#10;di credito. Fai clic sul seguente pulsante per donare con Donorbox:</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox consente di effettuare donazioni rapide e semplici con carta di credito.&#10;Fai clic sul seguente pulsante per donare con Donorbox:</entry>
 	  <entry id="100201" string="Donate">Dona</entry>
 	  <entry id="100202" string="usd">eur</entry>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Per donare Bitcoin, eseguire una scansione o fare clic&#10;sul codice QR oppure copiare il seguente indirizzo:</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Per donare Bitcoin, eseguire una scansione o fare clic sul&#10;codice QR oppure copiare il seguente indirizzo:</entry>
 	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">Questo indirizzo accetta anche pagamenti in Bitcoin ed altri fork.</entry>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Per donare Ethereum, eseguire una scansione o fare clic&#10;sul codice QR oppure copiare il seguente indirizzo:</entry>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Per donare Ethereum, eseguire una scansione o fare clic sul&#10;codice QR oppure copiare il seguente indirizzo:</entry>
 	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">Questo indirizzo accetta anche i token ERC20 e Ether Classic.</entry>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Puoi fare una donazione effettuando un bonifico&#10;bancario sul seguente conto:</entry>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Puoi fare una donazione effettuando un bonifico bancario&#10;sul seguente conto:</entry>
 	  <entry id="100501" string="Account holder:">Titolare del conto:</entry>
 	  <entry id="100502" string="IBAN:">IBAN:</entry>
 	  <entry id="100503" string="BIC:">BIC:</entry>

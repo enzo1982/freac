@@ -204,22 +204,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Konwersja pliku</entry>
-        <entry id="3051" string="none">brak</entry>
-        <entry id="3052" string="Skip current file">Pomiń</entry>
+	<entry id="3051" string="none">brak</entry>
+	<entry id="3052" string="Skip current file">Pomiń</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Bieżący dekoder</entry>
-        <entry id="3061" string="none">nieznany</entry>
+	<entry id="3060" string="Active decoder">Bieżący dekoder</entry>
+	<entry id="3061" string="none">nieznany</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Zastosowane filtry</entry>
+	<entry id="3071" string="none">brak</entry>
+	<entry id="3072" string="disabled">wyłączone</entry>
 	<entry id="3073" string="Configure signal processing">Konfiguruj przetwarzanie sygnału</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Zastosowany konwerter</entry>
+	<entry id="3080" string="Selected encoder">Zastosowany konwerter</entry>
 	<entry id="3081" string="Configure selected encoder">Konfiguruj bieżący konwerter</entry>
       </section>
 

@@ -1,0 +1,194 @@
+#!/usr/bin/env bash
+
+# Exit on error
+set -e
+
+# Number of parallel jobs
+jobs=$(nproc)
+
+if [ -z "$AppImageArch" ]; then
+  AppImageArch=x86_64
+fi
+
+# Set environment variables
+export OS=`uname`
+
+if [ "$AppImageArch" = i686 ]; then
+  export HOST=i386-linux-gnu
+  export BUILD_X86=True
+elif [ "$AppImageArch" = x86_64 ]; then
+  export HOST=x86_64-linux-gnu
+elif [ "$AppImageArch" = armhf ]; then
+  export HOST=arm-linux-gnueabihf
+elif [ "$AppImageArch" = aarch64 ]; then
+  export HOST=aarch64-linux-gnu
+fi
+
+# Build libcdio
+./tools/build-codecs libcdio libcdio-paranoia
+
+# Build libcurl
+wget -c https://curl.haxx.se/download/curl-7.64.1.tar.bz2
+tar xfj curl-7.64.1.tar.bz2
+cd curl-7.64.1
+
+if [ $AppImageArch = i686 ]; then
+  CFLAGS="-m32" ./configure --with-ssl --without-librtmp --disable-ldap
+else
+  ./configure --host=$HOST --with-ssl --without-librtmp --disable-ldap
+fi
+
+make -j$jobs
+sudo make install
+sudo rm /usr/local/bin/curl
+
+cd ..
+
+# Build smooth
+git clone https://github.com/enzo1982/smooth.git enzo1982/smooth
+cd enzo1982/smooth
+
+CONFIG="release,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib"
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/$HOST/pkgconfig
+
+make config=$CONFIG BUILD_V8=False -j$jobs
+sudo make config=$CONFIG BUILD_V8=False install
+
+unset PKG_CONFIG_PATH
+
+cd ../..
+
+# Build BoCA
+git clone https://github.com/enzo1982/boca.git enzo1982/boca
+cd enzo1982/boca
+
+CONFIG="release,bundledlibexpat,bundledliburiparser,bundledzlib"
+
+make config=$CONFIG -j$jobs
+sudo make config=$CONFIG install
+
+if [ "$AppImageArch" = x86_64 ]; then
+  # Build 32 bit Core Audio connector
+  cd components/encoder/coreaudioconnect/connector
+
+  make BUILD_X86=True config=$CONFIG clean
+  make BUILD_X86=True config=$CONFIG -j$jobs
+  sudo install ../../../../bin/boca_encoder_coreaudioconnect.1.0 /usr/local/lib/boca
+
+  cd ../../../..
+fi
+
+cd ../..
+
+# Build fre:ac
+git clone https://github.com/enzo1982/freac.git enzo1982/freac
+cd enzo1982/freac
+
+CONFIG="release"
+
+make config=$CONFIG USE_V8=False -j$jobs
+sudo make config=$CONFIG USE_V8=False install
+
+cd ../..
+
+# Build codecs and DSP libraries
+./tools/build-codecs faad2 fdk-aac mp4v2
+./tools/build-codecs lame mpg123
+./tools/build-codecs libogg opus speex vorbis
+./tools/build-codecs flac mac musepack wavpack
+./tools/build-codecs libav libsndfile
+./tools/build-codecs libsamplerate rnnoise rubberband
+
+# Install codecs
+mkdir -p appdir/codecs
+
+cp /usr/local/lib/libFLAC.so appdir/codecs/FLAC.so
+cp /usr/local/lib/libMAC.so appdir/codecs/MAC.so
+cp /usr/local/lib/libfaad.so appdir/codecs/faad.so
+cp /usr/local/lib/libfdk-aac.so appdir/codecs/fdk-aac.so
+cp /usr/local/lib/libmp3lame.so appdir/codecs/mp3lame.so
+cp /usr/local/lib/libmp4v2.so appdir/codecs/mp4v2.so
+cp /usr/local/lib/libmpg123.so appdir/codecs/mpg123.so
+cp /usr/local/lib/libogg.so appdir/codecs/ogg.so
+cp /usr/local/lib/libopus.so appdir/codecs/opus.so
+cp /usr/local/lib/librnnoise.so appdir/codecs/rnnoise.so
+cp /usr/local/lib/librubberband.so appdir/codecs/rubberband.so
+cp /usr/local/lib/libsamplerate.so appdir/codecs/samplerate.so
+cp /usr/local/lib/libsndfile.so appdir/codecs/sndfile.so
+cp /usr/local/lib/libspeex.so appdir/codecs/speex.so
+cp /usr/local/lib/libvorbis.so appdir/codecs/vorbis.so
+cp /usr/local/lib/libvorbisenc.so appdir/codecs/vorbisenc.so
+
+strip --strip-all appdir/codecs/*.so
+
+install -Dm 0755 /usr/local/bin/avconv appdir/codecs/cmdline/avconv
+install -Dm 0755 /usr/local/bin/mpcdec appdir/codecs/cmdline/mpcdec
+install -Dm 0755 /usr/local/bin/mpcenc appdir/codecs/cmdline/mpcenc
+install -Dm 0755 /usr/local/bin/wavpack appdir/codecs/cmdline/wavpack
+install -Dm 0755 /usr/local/bin/wvunpack appdir/codecs/cmdline/wvunpack
+
+strip --strip-all appdir/codecs/cmdline/*
+
+# Copy icons
+mkdir -p appdir/icons/gnome/32x32/status
+
+cp /usr/share/icons/gnome/32x32/status/dialog-error.png appdir/icons/gnome/32x32/status
+cp /usr/share/icons/gnome/32x32/status/dialog-information.png appdir/icons/gnome/32x32/status
+cp /usr/share/icons/gnome/32x32/status/dialog-question.png appdir/icons/gnome/32x32/status
+cp /usr/share/icons/gnome/32x32/status/dialog-warning.png appdir/icons/gnome/32x32/status
+
+# Copy smooth
+cp /usr/local/lib/libsmooth*.so.? appdir
+
+# Copy BoCA
+cp -r /usr/local/lib/boca appdir
+ln -s boca/boca.1.0.so appdir/libboca-1.0.so.2
+
+# Copy fre:ac
+cp COPYING Readme* appdir
+rm appdir/Readme.md
+
+cp -r /usr/local/lib/freac/* appdir/boca
+cp -r /usr/local/share/freac/lang appdir
+cp -r /usr/local/share/freac/icons appdir
+cp -r /usr/local/share/doc/freac/manual appdir
+
+mv appdir/boca/freac.so appdir
+
+install -Dm 0755 /usr/local/bin/freac appdir/freac
+install -Dm 0755 /usr/local/bin/freaccmd appdir/freaccmd
+install -Dm 0755 /usr/local/bin/smooth-translator appdir/translator
+install -Dm 0755 packaging/appimage/AppRun appdir/AppRun
+
+mkdir -p appdir/usr/share
+
+cp -r /usr/local/share/applications appdir/usr/share
+cp -r /usr/local/share/metainfo appdir/usr/share
+ln -s usr/share/applications/org.freac.freac.desktop appdir/org.freac.freac.desktop
+cp /usr/local/share/icons/hicolor/128x128/apps/org.freac.freac.png appdir
+
+# Copy other dependencies
+cp /usr/local/lib/libcdio.so.19 appdir
+cp /usr/local/lib/libcdio_cdda.so.2 appdir
+cp /usr/local/lib/libcdio_paranoia.so.2 appdir
+cp /usr/local/lib/libcurl.so.4 appdir
+cp -P /lib/$HOST/libcrypto.so.1* appdir
+cp -P /lib/$HOST/libssl.so.1* appdir
+
+strip --strip-all appdir/lib*.so*
+
+# Create AppImage using appimagetool
+wget -c -nv "https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-$AppImageArch.AppImage"
+chmod a+x appimagetool-$AppImageArch.AppImage
+
+if [ "$AppImageArch" = armhf ]; then
+  qemu-arm-static ./appimagetool-$AppImageArch.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+elif [ "$AppImageArch" = aarch64 ]; then
+  qemu-aarch64-static ./appimagetool-$AppImageArch.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+else
+  ARCH=$AppImageArch ./appimagetool-$AppImageArch.AppImage appdir freac-continuous-${OS,,}-$AppImageArch.AppImage
+fi
+
+# Upload AppImage to GitHub
+bash ./travis/upload-appimage freac*.AppImage
