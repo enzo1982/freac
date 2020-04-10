@@ -201,6 +201,7 @@
       <entry id="3044" string="verifying">weryfikacja</entry>
       <entry id="3045" string="Open">Otwórz</entry>
       <entry id="3046" string="CD drive">Stacja CD</entry>
+      <entry id="3047" string="Disc ID">ID płyty</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">Konwersja pliku</entry>
@@ -542,6 +543,7 @@
 	  <entry id="5664" string="Channels">Kanały</entry>
 	  <entry id="5665" string="Sample resolution">Rozdzielczość próbki</entry>
 	  <entry id="5666" string="CD drive">Dysk</entry>
+	  <entry id="5667" string="Disc ID">ID płyty</entry>
 	</section>
       </section>
 

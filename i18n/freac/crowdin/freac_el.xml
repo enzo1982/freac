@@ -201,6 +201,7 @@
       <entry id="3044" string="verifying"/>
       <entry id="3045" string="Open"/>
       <entry id="3046" string="CD drive"/>
+      <entry id="3047" string="Disc ID"/>
 
       <section name="File">
 	<entry id="3050" string="Current file">Κωδικοποίηση αρχείου</entry>
@@ -542,6 +543,7 @@
 	  <entry id="5664" string="Channels"/>
 	  <entry id="5665" string="Sample resolution"/>
 	  <entry id="5666" string="CD drive"/>
+	  <entry id="5667" string="Disc ID"/>
 	</section>
       </section>
 

@@ -201,6 +201,7 @@
       <entry id="3044" string="verifying">verifying</entry>
       <entry id="3045" string="Open">Open</entry>
       <entry id="3046" string="CD drive">CD drive</entry>
+      <entry id="3047" string="Disc ID">Disc ID</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">Current file</entry>
@@ -542,6 +543,7 @@
 	  <entry id="5664" string="Channels">Channels</entry>
 	  <entry id="5665" string="Sample resolution">Sample resolution</entry>
 	  <entry id="5666" string="CD drive">CD drive</entry>
+	  <entry id="5667" string="Disc ID">Disc ID</entry>
 	</section>
       </section>
 

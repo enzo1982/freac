@@ -201,6 +201,7 @@
       <entry id="3044" string="verifying">zkontrolovat</entry>
       <entry id="3045" string="Open">Otevřít</entry>
       <entry id="3046" string="CD drive">Jednotka CD</entry>
+      <entry id="3047" string="Disc ID"/>
 
       <section name="File">
 	<entry id="3050" string="Current file">Kódovaný soubor</entry>
@@ -542,6 +543,7 @@
 	  <entry id="5664" string="Channels">Audiokanály</entry>
 	  <entry id="5665" string="Sample resolution">Vzorkovací rozlišení</entry>
 	  <entry id="5666" string="CD drive">Jednotka CD</entry>
+	  <entry id="5667" string="Disc ID"/>
 	</section>
       </section>
 
