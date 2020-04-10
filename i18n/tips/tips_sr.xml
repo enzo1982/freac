@@ -26,7 +26,7 @@
 
     <section name="Windows">
       <entry id="200" string="%1 can use Winamp 2 input plug-ins to support more file&#10;formats.&#10;&#10;Copy the in_*.dll files to the %1/plugins directory to enable&#10;%1 to read these formats.">%1 može koristiti Winamp 2 ulazne plugin-ove da podrži više&#10;formata.&#10;&#10;Kopirajte in_*.dll fajlove u %1/plugins folder da omogućite&#10;%1-u čitanje ovih formata.</entry>
-      <entry id="201" string="%1 can use the Core Audio AAC/ALAC encoder included with&#10;iTunes if that program is installed on your computer.&#10;&#10;The Core Audio encoder provides great M4A/AAC encoding&#10;quality and performance.&#10;&#10;Please refer to %2 for installing iTunes.">%1 može koristiti Core Audio AAC/ALAC enkoder koji je sadržan u&#10;iTunes ako je ovaj program instaliran na Vašem računaru.&#10;&#10;The Core Audio enkoder obezbeđuje vrhunski M4A/AAC kvalitet&#10;enokodovanja i karakteristike.&#10;&#10;Molimo pogledajte %2 za instalaciju iTunes.</entry>
+      <entry id="201" string="%1 can use the Core Audio AAC/ALAC encoder included with&#10;iTunes if that program is installed on your computer.&#10;&#10;The Core Audio encoder provides great M4A/AAC encoding&#10;quality and performance.&#10;&#10;Please refer to %2 for installing iTunes.">%1 može koristiti Core Audio AAC/ALAC enkoder koji je sadržan u&#10;iTunes ukoliko je ovaj program instaliran na Vašem računaru.&#10;&#10;The Core Audio enkoder obezbeđuje vrhunski M4A/AAC kvalitet&#10;enokodovanja i karakteristike.&#10;&#10;Molimo pogledajte %2 za instalaciju iTunes.</entry>
     </section>
 
     <section name="Linux">

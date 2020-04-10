@@ -26,14 +26,14 @@
     <entry id="205" string="Info">Info</entry>
 
     <entry id="300" string="Destination directory">Instalacioni folder</entry>
-    <entry id="301" string="Select">Odabir</entry>
+    <entry id="301" string="Select">Pretraži</entry>
     <entry id="302" string="Select the folder in which the program will be installed:">Odaberite folder u kome će program biti instaliran:</entry>
     <entry id="303" string="Available components">Raspoložive komponente</entry>
     <entry id="304" string="Description">Opis</entry>
     <entry id="305" string="Move the mouse over a&#10;component entry to&#10;show a description">Postavite miša iznad&#10;komponente (ali nemojte&#10;kliknuti!) da se prikaže&#10;opis iste</entry>
-    <entry id="306" string="Create Start Menu group">Napravite grupu u Start Meniju</entry>
+    <entry id="306" string="Create Start Menu group">Napravi grupu u Start Meniju</entry>
     <entry id="307" string="Create Desktop icon">Napravi ikonu na Desktopu</entry>
-    <entry id="308" string="Create Quick Launch icon">Kreiraj ikonu brzog pokretanja</entry>
+    <entry id="308" string="Create Quick Launch icon">Napravi ikonu brzog pokretanja</entry>
 
     <entry id="1" string="%LONGNAME% Setup">%LONGNAME% Podešenje</entry>
     <entry id="2" string="Welcome to the %NAME% Setup Wizard&#10;&#10;&#10;This will install %NAME% %VERSION% on your computer.&#10;&#10;It is recommended that you close all other applications you have running&#10;before continuing. This will help avoiding possible conflicts during the&#10;installation process.&#10;&#10;Click Next to continue, or Cancel to exit Setup.">Dobrodošli u %NAME% Instalacioni Pomoćnik&#10;&#10;&#10;isti će instalirati %NAME% %VERSION% na Vašem računaru.&#10;&#10;Preporučujemo da zatvorite sve ostale pokrenute aplikacije pre nastavka.&#10;Ovo će pomoći u izbegavanju mogućih konflikata tokom instalacije.&#10;&#10;Kliknite na &quot;Nastavi&quot; da nastavite, ili na &quot;Otkaži&quot; da napustite instalaciju.</entry>
@@ -44,7 +44,7 @@
     <entry id="7" string="Setup - Components to install">Setup - Кomponente za instalaciju</entry>
     <entry id="8" string="Select the components you want to install.">Odaberite komponente koje želite da instalirate.</entry>
     <entry id="9" string="Setup - Start Menu and Desktop Shortcuts">Setup - Start Meni i Desktop prečice</entry>
-    <entry id="10" string="Setup can create shortcuts to the installed program.&#10;Please select which shortcuts shall be created.">Setup može napraviti prečice za instalirani program.&#10;Molimo odaberite koje prečice će biti kreirane.</entry>
+    <entry id="10" string="Setup can create shortcuts to the installed program.&#10;Please select which shortcuts shall be created.">Setup može napraviti prečice za instalirani program.&#10;Molimo odaberite koje prečice će biti napravljene.</entry>
     <entry id="11" string="Setup - Ready to install">Setup - Spremno za instalaciju</entry>
     <entry id="12" string="Setup is now ready to install %NAME% on your computer.&#10;&#10;Click Next to install the program files on your computer, or Cancel&#10;to exit Setup.">Setup je sada spreman da instalira %NAME% na Vašem računaru.&#10;&#10;Kliknite na &quot;Nastavi&quot; da instalirate aplikaciju na Vašem računaru,&#10;ili na &quot;Otkaži&quot; da izađete iz Setup-a.</entry>
     <entry id="13" string="Setup - Copying files">Setup - Kopiranje fajlova</entry>

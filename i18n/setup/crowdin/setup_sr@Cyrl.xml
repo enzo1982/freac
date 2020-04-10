@@ -26,14 +26,14 @@
     <entry id="205" string="Info">Инфо</entry>
 
     <entry id="300" string="Destination directory">Инсталациони фолдер</entry>
-    <entry id="301" string="Select">Одабир</entry>
+    <entry id="301" string="Select">Претражи</entry>
     <entry id="302" string="Select the folder in which the program will be installed:">Одаберите фолдер у коме ће програм бити инсталиран:</entry>
     <entry id="303" string="Available components">Расположиве компоненте</entry>
     <entry id="304" string="Description">Опис</entry>
     <entry id="305" string="Move the mouse over a&#10;component entry to&#10;show a description">Поставите миша изнад&#10;компонентe (али немојте&#10;кликнути!) да се прикаже&#10;опис исте</entry>
-    <entry id="306" string="Create Start Menu group">Креирај групу у Старт Менију</entry>
-    <entry id="307" string="Create Desktop icon">Креирај икону на Десктопу</entry>
-    <entry id="308" string="Create Quick Launch icon">Креирај икону брзог покретања</entry>
+    <entry id="306" string="Create Start Menu group">Направи групу у Старт Менију</entry>
+    <entry id="307" string="Create Desktop icon">Направи икону на Десктопу</entry>
+    <entry id="308" string="Create Quick Launch icon">Направи икону брзог покретања</entry>
 
     <entry id="1" string="%LONGNAME% Setup">%LONGNAME% Подешење</entry>
     <entry id="2" string="Welcome to the %NAME% Setup Wizard&#10;&#10;&#10;This will install %NAME% %VERSION% on your computer.&#10;&#10;It is recommended that you close all other applications you have running&#10;before continuing. This will help avoiding possible conflicts during the&#10;installation process.&#10;&#10;Click Next to continue, or Cancel to exit Setup.">Добродошли у %NAME% Инсталациони Помоћник&#10;&#10;&#10;Исти ће инсталирати %NAME% %VERSION% на Вашем рачунару.&#10;&#10;Препоручујемо да затворите све остале покренуте апликације пре&#10;наставка. Ове ће помоћи у избегавању могућих конфликата током&#10;инсталације.&#10;&#10;Кликните на &quot;Настави&quot; да наставите, или на &quot;Откажи&quot; да напустите&#10;инсталацију.</entry>
