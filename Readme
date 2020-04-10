@@ -159,6 +159,8 @@ History
 		- Bug fixes
 
 			- fixed crash of freaccmd when querying CDDB while DISPLAY variable is not set
+			- fixed several issues creating CBR MP3 files in SuperFast mode
+			- fixed calculation of track conversion speed factor in log files
 
 	Version 1.1 (March 2020)
 

@@ -426,7 +426,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Output log messages.
 		 */
-		LogConversionEnd(inFileName, encodeChecksum, verifyChecksum);
+		LogConversionEnd(inFileName, trackLength, encodeChecksum, verifyChecksum);
 
 		/* Delete output file if it doesn't look sane.
 		 */
@@ -654,7 +654,7 @@ Void freac::ConvertWorker::LogConversionStart(Decoder *decoder, const String &in
 	log->Release();
 }
 
-Void freac::ConvertWorker::LogConversionEnd(const String &inFile, const String &encodeChecksum, const String &verifyChecksum) const
+Void freac::ConvertWorker::LogConversionEnd(const String &inFile, Int64 trackLength, const String &encodeChecksum, const String &verifyChecksum) const
 {
 	String	 verb = "converting";
 
@@ -690,7 +690,7 @@ Void freac::ConvertWorker::LogConversionEnd(const String &inFile, const String &
 		String		 duration = String(ticks / 1000 / 60 % 60 <  10 ?			      "0"  : "").Append(String::FromInt(ticks / 1000 / 60 % 60)).Append(":")
 					   .Append(ticks / 1000 % 60	  <  10 ?			      "0"  : "").Append(String::FromInt(ticks / 1000 % 60     )).Append(".")
 					   .Append(ticks % 1000		  < 100 ? (ticks % 1000 < 10 ? "00" : "0") : "").Append(String::FromInt(ticks % 1000	      ));
-		String		 speed	  = String::FromFloat(Math::Round(Float(trackPosition) / trackToConvert.GetFormat().rate / (Float(ticks) / 1000.0) * 10.0) / 10.0);
+		String		 speed	  = String::FromFloat(Math::Round(Float(trackLength) / trackToConvert.GetFormat().rate / (Float(ticks) / 1000.0) * 10.0) / 10.0);
 
 		if (!speed.Contains(".")) speed.Append(".0");
 

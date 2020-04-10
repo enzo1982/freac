@@ -159,6 +159,8 @@ Geschichte
 		- Behobene Fehler
 
 			- Absturz von freaccmd bei CDDB-Abfrage mit nicht gesetzter DISPLAY-Variable behoben
+			- Mehrere Probleme beim Erzeugen von CBR MP3-Dateien im SuperFast-Modus behoben
+			- Falsche Berechnung der Track-Konvertierungsgeschwindigkeit in Log-Dateien behoben
 
 	Version 1.1 (März 2020)
 
