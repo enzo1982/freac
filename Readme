@@ -162,6 +162,10 @@ History
 			- fixed several issues creating CBR MP3 files in SuperFast mode
 			- fixed calculation of track conversion speed factor in log files
 
+		- Updated translations
+
+			- updated Portuguese (Brazilian) translation
+
 	Version 1.1 (March 2020)
 
 		- Bug fixes
@@ -408,7 +412,7 @@ Special thanks to
 			   Nebojša Nikolic (Serbian),
 			   Jan Parttimaa (Finnish),
 			   Julius Faltus (Czech),
-			   J. B. Escada Jr. and André C. Barros (Portuguese, Brazilian),
+			   J. B. Escada Jr., André C. Barros and Wellington T. Uemura (Portuguese, Brazilian),
 			   Odyssey (Korean),
 			   Jan Arni Jacobsen (Danish),
 			   Mikael Hiort af Ornäs and Anton Mjoernebrant (Swedish),
