@@ -201,7 +201,7 @@
       <entry id="3044" string="verifying">проверяется</entry>
       <entry id="3045" string="Open">Открыть</entry>
       <entry id="3046" string="CD drive">CD дисковод</entry>
-      <entry id="3047" string="Disc ID"/>
+      <entry id="3047" string="Disc ID">ID диска</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">Кодируемый файл</entry>
@@ -543,7 +543,7 @@
 	  <entry id="5664" string="Channels">Каналы</entry>
 	  <entry id="5665" string="Sample resolution">Разрешение сэмплов</entry>
 	  <entry id="5666" string="CD drive">CD дисковод</entry>
-	  <entry id="5667" string="Disc ID"/>
+	  <entry id="5667" string="Disc ID">ID диска</entry>
 	</section>
       </section>
 

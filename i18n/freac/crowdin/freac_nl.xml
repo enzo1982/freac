@@ -201,7 +201,7 @@
       <entry id="3044" string="verifying">verifiëren</entry>
       <entry id="3045" string="Open">Openen</entry>
       <entry id="3046" string="CD drive">Cd-station</entry>
-      <entry id="3047" string="Disc ID"/>
+      <entry id="3047" string="Disc ID">Schijf-ID</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">Bestand coderen</entry>
@@ -543,7 +543,7 @@
 	  <entry id="5664" string="Channels">Kanalen</entry>
 	  <entry id="5665" string="Sample resolution">Sample resolutie</entry>
 	  <entry id="5666" string="CD drive">Cd-station</entry>
-	  <entry id="5667" string="Disc ID"/>
+	  <entry id="5667" string="Disc ID">Schijf-ID</entry>
 	</section>
       </section>
 
