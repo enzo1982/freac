@@ -523,7 +523,7 @@
 	<entry id="5604" string="Up">Горе</entry>
 	<entry id="5605" string="Down">Доле</entry>
 	<entry id="5606" string="Jobs">Задаци</entry>
-	<entry id="5607" string="Show Jobs tab">Прикажи лист задатака</entry>
+	<entry id="5607" string="Show Jobs tab">Прикажи листу задатака</entry>
 
 	<section name="Columns">
 	  <entry id="5650" string="Track artist">Извођач песме</entry>

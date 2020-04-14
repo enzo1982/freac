@@ -523,7 +523,7 @@
 	<entry id="5604" string="Up">Gore</entry>
 	<entry id="5605" string="Down">Dole</entry>
 	<entry id="5606" string="Jobs">Zadaci</entry>
-	<entry id="5607" string="Show Jobs tab">Prikaži list zadataka</entry>
+	<entry id="5607" string="Show Jobs tab">Prikaži listu zadataka</entry>
 
 	<section name="Columns">
 	  <entry id="5650" string="Track artist">Izvođač pesme</entry>
