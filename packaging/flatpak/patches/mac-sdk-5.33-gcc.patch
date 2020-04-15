@@ -1,6 +1,6 @@
-diff -Naur mac-sdk-5.24/Makefile mac-sdk-5.24-gcc/Makefile
---- mac-sdk-5.24/Makefile	1970-01-01 00:00:00 +0000
-+++ mac-sdk-5.24-gcc/Makefile	2019-11-21 21:28:57 +0000
+diff -Naur mac-sdk-5.33/Makefile mac-sdk-5.33-gcc/Makefile
+--- mac-sdk-5.33/Makefile	1970-01-01 00:00:00 +0000
++++ mac-sdk-5.33-gcc/Makefile	2019-11-21 21:28:57 +0000
 @@ -0,0 +1,8 @@
 +all:
 +	$(MAKE) -f Source/Projects/NonWindows/Makefile
@@ -10,10 +10,10 @@ diff -Naur mac-sdk-5.24/Makefile mac-sdk-5.24-gcc/Makefile
 +
 +clean:
 +	$(MAKE) -f Source/Projects/NonWindows/Makefile clean
-diff -Naur mac-sdk-5.24/Shared/All.h mac-sdk-5.24-gcc/Shared/All.h
---- mac-sdk-5.24/Shared/All.h	2020-03-21 23:42:27 +0000
-+++ mac-sdk-5.24-gcc/Shared/All.h	2020-03-22 12:08:53 +0000
-@@ -86,46 +86,17 @@
+diff -Naur mac-sdk-5.33/Shared/All.h mac-sdk-5.33-gcc/Shared/All.h
+--- mac-sdk-5.33/Shared/All.h	2020-04-15 17:34:35 +0000
++++ mac-sdk-5.33-gcc/Shared/All.h	2020-04-15 18:14:47 +0000
+@@ -108,46 +108,17 @@
  #define ENABLE_COMPRESSION_MODE_HIGH
  #define ENABLE_COMPRESSION_MODE_EXTRA_HIGH
  
@@ -62,7 +62,7 @@ diff -Naur mac-sdk-5.24/Shared/All.h mac-sdk-5.24-gcc/Shared/All.h
  
      typedef uint64_t                                    uint64;
      typedef uint32_t                                    uint32;
-@@ -179,10 +150,14 @@
+@@ -201,10 +172,14 @@
      #define TICK_COUNT_FREQ                             1000000
      #undef    ASSERT
      #define ASSERT(e)
@@ -78,9 +78,9 @@ diff -Naur mac-sdk-5.24/Shared/All.h mac-sdk-5.24-gcc/Shared/All.h
      #define strcpy_s(A, B, C) strcpy(A, C)
      #define _tcscat_s(A, B, C) _tcscat(A, C)
  #endif
-diff -Naur mac-sdk-5.24/Shared/NoWindows.h mac-sdk-5.24-gcc/Shared/NoWindows.h
---- mac-sdk-5.24/Shared/NoWindows.h	2019-12-03 22:21:06 +0000
-+++ mac-sdk-5.24-gcc/Shared/NoWindows.h	2019-12-15 10:16:26 +0000
+diff -Naur mac-sdk-5.33/Shared/NoWindows.h mac-sdk-5.33-gcc/Shared/NoWindows.h
+--- mac-sdk-5.33/Shared/NoWindows.h	2019-12-03 22:21:06 +0000
++++ mac-sdk-5.33-gcc/Shared/NoWindows.h	2019-12-15 10:16:26 +0000
 @@ -48,7 +48,7 @@
  #define _totlower towlower
  #define _totupper towupper
@@ -90,9 +90,9 @@ diff -Naur mac-sdk-5.24/Shared/NoWindows.h mac-sdk-5.24-gcc/Shared/NoWindows.h
  #define _tcscpy wcscpy
  #define _tcslen wcslen
  
-diff -Naur mac-sdk-5.24/Source/Console/Console.cpp mac-sdk-5.24-gcc/Source/Console/Console.cpp
---- mac-sdk-5.24/Source/Console/Console.cpp	2020-01-16 23:41:58 +0000
-+++ mac-sdk-5.24-gcc/Source/Console/Console.cpp	2020-01-27 22:39:38 +0000
+diff -Naur mac-sdk-5.33/Source/Console/Console.cpp mac-sdk-5.33-gcc/Source/Console/Console.cpp
+--- mac-sdk-5.33/Source/Console/Console.cpp	2020-01-16 23:41:58 +0000
++++ mac-sdk-5.33-gcc/Source/Console/Console.cpp	2020-01-27 22:39:38 +0000
 @@ -21,7 +21,12 @@
  #define UNDEFINED_MODE        -1
  
@@ -107,10 +107,55 @@ diff -Naur mac-sdk-5.24/Source/Console/Console.cpp mac-sdk-5.24-gcc/Source/Conso
      #define _tmain(argc, argv) main(argc, argv)
      #define _tcscpy_s(dst, num, src) strcpy(dst, src)
      #define _tcsncpy_s(dst, num, src, count) strncpy(dst, src, count)
-diff -Naur mac-sdk-5.24/Source/Shared/All.h mac-sdk-5.24-gcc/Source/Shared/All.h
---- mac-sdk-5.24/Source/Shared/All.h	2020-03-21 23:42:27 +0000
-+++ mac-sdk-5.24-gcc/Source/Shared/All.h	2020-03-22 12:08:53 +0000
-@@ -86,46 +86,17 @@
+diff -Naur mac-sdk-5.33/Source/MACLib/APEInfo.cpp mac-sdk-5.33-gcc/Source/MACLib/APEInfo.cpp
+--- mac-sdk-5.33/Source/MACLib/APEInfo.cpp	2020-04-13 22:37:20 +0000
++++ mac-sdk-5.33-gcc/Source/MACLib/APEInfo.cpp	2020-04-15 15:23:05 +0000
+@@ -15,7 +15,7 @@
+ /*****************************************************************************************
+ Construction
+ *****************************************************************************************/
+-CAPEInfo::CAPEInfo(int * pErrorCode, const wchar_t * pFilename, CAPETag * pTag, bool bAPL)
++CAPEInfo::CAPEInfo(int * pErrorCode, const wchar_t * pFilename, CAPETag * pTag, bool bAPL, bool bReadOnly)
+ {
+     *pErrorCode = ERROR_SUCCESS;
+     CloseFile();
+@@ -26,7 +26,7 @@
+     // open the file
+     m_spIO.Assign(new IO_CLASS_NAME);
+     
+-    if (m_spIO->Open(pFilename) != 0)
++    if (m_spIO->Open(pFilename, bReadOnly) != 0)
+     {
+         CloseFile();
+         *pErrorCode = ERROR_INVALID_INPUT_FILE;
+diff -Naur mac-sdk-5.33/Source/MACLib/APEInfo.h mac-sdk-5.33-gcc/Source/MACLib/APEInfo.h
+--- mac-sdk-5.33/Source/MACLib/APEInfo.h	2020-04-13 22:04:55 +0000
++++ mac-sdk-5.33-gcc/Source/MACLib/APEInfo.h	2020-04-15 15:23:35 +0000
+@@ -75,7 +75,7 @@
+ public:
+     
+     // construction and destruction
+-    CAPEInfo(int * pErrorCode, const wchar_t * pFilename, CAPETag * pTag = NULL, bool bAPL = false);
++    CAPEInfo(int * pErrorCode, const wchar_t * pFilename, CAPETag * pTag = NULL, bool bAPL = false, bool bReadOnly = false);
+     CAPEInfo(int * pErrorCode, APE::CIO * pIO, CAPETag * pTag = NULL);
+     virtual ~CAPEInfo();
+ 
+diff -Naur mac-sdk-5.33/Source/MACLib/MACLib.cpp mac-sdk-5.33-gcc/Source/MACLib/MACLib.cpp
+--- mac-sdk-5.33/Source/MACLib/MACLib.cpp	2020-04-13 23:23:36 +0000
++++ mac-sdk-5.33-gcc/Source/MACLib/MACLib.cpp	2020-04-15 15:25:54 +0000
+@@ -84,7 +84,7 @@
+     else if (StringIsEqual(pExtension, L".mac", false) || StringIsEqual(pExtension, L".ape", false))
+     {
+         // plain .ape file
+-        pAPEInfo = new CAPEInfo(&nErrorCode, pFilename);
++        pAPEInfo = new CAPEInfo(&nErrorCode, pFilename, NULL, false, true);
+     }
+ 
+     // fail if we couldn't get the file information
+diff -Naur mac-sdk-5.33/Source/Shared/All.h mac-sdk-5.33-gcc/Source/Shared/All.h
+--- mac-sdk-5.33/Source/Shared/All.h	2020-04-15 17:34:35 +0000
++++ mac-sdk-5.33-gcc/Source/Shared/All.h	2020-04-15 18:14:47 +0000
+@@ -108,46 +108,17 @@
  #define ENABLE_COMPRESSION_MODE_HIGH
  #define ENABLE_COMPRESSION_MODE_EXTRA_HIGH
  
@@ -159,7 +204,7 @@ diff -Naur mac-sdk-5.24/Source/Shared/All.h mac-sdk-5.24-gcc/Source/Shared/All.h
  
      typedef uint64_t                                    uint64;
      typedef uint32_t                                    uint32;
-@@ -179,10 +150,14 @@
+@@ -201,10 +172,14 @@
      #define TICK_COUNT_FREQ                             1000000
      #undef    ASSERT
      #define ASSERT(e)
@@ -175,9 +220,9 @@ diff -Naur mac-sdk-5.24/Source/Shared/All.h mac-sdk-5.24-gcc/Source/Shared/All.h
      #define strcpy_s(A, B, C) strcpy(A, C)
      #define _tcscat_s(A, B, C) _tcscat(A, C)
  #endif
-diff -Naur mac-sdk-5.24/Source/Shared/NoWindows.h mac-sdk-5.24-gcc/Source/Shared/NoWindows.h
---- mac-sdk-5.24/Source/Shared/NoWindows.h	2019-12-03 22:21:06 +0000
-+++ mac-sdk-5.24-gcc/Source/Shared/NoWindows.h	2019-12-15 10:16:26 +0000
+diff -Naur mac-sdk-5.33/Source/Shared/NoWindows.h mac-sdk-5.33-gcc/Source/Shared/NoWindows.h
+--- mac-sdk-5.33/Source/Shared/NoWindows.h	2019-12-03 22:21:06 +0000
++++ mac-sdk-5.33-gcc/Source/Shared/NoWindows.h	2019-12-15 10:16:26 +0000
 @@ -48,7 +48,7 @@
  #define _totlower towlower
  #define _totupper towupper
@@ -187,8 +232,8 @@ diff -Naur mac-sdk-5.24/Source/Shared/NoWindows.h mac-sdk-5.24-gcc/Source/Shared
  #define _tcscpy wcscpy
  #define _tcslen wcslen
  
-diff -Naur mac-sdk-5.24/configure mac-sdk-5.24-gcc/configure
---- mac-sdk-5.24/configure	1970-01-01 00:00:00 +0000
-+++ mac-sdk-5.24-gcc/configure	2019-11-21 21:28:57 +0000
+diff -Naur mac-sdk-5.33/configure mac-sdk-5.33-gcc/configure
+--- mac-sdk-5.33/configure	1970-01-01 00:00:00 +0000
++++ mac-sdk-5.33-gcc/configure	2019-11-21 21:28:57 +0000
 @@ -0,0 +1 @@
 +#!/bin/sh

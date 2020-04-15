@@ -151,6 +151,7 @@ History
 
 		- Improvements
 
+			- improved file size and bitrate calculation for chapters and cue sheet tracks
 			- added <discid> placeholder for use in filename patterns
 			- added an optional disc ID column to the joblist
 			- added an option to eject the disc after ripping to freaccmd
@@ -161,6 +162,10 @@ History
 			- fixed crash of freaccmd when querying CDDB while DISPLAY variable is not set
 			- fixed several issues creating CBR MP3 files in SuperFast mode
 			- fixed calculation of track conversion speed factor in log files
+
+		- Updated codecs
+
+			- updated Monkey's Audio to version 5.33
 
 		- Updated translations
 
