@@ -160,12 +160,14 @@ History
 		- Bug fixes
 
 			- fixed crash of freaccmd when querying CDDB while DISPLAY variable is not set
+			- fixed ripping of first CD track in paranoia mode on Windows
 			- fixed several issues creating CBR MP3 files in SuperFast mode
 			- fixed calculation of track conversion speed factor in log files
 
 		- Updated codecs
 
 			- updated Monkey's Audio to version 5.33
+			- updated WavPack to version 5.3.0
 
 		- Updated translations
 
