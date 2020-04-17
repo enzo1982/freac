@@ -605,7 +605,13 @@ Error freac::JobConvert::Perform()
 
 					/* Delete file if no more tracks left.
 					 */
-					if (deleteFile) File(track.fileName).Delete();
+					if (deleteFile)
+					{
+						log->Write(String("    Removing source file: ").Append(track.fileName));
+						log->Write(NIL);
+
+						File(track.fileName).Delete();
+					}
 				}
 
 				if (File(track.outputFile).Exists())
@@ -1655,6 +1661,8 @@ Void freac::JobConvert::LogSettings(const String &singleOutFile, Int numberOfThr
 	 */
 	String	 selectedEncoderID	= configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 
+	Bool	 enableConsole		= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
+
 	Bool	 enableParallel		= configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
 	Bool	 enableSuperFast	= configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, Config::ResourcesEnableSuperFastModeDefault);
 
@@ -1696,6 +1704,12 @@ Void freac::JobConvert::LogSettings(const String &singleOutFile, Int numberOfThr
 	log->Write(String("    Parallel processing:  ").Append(numberOfThreads > 1 ? String("Enabled (up to %1 threads)").Replace("%1", String::FromInt(numberOfThreads)) : "Disabled"));
 
 	if (enableParallel) log->Write(String("        SuperFast mode:   ").Append(enableSuperFast ? "Enabled" : "Disabled"));
+
+	if (Config::Get()->deleteAfterEncoding && !enableConsole)
+	{
+		log->Write(NIL);
+		log->Write("    Remove source files:  Yes");
+	}
 
 	/* Output settings.
 	 */
