@@ -247,7 +247,7 @@
       </section>
 
       <section name="Errors">
-	<entry id="3400" string="You did not select a track!">Nenhum arquivo selecionado!</entry>
+	<entry id="3400" string="You did not select a track!">Você não selecionou nenhuma faixa!</entry>
 	<entry id="3401" string="No files found matching pattern: %1">Nenhum arquivo encontrado corresponde ao modelo: %1</entry>
       </section>
     </section>
@@ -1330,8 +1330,8 @@
       </section>
 
       <section name="Logging">
-	<entry id="104000" string="Logs">Protocolos</entry>
-	<entry id="104001" string="Log">Protocolo</entry>
+	<entry id="104000" string="Logs">Registros</entry>
+	<entry id="104001" string="Log">Registos Log</entry>
 	<entry id="104002" string="Save as">Salvar como</entry>
 	<entry id="104003" string="Log Files">Arquivos de registro log</entry>
 	<entry id="104004" string="Time">Tempo</entry>
