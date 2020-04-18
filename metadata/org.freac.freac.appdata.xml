@@ -13,8 +13,8 @@
     </content_rating>
     <description>
         <p>
-            fre:ac is a free and open source audio converter. It comes with
-            an integrated tag editor and converts between various formats.
+            fre:ac is a free and open source audio converter that comes with
+            an integrated tag editor and supports various audio file formats.
         </p>
         <p>
             Features include:
@@ -47,6 +47,34 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.1.1" date="2020-04-19">
+            <description>
+                <p>Improvements:</p>
+                <ul>
+                    <li>Improved file size and bitrate calculation for chapters and cue sheet tracks</li>
+                    <li>Added &lt;discid&gt; placeholder for use in filename patterns</li>
+                    <li>Added an optional disc ID column to the joblist</li>
+                    <li>Added an option to eject the disc after ripping to freaccmd</li>
+                    <li>Allow specifying device path instead of drive number in freaccmd</li>
+                </ul>
+                <p>Bug fixes:</p>
+                <ul>
+                   <li>Fixed crash of freaccmd when querying CDDB while DISPLAY variable is not set</li>
+                   <li>Fixed ripping of first CD track in paranoia mode on Windows</li>
+                   <li>Fixed several issues creating CBR MP3 files in SuperFast mode</li>
+                   <li>Fixed calculation of track conversion speed factor in log files</li>
+                </ul>
+                <p>Updated codecs:</p>
+                <ul>
+                    <li>Updated Monkey's Audio to version 5.33</li>
+                    <li>Updated avPack to version 5.3.0</li>
+                </ul>
+                <p>Updated translations:</p>
+                <ul>
+                    <li>Updated Portuguese (Brazilian) translation</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1" date="2020-03-29">
             <description>
                 <p>Bug fixes:</p>

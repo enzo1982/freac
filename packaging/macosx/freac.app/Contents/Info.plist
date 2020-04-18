@@ -23,9 +23,9 @@
   <key>CFBundleSignature</key>
   <string>f:ac</string>
   <key>CFBundleVersion</key>
-  <string>1.1.0.5163</string>
+  <string>1.1.1.5182</string>
   <key>CFBundleShortVersionString</key>
-  <string>1.1.0</string>
+  <string>1.1.1</string>
   <key>LSBackgroundOnly</key>
   <false/>
   <key>LSMinimumSystemVersion</key>

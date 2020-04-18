@@ -54,7 +54,7 @@ REQUIRES="
 	lib:libfaac$secondaryArchSuffix
 	lib:libfaad$secondaryArchSuffix
 	lib:libFLAC$secondaryArchSuffix
-	lib:libMAC$secondaryArchSuffix >= 6
+	lib:libMAC$secondaryArchSuffix >= 7
 	lib:libmp3lame$secondaryArchSuffix
 	lib:libmp4v2$secondaryArchSuffix
 	lib:libmpg123$secondaryArchSuffix
