@@ -1,7 +1,7 @@
 name: freac
 base: core18
 version: '1.1.1'
-#version-script: echo 1.1.1~`date +"%Y%m%d"`
+version-script: echo 1.1.1~`date +"%Y%m%d"`
 summary: Audio converter and CD ripper
 description: |
   fre:ac is a free and open source audio converter. It comes with
