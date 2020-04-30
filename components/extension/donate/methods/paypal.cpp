@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -158,7 +158,7 @@ Void BoCA::LayerPayPal::OnChangeSettings()
 
 	/* Update donation URL.
 	 */
-	String	 url = "https://www.paypal.com/cgi-bin/webscr?cmd=%method%&business=%email%&item_name=%reference%&no_note=1&no_shipping=1&amount=%amount%&a3=%amount%&p3=1&t3=M&src=%subscription%&notify_url=%notify%&return=%website%&cancel_return=%website%&currency_code=%currency%";
+	String	 url = "https://www.paypal.com/cgi-bin/webscr?cmd=%method%&business=%email%&item_name=%reference%&no_note=1&no_shipping=1&amount=%amount%&a3=%amount%&p3=1&t3=M&src=%subscription%&return=%website%&cancel_return=%website%&currency_code=%currency%";
 
 	url = String(url).Replace("%reference%",    Encoding::URLEncode::Encode("fre:ac project donation"))
 			 .Replace("%email%",	    Encoding::URLEncode::Encode("donate@freac.org"))
