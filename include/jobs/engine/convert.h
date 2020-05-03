@@ -62,6 +62,8 @@ namespace freac
 			static Void					 Skip();
 			static Void					 Stop();
 
+			static Void					 StopRipping(const String &);
+
 									 JobConvert(const Array<BoCA::Track> &, Bool = False);
 			virtual						~JobConvert();
 

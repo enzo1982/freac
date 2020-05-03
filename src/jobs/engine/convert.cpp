@@ -1347,6 +1347,44 @@ Void freac::JobConvert::Stop()
 	while (IsConverting()) event.ProcessNextEvent();
 }
 
+Void freac::JobConvert::StopRipping(const String &device)
+{
+	if (!IsConverting()) return;
+
+	/* Find jobs ripping from this drive.
+	 */
+	foreachreverse (JobConvert *job, conversionJobs)
+	{
+		foreach (const Track &track, job->tracks)
+		{
+			if (!track.fileName.StartsWith(String("device://").Append(device))) continue;
+
+			job->stopConversion = True;
+
+			/* Wait for job to finish.
+			 */
+			S::System::EventProcessor	 event;
+			Bool				 found = True;
+
+			while (found)
+			{
+				event.ProcessNextEvent();
+
+				found = False;
+
+				const Array<Job *>	&running = GetRunningJobs();
+
+				foreachreverse (Job *runningJob, running)
+				{
+					if (job == runningJob) found = True;
+				}
+			}
+
+			break;
+		}
+	}
+}
+
 Void freac::JobConvert::UpdateTrackProgress(Int progressValue, Int secondsLeft)
 {
 	if (conversionJobs.GetLast() == this) onTrackProgress.Emit(progressValue, secondsLeft);

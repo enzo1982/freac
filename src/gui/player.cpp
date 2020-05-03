@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -15,6 +15,8 @@
 #include <joblist.h>
 #include <playback.h>
 #include <config.h>
+
+#include <jobs/engine/convert.h>
 
 using namespace BoCA;
 using namespace BoCA::AS;
@@ -317,6 +319,8 @@ Void freac::LayerPlayer::OpenCDTray()
 
 	BoCA::Config	*config = BoCA::Config::Get();
 	Int		 drive	= config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault);
+
+	JobConvert::StopRipping(String("cdda:").Append(String::FromInt(drive)));
 
 	if (info->IsNthDeviceTrayOpen(drive)) info->CloseNthDeviceTray(drive);
 	else				      info->OpenNthDeviceTray(drive);
