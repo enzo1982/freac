@@ -675,12 +675,11 @@
       <entry id="9015" string="Start ripping automatically">Start ripning automatisk</entry>
       <entry id="9016" string="Eject disk after ripping">Udskyd disk efter ripning</entry>
       <entry id="9017" string="CD options">CD Indstillinger</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Lås CD bakke mens ripning foretages</entry>
-      <entry id="9019" string="Use read offset">Brug læser forskydning</entry>
-      <entry id="9020" string="samples">Eksempler</entry>
-      <entry id="9021" string="Read ISRC when adding tracks to joblist">Læs ISRC når spor bliver tilføjet til opgavelisten</entry>
-      <entry id="9022" string="Spin up before ripping">Spin op før ripning</entry>
-      <entry id="9023" string="%1 seconds">%1 sekund(er)</entry>
+      <entry id="9018" string="Use read offset">Brug læser forskydning</entry>
+      <entry id="9019" string="samples">Eksempler</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">Læs ISRC når spor bliver tilføjet til opgavelisten</entry>
+      <entry id="9021" string="Spin up before ripping">Spin op før ripning</entry>
+      <entry id="9022" string="%1 seconds">%1 sekund(er)</entry>
     </section>
 
     <section name="Components">

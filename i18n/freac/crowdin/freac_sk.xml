@@ -679,12 +679,11 @@
       <entry id="9015" string="Start ripping automatically">Začať automaticky rippovať</entry>
       <entry id="9016" string="Eject disk after ripping">Vysunúť disk po rippovaní</entry>
       <entry id="9017" string="CD options">Možnosti CD</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Uzamknúť CD počas rippovania</entry>
-      <entry id="9019" string="Use read offset">Použiť read offset</entry>
-      <entry id="9020" string="samples">vzorky</entry>
-      <entry id="9021" string="Read ISRC when adding tracks to joblist">Čítať ISRC keď sa pridáva stopa do zoznamu úloh</entry>
-      <entry id="9022" string="Spin up before ripping">Roztočiť disk pred rippovaním</entry>
-      <entry id="9023" string="%1 seconds">%1 sekúnd</entry>
+      <entry id="9018" string="Use read offset">Použiť read offset</entry>
+      <entry id="9019" string="samples">vzorky</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">Čítať ISRC keď sa pridáva stopa do zoznamu úloh</entry>
+      <entry id="9021" string="Spin up before ripping">Roztočiť disk pred rippovaním</entry>
+      <entry id="9022" string="%1 seconds">%1 sekúnd</entry>
     </section>
 
     <section name="Components">

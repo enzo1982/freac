@@ -433,7 +433,6 @@
       <entry id="9015" string="Start ripping automatically">Hasi erauzten berezgaitasunez</entry>
       <entry id="9016" string="Eject disk after ripping">Atera diska erauzi ondoren</entry>
       <entry id="9017" string="CD options">CD aukerak</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Blokeatu CD erretilua erauztean</entry>
     </section>
 
     <section name="Encoders">

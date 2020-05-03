@@ -432,7 +432,6 @@
       <entry id="9015" string="Start ripping automatically">Авт. розпочати захоплення</entry>
       <entry id="9016" string="Eject disk after ripping">Витягнути диск після роботи</entry>
       <entry id="9017" string="CD options">CD опції</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Блокувати CD під час роботи</entry>
     </section>
 
     <section name="Encoders">

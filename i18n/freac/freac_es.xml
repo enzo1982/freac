@@ -677,12 +677,11 @@
       <entry id="9015" string="Start ripping automatically">Extraer automáticamente</entry>
       <entry id="9016" string="Eject disk after ripping">Expulsar disco tras la extracción</entry>
       <entry id="9017" string="CD options">Opciones de CD</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Bloquear bandeja del CD</entry>
-      <entry id="9019" string="Use read offset">Usar lectura offset</entry>
-      <entry id="9020" string="samples">muestras</entry>
-      <entry id="9021" string="Read ISRC when adding tracks to joblist">Leer ISRC al añadir entradas a la lista de tareas</entry>
-      <entry id="9022" string="Spin up before ripping">Acelerar antes de extraer</entry>
-      <entry id="9023" string="%1 seconds">%1 segundos</entry>
+      <entry id="9018" string="Use read offset">Usar lectura offset</entry>
+      <entry id="9019" string="samples">muestras</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">Leer ISRC al añadir entradas a la lista de tareas</entry>
+      <entry id="9021" string="Spin up before ripping">Acelerar antes de extraer</entry>
+      <entry id="9022" string="%1 seconds">%1 segundos</entry>
     </section>
 
     <section name="Components">

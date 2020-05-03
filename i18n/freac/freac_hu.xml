@@ -432,7 +432,6 @@
       <entry id="9015" string="Start ripping automatically">Automatikus másolás indítása</entry>
       <entry id="9016" string="Eject disk after ripping">Lemez kidobása másolás után</entry>
       <entry id="9017" string="CD options">Cd beállítások</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Tálca zárás másoláskor</entry>
     </section>
 
     <section name="Encoders">

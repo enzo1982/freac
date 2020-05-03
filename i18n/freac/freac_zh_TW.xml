@@ -675,12 +675,11 @@
       <entry id="9015" string="Start ripping automatically">自動開始轉檔</entry>
       <entry id="9016" string="Eject disk after ripping">轉檔完成後退出光碟</entry>
       <entry id="9017" string="CD options">CD 選項</entry>
-      <entry id="9018" string="Lock CD tray while ripping">轉檔時鎖定光碟機托盤</entry>
-      <entry id="9019" string="Use read offset">使用讀取偏移</entry>
-      <entry id="9020" string="samples">個取樣數</entry>
-      <entry id="9021" string="Read ISRC when adding tracks to joblist">新增音軌到工作清單時讀取 ISRC</entry>
-      <entry id="9022" string="Spin up before ripping">轉檔前讓光碟機預轉</entry>
-      <entry id="9023" string="%1 seconds">%1 秒</entry>
+      <entry id="9018" string="Use read offset">使用讀取偏移</entry>
+      <entry id="9019" string="samples">個取樣數</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">新增音軌到工作清單時讀取 ISRC</entry>
+      <entry id="9021" string="Spin up before ripping">轉檔前讓光碟機預轉</entry>
+      <entry id="9022" string="%1 seconds">%1 秒</entry>
     </section>
 
     <section name="Components">

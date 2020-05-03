@@ -433,7 +433,6 @@
       <entry id="9015" string="Start ripping automatically">Aloita kopiointi autom.</entry>
       <entry id="9016" string="Eject disk after ripping">Posta levy kopioinnin jälkeen</entry>
       <entry id="9017" string="CD options">CD-asetukset</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Lukitse CD-asema</entry>
     </section>
 
     <section name="Encoders">

@@ -677,12 +677,11 @@
       <entry id="9015" string="Start ripping automatically">自动启动翻录</entry>
       <entry id="9016" string="Eject disk after ripping">翻录完成后弹出光盘</entry>
       <entry id="9017" string="CD options">CD 选项</entry>
-      <entry id="9018" string="Lock CD tray while ripping">翻录时锁定 CD 托盘</entry>
-      <entry id="9019" string="Use read offset">使用读取偏移</entry>
-      <entry id="9020" string="samples">采样</entry>
-      <entry id="9021" string="Read ISRC when adding tracks to joblist">将曲目添加到任务列表时读取 ISRC</entry>
-      <entry id="9022" string="Spin up before ripping">翻录前旋转</entry>
-      <entry id="9023" string="%1 seconds">%1 秒</entry>
+      <entry id="9018" string="Use read offset">使用读取偏移</entry>
+      <entry id="9019" string="samples">采样</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">将曲目添加到任务列表时读取 ISRC</entry>
+      <entry id="9021" string="Spin up before ripping">翻录前旋转</entry>
+      <entry id="9022" string="%1 seconds">%1 秒</entry>
     </section>
 
     <section name="Components">

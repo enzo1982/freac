@@ -479,7 +479,6 @@
       <entry id="9015" string="Start ripping automatically">تبدء الإشتقاق تلقائيا</entry>
       <entry id="9016" string="Eject disk after ripping">لفظ القرص بعد الإشتقاق</entry>
       <entry id="9017" string="CD options">خيارات قرص مدمج</entry>
-      <entry id="9018" string="Lock CD tray while ripping">قفل القرص المضغوط عند الاشتقاق</entry>
     </section>
 
     <section name="Encoders">

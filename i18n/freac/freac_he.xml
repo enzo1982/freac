@@ -329,7 +329,6 @@
       <entry id="9015" string="Start ripping automatically">התחל המרה באופן אוטומטי</entry>
       <entry id="9016" string="Eject disk after ripping">הוצא דיסק לאחר המרה</entry>
       <entry id="9017" string="CD options">אופציות CD</entry>
-      <entry id="9018" string="Lock CD tray while ripping">נעל מגש כונן בזמן המרה</entry>
     </section>
 
     <section name="Encoders">

@@ -679,12 +679,11 @@
       <entry id="9015" string="Start ripping automatically">Porneşte copierea automat</entry>
       <entry id="9016" string="Eject disk after ripping">Scoate disc-ul după copiere</entry>
       <entry id="9017" string="CD options">Opţiuni CD</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Blocare sertar CD</entry>
-      <entry id="9019" string="Use read offset"/>
-      <entry id="9020" string="samples"/>
-      <entry id="9021" string="Read ISRC when adding tracks to joblist"/>
-      <entry id="9022" string="Spin up before ripping"/>
-      <entry id="9023" string="%1 seconds"/>
+      <entry id="9018" string="Use read offset"/>
+      <entry id="9019" string="samples"/>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist"/>
+      <entry id="9021" string="Spin up before ripping"/>
+      <entry id="9022" string="%1 seconds"/>
     </section>
 
     <section name="Components">

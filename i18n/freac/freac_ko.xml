@@ -631,7 +631,6 @@
       <entry id="9014" string="Read CD contents on insert">삽입 CD 내용 읽기</entry>
       <entry id="9016" string="Eject disk after ripping">리핑후 디스크 배출</entry>
       <entry id="9017" string="CD options">CD 옵션</entry>
-      <entry id="9018" string="Lock CD tray while ripping">리핑 도증 CD트레이 잠김</entry>
     </section>
 
     <section name="Decoders">

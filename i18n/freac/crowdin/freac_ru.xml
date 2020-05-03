@@ -679,12 +679,11 @@
       <entry id="9015" string="Start ripping automatically">Авт. начало копирования</entry>
       <entry id="9016" string="Eject disk after ripping">Извлечь диск после работы</entry>
       <entry id="9017" string="CD options">Настройка CD</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Блокировка лотка CD при работе</entry>
-      <entry id="9019" string="Use read offset">Использовать смещение при чтении</entry>
-      <entry id="9020" string="samples">сэмплы</entry>
-      <entry id="9021" string="Read ISRC when adding tracks to joblist">Читать ISRC при добавлении дорожек в список задач</entry>
-      <entry id="9022" string="Spin up before ripping">Раскрутить перед копированием</entry>
-      <entry id="9023" string="%1 seconds">%1 секунд</entry>
+      <entry id="9018" string="Use read offset">Использовать смещение при чтении</entry>
+      <entry id="9019" string="samples">сэмплы</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">Читать ISRC при добавлении дорожек в список задач</entry>
+      <entry id="9021" string="Spin up before ripping">Раскрутить перед копированием</entry>
+      <entry id="9022" string="%1 seconds">%1 секунд</entry>
     </section>
 
     <section name="Components">

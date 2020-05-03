@@ -679,12 +679,11 @@
       <entry id="9015" string="Start ripping automatically">Starta rippning automatiskt</entry>
       <entry id="9016" string="Eject disk after ripping">Mata ut cd-skiva efter rippning</entry>
       <entry id="9017" string="CD options">Cd-inställningar</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Lås cd-luckan under rippning</entry>
-      <entry id="9019" string="Use read offset">Använd läsförskjutning</entry>
-      <entry id="9020" string="samples">sampel</entry>
-      <entry id="9021" string="Read ISRC when adding tracks to joblist">Läs ISRC när spår läggs till i jobblistan</entry>
-      <entry id="9022" string="Spin up before ripping">Starta diskrotation innan rippning påbörjas</entry>
-      <entry id="9023" string="%1 seconds">%1 s</entry>
+      <entry id="9018" string="Use read offset">Använd läsförskjutning</entry>
+      <entry id="9019" string="samples">sampel</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">Läs ISRC när spår läggs till i jobblistan</entry>
+      <entry id="9021" string="Spin up before ripping">Starta diskrotation innan rippning påbörjas</entry>
+      <entry id="9022" string="%1 seconds">%1 s</entry>
     </section>
 
     <section name="Components">

@@ -432,7 +432,6 @@
       <entry id="9015" string="Start ripping automatically">Extracción automática</entry>
       <entry id="9016" string="Eject disk after ripping">Expulsar disco ao rematar</entry>
       <entry id="9017" string="CD options">Opcións de CD</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Bloquear a bandexa do CD</entry>
     </section>
 
     <section name="Encoders">

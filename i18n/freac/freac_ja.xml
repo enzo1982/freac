@@ -676,12 +676,11 @@
       <entry id="9015" string="Start ripping automatically">自動でリッピング開始</entry>
       <entry id="9016" string="Eject disk after ripping">リッピング後ディスクを取り出す</entry>
       <entry id="9017" string="CD options">CD 設定</entry>
-      <entry id="9018" string="Lock CD tray while ripping">リッピング中は CD トレイをロック</entry>
-      <entry id="9019" string="Use read offset">読み取りオフセットを使用する</entry>
-      <entry id="9020" string="samples">サンプル</entry>
-      <entry id="9021" string="Read ISRC when adding tracks to joblist">ジョブリストにトラックを追加するときにISRCを読む</entry>
-      <entry id="9022" string="Spin up before ripping">リッピングの前にスピンアップする</entry>
-      <entry id="9023" string="%1 seconds">%1 秒</entry>
+      <entry id="9018" string="Use read offset">読み取りオフセットを使用する</entry>
+      <entry id="9019" string="samples">サンプル</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">ジョブリストにトラックを追加するときにISRCを読む</entry>
+      <entry id="9021" string="Spin up before ripping">リッピングの前にスピンアップする</entry>
+      <entry id="9022" string="%1 seconds">%1 秒</entry>
     </section>
 
     <section name="Components">

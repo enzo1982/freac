@@ -679,12 +679,11 @@
       <entry id="9015" string="Start ripping automatically">Аутоматски започни риповање</entry>
       <entry id="9016" string="Eject disk after ripping">Избаци диск након риповања</entry>
       <entry id="9017" string="CD options">ЦД опције</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Закључај ЦД уређај у току риповања</entry>
-      <entry id="9019" string="Use read offset">Користи читање непоклапања</entry>
-      <entry id="9020" string="samples">семплови</entry>
-      <entry id="9021" string="Read ISRC when adding tracks to joblist">Читај ISRC када додајеш песме на листу задатака</entry>
-      <entry id="9022" string="Spin up before ripping">Заврти диск пре риповања</entry>
-      <entry id="9023" string="%1 seconds">%1 секунд/e/и</entry>
+      <entry id="9018" string="Use read offset">Користи читање непоклапања</entry>
+      <entry id="9019" string="samples">семплови</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">Читај ISRC када додајеш песме на листу задатака</entry>
+      <entry id="9021" string="Spin up before ripping">Заврти диск пре риповања</entry>
+      <entry id="9022" string="%1 seconds">%1 секунд/e/и</entry>
     </section>
 
     <section name="Components">

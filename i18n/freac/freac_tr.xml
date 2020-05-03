@@ -431,7 +431,6 @@
       <entry id="9015" string="Start ripping automatically">Ripleme işlemine otomatik başla</entry>
       <entry id="9016" string="Eject disk after ripping">Riplemeden sonra diski çıkar</entry>
       <entry id="9017" string="CD options">CD Seçenekleri</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Riplerken Cd-Rom a erişimi kapat</entry>
     </section>
 
     <section name="Encoders">

@@ -679,12 +679,11 @@
       <entry id="9015" string="Start ripping automatically">Automatyczny start zgrywania</entry>
       <entry id="9016" string="Eject disk after ripping">Wysuń CD po zgraniu</entry>
       <entry id="9017" string="CD options">Opcje CD</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Blokuj CD podczas zgrywania</entry>
-      <entry id="9019" string="Use read offset">Użyj offsetu odczytu</entry>
-      <entry id="9020" string="samples">próbek</entry>
-      <entry id="9021" string="Read ISRC when adding tracks to joblist">Odczytaj ISRC podczas dodawania utworów do listy</entry>
-      <entry id="9022" string="Spin up before ripping">Rozpędź płytę przed zgrywaniem</entry>
-      <entry id="9023" string="%1 seconds">Sekundy: %1</entry>
+      <entry id="9018" string="Use read offset">Użyj offsetu odczytu</entry>
+      <entry id="9019" string="samples">próbek</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">Odczytaj ISRC podczas dodawania utworów do listy</entry>
+      <entry id="9021" string="Spin up before ripping">Rozpędź płytę przed zgrywaniem</entry>
+      <entry id="9022" string="%1 seconds">Sekundy: %1</entry>
     </section>
 
     <section name="Components">

@@ -432,7 +432,6 @@
       <entry id="9015" string="Start ripping automatically">Start ripping automatisk</entry>
       <entry id="9016" string="Eject disk after ripping">Løs ut CD etter ripping</entry>
       <entry id="9017" string="CD options">CD-alternativer</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Lås CD-skuff mens ripping pågår</entry>
     </section>
 
     <section name="Encoders">

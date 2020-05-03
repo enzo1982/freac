@@ -679,12 +679,11 @@
       <entry id="9015" string="Start ripping automatically">Principià à estrae autumaticamente</entry>
       <entry id="9016" string="Eject disk after ripping">Espulsione di u CD dopu l’estrazzione</entry>
       <entry id="9017" string="CD options">Ozzioni di u CD</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Immubulizà u lettore CD durante l’estrazzione</entry>
-      <entry id="9019" string="Use read offset">Impiegà u spiazzamentu di lettura</entry>
-      <entry id="9020" string="samples">campioni</entry>
-      <entry id="9021" string="Read ISRC when adding tracks to joblist">Leghje u codice ISRC à l’aghjuntu di e traccie à a lista di travagliu</entry>
-      <entry id="9022" string="Spin up before ripping">Mette in ballu u CD nanzu l’estrazzione</entry>
-      <entry id="9023" string="%1 seconds">%1 seconde</entry>
+      <entry id="9018" string="Use read offset">Impiegà u spiazzamentu di lettura</entry>
+      <entry id="9019" string="samples">campioni</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">Leghje u codice ISRC à l’aghjuntu di e traccie à a lista di travagliu</entry>
+      <entry id="9021" string="Spin up before ripping">Mette in ballu u CD nanzu l’estrazzione</entry>
+      <entry id="9022" string="%1 seconds">%1 seconde</entry>
     </section>
 
     <section name="Components">

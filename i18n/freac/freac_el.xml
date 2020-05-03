@@ -423,7 +423,6 @@
       <entry id="9015" string="Start ripping automatically">Έναρξη ripping αυτόματα</entry>
       <entry id="9016" string="Eject disk after ripping">Εξαγωγή μετά το rip</entry>
       <entry id="9017" string="CD options">Επιλογές CD</entry>
-      <entry id="9018" string="Lock CD tray while ripping">Κλείδωμα οδηγού κατά το rip</entry>
     </section>
 
     <section name="Encoders">
