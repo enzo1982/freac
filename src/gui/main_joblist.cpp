@@ -1058,6 +1058,8 @@ Void freac::LayerJoblist::UpdateEncoderText()
 	Registry	&boca = Registry::Get();
 	Component	*component = boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
 
+	if (component == NIL) component = boca.CreateComponentByID(Config::SettingsEncoderDefault);
+
 	if (component != NIL)
 	{
 		combo_encoder->SelectEntry(component->GetName());
