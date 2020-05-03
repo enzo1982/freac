@@ -450,6 +450,26 @@ freac::Config::Config()
 	{
 		if (config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault) == "freedb.freedb.org") config->SetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault);
 	}
+
+	/* Translate fre:ac 1.0.x encoder indices to encoder IDs.
+	 */
+	String	 encoderID = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+
+	if (encoderID.Length() == 1)
+	{
+		switch (encoderID.ToInt())
+		{
+			default: encoderID = "lame-enc"; break;
+			case 1:	 encoderID = "faac-enc"; break;
+			case 2:	 encoderID = "flac-enc"; break;
+			case 3:	 encoderID = "lame-enc"; break;
+			case 4:	 encoderID = "vorbis-enc"; break;
+			case 5:	 encoderID = "wma-enc"; break;
+			case 6:	 encoderID = "sndfile-wave-enc"; break;
+		}
+
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, encoderID);
+	}
 }
 
 freac::Config::~Config()
