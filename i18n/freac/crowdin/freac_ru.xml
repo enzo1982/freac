@@ -585,7 +585,7 @@
 
     <section name="About">
       <entry id="6000" string="About %1">О %1</entry>
-      <entry id="6001" string="Translated by %1.">Переведено %1</entry>
+      <entry id="6001" string="Translated by %1.">Автор перевода %1</entry>
       <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Эта программа распространяется в рамках&#10;GNU General Public License (GPL).</entry>
     </section>
 
