@@ -155,6 +155,10 @@ History
 			- removed non-working option to not lock CD trays while ripping
 			- stop ripping before trying to eject a disc
 
+		- Updated codecs
+
+			- updated Monkey's Audio to version 5.38d
+
 	Version 1.1.1 (April 2020)
 
 		- Improvements
