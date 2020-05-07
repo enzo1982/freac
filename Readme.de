@@ -155,6 +155,10 @@ Geschichte
 			- Nicht funktionsfähige Option entfernt, CD-Laufwerke während des Rippens nicht zu sperren
 			- Stoppe das Rippen vor dem Versuch eine CD auszuwerfen
 
+		- Behobene Fehler
+
+			- Problem mit Längenerkennung als 0:00 beim letzten Kapitel einige Audiobücher behoben
+
 		- Aktualisierte Codecs
 
 			- Monkey's Audio auf Version 5.38d aktualisiert
