@@ -693,7 +693,7 @@
       </section>
 
       <section name="Encoders">
-	<entry id="11000" string="meh! - multi encoder hub">meh! - múltiplo concentrador de codificação</entry>
+	<entry id="11000" string="meh! - multi encoder hub">meh! - codificador em lotes</entry>
 	<entry id="11001" string="SndFile Output Component">Componente de Saída SndFile</entry>
       </section>
 
