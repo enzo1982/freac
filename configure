@@ -23,7 +23,7 @@ echo "      the Xcode 3.1 Command Line Tools (no Xcode project file provided)"
 echo
 echo "  On Windows:"
 echo
-echo "    - Please use MinGW (http://www.mingw.org/) or Visual Studio 2015"
+echo "    - Please use MinGW (http://www.mingw.org/) or Visual Studio 2019"
 echo "      with the msvc/freac/freac.sln project file to build fre:ac"
 echo
 echo "When all prerequisites are met, simply run \"make && make install\"."
