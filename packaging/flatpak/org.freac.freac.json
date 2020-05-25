@@ -98,7 +98,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://monkeysaudio.com/files/MAC_SDK_538d.zip",
+                    "url": "https://freac.org/patches/MAC_SDK_538d.zip",
                     "sha256": "dab699501f5cc044f8937a369f91aec0a04e8b9f05576e299db4c1b9f8883c0a",
                     "strip-components": 0
                 },
