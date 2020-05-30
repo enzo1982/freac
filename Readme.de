@@ -154,6 +154,7 @@ Geschichte
 			- Versuche den ausgewählten Kodierer beim Upgrade von fre:ac 1.0.x beizubehalten
 			- Nicht funktionsfähige Option entfernt, CD-Laufwerke während des Rippens nicht zu sperren
 			- Stoppe das Rippen vor dem Versuch eine CD auszuwerfen
+			- Schreibe MD5-Checksummen beim Überprüfen von Dateien in Log-Dateien
 
 		- Behobene Fehler
 
