@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -318,14 +318,14 @@ Void freac::JobAddFilesWorker::ExtractInfoFromPath(const String &path, Info &inf
 
 	const String &first = fileElements.GetFirst();
 
-	if (first[0] >= '1' && first[0] <= '9' && (first[1] == ' ' || first[1] == '.' || first[1] == '-'))
+	if (first[0] >= '1' && first[0] <= '9' && (first[1] == ' ' || first[1] == '.' || first[1] == '-') && (first[2] < '0' || first[2] > '9'))
 	{
 		info.track = first.ToInt();
 
 		if	(fileElements.Length() == 1)   info.title  = first.Tail(first.Length() - 2).Trim();
 		else if (fileElements.Length() >= 2) { info.artist = first.Tail(first.Length() - 2).Trim(); info.title = fileElements.GetLast(); }
 	}
-	else if (first[0] >= '0' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && (first[2] == ' ' || first[2] == '.' || first[2] == '-'))
+	else if (first[0] >= '0' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && (first[2] == ' ' || first[2] == '.' || first[2] == '-') && (first[3] < '0' || first[3] > '9'))
 	{
 		info.track = first.ToInt();
 
@@ -339,7 +339,7 @@ Void freac::JobAddFilesWorker::ExtractInfoFromPath(const String &path, Info &inf
 		if	(fileElements.Length() == 2)					     info.title = fileElements.GetLast();
 		else if (fileElements.Length() >= 3) { info.artist = fileElements.GetNth(1); info.title = fileElements.GetLast(); }
 	}
-	else if (first[0] >= '1' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && first[2] >= '0' && first[2] <= '9' && (first[3] == ' ' || first[3] == '.' || first[3] == '-'))
+	else if (first[0] >= '1' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && first[2] >= '0' && first[2] <= '9' && (first[3] == ' ' || first[3] == '.' || first[3] == '-') && (first[4] < '0' || first[4] > '9'))
 	{
 		info.disc  = first.ToInt() / 100;
 		info.track = first.ToInt() % 100;

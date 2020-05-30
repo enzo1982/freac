@@ -158,6 +158,7 @@ History
 		- Bug fixes
 
 			- fixed length of last chapter of some audio books being detected as 0:00
+			- prevent interpreting numerical IDs or dates at the beginning of file names as track numbers
 
 		- Updated codecs
 

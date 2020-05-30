@@ -158,6 +158,7 @@ Geschichte
 		- Behobene Fehler
 
 			- Problem mit Längenerkennung als 0:00 beim letzten Kapitel einige Audiobücher behoben
+			- Vermeide Interpretation von numerischen IDs or Datumsangaben am Anfang von Dateinamen als Track-Nummern
 
 		- Aktualisierte Codecs
 
