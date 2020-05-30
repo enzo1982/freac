@@ -26,6 +26,9 @@ freac::Decoder::Decoder(const BoCA::Config *iConfiguration) : Component(iConfigu
 
 	sampleOffset   = 0;
 	decodedSamples = 0;
+
+	calculateCRC   = False;
+	crcSum	       = 0;
 }
 
 freac::Decoder::~Decoder()
@@ -145,6 +148,7 @@ Bool freac::Decoder::Destroy()
 
 	delete stream;
 
+	crcSum = crc.Finish();
 	md5Sum = decoder->GetMD5Checksum();
 
 	boca.DeleteComponent(decoder);
@@ -177,6 +181,8 @@ Int freac::Decoder::Read(Buffer<UnsignedByte> &buffer)
 	{
 		buffer.Resize(bytes);
 
+		if (calculateCRC) crc.Feed(buffer);
+
 		decodedSamples += buffer.Size() / format.channels / (format.bits / 8);
 	}
 
@@ -202,6 +208,18 @@ String freac::Decoder::GetDecoderName() const
 	if (decoder == NIL) return String();
 
 	return decoder->GetName();
+}
+
+Void freac::Decoder::SetCalculateCRC(Bool calculate)
+{
+	calculateCRC = calculate;
+}
+
+UnsignedInt32 freac::Decoder::GetCRCChecksum()
+{
+	Destroy();
+
+	return crcSum;
 }
 
 Void freac::Decoder::SetCalculateMD5(Bool calculateMD5)

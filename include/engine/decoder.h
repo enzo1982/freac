@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -29,6 +29,10 @@ namespace freac
 			IO::InStream			*stream;
 			BoCA::AS::DecoderComponent	*decoder;
 
+			Bool				 calculateCRC;
+			Hash::CRC32			 crc;
+
+			UnsignedInt32			 crcSum;
 			String				 md5Sum;
 		public:
 							 Decoder(const BoCA::Config *);
@@ -47,6 +51,9 @@ namespace freac
 			String				 GetDecoderName() const;
 
 			Int64				 GetDecodedSamples() const	{ return decodedSamples; }
+
+			Void				 SetCalculateCRC(Bool);
+			UnsignedInt32			 GetCRCChecksum();
 
 			Void				 SetCalculateMD5(Bool);
 			String				 GetMD5Checksum();

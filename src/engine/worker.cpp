@@ -169,6 +169,8 @@ Int freac::ConvertWorker::Convert()
 	DateTime	 modifyTime	= File(trackToConvert.fileName).GetWriteTime();
 	Bool		 isFile		= !trackToConvert.fileName.StartsWith("device://");
 
+	UnsignedInt32	 rippingCRC	= 0;
+
 	String		 encodeChecksum;
 	String		 verifyChecksum;
 
@@ -381,6 +383,11 @@ Int freac::ConvertWorker::Convert()
 
 		trackToEncode.SetFormat(encoder->GetTargetFormat());
 
+		/* Enable CRC calculation when ripping.
+		 */
+		if (inFileName.StartsWith("device://") && (conversionStep == ConversionStepOnTheFly ||
+							   conversionStep == ConversionStepDecode)) decoder->SetCalculateCRC(True);
+
 		/* Enable MD5 and add a verification step if we are to verify the output.
 		 */
 		if	(verifyOutput && (conversionStep == ConversionStepOnTheFly ||
@@ -398,6 +405,11 @@ Int freac::ConvertWorker::Convert()
 		/* Verify input.
 		 */
 		if (!cancel && verify) VerifyInput(inFileName, verifier);
+
+		/* Get CRC checksums when ripping.
+		 */
+		if (inFileName.StartsWith("device://") && (conversionStep == ConversionStepOnTheFly ||
+							   conversionStep == ConversionStepDecode)) rippingCRC = decoder->GetCRCChecksum();
 
 		/* Get MD5 checksums if we are to verify the output.
 		 */
@@ -426,7 +438,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Output log messages.
 		 */
-		LogConversionEnd(inFileName, trackLength, encodeChecksum, verifyChecksum);
+		LogConversionEnd(inFileName, trackLength, rippingCRC, encodeChecksum, verifyChecksum);
 
 		/* Delete output file if it doesn't look sane.
 		 */
@@ -632,11 +644,11 @@ Void freac::ConvertWorker::VerifyInput(const String &uri, Verifier *verifier)
 	log->Release();
 }
 
-Void freac::ConvertWorker::LogConversionStart(Decoder *decoder, const String &inFile, const String &outFile) const
+Void freac::ConvertWorker::LogConversionStart(Decoder *decoder, const String &uri, const String &outFile) const
 {
 	String	 verb = "Converting";
 
-	if	(inFile.StartsWith("device://"))	 verb = "Ripping";
+	if	(uri.StartsWith("device://"))		 verb = "Ripping";
 	else if	(conversionStep == ConversionStepDecode) verb = "Decoding";
 	else if (conversionStep == ConversionStepEncode) verb = "Encoding";
 	else if (conversionStep == ConversionStepVerify) verb = "Verifying";
@@ -644,7 +656,7 @@ Void freac::ConvertWorker::LogConversionStart(Decoder *decoder, const String &in
 	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
 
 	log->Lock();
-	log->Write(String("    ").Append(verb).Append(": ").Append(inFile));
+	log->Write(String("    ").Append(verb).Append(": ").Append(uri));
 
 	if (outFile != NIL && conversionStep != ConversionStepVerify)
 	{
@@ -662,11 +674,11 @@ Void freac::ConvertWorker::LogConversionStart(Decoder *decoder, const String &in
 	log->Release();
 }
 
-Void freac::ConvertWorker::LogConversionEnd(const String &inFile, Int64 trackLength, const String &encodeChecksum, const String &verifyChecksum) const
+Void freac::ConvertWorker::LogConversionEnd(const String &uri, Int64 trackLength, UnsignedInt32 rippingCRC, const String &encodeChecksum, const String &verifyChecksum) const
 {
 	String	 verb = "converting";
 
-	if	(inFile.StartsWith("device://"))	 verb = "ripping";
+	if	(uri.StartsWith("device://"))		 verb = "ripping";
 	else if	(conversionStep == ConversionStepDecode) verb = "decoding";
 	else if (conversionStep == ConversionStepEncode) verb = "encoding";
 
@@ -678,8 +690,17 @@ Void freac::ConvertWorker::LogConversionEnd(const String &inFile, Int64 trackLen
 	{
 		/* Log conversion result.
 		 */
-		if (cancel) log->Write(String("    Cancelled ").Append(verb).Append(": ").Append(inFile), MessageTypeWarning);
-		else	    log->Write(String("    Finished ").Append(verb).Append(": ").Append(inFile));
+		if (cancel)
+		{
+			log->Write(String("    Cancelled ").Append(verb).Append(": ").Append(uri), MessageTypeWarning);
+		}
+		else
+		{
+			log->Write(String("    Finished ").Append(verb).Append(": ").Append(uri));
+
+			if (uri.StartsWith("device://") && (conversionStep == ConversionStepOnTheFly ||
+							    conversionStep == ConversionStepDecode)) log->Write(String("        CRC checksum: ").Append(Number(Int64(rippingCRC)).ToHexString(8)));
+		}
 	}
 	else
 	{
@@ -687,21 +708,21 @@ Void freac::ConvertWorker::LogConversionEnd(const String &inFile, Int64 trackLen
 		 */
 		if (cancel)
 		{
-			log->Write(String("    Cancelled verifying output file: %1").Replace("%1", inFile), MessageTypeWarning);
+			log->Write(String("    Cancelled verifying output file: %1").Replace("%1", uri), MessageTypeWarning);
 		}
 		else if (encodeChecksum != verifyChecksum)
 		{
 			BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-			onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Errors").Replace("%1", File(inFile).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
+			onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Errors").Replace("%1", File(uri).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
 
-			log->Write(String("    Checksum mismatch verifying output file: %1").Replace("%1", inFile), MessageTypeError);
+			log->Write(String("    Checksum mismatch verifying output file: %1").Replace("%1", uri), MessageTypeError);
 			log->Write(String("        Encode MD5: %1").Replace("%1", encodeChecksum));
 			log->Write(String("        Verify MD5: %1").Replace("%1", verifyChecksum));
 		}
 		else
 		{
-			log->Write(String("    Successfully verified output file: %1").Replace("%1", inFile));
+			log->Write(String("    Successfully verified output file: %1").Replace("%1", uri));
 			log->Write(String("        MD5 hash: %1").Replace("%1", verifyChecksum));
 		}
 	}

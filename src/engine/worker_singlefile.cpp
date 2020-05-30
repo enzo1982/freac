@@ -147,6 +147,11 @@ Int freac::ConvertWorkerSingleFile::Convert()
 		}
 	}
 
+	/* Enable CRC calculation when ripping.
+	 */
+	if (trackToConvert.fileName.StartsWith("device://") && (conversionStep == ConversionStepOnTheFly ||
+								conversionStep == ConversionStepDecode)) decoder->SetCalculateCRC(True);
+
 	/* Enable MD5 if we are to verify the output.
 	 */
 	if (conversionStep == ConversionStepVerify) decoder->SetCalculateMD5(True);
@@ -162,6 +167,13 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	/* Verify input.
 	 */
 	if (!cancel && verify) VerifyInput(trackToConvert.fileName, verifier);
+
+	/* Get CRC checksums when ripping.
+	 */
+	UnsignedInt32	 rippingCRC = 0;
+
+	if (trackToConvert.fileName.StartsWith("device://") && (conversionStep == ConversionStepOnTheFly ||
+								conversionStep == ConversionStepDecode)) rippingCRC = decoder->GetCRCChecksum();
 
 	/* Get MD5 checksum if we are to verify the output.
 	 */
@@ -199,7 +211,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Output log messages.
 	 */
-	LogConversionEnd(trackToConvert.fileName, trackLength, encodeChecksum, verifyChecksum);
+	LogConversionEnd(trackToConvert.fileName, trackLength, rippingCRC, encodeChecksum, verifyChecksum);
 
 	/* Report finished conversion.
 	 */
