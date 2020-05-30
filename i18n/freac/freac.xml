@@ -617,6 +617,7 @@
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2"/>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2"/>
       <entry id="7107" string="Failed to verify input file: %1"/>
+      <entry id="7108" string="Failed to verify input track: %1"/>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
       <entry id="7110" string="File not found"/>
       <entry id="7111" string="Unknown file type"/>

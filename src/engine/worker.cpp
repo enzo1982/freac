@@ -601,23 +601,25 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 	else				      return decoder->GetDecodedSamples();
 }
 
-Void freac::ConvertWorker::VerifyInput(const String &inFile, Verifier *verifier)
+Void freac::ConvertWorker::VerifyInput(const String &uri, Verifier *verifier)
 {
 	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
 
 	log->Lock();
 
+	String	 uriType = uri.StartsWith("device://") ? "track" : "file";
+
 	if (verifier->Verify())
 	{
-		log->Write(String("    Successfully verified input file: ").Append(inFile));
+		log->Write(String("    Successfully verified input ").Append(uriType).Append(": ").Append(uri));
 	}
 	else
 	{
 		BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-		onReportError.Emit(i18n->TranslateString("Failed to verify input file: %1", "Errors").Replace("%1", inFile.Contains("://") ? inFile : File(inFile).GetFileName()));
+		onReportError.Emit(i18n->TranslateString(String("Failed to verify input ").Append(uriType).Append(": %1"), "Errors").Replace("%1", uri.Contains("://") ? uri : File(uri).GetFileName()));
 
-		log->Write(String("    Failed to verify input file: ").Append(inFile), MessageTypeError);
+		log->Write(String("    Failed to verify input ").Append(uriType).Append(": ").Append(uri), MessageTypeError);
 	}
 
 	log->Write(NIL);
