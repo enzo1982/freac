@@ -391,8 +391,8 @@
     </section>
 
     <section name="Errors">
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Non é posíbel acceder ao arquivo: %1&#10;&#10;Arquivo: %1&#10;Directorio: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Non é posíbel crear o arquivo: %1&#10;&#10;Arquivo: %1&#10;Directorio: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Non é posíbel acceder ao arquivo: %1&#10;&#10;Arquivo: %1&#10;Directorio: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Non é posíbel crear o arquivo: %1&#10;&#10;Arquivo: %1&#10;Directorio: %2</entry>
       <entry id="7110" string="File not found">Non se atopa o arquivo</entry>
       <entry id="7111" string="Unknown file type">Tipo de arquivo descoñecido</entry>
       <entry id="7113" string="Unsupported audio format">Formato de audio non soportado</entry>

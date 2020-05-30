@@ -391,8 +391,8 @@
     </section>
 
     <section name="Errors">
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Không thể xử lý tập tin nhập vào: %1&#10;&#10;Tập tin: %1&#10;Thư mục: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Không thể tạo tập tin xuất ra: %1&#10;&#10;Tập tin: %1&#10;Thư mục: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Không thể xử lý tập tin nhập vào: %1&#10;&#10;Tập tin: %1&#10;Thư mục: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Không thể tạo tập tin xuất ra: %1&#10;&#10;Tập tin: %1&#10;Thư mục: %2</entry>
       <entry id="7110" string="File not found">Không tìm thấy file</entry>
       <entry id="7111" string="Unknown file type">Không biết dạng file</entry>
       <entry id="7113" string="Unsupported audio format">Định dạng audio không được hỗ trợ</entry>

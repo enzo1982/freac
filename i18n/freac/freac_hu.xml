@@ -391,8 +391,8 @@
     </section>
 
     <section name="Errors">
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">A forrás fájl nem elérhető: %1&#10;&#10;Fájl: %1&#10;Könyvtár: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">A kimeneti fájl nem jött létre: %1&#10;&#10;Fájl: %1&#10;Könyvtár: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">A forrás fájl nem elérhető: %1&#10;&#10;Fájl: %1&#10;Könyvtár: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">A kimeneti fájl nem jött létre: %1&#10;&#10;Fájl: %1&#10;Könyvtár: %2</entry>
       <entry id="7110" string="File not found">A fájl nem található</entry>
       <entry id="7111" string="Unknown file type">Ismeretlen fájltípus</entry>
       <entry id="7113" string="Unsupported audio format">Nem támogatott audio formátum</entry>

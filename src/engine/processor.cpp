@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -65,7 +65,7 @@ Bool freac::Processor::Create(const Track &track)
 
 		if (dsp->Activate() == False)
 		{
-			SetError("Could not set up DSP processor: %1\n\nError: %2", dsp->GetName(), dsp->GetErrorString());
+			SetErrorInfo(True, "Could not set up DSP processor: %1\n\nError: %2", dsp->GetName(), dsp->GetErrorString());
 
 			UnlockComponent(dsp);
 
@@ -94,7 +94,7 @@ Bool freac::Processor::Destroy()
 	{
 		dsp->Deactivate();
 
-		if (dsp->GetErrorState()) SetError("Error: %1", dsp->GetErrorString());
+		SetErrorInfo(dsp->GetErrorState(), dsp->GetErrorString());
 
 		UnlockComponent(dsp);
 

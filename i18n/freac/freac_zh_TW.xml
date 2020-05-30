@@ -605,15 +605,14 @@
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Error: %1">錯誤: %1</entry>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">無法建立解碼器元件: %1&#10;&#10;檔案: %1&#10;路徑: %2</entry>
-      <entry id="7102" string="Could not create encoder component: %1">無法建立編碼器元件: %1</entry>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">無法設定解碼器於輸入檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2&#10;&#10;錯誤: %3</entry>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">無法設定編碼器於輸出檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2&#10;&#10;錯誤: %3</entry>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">無法設定 DSP 處理器: %1&#10;&#10;錯誤: %2</entry>
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">無法存取輸入檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">無法建立輸出檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2</entry>
-      <entry id="7108" string="Failed to verify input file: %1">無法驗證輸入檔案: %1</entry>
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">無法建立解碼器元件: %1&#10;&#10;檔案: %1&#10;路徑: %2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">無法建立編碼器元件: %1</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">無法設定解碼器於輸入檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2&#10;&#10;錯誤: %3</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">無法設定編碼器於輸出檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2&#10;&#10;錯誤: %3</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">無法設定 DSP 處理器: %1&#10;&#10;錯誤: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">無法存取輸入檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">無法建立輸出檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">無法驗證輸入檔案: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">輸出檔案的校驗碼不相符: %1&#10;&#10;編碼校驗: %2&#10;驗證核對: %3</entry>
       <entry id="7110" string="File not found">找不到檔案</entry>
       <entry id="7111" string="Unknown file type">未知的檔案類型</entry>

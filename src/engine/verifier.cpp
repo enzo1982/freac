@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -52,7 +52,7 @@ Bool freac::Verifier::Destroy()
 
 	verifier->Deactivate();
 
-	if (verifier->GetErrorState()) SetError("Error: %1", verifier->GetErrorString());
+	SetErrorInfo(verifier->GetErrorState(), verifier->GetErrorString());
 
 	boca.DeleteComponent(verifier);
 
@@ -72,5 +72,9 @@ Bool freac::Verifier::Verify()
 {
 	if (verifier == NIL) return True;
 
-	return verifier->Verify();
+	Bool	 result = verifier->Verify();
+
+	SetErrorInfo(verifier->GetErrorState(), verifier->GetErrorString());
+
+	return result;
 }

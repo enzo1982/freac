@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -54,7 +54,7 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 
 	if (stream->GetLastError() != IO_ERROR_OK)
 	{
-		SetError("Unable to create output file: %1\n\nFile: %1\nPath: %2", File(fileName).GetFileName(), File(fileName).GetFilePath());
+		SetErrorInfo(True, "Unable to create output file: %1\n\nFile: %1\nPath: %2", File(fileName).GetFileName(), File(fileName).GetFilePath());
 
 		delete stream;
 
@@ -69,7 +69,7 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 
 	if (encoder == NIL)
 	{
-		SetError("Could not create encoder component: %1", encoderID);
+		SetErrorInfo(True, "Could not create encoder component: %1", encoderID);
 
 		delete stream;
 
@@ -89,7 +89,7 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 
 	if (stream->SetFilter(encoder) == False)
 	{
-		SetError("Could not set up encoder for output file: %1\n\nFile: %1\nPath: %2\n\nError: %3", File(fileName).GetFileName(), File(fileName).GetFilePath(), encoder->GetErrorString());
+		SetErrorInfo(True, "Could not set up encoder for output file: %1\n\nFile: %1\nPath: %2\n\nError: %3", File(fileName).GetFileName(), File(fileName).GetFilePath(), encoder->GetErrorString());
 
 		UnlockComponent(encoder);
 
@@ -122,7 +122,7 @@ Bool freac::Encoder::Destroy()
 
 	stream->RemoveFilter();
 
-	if (encoder->GetErrorState()) SetError("Error: %1", encoder->GetErrorString());
+	SetErrorInfo(encoder->GetErrorState(), encoder->GetErrorString());
 
 	UnlockComponent(encoder);
 

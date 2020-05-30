@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -31,7 +31,7 @@ namespace freac
 		protected:
 			const BoCA::Config			*configuration;
 
-			Void					 SetError(const String &, const String & = NIL, const String & = NIL, const String & = NIL);
+			Void					 SetErrorInfo(Bool, const String &, const String & = NIL, const String & = NIL, const String & = NIL);
 		public:
 			static Void				 FreeLockObjects();
 

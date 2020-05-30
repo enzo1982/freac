@@ -390,8 +390,8 @@
     </section>
 
     <section name="Errors">
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Nu pot accesa fişierul intrare: %1&#10;&#10;Fişier: %1&#10;Folder: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Nu pot accesa fişierul ieşire: %1&#10;&#10;Fişier: %1&#10;Folder: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Nu pot accesa fişierul intrare: %1&#10;&#10;Fişier: %1&#10;Folder: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Nu pot accesa fişierul ieşire: %1&#10;&#10;Fişier: %1&#10;Folder: %2</entry>
       <entry id="7110" string="File not found">Fişierul nu a fost găsit</entry>
       <entry id="7111" string="Unknown file type">Tip fişier necunoscut</entry>
       <entry id="7113" string="Unsupported audio format">Format audio nesuportat</entry>

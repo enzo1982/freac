@@ -48,7 +48,7 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 
 	if (stream->GetLastError() != IO_ERROR_OK)
 	{
-		SetError("Unable to access input file: %1\n\nFile: %1\nPath: %2", File(nFileName).GetFileName(), File(nFileName).GetFilePath());
+		SetErrorInfo(True, "Unable to access input file: %1\n\nFile: %1\nPath: %2", File(nFileName).GetFileName(), File(nFileName).GetFilePath());
 
 		delete stream;
 
@@ -72,7 +72,7 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 
 	if (decoder == NIL)
 	{
-		SetError("Could not create decoder component for input file: %1\n\nFile: %1\nPath: %2", File(nFileName).GetFileName(), File(nFileName).GetFilePath());
+		SetErrorInfo(True, "Could not create decoder component for input file: %1\n\nFile: %1\nPath: %2", File(nFileName).GetFileName(), File(nFileName).GetFilePath());
 
 		delete stream;
 
@@ -96,7 +96,7 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 
 	if (stream->SetFilter(decoder) == False)
 	{
-		SetError("Could not set up decoder for input file: %1\n\nFile: %1\nPath: %2\n\nError: %3", File(nFileName).GetFileName(), File(nFileName).GetFilePath(), decoder->GetErrorString());
+		SetErrorInfo(True, "Could not set up decoder for input file: %1\n\nFile: %1\nPath: %2\n\nError: %3", File(nFileName).GetFileName(), File(nFileName).GetFilePath(), decoder->GetErrorString());
 
 		UnlockComponent(decoder);
 
@@ -139,7 +139,7 @@ Bool freac::Decoder::Destroy()
 
 	stream->RemoveFilter();
 
-	if (decoder->GetErrorState()) SetError("Error: %1", decoder->GetErrorString());
+	SetErrorInfo(decoder->GetErrorState(), decoder->GetErrorString());
 
 	UnlockComponent(decoder);
 

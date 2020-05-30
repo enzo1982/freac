@@ -518,9 +518,9 @@
     </section>
 
     <section name="Errors">
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">無法存取輸入檔案：%1&#10;&#10;檔案：%1&#10;資料夾：%2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">無法建立輸出檔案：%1&#10;&#10;檔案：%1&#10;資料夾：%2</entry>
-      <entry id="7108" string="Failed to verify input file: %1">無法驗證輸入檔案</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">無法存取輸入檔案：%1&#10;&#10;檔案：%1&#10;資料夾：%2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">無法建立輸出檔案：%1&#10;&#10;檔案：%1&#10;資料夾：%2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">無法驗證輸入檔案</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">檔案%1的編碼驗證失敗&#10;&#10;編碼加總：%2&#10;虛擬編碼加總：%3</entry>
       <entry id="7110" string="File not found">未找到檔案</entry>
       <entry id="7111" string="Unknown file type">未知檔案類型</entry>

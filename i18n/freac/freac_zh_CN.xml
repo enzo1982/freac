@@ -607,15 +607,14 @@
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Error: %1">错误：%1</entry>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">无法创建解码器组件：%1&#10;&#10;文件：%1&#10;路径：%2</entry>
-      <entry id="7102" string="Could not create encoder component: %1">无法创建编码器组件：%1</entry>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">无法为输入文件设置解码器：%1&#10;&#10;文件：%1&#10;路径：%2&#10;&#10;错误：%3</entry>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">无法为输出文件设置编码器：%1&#10;&#10;文件：%1&#10;路径：%2&#10;&#10;错误：%3</entry>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">无法设置 DSP 处理器：%1&#10;&#10;错误：%2</entry>
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">不能访问输入文件： %1&#10;&#10;文件： %1&#10;路径： %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">不能创建输出文件： %1&#10;&#10;文件： %1&#10;路径： %2</entry>
-      <entry id="7108" string="Failed to verify input file: %1">无法校验输入文件：%1</entry>
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">无法创建解码器组件：%1&#10;&#10;文件：%1&#10;路径：%2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">无法创建编码器组件：%1</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">无法为输入文件设置解码器：%1&#10;&#10;文件：%1&#10;路径：%2&#10;&#10;错误：%3</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">无法为输出文件设置编码器：%1&#10;&#10;文件：%1&#10;路径：%2&#10;&#10;错误：%3</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">无法设置 DSP 处理器：%1&#10;&#10;错误：%2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">不能访问输入文件： %1&#10;&#10;文件： %1&#10;路径： %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">不能创建输出文件： %1&#10;&#10;文件： %1&#10;路径： %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">无法校验输入文件：%1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">校验输出文件时 Checksum 不匹配：%1&#10;&#10;编码 Checksum：%2&#10;校验 Checksum：%3</entry>
       <entry id="7110" string="File not found">未找到文件</entry>
       <entry id="7111" string="Unknown file type">未知文件类型</entry>

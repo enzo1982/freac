@@ -392,8 +392,8 @@
     </section>
 
     <section name="Errors">
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Kan ikke lese inndatafil: %1&#10;&#10;Fil: %1&#10;Mappe: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Kan ikke lage utdatafil: %1&#10;&#10;Fil: %1&#10;Mappe: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Kan ikke lese inndatafil: %1&#10;&#10;Fil: %1&#10;Mappe: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Kan ikke lage utdatafil: %1&#10;&#10;Fil: %1&#10;Mappe: %2</entry>
       <entry id="7110" string="File not found">Fil ikke funnet</entry>
       <entry id="7111" string="Unknown file type">Ukjent filtype</entry>
       <entry id="7113" string="Unsupported audio format">Lydformatet er ikke støttet</entry>

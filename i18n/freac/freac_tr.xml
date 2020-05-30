@@ -390,8 +390,8 @@
     </section>
 
     <section name="Errors">
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Çevrilecek dosyaya erişilemiyor: %1&#10;&#10;Dosya: %1&#10;Dizin: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Çevrilen dosya oluşturulamıyor: %1&#10;&#10;Dosya: %1&#10;Dizin: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Çevrilecek dosyaya erişilemiyor: %1&#10;&#10;Dosya: %1&#10;Dizin: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Çevrilen dosya oluşturulamıyor: %1&#10;&#10;Dosya: %1&#10;Dizin: %2</entry>
       <entry id="7110" string="File not found">Dosya bulunamadı</entry>
       <entry id="7111" string="Unknown file type">Bilinmeyen dosya biçimi</entry>
       <entry id="7113" string="Unsupported audio format">Desteklenmeyen ses formatı</entry>

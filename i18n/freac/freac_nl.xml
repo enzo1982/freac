@@ -607,15 +607,14 @@
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Error: %1">Fout: %1</entry>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Kon decoder-onderdeel niet aanmaken: %1&#10;&#10;Bestand: %1&#10;Pad: %2</entry>
-      <entry id="7102" string="Could not create encoder component: %1">Kon encoder-onderdeel niet aanmaken: %1</entry>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Kon decoder niet instellen voor invoerbestand: %1&#10;&#10;Bestand: %1&#10;Pad: %2&#10;&#10;Fout: %3</entry>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Kon decoder niet instellen voor uitvoerbestand: %1&#10;&#10;Bestand: %1&#10;Pad: %2&#10;&#10;Fout: %3</entry>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Kon DSP-processor niet instellen: %1&#10;&#10;Fout: %2</entry>
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Kan geen toegang krijgen tot invoerbestand: %1&#10;&#10;Bestand: %1&#10;Map: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Kan geen toegang krijgen tot uitvoerbestand: %1&#10;&#10;Bestand: %1&#10;Map: %2</entry>
-      <entry id="7108" string="Failed to verify input file: %1">Verifiëren van invoerbestand mislukt: %1</entry>
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Kon decoder-onderdeel niet aanmaken: %1&#10;&#10;Bestand: %1&#10;Pad: %2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">Kon encoder-onderdeel niet aanmaken: %1</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Kon decoder niet instellen voor invoerbestand: %1&#10;&#10;Bestand: %1&#10;Pad: %2&#10;&#10;Fout: %3</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Kon decoder niet instellen voor uitvoerbestand: %1&#10;&#10;Bestand: %1&#10;Pad: %2&#10;&#10;Fout: %3</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Kon DSP-processor niet instellen: %1&#10;&#10;Fout: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Kan geen toegang krijgen tot invoerbestand: %1&#10;&#10;Bestand: %1&#10;Map: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Kan geen toegang krijgen tot uitvoerbestand: %1&#10;&#10;Bestand: %1&#10;Map: %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">Verifiëren van invoerbestand mislukt: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Checksum komt niet overeen bij verifiëren van het uitvoerbestand: %1&#10;&#10;Codeer-checksum: %2&#10;Verificatie-checksum: %3</entry>
       <entry id="7110" string="File not found">Bestand niet gevonden</entry>
       <entry id="7111" string="Unknown file type">Onbekend bestandstype</entry>

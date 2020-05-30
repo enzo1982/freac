@@ -609,15 +609,14 @@
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Error: %1">Грешка: %1</entry>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Не може да се създаде компонент за декодер: %1&#10;&#10;Файл: %1&#10;Път: %2</entry>
-      <entry id="7102" string="Could not create encoder component: %1">Не може да се създаде компонент за енкодер: %1</entry>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Не може да се създаде декодер за входния файл: %1&#10;&#10;Файл: %1&#10;Път: %2</entry>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Не може да се създаде енкодер за изходния файл: %1&#10;&#10;Файл: %1&#10;Път: %2</entry>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Не може да се създаде DSP процесор: %1&#10;&#10;Грешка: %2</entry>
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Няма достъп до входния файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Не може да се създаде изходен файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
-      <entry id="7108" string="Failed to verify input file: %1">Неуспешна проверка на входния файл: %1</entry>
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Не може да се създаде компонент за декодер: %1&#10;&#10;Файл: %1&#10;Път: %2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">Не може да се създаде компонент за енкодер: %1</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Не може да се създаде декодер за входния файл: %1&#10;&#10;Файл: %1&#10;Път: %2</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Не може да се създаде енкодер за изходния файл: %1&#10;&#10;Файл: %1&#10;Път: %2</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Не може да се създаде DSP процесор: %1&#10;&#10;Грешка: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Няма достъп до входния файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Не може да се създаде изходен файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">Неуспешна проверка на входния файл: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Несъответствие в контролна сума за проверка на изходния файл: %1&#10;&#10;Кодираща сума: %2&#10;Проверка на контролна сума: %3</entry>
       <entry id="7110" string="File not found">Файлът не е открит</entry>
       <entry id="7111" string="Unknown file type">Неизвестен тип файл</entry>

@@ -392,8 +392,8 @@
     </section>
 
     <section name="Errors">
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ez dago sarbiderik sarrera agirira: %1&#10;&#10;Agiria: %1&#10;Agiritegiak: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ezin da irteera agiria sortu: %1&#10;&#10;Agiria: %1&#10;Agiritegiak: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ez dago sarbiderik sarrera agirira: %1&#10;&#10;Agiria: %1&#10;Agiritegiak: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ezin da irteera agiria sortu: %1&#10;&#10;Agiria: %1&#10;Agiritegiak: %2</entry>
       <entry id="7110" string="File not found">Agiria ez da aurkitu</entry>
       <entry id="7111" string="Unknown file type">Agiri mota ezezaguna</entry>
       <entry id="7113" string="Unsupported audio format">Audio heuskarri sostengu gabea</entry>

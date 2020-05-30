@@ -392,8 +392,8 @@
     </section>
 
     <section name="Errors">
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Syötetiedostoon ei päästä: %1&#10;&#10;Tiedosto: %1&#10;Kansio: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ei pystytä tekemään tulostetiedostoa: %1&#10;&#10;Tiedosto: %1&#10;Kansio: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Syötetiedostoon ei päästä: %1&#10;&#10;Tiedosto: %1&#10;Kansio: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ei pystytä tekemään tulostetiedostoa: %1&#10;&#10;Tiedosto: %1&#10;Kansio: %2</entry>
       <entry id="7110" string="File not found">Tiedostoa ei löydy</entry>
       <entry id="7111" string="Unknown file type">Tuntematon tiedostotyyppi</entry>
       <entry id="7113" string="Unsupported audio format">Äänimuotoa ei tueta</entry>

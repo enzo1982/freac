@@ -607,15 +607,14 @@
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Error: %1">エラー: %1</entry>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">デコーダの構成を作成できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2</entry>
-      <entry id="7102" string="Could not create encoder component: %1">エンコーダの構成を作成できませんでした: %1</entry>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">入力ファイルのデコーダを設定できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2&#10;&#10;エラー: %3</entry>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">入力ファイルのエンコーダを設定できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2&#10;&#10;エラー: %3</entry>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">DSP処理を設定できませんでした: %1&#10;&#10;エラー: %2</entry>
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">入力ファイルにアクセスできませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">出力ファイルを作成できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2</entry>
-      <entry id="7108" string="Failed to verify input file: %1">入力ファイルのベリファイに失敗しました: %1</entry>
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">デコーダの構成を作成できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">エンコーダの構成を作成できませんでした: %1</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">入力ファイルのデコーダを設定できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2&#10;&#10;エラー: %3</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">入力ファイルのエンコーダを設定できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2&#10;&#10;エラー: %3</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">DSP処理を設定できませんでした: %1&#10;&#10;エラー: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">入力ファイルにアクセスできませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">出力ファイルを作成できませんでした: %1&#10;&#10;ファイル: %1&#10;ディレクトリ: %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">入力ファイルのベリファイに失敗しました: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">出力ファイルのチェックサムが一致しません: %1&#10;&#10;エンコードのチェックサム: %2&#10;ベリファイのチェックサム: %3</entry>
       <entry id="7110" string="File not found">ファイルが見つかりません</entry>
       <entry id="7111" string="Unknown file type">不明なファイル形式です</entry>

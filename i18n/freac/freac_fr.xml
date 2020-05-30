@@ -605,15 +605,14 @@
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Error: %1">Erreur : %1</entry>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Impossible de créer le composant de décodeur : %1&#10;&#10;Fichier : %1&#10;Chemin : %2</entry>
-      <entry id="7102" string="Could not create encoder component: %1">Impossible de créer le composant de d'encodeur : %1</entry>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Impossible de mettre en place le décodeur pour le fichier source : %1&#10;&#10;Fichier : %1&#10;Chemin : %2&#10;&#10;Erreur : %3</entry>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Impossible de mettre en place l'encodeur pour le fichier résultant : %1&#10;&#10;Fichier : %1&#10;Chemin : %2&#10;&#10;Erreur : %3</entry>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Impossible de mettre en place le processeur DSP : %1&#10;&#10;Erreur : %2</entry>
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Impossible d'accéder au fichier d'entrée : %1&#10;&#10;Fichier : %1&#10;Répertoire : %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Impossible d'accéder au fichier de sortie : %1&#10;&#10;Fichier : %1&#10;Répertoire : %2</entry>
-      <entry id="7108" string="Failed to verify input file: %1">Échec de la vérification du fichier source : %1</entry>
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Impossible de créer le composant de décodeur : %1&#10;&#10;Fichier : %1&#10;Chemin : %2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">Impossible de créer le composant de d'encodeur : %1</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Impossible de mettre en place le décodeur pour le fichier source : %1&#10;&#10;Fichier : %1&#10;Chemin : %2&#10;&#10;Erreur : %3</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Impossible de mettre en place l'encodeur pour le fichier résultant : %1&#10;&#10;Fichier : %1&#10;Chemin : %2&#10;&#10;Erreur : %3</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Impossible de mettre en place le processeur DSP : %1&#10;&#10;Erreur : %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Impossible d'accéder au fichier d'entrée : %1&#10;&#10;Fichier : %1&#10;Répertoire : %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Impossible d'accéder au fichier de sortie : %1&#10;&#10;Fichier : %1&#10;Répertoire : %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">Échec de la vérification du fichier source : %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Non-concordance de la somme de contrôle&#10;lors de la vérification du fichier de sortie : % 1&#10;&#10;Encoder somme de controle : %2&#10;Vérifier somme de controle : %3</entry>
       <entry id="7110" string="File not found">Fichier non trouvé</entry>
       <entry id="7111" string="Unknown file type">Type de fichier inconnu</entry>

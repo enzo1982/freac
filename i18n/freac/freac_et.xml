@@ -389,8 +389,8 @@
     </section>
 
     <section name="Errors">
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Puudub juurdepääs sisend failile: %1&#10;&#10;Fail: %1&#10;Kaust: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ei saa luua väljund faili: %1&#10;&#10;Fail: %1&#10;Kaust: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Puudub juurdepääs sisend failile: %1&#10;&#10;Fail: %1&#10;Kaust: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ei saa luua väljund faili: %1&#10;&#10;Fail: %1&#10;Kaust: %2</entry>
       <entry id="7110" string="File not found">Faili ei leitud</entry>
       <entry id="7111" string="Unknown file type">Tundmatu faili tüüp</entry>
       <entry id="7113" string="Unsupported audio format">Mittetoetatav audio formaat</entry>

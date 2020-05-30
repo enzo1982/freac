@@ -609,15 +609,14 @@
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Error: %1">Грешка: %1</entry>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Није могуће креирати компоненту декодера: %1&#10;&#10;Фајл: %1&#10;Путања: %2</entry>
-      <entry id="7102" string="Could not create encoder component: %1">Није могуће креирати компоненту енкодера: %1</entry>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Није могуће подешење декодера за улазни фајл: %1&#10;&#10;Фајл: %1&#10;Путања: %2&#10;&#10;Грешка: %3</entry>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Није могуће подешење енкодера за излазни фајл: %1&#10;&#10;Фајл: %1&#10;Путања: %2&#10;&#10;Грешка: %3</entry>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Није могуће подешење DSP процесора: %1&#10;&#10;Грешка: %2</entry>
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Није могућ приступ улазном фајлу: %1&#10;&#10;Фајл: %1&#10;Фолдер: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Није могуће креирање излазног фајла: %1&#10;&#10;Фајл: %1&#10;Фолдер: %2</entry>
-      <entry id="7108" string="Failed to verify input file: %1">Овера улазног фајла није успела: %1</entry>
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Није могуће креирати компоненту декодера: %1&#10;&#10;Фајл: %1&#10;Путања: %2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">Није могуће креирати компоненту енкодера: %1</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Није могуће подешење декодера за улазни фајл: %1&#10;&#10;Фајл: %1&#10;Путања: %2&#10;&#10;Грешка: %3</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Није могуће подешење енкодера за излазни фајл: %1&#10;&#10;Фајл: %1&#10;Путања: %2&#10;&#10;Грешка: %3</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Није могуће подешење DSP процесора: %1&#10;&#10;Грешка: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Није могућ приступ улазном фајлу: %1&#10;&#10;Фајл: %1&#10;Фолдер: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Није могуће креирање излазног фајла: %1&#10;&#10;Фајл: %1&#10;Фолдер: %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">Овера улазног фајла није успела: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Checksum се не поклапа приликом овере излазног фајла: %1&#10;&#10;Енкодовање chеcksum-a: %2&#10;Овера checksum-a: %3</entry>
       <entry id="7110" string="File not found">Фајл није нађен</entry>
       <entry id="7111" string="Unknown file type">Непозната врста фајла</entry>
