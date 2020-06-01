@@ -1643,9 +1643,6 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 		if (chapterInfo.track	   == singleTrackInfo.track)	  chapterInfo.track	 = NIL;
 		if (chapterInfo.disc	   == singleTrackInfo.disc)	  chapterInfo.disc	 = NIL;
 
-		if (chapterInfo.mcdi	   == singleTrackInfo.mcdi)	  chapterInfo.mcdi	 = MCDI(Buffer<UnsignedByte>());
-		if (chapterInfo.offsets	   == singleTrackInfo.offsets)	  chapterInfo.offsets	 = NIL;
-
 		if (chapterInfo.album_gain == singleTrackInfo.album_gain) chapterInfo.album_gain = NIL;
 		if (chapterInfo.album_peak == singleTrackInfo.album_peak) chapterInfo.album_peak = NIL;
 
