@@ -175,6 +175,7 @@ Error freac::JobAddFiles::Perform()
 			/* Delete worker.
 			 */
 			workers.RemoveNth(0);
+			worker->Wait();
 
 			delete worker;
 		}

@@ -147,7 +147,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.2 (Mai 2020)
+	Version 1.1.2 (Juni 2020)
 
 		- Verbesserungen
 
@@ -159,8 +159,10 @@ Geschichte
 
 		- Behobene Fehler
 
-			- Problem mit Längenerkennung als 0:00 beim letzten Kapitel einige Audiobücher behoben
+			- Problem mit Längenerkennung als 0:00 beim letzten Kapitel einiger Audiobücher behoben
 			- Vermeide Interpretation von numerischen IDs or Datumsangaben am Anfang von Dateinamen als Track-Nummern
+			- Eine Ursache für mögliche Abstürze beim Hinzufügen von Dateien zur Jobliste behoben
+			- Einige Grafikfehler unter macOS behoben
 
 		- Aktualisierte Codecs
 
