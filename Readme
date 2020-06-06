@@ -156,12 +156,14 @@ History
 			- stop ripping before trying to eject a disc
 			- write audio data CRC to log files when ripping
 			- write MD5 checksums to log files when verifying files
+			- write log entries when replacing existing files
 
 		- Bug fixes
 
 			- fixed length of last chapter of some audio books being detected as 0:00
 			- prevent interpreting numerical IDs or dates at the beginning of file names as track numbers
 			- fixed a possible source of random crashes when adding files to the joblist
+			- fixed possible crash when importing MP4/M4A files
 			- fixed some graphics glitches on macOS
 
 		- Updated codecs

@@ -180,10 +180,9 @@ Int freac::ConvertWorker::Convert()
 		 */
 		File	 inFile	    = trackToConvert.fileName;
 		File	 outFile    = trackToConvert.outputFile;
+		Bool	 replace    = outFile.Exists();
 
 		String	 inFileName = trackToConvert.fileName;
-
-		if (String(outFile).ToLower() == String(inFile).ToLower()) outFile = String(outFile).Append(".temp");
 
 		/* Set conversion step.
 		 */
@@ -199,7 +198,7 @@ Int freac::ConvertWorker::Convert()
 			else		    conversionStep = ConversionStepVerify;
 		}
 
-		/* Setup intermediate encoder in non-on-the-fly mode
+		/* Setup intermediate encoder in non-on-the-fly mode.
 		 */
 		BoCA::Config	*encoderConfig = BoCA::Config::Copy(configuration);
 
@@ -224,6 +223,10 @@ Int freac::ConvertWorker::Convert()
 			inFile	   = String(outFile).Append(".wav");
 			inFileName = inFile;
 		}
+
+		/* Create temporary output file when replacing input.
+		 */
+		if (String(outFile).ToLower() == String(inFile).ToLower()) outFile = String(outFile).Append(".temp");
 
 		/* Set number of threads to requested value.
 		 */
@@ -396,7 +399,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Output log messages.
 		 */
-		LogConversionStart(decoder, inFileName, outFile);
+		LogConversionStart(decoder, inFileName, outFile, replace);
 
 		/* Run main conversion loop.
 		 */
@@ -644,7 +647,7 @@ Void freac::ConvertWorker::VerifyInput(const String &uri, Verifier *verifier)
 	log->Release();
 }
 
-Void freac::ConvertWorker::LogConversionStart(Decoder *decoder, const String &uri, const String &outFile) const
+Void freac::ConvertWorker::LogConversionStart(Decoder *decoder, const String &uri, const String &outFile, Bool replace) const
 {
 	String	 verb = "Converting";
 
@@ -658,9 +661,23 @@ Void freac::ConvertWorker::LogConversionStart(Decoder *decoder, const String &ur
 	log->Lock();
 	log->Write(String("    ").Append(verb).Append(": ").Append(uri));
 
+	/* Log output file.
+	 */
+	String	 outputFile = outFile;
+
+	if (String(outFile).ToLower() == String(uri).ToLower().Append(".temp")) outputFile = uri;
+
 	if (outFile != NIL && conversionStep != ConversionStepVerify)
 	{
-		log->Write(String("    ").Append(String().FillN(' ', verb.Length() - 2)).Append("to: ").Append(outFile));
+		log->Write(String("    ").Append(String().FillN(' ', verb.Length() - 2)).Append("to: ").Append(outputFile));
+	}
+
+	/* Log overwriting of files.
+	 */
+	if (outFile != NIL && (conversionStep == ConversionStepOnTheFly || conversionStep == ConversionStepEncode))
+	{
+		if	(outputFile == uri) log->Write("        Replacing input file with conversion result");
+		else if	(replace)	    log->Write("        Replacing existing file with conversion result");
 	}
 
 	/* Log used decoder.

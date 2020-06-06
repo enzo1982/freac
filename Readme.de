@@ -156,12 +156,14 @@ Geschichte
 			- Stoppe das Rippen vor dem Versuch eine CD auszuwerfen
 			- Schreibe CRC der Audiodaten beim Rippen in Log-Dateien
 			- Schreibe MD5-Checksummen beim Überprüfen von Dateien in Log-Dateien
+			- Schreibe Log-Einträge beim Ersetzen von bestehenden Dateien
 
 		- Behobene Fehler
 
 			- Problem mit Längenerkennung als 0:00 beim letzten Kapitel einiger Audiobücher behoben
 			- Vermeide Interpretation von numerischen IDs or Datumsangaben am Anfang von Dateinamen als Track-Nummern
 			- Eine Ursache für mögliche Abstürze beim Hinzufügen von Dateien zur Jobliste behoben
+			- Möglichen Absturz beim Import von MP4/M4A-Dateien behoben
 			- Einige Grafikfehler unter macOS behoben
 
 		- Aktualisierte Codecs
