@@ -31,30 +31,107 @@
 	      <div id='g_body'>
 		<h4>Contents</h4>
 		<blockquote>
-		  <p><a href="#anchor_src">How to compile fre:ac from source?</a></p>
-		  <p><a href="#anchor_enc">How to install encoder/decoder xy?</a></p>
+		  <p><a href="#anchor_app">How to run the fre:ac AppImage?</a></p>
+		  <p><a href="#anchor_scl">How to change the font size of fre:ac?</a></p>
 		  <p><a href="#anchor_pat">How to use output file name patterns in fre:ac?</a></p>
+		  <p><a href="#anchor_enc">How to install encoder/decoder xy?</a></p>
 		  <p><a href="#anchor_tra">How to add a new translation to fre:ac?</a></p>
+		  <p><a href="#anchor_src">How to compile fre:ac from source?</a></p>
 		  <p><a href="#anchor_rem">How to remove fre:ac from my computer?</a></p>
 		</blockquote>
-		<h4 id="anchor_src">How to compile fre:ac from source?</h4>
+		<h4 id="anchor_app">How to run the fre:ac AppImage?</h4>
 		<blockquote>
-		  <p>In order to build fre:ac from source you should download the latest version of the
-		    <b>fre:ac Component Development Kit</b> (CDK) from <a href="https://www.freac.org/">www.freac.org</a> first.</p>
-		  <p>You will also need the latest <b>smooth Class Library</b> sources from <a href="http://www.smooth-project.org/">www.smooth-project.org</a>
-		    and of course the <b>fre:ac source code</b> package or fre:ac sources checked out from Git.</p>
+		  <p>After downloading the fre:ac AppImage, you need to make it executable. In graphical file managers this can usually be done
+		    by right clicking the AppImage and selecting <b>Properties</b>. In the following dialog, change to the <b>Permissions</b> tab and check the
+		    option named <b>Run as application</b>. The individual labels may be named slightly differently depending on your distribution and
+		    desktop environment.</p>
+		  <p>Alternatively, you can set the executable flag in the terminal. Change to the folder containing the downloaded AppImage and enter:</p>
+		  <blockquote>
+		    <b>chmod a+x freac-v1.1.1-linux-x86_64.AppImage</b>
+		  </blockquote>
+		  <p>Then just run the AppImage using:</p>
+		  <blockquote>
+		    <b>./freac-v1.1.1-linux-x86_64.AppImage</b>
+		  </blockquote>
+		  <p>It is also possible to run the fre:ac command line interface and the included <b>smooth Translator</b> application using the AppImage:</p>
+		  <blockquote>
+		    <ul>
+		      <li>freaccmd: <b>./freac-v1.1.1-linux-x86_64.AppImage freaccmd</b></li>
+		      <li>smooth Translator: <b>./freac-v1.1.1-linux-x86_64.AppImage translator</b></li>
+		    </ul>
+		  </blockquote>
+		  <p>If you need to access the contents of the fre:ac AppImage, you can run it with the <b>--appimage-extract</b> argument:</p>
+		  <blockquote>
+		    <b>./freac-v1.1.1-linux-x86_64.AppImage --appimage-extract</b>
+		  </blockquote>
+		  <p>You will find the AppImage contents in the <b>squashfs-root</b> folder after running this command.</p>
+		</blockquote>
+		<h4 id="anchor_scl">How to change the font size of fre:ac?</h4>
+		<blockquote>
+		  <p>If the default size of the fre:ac user interface is too small, you can enable scaling using the <b>--scale:n.n</b> option. Set <b>n.n</b> to the
+		    scale factor you would like to apply. For example, in order to get 25% larger fonts and UI elements, run fre:ac like this:</p>
+		  <blockquote>
+		    <b>freac --scale:1.25</b>
+		  </blockquote>
+		</blockquote>
+		<h4 id="anchor_pat">How to use output file name patterns in fre:ac?</h4>
+		<blockquote>
+		  <p>The output file name pattern can be configured on the <b>Encoder</b> page of the configuration dialog. You can
+		    use backslashes to specify directories and placeholders for referring to meta information. The following
+		    placeholders are available:</p>
 		  <ul>
-		    <li>extract the contents of <b>freac-cdk-1.x.zip</b> to anywhere you like</li>
-		    <li>create a folder structure like this:
-		      <blockquote>
-			/cdk (contains folder <b>system</b> and <b>cdk.bat</b>)<br/>
-			/cdk/freac (rename folder from <b>freac-1.1.x.zip</b> package)<br/>
-			/cdk/smooth (rename folder from <b>smooth-0.8.x.y.zip</b> package)
-		      </blockquote>
-		    </li>
-		    <li>run <b>cdk.bat</b></li>
-		    <li>enter: <b>cd smooth && make programs && cd ../freac && make</b></li>
+		    <li><b>&lt;artist&gt;</b> - The song artist</li>
+		    <li><b>&lt;title&gt;</b> - The song title</li>
+		    <li><b>&lt;album&gt;</b> - The album title</li>
+		    <li><b>&lt;disc&gt;</b> - The disc number</li>
+		    <li><b>&lt;track&gt;</b> - The song track number</li>
+		    <li><b>&lt;genre&gt;</b> - The song genre</li>
+		    <br/>
+		    <li><b>&lt;albumartist&gt;</b> - The album artist</li>
+		    <br/>
+		    <li><b>&lt;composer&gt;</b> - The song composer</li>
+		    <li><b>&lt;conductor&gt;</b> - The performance conductor</li>
+		    <br/>
+		    <li><b>&lt;year&gt;</b> - The year the song was published</li>
+		    <br/>
+		    <li><b>&lt;discid&gt;</b> - The CDDB/freedb disc ID</li>
+		    <br/>
+		    <li><b>&lt;currentdate&gt;</b> - The current date formatted as yyyymmdd</li>
+		    <li><b>&lt;currenttime&gt;</b> - The current time formatted as hhmm</li>
 		  </ul>
+		  <p>The <b>&lt;disc&gt;</b> and <b>&lt;track&gt;</b> placeholders can be modified like <b>&lt;disc(n)&gt;</b> and <b>&lt;track(n)&gt;</b> where the <b>(n)</b>
+		    part specifies the minimum length of the disc or track number. Zeroes will be prepended if the actual number is too small. <b>n</b> may be in the range of
+		    <b>1</b> to <b>4</b> where <b>1</b> is the default for disc and <b>2</b> is the default for track numbers if the <b>(n)</b> part is omitted.</p>
+		  <p>The above placeholders refer to song and album information. The following placeholder resolves to the type of the output file:</p>
+		  <ul>
+		    <li><b>&lt;filetype&gt;</b> - The type of the output file</li>
+		  </ul>
+		  <p>A common use case for this placeholder is if you are regularly encoding to different formats (e.g. FLAC for archival and M4A for your
+		    mobile player) and would like to keep the encoded files in separate directory trees.</p>
+		  <p>In addition to the above there are two placeholders that refer
+		    to the original file name of a file being encoded in fre:ac:</p>
+		  <ul>
+		    <li><b>&lt;filename&gt;</b> - The file name of the input file</li>
+		    <li><b>&lt;directory&gt;</b> - The folder the input file is found in</li>
+		  </ul>
+		  <p>The <b>&lt;directory&gt;</b> pattern is special as you can modify its meaning using two numerical arguments.
+		    You can use it like <b>&lt;directory+n&gt;</b> or <b>&lt;directory+n(m)&gt;</b>. In these expressions, the <b>n</b>
+		    specifies the number of path components that should be stripped from the beginning. The <b>m</b> specifies
+		    the number of components to use from what is left. Omitting the <b>(m)</b> part will use all components left in the path after stripping
+		    <b>n</b> components from the beginning. <b>&lt;directory&gt;</b> without any arguments will resolve to the complete path.<p>
+		  <p>So how to use this in practice? Assuming you have your music collection ordered like this:</p>
+		  <blockquote>
+		    <p>C:\Music\[other criteria]\[artist]\[album]\[track] - [title]</p>
+		  </blockquote>
+		  <p>You might have a file called <b>C:\Music\Favorites\Starsailor\Silence is Easy\01 - Music was Saved.flac</b>.</p>
+		  <p>Now let's say you want to encode some music files for use on your portable player and put them in <b>C:\Encoded\</b>.
+		    In order to keep your <b>[other criteria]</b> field, you need to use the <b>&lt;directory&gt;</b> pattern.
+		    If your encoder output folder is set to <b>C:\Encoded\</b>, your complete filename pattern could look like this:</p>
+		  <blockquote>
+		    <p>&lt;directory+1(1)&gt;\&lt;artist&gt; - &lt;album&gt;\&lt;artist&gt; - &lt;album&gt; - &lt;track&gt; - &lt;title&gt;</p>
+		  </blockquote>
+		  <p>This would encode the beforementioned file to <b>C:\Encoded\Favorites\Starsailor - Silence is Easy\Starsailor - Silence
+		    is Easy - 01 - Music was Saved.m4a</b>.</p>
 		</blockquote>
 		<h4 id="anchor_enc">How to install encoder/decoder xy?</h4>
 		<blockquote>
@@ -73,16 +150,6 @@
 		    <ul>
 		      <li>Download the <b>QuickTime AAC command line encoder ZIP package</b> from <a href="https://github.com/nu774/qaac/releases">github.com</a>.</li>
 		      <li>Copy the file <b>qaac.exe</b> or <b>qaac64.exe</b> from the ZIP package to the <b>codecs/cmdline</b>
-			subfolder of your fre:ac installation path.</li>
-		    </ul>
-		  </blockquote>
-		  <h5>DivX AAC Encoder</h5>
-		  <blockquote>
-		    <p>To install the DivX AAC Encoder for use with fre:ac, follow these steps:</p>
-		    <ul>
-		      <li>Download the <b>DivX AAC Encoder setup package</b> from <a href="http://labs.divx.com/node/127866">labs.divx.com</a>.</li>
-		      <li>Run the setup executable and install the DivX AAC Encoder to a folder of your choice.</li>
-		      <li>Copy the file <b>DivXAACEnc.exe</b> from the DivX AAC Encoder installation folder to the <b>codecs/cmdline</b>
 			subfolder of your fre:ac installation path.</li>
 		    </ul>
 		  </blockquote>
@@ -119,7 +186,7 @@
 		  <blockquote>
 		    <p>To install the MPEG-4 Audio Lossless Encoder / Decoder for use with fre:ac, follow these steps:</p>
 		    <ul>
-		      <li>Download the <b>MPEG-4 ALS Windows Codec ZIP package</b> from <a href="https://www.nue.tu-berlin.de/menue/forschung/forschungsgebiete/datenkompression_und_uebertragung/mpeg_4_audio_lossless_coding_als">www.nue.tu-berlin.de</a>.</li>
+		      <li>Download the <b>MPEG-4 ALS Windows Codec ZIP package</b> from <a href="https://www.nue.tu-berlin.de/menue/research/research_topic/compression_and_transmission/mpeg_4_audio_lossless_coding_als/parameter/en">www.nue.tu-berlin.de</a>.</li>
 		      <li>Copy the .exe file found in the ZIP package to the <b>codecs/cmdline</b>
 			subfolder of your fre:ac installation path <b>renaming it to mp4als.exe</b>.</li>
 		    </ul>
@@ -285,65 +352,6 @@
 		    </ul>
 		  </blockquote>
 		</blockquote>
-		<h4 id="anchor_pat">How to use output file name patterns in fre:ac?</h4>
-		<blockquote>
-		  <p>The output file name pattern can be configured on the <b>Encoder</b> page of the configuration dialog. You can
-		    use backslashes to specify directories and placeholders for referring to meta information. The following
-		    placeholders are available:</p>
-		  <ul>
-		    <li><b>&lt;artist&gt;</b> - The song artist</li>
-		    <li><b>&lt;title&gt;</b> - The song title</li>
-		    <li><b>&lt;album&gt;</b> - The album title</li>
-		    <li><b>&lt;disc&gt;</b> - The disc number</li>
-		    <li><b>&lt;track&gt;</b> - The song track number</li>
-		    <li><b>&lt;genre&gt;</b> - The song genre</li>
-		    <br/>
-		    <li><b>&lt;albumartist&gt;</b> - The album artist</li>
-		    <br/>
-		    <li><b>&lt;composer&gt;</b> - The song composer</li>
-		    <li><b>&lt;conductor&gt;</b> - The performance conductor</li>
-		    <br/>
-		    <li><b>&lt;year&gt;</b> - The year the song was published</li>
-		    <br/>
-		    <li><b>&lt;discid&gt;</b> - The CDDB/freedb disc ID</li>
-		    <br/>
-		    <li><b>&lt;currentdate&gt;</b> - The current date formatted as yyyymmdd</li>
-		    <li><b>&lt;currenttime&gt;</b> - The current time formatted as hhmm</li>
-		  </ul>
-		  <p>The <b>&lt;disc&gt;</b> and <b>&lt;track&gt;</b> placeholders can be modified like <b>&lt;disc(n)&gt;</b> and <b>&lt;track(n)&gt;</b> where the <b>(n)</b>
-		    part specifies the minimum length of the disc or track number. Zeroes will be prepended if the actual number is too small. <b>n</b> may be in the range of
-		    <b>1</b> to <b>4</b> where <b>1</b> is the default for disc and <b>2</b> is the default for track numbers if the <b>(n)</b> part is omitted.</p>
-		  <p>The above placeholders refer to song and album information. The following placeholder resolves to the type of the output file:</p>
-		  <ul>
-		    <li><b>&lt;filetype&gt;</b> - The type of the output file</li>
-		  </ul>
-		  <p>A common use case for this placeholder is if you are regularly encoding to different formats (e.g. FLAC for archival and M4A for your
-		    mobile player) and would like to keep the encoded files in separate directory trees.</p>
-		  <p>In addition to the above there are two placeholders that refer
-		    to the original file name of a file being encoded in fre:ac:</p>
-		  <ul>
-		    <li><b>&lt;filename&gt;</b> - The file name of the input file</li>
-		    <li><b>&lt;directory&gt;</b> - The folder the input file is found in</li>
-		  </ul>
-		  <p>The <b>&lt;directory&gt;</b> pattern is special as you can modify its meaning using two numerical arguments.
-		    You can use it like <b>&lt;directory+n&gt;</b> or <b>&lt;directory+n(m)&gt;</b>. In these expressions, the <b>n</b>
-		    specifies the number of path components that should be stripped from the beginning. The <b>m</b> specifies
-		    the number of components to use from what is left. Omitting the <b>(m)</b> part will use all components left in the path after stripping
-		    <b>n</b> components from the beginning. <b>&lt;directory&gt;</b> without any arguments will resolve to the complete path.<p>
-		  <p>So how to use this in practice? Assuming you have your music collection ordered like this:</p>
-		  <blockquote>
-		    <p>C:\Music\[other criteria]\[artist]\[album]\[track] - [title]</p>
-		  </blockquote>
-		  <p>You might have a file called <b>C:\Music\Favorites\Starsailor\Silence is Easy\01 - Music was Saved.flac</b>.</p>
-		  <p>Now let's say you want to encode some music files for use on your portable player and put them in <b>C:\Encoded\</b>.
-		    In order to keep your <b>[other criteria]</b> field, you need to use the <b>&lt;directory&gt;</b> pattern.
-		    If your encoder output folder is set to <b>C:\Encoded\</b>, your complete filename pattern could look like this:</p>
-		  <blockquote>
-		    <p>&lt;directory+1(1)&gt;\&lt;artist&gt; - &lt;album&gt;\&lt;artist&gt; - &lt;album&gt; - &lt;track&gt; - &lt;title&gt;</p>
-		  </blockquote>
-		  <p>This would encode the beforementioned file to <b>C:\Encoded\Favorites\Starsailor - Silence is Easy\Starsailor - Silence
-		    is Easy - 01 - Music was Saved.m4a</b>.</p>
-		</blockquote>
 		<h4 id="anchor_tra">How to add a new translation to fre:ac?</h4>
 		<blockquote>
 		  <p>Please use the <b>smooth Translator</b> utility included in the fre:ac distribution and open an existing
@@ -353,12 +361,32 @@
 		    and try selecting the new translation in the configuration dialog.</p>
 		  <p>Please submit your translation to <a href="mailto:translations@freac.org">translations@freac.org</a>, so it can be included in the official distribution.</p>
 		</blockquote>
+		<h4 id="anchor_src">How to compile fre:ac from source?</h4>
+		<blockquote>
+		  <p>In order to build fre:ac from source you should download the latest version of the
+		    <b>fre:ac Component Development Kit</b> (CDK) from <a href="https://freac.org/">freac.org</a> first.</p>
+		  <p>You will also need the latest <b>smooth Class Library</b> sources from <a href="http://smooth-project.org/">smooth-project.org</a>
+		    and of course the <b>fre:ac source code</b> package or fre:ac sources checked out from Git.</p>
+		  <ul>
+		    <li>extract the contents of <b>freac-cdk-1.0.x-windows.zip</b> to anywhere you like</li>
+		    <li>create a folder structure like this:
+		      <blockquote>
+			/cdk (contains folder <b>system</b> and <b>cdk.bat</b>)<br/>
+			/cdk/freac (rename folder from <b>freac-1.1.x.tar.gz</b> package)<br/>
+			/cdk/smooth (rename folder from <b>smooth-0.9.x.tar.gz</b> package)
+		      </blockquote>
+		    </li>
+		    <li>run <b>cdk.bat</b></li>
+		    <li>enter: <b>make &amp;&amp; cd smooth &amp;&amp; make &amp;&amp; cd ../freac &amp;&amp; make</b></li>
+		  </ul>
+		</blockquote>
 		<h4 id="anchor_rem">How to remove fre:ac from my computer?</h4>
 		<blockquote>
-		  <p>Recent versions of fre:ac come with an uninstaller that you can execute from the <b>Start</b> menu.</p>
-		  <p>In case you removed the Start menu group or are unable to find it, it is completely sufficient to delete
-		    the application folder to uninstall fre:ac. fre:ac does neither create any Windows registry entries
-		    nor store any active components outside its installation folder.</p>
+		  <p>All recent versions of fre:ac can be removed via the <b>Apps</b> panel of the <b>Windows Settings</b> application.
+		    Locate the fre:ac entry in the list of installed applications and select <b>Uninstall</b> to remove it.</p>
+		  <p>In case you are unable to find the fre:ac entry there, it is completely sufficient to delete the application folder to
+		    uninstall fre:ac. fre:ac does neither create any Windows registry entries nor store any active components outside its
+		    installation folder.</p>
 		</blockquote>
 	      </div>
 	    </div>

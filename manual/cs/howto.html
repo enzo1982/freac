@@ -32,10 +32,12 @@ fre:ac - Příručka nastavení a speciálních vlastností</p>
 
 <h4>Obsah</h4>
 <blockquote>
-		  <p><a href="../en/howto.html#anchor_src">How to compile fre:ac from source?</a> (<img style="width: 17px; height: 10px;" src="../images/en.png" alt="en"/>)</p>
-		  <p><a href="../en/howto.html#anchor_enc">How to install encoder/decoder xy?</a> (<img style="width: 17px; height: 10px;" src="../images/en.png" alt="en"/>)</p>
+		  <p><a href="../en/howto.html#anchor_app">How to run the fre:ac AppImage?</a> (<img style="width: 17px; height: 10px;" src="../images/en.png" alt="en"/>)</p>
+		  <p><a href="../en/howto.html#anchor_scl">How to change the font size of fre:ac?</a> (<img style="width: 17px; height: 10px;" src="../images/en.png" alt="en"/>)</p>
 		  <p><a href="#anchor_pat">Jak formátovat název výstupního souboru v fre:ac?</a></p>
+		  <p><a href="../en/howto.html#anchor_enc">How to install encoder/decoder xy?</a> (<img style="width: 17px; height: 10px;" src="../images/en.png" alt="en"/>)</p>
 		  <p><a href="#anchor_tra">Jak přidat nový překlad fre:ac?</a></p>
+		  <p><a href="../en/howto.html#anchor_src">How to compile fre:ac from source?</a> (<img style="width: 17px; height: 10px;" src="../images/en.png" alt="en"/>)</p>
 		  <p><a href="#anchor_rem">Jak odstranit fre:ac z počítače?</a></p>
 </blockquote><br>
 
@@ -43,21 +45,21 @@ fre:ac - Příručka nastavení a speciálních vlastností</p>
 <blockquote>
 <p>Automatická tvorba jména výstupních souborů se nastavuje v konfiguračním dialogu na kartě Encodér / Vzor názvu souboru. Můžete používat zpětná lomítka pro určení adresářů a zástupné znaky odkazující na meta informace (ID3 tag). K dispozici jsou následující zástupné znaky:</p>
 <ul>
-<li><b><tt>&lt;artist&gt;</tt></b> - interpret</li>
-<li><b><tt>&lt;title&gt;&nbsp;</tt></b> - název skladby</li>
-<li><b><tt>&lt;album&gt;&nbsp;</tt></b> - název alba</li>
-<li><b><tt>&lt;track&gt;&nbsp;</tt></b> - číslo stopy</li>
-<li><b><tt>&lt;genre&gt;&nbsp;</tt></b> - žánr</li>
+<li><b>&lt;artist&gt;</b> - interpret</li>
+<li><b>&lt;title&gt;&nbsp;</b> - název skladby</li>
+<li><b>&lt;album&gt;&nbsp;</b> - název alba</li>
+<li><b>&lt;track&gt;&nbsp;</b> - číslo stopy</li>
+<li><b>&lt;genre&gt;&nbsp;</b> - žánr</li>
 <br/>
-<li><b><tt>&lt;composer&gt;</tt></b></li>
-<li><b><tt>&lt;conductor&gt;</tt></b></li>
+<li><b>&lt;composer&gt;</b></li>
+<li><b>&lt;conductor&gt;</b></li>
 <br/>
-<li><b><tt>&lt;year&gt; &nbsp;</tt></b> - rok vydání</li>
+<li><b>&lt;year&gt; &nbsp;</b> - rok vydání</li>
 </ul>
 <p>Výše uvedené zástupné znaky odkazují na informace o skladbách a albu obsažené v ID3 tagu. Kromě toho existují dva zástupné znaky, které odkazují na původní název souboru a adresářě(ů)při kódování v fre:ac:</p>
 <ul>
-<li><b><tt>&lt;filename&gt;&nbsp;</tt></b> - Jméno souboru je vzato z jména vstupního souboru</li>
-<li><b><tt>&lt;directory&gt;</tt></b> - Jméno adresáře(ů)), v němž se vstupní soubor nachází</li>
+<li><b>&lt;filename&gt;&nbsp;</b> - Jméno souboru je vzato z jména vstupního souboru</li>
+<li><b>&lt;directory&gt;</b> - Jméno adresáře(ů)), v němž se vstupní soubor nachází</li>
 </ul>
 <p>Zástupný znak <b>&lt;directory&gt;</b> umožní uložení nového kódovaného souboru na jiné místo s tou samou strukturou adresářů, jako je struktura adresářu s originálním souborem. Jedná se o kompletní cestu. Použijete-li <b>&lt;directory+n&gt;</b>, tak pomocí číselného argumentu <b>n</b> zrušíte určitý počet adresářů a to zleva z celé cesty. <b>1</b> vynechá první adresář z celé cesty, <b>3</b> vynechá první tři adresáře z celé cesty. <b>0</b> zapíše celou cestu (to samé jako &lt;directory&gt;). Tyto možnosti se hodí při hromadném kódování z mnoha různých adresářů a podadresářů.<br>
 <i>Pozn: V <a href="../en/howto.html#anchor_pat" target="_blank" title="The <directory> pattern is special as you can modify its meaning using two numerical arguments. You can use it like <directory+n> or <directory+n(m)>. In these expressions, the 'n' specifies the number of path components that should be stripped from the beginning. The 'm' specifies the number of components to use from what is left. Omitting the 'm' part will use all components left in the path after stripping 'n' components from the beginning. <directory> without any arguments will resolve to complete path.">en textu</a> byl ještě argument <b>(m)</b>, ten ale nechodil.</i>
@@ -101,7 +103,7 @@ fre:ac - Příručka nastavení a speciálních vlastností</p>
 <br>
 <div id='g_footer'>
 <p>Copyright (C) 2006 Joseph Nahmias<br>
-Copyright (C) 2007-2016 the fre:ac project</p>
+Copyright (C) 2007-2020 the fre:ac project</p>
 </div>
 <br>
 </div>
