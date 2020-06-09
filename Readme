@@ -151,6 +151,7 @@ History
 
 		- Improvements
 
+			- added support for theme colors and dark mode on Linux/FreeBSD
 			- try to keep the selected encoder the same when upgrading from fre:ac 1.0.x
 			- removed non-working option to not lock CD trays while ripping
 			- stop ripping before trying to eject a disc
