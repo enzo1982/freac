@@ -98,13 +98,13 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://freac.org/patches/MAC_SDK_538d.zip",
-                    "sha256": "dab699501f5cc044f8937a369f91aec0a04e8b9f05576e299db4c1b9f8883c0a",
+                    "url": "https://freac.org/patches/MAC_SDK_542.zip",
+                    "sha256": "854c57c2645c78abca052b08eb5eb16d45be365548fad23fe49b6d742637639c",
                     "strip-components": 0
                 },
                 {
                     "type": "patch",
-                    "path": "patches/mac-sdk-5.38d-gcc.patch"
+                    "path": "patches/mac-sdk-5.42-gcc.patch"
                 }
             ]
         },
