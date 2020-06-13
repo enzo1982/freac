@@ -360,7 +360,7 @@ Bool freac::freacGUI::ExitProc()
 
 	/* Save main window position.
 	 */
-	Rect	 wndRect = mainWnd->GetRestoredWindowRect() - mainWnd->GetSizeModifier();
+	Rect	 wndRect = mainWnd->GetRestoredWindowRect();
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, wndRect.left);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, wndRect.top);

@@ -152,6 +152,7 @@ Geschichte
 		- Verbesserungen
 
 			- Unterstützung für Theme-Farben und Dark-Mode unter Linux/FreeBSD hinzugefügt
+			- Umgang mit maximiertem Fensterzustand unter Linux/FreeBSD und macOS verbessert
 			- Versuche den ausgewählten Kodierer beim Upgrade von fre:ac 1.0.x beizubehalten
 			- Nicht funktionsfähige Option entfernt, CD-Laufwerke während des Rippens nicht zu sperren
 			- Stoppe das Rippen vor dem Versuch eine CD auszuwerfen
