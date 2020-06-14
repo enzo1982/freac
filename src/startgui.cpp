@@ -384,17 +384,31 @@ Void freac::freacGUI::OnChangePosition(const Point &nPos)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, mainWnd->GetPosition().x);
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, mainWnd->GetPosition().y);
+	/* Save main window position.
+	 */
+	Rect	 wndRect = mainWnd->GetRestoredWindowRect();
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, wndRect.left);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, wndRect.top);
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowMaximizedID, mainWnd->IsMaximized());
 }
 
 Void freac::freacGUI::OnChangeSize(const Size &nSize)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, mainWnd->GetSize().cx);
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, mainWnd->GetSize().cy);
+	/* Save main window size.
+	 */
+	Rect	 wndRect = mainWnd->GetRestoredWindowRect();
 
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, wndRect.right - wndRect.left);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, wndRect.bottom - wndRect.top);
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowMaximizedID, mainWnd->IsMaximized());
+
+	/* Update widgets.
+	 */
 	mainWnd->SetStatusText(String(freac::appLongName).Append(" ").Append(freac::version).Append(" - ").Append(freac::copyright));
 
 	Rect	 clientRect = mainWnd->GetClientRect();
