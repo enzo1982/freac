@@ -151,6 +151,7 @@ History
 
 		- Improvements
 
+			- scale UI to adjust to system font size by default
 			- added support for theme colors and dark mode on Linux/FreeBSD
 			- improved handling of maximized window state on Linux/FreeBSD and macOS
 			- try to keep the selected encoder the same when upgrading from fre:ac 1.0.x

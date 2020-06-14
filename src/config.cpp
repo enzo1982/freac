@@ -47,10 +47,10 @@ const String	 freac::Config::SettingsWindowPosYID				= "WindowPosY";
 const Int	 freac::Config::SettingsWindowPosYDefault			= 100;
 
 const String	 freac::Config::SettingsWindowSizeXID				= "WindowSizeX";
-const Int	 freac::Config::SettingsWindowSizeXDefault			= 800;
+const Int	 freac::Config::SettingsWindowSizeXDefault			= 740;
 
 const String	 freac::Config::SettingsWindowSizeYID				= "WindowSizeY";
-const Int	 freac::Config::SettingsWindowSizeYDefault			= 600;
+const Int	 freac::Config::SettingsWindowSizeYDefault			= 550;
 
 const String	 freac::Config::SettingsWindowMaximizedID			= "WindowMaximized";
 const Bool	 freac::Config::SettingsWindowMaximizedDefault			= False;
