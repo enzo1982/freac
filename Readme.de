@@ -167,6 +167,7 @@ Geschichte
 			- Vermeide Interpretation von numerischen IDs or Datumsangaben am Anfang von Dateinamen als Track-Nummern
 			- Eine Ursache für mögliche Abstürze beim Hinzufügen von Dateien zur Jobliste behoben
 			- Möglichen Absturz beim Import von MP4/M4A-Dateien behoben
+			- Möglichen Absturz beim Kodieren im SuperFast-Modus behoben
 			- Einige Grafikfehler unter macOS behoben
 
 		- Aktualisierte Codecs

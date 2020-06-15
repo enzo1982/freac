@@ -167,6 +167,7 @@ History
 			- prevent interpreting numerical IDs or dates at the beginning of file names as track numbers
 			- fixed a possible source of random crashes when adding files to the joblist
 			- fixed possible crash when importing MP4/M4A files
+			- fixed possible crash when encoding in SuperFast mode
 			- fixed some graphics glitches on macOS
 
 		- Updated codecs
