@@ -609,15 +609,15 @@
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Error: %1">Fel: %1</entry>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att skapa avkodarkomponenten: %1&#10;&#10;Fil: %1&#10;Sökväg: %2</entry>
-      <entry id="7102" string="Could not create encoder component: %1">Det gick inte att skapa kodarkomponenten: %1</entry>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Det gick inte att konfigurera avkodare för källfilen: %1&#10;&#10;Fil: %1&#10;Sökväg: %2&#10;&#10;Fel: %3</entry>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Det gick inte att konfigurera kodare för målfilen: %1&#10;&#10;Fil: %1&#10;Sökväg: %2&#10;&#10;Fel: %3</entry>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Det gick inte att konfigurera digital signalbehandlare: %1&#10;&#10;Fel: %2</entry>
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att komma åt källfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att skapa målfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>
-      <entry id="7108" string="Failed to verify input file: %1">Det gick inte att verifiera källfilen: %1</entry>
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att skapa avkodarkomponenten: %1&#10;&#10;Fil: %1&#10;Sökväg: %2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">Det gick inte att skapa kodarkomponenten: %1</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Det gick inte att konfigurera avkodare för källfilen: %1&#10;&#10;Fil: %1&#10;Sökväg: %2&#10;&#10;Fel: %3</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Det gick inte att konfigurera kodare för målfilen: %1&#10;&#10;Fil: %1&#10;Sökväg: %2&#10;&#10;Fel: %3</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Det gick inte att konfigurera digital signalbehandlare: %1&#10;&#10;Fel: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att komma åt källfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Det gick inte att skapa målfilen: %1&#10;&#10;Filsökväg: %1&#10;Mapp: %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">Det gick inte att verifiera källfilen: %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1"/>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Kontrollsummefel vid verifiering av målfil: %1&#10;&#10;Förväntad kontrollsumma: %2&#10;Verklig kontrollsumma: %3</entry>
       <entry id="7110" string="File not found">Det gick inte att hitta filen</entry>
       <entry id="7111" string="Unknown file type">Okänd filtyp</entry>

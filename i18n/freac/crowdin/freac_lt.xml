@@ -609,15 +609,15 @@
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Error: %1">Klaida: %1</entry>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Nepavyko sukurti dekoderio komponento: %1&#10;&#10;Failas: %1&#10;Kelias: %2</entry>
-      <entry id="7102" string="Could not create encoder component: %1">Nepavyko sukurti koduotuvo komponento: %1</entry>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Nepavyko paruošti dekoderio įvesties failui: %1&#10;&#10;Failas: %1&#10;Kelias: %2&#10;&#10;Klaida: %3</entry>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Nepavyko paruošti koduotuvo išvesties failui: %1&#10;&#10;Failas: %1&#10;Kelias: %2&#10;&#10;Klaida: %3</entry>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Nepavyko paruošti DSP doroklės: %1&#10;&#10;Klaida: %2</entry>
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Neįmanoma pasiekti įvesties failo: %1&#10;&#10;Failas: %1&#10;Kelias: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Neįmanoma sukurti išvesties failo: %1&#10;&#10;Failas: %1&#10;Kelias: %2</entry>
-      <entry id="7108" string="Failed to verify input file: %1">Nepavyko patikrinti įvesties failo: %1</entry>
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Nepavyko sukurti dekoderio komponento: %1&#10;&#10;Failas: %1&#10;Kelias: %2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">Nepavyko sukurti koduotuvo komponento: %1</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Nepavyko paruošti dekoderio įvesties failui: %1&#10;&#10;Failas: %1&#10;Kelias: %2&#10;&#10;Klaida: %3</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Nepavyko paruošti koduotuvo išvesties failui: %1&#10;&#10;Failas: %1&#10;Kelias: %2&#10;&#10;Klaida: %3</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Nepavyko paruošti DSP doroklės: %1&#10;&#10;Klaida: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Neįmanoma pasiekti įvesties failo: %1&#10;&#10;Failas: %1&#10;Kelias: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Neįmanoma sukurti išvesties failo: %1&#10;&#10;Failas: %1&#10;Kelias: %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">Nepavyko patikrinti įvesties failo: %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1"/>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Išvesties failo: %1 kontrolinės sumos nesutampa&#10;&#10;Užkodavimo kontrolinė suma: %2&#10;Patikrinimo kontrolinė suma: %3</entry>
       <entry id="7110" string="File not found">Failas nerastas</entry>
       <entry id="7111" string="Unknown file type">Nežinomas failo tipas</entry>
