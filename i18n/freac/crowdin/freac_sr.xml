@@ -617,7 +617,7 @@
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Nije moguć pristup ulaznom fajlu: %1&#10;&#10;Fajl: %1&#10;Folder: %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Nije moguće kreiranje izlaznog fajla: %1&#10;&#10;Fajl: %1&#10;Folder: %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">Overa ulaznog fajla nije uspela: %1</entry>
-      <entry id="7108" string="Failed to verify input track: %1"/>
+      <entry id="7108" string="Failed to verify input track: %1">Overa ulaznog fajla nije uspela: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Checksum se ne poklapa prilikom overe izlaznog fajla: %1&#10;&#10;Enkodovanje checksum-a: %2&#10;Overa checksum-a: %3</entry>
       <entry id="7110" string="File not found">Fajl nije nađen</entry>
       <entry id="7111" string="Unknown file type">Nepoznata vrsta fajla</entry>

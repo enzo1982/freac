@@ -617,7 +617,7 @@
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Kan geen toegang krijgen tot invoerbestand: %1&#10;&#10;Bestand: %1&#10;Map: %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Kan geen toegang krijgen tot uitvoerbestand: %1&#10;&#10;Bestand: %1&#10;Map: %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">Verifiëren van invoerbestand mislukt: %1</entry>
-      <entry id="7108" string="Failed to verify input track: %1"/>
+      <entry id="7108" string="Failed to verify input track: %1">Verifiëren van invoertrack mislukt: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Checksum komt niet overeen bij verifiëren van het uitvoerbestand: %1&#10;&#10;Codeer-checksum: %2&#10;Verificatie-checksum: %3</entry>
       <entry id="7110" string="File not found">Bestand niet gevonden</entry>
       <entry id="7111" string="Unknown file type">Onbekend bestandstype</entry>

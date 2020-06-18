@@ -617,6 +617,7 @@
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn si pò accede à u schedariu d’urigine : %1&#10;&#10;Schedariu : %1&#10;Chjassu : %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn si pò creà u schedariu di destinazione : %1&#10;&#10;Schedariu : %1&#10;Chjassu : %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">Fiascu di a verificazione di u schedariu d’urigine : %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1">Fiascu di a verificazione di a traccia d’entrata : %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Sfarenza di somma di cuntrollu à a verificazione di u schedariu di destinazione : %1&#10;&#10;Somma cudificata : %2&#10;Somma verificata : %3</entry>
       <entry id="7110" string="File not found">U schedariu ùn esiste micca</entry>
       <entry id="7111" string="Unknown file type">Tipu di schedariu scunnisciutu</entry>

@@ -617,6 +617,7 @@
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Нет доступа к входному файлу: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Невозможно создать выходной файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">Ошибка проверки входного файла: %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1">Не удалось проверить входную дорожку: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Несоответствие контрольной суммы при проверке выходного файла: %1&#10;&#10;Контрольная сумма кодирования: %2&#10;Контрольная сумма проверки: %3</entry>
       <entry id="7110" string="File not found">Файл не найден</entry>
       <entry id="7111" string="Unknown file type">Неизвестный тип файла</entry>
