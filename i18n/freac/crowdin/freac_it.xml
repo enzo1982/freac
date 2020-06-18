@@ -609,15 +609,15 @@
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Error: %1">Errore: %1</entry>
-      <entry id="7101" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Impossibile creare il componente del decodificatore: %1&#10;&#10;File: %1&#10;Percorso: %2</entry>
-      <entry id="7102" string="Could not create encoder component: %1">Impossibile creare il componente del codificatore: %1</entry>
-      <entry id="7103" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Impossibile impostare il decodificatore per il file sorgente: %1&#10;&#10;File: %1&#10;Percorso: %2&#10;&#10;Errore: %3</entry>
-      <entry id="7104" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Impossibile impostare il codificatore per il file di destinazione: %1&#10;&#10;File: %1&#10;Percorso: %2&#10;&#10;Errore: %3</entry>
-      <entry id="7105" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Impossibile impostare il processore DSP: %1&#10;&#10;Errore: %2</entry>
-      <entry id="7106" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Impossibile accedere al file sorgente: %1&#10;&#10;File: %1&#10;Cartella: %2</entry>
-      <entry id="7107" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Impossibile creare il file destinazione: %1&#10;&#10;File: %1&#10;Cartella: %2</entry>
-      <entry id="7108" string="Failed to verify input file: %1">Non è stato possibile verificare il file sorgente: %1</entry>
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Impossibile creare il componente del decodificatore: %1&#10;&#10;File: %1&#10;Percorso: %2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">Impossibile creare il componente del codificatore: %1</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Impossibile impostare il decodificatore per il file sorgente: %1&#10;&#10;File: %1&#10;Percorso: %2&#10;&#10;Errore: %3</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Impossibile impostare il codificatore per il file di destinazione: %1&#10;&#10;File: %1&#10;Percorso: %2&#10;&#10;Errore: %3</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Impossibile impostare il processore DSP: %1&#10;&#10;Errore: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Impossibile accedere al file sorgente: %1&#10;&#10;File: %1&#10;Cartella: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Impossibile creare il file destinazione: %1&#10;&#10;File: %1&#10;Cartella: %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">Non è stato possibile verificare il file sorgente: %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1"/>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Errore checksum durante la verifica del file di destinazione: %1&#10;&#10;Checksum codifica: %2&#10;Checksum verifica: %3</entry>
       <entry id="7110" string="File not found">File non trovato</entry>
       <entry id="7111" string="Unknown file type">Tipo di file sconosciuto</entry>
