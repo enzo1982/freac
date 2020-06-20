@@ -41,9 +41,9 @@ String	 freac::freac::appLongName    = "fre:ac - free video downloader";
 String	 freac::freac::version	      = FREAC_VERSION;
 #else
 #	ifdef FREAC_DATE
-String	 freac::freac::version	      = "v1.1.1 (" FREAC_DATE ")";
+String	 freac::freac::version	      = "v1.1.2";// (" FREAC_DATE ")";
 #	else
-String	 freac::freac::version	      = "v1.1.1";
+String	 freac::freac::version	      = "v1.1.2";
 #	endif
 #endif
 
@@ -65,8 +65,8 @@ String	 freac::freac::architecture   = "PPC64";
 String	 freac::freac::architecture   = "unknown";
 #endif
 
-String	 freac::freac::shortVersion   = "v1.1.1";
-String	 freac::freac::cddbVersion    = "v1.1.1"; // CDDB version may not contain spaces
+String	 freac::freac::shortVersion   = "v1.1.2";
+String	 freac::freac::cddbVersion    = "v1.1.2"; // CDDB version may not contain spaces
 String	 freac::freac::cddbMode	      = "submit";
 
 String	 freac::freac::copyright      = "Copyright (C) 2001-2020 Robert Kausch";

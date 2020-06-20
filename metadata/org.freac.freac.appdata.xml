@@ -47,6 +47,34 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.1.2" date="2020-06-20">
+            <description>
+                <p>Improvements:</p>
+                <ul>
+                    <li>Scale UI to adjust to system font size by default</li>
+                    <li>Added support for theme colors and dark mode</li>
+                    <li>Improved handling of maximized window state</li>
+                    <li>Stop ripping before trying to eject a disc</li>
+                    <li>Write audio data CRC to log files when ripping</li>
+                    <li>Write MD5 checksums to log files when verifying files</li>
+                    <li>Write log entries when replacing existing files</li>
+                </ul>
+                <p>Bug fixes:</p>
+                <ul>
+                   <li>Fixed length of last chapter of some audio books being detected as 0:00</li>
+                   <li>Prevent interpreting numerical IDs or dates at the beginning of file names as track numbers</li>
+                   <li>Fixed a possible source of random crashes when adding files to the joblist</li>
+                   <li>Fixed possible crash when importing MP4/M4A files</li>
+                   <li>Fixed possible crash when encoding in SuperFast mode</li>
+                </ul>
+                <p>Updated codecs:</p>
+                <ul>
+                    <li>Updated Monkey's Audio to version 5.42</li>
+                    <li>Updated mpg123 to version 1.26.1</li>
+                    <li>Updated FAAD2 to version 2.9.2</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1.1" date="2020-04-19">
             <description>
                 <p>Improvements:</p>
