@@ -1,7 +1,7 @@
 #!/bin/bash
 
-RELEASE=1.1.2
-#RELEASE=1.1.2-`date +"%Y%m%d"`
+#RELEASE=1.1.2
+RELEASE=1.1.2-`date +"%Y%m%d"`
 
 VERSION="v1.1.2"
 
