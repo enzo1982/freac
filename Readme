@@ -1,4 +1,4 @@
-fre:ac version 1.1.2
+fre:ac version 1.1.2a
 
 fre:ac is a free and open source audio converter. It supports audio CD
 ripping and tag editing and converts the following audio formats:
@@ -146,6 +146,12 @@ Requirements
 
 History
 -------
+
+	Version 1.1.2a (June 2020)
+
+		- Bug fixes
+
+			- fixed font scaling with high DPI settings on Windows
 
 	Version 1.1.2 (June 2020)
 
