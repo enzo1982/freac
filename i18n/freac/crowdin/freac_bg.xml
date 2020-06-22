@@ -119,8 +119,8 @@
 	<entry id="1504" string="Stop encoding">Стоп на кодирането</entry>
 	<entry id="1505" string="Encoder options">Настройки на енкодера</entry>
 	<entry id="1506" string="Encode to a single file">Кодиране в един файл</entry>
-	<entry id="1507" string="Encode to input file folder if possible">Кодиране в папката на входния файл (ако е възможно)</entry>
-	<entry id="1508" string="Allow overwriting input file">Разрешаване на презаписването на входния файл</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Кодиране в папката на входящия файл (ако е възможно)</entry>
+	<entry id="1508" string="Allow overwriting input file">Разрешаване на презаписването на входящия файл</entry>
 	<entry id="1509" string="Delete original files after encoding">Изтриване на оригиналните файлове след кодирането</entry>
 	<entry id="1510" string="Shutdown after encoding">Изключване след кодирането</entry>
       </section>
@@ -405,8 +405,8 @@
 	<entry id="5102" string="Output folder">Изходна папка</entry>
 	<entry id="5103" string="Select">Избиране...</entry>
 	<entry id="5104" string="Select the folder in which the encoded files will be placed">Изберете папка, където кодираните файлове ще бъдат поставени</entry>
-	<entry id="5105" string="Use input file folder if possible">Папката на входния файл (ако е възможно)</entry>
-	<entry id="5106" string="Allow overwriting input file">Презаписване на входния файл</entry>
+	<entry id="5105" string="Use input file folder if possible">Папката на входящия файл (ако е възможно)</entry>
+	<entry id="5106" string="Allow overwriting input file">Презаписване на входящия файл</entry>
 	<entry id="5107" string="Options">Опции</entry>
 	<entry id="5108" string="Filename pattern">Шаблон за име на файла</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Паралелно Кодиране (в движение)</entry>
@@ -510,7 +510,7 @@
 	<entry id="5522" string="Cue sheets">CUE листи</entry>
 	<entry id="5523" string="Read cue sheets embedded in metadata">Предпочитам CUE листи вградени в метаданните</entry>
 	<entry id="5524" string="Prefer cue sheets over chapter information">Предпочитам CUE листи с информация за страницата</entry>
-	<entry id="5525" string="Prepend zero to track numbers below 10">Добавете нула, за да следите числата под 10</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">Добавяне нула за проследяване номера на песен под 10</entry>
 	<entry id="5526" string="File size limit">Ограничение за размер на файла</entry>
 	<entry id="5527" string="unlimited">Без ограничение</entry>
       </section>
@@ -564,9 +564,9 @@
       <section name="Verification">
 	<entry id="5800" string="Verification">Проверка</entry>
 	<entry id="5801" string="Enable input verification">Включена входяща проверка</entry>
-	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Проверете дали Lossless входовете декодират точно&#10;първоначално създадените данни.</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Уверете се, че входящите Lossless данни се декодират точно&#10;в данните, от които първоначално са създадени.</entry>
 	<entry id="5803" string="Enable output verification">Включена проверка на изхода</entry>
-	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Проверете дали Lossless изходите декодират точно&#10;данните използвани при кодирането им.</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Уверете се, че изходните Lossless данни се декодират точно,&#10;като данните използвани при кодирането им.</entry>
       </section>
 
       <section name="Processing">
@@ -611,13 +611,13 @@
     <section name="Errors">
       <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">Не може да се създаде компонент за декодер: %1&#10;&#10;Файл: %1&#10;Път: %2</entry>
       <entry id="7101" string="Could not create encoder component: %1">Не може да се създаде компонент за енкодер: %1</entry>
-      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Не може да се създаде декодер за входния файл: %1&#10;&#10;Файл: %1&#10;Път: %2</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Не може да се създаде декодер за входящия файл: %1&#10;&#10;Файл: %1&#10;Път: %2</entry>
       <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">Не може да се създаде енкодер за изходния файл: %1&#10;&#10;Файл: %1&#10;Път: %2</entry>
       <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Не може да се създаде DSP процесор: %1&#10;&#10;Грешка: %2</entry>
-      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Няма достъп до входния файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Няма достъп до входящия файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Не може да се създаде изходен файл: %1&#10;&#10;Файл: %1&#10;Папка: %2</entry>
-      <entry id="7107" string="Failed to verify input file: %1">Неуспешна проверка на входния файл: %1</entry>
-      <entry id="7108" string="Failed to verify input track: %1"/>
+      <entry id="7107" string="Failed to verify input file: %1">Неуспешна проверка на входящия файл: %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1">Неуспешна проверка на входящата песен: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Несъответствие в контролна сума за проверка на изходния файл: %1&#10;&#10;Кодираща сума: %2&#10;Проверка на контролна сума: %3</entry>
       <entry id="7110" string="File not found">Файлът не е открит</entry>
       <entry id="7111" string="Unknown file type">Неизвестен тип файл</entry>
@@ -922,7 +922,7 @@
 	<entry id="36003" string="Use codec">Използван кодек</entry>
 	<entry id="36004" string="Use format">Използван формат</entry>
 	<entry id="36005" string="Write uncompressed WMA files">Записване на некомпресирани WMA файлове</entry>
-	<entry id="36006" string="Automatically select format based on settings and input format">Авт. избор въз основа на настройките и входния формат</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">Авт. избор въз основа на настройките и входящия формат</entry>
 	<entry id="36007" string="Use VBR encoding">VBR кодиране</entry>
 	<entry id="36008" string="Quality">Качество</entry>
 	<entry id="36009" string="Target bitrate">Целеви bitrate</entry>
