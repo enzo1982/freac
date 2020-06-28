@@ -114,7 +114,7 @@
     <entry id="101" string="MPEG version">Versione MPEG</entry>
     <entry id="102" string="AAC object type">Tipu d'oghjettu AAC</entry>
     <entry id="103" string="Allow Joint Stereo">Permette Joint Stereo</entry>
-    <entry id="104" string="Temporal Noise Shaping">Temporal Noise Shaping</entry>
+    <entry id="104" string="Temporal Noise Shaping">Fattura di trostu tempurale (TNS)</entry>
     <entry id="105" string="Use Temporal Noise Shaping">Impiegà Temporal Noise Shap.</entry>
     <entry id="106" string="Maximum bandwidth">Larghezza di fascia massima</entry>
     <entry id="107" string="Maximum AAC frequency bandwidth to use (Hz):">Frequenza AAC massima à impiegà (Hz) :</entry>

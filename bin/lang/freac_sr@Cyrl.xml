@@ -128,8 +128,8 @@
     <entry id="115" string="better">боље</entry>
     <entry id="116" string="Auto">Самоподешење</entry>
     <entry id="117" string="Stereo">Стерео</entry>
-    <entry id="118" string="Joint Stereo">&quot;Збијени&quot; стерео</entry>
-    <entry id="119" string="Force Joint Stereo">Форсирај &quot;збијени&quot; стерео</entry>
+    <entry id="118" string="Joint Stereo">Збијени стерео</entry>
+    <entry id="119" string="Force Joint Stereo">Форсирај збијени стерео</entry>
     <entry id="120" string="VBR mode">VBR режим</entry>
     <entry id="121" string="no VBR">без VBR-а</entry>
     <entry id="122" string="VBR quality">VBR квалитет</entry>

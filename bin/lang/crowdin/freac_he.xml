@@ -369,7 +369,7 @@
     <entry id="365" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog."/>
     <entry id="366" string="Category">קטגוריה</entry>
     <entry id="367" string="Close">סגור</entry>
-    <entry id="368" string="Automatization"/>
+    <entry id="368" string="Automatization">אוטומטיזציה</entry>
     <entry id="369" string="Query CDDB database later"/>
     <entry id="370" string="Show queued CDDB queries..."/>
     <entry id="371" string="CDDB queries"/>

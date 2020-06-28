@@ -218,7 +218,7 @@
     <entry id="216" string="Stop">정지</entry>
     <entry id="217" string="Cannot play a file while encoding!">인코딩 중에는 파일을 재생할 수 없습니다!</entry>
     <entry id="218" string="Cannot start encoding while playing a file!">파일재생 중에는 인코딩을 시작할 수 없습니다!</entry>
-    <entry id="220" string="ATH">ATH</entry>
+    <entry id="220" string="ATH">청각 모델</entry>
     <entry id="221" string="Enable ATH:">ATH 허용:</entry>
     <entry id="222" string="Use default setting">초기설정 사용</entry>
     <entry id="223" string="Psycho acoustic model">청각 모델</entry>
@@ -268,6 +268,9 @@
     <entry id="267" string="bytes">바이트</entry>
     <entry id="268" string="bit">비트</entry>
     <entry id="269" string="min">분</entry>
+    <entry id="352" string="Skip">건너 뛰기</entry>
+    <entry id="368" string="Automatization">자동화</entry>
+    <entry id="381" string="Signal processing">시그널 프로세싱</entry>
     <entry id="414" string="CDDB">CDDB</entry>
     <entry id="415" string="Ripper">리퍼</entry>
   </data>

@@ -222,6 +222,7 @@
     <entry id="359" string="Start ripping automatically">התחל המרה באופן אוטומטי</entry>
     <entry id="366" string="Category">קטגוריה</entry>
     <entry id="367" string="Close">סגור</entry>
+    <entry id="368" string="Automatization">אוטומטיזציה</entry>
     <entry id="377" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">אין הרשאה לגישה לכונן CD</entry>
     <entry id="387" string="File not found">קובץ לא קיים</entry>
     <entry id="388" string="Unknown file type">סוג קובץ לא נתמך</entry>

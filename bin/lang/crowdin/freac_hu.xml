@@ -355,7 +355,7 @@
     <entry id="351" string="Encoder options">Tömörítő beállításai</entry>
     <entry id="352" string="Skip">Átugrás</entry>
     <entry id="353" string="Enable local CDDB database">Helyi CDDB adatbázis engedélyezése</entry>
-    <entry id="354" string="CDDB folder:">CDDB könyvtár:</entry>
+    <entry id="354" string="CDDB path:">CDDB könyvtár:</entry>
     <entry id="355" string="Select the folder of the CDDB database:">Válassz CDDB adatbázis könyvtárat:</entry>
     <entry id="356" string="File already exists">A fájl már létezik!</entry>
     <entry id="357" string="The output file %1&#10;already exists! Do you want to overwrite it?">A %1 kimeneti fájl&#10;már létezik! Felül szeretnéd írni?</entry>

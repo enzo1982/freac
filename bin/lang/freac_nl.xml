@@ -56,7 +56,7 @@
     <entry id="43" string="CDDB query">CDDB-aanvraag</entry>
     <entry id="44" string="About %1">Over %1</entry>
     <entry id="45" string="No options can be configured for Windows Wave file output!">Voor Windows Wave File Output kunnen geen opties gekozen worden!</entry>
-    <entry id="46" string="Windows Wave file output">Windows Wave file output</entry>
+    <entry id="46" string="Windows Wave file output">Windows Wave bestandsuitvoer</entry>
     <entry id="47" string="Cannot change settings while encoding!">De instellingen kunnen niet gewijzigd worden tijdens het coderen!</entry>
     <entry id="48" string="%1 encoder configuration">%1 encoder configuratie</entry>
     <entry id="49" string="OK">OK</entry>

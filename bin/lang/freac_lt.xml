@@ -129,7 +129,7 @@
     <entry id="116" string="Auto">Auto</entry>
     <entry id="117" string="Stereo">Stereo</entry>
     <entry id="118" string="Joint Stereo">Joint Stereo</entry>
-    <entry id="119" string="Force Joint Stereo">Force Joint Stereo</entry>
+    <entry id="119" string="Force Joint Stereo">Priverstinis „Joint Stereo“</entry>
     <entry id="120" string="VBR mode">VBR režimas</entry>
     <entry id="121" string="no VBR">jokio VBR</entry>
     <entry id="122" string="VBR quality">VBR kokybė</entry>
@@ -269,7 +269,7 @@
     <entry id="265" string="Number of samples">Rinkinių kiekis</entry>
     <entry id="266" string="Mono">Mono</entry>
     <entry id="267" string="bytes">baitai</entry>
-    <entry id="268" string="bit">bit</entry>
+    <entry id="268" string="bit">bitas</entry>
     <entry id="269" string="min">min</entry>
     <entry id="270" string="Create playlist">Kurti grojaraštį</entry>
     <entry id="271" string="Create cue sheet">Kurti cue lentelę</entry>

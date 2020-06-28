@@ -329,7 +329,7 @@
     <entry id="325" string="Status">Seisund</entry>
     <entry id="326" string="Successfully read CD!">CD edukalt loetud!</entry>
     <entry id="327" string="Comment">Kommentaarid</entry>
-    <entry id="328" string="Manage CDDB cache entries...">Manage CDDB cache entries...</entry>
+    <entry id="328" string="Manage CDDB cache entries..."/>
     <entry id="329" string="Save entry">Säilita märkmed</entry>
     <entry id="330" string="Remove entry">Kustuta märkmed</entry>
     <entry id="331" string="Disc name">Plaadi nimi</entry>
