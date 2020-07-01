@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
   <info>
-    <property name="program">फ्रीऐक</property>
+    <property name="program">freac</property>
     <property name="version">1.1</property>
     <property name="language">Hindi / हिन्दी</property>
     <property name="righttoleft">false</property>
@@ -68,7 +68,7 @@
       <entry id="1000" string="File">फ़ाइल</entry>
       <entry id="1001" string="Options">विकल्प</entry>
       <entry id="1002" string="Database">डेटाबेस</entry>
-      <entry id="1003" string="Processing"></entry>
+      <entry id="1003" string="Processing">प्रसंस्करण</entry>
       <entry id="1004" string="Encode">परिवर्तित</entry>
       <entry id="1005" string="Help">मदद</entry>
 
@@ -102,8 +102,7 @@
 	<entry id="1302" string="Configure selected encoder">चयनित एनकोडर कॉन्फ़िगर करें</entry>
 	<entry id="1303" string="Active CD-ROM drive">सक्रिय सीडी-रोम ड्राइव</entry>
 	<entry id="1304" string="Active configuration">सक्रिय कॉन्फ़िगरेशन</entry>
-	<entry id="1305" string="Default configuration">डिफ़ॉल्ट कॉन्फ़िगरेशन
-</entry>
+	<entry id="1305" string="Default configuration">डिफ़ॉल्ट कॉन्फ़िगरेशन</entry>
       </section>
 
       <section name="Processing">
@@ -158,7 +157,7 @@
       <entry id="3000" string="Time left">शेष समय</entry>
       <entry id="3001" string="File progress">फ़ाइल प्रगति</entry>
       <entry id="3002" string="Output folder">आउटपुट फ़ोल्डर</entry>
-      <entry id="3003" string="%1 file(s) in joblist">कार्यसूची में फ़ाइल</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 कार्यसूची में फ़ाइल</entry>
       <entry id="3004" string="Show title info">शीर्षक जानकारी दिखाएँ</entry>
       <entry id="3005" string="Play">शुरू</entry>
       <entry id="3006" string="Stop">बंद</entry>
@@ -169,7 +168,7 @@
       <entry id="3011" string="encoding">एन्कोडिंग</entry>
       <entry id="3012" string="Create playlist">प्लेलिस्ट बनायें</entry>
       <entry id="3013" string="Create cue sheet">क्यू शीट बनाएँ</entry>
-      <entry id="3014" string="Select">चयन करें </entry>
+      <entry id="3014" string="Select">चयन करें</entry>
       <entry id="3015" string="Encode to a single file">एक ही फाइल में एनकोड करें</entry>
       <entry id="3016" string="Remove">हटाए</entry>
       <entry id="3017" string="Clear joblist">स्पष्ट कार्यसूची</entry>
@@ -268,8 +267,8 @@
 	<entry id="3601" string="Filtering duplicates">फ़िल्टरिंग डुप्लिकेट</entry>
 	<entry id="3602" string="Adding files">फाइलें जोड़ना</entry>
 	<entry id="3603" string="Adding tracks">गीत जोड़ना</entry>
-	<entry id="3604" string="Added %1 files, %2 errors occurred">% 1 फाइलें जोड़ी गईं,% 2 त्रुटियां हुईं</entry>
-	<entry id="3605" string="Added %1 tracks, %2 errors occurred">% 1 गीत जोड़ी गईं,% 2 त्रुटियां हुईं</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">%1 फाइलें जोड़ी गईं, %2 त्रुटियां हुईं</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">%1 गीत जोड़ी गईं, %2 त्रुटियां हुईं</entry>
 	<entry id="3606" string="Removing all tracks">सभी ट्रैक्स को हटाना</entry>
 	<entry id="3607" string="Removing tracks of disc in drive %1">ड्राइव में डिस्क का गाना हटाना %1</entry>
 	<entry id="3608" string="Removed all tracks from joblist">कार्यसूची से सभी ट्रैक हटा दिए गए</entry>
@@ -281,7 +280,7 @@
 	<entry id="3701" string="Checking for lossy to lossless conversion">दोषरहित दोषरहित रूपांतरण की जाँच करना</entry>
 	<entry id="3702" string="Checking output file names">आउटपुट फ़ाइल नामों की जाँच करना</entry>
 	<entry id="3703" string="Converting %1">परिवर्तित %1</entry>
-	<entry id="3704" string="Verifying %1">जांचना </entry>
+	<entry id="3704" string="Verifying %1">जांचना</entry>
 	<entry id="3705" string="Conversion cancelled">रूपांतरण रद्द किया गया</entry>
 	<entry id="3706" string="Conversion finished">रूपांतरण समाप्त हुआ</entry>
 	<entry id="3707" string="Conversion finished with %1 warnings">रूपांतरण %1 चेतावनी के साथ समाप्त हुआ</entry>
@@ -305,7 +304,7 @@
 	<entry id="4003" string="Submitting CD information">सीडी की जानकारी जमा करना</entry>
 	<entry id="4004" string="Update joblist with this information">इस जानकारी के साथ कार्यसूची अपडेट करें</entry>
 	<entry id="4005" string="Status">स्थिति</entry>
-	<entry id="4006" string="Successfully read CD!">सीडी को सफलतापूर्वक पढ़ा !</entry>
+	<entry id="4006" string="Successfully read CD!">सीडी को सफलतापूर्वक पढ़ा!</entry>
 	<entry id="4007" string="Save entry">प्रविष्टि सहेजें</entry>
 	<entry id="4008" string="Various artists">विभिन्न कलाकार</entry>
 	<entry id="4009" string="Data track">डेटा ट्रैक</entry>
@@ -344,7 +343,7 @@
 	<entry id="4202" string="Query">क्वेरी</entry>
 	<entry id="4203" string="Query all">सभी क्वेरी</entry>
 	<entry id="4204" string="Query string">क्वेरी स्ट्रिंग</entry>
-	<entry id="4205" string="CDDB queries to perform">प्रदर्शन करने के लिए सीडीडीबी क्वेरी </entry>
+	<entry id="4205" string="CDDB queries to perform">प्रदर्शन करने के लिए सीडीडीबी क्वेरी</entry>
 	<entry id="4206" string="Querying CD information">सीडी की जानकारी से संबंधित क्वेरी</entry>
       </section>
 
@@ -448,14 +447,14 @@
 	<entry id="5305" string="CDDB access mode">सीडीडीबी एक्सेस मोड</entry>
 	<entry id="5306" string="CDDB server">सीडीडीबी सर्वर</entry>
 	<entry id="5307" string="Port">पोर्ट</entry>
-	<entry id="5308" string="eMail address">ईमेल एड्रेस </entry>
+	<entry id="5308" string="eMail address">ईमेल एड्रेस</entry>
 	<entry id="5309" string="HTTP settings">एचटीटीपी सेटिंग्स</entry>
 	<entry id="5310" string="Proxy settings">प्रॉक्सी सेटिंग्स</entry>
 	<entry id="5311" string="Options">विकल्प</entry>
 	<entry id="5312" string="Automatic CDDB queries">आटोमेटिक सीडीडीबी क्वेरी</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">सीडी पाठ पर सीडीडीबी को प्राथमिकता दें</entry>
 	<entry id="5314" string="Enable CDDB cache">सीडीडीबी कैश सक्षम करें</entry>
-	<entry id="5315" string="Automatization">ऑटोमाइज़ेशन </entry>
+	<entry id="5315" string="Automatization">ऑटोमाइज़ेशन</entry>
 	<entry id="5316" string="Always select first entry">हमेशा पहली प्रविष्टि का चयन करें</entry>
 
 	<section name="Extended">
@@ -472,7 +471,7 @@
 
 	<section name="Errors">
 	  <entry id="5350" string="Please enter a valid eMail address.">कृपया एक वैध ई - मेल एड्रेस डालें।</entry>
-      <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">फ़्रीडब सीजीआई प्रोटोकॉल का उपयोग एचटीटीपी&#10 पर नहीं किया जा सकता है; फॉरवर्ड प्रोक्सीज़ ; क्या आप प्रोटोकॉल को एचटीटीपी में बदलना चाहेंगे?</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">फ़्रीडब सीजीआई प्रोटोकॉल का उपयोग एचटीटीपी&#10;पर नहीं किया जा सकता है फॉरवर्ड प्रोक्सीज़&#10;&#10;क्या आप प्रोटोकॉल को एचटीटीपी में बदलना चाहेंगे?</entry>
 	</section>
       </section>
 
@@ -565,9 +564,9 @@
       <section name="Verification">
 	<entry id="5800" string="Verification">सत्यापन</entry>
 	<entry id="5801" string="Enable input verification">इनपुट सत्यापन सक्षम करें</entry>
-	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">सत्यापित करें कि दोषरहित निविष्टियाँ वास्तव में डेटा को डिकोड करती हैं &#10;वे मूल रूप से बनाए गए थे।</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">सत्यापित करें कि दोषरहित निविष्टियाँ वास्तव में डेटा को डिकोड करती हैं&#10;वे मूल रूप से बनाए गए थे।</entry>
 	<entry id="5803" string="Enable output verification">आउटपुट सत्यापन सक्षम करें</entry>
-	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">सत्यापित करें कि दोषरहित आउटपुट वास्तव में डेटा को डिकोड करते हैं &#10; उन्हें एन्कोडिंग करते समय उपयोग किया जाता है।</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">सत्यापित करें कि दोषरहित आउटपुट वास्तव में डेटा को डिकोड करते हैं&#10;उन्हें एन्कोडिंग करते समय उपयोग किया जाता है।</entry>
       </section>
 
       <section name="Processing">
@@ -586,15 +585,15 @@
 
     <section name="About">
       <entry id="6000" string="About %1">%1 के बारे में</entry>
-      <entry id="6001" string="Translated by %1.">% 1 द्वारा अनुवादित।</entry>
-      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">यह कार्यक्रम शर्तों के तहत वितरित किया जा रहा है &#10;जीऐनयू जनरल पब्लिक लाइसेंस (जीपीऐल)</entry>
+      <entry id="6001" string="Translated by %1.">%1 द्वारा अनुवादित।</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">यह कार्यक्रम शर्तों के तहत वितरित किया जा रहा है&#10;जीऐनयू जनरल पब्लिक लाइसेंस (जीपीऐल)</entry>
     </section>
 
     <section name="Updates">
-      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">% 1 के लिए नए अपडेट ऑनलाइन उपलब्ध हैं!&#10;क्या आप अब उपलब्ध अपडेट की सूची देखना चाहेंगे?</entry>
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">%1 के लिए नए अपडेट ऑनलाइन उपलब्ध हैं!&#10;क्या आप अब उपलब्ध अपडेट की सूची देखना चाहेंगे?</entry>
       <entry id="6101" string="There are no updates available at the moment!">फिलहाल कोई अपडेट उपलब्ध नहीं है!</entry>
       <entry id="6102" string="Check for updates at startup">स्टार्टअप पर अपडेट के लिए जाँच करें</entry>
-      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 ऑनलाइन के लिए एक स्वचालित जाँच कर सकते हैं&#10; स्टार्टअप पर कार्यक्रम अद्यतन।&#10;&#10;क्या आप स्टार्टअप पर अपडेट देखने के लिए% 1 पसंद करेंगे?</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 ऑनलाइन के लिए एक स्वचालित जाँच कर सकते हैं&#10;स्टार्टअप पर कार्यक्रम अद्यतन।&#10;&#10;क्या आप स्टार्टअप पर अपडेट देखने के लिए %1 पसंद करेंगे?</entry>
     </section>
 
     <section name="Messages">
@@ -602,21 +601,21 @@
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">रूपांतरण प्रक्रिया अभी भी सक्रिय है! क्या आप वास्तव में छोड़ना चाहते हैं?</entry>
       <entry id="7002" string="Delete original files after encoding">एन्कोडिंग के बाद मूल फ़ाइलों को हटाएँ</entry>
       <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">यह विकल्प आपके कंप्यूटर से मूल फ़ाइलों को हटा देगा&#10;एन्कोडिंग प्रक्रिया के बाद!&#10;&#10;क्या आप वाकई इस फ़ंक्शन को सक्रिय करना चाहते हैं?</entry>
-      <entry id="7004" string="Keep this option enabled even after restarting %1">पुनरारंभ करने के बाद भी इस विकल्प को सक्षम रखें%1/entry>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">पुनरारंभ करने के बाद भी इस विकल्प को सक्षम रखें %1</entry>
       <entry id="7005" string="File already exists">फ़ाइल पहले से ही मौजूद है</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">आउटपुट फ़ाइल %1&#10;पहले से मौजूद हैक्या आप इसे अधिलेखित करना चाहते हैं?</entry>
       <entry id="7007" string="Overwrite all further files">आगे की सभी फाइलें अधिलेखित करें</entry>
-      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">आप एक दोषरहित से दोषरहित प्रारूप में परिवर्तित होते प्रतीत होते  हैं।&#10;&#10;कृपया ध्यान रखें कि गुणवत्ता हानि पूर्ववत नहीं की जा सकती है, इसलिए यह प्रक्रिया &#10; किसी भी तरह से गुणवत्ता में सुधार नहीं करेगी, और सबसे अधिक संभावना फ़ाइल आकार में वृद्धि होगी। &#10;&#10; क्या तुम हर हाल में जारी रखना चाहोगे?</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">आप एक दोषरहित से दोषरहित प्रारूप में परिवर्तित होते प्रतीत होते हैं।&#10;&#10;कृपया ध्यान रखें कि गुणवत्ता हानि पूर्ववत नहीं की जा सकती है, इसलिए यह प्रक्रिया&#10;किसी भी तरह से गुणवत्ता में सुधार नहीं करेगी, और सबसे अधिक संभावना फ़ाइल आकार में वृद्धि होगी।&#10;&#10;क्या तुम हर हाल में जारी रखना चाहोगे?</entry>
     </section>
 
     <section name="Errors">
-        <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">डीकोडर घटक नहीं बना सका:%1&#10;&#10;फ़ाइल: %1&#10;पाथ: %2</entry>
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">डीकोडर घटक नहीं बना सका: %1&#10;&#10;फ़ाइल: %1&#10;पाथ: %2</entry>
       <entry id="7101" string="Could not create encoder component: %1">एनकोडर घटक नहीं बना सका: %1</entry>
-      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">इनपुट फ़ाइल के लिए डिकोडर सेट नहीं किया जा सका:%1&#10;&#10;फ़ाइल: %1&#10;पाथ: %2&#10;&#10;त्रुटि:  %3</entry>
-      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">आउटपुट फ़ाइल के लिए एनकोडर सेट नहीं किया जा सका:%1&#10;&#10;फ़ाइल: %2&#10;&#10;त्रुटि: %3"</entry>
-      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">डीएसपी प्रोसेसर सेट नहीं किया जा सका:: %1&#10;&#10;त्रुटि: %2</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">इनपुट फ़ाइल के लिए डिकोडर सेट नहीं किया जा सका: %1&#10;&#10;फ़ाइल: %1&#10;पाथ: %2&#10;&#10;त्रुटि: %3</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">आउटपुट फ़ाइल के लिए एनकोडर सेट नहीं किया जा सका: %1&#10;&#10;फ़ाइल: %2&#10;&#10;त्रुटि: %3"</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">डीएसपी प्रोसेसर सेट नहीं किया जा सका: %1&#10;&#10;त्रुटि: %2</entry>
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">इनपुट फ़ाइल तक पहुँचने में असमर्थ: %1&#10;&#10;फ़ाइल: %1&#10;पथ: %2</entry>
-      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">आउटपुट फ़ाइल बनाने में असमर्थ: %1&#10;&#10;फ़ाइल:%1&#10;पथ: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">आउटपुट फ़ाइल बनाने में असमर्थ: %1&#10;&#10;फ़ाइल: %1&#10;पथ: %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">इनपुट फ़ाइल सत्यापित करने में विफल: %1</entry>
       <entry id="7108" string="Failed to verify input track: %1">इनपुट ट्रैक सत्यापित करने में विफल: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">चेकसम मिसमैच वेरिफाइंग आउटपुट फाइल: %1&#10;&#10;एनकोड चेकसम: %2&#10;चेकसम सत्यापित करें: %3</entry>
@@ -625,13 +624,13 @@
       <entry id="7112" string="Invalid file format">अमान्य फाइल प्रारूप</entry>
       <entry id="7113" string="Unsupported audio format">असमर्थित ऑडियो प्रारूप</entry>
       <entry id="7114" string="Unknown error">अज्ञात त्रुटि</entry>
-      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">एनटी ऐससीऐसआई ड्राइवर लोड करने में असमर्थ! सीडी तेजस्वी बंद है !</entry>
-      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">फ़ाइल को खोलने में असमर्थ:%1&#10;&#10;त्रुटि: %2</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">एनटी ऐससीऐसआई ड्राइवर लोड करने में असमर्थ! सीडी तेजस्वी बंद है!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">फ़ाइल को खोलने में असमर्थ: %1&#10;&#10;त्रुटि: %2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">एक ही ड्राइव से रिप करते समय सीडी ट्रैक नहीं चला सकते हैं!</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">एक ही ड्राइव से एक ट्रैक खेलते समय तेजस्वी शुरू नहीं कर सकता!</entry>
-      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">सीडीडीबी समर्थन अक्षम है! कृपया कॉन्फ़िगरेशन संवाद में स्थानीय या &#10;दूरस्थ सीडीडीबी समर्थन सक्षम करें।</entry>
-      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">रिमोट सीडीडीबी समर्थन अक्षम है! कृपया कॉन्फ़िगरेशन संवाद में स्थानीय या &#10;दूरस्थ सीडीडीबी समर्थन सक्षम करें।</entry>
-      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">सीडी-रोम ड्राइव तक पहुँच से इनकार कर दिया गया था।&#10;&#10;कृपया अपने सिस्टम एडमिनिस्ट्रेटर से संपर्क करें &#10;ताकि सीडी-रोम ड्राइव को एक्सेस करने का अधिकार दिया जा सके।</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">सीडीडीबी समर्थन अक्षम है! कृपया कॉन्फ़िगरेशन संवाद में स्थानीय या&#10;दूरस्थ सीडीडीबी समर्थन सक्षम करें।</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">रिमोट सीडीडीबी समर्थन अक्षम है! कृपया कॉन्फ़िगरेशन संवाद में स्थानीय या&#10;दूरस्थ सीडीडीबी समर्थन सक्षम करें।</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">सीडी-रोम ड्राइव तक पहुँच से इनकार कर दिया गया था।&#10;&#10;कृपया अपने सिस्टम एडमिनिस्ट्रेटर से संपर्क करें&#10;ताकि सीडी-रोम ड्राइव को एक्सेस करने का अधिकार दिया जा सके।</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">इसके लिए कोई कॉन्फ़िगरेशन संवाद उपलब्ध नहीं है:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">चयनित फ़ोल्डर अब मौजूद नहीं है!</entry>
     </section>
@@ -702,7 +701,7 @@
 	<entry id="12000" string="Channel Converter">चैनल कन्वर्टर</entry>
 	<entry id="12001" string="Sample Format Converter">नमूना प्रारूप कनवर्टर</entry>
 	<entry id="12002" string="Sample Rate Converter">नमूना दर कनवर्टर</entry>
-	<entry id="12003" string="RNNoise Noise Reduction">आरएनएन नॉइज़ रिडक्शन </entry>
+	<entry id="12003" string="RNNoise Noise Reduction">आरएनएन नॉइज़ रिडक्शन</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">रबर बैंड टेम्पो / पिच परिवर्तक</entry>
       </section>
 
@@ -858,7 +857,7 @@
 	  <entry id="33304" string="Tags">टैग</entry>
 	  <entry id="33305" string="Allow ID3v2 tags in AAC files">ऐऐसी फ़ाइलों में आईडी 3 वी 2 टैग की अनुमति दें</entry>
 	  <entry id="33306" string="Note">नोट</entry>
-	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">कुछ प्लेयर्स को आईडी3 टैग के साथ AAC&#10; फाइल चलाने में समस्या हो सकती है। कृपया &#10; इस विकल्प का उपयोग केवल तभी करें जब आप सुनिश्चित हों कि आपका खिलाड़ी इन टैग को संभाल सकता है।</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">कुछ प्लेयर्स को आईडी3 टैग के साथ ऐऐसी&#10;फाइल चलाने में समस्या हो सकती है। कृपया&#10;इस विकल्प का उपयोग केवल तभी करें जब आप सुनिश्चित हों कि आपका खिलाड़ी इन टैग को संभाल सकता है।</entry>
 	</section>
       </section>
 
@@ -894,7 +893,7 @@
 	  <entry id="34304" string="Linear predictor">रैखिक भविष्यवक्ता</entry>
 	  <entry id="34305" string="Maximum LPC order">अधिकतम एलपीसी आदेश</entry>
 	  <entry id="34306" string="disabled">बंद</entry>
-	  <entry id="34307" string="Exhaustive model search">थकाऊ मॉडल खोज/entry>
+	  <entry id="34307" string="Exhaustive model search">थकाऊ मॉडल खोज</entry>
 	  <entry id="34308" string="Quantized LPC precision">परिमाणित एलपीसी परिशुद्धता</entry>
 	  <entry id="34309" string="auto">ऑटो</entry>
 	  <entry id="34310" string="Optimize LPC quantization">एलपीसी परिमाणीकरण का अनुकूलन करें</entry>
@@ -950,8 +949,7 @@
       <section name="Speex">
 	<entry id="39000" string="Profile">प्रोफ़ाइल</entry>
 	<entry id="39001" string="Select encoding profile">एन्कोडिंग फ़ाइल का चयन करें</entry>
-	<entry id="39002" string="auto">ऑटो
-</entry>
+	<entry id="39002" string="auto">ऑटो</entry>
 	<entry id="39003" string="Narrowband (8 kHz)">नैरोबैंड (8 किलोहर्ट्‍ज)</entry>
 	<entry id="39004" string="Wideband (16 kHz)">वाइडबैंड (16 किलोहर्ट्‍ज)</entry>
 	<entry id="39005" string="Ultra-Wideband (32 kHz)">अल्ट्रा वाइड बैंड (32 किलोहर्ट्‍ज)</entry>
@@ -980,10 +978,10 @@
 	<entry id="40004" string="Music">संगीत</entry>
 	<entry id="40005" string="Bandwidth">बैंडविड्थ</entry>
 	<entry id="40006" string="Narrowband">नैरोबैंड</entry>
-	<entry id="40007" string="Mediumband">मीडियमबैंड </entry>
+	<entry id="40007" string="Mediumband">मीडियमबैंड</entry>
 	<entry id="40008" string="Wideband">वाइडबैंड</entry>
 	<entry id="40009" string="Superwideband">सूपरवाइडबैंड</entry>
-	<entry id="40010" string="Fullband">फुलबैंड </entry>
+	<entry id="40010" string="Fullband">फुलबैंड</entry>
 	<entry id="40011" string="File extension">दस्तावेज़ विस्तारण</entry>
 	<entry id="40012" string="Variable bitrate">चर बिटरेट</entry>
 	<entry id="40013" string="Enable variable bitrate encoding">चर बिटरेट एन्कोडिंग सक्षम करें</entry>
@@ -1185,15 +1183,15 @@
 	<entry id="100000" string="Support this project">इस परियोजना का समर्थन करें</entry>
 	<entry id="100001" string="Please support this project!">कृपया इस परियोजना का समर्थन करें!</entry>
 	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">कृपया a&#10;दान के साथ परियोजना का समर्थन करके %1 इस सॉफ़्टवेयर को मुक्त रखने में मदद करें।</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">कृपया% 1 को लिखें यदि आप चेक भेजना चाहते हैं या &#10;मेल द्वारा पैसा भेजना चाहते हैं।</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">कृपया %1 को लिखें यदि आप चेक भेजना चाहते हैं या&#10;मेल द्वारा पैसा भेजना चाहते हैं।</entry>
 	<entry id="100004" string="Thank you very much!">आपका बहुत बहुत धन्यवाद!</entry>
 	<entry id="100005" string="Remind me later">मुझे बाद में याद दिलाना</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
-	<entry id="100007" string="Donate to the %1 project">% 1 प्रोजेक्ट को दान करें</entry>
+	<entry id="100007" string="Donate to the %1 project">%1 प्रोजेक्ट को दान करें</entry>
 
 	<section name="PayPal">
 	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">एक राशि चुनें और पेपाल के साथ दान करने के लिए बटन पर क्लिक करें:</entry>
-	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">आप PayPal से सीधे% 1 पर भी पैसे भेज सकते हैं।</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">आप PayPal से सीधे %1 पर भी पैसे भेज सकते हैं।</entry>
 	  <entry id="100102" string="usd">inr</entry>
 	  <entry id="100103" string="$%1">₹%1</entry>
 	  <entry id="100104" string="5,10,20,other amount">250,500,1000,अन्य राशि</entry>
@@ -1202,26 +1200,26 @@
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox क्रेडिट कार्ड द्वारा त्वरित और सरल दान को सक्षम बनाता है। &#10;इसे क्लिक करें। डोनरबॉक्स के साथ दान करने के लिए बटन:</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox क्रेडिट कार्ड द्वारा त्वरित और सरल दान को सक्षम बनाता है।&#10;इसे क्लिक करें। डोनरबॉक्स के साथ दान करने के लिए बटन:</entry>
 	  <entry id="100201" string="Donate">दान करना</entry>
 	  <entry id="100202" string="usd">usd</entry>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">कृपया बिटकॉइन दान करने के लिए क्यूआर कोड को स्कैन या क्लिक करें या निम्नलिखित#10; पते की प्रतिलिपि बनाएँ:</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">कृपया बिटकॉइन दान करने के लिए क्यूआर कोड को स्कैन या क्लिक करें या निम्नलिखित&#10;पते की प्रतिलिपि बनाएँ:</entry>
 	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">यह पता भी बिटकाईन कैश को स्वीकार करता है।</entry>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">कृपया क्यूआर  कोड स्कैन या क्लिक करें या ईथेरियम दान करने के लिए निम्नलिखित&#10;पते की प्रतिलिपि बनाएँ:</entry>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">कृपया क्यूआर कोड स्कैन या क्लिक करें या ईथेरियम दान करने के लिए निम्नलिखित&#10;पते की प्रतिलिपि बनाएँ:</entry>
 	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">यह पता ईथर क्लासिक और ईआरसी 20 टोकन को भी स्वीकार करता है।</entry>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">आप निम्नलिखित &#10;खाते में इलेक्ट्रॉनिक स्थानांतरण करके दान कर सकते हैं:</entry>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">आप निम्नलिखित&#10;खाते में इलेक्ट्रॉनिक स्थानांतरण करके दान कर सकते हैं:</entry>
 	  <entry id="100501" string="Account holder:">खाता धारक:</entry>
 	  <entry id="100502" string="IBAN:">आईबीऐएन</entry>
-      <entry id="100503" string="BIC:">बीआईसी:</entry>
+	  <entry id="100503" string="BIC:">बीआईसी:</entry>
 	</section>
       </section>
 
@@ -1266,7 +1264,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">यह यूआरएल समर्थित नहीं है या वीडियो पृष्ठ यूआरएल नहीं है!</entry>
 	  <entry id="102202" string="Error downloading video!">वीडियो डाउनलोड करने में त्रुटि!</entry>
 	  <entry id="102203" string="You are already downloading this video!">आप पहले से ही इस वीडियो को डाउनलोड कर रहे हैं!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">कुछ आवश्यक वीडियो &#10; डिकोडर नहीं मिल सके। ऑडियो फ़ाइलों में रूपांतरण के लिए वीडियो फ़ाइलों को जॉबलिस्ट में नहीं जोड़ा जा सकता है। &#10;&#10;कृपया इस समस्या को ठीक करने के लिए avconv या FFmpeg स्थापित करें!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">कुछ आवश्यक वीडियो&#10;डिकोडर नहीं मिल सके। ऑडियो फ़ाइलों में रूपांतरण के लिए वीडियो फ़ाइलों को जॉबलिस्ट में नहीं जोड़ा जा सकता है।&#10;&#10;कृपया इस समस्या को ठीक करने के लिए avconv या FFmpeg स्थापित करें!</entry>
 	</section>
       </section>
 
@@ -1326,8 +1324,8 @@
 	</section>
 
 	<section name="Errors">
-        <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">फ़ाइल को खोलने में असम: %1&#10;&#10र्थ;त्रुटि%2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">टैग अपडेट करने में असमर्थ: : %1&#10;&#10;त्रुटि%2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">फ़ाइल को खोलने में असमर्थ: %1&#10;&#10;त्रुटि: %2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">टैग अपडेट करने में असमर्थ: %1&#10;&#10;त्रुटि: %2</entry>
 	</section>
       </section>
 
