@@ -1037,9 +1037,12 @@ Void freac::JobList::OnChangeHeaderColumns()
 
 Void freac::JobList::AddHeaderTabs()
 {
-	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::Config	*config	= BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	RemoveAllTabs();
+
+	Int	 numAlign = i18n->IsActiveLanguageRightToLeft() ? OR_LEFT : OR_RIGHT;
 
 	const Array<String>	&fields = config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Explode(",");
 	const Array<String>	&sizes	= config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldSizesID, Config::JoblistFieldSizesDefault).Explode(",");
@@ -1057,17 +1060,17 @@ Void freac::JobList::AddHeaderTabs()
 		else if (field == "<title>")	   { tabName = "Title";					 tabSize = !config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Contains("<file>") ? 0 :
 														   tabSize <= 0 ? 180 : tabSize; }
 		else if (field == "<genre>")	   { tabName = "Genre";					 tabSize = tabSize <= 0 ? 120 : tabSize; }
-		else if (field == "<disc>")	   { tabName = "Disc";		    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
-		else if (field == "<track>")	   { tabName = "Track";		    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  50 : tabSize; }
-		else if (field == "<rating>")	   { tabName = "Rating";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<time>")	   { tabName = "Length";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<bytes>")	   { tabName = "Size";		    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<bitrate>")	   { tabName = "Bitrate";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<samplerate>")  { tabName = "Sampling rate";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<channels>")	   { tabName = "Channels";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
-		else if (field == "<resolution>")  { tabName = "Sample resolution"; tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ? 100 : tabSize; }
+		else if (field == "<disc>")	   { tabName = "Disc";		    tabAlign = numAlign; tabSize = tabSize <= 0 ?  50 : tabSize; }
+		else if (field == "<track>")	   { tabName = "Track";		    tabAlign = numAlign; tabSize = tabSize <= 0 ?  50 : tabSize; }
+		else if (field == "<rating>")	   { tabName = "Rating";	    tabAlign = numAlign; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<time>")	   { tabName = "Length";	    tabAlign = numAlign; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<bytes>")	   { tabName = "Size";		    tabAlign = numAlign; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<bitrate>")	   { tabName = "Bitrate";	    tabAlign = numAlign; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<samplerate>")  { tabName = "Sampling rate";	    tabAlign = numAlign; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<channels>")	   { tabName = "Channels";	    tabAlign = numAlign; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<resolution>")  { tabName = "Sample resolution"; tabAlign = numAlign; tabSize = tabSize <= 0 ? 100 : tabSize; }
 		else if (field == "<drive>")	   { tabName = "CD drive";				 tabSize = tabSize <= 0 ? 180 : tabSize; }
-		else if (field == "<discid>")	   { tabName = "Disc ID";	    tabAlign = OR_RIGHT; tabSize = tabSize <= 0 ?  80 : tabSize; }
+		else if (field == "<discid>")	   { tabName = "Disc ID";	    tabAlign = numAlign; tabSize = tabSize <= 0 ?  80 : tabSize; }
 		else if (field == "<file>")	   { tabName = "File name";				 tabSize = 0;				 }
 		else if (field == "<filetype>")	   { tabName = "File type";				 tabSize = tabSize <= 0 ?  60 : tabSize; }
 		else if (field == "<outputfile>")  { tabName = "Output file name";			 tabSize = tabSize <= 0 ? 240 : tabSize; }

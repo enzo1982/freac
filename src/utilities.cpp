@@ -716,3 +716,25 @@ Bool freac::Utilities::SetProcessPriority()
 
 	return False;
 }
+
+Bool freac::Utilities::MirrorBitmap(Bitmap &bitmap)
+{
+	Point	 point;
+	Size	 size = bitmap.GetSize();
+
+	for (point.y = 0; point.y < size.cy; point.y++)
+	{
+		for (point.x = 0; point.x < size.cx / 2; point.x++)
+		{
+			Point	 mirror = Point(size.cx - point.x - 1, point.y);
+
+			Color	 pointPixel  = bitmap.GetPixel(point);
+			Color	 mirrorPixel = bitmap.GetPixel(mirror);
+
+			bitmap.SetPixel(point, mirrorPixel);
+			bitmap.SetPixel(mirror, pointPixel);
+		}
+	}
+
+	return True;
+}

@@ -113,7 +113,7 @@ Void BoCA::LayerProtocols::OnChangeLanguageSettings()
 
 	list_protocol->RemoveAllTabs();
 
-	list_protocol->AddTab(i18n->TranslateString("Time"), list_protocol->GetFont().GetUnscaledTextSizeX("00:00:00.000") + 4, OR_RIGHT);
+	list_protocol->AddTab(i18n->TranslateString("Time"), list_protocol->GetFont().GetUnscaledTextSizeX("00:00:00.000") + 4, i18n->IsActiveLanguageRightToLeft() ? OR_LEFT : OR_RIGHT);
 	list_protocol->AddTab(i18n->TranslateString("Message"));
 
 	/* OnChangeSize will correct sizes of any other widgets.

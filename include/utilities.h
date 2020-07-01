@@ -31,6 +31,8 @@ namespace freac
 			static String	 GetPlaylistFileName(const BoCA::Track &, const Array<BoCA::Track> &);
 
 			static Bool	 SetProcessPriority();
+
+			static Bool	 MirrorBitmap(Bitmap &);
 	};
 };
 

@@ -1322,7 +1322,11 @@ Void freac::freacGUI::FillMenus()
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "icons/conversion/conversion-start-warning.png" : "icons/conversion/conversion-start.png")), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
+	Bitmap	 startEncodingIcon = ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "icons/conversion/conversion-start-warning.png" : "icons/conversion/conversion-start.png"));
+
+	if (i18n->IsActiveLanguageRightToLeft()) Utilities::MirrorBitmap(startEncodingIcon);
+
+	entry = mainWnd_iconbar->AddEntry(startEncodingIcon, boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
 	entry->onAction.Connect(&freacGUI::Convert, this);
 	entry->SetTooltipText(i18n->TranslateString(currentConfig->deleteAfterEncoding ? "Start the encoding process (deleting original files)" : "Start the encoding process"));
 

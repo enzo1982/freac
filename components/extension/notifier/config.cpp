@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -77,11 +77,11 @@ BoCA::ConfigureNotifier::ConfigureNotifier()
 
 	if (!dir.Exists()) dir = Utilities::GetBoCADirectory().Append("../freac/").Append(ResourcesFolder);
 
-	btn_preview	= new Button(ImageLoader::Load(File(String(dir).Append("/icons/play.png"))), Point(edit_soundfile->GetX() + edit_soundfile->GetWidth() - 43, 59), Size(25, 25));
+	btn_preview	= new Button(ImageLoader::Load(File(String(dir).Append("/icons/play.png"))), Point(edit_soundfile->GetX() + edit_soundfile->GetWidth() - 43 + (i18n->IsActiveLanguageRightToLeft() ? 22 : 0), 59), Size(25, 25));
 	btn_preview->onAction.Connect(&ConfigureNotifier::OnPreview, this);
 	btn_preview->SetFlags(BF_NOFRAME);
 
-	btn_stop	= new Button(ImageLoader::Load(File(String(dir).Append("/icons/stop.png"))), Point(edit_soundfile->GetX() + edit_soundfile->GetWidth() - 21, 59), Size(25, 25));
+	btn_stop	= new Button(ImageLoader::Load(File(String(dir).Append("/icons/stop.png"))), Point(edit_soundfile->GetX() + edit_soundfile->GetWidth() - 21 - (i18n->IsActiveLanguageRightToLeft() ? 22 : 0), 59), Size(25, 25));
 	btn_stop->onAction.Connect(&ConfigureNotifier::OnStop, this);
 	btn_stop->SetFlags(BF_NOFRAME);
 

@@ -421,10 +421,12 @@ Void BoCA::LayerYouTube::OnChangeLanguageSettings()
 
 	list_tracks->RemoveAllTabs();
 
+	Int	 numAlign = i18n->IsActiveLanguageRightToLeft() ? OR_LEFT : OR_RIGHT;
+
 	list_tracks->AddTab(i18n->TranslateString("Uploader"), 150);
 	list_tracks->AddTab(i18n->TranslateString("Title"));
-	list_tracks->AddTab(i18n->TranslateString("Length"), 80, OR_RIGHT);
-	list_tracks->AddTab(i18n->TranslateString("Size"), 80, OR_RIGHT);
+	list_tracks->AddTab(i18n->TranslateString("Length"), 80, numAlign);
+	list_tracks->AddTab(i18n->TranslateString("Size"), 80, numAlign);
 
 	text_source->SetText(i18n->AddColon(i18n->TranslateString("Video URL")));
 	text_title->SetText(i18n->AddColon(i18n->TranslateString("Video title")));
