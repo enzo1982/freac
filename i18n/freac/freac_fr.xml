@@ -613,7 +613,7 @@
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Impossible d'accéder au fichier d'entrée : %1&#10;&#10;Fichier : %1&#10;Répertoire : %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Impossible d'accéder au fichier de sortie : %1&#10;&#10;Fichier : %1&#10;Répertoire : %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">Échec de la vérification du fichier source : %1</entry>
-      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Non-concordance de la somme de contrôle&#10;lors de la vérification du fichier de sortie : % 1&#10;&#10;Encoder somme de controle : %2&#10;Vérifier somme de controle : %3</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Non-concordance de la somme de contrôle&#10;lors de la vérification du fichier de sortie : %1&#10;&#10;Encoder somme de controle : %2&#10;Vérifier somme de controle : %3</entry>
       <entry id="7110" string="File not found">Fichier non trouvé</entry>
       <entry id="7111" string="Unknown file type">Type de fichier inconnu</entry>
       <entry id="7112" string="Invalid file format">Format de fichier invalide</entry>

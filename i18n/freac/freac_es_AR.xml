@@ -424,7 +424,7 @@
       <entry id="7000" string="Currently converting">Actualmente codificando</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">¡La tarea de codificación sigue en progreso! ¿Desea realmente salir?</entry>
       <entry id="7002" string="Delete original files after encoding">Eliminar archivos originales luego de codificar</entry>
-      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">¡Esta opción le permite eliminar lor archivos originales#10;una vez que han sido codificados! ¿Está seguro que desea proceder?</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">¡Esta opción le permite eliminar lor archivos originales&#10;una vez que han sido codificados! ¿Está seguro que desea proceder?</entry>
       <entry id="7005" string="File already exists">El archivo ya existe</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">El archivo de destino %1&#10;ya existe. ¿Desea sobreescribirlo?</entry>
       <entry id="7007" string="Overwrite all further files">Sobreescribir todos los archivos siguientes</entry>

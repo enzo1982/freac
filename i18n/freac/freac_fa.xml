@@ -363,7 +363,7 @@
 	<entry id="4400" string="CDDB data">اطلاعات پايگاه داده ديسک‌ها</entry>
 	<entry id="4401" string="Update joblist with this information">ليست‌ کاري را با اين اطلاعات بروز کن</entry>
 	<entry id="4402" string="Charset">ليست کاراکتري</entry>
-	<entry id="4403" string="Downloaded CDDB entries"> داده‌هاي دانلود شده از پايگاه اطلاعاتي</entry>
+	<entry id="4403" string="Downloaded CDDB entries">داده‌هاي دانلود شده از پايگاه اطلاعاتي</entry>
 	<entry id="4404" string="Disc name">نام ديسک</entry>
 	<entry id="4405" string="Preview">پيش نمايش</entry>
 	<entry id="4406" string="Remove entry">حذف</entry>
@@ -533,7 +533,7 @@
 	  <entry id="5654" string="Disc number">شماره ديسک</entry>
 	  <entry id="5655" string="Track number">شماره قطعه</entry>
 	  <entry id="5656" string="Track rating">رتبه بندي قطعه</entry>
-	  <entry id="5657" string="Track length"> طول قطعه</entry>
+	  <entry id="5657" string="Track length">طول قطعه</entry>
 	  <entry id="5658" string="Track size">اندازه قطعه</entry>
 	  <entry id="5659" string="File name">نام فايل</entry>
 	  <entry id="5660" string="File type">فرمت فايل</entry>
@@ -566,7 +566,7 @@
 	<entry id="5801" string="Enable input verification">فايل ورودي تاييديه بگيرد</entry>
 	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">بررسي کن که اطلاعات Lossless دقيقا به همان وضعيت اوريجينال کدگشايي شود.</entry>
 	<entry id="5803" string="Enable output verification">فايل خروجي تاييديه بگيرد</entry>
-	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">مطمئن شو که خروجي هاي Lossless دقيقا به &#10;اطلاعاتي که جهت تبديل استفاده شده کدگشايي شده است.</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">مطمئن شو که خروجي هاي Lossless دقيقا به&#10;اطلاعاتي که جهت تبديل استفاده شده کدگشايي شده است.</entry>
       </section>
 
       <section name="Processing">
@@ -605,7 +605,7 @@
       <entry id="7005" string="File already exists">فايل پيش از اين ساخته شده</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">فايل خروجي %1 پيش از اين ساخته شده&#10;آيا مايل به بازنويسي آن هستيد ؟</entry>
       <entry id="7007" string="Overwrite all further files">همه فايل هاي باقي مانده را باز نويسي کن</entry>
-      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?"> شما در حال تبديل به فرمت Lossy به Lossless هستيد.&#10;درنظر داشته باشيد کيفيت از دست رفته قابل بازيابي نيست بنابراين اين عمليات گرچه حجم فايل خروجي را بالا مي‌برد&#10;اما بر کيفيت آن نمي افزايد.&#10;&#10;مايل به ادامه هستيد ؟</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">شما در حال تبديل به فرمت Lossy به Lossless هستيد.&#10;درنظر داشته باشيد کيفيت از دست رفته قابل بازيابي نيست بنابراين اين عمليات گرچه حجم فايل خروجي را بالا مي‌برد&#10;اما بر کيفيت آن نمي افزايد.&#10;&#10;مايل به ادامه هستيد ؟</entry>
     </section>
 
     <section name="Errors">
@@ -663,7 +663,7 @@
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">سي دي درايو فعال</entry>
       <entry id="9001" string="Set drive speed limit">محدوديت سرعت درايو را تعيين کنيد</entry>
-      <entry id="9002" string="CD information">اطلاعات  CD</entry>
+      <entry id="9002" string="CD information">اطلاعات CD</entry>
       <entry id="9003" string="Read CD Text">متن ديسک را بخوان</entry>
       <entry id="9004" string="Read cdplayer.ini">فايل cdplayer.ini را بخوان</entry>
       <entry id="9005" string="Ripper settings">تنظيمات تبديل از روي ديسک</entry>
@@ -777,7 +777,7 @@
 	  <entry id="32106" string="Bitrate">بيت‌ريت</entry>
 	  <entry id="32107" string="Quality">کيفيت</entry>
 	  <entry id="32108" string="Set bitrate">تنظيم بيت‌ريت</entry>
-	  <entry id="32109" string="Set ratio">تنظيم  نسبت</entry>
+	  <entry id="32109" string="Set ratio">تنظيم نسبت</entry>
 	  <entry id="32110" string="Set quality">تنظيم کيفيت</entry>
 	  <entry id="32111" string="worse">بدتر</entry>
 	  <entry id="32112" string="better">بهتر</entry>
@@ -854,7 +854,7 @@
 	  <entry id="33304" string="Tags">تگ‌ها</entry>
 	  <entry id="33305" string="Allow ID3v2 tags in AAC files">ثبت اطلاعات ID3v2 در تگ AAC مجاز باشد</entry>
 	  <entry id="33306" string="Note">نکته</entry>
-	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">بعضي پليرها ممکن است در اجراي فايل هاي AAC که داراي تگ ID3 هستند&#10;دچار مشکل شوند. فقط در صورتي از اين گزينه استفاده کنيد که از پشتياني&#10;سيستم پخش  مطمئن هستيد.</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">بعضي پليرها ممکن است در اجراي فايل هاي AAC که داراي تگ ID3 هستند&#10;دچار مشکل شوند. فقط در صورتي از اين گزينه استفاده کنيد که از پشتياني&#10;سيستم پخش مطمئن هستيد.</entry>
 	</section>
       </section>
 
@@ -973,7 +973,7 @@
 	<entry id="40003" string="Voice">صدا</entry>
 	<entry id="40004" string="Music">موسيقي</entry>
 	<entry id="40005" string="Bandwidth">پهناي باند</entry>
-	<entry id="40006" string="Narrowband"> باند باريک</entry>
+	<entry id="40006" string="Narrowband">باند باريک</entry>
 	<entry id="40007" string="Mediumband">باند عادي</entry>
 	<entry id="40008" string="Wideband">باند باز</entry>
 	<entry id="40009" string="Superwideband">باند بسيار وسيع</entry>
@@ -1202,7 +1202,7 @@
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">با اسکن يا کليک بروي کد مي توانيد به &#10;شکل بيت کوين از برنامه نويس حمايت کنيد:</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">با اسکن يا کليک بروي کد مي توانيد به&#10;شکل بيت کوين از برنامه نويس حمايت کنيد:</entry>
 	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">اين آدرس از BitCoin Cash و بقيه گزينه ها نيز پشتيباني مي‌کند.</entry>
 	</section>
 
@@ -1359,7 +1359,7 @@
 	  <entry id="105102" string="Play sound">صدايي پخش شود</entry>
 	  <entry id="105103" string="Display message">پيامي نمايش داده شود</entry>
 	  <entry id="105104" string="Select">انتخاب</entry>
-	  <entry id="105105" string="Only for conversions running longer than">فقط براي تبديل هاي طولاني تر از </entry>
+	  <entry id="105105" string="Only for conversions running longer than">فقط براي تبديل هاي طولاني تر از</entry>
 	  <entry id="105106" string="second(s)">ثانيه</entry>
 	  <entry id="105107" string="minute(s)">دقيقه</entry>
 	</section>

@@ -1348,7 +1348,7 @@
 	  <entry id="104107" string="Delete old log files after">पुरानी लॉग फ़ाइलों को हटा दें</entry>
 	  <entry id="104108" string="days">दिन</entry>
 	  <entry id="104109" string="Conversion logs">रूपांतरण लॉग</entry>
-	  <entry id="104110" string="Save conversion logs with audio files">Save conversion logs with audio files</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">ऑडियो फ़ाइलों के साथ रूपांतरण लॉग सहेजें</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">ऑडियो सीडी तेजस्वी केवल लॉग करता है</entry>
 	  <entry id="104112" string="Filename pattern">फ़ाइल नाम पैटर्न</entry>
 	</section>

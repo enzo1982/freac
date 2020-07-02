@@ -267,10 +267,10 @@
 	<entry id="3601" string="Filtering duplicates">正在过滤重复项</entry>
 	<entry id="3602" string="Adding files">正在添加文件</entry>
 	<entry id="3603" string="Adding tracks">正在添加曲目</entry>
-	<entry id="3604" string="Added %1 files, %2 errors occurred">已添加 %1 个文件，出现 %2  个错误</entry>
-	<entry id="3605" string="Added %1 tracks, %2 errors occurred">已添加 %1 个曲目，出现 %2  个错误</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">已添加 %1 个文件，出现 %2 个错误</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">已添加 %1 个曲目，出现 %2 个错误</entry>
 	<entry id="3606" string="Removing all tracks">正在移除全部曲目</entry>
-	<entry id="3607" string="Removing tracks of disc in drive %1">正在移除驱动器  %1 中光盘上的曲目</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">正在移除驱动器 %1 中光盘上的曲目</entry>
 	<entry id="3608" string="Removed all tracks from joblist">已经移除任务列表中的全部曲目</entry>
 	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">已经从任务列表中移动驱动器 %1 中光盘上的曲目</entry>
       </section>
@@ -413,7 +413,7 @@
 	<entry id="5110" string="Keep ripped Wave files">保留翻录的 WAVE 文件</entry>
 	<entry id="5111" string="Encode to a single file">编码为单独文件</entry>
 	<entry id="5112" string="Output filenames">输出文件名</entry>
-	<entry id="5113" string="Allow Unicode characters">允许 Unicode  字符</entry>
+	<entry id="5113" string="Allow Unicode characters">允许 Unicode 字符</entry>
 	<entry id="5114" string="Replace spaces with underscores">用下划线替换空格</entry>
 	<entry id="5115" string="Remove processed tracks from joblist">从任务列表中移除已处理的曲目</entry>
 	<entry id="5116" string="Add encoded files to joblist">添加编码文件到任务列表</entry>

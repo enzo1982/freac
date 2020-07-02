@@ -30,7 +30,7 @@
     </section>
 
     <section name="Linux">
-      <entry id="300" string="%1 can use the Core Audio AAC/ALAC encoder if Wine and the&#10;Apple Application Support package are installed on your computer.&#10;&#10;The Core Audio encoder provides great M4A/AAC encoding&#10;quality and performance.&#10;&#10;For instructions on installing this encoder, please refer to the tutorial&#10;at: %2">%1 может использовать кодек Core Audio AAC/ALAC, если Wine и&#10;пакет Apple Application Support установлены на вашем компьютере.&#10;&#10;Кодек Core Audio предоставляет великолепное качество и&#10;производительность кодирования M4A/AAC.&#10;&#10;Для получения иструкций по установке этого кодека смотрите,&#10;пожалуйста:  %2.</entry>
+      <entry id="300" string="%1 can use the Core Audio AAC/ALAC encoder if Wine and the&#10;Apple Application Support package are installed on your computer.&#10;&#10;The Core Audio encoder provides great M4A/AAC encoding&#10;quality and performance.&#10;&#10;For instructions on installing this encoder, please refer to the tutorial&#10;at: %2">%1 может использовать кодек Core Audio AAC/ALAC, если Wine и&#10;пакет Apple Application Support установлены на вашем компьютере.&#10;&#10;Кодек Core Audio предоставляет великолепное качество и&#10;производительность кодирования M4A/AAC.&#10;&#10;Для получения иструкций по установке этого кодека смотрите,&#10;пожалуйста: %2.</entry>
     </section>
   </data>
 </LangFile>

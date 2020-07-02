@@ -188,9 +188,9 @@
       <entry id="3031" string="Channels">चैनल</entry>
       <entry id="3032" string="Mono">मोनो</entry>
       <entry id="3033" string="Stereo">स्टीरियो</entry>
-      <entry id="3034" string="Length"></entry>
+      <entry id="3034" string="Length">लंबाई</entry>
       <entry id="3035" string="File">फ़ाइल</entry>
-      <entry id="3036" string="Size"></entry>
+      <entry id="3036" string="Size">साइज</entry>
       <entry id="3037" string="Bitrate">बिटरेट</entry>
       <entry id="3038" string="Audio Files">ऑडियो फ़ाइलें</entry>
       <entry id="3039" string="All Files">सभी फ़ाइल</entry>
@@ -586,7 +586,7 @@
     <section name="About">
       <entry id="6000" string="About %1">%1 के बारे में</entry>
       <entry id="6001" string="Translated by %1.">%1 द्वारा अनुवादित।</entry>
-      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">यह कार्यक्रम शर्तों के तहत वितरित किया जा रहा है&#10;जीऐनयू जनरल पब्लिक लाइसेंस (जीपीऐल)</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">यह कार्यक्रम शर्तों के तहत वितरित किया जा रहा है जीऐनयू&#10;जनरल पब्लिक लाइसेंस (जीपीऐल)</entry>
     </section>
 
     <section name="Updates">
@@ -857,7 +857,7 @@
 	  <entry id="33304" string="Tags">टैग</entry>
 	  <entry id="33305" string="Allow ID3v2 tags in AAC files">ऐऐसी फ़ाइलों में आईडी 3 वी 2 टैग की अनुमति दें</entry>
 	  <entry id="33306" string="Note">नोट</entry>
-	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">कुछ प्लेयर्स को आईडी3 टैग के साथ ऐऐसी&#10;फाइल चलाने में समस्या हो सकती है। कृपया&#10;इस विकल्प का उपयोग केवल तभी करें जब आप सुनिश्चित हों कि आपका खिलाड़ी इन टैग को संभाल सकता है।</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">कुछ प्लेयर्स को आईडी3 टैग के साथ ऐऐसी फाइल चलाने में समस्या&#10;हो सकती है। कृपया इस विकल्प का उपयोग केवल तभी करें जब आप&#10;सुनिश्चित हों कि आपका खिलाड़ी इन टैग को संभाल सकता है।</entry>
 	</section>
       </section>
 
@@ -964,7 +964,7 @@
 	<entry id="39014" string="Complexity">जटिलता</entry>
 	<entry id="39015" string="CBR quality">सीबीआर गुणवत्ता</entry>
 	<entry id="39016" string="VBR quality">वीबीआर गुणवत्ता</entry>
-	<entry id="39017" string="ABR target bitrate"></entry>
+	<entry id="39017" string="ABR target bitrate">ऐबीआर टारगेट बिट्रेट</entry>
 	<entry id="39018" string="Bitrate">बिटरेट</entry>
 	<entry id="39019" string="Quality">गुणवत्ता</entry>
 	<entry id="39020" string="Max. bitrate">अधिकतम बिटरेट</entry>
@@ -1182,8 +1182,8 @@
       <section name="Donate">
 	<entry id="100000" string="Support this project">इस परियोजना का समर्थन करें</entry>
 	<entry id="100001" string="Please support this project!">कृपया इस परियोजना का समर्थन करें!</entry>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">कृपया a&#10;दान के साथ परियोजना का समर्थन करके %1 इस सॉफ़्टवेयर को मुक्त रखने में मदद करें।</entry>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">कृपया %1 को लिखें यदि आप चेक भेजना चाहते हैं या&#10;मेल द्वारा पैसा भेजना चाहते हैं।</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">कृपया दान के साथ परियोजना का समर्थन करके %1 इस सॉफ़्टवेयर को मुक्त रखने में मदद करें।</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">कृपया %1 को लिखें यदि आप चेक भेजना चाहते हैं या मेल द्वारा पैसा भेजना चाहते हैं।</entry>
 	<entry id="100004" string="Thank you very much!">आपका बहुत बहुत धन्यवाद!</entry>
 	<entry id="100005" string="Remind me later">मुझे बाद में याद दिलाना</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
@@ -1200,18 +1200,18 @@
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox क्रेडिट कार्ड द्वारा त्वरित और सरल दान को सक्षम बनाता है।&#10;इसे क्लिक करें। डोनरबॉक्स के साथ दान करने के लिए बटन:</entry>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox क्रेडिट कार्ड द्वारा त्वरित और सरल दान को सक्षम बनाता है। इसे क्लिक करें। डोनरबॉक&#10;के साथ दान करने के लिए बटन:</entry>
 	  <entry id="100201" string="Donate">दान करना</entry>
 	  <entry id="100202" string="usd">usd</entry>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">कृपया बिटकॉइन दान करने के लिए क्यूआर कोड को स्कैन या क्लिक करें या निम्नलिखित&#10;पते की प्रतिलिपि बनाएँ:</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">कृपया बिटकॉइन दान करने के लिए क्यूआर कोड को स्कैन या क्लिक करें या&#10;निम्नलिखित पते की प्रतिलिपि बनाएँ:</entry>
 	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">यह पता भी बिटकाईन कैश को स्वीकार करता है।</entry>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">कृपया क्यूआर कोड स्कैन या क्लिक करें या ईथेरियम दान करने के लिए निम्नलिखित&#10;पते की प्रतिलिपि बनाएँ:</entry>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">कृपया क्यूआर कोड स्कैन या क्लिक करें या ईथेरियम दान करने के लिए&#10;निम्नलिखित पते की प्रतिलिपि बनाएँ:</entry>
 	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">यह पता ईथर क्लासिक और ईआरसी 20 टोकन को भी स्वीकार करता है।</entry>
 	</section>
 
@@ -1270,7 +1270,7 @@
 
       <section name="Tag Editor">
 	<entry id="103000" string="Tags">टैग</entry>
-	<entry id="103001" string="Length">लेंथ</entry>
+	<entry id="103001" string="Length">लंबाई</entry>
 	<entry id="103002" string="Size">साइज</entry>
 	<entry id="103003" string="Albums">एल्बम</entry>
 	<entry id="103004" string="Files">फ़ाइल</entry>
@@ -1308,7 +1308,7 @@
 	</section>
 
 	<section name="Other">
-	  <entry id="103300" string="Other"></entry>
+	  <entry id="103300" string="Other">अन्य</entry>
 	  <entry id="103301" string="Original information">मूल जानकारी</entry>
 	  <entry id="103302" string="Original artist">मूल कलाकार</entry>
 	  <entry id="103303" string="Original album">मूल एल्बम</entry>
@@ -1317,7 +1317,7 @@
 	  <entry id="103306" string="Webpage URLs">वेबपेज यूआरएल</entry>
 	  <entry id="103307" string="Artist webpage">कलाकार वेबपेज</entry>
 	  <entry id="103308" string="Publisher webpage">प्रकाशक का वेबपेज</entry>
-	  <entry id="103309" string="Internet radio station"></entry>
+	  <entry id="103309" string="Internet radio station">इंटरनेट रेडियो स्टेशन</entry>
 	  <entry id="103310" string="Audio source webpage">ऑडियो स्रोत वेबपेज</entry>
 	  <entry id="103311" string="Copyright information">कॉपीराइट संबंधी जानकारी</entry>
 	  <entry id="103312" string="Commercial information">वाणिज्यिक जानकारी</entry>
@@ -1348,7 +1348,7 @@
 	  <entry id="104107" string="Delete old log files after">पुरानी लॉग फ़ाइलों को हटा दें</entry>
 	  <entry id="104108" string="days">दिन</entry>
 	  <entry id="104109" string="Conversion logs">रूपांतरण लॉग</entry>
-	  <entry id="104110" string="Save conversion logs with audio files">Save conversion logs with audio files</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">ऑडियो फ़ाइलों के साथ रूपांतरण लॉग सहेजें</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">ऑडियो सीडी तेजस्वी केवल लॉग करता है</entry>
 	  <entry id="104112" string="Filename pattern">फ़ाइल नाम पैटर्न</entry>
 	</section>
