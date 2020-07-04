@@ -53,15 +53,15 @@
     </section>
 
     <section name="Technical">
-      <entry id="510" string="%1 kbps">کيلوبيت بر ثانيه</entry>
-      <entry id="511" string="%1 Hz">هرتز</entry>
-      <entry id="512" string="%1 kHz">کيلوهرتز</entry>
-      <entry id="513" string="%1 ms">ميلي‌ثانيه</entry>
-      <entry id="514" string="%1 min">دقيقه</entry>
-      <entry id="515" string="%1 bit">بيت</entry>
-      <entry id="516" string="%1 bytes">بايت</entry>
-      <entry id="517" string="%1 kB">کيلوبايت</entry>
-      <entry id="518" string="%1%">%1%</entry>
+      <entry id="510" string="%1 kbps">%1 کيلوبيت بر ثانيه</entry>
+      <entry id="511" string="%1 Hz">%1 هرتز</entry>
+      <entry id="512" string="%1 kHz">%1 کيلوهرتز</entry>
+      <entry id="513" string="%1 ms">%1 ميلي‌ثانيه</entry>
+      <entry id="514" string="%1 min">%1 دقيقه</entry>
+      <entry id="515" string="%1 bit">%1 بيت</entry>
+      <entry id="516" string="%1 bytes">%1 بايت</entry>
+      <entry id="517" string="%1 kB">%1 کيلوبايت</entry>
+      <entry id="518" string="%1%">%1٪</entry>
     </section>
 
     <section name="Menu">
@@ -249,7 +249,7 @@
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">هيچ قطعه‌اي انتخاب نکرده‌ايد</entry>
-	<entry id="3401" string="No files found matching pattern: %1">%1 : هيچ فايلي براساس اين الگو يافت نشد</entry>
+	<entry id="3401" string="No files found matching pattern: %1">%1 :هيچ فايلي براساس اين الگو يافت نشد</entry>
       </section>
     </section>
 
@@ -609,7 +609,7 @@
     </section>
 
     <section name="Errors">
-      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">مؤلفه کدگشا قابل ساخت نيست : %1&#10;&#10;فايل : %1&#10;مسير: %2</entry>
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">مؤلفه کدگشا قابل ساخت نيست: %1&#10;&#10;فايل: %1&#10;مسير: %2</entry>
       <entry id="7101" string="Could not create encoder component: %1">مؤلفه کدگذاري قابل ساخت نيست: %1</entry>
       <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">تنظيم سيستم کدگشايي براي فايل مورد نظر ممکن نبود: %1&#10;&#10;فايل: %1&#10;مسير: %2</entry>
       <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">تنظيم سيستم کدگذاري براي فايل موردنظر ممکن نبود: %1&#10;&#10;فايل: %1&#10;مسير: %2</entry>
@@ -618,14 +618,14 @@
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">ساخت فايل خروجي امکان پذير نشد: %1&#10;&#10;فايل: %1&#10;مسير: %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">بررسي صحت فايل موردنظر ممکن نشد: %1</entry>
       <entry id="7108" string="Failed to verify input track: %1">بررسي صحت قطعه موردنظر ممکن نشد: %1</entry>
-      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">بررسي محاسباتي صحت فايل (CheckSum) مورد تاييد نبود: %1&#10;&#10;محاسبات کدگذاري: %2&#10;محاسبات تاييد : %3</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">بررسي محاسباتي صحت فايل (CheckSum) مورد تاييد نبود: %1&#10;&#10;محاسبات کدگذاري: %2&#10;محاسبات تاييد: %3</entry>
       <entry id="7110" string="File not found">فايل يافت نشد</entry>
       <entry id="7111" string="Unknown file type">فرمت فايل مورد نظر ناشناس است</entry>
       <entry id="7112" string="Invalid file format">فرمت فايل صحيح نيست</entry>
       <entry id="7113" string="Unsupported audio format">فرمت صوتي موردنظر پشتيباني نمي‌شود</entry>
       <entry id="7114" string="Unknown error">خطاي ناشناخته</entry>
       <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">بارگذاري درايور هاي NT SCSI ممکن نيست! تبديل از روي ديسک غيرفعال شد!</entry>
-      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">فايل مورد نظر قابل دسترسي نيست : %1&#10;خطا: %2</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">فايل مورد نظر قابل دسترسي نيست: %1&#10;خطا: %2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">پخش قطعه از روي ديسک در حالي که تبديل از روي همان درايو انجام مي‌شود ممکن نيست!</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">تبديل فرمت قطعه وقتي از روي همان درايو انجام مي‌شود ممکن نيست!</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">پشتيباني پايگاه داده ديسک غيرفعال شده!&#10;لطفا از بخش تنظيمات پشتيباني آنلاين يا آفلاين پايگاه را فعال کنيد.</entry>
@@ -1212,7 +1212,7 @@
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">مي‌توانيد با يک انتقال الکترونيکي ازنويسنده برنامه حمايت کنيد :</entry>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">مي‌توانيد با يک انتقال الکترونيکي ازنويسنده برنامه حمايت کنيد:</entry>
 	  <entry id="100501" string="Account holder:">دارنده حساب:</entry>
 	  <entry id="100502" string="IBAN:">IBAN:</entry>
 	  <entry id="100503" string="BIC:">BIC:</entry>
@@ -1320,8 +1320,8 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">فايل مورد نظر قابل دسترسي نيست : %1&#10;خطا: %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">بروز رساني اين تگ ممکن نشد : %1&#10;&#10;خطا: %2</entry>
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">فايل مورد نظر قابل دسترسي نيست: %1&#10;خطا: %2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">بروز رساني اين تگ ممکن نشد: %1&#10;&#10;خطا: %2</entry>
 	</section>
       </section>
 
@@ -1341,7 +1341,7 @@
 	  <entry id="104104" string="Log file folder">پوشه گزارشات</entry>
 	  <entry id="104105" string="Select">انتخاب</entry>
 	  <entry id="104106" string="Select the folder for saving log files">پوشه اي براي ذخيره گزارشات انتخاب کن</entry>
-	  <entry id="104107" string="Delete old log files after">فايل‌هاي گزارش قديمي بعد از اين مدت حذف شوند :</entry>
+	  <entry id="104107" string="Delete old log files after">فايل‌هاي گزارش قديمي بعد از اين مدت حذف شوند:</entry>
 	  <entry id="104108" string="days">روز</entry>
 	  <entry id="104109" string="Conversion logs">گزارشات تبديل</entry>
 	  <entry id="104110" string="Save conversion logs with audio files">گزارشات تبديل را به همراه فايل هاي صدا ذخيره کن</entry>
