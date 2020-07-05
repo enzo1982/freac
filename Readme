@@ -153,6 +153,10 @@ History
 
 			- improved support for languages written from right to left
 
+		- Updated codecs
+
+			- updated mpg123 to version 1.26.2
+
 		- New translations
 
 			- added Persian translation
