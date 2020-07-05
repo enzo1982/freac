@@ -156,6 +156,7 @@ History
 		- Updated codecs
 
 			- updated mpg123 to version 1.26.2
+			- updated Vorbis to version 1.3.7 (plus aoTuV b6.03 and Lancer optimizations)
 
 		- New translations
 

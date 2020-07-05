@@ -186,17 +186,17 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.6.tar.gz",
-                    "sha256": "6ed40e0241089a42c48604dc00e362beee00036af2d8b3f46338031c9e0351cb"
+                    "url": "https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.7.tar.xz",
+                    "sha256": "b33cc4934322bcbf6efcbacf49e3ca01aadbea4114ec9589d1b1e9d20f72954b"
                 },
                 {
                     "type": "patch",
-                    "path": "patches/libvorbis-1.3.6-aotuv-b6.03.patch"
+                    "path": "patches/libvorbis-1.3.7-aotuv-b6.03.patch"
                 },
                 {
                     "only-arches": [ "x86_64" ],
                     "type": "patch",
-                    "path": "patches/libvorbis-1.3.6-aotuv-b6.03-lancer.patch"
+                    "path": "patches/libvorbis-1.3.7-aotuv-b6.03-lancer.patch"
                 }
             ]
         },
