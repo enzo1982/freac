@@ -162,6 +162,9 @@ mp4v2_patch_levels=(1)
 mp4v2_patches_win32=(https://freac.org/patches/mp4v2-$mp4v2_version-fixes.patch https://freac.org/patches/mp4v2-$mp4v2_version-win32.patch)
 mp4v2_patch_levels_win32=(1 1)
 
+mpg123_patches_win32=(https://freac.org/patches/mpg123-$mpg123_version-win64asmfix.patch)
+mpg123_patch_levels_win32=(1)
+
 rubberband_patches=(https://freac.org/patches/rubberband-$rubberband_version-fixed.diff)
 rubberband_patch_levels=(1)
 
@@ -463,6 +466,10 @@ for package in ${packages[@]}; do
       fi
     elif [[ $x86 == true ]]; then
       configure_flags="$configure_flags --with-cpu=sse"
+    fi
+    if [[ $uname == *MINGW* ]]; then
+      patches=${mpg123_patches_win32[@]}
+      patch_levels=(${mpg123_patch_levels_win32[@]})
     fi
     build $mpg123_location src/libmpg123/.libs/libmpg123$sharedinfix.$sharedext mpg123.$sharedext
 

@@ -155,13 +155,22 @@ History
 
 		- Updated codecs
 
-			- updated mpg123 to version 1.26.2
 			- updated Vorbis to version 1.3.7 (plus aoTuV b6.03 and Lancer optimizations)
 
 		- New translations
 
 			- added Persian translation
 			- added Hindi translation
+
+	Version 1.1.2b (July 2020)
+
+		- Bug fixes
+
+			- fixed crash when decoding MP3 files on x64 Windows systems without AVX support
+
+		- Updated codecs
+
+			- updated mpg123 to version 1.26.2 (plus Windows x64 ASM patch)
 
 	Version 1.1.2a (June 2020)
 
