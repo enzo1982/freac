@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -61,7 +61,7 @@ Void BoCA::ProtocolWriter::OnUpdateProtocolList()
 	 */
 	const Config	*config	  = Config::Get();
 
-	if (config->GetIntValue(ConfigureProtocols::ConfigID, "SaveLogs", True)) SaveProtocol(protocol, GetProtocolFileName(protocol));
+	if (config->GetIntValue(ConfigureProtocols::ConfigID, "ArchiveLogs", True)) SaveProtocol(protocol, GetProtocolFileName(protocol));
 
 	/* Check whether to save an additional copy
 	 * of conversion logs with the audio files.

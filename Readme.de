@@ -153,6 +153,10 @@ Geschichte
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 
+		- Behobene Fehler
+
+			- Problem mit Archivierung von Protokolldateien trotz deaktivierter Option behoben
+
 		- Aktualisierte Codecs
 
 			- Vorbis auf Version 1.3.7 (plus aoTuV b6.03 und Lancer-Optimierungen) aktualisiert

@@ -153,6 +153,10 @@ History
 
 			- improved support for languages written from right to left
 
+		- Bug fixes
+
+			- fixed log files being archived despite disabling the corresponding option
+
 		- Updated codecs
 
 			- updated Vorbis to version 1.3.7 (plus aoTuV b6.03 and Lancer optimizations)
