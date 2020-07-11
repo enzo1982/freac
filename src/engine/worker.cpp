@@ -622,6 +622,7 @@ Void freac::ConvertWorker::VerifyInput(const String &uri, Verifier *verifier)
 
 	log->Lock();
 
+	String	 errorMessage;
 	String	 uriType = uri.StartsWith("device://") ? "track" : "file";
 
 	if (verifier->Verify())
@@ -632,7 +633,7 @@ Void freac::ConvertWorker::VerifyInput(const String &uri, Verifier *verifier)
 	{
 		BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-		onReportError.Emit(i18n->TranslateString(String("Failed to verify input ").Append(uriType).Append(": %1"), "Errors").Replace("%1", uri.Contains("://") ? uri : File(uri).GetFileName()).Append("\n\n").Append(verifier->GetErrorString()));
+		errorMessage = i18n->TranslateString(String("Failed to verify input ").Append(uriType).Append(": %1"), "Errors").Replace("%1", uri.Contains("://") ? uri : File(uri).GetFileName()).Append("\n\n").Append(verifier->GetErrorString());
 
 		log->Write(String("    Failed to verify input ").Append(uriType).Append(": ").Append(uri), MessageTypeError);
 	}
@@ -645,6 +646,10 @@ Void freac::ConvertWorker::VerifyInput(const String &uri, Verifier *verifier)
 
 	log->Write(NIL);
 	log->Release();
+
+	/* Report error message if any.
+	 */
+	if (errorMessage != NIL) onReportError.Emit(errorMessage);
 }
 
 Void freac::ConvertWorker::LogConversionStart(Decoder *decoder, const String &uri, const String &outFile, Bool replace) const
@@ -703,6 +708,8 @@ Void freac::ConvertWorker::LogConversionEnd(const String &uri, Int64 trackLength
 
 	log->Lock();
 
+	String	 errorMessage;
+
 	if (conversionStep != ConversionStepVerify)
 	{
 		/* Log conversion result.
@@ -731,7 +738,7 @@ Void freac::ConvertWorker::LogConversionEnd(const String &uri, Int64 trackLength
 		{
 			BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-			onReportError.Emit(i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Errors").Replace("%1", File(uri).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum));
+			errorMessage = i18n->TranslateString("Checksum mismatch verifying output file: %1\n\nEncode checksum: %2\nVerify checksum: %3", "Errors").Replace("%1", File(uri).GetFileName()).Replace("%2", encodeChecksum).Replace("%3", verifyChecksum);
 
 			log->Write(String("    Checksum mismatch verifying output file: %1").Replace("%1", uri), MessageTypeError);
 			log->Write(String("        Encode MD5: %1").Replace("%1", encodeChecksum));
@@ -761,6 +768,10 @@ Void freac::ConvertWorker::LogConversionEnd(const String &uri, Int64 trackLength
 
 	log->Write(NIL);
 	log->Release();
+
+	/* Report error message if any.
+	 */
+	if (errorMessage != NIL) onReportError.Emit(errorMessage);
 }
 
 Void freac::ConvertWorker::SetTrackToConvert(const BoCA::Track &nTrack)
