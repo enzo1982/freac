@@ -22,7 +22,7 @@ ripping and tag editing and converts the following audio formats:
 
 	- Apple Lossless (ALAC)
 		- using the Core Audio ALAC encoder	(http://www.apple.com/)
-		- using the libav ALAC encoder		(http://www.libav.org/)
+		- using the FFmpeg ALAC encoder		(http://www.ffmpeg.org/)
 		- using David Hammerton's ALAC decoder	(http://www.craz.net/)
 
 	- Musepack					(http://www.musepack.net/)
@@ -33,7 +33,7 @@ ripping and tag editing and converts the following audio formats:
 
 	- various other formats
 		- using the libsndfile library		(http://www.mega-nerd.com/)
-		- using the libav codec library		(http://www.libav.org/)
+		- using the FFmpeg converter		(http://www.ffmpeg.org/)
 
 Further codecs (e.g. Nero's HE-AAC encoder) can be used as external
 plug-ins (see the manual for installation instructions).
@@ -152,6 +152,7 @@ History
 		- Improvements
 
 			- improved support for languages written from right to left
+			- switched back to FFmpeg from avconv for improved format support
 
 		- Bug fixes
 

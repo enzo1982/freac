@@ -1264,7 +1264,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">यह यूआरएल समर्थित नहीं है या वीडियो पृष्ठ यूआरएल नहीं है!</entry>
 	  <entry id="102202" string="Error downloading video!">वीडियो डाउनलोड करने में त्रुटि!</entry>
 	  <entry id="102203" string="You are already downloading this video!">आप पहले से ही इस वीडियो को डाउनलोड कर रहे हैं!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">कुछ आवश्यक वीडियो&#10;डिकोडर नहीं मिल सके। ऑडियो फ़ाइलों में रूपांतरण के लिए वीडियो फ़ाइलों को जॉबलिस्ट में नहीं जोड़ा जा सकता है।&#10;&#10;कृपया इस समस्या को ठीक करने के लिए avconv या FFmpeg स्थापित करें!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">कुछ आवश्यक वीडियो&#10;डिकोडर नहीं मिल सके। ऑडियो फ़ाइलों में रूपांतरण के लिए वीडियो फ़ाइलों को जॉबलिस्ट में नहीं जोड़ा जा सकता है।&#10;&#10;कृपया इस समस्या को ठीक करने के लिए FFmpeg या avconv स्थापित करें!</entry>
 	</section>
       </section>
 

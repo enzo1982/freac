@@ -85,7 +85,7 @@ cp $PREFIX/lib/libvorbisenc.so freac/codecs/vorbisenc.so
 
 mkdir -p freac/codecs/cmdline
 
-cp $PREFIX/bin/avconv freac/codecs/cmdline/
+cp $PREFIX/bin/ffmpeg freac/codecs/cmdline/
 cp $PREFIX/bin/mpcdec freac/codecs/cmdline/
 cp $PREFIX/bin/mpcenc freac/codecs/cmdline/
 cp $PREFIX/bin/wavpack freac/codecs/cmdline/
@@ -98,9 +98,9 @@ strip --strip-all freac/codecs/*.so
 ln -sf boca/boca.$BOCAVER.so freac/libboca-$BOCAVER.so.$BOCAREV
 
 rm freac/boca/boca_decoder_alac.1.0.xml
-rm freac/boca/boca_decoder_avconv_mac.1.0.xml
-rm freac/boca/boca_decoder_avconv_mpc.1.0.xml
-rm freac/boca/boca_decoder_avconv_wavpack.1.0.xml
+rm freac/boca/boca_decoder_ffmpeg_mac.1.0.xml
+rm freac/boca/boca_decoder_ffmpeg_mpc.1.0.xml
+rm freac/boca/boca_decoder_ffmpeg_wavpack.1.0.xml
 
 rm freac/boca/freac_extension_youtube.1.0.so
 

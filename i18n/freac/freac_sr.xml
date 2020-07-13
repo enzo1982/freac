@@ -1264,7 +1264,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Ovaj URL nije podržan ili nije video URL!</entry>
 	  <entry id="102202" string="Error downloading video!">Greška u preuzimanju videa!</entry>
 	  <entry id="102203" string="You are already downloading this video!">Već preuzimate ovaj video!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Neki neophodni video dekoderi ne mogu biti nađeni. Video fajlovi&#10;ne mogu biti dodati na listu zadataka za pretvaranje u audio fajlove.&#10;&#10;Molimo instalirajte avconv ili FFmpeg da rešite ovaj problem!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Neki neophodni video dekoderi ne mogu biti nađeni. Video fajlovi&#10;ne mogu biti dodati na listu zadataka za pretvaranje u audio fajlove.&#10;&#10;Molimo instalirajte FFmpeg ili avconv da rešite ovaj problem!</entry>
 	</section>
       </section>
 

@@ -2,7 +2,7 @@
   <name>YouTube</name>
   <version>1.0</version>
   <decoders>
-    <decoder>avconv-webm_audio-dec</decoder>
+    <decoder>ffmpeg-webm_audio-dec</decoder>
   </decoders>
 
   <script type="text/javascript">

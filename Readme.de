@@ -22,7 +22,7 @@ von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate
 
 	- Apple Lossless (ALAC)
 		- mit dem Core Audio ALAC-Encoder	(http://www.apple.com/)
-		- mit dem libav ALAC-Encoder		(http://www.libav.org/)
+		- mit dem FFmpeg ALAC-Encoder		(http://www.ffmpeg.org/)
 		- mit David Hammertons ALAC-Decoder	(http://www.craz.net/)
 
 	- Musepack					(http://www.musepack.net/)
@@ -33,7 +33,7 @@ von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate
 
 	- verschiedene weitere Formate
 		- mit der libsndfile Bibliothek		(http://www.mega-nerd.com/)
-		- mit der libav Codec-Bibliothek	(http://www.libav.org/)
+		- mit dem FFmpeg Konverter		(http://www.ffmpeg.org/)
 
 Weitere Codecs (z.B. Neros HE-AAC-Kodierer) können als externe Plug-Ins
 eingebunden werden (siehe Benutzerhandbuch für Installationshinweise).
@@ -152,6 +152,7 @@ Geschichte
 		- Verbesserungen
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
+			- Wechsel von avconv zurück zu FFmpeg für bessere Formatunterstützung
 
 		- Behobene Fehler
 

@@ -1,7 +1,7 @@
 <VideoConverter>
   <name>Flash Video Converter</name>							     <!-- name of the video converter -->
   <version>1.0</version>								     <!-- must be 1.0 for now -->
-  <decoder>avconv-flv_audio-in</decoder>						     <!-- decoder to open output files with -->
+  <decoder>ffmpeg-flv_audio-dec</decoder>						     <!-- decoder to open output files with -->
 
   <format>
     <name>Flash Video</name>								     <!-- output file type -->
@@ -10,7 +10,7 @@
   </format>
 
   <external>
-    <command>avconv</command>								     <!-- usually avconv -->
+    <command>ffmpeg</command>								     <!-- usually ffmpeg -->
     <arguments>-i %INFILE -f flv -c:v mpeg4 -sameq -c:a aac -b:a 128000 %OUTFILE</arguments> <!-- change options to fit output format -->
   </external>
 </VideoConverter>

@@ -1262,7 +1262,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Deze URL wordt niet ondersteund of is geen videopagina-URL!</entry>
 	  <entry id="102202" string="Error downloading video!">Fout bij downloaden van video!</entry>
 	  <entry id="102203" string="You are already downloading this video!">U bent deze video al aan het downloaden!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Sommige vereiste videodecoders konden niet gevonden worden. Videobestanden&#10;kunnen niet toegevoegd worden aan de takenlijst voor conversie naar audiobestanden.&#10;&#10;Installeer avconv of FFmpeg om dit probleem op te lossen!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Sommige vereiste videodecoders konden niet gevonden worden. Videobestanden&#10;kunnen niet toegevoegd worden aan de takenlijst voor conversie naar audiobestanden.&#10;&#10;Installeer FFmpeg of avconv om dit probleem op te lossen!</entry>
 	</section>
       </section>
 

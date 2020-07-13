@@ -1261,7 +1261,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Tato adresa URL není podporována nebo to není URL video-stránky!</entry>
 	  <entry id="102202" string="Error downloading video!">Chyba při stahování videa!</entry>
 	  <entry id="102203" string="You are already downloading this video!">Toto video bylo již staženo!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Některé požadované dekodéry videa nebyly nalezeny. Proto nelze&#10;videosoubory přidat do seznamu úloh pro převod na zvukové soubory.&#10;&#10;Chcete-li tento problém vyřešit, nainstalujte si prosím avconv nebo FFmpeg!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Některé požadované dekodéry videa nebyly nalezeny. Proto nelze&#10;videosoubory přidat do seznamu úloh pro převod na zvukové soubory.&#10;&#10;Chcete-li tento problém vyřešit, nainstalujte si prosím FFmpeg nebo avconv!</entry>
 	</section>
       </section>
 

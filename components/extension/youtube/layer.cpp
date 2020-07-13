@@ -328,7 +328,7 @@ Void BoCA::LayerYouTube::OnShowLayer()
 		i18n->SetContext("Extensions::Video Downloader::Errors");
 
 		Bool		 doNotShowAgain = False;
-		MessageDlg	 messageBox(i18n->TranslateString("Some required video decoders could not be found. Video files\ncannot be added to the joblist for conversion to audio files.\n\nPlease install avconv or FFmpeg to fix this problem!"), i18n->TranslateString("Note"), Message::Buttons::Ok, Message::Icon::Warning, i18n->TranslateString("Do not display this note again"), &doNotShowAgain);
+		MessageDlg	 messageBox(i18n->TranslateString("Some required video decoders could not be found. Video files\ncannot be added to the joblist for conversion to audio files.\n\nPlease install FFmpeg or avconv to fix this problem!"), i18n->TranslateString("Note"), Message::Buttons::Ok, Message::Icon::Warning, i18n->TranslateString("Do not display this note again"), &doNotShowAgain);
 
 		messageBox.ShowDialog();
 

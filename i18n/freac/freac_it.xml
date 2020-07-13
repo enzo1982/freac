@@ -1260,7 +1260,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Questo URL non è supportato oppure non è un URL video.</entry>
 	  <entry id="102202" string="Error downloading video!">Errore durante il download del video!</entry>
 	  <entry id="102203" string="You are already downloading this video!">Stai già scaricando questo video!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Impossibile trovare alcuni codificatori video necessari. I file video&#10;non saranno aggiunti alla joblist per la conversione in file audio.&#10;&#10;Installa avconv o FFmpeg per risolvere il problema!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Impossibile trovare alcuni codificatori video necessari. I file video&#10;non saranno aggiunti alla joblist per la conversione in file audio.&#10;&#10;Installa FFmpeg o avconv per risolvere il problema!</entry>
 	</section>
       </section>
 

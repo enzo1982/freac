@@ -1,7 +1,7 @@
 <VideoConverter>
   <name>Microsoft AVI Video Converter</name>
   <version>1.0</version>
-  <decoder>avconv-avi_audio-dec</decoder>
+  <decoder>ffmpeg-avi_audio-dec</decoder>
 
   <format>
     <name>Microsoft AVI Video</name>
@@ -10,7 +10,7 @@
   </format>
 
   <external>
-    <command>avconv</command>
+    <command>ffmpeg</command>
     <arguments>-i %INFILE -f avi -c:v mpeg4 -sameq -c:a mp2 -b:a 192000 %OUTFILE</arguments>
   </external>
 </VideoConverter>

@@ -1,7 +1,7 @@
 <VideoConverter>
   <name>Matroska Video Converter</name>
   <version>1.0</version>
-  <decoder>avconv-mkv_audio-dec</decoder>
+  <decoder>ffmpeg-mkv_audio-dec</decoder>
 
   <format>
     <name>Matroska Video</name>
@@ -9,7 +9,7 @@
   </format>
 
   <external>
-    <command>avconv</command>
+    <command>ffmpeg</command>
     <arguments>-i %INFILE -f matroska -c:v copy -c:a copy %OUTFILE</arguments>
   </external>
 </VideoConverter>

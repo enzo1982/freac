@@ -1259,7 +1259,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">このURLはサポートされていないか、動画ページのURLではありません！</entry>
 	  <entry id="102202" string="Error downloading video!">動画のダウンロード中にエラーが発生しました！</entry>
 	  <entry id="102203" string="You are already downloading this video!">あなたはすでにこのビデオをダウンロードしています！</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">いくつかの必要なビデオデコーダが見つかりませんでした。 ビデオファイル&#10;オーディオファイルへの変換のためにジョブリストに追加することはできません。&#10;&#10;この問題を解決するには、avconvまたはFFmpegをインストールしてください！</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">いくつかの必要なビデオデコーダが見つかりませんでした。 ビデオファイル&#10;オーディオファイルへの変換のためにジョブリストに追加することはできません。&#10;&#10;この問題を解決するには、FFmpegまたはavconvをインストールしてください！</entry>
 	</section>
       </section>
 

@@ -968,7 +968,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">不支援或非影片網址</entry>
 	  <entry id="102202" string="Error downloading video!">下載影片錯誤</entry>
 	  <entry id="102203" string="You are already downloading this video!">此影片已經下載</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">沒有所須影片解碼器（例如Avconv或FFmpeg）。&#10;無法加入影片檔案到工作清單轉換成聲音檔。</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">沒有所須影片解碼器（例如FFmpeg或avconv）。&#10;無法加入影片檔案到工作清單轉換成聲音檔。</entry>
 	</section>
       </section>
 

@@ -1264,7 +1264,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">St’indirizzu ùn hè micca accettata o micca una pagina di video.</entry>
 	  <entry id="102202" string="Error downloading video!">Sbagliu durante u scaricamentu di a video !</entry>
 	  <entry id="102203" string="You are already downloading this video!">Site dighjà in treccia di scaricà sta video !</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Qualchì discudificatore video richiestu ùn si trova micca.&#10;I schedarii video ùn ponu micca esse aghjunti à a lista di&#10;travagliu per una cunversione audio. Ci cole à installà&#10;avconv o FFmpeg per currege stu penseru !</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Qualchì discudificatore video richiestu ùn si trova micca.&#10;I schedarii video ùn ponu micca esse aghjunti à a lista di&#10;travagliu per una cunversione audio. Ci cole à installà&#10;FFmpeg o avconv per currege stu penseru !</entry>
 	</section>
       </section>
 

@@ -1264,7 +1264,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Denna URL stöds inte eller är ingen URL till en videosida!</entry>
 	  <entry id="102202" string="Error downloading video!">Fel vid hämtning av video!</entry>
 	  <entry id="102203" string="You are already downloading this video!">Du hämtar redan denna video!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Det gick inte att hitta vissa nödvändiga videoavkodare. Videofiler&#10;kan inte läggas till i jobblistan för konvertering till ljudfiler.&#10;&#10;Installera avconv eller FFmpeg för att åtgärda detta problem!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Det gick inte att hitta vissa nödvändiga videoavkodare. Videofiler&#10;kan inte läggas till i jobblistan för konvertering till ljudfiler.&#10;&#10;Installera FFmpeg eller avconv för att åtgärda detta problem!</entry>
 	</section>
       </section>
 

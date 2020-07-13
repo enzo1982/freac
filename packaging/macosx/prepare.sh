@@ -78,16 +78,16 @@ cp $PREFIX/lib/libspeex.dylib freac.app/Contents/Resources/codecs/speex.dylib
 cp $PREFIX/lib/libvorbis.dylib freac.app/Contents/Resources/codecs/vorbis.dylib
 cp $PREFIX/lib/libvorbisenc.dylib freac.app/Contents/Resources/codecs/vorbisenc.dylib
 
-cp $PREFIX/bin/avconv freac.app/Contents/Resources/codecs/cmdline/
+cp $PREFIX/bin/ffmpeg freac.app/Contents/Resources/codecs/cmdline/
 cp $PREFIX/bin/mpcdec freac.app/Contents/Resources/codecs/cmdline/
 cp $PREFIX/bin/mpcenc freac.app/Contents/Resources/codecs/cmdline/
 cp $PREFIX/bin/wavpack freac.app/Contents/Resources/codecs/cmdline/
 cp $PREFIX/bin/wvunpack freac.app/Contents/Resources/codecs/cmdline/
 
 rm freac.app/Contents/Resources/boca/boca_decoder_alac.1.0.xml
-rm freac.app/Contents/Resources/boca/boca_decoder_avconv_mpc.1.0.xml
-rm freac.app/Contents/Resources/boca/boca_decoder_avconv_wavpack.1.0.xml
-rm freac.app/Contents/Resources/boca/boca_encoder_avconv_alac.1.0.xml
+rm freac.app/Contents/Resources/boca/boca_decoder_ffmpeg_mpc.1.0.xml
+rm freac.app/Contents/Resources/boca/boca_decoder_ffmpeg_wavpack.1.0.xml
+rm freac.app/Contents/Resources/boca/boca_encoder_ffmpeg_alac.1.0.xml
 
 rm freac.app/Contents/Resources/boca/freac_extension_youtube.1.0.dylib
 

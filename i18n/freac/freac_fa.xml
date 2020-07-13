@@ -1260,7 +1260,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">اين وبسايت پشتيباني نمي شود. ممکن است يک وبسايت ويدئويي نباشد!</entry>
 	  <entry id="102202" string="Error downloading video!">خطاي دانلود ويدئو!</entry>
 	  <entry id="102203" string="You are already downloading this video!">شما هم اکنون در حال دانلود اين ويدئو هستيد!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">برخي کدگشا هاي مورد نياز يافت نشد بنابراين امکان افزودن ويدئو ها&#10;به ليست جهت تبديل به فايل صوتي وجود ندارد.&#10;&#10;براي حل اين مشکل مي‌توانيد اقدام به نصب avconv يا FFmpeg نماييد!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">برخي کدگشا هاي مورد نياز يافت نشد بنابراين امکان افزودن ويدئو ها&#10;به ليست جهت تبديل به فايل صوتي وجود ندارد.&#10;&#10;براي حل اين مشکل مي‌توانيد اقدام به نصب FFmpeg يا avconv نماييد!</entry>
 	</section>
       </section>
 

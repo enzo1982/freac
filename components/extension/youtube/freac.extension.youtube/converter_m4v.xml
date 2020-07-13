@@ -1,7 +1,7 @@
 <VideoConverter>
   <name>MP4 Video Converter</name>
   <version>1.0</version>
-  <decoder>avconv-m4v_audio-dec</decoder>
+  <decoder>ffmpeg-m4v_audio-dec</decoder>
 
   <format>
     <name>MP4 Video</name>
@@ -10,7 +10,7 @@
   </format>
 
   <external>
-    <command>avconv</command>
+    <command>ffmpeg</command>
     <arguments>-i %INFILE -f mp4 -c:v copy -c:a copy %OUTFILE</arguments>
   </external>
 </VideoConverter>
