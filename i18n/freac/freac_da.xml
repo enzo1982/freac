@@ -767,9 +767,9 @@
 	  <entry id="32100" string="Presets">Forudindstillinger</entry>
 	  <entry id="32101" string="Use preset">brug forudindstillinger</entry>
 	  <entry id="32102" string="Custom settings">Dine indstillinger</entry>
-	  <entry id="32103" string="Medium, Fast">Medium, Hurtig</entry>
-	  <entry id="32104" string="Standard, Fast">Standard, Hurtig</entry>
-	  <entry id="32105" string="Extreme, Fast">Ekstrem, Hurtig</entry>
+	  <entry id="32103" string="Medium">Medium</entry>
+	  <entry id="32104" string="Standard">Standard</entry>
+	  <entry id="32105" string="Extreme">Ekstrem</entry>
 	  <entry id="32106" string="Bitrate">Bit Hastighed</entry>
 	  <entry id="32107" string="Quality">Kvalitet</entry>
 	  <entry id="32108" string="Set bitrate">Sæt bit hastigheden</entry>

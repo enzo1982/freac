@@ -771,9 +771,9 @@
 	  <entry id="32100" string="Presets">پروفايل‌ هاي تعريف شده</entry>
 	  <entry id="32101" string="Use preset">استفاده از پروفايل هاي تعريف شده</entry>
 	  <entry id="32102" string="Custom settings">تنظيمات سفارشي</entry>
-	  <entry id="32103" string="Medium, Fast">کيفيت متوسط/ سرعت تبديل بالا</entry>
-	  <entry id="32104" string="Standard, Fast">کيفيت استاندارد/ سرعت تبديل سريع</entry>
-	  <entry id="32105" string="Extreme, Fast">کيفيت عالي/ سرعت تبديل سريع</entry>
+	  <entry id="32103" string="Medium">کيفيت متوسط</entry>
+	  <entry id="32104" string="Standard">کيفيت استاندارد</entry>
+	  <entry id="32105" string="Extreme">کيفيت عالي</entry>
 	  <entry id="32106" string="Bitrate">بيت‌ريت</entry>
 	  <entry id="32107" string="Quality">کيفيت</entry>
 	  <entry id="32108" string="Set bitrate">تنظيم بيت‌ريت</entry>

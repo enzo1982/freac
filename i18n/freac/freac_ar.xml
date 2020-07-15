@@ -517,9 +517,9 @@
 	  <entry id="32100" string="Presets">المسبقات</entry>
 	  <entry id="32101" string="Use preset">استخدم المسبقات</entry>
 	  <entry id="32102" string="Custom settings">إعدادات مخصصة</entry>
-	  <entry id="32103" string="Medium, Fast">متوسط،تقريبا</entry>
-	  <entry id="32104" string="Standard, Fast">قياسي،تقريبا</entry>
-	  <entry id="32105" string="Extreme, Fast">أقصى،تقريبا</entry>
+	  <entry id="32103" string="Medium">متوسط</entry>
+	  <entry id="32104" string="Standard">قياسي</entry>
+	  <entry id="32105" string="Extreme">أقصى</entry>
 	  <entry id="32106" string="Bitrate">معدل بايت</entry>
 	  <entry id="32107" string="Quality">النوعية</entry>
 	  <entry id="32108" string="Set bitrate">ثبت معدل بايت</entry>

@@ -772,9 +772,9 @@
 	  <entry id="32100" string="Presets">Förval</entry>
 	  <entry id="32101" string="Use preset">Använd förval</entry>
 	  <entry id="32102" string="Custom settings">Egna inställningar</entry>
-	  <entry id="32103" string="Medium, Fast">Medel, snabb</entry>
-	  <entry id="32104" string="Standard, Fast">Standard, snabb</entry>
-	  <entry id="32105" string="Extreme, Fast">Extrem, snabb</entry>
+	  <entry id="32103" string="Medium">Medel</entry>
+	  <entry id="32104" string="Standard">Standard</entry>
+	  <entry id="32105" string="Extreme">Extrem</entry>
 	  <entry id="32106" string="Bitrate">Bithastighet</entry>
 	  <entry id="32107" string="Quality">Kvalitet</entry>
 	  <entry id="32108" string="Set bitrate">Bithastighet</entry>

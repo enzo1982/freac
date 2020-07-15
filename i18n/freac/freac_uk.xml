@@ -470,9 +470,9 @@
 	  <entry id="32100" string="Presets">Налаштування</entry>
 	  <entry id="32101" string="Use preset">Виберіть варіанти</entry>
 	  <entry id="32102" string="Custom settings">Вибіркові налаштування</entry>
-	  <entry id="32103" string="Medium, Fast">Середній, Швидкий</entry>
-	  <entry id="32104" string="Standard, Fast">Стандартний, Швидкий</entry>
-	  <entry id="32105" string="Extreme, Fast">Екстремальний, Швидкий</entry>
+	  <entry id="32103" string="Medium">Середній</entry>
+	  <entry id="32104" string="Standard">Стандартний</entry>
+	  <entry id="32105" string="Extreme">Екстремальний</entry>
 	  <entry id="32106" string="Bitrate">Бітрейт</entry>
 	  <entry id="32107" string="Quality">Якість</entry>
 	  <entry id="32108" string="Set bitrate">Бітрейт</entry>

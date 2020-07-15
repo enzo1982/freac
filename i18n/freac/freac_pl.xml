@@ -772,9 +772,9 @@
 	  <entry id="32100" string="Presets">Zdefiniowane ustawienia</entry>
 	  <entry id="32101" string="Use preset">Zastosuj</entry>
 	  <entry id="32102" string="Custom settings">ustawienia użytkownika</entry>
-	  <entry id="32103" string="Medium, Fast">średni, szybki</entry>
-	  <entry id="32104" string="Standard, Fast">standardowy, szybki</entry>
-	  <entry id="32105" string="Extreme, Fast">ekstremalny, szybki</entry>
+	  <entry id="32103" string="Medium">średni</entry>
+	  <entry id="32104" string="Standard">standardowy</entry>
+	  <entry id="32105" string="Extreme">ekstremalny</entry>
 	  <entry id="32106" string="Bitrate">Przepływność bitów</entry>
 	  <entry id="32107" string="Quality">Jakość</entry>
 	  <entry id="32108" string="Set bitrate">przepływność</entry>

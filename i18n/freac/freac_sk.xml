@@ -767,9 +767,9 @@
 	  <entry id="32100" string="Presets">Prednastavenia</entry>
 	  <entry id="32101" string="Use preset">Použiť prednastavenia</entry>
 	  <entry id="32102" string="Custom settings">Vlastné nastavenia</entry>
-	  <entry id="32103" string="Medium, Fast">Medium, Fast</entry>
-	  <entry id="32104" string="Standard, Fast">Standard, Fast</entry>
-	  <entry id="32105" string="Extreme, Fast">Extreme, Fast</entry>
+	  <entry id="32103" string="Medium">Medium</entry>
+	  <entry id="32104" string="Standard">Standard</entry>
+	  <entry id="32105" string="Extreme">Extreme</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Kvalita</entry>
 	  <entry id="32108" string="Set bitrate">Nastaviť bitrate</entry>

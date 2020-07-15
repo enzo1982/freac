@@ -772,9 +772,9 @@
 	  <entry id="32100" string="Presets">Предварителна настройки</entry>
 	  <entry id="32101" string="Use preset">Използване предв. настройка</entry>
 	  <entry id="32102" string="Custom settings">Собствени настройки</entry>
-	  <entry id="32103" string="Medium, Fast">Средно, Бързо</entry>
-	  <entry id="32104" string="Standard, Fast">Стандартно, Бързо</entry>
-	  <entry id="32105" string="Extreme, Fast">Пределно, Бързо</entry>
+	  <entry id="32103" string="Medium">Средно</entry>
+	  <entry id="32104" string="Standard">Стандартно</entry>
+	  <entry id="32105" string="Extreme">Пределно</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Качество</entry>
 	  <entry id="32108" string="Set bitrate">Зад. bitrate</entry>

@@ -462,9 +462,9 @@
 	  <entry id="32100" string="Presets">Antaŭagordoj</entry>
 	  <entry id="32101" string="Use preset">Uzi antaŭagordojn</entry>
 	  <entry id="32102" string="Custom settings">Propraj agordoj</entry>
-	  <entry id="32103" string="Medium, Fast">Meza, Rapida</entry>
-	  <entry id="32104" string="Standard, Fast">Standarda, Rapida</entry>
-	  <entry id="32105" string="Extreme, Fast">Ekstrema, Rapida</entry>
+	  <entry id="32103" string="Medium">Meza</entry>
+	  <entry id="32104" string="Standard">Standarda</entry>
+	  <entry id="32105" string="Extreme">Ekstrema</entry>
 	  <entry id="32106" string="Bitrate">Bitkvanto</entry>
 	  <entry id="32107" string="Quality">Kvalito</entry>
 	  <entry id="32108" string="Set bitrate">Bitkvanto</entry>

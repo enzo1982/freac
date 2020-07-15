@@ -470,9 +470,9 @@
 	  <entry id="32100" string="Presets">Beállítások</entry>
 	  <entry id="32101" string="Use preset">Használható beállítás</entry>
 	  <entry id="32102" string="Custom settings">Egyedi beállítások</entry>
-	  <entry id="32103" string="Medium, Fast">Közepes, Gyors</entry>
-	  <entry id="32104" string="Standard, Fast">Standard, Gyors</entry>
-	  <entry id="32105" string="Extreme, Fast">Extrém, Gyors</entry>
+	  <entry id="32103" string="Medium">Közepes</entry>
+	  <entry id="32104" string="Standard">Standard</entry>
+	  <entry id="32105" string="Extreme">Extrém</entry>
 	  <entry id="32106" string="Bitrate">Bitráta</entry>
 	  <entry id="32107" string="Quality">Minőség</entry>
 	  <entry id="32108" string="Set bitrate">Bitráta</entry>

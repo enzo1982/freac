@@ -467,9 +467,9 @@
 	  <entry id="32100" string="Presets">Presets</entry>
 	  <entry id="32101" string="Use preset">Valige variant</entry>
 	  <entry id="32102" string="Custom settings">Käsi sätted</entry>
-	  <entry id="32103" string="Medium, Fast">Keskmine, Kiire</entry>
-	  <entry id="32104" string="Standard, Fast">Standartne, Kiire</entry>
-	  <entry id="32105" string="Extreme, Fast">Extriim, Kiire</entry>
+	  <entry id="32103" string="Medium">Keskmine</entry>
+	  <entry id="32104" string="Standard">Standartne</entry>
+	  <entry id="32105" string="Extreme">Extriim</entry>
 	  <entry id="32106" string="Bitrate">Bitikiirus</entry>
 	  <entry id="32107" string="Quality">Kvaliteet</entry>
 	  <entry id="32108" string="Set bitrate">Bitikiirus</entry>

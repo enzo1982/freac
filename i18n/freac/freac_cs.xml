@@ -769,9 +769,9 @@
 	  <entry id="32100" string="Presets">Předvolby</entry>
 	  <entry id="32101" string="Use preset">Použít předvolby</entry>
 	  <entry id="32102" string="Custom settings">Vlastní nastavení</entry>
-	  <entry id="32103" string="Medium, Fast">Střední, rychlé (VBR)</entry>
-	  <entry id="32104" string="Standard, Fast">Standard, rychlé (VBR)</entry>
-	  <entry id="32105" string="Extreme, Fast">Extremní, rychlé (VBR)</entry>
+	  <entry id="32103" string="Medium">Střední (VBR)</entry>
+	  <entry id="32104" string="Standard">Standard (VBR)</entry>
+	  <entry id="32105" string="Extreme">Extremní (VBR)</entry>
 	  <entry id="32106" string="Bitrate">Datový tok</entry>
 	  <entry id="32107" string="Quality">Kvalita</entry>
 	  <entry id="32108" string="Set bitrate">Datový tok</entry>

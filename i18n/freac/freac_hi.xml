@@ -772,9 +772,9 @@
 	  <entry id="32100" string="Presets">प्रीसेट</entry>
 	  <entry id="32101" string="Use preset">प्रीसेट का उपयोग करें</entry>
 	  <entry id="32102" string="Custom settings">कस्टम सेटिंग्स</entry>
-	  <entry id="32103" string="Medium, Fast">मध्यम, तेज</entry>
-	  <entry id="32104" string="Standard, Fast">मानक, तेज</entry>
-	  <entry id="32105" string="Extreme, Fast">अति, तेज</entry>
+	  <entry id="32103" string="Medium">मध्यम</entry>
+	  <entry id="32104" string="Standard">मानक</entry>
+	  <entry id="32105" string="Extreme">अति</entry>
 	  <entry id="32106" string="Bitrate">बिटरेट</entry>
 	  <entry id="32107" string="Quality">गुणवत्ता</entry>
 	  <entry id="32108" string="Set bitrate">बिटरेट सेट करें</entry>

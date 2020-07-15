@@ -470,9 +470,9 @@
 	  <entry id="32100" string="Presets">Valores por defecto</entry>
 	  <entry id="32101" string="Use preset">Usar valores por defecto</entry>
 	  <entry id="32102" string="Custom settings">Configuración persoal</entry>
-	  <entry id="32103" string="Medium, Fast">Medio, Rápido</entry>
-	  <entry id="32104" string="Standard, Fast">Estándar, Rápido</entry>
-	  <entry id="32105" string="Extreme, Fast">Extremo, Rápido</entry>
+	  <entry id="32103" string="Medium">Medio</entry>
+	  <entry id="32104" string="Standard">Estándar</entry>
+	  <entry id="32105" string="Extreme">Extremo</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Calidade</entry>
 	  <entry id="32108" string="Set bitrate">Bitrate</entry>

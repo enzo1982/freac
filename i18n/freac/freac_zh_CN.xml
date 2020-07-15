@@ -769,9 +769,9 @@
 	  <entry id="32100" string="Presets">预设</entry>
 	  <entry id="32101" string="Use preset">使用预设</entry>
 	  <entry id="32102" string="Custom settings">自定义设置</entry>
-	  <entry id="32103" string="Medium, Fast">中等，快速</entry>
-	  <entry id="32104" string="Standard, Fast">标准，快速</entry>
-	  <entry id="32105" string="Extreme, Fast">极端，快速</entry>
+	  <entry id="32103" string="Medium">中等</entry>
+	  <entry id="32104" string="Standard">标准</entry>
+	  <entry id="32105" string="Extreme">极端</entry>
 	  <entry id="32106" string="Bitrate">比特率</entry>
 	  <entry id="32107" string="Quality">品质</entry>
 	  <entry id="32108" string="Set bitrate">设置比特率</entry>

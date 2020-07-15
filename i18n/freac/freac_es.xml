@@ -769,9 +769,9 @@
 	  <entry id="32100" string="Presets">Preconfiguraciones</entry>
 	  <entry id="32101" string="Use preset">Usar preconfiguración</entry>
 	  <entry id="32102" string="Custom settings">Configuraciones personales</entry>
-	  <entry id="32103" string="Medium, Fast">Medio, Rápido</entry>
-	  <entry id="32104" string="Standard, Fast">Estándar, Rápido</entry>
-	  <entry id="32105" string="Extreme, Fast">Extremo, Rápido</entry>
+	  <entry id="32103" string="Medium">Medio</entry>
+	  <entry id="32104" string="Standard">Estándar</entry>
+	  <entry id="32105" string="Extreme">Extremo</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Calidad</entry>
 	  <entry id="32108" string="Set bitrate">Bitrate</entry>

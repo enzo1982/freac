@@ -469,9 +469,9 @@
 	  <entry id="32100" string="Presets">Ayarlar</entry>
 	  <entry id="32101" string="Use preset">Ayarları kullan</entry>
 	  <entry id="32102" string="Custom settings">Kişisel ayarlar</entry>
-	  <entry id="32103" string="Medium, Fast">Orta, hızlı</entry>
-	  <entry id="32104" string="Standard, Fast">Standart, hızlı</entry>
-	  <entry id="32105" string="Extreme, Fast">Üstün, hızlı</entry>
+	  <entry id="32103" string="Medium">Orta</entry>
+	  <entry id="32104" string="Standard">Standart</entry>
+	  <entry id="32105" string="Extreme">Üstün</entry>
 	  <entry id="32106" string="Bitrate">Bit oranı</entry>
 	  <entry id="32107" string="Quality">Kalite</entry>
 	  <entry id="32108" string="Set bitrate">Bit oranını belirle</entry>

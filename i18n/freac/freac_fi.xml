@@ -471,9 +471,9 @@
 	  <entry id="32100" string="Presets">Esiasetukset</entry>
 	  <entry id="32101" string="Use preset">Käytä esiasetusta</entry>
 	  <entry id="32102" string="Custom settings">Muokatut asetukset</entry>
-	  <entry id="32103" string="Medium, Fast">Keskitaso, Nopea</entry>
-	  <entry id="32104" string="Standard, Fast">Vakio, Hidas</entry>
-	  <entry id="32105" string="Extreme, Fast">Äärimmäinen, Nopea</entry>
+	  <entry id="32103" string="Medium">Keskitaso</entry>
+	  <entry id="32104" string="Standard">Vakio</entry>
+	  <entry id="32105" string="Extreme">Äärimmäinen</entry>
 	  <entry id="32106" string="Bitrate">Bittivirran nopeus</entry>
 	  <entry id="32107" string="Quality">Laatu</entry>
 	  <entry id="32108" string="Set bitrate">Aseta bittivirta</entry>

@@ -471,9 +471,9 @@
 	  <entry id="32100" string="Presets">Preconfiguracions</entry>
 	  <entry id="32101" string="Use preset">Usar preconfiguració</entry>
 	  <entry id="32102" string="Custom settings">Configuració personal</entry>
-	  <entry id="32103" string="Medium, Fast">Mitjà, Ràpid</entry>
-	  <entry id="32104" string="Standard, Fast">Estàndard, Ràpid</entry>
-	  <entry id="32105" string="Extreme, Fast">Extrem, Ràpid</entry>
+	  <entry id="32103" string="Medium">Mitjà</entry>
+	  <entry id="32104" string="Standard">Estàndard</entry>
+	  <entry id="32105" string="Extreme">Extrem</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Qualitat</entry>
 	  <entry id="32108" string="Set bitrate">Bitrate</entry>

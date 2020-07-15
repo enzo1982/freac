@@ -772,9 +772,9 @@
 	  <entry id="32100" string="Presets">Predpodešenja</entry>
 	  <entry id="32101" string="Use preset">Koristi predpodešenja</entry>
 	  <entry id="32102" string="Custom settings">Korisnikova podešenja</entry>
-	  <entry id="32103" string="Medium, Fast">Srednje, Brzo</entry>
-	  <entry id="32104" string="Standard, Fast">Standardno, Brzo</entry>
-	  <entry id="32105" string="Extreme, Fast">Krajnje, Brzo</entry>
+	  <entry id="32103" string="Medium">Srednje</entry>
+	  <entry id="32104" string="Standard">Standardno</entry>
+	  <entry id="32105" string="Extreme">Krajnje</entry>
 	  <entry id="32106" string="Bitrate">Stopa bitova</entry>
 	  <entry id="32107" string="Quality">Kvalitet</entry>
 	  <entry id="32108" string="Set bitrate">Stopa</entry>

@@ -772,9 +772,9 @@
 	  <entry id="32100" string="Presets"/>
 	  <entry id="32101" string="Use preset"/>
 	  <entry id="32102" string="Custom settings"/>
-	  <entry id="32103" string="Medium, Fast"/>
-	  <entry id="32104" string="Standard, Fast"/>
-	  <entry id="32105" string="Extreme, Fast"/>
+	  <entry id="32103" string="Medium"/>
+	  <entry id="32104" string="Standard"/>
+	  <entry id="32105" string="Extreme"/>
 	  <entry id="32106" string="Bitrate"/>
 	  <entry id="32107" string="Quality"/>
 	  <entry id="32108" string="Set bitrate"/>

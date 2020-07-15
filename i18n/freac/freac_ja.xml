@@ -767,9 +767,9 @@
 	  <entry id="32100" string="Presets">プリセット</entry>
 	  <entry id="32101" string="Use preset">プリセット使用</entry>
 	  <entry id="32102" string="Custom settings">カスタム設定</entry>
-	  <entry id="32103" string="Medium, Fast">Medium （VBR -V 4, 140-185kbps）, Fast</entry>
-	  <entry id="32104" string="Standard, Fast">Standard （VBR -V 2, 170-210kbps）, Fast</entry>
-	  <entry id="32105" string="Extreme, Fast">Extreme （VBR -V 0, 220-260kbps）, Fast</entry>
+	  <entry id="32103" string="Medium">Medium （VBR -V 4, 140-185kbps）</entry>
+	  <entry id="32104" string="Standard">Standard （VBR -V 2, 170-210kbps）</entry>
+	  <entry id="32105" string="Extreme">Extreme （VBR -V 0, 220-260kbps）</entry>
 	  <entry id="32106" string="Bitrate">ビットレート</entry>
 	  <entry id="32107" string="Quality">品質</entry>
 	  <entry id="32108" string="Set bitrate">ビットレート</entry>
