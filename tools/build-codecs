@@ -111,7 +111,7 @@ libsamplerate_version=0.1.9
 libsndfile_version=1.0.28
 mac_version=5.44
 mp4v2_version=2.0.0
-mpg123_version=1.26.2
+mpg123_version=1.26.3
 musepack_version=4.75
 opus_version=1.3.1
 rnnoise_version=9acc1e5
@@ -134,7 +134,7 @@ libsamplerate_location=http://www.mega-nerd.com/SRC/libsamplerate-$libsamplerate
 libsndfile_location=http://www.mega-nerd.com/libsndfile/files/libsndfile-$libsndfile_version.tar.gz
 mac_location=https://freac.org/patches/MAC_SDK_${mac_version%.*}${mac_version#*.}.zip
 mp4v2_location=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-$mp4v2_version.tar.bz2
-mpg123_location=https://www.mpg123.de/download/mpg123-$mpg123_version.tar.bz2
+mpg123_location=https://mpg123.org/download/mpg123-$mpg123_version.tar.bz2
 musepack_location=https://files.musepack.net/source/musepack_src_r${musepack_version%.*}${musepack_version#*.}.tar.gz
 opus_location=https://ftp.osuosl.org/pub/xiph/releases/opus/opus-$opus_version.tar.gz
 rnnoise_location=https://codeload.github.com/xiph/rnnoise/zip/$rnnoise_version
@@ -161,9 +161,6 @@ mp4v2_patch_levels=(1)
 
 mp4v2_patches_win32=(https://freac.org/patches/mp4v2-$mp4v2_version-fixes.patch https://freac.org/patches/mp4v2-$mp4v2_version-win32.patch)
 mp4v2_patch_levels_win32=(1 1)
-
-mpg123_patches_win32=(https://freac.org/patches/mpg123-$mpg123_version-win64asmfix.patch)
-mpg123_patch_levels_win32=(1)
 
 rubberband_patches=(https://freac.org/patches/rubberband-$rubberband_version-fixed.diff)
 rubberband_patch_levels=(1)
@@ -467,10 +464,6 @@ for package in ${packages[@]}; do
       fi
     elif [[ $x86 == true ]]; then
       configure_flags="$configure_flags --with-cpu=sse"
-    fi
-    if [[ $uname == *MINGW* ]]; then
-      patches=${mpg123_patches_win32[@]}
-      patch_levels=(${mpg123_patch_levels_win32[@]})
     fi
     build $mpg123_location src/libmpg123/.libs/libmpg123$sharedinfix.$sharedext mpg123.$sharedext
 
