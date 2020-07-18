@@ -1322,21 +1322,30 @@ Void freac::freacGUI::FillMenus()
 
 	mainWnd_iconbar->AddEntry();
 
-	Bitmap	 startEncodingIcon = ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "icons/conversion/conversion-start-warning.png" : "icons/conversion/conversion-start.png"));
+	for (Int i = 0; i < 3; i++)
+	{
+		switch (i18n->IsActiveLanguageRightToLeft() ? 2 - i : i)
+		{
+			case 0:
+				entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "icons/conversion/conversion-start-warning.png" : "icons/conversion/conversion-start.png")), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
+				entry->onAction.Connect(&freacGUI::Convert, this);
+				entry->SetTooltipText(i18n->TranslateString(currentConfig->deleteAfterEncoding ? "Start the encoding process (deleting original files)" : "Start the encoding process"));
 
-	if (i18n->IsActiveLanguageRightToLeft()) Utilities::MirrorBitmap(startEncodingIcon);
+				break;
+			case 1:
+				entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/conversion/conversion-pause.png")));
+				entry->onAction.Connect(&freacGUI::PauseResumeEncoding, this);
+				entry->SetTooltipText(i18n->TranslateString("Pause/resume encoding"));
 
-	entry = mainWnd_iconbar->AddEntry(startEncodingIcon, boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
-	entry->onAction.Connect(&freacGUI::Convert, this);
-	entry->SetTooltipText(i18n->TranslateString(currentConfig->deleteAfterEncoding ? "Start the encoding process (deleting original files)" : "Start the encoding process"));
+				break;
+			case 2:
+				entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/conversion/conversion-stop.png")));
+				entry->onAction.Connect(&freacGUI::StopEncoding, this);
+				entry->SetTooltipText(i18n->TranslateString("Stop encoding"));
 
-	entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/conversion/conversion-pause.png")));
-	entry->onAction.Connect(&freacGUI::PauseResumeEncoding, this);
-	entry->SetTooltipText(i18n->TranslateString("Pause/resume encoding"));
-
-	entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/conversion/conversion-stop.png")));
-	entry->onAction.Connect(&freacGUI::StopEncoding, this);
-	entry->SetTooltipText(i18n->TranslateString("Stop encoding"));
+				break;
+		}
+	}
 
 	/* Set size of iconbar entries to 28x28 pixels.
 	 */
