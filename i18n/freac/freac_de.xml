@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers">Verifizierer</entry>
       <entry id="5024" string="Taggers">Tagger</entry>
       <entry id="5025" string="Processing">Verarbeitung</entry>
+      <entry id="5026" string="Additional arguments">Zusätzliche Parameter</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Kodierer konfigurieren</entry>

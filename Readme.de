@@ -153,10 +153,13 @@ Geschichte
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Wechsel von avconv zurück zu FFmpeg für bessere Formatunterstützung
+			- Der Konfigurationsdialog für Kommandozeilenkodierer erlaubt nun die Angabe zusätzlicher Parameter
 
 		- Behobene Fehler
 
 			- Problem mit Archivierung von Protokolldateien trotz deaktivierter Option behoben
+			- Mögliches Hängenbleiben des Konvertierungsthreads bei Verwendung externer Kodierer behoben
+			- Mögliche Fehler in WAV-/AIFF-Ausgabe bei Verarbeitung von float-Samples außerhalb des -1.0/+1.0 Bereichs behoben
 
 		- Aktualisierte Codecs
 

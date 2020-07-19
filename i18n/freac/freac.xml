@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers"/>
       <entry id="5024" string="Taggers"/>
       <entry id="5025" string="Processing"/>
+      <entry id="5026" string="Additional arguments"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder"/>
