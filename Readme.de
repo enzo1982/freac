@@ -159,7 +159,9 @@ Geschichte
 
 			- Problem mit Archivierung von Protokolldateien trotz deaktivierter Option behoben
 			- Mögliches Hängenbleiben des Konvertierungsthreads bei Verwendung externer Kodierer behoben
+			- Möglichen Absturz im Zusammenhang mit der Drag-&-Drop-Behandlung unter Windows behoben
 			- Mögliche Fehler in WAV-/AIFF-Ausgabe bei Verarbeitung von float-Samples außerhalb des -1.0/+1.0 Bereichs behoben
+			- Falsche Längenerkennung für MP3-Dateien mit ungültigen Kapitelinformationen behoben
 
 		- Aktualisierte Codecs
 
