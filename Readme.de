@@ -152,16 +152,18 @@ Geschichte
 		- Verbesserungen
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
-			- Wechsel von avconv zurück zu FFmpeg für bessere Formatunterstützung
 			- Der Konfigurationsdialog für Kommandozeilenkodierer erlaubt nun die Angabe zusätzlicher Parameter
+			- Erkennung der Kodierung von Cuesheets verbessert, um System-Codepage und UTF-8 ohne BOM zu unterstützen
+			- freaccmd teilt Cuesheets jetzt in einzelne Tracks, sofern keine Ausgabedatei mit der -o Option angegeben wird
+			- Wechsel von avconv zurück zu FFmpeg für bessere Formatunterstützung
 
 		- Behobene Fehler
 
-			- Problem mit Archivierung von Protokolldateien trotz deaktivierter Option behoben
 			- Mögliches Hängenbleiben des Konvertierungsthreads bei Verwendung externer Kodierer behoben
 			- Möglichen Absturz im Zusammenhang mit der Drag-&-Drop-Behandlung unter Windows behoben
 			- Mögliche Fehler in WAV-/AIFF-Ausgabe bei Verarbeitung von float-Samples außerhalb des -1.0/+1.0 Bereichs behoben
-			- Falsche Längenerkennung für MP3-Dateien mit ungültigen Kapitelinformationen behoben
+			- Falsche Längenerkennung bei MP3-Dateien mit ungültigen Kapitelinformationen behoben
+			- Problem mit Archivierung von Protokolldateien trotz deaktivierter Option behoben
 
 		- Aktualisierte Codecs
 

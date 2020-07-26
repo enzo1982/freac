@@ -528,6 +528,15 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			in.Close();
 
+			/* Special handling for cue sheets.
+			 */
+			Bool	 cueSheet = currentFile.EndsWith(".cue") && outputFile == NIL;
+
+			config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, !cueSheet);
+
+			if (cueSheet && pattern == "<filename>") config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, "<filename> - <track> - <title>");
+			else					 config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
+
 			/* Add file to joblist.
 			 */
 			Array<String>	 jobFiles;
@@ -558,7 +567,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 				config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Utilities::GetOutputFileName(track));
 			}
 
-			/* Convert track in joblist.
+			/* Convert tracks in joblist.
 			 */
 			if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
 

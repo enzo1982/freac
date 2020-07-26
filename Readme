@@ -152,16 +152,18 @@ History
 		- Improvements
 
 			- improved support for languages written from right to left
-			- switched back to FFmpeg from avconv for improved format support
 			- command line codec configuration now allows specifying additional arguments
+			- improved detection of cue sheet encoding to support system codepage and UTF-8 without BOM
+			- freaccmd now splits cue sheets to individual tracks unless an output file is specified using the -o option
+			- switched back to FFmpeg from avconv for improved format support
 
 		- Bug fixes
 
-			- fixed log files being archived despite disabling the corresponding option
 			- fixed possible conversion thread hangs when using external encoders
 			- fixed possible crash related to drag & drop handling on Windows
 			- fixed possible glitches in WAV/AIFF output when processing float samples outside the -1.0/+1.0 range
 			- fixed wrong length detection for MP3 files with invalid chapter data
+			- fixed log files being archived despite disabling the corresponding option
 
 		- Updated codecs
 
