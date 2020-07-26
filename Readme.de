@@ -155,6 +155,7 @@ Geschichte
 			- Der Konfigurationsdialog für Kommandozeilenkodierer erlaubt nun die Angabe zusätzlicher Parameter
 			- Erkennung der Kodierung von Cuesheets verbessert, um System-Codepage und UTF-8 ohne BOM zu unterstützen
 			- freaccmd teilt Cuesheets jetzt in einzelne Tracks, sofern keine Ausgabedatei mit der -o Option angegeben wird
+			- freaccmd unterstützt jetzt die --split-chapters Option zum Teilen von Dateien mit Kapitel-Tags in einzelne Kapitel
 			- Wechsel von avconv zurück zu FFmpeg für bessere Formatunterstützung
 
 		- Behobene Fehler

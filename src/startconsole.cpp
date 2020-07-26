@@ -160,6 +160,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	String		 timeout	= "120";
 	Bool		 cddb		= ScanForProgramOption("--cddb");
 
+	Bool		 splitChapters	= ScanForProgramOption("--split-chapters");
+
 	Bool		 ignoreChapters	= ScanForProgramOption("--ignore-chapters");
 	Bool		 ignoreCoverArt	= ScanForProgramOption("--ignore-coverart");
 
@@ -528,14 +530,14 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			in.Close();
 
-			/* Special handling for cue sheets.
+			/* Handle splitting chapters and cue sheets.
 			 */
-			Bool	 cueSheet = currentFile.EndsWith(".cue") && outputFile == NIL;
+			Bool	 splitFile = (splitChapters || currentFile.EndsWith(".cue")) && outputFile == NIL;
 
-			config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, !cueSheet);
+			config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, !splitFile);
 
-			if (cueSheet && pattern == "<filename>") config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, "<filename> - <track> - <title>");
-			else					 config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
+			if (splitFile && pattern == "<filename>") config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, "<filename> - <track> - <title>");
+			else					  config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
 
 			/* Add file to joblist.
 			 */
@@ -896,7 +898,9 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		Console::OutputString("  --superfast\t\t\tEnable SuperFast mode\n");
 		Console::OutputString("  --threads=<n>\t\t\tSpecify number of threads to use in SuperFast mode\n\n");
 
-		Console::OutputString("  --ignore-chapters\t\tDo not write chapter information to tags\n\n");
+		Console::OutputString("  --split-chapters\t\tSplit to individual chapters if chapter tags are present\n\n");
+
+		Console::OutputString("  --ignore-chapters\t\tDo not write chapter information to tags\n");
 		Console::OutputString("  --ignore-coverart\t\tDo not write cover images to tags\n\n");
 
 		Console::OutputString("  --list-configs\t\tPrint a list of available configurations\n");

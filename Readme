@@ -155,6 +155,7 @@ History
 			- command line codec configuration now allows specifying additional arguments
 			- improved detection of cue sheet encoding to support system codepage and UTF-8 without BOM
 			- freaccmd now splits cue sheets to individual tracks unless an output file is specified using the -o option
+			- freaccmd now supports a --split-chapters option to split files with chapter tags into individual chapters
 			- switched back to FFmpeg from avconv for improved format support
 
 		- Bug fixes
