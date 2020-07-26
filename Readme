@@ -157,6 +157,8 @@ History
 			- freaccmd now splits cue sheets to individual tracks unless an output file is specified using the -o option
 			- freaccmd now supports a --split-chapters option to split files with chapter tags into individual chapters
 			- added <profile> placeholder for use in output folder configuration setting, resolving to user profile folder
+			- added file type associations to Linux/FreeBSD .desktop file, so fre:ac is offered for opening audio files
+			- added audio CD association to Linux/FreeBSD .desktop file, so fre:ac can be started when inserting a CD
 			- switched back to FFmpeg from avconv for improved format support
 
 		- Bug fixes

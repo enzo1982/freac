@@ -1,8 +1,9 @@
 [Desktop Entry]
 Name=fre:ac
 Comment=A free audio converter
-Exec=freac
+Exec=freac %F
 Type=Application
 Icon=org.freac.freac
 Categories=AudioVideo;Audio;
 Keywords=freac;
+MimeType=x-content/audio-cdda;application/x-cue;audio/aac;audio/flac;audio/mpeg;audio/mp2;audio/mp4;audio/x-m4b;audio/ogg;audio/x-flac+ogg;audio/x-opus+ogg;audio/x-speex+ogg;audio/x-vorbis+ogg;audio/x-ape;audio/x-musepack;audio/x-wavpack;audio/x-ms-wma;audio/x-aiff;audio/x-voc;audio/x-wav;

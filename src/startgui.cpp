@@ -20,6 +20,7 @@
 #include <engine/converter.h>
 
 #include <jobs/engine/convert.h>
+#include <jobs/joblist/addfiles.h>
 #include <jobs/joblist/addtracks.h>
 #include <jobs/joblist/removedisc.h>
 #include <jobs/other/checkforupdates.h>
@@ -250,6 +251,44 @@ freac::freacGUI::freacGUI()
 	mainWnd->SetMinimumSize(Size(600, 400 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0)));
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowMaximizedID, Config::SettingsWindowMaximizedDefault)) mainWnd->Maximize();
+
+	/* Parse arguments and add files to joblist.
+	 */
+	Registry		&boca = Registry::Get();
+	const Array<String>	&args = GetArguments();
+	Array<String>		 files;
+
+	foreach (const String &arg, args)
+	{
+#ifndef __WIN32__
+		if (arg.Contains("cdda:host="))
+		{
+			DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
+
+			if (info != NIL)
+			{
+				String	 device = String("/dev/").Append(arg.Tail(arg.Length() - arg.Find("cdda:host=") - 10));
+
+				for (Int i = 0; i < info->GetNumberOfDevices(); i++)
+				{
+					if (info->GetNthDeviceInfo(i).path != device) continue;
+
+					const Array<String>	&urls = info->GetNthDeviceTrackList(i);
+
+					(new JobAddTracks(urls, False))->Schedule();
+				}
+
+				boca.DeleteComponent(info);
+			}
+
+			continue;
+		}
+#endif
+
+		if (File(arg).Exists()) files.Add(arg);
+	}
+
+	if (files.Length() > 0) (new JobAddFiles(files))->Schedule();
 
 	/* Run update check.
 	 */
