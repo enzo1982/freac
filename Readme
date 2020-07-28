@@ -157,8 +157,8 @@ History
 			- freaccmd now splits cue sheets to individual tracks unless an output file is specified using the -o option
 			- freaccmd now supports a --split-chapters option to split files with chapter tags into individual chapters
 			- added <profile> placeholder for use in output folder configuration setting, resolving to user profile folder
-			- added file type associations to Linux/FreeBSD .desktop file, so fre:ac is offered for opening audio files
-			- added audio CD association to Linux/FreeBSD .desktop file, so fre:ac can be started when inserting a CD
+			- added file type associations to Linux/FreeBSD and Windows Store app, so fre:ac is offered for opening audio files
+			- added audio CD association to Linux/FreeBSD and Windows Store app, so fre:ac can be started when inserting a CD
 			- switched back to FFmpeg from avconv for improved format support
 
 		- Bug fixes
@@ -167,6 +167,7 @@ History
 			- fixed possible crash related to drag & drop handling on Windows
 			- fixed possible glitches in WAV/AIFF output when processing float samples outside the -1.0/+1.0 range
 			- fixed wrong length detection for MP3 files with invalid chapter data
+			- fixed parsing of cue sheets with minute/second indications missing leading zeros and/or duration longer than 99 minutes
 			- fixed log files being archived despite disabling the corresponding option
 
 		- Updated codecs

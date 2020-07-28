@@ -254,41 +254,7 @@ freac::freacGUI::freacGUI()
 
 	/* Parse arguments and add files to joblist.
 	 */
-	Registry		&boca = Registry::Get();
-	const Array<String>	&args = GetArguments();
-	Array<String>		 files;
-
-	foreach (const String &arg, args)
-	{
-#ifndef __WIN32__
-		if (arg.Contains("cdda:host="))
-		{
-			DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
-
-			if (info != NIL)
-			{
-				String	 device = String("/dev/").Append(arg.Tail(arg.Length() - arg.Find("cdda:host=") - 10));
-
-				for (Int i = 0; i < info->GetNumberOfDevices(); i++)
-				{
-					if (info->GetNthDeviceInfo(i).path != device) continue;
-
-					const Array<String>	&urls = info->GetNthDeviceTrackList(i);
-
-					(new JobAddTracks(urls, False))->Schedule();
-				}
-
-				boca.DeleteComponent(info);
-			}
-
-			continue;
-		}
-#endif
-
-		if (File(arg).Exists()) files.Add(arg);
-	}
-
-	if (files.Length() > 0) (new JobAddFiles(files))->Schedule();
+	ParseArguments(GetArguments());
 
 	/* Run update check.
 	 */
@@ -1515,6 +1481,61 @@ Void freac::freacGUI::AddFilesFromDirectory()
 
 		joblist->AddTracksByDragAndDrop(directories);
 	}
+}
+
+Void freac::freacGUI::ParseArguments(const Array<String> &args)
+{
+	Registry	&boca = Registry::Get();
+	Array<String>	 files;
+
+	foreach (const String &arg, args)
+	{
+#ifdef __WIN32__
+		if (arg.EndsWith(":\\") && arg.Length() == 3 && GetDriveType(arg) == DRIVE_CDROM)
+#else
+		if (arg.Contains("cdda:host="))
+#endif
+		{
+			DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
+
+			if (info != NIL)
+			{
+				/* Find drive number.
+				 */
+				Int	 driveNumber = 0;
+
+#ifdef __WIN32__
+				String	 driveLetter = String(" :");
+
+				for (driveLetter[0] = 'A'; driveLetter[0] < arg[0]; driveLetter[0]++)
+				{
+					if (GetDriveType(driveLetter) == DRIVE_CDROM) driveNumber++;
+				}
+#else
+				String	 devicePath  = String("/dev/").Append(arg.Tail(arg.Length() - arg.Find("cdda:host=") - 10));
+
+				for (Int i = 0; i < info->GetNumberOfDevices(); i++)
+				{
+					if (info->GetNthDeviceInfo(i).path == devicePath) driveNumber = i;
+				}
+#endif
+
+				/* Add tracks to joblist.
+				 */
+				const Array<String>	&urls = info->GetNthDeviceTrackList(driveNumber);
+
+				(new JobAddTracks(urls, False))->Schedule();
+
+				boca.DeleteComponent(info);
+			}
+
+			continue;
+		}
+
+		if (File(arg).Exists()) files.Add(arg);
+	}
+
+	if (files.Length() > 0) (new JobAddFiles(files))->Schedule();
 }
 
 Void freac::freacGUI::ToggleSignalProcessing()
