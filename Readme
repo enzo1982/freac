@@ -166,8 +166,10 @@ History
 			- fixed possible conversion thread hangs when using external encoders
 			- fixed possible crash related to drag & drop handling on Windows
 			- fixed possible glitches in WAV/AIFF output when processing float samples outside the -1.0/+1.0 range
+			- fixed inability to open WAV/AIFF files with long paths on Windows
 			- fixed wrong length detection for MP3 files with invalid chapter data
 			- fixed parsing of cue sheets with minute/second indications missing leading zeros and/or duration longer than 99 minutes
+			- fixed parsing of embedded cue sheets without FILE designations
 			- fixed log files being archived despite disabling the corresponding option
 
 		- Updated codecs
