@@ -428,7 +428,6 @@ Int freac::ConvertWorker::Convert()
 		encoder->Destroy();
 
 		if (decoder->GetErrorState())	{ error = True; onReportError.Emit(decoder->GetErrorString());	 }
-		if (verifier->GetErrorState())	{ error = True; onReportError.Emit(verifier->GetErrorString());	 }
 		if (processor->GetErrorState())	{ error = True; onReportError.Emit(processor->GetErrorString()); }
 		if (encoder->GetErrorState())	{ error = True; onReportError.Emit(encoder->GetErrorString());	 }
 
@@ -628,6 +627,10 @@ Void freac::ConvertWorker::VerifyInput(const String &uri, Verifier *verifier)
 	if (verifier->Verify())
 	{
 		log->Write(String("    Successfully verified input ").Append(uriType).Append(": ").Append(uri));
+	}
+	else if (!verifier->GetErrorState())
+	{
+		log->Write(String("    Could not verify input ").Append(uriType).Append(": ").Append(uri), MessageTypeWarning);
 	}
 	else
 	{
