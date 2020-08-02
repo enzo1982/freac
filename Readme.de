@@ -147,7 +147,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.3 (Juli 2020)
+	Version 1.1.3 (August 2020)
 
 		- Verbesserungen
 
@@ -166,7 +166,9 @@ Geschichte
 			- Mögliches Hängenbleiben des Konvertierungsthreads bei Verwendung externer Kodierer behoben
 			- Möglichen Absturz im Zusammenhang mit der Drag-&-Drop-Behandlung unter Windows behoben
 			- Mögliche Fehler in WAV-/AIFF-Ausgabe bei Verarbeitung von float-Samples außerhalb des -1.0/+1.0 Bereichs behoben
+			- Mögliches Aufhängen beim Öffnen von WAV-/AIFF-Dateien größer als 2 GB oder mit ungültiger Chunk-Struktur behoben
 			- Problem beim Öffnen von WAV-/AIFF-Dateien mit langen Pfaden unter Windows behoben
+			- Schreiben von ungültigen MP3-Bitstreams in seltenen Fällen bei aktiviertem SuperFast-Modus behoben
 			- Falsche Längenerkennung bei MP3-Dateien mit ungültigen Kapitelinformationen behoben
 			- Problem mit Verarbeitung von Cuesheets mit Minuten-/Sekundenangaben ohne führende Nullen und/oder Dauer von mehr als 99 Minuten behoben
 			- Problem mit Verarbeitung von eingebetteten Cuesheets ohne FILE-Angaben behoben
