@@ -1493,7 +1493,7 @@ Void freac::freacGUI::ParseArguments(const Array<String> &args)
 #ifdef __WIN32__
 		if (arg.EndsWith(":\\") && arg.Length() == 3 && GetDriveType(arg) == DRIVE_CDROM)
 #else
-		if (arg.Contains("cdda:host="))
+		if (arg.StartsWith("/dev/") || arg.Contains("cdda:host=") || arg.Contains("/UDisks2/block_devices/"))
 #endif
 		{
 			DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
@@ -1512,7 +1512,10 @@ Void freac::freacGUI::ParseArguments(const Array<String> &args)
 					if (GetDriveType(driveLetter) == DRIVE_CDROM) driveNumber++;
 				}
 #else
-				String	 devicePath  = String("/dev/").Append(arg.Tail(arg.Length() - arg.Find("cdda:host=") - 10));
+				String	 devicePath  = arg;
+                
+				if	(arg.Contains("cdda:host="))		  devicePath = String("/dev/").Append(arg.Tail(arg.Length() - arg.Find("cdda:host=") - 10));
+				else if (arg.Contains("/UDisks2/block_devices/")) devicePath = String("/dev/").Append(arg.Tail(arg.Length() - arg.Find("/UDisks2/block_devices/") - 23));
 
 				for (Int i = 0; i < info->GetNumberOfDevices(); i++)
 				{
