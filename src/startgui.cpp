@@ -21,6 +21,7 @@
 
 #include <jobs/engine/convert.h>
 #include <jobs/joblist/addfiles.h>
+#include <jobs/joblist/addfolders.h>
 #include <jobs/joblist/addtracks.h>
 #include <jobs/joblist/removedisc.h>
 #include <jobs/other/checkforupdates.h>
@@ -1486,10 +1487,14 @@ Void freac::freacGUI::AddFilesFromDirectory()
 Void freac::freacGUI::ParseArguments(const Array<String> &args)
 {
 	Registry	&boca = Registry::Get();
+
 	Array<String>	 files;
+	Array<String>	 folders;
 
 	foreach (const String &arg, args)
 	{
+		/* Check for drive argument.
+		 */
 #ifdef __WIN32__
 		if (arg.EndsWith(":\\") && arg.Length() == 3 && GetDriveType(arg) == DRIVE_CDROM)
 #else
@@ -1535,10 +1540,14 @@ Void freac::freacGUI::ParseArguments(const Array<String> &args)
 			continue;
 		}
 
-		if (File(arg).Exists()) files.Add(arg);
+		/* Check for file or folder argument.
+		 */
+		if	(File(arg).Exists())	  files.Add(arg);
+		else if (Directory(arg).Exists()) folders.Add(arg);
 	}
 
-	if (files.Length() > 0) (new JobAddFiles(files))->Schedule();
+	if (files.Length()   > 0) (new JobAddFiles(files))->Schedule();
+	if (folders.Length() > 0) (new JobAddFolders(folders))->Schedule();
 }
 
 Void freac::freacGUI::ToggleSignalProcessing()
