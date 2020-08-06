@@ -22,7 +22,7 @@ von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate
 
 	- Apple Lossless (ALAC)
 		- mit dem Core Audio ALAC-Encoder	(http://www.apple.com/)
-		- mit dem libav ALAC-Encoder		(http://www.libav.org/)
+		- mit dem FFmpeg ALAC-Encoder		(http://www.ffmpeg.org/)
 		- mit David Hammertons ALAC-Decoder	(http://www.craz.net/)
 
 	- Musepack					(http://www.musepack.net/)
@@ -33,7 +33,7 @@ von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate
 
 	- verschiedene weitere Formate
 		- mit der libsndfile Bibliothek		(http://www.mega-nerd.com/)
-		- mit der libav Codec-Bibliothek	(http://www.libav.org/)
+		- mit dem FFmpeg Konverter		(http://www.ffmpeg.org/)
 
 Weitere Codecs (z.B. Neros HE-AAC-Kodierer) können als externe Plug-Ins
 eingebunden werden (siehe Benutzerhandbuch für Installationshinweise).
@@ -147,11 +147,52 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.3 (Juni 2020)
+	Version 1.1.3 (August 2020)
+
+		- Verbesserungen
+
+			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
+			- Der Konfigurationsdialog für Kommandozeilenkodierer erlaubt nun die Angabe zusätzlicher Parameter
+			- Erkennung der Kodierung von Cuesheets verbessert, um System-Codepage und UTF-8 ohne BOM zu unterstützen
+			- freaccmd teilt Cuesheets jetzt in einzelne Tracks, sofern keine Ausgabedatei mit der -o Option angegeben wird
+			- freaccmd unterstützt jetzt die --split-chapters Option zum Teilen von Dateien mit Kapitel-Tags in einzelne Kapitel
+			- Platzhalter <profile> zur Verwendung in der Ausgabeordner-Einstellung hinzugefügt, der auf den Profilordner des Benutzers verweist
+			- Dateitypzuordnungen zu Linux/FreeBSD .desktop-Datei hinzugefügt, so dass fre:ac zum Öffnen von Audiodateien angeboten wird
+			- Audio-CD-Zuordnung zu Linux/FreeBSD .desktop-Datei hinzugefügt, so dass fre:ac beim Einlegen einer CD gestartet werden kann
+			- Wechsel von avconv zurück zu FFmpeg für bessere Formatunterstützung
+
+		- Behobene Fehler
+
+			- Mögliches Hängenbleiben des Konvertierungsthreads bei Verwendung externer Kodierer behoben
+			- Möglichen Absturz im Zusammenhang mit der Drag-&-Drop-Behandlung unter Windows behoben
+			- Mögliche Fehler in WAV-/AIFF-Ausgabe bei Verarbeitung von float-Samples außerhalb des -1.0/+1.0 Bereichs behoben
+			- Mögliches Aufhängen beim Öffnen von WAV-/AIFF-Dateien größer als 2 GB oder mit ungültiger Chunk-Struktur behoben
+			- Problem beim Öffnen von WAV-/AIFF-Dateien mit langen Pfaden unter Windows behoben
+			- Schreiben von ungültigen MP3-Bitstreams in seltenen Fällen bei aktiviertem SuperFast-Modus behoben
+			- Falsche Längenerkennung bei MP3-Dateien mit ungültigen Kapitelinformationen behoben
+			- Problem mit Verarbeitung von Cuesheets mit Minuten-/Sekundenangaben ohne führende Nullen und/oder Dauer von mehr als 99 Minuten behoben
+			- Problem mit Verarbeitung von eingebetteten Cuesheets ohne FILE-Angaben behoben
+			- Problem mit Archivierung von Protokolldateien trotz deaktivierter Option behoben
+
+		- Aktualisierte Codecs
+
+			- Vorbis auf Version 1.3.7 (plus aoTuV b6.03 und Lancer-Optimierungen) aktualisiert
+			- mpg123 auf Version 1.26.3 aktualisiert
 
 		- Neue Übersetzungen
 
 			- Persische Übersetzung hinzugefügt
+			- Hindi Übersetzung hinzugefügt
+
+	Version 1.1.2b (Juli 2020)
+
+		- Behobene Fehler
+
+			- Absturz beim Dekodieren von MP3s auf Systemen ohne AVX-Unterstützung unter x64 Windows behoben
+
+		- Updated codecs
+
+			- mpg123 auf Version 1.26.2 (plus Windows x64 ASM Patch) aktualisiert
 
 	Version 1.1.2a (Juni 2020)
 
@@ -485,7 +526,8 @@ Besonderen Dank
 			   Xabier Aramendi (Baskisch),
 			   Kin Kwok (Kantonesisch, Hong Kong),
 			   Patriccollu di Santa Maria è Sichè (Korsisch),
-			   XilizaX (Persisch)
+			   XilizaX (Persisch),
+			   Tushar Chandra (Hindi)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC-Kodierer
 	- allen Testern und jedem der Fehlerberichte eingeschickt hat

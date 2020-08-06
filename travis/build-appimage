@@ -97,7 +97,7 @@ cd ../..
 ./tools/build-codecs lame mpg123
 ./tools/build-codecs libogg opus speex vorbis
 ./tools/build-codecs flac mac musepack wavpack
-./tools/build-codecs libav libsndfile
+./tools/build-codecs ffmpeg libsndfile
 ./tools/build-codecs libsamplerate rnnoise rubberband
 
 # Install codecs
@@ -122,7 +122,7 @@ cp /usr/local/lib/libvorbisenc.so appdir/codecs/vorbisenc.so
 
 strip --strip-all appdir/codecs/*.so
 
-install -Dm 0755 /usr/local/bin/avconv appdir/codecs/cmdline/avconv
+install -Dm 0755 /usr/local/bin/ffmpeg appdir/codecs/cmdline/ffmpeg
 install -Dm 0755 /usr/local/bin/mpcdec appdir/codecs/cmdline/mpcdec
 install -Dm 0755 /usr/local/bin/mpcenc appdir/codecs/cmdline/mpcenc
 install -Dm 0755 /usr/local/bin/wavpack appdir/codecs/cmdline/wavpack

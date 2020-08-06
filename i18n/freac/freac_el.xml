@@ -461,9 +461,9 @@
 	  <entry id="32100" string="Presets">Προεπιλογές</entry>
 	  <entry id="32101" string="Use preset">Χρήση προεπιλογής</entry>
 	  <entry id="32102" string="Custom settings">Προσαρμοσμένες ρυθμίσεις</entry>
-	  <entry id="32103" string="Medium, Fast">Μέτρια, Γρήγορη</entry>
-	  <entry id="32104" string="Standard, Fast">Κανονική, Γρήγορη</entry>
-	  <entry id="32105" string="Extreme, Fast">Extreme, Γρήγορη</entry>
+	  <entry id="32103" string="Medium">Μέτρια</entry>
+	  <entry id="32104" string="Standard">Κανονική</entry>
+	  <entry id="32105" string="Extreme">Extreme</entry>
 	  <entry id="32106" string="Bitrate">Ρυθμός μετάδοσης</entry>
 	  <entry id="32107" string="Quality">Ποιότητα</entry>
 	  <entry id="32108" string="Set bitrate">Εισάγετε ρυθμό μετάδοσης</entry>

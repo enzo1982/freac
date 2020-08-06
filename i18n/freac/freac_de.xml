@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers">Verifizierer</entry>
       <entry id="5024" string="Taggers">Tagger</entry>
       <entry id="5025" string="Processing">Verarbeitung</entry>
+      <entry id="5026" string="Additional arguments">Zusätzliche Parameter</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Kodierer konfigurieren</entry>
@@ -772,9 +773,9 @@
 	  <entry id="32100" string="Presets">Voreinstellungen</entry>
 	  <entry id="32101" string="Use preset">Voreinstellung verwenden</entry>
 	  <entry id="32102" string="Custom settings">Eigene Einstellungen</entry>
-	  <entry id="32103" string="Medium, Fast">Mittel, Schnell</entry>
-	  <entry id="32104" string="Standard, Fast">Standard, Schnell</entry>
-	  <entry id="32105" string="Extreme, Fast">Extrem, Schnell</entry>
+	  <entry id="32103" string="Medium">Mittel</entry>
+	  <entry id="32104" string="Standard">Standard</entry>
+	  <entry id="32105" string="Extreme">Extrem</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Qualität</entry>
 	  <entry id="32108" string="Set bitrate">Bitrate</entry>
@@ -1264,7 +1265,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Diese URL wird nicht unterstützt oder ist keine URL einer Videoseite!</entry>
 	  <entry id="102202" string="Error downloading video!">Fehler beim Herunterladen des Videos!</entry>
 	  <entry id="102203" string="You are already downloading this video!">Dieses Video wird bereits heruntergeladen!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Einige benötigte Videodekodierer konnten nicht gefunden werden. Videodateien&#10;können daher nicht zur Konvertierung in Audiodateien zur Jobliste hinzugefügt werden.&#10;&#10;Bitte installieren Sie avconv oder FFmpeg, um dieses Problem zu beheben!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Einige benötigte Videodekodierer konnten nicht gefunden werden. Videodateien&#10;können daher nicht zur Konvertierung in Audiodateien zur Jobliste hinzugefügt werden.&#10;&#10;Bitte installieren Sie FFmpeg oder avconv, um dieses Problem zu beheben!</entry>
 	</section>
       </section>
 

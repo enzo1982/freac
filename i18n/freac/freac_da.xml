@@ -767,9 +767,9 @@
 	  <entry id="32100" string="Presets">Forudindstillinger</entry>
 	  <entry id="32101" string="Use preset">brug forudindstillinger</entry>
 	  <entry id="32102" string="Custom settings">Dine indstillinger</entry>
-	  <entry id="32103" string="Medium, Fast">Medium, Hurtig</entry>
-	  <entry id="32104" string="Standard, Fast">Standard, Hurtig</entry>
-	  <entry id="32105" string="Extreme, Fast">Ekstrem, Hurtig</entry>
+	  <entry id="32103" string="Medium">Medium</entry>
+	  <entry id="32104" string="Standard">Standard</entry>
+	  <entry id="32105" string="Extreme">Ekstrem</entry>
 	  <entry id="32106" string="Bitrate">Bit Hastighed</entry>
 	  <entry id="32107" string="Quality">Kvalitet</entry>
 	  <entry id="32108" string="Set bitrate">Sæt bit hastigheden</entry>
@@ -1259,7 +1259,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Denne URL er ikke understøttet eller er ikke en video side URL!</entry>
 	  <entry id="102202" string="Error downloading video!">FEJL ved download af video!</entry>
 	  <entry id="102203" string="You are already downloading this video!">Du downloader allerede denne video!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Nogen påkrævede video dekodere kunne ikke findes. Video filer&#10;kunne ikke blive tilføjet til opgavelisten for konventering til lyd filer..&#10;&#10;Installér venligst avconv eller FFmpeg for at løse dette problem!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Nogen påkrævede video dekodere kunne ikke findes. Video filer&#10;kunne ikke blive tilføjet til opgavelisten for konventering til lyd filer..&#10;&#10;Installér venligst FFmpeg eller avconv for at løse dette problem!</entry>
 	</section>
       </section>
 

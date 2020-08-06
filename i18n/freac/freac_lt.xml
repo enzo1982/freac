@@ -769,9 +769,9 @@
 	  <entry id="32100" string="Presets">Ruošiniai</entry>
 	  <entry id="32101" string="Use preset">Naudoti ruošinį</entry>
 	  <entry id="32102" string="Custom settings">Individualūs nustatymai</entry>
-	  <entry id="32103" string="Medium, Fast">Vidutinis, Greitas</entry>
-	  <entry id="32104" string="Standard, Fast">Standartinis, Greitas</entry>
-	  <entry id="32105" string="Extreme, Fast">Ekstremalus, Greitas</entry>
+	  <entry id="32103" string="Medium">Vidutinis</entry>
+	  <entry id="32104" string="Standard">Standartinis</entry>
+	  <entry id="32105" string="Extreme">Ekstremalus</entry>
 	  <entry id="32106" string="Bitrate">Pralaidumas</entry>
 	  <entry id="32107" string="Quality">Kokybė</entry>
 	  <entry id="32108" string="Set bitrate">Nustatyti pralaidumą</entry>
@@ -1261,7 +1261,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Šis adresas yra nepalaikomas arba tai ne vaizdo įrašo adresas!</entry>
 	  <entry id="102202" string="Error downloading video!">Atsiunčiant vaizdo įrašą įvyko klaida!</entry>
 	  <entry id="102203" string="You are already downloading this video!">Šis vaizdo įrašas jau yra atsiunčiamas!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Vienas iš būtinų vaizdo dekoderių nerastas. Negalima pridėti vaizdo įrašų failų&#10;į užduočių sąrašą perkodavimui į audio failus.&#10;&#10;Įdiekite avconv arba FFmpeg, kad ištaisyti šią problemą!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Vienas iš būtinų vaizdo dekoderių nerastas. Negalima pridėti vaizdo įrašų failų&#10;į užduočių sąrašą perkodavimui į audio failus.&#10;&#10;Įdiekite FFmpeg arba avconv, kad ištaisyti šią problemą!</entry>
 	</section>
       </section>
 

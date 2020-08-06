@@ -1,0 +1,1373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Hindi / हिन्दी</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">freac.xml</property>
+    <property name="author">Tushar Chandra &lt;cout.destiny@gmail.com&gt;</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="OK">ठीक</entry>
+    <entry id="101" string="Cancel">रद्द कर</entry>
+    <entry id="102" string="Close">बंद करें</entry>
+
+    <entry id="200" string="Error">त्रुटि</entry>
+    <entry id="201" string="Warning">चेतावनी</entry>
+    <entry id="202" string="Info">जानकारी</entry>
+
+    <entry id="210" string="Do not display this warning again">इस चेतावनी को फिर से प्रदर्शित न करें</entry>
+    <entry id="211" string="Do not display this note again">इस चेतावनी को फिर से प्रदर्शित न करें</entry>
+
+    <entry id="300" string="Artist">कलाकार</entry>
+    <entry id="301" string="Title">शीर्षक</entry>
+    <entry id="302" string="Album">एल्बम</entry>
+    <entry id="303" string="Track">ट्रैक</entry>
+    <entry id="304" string="Genre">शैली</entry>
+    <entry id="305" string="Comment">टिप्पणी</entry>
+    <entry id="306" string="Year">साल</entry>
+    <entry id="307" string="Disc">डिस्क</entry>
+    <entry id="308" string="Rating">दर्ज़ा</entry>
+    <entry id="309" string="File name">फ़ाइल नाम</entry>
+    <entry id="310" string="File type">फ़ाइल प्रकार</entry>
+    <entry id="311" string="Album artist">चित्राधार कलाकार</entry>
+
+    <entry id="350" string="unknown artist">अज्ञात कलाकार</entry>
+    <entry id="351" string="unknown title">अज्ञात शीर्षक</entry>
+    <entry id="352" string="unknown album">अज्ञात एलबम</entry>
+    <entry id="353" string="unknown genre">अज्ञात शैली</entry>
+    <entry id="354" string="unknown year">अज्ञात साल</entry>
+    <entry id="355" string="unknown conductor">अज्ञात संवाहक</entry>
+    <entry id="356" string="unknown composer">अज्ञात संगीतकार</entry>
+    <entry id="357" string="unknown album artist">अज्ञात एल्बम कलाकार</entry>
+
+    <entry id="380" string="hidden track">छिपा हुआ गीत</entry>
+
+    <section name="Characters">
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 केबीपीएस</entry>
+      <entry id="511" string="%1 Hz">%1 हर्ट्ज</entry>
+      <entry id="512" string="%1 kHz">%1 किलोहर्ट्‍ज</entry>
+      <entry id="513" string="%1 ms">%1 मिलीसेकंड</entry>
+      <entry id="514" string="%1 min">%1 मिनट</entry>
+      <entry id="515" string="%1 bit">%1 बिट</entry>
+      <entry id="516" string="%1 bytes">%1 बाइट्स</entry>
+      <entry id="517" string="%1 kB">%1 किलोबाइट</entry>
+      <entry id="518" string="%1%">%1%</entry>
+    </section>
+
+    <section name="Menu">
+      <entry id="1000" string="File">फ़ाइल</entry>
+      <entry id="1001" string="Options">विकल्प</entry>
+      <entry id="1002" string="Database">डेटाबेस</entry>
+      <entry id="1003" string="Processing">प्रसंस्करण</entry>
+      <entry id="1004" string="Encode">परिवर्तित</entry>
+      <entry id="1005" string="Help">मदद</entry>
+
+      <section name="File">
+	<entry id="1100" string="Add">जोड़ना</entry>
+	<entry id="1101" string="Remove">हटाना</entry>
+	<entry id="1102" string="Load joblist">लोड जॉबलिस्ट</entry>
+	<entry id="1103" string="Save joblist">सेव जॉबलिस्ट</entry>
+	<entry id="1104" string="Clear joblist">क्लीयर जॉबलिस्ट</entry>
+	<entry id="1105" string="Exit">बाहर जाएं</entry>
+	<entry id="1106" string="Audio file(s)">ऑडियो फाइल</entry>
+	<entry id="1107" string="Audio CD contents">ऑडियो सीडी सामग्री</entry>
+	<entry id="1108" string="By pattern">पैटर्न द्वारा</entry>
+	<entry id="1109" string="From folder">फ़ोल्डर से</entry>
+      </section>
+
+      <section name="Database">
+	<entry id="1200" string="Query CDDB database">क्वेरी सीडीडीबी डेटाबेस</entry>
+	<entry id="1201" string="Submit CDDB data">जमा सीडीडीबी डेटा</entry>
+	<entry id="1202" string="Query CDDB database later">क्वेरी सीडीडीबी डेटाबेस पश्चात्</entry>
+	<entry id="1203" string="Show queued CDDB entries">पंक्ति की गइ सीडीडीबी प्रविष्टियां देखें</entry>
+	<entry id="1204" string="Show queued CDDB queries">पंक्ति की गइ सीडीडीबी क्वेरी देखें</entry>
+	<entry id="1205" string="Enable CDDB cache">सीडीडीबी कैशे सक्षम करें</entry>
+	<entry id="1206" string="Manage CDDB cache entries">सीडीडीबी कैशे प्रविष्टियों का पृबंध करें</entry>
+	<entry id="1207" string="Automatic CDDB queries">औटोमसातिक सीडीडीबी क्वेरी</entry>
+      </section>
+
+      <section name="Options">
+	<entry id="1300" string="General settings">सामान्य सेटिंग्स</entry>
+	<entry id="1301" string="Configure signal processing">सिग्नल प्रोसेसिंग को कॉन्फ़िगर करें</entry>
+	<entry id="1302" string="Configure selected encoder">चयनित एनकोडर कॉन्फ़िगर करें</entry>
+	<entry id="1303" string="Active CD-ROM drive">सक्रिय सीडी-रोम ड्राइव</entry>
+	<entry id="1304" string="Active configuration">सक्रिय कॉन्फ़िगरेशन</entry>
+	<entry id="1305" string="Default configuration">डिफ़ॉल्ट कॉन्फ़िगरेशन</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">सिग्नल प्रोसेसिंग सक्षम करें</entry>
+	<entry id="1401" string="Enable processing during playback">प्लेबैक के दौरान प्रसंस्करण सक्षम करें</entry>
+	<entry id="1402" string="Selected signal processors">चयनित सिग्नल प्रोसेसर</entry>
+      </section>
+
+      <section name="Encode">
+	<entry id="1500" string="Start encoding">एन्कोडिंग शुरू करें</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">एन्कोडिंग शुरू करें (मूल फ़ाइलों को हटाते हुए)</entry>
+	<entry id="1502" string="Start encoding with">साथ एन्कोडिंग शुरू करें</entry>
+	<entry id="1503" string="Pause/resume encoding">एन्कोडिंग को रोकें / फिर से शुरू करें</entry>
+	<entry id="1504" string="Stop encoding">एन्कोडिंग बंद करो</entry>
+	<entry id="1505" string="Encoder options">एनकोडर विकल्प</entry>
+	<entry id="1506" string="Encode to a single file">एक ही फाइल को सांकेतिक शब्दों में बदलना</entry>
+	<entry id="1507" string="Encode to input file folder if possible">यदि संभव हो तो इनपुट फ़ाइल फ़ोल्डर को सांकेतिक शब्दों में बदलना</entry>
+	<entry id="1508" string="Allow overwriting input file">ओवरराइटिंग इनपुट फ़ाइल की अनुमति दें</entry>
+	<entry id="1509" string="Delete original files after encoding">एन्कोडिंग के बाद मूल फ़ाइलों को हटाएं</entry>
+	<entry id="1510" string="Shutdown after encoding">एन्कोडिंग के बाद बंद</entry>
+      </section>
+
+      <section name="Help">
+	<entry id="1600" string="Help topics">सहायता के विषय</entry>
+	<entry id="1601" string="Show Tip of the Day">दिन के टिप दिखाएँ</entry>
+	<entry id="1602" string="Check for updates now">अपडेट के लिए अभी जाँच करें</entry>
+	<entry id="1603" string="Check for updates at startup">स्टार्टअप पर अपडेट के लिए जाँच करें</entry>
+	<entry id="1604" string="About %1">%1 के बारे में</entry>
+	<entry id="1605" string="index_en.html">index_en.html</entry>
+	<entry id="1606" string="Report an issue">मामले की रिपोर्ट करें</entry>
+	<entry id="1607" string="Suggest a feature">एक सुविधा का सुझाव दें</entry>
+      </section>
+    </section>
+
+    <section name="Toolbar">
+      <entry id="2000" string="Add audio file(s) to the joblist">कार्यसूची में ऑडियो फ़ाइल जोड़ें</entry>
+      <entry id="2001" string="Add audio CD contents to the joblist">कार्यसूची में ऑडियो सीडी सामग्री जोड़ें</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">कार्यसूची से चयनित प्रविष्टि को हटा दें</entry>
+      <entry id="2003" string="Clear the entire joblist">संपूर्ण कार्यसूची साफ़ करें</entry>
+      <entry id="2004" string="Query CDDB database">क्वेरी सीडीडीबी डेटाबेस</entry>
+      <entry id="2005" string="Submit CDDB data">सीडीडीबी डेटा सबमिट करें</entry>
+      <entry id="2006" string="Configure general settings">सामान्य सेटिंग्स कॉन्फ़िगर करें</entry>
+      <entry id="2007" string="Configure signal processing">सिग्नल प्रोसेसिंग को कॉन्फ़िगर करें</entry>
+      <entry id="2008" string="Configure the selected audio encoder">चयनित ऑडियो एनकोडर कॉन्फ़िगर करें</entry>
+      <entry id="2009" string="Start the encoding process">एन्कोडिंग प्रक्रिया शुरू करें</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">एन्कोडिंग शुरू करें (मूल फ़ाइलों को हटाते हुए)</entry>
+      <entry id="2011" string="Pause/resume encoding">एन्कोडिंग को रोकें / फिर से शुरू करें</entry>
+      <entry id="2012" string="Stop encoding">एन्कोडिंग बंद करो</entry>
+    </section>
+
+    <section name="Joblist">
+      <entry id="3000" string="Time left">शेष समय</entry>
+      <entry id="3001" string="File progress">फ़ाइल प्रगति</entry>
+      <entry id="3002" string="Output folder">आउटपुट फ़ोल्डर</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 कार्यसूची में फ़ाइल</entry>
+      <entry id="3004" string="Show title info">शीर्षक जानकारी दिखाएँ</entry>
+      <entry id="3005" string="Play">शुरू</entry>
+      <entry id="3006" string="Stop">बंद</entry>
+      <entry id="3007" string="Select all">सभी का चयन करे</entry>
+      <entry id="3008" string="Select none">किसी का चयन न करें</entry>
+      <entry id="3009" string="Toggle selection">चयन टॉगल करें</entry>
+      <entry id="3010" string="ripping/decoding">रिप्पिंग / डिकोडिंग</entry>
+      <entry id="3011" string="encoding">एन्कोडिंग</entry>
+      <entry id="3012" string="Create playlist">प्लेलिस्ट बनायें</entry>
+      <entry id="3013" string="Create cue sheet">क्यू शीट बनाएँ</entry>
+      <entry id="3014" string="Select">चयन करें</entry>
+      <entry id="3015" string="Encode to a single file">एक ही फाइल में एनकोड करें</entry>
+      <entry id="3016" string="Remove">हटाए</entry>
+      <entry id="3017" string="Clear joblist">स्पष्ट कार्यसूची</entry>
+      <entry id="3018" string="Use for all selected tracks">सभी चयनित ट्रैक के लिए उपयोग करें</entry>
+      <entry id="3019" string="Interpret string as">स्ट्रिंग के रूप में व्याख्या करें</entry>
+      <entry id="3020" string="selected tracks">चयनित ट्रैक</entry>
+      <entry id="3021" string="Adjust upper/lower case">ऊपरी / निचले मामले को समायोजित करें</entry>
+      <entry id="3022" string="all words upper case">सभी शब्द ऊपरी मामला</entry>
+      <entry id="3023" string="long words upper case">लंबे शब्द ऊपरी मामला</entry>
+      <entry id="3024" string="first letter upper case">पहला पत्र ऊपरी मामला</entry>
+      <entry id="3025" string="all lower case">सभी छोटे अक्षर</entry>
+      <entry id="3026" string="all upper case">सभी ऊपरी मामले</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">उस फ़ोल्डर का चयन करें जिसमें एन्कोडेड फाइलें रखी जाएंगी</entry>
+      <entry id="3028" string="Sampling rate">नमूनाकरण दर</entry>
+      <entry id="3029" string="Sample resolution">नमूना संकल्प</entry>
+      <entry id="3030" string="Number of samples">नमूनों की संख्या</entry>
+      <entry id="3031" string="Channels">चैनल</entry>
+      <entry id="3032" string="Mono">मोनो</entry>
+      <entry id="3033" string="Stereo">स्टीरियो</entry>
+      <entry id="3034" string="Length">लंबाई</entry>
+      <entry id="3035" string="File">फ़ाइल</entry>
+      <entry id="3036" string="Size">साइज</entry>
+      <entry id="3037" string="Bitrate">बिटरेट</entry>
+      <entry id="3038" string="Audio Files">ऑडियो फ़ाइलें</entry>
+      <entry id="3039" string="All Files">सभी फ़ाइल</entry>
+      <entry id="3040" string="Playlist Files">प्लेलिस्ट फ़ाइलें</entry>
+      <entry id="3041" string="Joblist">कार्यसूची</entry>
+      <entry id="3042" string="Other">अन्य</entry>
+      <entry id="3043" string="Output file name">आउटपुट फ़ाइल नाम</entry>
+      <entry id="3044" string="verifying">पुष्टि करने</entry>
+      <entry id="3045" string="Open">ओपन</entry>
+      <entry id="3046" string="CD drive">सीडी ड्राइव</entry>
+      <entry id="3047" string="Disc ID">डिस्क आईडी</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">मौजूदा फ़ाइल</entry>
+	<entry id="3051" string="none">रिक्त</entry>
+	<entry id="3052" string="Skip current file">स्किप</entry>
+      </section>
+
+      <section name="Decoder">
+	<entry id="3060" string="Active decoder">सकृिय डीकोडर</entry>
+	<entry id="3061" string="none">रिक्त</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">चयनित फ़िल्टर</entry>
+	<entry id="3071" string="none">रिक्त</entry>
+	<entry id="3072" string="disabled">बंद</entry>
+	<entry id="3073" string="Configure signal processing">सिग्नल प्रोसेसिंग को कॉन्फ़िगर करें</entry>
+      </section>
+
+      <section name="Encoder">
+	<entry id="3080" string="Selected encoder">चयनित एनकोडर</entry>
+	<entry id="3081" string="Configure selected encoder">चयनित एनकोडर कॉन्फ़िगर करें</entry>
+      </section>
+
+      <section name="Add folder">
+	<entry id="3100" string="Folder">फ़ोल्डर</entry>
+	<entry id="3101" string="Add folder">फ़ोल्डर जोड़ें</entry>
+	<entry id="3102" string="Choose folder">फोल्डर को चुनो</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">कार्यसूची में जोड़ने के लिए फ़ोल्डर का चयन करें</entry>
+      </section>
+
+      <section name="Add by pattern">
+	<entry id="3200" string="Add files by pattern">पैटर्न द्वारा फाइलें जोड़ें</entry>
+	<entry id="3201" string="Pattern">पैटर्न</entry>
+	<entry id="3202" string="Start folder">फ़ोल्डर प्रारंभ करें</entry>
+	<entry id="3203" string="Filename pattern">फ़ाइल नाम पैटर्न</entry>
+	<entry id="3204" string="Search subfolders">सबफ़ोल्डर्स खोजें</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">कार्यसूची में जोड़ने के लिए फ़ोल्डर का चयन करें</entry>
+      </section>
+
+      <section name="Character set">
+	<entry id="3300" string="Character set">अक्षरों का समूह</entry>
+	<entry id="3301" string="Choose character set">अक्षर सेट चुनें</entry>
+      </section>
+
+      <section name="Errors">
+	<entry id="3400" string="You did not select a track!">आपने एक ट्रैक का चयन नहीं किया!</entry>
+    <entry id="3401" string="No files found matching pattern: %1">कोई फाइल नहीं मिली: %1</entry>
+      </section>
+    </section>
+
+    <section name="Jobs">
+      <entry id="3500" string="Jobs">काम</entry>
+      <entry id="3501" string="Progress">प्रगति</entry>
+      <entry id="3502" string="Errors / Warnings">त्रुटियां / चेतावनी</entry>
+      <entry id="3503" string="Details">विवरण</entry>
+      <entry id="3504" string="Error details">गलतियों की जानकारी</entry>
+      <entry id="3505" string="Time left">शेष समय</entry>
+      <entry id="3506" string="Waiting for other jobs to finish">अन्य नौकरियों के खत्म होने का इंतजार है</entry>
+
+      <section name="Joblist">
+	<entry id="3600" string="Reading folders">फोल्डर पढ़ना</entry>
+	<entry id="3601" string="Filtering duplicates">फ़िल्टरिंग डुप्लिकेट</entry>
+	<entry id="3602" string="Adding files">फाइलें जोड़ना</entry>
+	<entry id="3603" string="Adding tracks">गीत जोड़ना</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">%1 फाइलें जोड़ी गईं, %2 त्रुटियां हुईं</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">%1 गीत जोड़ी गईं, %2 त्रुटियां हुईं</entry>
+	<entry id="3606" string="Removing all tracks">सभी ट्रैक्स को हटाना</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">ड्राइव में डिस्क का गाना हटाना %1</entry>
+	<entry id="3608" string="Removed all tracks from joblist">कार्यसूची से सभी ट्रैक हटा दिए गए</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">नौकरी सूची से %1 में डिस्क का हटा दिया गया गीत</entry>
+      </section>
+
+      <section name="Convert">
+	<entry id="3700" string="Checking sample formats">नमूना स्वरूपों की जाँच</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">दोषरहित दोषरहित रूपांतरण की जाँच करना</entry>
+	<entry id="3702" string="Checking output file names">आउटपुट फ़ाइल नामों की जाँच करना</entry>
+	<entry id="3703" string="Converting %1">परिवर्तित %1</entry>
+	<entry id="3704" string="Verifying %1">जांचना</entry>
+	<entry id="3705" string="Conversion cancelled">रूपांतरण रद्द किया गया</entry>
+	<entry id="3706" string="Conversion finished">रूपांतरण समाप्त हुआ</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">रूपांतरण %1 चेतावनी के साथ समाप्त हुआ</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">रूपांतरण %1 त्रुटियों के साथ समाप्त हुआ</entry>
+      </section>
+
+      <section name="Update">
+	<entry id="3800" string="Preparing update check">अद्यतन जाँच की तैयारी</entry>
+	<entry id="3801" string="Contacting update server">अपडेट सर्वर से संपर्क करना</entry>
+	<entry id="3802" string="Updates found">अपडेट मिला</entry>
+	<entry id="3803" string="No updates found">कोई अपडेट नहीं मिला</entry>
+      </section>
+    </section>
+
+    <section name="CDDB">
+
+      <section name="Submit">
+	<entry id="4000" string="CDDB data">सीडीडीबी डेटा</entry>
+	<entry id="4001" string="Submit">जमा करें</entry>
+	<entry id="4002" string="No audio CD in drive!">ड्राइव में कोई ऑडियो सीडी नहीं है!</entry>
+	<entry id="4003" string="Submitting CD information">सीडी की जानकारी जमा करना</entry>
+	<entry id="4004" string="Update joblist with this information">इस जानकारी के साथ कार्यसूची अपडेट करें</entry>
+	<entry id="4005" string="Status">स्थिति</entry>
+	<entry id="4006" string="Successfully read CD!">सीडी को सफलतापूर्वक पढ़ा!</entry>
+	<entry id="4007" string="Save entry">प्रविष्टि सहेजें</entry>
+	<entry id="4008" string="Various artists">विभिन्न कलाकार</entry>
+	<entry id="4009" string="Data track">डेटा ट्रैक</entry>
+	<entry id="4010" string="Submit to online database later">बाद में ऑनलाइन डेटाबेस जमा करें</entry>
+	<entry id="4011" string="Active CD-ROM drive">सक्रिय सीडी-रोम ड्राइव</entry>
+
+	<section name="Errors">
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">कुछ त्रुटि फ़्रीडब सर्वर से कनेक्ट करने की कोशिश कर रही थी ।</entry>
+	  <entry id="4051" string="Please fill all fields and track titles before submitting.">कृपया सबमिट करने से पहले सभी फ़ील्ड और ट्रैक शीर्षक भरें ।</entry>
+	</section>
+      </section>
+
+      <section name="Query">
+	<entry id="4100" string="CDDB query">सीडीडीबी क्वेरी</entry>
+	<entry id="4101" string="No freedb entry for this disk.">इस डिस्क के लिए कोई फ्रीडब एंट्री नहीं।</entry>
+	<entry id="4102" string="Connecting to freedb server at">फ्रीडब सर्वर से कनेक्ट करना</entry>
+	<entry id="4103" string="Requesting CD information">सीडी की जानकारी के लिए अनुरोध</entry>
+	<entry id="4104" string="No exact matches found">कोई सटीक मिलान नहीं मिला</entry>
+	<entry id="4105" string="Multiple matches found">कई मैच मिले</entry>
+	<entry id="4106" string="Matches">मैच</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">उस प्रविष्टि का चयन करें जो आपकी सीडी के लिए सबसे उपयुक्त है</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">क्या आप इस क्वेरी को बाद में फिर से करना चाहेंगे?</entry>
+	<entry id="4109" string="Would you like to perform the remaining queries again later?">क्या आप बाद में शेष प्रश्नों को करना चाहेंगे</entry>
+	<entry id="4110" string="none">रिक्त</entry>
+	<entry id="4111" string="Preview">पूर्वावलोकन</entry>
+	<entry id="4112" string="loading preview">पूर्वावलोकन लोड हो रहा है</entry>
+
+	<section name="Errors">
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">कुछ त्रुटि फ़्रीडब सर्वर से कनेक्ट करने की कोशिश कर रही थी</entry>
+	</section>
+      </section>
+
+      <section name="Manage queries">
+	<entry id="4200" string="Remove entry">प्रविष्टि निकालें</entry>
+	<entry id="4201" string="CDDB queries">सीडीडीबी क्वेरी</entry>
+	<entry id="4202" string="Query">क्वेरी</entry>
+	<entry id="4203" string="Query all">सभी क्वेरी</entry>
+	<entry id="4204" string="Query string">क्वेरी स्ट्रिंग</entry>
+	<entry id="4205" string="CDDB queries to perform">प्रदर्शन करने के लिए सीडीडीबी क्वेरी</entry>
+	<entry id="4206" string="Querying CD information">सीडी की जानकारी से संबंधित क्वेरी</entry>
+      </section>
+
+      <section name="Manage submits">
+	<entry id="4300" string="Remove entry">प्रविष्टि निकालें</entry>
+	<entry id="4301" string="CDDB entries to submit">सीडीडीबी प्रविष्टियाँ प्रस्तुत करने के लिए</entry>
+	<entry id="4302" string="Submit all">सब जमा करें</entry>
+	<entry id="4303" string="CDDB data">सीडीडीबी डेटा</entry>
+	<entry id="4304" string="Submit">जमा करें</entry>
+	<entry id="4305" string="Disc name">डिस्क का नाम</entry>
+	<entry id="4306" string="Preview">पूर्वावलोकन</entry>
+	<entry id="4307" string="Category">वर्ग</entry>
+	<entry id="4308" string="Submitting CD information">सीडी की जानकारी जमा करना</entry>
+      </section>
+
+      <section name="Manage cache">
+	<entry id="4400" string="CDDB data">सीडीडीबी डेटा</entry>
+	<entry id="4401" string="Update joblist with this information">इस जानकारी के साथ कार्यसूची अपडेट करें</entry>
+	<entry id="4402" string="Charset">कैरसेट</entry>
+	<entry id="4403" string="Downloaded CDDB entries">डाउनलोड की गईं सीडीडीबी प्रविष्टियों</entry>
+	<entry id="4404" string="Disc name">डिस्क का नाम</entry>
+	<entry id="4405" string="Preview">पूर्वावलोकन</entry>
+	<entry id="4406" string="Remove entry">प्रविष्टि निकालें</entry>
+	<entry id="4407" string="Save entry">प्रविष्टि सहेजें</entry>
+      </section>
+    </section>
+
+    <section name="Configuration">
+      <entry id="5000" string="General settings setup">सामान्य सेटिंग्स सेटअप</entry>
+      <entry id="5001" string="Encoders">इनकोडर्स</entry>
+      <entry id="5002" string="Playlists">प्लेलिस्ट</entry>
+      <entry id="5003" string="Language">भाषा</entry>
+      <entry id="5004" string="CDDB">सीडीडीबी</entry>
+      <entry id="5005" string="Interface">इंटरफेस</entry>
+      <entry id="5006" string="Tags">टैग</entry>
+      <entry id="5007" string="Components">अवयव</entry>
+      <entry id="5008" string="Decoders">डिकोडर्स</entry>
+      <entry id="5009" string="Output">उत्पादन</entry>
+      <entry id="5010" string="DSP">डीएसपी</entry>
+      <entry id="5011" string="Extensions">एक्सटेंशन</entry>
+      <entry id="5012" string="Other">अन्य</entry>
+      <entry id="5013" string="Active configuration">सक्रिय कॉन्फ़िगरेशन</entry>
+      <entry id="5014" string="New">नया</entry>
+      <entry id="5015" string="Delete">हटाएं</entry>
+      <entry id="5016" string="Command line arguments">कमांड लाइन तर्क</entry>
+      <entry id="5017" string="Resulting arguments string">परिणाम तर्कों स्ट्रिंग</entry>
+      <entry id="5018" string="Default configuration">डिफ़ॉल्ट कॉन्फ़िगरेशन</entry>
+      <entry id="5019" string="New configuration">नया विन्यास</entry>
+      <entry id="5020" string="Ripper">रिप्पर</entry>
+      <entry id="5021" string="Settings">सेटिंग</entry>
+      <entry id="5022" string="Resources">संसाधन</entry>
+      <entry id="5023" string="Verifiers">प्रमाणक</entry>
+      <entry id="5024" string="Taggers">टैग</entry>
+      <entry id="5025" string="Processing">प्रसंस्करण</entry>
+
+      <section name="Encoders">
+	<entry id="5100" string="Configure encoder">एनकोडर कॉन्फ़िगर करें</entry>
+	<entry id="5101" string="Encoder">एनकोडर</entry>
+	<entry id="5102" string="Output folder">आउटपुट फ़ोल्डर</entry>
+	<entry id="5103" string="Select">चयन करें</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">उस फ़ोल्डर का चयन करें जिसमें एन्कोडेड फाइलें रखी जाएंगी</entry>
+	<entry id="5105" string="Use input file folder if possible">यदि संभव हो तो इनपुट फ़ाइल फ़ोल्डर का उपयोग करें</entry>
+	<entry id="5106" string="Allow overwriting input file">ओवरराइटिंग इनपुट फ़ाइल की अनुमति दें</entry>
+	<entry id="5107" string="Options">विकल्प</entry>
+	<entry id="5108" string="Filename pattern">फ़ाइल नाम पैटर्न</entry>
+	<entry id="5109" string="Encode 'On-The-Fly'">'ऑन-द-फ्लाई' एनकोड करें</entry>
+	<entry id="5110" string="Keep ripped Wave files">रिप्ड वेव फाइलें रखें</entry>
+	<entry id="5111" string="Encode to a single file">एक ही फाइल को एनकोड करें</entry>
+	<entry id="5112" string="Output filenames">आउटपुट फ़ाइल नाम</entry>
+	<entry id="5113" string="Allow Unicode characters">यूनिकोड वर्णों को अनुमति दें</entry>
+	<entry id="5114" string="Replace spaces with underscores">अंडरस्कोर के साथ रिक्त स्थान बदलें</entry>
+	<entry id="5115" string="Remove processed tracks from joblist">जॉबलिस्ट से संसाधित ट्रैक निकालें</entry>
+	<entry id="5116" string="Add encoded files to joblist">जॉबलिस्ट में एन्कोडेड फ़ाइलों को जोड़ें</entry>
+	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">अन्यथा समान फ़ाइलनामों के लिए अनुक्रमिक संख्याएं जोड़ें</entry>
+	<entry id="5118" string="Keep time stamps of source files">स्रोत फ़ाइलों के समय टिकटों को रखें</entry>
+
+	<section name="Errors">
+	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">आउटपुट फ़ोल्डर मौजूद नहीं है! क्या आप इसे बनाना चाहते हैं?</entry>
+	</section>
+      </section>
+
+      <section name="Playlists">
+	<entry id="5200" string="Create playlists">प्लेलिस्ट बनाएं</entry>
+	<entry id="5201" string="Create cue sheets">क्यू सूची बनाएं</entry>
+	<entry id="5202" string="Output folder">आउटपुट फ़ोल्डर</entry>
+	<entry id="5203" string="Select">चयन करें</entry>
+	<entry id="5204" string="Use encoder output folder">एनकोडर आउटपुट फ़ोल्डर का उपयोग करें</entry>
+	<entry id="5205" string="Filename pattern">फ़ाइल नाम पैटर्न</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">उस फ़ोल्डर का चयन करें जिसमें प्लेलिस्ट फाइलें रखी जाएंगी</entry>
+	<entry id="5207" string="Output filenames">आउटपुट फ़ाइल नाम</entry>
+	<entry id="5208" string="Configure plugin">प्लगइन कॉन्फ़िगर करें</entry>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">प्रति रूपांतरण केवल एक ही प्लेलिस्ट और / या क्यू शीट फ़ाइल बनाएँ</entry>
+      </section>
+
+      <section name="CDDB">
+	<entry id="5300" string="Enable local CDDB database">स्थानीय सीडीडीबी डेटाबेस सक्षम करें</entry>
+	<entry id="5301" string="Enable remote CDDB database">दूरस्थ स्थानीय सीडीडीबी डेटाबेस सक्षम करें</entry>
+	<entry id="5302" string="CDDB path">सीडीडीबी पथ</entry>
+	<entry id="5303" string="Select">चयन करें</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">सीडीडीबी डेटाबेस का फ़ोल्डर चुनें</entry>
+	<entry id="5305" string="CDDB access mode">सीडीडीबी एक्सेस मोड</entry>
+	<entry id="5306" string="CDDB server">सीडीडीबी सर्वर</entry>
+	<entry id="5307" string="Port">पोर्ट</entry>
+	<entry id="5308" string="eMail address">ईमेल एड्रेस</entry>
+	<entry id="5309" string="HTTP settings">एचटीटीपी सेटिंग्स</entry>
+	<entry id="5310" string="Proxy settings">प्रॉक्सी सेटिंग्स</entry>
+	<entry id="5311" string="Options">विकल्प</entry>
+	<entry id="5312" string="Automatic CDDB queries">आटोमेटिक सीडीडीबी क्वेरी</entry>
+	<entry id="5313" string="Prefer CDDB over CD Text">सीडी पाठ पर सीडीडीबी को प्राथमिकता दें</entry>
+	<entry id="5314" string="Enable CDDB cache">सीडीडीबी कैश सक्षम करें</entry>
+	<entry id="5315" string="Automatization">ऑटोमाइज़ेशन</entry>
+	<entry id="5316" string="Always select first entry">हमेशा पहली प्रविष्टि का चयन करें</entry>
+
+	<section name="Extended">
+	  <entry id="5330" string="Extended CDDB settings">विस्तारित सीडीडीबी सेटिंग्स</entry>
+	  <entry id="5331" string="CGI scripts">सीजीआई स्क्रिप्ट</entry>
+	  <entry id="5332" string="CDDB query script">सीजीआई क्वेरी स्क्रिप्ट</entry>
+	  <entry id="5333" string="CDDB submit script">सीजीआई स्क्रिप्ट जमा करें</entry>
+	  <entry id="5334" string="no proxy">नो प्रॉक्सी</entry>
+	  <entry id="5335" string="Proxy type">प्रॉक्सी टाइप</entry>
+	  <entry id="5336" string="Proxy server">प्रॉक्सी सर्वर</entry>
+	  <entry id="5337" string="User name">यूजरनाम</entry>
+	  <entry id="5338" string="Password">पासवर्ड</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="5350" string="Please enter a valid eMail address.">कृपया एक वैध ई - मेल एड्रेस डालें।</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">फ़्रीडब सीजीआई प्रोटोकॉल का उपयोग एचटीटीपी&#10;पर नहीं किया जा सकता है फॉरवर्ड प्रोक्सीज़&#10;&#10;क्या आप प्रोटोकॉल को एचटीटीपी में बदलना चाहेंगे?</entry>
+	</section>
+      </section>
+
+      <section name="Language">
+	<entry id="5400" string="Select language">भाषा का चयन करें</entry>
+	<entry id="5401" string="Edit language file">भाषा फ़ाइल संपादित करें</entry>
+	<entry id="5402" string="Information">जानकारी</entry>
+	<entry id="5403" string="Encoding">एन्कोडिंग</entry>
+	<entry id="5404" string="Author">रचयिता</entry>
+	<entry id="5405" string="URL">यूआरएल</entry>
+      </section>
+
+      <section name="Tags">
+	<entry id="5500" string="Tags">टैग</entry>
+	<entry id="5501" string="Tag formats">टैग प्रारूप</entry>
+	<entry id="5502" string="Default comment string">डिफ़ॉल्ट टिप्पणी स्ट्रिंग</entry>
+	<entry id="5503" string="Replace existing comments with default comment">मौजूदा टिप्पणियों को डिफ़ॉल्ट टिप्पणी से बदलें</entry>
+	<entry id="5504" string="Filename pattern">फ़ाइल नाम पैटर्न</entry>
+	<entry id="5505" string="Encoding">एन्कोडिंग</entry>
+	<entry id="5506" string="Comments">टिप्पणी</entry>
+	<entry id="5507" string="Cover art">कवर आर्ट</entry>
+	<entry id="5508" string="Read cover art">कवर आर्ट पढ़ें</entry>
+	<entry id="5509" string="Read cover art from tags">टैग से कवर आर्ट पढ़ें</entry>
+	<entry id="5510" string="Read cover art from files">फाइलों से कवर आर्ट पढ़ें</entry>
+	<entry id="5511" string="Write cover art">कवर आर्ट लिखिए</entry>
+	<entry id="5512" string="Write cover art to tags">टैग्स के लिए कवर आर्ट लिखें</entry>
+	<entry id="5513" string="Write cover art to files">फाइलों में कवर आर्ट लिखें</entry>
+	<entry id="5514" string="Add reference to audio file tag">ऑडियो फ़ाइल टैग के लिए संदर्भ जोड़ें</entry>
+	<entry id="5515" string="Other">अन्य</entry>
+	<entry id="5516" string="Chapters">अध्याय</entry>
+	<entry id="5517" string="Read chapters from files">फ़ाइलों से अध्याय पढ़ें</entry>
+	<entry id="5518" string="Write chapters to files">फ़ाइलों के लिए अध्याय लिखें</entry>
+	<entry id="5519" string="Special fields">विशेष क्षेत्र</entry>
+	<entry id="5520" string="Write CD table of contents">सामग्री की सीडी तालिका लिखें</entry>
+	<entry id="5521" string="Preserve Replay Gain information">पुन: प्राप्त जानकारी को संरक्षित करें</entry>
+	<entry id="5522" string="Cue sheets">क्यू सूची</entry>
+	<entry id="5523" string="Read cue sheets embedded in metadata">मेटाडेटा में एम्बेडेड क्यू शीट पढ़ें</entry>
+	<entry id="5524" string="Prefer cue sheets over chapter information">अध्याय की जानकारी पर क्यू शीट को प्राथमिकता दें</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">10 से नीचे की संख्या ट्रैक करने के लिए शून्य को प्रीपेंड करें</entry>
+	<entry id="5526" string="File size limit">फ़ाइल का आकार सीमा</entry>
+	<entry id="5527" string="unlimited">असीमित</entry>
+      </section>
+
+      <section name="Joblist">
+	<entry id="5600" string="Joblist">कार्यसूची</entry>
+	<entry id="5601" string="Columns">कॉलम</entry>
+	<entry id="5602" string="Name">नाम</entry>
+	<entry id="5603" string="Description">विवरण</entry>
+	<entry id="5604" string="Up">अप</entry>
+	<entry id="5605" string="Down">डाउन</entry>
+	<entry id="5606" string="Jobs">जॉब्स</entry>
+	<entry id="5607" string="Show Jobs tab">जॉब्स टैब दिखाएं</entry>
+
+	<section name="Columns">
+	  <entry id="5650" string="Track artist">ट्रैक कलाकार</entry>
+	  <entry id="5651" string="Track title">ट्रैक शीर्षक</entry>
+	  <entry id="5652" string="Track genre">ट्रैक शैली</entry>
+	  <entry id="5653" string="Album title">एल्बम का शीर्षक</entry>
+	  <entry id="5654" string="Disc number">डिस्क संख्या</entry>
+	  <entry id="5655" string="Track number">ट्रैक संख्या</entry>
+	  <entry id="5656" string="Track rating">ट्रैक रेटिंग</entry>
+	  <entry id="5657" string="Track length">ट्रैक की लंबाई</entry>
+	  <entry id="5658" string="Track size">ट्रैक का आकार</entry>
+	  <entry id="5659" string="File name">फ़ाइल नाम</entry>
+	  <entry id="5660" string="File type">फ़ाइल प्रकार</entry>
+	  <entry id="5661" string="Output file name">आउटपुट फ़ाइल नाम</entry>
+	  <entry id="5662" string="Bitrate">बिट्रेट</entry>
+	  <entry id="5663" string="Sampling rate">नमूनाकरण दर</entry>
+	  <entry id="5664" string="Channels">चैनल</entry>
+	  <entry id="5665" string="Sample resolution">नमूना संकल्प</entry>
+	  <entry id="5666" string="CD drive">सीडी ड्राइव</entry>
+	  <entry id="5667" string="Disc ID">डिस्क आईडी</entry>
+	</section>
+      </section>
+
+      <section name="Resources">
+	<entry id="5700" string="Parallel processing">समानांतर प्रसंस्करण</entry>
+	<entry id="5701" string="Enable parallel processing">समानांतर प्रसंस्करण सक्षम करें</entry>
+	<entry id="5702" string="Enable SuperFast mode">सुपरफ़ास्ट मोड सक्षम करें</entry>
+	<entry id="5703" string="Number of conversion threads">रूपांतरण सूत्र की संख्या</entry>
+	<entry id="5704" string="auto">ऑटो</entry>
+	<entry id="5705" string="Process priority">प्रक्रिया प्राथमिकता</entry>
+	<entry id="5706" string="lowest">सबसे कम</entry>
+	<entry id="5707" string="lower">कम</entry>
+	<entry id="5708" string="normal">साधारण</entry>
+	<entry id="5709" string="higher">उच्चतर</entry>
+	<entry id="5710" string="highest">उच्चतम</entry>
+      </section>
+
+      <section name="Verification">
+	<entry id="5800" string="Verification">सत्यापन</entry>
+	<entry id="5801" string="Enable input verification">इनपुट सत्यापन सक्षम करें</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">सत्यापित करें कि दोषरहित निविष्टियाँ वास्तव में डेटा को डिकोड करती हैं&#10;वे मूल रूप से बनाए गए थे।</entry>
+	<entry id="5803" string="Enable output verification">आउटपुट सत्यापन सक्षम करें</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">सत्यापित करें कि दोषरहित आउटपुट वास्तव में डेटा को डिकोड करते हैं&#10;उन्हें एन्कोडिंग करते समय उपयोग किया जाता है।</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="5900" string="Signal processing">सिग्नल प्रोसेसिंग</entry>
+	<entry id="5901" string="Enable signal processing">सिग्नल प्रोसेसिंग सक्षम करें</entry>
+	<entry id="5902" string="Enable processing during playback">प्लेबैक के दौरान प्रसंस्करण सक्षम करें</entry>
+	<entry id="5903" string="Components">अवयव</entry>
+	<entry id="5904" string="Available">उपलब्ध</entry>
+	<entry id="5905" string="Selected">चुन लिया</entry>
+	<entry id="5906" string="Configure component">घटक को कॉन्फ़िगर करें</entry>
+	<entry id="5907" string="Conversion to a single output file">एकल आउटपुट फ़ाइल में रूपांतरण</entry>
+	<entry id="5908" string="Process each track individually">प्रत्येक ट्रैक को व्यक्तिगत रूप से संसाधित करें</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">एकल ट्रैक की तरह संयुक्त पटरियों का इलाज करें</entry>
+      </section>
+    </section>
+
+    <section name="About">
+      <entry id="6000" string="About %1">%1 के बारे में</entry>
+      <entry id="6001" string="Translated by %1.">%1 द्वारा अनुवादित।</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">यह कार्यक्रम शर्तों के तहत वितरित किया जा रहा है जीऐनयू&#10;जनरल पब्लिक लाइसेंस (जीपीऐल)</entry>
+    </section>
+
+    <section name="Updates">
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">%1 के लिए नए अपडेट ऑनलाइन उपलब्ध हैं!&#10;क्या आप अब उपलब्ध अपडेट की सूची देखना चाहेंगे?</entry>
+      <entry id="6101" string="There are no updates available at the moment!">फिलहाल कोई अपडेट उपलब्ध नहीं है!</entry>
+      <entry id="6102" string="Check for updates at startup">स्टार्टअप पर अपडेट के लिए जाँच करें</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 ऑनलाइन के लिए एक स्वचालित जाँच कर सकते हैं&#10;स्टार्टअप पर कार्यक्रम अद्यतन।&#10;&#10;क्या आप स्टार्टअप पर अपडेट देखने के लिए %1 पसंद करेंगे?</entry>
+    </section>
+
+    <section name="Messages">
+      <entry id="7000" string="Currently converting">वर्तमान में परिवर्तित हो रहा है</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">रूपांतरण प्रक्रिया अभी भी सक्रिय है! क्या आप वास्तव में छोड़ना चाहते हैं?</entry>
+      <entry id="7002" string="Delete original files after encoding">एन्कोडिंग के बाद मूल फ़ाइलों को हटाएँ</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">यह विकल्प आपके कंप्यूटर से मूल फ़ाइलों को हटा देगा&#10;एन्कोडिंग प्रक्रिया के बाद!&#10;&#10;क्या आप वाकई इस फ़ंक्शन को सक्रिय करना चाहते हैं?</entry>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">पुनरारंभ करने के बाद भी इस विकल्प को सक्षम रखें %1</entry>
+      <entry id="7005" string="File already exists">फ़ाइल पहले से ही मौजूद है</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">आउटपुट फ़ाइल %1&#10;पहले से मौजूद हैक्या आप इसे अधिलेखित करना चाहते हैं?</entry>
+      <entry id="7007" string="Overwrite all further files">आगे की सभी फाइलें अधिलेखित करें</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">आप एक दोषरहित से दोषरहित प्रारूप में परिवर्तित होते प्रतीत होते हैं।&#10;&#10;कृपया ध्यान रखें कि गुणवत्ता हानि पूर्ववत नहीं की जा सकती है, इसलिए यह प्रक्रिया&#10;किसी भी तरह से गुणवत्ता में सुधार नहीं करेगी, और सबसे अधिक संभावना फ़ाइल आकार में वृद्धि होगी।&#10;&#10;क्या तुम हर हाल में जारी रखना चाहोगे?</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">डीकोडर घटक नहीं बना सका: %1&#10;&#10;फ़ाइल: %1&#10;पाथ: %2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">एनकोडर घटक नहीं बना सका: %1</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">इनपुट फ़ाइल के लिए डिकोडर सेट नहीं किया जा सका: %1&#10;&#10;फ़ाइल: %1&#10;पाथ: %2&#10;&#10;त्रुटि: %3</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">आउटपुट फ़ाइल के लिए एनकोडर सेट नहीं किया जा सका: %1&#10;&#10;फ़ाइल: %2&#10;&#10;त्रुटि: %3"</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">डीएसपी प्रोसेसर सेट नहीं किया जा सका: %1&#10;&#10;त्रुटि: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">इनपुट फ़ाइल तक पहुँचने में असमर्थ: %1&#10;&#10;फ़ाइल: %1&#10;पथ: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">आउटपुट फ़ाइल बनाने में असमर्थ: %1&#10;&#10;फ़ाइल: %1&#10;पथ: %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">इनपुट फ़ाइल सत्यापित करने में विफल: %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1">इनपुट ट्रैक सत्यापित करने में विफल: %1</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">चेकसम मिसमैच वेरिफाइंग आउटपुट फाइल: %1&#10;&#10;एनकोड चेकसम: %2&#10;चेकसम सत्यापित करें: %3</entry>
+      <entry id="7110" string="File not found">फाइल नहीं मिली</entry>
+      <entry id="7111" string="Unknown file type">अज्ञात प्रकार की फ़ाइल</entry>
+      <entry id="7112" string="Invalid file format">अमान्य फाइल प्रारूप</entry>
+      <entry id="7113" string="Unsupported audio format">असमर्थित ऑडियो प्रारूप</entry>
+      <entry id="7114" string="Unknown error">अज्ञात त्रुटि</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">एनटी ऐससीऐसआई ड्राइवर लोड करने में असमर्थ! सीडी तेजस्वी बंद है!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">फ़ाइल को खोलने में असमर्थ: %1&#10;&#10;त्रुटि: %2</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">एक ही ड्राइव से रिप करते समय सीडी ट्रैक नहीं चला सकते हैं!</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">एक ही ड्राइव से एक ट्रैक खेलते समय तेजस्वी शुरू नहीं कर सकता!</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">सीडीडीबी समर्थन अक्षम है! कृपया कॉन्फ़िगरेशन संवाद में स्थानीय या&#10;दूरस्थ सीडीडीबी समर्थन सक्षम करें।</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">रिमोट सीडीडीबी समर्थन अक्षम है! कृपया कॉन्फ़िगरेशन संवाद में स्थानीय या&#10;दूरस्थ सीडीडीबी समर्थन सक्षम करें।</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">सीडी-रोम ड्राइव तक पहुँच से इनकार कर दिया गया था।&#10;&#10;कृपया अपने सिस्टम एडमिनिस्ट्रेटर से संपर्क करें&#10;ताकि सीडी-रोम ड्राइव को एक्सेस करने का अधिकार दिया जा सके।</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">इसके लिए कोई कॉन्फ़िगरेशन संवाद उपलब्ध नहीं है:&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">चयनित फ़ोल्डर अब मौजूद नहीं है!</entry>
+    </section>
+
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8000" string="Confirm overwrite">ओवरराइट करने की पुष्टि करें</entry>
+	<entry id="8001" string="Confirm">पुष्टि करें</entry>
+	<entry id="8002" string="Skip all">सभी को छोड़ें</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">निम्न %1 फ़ाइलें पहले से मौजूद हैं या फ़ाइल नाम डुप्लिकेट हैं</entry>
+	<entry id="8004" string="Action">कार्य</entry>
+	<entry id="8005" string="Overwrite">ओवरराइट</entry>
+	<entry id="8006" string="Skip">स्किप</entry>
+      </section>
+
+      <section name="Format">
+	<entry id="8100" string="Select sample format">नमूना प्रारूप का चयन करें</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">चयनित पटरियों के अलग-अलग नमूने प्रारूप हैं। कृपया आउटपुट फ़ाइल&#10;का वांछित नमूना प्रारूप चुनें:</entry>
+	<entry id="8102" string="Select">चयन करें</entry>
+      </section>
+
+      <section name="Errors">
+	<entry id="8200" string="Errors">त्रुटियाँ</entry>
+	<entry id="8201" string="%1 errors while processing job">%1 कार्य संसाधित करते समय त्रुटियाँ</entry>
+	<entry id="8202" string="select an entry for details">विवरण के लिए एक प्रविष्टि का चयन करें</entry>
+      </section>
+    </section>
+
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">सक्रिय सीडी-रोम ड्राइव</entry>
+      <entry id="9001" string="Set drive speed limit">ड्राइव स्पीड लिमिट सेट करें</entry>
+      <entry id="9002" string="CD information">सीडी की जानकारी</entry>
+      <entry id="9003" string="Read CD Text">सीडी पाठ पढ़ें</entry>
+      <entry id="9004" string="Read cdplayer.ini">Cdplayer.ini पढ़ें</entry>
+      <entry id="9005" string="Ripper settings">रिपर सेटिंग्स</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Cdparanoia मोड सक्रिय करें</entry>
+      <entry id="9007" string="Overlap only">केवल ओवरलैप करें</entry>
+      <entry id="9008" string="No verify">कोई सत्यापन नहीं</entry>
+      <entry id="9009" string="No scratch repair">कोई खरोंच की मरम्मत</entry>
+      <entry id="9010" string="Full cdparanoia mode">पूर्ण cdparanoia मोड</entry>
+      <entry id="9011" string="Activate jitter correction">जिटर सुधार को सक्रिय करें</entry>
+      <entry id="9012" string="Switch stereo channels">स्टीरियो चैनल स्विच करें</entry>
+      <entry id="9013" string="Automatization">ऑटोमाइज़ेशन</entry>
+      <entry id="9014" string="Read CD contents on insert">डालने पर सीडी सामग्री पढ़ें</entry>
+      <entry id="9015" string="Start ripping automatically">स्वचालित रूप से तेजस्वी शुरू करें</entry>
+      <entry id="9016" string="Eject disk after ripping">तेजस्वी के बाद डिस्क निकालें</entry>
+      <entry id="9017" string="CD options">सीडी विकल्प</entry>
+      <entry id="9018" string="Use read offset">रीड ऑफ़सेट का उपयोग करें</entry>
+      <entry id="9019" string="samples">नमूने</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">जॉबलिस्ट में ट्रैक जोड़ते समय आईएसआरसी पढ़ें</entry>
+      <entry id="9021" string="Spin up before ripping">तेजस्वी से पहले स्पिन</entry>
+      <entry id="9022" string="%1 seconds">%1 सेकंड</entry>
+    </section>
+
+    <section name="Components">
+
+      <section name="Decoders">
+	<entry id="10000" string="Cue Sheet Reader">क्यू सूची रीडर</entry>
+      </section>
+
+      <section name="Encoders">
+	<entry id="11000" string="meh! - multi encoder hub">ऐमईऐच! - मल्टी एनकोडर हब</entry>
+	<entry id="11001" string="SndFile Output Component">एसऐनडी फ़ाइल आउटपुट घटक</entry>
+      </section>
+
+      <section name="DSP">
+	<entry id="12000" string="Channel Converter">चैनल कन्वर्टर</entry>
+	<entry id="12001" string="Sample Format Converter">नमूना प्रारूप कनवर्टर</entry>
+	<entry id="12002" string="Sample Rate Converter">नमूना दर कनवर्टर</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">आरएनएन नॉइज़ रिडक्शन</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">रबर बैंड टेम्पो / पिच परिवर्तक</entry>
+      </section>
+
+      <section name="Extensions">
+	<entry id="15000" string="Notifications">सूचनाएं</entry>
+	<entry id="15001" string="Logging">लॉगिंग</entry>
+	<entry id="15002" string="YouTube Video Downloader">यूट्यूब वीडियो डाउनलोडर</entry>
+      </section>
+    </section>
+
+    <section name="Decoders">
+
+      <section name="MAD">
+	<entry id="20000" string="Decoding">डिकोडिंग</entry>
+	<entry id="20001" string="Enable 24 bit decoding">24 बिट डिकोडिंग सक्षम करें</entry>
+      </section>
+
+      <section name="mpg123">
+	<entry id="21000" string="Decoder">डिकोडर</entry>
+	<entry id="21001" string="Active decoder">सक्रिय विकोडक</entry>
+	<entry id="21002" string="auto select">स्वतः चयन</entry>
+      </section>
+
+      <section name="CueSheet">
+	<entry id="22000" string="Title information">शीर्षक जानकारी</entry>
+	<entry id="22001" string="Read tags from referenced files">संदर्भित फ़ाइलों से टैग पढ़ें</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">संदर्भित फ़ाइलों के टैग पर क्यू शीट मेटाडेटा को प्राथमिकता दें</entry>
+	<entry id="22003" string="Alternative files">वैकल्पिक फाइलें</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">यदि संदर्भित वेव फाइलें स्थित नहीं हो सकती हैं, तो संकुचित विकल्पों की तलाश करें</entry>
+	<entry id="22005" string="Error handling">गलती संभालना</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">क्यू शीट प्रसंस्करण के दौरान त्रुटियों को अनदेखा करें</entry>
+      </section>
+    </section>
+
+    <section name="Encoders">
+
+      <section name="BladeEnc">
+	<entry id="30000" string="Bitrate">बिटरेट</entry>
+	<entry id="30001" string="Copyright bit">कॉपीराइट बिट</entry>
+	<entry id="30002" string="CRC">सीआरसी</entry>
+	<entry id="30003" string="Original bit">मूल बिट</entry>
+	<entry id="30004" string="Channels">चैनल</entry>
+	<entry id="30005" string="Private bit">निजी बिट</entry>
+	<entry id="30006" string="Set Copyright bit">कॉपीराइट बिट सेट करें</entry>
+	<entry id="30007" string="Enable CRC">सीआरसी सक्षम करें</entry>
+	<entry id="30008" string="Set Original bit">मूल बिट सेट करें</entry>
+	<entry id="30009" string="Dual channel encoding">दोहरी चैनल एन्कोडिंग</entry>
+	<entry id="30010" string="Set Private bit">निजी बिट सेट करें</entry>
+      </section>
+
+      <section name="Bonk">
+	<entry id="31000" string="Encoder mode">एनकोडर मोड</entry>
+	<entry id="31001" string="Stereo mode">स्टीरियो मोड</entry>
+	<entry id="31002" string="Quantization">परिमाणीकरण</entry>
+	<entry id="31003" string="Downsampling ratio">डाउनसमलिंग अनुपात</entry>
+	<entry id="31004" string="Predictor size">प्रिडिक्टर का आकार</entry>
+	<entry id="31005" string="Enable lossless encoding">दोषरहित एन्कोडिंग सक्षम करें</entry>
+	<entry id="31006" string="Enable Joint Stereo">संयुक्त स्टीरियो सक्षम करें</entry>
+      </section>
+
+      <section name="LAME">
+	<entry id="32000" string="Basic">बुनियादी</entry>
+	<entry id="32001" string="Misc">विविध</entry>
+	<entry id="32002" string="Expert">विशेषज्ञ</entry>
+	<entry id="32003" string="Audio processing">ऑडियो प्रसंस्करण</entry>
+
+	<section name="Basic">
+	  <entry id="32100" string="Presets">प्रीसेट</entry>
+	  <entry id="32101" string="Use preset">प्रीसेट का उपयोग करें</entry>
+	  <entry id="32102" string="Custom settings">कस्टम सेटिंग्स</entry>
+	  <entry id="32103" string="Medium, Fast">मध्यम, तेज</entry>
+	  <entry id="32104" string="Standard, Fast">मानक, तेज</entry>
+	  <entry id="32105" string="Extreme, Fast">अति, तेज</entry>
+	  <entry id="32106" string="Bitrate">बिटरेट</entry>
+	  <entry id="32107" string="Quality">गुणवत्ता</entry>
+	  <entry id="32108" string="Set bitrate">बिटरेट सेट करें</entry>
+	  <entry id="32109" string="Set ratio">अनुपात सेट करें</entry>
+	  <entry id="32110" string="Set quality">गुणवत्ता निर्धारित करें</entry>
+	  <entry id="32111" string="worse">और भी बुरा</entry>
+	  <entry id="32112" string="better">बेहतर</entry>
+	  <entry id="32113" string="VBR mode">वीबीआर मोड</entry>
+	  <entry id="32114" string="no VBR">नो वीबीआर</entry>
+	  <entry id="32115" string="VBR quality">वीबीआर गुणवत्ता</entry>
+	  <entry id="32116" string="ABR target bitrate">ऐबीआर टारगेट बिट्रेट</entry>
+	</section>
+
+	<section name="Misc">
+	  <entry id="32200" string="Control bits">कन्ट्रोल बिट्स</entry>
+	  <entry id="32201" string="Set Copyright bit">सेट कॉपीराइट बिट</entry>
+	  <entry id="32202" string="Set Original bit">सेट ओरिजिनल बिट</entry>
+	  <entry id="32203" string="Set Private bit">सेट प्राइवेट बिट</entry>
+	  <entry id="32204" string="CRC">सीआरसी</entry>
+	  <entry id="32205" string="Enable CRC">सीआरसी सक्षम करें</entry>
+	  <entry id="32206" string="Stereo mode">स्टीरियो मोड</entry>
+	  <entry id="32207" string="auto">ऑटो</entry>
+	  <entry id="32208" string="Stereo">स्टीरियो</entry>
+	  <entry id="32209" string="Joint Stereo">जॉइंट स्टीरियो</entry>
+	  <entry id="32210" string="Force Joint Stereo">फाॅर्स जॉइंट स्टीरियो</entry>
+	  <entry id="32211" string="VBR bitrate range">वीबीआर बिट्रेट रेंज</entry>
+	  <entry id="32212" string="Set minimum VBR bitrate">सेट मिनिमम वीबीआर बिट्रेट</entry>
+	  <entry id="32213" string="Set maximum VBR bitrate">सेट मैक्सिमम वीबीआर बिट्रेट</entry>
+	</section>
+
+	<section name="Expert">
+	  <entry id="32300" string="ATH">एटीएच</entry>
+	  <entry id="32301" string="Enable ATH">एटीएच सक्षम करें</entry>
+	  <entry id="32302" string="Use default setting">डिफ़ॉल्ट सेटिंग का उपयोग करें</entry>
+	  <entry id="32303" string="Psycho acoustic model">साइको ध्वनिक मॉडल</entry>
+	  <entry id="32304" string="Use Temporal Masking Effect">टेम्पोरल मास्किंग इफेक्ट का उपयोग करें</entry>
+	  <entry id="32305" string="Stream format">स्ट्रीम प्रारूप</entry>
+	  <entry id="32306" string="Enforce strict ISO compliance">सख्त आईएसओ अनुपालन लागू करें</entry>
+	</section>
+
+	<section name="Audio processing">
+	  <entry id="32400" string="Highpass filter">उच्च पास फिल्टर</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">हाईपास आवृत्ति सेट करें</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">हाईपास चौड़ाई निर्धारित करें</entry>
+	  <entry id="32403" string="Lowpass filter">लो पास फिल्टर</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">लोपास आवृत्ति सेट करें</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">लोपास की चौड़ाई निर्धारित करें</entry>
+	  <entry id="32406" string="Misc settings">विविध समायोजन</entry>
+	  <entry id="32407" string="Disable all filtering">सभी फ़िल्टरिंग अक्षम करें</entry>
+	</section>
+      </section>
+
+      <section name="AAC">
+	<entry id="33000" string="Codec">कोडेक</entry>
+	<entry id="33001" string="Quality">गुणवत्ता</entry>
+	<entry id="33002" string="Format">स्वरूप</entry>
+
+	<section name="Codec">
+	  <entry id="33100" string="Audio codec">ऑडियो कोडेक</entry>
+	</section>
+
+	<section name="Quality">
+	  <entry id="33200" string="Bitrate">बिटरेट</entry>
+	  <entry id="33201" string="Bitrate / Quality">बिटरेट / गुणवत्ता</entry>
+	  <entry id="33202" string="Bitrate per channel">प्रति चैनल बिटरेट</entry>
+	  <entry id="33203" string="Set quality">गुणवत्ता निर्धारित करें</entry>
+	  <entry id="33204" string="Stereo mode">स्टीरियो मोड</entry>
+	  <entry id="33205" string="Allow Joint Stereo">संयुक्त स्टीरियो की अनुमति दें</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">टेम्पोरल शोर शेपिंग</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">टेम्पोरल शोर शेपिंग का उपयोग करें</entry>
+	  <entry id="33208" string="Maximum bandwidth">अधिकतम बैंडविड्थ</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">अधिकतम ऐऐसी आवृत्ति बैंडविड्थ का उपयोग करने के लिए</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="33300" string="MPEG version">एमपीईजी संस्करण</entry>
+	  <entry id="33301" string="AAC object type">ऐऐसी वस्तु प्रकार</entry>
+	  <entry id="33302" string="File format">फाइल प्रारूप</entry>
+	  <entry id="33303" string="File extension">दस्तावेज़ विस्तारण</entry>
+	  <entry id="33304" string="Tags">टैग</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">ऐऐसी फ़ाइलों में आईडी 3 वी 2 टैग की अनुमति दें</entry>
+	  <entry id="33306" string="Note">नोट</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">कुछ प्लेयर्स को आईडी3 टैग के साथ ऐऐसी फाइल चलाने में समस्या&#10;हो सकती है। कृपया इस विकल्प का उपयोग केवल तभी करें जब आप&#10;सुनिश्चित हों कि आपका खिलाड़ी इन टैग को संभाल सकता है।</entry>
+	</section>
+      </section>
+
+      <section name="FLAC">
+	<entry id="34000" string="Basic">बेसिक</entry>
+	<entry id="34001" string="Format">फॉर्मेट</entry>
+	<entry id="34002" string="Expert">एक्सपर्ट</entry>
+
+	<section name="Basic">
+	  <entry id="34100" string="Presets">प्रीसेट्स</entry>
+	  <entry id="34101" string="Use preset">प्रीसेट का उपयोग करें</entry>
+	  <entry id="34102" string="Custom settings">कस्टम सेटिंग्स</entry>
+	  <entry id="34103" string="Fastest encoding">सबसे तेज एन्कोडिंग</entry>
+	  <entry id="34104" string="Best compression">सर्वश्रेष्ठ संपीड़न</entry>
+	  <entry id="34105" string="Stereo mode">स्टीरियो मोड</entry>
+	  <entry id="34106" string="Joint Stereo">जॉइन्ट स्टीरियो</entry>
+	  <entry id="34107" string="Adaptive Joint Stereo">अनुकूली संयुक्त स्टीरियो</entry>
+	  <entry id="34108" string="File format">फाइल प्रारूप</entry>
+	  <entry id="34109" string="Default">डिफ़ॉल्ट</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="34200" string="Use streamable subset">सुव्यवस्थित उपसमुच्चय का उपयोग करें</entry>
+	  <entry id="34201" string="Blocksize">ब्लॉकसाइज</entry>
+	  <entry id="34202" string="%1 samples">%1 सैम्पल्स/</entry>
+	</section>
+
+	<section name="Expert">
+	  <entry id="34300" string="Signal processing">संकेत प्रसंस्करण</entry>
+	  <entry id="34301" string="Window function(s)">विंडो फ़ंक्शन</entry>
+	  <entry id="34302" string="Note">नोट</entry>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">आप अर्धविराम द्वारा अलग किए गए कई कार्यों को निर्दिष्ट कर सकते हैं।</entry>
+	  <entry id="34304" string="Linear predictor">रैखिक भविष्यवक्ता</entry>
+	  <entry id="34305" string="Maximum LPC order">अधिकतम एलपीसी आदेश</entry>
+	  <entry id="34306" string="disabled">बंद</entry>
+	  <entry id="34307" string="Exhaustive model search">थकाऊ मॉडल खोज</entry>
+	  <entry id="34308" string="Quantized LPC precision">परिमाणित एलपीसी परिशुद्धता</entry>
+	  <entry id="34309" string="auto">ऑटो</entry>
+	  <entry id="34310" string="Optimize LPC quantization">एलपीसी परिमाणीकरण का अनुकूलन करें</entry>
+	  <entry id="34311" string="Residual coding">अवशिष्ट कोडिंग</entry>
+	  <entry id="34312" string="Minimum partition order">न्यूनतम विभाजन आदेश</entry>
+	  <entry id="34313" string="Maximum partition order">अधिकतम विभाजन आदेश</entry>
+	</section>
+      </section>
+
+      <section name="Vorbis">
+	<entry id="35000" string="Encoding Mode">एन्कोडिंग मोड</entry>
+	<entry id="35001" string="Variable Bitrate">चर बिटरेट</entry>
+	<entry id="35002" string="Average Bitrate">औसत बिटरेट</entry>
+	<entry id="35003" string="Quality">गुणवत्ता</entry>
+	<entry id="35004" string="Bitrate">बिटरेट</entry>
+	<entry id="35005" string="Minimum bitrate">न्यूनतम बिटरेट</entry>
+	<entry id="35006" string="Average bitrate">औसत बिटरेट</entry>
+	<entry id="35007" string="Maximum bitrate">अधिकतम बिटरेट</entry>
+	<entry id="35008" string="File extension">दस्तावेज़ विस्तारण</entry>
+      </section>
+
+      <section name="WMA">
+	<entry id="36000" string="Select codec">Select codec</entry>
+	<entry id="36001" string="Select codec format">कोडेक प्रारूप का चयन करें</entry>
+	<entry id="36002" string="Codec settings">कोडेक सेटिंग्स</entry>
+	<entry id="36003" string="Use codec">कोडेक का उपयोग करें</entry>
+	<entry id="36004" string="Use format">प्रारूप का उपयोग करें</entry>
+	<entry id="36005" string="Write uncompressed WMA files">असम्पीडित डब्लूएमऐ फ़ाइलें लिखें</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">सेटिंग्स और इनपुट प्रारूप के आधार पर स्वचालित रूप से प्रारूप का चयन करें</entry>
+	<entry id="36007" string="Use VBR encoding">VBR एन्कोडिंग का प्रयोग करें</entry>
+	<entry id="36008" string="Quality">गुणवत्ता</entry>
+	<entry id="36009" string="Target bitrate">लक्ष्य बिटरेट</entry>
+	<entry id="36010" string="Use 2-pass encoding">2-पास एन्कोडिंग का उपयोग करें</entry>
+      </section>
+
+      <section name="TwinVQ">
+	<entry id="37000" string="Bitrate">बिटरेट</entry>
+	<entry id="37001" string="Bitrate per channel">प्रति चैनल बिटरेट</entry>
+	<entry id="37002" string="Preselection">प्रारंभिक चुनाव</entry>
+	<entry id="37003" string="Number of preselection candidates">प्रत्याशियों की संख्या</entry>
+      </section>
+
+      <section name="Monkey's Audio">
+	<entry id="38000" string="Compression">कम्प्रेशन</entry>
+	<entry id="38001" string="Compression mode">कम्प्रेशन मोड</entry>
+	<entry id="38002" string="Fast">फ़ास्ट</entry>
+	<entry id="38003" string="Normal">नार्मल</entry>
+	<entry id="38004" string="High">उच्च</entry>
+	<entry id="38005" string="Extra high">अतिरिक्त उच्च</entry>
+	<entry id="38006" string="Insane">उन्मत्त</entry>
+      </section>
+
+      <section name="Speex">
+	<entry id="39000" string="Profile">प्रोफ़ाइल</entry>
+	<entry id="39001" string="Select encoding profile">एन्कोडिंग फ़ाइल का चयन करें</entry>
+	<entry id="39002" string="auto">ऑटो</entry>
+	<entry id="39003" string="Narrowband (8 kHz)">नैरोबैंड (8 किलोहर्ट्‍ज)</entry>
+	<entry id="39004" string="Wideband (16 kHz)">वाइडबैंड (16 किलोहर्ट्‍ज)</entry>
+	<entry id="39005" string="Ultra-Wideband (32 kHz)">अल्ट्रा वाइड बैंड (32 किलोहर्ट्‍ज)</entry>
+	<entry id="39006" string="VBR mode">वीबीआर मोड</entry>
+	<entry id="39007" string="CBR (no VBR)">सीबीआर</entry>
+	<entry id="39008" string="VBR">वीबीआर</entry>
+	<entry id="39009" string="ABR">ऐभीआर</entry>
+	<entry id="39010" string="Options">विकल्प</entry>
+	<entry id="39011" string="Voice Activity Detection">आवाज गतिविधि का पता लगाने</entry>
+	<entry id="39012" string="Discontinuous Transmission">असंतोषजनक संचरण</entry>
+	<entry id="39013" string="Algorithm complexity">एल्गोरिथ्म की जटिलता</entry>
+	<entry id="39014" string="Complexity">जटिलता</entry>
+	<entry id="39015" string="CBR quality">सीबीआर गुणवत्ता</entry>
+	<entry id="39016" string="VBR quality">वीबीआर गुणवत्ता</entry>
+	<entry id="39017" string="ABR target bitrate">ऐबीआर टारगेट बिट्रेट</entry>
+	<entry id="39018" string="Bitrate">बिटरेट</entry>
+	<entry id="39019" string="Quality">गुणवत्ता</entry>
+	<entry id="39020" string="Max. bitrate">अधिकतम बिटरेट</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40000" string="Basic settings">मूल सेटिंग्स</entry>
+	<entry id="40001" string="Encoding mode">एन्कोडिंग मोड</entry>
+	<entry id="40002" string="auto">ऑटो</entry>
+	<entry id="40003" string="Voice">आवाज़</entry>
+	<entry id="40004" string="Music">संगीत</entry>
+	<entry id="40005" string="Bandwidth">बैंडविड्थ</entry>
+	<entry id="40006" string="Narrowband">नैरोबैंड</entry>
+	<entry id="40007" string="Mediumband">मीडियमबैंड</entry>
+	<entry id="40008" string="Wideband">वाइडबैंड</entry>
+	<entry id="40009" string="Superwideband">सूपरवाइडबैंड</entry>
+	<entry id="40010" string="Fullband">फुलबैंड</entry>
+	<entry id="40011" string="File extension">दस्तावेज़ विस्तारण</entry>
+	<entry id="40012" string="Variable bitrate">चर बिटरेट</entry>
+	<entry id="40013" string="Enable variable bitrate encoding">चर बिटरेट एन्कोडिंग सक्षम करें</entry>
+	<entry id="40014" string="Constrain bitrate to target value">मूल्य लक्ष्य के लिए बिटरेट को विवश करें</entry>
+	<entry id="40015" string="Quality">गुणवत्ता</entry>
+	<entry id="40016" string="Bitrate">बिटरेट</entry>
+	<entry id="40017" string="Complexity">जटिलता</entry>
+	<entry id="40018" string="Stream">स्ट्रीम</entry>
+	<entry id="40019" string="Frame length">फ्रेम की लंबाई</entry>
+	<entry id="40020" string="Options">विकल्प</entry>
+	<entry id="40021" string="Enable discontinous transmission">बंद संचरण सक्षम करें</entry>
+	<entry id="40022" string="Expected packet loss">एक्सपेक्टेड पैकेट लोस्स</entry>
+      </section>
+
+      <section name="SndFile">
+	<entry id="41000" string="Output format">आउटपुट स्वरूप</entry>
+	<entry id="41001" string="File format">फाइल प्रारूप</entry>
+	<entry id="41002" string="Audio format">ऑडियो प्रारूप</entry>
+	<entry id="41003" string="mono">मोनो</entry>
+	<entry id="41004" string="auto select">स्वतः चयन</entry>
+
+	<section name="Errors">
+	  <entry id="41100" string="Could not find suitable audio format.">उपयुक्त ऑडियो प्रारूप नहीं मिल सका।</entry>
+	  <entry id="41101" string="Unable to use selected audio format.">चयनित ऑडियो प्रारूप का उपयोग करने में असमर्थ।</entry>
+	</section>
+      </section>
+
+      <section name="meh!">
+	<entry id="42000" string="Encoders">इनकोडर्स</entry>
+	<entry id="42001" string="Available">उपलब्ध</entry>
+	<entry id="42002" string="Selected">चुन लिया</entry>
+	<entry id="42003" string="Configure encoder">एनकोडर कॉन्फ़िगर करें</entry>
+	<entry id="42004" string="Options">विकल्प</entry>
+	<entry id="42005" string="Create a separate folder for each output format">प्रत्येक आउटपुट स्वरूप के लिए एक अलग फ़ोल्डर बनाएँ</entry>
+      </section>
+    </section>
+
+    <section name="DSP">
+
+      <section name="Format">
+	<entry id="50000" string="Sample format">नमूना प्रारूप</entry>
+	<entry id="50001" string="Number format">संख्या स्वरूप</entry>
+	<entry id="50002" string="Sample resolution">नमूना संकल्प</entry>
+	<entry id="50003" string="bit">बिट</entry>
+	<entry id="50004" string="unsigned">अहस्ताक्षरित</entry>
+	<entry id="50005" string="Integer">पूर्णांक</entry>
+	<entry id="50006" string="Float">फ्लोट</entry>
+      </section>
+
+      <section name="Channels">
+	<entry id="50100" string="Output channels">आउटपुट चैनल</entry>
+	<entry id="50101" string="Channel configuration">चैनल कॉन्फ़िगरेशन</entry>
+	<entry id="50102" string="Mono">मोनो</entry>
+	<entry id="50103" string="Stereo">स्टीरियो</entry>
+	<entry id="50104" string="Switch stereo channels">स्टीरियो चैनल स्विच करें</entry>
+      </section>
+
+      <section name="Resample">
+	<entry id="50200" string="Converter">कनवर्टर</entry>
+	<entry id="50201" string="Sampling rate">नमूनाकरण दर</entry>
+	<entry id="50202" string="Output sampling rate">आउटपुट नमूना दर</entry>
+      </section>
+
+      <section name="RubberBand">
+	<entry id="50300" string="Basic controls">बुनियादी नियंत्रण</entry>
+	<entry id="50301" string="Tempo">गति</entry>
+	<entry id="50302" string="Pitch">पिच</entry>
+	<entry id="50303" string="%1 Semitones">%1 सेमीटोन्स</entry>
+	<entry id="50304" string="Advanced options">उन्नत विकल्प</entry>
+	<entry id="50305" string="Transient detection">क्षणिक पहचान</entry>
+	<entry id="50306" string="Compound">यौगिक</entry>
+	<entry id="50307" string="Percussive">टकराता हुआ</entry>
+	<entry id="50308" string="Soft">सॉफ्ट</entry>
+	<entry id="50309" string="Transient handling">क्षणिक संभाल</entry>
+	<entry id="50310" string="Crisp">क्रिस्प</entry>
+	<entry id="50311" string="Mixed">मिश्रित</entry>
+	<entry id="50312" string="Smooth">स्मूथ</entry>
+	<entry id="50313" string="Transformation window">परिवर्तन विंडो</entry>
+	<entry id="50314" string="Standard">स्टैण्डर्ड</entry>
+	<entry id="50315" string="Short">शार्ट</entry>
+	<entry id="50316" string="Long">लंबा</entry>
+	<entry id="50317" string="Use time-domain smoothing">टाइम-डोमेन स्मूथिंग का उपयोग करें</entry>
+	<entry id="50318" string="Phase handling">चरण संभालना</entry>
+	<entry id="50319" string="Laminar">लैमीनार</entry>
+	<entry id="50320" string="Independent">स्वतंत्र</entry>
+	<entry id="50321" string="Formant handling">पूर्व हैंडलिंग</entry>
+	<entry id="50322" string="Shift">शिफ्ट</entry>
+	<entry id="50323" string="Preserve">रक्षित</entry>
+	<entry id="50324" string="Pitch processing">पिच प्रसंस्करण</entry>
+	<entry id="50325" string="High quality">उच्च गुणवत्ता</entry>
+	<entry id="50326" string="High speed">तीव्र गति</entry>
+	<entry id="50327" string="High consistency">उच्च संगति</entry>
+	<entry id="50328" string="Stereo processing">स्टीरियो प्रसंस्करण</entry>
+	<entry id="50329" string="Separate">अलग</entry>
+	<entry id="50330" string="Combined">संयुक्त</entry>
+      </section>
+
+      <section name="RNNoise">
+	<entry id="50400" string="Signal/noise type">संकेत / शोर प्रकार</entry>
+	<entry id="50401" string="Signal type">संकेत प्रकार</entry>
+	<entry id="50402" string="Noise type">शोर प्रकार</entry>
+	<entry id="50403" string="General">सामान्य</entry>
+	<entry id="50404" string="Recording">रिकॉर्डिंग</entry>
+	<entry id="50405" string="Voice (incl. laughter etc.)">आवाज</entry>
+	<entry id="50406" string="Speech">भाषण</entry>
+      </section>
+    </section>
+
+    <section name="Taggers">
+
+      <section name="MP4">
+	<entry id="60000" string="Chapter format">अध्याय प्रारूप</entry>
+	<entry id="60001" string="both">दोनों</entry>
+      </section>
+    </section>
+
+    <section name="External">
+      <entry id="80000" string="Downmix multi-channel audio to stereo">डाउनमिक्स मल्टी-चैनल ऑडियो टू स्टीरियो</entry>
+
+      <section name="Musepack Audio Encoder">
+	<entry id="80100" string="Quality">गुणवत्ता</entry>
+	<entry id="80101" string="poor">पुअर</entry>
+	<entry id="80102" string="excellent">अति उत्कृष्ट</entry>
+	<entry id="80103" string="Mid/Side stereo mode">मिड / साइड स्टीरियो मोड</entry>
+	<entry id="80104" string="off">बंद</entry>
+	<entry id="80105" string="reduced">कम किया हुआ</entry>
+	<entry id="80106" string="on">चालू</entry>
+	<entry id="80107" string="decoupled">डीकपल्ड</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">वर्धित 1.5/3 डी.बी.</entry>
+	<entry id="80109" string="enhanced 2/6 dB">वर्धित 2/6 डी.बी.</entry>
+	<entry id="80110" string="enhanced 2.5/9 dB">वर्धित 2.5/9 डी.बी.</entry>
+	<entry id="80111" string="enhanced 3/12 dB">वर्धित 3/12 डी.बी.</entry>
+	<entry id="80112" string="enhanced 3/inf dB">वर्धित 3 डी.बी.</entry>
+	<entry id="80113" string="Adaptive noise shaping order">अनुकूली शोर आकार देने का क्रम</entry>
+	<entry id="80114" string="high">उच्च</entry>
+	<entry id="80115" string="Clear Voice Detection">स्पष्ट आवाज का पता लगाना</entry>
+	<entry id="80116" string="dual">दोहरी</entry>
+      </section>
+
+      <section name="OptimFROG Lossless Encoder">
+	<entry id="80200" string="Encoding mode">एन्कोडिंग मोड</entry>
+	<entry id="80201" string="fast">तेज</entry>
+	<entry id="80202" string="normal">साधारण</entry>
+	<entry id="80203" string="high">उच्च</entry>
+	<entry id="80204" string="extra">अतिरिक्त</entry>
+	<entry id="80205" string="best">श्रेष्ठ</entry>
+	<entry id="80206" string="high, new">उच्च, नया</entry>
+	<entry id="80207" string="extra, new">अतिरिक्त, नया</entry>
+	<entry id="80208" string="best, new">सबसे अच्छा, नया</entry>
+	<entry id="80209" string="Add MD5 checksum">एमडी5 चेकसम जोड़ें</entry>
+	<entry id="80210" string="Seeking">तलाश</entry>
+	<entry id="80211" string="slow">धीमा</entry>
+	<entry id="80212" string="minimum">न्यूनतम</entry>
+	<entry id="80213" string="Optimization">अनुकूलन</entry>
+	<entry id="80214" string="disabled">बंद</entry>
+	<entry id="80215" string="low">कम</entry>
+      </section>
+
+      <section name="Tom's Audiokompressor">
+	<entry id="80300" string="Encoder preset">एनकोडर प्रीसेट</entry>
+	<entry id="80301" string="fastest">सबसे तेजी से</entry>
+	<entry id="80302" string="strongest">सबसे मजबूत</entry>
+	<entry id="80303" string="Frame size limit">फ्रेम आकार की सीमा</entry>
+	<entry id="80304" string="Add MD5 checksum">ऐड एमडी5 चेकसम</entry>
+      </section>
+
+      <section name="WavPack Audio Encoder">
+	<entry id="80400" string="Enable lossy compression">हानिपूर्ण संपीड़न सक्षम करें</entry>
+	<entry id="80401" string="Compression mode">कम्प्रेशन मोड</entry>
+	<entry id="80402" string="fast">तेज</entry>
+	<entry id="80403" string="high quality">उच्च गुणवत्ता</entry>
+	<entry id="80404" string="very high quality">बहुत उच्च गुणवत्ता</entry>
+	<entry id="80405" string="Extra encode processing">अतिरिक्त सांकेतिक प्रसंस्करण</entry>
+	<entry id="80406" string="faster">और तेज</entry>
+	<entry id="80407" string="better">बेहतर</entry>
+	<entry id="80408" string="%1 kbps">%1 केबीपीएस</entry>
+      </section>
+
+      <section name="Nero AAC Encoder">
+	<entry id="80500" string="Encoding mode">एन्कोडिंग मोड</entry>
+	<entry id="80501" string="auto">ऑटो</entry>
+	<entry id="80502" string="Quality">गुणवत्ता</entry>
+	<entry id="80503" string="worse">और भी बुरा</entry>
+	<entry id="80504" string="better">बेहतर</entry>
+	<entry id="80505" string="Bitrate">बिटरेट</entry>
+	<entry id="80506" string="Bitrate (Streaming)">बिटरेट (स्ट्रीमिंग)</entry>
+	<entry id="80507" string="%1 kbps">%1 केबीपीएस</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">बिटरेट</entry>
+	<entry id="80601" string="%1 kbps">%1 केबीपीएस</entry>
+      </section>
+    </section>
+
+    <section name="Extensions">
+
+      <section name="Donate">
+	<entry id="100000" string="Support this project">इस परियोजना का समर्थन करें</entry>
+	<entry id="100001" string="Please support this project!">कृपया इस परियोजना का समर्थन करें!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">कृपया दान के साथ परियोजना का समर्थन करके %1 इस सॉफ़्टवेयर को मुक्त रखने में मदद करें।</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">कृपया %1 को लिखें यदि आप चेक भेजना चाहते हैं या मेल द्वारा पैसा भेजना चाहते हैं।</entry>
+	<entry id="100004" string="Thank you very much!">आपका बहुत बहुत धन्यवाद!</entry>
+	<entry id="100005" string="Remind me later">मुझे बाद में याद दिलाना</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100007" string="Donate to the %1 project">%1 प्रोजेक्ट को दान करें</entry>
+
+	<section name="PayPal">
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">एक राशि चुनें और पेपाल के साथ दान करने के लिए बटन पर क्लिक करें:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">आप PayPal से सीधे %1 पर भी पैसे भेज सकते हैं।</entry>
+	  <entry id="100102" string="usd">inr</entry>
+	  <entry id="100103" string="$%1">₹%1</entry>
+	  <entry id="100104" string="5,10,20,other amount">250,500,1000,अन्य राशि</entry>
+	  <entry id="100105" string="monthly recurring">मासिक आवर्ती</entry>
+	  <entry id="100106" string="Donate">दान करना</entry>
+	</section>
+
+	<section name="Donorbox">
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox क्रेडिट कार्ड द्वारा त्वरित और सरल दान को सक्षम बनाता है। इसे क्लिक करें। डोनरबॉक&#10;के साथ दान करने के लिए बटन:</entry>
+	  <entry id="100201" string="Donate">दान करना</entry>
+	  <entry id="100202" string="usd">usd</entry>
+	</section>
+
+	<section name="Bitcoin">
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">कृपया बिटकॉइन दान करने के लिए क्यूआर कोड को स्कैन या क्लिक करें या&#10;निम्नलिखित पते की प्रतिलिपि बनाएँ:</entry>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">यह पता भी बिटकाईन कैश को स्वीकार करता है।</entry>
+	</section>
+
+	<section name="Ethereum">
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">कृपया क्यूआर कोड स्कैन या क्लिक करें या ईथेरियम दान करने के लिए&#10;निम्नलिखित पते की प्रतिलिपि बनाएँ:</entry>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">यह पता ईथर क्लासिक और ईआरसी 20 टोकन को भी स्वीकार करता है।</entry>
+	</section>
+
+	<section name="SEPA">
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">आप निम्नलिखित&#10;खाते में इलेक्ट्रॉनिक स्थानांतरण करके दान कर सकते हैं:</entry>
+	  <entry id="100501" string="Account holder:">खाता धारक:</entry>
+	  <entry id="100502" string="IBAN:">आईबीऐएन</entry>
+	  <entry id="100503" string="BIC:">बीआईसी:</entry>
+	</section>
+      </section>
+
+      <section name="Winamp Adapter">
+	<entry id="101000" string="Configure">कॉन्फ़िगर</entry>
+	<entry id="101001" string="About">के बारे में</entry>
+      </section>
+
+      <section name="Video Downloader">
+	<entry id="102000" string="Video">वीडियो</entry>
+	<entry id="102001" string="Enter video URL here">यहां वीडियो यूआरएल दर्ज करें</entry>
+	<entry id="102002" string="Download">डाउनलोड</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">क्लिपबोर्ड पर कॉपी किए गए यूआरएल को स्वचालित रूप से डाउनलोड करें</entry>
+	<entry id="102004" string="Save downloaded video files">डाउनलोड की गई वीडियो फ़ाइलों को सहेजें</entry>
+	<entry id="102005" string="Video downloads">वीडियो डाउनलोड</entry>
+	<entry id="102006" string="Downloaded tracks">डाउनलोड किए गए ट्रैक</entry>
+	<entry id="102007" string="Uploader">अपलोडर</entry>
+	<entry id="102008" string="Video URL">वीडियो यूआरएल</entry>
+	<entry id="102009" string="Video title">वीडियो शीषर्क</entry>
+	<entry id="102010" string="Video description">विडियो का विवरण</entry>
+	<entry id="102011" string="Site name">साइट का नाम</entry>
+	<entry id="102012" string="Uploaded by">द्वारा डाली गई</entry>
+	<entry id="102013" string="Uploaded on">पर अपलोड किया गया</entry>
+	<entry id="102014" string="Length">लंबाई</entry>
+	<entry id="102015" string="Size">साइज</entry>
+	<entry id="102016" string="Cancel download">डाउनलोड रद्द करें</entry>
+	<entry id="102017" string="unknown">अनजान</entry>
+	<entry id="102018" string="Note">नोट</entry>
+
+	<section name="Configuration">
+	  <entry id="102101" string="Automatization">ऑटोमाइज़ेशन</entry>
+	  <entry id="102102" string="Video files">वीडियो फ़ाइलें</entry>
+	  <entry id="102103" string="Select">चयन करें</entry>
+	  <entry id="102104" string="Select the folder to save downloaded video files to">डाउनलोड की गई वीडियो फ़ाइलों को सहेजने के लिए फ़ोल्डर का चयन करें</entry>
+	  <entry id="102105" string="Downloads">डाउनलोड</entry>
+	  <entry id="102106" string="Maximum number of simultaneous downloads">एक साथ डाउनलोड की अधिकतम संख्या</entry>
+	  <entry id="102107" string="Output format">आउटपुट स्वरूप</entry>
+	  <entry id="102108" string="keep original format">मूल स्वरूप रखें</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">यह यूआरएल समर्थित नहीं है या वीडियो पृष्ठ यूआरएल नहीं है!</entry>
+	  <entry id="102202" string="Error downloading video!">वीडियो डाउनलोड करने में त्रुटि!</entry>
+	  <entry id="102203" string="You are already downloading this video!">आप पहले से ही इस वीडियो को डाउनलोड कर रहे हैं!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">कुछ आवश्यक वीडियो&#10;डिकोडर नहीं मिल सके। ऑडियो फ़ाइलों में रूपांतरण के लिए वीडियो फ़ाइलों को जॉबलिस्ट में नहीं जोड़ा जा सकता है।&#10;&#10;कृपया इस समस्या को ठीक करने के लिए avconv या FFmpeg स्थापित करें!</entry>
+	</section>
+      </section>
+
+      <section name="Tag Editor">
+	<entry id="103000" string="Tags">टैग</entry>
+	<entry id="103001" string="Length">लंबाई</entry>
+	<entry id="103002" string="Size">साइज</entry>
+	<entry id="103003" string="Albums">एल्बम</entry>
+	<entry id="103004" string="Files">फ़ाइल</entry>
+	<entry id="103005" string="File">फ़ाइल</entry>
+	<entry id="103006" string="Tracks">ट्रैक</entry>
+	<entry id="103007" string="Save">सेव</entry>
+	<entry id="103008" string="Save all">सभी को सेव करें</entry>
+	<entry id="103009" string="no audio files found">कोई ऑडियो फ़ाइल नहीं मिली</entry>
+
+	<section name="Basic">
+	  <entry id="103100" string="Basic">बुनियादी</entry>
+	  <entry id="103101" string="Title information">शीर्षक जानकारी</entry>
+	  <entry id="103102" string="Disc">डिस्क</entry>
+	  <entry id="103103" string="Cover art">कवर आर्ट</entry>
+	  <entry id="103104" string="Covers">कवर</entry>
+	  <entry id="103105" string="Type">प्रकार</entry>
+	  <entry id="103106" string="Description">विवरण</entry>
+	  <entry id="103107" string="Add">जोड़ना</entry>
+	  <entry id="103108" string="Remove">हटाना</entry>
+	</section>
+
+	<section name="Details">
+	  <entry id="103200" string="Details">विवरण</entry>
+	  <entry id="103201" string="Detailed information">विस्तृत जानकारी</entry>
+	  <entry id="103202" string="Band / orchestra">बैंड / ऑर्केस्ट्रा</entry>
+	  <entry id="103203" string="Conductor">कंडक्टर</entry>
+	  <entry id="103204" string="Composer">संगीतकार</entry>
+	  <entry id="103205" string="Lyrics writer">गीत के लेखक</entry>
+	  <entry id="103206" string="Modified / remixed by">द्वारा संशोधित / रीमिक्स किया गया</entry>
+	  <entry id="103207" string="Publisher information">प्रकाशक की जानकारी</entry>
+	  <entry id="103208" string="Publisher / label">प्रकाशक / लेबल</entry>
+	  <entry id="103209" string="ISRC">आईएसआरसी</entry>
+	  <entry id="103210" string="Tempo">गति</entry>
+	  <entry id="103211" string="BPM">बीपीएम</entry>
+	</section>
+
+	<section name="Other">
+	  <entry id="103300" string="Other">अन्य</entry>
+	  <entry id="103301" string="Original information">मूल जानकारी</entry>
+	  <entry id="103302" string="Original artist">मूल कलाकार</entry>
+	  <entry id="103303" string="Original album">मूल एल्बम</entry>
+	  <entry id="103304" string="Original lyrics writer">मूल गीत लेखक</entry>
+	  <entry id="103305" string="Original release year">मूल रिलीज़ वर्ष</entry>
+	  <entry id="103306" string="Webpage URLs">वेबपेज यूआरएल</entry>
+	  <entry id="103307" string="Artist webpage">कलाकार वेबपेज</entry>
+	  <entry id="103308" string="Publisher webpage">प्रकाशक का वेबपेज</entry>
+	  <entry id="103309" string="Internet radio station">इंटरनेट रेडियो स्टेशन</entry>
+	  <entry id="103310" string="Audio source webpage">ऑडियो स्रोत वेबपेज</entry>
+	  <entry id="103311" string="Copyright information">कॉपीराइट संबंधी जानकारी</entry>
+	  <entry id="103312" string="Commercial information">वाणिज्यिक जानकारी</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">फ़ाइल को खोलने में असमर्थ: %1&#10;&#10;त्रुटि: %2</entry>
+	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">टैग अपडेट करने में असमर्थ: %1&#10;&#10;त्रुटि: %2</entry>
+	</section>
+      </section>
+
+      <section name="Logging">
+	<entry id="104000" string="Logs">लॉग्स</entry>
+	<entry id="104001" string="Log">लॉग</entry>
+	<entry id="104002" string="Save as">के रूप रक्षित करें</entry>
+	<entry id="104003" string="Log Files">लॉग फ़ाइल</entry>
+	<entry id="104004" string="Time">समय</entry>
+	<entry id="104005" string="Message">संदेश</entry>
+
+	<section name="Configuration">
+	  <entry id="104100" string="User interface">प्रयोक्ता इंटरफ़ेस</entry>
+	  <entry id="104101" string="Show Logs tab in main window">मुख्य विंडो में लॉग टैब दिखाएं</entry>
+	  <entry id="104102" string="Log files">लॉग फ़ाइल</entry>
+	  <entry id="104103" string="Archive log files">संग्रह लॉग फ़ाइलें</entry>
+	  <entry id="104104" string="Log file folder">लॉग फ़ाइल फ़ोल्डर</entry>
+	  <entry id="104105" string="Select">चुनते हैं</entry>
+	  <entry id="104106" string="Select the folder for saving log files">लॉग फ़ाइलों को सहेजने के लिए फ़ोल्डर का चयन करें</entry>
+	  <entry id="104107" string="Delete old log files after">पुरानी लॉग फ़ाइलों को हटा दें</entry>
+	  <entry id="104108" string="days">दिन</entry>
+	  <entry id="104109" string="Conversion logs">रूपांतरण लॉग</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">ऑडियो फ़ाइलों के साथ रूपांतरण लॉग सहेजें</entry>
+	  <entry id="104111" string="Audio CD ripping logs only">ऑडियो सीडी तेजस्वी केवल लॉग करता है</entry>
+	  <entry id="104112" string="Filename pattern">फ़ाइल नाम पैटर्न</entry>
+	</section>
+      </section>
+
+      <section name="Notifier">
+	<entry id="105000" string="Conversion process finished!">रूपांतरण प्रक्रिया समाप्त हुई!</entry>
+
+	<section name="Configuration">
+	  <entry id="105100" string="Notifications">सूचनाएं</entry>
+	  <entry id="105101" string="Notify on finished conversion">तैयार रूपांतरण पर सूचित करें</entry>
+	  <entry id="105102" string="Play sound">ध्वनि खेलने</entry>
+	  <entry id="105103" string="Display message">संदेश प्रदर्शित करें</entry>
+	  <entry id="105104" string="Select">चुनते हैं</entry>
+	  <entry id="105105" string="Only for conversions running longer than">केवल लंबे समय से चल रहे रूपांतरणों के लिए</entry>
+	  <entry id="105106" string="second(s)">सेकंड</entry>
+	  <entry id="105107" string="minute(s)">मिनट</entry>
+	</section>
+      </section>
+    </section>
+  </data>
+</LangFile>

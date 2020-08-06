@@ -1,7 +1,7 @@
 <VideoConverter>
   <name>Windows Media Video Converter</name>
   <version>1.0</version>
-  <decoder>avconv-wmv_audio-dec</decoder>
+  <decoder>ffmpeg-wmv_audio-dec</decoder>
 
   <format>
     <name>Windows Media Video</name>
@@ -10,7 +10,7 @@
   </format>
 
   <external>
-    <command>avconv</command>
+    <command>ffmpeg</command>
     <arguments>-i %INFILE -f asf -c:v wmv2 -sameq -c:a wmav2 -b:a 128000 %OUTFILE</arguments>
   </external>
 </VideoConverter>

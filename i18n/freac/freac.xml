@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers"/>
       <entry id="5024" string="Taggers"/>
       <entry id="5025" string="Processing"/>
+      <entry id="5026" string="Additional arguments"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder"/>
@@ -772,9 +773,9 @@
 	  <entry id="32100" string="Presets"/>
 	  <entry id="32101" string="Use preset"/>
 	  <entry id="32102" string="Custom settings"/>
-	  <entry id="32103" string="Medium, Fast"/>
-	  <entry id="32104" string="Standard, Fast"/>
-	  <entry id="32105" string="Extreme, Fast"/>
+	  <entry id="32103" string="Medium"/>
+	  <entry id="32104" string="Standard"/>
+	  <entry id="32105" string="Extreme"/>
 	  <entry id="32106" string="Bitrate"/>
 	  <entry id="32107" string="Quality"/>
 	  <entry id="32108" string="Set bitrate"/>
@@ -1264,7 +1265,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!"/>
 	  <entry id="102202" string="Error downloading video!"/>
 	  <entry id="102203" string="You are already downloading this video!"/>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!"/>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!"/>
 	</section>
       </section>
 

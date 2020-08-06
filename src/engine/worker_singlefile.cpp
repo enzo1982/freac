@@ -193,7 +193,6 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	verifier->Destroy();
 
 	if (decoder->GetErrorState())  onReportError.Emit(decoder->GetErrorString());
-	if (verifier->GetErrorState()) onReportError.Emit(verifier->GetErrorString());
 
 	delete decoder;
 	delete verifier;

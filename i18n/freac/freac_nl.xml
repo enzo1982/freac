@@ -770,9 +770,9 @@
 	  <entry id="32100" string="Presets">Presets</entry>
 	  <entry id="32101" string="Use preset">Preset gebruiken</entry>
 	  <entry id="32102" string="Custom settings">Aangepaste instellingen</entry>
-	  <entry id="32103" string="Medium, Fast">Medium, snel</entry>
-	  <entry id="32104" string="Standard, Fast">Standaard, snel</entry>
-	  <entry id="32105" string="Extreme, Fast">Extreem, snel</entry>
+	  <entry id="32103" string="Medium">Medium</entry>
+	  <entry id="32104" string="Standard">Standaard</entry>
+	  <entry id="32105" string="Extreme">Extreem</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Kwaliteit</entry>
 	  <entry id="32108" string="Set bitrate">Bitrate</entry>
@@ -1262,7 +1262,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Deze URL wordt niet ondersteund of is geen videopagina-URL!</entry>
 	  <entry id="102202" string="Error downloading video!">Fout bij downloaden van video!</entry>
 	  <entry id="102203" string="You are already downloading this video!">U bent deze video al aan het downloaden!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Sommige vereiste videodecoders konden niet gevonden worden. Videobestanden&#10;kunnen niet toegevoegd worden aan de takenlijst voor conversie naar audiobestanden.&#10;&#10;Installeer avconv of FFmpeg om dit probleem op te lossen!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Sommige vereiste videodecoders konden niet gevonden worden. Videobestanden&#10;kunnen niet toegevoegd worden aan de takenlijst voor conversie naar audiobestanden.&#10;&#10;Installeer FFmpeg of avconv om dit probleem op te lossen!</entry>
 	</section>
       </section>
 

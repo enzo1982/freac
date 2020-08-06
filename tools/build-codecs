@@ -101,9 +101,9 @@ fi
 faac_version=1.30
 faad2_version=2.9.2
 fdk_aac_version=2.0.1
+ffmpeg_version=4.3.1
 flac_version=1.3.3
 lame_version=3.100
-libav_version=12.3
 libcdio_version=2.1.0
 libcdio_paranoia_version=10.2+2.0.1
 libogg_version=1.3.4
@@ -111,22 +111,22 @@ libsamplerate_version=0.1.9
 libsndfile_version=1.0.28
 mac_version=5.44
 mp4v2_version=2.0.0
-mpg123_version=1.26.1
+mpg123_version=1.26.3
 musepack_version=4.75
 opus_version=1.3.1
 rnnoise_version=9acc1e5
 rubberband_version=1.8.2
 speex_version=1.2.0
-vorbis_version=1.3.6
+vorbis_version=1.3.7
 wavpack_version=5.3.0
 
 # Package locations
 faac_location=https://github.com/knik0/faac/archive/${faac_version//./_}.tar.gz
 faad2_location=https://github.com/knik0/faad2/archive/${faad2_version//./_}.tar.gz
 fdk_aac_location=https://sourceforge.net/projects/opencore-amr/files/fdk-aac/fdk-aac-$fdk_aac_version.tar.gz
+ffmpeg_location=https://ffmpeg.org/releases/ffmpeg-$ffmpeg_version.tar.xz
 flac_location=https://ftp.osuosl.org/pub/xiph/releases/flac/flac-$flac_version.tar.xz
 lame_location=https://sourceforge.net/projects/lame/files/lame/$lame_version/lame-$lame_version.tar.gz
-libav_location=https://libav.org/releases/libav-$libav_version.tar.xz
 libcdio_location=https://ftp.gnu.org/gnu/libcdio/libcdio-$libcdio_version.tar.bz2
 libcdio_paranoia_location=https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-$libcdio_paranoia_version.tar.bz2
 libogg_location=https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-$libogg_version.tar.xz
@@ -134,7 +134,7 @@ libsamplerate_location=http://www.mega-nerd.com/SRC/libsamplerate-$libsamplerate
 libsndfile_location=http://www.mega-nerd.com/libsndfile/files/libsndfile-$libsndfile_version.tar.gz
 mac_location=https://freac.org/patches/MAC_SDK_${mac_version%.*}${mac_version#*.}.zip
 mp4v2_location=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-$mp4v2_version.tar.bz2
-mpg123_location=https://www.mpg123.de/download/mpg123-$mpg123_version.tar.bz2
+mpg123_location=https://mpg123.org/download/mpg123-$mpg123_version.tar.bz2
 musepack_location=https://files.musepack.net/source/musepack_src_r${musepack_version%.*}${musepack_version#*.}.tar.gz
 opus_location=https://ftp.osuosl.org/pub/xiph/releases/opus/opus-$opus_version.tar.gz
 rnnoise_location=https://codeload.github.com/xiph/rnnoise/zip/$rnnoise_version
@@ -214,7 +214,7 @@ build () {
   else
     eval $configure_exports ./configure $host_flags $configure_flags $prefix
   fi
-  $MAKE -j$jobs
+  $MAKE $make_flags -j$jobs
 
   index=0
 
@@ -237,7 +237,7 @@ build () {
       set -e
     done
   else
-    $SUDO $MAKE -j$jobs install
+    $SUDO $MAKE $make_flags -j$jobs install
   fi
 
   cd ..
@@ -248,6 +248,7 @@ build () {
   unset configure_exports
   unset configure_flags
   unset host_flags
+  unset make_flags
   unset folder
 
   export CFLAGS="$cflags $cflags_unroll"
@@ -258,15 +259,15 @@ packages=$@
 
 if [ ${#packages[0]} -eq 0 ]; then
   echo "Usage: build.sh [{list of packages}|all]"
-  echo "Available packages: faac faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack"
+  echo "Available packages: faac faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack"
   echo
 elif [ "${packages[0]}" == all ]; then
   if [[ $uname == Darwin ]]; then
-    packages=( faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 opus speex vorbis wavpack )
+    packages=( faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 opus speex vorbis wavpack )
   elif [[ $uname == Haiku ]]; then
     packages=( faac faad2 fdk-aac flac lame libogg mpg123 opus speex vorbis )
   else
-    packages=( faac faad2 fdk-aac flac lame libav libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack )
+    packages=( faac faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack )
   fi
 fi
 
@@ -300,6 +301,38 @@ for package in ${packages[@]}; do
     # Build FDK-AAC
     export CXXFLAGS="$cflags $cflags_unroll"
     build $fdk_aac_location .libs/libfdk-aac$sharedinfix.$sharedext FDK-AAC.$sharedext
+
+  elif [ $package == ffmpeg ]; then
+    # Build ffmpeg
+    export CFLAGS="$cflags"
+    configure_flags="--disable-autodetect --disable-doc --enable-gpl --enable-small --enable-runtime-cpudetect"
+    if [[ $arm == true || $arm64 == true ]] && [[ `uname -m` == x86_64 ]]; then
+      host_flags="--enable-cross-compile"
+      if [[ $arm == true ]]; then
+        host_flags="$host_flags --arch=arm"
+      else
+        host_flags="$host_flags --arch=aarch64"
+      fi
+      if [[ $uname == Linux ]]; then
+        host_flags="$host_flags --target-os=linux"
+      fi
+    else
+      host_flags=" "
+    fi
+    if [[ $uname == *MINGW* ]]; then
+      make_flags="V=1"
+    elif [[ $uname == Darwin ]]; then
+      configure_flags="$configure_flags --disable-audiotoolbox"
+      if [[ $ppc == true ]]; then
+        configure_flags="$configure_flags --disable-swscale"
+        host_flags="--arch=ppc"
+      elif [[ $x86_64 == true ]]; then
+        host_flags="--arch=x86_64"
+      elif [[ $x86 == true ]]; then
+        host_flags="--arch=i386"
+      fi
+    fi
+    build $ffmpeg_location ffmpeg.$execext ffmpeg.$execext
 
   elif [ $package == flac ]; then
     # Build FLAC
@@ -344,38 +377,6 @@ for package in ${packages[@]}; do
       configure_flags="--enable-nasm"
     fi
     build $lame_location libmp3lame/.libs/libmp3lame$sharedinfix.$sharedext LAME.$sharedext
-
-  elif [ $package == libav ]; then
-    # Build libav
-    export CFLAGS="$cflags"
-    configure_flags="--enable-gpl --enable-small --enable-runtime-cpudetect"
-    if [[ $arm == true || $arm64 == true ]] && [[ `uname -m` == x86_64 ]]; then
-      host_flags="--enable-cross-compile"
-      if [[ $arm == true ]]; then
-        host_flags="$host_flags --arch=arm"
-      else
-        host_flags="$host_flags --arch=aarch64"
-      fi
-      if [[ $uname == Linux ]]; then
-        host_flags="$host_flags --target-os=linux"
-      fi
-    else
-      host_flags=" "
-    fi
-    if [[ $uname == *MINGW* ]]; then
-      prepare="sed -i -e \"s/#if HAVE_DIRECT_H/#ifdef HAVE_DIRECT_H/\" libavformat/os_support.h && sed -i -e \"s/#if HAVE_ISATTY/#if HAVE_ISATTY_/\" libavutil/log.c && sed -i -e \"s/#include \x22version.h\x22/#include \x22version.h\x22\n#include \x22libavutil\/mathematics.h\x22/\" libavutil/common.h && sed -i -e \"s/#ifndef M_LOG2_10/#ifndef M_E\n#define M_E 2.7182818284590452354\n#endif\n#ifndef M_PI\n#define M_PI 3.14159265358979323846\n#endif\n#ifndef M_SQRT2\n#define M_SQRT2 1.41421356237309504880\n#endif\n#ifndef M_SQRT1_2\n#define M_SQRT1_2 0.70710678118654752440\n#endif\n#ifndef M_LN2\n#define M_LN2 0.69314718055994530942\n#endif\n#ifndef M_LN10\n#define M_LN10 2.30258509299404568402\n#endif\n#ifndef M_LOG2_10/\" libavutil/mathematics.h"
-      configure_flags="$configure_flags --enable-memalign-hack --enable-w32threads"
-    elif [[ $uname == Darwin ]]; then
-      configure_flags="$configure_flags --enable-memalign-hack --disable-vda"
-      if [[ $ppc == true ]]; then
-        host_flags="--arch=ppc"
-      elif [[ $x86_64 == true ]]; then
-        host_flags="--arch=x86_64"
-      elif [[ $x86 == true ]]; then
-        host_flags="--arch=i386"
-      fi
-    fi
-    build $libav_location avconv.$execext avconv.$execext
 
   elif [ $package == libcdio ]; then
     # Build CDIO

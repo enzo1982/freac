@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -117,13 +117,15 @@ Void BoCA::ChooserTracks::OnChangeLanguageSettings()
 
 	if (prevVisible) Hide();
 
+	Int	 numAlign = i18n->IsActiveLanguageRightToLeft() ? OR_LEFT : OR_RIGHT;
+
 	list_tracks->RemoveAllTabs();
 
 	list_tracks->AddTab(i18n->TranslateString("Artist"), 120);
 	list_tracks->AddTab(i18n->TranslateString("Title"));
-	list_tracks->AddTab(i18n->TranslateString("Track"), 50, OR_RIGHT);
-	list_tracks->AddTab(i18n->TranslateString("Length"), 80, OR_RIGHT);
-	list_tracks->AddTab(i18n->TranslateString("Size"), 80, OR_RIGHT);
+	list_tracks->AddTab(i18n->TranslateString("Track"), 50, numAlign);
+	list_tracks->AddTab(i18n->TranslateString("Length"), 80, numAlign);
+	list_tracks->AddTab(i18n->TranslateString("Size"), 80, numAlign);
 
 	/* Show all widgets again.
 	 */

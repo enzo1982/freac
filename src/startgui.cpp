@@ -20,6 +20,7 @@
 #include <engine/converter.h>
 
 #include <jobs/engine/convert.h>
+#include <jobs/joblist/addfiles.h>
 #include <jobs/joblist/addtracks.h>
 #include <jobs/joblist/removedisc.h>
 #include <jobs/other/checkforupdates.h>
@@ -250,6 +251,10 @@ freac::freacGUI::freacGUI()
 	mainWnd->SetMinimumSize(Size(600, 400 + (config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowTitleInfoID, Config::SettingsShowTitleInfoDefault) ? 68 : 0)));
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowMaximizedID, Config::SettingsWindowMaximizedDefault)) mainWnd->Maximize();
+
+	/* Parse arguments and add files to joblist.
+	 */
+	ParseArguments(GetArguments());
 
 	/* Run update check.
 	 */
@@ -1322,17 +1327,30 @@ Void freac::freacGUI::FillMenus()
 
 	mainWnd_iconbar->AddEntry();
 
-	entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "icons/conversion/conversion-start-warning.png" : "icons/conversion/conversion-start.png")), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
-	entry->onAction.Connect(&freacGUI::Convert, this);
-	entry->SetTooltipText(i18n->TranslateString(currentConfig->deleteAfterEncoding ? "Start the encoding process (deleting original files)" : "Start the encoding process"));
+	for (Int i = 0; i < 3; i++)
+	{
+		switch (i18n->IsActiveLanguageRightToLeft() ? 2 - i : i)
+		{
+			case 0:
+				entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append(currentConfig->deleteAfterEncoding ? "icons/conversion/conversion-start-warning.png" : "icons/conversion/conversion-start.png")), boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_ENCODER) > 0 ? menu_encoders : NIL);
+				entry->onAction.Connect(&freacGUI::Convert, this);
+				entry->SetTooltipText(i18n->TranslateString(currentConfig->deleteAfterEncoding ? "Start the encoding process (deleting original files)" : "Start the encoding process"));
 
-	entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/conversion/conversion-pause.png")));
-	entry->onAction.Connect(&freacGUI::PauseResumeEncoding, this);
-	entry->SetTooltipText(i18n->TranslateString("Pause/resume encoding"));
+				break;
+			case 1:
+				entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/conversion/conversion-pause.png")));
+				entry->onAction.Connect(&freacGUI::PauseResumeEncoding, this);
+				entry->SetTooltipText(i18n->TranslateString("Pause/resume encoding"));
 
-	entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/conversion/conversion-stop.png")));
-	entry->onAction.Connect(&freacGUI::StopEncoding, this);
-	entry->SetTooltipText(i18n->TranslateString("Stop encoding"));
+				break;
+			case 2:
+				entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/conversion/conversion-stop.png")));
+				entry->onAction.Connect(&freacGUI::StopEncoding, this);
+				entry->SetTooltipText(i18n->TranslateString("Stop encoding"));
+
+				break;
+		}
+	}
 
 	/* Set size of iconbar entries to 28x28 pixels.
 	 */
@@ -1463,6 +1481,61 @@ Void freac::freacGUI::AddFilesFromDirectory()
 
 		joblist->AddTracksByDragAndDrop(directories);
 	}
+}
+
+Void freac::freacGUI::ParseArguments(const Array<String> &args)
+{
+	Registry	&boca = Registry::Get();
+	Array<String>	 files;
+
+	foreach (const String &arg, args)
+	{
+#ifdef __WIN32__
+		if (arg.EndsWith(":\\") && arg.Length() == 3 && GetDriveType(arg) == DRIVE_CDROM)
+#else
+		if (arg.Contains("cdda:host="))
+#endif
+		{
+			DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
+
+			if (info != NIL)
+			{
+				/* Find drive number.
+				 */
+				Int	 driveNumber = 0;
+
+#ifdef __WIN32__
+				String	 driveLetter = String(" :");
+
+				for (driveLetter[0] = 'A'; driveLetter[0] < arg[0]; driveLetter[0]++)
+				{
+					if (GetDriveType(driveLetter) == DRIVE_CDROM) driveNumber++;
+				}
+#else
+				String	 devicePath  = String("/dev/").Append(arg.Tail(arg.Length() - arg.Find("cdda:host=") - 10));
+
+				for (Int i = 0; i < info->GetNumberOfDevices(); i++)
+				{
+					if (info->GetNthDeviceInfo(i).path == devicePath) driveNumber = i;
+				}
+#endif
+
+				/* Add tracks to joblist.
+				 */
+				const Array<String>	&urls = info->GetNthDeviceTrackList(driveNumber);
+
+				(new JobAddTracks(urls, False))->Schedule();
+
+				boca.DeleteComponent(info);
+			}
+
+			continue;
+		}
+
+		if (File(arg).Exists()) files.Add(arg);
+	}
+
+	if (files.Length() > 0) (new JobAddFiles(files))->Schedule();
 }
 
 Void freac::freacGUI::ToggleSignalProcessing()

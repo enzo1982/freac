@@ -328,7 +328,7 @@ Void BoCA::LayerYouTube::OnShowLayer()
 		i18n->SetContext("Extensions::Video Downloader::Errors");
 
 		Bool		 doNotShowAgain = False;
-		MessageDlg	 messageBox(i18n->TranslateString("Some required video decoders could not be found. Video files\ncannot be added to the joblist for conversion to audio files.\n\nPlease install avconv or FFmpeg to fix this problem!"), i18n->TranslateString("Note"), Message::Buttons::Ok, Message::Icon::Warning, i18n->TranslateString("Do not display this note again"), &doNotShowAgain);
+		MessageDlg	 messageBox(i18n->TranslateString("Some required video decoders could not be found. Video files\ncannot be added to the joblist for conversion to audio files.\n\nPlease install FFmpeg or avconv to fix this problem!"), i18n->TranslateString("Note"), Message::Buttons::Ok, Message::Icon::Warning, i18n->TranslateString("Do not display this note again"), &doNotShowAgain);
 
 		messageBox.ShowDialog();
 
@@ -421,10 +421,12 @@ Void BoCA::LayerYouTube::OnChangeLanguageSettings()
 
 	list_tracks->RemoveAllTabs();
 
+	Int	 numAlign = i18n->IsActiveLanguageRightToLeft() ? OR_LEFT : OR_RIGHT;
+
 	list_tracks->AddTab(i18n->TranslateString("Uploader"), 150);
 	list_tracks->AddTab(i18n->TranslateString("Title"));
-	list_tracks->AddTab(i18n->TranslateString("Length"), 80, OR_RIGHT);
-	list_tracks->AddTab(i18n->TranslateString("Size"), 80, OR_RIGHT);
+	list_tracks->AddTab(i18n->TranslateString("Length"), 80, numAlign);
+	list_tracks->AddTab(i18n->TranslateString("Size"), 80, numAlign);
 
 	text_source->SetText(i18n->AddColon(i18n->TranslateString("Video URL")));
 	text_title->SetText(i18n->AddColon(i18n->TranslateString("Video title")));

@@ -360,9 +360,9 @@
 
 	<section name="Basic">
 	  <entry id="32102" string="Custom settings">קביעת הגדרות ידנית</entry>
-	  <entry id="32103" string="Medium, Fast">בינוני, מהיר</entry>
-	  <entry id="32104" string="Standard, Fast">רגיל, מהיר</entry>
-	  <entry id="32105" string="Extreme, Fast">קיצוני, מהיר</entry>
+	  <entry id="32103" string="Medium">בינוני</entry>
+	  <entry id="32104" string="Standard">רגיל</entry>
+	  <entry id="32105" string="Extreme">קיצוני</entry>
 	  <entry id="32106" string="Bitrate">קצב העברת נתונים</entry>
 	  <entry id="32107" string="Quality">איכות</entry>
 	  <entry id="32108" string="Set bitrate">קבע קצב ביטים</entry>

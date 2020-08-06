@@ -772,9 +772,9 @@
 	  <entry id="32100" string="Presets">Предварителна настройки</entry>
 	  <entry id="32101" string="Use preset">Използване предв. настройка</entry>
 	  <entry id="32102" string="Custom settings">Собствени настройки</entry>
-	  <entry id="32103" string="Medium, Fast">Средно, Бързо</entry>
-	  <entry id="32104" string="Standard, Fast">Стандартно, Бързо</entry>
-	  <entry id="32105" string="Extreme, Fast">Пределно, Бързо</entry>
+	  <entry id="32103" string="Medium">Средно</entry>
+	  <entry id="32104" string="Standard">Стандартно</entry>
+	  <entry id="32105" string="Extreme">Пределно</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Качество</entry>
 	  <entry id="32108" string="Set bitrate">Зад. bitrate</entry>
@@ -1264,7 +1264,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Този URL адрес не е поддържан или не е URL адрес на видео страница!</entry>
 	  <entry id="102202" string="Error downloading video!">Грешка при изтегляне на видеото!</entry>
 	  <entry id="102203" string="You are already downloading this video!">Вече изтегляте това видео!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Някои нужни видео декодери не могат да бъдат открити.&#10;Видео файловете не могат да бъдат добавени към списъка&#10;със задачи за преобразуване в аудио файлове.&#10;Инсталирайте avconv или FFmpeg за отстраняване проблема!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Някои нужни видео декодери не могат да бъдат открити.&#10;Видео файловете не могат да бъдат добавени към списъка&#10;със задачи за преобразуване в аудио файлове.&#10;Инсталирайте FFmpeg или avconv за отстраняване проблема!</entry>
 	</section>
       </section>
 

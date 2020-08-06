@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">easyUpdate</property>
+    <property name="version">0.3</property>
+    <property name="language">Hindi / हिन्दी</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">eupdate.xml</property>
+    <property name="author">Tushar Chandra &lt;cout.destiny@gmail.com&gt;</property>
+    <property name="url">http://www.chapter0.net/easyUpdate/</property>
+  </info>
+  <data>
+    <entry id="1" string="Cancel">रद्द करें</entry>
+    <entry id="2" string="Install">इंस्टॉल</entry>
+    <entry id="3" string="Show unstable releases">अस्थिर रिलीज दिखाएं</entry>
+    <entry id="4" string="Select the updated program version to be installed:">स्थापित होने के लिए अद्यतन प्रोग्राम संस्करण का चयन करें:</entry>
+    <entry id="5" string="You can select optional components to be installed:">आप स्थापित किए जाने वाले वैकल्पिक घटकों का चयन कर सकते हैं:</entry>
+    <entry id="6" string="Version ID">संस्करण आईडी</entry>
+    <entry id="7" string="Package">पैकेज</entry>
+    <entry id="8" string="Description">विवरण</entry>
+    <entry id="9" string="Latest">नवीनतम</entry>
+    <entry id="10" string="Size">साइज</entry>
+    <entry id="11" string="Yes">हाँ</entry>
+    <entry id="12" string="No">नहीं</entry>
+    <entry id="13" string="unknown">अनजान</entry>
+    <entry id="14" string="Installing files...">फ़ाइलें स्थापित कर रहा है ...</entry>
+    <entry id="15" string="Installing file:">फ़ाइल स्थापित करना:</entry>
+    <entry id="16" string="Downloading file:">डाउनलोडिंग फ़ाइल:</entry>
+    <entry id="17" string="Update complete">अपडेट पूरा करें</entry>
+    <entry id="18" string="Your application has been successfully updated!">आपका एप्लिकेशन सफलतापूर्वक अपडेट कर दिया गया है!</entry>
+    <entry id="19" string="Error">त्रुटि</entry>
+    <entry id="20" string="Error downloading package!">पैकेज डाउनलोड करने में त्रुटि!</entry>
+    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">इंस्टॉल करने में त्रुटि &quot;%1&quot;!&#10;&#10;एप्लिकेशन डायरेक्टरी तक पहुंच को अस्वीकार कर दिया गया था।</entry>
+  </data>
+</LangFile>

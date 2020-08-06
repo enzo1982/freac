@@ -22,7 +22,7 @@ ripping and tag editing and converts the following audio formats:
 
 	- Apple Lossless (ALAC)
 		- using the Core Audio ALAC encoder	(http://www.apple.com/)
-		- using the libav ALAC encoder		(http://www.libav.org/)
+		- using the FFmpeg ALAC encoder		(http://www.ffmpeg.org/)
 		- using David Hammerton's ALAC decoder	(http://www.craz.net/)
 
 	- Musepack					(http://www.musepack.net/)
@@ -33,7 +33,7 @@ ripping and tag editing and converts the following audio formats:
 
 	- various other formats
 		- using the libsndfile library		(http://www.mega-nerd.com/)
-		- using the libav codec library		(http://www.libav.org/)
+		- using the FFmpeg converter		(http://www.ffmpeg.org/)
 
 Further codecs (e.g. Nero's HE-AAC encoder) can be used as external
 plug-ins (see the manual for installation instructions).
@@ -147,11 +147,52 @@ Requirements
 History
 -------
 
-	Version 1.1.3 (June 2020)
+	Version 1.1.3 (August 2020)
+
+		- Improvements
+
+			- improved support for languages written from right to left
+			- command line codec configuration now allows specifying additional arguments
+			- improved detection of cue sheet encoding to support system codepage and UTF-8 without BOM
+			- freaccmd now splits cue sheets to individual tracks unless an output file is specified using the -o option
+			- freaccmd now supports a --split-chapters option to split files with chapter tags into individual chapters
+			- added <profile> placeholder for use in output folder configuration setting, resolving to user profile folder
+			- added file type associations to Linux/FreeBSD and Windows Store app, so fre:ac is offered for opening audio files
+			- added audio CD association to Linux/FreeBSD and Windows Store app, so fre:ac can be started when inserting a CD
+			- switched back to FFmpeg from avconv for improved format support
+
+		- Bug fixes
+
+			- fixed possible conversion thread hangs when using external encoders
+			- fixed possible crash related to drag & drop handling on Windows
+			- fixed possible glitches in WAV/AIFF output when processing float samples outside the -1.0/+1.0 range
+			- fixed possible hangs when opening WAV/AIFF files larger than 2 GB or with a broken chunk structure
+			- fixed inability to open WAV/AIFF files with long paths on Windows
+			- fixed invalid MP3 bitstreams written in rare cases in SuperFast mode
+			- fixed wrong length detection for MP3 files with invalid chapter data
+			- fixed parsing of cue sheets with minute/second indications missing leading zeros and/or duration longer than 99 minutes
+			- fixed parsing of embedded cue sheets without FILE designations
+			- fixed log files being archived despite disabling the corresponding option
+
+		- Updated codecs
+
+			- updated Vorbis to version 1.3.7 (plus aoTuV b6.03 and Lancer optimizations)
+			- updated mpg123 to version 1.26.3
 
 		- New translations
 
 			- added Persian translation
+			- added Hindi translation
+
+	Version 1.1.2b (July 2020)
+
+		- Bug fixes
+
+			- fixed crash when decoding MP3 files on x64 Windows systems without AVX support
+
+		- Updated codecs
+
+			- updated mpg123 to version 1.26.2 (plus Windows x64 ASM patch)
 
 	Version 1.1.2a (June 2020)
 
@@ -485,7 +526,8 @@ Special thanks to
 			   Xabier Aramendi (Basque),
 			   Kin Kwok (Cantonese, Hong Kong),
 			   Patriccollu di Santa Maria è Sichè (Corsican),
-			   XilizaX (Persian)
+			   XilizaX (Persian),
+			   Tushar Chandra (Hindi)
 
 	- Hans-Jürgen Bardenhagen for his help and suggestions for the FAAC encoder
 	- all the testers and everyone who submitted bug reports

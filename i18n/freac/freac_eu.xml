@@ -471,9 +471,9 @@
 	  <entry id="32100" string="Presets">Aurrezarpenak</entry>
 	  <entry id="32101" string="Use preset">Erabili aurrezarpena</entry>
 	  <entry id="32102" string="Custom settings">Norbere ezarpenak</entry>
-	  <entry id="32103" string="Medium, Fast">Ertaina, Azkarra</entry>
-	  <entry id="32104" string="Standard, Fast">Estandarra, Azkarra</entry>
-	  <entry id="32105" string="Extreme, Fast">Hertzekoa, Azkarra</entry>
+	  <entry id="32103" string="Medium">Ertaina</entry>
+	  <entry id="32104" string="Standard">Estandarra</entry>
+	  <entry id="32105" string="Extreme">Hertzekoa</entry>
 	  <entry id="32106" string="Bitrate">Bitneurria</entry>
 	  <entry id="32107" string="Quality">Ontasuna</entry>
 	  <entry id="32108" string="Set bitrate">Ezarri bitneurria</entry>

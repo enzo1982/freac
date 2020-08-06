@@ -52,7 +52,7 @@
     <entry id="15" string="Setup - Installation finished">Инсталиране - Инсталирането е завършено</entry>
     <entry id="16" string="Congratulations! %NAME% %VERSION% has been successfully installed&#10;on your computer.&#10;&#10;You can now start %NAME% from the Windows Start menu.&#10;&#10;Click Finish to close the setup wizard.">Поздравления! %NAME% %VERSION% е инсталирана успешно&#10;на Вашият компютър.&#10;&#10;Сега можете да стартирате %NAME% от меню Старт на Windows.&#10;&#10;Натиснете Край, за да излезете от програмата за инсталиране.</entry>
     <entry id="17" string="%NAME% %VERSION% program files (required)">Програмни файлове %NAME% %VERSION% (задължително)</entry>
-    <entry id="18" string="easyUpdate online updater">Онлайн  актуализиране чрез мрежата easyUpdate</entry>
+    <entry id="18" string="easyUpdate online updater">Онлайн актуализиране чрез мрежата easyUpdate</entry>
     <entry id="19" string="Install an online update&#10;component that will notify&#10;you about new software&#10;versions">Инсталиране на компонент&#10;за онлайн актуализации,&#10;който ще Ви информира за&#10;нови версии на програмата</entry>
     <entry id="20" string="%NAME% command line interface">Интерфейс на командния ред за %NAME%</entry>
     <entry id="21" string="Install a command line&#10;interface useful for use&#10;in batch scripts">Инсталиране интерфейса&#10;на командния ред за&#10;използване в група&#10;скриптове</entry>

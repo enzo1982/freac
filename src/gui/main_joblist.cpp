@@ -354,7 +354,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	edb_filename->SetOrientation(OR_LOWERLEFT);
 	edb_filename->Deactivate();
 
-	btn_skip = new Button(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/other/skip.png")), Point(0, 103), Size(27, 27));
+	btn_skip = new Button(Bitmap(), Point(0, 103), Size(27, 27));
 	btn_skip->SetOrientation(OR_LOWERLEFT);
 	btn_skip->SetFlags(BF_NOFRAME);
 	btn_skip->onAction.Connect(&onRequestSkipTrack);
@@ -920,6 +920,11 @@ Void freac::LayerJoblist::OnChangeLanguageSettings()
 
 	btn_browse->SetWidth(Math::Max(80, btn_browse->GetUnscaledTextWidth() + 13));
 
+	Bitmap	 skipIcon = ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/other/skip.png"));
+
+	if (i18n->IsActiveLanguageRightToLeft()) Utilities::MirrorBitmap(skipIcon);
+
+	btn_skip->SetBitmap(skipIcon);
 	btn_skip->SetX(btn_skip->GetWidth() + 7);
 	btn_browse->SetX(btn_browse->GetWidth() + 7);
 

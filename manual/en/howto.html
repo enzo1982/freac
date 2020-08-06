@@ -34,6 +34,7 @@
 		  <p><a href="#anchor_app">How to run the fre:ac AppImage?</a></p>
 		  <p><a href="#anchor_scl">How to change the font size of fre:ac?</a></p>
 		  <p><a href="#anchor_pat">How to use output file name patterns in fre:ac?</a></p>
+		  <p><a href="#anchor_out">How to configure the output folder for portable use?</a></p>
 		  <p><a href="#anchor_enc">How to install encoder/decoder xy?</a></p>
 		  <p><a href="#anchor_tra">How to add a new translation to fre:ac?</a></p>
 		  <p><a href="#anchor_src">How to compile fre:ac from source?</a></p>
@@ -132,6 +133,28 @@
 		  </blockquote>
 		  <p>This would encode the beforementioned file to <b>C:\Encoded\Favorites\Starsailor - Silence is Easy\Starsailor - Silence
 		    is Easy - 01 - Music was Saved.m4a</b>.</p>
+		</blockquote>
+		<h4 id="anchor_out">How to configure the output folder for portable use?</h4>
+		<blockquote>
+		  <p>When using fre:ac from a portable drive like an external HDD or USB drive, it is often desirable to have the output folder automatically
+		    adjust to the circumstances found on different computers. This can be different drive letters assigned to the portable drive, for example.
+		    fre:ac supports the following placeholders in the output folder configuration setting:</p>
+		  <ul>
+		    <li><b>&lt;installdrive&gt;</b> - The drive letter where fre:ac is installed (Windows only)</li>
+		    <li><b>&lt;profile&gt;</b> - The profile folder of the currently logged on user</li>
+		  </ul>
+		  <p>If you would like your output files to go to the portable drive regardless of the drive letter assigned to it, use the <b>&lt;installdrive&gt;</b>
+		    placeholder and configure the output folder like e.g.:</p>
+		  <blockquote>
+		    <p>&lt;installdrive&gt;\Music Files\</p>
+		  </blockquote>
+		  <p>If you would like your output files to go to the <b>My Music</b> folder of the currently logged on user instead, you can use the <b>&lt;profile&gt;</b>
+		    placeholder as follows:</p>
+		  <blockquote>
+		    <p>&lt;profile&gt;\Music\</p>
+		  </blockquote>
+		  <p>In both cases, the output path displayed in the lower area of fre:ac's main window will reflect the actual output folder with the placeholders already
+		    resolved.</p>
 		</blockquote>
 		<h4 id="anchor_enc">How to install encoder/decoder xy?</h4>
 		<blockquote>

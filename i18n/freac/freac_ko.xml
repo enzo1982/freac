@@ -676,9 +676,9 @@
 	  <entry id="32100" string="Presets">초기설정</entry>
 	  <entry id="32101" string="Use preset">초기설정 사용</entry>
 	  <entry id="32102" string="Custom settings">사용자 정의</entry>
-	  <entry id="32103" string="Medium, Fast">보통, 빠르기</entry>
-	  <entry id="32104" string="Standard, Fast">표준, 빠르기</entry>
-	  <entry id="32105" string="Extreme, Fast">최저, 빠르기</entry>
+	  <entry id="32103" string="Medium">보통</entry>
+	  <entry id="32104" string="Standard">표준</entry>
+	  <entry id="32105" string="Extreme">최저</entry>
 	  <entry id="32106" string="Bitrate">비트레이트</entry>
 	  <entry id="32107" string="Quality">음질</entry>
 	  <entry id="32108" string="Set bitrate">비트레이트</entry>

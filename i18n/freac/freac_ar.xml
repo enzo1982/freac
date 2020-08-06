@@ -61,7 +61,7 @@
       <entry id="515" string="%1 bit">%1 بيت</entry>
       <entry id="516" string="%1 bytes">%1 بايت</entry>
       <entry id="517" string="%1 kB">%1 kB</entry>
-      <entry id="518" string="%1%">%%1</entry>
+      <entry id="518" string="%1%">%1٪</entry>
     </section>
 
     <section name="Menu">
@@ -517,9 +517,9 @@
 	  <entry id="32100" string="Presets">المسبقات</entry>
 	  <entry id="32101" string="Use preset">استخدم المسبقات</entry>
 	  <entry id="32102" string="Custom settings">إعدادات مخصصة</entry>
-	  <entry id="32103" string="Medium, Fast">متوسط،تقريبا</entry>
-	  <entry id="32104" string="Standard, Fast">قياسي،تقريبا</entry>
-	  <entry id="32105" string="Extreme, Fast">أقصى،تقريبا</entry>
+	  <entry id="32103" string="Medium">متوسط</entry>
+	  <entry id="32104" string="Standard">قياسي</entry>
+	  <entry id="32105" string="Extreme">أقصى</entry>
 	  <entry id="32106" string="Bitrate">معدل بايت</entry>
 	  <entry id="32107" string="Quality">النوعية</entry>
 	  <entry id="32108" string="Set bitrate">ثبت معدل بايت</entry>
@@ -761,7 +761,7 @@
 	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">انقر فوق أحد الأزرار الموجودة أدناه للتبرع به باي بال:</entry>
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">يمكنك أيضا إرسال المال مباشرة إلى %1 باستخدام باي بال.</entry>
 	  <entry id="100102" string="usd">usd</entry>
-	  <entry id="100103" string="$%1">$%1</entry>
+	  <entry id="100103" string="$%1">%1 $</entry>
 	  <entry id="100104" string="5,10,20,other amount">5,10,20,كمية اخرى</entry>
 	</section>
 

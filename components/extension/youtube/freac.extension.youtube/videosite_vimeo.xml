@@ -2,7 +2,7 @@
   <name>Vimeo</name>
   <version>1.0</version>
   <decoders>
-    <decoder>avconv-m4v_audio-dec</decoder>
+    <decoder>ffmpeg-m4v_audio-dec</decoder>
   </decoders>
 
   <script type="text/javascript">

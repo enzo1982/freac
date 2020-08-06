@@ -125,6 +125,8 @@ namespace freac
 
 			Void						 PauseResumeEncoding();
 			Void						 StopEncoding();
+
+			Void						 ParseArguments(const Array<String> &);
 		slots:
 			Bool						 ExitProc();
 

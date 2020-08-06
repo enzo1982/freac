@@ -30,7 +30,7 @@ if [[ -n $CERTNAME ]]; then
   # Sign application
   echo Signing application...
   find freac.app -name *.dylib | xargs -I $ codesign --sign "$CERTNAME" --timestamp $
-  codesign --sign "$CERTNAME" --timestamp -o runtime ./freac.app/Contents/Resources/codecs/cmdline/avconv
+  codesign --sign "$CERTNAME" --timestamp -o runtime ./freac.app/Contents/Resources/codecs/cmdline/ffmpeg
   codesign --sign "$CERTNAME" --timestamp -o runtime ./freac.app/Contents/Resources/codecs/cmdline/mpcdec
   codesign --sign "$CERTNAME" --timestamp -o runtime ./freac.app/Contents/Resources/codecs/cmdline/mpcenc
   codesign --sign "$CERTNAME" --timestamp -o runtime ./freac.app/Contents/Resources/codecs/cmdline/wavpack
