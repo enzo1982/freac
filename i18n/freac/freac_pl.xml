@@ -398,7 +398,8 @@
       <entry id="5023" string="Verifiers">Weryfikatory</entry>
       <entry id="5024" string="Taggers">Edytory znaczników</entry>
       <entry id="5025" string="Processing">Przetwarzanie</entry>
-
+      <entry id="5026" string="Additional arguments">Parametry dodatkowe</entry>
+	    
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Ustawienia konwersji</entry>
 	<entry id="5101" string="Encoder">Konwerter</entry>
