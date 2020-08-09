@@ -149,6 +149,8 @@ History
 
 	Version 1.1.3 (August 2020)
 
+		- added support for macOS 11.0 Big Sur
+
 		- Improvements
 
 			- improved support for languages written from right to left
@@ -159,7 +161,6 @@ History
 			- added <profile> placeholder for use in output folder configuration setting, resolving to user profile folder
 			- added file type associations to Linux/FreeBSD and Windows Store app, so fre:ac is offered for opening audio files
 			- added audio CD association to Linux/FreeBSD and Windows Store app, so fre:ac can be started when inserting a CD
-			- switched back to FFmpeg from avconv for improved format support
 
 		- Bug fixes
 
@@ -172,10 +173,12 @@ History
 			- fixed wrong length detection for MP3 files with invalid chapter data
 			- fixed parsing of cue sheets with minute/second indications missing leading zeros and/or duration longer than 99 minutes
 			- fixed parsing of embedded cue sheets without FILE designations
+			- fixed ripping progress for other drives stalling while one drive is ejecting
 			- fixed log files being archived despite disabling the corresponding option
 
 		- Updated codecs
 
+			- switched from libav 12.3 to FFmpeg 4.3.1 for auxiliary format support
 			- updated Vorbis to version 1.3.7 (plus aoTuV b6.03 and Lancer optimizations)
 			- updated mpg123 to version 1.26.3
 

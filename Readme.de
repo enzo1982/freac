@@ -149,6 +149,8 @@ Geschichte
 
 	Version 1.1.3 (August 2020)
 
+		- Unterstützung für macOS 11.0 Big Sur hinzugefügt
+
 		- Verbesserungen
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
@@ -159,7 +161,6 @@ Geschichte
 			- Platzhalter <profile> zur Verwendung in der Ausgabeordner-Einstellung hinzugefügt, der auf den Profilordner des Benutzers verweist
 			- Dateitypzuordnungen zu Linux/FreeBSD .desktop-Datei hinzugefügt, so dass fre:ac zum Öffnen von Audiodateien angeboten wird
 			- Audio-CD-Zuordnung zu Linux/FreeBSD .desktop-Datei hinzugefügt, so dass fre:ac beim Einlegen einer CD gestartet werden kann
-			- Wechsel von avconv zurück zu FFmpeg für bessere Formatunterstützung
 
 		- Behobene Fehler
 
@@ -172,10 +173,12 @@ Geschichte
 			- Falsche Längenerkennung bei MP3-Dateien mit ungültigen Kapitelinformationen behoben
 			- Problem mit Verarbeitung von Cuesheets mit Minuten-/Sekundenangaben ohne führende Nullen und/oder Dauer von mehr als 99 Minuten behoben
 			- Problem mit Verarbeitung von eingebetteten Cuesheets ohne FILE-Angaben behoben
+			- Problem mit Einfrieren des Ripping-Fortschritts anderer Laufwerke während Auswurf eines Laufwerks behoben
 			- Problem mit Archivierung von Protokolldateien trotz deaktivierter Option behoben
 
 		- Aktualisierte Codecs
 
+			- Wechsel von libav 12.3 zu FFmpeg 4.3.1 für Unterstützung ergänzender Formate
 			- Vorbis auf Version 1.3.7 (plus aoTuV b6.03 und Lancer-Optimierungen) aktualisiert
 			- mpg123 auf Version 1.26.3 aktualisiert
 
