@@ -152,7 +152,7 @@ Error freac::JobAddTracks::Perform()
 		{
 			if (!cddbQueried)
 			{
-				cdInfo	    = cddbQueryDlg::QueryCDDB(track);
+				cdInfo	    = cddbQueryDlg::QueryCDDB(track, True);
 				cddbQueried = True;
 			}
 

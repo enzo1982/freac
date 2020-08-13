@@ -159,8 +159,9 @@ Geschichte
 			- freaccmd teilt Cuesheets jetzt in einzelne Tracks, sofern keine Ausgabedatei mit der -o Option angegeben wird
 			- freaccmd unterstützt jetzt die --split-chapters Option zum Teilen von Dateien mit Kapitel-Tags in einzelne Kapitel
 			- Platzhalter <profile> zur Verwendung in der Ausgabeordner-Einstellung hinzugefügt, der auf den Profilordner des Benutzers verweist
-			- Dateitypzuordnungen zu Linux/FreeBSD .desktop-Datei hinzugefügt, so dass fre:ac zum Öffnen von Audiodateien angeboten wird
-			- Audio-CD-Zuordnung zu Linux/FreeBSD .desktop-Datei hinzugefügt, so dass fre:ac beim Einlegen einer CD gestartet werden kann
+			- Dateitypzuordnungen zu Linux-/FreeBSD- und Windows-Store-App hinzugefügt, so dass fre:ac zum Öffnen von Audiodateien angeboten wird
+			- Audio-CD-Zuordnung zu Linux-/FreeBSD- und Windows-Store-App hinzugefügt, so dass fre:ac beim Einlegen einer CD gestartet werden kann
+			- Option zum Unterdrücken von "Kein Eintrag gefunden"-Meldungen bei automatischen CDDB-Abfragen hinzugefügt
 
 		- Behobene Fehler
 

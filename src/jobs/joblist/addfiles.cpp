@@ -155,7 +155,7 @@ Error freac::JobAddFiles::Perform()
 				{
 					if (!cddbsQueried.Get(track.discid))
 					{
-						cdInfos.Add(cddbQueryDlg::QueryCDDB(track), track.discid);
+						cdInfos.Add(cddbQueryDlg::QueryCDDB(track, True), track.discid);
 						cddbsQueried.Add(True, track.discid);
 					}
 

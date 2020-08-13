@@ -399,6 +399,9 @@ const Bool	 freac::Config::FreedbOverwriteCDTextDefault			= True;
 const String	 freac::Config::FreedbUpdateJoblistID				= "UpdateJoblistOnSubmit";
 const Bool	 freac::Config::FreedbUpdateJoblistDefault			= True;
 
+const String	 freac::Config::FreedbDisplayNotFoundID				= "DisplayNotFoundNote";
+const Bool	 freac::Config::FreedbDisplayNotFoundDefault			= True;
+
 freac::Config::Config()
 {
 	BoCA::Config	*config = BoCA::Config::Get();

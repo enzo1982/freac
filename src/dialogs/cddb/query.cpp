@@ -286,10 +286,10 @@ Bool freac::cddbQueryDlg::Query(CDDB &cddb)
 	else				    return True;
 }
 
-freac::CDDBInfo freac::cddbQueryDlg::QueryCDDB(const BoCA::Track &track)
+freac::CDDBInfo freac::cddbQueryDlg::QueryCDDB(const BoCA::Track &track, Bool autoQuery)
 {
-	const BoCA::Config	*config = BoCA::Config::Get();
-	BoCA::I18n		*i18n	= BoCA::I18n::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
+	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
 	String		 queryString = CDDB::QueryStringFromMCDI(track.GetInfo().mcdi);
 	CDDBInfo	 cdInfo;
@@ -320,6 +320,21 @@ freac::CDDBInfo freac::cddbQueryDlg::QueryCDDB(const BoCA::Track &track)
 			if (QuickMessage(String(errorString).Append("\n\n").Append(i18n->TranslateString("Would you like to perform this query again later?", "CDDB::Query::Errors")), i18n->TranslateString("Error"), Message::Buttons::YesNo, Message::Icon::Error) == Message::Button::Yes)
 			{
 				CDDBBatch().AddQuery(queryString);
+			}
+		}
+		else if (errorString != NIL && autoQuery && !config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault))
+		{
+			/* Display info message.
+			 */
+			Bool		 doNotDisplayAgain = !config->GetIntValue(Config::CategoryFreedbID, Config::FreedbDisplayNotFoundID, Config::FreedbDisplayNotFoundDefault);
+
+			if (!doNotDisplayAgain)
+			{
+				MessageDlg	 messageBox(errorString, i18n->TranslateString("Info", "Messages"), Message::Buttons::Ok, Message::Icon::Information, i18n->TranslateString("Do not display this note again"), &doNotDisplayAgain);
+
+				messageBox.ShowDialog();
+
+				config->SetIntValue(Config::CategoryFreedbID, Config::FreedbDisplayNotFoundID, !doNotDisplayAgain);
 			}
 		}
 		else if (errorString != NIL)
