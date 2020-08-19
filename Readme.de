@@ -150,6 +150,7 @@ Geschichte
 	Version 1.1.3 (August 2020)
 
 		- Unterstützung für macOS 11.0 Big Sur hinzugefügt
+		- Wechsel zu GNUdb als Standard-CDDB-Datenbankservice
 
 		- Verbesserungen
 
