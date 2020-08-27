@@ -168,6 +168,7 @@ History
 
 			- fixed possible conversion thread hangs when using external encoders
 			- fixed possible crash related to drag & drop handling on Windows
+			- fixed crash when writing fields containing only whitespace to Vorbis Comment, APEv2, WMA or RIFF tags
 			- fixed possible glitches in WAV/AIFF output when processing float samples outside the -1.0/+1.0 range
 			- fixed possible hangs when opening WAV/AIFF files larger than 2 GB or with a broken chunk structure
 			- fixed inability to open WAV/AIFF files with long paths on Windows
@@ -177,6 +178,7 @@ History
 			- fixed parsing of embedded cue sheets without FILE designations
 			- fixed ripping progress for other drives stalling while one drive is ejecting
 			- fixed log files being archived despite disabling the corresponding option
+			- fixed user interface glitches after closing dialogs in tabbed mode on macOS
 
 		- Updated codecs
 

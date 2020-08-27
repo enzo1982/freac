@@ -168,6 +168,7 @@ Geschichte
 
 			- Mögliches Hängenbleiben des Konvertierungsthreads bei Verwendung externer Kodierer behoben
 			- Möglichen Absturz im Zusammenhang mit der Drag-&-Drop-Behandlung unter Windows behoben
+			- Absturz beim Schreiben von Feldern, die nur Leerzeichen enthalten, in Vorbis-Comment-, APEv2-, WMA- oder RIFF-Tags behoben
 			- Mögliche Fehler in WAV-/AIFF-Ausgabe bei Verarbeitung von float-Samples außerhalb des -1.0/+1.0 Bereichs behoben
 			- Mögliches Aufhängen beim Öffnen von WAV-/AIFF-Dateien größer als 2 GB oder mit ungültiger Chunk-Struktur behoben
 			- Problem beim Öffnen von WAV-/AIFF-Dateien mit langen Pfaden unter Windows behoben
@@ -177,6 +178,7 @@ Geschichte
 			- Problem mit Verarbeitung von eingebetteten Cuesheets ohne FILE-Angaben behoben
 			- Problem mit Einfrieren des Ripping-Fortschritts anderer Laufwerke während Auswurf eines Laufwerks behoben
 			- Problem mit Archivierung von Protokolldateien trotz deaktivierter Option behoben
+			- Probleme mit der Benutzeroberfläche nach dem Schließen von Dialogen im Tabbed-Modus unter macOS behoben
 
 		- Aktualisierte Codecs
 
