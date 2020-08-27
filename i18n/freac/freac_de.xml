@@ -634,6 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Der Zugriff auf CD-ROM-Laufwerke wurde von Windows verweigert.&#10;&#10;Bitte kontaktieren Sie Ihren Systemadministrator, um&#10;das Recht zum Zugriff auf das CD-ROM-Laufwerk zu erhalten.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Kein Konfigurationsdialog verfügbar für:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">Der ausgewählte Ordner existiert nicht mehr!</entry>
+      <entry id="7124" string="Access denied">Zugriff verweigert</entry>
     </section>
 
     <section name="Dialogs">
