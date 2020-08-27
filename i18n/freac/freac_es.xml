@@ -201,6 +201,7 @@
       <entry id="3044" string="verifying">comprobando</entry>
       <entry id="3045" string="Open">Abrir</entry>
       <entry id="3046" string="CD drive">Lector CD</entry>
+      <entry id="3047" string="Disc ID">ID del disco</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">Comprimiendo</entry>
@@ -615,6 +616,7 @@
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">No se puede acceder al archivo de entrada: %1&#10;&#10;Archivo: %1&#10;Carpeta: %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">No se puede crear el archivo de salida: %1&#10;&#10;Archivo: %1&#10;Carpeta: %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">Fallo al verificar el archivo de entrada: %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1">No se ha podido verificar la pista de entrada: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">La suma de verificación difiere en el archivo de salida: %1&#10;&#10;Suma de codificación: %2&#10;Suma de verificación: %3</entry>
       <entry id="7110" string="File not found">Archivo no encontrado</entry>
       <entry id="7111" string="Unknown file type">Tipo de archivo desconocido</entry>
