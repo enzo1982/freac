@@ -62,16 +62,14 @@ freac::JobAddFiles::JobAddFiles(const Array<String> &iFiles)
  
 	foreach (const String &file, iFiles) files.Add(file);
 
-	abort = False;
-
-	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Connect(&JobAddFiles::OnRemoveAllTracksJobScheduled, this);
+	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Connect(&Job::RequestAbort, this);
 
 	SetText(i18n->AddEllipsis(i18n->TranslateString("Waiting for other jobs to finish")));
 }
 
 freac::JobAddFiles::~JobAddFiles()
 {
-	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Disconnect(&JobAddFiles::OnRemoveAllTracksJobScheduled, this);
+	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Disconnect(&Job::RequestAbort, this);
 }
 
 Bool freac::JobAddFiles::ReadyToRun()
@@ -195,11 +193,6 @@ Error freac::JobAddFiles::Perform()
 	joblist->Unlock();
 
 	return Success();
-}
-
-Void freac::JobAddFiles::OnRemoveAllTracksJobScheduled()
-{
-	abort = True;
 }
 
 freac::JobAddFilesWorker::JobAddFilesWorker(const String &iFileName, Semaphore &iSemaphore) : semaphore(iSemaphore)

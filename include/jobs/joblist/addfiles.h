@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -19,8 +19,6 @@ namespace freac
 {
 	class JobAddFiles : public Job
 	{
-		private:
-			Bool		 abort;
 		protected:
 			Array<String>	 files;
 		public:
@@ -29,8 +27,6 @@ namespace freac
 
 			virtual Bool	 ReadyToRun();
 			virtual Error	 Perform();
-		slots:
-			Void		 OnRemoveAllTracksJobScheduled();
 	};
 };
 

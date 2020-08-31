@@ -37,7 +37,6 @@ namespace freac
 			Bool						 autoRip;
 
 			Bool						 skipTrack;
-			Bool						 stopConversion;
 
 			String						 singleOutFile;
 			BoCA::Format					 singleTrackSampleFormat;

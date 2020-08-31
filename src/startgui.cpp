@@ -360,6 +360,24 @@ Bool freac::freacGUI::ExitProc()
 	 */
 	Playback::Get()->Stop();
 
+	/* Order remaining jobs to abort.
+	 */
+	const Array<Job *>	&jobs = Job::GetRunningJobs();
+
+	jobs.LockForRead();
+
+	foreachreverse (Job *job, jobs) job->RequestAbort();
+
+	jobs.Unlock();
+
+	/* Wait for jobs to finish.
+	 */
+	Int	 suspendCount = Application::Lock::SuspendLock();
+
+	while (jobs.Length() > 0) S::System::System::Sleep(10);
+
+	Application::Lock::ResumeLock(suspendCount);
+
 	/* Notify components that we are about to quit.
 	 */
 	BoCA::Application::Get()->onQuit.Emit();
