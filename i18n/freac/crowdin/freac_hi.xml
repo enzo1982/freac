@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers">प्रमाणक</entry>
       <entry id="5024" string="Taggers">टैग</entry>
       <entry id="5025" string="Processing">प्रसंस्करण</entry>
+      <entry id="5026" string="Additional arguments"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">एनकोडर कॉन्फ़िगर करें</entry>
@@ -633,6 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">सीडी-रोम ड्राइव तक पहुँच से इनकार कर दिया गया था।&#10;&#10;कृपया अपने सिस्टम एडमिनिस्ट्रेटर से संपर्क करें&#10;ताकि सीडी-रोम ड्राइव को एक्सेस करने का अधिकार दिया जा सके।</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">इसके लिए कोई कॉन्फ़िगरेशन संवाद उपलब्ध नहीं है:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">चयनित फ़ोल्डर अब मौजूद नहीं है!</entry>
+      <entry id="7124" string="Access denied"/>
     </section>
 
     <section name="Dialogs">
@@ -772,9 +774,9 @@
 	  <entry id="32100" string="Presets">प्रीसेट</entry>
 	  <entry id="32101" string="Use preset">प्रीसेट का उपयोग करें</entry>
 	  <entry id="32102" string="Custom settings">कस्टम सेटिंग्स</entry>
-	  <entry id="32103" string="Medium, Fast">मध्यम, तेज</entry>
-	  <entry id="32104" string="Standard, Fast">मानक, तेज</entry>
-	  <entry id="32105" string="Extreme, Fast">अति, तेज</entry>
+	  <entry id="32103" string="Medium">मध्यम</entry>
+	  <entry id="32104" string="Standard">मानक</entry>
+	  <entry id="32105" string="Extreme">अति</entry>
 	  <entry id="32106" string="Bitrate">बिटरेट</entry>
 	  <entry id="32107" string="Quality">गुणवत्ता</entry>
 	  <entry id="32108" string="Set bitrate">बिटरेट सेट करें</entry>
@@ -1264,7 +1266,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">यह यूआरएल समर्थित नहीं है या वीडियो पृष्ठ यूआरएल नहीं है!</entry>
 	  <entry id="102202" string="Error downloading video!">वीडियो डाउनलोड करने में त्रुटि!</entry>
 	  <entry id="102203" string="You are already downloading this video!">आप पहले से ही इस वीडियो को डाउनलोड कर रहे हैं!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">कुछ आवश्यक वीडियो&#10;डिकोडर नहीं मिल सके। ऑडियो फ़ाइलों में रूपांतरण के लिए वीडियो फ़ाइलों को जॉबलिस्ट में नहीं जोड़ा जा सकता है।&#10;&#10;कृपया इस समस्या को ठीक करने के लिए avconv या FFmpeg स्थापित करें!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">कुछ आवश्यक वीडियो&#10;डिकोडर नहीं मिल सके। ऑडियो फ़ाइलों में रूपांतरण के लिए वीडियो फ़ाइलों को जॉबलिस्ट में नहीं जोड़ा जा सकता है।&#10;&#10;कृपया इस समस्या को ठीक करने के लिए FFmpeg या avconv स्थापित करें!</entry>
 	</section>
       </section>
 

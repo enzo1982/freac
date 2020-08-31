@@ -201,7 +201,7 @@
       <entry id="3044" string="verifying">comprobando</entry>
       <entry id="3045" string="Open">Abrir</entry>
       <entry id="3046" string="CD drive">Lector CD</entry>
-      <entry id="3047" string="Disc ID"/>
+      <entry id="3047" string="Disc ID">ID del disco</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">Comprimiendo</entry>
@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers">Verificadores</entry>
       <entry id="5024" string="Taggers">Etiquetadores</entry>
       <entry id="5025" string="Processing">Procesando</entry>
+      <entry id="5026" string="Additional arguments"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar compresor</entry>
@@ -617,7 +618,7 @@
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">No se puede acceder al archivo de entrada: %1&#10;&#10;Archivo: %1&#10;Carpeta: %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">No se puede crear el archivo de salida: %1&#10;&#10;Archivo: %1&#10;Carpeta: %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">Fallo al verificar el archivo de entrada: %1</entry>
-      <entry id="7108" string="Failed to verify input track: %1"/>
+      <entry id="7108" string="Failed to verify input track: %1">No se ha podido verificar la pista de entrada: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">La suma de verificación difiere en el archivo de salida: %1&#10;&#10;Suma de codificación: %2&#10;Suma de verificación: %3</entry>
       <entry id="7110" string="File not found">Archivo no encontrado</entry>
       <entry id="7111" string="Unknown file type">Tipo de archivo desconocido</entry>
@@ -633,6 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">El acceso a la unidad de CD-ROM fue denegado por Windows.&#10;&#10;Por favor, contacte con su administrador de sistemas para&#10;poder acceder a la unidad de CD-ROM.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">No hay diálogo de configuración para:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">¡La carpeta elegida ya no existe!</entry>
+      <entry id="7124" string="Access denied"/>
     </section>
 
     <section name="Dialogs">
@@ -772,9 +774,9 @@
 	  <entry id="32100" string="Presets">Preconfiguraciones</entry>
 	  <entry id="32101" string="Use preset">Usar preconfiguración</entry>
 	  <entry id="32102" string="Custom settings">Configuraciones personales</entry>
-	  <entry id="32103" string="Medium, Fast">Medio, Rápido</entry>
-	  <entry id="32104" string="Standard, Fast">Estándar, Rápido</entry>
-	  <entry id="32105" string="Extreme, Fast">Extremo, Rápido</entry>
+	  <entry id="32103" string="Medium">Medio</entry>
+	  <entry id="32104" string="Standard">Estándar</entry>
+	  <entry id="32105" string="Extreme">Extremo</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Calidad</entry>
 	  <entry id="32108" string="Set bitrate">Bitrate</entry>
@@ -1264,7 +1266,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">¡Esta URL no tiene soporte o no es una página de vídeo!</entry>
 	  <entry id="102202" string="Error downloading video!">¡Error al descargar el vídeo!</entry>
 	  <entry id="102203" string="You are already downloading this video!">¡Ya está descargando este vídeo!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Algún códec de vídeo necesario no se encuentra. Los archivos de vídeo&#10;no pueden añadirse a la lista de tareas para obtener archivos de audio.&#10;&#10;¡Por favor, instale avconv o FFmpeg para arreglar este problema!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Algún códec de vídeo necesario no se encuentra. Los archivos de vídeo&#10;no pueden añadirse a la lista de tareas para obtener archivos de audio.&#10;&#10;¡Por favor, instale FFmpeg o avconv para arreglar este problema!</entry>
 	</section>
       </section>
 

@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers"/>
       <entry id="5024" string="Taggers"/>
       <entry id="5025" string="Processing"/>
+      <entry id="5026" string="Additional arguments"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Налаштувати кодек</entry>
@@ -633,6 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Доступ до приводу CD-ROM був відхилений Windows.&#10;&#10;Будь-ласка зв'яжіться з вашим системним адміністратором щоб&#10;вам був наданий доступ до приводу CD-ROM</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1"/>
       <entry id="7123" string="The selected folder does not exist anymore!"/>
+      <entry id="7124" string="Access denied"/>
     </section>
 
     <section name="Dialogs">
@@ -772,9 +774,9 @@
 	  <entry id="32100" string="Presets">Налаштування</entry>
 	  <entry id="32101" string="Use preset">Виберіть варіанти</entry>
 	  <entry id="32102" string="Custom settings">Вибіркові налаштування</entry>
-	  <entry id="32103" string="Medium, Fast">Середній, Швидкий</entry>
-	  <entry id="32104" string="Standard, Fast">Стандартний, Швидкий</entry>
-	  <entry id="32105" string="Extreme, Fast">Екстремальний, Швидкий</entry>
+	  <entry id="32103" string="Medium">Середній</entry>
+	  <entry id="32104" string="Standard">Стандартний</entry>
+	  <entry id="32105" string="Extreme">Екстремальний</entry>
 	  <entry id="32106" string="Bitrate">Бітрейт</entry>
 	  <entry id="32107" string="Quality">Якість</entry>
 	  <entry id="32108" string="Set bitrate">Бітрейт</entry>
@@ -1264,7 +1266,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!"/>
 	  <entry id="102202" string="Error downloading video!"/>
 	  <entry id="102203" string="You are already downloading this video!"/>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!"/>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!"/>
 	</section>
       </section>
 

@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers">تاييدگر ها</entry>
       <entry id="5024" string="Taggers">تگ نويس ها</entry>
       <entry id="5025" string="Processing">در حال پردازش</entry>
+      <entry id="5026" string="Additional arguments"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">تنظيم مبدل صوت</entry>
@@ -633,6 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">ويندوز اجازه دسترسي به درايو ديسک را نمي‌دهد.&#10;&#10;لطفا با مدير سيستم يا شبکه جهت دريافت اجازه دسترسي صحبت کنيد.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">هيچ قابليت محاوره اي براي تنظيمات در دسترس نيست:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">پوشه انتخاب شده ديگر موجود نيست!</entry>
+      <entry id="7124" string="Access denied"/>
     </section>
 
     <section name="Dialogs">
@@ -772,9 +774,9 @@
 	  <entry id="32100" string="Presets">پروفايل‌ هاي تعريف شده</entry>
 	  <entry id="32101" string="Use preset">استفاده از پروفايل هاي تعريف شده</entry>
 	  <entry id="32102" string="Custom settings">تنظيمات سفارشي</entry>
-	  <entry id="32103" string="Medium, Fast">کيفيت متوسط/ سرعت تبديل بالا</entry>
-	  <entry id="32104" string="Standard, Fast">کيفيت استاندارد/ سرعت تبديل سريع</entry>
-	  <entry id="32105" string="Extreme, Fast">کيفيت عالي/ سرعت تبديل سريع</entry>
+	  <entry id="32103" string="Medium">کيفيت متوسط</entry>
+	  <entry id="32104" string="Standard">کيفيت استاندارد</entry>
+	  <entry id="32105" string="Extreme">کيفيت عالي</entry>
 	  <entry id="32106" string="Bitrate">بيت‌ريت</entry>
 	  <entry id="32107" string="Quality">کيفيت</entry>
 	  <entry id="32108" string="Set bitrate">تنظيم بيت‌ريت</entry>
@@ -1264,7 +1266,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">اين وبسايت پشتيباني نمي شود. ممکن است يک وبسايت ويدئويي نباشد!</entry>
 	  <entry id="102202" string="Error downloading video!">خطاي دانلود ويدئو!</entry>
 	  <entry id="102203" string="You are already downloading this video!">شما هم اکنون در حال دانلود اين ويدئو هستيد!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">برخي کدگشا هاي مورد نياز يافت نشد بنابراين امکان افزودن ويدئو ها&#10;به ليست جهت تبديل به فايل صوتي وجود ندارد.&#10;&#10;براي حل اين مشکل مي‌توانيد اقدام به نصب avconv يا FFmpeg نماييد!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">برخي کدگشا هاي مورد نياز يافت نشد بنابراين امکان افزودن ويدئو ها&#10;به ليست جهت تبديل به فايل صوتي وجود ندارد.&#10;&#10;براي حل اين مشکل مي‌توانيد اقدام به نصب FFmpeg يا avconv نماييد!</entry>
 	</section>
       </section>
 

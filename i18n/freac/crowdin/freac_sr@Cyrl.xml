@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers">Оверивачи</entry>
       <entry id="5024" string="Taggers">Тагери</entry>
       <entry id="5025" string="Processing">Обрада</entry>
+      <entry id="5026" string="Additional arguments"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Подеси енкодер</entry>
@@ -633,6 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Приступ ЦД РОМ уређају одбијен од стране Windowsа.&#10;&#10;Молимо обратите се администратору система&#10;да Вам одобри приступ ЦД РОМ уређају.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Није расположив дијалог за поставке:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">Одабрани фолдер више не постоји!</entry>
+      <entry id="7124" string="Access denied"/>
     </section>
 
     <section name="Dialogs">
@@ -772,9 +774,9 @@
 	  <entry id="32100" string="Presets">Предподешења</entry>
 	  <entry id="32101" string="Use preset">Користи предподешења</entry>
 	  <entry id="32102" string="Custom settings">Корисникова подешења</entry>
-	  <entry id="32103" string="Medium, Fast">Средње, Брзо</entry>
-	  <entry id="32104" string="Standard, Fast">Стандардно, Брзо</entry>
-	  <entry id="32105" string="Extreme, Fast">Крајње, Брзо</entry>
+	  <entry id="32103" string="Medium">Средње</entry>
+	  <entry id="32104" string="Standard">Стандардно</entry>
+	  <entry id="32105" string="Extreme">Крајње</entry>
 	  <entry id="32106" string="Bitrate">Стопа битова</entry>
 	  <entry id="32107" string="Quality">Квалитет</entry>
 	  <entry id="32108" string="Set bitrate">Стопа</entry>
@@ -1264,7 +1266,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Овај URL није подржан или није видео URL!</entry>
 	  <entry id="102202" string="Error downloading video!">Грешка у преузимању видеа!</entry>
 	  <entry id="102203" string="You are already downloading this video!">Већ преузимате овај видео!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Неки неопходни видео декодери не могу бити нађени. Видео фајлови&#10;не могу бити додати на листу задатака за претварање у аудио фајлове.&#10;&#10;Молимо инсталирајте avconv или FFmpeg да решите овај проблем!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Неки неопходни видео декодери не могу бити нађени. Видео фајлови&#10;не могу бити додати на листу задатака за претварање у аудио фајлове.&#10;&#10;Молимо инсталирајте FFmpeg или avconv да решите овај проблем!</entry>
 	</section>
       </section>
 
