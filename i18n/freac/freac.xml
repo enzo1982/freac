@@ -634,6 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive."/>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1"/>
       <entry id="7123" string="The selected folder does not exist anymore!"/>
+      <entry id="7124" string="Access denied"/>
     </section>
 
     <section name="Dialogs">

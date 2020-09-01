@@ -20,6 +20,7 @@
 
 #include <support/autorelease.h>
 
+using namespace smooth::IO;
 using namespace smooth::Threads;
 
 using namespace BoCA;
@@ -155,7 +156,7 @@ Error freac::JobAddFiles::Perform()
 				{
 					if (!cddbsQueried.Get(track.discid))
 					{
-						cdInfos.Add(cddbQueryDlg::QueryCDDB(track), track.discid);
+						cdInfos.Add(cddbQueryDlg::QueryCDDB(track, True), track.discid);
 						cddbsQueried.Add(True, track.discid);
 					}
 
@@ -215,18 +216,39 @@ Int freac::JobAddFilesWorker::Run()
 {
 	Registry	&boca = Registry::Get();
 
-	/* Create decoder component.
+	/* Check access permission.
 	 */
-	DecoderComponent	*decoder = boca.CreateDecoderForStream(fileName);
+	InStream	 in(STREAM_FILE, fileName, IS_READ);
 
-	if (decoder == NIL)
+	if (in.GetLastError() == IO_ERROR_NOACCESS)
 	{
 		BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 		i18n->SetContext("Errors");
 
 		errorState  = True;
-		errorString = i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", File(fileName).GetFileName()).Replace("%2", i18n->TranslateString("Unknown file type"));
+		errorString = i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", File(fileName).GetFileName()).Replace("%2", i18n->TranslateString("Access denied"));
+	}
+
+	in.Close();
+
+	/* Create decoder component.
+	 */
+	DecoderComponent	*decoder = NIL;
+
+	if (!errorState)
+	{
+		decoder = boca.CreateDecoderForStream(fileName);
+
+		if (decoder == NIL)
+		{
+			BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+			i18n->SetContext("Errors");
+
+			errorState  = True;
+			errorString = i18n->TranslateString("Unable to open file: %1\n\nError: %2").Replace("%1", File(fileName).GetFileName()).Replace("%2", i18n->TranslateString("Unknown file type"));
+		}
 	}
 
 	/* Query stream info.

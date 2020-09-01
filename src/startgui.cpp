@@ -21,6 +21,7 @@
 
 #include <jobs/engine/convert.h>
 #include <jobs/joblist/addfiles.h>
+#include <jobs/joblist/addfolders.h>
 #include <jobs/joblist/addtracks.h>
 #include <jobs/joblist/removedisc.h>
 #include <jobs/other/checkforupdates.h>
@@ -1486,14 +1487,18 @@ Void freac::freacGUI::AddFilesFromDirectory()
 Void freac::freacGUI::ParseArguments(const Array<String> &args)
 {
 	Registry	&boca = Registry::Get();
+
 	Array<String>	 files;
+	Array<String>	 folders;
 
 	foreach (const String &arg, args)
 	{
+		/* Check for drive argument.
+		 */
 #ifdef __WIN32__
 		if (arg.EndsWith(":\\") && arg.Length() == 3 && GetDriveType(arg) == DRIVE_CDROM)
 #else
-		if (arg.Contains("cdda:host="))
+		if (arg.StartsWith("/dev/") || arg.Contains("cdda:host=") || arg.Contains("/UDisks2/block_devices/"))
 #endif
 		{
 			DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
@@ -1512,7 +1517,10 @@ Void freac::freacGUI::ParseArguments(const Array<String> &args)
 					if (GetDriveType(driveLetter) == DRIVE_CDROM) driveNumber++;
 				}
 #else
-				String	 devicePath  = String("/dev/").Append(arg.Tail(arg.Length() - arg.Find("cdda:host=") - 10));
+				String	 devicePath  = arg;
+                
+				if	(arg.Contains("cdda:host="))		  devicePath = String("/dev/").Append(arg.Tail(arg.Length() - arg.Find("cdda:host=") - 10));
+				else if (arg.Contains("/UDisks2/block_devices/")) devicePath = String("/dev/").Append(arg.Tail(arg.Length() - arg.Find("/UDisks2/block_devices/") - 23));
 
 				for (Int i = 0; i < info->GetNumberOfDevices(); i++)
 				{
@@ -1532,10 +1540,14 @@ Void freac::freacGUI::ParseArguments(const Array<String> &args)
 			continue;
 		}
 
-		if (File(arg).Exists()) files.Add(arg);
+		/* Check for file or folder argument.
+		 */
+		if	(File(arg).Exists())	  files.Add(arg);
+		else if (Directory(arg).Exists()) folders.Add(arg);
 	}
 
-	if (files.Length() > 0) (new JobAddFiles(files))->Schedule();
+	if (files.Length()   > 0) (new JobAddFiles(files))->Schedule();
+	if (folders.Length() > 0) (new JobAddFolders(folders))->Schedule();
 }
 
 Void freac::freacGUI::ToggleSignalProcessing()

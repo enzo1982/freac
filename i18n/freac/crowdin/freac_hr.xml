@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers">Ovjerivači</entry>
       <entry id="5024" string="Taggers">Taggeri</entry>
       <entry id="5025" string="Processing">Obrada</entry>
+      <entry id="5026" string="Additional arguments"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Postavke enkodera.</entry>
@@ -633,6 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Pristup CD-ROMu je onemogućen od strane Windowsa.&#10;&#10;Molim kontaktirajte svog sistem administratora kako bi vam&#10;povisio prava pristupa CD-ROM pogonu.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Nema dostupnih postavki za:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">Izabrana mapa više ne postoji!</entry>
+      <entry id="7124" string="Access denied"/>
     </section>
 
     <section name="Dialogs">
@@ -772,9 +774,9 @@
 	  <entry id="32100" string="Presets">Presets</entry>
 	  <entry id="32101" string="Use preset">Koristi preset</entry>
 	  <entry id="32102" string="Custom settings">Osobne postavke</entry>
-	  <entry id="32103" string="Medium, Fast">Srednje,Brzo</entry>
-	  <entry id="32104" string="Standard, Fast">Standard, Brzo</entry>
-	  <entry id="32105" string="Extreme, Fast">Ekstremno, Brzo</entry>
+	  <entry id="32103" string="Medium">Srednje</entry>
+	  <entry id="32104" string="Standard">Standard</entry>
+	  <entry id="32105" string="Extreme">Ekstremno</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Kvaliteta</entry>
 	  <entry id="32108" string="Set bitrate">Postavi bitrate</entry>
@@ -1264,7 +1266,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Ovaj URL nije podržan ili nije URL stranice sa videom!</entry>
 	  <entry id="102202" string="Error downloading video!">Greška u downloadu videa!</entry>
 	  <entry id="102203" string="You are already downloading this video!">Ovaj video se već downloada!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Potrebne video dekodere nije moguće pronaći. Video datoteke&#10;se ne mogu dodati na listu poslova za pretvorbu u audio datoteke.&#10;&#10;Instalirajte avconv ili FFmpeg da biste riješili ovaj problem!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Potrebne video dekodere nije moguće pronaći. Video datoteke&#10;se ne mogu dodati na listu poslova za pretvorbu u audio datoteke.&#10;&#10;Instalirajte FFmpeg ili avconv da biste riješili ovaj problem!</entry>
 	</section>
       </section>
 

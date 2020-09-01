@@ -343,7 +343,7 @@ const String	 freac::Config::FreedbDirectoryID				= "Directory";
 const String	 freac::Config::FreedbDirectoryDefault				= String("freedb").Append(Directory::GetDirectoryDelimiter());
 
 const String	 freac::Config::FreedbServerID					= "Server";
-const String	 freac::Config::FreedbServerDefault				= "freedb.freac.org";
+const String	 freac::Config::FreedbServerDefault				= "gnudb.gnudb.org";
 
 const String	 freac::Config::FreedbModeID					= "Mode";
 const Int	 freac::Config::FreedbModeDefault				= 0;
@@ -399,6 +399,9 @@ const Bool	 freac::Config::FreedbOverwriteCDTextDefault			= True;
 const String	 freac::Config::FreedbUpdateJoblistID				= "UpdateJoblistOnSubmit";
 const Bool	 freac::Config::FreedbUpdateJoblistDefault			= True;
 
+const String	 freac::Config::FreedbDisplayNotFoundID				= "DisplayNotFoundNote";
+const Bool	 freac::Config::FreedbDisplayNotFoundDefault			= True;
+
 freac::Config::Config()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
@@ -448,7 +451,8 @@ freac::Config::Config()
 	if ((currentDate.GetYear()  > 2020				) ||
 	    (currentDate.GetYear() == 2020 && currentDate.GetMonth() > 3))
 	{
-		if (config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault) == "freedb.freedb.org") config->SetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault);
+		if (config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault) == "freedb.freedb.org" ||
+		    config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault) == "freedb.freac.org") config->SetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault);
 	}
 
 	/* Translate fre:ac 1.0.x encoder indices to encoder IDs.

@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers">Verificadores</entry>
       <entry id="5024" string="Taggers">Etiquetadores</entry>
       <entry id="5025" string="Processing">Processando</entry>
+      <entry id="5026" string="Additional arguments"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar o codificador</entry>
@@ -633,6 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">O acesso ao drive de CD foi bloqueado pelo Windows.&#10;&#10;Contate o administrador do sistema para providenciar a&#10;liberação de acesso ao drive de CD-ROM.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Nenhuma caixa de diálogo de configuração disponível para:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">A pasta selecionada não existe mais!</entry>
+      <entry id="7124" string="Access denied"/>
     </section>
 
     <section name="Dialogs">
@@ -772,9 +774,9 @@
 	  <entry id="32100" string="Presets">Pré-ajustes</entry>
 	  <entry id="32101" string="Use preset">Usar pré-ajustes</entry>
 	  <entry id="32102" string="Custom settings">Configurações personalizadas</entry>
-	  <entry id="32103" string="Medium, Fast">Médio, Rápido</entry>
-	  <entry id="32104" string="Standard, Fast">Padrão, Rápido</entry>
-	  <entry id="32105" string="Extreme, Fast">Extremo, Rápido</entry>
+	  <entry id="32103" string="Medium">Médio</entry>
+	  <entry id="32104" string="Standard">Padrão</entry>
+	  <entry id="32105" string="Extreme">Extremo</entry>
 	  <entry id="32106" string="Bitrate">Taxa de bits</entry>
 	  <entry id="32107" string="Quality">Qualidade</entry>
 	  <entry id="32108" string="Set bitrate">Definir taxa de bits</entry>
@@ -1264,7 +1266,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Este URL não é suportado ou não é uma página de URL de vídeo!</entry>
 	  <entry id="102202" string="Error downloading video!">Erro ao baixar o vídeo!</entry>
 	  <entry id="102203" string="You are already downloading this video!">Você já está baixando este vídeo!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Alguns decodificadores de vídeo necessários não foram encontrados.&#10;Os arquivos de vídeo não puderam ser adicionados à lista de tarefas&#10;de conversão para arquivos de áudio.&#10;&#10;Instale avconv ou FFmpeg para corrigir esse problema!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Alguns decodificadores de vídeo necessários não foram encontrados.&#10;Os arquivos de vídeo não puderam ser adicionados à lista de tarefas&#10;de conversão para arquivos de áudio.&#10;&#10;Instale FFmpeg ou avconv para corrigir esse problema!</entry>
 	</section>
       </section>
 

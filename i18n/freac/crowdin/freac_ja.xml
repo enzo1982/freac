@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers">ベリファイ</entry>
       <entry id="5024" string="Taggers">タグ</entry>
       <entry id="5025" string="Processing">処理</entry>
+      <entry id="5026" string="Additional arguments"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">エンコーダ設定</entry>
@@ -633,6 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">CD-ROM ドライブへのアクセスが Windows により拒否されました。&#10;&#10;システム管理者に連絡して CD-ROM ドライブへの&#10;アクセス権限をもらってください。</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">次の設定ダイアログは使用できません:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">選択したフォルダはもう存在しません！</entry>
+      <entry id="7124" string="Access denied"/>
     </section>
 
     <section name="Dialogs">
@@ -772,9 +774,9 @@
 	  <entry id="32100" string="Presets">プリセット</entry>
 	  <entry id="32101" string="Use preset">プリセット使用</entry>
 	  <entry id="32102" string="Custom settings">カスタム設定</entry>
-	  <entry id="32103" string="Medium, Fast">Medium （VBR -V 4, 140-185kbps）, Fast</entry>
-	  <entry id="32104" string="Standard, Fast">Standard （VBR -V 2, 170-210kbps）, Fast</entry>
-	  <entry id="32105" string="Extreme, Fast">Extreme （VBR -V 0, 220-260kbps）, Fast</entry>
+	  <entry id="32103" string="Medium">Medium （VBR -V 4, 140-185kbps）</entry>
+	  <entry id="32104" string="Standard">Standard （VBR -V 2, 170-210kbps）</entry>
+	  <entry id="32105" string="Extreme">Extreme （VBR -V 0, 220-260kbps）</entry>
 	  <entry id="32106" string="Bitrate">ビットレート</entry>
 	  <entry id="32107" string="Quality">品質</entry>
 	  <entry id="32108" string="Set bitrate">ビットレート</entry>
@@ -1264,7 +1266,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">このURLはサポートされていないか、動画ページのURLではありません！</entry>
 	  <entry id="102202" string="Error downloading video!">動画のダウンロード中にエラーが発生しました！</entry>
 	  <entry id="102203" string="You are already downloading this video!">あなたはすでにこのビデオをダウンロードしています！</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">いくつかの必要なビデオデコーダが見つかりませんでした。 ビデオファイル&#10;オーディオファイルへの変換のためにジョブリストに追加することはできません。&#10;&#10;この問題を解決するには、avconvまたはFFmpegをインストールしてください！</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">いくつかの必要なビデオデコーダが見つかりませんでした。 ビデオファイル&#10;オーディオファイルへの変換のためにジョブリストに追加することはできません。&#10;&#10;この問題を解決するには、FFmpegまたはavconvをインストールしてください！</entry>
 	</section>
       </section>
 

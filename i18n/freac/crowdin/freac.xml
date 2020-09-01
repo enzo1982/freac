@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers">Verifiers</entry>
       <entry id="5024" string="Taggers">Taggers</entry>
       <entry id="5025" string="Processing">Processing</entry>
+      <entry id="5026" string="Additional arguments">Additional arguments</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configure encoder</entry>
@@ -633,6 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">No configuration dialog available for:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">The selected folder does not exist anymore!</entry>
+      <entry id="7124" string="Access denied">Access denied</entry>
     </section>
 
     <section name="Dialogs">
@@ -772,9 +774,9 @@
 	  <entry id="32100" string="Presets">Presets</entry>
 	  <entry id="32101" string="Use preset">Use preset</entry>
 	  <entry id="32102" string="Custom settings">Custom settings</entry>
-	  <entry id="32103" string="Medium, Fast">Medium, Fast</entry>
-	  <entry id="32104" string="Standard, Fast">Standard, Fast</entry>
-	  <entry id="32105" string="Extreme, Fast">Extreme, Fast</entry>
+	  <entry id="32103" string="Medium">Medium</entry>
+	  <entry id="32104" string="Standard">Standard</entry>
+	  <entry id="32105" string="Extreme">Extreme</entry>
 	  <entry id="32106" string="Bitrate">Bitrate</entry>
 	  <entry id="32107" string="Quality">Quality</entry>
 	  <entry id="32108" string="Set bitrate">Set bitrate</entry>
@@ -1264,7 +1266,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">This URL is not supported or not a video page URL!</entry>
 	  <entry id="102202" string="Error downloading video!">Error downloading video!</entry>
 	  <entry id="102203" string="You are already downloading this video!">You are already downloading this video!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!</entry>
 	</section>
       </section>
 

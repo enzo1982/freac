@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers">Проверяющие</entry>
       <entry id="5024" string="Taggers">Указатели</entry>
       <entry id="5025" string="Processing">Обработка</entry>
+      <entry id="5026" string="Additional arguments"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Настроить кодек</entry>
@@ -633,6 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Доступ к приводу CD-ROM перекрыт Windows.&#10;&#10;Пожалуйста свяжитесь со своим системным администратором,&#10;чтобы получить право доступа к приводу CD-ROM</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Нет доступного диалога настроек для:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">Выбранная папка больше не существует!</entry>
+      <entry id="7124" string="Access denied"/>
     </section>
 
     <section name="Dialogs">
@@ -772,9 +774,9 @@
 	  <entry id="32100" string="Presets">Настройка</entry>
 	  <entry id="32101" string="Use preset">Выберите вариант</entry>
 	  <entry id="32102" string="Custom settings">Указать настройки вручную</entry>
-	  <entry id="32103" string="Medium, Fast">Средний, Быстрый</entry>
-	  <entry id="32104" string="Standard, Fast">Стандартный, Быстрый</entry>
-	  <entry id="32105" string="Extreme, Fast">Предельный, Быстрый</entry>
+	  <entry id="32103" string="Medium">Средний</entry>
+	  <entry id="32104" string="Standard">Стандартный</entry>
+	  <entry id="32105" string="Extreme">Предельный</entry>
 	  <entry id="32106" string="Bitrate">Битрейт</entry>
 	  <entry id="32107" string="Quality">Качество</entry>
 	  <entry id="32108" string="Set bitrate">Битрейт</entry>
@@ -1264,7 +1266,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">Этот URL не поддерживается или не ГКД страницы видео!</entry>
 	  <entry id="102202" string="Error downloading video!">Ошибка загрузки видео!</entry>
 	  <entry id="102203" string="You are already downloading this video!">Вы уже загрузили это видео!</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install avconv or FFmpeg to fix this problem!">Некоторые необходимые видеодекодеры не могут быть найдены. Видеофайлы&#10;не могут быть добавлены в список задач для конверсии в аудиофайлы.&#10;&#10;Для решения этой проблемы пожалуйста установите avconv или FFmpeg!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Некоторые необходимые видеодекодеры не могут быть найдены. Видеофайлы&#10;не могут быть добавлены в список задач для конверсии в аудиофайлы.&#10;&#10;Для решения этой проблемы пожалуйста установите FFmpeg или avconv!</entry>
 	</section>
       </section>
 

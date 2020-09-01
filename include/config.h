@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -387,6 +387,9 @@ namespace freac
 
 			static const String	 FreedbUpdateJoblistID;
 			static const Bool	 FreedbUpdateJoblistDefault;
+
+			static const String	 FreedbDisplayNotFoundID;
+			static const Bool	 FreedbDisplayNotFoundDefault;
 		private:
 			/* Singleton class, therefore private constructor/destructor
 			 */
