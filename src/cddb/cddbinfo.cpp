@@ -13,6 +13,9 @@
 #include <cddb/cddbinfo.h>
 #include <cddb/cddb.h>
 
+String freac::CDDBInfo::VariousArtistsID = "Various";
+String freac::CDDBInfo::DataTrackID	 = "Data track";
+
 freac::CDDBInfo::CDDBInfo()
 {
 	charset	   = "UTF-8";
@@ -113,6 +116,13 @@ freac::CDDBInfo &freac::CDDBInfo::operator =(const CDDBInfo &oInfo)
 	return *this;
 }
 
+const String &freac::CDDBInfo::GetTrackArtist(Int trackNumber) const
+{
+	if (dArtist == VariousArtistsID) return trackArtists.GetNth(trackNumber - 1);
+
+	return dArtist;
+}
+
 String freac::CDDBInfo::GetQueryString() const
 {
 	Int	 numTocEntries = trackOffsets.Length();
@@ -163,7 +173,7 @@ Bool freac::CDDBInfo::UpdateTrack(BoCA::Track &track) const
 
 		/* Set album artist for compilation CDs.
 		 */
-		if (dArtist == "Various")
+		if (dArtist == VariousArtistsID)
 		{
 			BoCA::I18n	*i18n = BoCA::I18n::Get();
 

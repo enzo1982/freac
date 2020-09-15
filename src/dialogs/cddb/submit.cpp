@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -369,7 +369,7 @@ Void freac::cddbSubmitDlg::Submit()
 	 */
 	String	 variousArtists = i18n->TranslateString("Various artists");
 
-	cddbInfo.dArtist	= (edit_artist->GetText() == variousArtists ? String("Various") : edit_artist->GetText());
+	cddbInfo.dArtist	= IsVariousArtists() ? CDDBInfo::VariousArtistsID : edit_artist->GetText();
 
 	cddbInfo.dTitle		= edit_album->GetText();
 	cddbInfo.dYear		= edit_year->GetText().ToInt();
@@ -381,7 +381,7 @@ Void freac::cddbSubmitDlg::Submit()
 	cddbInfo.trackComments.RemoveAll();
 
 	foreach (const String &artist,	artists	) cddbInfo.trackArtists.Add(artist);
-	foreach (const String &title,	titles	) cddbInfo.trackTitles.Add(title == i18n->TranslateString("Data track") ? String("Data track") : title);
+	foreach (const String &title,	titles	) cddbInfo.trackTitles.Add(title == i18n->TranslateString("Data track") ? CDDBInfo::DataTrackID : title);
 	foreach (const String &comment,	comments) cddbInfo.trackComments.Add(comment);
 
 	if (cddbInfo.category == NIL) cddbInfo.category = GetCDDBGenre(edit_genre->GetText());
@@ -452,8 +452,8 @@ Void freac::cddbSubmitDlg::Submit()
 				Track	 track = trackInfo;
 				Info	 info  = track.GetInfo();
 
-				if (edit_artist->GetText() == variousArtists || edit_artist->GetText() == "Various") info.artist = artists.GetNth(j);
-				else										     info.artist = edit_artist->GetText();
+				if (IsVariousArtists()) info.artist = artists.GetNth(j);
+				else			info.artist = edit_artist->GetText();
 
 				info.title	= titles.GetNth(j);
 				info.album	= edit_album->GetText();
@@ -484,13 +484,9 @@ Void freac::cddbSubmitDlg::SetArtist()
 {
 	if (dontUpdateInfo) return;
 
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
-
-	i18n->SetContext("CDDB::Submit");
-
 	Bool	 dataTrack = list_tracks->GetSelectedEntry() != NIL ? data.Get(list_tracks->GetSelectedEntry()->GetHandle()) : False;
 
-	if ((edit_artist->GetText() == i18n->TranslateString("Various artists") || edit_artist->GetText() == "Various") && !dataTrack)
+	if (IsVariousArtists() && !dataTrack)
 	{
 		if (list_tracks->GetSelectedEntry() != NIL)
 		{
@@ -515,9 +511,8 @@ Void freac::cddbSubmitDlg::UpdateTrackList()
 
 	for (Int i = 0; i < list_tracks->Length(); i++)
 	{
-		if ((edit_artist->GetText() == i18n->TranslateString("Various artists") ||
-		     edit_artist->GetText() == "Various") && data.GetNth(i) == False) list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(ListEntry::tabDelimiter).Append(artists.GetNth(i).Length() > 0 ? artists.GetNth(i) : i18n->TranslateString("unknown artist")).Append(" - ").Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : i18n->TranslateString("unknown title")));
-		else								      list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(ListEntry::tabDelimiter).Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : i18n->TranslateString("unknown title")));
+		if (IsVariousArtists() && data.GetNth(i) == False) list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(ListEntry::tabDelimiter).Append(artists.GetNth(i).Length() > 0 ? artists.GetNth(i) : i18n->TranslateString("unknown artist")).Append(" - ").Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : i18n->TranslateString("unknown title")));
+		else						   list_tracks->GetNthEntry(i)->SetText(String(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(ListEntry::tabDelimiter).Append(titles.GetNth(i).Length() > 0 ? titles.GetNth(i) : i18n->TranslateString("unknown title")));
 	}
 }
 
@@ -658,7 +653,7 @@ Void freac::cddbSubmitDlg::ChangeDrive()
 			else
 			{
 				artists.Add(NIL, handle);
-				titles.Add(cdInfo.trackTitles.GetNth(i) != NIL && cdInfo.trackTitles.GetNth(i) != "Data track" ? cdInfo.trackTitles.GetNth(i) : i18n->TranslateString("Data track"), handle);
+				titles.Add(cdInfo.trackTitles.GetNth(i) != NIL && cdInfo.trackTitles.GetNth(i) != CDDBInfo::DataTrackID ? cdInfo.trackTitles.GetNth(i) : i18n->TranslateString("Data track"), handle);
 				comments.Add(cdInfo.trackComments.GetNth(i), handle);
 				albums.Add(NIL, handle);
 				genres.Add(NIL, handle);
@@ -793,10 +788,6 @@ Void freac::cddbSubmitDlg::SelectTrack()
 
 	dontUpdateInfo = True;
 
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
-
-	i18n->SetContext("CDDB::Submit");
-
 	edit_title->SetText(title);
 	edit_comment->SetText(comment);
 	edit_track->SetText(NIL);
@@ -807,8 +798,7 @@ Void freac::cddbSubmitDlg::SelectTrack()
 	if	(track > 0 && track < 10) edit_track->SetText(String("0").Append(String::FromInt(track)));
 	else if (track >= 10)		  edit_track->SetText(String::FromInt(track));
 
-	if ((edit_artist->GetText() == i18n->TranslateString("Various artists") ||
-	     edit_artist->GetText() == "Various") && !dataTrack)
+	if (IsVariousArtists() && !dataTrack)
 	{
 		edit_trackartist->SetText(artist);
 		edit_trackartist->Activate();
@@ -836,9 +826,8 @@ Void freac::cddbSubmitDlg::UpdateTrack()
 	Int	 track	   = edit_track->GetText().ToInt();
 	Bool	 dataTrack = data.Get(list_tracks->GetSelectedEntry()->GetHandle());
 
-	if ((edit_artist->GetText() == i18n->TranslateString("Various artists") ||
-	     edit_artist->GetText() == "Various") && !dataTrack) list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : NIL).Append(String::FromInt(track)).Append(ListEntry::tabDelimiter).Append(edit_trackartist->GetText() == NIL ? i18n->TranslateString("unknown artist") : edit_trackartist->GetText()).Append(" - ").Append(edit_title->GetText() == NIL ? i18n->TranslateString("unknown title") : edit_title->GetText()));
-	else							 list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : NIL).Append(String::FromInt(track)).Append(ListEntry::tabDelimiter).Append(edit_title->GetText() == NIL ? i18n->TranslateString("unknown title") : edit_title->GetText()));
+	if (IsVariousArtists() && !dataTrack) list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : NIL).Append(String::FromInt(track)).Append(ListEntry::tabDelimiter).Append(edit_trackartist->GetText() == NIL ? i18n->TranslateString("unknown artist") : edit_trackartist->GetText()).Append(" - ").Append(edit_title->GetText() == NIL ? i18n->TranslateString("unknown title") : edit_title->GetText()));
+	else				      list_tracks->GetSelectedEntry()->SetText(String(track < 10 ? "0" : NIL).Append(String::FromInt(track)).Append(ListEntry::tabDelimiter).Append(edit_title->GetText() == NIL ? i18n->TranslateString("unknown title") : edit_title->GetText()));
 
 	artists.Set(list_tracks->GetSelectedEntry()->GetHandle(), edit_trackartist->GetText());
 	titles.Set(list_tracks->GetSelectedEntry()->GetHandle(), edit_title->GetText());
@@ -938,6 +927,16 @@ Void freac::cddbSubmitDlg::ToggleSubmitLater()
 	else																    btn_submit->SetText(i18n->TranslateString("Save entry"));
 }
 
+Bool freac::cddbSubmitDlg::IsVariousArtists() const
+{
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	i18n->SetContext("CDDB::Submit");
+
+	return edit_artist->GetText() == i18n->TranslateString("Various artists") ||
+	       edit_artist->GetText() == CDDBInfo::VariousArtistsID;
+}
+
 Bool freac::cddbSubmitDlg::IsDataValid() const
 {
 	Bool	 sane = True;
@@ -945,15 +944,9 @@ Bool freac::cddbSubmitDlg::IsDataValid() const
 	if (!IsStringValid(edit_artist->GetText()) ||
 	    !IsStringValid(edit_album->GetText())) sane = False;
 
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
-
-	i18n->SetContext("CDDB::Submit");
-
 	for (Int i = 0; i < titles.Length(); i++)
 	{
-		if ((edit_artist->GetText() == i18n->TranslateString("Various artists") ||
-		     edit_artist->GetText() == "Various")				&&
-		     data.GetNth(i) == False						&&
+		if (IsVariousArtists() && data.GetNth(i) == False &&
 		    !IsStringValid(artists.GetNth(i))) sane = False;
 
 		if (!IsStringValid(titles.GetNth(i))) sane = False;

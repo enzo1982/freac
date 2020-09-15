@@ -226,8 +226,8 @@ String freac::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
 
 	for (Int i = 0; i < cddbInfo.trackTitles.Length(); i++)
 	{
-		if (cddbInfo.dArtist == "Various") content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(i)), cddbInfo.trackArtists.GetNth(i).Replace("\n", " ").Trim().Append(" / ").Append(cddbInfo.trackTitles.GetNth(i).Replace("\n", " ").Trim())));
-		else				   content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(i)), cddbInfo.trackTitles.GetNth(i).Replace("\n", " ").Trim()));
+		if (cddbInfo.dArtist == CDDBInfo::VariousArtistsID) content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(i)), cddbInfo.trackArtists.GetNth(i).Replace("\n", " ").Trim().Append(" / ").Append(cddbInfo.trackTitles.GetNth(i).Replace("\n", " ").Trim())));
+		else						    content.Append(FormatCDDBEntry(String("TTITLE").Append(String::FromInt(i)), cddbInfo.trackTitles.GetNth(i).Replace("\n", " ").Trim()));
 	}
 
 	content.Append(FormatCDDBEntry("EXTD", cddbInfo.comment));
@@ -247,7 +247,8 @@ String freac::CDDB::FormatCDDBRecord(const CDDBInfo &cddbInfo)
  */
 Bool freac::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 {
-	Int	 index = 0;
+	Bool	 sampler = True;
+	Int	 index	 = 0;
 
 	while (index < record.Length())
 	{
@@ -279,6 +280,8 @@ Bool freac::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 			cddbInfo.dArtist  = cddbInfo.dArtist.Replace("\n", " ").Trim();
 			cddbInfo.dTitle	  = cddbInfo.dTitle.Replace("\n", " ").Trim();
 
+			if (cddbInfo.dArtist.ToLower().Contains("various")) cddbInfo.dArtist = CDDBInfo::VariousArtistsID;
+
 			cddbInfo.oDArtist = cddbInfo.dArtist;
 			cddbInfo.oDTitle  = cddbInfo.dTitle;
 		}
@@ -300,19 +303,13 @@ Bool freac::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 		}
 		else if (line.StartsWith("TTITLE"))
 		{
-			String	 track;
-			Int	 k;
-
-			for (k = 6; True; k++)
-			{
-				if (line[k] == '=')	break;
-				else			track[k - 6] = line[k];
-			}
+			Int	 k     = line.Find("=");
+			Int	 track = line.SubString(6, k - 6).ToInt();
 
 			String	 artist;
 			String	 title;
 
-			if (cddbInfo.dArtist == "Various")
+			if (line.Contains(" / "))
 			{
 				Int	 l;
 
@@ -330,16 +327,18 @@ Bool freac::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 			else
 			{
 				for (Int l = k + 1; l < line.Length(); l++) title[l - k - 1] = line[l];
+
+				if (!title.ToLower().Contains("data")) sampler = False;
 			}
 
 			artist = artist.Replace("\n", " ").Trim();
 			title  = title.Replace("\n", " ").Trim();
 
-			cddbInfo.trackArtists.Add(artist, track.ToInt());
-			cddbInfo.trackTitles.Add(title, track.ToInt());
+			cddbInfo.trackArtists.Add(artist, track);
+			cddbInfo.trackTitles.Add(title, track);
 
-			cddbInfo.oTrackArtists.Add(artist, track.ToInt());
-			cddbInfo.oTrackTitles.Add(title, track.ToInt());
+			cddbInfo.oTrackArtists.Add(artist, track);
+			cddbInfo.oTrackTitles.Add(title, track);
 		}
 		else if (line.StartsWith("EXTD"))
 		{
@@ -349,22 +348,16 @@ Bool freac::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 		}
 		else if (line.StartsWith("EXTT"))
 		{
-			String	 track;
-			Int	 k;
-
-			for (k = 4; True; k++)
-			{
-				if (line[k] == '=')	break;
-				else			track[k - 4] = line[k];
-			}
+			Int	 k     = line.Find("=");
+			Int	 track = line.SubString(4, k - 4).ToInt();
 
 			String	 comment;
 
 			for (Int l = k + 1; l < line.Length(); l++) comment[l - k - 1] = line[l];
 
-			cddbInfo.trackComments.Add(comment, track.ToInt());
+			cddbInfo.trackComments.Add(comment, track);
 
-			cddbInfo.oTrackComments.Add(comment, track.ToInt());
+			cddbInfo.oTrackComments.Add(comment, track);
 		}
 		else if (line.StartsWith("PLAYORDER"))
 		{
@@ -440,6 +433,10 @@ Bool freac::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 			cddbInfo.category = category;
 		}
 	}
+
+	/* Set disc artist to "Various" for sampler CDs.
+	 */
+	if (sampler) cddbInfo.dArtist = CDDBInfo::VariousArtistsID;
 
 	return True;
 }

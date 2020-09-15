@@ -823,7 +823,7 @@ Void freac::freacGUI::QueryCDDB()
 
 				if (trackNumber == -1) continue;
 
-				info.artist	 = (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(trackNumber - 1) : cdInfo.dArtist);
+				info.artist	 = cdInfo.GetTrackArtist(trackNumber);
 				info.title	 = cdInfo.trackTitles.GetNth(trackNumber - 1);
 				info.album	 = cdInfo.dTitle;
 				info.genre	 = cdInfo.dGenre;

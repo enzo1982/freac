@@ -147,7 +147,7 @@ Requirements
 History
 -------
 
-	Version 1.1.3 (August 2020)
+	Version 1.1.3 (September 2020)
 
 		- added support for macOS 11.0 Big Sur
 		- switched to using GNUdb as the default CDDB database service
@@ -163,6 +163,7 @@ History
 			- added file type associations to Linux/FreeBSD and Windows Store app, so fre:ac is offered for opening audio files
 			- added audio CD association to Linux/FreeBSD and Windows Store app, so fre:ac can be started when inserting a CD
 			- added an option to suppress "No entry found" messages for automatic CDDB queries
+			- improved detection of sampler CDs when querying CDDB information
 
 		- Bug fixes
 
