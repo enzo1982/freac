@@ -179,6 +179,7 @@ Geschichte
 			- Problem mit Einfrieren des Ripping-Fortschritts anderer Laufwerke während Auswurf eines Laufwerks behoben
 			- Problem mit Archivierung von Protokolldateien trotz deaktivierter Option behoben
 			- Probleme mit der Benutzeroberfläche nach dem Schließen von Dialogen im Tabbed-Modus unter macOS behoben
+			- Gleichzeitige Reaktion von Jobliste und Eingabefeldern auf die Shortcuts Shift+Pos1/Ende behoben
 
 		- Aktualisierte Codecs
 

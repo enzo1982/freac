@@ -1356,7 +1356,7 @@ Void freac::LayerJoblist::OnShortcutMoveDown()
 
 Void freac::LayerJoblist::OnShortcutMoveTop()
 {
-	if (!IsVisible() || joblist->GetSelectedEntryNumber() == -1) return;
+	if (!IsVisible() || GetActiveEditBox() != NIL || joblist->GetSelectedEntryNumber() == -1) return;
 
 	if (joblist->GetSelectedEntryNumber() > 0)
 	{
@@ -1374,7 +1374,7 @@ Void freac::LayerJoblist::OnShortcutMoveTop()
 
 Void freac::LayerJoblist::OnShortcutMoveBottom()
 {
-	if (!IsVisible() || joblist->GetSelectedEntryNumber() == -1) return;
+	if (!IsVisible() || GetActiveEditBox() != NIL || joblist->GetSelectedEntryNumber() == -1) return;
 
 	if (joblist->GetSelectedEntryNumber() < joblist->Length() - 1)
 	{
