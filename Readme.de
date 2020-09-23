@@ -178,6 +178,7 @@ Geschichte
 			- Problem mit Verarbeitung von Cuesheets mit Minuten-/Sekundenangaben ohne führende Nullen und/oder Dauer von mehr als 99 Minuten behoben
 			- Problem mit Verarbeitung von eingebetteten Cuesheets ohne FILE-Angaben behoben
 			- Problem mit Einfrieren des Ripping-Fortschritts anderer Laufwerke während Auswurf eines Laufwerks behoben
+			- Problem mit nicht funktionierenden Pause- und Abbruch-Befehlen während Überprüfung von kombinierten Ausgabedateien behoben
 			- Problem mit Archivierung von Protokolldateien trotz deaktivierter Option behoben
 			- Probleme mit der Benutzeroberfläche nach dem Schließen von Dialogen im Tabbed-Modus unter macOS behoben
 			- Gleichzeitige Reaktion von Jobliste und Eingabefeldern auf die Shortcuts Shift+Pos1/Ende behoben

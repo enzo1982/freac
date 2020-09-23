@@ -178,6 +178,7 @@ History
 			- fixed parsing of cue sheets with minute/second indications missing leading zeros and/or duration longer than 99 minutes
 			- fixed parsing of embedded cue sheets without FILE designations
 			- fixed ripping progress for other drives stalling while one drive is ejecting
+			- fixed inability to pause or stop single output file verification
 			- fixed log files being archived despite disabling the corresponding option
 			- fixed user interface glitches after closing dialogs in tabbed mode on macOS
 			- fixed Shift+Pos1/End shortcuts being interpreted by the joblist and edit fields at the same time

@@ -1044,6 +1044,34 @@ Error freac::JobConvert::Perform()
 
 				AutoRelease	 autoRelease;
 
+				/* Cancel worker if stop requested.
+				 */
+				if (abort)
+				{
+					worker->Cancel();
+
+					abort = False;
+
+					break;
+				}
+
+				/* Pause if requested.
+				 */
+				if (conversionPaused)
+				{
+					progress->Pause();
+
+					worker->Pause(True);
+
+					while (conversionPaused && !abort) S::System::System::Sleep(50);
+
+					worker->Pause(False);
+
+					progress->Resume();
+				}
+
+				/* Update progress values.
+				 */
 				progress->UpdateTrack(singleTrackToEncode, worker->GetTrackPosition());
 
 				S::System::System::Sleep(25);
