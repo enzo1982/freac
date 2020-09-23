@@ -107,6 +107,8 @@ Bool freac::Encoder::Create(const String &encoderID, const String &fileName, con
 	 */
 	targetFormat = FormatConverter::GetBestTargetFormat(sourceFormat, encoder);
 
+	AdjustTrackSampleCounts(album, targetFormat);
+
 	album.SetFormat(targetFormat);
 
 	return True;
@@ -163,6 +165,8 @@ Void freac::Encoder::SignalChapterChange()
 
 	track.length = encodedSamples - offset;
 	offset	     = encodedSamples;
+
+	track.length = track.length * targetFormat.rate / sourceFormat.rate;
 
 	chapter++;
 }

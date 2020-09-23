@@ -611,8 +611,19 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 	if (cancel) engine->onCancelTrackConversion.Emit(conversionID, trackToConvert);
 	else	    engine->onFinishTrackConversion.Emit(conversionID, trackToConvert);
 
-	if (encoder->GetEncodedSamples() > 0) return encoder->GetEncodedSamples() - trackOffset;
-	else				      return decoder->GetDecodedSamples();
+	/* Compute track length in target format.
+	 */
+	if (encoder->GetEncodedSamples() == 0)
+	{
+		Int64	 trackLength  = decoder->GetDecodedSamples();
+		Format	 targetFormat = format;
+
+		if (processor != NIL && processor->GetFormatInfo() != Format()) targetFormat = processor->GetFormatInfo();
+
+		return trackLength * targetFormat.rate / format.rate;
+	}
+
+	return encoder->GetEncodedSamples() - trackOffset;
 }
 
 Void freac::ConvertWorker::VerifyInput(const String &uri, Verifier *verifier)

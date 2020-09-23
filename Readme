@@ -173,7 +173,8 @@ History
 			- fixed possible glitches in WAV/AIFF output when processing float samples outside the -1.0/+1.0 range
 			- fixed possible hangs when opening WAV/AIFF files larger than 2 GB or with a broken chunk structure
 			- fixed inability to open WAV/AIFF files with long paths on Windows
-			- fixed invalid MP3 bitstreams written in rare cases in SuperFast mode
+			- fixed writing invalid chapter offsets to Opus files with source material sample rates other than 48 kHz
+			- fixed writing invalid MP3 bitstreams in rare cases in SuperFast mode
 			- fixed wrong length detection for MP3 files with invalid chapter data
 			- fixed parsing of cue sheets with minute/second indications missing leading zeros and/or duration longer than 99 minutes
 			- fixed parsing of embedded cue sheets without FILE designations
