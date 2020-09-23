@@ -34,6 +34,7 @@ namespace freac
 	const Int	 CHARSET_SHIFT_JIS	= 5;
 	const Int	 CHARSET_GBK		= 6;
 	const Int	 CHARSET_BIG_5		= 7;
+	const Int	 CHARSET_UTF_8		= 8;
 	const Int	 CHARSET_OTHER		= 255;
 
 	class LayerJoblist : public Layer

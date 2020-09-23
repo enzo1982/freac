@@ -81,11 +81,15 @@ freac::cddbManageDlg::cddbManageDlg()
 	text_charset	= new Text(i18n->AddColon(i18n->TranslateString("Charset")), Point(276, 226));
 
 	list_charset	= new List();
-	list_charset->AddEntry("CP1251");
+	list_charset->AddEntry("UTF-8");
+	list_charset->AddSeparator();
 	list_charset->AddEntry("ISO-8859-1");
 	list_charset->AddEntry("ISO-8859-2");
 	list_charset->AddEntry("ISO-8859-5");
 	list_charset->AddEntry("ISO-8859-7");
+	list_charset->AddSeparator();
+	list_charset->AddEntry("CP1251");
+	list_charset->AddSeparator();
 	list_charset->AddEntry("SHIFT-JIS");
 	list_charset->AddEntry("GBK");
 	list_charset->AddEntry("BIG-5");

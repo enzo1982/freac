@@ -991,6 +991,8 @@ Void freac::LayerJoblist::FillMenus()
 	menu_charsets->RemoveAllEntries();
 	menu_charsets_all->RemoveAllEntries();
 
+	menu_charsets->AddEntry("UTF-8", &clicked_charset, CHARSET_UTF_8)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
+	menu_charsets->AddEntry();
 	menu_charsets->AddEntry("ISO-8859-1", &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 	menu_charsets->AddEntry("ISO-8859-2", &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 	menu_charsets->AddEntry("ISO-8859-5", &clicked_charset, CHARSET_ISO_8859_5)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
@@ -1004,6 +1006,8 @@ Void freac::LayerJoblist::FillMenus()
 	menu_charsets->AddEntry();
 	menu_charsets->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Other")), &clicked_charset, CHARSET_OTHER)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 
+	menu_charsets_all->AddEntry("UTF-8", &clicked_charset, CHARSET_UTF_8)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry();
 	menu_charsets_all->AddEntry("ISO-8859-1", &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry("ISO-8859-2", &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry("ISO-8859-5", &clicked_charset, CHARSET_ISO_8859_5)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
@@ -2034,6 +2038,7 @@ Void freac::LayerJoblist::InterpretStringAs()
 
 	switch (clicked_charset)
 	{
+		case CHARSET_UTF_8:	 charset = "UTF-8";	 break;
 		case CHARSET_ISO_8859_1: charset = "ISO-8859-1"; break;
 		case CHARSET_ISO_8859_2: charset = "ISO-8859-2"; break;
 		case CHARSET_ISO_8859_5: charset = "ISO-8859-5"; break;
@@ -2077,6 +2082,7 @@ Void freac::LayerJoblist::InterpretStringAsAll()
 
 	switch (clicked_charset)
 	{
+		case CHARSET_UTF_8:	 charset = "UTF-8";	 break;
 		case CHARSET_ISO_8859_1: charset = "ISO-8859-1"; break;
 		case CHARSET_ISO_8859_2: charset = "ISO-8859-2"; break;
 		case CHARSET_ISO_8859_5: charset = "ISO-8859-5"; break;
