@@ -1105,6 +1105,7 @@ Error freac::JobConvert::Perform()
 			/* Query actual length of track.
 			 */
 			singleTrackToEncode.length = singleFileEncoder->GetEncodedSamples();
+			singleTrackToEncode.length = singleTrackToEncode.length * singleTrackToEncode.GetFormat().rate / singleFileProcessor->GetFormatInfo().rate;
 
 			/* Delete processor and encoder.
 			 */
@@ -1175,6 +1176,8 @@ Error freac::JobConvert::Perform()
 		else
 		{
 			Track	 cuesheetTrack = trackToConvert;
+
+			cuesheetTrack.SetFormat(track.GetFormat());
 
 			cuesheetTrack.isCDTrack	   = False;
 			cuesheetTrack.sampleOffset = track.sampleOffset;

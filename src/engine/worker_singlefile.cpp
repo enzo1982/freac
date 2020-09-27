@@ -185,7 +185,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	 */
 	Format	 format = trackToConvert.GetFormat();
 
-	if (processor != NIL) format = processor->GetFormatInfo();
+	if (processor != NIL && processor->GetFormatInfo() != Format()) format = processor->GetFormatInfo();
 
 	/* Free decoder and verifier.
 	 */
@@ -219,6 +219,8 @@ Int freac::ConvertWorkerSingleFile::Convert()
 	/* Update track length and offset.
 	 */
 	Track	 track	= trackToConvert;
+
+	trackToConvert.SetFormat(format);
 
 	trackToConvert.sampleOffset = encodedSamples - trackLength;
 	trackToConvert.length	    = trackLength;

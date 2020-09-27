@@ -420,6 +420,12 @@ Int freac::ConvertWorker::Convert()
 					  conversionStep == ConversionStepEncode) && encoder->IsLossless()) encodeChecksum = encoder->GetMD5Checksum();
 		else if	(verifyOutput &&  conversionStep == ConversionStepVerify			  ) verifyChecksum = decoder->GetMD5Checksum();
 
+		/* Get output format info.
+		 */
+		Format	 format = trackToConvert.GetFormat();
+
+		if (processor->GetFormatInfo() != Format()) format = processor->GetFormatInfo();
+
 		/* Free decoder, verifier, processor and encoder.
 		 */
 		decoder->Destroy();
@@ -499,6 +505,8 @@ Int freac::ConvertWorker::Convert()
 		/* Update track length and offset.
 		 */
 		Track	 track = trackToConvert;
+
+		trackToConvert.SetFormat(format);
 
 		trackToConvert.sampleOffset = 0;
 		trackToConvert.length	    = trackLength;

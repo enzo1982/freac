@@ -173,6 +173,7 @@ Geschichte
 			- Mögliche Fehler in WAV-/AIFF-Ausgabe bei Verarbeitung von float-Samples außerhalb des -1.0/+1.0 Bereichs behoben
 			- Mögliches Aufhängen beim Öffnen von WAV-/AIFF-Dateien größer als 2 GB oder mit ungültiger Chunk-Struktur behoben
 			- Problem beim Öffnen von WAV-/AIFF-Dateien mit langen Pfaden unter Windows behoben
+			- Schreiben von falschen Offsets in Cuesheets für kombinierte Ausgabedateien bei aktiviertem Resampling-DSP-Filter behoben
 			- Schreiben von falschen Kapitelmarken in Opus-Dateien bei Quellmaterial mit Sampleraten ungleich 48 kHz behoben
 			- Schreiben von ungültigen MP3-Bitstreams in seltenen Fällen bei aktiviertem SuperFast-Modus behoben
 			- Falsche Längenerkennung bei MP3-Dateien mit ungültigen Kapitelinformationen behoben
