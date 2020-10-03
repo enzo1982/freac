@@ -1,0 +1,20 @@
+{
+  "name": "libmac",
+  "no-autogen": true,
+  "rm-configure": true,
+  "make-install-args": [
+    "prefix=/app"
+  ],
+  "sources": [
+    {
+        "type": "archive",
+        "url": "https://freac.org/patches/MAC_SDK_555.zip",
+        "sha256": "5a044acf923745d54beaed0dcd576c29c72d1fb56c6d744419c0ee8cf1294d6f",
+        "strip-components": 0
+    },
+    {
+        "type": "patch",
+        "path": "mac-sdk-5.55-gcc.patch"
+    }
+  ]
+}

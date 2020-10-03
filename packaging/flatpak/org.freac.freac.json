@@ -1,7 +1,7 @@
 {
     "app-id": "org.freac.freac",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "19.08",
+    "runtime-version": "20.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "freac",
     "finish-args": [
@@ -17,6 +17,7 @@
         "--talk-name=ca.desrt.dconf"
     ],
     "cleanup": [
+        "/bin/mac",
         "/include",
         "/lib/pkgconfig",
         "/share/aclocal",
@@ -26,6 +27,7 @@
         "*.la"
     ],
     "modules": [
+        "shared-modules/mac/mac.json",
         {
             "name": "libcdio",
             "config-opts": [
@@ -65,46 +67,6 @@
                     "type": "archive",
                     "url": "https://github.com/rocky/libcdio-paranoia/archive/release-10.2+2.0.1.tar.gz",
                     "sha256": "7a4e257c85f3f84129cca55cd097c397364c7a6f79b9701bbc593b13bd59eb95"
-                }
-            ]
-        },
-        {
-            "name": "libflac",
-            "config-opts": [
-                "--disable-cpp-libs"
-            ],
-            "cleanup": [
-                "/bin/flac",
-                "/bin/metaflac",
-                "/share/doc/flac*"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.3.3.tar.xz",
-                    "sha256": "213e82bd716c9de6db2f98bcadbc4c24c7e2efe8c75939a1a84e28539c4e1748"
-                }
-            ]
-        },
-        {
-            "name": "libmac",
-            "buildsystem": "simple",
-            "build-commands": [
-                "make -f Source/Projects/NonWindows/Makefile prefix=/app all install"
-            ],
-            "cleanup": [
-                "/bin/mac"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://freac.org/patches/MAC_SDK_555.zip",
-                    "sha256": "7b1ca20751eb0bf70db5cde3e35016474ee6e5c60edd45bfceed5736d49168a3",
-                    "strip-components": 0
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/mac-sdk-5.55-gcc.patch"
                 }
             ]
         },
@@ -223,6 +185,9 @@
         },
         {
             "name": "musepack",
+            "config-opts": [
+                "--disable-shared"
+            ],
             "cleanup": [
                 "/bin/mpc2sv8",
                 "/bin/mpccut",
@@ -233,6 +198,10 @@
                     "type": "archive",
                     "url": "https://files.musepack.net/source/musepack_src_r475.tar.gz",
                     "sha256": "a4b1742f997f83e1056142d556a8c20845ba764b70365ff9ccf2e3f81c427b2b"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/musepack_src_r475-const.patch"
                 },
                 {
                     "type": "shell",
@@ -264,7 +233,8 @@
         {
             "name": "rubberband",
             "build-options": {
-            "env": { "Vamp_CFLAGS": " ", "Vamp_LIBS": " " }},
+                "env": { "Vamp_CFLAGS": " ", "Vamp_LIBS": " " }
+            },
             "sources": [
                 {
                     "type": "archive",
