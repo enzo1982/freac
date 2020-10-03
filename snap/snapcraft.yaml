@@ -92,7 +92,7 @@ parts:
   libmac:
     after: [ patches ]
     source: https://freac.org/patches/MAC_SDK_555.zip
-    source-checksum: sha256/7b1ca20751eb0bf70db5cde3e35016474ee6e5c60edd45bfceed5736d49168a3
+    source-checksum: sha256/5a044acf923745d54beaed0dcd576c29c72d1fb56c6d744419c0ee8cf1294d6f
     source-subdir: .
     plugin: make
     make-parameters: [ prefix=/usr ]
