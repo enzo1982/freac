@@ -182,6 +182,7 @@ History
 			- fixed ripping progress for other drives stalling while one drive is ejecting
 			- fixed inability to pause or stop single output file verification
 			- fixed log files being archived despite disabling the corresponding option
+			- fixed various issues with multi-monitor support on macOS
 			- fixed user interface glitches after closing dialogs in tabbed mode on macOS
 			- fixed Shift+Pos1/End shortcuts being interpreted by the joblist and edit fields at the same time
 
