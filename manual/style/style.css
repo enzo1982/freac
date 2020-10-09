@@ -309,7 +309,7 @@
   	background-color: #dbd4a6;
   }
 
-  #contents a {
+  #contents a,h5 a {
 	text-decoration: none;
   }
 
