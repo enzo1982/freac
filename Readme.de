@@ -154,7 +154,6 @@ Geschichte
 
 		- Verbesserungen
 
-			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Der Konfigurationsdialog für Kommandozeilenkodierer erlaubt nun die Angabe zusätzlicher Parameter
 			- Erkennung der Kodierung von Cuesheets verbessert, um System-Codepage und UTF-8 ohne BOM zu unterstützen
 			- freaccmd teilt Cuesheets jetzt in einzelne Tracks, sofern keine Ausgabedatei mit der -o Option angegeben wird
@@ -196,7 +195,6 @@ Geschichte
 
 		- Neue Übersetzungen
 
-			- Persische Übersetzung hinzugefügt
 			- Hindi Übersetzung hinzugefügt
 
 	Version 1.1.2b (Juli 2020)
@@ -541,7 +539,6 @@ Besonderen Dank
 			   Xabier Aramendi (Baskisch),
 			   Kin Kwok (Kantonesisch, Hong Kong),
 			   Patriccollu di Santa Maria è Sichè (Korsisch),
-			   XilizaX (Persisch),
 			   Tushar Chandra (Hindi)
 
 	- Hans-Jürgen Bardenhagen für seine Hilfe und Vorschläge zum FAAC-Kodierer

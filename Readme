@@ -154,7 +154,6 @@ History
 
 		- Improvements
 
-			- improved support for languages written from right to left
 			- command line codec configuration now allows specifying additional arguments
 			- improved detection of cue sheet encoding to support system codepage and UTF-8 without BOM
 			- freaccmd now splits cue sheets to individual tracks unless an output file is specified using the -o option
@@ -196,7 +195,6 @@ History
 
 		- New translations
 
-			- added Persian translation
 			- added Hindi translation
 
 	Version 1.1.2b (July 2020)
@@ -541,7 +539,6 @@ Special thanks to
 			   Xabier Aramendi (Basque),
 			   Kin Kwok (Cantonese, Hong Kong),
 			   Patriccollu di Santa Maria è Sichè (Corsican),
-			   XilizaX (Persian),
 			   Tushar Chandra (Hindi)
 
 	- Hans-Jürgen Bardenhagen for his help and suggestions for the FAAC encoder
