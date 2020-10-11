@@ -41,7 +41,7 @@ String	 freac::freac::appLongName    = "fre:ac - free video downloader";
 String	 freac::freac::version	      = FREAC_VERSION;
 #else
 #	ifdef FREAC_DATE
-String	 freac::freac::version	      = "v1.1.3";// (" FREAC_DATE ")";
+String	 freac::freac::version	      = "v1.1.3 (" FREAC_DATE ")";
 #	else
 String	 freac::freac::version	      = "v1.1.3";
 #	endif
