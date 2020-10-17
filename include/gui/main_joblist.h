@@ -24,7 +24,7 @@ using namespace smooth::GUI;
 namespace freac
 {
 	class JobList;
-	class LayerPlayer;
+	class PlaybackWidget;
 
 	const Int	 CHARSET_ISO_8859_1	= 0;
 	const Int	 CHARSET_ISO_8859_2	= 1;
@@ -133,7 +133,7 @@ namespace freac
 			Shortcut		*shortcut_toggle_mark;
 			Shortcut		*shortcut_remove;
 
-			LayerPlayer		*player;
+			PlaybackWidget		*player;
 
 			Surface			*drawSurface;
 

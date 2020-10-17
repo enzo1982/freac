@@ -269,7 +269,7 @@
     <ClCompile Include="..\..\src\engine\worker_singlefile.cpp" />
     <ClCompile Include="..\..\src\freac.cpp" />
     <ClCompile Include="..\..\src\gui\edit_folder.cpp" />
-    <ClCompile Include="..\..\src\gui\player.cpp" />
+    <ClCompile Include="..\..\src\gui\playback.cpp" />
     <ClCompile Include="..\..\src\joblist.cpp" />
     <ClCompile Include="..\..\src\jobs\engine\convert.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_convert.obj</ObjectFileName>
@@ -290,7 +290,7 @@
     <ClCompile Include="..\..\src\jobs\other\checkforupdates.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)/job_checkforupdates.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\playback.cpp" />
+    <ClCompile Include="..\..\src\player.cpp" />
     <ClCompile Include="..\..\src\progress.cpp" />
     <ClCompile Include="..\..\src\startconsole.cpp" />
     <ClCompile Include="..\..\src\startgui.cpp" />
@@ -385,7 +385,7 @@
     <ClInclude Include="..\..\include\engine\worker_singlefile.h" />
     <ClInclude Include="..\..\include\freac.h" />
     <ClInclude Include="..\..\include\gui\edit_folder.h" />
-    <ClInclude Include="..\..\include\gui\player.h" />
+    <ClInclude Include="..\..\include\gui\playback.h" />
     <ClInclude Include="..\..\include\joblist.h" />
     <ClInclude Include="..\..\include\jobs\engine\convert.h" />
     <ClInclude Include="..\..\include\jobs\joblist\addfiles.h" />
@@ -394,7 +394,7 @@
     <ClInclude Include="..\..\include\jobs\joblist\removeall.h" />
     <ClInclude Include="..\..\include\jobs\joblist\removedisc.h" />
     <ClInclude Include="..\..\include\jobs\other\checkforupdates.h" />
-    <ClInclude Include="..\..\include\playback.h" />
+    <ClInclude Include="..\..\include\player.h" />
     <ClInclude Include="..\..\include\progress.h" />
     <ClInclude Include="..\..\include\resources.h" />
     <ClInclude Include="..\..\include\startconsole.h" />

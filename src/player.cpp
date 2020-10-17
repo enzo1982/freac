@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -10,7 +10,7 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <playback.h>
+#include <player.h>
 #include <config.h>
 #include <utilities.h>
 #include <freac.h>
@@ -23,9 +23,7 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-freac::Playback	*freac::Playback::instance = NIL;
-
-freac::Playback::Playback()
+freac::Player::Player()
 {
 	playing	    = False;
 	paused	    = False;
@@ -37,31 +35,11 @@ freac::Playback::Playback()
 	newPosition = -1;
 }
 
-freac::Playback::~Playback()
+freac::Player::~Player()
 {
 }
 
-freac::Playback *freac::Playback::Get()
-{
-	if (instance == NIL)
-	{
-		instance = new Playback();
-	}
-
-	return instance;
-}
-
-Void freac::Playback::Free()
-{
-	if (instance != NIL)
-	{
-		delete instance;
-
-		instance = NIL;
-	}
-}
-
-Void freac::Playback::Play(const Track &iTrack)
+Void freac::Player::Play(const Track &iTrack)
 {
 	/* Resume playback if it is paused.
 	 */
@@ -94,10 +72,10 @@ Void freac::Playback::Play(const Track &iTrack)
 
 	stop	= False;
 
-	NonBlocking0<>(&Playback::PlayThread, this).Call();
+	NonBlocking0<>(&Player::PlayThread, this).Call();
 }
 
-Int freac::Playback::PlayThread()
+Int freac::Player::PlayThread()
 {
 	BoCA::Config	*config = BoCA::Config::Copy();
 
@@ -201,7 +179,7 @@ Int freac::Playback::PlayThread()
 	return error;
 }
 
-Void freac::Playback::Loop(Decoder *decoder, Processor *processor)
+Void freac::Player::Loop(Decoder *decoder, Processor *processor)
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -279,7 +257,7 @@ Void freac::Playback::Loop(Decoder *decoder, Processor *processor)
 	while (!stop && output->IsPlaying()) S::System::System::Sleep(20);
 }
 
-Void freac::Playback::Write(Buffer<UnsignedByte> &buffer, Int chunkSize)
+Void freac::Player::Write(Buffer<UnsignedByte> &buffer, Int chunkSize)
 {
 	while (buffer.Size() > 0)
 	{
@@ -298,7 +276,7 @@ Void freac::Playback::Write(Buffer<UnsignedByte> &buffer, Int chunkSize)
 	}
 }
 
-Void freac::Playback::Pause()
+Void freac::Player::Pause()
 {
 	if (!playing) return;
 
@@ -307,7 +285,7 @@ Void freac::Playback::Pause()
 	paused = True;
 }
 
-Void freac::Playback::Resume()
+Void freac::Player::Resume()
 {
 	if (!playing) return;
 
@@ -316,14 +294,14 @@ Void freac::Playback::Resume()
 	paused = False;
 }
 
-Void freac::Playback::SetPosition(Int position)
+Void freac::Player::SetPosition(Int position)
 {
 	if (!playing) return;
 
 	newPosition = position;
 }
 
-Void freac::Playback::Stop()
+Void freac::Player::Stop()
 {
 	if (!playing || stop) return;
 

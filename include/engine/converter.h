@@ -36,6 +36,8 @@ namespace freac
 	{
 		private:
 			Bool	 conversionFinished;
+
+			Bool	 IsAnyTrackLocked(const Array<BoCA::Track> &) const;
 		public:
 				 Converter();
 				~Converter();

@@ -12,7 +12,7 @@
 
 #include <startgui.h>
 #include <joblist.h>
-#include <playback.h>
+#include <player.h>
 #include <config.h>
 #include <utilities.h>
 #include <resources.h>
@@ -100,6 +100,10 @@ freac::freacGUI::freacGUI()
 
 	config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsNotificationAvailableID, False) = notification != NIL && notification->IsNotificationAvailable();
 
+	/* Create player.
+	 */
+	player = new Player();
+
 	/* Setup attributes.
 	 */
 	clicked_configuration = -1;
@@ -139,6 +143,8 @@ freac::freacGUI::freacGUI()
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, wndSize.cx);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, wndSize.cy);
 
+	/* Create widgets.
+	 */
 	mainWnd			= new Window(String(freac::appLongName).Append(" ").Append(freac::version), wndPos, wndSize);
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
@@ -314,6 +320,10 @@ freac::freacGUI::~freacGUI()
 	foreach (PopupMenu *menu_format, formatMenus) DeleteObject(menu_format);
 
 	formatMenus.RemoveAll();
+
+	/* Free player.
+	 */
+	delete player;
 }
 
 Void freac::freacGUI::InitExtensionComponents()
@@ -361,7 +371,7 @@ Bool freac::freacGUI::ExitProc()
 
 	/* Stop playback if playing a track
 	 */
-	Playback::Get()->Stop();
+	player->Stop();
 
 	/* Order remaining jobs to abort.
 	 */

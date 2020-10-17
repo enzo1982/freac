@@ -20,7 +20,7 @@
 #include <jobs/job.h>
 #include <jobs/engine/convert.h>
 
-#include <gui/player.h>
+#include <gui/playback.h>
 #include <gui/edit_folder.h>
 
 #include <dialogs/config/configcomponent.h>
@@ -144,7 +144,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 		pos.x = 242;
 		pos.y = 0;
 
-		player	= new LayerPlayer(joblist);
+		player	= new PlaybackWidget(freacGUI::Get()->GetPlayer(), joblist);
 		player->SetPosition(pos);
 		player->SetOrientation(OR_UPPERRIGHT);
 	}
@@ -967,8 +967,8 @@ Void freac::LayerJoblist::FillMenus()
 
 	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
 	{
-		menu_trackmenu->AddEntry(i18n->TranslateString("Play"))->onAction.Connect(&LayerPlayer::PlaySelectedItem, player);
-		menu_trackmenu->AddEntry(i18n->TranslateString("Stop"))->onAction.Connect(&LayerPlayer::StopPlayback, player);
+		menu_trackmenu->AddEntry(i18n->TranslateString("Play"))->onAction.Connect(&PlaybackWidget::PlaySelectedItem, player);
+		menu_trackmenu->AddEntry(i18n->TranslateString("Stop"))->onAction.Connect(&PlaybackWidget::StopPlayback, player);
 		menu_trackmenu->AddEntry();
 	}
 

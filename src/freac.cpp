@@ -15,7 +15,6 @@
 #include <boca.h>
 #include <freac.h>
 
-#include <playback.h>
 #include <config.h>
 #include <utilities.h>
 #include <dllinterfaces.h>
@@ -167,10 +166,6 @@ freac::freac::~freac()
 	/* Free conversion locks.
 	 */
 	Component::FreeLockObjects();
-
-	/* Free the audio player.
-	 */
-	Playback::Free();
 
 	/* Free the CDDB cache.
 	 */

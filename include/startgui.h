@@ -36,6 +36,7 @@ extern "C"
 
 namespace freac
 {
+	class Player;
 	class JobList;
 
 	class LayerJoblist;
@@ -90,6 +91,7 @@ namespace freac
 			LayerJoblist					*tab_layer_joblist;
 			LayerThreads					*tab_layer_threads;
 
+			Player						*player;
 			JobList						*joblist;
 
 			Notification					*notification;
@@ -169,6 +171,8 @@ namespace freac
 
 			Void						 ConfirmDeleteAfterEncoding();
 		public:
+			Player						*GetPlayer()				{ return player; }
+
 			/* Returns a new or existing instance of freacGUI
 			 */
 			static freacGUI					*Get();

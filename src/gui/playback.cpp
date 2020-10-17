@@ -10,10 +10,10 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <gui/player.h>
+#include <gui/playback.h>
 
 #include <joblist.h>
-#include <playback.h>
+#include <player.h>
 #include <config.h>
 
 #include <jobs/engine/convert.h>
@@ -21,14 +21,13 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-freac::LayerPlayer::LayerPlayer(JobList *iJoblist)
+freac::PlaybackWidget::PlaybackWidget(Player *iPlayer, JobList *iJoblist)
 {
+	player	= iPlayer;
 	joblist = iJoblist;
 
 	Config		*config = Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
-
-	Playback	*player	= Playback::Get();
 
 	Point		 pos;
 	Size		 size;
@@ -39,37 +38,37 @@ freac::LayerPlayer::LayerPlayer(JobList *iJoblist)
 	size.cy = 25;
 
 	button_play	= new Button(ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-play.png")), pos, size);
-	button_play->onAction.Connect(&LayerPlayer::PlaySelectedItem, this);
+	button_play->onAction.Connect(&PlaybackWidget::PlaySelectedItem, this);
 	button_play->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 	button_pause	= new Button(ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-pause.png")), pos, size);
-	button_pause->onAction.Connect(&LayerPlayer::PauseResumePlayback, this);
+	button_pause->onAction.Connect(&PlaybackWidget::PauseResumePlayback, this);
 	button_pause->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 	button_stop	= new Button(ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-stop.png")), pos, size);
-	button_stop->onAction.Connect(&LayerPlayer::StopPlayback, this);
+	button_stop->onAction.Connect(&PlaybackWidget::StopPlayback, this);
 	button_stop->SetFlags(BF_NOFRAME);
 
 	pos.x += 127 - (i18n->IsActiveLanguageRightToLeft() ? 254 : 0);
 
 	button_prev	= new Button(ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-previous.png")), pos, size);
-	button_prev->onAction.Connect(&LayerPlayer::PlayPreviousItem, this);
+	button_prev->onAction.Connect(&PlaybackWidget::PlayPreviousItem, this);
 	button_prev->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 	button_next	= new Button(ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-next.png")), pos, size);
-	button_next->onAction.Connect(&LayerPlayer::PlayNextItem, this);
+	button_next->onAction.Connect(&PlaybackWidget::PlayNextItem, this);
 	button_next->SetFlags(BF_NOFRAME);
 
 	pos.x += 22 - (i18n->IsActiveLanguageRightToLeft() ? 44 : 0);
 
 	button_open	= new Button(ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-eject.png")), pos, size);
-	button_open->onAction.Connect(&LayerPlayer::OpenCDTray, this);
+	button_open->onAction.Connect(&PlaybackWidget::OpenCDTray, this);
 	button_open->SetFlags(BF_NOFRAME);
 
 	pos.x = 69;
@@ -77,7 +76,7 @@ freac::LayerPlayer::LayerPlayer(JobList *iJoblist)
 	size.cx = 100;
 
 	slider_play	= new Slider(pos, size, OR_HORZ, NIL, 0, 1000);
-	slider_play->onMouseDragEnd.Connect(&LayerPlayer::OnChangePlayPosition, this);
+	slider_play->onMouseDragEnd.Connect(&PlaybackWidget::OnChangePlayPosition, this);
 	slider_play->SetValue(i18n->IsActiveLanguageRightToLeft() ? 1000 : 0);
 	slider_play->Deactivate();
 
@@ -92,26 +91,26 @@ freac::LayerPlayer::LayerPlayer(JobList *iJoblist)
 
 	Add(slider_play);
 
-	Playback::Get()->onPlay.Connect(&LayerPlayer::OnPlay, this);
-	Playback::Get()->onFinish.Connect(&LayerPlayer::OnFinish, this);
+	player->onPlay.Connect(&PlaybackWidget::OnPlay, this);
+	player->onFinish.Connect(&PlaybackWidget::OnFinish, this);
 
-	BoCA::JobList::Get()->onApplicationRemoveTrack.Connect(&LayerPlayer::OnJoblistRemoveTrack, this);
-	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Connect(&LayerPlayer::OnJoblistRemoveAllTracks, this);
+	BoCA::JobList::Get()->onApplicationRemoveTrack.Connect(&PlaybackWidget::OnJoblistRemoveTrack, this);
+	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Connect(&PlaybackWidget::OnJoblistRemoveAllTracks, this);
 
-	BoCA::Settings::Get()->onChangeLanguageSettings.Connect(&LayerPlayer::OnChangeLanguageSettings, this);
+	BoCA::Settings::Get()->onChangeLanguageSettings.Connect(&PlaybackWidget::OnChangeLanguageSettings, this);
 
 	SetSize(Size(243, 21));
 }
 
-freac::LayerPlayer::~LayerPlayer()
+freac::PlaybackWidget::~PlaybackWidget()
 {
-	Playback::Get()->onFinish.Disconnect(&LayerPlayer::OnPlay, this);
-	Playback::Get()->onFinish.Disconnect(&LayerPlayer::OnFinish, this);
+	player->onPlay.Disconnect(&PlaybackWidget::OnPlay, this);
+	player->onFinish.Disconnect(&PlaybackWidget::OnFinish, this);
 
-	BoCA::JobList::Get()->onApplicationRemoveTrack.Disconnect(&LayerPlayer::OnJoblistRemoveTrack, this);
-	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Disconnect(&LayerPlayer::OnJoblistRemoveAllTracks, this);
+	BoCA::JobList::Get()->onApplicationRemoveTrack.Disconnect(&PlaybackWidget::OnJoblistRemoveTrack, this);
+	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Disconnect(&PlaybackWidget::OnJoblistRemoveAllTracks, this);
 
-	BoCA::Settings::Get()->onChangeLanguageSettings.Disconnect(&LayerPlayer::OnChangeLanguageSettings, this);
+	BoCA::Settings::Get()->onChangeLanguageSettings.Disconnect(&PlaybackWidget::OnChangeLanguageSettings, this);
 
 	DeleteObject(button_play);
 	DeleteObject(button_pause);
@@ -120,12 +119,12 @@ freac::LayerPlayer::~LayerPlayer()
 	DeleteObject(button_next);
 	DeleteObject(button_open);
 
-	Playback::Get()->onProgress.Disconnect(&Slider::SetValue, slider_play);
+	player->onProgress.Disconnect(&Slider::SetValue, slider_play);
 
 	DeleteObject(slider_play);
 }
 
-Void freac::LayerPlayer::OnChangeLanguageSettings()
+Void freac::PlaybackWidget::OnChangeLanguageSettings()
 {
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 
@@ -184,26 +183,24 @@ Void freac::LayerPlayer::OnChangeLanguageSettings()
 	prevRTL = i18n->IsActiveLanguageRightToLeft();
 }
 
-Void freac::LayerPlayer::OnJoblistRemoveTrack(const Track &track)
+Void freac::PlaybackWidget::OnJoblistRemoveTrack(const Track &track)
 {
-	Playback	*player = Playback::Get();
-
 	if (player->IsPlaying() && playingTrack.GetTrackID() == track.GetTrackID()) StopPlayback();
 }
 
-Void freac::LayerPlayer::OnJoblistRemoveAllTracks()
+Void freac::PlaybackWidget::OnJoblistRemoveAllTracks()
 {
-	if (Playback::Get()->IsPlaying()) StopPlayback();
+	if (player->IsPlaying()) StopPlayback();
 }
 
-Void freac::LayerPlayer::PlaySelectedItem()
+Void freac::PlaybackWidget::PlaySelectedItem()
 {
 	const Track	&track = joblist->GetSelectedTrack();
 
 	if (track != NIL) Play(track);
 }
 
-Void freac::LayerPlayer::PlayPreviousItem()
+Void freac::PlaybackWidget::PlayPreviousItem()
 {
 	for (Int i = 1; i < joblist->Length(); i++)
 	{
@@ -219,7 +216,7 @@ Void freac::LayerPlayer::PlayPreviousItem()
 	}
 }
 
-Void freac::LayerPlayer::PlayNextItem()
+Void freac::PlaybackWidget::PlayNextItem()
 {
 	for (Int i = 0; i < joblist->Length() - 1; i++)
 	{
@@ -235,12 +232,10 @@ Void freac::LayerPlayer::PlayNextItem()
 	}
 }
 
-Void freac::LayerPlayer::Play(const Track &track)
+Void freac::PlaybackWidget::Play(const Track &track)
 {
 	/* Play track.
 	 */
-	Playback	*player = Playback::Get();
-
 	player->Play(track);
 
 	if (!player->IsPlaying()) return;
@@ -248,20 +243,16 @@ Void freac::LayerPlayer::Play(const Track &track)
 	playingTrack = track;
 }
 
-Void freac::LayerPlayer::PauseResumePlayback()
+Void freac::PlaybackWidget::PauseResumePlayback()
 {
-	Playback	*player = Playback::Get();
-
 	if (!player->IsPlaying()) return;
 
 	if (player->IsPaused()) player->Resume();
 	else			player->Pause();
 }
 
-Void freac::LayerPlayer::StopPlayback()
+Void freac::PlaybackWidget::StopPlayback()
 {
-	Playback	*player = Playback::Get();
-
 	if (!player->IsPlaying()) return;
 
 	player->Stop();
@@ -269,7 +260,7 @@ Void freac::LayerPlayer::StopPlayback()
 	playingTrack = NIL;
 }
 
-Void freac::LayerPlayer::OnPlay(const Track &track)
+Void freac::PlaybackWidget::OnPlay(const Track &track)
 {
 	/* Activate slider.
 	 */
@@ -288,7 +279,7 @@ Void freac::LayerPlayer::OnPlay(const Track &track)
 	entry->SetFont(font);
 }
 
-Void freac::LayerPlayer::OnFinish(const Track &track)
+Void freac::PlaybackWidget::OnFinish(const Track &track)
 {
 	/* Reset slider.
 	 */
@@ -310,7 +301,7 @@ Void freac::LayerPlayer::OnFinish(const Track &track)
 	entry->SetFont(font);
 }
 
-Void freac::LayerPlayer::OpenCDTray()
+Void freac::PlaybackWidget::OpenCDTray()
 {
 	Registry		&boca = Registry::Get();
 	DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
@@ -328,18 +319,16 @@ Void freac::LayerPlayer::OpenCDTray()
 	boca.DeleteComponent(info);
 }
 
-Void freac::LayerPlayer::OnChangePlayPosition()
+Void freac::PlaybackWidget::OnChangePlayPosition()
 {
-	Playback	*player = Playback::Get();
-
 	if (!player->IsPlaying()) return;
 
-	player->onFinish.Disconnect(&LayerPlayer::OnFinish, this);
+	player->onFinish.Disconnect(&PlaybackWidget::OnFinish, this);
 
 	player->Stop();
 	player->Play(playingTrack);
 
-	player->onFinish.Connect(&LayerPlayer::OnFinish, this);
+	player->onFinish.Connect(&PlaybackWidget::OnFinish, this);
 
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
 

@@ -22,9 +22,9 @@ DLLOBJECTS += $(OBJECTS)/cddb_extsettings.o $(OBJECTS)/cddb_manage.o $(OBJECTS)/
 DLLOBJECTS += $(OBJECTS)/dialog_config.o $(OBJECTS)/config_cddb.o $(OBJECTS)/config_dsp.o $(OBJECTS)/config_encoders.o $(OBJECTS)/config_interface.o $(OBJECTS)/config_language.o $(OBJECTS)/config_playlists.o $(OBJECTS)/config_resources.o $(OBJECTS)/config_tags.o $(OBJECTS)/config_verification.o $(OBJECTS)/configcomponent.o $(OBJECTS)/configentry.o
 DLLOBJECTS += $(OBJECTS)/adddirectory.o $(OBJECTS)/addpattern.o $(OBJECTS)/charset.o $(OBJECTS)/error.o $(OBJECTS)/format.o $(OBJECTS)/overwrite.o
 DLLOBJECTS += $(OBJECTS)/engine_component.o $(OBJECTS)/engine_converter.o $(OBJECTS)/engine_decoder.o $(OBJECTS)/engine_encoder.o $(OBJECTS)/engine_locking.o $(OBJECTS)/engine_processor.o $(OBJECTS)/engine_verifier.o $(OBJECTS)/engine_worker.o $(OBJECTS)/engine_worker_singlefile.o
-DLLOBJECTS += $(OBJECTS)/edit_folder.o $(OBJECTS)/layer_tooltip.o $(OBJECTS)/main_joblist.o $(OBJECTS)/main_threads.o $(OBJECTS)/player.o
+DLLOBJECTS += $(OBJECTS)/edit_folder.o $(OBJECTS)/layer_tooltip.o $(OBJECTS)/main_joblist.o $(OBJECTS)/main_threads.o $(OBJECTS)/playback.o
 DLLOBJECTS += $(OBJECTS)/job_convert.o $(OBJECTS)/job_addfiles.o $(OBJECTS)/job_addfolders.o $(OBJECTS)/job_addtracks.o $(OBJECTS)/job_removeall.o $(OBJECTS)/job_removedisc.o $(OBJECTS)/job_checkforupdates.o $(OBJECTS)/job.o $(OBJECTS)/jobmanager.o
-DLLOBJECTS += $(OBJECTS)/config.o $(OBJECTS)/dllinterfaces.o $(OBJECTS)/freac.o $(OBJECTS)/joblist.o $(OBJECTS)/playback.o $(OBJECTS)/progress.o $(OBJECTS)/startconsole.o $(OBJECTS)/startgui.o $(OBJECTS)/utilities.o
+DLLOBJECTS += $(OBJECTS)/config.o $(OBJECTS)/dllinterfaces.o $(OBJECTS)/freac.o $(OBJECTS)/joblist.o $(OBJECTS)/player.o $(OBJECTS)/progress.o $(OBJECTS)/startconsole.o $(OBJECTS)/startgui.o $(OBJECTS)/utilities.o
 
 ifeq ($(BUILD_WIN32),True)
 	DLLOBJECTS += $(OBJECTS)/autorelease_none.o
