@@ -5,6 +5,9 @@
   "make-install-args": [
     "prefix=/app"
   ],
+  "cleanup": [
+    "/include/MAC"
+  ],
   "sources": [
     {
         "type": "archive",
