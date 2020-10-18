@@ -152,6 +152,7 @@ Geschichte
 		- Verbesserungen
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
+			- Unterstützung für mehrere Bildschirme unter X11-basierten Systemen verbessert
 
 		- Neue Übersetzungen
 
