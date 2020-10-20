@@ -154,6 +154,10 @@ History
 			- improved support for languages written from right to left
 			- improved multi-monitor support on X11 based systems
 
+		- Updated codecs
+
+			- updated FAAD2 to version 2.10.0
+
 		- New translations
 
 			- added Persian translation
