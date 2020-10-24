@@ -152,7 +152,12 @@ Geschichte
 		- Verbesserungen
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
+			- Unterstützung für das Auslesen von CD-Text verbessert
 			- Unterstützung für mehrere Bildschirme unter X11-basierten Systemen verbessert
+
+		- Bug fixes
+
+			- Schreiben von falschen Längenangaben in sehr lange Opus- und Speex-Dateien behoben (länger als 12 ½ Stunden bei 48 kHz)
 
 		- Aktualisierte Codecs
 

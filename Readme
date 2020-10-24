@@ -152,7 +152,12 @@ History
 		- Improvements
 
 			- improved support for languages written from right to left
+			- improved support for reading CD-Text
 			- improved multi-monitor support on X11 based systems
+
+		- Bug fixes
+
+			- fixed invalid length written to very long Opus and Speex files (longer than 12 ½ hours at 48 kHz)
 
 		- Updated codecs
 

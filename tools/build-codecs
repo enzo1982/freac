@@ -152,8 +152,8 @@ lame_patch_levels=(0 1)
 lame_patches_ppc=(https://freac.org/patches/lame-$lame_version-altivec-20171014.diff https://freac.org/patches/lame-$lame_version-fastcrc.diff)
 lame_patch_levels_ppc=(0 1)
 
-libcdio_patches=(https://freac.org/patches/libcdio-$libcdio_version-cdtext-osx.patch)
-libcdio_patch_levels=(1)
+libcdio_patches=(https://freac.org/patches/libcdio-$libcdio_version-cdtext-osx.patch https://freac.org/patches/libcdio-$libcdio_version-cdtext-win32.patch)
+libcdio_patch_levels=(1 1)
 
 mac_patches=(https://freac.org/patches/mac-sdk-$mac_version-gcc.patch)
 mac_patch_levels=(1)
