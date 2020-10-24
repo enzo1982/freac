@@ -153,6 +153,7 @@ History
 
 			- improved support for languages written from right to left
 			- improved support for reading CD-Text
+			- added catalog number and barcode fields to tag editor
 			- improved multi-monitor support on X11 based systems
 
 		- Bug fixes

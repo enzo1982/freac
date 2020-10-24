@@ -153,6 +153,7 @@ Geschichte
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Unterstützung für das Auslesen von CD-Text verbessert
+			- Felder für Katalognummer und Barcode zum Tag-Editor hinzugefügt
 			- Unterstützung für mehrere Bildschirme unter X11-basierten Systemen verbessert
 
 		- Bug fixes
