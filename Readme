@@ -154,6 +154,7 @@ History
 			- improved support for languages written from right to left
 			- improved support for reading CD-Text
 			- added catalog number and barcode fields to tag editor
+			- added file type associations to macOS app, so fre:ac is offered for opening audio files
 			- improved multi-monitor support on X11 based systems
 
 		- Bug fixes
