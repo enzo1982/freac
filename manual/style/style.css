@@ -63,7 +63,7 @@
     display: none;
   }
   
-  a img,:link img,:visited img {border: none;}
+  a img,:link img,:visited img { border: none; }
 
   body {
     text-align: center;
@@ -309,6 +309,14 @@
   	background-color: #dbd4a6;
   }
 
+  #contents a,h5 a {
+	text-decoration: none;
+  }
+
+  #contents a:visited {
+	color: #f6952e;
+  }
+
   /* sidebar
   ----------------------------------------------- */
   #sidebar, #sidebar-alternate {
@@ -516,6 +524,10 @@
   	border-top: none;
   }
 
+  #sidebar a, #sidebar a:visited {
+	text-decoration: none;
+ 	color: #f6952e;
+  }
 
   /* liquid variation
   ----------------------------------------------- */

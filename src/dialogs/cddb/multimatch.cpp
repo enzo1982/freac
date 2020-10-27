@@ -206,7 +206,7 @@ Void freac::cddbMultiMatchDlg::LoadPreview(Int index)
 
 		for (Int i = 0; i < cddbInfo.trackTitles.Length(); i++)
 		{
-			preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(i).Append(" - ") : String()).Append(cddbInfo.trackTitles.GetNth(i)).Append(i < cddbInfo.trackTitles.Length() - 1 ? "\n" : NIL);
+			preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(cddbInfo.dArtist == CDDBInfo::VariousArtistsID ? cddbInfo.trackArtists.GetNth(i).Append(" - ") : String()).Append(cddbInfo.trackTitles.GetNth(i)).Append(i < cddbInfo.trackTitles.Length() - 1 ? "\n" : NIL);
 		}
 
 		text_loading_preview->Hide();

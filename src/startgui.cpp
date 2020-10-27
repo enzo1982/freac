@@ -12,7 +12,7 @@
 
 #include <startgui.h>
 #include <joblist.h>
-#include <playback.h>
+#include <player.h>
 #include <config.h>
 #include <utilities.h>
 #include <resources.h>
@@ -100,6 +100,10 @@ freac::freacGUI::freacGUI()
 
 	config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsNotificationAvailableID, False) = notification != NIL && notification->IsNotificationAvailable();
 
+	/* Create player.
+	 */
+	player = new Player();
+
 	/* Setup attributes.
 	 */
 	clicked_configuration = -1;
@@ -107,27 +111,30 @@ freac::freacGUI::freacGUI()
 	clicked_encoder	      = -1;
 	clicked_processor     = -1;
 
-	Rect	 workArea    = Screen::GetActiveScreenWorkArea();
-	Float	 scaleFactor = Surface().GetSurfaceDPI() / 96.0;
+	Rect	 workArea      = Screen::GetActiveScreenWorkArea();
+	Rect	 virtualScreen = Screen::GetVirtualScreenMetrics();
+	Float	 scaleFactor   = Surface().GetSurfaceDPI() / 96.0;
 
-	Point	 wndPos	     = Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault));
-	Size	 wndSize     = Size(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, Config::SettingsWindowSizeXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, Config::SettingsWindowSizeYDefault));
+	Point	 defaultPos    = Point(workArea.left, workArea.top) + Point(Config::SettingsWindowPosXDefault, Config::SettingsWindowPosYDefault);
 
-	if (wndPos.x + wndSize.cx * scaleFactor > workArea.right + 2 ||
-	    wndPos.y + wndSize.cy * scaleFactor > workArea.bottom + 2)
+	Point	 wndPos	       = Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, defaultPos.x), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, defaultPos.y));
+	Size	 wndSize       = Size(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, Config::SettingsWindowSizeXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, Config::SettingsWindowSizeYDefault));
+
+	if (wndPos.x + wndSize.cx * scaleFactor > virtualScreen.right + 2 ||
+	    wndPos.y + wndSize.cy * scaleFactor > virtualScreen.bottom + 2)
 	{
-		wndPos.x = (Int) Math::Min(workArea.right - 10 - Math::Round(wndSize.cx * scaleFactor), (Int64) wndPos.x);
-		wndPos.y = (Int) Math::Min(workArea.bottom - 10 - Math::Round(wndSize.cy * scaleFactor), (Int64) wndPos.y);
+		wndPos.x = (Int) Math::Min(virtualScreen.right - 10 - Math::Round(wndSize.cx * scaleFactor), (Int64) wndPos.x);
+		wndPos.y = (Int) Math::Min(virtualScreen.bottom - 10 - Math::Round(wndSize.cy * scaleFactor), (Int64) wndPos.y);
 	}
 
-	if (wndPos.x < workArea.left - 2 ||
-	    wndPos.y < workArea.top - 2)
+	if (wndPos.x < virtualScreen.left - 2 ||
+	    wndPos.y < virtualScreen.top - 2)
 	{
-		wndPos.x = (Int) Math::Max(workArea.left + 10, wndPos.x);
-		wndPos.y = (Int) Math::Max(workArea.top + 10, wndPos.y);
+		wndPos.x = (Int) Math::Max(virtualScreen.left + 10, wndPos.x);
+		wndPos.y = (Int) Math::Max(virtualScreen.top + 10, wndPos.y);
 
-		wndSize.cx = (Int) Math::Min(Math::Round((workArea.right - 20) / scaleFactor), (Int64) wndSize.cx);
-		wndSize.cy = (Int) Math::Min(Math::Round((workArea.bottom - 20) / scaleFactor), (Int64) wndSize.cy);
+		wndSize.cx = (Int) Math::Min(Math::Round((virtualScreen.right - 20) / scaleFactor), (Int64) wndSize.cx);
+		wndSize.cy = (Int) Math::Min(Math::Round((virtualScreen.bottom - 20) / scaleFactor), (Int64) wndSize.cy);
 	}
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, wndPos.x);
@@ -136,6 +143,8 @@ freac::freacGUI::freacGUI()
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeXID, wndSize.cx);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWindowSizeYID, wndSize.cy);
 
+	/* Create widgets.
+	 */
 	mainWnd			= new Window(String(freac::appLongName).Append(" ").Append(freac::version), wndPos, wndSize);
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 
@@ -311,6 +320,10 @@ freac::freacGUI::~freacGUI()
 	foreach (PopupMenu *menu_format, formatMenus) DeleteObject(menu_format);
 
 	formatMenus.RemoveAll();
+
+	/* Free player.
+	 */
+	delete player;
 }
 
 Void freac::freacGUI::InitExtensionComponents()
@@ -358,7 +371,25 @@ Bool freac::freacGUI::ExitProc()
 
 	/* Stop playback if playing a track
 	 */
-	Playback::Get()->Stop();
+	player->Stop();
+
+	/* Order remaining jobs to abort.
+	 */
+	const Array<Job *>	&jobs = Job::GetRunningJobs();
+
+	jobs.LockForRead();
+
+	foreachreverse (Job *job, jobs) job->RequestAbort();
+
+	jobs.Unlock();
+
+	/* Wait for jobs to finish.
+	 */
+	Int	 suspendCount = Application::Lock::SuspendLock();
+
+	while (jobs.Length() > 0) S::System::System::Sleep(10);
+
+	Application::Lock::ResumeLock(suspendCount);
 
 	/* Notify components that we are about to quit.
 	 */
@@ -805,7 +836,7 @@ Void freac::freacGUI::QueryCDDB()
 
 				if (trackNumber == -1) continue;
 
-				info.artist	 = (cdInfo.dArtist == "Various" ? cdInfo.trackArtists.GetNth(trackNumber - 1) : cdInfo.dArtist);
+				info.artist	 = cdInfo.GetTrackArtist(trackNumber);
 				info.title	 = cdInfo.trackTitles.GetNth(trackNumber - 1);
 				info.album	 = cdInfo.dTitle;
 				info.genre	 = cdInfo.dGenre;

@@ -1,7 +1,7 @@
 #!/bin/bash
 PREFIX=/usr/local
-#RELEASE=1.1.2
-RELEASE=1.1.2-`date +"%Y%m%d"`
+#RELEASE=1.1.3
+RELEASE=1.1.3-`date +"%Y%m%d"`
 
 SMOOTHVER=0.9
 SMOOTHREV=0

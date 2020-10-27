@@ -602,6 +602,12 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			boca.DeleteComponent(info);
 		}
 	}
+
+	/* Wait for jobs to finish.
+	 */
+	const Array<Job *>	&jobs = Job::GetRunningJobs();
+
+	while (jobs.Length() > 0) S::System::System::Sleep(10);
 }
 
 freac::freacCommandline::~freacCommandline()

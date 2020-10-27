@@ -420,6 +420,12 @@ Int freac::ConvertWorker::Convert()
 					  conversionStep == ConversionStepEncode) && encoder->IsLossless()) encodeChecksum = encoder->GetMD5Checksum();
 		else if	(verifyOutput &&  conversionStep == ConversionStepVerify			  ) verifyChecksum = decoder->GetMD5Checksum();
 
+		/* Get output format info.
+		 */
+		Format	 format = trackToConvert.GetFormat();
+
+		if (processor->GetFormatInfo() != Format()) format = processor->GetFormatInfo();
+
 		/* Free decoder, verifier, processor and encoder.
 		 */
 		decoder->Destroy();
@@ -499,6 +505,8 @@ Int freac::ConvertWorker::Convert()
 		/* Update track length and offset.
 		 */
 		Track	 track = trackToConvert;
+
+		trackToConvert.SetFormat(format);
 
 		trackToConvert.sampleOffset = 0;
 		trackToConvert.length	    = trackLength;
@@ -611,8 +619,19 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 	if (cancel) engine->onCancelTrackConversion.Emit(conversionID, trackToConvert);
 	else	    engine->onFinishTrackConversion.Emit(conversionID, trackToConvert);
 
-	if (encoder->GetEncodedSamples() > 0) return encoder->GetEncodedSamples() - trackOffset;
-	else				      return decoder->GetDecodedSamples();
+	/* Compute track length in target format.
+	 */
+	if (encoder->GetEncodedSamples() == 0)
+	{
+		Int64	 trackLength  = decoder->GetDecodedSamples();
+		Format	 targetFormat = format;
+
+		if (processor != NIL && processor->GetFormatInfo() != Format()) targetFormat = processor->GetFormatInfo();
+
+		return trackLength * targetFormat.rate / format.rate;
+	}
+
+	return encoder->GetEncodedSamples() - trackOffset;
 }
 
 Void freac::ConvertWorker::VerifyInput(const String &uri, Verifier *verifier)

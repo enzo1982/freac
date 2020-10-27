@@ -1,4 +1,4 @@
-fre:ac version 1.1.3
+fre:ac version 1.1.4
 
 fre:ac is a free and open source audio converter. It supports audio CD
 ripping and tag editing and converts the following audio formats:
@@ -147,14 +147,36 @@ Requirements
 History
 -------
 
-	Version 1.1.3 (August 2020)
+	Version 1.1.4 (October 2020)
+
+		- Improvements
+
+			- improved support for languages written from right to left
+			- improved support for reading CD-Text
+			- added catalog number and barcode fields to tag editor
+			- added file type associations to macOS app, so fre:ac is offered for opening audio files
+			- improved multi-monitor support on X11 based systems
+
+		- Bug fixes
+
+			- fixed invalid length written to very long Opus and Speex files (longer than 12 ½ hours at 48 kHz)
+
+		- Updated codecs
+
+			- updated Monkey's Audio to version 5.57
+			- updated FAAD2 to version 2.10.0
+
+		- New translations
+
+			- added Persian translation
+
+	Version 1.1.3 (October 2020)
 
 		- added support for macOS 11.0 Big Sur
 		- switched to using GNUdb as the default CDDB database service
 
 		- Improvements
 
-			- improved support for languages written from right to left
 			- command line codec configuration now allows specifying additional arguments
 			- improved detection of cue sheet encoding to support system codepage and UTF-8 without BOM
 			- freaccmd now splits cue sheets to individual tracks unless an output file is specified using the -o option
@@ -163,6 +185,7 @@ History
 			- added file type associations to Linux/FreeBSD and Windows Store app, so fre:ac is offered for opening audio files
 			- added audio CD association to Linux/FreeBSD and Windows Store app, so fre:ac can be started when inserting a CD
 			- added an option to suppress "No entry found" messages for automatic CDDB queries
+			- improved detection of sampler CDs when querying CDDB information
 
 		- Bug fixes
 
@@ -172,24 +195,29 @@ History
 			- fixed possible glitches in WAV/AIFF output when processing float samples outside the -1.0/+1.0 range
 			- fixed possible hangs when opening WAV/AIFF files larger than 2 GB or with a broken chunk structure
 			- fixed inability to open WAV/AIFF files with long paths on Windows
-			- fixed invalid MP3 bitstreams written in rare cases in SuperFast mode
+			- fixed writing wrong offsets to single file cue sheets when the resampling DSP filter is enabled
+			- fixed writing invalid chapter offsets to Opus files with source material sample rates other than 48 kHz
+			- fixed writing invalid MP3 bitstreams in rare cases in SuperFast mode
 			- fixed wrong length detection for MP3 files with invalid chapter data
 			- fixed parsing of cue sheets with minute/second indications missing leading zeros and/or duration longer than 99 minutes
 			- fixed parsing of embedded cue sheets without FILE designations
 			- fixed ripping progress for other drives stalling while one drive is ejecting
+			- fixed inability to pause or stop single output file verification
 			- fixed log files being archived despite disabling the corresponding option
+			- fixed various issues with multi-monitor support on macOS
 			- fixed user interface glitches after closing dialogs in tabbed mode on macOS
+			- fixed Shift+Pos1/End shortcuts being interpreted by the joblist and edit fields at the same time
 
 		- Updated codecs
 
 			- switched from libav 12.3 to FFmpeg 4.3.1 for auxiliary format support
+			- added support for using the Core Audio codec of iTunes 12.10.9 and later
 			- updated Vorbis to version 1.3.7 (plus aoTuV b6.03 and Lancer optimizations)
-			- updated Monkey's Audio to version 5.54
+			- updated Monkey's Audio to version 5.55
 			- updated mpg123 to version 1.26.3
 
 		- New translations
 
-			- added Persian translation
 			- added Hindi translation
 
 	Version 1.1.2b (July 2020)

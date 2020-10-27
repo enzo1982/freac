@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -259,6 +259,8 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 				    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
 				    key == INFO_LYRICIST      || key == INFO_REMIXER	   ||
 
+				    key == INFO_CATALOGNUMBER || key == INFO_BARCODE	   ||
+
 				    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
 				    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
 
@@ -274,6 +276,8 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 				if (				 key == INFO_BAND	   ||
 				    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
 				    key == INFO_LYRICIST      || key == INFO_REMIXER	   ||
+
+				    key == INFO_CATALOGNUMBER || key == INFO_BARCODE	   ||
 
 				    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
 				    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
@@ -467,6 +471,8 @@ Void BoCA::ChooserAlbums::AddToAlbumList(const Track &track)
 		if (key == INFO_ALBUMARTIST   || key == INFO_BAND	   ||
 		    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
 		    key == INFO_LYRICIST      || key == INFO_REMIXER	   ||
+
+		    key == INFO_CATALOGNUMBER || key == INFO_BARCODE	   ||
 
 		    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
 		    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||

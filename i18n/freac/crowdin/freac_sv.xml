@@ -398,7 +398,7 @@
       <entry id="5023" string="Verifiers">Verifierare</entry>
       <entry id="5024" string="Taggers">Taggare</entry>
       <entry id="5025" string="Processing">Signalbehandling</entry>
-      <entry id="5026" string="Additional arguments"/>
+      <entry id="5026" string="Additional arguments">Ytterligare argument</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Inställningar för kodare</entry>
@@ -634,7 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Åtkomst till cd-romenheter nekades av Windows.&#10;&#10;Kontakta din systemadministratör för att&#10;få åtkomst till cd-romenheten.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Det finns ingen konfigurationsdialog för:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">Den valda mappen finns inte längre!</entry>
-      <entry id="7124" string="Access denied"/>
+      <entry id="7124" string="Access denied">Åtkomst nekad</entry>
     </section>
 
     <section name="Dialogs">

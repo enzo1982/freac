@@ -1,7 +1,7 @@
 name: freac
 base: core18
-version: '1.1.2'
-version-script: echo 1.1.2~`date +"%Y%m%d"`
+version: '1.1.3'
+version-script: echo 1.1.3~`date +"%Y%m%d"`
 summary: Audio converter and CD ripper
 description: |
   fre:ac is a free and open source audio converter. It comes with
@@ -59,8 +59,8 @@ parts:
       - usr/lib/libcdio_*.so*
 
   libfaad:
-    source: https://github.com/knik0/faad2/archive/2_9_2.tar.gz
-    source-checksum: sha256/9728b2b94f94ab49363cd229e7377fbe6ef3c311c5cd80da662d53ddb0ee091d
+    source: https://github.com/knik0/faad2/archive/2_10_0.tar.gz
+    source-checksum: sha256/0c6d9636c96f95c7d736f097d418829ced8ec6dbd899cc6cc82b728480a84bfb
     plugin: autotools
     configflags: [ --prefix=/usr ]
     build-environment:
@@ -91,8 +91,8 @@ parts:
 
   libmac:
     after: [ patches ]
-    source: https://freac.org/patches/MAC_SDK_554.zip
-    source-checksum: sha256/931f744641cfeb5f173d2bb27df750e285c2e3c236e1ef0ac6c1ab75281550a3
+    source: https://freac.org/patches/MAC_SDK_557.zip
+    source-checksum: sha256/cfd46ac817bd3469834d7ae47072a52b60dc30be064cfae00737e59b261b5884
     source-subdir: .
     plugin: make
     make-parameters: [ prefix=/usr ]
@@ -100,7 +100,7 @@ parts:
       - CXXFLAGS: "$CXXFLAGS -O3 -funroll-loops"
     override-build: |
       if [ `lscpu | grep -i 'byte order' | awk '{ print tolower($3) }'` = "little" ]; then
-        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-5.54-gcc.patch
+        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-5.57-gcc.patch
         snapcraftctl build
       fi
     prime:

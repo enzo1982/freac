@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -81,11 +81,15 @@ freac::cddbManageDlg::cddbManageDlg()
 	text_charset	= new Text(i18n->AddColon(i18n->TranslateString("Charset")), Point(276, 226));
 
 	list_charset	= new List();
-	list_charset->AddEntry("CP1251");
+	list_charset->AddEntry("UTF-8");
+	list_charset->AddSeparator();
 	list_charset->AddEntry("ISO-8859-1");
 	list_charset->AddEntry("ISO-8859-2");
 	list_charset->AddEntry("ISO-8859-5");
 	list_charset->AddEntry("ISO-8859-7");
+	list_charset->AddSeparator();
+	list_charset->AddEntry("CP1251");
+	list_charset->AddSeparator();
 	list_charset->AddEntry("SHIFT-JIS");
 	list_charset->AddEntry("GBK");
 	list_charset->AddEntry("BIG-5");
@@ -205,22 +209,23 @@ Void freac::cddbManageDlg::OK()
 
 				for (Int k = 0; k < cddbInfo.trackTitles.Length(); k++)
 				{
-					if (trackInfo.cdTrack == k + 1)
-					{
-						Track	 track = joblist->GetNth(j);
-						Info	 info = track.GetInfo();
+					if (trackInfo.cdTrack != k + 1) continue;
 
-						info.artist  = (cddbInfo.dArtist == "Various" ? cddbInfo.trackArtists.GetNth(k) : cddbInfo.dArtist);
-						info.title   = cddbInfo.trackTitles.GetNth(k);
-						info.album   = cddbInfo.dTitle;
-						info.year    = cddbInfo.dYear;
-						info.genre   = cddbInfo.dGenre;
-						info.comment = cddbInfo.trackComments.GetNth(k);
+					Track	 track = joblist->GetNth(j);
+					Info	 info = track.GetInfo();
 
-						track.SetInfo(info);
+					info.artist  = cddbInfo.GetTrackArtist(trackInfo.cdTrack);
+					info.title   = cddbInfo.trackTitles.GetNth(k);
+					info.album   = cddbInfo.dTitle;
+					info.year    = cddbInfo.dYear;
+					info.genre   = cddbInfo.dGenre;
+					info.comment = cddbInfo.trackComments.GetNth(k);
 
-						BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
-					}
+					track.SetInfo(info);
+
+					BoCA::JobList::Get()->onComponentModifyTrack.Emit(track);
+
+					break;
 				}
 			}
 		}
@@ -257,7 +262,7 @@ Void freac::cddbManageDlg::SetCharset()
 		artist.ImportFrom(edit_charset->GetText(), entry.oTrackArtists.GetNth(i));
 		title.ImportFrom(edit_charset->GetText(), entry.oTrackTitles.GetNth(i));
 
-		preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(entry.oDArtist == "Various" ? String(artist).Append(" - ") : String()).Append(title).Append("\n");
+		preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(entry.oDArtist == CDDBInfo::VariousArtistsID ? String(artist).Append(" - ") : String()).Append(title).Append("\n");
 	}
 
 	edit_preview->SetText(preview);
@@ -270,7 +275,7 @@ Void freac::cddbManageDlg::SelectEntry()
 
 	for (Int i = 0; i < entry.trackTitles.Length(); i++)
 	{
-		preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(entry.dArtist == "Various" ? entry.trackArtists.GetNth(i).Append(" - ") : String()).Append(entry.trackTitles.GetNth(i)).Append(i < entry.trackTitles.Length() - 1 ? "\n" : NIL);
+		preview.Append(i < 9 ? "0" : NIL).Append(String::FromInt(i + 1)).Append(": ").Append(entry.dArtist == CDDBInfo::VariousArtistsID ? entry.trackArtists.GetNth(i).Append(" - ") : String()).Append(entry.trackTitles.GetNth(i)).Append(i < entry.trackTitles.Length() - 1 ? "\n" : NIL);
 	}
 
 	edit_preview->SetText(preview);

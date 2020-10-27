@@ -634,7 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">System Windows odmawia dostępu do stacji CD-ROM.&#10;&#10;Skontaktuj się z administratorem systemu&#10;celem uzyskania dostępu do stacji CD-ROM.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Okno dialogowe konfiguracji niedostępne dla:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">Wybrany folder już nie istnieje!</entry>
-      <entry id="7124" string="Access denied"/>
+      <entry id="7124" string="Access denied">Odmowa dostępu</entry>
     </section>
 
     <section name="Dialogs">

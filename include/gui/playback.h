@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -10,8 +10,8 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef H_FREAC_PLAYER
-#define H_FREAC_PLAYER
+#ifndef H_FREAC_PLAYBACK
+#define H_FREAC_PLAYBACK
 
 #include <smooth.h>
 #include <boca.h>
@@ -21,11 +21,13 @@ using namespace smooth::GUI;
 
 namespace freac
 {
+	class Player;
 	class JobList;
 
-	class LayerPlayer : public Layer
+	class PlaybackWidget : public Layer
 	{
 		private:
+			Player		*player;
 			JobList		*joblist;
 
 			Button		*button_play;
@@ -39,8 +41,8 @@ namespace freac
 
 			BoCA::Track	 playingTrack;
 		public:
-					 LayerPlayer(JobList *);
-					~LayerPlayer();
+					 PlaybackWidget(Player *, JobList *);
+					~PlaybackWidget();
 		slots:
 			Void		 OnChangeLanguageSettings();
 

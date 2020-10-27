@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2018 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -10,8 +10,8 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef H_FREAC_PLAYBACK
-#define H_FREAC_PLAYBACK
+#ifndef H_FREAC_PLAYER
+#define H_FREAC_PLAYER
 
 #include <smooth.h>
 #include <boca.h>
@@ -23,16 +23,9 @@ namespace freac
 	class Decoder;
 	class Processor;
 
-	class Playback
+	class Player
 	{
 		private:
-			/* Singleton class, therefore private constructor/destructor
-			 */
-			static Playback				*instance;
-
-								 Playback();
-								~Playback();
-
 			BoCA::AS::OutputComponent		*output;
 
 			BoCA::Track				 track;
@@ -49,6 +42,9 @@ namespace freac
 			Void					 Loop(Decoder *, Processor *);
 			Void					 Write(Buffer<UnsignedByte> &, Int);
 		public:
+								 Player();
+								~Player();
+
 			Void					 Play(const BoCA::Track &);
 
 			Void					 Pause();
@@ -57,14 +53,6 @@ namespace freac
 			Void					 SetPosition(Int);
 
 			Void					 Stop();
-
-			/* Returns a new or existing instance of Playback
-			 */
-			static Playback				*Get();
-
-			/* Destroys an existing instance of Playback
-			 */
-			static Void				 Free();
 		accessors:
 			Bool					 IsPlaying() const		{ return playing; }
 			Bool					 IsPaused() const		{ return paused; }

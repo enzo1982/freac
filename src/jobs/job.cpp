@@ -80,6 +80,8 @@ freac::Job::Job() : ListEntry("Job")
 	startTicks	    = 0;
 	previousSecondsLeft = 0;
 
+	abort		    = False;
+
 	/* Notify about jobs change.
 	 */
 	mutex.Lock();
@@ -190,6 +192,13 @@ Int freac::Job::Run()
 	mutex.Release();
 
 	LeaveProtectedRegion();
+
+	return Success();
+}
+
+Int freac::Job::RequestAbort()
+{
+	abort = True;
 
 	return Success();
 }

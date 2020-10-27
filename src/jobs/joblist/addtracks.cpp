@@ -34,16 +34,15 @@ freac::JobAddTracks::JobAddTracks(const Array<String> &iURLs, Bool iAutoCDRead)
 	foreach (const String &url, iURLs) urls.Add(url);
 
 	autoCDRead = iAutoCDRead;
-	abort	   = False;
 
-	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Connect(&JobAddTracks::OnRemoveAllTracksJobScheduled, this);
+	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Connect(&Job::RequestAbort, this);
 
 	SetText(i18n->AddEllipsis(i18n->TranslateString("Waiting for other jobs to finish")));
 }
 
 freac::JobAddTracks::~JobAddTracks()
 {
-	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Disconnect(&JobAddTracks::OnRemoveAllTracksJobScheduled, this);
+	JobRemoveAllTracks::onRemoveAllTracksJobScheduled.Disconnect(&Job::RequestAbort, this);
 }
 
 Bool freac::JobAddTracks::ReadyToRun()
@@ -189,9 +188,4 @@ Error freac::JobAddTracks::Perform()
 	joblist->Unlock();
 
 	return Success();
-}
-
-Void freac::JobAddTracks::OnRemoveAllTracksJobScheduled()
-{
-	abort = True;
 }

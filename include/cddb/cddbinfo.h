@@ -22,6 +22,9 @@ namespace freac
 	class CDDBInfo
 	{
 		public:
+			static String	 VariousArtistsID;
+			static String	 DataTrackID;
+
 			String		 category;
 			UnsignedInt32	 discID;
 			Int		 revision;
@@ -63,6 +66,8 @@ namespace freac
 
 			CDDBInfo	&operator =(int);
 			CDDBInfo	&operator =(const CDDBInfo &);
+
+			const String	&GetTrackArtist(Int) const;
 
 			String		 GetQueryString() const;
 			Bool		 UpdateFromQueryString(const String &);

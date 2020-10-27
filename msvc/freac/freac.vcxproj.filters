@@ -90,9 +90,6 @@
     <ClCompile Include="..\..\src\joblist.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\playback.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\progress.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -228,9 +225,6 @@
     <ClCompile Include="..\..\src\jobs\other\checkforupdates.cpp">
       <Filter>Quelldateien\jobs\other</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\gui\player.cpp">
-      <Filter>Quelldateien\gui</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\jobs\joblist\removedisc.cpp">
       <Filter>Quelldateien\jobs\joblist</Filter>
     </ClCompile>
@@ -282,6 +276,12 @@
     <ClCompile Include="..\..\src\engine\component.cpp">
       <Filter>Quelldateien\engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\gui\playback.cpp">
+      <Filter>Quelldateien\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\player.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\config.h">
@@ -291,9 +291,6 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\joblist.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\playback.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\progress.h">
@@ -434,9 +431,6 @@
     <ClInclude Include="..\..\include\jobs\other\checkforupdates.h">
       <Filter>Headerdateien\jobs\other</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\gui\player.h">
-      <Filter>Headerdateien\gui</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\include\jobs\joblist\removedisc.h">
       <Filter>Headerdateien\jobs\joblist</Filter>
     </ClInclude>
@@ -481,6 +475,12 @@
     </ClInclude>
     <ClInclude Include="..\..\include\engine\component.h">
       <Filter>Headerdateien\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\gui\playback.h">
+      <Filter>Headerdateien\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\player.h">
+      <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

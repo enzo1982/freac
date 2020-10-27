@@ -398,7 +398,7 @@
       <entry id="5023" string="Verifiers">Verifiers</entry>
       <entry id="5024" string="Taggers">Taggers</entry>
       <entry id="5025" string="Processing">Verwerking</entry>
-      <entry id="5026" string="Additional arguments"/>
+      <entry id="5026" string="Additional arguments">Aanvullende argumenten</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Encoder configureren</entry>
@@ -634,7 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Toegang tot cd-romstations werd geweigerd door Windows.&#10;&#10;Gelieve uw systeemadministrator te contacteren om toegang&#10;te krijgen tot het cd-romstation.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Geen configuratievenster beschikbaar voor:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">De geselecteerde map bestaat niet meer!</entry>
-      <entry id="7124" string="Access denied"/>
+      <entry id="7124" string="Access denied">Toegang geweigerd</entry>
     </section>
 
     <section name="Dialogs">

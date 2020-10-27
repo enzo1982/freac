@@ -13,8 +13,9 @@
 #include <engine/converter.h>
 #include <engine/locking.h>
 
+#include <startgui.h>
 #include <joblist.h>
-#include <playback.h>
+#include <player.h>
 #include <config.h>
 #include <utilities.h>
 
@@ -34,32 +35,13 @@ freac::Converter::~Converter()
 
 Void freac::Converter::Convert(const Array<Track> &tracks, Bool autoRip, Bool useThread)
 {
-	/* Check if currently playing a CD track.
+ 	/* Check if any track is locked by playback.
 	 */
-	Playback	*playback = Playback::Get();
-
-	if (playback->IsPlaying())
+	if (IsAnyTrackLocked(tracks))
 	{
-		const Track	&playingTrack = playback->GetPlayingTrack();
+		BoCA::Utilities::ErrorMessage("Cannot start ripping while playing a track from the same drive!");
 
-		if (!Locking::LockDeviceForTrack(playingTrack))
-		{
-			foreach (const Track &track, tracks)
-			{
-				if (!Locking::LockDeviceForTrack(track))
-				{
-					BoCA::Utilities::ErrorMessage("Cannot start ripping while playing a track from the same drive!");
-
-					return;
-				}
-
-				Locking::UnlockDeviceForTrack(track);
-			}
-		}
-		else
-		{
-			Locking::UnlockDeviceForTrack(playingTrack);
-		}
+		return;
 	}
 
 	/* Start conversion job.
@@ -76,4 +58,36 @@ Void freac::Converter::Convert(const Array<Track> &tracks, Bool autoRip, Bool us
 Void freac::Converter::OnFinishJob()
 {
 	conversionFinished = True;
+}
+
+Bool freac::Converter::IsAnyTrackLocked(const Array<Track> &tracks) const
+{
+	BoCA::Config	*config = BoCA::Config::Get();
+ 
+	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return False;
+
+	/* Check if currently playing a CD track.
+	 */
+	Player	*player = freacGUI::Get()->GetPlayer();
+
+	if (player->IsPlaying())
+	{
+		const Track	&playingTrack = player->GetPlayingTrack();
+
+		if (!Locking::LockDeviceForTrack(playingTrack))
+		{
+			foreach (const Track &track, tracks)
+			{
+				if (!Locking::LockDeviceForTrack(track)) return True;
+
+				Locking::UnlockDeviceForTrack(track);
+			}
+		}
+		else
+		{
+			Locking::UnlockDeviceForTrack(playingTrack);
+		}
+	}
+
+	return False;
 }

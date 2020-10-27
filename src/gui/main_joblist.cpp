@@ -20,7 +20,7 @@
 #include <jobs/job.h>
 #include <jobs/engine/convert.h>
 
-#include <gui/player.h>
+#include <gui/playback.h>
 #include <gui/edit_folder.h>
 
 #include <dialogs/config/configcomponent.h>
@@ -144,7 +144,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 		pos.x = 242;
 		pos.y = 0;
 
-		player	= new LayerPlayer(joblist);
+		player	= new PlaybackWidget(freacGUI::Get()->GetPlayer(), joblist);
 		player->SetPosition(pos);
 		player->SetOrientation(OR_UPPERRIGHT);
 	}
@@ -967,8 +967,8 @@ Void freac::LayerJoblist::FillMenus()
 
 	if (Registry::Get().GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
 	{
-		menu_trackmenu->AddEntry(i18n->TranslateString("Play"))->onAction.Connect(&LayerPlayer::PlaySelectedItem, player);
-		menu_trackmenu->AddEntry(i18n->TranslateString("Stop"))->onAction.Connect(&LayerPlayer::StopPlayback, player);
+		menu_trackmenu->AddEntry(i18n->TranslateString("Play"))->onAction.Connect(&PlaybackWidget::PlaySelectedItem, player);
+		menu_trackmenu->AddEntry(i18n->TranslateString("Stop"))->onAction.Connect(&PlaybackWidget::StopPlayback, player);
 		menu_trackmenu->AddEntry();
 	}
 
@@ -991,6 +991,8 @@ Void freac::LayerJoblist::FillMenus()
 	menu_charsets->RemoveAllEntries();
 	menu_charsets_all->RemoveAllEntries();
 
+	menu_charsets->AddEntry("UTF-8", &clicked_charset, CHARSET_UTF_8)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
+	menu_charsets->AddEntry();
 	menu_charsets->AddEntry("ISO-8859-1", &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 	menu_charsets->AddEntry("ISO-8859-2", &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 	menu_charsets->AddEntry("ISO-8859-5", &clicked_charset, CHARSET_ISO_8859_5)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
@@ -1004,6 +1006,8 @@ Void freac::LayerJoblist::FillMenus()
 	menu_charsets->AddEntry();
 	menu_charsets->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Other")), &clicked_charset, CHARSET_OTHER)->onAction.Connect(&LayerJoblist::InterpretStringAs, this);
 
+	menu_charsets_all->AddEntry("UTF-8", &clicked_charset, CHARSET_UTF_8)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
+	menu_charsets_all->AddEntry();
 	menu_charsets_all->AddEntry("ISO-8859-1", &clicked_charset, CHARSET_ISO_8859_1)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry("ISO-8859-2", &clicked_charset, CHARSET_ISO_8859_2)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
 	menu_charsets_all->AddEntry("ISO-8859-5", &clicked_charset, CHARSET_ISO_8859_5)->onAction.Connect(&LayerJoblist::InterpretStringAsAll, this);
@@ -1356,7 +1360,7 @@ Void freac::LayerJoblist::OnShortcutMoveDown()
 
 Void freac::LayerJoblist::OnShortcutMoveTop()
 {
-	if (!IsVisible() || joblist->GetSelectedEntryNumber() == -1) return;
+	if (!IsVisible() || GetActiveEditBox() != NIL || joblist->GetSelectedEntryNumber() == -1) return;
 
 	if (joblist->GetSelectedEntryNumber() > 0)
 	{
@@ -1374,7 +1378,7 @@ Void freac::LayerJoblist::OnShortcutMoveTop()
 
 Void freac::LayerJoblist::OnShortcutMoveBottom()
 {
-	if (!IsVisible() || joblist->GetSelectedEntryNumber() == -1) return;
+	if (!IsVisible() || GetActiveEditBox() != NIL || joblist->GetSelectedEntryNumber() == -1) return;
 
 	if (joblist->GetSelectedEntryNumber() < joblist->Length() - 1)
 	{
@@ -2034,6 +2038,7 @@ Void freac::LayerJoblist::InterpretStringAs()
 
 	switch (clicked_charset)
 	{
+		case CHARSET_UTF_8:	 charset = "UTF-8";	 break;
 		case CHARSET_ISO_8859_1: charset = "ISO-8859-1"; break;
 		case CHARSET_ISO_8859_2: charset = "ISO-8859-2"; break;
 		case CHARSET_ISO_8859_5: charset = "ISO-8859-5"; break;
@@ -2077,6 +2082,7 @@ Void freac::LayerJoblist::InterpretStringAsAll()
 
 	switch (clicked_charset)
 	{
+		case CHARSET_UTF_8:	 charset = "UTF-8";	 break;
 		case CHARSET_ISO_8859_1: charset = "ISO-8859-1"; break;
 		case CHARSET_ISO_8859_2: charset = "ISO-8859-2"; break;
 		case CHARSET_ISO_8859_5: charset = "ISO-8859-5"; break;
