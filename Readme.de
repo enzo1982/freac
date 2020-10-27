@@ -160,10 +160,11 @@ Geschichte
 		- Bug fixes
 
 			- Schreiben von falschen Längenangaben in sehr lange Opus- und Speex-Dateien behoben (länger als 12 ½ Stunden bei 48 kHz)
+			- Problem mit für einige Anwendungen unsichtbare MP4-Kapitel bei Verwendung von Nero AAC behoben
 
 		- Aktualisierte Codecs
 
-			- Monkey's Audio auf Version 5.57 aktualisiert
+			- Monkey's Audio auf Version 5.58 aktualisiert
 			- FAAD2 auf Version 2.10.0 aktualisiert
 
 		- Neue Übersetzungen
