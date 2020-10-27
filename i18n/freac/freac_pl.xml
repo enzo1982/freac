@@ -1307,6 +1307,8 @@
 	  <entry id="103209" string="ISRC">ISRC</entry>
 	  <entry id="103210" string="Tempo">Tempo</entry>
 	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103212" string="Catalog number">Numer katalogowy</entry>
+	  <entry id="103213" string="Barcode">Kod paskowy</entry>
 	</section>
 
 	<section name="Other">
