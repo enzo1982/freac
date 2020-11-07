@@ -157,8 +157,8 @@ Error freac::JobConvert::Precheck()
 	{
 		/* Get single file name.
 		 */
-		if (!autoRip) singleOutFile = Utilities::GetSingleOutputFileName(tracks);
-		else	      singleOutFile = BoCA::Utilities::GetAbsolutePathName(encoderOutputDirectory).Append(Utilities::GetSingleOutputFileNameDefault(tracks));
+		if (!autoRip) singleOutFile = Utilities::GetSingleOutputFileName(configuration, tracks);
+		else	      singleOutFile = BoCA::Utilities::GetAbsolutePathName(encoderOutputDirectory).Append(Utilities::GetSingleOutputFileNameDefault(configuration, tracks));
 
 		singleOutFile = BoCA::Utilities::NormalizeFileName(singleOutFile);
 
@@ -175,7 +175,7 @@ Error freac::JobConvert::Precheck()
 
 		foreach (Track &track, tracks)
 		{
-			track.outputFile = Utilities::GetOutputFileName(track);
+			track.outputFile = Utilities::GetOutputFileName(configuration, track);
 
 			UnsignedInt64	 trackCRC = String(track.outputFile).ToLower().ComputeCRC64();
 
@@ -1204,7 +1204,7 @@ Error freac::JobConvert::Perform()
 			/* Set playlist filename so it is written to the same place as a single output file.
 			 */
 			if (encodeToSingleFile) playlistFileNames.Add(singleOutFile.Head(singleOutFile.FindLast(".")));
-			else			playlistFileNames.Add(Utilities::GetPlaylistFileName(playlistTracks.GetFirst(), tracksToConvert));
+			else			playlistFileNames.Add(Utilities::GetPlaylistFileName(configuration, playlistTracks.GetFirst(), tracksToConvert));
 
 			playlistTrackLists.Add(new Array<Track>(playlistTracks));
 			cuesheetTrackLists.Add(new Array<Track>(cuesheetTracks));
@@ -1215,7 +1215,7 @@ Error freac::JobConvert::Perform()
 			{
 				/* Check if we already have a list for this playlist.
 				 */
-				String		 playlistFileName = Utilities::GetPlaylistFileName(track, tracksToConvert);
+				String		 playlistFileName = Utilities::GetPlaylistFileName(configuration, track, tracksToConvert);
 				UnsignedInt32	 playlistFileCRC  = playlistFileName.ComputeCRC32();
 
 				if (playlistFileNames.Add(playlistFileName, playlistFileCRC))

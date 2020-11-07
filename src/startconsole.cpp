@@ -566,7 +566,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			{
 				Track	 track = joblist->GetNthTrack(0);
 
-				config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Utilities::GetOutputFileName(track));
+				config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Utilities::GetOutputFileName(config, track));
 			}
 
 			/* Convert tracks in joblist.

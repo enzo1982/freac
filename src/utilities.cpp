@@ -272,14 +272,13 @@ Void freac::Utilities::UpdateGenreList(List *list, const String &genre)
 	FillGenreList(list);
 }
 
-String freac::Utilities::GetOutputFileName(const Track &track)
+String freac::Utilities::GetOutputFileName(BoCA::Config *config, const Track &track)
 {
 	if (track.outputFile != NIL) return track.outputFile;
 
-	BoCA::Config	*config	= BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-	const Info	&info	= track.GetInfo();
+	const Info	&info = track.GetInfo();
 
 	/* Check if input file folder is writable.
 	 */
@@ -477,12 +476,10 @@ String freac::Utilities::GetOutputFileName(const Track &track)
 	return outputFileName;
 }
 
-String freac::Utilities::GetSingleOutputFileName(const Array<Track> &tracks)
+String freac::Utilities::GetSingleOutputFileName(BoCA::Config *config, const Array<Track> &tracks)
 {
 	/* Check if an output filename has already been set.
 	 */
-	BoCA::Config	*config = BoCA::Config::Get();
-
 	Bool	 enableConsole	      = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
 
 	String	 selectedEncoder      = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
@@ -533,7 +530,7 @@ String freac::Utilities::GetSingleOutputFileName(const Array<Track> &tracks)
 	dialog.AddFilter(i18n->TranslateString("All Files", "Joblist"), "*.*");
 
 	dialog.SetDefaultExtension(defaultExtension);
-	dialog.SetFileName(GetSingleOutputFileNameDefault(tracks));
+	dialog.SetFileName(GetSingleOutputFileNameDefault(config, tracks));
 
 	dialog.SetInitialPath(config->GetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedSaveDirID, NIL));
 
@@ -549,12 +546,10 @@ String freac::Utilities::GetSingleOutputFileName(const Array<Track> &tracks)
 	return singleOutputFileName;
 }
 
-String freac::Utilities::GetSingleOutputFileNameDefault(const Array<Track> &tracks)
+String freac::Utilities::GetSingleOutputFileNameDefault(BoCA::Config *config, const Array<Track> &tracks)
 {
 	/* Get configuration.
 	 */
-	BoCA::Config	*config = BoCA::Config::Get();
-
 	String	 selectedEncoder = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 
 	/* Instantiate selected encoder and get file extension.
@@ -590,12 +585,11 @@ String freac::Utilities::GetSingleOutputFileNameDefault(const Array<Track> &trac
 					  .Append(BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length()  > 0 ? info.album  : i18n->TranslateString("unknown album")))).Append(fileExtension != NIL ? "." : NIL).Append(fileExtension);
 }
 
-String freac::Utilities::GetPlaylistFileName(const Track &track, const Array<Track> &originalTracks)
+String freac::Utilities::GetPlaylistFileName(BoCA::Config *config, const Track &track, const Array<Track> &originalTracks)
 {
-	BoCA::Config	*config	= BoCA::Config::Get();
-	BoCA::I18n	*i18n	= BoCA::I18n::Get();
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-	const Info	&info	= track.GetInfo();
+	const Info	&info = track.GetInfo();
 
 	Bool	 enableConsole = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
 

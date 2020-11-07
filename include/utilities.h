@@ -23,12 +23,12 @@ namespace freac
 			static Void	 FillGenreList(List *);
 			static Void	 UpdateGenreList(List *, const String &);
 
-			static String	 GetOutputFileName(const BoCA::Track &);
+			static String	 GetOutputFileName(BoCA::Config *, const BoCA::Track &);
 
-			static String	 GetSingleOutputFileName(const Array<BoCA::Track> &);
-			static String	 GetSingleOutputFileNameDefault(const Array<BoCA::Track> &);
+			static String	 GetSingleOutputFileName(BoCA::Config *, const Array<BoCA::Track> &);
+			static String	 GetSingleOutputFileNameDefault(BoCA::Config *, const Array<BoCA::Track> &);
 
-			static String	 GetPlaylistFileName(const BoCA::Track &, const Array<BoCA::Track> &);
+			static String	 GetPlaylistFileName(BoCA::Config *, const BoCA::Track &, const Array<BoCA::Track> &);
 
 			static Bool	 SetProcessPriority();
 
