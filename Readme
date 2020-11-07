@@ -117,7 +117,7 @@ Requirements
 
 		All platforms:
 
-			- smooth v0.9.5 (http://www.smooth-project.org/)
+			- smooth v0.9.6 (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -147,7 +147,7 @@ Requirements
 History
 -------
 
-	Version 1.1.4 (October 2020)
+	Version 1.1.4 (November 2020)
 
 		- Improvements
 
@@ -164,7 +164,7 @@ History
 
 		- Updated codecs
 
-			- updated Monkey's Audio to version 5.58
+			- updated Monkey's Audio to version 5.59b
 			- updated FAAD2 to version 2.10.0
 
 		- New translations

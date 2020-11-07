@@ -117,7 +117,7 @@ Voraussetzungen
 
 		Alle Systeme:
 
-			- smooth v0.9.5 (http://www.smooth-project.org/)
+			- smooth v0.9.6 (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -147,7 +147,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.4 (Oktober 2020)
+	Version 1.1.4 (November 2020)
 
 		- Verbesserungen
 
@@ -164,7 +164,7 @@ Geschichte
 
 		- Aktualisierte Codecs
 
-			- Monkey's Audio auf Version 5.58 aktualisiert
+			- Monkey's Audio auf Version 5.59b aktualisiert
 			- FAAD2 auf Version 2.10.0 aktualisiert
 
 		- Neue Übersetzungen
