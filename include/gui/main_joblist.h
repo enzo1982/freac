@@ -135,8 +135,6 @@ namespace freac
 
 			PlaybackWidget		*player;
 
-			Surface			*drawSurface;
-
 			BoCA::Picture		 currentCover;
 
 			Bool			 dontUpdateInfo;
@@ -208,9 +206,7 @@ namespace freac
 			Void			 OnEncoderFinishEncoding(Bool);
 
 			Void			 OnEncoderEncodeTrack(const BoCA::Track &, const String &, const String &, ConversionStep);
-
-			Void			 OnEncoderTrackProgress(Int, Int);
-			Void			 OnEncoderTotalProgress(Int, Int);
+			Void			 OnEncoderReportProgress(Int, Int, Int, Int);
 
 			PopupMenu		*GetContextMenu();
 

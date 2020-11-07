@@ -52,13 +52,11 @@ Signal4<Void, const BoCA::Track &,
 	      const String &,
 	      const String &,
 	      freac::ConversionStep>	 freac::JobConvert::onEncodeTrack;
-
-Signal2<Void, Int, Int>			 freac::JobConvert::onTrackProgress;
-Signal2<Void, Int, Int>			 freac::JobConvert::onTotalProgress;
+Signal4<Void, Int, Int, Int, Int>	 freac::JobConvert::onReportProgress;
 
 freac::JobConvert::JobConvert(const Array<BoCA::Track> &tracksToConvert, Bool iAutoRip)
 {
-	conversionID	 = ++conversionCount;
+	conversionID	 = Threads::Access::Increment(conversionCount);
 
 	conversionPaused = False;
 
@@ -322,8 +320,7 @@ Error freac::JobConvert::Perform()
 	 */
 	Progress	*progress = new Progress(configuration);
 
-	progress->onTrackProgress.Connect(&JobConvert::UpdateTrackProgress, this);
-	progress->onTotalProgress.Connect(&JobConvert::UpdateTotalProgress, this);
+	progress->onReportProgress.Connect(&JobConvert::UpdateProgress, this);
 
 	onStartEncoding.Emit();
 
@@ -1415,16 +1412,11 @@ Void freac::JobConvert::StopRipping(const String &device)
 	}
 }
 
-Void freac::JobConvert::UpdateTrackProgress(Int progressValue, Int secondsLeft)
+Void freac::JobConvert::UpdateProgress(Int trackProgressValue, Int trackSecondsLeft, Int totalProgressValue, Int totalSecondsLeft)
 {
-	if (conversionJobs.GetLast() == this) onTrackProgress.Emit(progressValue, secondsLeft);
-}
+	if (conversionJobs.GetLast() == this) onReportProgress.Emit(trackProgressValue, trackSecondsLeft, totalProgressValue, totalSecondsLeft);
 
-Void freac::JobConvert::UpdateTotalProgress(Int progressValue, Int secondsLeft)
-{
-	if (conversionJobs.GetLast() == this) onTotalProgress.Emit(progressValue, secondsLeft);
-
-	SetProgress(progressValue);
+	SetProgress(totalProgressValue);
 }
 
 Void freac::JobConvert::OnWorkerReportError(const String &error)

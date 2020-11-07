@@ -36,8 +36,6 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	drawSurface		= NIL;
-
 	dontUpdateInfo		= False;
 
 	clicked_charset		= -1;
@@ -562,9 +560,7 @@ freac::LayerJoblist::LayerJoblist() : Layer("Joblist")
 	JobConvert::onFinishEncoding.Connect(&LayerJoblist::OnEncoderFinishEncoding, this);
 
 	JobConvert::onEncodeTrack.Connect(&LayerJoblist::OnEncoderEncodeTrack, this);
-
-	JobConvert::onTrackProgress.Connect(&LayerJoblist::OnEncoderTrackProgress, this);
-	JobConvert::onTotalProgress.Connect(&LayerJoblist::OnEncoderTotalProgress, this);
+	JobConvert::onReportProgress.Connect(&LayerJoblist::OnEncoderReportProgress, this);
 
 	/* Connect other slots.
 	 */
@@ -592,9 +588,7 @@ freac::LayerJoblist::~LayerJoblist()
 	JobConvert::onFinishEncoding.Disconnect(&LayerJoblist::OnEncoderFinishEncoding, this);
 
 	JobConvert::onEncodeTrack.Disconnect(&LayerJoblist::OnEncoderEncodeTrack, this);
-
-	JobConvert::onTrackProgress.Disconnect(&LayerJoblist::OnEncoderTrackProgress, this);
-	JobConvert::onTotalProgress.Disconnect(&LayerJoblist::OnEncoderTotalProgress, this);
+	JobConvert::onReportProgress.Disconnect(&LayerJoblist::OnEncoderReportProgress, this);
 
 	/* Clear tracks.
 	 */
@@ -1575,22 +1569,20 @@ Void freac::LayerJoblist::OnEncoderEncodeTrack(const Track &track, const String 
 	surface->EndPaint();
 }
 
-Void freac::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsLeft)
+Void freac::LayerJoblist::OnEncoderReportProgress(Int trackProgressValue, Int trackSecondsLeft, Int totalProgressValue, Int totalSecondsLeft)
 {
-	/* Start painting here, end it in OnEncoderTotalProgress.
-	 */
-	drawSurface = GetDrawSurface();
+	Surface	*surface = GetDrawSurface();
 
-	drawSurface->StartPaint(Rect::EncloseRect(progress->GetVisibleArea(), edb_totalTime->GetVisibleArea()));
+	surface->StartPaint(Rect::EncloseRect(progress->GetVisibleArea(), edb_totalTime->GetVisibleArea()));
 
 	/* Update seconds only if estimate is less or
 	 * at least two seconds more than before.
 	 */
-	if (secondsLeft < previousTrackSeconds || secondsLeft >= previousTrackSeconds + 2 || previousTrackSeconds == 0)
+	if (trackSecondsLeft < previousTrackSeconds || trackSecondsLeft >= previousTrackSeconds + 2 || previousTrackSeconds == 0)
 	{
 		/* Set track time string.
 		 */
-		String	 secondsString = Job::SecondsToString(secondsLeft);
+		String	 secondsString = Job::SecondsToString(trackSecondsLeft);
 
 		edb_trackTime->SetText(secondsString);
 
@@ -1601,29 +1593,14 @@ Void freac::LayerJoblist::OnEncoderTrackProgress(Int progressValue, Int secondsL
 			OnChangeSize(GetSize());
 		}
 
-		previousTrackSeconds = secondsLeft;
+		previousTrackSeconds = trackSecondsLeft;
 	}
 
-	/* Set percent values.
-	 */
-	if (progressValue > progress->GetValue())
-	{
-		edb_trackPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(progressValue / 10.0))));
-
-		progress->SetValue(progressValue);
-	}
-}
-
-Void freac::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int secondsLeft)
-{
-	/* Update seconds only if estimate is less or
-	 * at least two seconds more than before.
-	 */
-	if (secondsLeft < previousTotalSeconds || secondsLeft >= previousTotalSeconds + 2 || previousTotalSeconds == 0)
+	if (totalSecondsLeft < previousTotalSeconds || totalSecondsLeft >= previousTotalSeconds + 2 || previousTotalSeconds == 0)
 	{
 		/* Set total time string.
 		 */
-		String	 secondsString = Job::SecondsToString(secondsLeft);
+		String	 secondsString = Job::SecondsToString(totalSecondsLeft);
 
 		edb_totalTime->SetText(secondsString);
 
@@ -1634,21 +1611,26 @@ Void freac::LayerJoblist::OnEncoderTotalProgress(Int progressValue, Int secondsL
 			OnChangeSize(GetSize());
 		}
 
-		previousTotalSeconds = secondsLeft;
+		previousTotalSeconds = totalSecondsLeft;
 	}
 
 	/* Set percent values.
 	 */
-	if (progressValue > progress_total->GetValue())
+	if (trackProgressValue > progress->GetValue())
 	{
-		edb_totalPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(progressValue / 10.0))));
+		edb_trackPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(trackProgressValue / 10.0))));
 
-		progress_total->SetValue(progressValue);
+		progress->SetValue(trackProgressValue);
 	}
 
-	/* End painting, started in OnEncoderTrackProgress.
-	 */
-	drawSurface->EndPaint();
+	if (totalProgressValue > progress_total->GetValue())
+	{
+		edb_totalPercent->SetText(BoCA::I18n::Get()->TranslateString("%1%", "Technical").Replace("%1", String::FromInt(Math::Round(totalProgressValue / 10.0))));
+
+		progress_total->SetValue(totalProgressValue);
+	}
+
+	surface->EndPaint();
 }
 
 Void freac::LayerJoblist::ShowHideTitleInfo()

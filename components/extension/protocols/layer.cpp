@@ -127,6 +127,8 @@ Void BoCA::LayerProtocols::OnChangeLanguageSettings()
 
 Void BoCA::LayerProtocols::UpdateProtocolList()
 {
+	Threads::Lock	 lock(mutex);
+
 	/* Save selected protocol name.
 	 */
 	String	 selectedName;
@@ -183,6 +185,8 @@ Void BoCA::LayerProtocols::UpdateProtocolList()
 
 Void BoCA::LayerProtocols::UpdateProtocol(const String &name)
 {
+	Threads::Lock	 lock(mutex);
+
 	if (combo_protocol->GetSelectedEntry() == NIL) return;
 
 	String		 displayName  = combo_protocol->GetSelectedEntry()->GetText();
@@ -212,15 +216,19 @@ Void BoCA::LayerProtocols::UpdateProtocol(const String &name)
 
 Void BoCA::LayerProtocols::SelectProtocol()
 {
-	Surface	*surface = GetDrawSurface();
-	Bool	 visible = IsVisible();
+	Threads::Lock	 lock(mutex);
+
+	if (combo_protocol->GetSelectedEntry() == NIL) return;
+
+	Surface		*surface = GetDrawSurface();
+	Bool		 visible = IsVisible();
 
 	if (visible) surface->StartPaint(Rect(list_protocol->GetRealPosition(), list_protocol->GetRealSize()));
 
 	String			 displayName  = combo_protocol->GetSelectedEntry()->GetText();
 	String			 protocolName = displayName.Tail(displayName.Length() - 11);
 
-	const Array<String>	&messages     = Protocol::Get( protocolName)->GetMessages();
+	const Array<String>	&messages     = Protocol::Get(protocolName)->GetMessages();
 
 	list_protocol->Hide();
 	list_protocol->RemoveAllEntries();
