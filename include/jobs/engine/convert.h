@@ -41,7 +41,7 @@ namespace freac
 			String						 singleOutFile;
 			BoCA::Format					 singleTrackSampleFormat;
 
-			Void						 UpdateProgress(Int, Int, Int, Int);
+			Void						 ReportProgress(Int, Int, Int, Int);
 
 			Int						 GetNumberOfWorkers(Int) const;
 
@@ -61,6 +61,8 @@ namespace freac
 			static Void					 Stop();
 
 			static Void					 StopRipping(const String &);
+
+			static JobConvert				*GetActiveConversionJob();
 
 									 JobConvert(const Array<BoCA::Track> &, Bool = False);
 			virtual						~JobConvert();

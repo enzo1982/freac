@@ -80,6 +80,7 @@ freac::Job::Job() : ListEntry("Job")
 	startTicks	    = 0;
 	previousSecondsLeft = 0;
 
+	waiting		    = False;
 	abort		    = False;
 
 	/* Notify about jobs change.

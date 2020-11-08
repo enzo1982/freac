@@ -320,7 +320,7 @@ Error freac::JobConvert::Perform()
 	 */
 	Progress	*progress = new Progress(configuration);
 
-	progress->onReportProgress.Connect(&JobConvert::UpdateProgress, this);
+	progress->onReportProgress.Connect(&JobConvert::ReportProgress, this);
 
 	onStartEncoding.Emit();
 
@@ -683,7 +683,7 @@ Error freac::JobConvert::Perform()
 
 				const Track	&workerTrack = worker->GetTrackToConvert();
 
-				if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
+				if (GetActiveConversionJob() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
 																		  encoderName    = worker->GetEncoderName(),
 																		  conversionStep = worker->GetConversionStep());
 
@@ -725,8 +725,8 @@ Error freac::JobConvert::Perform()
 
 		/* Update total progress values.
 		 */
-		Bool			 first		= True;
-		static JobConvert	*lastConversion = conversionJobs.GetLast();
+		Bool			 first		  = True;
+		static JobConvert	*activeConversion = GetActiveConversionJob();
 
 		foreach (ConvertWorker *worker, workerQueue)
 		{
@@ -734,10 +734,10 @@ Error freac::JobConvert::Perform()
 
 			const Track	&workerTrack = worker->GetTrackToConvert();
 
-			if (first && conversionJobs.GetLast() == this && (this			      != lastConversion ||
-									  workerTrack.GetTrackID()    != trackID	||
-									  worker->GetConversionStep() != conversionStep ||
-									  worker->GetDecoderName()    != decoderName	||
+			if (first && GetActiveConversionJob() == this && (this			      != activeConversion ||
+									  workerTrack.GetTrackID()    != trackID	  ||
+									  worker->GetConversionStep() != conversionStep	  ||
+									  worker->GetDecoderName()    != decoderName	  ||
 									  worker->GetEncoderName()    != encoderName)) onEncodeTrack.Emit(tracksToConvert.Get(trackID = workerTrack.GetTrackID()), decoderName    = worker->GetDecoderName(),
 																								   encoderName    = worker->GetEncoderName(),
 																								   conversionStep = worker->GetConversionStep());
@@ -747,7 +747,7 @@ Error freac::JobConvert::Perform()
 			progress->UpdateTrack(workerTrack, worker->GetTrackPosition());
 		}
 
-		lastConversion = conversionJobs.GetLast();
+		activeConversion = GetActiveConversionJob();
 
 		/* Update per track progress values.
 		 */
@@ -834,17 +834,23 @@ Error freac::JobConvert::Perform()
 			{
 				if (!Locking::LockDeviceForTrack(track))
 				{
+					waiting = True;
 					progress->Pause();
 
 					while (!Locking::LockDeviceForTrack(track)) S::System::System::Sleep(25);
 
 					progress->Resume();
+					waiting = False;
 				}
 			}
 			else
 			{
+				waiting = True;
+
 				if (!Locking::LockDeviceForTrack(track))					 continue;
 				if (!Locking::LockOutputForTrack(track)) { Locking::UnlockDeviceForTrack(track); continue; }
+
+				waiting = False;
 			}
 
 			/* Check if track should be overwritten.
@@ -913,7 +919,7 @@ Error freac::JobConvert::Perform()
 
 				if (!workerToUse->IsError())
 				{
-					if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = track.GetTrackID()), decoderName    = workerToUse->GetDecoderName(),
+					if (GetActiveConversionJob() == this) onEncodeTrack.Emit(tracksToConvert.Get(trackID = track.GetTrackID()), decoderName    = workerToUse->GetDecoderName(),
 																		    encoderName    = workerToUse->GetEncoderName(),
 																		    conversionStep = workerToUse->GetConversionStep());
 
@@ -1025,7 +1031,7 @@ Error freac::JobConvert::Perform()
 			 */
 			while (worker->IsWaiting() && !worker->IsIdle()) S::System::System::Sleep(1);
 
-			if (conversionJobs.GetLast() == this) onEncodeTrack.Emit(singleTrackToEncode, decoderName    = worker->GetDecoderName(),
+			if (GetActiveConversionJob() == this) onEncodeTrack.Emit(singleTrackToEncode, decoderName    = worker->GetDecoderName(),
 												      encoderName    = worker->GetEncoderName(),
 												      conversionStep = worker->GetConversionStep());
 
@@ -1352,11 +1358,11 @@ Void freac::JobConvert::Skip()
 {
 	if (!IsConverting()) return;
 
-	/* Skip current track of most recent conversion.
+	/* Skip current track of active conversion job.
 	 */
-	JobConvert	*job = conversionJobs.GetLast();
+	JobConvert	*job = GetActiveConversionJob();
 
-	job->skipTrack = True;
+	if (job != NIL)  job->skipTrack = True;
 }
 
 Void freac::JobConvert::Stop()
@@ -1412,9 +1418,20 @@ Void freac::JobConvert::StopRipping(const String &device)
 	}
 }
 
-Void freac::JobConvert::UpdateProgress(Int trackProgressValue, Int trackSecondsLeft, Int totalProgressValue, Int totalSecondsLeft)
+
+freac::JobConvert *freac::JobConvert::GetActiveConversionJob()
 {
-	if (conversionJobs.GetLast() == this) onReportProgress.Emit(trackProgressValue, trackSecondsLeft, totalProgressValue, totalSecondsLeft);
+	foreachreverse (JobConvert *job, conversionJobs)
+	{
+		if (!job->IsWaiting()) return job;
+	}
+
+	return NIL;
+}
+
+Void freac::JobConvert::ReportProgress(Int trackProgressValue, Int trackSecondsLeft, Int totalProgressValue, Int totalSecondsLeft)
+{
+	if (GetActiveConversionJob() == this) onReportProgress.Emit(trackProgressValue, trackSecondsLeft, totalProgressValue, totalSecondsLeft);
 
 	SetProgress(totalProgressValue);
 }
