@@ -35,6 +35,10 @@ freac::JobManager::JobManager()
 
 	finished.EnableLocking();
 
+	/* Connect slots.
+	 */
+	Job::onFinishJob.Connect(&JobManager::OnFinishJob, this);
+
 	/* Start job manager thread.
 	 */
 	managerThread = NonBlocking0<>(&JobManager::ManagerThread, this).Call();
@@ -47,6 +51,10 @@ freac::JobManager::~JobManager()
 	/* Wait for manager thread to exit.
 	 */
 	managerThread->Wait();
+
+	/* Disconnect slots.
+	 */
+	Job::onFinishJob.Disconnect(&JobManager::OnFinishJob, this);
 }
 
 Void freac::JobManager::ManagerThread()
@@ -81,8 +89,6 @@ Void freac::JobManager::ManagerThread()
 				/* Check if the job is ready to run and if so start it.
 				 */
 				if (!job->ReadyToRun()) continue;
-
-				job->onFinishJob.Connect(&JobManager::OnFinishJob, this);
 
 				NonBlocking0<>(&Job::Run, job).Call();
 
@@ -134,8 +140,6 @@ Void freac::JobManager::ManagerThread()
 
 Void freac::JobManager::OnFinishJob(Job *job)
 {
-	job->onFinishJob.Disconnect(&JobManager::OnFinishJob, this);
-
 	/* Add job object to finished list.
 	 */
 	finished.Add(job, job->GetHandle());
