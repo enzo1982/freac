@@ -132,7 +132,7 @@ String freac::CDDBRemote::SendCommand(const String &iCommand)
 			in = new InStream(STREAM_BUFFER, httpResultBuffer, httpResultBuffer.Size());
 
 			str = in->InputLine();
-			protocol->Write(str);
+			protocol->Write(String("CDDB: < ").Append(str));
 
 			if (str.StartsWith("210") || str.StartsWith("211")) connected = true;
 			else						    delete in;
@@ -377,7 +377,14 @@ Bool freac::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 		}
 	}
 
-	http.SetContent(FormatCDDBRecord(cddbInfo));
+	/* Format CDDB record and send it.
+	 */
+	const String		&cddbRecord = FormatCDDBRecord(cddbInfo);
+	const Array<String>	&cddbLines  = cddbRecord.Explode("\n");
+
+	foreach (const String &line, cddbLines) protocol->Write(String("CDDB: > ").Append(line));
+
+	http.SetContent(cddbRecord);
 
 	if (http.DownloadToBuffer(httpResultBuffer) == Error())
 	{
@@ -386,8 +393,15 @@ Bool freac::CDDBRemote::Submit(const CDDBInfo &oCddbInfo)
 		return False;
 	}
 
-	if (String((char *) (UnsignedByte *) httpResultBuffer).StartsWith("200")) return True;
-	else									  return False;
+	/* Evaluate result and return.
+	 */
+	InStream	 in(STREAM_BUFFER, httpResultBuffer, httpResultBuffer.Size());
+	String		 line = in.InputLine();
+
+	protocol->Write(String("CDDB: < ").Append(line));
+
+	if (line.StartsWith("200")) return True;
+	else			    return False;
 }
 
 Bool freac::CDDBRemote::CloseConnection()
