@@ -106,15 +106,39 @@ else
 
 		BUILD_OSX = True
 
+#		Find Xcode version
+		XCODEVERSION = $(shell xcodebuild -version | head -n1)
+
+		XCODE_LE3   = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -le  3 ]; then echo True; fi")
+		XCODE_LE9   = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -le  9 ]; then echo True; fi")
+		XCODE_EQ12  = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -eq 12 ]; then echo True; fi")
+		XCODE_GE13  = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -ge 13 ]; then echo True; fi")
+		XCODE_N_GE2 = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#*.};   if [ \$${v%%.*} -ge  2 ]; then echo True; fi")
+
 #		Build universal binaries
-		ifneq ($(BUILD_X86),False)
-			BUILD_X86 = True
-		endif
 		ifneq ($(BUILD_X86_64),False)
 			BUILD_X86_64 = True
 		endif
-		ifneq ($(BUILD_PPC),False)
-			BUILD_PPC = True
+		ifeq ($(XCODE_LE9),True)
+			ifneq ($(BUILD_X86),False)
+				BUILD_X86 = True
+			endif
+
+			ifeq ($(XCODE_LE3),True)
+				ifneq ($(BUILD_PPC),False)
+					BUILD_PPC = True
+				endif
+			endif
+		else ifeq ($(XCODE_EQ12),True)
+			ifeq ($(XCODE_N_GE2),True)
+				ifneq ($(BUILD_ARM64),False)
+					BUILD_ARM64 = True
+				endif
+			endif
+		else ifeq ($(XCODE_GE13),True)
+			ifneq ($(BUILD_ARM64),False)
+				BUILD_ARM64 = True
+			endif
 		endif
 	endif
 endif
@@ -225,7 +249,16 @@ ifeq ($(findstring release,$(config)),release)
 			override LDFLAGS += -arch i386
 		endif
 		ifeq ($(BUILD_X86_64),True)
-			override CFLAGS	 += -arch x86_64 -Xarch_x86_64 -march=core2
+			ifeq ($(XCODE_EQ12),True)
+				ifeq ($(XCODE_N_GE2),True)
+					override CFLAGS	 += -arch x86_64 -Xarch_x86_64 -march=haswell
+				endif
+			else ifeq ($(XCODE_GE13),True)
+				override CFLAGS	 += -arch x86_64 -Xarch_x86_64 -march=haswell
+			else
+				override CFLAGS	 += -arch x86_64 -Xarch_x86_64 -march=core2
+			endif
+
 			override LDFLAGS += -arch x86_64
 		endif
 		ifeq ($(BUILD_PPC),True)
@@ -235,6 +268,10 @@ ifeq ($(findstring release,$(config)),release)
 		ifeq ($(BUILD_PPC64),True)
 			override CFLAGS	 += -arch ppc64 -Xarch_ppc64 -mcpu=G5
 			override LDFLAGS += -arch ppc64
+		endif
+		ifeq ($(BUILD_ARM64),True)
+			override CFLAGS	 += -arch arm64
+			override LDFLAGS += -arch arm64
 		endif
 	else
 		override LDFLAGS += -s

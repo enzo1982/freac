@@ -149,6 +149,8 @@ History
 
 	Version 1.1.4 (November 2020)
 
+		- added support for Apple Silicon Macs
+
 		- Improvements
 
 			- improved support for languages written from right to left
@@ -170,6 +172,12 @@ History
 		- New translations
 
 			- added Persian translation
+
+	Version 1.1.3a (October 2020)
+
+		- Bug fixes
+
+			- fixed user interface glitches on older versions of macOS
 
 	Version 1.1.3 (October 2020)
 
