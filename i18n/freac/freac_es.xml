@@ -398,6 +398,7 @@
       <entry id="5023" string="Verifiers">Verificadores</entry>
       <entry id="5024" string="Taggers">Etiquetadores</entry>
       <entry id="5025" string="Processing">Procesando</entry>
+      <entry id="5026" string="Additional arguments">Argumentos adicionales</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar compresor</entry>
@@ -543,6 +544,7 @@
 	  <entry id="5664" string="Channels">Canales</entry>
 	  <entry id="5665" string="Sample resolution">Resolución de la muestra</entry>
 	  <entry id="5666" string="CD drive">Lector CD</entry>
+	  <entry id="5667" string="Disc ID">ID del disco</entry>
 	</section>
       </section>
 
@@ -632,6 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">El acceso a la unidad de CD-ROM fue denegado por Windows.&#10;&#10;Por favor, contacte con su administrador de sistemas para&#10;poder acceder a la unidad de CD-ROM.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">No hay diálogo de configuración para:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">¡La carpeta elegida ya no existe!</entry>
+      <entry id="7124" string="Access denied">Acceso denegado</entry>
     </section>
 
     <section name="Dialogs">
@@ -1304,6 +1307,8 @@
 	  <entry id="103209" string="ISRC">ISRC</entry>
 	  <entry id="103210" string="Tempo">Tempo</entry>
 	  <entry id="103211" string="BPM">BPM (pulsos por minuto)</entry>
+	  <entry id="103212" string="Catalog number">Número de catálogo</entry>
+	  <entry id="103213" string="Barcode">Código de barras</entry>
 	</section>
 
 	<section name="Other">
