@@ -149,8 +149,6 @@ History
 
 	Version 1.1.4 (November 2020)
 
-		- added support for Apple Silicon Macs
-
 		- Improvements
 
 			- improved support for languages written from right to left
@@ -163,6 +161,7 @@ History
 
 			- fixed invalid length written to very long Opus and Speex files (longer than 12 ½ hours at 48 kHz)
 			- fixed written MP4 chapters being invisible to some applications when using Nero AAC
+			- fixed bad user interface colors on some Linux distributions
 
 		- Updated codecs
 
@@ -172,6 +171,10 @@ History
 		- New translations
 
 			- added Persian translation
+
+	Version 1.1.3b (November 2020)
+
+		- added support for Apple Silicon Macs
 
 	Version 1.1.3a (October 2020)
 
