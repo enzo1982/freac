@@ -153,6 +153,7 @@ Geschichte
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Unterstützung für das Auslesen von CD-Text verbessert
+			- DSP-Filter zum Dekodieren von HDCDs hinzugefügt
 			- Felder für Katalognummer und Barcode zum Tag-Editor hinzugefügt
 			- Dateitypzuordnungen zur macOS-App hinzugefügt, so dass fre:ac zum Öffnen von Audiodateien angeboten wird
 			- Unterstützung für mehrere Bildschirme unter X11-basierten Systemen verbessert
