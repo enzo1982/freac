@@ -845,7 +845,7 @@ Error freac::JobConvert::Perform()
 			}
 			else
 			{
-				waiting = True;
+				if (workerQueue.Length() == 0) waiting = True;
 
 				if (!Locking::LockDeviceForTrack(track))					 continue;
 				if (!Locking::LockOutputForTrack(track)) { Locking::UnlockDeviceForTrack(track); continue; }
@@ -1417,7 +1417,6 @@ Void freac::JobConvert::StopRipping(const String &device)
 		}
 	}
 }
-
 
 freac::JobConvert *freac::JobConvert::GetActiveConversionJob()
 {
