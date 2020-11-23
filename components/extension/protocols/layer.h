@@ -26,6 +26,8 @@ namespace BoCA
 	class LayerProtocols : public Layer
 	{
 		private:
+			Threads::Mutex	 mutex;
+
 			Text		*text_protocol;
 			ComboBox	*combo_protocol;
 			Button		*btn_save;

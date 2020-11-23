@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -260,8 +260,8 @@ Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
 	 */
 	AutoRelease	 autoRelease;
 
-	onTrackProgress.Emit(Math::Min(1000.0, Math::Round(trackProgress * 1000.0)), Math::Max(0.0, Math::Round(trackTicks)));
-	onTotalProgress.Emit(Math::Min(1000.0, Math::Round(totalProgress * 1000.0)), Math::Max(0.0, Math::Round(totalTicks)));
+	onReportProgress.Emit(Math::Min(1000.0, Math::Round(trackProgress * 1000.0)), Math::Max(0.0, Math::Round(trackTicks)),
+			      Math::Min(1000.0, Math::Round(totalProgress * 1000.0)), Math::Max(0.0, Math::Round(totalTicks)));
 
 	/* Show progress in taskbar/dock.
 	 */

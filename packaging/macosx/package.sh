@@ -5,7 +5,7 @@ RELEASE=1.1.3-`date +"%Y%m%d"`
 
 VERSION="v1.1.3"
 
-UNAME=macosx
+UNAME=macos
 
 if [[ "$1" == "translation" ]]; then
   TRANSLATION=1
@@ -124,7 +124,6 @@ hdiutil detach vol
 
 # Convert and finish .dmg
 hdiutil convert -format UDBZ -o freac-$RELEASE-$UNAME.dmg freac-$RELEASE-$UNAME.dmg.sparseimage
-hdiutil internet-enable -yes freac-$RELEASE-$UNAME.dmg
 
 if [[ -n $TRANSLATION ]]; then
   mv freac-$RELEASE-$UNAME.dmg freac-${RELEASE%%-*}-translation-kit-$UNAME.dmg

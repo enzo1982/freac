@@ -845,7 +845,7 @@ Void freac::JobList::OnClickTab(Int n)
 	for (Int i = 0; sortByOutput && i < tracks.Length(); i++)
 	{
 		const Track	&track	  = tracks.Get(GetNthEntry(i)->GetHandle());
-		String		 fileName = Utilities::GetOutputFileName(track);
+		String		 fileName = Utilities::GetOutputFileName(config, track);
 
 		outputFileNames.Add(fileName.Tail(fileName.Length() - config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault).Length()));
 	}
@@ -1169,7 +1169,7 @@ String freac::JobList::GetEntryText(const Track &track)
 			String	 inputDirectory	 = track.fileName.Head(track.fileName.FindLast(Directory::GetDirectoryDelimiter()) + 1);
 			String	 outputDirectory = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
 
-			String	 fileName	 = Utilities::GetOutputFileName(track);
+			String	 fileName	 = Utilities::GetOutputFileName(config, track);
 
 			if	(fileName.StartsWith(outputDirectory)) jlEntry.Append(fileName.Tail(fileName.Length() - outputDirectory.Length()));
 			else if (fileName.StartsWith(inputDirectory))  jlEntry.Append(fileName.Tail(fileName.Length() - inputDirectory.Length()));

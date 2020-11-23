@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">Sampleratenkonvertierer</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise Geräuschreduzierung</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band Tempo-/Tonhöhenänderung</entry>
+	<entry id="12005" string="HDCD Decoder">HDCD-Dekodierer</entry>
       </section>
 
       <section name="Extensions">

@@ -117,7 +117,7 @@ Voraussetzungen
 
 		Alle Systeme:
 
-			- smooth v0.9.5 (http://www.smooth-project.org/)
+			- smooth v0.9.6 (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -147,12 +147,13 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.4 (Oktober 2020)
+	Version 1.1.4 (November 2020)
 
 		- Verbesserungen
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Unterstützung für das Auslesen von CD-Text verbessert
+			- DSP-Filter zum Dekodieren von HDCDs hinzugefügt
 			- Felder für Katalognummer und Barcode zum Tag-Editor hinzugefügt
 			- Dateitypzuordnungen zur macOS-App hinzugefügt, so dass fre:ac zum Öffnen von Audiodateien angeboten wird
 			- Unterstützung für mehrere Bildschirme unter X11-basierten Systemen verbessert
@@ -160,15 +161,27 @@ Geschichte
 		- Bug fixes
 
 			- Schreiben von falschen Längenangaben in sehr lange Opus- und Speex-Dateien behoben (länger als 12 ½ Stunden bei 48 kHz)
+			- Problem mit für einige Anwendungen unsichtbare MP4-Kapitel bei Verwendung von Nero AAC behoben
+			- Falsche Farben in der Benutzeroberfläche unter einigen Linux-Distributionen behoben
 
 		- Aktualisierte Codecs
 
-			- Monkey's Audio auf Version 5.57 aktualisiert
+			- Monkey's Audio auf Version 5.59b aktualisiert
 			- FAAD2 auf Version 2.10.0 aktualisiert
 
 		- Neue Übersetzungen
 
 			- Persische Übersetzung hinzugefügt
+
+	Version 1.1.3b (November 2020)
+
+		- Unterstützung für Apple Silicon Macs hinzugefügt
+
+	Version 1.1.3a (Oktober 2020)
+
+		- Behobene Fehler
+
+			- Probleme mit der Benutzeroberfläche unter älteren macOS-Versionen behoben
 
 	Version 1.1.3 (Oktober 2020)
 

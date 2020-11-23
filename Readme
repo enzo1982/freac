@@ -117,7 +117,7 @@ Requirements
 
 		All platforms:
 
-			- smooth v0.9.5 (http://www.smooth-project.org/)
+			- smooth v0.9.6 (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -147,12 +147,13 @@ Requirements
 History
 -------
 
-	Version 1.1.4 (October 2020)
+	Version 1.1.4 (November 2020)
 
 		- Improvements
 
 			- improved support for languages written from right to left
 			- improved support for reading CD-Text
+			- added an HDCD decoder DSP filter
 			- added catalog number and barcode fields to tag editor
 			- added file type associations to macOS app, so fre:ac is offered for opening audio files
 			- improved multi-monitor support on X11 based systems
@@ -160,15 +161,27 @@ History
 		- Bug fixes
 
 			- fixed invalid length written to very long Opus and Speex files (longer than 12 ½ hours at 48 kHz)
+			- fixed written MP4 chapters being invisible to some applications when using Nero AAC
+			- fixed bad user interface colors on some Linux distributions
 
 		- Updated codecs
 
-			- updated Monkey's Audio to version 5.57
+			- updated Monkey's Audio to version 5.59b
 			- updated FAAD2 to version 2.10.0
 
 		- New translations
 
 			- added Persian translation
+
+	Version 1.1.3b (November 2020)
+
+		- added support for Apple Silicon Macs
+
+	Version 1.1.3a (October 2020)
+
+		- Bug fixes
+
+			- fixed user interface glitches on older versions of macOS
 
 	Version 1.1.3 (October 2020)
 

@@ -48,6 +48,7 @@ namespace freac
 			Array<String>			 errors;
 			Array<String>			 warnings;
 
+			Bool				 waiting;
 			Bool				 abort;
 		public:
 							 Job();
@@ -82,6 +83,8 @@ namespace freac
 
 			Int				 SetProgress(Int);
 			Int				 GetProgress() const;
+
+			Bool				 IsWaiting() const	{ return waiting; }
 
 			const Array<String>		&GetErrors() const	{ return errors; }
 			const Array<String>		&GetWarnings() const	{ return warnings; }
