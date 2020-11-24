@@ -23,7 +23,6 @@ ripping and tag editing and converts the following audio formats:
 	- Apple Lossless (ALAC)
 		- using the Core Audio ALAC encoder	(http://www.apple.com/)
 		- using the FFmpeg ALAC encoder		(http://www.ffmpeg.org/)
-		- using David Hammerton's ALAC decoder	(http://www.craz.net/)
 
 	- Musepack					(http://www.musepack.net/)
 	- WavPack					(http://www.wavpack.com/)
@@ -166,7 +165,7 @@ History
 
 		- Updated codecs
 
-			- updated Monkey's Audio to version 5.59b
+			- updated Monkey's Audio to version 5.65
 			- updated FAAD2 to version 2.10.0
 
 		- New translations

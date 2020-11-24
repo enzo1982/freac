@@ -1,0 +1,127 @@
+diff -Naur mac-sdk-5.65/Makefile mac-sdk-5.65-gcc/Makefile
+--- mac-sdk-5.65/Makefile	1970-01-01 00:00:00 +0000
++++ mac-sdk-5.65-gcc/Makefile	2019-11-21 21:28:57 +0000
+@@ -0,0 +1,8 @@
++all:
++	$(MAKE) -f Source/Projects/NonWindows/Makefile
++
++install:
++	$(MAKE) -f Source/Projects/NonWindows/Makefile install
++
++clean:
++	$(MAKE) -f Source/Projects/NonWindows/Makefile clean
+diff -Naur mac-sdk-5.65/Shared/All.h mac-sdk-5.65-gcc/Shared/All.h
+--- mac-sdk-5.65/Shared/All.h	2020-11-24 21:26:30 +0000
++++ mac-sdk-5.65-gcc/Shared/All.h	2020-11-25 00:03:32 +0000
+@@ -188,12 +188,22 @@
+     #define TICK_COUNT_FREQ                             1000000
+     #undef    ASSERT
+     #define ASSERT(e)
++#endif
++
++#if !defined(PLATFORM_WINDOWS) || !defined(_MSC_VER)
+     #define wcsncpy_s(A, B, C, D) wcsncpy(A, C, D)
+     #define wcscpy_s(A, B, C) wcscpy(A, C)
+     #define wcscat_s(A, B, C) wcscat(A, C)
+-    #define sprintf_s(A, B, C, D) sprintf(A, C, D)
++    #define sprintf_s(A, B, C, ...) sprintf(A, C, __VA_ARGS__)
++    #define _stprintf_s(A, B, C, ...) _stprintf(A, C, __VA_ARGS__)
+     #define strcpy_s(A, B, C) strcpy(A, C)
+-    #define _tcscat_s(A, B, C) _tcscat(A, C)
++
++    #if defined(PLATFORM_WINDOWS)
++        #define _tcsncpy_s(A, B, C, D) _tcsncpy(A, C, D)
++        #define _tcscpy_s(A, B, C) _tcscpy(A, C)
++        #define _tcscat_s(A, B, C) _tcscat(A, C)
++        #define strncpy_s(A, B, C, D) strncpy(A, C, D)
++    #endif
+ #endif
+ 
+ /*****************************************************************************************
+diff -Naur mac-sdk-5.65/Shared/NoWindows.h mac-sdk-5.65-gcc/Shared/NoWindows.h
+--- mac-sdk-5.65/Shared/NoWindows.h	2020-11-09 20:13:40 +0000
++++ mac-sdk-5.65-gcc/Shared/NoWindows.h	2020-11-10 16:17:10 +0000
+@@ -52,7 +52,7 @@
+ 
+ #define _strnicmp strncasecmp
+ #define _wtoi(x) wcstol(x, NULL, 10)
+-#define _tcscat wcscat
++#define _tcscat_s wcscat_s
+ #undef _totlower
+ #define _totlower towlower
+ #define _totupper towupper
+@@ -60,7 +60,7 @@
+ #ifdef _MSC_VER
+ #define _tcsicmp _wcsicmp
+ #else
+-#define _tcsicmp wcscasecmp
++#define _tcsicmp wcscmp
+ #endif
+ #define _tcscpy wcscpy
+ #define _tcslen wcslen
+diff -Naur mac-sdk-5.65/Source/Projects/NonWindows/Makefile mac-sdk-5.65-gcc/Source/Projects/NonWindows/Makefile
+--- mac-sdk-5.65/Source/Projects/NonWindows/Makefile	2020-04-24 21:09:10 +0000
++++ mac-sdk-5.65-gcc/Source/Projects/NonWindows/Makefile	2020-08-29 17:45:44 +0000
+@@ -85,7 +85,7 @@
+ 	$(CC) $(SHAREDOBJECTS) $(LIBOBJECTS) $(DLLOBJECTS) $(LDOPTS) $(LDFLAGS) $(DLLLDOPTS) -o $@
+ 
+ $(CMDNAME): $(DLLNAME) $(CMDOBJECTS)
+-	$(CC) $(SHAREDOBJECTS) $(CMDOBJECTS) $(DLLNAME) $(LDOPTS) $(LDFLAGS) $(CMDLDOPTS) -o $@
++	$(CC) $(SHAREDOBJECTS) $(LIBOBJECTS) $(CMDOBJECTS) $(LDOPTS) $(LDFLAGS) $(CMDLDOPTS) -o $@
+ 
+ Source/Shared/%.o: Source/Shared/%.cpp
+ 	$(CXX) $(CXXOPTS) $(CXXFLAGS) $< -o $@
+diff -Naur mac-sdk-5.65/Source/Shared/All.h mac-sdk-5.65-gcc/Source/Shared/All.h
+--- mac-sdk-5.65/Source/Shared/All.h	2020-11-24 21:26:30 +0000
++++ mac-sdk-5.65-gcc/Source/Shared/All.h	2020-11-25 00:03:32 +0000
+@@ -188,12 +188,22 @@
+     #define TICK_COUNT_FREQ                             1000000
+     #undef    ASSERT
+     #define ASSERT(e)
++#endif
++
++#if !defined(PLATFORM_WINDOWS) || !defined(_MSC_VER)
+     #define wcsncpy_s(A, B, C, D) wcsncpy(A, C, D)
+     #define wcscpy_s(A, B, C) wcscpy(A, C)
+     #define wcscat_s(A, B, C) wcscat(A, C)
+-    #define sprintf_s(A, B, C, D) sprintf(A, C, D)
++    #define sprintf_s(A, B, C, ...) sprintf(A, C, __VA_ARGS__)
++    #define _stprintf_s(A, B, C, ...) _stprintf(A, C, __VA_ARGS__)
+     #define strcpy_s(A, B, C) strcpy(A, C)
+-    #define _tcscat_s(A, B, C) _tcscat(A, C)
++
++    #if defined(PLATFORM_WINDOWS)
++        #define _tcsncpy_s(A, B, C, D) _tcsncpy(A, C, D)
++        #define _tcscpy_s(A, B, C) _tcscpy(A, C)
++        #define _tcscat_s(A, B, C) _tcscat(A, C)
++        #define strncpy_s(A, B, C, D) strncpy(A, C, D)
++    #endif
+ #endif
+ 
+ /*****************************************************************************************
+diff -Naur mac-sdk-5.65/Source/Shared/NoWindows.h mac-sdk-5.65-gcc/Source/Shared/NoWindows.h
+--- mac-sdk-5.65/Source/Shared/NoWindows.h	2020-11-09 20:13:40 +0000
++++ mac-sdk-5.65-gcc/Source/Shared/NoWindows.h	2020-11-10 16:17:27 +0000
+@@ -52,7 +52,7 @@
+ 
+ #define _strnicmp strncasecmp
+ #define _wtoi(x) wcstol(x, NULL, 10)
+-#define _tcscat wcscat
++#define _tcscat_s wcscat_s
+ #undef _totlower
+ #define _totlower towlower
+ #define _totupper towupper
+@@ -60,7 +60,7 @@
+ #ifdef _MSC_VER
+ #define _tcsicmp _wcsicmp
+ #else
+-#define _tcsicmp wcscasecmp
++#define _tcsicmp wcscmp
+ #endif
+ #define _tcscpy wcscpy
+ #define _tcslen wcslen
+diff -Naur mac-sdk-5.65/configure mac-sdk-5.65-gcc/configure
+--- mac-sdk-5.65/configure	1970-01-01 00:00:00 +0000
++++ mac-sdk-5.65-gcc/configure	2019-11-21 21:28:57 +0000
+@@ -0,0 +1 @@
++#!/bin/sh
