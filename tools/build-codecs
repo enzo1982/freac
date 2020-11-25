@@ -109,6 +109,7 @@ if [[ $uname == Haiku ]]; then
 fi
 
 # Package versions
+exhale_version=1.0.8
 faac_version=1.30
 faad2_version=2.10.0
 fdk_aac_version=2.0.1
@@ -132,6 +133,7 @@ vorbis_version=1.3.7
 wavpack_version=5.3.0
 
 # Package locations
+exhale_location=https://gitlab.com/ecodis/exhale/-/archive/v$exhale_version/exhale-v$exhale_version.tar.bz2
 faac_location=https://github.com/knik0/faac/archive/${faac_version//./_}.tar.gz
 faad2_location=https://github.com/knik0/faad2/archive/${faad2_version//./_}.tar.gz
 fdk_aac_location=https://sourceforge.net/projects/opencore-amr/files/fdk-aac/fdk-aac-$fdk_aac_version.tar.gz
@@ -217,13 +219,17 @@ build () {
   eval $prepare
 
   if [[ ! -f ./configure ]]; then
-    autoreconf -i
+    if [[ -f ./configure.in ]] || [[ -f ./configure.ac ]]; then
+      autoreconf -i
+    fi
   fi
 
-  if [[ -z $host_flags && ! -z $host ]]; then
-    eval $configure_exports ./configure --host=$host $configure_flags $prefix
-  else
-    eval $configure_exports ./configure $host_flags $configure_flags $prefix
+  if [[ -f ./configure ]]; then
+    if [[ -z $host_flags && ! -z $host ]]; then
+      eval $configure_exports ./configure --host=$host $configure_flags $prefix
+    else
+      eval $configure_exports ./configure $host_flags $configure_flags $prefix
+    fi
   fi
   $MAKE $make_flags -j$jobs
 
@@ -247,6 +253,8 @@ build () {
       let index++
       set -e
     done
+  elif [[ -n "$install_script" ]]; then
+    $SUDO bash -c "$install_script"
   else
     $SUDO $MAKE $make_flags -j$jobs install
   fi
@@ -260,6 +268,7 @@ build () {
   unset configure_flags
   unset host_flags
   unset make_flags
+  unset install_script
   unset folder
 
   export CFLAGS="$cflags $cflags_unroll"
@@ -270,20 +279,32 @@ packages=$@
 
 if [ ${#packages[0]} -eq 0 ]; then
   echo "Usage: build.sh [{list of packages}|all]"
-  echo "Available packages: faac faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack"
+  echo "Available packages: exhale faac faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack"
   echo
 elif [ "${packages[0]}" == all ]; then
-  if [[ $uname == Darwin ]]; then
-    packages=( faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 opus speex vorbis wavpack )
-  elif [[ $uname == Haiku ]]; then
-    packages=( faac faad2 fdk-aac flac lame libogg mpg123 opus speex vorbis )
-  else
+  if [[ $uname == *MINGW* ]]; then
     packages=( faac faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack )
+  elif [[ $uname == Darwin ]]; then
+    packages=( exhale faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 opus speex vorbis wavpack )
+  elif [[ $uname == Haiku ]]; then
+    packages=( exhale faac faad2 fdk-aac flac lame libogg mpg123 opus speex vorbis )
+  else
+    packages=( exhale faac faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack )
   fi
 fi
 
 for package in ${packages[@]}; do
-  if [ $package == faac ]; then
+  if [ $package == exhale ]; then
+    # Build exhale
+    if [[ $uname == Haiku ]]; then
+      make_flags="LIBS="
+      install_script="mkdir -p /usr/local/bin && cp bin/exhale /system/non-packaged/bin"
+    else
+      install_script="mkdir -p /usr/local/bin && cp bin/exhale /usr/local/bin"
+    fi
+    build $exhale_location bin/exhale.$execext exhale.$execext
+
+  elif [ $package == faac ]; then
     # Build FAAC
     folder=faac-${faac_version//./_}
     prepare="sed -i -e \"s/FAACAPI __stdcall/FAACAPI/\" include/faac.h"
