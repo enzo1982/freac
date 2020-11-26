@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">Konwerter częstotliwości próbkowania</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">Redukcja szumów RNNoise</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band - zmiana tempa/tonacji</entry>
+	<entry id="12005" string="Dekoder HDCD"/>
       </section>
 
       <section name="Extensions">
