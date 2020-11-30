@@ -672,7 +672,7 @@ Void freac::cddbSubmitDlg::ChangeDrive()
 
 		for (Int i = 0; i < numTocEntries; i++)
 		{
-			cddbInfo.trackOffsets.Add(mcdi.GetNthEntryOffset(i), i);
+			cddbInfo.trackOffsets.Add(mcdi.GetNthEntryOffset(i) + 150, i);
 
 			Int	 handle = list_tracks->AddEntry(NIL)->GetHandle();
 

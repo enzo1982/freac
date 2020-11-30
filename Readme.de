@@ -23,7 +23,6 @@ von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate
 	- Apple Lossless (ALAC)
 		- mit dem Core Audio ALAC-Encoder	(http://www.apple.com/)
 		- mit dem FFmpeg ALAC-Encoder		(http://www.ffmpeg.org/)
-		- mit David Hammertons ALAC-Decoder	(http://www.craz.net/)
 
 	- Musepack					(http://www.musepack.net/)
 	- WavPack					(http://www.wavpack.com/)
@@ -156,12 +155,14 @@ Geschichte
 			- DSP-Filter zum Dekodieren von HDCDs hinzugefügt
 			- Felder für Katalognummer und Barcode zum Tag-Editor hinzugefügt
 			- Dateitypzuordnungen zur macOS-App hinzugefügt, so dass fre:ac zum Öffnen von Audiodateien angeboten wird
+			- Verbesserung der Geschwindigkeit beim Kodieren von MP3, AAC und Opus um bis zu 30%
 			- Unterstützung für mehrere Bildschirme unter X11-basierten Systemen verbessert
 
 		- Bug fixes
 
 			- Schreiben von falschen Längenangaben in sehr lange Opus- und Speex-Dateien behoben (länger als 12 ½ Stunden bei 48 kHz)
 			- Problem mit für einige Anwendungen unsichtbare MP4-Kapitel bei Verwendung von Nero AAC behoben
+			- Probleme beim Senden von CDDB-Einträgen für neue CDs (ohne bestehende Einträge) behoben
 			- Falsche Farben in der Benutzeroberfläche unter einigen Linux-Distributionen behoben
 
 		- Aktualisierte Codecs

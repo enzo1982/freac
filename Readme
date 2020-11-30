@@ -155,12 +155,14 @@ History
 			- added an HDCD decoder DSP filter
 			- added catalog number and barcode fields to tag editor
 			- added file type associations to macOS app, so fre:ac is offered for opening audio files
+			- improved MP3, AAC and Opus encoding performance by up to 30%
 			- improved multi-monitor support on X11 based systems
 
 		- Bug fixes
 
 			- fixed invalid length written to very long Opus and Speex files (longer than 12 ½ hours at 48 kHz)
 			- fixed written MP4 chapters being invisible to some applications when using Nero AAC
+			- fixed issues submitting CDDB information for new CDs (without existing entries)
 			- fixed bad user interface colors on some Linux distributions
 
 		- Updated codecs
