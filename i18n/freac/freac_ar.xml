@@ -587,6 +587,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">استخدام وقتي لتشكيل الضوضاء</entry>
 	  <entry id="33208" string="Maximum bandwidth">أقصى سعة الحيز</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">بالهرتز AAC أقصى تردد سعة الحيز لاستخدام</entry>
+	  <entry id="33210" string="worse">أسوأ</entry>
+	  <entry id="33211" string="better">أحسن</entry>
 	</section>
 
 	<section name="Format">

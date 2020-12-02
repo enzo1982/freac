@@ -155,6 +155,7 @@ Geschichte
 			- DSP-Filter zum Dekodieren von HDCDs hinzugefügt
 			- Felder für Katalognummer und Barcode zum Tag-Editor hinzugefügt
 			- Dateitypzuordnungen zur macOS-App hinzugefügt, so dass fre:ac zum Öffnen von Audiodateien angeboten wird
+			- Qualitätseinstellung (VBR) zum FDK-AAC-Konfigurationsdialog hinzugefügt
 			- Verbesserung der Geschwindigkeit beim Kodieren von MP3, AAC und Opus um bis zu 30%
 			- Unterstützung für mehrere Bildschirme unter X11-basierten Systemen verbessert
 

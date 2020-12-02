@@ -847,6 +847,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">टेम्पोरल शोर शेपिंग का उपयोग करें</entry>
 	  <entry id="33208" string="Maximum bandwidth">अधिकतम बैंडविड्थ</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">अधिकतम ऐऐसी आवृत्ति बैंडविड्थ का उपयोग करने के लिए</entry>
+	  <entry id="33210" string="worse">और भी बुरा</entry>
+	  <entry id="33211" string="better">बेहतर</entry>
 	</section>
 
 	<section name="Format">

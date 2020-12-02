@@ -540,6 +540,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Bruk Temporal Noise Shaping</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maksimal båndbredde</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maksimal AAC-frekvensbåndbredde i Hz</entry>
+	  <entry id="33210" string="worse">Dårligere</entry>
+	  <entry id="33211" string="better">Bedre</entry>
 	</section>
 
 	<section name="Format">

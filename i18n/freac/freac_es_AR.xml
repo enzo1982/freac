@@ -582,6 +582,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Utilizar la función manejo de ruido</entry>
 	  <entry id="33208" string="Maximum bandwidth">Ancho de banda máximo</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Ancho de banda de frecuencia máx. a usar en AAC (en Hz)</entry>
+	  <entry id="33210" string="worse">deficiente</entry>
+	  <entry id="33211" string="better">óptima</entry>
 	</section>
 
 	<section name="Format">

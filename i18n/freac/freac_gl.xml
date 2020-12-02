@@ -540,6 +540,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Usar PRT</entry>
 	  <entry id="33208" string="Maximum bandwidth">Ancho de banda máximo</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Frecuencia máxima para AAC (Hz)</entry>
+	  <entry id="33210" string="worse">peor</entry>
+	  <entry id="33211" string="better">mellor</entry>
 	</section>
 
 	<section name="Format">

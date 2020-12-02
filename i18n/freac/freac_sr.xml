@@ -847,6 +847,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Koristi privr. obl. šuma</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maksimalan protok</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maksimalna AAC frekvencija protoka (Hz)</entry>
+	  <entry id="33210" string="worse">lošije</entry>
+	  <entry id="33211" string="better">bolje</entry>
 	</section>
 
 	<section name="Format">

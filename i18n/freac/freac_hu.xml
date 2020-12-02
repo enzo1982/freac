@@ -540,6 +540,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">TNS használat</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maximális sávszélesség</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maximum AAC frekvencia sávszélesség Hz</entry>
+	  <entry id="33210" string="worse">rosszabb</entry>
+	  <entry id="33211" string="better">jobb</entry>
 	</section>
 
 	<section name="Format">

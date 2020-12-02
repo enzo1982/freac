@@ -847,6 +847,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Usar &quot;Modelagem de Ruído Temporal&quot;</entry>
 	  <entry id="33208" string="Maximum bandwidth">Largura de banda máxima</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Largura de banda máxima para AAC (Hz)</entry>
+	  <entry id="33210" string="worse">pior</entry>
+	  <entry id="33211" string="better">melhor</entry>
 	</section>
 
 	<section name="Format">

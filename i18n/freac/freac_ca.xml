@@ -540,6 +540,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Usar PRT</entry>
 	  <entry id="33208" string="Maximum bandwidth">Ample de banda màxim</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Freqüència màxima per a AAC en Hz</entry>
+	  <entry id="33210" string="worse">pitjor</entry>
+	  <entry id="33211" string="better">millor</entry>
 	</section>
 
 	<section name="Format">

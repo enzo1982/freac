@@ -532,6 +532,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Uzi Temporal Noise Shaping-on</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maksimuma bendkapacito</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maksimuma AAC-frekvenca bendkapacito por uzi (Hz)</entry>
+	  <entry id="33210" string="worse">malplibona</entry>
+	  <entry id="33211" string="better">plibona</entry>
 	</section>
 
 	<section name="Format">

@@ -842,6 +842,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">TNS を使用する</entry>
 	  <entry id="33208" string="Maximum bandwidth">最大帯域幅</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">AAC 最大周波数帯域幅(Hz)</entry>
+	  <entry id="33210" string="worse">低</entry>
+	  <entry id="33211" string="better">高</entry>
 	</section>
 
 	<section name="Format">

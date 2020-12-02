@@ -849,6 +849,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Impiegà a fattura di trostu tempurale (TNS)</entry>
 	  <entry id="33208" string="Maximum bandwidth">Larghezza di fascia massima</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Larghezza di fascia massima di frequenza AAC à impiegà (Hz)</entry>
+	  <entry id="33210" string="worse">pechju</entry>
+	  <entry id="33211" string="better">più bona</entry>
 	</section>
 
 	<section name="Format">

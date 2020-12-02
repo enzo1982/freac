@@ -844,6 +844,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Usa Temporal Noise Shaping</entry>
 	  <entry id="33208" string="Maximum bandwidth">Ampiezza massima</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Frequenza AAC massima da usare (in Hz)</entry>
+	  <entry id="33210" string="worse">peggiore</entry>
+	  <entry id="33211" string="better">migliore</entry>
 	</section>
 
 	<section name="Format">

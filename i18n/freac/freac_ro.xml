@@ -539,6 +539,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Utilizare Modelare Curbă Zgomot Temporal</entry>
 	  <entry id="33208" string="Maximum bandwidth">Lăţime de bandă maximă</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Lăţimea de bandă maximă pentru AAC (Hz)</entry>
+	  <entry id="33210" string="worse">mai slabă</entry>
+	  <entry id="33211" string="better">mai bună</entry>
 	</section>
 
 	<section name="Format">

@@ -844,6 +844,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Naudoti laikiną garsų apipavidalinimą</entry>
 	  <entry id="33208" string="Maximum bandwidth">Didžiausias juosto plotis</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Didžiausias naudotinas AAC juostos dažnis (Hz)</entry>
+	  <entry id="33210" string="worse">prastesnė</entry>
+	  <entry id="33211" string="better">geresnė</entry>
 	</section>
 
 	<section name="Format">

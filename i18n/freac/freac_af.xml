@@ -535,6 +535,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Gebruik tydelike geraas vormering</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maks. bandbreedte</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maks. AAC frekwensiebandbreedte vir gebruik (Hz)</entry>
+	  <entry id="33210" string="worse">slegter</entry>
+	  <entry id="33211" string="better">beter</entry>
 	</section>
 
 	<section name="Format">

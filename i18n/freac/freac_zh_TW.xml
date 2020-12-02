@@ -842,6 +842,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">使用時域噪音修整</entry>
 	  <entry id="33208" string="Maximum bandwidth">最大頻寬</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">AAC 頻率使用的最大頻寬 (Hz)</entry>
+	  <entry id="33210" string="worse">較差</entry>
+	  <entry id="33211" string="better">較好</entry>
 	</section>
 
 	<section name="Format">

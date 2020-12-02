@@ -540,6 +540,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Використання ФЧШ</entry>
 	  <entry id="33208" string="Maximum bandwidth">Максимальна пропускна здатність</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Макс. частотна пропускна здатність AAC для викор.</entry>
+	  <entry id="33210" string="worse">гірша</entry>
+	  <entry id="33211" string="better">краща</entry>
 	</section>
 
 	<section name="Format">

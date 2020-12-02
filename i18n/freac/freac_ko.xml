@@ -746,6 +746,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">노이즈제거 사용</entry>
 	  <entry id="33208" string="Maximum bandwidth">최대 대역폭</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">사용가능 최대 AAC주파수 대역폭(Hz)</entry>
+	  <entry id="33210" string="worse">고</entry>
+	  <entry id="33211" string="better">저</entry>
 	</section>
 
 	<section name="Format">

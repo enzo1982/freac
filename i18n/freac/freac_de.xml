@@ -850,6 +850,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">TNS verwenden</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maximale Bandbreite</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maximale AAC-Frequenzbandbreite in Hz</entry>
+	  <entry id="33210" string="worse">schlechter</entry>
+	  <entry id="33211" string="better">besser</entry>
 	</section>
 
 	<section name="Format">

@@ -845,6 +845,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">استفاده از Temporal Noise Shaping</entry>
 	  <entry id="33208" string="Maximum bandwidth">حداکثر پهناي باند</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">حداکثر فرکانس پهناي باند AAC (هرتز)</entry>
+	  <entry id="33210" string="worse">بدتر</entry>
+	  <entry id="33211" string="better">بهتر</entry>
 	</section>
 
 	<section name="Format">

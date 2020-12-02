@@ -531,6 +531,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Χρήση προσωρινού Noise Shaping</entry>
 	  <entry id="33208" string="Maximum bandwidth">Μέγιστο εύρος καναλιού</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Μέγιστη συχνότητα εύρους καναλιού AAC(Hz)</entry>
+	  <entry id="33210" string="worse">χειρότερη</entry>
+	  <entry id="33211" string="better">καλύτερη</entry>
 	</section>
 
 	<section name="Format">

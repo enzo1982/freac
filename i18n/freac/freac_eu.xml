@@ -541,6 +541,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Erabili Zarata Tenporal Moldap.</entry>
 	  <entry id="33208" string="Maximum bandwidth">Gehienezko bandazabalera</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Gehienezko AAC maiztasun bandazabalera (Hz)</entry>
+	  <entry id="33210" string="worse">okerragoa</entry>
+	  <entry id="33211" string="better">hobea</entry>
 	</section>
 
 	<section name="Format">

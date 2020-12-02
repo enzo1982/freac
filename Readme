@@ -155,6 +155,7 @@ History
 			- added an HDCD decoder DSP filter
 			- added catalog number and barcode fields to tag editor
 			- added file type associations to macOS app, so fre:ac is offered for opening audio files
+			- added quality (VBR) setting to FDK-AAC configuration dialog
 			- improved MP3, AAC and Opus encoding performance by up to 30%
 			- improved multi-monitor support on X11 based systems
 

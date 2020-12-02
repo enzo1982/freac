@@ -844,6 +844,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Použít dočasný profil šumu</entry>
 	  <entry id="33208" string="Maximum bandwidth">Max.šířka pásma</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Max. frekvence šířky pásma AAC v Hz</entry>
+	  <entry id="33210" string="worse">horší</entry>
+	  <entry id="33211" string="better">lepší</entry>
 	</section>
 
 	<section name="Format">

@@ -539,6 +539,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Sử dụng định dạng tạp âm tạm thời</entry>
 	  <entry id="33208" string="Maximum bandwidth">Băng thông tối đa</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Tần số băng thông AAC tối đa được sử dụng (Hz)</entry>
+	  <entry id="33210" string="worse">tệ hơn</entry>
+	  <entry id="33211" string="better">tốt hơn</entry>
 	</section>
 
 	<section name="Format">

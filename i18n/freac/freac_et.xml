@@ -537,6 +537,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Kasutada müra aja formeerimist</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maks. sagetuste riba laius</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maks. AAC läbilaskeriba laius (Hz)</entry>
+	  <entry id="33210" string="worse">halvem</entry>
+	  <entry id="33211" string="better">parem</entry>
 	</section>
 
 	<section name="Format">

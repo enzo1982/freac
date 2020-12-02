@@ -847,6 +847,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Користи привр. обл. шума</entry>
 	  <entry id="33208" string="Maximum bandwidth">Максималан проток</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Максимална AAC фреквенција протока (Hz)</entry>
+	  <entry id="33210" string="worse">лошије</entry>
+	  <entry id="33211" string="better">боље</entry>
 	</section>
 
 	<section name="Format">

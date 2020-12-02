@@ -705,7 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">Konwerter częstotliwości próbkowania</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">Redukcja szumów RNNoise</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band - zmiana tempa/tonacji</entry>
-	<entry id="12005" string="Dekoder HDCD"/>
+	<entry id="12005" string="HDCD Decoder">Dekoder HDCD"</entry>
       </section>
 
       <section name="Extensions">
@@ -850,6 +850,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Wykorzystaj kształtowanie</entry>
 	  <entry id="33208" string="Maximum bandwidth">Pasmo maksymalne</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maksymalne pasmo częstotliwości AAC (Hz)</entry>
+	  <entry id="33210" string="worse">gorsza</entry>
+	  <entry id="33211" string="better">lepsza</entry>
 	</section>
 
 	<section name="Format">

@@ -849,6 +849,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Använd brusformning (TNS)</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maximibandbredd</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Största AAC-frekvensbandbredd att använda (Hz)</entry>
+	  <entry id="33210" string="worse">sämre</entry>
+	  <entry id="33211" string="better">bättre</entry>
 	</section>
 
 	<section name="Format">

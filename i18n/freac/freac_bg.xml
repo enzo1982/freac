@@ -847,6 +847,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Използв.вр.огранич.на шума</entry>
 	  <entry id="33208" string="Maximum bandwidth">Макс. широколентова честота</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Макс. използв. широколентова честота на AAC (Hz)</entry>
+	  <entry id="33210" string="worse">лошо</entry>
+	  <entry id="33211" string="better">добро</entry>
 	</section>
 
 	<section name="Format">
