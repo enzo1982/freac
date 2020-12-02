@@ -109,7 +109,7 @@ if [[ $uname == Haiku ]]; then
 fi
 
 # Package versions
-exhale_version=1.0.8
+exhale_version=1.1.0
 faac_version=1.30
 faad2_version=2.10.0
 fdk_aac_version=2.0.1
@@ -282,9 +282,7 @@ if [ ${#packages[0]} -eq 0 ]; then
   echo "Available packages: exhale faac faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack"
   echo
 elif [ "${packages[0]}" == all ]; then
-  if [[ $uname == *MINGW* ]]; then
-    packages=( faac faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack )
-  elif [[ $uname == Darwin ]]; then
+  if [[ $uname == Darwin ]]; then
     packages=( exhale faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 opus speex vorbis wavpack )
   elif [[ $uname == Haiku ]]; then
     packages=( exhale faac faad2 fdk-aac flac lame libogg mpg123 opus speex vorbis )
@@ -296,6 +294,9 @@ fi
 for package in ${packages[@]}; do
   if [ $package == exhale ]; then
     # Build exhale
+    if [[ $uname == *MINGW* ]]; then
+      prepare="sed -i -e \"s/-fPIC//\" src/makefile.base && sed -i -e \"s/= .(CPP)/= gcc/\" src/makefile.base && sed -i -e \"s/-ldl//\" src/app/makefile && sed -i -e \"s/-l.(PRD_NAME).*/& -lstdc++.static/\" src/app/makefile && sed -i -e \"s/printf_s/printf/\" src/app/exhaleApp.cpp"
+    fi
     if [[ $uname == Haiku ]]; then
       make_flags="LIBS="
       install_script="mkdir -p /usr/local/bin && cp bin/exhale /system/non-packaged/bin"
