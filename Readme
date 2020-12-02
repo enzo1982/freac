@@ -10,15 +10,16 @@ ripping and tag editing and converts the following audio formats:
 
 	- MP4/M4A AAC
 		- using the Core Audio AAC encoder	(http://www.apple.com/)
-		- using the FAAC/FAAD2 codec		(http://www.audiocoding.com/)
+		- using the FDK-AAC codec		(http://www.iis.fraunhofer.de/)
+		- using the FAAC/FAAD2 codec		(http://faac.sourceforge.net/)
 
 	- Windows Media Audio				(http://www.microsoft.com/)
 
 	- Xiph Foundation codecs
 		- Opus					(http://www.opus-codec.org/)
-		- Vorbis				(http://www.vorbis.com/)
+		- Vorbis				(http://xiph.org/vorbis/)
 		- Speex					(http://www.speex.org/)
-		- FLAC					(http://flac.sourceforge.net/)
+		- FLAC					(http://xiph.org/flac/)
 
 	- Apple Lossless (ALAC)
 		- using the Core Audio ALAC encoder	(http://www.apple.com/)
@@ -126,7 +127,7 @@ Requirements
 
 			- GCC v4.0+
 
-			- libfaac, libfaad2, libjpeg, libmp3lame, libmp4v2, libmpg123,
+			- libfdk-aac, libfaad2, libjpeg, libmp3lame, libmp4v2, libmpg123,
 			  libogg, libopus, libpng, libspeex, libvorbis
 
 			Linux:
@@ -168,6 +169,7 @@ History
 
 		- Updated codecs
 
+			- switched from FAAC to FDK-AAC for AAC encoding
 			- updated Monkey's Audio to version 5.65
 			- updated FAAD2 to version 2.10.0
 

@@ -10,15 +10,16 @@ von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate
 
 	- MP4/M4A AAC
 		- mit dem Core Audio AAC-Encoder	(http://www.apple.com/)
-		- mit dem FAAC/FAAD2-Codec		(http://www.audiocoding.com/)
+		- mit dem FDK-AAC-Codec			(http://www.iis.fraunhofer.de/)
+		- mit dem FAAC/FAAD2-Codec		(http://faac.sourceforge.net/)
 
 	- Windows Media Audio				(http://www.microsoft.com/)
 
 	- Xiph Foundation Codecs
 		- Opus					(http://www.opus-codec.org/)
-		- Vorbis				(http://www.vorbis.com/)
+		- Vorbis				(http://xiph.org/vorbis/)
 		- Speex					(http://www.speex.org/)
-		- FLAC					(http://flac.sourceforge.net/)
+		- FLAC					(http://xiph.org/flac/)
 
 	- Apple Lossless (ALAC)
 		- mit dem Core Audio ALAC-Encoder	(http://www.apple.com/)
@@ -126,7 +127,7 @@ Voraussetzungen
 
 			- GCC v4.0+
 
-			- libfaac, libfaad2, libjpeg, libmp3lame, libmp4v2, libmpg123,
+			- libfdk-aac, libfaad2, libjpeg, libmp3lame, libmp4v2, libmpg123,
 			  libogg, libopus, libpng, libspeex, libvorbis
 
 			Linux:
@@ -168,6 +169,7 @@ Geschichte
 
 		- Aktualisierte Codecs
 
+			- Wechsel von FAAC zu FDK-AAC für AAC-Kodierung
 			- Monkey's Audio auf Version 5.65 aktualisiert
 			- FAAD2 auf Version 2.10.0 aktualisiert
 
