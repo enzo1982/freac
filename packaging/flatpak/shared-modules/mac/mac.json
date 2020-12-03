@@ -11,13 +11,13 @@
   "sources": [
     {
         "type": "archive",
-        "url": "https://freac.org/patches/MAC_SDK_565.zip",
-        "sha256": "d035456eae1a3e8c58c91a57833e64e59dd43dba980373d007986587bb361fbc",
+        "url": "https://freac.org/patches/MAC_SDK_568.zip",
+        "sha256": "25cecf3ee962647be4401595e1f71449b1e28e8a1ad488e553200c5ced4eb126",
         "strip-components": 0
     },
     {
         "type": "patch",
-        "path": "mac-sdk-5.65-gcc.patch"
+        "path": "mac-sdk-5.68-gcc.patch"
     }
   ]
 }

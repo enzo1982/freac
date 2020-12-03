@@ -170,7 +170,7 @@ History
 		- Updated codecs
 
 			- switched from FAAC to FDK-AAC for AAC encoding
-			- updated Monkey's Audio to version 5.65
+			- updated Monkey's Audio to version 5.68
 			- updated FAAD2 to version 2.10.0
 
 		- New translations
