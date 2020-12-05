@@ -635,9 +635,15 @@ Void freac::cddbSubmitDlg::ChangeDrive()
 	if (cdInfo != NIL)
 	{
 		cddbInfo = cdInfo;
+		cddbInfo.trackOffsets.RemoveAll();
 
-		for (Int i = 0; i < cdInfo.trackTitles.Length(); i++)
+		cddbInfo.discID = CDDB::DiscIDFromMCDI(mcdi);
+		cddbInfo.discLength = mcdi.GetNthEntryOffset(numTocEntries) / 75 + 2;
+
+		for (Int i = 0; i < numTocEntries; i++)
 		{
+			cddbInfo.trackOffsets.Add(mcdi.GetNthEntryOffset(i) + 150, i);
+
 			Int	 handle = list_tracks->AddEntry(NIL)->GetHandle();
 
 			if (mcdi.GetNthEntryType(i) == ENTRY_AUDIO && mcdi.GetNthEntryTrackNumber(i) == i + 1)
