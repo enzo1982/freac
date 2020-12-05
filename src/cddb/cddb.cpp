@@ -136,7 +136,12 @@ Bool freac::CDDB::UpdateEntry(CDDBInfo &cddbInfo)
 
 	Int	 query = Query(cddbInfo.GetQueryString());
 
-	if (query == QUERY_RESULT_ERROR) return False;
+	if (query == QUERY_RESULT_ERROR)
+	{
+		CloseConnection();
+
+		return False;
+	}
 
 	if (cddbInfo.revision == 0)
 	{
