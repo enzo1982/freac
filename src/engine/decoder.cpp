@@ -36,22 +36,23 @@ freac::Decoder::~Decoder()
 	Destroy();
 }
 
-Bool freac::Decoder::Create(const String &nFileName, const Track &track)
+Bool freac::Decoder::Create(const String &streamURI, const Track &track)
 {
 	static DriverZero	 zero_in;
 
 	Registry	&boca = Registry::Get();
+	File		 file(streamURI);
 
 	format = track.GetFormat();
 
-	if (nFileName.StartsWith("device://")) stream = new InStream(STREAM_DRIVER, &zero_in);
-	else				       stream = new InStream(STREAM_FILE, nFileName, IS_READ);
+	if (streamURI.StartsWith("device://")) stream = new InStream(STREAM_DRIVER, &zero_in);
+	else				       stream = new InStream(STREAM_FILE, streamURI, IS_READ);
 
 	stream->SetPackageSize((track.length >= 0 && track.lossless ? 32768 : 4096) * format.channels * (format.bits / 8));
 
 	if (stream->GetLastError() != IO_ERROR_OK)
 	{
-		SetErrorInfo(True, "Unable to access input file: %1\n\nFile: %1\nPath: %2", File(nFileName).GetFileName(), File(nFileName).GetFilePath());
+		SetErrorInfo(True, "Unable to access input file: %1\n\nFile: %1\nPath: %2", file.GetFileName(), file.GetFilePath());
 
 		delete stream;
 
@@ -62,7 +63,7 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 
 	/* Create decoder component.
 	 */
-	if (track.decoderID != NIL && track.fileName == nFileName)
+	if (track.decoderID != NIL && track.fileName == streamURI)
 	{
 		decoder = (DecoderComponent *) boca.CreateComponentByID(track.decoderID);
 
@@ -70,12 +71,12 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 	}
 	else
 	{
-		decoder = boca.CreateDecoderForStream(nFileName, configuration);
+		decoder = boca.CreateDecoderForStream(streamURI, configuration);
 	}
 
 	if (decoder == NIL)
 	{
-		SetErrorInfo(True, "Could not create decoder component for input file: %1\n\nFile: %1\nPath: %2", File(nFileName).GetFileName(), File(nFileName).GetFilePath());
+		SetErrorInfo(True, "Could not create decoder component for input file: %1\n\nFile: %1\nPath: %2", file.GetFileName(), file.GetFilePath());
 
 		delete stream;
 
@@ -92,14 +93,14 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 	 */
 	Track	 trackInfo = track;
 
-	trackInfo.fileName = nFileName;
+	trackInfo.fileName = streamURI;
 
 	decoder->SetConfiguration(configuration);
 	decoder->SetAudioTrackInfo(trackInfo);
 
 	if (stream->SetFilter(decoder) == False)
 	{
-		SetErrorInfo(True, "Could not set up decoder for input file: %1\n\nFile: %1\nPath: %2\n\nError: %3", File(nFileName).GetFileName(), File(nFileName).GetFilePath(), decoder->GetErrorString());
+		SetErrorInfo(True, "Could not set up decoder for input file: %1\n\nFile: %1\nPath: %2\n\nError: %3", file.GetFileName(), file.GetFilePath(), decoder->GetErrorString());
 
 		UnlockComponent(decoder);
 
@@ -128,7 +129,7 @@ Bool freac::Decoder::Create(const String &nFileName, const Track &track)
 		}
 	}
 
-	fileName     = nFileName;
+	fileName     = streamURI;
 	sampleOffset = track.sampleOffset;
 
 	return True;
