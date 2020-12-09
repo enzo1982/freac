@@ -131,11 +131,15 @@ Int freac::Job::Schedule()
 
 Int freac::Job::RunPrecheck()
 {
-	scheduled.Remove(GetHandle());
+	if (Precheck() != Success())
+	{
+		scheduled.Remove(GetHandle());
 
-	if (Precheck() != Success()) return Error();
+		return Error();
+	}
 
 	planned.Add(this, GetHandle());
+	scheduled.Remove(GetHandle());
 
 	/* Notify about planned job.
 	 */
@@ -154,8 +158,8 @@ Int freac::Job::RunPrecheck()
 
 Int freac::Job::Run()
 {
-	planned.Remove(GetHandle());
 	running.Add(this, GetHandle());
+	planned.Remove(GetHandle());
 
 	/* Notify about running job.
 	 */

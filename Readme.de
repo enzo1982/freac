@@ -165,6 +165,8 @@ Geschichte
 			- Schreiben von falschen Längenangaben in sehr lange Opus- und Speex-Dateien behoben (länger als 12 ½ Stunden bei 48 kHz)
 			- Problem mit für einige Anwendungen unsichtbare MP4-Kapitel bei Verwendung von Nero AAC behoben
 			- Probleme beim Senden von CDDB-Einträgen für neue CDs (ohne bestehende Einträge) behoben
+			- Probleme beim Umgang mit langen Pfad-/Dateinamen unter Windows behoben
+			- Seltene zufällige Abbrüche von freaccmd beim Verarbeiten von Dateien behoben
 			- Falsche Farben in der Benutzeroberfläche unter einigen Linux-Distributionen behoben
 
 		- Aktualisierte Codecs
