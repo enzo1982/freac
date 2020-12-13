@@ -107,7 +107,7 @@ script:
   - |
     # Build AppImage
     if [ "$AppImageBuild" = True ]; then
-      ./travis/build-appimage
+      ./packaging/appimage/tools/build-appimage
     fi
 
 branches:

@@ -191,4 +191,4 @@ else
 fi
 
 # Upload AppImage to GitHub
-bash ./travis/upload-appimage freac*.AppImage
+bash ./packaging/appimage/tools/upload-appimage freac*.AppImage
