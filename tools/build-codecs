@@ -543,6 +543,8 @@ for package in ${packages[@]}; do
     elif [[ $uname == Darwin ]]; then
       prepare="sed -i -e \"s/-Wl,-Bsymbolic//\" Makefile.in && sed -i -e \"s/ -Wl,-soname=.*//\" Makefile.in && sed -i -e \"s/:= .so/:= .dylib/\" Makefile.in"
       configure_exports="$configure_exports SNDFILE_CFLAGS=\" \" SNDFILE_LIBS=\"-lsndfile\""
+    else
+      configure_exports="$configure_exports SNDFILE_CFLAGS=\" \" SNDFILE_LIBS=\"-lsndfile\""
     fi
     build $rubberband_location lib/librubberband.$sharedext RubberBand.$sharedext
 

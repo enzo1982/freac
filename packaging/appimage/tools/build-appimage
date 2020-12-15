@@ -66,7 +66,12 @@ cd enzo1982/boca
 CONFIG="release,bundledlibexpat,bundledliburiparser,bundledzlib"
 
 make config=$CONFIG -j$jobs
-sudo make config=$CONFIG install
+
+if [ "$AppImageArch" = i686 ]; then
+  sudo make BUILD_X86=True config=$CONFIG install
+else
+  sudo make config=$CONFIG install
+fi
 
 if [ "$AppImageArch" = x86_64 ]; then
   # Build 32 bit Core Audio connector
@@ -161,10 +166,11 @@ install -Dm 0755 /usr/local/bin/freaccmd appdir/freaccmd
 install -Dm 0755 /usr/local/bin/smooth-translator appdir/translator
 install -Dm 0755 packaging/appimage/AppRun appdir/AppRun
 
-mkdir -p appdir/usr/share
+mkdir -p appdir/usr/share/applications
+mkdir -p appdir/usr/share/metainfo
 
-cp -r /usr/local/share/applications appdir/usr/share
-cp -r /usr/local/share/metainfo appdir/usr/share
+cp /usr/local/share/applications/org.freac.freac.desktop appdir/usr/share/applications
+cp /usr/local/share/metainfo/org.freac.freac.appdata.xml appdir/usr/share/metainfo
 ln -s usr/share/applications/org.freac.freac.desktop appdir/org.freac.freac.desktop
 cp /usr/local/share/icons/hicolor/128x128/apps/org.freac.freac.png appdir
 
@@ -173,8 +179,14 @@ cp /usr/local/lib/libcdio.so.19 appdir
 cp /usr/local/lib/libcdio_cdda.so.2 appdir
 cp /usr/local/lib/libcdio_paranoia.so.2 appdir
 cp /usr/local/lib/libcurl.so.4 appdir
-cp -P /lib/$HOST/libcrypto.so.1* appdir
-cp -P /lib/$HOST/libssl.so.1* appdir
+
+if [ -f /lib//$HOST/libssl.so ]; then
+  cp -P /lib/$HOST/libcrypto.so.1* appdir
+  cp -P /lib/$HOST/libssl.so.1* appdir
+else
+  cp -P /usr/lib/$HOST/libcrypto.so.1* appdir
+  cp -P /usr/lib/$HOST/libssl.so.1* appdir
+fi
 
 strip --strip-all appdir/lib*.so*
 
