@@ -180,7 +180,7 @@ Error freac::JobAddTracks::Perform()
 		Bool	 autoRip	 = configuration->GetIntValue(Config::CategoryRipperID, Config::RipperAutoRipID, Config::RipperAutoRipDefault);
 		String	 filenamePattern = configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
 
-		if (autoCDRead && autoRip && (cdInfo != NIL || filenamePattern.Contains("<currenttime>"))) Converter().Convert(tracks, autoRip);
+		if (autoCDRead && autoRip && (tracks.GetLast().GetInfo().title != NIL || filenamePattern.Contains("<currenttime>"))) Converter().Convert(tracks, autoRip);
 	}
 
 	urls.RemoveAll();
