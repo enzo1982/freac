@@ -173,6 +173,7 @@ History
 
 			- switched from FAAC to FDK-AAC for AAC encoding
 			- updated Monkey's Audio to version 5.68
+			- updated mpg123 to version 1.26.4
 			- updated FAAD2 to version 2.10.0
 
 		- New and updated translations
