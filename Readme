@@ -159,6 +159,7 @@ History
 			- added quality (VBR) setting to FDK-AAC configuration dialog
 			- improved MP3, AAC and Opus encoding performance by up to 30%
 			- improved multi-monitor support on X11 based systems
+			- discs of multi-disc albums are now shown separately in tag editor album mode
 
 		- Bug fixes
 

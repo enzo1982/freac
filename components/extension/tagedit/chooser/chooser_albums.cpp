@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -119,6 +119,7 @@ Void BoCA::ChooserAlbums::OnChangeLanguageSettings()
 
 	list_albums->AddTab(i18n->TranslateString("Artist"), 120);
 	list_albums->AddTab(i18n->TranslateString("Album"));
+	list_albums->AddTab(i18n->TranslateString("Disc"), 50);
 
 	/* Show all widgets again.
 	 */
@@ -213,8 +214,11 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 
 		/* Update joblist entry.
 		 */
-		String	 jlEntry = String(info.artist != NIL ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter)
-				  .Append(info.album  != NIL ? info.album  : I18n::Get()->TranslateString("unknown album")).Append(ListEntry::tabDelimiter);
+		I18n	*i18n	 = I18n::Get();
+		String	 jlEntry = String(info.artist != NIL ? info.artist : i18n->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter)
+				  .Append(info.album  != NIL ? info.album  : i18n->TranslateString("unknown album")).Append(ListEntry::tabDelimiter);
+
+		if (info.disc > 0) jlEntry.Append((info.disc < 10 ? String("0").Append(String::FromInt(info.disc)) : String::FromInt(info.disc)).Append(info.numDiscs > 0 ? String("/").Append(info.numDiscs < 10 ? String("0").Append(String::FromInt(info.numDiscs)) : String::FromInt(info.numDiscs)) : String()));
 
 		list_albums->GetNthEntry(i)->SetText(jlEntry);
 
@@ -425,7 +429,7 @@ Bool BoCA::ChooserAlbums::IsAlbumIdentical(const Track &track1, const Track &tra
 	if (info1.HasOtherInfo(INFO_ALBUMARTIST)) artist1 = info1.GetOtherInfo(INFO_ALBUMARTIST);
 	if (info2.HasOtherInfo(INFO_ALBUMARTIST)) artist2 = info2.GetOtherInfo(INFO_ALBUMARTIST);
 
-	if ((artist1 == NIL || artist2 == NIL || artist1 == artist2) && info1.album == info2.album) return True;
+	if ((artist1 == NIL || artist2 == NIL || artist1 == artist2) && info1.album == info2.album && info1.disc == info2.disc) return True;
 
 	return False;
 }
@@ -490,9 +494,12 @@ Void BoCA::ChooserAlbums::AddToAlbumList(const Track &track)
 
 	/* Add to album list.
 	 */
+	I18n		*i18n	 = I18n::Get();
 	const Info	&info	 = album.GetInfo();
-	String		 jlEntry = String(info.artist != NIL ? info.artist : I18n::Get()->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter)
-				  .Append(info.album  != NIL ? info.album  : I18n::Get()->TranslateString("unknown album")).Append(ListEntry::tabDelimiter);
+	String		 jlEntry = String(info.artist != NIL ? info.artist : i18n->TranslateString("unknown artist")).Append(ListEntry::tabDelimiter)
+				  .Append(info.album  != NIL ? info.album  : i18n->TranslateString("unknown album")).Append(ListEntry::tabDelimiter);
+
+	if (info.disc > 0) jlEntry.Append((info.disc < 10 ? String("0").Append(String::FromInt(info.disc)) : String::FromInt(info.disc)).Append(info.numDiscs > 0 ? String("/").Append(info.numDiscs < 10 ? String("0").Append(String::FromInt(info.numDiscs)) : String::FromInt(info.numDiscs)) : String()));
 
 	albums.Add(album, list_albums->AddEntry(jlEntry)->GetHandle());
 }

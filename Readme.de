@@ -159,6 +159,7 @@ Geschichte
 			- Qualitätseinstellung (VBR) zum FDK-AAC-Konfigurationsdialog hinzugefügt
 			- Verbesserung der Geschwindigkeit beim Kodieren von MP3, AAC und Opus um bis zu 30%
 			- Unterstützung für mehrere Bildschirme unter X11-basierten Systemen verbessert
+			- CDs von Alben mit mehreren CDs werden im Album-Modus des Tag-Editors jetzt separat angezeigt
 
 		- Bug fixes
 
