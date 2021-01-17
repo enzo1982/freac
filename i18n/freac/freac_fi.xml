@@ -499,9 +499,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Yhteinen Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Pakota yhteinen Stereo</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR:n bittivirta-alue</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Aseta pienin VBR-bittivirta</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Aseta suurin VBR-bittivirta</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR:n/ABR:n bittivirta-alue</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Aseta pienin VBR-/ABR-bittivirta</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Aseta suurin VBR-/ABR-bittivirta</entry>
 	</section>
 
 	<section name="Expert">

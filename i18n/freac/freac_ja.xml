@@ -795,9 +795,9 @@
 	  <entry id="32208" string="Stereo">シンプル ステレオ</entry>
 	  <entry id="32209" string="Joint Stereo">ジョイント ステレオ</entry>
 	  <entry id="32210" string="Force Joint Stereo">強制 M/S ステレオ</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR ビットレート範囲</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">VBR 最小ビットレート</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">VBR 最大ビットレート</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR ビットレート範囲</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">VBR/ABR 最小ビットレート</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">VBR/ABR 最大ビットレート</entry>
 	</section>
 
 	<section name="Expert">

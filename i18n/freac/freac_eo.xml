@@ -490,9 +490,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Stereokunigi</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forci la stereokunigo</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR-bitkvanta regiono</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Minimuma VBR-bitkvanto</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Maksimuma VBR-bitkvanto</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR-/ABR-bitkvanta regiono</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Minimuma VBR-/ABR-bitkvanto</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Maksimuma VBR-/ABR-bitkvanto</entry>
 	</section>
 
 	<section name="Expert">

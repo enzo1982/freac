@@ -497,9 +497,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Birleşik Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Zorla Birleşik Stereo yap</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR bit oranı menzili</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Minimum VBR bit oranı</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Maksimum VBR bit oranı</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR bit oranı menzili</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Minimum VBR/ABR bit oranı</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Maksimum VBR/ABR bit oranı</entry>
 	</section>
 
 	<section name="Expert">

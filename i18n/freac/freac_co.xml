@@ -802,9 +802,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Furzà Joint Stereo</entry>
-	  <entry id="32211" string="VBR bitrate range">Stesa di bitrate VBR</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Definisce u bitrate VBR minimu</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Definisce u bitrate VBR massimu</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">Stesa di bitrate VBR/ABR</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Definisce u bitrate VBR/ABR minimu</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Definisce u bitrate VBR/ABR massimu</entry>
 	</section>
 
 	<section name="Expert">

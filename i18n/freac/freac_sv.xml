@@ -802,9 +802,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Stereosammanslagning</entry>
 	  <entry id="32210" string="Force Joint Stereo">Tvinga stereosamm.sl.</entry>
-	  <entry id="32211" string="VBR bitrate range">Bithastighetsomfång för VBR</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Lägsta VBR-bithastighet</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Högsta VBR-bithastighet</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">Bithastighetsomfång för VBR/ABR</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Lägsta VBR-/ABR-bithastighet</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Högsta VBR-/ABR-bithastighet</entry>
 	</section>
 
 	<section name="Expert">

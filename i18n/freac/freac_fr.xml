@@ -795,9 +795,9 @@
 	  <entry id="32208" string="Stereo">Stéréo</entry>
 	  <entry id="32209" string="Joint Stereo">Stéréo combinée</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forcer stéréo comb.</entry>
-	  <entry id="32211" string="VBR bitrate range">Plage de débit binaire VBR</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Débit binaire VBR minimum</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Débit binaire VBR maximum</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">Plage de débit binaire VBR/ABR</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Débit binaire VBR/ABR minimum</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Débit binaire VBR/ABR maximum</entry>
 	</section>
 
 	<section name="Expert">

@@ -797,9 +797,9 @@
 	  <entry id="32208" string="Stereo">立体声</entry>
 	  <entry id="32209" string="Joint Stereo">混合立体声</entry>
 	  <entry id="32210" string="Force Joint Stereo">强制混合立体声</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR 比特率范围</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">设置最小 VBR 比特率</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">设置最大 VBR 比特率</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR 比特率范围</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">设置最小 VBR/ABR 比特率</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">设置最大 VBR/ABR 比特率</entry>
 	</section>
 
 	<section name="Expert">

@@ -795,9 +795,9 @@
 	  <entry id="32208" string="Stereo">立體聲</entry>
 	  <entry id="32209" string="Joint Stereo">聯合立體聲</entry>
 	  <entry id="32210" string="Force Joint Stereo">強制聯合立體聲</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR 位元率範圍</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">設定最小 VBR 位元率</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">設定最大 VBR 位元率</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR 位元率範圍</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">設定最小 VBR/ABR 位元率</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">設定最大 VBR/ABR 位元率</entry>
 	</section>
 
 	<section name="Expert">

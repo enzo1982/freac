@@ -489,9 +489,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Εξαναγκασμός Joint Stereo</entry>
-	  <entry id="32211" string="VBR bitrate range">Εύρος ρυθμού μετάδοσης VBR</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Ελάχιστος ρυθμός μετάδοσης VBR</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Μέγιστος ρυθμός μετάδοσης VBR</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">Εύρος ρυθμού μετάδοσης VBR/ABR</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Ελάχιστος ρυθμός μετάδοσης VBR/ABR</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Μέγιστος ρυθμός μετάδοσης VBR/ABR</entry>
 	</section>
 
 	<section name="Expert">

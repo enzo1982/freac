@@ -499,9 +499,9 @@
 	  <entry id="32208" string="Stereo">Estereoa</entry>
 	  <entry id="32209" string="Joint Stereo">Estereoa Batzea</entry>
 	  <entry id="32210" string="Force Joint Stereo">Behartu Batzea</entry>
-	  <entry id="32211" string="VBR bitrate range">BNA bitneurri maila</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Ezarri gutx. BNA bitneurria</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Ezarri geh. BNA bitneurria</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">BNA/BBBN bitneurri maila</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Ezarri gutx. BNA/BBBN bitneurria</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Ezarri geh. BNA/BBBN bitneurria</entry>
 	</section>
 
 	<section name="Expert">

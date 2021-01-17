@@ -797,9 +797,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Vynutit Joint Stereo</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR rozsah datového toku</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Minimální VBR datový tok</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Maximální VBR datový tok</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR rozsah datového toku</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Minimální VBR/ABR datový tok</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Maximální VBR/ABR datový tok</entry>
 	</section>
 
 	<section name="Expert">

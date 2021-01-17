@@ -800,9 +800,9 @@
 	  <entry id="32208" string="Stereo">स्टीरियो</entry>
 	  <entry id="32209" string="Joint Stereo">जॉइंट स्टीरियो</entry>
 	  <entry id="32210" string="Force Joint Stereo">फाॅर्स जॉइंट स्टीरियो</entry>
-	  <entry id="32211" string="VBR bitrate range">वीबीआर बिट्रेट रेंज</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">सेट मिनिमम वीबीआर बिट्रेट</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">सेट मैक्सिमम वीबीआर बिट्रेट</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">वीबीआर / ऐबीआर बिट्रेट रेंज</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">सेट मिनिमम वीबीआर / ऐबीआर बिट्रेट</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">सेट मैक्सिमम वीबीआर / ऐबीआर बिट्रेट</entry>
 	</section>
 
 	<section name="Expert">

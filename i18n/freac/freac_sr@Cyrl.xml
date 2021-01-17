@@ -800,9 +800,9 @@
 	  <entry id="32208" string="Stereo">Стерео</entry>
 	  <entry id="32209" string="Joint Stereo">&quot;Збијени&quot; стерео</entry>
 	  <entry id="32210" string="Force Joint Stereo">Форсирај &quot;збијени&quot; стерео</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR опсег стопе битове</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Подеси мин. VBR стопу</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Подеси макс. VBR стопу</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR опсег стопе битове</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Подеси мин. VBR/ABR стопу</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Подеси макс. VBR/ABR стопу</entry>
 	</section>
 
 	<section name="Expert">

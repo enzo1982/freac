@@ -540,9 +540,9 @@
 	  <entry id="32208" string="Stereo">Estéreo</entry>
 	  <entry id="32209" string="Joint Stereo">Empalme estéreo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forzar empalme estéreo</entry>
-	  <entry id="32211" string="VBR bitrate range">Rango de tasa de bits en VBR</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Configurar tasa de bits mínima en VBR</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Configurar tasa de bits máxima en VBR</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">Rango de tasa de bits en VBR/ABR</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Configurar tasa de bits mínima en VBR/ABR</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Configurar tasa de bits máxima en VBR/ABR</entry>
 	</section>
 
 	<section name="Expert">

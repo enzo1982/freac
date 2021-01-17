@@ -802,9 +802,9 @@
 	  <entry id="32208" string="Stereo">Стерео</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Принудительно</entry>
-	  <entry id="32211" string="VBR bitrate range">диапазон VBR битрейта</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Минимальный VBR битрейт</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Максимальный VBR битрейт</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">диапазон VBR/ABR битрейта</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Минимальный VBR/ABR битрейт</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Максимальный VBR/ABR битрейт</entry>
 	</section>
 
 	<section name="Expert">

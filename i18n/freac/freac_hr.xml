@@ -795,9 +795,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Spojeni stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Obavezno spojeni stereo</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR bitrate raspon</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Postavi minimalni VBR bitrate</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Postavi maksimalni VBR bitrate</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR bitrate raspon</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Postavi minimalni VBR/ABR bitrate</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Postavi maksimalni VBR/ABR bitrate</entry>
 	</section>
 
 	<section name="Expert">

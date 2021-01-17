@@ -800,9 +800,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">&quot;Zbijeni&quot; stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forsiraj &quot;zbijeni&quot; stereo</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR opseg stope bitove</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Podesi min. VBR stopu</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Podesi maks. VBR stopu</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR opseg stope bitove</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Podesi min. VBR/ABR stopu</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Podesi maks. VBR/ABR stopu</entry>
 	</section>
 
 	<section name="Expert">
