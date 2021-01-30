@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -1128,8 +1128,8 @@ String freac::JobList::GetEntryText(const Track &track)
 		{
 			static wchar_t	 sign[2] = { 0x2248, 0 };
 
-			if	(track.length	    > 0) jlEntry.Append(i18n->TranslateString("%1 kbps", "Technical").Replace("%1", String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.length / format.rate) * 8.0 / 1000.0))));
-			else if (track.approxLength > 0) jlEntry.Append(sign).Append(" ").Append(i18n->TranslateString("%1 kbps", "Technical").Replace("%1", String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.approxLength / format.rate) * 8.0 / 1000.0))));
+			if	(track.length	    > 0) jlEntry.Append(i18n->TranslateString("%1 kbps", "Technical").Replace("%1", String::FromInt((Int) Math::Round(Float(track.fileSize) / (Float(track.length) / format.rate) * 8.0 / 1000.0))));
+			else if (track.approxLength > 0) jlEntry.Append(sign).Append(" ").Append(i18n->TranslateString("%1 kbps", "Technical").Replace("%1", String::FromInt((Int) Math::Round(Float(track.fileSize) / (Float(track.approxLength) / format.rate) * 8.0 / 1000.0))));
 		}
 
 		else if (field == "<samplerate>")  jlEntry.Append(i18n->TranslateString("%1 Hz", "Technical").Replace("%1", S::I18n::Number::GetLocalizedNumberString(format.rate)));

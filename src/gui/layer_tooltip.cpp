@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -121,8 +121,8 @@ String freac::LayerTooltip::GetTrackInfo(const Track &track)
 	{
 		static wchar_t	 sign[2] = { 0x2248, 0 };
 
-		if	(track.length	    > 0) tooltip.Append("\n").Append(i18n->AddColon(i18n->TranslateString("Bitrate"))).Append(" ").Append(i18n->TranslateString("%1 kbps", "Technical").Replace("%1", String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.length / format.rate) * 8.0 / 1000.0))));
-		else if (track.approxLength > 0) tooltip.Append("\n").Append(i18n->AddColon(i18n->TranslateString("Bitrate"))).Append(" ").Append(sign).Append(" ").Append(i18n->TranslateString("%1 kbps", "Technical").Replace("%1", String::FromInt((Int) Math::Round(((Float) track.fileSize) / (track.approxLength / format.rate) * 8.0 / 1000.0))));
+		if	(track.length	    > 0) tooltip.Append("\n").Append(i18n->AddColon(i18n->TranslateString("Bitrate"))).Append(" ").Append(i18n->TranslateString("%1 kbps", "Technical").Replace("%1", String::FromInt((Int) Math::Round(Float(track.fileSize) / (Float(track.length) / format.rate) * 8.0 / 1000.0))));
+		else if (track.approxLength > 0) tooltip.Append("\n").Append(i18n->AddColon(i18n->TranslateString("Bitrate"))).Append(" ").Append(sign).Append(" ").Append(i18n->TranslateString("%1 kbps", "Technical").Replace("%1", String::FromInt((Int) Math::Round(Float(track.fileSize) / (Float(track.approxLength) / format.rate) * 8.0 / 1000.0))));
 	}
 
 	return tooltip;
