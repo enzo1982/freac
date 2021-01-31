@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -708,17 +708,18 @@ Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 
 	/* Update title info area.
 	 */
-	info_edit_title->SetX(clientSize.cx - 170 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - info_edit_year->GetWidth() - info_edit_track->GetWidth());
-	info_edit_title->SetWidth(163 + info_text_genre->GetUnscaledTextWidth() + info_text_year->GetUnscaledTextWidth() + info_edit_year->GetWidth() + info_edit_track->GetWidth());
+	info_edit_title->SetX(Math::Min(clientSize.cx / 2 + 10 + (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()), clientSize.cx - 170 - info_text_genre->GetUnscaledTextWidth() - info_text_year->GetUnscaledTextWidth() - info_edit_year->GetWidth() - info_edit_track->GetWidth()));
+	info_edit_title->SetWidth(clientSize.cx - info_edit_title->GetX() - 7);
 	info_edit_track->SetX(info_edit_title->GetX());
 	info_text_year->SetX(info_edit_track->GetX() + info_edit_track->GetWidth() + 7);
 	info_edit_year->SetX(info_text_year->GetX() + info_text_year->GetUnscaledTextWidth() + 7);
 	info_text_genre->SetX(info_edit_year->GetX() + info_edit_year->GetWidth() + 7);
 	info_text_title->SetX(info_edit_title->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - 7);
 	info_text_track->SetX(info_text_title->GetX());
-	info_edit_artist->SetWidth(clientSize.cx - 21 - info_edit_artist->GetX() - (Int) Math::Max(info_text_title->GetUnscaledTextWidth(), info_text_track->GetUnscaledTextWidth()) - info_edit_title->GetWidth());
+	info_edit_artist->SetWidth(info_text_title->GetX() - info_edit_artist->GetX() - 7);
 	info_edit_album->SetWidth(info_edit_artist->GetWidth());
-	info_edit_genre->SetX(clientSize.cx - 142);
+	info_edit_genre->SetX(info_text_genre->GetX() + info_text_genre->GetWidth() + 7);
+	info_edit_genre->SetWidth(clientSize.cx - info_edit_genre->GetX() - 7);
 
 	htsp_edit_title->SetWidth(info_edit_title->GetWidth());
 	htsp_edit_artist->SetWidth(info_edit_artist->GetWidth());
@@ -729,16 +730,16 @@ Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 	Int	 maxTextSize = (Int) Math::Max(Math::Max(txt_progress->GetUnscaledTextWidth(), txt_outdir->GetUnscaledTextWidth()), Math::Max(txt_filename->GetUnscaledTextWidth(), txt_format->GetUnscaledTextWidth()));
 	Int	 maxTextSize2 = (Int) Math::Max(txt_filters->GetUnscaledTextWidth(), txt_encoder->GetUnscaledTextWidth());
 
-	txt_filters->SetX(clientSize.cx / 2 + maxTextSize2 - txt_filters->GetUnscaledTextWidth() + 7);
-	edb_filters->SetX(clientSize.cx / 2 + maxTextSize2 + 14);
+	txt_filters->SetX(clientSize.cx / 2 + maxTextSize2 - txt_filters->GetUnscaledTextWidth() + 3);
+	edb_filters->SetX(clientSize.cx / 2 + maxTextSize2 + 10);
 
-	txt_encoder->SetX(clientSize.cx / 2 + maxTextSize2 - txt_encoder->GetUnscaledTextWidth() + 7);
-	combo_encoder->SetX(clientSize.cx / 2 + maxTextSize2 + 14);
+	txt_encoder->SetX(clientSize.cx / 2 + maxTextSize2 - txt_encoder->GetUnscaledTextWidth() + 3);
+	combo_encoder->SetX(clientSize.cx / 2 + maxTextSize2 + 10);
 
-	edb_filename->SetWidth(clientSize.cx / 2 - 10 - maxTextSize - btn_skip->GetWidth());
-	edb_format->SetWidth(clientSize.cx / 2 - 14 - maxTextSize);
-	edb_filters->SetWidth(Math::Ceil(Float(clientSize.cx) / 2.0) - 44 - maxTextSize2);
-	combo_encoder->SetWidth(Math::Ceil(Float(clientSize.cx) / 2.0) - 44 - maxTextSize2);
+	edb_filename->SetWidth(clientSize.cx / 2 - 14 - maxTextSize - btn_skip->GetWidth());
+	edb_format->SetWidth(clientSize.cx / 2 - 18 - maxTextSize);
+	edb_filters->SetWidth(clientSize.cx - edb_filters->GetX() - btn_configure_dsp->GetWidth() - 3);
+	combo_encoder->SetWidth(edb_filters->GetWidth());
 	edb_outdir->SetWidth(clientSize.cx - 33 - maxTextSize - btn_browse->GetWidth() - btn_open->GetWidth());
 
 	btn_skip->SetX(edb_filename->GetX() + edb_filename->GetWidth());
@@ -935,8 +936,8 @@ Void freac::LayerJoblist::OnChangeLanguageSettings()
 	info_background->SetWidth(info_checkbox->GetUnscaledTextWidth() + 24);
 	info_background->Show();
 
-	info_edit_artist->SetX(info_text_artist->GetX() + (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) + 8);
-	info_edit_album->SetX(info_text_album->GetX() + (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) + 8);
+	info_edit_artist->SetX(info_text_artist->GetX() + (Int) Math::Max(info_text_artist->GetUnscaledTextWidth(), info_text_album->GetUnscaledTextWidth()) + 7);
+	info_edit_album->SetX(info_edit_artist->GetX());
 
 	/* OnChangeSize will correct sizes of any other widgets.
 	 */
