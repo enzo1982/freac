@@ -160,6 +160,7 @@ Geschichte
 			- Verbesserung der Geschwindigkeit beim Kodieren von MP3, AAC und Opus um bis zu 30%
 			- Unterstützung für mehrere Bildschirme unter X11-basierten Systemen verbessert
 			- CDs von Alben mit mehreren CDs werden im Album-Modus des Tag-Editors jetzt separat angezeigt
+			- Bei Bearbeitungen im Album-Modus des Tag-Editors werden nur noch geänderte Felder aktualisiert
 			- Unterstützung für Replay-Gain-Werte in MP4- und WMA-Metadaten hinzugefügt
 
 		- Bug fixes

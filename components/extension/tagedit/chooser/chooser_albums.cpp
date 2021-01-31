@@ -222,6 +222,22 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 
 		list_albums->GetNthEntry(i)->SetText(jlEntry);
 
+		/* Check for changed album art.
+		 */
+		Bool	 picturesChanged = (track.pictures.Length() != origAlbum.pictures.Length());
+
+		if (!picturesChanged)
+		{
+			for (Int i = 0; i < track.pictures.Length(); i++)
+			{
+				if (track.pictures.GetNth(i) == origAlbum.pictures.GetNth(i)) continue;
+
+				picturesChanged = True;
+
+				break;
+			}
+		}
+
 		/* Modify tracks and emit onComponentModifyTrack for each affected track.
 		 */
 		dontUpdateAlbumList = True;
@@ -236,68 +252,55 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 
 			/* Update basic info.
 			 */
-			if (mTrackInfo.artist == origInfo.artist) mTrackInfo.artist = info.artist;
-			else					  mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, info.artist);
+			if (info.artist != origInfo.artist)
+			{
+				if (mTrackInfo.artist == mTrackInfo.GetOtherInfo(INFO_ALBUMARTIST)) mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, NIL);
 
-			if (mTrackInfo.artist == mTrackInfo.GetOtherInfo(INFO_ALBUMARTIST)) mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, NIL);
+				if (mTrackInfo.artist == origInfo.artist) mTrackInfo.artist = info.artist;
+				else					  mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, info.artist);
 
-			mTrackInfo.album	= info.album;
-			mTrackInfo.genre	= info.genre;
-			mTrackInfo.year		= info.year;
-			mTrackInfo.comment	= info.comment;
+				if (mTrackInfo.artist == mTrackInfo.GetOtherInfo(INFO_ALBUMARTIST)) mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, NIL);
+			}
 
-			mTrackInfo.numTracks	= info.numTracks;
+			if (info.album	   != origInfo.album)	  mTrackInfo.album     = info.album;
+			if (info.genre	   != origInfo.genre)	  mTrackInfo.genre     = info.genre;
+			if (info.year	   != origInfo.year)	  mTrackInfo.year      = info.year;
+			if (info.comment   != origInfo.comment)	  mTrackInfo.comment   = info.comment;
 
-			mTrackInfo.disc		= info.disc;
-			mTrackInfo.numDiscs	= info.numDiscs;
+			if (info.numTracks != origInfo.numTracks) mTrackInfo.numTracks = info.numTracks;
 
-			mTrackInfo.label	= info.label;
+			if (info.disc	   != origInfo.disc)	  mTrackInfo.disc      = info.disc;
+			if (info.numDiscs  != origInfo.numDiscs)  mTrackInfo.numDiscs  = info.numDiscs;
+
+			if (info.label	   != origInfo.label)	  mTrackInfo.label     = info.label;
 
 			/* Update other text info.
 			 */
-			foreach (const String &pair, mTrackInfo.other)
+			Int		 index  = 0;
+			static String	 keys[] = { INFO_BAND, INFO_CONDUCTOR, INFO_COMPOSER, INFO_LYRICIST, INFO_REMIXER,
+						    INFO_CATALOGNUMBER, INFO_BARCODE, INFO_ORIG_ARTIST, INFO_ORIG_LYRICIST,
+						    INFO_ORIG_YEAR, INFO_WEB_ARTIST, INFO_WEB_PUBLISHER, INFO_WEB_RADIO,
+						    INFO_WEB_SOURCE, INFO_WEB_COPYRIGHT, INFO_WEB_COMMERCIAL, NIL };
+
+			while (keys[index] != NIL)
 			{
-				String	 key = pair.Head(pair.Find(":"));
+				String	 key = keys[index++];
 
-				if (				 key == INFO_BAND	   ||
-				    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
-				    key == INFO_LYRICIST      || key == INFO_REMIXER	   ||
+				if (info.GetOtherInfo(key) == origInfo.GetOtherInfo(key)) continue;
 
-				    key == INFO_CATALOGNUMBER || key == INFO_BARCODE	   ||
-
-				    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
-				    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
-
-				    key == INFO_WEB_ARTIST    || key == INFO_WEB_PUBLISHER ||
-				    key == INFO_WEB_RADIO     || key == INFO_WEB_SOURCE    ||
-				    key == INFO_WEB_COPYRIGHT || key == INFO_WEB_COMMERCIAL) mTrackInfo.other.RemoveNth(foreachindex--);
-			}
-
-			foreach (const String &pair, info.other)
-			{
-				String	 key = pair.Head(pair.Find(":"));
-
-				if (				 key == INFO_BAND	   ||
-				    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
-				    key == INFO_LYRICIST      || key == INFO_REMIXER	   ||
-
-				    key == INFO_CATALOGNUMBER || key == INFO_BARCODE	   ||
-
-				    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
-				    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||
-
-				    key == INFO_WEB_ARTIST    || key == INFO_WEB_PUBLISHER ||
-				    key == INFO_WEB_RADIO     || key == INFO_WEB_SOURCE    ||
-				    key == INFO_WEB_COPYRIGHT || key == INFO_WEB_COMMERCIAL) mTrackInfo.other.Add(pair);
+				mTrackInfo.SetOtherInfo(key, info.GetOtherInfo(key));
 			}
 
 			mTrack.SetInfo(mTrackInfo);
 
 			/* Update cover art.
 			 */
-			mTrack.pictures.RemoveAll();
+			if (picturesChanged)
+			{
+				mTrack.pictures.RemoveAll();
 
-			foreach (const Picture &picture, track.pictures) mTrack.pictures.Add(picture);
+				foreach (const Picture &picture, track.pictures) mTrack.pictures.Add(picture);
+			}
 
 			JobList::Get()->onComponentModifyTrack.Emit(mTrack);
 		}

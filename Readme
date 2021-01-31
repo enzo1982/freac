@@ -160,6 +160,7 @@ History
 			- improved MP3, AAC and Opus encoding performance by up to 30%
 			- improved multi-monitor support on X11 based systems
 			- discs of multi-disc albums are now shown separately in tag editor album mode
+			- update only changed fields when making edits in tag editor album mode
 			- added support for Replay Gain values in MP4 and WMA metadata
 
 		- Bug fixes
