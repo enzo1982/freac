@@ -147,7 +147,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.4 (Januar 2021)
+	Version 1.1.4 (Februar 2021)
 
 		- Verbesserungen
 
@@ -170,6 +170,7 @@ Geschichte
 			- Problem mit für einige Anwendungen unsichtbare MP4-Kapitel bei Verwendung von Nero AAC behoben
 			- Probleme beim Senden von CDDB-Einträgen für neue CDs (ohne bestehende Einträge) behoben
 			- Probleme beim Umgang mit langen Pfad-/Dateinamen unter Windows behoben
+			- Unbeabsichtigte Limitierung der Ausgabesamplerate auf 192 kHz behoben
 			- Seltene zufällige Abbrüche von freaccmd beim Verarbeiten von Dateien behoben
 			- Falsche Farben in der Benutzeroberfläche unter einigen Linux-Distributionen behoben
 
