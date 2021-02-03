@@ -1,6 +1,6 @@
-diff -Naur mac-sdk-5.68/Makefile mac-sdk-5.68-gcc/Makefile
---- mac-sdk-5.68/Makefile	1970-01-01 00:00:00 +0000
-+++ mac-sdk-5.68-gcc/Makefile	2019-11-21 21:28:57 +0000
+diff -Naur mac-sdk-6.11/Makefile mac-sdk-6.11-gcc/Makefile
+--- mac-sdk-6.11/Makefile	1970-01-01 00:00:00 +0000
++++ mac-sdk-6.11-gcc/Makefile	2019-11-21 21:28:57 +0000
 @@ -0,0 +1,8 @@
 +all:
 +	$(MAKE) -f Source/Projects/NonWindows/Makefile
@@ -10,9 +10,9 @@ diff -Naur mac-sdk-5.68/Makefile mac-sdk-5.68-gcc/Makefile
 +
 +clean:
 +	$(MAKE) -f Source/Projects/NonWindows/Makefile clean
-diff -Naur mac-sdk-5.68/Shared/All.h mac-sdk-5.68-gcc/Shared/All.h
---- mac-sdk-5.68/Shared/All.h	2020-12-03 17:28:57 +0000
-+++ mac-sdk-5.68-gcc/Shared/All.h	2020-12-03 22:47:13 +0000
+diff -Naur mac-sdk-6.11/Shared/All.h mac-sdk-6.11-gcc/Shared/All.h
+--- mac-sdk-6.11/Shared/All.h	2020-12-03 17:28:57 +0000
++++ mac-sdk-6.11-gcc/Shared/All.h	2020-12-03 22:47:13 +0000
 @@ -188,12 +188,22 @@
      #define TICK_COUNT_FREQ                             1000000
      #undef    ASSERT
@@ -38,9 +38,9 @@ diff -Naur mac-sdk-5.68/Shared/All.h mac-sdk-5.68-gcc/Shared/All.h
  #endif
  
  /*****************************************************************************************
-diff -Naur mac-sdk-5.68/Shared/NoWindows.h mac-sdk-5.68-gcc/Shared/NoWindows.h
---- mac-sdk-5.68/Shared/NoWindows.h	2020-11-09 20:13:40 +0000
-+++ mac-sdk-5.68-gcc/Shared/NoWindows.h	2020-11-10 16:17:10 +0000
+diff -Naur mac-sdk-6.11/Shared/NoWindows.h mac-sdk-6.11-gcc/Shared/NoWindows.h
+--- mac-sdk-6.11/Shared/NoWindows.h	2020-12-29 02:12:56 +0000
++++ mac-sdk-6.11-gcc/Shared/NoWindows.h	2021-02-03 23:09:05 +0000
 @@ -52,7 +52,7 @@
  
  #define _strnicmp strncasecmp
@@ -59,9 +59,27 @@ diff -Naur mac-sdk-5.68/Shared/NoWindows.h mac-sdk-5.68-gcc/Shared/NoWindows.h
  #endif
  #define _tcscpy wcscpy
  #define _tcslen wcslen
-diff -Naur mac-sdk-5.68/Source/Projects/NonWindows/Makefile mac-sdk-5.68-gcc/Source/Projects/NonWindows/Makefile
---- mac-sdk-5.68/Source/Projects/NonWindows/Makefile	2020-04-24 21:09:10 +0000
-+++ mac-sdk-5.68-gcc/Source/Projects/NonWindows/Makefile	2020-08-29 17:45:44 +0000
+diff -Naur mac-sdk-6.11/Source/MACDll/MACDll.cpp mac-sdk-6.11-gcc/Source/MACDll/MACDll.cpp
+--- mac-sdk-6.11/Source/MACDll/MACDll.cpp	2021-01-21 19:49:32 +0000
++++ mac-sdk-6.11-gcc/Source/MACDll/MACDll.cpp	2021-02-03 23:07:33 +0000
+@@ -176,12 +176,12 @@
+ APE_DECOMPRESS_HANDLE __stdcall c_APEDecompress_Create(const str_ansi * pFilename, int * pErrorCode)
+ {
+     CSmartPtr<wchar_t> spFilename(CAPECharacterHelper::GetUTF16FromANSI(pFilename), true);
+-    return (APE_DECOMPRESS_HANDLE) CreateIAPEDecompress(spFilename, pErrorCode, false);
++    return (APE_DECOMPRESS_HANDLE) CreateIAPEDecompress(spFilename, pErrorCode, true);
+ }
+ 
+ APE_DECOMPRESS_HANDLE __stdcall c_APEDecompress_CreateW(const str_utfn * pFilename, int * pErrorCode)
+ {
+-    return (APE_DECOMPRESS_HANDLE) CreateIAPEDecompress(pFilename, pErrorCode, false);
++    return (APE_DECOMPRESS_HANDLE) CreateIAPEDecompress(pFilename, pErrorCode, true);
+ }
+ 
+ void __stdcall c_APEDecompress_Destroy(APE_DECOMPRESS_HANDLE hAPEDecompress)
+diff -Naur mac-sdk-6.11/Source/Projects/NonWindows/Makefile mac-sdk-6.11-gcc/Source/Projects/NonWindows/Makefile
+--- mac-sdk-6.11/Source/Projects/NonWindows/Makefile	2020-04-24 21:09:10 +0000
++++ mac-sdk-6.11-gcc/Source/Projects/NonWindows/Makefile	2020-08-29 17:45:44 +0000
 @@ -85,7 +85,7 @@
  	$(CC) $(SHAREDOBJECTS) $(LIBOBJECTS) $(DLLOBJECTS) $(LDOPTS) $(LDFLAGS) $(DLLLDOPTS) -o $@
  
@@ -71,9 +89,9 @@ diff -Naur mac-sdk-5.68/Source/Projects/NonWindows/Makefile mac-sdk-5.68-gcc/Sou
  
  Source/Shared/%.o: Source/Shared/%.cpp
  	$(CXX) $(CXXOPTS) $(CXXFLAGS) $< -o $@
-diff -Naur mac-sdk-5.68/Source/Shared/All.h mac-sdk-5.68-gcc/Source/Shared/All.h
---- mac-sdk-5.68/Source/Shared/All.h	2020-12-03 17:28:57 +0000
-+++ mac-sdk-5.68-gcc/Source/Shared/All.h	2020-12-03 22:47:13 +0000
+diff -Naur mac-sdk-6.11/Source/Shared/All.h mac-sdk-6.11-gcc/Source/Shared/All.h
+--- mac-sdk-6.11/Source/Shared/All.h	2020-12-03 17:28:57 +0000
++++ mac-sdk-6.11-gcc/Source/Shared/All.h	2020-12-03 22:47:13 +0000
 @@ -188,12 +188,22 @@
      #define TICK_COUNT_FREQ                             1000000
      #undef    ASSERT
@@ -99,9 +117,9 @@ diff -Naur mac-sdk-5.68/Source/Shared/All.h mac-sdk-5.68-gcc/Source/Shared/All.h
  #endif
  
  /*****************************************************************************************
-diff -Naur mac-sdk-5.68/Source/Shared/NoWindows.h mac-sdk-5.68-gcc/Source/Shared/NoWindows.h
---- mac-sdk-5.68/Source/Shared/NoWindows.h	2020-11-09 20:13:40 +0000
-+++ mac-sdk-5.68-gcc/Source/Shared/NoWindows.h	2020-11-10 16:17:27 +0000
+diff -Naur mac-sdk-6.11/Source/Shared/NoWindows.h mac-sdk-6.11-gcc/Source/Shared/NoWindows.h
+--- mac-sdk-6.11/Source/Shared/NoWindows.h	2020-12-29 02:12:56 +0000
++++ mac-sdk-6.11-gcc/Source/Shared/NoWindows.h	2021-02-03 23:09:20 +0000
 @@ -52,7 +52,7 @@
  
  #define _strnicmp strncasecmp
@@ -120,8 +138,8 @@ diff -Naur mac-sdk-5.68/Source/Shared/NoWindows.h mac-sdk-5.68-gcc/Source/Shared
  #endif
  #define _tcscpy wcscpy
  #define _tcslen wcslen
-diff -Naur mac-sdk-5.68/configure mac-sdk-5.68-gcc/configure
---- mac-sdk-5.68/configure	1970-01-01 00:00:00 +0000
-+++ mac-sdk-5.68-gcc/configure	2019-11-21 21:28:57 +0000
+diff -Naur mac-sdk-6.11/configure mac-sdk-6.11-gcc/configure
+--- mac-sdk-6.11/configure	1970-01-01 00:00:00 +0000
++++ mac-sdk-6.11-gcc/configure	2019-11-21 21:28:57 +0000
 @@ -0,0 +1 @@
 +#!/bin/sh
