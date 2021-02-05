@@ -21,6 +21,7 @@
     <entry id="202" string="Info">معلومات</entry>
 
     <entry id="210" string="Do not display this warning again">لا تظهر هذا التنبيه مرة أخرى</entry>
+    <entry id="211" string="Do not display this note again">عدم عرض هذه الملاحظة مرة أخرى</entry>
 
     <entry id="300" string="Artist">الفنان</entry>
     <entry id="301" string="Title">العنوان</entry>
@@ -68,6 +69,7 @@
       <entry id="1000" string="File">ملف</entry>
       <entry id="1001" string="Options">خيارات</entry>
       <entry id="1002" string="Database">قاعدة بيانات</entry>
+      <entry id="1003" string="Processing">معالجة</entry>
       <entry id="1004" string="Encode">ترميز</entry>
       <entry id="1005" string="Help">مساعدة</entry>
 
@@ -97,12 +99,22 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">إعدادات عامة</entry>
+	<entry id="1301" string="Configure signal processing">تكوين معالجة الإشارات</entry>
 	<entry id="1302" string="Configure selected encoder">تهيئة الترميز المحدد</entry>
 	<entry id="1303" string="Active CD-ROM drive">تنشيط محرك القراص المضغوطة</entry>
+	<entry id="1304" string="Active configuration">التكوين النشط</entry>
+	<entry id="1305" string="Default configuration">التكوين الافتراضي</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">تمكين معالجة الإشارة</entry>
+	<entry id="1401" string="Enable processing during playback">تمكين المعالجة أثناء التشغيل</entry>
+	<entry id="1402" string="Selected signal processors">معالجات الإشارة المحددة</entry>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">بدء الترميز</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">بدء الترميز (حذف الملفات الأصلية)</entry>
 	<entry id="1502" string="Start encoding with">بدء الترميز</entry>
 	<entry id="1503" string="Pause/resume encoding">وقفة/استعادة الترميز</entry>
 	<entry id="1504" string="Stop encoding">إيقاف الترميز</entry>
@@ -121,6 +133,8 @@
 	<entry id="1603" string="Check for updates at startup">التحقق من التحديثات عند بدء التشغيل</entry>
 	<entry id="1604" string="About %1">%1 بخصوص</entry>
 	<entry id="1605" string="index_en.html">index.html</entry>
+	<entry id="1606" string="Report an issue">الإبلاغ عن مشكلة</entry>
+	<entry id="1607" string="Suggest a feature">اقتراح ميزة</entry>
       </section>
     </section>
 
@@ -134,6 +148,7 @@
       <entry id="2006" string="Configure general settings">تهئية الاعدادات العامة</entry>
       <entry id="2008" string="Configure the selected audio encoder">تهيئة ترميز الصوت المحدد</entry>
       <entry id="2009" string="Start the encoding process">بدء عملية الترميز</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">بدء عملية الترميز (حذف الملفات الأصلية)</entry>
       <entry id="2011" string="Pause/resume encoding">وقفة/استعادة الترميز</entry>
       <entry id="2012" string="Stop encoding">إيقاف الترميز</entry>
     </section>
@@ -180,11 +195,13 @@
       <entry id="3038" string="Audio Files">ملفات صوتية</entry>
       <entry id="3039" string="All Files">كافة الملفات</entry>
       <entry id="3040" string="Playlist Files">ملفات قائمة الأغاني</entry>
+      <entry id="3041" string="Joblist">يوبليس</entry>
+      <entry id="3042" string="Other">أخرى</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">ترميز الملف</entry>
-        <entry id="3051" string="none">لاشيء</entry>
-        <entry id="3052" string="Skip current file">تخطي</entry>
+	<entry id="3051" string="none">لاشيء</entry>
+	<entry id="3052" string="Skip current file">تخطي</entry>
       </section>
 
       <section name="Decoder">
@@ -197,7 +214,7 @@
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">تحديد الترميز</entry>
+	<entry id="3080" string="Selected encoder">تحديد الترميز</entry>
 	<entry id="3081" string="Configure selected encoder">تهيئة الترميز المحدد</entry>
       </section>
 

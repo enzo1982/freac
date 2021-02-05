@@ -17,7 +17,11 @@
     <entry id="102" string="Close">Cerrar</entry>
 
     <entry id="200" string="Error">Error</entry>
+    <entry id="201" string="Warning">Advertencia</entry>
     <entry id="202" string="Info">Info</entry>
+
+    <entry id="210" string="Do not display this warning again">No volver a mostrar esta advertencia</entry>
+    <entry id="211" string="Do not display this note again">No volver a mostrar esta nota</entry>
 
     <entry id="300" string="Artist">Artista</entry>
     <entry id="301" string="Title">Título</entry>
@@ -57,6 +61,7 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 bytes</entry>
+      <entry id="517" string="%1 kB">%1 kB</entry>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
@@ -64,6 +69,7 @@
       <entry id="1000" string="File">Archivo</entry>
       <entry id="1001" string="Options">Opciones</entry>
       <entry id="1002" string="Database">Base de datos</entry>
+      <entry id="1003" string="Processing">Procesamiento</entry>
       <entry id="1004" string="Encode">Codificar</entry>
       <entry id="1005" string="Help">Ayuda</entry>
 
@@ -210,6 +216,10 @@
 	<entry id="3202" string="Start folder">Carpeta de inicio</entry>
 	<entry id="3203" string="Filename pattern">Patrón de nombre de archivo</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">Seleccionar la carpeta para agregar a la lista de trabajo</entry>
+      </section>
+
+      <section name="Character set">
+	<entry id="3301" string="Choose character set">Elegir juego de caracteres</entry>
       </section>
 
       <section name="Errors">
