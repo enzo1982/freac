@@ -168,6 +168,7 @@ History
 			- fixed invalid length written to very long Opus and Speex files (longer than 12 ½ hours at 48 kHz)
 			- fixed decoding of some very short Opus, Vorbis and Speex files
 			- fixed written MP4 chapters being invisible to some applications when using Nero AAC
+			- fixed hang/crash when opening WavPack, Musepack, TAK and OptimFROG files with chapters
 			- fixed issues submitting CDDB information for new CDs (without existing entries)
 			- fixed issues handling long path/file names on Windows
 			- fixed output sample rate being limited to 192 kHz

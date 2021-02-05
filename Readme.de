@@ -168,6 +168,7 @@ Geschichte
 			- Schreiben von falschen Längenangaben in sehr lange Opus- und Speex-Dateien behoben (länger als 12 ½ Stunden bei 48 kHz)
 			- Problem beim Dekodieren einiger sehr kurzer Opus-, Vorbis- und Speex-Dateien behoben
 			- Problem mit für einige Anwendungen unsichtbare MP4-Kapitel bei Verwendung von Nero AAC behoben
+			- Aufhängen bzw. Absturz beim Öffnen von WavPack-, Musepack-, TAK- und OptimFROM-Dateien mit Kapiteln behoben
 			- Probleme beim Senden von CDDB-Einträgen für neue CDs (ohne bestehende Einträge) behoben
 			- Probleme beim Umgang mit langen Pfad-/Dateinamen unter Windows behoben
 			- Unbeabsichtigte Limitierung der Ausgabesamplerate auf 192 kHz behoben
