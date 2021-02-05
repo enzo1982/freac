@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">Конвертер стопе семпла</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise редукција шума</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band Темпо/промена пич-а</entry>
+	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
       <section name="Extensions">
@@ -802,9 +803,9 @@
 	  <entry id="32208" string="Stereo">Стерео</entry>
 	  <entry id="32209" string="Joint Stereo">&quot;Збијени&quot; стерео</entry>
 	  <entry id="32210" string="Force Joint Stereo">Форсирај &quot;збијени&quot; стерео</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR опсег стопе битове</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Подеси мин. VBR стопу</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Подеси макс. VBR стопу</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR опсег стопе битове</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Подеси мин. VBR/ABR стопу</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Подеси макс. VBR/ABR стопу</entry>
 	</section>
 
 	<section name="Expert">
@@ -849,6 +850,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Користи привр. обл. шума</entry>
 	  <entry id="33208" string="Maximum bandwidth">Максималан проток</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Максимална AAC фреквенција протока (Hz)</entry>
+	  <entry id="33210" string="worse">лошије</entry>
+	  <entry id="33211" string="better">боље</entry>
 	</section>
 
 	<section name="Format">
@@ -1307,6 +1310,8 @@
 	  <entry id="103209" string="ISRC">ISRC</entry>
 	  <entry id="103210" string="Tempo">Темпо</entry>
 	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103212" string="Catalog number"/>
+	  <entry id="103213" string="Barcode"/>
 	</section>
 
 	<section name="Other">

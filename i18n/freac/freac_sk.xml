@@ -838,7 +838,7 @@
 	  <entry id="33203" string="Set quality">Nastaviť kvalitu</entry>
 	  <entry id="33204" string="Stereo mode">Stereo mód</entry>
 	  <entry id="33205" string="Allow Joint Stereo">Umožniť Joint Stereo</entry>
-	  <entry id="33206" string="Temporal Noise Shaping (TNS)">Temporal Noise Shaping</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Temporal Noise Shaping (TNS)</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Použiť TNS</entry>
 	  <entry id="33208" string="Maximum bandwidth">Max. šírka pásma</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Max. použiteľná frekvencia šírky pásma AAC (Hz)</entry>

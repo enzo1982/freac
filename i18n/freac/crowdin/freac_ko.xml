@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter"/>
 	<entry id="12003" string="RNNoise Noise Reduction"/>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer"/>
+	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
       <section name="Extensions">
@@ -802,9 +803,9 @@
 	  <entry id="32208" string="Stereo">스테레오</entry>
 	  <entry id="32209" string="Joint Stereo">조인트 스테레오</entry>
 	  <entry id="32210" string="Force Joint Stereo">조인트스테레오 사용</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR 비트레이트 영역</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">최소 VBR 비트레이트 설정</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">최대 VBR 비트레이트 설정</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR 비트레이트 영역</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">최소 VBR/ABR 비트레이트 설정</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">최대 VBR/ABR 비트레이트 설정</entry>
 	</section>
 
 	<section name="Expert">
@@ -849,6 +850,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">노이즈제거 사용</entry>
 	  <entry id="33208" string="Maximum bandwidth">최대 대역폭</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">사용가능 최대 AAC주파수 대역폭(Hz)</entry>
+	  <entry id="33210" string="worse">고</entry>
+	  <entry id="33211" string="better">저</entry>
 	</section>
 
 	<section name="Format">
@@ -1307,6 +1310,8 @@
 	  <entry id="103209" string="ISRC"/>
 	  <entry id="103210" string="Tempo"/>
 	  <entry id="103211" string="BPM"/>
+	  <entry id="103212" string="Catalog number"/>
+	  <entry id="103213" string="Barcode"/>
 	</section>
 
 	<section name="Other">

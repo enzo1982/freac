@@ -249,7 +249,7 @@
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">आपने एक ट्रैक का चयन नहीं किया!</entry>
-    <entry id="3401" string="No files found matching pattern: %1">कोई फाइल नहीं मिली: %1</entry>
+	<entry id="3401" string="No files found matching pattern: %1">कोई फाइल नहीं मिली: %1</entry>
       </section>
     </section>
 
@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">नमूना दर कनवर्टर</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">आरएनएन नॉइज़ रिडक्शन</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">रबर बैंड टेम्पो / पिच परिवर्तक</entry>
+	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
       <section name="Extensions">
@@ -802,9 +803,9 @@
 	  <entry id="32208" string="Stereo">स्टीरियो</entry>
 	  <entry id="32209" string="Joint Stereo">जॉइंट स्टीरियो</entry>
 	  <entry id="32210" string="Force Joint Stereo">फाॅर्स जॉइंट स्टीरियो</entry>
-	  <entry id="32211" string="VBR bitrate range">वीबीआर बिट्रेट रेंज</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">सेट मिनिमम वीबीआर बिट्रेट</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">सेट मैक्सिमम वीबीआर बिट्रेट</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">वीबीआर / ऐबीआर बिट्रेट रेंज</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">सेट मिनिमम वीबीआर / ऐबीआर बिट्रेट</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">सेट मैक्सिमम वीबीआर / ऐबीआर बिट्रेट</entry>
 	</section>
 
 	<section name="Expert">
@@ -849,6 +850,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">टेम्पोरल शोर शेपिंग का उपयोग करें</entry>
 	  <entry id="33208" string="Maximum bandwidth">अधिकतम बैंडविड्थ</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">अधिकतम ऐऐसी आवृत्ति बैंडविड्थ का उपयोग करने के लिए</entry>
+	  <entry id="33210" string="worse">और भी बुरा</entry>
+	  <entry id="33211" string="better">बेहतर</entry>
 	</section>
 
 	<section name="Format">
@@ -1307,6 +1310,8 @@
 	  <entry id="103209" string="ISRC">आईएसआरसी</entry>
 	  <entry id="103210" string="Tempo">गति</entry>
 	  <entry id="103211" string="BPM">बीपीएम</entry>
+	  <entry id="103212" string="Catalog number"/>
+	  <entry id="103213" string="Barcode"/>
 	</section>
 
 	<section name="Other">

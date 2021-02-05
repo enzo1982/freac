@@ -205,13 +205,13 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Cudificazione di u schedariu</entry>
-        <entry id="3051" string="none">nisunu</entry>
-        <entry id="3052" string="Skip current file">Ignurà</entry>
+	<entry id="3051" string="none">nisunu</entry>
+	<entry id="3052" string="Skip current file">Ignurà</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Discudificatore attivu</entry>
-        <entry id="3061" string="none">scunnisciutu</entry>
+	<entry id="3060" string="Active decoder">Discudificatore attivu</entry>
+	<entry id="3061" string="none">scunnisciutu</entry>
       </section>
 
       <section name="Filters">
@@ -222,7 +222,7 @@
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Cudificatore selezziunatu</entry>
+	<entry id="3080" string="Selected encoder">Cudificatore selezziunatu</entry>
 	<entry id="3081" string="Configure selected encoder">Cunfigurà u cudificatore selezziunatu</entry>
       </section>
 

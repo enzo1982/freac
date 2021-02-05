@@ -1309,6 +1309,7 @@
 	  <entry id="103209" string="ISRC">ISRC</entry>
 	  <entry id="103210" string="Tempo">Темп</entry>
 	  <entry id="103211" string="BPM">Уд. в мин.</entry>
+	  <entry id="103213" string="Barcode">Штрихкод</entry>
 	</section>
 
 	<section name="Other">

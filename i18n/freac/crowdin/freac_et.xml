@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter"/>
 	<entry id="12003" string="RNNoise Noise Reduction"/>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer"/>
+	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
       <section name="Extensions">
@@ -802,9 +803,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Sunniviisiline</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR bitikiiruse vahemik</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Min. VBR bitikiirus</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Maks. VBR bitikiirus</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR bitikiiruse vahemik</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Min. VBR/ABR bitikiirus</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Maks. VBR/ABR bitikiirus</entry>
 	</section>
 
 	<section name="Expert">
@@ -849,6 +850,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Kasutada müra aja formeerimist</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maks. sagetuste riba laius</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maks. AAC läbilaskeriba laius (Hz)</entry>
+	  <entry id="33210" string="worse">halvem</entry>
+	  <entry id="33211" string="better">parem</entry>
 	</section>
 
 	<section name="Format">
@@ -1307,6 +1310,8 @@
 	  <entry id="103209" string="ISRC"/>
 	  <entry id="103210" string="Tempo"/>
 	  <entry id="103211" string="BPM"/>
+	  <entry id="103212" string="Catalog number"/>
+	  <entry id="103213" string="Barcode"/>
 	</section>
 
 	<section name="Other">

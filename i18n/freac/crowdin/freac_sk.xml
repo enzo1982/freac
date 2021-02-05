@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">Sample Rate Converter</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise Noise Reduction</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band Tempo/Pitch Changer</entry>
+	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
       <section name="Extensions">
@@ -802,9 +803,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Vnútiť Joint Stereo</entry>
-	  <entry id="32211" string="VBR bitrate range">Rozsah VBR bitrate</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Min. VBR bitrate</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Max. VBR bitrate</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">Rozsah VBR/ABR bitrate</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Min. VBR/ABR bitrate</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Max. VBR/ABR bitrate</entry>
 	</section>
 
 	<section name="Expert">
@@ -845,10 +846,12 @@
 	  <entry id="33203" string="Set quality">Nastaviť kvalitu</entry>
 	  <entry id="33204" string="Stereo mode">Stereo mód</entry>
 	  <entry id="33205" string="Allow Joint Stereo">Umožniť Joint Stereo</entry>
-	  <entry id="33206" string="Temporal Noise Shaping (TNS)">Temporal Noise Shaping</entry>
+	  <entry id="33206" string="Temporal Noise Shaping">Temporal Noise Shaping (TNS)</entry>
 	  <entry id="33207" string="Use Temporal Noise Shaping">Použiť TNS</entry>
 	  <entry id="33208" string="Maximum bandwidth">Max. šírka pásma</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Max. použiteľná frekvencia šírky pásma AAC (Hz)</entry>
+	  <entry id="33210" string="worse">horší</entry>
+	  <entry id="33211" string="better">lepší</entry>
 	</section>
 
 	<section name="Format">
@@ -1307,6 +1310,8 @@
 	  <entry id="103209" string="ISRC">ISRC</entry>
 	  <entry id="103210" string="Tempo">Tempo</entry>
 	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103212" string="Catalog number"/>
+	  <entry id="103213" string="Barcode"/>
 	</section>
 
 	<section name="Other">

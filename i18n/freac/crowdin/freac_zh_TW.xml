@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">取樣頻率轉換器</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise 噪音抑制</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band 節奏/音高調整器</entry>
+	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
       <section name="Extensions">
@@ -802,9 +803,9 @@
 	  <entry id="32208" string="Stereo">立體聲</entry>
 	  <entry id="32209" string="Joint Stereo">聯合立體聲</entry>
 	  <entry id="32210" string="Force Joint Stereo">強制聯合立體聲</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR 位元率範圍</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">設定最小 VBR 位元率</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">設定最大 VBR 位元率</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR 位元率範圍</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">設定最小 VBR/ABR 位元率</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">設定最大 VBR/ABR 位元率</entry>
 	</section>
 
 	<section name="Expert">
@@ -849,6 +850,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">使用時域噪音修整</entry>
 	  <entry id="33208" string="Maximum bandwidth">最大頻寬</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">AAC 頻率使用的最大頻寬 (Hz)</entry>
+	  <entry id="33210" string="worse">較差</entry>
+	  <entry id="33211" string="better">較好</entry>
 	</section>
 
 	<section name="Format">
@@ -1307,6 +1310,8 @@
 	  <entry id="103209" string="ISRC">ISRC</entry>
 	  <entry id="103210" string="Tempo">節奏</entry>
 	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103212" string="Catalog number"/>
+	  <entry id="103213" string="Barcode"/>
 	</section>
 
 	<section name="Other">

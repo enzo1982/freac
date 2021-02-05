@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">Převaděč vzorkovacího formátu</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise redukce šumu</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band změna Tempa/Výšky tónu</entry>
+	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
       <section name="Extensions">
@@ -802,9 +803,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Vynutit Joint Stereo</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR rozsah datového toku</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Minimální VBR datový tok</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Maximální VBR datový tok</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR rozsah datového toku</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Minimální VBR/ABR datový tok</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Maximální VBR/ABR datový tok</entry>
 	</section>
 
 	<section name="Expert">
@@ -849,6 +850,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Použít dočasný profil šumu</entry>
 	  <entry id="33208" string="Maximum bandwidth">Max.šířka pásma</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Max. frekvence šířky pásma AAC v Hz</entry>
+	  <entry id="33210" string="worse">horší</entry>
+	  <entry id="33211" string="better">lepší</entry>
 	</section>
 
 	<section name="Format">
@@ -1307,6 +1310,8 @@
 	  <entry id="103209" string="ISRC">ISRC</entry>
 	  <entry id="103210" string="Tempo">Tempo</entry>
 	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103212" string="Catalog number"/>
+	  <entry id="103213" string="Barcode"/>
 	</section>
 
 	<section name="Other">

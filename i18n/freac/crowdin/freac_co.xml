@@ -205,13 +205,13 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Cudificazione di u schedariu</entry>
-        <entry id="3051" string="none">nisunu</entry>
-        <entry id="3052" string="Skip current file">Ignurà</entry>
+	<entry id="3051" string="none">nisunu</entry>
+	<entry id="3052" string="Skip current file">Ignurà</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Discudificatore attivu</entry>
-        <entry id="3061" string="none">scunnisciutu</entry>
+	<entry id="3060" string="Active decoder">Discudificatore attivu</entry>
+	<entry id="3061" string="none">scunnisciutu</entry>
       </section>
 
       <section name="Filters">
@@ -222,7 +222,7 @@
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Cudificatore selezziunatu</entry>
+	<entry id="3080" string="Selected encoder">Cudificatore selezziunatu</entry>
 	<entry id="3081" string="Configure selected encoder">Cunfigurà u cudificatore selezziunatu</entry>
       </section>
 
@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">Cunvertidore di frequenza di campiunariu</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">Riduzzione di trostu RNNoise</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Cambià a tunalità/tempo di Rubber Band</entry>
+	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
       <section name="Extensions">
@@ -802,9 +803,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Furzà Joint Stereo</entry>
-	  <entry id="32211" string="VBR bitrate range">Stesa di bitrate VBR</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Definisce u bitrate VBR minimu</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Definisce u bitrate VBR massimu</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">Stesa di bitrate VBR/ABR</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Definisce u bitrate VBR/ABR minimu</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Definisce u bitrate VBR/ABR massimu</entry>
 	</section>
 
 	<section name="Expert">
@@ -849,6 +850,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Impiegà a fattura di trostu tempurale (TNS)</entry>
 	  <entry id="33208" string="Maximum bandwidth">Larghezza di fascia massima</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Larghezza di fascia massima di frequenza AAC à impiegà (Hz)</entry>
+	  <entry id="33210" string="worse">pechju</entry>
+	  <entry id="33211" string="better">più bona</entry>
 	</section>
 
 	<section name="Format">
@@ -1307,6 +1310,8 @@
 	  <entry id="103209" string="ISRC">Codice ISRC</entry>
 	  <entry id="103210" string="Tempo">Tempo</entry>
 	  <entry id="103211" string="BPM">Ritmu BPM</entry>
+	  <entry id="103212" string="Catalog number"/>
+	  <entry id="103213" string="Barcode"/>
 	</section>
 
 	<section name="Other">

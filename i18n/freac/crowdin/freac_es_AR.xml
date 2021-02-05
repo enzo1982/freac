@@ -16,11 +16,11 @@
     <entry id="102" string="Close">Cerrar</entry>
 
     <entry id="200" string="Error">Error</entry>
-    <entry id="201" string="Warning"/>
+    <entry id="201" string="Warning">Advertencia</entry>
     <entry id="202" string="Info">Info</entry>
 
-    <entry id="210" string="Do not display this warning again"/>
-    <entry id="211" string="Do not display this note again"/>
+    <entry id="210" string="Do not display this warning again">No volver a mostrar esta advertencia</entry>
+    <entry id="211" string="Do not display this note again">No volver a mostrar esta nota</entry>
 
     <entry id="300" string="Artist">Artista</entry>
     <entry id="301" string="Title">Título</entry>
@@ -60,7 +60,7 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 bytes</entry>
-      <entry id="517" string="%1 kB"/>
+      <entry id="517" string="%1 kB">%1 kB</entry>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
@@ -68,7 +68,7 @@
       <entry id="1000" string="File">Archivo</entry>
       <entry id="1001" string="Options">Opciones</entry>
       <entry id="1002" string="Database">Base de datos</entry>
-      <entry id="1003" string="Processing"/>
+      <entry id="1003" string="Processing">Procesamiento</entry>
       <entry id="1004" string="Encode">Codificar</entry>
       <entry id="1005" string="Help">Ayuda</entry>
 
@@ -244,7 +244,7 @@
 
       <section name="Character set">
 	<entry id="3300" string="Character set"/>
-	<entry id="3301" string="Choose character set"/>
+	<entry id="3301" string="Choose character set">Elegir juego de caracteres</entry>
       </section>
 
       <section name="Errors">
@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter"/>
 	<entry id="12003" string="RNNoise Noise Reduction"/>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer"/>
+	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
       <section name="Extensions">
@@ -802,9 +803,9 @@
 	  <entry id="32208" string="Stereo">Estéreo</entry>
 	  <entry id="32209" string="Joint Stereo">Empalme estéreo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forzar empalme estéreo</entry>
-	  <entry id="32211" string="VBR bitrate range">Rango de tasa de bits en VBR</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Configurar tasa de bits mínima en VBR</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Configurar tasa de bits máxima en VBR</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">Rango de tasa de bits en VBR/ABR</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Configurar tasa de bits mínima en VBR/ABR</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Configurar tasa de bits máxima en VBR/ABR</entry>
 	</section>
 
 	<section name="Expert">
@@ -849,6 +850,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Utilizar la función manejo de ruido</entry>
 	  <entry id="33208" string="Maximum bandwidth">Ancho de banda máximo</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Ancho de banda de frecuencia máx. a usar en AAC (en Hz)</entry>
+	  <entry id="33210" string="worse">deficiente</entry>
+	  <entry id="33211" string="better">óptima</entry>
 	</section>
 
 	<section name="Format">
@@ -1307,6 +1310,8 @@
 	  <entry id="103209" string="ISRC"/>
 	  <entry id="103210" string="Tempo"/>
 	  <entry id="103211" string="BPM"/>
+	  <entry id="103212" string="Catalog number"/>
+	  <entry id="103213" string="Barcode"/>
 	</section>
 
 	<section name="Other">

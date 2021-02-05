@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">Konverter stope sempla</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise redukcija šuma</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band Tempo/promena pitch-a</entry>
+	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
       <section name="Extensions">
@@ -802,9 +803,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">&quot;Zbijeni&quot; stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Forsiraj &quot;zbijeni&quot; stereo</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR opseg stope bitove</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Podesi min. VBR stopu</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Podesi maks. VBR stopu</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR opseg stope bitove</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Podesi min. VBR/ABR stopu</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Podesi maks. VBR/ABR stopu</entry>
 	</section>
 
 	<section name="Expert">
@@ -849,6 +850,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Koristi privr. obl. šuma</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maksimalan protok</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maksimalna AAC frekvencija protoka (Hz)</entry>
+	  <entry id="33210" string="worse">lošije</entry>
+	  <entry id="33211" string="better">bolje</entry>
 	</section>
 
 	<section name="Format">
@@ -1307,6 +1310,8 @@
 	  <entry id="103209" string="ISRC">ISRC</entry>
 	  <entry id="103210" string="Tempo">Tempo</entry>
 	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103212" string="Catalog number"/>
+	  <entry id="103213" string="Barcode"/>
 	</section>
 
 	<section name="Other">

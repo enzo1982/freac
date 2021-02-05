@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">Sample Rate Converter</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise Noise Reduction</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band Tempo/Pitch Changer</entry>
+	<entry id="12005" string="HDCD Decoder">HDCD Decoder</entry>
       </section>
 
       <section name="Extensions">
@@ -802,9 +803,9 @@
 	  <entry id="32208" string="Stereo">Stereo</entry>
 	  <entry id="32209" string="Joint Stereo">Joint Stereo</entry>
 	  <entry id="32210" string="Force Joint Stereo">Force Joint Stereo</entry>
-	  <entry id="32211" string="VBR bitrate range">VBR bitrate range</entry>
-	  <entry id="32212" string="Set minimum VBR bitrate">Set minimum VBR bitrate</entry>
-	  <entry id="32213" string="Set maximum VBR bitrate">Set maximum VBR bitrate</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">VBR/ABR bitrate range</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">Set minimum VBR/ABR bitrate</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">Set maximum VBR/ABR bitrate</entry>
 	</section>
 
 	<section name="Expert">
@@ -849,6 +850,8 @@
 	  <entry id="33207" string="Use Temporal Noise Shaping">Use Temporal Noise Shaping</entry>
 	  <entry id="33208" string="Maximum bandwidth">Maximum bandwidth</entry>
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maximum AAC frequency bandwidth to use (Hz)</entry>
+	  <entry id="33210" string="worse">worse</entry>
+	  <entry id="33211" string="better">better</entry>
 	</section>
 
 	<section name="Format">
@@ -1307,6 +1310,8 @@
 	  <entry id="103209" string="ISRC">ISRC</entry>
 	  <entry id="103210" string="Tempo">Tempo</entry>
 	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103212" string="Catalog number">Catalog number</entry>
+	  <entry id="103213" string="Barcode">Barcode</entry>
 	</section>
 
 	<section name="Other">

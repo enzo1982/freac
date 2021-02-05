@@ -249,7 +249,7 @@
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">आपने एक ट्रैक का चयन नहीं किया!</entry>
-    <entry id="3401" string="No files found matching pattern: %1">कोई फाइल नहीं मिली: %1</entry>
+	<entry id="3401" string="No files found matching pattern: %1">कोई फाइल नहीं मिली: %1</entry>
       </section>
     </section>
 
