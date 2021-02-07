@@ -205,19 +205,19 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Koder filen</entry>
-        <entry id="3051" string="none">tom</entry>
+        <entry id="3051" string="none">ingen</entry>
         <entry id="3052" string="Skip current file">Spring over</entry>
       </section>
 
       <section name="Decoder">
         <entry id="3060" string="Active decoder">Aktiv dekoder</entry>
-        <entry id="3061" string="none">ukendt</entry>
+        <entry id="3061" string="none">ingen</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Valgte filtre</entry>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3071" string="none">ingen</entry>
+	<entry id="3072" string="disabled">deaktiveret</entry>
 	<entry id="3073" string="Configure signal processing">Konfigurer signal behandling</entry>
       </section>
 
@@ -328,7 +328,7 @@
 	<entry id="4107" string="Select the entry that best fits your CD">Vælg den indgang der passer bedst til din CD</entry>
 	<entry id="4108" string="Would you like to perform this query again later?">Vil du udføre denne forespørgsel senere?</entry>
 	<entry id="4109" string="Would you like to perform the remaining queries again later?">Vil du udføre de resterende forespørgseler senere?</entry>
-	<entry id="4110" string="none">tom</entry>
+	<entry id="4110" string="none">ingen</entry>
 	<entry id="4111" string="Preview">Forpremiere</entry>
 	<entry id="4112" string="loading preview">Indlæser forpremiere</entry>
 

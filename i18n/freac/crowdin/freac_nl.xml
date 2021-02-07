@@ -211,13 +211,13 @@
 
       <section name="Decoder">
         <entry id="3060" string="Active decoder">Actieve decoder</entry>
-        <entry id="3061" string="none">onbekend</entry>
+        <entry id="3061" string="none">geen</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Geselecteerde filters</entry>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3071" string="none">geen</entry>
+	<entry id="3072" string="disabled">uitgeschakeld</entry>
 	<entry id="3073" string="Configure signal processing">Signaalverwerking configureren</entry>
       </section>
 

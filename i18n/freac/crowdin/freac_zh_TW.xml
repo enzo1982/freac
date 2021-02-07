@@ -211,13 +211,13 @@
 
       <section name="Decoder">
         <entry id="3060" string="Active decoder">使用中的解碼器</entry>
-        <entry id="3061" string="none">未知</entry>
+        <entry id="3061" string="none">無</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">選定的過濾器</entry>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3071" string="none">無</entry>
+	<entry id="3072" string="disabled">停用</entry>
 	<entry id="3073" string="Configure signal processing">訊號處理組態</entry>
       </section>
 

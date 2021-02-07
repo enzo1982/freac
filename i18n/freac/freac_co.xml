@@ -206,7 +206,7 @@
       <section name="File">
 	<entry id="3050" string="Current file">Cudificazione di u schedariu</entry>
 	<entry id="3051" string="none">nisunu</entry>
-	<entry id="3052" string="Skip current file">Ignurà</entry>
+	<entry id="3052" string="Skip current file">Ignurà u schedariu attuale</entry>
       </section>
 
       <section name="Decoder">
@@ -617,7 +617,7 @@
       <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">Ùn si pò definisce u prucessore DSP : %1&#10;&#10;Sbagliu : %2</entry>
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn si pò accede à u schedariu d’urigine : %1&#10;&#10;Schedariu : %1&#10;Chjassu : %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Ùn si pò creà u schedariu di destinazione : %1&#10;&#10;Schedariu : %1&#10;Chjassu : %2</entry>
-      <entry id="7107" string="Failed to verify input file: %1">Fiascu di a verificazione di u schedariu d’urigine : %1</entry>
+      <entry id="7107" string="Failed to verify input file: %1">Fiascu di a verificazione di u schedariu d’entrata : %1</entry>
       <entry id="7108" string="Failed to verify input track: %1">Fiascu di a verificazione di a traccia d’entrata : %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Sfarenza di somma di cuntrollu à a verificazione di u schedariu di destinazione : %1&#10;&#10;Somma cudificata : %2&#10;Somma verificata : %3</entry>
       <entry id="7110" string="File not found">U schedariu ùn esiste micca</entry>
@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">Cunvertidore di frequenza di campiunariu</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">Riduzzione di trostu RNNoise</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Cambià a tunalità/tempo di Rubber Band</entry>
+	<entry id="12005" string="HDCD Decoder">Discudificatore HDCD</entry>
       </section>
 
       <section name="Extensions">
@@ -963,7 +964,7 @@
 	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Ozzioni</entry>
 	<entry id="39011" string="Voice Activity Detection">Avventata di l’attivazione vucale</entry>
-	<entry id="39012" string="Discontinuous Transmission">Trasmissione discuntinuu</entry>
+	<entry id="39012" string="Discontinuous Transmission">Trasmissione discuntinua</entry>
 	<entry id="39013" string="Algorithm complexity">Cumplessità di cudificazione</entry>
 	<entry id="39014" string="Complexity">Cumplessità</entry>
 	<entry id="39015" string="CBR quality">Qualità CBR</entry>
@@ -1268,7 +1269,7 @@
 	  <entry id="102201" string="This URL is not supported or not a video page URL!">St’indirizzu ùn hè micca accettata o micca una pagina di video.</entry>
 	  <entry id="102202" string="Error downloading video!">Sbagliu durante u scaricamentu di a video !</entry>
 	  <entry id="102203" string="You are already downloading this video!">Site dighjà in treccia di scaricà sta video !</entry>
-	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Qualchì discudificatore video richiestu ùn si trova micca.&#10;I schedarii video ùn ponu micca esse aghjunti à a lista di&#10;travagliu per una cunversione audio. Ci cole à installà&#10;FFmpeg o avconv per currege stu penseru !</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Certi discudificatori video richiesti ùn si trovanu micca.&#10;I schedarii video ùn ponu micca esse aghjunti à a lista di&#10;travagliu per una cunversione audio. Ci vole à installà&#10;FFmpeg o avconv per currege stu penseru !</entry>
 	</section>
       </section>
 
@@ -1309,6 +1310,8 @@
 	  <entry id="103209" string="ISRC">Codice ISRC</entry>
 	  <entry id="103210" string="Tempo">Tempo</entry>
 	  <entry id="103211" string="BPM">Ritmu BPM</entry>
+	  <entry id="103212" string="Catalog number">Numeru di catalogu</entry>
+	  <entry id="103213" string="Barcode">Codice à barre</entry>
 	</section>
 
 	<section name="Other">

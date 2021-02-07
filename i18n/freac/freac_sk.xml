@@ -210,11 +210,13 @@
 
       <section name="Decoder">
         <entry id="3060" string="Active decoder">Aktívny dekóder</entry>
-        <entry id="3061" string="none">neznámy</entry>
+        <entry id="3061" string="none">žiadny</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Vybrané filtre</entry>
+	<entry id="3071" string="none">žiadny</entry>
+	<entry id="3072" string="disabled">zakázaný</entry>
 	<entry id="3073" string="Configure signal processing">Nastaviť spracovanie</entry>
       </section>
 
