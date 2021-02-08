@@ -169,12 +169,12 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Muunnettava tiedosto</entry>
-        <entry id="3051" string="none">ei mitään</entry>
-        <entry id="3052" string="Skip current file">Ohita</entry>
+	<entry id="3051" string="none">ei mitään</entry>
+	<entry id="3052" string="Skip current file">Ohita</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Valittu muunnin</entry>
+	<entry id="3080" string="Selected encoder">Valittu muunnin</entry>
 	<entry id="3081" string="Configure selected encoder">Määritä valitun muuntimen asetukset</entry>
       </section>
 

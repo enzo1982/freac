@@ -169,12 +169,12 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Comprimint</entry>
-        <entry id="3051" string="none">cap</entry>
-        <entry id="3052" string="Skip current file">Ometre</entry>
+	<entry id="3051" string="none">cap</entry>
+	<entry id="3052" string="Skip current file">Ometre</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Compressor seleccionat</entry>
+	<entry id="3080" string="Selected encoder">Compressor seleccionat</entry>
 	<entry id="3081" string="Configure selected encoder">Configurar compressor seleccionat</entry>
       </section>
 

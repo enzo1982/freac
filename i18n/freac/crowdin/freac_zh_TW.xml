@@ -205,13 +205,13 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">正在編碼</entry>
-        <entry id="3051" string="none">無</entry>
-        <entry id="3052" string="Skip current file">跳過</entry>
+	<entry id="3051" string="none">無</entry>
+	<entry id="3052" string="Skip current file">跳過</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">使用中的解碼器</entry>
-        <entry id="3061" string="none">無</entry>
+	<entry id="3060" string="Active decoder">使用中的解碼器</entry>
+	<entry id="3061" string="none">無</entry>
       </section>
 
       <section name="Filters">
@@ -222,7 +222,7 @@
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">目前的編碼器</entry>
+	<entry id="3080" string="Selected encoder">目前的編碼器</entry>
 	<entry id="3081" string="Configure selected encoder">目前的編碼器組態</entry>
       </section>
 

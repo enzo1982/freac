@@ -205,24 +205,24 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Enkodiram datoteku</entry>
-        <entry id="3051" string="none">none</entry>
-        <entry id="3052" string="Skip current file">Preskoči</entry>
+	<entry id="3051" string="none">none</entry>
+	<entry id="3052" string="Skip current file">Preskoči</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Aktivni dekoder</entry>
-        <entry id="3061" string="none">nepoznato</entry>
+	<entry id="3060" string="Active decoder">Aktivni dekoder</entry>
+	<entry id="3061" string="none">nepoznato</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters">Izabrani filtri</entry>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3071" string="none">none</entry>
+	<entry id="3072" string="disabled">onemogućeno</entry>
 	<entry id="3073" string="Configure signal processing">Postavke obrade signala</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Izabrani enkoder</entry>
+	<entry id="3080" string="Selected encoder">Izabrani enkoder</entry>
 	<entry id="3081" string="Configure selected encoder">Postavke izabranog encodera</entry>
       </section>
 

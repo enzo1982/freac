@@ -169,12 +169,12 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Kodata dosiero</entry>
-        <entry id="3051" string="none">neniu</entry>
-        <entry id="3052" string="Skip current file">Transsalti</entry>
+	<entry id="3051" string="none">neniu</entry>
+	<entry id="3052" string="Skip current file">Transsalti</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Elektita kodilo</entry>
+	<entry id="3080" string="Selected encoder">Elektita kodilo</entry>
 	<entry id="3081" string="Configure selected encoder">Agordi elektitan kodilon</entry>
       </section>
 

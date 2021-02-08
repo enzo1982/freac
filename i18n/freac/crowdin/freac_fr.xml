@@ -205,13 +205,13 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Encodage du fichier</entry>
-        <entry id="3051" string="none">aucun</entry>
-        <entry id="3052" string="Skip current file">Ignorer</entry>
+	<entry id="3051" string="none">aucun</entry>
+	<entry id="3052" string="Skip current file">Ignorer</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Activer le décodeur</entry>
-        <entry id="3061" string="none">aucun</entry>
+	<entry id="3060" string="Active decoder">Activer le décodeur</entry>
+	<entry id="3061" string="none">aucun</entry>
       </section>
 
       <section name="Filters">
@@ -222,7 +222,7 @@
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Encodeur sélectionné</entry>
+	<entry id="3080" string="Selected encoder">Encodeur sélectionné</entry>
 	<entry id="3081" string="Configure selected encoder">Configurer l'encodeur sélectionné</entry>
       </section>
 

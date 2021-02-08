@@ -204,13 +204,13 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Koder filen</entry>
-        <entry id="3051" string="none">ingen</entry>
-        <entry id="3052" string="Skip current file">Spring over</entry>
+	<entry id="3051" string="none">ingen</entry>
+	<entry id="3052" string="Skip current file">Spring over</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Aktiv dekoder</entry>
-        <entry id="3061" string="none">ingen</entry>
+	<entry id="3060" string="Active decoder">Aktiv dekoder</entry>
+	<entry id="3061" string="none">ingen</entry>
       </section>
 
       <section name="Filters">
@@ -221,7 +221,7 @@
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Valgt koder</entry>
+	<entry id="3080" string="Selected encoder">Valgt koder</entry>
 	<entry id="3081" string="Configure selected encoder">Konfigurer den valgte koder</entry>
       </section>
 

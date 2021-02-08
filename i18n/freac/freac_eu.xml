@@ -169,12 +169,12 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Kodeaketa agiria</entry>
-        <entry id="3051" string="none">ezer ez</entry>
-        <entry id="3052" string="Skip current file">Jauzi</entry>
+	<entry id="3051" string="none">ezer ez</entry>
+	<entry id="3052" string="Skip current file">Jauzi</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Hautaturiko kodeatzailea</entry>
+	<entry id="3080" string="Selected encoder">Hautaturiko kodeatzailea</entry>
 	<entry id="3081" string="Configure selected encoder">Itxuratu hautaturiko kodeatzailea</entry>
       </section>
 

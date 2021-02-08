@@ -205,8 +205,8 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Çevrilen dosya</entry>
-        <entry id="3051" string="none">Hiçbiri</entry>
-        <entry id="3052" string="Skip current file">Atla</entry>
+	<entry id="3051" string="none">Hiçbiri</entry>
+	<entry id="3052" string="Skip current file">Atla</entry>
       </section>
 
       <section name="Decoder">
@@ -222,7 +222,7 @@
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Seçilen çevirici</entry>
+	<entry id="3080" string="Selected encoder">Seçilen çevirici</entry>
 	<entry id="3081" string="Configure selected encoder">Seçilen çeviriciyi ayarla</entry>
       </section>
 

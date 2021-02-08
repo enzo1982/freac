@@ -190,16 +190,16 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Codificando archivo</entry>
-        <entry id="3051" string="none">ninguno</entry>
-        <entry id="3052" string="Skip current file">Saltear</entry>
+	<entry id="3051" string="none">ninguno</entry>
+	<entry id="3052" string="Skip current file">Saltear</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Decodificador activo</entry>
+	<entry id="3060" string="Active decoder">Decodificador activo</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Codificador actual</entry>
+	<entry id="3080" string="Selected encoder">Codificador actual</entry>
 	<entry id="3081" string="Configure selected encoder">Configuración del codificador actual</entry>
       </section>
 

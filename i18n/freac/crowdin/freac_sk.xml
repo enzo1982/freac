@@ -205,13 +205,13 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Kóduje sa súbor</entry>
-        <entry id="3051" string="none">žiadny</entry>
-        <entry id="3052" string="Skip current file">Preskočiť</entry>
+	<entry id="3051" string="none">žiadny</entry>
+	<entry id="3052" string="Skip current file">Preskočiť</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Aktívny dekóder</entry>
-        <entry id="3061" string="none">žiadny</entry>
+	<entry id="3060" string="Active decoder">Aktívny dekóder</entry>
+	<entry id="3061" string="none">žiadny</entry>
       </section>
 
       <section name="Filters">
@@ -222,7 +222,7 @@
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Vybraný kodek</entry>
+	<entry id="3080" string="Selected encoder">Vybraný kodek</entry>
 	<entry id="3081" string="Configure selected encoder">Nastaviť vybraný kodek</entry>
       </section>
 

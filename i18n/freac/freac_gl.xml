@@ -169,12 +169,12 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Convertindo</entry>
-        <entry id="3051" string="none">ningún</entry>
-        <entry id="3052" string="Skip current file">Omitir</entry>
+	<entry id="3051" string="none">ningún</entry>
+	<entry id="3052" string="Skip current file">Omitir</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Conversor seleccionado</entry>
+	<entry id="3080" string="Selected encoder">Conversor seleccionado</entry>
 	<entry id="3081" string="Configure selected encoder">Configurar conversor seleccionado</entry>
       </section>
 

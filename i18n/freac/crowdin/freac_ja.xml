@@ -695,7 +695,7 @@
       </section>
 
       <section name="Encoders">
-	<entry id="11000" string="meh! - multi encoder hub"/>
+	<entry id="11000" string="meh! - multi encoder hub">meh! - multi encoder hub</entry>
 	<entry id="11001" string="SndFile Output Component">SndFile出力構成</entry>
       </section>
 

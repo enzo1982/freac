@@ -169,12 +169,12 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Κωδικοποίηση αρχείου</entry>
-        <entry id="3051" string="none">κανένα</entry>
-        <entry id="3052" string="Skip current file">Παράλειψη</entry>
+	<entry id="3051" string="none">κανένα</entry>
+	<entry id="3052" string="Skip current file">Παράλειψη</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Επιλεγμένος κωδικοποιητής</entry>
+	<entry id="3080" string="Selected encoder">Επιλεγμένος κωδικοποιητής</entry>
 	<entry id="3081" string="Configure selected encoder">Ρύθμιση επιλεγμένου κωδικοποιητή</entry>
       </section>
 

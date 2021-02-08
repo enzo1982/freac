@@ -205,13 +205,13 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Bestand coderen</entry>
-        <entry id="3051" string="none">geen</entry>
-        <entry id="3052" string="Skip current file">Overslaan</entry>
+	<entry id="3051" string="none">geen</entry>
+	<entry id="3052" string="Skip current file">Overslaan</entry>
       </section>
 
       <section name="Decoder">
-        <entry id="3060" string="Active decoder">Actieve decoder</entry>
-        <entry id="3061" string="none">geen</entry>
+	<entry id="3060" string="Active decoder">Actieve decoder</entry>
+	<entry id="3061" string="none">geen</entry>
       </section>
 
       <section name="Filters">
@@ -222,7 +222,7 @@
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Geselecteerde encoder</entry>
+	<entry id="3080" string="Selected encoder">Geselecteerde encoder</entry>
 	<entry id="3081" string="Configure selected encoder">Geselecteerde encoder configureren</entry>
       </section>
 

@@ -205,7 +205,7 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">현재 파일</entry>
-        <entry id="3051" string="none">없음</entry>
+	<entry id="3051" string="none">없음</entry>
 	<entry id="3052" string="Skip current file">건너뛰기</entry>
       </section>
 
@@ -600,7 +600,7 @@
     <section name="Messages">
       <entry id="7000" string="Currently converting">현재 인코딩 중</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">인코딩 중입니다. 정말로 끝내시겠습니까?</entry>
-      <entry id="7002" string="Delete original files after encoding"/>
+      <entry id="7002" string="Delete original files after encoding">인코딩 완료 후 원본 파일 삭제</entry>
       <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?"/>
       <entry id="7004" string="Keep this option enabled even after restarting %1"/>
       <entry id="7005" string="File already exists"/>

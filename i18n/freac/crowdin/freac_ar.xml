@@ -145,7 +145,7 @@
       <entry id="2004" string="Query CDDB database">إستعلام قاعدة بيانات قرص مدمج</entry>
       <entry id="2005" string="Submit CDDB data">تسليم بيانات قاعدة بيانات قرص مدمج</entry>
       <entry id="2006" string="Configure general settings">تهئية الاعدادات العامة</entry>
-      <entry id="2007" string="Configure signal processing"/>
+      <entry id="2007" string="Configure signal processing">تكوين معالجة الإشارات</entry>
       <entry id="2008" string="Configure the selected audio encoder">تهيئة ترميز الصوت المحدد</entry>
       <entry id="2009" string="Start the encoding process">بدء عملية الترميز</entry>
       <entry id="2010" string="Start the encoding process (deleting original files)">بدء عملية الترميز (حذف الملفات الأصلية)</entry>
@@ -218,7 +218,7 @@
 	<entry id="3070" string="Selected filters"/>
 	<entry id="3071" string="none">لاشيء</entry>
 	<entry id="3072" string="disabled">معطل</entry>
-	<entry id="3073" string="Configure signal processing"/>
+	<entry id="3073" string="Configure signal processing">تكوين معالجة الإشارات</entry>
       </section>
 
       <section name="Encoder">

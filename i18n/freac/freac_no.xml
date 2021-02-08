@@ -169,12 +169,12 @@
 
       <section name="File">
 	<entry id="3050" string="Current file">Koder fil</entry>
-        <entry id="3051" string="none">Ingen</entry>
-        <entry id="3052" string="Skip current file">Hopp over</entry>
+	<entry id="3051" string="none">Ingen</entry>
+	<entry id="3052" string="Skip current file">Hopp over</entry>
       </section>
 
       <section name="Encoder">
-        <entry id="3080" string="Selected encoder">Valgt koder</entry>
+	<entry id="3080" string="Selected encoder">Valgt koder</entry>
 	<entry id="3081" string="Configure selected encoder">Konfigurer enkoder</entry>
       </section>
 

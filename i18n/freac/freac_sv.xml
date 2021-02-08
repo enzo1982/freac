@@ -705,6 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">Samplingshastighetskonverterare</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise &#x2013; brusreduktion</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band &#x2013; tempo-/tonhöjdsväxlare</entry>
+	<entry id="12005" string="HDCD Decoder">HDCD-avkodare</entry>
       </section>
 
       <section name="Extensions">
@@ -1309,6 +1310,8 @@
 	  <entry id="103209" string="ISRC">ISRC</entry>
 	  <entry id="103210" string="Tempo">Tempo</entry>
 	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103212" string="Catalog number">Katalognummer</entry>
+	  <entry id="103213" string="Barcode">Streckkod</entry>
 	</section>
 
 	<section name="Other">

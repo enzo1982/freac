@@ -398,7 +398,7 @@
       <entry id="5023" string="Verifiers">Оверивачи</entry>
       <entry id="5024" string="Taggers">Тагери</entry>
       <entry id="5025" string="Processing">Обрада</entry>
-      <entry id="5026" string="Additional arguments"/>
+      <entry id="5026" string="Additional arguments">Додатни аргументи</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Подеси енкодер</entry>
@@ -634,7 +634,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Приступ ЦД РОМ уређају одбијен од стране Windowsа.&#10;&#10;Молимо обратите се администратору система&#10;да Вам одобри приступ ЦД РОМ уређају.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Није расположив дијалог за поставке:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">Одабрани фолдер више не постоји!</entry>
-      <entry id="7124" string="Access denied"/>
+      <entry id="7124" string="Access denied">Приступ одбијен</entry>
     </section>
 
     <section name="Dialogs">
@@ -705,7 +705,7 @@
 	<entry id="12002" string="Sample Rate Converter">Конвертер стопе семпла</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise редукција шума</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band Темпо/промена пич-а</entry>
-	<entry id="12005" string="HDCD Decoder"/>
+	<entry id="12005" string="HDCD Decoder">HDCD Декодер</entry>
       </section>
 
       <section name="Extensions">
@@ -1310,8 +1310,8 @@
 	  <entry id="103209" string="ISRC">ISRC</entry>
 	  <entry id="103210" string="Tempo">Темпо</entry>
 	  <entry id="103211" string="BPM">BPM</entry>
-	  <entry id="103212" string="Catalog number"/>
-	  <entry id="103213" string="Barcode"/>
+	  <entry id="103212" string="Catalog number">Каталошки број</entry>
+	  <entry id="103213" string="Barcode">Бар-код</entry>
 	</section>
 
 	<section name="Other">
