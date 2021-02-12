@@ -162,6 +162,7 @@ History
 			- discs of multi-disc albums are now shown separately in tag editor album mode
 			- update only changed fields when making edits in tag editor album mode
 			- added support for Replay Gain values in MP4 and WMA metadata
+			- do not override settings with default values when using freaccmd's --config option
 
 		- Bug fixes
 

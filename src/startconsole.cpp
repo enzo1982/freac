@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -113,19 +113,23 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		return;
 	}
 
-	/* Set active configuration.
+	/* Find configuration to use.
 	 */
-	String		 configName;
+	String		 configName = "default";
+	Bool		 userConfig = ScanForProgramOption("--config=%VALUE", &configName);
 
-	config->SetActiveConfiguration("default");
+	if (configName ==			"Default configuration"			  ||
+	    configName == i18n->TranslateString("Default configuration", "Configuration")) configName = "default";
 
-	if (ScanForProgramOption("--config=%VALUE", &configName) && configName != "default" && configName != "Default configuration" && configName != i18n->TranslateString("Default configuration", "Configuration"))
+	/* Check whether configuration exists.
+	 */
+	if (configName != "default")
 	{
 		Bool	 foundConfig = False;
 
-		for (Int i = 1; i < config->GetNOfConfigurations(); i++)
+		for (Int i = 1; i < config->GetNOfConfigurations() && !foundConfig; i++)
 		{
-			if (configName == config->GetNthConfigurationName(i)) { foundConfig = True; break; }
+			if (configName == config->GetNthConfigurationName(i)) foundConfig = True;
 		}
 
 		if (!foundConfig)
@@ -134,13 +138,16 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			return;
 		}
-
-		config->SetActiveConfiguration(configName);
 	}
 
-	/* Set console mode and activate English language.
+	/* Activate configuration.
 	 */
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, True);
+	config->SetActiveConfiguration(configName);
+
+	SetConfigDefaults(config, userConfig);
+
+	/* Activate English language.
+	 */
 	i18n->ActivateLanguage("internal");
 
 	/* Configure the converter.
@@ -148,26 +155,27 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	String		 helpenc;
 
 	Array<String>	 files;
-	String		 pattern	= "<filename>";
+	String		 pattern;
 	String		 outputFile;
-	String		 outputFolder	= Directory::GetActiveDirectory();
+	String		 outputFolder	 = Directory::GetActiveDirectory();
 
-	Bool		 superFast	= ScanForProgramOption("--superfast");
-	String		 threads	= "0";
+	Bool		 enableSuperFast = ScanForProgramOption("--superfast");
+	String		 numberOfThreads;
 
-	String		 cdDrive	= "0";
+	String		 cdDrive	 = "0";
 	String		 tracks;
-	String		 timeout	= "120";
-	Bool		 cddb		= ScanForProgramOption("--cddb");
+	String		 ripperTimeout;
+	Bool		 enableCDDB	 = ScanForProgramOption("--cddb");
 
-	Bool		 splitChapters	= ScanForProgramOption("--split-chapters");
+	Bool		 splitChapters	 = ScanForProgramOption("--split-chapters");
 
-	Bool		 ignoreChapters	= ScanForProgramOption("--ignore-chapters");
-	Bool		 ignoreCoverArt	= ScanForProgramOption("--ignore-coverart");
+	Bool		 ignoreChapters	 = ScanForProgramOption("--ignore-chapters");
+	Bool		 ignoreCoverArt	 = ScanForProgramOption("--ignore-coverart");
 
-	Bool		 quiet		= ScanForProgramOption("--quiet");
+	Bool		 quiet		 = ScanForProgramOption("--quiet");
 
-	encoderID = "lame";
+	encoderID = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+	encoderID = encoderID.Head(encoderID.Length() - 4);
 
 	if (!ScanForProgramOption("--encoder=%VALUE", &encoderID)) ScanForProgramOption("-e %VALUE", &encoderID);
 	if (!ScanForProgramOption("--help=%VALUE",    &helpenc))   ScanForProgramOption("-h %VALUE", &helpenc);
@@ -175,7 +183,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 								   ScanForProgramOption("-o %VALUE", &outputFile);
 	if (!ScanForProgramOption("--pattern=%VALUE", &pattern))   ScanForProgramOption("-p %VALUE", &pattern);
 
-	ScanForProgramOption("--threads=%VALUE", &threads);
+	ScanForProgramOption("--threads=%VALUE", &numberOfThreads);
 
 	encoderID = encoderID.ToLower();
 	helpenc	  = helpenc.ToLower();
@@ -219,7 +227,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			if (!ScanForProgramOption("--drive=%VALUE", &cdDrive)) ScanForProgramOption("-cd %VALUE", &cdDrive);
 			if (!ScanForProgramOption("--track=%VALUE", &tracks))  ScanForProgramOption("-t %VALUE",  &tracks);
 
-			ScanForProgramOption("--timeout=%VALUE", &timeout);
+			ScanForProgramOption("--timeout=%VALUE", &ripperTimeout);
 
 #ifndef __WIN32__
 			/* Resolve links to devices.
@@ -297,156 +305,41 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		return;
 	}
 
-	/* Check dynamic encoder parameters.
+	/* Evaluate dynamic encoder parameters.
 	 */
-	Component	*component = boca.CreateComponentByID(String(encoderID).Append("-enc"));
+	if (!SetEncoderDefaults(config, userConfig)) return;
 
-	if (component == NIL)
+	/* Set config values.
+	 */
+				    config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, String(encoderID).Append("-enc"));
+
+				    config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outputFile);
+	if (pattern	    != NIL) config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
+				    config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Directory(outputFolder));
+
+	if (enableSuperFast	  ) config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, True);
+	if (numberOfThreads != NIL) config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, numberOfThreads.ToInt());
+
+	if (enableCDDB		  ) config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, True);
+
+	if (ripperTimeout   != NIL) config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, ripperTimeout.ToInt ());
+
+	if (ignoreChapters)
 	{
-		Console::OutputString(String("Encoder '").Append(encoderID).Append("' could not be initialized!\n"));
+		config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, False);
+		config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersID, False);
 
-		return;
+		config->SetIntValue(Config::CategoryTagsID, Config::TagsReadEmbeddedCueSheetsID, False);
 	}
 
-	Bool				 broken	    = False;
-	const Array<Parameter *>	&parameters = component->GetParameters();
-
-	foreach (Parameter *parameter, parameters)
+	if (ignoreCoverArt)
 	{
-		ParameterType		 type	 = parameter->GetType();
-		String			 name	 = parameter->GetName();
-		String			 spec	 = parameter->GetArgument();
-		const Array<Option *>	&options = parameter->GetOptions();
-		Float			 step	 = parameter->GetStepSize();
-		String			 def	 = parameter->GetDefault();
-
-		if (type == PARAMETER_TYPE_SWITCH)
-		{
-			/* Enable switch if given on command line.
-			 */
-			config->SetIntValue(component->GetID(), name, ScanForEncoderOption(spec));
-		}
-		else if (type == PARAMETER_TYPE_SELECTION)
-		{
-			/* Get selection value.
-			 */
-			String	 value;
-			Bool	 present = ScanForEncoderOption(String(spec).Trim(), &value);
-
-			/* Check if given value is allowed.
-			 */
-			if (present)
-			{
-				Bool	 found = False;
-
-				/* Check case sensitive.
-				 */
-				foreach (Option *option, options)
-				{
-					if (found || option->GetValue() != value) continue;
-
-					found = True;
-				}
-
-				/* Check ignoring case.
-				 */
-				value = value.ToLower();
-
-				foreach (Option *option, options)
-				{
-					if (found || option->GetValue().ToLower() != value) continue;
-
-					found = True;
-					value = option->GetValue();
-				}
-
-				if (!found) broken = True;
-			}
-
-			/* Set selection to given value.
-			 */
-			config->SetIntValue(component->GetID(), String("Set ").Append(name), present);
-			config->SetStringValue(component->GetID(), name, value);
-
-		}
-		else if (type == PARAMETER_TYPE_RANGE)
-		{
-			/* Set range parameter to given value.
-			 */
-			String	 value;
-			Bool	 present = ScanForEncoderOption(String(spec).Trim(), &value);
-
-			config->SetIntValue(component->GetID(), String("Set ").Append(name), present);
-			config->SetIntValue(component->GetID(), name, Math::Round(value.ToFloat() / step));
-
-			/* Check if given value is valid.
-			 */
-			Bool	 valid = True;
-
-			foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MIN && value.ToFloat() < option->GetValue().ToFloat()) valid = False;
-			foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MAX && value.ToFloat() > option->GetValue().ToFloat()) valid = False;
-
-			if (present && !valid) broken = True;
-		}
-	}
-
-	boca.DeleteComponent(component);
-
-	if (broken)
-	{
-		Console::OutputString(String("Invalid arguments for encoder '").Append(encoderID).Append("'!\n"));
-
-		return;
+		config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, False);
+		config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, False);
 	}
 
 	/* Perform actual conversion.
 	 */
-	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, String(encoderID).Append("-enc"));
-
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, True);
-	config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outputFile);
-
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, True);
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsDeleteAfterEncodingID, False);
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsAddEncodedTracksID, False);
-
-	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
-	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Directory(outputFolder));
-	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
-
-	config->SetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, False);
-
-	config->SetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, False);
-	config->SetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, False);
-
-	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, True);
-	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, superFast);
-	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, threads.ToInt());
-
-	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, cddb);
-	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoSelectID, True);
-	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, True);
-
-	config->SetIntValue(Config::CategoryRipperID, Config::RipperLockTrayID, Config::RipperLockTrayDefault);
-	config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, Config::RipperTimeoutDefault);
-
-	config->SetIntValue(Config::CategoryRipperID, Config::RipperEjectAfterRippingID, False);
-
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, !ignoreChapters);
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersID, !ignoreChapters);
-
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadEmbeddedCueSheetsID, !ignoreChapters);
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsPreferCueSheetsToChaptersID, Config::TagsPreferCueSheetsToChaptersDefault);
-
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, !ignoreCoverArt);
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromFilesID, False);
-
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, !ignoreCoverArt);
-	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesID, False);
-
-	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, False);
-	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, False);
-
 	if (files.Length() > 1 && outputFile != NIL)
 	{
 		JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
@@ -533,6 +426,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			/* Handle splitting chapters and cue sheets.
 			 */
 			Bool	 splitFile = (splitChapters || currentFile.EndsWith(".cue")) && outputFile == NIL;
+			String	 pattern   = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, "<filename>");
 
 			config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, !splitFile);
 
@@ -869,6 +763,177 @@ Void freac::freacCommandline::Stop()
 	JobConvert::Stop();
 }
 
+Bool freac::freacCommandline::SetConfigDefaults(BoCA::Config *config, Bool userConfig)
+{
+	/* Make mandatory config adjustments.
+	 */
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, True);
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, True);
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeOnTheFlyID, True);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsDeleteAfterEncodingID, False);
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsAddEncodedTracksID, False);
+
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
+
+	config->SetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, False);
+
+	config->SetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, False);
+	config->SetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, False);
+
+	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, True);
+
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoSelectID, True);
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbEnableCacheID, True);
+
+	config->SetIntValue(Config::CategoryRipperID, Config::RipperEjectAfterRippingID, False);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsPreferCueSheetsToChaptersID, True);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromFilesID, False);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToFilesID, False);
+
+	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, False);
+	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, False);
+
+	/* Don't set defaults for user-provided configs.
+	 */
+	if (userConfig) return True;
+
+	/* Set configurable values to defaults.
+	 */
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "lame-enc");
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, "<filename>");
+
+	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, False);
+	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, 0);
+
+	config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, False);
+
+	config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, 0);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, True);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteChaptersID, True);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsReadEmbeddedCueSheetsID, True);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, True);
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, True);
+
+	return True;
+}
+
+Bool freac::freacCommandline::SetEncoderDefaults(BoCA::Config *config, Bool userConfig)
+{
+	/* Check dynamic encoder parameters.
+	 */
+	Registry	&boca	   = Registry::Get();
+	Component	*component = boca.CreateComponentByID(String(encoderID).Append("-enc"));
+
+	if (component == NIL)
+	{
+		Console::OutputString(String("Encoder '").Append(encoderID).Append("' could not be initialized!\n"));
+
+		return False;
+	}
+
+	Bool				 broken	    = False;
+	const Array<Parameter *>	&parameters = component->GetParameters();
+
+	foreach (Parameter *parameter, parameters)
+	{
+		ParameterType		 type	 = parameter->GetType();
+		String			 name	 = parameter->GetName();
+		String			 spec	 = parameter->GetArgument();
+		const Array<Option *>	&options = parameter->GetOptions();
+		Float			 step	 = parameter->GetStepSize();
+		String			 def	 = parameter->GetDefault();
+
+		if (type == PARAMETER_TYPE_SWITCH)
+		{
+			/* Enable switch if given on command line.
+			 */
+			Bool	 enabled = ScanForEncoderOption(spec);
+
+			if (!userConfig || enabled) config->SetIntValue(component->GetID(), name, enabled);
+		}
+		else if (type == PARAMETER_TYPE_SELECTION)
+		{
+			/* Get selection value.
+			 */
+			String	 value;
+			Bool	 present = ScanForEncoderOption(String(spec).Trim(), &value);
+
+			/* Check if given value is allowed.
+			 */
+			if (present)
+			{
+				Bool	 found = False;
+
+				/* Check case sensitive.
+				 */
+				foreach (Option *option, options)
+				{
+					if (found || option->GetValue() != value) continue;
+
+					found = True;
+				}
+
+				/* Check ignoring case.
+				 */
+				value = value.ToLower();
+
+				foreach (Option *option, options)
+				{
+					if (found || option->GetValue().ToLower() != value) continue;
+
+					found = True;
+					value = option->GetValue();
+				}
+
+				if (!found) broken = True;
+			}
+
+			/* Set selection to given value.
+			 */
+			if (!userConfig || present)
+			{
+				config->SetIntValue(component->GetID(), String("Set ").Append(name), present);
+				config->SetStringValue(component->GetID(), name, value);
+			}
+		}
+		else if (type == PARAMETER_TYPE_RANGE)
+		{
+			/* Set range parameter to given value.
+			 */
+			String	 value;
+			Bool	 present = ScanForEncoderOption(String(spec).Trim(), &value);
+
+			if (!userConfig || present)
+			{
+				config->SetIntValue(component->GetID(), String("Set ").Append(name), present);
+				config->SetIntValue(component->GetID(), name, Math::Round(value.ToFloat() / step));
+			}
+
+			/* Check if given value is valid.
+			 */
+			Bool	 valid = True;
+
+			foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MIN && value.ToFloat() < option->GetValue().ToFloat()) valid = False;
+			foreach (Option *option, options) if (option->GetType() == OPTION_TYPE_MAX && value.ToFloat() > option->GetValue().ToFloat()) valid = False;
+
+			if (present && !valid) broken = True;
+		}
+	}
+
+	boca.DeleteComponent(component);
+
+	if (broken) Console::OutputString(String("Invalid arguments for encoder '").Append(encoderID).Append("'!\n"));
+
+	return !broken;
+}
+
 Void freac::freacCommandline::ShowHelp(const String &helpenc)
 {
 	Console::OutputString(String(freac::appLongName).Append(" ").Append(freac::version).Append(" (").Append(freac::architecture).Append(") command line interface\n").Append(freac::copyright).Append("\n\n"));
@@ -893,7 +958,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 				Console::OutputString("  --list-drives\t\t\tPrint a list of available CD drives\n\n");
 				Console::OutputString("  --drive=<n|id>  | -cd <n|id>\tSpecify active CD drive (0..n or device path)\n");
 				Console::OutputString("  --track=<n>     | -t <n>\tSpecify input track(s) to rip (e.g. 1-5,7,9 or 'all')\n");
-				Console::OutputString("  --timeout=<s>\t\t\tTimeout for CD track ripping (default is 120 seconds)\n");
+				Console::OutputString("  --timeout=<s>\t\t\tTimeout for CD track ripping (disabled by default)\n");
 				Console::OutputString("  --cddb\t\t\tEnable CDDB database lookup\n");
 				Console::OutputString("  --eject\t\t\tEject disc after ripping\n\n");
 			}

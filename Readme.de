@@ -162,6 +162,7 @@ Geschichte
 			- CDs von Alben mit mehreren CDs werden im Album-Modus des Tag-Editors jetzt separat angezeigt
 			- Bei Bearbeitungen im Album-Modus des Tag-Editors werden nur noch geänderte Felder aktualisiert
 			- Unterstützung für Replay-Gain-Werte in MP4- und WMA-Metadaten hinzugefügt
+			- Überschreibe Einstellungen bei Verwendung von freaccmd's --config Option nicht mehr mit Standardwerten
 
 		- Bug fixes
 

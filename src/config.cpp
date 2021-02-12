@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -253,9 +253,6 @@ const String	 freac::Config::JoblistFieldSizesDefault			= "120,*,50,80,100";
  */
 const String	 freac::Config::RipperActiveDriveID				= "ActiveDrive";
 const Int	 freac::Config::RipperActiveDriveDefault			= 0;
-
-const String	 freac::Config::RipperLockTrayID				= "LockTray";
-const Bool	 freac::Config::RipperLockTrayDefault				= False;
 
 const String	 freac::Config::RipperEjectAfterRippingID			= "EjectAfterRipping";
 const Bool	 freac::Config::RipperEjectAfterRippingDefault			= False;
