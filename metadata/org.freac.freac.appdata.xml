@@ -47,6 +47,47 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.1.4" date="2021-02-14">
+            <description>
+                <p>Improvements:</p>
+                <ul>
+                    <li>Improved support for reading CD-Text</li>
+                    <li>Added an HDCD decoder DSP filter</li>
+                    <li>Added catalog number and barcode fields to tag editor</li>
+                    <li>Added quality (VBR) setting to FDK-AAC configuration dialog</li>
+                    <li>Improved MP3, AAC and Opus encoding performance by up to 30%</li>
+                    <li>Improved multi-monitor support on X11 based systems</li>
+                    <li>Discs of multi-disc albums are now shown separately in tag editor album mode</li>
+                    <li>Update only changed fields when making edits in tag editor album mode</li>
+                    <li>Added support for Replay Gain values in MP4 and WMA metadata</li>
+                    <li>Do not override settings with default values when using freaccmd's --config option</li>
+                </ul>
+                <p>Bug fixes:</p>
+                <ul>
+                   <li>Fixed invalid length written to very long Opus and Speex files (longer than 12 ½ hours at 48 kHz)</li>
+                   <li>Fixed decoding of some very short Opus, Vorbis and Speex files</li>
+                   <li>Fixed written MP4 chapters being invisible to some applications when using Nero AAC</li>
+                   <li>Fixed hang/crash when opening WavPack, Musepack, TAK and OptimFROG files with chapters</li>
+                   <li>Fixed issues submitting CDDB information for new CDs (without existing entries)</li>
+                   <li>Fixed output sample rate being limited to 192 kHz</li>
+                   <li>Fixed freaccmd randomly failing to process files in rare cases</li>
+                   <li>Fixed bad user interface colors on some Linux distributions</li>
+                </ul>
+                <p>Updated codecs:</p>
+                <ul>
+                    <li>Switched from FAAC to FDK-AAC for AAC encoding</li>
+                    <li>Updated Monkey's Audio to version 6.11</li>
+                    <li>Updated WavPack to version 5.4.0</li>
+                    <li>Updated mpg123 to version 1.26.4</li>
+                    <li>Updated FAAD2 to version 2.10.0</li>
+                </ul>
+                <p>Updated translations:</p>
+                <ul>
+                    <li>Updated Romanian translation</li>
+                    <li>Updated Portuguese (Brazilian) translation</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1.3" date="2020-10-11">
             <description>
                 <p>General changes:</p>

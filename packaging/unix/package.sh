@@ -1,7 +1,7 @@
 #!/bin/bash
 PREFIX=/usr/local
-#RELEASE=1.1.3
-RELEASE=1.1.3-`date +"%Y%m%d"`
+RELEASE=1.1.4
+#RELEASE=1.1.4-`date +"%Y%m%d"`
 
 SMOOTHVER=0.9
 SMOOTHREV=0
@@ -66,8 +66,8 @@ cp $PREFIX/lib/libcdio_paranoia.so.2 freac/libcdio_paranoia.so.2
 
 mkdir -p freac/codecs
 
-cp $PREFIX/lib/libfaac.so freac/codecs/faac.so
 cp $PREFIX/lib/libfaad.so freac/codecs/faad.so
+cp $PREFIX/lib/libfdk-aac.so freac/codecs/fdk-aac.so
 cp $PREFIX/lib/libFLAC.so freac/codecs/FLAC.so
 cp $PREFIX/lib/libMAC.so freac/codecs/MAC.so
 cp $PREFIX/lib/libmpg123.so freac/codecs/mpg123.so

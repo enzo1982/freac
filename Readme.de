@@ -151,7 +151,6 @@ Geschichte
 
 		- Verbesserungen
 
-			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Unterstützung für das Auslesen von CD-Text verbessert
 			- DSP-Filter zum Dekodieren von HDCDs hinzugefügt
 			- Felder für Katalognummer und Barcode zum Tag-Editor hinzugefügt
@@ -184,9 +183,8 @@ Geschichte
 			- mpg123 auf Version 1.26.4 aktualisiert
 			- FAAD2 auf Version 2.10.0 aktualisiert
 
-		- Neue und aktualisierte Übersetzungen
+		- Aktualisierte Übersetzungen
 
-			- Persische Übersetzung hinzugefügt
 			- Rumänische Übersetzung aktualisiert
 			- Portugiesische (brasilianisch) Übersetzung aktualisiert
 

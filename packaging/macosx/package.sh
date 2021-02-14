@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#RELEASE=1.1.3
-RELEASE=1.1.3-`date +"%Y%m%d"`
+RELEASE=1.1.4
+#RELEASE=1.1.4-`date +"%Y%m%d"`
 
-VERSION="v1.1.3"
+VERSION="v1.1.4"
 
 UNAME=macos
 
