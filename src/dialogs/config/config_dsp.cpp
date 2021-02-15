@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -258,7 +258,7 @@ Void freac::ConfigureDSP::OnConfigureComponent()
 	if (component != NIL)
 	{
 		if (ConfigComponentDialog(component).ShowDialog() != Error()) onChangeComponentSettings.Emit(dspID);
-		else							      BoCA::Utilities::ErrorMessage("No configuration dialog available for:\n\n%1", component->GetName());
+		else							      BoCA::Utilities::InfoMessage("No configuration dialog available for:\n\n%1", component->GetName());
 
 		boca.DeleteComponent(component);
 	}
