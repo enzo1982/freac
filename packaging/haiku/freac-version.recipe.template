@@ -39,7 +39,7 @@ PROVIDES="
 	"
 REQUIRES="
 	haiku$secondaryArchSuffix
-	boca$secondaryArchSuffix >= 1.0.3
+	boca$secondaryArchSuffix >= 1.0.4
 	smooth$secondaryArchSuffix >= 0.9.6
 	cmd:ffmpeg
 	cmd:mpcdec
@@ -52,7 +52,7 @@ REQUIRES="
 	lib:libcdio_cdda$secondaryArchSuffix
 	lib:libcdio_paranoia$secondaryArchSuffix
 	lib:libfaad$secondaryArchSuffix
-	lib:libfdk-aac$secondaryArchSuffix
+	lib:libfdk_aac$secondaryArchSuffix
 	lib:libFLAC$secondaryArchSuffix
 	lib:libMAC$secondaryArchSuffix >= 8
 	lib:libmp3lame$secondaryArchSuffix
@@ -69,7 +69,7 @@ REQUIRES="
 
 BUILD_REQUIRES="
 	haiku${secondaryArchSuffix}_devel
-	boca${secondaryArchSuffix}_devel >= 1.0.3
+	boca${secondaryArchSuffix}_devel >= 1.0.4
 	smooth${secondaryArchSuffix}_devel >= 0.9.6
 	devel:libboca_1.0$secondaryArchSuffix >= 2
 	"
