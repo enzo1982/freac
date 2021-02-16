@@ -67,6 +67,10 @@ Installation
 		Um es zu installieren, öffnen Sie die .dmg-Datei und ziehen Sie die fre:ac Anwendung an einen Ort Ihrer Wahl,
 		z.B. den Desktop oder den Ordner Programme. Doppelklicken Sie anschließend die Anwendung, um fre:ac zu starten.
 
+		Alternativ können Nutzer des Paketmanagers MacPorts (www.macports.org) fre:ac auch mit folgendem Befehl installieren:
+		
+			sudo port install freac
+
 	Linux:
 
 		fre:ac steht als Snap-, Flatpak- oder AppImage-Paket bereit.
