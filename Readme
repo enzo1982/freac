@@ -158,6 +158,10 @@ History
 
 			- improved support for languages written from right to left
 
+		- Bug fixes
+
+			- fixed hotspot for genre edit field utility menu not covering the whole with of the field
+
 		- New translations
 
 			- added Persian translation

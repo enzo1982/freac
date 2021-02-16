@@ -157,6 +157,10 @@ Geschichte
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 
+		- Behobene Fehler
+
+			- Probem mit nicht auf der gesamten Breite des Genre-Eingabefeldes aktivem Hotspot für das Hilfsmenü behoben
+
 		- Neue Übersetzungen
 
 			- Persische Übersetzung hinzugefügt
@@ -177,7 +181,7 @@ Geschichte
 			- Unterstützung für Replay-Gain-Werte in MP4- und WMA-Metadaten hinzugefügt
 			- Überschreibe Einstellungen bei Verwendung von freaccmd's --config Option nicht mehr mit Standardwerten
 
-		- Bug fixes
+		- Behobene Fehler
 
 			- Schreiben von falschen Längenangaben in sehr lange Opus- und Speex-Dateien behoben (länger als 12 ½ Stunden bei 48 kHz)
 			- Problem beim Dekodieren einiger sehr kurzer Opus-, Vorbis- und Speex-Dateien behoben

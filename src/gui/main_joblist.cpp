@@ -724,6 +724,7 @@ Void freac::LayerJoblist::OnChangeSize(const Size &nSize)
 	htsp_edit_title->SetWidth(info_edit_title->GetWidth());
 	htsp_edit_artist->SetWidth(info_edit_artist->GetWidth());
 	htsp_edit_album->SetWidth(info_edit_album->GetWidth());
+	htsp_edit_genre->SetWidth(info_edit_genre->GetWidth());
 
 	/* Update status area.
 	 */
