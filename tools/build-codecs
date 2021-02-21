@@ -527,8 +527,11 @@ for package in ${packages[@]}; do
 
   elif [ $package == musepack ]; then
     # Build MusePack
-    prepare="touch include/config.h.in; head -n 34 configure.in >> configure.ac; echo \"AM_CONDITIONAL([HAVE_VISIBILITY], [false])\" >> configure.ac; echo \"AC_CHECK_LIB([m],[cos])\" >> configure.ac; tail -n 18 configure.in >> configure.ac; rm configure.in"
+    prepare="touch include/config.h.in; head -n 34 configure.in >> configure.ac; echo \"AM_CONDITIONAL([HAVE_VISIBILITY], [false])\" >> configure.ac; echo \"AC_CHECK_LIB([m],[cos])\" >> configure.ac; tail -n 18 configure.in >> configure.ac; rm configure.in; mkdir -p m4"
     configure_flags="--disable-shared"
+    if [[ $uname == *MINGW* ]]; then
+      prepare="$prepare; sed -i -e \"s/mpc2sv8//\" Makefile.am"
+    fi
     build $musepack_location "mpcenc/mpcenc.$execext mpcdec/mpcdec.$execext" "mpcenc.$execext mpcdec.$execext"
 
   elif [ $package == opus ]; then
