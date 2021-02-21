@@ -118,6 +118,7 @@ flac_version=1.3.3
 lame_version=3.100
 libcdio_version=2.1.0
 libcdio_paranoia_version=10.2+2.0.1
+libcdrip_version=2.4
 libogg_version=1.3.4
 libsamplerate_version=0.1.9
 libsndfile_version=1.0.28
@@ -142,6 +143,7 @@ flac_location=https://ftp.osuosl.org/pub/xiph/releases/flac/flac-$flac_version.t
 lame_location=https://sourceforge.net/projects/lame/files/lame/$lame_version/lame-$lame_version.tar.gz
 libcdio_location=https://ftp.gnu.org/gnu/libcdio/libcdio-$libcdio_version.tar.bz2
 libcdio_paranoia_location=https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-$libcdio_paranoia_version.tar.bz2
+libcdrip_location=http://cdrip.org/releases/libcdrip-$libcdrip_version.zip
 libogg_location=https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-$libogg_version.tar.xz
 libsamplerate_location=http://www.mega-nerd.com/SRC/libsamplerate-$libsamplerate_version.tar.gz
 libsndfile_location=http://www.mega-nerd.com/libsndfile/files/libsndfile-$libsndfile_version.tar.gz
@@ -279,13 +281,15 @@ packages=$@
 
 if [ ${#packages[0]} -eq 0 ]; then
   echo "Usage: build.sh [{list of packages}|all]"
-  echo "Available packages: exhale faac faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack"
+  echo "Available packages: exhale faac faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libcdrip libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack"
   echo
 elif [ "${packages[0]}" == all ]; then
   if [[ $uname == Darwin ]]; then
     packages=( exhale faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 opus speex vorbis wavpack )
   elif [[ $uname == Haiku ]]; then
     packages=( exhale faac faad2 fdk-aac flac lame libogg mpg123 opus speex vorbis )
+  elif [[ $uname == *MINGW* ]]; then
+    packages=( exhale faac faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libcdrip libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack )
   else
     packages=( exhale faac faad2 fdk-aac ffmpeg flac lame libcdio libcdio-paranoia libogg libsamplerate libsndfile mac mp4v2 mpg123 musepack opus rnnoise rubberband speex vorbis wavpack )
   fi
@@ -434,6 +438,17 @@ for package in ${packages[@]}; do
       configure_exports="LIBCDIO_CFLAGS=\"-I/usr/local/include\" LIBCDIO_LIBS=\"-L/usr/local/lib -lcdio\""
     fi
     build $libcdio_paranoia_location "lib/cdda_interface/.libs/libcdio_cdda$sharedinfix.$sharedext lib/paranoia/.libs/libcdio_paranoia$sharedinfix.$sharedext" "libcdio_cdda.$sharedext libcdio_paranoia.$sharedext"
+
+  elif [ $package == libcdrip ]; then
+    # Build libcdrip
+    export CFLAGS="$cflags -Os"
+    configure_flags="--disable-cxx"
+    if [[ $x86_64 == true ]]; then
+      make_flags="-f Makefile.x64"
+      build $libcdrip_location bin64/CDRip.$sharedext CDRip.$sharedext
+    else
+      build $libcdrip_location bin/CDRip.$sharedext CDRip.$sharedext
+    fi
 
   elif [ $package == libogg ]; then
     # Build Ogg
