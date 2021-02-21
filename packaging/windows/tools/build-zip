@@ -59,16 +59,16 @@ cd ..
 # Get closed source codecs
 cd tools
 
-wget http://www.thbeck.de/Download/TAK_2.3.0.zip
+wget https://freac.org/patches/TAK_2.3.0.zip
 unzip TAK_2.3.0.zip -d TAK-2.3.0
 cp TAK-2.3.0/Applications/takc.exe .
 
 if [ "$BUILD_X86_64" = True ]; then
-  wget http://losslessaudio.org/Downloads/A1C0/5100/Win/OptimFROG_Win_x64_5100.zip
+  wget https://freac.org/patches/OptimFROG_Win_x64_5100.zip
   unzip OptimFROG_Win_x64_5100.zip
   cp OptimFROG_Win_x64_5100/ofr.exe .
 else
-  wget http://losslessaudio.org/Downloads/A1C0/5100/Win/OptimFROG_Win_x86_SSE2_5100.zip
+  wget https://freac.org/patches/OptimFROG_Win_x86_SSE2_5100.zip
   unzip OptimFROG_Win_x86_SSE2_5100.zip
   cp OptimFROG_Win_x86_SSE2_5100/ofr.exe .
 fi
