@@ -1,0 +1,50 @@
+name: "Continuous build (Windows)"
+
+on:
+  push:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            arch: X86_64
+            system: system64
+
+          - os: windows-latest
+            arch: X86
+            system: system
+
+    runs-on: ${{ matrix.os }}
+
+    defaults:
+      run:
+        shell: cmd
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Checkout smooth
+        uses: actions/checkout@v2
+        with:
+          repository: enzo1982/smooth
+          path: smooth
+
+      - name: Checkout BoCA
+        uses: actions/checkout@v2
+        with:
+          repository: enzo1982/BoCA
+          path: boca
+
+      - name: Build
+        env:
+          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        run: |
+          set CDK_INSTALL_PATH=%CD%\boca
+          set PATH=%CDK_INSTALL_PATH%\${{ matrix.system }}\bin
+          mkdir %CDK_INSTALL_PATH%\${{ matrix.system }}\etc 2> nul
+          set BUILD_WIN32=True
+          set BUILD_${{ matrix.arch }}=True
+          bash ./packaging/windows/tools/build-zip

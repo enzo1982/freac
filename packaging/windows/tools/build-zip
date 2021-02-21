@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+
+# Exit on error
+set -e
+
+# Number of parallel jobs
+jobs=$NUMBER_OF_PROCESSORS
+
+# bin and lib directories
+if [ "$BUILD_X86_64" = True ]; then
+  BIN=bin64
+  LIB=lib64
+  ARCH=-x64
+else
+  BIN=bin
+  LIB=lib
+fi
+
+# Build smooth
+cd smooth
+
+CONFIG="release"
+
+make config=$CONFIG BUILD_V8=False -j$jobs
+
+mkdir -p ../boca/$LIB
+cp $LIB/libsmooth.a ../boca/$LIB
+cp -R include/smooth* ../boca/include
+
+cd ..
+
+# Build BoCA
+cd boca
+
+CONFIG="release"
+
+make config=$CONFIG -j$jobs
+
+cd ..
+
+# Build fre:ac
+CONFIG="release"
+
+make config=$CONFIG USE_V8=False -j$jobs
+
+# Build codecs and DSP libraries
+cd tools
+
+./build-codecs faad2 fdk-aac mp4v2
+./build-codecs lame mpg123
+./build-codecs libogg opus speex vorbis
+./build-codecs flac mac musepack wavpack
+./build-codecs ffmpeg libsndfile
+./build-codecs libsamplerate rnnoise rubberband
+./build-codecs libcdrip
+
+cd ..
+
+# Get closed source codecs
+cd tools
+
+wget http://www.thbeck.de/Download/TAK_2.3.0.zip
+unzip TAK_2.3.0.zip -d TAK-2.3.0
+cp TAK-2.3.0/Applications/takc.exe .
+
+if [ "$BUILD_X86_64" = True ]; then
+  wget http://losslessaudio.org/Downloads/A1C0/5100/Win/OptimFROG_Win_x64_5100.zip
+  unzip OptimFROG_Win_x64_5100.zip
+  cp OptimFROG_Win_x64_5100/ofr.exe .
+else
+  wget http://losslessaudio.org/Downloads/A1C0/5100/Win/OptimFROG_Win_x86_SSE2_5100.zip
+  unzip OptimFROG_Win_x86_SSE2_5100.zip
+  cp OptimFROG_Win_x86_SSE2_5100/ofr.exe .
+fi
+
+cd ..
+
+# Copy codecs
+mkdir -p $BIN/codecs
+mkdir -p $BIN/codecs/cmdline
+cp tools/*.dll $BIN/codecs
+cp tools/*.exe $BIN/codecs/cmdline
+mv $BIN/codecs/CDRip.dll $BIN
+
+# Copy smooth
+cp smooth/$BIN/smooth.dll smooth/$BIN/iconv.dll smooth/$BIN/translator.exe $BIN
+
+# Copy BoCA
+cp boca/$BIN/*.dll $BIN/boca
+rm $BIN/boca/boca_decoder_aiff.1.0.dll $BIN/boca/boca_decoder_au.1.0.dll $BIN/boca/boca_decoder_bonk.1.0.dll $BIN/boca/boca_decoder_lame.1.0.dll $BIN/boca/boca_decoder_mad.1.0.dll $BIN/boca/boca_decoder_voc.1.0.dll $BIN/boca/boca_decoder_wave.1.0.dll
+rm $BIN/boca/boca_encoder_bonk.1.0.dll $BIN/boca/boca_encoder_wave.1.0.dll
+rm $BIN/boca/boca_output_waveout.1.0.dll
+
+if [ "$BUILD_X86_64" = True ]; then
+  rm $BIN/boca/boca_encoder_bladeenc.1.0.dll
+fi
+
+cp boca/scripts/*.xml $BIN/boca
+cp boca/scripts/win32/*.xml $BIN/boca
+rm $BIN/boca/boca_decoder_alac.1.0.xml $BIN/boca/boca_decoder_ffmpeg_mac.1.0.xml $BIN/boca/boca_decoder_ffmpeg_mpc.1.0.xml $BIN/boca/boca_decoder_ffmpeg_tak.1.0.xml $BIN/boca/boca_decoder_ffmpeg_wavpack.1.0.xml $BIN/boca/boca_decoder_ffmpeg_wma.1.0.xml $BIN/boca/boca_decoder_fhg.1.0.xml $BIN/boca/boca_decoder_lame.1.0.xml $BIN/boca/boca_decoder_mp3hd.1.0.xml $BIN/boca/boca_decoder_purevoice.1.0.xml $BIN/boca/boca_decoder_speex.1.0.xml $BIN/boca/boca_decoder_vorbis.1.0.xml
+rm $BIN/boca/boca_encoder_aacplusenc.1.0.xml $BIN/boca/boca_encoder_atrac3enc.1.0.xml $BIN/boca/boca_encoder_ffmpeg_ac3.1.0.xml $BIN/boca/boca_encoder_ffmpeg_mp2.1.0.xml $BIN/boca/boca_encoder_ffmpeg_wma.1.0.xml $BIN/boca/boca_encoder_fhg.1.0.xml $BIN/boca/boca_encoder_mp3hd.1.0.xml $BIN/boca/boca_encoder_speex.1.0.xml $BIN/boca/boca_encoder_vorbis.1.0.xml $BIN/boca/boca_encoder_waon.1.0.xml
+
+cp -R boca/components/dsp/rnnoise/boca.dsp.rnnoise $BIN/boca
+
+# Copy fre:ac files
+cp COPYING Readme Readme.de $BIN
+cp -R components/extension/donate/freac.extension.donate $BIN/boca
+cp -R components/extension/langnotify/freac.extension.langnotify $BIN/boca
+cp -R components/extension/notifier/freac.extension.notifier $BIN/boca
+
+# Copy other dependencies
+if [ "$BUILD_X86_64" = True ]; then
+  cp boca/system64/bin/libgcc.dll boca/system64/bin/libstdc++.dll $BIN
+else
+  cp boca/system/bin/libgcc.dll boca/system/bin/liblibstdc++.dll $BIN
+fi
+
+# Create zip package
+mv $BIN freac-continuous-windows$ARCH
+zip -9 freac-continuous-windows$ARCH.zip -r freac-continuous-windows$ARCH
+
+# Upload build to GitHub
+bash ./packaging/windows/tools/upload-build freac*.zip
