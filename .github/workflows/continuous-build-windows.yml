@@ -2,6 +2,10 @@ name: "Continuous build (Windows)"
 
 on:
   push:
+    branches:
+      - '*'
+    tags-ignore:
+      - 'continuous*'
 
 jobs:
   build:
