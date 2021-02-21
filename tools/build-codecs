@@ -387,6 +387,9 @@ for package in ${packages[@]}; do
     fi
     if [[ $uname == Darwin ]]; then
       configure_flags="$configure_flags --disable-asm-optimizations"
+    elif [[ $uname == *MINGW* ]]; then
+      export CFLAGS="$CFLAGS -I$(pwd)/libogg-$libogg_version/include"
+      export LDFLAGS="$LDFLAGS -L$(pwd)/libogg-$libogg_version/src/.libs"
     fi
     build $flac_location src/libFLAC/.libs/libFLAC$sharedinfix.$sharedext FLAC.$sharedext
     if [[ $uname == *MINGW* ]]; then
@@ -582,6 +585,10 @@ for package in ${packages[@]}; do
       else
         export CFLAGS="$cflags -mfpmath=sse"
       fi
+    fi
+    if [[ $uname == *MINGW* ]]; then
+      export CFLAGS="$CFLAGS -I$(pwd)/libogg-$libogg_version/include"
+      export LDFLAGS="$LDFLAGS -L$(pwd)/libogg-$libogg_version/src/.libs"
     fi
     build $vorbis_location "lib/.libs/libvorbis$sharedinfix.$sharedext lib/.libs/libvorbisenc$sharedinfix.$sharedext" "Vorbis.$sharedext VorbisEnc.$sharedext"
     if [[ $uname == *MINGW* ]]; then
