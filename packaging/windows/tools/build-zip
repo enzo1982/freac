@@ -93,6 +93,10 @@ rm $BIN/boca/boca_output_waveout.1.0.dll
 
 if [ "$BUILD_X86_64" = True ]; then
   rm $BIN/boca/boca_encoder_bladeenc.1.0.dll
+else
+  rm $BIN/boca/boca_decoder_twinvq.1.0.dll
+  rm $BIN/boca/boca_encoder_twinvq.1.0.dll
+  rm $BIN/boca/boca_output_winamp.1.0.dll
 fi
 
 cp boca/scripts/*.xml $BIN/boca
