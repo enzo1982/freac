@@ -161,6 +161,10 @@ Geschichte
 
 			- Probem mit nicht auf der gesamten Breite des Genre-Eingabefeldes aktivem Hotspot für das Hilfsmenü behoben
 
+		- Aktualisierte Codecs
+
+			- FFmpeg auf Version 4.3.2 aktualisiert
+
 		- Neue Übersetzungen
 
 			- Persische Übersetzung hinzugefügt

@@ -162,6 +162,10 @@ History
 
 			- fixed hotspot for genre edit field utility menu not covering the whole with of the field
 
+		- Updated codecs
+
+			- updated FFmpeg to version 4.3.2
+
 		- New translations
 
 			- added Persian translation
