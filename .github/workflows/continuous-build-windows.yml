@@ -47,7 +47,7 @@ jobs:
           RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         run: |
           set CDK_INSTALL_PATH=%CD%\boca
-          set PATH=%CDK_INSTALL_PATH%\${{ matrix.system }}\bin
+          set PATH=%CDK_INSTALL_PATH%\${{ matrix.system }}\bin;%PATH%
           mkdir %CDK_INSTALL_PATH%\${{ matrix.system }}\etc 2> nul
           set BUILD_WIN32=True
           set BUILD_${{ matrix.arch }}=True
