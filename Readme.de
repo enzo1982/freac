@@ -160,6 +160,7 @@ Geschichte
 		- Behobene Fehler
 
 			- Probem mit nicht auf der gesamten Breite des Genre-Eingabefeldes aktivem Hotspot für das Hilfsmenü behoben
+			- Gelegentliche Abstürze bei der Auswahl von Kodierer-Unterformaten über das Menü "Kodierung starten mit" behoben
 
 		- Aktualisierte Codecs
 
