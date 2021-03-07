@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -448,34 +448,37 @@ Bool freac::CDDB::ParseCDDBRecord(const String &record, CDDBInfo &cddbInfo)
 
 /* Format a CDDB entry according to the rules
  * from the freedb how-to. Replace special
- * characters and split lines at 256 chars.
+ * characters and split lines at 256 chars
+ * minus two to account for line breaks.
  */
 String freac::CDDB::FormatCDDBEntry(const String &entry, const String &value)
 {
 	if (value == NIL) return String(entry).Append("=\n");
 
 	String	 result;
+	Int	 totalChars = value.Length();
+	Int	 lineChars  = 256 - entry.Length() - 1 - 2;
 
-	for (Int i = 0; i < value.Length(); )
+	for (Int i = 0; i < totalChars; )
 	{
 		String	 line = String(entry).Append("=");
 
-		for (Int c = 0; c < 254 - entry.Length() && i < value.Length(); c++, i++)
+		for (Int c = 0; c < lineChars && i < totalChars; c++, i++)
 		{
 			if (value[i] == '\n' || value[i] == '\t' || value[i] == '\\')
 			{
-				if (c >= 253 - entry.Length()) break;
+				if (c >= lineChars - 1) break;
 
 				if (value[i] == '\n') line.Append("\\n");
 				if (value[i] == '\t') line.Append("\\t");
 				if (value[i] == '\\') line.Append("\\\\");
 
 				c++;
+
+				continue;
 			}
-			else
-			{
-				line[line.Length()] = value[i];
-			}
+
+			line[line.Length()] = value[i];
 		}
 
 		result.Append(line).Append("\n");
