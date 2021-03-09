@@ -79,7 +79,7 @@ if [ "$AppImageArch" = x86_64 ]; then
 
   make BUILD_X86=True config=$CONFIG clean
   make BUILD_X86=True config=$CONFIG -j$jobs
-  sudo install ../../../../bin/boca_encoder_coreaudioconnect.1.0 /usr/local/lib/boca
+  sudo make BUILD_X86=True config=$CONFIG install
 
   cd ../../../..
 fi
