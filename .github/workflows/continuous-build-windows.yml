@@ -15,10 +15,12 @@ jobs:
           - os: windows-latest
             arch: X86_64
             system: system64
+            mingw: 64
 
           - os: windows-latest
             arch: X86
             system: system
+            mingw: 32
 
     runs-on: ${{ matrix.os }}
 
@@ -47,8 +49,9 @@ jobs:
           RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         run: |
           set CDK_INSTALL_PATH=%CD%\boca
-          set PATH=%CDK_INSTALL_PATH%\${{ matrix.system }}\bin;%PATH%
-          mkdir %CDK_INSTALL_PATH%\${{ matrix.system }}\etc 2> nul
+          set PATH=%CDK_INSTALL_PATH%\${{ matrix.system }}\usr\bin;%PATH%
+          mkdir %CDK_INSTALL_PATH%\${{ matrix.system }}\tmp 2> nul
+          set MSYSTEM=MINGW${{ matrix.mingw }}
           set BUILD_WIN32=True
           set BUILD_${{ matrix.arch }}=True
           bash ./packaging/windows/tools/build-zip
