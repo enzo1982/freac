@@ -851,6 +851,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Макс. ширина полосы пропускания AAC (Гц)</entry>
 	  <entry id="33210" string="worse">хуже</entry>
 	  <entry id="33211" string="better">лучше</entry>
+	  <entry id="33212" string="auto">авто</entry>
 	</section>
 
 	<section name="Format">

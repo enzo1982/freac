@@ -543,6 +543,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Suurin käytettävä AAC:n taajuuskaista (Hz)</entry>
 	  <entry id="33210" string="worse">huono</entry>
 	  <entry id="33211" string="better">paras</entry>
+	  <entry id="33212" string="auto">automaattinen</entry>
 	</section>
 
 	<section name="Format">

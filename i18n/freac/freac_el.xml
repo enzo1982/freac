@@ -533,6 +533,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Μέγιστη συχνότητα εύρους καναλιού AAC(Hz)</entry>
 	  <entry id="33210" string="worse">χειρότερη</entry>
 	  <entry id="33211" string="better">καλύτερη</entry>
+	  <entry id="33212" string="auto">αυτόματο</entry>
 	</section>
 
 	<section name="Format">

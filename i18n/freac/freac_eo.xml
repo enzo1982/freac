@@ -534,6 +534,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maksimuma AAC-frekvenca bendkapacito por uzi (Hz)</entry>
 	  <entry id="33210" string="worse">malplibona</entry>
 	  <entry id="33211" string="better">plibona</entry>
+	  <entry id="33212" string="auto">aŭtomata</entry>
 	</section>
 
 	<section name="Format">

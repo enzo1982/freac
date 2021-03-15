@@ -846,6 +846,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Max. frekvence šířky pásma AAC v Hz</entry>
 	  <entry id="33210" string="worse">horší</entry>
 	  <entry id="33211" string="better">lepší</entry>
+	  <entry id="33212" string="auto">automaticky</entry>
 	</section>
 
 	<section name="Format">

@@ -846,6 +846,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Frequenza AAC massima da usare (in Hz)</entry>
 	  <entry id="33210" string="worse">peggiore</entry>
 	  <entry id="33211" string="better">migliore</entry>
+	  <entry id="33212" string="auto">automatica</entry>
 	</section>
 
 	<section name="Format">

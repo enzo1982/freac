@@ -543,6 +543,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Gehienezko AAC maiztasun bandazabalera (Hz)</entry>
 	  <entry id="33210" string="worse">okerragoa</entry>
 	  <entry id="33211" string="better">hobea</entry>
+	  <entry id="33212" string="auto">berez</entry>
 	</section>
 
 	<section name="Format">

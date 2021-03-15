@@ -541,6 +541,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Kullanılan maksimum bant genişliği (Hz)</entry>
 	  <entry id="33210" string="worse">Orta</entry>
 	  <entry id="33211" string="better">İyi</entry>
+	  <entry id="33212" string="auto">otomatik</entry>
 	</section>
 
 	<section name="Format">

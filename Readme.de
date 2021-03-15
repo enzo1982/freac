@@ -151,11 +151,12 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.5 (Februar 2021)
+	Version 1.1.5 (März 2021)
 
 		- Verbesserungen
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
+			- Einstellung für Frequenzbandbreite zum FDK-AAC-Konfigurationsdialog hinzugefügt
 
 		- Behobene Fehler
 

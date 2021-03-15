@@ -539,6 +539,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maks. AAC läbilaskeriba laius (Hz)</entry>
 	  <entry id="33210" string="worse">halvem</entry>
 	  <entry id="33211" string="better">parem</entry>
+	  <entry id="33212" string="auto">auto</entry>
 	</section>
 
 	<section name="Format">

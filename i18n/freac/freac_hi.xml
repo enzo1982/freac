@@ -849,6 +849,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">अधिकतम ऐऐसी आवृत्ति बैंडविड्थ का उपयोग करने के लिए</entry>
 	  <entry id="33210" string="worse">और भी बुरा</entry>
 	  <entry id="33211" string="better">बेहतर</entry>
+	  <entry id="33212" string="auto">ऑटो</entry>
 	</section>
 
 	<section name="Format">

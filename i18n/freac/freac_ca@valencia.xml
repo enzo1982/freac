@@ -543,6 +543,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Freqüència màxima per a AAC en Hz</entry>
 	  <entry id="33210" string="worse">Pitjor</entry>
 	  <entry id="33211" string="better">Millor</entry>
+	  <entry id="33212" string="auto">auto</entry>
 	</section>
 
 	<section name="Format">

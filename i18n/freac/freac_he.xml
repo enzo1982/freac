@@ -408,6 +408,7 @@
 	  <entry id="33203" string="Set quality">הגדר איכות</entry>
 	  <entry id="33204" string="Stereo mode">מצב Stereo</entry>
 	  <entry id="33208" string="Maximum bandwidth">רוחב פס מירבי</entry>
+	  <entry id="33212" string="auto">אוטומטי</entry>
 	</section>
 
 	<section name="Format">

@@ -852,6 +852,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Максимална AAC фреквенција протока (Hz)</entry>
 	  <entry id="33210" string="worse">лошије</entry>
 	  <entry id="33211" string="better">боље</entry>
+	  <entry id="33212" string="auto">аутоматско</entry>
 	</section>
 
 	<section name="Format">

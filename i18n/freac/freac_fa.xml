@@ -847,6 +847,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">حداکثر فرکانس پهناي باند AAC (هرتز)</entry>
 	  <entry id="33210" string="worse">بدتر</entry>
 	  <entry id="33211" string="better">بهتر</entry>
+	  <entry id="33212" string="auto">خودکار</entry>
 	</section>
 
 	<section name="Format">

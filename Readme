@@ -152,11 +152,12 @@ Requirements
 History
 -------
 
-	Version 1.1.5 (February 2021)
+	Version 1.1.5 (March 2021)
 
 		- Improvements
 
 			- improved support for languages written from right to left
+			- added frequency bandwidth setting to FDK-AAC encoder configuration dialog
 
 		- Bug fixes
 

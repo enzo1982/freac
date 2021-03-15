@@ -541,6 +541,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Tần số băng thông AAC tối đa được sử dụng (Hz)</entry>
 	  <entry id="33210" string="worse">tệ hơn</entry>
 	  <entry id="33211" string="better">tốt hơn</entry>
+	  <entry id="33212" string="auto">tự động</entry>
 	</section>
 
 	<section name="Format">
