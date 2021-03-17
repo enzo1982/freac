@@ -227,6 +227,7 @@ build () {
   fi
 
   if [[ -f ./configure ]]; then
+    chmod a+x configure
     if [[ -z $host_flags && ! -z $host ]]; then
       eval $configure_exports ./configure --host=$host $configure_flags $prefix
     else
@@ -258,6 +259,9 @@ build () {
   elif [[ -n "$install_script" ]]; then
     $SUDO bash -c "$install_script"
   else
+    if [[ -f ./install-sh ]]; then
+      chmod a+x install-sh
+    fi
     $SUDO $MAKE $make_flags -j$jobs install
   fi
 
@@ -389,7 +393,7 @@ for package in ${packages[@]}; do
       configure_flags="$configure_flags --disable-asm-optimizations"
     elif [[ $uname == *MINGW* ]]; then
       export CFLAGS="$CFLAGS -I$(pwd)/libogg-$libogg_version/include"
-      export LDFLAGS="$LDFLAGS -L$(pwd)/libogg-$libogg_version/src/.libs"
+      export LDFLAGS="$LDFLAGS -L$(pwd)/libogg-$libogg_version/src/.libs -lssp"
     fi
     build $flac_location src/libFLAC/.libs/libFLAC$sharedinfix.$sharedext FLAC.$sharedext
     if [[ $uname == *MINGW* ]]; then
@@ -485,7 +489,6 @@ for package in ${packages[@]}; do
     export CXXFLAGS="$cflags $cflags_unroll"
     patches=${mac_patches[@]}
     patch_levels=(${mac_patch_levels[@]})
-    prepare="chmod 777 configure"
     build $archive Source/MACDll.$sharedext MACDll.$sharedext
 
   elif [ $package == mp4v2 ]; then
@@ -538,7 +541,9 @@ for package in ${packages[@]}; do
       export CFLAGS="$cflags $cflags_unroll -mfpmath=sse"
     fi
     configure_flags="--enable-float-approx"
-    if [[ $uname == Darwin ]] && [[ $x86_64 != true ]]; then
+    if [[ $uname == *MINGW* ]]; then
+      export LDFLAGS="$ldflags -lssp"
+    elif [[ $uname == Darwin ]] && [[ $x86_64 != true ]]; then
       configure_flags="$configure_flags --disable-intrinsics"
     fi
     build $opus_location .libs/libopus$sharedinfix.$sharedext Opus.$sharedext
