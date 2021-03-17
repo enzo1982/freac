@@ -608,8 +608,8 @@ for package in ${packages[@]}; do
     # Build WavPack
     configure_flags="--disable-shared"
     if [[ $uname == *MINGW* ]]; then
-      prepare="sed -i -e \"s/#ifndef LIBWAVPACK_VERSION_STRING/#ifndef LIBWAVPACK_VERSION_STRING2/\" src/common_utils.c"
       configure_flags="$configure_flags --disable-asm"
+      configure_exports="MSYSTEM=MINGW32"
     elif [[ $uname == Darwin ]]; then
       configure_flags="$configure_flags --disable-asm"
     fi
