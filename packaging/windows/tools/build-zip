@@ -114,9 +114,9 @@ cp -R components/extension/notifier/freac.extension.notifier $BIN/boca
 
 # Copy other dependencies
 if [ "$BUILD_X86_64" = True ]; then
-  cp boca/system64/bin/libgcc.dll boca/system64/bin/libstdc++.dll $BIN
+  cp boca/system64/usr/bin/libgcc.dll boca/system64/usr/bin/libstdc++.dll $BIN
 else
-  cp boca/system/bin/libgcc.dll boca/system/bin/libstdc++.dll $BIN
+  cp boca/system/usr/bin/libgcc.dll boca/system/usr/bin/libstdc++.dll $BIN
 fi
 
 # Create zip package
