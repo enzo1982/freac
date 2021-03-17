@@ -52,6 +52,11 @@ fi
 
 cflags_unroll="-funroll-loops"
 
+# Add libssp on MinGW
+if [[ $uname == *MINGW* ]]; then
+  ldflags="$ldflags -lssp"
+fi
+
 # Set host triple on Linux
 if [[ $uname == Linux ]]; then
   if [[ $x86_64 == true ]]; then
@@ -393,7 +398,7 @@ for package in ${packages[@]}; do
       configure_flags="$configure_flags --disable-asm-optimizations"
     elif [[ $uname == *MINGW* ]]; then
       export CFLAGS="$CFLAGS -I$(pwd)/libogg-$libogg_version/include"
-      export LDFLAGS="$LDFLAGS -L$(pwd)/libogg-$libogg_version/src/.libs -lssp"
+      export LDFLAGS="$LDFLAGS -L$(pwd)/libogg-$libogg_version/src/.libs"
     fi
     build $flac_location src/libFLAC/.libs/libFLAC$sharedinfix.$sharedext FLAC.$sharedext
     if [[ $uname == *MINGW* ]]; then
@@ -541,9 +546,7 @@ for package in ${packages[@]}; do
       export CFLAGS="$cflags $cflags_unroll -mfpmath=sse"
     fi
     configure_flags="--enable-float-approx"
-    if [[ $uname == *MINGW* ]]; then
-      export LDFLAGS="$ldflags -lssp"
-    elif [[ $uname == Darwin ]] && [[ $x86_64 != true ]]; then
+    if [[ $uname == Darwin ]] && [[ $x86_64 != true ]]; then
       configure_flags="$configure_flags --disable-intrinsics"
     fi
     build $opus_location .libs/libopus$sharedinfix.$sharedext Opus.$sharedext
