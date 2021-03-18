@@ -199,12 +199,20 @@ String BoCA::ProtocolWriter::GetAdditionalCopyName(const Protocol *protocol)
 
 	const Config	*config = Config::Get();
 
-	/* Find additional copy file name.
+	/* Find folder for additional copy.
 	 */
-	String	 defaultPattern = String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<albumartist> - <album>");
-	String	 outputFolder	= Utilities::GetAbsolutePathName(config->GetStringValue("Settings", "EncoderOutDir", NIL));
+	const Track	&firstTrack	 = trackList->GetFirst();
+	String		 inputFolder	 = File(firstTrack.fileName).GetFilePath();
+	String		 outputFolder	 = Utilities::GetAbsolutePathName(config->GetStringValue("Settings", "EncoderOutDir", NIL));
+	Bool		 writeToInputDir = config->GetIntValue("Settings", "WriteToInputDirectory", False);
+
+	if (writeToInputDir && !firstTrack.isCDTrack && Utilities::IsFolderWritable(inputFolder)) outputFolder = inputFolder;
 
 	if (!outputFolder.EndsWith(Directory::GetDirectoryDelimiter())) outputFolder.Append(Directory::GetDirectoryDelimiter());
+
+	/* Find additional copy file name.
+	 */
+	String	 defaultPattern	 = String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<albumartist> - <album>");
 
 	copyName = String(outputFolder).Append(config->GetStringValue(ConfigureProtocols::ConfigID, "ConversionLogPattern", defaultPattern)).Append(".log");
 
@@ -218,7 +226,7 @@ String BoCA::ProtocolWriter::GetAdditionalCopyName(const Protocol *protocol)
 
 		if (copyName.Trim() == NIL) copyName = defaultPattern;
 
-		const Info	&info = trackList->GetFirst().GetInfo();
+		const Info	&info = firstTrack.GetInfo();
 		DateTime	 date = DateTime::Current();
 
 		copyName.Replace("<artist>", Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));

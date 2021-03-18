@@ -1156,8 +1156,6 @@ Error freac::JobConvert::Perform()
 
 	/* Fill playlist and cuesheet tracks.
 	 */
-	String	 absoluteOutputDir = BoCA::Utilities::GetAbsolutePathName(encoderOutputDirectory);
-
 	foreach (const Track &trackToConvert, tracksToConvert)
 	{
 		Track	 track = convertedTracks.Get(trackToConvert.GetTrackID());
@@ -1174,7 +1172,14 @@ Error freac::JobConvert::Perform()
 			playlistTracks.Add(playlistTrack);
 			cuesheetTracks.Add(playlistTrack);
 
-			track.SaveCoverArtFiles(absoluteOutputDir);
+			/* Save cover art files.
+			 */
+			String	 inputDirectory	 = File(track.fileName).GetFilePath();
+			String	 outputDirectory = encoderOutputDirectory;
+		
+			if (writeToInputDirectory && !track.isCDTrack && BoCA::Utilities::IsFolderWritable(inputDirectory)) outputDirectory = inputDirectory;
+
+			track.SaveCoverArtFiles(BoCA::Utilities::GetAbsolutePathName(outputDirectory));
 		}
 		else
 		{

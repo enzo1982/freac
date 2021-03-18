@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -282,26 +282,11 @@ String freac::Utilities::GetOutputFileName(BoCA::Config *config, const Track &tr
 
 	/* Check if input file folder is writable.
 	 */
-	Int	 lastBs	 = Math::Max(track.fileName.FindLast("\\"), track.fileName.FindLast("/"));
-	Int	 lastDot = track.fileName.FindLast(".");
+	String	 shortInFileName = File(track.fileName).GetFileName().Head(File(track.fileName).GetFileName().FindLast("."));
+	String	 inFileDirectory = File(track.fileName).GetFilePath();
+	Bool	 writeToInputDir = config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 
-	if (lastDot < lastBs) lastDot = track.fileName.Length();
-
-	String	 shortInFileName = track.fileName.SubString(lastBs + 1, lastDot - lastBs - 1);
-	String	 inFileDirectory = track.fileName.Head(lastBs);
-	Bool	 writeToInputDir = False;
-
-	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && !track.isCDTrack)
-	{
-		String		 file = String(inFileDirectory).Append(Directory::GetDirectoryDelimiter()).Append(String::FromInt(S::System::System::Clock())).Append(".temp");
-		OutStream	 temp(STREAM_FILE, file, OS_REPLACE);
-
-		if (temp.GetLastError() == IO_ERROR_OK) writeToInputDir = True;
-
-		temp.Close();
-
-		File(file).Delete();
-	}
+	if (writeToInputDir && (track.isCDTrack || !BoCA::Utilities::IsFolderWritable(inFileDirectory))) writeToInputDir = False;
 
 	/* Construct output filename.
 	 */
@@ -597,22 +582,13 @@ String freac::Utilities::GetPlaylistFileName(BoCA::Config *config, const Track &
 
 	/* Find playlist output folder.
 	 */
-	const Track	&originalTrack = originalTracks.Get(track.GetTrackID());
+	const Track	&originalTrack	 = originalTracks.Get(track.GetTrackID());
 
-	String		 outputDir     = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
-	String		 inputDir      = originalTrack.fileName.Head(Math::Max(originalTrack.fileName.FindLast("\\"), originalTrack.fileName.FindLast("/")) + 1);
+	String		 inputDir	 = File(originalTrack.fileName).GetFilePath().Append(Directory::GetDirectoryDelimiter());
+	String		 outputDir	 = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
+	Bool		 writeToInputDir = config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 
-	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault) && !originalTrack.isCDTrack)
-	{
-		String		 file = String(inputDir).Append(String::FromInt(S::System::System::Clock())).Append(".temp");
-		OutStream	 temp(STREAM_FILE, file, OS_REPLACE);
-
-		if (temp.GetLastError() == IO_ERROR_OK) outputDir = inputDir;
-
-		temp.Close();
-
-		File(file).Delete();
-	}
+	if (writeToInputDir && !originalTrack.isCDTrack && BoCA::Utilities::IsFolderWritable(inputDir)) outputDir = inputDir;
 
 	/* Generate playlist file name.
 	 */
