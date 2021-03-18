@@ -525,7 +525,7 @@ String freac::Utilities::GetSingleOutputFileName(BoCA::Config *config, const Arr
 
 		/* Save selected path.
 		 */
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedSaveDirID, File(singleOutputFileName).GetFilePath());
+		BoCA::Config::Get()->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedSaveDirID, File(singleOutputFileName).GetFilePath());
 	}
 
 	return singleOutputFileName;
