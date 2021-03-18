@@ -27,9 +27,9 @@
     <entry id="14" string="Installing files...">安裝進行中...</entry>
     <entry id="15" string="Installing file:">安裝中檔案：</entry>
     <entry id="16" string="Downloading file:">下載中檔案：</entry>
-    <entry id="17" string="Update complete">更新完成</entry>
-    <entry id="18" string="Your application has been successfully updated!">成功更新程式。</entry>
-    <entry id="19" string="Error">錯誤</entry>
-    <entry id="20" string="Error downloading package!">下載封裝錯誤。</entry>
+    <entry id="18" string="Update complete">更新完成</entry>
+    <entry id="19" string="Your application has been successfully updated!">成功更新程式。</entry>
+    <entry id="20" string="Error">錯誤</entry>
+    <entry id="21" string="Error downloading package!">下載封裝錯誤。</entry>
   </data>
 </LangFile>

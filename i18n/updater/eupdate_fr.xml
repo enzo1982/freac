@@ -27,9 +27,9 @@
     <entry id="14" string="Installing files...">Installation des fichiers...</entry>
     <entry id="15" string="Installing file:">Installation du fichier :</entry>
     <entry id="16" string="Downloading file:">Téléchargement du fichier :</entry>
-    <entry id="17" string="Update complete">Mise à jour complète</entry>
-    <entry id="18" string="Your application has been successfully updated!">L'application a bien été mise à jour !</entry>
-    <entry id="19" string="Error">Erreur</entry>
-    <entry id="20" string="Error downloading package!">Erreur de téléchargement du paquet !</entry>
+    <entry id="18" string="Update complete">Mise à jour complète</entry>
+    <entry id="19" string="Your application has been successfully updated!">L'application a bien été mise à jour !</entry>
+    <entry id="20" string="Error">Erreur</entry>
+    <entry id="21" string="Error downloading package!">Erreur de téléchargement du paquet !</entry>
   </data>
 </LangFile>

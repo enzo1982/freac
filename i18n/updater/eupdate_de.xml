@@ -27,10 +27,11 @@
     <entry id="14" string="Installing files...">Installiere Dateien...</entry>
     <entry id="15" string="Installing file:">Installiere Datei:</entry>
     <entry id="16" string="Downloading file:">Lade Datei herunter:</entry>
-    <entry id="17" string="Update complete">Update vollständig</entry>
-    <entry id="18" string="Your application has been successfully updated!">Die Anwendung wurde erfolgreich aktualisiert!</entry>
-    <entry id="19" string="Error">Fehler</entry>
-    <entry id="20" string="Error downloading package!">Fehler beim Herunterladen des Pakets!</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Fehler beim Installieren von "%1"!&#10;&#10;Der Zugriff auf das Programmverzeichnis wurde verweigert.</entry>
+    <entry id="17" string="Extracting file:">Entpacke Datei:</entry>
+    <entry id="18" string="Update complete">Update vollständig</entry>
+    <entry id="19" string="Your application has been successfully updated!">Die Anwendung wurde erfolgreich aktualisiert!</entry>
+    <entry id="20" string="Error">Fehler</entry>
+    <entry id="21" string="Error downloading package!">Fehler beim Herunterladen des Pakets!</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Fehler beim Installieren von "%1"!&#10;&#10;Der Zugriff auf das Programmverzeichnis wurde verweigert.</entry>
   </data>
 </LangFile>

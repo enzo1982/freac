@@ -27,10 +27,10 @@
     <entry id="14" string="Installing files...">ファイルのインストール中...</entry>
     <entry id="15" string="Installing file:">ファイルのインストール：</entry>
     <entry id="16" string="Downloading file:">ファイルのダウンロード：</entry>
-    <entry id="17" string="Update complete">更新完了</entry>
-    <entry id="18" string="Your application has been successfully updated!">あなたのアプリケーションは正常に更新されました！</entry>
-    <entry id="19" string="Error">エラー</entry>
-    <entry id="20" string="Error downloading package!">パッケージのダウンロード中にエラーが発生しました。</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">&quot;%1&quot;のインストール中にエラーが発生しました！&#10;&#10;アプリケーションディレクトリへのアクセスが拒否されました。</entry>
+    <entry id="18" string="Update complete">更新完了</entry>
+    <entry id="19" string="Your application has been successfully updated!">あなたのアプリケーションは正常に更新されました！</entry>
+    <entry id="20" string="Error">エラー</entry>
+    <entry id="21" string="Error downloading package!">パッケージのダウンロード中にエラーが発生しました。</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">&quot;%1&quot;のインストール中にエラーが発生しました！&#10;&#10;アプリケーションディレクトリへのアクセスが拒否されました。</entry>
   </data>
 </LangFile>

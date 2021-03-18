@@ -27,9 +27,9 @@
     <entry id="14" string="Installing files...">Dosyalar yükleniyor...</entry>
     <entry id="15" string="Installing file:">Yüklenen dosya:</entry>
     <entry id="16" string="Downloading file:">İndirilen dosya:</entry>
-    <entry id="17" string="Update complete">Güncelleme tamamlandı</entry>
-    <entry id="18" string="Your application has been successfully updated!">Uygulamanız başarıyla güncellendi!</entry>
-    <entry id="19" string="Error">Hata</entry>
-    <entry id="20" string="Error downloading package!">Paket indirilirken hata!</entry>
+    <entry id="18" string="Update complete">Güncelleme tamamlandı</entry>
+    <entry id="19" string="Your application has been successfully updated!">Uygulamanız başarıyla güncellendi!</entry>
+    <entry id="20" string="Error">Hata</entry>
+    <entry id="21" string="Error downloading package!">Paket indirilirken hata!</entry>
   </data>
 </LangFile>

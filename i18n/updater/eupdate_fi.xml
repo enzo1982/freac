@@ -27,9 +27,9 @@
     <entry id="14" string="Installing files...">Asennetaan tiedostoja...</entry>
     <entry id="15" string="Installing file:">Asennetaan tiedostoa:</entry>
     <entry id="16" string="Downloading file:">Ladataan tietostoa:</entry>
-    <entry id="17" string="Update complete">Päivitys onnistui</entry>
-    <entry id="18" string="Your application has been successfully updated!">Ohjelma on päivitetty onnistuneesti!</entry>
-    <entry id="19" string="Error">Virhe</entry>
-    <entry id="20" string="Error downloading package!">Ohjelman lataaminen epäonnistui!</entry>
+    <entry id="18" string="Update complete">Päivitys onnistui</entry>
+    <entry id="19" string="Your application has been successfully updated!">Ohjelma on päivitetty onnistuneesti!</entry>
+    <entry id="20" string="Error">Virhe</entry>
+    <entry id="21" string="Error downloading package!">Ohjelman lataaminen epäonnistui!</entry>
   </data>
 </LangFile>
