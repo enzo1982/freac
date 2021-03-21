@@ -306,11 +306,31 @@ Void freac::JobAddFilesWorker::ExtractInfoFromPath(const String &path, Info &inf
 	 */
 	if (!folderName.Contains(" - "))
 	{
-		Bool	 discNo = False;
+		BoCA::I18n	*i18n	 = BoCA::I18n::Get();
 
-		for (Int i = 0; i < folderName.Length(); i++) if (folderName[i] >= '1' && folderName[i] <= '9') { discNo = True; break; }
+		Int		 words	 = folderName.Explode(" ").Length();
+		Int		 number	 = 0;
+		Int		 numbers = 0;
+		Bool		 keyword = folderName.ToUpper().Contains("CD")	 ||
+					   folderName.ToLower().Contains("disc") ||
+					   folderName.ToLower().Contains(i18n->TranslateString("Disc").ToLower());
 
-		if (discNo) folderName = Directory(Directory(File(path).GetFilePath()).GetDirectoryPath()).GetDirectoryName();
+		for (Int i = 0; i < folderName.Length(); i++)
+		{
+			if (folderName[i] < '1' || folderName[i] > '9') continue;
+
+			if (++numbers == 1) number = folderName.Tail(folderName.Length() - i).ToInt();
+
+			while (folderName[i + 1] >= '1' && folderName[i + 1] <= '9') i++;
+		}
+
+		/* Strip last element from folder name and assign disc number.
+		 */
+		if (numbers == 1 && (keyword || words <= 2))
+		{
+			folderName = Directory(Directory(File(path).GetFilePath()).GetDirectoryPath()).GetDirectoryName();
+			info.disc  = number;
+		}
 	}
 
 	/* Split file and folder names at " - ".
