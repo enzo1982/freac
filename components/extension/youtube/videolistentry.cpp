@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2016 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -153,10 +153,4 @@ PopupMenu *BoCA::VideoListEntry::GetContextMenu()
 	entryCancel->onAction.Connect(&Video::CancelDownload, video);
 
 	return contextMenu;
-}
-
-Bool BoCA::VideoListEntry::IsTypeCompatible(Short compType) const
-{
-	if (compType == Object::classID || compType == Widget::classID || compType == ListEntry::classID)	return True;
-	else													return False;
 }

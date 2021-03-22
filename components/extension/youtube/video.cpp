@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -83,10 +83,18 @@ Int BoCA::Video::DownloaderThread(String targetFileName)
 		delete protocol;
 	}
 
-	/* Convert video file if requested.
+	/* Check whether download was canceled.
 	 */
-	if (config->GetIntValue(ConfigureYouTube::ConfigID, "OutputFormat", -1) >= 0)
+	if (doCancelDownload)
 	{
+		/* Remove partially downloaded file.
+		 */
+		File(targetFileName).Delete();
+	}
+	else if (config->GetIntValue(ConfigureYouTube::ConfigID, "OutputFormat", -1) >= 0)
+	{
+		/* Convert video file if requested.
+		 */
 		Array<Converter *>	&converters = Converter::Get();
 		Converter		*converter  = converters.GetNth(config->GetIntValue(ConfigureYouTube::ConfigID, "OutputFormat", -1));
 
@@ -205,12 +213,6 @@ Bool BoCA::Video::CancelDownload()
 		/* Cancel download.
 		 */
 		doCancelDownload = True;
-
-		while (!videoDownloadFinished) S::System::System::Sleep(0);
-
-		/* Remove partially downloaded file.
-		 */
-		File(videoFile).Delete();
 	}
 
 	return True;
