@@ -11,13 +11,13 @@
   "sources": [
     {
         "type": "archive",
-        "url": "https://freac.org/patches/MAC_SDK_613.zip",
-        "sha256": "68e083b8737806c489b3ea5f13573eb5962f5d43b613226b7f51accc97779656",
+        "url": "https://freac.org/patches/MAC_SDK_614.zip",
+        "sha256": "73cd7eb59a854de8e84c22c2b6a692a402af976345aa03792994ab41d858bd12",
         "strip-components": 0
     },
     {
         "type": "patch",
-        "path": "mac-sdk-6.13-gcc.patch"
+        "path": "mac-sdk-6.14-gcc.patch"
     }
   ]
 }
