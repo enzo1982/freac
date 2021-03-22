@@ -141,8 +141,8 @@ parts:
       - usr/lib/libmp4v2.so*
 
   libmpg123:
-    source: https://mpg123.de/download/mpg123-1.26.4.tar.bz2
-    source-checksum: sha256/081991540df7a666b29049ad870f293cfa28863b36488ab4d58ceaa7b5846454
+    source: https://mpg123.de/download/mpg123-1.26.5.tar.bz2
+    source-checksum: sha256/502a97e0d935be7e37d987338021d8f301bae35c2884f2a83d59c4b52466ef06
     plugin: autotools
     configflags: [ --prefix=/usr ]
     build-environment:

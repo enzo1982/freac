@@ -169,6 +169,7 @@ History
 
 			- updated FFmpeg to version 4.3.2
 			- updated Monkey's Audio to version 6.14
+			- updated mpg123 to version 1.26.5
 			- updated libsndfile to version 1.0.31
 			- updated libsamplerate to version 0.2.1
 
