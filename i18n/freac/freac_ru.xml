@@ -710,7 +710,7 @@
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Уведомления</entry>
 	<entry id="15001" string="Logging">Журналирование</entry>
-	<entry id="15002" string="YouTube Video Downloader">Загрузчик видео YouTube</entry>
+	<entry id="15002" string="Video Downloader">Загрузчик видео</entry>
       </section>
     </section>
 

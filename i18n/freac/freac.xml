@@ -711,7 +711,7 @@
       <section name="Extensions">
 	<entry id="15000" string="Notifications"/>
 	<entry id="15001" string="Logging"/>
-	<entry id="15002" string="YouTube Video Downloader"/>
+	<entry id="15002" string="Video Downloader"/>
       </section>
     </section>
 

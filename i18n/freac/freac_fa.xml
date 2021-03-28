@@ -707,7 +707,7 @@
       <section name="Extensions">
 	<entry id="15000" string="Notifications">تذکرات</entry>
 	<entry id="15001" string="Logging">گزارش نويسي</entry>
-	<entry id="15002" string="YouTube Video Downloader">دانلود کننده ويدئو از يوتوب</entry>
+	<entry id="15002" string="Video Downloader">دانلود کننده ويديو</entry>
       </section>
     </section>
 

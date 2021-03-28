@@ -705,7 +705,7 @@
       <section name="Extensions">
 	<entry id="15000" string="Notifications">通知</entry>
 	<entry id="15001" string="Logging">記錄</entry>
-	<entry id="15002" string="YouTube Video Downloader">YouTube 影片下載器</entry>
+	<entry id="15002" string="Video Downloader">影片下載器</entry>
       </section>
     </section>
 

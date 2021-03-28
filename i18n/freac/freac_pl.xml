@@ -711,7 +711,7 @@
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Powiadomienia</entry>
 	<entry id="15001" string="Logging">Dzienniki zdarzeń</entry>
-	<entry id="15002" string="YouTube Video Downloader">Pobieranie filmów z YouTube</entry>
+	<entry id="15002" string="Video Downloader">Pobieranie filmów</entry>
       </section>
     </section>
 
