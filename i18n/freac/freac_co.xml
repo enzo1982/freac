@@ -816,6 +816,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Impiega l’Effettu di Maschera Tempurale</entry>
 	  <entry id="32305" string="Stream format">Furmatu di flussu</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Mette in cunfurmità ISO stretta</entry>
+	  <entry id="32307" string="automatic">autumaticu</entry>
+	  <entry id="32308" string="always">sempre</entry>
 	</section>
 
 	<section name="Audio processing">

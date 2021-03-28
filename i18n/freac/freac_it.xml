@@ -810,6 +810,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Usa effetto di mascheramento temporale</entry>
 	  <entry id="32305" string="Stream format">Formato flusso audio</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Forza conformità ISO</entry>
+	  <entry id="32307" string="automatic">automatica</entry>
+	  <entry id="32308" string="always">sempre</entry>
 	</section>
 
 	<section name="Audio processing">

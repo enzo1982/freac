@@ -813,6 +813,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">टेम्पोरल मास्किंग इफेक्ट का उपयोग करें</entry>
 	  <entry id="32305" string="Stream format">स्ट्रीम प्रारूप</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">सख्त आईएसओ अनुपालन लागू करें</entry>
+	  <entry id="32307" string="automatic">स्वचालित</entry>
+	  <entry id="32308" string="always">हमेशा</entry>
 	</section>
 
 	<section name="Audio processing">

@@ -810,6 +810,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Brug tidsmæssig dæknings effekt</entry>
 	  <entry id="32305" string="Stream format">Stream format</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Tvungen striks ISO overensstemmelse</entry>
+	  <entry id="32307" string="automatic">automatisk</entry>
+	  <entry id="32308" string="always">altid</entry>
 	</section>
 
 	<section name="Audio processing">

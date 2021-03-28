@@ -810,6 +810,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Koristi Temporal Masking efekt</entry>
 	  <entry id="32305" string="Stream format">Stream format</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Osiguraj ISO podršku</entry>
+	  <entry id="32307" string="automatic">automatski</entry>
+	  <entry id="32308" string="always">stalno</entry>
 	</section>
 
 	<section name="Audio processing">

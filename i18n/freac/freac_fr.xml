@@ -810,6 +810,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Utiliser l'effet de masquage temporel</entry>
 	  <entry id="32305" string="Stream format">Format de diffusion</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Appliquer la compatibilité ISO stricte</entry>
+	  <entry id="32307" string="automatic">automatique</entry>
+	  <entry id="32308" string="always">toujours</entry>
 	</section>
 
 	<section name="Audio processing">

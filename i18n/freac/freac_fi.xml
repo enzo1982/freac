@@ -512,6 +512,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Käytä väliaikaisia naamioefektejä</entry>
 	  <entry id="32305" string="Stream format">Virran muoto</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Noudata tarkasti ISO-standardia</entry>
+	  <entry id="32307" string="automatic">automaattinen</entry>
+	  <entry id="32308" string="always">aina</entry>
 	</section>
 
 	<section name="Audio processing">

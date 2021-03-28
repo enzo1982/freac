@@ -810,6 +810,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">使用時域遮蔽效應</entry>
 	  <entry id="32305" string="Stream format">串流格式</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">遵照嚴格 ISO 規範</entry>
+	  <entry id="32307" string="automatic">自動</entry>
+	  <entry id="32308" string="always">總是</entry>
 	</section>
 
 	<section name="Audio processing">

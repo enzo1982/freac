@@ -812,6 +812,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">استفاده از Temporal Masking Effect</entry>
 	  <entry id="32305" string="Stream format">فرمت Stream</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">تحميل رعايت دامنه فريم ها بر طبق ISO</entry>
+	  <entry id="32307" string="automatic">خودکار</entry>
+	  <entry id="32308" string="always">همیشه</entry>
 	</section>
 
 	<section name="Audio processing">

@@ -810,6 +810,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Naudoti laikiną maskavimo efektą</entry>
 	  <entry id="32305" string="Stream format">Srauto formatas</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Įgalinti griežtą ISO suderinamumą</entry>
+	  <entry id="32307" string="automatic">automatinis</entry>
+	  <entry id="32308" string="always">visada</entry>
 	</section>
 
 	<section name="Audio processing">

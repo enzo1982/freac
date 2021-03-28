@@ -512,6 +512,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Erabili Aldibaterako Mozorro Eragina</entry>
 	  <entry id="32305" string="Stream format">Jario heuskarria</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Behartu zorrotz ISO araua</entry>
+	  <entry id="32307" string="automatic">berez</entry>
+	  <entry id="32308" string="always">beti</entry>
 	</section>
 
 	<section name="Audio processing">

@@ -816,6 +816,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Използване времеви маскиращ ефект</entry>
 	  <entry id="32305" string="Stream format">Формат на потока</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Стриктно прилагане спазването на ISO</entry>
+	  <entry id="32307" string="automatic">автоматично</entry>
+	  <entry id="32308" string="always">винаги</entry>
 	</section>
 
 	<section name="Audio processing">

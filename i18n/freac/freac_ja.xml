@@ -809,6 +809,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">継時マスキング効果を使用</entry>
 	  <entry id="32305" string="Stream format">ストリーム フォーマット</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">厳格に ISO 規格に準拠</entry>
+	  <entry id="32307" string="automatic">自動</entry>
+	  <entry id="32308" string="always">常に</entry>
 	</section>
 
 	<section name="Audio processing">

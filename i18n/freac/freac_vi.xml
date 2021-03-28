@@ -510,6 +510,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Sử dụng hiệu ứng mặt nạ tạm thời</entry>
 	  <entry id="32305" string="Stream format">Định dạng luồng</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Bắt buộc theo tiêu chuẩn của ISO</entry>
+	  <entry id="32307" string="automatic">tự động</entry>
+	  <entry id="32308" string="always">luôn luôn</entry>
 	</section>
 
 	<section name="Audio processing">

@@ -816,6 +816,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Temporal Masking Effect gebruiken</entry>
 	  <entry id="32305" string="Stream format">Stream formaat</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Forceer strikte ISO naleving</entry>
+	  <entry id="32307" string="automatic">automatisch</entry>
+	  <entry id="32308" string="always">altijd</entry>
 	</section>
 
 	<section name="Audio processing">

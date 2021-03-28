@@ -718,6 +718,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">마스킹효과 사용</entry>
 	  <entry id="32305" string="Stream format">스트림 포맷</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">ISO 표준에 따라 제한</entry>
+	  <entry id="32307" string="automatic">자동</entry>
+	  <entry id="32308" string="always">항상</entry>
 	</section>
 
 	<section name="Audio processing">

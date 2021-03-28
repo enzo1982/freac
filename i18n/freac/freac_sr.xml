@@ -816,6 +816,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Koristi privremen efekat maskiranja</entry>
 	  <entry id="32305" string="Stream format">Format protoka</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Forsiraj striktnu ISO primenu</entry>
+	  <entry id="32307" string="automatic">automatsko</entry>
+	  <entry id="32308" string="always">uvek</entry>
 	</section>
 
 	<section name="Audio processing">
