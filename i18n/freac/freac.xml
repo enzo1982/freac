@@ -711,7 +711,7 @@
       <section name="Extensions">
 	<entry id="15000" string="Notifications"/>
 	<entry id="15001" string="Logging"/>
-	<entry id="15002" string="YouTube Video Downloader"/>
+	<entry id="15002" string="Video Downloader"/>
       </section>
     </section>
 
@@ -816,6 +816,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect"/>
 	  <entry id="32305" string="Stream format"/>
 	  <entry id="32306" string="Enforce strict ISO compliance"/>
+	  <entry id="32307" string="automatic"/>
+	  <entry id="32308" string="always"/>
 	</section>
 
 	<section name="Audio processing">

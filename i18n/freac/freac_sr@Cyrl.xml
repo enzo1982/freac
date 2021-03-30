@@ -711,7 +711,6 @@
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Обавештења</entry>
 	<entry id="15001" string="Logging">Дневник догађаја</entry>
-	<entry id="15002" string="YouTube Video Downloader">YouTube Video Downloader</entry>
       </section>
     </section>
 
@@ -816,6 +815,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Користи привремен ефекат маскирања</entry>
 	  <entry id="32305" string="Stream format">Формат протока</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Форсирај стриктну ISO примену</entry>
+	  <entry id="32307" string="automatic">аутоматско</entry>
+	  <entry id="32308" string="always">увек</entry>
 	</section>
 
 	<section name="Audio processing">

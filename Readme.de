@@ -160,8 +160,9 @@ Geschichte
 
 		- Behobene Fehler
 
-			- Probem mit nicht auf der gesamten Breite des Genre-Eingabefeldes aktivem Hotspot für das Hilfsmenü behoben
+			- Problem mit nicht auf der gesamten Breite des Genre-Eingabefeldes aktivem Hotspot für das Hilfsmenü behoben
 			- Gelegentliche Abstürze bei der Auswahl von Kodierer-Unterformaten über das Menü "Kodierung starten mit" behoben
+			- Problem mit dem Auswerfen von CDs unter macOS behoben
 			- Problem mit dem Windows Online-Updater in der 64 Bit-Version behoben
 
 		- Aktualisierte Codecs

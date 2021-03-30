@@ -506,6 +506,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Gebruik tydelike maskeringseffek</entry>
 	  <entry id="32305" string="Stream format">Stroomformaat</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Dwing streng ISO nakoming af</entry>
+	  <entry id="32307" string="automatic">outomaties</entry>
+	  <entry id="32308" string="always">altyd</entry>
 	</section>
 
 	<section name="Audio processing">

@@ -163,6 +163,7 @@ History
 
 			- fixed hotspot for genre edit field utility menu not covering the whole with of the field
 			- fixed occasional crashes when selecting codec subformat using the "Start encoding with" menu
+			- fixed disc eject not working on macOS
 			- fixed Windows online updater not working with the 64 bit version
 
 		- Updated codecs

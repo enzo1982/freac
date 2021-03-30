@@ -503,6 +503,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Uzi Temporal-Masking-Effekt</entry>
 	  <entry id="32305" string="Stream format">Flua (Stream) formato</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Forci striktan ISO-konformecon</entry>
+	  <entry id="32307" string="automatic">aŭtomata</entry>
+	  <entry id="32308" string="always">ĉiam</entry>
 	</section>
 
 	<section name="Audio processing">

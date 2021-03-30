@@ -511,6 +511,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Idöbeli maszkolás használata</entry>
 	  <entry id="32305" string="Stream format">Stream formátum</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Szigorúan ISO kompatibilis kimenet</entry>
+	  <entry id="32307" string="automatic">automatikus</entry>
+	  <entry id="32308" string="always">mindig</entry>
 	</section>
 
 	<section name="Audio processing">

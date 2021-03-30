@@ -705,7 +705,6 @@
       <section name="Extensions">
 	<entry id="15000" string="Notifications">提示</entry>
 	<entry id="15001" string="Logging">日志</entry>
-	<entry id="15002" string="YouTube Video Downloader">YouTube Video Downloader</entry>
       </section>
     </section>
 
@@ -810,6 +809,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">使用时序遮盖效果</entry>
 	  <entry id="32305" string="Stream format">流媒体格式</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">采用严格的 ISO 标准</entry>
+	  <entry id="32307" string="automatic">自动</entry>
+	  <entry id="32308" string="always">总是</entry>
 	</section>
 
 	<section name="Audio processing">

@@ -390,6 +390,8 @@
 	<section name="Expert">
 	  <entry id="32300" string="ATH">ATH</entry>
 	  <entry id="32302" string="Use default setting">השתמש בהגדרות כלליות</entry>
+	  <entry id="32307" string="automatic">אוטומטי</entry>
+	  <entry id="32308" string="always">תמיד</entry>
 	</section>
 
 	<section name="Audio processing">

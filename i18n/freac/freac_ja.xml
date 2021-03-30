@@ -704,7 +704,7 @@
       <section name="Extensions">
 	<entry id="15000" string="Notifications">通知</entry>
 	<entry id="15001" string="Logging">ログ</entry>
-	<entry id="15002" string="YouTube Video Downloader">YouTube動画ダウンローダー</entry>
+	<entry id="15002" string="Video Downloader">動画ダウンローダー</entry>
       </section>
     </section>
 
@@ -809,6 +809,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">継時マスキング効果を使用</entry>
 	  <entry id="32305" string="Stream format">ストリーム フォーマット</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">厳格に ISO 規格に準拠</entry>
+	  <entry id="32307" string="automatic">自動</entry>
+	  <entry id="32308" string="always">常に</entry>
 	</section>
 
 	<section name="Audio processing">

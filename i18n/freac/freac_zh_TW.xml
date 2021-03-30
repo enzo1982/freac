@@ -705,7 +705,7 @@
       <section name="Extensions">
 	<entry id="15000" string="Notifications">通知</entry>
 	<entry id="15001" string="Logging">記錄</entry>
-	<entry id="15002" string="YouTube Video Downloader">YouTube 影片下載器</entry>
+	<entry id="15002" string="Video Downloader">影片下載器</entry>
       </section>
     </section>
 
@@ -810,6 +810,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">使用時域遮蔽效應</entry>
 	  <entry id="32305" string="Stream format">串流格式</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">遵照嚴格 ISO 規範</entry>
+	  <entry id="32307" string="automatic">自動</entry>
+	  <entry id="32308" string="always">總是</entry>
 	</section>
 
 	<section name="Audio processing">

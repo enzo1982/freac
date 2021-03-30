@@ -511,6 +511,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Bruk Temporal Masking Effect</entry>
 	  <entry id="32305" string="Stream format">Streamformat</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Tving streng ISO-Konformität erzwingen</entry>
+	  <entry id="32307" string="automatic">automatisk</entry>
+	  <entry id="32308" string="always">bestandig</entry>
 	</section>
 
 	<section name="Audio processing">

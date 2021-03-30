@@ -508,6 +508,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Kasutada maski effekti</entry>
 	  <entry id="32305" string="Stream format">Helivoo formaat</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Range ISO-le vastavus</entry>
+	  <entry id="32307" string="automatic">automaatne</entry>
+	  <entry id="32308" string="always">alati</entry>
 	</section>
 
 	<section name="Audio processing">
