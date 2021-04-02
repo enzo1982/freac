@@ -151,7 +151,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.5 (März 2021)
+	Version 1.1.5 (April 2021)
 
 		- Verbesserungen
 
@@ -162,6 +162,7 @@ Geschichte
 
 			- Problem mit nicht auf der gesamten Breite des Genre-Eingabefeldes aktivem Hotspot für das Hilfsmenü behoben
 			- Gelegentliche Abstürze bei der Auswahl von Kodierer-Unterformaten über das Menü "Kodierung starten mit" behoben
+			- Problem mit nicht funktionierendem Player bei Verwendung bestimmter Kombinationen von DSP-Filtern behoben
 			- Problem mit dem Auswerfen von CDs unter macOS behoben
 			- Problem mit dem Windows Online-Updater in der 64 Bit-Version behoben
 
