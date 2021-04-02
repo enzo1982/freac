@@ -157,12 +157,14 @@ History
 		- Improvements
 
 			- improved support for languages written from right to left
+			- improved DSP processing performance by up to 70%
 			- added frequency bandwidth setting to FDK-AAC encoder configuration dialog
 
 		- Bug fixes
 
 			- fixed hotspot for genre edit field utility menu not covering the whole with of the field
 			- fixed occasional crashes when selecting codec subformat using the "Start encoding with" menu
+			- fixed chapter marks being offset by a few seconds when using DSP processing
 			- fixed playback not working when using certain combinations of DSP processors
 			- fixed disc eject not working on macOS
 			- fixed Windows online updater not working with the 64 bit version
