@@ -29,7 +29,7 @@ von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate
 	- WavPack					(http://www.wavpack.com/)
 	- OptimFROG					(http://www.losslessaudio.org/)
 	- Monkey's Audio				(http://www.monkeysaudio.com/)
-	- TAK						(http://www.thbeck.de/)
+	- Tom's Audiokompressor				(http://www.thbeck.de/)
 
 	- verschiedene weitere Formate
 		- mit der libsndfile Bibliothek		(http://www.mega-nerd.com/)
@@ -172,6 +172,7 @@ Geschichte
 
 			- FFmpeg auf Version 4.3.2 aktualisiert
 			- Monkey's Audio auf Version 6.14 aktualisiert
+			- Tom's Audiokompressor auf Version 2.3.1 aktualisiert
 			- mpg123 auf Version 1.26.5 aktualisiert
 			- libsndfile auf Version 1.0.31 aktualisiert
 			- libsamplerate auf Version 0.2.1 aktualisiert
