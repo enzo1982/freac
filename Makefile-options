@@ -106,8 +106,11 @@ else
 
 		BUILD_OSX = True
 
-#		Find Xcode version
+#		Find macOS and Xcode version
+		MACOSVERSION = $(shell sw_vers | awk '$$1 == "ProductVersion:" { print $$2 }')
 		XCODEVERSION = $(shell xcodebuild -version | head -n1)
+
+		MACOS_EQ15  = $(shell bash -c "v='$(MACOSVERSION)'; if [ \$${v%.*} == 10.15 ]; then echo True; fi")
 
 		XCODE_LE3   = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -le  3 ]; then echo True; fi")
 		XCODE_LE9   = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -le  9 ]; then echo True; fi")
@@ -131,8 +134,10 @@ else
 			endif
 		else ifeq ($(XCODE_EQ12),True)
 			ifeq ($(XCODE_N_GE2),True)
-				ifneq ($(BUILD_ARM64),False)
-					BUILD_ARM64 = True
+				ifneq ($(MACOS_EQ15),True)
+					ifneq ($(BUILD_ARM64),False)
+						BUILD_ARM64 = True
+					endif
 				endif
 			endif
 		else ifeq ($(XCODE_GE13),True)
