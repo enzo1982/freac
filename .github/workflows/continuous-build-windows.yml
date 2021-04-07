@@ -54,4 +54,4 @@ jobs:
           set MSYSTEM=MINGW${{ matrix.mingw }}
           set BUILD_WIN32=True
           set BUILD_${{ matrix.arch }}=True
-          bash ./packaging/windows/tools/build-zip
+          bash .github/workflows/tools/build-windows

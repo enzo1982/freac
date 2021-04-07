@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+# Exit on error
+set -e
+
+# Number of parallel jobs
+jobs=$(sysctl -n hw.ncpu)
+
+# Build libcdio
+./tools/build-codecs libcdio libcdio-paranoia
+
+# Build smooth
+cd smooth
+
+CONFIG="release"
+
+make config=$CONFIG BUILD_V8=False -j$jobs
+sudo make config=$CONFIG BUILD_V8=False install
+
+cd ..
+
+# Build BoCA
+cd boca
+
+CONFIG="release"
+
+make config=$CONFIG -j$jobs
+sudo make config=$CONFIG install
+
+cd ..
+
+# Build fre:ac
+CONFIG="release"
+
+make config=$CONFIG USE_V8=False -j$jobs
+sudo make config=$CONFIG USE_V8=False install
+
+# Build codecs and DSP libraries
+cd tools
+
+./build-codecs faad2 mp4v2
+./build-codecs lame mpg123
+./build-codecs libogg opus speex vorbis
+./build-codecs flac mac musepack wavpack
+./build-codecs ffmpeg libsndfile
+./build-codecs libsamplerate rnnoise rubberband
+
+cd ..
+
+# Prepare package
+cd packaging/macosx
+
+bash ./prepare.sh
+bash ./package.sh "Robert Kausch" $NOTARIZATION_PASSWORD
+
+MACOSX_TARGET=$MACOSX_DEPLOYMENT_TARGET
+if [[ -z $MACOSX_TARGET ]]; then
+  MACOSX_TARGET=`sw_vers | awk '$1 == "ProductVersion:" { print $2 }'`
+fi
+
+mv freac-*-macos${MACOSX_TARGET%%.*}.dmg ../../freac-continuous-macos${MACOSX_TARGET%%.*}.dmg
+
+cd ../..
+
+# Upload DMG to GitHub
+bash .github/workflows/tools/upload-build freac*.dmg

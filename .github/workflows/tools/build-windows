@@ -124,4 +124,4 @@ mv $BIN freac-continuous-windows$ARCH
 zip -9 freac-continuous-windows$ARCH.zip -r freac-continuous-windows$ARCH
 
 # Upload build to GitHub
-bash ./packaging/windows/tools/upload-build freac*.zip
+bash .github/workflows/tools/upload-build freac*.zip

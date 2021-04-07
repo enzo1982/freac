@@ -1,4 +1,4 @@
-name: "Continuous build"
+name: "Continuous build (Linux)"
 
 on:
   push:
@@ -90,4 +90,4 @@ jobs:
           AppImageArch: ${{ matrix.arch }}
           RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         run: |
-          ./packaging/appimage/tools/build-appimage
+          .github/workflows/tools/build-appimage

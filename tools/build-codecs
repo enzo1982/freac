@@ -10,6 +10,13 @@ jobs=12
 uname=`uname`
 machine=`gcc -dumpmachine`
 
+if [[ $uname == Darwin ]]; then
+  MACOSX_TARGET=$MACOSX_DEPLOYMENT_TARGET
+  if [[ -z $MACOSX_TARGET ]]; then
+    MACOSX_TARGET=`sw_vers | awk '$1 == "ProductVersion:" { print $2 }'`
+  fi
+fi
+
 # Standard CFLAGS
 cflags="-O3 -DNDEBUG"
 
@@ -27,10 +34,6 @@ elif [[ $uname == Darwin ]] && [[ $BUILD_ARM64 == True ]]; then
   host="aarch64-apple-darwin20.1.0"
   arm64=true
 elif [[ $uname == Darwin ]]; then
-  MACOSX_TARGET=$MACOSX_DEPLOYMENT_TARGET
-  if [[ -z $MACOSX_TARGET ]]; then
-    MACOSX_TARGET=`sw_vers | awk '$1 == "ProductVersion:" { print $2 }'`
-  fi
   if [[ ${MACOSX_TARGET%%.*} -ge 11 ]]; then
     cflags="$cflags -arch x86_64 -march=haswell"
   else
@@ -75,19 +78,25 @@ if [[ $uname == Linux ]]; then
 fi
 
 # Set compiler and tools
-if [[ $uname != *FreeBSD* ]]; then
   export CC=gcc
   export CXX=gcc
   export MAKE=make
   export SUDO=sudo
   export DL="wget -O"
   export PATCH="patch --binary"
-else
+
+if [[ $uname == Darwin ]]; then
+  MACOSX_MINOR_VERSION=${MACOSX_TARGET#*.}
+  if [[ ${MACOSX_TARGET%%.*} -ge 11 ]] || [[ ${MACOSX_MINOR_VERSION%%.*} -ge 7 ]]; then
+    export CC=clang
+    export CXX=clang
+  fi
+fi
+
+if [[ $uname == *FreeBSD* ]]; then
   export CC=clang
   export CXX=clang
   export MAKE=gmake
-  export SUDO=sudo
-  export DL="wget -O"
   export PATCH=patch
 fi
 
@@ -331,7 +340,7 @@ for package in ${packages[@]}; do
         configure_exports="WINDRES=\"windres -F pe-i386\""
       fi
     else
-      if [[ $uname != FreeBSD ]]; then
+      if [[ $CC != clang ]]; then
         export CFLAGS="$cflags $cflags_unroll -mfpmath=387"
       fi
     fi
@@ -468,11 +477,14 @@ for package in ${packages[@]}; do
 
   elif [ $package == libogg ]; then
     # Build Ogg
+    if [[ $uname == Darwin ]]; then
+      prepare="sed -i -e \"s/sys\/types\.h/stdint.h/\" include/ogg/os_types.h"
+    fi
     build $libogg_location src/.libs/libogg$sharedinfix.$sharedext Ogg.$sharedext
 
   elif [ $package == libsamplerate ]; then
     # Build libsamplerate
-    if [[ $uname != FreeBSD ]] && [[ $x86_64 == true ]]; then
+    if [[ $CC != clang ]] && [[ $x86_64 == true ]]; then
       export CFLAGS="$cflags $cflags_unroll -mfpmath=387"
     fi
     build $libsamplerate_location src/.libs/libsamplerate$sharedinfix.$sharedext SampleRate.$sharedext

@@ -3,9 +3,15 @@
 #RELEASE=1.1.4
 RELEASE=1.1.4-`date +"%Y%m%d"`
 
-VERSION="v1.1.4"
+#VERSION="v1.1.4"
+VERSION="v1.1.4 (`date +"%Y%m%d"`)"
 
-UNAME=macos
+MACOSX_TARGET=$MACOSX_DEPLOYMENT_TARGET
+if [[ -z $MACOSX_TARGET ]]; then
+  MACOSX_TARGET=`sw_vers | awk '$1 == "ProductVersion:" { print $2 }'`
+fi
+
+PLATFORM=macos${MACOSX_TARGET%%.*}
 
 if [[ "$1" == "translation" ]]; then
   TRANSLATION=1
@@ -107,13 +113,13 @@ else
 fi
 
 cp -R freac.app dmg
-rm -f freac-$RELEASE-$UNAME.dmg
+rm -f freac-$RELEASE-$PLATFORM.dmg
 
-hdiutil create -fs HFS+ -format UDSP -volname "freac $VERSION" -srcfolder dmg freac-$RELEASE-$UNAME.dmg
+hdiutil create -fs HFS+ -format UDSP -volname "freac $VERSION" -srcfolder dmg freac-$RELEASE-$PLATFORM.dmg
 
 # Mount .dmg
 mkdir -p vol
-hdiutil attach freac-$RELEASE-$UNAME.dmg.sparseimage -mountpoint vol
+hdiutil attach freac-$RELEASE-$PLATFORM.dmg.sparseimage -mountpoint vol
 rm -r vol/.fseventsd
 
 # Set custom icon
@@ -123,11 +129,11 @@ SetFile -a C vol
 hdiutil detach vol
 
 # Convert and finish .dmg
-hdiutil convert -format UDBZ -o freac-$RELEASE-$UNAME.dmg freac-$RELEASE-$UNAME.dmg.sparseimage
+hdiutil convert -format UDBZ -o freac-$RELEASE-$PLATFORM.dmg freac-$RELEASE-$PLATFORM.dmg.sparseimage
 
 if [[ -n $TRANSLATION ]]; then
-  mv freac-$RELEASE-$UNAME.dmg freac-${RELEASE%%-*}-translation-kit-$UNAME.dmg
+  mv freac-$RELEASE-$PLATFORM.dmg freac-${RELEASE%%-*}-translation-kit-$PLATFORM.dmg
 fi
 
-rm -f freac-$RELEASE-$UNAME.dmg.sparseimage
+rm -f freac-$RELEASE-$PLATFORM.dmg.sparseimage
 rm -fr dmg vol
