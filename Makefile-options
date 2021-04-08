@@ -107,16 +107,20 @@ else
 		BUILD_OSX = True
 
 #		Find macOS and Xcode version
-		MACOSVERSION = $(shell sw_vers | awk '$$1 == "ProductVersion:" { print $$2 }')
 		XCODEVERSION = $(shell xcodebuild -version | head -n1)
+		MACOSVERSION = $MACOSX_DEPLOYMENT_TARGET
 
-		MACOS_EQ15  = $(shell bash -c "v='$(MACOSVERSION)'; if [ \$${v%.*} == 10.15 ]; then echo True; fi")
+		ifeq ($(MACOSVERSION),)
+			MACOSVERSION = $(shell sw_vers | awk '$$1 == "ProductVersion:" { print $$2 }')
+		endif
 
 		XCODE_LE3   = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -le  3 ]; then echo True; fi")
 		XCODE_LE9   = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -le  9 ]; then echo True; fi")
 		XCODE_EQ12  = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -eq 12 ]; then echo True; fi")
 		XCODE_GE13  = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -ge 13 ]; then echo True; fi")
 		XCODE_N_GE2 = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#*.};   if [ \$${v%%.*} -ge  2 ]; then echo True; fi")
+
+		MACOS_GE11  = $(shell bash -c "v='$(MACOSVERSION)';                 if [ \$${v%%.*} -ge 11 ]; then echo True; fi")
 
 #		Build universal binaries
 		ifneq ($(BUILD_X86_64),False)
@@ -134,15 +138,17 @@ else
 			endif
 		else ifeq ($(XCODE_EQ12),True)
 			ifeq ($(XCODE_N_GE2),True)
-				ifneq ($(MACOS_EQ15),True)
+				ifeq ($(MACOS_GE11),True)
 					ifneq ($(BUILD_ARM64),False)
 						BUILD_ARM64 = True
 					endif
 				endif
 			endif
 		else ifeq ($(XCODE_GE13),True)
-			ifneq ($(BUILD_ARM64),False)
-				BUILD_ARM64 = True
+			ifeq ($(MACOS_GE11),True)
+				ifneq ($(BUILD_ARM64),False)
+					BUILD_ARM64 = True
+				endif
 			endif
 		endif
 	endif
@@ -254,11 +260,7 @@ ifeq ($(findstring release,$(config)),release)
 			override LDFLAGS += -arch i386
 		endif
 		ifeq ($(BUILD_X86_64),True)
-			ifeq ($(XCODE_EQ12),True)
-				ifeq ($(XCODE_N_GE2),True)
-					override CFLAGS	 += -arch x86_64 -Xarch_x86_64 -march=haswell
-				endif
-			else ifeq ($(XCODE_GE13),True)
+			ifeq ($(MACOS_GE11),True)
 				override CFLAGS	 += -arch x86_64 -Xarch_x86_64 -march=haswell
 			else
 				override CFLAGS	 += -arch x86_64 -Xarch_x86_64 -march=core2

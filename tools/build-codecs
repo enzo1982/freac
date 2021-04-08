@@ -27,7 +27,11 @@ elif [[ $uname == Darwin ]] && [[ $BUILD_ARM64 == True ]]; then
   host="aarch64-apple-darwin20.1.0"
   arm64=true
 elif [[ $uname == Darwin ]]; then
-  if [[ $BUILD_MACOS11 == True ]]; then
+  MACOSX_TARGET=$MACOSX_DEPLOYMENT_TARGET
+  if [[ -z $MACOSX_TARGET ]]; then
+    MACOSX_TARGET=`sw_vers | awk '$1 == "ProductVersion:" { print $2 }'`
+  fi
+  if [[ ${MACOSX_TARGET%%.*} -ge 11 ]]; then
     cflags="$cflags -arch x86_64 -march=haswell"
   else
     cflags="$cflags -arch x86_64 -march=core2"
