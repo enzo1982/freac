@@ -538,7 +538,7 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 	Format		 format	     = trackToConvert.GetFormat();
 
 	Int64		 trackOffset = encoder->GetEncodedSamples();
-	UnsignedLong	 samplesSize = 512;
+	UnsignedLong	 samplesSize = format.rate / 8;
 
 	trackStartTicks = S::System::System::Clock();
 	trackPosition	= 0;
