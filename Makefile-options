@@ -108,7 +108,7 @@ else
 
 #		Find macOS and Xcode version
 		XCODEVERSION = $(shell xcodebuild -version | head -n1)
-		MACOSVERSION = $MACOSX_DEPLOYMENT_TARGET
+		MACOSVERSION = $(MACOSX_DEPLOYMENT_TARGET)
 
 		ifeq ($(MACOSVERSION),)
 			MACOSVERSION = $(shell sw_vers | awk '$$1 == "ProductVersion:" { print $$2 }')
