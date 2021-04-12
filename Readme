@@ -167,6 +167,7 @@ History
 			- fixed chapter marks being offset by a few seconds when using DSP processing
 			- fixed playback not working when using certain combinations of DSP processors
 			- fixed disc eject not working on macOS
+			- fixed crash when closing fre:ac via dock command on macOS
 			- fixed UI glitches and crashes on exit when running in a Wayland session
 			- fixed Windows online updater not working with the 64 bit version
 
