@@ -165,6 +165,8 @@ Geschichte
 			- Gelegentliche Abstürze bei der Auswahl von Kodierer-Unterformaten über das Menü "Kodierung starten mit" behoben
 			- Problem mit um einige Sekunden versetzten Kapitelmarken bei Verwendung von DSP-Verarbeitung behoben
 			- Problem mit nicht funktionierendem Player bei Verwendung bestimmter Kombinationen von DSP-Filtern behoben
+			- Mögliche Abstürze beim Dekodieren von Opus-Dateien behoben
+			- Mögliche Abstürze bei fehlgeschlagenem Setup des WMA-Kodierers behoben
 			- Problem mit dem Auswerfen von CDs unter macOS behoben
 			- Absturz beim Beenden von fre:ac über das Dock unter macOS behoben
 			- Grafikfehler und Abstürze beim Beenden bei Ausführung in einer Wayland-Sitzung behoben
