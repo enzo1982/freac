@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -44,6 +44,8 @@ Void freac::JobAddFolders::AddFolders(const Array<Directory> &folders)
 
 		AddFolders(myFolders);
 
+		if (abort) break;
+
 		/* Find extensions to exclude and add files.
 		 */
 		String			 configString  = configuration->GetStringValue(Config::CategorySettingsID, Config::SettingsExcludeExtensionsID, Config::SettingsExcludeExtensionsDefault).ToLower();
@@ -70,7 +72,11 @@ Void freac::JobAddFolders::AddFolders(const Array<Directory> &folders)
 			}
 
 			if (add) files.Add(file);
+
+			if (abort) break;
 		}
+
+		if (abort) break;
 	}
 }
 
@@ -117,6 +123,8 @@ Void freac::JobAddFolders::RemoveReferencedFiles()
 		}
 
 		boca.DeleteComponent(decoder);
+
+		if (abort) break;
 	}
 }
 
@@ -145,9 +153,14 @@ Error freac::JobAddFolders::Perform()
 
 	AddFolders(directories);
 
-	SetText(i18n->AddEllipsis(i18n->TranslateString("Filtering duplicates")));
+	if (!abort)
+	{
+		SetText(i18n->AddEllipsis(i18n->TranslateString("Filtering duplicates")));
 
-	RemoveReferencedFiles();
+		RemoveReferencedFiles();
 
-	return JobAddFiles::Perform();
+		if (!abort) return JobAddFiles::Perform();
+	}
+
+	return Success();
 }
