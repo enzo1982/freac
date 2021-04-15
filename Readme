@@ -168,6 +168,7 @@ History
 			- fixed playback not working when using certain combinations of DSP processors
 			- fixed possible crashes when decoding Opus files
 			- fixed possible crashes when failing to configure WMA encoder
+			- fixed rare crashes in LAME encoder component
 			- fixed disc eject not working on macOS
 			- fixed crash when closing fre:ac via dock command on macOS
 			- fixed UI glitches and crashes on exit when running in a Wayland session
