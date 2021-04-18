@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -23,11 +23,6 @@
 
 #include <freac.h>
 #include <config.h>
-#include <resources.h>
-
-#ifdef __WIN32__
-#	include <smooth/init.win32.h>
-#endif
 
 using namespace BoCA;
 using namespace BoCA::AS;
@@ -149,10 +144,6 @@ freac::ConfigDialog::ConfigDialog()
 
 	mainWnd->SetFlags(WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
-
-#ifdef __WIN32__
-	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
-#endif
 }
 
 freac::ConfigDialog::~ConfigDialog()

@@ -15,7 +15,6 @@
 #include <player.h>
 #include <config.h>
 #include <utilities.h>
-#include <resources.h>
 
 #include <engine/converter.h>
 
@@ -49,7 +48,7 @@
 #include <support/notification.h>
 
 #ifdef __WIN32__
-#	include <smooth/init.win32.h>
+#	include <windows.h>
 #endif
 
 using namespace smooth::GUI::Dialogs;
@@ -245,10 +244,6 @@ freac::freacGUI::freacGUI()
 	}
 
 	mainWnd->SetIcon(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/freac.png")));
-
-#ifdef __WIN32__
-	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
-#endif
 
 	mainWnd->onChangePosition.Connect(&freacGUI::OnChangePosition, this);
 	mainWnd->onChangeSize.Connect(&freacGUI::OnChangeSize, this);
