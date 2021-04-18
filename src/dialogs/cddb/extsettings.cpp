@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -52,8 +52,18 @@ freac::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	http_text_query		= new Text(i18n->AddColon(i18n->TranslateString("CDDB query script")), Point(16, 24));
 	http_edit_query		= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbQueryPathID, Config::FreedbQueryPathDefault), Point(117, 21), Size(192, 0), 0);
 
+	http_list_query		= new List();
+	http_list_query->AddEntry(Config::FreedbQueryPathDefault);
+
+	http_edit_query->SetDropDownList(http_list_query);
+
 	http_text_submit	= new Text(i18n->AddColon(i18n->TranslateString("CDDB submit script")), Point(16, 51));
 	http_edit_submit	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbSubmitPathID, Config::FreedbSubmitPathDefault), Point(117, 48), Size(192, 0), 0);
+
+	http_list_submit	= new List();
+	http_list_submit->AddEntry(Config::FreedbSubmitPathDefault);
+
+	http_edit_submit->SetDropDownList(http_list_submit);
 
 	Int	 maxTextSize = Math::Max(http_text_query->GetUnscaledTextWidth(), http_text_submit->GetUnscaledTextWidth());
 
@@ -158,8 +168,10 @@ freac::cddbExtendedSettingsDlg::~cddbExtendedSettingsDlg()
 	DeleteObject(http_group_scripts);
 	DeleteObject(http_text_query);
 	DeleteObject(http_edit_query);
+	DeleteObject(http_list_query);
 	DeleteObject(http_text_submit);
 	DeleteObject(http_edit_submit);
+	DeleteObject(http_list_submit);
 	DeleteObject(proxy_group_proxy);
 	DeleteObject(proxy_text_mode);
 	DeleteObject(proxy_combo_mode);
