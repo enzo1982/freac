@@ -172,6 +172,7 @@ History
 			- fixed disc eject not working on macOS
 			- fixed crash when closing fre:ac via dock command on macOS
 			- fixed UI glitches and crashes on exit when running in a Wayland session
+			- fixed popup menu and dropdown list closing behavior on non-Windows platforms
 			- fixed Windows online updater not working with the 64 bit version
 
 		- Updated codecs
