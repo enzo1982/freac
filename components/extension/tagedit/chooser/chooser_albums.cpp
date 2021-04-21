@@ -278,9 +278,9 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 			 */
 			Int		 index  = 0;
 			static String	 keys[] = { INFO_BAND, INFO_CONDUCTOR, INFO_COMPOSER, INFO_LYRICIST, INFO_REMIXER,
-						    INFO_CATALOGNUMBER, INFO_BARCODE, INFO_ORIG_ARTIST, INFO_ORIG_LYRICIST,
-						    INFO_ORIG_YEAR, INFO_WEB_ARTIST, INFO_WEB_PUBLISHER, INFO_WEB_RADIO,
-						    INFO_WEB_SOURCE, INFO_WEB_COPYRIGHT, INFO_WEB_COMMERCIAL, NIL };
+						    INFO_ORIG_ARTIST, INFO_ORIG_LYRICIST, INFO_ORIG_YEAR, INFO_MEDIATYPE,
+						    INFO_CATALOGNUMBER, INFO_BARCODE, INFO_WEB_ARTIST, INFO_WEB_PUBLISHER,
+						    INFO_WEB_RADIO, INFO_WEB_SOURCE, INFO_WEB_COPYRIGHT, INFO_WEB_COMMERCIAL, NIL };
 
 			while (keys[index] != NIL)
 			{
@@ -479,7 +479,8 @@ Void BoCA::ChooserAlbums::AddToAlbumList(const Track &track)
 		    key == INFO_CONDUCTOR     || key == INFO_COMPOSER      ||
 		    key == INFO_LYRICIST      || key == INFO_REMIXER	   ||
 
-		    key == INFO_CATALOGNUMBER || key == INFO_BARCODE	   ||
+		    key == INFO_MEDIATYPE     || key == INFO_CATALOGNUMBER ||
+		    key == INFO_BARCODE	      ||
 
 		    key == INFO_ORIG_ARTIST   || key == INFO_ORIG_ALBUM    ||
 		    key == INFO_ORIG_LYRICIST || key == INFO_ORIG_YEAR     ||

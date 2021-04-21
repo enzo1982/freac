@@ -1307,28 +1307,28 @@
 	  <entry id="103204" string="Composer">Композитор</entry>
 	  <entry id="103205" string="Lyrics writer">Автор текста</entry>
 	  <entry id="103206" string="Modified / remixed by">Изменено / микшировано</entry>
-	  <entry id="103207" string="Publisher information">Информация об издателе</entry>
-	  <entry id="103208" string="Publisher / label">Издатель / лэйбл</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">Темп</entry>
-	  <entry id="103211" string="BPM">Уд. в мин.</entry>
-	  <entry id="103213" string="Barcode">Штрихкод</entry>
+	  <entry id="103207" string="Original information">Исходная информация</entry>
+	  <entry id="103208" string="Original artist">Исходный артист</entry>
+	  <entry id="103209" string="Original album">Исходный альбом</entry>
+	  <entry id="103210" string="Original lyrics writer">Исходный автор текста</entry>
+	  <entry id="103211" string="Original release year">Исходный год выхода</entry>
+	  <entry id="103212" string="Tempo">Темп</entry>
+	  <entry id="103213" string="BPM">Уд. в мин.</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">Другое</entry>
-	  <entry id="103301" string="Original information">Исходная информация</entry>
-	  <entry id="103302" string="Original artist">Исходный артист</entry>
-	  <entry id="103303" string="Original album">Исходный альбом</entry>
-	  <entry id="103304" string="Original lyrics writer">Исходный автор текста</entry>
-	  <entry id="103305" string="Original release year">Исходный год выхода</entry>
-	  <entry id="103306" string="Webpage URLs">URLы вебстраниц</entry>
-	  <entry id="103307" string="Artist webpage">Вебстраница артиста</entry>
-	  <entry id="103308" string="Publisher webpage">Вебстраница издателя</entry>
-	  <entry id="103309" string="Internet radio station">Интернет-радиостанция</entry>
-	  <entry id="103310" string="Audio source webpage">Вебстраница источника аудио</entry>
-	  <entry id="103311" string="Copyright information">Информация об авторских правах</entry>
-	  <entry id="103312" string="Commercial information">Коммерческая информация</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Издатель</entry>
+	  <entry id="103301" string="Publisher information">Информация об издателе</entry>
+	  <entry id="103302" string="Publisher / label">Издатель / лэйбл</entry>
+	  <entry id="103305" string="Barcode">Штрихкод</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">URLы вебстраниц</entry>
+	  <entry id="103308" string="Artist webpage">Вебстраница артиста</entry>
+	  <entry id="103309" string="Publisher webpage">Вебстраница издателя</entry>
+	  <entry id="103310" string="Internet radio station">Интернет-радиостанция</entry>
+	  <entry id="103311" string="Audio source webpage">Вебстраница источника аудио</entry>
+	  <entry id="103312" string="Copyright information">Информация об авторских правах</entry>
+	  <entry id="103313" string="Commercial information">Коммерческая информация</entry>
 	</section>
 
 	<section name="Errors">

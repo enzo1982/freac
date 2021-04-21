@@ -1301,27 +1301,27 @@
 	  <entry id="103204" string="Composer">作曲</entry>
 	  <entry id="103205" string="Lyrics writer">作词</entry>
 	  <entry id="103206" string="Modified / remixed by">修改 / 混音</entry>
-	  <entry id="103207" string="Publisher information">出版商信息</entry>
-	  <entry id="103208" string="Publisher / label">出版商 / 标签</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">节奏</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103207" string="Original information">原始信息</entry>
+	  <entry id="103208" string="Original artist">原艺术家</entry>
+	  <entry id="103209" string="Original album">原专辑</entry>
+	  <entry id="103210" string="Original lyrics writer">原作词</entry>
+	  <entry id="103211" string="Original release year">原发行时间</entry>
+	  <entry id="103212" string="Tempo">节奏</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">其他</entry>
-	  <entry id="103301" string="Original information">原始信息</entry>
-	  <entry id="103302" string="Original artist">原艺术家</entry>
-	  <entry id="103303" string="Original album">原专辑</entry>
-	  <entry id="103304" string="Original lyrics writer">原作词</entry>
-	  <entry id="103305" string="Original release year">原发行时间</entry>
-	  <entry id="103306" string="Webpage URLs">网页地址</entry>
-	  <entry id="103307" string="Artist webpage">艺术家主页</entry>
-	  <entry id="103308" string="Publisher webpage">出版商主页</entry>
-	  <entry id="103309" string="Internet radio station">国际音乐电台</entry>
-	  <entry id="103310" string="Audio source webpage">音频资源网</entry>
-	  <entry id="103311" string="Copyright information">版权信息</entry>
-	  <entry id="103312" string="Commercial information">商业信息</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">出版商</entry>
+	  <entry id="103301" string="Publisher information">出版商信息</entry>
+	  <entry id="103302" string="Publisher / label">出版商 / 标签</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">网页地址</entry>
+	  <entry id="103308" string="Artist webpage">艺术家主页</entry>
+	  <entry id="103309" string="Publisher webpage">出版商主页</entry>
+	  <entry id="103310" string="Internet radio station">国际音乐电台</entry>
+	  <entry id="103311" string="Audio source webpage">音频资源网</entry>
+	  <entry id="103312" string="Copyright information">版权信息</entry>
+	  <entry id="103313" string="Commercial information">商业信息</entry>
 	</section>
 
 	<section name="Errors">

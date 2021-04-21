@@ -163,8 +163,6 @@
 	<entry id="3205" string="Select the folder to add to the joblist">בחר תיקיה להוספה לרשימת מטלות</entry>
       </section>
 
-      <section name="Character set"/>
-
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">! לא נבחר קובץ</entry>
       </section>
@@ -198,8 +196,6 @@
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">תקלה בגישה לשרת מידע חינמי</entry>
 	</section>
       </section>
-
-      <section name="Manage queries"/>
 
       <section name="Manage submits">
 	<entry id="4305" string="Disc name">שם דיסק</entry>
@@ -274,8 +270,6 @@
 	<entry id="5504" string="Filename pattern">צורת שם קובץ</entry>
 	<entry id="5505" string="Encoding">מבצע קידוד</entry>
       </section>
-
-      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -313,8 +307,6 @@
       <section name="Overwrite">
 	<entry id="8006" string="Skip">דלג</entry>
       </section>
-
-      <section name="Errors"/>
     </section>
 
     <section name="Ripper">
@@ -430,8 +422,6 @@
 	  <entry id="34108" string="File format">פורמט קובץ</entry>
 	</section>
 
-	<section name="Format"/>
-
 	<section name="Expert">
 	  <entry id="34306" string="disabled">מבוטל</entry>
 	  <entry id="34309" string="auto">אוטומטי</entry>
@@ -456,8 +446,6 @@
 	<entry id="37002" string="Preselection">בחירה מקדימה</entry>
 	<entry id="37003" string="Number of preselection candidates">מספר בחירות אפשרי</entry>
       </section>
-
-      <section name="Monkey's Audio"/>
 
       <section name="Speex">
 	<entry id="39002" string="auto">אוטומטי</entry>
@@ -507,8 +495,6 @@
 	  <entry id="102101" string="Automatization">אוטומטיזציה</entry>
 	  <entry id="102103" string="Select">דפדף</entry>
 	</section>
-
-	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
@@ -521,10 +507,6 @@
 	  <entry id="103107" string="Add">הוסף</entry>
 	  <entry id="103108" string="Remove">הסר</entry>
 	</section>
-
-	<section name="Details"/>
-
-	<section name="Other"/>
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">לא יכול לפתוח קובץ: %1&#10;&#10;%2</entry>

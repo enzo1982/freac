@@ -614,8 +614,6 @@
       <section name="Format">
 	<entry id="8102" string="Select">찾아보기</entry>
       </section>
-
-      <section name="Errors"/>
     </section>
 
     <section name="Ripper">
@@ -779,8 +777,6 @@
 	  <entry id="34108" string="File format">파일 포맷</entry>
 	</section>
 
-	<section name="Format"/>
-
 	<section name="Expert">
 	  <entry id="34300" string="Signal processing">시그널 프로세싱</entry>
 	  <entry id="34302" string="Note">주의</entry>
@@ -805,8 +801,6 @@
 	<entry id="37002" string="Preselection">초기선택</entry>
 	<entry id="37003" string="Number of preselection candidates">초기선택 수</entry>
       </section>
-
-      <section name="Monkey's Audio"/>
 
       <section name="Speex">
 	<entry id="39002" string="auto">자동</entry>
@@ -917,8 +911,6 @@
 	  <entry id="102101" string="Automatization">자동화</entry>
 	  <entry id="102103" string="Select">브라우즈</entry>
 	</section>
-
-	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
@@ -938,10 +930,6 @@
 
 	<section name="Details">
 	  <entry id="103200" string="Details">더 보기</entry>
-	</section>
-
-	<section name="Other">
-	  <entry id="103300" string="Other">기타</entry>
 	</section>
 
 	<section name="Errors">

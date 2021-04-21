@@ -158,6 +158,7 @@ Geschichte
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Verbesserung der Geschwindigkeit bei der DSP-Verarbeitung um bis zu 70%
 			- Einstellung für Frequenzbandbreite zum FDK-AAC-Konfigurationsdialog hinzugefügt
+			- Feld für Medienart zum Tag-Editor hinzugefügt
 
 		- Behobene Fehler
 

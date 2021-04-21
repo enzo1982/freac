@@ -1302,27 +1302,27 @@
 	  <entry id="103204" string="Composer">Kompozitorius</entry>
 	  <entry id="103205" string="Lyrics writer">Žodžių autorius</entry>
 	  <entry id="103206" string="Modified / remixed by">Modifikavo / sumaišė</entry>
-	  <entry id="103207" string="Publisher information">Leidėjo informacija</entry>
-	  <entry id="103208" string="Publisher / label">Leidėjas / įrašų bendrovė</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">Tempas</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103207" string="Original information">Originalo informacija</entry>
+	  <entry id="103208" string="Original artist">Originalo atlikėjas</entry>
+	  <entry id="103209" string="Original album">Originalo albumas</entry>
+	  <entry id="103210" string="Original lyrics writer">Originalo žodžių autorius</entry>
+	  <entry id="103211" string="Original release year">Originalo išleidimo metai</entry>
+	  <entry id="103212" string="Tempo">Tempas</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">Kita</entry>
-	  <entry id="103301" string="Original information">Originalo informacija</entry>
-	  <entry id="103302" string="Original artist">Originalo atlikėjas</entry>
-	  <entry id="103303" string="Original album">Originalo albumas</entry>
-	  <entry id="103304" string="Original lyrics writer">Originalo žodžių autorius</entry>
-	  <entry id="103305" string="Original release year">Originalo išleidimo metai</entry>
-	  <entry id="103306" string="Webpage URLs">Tinklalapių adresai</entry>
-	  <entry id="103307" string="Artist webpage">Atlikėjo tinklalapis</entry>
-	  <entry id="103308" string="Publisher webpage">Leidėjo tinklalapis</entry>
-	  <entry id="103309" string="Internet radio station">Internetinė radijo stotis</entry>
-	  <entry id="103310" string="Audio source webpage">Audio šaltinio tinklalapis</entry>
-	  <entry id="103311" string="Copyright information">Autorinių teisių informacija</entry>
-	  <entry id="103312" string="Commercial information">Komercinė informacija</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Leidėjas</entry>
+	  <entry id="103301" string="Publisher information">Leidėjo informacija</entry>
+	  <entry id="103302" string="Publisher / label">Leidėjas / įrašų bendrovė</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">Tinklalapių adresai</entry>
+	  <entry id="103308" string="Artist webpage">Atlikėjo tinklalapis</entry>
+	  <entry id="103309" string="Publisher webpage">Leidėjo tinklalapis</entry>
+	  <entry id="103310" string="Internet radio station">Internetinė radijo stotis</entry>
+	  <entry id="103311" string="Audio source webpage">Audio šaltinio tinklalapis</entry>
+	  <entry id="103312" string="Copyright information">Autorinių teisių informacija</entry>
+	  <entry id="103313" string="Commercial information">Komercinė informacija</entry>
 	</section>
 
 	<section name="Errors">

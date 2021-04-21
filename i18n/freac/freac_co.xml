@@ -1308,29 +1308,29 @@
 	  <entry id="103204" string="Composer">Cumpositore</entry>
 	  <entry id="103205" string="Lyrics writer">Parullaghju</entry>
 	  <entry id="103206" string="Modified / remixed by">Mudificatu / mischiatu da</entry>
-	  <entry id="103207" string="Publisher information">Infurmazione di l’editore</entry>
-	  <entry id="103208" string="Publisher / label">Editore / casa</entry>
-	  <entry id="103209" string="ISRC">Codice ISRC</entry>
-	  <entry id="103210" string="Tempo">Tempo</entry>
-	  <entry id="103211" string="BPM">Ritmu BPM</entry>
-	  <entry id="103212" string="Catalog number">Numeru di catalogu</entry>
-	  <entry id="103213" string="Barcode">Codice à barre</entry>
+	  <entry id="103207" string="Original information">Infurmazioni d’urigine</entry>
+	  <entry id="103208" string="Original artist">Artista d’urigine</entry>
+	  <entry id="103209" string="Original album">Albumu d’urigine</entry>
+	  <entry id="103210" string="Original lyrics writer">Parullaghju d’urigine</entry>
+	  <entry id="103211" string="Original release year">Annu d’urigine di publicazione</entry>
+	  <entry id="103212" string="Tempo">Tempo</entry>
+	  <entry id="103213" string="BPM">Ritmu BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">Altra</entry>
-	  <entry id="103301" string="Original information">Infurmazioni d’urigine</entry>
-	  <entry id="103302" string="Original artist">Artista d’urigine</entry>
-	  <entry id="103303" string="Original album">Albumu d’urigine</entry>
-	  <entry id="103304" string="Original lyrics writer">Parullaghju d’urigine</entry>
-	  <entry id="103305" string="Original release year">Annu d’urigine di publicazione</entry>
-	  <entry id="103306" string="Webpage URLs">Indirizzi web</entry>
-	  <entry id="103307" string="Artist webpage">Pagina web di l’artista</entry>
-	  <entry id="103308" string="Publisher webpage">Pagina web di l’editore</entry>
-	  <entry id="103309" string="Internet radio station">Radio nant’à Internet</entry>
-	  <entry id="103310" string="Audio source webpage">Pagina web di a fonte audio</entry>
-	  <entry id="103311" string="Copyright information">Infurmazioni nant’à i diritti di copia</entry>
-	  <entry id="103312" string="Commercial information">Infurmazioni cummerciali</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Editore</entry>
+	  <entry id="103301" string="Publisher information">Infurmazione di l’editore</entry>
+	  <entry id="103302" string="Publisher / label">Editore / casa</entry>
+	  <entry id="103304" string="Catalog number">Numeru di catalogu</entry>
+	  <entry id="103305" string="Barcode">Codice à barre</entry>
+	  <entry id="103306" string="ISRC">Codice ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">Indirizzi web</entry>
+	  <entry id="103308" string="Artist webpage">Pagina web di l’artista</entry>
+	  <entry id="103309" string="Publisher webpage">Pagina web di l’editore</entry>
+	  <entry id="103310" string="Internet radio station">Radio nant’à Internet</entry>
+	  <entry id="103311" string="Audio source webpage">Pagina web di a fonte audio</entry>
+	  <entry id="103312" string="Copyright information">Infurmazioni nant’à i diritti di copia</entry>
+	  <entry id="103313" string="Commercial information">Infurmazioni cummerciali</entry>
 	</section>
 
 	<section name="Errors">

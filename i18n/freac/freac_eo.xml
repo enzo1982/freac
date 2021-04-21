@@ -193,8 +193,6 @@
 	<entry id="3205" string="Select the folder to add to the joblist">Elekti la dosierujon por aldoni al la laborlisto</entry>
       </section>
 
-      <section name="Character set"/>
-
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Vi ne elektis dosieron !</entry>
 	<entry id="3401" string="No files found matching pattern: %1">Neniu dosierujo korespondas al modelo: %1</entry>
@@ -362,8 +360,6 @@
 	<entry id="5504" string="Filename pattern">Modelo por dosiernomo</entry>
 	<entry id="5505" string="Encoding">Signokodo</entry>
       </section>
-
-      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -402,8 +398,6 @@
       <section name="Overwrite">
 	<entry id="8006" string="Skip">Transsalti</entry>
       </section>
-
-      <section name="Errors"/>
     </section>
 
     <section name="Ripper">
@@ -609,8 +603,6 @@
 	<entry id="37003" string="Number of preselection candidates">Nombro de la antaŭelektaj kandidatoj</entry>
       </section>
 
-      <section name="Monkey's Audio"/>
-
       <section name="Speex">
 	<entry id="39002" string="auto">aŭtomata</entry>
 	<entry id="39006" string="VBR mode">VBR-moduso</entry>
@@ -660,8 +652,6 @@
 	  <entry id="102101" string="Automatization">Aŭtomatigo</entry>
 	  <entry id="102103" string="Select">Elekti ujon</entry>
 	</section>
-
-	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
@@ -675,10 +665,6 @@
 	  <entry id="103107" string="Add">Aldoni</entry>
 	  <entry id="103108" string="Remove">Forigi</entry>
 	</section>
-
-	<section name="Details"/>
-
-	<section name="Other"/>
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Ne eblas malfermi la dosieron: %1&#10;&#10;%2</entry>

@@ -193,8 +193,6 @@
 	<entry id="3205" string="Select the folder to add to the joblist">Velg mappen som skal legges til jobblisten</entry>
       </section>
 
-      <section name="Character set"/>
-
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Du har ikke valgt en fil!</entry>
 	<entry id="3401" string="No files found matching pattern: %1">Ingen filer fant passende mønster: %1</entry>
@@ -410,8 +408,6 @@
       <section name="Overwrite">
 	<entry id="8006" string="Skip">Hopp over</entry>
       </section>
-
-      <section name="Errors"/>
     </section>
 
     <section name="Ripper">
@@ -617,8 +613,6 @@
 	<entry id="37003" string="Number of preselection candidates">Antall forvalgte kandidater</entry>
       </section>
 
-      <section name="Monkey's Audio"/>
-
       <section name="Speex">
 	<entry id="39002" string="auto">automatisk</entry>
 	<entry id="39006" string="VBR mode">VBR-modus</entry>
@@ -669,8 +663,6 @@
 	  <entry id="102101" string="Automatization">Automatisering</entry>
 	  <entry id="102103" string="Select">Bla gjennom</entry>
 	</section>
-
-	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
@@ -689,8 +681,6 @@
 	<section name="Details">
 	  <entry id="103200" string="Details">Detaljer</entry>
 	</section>
-
-	<section name="Other"/>
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åpne filen: %1&#10;&#10;Feil: %2</entry>

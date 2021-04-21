@@ -1301,27 +1301,27 @@
 	  <entry id="103204" string="Composer">Komponist</entry>
 	  <entry id="103205" string="Lyrics writer">Tekst Forfatter</entry>
 	  <entry id="103206" string="Modified / remixed by">Ændret / remixed af</entry>
-	  <entry id="103207" string="Publisher information">Udgiver information</entry>
-	  <entry id="103208" string="Publisher / label">Udgiver / label</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">Tempo</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103207" string="Original information">Oprindelig information</entry>
+	  <entry id="103208" string="Original artist">Oprindelig kunster</entry>
+	  <entry id="103209" string="Original album">Oprindelig Album</entry>
+	  <entry id="103210" string="Original lyrics writer">Oprindelig text forfatter</entry>
+	  <entry id="103211" string="Original release year">Oprindeligt udgivelses år</entry>
+	  <entry id="103212" string="Tempo">Tempo</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">Andet</entry>
-	  <entry id="103301" string="Original information">Oprindelig information</entry>
-	  <entry id="103302" string="Original artist">Oprindelig kunster</entry>
-	  <entry id="103303" string="Original album">Oprindelig Album</entry>
-	  <entry id="103304" string="Original lyrics writer">Oprindelig text forfatter</entry>
-	  <entry id="103305" string="Original release year">Oprindeligt udgivelses år</entry>
-	  <entry id="103306" string="Webpage URLs">Hjemmeside URLs</entry>
-	  <entry id="103307" string="Artist webpage">Kunsters hjemmeside</entry>
-	  <entry id="103308" string="Publisher webpage">Udgivers Hjemmeside</entry>
-	  <entry id="103309" string="Internet radio station">Internet radio station</entry>
-	  <entry id="103310" string="Audio source webpage">Lyd source hjemmeside</entry>
-	  <entry id="103311" string="Copyright information">Copyright Information</entry>
-	  <entry id="103312" string="Commercial information">Kommerciel information</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Udgiver</entry>
+	  <entry id="103301" string="Publisher information">Udgiver information</entry>
+	  <entry id="103302" string="Publisher / label">Udgiver / label</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">Hjemmeside URLs</entry>
+	  <entry id="103308" string="Artist webpage">Kunsters hjemmeside</entry>
+	  <entry id="103309" string="Publisher webpage">Udgivers Hjemmeside</entry>
+	  <entry id="103310" string="Internet radio station">Internet radio station</entry>
+	  <entry id="103311" string="Audio source webpage">Lyd source hjemmeside</entry>
+	  <entry id="103312" string="Copyright information">Copyright Information</entry>
+	  <entry id="103313" string="Commercial information">Kommerciel information</entry>
 	</section>
 
 	<section name="Errors">

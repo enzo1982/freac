@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -62,35 +62,36 @@ BoCA::LayerTagDetails::LayerTagDetails() : Editor("Details")
 
 	Add(group_details);
 
-	group_publisher		= new GroupBox(NIL, Point(7, 10), Size(400, 120));
+	group_original		= new GroupBox(NIL, Point(7, 10), Size(400, 120));
 
-	text_publisher		= new Text(NIL, Point(9, 13));
-	text_catalog		= new Text(NIL, text_publisher->GetPosition() + Point(0, 27));
-	text_barcode		= new Text(NIL, text_catalog->GetPosition() + Point(0, 27));
-	text_isrc		= new Text(NIL, text_barcode->GetPosition() + Point(0, 27));
+	text_oartist		= new Text(NIL, Point(9, 13));
+	text_oalbum		= new Text(NIL, text_oartist->GetPosition() + Point(0, 27));
+	text_otextwriter	= new Text(NIL, text_oalbum->GetPosition() + Point(0, 27));
+	text_oyear		= new Text(NIL, text_otextwriter->GetPosition() + Point(0, 27));
 
-	edit_publisher		= new EditBox(text_publisher->GetPosition() + Point(7, -3), Size(300, 0));
-	edit_publisher->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
+	edit_oartist		= new EditBox(text_oartist->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_oartist->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
-	edit_catalog		= new EditBox(text_catalog->GetPosition() + Point(7, -3), Size(300, 0), 12);
-	edit_catalog->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
+	edit_oalbum		= new EditBox(text_oalbum->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_oalbum->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
-	edit_barcode		= new EditBox(text_barcode->GetPosition() + Point(7, -3), Size(300, 0), 12);
-	edit_barcode->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
+	edit_otextwriter	= new EditBox(text_otextwriter->GetPosition() + Point(7, -3), Size(300, 0));
+	edit_otextwriter->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
-	edit_isrc		= new EditBox(text_isrc->GetPosition() + Point(7, -3), Size(300, 0), 12);
-	edit_isrc->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
+	edit_oyear		= new EditBox(text_oyear->GetPosition() + Point(7, -3), Size(50, 0), 4);
+	edit_oyear->SetFlags(EDB_NUMERIC);
+	edit_oyear->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
-	group_publisher->Add(text_publisher);
-	group_publisher->Add(edit_publisher);
-	group_publisher->Add(text_catalog);
-	group_publisher->Add(edit_catalog);
-	group_publisher->Add(text_barcode);
-	group_publisher->Add(edit_barcode);
-	group_publisher->Add(text_isrc);
-	group_publisher->Add(edit_isrc);
+	group_original->Add(text_oartist);
+	group_original->Add(edit_oartist);
+	group_original->Add(text_oalbum);
+	group_original->Add(edit_oalbum);
+	group_original->Add(text_otextwriter);
+	group_original->Add(edit_otextwriter);
+	group_original->Add(text_oyear);
+	group_original->Add(edit_oyear);
 
-	Add(group_publisher);
+	Add(group_original);
 
 	group_tempo		= new GroupBox(NIL, Point(7, 145), Size(400, 39));
 
@@ -134,15 +135,15 @@ BoCA::LayerTagDetails::~LayerTagDetails()
 	DeleteObject(text_remix);
 	DeleteObject(edit_remix);
 
-	DeleteObject(group_publisher);
-	DeleteObject(text_publisher);
-	DeleteObject(edit_publisher);
-	DeleteObject(text_catalog);
-	DeleteObject(edit_catalog);
-	DeleteObject(text_barcode);
-	DeleteObject(edit_barcode);
-	DeleteObject(text_isrc);
-	DeleteObject(edit_isrc);
+	DeleteObject(group_original);
+	DeleteObject(text_oartist);
+	DeleteObject(edit_oartist);
+	DeleteObject(text_oalbum);
+	DeleteObject(edit_oalbum);
+	DeleteObject(text_otextwriter);
+	DeleteObject(edit_otextwriter);
+	DeleteObject(text_oyear);
+	DeleteObject(edit_oyear);
 
 	DeleteObject(group_tempo);
 	DeleteObject(text_bpm);
@@ -160,7 +161,7 @@ Void BoCA::LayerTagDetails::OnChangeSize(const Size &nSize)
 	group_details->SetWidth((clientSize.cx - 23) / 2);
 
 	Int	 maxTextSize = Math::Max(Math::Max(Math::Max(text_band->GetUnscaledTextWidth(), text_conductor->GetUnscaledTextWidth()), Math::Max(text_remix->GetUnscaledTextWidth(), text_albumartist->GetUnscaledTextWidth())), Math::Max(text_composer->GetUnscaledTextWidth(), text_textwriter->GetUnscaledTextWidth()));
-	Int	 maxTextSize2 = Math::Max(Math::Max(Math::Max(text_publisher->GetUnscaledTextWidth(), text_catalog->GetUnscaledTextWidth()), Math::Max(text_barcode->GetUnscaledTextWidth(), text_isrc->GetUnscaledTextWidth())), text_bpm->GetUnscaledTextWidth());
+	Int	 maxTextSize2 = Math::Max(Math::Max(Math::Max(text_oartist->GetUnscaledTextWidth(), text_oalbum->GetUnscaledTextWidth()), Math::Max(text_otextwriter->GetUnscaledTextWidth(), text_oyear->GetUnscaledTextWidth())), text_bpm->GetUnscaledTextWidth());
 
 	edit_albumartist->SetWidth(group_details->GetWidth() - 26 - maxTextSize);
 	edit_band->SetWidth(group_details->GetWidth() - 26 - maxTextSize);
@@ -169,13 +170,12 @@ Void BoCA::LayerTagDetails::OnChangeSize(const Size &nSize)
 	edit_textwriter->SetWidth(group_details->GetWidth() - 26 - maxTextSize);
 	edit_remix->SetWidth(group_details->GetWidth() - 26 - maxTextSize);
 
-	group_publisher->SetX((clientSize.cx / 2) + 4);
-	group_publisher->SetWidth((clientSize.cx - 24) / 2 + (clientSize.cx % 2));
+	group_original->SetX((clientSize.cx / 2) + 4);
+	group_original->SetWidth((clientSize.cx - 24) / 2 + (clientSize.cx % 2));
 
-	edit_publisher->SetWidth(group_details->GetWidth() - 26 - maxTextSize2);
-	edit_catalog->SetWidth(group_details->GetWidth() - 26 - maxTextSize2);
-	edit_barcode->SetWidth(group_details->GetWidth() - 26 - maxTextSize2);
-	edit_isrc->SetWidth(group_details->GetWidth() - 26 - maxTextSize2);
+	edit_oartist->SetWidth(group_original->GetWidth() - 26 - maxTextSize2);
+	edit_oalbum->SetWidth(group_original->GetWidth() - 26 - maxTextSize2);
+	edit_otextwriter->SetWidth(group_original->GetWidth() - 26 - maxTextSize2);
 
 	group_tempo->SetX((clientSize.cx / 2) + 4);
 	group_tempo->SetWidth((clientSize.cx - 24) / 2 + (clientSize.cx % 2));
@@ -217,23 +217,23 @@ Void BoCA::LayerTagDetails::OnChangeLanguageSettings()
 	edit_textwriter->SetX(text_textwriter->GetX() + maxTextSize + 7);
 	edit_remix->SetX(text_remix->GetX() + maxTextSize + 7);
 
-	group_publisher->SetText(i18n->TranslateString("Publisher information"));
+	group_original->SetText(i18n->TranslateString("Original information"));
 
-	text_publisher->SetText(i18n->AddColon(i18n->TranslateString("Publisher / label")));
-	text_catalog->SetText(i18n->AddColon(i18n->TranslateString("Catalog number")));
-	text_barcode->SetText(i18n->AddColon(i18n->TranslateString("Barcode")));
-	text_isrc->SetText(i18n->AddColon(i18n->TranslateString("ISRC")));
+	text_oartist->SetText(i18n->AddColon(i18n->TranslateString("Original artist")));
+	text_oalbum->SetText(i18n->AddColon(i18n->TranslateString("Original album")));
+	text_otextwriter->SetText(i18n->AddColon(i18n->TranslateString("Original lyrics writer")));
+	text_oyear->SetText(i18n->AddColon(i18n->TranslateString("Original release year")));
 
 	group_tempo->SetText(i18n->TranslateString("Tempo"));
 
 	text_bpm->SetText(i18n->AddColon(i18n->TranslateString("BPM")));
 
-	Int	 maxTextSize2 = Math::Max(Math::Max(Math::Max(text_publisher->GetUnscaledTextWidth(), text_catalog->GetUnscaledTextWidth()), Math::Max(text_barcode->GetUnscaledTextWidth(), text_isrc->GetUnscaledTextWidth())), text_bpm->GetUnscaledTextWidth());
+	Int	 maxTextSize2 = Math::Max(Math::Max(Math::Max(text_oartist->GetUnscaledTextWidth(), text_oalbum->GetUnscaledTextWidth()), Math::Max(text_otextwriter->GetUnscaledTextWidth(), text_oyear->GetUnscaledTextWidth())), text_bpm->GetUnscaledTextWidth());
 
-	edit_publisher->SetX(text_publisher->GetX() + maxTextSize2 + 7);
-	edit_catalog->SetX(text_catalog->GetX() + maxTextSize2 + 7);
-	edit_barcode->SetX(text_barcode->GetX() + maxTextSize2 + 7);
-	edit_isrc->SetX(text_isrc->GetX() + maxTextSize2 + 7);
+	edit_oartist->SetX(text_oartist->GetX() + maxTextSize2 + 7);
+	edit_oalbum->SetX(text_oalbum->GetX() + maxTextSize2 + 7);
+	edit_otextwriter->SetX(text_otextwriter->GetX() + maxTextSize2 + 7);
+	edit_oyear->SetX(text_oyear->GetX() + maxTextSize2 + 7);
 
 	edit_bpm->SetX(text_bpm->GetX() + maxTextSize2 + 7);
 
@@ -254,10 +254,12 @@ EditBox *BoCA::LayerTagDetails::GetActiveEditBox()
 	else if	(edit_composer->IsFocussed())	 return edit_composer;
 	else if	(edit_textwriter->IsFocussed())	 return edit_textwriter;
 	else if	(edit_remix->IsFocussed())	 return edit_remix;
-	else if	(edit_publisher->IsFocussed())	 return edit_publisher;
-	else if	(edit_catalog->IsFocussed())	 return edit_catalog;
-	else if	(edit_barcode->IsFocussed())	 return edit_barcode;
-	else if	(edit_isrc->IsFocussed())	 return edit_isrc;
+
+	else if	(edit_oartist->IsFocussed())	 return edit_oartist;
+	else if	(edit_oalbum->IsFocussed())	 return edit_oalbum;
+	else if	(edit_otextwriter->IsFocussed()) return edit_otextwriter;
+	else if	(edit_oyear->IsFocussed())	 return edit_oyear;
+
 	else if	(edit_bpm->IsFocussed())	 return edit_bpm;
 
 	return NIL;
@@ -291,20 +293,13 @@ Void BoCA::LayerTagDetails::OnSelectTrack(const Track &nTrack)
 	text_albumartist->Activate();
 	edit_albumartist->Activate();
 
-	group_publisher->Activate();
-
-	text_isrc->Activate();
-	edit_isrc->Activate();
-
+	group_original->Activate();
 	group_tempo->Activate();
 
 	text_bpm->Activate();
 	edit_bpm->Activate();
 
 	const Info	&info = track.GetInfo();
-
-	edit_publisher->SetText(info.label);
-	edit_isrc->SetText(info.isrc);
 
 	foreach (const String &pair, info.other)
 	{
@@ -317,8 +312,12 @@ Void BoCA::LayerTagDetails::OnSelectTrack(const Track &nTrack)
 		else if	(key == INFO_COMPOSER)      edit_composer->SetText(value);
 		else if	(key == INFO_LYRICIST)      edit_textwriter->SetText(value);
 		else if	(key == INFO_REMIXER)	    edit_remix->SetText(value);
-		else if	(key == INFO_CATALOGNUMBER) edit_catalog->SetText(value);
-		else if	(key == INFO_BARCODE)	    edit_barcode->SetText(value);
+
+		else if	(key == INFO_ORIG_ARTIST)   edit_oartist->SetText(value);
+		else if	(key == INFO_ORIG_ALBUM)    edit_oalbum->SetText(value);
+		else if	(key == INFO_ORIG_LYRICIST) edit_otextwriter->SetText(value);
+		else if	(key == INFO_ORIG_YEAR)	    edit_oyear->SetText(value);
+
 		else if	(key == INFO_BPM)	    edit_bpm->SetText(value);
 	}
 
@@ -354,19 +353,13 @@ Void BoCA::LayerTagDetails::OnSelectAlbum(const Track &nTrack)
 	text_albumartist->Deactivate();
 	edit_albumartist->Deactivate();
 
-	group_publisher->Activate();
-
-	text_isrc->Deactivate();
-	edit_isrc->Deactivate();
-
+	group_original->Activate();
 	group_tempo->Deactivate();
 
 	text_bpm->Deactivate();
 	edit_bpm->Deactivate();
 
 	const Info	&info = track.GetInfo();
-
-	edit_publisher->SetText(info.label);
 
 	foreach (const String &pair, info.other)
 	{
@@ -379,8 +372,11 @@ Void BoCA::LayerTagDetails::OnSelectAlbum(const Track &nTrack)
 		else if	(key == INFO_COMPOSER)      edit_composer->SetText(value);
 		else if	(key == INFO_LYRICIST)      edit_textwriter->SetText(value);
 		else if	(key == INFO_REMIXER)	    edit_remix->SetText(value);
-		else if	(key == INFO_CATALOGNUMBER) edit_catalog->SetText(value);
-		else if	(key == INFO_BARCODE)	    edit_barcode->SetText(value);
+
+		else if	(key == INFO_ORIG_ARTIST)   edit_oartist->SetText(value);
+		else if	(key == INFO_ORIG_ALBUM)    edit_oalbum->SetText(value);
+		else if	(key == INFO_ORIG_LYRICIST) edit_otextwriter->SetText(value);
+		else if	(key == INFO_ORIG_YEAR)	    edit_oyear->SetText(value);
 	}
 
 	EditBox	*activeEditBox = GetActiveEditBox();
@@ -411,15 +407,15 @@ Void BoCA::LayerTagDetails::OnSelectNone()
 	edit_textwriter->SetText(NIL);
 	edit_remix->SetText(NIL);
 
-	edit_publisher->SetText(NIL);
-	edit_catalog->SetText(NIL);
-	edit_barcode->SetText(NIL);
-	edit_isrc->SetText(NIL);
+	edit_oartist->SetText(NIL);
+	edit_oalbum->SetText(NIL);
+	edit_otextwriter->SetText(NIL);
+	edit_oyear->SetText(NIL);
 
 	edit_bpm->SetText(NIL);
 
 	group_details->Deactivate();
-	group_publisher->Deactivate();
+	group_original->Deactivate();
 	group_tempo->Deactivate();
 
 	if (surface) surface->EndPaint();
@@ -435,17 +431,18 @@ Void BoCA::LayerTagDetails::OnModifyTrack()
 {
 	Info	 info = track.GetInfo();
 
-	info.label	= edit_publisher->GetText();
-	info.isrc	= edit_isrc->GetText();
-
 	info.SetOtherInfo(INFO_ALBUMARTIST,   edit_albumartist->GetText());
 	info.SetOtherInfo(INFO_BAND,	      edit_band->GetText());
 	info.SetOtherInfo(INFO_CONDUCTOR,     edit_conductor->GetText());
 	info.SetOtherInfo(INFO_COMPOSER,      edit_composer->GetText());
 	info.SetOtherInfo(INFO_LYRICIST,      edit_textwriter->GetText());
 	info.SetOtherInfo(INFO_REMIXER,	      edit_remix->GetText());
-	info.SetOtherInfo(INFO_CATALOGNUMBER, edit_catalog->GetText());
-	info.SetOtherInfo(INFO_BARCODE,	      edit_barcode->GetText());
+
+	info.SetOtherInfo(INFO_ORIG_ARTIST,   edit_oartist->GetText());
+	info.SetOtherInfo(INFO_ORIG_ALBUM,    edit_oalbum->GetText());
+	info.SetOtherInfo(INFO_ORIG_LYRICIST, edit_otextwriter->GetText());
+	info.SetOtherInfo(INFO_ORIG_YEAR,     edit_oyear->GetText());
+
 	info.SetOtherInfo(INFO_BPM,	      edit_bpm->GetText());
 
 	track.SetInfo(info);

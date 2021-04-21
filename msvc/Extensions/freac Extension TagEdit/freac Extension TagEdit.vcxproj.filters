@@ -52,7 +52,7 @@
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_details.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_other.cpp">
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_publisher.cpp">
       <Filter>Quelldateien\editor</Filter>
     </ClCompile>
   </ItemGroup>
@@ -108,7 +108,7 @@
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_details.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_other.h">
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_publisher.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
   </ItemGroup>

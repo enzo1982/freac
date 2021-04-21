@@ -193,8 +193,6 @@
 	<entry id="3205" string="Select the folder to add to the joblist">Επιλέξτε φάκελο για προσθήκη στη λίστα εργασιών</entry>
       </section>
 
-      <section name="Character set"/>
-
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Δεν έχετε επιλέξει αρχείο!</entry>
 	<entry id="3401" string="No files found matching pattern: %1">Δε βρέθηκαν αρχεία να ταιριάζουν στο πρότυπο: %1</entry>
@@ -359,8 +357,6 @@
 	<entry id="5504" string="Filename pattern">Στυλ ονόματος αρχείου</entry>
 	<entry id="5505" string="Encoding">Κωδικοποίηση</entry>
       </section>
-
-      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -401,8 +397,6 @@
       <section name="Overwrite">
 	<entry id="8006" string="Skip">Παράλειψη</entry>
       </section>
-
-      <section name="Errors"/>
     </section>
 
     <section name="Ripper">
@@ -608,8 +602,6 @@
 	<entry id="37003" string="Number of preselection candidates">Αριθμός υποψηφίων προεπιλογής</entry>
       </section>
 
-      <section name="Monkey's Audio"/>
-
       <section name="Speex">
 	<entry id="39002" string="auto">αυτόματο</entry>
 	<entry id="39006" string="VBR mode">Λειτουργία VBR</entry>
@@ -659,8 +651,6 @@
 	  <entry id="102101" string="Automatization">Αυτοματοποίηση</entry>
 	  <entry id="102103" string="Select">Εξερεύνηση</entry>
 	</section>
-
-	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
@@ -674,10 +664,6 @@
 	  <entry id="103107" string="Add">Προσθήκη</entry>
 	  <entry id="103108" string="Remove">Διαγραφή</entry>
 	</section>
-
-	<section name="Details"/>
-
-	<section name="Other"/>
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Αδύνατο το άνοιγμα του αρχείου: %1&#10;&#10;%2</entry>

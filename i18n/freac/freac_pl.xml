@@ -1308,29 +1308,29 @@
 	  <entry id="103204" string="Composer">Kompozytor</entry>
 	  <entry id="103205" string="Lyrics writer">Autor tekstu</entry>
 	  <entry id="103206" string="Modified / remixed by">Zmodyfikowane/zremiksowane przez</entry>
-	  <entry id="103207" string="Publisher information">Informacja o wydawcy</entry>
-	  <entry id="103208" string="Publisher / label">Wydawca/wytwórnia</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">Tempo</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
-	  <entry id="103212" string="Catalog number">Numer katalogowy</entry>
-	  <entry id="103213" string="Barcode">Kod paskowy</entry>
+	  <entry id="103207" string="Original information">Oryginalne informacje</entry>
+	  <entry id="103208" string="Original artist">Wykonawca oryginalny</entry>
+	  <entry id="103209" string="Original album">Album oryginalny</entry>
+	  <entry id="103210" string="Original lyrics writer">Oryginalny autor tekstu</entry>
+	  <entry id="103211" string="Original release year">Pierwotny rok wydania</entry>
+	  <entry id="103212" string="Tempo">Tempo</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">Inne</entry>
-	  <entry id="103301" string="Original information">Oryginalne informacje</entry>
-	  <entry id="103302" string="Original artist">Wykonawca oryginalny</entry>
-	  <entry id="103303" string="Original album">Album oryginalny</entry>
-	  <entry id="103304" string="Original lyrics writer">Oryginalny autor tekstu</entry>
-	  <entry id="103305" string="Original release year">Pierwotny rok wydania</entry>
-	  <entry id="103306" string="Webpage URLs">Adres URL strony</entry>
-	  <entry id="103307" string="Artist webpage">Strona WWW wykonawcy</entry>
-	  <entry id="103308" string="Publisher webpage">Strona WWW wydawcy</entry>
-	  <entry id="103309" string="Internet radio station">Internetowa stacja radiowa</entry>
-	  <entry id="103310" string="Audio source webpage">Strona WWW źródła audio</entry>
-	  <entry id="103311" string="Copyright information">Informacje o prawach autorskich</entry>
-	  <entry id="103312" string="Commercial information">Informacje handlowe</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Wydawca</entry>
+	  <entry id="103301" string="Publisher information">Informacja o wydawcy</entry>
+	  <entry id="103302" string="Publisher / label">Wydawca/wytwórnia</entry>
+	  <entry id="103304" string="Catalog number">Numer katalogowy</entry>
+	  <entry id="103305" string="Barcode">Kod paskowy</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">Adres URL strony</entry>
+	  <entry id="103308" string="Artist webpage">Strona WWW wykonawcy</entry>
+	  <entry id="103309" string="Publisher webpage">Strona WWW wydawcy</entry>
+	  <entry id="103310" string="Internet radio station">Internetowa stacja radiowa</entry>
+	  <entry id="103311" string="Audio source webpage">Strona WWW źródła audio</entry>
+	  <entry id="103312" string="Copyright information">Informacje o prawach autorskich</entry>
+	  <entry id="103313" string="Commercial information">Informacje handlowe</entry>
 	</section>
 
 	<section name="Errors">

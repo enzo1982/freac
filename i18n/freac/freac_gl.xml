@@ -193,8 +193,6 @@
 	<entry id="3205" string="Select the folder to add to the joblist">Seleccione o directorio para engadir á listaxe de tarefas</entry>
       </section>
 
-      <section name="Character set"/>
-
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Non hai ningún arquivo seleccionado!</entry>
 	<entry id="3401" string="No files found matching pattern: %1">Non se atopan arquivos correspondentes co patrón: %1</entry>
@@ -363,8 +361,6 @@
 	<entry id="5504" string="Filename pattern">Patrón de nome de arquivo</entry>
 	<entry id="5505" string="Encoding">Conversión</entry>
       </section>
-
-      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -409,8 +405,6 @@
       <section name="Overwrite">
 	<entry id="8006" string="Skip">Omitir</entry>
       </section>
-
-      <section name="Errors"/>
     </section>
 
     <section name="Ripper">
@@ -627,8 +621,6 @@
 	<entry id="37003" string="Number of preselection candidates">Nº de candidatos de preselección</entry>
       </section>
 
-      <section name="Monkey's Audio"/>
-
       <section name="Speex">
 	<entry id="39002" string="auto">auto</entry>
 	<entry id="39006" string="VBR mode">Modo VBR</entry>
@@ -679,8 +671,6 @@
 	  <entry id="102101" string="Automatization">Automatización</entry>
 	  <entry id="102103" string="Select">Procurar</entry>
 	</section>
-
-	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
@@ -694,10 +684,6 @@
 	  <entry id="103107" string="Add">Engadir</entry>
 	  <entry id="103108" string="Remove">Eliminar</entry>
 	</section>
-
-	<section name="Details"/>
-
-	<section name="Other"/>
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Non é posíbel abrir o arquivo: %1&#10;&#10;Erro: %2</entry>

@@ -64,6 +64,21 @@
       <entry id="518" string="%1%"/>
     </section>
 
+    <section name="Media types">
+      <entry id="600" string="CD"/>
+      <entry id="601" string="DAT"/>
+      <entry id="602" string="MiniDisc"/>
+      <entry id="603" string="Compact Cassette"/>
+      <entry id="604" string="Reel tape"/>
+      <entry id="605" string="Vinyl"/>
+      <entry id="606" string="DVD"/>
+      <entry id="607" string="LaserDisc"/>
+      <entry id="608" string="TV"/>
+      <entry id="609" string="Video"/>
+      <entry id="610" string="Radio"/>
+      <entry id="611" string="Telephone"/>
+    </section>
+
     <section name="Menu">
       <entry id="1000" string="File"/>
       <entry id="1001" string="Options"/>
@@ -1308,29 +1323,30 @@
 	  <entry id="103204" string="Composer"/>
 	  <entry id="103205" string="Lyrics writer"/>
 	  <entry id="103206" string="Modified / remixed by"/>
-	  <entry id="103207" string="Publisher information"/>
-	  <entry id="103208" string="Publisher / label"/>
-	  <entry id="103209" string="ISRC"/>
-	  <entry id="103210" string="Tempo"/>
-	  <entry id="103211" string="BPM"/>
-	  <entry id="103212" string="Catalog number"/>
-	  <entry id="103213" string="Barcode"/>
+	  <entry id="103207" string="Original information"/>
+	  <entry id="103208" string="Original artist"/>
+	  <entry id="103209" string="Original album"/>
+	  <entry id="103210" string="Original lyrics writer"/>
+	  <entry id="103211" string="Original release year"/>
+	  <entry id="103212" string="Tempo"/>
+	  <entry id="103213" string="BPM"/>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other"/>
-	  <entry id="103301" string="Original information"/>
-	  <entry id="103302" string="Original artist"/>
-	  <entry id="103303" string="Original album"/>
-	  <entry id="103304" string="Original lyrics writer"/>
-	  <entry id="103305" string="Original release year"/>
-	  <entry id="103306" string="Webpage URLs"/>
-	  <entry id="103307" string="Artist webpage"/>
-	  <entry id="103308" string="Publisher webpage"/>
-	  <entry id="103309" string="Internet radio station"/>
-	  <entry id="103310" string="Audio source webpage"/>
-	  <entry id="103311" string="Copyright information"/>
-	  <entry id="103312" string="Commercial information"/>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher"/>
+	  <entry id="103301" string="Publisher information"/>
+	  <entry id="103302" string="Publisher / label"/>
+	  <entry id="103303" string="Media type"/>
+	  <entry id="103304" string="Catalog number"/>
+	  <entry id="103305" string="Barcode"/>
+	  <entry id="103306" string="ISRC"/>
+	  <entry id="103307" string="Webpage URLs"/>
+	  <entry id="103308" string="Artist webpage"/>
+	  <entry id="103309" string="Publisher webpage"/>
+	  <entry id="103310" string="Internet radio station"/>
+	  <entry id="103311" string="Audio source webpage"/>
+	  <entry id="103312" string="Copyright information"/>
+	  <entry id="103313" string="Commercial information"/>
 	</section>
 
 	<section name="Errors">

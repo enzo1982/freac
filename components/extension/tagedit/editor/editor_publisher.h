@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -10,8 +10,8 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#ifndef H_TAGEDIT_LAYER_TAG_OTHER
-#define H_TAGEDIT_LAYER_TAG_OTHER
+#ifndef H_TAGEDIT_LAYER_TAG_PUBLISHER
+#define H_TAGEDIT_LAYER_TAG_PUBLISHER
 
 #include <smooth.h>
 #include <boca.h>
@@ -25,22 +25,26 @@ using namespace BoCA;
 
 namespace BoCA
 {
-	class LayerTagOther : public Editor
+	class LayerTagPublisher : public Editor
 	{
 		private:
-			GroupBox			*group_original;
+			GroupBox			*group_publisher;
 
-			Text				*text_oartist;
-			EditBox				*edit_oartist;
+			Text				*text_publisher;
+			EditBox				*edit_publisher;
 
-			Text				*text_oalbum;
-			EditBox				*edit_oalbum;
+			Text				*text_mediatype;
+			EditBox				*edit_mediatype;
+			List				*list_mediatype;
 
-			Text				*text_otextwriter;
-			EditBox				*edit_otextwriter;
+			Text				*text_catalog;
+			EditBox				*edit_catalog;
 
-			Text				*text_oyear;
-			EditBox				*edit_oyear;
+			Text				*text_barcode;
+			EditBox				*edit_barcode;
+
+			Text				*text_isrc;
+			EditBox				*edit_isrc;
 
 			GroupBox			*group_web;
 
@@ -78,8 +82,8 @@ namespace BoCA
 
 			Bool				 AllowTrackRemoveByDeleteKey();
 		public:
-							 LayerTagOther();
-							~LayerTagOther();
+							 LayerTagPublisher();
+							~LayerTagPublisher();
 	};
 };
 

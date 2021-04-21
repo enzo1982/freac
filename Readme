@@ -159,6 +159,7 @@ History
 			- improved support for languages written from right to left
 			- improved DSP processing performance by up to 70%
 			- added frequency bandwidth setting to FDK-AAC encoder configuration dialog
+			- added media type field to tag editor
 
 		- Bug fixes
 

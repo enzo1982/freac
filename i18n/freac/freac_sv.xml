@@ -1308,29 +1308,29 @@
 	  <entry id="103204" string="Composer">Kompositör</entry>
 	  <entry id="103205" string="Lyrics writer">Textförfattare</entry>
 	  <entry id="103206" string="Modified / remixed by">Modifierad/ommixad av</entry>
-	  <entry id="103207" string="Publisher information">Information om utgivare</entry>
-	  <entry id="103208" string="Publisher / label">Utgivare/skivmärke</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">Tempo</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
-	  <entry id="103212" string="Catalog number">Katalognummer</entry>
-	  <entry id="103213" string="Barcode">Streckkod</entry>
+	  <entry id="103207" string="Original information">Ursprunglig information</entry>
+	  <entry id="103208" string="Original artist">Ursprunglig artist</entry>
+	  <entry id="103209" string="Original album">Ursprungligt album</entry>
+	  <entry id="103210" string="Original lyrics writer">Ursprunglig textförfattare</entry>
+	  <entry id="103211" string="Original release year">Ursprungligt utgivningsår</entry>
+	  <entry id="103212" string="Tempo">Tempo</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">Övrigt</entry>
-	  <entry id="103301" string="Original information">Ursprunglig information</entry>
-	  <entry id="103302" string="Original artist">Ursprunglig artist</entry>
-	  <entry id="103303" string="Original album">Ursprungligt album</entry>
-	  <entry id="103304" string="Original lyrics writer">Ursprunglig textförfattare</entry>
-	  <entry id="103305" string="Original release year">Ursprungligt utgivningsår</entry>
-	  <entry id="103306" string="Webpage URLs">Webbside-URL:er</entry>
-	  <entry id="103307" string="Artist webpage">Artistens webbsida</entry>
-	  <entry id="103308" string="Publisher webpage">Utgivarens webbsida</entry>
-	  <entry id="103309" string="Internet radio station">Internetradiostation</entry>
-	  <entry id="103310" string="Audio source webpage">Källwebbsida för ljudfil</entry>
-	  <entry id="103311" string="Copyright information">Upphovsrättsinformation</entry>
-	  <entry id="103312" string="Commercial information">Verksamhetsinformation</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Utgivare</entry>
+	  <entry id="103301" string="Publisher information">Information om utgivare</entry>
+	  <entry id="103302" string="Publisher / label">Utgivare/skivmärke</entry>
+	  <entry id="103304" string="Catalog number">Katalognummer</entry>
+	  <entry id="103305" string="Barcode">Streckkod</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">Webbside-URL:er</entry>
+	  <entry id="103308" string="Artist webpage">Artistens webbsida</entry>
+	  <entry id="103309" string="Publisher webpage">Utgivarens webbsida</entry>
+	  <entry id="103310" string="Internet radio station">Internetradiostation</entry>
+	  <entry id="103311" string="Audio source webpage">Källwebbsida för ljudfil</entry>
+	  <entry id="103312" string="Copyright information">Upphovsrättsinformation</entry>
+	  <entry id="103313" string="Commercial information">Verksamhetsinformation</entry>
 	</section>
 
 	<section name="Errors">
