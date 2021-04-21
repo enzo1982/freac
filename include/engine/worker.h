@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -51,6 +51,8 @@ namespace freac
 			Bool						 pause;
 			Bool						 cancel;
 			Bool						 quit;
+
+			Threads::Semaphore				 workSignal;
 
 			Int						 Perform();
 			Int64						 Loop(Decoder *, Verifier *, BoCA::FormatConverter *, Processor *, Encoder *);

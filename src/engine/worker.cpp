@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -63,7 +63,7 @@ using namespace BoCA::AS;
 	}
 #endif
 
-freac::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration, Int iConversionID)
+freac::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration, Int iConversionID) : workSignal(1)
 {
 	configuration	= iConfiguration;
 
@@ -87,6 +87,8 @@ freac::ConvertWorker::ConvertWorker(const BoCA::Config *iConfiguration, Int iCon
 	cancel		= False;
 	quit		= False;
 
+	workSignal.Wait();
+
 	threadMain.Connect(&ConvertWorker::Perform, this);
 }
 
@@ -101,7 +103,9 @@ Int freac::ConvertWorker::Perform()
 
 	while (!quit)
 	{
-		if (idle) { S::System::System::Sleep(1); continue; }
+		workSignal.Wait();
+
+		if (quit) break;
 
 		/* Do not limit parallel CD ripping jobs in automatic mode.
 		 */
@@ -805,6 +809,8 @@ Void freac::ConvertWorker::SetTrackToConvert(const BoCA::Track &nTrack)
 	idle		= False;
 	waiting		= True;
 	error		= False;
+
+	workSignal.Release();
 }
 
 Int freac::ConvertWorker::Pause(Bool value)
@@ -825,6 +831,8 @@ Int freac::ConvertWorker::Quit()
 {
 	cancel = True;
 	quit   = True;
+
+	workSignal.Release();
 
 	return Success();
 }
