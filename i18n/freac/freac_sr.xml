@@ -1307,29 +1307,29 @@
 	  <entry id="103204" string="Composer">Kompozitor</entry>
 	  <entry id="103205" string="Lyrics writer">Pisac teksta</entry>
 	  <entry id="103206" string="Modified / remixed by">Menjao / remiksovao</entry>
-	  <entry id="103207" string="Publisher information">Info o izdavaču</entry>
-	  <entry id="103208" string="Publisher / label">Izdavač / firma</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">Tempo</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
-	  <entry id="103212" string="Catalog number">Kataloški broj</entry>
-	  <entry id="103213" string="Barcode">Barkod</entry>
+	  <entry id="103207" string="Original information">Izvorna informacija</entry>
+	  <entry id="103208" string="Original artist">Izvorni izvođač</entry>
+	  <entry id="103209" string="Original album">Izvorni album</entry>
+	  <entry id="103210" string="Original lyrics writer">Izvorni pisac teksta</entry>
+	  <entry id="103211" string="Original release year">Izvorna godina izdanja</entry>
+	  <entry id="103212" string="Tempo">Tempo</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">Ostalo</entry>
-	  <entry id="103301" string="Original information">Izvorna informacija</entry>
-	  <entry id="103302" string="Original artist">Izvorni izvođač</entry>
-	  <entry id="103303" string="Original album">Izvorni album</entry>
-	  <entry id="103304" string="Original lyrics writer">Izvorni pisac teksta</entry>
-	  <entry id="103305" string="Original release year">Izvorna godina izdanja</entry>
-	  <entry id="103306" string="Webpage URLs">Internet URL-ovi</entry>
-	  <entry id="103307" string="Artist webpage">Internet strana izvođača</entry>
-	  <entry id="103308" string="Publisher webpage">Internet strana izdavača</entry>
-	  <entry id="103309" string="Internet radio station">Internet radio stanica</entry>
-	  <entry id="103310" string="Audio source webpage">Internet strana audio izvora</entry>
-	  <entry id="103311" string="Copyright information">Info o pravima kopiranja</entry>
-	  <entry id="103312" string="Commercial information">Komercijalna informacija</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Izdavač</entry>
+	  <entry id="103301" string="Publisher information">Info o izdavaču</entry>
+	  <entry id="103302" string="Publisher / label">Izdavač / firma</entry>
+	  <entry id="103304" string="Catalog number">Kataloški broj</entry>
+	  <entry id="103305" string="Barcode">Barkod</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">Internet URL-ovi</entry>
+	  <entry id="103308" string="Artist webpage">Internet strana izvođača</entry>
+	  <entry id="103309" string="Publisher webpage">Internet strana izdavača</entry>
+	  <entry id="103310" string="Internet radio station">Internet radio stanica</entry>
+	  <entry id="103311" string="Audio source webpage">Internet strana audio izvora</entry>
+	  <entry id="103312" string="Copyright information">Info o pravima kopiranja</entry>
+	  <entry id="103313" string="Commercial information">Komercijalna informacija</entry>
 	</section>
 
 	<section name="Errors">

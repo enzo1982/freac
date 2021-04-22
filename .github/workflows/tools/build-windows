@@ -59,9 +59,9 @@ cd ..
 # Get closed source codecs
 cd tools
 
-wget https://freac.org/patches/TAK_2.3.0.zip
-unzip TAK_2.3.0.zip -d TAK-2.3.0
-cp TAK-2.3.0/Applications/takc.exe .
+wget https://freac.org/patches/TAK_2.3.1.zip
+unzip TAK_2.3.1.zip -d TAK-2.3.1
+cp TAK-2.3.1/Applications/takc.exe .
 
 if [ "$BUILD_X86_64" = True ]; then
   wget https://freac.org/patches/OptimFROG_Win_x64_5100.zip
@@ -124,4 +124,4 @@ mv $BIN freac-continuous-windows$ARCH
 zip -9 freac-continuous-windows$ARCH.zip -r freac-continuous-windows$ARCH
 
 # Upload build to GitHub
-bash ./packaging/windows/tools/upload-build freac*.zip
+bash .github/workflows/tools/upload-build freac*.zip

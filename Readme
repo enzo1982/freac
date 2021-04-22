@@ -29,7 +29,7 @@ ripping and tag editing and converts the following audio formats:
 	- WavPack					(http://www.wavpack.com/)
 	- OptimFROG					(http://www.losslessaudio.org/)
 	- Monkey's Audio				(http://www.monkeysaudio.com/)
-	- TAK						(http://www.thbeck.de/)
+	- Tom's Audiokompressor				(http://www.thbeck.de/)
 
 	- various other formats
 		- using the libsndfile library		(http://www.mega-nerd.com/)
@@ -152,24 +152,35 @@ Requirements
 History
 -------
 
-	Version 1.1.5 (March 2021)
+	Version 1.1.5 (April 2021)
 
 		- Improvements
 
 			- improved support for languages written from right to left
+			- improved DSP processing performance by up to 70%
 			- added frequency bandwidth setting to FDK-AAC encoder configuration dialog
+			- added media type field to tag editor
 
 		- Bug fixes
 
 			- fixed hotspot for genre edit field utility menu not covering the whole with of the field
 			- fixed occasional crashes when selecting codec subformat using the "Start encoding with" menu
+			- fixed chapter marks being offset by a few seconds when using DSP processing
+			- fixed playback not working when using certain combinations of DSP processors
+			- fixed possible crashes when decoding Opus files
+			- fixed possible crashes when failing to configure WMA encoder
+			- fixed rare crashes in LAME encoder component
 			- fixed disc eject not working on macOS
+			- fixed crash when closing fre:ac via dock command on macOS
+			- fixed UI glitches and crashes on exit when running in a Wayland session
+			- fixed popup menu and dropdown list closing behavior on non-Windows platforms
 			- fixed Windows online updater not working with the 64 bit version
 
 		- Updated codecs
 
-			- updated FFmpeg to version 4.3.2
-			- updated Monkey's Audio to version 6.14
+			- updated FFmpeg to version 4.4
+			- updated Monkey's Audio to version 6.15
+			- updated Tom's Audiokompressor to version 2.3.1
 			- updated mpg123 to version 1.26.5
 			- updated libsndfile to version 1.0.31
 			- updated libsamplerate to version 0.2.1

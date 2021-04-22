@@ -1302,27 +1302,27 @@
 	  <entry id="103204" string="Composer">Compositeur</entry>
 	  <entry id="103205" string="Lyrics writer">Parolier</entry>
 	  <entry id="103206" string="Modified / remixed by">Modifié / remixé par</entry>
-	  <entry id="103207" string="Publisher information">Informations sur l'éditeur</entry>
-	  <entry id="103208" string="Publisher / label">Éditeur / label</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">Tempo</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103207" string="Original information">Information originale</entry>
+	  <entry id="103208" string="Original artist">Artiste original</entry>
+	  <entry id="103209" string="Original album">Album original</entry>
+	  <entry id="103210" string="Original lyrics writer">Parolier original</entry>
+	  <entry id="103211" string="Original release year">Année de sortie originale</entry>
+	  <entry id="103212" string="Tempo">Tempo</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">Autre</entry>
-	  <entry id="103301" string="Original information">Information originale</entry>
-	  <entry id="103302" string="Original artist">Artiste original</entry>
-	  <entry id="103303" string="Original album">Album original</entry>
-	  <entry id="103304" string="Original lyrics writer">Parolier original</entry>
-	  <entry id="103305" string="Original release year">Année de sortie originale</entry>
-	  <entry id="103306" string="Webpage URLs">URLs des pages web</entry>
-	  <entry id="103307" string="Artist webpage">Page web de l'artiste</entry>
-	  <entry id="103308" string="Publisher webpage">Page web de l'éditeur</entry>
-	  <entry id="103309" string="Internet radio station">Station de radio internet</entry>
-	  <entry id="103310" string="Audio source webpage">Page web de la source audio</entry>
-	  <entry id="103311" string="Copyright information">Informations de copyright</entry>
-	  <entry id="103312" string="Commercial information">Informations commerciales</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Éditeur</entry>
+	  <entry id="103301" string="Publisher information">Informations sur l'éditeur</entry>
+	  <entry id="103302" string="Publisher / label">Éditeur / label</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">URLs des pages web</entry>
+	  <entry id="103308" string="Artist webpage">Page web de l'artiste</entry>
+	  <entry id="103309" string="Publisher webpage">Page web de l'éditeur</entry>
+	  <entry id="103310" string="Internet radio station">Station de radio internet</entry>
+	  <entry id="103311" string="Audio source webpage">Page web de la source audio</entry>
+	  <entry id="103312" string="Copyright information">Informations de copyright</entry>
+	  <entry id="103313" string="Commercial information">Informations commerciales</entry>
 	</section>
 
 	<section name="Errors">

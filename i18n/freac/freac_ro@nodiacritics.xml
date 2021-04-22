@@ -1308,29 +1308,29 @@
 	  <entry id="103204" string="Composer">Compozitor</entry>
 	  <entry id="103205" string="Lyrics writer">Compozitor versuri</entry>
 	  <entry id="103206" string="Modified / remixed by">Modificat / remixat de</entry>
-	  <entry id="103207" string="Publisher information">Informatii producator</entry>
-	  <entry id="103208" string="Publisher / label">Producator / eticheta</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">Timpul</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
-	  <entry id="103212" string="Catalog number">Numar de catalog</entry>
-	  <entry id="103213" string="Barcode">Cod de bare</entry>
+	  <entry id="103207" string="Original information">Informatie origine</entry>
+	  <entry id="103208" string="Original artist">Origine artist</entry>
+	  <entry id="103209" string="Original album">Origine album</entry>
+	  <entry id="103210" string="Original lyrics writer">Origine compozitor versuri</entry>
+	  <entry id="103211" string="Original release year">An realizare original</entry>
+	  <entry id="103212" string="Tempo">Timpul</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">Altul</entry>
-	  <entry id="103301" string="Original information">Informatie origine</entry>
-	  <entry id="103302" string="Original artist">Origine artist</entry>
-	  <entry id="103303" string="Original album">Origine album</entry>
-	  <entry id="103304" string="Original lyrics writer">Origine compozitor versuri</entry>
-	  <entry id="103305" string="Original release year">An realizare original</entry>
-	  <entry id="103306" string="Webpage URLs">Pagina Web URL</entry>
-	  <entry id="103307" string="Artist webpage">Pagina web artist</entry>
-	  <entry id="103308" string="Publisher webpage">Pagina web producator</entry>
-	  <entry id="103309" string="Internet radio station">Statie radio pe Internet</entry>
-	  <entry id="103310" string="Audio source webpage">Pagina web cu sursa audio</entry>
-	  <entry id="103311" string="Copyright information">Informatii Copyright</entry>
-	  <entry id="103312" string="Commercial information">Informatii comerciale</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Producator</entry>
+	  <entry id="103301" string="Publisher information">Informatii producator</entry>
+	  <entry id="103302" string="Publisher / label">Producator / eticheta</entry>
+	  <entry id="103304" string="Catalog number">Numar de catalog</entry>
+	  <entry id="103305" string="Barcode">Cod de bare</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">Pagina Web URL</entry>
+	  <entry id="103308" string="Artist webpage">Pagina web artist</entry>
+	  <entry id="103309" string="Publisher webpage">Pagina web producator</entry>
+	  <entry id="103310" string="Internet radio station">Statie radio pe Internet</entry>
+	  <entry id="103311" string="Audio source webpage">Pagina web cu sursa audio</entry>
+	  <entry id="103312" string="Copyright information">Informatii Copyright</entry>
+	  <entry id="103313" string="Commercial information">Informatii comerciale</entry>
 	</section>
 
 	<section name="Errors">

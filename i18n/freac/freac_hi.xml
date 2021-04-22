@@ -1305,27 +1305,27 @@
 	  <entry id="103204" string="Composer">संगीतकार</entry>
 	  <entry id="103205" string="Lyrics writer">गीत के लेखक</entry>
 	  <entry id="103206" string="Modified / remixed by">द्वारा संशोधित / रीमिक्स किया गया</entry>
-	  <entry id="103207" string="Publisher information">प्रकाशक की जानकारी</entry>
-	  <entry id="103208" string="Publisher / label">प्रकाशक / लेबल</entry>
-	  <entry id="103209" string="ISRC">आईएसआरसी</entry>
-	  <entry id="103210" string="Tempo">गति</entry>
-	  <entry id="103211" string="BPM">बीपीएम</entry>
+	  <entry id="103207" string="Original information">मूल जानकारी</entry>
+	  <entry id="103208" string="Original artist">मूल कलाकार</entry>
+	  <entry id="103209" string="Original album">मूल एल्बम</entry>
+	  <entry id="103210" string="Original lyrics writer">मूल गीत लेखक</entry>
+	  <entry id="103211" string="Original release year">मूल रिलीज़ वर्ष</entry>
+	  <entry id="103212" string="Tempo">गति</entry>
+	  <entry id="103213" string="BPM">बीपीएम</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">अन्य</entry>
-	  <entry id="103301" string="Original information">मूल जानकारी</entry>
-	  <entry id="103302" string="Original artist">मूल कलाकार</entry>
-	  <entry id="103303" string="Original album">मूल एल्बम</entry>
-	  <entry id="103304" string="Original lyrics writer">मूल गीत लेखक</entry>
-	  <entry id="103305" string="Original release year">मूल रिलीज़ वर्ष</entry>
-	  <entry id="103306" string="Webpage URLs">वेबपेज यूआरएल</entry>
-	  <entry id="103307" string="Artist webpage">कलाकार वेबपेज</entry>
-	  <entry id="103308" string="Publisher webpage">प्रकाशक का वेबपेज</entry>
-	  <entry id="103309" string="Internet radio station">इंटरनेट रेडियो स्टेशन</entry>
-	  <entry id="103310" string="Audio source webpage">ऑडियो स्रोत वेबपेज</entry>
-	  <entry id="103311" string="Copyright information">कॉपीराइट संबंधी जानकारी</entry>
-	  <entry id="103312" string="Commercial information">वाणिज्यिक जानकारी</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">प्रकाशक</entry>
+	  <entry id="103301" string="Publisher information">प्रकाशक की जानकारी</entry>
+	  <entry id="103302" string="Publisher / label">प्रकाशक / लेबल</entry>
+	  <entry id="103306" string="ISRC">आईएसआरसी</entry>
+	  <entry id="103307" string="Webpage URLs">वेबपेज यूआरएल</entry>
+	  <entry id="103308" string="Artist webpage">कलाकार वेबपेज</entry>
+	  <entry id="103309" string="Publisher webpage">प्रकाशक का वेबपेज</entry>
+	  <entry id="103310" string="Internet radio station">इंटरनेट रेडियो स्टेशन</entry>
+	  <entry id="103311" string="Audio source webpage">ऑडियो स्रोत वेबपेज</entry>
+	  <entry id="103312" string="Copyright information">कॉपीराइट संबंधी जानकारी</entry>
+	  <entry id="103313" string="Commercial information">वाणिज्यिक जानकारी</entry>
 	</section>
 
 	<section name="Errors">

@@ -193,8 +193,6 @@
 	<entry id="3205" string="Select the folder to add to the joblist">Hautatu lan-zerrendara gehitzeko agiritegia</entry>
       </section>
 
-      <section name="Character set"/>
-
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Ez duzu biderik hautatu!</entry>
 	<entry id="3401" string="No files found matching pattern: %1">Ez da ereduarekin bat datorren agiririk aurkitu: %1</entry>
@@ -410,8 +408,6 @@
       <section name="Overwrite">
 	<entry id="8006" string="Skip">Jauzi</entry>
       </section>
-
-      <section name="Errors"/>
     </section>
 
     <section name="Ripper">
@@ -629,8 +625,6 @@
 	<entry id="37003" string="Number of preselection candidates">Aurre-hautapen hautagaien zenbatekoa</entry>
       </section>
 
-      <section name="Monkey's Audio"/>
-
       <section name="Speex">
 	<entry id="39002" string="auto">berez</entry>
 	<entry id="39006" string="VBR mode">BNA modua</entry>
@@ -693,8 +687,6 @@
 	  <entry id="102101" string="Automatization">Berezgaitasuna</entry>
 	  <entry id="102103" string="Select">Bilatu</entry>
 	</section>
-
-	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
@@ -708,10 +700,6 @@
 	  <entry id="103107" string="Add">Gehitu</entry>
 	  <entry id="103108" string="Remove">Kendu</entry>
 	</section>
-
-	<section name="Details"/>
-
-	<section name="Other"/>
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Ezinezkoa agiria irekitzea: %1&#10;&#10;Akatsa: %2</entry>

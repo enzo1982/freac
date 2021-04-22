@@ -1,8 +1,6 @@
 #!/bin/bash
 
 PREFIX=/usr/local
-#RELEASE=1.1.4
-RELEASE=1.1.4-`date +"%Y%m%d"`
 
 SMOOTHVER=0.9.0
 BOCAVER=1.0.2

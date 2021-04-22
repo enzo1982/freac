@@ -1301,27 +1301,27 @@
 	  <entry id="103204" string="Composer">作曲</entry>
 	  <entry id="103205" string="Lyrics writer">作詞</entry>
 	  <entry id="103206" string="Modified / remixed by">変更/リミックス</entry>
-	  <entry id="103207" string="Publisher information">発行元の情報</entry>
-	  <entry id="103208" string="Publisher / label">発行元/レーベル</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">テンポ</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103207" string="Original information">元の情報</entry>
+	  <entry id="103208" string="Original artist">オリジナルのアーティスト</entry>
+	  <entry id="103209" string="Original album">オリジナルのアルバム</entry>
+	  <entry id="103210" string="Original lyrics writer">オリジナルの作詞</entry>
+	  <entry id="103211" string="Original release year">オリジナルのリリース年</entry>
+	  <entry id="103212" string="Tempo">テンポ</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">その他</entry>
-	  <entry id="103301" string="Original information">元の情報</entry>
-	  <entry id="103302" string="Original artist">オリジナルのアーティスト</entry>
-	  <entry id="103303" string="Original album">オリジナルのアルバム</entry>
-	  <entry id="103304" string="Original lyrics writer">オリジナルの作詞</entry>
-	  <entry id="103305" string="Original release year">オリジナルのリリース年</entry>
-	  <entry id="103306" string="Webpage URLs">ウェブページのURL</entry>
-	  <entry id="103307" string="Artist webpage">アーティストのウェブページ</entry>
-	  <entry id="103308" string="Publisher webpage">発行元のウェブページ</entry>
-	  <entry id="103309" string="Internet radio station">インターネットラジオ局</entry>
-	  <entry id="103310" string="Audio source webpage">オーディオソースのウェブページ</entry>
-	  <entry id="103311" string="Copyright information">著作権情報</entry>
-	  <entry id="103312" string="Commercial information">Commercial情報</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">発行元</entry>
+	  <entry id="103301" string="Publisher information">発行元の情報</entry>
+	  <entry id="103302" string="Publisher / label">発行元/レーベル</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">ウェブページのURL</entry>
+	  <entry id="103308" string="Artist webpage">アーティストのウェブページ</entry>
+	  <entry id="103309" string="Publisher webpage">発行元のウェブページ</entry>
+	  <entry id="103310" string="Internet radio station">インターネットラジオ局</entry>
+	  <entry id="103311" string="Audio source webpage">オーディオソースのウェブページ</entry>
+	  <entry id="103312" string="Copyright information">著作権情報</entry>
+	  <entry id="103313" string="Commercial information">Commercial情報</entry>
 	</section>
 
 	<section name="Errors">

@@ -193,8 +193,6 @@
 	<entry id="3205" string="Select the folder to add to the joblist">Seleccioni la carpeta per a agragar a la llista de tasques</entry>
       </section>
 
-      <section name="Character set"/>
-
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">No ha seleccionat cap fitxer!</entry>
 	<entry id="3401" string="No files found matching pattern: %1">No es van trobar arxius corresponents al patró: %1</entry>
@@ -363,8 +361,6 @@
 	<entry id="5504" string="Filename pattern">Patró de nom d'arxiu</entry>
 	<entry id="5505" string="Encoding">Codificació</entry>
       </section>
-
-      <section name="Joblist"/>
     </section>
 
     <section name="About">
@@ -409,8 +405,6 @@
       <section name="Overwrite">
 	<entry id="8006" string="Skip">Ometre</entry>
       </section>
-
-      <section name="Errors"/>
     </section>
 
     <section name="Ripper">
@@ -627,8 +621,6 @@
 	<entry id="37003" string="Number of preselection candidates">Nº de candidats de preselecció</entry>
       </section>
 
-      <section name="Monkey's Audio"/>
-
       <section name="Speex">
 	<entry id="39002" string="auto">acte</entry>
 	<entry id="39006" string="VBR mode">Mode VBR</entry>
@@ -679,8 +671,6 @@
 	  <entry id="102101" string="Automatization">Automatizació</entry>
 	  <entry id="102103" string="Select">Buscar</entry>
 	</section>
-
-	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
@@ -694,10 +684,6 @@
 	  <entry id="103107" string="Add">Afegir</entry>
 	  <entry id="103108" string="Remove">Eliminar</entry>
 	</section>
-
-	<section name="Details"/>
-
-	<section name="Other"/>
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">No es pot obrir el fitxer: %1&#10;&#10;%2</entry>

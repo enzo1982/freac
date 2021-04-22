@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -78,6 +78,11 @@ freac::ConfigureCDDB::ConfigureCDDB()
 	text_server	= new Text(i18n->AddColon(i18n->TranslateString("CDDB server")), Point(16, 108));
 	edit_server	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbServerID, Config::FreedbServerDefault), Point(122, 105), Size(146, 0), 0);
 
+	list_server	= new List();
+	list_server->AddEntry(Config::FreedbServerDefault);
+
+	edit_server->SetDropDownList(list_server);
+
 	text_port	= new Text(i18n->AddColon(i18n->TranslateString("Port")), Point(285, 108));
 	text_port->SetX(306 - text_port->GetUnscaledTextWidth());
 
@@ -86,6 +91,11 @@ freac::ConfigureCDDB::ConfigureCDDB()
 
 	text_email	= new Text(i18n->AddColon(i18n->TranslateString("eMail address")), Point(16, 135));
 	edit_email	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbEmailID, Config::FreedbEmailDefault), Point(122, 132), Size(146, 0), 0);
+
+	list_email	= new List();
+	list_email->AddEntry(Config::FreedbEmailDefault);
+
+	edit_email->SetDropDownList(list_email);
 
 	button_http	= new Button(i18n->TranslateString("HTTP settings"), Point(17, 159), Size(163, 0));
 	button_http->onAction.Connect(&ConfigureCDDB::HTTPSettings, this);
@@ -170,10 +180,12 @@ freac::ConfigureCDDB::~ConfigureCDDB()
 	DeleteObject(combo_mode);
 	DeleteObject(text_server);
 	DeleteObject(edit_server);
+	DeleteObject(list_server);
 	DeleteObject(text_port);
 	DeleteObject(edit_port);
 	DeleteObject(text_email);
 	DeleteObject(edit_email);
+	DeleteObject(list_email);
 	DeleteObject(button_http);
 	DeleteObject(button_proxy);
 

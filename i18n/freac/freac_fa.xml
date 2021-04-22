@@ -1301,27 +1301,27 @@
 	  <entry id="103204" string="Composer">آهنگساز</entry>
 	  <entry id="103205" string="Lyrics writer">شاعر</entry>
 	  <entry id="103206" string="Modified / remixed by">ريميکس يا بازنويسي توسط</entry>
-	  <entry id="103207" string="Publisher information">اطلاعات ناشر</entry>
-	  <entry id="103208" string="Publisher / label">ناشر / سند</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">ضرب آهنگ</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103207" string="Original information">اطلاعات اوريجينال</entry>
+	  <entry id="103208" string="Original artist">هنرمند اصلي</entry>
+	  <entry id="103209" string="Original album">آلبوم اصلي</entry>
+	  <entry id="103210" string="Original lyrics writer">شاعر اصلي</entry>
+	  <entry id="103211" string="Original release year">سال انتشار اصلي</entry>
+	  <entry id="103212" string="Tempo">ضرب آهنگ</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">غيره</entry>
-	  <entry id="103301" string="Original information">اطلاعات اوريجينال</entry>
-	  <entry id="103302" string="Original artist">هنرمند اصلي</entry>
-	  <entry id="103303" string="Original album">آلبوم اصلي</entry>
-	  <entry id="103304" string="Original lyrics writer">شاعر اصلي</entry>
-	  <entry id="103305" string="Original release year">سال انتشار اصلي</entry>
-	  <entry id="103306" string="Webpage URLs">وبسايت ها</entry>
-	  <entry id="103307" string="Artist webpage">وبسايت هنرمند</entry>
-	  <entry id="103308" string="Publisher webpage">وبسايت ناشر</entry>
-	  <entry id="103309" string="Internet radio station">ايستگاه راديو اينترنتي</entry>
-	  <entry id="103310" string="Audio source webpage">وبسايت منبع صدا</entry>
-	  <entry id="103311" string="Copyright information">اطلاعات حق کاپي رايت</entry>
-	  <entry id="103312" string="Commercial information">اطلاعات تجاري</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">ناشر</entry>
+	  <entry id="103301" string="Publisher information">اطلاعات ناشر</entry>
+	  <entry id="103302" string="Publisher / label">ناشر / سند</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">وبسايت ها</entry>
+	  <entry id="103308" string="Artist webpage">وبسايت هنرمند</entry>
+	  <entry id="103309" string="Publisher webpage">وبسايت ناشر</entry>
+	  <entry id="103310" string="Internet radio station">ايستگاه راديو اينترنتي</entry>
+	  <entry id="103311" string="Audio source webpage">وبسايت منبع صدا</entry>
+	  <entry id="103312" string="Copyright information">اطلاعات حق کاپي رايت</entry>
+	  <entry id="103313" string="Commercial information">اطلاعات تجاري</entry>
 	</section>
 
 	<section name="Errors">

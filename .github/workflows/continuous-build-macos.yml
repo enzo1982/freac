@@ -1,0 +1,51 @@
+name: "Continuous build (macOS)"
+
+on:
+  push:
+    branches:
+      - '*'
+    tags-ignore:
+      - 'continuous*'
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: macos-10.15
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Install dependencies
+        run: |
+          brew install automake nasm yasm
+
+      - name: Import certificates
+        uses: apple-actions/import-codesign-certs@v1
+        with:
+          p12-file-base64: ${{ secrets.CERTIFICATES }}
+          p12-password: ${{ secrets.CERTIFICATES_PASSWORD }}
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Checkout smooth
+        uses: actions/checkout@v2
+        with:
+          repository: enzo1982/smooth
+          path: smooth
+
+      - name: Checkout BoCA
+        uses: actions/checkout@v2
+        with:
+          repository: enzo1982/BoCA
+          path: boca
+
+      - name: Build DMG
+        env:
+          MACOSX_DEPLOYMENT_TARGET: 10.9
+          NOTARIZATION_PASSWORD: ${{ secrets.NOTARIZATION_PASSWORD }}
+          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        run: |
+          .github/workflows/tools/build-macos

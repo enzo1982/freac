@@ -203,4 +203,4 @@ else
 fi
 
 # Upload AppImage to GitHub
-bash ./packaging/appimage/tools/upload-appimage freac*.AppImage
+bash .github/workflows/tools/upload-build freac*.AppImage

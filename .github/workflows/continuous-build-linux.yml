@@ -1,4 +1,4 @@
-name: "Continuous build"
+name: "Continuous build (Linux)"
 
 on:
   push:
@@ -59,7 +59,7 @@ jobs:
         run: |
           sudo add-apt-repository -y --remove ppa:ubuntu-toolchain-r/test
           sudo apt update
-          sudo apt purge gcc-5 gcc-5-base gcc-6-base gcc-7 gcc-8 gcc-9 libstdc++-5-dev libstdc++-7-dev libstdc++-8-dev libstdc++-9-dev
+          sudo apt purge gcc-5 gcc-5-base gcc-6-base gcc-9 libstdc++-5-dev libstdc++-9-dev
           if [ ${{ matrix.arch }} = x86_64 ]; then
             sudo apt install -y --allow-downgrades build-essential libtool libgcc1=1:6.0.1-0ubuntu1 libstdc++6=5.4.0-6ubuntu1~16.04.12 libstdc++6:i386
           else
@@ -90,4 +90,4 @@ jobs:
           AppImageArch: ${{ matrix.arch }}
           RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         run: |
-          ./packaging/appimage/tools/build-appimage
+          .github/workflows/tools/build-appimage

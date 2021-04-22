@@ -1302,27 +1302,27 @@
 	  <entry id="103204" string="Composer">作曲者</entry>
 	  <entry id="103205" string="Lyrics writer">作詞者</entry>
 	  <entry id="103206" string="Modified / remixed by">混音者</entry>
-	  <entry id="103207" string="Publisher information">發行者資訊</entry>
-	  <entry id="103208" string="Publisher / label">發行者</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">節奏</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103207" string="Original information">原始資訊</entry>
+	  <entry id="103208" string="Original artist">原始演出者</entry>
+	  <entry id="103209" string="Original album">原始專輯</entry>
+	  <entry id="103210" string="Original lyrics writer">原始作詞者</entry>
+	  <entry id="103211" string="Original release year">原始發行年份</entry>
+	  <entry id="103212" string="Tempo">節奏</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">其他</entry>
-	  <entry id="103301" string="Original information">原始資訊</entry>
-	  <entry id="103302" string="Original artist">原始演出者</entry>
-	  <entry id="103303" string="Original album">原始專輯</entry>
-	  <entry id="103304" string="Original lyrics writer">原始作詞者</entry>
-	  <entry id="103305" string="Original release year">原始發行年份</entry>
-	  <entry id="103306" string="Webpage URLs">網站地址</entry>
-	  <entry id="103307" string="Artist webpage">演出者網站</entry>
-	  <entry id="103308" string="Publisher webpage">發行者網站</entry>
-	  <entry id="103309" string="Internet radio station">網際網路廣播電台</entry>
-	  <entry id="103310" string="Audio source webpage">音訊來源網站</entry>
-	  <entry id="103311" string="Copyright information">版權資訊</entry>
-	  <entry id="103312" string="Commercial information">商業資訊</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">發行者</entry>
+	  <entry id="103301" string="Publisher information">發行者資訊</entry>
+	  <entry id="103302" string="Publisher / label">發行者</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">網站地址</entry>
+	  <entry id="103308" string="Artist webpage">演出者網站</entry>
+	  <entry id="103309" string="Publisher webpage">發行者網站</entry>
+	  <entry id="103310" string="Internet radio station">網際網路廣播電台</entry>
+	  <entry id="103311" string="Audio source webpage">音訊來源網站</entry>
+	  <entry id="103312" string="Copyright information">版權資訊</entry>
+	  <entry id="103313" string="Commercial information">商業資訊</entry>
 	</section>
 
 	<section name="Errors">

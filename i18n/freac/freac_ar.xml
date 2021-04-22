@@ -235,8 +235,6 @@
 	<entry id="3205" string="Select the folder to add to the joblist">حدد مجلد لإضافة قائمة العمل</entry>
       </section>
 
-      <section name="Character set"/>
-
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">لم تقم بتحديد أي ملف!</entry>
 	<entry id="3401" string="No files found matching pattern: %1">لا توجد ملفات مطابقة للنمط: %1</entry>
@@ -475,8 +473,6 @@
       <section name="Format">
 	<entry id="8102" string="Select">تصفح</entry>
       </section>
-
-      <section name="Errors"/>
     </section>
 
     <section name="Ripper">
@@ -692,8 +688,6 @@
 	<entry id="37003" string="Number of preselection candidates">عدد الترشحات الاختيار الأولي</entry>
       </section>
 
-      <section name="Monkey's Audio"/>
-
       <section name="Speex">
 	<entry id="39002" string="auto">تلقائي</entry>
 	<entry id="39006" string="VBR mode">طريقة معدل بايت متغير</entry>
@@ -808,8 +802,6 @@
 	  <entry id="102101" string="Automatization">التلقائية</entry>
 	  <entry id="102103" string="Select">تصفح</entry>
 	</section>
-
-	<section name="Errors"/>
       </section>
 
       <section name="Tag Editor">
@@ -824,10 +816,6 @@
 	  <entry id="103107" string="Add">إضافة</entry>
 	  <entry id="103108" string="Remove">إزالة</entry>
 	</section>
-
-	<section name="Details"/>
-
-	<section name="Other"/>
 
 	<section name="Errors">
 	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">غير قادر على فتح الملف: %1&#10;&#10;خطأ: %2</entry>

@@ -1301,27 +1301,27 @@
 	  <entry id="103204" string="Composer">Skladatel</entry>
 	  <entry id="103205" string="Lyrics writer">Textař</entry>
 	  <entry id="103206" string="Modified / remixed by">Upraveno / remix od</entry>
-	  <entry id="103207" string="Publisher information">Informace o vydavateli</entry>
-	  <entry id="103208" string="Publisher / label">Vydavatel / jmenovka</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">Tempo</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
+	  <entry id="103207" string="Original information">Původní informace</entry>
+	  <entry id="103208" string="Original artist">Původní interpret</entry>
+	  <entry id="103209" string="Original album">Původní album</entry>
+	  <entry id="103210" string="Original lyrics writer">Původní textař</entry>
+	  <entry id="103211" string="Original release year">Původní rok vydání</entry>
+	  <entry id="103212" string="Tempo">Tempo</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">Další</entry>
-	  <entry id="103301" string="Original information">Původní informace</entry>
-	  <entry id="103302" string="Original artist">Původní interpret</entry>
-	  <entry id="103303" string="Original album">Původní album</entry>
-	  <entry id="103304" string="Original lyrics writer">Původní textař</entry>
-	  <entry id="103305" string="Original release year">Původní rok vydání</entry>
-	  <entry id="103306" string="Webpage URLs">URL web stránky</entry>
-	  <entry id="103307" string="Artist webpage">Umělec web stránky</entry>
-	  <entry id="103308" string="Publisher webpage">Vydavatel web stránky</entry>
-	  <entry id="103309" string="Internet radio station">Internetové rádio</entry>
-	  <entry id="103310" string="Audio source webpage">Audio zdroje web stránky</entry>
-	  <entry id="103311" string="Copyright information">Copyright informace</entry>
-	  <entry id="103312" string="Commercial information">Obchodní informace</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Vydavatel</entry>
+	  <entry id="103301" string="Publisher information">Informace o vydavateli</entry>
+	  <entry id="103302" string="Publisher / label">Vydavatel / jmenovka</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">URL web stránky</entry>
+	  <entry id="103308" string="Artist webpage">Umělec web stránky</entry>
+	  <entry id="103309" string="Publisher webpage">Vydavatel web stránky</entry>
+	  <entry id="103310" string="Internet radio station">Internetové rádio</entry>
+	  <entry id="103311" string="Audio source webpage">Audio zdroje web stránky</entry>
+	  <entry id="103312" string="Copyright information">Copyright informace</entry>
+	  <entry id="103313" string="Commercial information">Obchodní informace</entry>
 	</section>
 
 	<section name="Errors">

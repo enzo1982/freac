@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -13,13 +13,8 @@
 #include <dialogs/cddb/extsettings.h>
 
 #include <config.h>
-#include <resources.h>
 
 #include <boca.h>
-
-#ifdef __WIN32__
-#	include <smooth/init.win32.h>
-#endif
 
 freac::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 {
@@ -52,8 +47,18 @@ freac::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 	http_text_query		= new Text(i18n->AddColon(i18n->TranslateString("CDDB query script")), Point(16, 24));
 	http_edit_query		= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbQueryPathID, Config::FreedbQueryPathDefault), Point(117, 21), Size(192, 0), 0);
 
+	http_list_query		= new List();
+	http_list_query->AddEntry(Config::FreedbQueryPathDefault);
+
+	http_edit_query->SetDropDownList(http_list_query);
+
 	http_text_submit	= new Text(i18n->AddColon(i18n->TranslateString("CDDB submit script")), Point(16, 51));
 	http_edit_submit	= new EditBox(config->GetStringValue(Config::CategoryFreedbID, Config::FreedbSubmitPathID, Config::FreedbSubmitPathDefault), Point(117, 48), Size(192, 0), 0);
+
+	http_list_submit	= new List();
+	http_list_submit->AddEntry(Config::FreedbSubmitPathDefault);
+
+	http_edit_submit->SetDropDownList(http_list_submit);
 
 	Int	 maxTextSize = Math::Max(http_text_query->GetUnscaledTextWidth(), http_text_submit->GetUnscaledTextWidth());
 
@@ -141,10 +146,6 @@ freac::cddbExtendedSettingsDlg::cddbExtendedSettingsDlg(Int tab)
 
 	mainWnd->SetFlags(mainWnd->GetFlags() | WF_NOTASKBUTTON | WF_MODAL);
 	mainWnd->SetIcon(ImageLoader::Load(String(Config::Get()->resourcesPath).Append("icons/freac.png")));
-
-#ifdef __WIN32__
-	mainWnd->SetIconDirect(LoadImageA(hInstance, MAKEINTRESOURCEA(IDI_ICON), IMAGE_ICON, 0, 0, LR_DEFAULTSIZE | LR_SHARED));
-#endif
 }
 
 freac::cddbExtendedSettingsDlg::~cddbExtendedSettingsDlg()
@@ -158,8 +159,10 @@ freac::cddbExtendedSettingsDlg::~cddbExtendedSettingsDlg()
 	DeleteObject(http_group_scripts);
 	DeleteObject(http_text_query);
 	DeleteObject(http_edit_query);
+	DeleteObject(http_list_query);
 	DeleteObject(http_text_submit);
 	DeleteObject(http_edit_submit);
+	DeleteObject(http_list_submit);
 	DeleteObject(proxy_group_proxy);
 	DeleteObject(proxy_text_mode);
 	DeleteObject(proxy_combo_mode);

@@ -183,7 +183,7 @@ Void freac::Player::Loop(Decoder *decoder, Processor *processor)
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
-	/* Enter playback loop.
+	/* Compute format specs and create buffer.
 	 */
 	const Format		&format		= track.GetFormat();
 
@@ -193,6 +193,19 @@ Void freac::Player::Loop(Decoder *decoder, Processor *processor)
 	Int			 bytesPerSample = format.bits / 8 * format.channels;
 	Buffer<UnsignedByte>	 buffer(samplesSize * bytesPerSample);
 
+	/* Calculate output chunk size.
+	 */
+	Int			 chunkSize	= samplesSize * bytesPerSample;
+
+	if (processor != NIL)
+	{
+		const Format	&format = processor->GetFormatInfo();
+
+		chunkSize = format.rate * format.channels * (format.bits / 8) / 4;
+	}
+
+	/* Enter playback loop.
+	 */
 	while (!stop)
 	{
 		/* Seek if requested.
@@ -239,7 +252,7 @@ Void freac::Player::Loop(Decoder *decoder, Processor *processor)
 		else if (track.approxLength >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / track.approxLength  * position : 1000.0 / track.approxLength  * position);
 		else				  onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / (240 * format.rate) * position : 1000.0 / (240 * format.rate) * position);
 
-		Write(buffer, step * bytesPerSample);
+		Write(buffer, chunkSize);
  	}
 
 	/* Finish sample transformations.

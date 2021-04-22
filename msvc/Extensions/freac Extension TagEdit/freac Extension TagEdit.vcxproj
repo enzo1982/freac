@@ -240,6 +240,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_publisher.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\layer.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\tagedit.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\tagspec.cpp" />
@@ -251,7 +252,6 @@
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_basic.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_basic_cover.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_details.cpp" />
-    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_other.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_albums.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_files.cpp" />
@@ -260,6 +260,7 @@
     <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_tracks.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_publisher.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\layer.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\tagedit.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\tagspec.h" />
@@ -277,7 +278,6 @@
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_basic.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_basic_cover.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_details.h" />
-    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_other.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
