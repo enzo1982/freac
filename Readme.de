@@ -158,6 +158,7 @@ Geschichte
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Verbesserung der Geschwindigkeit bei der DSP-Verarbeitung um bis zu 70%
 			- Einstellung für Frequenzbandbreite zum FDK-AAC-Konfigurationsdialog hinzugefügt
+			- Unterstützung für Shift_JIS kodierten CD-Text hinzugefügt
 			- Feld für Medienart zum Tag-Editor hinzugefügt
 
 		- Behobene Fehler
@@ -169,6 +170,7 @@ Geschichte
 			- Mögliche Abstürze beim Dekodieren von Opus-Dateien behoben
 			- Mögliche Abstürze bei fehlgeschlagenem Setup des WMA-Kodierers behoben
 			- Seltene Abstürze in LAME-Kodierer-Komponente behoben
+			- Absturz beim Lesen von ungültigen CD-Text Genre-IDs behoben
 			- Problem mit dem Auswerfen von CDs unter macOS behoben
 			- Absturz beim Beenden von fre:ac über das Dock unter macOS behoben
 			- Grafikfehler und Abstürze beim Beenden bei Ausführung in einer Wayland-Sitzung behoben

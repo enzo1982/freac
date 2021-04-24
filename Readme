@@ -159,6 +159,7 @@ History
 			- improved support for languages written from right to left
 			- improved DSP processing performance by up to 70%
 			- added frequency bandwidth setting to FDK-AAC encoder configuration dialog
+			- added support for reading Shift_JIS encoded CD-Text
 			- added media type field to tag editor
 
 		- Bug fixes
@@ -170,6 +171,7 @@ History
 			- fixed possible crashes when decoding Opus files
 			- fixed possible crashes when failing to configure WMA encoder
 			- fixed rare crashes in LAME encoder component
+			- fixed crash when reading malformed CD-Text genre IDs
 			- fixed disc eject not working on macOS
 			- fixed crash when closing fre:ac via dock command on macOS
 			- fixed UI glitches and crashes on exit when running in a Wayland session
