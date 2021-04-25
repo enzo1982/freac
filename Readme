@@ -187,9 +187,10 @@ History
 			- updated libsndfile to version 1.0.31
 			- updated libsamplerate to version 0.2.1
 
-		- New translations
+		- New and updated translations
 
 			- added Persian translation
+			- updated Norwegian translation
 
 	Version 1.1.4 (February 2021)
 
@@ -615,7 +616,7 @@ Special thanks to
 			   Jan Arni Jacobsen (Danish),
 			   Mikael Hiort af Ornäs and Anton Mjoernebrant (Swedish),
 			   Peter Krajcar and Miro Babinsky (Slovak),
-			   Andreas Normann Aanonsen (Norwegian),
+			   Andreas Normann Aanonsen and Cato Grytten (Norwegian),
 			   Vincent Rateau (Esperanto),
 			   Cako (Turkish),
 			   Naglis Jonaitis (Lithuanian),
