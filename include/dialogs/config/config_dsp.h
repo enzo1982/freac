@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2017 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -21,50 +21,48 @@ namespace freac
 	class ConfigureDSP : public BoCA::ConfigLayer
 	{
 		private:
-			GroupBox			*group_dsp;
+			GroupBox	*group_dsp;
 
-			CheckBox			*check_enable;
-			CheckBox			*check_playback;
+			CheckBox	*check_enable;
+			CheckBox	*check_playback;
 
-			GroupBox			*group_components;
+			GroupBox	*group_components;
 
-			Text				*text_available;
-			ListBox				*list_available;
-			Text				*text_selected;
-			ListBox				*list_selected;
+			Text		*text_available;
+			ListBox		*list_available;
+			Text		*text_selected;
+			ListBox		*list_selected;
 
-			Button				*btn_add;
-			Button				*btn_remove;
-			Button				*btn_configure;
+			Button		*btn_add;
+			Button		*btn_remove;
+			Button		*btn_configure;
 
-			GroupBox			*group_single_file;
+			GroupBox	*group_single_file;
 
-			OptionBox			*option_individual;
-			OptionBox			*option_combined;
+			OptionBox	*option_individual;
+			OptionBox	*option_combined;
 
-			Bool				 enableProcessing;
-			Bool				 processPlayback;
+			Bool		 enableProcessing;
+			Bool		 processPlayback;
 
-			Int				 singleFileMode;
+			Int		 singleFileMode;
 
-			Void				 AddComponents();
+			Void		 AddComponents();
 		public:
-							 ConfigureDSP();
-							~ConfigureDSP();
+					 ConfigureDSP();
+					~ConfigureDSP();
 
-			Int				 SaveSettings();
+			Int		 SaveSettings();
 		slots:
-			Void				 OnToggleProcessing();
+			Void		 OnToggleProcessing();
 
-			Void				 OnSelectAvailable();
-			Void				 OnSelectComponent();
+			Void		 OnSelectAvailable();
+			Void		 OnSelectComponent();
 
-			Void				 OnAddComponent();
-			Void				 OnRemoveComponent();
+			Void		 OnAddComponent();
+			Void		 OnRemoveComponent();
 
-			Void				 OnConfigureComponent();
-		signals:
-			Signal1<Void, const String &>	 onChangeComponentSettings;
+			Void		 OnConfigureComponent();
 	};
 };
 
