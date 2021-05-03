@@ -69,8 +69,8 @@ parts:
       - usr/lib/libfaad.so*
 
   libfdk-aac:
-    source: https://github.com/mstorsjo/fdk-aac/archive/v2.0.1.tar.gz
-    source-checksum: sha256/a4142815d8d52d0e798212a5adea54ecf42bcd4eec8092b37a8cb615ace91dc6
+    source: https://github.com/mstorsjo/fdk-aac/archive/v2.0.2.tar.gz
+    source-checksum: sha256/7812b4f0cf66acda0d0fe4302545339517e702af7674dd04e5fe22a5ade16a90
     plugin: autotools
     configflags: [ --prefix=/usr ]
     build-environment:
