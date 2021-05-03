@@ -159,6 +159,8 @@ Geschichte
 			- Verbesserung der Geschwindigkeit bei der DSP-Verarbeitung um bis zu 70%
 			- Einstellung für Frequenzbandbreite zum FDK-AAC-Konfigurationsdialog hinzugefügt
 			- Unterstützung für Shift_JIS kodierten CD-Text hinzugefügt
+			- Unterstützung für Ensemble- und Satz-Felder in Vorbis Comment und APEv2-Tags hinzugefügt
+			- Unterstützung für zusätzliche URL-Felder in APEv2-Tags hinzugefügt
 			- Feld für Medienart zum Tag-Editor hinzugefügt
 
 		- Behobene Fehler
@@ -172,6 +174,7 @@ Geschichte
 			- Mögliche Abstürze bei fehlgeschlagenem Setup des WMA-Kodierers behoben
 			- Seltene Abstürze in LAME-Kodierer-Komponente behoben
 			- Absturz beim Lesen von ungültigen CD-Text Genre-IDs behoben
+			- Problem beim Rippen mit negativem Offset behoben
 			- Problem mit dem Auswerfen von CDs unter macOS behoben
 			- Absturz beim Beenden von fre:ac über das Dock unter macOS behoben
 			- Grafikfehler und Abstürze beim Beenden bei Ausführung in einer Wayland-Sitzung behoben
