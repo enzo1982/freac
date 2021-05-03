@@ -152,7 +152,7 @@ Requirements
 History
 -------
 
-	Version 1.1.5 (April 2021)
+	Version 1.1.5 (May 2021)
 
 		- Improvements
 
@@ -182,7 +182,7 @@ History
 		- Updated codecs
 
 			- updated FFmpeg to version 4.4
-			- updated Monkey's Audio to version 6.15
+			- updated Monkey's Audio to version 6.23
 			- updated Tom's Audiokompressor to version 2.3.1
 			- updated mpg123 to version 1.26.5
 			- updated libsndfile to version 1.0.31
