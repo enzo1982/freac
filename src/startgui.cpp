@@ -565,9 +565,7 @@ Void freac::freacGUI::OnChangeConfiguration()
 	BoCA::Config	*config  = BoCA::Config::Get();
 	BoCA::I18n	*i18n	 = BoCA::I18n::Get();
 
-	Surface		*surface = mainWnd->GetDrawSurface();
-
-	surface->StartPaint(mainWnd->GetVisibleArea());
+	mainWnd->SetVisibleDirect(False);
 
 	/* Update language and menu bars.
 	 */
@@ -611,7 +609,6 @@ Void freac::freacGUI::OnChangeConfiguration()
 				Config::SettingsShowJobsTabDefault)) tabs_main->Add(tab_layer_threads);
 
 	tabs_main->SelectTab(selectedTab);
-	tabs_main->Paint(SP_PAINT);
 
 	/* Do not use tab widget if there would be only one tab.
 	 */
@@ -649,8 +646,6 @@ Void freac::freacGUI::OnChangeConfiguration()
 				tabs_main->Add(tab);
 			}
 		}
-
-		mainWnd->Paint(SP_PAINT);
 	}
 
 	/* Update joblist layer.
@@ -663,9 +658,19 @@ Void freac::freacGUI::OnChangeConfiguration()
 	ToggleSignalProcessing();
 	ToggleUseInputDirectory();
 
-	surface->EndPaint();
-
 	config->SaveSettings();
+
+	mainWnd->SetVisibleDirect(True);
+
+	/* Redraw window contents.
+	 */
+	Surface		*surface = mainWnd->GetDrawSurface();
+
+	surface->StartPaint(mainWnd->GetVisibleArea());
+
+	mainWnd->Paint(SP_PAINT);
+
+	surface->EndPaint();
 }
 
 Void freac::freacGUI::OnDriveChange()
