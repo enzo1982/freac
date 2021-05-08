@@ -177,7 +177,7 @@ cp /usr/local/lib/libcdio_cdda.so.2 appdir
 cp /usr/local/lib/libcdio_paranoia.so.2 appdir
 cp /usr/local/lib/libcurl.so.4 appdir
 
-if [ -f /lib//$HOST/libssl.so ]; then
+if [ -f /lib/$HOST/libssl.so.1* ]; then
   cp -P /lib/$HOST/libcrypto.so.1* appdir
   cp -P /lib/$HOST/libssl.so.1* appdir
 else
