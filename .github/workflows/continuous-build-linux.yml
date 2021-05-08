@@ -85,6 +85,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Checkout smooth
+        uses: actions/checkout@v2
+        with:
+          repository: enzo1982/smooth
+          path: smooth
+
+      - name: Checkout BoCA
+        uses: actions/checkout@v2
+        with:
+          repository: enzo1982/BoCA
+          path: boca
+
       - name: Build AppImage
         env:
           AppImageArch: ${{ matrix.arch }}

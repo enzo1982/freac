@@ -45,8 +45,7 @@ sudo rm /usr/local/bin/curl
 cd ..
 
 # Build smooth
-git clone https://github.com/enzo1982/smooth.git enzo1982/smooth
-cd enzo1982/smooth
+cd smooth
 
 CONFIG="release,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bundledlibxml2,bundledzlib"
 
@@ -57,11 +56,10 @@ sudo make config=$CONFIG BUILD_V8=False install
 
 unset PKG_CONFIG_PATH
 
-cd ../..
+cd ..
 
 # Build BoCA
-git clone https://github.com/enzo1982/boca.git enzo1982/boca
-cd enzo1982/boca
+cd boca
 
 CONFIG="release,bundledlibexpat,bundledliburiparser,bundledzlib"
 
@@ -84,26 +82,25 @@ if [ "$AppImageArch" = x86_64 ]; then
   cd ../../../..
 fi
 
-cd ../..
+cd ..
 
 # Build fre:ac
-git clone https://github.com/enzo1982/freac.git enzo1982/freac
-cd enzo1982/freac
-
 CONFIG="release"
 
 make config=$CONFIG USE_V8=False -j$jobs
 sudo make config=$CONFIG USE_V8=False install
 
-cd ../..
-
 # Build codecs and DSP libraries
-./tools/build-codecs faad2 fdk-aac mp4v2
-./tools/build-codecs lame mpg123
-./tools/build-codecs libogg opus speex vorbis
-./tools/build-codecs flac mac musepack wavpack
-./tools/build-codecs ffmpeg libsndfile
-./tools/build-codecs libsamplerate rnnoise rubberband
+cd tools
+
+./build-codecs faad2 fdk-aac mp4v2
+./build-codecs lame mpg123
+./build-codecs libogg opus speex vorbis
+./build-codecs flac mac musepack wavpack
+./build-codecs ffmpeg libsndfile
+./build-codecs libsamplerate rnnoise rubberband
+
+cd ..
 
 # Install codecs
 mkdir -p appdir/codecs
