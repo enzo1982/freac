@@ -171,6 +171,7 @@ History
 			- fixed chapter marks being offset by a few seconds when using DSP processing
 			- fixed playback not working when using certain combinations of DSP processors
 			- fixed incompatibility of FDK-AAC encoded HE and HEv2 AAC files with iTunes
+			- fixed issue decoding FLAC files with unknown length
 			- fixed possible crashes when decoding Opus files
 			- fixed possible crashes when failing to configure WMA encoder
 			- fixed rare crashes in LAME encoder component
