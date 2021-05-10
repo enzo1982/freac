@@ -171,6 +171,7 @@ Geschichte
 			- Problem mit nicht funktionierendem Player bei Verwendung bestimmter Kombinationen von DSP-Filtern behoben
 			- Inkompatibilität von mit FDK-AAC erzeugten HE- und HEv2-AAC-Dateien mit iTunes behoben
 			- Fehlerhafte Dekodierung von FLAC-Dateien mit unbekannter Länge behoben
+			- Störgeräusche beim Dekodieren von Transienten in einigen Vorbis-Dateien behoben
 			- Mögliche Abstürze beim Dekodieren von Opus-Dateien behoben
 			- Mögliche Abstürze bei fehlgeschlagenem Setup des WMA-Kodierers behoben
 			- Seltene Abstürze in LAME-Kodierer-Komponente behoben
