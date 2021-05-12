@@ -16,25 +16,25 @@ jobs:
             arch: x86_64
             host: x86_64-linux-gnu
             pkgarch: amd64
-            dependencies: g++-multilib nasm wine1.6-dev yasm
+            dependencies: g++-multilib nasm wget wine1.6-dev yasm
 
           - os: ubuntu-16.04
             arch: i686
             host: i386-linux-gnu
             pkgarch: i386
-            dependencies: g++-multilib nasm wine1.6-dev:i386 yasm
+            dependencies: g++-multilib nasm wget wine1.6-dev:i386 yasm
 
           - os: ubuntu-16.04
             arch: armhf
             host: arm-linux-gnueabihf
             pkgarch: armhf
-            dependencies: g++-arm-linux-gnueabihf nasm qemu qemu-user-static yasm
+            dependencies: g++-arm-linux-gnueabihf nasm qemu qemu-user-static wget yasm
 
           - os: ubuntu-16.04
             arch: aarch64
             host: aarch64-linux-gnu
             pkgarch: arm64
-            dependencies: g++-aarch64-linux-gnu nasm qemu qemu-user-static yasm
+            dependencies: g++-aarch64-linux-gnu nasm qemu qemu-user-static wget yasm
 
     runs-on: ${{ matrix.os }}
 
