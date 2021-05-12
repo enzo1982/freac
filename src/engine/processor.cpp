@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -135,9 +135,12 @@ Int freac::Processor::Finish(Buffer<UnsignedByte> &buffer)
 
 		/* Append remaining data to return buffer.
 		 */
-		buffer.Resize(buffer.Size() + flush.Size());
+		if (flush.Size() > 0)
+		{
+			buffer.Resize(buffer.Size() + flush.Size());
 
-		memcpy(buffer + buffer.Size() - flush.Size(), flush, flush.Size());
+			memcpy(buffer + buffer.Size() - flush.Size(), flush, flush.Size());
+		}
 	}
 
 	return buffer.Size();

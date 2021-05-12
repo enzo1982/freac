@@ -1923,8 +1923,8 @@ Void freac::JobConvert::LogCDInfo() const
 						 .Append("        ").Append(" | ");
 			}
 
-			entry.Append("      ").Append(String().FillN(' ', 5 - Math::Floor(Math::Log10(trackStartSector)))).Append(String::FromInt(trackStartSector)).Append(" | ")
-			     .Append("    ")  .Append(String().FillN(' ', 5 - Math::Floor(Math::Log10(trackEndSector))))  .Append(String::FromInt(trackEndSector));
+			entry.Append("      ").Append(String().FillN(' ', 5 - Math::Floor(Math::Log10(trackStartSector > 0 ? trackStartSector : 1)))).Append(String::FromInt(trackStartSector)).Append(" | ")
+			     .Append("    ")  .Append(String().FillN(' ', 5 - Math::Floor(Math::Log10(			     trackEndSector	 )))).Append(String::FromInt(trackEndSector));
 
 			log->Write(entry);
 		}

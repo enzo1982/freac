@@ -326,11 +326,11 @@ String freac::Utilities::GetOutputFileName(BoCA::Config *config, const Track &tr
 		String		 shortOutFileName = filePattern;
 
 		DateTime	 currentDateTime  = DateTime::Current();
-		String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(currentDateTime.GetYear()))).Append(String::FromInt(currentDateTime.GetYear()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMonth())))).Append(String::FromInt(currentDateTime.GetMonth()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetDay())))).Append(String::FromInt(currentDateTime.GetDay()));
-		String		 currentTime	  = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()))).Append(String::FromInt(currentDateTime.GetHour()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute())))).Append(String::FromInt(currentDateTime.GetMinute()));
+		String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(				      currentDateTime.GetYear()	     ))) .Append(String::FromInt(currentDateTime.GetYear()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(				      currentDateTime.GetMonth()     )))).Append(String::FromInt(currentDateTime.GetMonth()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(				      currentDateTime.GetDay()	     )))).Append(String::FromInt(currentDateTime.GetDay()));
+		String		 currentTime	  = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()	> 0 ? currentDateTime.GetHour()	  : 1))) .Append(String::FromInt(currentDateTime.GetHour()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute() > 0 ? currentDateTime.GetMinute() : 1)))).Append(String::FromInt(currentDateTime.GetMinute()));
 
 		shortOutFileName.Replace("<artist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
 		shortOutFileName.Replace("<title>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")));
@@ -605,11 +605,11 @@ String freac::Utilities::GetPlaylistFileName(BoCA::Config *config, const Track &
 		if (shortOutFileName.Trim() == NIL) shortOutFileName = Config::PlaylistFilenamePatternDefault;
 
 		DateTime	 currentDateTime  = DateTime::Current();
-		String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(currentDateTime.GetYear()))).Append(String::FromInt(currentDateTime.GetYear()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMonth())))).Append(String::FromInt(currentDateTime.GetMonth()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetDay())))).Append(String::FromInt(currentDateTime.GetDay()));
-		String		 currentTime	  = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()))).Append(String::FromInt(currentDateTime.GetHour()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute())))).Append(String::FromInt(currentDateTime.GetMinute()));
+		String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(				      currentDateTime.GetYear()      ))) .Append(String::FromInt(currentDateTime.GetYear()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(				      currentDateTime.GetMonth()     )))).Append(String::FromInt(currentDateTime.GetMonth()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(				      currentDateTime.GetDay()	     )))).Append(String::FromInt(currentDateTime.GetDay()));
+		String		 currentTime	  = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()	> 0 ? currentDateTime.GetHour()	  : 1))) .Append(String::FromInt(currentDateTime.GetHour()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute()	> 0 ? currentDateTime.GetMinute() : 1)))).Append(String::FromInt(currentDateTime.GetMinute()));
 
 		shortOutFileName.Replace("<artist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
 		shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
