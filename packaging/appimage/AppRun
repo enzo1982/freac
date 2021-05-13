@@ -18,5 +18,4 @@ else
   MAIN="$HERE/freac"
 fi
 
-cd $HERE
-exec "${MAIN}" "$@"
+LD_LIBRARY_PATH="${HERE}" exec "${MAIN}" "$@"
