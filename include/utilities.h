@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -23,12 +23,12 @@ namespace freac
 			static Void	 FillGenreList(List *);
 			static Void	 UpdateGenreList(List *, const String &);
 
-			static String	 GetOutputFileName(BoCA::Config *, const BoCA::Track &);
+			static String	 GetOutputFileName(const BoCA::Config *, const BoCA::Track &);
 
-			static String	 GetSingleOutputFileName(BoCA::Config *, const Array<BoCA::Track> &);
-			static String	 GetSingleOutputFileNameDefault(BoCA::Config *, const Array<BoCA::Track> &);
+			static String	 GetSingleOutputFileName(const BoCA::Config *, const Array<BoCA::Track> &);
+			static String	 GetSingleOutputFileNameDefault(const BoCA::Config *, const Array<BoCA::Track> &);
 
-			static String	 GetPlaylistFileName(BoCA::Config *, const BoCA::Track &, const Array<BoCA::Track> &);
+			static String	 GetPlaylistFileName(const BoCA::Config *, const BoCA::Track &, const Array<BoCA::Track> &);
 
 			static Bool	 SetProcessPriority();
 
