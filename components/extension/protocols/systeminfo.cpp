@@ -48,6 +48,8 @@ const String &BoCA::SystemInfo::GetOperatingSystem()
 	if (operatingSystem == NIL)
 	{
 #if defined __WIN32__
+	 	operatingSystem = "Windows (unknown version)";
+
 		HKEY	currentVersion;
 
 		if (RegOpenKeyW(HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\Windows NT\\CurrentVersion", &currentVersion) == ERROR_SUCCESS)
@@ -64,29 +66,32 @@ const String &BoCA::SystemInfo::GetOperatingSystem()
 						      .Append(releaseID	  != NIL ? String("Release ").Append(releaseID).Append(", ") : String())
 						      .Append(buildNumber != NIL ? String("Build ").Append(buildNumber) : "unknown build").Append(")");
 		}
-		else
-		{
-		 	operatingSystem = "Windows (unknown version)";
-		}
 #else
 		Buffer<char>	 buffer(2048);
 
 		buffer.Zero();
 
 #	if defined __linux__
+		operatingSystem = "Linux (unknown version)";
+
 		FILE	*pstdin = popen("echo \"`lsb_release -ds || uname -o` (`uname -s` `uname -r`)\"", "r");
 #	elif defined __APPLE__
+		operatingSystem = "macOS (unknown version)";
+
 		FILE	*pstdin = popen("echo \"`sw_vers -productName` `sw_vers -productVersion`\"", "r");
 #	elif defined __HAIKU__
+		operatingSystem = "Haiku (unknown version)";
+
 		FILE	*pstdin = popen("echo \"`uname -o` `uname -r` (`uname -v`)\"", "r");
 #	else
+		operatingSystem = "Unknown"
+
 		FILE	*pstdin = popen("echo \"`uname -s` `uname -r`\"", "r");
 #	endif
-		fscanf(pstdin, String("%[^\n]").Append(String::FromInt(buffer.Size() - 1)), (char *) buffer);
+
+		if (fscanf(pstdin, String("%[^\n]").Append(String::FromInt(buffer.Size() - 1)), (char *) buffer) > 0) operatingSystem = buffer;
 
 		pclose(pstdin);
-
-		operatingSystem = buffer;
 #endif
 	}
 
