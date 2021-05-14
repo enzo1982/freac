@@ -184,6 +184,8 @@ BoCA::LayerTagBasic::~LayerTagBasic()
 {
 	Settings::Get()->onChangeLanguageSettings.Disconnect(&LayerTagBasic::OnChangeLanguageSettings, this);
 
+	FreeCoverImages();
+
 	DeleteObject(group_info);
 	DeleteObject(text_artist);
 	DeleteObject(edit_artist);
