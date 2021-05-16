@@ -664,6 +664,62 @@ String freac::Utilities::GetPlaylistFileName(const BoCA::Config *config, const T
 	return BoCA::Utilities::NormalizeFileName(playlistFileName);
 }
 
+String freac::Utilities::FormatFileNameForLogging(const String &fileName, const String &basePath)
+{
+	BoCA::Config	*config	= BoCA::Config::Get();
+
+	Bool	 logCompletePaths = config->GetIntValue(Config::CategoryLoggingID, Config::LoggingLogCompletePathsID, Config::LoggingLogCompletePathsDefault);
+
+	if (logCompletePaths || fileName.Contains("://")) return fileName;
+
+	String	 fixedBasePath	   = basePath;
+	String	 shortenedFileName = fileName;
+
+	if (fixedBasePath != NIL && !fixedBasePath.EndsWith(Directory::GetDirectoryDelimiter())) fixedBasePath.Append(Directory::GetDirectoryDelimiter());
+
+	if (fixedBasePath != NIL && fileName.StartsWith(fixedBasePath)) shortenedFileName = fileName.Tail(fileName.Length() - fixedBasePath.Length());
+	else								shortenedFileName = File(fileName).GetFileName();
+
+	return shortenedFileName;
+}
+
+String freac::Utilities::GetOutputBasePath(const BoCA::Config *config, const Track &track, const String &outputFile)
+{
+	Bool	 encodeToSingleFile	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+
+	if (encodeToSingleFile) return NIL;
+
+	String	 encoderOutputDirectory	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
+	Bool	 writeToInputDirectory	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
+
+	String	 basePath  = encoderOutputDirectory;
+	String	 inputPath = track.fileName.StartsWith("device://") ? String() : File(track.fileName).GetFilePath();
+
+	if (writeToInputDirectory && inputPath != NIL && outputFile.StartsWith(inputPath)) basePath = inputPath;
+
+	return basePath;
+}
+
+String freac::Utilities::GetPlaylistBasePath(const BoCA::Config *config, const Track &track, const Array<Track> &originalTracks)
+{
+	Bool	 encodeToSingleFile	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+
+	if (encodeToSingleFile) return NIL;
+
+	String	 encoderOutputDirectory	 = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
+	Bool	 writeToInputDirectory	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
+
+	const Track	&originalTrack	 = originalTracks.Get(track.GetTrackID());
+	String		 inputDirectory	 = File(originalTrack.fileName).GetFilePath().Append(Directory::GetDirectoryDelimiter());
+
+	if (writeToInputDirectory && !originalTrack.isCDTrack && BoCA::Utilities::IsFolderWritable(inputDirectory)) encoderOutputDirectory = inputDirectory;
+
+	String	 playlistOutputDirectory = config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, encoderOutputDirectory);
+	Bool	 useEncoderOutputDir	 = config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, Config::PlaylistUseEncoderOutputDirDefault);
+
+	return BoCA::Utilities::GetAbsolutePathName(useEncoderOutputDir ? encoderOutputDirectory : playlistOutputDirectory);
+}
+
 Bool freac::Utilities::SetProcessPriority()
 {
 #ifdef __WIN32__

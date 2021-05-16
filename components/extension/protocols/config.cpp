@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -28,6 +28,7 @@ BoCA::ConfigureProtocols::ConfigureProtocols()
 	archiveLogs			= config->GetIntValue(ConfigID, "ArchiveLogs", True);
 	deleteLogs			= config->GetIntValue(ConfigID, "DeleteLogs", True);
 
+	logCompletePaths		= config->GetIntValue(ConfigID, "LogCompletePaths", False);
 	saveConversionLogsWithFiles	= config->GetIntValue(ConfigID, "SaveConversionLogsWithFiles", False);
 	saveRippingLogsOnly		= config->GetIntValue(ConfigID, "SaveRippingLogsOnly", True);
 
@@ -73,17 +74,19 @@ BoCA::ConfigureProtocols::ConfigureProtocols()
 
 	/* Create Conversion group.
 	 */
-	group_conversion	 = new GroupBox(i18n->TranslateString("Conversion logs"), Point(7, 169), Size(480, 91));
+	group_conversion	 = new GroupBox(i18n->TranslateString("Conversion logs"), Point(7, 169), Size(480, 114));
 
-	check_conversion_logs	 = new CheckBox(i18n->TranslateString("Save conversion logs with audio files"), Point(10, 14), Size(group_conversion->GetWidth() - 20, 0), &saveConversionLogsWithFiles);
+	check_complete_paths	 = new CheckBox(i18n->TranslateString("Log complete file paths"), Point(10, 14), Size(group_conversion->GetWidth() - 20, 0), &logCompletePaths);
+
+	check_conversion_logs	 = new CheckBox(i18n->TranslateString("Save conversion logs with audio files"), Point(10, 37), Size(group_conversion->GetWidth() - 20, 0), &saveConversionLogsWithFiles);
 	check_conversion_logs->onAction.Connect(&ConfigureProtocols::ToggleSaveConversionLogsWithFiles, this);
 
-	check_conversion_ripping = new CheckBox(i18n->TranslateString("Audio CD ripping logs only"), Point(27, 37), Size(group_conversion->GetWidth() - 37, 0), &saveRippingLogsOnly);
+	check_conversion_ripping = new CheckBox(i18n->TranslateString("Audio CD ripping logs only"), Point(27, 60), Size(group_conversion->GetWidth() - 37, 0), &saveRippingLogsOnly);
 
 	String	 defaultName = String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<albumartist> - <album>");
 
-	text_conversion_filename = new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(27, 65));
-	edit_conversion_filename = new EditBox(config->GetStringValue(ConfigID, "ConversionLogPattern", defaultName), Point(text_conversion_filename->GetUnscaledTextWidth() + 34, 62), Size(group_conversion->GetWidth() - text_conversion_filename->GetUnscaledTextWidth() - 44, 0));
+	text_conversion_filename = new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(27, 88));
+	edit_conversion_filename = new EditBox(config->GetStringValue(ConfigID, "ConversionLogPattern", defaultName), Point(text_conversion_filename->GetUnscaledTextWidth() + 34, 85), Size(group_conversion->GetWidth() - text_conversion_filename->GetUnscaledTextWidth() - 44, 0));
 
 	list_conversion_filename = new List();
 	list_conversion_filename->AddEntry(String("<albumartist> - <album>"));
@@ -91,6 +94,7 @@ BoCA::ConfigureProtocols::ConfigureProtocols()
 
 	edit_conversion_filename->SetDropDownList(list_conversion_filename);
 
+	group_conversion->Add(check_complete_paths);
 	group_conversion->Add(check_conversion_logs);
 	group_conversion->Add(check_conversion_ripping);
 	group_conversion->Add(text_conversion_filename);
@@ -103,7 +107,7 @@ BoCA::ConfigureProtocols::ConfigureProtocols()
 	ToggleArchiveLogs();
 	ToggleSaveConversionLogsWithFiles();
 
-	SetSize(Size(group_ui->GetWidth() + 14, 267));
+	SetSize(Size(group_ui->GetWidth() + 14, 290));
 }
 
 BoCA::ConfigureProtocols::~ConfigureProtocols()
@@ -121,6 +125,7 @@ BoCA::ConfigureProtocols::~ConfigureProtocols()
 	DeleteObject(text_logs_days);
 
 	DeleteObject(group_conversion);
+	DeleteObject(check_complete_paths);
 	DeleteObject(check_conversion_logs);
 	DeleteObject(check_conversion_ripping);
 	DeleteObject(text_conversion_filename);
@@ -212,6 +217,7 @@ Int BoCA::ConfigureProtocols::SaveSettings()
 	config->SetIntValue(ConfigID, "DeleteLogs", deleteLogs);
 	config->SetIntValue(ConfigID, "DeleteLogsDays", edit_logs_days->GetText().ToInt());
 
+	config->SetIntValue(ConfigID, "LogCompletePaths", logCompletePaths);
 	config->SetIntValue(ConfigID, "SaveConversionLogsWithFiles", saveConversionLogsWithFiles);
 	config->SetIntValue(ConfigID, "SaveRippingLogsOnly", saveRippingLogsOnly);
 	config->SetStringValue(ConfigID, "ConversionLogPattern", edit_conversion_filename->GetText());

@@ -603,7 +603,7 @@ Error freac::JobConvert::Perform()
 					 */
 					if (deleteFile)
 					{
-						log->Write(String("    Removing source file: ").Append(track.fileName));
+						log->Write(String("    Removing source file: ").Append(Utilities::FormatFileNameForLogging(track.fileName)));
 						log->Write(NIL);
 
 						File(track.fileName).Delete();
@@ -1206,6 +1206,7 @@ Error freac::JobConvert::Perform()
 		/* Split playlist tracks to individual playlists.
 		 */
 		Array<String>			 playlistFileNames;
+		Array<String>			 playlistBasePaths;
 
 		Array<Array<Track> *, Void *>	 playlistTrackLists;
 		Array<Array<Track> *, Void *>	 cuesheetTrackLists;
@@ -1214,8 +1215,16 @@ Error freac::JobConvert::Perform()
 		{
 			/* Set playlist filename so it is written to the same place as a single output file.
 			 */
-			if (encodeToSingleFile) playlistFileNames.Add(singleOutFile.Head(singleOutFile.FindLast(".")));
-			else			playlistFileNames.Add(Utilities::GetPlaylistFileName(configuration, playlistTracks.GetFirst(), tracksToConvert));
+			if (encodeToSingleFile)
+			{
+				playlistFileNames.Add(singleOutFile.Head(singleOutFile.FindLast(".")));
+				playlistBasePaths.Add(NIL);
+			}
+			else
+			{
+				playlistFileNames.Add(Utilities::GetPlaylistFileName(configuration, playlistTracks.GetFirst(), tracksToConvert));
+				playlistBasePaths.Add(Utilities::GetPlaylistBasePath(configuration, playlistTracks.GetFirst(), tracksToConvert));
+			}
 
 			playlistTrackLists.Add(new Array<Track>(playlistTracks));
 			cuesheetTrackLists.Add(new Array<Track>(cuesheetTracks));
@@ -1231,6 +1240,8 @@ Error freac::JobConvert::Perform()
 
 				if (playlistFileNames.Add(playlistFileName, playlistFileCRC))
 				{
+					playlistBasePaths.Add(Utilities::GetPlaylistBasePath(configuration, track, tracksToConvert), playlistFileCRC);
+
 					playlistTrackLists.Add(new Array<Track>(), playlistFileCRC);
 					cuesheetTrackLists.Add(new Array<Track>(), playlistFileCRC);
 				}
@@ -1252,7 +1263,7 @@ Error freac::JobConvert::Perform()
 
 			if (playlist != NIL)
 			{
-				log->Write(String("    Writing playlist: ").Append(playlistFileNames.GetNth(i).Append(".").Append(playlistExtension)));
+				log->Write(String("    Writing playlist: ").Append(Utilities::FormatFileNameForLogging(playlistFileNames.GetNth(i).Append(".").Append(playlistExtension), playlistBasePaths.GetNth(i))));
 
 				playlist->SetTrackList(*playlistTrackLists.GetNth(i));
 				playlist->WritePlaylist(String(playlistFileNames.GetNth(i)).Append(".").Append(playlistExtension));
@@ -1266,7 +1277,7 @@ Error freac::JobConvert::Perform()
 
 			if (cuesheet != NIL)
 			{
-				log->Write(String("    Writing cue sheet: ").Append(playlistFileNames.GetNth(i).Append(".cue")));
+				log->Write(String("    Writing cue sheet: ").Append(Utilities::FormatFileNameForLogging(playlistFileNames.GetNth(i).Append(".cue"), playlistBasePaths.GetNth(i))));
 
 				cuesheet->SetTrackList(*cuesheetTrackLists.GetNth(i));
 				cuesheet->WritePlaylist(playlistFileNames.GetNth(i).Append(".cue"));
@@ -1756,6 +1767,8 @@ Void freac::JobConvert::LogSettings(const String &singleOutFile, Int numberOfThr
 	Bool	 enableProcessing	= configuration->GetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault);
 	String	 selectedDSPs		= configuration->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault);
 
+	Bool	 logCompletePaths	= configuration->GetIntValue(Config::CategoryLoggingID, Config::LoggingLogCompletePathsID, Config::LoggingLogCompletePathsDefault);
+
 	/* Get encoder properties.
 	 */
 	Registry		&boca	 = Registry::Get();
@@ -1796,14 +1809,17 @@ Void freac::JobConvert::LogSettings(const String &singleOutFile, Int numberOfThr
 
 	if (encodeToSingleFile)
 	{
-		log->Write(String("        Output file:      ").Append(singleOutFile));
+		log->Write(String("        Output file:      ").Append(Utilities::FormatFileNameForLogging(singleOutFile)));
 		log->Write(NIL);
 	}
 	else
 	{
-		log->Write(String("        Output folder:    ").Append(writeToInputDirectory ? String("Using input file folders") : encoderOutputDirectory));
+		if (logCompletePaths)
+		{
+			log->Write(String("        Output folder:    ").Append(writeToInputDirectory ? String("Using input file folders") : encoderOutputDirectory));
 
-		if (writeToInputDirectory) log->Write(String("            Fallback:     ").Append(encoderOutputDirectory));
+			if (writeToInputDirectory) log->Write(String("            Fallback:     ").Append(encoderOutputDirectory));
+		}
 
 		log->Write(String("        Filename pattern: ").Append(filenamePattern));
 		log->Write(NIL);

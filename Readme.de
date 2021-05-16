@@ -158,6 +158,7 @@ Geschichte
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Verbesserung der Geschwindigkeit bei der DSP-Verarbeitung um bis zu 70%
 			- Einstellung für Frequenzbandbreite zum FDK-AAC-Konfigurationsdialog hinzugefügt
+			- Option zum Umschalten der Protokollierung vollständiger Pfade in Protokolldateien hinzugefügt
 			- Unterstützung für Shift_JIS kodierten CD-Text hinzugefügt
 			- Unterstützung für Ensemble- und Satz-Felder in Vorbis Comment und APEv2-Tags hinzugefügt
 			- Unterstützung für zusätzliche URL-Felder in APEv2-Tags hinzugefügt

@@ -30,6 +30,11 @@ namespace freac
 
 			static String	 GetPlaylistFileName(const BoCA::Config *, const BoCA::Track &, const Array<BoCA::Track> &);
 
+			static String	 FormatFileNameForLogging(const String &, const String & = NIL);
+
+			static String	 GetOutputBasePath(const BoCA::Config *, const BoCA::Track &, const String &);
+			static String	 GetPlaylistBasePath(const BoCA::Config *, const BoCA::Track &, const Array<BoCA::Track> &);
+
 			static Bool	 SetProcessPriority();
 
 			static Bool	 MirrorBitmap(Bitmap &);

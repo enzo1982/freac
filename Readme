@@ -159,6 +159,7 @@ History
 			- improved support for languages written from right to left
 			- improved DSP processing performance by up to 70%
 			- added frequency bandwidth setting to FDK-AAC encoder configuration dialog
+			- added an option to toggle logging of complete paths in log files
 			- added support for reading Shift_JIS encoded CD-Text
 			- added support for ensemble and movement fields in Vorbis Comment and APEv2 tags
 			- added support for additional URL fields in APEv2 tags
