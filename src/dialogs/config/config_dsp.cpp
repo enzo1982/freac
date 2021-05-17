@@ -257,8 +257,7 @@ Void freac::ConfigureDSP::OnConfigureComponent()
 
 	if (component != NIL)
 	{
-		if (ConfigComponentDialog(component).ShowDialog() != Error()) onChangeComponentSettings.Emit(dspID);
-		else							      BoCA::Utilities::InfoMessage("No configuration dialog available for:\n\n%1", component->GetName());
+		if (ConfigComponentDialog(component).ShowDialog() == Error()) BoCA::Utilities::InfoMessage("No configuration dialog available for:\n\n%1", component->GetName());
 
 		boca.DeleteComponent(component);
 	}

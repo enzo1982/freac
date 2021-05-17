@@ -1377,6 +1377,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files"/>
 	  <entry id="104111" string="Audio CD ripping logs only"/>
 	  <entry id="104112" string="Filename pattern"/>
+	  <entry id="104113" string="Log complete file paths"/>
 	</section>
       </section>
 

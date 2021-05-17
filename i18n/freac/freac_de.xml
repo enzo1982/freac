@@ -1377,6 +1377,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Konvertierungsprotokolle mit Audiodateien speichern</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Nur für Audio CD-Ripping-Protokolle</entry>
 	  <entry id="104112" string="Filename pattern">Vorlage für Dateinamen</entry>
+	  <entry id="104113" string="Log complete file paths">Vollständige Dateipfade protokollieren</entry>
 	</section>
       </section>
 

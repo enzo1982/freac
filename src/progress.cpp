@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -23,6 +23,7 @@ Array<freac::Progress *>	 freac::Progress::progressIndicators;
 freac::Progress::Progress(const BoCA::Config *iConfiguration)
 {
 	configuration	       = iConfiguration;
+	consoleMode	       = configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
 
 	lastInvoked	       = 0;
 
@@ -65,7 +66,7 @@ freac::Progress::~Progress()
 
 Void freac::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 {
-	if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return;
+	if (consoleMode) return;
 
 	Registry	&boca = Registry::Get();
 
@@ -116,7 +117,7 @@ Void freac::Progress::ComputeTotalSamples(const Array<Track> &tracks)
 
 Void freac::Progress::FixTotalSamples(const Track &track, const Track &nTrack)
 {
-	if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return;
+	if (consoleMode) return;
 
 	Threads::Lock	 lock(mutex);
 
@@ -176,7 +177,7 @@ Void freac::Progress::Resume()
 
 Void freac::Progress::StartTrack(const Track &track)
 {
-	if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return;
+	if (consoleMode) return;
 
 	/* Add to internal track list.
 	 */
@@ -192,7 +193,7 @@ Void freac::Progress::StartTrack(const Track &track)
 
 Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
 {
-	if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return;
+	if (consoleMode) return;
 
 	/* Update internal track list.
 	 */
@@ -270,7 +271,7 @@ Void freac::Progress::UpdateTrack(const Track &track, Int64 position)
 
 Void freac::Progress::FinishTrack(const Track &track, Bool stepsLeft)
 {
-	if (configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault)) return;
+	if (consoleMode) return;
 
 	/* Remove from internal track list.
 	 */

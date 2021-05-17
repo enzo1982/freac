@@ -24,7 +24,8 @@ freac::ConfigComponentDialog::ConfigComponentDialog(Component *component)
 
 	i18n->SetContext("Configuration");
 
-	layer = component->GetConfigurationLayer();
+	componentID = component->GetID();
+	layer	    = component->GetConfigurationLayer();
 
 	if (layer != NIL)
 	{
@@ -90,6 +91,8 @@ Void freac::ConfigComponentDialog::OK()
 	if (layer->SaveSettings() == Error()) return;
 
 	mainWnd->Close();
+
+	Settings::onChangeComponentSettings.Emit(componentID);
 }
 
 Void freac::ConfigComponentDialog::Cancel()

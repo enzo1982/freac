@@ -32,6 +32,7 @@ namespace freac
 			static const String	 CategoryFreedbID;
 			static const String	 CategoryVerificationID;
 			static const String	 CategoryProcessingID;
+			static const String	 CategoryLoggingID;
 
 			/* Category Settings
 			 */
@@ -387,6 +388,11 @@ namespace freac
 
 			static const String	 FreedbDisplayNotFoundID;
 			static const Bool	 FreedbDisplayNotFoundDefault;
+
+			/* Category Logging
+			 */
+			static const String	 LoggingLogCompletePathsID;
+			static const Bool	 LoggingLogCompletePathsDefault;
 		private:
 			/* Singleton class, therefore private constructor/destructor
 			 */

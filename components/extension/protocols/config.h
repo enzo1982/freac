@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -39,6 +39,7 @@ namespace BoCA
 			Text			*text_logs_days;
 
 			GroupBox		*group_conversion;
+			CheckBox		*check_complete_paths;
 			CheckBox		*check_conversion_logs;
 			CheckBox		*check_conversion_ripping;
 			Text			*text_conversion_filename;
@@ -49,6 +50,7 @@ namespace BoCA
 
 			Bool			 archiveLogs;
 			Bool			 deleteLogs;
+			Bool			 logCompletePaths;
 			Bool			 saveConversionLogsWithFiles;
 			Bool			 saveRippingLogsOnly;
 		public:

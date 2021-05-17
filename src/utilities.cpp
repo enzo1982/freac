@@ -272,7 +272,7 @@ Void freac::Utilities::UpdateGenreList(List *list, const String &genre)
 	FillGenreList(list);
 }
 
-String freac::Utilities::GetOutputFileName(BoCA::Config *config, const Track &track)
+String freac::Utilities::GetOutputFileName(const BoCA::Config *config, const Track &track)
 {
 	if (track.outputFile != NIL) return track.outputFile;
 
@@ -326,11 +326,11 @@ String freac::Utilities::GetOutputFileName(BoCA::Config *config, const Track &tr
 		String		 shortOutFileName = filePattern;
 
 		DateTime	 currentDateTime  = DateTime::Current();
-		String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(currentDateTime.GetYear()))).Append(String::FromInt(currentDateTime.GetYear()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMonth())))).Append(String::FromInt(currentDateTime.GetMonth()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetDay())))).Append(String::FromInt(currentDateTime.GetDay()));
-		String		 currentTime	  = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()))).Append(String::FromInt(currentDateTime.GetHour()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute())))).Append(String::FromInt(currentDateTime.GetMinute()));
+		String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(				      currentDateTime.GetYear()	     ))) .Append(String::FromInt(currentDateTime.GetYear()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(				      currentDateTime.GetMonth()     )))).Append(String::FromInt(currentDateTime.GetMonth()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(				      currentDateTime.GetDay()	     )))).Append(String::FromInt(currentDateTime.GetDay()));
+		String		 currentTime	  = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()	> 0 ? currentDateTime.GetHour()	  : 1))) .Append(String::FromInt(currentDateTime.GetHour()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute() > 0 ? currentDateTime.GetMinute() : 1)))).Append(String::FromInt(currentDateTime.GetMinute()));
 
 		shortOutFileName.Replace("<artist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
 		shortOutFileName.Replace("<title>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")));
@@ -461,7 +461,7 @@ String freac::Utilities::GetOutputFileName(BoCA::Config *config, const Track &tr
 	return outputFileName;
 }
 
-String freac::Utilities::GetSingleOutputFileName(BoCA::Config *config, const Array<Track> &tracks)
+String freac::Utilities::GetSingleOutputFileName(const BoCA::Config *config, const Array<Track> &tracks)
 {
 	/* Check if an output filename has already been set.
 	 */
@@ -531,7 +531,7 @@ String freac::Utilities::GetSingleOutputFileName(BoCA::Config *config, const Arr
 	return singleOutputFileName;
 }
 
-String freac::Utilities::GetSingleOutputFileNameDefault(BoCA::Config *config, const Array<Track> &tracks)
+String freac::Utilities::GetSingleOutputFileNameDefault(const BoCA::Config *config, const Array<Track> &tracks)
 {
 	/* Get configuration.
 	 */
@@ -570,7 +570,7 @@ String freac::Utilities::GetSingleOutputFileNameDefault(BoCA::Config *config, co
 					  .Append(BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length()  > 0 ? info.album  : i18n->TranslateString("unknown album")))).Append(fileExtension != NIL ? "." : NIL).Append(fileExtension);
 }
 
-String freac::Utilities::GetPlaylistFileName(BoCA::Config *config, const Track &track, const Array<Track> &originalTracks)
+String freac::Utilities::GetPlaylistFileName(const BoCA::Config *config, const Track &track, const Array<Track> &originalTracks)
 {
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
@@ -605,11 +605,11 @@ String freac::Utilities::GetPlaylistFileName(BoCA::Config *config, const Track &
 		if (shortOutFileName.Trim() == NIL) shortOutFileName = Config::PlaylistFilenamePatternDefault;
 
 		DateTime	 currentDateTime  = DateTime::Current();
-		String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(currentDateTime.GetYear()))).Append(String::FromInt(currentDateTime.GetYear()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMonth())))).Append(String::FromInt(currentDateTime.GetMonth()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetDay())))).Append(String::FromInt(currentDateTime.GetDay()));
-		String		 currentTime	  = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()))).Append(String::FromInt(currentDateTime.GetHour()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute())))).Append(String::FromInt(currentDateTime.GetMinute()));
+		String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(				      currentDateTime.GetYear()      ))) .Append(String::FromInt(currentDateTime.GetYear()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(				      currentDateTime.GetMonth()     )))).Append(String::FromInt(currentDateTime.GetMonth()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(				      currentDateTime.GetDay()	     )))).Append(String::FromInt(currentDateTime.GetDay()));
+		String		 currentTime	  = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()	> 0 ? currentDateTime.GetHour()	  : 1))) .Append(String::FromInt(currentDateTime.GetHour()))
+					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute()	> 0 ? currentDateTime.GetMinute() : 1)))).Append(String::FromInt(currentDateTime.GetMinute()));
 
 		shortOutFileName.Replace("<artist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
 		shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
@@ -662,6 +662,62 @@ String freac::Utilities::GetPlaylistFileName(BoCA::Config *config, const Track &
 	}
 
 	return BoCA::Utilities::NormalizeFileName(playlistFileName);
+}
+
+String freac::Utilities::FormatFileNameForLogging(const String &fileName, const String &basePath)
+{
+	BoCA::Config	*config	= BoCA::Config::Get();
+
+	Bool	 logCompletePaths = config->GetIntValue(Config::CategoryLoggingID, Config::LoggingLogCompletePathsID, Config::LoggingLogCompletePathsDefault);
+
+	if (logCompletePaths || fileName.Contains("://")) return fileName;
+
+	String	 fixedBasePath	   = basePath;
+	String	 shortenedFileName = fileName;
+
+	if (fixedBasePath != NIL && !fixedBasePath.EndsWith(Directory::GetDirectoryDelimiter())) fixedBasePath.Append(Directory::GetDirectoryDelimiter());
+
+	if (fixedBasePath != NIL && fileName.StartsWith(fixedBasePath)) shortenedFileName = fileName.Tail(fileName.Length() - fixedBasePath.Length());
+	else								shortenedFileName = File(fileName).GetFileName();
+
+	return shortenedFileName;
+}
+
+String freac::Utilities::GetOutputBasePath(const BoCA::Config *config, const Track &track, const String &outputFile)
+{
+	Bool	 encodeToSingleFile	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+
+	if (encodeToSingleFile) return NIL;
+
+	String	 encoderOutputDirectory	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
+	Bool	 writeToInputDirectory	= config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
+
+	String	 basePath  = encoderOutputDirectory;
+	String	 inputPath = track.fileName.StartsWith("device://") ? String() : File(track.fileName).GetFilePath();
+
+	if (writeToInputDirectory && inputPath != NIL && outputFile.StartsWith(inputPath)) basePath = inputPath;
+
+	return basePath;
+}
+
+String freac::Utilities::GetPlaylistBasePath(const BoCA::Config *config, const Track &track, const Array<Track> &originalTracks)
+{
+	Bool	 encodeToSingleFile	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault);
+
+	if (encodeToSingleFile) return NIL;
+
+	String	 encoderOutputDirectory	 = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault);
+	Bool	 writeToInputDirectory	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
+
+	const Track	&originalTrack	 = originalTracks.Get(track.GetTrackID());
+	String		 inputDirectory	 = File(originalTrack.fileName).GetFilePath().Append(Directory::GetDirectoryDelimiter());
+
+	if (writeToInputDirectory && !originalTrack.isCDTrack && BoCA::Utilities::IsFolderWritable(inputDirectory)) encoderOutputDirectory = inputDirectory;
+
+	String	 playlistOutputDirectory = config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, encoderOutputDirectory);
+	Bool	 useEncoderOutputDir	 = config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, Config::PlaylistUseEncoderOutputDirDefault);
+
+	return BoCA::Utilities::GetAbsolutePathName(useEncoderOutputDir ? encoderOutputDirectory : playlistOutputDirectory);
 }
 
 Bool freac::Utilities::SetProcessPriority()

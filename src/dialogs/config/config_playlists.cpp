@@ -198,8 +198,7 @@ Void freac::ConfigurePlaylists::ConfigureFormat()
 
 	if (component != NIL)
 	{
-		if (ConfigComponentDialog(component).ShowDialog() != Error()) onChangeComponentSettings.Emit(componentID);
-		else							      BoCA::Utilities::InfoMessage("No configuration dialog available for:\n\n%1", component->GetName());
+		if (ConfigComponentDialog(component).ShowDialog() == Error()) BoCA::Utilities::InfoMessage("No configuration dialog available for:\n\n%1", component->GetName());
 
 		boca.DeleteComponent(component);
 	}

@@ -31,6 +31,7 @@ const String	 freac::Config::CategoryTagsID					= "Tags";
 const String	 freac::Config::CategoryFreedbID				= "freedb";
 const String	 freac::Config::CategoryVerificationID				= "Verification";
 const String	 freac::Config::CategoryProcessingID				= "Processing";
+const String	 freac::Config::CategoryLoggingID				= "Logging";
 
 /* Category Settings
  */
@@ -398,6 +399,11 @@ const Bool	 freac::Config::FreedbUpdateJoblistDefault			= True;
 
 const String	 freac::Config::FreedbDisplayNotFoundID				= "DisplayNotFoundNote";
 const Bool	 freac::Config::FreedbDisplayNotFoundDefault			= True;
+
+/* Category Logging
+ */
+const String	 freac::Config::LoggingLogCompletePathsID			= "LogCompletePaths";
+const Bool	 freac::Config::LoggingLogCompletePathsDefault			= False;
 
 freac::Config::Config()
 {

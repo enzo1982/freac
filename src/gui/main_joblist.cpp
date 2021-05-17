@@ -664,6 +664,7 @@ freac::LayerJoblist::~LayerJoblist()
 
 	DeleteObject(txt_outdir);
 	DeleteObject(edb_outdir);
+	DeleteObject(list_outdir);
 	DeleteObject(btn_open);
 	DeleteObject(btn_browse);
 

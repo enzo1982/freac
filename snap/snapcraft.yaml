@@ -69,8 +69,8 @@ parts:
       - usr/lib/libfaad.so*
 
   libfdk-aac:
-    source: https://github.com/mstorsjo/fdk-aac/archive/v2.0.1.tar.gz
-    source-checksum: sha256/a4142815d8d52d0e798212a5adea54ecf42bcd4eec8092b37a8cb615ace91dc6
+    source: https://github.com/mstorsjo/fdk-aac/archive/v2.0.2.tar.gz
+    source-checksum: sha256/7812b4f0cf66acda0d0fe4302545339517e702af7674dd04e5fe22a5ade16a90
     plugin: autotools
     configflags: [ --prefix=/usr ]
     build-environment:
@@ -91,8 +91,8 @@ parts:
 
   libmac:
     after: [ patches ]
-    source: https://freac.org/patches/MAC_SDK_615.zip
-    source-checksum: sha256/937944eadf0ab59702d54ee79f7a820a881c3a526ceaa784154f273eb568a1a0
+    source: https://freac.org/patches/MAC_SDK_623.zip
+    source-checksum: sha256/79ae4187944716b6de18852f24bb7a71607a8b89b269aba778850537353c9316
     source-subdir: .
     plugin: make
     make-parameters: [ prefix=/usr ]
@@ -100,7 +100,7 @@ parts:
       - CXXFLAGS: "$CXXFLAGS -O3 -funroll-loops"
     override-build: |
       if [ `lscpu | grep -i 'byte order' | awk '{ print tolower($3) }'` = "little" ]; then
-        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-6.15-gcc.patch
+        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-6.23-gcc.patch
         snapcraftctl build
       fi
     prime:
@@ -141,8 +141,8 @@ parts:
       - usr/lib/libmp4v2.so*
 
   libmpg123:
-    source: https://mpg123.de/download/mpg123-1.26.5.tar.bz2
-    source-checksum: sha256/502a97e0d935be7e37d987338021d8f301bae35c2884f2a83d59c4b52466ef06
+    source: https://mpg123.de/download/mpg123-1.27.2.tar.bz2
+    source-checksum: sha256/52f6ceb962c05db0c043bb27acf5a721381f5f356ac4610e5221f50293891b04
     plugin: autotools
     configflags: [ --prefix=/usr ]
     build-environment:

@@ -109,6 +109,11 @@ freac::ConfigDialog::ConfigDialog()
 	tree_output		= new Tree(i18n->TranslateString("Output"));
 	tree_other		= new Tree(i18n->TranslateString("Other"));
 
+	/* Connect to BoCA's onChangeComponentSettings signal to be
+	 * notified when settings for a specific component are changed.
+	 */
+	BoCA::Settings::onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
+
 	OnSelectConfiguration();
 
 	if (tree_encoders->Length()  > 0) tree_components->Add(tree_encoders);
@@ -148,6 +153,10 @@ freac::ConfigDialog::ConfigDialog()
 
 freac::ConfigDialog::~ConfigDialog()
 {
+	/* Disconnect from BoCA's onChangeComponentSettings signal.
+	 */
+	BoCA::Settings::onChangeComponentSettings.Disconnect(&ConfigDialog::OnChangeComponentSettings, this);
+
 	DeleteLayers();
 
 	DeleteObject(mainWnd_titlebar);
@@ -199,11 +208,6 @@ Void freac::ConfigDialog::AddLayers()
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_freac->Add(entries.GetLast());
 
-	/* Connect to the onChangeComponentSettings signal of the encoder configuration
-	 * layer to be notified when settings for a specific component are changed.
-	 */
-	((ConfigureEncoders *) layers.GetLast())->onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
-
 	/* Add DSP configuration layer.
 	 */
 	layers.Add(new ConfigureDSP());
@@ -211,11 +215,6 @@ Void freac::ConfigDialog::AddLayers()
 	entries.Add(new ConfigEntry(i18n->TranslateString("Processing"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_freac->Add(entries.GetLast());
-
-	/* Connect to the onChangeComponentSettings signal of the DSP configuration
-	 * layer to be notified when settings for a specific component are changed.
-	 */
-	((ConfigureDSP *) layers.GetLast())->onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
 
 	/* Add verification configuration layer.
 	 */
@@ -304,11 +303,6 @@ Void freac::ConfigDialog::AddLayers()
 		entries.Add(new ConfigEntry(i18n->TranslateString("Playlists"), layers.GetLast()));
 		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 		tree_freac->Add(entries.GetLast());
-
-		/* Connect to the onChangeComponentSettings signal of the playlist configuration
-		 * layer to be notified when settings for a specific component are changed.
-		 */
-		((ConfigurePlaylists *) layers.GetLast())->onChangeComponentSettings.Connect(&ConfigDialog::OnChangeComponentSettings, this);
 	}
 
 	/* Add tags configuration layer.
@@ -593,7 +587,8 @@ Void freac::ConfigDialog::OnSelectEntry(ConfigLayer *newLayer)
 		surface->StartPaint(Rect(mainLayer->GetRealPosition() + Point(218, 40) * surface->GetSurfaceDPI() / 96.0, mainLayer->GetRealSize() - Size(218, 40) * surface->GetSurfaceDPI() / 96.0));
 
 		if (selectedLayer != NIL) mainLayer->Remove(selectedLayer);
-					  mainLayer->Add(newLayer);
+
+		mainLayer->Add(newLayer);
 
 		surface->EndPaint();
 
@@ -650,17 +645,5 @@ Void freac::ConfigDialog::OnChangeComponentSettings(const String &componentID)
 		}
 
 		break;
-	}
-
-	/* For meh!, replace all encoder components.
-	 */
-	if (componentID == "meh-enc")
-	{
-		foreach (Component *component, components)
-		{
-			if (component->GetType() != COMPONENT_TYPE_ENCODER || component->GetID() == componentID) continue;
-
-			OnChangeComponentSettings(component->GetID());
-		}
 	}
 }

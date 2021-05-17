@@ -16,25 +16,25 @@ jobs:
             arch: x86_64
             host: x86_64-linux-gnu
             pkgarch: amd64
-            dependencies: g++-multilib nasm wine1.6-dev yasm
+            dependencies: g++-multilib nasm wget wine1.6-dev yasm
 
           - os: ubuntu-16.04
             arch: i686
             host: i386-linux-gnu
             pkgarch: i386
-            dependencies: g++-multilib nasm wine1.6-dev:i386 yasm
+            dependencies: g++-multilib nasm wget wine1.6-dev:i386 yasm
 
           - os: ubuntu-16.04
             arch: armhf
             host: arm-linux-gnueabihf
             pkgarch: armhf
-            dependencies: g++-arm-linux-gnueabihf nasm qemu qemu-user-static yasm
+            dependencies: g++-arm-linux-gnueabihf nasm qemu qemu-user-static wget yasm
 
           - os: ubuntu-16.04
             arch: aarch64
             host: aarch64-linux-gnu
             pkgarch: arm64
-            dependencies: g++-aarch64-linux-gnu nasm qemu qemu-user-static yasm
+            dependencies: g++-aarch64-linux-gnu nasm qemu qemu-user-static wget yasm
 
     runs-on: ${{ matrix.os }}
 
@@ -70,7 +70,8 @@ jobs:
         run: |
           sudo apt remove -y mono-complete
           sudo apt install -y ${{ matrix.dependencies }}
-          sudo apt install -y adwaita-icon-theme gir1.2-gtk-3.0:${{ matrix.pkgarch }} gnome-icon-theme libasound2-dev:${{ matrix.pkgarch }} libblkid1:${{ matrix.pkgarch }} libc-dev:${{ matrix.pkgarch }} libc6-dev:${{ matrix.pkgarch }} libcairo2-dev:${{ matrix.pkgarch }} libcups2:${{ matrix.pkgarch }} libegl1-mesa-dev:${{ matrix.pkgarch }} libexpat1-dev:${{ matrix.pkgarch }} libfontconfig1-dev:${{ matrix.pkgarch }} libfuse2:${{ matrix.pkgarch }} libfreetype6-dev:${{ matrix.pkgarch }} libgdk-pixbuf2.0-dev:${{ matrix.pkgarch }} libglib2.0-dev:${{ matrix.pkgarch }} libgtk-3-dev:${{ matrix.pkgarch }} libgtk-3-0:${{ matrix.pkgarch }} libgtk-3-common:${{ matrix.pkgarch }} libncurses-dev:${{ matrix.pkgarch }} libpango1.0-dev:${{ matrix.pkgarch }} libpcre3-dev:${{ matrix.pkgarch }} libpulse-dev:${{ matrix.pkgarch }} libpulse0:${{ matrix.pkgarch }} libpulse-mainloop-glib0:${{ matrix.pkgarch }} librest-0.7-0:${{ matrix.pkgarch }} libsm-dev:${{ matrix.pkgarch }} libsm6:${{ matrix.pkgarch }} libsndfile1-dev:$ARCH libsndfile1:${{ matrix.pkgarch }} libssl-dev:${{ matrix.pkgarch }} libudev-dev:${{ matrix.pkgarch }} libuuid1:${{ matrix.pkgarch }} libxft-dev:${{ matrix.pkgarch }} linux-libc-dev:${{ matrix.pkgarch }} zlib1g-dev:${{ matrix.pkgarch }}
+          sudo apt install -y --allow-downgrades libpcre3=2:8.38-3.1 libpcre16-3=2:8.38-3.1 libpcre32-3=2:8.38-3.1
+          sudo apt install -y adwaita-icon-theme gnome-icon-theme libasound2-dev:${{ matrix.pkgarch }} libfuse2:${{ matrix.pkgarch }} libgtk-3-dev:${{ matrix.pkgarch }} libncurses-dev:${{ matrix.pkgarch }} libpulse-dev:${{ matrix.pkgarch }} libssl-dev:${{ matrix.pkgarch }} libudev-dev:${{ matrix.pkgarch }}
 
       - name: Prepare toolchain
         if: ${{ matrix.arch != 'i686' && matrix.arch != 'x86_64' }}
@@ -84,6 +85,18 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v2
+
+      - name: Checkout smooth
+        uses: actions/checkout@v2
+        with:
+          repository: enzo1982/smooth
+          path: smooth
+
+      - name: Checkout BoCA
+        uses: actions/checkout@v2
+        with:
+          repository: enzo1982/BoCA
+          path: boca
 
       - name: Build AppImage
         env:

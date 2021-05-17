@@ -151,13 +151,17 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.5 (April 2021)
+	Version 1.1.5 (Mai 2021)
 
 		- Verbesserungen
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Verbesserung der Geschwindigkeit bei der DSP-Verarbeitung um bis zu 70%
 			- Einstellung für Frequenzbandbreite zum FDK-AAC-Konfigurationsdialog hinzugefügt
+			- Option zum Umschalten der Protokollierung vollständiger Pfade in Protokolldateien hinzugefügt
+			- Unterstützung für Shift_JIS kodierten CD-Text hinzugefügt
+			- Unterstützung für Ensemble- und Satz-Felder in Vorbis Comment und APEv2-Tags hinzugefügt
+			- Unterstützung für zusätzliche URL-Felder in APEv2-Tags hinzugefügt
 			- Feld für Medienart zum Tag-Editor hinzugefügt
 
 		- Behobene Fehler
@@ -166,9 +170,14 @@ Geschichte
 			- Gelegentliche Abstürze bei der Auswahl von Kodierer-Unterformaten über das Menü "Kodierung starten mit" behoben
 			- Problem mit um einige Sekunden versetzten Kapitelmarken bei Verwendung von DSP-Verarbeitung behoben
 			- Problem mit nicht funktionierendem Player bei Verwendung bestimmter Kombinationen von DSP-Filtern behoben
+			- Inkompatibilität von mit FDK-AAC erzeugten HE- und HEv2-AAC-Dateien mit iTunes behoben
+			- Fehlerhafte Dekodierung von FLAC-Dateien mit unbekannter Länge behoben
+			- Störgeräusche beim Dekodieren von Transienten in einigen Vorbis-Dateien behoben
 			- Mögliche Abstürze beim Dekodieren von Opus-Dateien behoben
 			- Mögliche Abstürze bei fehlgeschlagenem Setup des WMA-Kodierers behoben
 			- Seltene Abstürze in LAME-Kodierer-Komponente behoben
+			- Absturz beim Lesen von ungültigen CD-Text Genre-IDs behoben
+			- Problem beim Rippen mit negativem Offset behoben
 			- Problem mit dem Auswerfen von CDs unter macOS behoben
 			- Absturz beim Beenden von fre:ac über das Dock unter macOS behoben
 			- Grafikfehler und Abstürze beim Beenden bei Ausführung in einer Wayland-Sitzung behoben
@@ -178,15 +187,17 @@ Geschichte
 		- Aktualisierte Codecs
 
 			- FFmpeg auf Version 4.4 aktualisiert
-			- Monkey's Audio auf Version 6.15 aktualisiert
+			- Monkey's Audio auf Version 6.23 aktualisiert
 			- Tom's Audiokompressor auf Version 2.3.1 aktualisiert
-			- mpg123 auf Version 1.26.5 aktualisiert
+			- mpg123 auf Version 1.27.2 aktualisiert
+			- libfdk-aac auf Version 2.0.2 aktualisiert
 			- libsndfile auf Version 1.0.31 aktualisiert
 			- libsamplerate auf Version 0.2.1 aktualisiert
 
-		- Neue Übersetzungen
+		- Neue und aktualisierte Übersetzungen
 
 			- Persische Übersetzung hinzugefügt
+			- Norwegische Übersetzung aktualisiert
 
 	Version 1.1.4 (Februar 2021)
 
@@ -612,7 +623,7 @@ Besonderen Dank
 			   Jan Arni Jacobsen (Dänisch),
 			   Mikael Hiort af Ornäs und Anton Mjörnebrant (Schwedisch),
 			   Peter Krajcár und Miro Babinsky (Slowakisch),
-			   Andreas Normann Aanonsen (Norwegian),
+			   Andreas Normann Aanonsen und Cato Grytten (Norwegian),
 			   Vincent Rateau (Esperanto),
 			   Cako (Türkisch),
 			   Naglis Jonaitis (Litauisch),

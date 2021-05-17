@@ -152,13 +152,17 @@ Requirements
 History
 -------
 
-	Version 1.1.5 (April 2021)
+	Version 1.1.5 (May 2021)
 
 		- Improvements
 
 			- improved support for languages written from right to left
 			- improved DSP processing performance by up to 70%
 			- added frequency bandwidth setting to FDK-AAC encoder configuration dialog
+			- added an option to toggle logging of complete paths in log files
+			- added support for reading Shift_JIS encoded CD-Text
+			- added support for ensemble and movement fields in Vorbis Comment and APEv2 tags
+			- added support for additional URL fields in APEv2 tags
 			- added media type field to tag editor
 
 		- Bug fixes
@@ -167,9 +171,14 @@ History
 			- fixed occasional crashes when selecting codec subformat using the "Start encoding with" menu
 			- fixed chapter marks being offset by a few seconds when using DSP processing
 			- fixed playback not working when using certain combinations of DSP processors
+			- fixed incompatibility of FDK-AAC encoded HE and HEv2 AAC files with iTunes
+			- fixed issue decoding FLAC files with unknown length
+			- fixed glitches decoding transients in some Vorbis files
 			- fixed possible crashes when decoding Opus files
 			- fixed possible crashes when failing to configure WMA encoder
 			- fixed rare crashes in LAME encoder component
+			- fixed crash when reading malformed CD-Text genre IDs
+			- fixed failure ripping with negative read offset
 			- fixed disc eject not working on macOS
 			- fixed crash when closing fre:ac via dock command on macOS
 			- fixed UI glitches and crashes on exit when running in a Wayland session
@@ -179,15 +188,17 @@ History
 		- Updated codecs
 
 			- updated FFmpeg to version 4.4
-			- updated Monkey's Audio to version 6.15
+			- updated Monkey's Audio to version 6.23
 			- updated Tom's Audiokompressor to version 2.3.1
-			- updated mpg123 to version 1.26.5
+			- updated mpg123 to version 1.27.2
+			- updated libfdk-aac to version 2.0.2
 			- updated libsndfile to version 1.0.31
 			- updated libsamplerate to version 0.2.1
 
-		- New translations
+		- New and updated translations
 
 			- added Persian translation
+			- updated Norwegian translation
 
 	Version 1.1.4 (February 2021)
 
@@ -613,7 +624,7 @@ Special thanks to
 			   Jan Arni Jacobsen (Danish),
 			   Mikael Hiort af Ornäs and Anton Mjoernebrant (Swedish),
 			   Peter Krajcar and Miro Babinsky (Slovak),
-			   Andreas Normann Aanonsen (Norwegian),
+			   Andreas Normann Aanonsen and Cato Grytten (Norwegian),
 			   Vincent Rateau (Esperanto),
 			   Cako (Turkish),
 			   Naglis Jonaitis (Lithuanian),

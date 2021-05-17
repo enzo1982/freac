@@ -292,8 +292,7 @@ Void freac::ConfigureEncoders::ConfigureEncoder()
 
 	if (component != NIL)
 	{
-		if (ConfigComponentDialog(component).ShowDialog() != Error()) onChangeComponentSettings.Emit(encoderID);
-		else							      BoCA::Utilities::InfoMessage("No configuration dialog available for:\n\n%1", component->GetName());
+		if (ConfigComponentDialog(component).ShowDialog() == Error()) BoCA::Utilities::InfoMessage("No configuration dialog available for:\n\n%1", component->GetName());
 
 		boca.DeleteComponent(component);
 	}

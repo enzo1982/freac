@@ -11,13 +11,13 @@
   "sources": [
     {
         "type": "archive",
-        "url": "https://freac.org/patches/MAC_SDK_615.zip",
-        "sha256": "937944eadf0ab59702d54ee79f7a820a881c3a526ceaa784154f273eb568a1a0",
+        "url": "https://freac.org/patches/MAC_SDK_623.zip",
+        "sha256": "79ae4187944716b6de18852f24bb7a71607a8b89b269aba778850537353c9316",
         "strip-components": 0
     },
     {
         "type": "patch",
-        "path": "mac-sdk-6.15-gcc.patch"
+        "path": "mac-sdk-6.23-gcc.patch"
     }
   ]
 }

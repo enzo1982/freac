@@ -179,8 +179,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	if (!ScanForProgramOption("--encoder=%VALUE", &encoderID)) ScanForProgramOption("-e %VALUE", &encoderID);
 	if (!ScanForProgramOption("--help=%VALUE",    &helpenc))   ScanForProgramOption("-h %VALUE", &helpenc);
-								   ScanForProgramOption("-d %VALUE", &outputFolder);
-								   ScanForProgramOption("-o %VALUE", &outputFile);
+
+	ScanForProgramOption("-d %VALUE", &outputFolder);
+	ScanForProgramOption("-o %VALUE", &outputFile);
+
 	if (!ScanForProgramOption("--pattern=%VALUE", &pattern))   ScanForProgramOption("-p %VALUE", &pattern);
 
 	ScanForProgramOption("--threads=%VALUE", &numberOfThreads);
@@ -312,10 +314,11 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	/* Set config values.
 	 */
 				    config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, String(encoderID).Append("-enc"));
+				    config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Directory(outputFolder));
 
 				    config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, outputFile);
+
 	if (pattern	    != NIL) config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
-				    config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Directory(outputFolder));
 
 	if (enableSuperFast	  ) config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, True);
 	if (numberOfThreads != NIL) config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, numberOfThreads.ToInt());
