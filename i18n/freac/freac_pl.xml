@@ -1377,6 +1377,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Zapisuj dzienniki zdarzeń konwersji wraz z plikami audio</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Tylko dzienniki zdarzeń zgrywania CD</entry>
 	  <entry id="104112" string="Filename pattern">Wzór nazw plików</entry>
+	  <entry id="104113" string="Log complete file paths">Zapisuj pełne ścieżki plików w dzienniku</entry>
 	</section>
       </section>
 
