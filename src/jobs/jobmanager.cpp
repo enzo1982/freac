@@ -46,7 +46,7 @@ freac::JobManager::JobManager()
 
 freac::JobManager::~JobManager()
 {
-	exitThread = True;
+	Threads::Access::Set(exitThread, True);
 
 	/* Wait for manager thread to exit.
 	 */
@@ -67,7 +67,7 @@ Void freac::JobManager::ManagerThread()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
 
-	while (!exitThread)
+	while (!Threads::Access::Value(exitThread))
 	{
 		const Array<Job *>	&scheduled = Job::GetScheduledJobs();
 		const Array<Job *>	&planned   = Job::GetPlannedJobs();

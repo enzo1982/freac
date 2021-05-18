@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -35,16 +35,16 @@ namespace freac
 	class Converter
 	{
 		private:
-			Bool	 conversionFinished;
+			Threads::Semaphore	 finishedSignal;
 
-			Bool	 IsAnyTrackLocked(const Array<BoCA::Track> &) const;
+			Bool			 IsAnyTrackLocked(const Array<BoCA::Track> &) const;
 		public:
-				 Converter();
-				~Converter();
+						 Converter();
+						~Converter();
 
-			Void	 Convert(const Array<BoCA::Track> &, Bool = False, Bool = True);
+			Void			 Convert(const Array<BoCA::Track> &, Bool = False, Bool = True);
 		slots:
-			Void	 OnFinishJob();
+			Void			 OnFinishJob();
 	};
 };
 

@@ -132,13 +132,16 @@ Error freac::JobAddFiles::Perform()
 		 */
 		if (workers.Length() == 0) break;
 
-		/* Process next result.
+		/* Check for finished worker.
 		 */
-		if (workers.GetFirst()->IsReady())
+		JobAddFilesWorker	*worker = workers.GetFirst();
+
+		if (worker->IsReady())
 		{
-			/* Get next worker and check for error.
+			/* Remove worker from queue and check for error.
 			 */
-			JobAddFilesWorker	*worker = workers.GetFirst();
+			workers.RemoveNth(0);
+			worker->Wait();
 
 			if (worker->GetErrorState()) errors.Add(worker->GetErrorString());
 
@@ -173,9 +176,6 @@ Error freac::JobAddFiles::Perform()
 
 			/* Delete worker.
 			 */
-			workers.RemoveNth(0);
-			worker->Wait();
-
 			delete worker;
 		}
 	}
