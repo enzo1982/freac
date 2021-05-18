@@ -182,6 +182,7 @@ Geschichte
 			- Absturz beim Beenden von fre:ac über das Dock unter macOS behoben
 			- Grafikfehler und Abstürze beim Beenden bei Ausführung in einer Wayland-Sitzung behoben
 			- Probleme mit dem Schließen von Popupmenüs und Dropdownlisten auf nicht-Windows Plattformen behoben
+			- Unzuverlässiges Drag & Drop-Verhalten unter X11-basierten Systemen behoben
 			- Problem mit dem Windows Online-Updater in der 64 Bit-Version behoben
 
 		- Aktualisierte Codecs
