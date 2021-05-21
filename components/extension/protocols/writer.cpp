@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -16,14 +16,30 @@
 
 using namespace smooth::IO;
 
-Array<String>	 BoCA::ProtocolWriter::fileNames;
-Array<String>	 BoCA::ProtocolWriter::fileHeaders;
+Array<BoCA::ProtocolData>	 BoCA::ProtocolWriter::protocolData;
+Int				 BoCA::ProtocolWriter::instanceCount = 0;
 
-Array<String>	 BoCA::ProtocolWriter::copyNames;
+BoCA::ProtocolData::ProtocolData()
+{
+	conversionID = -1;
+
+	fileStream   = NIL;
+	copyStream   = NIL;
+
+	trackList    = NIL;
+}
+
+BoCA::ProtocolData::~ProtocolData()
+{
+	/* Close stream handles.
+	 */
+	if (fileStream != NIL) delete fileStream;
+	if (copyStream != NIL) delete copyStream;
+}
 
 BoCA::ProtocolWriter::ProtocolWriter()
 {
-	trackList = NIL;
+	if (Threads::Access::Increment(instanceCount) > 1) return;
 
 	/* Connect slots.
 	 */
@@ -34,10 +50,14 @@ BoCA::ProtocolWriter::ProtocolWriter()
 
 	engine->onStartConversion.Connect(&ProtocolWriter::OnStartConversion, this);
 	engine->onSingleFileConversion.Connect(&ProtocolWriter::OnSingleFileConversion, this);
+	engine->onFinishConversion.Connect(&ProtocolWriter::OnFinishConversion, this);
+	engine->onCancelConversion.Connect(&ProtocolWriter::OnFinishConversion, this);
 }
 
 BoCA::ProtocolWriter::~ProtocolWriter()
 {
+	if (Threads::Access::Decrement(instanceCount) > 0) return;
+
 	/* Disconnect slots.
 	 */
 	Protocol::onUpdateProtocolList.Disconnect(&ProtocolWriter::OnUpdateProtocolList, this);
@@ -47,14 +67,35 @@ BoCA::ProtocolWriter::~ProtocolWriter()
 
 	engine->onStartConversion.Disconnect(&ProtocolWriter::OnStartConversion, this);
 	engine->onSingleFileConversion.Disconnect(&ProtocolWriter::OnSingleFileConversion, this);
+	engine->onFinishConversion.Disconnect(&ProtocolWriter::OnFinishConversion, this);
+	engine->onCancelConversion.Disconnect(&ProtocolWriter::OnFinishConversion, this);
 }
 
 Void BoCA::ProtocolWriter::OnUpdateProtocolList()
 {
-	/* Format protocol header.
+	/* Check whether new protocol was added.
 	 */
 	Protocol	*protocol = Protocol::Get().GetLast();
+	Int		 index	  = Int64(protocol) & 0xFFFFFFFF;
 
+	if (protocol == NIL || protocolData.Get(index).fileName != NIL) return;
+
+	/* Add or update protocol data.
+	 */
+	if (protocolData.Length() > 0 && protocolData.GetLast().conversionID >= 0)
+	{
+		ProtocolData	 data = protocolData.GetLast();
+
+		protocolData.RemoveNth(protocolData.Length() - 1);
+		protocolData.Add(data, index);
+	}
+	else
+	{
+		protocolData.Add(ProtocolData(), index);
+	}
+
+	/* Format protocol header.
+	 */
 	FormatHeader(protocol);
 
 	/* Save protocol.
@@ -66,7 +107,9 @@ Void BoCA::ProtocolWriter::OnUpdateProtocolList()
 	/* Check whether to save an additional copy
 	 * of conversion logs with the audio files.
 	 */
-	if (config->GetIntValue(ConfigureProtocols::ConfigID, "SaveConversionLogsWithFiles", False) && trackList != NIL)
+	ProtocolData	&data = protocolData.GetReference(index);
+
+	if (config->GetIntValue(ConfigureProtocols::ConfigID, "SaveConversionLogsWithFiles", False) && data.trackList != NIL)
 	{
 		Bool	 createAdditionalCopy = True;
 
@@ -76,7 +119,7 @@ Void BoCA::ProtocolWriter::OnUpdateProtocolList()
 		{
 			createAdditionalCopy = False;
 
-			foreach (const Track &track, *trackList)
+			foreach (const Track &track, *data.trackList)
 			{
 				if (track.isCDTrack) { createAdditionalCopy = True; break; }
 			}
@@ -85,48 +128,71 @@ Void BoCA::ProtocolWriter::OnUpdateProtocolList()
 		/* Save additional log copy.
 		 */
 		if (createAdditionalCopy) SaveProtocol(protocol, GetAdditionalCopyName(protocol));
-
-		trackList      = NIL;
-		singleFileName = NIL;
 	}
 }
 
 Void BoCA::ProtocolWriter::OnUpdateProtocol(const String &name)
 {
-	/* Check if there is a file name associated with this protocol.
+	/* Check if there is a file stream associated with this protocol.
 	 */
 	Protocol	*protocol = Protocol::Get(name);
 
 	Int		 index	  = Int64(protocol) & 0xFFFFFFFF;
-	String		 fileName = fileNames.Get(index);
-	String		 copyName = copyNames.Get(index);
+	ProtocolData	&data	  = protocolData.GetReference(index);
 
-	if (fileName == NIL && copyName == NIL) return;
+	if (data.fileStream == NIL && data.copyStream == NIL) return;
 
 	/* Get new message and output it.
 	 */
 	String		 message  = protocol->GetMessages().GetLast();
 
-	if (fileName != NIL) OutputMessage(fileName, message);
-	if (copyName != NIL) OutputMessage(copyName, message);
+	if (data.fileStream != NIL) OutputMessage(data.fileStream, message);
+	if (data.copyStream != NIL) OutputMessage(data.copyStream, message);
 }
 
 Void BoCA::ProtocolWriter::OnStartConversion(Int conversionID, const Array<Track> &tracks)
 {
-	trackList = &tracks;
+	ProtocolData	 data;
+
+	data.conversionID = conversionID;
+	data.trackList	  = &tracks;
+
+	protocolData.Add(data);
 }
 
 Void BoCA::ProtocolWriter::OnSingleFileConversion(Int conversionID, const String &fileName)
 {
-	singleFileName = fileName;
+	foreach (ProtocolData &data, protocolData)
+	{
+		if (data.conversionID != conversionID) continue;
+
+		data.singleFileName = fileName;
+
+		break;
+	}
+}
+
+Void BoCA::ProtocolWriter::OnFinishConversion(Int conversionID)
+{
+	foreach (ProtocolData &data, protocolData)
+	{
+		if (data.conversionID != conversionID) continue;
+
+		if (data.fileStream != NIL) { delete data.fileStream; data.fileStream = NIL; }
+		if (data.copyStream != NIL) { delete data.copyStream; data.copyStream = NIL; }
+
+		data.trackList = NIL;
+
+		break;
+	}
 }
 
 String BoCA::ProtocolWriter::FormatHeader(const Protocol *protocol)
 {
-	Int	 index	    = Int64(protocol) & 0xFFFFFFFF;
-	String	 fileHeader = fileHeaders.Get(index);
+	Int		 index = Int64(protocol) & 0xFFFFFFFF;
+	ProtocolData	&data  = protocolData.GetReference(index);
 
-	if (fileHeader != NIL) return fileHeader;
+	if (data.fileHeader != NIL) return data.fileHeader;
 
 	/* Format new file header.
 	 */
@@ -139,34 +205,32 @@ String BoCA::ProtocolWriter::FormatHeader(const Protocol *protocol)
 	Application	*app		 = Application::Get();
 	DateTime	 date		 = DateTime::Current();
 
-	fileHeader.Append(protocol->GetName()).Append(newLine)
-		  .Append(newLine)
-		  .Append("Client:  ").Append(app->getScreenName.Call()).Append(newLine)
-		  .Append("Version: ").Append(app->getClientVersion.Call()).Append(" (").Append(architecture).Append(")").Append(newLine).Append(newLine)
-		  .Append("System:  ").Append(operatingSystem).Append(newLine)
-		  .Append("CPU:     ").Append(cpuModel).Append(newLine)
-		  .Append("RAM:     ").Append(installedRAM).Append(newLine).Append(newLine)
-		  .Append("Date:    ").Append(String::FromInt(date.GetYear())).Append("-")
-				      .Append(date.GetMonth()  < 10 ? "0" : NIL).Append(String::FromInt(date.GetMonth())).Append("-")
-				      .Append(date.GetDay()    < 10 ? "0" : NIL).Append(String::FromInt(date.GetDay())).Append(newLine)
-		  .Append("Time:    ").Append(date.GetHour()   < 10 ? "0" : NIL).Append(String::FromInt(date.GetHour())).Append(":")
-				      .Append(date.GetMinute() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMinute())).Append(":")
-				      .Append(date.GetSecond() < 10 ? "0" : NIL).Append(String::FromInt(date.GetSecond())).Append(newLine)
-		  .Append(newLine)
-		  .Append("hh:mm:ss.fff").Append(newLine)
-		  .Append("------------").Append(newLine);
+	data.fileHeader.Append(protocol->GetName()).Append(newLine)
+		       .Append(newLine)
+		       .Append("Client:  ").Append(app->getScreenName.Call()).Append(newLine)
+		       .Append("Version: ").Append(app->getClientVersion.Call()).Append(" (").Append(architecture).Append(")").Append(newLine).Append(newLine)
+		       .Append("System:  ").Append(operatingSystem).Append(newLine)
+		       .Append("CPU:     ").Append(cpuModel).Append(newLine)
+		       .Append("RAM:     ").Append(installedRAM).Append(newLine).Append(newLine)
+		       .Append("Date:    ").Append(String::FromInt(date.GetYear())).Append("-")
+					   .Append(date.GetMonth()  < 10 ? "0" : NIL).Append(String::FromInt(date.GetMonth())).Append("-")
+					   .Append(date.GetDay()    < 10 ? "0" : NIL).Append(String::FromInt(date.GetDay())).Append(newLine)
+		       .Append("Time:    ").Append(date.GetHour()   < 10 ? "0" : NIL).Append(String::FromInt(date.GetHour())).Append(":")
+					   .Append(date.GetMinute() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMinute())).Append(":")
+					   .Append(date.GetSecond() < 10 ? "0" : NIL).Append(String::FromInt(date.GetSecond())).Append(newLine)
+		       .Append(newLine)
+		       .Append("hh:mm:ss.fff").Append(newLine)
+		       .Append("------------").Append(newLine);
 
-	fileHeaders.Add(fileHeader, index);
-
-	return fileHeader;
+	return data.fileHeader;
 }
 
 String BoCA::ProtocolWriter::GetProtocolFileName(const Protocol *protocol)
 {
-	Int	 index	  = Int64(protocol) & 0xFFFFFFFF;
-	String	 fileName = fileNames.Get(index);
+	Int		 index = Int64(protocol) & 0xFFFFFFFF;
+	ProtocolData	&data  = protocolData.GetReference(index);
 
-	if (fileName != NIL) return fileName;
+	if (data.fileName != NIL) return data.fileName;
 
 	const Config	*config = Config::Get();
 
@@ -177,31 +241,30 @@ String BoCA::ProtocolWriter::GetProtocolFileName(const Protocol *protocol)
 
 	if (!logsFolder.EndsWith(Directory::GetDirectoryDelimiter())) logsFolder.Append(Directory::GetDirectoryDelimiter());
 
-	fileName = String(logsFolder).Append("[<date> <time>] <logname>.log");
+	data.fileName	= String(logsFolder).Append("[<date> <time>] <logname>.log");
 
-	fileName.Replace("<date>", String::FromInt(date.GetYear()).Append(date.GetMonth() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMonth())).Append(date.GetDay() < 10 ? "0" : NIL).Append(String::FromInt(date.GetDay())));
-	fileName.Replace("<time>", String(date.GetHour() < 10 ? "0" : NIL).Append(String::FromInt(date.GetHour())).Append(date.GetMinute() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMinute())).Append(date.GetSecond() < 10 ? "0" : NIL).Append(String::FromInt(date.GetSecond())));
-	fileName.Replace("<logname>", Utilities::ReplaceIncompatibleCharacters(protocol->GetName()));
+	data.fileName.Replace("<date>", String::FromInt(date.GetYear()).Append(date.GetMonth() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMonth())).Append(date.GetDay() < 10 ? "0" : NIL).Append(String::FromInt(date.GetDay())));
+	data.fileName.Replace("<time>", String(date.GetHour() < 10 ? "0" : NIL).Append(String::FromInt(date.GetHour())).Append(date.GetMinute() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMinute())).Append(date.GetSecond() < 10 ? "0" : NIL).Append(String::FromInt(date.GetSecond())));
+	data.fileName.Replace("<logname>", Utilities::ReplaceIncompatibleCharacters(protocol->GetName()));
 
-	fileName = Utilities::NormalizeFileName(fileName);
+	data.fileName	= Utilities::NormalizeFileName(data.fileName);
+	data.fileStream	= new OutStream(STREAM_FILE, Utilities::CreateDirectoryForFile(data.fileName), OS_REPLACE);
 
-	fileNames.Add(fileName, index);
-
-	return fileName;
+	return data.fileName;
 }
 
 String BoCA::ProtocolWriter::GetAdditionalCopyName(const Protocol *protocol)
 {
-	Int	 index	  = Int64(protocol) & 0xFFFFFFFF;
-	String	 copyName = copyNames.Get(index);
+	Int		 index = Int64(protocol) & 0xFFFFFFFF;
+	ProtocolData	&data  = protocolData.GetReference(index);
 
-	if (copyName != NIL) return copyName;
+	if (data.copyName != NIL) return data.copyName;
 
 	const Config	*config = Config::Get();
 
 	/* Find folder for additional copy.
 	 */
-	const Track	&firstTrack	 = trackList->GetFirst();
+	const Track	&firstTrack	 = data.trackList->GetFirst();
 	String		 inputFolder	 = File(firstTrack.fileName).GetFilePath();
 	String		 outputFolder	 = Utilities::GetAbsolutePathName(config->GetStringValue("Settings", "EncoderOutDir", NIL));
 	Bool		 writeToInputDir = config->GetIntValue("Settings", "WriteToInputDirectory", False);
@@ -214,39 +277,39 @@ String BoCA::ProtocolWriter::GetAdditionalCopyName(const Protocol *protocol)
 	 */
 	String	 defaultPattern	 = String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<albumartist> - <album>");
 
-	copyName = String(outputFolder).Append(config->GetStringValue(ConfigureProtocols::ConfigID, "ConversionLogPattern", defaultPattern)).Append(".log");
+	data.copyName = String(outputFolder).Append(config->GetStringValue(ConfigureProtocols::ConfigID, "ConversionLogPattern", defaultPattern)).Append(".log");
 
-	if (singleFileName != NIL)
+	if (data.singleFileName != NIL)
 	{
-		copyName = singleFileName.Head(singleFileName.FindLast(".")).Append(".log");
+		data.copyName = data.singleFileName.Head(data.singleFileName.FindLast(".")).Append(".log");
 	}
-	else if (copyName != NIL)
+	else if (data.copyName != NIL)
 	{
 		I18n		*i18n = I18n::Get();
 
-		if (copyName.Trim() == NIL) copyName = defaultPattern;
+		if (data.copyName.Trim() == NIL) data.copyName = defaultPattern;
 
 		const Info	&info = firstTrack.GetInfo();
 		DateTime	 date = DateTime::Current();
 
-		copyName.Replace("<artist>", Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
-		copyName.Replace("<album>", Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
-		copyName.Replace("<genre>", Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
-		copyName.Replace("<year>", Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
+		data.copyName.Replace("<artist>", Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
+		data.copyName.Replace("<album>", Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
+		data.copyName.Replace("<genre>", Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
+		data.copyName.Replace("<year>", Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
 
-		copyName.Replace("<date>", String::FromInt(date.GetYear()).Append(date.GetMonth() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMonth())).Append(date.GetDay() < 10 ? "0" : NIL).Append(String::FromInt(date.GetDay())));
-		copyName.Replace("<time>", String(date.GetHour() < 10 ? "0" : NIL).Append(String::FromInt(date.GetHour())).Append(date.GetMinute() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMinute())).Append(date.GetSecond() < 10 ? "0" : NIL).Append(String::FromInt(date.GetSecond())));
-		copyName.Replace("<logname>", Utilities::ReplaceIncompatibleCharacters(protocol->GetName()));
+		data.copyName.Replace("<date>", String::FromInt(date.GetYear()).Append(date.GetMonth() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMonth())).Append(date.GetDay() < 10 ? "0" : NIL).Append(String::FromInt(date.GetDay())));
+		data.copyName.Replace("<time>", String(date.GetHour() < 10 ? "0" : NIL).Append(String::FromInt(date.GetHour())).Append(date.GetMinute() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMinute())).Append(date.GetSecond() < 10 ? "0" : NIL).Append(String::FromInt(date.GetSecond())));
+		data.copyName.Replace("<logname>", Utilities::ReplaceIncompatibleCharacters(protocol->GetName()));
 
 		/* Replace <disc> pattern.
 		 */
-		copyName.Replace("<disc>", String::FromInt(info.disc < 0 ? 0 : info.disc));
+		data.copyName.Replace("<disc>", String::FromInt(info.disc < 0 ? 0 : info.disc));
 
 		for (Int i = 1; i <= 4; i++)
 		{
 			String	 pattern = String("<disc(").Append(String::FromInt(i)).Append(")>");
 
-			copyName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
+			data.copyName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
 		}
 
 		/* Replace other text fields.
@@ -258,54 +321,72 @@ String BoCA::ProtocolWriter::GetAdditionalCopyName(const Protocol *protocol)
 
 			if (value == NIL) continue;
 
-			if	(key == INFO_ALBUMARTIST) copyName.Replace("<albumartist>", Utilities::ReplaceIncompatibleCharacters(value));
-			else if	(key == INFO_CONDUCTOR)	  copyName.Replace("<conductor>", Utilities::ReplaceIncompatibleCharacters(value));
-			else if	(key == INFO_COMPOSER)	  copyName.Replace("<composer>", Utilities::ReplaceIncompatibleCharacters(value));
+			if	(key == INFO_ALBUMARTIST) data.copyName.Replace("<albumartist>", Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_CONDUCTOR)	  data.copyName.Replace("<conductor>", Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_COMPOSER)	  data.copyName.Replace("<composer>", Utilities::ReplaceIncompatibleCharacters(value));
 		}
 
-		if (info.artist.Length() > 0) copyName.Replace("<albumartist>", Utilities::ReplaceIncompatibleCharacters(info.artist));
+		if (info.artist.Length() > 0) data.copyName.Replace("<albumartist>", Utilities::ReplaceIncompatibleCharacters(info.artist));
 
-		copyName.Replace("<albumartist>", Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
-		copyName.Replace("<conductor>", Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
-		copyName.Replace("<composer>", Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
+		data.copyName.Replace("<albumartist>", Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
+		data.copyName.Replace("<conductor>", Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
+		data.copyName.Replace("<composer>", Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
 	}
 	else
 	{
-		copyName = protocol->GetName();
+		data.copyName = protocol->GetName();
 	}
 
-	copyName = Utilities::NormalizeFileName(copyName);
+	data.copyName	= Utilities::NormalizeFileName(data.copyName);
+	data.copyStream	= new OutStream(STREAM_FILE, Utilities::CreateDirectoryForFile(data.copyName), OS_REPLACE);
 
-	copyNames.Add(copyName, index);
-
-	return copyName;
+	return data.copyName;
 }
 
 Void BoCA::ProtocolWriter::SaveProtocol(const Protocol *protocol, const String &fileName)
 {
-	/* Create file and output header.
+	/* Check whether to use an existing stream.
 	 */
-	OutStream		 out(STREAM_FILE, Utilities::CreateDirectoryForFile(fileName), OS_REPLACE);
+	Int		 index	  = Int64(protocol) & 0xFFFFFFFF;
+	ProtocolData	&data	  = protocolData.GetReference(index);
+
+	if	(fileName == data.fileName) SaveProtocol(protocol, data.fileStream);
+	else if (fileName == data.copyName) SaveProtocol(protocol, data.copyStream);
+
+	/* Save log to a new file.
+	 */
+	if (fileName != data.fileName && fileName != data.copyName)
+	{
+		OutStream	 fileStream(STREAM_FILE, Utilities::CreateDirectoryForFile(fileName), OS_REPLACE);
+
+		SaveProtocol(protocol, &fileStream);
+	}
+}
+
+Void BoCA::ProtocolWriter::SaveProtocol(const Protocol *protocol, OutStream *out)
+{
+	/* Write log header.
+	 */
 	String::OutputFormat	 outFormat("UTF-8");
 
-	out.OutputString(FormatHeader(protocol));
+	out->OutputString(FormatHeader(protocol));
 
-	/* Save log messages.
+	/* Write log messages.
 	 */
 	const Array<String>	&messages = protocol->GetMessages();
 
 	foreach (const String &message, messages)
 	{
-		out.OutputLine(message.SubString(0, 12).Append(" ").Append(message.Tail(message.Length() - 15)));
+		out->OutputLine(message.SubString(0, 12).Append(" ").Append(message.Tail(message.Length() - 15)));
 	}
 }
 
-Void BoCA::ProtocolWriter::OutputMessage(const String &fileName, const String &message)
+Void BoCA::ProtocolWriter::OutputMessage(OutStream *out, const String &message)
 {
 	/* Open file and output message.
 	 */
-	OutStream		 out(STREAM_FILE, fileName, OS_APPEND);
 	String::OutputFormat	 outFormat("UTF-8");
 
-	out.OutputLine(message.SubString(0, 12).Append(" ").Append(message.Tail(message.Length() - 15)));
+	out->OutputLine(message.SubString(0, 12).Append(" ").Append(message.Tail(message.Length() - 15)));
+	out->Flush();
 }
