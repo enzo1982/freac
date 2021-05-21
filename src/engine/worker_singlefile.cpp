@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -166,7 +166,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Verify input.
 	 */
-	if (!cancel && verify) VerifyInput(trackToConvert.fileName, verifier);
+	if (!Threads::Access::Value(cancel) && verify) VerifyInput(trackToConvert.fileName, verifier);
 
 	/* Get CRC checksums when ripping.
 	 */
@@ -202,7 +202,7 @@ Int freac::ConvertWorkerSingleFile::Convert()
 
 	/* Signal next chapter.
 	 */
-	if (!cancel)
+	if (!Threads::Access::Value(cancel))
 	{
 		encoder->SignalChapterChange();
 		encodedSamples += trackLength;

@@ -60,7 +60,7 @@ namespace freac
 			Void						 VerifyInput(const String &, Verifier *);
 
 			Void						 LogConversionStart(Decoder *, const String &, const String & = NIL, Bool = False) const;
-			Void						 LogConversionEnd(const String &, Int64, UnsignedInt32, const String &, const String &) const;
+			Void						 LogConversionEnd(const String &, Int64, UnsignedInt32, const String &, const String &);
 
 			virtual Int					 Convert();
 		public:
@@ -71,9 +71,9 @@ namespace freac
 			Int						 Cancel();
 			Int						 Quit();
 		accessors:
-			Bool						 IsIdle() const					{ return idle; }
-			Bool						 IsWaiting() const				{ return waiting; }
-			Bool						 IsError() const				{ return error; }
+			Bool						 IsIdle()					{ return Threads::Access::Value(idle); }
+			Bool						 IsWaiting()					{ return Threads::Access::Value(waiting); }
+			Bool						 IsError()					{ return Threads::Access::Value(error); }
 
 			Void						 SetLogName(const String &nLogName)		{ logName = nLogName; }
 
