@@ -72,19 +72,35 @@ Void freac::JobManager::ManagerThread()
 		const Array<Job *>	&scheduled = Job::GetScheduledJobs();
 		const Array<Job *>	&planned   = Job::GetPlannedJobs();
 
+		/* Check scheduled jobs;
+		 */
+		scheduled.LockForRead();
+
 		if (scheduled.Length() > 0)
 		{
 			AutoRelease	 autoRelease;
 
 			foreachreverse (Job *job, scheduled)
 			{
+				scheduled.Unlock();
+
 				/* Call the job's precheck method.
 				 */
 				if (job->RunPrecheck() != Success()) Object::DeleteObject(job);
+
+				scheduled.LockForRead();
 			}
+
+			scheduled.Unlock();
 
 			continue;
 		}
+
+		scheduled.Unlock();
+
+		/* Check planned jobs.
+		 */
+		planned.LockForRead();
 
 		if (planned.Length() > 0)
 		{
@@ -98,11 +114,28 @@ Void freac::JobManager::ManagerThread()
 
 				NonBlocking0<>(&Job::Run, job).Call();
 
-				while (planned.Get(job->GetHandle()) == job) S::System::System::Sleep(0);
+				/* Wait until job is removed from planned list.
+				 */
+				while (True)
+				{
+					if (planned.Get(job->GetHandle()) == NIL) break;
+
+					planned.Unlock();
+
+					S::System::System::Sleep(0);
+
+					planned.LockForRead();
+				}
 
 				break;
 			}
 		}
+
+		planned.Unlock();
+
+		/* Check finished jobs.
+		 */
+		finished.LockForRead();
 
 		if (finished.Length() > 0)
 		{
@@ -110,6 +143,9 @@ Void freac::JobManager::ManagerThread()
 
 			Bool	 enableConsole = config->GetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, Config::SettingsEnableConsoleDefault);
 			Bool	 displayErrors = config->GetIntValue(Config::CategorySettingsID, Config::SettingsDisplayErrorsID, Config::SettingsDisplayErrorsDefault);
+
+			finished.Unlock();
+			finished.LockForWrite();
 
 			foreachreverse (Job *job, finished)
 			{
@@ -136,10 +172,18 @@ Void freac::JobManager::ManagerThread()
 					continue;
 				}
 
+				finished.Unlock();
+
 				Object::DeleteObject(job);
+
+				finished.LockForWrite();
 			}
 		}
 
+		finished.Unlock();
+
+		/* Wait 100ms before checking jobs again.
+		 */
 		S::System::System::Sleep(100);
 	}
 }
