@@ -100,12 +100,12 @@ Voraussetzungen
 			- Windows XP/Vista/7/8.x/10
 			- macOS 10.5 Leopard oder neuer
 			- Linux (die meisten modernen Distributionen werden unterstützt)
-			- FreeBSD/PC-BSD (getestet unter FreeBSD 12.1)
+			- FreeBSD/PC-BSD (getestet unter FreeBSD 13.0)
 			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
 			- OpenBSD (getestet unter OpenBSD 5.3)
 			- Solaris (getestet unter Solaris 11)
 			- GNU Hurd (getestet unter Debian Sid)
-			- Haiku (getestet unter Haiku R1 Beta 1)
+			- Haiku (getestet unter Haiku R1 Beta 2)
 
 		Minimale Hardwarevoraussetzungen:
 			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 oder ARMv7-Prozessor
@@ -160,6 +160,7 @@ Geschichte
 			- Einstellung für Frequenzbandbreite zum FDK-AAC-Konfigurationsdialog hinzugefügt
 			- Option zum Umschalten der Protokollierung vollständiger Pfade in Protokolldateien hinzugefügt
 			- Unterstützung für Shift_JIS kodierten CD-Text hinzugefügt
+			- Unterstützung für das Schreiben von Album- und Track-Kommentaren in Cuesheets hinzugefügt
 			- Unterstützung für Ensemble- und Satz-Felder in Vorbis Comment und APEv2-Tags hinzugefügt
 			- Unterstützung für zusätzliche URL-Felder in APEv2-Tags hinzugefügt
 			- Feld für Medienart zum Tag-Editor hinzugefügt
@@ -176,6 +177,7 @@ Geschichte
 			- Mögliche Abstürze beim Dekodieren von Opus-Dateien behoben
 			- Mögliche Abstürze bei fehlgeschlagenem Setup des WMA-Kodierers behoben
 			- Seltene Abstürze in LAME-Kodierer-Komponente behoben
+			- Limitierung von aus ID3v2-Tags gelesenen Zeichenketten auf 1024 Zeichen behoben
 			- Absturz beim Lesen von ungültigen CD-Text Genre-IDs behoben
 			- Problem beim Rippen mit negativem Offset behoben
 			- Problem mit dem Auswerfen von CDs unter macOS behoben
