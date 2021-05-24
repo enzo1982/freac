@@ -150,6 +150,7 @@ Void freac::JobManager::ManagerThread()
 			foreachreverse (Job *job, finished)
 			{
 				finished.Remove(job->GetHandle());
+				finished.Unlock();
 
 				/* Check for errors and display error list if any.
 				 */
@@ -162,6 +163,8 @@ Void freac::JobManager::ManagerThread()
 						dialog.ShowDialog();
 					}
 
+					finished.LockForWrite();
+
 					continue;
 				}
 
@@ -169,10 +172,10 @@ Void freac::JobManager::ManagerThread()
 				 */
 				if (job->GetWarnings().Length() > 0 && !enableConsole)
 				{
+					finished.LockForWrite();
+
 					continue;
 				}
-
-				finished.Unlock();
 
 				Object::DeleteObject(job);
 
