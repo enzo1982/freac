@@ -11,13 +11,13 @@
   "sources": [
     {
         "type": "archive",
-        "url": "https://freac.org/patches/MAC_SDK_628.zip",
-        "sha256": "fc27750c4b2b98ee9422b140222be32c1a67a3b883e931ed020e6998728d8707",
+        "url": "https://freac.org/patches/MAC_SDK_629.zip",
+        "sha256": "af62c05d83c003c3af8772c01ca8796b8f2ac75a2f5ce1af183ab021cd7f3cf0",
         "strip-components": 0
     },
     {
         "type": "patch",
-        "path": "mac-sdk-6.28-gcc.patch"
+        "path": "mac-sdk-6.29-gcc.patch"
     }
   ]
 }

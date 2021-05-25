@@ -191,7 +191,7 @@ History
 		- Updated codecs
 
 			- updated FFmpeg to version 4.4
-			- updated Monkey's Audio to version 6.28
+			- updated Monkey's Audio to version 6.29
 			- updated Tom's Audiokompressor to version 2.3.1
 			- updated mpg123 to version 1.27.2
 			- updated libfdk-aac to version 2.0.2
