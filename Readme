@@ -154,6 +154,10 @@ History
 
 	Version 1.1.5 (May 2021)
 
+		- New features
+
+			- added support for AccurateRip verification
+
 		- Improvements
 
 			- improved support for languages written from right to left

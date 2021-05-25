@@ -21,6 +21,7 @@
         </p>
         <ul>
             <li>Support for MP3, MP4/AAC, Opus, FLAC and other formats</li>
+            <li>Integrated CD ripper with AccurateRip support</li>
             <li>Integrated player and tag editor</li>
             <li>Support for playlists, cue sheets and chapters</li>
             <li>Fast, multi-threaded conversion engine</li>

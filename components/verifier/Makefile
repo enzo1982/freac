@@ -4,11 +4,7 @@ FREAC_PATH = ../..
 
 include $(dir $(firstword $(MAKEFILE_LIST)))/$(FREAC_PATH)/Makefile-options
 
-FOLDERS = accuraterip donate langnotify notifier protocols tagedit
-
-ifeq ($(USE_V8),True)
-	FOLDERS += youtube
-endif
+FOLDERS = accuraterip
 
 .PHONY: $(FOLDERS)
 

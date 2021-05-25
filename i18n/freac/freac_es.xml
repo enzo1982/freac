@@ -1106,6 +1106,24 @@
       </section>
     </section>
 
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">Configurar AccurateRip</entry>
+	<entry id="70001" string="General settings">Configuración general</entry>
+	<entry id="70002" string="Enable AccurateRip">Habilitar AccurateRip</entry>
+	<entry id="70003" string="Database URL">URL de la base de datos</entry>
+	<entry id="70004" string="Cache">Caché</entry>
+	<entry id="70005" string="Enable cache">Habilitar caché</entry>
+	<entry id="70006" string="Expires after">Expira tras</entry>
+	<entry id="70007" string="%1 day(s)">%1 día(s)</entry>
+	<entry id="70008" string="%1 week(s)">%1 semana(s)</entry>
+	<entry id="70009" string="%1 month(s)">%1 mes(es)</entry>
+	<entry id="70010" string="%1 year(s)">%1 año(s)</entry>
+	<entry id="70011" string="never">nunca</entry>
+      </section>
+    </section>
+
     <section name="External">
       <entry id="80000" string="Downmix multi-channel audio to stereo">Mezcla de audio multicanal a estéreo</entry>
 

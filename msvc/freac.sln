@@ -28,6 +28,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension Notifier", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension LangNotify", "Extensions\freac Extension LangNotify\freac Extension LangNotify.vcxproj", "{3F283577-A0AA-4C1F-A933-D7A69773A0F8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Verifier AccurateRip", "Extensions\freac Verifier AccurateRip\freac Verifier AccurateRip.vcxproj", "{E7B21AC7-2FEC-4273-912E-81877D501814}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension AccurateRip", "Extensions\freac Extension AccurateRip\freac Extension AccurateRip.vcxproj", "{472A6D00-09B7-4361-8DAC-8505E79BAB13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -168,6 +172,30 @@ Global
 		{3F283577-A0AA-4C1F-A933-D7A69773A0F8}.Release|Win32.Build.0 = Release|Win32
 		{3F283577-A0AA-4C1F-A933-D7A69773A0F8}.Release|x64.ActiveCfg = Release|x64
 		{3F283577-A0AA-4C1F-A933-D7A69773A0F8}.Release|x64.Build.0 = Release|x64
+		{E7B21AC7-2FEC-4273-912E-81877D501814}.Debug|ARM.ActiveCfg = Debug|Win32
+		{E7B21AC7-2FEC-4273-912E-81877D501814}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{E7B21AC7-2FEC-4273-912E-81877D501814}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E7B21AC7-2FEC-4273-912E-81877D501814}.Debug|Win32.Build.0 = Debug|Win32
+		{E7B21AC7-2FEC-4273-912E-81877D501814}.Debug|x64.ActiveCfg = Debug|x64
+		{E7B21AC7-2FEC-4273-912E-81877D501814}.Debug|x64.Build.0 = Debug|x64
+		{E7B21AC7-2FEC-4273-912E-81877D501814}.Release|ARM.ActiveCfg = Release|Win32
+		{E7B21AC7-2FEC-4273-912E-81877D501814}.Release|ARM64.ActiveCfg = Release|Win32
+		{E7B21AC7-2FEC-4273-912E-81877D501814}.Release|Win32.ActiveCfg = Release|Win32
+		{E7B21AC7-2FEC-4273-912E-81877D501814}.Release|Win32.Build.0 = Release|Win32
+		{E7B21AC7-2FEC-4273-912E-81877D501814}.Release|x64.ActiveCfg = Release|x64
+		{E7B21AC7-2FEC-4273-912E-81877D501814}.Release|x64.Build.0 = Release|x64
+		{472A6D00-09B7-4361-8DAC-8505E79BAB13}.Debug|ARM.ActiveCfg = Debug|Win32
+		{472A6D00-09B7-4361-8DAC-8505E79BAB13}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{472A6D00-09B7-4361-8DAC-8505E79BAB13}.Debug|Win32.ActiveCfg = Debug|Win32
+		{472A6D00-09B7-4361-8DAC-8505E79BAB13}.Debug|Win32.Build.0 = Debug|Win32
+		{472A6D00-09B7-4361-8DAC-8505E79BAB13}.Debug|x64.ActiveCfg = Debug|x64
+		{472A6D00-09B7-4361-8DAC-8505E79BAB13}.Debug|x64.Build.0 = Debug|x64
+		{472A6D00-09B7-4361-8DAC-8505E79BAB13}.Release|ARM.ActiveCfg = Release|Win32
+		{472A6D00-09B7-4361-8DAC-8505E79BAB13}.Release|ARM64.ActiveCfg = Release|Win32
+		{472A6D00-09B7-4361-8DAC-8505E79BAB13}.Release|Win32.ActiveCfg = Release|Win32
+		{472A6D00-09B7-4361-8DAC-8505E79BAB13}.Release|Win32.Build.0 = Release|Win32
+		{472A6D00-09B7-4361-8DAC-8505E79BAB13}.Release|x64.ActiveCfg = Release|x64
+		{472A6D00-09B7-4361-8DAC-8505E79BAB13}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -178,6 +206,8 @@ Global
 		{A34E222F-1D9B-4801-8A9C-629C78707BED} = {BC255F5A-BE40-4FFF-954D-3B567D22513F}
 		{6345C470-0060-4971-9D94-A1F175DB090B} = {BC255F5A-BE40-4FFF-954D-3B567D22513F}
 		{3F283577-A0AA-4C1F-A933-D7A69773A0F8} = {BC255F5A-BE40-4FFF-954D-3B567D22513F}
+		{E7B21AC7-2FEC-4273-912E-81877D501814} = {BC255F5A-BE40-4FFF-954D-3B567D22513F}
+		{472A6D00-09B7-4361-8DAC-8505E79BAB13} = {BC255F5A-BE40-4FFF-954D-3B567D22513F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9B699F6B-4AE4-4B5C-AB3A-BA8A53444F5A}

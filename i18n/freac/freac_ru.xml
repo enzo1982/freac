@@ -1105,6 +1105,20 @@
       </section>
     </section>
 
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">Настроить АккуратРип</entry>
+	<entry id="70001" string="General settings">Основные настройки</entry>
+	<entry id="70004" string="Cache">Кэш</entry>
+	<entry id="70007" string="%1 day(s)">%1 день</entry>
+	<entry id="70008" string="%1 week(s)">%1 недел(я/и)</entry>
+	<entry id="70009" string="%1 month(s)">%1 месяц(a/ев)</entry>
+	<entry id="70010" string="%1 year(s)">%1 год</entry>
+	<entry id="70011" string="never">никогда</entry>
+      </section>
+    </section>
+
     <section name="External">
       <entry id="80000" string="Downmix multi-channel audio to stereo">Преобразовывать многоканальный звук в стерео</entry>
 

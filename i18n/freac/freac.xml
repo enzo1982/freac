@@ -723,6 +723,10 @@
 	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier"/>
+      </section>
+
       <section name="Extensions">
 	<entry id="15000" string="Notifications"/>
 	<entry id="15001" string="Logging"/>
@@ -1119,6 +1123,47 @@
       <section name="MP4">
 	<entry id="60000" string="Chapter format"/>
 	<entry id="60001" string="both"/>
+      </section>
+    </section>
+
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip"/>
+	<entry id="70001" string="General settings"/>
+	<entry id="70002" string="Enable AccurateRip"/>
+	<entry id="70003" string="Database URL"/>
+	<entry id="70004" string="Cache"/>
+	<entry id="70005" string="Enable cache"/>
+	<entry id="70006" string="Expires after"/>
+	<entry id="70007" string="%1 day(s)"/>
+	<entry id="70008" string="%1 week(s)"/>
+	<entry id="70009" string="%1 month(s)"/>
+	<entry id="70010" string="%1 year(s)"/>
+	<entry id="70011" string="never"/>
+	<entry id="70012" string="Drives"/>
+	<entry id="70013" string="Drive"/>
+	<entry id="70014" string="Offset configuration"/>
+	<entry id="70015" string="Offset in drive database"/>
+	<entry id="70016" string="Detected offset"/>
+	<entry id="70017" string="Configured offset"/>
+	<entry id="70018" string="Detect offset now"/>
+	<entry id="70019" string="not configured"/>
+	<entry id="70020" string="automatically configured"/>
+	<entry id="70021" string="configured by offset detection"/>
+	<entry id="70022" string="manually configured"/>
+	<entry id="70023" string="not present"/>
+	<entry id="70024" string="not detected"/>
+	<entry id="70025" string="disabled"/>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration"/>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?"/>
+	  <entry id="70052" string="Do not ask again"/>
+	  <entry id="70053" string="AccurateRip offset detection"/>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database."/>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
+	</section>
       </section>
     </section>
 

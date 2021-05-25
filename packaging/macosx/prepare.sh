@@ -55,6 +55,7 @@ cp -R $PREFIX/lib/freac/freac.extension.notifier freac.app/Contents/Resources/bo
 #cp -R $PREFIX/lib/freac/freac.extension.youtube freac.app/Contents/Resources/boca/
 
 cp $PREFIX/lib/freac/freac_extension_*.1.0.dylib freac.app/Contents/Resources/boca/
+cp $PREFIX/lib/freac/freac_verifier_*.1.0.dylib freac.app/Contents/Resources/boca/
 
 cp $PREFIX/lib/libcdio.dylib freac.app/Contents/Resources/cdio.dylib
 cp $PREFIX/lib/libcdio_cdda.dylib freac.app/Contents/Resources/cdio_cdda.dylib
