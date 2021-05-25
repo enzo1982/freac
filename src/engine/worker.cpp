@@ -680,7 +680,12 @@ Void freac::ConvertWorker::VerifyInput(const String &uri, Verifier *verifier)
 
 	/* Report error message if any.
 	 */
-	if (errorMessage != NIL) onReportError.Emit(errorMessage);
+	if (errorMessage != NIL)
+	{
+		onReportError.Emit(errorMessage);
+
+		Threads::Access::Set(error, True);
+	}
 }
 
 Void freac::ConvertWorker::LogConversionStart(Decoder *decoder, const String &uri, const String &outFile, Bool replace) const
@@ -805,7 +810,12 @@ Void freac::ConvertWorker::LogConversionEnd(const String &uri, Int64 trackLength
 
 	/* Report error message if any.
 	 */
-	if (errorMessage != NIL) onReportError.Emit(errorMessage);
+	if (errorMessage != NIL)
+	{
+		onReportError.Emit(errorMessage);
+
+		Threads::Access::Set(error, True);
+	}
 }
 
 Void freac::ConvertWorker::SetTrackToConvert(const BoCA::Track &nTrack)
