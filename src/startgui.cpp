@@ -1058,7 +1058,7 @@ Void freac::freacGUI::FillMenus()
 		for (Int i = 0; i < info->GetNumberOfDevices(); i++)
 		{
 			const Device	&device = info->GetNthDeviceInfo(i);
-			String		 name	= String(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision).Trim();
+			String		 name	= device.GetName();
 
 			menu_drives->AddEntry(name, &clicked_drive, i)->onAction.Connect(&freacGUI::ReadCD, this);
 			menu_seldrive->AddEntry(name, &config->GetPersistentIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault), i);

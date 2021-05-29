@@ -210,7 +210,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			{
 				const Device	&device = info->GetNthDeviceInfo(i);
 
-				Console::OutputString(String("\t").Append(String::FromInt(i)).Append("\t").Append(device.path).Append(device.path.Length() < 8 ? "\t\t" : "\t").Append(String(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision).Trim()).Append("\n"));
+				Console::OutputString(String("\t").Append(String::FromInt(i)).Append("\t").Append(device.path).Append(device.path.Length() < 8 ? "\t\t" : "\t").Append(device.GetName()).Append("\n"));
 			}
 
 #ifndef __WIN32__

@@ -1146,7 +1146,7 @@ String freac::JobList::GetEntryText(const Track &track)
 				{
 					const Device	&device = info->GetNthDeviceInfo(track.drive);
 
-					drives.Add(String(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision).Trim(), track.drive);
+					drives.Add(device.GetName(), track.drive);
 
 					boca.DeleteComponent(info);
 				} 

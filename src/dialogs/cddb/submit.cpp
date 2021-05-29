@@ -88,7 +88,7 @@ freac::cddbSubmitDlg::cddbSubmitDlg()
 		{
 			const Device	&device = info->GetNthDeviceInfo(i);
 
-			combo_drive->AddEntry(String(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision).Trim());
+			combo_drive->AddEntry(device.GetName());
 		}
 
 		boca.DeleteComponent(info);
