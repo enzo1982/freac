@@ -750,7 +750,7 @@ Void freac::freacGUI::QueryCDDB()
 		const Track	&track = joblist->GetNthTrack(i);
 		const Info	&info  = track.GetInfo();
 
-		if (info.mcdi.GetData().Size() > 0)
+		if (info.mcdi.IsValid())
 		{
 			String	 queryString = CDDB::QueryStringFromMCDI(info.mcdi);
 
@@ -826,7 +826,7 @@ Void freac::freacGUI::QueryCDDB()
 			Track	 track = joblist->GetNthTrack(j);
 			Info	 info  = track.GetInfo();
 
-			if ((info.mcdi.GetData().Size() > 0 && queryString == CDDB::QueryStringFromMCDI(info.mcdi)) ||
+			if ((info.mcdi.IsValid() && queryString == CDDB::QueryStringFromMCDI(info.mcdi)) ||
 			    (info.offsets != NIL && queryString == CDDB::QueryStringFromOffsets(info.offsets)))
 			{
 				Int	 trackNumber = -1;
