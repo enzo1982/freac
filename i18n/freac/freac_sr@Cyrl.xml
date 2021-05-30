@@ -1333,8 +1333,8 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Није могуће отворити фајл: %1&#10;&#10;%2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Није могуће ажурирати таг: %1&#10;&#10;Грешка: %2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Није могуће отворити фајл: %1&#10;&#10;%2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">Није могуће ажурирати таг: %1&#10;&#10;Грешка: %2</entry>
 	</section>
       </section>
 

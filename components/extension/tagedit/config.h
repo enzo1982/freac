@@ -10,31 +10,34 @@
   * IMPLIED WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
-#include <boca.h>
-#include "layer.h"
+#ifndef H_TAGEDIT_CONFIG
+#define H_TAGEDIT_CONFIG
 
-BoCA_BEGIN_COMPONENT(TagEdit)
+#include <smooth.h>
+#include <boca.h>
+
+using namespace smooth;
+using namespace smooth::GUI;
+
+using namespace BoCA;
 
 namespace BoCA
 {
-	class TagEdit : public CS::ExtensionComponent
+	class ConfigureTagEdit : public ConfigLayer
 	{
 		private:
-			ConfigLayer		*configLayer;
+			GroupBox		*group_behavior;
+			CheckBox		*check_behavior_clearAlbumArtist;
 
-			LayerTags		*mainTabLayer;
+			Bool			 clearAlbumArtist;
 		public:
-			static const String	&GetComponentSpecs();
+			static const String	 ConfigID;
 
-						 TagEdit();
-						~TagEdit();
+						 ConfigureTagEdit();
+						~ConfigureTagEdit();
 
-			ConfigLayer		*GetConfigurationLayer();
-		callbacks:
-			Layer			*GetMainTabLayer();
+			Int			 SaveSettings();
 	};
 };
 
-BoCA_DEFINE_EXTENSION_COMPONENT(TagEdit)
-
-BoCA_END_COMPONENT(TagEdit)
+#endif

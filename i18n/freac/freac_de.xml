@@ -727,6 +727,7 @@
 	<entry id="15000" string="Notifications">Benachrichtigungen</entry>
 	<entry id="15001" string="Logging">Protokollierung</entry>
 	<entry id="15002" string="Video Downloader">Video-Downloader</entry>
+	<entry id="15003" string="Tag Editor">Tag-Editor</entry>
       </section>
     </section>
 
@@ -1349,9 +1350,14 @@
 	  <entry id="103313" string="Commercial information">Verkaufsinformationen</entry>
 	</section>
 
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior">Verhalten</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Feld Albuminterpret leeren, wenn es dem Titelinterpreten entspricht</entry>
+	</section>
+
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Kann Datei nicht öffnen: %1&#10;&#10;Fehler: %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Kann Tag nicht aktualisieren: %1&#10;&#10;Fehler: %2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Kann Datei nicht öffnen: %1&#10;&#10;Fehler: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">Kann Tag nicht aktualisieren: %1&#10;&#10;Fehler: %2</entry>
 	</section>
       </section>
 

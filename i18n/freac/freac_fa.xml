@@ -1325,8 +1325,8 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">فايل مورد نظر قابل دسترسي نيست: %1&#10;خطا: %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">بروز رساني اين تگ ممکن نشد: %1&#10;&#10;خطا: %2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">فايل مورد نظر قابل دسترسي نيست: %1&#10;خطا: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">بروز رساني اين تگ ممکن نشد: %1&#10;&#10;خطا: %2</entry>
 	</section>
       </section>
 

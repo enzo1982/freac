@@ -1325,8 +1325,8 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません: %1&#10;&#10;エラー: %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">タグを更新できません: %1&#10;&#10;エラー: %2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">ファイルが開けません: %1&#10;&#10;エラー: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">タグを更新できません: %1&#10;&#10;エラー: %2</entry>
 	</section>
       </section>
 

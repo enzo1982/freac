@@ -727,6 +727,7 @@
 	<entry id="15000" string="Notifications"/>
 	<entry id="15001" string="Logging"/>
 	<entry id="15002" string="Video Downloader"/>
+	<entry id="15003" string="Tag Editor"/>
       </section>
     </section>
 
@@ -1349,9 +1350,14 @@
 	  <entry id="103313" string="Commercial information"/>
 	</section>
 
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior"/>
+	  <entry id="103401" string="Clear album artist field when it matches track artist"/>
+	</section>
+
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2"/>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2"/>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2"/>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2"/>
 	</section>
       </section>
 

@@ -12,6 +12,8 @@
 
 #include "chooser_albums.h"
 
+#include "../config.h"
+
 BoCA::ChooserAlbums::ChooserAlbums() : Chooser("Albums")
 {
 	dontUpdateAlbumList = False;
@@ -199,6 +201,10 @@ Void BoCA::ChooserAlbums::OnShortcutLast()
  */
 Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 {
+	const Config	*config = Config::Get();
+
+	Bool	 clearAlbumArtist = config->GetIntValue(ConfigureTagEdit::ConfigID, "ClearAlbumArtist", True);
+
 	for (Int i = 0; i < list_albums->Length(); i++)
 	{
 		if (albums.Get(list_albums->GetNthEntry(i)->GetHandle()).GetTrackID() != track.GetTrackID()) continue;
@@ -252,14 +258,16 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 
 			/* Update basic info.
 			 */
+			if (!clearAlbumArtist) mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, info.artist);
+
 			if (info.artist != origInfo.artist)
 			{
-				if (mTrackInfo.artist == mTrackInfo.GetOtherInfo(INFO_ALBUMARTIST)) mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, NIL);
+				if (mTrackInfo.artist == mTrackInfo.GetOtherInfo(INFO_ALBUMARTIST) && clearAlbumArtist) mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, NIL);
 
 				if (mTrackInfo.artist == origInfo.artist) mTrackInfo.artist = info.artist;
 				else					  mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, info.artist);
 
-				if (mTrackInfo.artist == mTrackInfo.GetOtherInfo(INFO_ALBUMARTIST)) mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, NIL);
+				if (mTrackInfo.artist == mTrackInfo.GetOtherInfo(INFO_ALBUMARTIST) && clearAlbumArtist) mTrackInfo.SetOtherInfo(INFO_ALBUMARTIST, NIL);
 			}
 
 			if (info.album	   != origInfo.album)	  mTrackInfo.album     = info.album;

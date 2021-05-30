@@ -164,6 +164,7 @@ Geschichte
 			- Unterstützung für Ensemble-Feld in Vorbis Comment und APEv2-Tags hinzugefügt
 			- Unterstützung für Satz-Feld in Vorbis Comment, APEv2- und MP4-Tags hinzugefügt
 			- Unterstützung für zusätzliche URL-Felder in APEv2-Tags hinzugefügt
+			- Tag-Editor-Option zum Beibehalten des Albuminterpreten trotz Übereinstimmung mit Titelinterpret hinzugefügt
 			- Feld für Medienart zum Tag-Editor hinzugefügt
 
 		- Behobene Fehler

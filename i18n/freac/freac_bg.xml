@@ -1334,8 +1334,8 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Не може да се отвари файл: %1&#10;&#10;Грешка: %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Не може да се обнови таг: %1&#10;&#10;Грешка: %2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Не може да се отвари файл: %1&#10;&#10;Грешка: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">Не може да се обнови таг: %1&#10;&#10;Грешка: %2</entry>
 	</section>
       </section>
 
