@@ -432,7 +432,7 @@ Bool BoCA::ChooserAlbums::IsAlbumIdentical(const Track &track1, const Track &tra
 	if (info1.HasOtherInfo(INFO_ALBUMARTIST)) artist1 = info1.GetOtherInfo(INFO_ALBUMARTIST);
 	if (info2.HasOtherInfo(INFO_ALBUMARTIST)) artist2 = info2.GetOtherInfo(INFO_ALBUMARTIST);
 
-	if ((artist1 == NIL || artist2 == NIL || artist1 == artist2) && info1.album == info2.album && info1.disc == info2.disc) return True;
+	if ((artist1 == NIL || artist2 == NIL || artist1 == artist2) && info1.album == info2.album && ((info1.disc <= 0 && info2.disc <= 0) || info1.disc == info2.disc)) return True;
 
 	return False;
 }
