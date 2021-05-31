@@ -161,7 +161,8 @@ Geschichte
 			- Option zum Umschalten der Protokollierung vollständiger Pfade in Protokolldateien hinzugefügt
 			- Unterstützung für Shift_JIS kodierten CD-Text hinzugefügt
 			- Unterstützung für das Schreiben von Album- und Track-Kommentaren in Cuesheets hinzugefügt
-			- Unterstützung für Ensemble- und Satz-Felder in Vorbis Comment und APEv2-Tags hinzugefügt
+			- Unterstützung für Ensemble-Feld in Vorbis Comment und APEv2-Tags hinzugefügt
+			- Unterstützung für Satz-Feld in Vorbis Comment, APEv2- und MP4-Tags hinzugefügt
 			- Unterstützung für zusätzliche URL-Felder in APEv2-Tags hinzugefügt
 			- Feld für Medienart zum Tag-Editor hinzugefügt
 

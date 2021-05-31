@@ -162,7 +162,8 @@ History
 			- added an option to toggle logging of complete paths in log files
 			- added support for reading Shift_JIS encoded CD-Text
 			- added support for writing album and track comments to cue sheets
-			- added support for ensemble and movement fields in Vorbis Comment and APEv2 tags
+			- added support for ensemble field in Vorbis Comment and APEv2 tags
+			- added support for movement field in Vorbis Comment, APEv2 and MP4 tags
 			- added support for additional URL fields in APEv2 tags
 			- added media type field to tag editor
 
