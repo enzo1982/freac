@@ -71,7 +71,7 @@ cd ..
 # Build BoCA
 $DL boca-master.zip $boca_location
 
-rm -fr boca-master
+rm -fr BoCA-master
 unzip boca-master.zip
 
 cp smooth-master/include/smooth.h BoCA-master/include
