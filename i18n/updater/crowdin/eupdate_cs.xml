@@ -27,10 +27,11 @@
     <entry id="14" string="Installing files...">Instalovat soubory...</entry>
     <entry id="15" string="Installing file:">Instalovat soubor:</entry>
     <entry id="16" string="Downloading file:">Stahování souboru:</entry>
-    <entry id="17" string="Update complete">Aktualizace hotova</entry>
-    <entry id="18" string="Your application has been successfully updated!">Vaše aplikace byla úspěšně aktualizována!</entry>
-    <entry id="19" string="Error">Chyba</entry>
-    <entry id="20" string="Error downloading package!">Chyba při stahování souboru!</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Chyba při instalaci "%1"!&#10;&#10;Přístup k adresáři programu byl odepřen.</entry>
+    <entry id="17" string="Extracting file:"/>
+    <entry id="18" string="Update complete">Aktualizace hotova</entry>
+    <entry id="19" string="Your application has been successfully updated!">Vaše aplikace byla úspěšně aktualizována!</entry>
+    <entry id="20" string="Error">Chyba</entry>
+    <entry id="21" string="Error downloading package!">Chyba při stahování souboru!</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Chyba při instalaci "%1"!&#10;&#10;Přístup k adresáři programu byl odepřen.</entry>
   </data>
 </LangFile>

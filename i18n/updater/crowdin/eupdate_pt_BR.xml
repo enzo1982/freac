@@ -27,10 +27,11 @@
     <entry id="14" string="Installing files...">Instalando os arquivos...</entry>
     <entry id="15" string="Installing file:">Instalando o arquivo:</entry>
     <entry id="16" string="Downloading file:">Baixando o arquivo:</entry>
-    <entry id="17" string="Update complete">Atualização concluída</entry>
-    <entry id="18" string="Your application has been successfully updated!">O seu programa foi atualizado com sucesso!</entry>
-    <entry id="19" string="Error">Error</entry>
-    <entry id="20" string="Error downloading package!">Erro ao baixar o pacote!</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Erro ao instalar &quot;%1&quot;!&#10;&#10;O acesso ao diretório do programa foi negado.</entry>
+    <entry id="17" string="Extracting file:"/>
+    <entry id="18" string="Update complete">Atualização concluída</entry>
+    <entry id="19" string="Your application has been successfully updated!">O seu programa foi atualizado com sucesso!</entry>
+    <entry id="20" string="Error">Error</entry>
+    <entry id="21" string="Error downloading package!">Erro ao baixar o pacote!</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Erro ao instalar &quot;%1&quot;!&#10;&#10;O acesso ao diretório do programa foi negado.</entry>
   </data>
 </LangFile>

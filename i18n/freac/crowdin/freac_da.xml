@@ -64,6 +64,21 @@
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
+    <section name="Media types">
+      <entry id="600" string="CD"/>
+      <entry id="601" string="DAT"/>
+      <entry id="602" string="MiniDisc"/>
+      <entry id="603" string="Compact Cassette"/>
+      <entry id="604" string="Reel tape"/>
+      <entry id="605" string="Vinyl"/>
+      <entry id="606" string="DVD"/>
+      <entry id="607" string="LaserDisc"/>
+      <entry id="608" string="TV"/>
+      <entry id="609" string="Video"/>
+      <entry id="610" string="Radio"/>
+      <entry id="611" string="Telephone"/>
+    </section>
+
     <section name="Menu">
       <entry id="1000" string="File">Filer</entry>
       <entry id="1001" string="Options">Indstillinger</entry>
@@ -708,10 +723,15 @@
 	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier"/>
+      </section>
+
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Notifikationer</entry>
 	<entry id="15001" string="Logging">Logning</entry>
-	<entry id="15002" string="YouTube Video Downloader">YouTube Video Downloader</entry>
+	<entry id="15002" string="Video Downloader"/>
+	<entry id="15003" string="Tag Editor"/>
       </section>
     </section>
 
@@ -816,6 +836,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Brug tidsmæssig dæknings effekt</entry>
 	  <entry id="32305" string="Stream format">Stream format</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Tvungen striks ISO overensstemmelse</entry>
+	  <entry id="32307" string="automatic">automatisk</entry>
+	  <entry id="32308" string="always">altid</entry>
 	</section>
 
 	<section name="Audio processing">
@@ -852,6 +874,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maksimalt AAC frekvens båndbredde der bruges (Hz)</entry>
 	  <entry id="33210" string="worse">dårligere</entry>
 	  <entry id="33211" string="better">bedre</entry>
+	  <entry id="33212" string="auto">automatisk</entry>
 	</section>
 
 	<section name="Format">
@@ -1103,6 +1126,47 @@
       </section>
     </section>
 
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">Konfigurer AccurateRip</entry>
+	<entry id="70001" string="General settings">Generelle indstillinger</entry>
+	<entry id="70002" string="Enable AccurateRip">Aktiver AccurateRip</entry>
+	<entry id="70003" string="Database URL">Database URL</entry>
+	<entry id="70004" string="Cache">Cache</entry>
+	<entry id="70005" string="Enable cache">Aktiver cache</entry>
+	<entry id="70006" string="Expires after">Udløber efter</entry>
+	<entry id="70007" string="%1 day(s)">%1 dag(e)</entry>
+	<entry id="70008" string="%1 week(s)">%1 uge(r)</entry>
+	<entry id="70009" string="%1 month(s)">%1 måned(er)</entry>
+	<entry id="70010" string="%1 year(s)">%1 år</entry>
+	<entry id="70011" string="never">aldrig</entry>
+	<entry id="70012" string="Drives"/>
+	<entry id="70013" string="Drive"/>
+	<entry id="70014" string="Offset configuration"/>
+	<entry id="70015" string="Offset in drive database"/>
+	<entry id="70016" string="Detected offset"/>
+	<entry id="70017" string="Configured offset"/>
+	<entry id="70018" string="Detect offset now"/>
+	<entry id="70019" string="not configured"/>
+	<entry id="70020" string="automatically configured"/>
+	<entry id="70021" string="configured by offset detection"/>
+	<entry id="70022" string="manually configured"/>
+	<entry id="70023" string="not present"/>
+	<entry id="70024" string="not detected"/>
+	<entry id="70025" string="disabled"/>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration"/>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?"/>
+	  <entry id="70052" string="Do not ask again"/>
+	  <entry id="70053" string="AccurateRip offset detection"/>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database."/>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
+	</section>
+      </section>
+    </section>
+
     <section name="External">
       <entry id="80000" string="Downmix multi-channel audio to stereo">"Mix" multi-kanal lyd til stereo</entry>
 
@@ -1305,34 +1369,40 @@
 	  <entry id="103204" string="Composer">Komponist</entry>
 	  <entry id="103205" string="Lyrics writer">Tekst Forfatter</entry>
 	  <entry id="103206" string="Modified / remixed by">Ændret / remixed af</entry>
-	  <entry id="103207" string="Publisher information">Udgiver information</entry>
-	  <entry id="103208" string="Publisher / label">Udgiver / label</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">Tempo</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
-	  <entry id="103212" string="Catalog number"/>
-	  <entry id="103213" string="Barcode"/>
+	  <entry id="103207" string="Original information">Oprindelig information</entry>
+	  <entry id="103208" string="Original artist">Oprindelig kunster</entry>
+	  <entry id="103209" string="Original album">Oprindelig Album</entry>
+	  <entry id="103210" string="Original lyrics writer">Oprindelig text forfatter</entry>
+	  <entry id="103211" string="Original release year">Oprindeligt udgivelses år</entry>
+	  <entry id="103212" string="Tempo">Tempo</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">Andet</entry>
-	  <entry id="103301" string="Original information">Oprindelig information</entry>
-	  <entry id="103302" string="Original artist">Oprindelig kunster</entry>
-	  <entry id="103303" string="Original album">Oprindelig Album</entry>
-	  <entry id="103304" string="Original lyrics writer">Oprindelig text forfatter</entry>
-	  <entry id="103305" string="Original release year">Oprindeligt udgivelses år</entry>
-	  <entry id="103306" string="Webpage URLs">Hjemmeside URLs</entry>
-	  <entry id="103307" string="Artist webpage">Kunsters hjemmeside</entry>
-	  <entry id="103308" string="Publisher webpage">Udgivers Hjemmeside</entry>
-	  <entry id="103309" string="Internet radio station">Internet radio station</entry>
-	  <entry id="103310" string="Audio source webpage">Lyd source hjemmeside</entry>
-	  <entry id="103311" string="Copyright information">Copyright Information</entry>
-	  <entry id="103312" string="Commercial information">Kommerciel information</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Udgiver</entry>
+	  <entry id="103301" string="Publisher information">Udgiver information</entry>
+	  <entry id="103302" string="Publisher / label">Udgiver / label</entry>
+	  <entry id="103303" string="Media type"/>
+	  <entry id="103304" string="Catalog number"/>
+	  <entry id="103305" string="Barcode"/>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">Hjemmeside URLs</entry>
+	  <entry id="103308" string="Artist webpage">Kunsters hjemmeside</entry>
+	  <entry id="103309" string="Publisher webpage">Udgivers Hjemmeside</entry>
+	  <entry id="103310" string="Internet radio station">Internet radio station</entry>
+	  <entry id="103311" string="Audio source webpage">Lyd source hjemmeside</entry>
+	  <entry id="103312" string="Copyright information">Copyright Information</entry>
+	  <entry id="103313" string="Commercial information">Kommerciel information</entry>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior"/>
+	  <entry id="103401" string="Clear album artist field when it matches track artist"/>
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Kunne ikke åbne filen: %1&#10;&#10;FEJL: %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Kunne ikke opdatere tag: %1&#10;&#10;FEJL: %2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Kunne ikke åbne filen: %1&#10;&#10;FEJL: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">Kunne ikke opdatere tag: %1&#10;&#10;FEJL: %2</entry>
 	</section>
       </section>
 
@@ -1358,6 +1428,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Gem konventerings log filer med lydfiler</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Kun Lyd CD ripning log filer</entry>
 	  <entry id="104112" string="Filename pattern">Filnavn mønster</entry>
+	  <entry id="104113" string="Log complete file paths"/>
 	</section>
       </section>
 

@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">freac.xml</property>
-    <property name="author">Andreas Normann Aanonsen &lt;andreasaa@gmail.com&gt;</property>
+    <property name="author">Andreas Normann Aanonsen / Cato Grytten</property>
     <property name="url">https://www.freac.org/</property>
   </info>
   <data>
@@ -16,11 +16,11 @@
     <entry id="102" string="Close">Lukk</entry>
 
     <entry id="200" string="Error">Feil</entry>
-    <entry id="201" string="Warning"/>
+    <entry id="201" string="Warning">Advarsel</entry>
     <entry id="202" string="Info">Info</entry>
 
-    <entry id="210" string="Do not display this warning again"/>
-    <entry id="211" string="Do not display this note again"/>
+    <entry id="210" string="Do not display this warning again">Ikke vis denne advarselen igjen</entry>
+    <entry id="211" string="Do not display this note again">Ikke vis denne meldingen igjen</entry>
 
     <entry id="300" string="Artist">Artist</entry>
     <entry id="301" string="Title">Tittel</entry>
@@ -29,11 +29,11 @@
     <entry id="304" string="Genre">Sjanger</entry>
     <entry id="305" string="Comment">Kommentar</entry>
     <entry id="306" string="Year">År</entry>
-    <entry id="307" string="Disc"/>
-    <entry id="308" string="Rating"/>
-    <entry id="309" string="File name"/>
-    <entry id="310" string="File type"/>
-    <entry id="311" string="Album artist"/>
+    <entry id="307" string="Disc">Disk</entry>
+    <entry id="308" string="Rating">Vurdering</entry>
+    <entry id="309" string="File name">Fil navn</entry>
+    <entry id="310" string="File type">Fil type</entry>
+    <entry id="311" string="Album artist">Album artist</entry>
 
     <entry id="350" string="unknown artist">Ukjent artist</entry>
     <entry id="351" string="unknown title">Ukjent tittel</entry>
@@ -41,10 +41,10 @@
     <entry id="353" string="unknown genre">Ukjent sjanger</entry>
     <entry id="354" string="unknown year">Ukjent år</entry>
     <entry id="355" string="unknown conductor"/>
-    <entry id="356" string="unknown composer"/>
-    <entry id="357" string="unknown album artist"/>
+    <entry id="356" string="unknown composer">Ukjent komponist</entry>
+    <entry id="357" string="unknown album artist">Ukjent album artist</entry>
 
-    <entry id="380" string="hidden track"/>
+    <entry id="380" string="hidden track">Skjult spor</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -60,15 +60,30 @@
       <entry id="514" string="%1 min">%1 min</entry>
       <entry id="515" string="%1 bit">%1 bit</entry>
       <entry id="516" string="%1 bytes">%1 bytes</entry>
-      <entry id="517" string="%1 kB"/>
+      <entry id="517" string="%1 kB">%1 kB</entry>
       <entry id="518" string="%1%">%1%</entry>
+    </section>
+
+    <section name="Media types">
+      <entry id="600" string="CD"/>
+      <entry id="601" string="DAT"/>
+      <entry id="602" string="MiniDisc"/>
+      <entry id="603" string="Compact Cassette"/>
+      <entry id="604" string="Reel tape"/>
+      <entry id="605" string="Vinyl"/>
+      <entry id="606" string="DVD"/>
+      <entry id="607" string="LaserDisc"/>
+      <entry id="608" string="TV"/>
+      <entry id="609" string="Video"/>
+      <entry id="610" string="Radio"/>
+      <entry id="611" string="Telephone"/>
     </section>
 
     <section name="Menu">
       <entry id="1000" string="File">Fil</entry>
       <entry id="1001" string="Options">Alternativer</entry>
       <entry id="1002" string="Database">Database</entry>
-      <entry id="1003" string="Processing"/>
+      <entry id="1003" string="Processing">Behandler</entry>
       <entry id="1004" string="Encode">Koding</entry>
       <entry id="1005" string="Help">Hjelp</entry>
 
@@ -98,22 +113,22 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Generelle innstillinger</entry>
-	<entry id="1301" string="Configure signal processing"/>
-	<entry id="1302" string="Configure selected encoder">Konfigurer enkoder</entry>
+	<entry id="1301" string="Configure signal processing">Konfigurer signal behandler</entry>
+	<entry id="1302" string="Configure selected encoder">Konfigurer koder</entry>
 	<entry id="1303" string="Active CD-ROM drive">Aktive CD-ROM-srasjoner</entry>
-	<entry id="1304" string="Active configuration"/>
-	<entry id="1305" string="Default configuration"/>
+	<entry id="1304" string="Active configuration">Aktiv konfigurasjon</entry>
+	<entry id="1305" string="Default configuration">Standard konfigurasjon</entry>
       </section>
 
       <section name="Processing">
-	<entry id="1400" string="Enable signal processing"/>
+	<entry id="1400" string="Enable signal processing">Aktiver signal behandler</entry>
 	<entry id="1401" string="Enable processing during playback"/>
 	<entry id="1402" string="Selected signal processors"/>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Start koding</entry>
-	<entry id="1501" string="Start encoding (deleting original files)"/>
+	<entry id="1501" string="Start encoding (deleting original files)">Start koding (slett originale filer)</entry>
 	<entry id="1502" string="Start encoding with">Start koding med</entry>
 	<entry id="1503" string="Pause/resume encoding">Pause/fortsett koding</entry>
 	<entry id="1504" string="Stop encoding">Stopp koding</entry>
@@ -132,8 +147,8 @@
 	<entry id="1603" string="Check for updates at startup">Sjekk for oppdateringer ved oppstart</entry>
 	<entry id="1604" string="About %1">Om %1</entry>
 	<entry id="1605" string="index_en.html">index.html</entry>
-	<entry id="1606" string="Report an issue"/>
-	<entry id="1607" string="Suggest a feature"/>
+	<entry id="1606" string="Report an issue">Rapporter et problem</entry>
+	<entry id="1607" string="Suggest a feature">Foreslå en funksjon</entry>
       </section>
     </section>
 
@@ -145,17 +160,17 @@
       <entry id="2004" string="Query CDDB database">Forespør CDDB-database</entry>
       <entry id="2005" string="Submit CDDB data">Send CDDB-data</entry>
       <entry id="2006" string="Configure general settings">Konfigurer generelle innstillinger</entry>
-      <entry id="2007" string="Configure signal processing"/>
+      <entry id="2007" string="Configure signal processing">Konfigurer signal behandler</entry>
       <entry id="2008" string="Configure the selected audio encoder">Konfigurer den valgte lydkoderen</entry>
       <entry id="2009" string="Start the encoding process">Start koding</entry>
-      <entry id="2010" string="Start the encoding process (deleting original files)"/>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Start koding (slett original filer)</entry>
       <entry id="2011" string="Pause/resume encoding">Pause/fortsett koding</entry>
       <entry id="2012" string="Stop encoding">Stopp koding</entry>
     </section>
 
     <section name="Joblist">
       <entry id="3000" string="Time left">Gjenstående tid</entry>
-      <entry id="3001" string="File progress">Framgang</entry>
+      <entry id="3001" string="File progress">Fremgang</entry>
       <entry id="3002" string="Output folder">Målmappe</entry>
       <entry id="3003" string="%1 file(s) in joblist">%1 fil(er) i jobbliste</entry>
       <entry id="3004" string="Show title info">Vis tittelinfo</entry>
@@ -195,35 +210,35 @@
       <entry id="3038" string="Audio Files">Lydfiler</entry>
       <entry id="3039" string="All Files">Alle filer</entry>
       <entry id="3040" string="Playlist Files">Spillelistefiler</entry>
-      <entry id="3041" string="Joblist"/>
+      <entry id="3041" string="Joblist">Jobb liste</entry>
       <entry id="3042" string="Other"/>
       <entry id="3043" string="Output file name"/>
       <entry id="3044" string="verifying"/>
-      <entry id="3045" string="Open"/>
+      <entry id="3045" string="Open">Åpne</entry>
       <entry id="3046" string="CD drive"/>
       <entry id="3047" string="Disc ID"/>
 
       <section name="File">
-	<entry id="3050" string="Current file">Koder fil</entry>
-	<entry id="3051" string="none">Ingen</entry>
+	<entry id="3050" string="Current file">Gjeldende fil</entry>
+	<entry id="3051" string="none">ingen</entry>
 	<entry id="3052" string="Skip current file">Hopp over</entry>
       </section>
 
       <section name="Decoder">
-	<entry id="3060" string="Active decoder"/>
-	<entry id="3061" string="none"/>
+	<entry id="3060" string="Active decoder">Aktiv de-koder</entry>
+	<entry id="3061" string="none">ingen</entry>
       </section>
 
       <section name="Filters">
-	<entry id="3070" string="Selected filters"/>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
-	<entry id="3073" string="Configure signal processing"/>
+	<entry id="3070" string="Selected filters">Valgte filter</entry>
+	<entry id="3071" string="none">ingen</entry>
+	<entry id="3072" string="disabled">deaktivert</entry>
+	<entry id="3073" string="Configure signal processing">Konfigurer signal behandler</entry>
       </section>
 
       <section name="Encoder">
 	<entry id="3080" string="Selected encoder">Valgt koder</entry>
-	<entry id="3081" string="Configure selected encoder">Konfigurer enkoder</entry>
+	<entry id="3081" string="Configure selected encoder">Konfigurer koder</entry>
       </section>
 
       <section name="Add folder">
@@ -238,7 +253,7 @@
 	<entry id="3201" string="Pattern">Mønster</entry>
 	<entry id="3202" string="Start folder">Startmappe</entry>
 	<entry id="3203" string="Filename pattern">Filnavnmønster</entry>
-	<entry id="3204" string="Search subfolders"/>
+	<entry id="3204" string="Search subfolders">Søk i undermapper</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">Velg mappen som skal legges til jobblisten</entry>
       </section>
 
@@ -254,13 +269,13 @@
     </section>
 
     <section name="Jobs">
-      <entry id="3500" string="Jobs"/>
-      <entry id="3501" string="Progress"/>
-      <entry id="3502" string="Errors / Warnings"/>
-      <entry id="3503" string="Details"/>
-      <entry id="3504" string="Error details"/>
-      <entry id="3505" string="Time left"/>
-      <entry id="3506" string="Waiting for other jobs to finish"/>
+      <entry id="3500" string="Jobs">Jobber</entry>
+      <entry id="3501" string="Progress">Fremgang</entry>
+      <entry id="3502" string="Errors / Warnings">Feil / Advarsler</entry>
+      <entry id="3503" string="Details">Detaljer</entry>
+      <entry id="3504" string="Error details">Feil detaljer</entry>
+      <entry id="3505" string="Time left">Gjenstående tid</entry>
+      <entry id="3506" string="Waiting for other jobs to finish">Venter på at andre jobber skal fullføres</entry>
 
       <section name="Joblist">
 	<entry id="3600" string="Reading folders"/>
@@ -279,19 +294,19 @@
 	<entry id="3700" string="Checking sample formats"/>
 	<entry id="3701" string="Checking for lossy to lossless conversion"/>
 	<entry id="3702" string="Checking output file names"/>
-	<entry id="3703" string="Converting %1"/>
-	<entry id="3704" string="Verifying %1"/>
-	<entry id="3705" string="Conversion cancelled"/>
-	<entry id="3706" string="Conversion finished"/>
-	<entry id="3707" string="Conversion finished with %1 warnings"/>
-	<entry id="3708" string="Conversion finished with %1 errors"/>
+	<entry id="3703" string="Converting %1">Konverterer %1</entry>
+	<entry id="3704" string="Verifying %1">Verifiserer %1</entry>
+	<entry id="3705" string="Conversion cancelled">Avbrutt konvertering</entry>
+	<entry id="3706" string="Conversion finished">Fullført konvertering</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">Konvertering fullført med %1 advarsler</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">Konvertering fullført med %1 feil</entry>
       </section>
 
       <section name="Update">
 	<entry id="3800" string="Preparing update check"/>
-	<entry id="3801" string="Contacting update server"/>
-	<entry id="3802" string="Updates found"/>
-	<entry id="3803" string="No updates found"/>
+	<entry id="3801" string="Contacting update server">Kontakter oppdaterings server</entry>
+	<entry id="3802" string="Updates found">Oppdateringer ble funnet</entry>
+	<entry id="3803" string="No updates found">Oppdateringer ble ikke funnet</entry>
       </section>
     </section>
 
@@ -330,7 +345,7 @@
 	<entry id="4109" string="Would you like to perform the remaining queries again later?"/>
 	<entry id="4110" string="none">Ingen</entry>
 	<entry id="4111" string="Preview">Forhåndsvisning</entry>
-	<entry id="4112" string="loading preview"/>
+	<entry id="4112" string="loading preview">Laster forhåndsvisning</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">En feil har oppstått i forsøket på å kontakte freedb-serveren.</entry>
@@ -344,7 +359,7 @@
 	<entry id="4203" string="Query all">Forespør alle</entry>
 	<entry id="4204" string="Query string">Forespørsel-streng</entry>
 	<entry id="4205" string="CDDB queries to perform">CDDB-forespørsler å gjennomføre</entry>
-	<entry id="4206" string="Querying CD information"/>
+	<entry id="4206" string="Querying CD information">Forespør CD informasjon</entry>
       </section>
 
       <section name="Manage submits">
@@ -376,28 +391,28 @@
       <entry id="5001" string="Encoders">Kodere</entry>
       <entry id="5002" string="Playlists">Spillelister</entry>
       <entry id="5003" string="Language">Språk</entry>
-      <entry id="5004" string="CDDB"/>
-      <entry id="5005" string="Interface"/>
-      <entry id="5006" string="Tags">Info-merke</entry>
-      <entry id="5007" string="Components"/>
-      <entry id="5008" string="Decoders"/>
+      <entry id="5004" string="CDDB">CDDB</entry>
+      <entry id="5005" string="Interface">Brukergrensesnitt</entry>
+      <entry id="5006" string="Tags">Etikett</entry>
+      <entry id="5007" string="Components">Komponenter</entry>
+      <entry id="5008" string="Decoders">De-kodere</entry>
       <entry id="5009" string="Output"/>
       <entry id="5010" string="DSP"/>
-      <entry id="5011" string="Extensions"/>
+      <entry id="5011" string="Extensions">Tillegg</entry>
       <entry id="5012" string="Other"/>
-      <entry id="5013" string="Active configuration"/>
-      <entry id="5014" string="New"/>
-      <entry id="5015" string="Delete"/>
+      <entry id="5013" string="Active configuration">Gjeldende konfigurasjon</entry>
+      <entry id="5014" string="New">Ny</entry>
+      <entry id="5015" string="Delete">Slett</entry>
       <entry id="5016" string="Command line arguments"/>
       <entry id="5017" string="Resulting arguments string"/>
-      <entry id="5018" string="Default configuration"/>
-      <entry id="5019" string="New configuration"/>
-      <entry id="5020" string="Ripper"/>
-      <entry id="5021" string="Settings"/>
-      <entry id="5022" string="Resources"/>
+      <entry id="5018" string="Default configuration">Standard konfigurasjon</entry>
+      <entry id="5019" string="New configuration">Ny konfigurasjon</entry>
+      <entry id="5020" string="Ripper">Ripper</entry>
+      <entry id="5021" string="Settings">Innstillinger</entry>
+      <entry id="5022" string="Resources">Ressurser</entry>
       <entry id="5023" string="Verifiers"/>
       <entry id="5024" string="Taggers"/>
-      <entry id="5025" string="Processing"/>
+      <entry id="5025" string="Processing">Behandler</entry>
       <entry id="5026" string="Additional arguments"/>
 
       <section name="Encoders">
@@ -413,13 +428,13 @@
 	<entry id="5109" string="Encode 'On-The-Fly'">Kod 'On-The-Fly'</entry>
 	<entry id="5110" string="Keep ripped Wave files">Behold rippede wave-filer</entry>
 	<entry id="5111" string="Encode to a single file">Kod til enkelt fil</entry>
-	<entry id="5112" string="Output filenames"/>
-	<entry id="5113" string="Allow Unicode characters"/>
-	<entry id="5114" string="Replace spaces with underscores"/>
-	<entry id="5115" string="Remove processed tracks from joblist"/>
+	<entry id="5112" string="Output filenames">Målfil</entry>
+	<entry id="5113" string="Allow Unicode characters">Tillat unicode tegn</entry>
+	<entry id="5114" string="Replace spaces with underscores">Erstatt mellomrom med understrek</entry>
+	<entry id="5115" string="Remove processed tracks from joblist">Fjern fullførte spor fra jobb-listen</entry>
 	<entry id="5116" string="Add encoded files to joblist"/>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames"/>
-	<entry id="5118" string="Keep time stamps of source files"/>
+	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Legg til nummersekvens til eller identiske filnavn</entry>
+	<entry id="5118" string="Keep time stamps of source files">Behold tidsstempel fra kildefiler</entry>
 
 	<section name="Errors">
 	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Målmappen eksisterer ikke! Vil du opprette den?</entry>
@@ -434,14 +449,14 @@
 	<entry id="5204" string="Use encoder output folder">Bruk koderens målmappe</entry>
 	<entry id="5205" string="Filename pattern">Filnavnmønster</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Velg mappen hvor spillelistefilen skal plasseres</entry>
-	<entry id="5207" string="Output filenames"/>
-	<entry id="5208" string="Configure plugin"/>
-	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion"/>
+	<entry id="5207" string="Output filenames">Målfil</entry>
+	<entry id="5208" string="Configure plugin">Konfigurer tillegg</entry>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Lag kun en spilleliste og/eller køark for hver konvertering</entry>
       </section>
 
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Aktiver lokal CDDB-database</entry>
-	<entry id="5301" string="Enable remote CDDB database">Muliggjør fjern CDDB-database</entry>
+	<entry id="5301" string="Enable remote CDDB database">Muliggjør ekstern CDDB-database</entry>
 	<entry id="5302" string="CDDB path">CDDB-mappe</entry>
 	<entry id="5303" string="Select">Bla gjennom</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Velg mappe for CDDB-databasen</entry>
@@ -456,7 +471,7 @@
 	<entry id="5313" string="Prefer CDDB over CD Text">Foretrekk CDDB over CD Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Aktiver CDDB-cache</entry>
 	<entry id="5315" string="Automatization">Automatisering</entry>
-	<entry id="5316" string="Always select first entry"/>
+	<entry id="5316" string="Always select first entry">Velg alltid første treff</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Utvidede CDDB-innstillinger</entry>
@@ -480,107 +495,107 @@
 	<entry id="5400" string="Select language">Velg språk</entry>
 	<entry id="5401" string="Edit language file">Rediger språkfil</entry>
 	<entry id="5402" string="Information">Informasjon</entry>
-	<entry id="5403" string="Encoding">Koder</entry>
+	<entry id="5403" string="Encoding">Kode</entry>
 	<entry id="5404" string="Author">Forfatter</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Info-merke</entry>
+	<entry id="5500" string="Tags">Etikett</entry>
 	<entry id="5501" string="Tag formats">Merkekodinger</entry>
 	<entry id="5502" string="Default comment string">Standardkommentar</entry>
-	<entry id="5503" string="Replace existing comments with default comment"/>
+	<entry id="5503" string="Replace existing comments with default comment">Erstatt eksisterende kommentar med standardkommentar</entry>
 	<entry id="5504" string="Filename pattern">Filnavnmønster</entry>
 	<entry id="5505" string="Encoding">Koder</entry>
-	<entry id="5506" string="Comments"/>
-	<entry id="5507" string="Cover art"/>
-	<entry id="5508" string="Read cover art"/>
-	<entry id="5509" string="Read cover art from tags"/>
-	<entry id="5510" string="Read cover art from files"/>
-	<entry id="5511" string="Write cover art"/>
-	<entry id="5512" string="Write cover art to tags"/>
-	<entry id="5513" string="Write cover art to files"/>
+	<entry id="5506" string="Comments">Kommentarer</entry>
+	<entry id="5507" string="Cover art">Album bilde</entry>
+	<entry id="5508" string="Read cover art">Les album bilde</entry>
+	<entry id="5509" string="Read cover art from tags">Les album bilde fra etikett</entry>
+	<entry id="5510" string="Read cover art from files">Les album bilde fra filer</entry>
+	<entry id="5511" string="Write cover art">Skriv album bilde</entry>
+	<entry id="5512" string="Write cover art to tags">Skriv album bilde til etiketter</entry>
+	<entry id="5513" string="Write cover art to files">Skriv album bilde til fil</entry>
 	<entry id="5514" string="Add reference to audio file tag"/>
-	<entry id="5515" string="Other"/>
-	<entry id="5516" string="Chapters"/>
-	<entry id="5517" string="Read chapters from files"/>
-	<entry id="5518" string="Write chapters to files"/>
-	<entry id="5519" string="Special fields"/>
+	<entry id="5515" string="Other">Annet</entry>
+	<entry id="5516" string="Chapters">Kapittel</entry>
+	<entry id="5517" string="Read chapters from files">Les kapittel fra filer</entry>
+	<entry id="5518" string="Write chapters to files">Skriv kapittel til filer</entry>
+	<entry id="5519" string="Special fields">Spesial felt</entry>
 	<entry id="5520" string="Write CD table of contents"/>
 	<entry id="5521" string="Preserve Replay Gain information"/>
-	<entry id="5522" string="Cue sheets"/>
-	<entry id="5523" string="Read cue sheets embedded in metadata"/>
-	<entry id="5524" string="Prefer cue sheets over chapter information"/>
-	<entry id="5525" string="Prepend zero to track numbers below 10"/>
-	<entry id="5526" string="File size limit"/>
-	<entry id="5527" string="unlimited"/>
+	<entry id="5522" string="Cue sheets">Køark</entry>
+	<entry id="5523" string="Read cue sheets embedded in metadata">Les køark lagret i metadata</entry>
+	<entry id="5524" string="Prefer cue sheets over chapter information">Foretrekk køark fremfor kapittel info</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">Legg til 0 til spornummer under 10</entry>
+	<entry id="5526" string="File size limit">Begrensning filstørrelse</entry>
+	<entry id="5527" string="unlimited">Ingen grense</entry>
       </section>
 
       <section name="Joblist">
-	<entry id="5600" string="Joblist"/>
-	<entry id="5601" string="Columns"/>
-	<entry id="5602" string="Name"/>
+	<entry id="5600" string="Joblist">Jobb-liste</entry>
+	<entry id="5601" string="Columns">Kolonner</entry>
+	<entry id="5602" string="Name">Navn</entry>
 	<entry id="5603" string="Description">Beskrivelse</entry>
-	<entry id="5604" string="Up"/>
-	<entry id="5605" string="Down"/>
-	<entry id="5606" string="Jobs"/>
-	<entry id="5607" string="Show Jobs tab"/>
+	<entry id="5604" string="Up">Opp</entry>
+	<entry id="5605" string="Down">Ned</entry>
+	<entry id="5606" string="Jobs">Jobber</entry>
+	<entry id="5607" string="Show Jobs tab">Vis fanen jobber</entry>
 
 	<section name="Columns">
-	  <entry id="5650" string="Track artist"/>
-	  <entry id="5651" string="Track title"/>
-	  <entry id="5652" string="Track genre"/>
-	  <entry id="5653" string="Album title"/>
-	  <entry id="5654" string="Disc number"/>
-	  <entry id="5655" string="Track number"/>
-	  <entry id="5656" string="Track rating"/>
-	  <entry id="5657" string="Track length"/>
-	  <entry id="5658" string="Track size"/>
-	  <entry id="5659" string="File name"/>
-	  <entry id="5660" string="File type"/>
-	  <entry id="5661" string="Output file name"/>
-	  <entry id="5662" string="Bitrate"/>
-	  <entry id="5663" string="Sampling rate"/>
-	  <entry id="5664" string="Channels"/>
-	  <entry id="5665" string="Sample resolution"/>
-	  <entry id="5666" string="CD drive"/>
+	  <entry id="5650" string="Track artist">Spor artist</entry>
+	  <entry id="5651" string="Track title">Spor tittel</entry>
+	  <entry id="5652" string="Track genre">Spor sjanger</entry>
+	  <entry id="5653" string="Album title">Album tittel</entry>
+	  <entry id="5654" string="Disc number">Disk nummer</entry>
+	  <entry id="5655" string="Track number">Spor nummer</entry>
+	  <entry id="5656" string="Track rating">Spor vurdering</entry>
+	  <entry id="5657" string="Track length">Lengde på spor</entry>
+	  <entry id="5658" string="Track size">Størrelse på spor</entry>
+	  <entry id="5659" string="File name">Filnavn</entry>
+	  <entry id="5660" string="File type">Fil type</entry>
+	  <entry id="5661" string="Output file name">Målfil</entry>
+	  <entry id="5662" string="Bitrate">Bitrate</entry>
+	  <entry id="5663" string="Sampling rate">Samplingsrate</entry>
+	  <entry id="5664" string="Channels">Lydkanaler</entry>
+	  <entry id="5665" string="Sample resolution">Samplingsoppløsning</entry>
+	  <entry id="5666" string="CD drive">CD drev</entry>
 	  <entry id="5667" string="Disc ID"/>
 	</section>
       </section>
 
       <section name="Resources">
-	<entry id="5700" string="Parallel processing"/>
-	<entry id="5701" string="Enable parallel processing"/>
-	<entry id="5702" string="Enable SuperFast mode"/>
-	<entry id="5703" string="Number of conversion threads"/>
-	<entry id="5704" string="auto"/>
-	<entry id="5705" string="Process priority"/>
-	<entry id="5706" string="lowest"/>
-	<entry id="5707" string="lower"/>
-	<entry id="5708" string="normal"/>
-	<entry id="5709" string="higher"/>
-	<entry id="5710" string="highest"/>
+	<entry id="5700" string="Parallel processing">Samtidig behandling</entry>
+	<entry id="5701" string="Enable parallel processing">Aktiver samtidig behandling</entry>
+	<entry id="5702" string="Enable SuperFast mode">Aktiver SuperRask modus</entry>
+	<entry id="5703" string="Number of conversion threads">Antall konverteringstråder</entry>
+	<entry id="5704" string="auto">automatisk</entry>
+	<entry id="5705" string="Process priority">Behandlingsprioritet</entry>
+	<entry id="5706" string="lowest">Lavest</entry>
+	<entry id="5707" string="lower">Lav</entry>
+	<entry id="5708" string="normal">Nørmal</entry>
+	<entry id="5709" string="higher">Høy</entry>
+	<entry id="5710" string="highest">Høyest</entry>
       </section>
 
       <section name="Verification">
-	<entry id="5800" string="Verification"/>
-	<entry id="5801" string="Enable input verification"/>
+	<entry id="5800" string="Verification">Verifisering</entry>
+	<entry id="5801" string="Enable input verification">Aktiver inngangsverifikasjon</entry>
 	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from."/>
-	<entry id="5803" string="Enable output verification"/>
+	<entry id="5803" string="Enable output verification">Aktiver utgangsverifikasjon</entry>
 	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them."/>
       </section>
 
       <section name="Processing">
-	<entry id="5900" string="Signal processing"/>
-	<entry id="5901" string="Enable signal processing"/>
-	<entry id="5902" string="Enable processing during playback"/>
-	<entry id="5903" string="Components"/>
-	<entry id="5904" string="Available"/>
-	<entry id="5905" string="Selected"/>
-	<entry id="5906" string="Configure component"/>
-	<entry id="5907" string="Conversion to a single output file"/>
-	<entry id="5908" string="Process each track individually"/>
-	<entry id="5909" string="Treat the combined tracks like a single track"/>
+	<entry id="5900" string="Signal processing">Signalbehandling</entry>
+	<entry id="5901" string="Enable signal processing">Aktiver signal behandler</entry>
+	<entry id="5902" string="Enable processing during playback">Aktiver behandling under avspilling</entry>
+	<entry id="5903" string="Components">Komponenter</entry>
+	<entry id="5904" string="Available">Tilgjengelig</entry>
+	<entry id="5905" string="Selected">Valgt</entry>
+	<entry id="5906" string="Configure component">Konfigurer komponent</entry>
+	<entry id="5907" string="Conversion to a single output file">Konvertering til enkel målfil</entry>
+	<entry id="5908" string="Process each track individually">Behandle hvert spor enkeltvis</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">Behandle kombinerte spor som et enkeltspor</entry>
       </section>
     </section>
 
@@ -605,7 +620,7 @@
       <entry id="7004" string="Keep this option enabled even after restarting %1"/>
       <entry id="7005" string="File already exists">Fil finnes allerede</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Utdatafilen %1&#10;finnes allerede! Vil du erstatte over den??</entry>
-      <entry id="7007" string="Overwrite all further files">Erstatt alle framtidige filer</entry>
+      <entry id="7007" string="Overwrite all further files">Erstatt alle fremtidige filer</entry>
       <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?"/>
     </section>
 
@@ -622,49 +637,49 @@
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
       <entry id="7110" string="File not found">Fil ikke funnet</entry>
       <entry id="7111" string="Unknown file type">Ukjent filtype</entry>
-      <entry id="7112" string="Invalid file format"/>
+      <entry id="7112" string="Invalid file format">Ugyldig filformat</entry>
       <entry id="7113" string="Unsupported audio format">Lydformatet er ikke støttet</entry>
       <entry id="7114" string="Unknown error">Ukjent feil</entry>
       <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Kan ikke laste NT-SCSI-drivere! CD-ripping deaktiviert!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åpne filen: %1&#10;&#10;Feil: %2</entry>
-      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!"/>
-      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!"/>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Kan ikke spille CD spor mens ripping pågår fra samme drev!</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Kan ikke starte ripping mens det spilles et spor fra samme drev!</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Støtte for CDDB er deaktiviert! Vennligst aktiver støtte for&#10;lokal eller fjern CDDB i konfigurasjonsdialogen.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Støtte for fjern CDDB er deaktiviert! Vennligst aktiver støtte for&#10;fjern CDDB i konfigurasjonsdialogen.</entry>
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Tilgang til CD-ROM-stasjonen var nektet av Windows.&#10;&#10;Vennligst kontakt din systemadministrator for å få&#10;rettigheter til å få tilgang til CD-ROM-stasjonen.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1"/>
-      <entry id="7123" string="The selected folder does not exist anymore!"/>
-      <entry id="7124" string="Access denied"/>
+      <entry id="7123" string="The selected folder does not exist anymore!">Den valgte mappen eksisterer ikke!</entry>
+      <entry id="7124" string="Access denied">Tilgang nektet</entry>
     </section>
 
     <section name="Dialogs">
 
       <section name="Overwrite">
-	<entry id="8000" string="Confirm overwrite"/>
-	<entry id="8001" string="Confirm"/>
-	<entry id="8002" string="Skip all"/>
+	<entry id="8000" string="Confirm overwrite">Bekreft overskrivning</entry>
+	<entry id="8001" string="Confirm">Bekreft</entry>
+	<entry id="8002" string="Skip all">Hopp over alle</entry>
 	<entry id="8003" string="The following %1 files already exist or have duplicate file names"/>
 	<entry id="8004" string="Action"/>
-	<entry id="8005" string="Overwrite"/>
+	<entry id="8005" string="Overwrite">Overskriv</entry>
 	<entry id="8006" string="Skip">Hopp over</entry>
       </section>
 
       <section name="Format">
 	<entry id="8100" string="Select sample format"/>
 	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:"/>
-	<entry id="8102" string="Select"/>
+	<entry id="8102" string="Select">Velg</entry>
       </section>
 
       <section name="Errors">
-	<entry id="8200" string="Errors"/>
-	<entry id="8201" string="%1 errors while processing job"/>
+	<entry id="8200" string="Errors">Feil</entry>
+	<entry id="8201" string="%1 errors while processing job">%1 feil under behandling av jobb</entry>
 	<entry id="8202" string="select an entry for details"/>
       </section>
     </section>
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Aktive CD-ROM-srasjoner</entry>
-      <entry id="9001" string="Set drive speed limit"/>
+      <entry id="9001" string="Set drive speed limit">Velg hastighetsbegrensning for drev</entry>
       <entry id="9002" string="CD information">CD-informasjon</entry>
       <entry id="9003" string="Read CD Text">Les CD-tekst</entry>
       <entry id="9004" string="Read cdplayer.ini">Les cdplayer.ini</entry>
@@ -708,34 +723,39 @@
 	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier"/>
+      </section>
+
       <section name="Extensions">
-	<entry id="15000" string="Notifications"/>
-	<entry id="15001" string="Logging"/>
-	<entry id="15002" string="YouTube Video Downloader"/>
+	<entry id="15000" string="Notifications">Varsler</entry>
+	<entry id="15001" string="Logging">Protokoller</entry>
+	<entry id="15002" string="Video Downloader"/>
+	<entry id="15003" string="Tag Editor"/>
       </section>
     </section>
 
     <section name="Decoders">
 
       <section name="MAD">
-	<entry id="20000" string="Decoding"/>
-	<entry id="20001" string="Enable 24 bit decoding"/>
+	<entry id="20000" string="Decoding">De-koder</entry>
+	<entry id="20001" string="Enable 24 bit decoding">Aktiver 24 bit de-koding</entry>
       </section>
 
       <section name="mpg123">
-	<entry id="21000" string="Decoder"/>
-	<entry id="21001" string="Active decoder"/>
-	<entry id="21002" string="auto select"/>
+	<entry id="21000" string="Decoder">De-koder</entry>
+	<entry id="21001" string="Active decoder">Aktiv de-koder</entry>
+	<entry id="21002" string="auto select">velg automatisk</entry>
       </section>
 
       <section name="CueSheet">
-	<entry id="22000" string="Title information"/>
-	<entry id="22001" string="Read tags from referenced files"/>
-	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags"/>
-	<entry id="22003" string="Alternative files"/>
+	<entry id="22000" string="Title information">Tittel informasjon</entry>
+	<entry id="22001" string="Read tags from referenced files">Les etiketter fra referansefiler</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Foretrekk køark metadata før etiketter fra referansefiler</entry>
+	<entry id="22003" string="Alternative files">Alternative filer</entry>
 	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located"/>
-	<entry id="22005" string="Error handling"/>
-	<entry id="22006" string="Ignore errors during cue sheet processing"/>
+	<entry id="22005" string="Error handling">Feilhåndtering</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">Ignorer feil under køark behandling</entry>
       </section>
     </section>
 
@@ -816,6 +836,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Bruk Temporal Masking Effect</entry>
 	  <entry id="32305" string="Stream format">Streamformat</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Tving streng ISO-Konformität erzwingen</entry>
+	  <entry id="32307" string="automatic">automatisk</entry>
+	  <entry id="32308" string="always">alltid</entry>
 	</section>
 
 	<section name="Audio processing">
@@ -852,17 +874,18 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maksimal AAC-frekvensbåndbredde i Hz</entry>
 	  <entry id="33210" string="worse">Dårligere</entry>
 	  <entry id="33211" string="better">Bedre</entry>
+	  <entry id="33212" string="auto">automatisk</entry>
 	</section>
 
 	<section name="Format">
 	  <entry id="33300" string="MPEG version">MPEG-versjon</entry>
 	  <entry id="33301" string="AAC object type">AAC-objekttype</entry>
 	  <entry id="33302" string="File format">Filformat</entry>
-	  <entry id="33303" string="File extension"/>
-	  <entry id="33304" string="Tags">Info-merke</entry>
-	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Tillat ID3v2-merker i AAC-filer</entry>
+	  <entry id="33303" string="File extension">Fil etternavn</entry>
+	  <entry id="33304" string="Tags">Etikett</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Tillat ID3v2-etiketter i AAC-filer</entry>
 	  <entry id="33306" string="Note">Notat</entry>
-	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags."/>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Noen avspillere kan ha problemer med å spille AAC filer&#10;med ID3 etiketter. Vennligst bare bruk dette valget om&#10;du er sikker på at din avspiller kan håndtere dette.</entry>
 	</section>
       </section>
 
@@ -885,8 +908,8 @@
 	</section>
 
 	<section name="Format">
-	  <entry id="34200" string="Use streamable subset">Bruk Streamable subset</entry>
-	  <entry id="34201" string="Blocksize">Blockstørrelse</entry>
+	  <entry id="34200" string="Use streamable subset">Bruk strømbart subset</entry>
+	  <entry id="34201" string="Blocksize">Blokkstørrelse</entry>
 	  <entry id="34202" string="%1 samples"/>
 	</section>
 
@@ -914,23 +937,23 @@
 	<entry id="35002" string="Average Bitrate">Gjennomsnittlig bitrate</entry>
 	<entry id="35003" string="Quality">Kvalitet</entry>
 	<entry id="35004" string="Bitrate">Bitrate</entry>
-	<entry id="35005" string="Minimum bitrate"/>
+	<entry id="35005" string="Minimum bitrate">Minimum bitrate</entry>
 	<entry id="35006" string="Average bitrate"/>
-	<entry id="35007" string="Maximum bitrate"/>
+	<entry id="35007" string="Maximum bitrate">Max bitrate</entry>
 	<entry id="35008" string="File extension"/>
       </section>
 
       <section name="WMA">
-	<entry id="36000" string="Select codec"/>
-	<entry id="36001" string="Select codec format"/>
-	<entry id="36002" string="Codec settings"/>
-	<entry id="36003" string="Use codec"/>
-	<entry id="36004" string="Use format"/>
-	<entry id="36005" string="Write uncompressed WMA files"/>
-	<entry id="36006" string="Automatically select format based on settings and input format"/>
-	<entry id="36007" string="Use VBR encoding"/>
+	<entry id="36000" string="Select codec">Velg koder</entry>
+	<entry id="36001" string="Select codec format">Velg kode format</entry>
+	<entry id="36002" string="Codec settings">Kode instillinger</entry>
+	<entry id="36003" string="Use codec">Bruk koder</entry>
+	<entry id="36004" string="Use format">Bruk format</entry>
+	<entry id="36005" string="Write uncompressed WMA files">Skriv ukomprimerte WMA filer</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">Velg automatisk format basert på instillinger og inngangsformat</entry>
+	<entry id="36007" string="Use VBR encoding">Bruk VBR koding</entry>
 	<entry id="36008" string="Quality">Kvalitet</entry>
-	<entry id="36009" string="Target bitrate"/>
+	<entry id="36009" string="Target bitrate">Mål bitrate</entry>
 	<entry id="36010" string="Use 2-pass encoding"/>
       </section>
 
@@ -942,120 +965,120 @@
       </section>
 
       <section name="Monkey's Audio">
-	<entry id="38000" string="Compression"/>
-	<entry id="38001" string="Compression mode"/>
-	<entry id="38002" string="Fast"/>
-	<entry id="38003" string="Normal"/>
-	<entry id="38004" string="High"/>
-	<entry id="38005" string="Extra high"/>
-	<entry id="38006" string="Insane"/>
+	<entry id="38000" string="Compression">Kompresjon</entry>
+	<entry id="38001" string="Compression mode">Kompresjonsmetode</entry>
+	<entry id="38002" string="Fast">Rask</entry>
+	<entry id="38003" string="Normal">Normal</entry>
+	<entry id="38004" string="High">Høy</entry>
+	<entry id="38005" string="Extra high">Ekstra høy</entry>
+	<entry id="38006" string="Insane">Ekstrem</entry>
       </section>
 
       <section name="Speex">
-	<entry id="39000" string="Profile"/>
-	<entry id="39001" string="Select encoding profile"/>
+	<entry id="39000" string="Profile">Profil</entry>
+	<entry id="39001" string="Select encoding profile">Velg kodeprofil</entry>
 	<entry id="39002" string="auto">automatisk</entry>
 	<entry id="39003" string="Narrowband (8 kHz)"/>
 	<entry id="39004" string="Wideband (16 kHz)"/>
 	<entry id="39005" string="Ultra-Wideband (32 kHz)"/>
 	<entry id="39006" string="VBR mode">VBR-modus</entry>
-	<entry id="39007" string="CBR (no VBR)"/>
-	<entry id="39008" string="VBR"/>
-	<entry id="39009" string="ABR"/>
+	<entry id="39007" string="CBR (no VBR)">CBR (ingen VBR)</entry>
+	<entry id="39008" string="VBR">VBR</entry>
+	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Alternativer</entry>
 	<entry id="39011" string="Voice Activity Detection"/>
 	<entry id="39012" string="Discontinuous Transmission"/>
-	<entry id="39013" string="Algorithm complexity"/>
-	<entry id="39014" string="Complexity"/>
-	<entry id="39015" string="CBR quality"/>
+	<entry id="39013" string="Algorithm complexity">Algoritmekompleksitet</entry>
+	<entry id="39014" string="Complexity">Kompleksitet</entry>
+	<entry id="39015" string="CBR quality">CBR-kvalitet</entry>
 	<entry id="39016" string="VBR quality">VBR-kvalitet</entry>
 	<entry id="39017" string="ABR target bitrate">ABR-målbitrate</entry>
-	<entry id="39018" string="Bitrate"/>
-	<entry id="39019" string="Quality"/>
-	<entry id="39020" string="Max. bitrate"/>
+	<entry id="39018" string="Bitrate">Bitrate</entry>
+	<entry id="39019" string="Quality">Kvalitet</entry>
+	<entry id="39020" string="Max. bitrate">Høyeste bitrate</entry>
       </section>
 
       <section name="Opus">
-	<entry id="40000" string="Basic settings"/>
-	<entry id="40001" string="Encoding mode"/>
+	<entry id="40000" string="Basic settings">Grunnleggende</entry>
+	<entry id="40001" string="Encoding mode">Kode metode</entry>
 	<entry id="40002" string="auto">automatisk</entry>
-	<entry id="40003" string="Voice"/>
-	<entry id="40004" string="Music"/>
-	<entry id="40005" string="Bandwidth"/>
+	<entry id="40003" string="Voice">Stemme</entry>
+	<entry id="40004" string="Music">Musikk</entry>
+	<entry id="40005" string="Bandwidth">Båndbredde</entry>
 	<entry id="40006" string="Narrowband"/>
 	<entry id="40007" string="Mediumband"/>
 	<entry id="40008" string="Wideband"/>
 	<entry id="40009" string="Superwideband"/>
 	<entry id="40010" string="Fullband"/>
-	<entry id="40011" string="File extension"/>
-	<entry id="40012" string="Variable bitrate"/>
-	<entry id="40013" string="Enable variable bitrate encoding"/>
+	<entry id="40011" string="File extension">Filtype</entry>
+	<entry id="40012" string="Variable bitrate">Variabel bitrate</entry>
+	<entry id="40013" string="Enable variable bitrate encoding">Aktiver variabel bitrate koding</entry>
 	<entry id="40014" string="Constrain bitrate to target value"/>
 	<entry id="40015" string="Quality">Kvalitet</entry>
-	<entry id="40016" string="Bitrate"/>
-	<entry id="40017" string="Complexity"/>
-	<entry id="40018" string="Stream"/>
+	<entry id="40016" string="Bitrate">Bitrate</entry>
+	<entry id="40017" string="Complexity">Kompleksitet</entry>
+	<entry id="40018" string="Stream">Strøm</entry>
 	<entry id="40019" string="Frame length"/>
 	<entry id="40020" string="Options">Alternativer</entry>
 	<entry id="40021" string="Enable discontinous transmission"/>
-	<entry id="40022" string="Expected packet loss"/>
+	<entry id="40022" string="Expected packet loss">Forventet pakketap</entry>
       </section>
 
       <section name="SndFile">
-	<entry id="41000" string="Output format"/>
+	<entry id="41000" string="Output format">Mål format</entry>
 	<entry id="41001" string="File format">Filformat</entry>
 	<entry id="41002" string="Audio format">Lydformat</entry>
 	<entry id="41003" string="mono">mono</entry>
-	<entry id="41004" string="auto select"/>
+	<entry id="41004" string="auto select">automatisk</entry>
 
 	<section name="Errors">
-	  <entry id="41100" string="Could not find suitable audio format."/>
-	  <entry id="41101" string="Unable to use selected audio format."/>
+	  <entry id="41100" string="Could not find suitable audio format.">Kunne ikke finne passende lydformat</entry>
+	  <entry id="41101" string="Unable to use selected audio format.">Kunne ikke bruke valgt lydformat</entry>
 	</section>
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders"/>
-	<entry id="42001" string="Available"/>
-	<entry id="42002" string="Selected"/>
-	<entry id="42003" string="Configure encoder"/>
-	<entry id="42004" string="Options"/>
-	<entry id="42005" string="Create a separate folder for each output format"/>
+	<entry id="42000" string="Encoders">Kodere</entry>
+	<entry id="42001" string="Available">Tilgjengelige</entry>
+	<entry id="42002" string="Selected">Valgte</entry>
+	<entry id="42003" string="Configure encoder">Konfigurer koder</entry>
+	<entry id="42004" string="Options">Alternativer</entry>
+	<entry id="42005" string="Create a separate folder for each output format">Lag egne mapper for hvert målformat</entry>
       </section>
     </section>
 
     <section name="DSP">
 
       <section name="Format">
-	<entry id="50000" string="Sample format"/>
-	<entry id="50001" string="Number format"/>
-	<entry id="50002" string="Sample resolution"/>
-	<entry id="50003" string="bit"/>
-	<entry id="50004" string="unsigned"/>
+	<entry id="50000" string="Sample format">Samplingsformat</entry>
+	<entry id="50001" string="Number format">nummer type</entry>
+	<entry id="50002" string="Sample resolution">Samplingsoppløsning</entry>
+	<entry id="50003" string="bit">bit</entry>
+	<entry id="50004" string="unsigned">usignert</entry>
 	<entry id="50005" string="Integer"/>
 	<entry id="50006" string="Float"/>
       </section>
 
       <section name="Channels">
-	<entry id="50100" string="Output channels"/>
-	<entry id="50101" string="Channel configuration"/>
-	<entry id="50102" string="Mono"/>
-	<entry id="50103" string="Stereo"/>
-	<entry id="50104" string="Switch stereo channels"/>
+	<entry id="50100" string="Output channels">Mål kanaler</entry>
+	<entry id="50101" string="Channel configuration">Kanal konfigurasjon</entry>
+	<entry id="50102" string="Mono">Mono</entry>
+	<entry id="50103" string="Stereo">Stereo</entry>
+	<entry id="50104" string="Switch stereo channels">Bytt venstre-/høyre-kanal</entry>
       </section>
 
       <section name="Resample">
 	<entry id="50200" string="Converter"/>
-	<entry id="50201" string="Sampling rate"/>
+	<entry id="50201" string="Sampling rate">Samplingsrate</entry>
 	<entry id="50202" string="Output sampling rate"/>
       </section>
 
       <section name="RubberBand">
-	<entry id="50300" string="Basic controls"/>
-	<entry id="50301" string="Tempo"/>
+	<entry id="50300" string="Basic controls">Generelt</entry>
+	<entry id="50301" string="Tempo">Hastighet</entry>
 	<entry id="50302" string="Pitch"/>
 	<entry id="50303" string="%1 Semitones"/>
-	<entry id="50304" string="Advanced options"/>
+	<entry id="50304" string="Advanced options">Avanserte valg</entry>
 	<entry id="50305" string="Transient detection"/>
 	<entry id="50306" string="Compound"/>
 	<entry id="50307" string="Percussive"/>
@@ -1065,9 +1088,9 @@
 	<entry id="50311" string="Mixed"/>
 	<entry id="50312" string="Smooth"/>
 	<entry id="50313" string="Transformation window"/>
-	<entry id="50314" string="Standard"/>
-	<entry id="50315" string="Short"/>
-	<entry id="50316" string="Long"/>
+	<entry id="50314" string="Standard">Standard</entry>
+	<entry id="50315" string="Short">Kort</entry>
+	<entry id="50316" string="Long">Lang</entry>
 	<entry id="50317" string="Use time-domain smoothing"/>
 	<entry id="50318" string="Phase handling"/>
 	<entry id="50319" string="Laminar"/>
@@ -1076,30 +1099,71 @@
 	<entry id="50322" string="Shift"/>
 	<entry id="50323" string="Preserve"/>
 	<entry id="50324" string="Pitch processing"/>
-	<entry id="50325" string="High quality"/>
-	<entry id="50326" string="High speed"/>
+	<entry id="50325" string="High quality">Høy kvalitet</entry>
+	<entry id="50326" string="High speed">Høy hastighet</entry>
 	<entry id="50327" string="High consistency"/>
-	<entry id="50328" string="Stereo processing"/>
-	<entry id="50329" string="Separate"/>
-	<entry id="50330" string="Combined"/>
+	<entry id="50328" string="Stereo processing">Stereo behandling</entry>
+	<entry id="50329" string="Separate">Separat</entry>
+	<entry id="50330" string="Combined">Kombinert</entry>
       </section>
 
       <section name="RNNoise">
-	<entry id="50400" string="Signal/noise type"/>
-	<entry id="50401" string="Signal type"/>
-	<entry id="50402" string="Noise type"/>
-	<entry id="50403" string="General"/>
-	<entry id="50404" string="Recording"/>
-	<entry id="50405" string="Voice (incl. laughter etc.)"/>
-	<entry id="50406" string="Speech"/>
+	<entry id="50400" string="Signal/noise type">Signal/støy type</entry>
+	<entry id="50401" string="Signal type">Signal type</entry>
+	<entry id="50402" string="Noise type">Støy type</entry>
+	<entry id="50403" string="General">Generell</entry>
+	<entry id="50404" string="Recording">Opptak</entry>
+	<entry id="50405" string="Voice (incl. laughter etc.)">Stemmer (inkl. latter, osv.)</entry>
+	<entry id="50406" string="Speech">Tale</entry>
       </section>
     </section>
 
     <section name="Taggers">
 
       <section name="MP4">
-	<entry id="60000" string="Chapter format"/>
-	<entry id="60001" string="both"/>
+	<entry id="60000" string="Chapter format">Kapittel format</entry>
+	<entry id="60001" string="both">Begge</entry>
+      </section>
+    </section>
+
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip"/>
+	<entry id="70001" string="General settings"/>
+	<entry id="70002" string="Enable AccurateRip"/>
+	<entry id="70003" string="Database URL"/>
+	<entry id="70004" string="Cache"/>
+	<entry id="70005" string="Enable cache"/>
+	<entry id="70006" string="Expires after"/>
+	<entry id="70007" string="%1 day(s)"/>
+	<entry id="70008" string="%1 week(s)"/>
+	<entry id="70009" string="%1 month(s)"/>
+	<entry id="70010" string="%1 year(s)"/>
+	<entry id="70011" string="never"/>
+	<entry id="70012" string="Drives"/>
+	<entry id="70013" string="Drive"/>
+	<entry id="70014" string="Offset configuration"/>
+	<entry id="70015" string="Offset in drive database"/>
+	<entry id="70016" string="Detected offset"/>
+	<entry id="70017" string="Configured offset"/>
+	<entry id="70018" string="Detect offset now"/>
+	<entry id="70019" string="not configured"/>
+	<entry id="70020" string="automatically configured"/>
+	<entry id="70021" string="configured by offset detection"/>
+	<entry id="70022" string="manually configured"/>
+	<entry id="70023" string="not present"/>
+	<entry id="70024" string="not detected"/>
+	<entry id="70025" string="disabled"/>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration"/>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?"/>
+	  <entry id="70052" string="Do not ask again"/>
+	  <entry id="70053" string="AccurateRip offset detection"/>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database."/>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
+	</section>
       </section>
     </section>
 
@@ -1107,7 +1171,7 @@
       <entry id="80000" string="Downmix multi-channel audio to stereo"/>
 
       <section name="Musepack Audio Encoder">
-	<entry id="80100" string="Quality"/>
+	<entry id="80100" string="Quality">Kvalitet</entry>
 	<entry id="80101" string="poor"/>
 	<entry id="80102" string="excellent"/>
 	<entry id="80103" string="Mid/Side stereo mode"/>
@@ -1128,8 +1192,8 @@
 
       <section name="OptimFROG Lossless Encoder">
 	<entry id="80200" string="Encoding mode"/>
-	<entry id="80201" string="fast"/>
-	<entry id="80202" string="normal"/>
+	<entry id="80201" string="fast">Rask</entry>
+	<entry id="80202" string="normal">Nørmal</entry>
 	<entry id="80203" string="high"/>
 	<entry id="80204" string="extra"/>
 	<entry id="80205" string="best"/>
@@ -1141,7 +1205,7 @@
 	<entry id="80211" string="slow"/>
 	<entry id="80212" string="minimum"/>
 	<entry id="80213" string="Optimization"/>
-	<entry id="80214" string="disabled"/>
+	<entry id="80214" string="disabled">deaktivert</entry>
 	<entry id="80215" string="low"/>
       </section>
 
@@ -1155,76 +1219,76 @@
 
       <section name="WavPack Audio Encoder">
 	<entry id="80400" string="Enable lossy compression"/>
-	<entry id="80401" string="Compression mode"/>
-	<entry id="80402" string="fast"/>
-	<entry id="80403" string="high quality"/>
-	<entry id="80404" string="very high quality"/>
+	<entry id="80401" string="Compression mode">Kompresjonsmetode</entry>
+	<entry id="80402" string="fast">Rask</entry>
+	<entry id="80403" string="high quality">Høy kvalitet</entry>
+	<entry id="80404" string="very high quality">Veldig høy kvalitet</entry>
 	<entry id="80405" string="Extra encode processing"/>
 	<entry id="80406" string="faster"/>
-	<entry id="80407" string="better"/>
-	<entry id="80408" string="%1 kbps"/>
+	<entry id="80407" string="better">Bedre</entry>
+	<entry id="80408" string="%1 kbps">%1 kbps</entry>
       </section>
 
       <section name="Nero AAC Encoder">
 	<entry id="80500" string="Encoding mode"/>
-	<entry id="80501" string="auto"/>
-	<entry id="80502" string="Quality"/>
-	<entry id="80503" string="worse"/>
-	<entry id="80504" string="better"/>
-	<entry id="80505" string="Bitrate"/>
-	<entry id="80506" string="Bitrate (Streaming)"/>
-	<entry id="80507" string="%1 kbps"/>
+	<entry id="80501" string="auto">automatisk</entry>
+	<entry id="80502" string="Quality">Kvalitet</entry>
+	<entry id="80503" string="worse">Dårligere</entry>
+	<entry id="80504" string="better">Bedre</entry>
+	<entry id="80505" string="Bitrate">Bitrate</entry>
+	<entry id="80506" string="Bitrate (Streaming)">Bitrate (strømming)</entry>
+	<entry id="80507" string="%1 kbps">%1 kbps</entry>
       </section>
 
       <section name="Windows Media Audio Encoder">
-	<entry id="80600" string="Bitrate"/>
-	<entry id="80601" string="%1 kbps"/>
+	<entry id="80600" string="Bitrate">Bitrate</entry>
+	<entry id="80601" string="%1 kbps">%1 kbps</entry>
       </section>
     </section>
 
     <section name="Extensions">
 
       <section name="Donate">
-	<entry id="100000" string="Support this project"/>
-	<entry id="100001" string="Please support this project!"/>
-	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation."/>
-	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail."/>
-	<entry id="100004" string="Thank you very much!"/>
-	<entry id="100005" string="Remind me later"/>
+	<entry id="100000" string="Support this project">Støtt dette prosjektet</entry>
+	<entry id="100001" string="Please support this project!">Vennligst støtt dette prosjektet</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">Vennligst hjelp å holde dette programmet gratis ved å supportere %1 prosjektet&#10;med en donasjon.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">Vennligst skriv til %1 hvis du ønsker å donere via post.</entry>
+	<entry id="100004" string="Thank you very much!">Tusen takk!</entry>
+	<entry id="100005" string="Remind me later">Påminn meg senere</entry>
 	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,sepa,bitcoin,ethereum</entry>
-	<entry id="100007" string="Donate to the %1 project"/>
+	<entry id="100007" string="Donate to the %1 project">Doner til %1 prosjektet</entry>
 
 	<section name="PayPal">
-	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:"/>
-	  <entry id="100101" string="You can also send money directly to %1 with PayPal."/>
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">Velg et beløp og klikk på ikonet for å donere via PayPal:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Du kan også donere direkte til %1 med PayPal.</entry>
 	  <entry id="100102" string="usd">nok</entry>
 	  <entry id="100103" string="$%1">%1 kr</entry>
 	  <entry id="100104" string="5,10,20,other amount">50,100,200,andre beløp</entry>
-	  <entry id="100105" string="monthly recurring"/>
-	  <entry id="100106" string="Donate"/>
+	  <entry id="100105" string="monthly recurring">gjenta månedlig</entry>
+	  <entry id="100106" string="Donate">Doner</entry>
 	</section>
 
 	<section name="Donorbox">
-	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:"/>
-	  <entry id="100201" string="Donate"/>
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">Donorbox muliggjør rask og enkel donering med kredittkort. Trykk på dette&#10;ikonet for å donere via Donorbox:</entry>
+	  <entry id="100201" string="Donate">Doner</entry>
 	  <entry id="100202" string="usd">eur</entry>
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:"/>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Vennligst skann eller trykk på QR-koden, eller kopier den&#10; følgende adressen for å donere Bitcoin:</entry>
 	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks."/>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:"/>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Vennligst skann eller trykk på QR-koden, eller kopier den&#10; følgende adressen for å donere Ethereum:</entry>
 	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens."/>
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:"/>
-	  <entry id="100501" string="Account holder:"/>
-	  <entry id="100502" string="IBAN:"/>
-	  <entry id="100503" string="BIC:"/>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Du kan donere med en overføring til følgende konto:</entry>
+	  <entry id="100501" string="Account holder:">Konto eier:</entry>
+	  <entry id="100502" string="IBAN:">IBAN:</entry>
+	  <entry id="100503" string="BIC:">BIC:</entry>
 	</section>
       </section>
 
@@ -1234,9 +1298,9 @@
       </section>
 
       <section name="Video Downloader">
-	<entry id="102000" string="Video"/>
-	<entry id="102001" string="Enter video URL here"/>
-	<entry id="102002" string="Download"/>
+	<entry id="102000" string="Video">Video</entry>
+	<entry id="102001" string="Enter video URL here">Skriv inn URL for video her</entry>
+	<entry id="102002" string="Download">Last ned</entry>
 	<entry id="102003" string="Automatically download URLs copied to clipboard"/>
 	<entry id="102004" string="Save downloaded video files"/>
 	<entry id="102005" string="Video downloads"/>
@@ -1246,52 +1310,52 @@
 	<entry id="102009" string="Video title"/>
 	<entry id="102010" string="Video description"/>
 	<entry id="102011" string="Site name"/>
-	<entry id="102012" string="Uploaded by"/>
-	<entry id="102013" string="Uploaded on"/>
+	<entry id="102012" string="Uploaded by">Lastet opp av</entry>
+	<entry id="102013" string="Uploaded on">Lastet opp</entry>
 	<entry id="102014" string="Length">Lengde</entry>
 	<entry id="102015" string="Size">Størrelse</entry>
-	<entry id="102016" string="Cancel download"/>
+	<entry id="102016" string="Cancel download">Avbryt nedlasting</entry>
 	<entry id="102017" string="unknown"/>
-	<entry id="102018" string="Note"/>
+	<entry id="102018" string="Note">Notat</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatisering</entry>
-	  <entry id="102102" string="Video files"/>
+	  <entry id="102102" string="Video files">Video filer</entry>
 	  <entry id="102103" string="Select">Bla gjennom</entry>
 	  <entry id="102104" string="Select the folder to save downloaded video files to"/>
-	  <entry id="102105" string="Downloads"/>
+	  <entry id="102105" string="Downloads">Nedlastinger</entry>
 	  <entry id="102106" string="Maximum number of simultaneous downloads"/>
 	  <entry id="102107" string="Output format"/>
-	  <entry id="102108" string="keep original format"/>
+	  <entry id="102108" string="keep original format">behold originalt format</entry>
 	</section>
 
 	<section name="Errors">
 	  <entry id="102201" string="This URL is not supported or not a video page URL!"/>
-	  <entry id="102202" string="Error downloading video!"/>
-	  <entry id="102203" string="You are already downloading this video!"/>
+	  <entry id="102202" string="Error downloading video!">Nedlasting av video feilet!</entry>
+	  <entry id="102203" string="You are already downloading this video!">Du laster allerede ned denne videoen!</entry>
 	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!"/>
 	</section>
       </section>
 
       <section name="Tag Editor">
-	<entry id="103000" string="Tags">Info-merke</entry>
+	<entry id="103000" string="Tags">Etikett</entry>
 	<entry id="103001" string="Length">Lengde</entry>
 	<entry id="103002" string="Size">Størrelse</entry>
-	<entry id="103003" string="Albums"/>
-	<entry id="103004" string="Files"/>
+	<entry id="103003" string="Albums">Album</entry>
+	<entry id="103004" string="Files">Filer</entry>
 	<entry id="103005" string="File">Fil</entry>
-	<entry id="103006" string="Tracks"/>
-	<entry id="103007" string="Save"/>
-	<entry id="103008" string="Save all"/>
-	<entry id="103009" string="no audio files found"/>
+	<entry id="103006" string="Tracks">Spor</entry>
+	<entry id="103007" string="Save">Lagre</entry>
+	<entry id="103008" string="Save all">Lagre alle</entry>
+	<entry id="103009" string="no audio files found">Ingen lydfiler funnet</entry>
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Enkelt</entry>
 	  <entry id="103101" string="Title information"/>
-	  <entry id="103102" string="Disc"/>
-	  <entry id="103103" string="Cover art"/>
-	  <entry id="103104" string="Covers"/>
-	  <entry id="103105" string="Type"/>
+	  <entry id="103102" string="Disc">Disk</entry>
+	  <entry id="103103" string="Cover art">Album bilde</entry>
+	  <entry id="103104" string="Covers">Album</entry>
+	  <entry id="103105" string="Type">Type</entry>
 	  <entry id="103106" string="Description">Beskrivelse</entry>
 	  <entry id="103107" string="Add">Legg til</entry>
 	  <entry id="103108" string="Remove">Fjern</entry>
@@ -1299,80 +1363,87 @@
 
 	<section name="Details">
 	  <entry id="103200" string="Details">Detaljer</entry>
-	  <entry id="103201" string="Detailed information"/>
+	  <entry id="103201" string="Detailed information">Detaljert info</entry>
 	  <entry id="103202" string="Band / orchestra"/>
 	  <entry id="103203" string="Conductor"/>
-	  <entry id="103204" string="Composer"/>
-	  <entry id="103205" string="Lyrics writer"/>
+	  <entry id="103204" string="Composer">Komponist</entry>
+	  <entry id="103205" string="Lyrics writer">Tekst forfatter</entry>
 	  <entry id="103206" string="Modified / remixed by"/>
-	  <entry id="103207" string="Publisher information"/>
-	  <entry id="103208" string="Publisher / label"/>
-	  <entry id="103209" string="ISRC"/>
-	  <entry id="103210" string="Tempo"/>
-	  <entry id="103211" string="BPM"/>
-	  <entry id="103212" string="Catalog number"/>
-	  <entry id="103213" string="Barcode"/>
+	  <entry id="103207" string="Original information">Original info</entry>
+	  <entry id="103208" string="Original artist">Original artist</entry>
+	  <entry id="103209" string="Original album"/>
+	  <entry id="103210" string="Original lyrics writer">Original tekstforfatter</entry>
+	  <entry id="103211" string="Original release year">Originalt lanseringsår</entry>
+	  <entry id="103212" string="Tempo"/>
+	  <entry id="103213" string="BPM"/>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other"/>
-	  <entry id="103301" string="Original information"/>
-	  <entry id="103302" string="Original artist"/>
-	  <entry id="103303" string="Original album"/>
-	  <entry id="103304" string="Original lyrics writer"/>
-	  <entry id="103305" string="Original release year"/>
-	  <entry id="103306" string="Webpage URLs"/>
-	  <entry id="103307" string="Artist webpage"/>
-	  <entry id="103308" string="Publisher webpage"/>
-	  <entry id="103309" string="Internet radio station"/>
-	  <entry id="103310" string="Audio source webpage"/>
-	  <entry id="103311" string="Copyright information"/>
-	  <entry id="103312" string="Commercial information"/>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher"/>
+	  <entry id="103301" string="Publisher information"/>
+	  <entry id="103302" string="Publisher / label"/>
+	  <entry id="103303" string="Media type"/>
+	  <entry id="103304" string="Catalog number"/>
+	  <entry id="103305" string="Barcode">Strekkode</entry>
+	  <entry id="103306" string="ISRC"/>
+	  <entry id="103307" string="Webpage URLs">Nettadresser</entry>
+	  <entry id="103308" string="Artist webpage">Artistens nettside</entry>
+	  <entry id="103309" string="Publisher webpage">Forlagets nettside</entry>
+	  <entry id="103310" string="Internet radio station"/>
+	  <entry id="103311" string="Audio source webpage"/>
+	  <entry id="103312" string="Copyright information">Info om kopibeskyttelse</entry>
+	  <entry id="103313" string="Commercial information">Komersiell info</entry>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior"/>
+	  <entry id="103401" string="Clear album artist field when it matches track artist"/>
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åpne filen: %1&#10;&#10;Feil: %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2"/>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Kan ikke åpne filen: %1&#10;&#10;Feil: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2"/>
 	</section>
       </section>
 
       <section name="Logging">
 	<entry id="104000" string="Logs">Protokoller</entry>
 	<entry id="104001" string="Log">Protokoll</entry>
-	<entry id="104002" string="Save as"/>
-	<entry id="104003" string="Log Files"/>
-	<entry id="104004" string="Time"/>
+	<entry id="104002" string="Save as">Lagre som</entry>
+	<entry id="104003" string="Log Files">Protokoll filer</entry>
+	<entry id="104004" string="Time">Tid</entry>
 	<entry id="104005" string="Message">Melding</entry>
 
 	<section name="Configuration">
-	  <entry id="104100" string="User interface"/>
-	  <entry id="104101" string="Show Logs tab in main window"/>
-	  <entry id="104102" string="Log files"/>
-	  <entry id="104103" string="Archive log files"/>
-	  <entry id="104104" string="Log file folder"/>
-	  <entry id="104105" string="Select"/>
-	  <entry id="104106" string="Select the folder for saving log files"/>
-	  <entry id="104107" string="Delete old log files after"/>
-	  <entry id="104108" string="days"/>
-	  <entry id="104109" string="Conversion logs"/>
-	  <entry id="104110" string="Save conversion logs with audio files"/>
-	  <entry id="104111" string="Audio CD ripping logs only"/>
-	  <entry id="104112" string="Filename pattern"/>
+	  <entry id="104100" string="User interface">Brukergrensesnitt</entry>
+	  <entry id="104101" string="Show Logs tab in main window">Vis fanen protokoller</entry>
+	  <entry id="104102" string="Log files">Protokoll filer</entry>
+	  <entry id="104103" string="Archive log files">Lagre protokoll filer</entry>
+	  <entry id="104104" string="Log file folder">Protokoll mappe</entry>
+	  <entry id="104105" string="Select">Bla gjennom</entry>
+	  <entry id="104106" string="Select the folder for saving log files">Velg mappe for lagring av protokoll filer</entry>
+	  <entry id="104107" string="Delete old log files after">Slett gamle protokoll filer etter</entry>
+	  <entry id="104108" string="days">dager</entry>
+	  <entry id="104109" string="Conversion logs">Konverteringsprotokoll</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">Lagre konverteringsprotokoll sammen med lydfiler</entry>
+	  <entry id="104111" string="Audio CD ripping logs only">Kun lyd CD ripping protokoller</entry>
+	  <entry id="104112" string="Filename pattern">Filnavnmønster</entry>
+	  <entry id="104113" string="Log complete file paths"/>
 	</section>
       </section>
 
       <section name="Notifier">
-	<entry id="105000" string="Conversion process finished!"/>
+	<entry id="105000" string="Conversion process finished!">Konvertering er fullført!</entry>
 
 	<section name="Configuration">
-	  <entry id="105100" string="Notifications"/>
-	  <entry id="105101" string="Notify on finished conversion"/>
-	  <entry id="105102" string="Play sound"/>
-	  <entry id="105103" string="Display message"/>
-	  <entry id="105104" string="Select"/>
-	  <entry id="105105" string="Only for conversions running longer than"/>
-	  <entry id="105106" string="second(s)"/>
-	  <entry id="105107" string="minute(s)"/>
+	  <entry id="105100" string="Notifications">Varsler</entry>
+	  <entry id="105101" string="Notify on finished conversion">Varsle når konvertering er ferdig</entry>
+	  <entry id="105102" string="Play sound">Spill lyd</entry>
+	  <entry id="105103" string="Display message">Vis melding</entry>
+	  <entry id="105104" string="Select">Bla gjennom</entry>
+	  <entry id="105105" string="Only for conversions running longer than">Bare for konverteringer over</entry>
+	  <entry id="105106" string="second(s)">sekund(er)</entry>
+	  <entry id="105107" string="minute(s)">minutt(er)</entry>
 	</section>
       </section>
     </section>

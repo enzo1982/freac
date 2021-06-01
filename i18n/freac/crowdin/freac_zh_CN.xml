@@ -64,6 +64,21 @@
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
+    <section name="Media types">
+      <entry id="600" string="CD"/>
+      <entry id="601" string="DAT"/>
+      <entry id="602" string="MiniDisc"/>
+      <entry id="603" string="Compact Cassette"/>
+      <entry id="604" string="Reel tape"/>
+      <entry id="605" string="Vinyl"/>
+      <entry id="606" string="DVD"/>
+      <entry id="607" string="LaserDisc"/>
+      <entry id="608" string="TV"/>
+      <entry id="609" string="Video"/>
+      <entry id="610" string="Radio"/>
+      <entry id="611" string="Telephone"/>
+    </section>
+
     <section name="Menu">
       <entry id="1000" string="File">文件</entry>
       <entry id="1001" string="Options">选项</entry>
@@ -101,7 +116,7 @@
 	<entry id="1301" string="Configure signal processing">配置信号处理</entry>
 	<entry id="1302" string="Configure selected encoder">设置已选编码器</entry>
 	<entry id="1303" string="Active CD-ROM drive">当前使用的 CD-ROM 驱动器</entry>
-	<entry id="1304" string="Active configuration">当前使用的配置</entry>
+	<entry id="1304" string="Active configuration">当前配置</entry>
 	<entry id="1305" string="Default configuration">默认配置</entry>
       </section>
 
@@ -112,9 +127,9 @@
       </section>
 
       <section name="Encode">
-	<entry id="1500" string="Start encoding">启动编码</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">启动编码（删除源文件）</entry>
-	<entry id="1502" string="Start encoding with">启动编码</entry>
+	<entry id="1500" string="Start encoding">开始编码</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">开始编码（删除源文件）</entry>
+	<entry id="1502" string="Start encoding with">开始编码</entry>
 	<entry id="1503" string="Pause/resume encoding">暂停/继续编码</entry>
 	<entry id="1504" string="Stop encoding">停止编码</entry>
 	<entry id="1505" string="Encoder options">编码器选项</entry>
@@ -147,8 +162,8 @@
       <entry id="2006" string="Configure general settings">设置常规选项</entry>
       <entry id="2007" string="Configure signal processing">配置信号处理</entry>
       <entry id="2008" string="Configure the selected audio encoder">设置选中的音频编码器</entry>
-      <entry id="2009" string="Start the encoding process">启动编码处理</entry>
-      <entry id="2010" string="Start the encoding process (deleting original files)">启动编码处理（删除源文件）</entry>
+      <entry id="2009" string="Start the encoding process">开始编码处理</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">开始编码处理（删除源文件）</entry>
       <entry id="2011" string="Pause/resume encoding">暂停/继续编码</entry>
       <entry id="2012" string="Stop encoding">停止编码</entry>
     </section>
@@ -176,7 +191,7 @@
       <entry id="3019" string="Interpret string as">将字符串翻译为</entry>
       <entry id="3020" string="selected tracks">已选曲目</entry>
       <entry id="3021" string="Adjust upper/lower case">调整大小写</entry>
-      <entry id="3022" string="all words upper case">全部词大写</entry>
+      <entry id="3022" string="all words upper case">全部大写</entry>
       <entry id="3023" string="long words upper case">长词大写</entry>
       <entry id="3024" string="first letter upper case">首字母大写</entry>
       <entry id="3025" string="all lower case">全部小写</entry>
@@ -385,7 +400,7 @@
       <entry id="5010" string="DSP">DSP</entry>
       <entry id="5011" string="Extensions">扩展</entry>
       <entry id="5012" string="Other">其他</entry>
-      <entry id="5013" string="Active configuration">正在使用的配置</entry>
+      <entry id="5013" string="Active configuration">当前配置</entry>
       <entry id="5014" string="New">新建</entry>
       <entry id="5015" string="Delete">删除</entry>
       <entry id="5016" string="Command line arguments">命令行参数</entry>
@@ -471,7 +486,7 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="5350" string="Please enter a valid eMail address.">请输入一个有效的 e-Mai l地址。</entry>
+	  <entry id="5350" string="Please enter a valid eMail address.">请输入一个有效的电子邮件地址。</entry>
 	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb 的 CDDBP 通讯协议无法使用 HTTP 正向代理服务器！&#10;您是否要更换 HTTP 通讯协议？</entry>
 	</section>
       </section>
@@ -615,8 +630,8 @@
       <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">无法为输入文件设置解码器：%1&#10;&#10;文件：%1&#10;路径：%2&#10;&#10;错误：%3</entry>
       <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">无法为输出文件设置编码器：%1&#10;&#10;文件：%1&#10;路径：%2&#10;&#10;错误：%3</entry>
       <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">无法设置 DSP 处理器：%1&#10;&#10;错误：%2</entry>
-      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">不能访问输入文件： %1&#10;&#10;文件： %1&#10;路径： %2</entry>
-      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">不能创建输出文件： %1&#10;&#10;文件： %1&#10;路径： %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">不能访问输入文件：%1&#10;&#10;文件：%1&#10;路径：%2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">不能创建输出文件：%1&#10;&#10;文件：%1&#10;路径：%2</entry>
       <entry id="7107" string="Failed to verify input file: %1">无法校验输入文件：%1</entry>
       <entry id="7108" string="Failed to verify input track: %1"/>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">校验输出文件时 Checksum 不匹配：%1&#10;&#10;编码 Checksum：%2&#10;校验 Checksum：%3</entry>
@@ -626,7 +641,7 @@
       <entry id="7113" string="Unsupported audio format">不支持的音频格式</entry>
       <entry id="7114" string="Unknown error">未知错误</entry>
       <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">不能加载 NT SCSI 驱动器！ 不能进行 CD 翻录！</entry>
-      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件： %1&#10;&#10;错误： %2</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件：%1&#10;&#10;错误：%2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">从同一驱动器翻录时无法播放 CD 曲目！</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">从同一驱动器播放曲目时无法开始翻录！</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB 支持已停用！请在设置对话框中&#10;启用本地或远程 CDDB 支持。</entry>
@@ -708,10 +723,15 @@
 	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier"/>
+      </section>
+
       <section name="Extensions">
 	<entry id="15000" string="Notifications">提示</entry>
 	<entry id="15001" string="Logging">日志</entry>
-	<entry id="15002" string="YouTube Video Downloader">YouTube Video Downloader</entry>
+	<entry id="15002" string="Video Downloader"/>
+	<entry id="15003" string="Tag Editor"/>
       </section>
     </section>
 
@@ -816,6 +836,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">使用时序遮盖效果</entry>
 	  <entry id="32305" string="Stream format">流媒体格式</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">采用严格的 ISO 标准</entry>
+	  <entry id="32307" string="automatic">自动</entry>
+	  <entry id="32308" string="always">总是</entry>
 	</section>
 
 	<section name="Audio processing">
@@ -842,7 +864,7 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">比特率</entry>
 	  <entry id="33201" string="Bitrate / Quality">比特率/品质</entry>
-	  <entry id="33202" string="Bitrate per channel">声道比特率</entry>
+	  <entry id="33202" string="Bitrate per channel">每声道比特率</entry>
 	  <entry id="33203" string="Set quality">设置品质</entry>
 	  <entry id="33204" string="Stereo mode">立体声模式</entry>
 	  <entry id="33205" string="Allow Joint Stereo">允许使用混合立体声</entry>
@@ -852,6 +874,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">可用的最大 AAC 频率带宽(Hz)</entry>
 	  <entry id="33210" string="worse">较差</entry>
 	  <entry id="33211" string="better">较好</entry>
+	  <entry id="33212" string="auto">自动</entry>
 	</section>
 
 	<section name="Format">
@@ -936,7 +959,7 @@
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">比特率</entry>
-	<entry id="37001" string="Bitrate per channel">声道比特率</entry>
+	<entry id="37001" string="Bitrate per channel">每声道比特率</entry>
 	<entry id="37002" string="Preselection">预选</entry>
 	<entry id="37003" string="Number of preselection candidates">预选数量</entry>
       </section>
@@ -1100,6 +1123,47 @@
       <section name="MP4">
 	<entry id="60000" string="Chapter format">章节格式</entry>
 	<entry id="60001" string="both">两者都有</entry>
+      </section>
+    </section>
+
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip"/>
+	<entry id="70001" string="General settings"/>
+	<entry id="70002" string="Enable AccurateRip"/>
+	<entry id="70003" string="Database URL"/>
+	<entry id="70004" string="Cache"/>
+	<entry id="70005" string="Enable cache"/>
+	<entry id="70006" string="Expires after"/>
+	<entry id="70007" string="%1 day(s)"/>
+	<entry id="70008" string="%1 week(s)"/>
+	<entry id="70009" string="%1 month(s)"/>
+	<entry id="70010" string="%1 year(s)"/>
+	<entry id="70011" string="never"/>
+	<entry id="70012" string="Drives"/>
+	<entry id="70013" string="Drive"/>
+	<entry id="70014" string="Offset configuration"/>
+	<entry id="70015" string="Offset in drive database"/>
+	<entry id="70016" string="Detected offset"/>
+	<entry id="70017" string="Configured offset"/>
+	<entry id="70018" string="Detect offset now"/>
+	<entry id="70019" string="not configured"/>
+	<entry id="70020" string="automatically configured"/>
+	<entry id="70021" string="configured by offset detection"/>
+	<entry id="70022" string="manually configured"/>
+	<entry id="70023" string="not present"/>
+	<entry id="70024" string="not detected"/>
+	<entry id="70025" string="disabled"/>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration"/>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?"/>
+	  <entry id="70052" string="Do not ask again"/>
+	  <entry id="70053" string="AccurateRip offset detection"/>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database."/>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
+	</section>
       </section>
     </section>
 
@@ -1305,34 +1369,40 @@
 	  <entry id="103204" string="Composer">作曲</entry>
 	  <entry id="103205" string="Lyrics writer">作词</entry>
 	  <entry id="103206" string="Modified / remixed by">修改 / 混音</entry>
-	  <entry id="103207" string="Publisher information">出版商信息</entry>
-	  <entry id="103208" string="Publisher / label">出版商 / 标签</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">节奏</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
-	  <entry id="103212" string="Catalog number"/>
-	  <entry id="103213" string="Barcode"/>
+	  <entry id="103207" string="Original information">原始信息</entry>
+	  <entry id="103208" string="Original artist">原艺术家</entry>
+	  <entry id="103209" string="Original album">原专辑</entry>
+	  <entry id="103210" string="Original lyrics writer">原作词</entry>
+	  <entry id="103211" string="Original release year">原发行时间</entry>
+	  <entry id="103212" string="Tempo">节奏</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">其他</entry>
-	  <entry id="103301" string="Original information">原始信息</entry>
-	  <entry id="103302" string="Original artist">原艺术家</entry>
-	  <entry id="103303" string="Original album">原专辑</entry>
-	  <entry id="103304" string="Original lyrics writer">原作词</entry>
-	  <entry id="103305" string="Original release year">原发行时间</entry>
-	  <entry id="103306" string="Webpage URLs">网页地址</entry>
-	  <entry id="103307" string="Artist webpage">艺术家主页</entry>
-	  <entry id="103308" string="Publisher webpage">出版商主页</entry>
-	  <entry id="103309" string="Internet radio station">国际音乐电台</entry>
-	  <entry id="103310" string="Audio source webpage">音频资源网</entry>
-	  <entry id="103311" string="Copyright information">版权信息</entry>
-	  <entry id="103312" string="Commercial information">商业信息</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">出版商</entry>
+	  <entry id="103301" string="Publisher information">出版商信息</entry>
+	  <entry id="103302" string="Publisher / label">出版商 / 标签</entry>
+	  <entry id="103303" string="Media type"/>
+	  <entry id="103304" string="Catalog number"/>
+	  <entry id="103305" string="Barcode"/>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">网页地址</entry>
+	  <entry id="103308" string="Artist webpage">艺术家主页</entry>
+	  <entry id="103309" string="Publisher webpage">出版商主页</entry>
+	  <entry id="103310" string="Internet radio station">国际音乐电台</entry>
+	  <entry id="103311" string="Audio source webpage">音频资源网</entry>
+	  <entry id="103312" string="Copyright information">版权信息</entry>
+	  <entry id="103313" string="Commercial information">商业信息</entry>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior"/>
+	  <entry id="103401" string="Clear album artist field when it matches track artist"/>
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件： %1&#10;&#10;错误： %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">无法更新标签：%1&#10;&#10;错误：%2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件：%1&#10;&#10;错误：%2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">无法更新标签：%1&#10;&#10;错误：%2</entry>
 	</section>
       </section>
 
@@ -1358,6 +1428,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">保存转换日志至音频文件</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">仅音频 CD 翻录日志</entry>
 	  <entry id="104112" string="Filename pattern">文件名样式</entry>
+	  <entry id="104113" string="Log complete file paths"/>
 	</section>
       </section>
 

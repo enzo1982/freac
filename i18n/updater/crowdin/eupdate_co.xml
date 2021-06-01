@@ -27,10 +27,11 @@
     <entry id="14" string="Installing files...">Installazione di i schedarii…</entry>
     <entry id="15" string="Installing file:">Installazione di u schedariu :</entry>
     <entry id="16" string="Downloading file:">Scaricamentu di u schedariu :</entry>
-    <entry id="17" string="Update complete">Rinnovu compiu</entry>
-    <entry id="18" string="Your application has been successfully updated!">A vostr’appiecazione hè stata rinnovata bè !</entry>
-    <entry id="19" string="Error">Sbagliu</entry>
-    <entry id="20" string="Error downloading package!">Sbagliu durante u scaricamentu di u pacchettu !</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Sbagliu durante l’installazione di « %1 » !&#10;&#10;L’accessu à u cartulare di l’appiecazione hè statu ricusatu.</entry>
+    <entry id="17" string="Extracting file:"/>
+    <entry id="18" string="Update complete">Rinnovu compiu</entry>
+    <entry id="19" string="Your application has been successfully updated!">A vostr’appiecazione hè stata rinnovata bè !</entry>
+    <entry id="20" string="Error">Sbagliu</entry>
+    <entry id="21" string="Error downloading package!">Sbagliu durante u scaricamentu di u pacchettu !</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Sbagliu durante l’installazione di « %1 » !&#10;&#10;L’accessu à u cartulare di l’appiecazione hè statu ricusatu.</entry>
   </data>
 </LangFile>
