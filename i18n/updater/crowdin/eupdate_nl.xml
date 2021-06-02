@@ -27,7 +27,7 @@
     <entry id="14" string="Installing files...">Bestanden installeren...</entry>
     <entry id="15" string="Installing file:">Bestand installeren:</entry>
     <entry id="16" string="Downloading file:">Bestand downloaden:</entry>
-    <entry id="17" string="Extracting file:"/>
+    <entry id="17" string="Extracting file:">Bestand uitpakken:</entry>
     <entry id="18" string="Update complete">Update voltooid</entry>
     <entry id="19" string="Your application has been successfully updated!">De toepassing is met succes bijgewerkt!</entry>
     <entry id="20" string="Error">Fout</entry>
