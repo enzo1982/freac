@@ -8,6 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">eupdate.xml</property>
     <property name="author">Krzysztof Konopacki, Darek Rzeźnicki</property>
+    <property name="url">http://www.chapter0.net/easyUpdate/</property>
   </info>
   <data>
     <entry id="1" string="Cancel">Anuluj</entry>

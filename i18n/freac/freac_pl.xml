@@ -78,7 +78,7 @@
       <entry id="610" string="Radio">Radio</entry>
       <entry id="611" string="Telephone">Telefon</entry>
     </section>
-	  
+
     <section name="Menu">
       <entry id="1000" string="File">Plik</entry>
       <entry id="1001" string="Options">Ustawienia</entry>
@@ -723,10 +723,15 @@
 	<entry id="12005" string="HDCD Decoder">Dekoder HDCD"</entry>
       </section>
 
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier">Weryfikator AccurateRip</entry>
+      </section>
+
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Powiadomienia</entry>
 	<entry id="15001" string="Logging">Dzienniki zdarzeń</entry>
 	<entry id="15002" string="Video Downloader">Pobieranie filmów</entry>
+	<entry id="15003" string="Tag Editor">Edytor znaczników</entry>
       </section>
     </section>
 
@@ -1121,6 +1126,47 @@
       </section>
     </section>
 
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">Skonfiguruj AccurateRip</entry>
+	<entry id="70001" string="General settings">Ustawienia ogólne</entry>
+	<entry id="70002" string="Enable AccurateRip">Włącz AccurateRip</entry>
+	<entry id="70003" string="Database URL">Adres URL bazy danych</entry>
+	<entry id="70004" string="Cache">Pamięć podręczna</entry>
+	<entry id="70005" string="Enable cache">Włącz pamięć podręczną</entry>
+	<entry id="70006" string="Expires after">Wygasa po</entry>
+	<entry id="70007" string="%1 day(s)">dniach: %1</entry>
+	<entry id="70008" string="%1 week(s)">tygodniach: %1</entry>
+	<entry id="70009" string="%1 month(s)">miesiącach: %1</entry>
+	<entry id="70010" string="%1 year(s)">latach: %1</entry>
+	<entry id="70011" string="never">nigdy</entry>
+	<entry id="70012" string="Drives">Stacje CD</entry>
+	<entry id="70013" string="Drive">Stacja CD</entry>
+	<entry id="70014" string="Offset configuration">Konfiguracja offsetu</entry>
+	<entry id="70015" string="Offset in drive database">Offset w bazie danych stacji CD</entry>
+	<entry id="70016" string="Detected offset">Wykryty offset</entry>
+	<entry id="70017" string="Configured offset">Skonfigurowany offset</entry>
+	<entry id="70018" string="Detect offset now">Wykryj offset teraz</entry>
+	<entry id="70019" string="not configured">nieustawiony</entry>
+	<entry id="70020" string="automatically configured">ustawiony automatycznie</entry>
+	<entry id="70021" string="configured by offset detection">ustawiony przez wykrycie offsetu</entry>
+	<entry id="70022" string="manually configured">ustawiony ręcznie</entry>
+	<entry id="70023" string="not present">nie występuje</entry>
+	<entry id="70024" string="not detected">nie wykryty</entry>
+	<entry id="70025" string="disabled">wyłączone</entry>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration">Konfiguracja AccurateRip</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Nie można znaleźć tej stacji CD w bazie danych AccurateRip.&#10;&#10;Nazwa stacji: %1&#10;&#10;Czy chcesz teraz uruchomić automatyczne wykrywanie offsetu stacji?</entry>
+	  <entry id="70052" string="Do not ask again">Nie pytaj ponownie</entry>
+	  <entry id="70053" string="AccurateRip offset detection">Wykrywanie offsetu przez AccurateRip</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Włożona płyta nie została znaleziona w bazie danych AccurateRip.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Włóż inną płytę do stacji CD i kliknij OK.&#10;&#10;Płyta musi znajdować się w bazie danych AccurateRip. Szansa na to jest największa&#10;w przypadku popularnych płyt CD, które mogły być wcześniej zgrane przez innych użytkowników.</entry>
+	</section>
+      </section>
+    </section>
+
     <section name="External">
       <entry id="80000" string="Downmix multi-channel audio to stereo">Zmiksuj dźwięk wielokanałowy do stereo</entry>
 
@@ -1347,6 +1393,11 @@
 	  <entry id="103311" string="Audio source webpage">Strona WWW źródła audio</entry>
 	  <entry id="103312" string="Copyright information">Informacje o prawach autorskich</entry>
 	  <entry id="103313" string="Commercial information">Informacje handlowe</entry>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior">Działanie</entry>
+	  <entry id="103401" string="Clear album artist field when it matches track artist">Wyczyść pole wykonawcy albumu, gdy jest identyczny z wykonawcą utworu</entry>
 	</section>
 
 	<section name="Errors">
