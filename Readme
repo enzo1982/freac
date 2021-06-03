@@ -152,7 +152,7 @@ Requirements
 History
 -------
 
-	Version 1.1.5 (May 2021)
+	Version 1.1.5 (June 2021)
 
 		- New features
 
@@ -164,6 +164,7 @@ History
 			- improved DSP processing performance by up to 70%
 			- added frequency bandwidth setting to FDK-AAC encoder configuration dialog
 			- added an option to toggle logging of complete paths in log files
+			- added options for specifying cover art files to freaccmd
 			- added support for reading Shift_JIS encoded CD-Text
 			- added support for writing album and track comments to cue sheets
 			- added support for ensemble field in Vorbis Comment and APEv2 tags

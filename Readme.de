@@ -151,7 +151,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.5 (Mai 2021)
+	Version 1.1.5 (Juni 2021)
 
 		- Neue Funktionen
 
@@ -163,6 +163,7 @@ Geschichte
 			- Verbesserung der Geschwindigkeit bei der DSP-Verarbeitung um bis zu 70%
 			- Einstellung für Frequenzbandbreite zum FDK-AAC-Konfigurationsdialog hinzugefügt
 			- Option zum Umschalten der Protokollierung vollständiger Pfade in Protokolldateien hinzugefügt
+			- Optionen zur Angabe von Cover-Bilddateien zu freaccmd hinzugefügt
 			- Unterstützung für Shift_JIS kodierten CD-Text hinzugefügt
 			- Unterstützung für das Schreiben von Album- und Track-Kommentaren in Cuesheets hinzugefügt
 			- Unterstützung für Ensemble-Feld in Vorbis Comment und APEv2-Tags hinzugefügt

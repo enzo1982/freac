@@ -49,12 +49,19 @@ namespace freac
 			String			 encoderID;
 			Bool			 stopped;
 
+			BoCA::Picture		 coverFront;
+			BoCA::Picture		 coverBack;
+
 			Bool			 ScanForProgramOption(const String &, String * = NIL);
 			Bool			 ScanForEncoderOption(const String &, String * = NIL);
 			Void			 ScanForFiles(Array<String> *);
 
 			Bool			 ParamHasArguments(const String &, Bool);
 			Bool			 TracksToFiles(const String &, Array<String> *);
+
+			BoCA::Picture		 LoadCoverArt(const String &, Int);
+
+			Bool			 AddToJoblist(const Array<String> &, Bool);
 
 			Bool			 SetConfigDefaults(BoCA::Config *, Bool);
 			Bool			 SetEncoderDefaults(BoCA::Config *, Bool);
