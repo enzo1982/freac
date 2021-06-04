@@ -1,47 +1,44 @@
-diff -Naur libvorbis-1.3.7/aoTuV_README-1st.txt libvorbis-1.3.7-aotuv-b6.03/aoTuV_README-1st.txt
---- libvorbis-1.3.7/aoTuV_README-1st.txt	1970-01-01 00:00:00 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/aoTuV_README-1st.txt	2020-07-05 12:26:12 +0000
-@@ -0,0 +1,13 @@
-+aoTuV Beta 6.03
-+
-+"aoTuV" tunes up Xiph.Org's libvorbis uniquely. 
-+A license is taken as "BSD-style license" as well as original libvorbis. 
-+
-+
-+aoTuV based on <Xiph.Org libvorbis>
-+
-+Copyright (c) 2002-2020 Xiph.Org Foundation
-+Copyright (c) 2003-2015 Aoyumi
-+
-+
-+AUTHOR : Aoyumi <aoyumi@gmail.com>
+diff -Naur libvorbis-1.3.7/AUTHORS libvorbis-1.3.7-aotuv-b6.03/AUTHORS
+--- libvorbis-1.3.7/AUTHORS	2020-03-23 15:04:43.000000000 +0100
++++ libvorbis-1.3.7-aotuv-b6.03/AUTHORS	2021-05-10 19:07:26.561592900 +0200
+@@ -1,3 +1,4 @@
++Aoyumi <aoyumi@gmail.com>
+ Monty <monty@xiph.org>
+ 
+ and the rest of the Xiph.org Foundation.
+diff -Naur libvorbis-1.3.7/COPYING libvorbis-1.3.7-aotuv-b6.03/COPYING
+--- libvorbis-1.3.7/COPYING	2020-07-04 03:52:28.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/COPYING	2021-03-21 13:15:54.000000000 +0100
+@@ -1,3 +1,4 @@
++aoTuV - Copyright (c) 2003-2021 Aoyumi
+ Copyright (c) 2002-2020 Xiph.org Foundation
+ 
+ Redistribution and use in source and binary forms, with or without
 diff -Naur libvorbis-1.3.7/aoTuV_technical.txt libvorbis-1.3.7-aotuv-b6.03/aoTuV_technical.txt
---- libvorbis-1.3.7/aoTuV_technical.txt	1970-01-01 00:00:00 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/aoTuV_technical.txt	2020-07-05 12:25:59 +0000
-@@ -0,0 +1,338 @@
+--- libvorbis-1.3.7/aoTuV_technical.txt	1970-01-01 01:00:00.000000000 +0100
++++ libvorbis-1.3.7-aotuv-b6.03/aoTuV_technical.txt	2021-03-21 13:15:54.000000000 +0100
+@@ -0,0 +1,336 @@
 +aoTuV beta6.03 (2020) technical information
 +
-+This version is based on Xiph.org libvorbis 1.3.7.
++This version is based on Xiph.org's libvorbis 1.3.7.
 +The part related to sound quality is not changed from previous version.
 +
-+2020/07/05
-+Robert Kausch <robert.kausch@freac.org>
++2021/03/20
++Aoyumi
 +
 +----------------------------------------------------------------------------
-+
 +aoTuV beta6.03 (2018) technical information
 +
-+This version is based on Xiph.org libvorbis 1.3.6.
++This version is based on Xiph.org's libvorbis 1.3.6.
 +The part related to sound quality is not changed from previous version.
 +
-+2018/03/26
-+Robert Kausch <robert.kausch@freac.org>
++2018/04/18
++Aoyumi
 +
 +----------------------------------------------------------------------------
-+
 +aoTuV beta6.03 (2015) technical information
 +
-+This version is based on Xiph.org'libvorbis 1.3.5.
++This version is based on Xiph.org's libvorbis 1.3.5.
 +The part related to sound quality is not changed from previous version.
 +
 +2014/08/08
@@ -51,7 +48,7 @@ diff -Naur libvorbis-1.3.7/aoTuV_technical.txt libvorbis-1.3.7-aotuv-b6.03/aoTuV
 +
 +aoTuV beta6.03 (2014) technical information
 +
-+This version is based on Xiph.org'libvorbis 1.3.4.
++This version is based on Xiph.org's libvorbis 1.3.4.
 +The part related to sound quality is not changed from previous version.
 +
 +2014/04/29
@@ -358,8 +355,8 @@ diff -Naur libvorbis-1.3.7/aoTuV_technical.txt libvorbis-1.3.7-aotuv-b6.03/aoTuV
 +2004/11/21
 +Aoyumi
 diff -Naur libvorbis-1.3.7/lib/block.c libvorbis-1.3.7-aotuv-b6.03/lib/block.c
---- libvorbis-1.3.7/lib/block.c	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/block.c	2020-07-05 12:11:44 +0000
+--- libvorbis-1.3.7/lib/block.c	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/block.c	2021-03-21 13:15:54.000000000 +0100
 @@ -299,6 +299,12 @@
    b=v->backend_state;
    b->psy_g_look=_vp_global_look(vi);
@@ -405,8 +402,8 @@ diff -Naur libvorbis-1.3.7/lib/block.c libvorbis-1.3.7-aotuv-b6.03/lib/block.c
      int order=32;
      int i;
 diff -Naur libvorbis-1.3.7/lib/codec_internal.h libvorbis-1.3.7-aotuv-b6.03/lib/codec_internal.h
---- libvorbis-1.3.7/lib/codec_internal.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/codec_internal.h	2020-07-05 12:11:44 +0000
+--- libvorbis-1.3.7/lib/codec_internal.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/codec_internal.h	2021-03-21 13:15:54.000000000 +0100
 @@ -81,6 +81,15 @@
    bitrate_manager_state bms;
  
@@ -432,8 +429,8 @@ diff -Naur libvorbis-1.3.7/lib/codec_internal.h libvorbis-1.3.7-aotuv-b6.03/lib/
  
  extern vorbis_look_psy_global *_vp_global_look(vorbis_info *vi);
 diff -Naur libvorbis-1.3.7/lib/envelope.c libvorbis-1.3.7-aotuv-b6.03/lib/envelope.c
---- libvorbis-1.3.7/lib/envelope.c	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/envelope.c	2020-07-05 12:11:44 +0000
+--- libvorbis-1.3.7/lib/envelope.c	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/envelope.c	2021-03-21 13:15:54.000000000 +0100
 @@ -28,6 +28,14 @@
  #include "mdct.h"
  #include "misc.h"
@@ -469,8 +466,8 @@ diff -Naur libvorbis-1.3.7/lib/envelope.c libvorbis-1.3.7-aotuv-b6.03/lib/envelo
    for(j=0;j<VE_BANDS;j++){
      n=e->band[j].end;
 diff -Naur libvorbis-1.3.7/lib/envelope.h libvorbis-1.3.7-aotuv-b6.03/lib/envelope.h
---- libvorbis-1.3.7/lib/envelope.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/envelope.h	2020-07-05 12:11:44 +0000
+--- libvorbis-1.3.7/lib/envelope.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/envelope.h	2021-03-21 13:15:54.000000000 +0100
 @@ -24,7 +24,7 @@
  #define VE_POST   2
  #define VE_AMP    (VE_PRE+VE_POST-1)
@@ -481,8 +478,8 @@ diff -Naur libvorbis-1.3.7/lib/envelope.h libvorbis-1.3.7-aotuv-b6.03/lib/envelo
  
  #define VE_MINSTRETCH 2   /* a bit less than short block */
 diff -Naur libvorbis-1.3.7/lib/highlevel.h libvorbis-1.3.7-aotuv-b6.03/lib/highlevel.h
---- libvorbis-1.3.7/lib/highlevel.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/highlevel.h	2020-07-05 12:11:44 +0000
+--- libvorbis-1.3.7/lib/highlevel.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/highlevel.h	2021-03-21 13:15:54.000000000 +0100
 @@ -52,6 +52,8 @@
    double amplitude_track_dBpersec;
    double trigger_setting;
@@ -493,8 +490,8 @@ diff -Naur libvorbis-1.3.7/lib/highlevel.h libvorbis-1.3.7-aotuv-b6.03/lib/highl
  
  } highlevel_encode_setup;
 diff -Naur libvorbis-1.3.7/lib/info.c libvorbis-1.3.7-aotuv-b6.03/lib/info.c
---- libvorbis-1.3.7/lib/info.c	2020-07-04 01:52:28 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/info.c	2020-07-05 12:12:50 +0000
+--- libvorbis-1.3.7/lib/info.c	2020-07-04 03:52:28.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/info.c	2021-05-10 19:05:59.451248200 +0200
 @@ -29,8 +29,8 @@
  #include "misc.h"
  #include "os.h"
@@ -502,7 +499,7 @@ diff -Naur libvorbis-1.3.7/lib/info.c libvorbis-1.3.7-aotuv-b6.03/lib/info.c
 -#define GENERAL_VENDOR_STRING "Xiph.Org libVorbis 1.3.7"
 -#define ENCODE_VENDOR_STRING "Xiph.Org libVorbis I 20200704 (Reducing Environment)"
 +#define GENERAL_VENDOR_STRING "aoTuV Beta 6.03 (2020)"
-+#define ENCODE_VENDOR_STRING "AO; aoTuV 6.03 (2020) (based on libVorbis 1.3.7)"
++#define ENCODE_VENDOR_STRING "AO; aoTuV [20110424] (based on libvorbis 1.3.7)"
  
  /* helpers */
  static void _v_writestring(oggpack_buffer *o,const char *s, int bytes){
@@ -515,8 +512,8 @@ diff -Naur libvorbis-1.3.7/lib/info.c libvorbis-1.3.7-aotuv-b6.03/lib/info.c
    /* codebooks */
    ci->books=oggpack_read(opb,8)+1;
 diff -Naur libvorbis-1.3.7/lib/mapping0.c libvorbis-1.3.7-aotuv-b6.03/lib/mapping0.c
---- libvorbis-1.3.7/lib/mapping0.c	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/mapping0.c	2020-07-05 12:11:44 +0000
+--- libvorbis-1.3.7/lib/mapping0.c	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/mapping0.c	2021-03-21 13:15:54.000000000 +0100
 @@ -154,7 +154,7 @@
  #include "psy.h"
  #include "scales.h"
@@ -750,8 +747,8 @@ diff -Naur libvorbis-1.3.7/lib/mapping0.c libvorbis-1.3.7-aotuv-b6.03/lib/mappin
    total+=ci->blocksizes[vb->W]/4+ci->blocksizes[vb->nW]/4;
  #endif
 diff -Naur libvorbis-1.3.7/lib/masking.h libvorbis-1.3.7-aotuv-b6.03/lib/masking.h
---- libvorbis-1.3.7/lib/masking.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/masking.h	2020-07-05 12:11:44 +0000
+--- libvorbis-1.3.7/lib/masking.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/masking.h	2021-03-21 13:15:54.000000000 +0100
 @@ -22,17 +22,30 @@
  
  #define MAX_ATH 88
@@ -795,8 +792,8 @@ diff -Naur libvorbis-1.3.7/lib/masking.h libvorbis-1.3.7-aotuv-b6.03/lib/masking
  
  /* The tone masking curves from Ehmer's and Fielder's papers have been
 diff -Naur libvorbis-1.3.7/lib/modes/floor_all.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/floor_all.h
---- libvorbis-1.3.7/lib/modes/floor_all.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/floor_all.h	2020-07-05 12:11:44 +0000
+--- libvorbis-1.3.7/lib/modes/floor_all.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/floor_all.h	2021-05-10 19:03:17.457777800 +0200
 @@ -148,7 +148,7 @@
    0
  };
@@ -855,8 +852,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/floor_all.h libvorbis-1.3.7-aotuv-b6.03/lib
 +  },
  };
 diff -Naur libvorbis-1.3.7/lib/modes/psych_11.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/psych_11.h
---- libvorbis-1.3.7/lib/modes/psych_11.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/psych_11.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/psych_11.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/psych_11.h	2021-05-10 19:03:02.390993400 +0200
 @@ -14,25 +14,23 @@
  
   ********************************************************************/
@@ -914,8 +911,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/psych_11.h libvorbis-1.3.7-aotuv-b6.03/lib/
 +/* noise normalization **********/
 +static const double _noise_thresh_11[3]={ .3,.3,.5 };
 diff -Naur libvorbis-1.3.7/lib/modes/psych_16.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/psych_16.h
---- libvorbis-1.3.7/lib/modes/psych_16.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/psych_16.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/psych_16.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/psych_16.h	2021-05-10 19:02:53.966043900 +0200
 @@ -14,53 +14,29 @@
  
   ********************************************************************/
@@ -1085,8 +1082,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/psych_16.h libvorbis-1.3.7-aotuv-b6.03/lib/
 +
 +static const double _noise_thresh_16[4]={ .3,.4,.5,.5 };
 diff -Naur libvorbis-1.3.7/lib/modes/psych_44.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/psych_44.h
---- libvorbis-1.3.7/lib/modes/psych_44.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/psych_44.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/psych_44.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/psych_44.h	2021-03-21 13:15:54.000000000 +0100
 @@ -17,35 +17,54 @@
  
  /* preecho trigger settings *****************************************/
@@ -2053,8 +2050,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/psych_44.h libvorbis-1.3.7-aotuv-b6.03/lib/
 +  160,320,160,160,320,640,9999,9999,9999,9999,9999,9999
  };
 diff -Naur libvorbis-1.3.7/lib/modes/psych_8.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/psych_8.h
---- libvorbis-1.3.7/lib/modes/psych_8.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/psych_8.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/psych_8.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/psych_8.h	2021-05-10 18:59:01.492491200 +0200
 @@ -14,23 +14,48 @@
  
   ********************************************************************/
@@ -2205,8 +2202,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/psych_8.h libvorbis-1.3.7-aotuv-b6.03/lib/m
 +  8,8,8,
  };
 diff -Naur libvorbis-1.3.7/lib/modes/residue_16.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_16.h
---- libvorbis-1.3.7/lib/modes/residue_16.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_16.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/residue_16.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_16.h	2021-03-21 13:15:54.000000000 +0100
 @@ -83,7 +83,8 @@
     &_resbook_16s_2,&_resbook_16s_2}
  };
@@ -2228,8 +2225,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/residue_16.h libvorbis-1.3.7-aotuv-b6.03/li
    { _map_nominal_u, _res_16u_1 }, /* 1 */
    { _map_nominal_u, _res_16u_2 }, /* 2 */
 diff -Naur libvorbis-1.3.7/lib/modes/residue_44.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_44.h
---- libvorbis-1.3.7/lib/modes/residue_44.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_44.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/residue_44.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_44.h	2021-03-21 13:15:54.000000000 +0100
 @@ -277,6 +277,7 @@
  };
  
@@ -2239,8 +2236,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/residue_44.h libvorbis-1.3.7-aotuv-b6.03/li
    { _map_nominal, _res_44s_0 }, /* 0 */
    { _map_nominal, _res_44s_1 }, /* 1 */
 diff -Naur libvorbis-1.3.7/lib/modes/residue_44p51.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_44p51.h
---- libvorbis-1.3.7/lib/modes/residue_44p51.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_44p51.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/residue_44p51.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_44p51.h	2021-03-21 13:15:54.000000000 +0100
 @@ -10,7 +10,7 @@
   *                                                                  *
   ********************************************************************
@@ -2259,8 +2256,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/residue_44p51.h libvorbis-1.3.7-aotuv-b6.03
    { _map_nominal_51, _res_44p51_0 }, /* 0 */
    { _map_nominal_51, _res_44p51_1 }, /* 1 */
 diff -Naur libvorbis-1.3.7/lib/modes/residue_44u.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_44u.h
---- libvorbis-1.3.7/lib/modes/residue_44u.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_44u.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/residue_44u.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_44u.h	2021-03-21 13:15:54.000000000 +0100
 @@ -303,6 +303,7 @@
  };
  
@@ -2270,8 +2267,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/residue_44u.h libvorbis-1.3.7-aotuv-b6.03/l
    { _map_nominal_u, _res_44u_0 }, /* 0 */
    { _map_nominal_u, _res_44u_1 }, /* 1 */
 diff -Naur libvorbis-1.3.7/lib/modes/residue_8.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_8.h
---- libvorbis-1.3.7/lib/modes/residue_8.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_8.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/residue_8.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/residue_8.h	2021-03-21 13:15:54.000000000 +0100
 @@ -59,7 +59,8 @@
     &_resbook_8s_1,&_resbook_8s_1},
  };
@@ -2293,8 +2290,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/residue_8.h libvorbis-1.3.7-aotuv-b6.03/lib
    { _map_nominal_u, _res_8u_1 }, /* 1 */
  };
 diff -Naur libvorbis-1.3.7/lib/modes/setup_11.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_11.h
---- libvorbis-1.3.7/lib/modes/setup_11.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_11.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/setup_11.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_11.h	2021-05-10 19:02:38.954995500 +0200
 @@ -16,33 +16,42 @@
  
  #include "psych_11.h"
@@ -2362,8 +2359,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/setup_11.h libvorbis-1.3.7-aotuv-b6.03/lib/
    9000,
    15000,
 diff -Naur libvorbis-1.3.7/lib/modes/setup_16.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_16.h
---- libvorbis-1.3.7/lib/modes/setup_16.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_16.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/setup_16.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_16.h	2021-05-10 19:02:30.008104800 +0200
 @@ -17,42 +17,51 @@
  #include "psych_16.h"
  #include "residue_16.h"
@@ -2444,8 +2441,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/setup_16.h libvorbis-1.3.7-aotuv-b6.03/lib/
    15000,
    19000,
 diff -Naur libvorbis-1.3.7/lib/modes/setup_22.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_22.h
---- libvorbis-1.3.7/lib/modes/setup_22.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_22.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/setup_22.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_22.h	2021-05-10 19:02:20.943629500 +0200
 @@ -14,20 +14,28 @@
  
   ********************************************************************/
@@ -2495,8 +2492,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/setup_22.h libvorbis-1.3.7-aotuv-b6.03/lib/
    19000,
    26000,
 diff -Naur libvorbis-1.3.7/lib/modes/setup_32.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_32.h
---- libvorbis-1.3.7/lib/modes/setup_32.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_32.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/setup_32.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_32.h	2021-03-21 13:15:54.000000000 +0100
 @@ -14,24 +14,52 @@
  
   ********************************************************************/
@@ -2605,8 +2602,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/setup_32.h libvorbis-1.3.7-aotuv-b6.03/lib/
    _mapres_template_44_uncoupled
  };
 diff -Naur libvorbis-1.3.7/lib/modes/setup_44.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_44.h
---- libvorbis-1.3.7/lib/modes/setup_44.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_44.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/setup_44.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_44.h	2021-03-21 13:15:54.000000000 +0100
 @@ -18,44 +18,57 @@
  #include "modes/residue_44.h"
  #include "modes/psych_44.h"
@@ -2770,8 +2767,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/setup_44.h libvorbis-1.3.7-aotuv-b6.03/lib/
    _vp_tonemask_adj_otherblock,
  
 diff -Naur libvorbis-1.3.7/lib/modes/setup_44p51.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_44p51.h
---- libvorbis-1.3.7/lib/modes/setup_44p51.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_44p51.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/setup_44p51.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_44p51.h	2021-03-21 13:15:54.000000000 +0100
 @@ -16,15 +16,16 @@
  
  #include "modes/residue_44p51.h"
@@ -2793,8 +2790,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/setup_44p51.h libvorbis-1.3.7-aotuv-b6.03/l
    40000,
    70000,
 diff -Naur libvorbis-1.3.7/lib/modes/setup_44u.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_44u.h
---- libvorbis-1.3.7/lib/modes/setup_44u.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_44u.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/setup_44u.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_44u.h	2021-03-21 13:15:54.000000000 +0100
 @@ -16,17 +16,73 @@
  
  #include "modes/residue_44u.h"
@@ -2873,8 +2870,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/setup_44u.h libvorbis-1.3.7-aotuv-b6.03/lib
  
    blocksize_short_44,
 diff -Naur libvorbis-1.3.7/lib/modes/setup_8.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_8.h
---- libvorbis-1.3.7/lib/modes/setup_8.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_8.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/setup_8.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_8.h	2021-05-10 19:02:02.135889300 +0200
 @@ -17,38 +17,48 @@
  #include "psych_8.h"
  #include "residue_8.h"
@@ -2950,8 +2947,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/setup_8.h libvorbis-1.3.7-aotuv-b6.03/lib/m
    8000,
    9000,
 diff -Naur libvorbis-1.3.7/lib/modes/setup_X.h libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_X.h
---- libvorbis-1.3.7/lib/modes/setup_X.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_X.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/modes/setup_X.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/modes/setup_X.h	2021-05-10 19:01:47.423504100 +0200
 @@ -14,15 +14,17 @@
  
   ********************************************************************/
@@ -3013,8 +3010,8 @@ diff -Naur libvorbis-1.3.7/lib/modes/setup_X.h libvorbis-1.3.7-aotuv-b6.03/lib/m
    0,
    8000,
 diff -Naur libvorbis-1.3.7/lib/psy.c libvorbis-1.3.7-aotuv-b6.03/lib/psy.c
---- libvorbis-1.3.7/lib/psy.c	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/psy.c	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/psy.c	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/psy.c	2021-05-10 19:01:16.870603300 +0200
 @@ -29,8 +29,83 @@
  #include "misc.h"
  
@@ -4647,8 +4644,8 @@ diff -Naur libvorbis-1.3.7/lib/psy.c libvorbis-1.3.7-aotuv-b6.03/lib/psy.c
 +  return(noise_compand_level);
 +}
 diff -Naur libvorbis-1.3.7/lib/psy.h libvorbis-1.3.7-aotuv-b6.03/lib/psy.h
---- libvorbis-1.3.7/lib/psy.h	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/psy.h	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/psy.h	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/psy.h	2021-03-21 13:15:54.000000000 +0100
 @@ -53,6 +53,9 @@
    int   noisewindowfixed;
    float noiseoff[P_NOISECURVES][P_BANDS];
@@ -4789,9 +4786,21 @@ diff -Naur libvorbis-1.3.7/lib/psy.h libvorbis-1.3.7-aotuv-b6.03/lib/psy.h
 +                              const int lW_block_mode);
  
  #endif
+diff -Naur libvorbis-1.3.7/lib/sharedbook.c libvorbis-1.3.7-aotuv-b6.03/lib/sharedbook.c
+--- libvorbis-1.3.7/lib/sharedbook.c	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/sharedbook.c	2021-05-10 19:25:17.844374800 +0200
+@@ -581,7 +581,7 @@
+       exit(1);
+     }
+   }
+-  free(out);
++  _ogg_free(out);
+ }
+ 
+ int main(){
 diff -Naur libvorbis-1.3.7/lib/vorbisenc.c libvorbis-1.3.7-aotuv-b6.03/lib/vorbisenc.c
---- libvorbis-1.3.7/lib/vorbisenc.c	2020-07-03 16:22:20 +0000
-+++ libvorbis-1.3.7-aotuv-b6.03/lib/vorbisenc.c	2020-07-05 12:11:45 +0000
+--- libvorbis-1.3.7/lib/vorbisenc.c	2020-07-03 18:22:20.000000000 +0200
++++ libvorbis-1.3.7-aotuv-b6.03/lib/vorbisenc.c	2021-03-21 13:15:54.000000000 +0100
 @@ -92,6 +92,7 @@
    int      mappings;
    const double  *rate_mapping;
