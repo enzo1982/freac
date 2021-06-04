@@ -167,7 +167,7 @@ Geschichte
 			- Unterstützung für Shift_JIS kodierten CD-Text hinzugefügt
 			- Unterstützung für das Schreiben von Album- und Track-Kommentaren in Cuesheets hinzugefügt
 			- Unterstützung für Ensemble-Feld in Vorbis Comment und APEv2-Tags hinzugefügt
-			- Unterstützung für Satz-Feld in Vorbis Comment, APEv2- und MP4-Tags hinzugefügt
+			- Unterstützung für Satz-Feld in ID3v2-, Vorbis Comment, APEv2- und MP4-Tags hinzugefügt
 			- Unterstützung für zusätzliche URL-Felder in APEv2-Tags hinzugefügt
 			- Tag-Editor-Option zum Beibehalten des Albuminterpreten trotz Übereinstimmung mit Titelinterpret hinzugefügt
 			- Feld für Medienart zum Tag-Editor hinzugefügt
