@@ -137,7 +137,7 @@ lame_version=3.100
 libcdio_version=2.1.0
 libcdio_paranoia_version=10.2+2.0.1
 libcdrip_version=2.4
-libogg_version=1.3.4
+libogg_version=1.3.5
 libsamplerate_version=0.2.1
 libsndfile_version=1.0.31
 mac_version=6.29
@@ -477,9 +477,6 @@ for package in ${packages[@]}; do
 
   elif [ $package == libogg ]; then
     # Build Ogg
-    if [[ $uname == Darwin ]]; then
-      prepare="sed -i -e \"s/sys\/types\.h/stdint.h/\" include/ogg/os_types.h"
-    fi
     build $libogg_location src/.libs/libogg$sharedinfix.$sharedext Ogg.$sharedext
 
   elif [ $package == libsamplerate ]; then
