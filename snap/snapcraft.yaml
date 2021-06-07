@@ -16,7 +16,7 @@ apps:
   freac:
     command: freac
     desktop: share/applications/org.freac.freac.desktop
-    extensions: [ gnome-3-28 ]
+    extensions: [ gnome-3-34 ]
     plugs:
       - gsettings
       - home
@@ -27,7 +27,7 @@ apps:
 
   freaccmd:
     command: freaccmd
-    extensions: [ gnome-3-28 ]
+    extensions: [ gnome-3-34 ]
     plugs:
       - home
       - network
