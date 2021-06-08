@@ -65,18 +65,18 @@
     </section>
 
     <section name="Media types">
-      <entry id="600" string="CD"/>
-      <entry id="601" string="DAT"/>
-      <entry id="602" string="MiniDisc"/>
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">DAT</entry>
+      <entry id="602" string="MiniDisc">MiniDisc</entry>
       <entry id="603" string="Compact Cassette"/>
       <entry id="604" string="Reel tape"/>
-      <entry id="605" string="Vinyl"/>
-      <entry id="606" string="DVD"/>
-      <entry id="607" string="LaserDisc"/>
-      <entry id="608" string="TV"/>
-      <entry id="609" string="Video"/>
-      <entry id="610" string="Radio"/>
-      <entry id="611" string="Telephone"/>
+      <entry id="605" string="Vinyl">Винилова плоча</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">LaserDisc</entry>
+      <entry id="608" string="TV">ТВ</entry>
+      <entry id="609" string="Video">Видео</entry>
+      <entry id="610" string="Radio">Радио</entry>
+      <entry id="611" string="Telephone">Телефон</entry>
     </section>
 
     <section name="Menu">

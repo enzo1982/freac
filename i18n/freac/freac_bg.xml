@@ -64,6 +64,19 @@
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
+    <section name="Media types">
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">DAT</entry>
+      <entry id="602" string="MiniDisc">MiniDisc</entry>
+      <entry id="605" string="Vinyl">Винилова плоча</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">LaserDisc</entry>
+      <entry id="608" string="TV">ТВ</entry>
+      <entry id="609" string="Video">Видео</entry>
+      <entry id="610" string="Radio">Радио</entry>
+      <entry id="611" string="Telephone">Телефон</entry>
+    </section>
+
     <section name="Menu">
       <entry id="1000" string="File">Файл</entry>
       <entry id="1001" string="Options">Настройки</entry>

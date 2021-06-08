@@ -1147,10 +1147,10 @@
 	<entry id="70015" string="Offset in drive database">Compensação da unidade no banco de dados</entry>
 	<entry id="70016" string="Detected offset">Compensação detectada</entry>
 	<entry id="70017" string="Configured offset">Configuração da compensação</entry>
-	<entry id="70018" string="Detect offset now">Detecte a compensação agora</entry>
+	<entry id="70018" string="Detect offset now">Detecte agora</entry>
 	<entry id="70019" string="not configured">não configurado</entry>
 	<entry id="70020" string="automatically configured">configurado automaticamente</entry>
-	<entry id="70021" string="configured by offset detection">configurado por detecção da compensação</entry>
+	<entry id="70021" string="configured by offset detection">configurado por detecção</entry>
 	<entry id="70022" string="manually configured">configurado manualmente</entry>
 	<entry id="70023" string="not present">não está presente</entry>
 	<entry id="70024" string="not detected">não foi detectado</entry>
