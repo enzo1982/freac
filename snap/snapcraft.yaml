@@ -257,6 +257,7 @@ parts:
       patch -p1 < $SNAPCRAFT_STAGE/freac-cdk-1.1-beta-snap.patch
       snapcraftctl build
     build-packages:
+      - libexpat1-dev
       - libpulse-dev
       - liburiparser-dev
     stage-packages:
