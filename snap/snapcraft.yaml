@@ -64,6 +64,7 @@ parts:
     plugin: autotools
     configflags: [ --prefix=/usr ]
     build-environment:
+      - PATH: "/usr/bin:$PATH"
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
     prime:
       - usr/lib/libfaad.so*
