@@ -65,18 +65,18 @@
     </section>
 
     <section name="Media types">
-      <entry id="600" string="CD"/>
-      <entry id="601" string="DAT"/>
-      <entry id="602" string="MiniDisc"/>
-      <entry id="603" string="Compact Cassette"/>
-      <entry id="604" string="Reel tape"/>
-      <entry id="605" string="Vinyl"/>
-      <entry id="606" string="DVD"/>
-      <entry id="607" string="LaserDisc"/>
-      <entry id="608" string="TV"/>
-      <entry id="609" string="Video"/>
-      <entry id="610" string="Radio"/>
-      <entry id="611" string="Telephone"/>
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">DAT</entry>
+      <entry id="602" string="MiniDisc">Mini disk</entry>
+      <entry id="603" string="Compact Cassette">Kompaktní kazeta</entry>
+      <entry id="604" string="Reel tape">Cívkový mgf</entry>
+      <entry id="605" string="Vinyl">Vinil</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">Laser disk</entry>
+      <entry id="608" string="TV">TV</entry>
+      <entry id="609" string="Video">Video</entry>
+      <entry id="610" string="Radio">Rádio</entry>
+      <entry id="611" string="Telephone">Telefon</entry>
     </section>
 
     <section name="Menu">
@@ -216,7 +216,7 @@
       <entry id="3044" string="verifying">zkontrolovat</entry>
       <entry id="3045" string="Open">Otevřít</entry>
       <entry id="3046" string="CD drive">Jednotka CD</entry>
-      <entry id="3047" string="Disc ID"/>
+      <entry id="3047" string="Disc ID">Disk ID</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">Kódovaný soubor</entry>
@@ -413,7 +413,7 @@
       <entry id="5023" string="Verifiers">Ověřovatelé</entry>
       <entry id="5024" string="Taggers">Tagy</entry>
       <entry id="5025" string="Processing">Zpracování</entry>
-      <entry id="5026" string="Additional arguments"/>
+      <entry id="5026" string="Additional arguments">Další argumenty</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Konfigurovat enkodér</entry>
@@ -559,7 +559,7 @@
 	  <entry id="5664" string="Channels">Audiokanály</entry>
 	  <entry id="5665" string="Sample resolution">Vzorkovací rozlišení</entry>
 	  <entry id="5666" string="CD drive">Jednotka CD</entry>
-	  <entry id="5667" string="Disc ID"/>
+	  <entry id="5667" string="Disc ID">Disk ID</entry>
 	</section>
       </section>
 
@@ -633,7 +633,7 @@
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Nejde přistupovat k souboru: %1&#10;&#10;Soubor: %1&#10;Složka: %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Nejde vytvořit soubor: %1&#10;&#10;Soubor: %1&#10;Složka: %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">Nepodařilo se ověřit vstupní soubor: %1</entry>
-      <entry id="7108" string="Failed to verify input track: %1"/>
+      <entry id="7108" string="Failed to verify input track: %1">Nepodařilo se ověřit vstupní stopu: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Chyba kontrolního součtu při ověřování výstupního souboru: %1&#10;&#10;Kontrolní součet při kódování: %2&#10;Kontrolní součet při ověření: %3</entry>
       <entry id="7110" string="File not found">Soubor nebyl nalezen</entry>
       <entry id="7111" string="Unknown file type">Neznámý typ souboru</entry>
@@ -649,7 +649,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Přístup k CD-ROM mechanice byl Windows zamítnut.&#10;&#10;Prosím, kontaktujte vašeho systémového administrátora pro&#10;získaní přístupu k CD-ROM mechanice.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Žádný konfigurační dialog pro:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">Vybraná složka již neexistuje!</entry>
-      <entry id="7124" string="Access denied"/>
+      <entry id="7124" string="Access denied">Přístup odepřen</entry>
     </section>
 
     <section name="Dialogs">
@@ -720,18 +720,18 @@
 	<entry id="12002" string="Sample Rate Converter">Převaděč vzorkovacího formátu</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise redukce šumu</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band změna Tempa/Výšky tónu</entry>
-	<entry id="12005" string="HDCD Decoder"/>
+	<entry id="12005" string="HDCD Decoder">HDCD dekodér</entry>
       </section>
 
       <section name="Verifiers">
-	<entry id="14000" string="AccurateRip Verifier"/>
+	<entry id="14000" string="AccurateRip Verifier">Ověřovač AccurateRip</entry>
       </section>
 
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Oznámení</entry>
 	<entry id="15001" string="Logging">Protokolování</entry>
-	<entry id="15002" string="Video Downloader"/>
-	<entry id="15003" string="Tag Editor"/>
+	<entry id="15002" string="Video Downloader">Stahovač videa</entry>
+	<entry id="15003" string="Tag Editor">Editor tagů</entry>
       </section>
     </section>
 
@@ -1129,40 +1129,42 @@
     <section name="Verifiers">
 
       <section name="AccurateRip">
-	<entry id="70000" string="Configure AccurateRip"/>
-	<entry id="70001" string="General settings"/>
-	<entry id="70002" string="Enable AccurateRip"/>
-	<entry id="70003" string="Database URL"/>
-	<entry id="70004" string="Cache"/>
-	<entry id="70005" string="Enable cache"/>
-	<entry id="70006" string="Expires after"/>
-	<entry id="70007" string="%1 day(s)"/>
-	<entry id="70008" string="%1 week(s)"/>
-	<entry id="70009" string="%1 month(s)"/>
-	<entry id="70010" string="%1 year(s)"/>
-	<entry id="70011" string="never"/>
-	<entry id="70012" string="Drives"/>
-	<entry id="70013" string="Drive"/>
-	<entry id="70014" string="Offset configuration"/>
-	<entry id="70015" string="Offset in drive database"/>
-	<entry id="70016" string="Detected offset"/>
-	<entry id="70017" string="Configured offset"/>
-	<entry id="70018" string="Detect offset now"/>
-	<entry id="70019" string="not configured"/>
-	<entry id="70020" string="automatically configured"/>
-	<entry id="70021" string="configured by offset detection"/>
-	<entry id="70022" string="manually configured"/>
-	<entry id="70023" string="not present"/>
-	<entry id="70024" string="not detected"/>
-	<entry id="70025" string="disabled"/>
+	<entry id="70000" string="Configure AccurateRip">Konfigurovat AccurateRip</entry>
+	<entry id="70001" string="General settings">Obecná nastavení</entry>
+	<entry id="70002" string="Enable AccurateRip">Povolit AccurateRip</entry>
+	<entry id="70003" string="Database URL">Databáze URL</entry>
+	<entry id="70004" string="Cache">Mezipaměť</entry>
+	<entry id="70005" string="Enable cache">Povolit mezipaměť</entry>
+	<entry id="70006" string="Expires after">Platnost vyprší za</entry>
+	<entry id="70007" string="%1 day(s)">%1 den(dny)</entry>
+	<entry id="70008" string="%1 week(s)">%1 týden(y)</entry>
+	<entry id="70009" string="%1 month(s)">%1 měsíc(e)</entry>
+	<entry id="70010" string="%1 year(s)">%1 rok(y)</entry>
+	<entry id="70011" string="never">nikdy</entry>
+	<entry id="70012" string="Drives">Disky</entry>
+	<entry id="70013" string="Drive">Disk</entry>
+	<entry id="70014" string="Offset configuration">Konfigurace ofsetu</entry>
+	<entry id="70015" string="Offset in drive database">Offset v databázi disků</entry>
+	<entry id="70016" string="Detected offset">Zjištěný offset</entry>
+	<entry id="70017" string="Configured offset">Nakonfigurovaný offset</entry>
+	<entry id="70018" string="Detect offset now">Zjistit offset nyní</entry>
+	<entry id="70019" string="not configured">nenakonfigurován</entry>
+	<entry id="70020" string="automatically configured">automaticky nakonfigurovaný</entry>
+	<entry id="70021" string="configured by offset detection">nakonfigurováno detekcí ofsetu</entry>
+	<entry id="70022" string="manually configured">ručně nakonfigurovaný</entry>
+	<entry id="70023" string="not present">není zde</entry>
+	<entry id="70024" string="not detected">nezjištěn</entry>
+	<entry id="70025" string="disabled">deaktivovaný</entry>
 
 	<section name="Messages">
-	  <entry id="70050" string="AccurateRip configuration"/>
-	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?"/>
-	  <entry id="70052" string="Do not ask again"/>
-	  <entry id="70053" string="AccurateRip offset detection"/>
-	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database."/>
-	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
+	  <entry id="70050" string="AccurateRip configuration">Konfigurace AccurateRip</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Vaši jednotku CD nelze najít v databázi AccurateRip.&#10;&#10;Název jednotky: %1&#10;&#10;Chcete nyní spustit automatickou detekci ofsetu jednotky?</entry>
+	  <entry id="70052" string="Do not ask again">Neptat se znovu</entry>
+	  <entry id="70053" string="AccurateRip offset detection">Detekce ofsetu AccurateRip</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Vložený disk nebyl nalezen v databázi AccurateRip.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Vložte další disk do jednotky CD a klikněte na OK.&#10;&#10;Disk musí být přítomen v databázi AccurateRip. Nejvyšší šance je &#10;u populárních CD, které pravděpodobně již dříve uživatelé ripovali.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc."/>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples."/>
 	</section>
       </section>
     </section>
@@ -1382,9 +1384,9 @@
 	  <entry id="103300" string="Publisher">Vydavatel</entry>
 	  <entry id="103301" string="Publisher information">Informace o vydavateli</entry>
 	  <entry id="103302" string="Publisher / label">Vydavatel / jmenovka</entry>
-	  <entry id="103303" string="Media type"/>
-	  <entry id="103304" string="Catalog number"/>
-	  <entry id="103305" string="Barcode"/>
+	  <entry id="103303" string="Media type">Typ média</entry>
+	  <entry id="103304" string="Catalog number">Katalogové číslo</entry>
+	  <entry id="103305" string="Barcode">Čárový kód</entry>
 	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">URL web stránky</entry>
 	  <entry id="103308" string="Artist webpage">Umělec web stránky</entry>
@@ -1396,8 +1398,8 @@
 	</section>
 
 	<section name="Configuration">
-	  <entry id="103400" string="Behavior"/>
-	  <entry id="103401" string="Clear album artist field when it matches track artist"/>
+	  <entry id="103400" string="Behavior">Režim (chování)</entry>
+	  <entry id="103401" string="Clear album artist field when it matches track artist">Vymazat pole interpreta alba, pokud se shoduje s interpretem stopy </entry>
 	</section>
 
 	<section name="Errors">
@@ -1428,7 +1430,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Uložit protokoly převodu s audio-soubory</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Pouze pro protokoly ripování audio-CD</entry>
 	  <entry id="104112" string="Filename pattern">Šablona pro názvy souborů</entry>
-	  <entry id="104113" string="Log complete file paths"/>
+	  <entry id="104113" string="Log complete file paths">Zaznamenat celé cesty k souborům</entry>
 	</section>
       </section>
 
