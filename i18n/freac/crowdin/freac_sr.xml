@@ -65,18 +65,18 @@
     </section>
 
     <section name="Media types">
-      <entry id="600" string="CD"/>
-      <entry id="601" string="DAT"/>
-      <entry id="602" string="MiniDisc"/>
-      <entry id="603" string="Compact Cassette"/>
-      <entry id="604" string="Reel tape"/>
-      <entry id="605" string="Vinyl"/>
-      <entry id="606" string="DVD"/>
-      <entry id="607" string="LaserDisc"/>
-      <entry id="608" string="TV"/>
-      <entry id="609" string="Video"/>
-      <entry id="610" string="Radio"/>
-      <entry id="611" string="Telephone"/>
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">DAT</entry>
+      <entry id="602" string="MiniDisc">MiniDisk</entry>
+      <entry id="603" string="Compact Cassette">Kaseta</entry>
+      <entry id="604" string="Reel tape">Traka</entry>
+      <entry id="605" string="Vinyl">Vinil</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">LaserDisk</entry>
+      <entry id="608" string="TV">TV</entry>
+      <entry id="609" string="Video">Video</entry>
+      <entry id="610" string="Radio">Radio</entry>
+      <entry id="611" string="Telephone">Telefon</entry>
     </section>
 
     <section name="Menu">
@@ -724,14 +724,14 @@
       </section>
 
       <section name="Verifiers">
-	<entry id="14000" string="AccurateRip Verifier"/>
+	<entry id="14000" string="AccurateRip Verifier">AccurateRip overivač</entry>
       </section>
 
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Obaveštenja</entry>
 	<entry id="15001" string="Logging">Dnevnik događaja</entry>
-	<entry id="15002" string="Video Downloader"/>
-	<entry id="15003" string="Tag Editor"/>
+	<entry id="15002" string="Video Downloader">Video preuzimač</entry>
+	<entry id="15003" string="Tag Editor">Uređivač tagova</entry>
       </section>
     </section>
 
@@ -1129,42 +1129,42 @@
     <section name="Verifiers">
 
       <section name="AccurateRip">
-	<entry id="70000" string="Configure AccurateRip"/>
-	<entry id="70001" string="General settings"/>
-	<entry id="70002" string="Enable AccurateRip"/>
-	<entry id="70003" string="Database URL"/>
-	<entry id="70004" string="Cache"/>
-	<entry id="70005" string="Enable cache"/>
-	<entry id="70006" string="Expires after"/>
-	<entry id="70007" string="%1 day(s)"/>
-	<entry id="70008" string="%1 week(s)"/>
-	<entry id="70009" string="%1 month(s)"/>
-	<entry id="70010" string="%1 year(s)"/>
-	<entry id="70011" string="never"/>
-	<entry id="70012" string="Drives"/>
-	<entry id="70013" string="Drive"/>
-	<entry id="70014" string="Offset configuration"/>
-	<entry id="70015" string="Offset in drive database"/>
-	<entry id="70016" string="Detected offset"/>
-	<entry id="70017" string="Configured offset"/>
-	<entry id="70018" string="Detect offset now"/>
-	<entry id="70019" string="not configured"/>
-	<entry id="70020" string="automatically configured"/>
-	<entry id="70021" string="configured by offset detection"/>
-	<entry id="70022" string="manually configured"/>
-	<entry id="70023" string="not present"/>
-	<entry id="70024" string="not detected"/>
-	<entry id="70025" string="disabled"/>
+	<entry id="70000" string="Configure AccurateRip">AccurateRip podešenja</entry>
+	<entry id="70001" string="General settings">Opšta podešenja</entry>
+	<entry id="70002" string="Enable AccurateRip">Omogući AccurateRip</entry>
+	<entry id="70003" string="Database URL">URL baze</entry>
+	<entry id="70004" string="Cache">Keš</entry>
+	<entry id="70005" string="Enable cache">Omogući keš</entry>
+	<entry id="70006" string="Expires after">Ističe nakon</entry>
+	<entry id="70007" string="%1 day(s)">%1 dana</entry>
+	<entry id="70008" string="%1 week(s)">%1 nedelje/a</entry>
+	<entry id="70009" string="%1 month(s)">%1 meseca/i</entry>
+	<entry id="70010" string="%1 year(s)">%1 godine/a</entry>
+	<entry id="70011" string="never">nikada</entry>
+	<entry id="70012" string="Drives">CD uređaji</entry>
+	<entry id="70013" string="Drive">CD uređaj</entry>
+	<entry id="70014" string="Offset configuration">Offset podešenja</entry>
+	<entry id="70015" string="Offset in drive database">Offset u bazi CD uređaja</entry>
+	<entry id="70016" string="Detected offset">Detektovan offset</entry>
+	<entry id="70017" string="Configured offset">Podešenje offseta</entry>
+	<entry id="70018" string="Detect offset now">Detektuj offset sada</entry>
+	<entry id="70019" string="not configured">nije podešeno</entry>
+	<entry id="70020" string="automatically configured">samopodešeno</entry>
+	<entry id="70021" string="configured by offset detection">podešeno od strane offset detekcije</entry>
+	<entry id="70022" string="manually configured">ručno podešeno</entry>
+	<entry id="70023" string="not present">nije prisutno</entry>
+	<entry id="70024" string="not detected">nije detektovano</entry>
+	<entry id="70025" string="disabled">onemogućeno</entry>
 
 	<section name="Messages">
-	  <entry id="70050" string="AccurateRip configuration"/>
-	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?"/>
-	  <entry id="70052" string="Do not ask again"/>
-	  <entry id="70053" string="AccurateRip offset detection"/>
-	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database."/>
-	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
-	  <entry id="70056" string="Offset detection needs to check another disc."/>
-	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples."/>
+	  <entry id="70050" string="AccurateRip configuration">AccurateRip podešenja</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Vaš CD uređaj nije nađen u AccurateRip bazi.&#10;&#10;Naziv  uređaja: %1&#10;&#10;Da li želite da pokrenete samodetekciju offseta drajva sada?</entry>
+	  <entry id="70052" string="Do not ask again">Nе pitaj ponovo</entry>
+	  <entry id="70053" string="AccurateRip offset detection">AccurateRip detekcija offseta</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Ubačen disk nije nađen u AccurateRip bazi.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Molimo ubacite drugi disk u CD uređaj i kliknite OK.&#10;&#10;Disk se mora nalaziti u AccurateRip bazi. Verovatnoća za ovo jeis&#10;viša je za popularne diskove koji su verovatno već ripovani ranije od strane drugih korisnika.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">Ofset detekcija zahteva proveru drugog diska.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Ofset drajva uspešno je detektovan i podešen na %1 sempla.</entry>
 	</section>
       </section>
     </section>
@@ -1384,7 +1384,7 @@
 	  <entry id="103300" string="Publisher">Izdavač</entry>
 	  <entry id="103301" string="Publisher information">Info o izdavaču</entry>
 	  <entry id="103302" string="Publisher / label">Izdavač / firma</entry>
-	  <entry id="103303" string="Media type"/>
+	  <entry id="103303" string="Media type">Vrsta medije</entry>
 	  <entry id="103304" string="Catalog number">Kataloški broj</entry>
 	  <entry id="103305" string="Barcode">Barkod</entry>
 	  <entry id="103306" string="ISRC">ISRC</entry>
@@ -1398,8 +1398,8 @@
 	</section>
 
 	<section name="Configuration">
-	  <entry id="103400" string="Behavior"/>
-	  <entry id="103401" string="Clear album artist field when it matches track artist"/>
+	  <entry id="103400" string="Behavior">Ponašanje</entry>
+	  <entry id="103401" string="Clear album artist field when it matches track artist">Očistite polje Izvođač kada se poklopi sa izvođačem pesme</entry>
 	</section>
 
 	<section name="Errors">
@@ -1430,7 +1430,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Sačuvajte dnevnike konverzija sa audio fajlovima</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Samo dnevnik ripovanja audio CD-ova</entry>
 	  <entry id="104112" string="Filename pattern">Šablon naziva fajla</entry>
-	  <entry id="104113" string="Log complete file paths"/>
+	  <entry id="104113" string="Log complete file paths">Sačuvaj kompletne putanje fajlova</entry>
 	</section>
       </section>
 

@@ -27,7 +27,7 @@
     <entry id="14" string="Installing files...">Instaliranje u toku...</entry>
     <entry id="15" string="Installing file:">Instaliranje fajla:</entry>
     <entry id="16" string="Downloading file:">Preuzimanje fajla:</entry>
-    <entry id="17" string="Extracting file:"/>
+    <entry id="17" string="Extracting file:">Raspakivanje fajla:</entry>
     <entry id="18" string="Update complete">Ažuriranje završeno</entry>
     <entry id="19" string="Your application has been successfully updated!">Vaša aplikacija je uspešno ažurirana!</entry>
     <entry id="20" string="Error">Greška</entry>

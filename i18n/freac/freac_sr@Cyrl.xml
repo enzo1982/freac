@@ -64,6 +64,21 @@
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
+    <section name="Media types">
+      <entry id="600" string="CD">ЦД</entry>
+      <entry id="601" string="DAT">ДАТ</entry>
+      <entry id="602" string="MiniDisc">МиниДиск</entry>
+      <entry id="603" string="Compact Cassette">Касета</entry>
+      <entry id="604" string="Reel tape">Трака</entry>
+      <entry id="605" string="Vinyl">Винил</entry>
+      <entry id="606" string="DVD">ДВД</entry>
+      <entry id="607" string="LaserDisc">ЛасерДиск</entry>
+      <entry id="608" string="TV">ТВ</entry>
+      <entry id="609" string="Video">Видео</entry>
+      <entry id="610" string="Radio">Радио</entry>
+      <entry id="611" string="Telephone">Телефон</entry>
+    </section>
+
     <section name="Menu">
       <entry id="1000" string="File">Фајл</entry>
       <entry id="1001" string="Options">Опције</entry>
@@ -708,9 +723,15 @@
 	<entry id="12005" string="HDCD Decoder">HDCD Декодер</entry>
       </section>
 
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier">AccurateRip оверивач</entry>
+      </section>
+
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Обавештења</entry>
 	<entry id="15001" string="Logging">Дневник догађаја</entry>
+	<entry id="15002" string="Video Downloader">Видео преузимач</entry>
+	<entry id="15003" string="Tag Editor">Уређивач тагова</entry>
       </section>
     </section>
 
@@ -1105,6 +1126,49 @@
       </section>
     </section>
 
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">Подешења AccurateRip-а</entry>
+	<entry id="70001" string="General settings">Општа подешења</entry>
+	<entry id="70002" string="Enable AccurateRip">Омогући AccurateRip</entry>
+	<entry id="70003" string="Database URL">URL базе</entry>
+	<entry id="70004" string="Cache">Кеш</entry>
+	<entry id="70005" string="Enable cache">Омогући кеш</entry>
+	<entry id="70006" string="Expires after">Истиче након</entry>
+	<entry id="70007" string="%1 day(s)">%1 дан/а</entry>
+	<entry id="70008" string="%1 week(s)">%1 недеље/а</entry>
+	<entry id="70009" string="%1 month(s)">%1 месец/а/и</entry>
+	<entry id="70010" string="%1 year(s)">%1 године/а</entry>
+	<entry id="70011" string="never">никад</entry>
+	<entry id="70012" string="Drives">Драјвови</entry>
+	<entry id="70013" string="Drive">ЦД уређај</entry>
+	<entry id="70014" string="Offset configuration">Подешења офсета</entry>
+	<entry id="70015" string="Offset in drive database">Офсет у бази цд уређаја</entry>
+	<entry id="70016" string="Detected offset">Детектован офсет</entry>
+	<entry id="70017" string="Configured offset">Подешен офсет</entry>
+	<entry id="70018" string="Detect offset now">Детектуј офсет сада</entry>
+	<entry id="70019" string="not configured">није подешено</entry>
+	<entry id="70020" string="automatically configured">самоподешено</entry>
+	<entry id="70021" string="configured by offset detection">подешено од стране офсет детекције</entry>
+	<entry id="70022" string="manually configured">ручно подешено</entry>
+	<entry id="70023" string="not present">није присутно</entry>
+	<entry id="70024" string="not detected">није детектовано</entry>
+	<entry id="70025" string="disabled">онемогућено</entry>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration">AccurateRip подешења</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Ваш ЦД уређај није пронађен у AccurateRip бази.&#10;&#10;Назив уређаја: %1&#10;&#10;Да ли желите да покренете аутоматску детекцију офсета драјва сада?</entry>
+	  <entry id="70052" string="Do not ask again">Не питај поново</entry>
+	  <entry id="70053" string="AccurateRip offset detection">AccurateRip детекција офсета</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Убачени диск није пронађен у AccurateRip бази.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Молимо убаците други диск у ЦД уређај и кликните ОК.&#10;&#10;Диск мора бити у AccurateRip бази. Вероватноћа за ово  је&#10;виша је за популарне дискове који су вероватно већ риповани раније од стране других корисника.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">Офсет детекција захтева проверу другог диска.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Офсет драјва је успешно детектован и подешен на %1 семплова.</entry>
+	</section>
+      </section>
+    </section>
+
     <section name="External">
       <entry id="80000" string="Downmix multi-channel audio to stereo">Снизи мултиканални аудио на стерео</entry>
 
@@ -1320,6 +1384,7 @@
 	  <entry id="103300" string="Publisher">Издавач</entry>
 	  <entry id="103301" string="Publisher information">Инфо о издавачу</entry>
 	  <entry id="103302" string="Publisher / label">Издавач / фирма</entry>
+	  <entry id="103303" string="Media type">Врста медије</entry>
 	  <entry id="103304" string="Catalog number">Каталошки број</entry>
 	  <entry id="103305" string="Barcode">Бар-код</entry>
 	  <entry id="103306" string="ISRC">ISRC</entry>
@@ -1330,6 +1395,11 @@
 	  <entry id="103311" string="Audio source webpage">Интернет страна аудио извора</entry>
 	  <entry id="103312" string="Copyright information">Инфо о правима копирања</entry>
 	  <entry id="103313" string="Commercial information">Комерцијална информација</entry>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior">Понашање</entry>
+	  <entry id="103401" string="Clear album artist field when it matches track artist">Уклоните податак из поља Извођач када се поклопи извођач песме</entry>
 	</section>
 
 	<section name="Errors">
@@ -1360,6 +1430,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Сачувајте дневнике конверзија са аудио фајловима</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Само дневник риповања аудио ЦД-ова</entry>
 	  <entry id="104112" string="Filename pattern">Шаблон назива фајла</entry>
+	  <entry id="104113" string="Log complete file paths">Запиши комплетне путање фајлова</entry>
 	</section>
       </section>
 
