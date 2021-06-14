@@ -22,14 +22,17 @@ cflags="-O3 -DNDEBUG"
 
 if [[ $uname == Darwin ]] && [[ $BUILD_PPC == True ]]; then
   cflags="$cflags -arch ppc -mcpu=G4"
+  asflags="-arch ppc"
   ldflags="-Wl,-x -arch ppc"
   ppc=true
 elif [[ $uname == Darwin ]] && [[ $BUILD_X86 == True ]]; then
   cflags="$cflags -arch i386 -march=prescott"
+  asflags="-arch i386"
   ldflags="-Wl,-x -arch i386"
   x86=true
 elif [[ $uname == Darwin ]] && [[ $BUILD_ARM64 == True ]]; then
   cflags="$cflags -arch arm64"
+  asflags="-arch arm64"
   ldflags="-Wl,-x -arch arm64"
   host="aarch64-apple-darwin20.1.0"
   arm64=true
@@ -39,6 +42,7 @@ elif [[ $uname == Darwin ]]; then
   else
     cflags="$cflags -arch x86_64 -march=core2"
   fi
+  asflags="-arch x86_64"
   ldflags="-Wl,-x -arch x86_64"
   x86_64=true
 elif [[ $machine == *amd64* || $machine == *x86_64* ]] && [[ $BUILD_X86 != True ]] && [[ $uname != *MINGW* || $BUILD_X86_64 == True ]]; then
@@ -110,6 +114,7 @@ fi
 
 # Setup environment
 export CFLAGS="$cflags $cflags_unroll"
+export ASFLAGS="$asflags"
 export LDFLAGS="$ldflags"
 
 if [[ $uname == *MINGW* ]]; then
@@ -201,6 +206,18 @@ rubberband_patch_levels=(1)
 vorbis_patches=(https://freac.org/patches/libvorbis-$vorbis_version-aotuv-b6.03.patch https://freac.org/patches/libvorbis-$vorbis_version-aotuv-b6.03-lancer.patch)
 vorbis_patch_levels=(1 1)
 
+# Keep using FFmpeg 4.3.2 on macOS PPC
+if [[ $uname == Darwin ]] && [[ $BUILD_PPC == True ]]; then
+  ffmpeg_version=4.3.2
+fi
+
+# Keep using libsndfile 1.0.30 on macOS x86
+if [[ $uname == Darwin ]] && [[ $BUILD_X86 == True ]]; then
+  libsndfile_version=1.0.30
+  libsndfile_location=https://github.com/libsndfile/libsndfile/releases/download/v$libsndfile_version/libsndfile-$libsndfile_version.tar.bz2
+fi
+
+# Main build function
 build () {
   archive=${1##*/}
 
@@ -296,6 +313,7 @@ build () {
   unset folder
 
   export CFLAGS="$cflags $cflags_unroll"
+  export ASFLAGS="$asflags"
   export LDFLAGS="$ldflags"
 }
 
@@ -494,7 +512,7 @@ for package in ${packages[@]}; do
     elif [[ $uname == *MINGW* ]] && [[ $x86 == true ]]; then
       configure_exports="RC=\"windres -F pe-i386\""
     fi
-    configure_flags="--disable-external-libs"
+    configure_flags="--disable-external-libs --disable-alsa"
     build $libsndfile_location src/.libs/libsndfile$sharedinfix.$sharedext SndFile.$sharedext
 
   elif [ $package == mac ]; then
@@ -527,6 +545,9 @@ for package in ${packages[@]}; do
   elif [ $package == mpg123 ]; then
     # Build mpg123
     configure_flags="--enable-modules=no"
+    if [[ $uname == Darwin ]]; then
+      export CFLAGS="$cflags $cflags_unroll -std=c99"
+    fi
     if [[ $ppc == true ]]; then
       configure_flags="$configure_flags --with-cpu=altivec"
     elif [[ $x86_64 == true ]]; then
