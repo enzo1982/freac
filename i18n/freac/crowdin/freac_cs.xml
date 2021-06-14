@@ -413,7 +413,7 @@
       <entry id="5023" string="Verifiers">Ověřovatelé</entry>
       <entry id="5024" string="Taggers">Tagy</entry>
       <entry id="5025" string="Processing">Zpracování</entry>
-      <entry id="5026" string="Additional arguments">Další argumenty</entry>
+      <entry id="5026" string="Additional arguments">Další parametry</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Konfigurovat enkodér</entry>
@@ -1131,7 +1131,7 @@
       <section name="AccurateRip">
 	<entry id="70000" string="Configure AccurateRip">Konfigurovat AccurateRip</entry>
 	<entry id="70001" string="General settings">Obecná nastavení</entry>
-	<entry id="70002" string="Enable AccurateRip">Povolit AccurateRip</entry>
+	<entry id="70002" string="Enable AccurateRip">Povolit ripování s AccurateRip</entry>
 	<entry id="70003" string="Database URL">Databáze URL</entry>
 	<entry id="70004" string="Cache">Mezipaměť</entry>
 	<entry id="70005" string="Enable cache">Povolit mezipaměť</entry>
@@ -1152,7 +1152,7 @@
 	<entry id="70020" string="automatically configured">automaticky nakonfigurovaný</entry>
 	<entry id="70021" string="configured by offset detection">nakonfigurováno detekcí ofsetu</entry>
 	<entry id="70022" string="manually configured">ručně nakonfigurovaný</entry>
-	<entry id="70023" string="not present">není zde</entry>
+	<entry id="70023" string="not present">není k dispozici</entry>
 	<entry id="70024" string="not detected">nezjištěn</entry>
 	<entry id="70025" string="disabled">deaktivovaný</entry>
 
@@ -1160,11 +1160,11 @@
 	  <entry id="70050" string="AccurateRip configuration">Konfigurace AccurateRip</entry>
 	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Vaši jednotku CD nelze najít v databázi AccurateRip.&#10;&#10;Název jednotky: %1&#10;&#10;Chcete nyní spustit automatickou detekci ofsetu jednotky?</entry>
 	  <entry id="70052" string="Do not ask again">Neptat se znovu</entry>
-	  <entry id="70053" string="AccurateRip offset detection">Detekce ofsetu AccurateRip</entry>
+	  <entry id="70053" string="AccurateRip offset detection">Detekce ofsetu AccurateRipem</entry>
 	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Vložený disk nebyl nalezen v databázi AccurateRip.</entry>
-	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Vložte další disk do jednotky CD a klikněte na OK.&#10;&#10;Disk musí být přítomen v databázi AccurateRip. Nejvyšší šance je &#10;u populárních CD, které pravděpodobně již dříve uživatelé ripovali.</entry>
-	  <entry id="70056" string="Offset detection needs to check another disc."/>
-	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples."/>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Vložte další disk do jednotky CD a klikněte na OK.&#10;&#10;Disk musí být přítomen v databázi AccurateRip. Největší šance je &#10;u populárních CD, které pravděpodobně již dříve uživatelé ripovali.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">Pro detekci offsetu je zapotřebí další disk CD.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Offset jednotky byl úspěšně detekován a nastaven na %1 vzorky(ů).</entry>
 	</section>
       </section>
     </section>

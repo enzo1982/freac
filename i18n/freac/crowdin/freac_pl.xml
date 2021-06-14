@@ -1163,8 +1163,8 @@
 	  <entry id="70053" string="AccurateRip offset detection">Wykrywanie offsetu przez AccurateRip</entry>
 	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Włożona płyta nie została znaleziona w bazie danych AccurateRip.</entry>
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Włóż inną płytę do stacji CD i kliknij OK.&#10;&#10;Płyta musi znajdować się w bazie danych AccurateRip. Szansa na to jest największa&#10;w przypadku popularnych płyt CD, które mogły być wcześniej zgrane przez innych użytkowników.</entry>
-	  <entry id="70056" string="Offset detection needs to check another disc."/>
-	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples."/>
+	  <entry id="70056" string="Offset detection needs to check another disc.">Wykrywanie offsetu wymaga sprawdzenia innej płyty.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Offset napędu został pomyślnie wykryty i ustawiony na liczbę próbek równą %1.</entry>
 	</section>
       </section>
     </section>

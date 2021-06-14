@@ -1163,6 +1163,8 @@
 	  <entry id="70053" string="AccurateRip offset detection">AccurateRip offset-detectie</entry>
 	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">De ingevoerde schijf kon niet worden teruggevonden in de AccurateRip-database.</entry>
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Plaats een andere schijf in het cd-station en klik op Ok.&#10;&#10;De schijf moet aanwezig zijn in de AccurateRip-database. De kans hiervoor is het grootst&#10;voor populaire cd's die door andere gebruikers voordien geript zijn.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">Offset-detectie moet een andere schijf detecteren.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">De station-offset is met succes gedetecteerd en geconfigureerd op %1 samples.</entry>
 	</section>
       </section>
     </section>

@@ -1163,6 +1163,8 @@
 	  <entry id="70053" string="AccurateRip offset detection">Scuperta di spiazzamentu AccurateRip</entry>
 	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">U discu framessu ùn si trova micca in a basa di dati AccurateRip.</entry>
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Ci vole à framette un altru discu dentru u lettore CD è cliccà Vai.&#10;&#10;U discu duve esse presente in a basa di dati AccurateRip. Sta pussibilità hè&#10;più maiò per i CD populari chì sò stati dighjà estratti da d’altri utilizatori.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">A scuperta di spiazzamentu hà bisognu di verificà un altru discu.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">U spiazzamentu di u lettore hè statu scupertu bè è cunfiguratu à %1 campioni.</entry>
 	</section>
       </section>
     </section>

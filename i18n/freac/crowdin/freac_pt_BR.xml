@@ -1163,8 +1163,8 @@
 	  <entry id="70053" string="AccurateRip offset detection">Detecção da compensação do AccurateRip</entry>
 	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">O disco inserido não pôde ser encontrado no banco de dados AccurateRip.</entry>
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Insira outro disco no CD drive e clique em OK.&#10;&#10;O disco deve existir no banco de dados AccurateRip. A chance para isso é&#10;maior para os CDs populares que provavelmente já foram extraídos por outros usuários antes.</entry>
-	  <entry id="70056" string="Offset detection needs to check another disc."/>
-	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples."/>
+	  <entry id="70056" string="Offset detection needs to check another disc.">A detecção do desvio precisa verificar outro disco.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">O desvio da unidade foi detectada com êxito e configurado para %1 amostras.</entry>
 	</section>
       </section>
     </section>

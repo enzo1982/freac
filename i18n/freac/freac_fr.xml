@@ -1163,6 +1163,8 @@
 	  <entry id="70053" string="AccurateRip offset detection">Détection de décalage AccurateRip</entry>
 	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Le disque inséré n'a pas pu être trouvé dans la base de données AccurateRip.</entry>
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Veuillez insérer un autre disque dans le lecteur de CD et cliquer sur OK.&#10;Le disque doit être présent dans la base de données AccurateRip.&#10;La probabilité pour cela est plus élevée avec les CD populaires qui ont&#10;probablement déjà été extraits par d'autres utilisateurs.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">La détection de décalage nécessite de vérifier un autre disque.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Le décalage du lecteur a été détecté avec succès et configuré à %1 échantillons.</entry>
 	</section>
       </section>
     </section>
