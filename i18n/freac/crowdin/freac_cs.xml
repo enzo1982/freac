@@ -1399,7 +1399,7 @@
 
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Režim (chování)</entry>
-	  <entry id="103401" string="Clear album artist field when it matches track artist">Vymazat pole interpreta alba, pokud se shoduje s interpretem stopy </entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Vymazat pole interpreta alba, pokud se shoduje s interpretem stopy </entry>
 	</section>
 
 	<section name="Errors">

@@ -1399,7 +1399,7 @@
 
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Comportamento</entry>
-	  <entry id="103401" string="Clear album artist field when it matches track artist">Limpe o campo do artista do álbum quando ele coincidir com o artista da faixa</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Limpe o campo do artista do álbum quando ele coincidir com o artista da faixa</entry>
 	</section>
 
 	<section name="Errors">

@@ -1399,7 +1399,7 @@
 
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Andamentu</entry>
-	  <entry id="103401" string="Clear album artist field when it matches track artist">Squassà u campu di l’artista di l’albumu quand’ellu currisponde à quellu di a traccia</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Squassà u campu di l’artista di l’albumu quand’ellu currisponde à quellu di a traccia</entry>
 	</section>
 
 	<section name="Errors">

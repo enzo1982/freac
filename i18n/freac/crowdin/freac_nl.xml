@@ -1399,7 +1399,7 @@
 
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Gedrag</entry>
-	  <entry id="103401" string="Clear album artist field when it matches track artist">Veld album-artiest wissen wanneer het overeenkomt met de track-artiest</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Veld album-artiest wissen wanneer het overeenkomt met de track-artiest</entry>
 	</section>
 
 	<section name="Errors">
