@@ -64,6 +64,21 @@
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
+    <section name="Media types">
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">Cinta digital de audio</entry>
+      <entry id="602" string="MiniDisc">Minidisco</entry>
+      <entry id="603" string="Compact Cassette">Casete compacto</entry>
+      <entry id="604" string="Reel tape">Cinta de bobina abierta</entry>
+      <entry id="605" string="Vinyl">Vinilo</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">Disco láser</entry>
+      <entry id="608" string="TV">TV</entry>
+      <entry id="609" string="Video">Vídeo</entry>
+      <entry id="610" string="Radio">Radio</entry>
+      <entry id="611" string="Telephone">Teléfono</entry>
+    </section>
+
     <section name="Menu">
       <entry id="1000" string="File">Archivo</entry>
       <entry id="1001" string="Options">Opciones</entry>
@@ -708,10 +723,15 @@
 	<entry id="12005" string="HDCD Decoder">Decodificador HDCD</entry>
       </section>
 
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier">Verificador AccurateRip</entry>
+      </section>
+
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Notificador de conversión</entry>
 	<entry id="15001" string="Logging">Registros</entry>
 	<entry id="15002" string="Video Downloader">Descargador de vídeo</entry>
+	<entry id="15003" string="Tag Editor">Editor de etiquetas</entry>
       </section>
     </section>
 
@@ -1121,6 +1141,31 @@
 	<entry id="70009" string="%1 month(s)">%1 mes(es)</entry>
 	<entry id="70010" string="%1 year(s)">%1 año(s)</entry>
 	<entry id="70011" string="never">nunca</entry>
+	<entry id="70012" string="Drives">Dispositivos</entry>
+	<entry id="70013" string="Drive">Dispositivo</entry>
+	<entry id="70014" string="Offset configuration">Configuración offset</entry>
+	<entry id="70015" string="Offset in drive database">Offset del dispositivo base de datos</entry>
+	<entry id="70016" string="Detected offset">Offset detectado</entry>
+	<entry id="70017" string="Configured offset">Offset configurado</entry>
+	<entry id="70018" string="Detect offset now">Detectar offset ahora</entry>
+	<entry id="70019" string="not configured">no configurado</entry>
+	<entry id="70020" string="automatically configured">configurado automáticamente</entry>
+	<entry id="70021" string="configured by offset detection">configurado por la detección de offset</entry>
+	<entry id="70022" string="manually configured">configurado manualmente</entry>
+	<entry id="70023" string="not present">ausente</entry>
+	<entry id="70024" string="not detected">no detectado</entry>
+	<entry id="70025" string="disabled">desactivado</entry>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration">Configuración AccurateRip</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Su disco CD no se encontró en la base de datos de AccurateRip.&#10;&#10;Nombre del disco: %1&#10;&#10;¿Quiere iniciar una detección automática de offset del disco ahora?</entry>
+	  <entry id="70052" string="Do not ask again">No preguntar de nuevo</entry>
+	  <entry id="70053" string="AccurateRip offset detection">Detección de offset en AccurateRip</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">El disco insertado no se ha encontrado en la base de datos de AccurateRip</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Por favor, inserte otro disco en el lector de CD y pulse OK.&#10;&#10;El disco debería estar presente en la base de datos de AccurateRip. La probabilidad de que esto ocurra es&#10;más alta para los CDs populares que probablemente han sido copiados antes por otros usuarios.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">La detección de offset necesita probar otro disco.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Detectado y configurado satisfactoriamente el offset para %1 muestras.</entry>
+	</section>
       </section>
     </section>
 
@@ -1339,6 +1384,7 @@
 	  <entry id="103300" string="Publisher">Editor</entry>
 	  <entry id="103301" string="Publisher information">Información del editor</entry>
 	  <entry id="103302" string="Publisher / label">Editor / Etiqueta</entry>
+	  <entry id="103303" string="Media type">Tipo de medio</entry>
 	  <entry id="103304" string="Catalog number">Número de catálogo</entry>
 	  <entry id="103305" string="Barcode">Código de barras</entry>
 	  <entry id="103306" string="ISRC">ISRC</entry>
@@ -1349,6 +1395,11 @@
 	  <entry id="103311" string="Audio source webpage">Página web fuente</entry>
 	  <entry id="103312" string="Copyright information">Información del copyright</entry>
 	  <entry id="103313" string="Commercial information">Información comercial</entry>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior">Comportamiento</entry>
+	  <entry id="103401" string="Clear album artist field when it matches track artist">Borrar el campo de artista del álbum si coincide con el artista de la pista</entry>
 	</section>
 
 	<section name="Errors">
@@ -1379,6 +1430,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Guardar los archivos de conversión con los archivos de audio</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Sólo registros de conversión de Audio CD</entry>
 	  <entry id="104112" string="Filename pattern">Patrón de nombre de archivo</entry>
+	  <entry id="104113" string="Log complete file paths">Registrar las rutas cmpletas de los archivos</entry>
 	</section>
       </section>
 
