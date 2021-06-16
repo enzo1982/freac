@@ -35,23 +35,26 @@ const String	 BoCA::ConfigureAccurateRip::ResourcesFolder	      = "freac.verifie
 BoCA::ConfigureAccurateRip::ConfigureAccurateRip()
 {
 	const Config	*config = Config::Get();
+	I18n		*i18n	= I18n::Get();
 
+	i18n->SetContext("Verifiers::AccurateRip");
+
+	/* Get configuration.
+	 */
 	enableAccurateRip = config->GetIntValue(ConfigID, ConfigEnabledID, ConfigEnabledDefault);
 
 	enableCache	  = config->GetIntValue(ConfigID, ConfigEnableCacheID, ConfigEnableCacheDefault);
 	expireCache	  = CacheDaysToIndex(config->GetIntValue(ConfigID, ConfigExpireCacheID, ConfigExpireCacheDefault));
 
-	I18n	*i18n = I18n::Get();
-
-	i18n->SetContext("Verifiers::AccurateRip");
-
+	/* General settings group.
+	 */
 	group_settings		= new GroupBox(i18n->TranslateString("General settings"), Point(7, 11), Size(450, 67));
 
 	check_enabled		= new CheckBox(i18n->TranslateString("Enable AccurateRip"), Point(10, 13), Size(200, 0), &enableAccurateRip);
 	check_enabled->onAction.Connect(&ConfigureAccurateRip::ToggleEnabled, this);
 
 	text_path		= new Text(i18n->AddColon(i18n->TranslateString("Database URL")), Point(27, 41));
-	edit_path		= new EditBox(config->GetStringValue(ConfigID, ConfigPathID, ConfigPathDefault), Point(text_path->GetUnscaledTextWidth() + 34, 38), Size(406 - text_path->GetUnscaledTextWidth(), 0));
+	edit_path		= new EditBox(config->GetStringValue(ConfigID, ConfigPathID, ConfigPathDefault), Point(text_path->GetUnscaledTextWidth() + 34, 38), Size(100, 0));
 
 	list_path		= new List();
 	list_path->AddEntry(ConfigPathDefault);
@@ -63,10 +66,12 @@ BoCA::ConfigureAccurateRip::ConfigureAccurateRip()
 	group_settings->Add(text_path);
 	group_settings->Add(edit_path);
 
+	/* Drives group.
+	 */
 	group_drives		= new GroupBox(i18n->TranslateString("Drives"), Point(7, 90), Size(450, 113));
 
 	text_drive		= new Text(i18n->AddColon(i18n->TranslateString("Drive")), Point(9, 13));
-	combo_drive		= new ComboBox(Point(text_drive->GetUnscaledTextWidth() + 16, 10), Size(group_drives->GetWidth() - text_drive->GetUnscaledTextWidth() - 26, 0));
+	combo_drive		= new ComboBox(Point(text_drive->GetUnscaledTextWidth() + 16, 10), Size(100, 0));
 
 	UpdateDriveList();
 
@@ -79,7 +84,7 @@ BoCA::ConfigureAccurateRip::ConfigureAccurateRip()
 	text_configured		= new Text(i18n->AddColon(i18n->TranslateString("Configured offset")), Point(27, 90));
 
 	Int	 maxTextSize = Math::Max(Math::Max(text_status->GetUnscaledTextWidth(), text_drivedb->GetUnscaledTextWidth()),
-					 Math::Max(text_detected->GetUnscaledTextWidth(),text_configured->GetUnscaledTextWidth()));
+					 Math::Max(text_detected->GetUnscaledTextWidth(), text_configured->GetUnscaledTextWidth()));
 
 	text_status_value	= new Text(NIL, Point(maxTextSize + 33, 36));
 	text_drivedb_offset	= new Text(NIL, Point(maxTextSize + 33, 54));
@@ -104,6 +109,8 @@ BoCA::ConfigureAccurateRip::ConfigureAccurateRip()
 	group_drives->Add(text_configured_offset);
 	group_drives->Add(button_configure);
 
+	/* Cache settings group.
+	 */
 	group_cache		= new GroupBox(i18n->TranslateString("Cache"), Point(7, 215), Size(450, 65));
 
 	check_cache		= new CheckBox(i18n->TranslateString("Enable cache"), Point(10, 13), Size(200, 0), &enableCache);
@@ -115,20 +122,6 @@ BoCA::ConfigureAccurateRip::ConfigureAccurateRip()
 	slider_expire->onValueChange.Connect(&ConfigureAccurateRip::SetExpireTime, this);
 
 	text_expire_value	= new Text(NIL, Point(0, 40));
-
-	Font	 font	     = text_expire_value->GetFont();
-
-	maxTextSize = Math::Max(Math::Max(font.GetUnscaledTextSizeX(i18n->TranslateString("%1 day(s)").Replace("%1", "0")),   font.GetUnscaledTextSizeX(i18n->TranslateString("%1 week(s)").Replace("%1", "0"))),
-		      Math::Max(Math::Max(font.GetUnscaledTextSizeX(i18n->TranslateString("%1 month(s)").Replace("%1", "0")), font.GetUnscaledTextSizeX(i18n->TranslateString("%1 year(s)").Replace("%1", "0"))),
-					  font.GetUnscaledTextSizeX(i18n->TranslateString("never"))));
-
-	text_expire_value->SetX(440 - maxTextSize);
-	slider_expire->SetWidth(433 - maxTextSize - slider_expire->GetX());
-
-	maxTextSize = Math::Max(check_enabled->GetUnscaledTextWidth(), check_cache->GetUnscaledTextWidth());
-
-	check_enabled->SetWidth(maxTextSize + 20);
-	check_cache->SetWidth(maxTextSize + 20);
 
 	group_cache->Add(check_cache);
 
@@ -144,7 +137,36 @@ BoCA::ConfigureAccurateRip::ConfigureAccurateRip()
 	SetExpireTime();
 	SelectDrive();
 
-	SetSize(Size(464, 287));
+	/* Adjust element widths.
+	 */
+	Font	 font	   = text_status_value->GetFont();
+
+	maxTextSize = Math::Max(Math::Max(font.GetUnscaledTextSizeX(i18n->TranslateString("not configured")), font.GetUnscaledTextSizeX(i18n->TranslateString("automatically configured"))),
+				Math::Max(font.GetUnscaledTextSizeX(i18n->TranslateString("configured by offset detection")), font.GetUnscaledTextSizeX(i18n->TranslateString("manually configured"))));
+
+	Int	 line1Size = maxTextSize + 10;
+	Int	 line3Size = font.GetUnscaledTextSizeX(i18n->TranslateString("not detected")) + button_configure->GetWidth() + 18;
+
+	group_settings->SetWidth(Math::Max(450, text_status_value->GetX() + Math::Max(line1Size, line3Size)));
+	group_drives->SetWidth(group_settings->GetWidth());
+	group_cache->SetWidth(group_settings->GetWidth());
+
+	edit_path->SetWidth(group_settings->GetWidth() - text_path->GetUnscaledTextWidth() - 44);
+	combo_drive->SetWidth(group_drives->GetWidth() - text_drive->GetUnscaledTextWidth() - 26);
+
+	maxTextSize = Math::Max(Math::Max(font.GetUnscaledTextSizeX(i18n->TranslateString("%1 day(s)").Replace("%1", "0")),   font.GetUnscaledTextSizeX(i18n->TranslateString("%1 week(s)").Replace("%1", "0"))),
+		      Math::Max(Math::Max(font.GetUnscaledTextSizeX(i18n->TranslateString("%1 month(s)").Replace("%1", "0")), font.GetUnscaledTextSizeX(i18n->TranslateString("%1 year(s)").Replace("%1", "0"))),
+					  font.GetUnscaledTextSizeX(i18n->TranslateString("never"))));
+
+	text_expire_value->SetX(group_cache->GetWidth() - maxTextSize - 10);
+	slider_expire->SetWidth(group_cache->GetWidth() - maxTextSize - slider_expire->GetX() - 17);
+
+	maxTextSize = Math::Max(check_enabled->GetUnscaledTextWidth(), check_cache->GetUnscaledTextWidth());
+
+	check_enabled->SetWidth(maxTextSize + 20);
+	check_cache->SetWidth(maxTextSize + 20);
+
+	SetSize(Size(group_cache->GetWidth() + 14, 287));
 }
 
 BoCA::ConfigureAccurateRip::~ConfigureAccurateRip()
