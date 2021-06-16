@@ -27,6 +27,7 @@
     <entry id="14" string="Installing files...">Инсталиране на файлове...</entry>
     <entry id="15" string="Installing file:">Инсталиране на файл:</entry>
     <entry id="16" string="Downloading file:">Изтегляне на файл:</entry>
+    <entry id="17" string="Extracting file:">Извличане на файл:</entry>
     <entry id="18" string="Update complete">Обновяването завърши</entry>
     <entry id="19" string="Your application has been successfully updated!">Вашето приложение беше обновено успешно!</entry>
     <entry id="20" string="Error">Грешка</entry>

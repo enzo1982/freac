@@ -67,9 +67,9 @@
     <section name="Media types">
       <entry id="600" string="CD">CD</entry>
       <entry id="601" string="DAT">DAT</entry>
-      <entry id="602" string="MiniDisc">MiniDisc</entry>
-      <entry id="603" string="Compact Cassette"/>
-      <entry id="604" string="Reel tape"/>
+      <entry id="602" string="MiniDisc">Мини Диск</entry>
+      <entry id="603" string="Compact Cassette">Компактна касета</entry>
+      <entry id="604" string="Reel tape">Филмова лента</entry>
       <entry id="605" string="Vinyl">Винилова плоча</entry>
       <entry id="606" string="DVD">DVD</entry>
       <entry id="607" string="LaserDisc">LaserDisc</entry>
@@ -455,8 +455,8 @@
       </section>
 
       <section name="CDDB">
-	<entry id="5300" string="Enable local CDDB database">Включване на местна CDDB база данни</entry>
-	<entry id="5301" string="Enable remote CDDB database">Включване на отдалечена CDDB база данни</entry>
+	<entry id="5300" string="Enable local CDDB database">Включена локална CDDB база данни</entry>
+	<entry id="5301" string="Enable remote CDDB database">Включена отдалечена CDDB база данни</entry>
 	<entry id="5302" string="CDDB path">Път към CDDB</entry>
 	<entry id="5303" string="Select">Избиране...</entry>
 	<entry id="5304" string="Select the folder of the CDDB database">Изберете папката на CDDB базата данни</entry>
@@ -469,7 +469,7 @@
 	<entry id="5311" string="Options">Опции</entry>
 	<entry id="5312" string="Automatic CDDB queries">Автом. заявки към CDDB</entry>
 	<entry id="5313" string="Prefer CDDB over CD Text">Предпоч. CDDB пред CD Текст</entry>
-	<entry id="5314" string="Enable CDDB cache">Включване на CDDB кеш</entry>
+	<entry id="5314" string="Enable CDDB cache">Включен CDDB кеш</entry>
 	<entry id="5315" string="Automatization">Автоматизация</entry>
 	<entry id="5316" string="Always select first entry">Винаги избор на 1-вия запис</entry>
 
@@ -684,7 +684,7 @@
       <entry id="9003" string="Read CD Text">Четене на CD Текст</entry>
       <entry id="9004" string="Read cdplayer.ini">Четене на cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Ripper настройки</entry>
-      <entry id="9006" string="Activate cdparanoia mode">CD параноя режим</entry>
+      <entry id="9006" string="Activate cdparanoia mode">cdparanoia режим</entry>
       <entry id="9007" string="Overlap only">Само препокриване</entry>
       <entry id="9008" string="No verify">Без проверка</entry>
       <entry id="9009" string="No scratch repair">Без поправка за надраскване</entry>
@@ -724,14 +724,14 @@
       </section>
 
       <section name="Verifiers">
-	<entry id="14000" string="AccurateRip Verifier"/>
+	<entry id="14000" string="AccurateRip Verifier">AccurateRip проверка</entry>
       </section>
 
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Съобщение за Преобразуване</entry>
 	<entry id="15001" string="Logging">Протокол</entry>
 	<entry id="15002" string="Video Downloader">Видео изтегляне</entry>
-	<entry id="15003" string="Tag Editor"/>
+	<entry id="15003" string="Tag Editor">Tag редактор</entry>
       </section>
     </section>
 
@@ -1129,42 +1129,42 @@
     <section name="Verifiers">
 
       <section name="AccurateRip">
-	<entry id="70000" string="Configure AccurateRip"/>
-	<entry id="70001" string="General settings"/>
-	<entry id="70002" string="Enable AccurateRip"/>
-	<entry id="70003" string="Database URL"/>
-	<entry id="70004" string="Cache"/>
-	<entry id="70005" string="Enable cache"/>
-	<entry id="70006" string="Expires after"/>
-	<entry id="70007" string="%1 day(s)"/>
-	<entry id="70008" string="%1 week(s)"/>
-	<entry id="70009" string="%1 month(s)"/>
-	<entry id="70010" string="%1 year(s)"/>
-	<entry id="70011" string="never"/>
-	<entry id="70012" string="Drives"/>
-	<entry id="70013" string="Drive"/>
-	<entry id="70014" string="Offset configuration"/>
-	<entry id="70015" string="Offset in drive database"/>
-	<entry id="70016" string="Detected offset"/>
-	<entry id="70017" string="Configured offset"/>
-	<entry id="70018" string="Detect offset now"/>
-	<entry id="70019" string="not configured"/>
-	<entry id="70020" string="automatically configured"/>
-	<entry id="70021" string="configured by offset detection"/>
-	<entry id="70022" string="manually configured"/>
-	<entry id="70023" string="not present"/>
-	<entry id="70024" string="not detected"/>
-	<entry id="70025" string="disabled"/>
+	<entry id="70000" string="Configure AccurateRip">Конфигуриране на AccurateRip</entry>
+	<entry id="70001" string="General settings">Основни настройки</entry>
+	<entry id="70002" string="Enable AccurateRip">Включен AccurateRip</entry>
+	<entry id="70003" string="Database URL">URL адрес с база данни</entry>
+	<entry id="70004" string="Cache">Кеш</entry>
+	<entry id="70005" string="Enable cache">Включен кеш</entry>
+	<entry id="70006" string="Expires after">Изтича след</entry>
+	<entry id="70007" string="%1 day(s)">%1 ден(и)</entry>
+	<entry id="70008" string="%1 week(s)">%1 седмица(и)</entry>
+	<entry id="70009" string="%1 month(s)">%1 месец(и)</entry>
+	<entry id="70010" string="%1 year(s)">%1 година(и)</entry>
+	<entry id="70011" string="never">никога</entry>
+	<entry id="70012" string="Drives">Устройства</entry>
+	<entry id="70013" string="Drive">Устройство</entry>
+	<entry id="70014" string="Offset configuration">Конфигурация на отместването</entry>
+	<entry id="70015" string="Offset in drive database">Отместване в базата данни с дискове</entry>
+	<entry id="70016" string="Detected offset">Откриване на отместване</entry>
+	<entry id="70017" string="Configured offset">Конфигуриране на отместване</entry>
+	<entry id="70018" string="Detect offset now">Откриване на отместване сега</entry>
+	<entry id="70019" string="not configured">не е конфигурирано</entry>
+	<entry id="70020" string="automatically configured">автоматично конфигурирано</entry>
+	<entry id="70021" string="configured by offset detection">конфигуриран чрез откриване на отместване</entry>
+	<entry id="70022" string="manually configured">ръчно конфигурирано</entry>
+	<entry id="70023" string="not present">не присъства</entry>
+	<entry id="70024" string="not detected">не е открит</entry>
+	<entry id="70025" string="disabled">изключено</entry>
 
 	<section name="Messages">
-	  <entry id="70050" string="AccurateRip configuration"/>
-	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?"/>
-	  <entry id="70052" string="Do not ask again"/>
-	  <entry id="70053" string="AccurateRip offset detection"/>
-	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database."/>
-	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
-	  <entry id="70056" string="Offset detection needs to check another disc."/>
-	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples."/>
+	  <entry id="70050" string="AccurateRip configuration">AccurateRip конфигурация</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Вашето CD устройство не може да бъде намерено в базата данни с AccurateRip.&#10;&#10;Име на устройството: %1&#10;&#10;Искате ли да стартирате автоматично откриване на отместване на устройството точно сега?</entry>
+	  <entry id="70052" string="Do not ask again">Не питай повече.</entry>
+	  <entry id="70053" string="AccurateRip offset detection">AccurateRip с откриване на отместване</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Вмъкнатият диск не може да бъде намерен в базата данни с AccurateRip.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Моля, поставете друг диск в CD устройството и натиснете OK.&#10;&#10;Дискът трябва да присъства в базата данни с AccurateRip. Шансът за това е най-висок&#10;за популярни CD-та, които са били Ripнати от други потребители преди това.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">Друг диск трябва да бъде проверен за откриване на отместване.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Отместването на устройството е успешно открито и конфигурирано с %1 проби.</entry>
 	</section>
       </section>
     </section>
@@ -1384,7 +1384,7 @@
 	  <entry id="103300" string="Publisher">Издател</entry>
 	  <entry id="103301" string="Publisher information">Инфо за издателя</entry>
 	  <entry id="103302" string="Publisher / label">Издател / етикет</entry>
-	  <entry id="103303" string="Media type"/>
+	  <entry id="103303" string="Media type">Тип носител</entry>
 	  <entry id="103304" string="Catalog number">Каталожен номер</entry>
 	  <entry id="103305" string="Barcode">Баркод</entry>
 	  <entry id="103306" string="ISRC">ISRC</entry>
@@ -1398,8 +1398,8 @@
 	</section>
 
 	<section name="Configuration">
-	  <entry id="103400" string="Behavior"/>
-	  <entry id="103401" string="Clear album artist field if it matches track artist"/>
+	  <entry id="103400" string="Behavior">Поведение</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Изчистване полето с изпълнител на албума, ако съответства на изпълнител на песента</entry>
 	</section>
 
 	<section name="Errors">
@@ -1430,7 +1430,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Запазване на дневниците за конвертиране с аудио файлове</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Само за извличане на Аудио CD</entry>
 	  <entry id="104112" string="Filename pattern">Шаблон за име на файла</entry>
-	  <entry id="104113" string="Log complete file paths"/>
+	  <entry id="104113" string="Log complete file paths">Регистриране на пълните файлови пътища</entry>
 	</section>
       </section>
 
