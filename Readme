@@ -167,6 +167,9 @@ History
 			- added options for specifying cover art files to freaccmd
 			- added support for reading Shift_JIS encoded CD-Text
 			- added support for writing album and track comments to cue sheets
+			- added support for ID3v2 tags in RF64 files
+			- added support for updating ID3v2 tags in RIFF and AIFF files
+			- added support for updating LIST INFO tags in RIFF, RF64 and Wave64 files
 			- added support for ensemble field in Vorbis Comment and APEv2 tags
 			- added support for movement field in ID3v2, Vorbis Comment, APEv2 and MP4 tags
 			- added support for additional URL fields in APEv2 tags

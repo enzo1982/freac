@@ -166,6 +166,9 @@ Geschichte
 			- Optionen zur Angabe von Cover-Bilddateien zu freaccmd hinzugefügt
 			- Unterstützung für Shift_JIS kodierten CD-Text hinzugefügt
 			- Unterstützung für das Schreiben von Album- und Track-Kommentaren in Cuesheets hinzugefügt
+			- Unterstützung für ID3v2-Tags in RF64-Dateien hinzugefügt
+			- Unterstützung für die Aktualisierung von ID3v2-Tags in in RIFF- und AIFF-Dateien hinzugefügt
+			- Unterstützung für die Aktualisierung von LIST INFO-Tags in in RIFF-, RF64- und Wave64-Dateien hinzugefügt
 			- Unterstützung für Ensemble-Feld in Vorbis Comment und APEv2-Tags hinzugefügt
 			- Unterstützung für Satz-Feld in ID3v2-, Vorbis Comment, APEv2- und MP4-Tags hinzugefügt
 			- Unterstützung für zusätzliche URL-Felder in APEv2-Tags hinzugefügt
