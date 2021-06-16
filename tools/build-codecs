@@ -525,6 +525,7 @@ for package in ${packages[@]}; do
     export CXXFLAGS="$cflags $cflags_unroll"
     patches=${mac_patches[@]}
     patch_levels=(${mac_patch_levels[@]})
+    make_flags="-f Source/Projects/NonWindows/Makefile"
     build $archive Source/MACDll.$sharedext MACDll.$sharedext
 
   elif [ $package == mp4v2 ]; then
