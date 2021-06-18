@@ -178,7 +178,7 @@ History
 
 		- Bug fixes
 
-			- fixed hotspot for genre edit field utility menu not covering the whole with of the field
+			- fixed hotspot for genre edit field utility menu not covering the whole width of the field
 			- fixed occasional crashes when selecting codec subformat using the "Start encoding with" menu
 			- fixed chapter marks being offset by a few seconds when using DSP processing
 			- fixed playback not working when using certain combinations of DSP processors
@@ -213,6 +213,7 @@ History
 
 			- added Persian translation
 			- updated Norwegian translation
+			- updated Russian manual
 
 	Version 1.1.4 (February 2021)
 
