@@ -64,6 +64,21 @@
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
+    <section name="Media types">
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">DAT</entry>
+      <entry id="602" string="MiniDisc">MiniDisc</entry>
+      <entry id="603" string="Compact Cassette">Musicassetta</entry>
+      <entry id="604" string="Reel tape">Nastro a bobina</entry>
+      <entry id="605" string="Vinyl">Vinile</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">LaserDisc</entry>
+      <entry id="608" string="TV">TV</entry>
+      <entry id="609" string="Video">Video</entry>
+      <entry id="610" string="Radio">Radio</entry>
+      <entry id="611" string="Telephone">Telefono</entry>
+    </section>
+
     <section name="Menu">
       <entry id="1000" string="File">File</entry>
       <entry id="1001" string="Options">Opzioni</entry>
@@ -201,6 +216,7 @@
       <entry id="3044" string="verifying">verifica</entry>
       <entry id="3045" string="Open">Apri</entry>
       <entry id="3046" string="CD drive">Unità CD</entry>
+      <entry id="3047" string="Disc ID">ID disco</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">File elaborato</entry>
@@ -397,6 +413,7 @@
       <entry id="5023" string="Verifiers">Parametri di controllo</entry>
       <entry id="5024" string="Taggers">Creatori di tag</entry>
       <entry id="5025" string="Processing">Elaborazione</entry>
+      <entry id="5026" string="Additional arguments">Parametri addizionali</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Imposta...</entry>
@@ -542,6 +559,7 @@
 	  <entry id="5664" string="Channels">Canali</entry>
 	  <entry id="5665" string="Sample resolution">Risoluzione</entry>
 	  <entry id="5666" string="CD drive">Unità CD</entry>
+	  <entry id="5667" string="Disc ID">ID disco</entry>
 	</section>
       </section>
 
@@ -615,6 +633,7 @@
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Impossibile accedere al file sorgente: %1&#10;&#10;File: %1&#10;Cartella: %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Impossibile creare il file destinazione: %1&#10;&#10;File: %1&#10;Cartella: %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">Non è stato possibile verificare il file sorgente: %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1">Non è stato possibile verificare la traccia sorgente: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Errore checksum durante la verifica del file di destinazione: %1&#10;&#10;Checksum codifica: %2&#10;Checksum verifica: %3</entry>
       <entry id="7110" string="File not found">File non trovato</entry>
       <entry id="7111" string="Unknown file type">Tipo di file sconosciuto</entry>
@@ -630,6 +649,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows ha negato l'accesso alle unità CD-ROM.&#10;&#10;Contatta l'amministratore di sistema per poter&#10;accedere all'unità CD-ROM.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Nessuna finestra di configurazione disponibile per:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">La cartella selezionata non esiste più.</entry>
+      <entry id="7124" string="Access denied">Accesso negato</entry>
     </section>
 
     <section name="Dialogs">
@@ -700,11 +720,18 @@
 	<entry id="12002" string="Sample Rate Converter">Convertitore frequenza campione</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise Noise Reduction</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Cambio tonalità/tempo di Rubber Band</entry>
+	<entry id="12005" string="HDCD Decoder">Decodificatore HDCD</entry>
+      </section>
+
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier">Verifica con AccurateRip</entry>
       </section>
 
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Notifiche</entry>
 	<entry id="15001" string="Logging">Eventi</entry>
+	<entry id="15002" string="Video Downloader">Video Downloader</entry>
+	<entry id="15003" string="Tag Editor">Editor dei tag</entry>
       </section>
     </section>
 
@@ -1099,6 +1126,49 @@
       </section>
     </section>
 
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">Configura AccurateRip</entry>
+	<entry id="70001" string="General settings">Impostazioni generali</entry>
+	<entry id="70002" string="Enable AccurateRip">Abilita AccurateRip</entry>
+	<entry id="70003" string="Database URL">Indirizzo database</entry>
+	<entry id="70004" string="Cache">Cache</entry>
+	<entry id="70005" string="Enable cache">Abilita cache</entry>
+	<entry id="70006" string="Expires after">Conserva per</entry>
+	<entry id="70007" string="%1 day(s)">%1 giorno/i</entry>
+	<entry id="70008" string="%1 week(s)">%1 settimana/e</entry>
+	<entry id="70009" string="%1 month(s)">%1 mese/i</entry>
+	<entry id="70010" string="%1 year(s)">%1 anno/i</entry>
+	<entry id="70011" string="never">sempre</entry>
+	<entry id="70012" string="Drives">Unità</entry>
+	<entry id="70013" string="Drive">Unità</entry>
+	<entry id="70014" string="Offset configuration">Configurazione offset</entry>
+	<entry id="70015" string="Offset in drive database">Offset nel database delle unità</entry>
+	<entry id="70016" string="Detected offset">Offset identificato</entry>
+	<entry id="70017" string="Configured offset">Offset configurato</entry>
+	<entry id="70018" string="Detect offset now">Identifica offset adesso</entry>
+	<entry id="70019" string="not configured">non configurato</entry>
+	<entry id="70020" string="automatically configured">configurato automaticamente</entry>
+	<entry id="70021" string="configured by offset detection">configurato dall'identificazione dell'offset</entry>
+	<entry id="70022" string="manually configured">configurato manualmente</entry>
+	<entry id="70023" string="not present">non presente</entry>
+	<entry id="70024" string="not detected">non identificato</entry>
+	<entry id="70025" string="disabled">disattivato</entry>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration">Configurazione di AccurateRip</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Non è stato possibile trovare l'unità CD nel database di AccurateRip.&#10;&#10;Nome dell'unita: %1&#10;&#10;Desideri eseguire l'identificazione automatica dell'offset dell'unità adesso?</entry>
+	  <entry id="70052" string="Do not ask again">Non chiederlo in futuro</entry>
+	  <entry id="70053" string="AccurateRip offset detection">Identificazione offset di AccurateRip </entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Il disco inserito non è stato trovato nel database di AccurateRip.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Inserisci un disco differente nell'unità CD e fai clic su OK.&#10;&#10;Il disco deve essere presente nel database di AccurateRip. La probabilità che questo si verifichi&#10;è maggiore per i CD più popolari che sono stati copiati in precedenza da altri utenti.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">La rilevazione dell'offset richiede la verifica di un altro disco.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">L'offset è stato rilevato con successo ed è stato configurato in %1 campioni.</entry>
+	</section>
+      </section>
+    </section>
+
     <section name="External">
       <entry id="80000" string="Downmix multi-channel audio to stereo">Converti in stereo i canali audio multipli</entry>
 
@@ -1106,7 +1176,7 @@
 	<entry id="80100" string="Quality">Qualità</entry>
 	<entry id="80101" string="poor">bassa</entry>
 	<entry id="80102" string="excellent">eccellente</entry>
-	<entry id="80103" string="Mid/Side stereo mode">modalità stereo Mid/Side</entry>
+	<entry id="80103" string="Mid/Side stereo mode">Modalità stereo Mid/Side</entry>
 	<entry id="80104" string="off">spento</entry>
 	<entry id="80105" string="reduced">ridotto</entry>
 	<entry id="80106" string="on">acceso</entry>
@@ -1116,6 +1186,7 @@
 	<entry id="80110" string="enhanced 2.5/9 dB">aumentato 2.5/9 dB</entry>
 	<entry id="80111" string="enhanced 3/12 dB">aumentato 3/12 dB</entry>
 	<entry id="80112" string="enhanced 3/inf dB">aumentato 3/inf dB</entry>
+	<entry id="80113" string="Adaptive noise shaping order">Ordine noise shaping adattivo</entry>
 	<entry id="80114" string="high">alto</entry>
 	<entry id="80115" string="Clear Voice Detection">Rilevamento voce chiara</entry>
 	<entry id="80116" string="dual">duale</entry>
@@ -1313,6 +1384,9 @@
 	  <entry id="103300" string="Publisher">Editore</entry>
 	  <entry id="103301" string="Publisher information">Informazioni sull'editore</entry>
 	  <entry id="103302" string="Publisher / label">Editore/etichetta</entry>
+	  <entry id="103303" string="Media type">Tipo supporto</entry>
+	  <entry id="103304" string="Catalog number">Numero catalogo</entry>
+	  <entry id="103305" string="Barcode">Codice a barre</entry>
 	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">Indirizzi Web</entry>
 	  <entry id="103308" string="Artist webpage">Pagina Web dell'artista</entry>
@@ -1321,6 +1395,11 @@
 	  <entry id="103311" string="Audio source webpage">Pagina Web della sorgente audio</entry>
 	  <entry id="103312" string="Copyright information">Informazioni sul copyright</entry>
 	  <entry id="103313" string="Commercial information">Informazioni commerciali</entry>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior">Azione</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Cancella il campo 'artista album' se coincide con il campo 'artista traccia'</entry>
 	</section>
 
 	<section name="Errors">
@@ -1351,6 +1430,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Salva i log delle conversioni con i file audio</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Crea file di log solo per l'estrazione delle tracce audio CD</entry>
 	  <entry id="104112" string="Filename pattern">Modello nome file</entry>
+	  <entry id="104113" string="Log complete file paths">Registra i percorsi completi</entry>
 	</section>
       </section>
 

@@ -27,6 +27,7 @@
     <entry id="14" string="Installing files...">Installazione file...</entry>
     <entry id="15" string="Installing file:">Installazione file:</entry>
     <entry id="16" string="Downloading file:">Download file:</entry>
+    <entry id="17" string="Extracting file:">File in estrazione:</entry>
     <entry id="18" string="Update complete">Aggiornamento completato</entry>
     <entry id="19" string="Your application has been successfully updated!">L'applicazione è stata aggiornata correttamente.</entry>
     <entry id="20" string="Error">Errore</entry>
