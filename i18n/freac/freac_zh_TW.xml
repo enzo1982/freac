@@ -64,6 +64,21 @@
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
+    <section name="Media types">
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">數位錄音帶 (DAT)</entry>
+      <entry id="602" string="MiniDisc">迷你光碟 (MiniDisc)</entry>
+      <entry id="603" string="Compact Cassette">卡式錄音帶</entry>
+      <entry id="604" string="Reel tape">盤式錄音帶</entry>
+      <entry id="605" string="Vinyl">黑膠唱片</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">雷射影碟 (LaserDisc)</entry>
+      <entry id="608" string="TV">TV</entry>
+      <entry id="609" string="Video">影片</entry>
+      <entry id="610" string="Radio">廣播</entry>
+      <entry id="611" string="Telephone">電話</entry>
+    </section>
+
     <section name="Menu">
       <entry id="1000" string="File">檔案</entry>
       <entry id="1001" string="Options">選項</entry>
@@ -201,6 +216,7 @@
       <entry id="3044" string="verifying">正在驗證</entry>
       <entry id="3045" string="Open">開啟</entry>
       <entry id="3046" string="CD drive">CD 光碟機</entry>
+      <entry id="3047" string="Disc ID">光碟 ID</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">正在編碼</entry>
@@ -397,6 +413,7 @@
       <entry id="5023" string="Verifiers">驗證</entry>
       <entry id="5024" string="Taggers">標籤</entry>
       <entry id="5025" string="Processing">處理</entry>
+      <entry id="5026" string="Additional arguments">額外引數</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">編碼器組態</entry>
@@ -542,6 +559,7 @@
 	  <entry id="5664" string="Channels">聲道</entry>
 	  <entry id="5665" string="Sample resolution">取樣解析度</entry>
 	  <entry id="5666" string="CD drive">CD 光碟機</entry>
+	  <entry id="5667" string="Disc ID">光碟 ID</entry>
 	</section>
       </section>
 
@@ -615,6 +633,7 @@
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">無法存取輸入檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">無法建立輸出檔案: %1&#10;&#10;檔案: %1&#10;路徑: %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">無法驗證輸入檔案: %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1">無法驗證輸入音軌: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">輸出檔案的校驗碼不相符: %1&#10;&#10;編碼校驗: %2&#10;驗證核對: %3</entry>
       <entry id="7110" string="File not found">找不到檔案</entry>
       <entry id="7111" string="Unknown file type">未知的檔案類型</entry>
@@ -630,6 +649,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows 拒絕存取 CD-ROM 光碟機。&#10;&#10;請聯繫您的系統管理員以獲得&#10;存取 CD-ROM 光碟機的權限。</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">沒有可用的組態:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">選擇的資料夾已不存在！</entry>
+      <entry id="7124" string="Access denied">存取遭拒</entry>
     </section>
 
     <section name="Dialogs">
@@ -652,7 +672,7 @@
 
       <section name="Errors">
 	<entry id="8200" string="Errors">錯誤</entry>
-	<entry id="8201" string="%1 errors while processing job">處理時出現 %1 個錯誤</entry>
+	<entry id="8201" string="%1 errors while processing job">處理時發生 %1 個錯誤</entry>
 	<entry id="8202" string="select an entry for details">選擇一個項目來檢視詳細資料</entry>
       </section>
     </section>
@@ -686,7 +706,7 @@
     <section name="Components">
 
       <section name="Decoders">
-	<entry id="10000" string="Cue Sheet Reader">cue 敘述檔閱讀器</entry>
+	<entry id="10000" string="Cue Sheet Reader">cue 敘述檔讀取器</entry>
       </section>
 
       <section name="Encoders">
@@ -700,12 +720,18 @@
 	<entry id="12002" string="Sample Rate Converter">取樣頻率轉換器</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise 噪音抑制</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band 節奏/音高調整器</entry>
+	<entry id="12005" string="HDCD Decoder">HDCD 解碼器</entry>
+      </section>
+
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier">AccurateRip 驗證器</entry>
       </section>
 
       <section name="Extensions">
 	<entry id="15000" string="Notifications">通知</entry>
 	<entry id="15001" string="Logging">記錄</entry>
 	<entry id="15002" string="Video Downloader">影片下載器</entry>
+	<entry id="15003" string="Tag Editor">標籤編輯器</entry>
       </section>
     </section>
 
@@ -1100,6 +1126,49 @@
       </section>
     </section>
 
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">AccurateRip 組態</entry>
+	<entry id="70001" string="General settings">一般設定</entry>
+	<entry id="70002" string="Enable AccurateRip">啟用 AccurateRip</entry>
+	<entry id="70003" string="Database URL">資料庫網址</entry>
+	<entry id="70004" string="Cache">快取</entry>
+	<entry id="70005" string="Enable cache">啟用快取</entry>
+	<entry id="70006" string="Expires after">過期於</entry>
+	<entry id="70007" string="%1 day(s)">%1 天</entry>
+	<entry id="70008" string="%1 week(s)">%1 週</entry>
+	<entry id="70009" string="%1 month(s)">%1 個月</entry>
+	<entry id="70010" string="%1 year(s)">%1 年</entry>
+	<entry id="70011" string="never">永不</entry>
+	<entry id="70012" string="Drives">光碟機</entry>
+	<entry id="70013" string="Drive">光碟機</entry>
+	<entry id="70014" string="Offset configuration">偏移組態</entry>
+	<entry id="70015" string="Offset in drive database">光碟機資料庫的偏移數值</entry>
+	<entry id="70016" string="Detected offset">已偵測的偏移數值</entry>
+	<entry id="70017" string="Configured offset">設定的偏移數值</entry>
+	<entry id="70018" string="Detect offset now">立即偵測偏移</entry>
+	<entry id="70019" string="not configured">未設定</entry>
+	<entry id="70020" string="automatically configured">自動設定</entry>
+	<entry id="70021" string="configured by offset detection">由偏移偵測決定</entry>
+	<entry id="70022" string="manually configured">手動設定</entry>
+	<entry id="70023" string="not present">不存在</entry>
+	<entry id="70024" string="not detected">未偵測到</entry>
+	<entry id="70025" string="disabled">停用</entry>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration">AccurateRip 組態</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">在 AccurateRip 資料庫中找不到您的 CD 光碟機。&#10;&#10;光碟機名稱：%1&#10;&#10;您想要開始自動偵測光碟機的讀取偏移嗎？</entry>
+	  <entry id="70052" string="Do not ask again">不要再詢問</entry>
+	  <entry id="70053" string="AccurateRip offset detection">AccurateRip 偏移偵測</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">在 AccurateRip 資料庫中找不到您放入的光碟。</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">請將另一片光碟放入 CD 光碟機，並按下確定。&#10;&#10;使用的光碟必須存在於 AccurateRip 資料庫中。&#10;暢銷的 CD 有最高的機會已由其他使用者轉檔完成。</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">偏移偵測需要再檢查另一片光碟。</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">已成功完成光碟機的偏移偵測，並調整為 %1 個取樣數。</entry>
+	</section>
+      </section>
+    </section>
+
     <section name="External">
       <entry id="80000" string="Downmix multi-channel audio to stereo">將多聲道音訊降混為立體聲</entry>
 
@@ -1315,6 +1384,9 @@
 	  <entry id="103300" string="Publisher">發行者</entry>
 	  <entry id="103301" string="Publisher information">發行者資訊</entry>
 	  <entry id="103302" string="Publisher / label">發行者</entry>
+	  <entry id="103303" string="Media type">媒體類型</entry>
+	  <entry id="103304" string="Catalog number">目錄編號</entry>
+	  <entry id="103305" string="Barcode">條碼</entry>
 	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">網站地址</entry>
 	  <entry id="103308" string="Artist webpage">演出者網站</entry>
@@ -1323,6 +1395,11 @@
 	  <entry id="103311" string="Audio source webpage">音訊來源網站</entry>
 	  <entry id="103312" string="Copyright information">版權資訊</entry>
 	  <entry id="103313" string="Commercial information">商業資訊</entry>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior">行為</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">當專輯與音軌演出者相同時，清除專輯演出者欄位</entry>
 	</section>
 
 	<section name="Errors">
@@ -1353,6 +1430,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">和音訊檔案儲存於相同位置</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">僅限音訊 CD 轉檔記錄</entry>
 	  <entry id="104112" string="Filename pattern">檔名規則</entry>
+	  <entry id="104113" string="Log complete file paths">紀錄完整的檔案路徑</entry>
 	</section>
       </section>
 
