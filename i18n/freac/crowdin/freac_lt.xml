@@ -65,18 +65,18 @@
     </section>
 
     <section name="Media types">
-      <entry id="600" string="CD"/>
-      <entry id="601" string="DAT"/>
-      <entry id="602" string="MiniDisc"/>
-      <entry id="603" string="Compact Cassette"/>
-      <entry id="604" string="Reel tape"/>
-      <entry id="605" string="Vinyl"/>
-      <entry id="606" string="DVD"/>
-      <entry id="607" string="LaserDisc"/>
-      <entry id="608" string="TV"/>
-      <entry id="609" string="Video"/>
-      <entry id="610" string="Radio"/>
-      <entry id="611" string="Telephone"/>
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">DAT</entry>
+      <entry id="602" string="MiniDisc">MiniDisc</entry>
+      <entry id="603" string="Compact Cassette">Audiokasetė</entry>
+      <entry id="604" string="Reel tape">Magnetofono juosta</entry>
+      <entry id="605" string="Vinyl">Vinilinė plokštelė</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">LaserDisc</entry>
+      <entry id="608" string="TV">TV</entry>
+      <entry id="609" string="Video">Vaizdo įrašas</entry>
+      <entry id="610" string="Radio">Radijas</entry>
+      <entry id="611" string="Telephone">Telefonas</entry>
     </section>
 
     <section name="Menu">
@@ -216,7 +216,7 @@
       <entry id="3044" string="verifying">tikrinama</entry>
       <entry id="3045" string="Open">Atidaryti</entry>
       <entry id="3046" string="CD drive">Diskasukis</entry>
-      <entry id="3047" string="Disc ID"/>
+      <entry id="3047" string="Disc ID">Disko ID</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">Užkoduojamas failas</entry>
@@ -413,7 +413,7 @@
       <entry id="5023" string="Verifiers">Tikrintuvai</entry>
       <entry id="5024" string="Taggers">Žymekliai</entry>
       <entry id="5025" string="Processing">Apdorojimas</entry>
-      <entry id="5026" string="Additional arguments"/>
+      <entry id="5026" string="Additional arguments">Papildomi argumentai</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Konfigūruoti koduotuvą</entry>
@@ -559,7 +559,7 @@
 	  <entry id="5664" string="Channels">Kanalai</entry>
 	  <entry id="5665" string="Sample resolution">Ėminio skiriamoji geba</entry>
 	  <entry id="5666" string="CD drive">Diskasukis</entry>
-	  <entry id="5667" string="Disc ID"/>
+	  <entry id="5667" string="Disc ID">Disko ID</entry>
 	</section>
       </section>
 
@@ -633,7 +633,7 @@
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Neįmanoma pasiekti įvesties failo: %1&#10;&#10;Failas: %1&#10;Kelias: %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Neįmanoma sukurti išvesties failo: %1&#10;&#10;Failas: %1&#10;Kelias: %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">Nepavyko patikrinti įvesties failo: %1</entry>
-      <entry id="7108" string="Failed to verify input track: %1"/>
+      <entry id="7108" string="Failed to verify input track: %1">Nepavyko patikrinti įvesties takelio: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Išvesties failo: %1 kontrolinės sumos nesutampa&#10;&#10;Užkodavimo kontrolinė suma: %2&#10;Patikrinimo kontrolinė suma: %3</entry>
       <entry id="7110" string="File not found">Failas nerastas</entry>
       <entry id="7111" string="Unknown file type">Nežinomas failo tipas</entry>
@@ -649,7 +649,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Windows uždraudė priėjimą prie CD-ROM diskasukių.&#10;&#10;Prašome susisiekti su sistemos administrtoriumi,&#10;kad įgalinti prieigą prie CD-ROM diskasukių.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Nėra galimų konfigūracijos dialogo langų:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">Pasirinktas aplankas nebeegzistuoja!</entry>
-      <entry id="7124" string="Access denied"/>
+      <entry id="7124" string="Access denied">Prieiga negalima</entry>
     </section>
 
     <section name="Dialogs">
@@ -720,18 +720,18 @@
 	<entry id="12002" string="Sample Rate Converter">Skaitmeninimo dažnio keitiklis</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise triukšmo mažinimas</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band tempo/garso aukščio keitiklis</entry>
-	<entry id="12005" string="HDCD Decoder"/>
+	<entry id="12005" string="HDCD Decoder">HDCD dekoderis</entry>
       </section>
 
       <section name="Verifiers">
-	<entry id="14000" string="AccurateRip Verifier"/>
+	<entry id="14000" string="AccurateRip Verifier">AccurateRip tikrintuvas</entry>
       </section>
 
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Pranešimai</entry>
 	<entry id="15001" string="Logging">Žurnalas</entry>
 	<entry id="15002" string="Video Downloader">Vaizdų atsiuntiklis</entry>
-	<entry id="15003" string="Tag Editor"/>
+	<entry id="15003" string="Tag Editor">Žymių rengyklė</entry>
       </section>
     </section>
 
@@ -1129,42 +1129,42 @@
     <section name="Verifiers">
 
       <section name="AccurateRip">
-	<entry id="70000" string="Configure AccurateRip"/>
-	<entry id="70001" string="General settings"/>
-	<entry id="70002" string="Enable AccurateRip"/>
-	<entry id="70003" string="Database URL"/>
-	<entry id="70004" string="Cache"/>
-	<entry id="70005" string="Enable cache"/>
-	<entry id="70006" string="Expires after"/>
-	<entry id="70007" string="%1 day(s)"/>
-	<entry id="70008" string="%1 week(s)"/>
-	<entry id="70009" string="%1 month(s)"/>
-	<entry id="70010" string="%1 year(s)"/>
-	<entry id="70011" string="never"/>
-	<entry id="70012" string="Drives"/>
-	<entry id="70013" string="Drive"/>
-	<entry id="70014" string="Offset configuration"/>
-	<entry id="70015" string="Offset in drive database"/>
-	<entry id="70016" string="Detected offset"/>
-	<entry id="70017" string="Configured offset"/>
-	<entry id="70018" string="Detect offset now"/>
-	<entry id="70019" string="not configured"/>
-	<entry id="70020" string="automatically configured"/>
-	<entry id="70021" string="configured by offset detection"/>
-	<entry id="70022" string="manually configured"/>
-	<entry id="70023" string="not present"/>
-	<entry id="70024" string="not detected"/>
-	<entry id="70025" string="disabled"/>
+	<entry id="70000" string="Configure AccurateRip">Konfigūruoti AccurateRip</entry>
+	<entry id="70001" string="General settings">Bendros nuostatos</entry>
+	<entry id="70002" string="Enable AccurateRip">Įjungti AccurateRip</entry>
+	<entry id="70003" string="Database URL">Duomenų bazės URL</entry>
+	<entry id="70004" string="Cache">Podėlis</entry>
+	<entry id="70005" string="Enable cache">Įjungti podėlį</entry>
+	<entry id="70006" string="Expires after">Baigiasi po</entry>
+	<entry id="70007" string="%1 day(s)">%1 dienos (-ų)</entry>
+	<entry id="70008" string="%1 week(s)">%1 savaitės (-ių)</entry>
+	<entry id="70009" string="%1 month(s)">%1 mėnesio (-ių)</entry>
+	<entry id="70010" string="%1 year(s)">%1 metų</entry>
+	<entry id="70011" string="never">niekada</entry>
+	<entry id="70012" string="Drives">Diskasukiai</entry>
+	<entry id="70013" string="Drive">Diskasukis</entry>
+	<entry id="70014" string="Offset configuration">Poslinkio konfigūracija</entry>
+	<entry id="70015" string="Offset in drive database">Poslinkis diskasukių duomenų bazėje</entry>
+	<entry id="70016" string="Detected offset">Aptiktas poslinkis</entry>
+	<entry id="70017" string="Configured offset">Sukonfigūruotas poslinkis</entry>
+	<entry id="70018" string="Detect offset now">Aptikti poslinkį</entry>
+	<entry id="70019" string="not configured">nesukonfigūruota</entry>
+	<entry id="70020" string="automatically configured">sukonfigūruota automatiškai</entry>
+	<entry id="70021" string="configured by offset detection">sukonfigūruota aptinkant poslinkį</entry>
+	<entry id="70022" string="manually configured">sukonfigūruota rankiniu būdu</entry>
+	<entry id="70023" string="not present">nėra</entry>
+	<entry id="70024" string="not detected">neaptikta</entry>
+	<entry id="70025" string="disabled">išjungta</entry>
 
 	<section name="Messages">
-	  <entry id="70050" string="AccurateRip configuration"/>
-	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?"/>
-	  <entry id="70052" string="Do not ask again"/>
-	  <entry id="70053" string="AccurateRip offset detection"/>
-	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database."/>
-	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
-	  <entry id="70056" string="Offset detection needs to check another disc."/>
-	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples."/>
+	  <entry id="70050" string="AccurateRip configuration">AccurateRip konfigūracija</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Jūsų CD diskasukis nerastas AccurateRip duomenų bazėje..&#10;&#10;Diskasukio pavadinimas: %1&#10;&#10;Ar norite paleisti automatinį diskasukio poslinkio aptikimą?</entry>
+	  <entry id="70052" string="Do not ask again">Daugiau neklausti</entry>
+	  <entry id="70053" string="AccurateRip offset detection">AccurateRip poslinkio aptikimas</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Įdėtas diskas nerastas AccurateRip duomenų bazėje.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Prašome į CD diskasukį įdėti kitą diską ir paspausti „Gerai“.&#10;&#10;Diskas privalo egzistuoti AccurateRip duomenų bazėje. Didžiausia to tikimybė&#10;yra naudojant populiarius CD, kurie, tikėtina, jau buvo išskleisti kitų naudotojų.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">Poslinkio aptikimui reikalinga patikrinti dar vieną diską.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Diskasukio poslinkis sėkmingai aptiktas ir sukonfigūruotas į %1 ėminius (-į, -ių).</entry>
 	</section>
       </section>
     </section>
@@ -1384,9 +1384,9 @@
 	  <entry id="103300" string="Publisher">Leidėjas</entry>
 	  <entry id="103301" string="Publisher information">Leidėjo informacija</entry>
 	  <entry id="103302" string="Publisher / label">Leidėjas / įrašų bendrovė</entry>
-	  <entry id="103303" string="Media type"/>
-	  <entry id="103304" string="Catalog number"/>
-	  <entry id="103305" string="Barcode"/>
+	  <entry id="103303" string="Media type">Medijos tipas</entry>
+	  <entry id="103304" string="Catalog number">Katalogo numeris</entry>
+	  <entry id="103305" string="Barcode">Brūkšninis kodas</entry>
 	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">Tinklalapių adresai</entry>
 	  <entry id="103308" string="Artist webpage">Atlikėjo tinklalapis</entry>
@@ -1398,8 +1398,8 @@
 	</section>
 
 	<section name="Configuration">
-	  <entry id="103400" string="Behavior"/>
-	  <entry id="103401" string="Clear album artist field if it matches track artist"/>
+	  <entry id="103400" string="Behavior">Elgsena</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Valyti albumo atlikėjo laukelį, kai jis sutampa su takelio atlikėju</entry>
 	</section>
 
 	<section name="Errors">
@@ -1430,7 +1430,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Išsaugoti perkodavimo žurnalus kartu su audio failais</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Tik audio CD skleidimo žurnalai</entry>
 	  <entry id="104112" string="Filename pattern">Failo vardo ruošinys</entry>
-	  <entry id="104113" string="Log complete file paths"/>
+	  <entry id="104113" string="Log complete file paths">Žurnale saugoti pilnus kelius iki failų</entry>
 	</section>
       </section>
 
