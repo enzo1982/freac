@@ -167,6 +167,7 @@ Geschichte
 			- Unterstützung für Shift_JIS kodierten CD-Text hinzugefügt
 			- Unterstützung für das Schreiben von Album- und Track-Kommentaren in Cuesheets hinzugefügt
 			- Unterstützung für ID3v2-Tags in RF64-Dateien hinzugefügt
+			- Unterstützung für die Aktualisierung von Vorbis Comment-Tags hinzugefügt
 			- Unterstützung für die Aktualisierung von ID3v2-Tags in in RIFF- und AIFF-Dateien hinzugefügt
 			- Unterstützung für die Aktualisierung von LIST INFO-Tags in in RIFF-, RF64- und Wave64-Dateien hinzugefügt
 			- Unterstützung für Ensemble-Feld in Vorbis Comment und APEv2-Tags hinzugefügt
@@ -194,6 +195,7 @@ Geschichte
 			- Absturz beim Beenden von fre:ac über das Dock unter macOS behoben
 			- Grafikfehler und Abstürze beim Beenden bei Ausführung in einer Wayland-Sitzung behoben
 			- Probleme mit dem Schließen von Popupmenüs und Dropdownlisten auf nicht-Windows Plattformen behoben
+			- Probleme mit benutzerdefinierten DPI-Einstellungen unter Xfce behoben
 			- Unzuverlässiges Drag & Drop-Verhalten unter X11-basierten Systemen behoben
 			- Problem mit dem Windows Online-Updater in der 64 Bit-Version behoben
 

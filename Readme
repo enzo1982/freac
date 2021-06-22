@@ -168,6 +168,7 @@ History
 			- added support for reading Shift_JIS encoded CD-Text
 			- added support for writing album and track comments to cue sheets
 			- added support for ID3v2 tags in RF64 files
+			- added support for updating Vorbis Comment tags
 			- added support for updating ID3v2 tags in RIFF and AIFF files
 			- added support for updating LIST INFO tags in RIFF, RF64 and Wave64 files
 			- added support for ensemble field in Vorbis Comment and APEv2 tags
@@ -195,6 +196,7 @@ History
 			- fixed crash when closing fre:ac via dock command on macOS
 			- fixed UI glitches and crashes on exit when running in a Wayland session
 			- fixed popup menu and dropdown list closing behavior on non-Windows platforms
+			- fixed issues with custom DPI settings on Xfce desktops
 			- fixed drag & drop working unreliably on X11 based systems
 			- fixed Windows online updater not working with the 64 bit version
 
