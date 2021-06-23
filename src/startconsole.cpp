@@ -847,8 +847,6 @@ Bool freac::freacCommandline::SetConfigDefaults(BoCA::Config *config, Bool userC
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
 
-	config->SetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, False);
-
 	config->SetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, False);
 	config->SetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, False);
 
@@ -875,6 +873,8 @@ Bool freac::freacCommandline::SetConfigDefaults(BoCA::Config *config, Bool userC
 	 */
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "lame-enc");
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, "<filename>");
+
+	config->SetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, False);
 
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, False);
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, 0);
