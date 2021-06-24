@@ -27,7 +27,7 @@
     <entry id="14" string="Installing files...">Installerar filer &#8230;</entry>
     <entry id="15" string="Installing file:">Installerar fil:</entry>
     <entry id="16" string="Downloading file:">Hämtar fil:</entry>
-    <entry id="17" string="Extracting file:"/>
+    <entry id="17" string="Extracting file:">Extraherar fil:</entry>
     <entry id="18" string="Update complete">Uppdateringen har slutförts</entry>
     <entry id="19" string="Your application has been successfully updated!">Ditt program har uppdaterats!</entry>
     <entry id="20" string="Error">Fel</entry>
