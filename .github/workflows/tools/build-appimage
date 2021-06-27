@@ -28,9 +28,9 @@ fi
 ./tools/build-codecs libcdio libcdio-paranoia
 
 # Build libcurl
-wget -c https://curl.se/download/curl-7.76.1.tar.bz2
-tar xfj curl-7.76.1.tar.bz2
-cd curl-7.76.1
+wget -c https://curl.se/download/curl-7.77.0.tar.bz2
+tar xfj curl-7.77.0.tar.bz2
+cd curl-7.77.0
 
 if [ $AppImageArch = i686 ]; then
   CFLAGS="-m32" ./configure --with-ssl --without-librtmp --disable-ldap
@@ -145,7 +145,7 @@ cp /usr/local/lib/libsmooth*.so.? appdir
 
 # Copy BoCA
 cp -r /usr/local/lib/boca appdir
-ln -s boca/boca.1.0.so appdir/libboca-1.0.so.2
+ln -s boca/boca.1.0.so appdir/libboca-1.0.so.3
 
 # Copy fre:ac
 cp COPYING Readme* appdir
