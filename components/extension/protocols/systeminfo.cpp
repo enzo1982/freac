@@ -84,7 +84,7 @@ const String &BoCA::SystemInfo::GetOperatingSystem()
 
 		FILE	*pstdin = popen("echo \"`uname -o` `uname -r` (`uname -v`)\"", "r");
 #	else
-		operatingSystem = "Unknown"
+		operatingSystem = "Unknown";
 
 		FILE	*pstdin = popen("echo \"`uname -s` `uname -r`\"", "r");
 #	endif
