@@ -131,7 +131,7 @@
 	<entry id="1602" string="Check for updates now">अपडेट के लिए अभी जाँच करें</entry>
 	<entry id="1603" string="Check for updates at startup">स्टार्टअप पर अपडेट के लिए जाँच करें</entry>
 	<entry id="1604" string="About %1">%1 के बारे में</entry>
-	<entry id="1605" string="index_en.html">index_en.html</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
 	<entry id="1606" string="Report an issue">मामले की रिपोर्ट करें</entry>
 	<entry id="1607" string="Suggest a feature">एक सुविधा का सुझाव दें</entry>
       </section>
