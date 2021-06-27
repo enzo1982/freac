@@ -88,7 +88,7 @@
                    <li>Fixed UI glitches and crashes on exit when running in a Wayland session</li>
                    <li>Fixed popup menu and dropdown list closing behavior on non-Windows platforms</li>
                    <li>Fixed issues with custom DPI settings on Xfce desktops</li>
-                   <li>Fixed drag & drop working unreliably on X11 based systems</li>
+                   <li>Fixed drag &amp; drop working unreliably on X11 based systems</li>
                 </ul>
                 <p>Updated codecs:</p>
                 <ul>
