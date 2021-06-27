@@ -835,6 +835,10 @@ Void freac::freacCommandline::Stop()
 
 Bool freac::freacCommandline::SetConfigDefaults(BoCA::Config *config, Bool userConfig)
 {
+	/* Set user specified config flag.
+	 */
+	config->SetIntValue(Config::CategorySettingsID, "UserSpecifiedConfig", userConfig);
+
 	/* Make mandatory config adjustments.
 	 */
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, True);
