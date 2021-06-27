@@ -3,7 +3,7 @@
 PREFIX=/usr/local
 
 SMOOTHVER=0.9.0
-BOCAVER=1.0.2
+BOCAVER=1.0.3
 
 # Create folders
 mkdir -p freac.app/Contents/MacOS

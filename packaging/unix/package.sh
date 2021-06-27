@@ -1,13 +1,13 @@
 #!/bin/bash
 PREFIX=/usr/local
-#RELEASE=1.1.4
-RELEASE=1.1.4-`date +"%Y%m%d"`
+RELEASE=1.1.5
+#RELEASE=1.1.5-`date +"%Y%m%d"`
 
 SMOOTHVER=0.9
 SMOOTHREV=0
 
 BOCAVER=1.0
-BOCAREV=2
+BOCAREV=3
 
 machine=`gcc -dumpmachine`
 

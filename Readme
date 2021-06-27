@@ -122,7 +122,7 @@ Requirements
 
 		All platforms:
 
-			- smooth v0.9.6 (http://www.smooth-project.org/)
+			- smooth v0.9.8 (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -160,7 +160,6 @@ History
 
 		- Improvements
 
-			- improved support for languages written from right to left
 			- improved DSP processing performance by up to 70%
 			- added frequency bandwidth setting to FDK-AAC encoder configuration dialog
 			- added an option to toggle logging of complete paths in log files
@@ -211,9 +210,8 @@ History
 			- updated libsndfile to version 1.0.31
 			- updated libsamplerate to version 0.2.1
 
-		- New and updated translations
+		- Updated translations
 
-			- added Persian translation
 			- updated Norwegian translation
 			- updated Russian manual
 

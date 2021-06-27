@@ -121,7 +121,7 @@ Voraussetzungen
 
 		Alle Systeme:
 
-			- smooth v0.9.6 (http://www.smooth-project.org/)
+			- smooth v0.9.8 (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -159,7 +159,6 @@ Geschichte
 
 		- Verbesserungen
 
-			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Verbesserung der Geschwindigkeit bei der DSP-Verarbeitung um bis zu 70%
 			- Einstellung für Frequenzbandbreite zum FDK-AAC-Konfigurationsdialog hinzugefügt
 			- Option zum Umschalten der Protokollierung vollständiger Pfade in Protokolldateien hinzugefügt
@@ -210,9 +209,8 @@ Geschichte
 			- libsndfile auf Version 1.0.31 aktualisiert
 			- libsamplerate auf Version 0.2.1 aktualisiert
 
-		- Neue und aktualisierte Übersetzungen
+		- Aktualisierte Übersetzungen
 
-			- Persische Übersetzung hinzugefügt
 			- Norwegische Übersetzung aktualisiert
 			- Russische Hilfeseiten aktualisiert
 
