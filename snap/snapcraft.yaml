@@ -131,11 +131,8 @@ parts:
       - CXXFLAGS: "$CXXFLAGS -Os"
     override-build: |
       patch -p1 < $SNAPCRAFT_STAGE/mp4v2-2.0.0-fixes.patch
-      wget -O autoaux/config.guess "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.guess"
-      wget -O autoaux/config.sub "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.sub"
+      patch -p1 < $SNAPCRAFT_STAGE/mp4v2-2.0.0-config.patch
       snapcraftctl build
-    build-packages:
-      - wget
     prime:
       - usr/lib/libmp4v2.so*
 
