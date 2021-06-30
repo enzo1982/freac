@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -19,7 +19,7 @@
 
 #	if defined __linux__
 #		include <sys/sysinfo.h>
-#	elif defined __APPLE__
+#	elif defined __APPLE__ || defined __FreeBSD__ || defined __NetBSD__ || defined __OpenBSD__
 #		include <sys/sysctl.h>
 #	endif
 #endif
@@ -157,8 +157,15 @@ const String &BoCA::SystemInfo::GetInstalledRAM()
 		struct sysinfo	 info;
 
 		if (sysinfo(&info) == 0) installedMemory = UnsignedInt64(info.totalram) * info.mem_unit;
-#elif defined __APPLE__
+#elif defined __APPLE__ || defined __FreeBSD__ || defined __NetBSD__ || defined __OpenBSD__
+#	if defined HW_MEMSIZE
 		int	 mib[2] = { CTL_HW, HW_MEMSIZE };
+#	elif defined HW_PHYSMEM64
+		int	 mib[2] = { CTL_HW, HW_PHYSMEM64 };
+#	else
+		int	 mib[2] = { CTL_HW, HW_PHYSMEM };
+#	endif
+
 		size_t	 size	= sizeof(installedMemory);
 
 		sysctl(mib, 2, &installedMemory, &size, NULL, 0);
