@@ -152,11 +152,15 @@ Requirements
 History
 -------
 
-	Version 1.1.6 (June 2021)
+	Version 1.1.6 (July 2021)
 
 		- Improvements
 
 			- improved support for languages written from right to left
+
+		- Updated codecs
+
+			- updated Monkey's Audio to version 6.34
 
 		- New translations
 

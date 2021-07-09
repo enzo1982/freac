@@ -1,8 +1,9 @@
 {
   "name": "libmac",
-  "buildsystem": "simple",
-  "build-commands": [
-    "make -f Source/Projects/NonWindows/Makefile prefix=/app all install"
+  "subdir": "Source/Projects/NonWindows",
+  "no-autogen": true,
+  "make-install-args": [
+    "prefix=/app"
   ],
   "cleanup": [
     "/include/MAC"
@@ -10,8 +11,8 @@
   "sources": [
     {
         "type": "archive",
-        "url": "https://freac.org/patches/MAC_SDK_629.zip",
-        "sha256": "af62c05d83c003c3af8772c01ca8796b8f2ac75a2f5ce1af183ab021cd7f3cf0",
+        "url": "https://freac.org/patches/MAC_SDK_634.zip",
+        "sha256": "228a5d3ba899d79777054dfc6e418ab2439478cb39e5d6f3b0e1a3e31d5c7a0a",
         "strip-components": 0
     }
   ]
