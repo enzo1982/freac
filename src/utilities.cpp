@@ -282,8 +282,11 @@ String freac::Utilities::GetOutputFileName(const BoCA::Config *config, const Tra
 
 	/* Check if input file folder is writable.
 	 */
-	String	 shortInFileName = File(track.fileName).GetFileName().Head(File(track.fileName).GetFileName().FindLast("."));
-	String	 inFileDirectory = File(track.fileName).GetFilePath();
+	String	 shortInFileName = File(track.fileName).GetFileName();
+
+	if (shortInFileName.Find(".") > 0) shortInFileName = shortInFileName.Head(shortInFileName.FindLast("."));
+
+	String	 inFileDirectory = track.isCDTrack ? String() : File(track.fileName).GetFilePath();
 	Bool	 writeToInputDir = config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 
 	if (writeToInputDir && (track.isCDTrack || !BoCA::Utilities::IsFolderWritable(inFileDirectory))) writeToInputDir = False;

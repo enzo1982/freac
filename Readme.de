@@ -157,6 +157,10 @@ Geschichte
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 
+		- Behobene Fehler
+
+			- Problem beim Rippen von CD-Tracks mit <filename> als Ausgabedateinamensvorlage behoben
+
 		- Aktualisierte Codecs
 
 			- Monkey's Audio auf Version 6.34 aktualisiert

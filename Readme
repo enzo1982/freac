@@ -158,6 +158,10 @@ History
 
 			- improved support for languages written from right to left
 
+		- Bug fixes
+
+			- fixed issue ripping CD tracks when output filename pattern is <filename>
+
 		- Updated codecs
 
 			- updated Monkey's Audio to version 6.34
