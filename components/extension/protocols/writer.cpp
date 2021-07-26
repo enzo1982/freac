@@ -19,14 +19,15 @@ using namespace smooth::IO;
 Array<BoCA::ProtocolData>	 BoCA::ProtocolWriter::protocolData;
 Int				 BoCA::ProtocolWriter::instanceCount = 0;
 
-BoCA::ProtocolData::ProtocolData()
+BoCA::ProtocolData::ProtocolData(Int conversion, const Array<Track> *tracks)
 {
-	conversionID = -1;
+	preliminary  = (conversion >= 0);
+	conversionID = conversion;
 
 	fileStream   = NIL;
 	copyStream   = NIL;
 
-	trackList    = NIL;
+	trackList    = tracks;
 }
 
 BoCA::ProtocolData::~ProtocolData()
@@ -82,9 +83,11 @@ Void BoCA::ProtocolWriter::OnUpdateProtocolList()
 
 	/* Add or update protocol data.
 	 */
-	if (protocolData.Length() > 0 && protocolData.GetLast().conversionID >= 0)
+	if (protocolData.Length() > 0 && protocolData.GetLast().preliminary)
 	{
 		ProtocolData	 data = protocolData.GetLast();
+
+		data.preliminary = False;
 
 		protocolData.RemoveNth(protocolData.Length() - 1);
 		protocolData.Add(data, index);
@@ -152,10 +155,7 @@ Void BoCA::ProtocolWriter::OnUpdateProtocol(const String &name)
 
 Void BoCA::ProtocolWriter::OnStartConversion(Int conversionID, const Array<Track> &tracks)
 {
-	ProtocolData	 data;
-
-	data.conversionID = conversionID;
-	data.trackList	  = &tracks;
+	ProtocolData	 data(conversionID, &tracks);
 
 	protocolData.Add(data);
 }

@@ -159,6 +159,7 @@ Geschichte
 
 		- Behobene Fehler
 
+			- Möglichen Absturz beim Abfragen der CDDB-Datenbank behoben
 			- Problem beim Rippen von CD-Tracks mit <filename> als Ausgabedateinamensvorlage behoben
 
 		- Aktualisierte Codecs

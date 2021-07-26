@@ -24,9 +24,10 @@ namespace BoCA
 	class ProtocolData
 	{
 		public:
-							 ProtocolData();
+							 ProtocolData(Int = -1, const Array<Track> * = NIL);
 							~ProtocolData();
 
+			Bool				 preliminary;
 			Int				 conversionID;
 
 			String				 fileHeader;

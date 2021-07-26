@@ -160,6 +160,7 @@ History
 
 		- Bug fixes
 
+			- fixed possible crash upon querying the CDDB database 
 			- fixed issue ripping CD tracks when output filename pattern is <filename>
 
 		- Updated codecs
