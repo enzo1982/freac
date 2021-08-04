@@ -11,8 +11,8 @@
   "sources": [
     {
         "type": "archive",
-        "url": "https://freac.org/patches/MAC_SDK_635e.zip",
-        "sha256": "d5da4bf3baf278a1167d3ca8fae8253309e92e7103645d9793de1aa170361ee1",
+        "url": "https://freac.org/patches/MAC_SDK_653.zip",
+        "sha256": "ccfbfdf3f6fdf72519e09ec281f830b90eba679a139bdf94153f6d0ed8a5f932",
         "strip-components": 0
     }
   ]
