@@ -152,7 +152,7 @@ Requirements
 History
 -------
 
-	Version 1.1.6 (July 2021)
+	Version 1.1.6 (August 2021)
 
 		- Improvements
 
@@ -160,7 +160,8 @@ History
 
 		- Bug fixes
 
-			- fixed possible crash upon querying the CDDB database 
+			- fixed possible crash upon querying the CDDB database
+			- fixed possible crash in FAAD2 decoder when trying to open unsupported files
 			- fixed issue ripping CD tracks when output filename pattern is <filename>
 
 		- Updated codecs

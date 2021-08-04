@@ -151,7 +151,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.6 (Juli 2021)
+	Version 1.1.6 (August 2021)
 
 		- Verbesserungen
 
@@ -160,6 +160,7 @@ Geschichte
 		- Behobene Fehler
 
 			- Möglichen Absturz beim Abfragen der CDDB-Datenbank behoben
+			- Möglichen Absturz im FAAD2-Dekodierer beim Öffnen nicht unterstützter Dateien behoben
 			- Problem beim Rippen von CD-Tracks mit <filename> als Ausgabedateinamensvorlage behoben
 
 		- Aktualisierte Codecs
