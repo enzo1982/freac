@@ -163,6 +163,7 @@ History
 			- fixed possible crash upon querying the CDDB database
 			- fixed possible crash in FAAD2 decoder when trying to open unsupported files
 			- fixed issue ripping CD tracks when output filename pattern is <filename>
+			- fixed drag & drop not working after online update on Windows
 
 		- Updated codecs
 
