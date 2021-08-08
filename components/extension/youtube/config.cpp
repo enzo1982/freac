@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -171,7 +171,7 @@ Void BoCA::ConfigureYouTube::SelectOutputDir()
 	DirSelection	 dialog;
 
 	dialog.SetParentWindow(GetContainerWindow());
-	dialog.SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder to save downloaded video files to"))));
+	dialog.SetCaption(i18n->AddColon(i18n->TranslateString("Select the folder to save downloaded video files to")));
 	dialog.SetDirName(edit_dir->GetText());
 
 	if (dialog.ShowDialog() == Success())

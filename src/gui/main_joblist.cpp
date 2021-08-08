@@ -1766,7 +1766,7 @@ Void freac::LayerJoblist::OnBrowseForFolder()
 	DirSelection	 dialog;
 
 	dialog.SetParentWindow(mainWnd);
-	dialog.SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder in which the encoded files will be placed"))));
+	dialog.SetCaption(i18n->AddColon(i18n->TranslateString("Select the folder in which the encoded files will be placed")));
 	dialog.SetDirName(BoCA::Utilities::GetAbsolutePathName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
 
 	if (dialog.ShowDialog() == Success())

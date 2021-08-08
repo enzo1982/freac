@@ -196,7 +196,7 @@ Void BoCA::ConfigureProtocols::SelectFolder()
 	DirSelection	 dialog;
 
 	dialog.SetParentWindow(GetContainerWindow());
-	dialog.SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder for saving log files"))));
+	dialog.SetCaption(i18n->AddColon(i18n->TranslateString("Select the folder for saving log files")));
 	dialog.SetDirName(BoCA::Utilities::GetAbsolutePathName(edit_logs_folder->GetText()));
 
 	if (dialog.ShowDialog() == Success())
