@@ -163,6 +163,8 @@ History
 			- fixed possible crash upon querying the CDDB database
 			- fixed possible crash in FAAD2 decoder when trying to open unsupported files
 			- fixed issue ripping CD tracks when output filename pattern is <filename>
+			- fixed setting to replace spaces not being respected when writing cover art and log files
+			- fixed setting to suppress Unicode characters not being respected when writing cover art and log files
 			- fixed drag & drop not working after online update on Windows
 
 		- Updated codecs

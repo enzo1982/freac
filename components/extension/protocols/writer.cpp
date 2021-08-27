@@ -277,64 +277,72 @@ String BoCA::ProtocolWriter::GetAdditionalCopyName(const Protocol *protocol)
 	 */
 	String	 defaultPattern	 = String("<albumartist> - <album>").Append(Directory::GetDirectoryDelimiter()).Append("<albumartist> - <album>");
 
-	data.copyName = String(outputFolder).Append(config->GetStringValue(ConfigureProtocols::ConfigID, "ConversionLogPattern", defaultPattern)).Append(".log");
+	data.copyName = config->GetStringValue(ConfigureProtocols::ConfigID, "ConversionLogPattern", defaultPattern).Append(".log");
 
 	if (data.singleFileName != NIL)
 	{
 		data.copyName = data.singleFileName.Head(data.singleFileName.FindLast(".")).Append(".log");
 	}
-	else if (data.copyName != NIL)
-	{
-		I18n		*i18n = I18n::Get();
-
-		if (data.copyName.Trim() == NIL) data.copyName = defaultPattern;
-
-		const Info	&info = firstTrack.GetInfo();
-		DateTime	 date = DateTime::Current();
-
-		data.copyName.Replace("<artist>", Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
-		data.copyName.Replace("<album>", Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
-		data.copyName.Replace("<genre>", Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
-		data.copyName.Replace("<year>", Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
-
-		data.copyName.Replace("<date>", String::FromInt(date.GetYear()).Append(date.GetMonth() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMonth())).Append(date.GetDay() < 10 ? "0" : NIL).Append(String::FromInt(date.GetDay())));
-		data.copyName.Replace("<time>", String(date.GetHour() < 10 ? "0" : NIL).Append(String::FromInt(date.GetHour())).Append(date.GetMinute() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMinute())).Append(date.GetSecond() < 10 ? "0" : NIL).Append(String::FromInt(date.GetSecond())));
-		data.copyName.Replace("<logname>", Utilities::ReplaceIncompatibleCharacters(protocol->GetName()));
-
-		/* Replace <disc> pattern.
-		 */
-		data.copyName.Replace("<disc>", String::FromInt(info.disc < 0 ? 0 : info.disc));
-
-		for (Int i = 1; i <= 4; i++)
-		{
-			String	 pattern = String("<disc(").Append(String::FromInt(i)).Append(")>");
-
-			data.copyName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
-		}
-
-		/* Replace other text fields.
-		 */
-		foreach (const String &pair, info.other)
-		{
-			String	 key   = pair.Head(pair.Find(":"));
-			String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
-
-			if (value == NIL) continue;
-
-			if	(key == INFO_ALBUMARTIST) data.copyName.Replace("<albumartist>", Utilities::ReplaceIncompatibleCharacters(value));
-			else if	(key == INFO_CONDUCTOR)	  data.copyName.Replace("<conductor>", Utilities::ReplaceIncompatibleCharacters(value));
-			else if	(key == INFO_COMPOSER)	  data.copyName.Replace("<composer>", Utilities::ReplaceIncompatibleCharacters(value));
-		}
-
-		if (info.artist.Length() > 0) data.copyName.Replace("<albumartist>", Utilities::ReplaceIncompatibleCharacters(info.artist));
-
-		data.copyName.Replace("<albumartist>", Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
-		data.copyName.Replace("<conductor>", Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
-		data.copyName.Replace("<composer>", Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
-	}
 	else
 	{
-		data.copyName = protocol->GetName();
+		if (data.copyName != NIL)
+		{
+			I18n		*i18n = I18n::Get();
+
+			if (data.copyName.Trim() == NIL) data.copyName = defaultPattern;
+
+			const Info	&info = firstTrack.GetInfo();
+			DateTime	 date = DateTime::Current();
+
+			data.copyName.Replace("<artist>", Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
+			data.copyName.Replace("<album>", Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
+			data.copyName.Replace("<genre>", Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
+			data.copyName.Replace("<year>", Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
+
+			data.copyName.Replace("<date>", String::FromInt(date.GetYear()).Append(date.GetMonth() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMonth())).Append(date.GetDay() < 10 ? "0" : NIL).Append(String::FromInt(date.GetDay())));
+			data.copyName.Replace("<time>", String(date.GetHour() < 10 ? "0" : NIL).Append(String::FromInt(date.GetHour())).Append(date.GetMinute() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMinute())).Append(date.GetSecond() < 10 ? "0" : NIL).Append(String::FromInt(date.GetSecond())));
+			data.copyName.Replace("<logname>", Utilities::ReplaceIncompatibleCharacters(protocol->GetName()));
+
+			/* Replace <disc> pattern.
+			 */
+			data.copyName.Replace("<disc>", String::FromInt(info.disc < 0 ? 0 : info.disc));
+
+			for (Int i = 1; i <= 4; i++)
+			{
+				String	 pattern = String("<disc(").Append(String::FromInt(i)).Append(")>");
+
+				data.copyName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
+			}
+
+			/* Replace other text fields.
+			 */
+			foreach (const String &pair, info.other)
+			{
+				String	 key   = pair.Head(pair.Find(":"));
+				String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
+
+				if (value == NIL) continue;
+
+				if	(key == INFO_ALBUMARTIST) data.copyName.Replace("<albumartist>", Utilities::ReplaceIncompatibleCharacters(value));
+				else if	(key == INFO_CONDUCTOR)	  data.copyName.Replace("<conductor>", Utilities::ReplaceIncompatibleCharacters(value));
+				else if	(key == INFO_COMPOSER)	  data.copyName.Replace("<composer>", Utilities::ReplaceIncompatibleCharacters(value));
+			}
+
+			if (info.artist.Length() > 0) data.copyName.Replace("<albumartist>", Utilities::ReplaceIncompatibleCharacters(info.artist));
+
+			data.copyName.Replace("<albumartist>", Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
+			data.copyName.Replace("<conductor>", Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
+			data.copyName.Replace("<composer>", Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
+		}
+		else
+		{
+			data.copyName = protocol->GetName();
+		}
+
+		Bool	 useUnicode    = config->GetIntValue("Settings", "UseUnicodeFilenames", True);
+		Bool	 replaceSpaces = config->GetIntValue("Settings", "FilenamesReplaceSpaces", False); 
+
+		data.copyName = String(outputFolder).Append(Utilities::ReplaceIncompatibleCharacters(data.copyName, useUnicode, False, replaceSpaces));
 	}
 
 	data.copyName	= Utilities::NormalizeFileName(data.copyName);

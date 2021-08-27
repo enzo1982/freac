@@ -162,6 +162,8 @@ Geschichte
 			- Möglichen Absturz beim Abfragen der CDDB-Datenbank behoben
 			- Möglichen Absturz im FAAD2-Dekodierer beim Öffnen nicht unterstützter Dateien behoben
 			- Problem beim Rippen von CD-Tracks mit <filename> als Ausgabedateinamensvorlage behoben
+			- Problem mit Einstellung zum Ersetzen von Leerzeichen beim Schreiben von Cover-Bildern und Log-Dateien behoben
+			- Problem mit Einstellung zur Unterdrückung von Unicode-Zeichen beim Schreiben von Cover-Bildern und Log-Dateien behoben
 			- Problem mit Drag & Drop nach Online-Update unter Windows behoben
 
 		- Aktualisierte Codecs
