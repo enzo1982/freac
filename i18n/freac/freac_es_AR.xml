@@ -472,6 +472,7 @@
 	<entry id="5313" string="Prefer CDDB over CD Text">Preferir CDDB a CD de texto</entry>
 	<entry id="5314" string="Enable CDDB cache">Activar caché CDDB</entry>
 	<entry id="5315" string="Automatization">Automatización</entry>
+	<entry id="5316" string="Always select first entry">Seleccionar siempre la primera entrada</entry>
 
 	<section name="Extended">
 	  <entry id="5330" string="Extended CDDB settings">Configuración CDDB extendida</entry>
@@ -507,14 +508,34 @@
 	<entry id="5503" string="Replace existing comments with default comment">Reemplazar comentarios existentes con el predeterminado</entry>
 	<entry id="5504" string="Filename pattern">Patrón de nombre de archivo</entry>
 	<entry id="5505" string="Encoding">Codificación</entry>
+	<entry id="5506" string="Comments">Comentarios</entry>
+	<entry id="5507" string="Cover art">Imagen de portada</entry>
+	<entry id="5508" string="Read cover art">Leer imagen de portada</entry>
+	<entry id="5509" string="Read cover art from tags">Leer imagen de portada desde etiquetas</entry>
+	<entry id="5510" string="Read cover art from files">Leer imagen de portada desde archivos</entry>
+	<entry id="5511" string="Write cover art">Escribir imagen de portada</entry>
+	<entry id="5512" string="Write cover art to tags">Escribir imagen de portada hacia etiquetas</entry>
+	<entry id="5513" string="Write cover art to files">Escribir imagen de portada hacia archivos</entry>
+	<entry id="5514" string="Add reference to audio file tag">Agregar referencia a etiqueta de archvio de audio</entry>
 	<entry id="5515" string="Other">Otros</entry>
 	<entry id="5516" string="Chapters">Capítulos</entry>
+	<entry id="5517" string="Read chapters from files">Leer capítulos desde archivos</entry>
+	<entry id="5518" string="Write chapters to files">Escribir capítulos hacia archivos</entry>
+	<entry id="5519" string="Special fields">Campos especiales</entry>
 	<entry id="5520" string="Write CD table of contents">Escribir tabla de contenido del CD</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Conservar información de ganancia de reproducción</entry>
+	<entry id="5522" string="Cue sheets">Archivos cue</entry>
+	<entry id="5523" string="Read cue sheets embedded in metadata">Leer archivos cue insertados en metadatos</entry>
+	<entry id="5524" string="Prefer cue sheets over chapter information">Preferir archivos cue a información del capítulo</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">Agregar un cero a números de pista inferiores a 10</entry>
+	<entry id="5526" string="File size limit">Límite de tamaño de archivo</entry>
+	<entry id="5527" string="unlimited">ilimitado</entry>
       </section>
 
       <section name="Joblist">
 	<entry id="5600" string="Joblist">Lista de trabajos</entry>
+	<entry id="5601" string="Columns">Columnas</entry>
+	<entry id="5602" string="Name">Nombre</entry>
 	<entry id="5606" string="Jobs">Trabajos</entry>
 
 	<section name="Columns">
