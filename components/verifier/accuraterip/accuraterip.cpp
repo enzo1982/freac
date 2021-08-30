@@ -70,8 +70,8 @@ Bool BoCA::VerifierAccurateRip::CanVerifyTrack(const Track &track)
 
 	if (!config->GetIntValue(ConfigureAccurateRip::ConfigID, ConfigureAccurateRip::ConfigEnabledID, ConfigureAccurateRip::ConfigEnabledDefault)) return False;
 
-	if (track.isCDTrack) return True;
-	else		     return False;
+	if (track.isCDTrack && track.cdTrack > 0) return True;
+	else					  return False;
 }
 
 Bool BoCA::VerifierAccurateRip::Activate()
