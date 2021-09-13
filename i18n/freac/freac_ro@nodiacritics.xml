@@ -34,6 +34,8 @@
     <entry id="309" string="File name">Nume fisier</entry>
     <entry id="310" string="File type">Tip de fisier</entry>
     <entry id="311" string="Album artist">Albumul artistului</entry>
+    <entry id="312" string="Conductor">Dirijor</entry>
+    <entry id="313" string="Composer">Compozitor</entry>
 
     <entry id="350" string="unknown artist">artist necunoscut</entry>
     <entry id="351" string="unknown title">titlu necunoscut</entry>
@@ -1304,8 +1306,6 @@
 	  <entry id="103200" string="Details">Detalii</entry>
 	  <entry id="103201" string="Detailed information">Informatii detaliate</entry>
 	  <entry id="103202" string="Band / orchestra">Formatie / orchestra</entry>
-	  <entry id="103203" string="Conductor">Dirijor</entry>
-	  <entry id="103204" string="Composer">Compozitor</entry>
 	  <entry id="103205" string="Lyrics writer">Compozitor versuri</entry>
 	  <entry id="103206" string="Modified / remixed by">Modificat / remixat de</entry>
 	  <entry id="103207" string="Original information">Informatie origine</entry>

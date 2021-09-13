@@ -34,6 +34,8 @@
     <entry id="309" string="File name">Failo vardas</entry>
     <entry id="310" string="File type">Failo tipas</entry>
     <entry id="311" string="Album artist">Albumo atlikėjas</entry>
+    <entry id="312" string="Conductor">Dirigentas</entry>
+    <entry id="313" string="Composer">Kompozitorius</entry>
 
     <entry id="350" string="unknown artist">nežinomas atlikėjas</entry>
     <entry id="351" string="unknown title">nežinomas pavadinimas</entry>
@@ -1367,8 +1369,6 @@
 	  <entry id="103200" string="Details">Išsamiai</entry>
 	  <entry id="103201" string="Detailed information">Išsami informacija</entry>
 	  <entry id="103202" string="Band / orchestra">Grupė / orkestras</entry>
-	  <entry id="103203" string="Conductor">Dirigentas</entry>
-	  <entry id="103204" string="Composer">Kompozitorius</entry>
 	  <entry id="103205" string="Lyrics writer">Žodžių autorius</entry>
 	  <entry id="103206" string="Modified / remixed by">Modifikavo / sumaišė</entry>
 	  <entry id="103207" string="Original information">Originalo informacija</entry>

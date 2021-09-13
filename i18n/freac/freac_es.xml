@@ -34,6 +34,8 @@
     <entry id="309" string="File name">Nombre de archivo</entry>
     <entry id="310" string="File type">Tipo de archivo</entry>
     <entry id="311" string="Album artist">Artista del álbum</entry>
+    <entry id="312" string="Conductor">Director</entry>
+    <entry id="313" string="Composer">Compositor</entry>
 
     <entry id="350" string="unknown artist">artista desconocido</entry>
     <entry id="351" string="unknown title">título desconocido</entry>
@@ -1367,8 +1369,6 @@
 	  <entry id="103200" string="Details">Detalles</entry>
 	  <entry id="103201" string="Detailed information">Información detallada</entry>
 	  <entry id="103202" string="Band / orchestra">Grupo / Orquesta</entry>
-	  <entry id="103203" string="Conductor">Detalle del ejecutante</entry>
-	  <entry id="103204" string="Composer">Compositor</entry>
 	  <entry id="103205" string="Lyrics writer">Letrista</entry>
 	  <entry id="103206" string="Modified / remixed by">Modificado / remezclado por</entry>
 	  <entry id="103207" string="Original information">Información original</entry>

@@ -157,6 +157,7 @@ History
 		- Improvements
 
 			- improved support for languages written from right to left
+			- added optional composer and conductor columns to the joblist
 
 		- Bug fixes
 

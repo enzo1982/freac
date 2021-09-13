@@ -794,6 +794,8 @@ Void freac::JobList::OnClickTab(Int n)
 	Bool	 sortByAlbumArtist = (fields.GetNth(n) == "<albumartist>");
 	Bool	 sortByTitle	   = (fields.GetNth(n) == "<title>");
 	Bool	 sortByGenre	   = (fields.GetNth(n) == "<genre>");
+	Bool	 sortByComposer	   = (fields.GetNth(n) == "<composer>");
+	Bool	 sortByConductor   = (fields.GetNth(n) == "<conductor>");
 	Bool	 sortByDrive	   = (fields.GetNth(n) == "<drive>");
 	Bool	 sortByDiscID	   = (fields.GetNth(n) == "<discid>");
 	Bool	 sortByFile	   = (fields.GetNth(n) == "<file>");
@@ -865,6 +867,9 @@ Void freac::JobList::OnClickTab(Int n)
 
 		else if (sortByAlbumArtist) thisInfo.SetOtherInfo(INFO_ALBUMARTIST, thisInfo.GetOtherInfo(INFO_ALBUMARTIST).Length() > 0 ? thisInfo.GetOtherInfo(INFO_ALBUMARTIST).ToLower() : thisInfo.artist.ToLower());
 
+		else if (sortByComposer)    thisInfo.SetOtherInfo(INFO_COMPOSER, thisInfo.GetOtherInfo(INFO_COMPOSER).ToLower());
+		else if (sortByConductor)   thisInfo.SetOtherInfo(INFO_CONDUCTOR, thisInfo.GetOtherInfo(INFO_CONDUCTOR).ToLower());
+
 		else if (sortByFile)	    thisTrack.fileName = thisTrack.fileName.ToLower();
 
 		else if (sortByType)	    fileTypes.SetNth(i, fileTypes.GetNth(i).ToLower());
@@ -894,10 +899,12 @@ Void freac::JobList::OnClickTab(Int n)
 			    (sortByAlbum       &&  SortsAfter(compInfo.album, thisInfo.album)										) ||
 			    (sortByTitle       &&  SortsAfter(compInfo.title, thisInfo.title)										) ||
 			    (sortByGenre       &&  SortsAfter(compInfo.genre, thisInfo.genre)										) ||
-			    (sortByFile	       &&  SortsAfter(compTrack.fileName, thisTrack.fileName)								) ||
+			    (sortByFile	       &&  SortsAfter(compTrack.fileName, thisTrack.fileName)									) ||
 			    (sortByType	       &&  SortsAfter(fileTypes.GetNth(m), fileTypes.GetNth(i))									) ||
 			    (sortByOutput      &&  SortsAfter(outputFileNames.GetNth(m), outputFileNames.GetNth(i))							) ||
 			    (sortByAlbumArtist &&  SortsAfter(compInfo.GetOtherInfo(INFO_ALBUMARTIST), thisInfo.GetOtherInfo(INFO_ALBUMARTIST))				) ||
+			    (sortByComposer    &&  SortsAfter(compInfo.GetOtherInfo(INFO_COMPOSER), thisInfo.GetOtherInfo(INFO_COMPOSER))				) ||
+			    (sortByConductor   &&  SortsAfter(compInfo.GetOtherInfo(INFO_CONDUCTOR), thisInfo.GetOtherInfo(INFO_CONDUCTOR))				) ||
 			    (sortByDrive       &&  compTrack.drive					       >  thisTrack.drive					) ||
 			    (sortByDiscID      &&  compTrack.discid					       >  thisTrack.discid					) ||
 			    (sortByDisc	       &&  compInfo.disc					       >  thisInfo.disc						) ||
@@ -1060,6 +1067,8 @@ Void freac::JobList::AddHeaderTabs()
 		else if (field == "<title>")	   { tabName = "Title";					 tabSize = !config->GetStringValue(Config::CategoryJoblistID, Config::JoblistFieldsID, Config::JoblistFieldsDefault).Contains("<file>") ? 0 :
 														   tabSize <= 0 ? 180 : tabSize; }
 		else if (field == "<genre>")	   { tabName = "Genre";					 tabSize = tabSize <= 0 ? 120 : tabSize; }
+		else if (field == "<composer>")	   { tabName = "Composer";				 tabSize = tabSize <= 0 ? 120 : tabSize; }
+		else if (field == "<conductor>")   { tabName = "Conductor";				 tabSize = tabSize <= 0 ? 120 : tabSize; }
 		else if (field == "<disc>")	   { tabName = "Disc";		    tabAlign = numAlign; tabSize = tabSize <= 0 ?  50 : tabSize; }
 		else if (field == "<track>")	   { tabName = "Track";		    tabAlign = numAlign; tabSize = tabSize <= 0 ?  50 : tabSize; }
 		else if (field == "<rating>")	   { tabName = "Rating";	    tabAlign = numAlign; tabSize = tabSize <= 0 ?  80 : tabSize; }
@@ -1123,6 +1132,9 @@ String freac::JobList::GetEntryText(const Track &track)
 		else if (field == "<bytes>")	   jlEntry.Append(track.GetFileSizeString());
 
 		else if	(field == "<albumartist>") jlEntry.Append(info.GetOtherInfo(INFO_ALBUMARTIST).Length() > 0 ? info.GetOtherInfo(INFO_ALBUMARTIST) : info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown album artist"));
+
+		else if	(field == "<composer>")	   jlEntry.Append(info.GetOtherInfo(INFO_COMPOSER).Length() > 0 ? info.GetOtherInfo(INFO_COMPOSER) : i18n->TranslateString("unknown composer"));
+		else if	(field == "<conductor>")   jlEntry.Append(info.GetOtherInfo(INFO_CONDUCTOR).Length() > 0 ? info.GetOtherInfo(INFO_CONDUCTOR) : i18n->TranslateString("unknown conductor"));
 
 		else if (field == "<bitrate>")
 		{

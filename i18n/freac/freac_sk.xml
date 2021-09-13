@@ -34,6 +34,8 @@
     <entry id="309" string="File name">Názov súboru</entry>
     <entry id="310" string="File type">Typ súboru</entry>
     <entry id="311" string="Album artist">Album umelca</entry>
+    <entry id="312" string="Conductor">Dirigent</entry>
+    <entry id="313" string="Composer">Skladateľ</entry>
 
     <entry id="350" string="unknown artist">neznámy umelec</entry>
     <entry id="351" string="unknown title">neznámy názov</entry>
@@ -1297,8 +1299,6 @@
 	  <entry id="103200" string="Details">Podrobnosti</entry>
 	  <entry id="103201" string="Detailed information">Podrobné informácie</entry>
 	  <entry id="103202" string="Band / orchestra">Skupina / orchester</entry>
-	  <entry id="103203" string="Conductor">Dirigent</entry>
-	  <entry id="103204" string="Composer">Skladateľ</entry>
 	  <entry id="103205" string="Lyrics writer">Textár</entry>
 	  <entry id="103206" string="Modified / remixed by">Upravil / remixoval</entry>
 	  <entry id="103207" string="Original information">Pôvodné informácie</entry>

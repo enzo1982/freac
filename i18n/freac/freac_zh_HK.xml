@@ -34,6 +34,8 @@
     <entry id="308" string="Rating">評分</entry>
     <entry id="309" string="File name">檔名</entry>
     <entry id="310" string="File type">檔案類型</entry>
+    <entry id="312" string="Conductor">表演改良</entry>
+    <entry id="313" string="Composer">作曲</entry>
 
     <entry id="350" string="unknown artist">未知演出者</entry>
     <entry id="351" string="unknown title">未知標題</entry>
@@ -1005,8 +1007,6 @@
 	  <entry id="103200" string="Details">細節</entry>
 	  <entry id="103201" string="Detailed information">細節</entry>
 	  <entry id="103202" string="Band / orchestra">樂隊╱交響樂團</entry>
-	  <entry id="103203" string="Conductor">表演改良</entry>
-	  <entry id="103204" string="Composer">作曲</entry>
 	  <entry id="103205" string="Lyrics writer">填詞</entry>
 	  <entry id="103206" string="Modified / remixed by">混音</entry>
 	  <entry id="103207" string="Original information">原作品資訊</entry>

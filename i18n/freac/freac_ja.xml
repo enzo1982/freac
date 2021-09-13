@@ -34,6 +34,8 @@
     <entry id="309" string="File name">ファイル名</entry>
     <entry id="310" string="File type">ファイルタイプ</entry>
     <entry id="311" string="Album artist">アルバムアーティスト</entry>
+    <entry id="312" string="Conductor">指揮</entry>
+    <entry id="313" string="Composer">作曲</entry>
 
     <entry id="350" string="unknown artist">不明なアーティスト</entry>
     <entry id="351" string="unknown title">不明なタイトル</entry>
@@ -1367,8 +1369,6 @@
 	  <entry id="103200" string="Details">詳細</entry>
 	  <entry id="103201" string="Detailed information">詳細な情報</entry>
 	  <entry id="103202" string="Band / orchestra">バンド/オーケストラ</entry>
-	  <entry id="103203" string="Conductor">指揮</entry>
-	  <entry id="103204" string="Composer">作曲</entry>
 	  <entry id="103205" string="Lyrics writer">作詞</entry>
 	  <entry id="103206" string="Modified / remixed by">変更/リミックス</entry>
 	  <entry id="103207" string="Original information">元の情報</entry>

@@ -34,6 +34,8 @@
     <entry id="309" string="File name">Bestandsnaam</entry>
     <entry id="310" string="File type">Bestandstype</entry>
     <entry id="311" string="Album artist">Albumartiest</entry>
+    <entry id="312" string="Conductor">Dirigent</entry>
+    <entry id="313" string="Composer">Componist</entry>
 
     <entry id="350" string="unknown artist">onbekende artiest</entry>
     <entry id="351" string="unknown title">onbekende titel</entry>
@@ -1367,8 +1369,6 @@
 	  <entry id="103200" string="Details">Details</entry>
 	  <entry id="103201" string="Detailed information">Gedetailleerde informatie</entry>
 	  <entry id="103202" string="Band / orchestra">Band /orkest</entry>
-	  <entry id="103203" string="Conductor">Dirigent</entry>
-	  <entry id="103204" string="Composer">Componist</entry>
 	  <entry id="103205" string="Lyrics writer">Songtekst-schrijver</entry>
 	  <entry id="103206" string="Modified / remixed by">Gewijzigd / geremixt door</entry>
 	  <entry id="103207" string="Original information">Originele informatie</entry>

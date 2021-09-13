@@ -34,6 +34,8 @@
     <entry id="309" string="File name">Filnamn</entry>
     <entry id="310" string="File type">Filtyp</entry>
     <entry id="311" string="Album artist">Albumartist</entry>
+    <entry id="312" string="Conductor">Dirigent</entry>
+    <entry id="313" string="Composer">Kompositör</entry>
 
     <entry id="350" string="unknown artist">okänd artist</entry>
     <entry id="351" string="unknown title">okänd titel</entry>
@@ -1304,8 +1306,6 @@
 	  <entry id="103200" string="Details">Information</entry>
 	  <entry id="103201" string="Detailed information">Detaljerad information</entry>
 	  <entry id="103202" string="Band / orchestra">Band/orkester</entry>
-	  <entry id="103203" string="Conductor">Artistinformation</entry>
-	  <entry id="103204" string="Composer">Kompositör</entry>
 	  <entry id="103205" string="Lyrics writer">Textförfattare</entry>
 	  <entry id="103206" string="Modified / remixed by">Modifierad/ommixad av</entry>
 	  <entry id="103207" string="Original information">Ursprunglig information</entry>

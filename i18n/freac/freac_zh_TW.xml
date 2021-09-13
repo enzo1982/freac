@@ -34,6 +34,8 @@
     <entry id="309" string="File name">檔案名稱</entry>
     <entry id="310" string="File type">檔案類型</entry>
     <entry id="311" string="Album artist">專輯演出者</entry>
+    <entry id="312" string="Conductor">指揮者</entry>
+    <entry id="313" string="Composer">作曲者</entry>
 
     <entry id="350" string="unknown artist">未知的演出者</entry>
     <entry id="351" string="unknown title">未知的標題</entry>
@@ -1367,8 +1369,6 @@
 	  <entry id="103200" string="Details">詳細</entry>
 	  <entry id="103201" string="Detailed information">詳細資料</entry>
 	  <entry id="103202" string="Band / orchestra">樂團</entry>
-	  <entry id="103203" string="Conductor">指揮者</entry>
-	  <entry id="103204" string="Composer">作曲者</entry>
 	  <entry id="103205" string="Lyrics writer">作詞者</entry>
 	  <entry id="103206" string="Modified / remixed by">混音者</entry>
 	  <entry id="103207" string="Original information">原始資訊</entry>

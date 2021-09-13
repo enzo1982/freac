@@ -34,6 +34,8 @@
     <entry id="309" string="File name">Nome di schedariu</entry>
     <entry id="310" string="File type">Tipu di schedariu</entry>
     <entry id="311" string="Album artist">Artista di l’albumu</entry>
+    <entry id="312" string="Conductor">Sceffu d’orchestru</entry>
+    <entry id="313" string="Composer">Cumpositore</entry>
 
     <entry id="350" string="unknown artist">artista scunnisciutu</entry>
     <entry id="351" string="unknown title">titulu scunnisciutu</entry>
@@ -1367,8 +1369,6 @@
 	  <entry id="103200" string="Details">Detaglii</entry>
 	  <entry id="103201" string="Detailed information">Infurmazioni ditagliate</entry>
 	  <entry id="103202" string="Band / orchestra">Gruppu / orchestru</entry>
-	  <entry id="103203" string="Conductor">Sceffu d’orchestru</entry>
-	  <entry id="103204" string="Composer">Cumpositore</entry>
 	  <entry id="103205" string="Lyrics writer">Parullaghju</entry>
 	  <entry id="103206" string="Modified / remixed by">Mudificatu / mischiatu da</entry>
 	  <entry id="103207" string="Original information">Infurmazioni d’origine</entry>
