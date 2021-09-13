@@ -60,6 +60,8 @@ String	 freac::freac::architecture   = "MIPS";
 String	 freac::freac::architecture   = "PPC";
 #elif defined __ppc64__
 String	 freac::freac::architecture   = "PPC64";
+#elif defined __riscv
+String	 freac::freac::architecture   = "RISC-V";
 #else
 String	 freac::freac::architecture   = "unknown";
 #endif
