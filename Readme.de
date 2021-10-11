@@ -151,7 +151,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.6 (September 2021)
+	Version 1.1.6 (Dezember 2021)
 
 		- Verbesserungen
 
@@ -166,6 +166,7 @@ Geschichte
 			- Problem mit Überprüfungsfehlermeldungen von AccurateRip beim Rippen von versteckten Tracks (HTOA) behoben
 			- Problem mit Einstellung zum Ersetzen von Leerzeichen beim Schreiben von Cover-Bildern und Log-Dateien behoben
 			- Problem mit Einstellung zur Unterdrückung von Unicode-Zeichen beim Schreiben von Cover-Bildern und Log-Dateien behoben
+			- Einfrieren beim Dekodieren bestimmter WMA-Dateien unter Windows behoben
 			- Problem mit Drag & Drop nach Online-Update unter Windows behoben
 
 		- Aktualisierte Codecs

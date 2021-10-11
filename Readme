@@ -152,7 +152,7 @@ Requirements
 History
 -------
 
-	Version 1.1.6 (September 2021)
+	Version 1.1.6 (October 2021)
 
 		- Improvements
 
@@ -167,6 +167,7 @@ History
 			- fixed AccurateRip reporting verification errors for hidden track one audio
 			- fixed setting to replace spaces not being respected when writing cover art and log files
 			- fixed setting to suppress Unicode characters not being respected when writing cover art and log files
+			- fixed freeze when decoding certain WMA files on Windows
 			- fixed drag & drop not working after online update on Windows
 
 		- Updated codecs
