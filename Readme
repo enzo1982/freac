@@ -169,6 +169,7 @@ History
 			- fixed setting to suppress Unicode characters not being respected when writing cover art and log files
 			- fixed freeze when decoding certain WMA files on Windows
 			- fixed drag & drop not working after online update on Windows
+			- fixed open/save file dialogs failing on macOS 12.0 Monterey
 
 		- Updated codecs
 

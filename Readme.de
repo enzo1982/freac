@@ -168,6 +168,7 @@ Geschichte
 			- Problem mit Einstellung zur Unterdrückung von Unicode-Zeichen beim Schreiben von Cover-Bildern und Log-Dateien behoben
 			- Einfrieren beim Dekodieren bestimmter WMA-Dateien unter Windows behoben
 			- Problem mit Drag & Drop nach Online-Update unter Windows behoben
+			- Problem mit Dialogen zum Öffnen/Speichern von Dateien unter macOS 12.0 Monterey behoben
 
 		- Aktualisierte Codecs
 
