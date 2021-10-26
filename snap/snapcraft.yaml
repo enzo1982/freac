@@ -137,8 +137,8 @@ parts:
       - usr/lib/libmp4v2.so*
 
   libmpg123:
-    source: https://mpg123.de/download/mpg123-1.29.0.tar.bz2
-    source-checksum: sha256/135e0172dfb6c7937a81f1188c27f9a47b0a337f7637680039ff3ee5fea3ce7d
+    source: https://mpg123.de/download/mpg123-1.29.2.tar.bz2
+    source-checksum: sha256/9071214ebdfc1b6ed0c0a85d530010bbb8ebc044cfe5ae5930e83f7e6b7937e6
     plugin: autotools
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
