@@ -30,6 +30,11 @@
   <false/>
   <key>LSMinimumSystemVersion</key>
   <string>10.5.0</string>
+  <key>LSEnvironment</key>
+  <dict>
+   <key>SYSTEM_VERSION_COMPAT</key>
+   <string>0</string>
+  </dict>
   <key>NSHighResolutionCapable</key>
   <true/>
   <key>NSRequiresAquaSystemAppearance</key>

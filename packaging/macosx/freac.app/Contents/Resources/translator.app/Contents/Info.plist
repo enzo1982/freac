@@ -24,6 +24,11 @@
   <string>0.9.8</string>
   <key>LSBackgroundOnly</key>
   <string>0</string>
+  <key>LSEnvironment</key>
+  <dict>
+   <key>SYSTEM_VERSION_COMPAT</key>
+   <string>0</string>
+  </dict>
   <key>NSHighResolutionCapable</key>
   <true/>
  </dict>
