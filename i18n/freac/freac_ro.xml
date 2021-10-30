@@ -66,6 +66,21 @@
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
+    <section name="Media types">
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">DAT</entry>
+      <entry id="602" string="MiniDisc">MiniDisc</entry>
+      <entry id="603" string="Compact Cassette">Casetă audio</entry>
+      <entry id="604" string="Reel tape">Bandă magnetică</entry>
+      <entry id="605" string="Vinyl">Disc LP</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">LaserDisc</entry>
+      <entry id="608" string="TV">TV</entry>
+      <entry id="609" string="Video">Video</entry>
+      <entry id="610" string="Radio">Radio</entry>
+      <entry id="611" string="Telephone">Telefon</entry>
+    </section>
+
     <section name="Menu">
       <entry id="1000" string="File">Fișier</entry>
       <entry id="1001" string="Options">Opțiuni</entry>
@@ -603,7 +618,7 @@
       <entry id="7000" string="Currently converting">Se realizează conversia</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Procesul de conversie este activ! Doriți să-l întrerupeți?</entry>
       <entry id="7002" string="Delete original files after encoding">Ștergere fișiere originale după conversie</entry>
-      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Această opțiune va șterge fișierele originale din computerul dvs.&#10;după terminarea conversiei! &#10;&#10;Sunteți sigur că doriți să continuați?</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Această opțiune va șterge fișierele originale din computerul dvs.&#10;după terminarea conversiei!&#10;&#10;Sunteți sigur că doriți să continuați?</entry>
       <entry id="7004" string="Keep this option enabled even after restarting %1">Păstrați activă această opțiune chiar și la repornirea a %1</entry>
       <entry id="7005" string="File already exists">Fișierul există deja</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Fișierul de ieșire %1 există! Doriți să-l suprascrieți?</entry>
@@ -1105,6 +1120,49 @@
       <section name="MP4">
 	<entry id="60000" string="Chapter format">Format capitol</entry>
 	<entry id="60001" string="both">ambele</entry>
+      </section>
+    </section>
+
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">Configurează Acuratețea Extragerii</entry>
+	<entry id="70001" string="General settings">Setări generale</entry>
+	<entry id="70002" string="Enable AccurateRip">Pornește Acuratețea Extragerii</entry>
+	<entry id="70003" string="Database URL">URL bază de date</entry>
+	<entry id="70004" string="Cache">Memorie</entry>
+	<entry id="70005" string="Enable cache">Pornește memoria</entry>
+	<entry id="70006" string="Expires after">Închide după</entry>
+	<entry id="70007" string="%1 day(s)">%1 zi(zile)</entry>
+	<entry id="70008" string="%1 week(s)">%1 săptămână(săptămâni)</entry>
+	<entry id="70009" string="%1 month(s)">%1 lună(luni)</entry>
+	<entry id="70010" string="%1 year(s)">%1 an(i)</entry>
+	<entry id="70011" string="never">niciodata</entry>
+	<entry id="70012" string="Drives">Drive-uri</entry>
+	<entry id="70013" string="Drive">Drive</entry>
+	<entry id="70014" string="Offset configuration">Configurat fără setări</entry>
+	<entry id="70015" string="Offset in drive database">Fără setări in drive-ul bazei de date</entry>
+	<entry id="70016" string="Detected offset">Fără setări detectate</entry>
+	<entry id="70017" string="Configured offset">Configurat fără setări</entry>
+	<entry id="70018" string="Detect offset now">Detectează fără setări acum</entry>
+	<entry id="70019" string="not configured">neconfigurat</entry>
+	<entry id="70020" string="automatically configured">configurat automat</entry>
+	<entry id="70021" string="configured by offset detection">configurat înafara detectării fără setări</entry>
+	<entry id="70022" string="manually configured">configurație manuală</entry>
+	<entry id="70023" string="not present">absent</entry>
+	<entry id="70024" string="not detected">nedetectat</entry>
+	<entry id="70025" string="disabled">inactiv</entry>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration">Configuratia Extragerii Curate</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">CD drive-ul dvs. nu poate fi găsit în baza de date a Extragerii Curate.&#10;&#10;Nume drive: %1</entry>
+	  <entry id="70052" string="Do not ask again">Nu întreba din nou</entry>
+	  <entry id="70053" string="AccurateRip offset detection">Detectarea Extragerii Curate închisă</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Discul introdus nu poate fi găsit în baza de date a Extragerii Curate.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Vă rugăm introduceți alt disc în CD drive și apăsați OK.&#10;&#10;Discul trebuie să fie prezent in baza de date a Extragerii Curate. Șansele cresc&#10;ca discul dvs să fie foarte popular și să fi fost extras de alti utilizatori înaintea dvs.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">Detectarea fără setări necesită verificarea unui alt disc.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Drive-ul fără setări a fost detectat cu succes și configurat la %1 prezentare.</entry>
+	</section>
       </section>
     </section>
 
