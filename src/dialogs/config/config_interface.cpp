@@ -23,7 +23,7 @@ freac::ConfigureInterface::ConfigureInterface()
 
 	showJobs = config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowJobsTabID, Config::SettingsShowJobsTabDefault);
 
-	group_joblist	= new GroupBox(i18n->TranslateString("Joblist"), Point(7, 11), Size(552, 136));
+	group_joblist	= new GroupBox(i18n->TranslateString("Joblist"), Point(7, 11), Size(552, 184));
 
 	text_fields	= new Text(i18n->AddColon(i18n->TranslateString("Columns")), Point(9, 12));
 
@@ -52,7 +52,7 @@ freac::ConfigureInterface::ConfigureInterface()
 	group_joblist->Add(button_up);
 	group_joblist->Add(button_down);
 
-	group_jobs	= new GroupBox(i18n->TranslateString("Jobs"), Point(7, 159), Size(552, 40));
+	group_jobs	= new GroupBox(i18n->TranslateString("Jobs"), Point(7, 207), Size(552, 40));
 
 	check_show_jobs	= new CheckBox(i18n->TranslateString("Show Jobs tab"), Point(10, 13), Size(group_jobs->GetWidth() - 20, 0), &showJobs);
 
@@ -63,7 +63,7 @@ freac::ConfigureInterface::ConfigureInterface()
 	Add(group_joblist);
 	Add(group_jobs);
 
-	SetSize(Size(566, 206));
+	SetSize(Size(566, 254));
 }
 
 freac::ConfigureInterface::~ConfigureInterface()
