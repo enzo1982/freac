@@ -23,7 +23,7 @@ BoCA::ConfigureTagEdit::ConfigureTagEdit()
 
 	i18n->SetContext("Extensions::Tag Editor::Configuration");
 
-	clearAlbumArtist = config->GetIntValue(ConfigID, "ClearAlbumArtist", True);
+	clearAlbumArtist = config->GetIntValue(ConfigID, "ClearAlbumArtist", False);
 
 	/* Create Behavior group.
 	 */

@@ -203,7 +203,7 @@ Void BoCA::ChooserAlbums::OnModifyTrack(const Track &track)
 {
 	const Config	*config = Config::Get();
 
-	Bool	 clearAlbumArtist = config->GetIntValue(ConfigureTagEdit::ConfigID, "ClearAlbumArtist", True);
+	Bool	 clearAlbumArtist = config->GetIntValue(ConfigureTagEdit::ConfigID, "ClearAlbumArtist", False);
 
 	for (Int i = 0; i < list_albums->Length(); i++)
 	{
