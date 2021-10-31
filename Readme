@@ -167,6 +167,7 @@ History
 			- fixed AccurateRip reporting verification errors for hidden track one audio
 			- fixed setting to replace spaces not being respected when writing cover art and log files
 			- fixed setting to suppress Unicode characters not being respected when writing cover art and log files
+			- fixed tag editor fields for media type, catalog number and barcode being limited to 12 characters
 			- fixed freeze when decoding certain WMA files on Windows
 			- fixed drag & drop not working after online update on Windows
 			- fixed open/save file dialogs failing on macOS 12.0 Monterey
