@@ -36,6 +36,8 @@
     <entry id="311" string="Album artist">Исполнитель альбома</entry>
     <entry id="312" string="Conductor">Дирижер</entry>
     <entry id="313" string="Composer">Композитор</entry>
+    <entry id="314" string="Tempo">Темп</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">неизвестный исполнитель</entry>
     <entry id="351" string="unknown title">неизвестное название</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">Исходный альбом</entry>
 	  <entry id="103210" string="Original lyrics writer">Исходный автор текста</entry>
 	  <entry id="103211" string="Original release year">Исходный год выхода</entry>
-	  <entry id="103212" string="Tempo">Темп</entry>
 	  <entry id="103213" string="BPM">Уд. в мин.</entry>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type">Тип носителя</entry>
 	  <entry id="103304" string="Catalog number">Номер в каталоге</entry>
 	  <entry id="103305" string="Barcode">Штрихкод</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">URLы вебстраниц</entry>
 	  <entry id="103308" string="Artist webpage">Вебстраница артиста</entry>
 	  <entry id="103309" string="Publisher webpage">Вебстраница издателя</entry>

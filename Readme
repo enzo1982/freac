@@ -152,12 +152,12 @@ Requirements
 History
 -------
 
-	Version 1.1.6 (October 2021)
+	Version 1.1.6 (November 2021)
 
 		- Improvements
 
 			- improved support for languages written from right to left
-			- added optional composer and conductor columns to the joblist
+			- added optional composer, conductor, tempo and ISRC columns to the joblist
 
 		- Bug fixes
 

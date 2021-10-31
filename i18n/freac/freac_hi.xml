@@ -36,6 +36,8 @@
     <entry id="311" string="Album artist">चित्राधार कलाकार</entry>
     <entry id="312" string="Conductor">कंडक्टर</entry>
     <entry id="313" string="Composer">संगीतकार</entry>
+    <entry id="314" string="Tempo">गति</entry>
+    <entry id="315" string="ISRC">आईएसआरसी</entry>
 
     <entry id="350" string="unknown artist">अज्ञात कलाकार</entry>
     <entry id="351" string="unknown title">अज्ञात शीर्षक</entry>
@@ -1310,7 +1312,6 @@
 	  <entry id="103209" string="Original album">मूल एल्बम</entry>
 	  <entry id="103210" string="Original lyrics writer">मूल गीत लेखक</entry>
 	  <entry id="103211" string="Original release year">मूल रिलीज़ वर्ष</entry>
-	  <entry id="103212" string="Tempo">गति</entry>
 	  <entry id="103213" string="BPM">बीपीएम</entry>
 	</section>
 
@@ -1318,7 +1319,6 @@
 	  <entry id="103300" string="Publisher">प्रकाशक</entry>
 	  <entry id="103301" string="Publisher information">प्रकाशक की जानकारी</entry>
 	  <entry id="103302" string="Publisher / label">प्रकाशक / लेबल</entry>
-	  <entry id="103306" string="ISRC">आईएसआरसी</entry>
 	  <entry id="103307" string="Webpage URLs">वेबपेज यूआरएल</entry>
 	  <entry id="103308" string="Artist webpage">कलाकार वेबपेज</entry>
 	  <entry id="103309" string="Publisher webpage">प्रकाशक का वेबपेज</entry>

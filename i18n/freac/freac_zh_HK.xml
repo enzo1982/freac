@@ -36,6 +36,7 @@
     <entry id="310" string="File type">檔案類型</entry>
     <entry id="312" string="Conductor">表演改良</entry>
     <entry id="313" string="Composer">作曲</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">未知演出者</entry>
     <entry id="351" string="unknown title">未知標題</entry>
@@ -1020,7 +1021,6 @@
 	  <entry id="103300" string="Publisher">出版商</entry>
 	  <entry id="103301" string="Publisher information">出版商資訊</entry>
 	  <entry id="103302" string="Publisher / label">出版商</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">網址</entry>
 	  <entry id="103308" string="Artist webpage">演出者網頁</entry>
 	  <entry id="103309" string="Publisher webpage">出版商網頁</entry>

@@ -36,6 +36,8 @@
     <entry id="311" string="Album artist">專輯演出者</entry>
     <entry id="312" string="Conductor">指揮者</entry>
     <entry id="313" string="Composer">作曲者</entry>
+    <entry id="314" string="Tempo">節奏</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">未知的演出者</entry>
     <entry id="351" string="unknown title">未知的標題</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">原始專輯</entry>
 	  <entry id="103210" string="Original lyrics writer">原始作詞者</entry>
 	  <entry id="103211" string="Original release year">原始發行年份</entry>
-	  <entry id="103212" string="Tempo">節奏</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type">媒體類型</entry>
 	  <entry id="103304" string="Catalog number">目錄編號</entry>
 	  <entry id="103305" string="Barcode">條碼</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">網站地址</entry>
 	  <entry id="103308" string="Artist webpage">演出者網站</entry>
 	  <entry id="103309" string="Publisher webpage">發行者網站</entry>

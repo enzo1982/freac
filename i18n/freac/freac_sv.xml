@@ -36,6 +36,8 @@
     <entry id="311" string="Album artist">Albumartist</entry>
     <entry id="312" string="Conductor">Dirigent</entry>
     <entry id="313" string="Composer">Kompositör</entry>
+    <entry id="314" string="Tempo">Tempo</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">okänd artist</entry>
     <entry id="351" string="unknown title">okänd titel</entry>
@@ -1313,7 +1315,6 @@
 	  <entry id="103209" string="Original album">Ursprungligt album</entry>
 	  <entry id="103210" string="Original lyrics writer">Ursprunglig textförfattare</entry>
 	  <entry id="103211" string="Original release year">Ursprungligt utgivningsår</entry>
-	  <entry id="103212" string="Tempo">Tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1323,7 +1324,6 @@
 	  <entry id="103302" string="Publisher / label">Utgivare/skivmärke</entry>
 	  <entry id="103304" string="Catalog number">Katalognummer</entry>
 	  <entry id="103305" string="Barcode">Streckkod</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">Webbside-URL:er</entry>
 	  <entry id="103308" string="Artist webpage">Artistens webbsida</entry>
 	  <entry id="103309" string="Publisher webpage">Utgivarens webbsida</entry>

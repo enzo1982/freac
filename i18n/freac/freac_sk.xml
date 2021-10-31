@@ -36,6 +36,8 @@
     <entry id="311" string="Album artist">Album umelca</entry>
     <entry id="312" string="Conductor">Dirigent</entry>
     <entry id="313" string="Composer">Skladateľ</entry>
+    <entry id="314" string="Tempo">Tempo</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">neznámy umelec</entry>
     <entry id="351" string="unknown title">neznámy názov</entry>
@@ -1306,7 +1308,6 @@
 	  <entry id="103209" string="Original album">Pôvodný album</entry>
 	  <entry id="103210" string="Original lyrics writer">Pôvodný textár</entry>
 	  <entry id="103211" string="Original release year">Pôvodný rok vydania</entry>
-	  <entry id="103212" string="Tempo">Tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1314,7 +1315,6 @@
 	  <entry id="103300" string="Publisher">Vydavateľ</entry>
 	  <entry id="103301" string="Publisher information">Informácie o vydavateľovi</entry>
 	  <entry id="103302" string="Publisher / label">Vydavateľ / Label</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">URL webu</entry>
 	  <entry id="103308" string="Artist webpage">Umelcov web</entry>
 	  <entry id="103309" string="Publisher webpage">Web vydavateľa</entry>

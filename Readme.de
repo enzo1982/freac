@@ -151,12 +151,12 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.6 (Dezember 2021)
+	Version 1.1.6 (November 2021)
 
 		- Verbesserungen
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
-			- Optionale Spalten für Komponist und Dirigent zur Jobliste hinzugefügt
+			- Optionale Spalten für Komponist, Dirigent, Tempo und ISRC zur Jobliste hinzugefügt
 
 		- Behobene Fehler
 

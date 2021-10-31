@@ -36,6 +36,8 @@
     <entry id="311" string="Album artist">هنرمند آلبوم</entry>
     <entry id="312" string="Conductor">رهبر اکستر</entry>
     <entry id="313" string="Composer">آهنگساز</entry>
+    <entry id="314" string="Tempo">ضرب آهنگ</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">هنرمند ناشناس</entry>
     <entry id="351" string="unknown title">بدون هنوان</entry>
@@ -1306,7 +1308,6 @@
 	  <entry id="103209" string="Original album">آلبوم اصلي</entry>
 	  <entry id="103210" string="Original lyrics writer">شاعر اصلي</entry>
 	  <entry id="103211" string="Original release year">سال انتشار اصلي</entry>
-	  <entry id="103212" string="Tempo">ضرب آهنگ</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1314,7 +1315,6 @@
 	  <entry id="103300" string="Publisher">ناشر</entry>
 	  <entry id="103301" string="Publisher information">اطلاعات ناشر</entry>
 	  <entry id="103302" string="Publisher / label">ناشر / سند</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">وبسايت ها</entry>
 	  <entry id="103308" string="Artist webpage">وبسايت هنرمند</entry>
 	  <entry id="103309" string="Publisher webpage">وبسايت ناشر</entry>

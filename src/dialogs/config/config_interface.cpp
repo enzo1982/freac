@@ -105,6 +105,8 @@ Void freac::ConfigureInterface::FillJoblistFieldsList()
 	entryTexts.Add(String("<resolution>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Sample resolution"))); entryPresent.Add(False);
 	entryTexts.Add(String("<drive>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("CD drive")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<discid>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Disc ID")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<isrc>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("ISRC")));			   entryPresent.Add(False);
+	entryTexts.Add(String("<tempo>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Tempo")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<file>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("File name")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<filetype>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("File type")));	   entryPresent.Add(False);
 	entryTexts.Add(String("<outputfile>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Output file name")));  entryPresent.Add(False);

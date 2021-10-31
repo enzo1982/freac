@@ -36,6 +36,8 @@
     <entry id="311" string="Album artist">アルバムアーティスト</entry>
     <entry id="312" string="Conductor">指揮</entry>
     <entry id="313" string="Composer">作曲</entry>
+    <entry id="314" string="Tempo">テンポ</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">不明なアーティスト</entry>
     <entry id="351" string="unknown title">不明なタイトル</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">オリジナルのアルバム</entry>
 	  <entry id="103210" string="Original lyrics writer">オリジナルの作詞</entry>
 	  <entry id="103211" string="Original release year">オリジナルのリリース年</entry>
-	  <entry id="103212" string="Tempo">テンポ</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type">メディアタイプ</entry>
 	  <entry id="103304" string="Catalog number">カタログ番号</entry>
 	  <entry id="103305" string="Barcode">バーコード</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">ウェブページの URL</entry>
 	  <entry id="103308" string="Artist webpage">アーティストのウェブページ</entry>
 	  <entry id="103309" string="Publisher webpage">発行元のウェブページ</entry>

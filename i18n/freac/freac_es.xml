@@ -36,6 +36,8 @@
     <entry id="311" string="Album artist">Artista del álbum</entry>
     <entry id="312" string="Conductor">Director</entry>
     <entry id="313" string="Composer">Compositor</entry>
+    <entry id="314" string="Tempo">Tempo</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">artista desconocido</entry>
     <entry id="351" string="unknown title">título desconocido</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">Álbum original</entry>
 	  <entry id="103210" string="Original lyrics writer">Letrista original</entry>
 	  <entry id="103211" string="Original release year">Año de publicación original</entry>
-	  <entry id="103212" string="Tempo">Tempo</entry>
 	  <entry id="103213" string="BPM">BPM (pulsos por minuto)</entry>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type">Tipo de medio</entry>
 	  <entry id="103304" string="Catalog number">Número de catálogo</entry>
 	  <entry id="103305" string="Barcode">Código de barras</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">Página web</entry>
 	  <entry id="103308" string="Artist webpage">Página Web del artista</entry>
 	  <entry id="103309" string="Publisher webpage">Página Web del editor</entry>
