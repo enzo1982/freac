@@ -153,10 +153,15 @@ Geschichte
 
 	Version 1.1.6 (November 2021)
 
+		- Neue Funktionen
+
+			- Unterstützung für die Bearbeitung von Liedtexten im Tag-Editor hinzugefügt
+
 		- Verbesserungen
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Optionale Spalten für Komponist, Dirigent, Tempo und ISRC zur Jobliste hinzugefügt
+			- Unterstützung für Liedtexte in ID3v2-, MP4-, Vorbis Comment-, APEv2- und WMA-Tags hinzugefügt
 
 		- Behobene Fehler
 
