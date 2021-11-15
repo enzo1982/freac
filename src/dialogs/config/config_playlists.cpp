@@ -159,7 +159,7 @@ Void freac::ConfigurePlaylists::SelectDir()
 	DirSelection	 dialog;
 
 	dialog.SetParentWindow(GetContainerWindow());
-	dialog.SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder in which the playlist files will be placed"))));
+	dialog.SetCaption(i18n->AddColon(i18n->TranslateString("Select the folder in which the playlist files will be placed")));
 	dialog.SetDirName(BoCA::Utilities::GetAbsolutePathName(edit_outdir->GetText()));
 
 	if (dialog.ShowDialog() == Success())

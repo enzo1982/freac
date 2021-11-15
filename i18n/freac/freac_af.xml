@@ -106,7 +106,7 @@
 	<entry id="1602" string="Check for updates now">Kontroleer vir opdaterings</entry>
 	<entry id="1603" string="Check for updates at startup">Kontroleer vir opdaterings tydens aanskakeling</entry>
 	<entry id="1604" string="About %1">Betreffende %1</entry>
-	<entry id="1605" string="index_en.html">index_en.html</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
       </section>
     </section>
 
@@ -694,7 +694,7 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Kan nie lêer open nie: %1</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Kan nie lêer open nie: %1</entry>
 	</section>
       </section>
     </section>

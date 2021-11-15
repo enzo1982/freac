@@ -27,10 +27,11 @@
     <entry id="14" string="Installing files...">Installerar filer &#8230;</entry>
     <entry id="15" string="Installing file:">Installerar fil:</entry>
     <entry id="16" string="Downloading file:">Hämtar fil:</entry>
-    <entry id="17" string="Update complete">Uppdateringen har slutförts</entry>
-    <entry id="18" string="Your application has been successfully updated!">Ditt program har uppdaterats!</entry>
-    <entry id="19" string="Error">Fel</entry>
-    <entry id="20" string="Error downloading package!">Fel vid hämtning av paket!</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Fel vid installation av &quot;%1&quot;!&#10;&#10;Åtkomst till programmappen nekades.</entry>
+    <entry id="17" string="Extracting file:">Extraherar fil:</entry>
+    <entry id="18" string="Update complete">Uppdateringen har slutförts</entry>
+    <entry id="19" string="Your application has been successfully updated!">Ditt program har uppdaterats!</entry>
+    <entry id="20" string="Error">Fel</entry>
+    <entry id="21" string="Error downloading package!">Fel vid hämtning av paket!</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Fel vid installation av &quot;%1&quot;!&#10;&#10;Åtkomst till programmappen nekades.</entry>
   </data>
 </LangFile>

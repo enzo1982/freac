@@ -1,13 +1,14 @@
 #!/bin/bash
 PREFIX=/usr/local
-#RELEASE=1.1.4
-RELEASE=1.1.4-`date +"%Y%m%d"`
+
+#RELEASE=1.1.5
+RELEASE=1.1.5-`date +"%Y%m%d"`
 
 SMOOTHVER=0.9
 SMOOTHREV=0
 
 BOCAVER=1.0
-BOCAREV=2
+BOCAREV=3
 
 machine=`gcc -dumpmachine`
 
@@ -59,6 +60,7 @@ cp -R $PREFIX/lib/freac/freac.extension.notifier freac/boca/
 #cp -R $PREFIX/lib/freac/freac.extension.youtube freac/boca/
 
 cp $PREFIX/lib/freac/freac_extension_*.1.0.so freac/boca/
+cp $PREFIX/lib/freac/freac_verifier_*.1.0.so freac/boca/
 
 cp $PREFIX/lib/libcdio.so.19 freac/libcdio.so.19
 cp $PREFIX/lib/libcdio_cdda.so.2 freac/libcdio_cdda.so.2

@@ -488,7 +488,7 @@ Int BoCA::ChooserFiles::SaveFileTag(const Track &track)
 	Config	*config = Config::Get();
 
 	Int	 error	     = Error();
-	String	 errorString = "Unknown error";
+	String	 errorString = "Not supported";
 
 	/* Create decoder component.
 	 */
@@ -534,11 +534,6 @@ Int BoCA::ChooserFiles::SaveFileTag(const Track &track)
 					}
 
 					boca.DeleteComponent(tagger);
-				}
-				else
-				{
-					error	    = Error();
-					errorString = "Not supported";
 				}
 			}
 

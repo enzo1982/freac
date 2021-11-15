@@ -27,10 +27,11 @@
     <entry id="14" string="Installing files...">फ़ाइलें स्थापित कर रहा है ...</entry>
     <entry id="15" string="Installing file:">फ़ाइल स्थापित करना:</entry>
     <entry id="16" string="Downloading file:">डाउनलोडिंग फ़ाइल:</entry>
-    <entry id="17" string="Update complete">अपडेट पूरा करें</entry>
-    <entry id="18" string="Your application has been successfully updated!">आपका एप्लिकेशन सफलतापूर्वक अपडेट कर दिया गया है!</entry>
-    <entry id="19" string="Error">त्रुटि</entry>
-    <entry id="20" string="Error downloading package!">पैकेज डाउनलोड करने में त्रुटि!</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">इंस्टॉल करने में त्रुटि &quot;%1&quot;!&#10;&#10;एप्लिकेशन डायरेक्टरी तक पहुंच को अस्वीकार कर दिया गया था।</entry>
+    <entry id="17" string="Extracting file:"/>
+    <entry id="18" string="Update complete">अपडेट पूरा करें</entry>
+    <entry id="19" string="Your application has been successfully updated!">आपका एप्लिकेशन सफलतापूर्वक अपडेट कर दिया गया है!</entry>
+    <entry id="20" string="Error">त्रुटि</entry>
+    <entry id="21" string="Error downloading package!">पैकेज डाउनलोड करने में त्रुटि!</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">इंस्टॉल करने में त्रुटि &quot;%1&quot;!&#10;&#10;एप्लिकेशन डायरेक्टरी तक पहुंच को अस्वीकार कर दिया गया था।</entry>
   </data>
 </LangFile>

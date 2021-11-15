@@ -22,14 +22,17 @@ cflags="-O3 -DNDEBUG"
 
 if [[ $uname == Darwin ]] && [[ $BUILD_PPC == True ]]; then
   cflags="$cflags -arch ppc -mcpu=G4"
+  asflags="-arch ppc"
   ldflags="-Wl,-x -arch ppc"
   ppc=true
 elif [[ $uname == Darwin ]] && [[ $BUILD_X86 == True ]]; then
   cflags="$cflags -arch i386 -march=prescott"
+  asflags="-arch i386"
   ldflags="-Wl,-x -arch i386"
   x86=true
 elif [[ $uname == Darwin ]] && [[ $BUILD_ARM64 == True ]]; then
   cflags="$cflags -arch arm64"
+  asflags="-arch arm64"
   ldflags="-Wl,-x -arch arm64"
   host="aarch64-apple-darwin20.1.0"
   arm64=true
@@ -39,6 +42,7 @@ elif [[ $uname == Darwin ]]; then
   else
     cflags="$cflags -arch x86_64 -march=core2"
   fi
+  asflags="-arch x86_64"
   ldflags="-Wl,-x -arch x86_64"
   x86_64=true
 elif [[ $machine == *amd64* || $machine == *x86_64* ]] && [[ $BUILD_X86 != True ]] && [[ $uname != *MINGW* || $BUILD_X86_64 == True ]]; then
@@ -110,6 +114,7 @@ fi
 
 # Setup environment
 export CFLAGS="$cflags $cflags_unroll"
+export ASFLAGS="$asflags"
 export LDFLAGS="$ldflags"
 
 if [[ $uname == *MINGW* ]]; then
@@ -127,22 +132,22 @@ if [[ $uname == Haiku ]]; then
 fi
 
 # Package versions
-exhale_version=1.1.5
+exhale_version=1.1.8
 faac_version=1.30
 faad2_version=2.10.0
 fdk_aac_version=2.0.2
-ffmpeg_version=4.4
+ffmpeg_version=4.4.1
 flac_version=1.3.3
 lame_version=3.100
 libcdio_version=2.1.0
 libcdio_paranoia_version=10.2+2.0.1
 libcdrip_version=2.4
-libogg_version=1.3.4
-libsamplerate_version=0.2.1
+libogg_version=1.3.5
+libsamplerate_version=0.2.2
 libsndfile_version=1.0.31
-mac_version=6.23
+mac_version=7.14
 mp4v2_version=2.0.0
-mpg123_version=1.27.2
+mpg123_version=1.29.2
 musepack_version=4.75
 opus_version=1.3.1
 rnnoise_version=9acc1e5
@@ -163,7 +168,7 @@ libcdio_location=https://ftp.gnu.org/gnu/libcdio/libcdio-$libcdio_version.tar.bz
 libcdio_paranoia_location=https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-$libcdio_paranoia_version.tar.bz2
 libcdrip_location=http://cdrip.org/releases/libcdrip-$libcdrip_version.zip
 libogg_location=https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-$libogg_version.tar.xz
-libsamplerate_location=https://github.com/libsndfile/libsamplerate/releases/download/$libsamplerate_version/libsamplerate-$libsamplerate_version.tar.bz2
+libsamplerate_location=https://github.com/libsndfile/libsamplerate/releases/download/$libsamplerate_version/libsamplerate-$libsamplerate_version.tar.xz
 libsndfile_location=https://github.com/libsndfile/libsndfile/releases/download/$libsndfile_version/libsndfile-$libsndfile_version.tar.bz2
 mac_location=https://freac.org/patches/MAC_SDK_${mac_version%.*}${mac_version#*.}.zip
 mp4v2_location=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-$mp4v2_version.tar.bz2
@@ -201,6 +206,18 @@ rubberband_patch_levels=(1)
 vorbis_patches=(https://freac.org/patches/libvorbis-$vorbis_version-aotuv-b6.03.patch https://freac.org/patches/libvorbis-$vorbis_version-aotuv-b6.03-lancer.patch)
 vorbis_patch_levels=(1 1)
 
+# Keep using FFmpeg 4.3.2 on macOS PPC
+if [[ $uname == Darwin ]] && [[ $BUILD_PPC == True ]]; then
+  ffmpeg_version=4.3.2
+fi
+
+# Keep using libsndfile 1.0.30 on macOS x86
+if [[ $uname == Darwin ]] && [[ $BUILD_X86 == True ]]; then
+  libsndfile_version=1.0.30
+  libsndfile_location=https://github.com/libsndfile/libsndfile/releases/download/v$libsndfile_version/libsndfile-$libsndfile_version.tar.bz2
+fi
+
+# Main build function
 build () {
   archive=${1##*/}
 
@@ -296,6 +313,7 @@ build () {
   unset folder
 
   export CFLAGS="$cflags $cflags_unroll"
+  export ASFLAGS="$asflags"
   export LDFLAGS="$ldflags"
 }
 
@@ -325,7 +343,7 @@ for package in ${packages[@]}; do
     fi
     if [[ $uname == Haiku ]]; then
       make_flags="LIBS="
-      install_script="mkdir -p /usr/local/bin && cp bin/exhale /system/non-packaged/bin"
+      install_script="mkdir -p /system/non-packaged/bin && cp bin/exhale /system/non-packaged/bin"
     else
       install_script="mkdir -p /usr/local/bin && cp bin/exhale /usr/local/bin"
     fi
@@ -477,9 +495,6 @@ for package in ${packages[@]}; do
 
   elif [ $package == libogg ]; then
     # Build Ogg
-    if [[ $uname == Darwin ]]; then
-      prepare="sed -i -e \"s/sys\/types\.h/stdint.h/\" include/ogg/os_types.h"
-    fi
     build $libogg_location src/.libs/libogg$sharedinfix.$sharedext Ogg.$sharedext
 
   elif [ $package == libsamplerate ]; then
@@ -497,7 +512,7 @@ for package in ${packages[@]}; do
     elif [[ $uname == *MINGW* ]] && [[ $x86 == true ]]; then
       configure_exports="RC=\"windres -F pe-i386\""
     fi
-    configure_flags="--disable-external-libs"
+    configure_flags="--disable-external-libs --disable-alsa"
     build $libsndfile_location src/.libs/libsndfile$sharedinfix.$sharedext SndFile.$sharedext
 
   elif [ $package == mac ]; then
@@ -510,6 +525,7 @@ for package in ${packages[@]}; do
     export CXXFLAGS="$cflags $cflags_unroll"
     patches=${mac_patches[@]}
     patch_levels=(${mac_patch_levels[@]})
+    make_flags="-f Source/Projects/NonWindows/Makefile"
     build $archive Source/MACDll.$sharedext MACDll.$sharedext
 
   elif [ $package == mp4v2 ]; then
@@ -530,6 +546,9 @@ for package in ${packages[@]}; do
   elif [ $package == mpg123 ]; then
     # Build mpg123
     configure_flags="--enable-modules=no"
+    if [[ $uname == Darwin ]]; then
+      export CFLAGS="$cflags $cflags_unroll -std=c99"
+    fi
     if [[ $ppc == true ]]; then
       configure_flags="$configure_flags --with-cpu=altivec"
     elif [[ $x86_64 == true ]]; then

@@ -27,6 +27,7 @@
     <entry id="14" string="Installing files...">Installerer filer...</entry>
     <entry id="15" string="Installing file:">Installerer fil:</entry>
     <entry id="16" string="Downloading file:">Henter fil:</entry>
+    <entry id="17" string="Extracting file:">Udpakker fil:</entry>
     <entry id="18" string="Update complete">Opdatering færdig</entry>
     <entry id="19" string="Your application has been successfully updated!">Dit program er nu opdateret!</entry>
     <entry id="20" string="Error">Fejl</entry>

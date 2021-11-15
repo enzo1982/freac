@@ -11,26 +11,32 @@
   * WARRANTIES OF MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE. */
 
 #include "tagedit.h"
+#include "config.h"
 
 const String &BoCA::TagEdit::GetComponentSpecs()
 {
-	static String	 componentSpecs = "		\
-							\
-	  <?xml version=\"1.0\" encoding=\"UTF-8\"?>	\
-	  <component>					\
-	    <name>Tag Editor</name>			\
-	    <version>1.0</version>			\
-	    <id>tagedit-ext</id>			\
-	    <type>extension</type>			\
-	  </component>					\
-							\
-	";
+	I18n	*i18n = I18n::Get();
+
+	i18n->SetContext("Components::Extensions");
+
+	static String	 componentSpecs = String("					\
+											\
+	  <?xml version=\"1.0\" encoding=\"UTF-8\"?>					\
+	  <component>									\
+	    <name>").Append(i18n->TranslateString("Tag Editor")).Append("</name>	\
+	    <version>1.0</version>							\
+	    <id>tagedit-ext</id>							\
+	    <type>extension</type>							\
+	  </component>									\
+											\
+	");
 
 	return componentSpecs;
 }
 
 BoCA::TagEdit::TagEdit()
 {
+	configLayer  = NIL;
 	mainTabLayer = NIL;
 
 	getMainTabLayer.Connect(&TagEdit::GetMainTabLayer, this);
@@ -38,7 +44,15 @@ BoCA::TagEdit::TagEdit()
 
 BoCA::TagEdit::~TagEdit()
 {
+	if (configLayer	 != NIL) Object::DeleteObject(configLayer);
 	if (mainTabLayer != NIL) Object::DeleteObject(mainTabLayer);
+}
+
+ConfigLayer *BoCA::TagEdit::GetConfigurationLayer()
+{
+	if (configLayer == NIL) configLayer = new ConfigureTagEdit();
+
+	return configLayer;
 }
 
 Layer *BoCA::TagEdit::GetMainTabLayer()

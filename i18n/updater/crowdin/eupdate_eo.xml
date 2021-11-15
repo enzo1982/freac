@@ -27,10 +27,11 @@
     <entry id="14" string="Installing files...">Instalanta dosieroj...</entry>
     <entry id="15" string="Installing file:">Instali dosieron:</entry>
     <entry id="16" string="Downloading file:">Elŝutanta dosieron:</entry>
-    <entry id="17" string="Update complete">Aktualigo kompletita</entry>
-    <entry id="18" string="Your application has been successfully updated!">Via aplikaĵo estas suksese aktualigita!</entry>
-    <entry id="19" string="Error">Eraro</entry>
-    <entry id="20" string="Error downloading package!">Eraro dum la elŝuto de la pako!</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied."/>
+    <entry id="17" string="Extracting file:"/>
+    <entry id="18" string="Update complete">Aktualigo kompletita</entry>
+    <entry id="19" string="Your application has been successfully updated!">Via aplikaĵo estas suksese aktualigita!</entry>
+    <entry id="20" string="Error">Eraro</entry>
+    <entry id="21" string="Error downloading package!">Eraro dum la elŝuto de la pako!</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied."/>
   </data>
 </LangFile>

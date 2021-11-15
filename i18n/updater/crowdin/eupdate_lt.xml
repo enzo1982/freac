@@ -27,10 +27,11 @@
     <entry id="14" string="Installing files...">Įdiegiami failai...</entry>
     <entry id="15" string="Installing file:">Įdiegiamas failas:</entry>
     <entry id="16" string="Downloading file:">Parsisiunčiamas failas:</entry>
-    <entry id="17" string="Update complete">Atnaujinimas baigtas</entry>
-    <entry id="18" string="Your application has been successfully updated!">Jūsų programa sėkmingai atnaujinta!</entry>
-    <entry id="19" string="Error">Klaida</entry>
-    <entry id="20" string="Error downloading package!">Klaida atsisiunčiant paketą!</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied."/>
+    <entry id="17" string="Extracting file:"/>
+    <entry id="18" string="Update complete">Atnaujinimas baigtas</entry>
+    <entry id="19" string="Your application has been successfully updated!">Jūsų programa sėkmingai atnaujinta!</entry>
+    <entry id="20" string="Error">Klaida</entry>
+    <entry id="21" string="Error downloading package!">Klaida atsisiunčiant paketą!</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied."/>
   </data>
 </LangFile>

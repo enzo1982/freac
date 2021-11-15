@@ -212,7 +212,7 @@ Void freac::ConfigureCDDB::SelectDir()
 	DirSelection	 dialog;
 
 	dialog.SetParentWindow(GetContainerWindow());
-	dialog.SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder of the CDDB database"))));
+	dialog.SetCaption(i18n->AddColon(i18n->TranslateString("Select the folder of the CDDB database")));
 	dialog.SetDirName(edit_dir->GetText());
 
 	if (dialog.ShowDialog() == Success())

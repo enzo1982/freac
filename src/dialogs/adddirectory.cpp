@@ -120,7 +120,7 @@ Void freac::AddDirectoryDialog::Browse()
 	DirSelection	 dialog;
 
 	dialog.SetParentWindow(mainWnd);
-	dialog.SetCaption(String("\n").Append(i18n->AddColon(i18n->TranslateString("Select the folder to add to the joblist"))));
+	dialog.SetCaption(i18n->AddColon(i18n->TranslateString("Select the folder to add to the joblist")));
 	dialog.SetDirName(edit_directory->GetText());
 
 	if (dialog.ShowDialog() == Success())

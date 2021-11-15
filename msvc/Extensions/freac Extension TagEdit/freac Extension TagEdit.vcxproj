@@ -240,6 +240,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\components\extension\tagedit\config.cpp" />
+    <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_lyrics.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\editor\editor_publisher.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\layer.cpp" />
     <ClCompile Include="..\..\..\components\extension\tagedit\tagedit.cpp" />
@@ -260,6 +262,8 @@
     <ClCompile Include="..\..\..\components\extension\tagedit\chooser\chooser_tracks.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\components\extension\tagedit\config.h" />
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_lyrics.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_publisher.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\layer.h" />
     <ClInclude Include="..\..\..\components\extension\tagedit\tagedit.h" />

@@ -1,7 +1,7 @@
 {
     "app-id": "org.freac.freac",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "20.08",
+    "runtime-version": "21.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "freac",
     "finish-args": [
@@ -109,16 +109,8 @@
                     "path": "patches/mp4v2-2.0.0-fixes.patch"
                 },
                 {
-                    "type": "file",
-                    "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.guess",
-                    "sha256": "8202b7fde008212d6d36cccf219480f5d54cddb5452b241f47c51cb5c054193b",
-                    "dest-filename": "autoaux/config.guess"
-                },
-                {
-                    "type": "file",
-                    "url": "https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.sub",
-                    "sha256": "729711e8aa3228db4a3adea9ca5d60de184969a1537ac874477ce5676bee8464",
-                    "dest-filename": "autoaux/config.sub"
+                    "type": "patch",
+                    "path": "patches/mp4v2-2.0.0-config.patch"
                 }
             ]
         },
@@ -178,8 +170,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://ffmpeg.org/releases/ffmpeg-4.4.tar.xz",
-                    "sha256": "06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909"
+                    "url": "https://ffmpeg.org/releases/ffmpeg-4.4.1.tar.xz",
+                    "sha256": "eadbad9e9ab30b25f5520fbfde99fae4a92a1ae3c0257a8d68569a4651e30e02"
                 }
             ]
         },

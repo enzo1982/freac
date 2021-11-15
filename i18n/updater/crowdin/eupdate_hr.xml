@@ -27,10 +27,11 @@
     <entry id="14" string="Installing files...">Instaliram dokumente...</entry>
     <entry id="15" string="Installing file:">Instaliram dokument:</entry>
     <entry id="16" string="Downloading file:">Download dokumenta:</entry>
-    <entry id="17" string="Update complete">Nadogradnja gotova</entry>
-    <entry id="18" string="Your application has been successfully updated!">Vaša aplikacija uspješno je nadograđena!</entry>
-    <entry id="19" string="Error">Greška</entry>
-    <entry id="20" string="Error downloading package!">Greška pri downloadu paketa!</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied."/>
+    <entry id="17" string="Extracting file:"/>
+    <entry id="18" string="Update complete">Nadogradnja gotova</entry>
+    <entry id="19" string="Your application has been successfully updated!">Vaša aplikacija uspješno je nadograđena!</entry>
+    <entry id="20" string="Error">Greška</entry>
+    <entry id="21" string="Error downloading package!">Greška pri downloadu paketa!</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied."/>
   </data>
 </LangFile>

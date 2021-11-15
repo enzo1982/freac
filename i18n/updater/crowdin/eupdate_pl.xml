@@ -8,7 +8,7 @@
     <property name="encoding">UTF-8</property>
     <property name="template">eupdate.xml</property>
     <property name="author">Krzysztof Konopacki, Darek Rzeźnicki</property>
-    <property name="url">http://konopacki.eu/</property>
+    <property name="url">http://www.chapter0.net/easyUpdate/</property>
   </info>
   <data>
     <entry id="1" string="Cancel">Anuluj</entry>
@@ -27,10 +27,11 @@
     <entry id="14" string="Installing files...">Instalowanie plików…</entry>
     <entry id="15" string="Installing file:">Instalowany plik:</entry>
     <entry id="16" string="Downloading file:">Pobieranie pliku:</entry>
-    <entry id="17" string="Update complete">Uaktualnienie zakończone</entry>
-    <entry id="18" string="Your application has been successfully updated!">Program został pomyślnie zaktualizowany.</entry>
-    <entry id="19" string="Error">Błąd</entry>
-    <entry id="20" string="Error downloading package!">Błąd pobierania pliku!</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Błąd instalacji programu &quot;%1&quot;!&#10;&#10;Odmowa dostępu do katalogu aplikacji.</entry>
+    <entry id="17" string="Extracting file:">Rozpakowywanie pliku:</entry>
+    <entry id="18" string="Update complete">Uaktualnienie zakończone</entry>
+    <entry id="19" string="Your application has been successfully updated!">Program został pomyślnie zaktualizowany.</entry>
+    <entry id="20" string="Error">Błąd</entry>
+    <entry id="21" string="Error downloading package!">Błąd pobierania pliku!</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Błąd instalacji programu &quot;%1&quot;!&#10;&#10;Odmowa dostępu do katalogu aplikacji.</entry>
   </data>
 </LangFile>

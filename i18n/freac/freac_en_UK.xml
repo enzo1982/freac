@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LangFile>
+  <!-- Note that this file should contain only entries that differ from the original American English strings. -->
   <info>
     <property name="program">freac</property>
     <property name="version">1.1</property>
@@ -64,6 +65,13 @@
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automatisation</entry>
+	</section>
+      </section>
+
+      <section name="Tag Editor">
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior">Behaviour</entry>
 	</section>
       </section>
     </section>

@@ -31,15 +31,15 @@ BoCA::LayerTagPublisher::LayerTagPublisher() : Editor("Publisher")
 	edit_publisher		= new EditBox(text_publisher->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_publisher->onInput.Connect(&LayerTagPublisher::OnModifyTrack, this);
 
-	edit_mediatype		= new EditBox(text_mediatype->GetPosition() + Point(7, -3), Size(300, 0), 12);
+	edit_mediatype		= new EditBox(text_mediatype->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_mediatype->onInput.Connect(&LayerTagPublisher::OnModifyTrack, this);
 
 	list_mediatype		= new List();
 
-	edit_catalog		= new EditBox(text_catalog->GetPosition() + Point(7, -3), Size(300, 0), 12);
+	edit_catalog		= new EditBox(text_catalog->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_catalog->onInput.Connect(&LayerTagPublisher::OnModifyTrack, this);
 
-	edit_barcode		= new EditBox(text_barcode->GetPosition() + Point(7, -3), Size(300, 0), 12);
+	edit_barcode		= new EditBox(text_barcode->GetPosition() + Point(7, -3), Size(300, 0));
 	edit_barcode->onInput.Connect(&LayerTagPublisher::OnModifyTrack, this);
 
 	edit_isrc		= new EditBox(text_isrc->GetPosition() + Point(7, -3), Size(300, 0), 12);

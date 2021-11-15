@@ -18,4 +18,6 @@ else
   MAIN="$HERE/freac"
 fi
 
-LD_LIBRARY_PATH="${HERE}" exec "${MAIN}" "$@"
+LD_LIBRARY_PATH="${HERE}" \
+LD_PRELOAD="${HERE}/codecs/ogg.so:${HERE}/codecs/vorbis.so" \
+exec "${MAIN}" "$@"

@@ -34,6 +34,10 @@
     <entry id="309" string="File name">Filnamn</entry>
     <entry id="310" string="File type">Filtyp</entry>
     <entry id="311" string="Album artist">Albumartist</entry>
+    <entry id="312" string="Conductor">Dirigent</entry>
+    <entry id="313" string="Composer">Kompositör</entry>
+    <entry id="314" string="Tempo">Tempo</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">okänd artist</entry>
     <entry id="351" string="unknown title">okänd titel</entry>
@@ -62,6 +66,21 @@
       <entry id="516" string="%1 bytes">%1 byte</entry>
       <entry id="517" string="%1 kB">%1 kB</entry>
       <entry id="518" string="%1%">%1%</entry>
+    </section>
+
+    <section name="Media types">
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">DAT</entry>
+      <entry id="602" string="MiniDisc">Minidisc</entry>
+      <entry id="603" string="Compact Cassette">Kassettband</entry>
+      <entry id="604" string="Reel tape">Rullband</entry>
+      <entry id="605" string="Vinyl">Vinylskiva</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">Laserdisc</entry>
+      <entry id="608" string="TV">TV</entry>
+      <entry id="609" string="Video">Videoband</entry>
+      <entry id="610" string="Radio">Radio</entry>
+      <entry id="611" string="Telephone">Telefon</entry>
     </section>
 
     <section name="Menu">
@@ -708,10 +727,15 @@
 	<entry id="12005" string="HDCD Decoder">HDCD-avkodare</entry>
       </section>
 
+      <section name="Verifiers">
+        <entry id="14000" string="AccurateRip Verifier">AccurateRip-verifierare</entry>
+      </section>
+
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Aviseringar</entry>
 	<entry id="15001" string="Logging">Loggning</entry>
 	<entry id="15002" string="Video Downloader">Videohämtare</entry>
+        <entry id="15003" string="Tag Editor">Taggredigerare</entry>
       </section>
     </section>
 
@@ -1106,6 +1130,49 @@
       </section>
     </section>
 
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">Konfigurera AccurateRip</entry>
+	<entry id="70001" string="General settings">Allmänna inställningar</entry>
+	<entry id="70002" string="Enable AccurateRip">Aktivera AccurateRip</entry>
+	<entry id="70003" string="Database URL">Databasens URL</entry>
+	<entry id="70004" string="Cache">Cacheminne</entry>
+	<entry id="70005" string="Enable cache">Aktivera cachelagring</entry>
+	<entry id="70006" string="Expires after">Förfaller efter</entry>
+	<entry id="70007" string="%1 day(s)">%1 dag(ar)</entry>
+	<entry id="70008" string="%1 week(s)">%1 vecka/veckor</entry>
+	<entry id="70009" string="%1 month(s)">%1 månad(er)</entry>
+	<entry id="70010" string="%1 year(s)">%1 år</entry>
+	<entry id="70011" string="never">aldrig</entry>
+	<entry id="70012" string="Drives">Enheter</entry>
+	<entry id="70013" string="Drive">Enhet</entry>
+	<entry id="70014" string="Offset configuration">Förskjutningskonfiguration</entry>
+	<entry id="70015" string="Offset in drive database">Förskjutning i enhetsdatabasen</entry>
+	<entry id="70016" string="Detected offset">Identifierad förskjutning</entry>
+	<entry id="70017" string="Configured offset">Konfigurerad förskjutning</entry>
+	<entry id="70018" string="Detect offset now">Identifiera förskjutning nu</entry>
+	<entry id="70019" string="not configured">inte konfigurerad</entry>
+	<entry id="70020" string="automatically configured">automatiskt konfigurerad</entry>
+	<entry id="70021" string="configured by offset detection">konfigurerad genom förskjutningsidentifiering</entry>
+	<entry id="70022" string="manually configured">manuellt konfigurerad</entry>
+	<entry id="70023" string="not present">inte tillgänglig</entry>
+	<entry id="70024" string="not detected">inte identifierad</entry>
+	<entry id="70025" string="disabled">inaktiverad</entry>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration">AccurateRip-konfiguration</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Din cd-enhet hittades inte i AccurateRip-databasen.&#10;&#10;Enhetens namn: %1&#10;&#10;Vill du göra en automatisk identifiering av enhetsförskjutningen nu?</entry>
+	  <entry id="70052" string="Do not ask again">Fråga inte igen</entry>
+	  <entry id="70053" string="AccurateRip offset detection">Förskjutningsidentifiering med AccurateRip</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Det gick inte att hitta den inmatade skivan i AccurateRip-databasen.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Sätt in en annan skiva i cd-enheten och klicka på OK.&#10;&#10;Skivan måste finnas i AccurateRip-databasen. Sannolikheten för detta är högre för&#10;populära cd-skivor, eftersom dessa troligen redan har rippats av andra användare.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">Förskjutningsidentifieringen behöver kontrollera en annan skiva.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Enhetsförskjutningen har identifierats och konfigurerats till %1 sampel.</entry>
+	</section>
+      </section>
+    </section>
+
     <section name="External">
       <entry id="80000" string="Downmix multi-channel audio to stereo">Nedblanda flerkanalsljud till stereo</entry>
 
@@ -1304,8 +1371,7 @@
 	  <entry id="103200" string="Details">Information</entry>
 	  <entry id="103201" string="Detailed information">Detaljerad information</entry>
 	  <entry id="103202" string="Band / orchestra">Band/orkester</entry>
-	  <entry id="103203" string="Conductor">Artistinformation</entry>
-	  <entry id="103204" string="Composer">Kompositör</entry>
+	  <entry id="103303" string="Media type">Medietyp</entry>
 	  <entry id="103205" string="Lyrics writer">Textförfattare</entry>
 	  <entry id="103206" string="Modified / remixed by">Modifierad/ommixad av</entry>
 	  <entry id="103207" string="Original information">Ursprunglig information</entry>
@@ -1313,7 +1379,6 @@
 	  <entry id="103209" string="Original album">Ursprungligt album</entry>
 	  <entry id="103210" string="Original lyrics writer">Ursprunglig textförfattare</entry>
 	  <entry id="103211" string="Original release year">Ursprungligt utgivningsår</entry>
-	  <entry id="103212" string="Tempo">Tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1323,7 +1388,6 @@
 	  <entry id="103302" string="Publisher / label">Utgivare/skivmärke</entry>
 	  <entry id="103304" string="Catalog number">Katalognummer</entry>
 	  <entry id="103305" string="Barcode">Streckkod</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">Webbside-URL:er</entry>
 	  <entry id="103308" string="Artist webpage">Artistens webbsida</entry>
 	  <entry id="103309" string="Publisher webpage">Utgivarens webbsida</entry>
@@ -1333,9 +1397,14 @@
 	  <entry id="103313" string="Commercial information">Verksamhetsinformation</entry>
 	</section>
 
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior">Beteende</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Rensa albumartistfältet när det matchar spårartisten</entry>
+	</section>
+
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Det gick inte att öppna fil: %1&#10;&#10;Fel: %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Det gick inte att uppdatera tagg: %1&#10;&#10;Fel: %2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Det gick inte att öppna fil: %1&#10;&#10;Fel: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">Det gick inte att uppdatera tagg: %1&#10;&#10;Fel: %2</entry>
 	</section>
       </section>
 
@@ -1361,6 +1430,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Spara konverteringsloggar med ljudfiler</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Endast ljud-cd-rippningsloggar</entry>
 	  <entry id="104112" string="Filename pattern">Filnamnsmönster</entry>
+	  <entry id="104113" string="Log complete file paths">Logga fullständiga filsökvägar</entry>
 	</section>
       </section>
 

@@ -18,6 +18,7 @@
 
 #include "editor/editor_basic.h"
 #include "editor/editor_details.h"
+#include "editor/editor_lyrics.h"
 #include "editor/editor_publisher.h"
 
 #include "editor/editor_advanced.h"
@@ -55,6 +56,7 @@ BoCA::LayerTags::LayerTags() : Layer("Tags")
 	editors.Add(new LayerTagBasic());
 	editors.Add(new LayerTagDetails());
 	editors.Add(new LayerTagPublisher());
+	editors.Add(new LayerTagLyrics());
 
 /* ToDo: Add advanced editor once it's ready.
  */

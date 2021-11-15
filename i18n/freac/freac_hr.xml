@@ -34,6 +34,10 @@
     <entry id="309" string="File name">Naziv datoteke</entry>
     <entry id="310" string="File type">Tip datoteke</entry>
     <entry id="311" string="Album artist">Izvođač albuma</entry>
+    <entry id="312" string="Conductor">Dirgent</entry>
+    <entry id="313" string="Composer">Skladatelj</entry>
+    <entry id="314" string="Tempo">Tempo</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">nepoznat izvođač</entry>
     <entry id="351" string="unknown title">nepoznat naslov</entry>
@@ -1251,8 +1255,6 @@
 	  <entry id="103200" string="Details">Detalji</entry>
 	  <entry id="103201" string="Detailed information">Detaljne informacije</entry>
 	  <entry id="103202" string="Band / orchestra">Bend/orkestar</entry>
-	  <entry id="103203" string="Conductor">Dirgent</entry>
-	  <entry id="103204" string="Composer">Skladatelj</entry>
 	  <entry id="103205" string="Lyrics writer">Pisac teksta</entry>
 	  <entry id="103206" string="Modified / remixed by">Izmjenio/remixao</entry>
 	  <entry id="103207" string="Original information">Original informacija</entry>
@@ -1260,7 +1262,6 @@
 	  <entry id="103209" string="Original album">Originalni album</entry>
 	  <entry id="103210" string="Original lyrics writer">Originalni pisac teksta</entry>
 	  <entry id="103211" string="Original release year">Originalna godina izdavanja</entry>
-	  <entry id="103212" string="Tempo">Tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1268,7 +1269,6 @@
 	  <entry id="103300" string="Publisher">Izdavač</entry>
 	  <entry id="103301" string="Publisher information">Informacija o izdavaču</entry>
 	  <entry id="103302" string="Publisher / label">Izdavač</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">Web stranica</entry>
 	  <entry id="103308" string="Artist webpage">Web stranica izvođača</entry>
 	  <entry id="103309" string="Publisher webpage">Web stranica izdavača</entry>
@@ -1279,8 +1279,8 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Ne mogu otvoriti datoteku: %1&#10;&#10;Greška: %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Ne mogu obnoviti tag: %1&#10;&#10;Greška: %2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Ne mogu otvoriti datoteku: %1&#10;&#10;Greška: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">Ne mogu obnoviti tag: %1&#10;&#10;Greška: %2</entry>
 	</section>
       </section>
 

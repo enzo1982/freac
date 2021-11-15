@@ -64,6 +64,21 @@
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
+    <section name="Media types">
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">DAT</entry>
+      <entry id="602" string="MiniDisc">MiniDisc</entry>
+      <entry id="603" string="Compact Cassette">Fita Cassete</entry>
+      <entry id="604" string="Reel tape">Fita de rolo</entry>
+      <entry id="605" string="Vinyl">Vinil</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">LaserDisc</entry>
+      <entry id="608" string="TV">TV</entry>
+      <entry id="609" string="Video">Vídeo</entry>
+      <entry id="610" string="Radio">Rádio</entry>
+      <entry id="611" string="Telephone">Telefone</entry>
+    </section>
+
     <section name="Menu">
       <entry id="1000" string="File">Arquivo</entry>
       <entry id="1001" string="Options">Opções</entry>
@@ -708,10 +723,15 @@
 	<entry id="12005" string="HDCD Decoder">Decodificador HDCD</entry>
       </section>
 
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier">Verificador AccurateRip</entry>
+      </section>
+
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Notificações</entry>
 	<entry id="15001" string="Logging">Registrando os dados log</entry>
-	<entry id="15002" string="YouTube Video Downloader">Baixador de Vídeos do YouTube</entry>
+	<entry id="15002" string="Video Downloader">Baixador de Vídeos</entry>
+	<entry id="15003" string="Tag Editor">Editor de tag</entry>
       </section>
     </section>
 
@@ -816,6 +836,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Usar o efeito Temporal-Masking</entry>
 	  <entry id="32305" string="Stream format">Formato do fluxo dos dados</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Respeitar padrão ISO</entry>
+	  <entry id="32307" string="automatic">automático</entry>
+	  <entry id="32308" string="always">sempre</entry>
 	</section>
 
 	<section name="Audio processing">
@@ -852,6 +874,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Frequência máxima da largura da banda AAC (Hz)</entry>
 	  <entry id="33210" string="worse">pior</entry>
 	  <entry id="33211" string="better">melhor</entry>
+	  <entry id="33212" string="auto">auto</entry>
 	</section>
 
 	<section name="Format">
@@ -1103,6 +1126,49 @@
       </section>
     </section>
 
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">Configuração do AccurateRip</entry>
+	<entry id="70001" string="General settings">Configurações gerais</entry>
+	<entry id="70002" string="Enable AccurateRip">Ative o AccurateRip</entry>
+	<entry id="70003" string="Database URL">URL do servidor de banco de dados</entry>
+	<entry id="70004" string="Cache">Cache</entry>
+	<entry id="70005" string="Enable cache">Ative o cache</entry>
+	<entry id="70006" string="Expires after">Expira em</entry>
+	<entry id="70007" string="%1 day(s)">%1 dia(s)</entry>
+	<entry id="70008" string="%1 week(s)">%1 semana(s)</entry>
+	<entry id="70009" string="%1 month(s)">%1 mês(s)</entry>
+	<entry id="70010" string="%1 year(s)">%1 ano(s)</entry>
+	<entry id="70011" string="never">nunca</entry>
+	<entry id="70012" string="Drives">Unidades</entry>
+	<entry id="70013" string="Drive">Unidade</entry>
+	<entry id="70014" string="Offset configuration">Configuração da compensação</entry>
+	<entry id="70015" string="Offset in drive database">Compensação da unidade no banco de dados</entry>
+	<entry id="70016" string="Detected offset">Compensação detectada</entry>
+	<entry id="70017" string="Configured offset">Configuração da compensação</entry>
+	<entry id="70018" string="Detect offset now">Detecte agora</entry>
+	<entry id="70019" string="not configured">não configurado</entry>
+	<entry id="70020" string="automatically configured">configurado automaticamente</entry>
+	<entry id="70021" string="configured by offset detection">configurado por detecção</entry>
+	<entry id="70022" string="manually configured">configurado manualmente</entry>
+	<entry id="70023" string="not present">não está presente</entry>
+	<entry id="70024" string="not detected">não foi detectado</entry>
+	<entry id="70025" string="disabled">desativado</entry>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration">Configuração do AccurateRip</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">O seu CD drive não pôde ser encontrado no banco de dados AccurateRip.&#10;&#10;Nome da unidade: %1&#10;&#10;Deseja executar uma detecção automática da compensação agora?</entry>
+	  <entry id="70052" string="Do not ask again">Não pergunte novamente</entry>
+	  <entry id="70053" string="AccurateRip offset detection">Detecção da compensação do AccurateRip</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">O disco inserido não pôde ser encontrado no banco de dados AccurateRip.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Insira outro disco no CD drive e clique em OK.&#10;&#10;O disco deve existir no banco de dados AccurateRip. A chance para isso é&#10;maior para os CDs populares que provavelmente já foram extraídos por outros usuários antes.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">A detecção do desvio precisa verificar outro disco.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">O desvio da unidade foi detectada com êxito e configurado para %1 amostras.</entry>
+	</section>
+      </section>
+    </section>
+
     <section name="External">
       <entry id="80000" string="Downmix multi-channel audio to stereo">Reduzir multi-canais para estéreo</entry>
 
@@ -1305,34 +1371,40 @@
 	  <entry id="103204" string="Composer">Compositor</entry>
 	  <entry id="103205" string="Lyrics writer">Autor da letra</entry>
 	  <entry id="103206" string="Modified / remixed by">Modificado / remixado por</entry>
-	  <entry id="103207" string="Publisher information">Informações do editor</entry>
-	  <entry id="103208" string="Publisher / label">Editora / gravadora</entry>
-	  <entry id="103209" string="ISRC">ISRC</entry>
-	  <entry id="103210" string="Tempo">Tempo</entry>
-	  <entry id="103211" string="BPM">BPM</entry>
-	  <entry id="103212" string="Catalog number">Número do catálogo</entry>
-	  <entry id="103213" string="Barcode">Código de barras</entry>
+	  <entry id="103207" string="Original information">Informação original</entry>
+	  <entry id="103208" string="Original artist">Artista original</entry>
+	  <entry id="103209" string="Original album">Álbum original</entry>
+	  <entry id="103210" string="Original lyrics writer">Autor original da letra</entry>
+	  <entry id="103211" string="Original release year">Ano de lançamento do original</entry>
+	  <entry id="103212" string="Tempo">Tempo</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other">Outros</entry>
-	  <entry id="103301" string="Original information">Informação original</entry>
-	  <entry id="103302" string="Original artist">Artista original</entry>
-	  <entry id="103303" string="Original album">Álbum original</entry>
-	  <entry id="103304" string="Original lyrics writer">Autor original da letra</entry>
-	  <entry id="103305" string="Original release year">Ano de lançamento do original</entry>
-	  <entry id="103306" string="Webpage URLs">URLs da página Web</entry>
-	  <entry id="103307" string="Artist webpage">Página Web do artista</entry>
-	  <entry id="103308" string="Publisher webpage">Página Web do editor</entry>
-	  <entry id="103309" string="Internet radio station">Estação de rádio da Internet</entry>
-	  <entry id="103310" string="Audio source webpage">Página Web da fonte de áudio</entry>
-	  <entry id="103311" string="Copyright information">Informações sobre Copyright (direitos autorais)</entry>
-	  <entry id="103312" string="Commercial information">Informação comercial</entry>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">Editora</entry>
+	  <entry id="103301" string="Publisher information">Informações do editor</entry>
+	  <entry id="103302" string="Publisher / label">Editora / gravadora</entry>
+	  <entry id="103303" string="Media type">Tipo de mídia</entry>
+	  <entry id="103304" string="Catalog number">Número do catálogo</entry>
+	  <entry id="103305" string="Barcode">Código de barras</entry>
+	  <entry id="103306" string="ISRC">ISRC</entry>
+	  <entry id="103307" string="Webpage URLs">URLs da página Web</entry>
+	  <entry id="103308" string="Artist webpage">Página Web do artista</entry>
+	  <entry id="103309" string="Publisher webpage">Página Web do editor</entry>
+	  <entry id="103310" string="Internet radio station">Estação de rádio da Internet</entry>
+	  <entry id="103311" string="Audio source webpage">Página Web da fonte de áudio</entry>
+	  <entry id="103312" string="Copyright information">Informações sobre Copyright (direitos autorais)</entry>
+	  <entry id="103313" string="Commercial information">Informação comercial</entry>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior">Comportamento</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Limpe o campo do artista do álbum quando ele coincidir com o artista da faixa</entry>
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Não foi possível abrir o arquivo: %1&#10;&#10;Erro: %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Não foi possível atualizar a etiqueta: %1&#10;&#10;Erro: %2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Não foi possível abrir o arquivo: %1&#10;&#10;Erro: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">Não foi possível atualizar a etiqueta: %1&#10;&#10;Erro: %2</entry>
 	</section>
       </section>
 
@@ -1358,6 +1430,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Salvar os registros de conversão com os arquivos de áudio</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Apenas os registros das extrações do CD de Áudio</entry>
 	  <entry id="104112" string="Filename pattern">Modelo do nome do arquivo</entry>
+	  <entry id="104113" string="Log complete file paths">Registre os caminhos completos do arquivo</entry>
 	</section>
       </section>
 

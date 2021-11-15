@@ -155,12 +155,13 @@ const String	 freac::Config::SettingsExcludeExtensionsDefault		= String(".jpg|.j
 										 .Append(".m3u|.m3u8|.pls|.wpl|.xspf|")		  // playlists
 										 .Append(".exe|.dll|")				  // executables
 										 .Append(".zip|.rar|.gz|.bz2|.xz|.7z|")		  // archives
-										 .Append(".ini|")				  // configuration
+										 .Append(".ini|.plist|")			  // configuration
 										 .Append(".htm|.html|.svg|.xml|")		  // HTML/SVG/XML
 										 .Append(".pdf|.ps|.xps|")			  // PDF etc.
 										 .Append(".doc|.docx|.odt|")			  // text documents
 										 .Append(".ppt|.pptx|.odp|")			  // presentations
 										 .Append(".xls|.xlsx|.ods|.odc|")		  // spreadsheets
+										 .Append(".itdb|.musicdb|")			  // iTunes database
 										 .Append(".torrent|thumbs.db|.DS_Store");	  // other files
 
 const String	 freac::Config::SettingsLastSelectedOpenDirID			= "LastSelectedOpenDir";

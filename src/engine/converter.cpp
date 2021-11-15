@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -24,16 +24,16 @@
 using namespace BoCA;
 using namespace BoCA::AS;
 
-freac::Converter::Converter()
+freac::Converter::Converter() : finishedSignal(1)
 {
-	conversionFinished = False;
+	finishedSignal.Wait();
 }
 
 freac::Converter::~Converter()
 {
 }
 
-Void freac::Converter::Convert(const Array<Track> &tracks, Bool autoRip, Bool useThread)
+Void freac::Converter::Convert(const Array<Track> &tracks, Bool autoRip, Bool asynchronous)
 {
  	/* Check if any track is locked by playback.
 	 */
@@ -48,16 +48,16 @@ Void freac::Converter::Convert(const Array<Track> &tracks, Bool autoRip, Bool us
 	 */
 	Job	*convert = new JobConvert(tracks, autoRip);
 
-	if (!useThread)	convert->onFinish.Connect(&Converter::OnFinishJob, this);
+	if (!asynchronous) convert->onFinish.Connect(&Converter::OnFinishJob, this);
 
 	convert->Schedule();
 
-	if (!useThread)	while (!conversionFinished) S::System::System::Sleep(10);
+	if (!asynchronous) finishedSignal.Wait();
 }
 
 Void freac::Converter::OnFinishJob()
 {
-	conversionFinished = True;
+	finishedSignal.Release();
 }
 
 Bool freac::Converter::IsAnyTrackLocked(const Array<Track> &tracks) const

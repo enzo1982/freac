@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -23,7 +23,7 @@ freac::ConfigureInterface::ConfigureInterface()
 
 	showJobs = config->GetIntValue(Config::CategorySettingsID, Config::SettingsShowJobsTabID, Config::SettingsShowJobsTabDefault);
 
-	group_joblist	= new GroupBox(i18n->TranslateString("Joblist"), Point(7, 11), Size(552, 136));
+	group_joblist	= new GroupBox(i18n->TranslateString("Joblist"), Point(7, 11), Size(552, 184));
 
 	text_fields	= new Text(i18n->AddColon(i18n->TranslateString("Columns")), Point(9, 12));
 
@@ -52,7 +52,7 @@ freac::ConfigureInterface::ConfigureInterface()
 	group_joblist->Add(button_up);
 	group_joblist->Add(button_down);
 
-	group_jobs	= new GroupBox(i18n->TranslateString("Jobs"), Point(7, 159), Size(552, 40));
+	group_jobs	= new GroupBox(i18n->TranslateString("Jobs"), Point(7, 207), Size(552, 40));
 
 	check_show_jobs	= new CheckBox(i18n->TranslateString("Show Jobs tab"), Point(10, 13), Size(group_jobs->GetWidth() - 20, 0), &showJobs);
 
@@ -63,7 +63,7 @@ freac::ConfigureInterface::ConfigureInterface()
 	Add(group_joblist);
 	Add(group_jobs);
 
-	SetSize(Size(566, 206));
+	SetSize(Size(566, 254));
 }
 
 freac::ConfigureInterface::~ConfigureInterface()
@@ -92,6 +92,8 @@ Void freac::ConfigureInterface::FillJoblistFieldsList()
 	entryTexts.Add(String("<genre>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track genre")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<album>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Album title")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<albumartist>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Album artist")));	   entryPresent.Add(False);
+	entryTexts.Add(String("<composer>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Composer")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<conductor>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Conductor")));	   entryPresent.Add(False);
 	entryTexts.Add(String("<disc>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Disc number")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<track>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track number")));	   entryPresent.Add(False);
 	entryTexts.Add(String("<rating>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Track rating")));	   entryPresent.Add(False);
@@ -103,6 +105,8 @@ Void freac::ConfigureInterface::FillJoblistFieldsList()
 	entryTexts.Add(String("<resolution>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Sample resolution"))); entryPresent.Add(False);
 	entryTexts.Add(String("<drive>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("CD drive")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<discid>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Disc ID")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<isrc>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("ISRC")));			   entryPresent.Add(False);
+	entryTexts.Add(String("<tempo>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Tempo")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<file>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("File name")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<filetype>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("File type")));	   entryPresent.Add(False);
 	entryTexts.Add(String("<outputfile>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Output file name")));  entryPresent.Add(False);

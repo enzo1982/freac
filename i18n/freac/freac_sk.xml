@@ -34,6 +34,10 @@
     <entry id="309" string="File name">Názov súboru</entry>
     <entry id="310" string="File type">Typ súboru</entry>
     <entry id="311" string="Album artist">Album umelca</entry>
+    <entry id="312" string="Conductor">Dirigent</entry>
+    <entry id="313" string="Composer">Skladateľ</entry>
+    <entry id="314" string="Tempo">Tempo</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">neznámy umelec</entry>
     <entry id="351" string="unknown title">neznámy názov</entry>
@@ -1297,8 +1301,6 @@
 	  <entry id="103200" string="Details">Podrobnosti</entry>
 	  <entry id="103201" string="Detailed information">Podrobné informácie</entry>
 	  <entry id="103202" string="Band / orchestra">Skupina / orchester</entry>
-	  <entry id="103203" string="Conductor">Dirigent</entry>
-	  <entry id="103204" string="Composer">Skladateľ</entry>
 	  <entry id="103205" string="Lyrics writer">Textár</entry>
 	  <entry id="103206" string="Modified / remixed by">Upravil / remixoval</entry>
 	  <entry id="103207" string="Original information">Pôvodné informácie</entry>
@@ -1306,7 +1308,6 @@
 	  <entry id="103209" string="Original album">Pôvodný album</entry>
 	  <entry id="103210" string="Original lyrics writer">Pôvodný textár</entry>
 	  <entry id="103211" string="Original release year">Pôvodný rok vydania</entry>
-	  <entry id="103212" string="Tempo">Tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1314,7 +1315,6 @@
 	  <entry id="103300" string="Publisher">Vydavateľ</entry>
 	  <entry id="103301" string="Publisher information">Informácie o vydavateľovi</entry>
 	  <entry id="103302" string="Publisher / label">Vydavateľ / Label</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">URL webu</entry>
 	  <entry id="103308" string="Artist webpage">Umelcov web</entry>
 	  <entry id="103309" string="Publisher webpage">Web vydavateľa</entry>
@@ -1325,8 +1325,8 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Nemožno otvoriť súbor: %1&#10;&#10;%2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Nemožno prepísať tag: %1&#10;&#10;%2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Nemožno otvoriť súbor: %1&#10;&#10;%2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">Nemožno prepísať tag: %1&#10;&#10;%2</entry>
 	</section>
       </section>
 

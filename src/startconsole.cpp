@@ -210,7 +210,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			{
 				const Device	&device = info->GetNthDeviceInfo(i);
 
-				Console::OutputString(String("\t").Append(String::FromInt(i)).Append("\t").Append(device.path).Append(device.path.Length() < 8 ? "\t\t" : "\t").Append(String(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision).Trim()).Append("\n"));
+				Console::OutputString(String("\t").Append(String::FromInt(i)).Append("\t").Append(device.path).Append(device.path.Length() < 8 ? "\t\t" : "\t").Append(device.GetName()).Append("\n"));
 			}
 
 #ifndef __WIN32__
@@ -307,6 +307,28 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		return;
 	}
 
+	/* Load cover art files.
+	 */
+	String	 coverFrontFile;
+	String	 coverBackFile;
+
+	ScanForProgramOption("--add-cover=%VALUE", &coverFrontFile);
+	ScanForProgramOption("--add-cover-back=%VALUE", &coverBackFile);
+
+	if (coverFrontFile != NIL)
+	{
+		coverFront = LoadCoverArt(coverFrontFile, 3);
+
+		if (coverFront == Picture()) return;
+	}
+
+	if (coverBackFile != NIL)
+	{
+		coverBack = LoadCoverArt(coverBackFile, 4);
+
+		if (coverBack == Picture()) return;
+	}
+
 	/* Evaluate dynamic encoder parameters.
 	 */
 	if (!SetEncoderDefaults(config, userConfig)) return;
@@ -371,15 +393,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		/* Add files to joblist.
 		 */
 		JobList	*joblist = new JobList(Point(0, 0), Size(0, 0));
-		Job	*job	 = addCDTracks ? (Job *) new JobAddTracks(jobFiles) : (Job *) new JobAddFiles(jobFiles);
 
-		job->Schedule();
-
-		while (Job::GetScheduledJobs().Length()	> 0) S::System::System::Sleep(10);
-		while (Job::GetPlannedJobs().Length()	> 0) S::System::System::Sleep(10);
-		while (Job::GetRunningJobs().Length()	> 0) S::System::System::Sleep(10);
-
-		if (joblist->GetNOfTracks() > 0)
+		if (AddToJoblist(jobFiles, addCDTracks))
 		{
 			/* Convert tracks in joblist.
 			 */
@@ -396,7 +411,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			Console::OutputString("Could not process input files!\n");
 		}
 
-		delete joblist;
+		DeleteObject(joblist);
 	}
 	else
 	{
@@ -442,15 +457,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			jobFiles.Add(file);
 
-			Job	*job = addCDTrack ? (Job *) new JobAddTracks(jobFiles) : (Job *) new JobAddFiles(jobFiles);
-
-			job->Schedule();
-
-			while (Job::GetScheduledJobs().Length()	> 0) S::System::System::Sleep(10);
-			while (Job::GetPlannedJobs().Length()	> 0) S::System::System::Sleep(10);
-			while (Job::GetRunningJobs().Length()	> 0) S::System::System::Sleep(10);
-
-			if (joblist->GetNOfTracks() == 0)
+			if (!AddToJoblist(jobFiles, addCDTrack))
 			{
 				Console::OutputString(String("Could not process file: ").Append(currentFile).Append("\n"));
 
@@ -483,7 +490,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			if (stopped) break;
 		}
 
-		delete joblist;
+		DeleteObject(joblist);
 	}
 
 	/* Eject disc if requested.
@@ -759,6 +766,66 @@ Bool freac::freacCommandline::TracksToFiles(const String &tracks, Array<String> 
 	return True;
 }
 
+Picture freac::freacCommandline::LoadCoverArt(const String &file, Int type)
+{
+	if (!File(file).Exists())
+	{
+		Console::OutputString(String("Cover art file not found: ").Append(file).Append("\n"));
+
+		return Picture();
+	}
+
+	Picture	 picture;
+
+	picture.LoadFromFile(file);
+
+	if (picture.GetBitmap() == NIL)
+	{
+		Console::OutputString(String("Invalid cover art file format: ").Append(file).Append("\n"));
+
+		return Picture();
+	}
+
+	picture.type = type;
+
+	return picture;
+}
+
+Bool freac::freacCommandline::AddToJoblist(const Array<String> &files, Bool cdTracks)
+{
+	/* Schedule job to add tracks to joblist.
+	 */
+	Job	*job = cdTracks ? (Job *) new JobAddTracks(files) : (Job *) new JobAddFiles(files);
+
+	job->Schedule();
+
+	while (Job::GetScheduledJobs().Length()	> 0) S::System::System::Sleep(10);
+	while (Job::GetPlannedJobs().Length()	> 0) S::System::System::Sleep(10);
+	while (Job::GetRunningJobs().Length()	> 0) S::System::System::Sleep(10);
+
+	/* Check track list.
+	 */
+	BoCA::JobList		*joblist = BoCA::JobList::Get();
+	const Array<Track>	*tracks	 = joblist->getTrackList.Call();
+
+	if (tracks->Length() == 0) return False;
+
+	/* Add cover images.
+	 */
+	if (coverFront != Picture() || coverBack != Picture())
+	{
+		foreach (Track track, *tracks)
+		{
+			if (coverFront != Picture()) track.pictures.Add(coverFront);
+			if (coverBack  != Picture()) track.pictures.Add(coverBack);
+
+			joblist->onComponentModifyTrack.Emit(track);
+		}
+	}
+
+	return True;
+}
+
 Void freac::freacCommandline::Stop()
 {
 	stopped = True;
@@ -768,6 +835,10 @@ Void freac::freacCommandline::Stop()
 
 Bool freac::freacCommandline::SetConfigDefaults(BoCA::Config *config, Bool userConfig)
 {
+	/* Set user specified config flag.
+	 */
+	config->SetIntValue(Config::CategorySettingsID, "UserSpecifiedConfig", userConfig);
+
 	/* Make mandatory config adjustments.
 	 */
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsEnableConsoleID, True);
@@ -779,8 +850,6 @@ Bool freac::freacCommandline::SetConfigDefaults(BoCA::Config *config, Bool userC
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsAddEncodedTracksID, False);
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, False);
-
-	config->SetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, False);
 
 	config->SetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyInputID, False);
 	config->SetIntValue(Config::CategoryVerificationID, Config::VerificationVerifyOutputID, False);
@@ -808,6 +877,8 @@ Bool freac::freacCommandline::SetConfigDefaults(BoCA::Config *config, Bool userC
 	 */
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, "lame-enc");
 	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, "<filename>");
+
+	config->SetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, False);
 
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, False);
 	config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, 0);
@@ -973,6 +1044,9 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		Console::OutputString("  --threads=<n>\t\t\tSpecify number of threads to use in SuperFast mode\n\n");
 
 		Console::OutputString("  --split-chapters\t\tSplit to individual chapters if chapter tags are present\n\n");
+
+		Console::OutputString("  --add-cover=<file>\t\tAdd front cover image from file (.png or .jpg)\n");
+		Console::OutputString("  --add-cover-back=<file>\tAdd back cover image from file (.png or .jpg)\n\n");
 
 		Console::OutputString("  --ignore-chapters\t\tDo not write chapter information to tags\n");
 		Console::OutputString("  --ignore-coverart\t\tDo not write cover images to tags\n\n");

@@ -750,7 +750,7 @@ Void freac::freacGUI::QueryCDDB()
 		const Track	&track = joblist->GetNthTrack(i);
 		const Info	&info  = track.GetInfo();
 
-		if (info.mcdi.GetData().Size() > 0)
+		if (info.mcdi.IsValid())
 		{
 			String	 queryString = CDDB::QueryStringFromMCDI(info.mcdi);
 
@@ -826,7 +826,7 @@ Void freac::freacGUI::QueryCDDB()
 			Track	 track = joblist->GetNthTrack(j);
 			Info	 info  = track.GetInfo();
 
-			if ((info.mcdi.GetData().Size() > 0 && queryString == CDDB::QueryStringFromMCDI(info.mcdi)) ||
+			if ((info.mcdi.IsValid() && queryString == CDDB::QueryStringFromMCDI(info.mcdi)) ||
 			    (info.offsets != NIL && queryString == CDDB::QueryStringFromOffsets(info.offsets)))
 			{
 				Int	 trackNumber = -1;
@@ -1058,7 +1058,7 @@ Void freac::freacGUI::FillMenus()
 		for (Int i = 0; i < info->GetNumberOfDevices(); i++)
 		{
 			const Device	&device = info->GetNthDeviceInfo(i);
-			String		 name	= String(device.vendor).Append(" ").Append(device.model).Append(" ").Append(device.revision).Trim();
+			String		 name	= device.GetName();
 
 			menu_drives->AddEntry(name, &clicked_drive, i)->onAction.Connect(&freacGUI::ReadCD, this);
 			menu_seldrive->AddEntry(name, &config->GetPersistentIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault), i);

@@ -34,6 +34,10 @@
     <entry id="309" string="File name">Nome do ficheiro</entry>
     <entry id="310" string="File type">Tipo de ficheiro</entry>
     <entry id="311" string="Album artist">Álbum do artista</entry>
+    <entry id="312" string="Conductor">Condutor</entry>
+    <entry id="313" string="Composer">Compositor</entry>
+    <entry id="314" string="Tempo">Tempo</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">artista desconhecido</entry>
     <entry id="351" string="unknown title">título desconhecido</entry>
@@ -1303,8 +1307,6 @@
 	  <entry id="103200" string="Details">Detalhes</entry>
 	  <entry id="103201" string="Detailed information">Informação detalhada</entry>
 	  <entry id="103202" string="Band / orchestra">Banda / orquestra</entry>
-	  <entry id="103203" string="Conductor">Maestro</entry>
-	  <entry id="103204" string="Composer">Compositor</entry>
 	  <entry id="103205" string="Lyrics writer">Letrista</entry>
 	  <entry id="103206" string="Modified / remixed by">Modificado / misturado por</entry>
 	  <entry id="103207" string="Original information">Informação original</entry>
@@ -1312,7 +1314,6 @@
 	  <entry id="103209" string="Original album">Álbum original</entry>
 	  <entry id="103210" string="Original lyrics writer">Letrista original</entry>
 	  <entry id="103211" string="Original release year">Ano de lançamento original</entry>
-	  <entry id="103212" string="Tempo">Tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1322,7 +1323,6 @@
 	  <entry id="103302" string="Publisher / label">Editora / rótulo</entry>
 	  <entry id="103304" string="Catalog number">Número de catálogo</entry>
 	  <entry id="103305" string="Barcode">Código de barras</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">URL da página</entry>
 	  <entry id="103308" string="Artist webpage">Página do artista</entry>
 	  <entry id="103309" string="Publisher webpage">Página da editora</entry>
@@ -1333,8 +1333,8 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">Não é possível abrir o ficheiro: %1&#10;&#10;Erro: %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">Não é possível atualizar a etiqueta: %1&#10;&#10;Erro: %2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Não é possível abrir o ficheiro: %1&#10;&#10;Erro: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">Não é possível atualizar a etiqueta: %1&#10;&#10;Erro: %2</entry>
 	</section>
       </section>
 

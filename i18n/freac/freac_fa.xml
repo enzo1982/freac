@@ -34,6 +34,10 @@
     <entry id="309" string="File name">نام فايل</entry>
     <entry id="310" string="File type">فرمت فايل</entry>
     <entry id="311" string="Album artist">هنرمند آلبوم</entry>
+    <entry id="312" string="Conductor">رهبر اکستر</entry>
+    <entry id="313" string="Composer">آهنگساز</entry>
+    <entry id="314" string="Tempo">ضرب آهنگ</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">هنرمند ناشناس</entry>
     <entry id="351" string="unknown title">بدون هنوان</entry>
@@ -61,7 +65,7 @@
       <entry id="515" string="%1 bit">%1 بيت</entry>
       <entry id="516" string="%1 bytes">%1 بايت</entry>
       <entry id="517" string="%1 kB">%1 کيلوبايت</entry>
-      <entry id="518" string="%1%">%1٪</entry>
+      <entry id="518" string="%1%">‭%1٪‬</entry>
     </section>
 
     <section name="Menu">
@@ -715,7 +719,7 @@
 
       <section name="MAD">
 	<entry id="20000" string="Decoding">کدگشايي</entry>
-	<entry id="20001" string="Enable 24 bit decoding">کدگشايي 24 بيتي فعال شود</entry>
+	<entry id="20001" string="Enable 24 bit decoding">کدگشايي ۲۴ بيتي فعال شود</entry>
       </section>
 
       <section name="mpg123">
@@ -951,9 +955,9 @@
 	<entry id="39000" string="Profile">پروفايل</entry>
 	<entry id="39001" string="Select encoding profile">انتخاب پروفايل تبديل</entry>
 	<entry id="39002" string="auto">خودکار</entry>
-	<entry id="39003" string="Narrowband (8 kHz)">باند باريک (8 کيلوهرتز)</entry>
-	<entry id="39004" string="Wideband (16 kHz)">باند وسيع (16 کيلوهرتز)</entry>
-	<entry id="39005" string="Ultra-Wideband (32 kHz)">باند بسيار وسيع (32 کيلوهرتز)</entry>
+	<entry id="39003" string="Narrowband (8 kHz)">باند باريک (۸ کيلوهرتز)</entry>
+	<entry id="39004" string="Wideband (16 kHz)">باند وسيع (۱۶ کيلوهرتز)</entry>
+	<entry id="39005" string="Ultra-Wideband (32 kHz)">باند بسيار وسيع (۳۲ کيلوهرتز)</entry>
 	<entry id="39006" string="VBR mode">حالت VBR</entry>
 	<entry id="39007" string="CBR (no VBR)">حالت CBR</entry>
 	<entry id="39008" string="VBR">VBR</entry>
@@ -1111,11 +1115,11 @@
 	<entry id="80105" string="reduced">کاهش يافته</entry>
 	<entry id="80106" string="on">روشن</entry>
 	<entry id="80107" string="decoupled">جداشده</entry>
-	<entry id="80108" string="enhanced 1.5/3 dB">1.5/3 دسيبل بهبود يافته</entry>
-	<entry id="80109" string="enhanced 2/6 dB">2/6 دسيبل بهبود يافته</entry>
-	<entry id="80110" string="enhanced 2.5/9 dB">2.5/9 دسيبل بهبود يافته</entry>
-	<entry id="80111" string="enhanced 3/12 dB">3/12 دسيبل بهبود يافته</entry>
-	<entry id="80112" string="enhanced 3/inf dB">3/نامحدود دسيبل بهبود يافته</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">۱٫۵\۳ دسيبل بهبود يافته</entry>
+	<entry id="80109" string="enhanced 2/6 dB">۲\۶ دسيبل بهبود يافته</entry>
+	<entry id="80110" string="enhanced 2.5/9 dB">۲٫۵\۹ دسيبل بهبود يافته</entry>
+	<entry id="80111" string="enhanced 3/12 dB">۳\۱۲ دسيبل بهبود يافته</entry>
+	<entry id="80112" string="enhanced 3/inf dB">۳\نامحدود دسيبل بهبود يافته</entry>
 	<entry id="80113" string="Adaptive noise shaping order">دستور Adaptive noise shaping</entry>
 	<entry id="80114" string="high">بالا</entry>
 	<entry id="80115" string="Clear Voice Detection">شناسايي صداي واضح</entry>
@@ -1297,8 +1301,6 @@
 	  <entry id="103200" string="Details">جزييات</entry>
 	  <entry id="103201" string="Detailed information">اطلاعات تکميلي</entry>
 	  <entry id="103202" string="Band / orchestra">گروه / ارکستر</entry>
-	  <entry id="103203" string="Conductor">رهبر اکستر</entry>
-	  <entry id="103204" string="Composer">آهنگساز</entry>
 	  <entry id="103205" string="Lyrics writer">شاعر</entry>
 	  <entry id="103206" string="Modified / remixed by">ريميکس يا بازنويسي توسط</entry>
 	  <entry id="103207" string="Original information">اطلاعات اوريجينال</entry>
@@ -1306,7 +1308,6 @@
 	  <entry id="103209" string="Original album">آلبوم اصلي</entry>
 	  <entry id="103210" string="Original lyrics writer">شاعر اصلي</entry>
 	  <entry id="103211" string="Original release year">سال انتشار اصلي</entry>
-	  <entry id="103212" string="Tempo">ضرب آهنگ</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1314,7 +1315,6 @@
 	  <entry id="103300" string="Publisher">ناشر</entry>
 	  <entry id="103301" string="Publisher information">اطلاعات ناشر</entry>
 	  <entry id="103302" string="Publisher / label">ناشر / سند</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">وبسايت ها</entry>
 	  <entry id="103308" string="Artist webpage">وبسايت هنرمند</entry>
 	  <entry id="103309" string="Publisher webpage">وبسايت ناشر</entry>
@@ -1325,8 +1325,8 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">فايل مورد نظر قابل دسترسي نيست: %1&#10;خطا: %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">بروز رساني اين تگ ممکن نشد: %1&#10;&#10;خطا: %2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">فايل مورد نظر قابل دسترسي نيست: %1&#10;خطا: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">بروز رساني اين تگ ممکن نشد: %1&#10;&#10;خطا: %2</entry>
 	</section>
       </section>
 

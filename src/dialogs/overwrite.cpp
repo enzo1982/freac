@@ -80,7 +80,9 @@ freac::DialogConfirmOverwrite::DialogConfirmOverwrite(const Array<BoCA::Track> &
 
 	foreach (const BoCA::Track &track, tracks)
 	{
-		list_files->AddEntry(String(track.outputFile).Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Overwrite")), True);
+		ListEntry	*entry = list_files->AddEntry(String(track.outputFile).Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Overwrite")), True);
+
+		entry->SetTooltipText(track.outputFile);
 	}
 
 	Add(mainWnd);

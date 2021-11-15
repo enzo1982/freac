@@ -10,7 +10,7 @@ echo
 echo "      git clone https://github.com/enzo1982/smooth.git"
 echo
 echo "    - Get, build and install the fre:ac Component Development Kit"
-echo "      available from http://www.freac.org/"
+echo "      available from https://www.freac.org/"
 echo
 echo "  On Linux:"
 echo
@@ -18,13 +18,13 @@ echo "    - libudev development package"
 echo
 echo "  On macOS:"
 echo
-echo "    - Building fre:ac is tested on macOS 10.5.8 Leopard only using"
-echo "      the Xcode 3.1 Command Line Tools (no Xcode project file provided)"
+echo "    - Building fre:ac is supported on macOS 10.5.8 Leopard and later"
+echo "      using the Xcode Command Line Tools (no Xcode project file provided)"
 echo
 echo "  On Windows:"
 echo
-echo "    - Please use MinGW (http://www.mingw.org/) or Visual Studio 2019"
-echo "      with the msvc/freac/freac.sln project file to build fre:ac"
+echo "    - Please use MSYS2 (https://www.msys2.org/) or Visual Studio 2019"
+echo "      with the msvc/freac.sln project file to build fre:ac"
 echo
 echo "When all prerequisites are met, simply run \"make && make install\"."
 echo

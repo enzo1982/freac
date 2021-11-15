@@ -34,6 +34,9 @@
     <entry id="308" string="Rating">評分</entry>
     <entry id="309" string="File name">檔名</entry>
     <entry id="310" string="File type">檔案類型</entry>
+    <entry id="312" string="Conductor">表演改良</entry>
+    <entry id="313" string="Composer">作曲</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">未知演出者</entry>
     <entry id="351" string="unknown title">未知標題</entry>
@@ -1005,8 +1008,6 @@
 	  <entry id="103200" string="Details">細節</entry>
 	  <entry id="103201" string="Detailed information">細節</entry>
 	  <entry id="103202" string="Band / orchestra">樂隊╱交響樂團</entry>
-	  <entry id="103203" string="Conductor">表演改良</entry>
-	  <entry id="103204" string="Composer">作曲</entry>
 	  <entry id="103205" string="Lyrics writer">填詞</entry>
 	  <entry id="103206" string="Modified / remixed by">混音</entry>
 	  <entry id="103207" string="Original information">原作品資訊</entry>
@@ -1020,7 +1021,6 @@
 	  <entry id="103300" string="Publisher">出版商</entry>
 	  <entry id="103301" string="Publisher information">出版商資訊</entry>
 	  <entry id="103302" string="Publisher / label">出版商</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">網址</entry>
 	  <entry id="103308" string="Artist webpage">演出者網頁</entry>
 	  <entry id="103309" string="Publisher webpage">出版商網頁</entry>
@@ -1031,8 +1031,8 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案：%1&#10;&#10;錯誤：%2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">無法更新標籤：%1&#10;&#10;錯誤：%2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">無法開啟檔案：%1&#10;&#10;錯誤：%2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">無法更新標籤：%1&#10;&#10;錯誤：%2</entry>
 	</section>
       </section>
     </section>

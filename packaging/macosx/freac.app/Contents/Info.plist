@@ -23,13 +23,18 @@
   <key>CFBundleSignature</key>
   <string>f:ac</string>
   <key>CFBundleVersion</key>
-  <string>1.1.4.5444</string>
+  <string>1.1.5.5561</string>
   <key>CFBundleShortVersionString</key>
-  <string>1.1.4</string>
+  <string>1.1.5</string>
   <key>LSBackgroundOnly</key>
   <false/>
   <key>LSMinimumSystemVersion</key>
   <string>10.5.0</string>
+  <key>LSEnvironment</key>
+  <dict>
+   <key>SYSTEM_VERSION_COMPAT</key>
+   <string>0</string>
+  </dict>
   <key>NSHighResolutionCapable</key>
   <true/>
   <key>NSRequiresAquaSystemAppearance</key>

@@ -102,11 +102,11 @@ Int freac::ConvertWorker::Perform()
 	Bool	 enableParallel	 = configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, Config::ResourcesEnableParallelConversionsDefault);
 	Int	 numberOfThreads = configuration->GetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, Config::ResourcesNumberOfConversionThreadsDefault);
 
-	while (!quit)
+	while (!Threads::Access::Value(quit))
 	{
 		workSignal.Wait();
 
-		if (quit) break;
+		if (Threads::Access::Value(quit)) break;
 
 		/* Do not limit parallel CD ripping jobs in automatic mode.
 		 */
@@ -116,15 +116,15 @@ Int freac::ConvertWorker::Perform()
 		 */
 		if (allocateThread) Locking::AllocateThread();
 
-		if (Convert() != Success()) error = True;
+		if (Convert() != Success()) Threads::Access::Set(error, True);
 
 		if (allocateThread) Locking::FreeThread();
 
 		/* Return to waiting state.
 		 */
-		idle	= True;
-		waiting	= True;
-		cancel	= False;
+		Threads::Access::Set(idle, True);
+		Threads::Access::Set(waiting, True);
+		Threads::Access::Set(cancel, False);
 	}
 
 	return Success();
@@ -179,7 +179,7 @@ Int freac::ConvertWorker::Convert()
 	String		 encodeChecksum;
 	String		 verifyChecksum;
 
-	for (Int step = 0; step < conversionSteps && !cancel; step++)
+	for (Int step = 0; step < conversionSteps && !Threads::Access::Value(cancel); step++)
 	{
 		/* Setup file names.
 		 */
@@ -416,7 +416,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Verify input.
 		 */
-		if (!cancel && verify) VerifyInput(inFileName, verifier);
+		if (!Threads::Access::Value(cancel) && verify) VerifyInput(inFileName, verifier);
 
 		/* Get CRC checksums when ripping.
 		 */
@@ -459,13 +459,13 @@ Int freac::ConvertWorker::Convert()
 
 		/* Delete output file if it doesn't look sane.
 		 */
-		if (outFile.GetFileSize() <= 0 || cancel || error) outFile.Delete();
+		if (outFile.GetFileSize() <= 0 || Threads::Access::Value(cancel) || error) outFile.Delete();
 
 		/* Delete intermediate file in non-on-the-fly mode.
 		 */
 		if (conversionStep == ConversionStepEncode)
 		{
-			if (!keepWaveFiles || cancel || error) inFile.Delete();
+			if (!keepWaveFiles || Threads::Access::Value(cancel) || error) inFile.Delete();
 
 			if (String(inFile).EndsWith(".temp.wav")) inFile = String(inFile).Head(String(inFile).Length() - 9);
 		}
@@ -505,7 +505,7 @@ Int freac::ConvertWorker::Convert()
 
 		/* Revert to waiting state when there are more steps left.
 		 */
-		if (step < conversionSteps - 1) waiting = True;
+		if (step < conversionSteps - 1) Threads::Access::Set(waiting, True);
 
 		/* Report finished conversion.
 		 */
@@ -552,12 +552,12 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 	trackStartTicks = S::System::System::Clock();
 	trackPosition	= 0;
 
-	waiting		= False;
+	Threads::Access::Set(waiting, False);
 
 	Int			 bytesPerSample = format.bits / 8 * format.channels;
 	Buffer<UnsignedByte>	 buffer(samplesSize * bytesPerSample);
 
-	while (!cancel)
+	while (!Threads::Access::Value(cancel))
 	{
 		Int	 step = samplesSize;
 
@@ -574,8 +574,8 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 		 */
 		Int	 bytes = decoder->Read(buffer);
 
-		if	(bytes == -1) { cancel = True; break; }
-		else if (bytes ==  0)		       break;
+		if	(bytes == -1) { Threads::Access::Set(cancel, True); break; }
+		else if (bytes ==  0)					    break;
 
 		/* Pass samples to verifier.
 		 */
@@ -588,7 +588,7 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 
 		/* Pass samples to encoder.
 		 */
-		if (encoder->Write(buffer) == -1) { cancel = True; break; }
+		if (encoder->Write(buffer) == -1) { Threads::Access::Set(cancel, True); break; }
 
 		/* Update position info.
 		 */
@@ -601,17 +601,17 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 		{
 			BoCA::Utilities::WarningMessage("CD ripping timeout after %1 seconds. Skipping track.", String::FromInt(ripperTimeout));
 
-			cancel = True;
+			Threads::Access::Set(cancel, True);
 		}
 
 		/* Pause if requested.
 		 */
-		while (pause && !cancel) S::System::System::Sleep(50);
+		while (Threads::Access::Value(pause) && !Threads::Access::Value(cancel)) S::System::System::Sleep(50);
 	}
 
 	/* Finish format conversion and processing.
 	 */
-	for (Int i = 0; i < 2 && !cancel; i++)
+	for (Int i = 0; i < 2 && !Threads::Access::Value(cancel); i++)
 	{
 		buffer.Resize(0);
 
@@ -620,13 +620,13 @@ Int64 freac::ConvertWorker::Loop(Decoder *decoder, Verifier *verifier, FormatCon
 
 		if (i == 1 && processor != NIL) processor->Finish(buffer);
 
-		if (encoder->Write(buffer) == -1) cancel = True;
+		if (encoder->Write(buffer) == -1) Threads::Access::Set(cancel, True);
 	}
 
 	/* Inform components about finished/cancelled conversion.
 	 */
-	if (cancel) engine->onCancelTrackConversion.Emit(conversionID, trackToConvert);
-	else	    engine->onFinishTrackConversion.Emit(conversionID, trackToConvert);
+	if (Threads::Access::Value(cancel)) engine->onCancelTrackConversion.Emit(conversionID, trackToConvert);
+	else				    engine->onFinishTrackConversion.Emit(conversionID, trackToConvert);
 
 	/* Compute track length in target format.
 	 */
@@ -680,7 +680,12 @@ Void freac::ConvertWorker::VerifyInput(const String &uri, Verifier *verifier)
 
 	/* Report error message if any.
 	 */
-	if (errorMessage != NIL) onReportError.Emit(errorMessage);
+	if (errorMessage != NIL)
+	{
+		onReportError.Emit(errorMessage);
+
+		Threads::Access::Set(error, True);
+	}
 }
 
 Void freac::ConvertWorker::LogConversionStart(Decoder *decoder, const String &uri, const String &outFile, Bool replace) const
@@ -729,7 +734,7 @@ Void freac::ConvertWorker::LogConversionStart(Decoder *decoder, const String &ur
 	log->Release();
 }
 
-Void freac::ConvertWorker::LogConversionEnd(const String &uri, Int64 trackLength, UnsignedInt32 rippingCRC, const String &encodeChecksum, const String &verifyChecksum) const
+Void freac::ConvertWorker::LogConversionEnd(const String &uri, Int64 trackLength, UnsignedInt32 rippingCRC, const String &encodeChecksum, const String &verifyChecksum)
 {
 	String	 verb = "converting";
 
@@ -748,7 +753,7 @@ Void freac::ConvertWorker::LogConversionEnd(const String &uri, Int64 trackLength
 	{
 		/* Log conversion result.
 		 */
-		if (cancel)
+		if (Threads::Access::Value(cancel))
 		{
 			log->Write(String("    Cancelled ").Append(verb).Append(": ").Append(formattedURI), MessageTypeWarning);
 		}
@@ -764,7 +769,7 @@ Void freac::ConvertWorker::LogConversionEnd(const String &uri, Int64 trackLength
 	{
 		/* Log verification result.
 		 */
-		if (cancel)
+		if (Threads::Access::Value(cancel))
 		{
 			log->Write(String("    Cancelled verifying output file: %1").Replace("%1", formattedURI), MessageTypeWarning);
 		}
@@ -787,7 +792,7 @@ Void freac::ConvertWorker::LogConversionEnd(const String &uri, Int64 trackLength
 
 	/* Log duration.
 	 */
-	if (!cancel)
+	if (!Threads::Access::Value(cancel))
 	{
 		UnsignedInt64	 ticks	  = S::System::System::Clock() - trackStartTicks;
 		String		 duration = String(ticks / 1000 / 60 % 60 <  10 ?			      "0"  : "").Append(String::FromInt(ticks / 1000 / 60 % 60)).Append(":")
@@ -805,7 +810,12 @@ Void freac::ConvertWorker::LogConversionEnd(const String &uri, Int64 trackLength
 
 	/* Report error message if any.
 	 */
-	if (errorMessage != NIL) onReportError.Emit(errorMessage);
+	if (errorMessage != NIL)
+	{
+		onReportError.Emit(errorMessage);
+
+		Threads::Access::Set(error, True);
+	}
 }
 
 Void freac::ConvertWorker::SetTrackToConvert(const BoCA::Track &nTrack)
@@ -814,31 +824,31 @@ Void freac::ConvertWorker::SetTrackToConvert(const BoCA::Track &nTrack)
 	trackStartTicks	= 0;
 	trackPosition	= 0;
 
-	idle		= False;
-	waiting		= True;
-	error		= False;
+	Threads::Access::Set(idle, False);
+	Threads::Access::Set(waiting, True);
+	Threads::Access::Set(error, False);
 
 	workSignal.Release();
 }
 
 Int freac::ConvertWorker::Pause(Bool value)
 {
-	pause = value;
+	Threads::Access::Set(pause, value);
 
 	return Success();
 }
 
 Int freac::ConvertWorker::Cancel()
 {
-	cancel = True;
+	Threads::Access::Set(cancel, True);
 
 	return Success();
 }
 
 Int freac::ConvertWorker::Quit()
 {
-	cancel = True;
-	quit   = True;
+	Threads::Access::Set(cancel, True);
+	Threads::Access::Set(quit, True);
 
 	workSignal.Release();
 

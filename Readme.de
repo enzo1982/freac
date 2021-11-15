@@ -1,4 +1,4 @@
-fre:ac Version 1.1.5
+fre:ac Version 1.1.6
 
 fre:ac ist ein freier Open-Source Audiokonverter. Das Programm unterstützt das Rippen
 von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate:
@@ -100,12 +100,12 @@ Voraussetzungen
 			- Windows XP/Vista/7/8.x/10
 			- macOS 10.5 Leopard oder neuer
 			- Linux (die meisten modernen Distributionen werden unterstützt)
-			- FreeBSD/PC-BSD (getestet unter FreeBSD 12.1)
+			- FreeBSD/PC-BSD (getestet unter FreeBSD 13.0)
 			- NetBSD (getestet unter NetBSD 6.0, NetBSD 5.x und frühere Versionen werden nicht unterstützt)
 			- OpenBSD (getestet unter OpenBSD 5.3)
 			- Solaris (getestet unter Solaris 11)
 			- GNU Hurd (getestet unter Debian Sid)
-			- Haiku (getestet unter Haiku R1 Beta 1)
+			- Haiku (getestet unter Haiku R1 Beta 2)
 
 		Minimale Hardwarevoraussetzungen:
 			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 oder ARMv7-Prozessor
@@ -121,7 +121,7 @@ Voraussetzungen
 
 		Alle Systeme:
 
-			- smooth v0.9.6 (http://www.smooth-project.org/)
+			- smooth v0.9.8 (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -151,17 +151,64 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.5 (Mai 2021)
+	Version 1.1.6 (November 2021)
+
+		- Neue Funktionen
+
+			- Unterstützung für die Bearbeitung von Liedtexten im Tag-Editor hinzugefügt
 
 		- Verbesserungen
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
+			- Optionale Spalten für Komponist, Dirigent, Tempo und ISRC zur Jobliste hinzugefügt
+			- Unterstützung für Liedtexte in ID3v2-, MP4-, Vorbis Comment-, APEv2- und WMA-Tags hinzugefügt
+
+		- Behobene Fehler
+
+			- Möglichen Absturz beim Abfragen der CDDB-Datenbank behoben
+			- Möglichen Absturz im FAAD2-Dekodierer beim Öffnen nicht unterstützter Dateien behoben
+			- Problem beim Rippen von CD-Tracks mit <filename> als Ausgabedateinamensvorlage behoben
+			- Problem mit Überprüfungsfehlermeldungen von AccurateRip beim Rippen von versteckten Tracks (HTOA) behoben
+			- Problem mit Einstellung zum Ersetzen von Leerzeichen beim Schreiben von Cover-Bildern und Log-Dateien behoben
+			- Problem mit Einstellung zur Unterdrückung von Unicode-Zeichen beim Schreiben von Cover-Bildern und Log-Dateien behoben
+			- Fälschliche Begrenzung der Tag-Editor-Felder für Medienart, Katalognummer und Barcode auf 12 Zeichen behoben
+			- Einfrieren beim Dekodieren bestimmter WMA-Dateien unter Windows behoben
+			- Problem mit Drag & Drop nach Online-Update unter Windows behoben
+			- Problem mit Dialogen zum Öffnen/Speichern von Dateien unter macOS 12.0 Monterey behoben
+
+		- Aktualisierte Codecs
+
+			- FFmpeg auf Version 4.4.1 aktualisiert
+			- Monkey's Audio auf Version 7.14 aktualisiert
+			- mpg123 auf Version 1.29.2 aktualisiert
+			- libsamplerate auf Version 0.2.2 aktualisiert
+
+		- Neue Übersetzungen
+
+			- Persische Übersetzung hinzugefügt
+
+	Version 1.1.5 (Juni 2021)
+
+		- Neue Funktionen
+
+			- Unterstützung für AccurateRip-Überprüfung hinzugefügt
+
+		- Verbesserungen
+
 			- Verbesserung der Geschwindigkeit bei der DSP-Verarbeitung um bis zu 70%
 			- Einstellung für Frequenzbandbreite zum FDK-AAC-Konfigurationsdialog hinzugefügt
 			- Option zum Umschalten der Protokollierung vollständiger Pfade in Protokolldateien hinzugefügt
+			- Optionen zur Angabe von Cover-Bilddateien zu freaccmd hinzugefügt
 			- Unterstützung für Shift_JIS kodierten CD-Text hinzugefügt
-			- Unterstützung für Ensemble- und Satz-Felder in Vorbis Comment und APEv2-Tags hinzugefügt
+			- Unterstützung für das Schreiben von Album- und Track-Kommentaren in Cuesheets hinzugefügt
+			- Unterstützung für ID3v2-Tags in RF64-Dateien hinzugefügt
+			- Unterstützung für die Aktualisierung von Vorbis Comment-Tags hinzugefügt
+			- Unterstützung für die Aktualisierung von ID3v2-Tags in in RIFF- und AIFF-Dateien hinzugefügt
+			- Unterstützung für die Aktualisierung von LIST INFO-Tags in in RIFF-, RF64- und Wave64-Dateien hinzugefügt
+			- Unterstützung für Ensemble-Feld in Vorbis Comment und APEv2-Tags hinzugefügt
+			- Unterstützung für Satz-Feld in ID3v2-, Vorbis Comment, APEv2- und MP4-Tags hinzugefügt
 			- Unterstützung für zusätzliche URL-Felder in APEv2-Tags hinzugefügt
+			- Tag-Editor-Option zum Beibehalten des Albuminterpreten trotz Übereinstimmung mit Titelinterpret hinzugefügt
 			- Feld für Medienart zum Tag-Editor hinzugefügt
 
 		- Behobene Fehler
@@ -176,28 +223,32 @@ Geschichte
 			- Mögliche Abstürze beim Dekodieren von Opus-Dateien behoben
 			- Mögliche Abstürze bei fehlgeschlagenem Setup des WMA-Kodierers behoben
 			- Seltene Abstürze in LAME-Kodierer-Komponente behoben
+			- Limitierung von aus ID3v2-Tags gelesenen Zeichenketten auf 1024 Zeichen behoben
 			- Absturz beim Lesen von ungültigen CD-Text Genre-IDs behoben
 			- Problem beim Rippen mit negativem Offset behoben
 			- Problem mit dem Auswerfen von CDs unter macOS behoben
 			- Absturz beim Beenden von fre:ac über das Dock unter macOS behoben
 			- Grafikfehler und Abstürze beim Beenden bei Ausführung in einer Wayland-Sitzung behoben
 			- Probleme mit dem Schließen von Popupmenüs und Dropdownlisten auf nicht-Windows Plattformen behoben
+			- Probleme mit benutzerdefinierten DPI-Einstellungen unter Xfce behoben
+			- Unzuverlässiges Drag & Drop-Verhalten unter X11-basierten Systemen behoben
 			- Problem mit dem Windows Online-Updater in der 64 Bit-Version behoben
 
 		- Aktualisierte Codecs
 
 			- FFmpeg auf Version 4.4 aktualisiert
-			- Monkey's Audio auf Version 6.23 aktualisiert
+			- Monkey's Audio auf Version 6.29 aktualisiert
 			- Tom's Audiokompressor auf Version 2.3.1 aktualisiert
-			- mpg123 auf Version 1.27.2 aktualisiert
+			- mpg123 auf Version 1.28.0 aktualisiert
 			- libfdk-aac auf Version 2.0.2 aktualisiert
+			- libogg auf Version 1.3.5 aktualisiert
 			- libsndfile auf Version 1.0.31 aktualisiert
 			- libsamplerate auf Version 0.2.1 aktualisiert
 
-		- Neue und aktualisierte Übersetzungen
+		- Aktualisierte Übersetzungen
 
-			- Persische Übersetzung hinzugefügt
 			- Norwegische Übersetzung aktualisiert
+			- Russische Hilfeseiten aktualisiert
 
 	Version 1.1.4 (Februar 2021)
 

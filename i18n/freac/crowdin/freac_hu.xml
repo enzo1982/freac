@@ -64,6 +64,21 @@
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
+    <section name="Media types">
+      <entry id="600" string="CD"/>
+      <entry id="601" string="DAT"/>
+      <entry id="602" string="MiniDisc"/>
+      <entry id="603" string="Compact Cassette"/>
+      <entry id="604" string="Reel tape"/>
+      <entry id="605" string="Vinyl"/>
+      <entry id="606" string="DVD"/>
+      <entry id="607" string="LaserDisc"/>
+      <entry id="608" string="TV"/>
+      <entry id="609" string="Video"/>
+      <entry id="610" string="Radio"/>
+      <entry id="611" string="Telephone"/>
+    </section>
+
     <section name="Menu">
       <entry id="1000" string="File">Fájl</entry>
       <entry id="1001" string="Options">Beállítások</entry>
@@ -708,10 +723,15 @@
 	<entry id="12005" string="HDCD Decoder"/>
       </section>
 
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier"/>
+      </section>
+
       <section name="Extensions">
 	<entry id="15000" string="Notifications"/>
 	<entry id="15001" string="Logging"/>
-	<entry id="15002" string="YouTube Video Downloader"/>
+	<entry id="15002" string="Video Downloader"/>
+	<entry id="15003" string="Tag Editor"/>
       </section>
     </section>
 
@@ -816,6 +836,8 @@
 	  <entry id="32304" string="Use Temporal Masking Effect">Idöbeli maszkolás használata</entry>
 	  <entry id="32305" string="Stream format">Stream formátum</entry>
 	  <entry id="32306" string="Enforce strict ISO compliance">Szigorúan ISO kompatibilis kimenet</entry>
+	  <entry id="32307" string="automatic">automatikus</entry>
+	  <entry id="32308" string="always">mindig</entry>
 	</section>
 
 	<section name="Audio processing">
@@ -852,6 +874,7 @@
 	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">Maximum AAC frekvencia sávszélesség Hz</entry>
 	  <entry id="33210" string="worse">rosszabb</entry>
 	  <entry id="33211" string="better">jobb</entry>
+	  <entry id="33212" string="auto">automatikus</entry>
 	</section>
 
 	<section name="Format">
@@ -1103,6 +1126,49 @@
       </section>
     </section>
 
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip"/>
+	<entry id="70001" string="General settings"/>
+	<entry id="70002" string="Enable AccurateRip"/>
+	<entry id="70003" string="Database URL"/>
+	<entry id="70004" string="Cache"/>
+	<entry id="70005" string="Enable cache"/>
+	<entry id="70006" string="Expires after"/>
+	<entry id="70007" string="%1 day(s)"/>
+	<entry id="70008" string="%1 week(s)"/>
+	<entry id="70009" string="%1 month(s)"/>
+	<entry id="70010" string="%1 year(s)"/>
+	<entry id="70011" string="never"/>
+	<entry id="70012" string="Drives"/>
+	<entry id="70013" string="Drive"/>
+	<entry id="70014" string="Offset configuration"/>
+	<entry id="70015" string="Offset in drive database"/>
+	<entry id="70016" string="Detected offset"/>
+	<entry id="70017" string="Configured offset"/>
+	<entry id="70018" string="Detect offset now"/>
+	<entry id="70019" string="not configured"/>
+	<entry id="70020" string="automatically configured"/>
+	<entry id="70021" string="configured by offset detection"/>
+	<entry id="70022" string="manually configured"/>
+	<entry id="70023" string="not present"/>
+	<entry id="70024" string="not detected"/>
+	<entry id="70025" string="disabled"/>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration"/>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?"/>
+	  <entry id="70052" string="Do not ask again"/>
+	  <entry id="70053" string="AccurateRip offset detection"/>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database."/>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
+	  <entry id="70056" string="Offset detection needs to check another disc."/>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples."/>
+	</section>
+      </section>
+    </section>
+
     <section name="External">
       <entry id="80000" string="Downmix multi-channel audio to stereo"/>
 
@@ -1305,34 +1371,40 @@
 	  <entry id="103204" string="Composer"/>
 	  <entry id="103205" string="Lyrics writer"/>
 	  <entry id="103206" string="Modified / remixed by"/>
-	  <entry id="103207" string="Publisher information"/>
-	  <entry id="103208" string="Publisher / label"/>
-	  <entry id="103209" string="ISRC"/>
-	  <entry id="103210" string="Tempo"/>
-	  <entry id="103211" string="BPM"/>
-	  <entry id="103212" string="Catalog number"/>
-	  <entry id="103213" string="Barcode"/>
+	  <entry id="103207" string="Original information"/>
+	  <entry id="103208" string="Original artist"/>
+	  <entry id="103209" string="Original album"/>
+	  <entry id="103210" string="Original lyrics writer"/>
+	  <entry id="103211" string="Original release year"/>
+	  <entry id="103212" string="Tempo"/>
+	  <entry id="103213" string="BPM"/>
 	</section>
 
-	<section name="Other">
-	  <entry id="103300" string="Other"/>
-	  <entry id="103301" string="Original information"/>
-	  <entry id="103302" string="Original artist"/>
-	  <entry id="103303" string="Original album"/>
-	  <entry id="103304" string="Original lyrics writer"/>
-	  <entry id="103305" string="Original release year"/>
-	  <entry id="103306" string="Webpage URLs"/>
-	  <entry id="103307" string="Artist webpage"/>
-	  <entry id="103308" string="Publisher webpage"/>
-	  <entry id="103309" string="Internet radio station"/>
-	  <entry id="103310" string="Audio source webpage"/>
-	  <entry id="103311" string="Copyright information"/>
-	  <entry id="103312" string="Commercial information"/>
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher"/>
+	  <entry id="103301" string="Publisher information"/>
+	  <entry id="103302" string="Publisher / label"/>
+	  <entry id="103303" string="Media type"/>
+	  <entry id="103304" string="Catalog number"/>
+	  <entry id="103305" string="Barcode"/>
+	  <entry id="103306" string="ISRC"/>
+	  <entry id="103307" string="Webpage URLs"/>
+	  <entry id="103308" string="Artist webpage"/>
+	  <entry id="103309" string="Publisher webpage"/>
+	  <entry id="103310" string="Internet radio station"/>
+	  <entry id="103311" string="Audio source webpage"/>
+	  <entry id="103312" string="Copyright information"/>
+	  <entry id="103313" string="Commercial information"/>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior"/>
+	  <entry id="103401" string="Clear album artist field if it matches track artist"/>
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">A fájl megnyithatatlan: %1&#10;&#10;%2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2"/>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">A fájl megnyithatatlan: %1&#10;&#10;%2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2"/>
 	</section>
       </section>
 
@@ -1358,6 +1430,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files"/>
 	  <entry id="104111" string="Audio CD ripping logs only"/>
 	  <entry id="104112" string="Filename pattern"/>
+	  <entry id="104113" string="Log complete file paths"/>
 	</section>
       </section>
 

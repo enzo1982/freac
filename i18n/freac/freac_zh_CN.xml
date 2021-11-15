@@ -34,6 +34,10 @@
     <entry id="309" string="File name">文件名</entry>
     <entry id="310" string="File type">文件类型</entry>
     <entry id="311" string="Album artist">专辑艺术家</entry>
+    <entry id="312" string="Conductor">指挥</entry>
+    <entry id="313" string="Composer">作曲</entry>
+    <entry id="314" string="Tempo">节奏</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">未知艺术家</entry>
     <entry id="351" string="unknown title">未知标题</entry>
@@ -101,7 +105,7 @@
 	<entry id="1301" string="Configure signal processing">配置信号处理</entry>
 	<entry id="1302" string="Configure selected encoder">设置已选编码器</entry>
 	<entry id="1303" string="Active CD-ROM drive">当前使用的 CD-ROM 驱动器</entry>
-	<entry id="1304" string="Active configuration">当前使用的配置</entry>
+	<entry id="1304" string="Active configuration">当前配置</entry>
 	<entry id="1305" string="Default configuration">默认配置</entry>
       </section>
 
@@ -112,9 +116,9 @@
       </section>
 
       <section name="Encode">
-	<entry id="1500" string="Start encoding">启动编码</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">启动编码（删除源文件）</entry>
-	<entry id="1502" string="Start encoding with">启动编码</entry>
+	<entry id="1500" string="Start encoding">开始编码</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">开始编码（删除源文件）</entry>
+	<entry id="1502" string="Start encoding with">开始编码</entry>
 	<entry id="1503" string="Pause/resume encoding">暂停/继续编码</entry>
 	<entry id="1504" string="Stop encoding">停止编码</entry>
 	<entry id="1505" string="Encoder options">编码器选项</entry>
@@ -147,8 +151,8 @@
       <entry id="2006" string="Configure general settings">设置常规选项</entry>
       <entry id="2007" string="Configure signal processing">配置信号处理</entry>
       <entry id="2008" string="Configure the selected audio encoder">设置选中的音频编码器</entry>
-      <entry id="2009" string="Start the encoding process">启动编码处理</entry>
-      <entry id="2010" string="Start the encoding process (deleting original files)">启动编码处理（删除源文件）</entry>
+      <entry id="2009" string="Start the encoding process">开始编码处理</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">开始编码处理（删除源文件）</entry>
       <entry id="2011" string="Pause/resume encoding">暂停/继续编码</entry>
       <entry id="2012" string="Stop encoding">停止编码</entry>
     </section>
@@ -176,7 +180,7 @@
       <entry id="3019" string="Interpret string as">将字符串翻译为</entry>
       <entry id="3020" string="selected tracks">已选曲目</entry>
       <entry id="3021" string="Adjust upper/lower case">调整大小写</entry>
-      <entry id="3022" string="all words upper case">全部词大写</entry>
+      <entry id="3022" string="all words upper case">全部大写</entry>
       <entry id="3023" string="long words upper case">长词大写</entry>
       <entry id="3024" string="first letter upper case">首字母大写</entry>
       <entry id="3025" string="all lower case">全部小写</entry>
@@ -384,7 +388,7 @@
       <entry id="5010" string="DSP">DSP</entry>
       <entry id="5011" string="Extensions">扩展</entry>
       <entry id="5012" string="Other">其他</entry>
-      <entry id="5013" string="Active configuration">正在使用的配置</entry>
+      <entry id="5013" string="Active configuration">当前配置</entry>
       <entry id="5014" string="New">新建</entry>
       <entry id="5015" string="Delete">删除</entry>
       <entry id="5016" string="Command line arguments">命令行参数</entry>
@@ -469,7 +473,7 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="5350" string="Please enter a valid eMail address.">请输入一个有效的 e-Mai l地址。</entry>
+	  <entry id="5350" string="Please enter a valid eMail address.">请输入一个有效的电子邮件地址。</entry>
 	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb 的 CDDBP 通讯协议无法使用 HTTP 正向代理服务器！&#10;您是否要更换 HTTP 通讯协议？</entry>
 	</section>
       </section>
@@ -612,8 +616,8 @@
       <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">无法为输入文件设置解码器：%1&#10;&#10;文件：%1&#10;路径：%2&#10;&#10;错误：%3</entry>
       <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">无法为输出文件设置编码器：%1&#10;&#10;文件：%1&#10;路径：%2&#10;&#10;错误：%3</entry>
       <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">无法设置 DSP 处理器：%1&#10;&#10;错误：%2</entry>
-      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">不能访问输入文件： %1&#10;&#10;文件： %1&#10;路径： %2</entry>
-      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">不能创建输出文件： %1&#10;&#10;文件： %1&#10;路径： %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">不能访问输入文件：%1&#10;&#10;文件：%1&#10;路径：%2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">不能创建输出文件：%1&#10;&#10;文件：%1&#10;路径：%2</entry>
       <entry id="7107" string="Failed to verify input file: %1">无法校验输入文件：%1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">校验输出文件时 Checksum 不匹配：%1&#10;&#10;编码 Checksum：%2&#10;校验 Checksum：%3</entry>
       <entry id="7110" string="File not found">未找到文件</entry>
@@ -622,7 +626,7 @@
       <entry id="7113" string="Unsupported audio format">不支持的音频格式</entry>
       <entry id="7114" string="Unknown error">未知错误</entry>
       <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">不能加载 NT SCSI 驱动器！ 不能进行 CD 翻录！</entry>
-      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件： %1&#10;&#10;错误： %2</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件：%1&#10;&#10;错误：%2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">从同一驱动器翻录时无法播放 CD 曲目！</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">从同一驱动器播放曲目时无法开始翻录！</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB 支持已停用！请在设置对话框中&#10;启用本地或远程 CDDB 支持。</entry>
@@ -837,7 +841,7 @@
 	<section name="Quality">
 	  <entry id="33200" string="Bitrate">比特率</entry>
 	  <entry id="33201" string="Bitrate / Quality">比特率/品质</entry>
-	  <entry id="33202" string="Bitrate per channel">声道比特率</entry>
+	  <entry id="33202" string="Bitrate per channel">每声道比特率</entry>
 	  <entry id="33203" string="Set quality">设置品质</entry>
 	  <entry id="33204" string="Stereo mode">立体声模式</entry>
 	  <entry id="33205" string="Allow Joint Stereo">允许使用混合立体声</entry>
@@ -932,7 +936,7 @@
 
       <section name="TwinVQ">
 	<entry id="37000" string="Bitrate">比特率</entry>
-	<entry id="37001" string="Bitrate per channel">声道比特率</entry>
+	<entry id="37001" string="Bitrate per channel">每声道比特率</entry>
 	<entry id="37002" string="Preselection">预选</entry>
 	<entry id="37003" string="Number of preselection candidates">预选数量</entry>
       </section>
@@ -1297,8 +1301,6 @@
 	  <entry id="103200" string="Details">详细信息</entry>
 	  <entry id="103201" string="Detailed information">详细信息</entry>
 	  <entry id="103202" string="Band / orchestra">乐队 / 管弦乐团</entry>
-	  <entry id="103203" string="Conductor">指挥</entry>
-	  <entry id="103204" string="Composer">作曲</entry>
 	  <entry id="103205" string="Lyrics writer">作词</entry>
 	  <entry id="103206" string="Modified / remixed by">修改 / 混音</entry>
 	  <entry id="103207" string="Original information">原始信息</entry>
@@ -1306,7 +1308,6 @@
 	  <entry id="103209" string="Original album">原专辑</entry>
 	  <entry id="103210" string="Original lyrics writer">原作词</entry>
 	  <entry id="103211" string="Original release year">原发行时间</entry>
-	  <entry id="103212" string="Tempo">节奏</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1314,7 +1315,6 @@
 	  <entry id="103300" string="Publisher">出版商</entry>
 	  <entry id="103301" string="Publisher information">出版商信息</entry>
 	  <entry id="103302" string="Publisher / label">出版商 / 标签</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">网页地址</entry>
 	  <entry id="103308" string="Artist webpage">艺术家主页</entry>
 	  <entry id="103309" string="Publisher webpage">出版商主页</entry>
@@ -1325,8 +1325,8 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="103400" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件： %1&#10;&#10;错误： %2</entry>
-	  <entry id="103401" string="Unable to update tag: %1&#10;&#10;Error: %2">无法更新标签：%1&#10;&#10;错误：%2</entry>
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">无法打开文件：%1&#10;&#10;错误：%2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">无法更新标签：%1&#10;&#10;错误：%2</entry>
 	</section>
       </section>
 

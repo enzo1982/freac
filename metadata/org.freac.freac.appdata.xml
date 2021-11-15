@@ -21,6 +21,7 @@
         </p>
         <ul>
             <li>Support for MP3, MP4/AAC, Opus, FLAC and other formats</li>
+            <li>Integrated CD ripper with AccurateRip support</li>
             <li>Integrated player and tag editor</li>
             <li>Support for playlists, cue sheets and chapters</li>
             <li>Fast, multi-threaded conversion engine</li>
@@ -47,6 +48,65 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.1.5" date="2021-06-27">
+            <description>
+                <p>New features:</p>
+                <ul>
+                    <li>Added support for AccurateRip verification</li>
+                </ul>
+                <p>Improvements:</p>
+                <ul>
+                    <li>Added frequency bandwidth setting to FDK-AAC encoder configuration dialog</li>
+                    <li>Added an option to toggle logging of complete paths in log files</li>
+                    <li>Added options for specifying cover art files to freaccmd</li>
+                    <li>Added support for reading Shift_JIS encoded CD-Text</li>
+                    <li>Added support for writing album and track comments to cue sheets</li>
+                    <li>Added support for ID3v2 tags in RF64 files</li>
+                    <li>Added support for updating Vorbis Comment tags</li>
+                    <li>Added support for updating ID3v2 tags in RIFF and AIFF files</li>
+                    <li>Added support for updating LIST INFO tags in RIFF, RF64 and Wave64 files</li>
+                    <li>Added support for ensemble field in Vorbis Comment and APEv2 tags</li>
+                    <li>Added support for movement field in ID3v2, Vorbis Comment, APEv2 and MP4 tags</li>
+                    <li>Added support for additional URL fields in APEv2 tags</li>
+                    <li>Added a tag editor option to keep album artist even if identical to track artist</li>
+                    <li>Added media type field to tag editor</li>
+                </ul>
+                <p>Bug fixes:</p>
+                <ul>
+                   <li>Fixed hotspot for genre edit field utility menu not covering the whole width of the field</li>
+                   <li>Fixed occasional crashes when selecting codec subformat using the "Start encoding with" menu</li>
+                   <li>Fixed chapter marks being offset by a few seconds when using DSP processing</li>
+                   <li>Fixed playback not working when using certain combinations of DSP processors</li>
+                   <li>Fixed incompatibility of FDK-AAC encoded HE and HEv2 AAC files with iTunes</li>
+                   <li>Fixed issue decoding FLAC files with unknown length</li>
+                   <li>Fixed glitches decoding transients in some Vorbis files</li>
+                   <li>Fixed possible crashes when decoding Opus files</li>
+                   <li>Fixed rare crashes in LAME encoder component</li>
+                   <li>Fixed strings read from ID3v2 tags being limited to 1024 characters</li>
+                   <li>Fixed crash when reading malformed CD-Text genre IDs</li>
+                   <li>Fixed failure ripping with negative read offset</li>
+                   <li>Fixed UI glitches and crashes on exit when running in a Wayland session</li>
+                   <li>Fixed popup menu and dropdown list closing behavior on non-Windows platforms</li>
+                   <li>Fixed issues with custom DPI settings on Xfce desktops</li>
+                   <li>Fixed drag &amp; drop working unreliably on X11 based systems</li>
+                </ul>
+                <p>Updated codecs:</p>
+                <ul>
+                    <li>Updated FFmpeg to version 4.4</li>
+                    <li>Updated Monkey's Audio to version 6.29</li>
+                    <li>Updated mpg123 to version 1.28.0</li>
+                    <li>Updated libfdk-aac to version 2.0.2</li>
+                    <li>Updated libogg to version 1.3.5</li>
+                    <li>Updated libsndfile to version 1.0.31</li>
+                    <li>Updated libsamplerate to version 0.2.1</li>
+                </ul>
+                <p>Updated translations:</p>
+                <ul>
+                    <li>Updated Norwegian translation</li>
+                    <li>Updated Russian manual</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1.4" date="2021-02-14">
             <description>
                 <p>Improvements:</p>

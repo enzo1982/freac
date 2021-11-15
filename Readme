@@ -1,4 +1,4 @@
-fre:ac version 1.1.5
+fre:ac version 1.1.6
 
 fre:ac is a free and open source audio converter. It supports audio CD
 ripping and tag editing and converts the following audio formats:
@@ -101,12 +101,12 @@ Requirements
 			- Windows XP/Vista/7/8.x/10
 			- macOS 10.5 Leopard or later
 			- Linux (most modern distributions are supported)
-			- FreeBSD/PC-BSD (tested on FreeBSD 12.1)
+			- FreeBSD/PC-BSD (tested on FreeBSD 13.0)
 			- NetBSD (tested on NetBSD 6.0, NetBSD 5.x and earlier releases are not supported)
 			- OpenBSD (tested on OpenBSD 5.3)
 			- Solaris (tested on Solaris 11)
 			- GNU Hurd (tested on Debian Sid)
-			- Haiku (tested on Haiku R1 beta 1)
+			- Haiku (tested on Haiku R1 beta 2)
 
 		Minimum hardware requirements:
 			- Intel Pentium 4, AMD Athlon 64, PowerPC G4 or ARMv7 CPU
@@ -122,7 +122,7 @@ Requirements
 
 		All platforms:
 
-			- smooth v0.9.6 (http://www.smooth-project.org/)
+			- smooth v0.9.8 (http://www.smooth-project.org/)
 
 		Windows:
 
@@ -152,22 +152,69 @@ Requirements
 History
 -------
 
-	Version 1.1.5 (May 2021)
+	Version 1.1.6 (November 2021)
+
+		- New features
+
+			- added support for editing lyrics in the tag editor
 
 		- Improvements
 
 			- improved support for languages written from right to left
+			- added optional composer, conductor, tempo and ISRC columns to the joblist
+			- added support for lyrics in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags
+
+		- Bug fixes
+
+			- fixed possible crash upon querying the CDDB database
+			- fixed possible crash in FAAD2 decoder when trying to open unsupported files
+			- fixed issue ripping CD tracks when output filename pattern is <filename>
+			- fixed AccurateRip reporting verification errors for hidden track one audio
+			- fixed setting to replace spaces not being respected when writing cover art and log files
+			- fixed setting to suppress Unicode characters not being respected when writing cover art and log files
+			- fixed tag editor fields for media type, catalog number and barcode being limited to 12 characters
+			- fixed freeze when decoding certain WMA files on Windows
+			- fixed drag & drop not working after online update on Windows
+			- fixed open/save file dialogs failing on macOS 12.0 Monterey
+
+		- Updated codecs
+
+			- updated FFmpeg to version 4.4.1
+			- updated Monkey's Audio to version 7.14
+			- updated mpg123 to version 1.29.2
+			- updated libsamplerate to version 0.2.2
+
+		- New translations
+
+			- added Persian translation
+
+	Version 1.1.5 (June 2021)
+
+		- New features
+
+			- added support for AccurateRip verification
+
+		- Improvements
+
 			- improved DSP processing performance by up to 70%
 			- added frequency bandwidth setting to FDK-AAC encoder configuration dialog
 			- added an option to toggle logging of complete paths in log files
+			- added options for specifying cover art files to freaccmd
 			- added support for reading Shift_JIS encoded CD-Text
-			- added support for ensemble and movement fields in Vorbis Comment and APEv2 tags
+			- added support for writing album and track comments to cue sheets
+			- added support for ID3v2 tags in RF64 files
+			- added support for updating Vorbis Comment tags
+			- added support for updating ID3v2 tags in RIFF and AIFF files
+			- added support for updating LIST INFO tags in RIFF, RF64 and Wave64 files
+			- added support for ensemble field in Vorbis Comment and APEv2 tags
+			- added support for movement field in ID3v2, Vorbis Comment, APEv2 and MP4 tags
 			- added support for additional URL fields in APEv2 tags
+			- added a tag editor option to keep album artist even if identical to track artist
 			- added media type field to tag editor
 
 		- Bug fixes
 
-			- fixed hotspot for genre edit field utility menu not covering the whole with of the field
+			- fixed hotspot for genre edit field utility menu not covering the whole width of the field
 			- fixed occasional crashes when selecting codec subformat using the "Start encoding with" menu
 			- fixed chapter marks being offset by a few seconds when using DSP processing
 			- fixed playback not working when using certain combinations of DSP processors
@@ -177,28 +224,32 @@ History
 			- fixed possible crashes when decoding Opus files
 			- fixed possible crashes when failing to configure WMA encoder
 			- fixed rare crashes in LAME encoder component
+			- fixed strings read from ID3v2 tags being limited to 1024 characters
 			- fixed crash when reading malformed CD-Text genre IDs
 			- fixed failure ripping with negative read offset
 			- fixed disc eject not working on macOS
 			- fixed crash when closing fre:ac via dock command on macOS
 			- fixed UI glitches and crashes on exit when running in a Wayland session
 			- fixed popup menu and dropdown list closing behavior on non-Windows platforms
+			- fixed issues with custom DPI settings on Xfce desktops
+			- fixed drag & drop working unreliably on X11 based systems
 			- fixed Windows online updater not working with the 64 bit version
 
 		- Updated codecs
 
 			- updated FFmpeg to version 4.4
-			- updated Monkey's Audio to version 6.23
+			- updated Monkey's Audio to version 6.29
 			- updated Tom's Audiokompressor to version 2.3.1
-			- updated mpg123 to version 1.27.2
+			- updated mpg123 to version 1.28.0
 			- updated libfdk-aac to version 2.0.2
+			- updated libogg to version 1.3.5
 			- updated libsndfile to version 1.0.31
 			- updated libsamplerate to version 0.2.1
 
-		- New and updated translations
+		- Updated translations
 
-			- added Persian translation
 			- updated Norwegian translation
+			- updated Russian manual
 
 	Version 1.1.4 (February 2021)
 

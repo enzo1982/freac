@@ -78,8 +78,7 @@ Bool freac::Processor::Create(const Track &track)
 
 		format = dsp->GetFormatInfo();
 
-		AdjustTrackSampleCounts(dspTrack, format);
-
+		dspTrack.AdjustSampleCounts(format);
 		dspTrack.SetFormat(format);
 
 		dsps.Add(dsp);

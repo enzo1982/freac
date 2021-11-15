@@ -45,6 +45,7 @@ namespace BoCA
 			Void		 RemoveFromAlbumList(const Track &);
 
 			Void		 UpdateAlbumList();
+			Void		 UpdateAlbum(const Track &);
 
 			Bool		 IsAlbumIdentical(const Track &, const Track &);
 		slots:

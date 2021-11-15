@@ -27,10 +27,11 @@
     <entry id="14" string="Installing files...">正在安裝檔案...</entry>
     <entry id="15" string="Installing file:">正在安裝檔案：</entry>
     <entry id="16" string="Downloading file:">正在下載檔案：</entry>
-    <entry id="17" string="Update complete">更新完成</entry>
-    <entry id="18" string="Your application has been successfully updated!">您的軟體已經更新完成！</entry>
-    <entry id="19" string="Error">錯誤</entry>
-    <entry id="20" string="Error downloading package!">下載套件時發生錯誤！</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">安裝 &quot;%1&quot; 時發生錯誤！&#10;&#10;存取程式所在資料夾遭拒。</entry>
+    <entry id="17" string="Extracting file:">正在解壓縮檔案：</entry>
+    <entry id="18" string="Update complete">更新完成</entry>
+    <entry id="19" string="Your application has been successfully updated!">您的軟體已經更新完成！</entry>
+    <entry id="20" string="Error">錯誤</entry>
+    <entry id="21" string="Error downloading package!">下載套件時發生錯誤！</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">安裝 &quot;%1&quot; 時發生錯誤！&#10;&#10;存取程式所在資料夾遭拒。</entry>
   </data>
 </LangFile>

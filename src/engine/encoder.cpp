@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -108,8 +108,7 @@ Bool freac::Encoder::Create(const String &encoderID, const String &streamURI, co
 	 */
 	targetFormat = FormatConverter::GetBestTargetFormat(sourceFormat, encoder);
 
-	AdjustTrackSampleCounts(album, targetFormat);
-
+	album.AdjustSampleCounts(targetFormat);
 	album.SetFormat(targetFormat);
 
 	return True;

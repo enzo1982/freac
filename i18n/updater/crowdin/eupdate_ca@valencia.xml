@@ -27,10 +27,11 @@
     <entry id="14" string="Installing files...">Instal·lant arxius...</entry>
     <entry id="15" string="Installing file:">Instal·lant arxiu:</entry>
     <entry id="16" string="Downloading file:">Descarregant arxiu:</entry>
-    <entry id="17" string="Update complete">Actualització completada</entry>
-    <entry id="18" string="Your application has been successfully updated!">L'aplicació s'ha actualitzat correctament!</entry>
-    <entry id="19" string="Error">Error</entry>
-    <entry id="20" string="Error downloading package!">Error al descarregar el paquet!</entry>
-    <entry id="21" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied."/>
+    <entry id="17" string="Extracting file:"/>
+    <entry id="18" string="Update complete">Actualització completada</entry>
+    <entry id="19" string="Your application has been successfully updated!">L'aplicació s'ha actualitzat correctament!</entry>
+    <entry id="20" string="Error">Error</entry>
+    <entry id="21" string="Error downloading package!">Error al descarregar el paquet!</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied."/>
   </data>
 </LangFile>
