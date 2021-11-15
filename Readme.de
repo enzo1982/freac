@@ -162,6 +162,7 @@ Geschichte
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Optionale Spalten für Komponist, Dirigent, Tempo und ISRC zur Jobliste hinzugefügt
 			- Unterstützung für Liedtexte in ID3v2-, MP4-, Vorbis Comment-, APEv2- und WMA-Tags hinzugefügt
+			- Unterstützung für das Einlesen von OverDrive MediaMarkers aus ID3v2-Tags hinzugefügt
 
 		- Behobene Fehler
 
