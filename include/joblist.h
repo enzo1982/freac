@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -40,6 +40,9 @@ namespace freac
 
 			Void				 FindTracksByPattern(Array<String> &, const String &, const String &, Bool) const;
 
+			Bool				 LoadFromPlaylist(const String &);
+			Bool				 SaveToPlaylist(const String &) const;
+
 			Void				 AddHeaderTabs();
 			Void				 UpdateTextLine();
 
@@ -77,8 +80,8 @@ namespace freac
 			Void				 SelectNone();
 			Void				 ToggleSelection();
 
-			Void				 LoadList();
-			Void				 SaveList();
+			Void				 OpenJobList();
+			Void				 SaveJobList();
 
 			Void				 StartJobRemoveAllTracks();
 

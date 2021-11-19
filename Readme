@@ -161,6 +161,7 @@ History
 		- Improvements
 
 			- improved support for languages written from right to left
+			- playlists can now be added to the joblist by drag & drop
 			- added optional composer, conductor, tempo and ISRC columns to the joblist
 			- added support for lyrics in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags
 			- added support for parsing OverDrive MediaMarkers in ID3v2 tags

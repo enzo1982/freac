@@ -360,6 +360,8 @@ Bool freac::JobList::AddTracksByFileNames(const Array<String> &files)
 
 	foreach (const String &file, files)
 	{
+		if (LoadFromPlaylist(file)) continue;
+
 		BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 		if	(File(file).Exists())	   filesToAdd.Add(file);
@@ -518,7 +520,7 @@ Void freac::JobList::ToggleSelection()
 	}
 }
 
-Void freac::JobList::LoadList()
+Void freac::JobList::OpenJobList()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -577,47 +579,19 @@ Void freac::JobList::LoadList()
 	 */
 	if (dialog.ShowDialog() == Success())
 	{
-		/* Create playlist component based on selected file.
+		File	 file(dialog.GetFileName());
+
+		/* Load joblist from playlist file.
 		 */
-		PlaylistComponent	*playlist = NIL;
-
-		for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
-		{
-			if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_PLAYLIST) continue;
-
-			playlist = (PlaylistComponent *) boca.CreateComponentByID(boca.GetComponentID(i));
-
-			if (playlist != NIL)
-			{
-				if (playlist->CanOpenFile(dialog.GetFileName())) break;
-
-				boca.DeleteComponent(playlist);
-
-				playlist = NIL;
-			}
-		}
-
-		/* Load playlist file and delete component.
-		 */
-		if (playlist != NIL)
-		{
-			const Array<Track>	&tracks = playlist->ReadPlaylist(dialog.GetFileName());
-			Array<String>		 files;
-
-			foreach (const Track &track, tracks) files.Add(track.fileName);
-
-			(new JobAddFiles(files))->Schedule();
-
-			boca.DeleteComponent(playlist);
-		}
+		LoadFromPlaylist(file);
 
 		/* Save selected path.
 		 */
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, File(dialog.GetFileName()).GetFilePath());
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, file.GetFilePath());
 	}
 }
 
-Void freac::JobList::SaveList()
+Void freac::JobList::SaveJobList()
 {
 	BoCA::Config	*config	= BoCA::Config::Get();
 	BoCA::I18n	*i18n	= BoCA::I18n::Get();
@@ -672,56 +646,108 @@ Void freac::JobList::SaveList()
 	 */
 	if (dialog.ShowDialog() == Success())
 	{
-		/* Create playlist component based on selected file.
+		File	 file(dialog.GetFileName());
+
+		/* Save joblist to playlist file.
 		 */
-		PlaylistComponent	*playlist = NIL;
+		SaveToPlaylist(file);
 
-		for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+		/* Save selected path.
+		 */
+		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, file.GetFilePath());
+	}
+}
+
+Bool freac::JobList::LoadFromPlaylist(const String &file)
+{
+	Registry	&boca = Registry::Get();
+
+	/* Create playlist component for file type.
+	 */
+	PlaylistComponent	*playlist = NIL;
+
+	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+	{
+		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_PLAYLIST) continue;
+
+		playlist = (PlaylistComponent *) boca.CreateComponentByID(boca.GetComponentID(i));
+
+		if (playlist != NIL)
 		{
-			if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_PLAYLIST) continue;
-
-			playlist = (PlaylistComponent *) boca.CreateComponentByID(boca.GetComponentID(i));
-
-			const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
-			Bool				 found   = False;
-
-			foreach (FileFormat *format, formats)
-			{
-				const Array<String>	&formatExtensions = format->GetExtensions();
-
-				foreach (const String &formatExtension, formatExtensions)
-				{
-					if (!dialog.GetFileName().ToLower().EndsWith(String(".").Append(formatExtension.ToLower()))) continue;
-
-					found = True;
-
-					break;
-				}
-
-				if (found) break;
-			}
-
-			if (found) break;
+			if (playlist->CanOpenFile(file)) break;
 
 			boca.DeleteComponent(playlist);
 
 			playlist = NIL;
 		}
+	}
 
-		/* Save playlist file and delete component.
-		 */
-		if (playlist != NIL)
+	if (playlist == NIL) return False;
+
+	/* Load playlist file and delete component.
+	 */
+	const Array<Track>	&tracks = playlist->ReadPlaylist(file);
+	Array<String>		 files;
+
+	foreach (const Track &track, tracks) files.Add(track.fileName);
+
+	(new JobAddFiles(files))->Schedule();
+
+	boca.DeleteComponent(playlist);
+
+	return True;
+}
+
+Bool freac::JobList::SaveToPlaylist(const String &file) const
+{
+	Registry	&boca = Registry::Get();
+
+	/* Create playlist component for file type.
+	 */
+	PlaylistComponent	*playlist = NIL;
+
+	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+	{
+		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_PLAYLIST) continue;
+
+		playlist = (PlaylistComponent *) boca.CreateComponentByID(boca.GetComponentID(i));
+
+		const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
+		Bool				 found   = False;
+
+		foreach (FileFormat *format, formats)
 		{
-			playlist->SetTrackList(tracks);
-			playlist->WritePlaylist(dialog.GetFileName());
+			const Array<String>	&formatExtensions = format->GetExtensions();
 
-			boca.DeleteComponent(playlist);
+			foreach (const String &formatExtension, formatExtensions)
+			{
+				if (!file.ToLower().EndsWith(String(".").Append(formatExtension.ToLower()))) continue;
+
+				found = True;
+
+				break;
+			}
+
+			if (found) break;
 		}
 
-		/* Save selected path.
-		 */
-		config->SetStringValue(Config::CategorySettingsID, Config::SettingsLastSelectedJoblistDirID, File(dialog.GetFileName()).GetFilePath());
+		if (found) break;
+
+		boca.DeleteComponent(playlist);
+
+		playlist = NIL;
 	}
+
+	if (playlist == NIL) return False;
+
+	/* Save playlist file and delete component.
+	 */
+	playlist->SetTrackList(tracks);
+	playlist->WritePlaylist(file);
+
+	boca.DeleteComponent(playlist);
+
+	return True;
 }
 
 Bool freac::JobList::SortsAfter(const String &str1, const String &str2)

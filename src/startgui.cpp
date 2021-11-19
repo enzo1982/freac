@@ -1026,8 +1026,8 @@ Void freac::freacGUI::FillMenus()
 	{
 		menu_file->AddEntry();
 
-		menu_file->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Load joblist")))->onAction.Connect(&JobList::LoadList, joblist);
-		menu_file->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Save joblist")))->onAction.Connect(&JobList::SaveList, joblist);
+		menu_file->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Load joblist")))->onAction.Connect(&JobList::OpenJobList, joblist);
+		menu_file->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Save joblist")))->onAction.Connect(&JobList::SaveJobList, joblist);
 	}
 
 	menu_file->AddEntry();
