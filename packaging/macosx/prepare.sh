@@ -84,6 +84,8 @@ cp $PREFIX/bin/wavpack freac.app/Contents/Resources/codecs/cmdline/
 cp $PREFIX/bin/wvunpack freac.app/Contents/Resources/codecs/cmdline/
 
 rm freac.app/Contents/Resources/boca/boca_decoder_alac.1.0.xml
+rm freac.app/Contents/Resources/boca/boca_decoder_ffmpeg_alac.1.0.xml
+rm freac.app/Contents/Resources/boca/boca_decoder_ffmpeg_mac.1.0.xml
 rm freac.app/Contents/Resources/boca/boca_decoder_ffmpeg_mpc.1.0.xml
 rm freac.app/Contents/Resources/boca/boca_decoder_ffmpeg_wavpack.1.0.xml
 rm freac.app/Contents/Resources/boca/boca_encoder_ffmpeg_alac.1.0.xml

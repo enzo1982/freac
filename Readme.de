@@ -178,8 +178,9 @@ Geschichte
 			- Problem mit Drag & Drop nach Online-Update unter Windows behoben
 			- Problem mit Dialogen zum Öffnen/Speichern von Dateien unter macOS 12.0 Monterey behoben
 
-		- Aktualisierte Codecs
+		- Neue und aktualisierte Codecs
 
+			- Nativen Apple Lossless-Dekodierer hinzugefügt
 			- FFmpeg auf Version 4.4.1 aktualisiert
 			- Monkey's Audio auf Version 7.14 aktualisiert
 			- mpg123 auf Version 1.29.2 aktualisiert

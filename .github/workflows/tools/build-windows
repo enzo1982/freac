@@ -101,7 +101,7 @@ fi
 
 cp boca/scripts/*.xml $BIN/boca
 cp boca/scripts/win32/*.xml $BIN/boca
-rm $BIN/boca/boca_decoder_alac.1.0.xml $BIN/boca/boca_decoder_ffmpeg_mac.1.0.xml $BIN/boca/boca_decoder_ffmpeg_mpc.1.0.xml $BIN/boca/boca_decoder_ffmpeg_tak.1.0.xml $BIN/boca/boca_decoder_ffmpeg_wavpack.1.0.xml $BIN/boca/boca_decoder_ffmpeg_wma.1.0.xml $BIN/boca/boca_decoder_fhg.1.0.xml $BIN/boca/boca_decoder_lame.1.0.xml $BIN/boca/boca_decoder_mp3hd.1.0.xml $BIN/boca/boca_decoder_purevoice.1.0.xml $BIN/boca/boca_decoder_speex.1.0.xml $BIN/boca/boca_decoder_vorbis.1.0.xml
+rm $BIN/boca/boca_decoder_alac.1.0.xml $BIN/boca/boca_decoder_ffmpeg_alac.1.0.xml $BIN/boca/boca_decoder_ffmpeg_mac.1.0.xml $BIN/boca/boca_decoder_ffmpeg_mpc.1.0.xml $BIN/boca/boca_decoder_ffmpeg_tak.1.0.xml $BIN/boca/boca_decoder_ffmpeg_wavpack.1.0.xml $BIN/boca/boca_decoder_ffmpeg_wma.1.0.xml $BIN/boca/boca_decoder_fhg.1.0.xml $BIN/boca/boca_decoder_lame.1.0.xml $BIN/boca/boca_decoder_mp3hd.1.0.xml $BIN/boca/boca_decoder_purevoice.1.0.xml $BIN/boca/boca_decoder_speex.1.0.xml $BIN/boca/boca_decoder_vorbis.1.0.xml
 rm $BIN/boca/boca_encoder_aacplusenc.1.0.xml $BIN/boca/boca_encoder_atrac3enc.1.0.xml $BIN/boca/boca_encoder_ffmpeg_ac3.1.0.xml $BIN/boca/boca_encoder_ffmpeg_mp2.1.0.xml $BIN/boca/boca_encoder_ffmpeg_wma.1.0.xml $BIN/boca/boca_encoder_fhg.1.0.xml $BIN/boca/boca_encoder_mp3hd.1.0.xml $BIN/boca/boca_encoder_speex.1.0.xml $BIN/boca/boca_encoder_vorbis.1.0.xml $BIN/boca/boca_encoder_waon.1.0.xml
 
 cp -R boca/components/dsp/rnnoise/boca.dsp.rnnoise $BIN/boca
