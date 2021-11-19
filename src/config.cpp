@@ -152,7 +152,7 @@ const String	 freac::Config::SettingsExcludeExtensionsID			= "ExcludeExtensions"
 const String	 freac::Config::SettingsExcludeExtensionsDefault		= String(".jpg|.jpeg|.gif|.png|.bmp|")		  // pictures
 										 .Append(".txt|.asc|.log|.nfo|.url|")		  // plain text
 										 .Append(".crc|.md5|.sha1|.sha256|.sha512|.sfv|") // checksums
-										 .Append(".m3u|.m3u8|.pls|.wpl|.xspf|")		  // playlists
+										 .Append(".m3u|.m3u8|.pls|.vclt|.wpl|.xspf|")	  // playlists
 										 .Append(".exe|.dll|")				  // executables
 										 .Append(".zip|.rar|.gz|.bz2|.xz|.7z|")		  // archives
 										 .Append(".ini|.plist|")			  // configuration
