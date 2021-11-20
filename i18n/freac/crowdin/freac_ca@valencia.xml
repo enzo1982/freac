@@ -34,6 +34,10 @@
     <entry id="309" string="File name"/>
     <entry id="310" string="File type"/>
     <entry id="311" string="Album artist"/>
+    <entry id="312" string="Conductor"/>
+    <entry id="313" string="Composer"/>
+    <entry id="314" string="Tempo"/>
+    <entry id="315" string="ISRC"/>
 
     <entry id="350" string="unknown artist">Artista desconegut</entry>
     <entry id="351" string="unknown title">Títol desconegut</entry>
@@ -1367,8 +1371,6 @@
 	  <entry id="103200" string="Details"/>
 	  <entry id="103201" string="Detailed information"/>
 	  <entry id="103202" string="Band / orchestra"/>
-	  <entry id="103203" string="Conductor"/>
-	  <entry id="103204" string="Composer"/>
 	  <entry id="103205" string="Lyrics writer"/>
 	  <entry id="103206" string="Modified / remixed by"/>
 	  <entry id="103207" string="Original information"/>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album"/>
 	  <entry id="103210" string="Original lyrics writer"/>
 	  <entry id="103211" string="Original release year"/>
-	  <entry id="103212" string="Tempo"/>
 	  <entry id="103213" string="BPM"/>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type"/>
 	  <entry id="103304" string="Catalog number"/>
 	  <entry id="103305" string="Barcode"/>
-	  <entry id="103306" string="ISRC"/>
 	  <entry id="103307" string="Webpage URLs"/>
 	  <entry id="103308" string="Artist webpage"/>
 	  <entry id="103309" string="Publisher webpage"/>
@@ -1395,6 +1395,10 @@
 	  <entry id="103311" string="Audio source webpage"/>
 	  <entry id="103312" string="Copyright information"/>
 	  <entry id="103313" string="Commercial information"/>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics"/>
 	</section>
 
 	<section name="Configuration">

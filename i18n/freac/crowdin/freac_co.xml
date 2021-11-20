@@ -34,6 +34,10 @@
     <entry id="309" string="File name">Nome di schedariu</entry>
     <entry id="310" string="File type">Tipu di schedariu</entry>
     <entry id="311" string="Album artist">Artista di l’albumu</entry>
+    <entry id="312" string="Conductor">Sceffu d’orchestru</entry>
+    <entry id="313" string="Composer">Cumpositore</entry>
+    <entry id="314" string="Tempo">Tempo</entry>
+    <entry id="315" string="ISRC">Codice ISRC</entry>
 
     <entry id="350" string="unknown artist">artista scunnisciutu</entry>
     <entry id="351" string="unknown title">titulu scunnisciutu</entry>
@@ -687,7 +691,7 @@
       <entry id="9006" string="Activate cdparanoia mode">Attivà u modu cdparanoia</entry>
       <entry id="9007" string="Overlap only">Accavalcatura solu</entry>
       <entry id="9008" string="No verify">Senza verificazione</entry>
-      <entry id="9009" string="No scratch repair">Alcuna currezione di sfrisgiatura</entry>
+      <entry id="9009" string="No scratch repair">Alcuna currezzione di sfrisgiatura</entry>
       <entry id="9010" string="Full cdparanoia mode">Modu cdparanoia sanu</entry>
       <entry id="9011" string="Activate jitter correction">Attivà a currezzione d’istabilità jitter</entry>
       <entry id="9012" string="Switch stereo channels">Invertisce i canali stereo</entry>
@@ -1367,8 +1371,6 @@
 	  <entry id="103200" string="Details">Detaglii</entry>
 	  <entry id="103201" string="Detailed information">Infurmazioni ditagliate</entry>
 	  <entry id="103202" string="Band / orchestra">Gruppu / orchestru</entry>
-	  <entry id="103203" string="Conductor">Sceffu d’orchestru</entry>
-	  <entry id="103204" string="Composer">Cumpositore</entry>
 	  <entry id="103205" string="Lyrics writer">Parullaghju</entry>
 	  <entry id="103206" string="Modified / remixed by">Mudificatu / mischiatu da</entry>
 	  <entry id="103207" string="Original information">Infurmazioni d’origine</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">Albumu d’origine</entry>
 	  <entry id="103210" string="Original lyrics writer">Parullaghju d’origine</entry>
 	  <entry id="103211" string="Original release year">Annu d’origine di publicazione</entry>
-	  <entry id="103212" string="Tempo">Tempo</entry>
 	  <entry id="103213" string="BPM">Ritmu BPM</entry>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type">Tipu di media</entry>
 	  <entry id="103304" string="Catalog number">Numeru di catalogu</entry>
 	  <entry id="103305" string="Barcode">Codice à barre</entry>
-	  <entry id="103306" string="ISRC">Codice ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">Indirizzi web</entry>
 	  <entry id="103308" string="Artist webpage">Pagina web di l’artista</entry>
 	  <entry id="103309" string="Publisher webpage">Pagina web di l’editore</entry>
@@ -1395,6 +1395,10 @@
 	  <entry id="103311" string="Audio source webpage">Pagina web di a fonte audio</entry>
 	  <entry id="103312" string="Copyright information">Infurmazioni nant’à i diritti di copia</entry>
 	  <entry id="103313" string="Commercial information">Infurmazioni cummerciali</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics"/>
 	</section>
 
 	<section name="Configuration">

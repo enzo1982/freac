@@ -34,6 +34,10 @@
     <entry id="309" string="File name">फ़ाइल नाम</entry>
     <entry id="310" string="File type">फ़ाइल प्रकार</entry>
     <entry id="311" string="Album artist">चित्राधार कलाकार</entry>
+    <entry id="312" string="Conductor">कंडक्टर</entry>
+    <entry id="313" string="Composer">संगीतकार</entry>
+    <entry id="314" string="Tempo">गति</entry>
+    <entry id="315" string="ISRC">आईएसआरसी</entry>
 
     <entry id="350" string="unknown artist">अज्ञात कलाकार</entry>
     <entry id="351" string="unknown title">अज्ञात शीर्षक</entry>
@@ -1367,8 +1371,6 @@
 	  <entry id="103200" string="Details">विवरण</entry>
 	  <entry id="103201" string="Detailed information">विस्तृत जानकारी</entry>
 	  <entry id="103202" string="Band / orchestra">बैंड / ऑर्केस्ट्रा</entry>
-	  <entry id="103203" string="Conductor">कंडक्टर</entry>
-	  <entry id="103204" string="Composer">संगीतकार</entry>
 	  <entry id="103205" string="Lyrics writer">गीत के लेखक</entry>
 	  <entry id="103206" string="Modified / remixed by">द्वारा संशोधित / रीमिक्स किया गया</entry>
 	  <entry id="103207" string="Original information">मूल जानकारी</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">मूल एल्बम</entry>
 	  <entry id="103210" string="Original lyrics writer">मूल गीत लेखक</entry>
 	  <entry id="103211" string="Original release year">मूल रिलीज़ वर्ष</entry>
-	  <entry id="103212" string="Tempo">गति</entry>
 	  <entry id="103213" string="BPM">बीपीएम</entry>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type"/>
 	  <entry id="103304" string="Catalog number"/>
 	  <entry id="103305" string="Barcode"/>
-	  <entry id="103306" string="ISRC">आईएसआरसी</entry>
 	  <entry id="103307" string="Webpage URLs">वेबपेज यूआरएल</entry>
 	  <entry id="103308" string="Artist webpage">कलाकार वेबपेज</entry>
 	  <entry id="103309" string="Publisher webpage">प्रकाशक का वेबपेज</entry>
@@ -1395,6 +1395,10 @@
 	  <entry id="103311" string="Audio source webpage">ऑडियो स्रोत वेबपेज</entry>
 	  <entry id="103312" string="Copyright information">कॉपीराइट संबंधी जानकारी</entry>
 	  <entry id="103313" string="Commercial information">वाणिज्यिक जानकारी</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics"/>
 	</section>
 
 	<section name="Configuration">

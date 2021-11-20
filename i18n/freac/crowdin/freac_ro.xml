@@ -34,6 +34,10 @@
     <entry id="309" string="File name">Nume fișier</entry>
     <entry id="310" string="File type">Tip de fișier</entry>
     <entry id="311" string="Album artist">Albumul artistului</entry>
+    <entry id="312" string="Conductor">Dirijor</entry>
+    <entry id="313" string="Composer">Compozitor</entry>
+    <entry id="314" string="Tempo">Timpul</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">artist necunoscut</entry>
     <entry id="351" string="unknown title">titlu necunoscut</entry>
@@ -65,18 +69,18 @@
     </section>
 
     <section name="Media types">
-      <entry id="600" string="CD"/>
-      <entry id="601" string="DAT"/>
-      <entry id="602" string="MiniDisc"/>
-      <entry id="603" string="Compact Cassette"/>
-      <entry id="604" string="Reel tape"/>
-      <entry id="605" string="Vinyl"/>
-      <entry id="606" string="DVD"/>
-      <entry id="607" string="LaserDisc"/>
-      <entry id="608" string="TV"/>
-      <entry id="609" string="Video"/>
-      <entry id="610" string="Radio"/>
-      <entry id="611" string="Telephone"/>
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">DAT</entry>
+      <entry id="602" string="MiniDisc">MiniDisc</entry>
+      <entry id="603" string="Compact Cassette">Casetă audio</entry>
+      <entry id="604" string="Reel tape">Bandă magnetică</entry>
+      <entry id="605" string="Vinyl">Disc LP</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">LaserDisc</entry>
+      <entry id="608" string="TV">TV</entry>
+      <entry id="609" string="Video">Video</entry>
+      <entry id="610" string="Radio">Radio</entry>
+      <entry id="611" string="Telephone">Telefon</entry>
     </section>
 
     <section name="Menu">
@@ -616,7 +620,7 @@
       <entry id="7000" string="Currently converting">Se realizează conversia</entry>
       <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Procesul de conversie este activ! Doriți să-l întrerupeți?</entry>
       <entry id="7002" string="Delete original files after encoding">Ștergere fișiere originale după conversie</entry>
-      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Această opțiune va șterge fișierele originale din computerul dvs.&#10;după terminarea conversiei! &#10;&#10;Sunteți sigur că doriți să continuați?</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Această opțiune va șterge fișierele originale din computerul dvs.&#10;după terminarea conversiei!&#10;&#10;Sunteți sigur că doriți să continuați?</entry>
       <entry id="7004" string="Keep this option enabled even after restarting %1">Păstrați activă această opțiune chiar și la repornirea a %1</entry>
       <entry id="7005" string="File already exists">Fișierul există deja</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Fișierul de ieșire %1 există! Doriți să-l suprascrieți?</entry>
@@ -1129,42 +1133,42 @@
     <section name="Verifiers">
 
       <section name="AccurateRip">
-	<entry id="70000" string="Configure AccurateRip"/>
-	<entry id="70001" string="General settings"/>
-	<entry id="70002" string="Enable AccurateRip"/>
-	<entry id="70003" string="Database URL"/>
-	<entry id="70004" string="Cache"/>
-	<entry id="70005" string="Enable cache"/>
-	<entry id="70006" string="Expires after"/>
-	<entry id="70007" string="%1 day(s)"/>
-	<entry id="70008" string="%1 week(s)"/>
-	<entry id="70009" string="%1 month(s)"/>
-	<entry id="70010" string="%1 year(s)"/>
-	<entry id="70011" string="never"/>
-	<entry id="70012" string="Drives"/>
-	<entry id="70013" string="Drive"/>
-	<entry id="70014" string="Offset configuration"/>
-	<entry id="70015" string="Offset in drive database"/>
-	<entry id="70016" string="Detected offset"/>
-	<entry id="70017" string="Configured offset"/>
-	<entry id="70018" string="Detect offset now"/>
-	<entry id="70019" string="not configured"/>
-	<entry id="70020" string="automatically configured"/>
-	<entry id="70021" string="configured by offset detection"/>
-	<entry id="70022" string="manually configured"/>
-	<entry id="70023" string="not present"/>
-	<entry id="70024" string="not detected"/>
-	<entry id="70025" string="disabled"/>
+	<entry id="70000" string="Configure AccurateRip">Configurează Acuratețea Extragerii</entry>
+	<entry id="70001" string="General settings">Setări generale</entry>
+	<entry id="70002" string="Enable AccurateRip">Pornește Acuratețea Extragerii</entry>
+	<entry id="70003" string="Database URL">URL bază de date</entry>
+	<entry id="70004" string="Cache">Memorie</entry>
+	<entry id="70005" string="Enable cache">Pornește memoria</entry>
+	<entry id="70006" string="Expires after">Închide după</entry>
+	<entry id="70007" string="%1 day(s)">%1 zi(zile)</entry>
+	<entry id="70008" string="%1 week(s)">%1 săptămână(săptămâni)</entry>
+	<entry id="70009" string="%1 month(s)">%1 lună(luni)</entry>
+	<entry id="70010" string="%1 year(s)">%1 an(i)</entry>
+	<entry id="70011" string="never">niciodata</entry>
+	<entry id="70012" string="Drives">Drive-uri</entry>
+	<entry id="70013" string="Drive">Drive</entry>
+	<entry id="70014" string="Offset configuration">Configurat fără setări</entry>
+	<entry id="70015" string="Offset in drive database">Fără setări in drive-ul bazei de date</entry>
+	<entry id="70016" string="Detected offset">Fără setări detectate</entry>
+	<entry id="70017" string="Configured offset">Configurat fără setări</entry>
+	<entry id="70018" string="Detect offset now">Detectează fără setări acum</entry>
+	<entry id="70019" string="not configured">neconfigurat</entry>
+	<entry id="70020" string="automatically configured">configurat automat</entry>
+	<entry id="70021" string="configured by offset detection">configurat înafara detectării fără setări</entry>
+	<entry id="70022" string="manually configured">configurație manuală</entry>
+	<entry id="70023" string="not present">absent</entry>
+	<entry id="70024" string="not detected">nedetectat</entry>
+	<entry id="70025" string="disabled">inactiv</entry>
 
 	<section name="Messages">
-	  <entry id="70050" string="AccurateRip configuration"/>
-	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?"/>
-	  <entry id="70052" string="Do not ask again"/>
-	  <entry id="70053" string="AccurateRip offset detection"/>
-	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database."/>
-	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
-	  <entry id="70056" string="Offset detection needs to check another disc."/>
-	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples."/>
+	  <entry id="70050" string="AccurateRip configuration">Configuratia Extragerii Curate</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">CD drive-ul dvs. nu poate fi găsit în baza de date a Extragerii Curate.&#10;&#10;Nume drive: %1</entry>
+	  <entry id="70052" string="Do not ask again">Nu întreba din nou</entry>
+	  <entry id="70053" string="AccurateRip offset detection">Detectarea Extragerii Curate închisă</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Discul introdus nu poate fi găsit în baza de date a Extragerii Curate.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Vă rugăm introduceți alt disc în CD drive și apăsați OK.&#10;&#10;Discul trebuie să fie prezent in baza de date a Extragerii Curate. Șansele cresc&#10;ca discul dvs să fie foarte popular și să fi fost extras de alti utilizatori înaintea dvs.</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">Detectarea fără setări necesită verificarea unui alt disc.</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Drive-ul fără setări a fost detectat cu succes și configurat la %1 prezentare.</entry>
 	</section>
       </section>
     </section>
@@ -1367,8 +1371,6 @@
 	  <entry id="103200" string="Details">Detalii</entry>
 	  <entry id="103201" string="Detailed information">Informații detaliate</entry>
 	  <entry id="103202" string="Band / orchestra">Formație / orchestră</entry>
-	  <entry id="103203" string="Conductor">Dirijor</entry>
-	  <entry id="103204" string="Composer">Compozitor</entry>
 	  <entry id="103205" string="Lyrics writer">Compozitor versuri</entry>
 	  <entry id="103206" string="Modified / remixed by">Modificat / remixat de</entry>
 	  <entry id="103207" string="Original information">Informație origine</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">Origine album</entry>
 	  <entry id="103210" string="Original lyrics writer">Origine compozitor versuri</entry>
 	  <entry id="103211" string="Original release year">An realizare original</entry>
-	  <entry id="103212" string="Tempo">Timpul</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type"/>
 	  <entry id="103304" string="Catalog number">Număr de catalog</entry>
 	  <entry id="103305" string="Barcode">Cod de bare</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">Pagină Web URL</entry>
 	  <entry id="103308" string="Artist webpage">Pagină web artist</entry>
 	  <entry id="103309" string="Publisher webpage">Pagină web producător</entry>
@@ -1395,6 +1395,10 @@
 	  <entry id="103311" string="Audio source webpage">Pagina web cu sursa audio</entry>
 	  <entry id="103312" string="Copyright information">Informații Copyright</entry>
 	  <entry id="103313" string="Commercial information">Informații comerciale</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics"/>
 	</section>
 
 	<section name="Configuration">
