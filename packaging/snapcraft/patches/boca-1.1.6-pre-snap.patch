@@ -1,0 +1,30 @@
+--- a/components/decoder/cdio/config.cpp	2021-06-03 19:49:46.000000000 +0200
++++ b/components/decoder/cdio/config.cpp	2021-11-21 00:02:17.731121700 +0100
+@@ -23,7 +23,7 @@
+ 	autoRead	= notificationAvailable && config->GetIntValue(ConfigID, "AutoReadContents", True);
+ 	autoRip		= notificationAvailable && config->GetIntValue(ConfigID, "AutoRip", False);
+ 
+-	autoEject	= config->GetIntValue(ConfigID, "EjectAfterRipping", False);
++	autoEject	= False;
+ 
+ 	readCDText	= config->GetIntValue(ConfigID, "ReadCDText", True);
+ 	readISRC	= config->GetIntValue(ConfigID, "ReadISRC", False);
+@@ -168,6 +168,7 @@
+ 
+ 	check_autoRip	= new CheckBox(i18n->TranslateString("Start ripping automatically"), check_autoRead->GetPosition() + Point(0, 26), Size(170, 0), &autoRip);
+ 	check_autoEject	= new CheckBox(i18n->TranslateString("Eject disk after ripping"), check_autoRip->GetPosition() + Point(0, 26), Size(170, 0), &autoEject);
++	check_autoEject->Deactivate();
+ 
+ 	group_automatization->Add(check_autoRead);
+ 	group_automatization->Add(check_autoRip);
+--- a/runtime/application/componentspecs.cpp	2021-05-14 20:41:06.000000000 +0100
++++ b/runtime/application/componentspecs.cpp	2021-11-21 00:01:04.385197344 +0100
+@@ -315,7 +315,7 @@
+ #elif defined __NetBSD__
+ 	static const char	*places[] = { "%APPDIR/codecs/cmdline/%COMMAND", "%APPDIR/%COMMAND", "/usr/bin/%COMMAND", "/usr/local/bin/%COMMAND", "/usr/pkg/bin/%COMMAND", NIL };
+ #else
+-	static const char	*places[] = { "%APPDIR/codecs/cmdline/%COMMAND", "%APPDIR/%COMMAND", "/usr/bin/%COMMAND", "/usr/local/bin/%COMMAND", NIL };
++	static const char	*places[] = { "%APPDIR/../usr/bin/%COMMAND", "%APPDIR/codecs/cmdline/%COMMAND", "%APPDIR/%COMMAND", "/usr/bin/%COMMAND", "/usr/local/bin/%COMMAND", NIL };
+ #endif
+ 
+ 	XML::Document	 document;
