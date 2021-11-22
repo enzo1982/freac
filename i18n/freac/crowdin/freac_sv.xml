@@ -1398,12 +1398,12 @@
 	</section>
 
 	<section name="Lyrics">
-	  <entry id="103350" string="Lyrics"/>
+	  <entry id="103350" string="Lyrics">Sångtext</entry>
 	</section>
 
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Beteende</entry>
-	  <entry id="103401" string="Clear album artist field if it matches track artist">Rensa albumartistfältet när det matchar spårartisten</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Rensa albumartistfältet om det matchar spårartisten</entry>
 	</section>
 
 	<section name="Errors">
