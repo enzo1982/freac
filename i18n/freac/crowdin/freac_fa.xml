@@ -34,6 +34,10 @@
     <entry id="309" string="File name">نام فايل</entry>
     <entry id="310" string="File type">فرمت فايل</entry>
     <entry id="311" string="Album artist">هنرمند آلبوم</entry>
+    <entry id="312" string="Conductor">رهبر اکستر</entry>
+    <entry id="313" string="Composer">آهنگساز</entry>
+    <entry id="314" string="Tempo">ضرب آهنگ</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">هنرمند ناشناس</entry>
     <entry id="351" string="unknown title">بدون هنوان</entry>
@@ -1367,8 +1371,6 @@
 	  <entry id="103200" string="Details">جزييات</entry>
 	  <entry id="103201" string="Detailed information">اطلاعات تکميلي</entry>
 	  <entry id="103202" string="Band / orchestra">گروه / ارکستر</entry>
-	  <entry id="103203" string="Conductor">رهبر اکستر</entry>
-	  <entry id="103204" string="Composer">آهنگساز</entry>
 	  <entry id="103205" string="Lyrics writer">شاعر</entry>
 	  <entry id="103206" string="Modified / remixed by">ريميکس يا بازنويسي توسط</entry>
 	  <entry id="103207" string="Original information">اطلاعات اوريجينال</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">آلبوم اصلي</entry>
 	  <entry id="103210" string="Original lyrics writer">شاعر اصلي</entry>
 	  <entry id="103211" string="Original release year">سال انتشار اصلي</entry>
-	  <entry id="103212" string="Tempo">ضرب آهنگ</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type"/>
 	  <entry id="103304" string="Catalog number"/>
 	  <entry id="103305" string="Barcode"/>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">وبسايت ها</entry>
 	  <entry id="103308" string="Artist webpage">وبسايت هنرمند</entry>
 	  <entry id="103309" string="Publisher webpage">وبسايت ناشر</entry>
@@ -1395,6 +1395,10 @@
 	  <entry id="103311" string="Audio source webpage">وبسايت منبع صدا</entry>
 	  <entry id="103312" string="Copyright information">اطلاعات حق کاپي رايت</entry>
 	  <entry id="103313" string="Commercial information">اطلاعات تجاري</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics"/>
 	</section>
 
 	<section name="Configuration">

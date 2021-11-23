@@ -1372,7 +1372,7 @@
 	  <entry id="103201" string="Detailed information">Подробная информация</entry>
 	  <entry id="103202" string="Band / orchestra">Группа / ансамбль</entry>
 	  <entry id="103205" string="Lyrics writer">Автор текста</entry>
-	  <entry id="103206" string="Modified / remixed by">Изменено / микшировано</entry>
+	  <entry id="103206" string="Modified / remixed by">Автор ремикса</entry>
 	  <entry id="103207" string="Original information">Исходная информация</entry>
 	  <entry id="103208" string="Original artist">Исходный артист</entry>
 	  <entry id="103209" string="Original album">Исходный альбом</entry>
@@ -1397,9 +1397,13 @@
 	  <entry id="103313" string="Commercial information">Коммерческая информация</entry>
 	</section>
 
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics">Тексты песен</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Поведение</entry>
-	  <entry id="103401" string="Clear album artist field if it matches track artist">Очищать поле исполнитель альбома если оно совпадает с исполнителем дорожки</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Очищать поле исполнитель альбома, если оно совпадает с исполнителем дорожки</entry>
 	</section>
 
 	<section name="Errors">

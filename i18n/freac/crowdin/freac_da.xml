@@ -33,7 +33,11 @@
     <entry id="308" string="Rating">bedømmelse</entry>
     <entry id="309" string="File name">Fil navn</entry>
     <entry id="310" string="File type">Fil type</entry>
-    <entry id="311" string="Album artist">Album Kunster</entry>
+    <entry id="311" string="Album artist">Album kunstner</entry>
+    <entry id="312" string="Conductor">Dirigent</entry>
+    <entry id="313" string="Composer">Komponist</entry>
+    <entry id="314" string="Tempo">Tempo</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">ukendt kunstner</entry>
     <entry id="351" string="unknown title">ukendt titel</entry>
@@ -42,7 +46,7 @@
     <entry id="354" string="unknown year">ukendt år</entry>
     <entry id="355" string="unknown conductor">ukendt dirigent</entry>
     <entry id="356" string="unknown composer">ukendt komponist</entry>
-    <entry id="357" string="unknown album artist">ukendt album kunster</entry>
+    <entry id="357" string="unknown album artist">ukendt album kunstner</entry>
 
     <entry id="380" string="hidden track">skjult spor</entry>
 
@@ -496,7 +500,7 @@
 	<entry id="5401" string="Edit language file">Rediger sprog filen</entry>
 	<entry id="5402" string="Information">Information</entry>
 	<entry id="5403" string="Encoding">Koder</entry>
-	<entry id="5404" string="Author">Kunster</entry>
+	<entry id="5404" string="Author">Kunstner</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
@@ -542,14 +546,14 @@
 	<entry id="5607" string="Show Jobs tab">Vis opgavelisten</entry>
 
 	<section name="Columns">
-	  <entry id="5650" string="Track artist">Spor kunster</entry>
+	  <entry id="5650" string="Track artist">Spor kunstner</entry>
 	  <entry id="5651" string="Track title">Spor titel</entry>
 	  <entry id="5652" string="Track genre">Spor genre</entry>
 	  <entry id="5653" string="Album title">Album titel</entry>
-	  <entry id="5654" string="Disc number">Disk Nummer</entry>
+	  <entry id="5654" string="Disc number">Disk nummer</entry>
 	  <entry id="5655" string="Track number">Spor nummer</entry>
 	  <entry id="5656" string="Track rating">Spor bedømmelse</entry>
-	  <entry id="5657" string="Track length">Spor Længde</entry>
+	  <entry id="5657" string="Track length">Spor længde</entry>
 	  <entry id="5658" string="Track size">Spor størrelse</entry>
 	  <entry id="5659" string="File name">Fil navn</entry>
 	  <entry id="5660" string="File type">Fil type</entry>
@@ -1366,17 +1370,14 @@
 	<section name="Details">
 	  <entry id="103200" string="Details">Detajler</entry>
 	  <entry id="103201" string="Detailed information">Detajleret information</entry>
-	  <entry id="103202" string="Band / orchestra">Band / Orkester</entry>
-	  <entry id="103203" string="Conductor">dirigent</entry>
-	  <entry id="103204" string="Composer">Komponist</entry>
-	  <entry id="103205" string="Lyrics writer">Tekst Forfatter</entry>
+	  <entry id="103202" string="Band / orchestra">Band / orkester</entry>
+	  <entry id="103205" string="Lyrics writer">Tekst forfatter</entry>
 	  <entry id="103206" string="Modified / remixed by">Ændret / remixed af</entry>
 	  <entry id="103207" string="Original information">Oprindelig information</entry>
-	  <entry id="103208" string="Original artist">Oprindelig kunster</entry>
-	  <entry id="103209" string="Original album">Oprindelig Album</entry>
+	  <entry id="103208" string="Original artist">Oprindelig kunstner</entry>
+	  <entry id="103209" string="Original album">Oprindelig album</entry>
 	  <entry id="103210" string="Original lyrics writer">Oprindelig text forfatter</entry>
 	  <entry id="103211" string="Original release year">Oprindeligt udgivelses år</entry>
-	  <entry id="103212" string="Tempo">Tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1387,14 +1388,17 @@
 	  <entry id="103303" string="Media type"/>
 	  <entry id="103304" string="Catalog number"/>
 	  <entry id="103305" string="Barcode"/>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">Hjemmeside URLs</entry>
-	  <entry id="103308" string="Artist webpage">Kunsters hjemmeside</entry>
+	  <entry id="103308" string="Artist webpage">Kunstners hjemmeside</entry>
 	  <entry id="103309" string="Publisher webpage">Udgivers Hjemmeside</entry>
 	  <entry id="103310" string="Internet radio station">Internet radio station</entry>
 	  <entry id="103311" string="Audio source webpage">Lyd source hjemmeside</entry>
 	  <entry id="103312" string="Copyright information">Copyright Information</entry>
 	  <entry id="103313" string="Commercial information">Kommerciel information</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics"/>
 	</section>
 
 	<section name="Configuration">

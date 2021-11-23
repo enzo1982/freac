@@ -161,8 +161,10 @@ History
 		- Improvements
 
 			- improved support for languages written from right to left
+			- playlists can now be added to the joblist by drag & drop
 			- added optional composer, conductor, tempo and ISRC columns to the joblist
 			- added support for lyrics in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags
+			- added support for parsing OverDrive MediaMarkers in ID3v2 tags
 
 		- Bug fixes
 
@@ -177,8 +179,9 @@ History
 			- fixed drag & drop not working after online update on Windows
 			- fixed open/save file dialogs failing on macOS 12.0 Monterey
 
-		- Updated codecs
+		- New and updated codecs
 
+			- added native Apple Lossless decoder
 			- updated FFmpeg to version 4.4.1
 			- updated Monkey's Audio to version 7.14
 			- updated mpg123 to version 1.29.2

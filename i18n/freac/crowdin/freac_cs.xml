@@ -34,6 +34,10 @@
     <entry id="309" string="File name">Název souboru</entry>
     <entry id="310" string="File type">Typ souboru</entry>
     <entry id="311" string="Album artist">Interpret alba</entry>
+    <entry id="312" string="Conductor">Dirigent</entry>
+    <entry id="313" string="Composer">Skladatel</entry>
+    <entry id="314" string="Tempo">Tempo</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">neznámý umělec</entry>
     <entry id="351" string="unknown title">neznámý název</entry>
@@ -1367,8 +1371,6 @@
 	  <entry id="103200" string="Details">Detaily</entry>
 	  <entry id="103201" string="Detailed information">Detailní informace</entry>
 	  <entry id="103202" string="Band / orchestra">Skupina / Orchestr</entry>
-	  <entry id="103203" string="Conductor">Další umělci</entry>
-	  <entry id="103204" string="Composer">Skladatel</entry>
 	  <entry id="103205" string="Lyrics writer">Textař</entry>
 	  <entry id="103206" string="Modified / remixed by">Upraveno / remix od</entry>
 	  <entry id="103207" string="Original information">Původní informace</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">Původní album</entry>
 	  <entry id="103210" string="Original lyrics writer">Původní textař</entry>
 	  <entry id="103211" string="Original release year">Původní rok vydání</entry>
-	  <entry id="103212" string="Tempo">Tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type">Typ média</entry>
 	  <entry id="103304" string="Catalog number">Katalogové číslo</entry>
 	  <entry id="103305" string="Barcode">Čárový kód</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">URL web stránky</entry>
 	  <entry id="103308" string="Artist webpage">Umělec web stránky</entry>
 	  <entry id="103309" string="Publisher webpage">Vydavatel web stránky</entry>
@@ -1395,6 +1395,10 @@
 	  <entry id="103311" string="Audio source webpage">Audio zdroje web stránky</entry>
 	  <entry id="103312" string="Copyright information">Copyright informace</entry>
 	  <entry id="103313" string="Commercial information">Obchodní informace</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics"/>
 	</section>
 
 	<section name="Configuration">

@@ -1,0 +1,128 @@
+--- a/src/gui/main_joblist.cpp	2021-11-21 00:32:49.932028800 +0100
++++ b/src/gui/main_joblist.cpp	2021-11-21 00:48:21.714986000 +0100
+@@ -139,7 +139,7 @@
+ 
+ 	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_OUTPUT) > 0)
+ 	{
+-		pos.x = 242;
++		pos.x = 220;
+ 		pos.y = 0;
+ 
+ 		player	= new PlaybackWidget(freacGUI::Get()->GetPlayer(), joblist);
+--- a/src/gui/playback.cpp	2021-05-25 17:45:53.358170200 +0200
++++ b/src/gui/playback.cpp	2021-11-21 00:47:15.628381000 +0100
+@@ -32,7 +32,7 @@
+ 	Point		 pos;
+ 	Size		 size;
+ 
+-	pos.x = -1 + (i18n->IsActiveLanguageRightToLeft() ? 215 : 0);
++	pos.x = -1 + (i18n->IsActiveLanguageRightToLeft() ? 193 : 0);
+ 	pos.y = -1;
+ 	size.cx = 25;
+ 	size.cy = 25;
+@@ -53,7 +53,7 @@
+ 	button_stop->onAction.Connect(&PlaybackWidget::StopPlayback, this);
+ 	button_stop->SetFlags(BF_NOFRAME);
+ 
+-	pos.x += 127 - (i18n->IsActiveLanguageRightToLeft() ? 254 : 0);
++	pos.x += 127 - (i18n->IsActiveLanguageRightToLeft() ? 232 : 0);
+ 
+ 	button_prev	= new Button(ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-previous.png")), pos, size);
+ 	button_prev->onAction.Connect(&PlaybackWidget::PlayPreviousItem, this);
+@@ -70,6 +70,7 @@
+ 	button_open	= new Button(ImageLoader::Load(String(config->resourcesPath).Append("icons/player/player-eject.png")), pos, size);
+ 	button_open->onAction.Connect(&PlaybackWidget::OpenCDTray, this);
+ 	button_open->SetFlags(BF_NOFRAME);
++	button_open->Hide();
+ 
+ 	pos.x = 69;
+ 	pos.y += 4;
+@@ -99,7 +100,7 @@
+ 
+ 	BoCA::Settings::Get()->onChangeLanguageSettings.Connect(&PlaybackWidget::OnChangeLanguageSettings, this);
+ 
+-	SetSize(Size(243, 21));
++	SetSize(Size(221, 21));
+ }
+ 
+ freac::PlaybackWidget::~PlaybackWidget()
+@@ -145,7 +146,7 @@
+ 
+ 		Point	 pos;
+ 
+-		pos.x = -1 + (i18n->IsActiveLanguageRightToLeft() ? 215 : 0);
++		pos.x = -1 + (i18n->IsActiveLanguageRightToLeft() ? 193 : 0);
+ 		pos.y = -1;
+ 
+ 		button_play->SetPosition(pos);
+@@ -158,7 +159,7 @@
+ 
+ 		button_stop->SetPosition(pos);
+ 
+-		pos.x += 127 - (i18n->IsActiveLanguageRightToLeft() ? 254 : 0);
++		pos.x += 127 - (i18n->IsActiveLanguageRightToLeft() ? 232 : 0);
+ 
+ 		button_prev->SetPosition(pos);
+ 
+@@ -175,7 +176,7 @@
+ 		button_stop->Show();
+ 		button_prev->Show();
+ 		button_next->Show();
+-		button_open->Show();
++//		button_open->Show();
+ 
+ 		slider_play->SetValue(1000 - slider_play->GetValue());
+ 	}
+--- a/src/jobs/engine/convert.cpp	2021-11-21 00:32:49.933028500 +0100
++++ b/src/jobs/engine/convert.cpp	2021-11-21 00:38:27.006564300 +0100
+@@ -279,7 +279,7 @@
+ 	Bool	 removeProcessedTracks	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsRemoveTracksID, Config::SettingsRemoveTracksDefault);
+ 	Bool	 addEncodedTracks	= configuration->GetIntValue(Config::CategorySettingsID, Config::SettingsAddEncodedTracksID, Config::SettingsAddEncodedTracksDefault);
+ 
+-	Bool	 ripperEjectDisc	= configuration->GetIntValue(Config::CategoryRipperID, Config::RipperEjectAfterRippingID, Config::RipperEjectAfterRippingDefault);
++	Bool	 ripperEjectDisc	= False;
+ 
+ 	Bool	 createPlaylist		= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
+ 	Bool	 createCueSheet		= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
+--- a/src/startconsole.cpp	2021-06-27 13:08:06.542302900 +0200
++++ b/src/startconsole.cpp	2021-11-21 00:39:26.542658600 +0100
+@@ -293,7 +293,7 @@
+ 
+ 	Console::SetTitle(String(freac::appName).Append(" ").Append(freac::version));
+ 
+-	if ((files.Length() == 0 && !ScanForProgramOption("--eject")) || helpenc != NIL)
++	if (files.Length() == 0 || helpenc != NIL)
+ 	{
+ 		ShowHelp(helpenc);
+ 
+@@ -493,20 +493,6 @@
+ 		DeleteObject(joblist);
+ 	}
+ 
+-	/* Eject disc if requested.
+-	 */
+-	if (ScanForProgramOption("--eject") && !stopped)
+-	{
+-		DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
+-
+-		if (info != NIL)
+-		{
+-			info->OpenNthDeviceTray(cdDrive.ToInt() < numDrives ? cdDrive.ToInt() : 0);
+-
+-			boca.DeleteComponent(info);
+-		}
+-	}
+-
+ 	/* Wait for jobs to finish.
+ 	 */
+ 	const Array<Job *>	&jobs = Job::GetRunningJobs();
+@@ -1033,8 +1019,7 @@
+ 				Console::OutputString("  --drive=<n|id>  | -cd <n|id>\tSpecify active CD drive (0..n or device path)\n");
+ 				Console::OutputString("  --track=<n>     | -t <n>\tSpecify input track(s) to rip (e.g. 1-5,7,9 or 'all')\n");
+ 				Console::OutputString("  --timeout=<s>\t\t\tTimeout for CD track ripping (disabled by default)\n");
+-				Console::OutputString("  --cddb\t\t\tEnable CDDB database lookup\n");
+-				Console::OutputString("  --eject\t\t\tEject disc after ripping\n\n");
++				Console::OutputString("  --cddb\t\t\tEnable CDDB database lookup\n\n");
+ 			}
+ 
+ 			boca.DeleteComponent(info);

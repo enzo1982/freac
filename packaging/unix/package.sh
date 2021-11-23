@@ -100,6 +100,7 @@ strip --strip-all freac/codecs/*.so
 ln -sf boca/boca.$BOCAVER.so freac/libboca-$BOCAVER.so.$BOCAREV
 
 rm freac/boca/boca_decoder_alac.1.0.xml
+rm freac/boca/boca_decoder_ffmpeg_alac.1.0.xml
 rm freac/boca/boca_decoder_ffmpeg_mac.1.0.xml
 rm freac/boca/boca_decoder_ffmpeg_mpc.1.0.xml
 rm freac/boca/boca_decoder_ffmpeg_wavpack.1.0.xml

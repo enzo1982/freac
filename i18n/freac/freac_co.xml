@@ -46,7 +46,7 @@
     <entry id="354" string="unknown year">annu scunnisciutu</entry>
     <entry id="355" string="unknown conductor">sceffu d’orchestru scunnisciutu</entry>
     <entry id="356" string="unknown composer">cumpositore scunnisciutu</entry>
-    <entry id="357" string="unknown album artist">Artista di l’albumu scunnisciutu</entry>
+    <entry id="357" string="unknown album artist">artista di l’albumu scunnisciutu</entry>
 
     <entry id="380" string="hidden track">traccia piattata</entry>
 
@@ -137,8 +137,8 @@
 	<entry id="1503" string="Pause/resume encoding">Interrompe / cuntinuà a cudificazione</entry>
 	<entry id="1504" string="Stop encoding">Piantà a cudificazione</entry>
 	<entry id="1505" string="Encoder options">Ozzioni di cudificatore</entry>
-	<entry id="1506" string="Encode to a single file">Cudificà ver di un schedariu unicu</entry>
-	<entry id="1507" string="Encode to input file folder if possible">Cudificà s’ellu hè pussibule ver di u cartulare di u schedariu d’origine</entry>
+	<entry id="1506" string="Encode to a single file">Cudificà in un schedariu unicu</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Cudificà s’ellu hè pussibule in u cartulare di u schedariu d’origine</entry>
 	<entry id="1508" string="Allow overwriting input file">Permette di rimpiazzà u schedariu d’origine</entry>
 	<entry id="1509" string="Delete original files after encoding">Squassà u schedariu d’origine dopu à a cudificazione</entry>
 	<entry id="1510" string="Shutdown after encoding">Chjusura di u sistema dopu à a cudificazione</entry>
@@ -296,7 +296,7 @@
 
       <section name="Convert">
 	<entry id="3700" string="Checking sample formats">Cuntrollu di i furmati di campiunariu</entry>
-	<entry id="3701" string="Checking for lossy to lossless conversion">Cuntrollu di a cunversione da lossy ver di lossless</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">Cuntrollu di cunversione da un furmatu cù perdita d’infurmazione ver di un furmatu senza perdita</entry>
 	<entry id="3702" string="Checking output file names">Cuntrollu di i nomi di schedarii d’esciuta</entry>
 	<entry id="3703" string="Converting %1">Cunversione di %1</entry>
 	<entry id="3704" string="Verifying %1">Verificazione di %1</entry>
@@ -348,8 +348,8 @@
 	<entry id="4108" string="Would you like to perform this query again later?">Vulete eseguisce sta richiesta un altra volta più tardi ?</entry>
 	<entry id="4109" string="Would you like to perform the remaining queries again later?">Vulete eseguisce e richieste rimanente un altra volta più tardi ?</entry>
 	<entry id="4110" string="none">nisunu</entry>
-	<entry id="4111" string="Preview">Apprezzà</entry>
-	<entry id="4112" string="loading preview">caricamentu di l’apprezzazione</entry>
+	<entry id="4111" string="Preview">Fighjulata</entry>
+	<entry id="4112" string="loading preview">caricamentu di a fighjulata</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Qualchì sbagliu hè accadutu pruvendu di cunnettassi à u servitore freedb.</entry>
@@ -373,7 +373,7 @@
 	<entry id="4303" string="CDDB data">Dati CDDB</entry>
 	<entry id="4304" string="Submit">Sottumette</entry>
 	<entry id="4305" string="Disc name">Nome di discu</entry>
-	<entry id="4306" string="Preview">Apprezzà</entry>
+	<entry id="4306" string="Preview">Fighjulata</entry>
 	<entry id="4307" string="Category">Categuria</entry>
 	<entry id="4308" string="Submitting CD information">Sottumette l’infurmazione CD</entry>
       </section>
@@ -384,7 +384,7 @@
 	<entry id="4402" string="Charset">Gruppu di caratteri</entry>
 	<entry id="4403" string="Downloaded CDDB entries">Entrate CDDB scaricate</entry>
 	<entry id="4404" string="Disc name">Nome di discu</entry>
-	<entry id="4405" string="Preview">Apprezzà</entry>
+	<entry id="4405" string="Preview">Fighjulata</entry>
 	<entry id="4406" string="Remove entry">Caccià l’entrata</entry>
 	<entry id="4407" string="Save entry">Arregistrà l’entrata</entry>
       </section>
@@ -486,7 +486,7 @@
 	  <entry id="5335" string="Proxy type">Tipu di proxy</entry>
 	  <entry id="5336" string="Proxy server">Servitore di proxy</entry>
 	  <entry id="5337" string="User name">Nome d’utilizatore</entry>
-	  <entry id="5338" string="Password">Parolla d’entrata</entry>
+	  <entry id="5338" string="Password">Parolla d’intesa</entry>
 	</section>
 
 	<section name="Errors">
@@ -517,13 +517,13 @@
 	<entry id="5509" string="Read cover art from tags">Leghje a cuprendula da l’etichette</entry>
 	<entry id="5510" string="Read cover art from files">Leghje a cuprendula da i schedarii</entry>
 	<entry id="5511" string="Write cover art">Scrittura di a cuprendula</entry>
-	<entry id="5512" string="Write cover art to tags">Scrive a cuprendula ver di l’etichette</entry>
-	<entry id="5513" string="Write cover art to files">Scrive a cuprendula ver di i schedarii</entry>
+	<entry id="5512" string="Write cover art to tags">Scrive a cuprendula in l’etichette</entry>
+	<entry id="5513" string="Write cover art to files">Scrive a cuprendula in i schedarii</entry>
 	<entry id="5514" string="Add reference to audio file tag">Aghjunghje una referenza à l’etichetta di u schedariu audio</entry>
 	<entry id="5515" string="Other">Altra</entry>
 	<entry id="5516" string="Chapters">Capituli</entry>
 	<entry id="5517" string="Read chapters from files">Leghje i capituli da i schedarii</entry>
-	<entry id="5518" string="Write chapters to files">Scrive i capituli ver di i schedarii</entry>
+	<entry id="5518" string="Write chapters to files">Scrive i capituli in i schedarii</entry>
 	<entry id="5519" string="Special fields">Campi speziali</entry>
 	<entry id="5520" string="Write CD table of contents">Scrive l’indice di cuntenutu di u CD</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Preservà l’infurmazione di guadagnu di ripruduzzione</entry>
@@ -990,7 +990,7 @@
 	<entry id="39008" string="VBR">VBR</entry>
 	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Ozzioni</entry>
-	<entry id="39011" string="Voice Activity Detection">Avventata di l’attivazione vucale</entry>
+	<entry id="39011" string="Voice Activity Detection">Abbentata di l’attività vucale</entry>
 	<entry id="39012" string="Discontinuous Transmission">Trasmissione discuntinua</entry>
 	<entry id="39013" string="Algorithm complexity">Cumplessità di cudificazione</entry>
 	<entry id="39014" string="Complexity">Cumplessità</entry>
@@ -1083,7 +1083,7 @@
 	<entry id="50302" string="Pitch">Tunalità</entry>
 	<entry id="50303" string="%1 Semitones">%1 semitoni</entry>
 	<entry id="50304" string="Advanced options">Ozzioni esperte</entry>
-	<entry id="50305" string="Transient detection">Avvintata transitoria</entry>
+	<entry id="50305" string="Transient detection">Abbentata transitoria</entry>
 	<entry id="50306" string="Compound">Cumpostu</entry>
 	<entry id="50307" string="Percussive">Percutente</entry>
 	<entry id="50308" string="Soft">Dolce</entry>
@@ -1192,7 +1192,7 @@
 	<entry id="80112" string="enhanced 3/inf dB">aummentatu 3/inf dB</entry>
 	<entry id="80113" string="Adaptive noise shaping order">Ordine di fattura di trostu adattata</entry>
 	<entry id="80114" string="high">altu</entry>
-	<entry id="80115" string="Clear Voice Detection">Avventata di voce chjara</entry>
+	<entry id="80115" string="Clear Voice Detection">Abbentata di voce chjara</entry>
 	<entry id="80116" string="dual">doppiu</entry>
       </section>
 
@@ -1291,7 +1291,7 @@
 	</section>
 
 	<section name="SEPA">
-	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Pudete fà una dunazione facendu un trasferimentu elettronicu&#10;di soldi ver di stu contu :</entry>
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">Pudete fà una dunazione facendu un trasferimentu elettronicu&#10;di soldi nant’à stu contu :</entry>
 	  <entry id="100501" string="Account holder:">Titulare di u contu :</entry>
 	  <entry id="100502" string="IBAN:">IBAN :</entry>
 	  <entry id="100503" string="BIC:">BIC :</entry>
@@ -1307,7 +1307,7 @@
 	<entry id="102000" string="Video">Video</entry>
 	<entry id="102001" string="Enter video URL here">Indicà l’indirizzu di a video quì</entry>
 	<entry id="102002" string="Download">Scaricà</entry>
-	<entry id="102003" string="Automatically download URLs copied to clipboard">Scaricà autumaticamente l’indirizzi cupiati ver di u preme’papei</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">Scaricà autumaticamente l’indirizzi cupiati in u preme’papei</entry>
 	<entry id="102004" string="Save downloaded video files">Arregistrà i schedarii video scaricati</entry>
 	<entry id="102005" string="Video downloads">Scaricamenti video</entry>
 	<entry id="102006" string="Downloaded tracks">Traccie scaricate</entry>
@@ -1369,7 +1369,7 @@
 
 	<section name="Details">
 	  <entry id="103200" string="Details">Detaglii</entry>
-	  <entry id="103201" string="Detailed information">Infurmazioni ditagliate</entry>
+	  <entry id="103201" string="Detailed information">Infurmazioni detagliate</entry>
 	  <entry id="103202" string="Band / orchestra">Gruppu / orchestru</entry>
 	  <entry id="103205" string="Lyrics writer">Parullaghju</entry>
 	  <entry id="103206" string="Modified / remixed by">Mudificatu / mischiatu da</entry>
@@ -1388,7 +1388,7 @@
 	  <entry id="103303" string="Media type">Tipu di media</entry>
 	  <entry id="103304" string="Catalog number">Numeru di catalogu</entry>
 	  <entry id="103305" string="Barcode">Codice à barre</entry>
-	  <entry id="103307" string="Webpage URLs">Indirizzi web</entry>
+	  <entry id="103307" string="Webpage URLs">Indirizzi di pagina web</entry>
 	  <entry id="103308" string="Artist webpage">Pagina web di l’artista</entry>
 	  <entry id="103309" string="Publisher webpage">Pagina web di l’editore</entry>
 	  <entry id="103310" string="Internet radio station">Radio nant’à Internet</entry>
@@ -1397,9 +1397,13 @@
 	  <entry id="103313" string="Commercial information">Infurmazioni cummerciali</entry>
 	</section>
 
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics">Parolle</entry>
+	</section>
+
 	<section name="Configuration">
-	  <entry id="103400" string="Behavior">Andamentu</entry>
-	  <entry id="103401" string="Clear album artist field if it matches track artist">Squassà u campu di l’artista di l’albumu quand’ellu currisponde à quellu di a traccia</entry>
+	  <entry id="103400" string="Behavior">Cumpurtamentu</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Squassà u campu di l’artista di l’albumu s’ellu currisponde à quellu di a traccia</entry>
 	</section>
 
 	<section name="Errors">

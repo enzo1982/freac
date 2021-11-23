@@ -68,6 +68,21 @@
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
+    <section name="Media types">
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">DAT</entry>
+      <entry id="602" string="MiniDisc">Minidisc</entry>
+      <entry id="603" string="Compact Cassette">Kompaktná kazeta</entry>
+      <entry id="604" string="Reel tape">Cievkový mgf</entry>
+      <entry id="605" string="Vinyl">Vinil</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">Laserdisc</entry>
+      <entry id="608" string="TV">Televízor</entry>
+      <entry id="609" string="Video">Video</entry>
+      <entry id="610" string="Radio">Rádio</entry>
+      <entry id="611" string="Telephone">Telefón</entry>
+    </section>
+
     <section name="Menu">
       <entry id="1000" string="File">Súbor</entry>
       <entry id="1001" string="Options">Možnosti</entry>
@@ -205,6 +220,7 @@
       <entry id="3044" string="verifying">overuje sa</entry>
       <entry id="3045" string="Open">Otvoriť</entry>
       <entry id="3046" string="CD drive">CD drive</entry>
+      <entry id="3047" string="Disc ID">Disk ID</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">Kóduje sa súbor</entry>
@@ -401,6 +417,7 @@
       <entry id="5023" string="Verifiers">Overenia</entry>
       <entry id="5024" string="Taggers">Taggery</entry>
       <entry id="5025" string="Processing">Spracovanie</entry>
+      <entry id="5026" string="Additional arguments">Ďalšie parametre</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Nastaviť kodek</entry>
@@ -546,6 +563,7 @@
 	  <entry id="5664" string="Channels">Kanály</entry>
 	  <entry id="5665" string="Sample resolution">Rozlíšenie vzorkovania</entry>
 	  <entry id="5666" string="CD drive">CD mechanika</entry>
+	  <entry id="5667" string="Disc ID">Disk ID</entry>
 	</section>
       </section>
 
@@ -619,6 +637,7 @@
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">Nemožno pristupovať k súboru: %1&#10;&#10;Súbor: %1&#10;Adresár: %2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Nemožno vytvoriť súbor: %1&#10;&#10;Súbor: %1&#10;Adresár: %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">Zlyhalo overovania vstupného súboru: %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1">Zlyhalo overovania vstupného stopu: %1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Nesúlad kontrolného súčtu vo výstupnom súbore: %1&#10;&#10;Kontrolný súčet: %2&#10;Overte kontrolný súčet: %3</entry>
       <entry id="7110" string="File not found">Súbor nebol nájdený</entry>
       <entry id="7111" string="Unknown file type">Neznámy typ súboru</entry>
@@ -634,6 +653,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Prístup k CD-ROM mechanike bol zamietnutý Windowsom.&#10;&#10;Prosím, kontaktujte vášho systémového administrátora pre&#10;získanie prístupu k CD-ROM mechanike.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Nie je k dispozícii žiadny konfiguračný dialóg pre:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">Zvolený priečinok už neexistuje</entry>
+      <entry id="7124" string="Access denied">Prístup odopretý</entry>
     </section>
 
     <section name="Dialogs">
@@ -704,11 +724,18 @@
 	<entry id="12002" string="Sample Rate Converter">Sample Rate Converter</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise Noise Reduction</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band Tempo/Pitch Changer</entry>
+	<entry id="12005" string="HDCD Decoder">HDCD Dekódovač</entry>
+      </section>
+
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier">Overovač AccurateRip</entry>
       </section>
 
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Oznamy</entry>
 	<entry id="15001" string="Logging">Logovanie</entry>
+	<entry id="15002" string="Video Downloader">Stahovač Video</entry>
+	<entry id="15003" string="Tag Editor">Editor Tag</entry>
       </section>
     </section>
 
@@ -1100,6 +1127,13 @@
       <section name="MP4">
 	<entry id="60000" string="Chapter format">Formát kapitol</entry>
 	<entry id="60001" string="both">obojaký</entry>
+      </section>
+    </section>
+
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">Konfigurovať AccurateRip</entry>
       </section>
     </section>
 

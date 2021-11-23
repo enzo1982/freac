@@ -44,7 +44,7 @@
     <entry id="352" string="unknown album">álbum desconhecido</entry>
     <entry id="353" string="unknown genre">gênero desconhecido</entry>
     <entry id="354" string="unknown year">ano desconhecido</entry>
-    <entry id="355" string="unknown conductor">regência desconhecida</entry>
+    <entry id="355" string="unknown conductor">regente desconhecido</entry>
     <entry id="356" string="unknown composer">compositor desconhecido</entry>
     <entry id="357" string="unknown album artist">artista do álbum desconhecido</entry>
 
@@ -1388,18 +1388,22 @@
 	  <entry id="103303" string="Media type">Tipo de mídia</entry>
 	  <entry id="103304" string="Catalog number">Número do catálogo</entry>
 	  <entry id="103305" string="Barcode">Código de barras</entry>
-	  <entry id="103307" string="Webpage URLs">URLs da página Web</entry>
-	  <entry id="103308" string="Artist webpage">Página Web do artista</entry>
-	  <entry id="103309" string="Publisher webpage">Página Web do editor</entry>
+	  <entry id="103307" string="Webpage URLs">URLs da página web</entry>
+	  <entry id="103308" string="Artist webpage">Página web do artista</entry>
+	  <entry id="103309" string="Publisher webpage">Página web do editor</entry>
 	  <entry id="103310" string="Internet radio station">Estação de rádio da Internet</entry>
-	  <entry id="103311" string="Audio source webpage">Página Web da fonte de áudio</entry>
-	  <entry id="103312" string="Copyright information">Informações sobre Copyright (direitos autorais)</entry>
+	  <entry id="103311" string="Audio source webpage">Página web da fonte de áudio</entry>
+	  <entry id="103312" string="Copyright information">Informações sobre copyright (direitos autorais)</entry>
 	  <entry id="103313" string="Commercial information">Informação comercial</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics">Letras</entry>
 	</section>
 
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Comportamento</entry>
-	  <entry id="103401" string="Clear album artist field if it matches track artist">Limpe o campo do artista do álbum quando ele coincidir com o artista da faixa</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Limpa o campo do artista do álbum caso corresponda ao artista da faixa</entry>
 	</section>
 
 	<section name="Errors">

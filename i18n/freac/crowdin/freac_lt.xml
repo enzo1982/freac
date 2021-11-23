@@ -34,6 +34,10 @@
     <entry id="309" string="File name">Failo vardas</entry>
     <entry id="310" string="File type">Failo tipas</entry>
     <entry id="311" string="Album artist">Albumo atlikėjas</entry>
+    <entry id="312" string="Conductor">Dirigentas</entry>
+    <entry id="313" string="Composer">Kompozitorius</entry>
+    <entry id="314" string="Tempo">Tempas</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">nežinomas atlikėjas</entry>
     <entry id="351" string="unknown title">nežinomas pavadinimas</entry>
@@ -1367,8 +1371,6 @@
 	  <entry id="103200" string="Details">Išsamiai</entry>
 	  <entry id="103201" string="Detailed information">Išsami informacija</entry>
 	  <entry id="103202" string="Band / orchestra">Grupė / orkestras</entry>
-	  <entry id="103203" string="Conductor">Dirigentas</entry>
-	  <entry id="103204" string="Composer">Kompozitorius</entry>
 	  <entry id="103205" string="Lyrics writer">Žodžių autorius</entry>
 	  <entry id="103206" string="Modified / remixed by">Modifikavo / sumaišė</entry>
 	  <entry id="103207" string="Original information">Originalo informacija</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">Originalo albumas</entry>
 	  <entry id="103210" string="Original lyrics writer">Originalo žodžių autorius</entry>
 	  <entry id="103211" string="Original release year">Originalo išleidimo metai</entry>
-	  <entry id="103212" string="Tempo">Tempas</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type">Medijos tipas</entry>
 	  <entry id="103304" string="Catalog number">Katalogo numeris</entry>
 	  <entry id="103305" string="Barcode">Brūkšninis kodas</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">Tinklalapių adresai</entry>
 	  <entry id="103308" string="Artist webpage">Atlikėjo tinklalapis</entry>
 	  <entry id="103309" string="Publisher webpage">Leidėjo tinklalapis</entry>
@@ -1395,6 +1395,10 @@
 	  <entry id="103311" string="Audio source webpage">Audio šaltinio tinklalapis</entry>
 	  <entry id="103312" string="Copyright information">Autorinių teisių informacija</entry>
 	  <entry id="103313" string="Commercial information">Komercinė informacija</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics"/>
 	</section>
 
 	<section name="Configuration">

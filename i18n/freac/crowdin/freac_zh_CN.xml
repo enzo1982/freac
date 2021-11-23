@@ -34,6 +34,10 @@
     <entry id="309" string="File name">文件名</entry>
     <entry id="310" string="File type">文件类型</entry>
     <entry id="311" string="Album artist">专辑艺术家</entry>
+    <entry id="312" string="Conductor">指挥</entry>
+    <entry id="313" string="Composer">作曲</entry>
+    <entry id="314" string="Tempo">节奏</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">未知艺术家</entry>
     <entry id="351" string="unknown title">未知标题</entry>
@@ -1367,8 +1371,6 @@
 	  <entry id="103200" string="Details">详细信息</entry>
 	  <entry id="103201" string="Detailed information">详细信息</entry>
 	  <entry id="103202" string="Band / orchestra">乐队 / 管弦乐团</entry>
-	  <entry id="103203" string="Conductor">指挥</entry>
-	  <entry id="103204" string="Composer">作曲</entry>
 	  <entry id="103205" string="Lyrics writer">作词</entry>
 	  <entry id="103206" string="Modified / remixed by">修改 / 混音</entry>
 	  <entry id="103207" string="Original information">原始信息</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">原专辑</entry>
 	  <entry id="103210" string="Original lyrics writer">原作词</entry>
 	  <entry id="103211" string="Original release year">原发行时间</entry>
-	  <entry id="103212" string="Tempo">节奏</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type"/>
 	  <entry id="103304" string="Catalog number"/>
 	  <entry id="103305" string="Barcode"/>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">网页地址</entry>
 	  <entry id="103308" string="Artist webpage">艺术家主页</entry>
 	  <entry id="103309" string="Publisher webpage">出版商主页</entry>
@@ -1395,6 +1395,10 @@
 	  <entry id="103311" string="Audio source webpage">音频资源网</entry>
 	  <entry id="103312" string="Copyright information">版权信息</entry>
 	  <entry id="103313" string="Commercial information">商业信息</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics"/>
 	</section>
 
 	<section name="Configuration">

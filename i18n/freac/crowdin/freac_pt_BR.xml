@@ -34,13 +34,17 @@
     <entry id="309" string="File name">Nome do arquivo</entry>
     <entry id="310" string="File type">Tipo de arquivo</entry>
     <entry id="311" string="Album artist">Álbum do artista</entry>
+    <entry id="312" string="Conductor">Regente</entry>
+    <entry id="313" string="Composer">Compositor</entry>
+    <entry id="314" string="Tempo">Tempo</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">artista desconhecido</entry>
     <entry id="351" string="unknown title">título desconhecido</entry>
     <entry id="352" string="unknown album">álbum desconhecido</entry>
     <entry id="353" string="unknown genre">gênero desconhecido</entry>
     <entry id="354" string="unknown year">ano desconhecido</entry>
-    <entry id="355" string="unknown conductor">regência desconhecida</entry>
+    <entry id="355" string="unknown conductor">regente desconhecido</entry>
     <entry id="356" string="unknown composer">compositor desconhecido</entry>
     <entry id="357" string="unknown album artist">artista do álbum desconhecido</entry>
 
@@ -1367,8 +1371,6 @@
 	  <entry id="103200" string="Details">Detalhes</entry>
 	  <entry id="103201" string="Detailed information">Informação detalhada</entry>
 	  <entry id="103202" string="Band / orchestra">Banda / orquestra</entry>
-	  <entry id="103203" string="Conductor">Regente</entry>
-	  <entry id="103204" string="Composer">Compositor</entry>
 	  <entry id="103205" string="Lyrics writer">Autor da letra</entry>
 	  <entry id="103206" string="Modified / remixed by">Modificado / remixado por</entry>
 	  <entry id="103207" string="Original information">Informação original</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">Álbum original</entry>
 	  <entry id="103210" string="Original lyrics writer">Autor original da letra</entry>
 	  <entry id="103211" string="Original release year">Ano de lançamento do original</entry>
-	  <entry id="103212" string="Tempo">Tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1387,19 +1388,22 @@
 	  <entry id="103303" string="Media type">Tipo de mídia</entry>
 	  <entry id="103304" string="Catalog number">Número do catálogo</entry>
 	  <entry id="103305" string="Barcode">Código de barras</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
-	  <entry id="103307" string="Webpage URLs">URLs da página Web</entry>
-	  <entry id="103308" string="Artist webpage">Página Web do artista</entry>
-	  <entry id="103309" string="Publisher webpage">Página Web do editor</entry>
+	  <entry id="103307" string="Webpage URLs">URLs da página web</entry>
+	  <entry id="103308" string="Artist webpage">Página web do artista</entry>
+	  <entry id="103309" string="Publisher webpage">Página web do editor</entry>
 	  <entry id="103310" string="Internet radio station">Estação de rádio da Internet</entry>
-	  <entry id="103311" string="Audio source webpage">Página Web da fonte de áudio</entry>
-	  <entry id="103312" string="Copyright information">Informações sobre Copyright (direitos autorais)</entry>
+	  <entry id="103311" string="Audio source webpage">Página web da fonte de áudio</entry>
+	  <entry id="103312" string="Copyright information">Informações sobre copyright (direitos autorais)</entry>
 	  <entry id="103313" string="Commercial information">Informação comercial</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics">Letras</entry>
 	</section>
 
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Comportamento</entry>
-	  <entry id="103401" string="Clear album artist field if it matches track artist">Limpe o campo do artista do álbum quando ele coincidir com o artista da faixa</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Limpa o campo do artista do álbum caso corresponda ao artista da faixa</entry>
 	</section>
 
 	<section name="Errors">

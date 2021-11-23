@@ -34,6 +34,10 @@
     <entry id="309" string="File name">Nazwa pliku</entry>
     <entry id="310" string="File type">Typ pliku</entry>
     <entry id="311" string="Album artist">Wykonawca albumu</entry>
+    <entry id="312" string="Conductor">Dyrygent</entry>
+    <entry id="313" string="Composer">Kompozytor</entry>
+    <entry id="314" string="Tempo">Tempo</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">nieznany wykonawca</entry>
     <entry id="351" string="unknown title">nieznany tytuł</entry>
@@ -1367,8 +1371,6 @@
 	  <entry id="103200" string="Details">Szczegóły</entry>
 	  <entry id="103201" string="Detailed information">Informacje szczegółowe</entry>
 	  <entry id="103202" string="Band / orchestra">Zespół/orkiestra</entry>
-	  <entry id="103203" string="Conductor">Dyrygent</entry>
-	  <entry id="103204" string="Composer">Kompozytor</entry>
 	  <entry id="103205" string="Lyrics writer">Autor tekstu</entry>
 	  <entry id="103206" string="Modified / remixed by">Zmodyfikowane/zremiksowane przez</entry>
 	  <entry id="103207" string="Original information">Oryginalne informacje</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">Album oryginalny</entry>
 	  <entry id="103210" string="Original lyrics writer">Oryginalny autor tekstu</entry>
 	  <entry id="103211" string="Original release year">Pierwotny rok wydania</entry>
-	  <entry id="103212" string="Tempo">Tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type">Rodzaj nośnika</entry>
 	  <entry id="103304" string="Catalog number">Numer katalogowy</entry>
 	  <entry id="103305" string="Barcode">Kod paskowy</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">Adres URL strony</entry>
 	  <entry id="103308" string="Artist webpage">Strona WWW wykonawcy</entry>
 	  <entry id="103309" string="Publisher webpage">Strona WWW wydawcy</entry>
@@ -1395,6 +1395,10 @@
 	  <entry id="103311" string="Audio source webpage">Strona WWW źródła audio</entry>
 	  <entry id="103312" string="Copyright information">Informacje o prawach autorskich</entry>
 	  <entry id="103313" string="Commercial information">Informacje handlowe</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics">Słowa</entry>
 	</section>
 
 	<section name="Configuration">

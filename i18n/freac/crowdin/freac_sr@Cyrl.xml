@@ -34,6 +34,10 @@
     <entry id="309" string="File name">Назив фајла</entry>
     <entry id="310" string="File type">Врста фајла</entry>
     <entry id="311" string="Album artist">Извођач на албуму</entry>
+    <entry id="312" string="Conductor">Диригент</entry>
+    <entry id="313" string="Composer">Композитор</entry>
+    <entry id="314" string="Tempo">Темпо</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
 
     <entry id="350" string="unknown artist">непознат извођач</entry>
     <entry id="351" string="unknown title">напознат назив</entry>
@@ -1367,8 +1371,6 @@
 	  <entry id="103200" string="Details">Детаљи</entry>
 	  <entry id="103201" string="Detailed information">Детаљна информација</entry>
 	  <entry id="103202" string="Band / orchestra">Група / оркестар</entry>
-	  <entry id="103203" string="Conductor">Диригент</entry>
-	  <entry id="103204" string="Composer">Композитор</entry>
 	  <entry id="103205" string="Lyrics writer">Писац текста</entry>
 	  <entry id="103206" string="Modified / remixed by">Мењао / ремиксовао</entry>
 	  <entry id="103207" string="Original information">Изворна информација</entry>
@@ -1376,7 +1378,6 @@
 	  <entry id="103209" string="Original album">Изворни албум</entry>
 	  <entry id="103210" string="Original lyrics writer">Изворни писац текста</entry>
 	  <entry id="103211" string="Original release year">Изворна година издања</entry>
-	  <entry id="103212" string="Tempo">Темпо</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	</section>
 
@@ -1387,7 +1388,6 @@
 	  <entry id="103303" string="Media type">Врста медије</entry>
 	  <entry id="103304" string="Catalog number">Каталошки број</entry>
 	  <entry id="103305" string="Barcode">Бар-код</entry>
-	  <entry id="103306" string="ISRC">ISRC</entry>
 	  <entry id="103307" string="Webpage URLs">Интернет URL-ови</entry>
 	  <entry id="103308" string="Artist webpage">Интернет страна извођача</entry>
 	  <entry id="103309" string="Publisher webpage">Интернет страна издавача</entry>
@@ -1395,6 +1395,10 @@
 	  <entry id="103311" string="Audio source webpage">Интернет страна аудио извора</entry>
 	  <entry id="103312" string="Copyright information">Инфо о правима копирања</entry>
 	  <entry id="103313" string="Commercial information">Комерцијална информација</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics"/>
 	</section>
 
 	<section name="Configuration">

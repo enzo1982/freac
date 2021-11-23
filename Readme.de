@@ -160,8 +160,10 @@ Geschichte
 		- Verbesserungen
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
+			- Playlisten können jetzt per Drag & Drop zur Jobliste hinzugefügt werden
 			- Optionale Spalten für Komponist, Dirigent, Tempo und ISRC zur Jobliste hinzugefügt
 			- Unterstützung für Liedtexte in ID3v2-, MP4-, Vorbis Comment-, APEv2- und WMA-Tags hinzugefügt
+			- Unterstützung für das Einlesen von OverDrive MediaMarkers aus ID3v2-Tags hinzugefügt
 
 		- Behobene Fehler
 
@@ -176,8 +178,9 @@ Geschichte
 			- Problem mit Drag & Drop nach Online-Update unter Windows behoben
 			- Problem mit Dialogen zum Öffnen/Speichern von Dateien unter macOS 12.0 Monterey behoben
 
-		- Aktualisierte Codecs
+		- Neue und aktualisierte Codecs
 
+			- Nativen Apple Lossless-Dekodierer hinzugefügt
 			- FFmpeg auf Version 4.4.1 aktualisiert
 			- Monkey's Audio auf Version 7.14 aktualisiert
 			- mpg123 auf Version 1.29.2 aktualisiert
