@@ -153,6 +153,8 @@ Geschichte
 
 	Version 1.1.6 (November 2021)
 
+		- Native Unterstützung für Windows auf der ARM64-Architektur hinzugefügt
+
 		- Neue Funktionen
 
 			- Unterstützung für die Bearbeitung von Liedtexten im Tag-Editor hinzugefügt

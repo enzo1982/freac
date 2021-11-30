@@ -154,6 +154,8 @@ History
 
 	Version 1.1.6 (November 2021)
 
+		- added native support for Windows on the ARM64 architecture
+
 		- New features
 
 			- added support for editing lyrics in the tag editor

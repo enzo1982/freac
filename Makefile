@@ -85,6 +85,8 @@ ifeq ($(BUILD_WIN32),True)
 		RESCOMP_OPTS	+= --target=pe-i386
 	else ifeq ($(BUILD_X86_64),True)
 		RESCOMP_OPTS	+= --target=pe-x86-64
+	else ifeq ($(BUILD_ARM64),True)
+		RESCOMP		 = aarch64-w64-mingw32-windres
 	endif
 else
 	CCOPTS			+= -fPIC

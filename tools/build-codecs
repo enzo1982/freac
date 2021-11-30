@@ -45,10 +45,14 @@ elif [[ $uname == Darwin ]]; then
   asflags="-arch x86_64"
   ldflags="-Wl,-x -arch x86_64"
   x86_64=true
-elif [[ $machine == *amd64* || $machine == *x86_64* ]] && [[ $BUILD_X86 != True ]] && [[ $uname != *MINGW* || $BUILD_X86_64 == True ]]; then
+elif [[ $machine == *amd64* || $machine == *x86_64* ]] && [[ $BUILD_ARM64 != True ]] && [[ $BUILD_X86 != True ]] && [[ $uname != *MINGW* || $BUILD_X86_64 == True ]]; then
   cflags="$cflags -m64 -march=nocona -mno-sse3"
   ldflags="-m64"
   x86_64=true
+elif [[ $machine == *amd64* || $machine == *x86_64* ]] && [[ $BUILD_ARM64 == True ]]; then
+  cflags="$cflags -march=armv8-a+simd"
+  host="aarch64-w64-mingw32"
+  arm64=true
 elif [[ $machine == *aarch64* ]]; then
   cflags="$cflags -I/usr/local/include -march=armv8-a+simd"
   arm64=true
@@ -62,11 +66,6 @@ else
 fi
 
 cflags_unroll="-funroll-loops"
-
-# Add libssp on MinGW
-if [[ $uname == *MINGW* ]]; then
-  ldflags="$ldflags -lssp"
-fi
 
 # Set host triple on Linux
 if [[ $uname == Linux ]]; then
@@ -88,6 +87,11 @@ export MAKE=make
 export SUDO=sudo
 export DL="wget -O"
 export PATCH="patch --binary"
+
+if [[ $uname == *MINGW* ]] && [[ $arm64 == true ]]; then
+  export CC=aarch64-w64-mingw32-clang
+  export CXX=aarch64-w64-mingw32-clang
+fi
 
 if [[ $uname == Darwin ]]; then
   MACOSX_MINOR_VERSION=${MACOSX_TARGET#*.}
@@ -141,7 +145,7 @@ flac_version=1.3.3
 lame_version=3.100
 libcdio_version=2.1.0
 libcdio_paranoia_version=10.2+2.0.1
-libcdrip_version=2.4
+libcdrip_version=2.4a
 libogg_version=1.3.5
 libsamplerate_version=0.2.2
 libsndfile_version=1.0.31
@@ -339,7 +343,12 @@ for package in ${packages[@]}; do
   if [ $package == exhale ]; then
     # Build exhale
     if [[ $uname == *MINGW* ]]; then
-      prepare="sed -i -e \"s/-fPIC//\" src/makefile.base && sed -i -e \"s/= .(CPP)/= gcc/\" src/makefile.base && sed -i -e \"s/-ldl//\" src/app/makefile && sed -i -e \"s/-l.(PRD_NAME).*/& -lstdc++.static/\" src/app/makefile && sed -i -e \"s/printf_s/printf/\" src/app/exhaleApp.cpp"
+      prepare="sed -i -e \"s/-fPIC//\" src/makefile.base && sed -i -e \"s/= g../= \$\(CXX\)/\" src/makefile.base && sed -i -e \"s/= .(CPP)/= \$\(CXX\)/\" src/makefile.base && sed -i -e \"s/-ldl//\" src/app/makefile && sed -i -e \"s/printf_s/printf/\" src/app/exhaleApp.cpp && sed -i -e \"s/ú#+/-/\" src/app/exhaleApp.cpp"
+      if [[ $arm64 == true ]]; then
+        prepare="$prepare; sed -i -e \"s/-l.(PRD_NAME).*/& -lstdc++/\" src/app/makefile"
+      else
+        prepare="$prepare; sed -i -e \"s/-l.(PRD_NAME).*/& -lstdc++.static/\" src/app/makefile"
+      fi
     fi
     if [[ $uname == Haiku ]]; then
       make_flags="LIBS="
@@ -353,11 +362,15 @@ for package in ${packages[@]}; do
     # Build FAAC
     folder=faac-${faac_version//./_}
     prepare="sed -i -e \"s/FAACAPI __stdcall/FAACAPI/\" include/faac.h"
-    if [[ $x86_64 != true ]]; then
-      if [[ $uname == *MINGW* ]]; then
+    if [[ $uname == *MINGW* ]]; then
+      if [[ $arm64 == true ]]; then
+        configure_exports="WINDRES=\"aarch64-w64-mingw32-windres\""
+        prepare="sed -i -e \"s/-Wl,--add-stdcall-alias//\" libfaac/Makefile.am"
+      elif [[ $x86 == true ]]; then
         configure_exports="WINDRES=\"windres -F pe-i386\""
       fi
-    else
+    fi
+    if [[ $x86_64 == true ]]; then
       if [[ $CC != clang ]]; then
         export CFLAGS="$cflags $cflags_unroll -mfpmath=387"
       fi
@@ -392,6 +405,8 @@ for package in ${packages[@]}; do
       fi
       if [[ $uname == Linux ]]; then
         host_flags="$host_flags --target-os=linux"
+      elif [[ $uname == *MINGW* ]]; then
+        host_flags="$host_flags --target-os=win32 --cross-prefix=aarch64-w64-mingw32-"
       fi
     else
       host_flags=" "
@@ -418,10 +433,16 @@ for package in ${packages[@]}; do
     # Build FLAC
     patches=${flac_patches[@]}
     patch_levels=(${flac_patch_levels[@]})
+    export CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=0"
     configure_flags="--disable-cpplibs"
     if [[ $x86_64 == true ]] || [[ $arm64 == true ]]; then
       if [[ $uname == *MINGW* ]]; then
-        prepare="sed -i -e \"s/#undef FLAC__CPU_IA32//\" config.h.in && sed -i -e \"s/#undef FLAC__CPU_X86_64/#define FLAC__CPU_X86_64 1/\" config.h.in && sed -i -e \"s/ARCH_SUBDIRS = ia32/ARCH_SUBDIRS =/\" src/libFLAC/Makefile.in && sed -i -e \"s/LOCAL_EXTRA_LIBADD = ia32\/libFLAC-asm\.la/LOCAL_EXTRA_LIBADD =/\" src/libFLAC/Makefile.in"
+        prepare="sed -i -e \"s/#undef FLAC__CPU_IA32//\" config.h.in && sed -i -e \"s/ARCH_SUBDIRS = ia32/ARCH_SUBDIRS =/\" src/libFLAC/Makefile.in && sed -i -e \"s/LOCAL_EXTRA_LIBADD = ia32\/libFLAC-asm\.la/LOCAL_EXTRA_LIBADD =/\" src/libFLAC/Makefile.in"
+        if [[ $x86_64 == true ]]; then
+          prepare="$prepare; sed -i -e \"s/#undef FLAC__CPU_X86_64/#define FLAC__CPU_X86_64 1/\" config.h.in"
+        else
+          prepare="$prepare; sed -i -e \"s/HAVE_SYS_PARAM_H/HAVE_xxx_PARAM_H/\" src/libFLAC/include/private/macros.h"
+        fi
       fi
       configure_flags="$configure_flags --enable-64-bit-words"
     fi
@@ -486,11 +507,14 @@ for package in ${packages[@]}; do
     # Build libcdrip
     export CFLAGS="$cflags -Os"
     configure_flags="--disable-cxx"
-    if [[ $x86_64 == true ]]; then
+    if [[ $x86 == true ]]; then
+      build $libcdrip_location bin/x86/CDRip.$sharedext CDRip.$sharedext
+    elif [[ $x86_64 == true ]]; then
       make_flags="-f Makefile.x64"
-      build $libcdrip_location bin64/CDRip.$sharedext CDRip.$sharedext
-    else
-      build $libcdrip_location bin/CDRip.$sharedext CDRip.$sharedext
+      build $libcdrip_location bin/x86-64/CDRip.$sharedext CDRip.$sharedext
+    elif [[ $arm64 == true ]]; then
+      make_flags="-f Makefile.arm64"
+      build $libcdrip_location bin/arm64/CDRip.$sharedext CDRip.$sharedext
     fi
 
   elif [ $package == libogg ]; then
@@ -506,6 +530,7 @@ for package in ${packages[@]}; do
 
   elif [ $package == libsndfile ]; then
     # Build libsndfile
+    export CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=0"
     prepare="sed -i -e \"s/immintrin\.h/emmintrin.h/\" src/common.h"
     if [[ $uname == Darwin ]]; then
       configure_exports="CXX=g++"
@@ -541,12 +566,17 @@ for package in ${packages[@]}; do
       patch_levels=(${mp4v2_patch_levels[@]})
     fi
     prepare="$DL autoaux/config.guess 'https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.guess'; $DL autoaux/config.sub 'https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.sub'"
+    if [[ $uname == *MINGW* ]] && [[ $arm64 == true ]]; then
+      prepare="$prepare; sed -i -e \"s/#define snprintf.*//\" libplatform/platform_win32.h"
+    fi
     build $mp4v2_location src/libmp4v2$sharedinfix.$sharedext MP4v2.$sharedext
 
   elif [ $package == mpg123 ]; then
     # Build mpg123
     configure_flags="--enable-modules=no"
-    if [[ $uname == Darwin ]]; then
+    if [[ $uname == *MINGW* ]]; then
+      export CFLAGS="$cflags $cflags_unroll -DWIN32"
+    elif [[ $uname == Darwin ]]; then
       export CFLAGS="$cflags $cflags_unroll -std=c99"
     fi
     if [[ $ppc == true ]]; then
@@ -572,15 +602,19 @@ for package in ${packages[@]}; do
     configure_flags="--disable-shared"
     if [[ $uname == *MINGW* ]]; then
       prepare="$prepare; sed -i -e \"s/mpc2sv8//\" Makefile.am; sed -i -e \"s/\*mingw32\*/*mingw*/\" configure.ac"
+      if [[ $arm64 == true ]]; then
+        prepare="$prepare; sed -i -e \"s/const/extern const/\" libmpcdec/requant.h; sed -i -e \"s/__MINGW32__/__MINGWxx__/\" mpcenc/mpcenc.c"
+      fi
     fi
     build $musepack_location "mpcenc/mpcenc.$execext mpcdec/mpcdec.$execext" "mpcenc.$execext mpcdec.$execext"
 
   elif [ $package == opus ]; then
     # Build Opus
+    export CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=0"
     if [[ $x86 == true ]]; then
-      export CFLAGS="$cflags $cflags_unroll -mfpmath=sse"
+      export CFLAGS="$CFLAGS -mfpmath=sse"
     fi
-    configure_flags="--enable-float-approx"
+    configure_flags="--enable-float-approx --disable-hardening"
     if [[ $uname == Darwin ]] && [[ $x86_64 != true ]]; then
       configure_flags="$configure_flags --disable-intrinsics"
     fi
@@ -600,8 +634,12 @@ for package in ${packages[@]}; do
     patch_levels=(${rubberband_patch_levels[@]})
     configure_exports="FFTW_CFLAGS=\" \" FFTW_LIBS=\" \" SRC_CFLAGS=\" \" SRC_LIBS=\" \" Vamp_CFLAGS=\" \" Vamp_LIBS=\" \""
     if [[ $uname == *MINGW* ]]; then
-      prepare="sed -i -e \"s/-DNO_THREAD_CHECKS -DUSE_PTHREADS/-DUSE_OWN_ALIGNED_MALLOC/\" Makefile.in && sed -i -e \"s/-lpthread//\" Makefile.in && sed -i -e \"s/all:.*/all: bin lib \$\(DYNAMIC_TARGET\)/\" Makefile.in && sed -i -e \"s/:= .so/:= .dll/\" Makefile.in"
+      prepare="sed -i -e \"s/-fPIC//\" configure && sed -i -e \"s/-DNO_THREAD_CHECKS -DUSE_PTHREADS/-DUSE_OWN_ALIGNED_MALLOC/\" Makefile.in && sed -i -e \"s/-lpthread//\" Makefile.in && sed -i -e \"s/all:.*/all: bin lib \$\(DYNAMIC_TARGET\)/\" Makefile.in && sed -i -e \"s/:= .so/:= .dll/\" Makefile.in"
       configure_exports="$configure_exports SNDFILE_CFLAGS=\" \" SNDFILE_LIBS=\" \""
+      if [[ $arm64 == true ]]; then
+        prepare="$prepare; sed -i -e \"s/__asm__.*/__builtin_arm_dmb(1);/\" src/system/sysutils.cpp; sed -i -e \"s/: .*=r.*Barrier.*;//\" src/system/sysutils.cpp"
+        prepare="$prepare; sed -i -e \"s/-Wl,-Bsymbolic//\" Makefile.in; sed -i -e \"s/-Wl,-soname.*//\" Makefile.in"
+      fi
     elif [[ $uname == Darwin ]]; then
       prepare="sed -i -e \"s/-Wl,-Bsymbolic//\" Makefile.in && sed -i -e \"s/ -Wl,-soname=.*//\" Makefile.in && sed -i -e \"s/:= .so/:= .dylib/\" Makefile.in"
       configure_exports="$configure_exports SNDFILE_CFLAGS=\" \" SNDFILE_LIBS=\"-lsndfile\""

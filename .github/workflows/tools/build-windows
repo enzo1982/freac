@@ -14,6 +14,10 @@ if [ "$BUILD_X86_64" = True ]; then
 else
   BIN=bin
   LIB=lib
+
+  if [ "$BUILD_ARM64" = True ]; then
+    ARCH=-arm64
+  fi
 fi
 
 # Build smooth
@@ -91,12 +95,12 @@ rm $BIN/boca/boca_decoder_aiff.1.0.dll $BIN/boca/boca_decoder_au.1.0.dll $BIN/bo
 rm $BIN/boca/boca_encoder_bonk.1.0.dll $BIN/boca/boca_encoder_wave.1.0.dll
 rm $BIN/boca/boca_output_waveout.1.0.dll
 
-if [ "$BUILD_X86_64" = True ]; then
-  rm $BIN/boca/boca_encoder_bladeenc.1.0.dll
-else
+if [ "$BUILD_X86" = True ]; then
   rm $BIN/boca/boca_decoder_twinvq.1.0.dll
   rm $BIN/boca/boca_encoder_twinvq.1.0.dll
   rm $BIN/boca/boca_output_winamp.1.0.dll
+else
+  rm $BIN/boca/boca_encoder_bladeenc.1.0.dll
 fi
 
 cp boca/scripts/*.xml $BIN/boca
@@ -113,10 +117,12 @@ cp -R components/extension/langnotify/freac.extension.langnotify $BIN/boca
 cp -R components/extension/notifier/freac.extension.notifier $BIN/boca
 
 # Copy other dependencies
-if [ "$BUILD_X86_64" = True ]; then
-  cp boca/system64/usr/bin/libgcc.dll boca/system64/usr/bin/libstdc++.dll $BIN
-else
+if [ "$BUILD_X86" = True ]; then
   cp boca/system/usr/bin/libgcc.dll boca/system/usr/bin/libstdc++.dll $BIN
+elif [ "$BUILD_X86_64" = True ]; then
+  cp boca/system64/usr/bin/libgcc.dll boca/system64/usr/bin/libstdc++.dll $BIN
+elif [ "$BUILD_ARM64" = True ]; then
+  cp boca/system-arm64/usr/aarch64-w64-mingw32/bin/libc++.dll boca/system-arm64/usr/aarch64-w64-mingw32/bin/libunwind.dll $BIN
 fi
 
 # Create zip package

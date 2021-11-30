@@ -48,21 +48,27 @@ else ifneq ($(findstring powerpc64,$(MACHINE)),)
 		BUILD_PPC64 = True
 	endif
 else ifneq ($(findstring x86_64,$(MACHINE)),)
+	ifneq ($(BUILD_ARM64),True)
 	ifneq ($(BUILD_X86),True)
 	ifneq ($(BUILD_X86_64),False)
 		BUILD_X86_64 = True
+	endif
 	endif
 	endif
 else ifneq ($(findstring amd64,$(MACHINE)),)
+	ifneq ($(BUILD_ARM64),True)
 	ifneq ($(BUILD_X86),True)
 	ifneq ($(BUILD_X86_64),False)
 		BUILD_X86_64 = True
 	endif
 	endif
+	endif
 else
+	ifneq ($(BUILD_ARM64),True)
 	ifneq ($(BUILD_X86),False)
 	ifneq ($(BUILD_X86_64),True)
 		BUILD_X86 = True
+	endif
 	endif
 	endif
 endif
@@ -353,6 +359,14 @@ ifeq ($(findstring debug,$(config)),debug)
 		USE_V8 = True
 	else ifeq ($(BUILD_MIPS),True)
 		USE_V8 = True
+	endif
+endif
+
+# Flags needed for Windows ARM64 toolchain
+ifeq ($(BUILD_WIN32),True)
+	ifeq ($(BUILD_ARM64),True)
+		override CFLAGS	 += -target aarch64-w64-mingw32
+		override LDFLAGS += -target aarch64-w64-mingw32
 	endif
 endif
 
