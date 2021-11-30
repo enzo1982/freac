@@ -12,9 +12,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: macos-10.15
-            target: 10.9
-
           - os: macos-11
             target: 11.0
 
@@ -38,12 +35,14 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: enzo1982/smooth
+          ref: hotfix
           path: smooth
 
       - name: Checkout BoCA
         uses: actions/checkout@v2
         with:
           repository: enzo1982/BoCA
+          ref: 4b041e7fb5025b89f1132ee18dd9c3169f57e990
           path: boca
 
       - name: Build DMG

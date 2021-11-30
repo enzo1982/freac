@@ -1,9 +1,9 @@
 #!/bin/bash
 
-RELEASE=1.1.5
+RELEASE=1.1.5a
 #RELEASE=1.1.5-`date +"%Y%m%d"`
 
-VERSION="v1.1.5"
+VERSION="v1.1.5a"
 #VERSION="v1.1.5 (`date +"%Y%m%d"`)"
 
 MACOSX_TARGET=$MACOSX_DEPLOYMENT_TARGET
