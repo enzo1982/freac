@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>Nybörjarhandledning - Användarhandbok för fre:ac</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+
+    <!-- Hack to avoid flash of unstyled content in IE -->
+    <script> </script>
+  </head>
+
+  <body id="onecolumn">
+    <div id="container">
+      <div class="wrapper">
+
+	<div id="header">
+	  <div class="wrapper">
+	    <h1 id="page-title">
+	      <div id="g_title">Nybörjarhandledning - Användarhandbok för fre:ac</div>
+	    </h1>
+	    <p class="description"></p>
+	    <div id="g_description">
+	      <p>Nybörjarhandledning till cd-rippning med fre:ac</p>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="main-content-oc">
+	  <div class="wrapper">
+	    <div class="content-item">
+	      <div id='g_body'>
+		<p>Hämta den senaste versionen av fre:ac från
+		  <a href="https://github.com/enzo1982/freac/releases">GitHub</a> eller
+		  från <a href="https://www.freac.org/">fre:acs hemsida</a>. Installera
+		  programmet och starta det. Mata nu in en ljud-cd i din CD/DVD-enhet.
+		  Spåren på cd:n dyker vanligtvis automatiskt upp i fre:acs huvudfönster.
+		  Om de inte gör det, klicka då på knappen
+		  <b>Lägg till innehåll från ljud-cd i jobblistan</b> för att lägga till spåren i jobblistan.</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/joblist_plain.png"/>
+		<p>Eftersom vi inte vill behöva skriva in namn och information för våra
+		  cd-skivor för hand, kan vi helt enkelt söka i cd-databasen freedb
+		  på internet för att automatiskt fylla i namnen åt oss. För att göra det
+		  går vi till menyn <b>Databas</b> och väljer <b>Sök i CDDB-databas</b>. Vi bör få
+		  upp en ruta som ser ut så här:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/query_cddb.png"/>
+		<p>Programmet kommer automatiskt att fylla i spårinformation:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/joblist_info.png"/>
+		<p>När det är gjort bör vi konfigurera de allmänna inställningarna
+		  för programmet. Gå till menyn <b>Inställningar</b> och välj <b>Allmänna inställningar</b>.
+		  Det kommer att öppna följande dialogfönster:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/config_settings.png"/>
+		<p>I den första panelen kan du ställa in inställningarna för kodarna. fre:ac
+		  visar som standard kodaren LAME MP3. Vi kommer att använda den i den här
+		  handledningen. Säkerställ att alternativet <b>Koda "i flykten"</b> är ikryssat.
+		  Ange också din målmapp, d.v.s. mappen där du vill att de kodade MP3-filerna skall hamna.
+		  I det här exemplet är målmappen datorns standardmapp för musik.</p>
+		<p>I fältet <b>Filnamnsmönster</b> kan du ange hur filnamnen skall formateras.
+		  Du kanske vill ha dina musikfiler i mappar där namnet på albumet och artisten
+		  visas i mappens rubrik och filnamnen är spårnumret följt av spårets titel.
+		  Det motsvarande filnamnsmönstret är
+		  <blockquote>
+		  <b>&lt;albumartist&gt; - &lt;album&gt;\&lt;track&gt;. &lt;title&gt;</b>
+		  </blockquote>
+		  Så i det här fallet kommer det att skapas en mapp som heter <b>Ningen Isu - Kuraku (苦楽)</b> och
+		  filnamnen kommer att vara spårnumret följt av en punkt och därefter spårnamnet.
+		  I Utforskaren ser det ut så här:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/explorer.png"/>
+		<p>För mer avancerade användare finns det flera andra inställningar, som kan
+		  anpassas till personliga önskemål eller krav.</p>
+		<p>Vi bör nu konfigurera LAME-kodaren, så att vi får ett hyggligt MP3-resultat.
+		  Gå till menyn <b>Inställningar</b> och välj <b>Inställningar för aktuell kodare</b>.</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/configure_encoder.png"/>
+		<p>Det bör öppna ett fönster som liknar det du ser här nedanför.</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/config_lame.png"/>
+		<p>fre:ac levereras med ett flertal olika förhandsinställningar för LAME-kodaren.
+		  De konfigurerar kodaren med olika inställningar som ger olika slutkvaliteter.
+		  Ju högre inställningen är (t.ex. <b>Extrem</b>), desto mer plats kommer MP3-filerna
+		  att ta upp på din hårddisk och desto bättre kommer de att låta.
+		  Du kan också ange dina egna inställningar och justera kvalitetsinställningarna
+		  var för sig. Du kan se ett exempel på de på bilden. Låt oss för tillfället
+		  lämna förinställningen på Standard. Klicka på OK, så skall vi välja vilka
+		  spår vi vill rippa och koda.</p>
+		<p>Nu när vi är tillbaka till huvudfönstret kan vi välja vilka spår vi vill
+		   rippa och koda. Till vänster om varje spår finns en liten kryssruta. Rutorna
+		  med ett litet <b>×</b> i sig är de som kommer att rippas och kodas.
+		  Eftersom du antagligen vill rippa hela cd:n, lämnar vi samtliga rutor
+		  ikryssade, men om du endast vill ha ett spår kan du avmarkera alla utom just det spåret.</p>
+		<p>Nu kan vi klicka på den stora uppspelningsknappen, som startar kodningsprocessen.</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/start_encoding.png"/>
+		<p>Nederdelen av fönstret kommer att visa en förloppsindikator:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/encoding.png"/>
+		<p>Allteftersom låtarna kodas, kommer jobblistan (där alla titlar visas) automatiskt att
+		  ta bort de spår som kodats klart.</p>
+		<p>Gratulerar! Du har precis rippat och kodat din första cd med fre:ac!</p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="footer">
+	  <div class="wrapper">
+	    <p></p>
+	    <div id='g_footer'>
+	      <p>Copyright &#169; 2006 Joseph Nahmias<br/>
+		Copyright &#169; 2007-2021 the fre:ac project (<a href="https://www.freac.org/">hemsida</a>)</p>
+	    </div>
+	    <p></p>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+  </body>
+</html>
