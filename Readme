@@ -163,6 +163,7 @@ History
 		- Improvements
 
 			- improved support for languages written from right to left
+			- improved performance of adding video and proprietary audio files (DTS, DSD etc.) to the joblist
 			- playlists can now be added to the joblist by drag & drop
 			- added optional composer, conductor, tempo and ISRC columns to the joblist
 			- added support for lyrics in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags
@@ -180,7 +181,6 @@ History
 			- fixed tag editor fields for media type, catalog number and barcode being limited to 12 characters
 			- fixed freeze when decoding certain WMA files on Windows
 			- fixed drag & drop not working after online update on Windows
-			- fixed open/save file dialogs failing on macOS 12.0 Monterey
 
 		- New and updated codecs
 
@@ -194,6 +194,12 @@ History
 
 			- added Persian translation
 			- added Swedish manual
+
+	Version 1.1.5a (December 2021)
+
+		- Bug fixes
+
+			- fixed open/save file dialogs failing on macOS 12.0 Monterey
 
 	Version 1.1.5 (June 2021)
 

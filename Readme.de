@@ -162,6 +162,7 @@ Geschichte
 		- Verbesserungen
 
 			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
+			- Performance beim Hinzufügen von Video- und proprietären Audiodateien (DTS, DSD etc.) zur Jobliste verbessert 
 			- Playlisten können jetzt per Drag & Drop zur Jobliste hinzugefügt werden
 			- Optionale Spalten für Komponist, Dirigent, Tempo und ISRC zur Jobliste hinzugefügt
 			- Unterstützung für Liedtexte in ID3v2-, MP4-, Vorbis Comment-, APEv2- und WMA-Tags hinzugefügt
@@ -179,7 +180,6 @@ Geschichte
 			- Fälschliche Begrenzung der Tag-Editor-Felder für Medienart, Katalognummer und Barcode auf 12 Zeichen behoben
 			- Einfrieren beim Dekodieren bestimmter WMA-Dateien unter Windows behoben
 			- Problem mit Drag & Drop nach Online-Update unter Windows behoben
-			- Problem mit Dialogen zum Öffnen/Speichern von Dateien unter macOS 12.0 Monterey behoben
 
 		- Neue und aktualisierte Codecs
 
@@ -193,6 +193,12 @@ Geschichte
 
 			- Persische Übersetzung hinzugefügt
 			- Schwedische Hilfeseiten hinzugefügt
+
+	Version 1.1.5a (Dezember 2021)
+
+		- Bug fixes
+
+			- Problem mit Dialogen zum Öffnen/Speichern von Dateien unter macOS 12.0 Monterey behoben
 
 	Version 1.1.5 (Juni 2021)
 
