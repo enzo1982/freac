@@ -1397,6 +1397,10 @@
 	  <entry id="103313" string="Commercial information">Commerciële informatie</entry>
 	</section>
 
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics">Songteksten</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Gedrag</entry>
 	  <entry id="103401" string="Clear album artist field if it matches track artist">Veld album-artiest wissen wanneer het overeenkomt met de track-artiest</entry>

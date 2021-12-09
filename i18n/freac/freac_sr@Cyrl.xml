@@ -1371,7 +1371,7 @@
 	  <entry id="103200" string="Details">Детаљи</entry>
 	  <entry id="103201" string="Detailed information">Детаљна информација</entry>
 	  <entry id="103202" string="Band / orchestra">Група / оркестар</entry>
-	  <entry id="103205" string="Lyrics writer">Писац текста</entry>
+	  <entry id="103205" string="Lyrics writer">Писац текста песме</entry>
 	  <entry id="103206" string="Modified / remixed by">Мењао / ремиксовао</entry>
 	  <entry id="103207" string="Original information">Изворна информација</entry>
 	  <entry id="103208" string="Original artist">Изворни извођач</entry>
@@ -1397,9 +1397,13 @@
 	  <entry id="103313" string="Commercial information">Комерцијална информација</entry>
 	</section>
 
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics">Текст песме</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Понашање</entry>
-	  <entry id="103401" string="Clear album artist field if it matches track artist">Уклоните податак из поља извођач када се поклопи извођач песме</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Уклоните податак из поља "Извођач" када се поклопи извођач песме</entry>
 	</section>
 
 	<section name="Errors">
