@@ -176,6 +176,7 @@ History
 			- added optional composer, conductor, tempo and ISRC columns to the joblist
 			- added support for lyrics in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags
 			- added support for parsing OverDrive MediaMarkers in ID3v2 tags
+			- added support for the pre-emphasis flag in cue sheets
 
 		- Bug fixes
 
