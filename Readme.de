@@ -86,10 +86,18 @@ Installation
 
 	FreeBSD:
 
-		fre:ac steht als .tar.gz-Archiv bereit.
+		fre:ac ist als FreeBSD-Port verfügbar und kann mit folgendem Befehl installiert werden:
 
-		Bitte entpacken Sie den Inhalt an einen Ort Ihrer Wahl und führen Sie anschließend die Binärdatei freac aus,
-		um fre:ac zu starten.
+			sudo pkg install freac
+
+		Alternativ wird eine Binärversion von fre:ac als .tar.gz-Archiv bereitgestellt. Bitte entpacken Sie den Inhalt
+		an einen Ort Ihrer Wahl und führen Sie anschließend die Binärdatei freac aus, um fre:ac zu starten.
+
+	Haiku:
+
+		fre:ac ist als HaikuPorts-Paket verfügbar und kann mit folgendem Befehl installiert werden:
+
+			sudo pkg install freac
 
 Voraussetzungen
 ---------------
@@ -97,7 +105,7 @@ Voraussetzungen
 	Voraussetzungen zum Ausführen von fre:ac:
 
 		Unterstützte Betriebsysteme:
-			- Windows XP/Vista/7/8.x/10
+			- Windows XP/Vista/7/8.x/10/11
 			- macOS 10.5 Leopard oder neuer
 			- Linux (die meisten modernen Distributionen werden unterstützt)
 			- FreeBSD/PC-BSD (getestet unter FreeBSD 13.0)
