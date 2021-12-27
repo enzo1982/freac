@@ -134,7 +134,7 @@ Requirements
 
 		Windows:
 
-			- MinGW GCC v4.0+ (http://www.mingw.org/) or Visual Studio 2019
+			- MinGW GCC v4.0+ (http://www.mingw.org/) or Visual Studio 2022
 
 		All Linux and Unix platforms:
 
