@@ -40,6 +40,36 @@ CONFIG="release"
 
 make config=$CONFIG -j$jobs
 
+if [ "$BUILD_ARM64" = True ]; then
+  PREVIOUS_PATH=$PATH
+
+  # Build x86 Core Audio connector
+  export PATH=`pwd`/system/usr/bin
+  mkdir -p `pwd`/system/tmp
+  mkdir -p bin
+  export BUILD_X86=True
+  unset BUILD_ARM64
+  cd components/encoder/coreaudioconnect/connector
+  make config=$CONFIG clean
+  make config=$CONFIG -j$jobs
+  cd ../../../..
+
+  # Build x86-64 Core Audio connector
+  export PATH=`pwd`/system64/usr/bin
+  mkdir -p `pwd`/system64/tmp
+  mkdir -p bin64
+  export BUILD_X86_64=True
+  unset BUILD_X86
+  cd components/encoder/coreaudioconnect/connector
+  make config=$CONFIG clean
+  make config=$CONFIG -j$jobs
+  cd ../../../..
+
+  export PATH=$PREVIOUS_PATH
+  export BUILD_ARM64=True
+  unset BUILD_X86_64
+fi
+
 cd ..
 
 # Build fre:ac
@@ -101,6 +131,11 @@ if [ "$BUILD_X86" = True ]; then
   rm $BIN/boca/boca_output_winamp.1.0.dll
 else
   rm $BIN/boca/boca_encoder_bladeenc.1.0.dll
+fi
+
+if [ "$BUILD_ARM64" = True ]; then
+  cp boca/bin/*.exe $BIN/boca
+  cp boca/bin64/*.exe $BIN/boca
 fi
 
 cp boca/scripts/*.xml $BIN/boca
