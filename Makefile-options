@@ -111,52 +111,6 @@ else
 		SHARED = .dylib
 
 		BUILD_OSX = True
-
-#		Find macOS and Xcode version
-		XCODEVERSION = $(shell xcodebuild -version | head -n1)
-		MACOSVERSION = $(MACOSX_DEPLOYMENT_TARGET)
-
-		ifeq ($(MACOSVERSION),)
-			MACOSVERSION = $(shell sw_vers | awk '$$1 == "ProductVersion:" { print $$2 }')
-		endif
-
-		XCODE_LE3   = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -le  3 ]; then echo True; fi")
-		XCODE_LE9   = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -le  9 ]; then echo True; fi")
-		XCODE_EQ12  = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -eq 12 ]; then echo True; fi")
-		XCODE_GE13  = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -ge 13 ]; then echo True; fi")
-		XCODE_N_GE2 = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#*.};   if [ \$${v%%.*} -ge  2 ]; then echo True; fi")
-
-		MACOS_GE11  = $(shell bash -c "v='$(MACOSVERSION)';                 if [ \$${v%%.*} -ge 11 ]; then echo True; fi")
-
-#		Build universal binaries
-		ifneq ($(BUILD_X86_64),False)
-			BUILD_X86_64 = True
-		endif
-		ifeq ($(XCODE_LE9),True)
-			ifneq ($(BUILD_X86),False)
-				BUILD_X86 = True
-			endif
-
-			ifeq ($(XCODE_LE3),True)
-				ifneq ($(BUILD_PPC),False)
-					BUILD_PPC = True
-				endif
-			endif
-		else ifeq ($(XCODE_EQ12),True)
-			ifeq ($(XCODE_N_GE2),True)
-				ifeq ($(MACOS_GE11),True)
-					ifneq ($(BUILD_ARM64),False)
-						BUILD_ARM64 = True
-					endif
-				endif
-			endif
-		else ifeq ($(XCODE_GE13),True)
-			ifeq ($(MACOS_GE11),True)
-				ifneq ($(BUILD_ARM64),False)
-					BUILD_ARM64 = True
-				endif
-			endif
-		endif
 	endif
 endif
 
@@ -251,6 +205,53 @@ ifeq ($(findstring release,$(config)),release)
 	endif
 
 	ifeq ($(BUILD_OSX),True)
+#		Find macOS and Xcode version
+		XCODEVERSION = $(shell xcodebuild -version | head -n1)
+		MACOSVERSION = $(MACOSX_DEPLOYMENT_TARGET)
+
+		ifeq ($(MACOSVERSION),)
+			MACOSVERSION = $(shell sw_vers | awk '$$1 == "ProductVersion:" { print $$2 }')
+		endif
+
+		XCODE_LE3   = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -le  3 ]; then echo True; fi")
+		XCODE_LE9   = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -le  9 ]; then echo True; fi")
+		XCODE_EQ12  = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -eq 12 ]; then echo True; fi")
+		XCODE_GE13  = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#\#* }; if [ \$${v%%.*} -ge 13 ]; then echo True; fi")
+		XCODE_N_GE2 = $(shell bash -c "v='$(XCODEVERSION)'; v=\$${v\#*.};   if [ \$${v%%.*} -ge  2 ]; then echo True; fi")
+
+		MACOS_GE11  = $(shell bash -c "v='$(MACOSVERSION)';                 if [ \$${v%%.*} -ge 11 ]; then echo True; fi")
+
+#		Build universal binaries
+		ifneq ($(BUILD_X86_64),False)
+			BUILD_X86_64 = True
+		endif
+		ifeq ($(XCODE_LE9),True)
+			ifneq ($(BUILD_X86),False)
+				BUILD_X86 = True
+			endif
+
+			ifeq ($(XCODE_LE3),True)
+				ifneq ($(BUILD_PPC),False)
+					BUILD_PPC = True
+				endif
+			endif
+		else ifeq ($(XCODE_EQ12),True)
+			ifeq ($(XCODE_N_GE2),True)
+				ifeq ($(MACOS_GE11),True)
+					ifneq ($(BUILD_ARM64),False)
+						BUILD_ARM64 = True
+					endif
+				endif
+			endif
+		else ifeq ($(XCODE_GE13),True)
+			ifeq ($(MACOS_GE11),True)
+				ifneq ($(BUILD_ARM64),False)
+					BUILD_ARM64 = True
+				endif
+			endif
+		endif
+
+#		Set build flags
 		override LDFLAGS += -Wl,-x
 
 		ifeq ($(BUILD_X86),True)
