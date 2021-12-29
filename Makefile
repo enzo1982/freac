@@ -7,16 +7,6 @@ OBJECTS	  = objects
 RESOURCES = resources
 SRC	  = src
 
-BIN	  = bin
-LIB	  = lib
-
-ifeq ($(BUILD_WIN32),True)
-ifeq ($(BUILD_X86_64),True)
-	BIN = bin64
-	LIB = lib64
-endif
-endif
-
 DLLOBJECTS  = $(OBJECTS)/cddb.o $(OBJECTS)/cddbbatch.o $(OBJECTS)/cddbcache.o $(OBJECTS)/cddbinfo.o $(OBJECTS)/cddblocal.o $(OBJECTS)/cddbremote.o
 DLLOBJECTS += $(OBJECTS)/cddb_extsettings.o $(OBJECTS)/cddb_manage.o $(OBJECTS)/cddb_managequeries.o $(OBJECTS)/cddb_managesubmits.o $(OBJECTS)/cddb_multimatch.o $(OBJECTS)/cddb_query.o $(OBJECTS)/cddb_submit.o
 DLLOBJECTS += $(OBJECTS)/dialog_config.o $(OBJECTS)/config_cddb.o $(OBJECTS)/config_dsp.o $(OBJECTS)/config_encoders.o $(OBJECTS)/config_interface.o $(OBJECTS)/config_language.o $(OBJECTS)/config_playlists.o $(OBJECTS)/config_resources.o $(OBJECTS)/config_tags.o $(OBJECTS)/config_verification.o $(OBJECTS)/configcomponent.o $(OBJECTS)/configentry.o
@@ -55,9 +45,9 @@ endif
 EXEOBJECTS = $(OBJECTS)/gui.o
 CMDOBJECTS = $(OBJECTS)/console.o
 
-EXENAME	= $(BIN)/freac$(EXECUTABLE)
-CMDNAME	= $(BIN)/freaccmd$(EXECUTABLE)
-DLLNAME	= $(BIN)/freac$(SHARED)
+EXENAME	= $(BINDIR)/freac$(EXECUTABLE)
+CMDNAME	= $(BINDIR)/freaccmd$(EXECUTABLE)
+DLLNAME	= $(BINDIR)/freac$(SHARED)
 LIBNAME	= $(OBJECTS)/libfreac.a
 
 CCOPTS	     = -I$(INCLUDE) -fvisibility=hidden -c
@@ -73,7 +63,7 @@ endif
 ifeq ($(BUILD_WIN32),True)
 	CCOPTS			+= -I"$(CDK_INSTALL_PATH)"/include
 
-	LDOPTS			+= -L"$(CDK_INSTALL_PATH)"/$(LIB) -lsmooth -Wl,--dynamicbase,--nxcompat
+	LDOPTS			+= -L"$(CDK_INSTALL_PATH)"/$(LIBDIR) -lsmooth -Wl,--dynamicbase,--nxcompat
 
 	LDOPTS_DLL		+= --shared -lboca -lws2_32 -Wl,--out-implib,$(LIBNAME)
 	LDOPTS_GUI		+= -mwindows
@@ -133,36 +123,36 @@ all: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(RESFILES)
 	+ $(call makein,components)
 
 codesign: all
-	signtool sign -fd sha1 -tr http://timestamp.digicert.com -td sha1 $(BIN)/freac$(EXECUTABLE) $(BIN)/freaccmd$(EXECUTABLE) $(BIN)/freac$(SHARED) $(BIN)/boca/freac_*$(SHARED)
-	signtool sign -fd sha256 -tr http://timestamp.digicert.com -td sha256 -as $(BIN)/freac$(EXECUTABLE) $(BIN)/freaccmd$(EXECUTABLE) $(BIN)/freac$(SHARED) $(BIN)/boca/freac_*$(SHARED)
+	signtool sign -fd sha1 -tr http://timestamp.digicert.com -td sha1 $(BINDIR)/freac$(EXECUTABLE) $(BINDIR)/freaccmd$(EXECUTABLE) $(BINDIR)/freac$(SHARED) $(BINDIR)/boca/freac_*$(SHARED)
+	signtool sign -fd sha256 -tr http://timestamp.digicert.com -td sha256 -as $(BINDIR)/freac$(EXECUTABLE) $(BINDIR)/freaccmd$(EXECUTABLE) $(BINDIR)/freac$(SHARED) $(BINDIR)/boca/freac_*$(SHARED)
 
 folders:
-	mkdir -p $(BIN) $(OBJECTS)
+	mkdir -p $(BINDIR) $(OBJECTS)
 
 resources: folders
 ifeq ($(BUILD_WIN32),True)
-	mkdir -p $(BIN)/icons
-	mkdir -p $(BIN)/lang
+	mkdir -p $(BINDIR)/icons
+	mkdir -p $(BINDIR)/lang
 	mkdir -p packaging/windows/lang
 
-	cp "$(SRCDIR)"/icons/freac.png $(BIN)/icons
+	cp "$(SRCDIR)"/icons/freac.png $(BINDIR)/icons
 
-	cp -r "$(SRCDIR)"/icons/conversion $(BIN)/icons
-	cp -r "$(SRCDIR)"/icons/freedb $(BIN)/icons
-	cp -r "$(SRCDIR)"/icons/joblist $(BIN)/icons
-	cp -r "$(SRCDIR)"/icons/other $(BIN)/icons
-	cp -r "$(SRCDIR)"/icons/player $(BIN)/icons
-	cp -r "$(SRCDIR)"/icons/select $(BIN)/icons
-	cp -r "$(SRCDIR)"/icons/settings $(BIN)/icons
+	cp -r "$(SRCDIR)"/icons/conversion $(BINDIR)/icons
+	cp -r "$(SRCDIR)"/icons/freedb $(BINDIR)/icons
+	cp -r "$(SRCDIR)"/icons/joblist $(BINDIR)/icons
+	cp -r "$(SRCDIR)"/icons/other $(BINDIR)/icons
+	cp -r "$(SRCDIR)"/icons/player $(BINDIR)/icons
+	cp -r "$(SRCDIR)"/icons/select $(BINDIR)/icons
+	cp -r "$(SRCDIR)"/icons/settings $(BINDIR)/icons
 
-	cp "$(SRCDIR)"/i18n/Readme.lang $(BIN)/lang
-	cp "$(SRCDIR)"/i18n/freac/freac*.xml $(BIN)/lang
-	cp "$(SRCDIR)"/i18n/tips/tips*.xml $(BIN)/lang
-	cp "$(SRCDIR)"/i18n/updater/eupdate*.xml $(BIN)/lang
+	cp "$(SRCDIR)"/i18n/Readme.lang $(BINDIR)/lang
+	cp "$(SRCDIR)"/i18n/freac/freac*.xml $(BINDIR)/lang
+	cp "$(SRCDIR)"/i18n/tips/tips*.xml $(BINDIR)/lang
+	cp "$(SRCDIR)"/i18n/updater/eupdate*.xml $(BINDIR)/lang
 
 	cp "$(SRCDIR)"/i18n/setup/setup*.xml packaging/windows/lang
 
-	cp -r "$(SRCDIR)"/manual $(BIN)
+	cp -r "$(SRCDIR)"/manual $(BINDIR)
 endif
 
 install: folders $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(DLLNAME) $(EXENAME) $(CMDNAME)
@@ -269,17 +259,17 @@ endif
 clean: clean_resources
 	$(REMOVER) $(REMOVER_OPTS) $(DLLOBJECTS) $(EXEOBJECTS) $(CMDOBJECTS) $(RESOBJECTS) $(RESFILES) $(DLLNAME) $(EXENAME) $(CMDNAME) $(LIBNAME)
 ifneq ("$(SRCDIR)","$(CURDIR)")
-	rmdir $(BIN) $(OBJECTS) 2> /dev/null || true
+	rmdir $(BINDIR) $(OBJECTS) 2> /dev/null || true
 endif
 
 	+ $(call cleanin,components)
 
 clean_resources:
 ifeq ($(BUILD_WIN32),True)
-	rm -f -r $(BIN)/icons
+	rm -f -r $(BINDIR)/icons
 
-	rm -f -r $(BIN)/lang
-	rm -f -r $(BIN)/manual
+	rm -f -r $(BINDIR)/lang
+	rm -f -r $(BINDIR)/manual
 endif
 
 $(DLLNAME): $(DLLOBJECTS)
