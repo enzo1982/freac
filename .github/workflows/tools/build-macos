@@ -35,8 +35,8 @@ cd smooth
 
 CONFIG="release"
 
-make config=$CONFIG BUILD_V8=False -j$jobs
-sudo make config=$CONFIG BUILD_V8=False install
+make config=$CONFIG -j$jobs
+sudo make config=$CONFIG install
 
 cd ..
 
@@ -53,8 +53,8 @@ cd ..
 # Build fre:ac
 CONFIG="release"
 
-make config=$CONFIG USE_V8=False -j$jobs
-sudo make config=$CONFIG USE_V8=False install
+make config=$CONFIG -j$jobs
+sudo make config=$CONFIG install
 
 # Build codecs and DSP libraries
 cd tools

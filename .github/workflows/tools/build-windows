@@ -25,7 +25,7 @@ cd smooth
 
 CONFIG="release"
 
-make config=$CONFIG BUILD_V8=False -j$jobs
+make config=$CONFIG -j$jobs
 
 mkdir -p ../boca/$LIB
 cp $LIB/libsmooth.a ../boca/$LIB
@@ -75,7 +75,7 @@ cd ..
 # Build fre:ac
 CONFIG="release"
 
-make config=$CONFIG USE_V8=False -j$jobs
+make config=$CONFIG -j$jobs
 
 # Build codecs and DSP libraries
 cd tools
