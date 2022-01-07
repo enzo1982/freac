@@ -173,6 +173,7 @@ History
 			- improved support for languages written from right to left
 			- improved performance of adding video and proprietary audio files (DTS, DSD etc.) to the joblist
 			- playlists can now be added to the joblist by drag & drop
+			- added <tempo> and <initialkey> placeholders for use in filename patterns
 			- added optional composer, conductor, tempo, musical key and ISRC columns to the joblist
 			- added initial key field to tag editor
 			- added support for lyrics in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags

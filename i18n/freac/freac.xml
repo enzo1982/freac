@@ -48,6 +48,8 @@
     <entry id="355" string="unknown conductor"/>
     <entry id="356" string="unknown composer"/>
     <entry id="357" string="unknown album artist"/>
+    <entry id="358" string="unknown tempo"/>
+    <entry id="359" string="unknown key"/>
 
     <entry id="380" string="hidden track"/>
 
