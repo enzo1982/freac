@@ -23,7 +23,7 @@
   <key>CFBundleSignature</key>
   <string>f:ac</string>
   <key>CFBundleVersion</key>
-  <string>1.1.5.5561</string>
+  <string>1.1.5.5608</string>
   <key>CFBundleShortVersionString</key>
   <string>1.1.5</string>
   <key>LSBackgroundOnly</key>
@@ -40,7 +40,7 @@
   <key>NSRequiresAquaSystemAppearance</key>
   <false/>
   <key>NSHumanReadableCopyright</key>
-  <string>Copyright © 2001-2021 Robert Kausch</string>
+  <string>Copyright © 2001-2022 Robert Kausch</string>
   <key>CFBundleDocumentTypes</key>
   <array>
    <dict>
