@@ -1378,7 +1378,9 @@
 	  <entry id="103209" string="Original album"/>
 	  <entry id="103210" string="Original lyrics writer"/>
 	  <entry id="103211" string="Original release year"/>
+	  <entry id="103212" string="Musical key/tempo"/>
 	  <entry id="103213" string="BPM"/>
+	  <entry id="103214" string="Initial key"/>
 	</section>
 
 	<section name="Publisher">

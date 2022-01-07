@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -93,18 +93,32 @@ BoCA::LayerTagDetails::LayerTagDetails() : Editor("Details")
 
 	Add(group_original);
 
-	group_tempo		= new GroupBox(NIL, Point(7, 145), Size(400, 39));
+	group_musical		= new GroupBox(NIL, Point(7, 145), Size(400, 39));
 
-	text_bpm		= new Text(NIL, Point(9, 13));
+	text_initialkey		= new Text(NIL, Point(9, 13));
 
-	edit_bpm		= new EditBox(text_bpm->GetPosition() + Point(7, -3), Size(50, 0), 4);
-	edit_bpm->SetFlags(EDB_NUMERIC);
-	edit_bpm->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
+	edit_initialkey		= new EditBox(text_initialkey->GetPosition() + Point(7, -3), Size(50, 0));
+	edit_initialkey->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
 
-	group_tempo->Add(text_bpm);
-	group_tempo->Add(edit_bpm);
+	text_tempo		= new Text(NIL, Point(9, 13));
+	text_tempo->SetOrientation(OR_UPPERRIGHT);
 
-	Add(group_tempo);
+	edit_tempo		= new EditBox(text_tempo->GetPosition() + Point(7, -3), Size(40, 0), 5);
+	edit_tempo->SetFlags(EDB_NUMERIC);
+	edit_tempo->SetOrientation(OR_UPPERRIGHT);
+	edit_tempo->onInput.Connect(&LayerTagDetails::OnModifyTrack, this);
+
+	text_tempo_bpm		= new Text(NIL, Point(9, 13));
+	text_tempo_bpm->SetOrientation(OR_UPPERRIGHT);
+
+	group_musical->Add(text_initialkey);
+	group_musical->Add(edit_initialkey);
+
+	group_musical->Add(text_tempo);
+	group_musical->Add(edit_tempo);
+	group_musical->Add(text_tempo_bpm);
+
+	Add(group_musical);
 
 	allowTrackRemoveByDeleteKey.Connect(&LayerTagDetails::AllowTrackRemoveByDeleteKey, this);
 
@@ -145,9 +159,12 @@ BoCA::LayerTagDetails::~LayerTagDetails()
 	DeleteObject(text_oyear);
 	DeleteObject(edit_oyear);
 
-	DeleteObject(group_tempo);
-	DeleteObject(text_bpm);
-	DeleteObject(edit_bpm);
+	DeleteObject(group_musical);
+	DeleteObject(text_initialkey);
+	DeleteObject(edit_initialkey);
+	DeleteObject(text_tempo);
+	DeleteObject(edit_tempo);
+	DeleteObject(text_tempo_bpm);
 }
 
 /* Called when layer size changes.
@@ -161,7 +178,7 @@ Void BoCA::LayerTagDetails::OnChangeSize(const Size &nSize)
 	group_details->SetWidth((clientSize.cx - 23) / 2);
 
 	Int	 maxTextSize = Math::Max(Math::Max(Math::Max(text_band->GetUnscaledTextWidth(), text_conductor->GetUnscaledTextWidth()), Math::Max(text_remix->GetUnscaledTextWidth(), text_albumartist->GetUnscaledTextWidth())), Math::Max(text_composer->GetUnscaledTextWidth(), text_textwriter->GetUnscaledTextWidth()));
-	Int	 maxTextSize2 = Math::Max(Math::Max(Math::Max(text_oartist->GetUnscaledTextWidth(), text_oalbum->GetUnscaledTextWidth()), Math::Max(text_otextwriter->GetUnscaledTextWidth(), text_oyear->GetUnscaledTextWidth())), text_bpm->GetUnscaledTextWidth());
+	Int	 maxTextSize2 = Math::Max(Math::Max(Math::Max(text_oartist->GetUnscaledTextWidth(), text_oalbum->GetUnscaledTextWidth()), Math::Max(text_otextwriter->GetUnscaledTextWidth(), text_oyear->GetUnscaledTextWidth())), text_initialkey->GetUnscaledTextWidth());
 
 	edit_albumartist->SetWidth(group_details->GetWidth() - 26 - maxTextSize);
 	edit_band->SetWidth(group_details->GetWidth() - 26 - maxTextSize);
@@ -177,8 +194,10 @@ Void BoCA::LayerTagDetails::OnChangeSize(const Size &nSize)
 	edit_oalbum->SetWidth(group_original->GetWidth() - 26 - maxTextSize2);
 	edit_otextwriter->SetWidth(group_original->GetWidth() - 26 - maxTextSize2);
 
-	group_tempo->SetX((clientSize.cx / 2) + 4);
-	group_tempo->SetWidth((clientSize.cx - 24) / 2 + (clientSize.cx % 2));
+	group_musical->SetX((clientSize.cx / 2) + 4);
+	group_musical->SetWidth((clientSize.cx - 24) / 2 + (clientSize.cx % 2));
+
+	edit_initialkey->SetWidth(group_musical->GetWidth() - edit_initialkey->GetX() - text_tempo->GetX() - 8);
 }
 
 /* Called when application language is changed.
@@ -224,18 +243,24 @@ Void BoCA::LayerTagDetails::OnChangeLanguageSettings()
 	text_otextwriter->SetText(i18n->AddColon(i18n->TranslateString("Original lyrics writer")));
 	text_oyear->SetText(i18n->AddColon(i18n->TranslateString("Original release year")));
 
-	group_tempo->SetText(i18n->TranslateString("Tempo"));
+	group_musical->SetText(i18n->TranslateString("Musical key/tempo"));
 
-	text_bpm->SetText(i18n->AddColon(i18n->TranslateString("BPM")));
+	text_initialkey->SetText(i18n->AddColon(i18n->TranslateString("Initial key")));
+	text_tempo->SetText(i18n->AddColon(i18n->TranslateString("Tempo")));
+	text_tempo_bpm->SetText(i18n->TranslateString("BPM"));
 
-	Int	 maxTextSize2 = Math::Max(Math::Max(Math::Max(text_oartist->GetUnscaledTextWidth(), text_oalbum->GetUnscaledTextWidth()), Math::Max(text_otextwriter->GetUnscaledTextWidth(), text_oyear->GetUnscaledTextWidth())), text_bpm->GetUnscaledTextWidth());
+	Int	 maxTextSize2 = Math::Max(Math::Max(Math::Max(text_oartist->GetUnscaledTextWidth(), text_oalbum->GetUnscaledTextWidth()), Math::Max(text_otextwriter->GetUnscaledTextWidth(), text_oyear->GetUnscaledTextWidth())), text_initialkey->GetUnscaledTextWidth());
 
 	edit_oartist->SetX(text_oartist->GetX() + maxTextSize2 + 7);
 	edit_oalbum->SetX(text_oalbum->GetX() + maxTextSize2 + 7);
 	edit_otextwriter->SetX(text_otextwriter->GetX() + maxTextSize2 + 7);
 	edit_oyear->SetX(text_oyear->GetX() + maxTextSize2 + 7);
 
-	edit_bpm->SetX(text_bpm->GetX() + maxTextSize2 + 7);
+	edit_initialkey->SetX(text_initialkey->GetX() + maxTextSize2 + 7);
+
+	text_tempo_bpm->SetX(text_tempo_bpm->GetUnscaledTextWidth() + 9);
+	edit_tempo->SetX(text_tempo_bpm->GetX() + edit_tempo->GetWidth() + 7);
+	text_tempo->SetX(edit_tempo->GetX() + text_tempo->GetUnscaledTextWidth() + 7);
 
 	/* OnChangeSize will correct sizes of any other widgets.
 	 */
@@ -260,7 +285,8 @@ EditBox *BoCA::LayerTagDetails::GetActiveEditBox()
 	else if	(edit_otextwriter->IsFocussed()) return edit_otextwriter;
 	else if	(edit_oyear->IsFocussed())	 return edit_oyear;
 
-	else if	(edit_bpm->IsFocussed())	 return edit_bpm;
+	else if	(edit_initialkey->IsFocussed())	 return edit_initialkey;
+	else if	(edit_tempo->IsFocussed())	 return edit_tempo;
 
 	return NIL;
 }
@@ -294,10 +320,14 @@ Void BoCA::LayerTagDetails::OnSelectTrack(const Track &nTrack)
 	edit_albumartist->Activate();
 
 	group_original->Activate();
-	group_tempo->Activate();
+	group_musical->Activate();
 
-	text_bpm->Activate();
-	edit_bpm->Activate();
+	text_initialkey->Activate();
+	edit_initialkey->Activate();
+
+	text_tempo->Activate();
+	edit_tempo->Activate();
+	text_tempo_bpm->Activate();
 
 	const Info	&info = track.GetInfo();
 
@@ -318,7 +348,8 @@ Void BoCA::LayerTagDetails::OnSelectTrack(const Track &nTrack)
 		else if	(key == INFO_ORIG_LYRICIST) edit_otextwriter->SetText(value);
 		else if	(key == INFO_ORIG_YEAR)	    edit_oyear->SetText(value);
 
-		else if	(key == INFO_BPM)	    edit_bpm->SetText(value);
+		else if	(key == INFO_INITIALKEY)    edit_initialkey->SetText(value);
+		else if	(key == INFO_BPM)	    edit_tempo->SetText(value);
 	}
 
 	EditBox	*activeEditBox = GetActiveEditBox();
@@ -354,10 +385,14 @@ Void BoCA::LayerTagDetails::OnSelectAlbum(const Track &nTrack)
 	edit_albumartist->Deactivate();
 
 	group_original->Activate();
-	group_tempo->Deactivate();
+	group_musical->Deactivate();
 
-	text_bpm->Deactivate();
-	edit_bpm->Deactivate();
+	text_initialkey->Deactivate();
+	edit_initialkey->Deactivate();
+
+	text_tempo->Deactivate();
+	edit_tempo->Deactivate();
+	text_tempo_bpm->Deactivate();
 
 	const Info	&info = track.GetInfo();
 
@@ -412,11 +447,12 @@ Void BoCA::LayerTagDetails::OnSelectNone()
 	edit_otextwriter->SetText(NIL);
 	edit_oyear->SetText(NIL);
 
-	edit_bpm->SetText(NIL);
+	edit_initialkey->SetText(NIL);
+	edit_tempo->SetText(NIL);
 
 	group_details->Deactivate();
 	group_original->Deactivate();
-	group_tempo->Deactivate();
+	group_musical->Deactivate();
 
 	if (surface) surface->EndPaint();
 
@@ -443,7 +479,8 @@ Void BoCA::LayerTagDetails::OnModifyTrack()
 	info.SetOtherInfo(INFO_ORIG_LYRICIST, edit_otextwriter->GetText());
 	info.SetOtherInfo(INFO_ORIG_YEAR,     edit_oyear->GetText());
 
-	info.SetOtherInfo(INFO_BPM,	      edit_bpm->GetText());
+	info.SetOtherInfo(INFO_INITIALKEY,    edit_initialkey->GetText());
+	info.SetOtherInfo(INFO_BPM,	      edit_tempo->GetText());
 
 	track.SetInfo(info);
 
