@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -107,6 +107,7 @@ Void freac::ConfigureInterface::FillJoblistFieldsList()
 	entryTexts.Add(String("<discid>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Disc ID")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<isrc>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("ISRC")));			   entryPresent.Add(False);
 	entryTexts.Add(String("<tempo>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Tempo")));		   entryPresent.Add(False);
+	entryTexts.Add(String("<initialkey>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Musical key")));	   entryPresent.Add(False);
 	entryTexts.Add(String("<file>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("File name")));		   entryPresent.Add(False);
 	entryTexts.Add(String("<filetype>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("File type")));	   entryPresent.Add(False);
 	entryTexts.Add(String("<outputfile>").Append(ListEntry::tabDelimiter).Append(i18n->TranslateString("Output file name")));  entryPresent.Add(False);

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -832,6 +832,7 @@ Void freac::JobList::OnClickTab(Int n)
 	Bool	 sortByTrack	   = (fields.GetNth(n) == "<track>");
 	Bool	 sortByRating	   = (fields.GetNth(n) == "<rating>");
 	Bool	 sortByTempo	   = (fields.GetNth(n) == "<tempo>");
+	Bool	 sortByKey	   = (fields.GetNth(n) == "<initialkey>");
 	Bool	 sortByTime	   = (fields.GetNth(n) == "<time>");
 	Bool	 sortByBytes	   = (fields.GetNth(n) == "<bytes>");
 	Bool	 sortByBitrate	   = (fields.GetNth(n) == "<bitrate>");
@@ -933,6 +934,7 @@ Void freac::JobList::OnClickTab(Int n)
 			    (sortByAlbumArtist &&  SortsAfter(compInfo.GetOtherInfo(INFO_ALBUMARTIST), thisInfo.GetOtherInfo(INFO_ALBUMARTIST))				) ||
 			    (sortByComposer    &&  SortsAfter(compInfo.GetOtherInfo(INFO_COMPOSER), thisInfo.GetOtherInfo(INFO_COMPOSER))				) ||
 			    (sortByConductor   &&  SortsAfter(compInfo.GetOtherInfo(INFO_CONDUCTOR), thisInfo.GetOtherInfo(INFO_CONDUCTOR))				) ||
+			    (sortByKey	       &&  SortsAfter(compInfo.GetOtherInfo(INFO_INITIALKEY), thisInfo.GetOtherInfo(INFO_INITIALKEY))				) ||
 			    (sortByISRC	       &&  SortsAfter(compInfo.isrc, thisInfo.isrc)										) ||
 			    (sortByDrive       &&  compTrack.drive					       >  thisTrack.drive					) ||
 			    (sortByDiscID      &&  compTrack.discid					       >  thisTrack.discid					) ||
@@ -1100,6 +1102,7 @@ Void freac::JobList::AddHeaderTabs()
 		else if (field == "<composer>")	   { tabName = "Composer";				 tabSize = tabSize <= 0 ? 120 : tabSize; }
 		else if (field == "<conductor>")   { tabName = "Conductor";				 tabSize = tabSize <= 0 ? 120 : tabSize; }
 		else if (field == "<tempo>")	   { tabName = "Tempo";		    tabAlign = numAlign; tabSize = tabSize <= 0 ?  50 : tabSize; }
+		else if (field == "<initialkey>")  { tabName = "Musical key";				 tabSize = tabSize <= 0 ?  50 : tabSize; }
 		else if (field == "<disc>")	   { tabName = "Disc";		    tabAlign = numAlign; tabSize = tabSize <= 0 ?  50 : tabSize; }
 		else if (field == "<track>")	   { tabName = "Track";		    tabAlign = numAlign; tabSize = tabSize <= 0 ?  50 : tabSize; }
 		else if (field == "<rating>")	   { tabName = "Rating";	    tabAlign = numAlign; tabSize = tabSize <= 0 ?  80 : tabSize; }
@@ -1169,6 +1172,7 @@ String freac::JobList::GetEntryText(const Track &track)
 		else if	(field == "<conductor>")   jlEntry.Append(info.GetOtherInfo(INFO_CONDUCTOR).Length() > 0 ? info.GetOtherInfo(INFO_CONDUCTOR) : i18n->TranslateString("unknown conductor"));
 
 		else if (field == "<tempo>")	   jlEntry.Append(info.GetOtherInfo(INFO_BPM));
+		else if (field == "<initialkey>")  jlEntry.Append(info.GetOtherInfo(INFO_INITIALKEY));
 
 		else if (field == "<bitrate>")
 		{
