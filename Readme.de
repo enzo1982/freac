@@ -184,6 +184,7 @@ Geschichte
 			- Möglichen Absturz beim Abfragen der CDDB-Datenbank behoben
 			- Möglichen Absturz im FAAD2-Dekodierer beim Öffnen nicht unterstützter Dateien behoben
 			- Fehlerhafte Dekodierung einiger AAC-Dateien durch einen Fehler im FDK-AAC-Dekodierer behoben
+			- Mögliche fehlerhafte Ausgabe beim Dekodieren ab Positionen ungleich 0 mit externen Dekodern behoben
 			- Problem beim Rippen von CD-Tracks mit <filename> als Ausgabedateinamensvorlage behoben
 			- Problem mit Überprüfungsfehlermeldungen von AccurateRip beim Rippen von versteckten Tracks (HTOA) behoben
 			- Problem mit Einstellung zum Ersetzen von Leerzeichen beim Schreiben von Cover-Bildern und Log-Dateien behoben

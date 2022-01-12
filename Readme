@@ -185,6 +185,7 @@ History
 			- fixed possible crash upon querying the CDDB database
 			- fixed possible crash in FAAD2 decoder when trying to open unsupported files
 			- fixed faulty decoding of certain AAC files caused by a bug in the FDK-AAC decoder
+			- fixed possible faulty output when decoding from non-zero positions using external decoders
 			- fixed issue ripping CD tracks when output filename pattern is <filename>
 			- fixed AccurateRip reporting verification errors for hidden track one audio
 			- fixed setting to replace spaces not being respected when writing cover art and log files
