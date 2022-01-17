@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -82,7 +82,7 @@ Void freac::freacCommandline::Free()
 	if (instance != NIL) delete (freacCommandline *) instance;
 }
 
-freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args(arguments), stopped(False)
+freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args(arguments), firstFile(True), stopped(False)
 {
 	Registry	&boca	= Registry::Get();
 
@@ -182,6 +182,9 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	ScanForProgramOption("-d %VALUE", &outputFolder);
 	ScanForProgramOption("-o %VALUE", &outputFile);
+
+	if (outputFolder != NIL && BoCA::Utilities::IsRelativePath(outputFolder)) outputFolder = BoCA::Utilities::GetAbsolutePathName(outputFolder);
+	if (outputFile	 != NIL && BoCA::Utilities::IsRelativePath(outputFile))	  outputFile   = BoCA::Utilities::GetAbsolutePathName(outputFile);
 
 	if (!ScanForProgramOption("--pattern=%VALUE", &pattern))   ScanForProgramOption("-p %VALUE", &pattern);
 
@@ -365,10 +368,11 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	/* Perform actual conversion.
 	 */
-	if (files.Length() > 1 && outputFile != NIL)
-	{
-		JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
+	JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
+	JobConvert::onFinishEncoding.Connect(&freacCommandline::OnFinishEncoding, this);
 
+	if (outputFile != NIL)
+	{
 		/* Check if input files exist.
 		 */
 		Array<String>	 jobFiles;
@@ -399,12 +403,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			/* Convert tracks in joblist.
 			 */
 			Converter().Convert(*joblist->GetTrackList(), False, False);
-
-			if (!quiet)
-			{
-				if (!stopped) Console::OutputString("done.\n");
-				else	      Console::OutputString("aborted.\n");
-			}
 		}
 		else
 		{
@@ -443,7 +441,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			/* Handle splitting chapters and cue sheets.
 			 */
-			Bool	 splitFile = (splitChapters || currentFile.EndsWith(".cue")) && outputFile == NIL;
+			Bool	 splitFile = splitChapters || currentFile.EndsWith(".cue");
 			String	 pattern   = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, "<filename>");
 
 			config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, !splitFile);
@@ -466,26 +464,17 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			/* Set output file name.
 			 */
-			if (outputFile == NIL)
-			{
-				Track	 track = joblist->GetNthTrack(0);
+			Track	 track = joblist->GetNthTrack(0);
 
-				config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Utilities::GetOutputFileName(config, track));
-			}
+			config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Utilities::GetOutputFileName(config, track));
 
 			/* Convert tracks in joblist.
 			 */
-			if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
+			firstFile = True;
 
 			Converter().Convert(*joblist->GetTrackList(), False, False);
 
 			joblist->RemoveAllTracks();
-
-			if (!quiet)
-			{
-				if (!stopped) Console::OutputString("done.\n");
-				else	      Console::OutputString("aborted.\n");
-			}
 
 			if (stopped) break;
 		}
@@ -520,21 +509,34 @@ freac::freacCommandline::~freacCommandline()
 
 Void freac::freacCommandline::OnEncodeTrack(const Track &track, const String &decoderName, const String &encoderName, ConversionStep mode)
 {
-	static Bool	 firstTime = True;
-
 	BoCA::Config	*config = BoCA::Config::Get();
 	Bool		 quiet	= ScanForProgramOption("--quiet");
 
 	if (!quiet)
 	{
-		if (!firstTime) Console::OutputString("done.\n");
-		else		firstTime = False;
+		static String	 previousFile;
+		String		 currentFile = track.fileName;
 
-		String	 currentFile = track.fileName;
+		if (currentFile == previousFile) return;
+		else				 previousFile = currentFile;
 
 		if (currentFile.StartsWith("device://cdda:")) currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 16));
 
+		if (!firstFile) Console::OutputString("done.\n");
+		else		firstFile = False;
+
 		Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
+	}
+}
+
+Void freac::freacCommandline::OnFinishEncoding(Bool success)
+{
+	Bool	 quiet = ScanForProgramOption("--quiet");
+
+	if (!quiet)
+	{
+		if (success) Console::OutputString("done.\n");
+		else	     Console::OutputString("aborted.\n");
 	}
 }
 
@@ -1021,7 +1023,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		Console::OutputString("  --help=<id>     | -h <id>\tPrint help for encoder specific options\n\n");
 		Console::OutputString("                    -d <dir>\tSpecify output directory for encoded files\n");
 		Console::OutputString("                    -o <file>\tSpecify output file name in single file mode\n");
-		Console::OutputString("  --pattern=<pat> | -p <pat>\tSpecify output file name pattern\n\n");
+		Console::OutputString("  --pattern=<pat> | -p <pat>\tSpecify output file name pattern (default is \"<filename>\")\n\n");
 
 		DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
 
@@ -1082,8 +1084,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 			list.Append(boca.GetComponentID(i).Head(boca.GetComponentID(i).FindLast("-enc")));
 		}
 
-		Console::OutputString(list.Append("\n\n"));
-		Console::OutputString("Default for <pat> is \"<filename>\".\n");
+		Console::OutputString(list.Append("\n"));
 	}
 	else
 	{
