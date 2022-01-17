@@ -198,7 +198,7 @@ History
 
 			- added native Apple Lossless decoder
 			- updated FFmpeg to version 5.0
-			- updated Monkey's Audio to version 7.22
+			- updated Monkey's Audio to version 7.23
 			- updated mpg123 to version 1.29.3
 			- updated libsamplerate to version 0.2.2
 
