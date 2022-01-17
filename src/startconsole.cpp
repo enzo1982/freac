@@ -183,8 +183,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	ScanForProgramOption("-d %VALUE", &outputFolder);
 	ScanForProgramOption("-o %VALUE", &outputFile);
 
-	if (outputFolder != NIL && BoCA::Utilities::IsRelativePath(outputFolder)) outputFolder = BoCA::Utilities::GetAbsolutePathName(outputFolder);
-	if (outputFile	 != NIL && BoCA::Utilities::IsRelativePath(outputFile))	  outputFile   = BoCA::Utilities::GetAbsolutePathName(outputFile);
+	if (outputFolder != NIL && BoCA::Utilities::IsRelativePath(outputFolder)) outputFolder = GetAbsolutePathName(outputFolder);
+	if (outputFile	 != NIL && BoCA::Utilities::IsRelativePath(outputFile))	  outputFile   = GetAbsolutePathName(outputFile);
 
 	if (!ScanForProgramOption("--pattern=%VALUE", &pattern))   ScanForProgramOption("-p %VALUE", &pattern);
 
@@ -766,6 +766,19 @@ Bool freac::freacCommandline::TracksToFiles(const String &tracks, Array<String> 
 	}
 
 	return True;
+}
+
+String freac::freacCommandline::GetAbsolutePathName(const String &path) const
+{
+	String	 pathName = path;
+
+	/* Convert relative to absolute paths.
+	 */
+	if (BoCA::Utilities::IsRelativePath(pathName)) pathName = String(Directory::GetActiveDirectory()).Append(Directory::GetDirectoryDelimiter()).Append(pathName);
+
+	if (!pathName.EndsWith(Directory::GetDirectoryDelimiter())) pathName.Append(Directory::GetDirectoryDelimiter());
+
+	return pathName;
 }
 
 Picture freac::freacCommandline::LoadCoverArt(const String &file, Int type)

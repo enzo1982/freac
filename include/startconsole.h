@@ -60,6 +60,8 @@ namespace freac
 			Bool			 ParamHasArguments(const String &, Bool);
 			Bool			 TracksToFiles(const String &, Array<String> *);
 
+			String			 GetAbsolutePathName(const String &path) const;
+
 			BoCA::Picture		 LoadCoverArt(const String &, Int);
 
 			Bool			 AddToJoblist(const Array<String> &, Bool);
