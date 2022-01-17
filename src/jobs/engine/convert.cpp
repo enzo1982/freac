@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -283,6 +283,9 @@ Error freac::JobConvert::Perform()
 
 	Bool	 createPlaylist		= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, Config::PlaylistCreatePlaylistDefault);
 	Bool	 createCueSheet		= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, Config::PlaylistCreateCueSheetDefault);
+
+	String	 playlistFilename	= configuration->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenameID, Config::PlaylistFilenameDefault);
+	String	 cueSheetFilename	= configuration->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistCueSheetID, Config::PlaylistCueSheetDefault);
 
 	Bool	 singlePlaylistFile	= configuration->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateSingleFileID, Config::PlaylistCreateSingleFileDefault);
 
@@ -1266,7 +1269,7 @@ Error freac::JobConvert::Perform()
 				log->Write(String("    Writing playlist: ").Append(Utilities::FormatFileNameForLogging(playlistFileNames.GetNth(i).Append(".").Append(playlistExtension), playlistBasePaths.GetNth(i))));
 
 				playlist->SetTrackList(*playlistTrackLists.GetNth(i));
-				playlist->WritePlaylist(String(playlistFileNames.GetNth(i)).Append(".").Append(playlistExtension));
+				playlist->WritePlaylist(playlistFilename == NIL ? String(playlistFileNames.GetNth(i)).Append(".").Append(playlistExtension) : playlistFilename);
 
 				boca.DeleteComponent(playlist);
 			}
@@ -1280,7 +1283,7 @@ Error freac::JobConvert::Perform()
 				log->Write(String("    Writing cue sheet: ").Append(Utilities::FormatFileNameForLogging(playlistFileNames.GetNth(i).Append(".cue"), playlistBasePaths.GetNth(i))));
 
 				cuesheet->SetTrackList(*cuesheetTrackLists.GetNth(i));
-				cuesheet->WritePlaylist(playlistFileNames.GetNth(i).Append(".cue"));
+				cuesheet->WritePlaylist(cueSheetFilename == NIL ? playlistFileNames.GetNth(i).Append(".cue") : cueSheetFilename);
 
 				boca.DeleteComponent(cuesheet);
 			}
