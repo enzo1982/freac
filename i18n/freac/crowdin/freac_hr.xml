@@ -38,6 +38,7 @@
     <entry id="313" string="Composer">Skladatelj</entry>
     <entry id="314" string="Tempo">Tempo</entry>
     <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key"/>
 
     <entry id="350" string="unknown artist">nepoznat izvođač</entry>
     <entry id="351" string="unknown title">nepoznat naslov</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">nepoznat dirigent</entry>
     <entry id="356" string="unknown composer">nepoznat skladatelj</entry>
     <entry id="357" string="unknown album artist">nepoznat izvođač albuma</entry>
+    <entry id="358" string="unknown tempo"/>
+    <entry id="359" string="unknown key"/>
 
     <entry id="380" string="hidden track">skrivena traka</entry>
 
@@ -1378,7 +1381,9 @@
 	  <entry id="103209" string="Original album">Originalni album</entry>
 	  <entry id="103210" string="Original lyrics writer">Originalni pisac teksta</entry>
 	  <entry id="103211" string="Original release year">Originalna godina izdavanja</entry>
+	  <entry id="103212" string="Musical key/tempo"/>
 	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key"/>
 	</section>
 
 	<section name="Publisher">

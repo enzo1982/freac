@@ -38,6 +38,7 @@
     <entry id="313" string="Composer">作曲者</entry>
     <entry id="314" string="Tempo">節奏</entry>
     <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key"/>
 
     <entry id="350" string="unknown artist">未知的演出者</entry>
     <entry id="351" string="unknown title">未知的標題</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">未知的指揮者</entry>
     <entry id="356" string="unknown composer">未知的作曲者</entry>
     <entry id="357" string="unknown album artist">未知的專輯演出者</entry>
+    <entry id="358" string="unknown tempo"/>
+    <entry id="359" string="unknown key"/>
 
     <entry id="380" string="hidden track">隱藏的音軌</entry>
 
@@ -1378,7 +1381,9 @@
 	  <entry id="103209" string="Original album">原始專輯</entry>
 	  <entry id="103210" string="Original lyrics writer">原始作詞者</entry>
 	  <entry id="103211" string="Original release year">原始發行年份</entry>
+	  <entry id="103212" string="Musical key/tempo"/>
 	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key"/>
 	</section>
 
 	<section name="Publisher">

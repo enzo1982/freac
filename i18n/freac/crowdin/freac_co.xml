@@ -38,6 +38,7 @@
     <entry id="313" string="Composer">Cumpositore</entry>
     <entry id="314" string="Tempo">Tempo</entry>
     <entry id="315" string="ISRC">Codice ISRC</entry>
+    <entry id="316" string="Musical key"/>
 
     <entry id="350" string="unknown artist">artista scunnisciutu</entry>
     <entry id="351" string="unknown title">titulu scunnisciutu</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">sceffu d’orchestru scunnisciutu</entry>
     <entry id="356" string="unknown composer">cumpositore scunnisciutu</entry>
     <entry id="357" string="unknown album artist">artista di l’albumu scunnisciutu</entry>
+    <entry id="358" string="unknown tempo"/>
+    <entry id="359" string="unknown key"/>
 
     <entry id="380" string="hidden track">traccia piattata</entry>
 
@@ -1378,7 +1381,9 @@
 	  <entry id="103209" string="Original album">Albumu d’origine</entry>
 	  <entry id="103210" string="Original lyrics writer">Parullaghju d’origine</entry>
 	  <entry id="103211" string="Original release year">Annu d’origine di publicazione</entry>
+	  <entry id="103212" string="Musical key/tempo"/>
 	  <entry id="103213" string="BPM">Ritmu BPM</entry>
+	  <entry id="103214" string="Initial key"/>
 	</section>
 
 	<section name="Publisher">

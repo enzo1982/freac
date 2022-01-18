@@ -38,6 +38,7 @@
     <entry id="313" string="Composer">Kompozitorius</entry>
     <entry id="314" string="Tempo">Tempas</entry>
     <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key"/>
 
     <entry id="350" string="unknown artist">nežinomas atlikėjas</entry>
     <entry id="351" string="unknown title">nežinomas pavadinimas</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">nežinomas dirigentas</entry>
     <entry id="356" string="unknown composer">nežinomas kompozitorius</entry>
     <entry id="357" string="unknown album artist">nežinomas albumo atlikėjas</entry>
+    <entry id="358" string="unknown tempo"/>
+    <entry id="359" string="unknown key"/>
 
     <entry id="380" string="hidden track">paslėptas takelis</entry>
 
@@ -1378,7 +1381,9 @@
 	  <entry id="103209" string="Original album">Originalo albumas</entry>
 	  <entry id="103210" string="Original lyrics writer">Originalo žodžių autorius</entry>
 	  <entry id="103211" string="Original release year">Originalo išleidimo metai</entry>
+	  <entry id="103212" string="Musical key/tempo"/>
 	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key"/>
 	</section>
 
 	<section name="Publisher">
