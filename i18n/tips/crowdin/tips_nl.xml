@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">tips.xml</property>
-    <property name="author">Wim Garreyn &amp; Thomas De Rocker</property>
+    <property name="author">Wim Garreyn en Thomas De Rocker</property>
     <property name="url">https://www.freac.org/</property>
   </info>
   <data>

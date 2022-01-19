@@ -38,7 +38,7 @@
     <entry id="313" string="Composer">Compositor</entry>
     <entry id="314" string="Tempo">Tempo</entry>
     <entry id="315" string="ISRC">ISRC</entry>
-    <entry id="316" string="Musical key"/>
+    <entry id="316" string="Musical key">Chave musical</entry>
 
     <entry id="350" string="unknown artist">artista desconhecido</entry>
     <entry id="351" string="unknown title">título desconhecido</entry>
@@ -48,8 +48,8 @@
     <entry id="355" string="unknown conductor">condutor desconhecido</entry>
     <entry id="356" string="unknown composer">compositor desconhecido</entry>
     <entry id="357" string="unknown album artist">album do artista desconhecido</entry>
-    <entry id="358" string="unknown tempo"/>
-    <entry id="359" string="unknown key"/>
+    <entry id="358" string="unknown tempo">tempo desconhecido</entry>
+    <entry id="359" string="unknown key">chave desconhecida</entry>
 
     <entry id="380" string="hidden track">faixa oculta</entry>
 
@@ -1381,9 +1381,9 @@
 	  <entry id="103209" string="Original album">Álbum original</entry>
 	  <entry id="103210" string="Original lyrics writer">Letrista original</entry>
 	  <entry id="103211" string="Original release year">Ano de lançamento original</entry>
-	  <entry id="103212" string="Musical key/tempo"/>
+	  <entry id="103212" string="Musical key/tempo">Chave/tempo musical</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
-	  <entry id="103214" string="Initial key"/>
+	  <entry id="103214" string="Initial key">Chave inicial</entry>
 	</section>
 
 	<section name="Publisher">

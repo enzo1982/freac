@@ -31,7 +31,7 @@
     <entry id="18" string="Update complete">Atualização completa</entry>
     <entry id="19" string="Your application has been successfully updated!">Sua aplicação foi atualizada com sucesso!</entry>
     <entry id="20" string="Error">Erro</entry>
-    <entry id="21" string="Error downloading package!">Erro ao baixar o arquivo!</entry>
+    <entry id="21" string="Error downloading package!">Erro ao descarregar o ficheiro!</entry>
     <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Erro ao instalar &quot;%1&quot;!&#10;&#10;O acesso à pasta do programa foi negado.</entry>
   </data>
 </LangFile>

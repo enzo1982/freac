@@ -48,7 +48,7 @@
     <entry id="355" string="unknown conductor">неизвестный дирижер</entry>
     <entry id="356" string="unknown composer">неизвестный композитор</entry>
     <entry id="357" string="unknown album artist">неизвестный исполнитель альбома</entry>
-    <entry id="358" string="unknown tempo"/>
+    <entry id="358" string="unknown tempo">неизвестный темп</entry>
     <entry id="359" string="unknown key"/>
 
     <entry id="380" string="hidden track">скрытая дорожка</entry>
