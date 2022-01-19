@@ -51,8 +51,8 @@ parts:
 
   libcdio-paranoia:
     after: [ libcdio ]
-    source: https://github.com/rocky/libcdio-paranoia/archive/release-10.2+2.0.1.tar.gz
-    source-checksum: sha256/7a4e257c85f3f84129cca55cd097c397364c7a6f79b9701bbc593b13bd59eb95
+    source: https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+2.0.1.tar.bz2
+    source-checksum: sha256/33b1cf305ccfbfd03b43936975615000ce538b119989c4bec469577570b60e8a
     plugin: autotools
     configflags: [ --prefix=/usr, --disable-cxx, --disable-example-progs ]
     prime:
@@ -66,6 +66,9 @@ parts:
     build-environment:
       - PATH: "/usr/bin:$PATH"
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
+    override-build: |
+      autoreconf -i
+      snapcraftctl build
     prime:
       - usr/lib/libfaad.so*
 
@@ -79,6 +82,7 @@ parts:
       - CXXFLAGS: "$CXXFLAGS -O3 -funroll-loops"
     override-build: |
       patch -p1 < $SNAPCRAFT_STAGE/fdk-aac-2.0.2-drcfix.patch
+      autoreconf -i
       snapcraftctl build
     prime:
       - usr/lib/libfdk-aac.so*
@@ -190,6 +194,9 @@ parts:
     configflags: [ --prefix=/usr ]
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
+    override-build: |
+      autoreconf -i
+      snapcraftctl build
     prime:
       - usr/lib/librnnoise.so*
 
