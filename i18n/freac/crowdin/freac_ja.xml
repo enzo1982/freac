@@ -38,7 +38,7 @@
     <entry id="313" string="Composer">作曲</entry>
     <entry id="314" string="Tempo">テンポ</entry>
     <entry id="315" string="ISRC">ISRC</entry>
-    <entry id="316" string="Musical key"/>
+    <entry id="316" string="Musical key">調</entry>
 
     <entry id="350" string="unknown artist">不明なアーティスト</entry>
     <entry id="351" string="unknown title">不明なタイトル</entry>
@@ -48,8 +48,8 @@
     <entry id="355" string="unknown conductor">指揮者不明</entry>
     <entry id="356" string="unknown composer">作曲者不明</entry>
     <entry id="357" string="unknown album artist">不明なアルバムアーティスト</entry>
-    <entry id="358" string="unknown tempo"/>
-    <entry id="359" string="unknown key"/>
+    <entry id="358" string="unknown tempo">不明なテンポ</entry>
+    <entry id="359" string="unknown key">調不明</entry>
 
     <entry id="380" string="hidden track">隠しトラック</entry>
 
@@ -1381,9 +1381,9 @@
 	  <entry id="103209" string="Original album">オリジナルのアルバム</entry>
 	  <entry id="103210" string="Original lyrics writer">オリジナルの作詞</entry>
 	  <entry id="103211" string="Original release year">オリジナルのリリース年</entry>
-	  <entry id="103212" string="Musical key/tempo"/>
+	  <entry id="103212" string="Musical key/tempo">調/テンポ</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
-	  <entry id="103214" string="Initial key"/>
+	  <entry id="103214" string="Initial key">初期調</entry>
 	</section>
 
 	<section name="Publisher">
@@ -1403,7 +1403,7 @@
 	</section>
 
 	<section name="Lyrics">
-	  <entry id="103350" string="Lyrics"/>
+	  <entry id="103350" string="Lyrics">歌詞</entry>
 	</section>
 
 	<section name="Configuration">

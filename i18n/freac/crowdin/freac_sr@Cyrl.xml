@@ -38,7 +38,7 @@
     <entry id="313" string="Composer">Композитор</entry>
     <entry id="314" string="Tempo">Темпо</entry>
     <entry id="315" string="ISRC">ISRC</entry>
-    <entry id="316" string="Musical key"/>
+    <entry id="316" string="Musical key">Музичка нота</entry>
 
     <entry id="350" string="unknown artist">непознат извођач</entry>
     <entry id="351" string="unknown title">напознат назив</entry>
@@ -48,8 +48,8 @@
     <entry id="355" string="unknown conductor">непознат диригент</entry>
     <entry id="356" string="unknown composer">непознат композитор</entry>
     <entry id="357" string="unknown album artist">непознат извођач на албуму</entry>
-    <entry id="358" string="unknown tempo"/>
-    <entry id="359" string="unknown key"/>
+    <entry id="358" string="unknown tempo">непознат темпо</entry>
+    <entry id="359" string="unknown key">непозната нота</entry>
 
     <entry id="380" string="hidden track">скривена песма</entry>
 
@@ -1381,9 +1381,9 @@
 	  <entry id="103209" string="Original album">Изворни албум</entry>
 	  <entry id="103210" string="Original lyrics writer">Изворни писац текста</entry>
 	  <entry id="103211" string="Original release year">Изворна година издања</entry>
-	  <entry id="103212" string="Musical key/tempo"/>
+	  <entry id="103212" string="Musical key/tempo">Музичка нота/темпо</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
-	  <entry id="103214" string="Initial key"/>
+	  <entry id="103214" string="Initial key">Почетна нота</entry>
 	</section>
 
 	<section name="Publisher">
