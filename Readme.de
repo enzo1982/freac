@@ -170,7 +170,6 @@ Geschichte
 
 		- Verbesserungen
 
-			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
 			- Performance beim Hinzufügen von Video- und proprietären Audiodateien (DTS, DSD etc.) zur Jobliste verbessert 
 			- Playlisten können jetzt per Drag & Drop zur Jobliste hinzugefügt werden
 			- Platzhalter <tempo> und <initialkey> zur Verwendung in Dateinamensvorlagen hinzugefügt
@@ -202,9 +201,8 @@ Geschichte
 			- mpg123 auf Version 1.29.3 aktualisiert
 			- libsamplerate auf Version 0.2.2 aktualisiert
 
-		- Neue und aktualisiserte Übersetzungen
+		- Neue Übersetzungen
 
-			- Persische Übersetzung hinzugefügt
 			- Schwedische und portugiesische (brasilianisch) Hilfeseiten hinzugefügt
 
 	Version 1.1.5a (Dezember 2021)

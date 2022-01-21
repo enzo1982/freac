@@ -171,7 +171,6 @@ History
 
 		- Improvements
 
-			- improved support for languages written from right to left
 			- improved performance of adding video and proprietary audio files (DTS, DSD etc.) to the joblist
 			- playlists can now be added to the joblist by drag & drop
 			- added <tempo> and <initialkey> placeholders for use in filename patterns
@@ -203,9 +202,8 @@ History
 			- updated mpg123 to version 1.29.3
 			- updated libsamplerate to version 0.2.2
 
-		- New and updated translations
+		- New translations
 
-			- added Persian translation
 			- added Swedish and Portuguese (Brazilian) manuals
 
 	Version 1.1.5a (December 2021)
