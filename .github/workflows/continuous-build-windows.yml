@@ -14,12 +14,12 @@ jobs:
         include:
           - os: windows-latest
             arch: X86_64
-            system: system64
+            system: system-x64
             mingw: 64
 
           - os: windows-latest
             arch: X86
-            system: system
+            system: system-i686
             mingw: 32
 
           - os: windows-latest

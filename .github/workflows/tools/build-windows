@@ -44,8 +44,8 @@ if [ "$BUILD_ARM64" = True ]; then
   PREVIOUS_PATH=$PATH
 
   # Build x86 Core Audio connector
-  export PATH=`pwd`/system/usr/bin
-  mkdir -p `pwd`/system/tmp
+  export PATH=`pwd`/system-i686/usr/bin
+  mkdir -p `pwd`/system-i686/tmp
   mkdir -p bin
   export BUILD_X86=True
   unset BUILD_ARM64
@@ -55,8 +55,8 @@ if [ "$BUILD_ARM64" = True ]; then
   cd ../../../..
 
   # Build x86-64 Core Audio connector
-  export PATH=`pwd`/system64/usr/bin
-  mkdir -p `pwd`/system64/tmp
+  export PATH=`pwd`/system-x64/usr/bin
+  mkdir -p `pwd`/system-x64/tmp
   mkdir -p bin64
   export BUILD_X86_64=True
   unset BUILD_X86
@@ -153,9 +153,9 @@ cp -R components/extension/notifier/freac.extension.notifier $BIN/boca
 
 # Copy other dependencies
 if [ "$BUILD_X86" = True ]; then
-  cp boca/system/usr/bin/libgcc.dll boca/system/usr/bin/libstdc++.dll $BIN
+  cp boca/system-i686/usr/bin/libgcc.dll boca/system-i686/usr/bin/libstdc++.dll $BIN
 elif [ "$BUILD_X86_64" = True ]; then
-  cp boca/system64/usr/bin/libgcc.dll boca/system64/usr/bin/libstdc++.dll $BIN
+  cp boca/system-x64/usr/bin/libgcc.dll boca/system-x64/usr/bin/libstdc++.dll $BIN
 elif [ "$BUILD_ARM64" = True ]; then
   cp boca/system-arm64/usr/aarch64-w64-mingw32/bin/libc++.dll boca/system-arm64/usr/aarch64-w64-mingw32/bin/libunwind.dll $BIN
 fi
