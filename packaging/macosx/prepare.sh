@@ -36,6 +36,8 @@ cp -R $PREFIX/share/freac/icons freac.app/Contents/Resources/
 cp -R $PREFIX/share/freac/lang freac.app/Contents/Resources/
 cp -R $PREFIX/share/doc/freac/manual freac.app/Contents/Resources/
 
+cp -R $PREFIX/lib/boca/boca.dsp.rnnoise freac.app/Contents/Resources/boca/
+
 cp $PREFIX/lib/boca/boca_decoder_*.1.0.dylib freac.app/Contents/Resources/boca/
 cp $PREFIX/lib/boca/boca_deviceinfo_*.1.0.dylib freac.app/Contents/Resources/boca/
 cp $PREFIX/lib/boca/boca_dsp_*.1.0.dylib freac.app/Contents/Resources/boca/

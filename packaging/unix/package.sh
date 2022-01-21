@@ -40,6 +40,8 @@ cp -R $PREFIX/share/freac/icons freac/
 cp -R $PREFIX/share/freac/lang freac/
 cp -R $PREFIX/share/doc/freac/manual freac/
 
+cp -R $PREFIX/lib/boca/boca.dsp.rnnoise freac/boca/
+
 cp $PREFIX/lib/boca/boca_decoder_*.1.0.so freac/boca/
 cp $PREFIX/lib/boca/boca_deviceinfo_*.1.0.so freac/boca/
 cp $PREFIX/lib/boca/boca_dsp_*.1.0.so freac/boca/
