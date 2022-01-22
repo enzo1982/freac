@@ -58,7 +58,7 @@
                 <p>Improvements:</p>
                 <ul>
                     <li>Improved performance of adding video and proprietary audio files (DTS, DSD etc.) to the joblist</li>
-                    <li>Playlists can now be added to the joblist by drag & drop</li>
+                    <li>Playlists can now be added to the joblist by drag &amp; drop</li>
                     <li>Added &lt;tempo&gt; and &lt;initialkey&gt; placeholders for use in filename patterns</li>
                     <li>Added optional composer, conductor, tempo, musical key and ISRC columns to the joblist</li>
                     <li>Added initial key field to tag editor</li>
