@@ -5,6 +5,10 @@ PREFIX=/usr/local
 SMOOTHVER=0.9.0
 BOCAVER=1.0.3
 
+if [[ -z $MACOSX_TARGET ]]; then
+  MACOSX_TARGET=`sw_vers | awk '$1 == "ProductVersion:" { print $2 }'`
+fi
+
 # Create folders
 mkdir -p freac.app/Contents/MacOS
 mkdir -p freac.app/Contents/Frameworks
@@ -85,7 +89,11 @@ cp $PREFIX/bin/wvunpack freac.app/Contents/Resources/codecs/cmdline/
 
 rm freac.app/Contents/Resources/boca/boca_decoder_alac.1.0.xml
 rm freac.app/Contents/Resources/boca/boca_decoder_ffmpeg_alac.1.0.xml
-rm freac.app/Contents/Resources/boca/boca_decoder_ffmpeg_mac.1.0.xml
+
+if [[ $MACOSX_TARGET != "10.5.8" ]]; then
+  rm freac.app/Contents/Resources/boca/boca_decoder_ffmpeg_mac.1.0.xml
+fi
+
 rm freac.app/Contents/Resources/boca/boca_decoder_ffmpeg_mpc.1.0.xml
 rm freac.app/Contents/Resources/boca/boca_decoder_ffmpeg_wavpack.1.0.xml
 rm freac.app/Contents/Resources/boca/boca_encoder_ffmpeg_alac.1.0.xml
