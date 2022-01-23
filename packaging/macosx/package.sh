@@ -1,10 +1,10 @@
 #!/bin/bash
 
-RELEASE=1.1.6
-#RELEASE=1.1.6-`date +"%Y%m%d"`
+#RELEASE=1.1.6
+RELEASE=1.1.6-`date +"%Y%m%d"`
 
-VERSION="v1.1.6"
-#VERSION="v1.1.6 (`date +"%Y%m%d"`)"
+#VERSION="v1.1.6"
+VERSION="v1.1.6 (`date +"%Y%m%d"`)"
 
 MACOSX_TARGET=$MACOSX_DEPLOYMENT_TARGET
 if [[ -z $MACOSX_TARGET ]]; then
