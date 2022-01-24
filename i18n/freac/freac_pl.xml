@@ -39,7 +39,7 @@
     <entry id="314" string="Tempo">Tempo</entry>
     <entry id="315" string="ISRC">ISRC</entry>
     <entry id="316" string="Musical key">Tonacja</entry>
-	  
+
     <entry id="350" string="unknown artist">nieznany wykonawca</entry>
     <entry id="351" string="unknown title">nieznany tytuł</entry>
     <entry id="352" string="unknown album">nieznany album</entry>
@@ -1384,7 +1384,7 @@
 	  <entry id="103212" string="Musical key/tempo">Tonacja/tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
 	  <entry id="103214" string="Initial key">Tonacja początkowa</entry>
-	 </section>
+	</section>
 
 	<section name="Publisher">
 	  <entry id="103300" string="Publisher">Wydawca</entry>
