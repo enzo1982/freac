@@ -87,10 +87,18 @@ Installation
 
 	FreeBSD:
 
-		fre:ac is distributed as a .tar.gz archive.
+		fre:ac is available as a FreeBSD port and can be installed using the following command:
 
-		Please extract the contents to a location of your choice and execute the freac binary to start
-		fre:ac.
+			sudo pkg install freac
+
+		Alternatively, there is a binary version of fre:ac distributed as a .tar.gz archive. Please
+		extract the contents to a location of your choice and execute the freac binary to start fre:ac.
+
+	Haiku:
+
+		fre:ac is available as a HaikuPorts package and can be installed using the following command:
+
+			pkgman install freac
 
 Requirements
 ------------
@@ -98,7 +106,7 @@ Requirements
 	Requirements for running fre:ac:
 
 		Supported operating systems:
-			- Windows XP/Vista/7/8.x/10
+			- Windows XP/Vista/7/8.x/10/11
 			- macOS 10.5 Leopard or later
 			- Linux (most modern distributions are supported)
 			- FreeBSD/PC-BSD (tested on FreeBSD 13.0)
@@ -126,7 +134,7 @@ Requirements
 
 		Windows:
 
-			- MinGW GCC v4.0+ (http://www.mingw.org/) or Visual Studio 2019
+			- MinGW GCC v4.0+ (http://www.mingw.org/) or Visual Studio 2022
 
 		All Linux and Unix platforms:
 
@@ -152,24 +160,32 @@ Requirements
 History
 -------
 
-	Version 1.1.6 (November 2021)
+	Version 1.1.6 (January 2022)
+
+		- added native support for Windows on the ARM64 architecture
 
 		- New features
 
 			- added support for editing lyrics in the tag editor
+			- added support for creating cue sheets and playlists with freaccmd
 
 		- Improvements
 
-			- improved support for languages written from right to left
+			- improved performance of adding video and proprietary audio files (DTS, DSD etc.) to the joblist
 			- playlists can now be added to the joblist by drag & drop
-			- added optional composer, conductor, tempo and ISRC columns to the joblist
+			- added <tempo> and <initialkey> placeholders for use in filename patterns
+			- added optional composer, conductor, tempo, musical key and ISRC columns to the joblist
+			- added initial key field to tag editor
 			- added support for lyrics in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags
 			- added support for parsing OverDrive MediaMarkers in ID3v2 tags
+			- added support for the pre-emphasis flag in cue sheets
 
 		- Bug fixes
 
 			- fixed possible crash upon querying the CDDB database
 			- fixed possible crash in FAAD2 decoder when trying to open unsupported files
+			- fixed faulty decoding of certain AAC files caused by a bug in the FDK-AAC decoder
+			- fixed possible faulty output when decoding from non-zero positions using external decoders
 			- fixed issue ripping CD tracks when output filename pattern is <filename>
 			- fixed AccurateRip reporting verification errors for hidden track one audio
 			- fixed setting to replace spaces not being respected when writing cover art and log files
@@ -177,19 +193,24 @@ History
 			- fixed tag editor fields for media type, catalog number and barcode being limited to 12 characters
 			- fixed freeze when decoding certain WMA files on Windows
 			- fixed drag & drop not working after online update on Windows
-			- fixed open/save file dialogs failing on macOS 12.0 Monterey
 
 		- New and updated codecs
 
 			- added native Apple Lossless decoder
-			- updated FFmpeg to version 4.4.1
-			- updated Monkey's Audio to version 7.14
-			- updated mpg123 to version 1.29.2
+			- updated FFmpeg to version 5.0
+			- updated Monkey's Audio to version 7.23
+			- updated mpg123 to version 1.29.3
 			- updated libsamplerate to version 0.2.2
 
 		- New translations
 
-			- added Persian translation
+			- added Swedish and Portuguese (Brazilian) manuals
+
+	Version 1.1.5a (December 2021)
+
+		- Bug fixes
+
+			- fixed open/save file dialogs failing on macOS 12.0 Monterey
 
 	Version 1.1.5 (June 2021)
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -289,6 +289,12 @@ const String	 freac::Config::PlaylistFilenamePatternDefault			= String("<albumar
 
 const String	 freac::Config::PlaylistCreateSingleFileID			= "SinglePlaylistFile";
 const Bool	 freac::Config::PlaylistCreateSingleFileDefault			= False;
+
+const String	 freac::Config::PlaylistFilenameID				= "PlaylistFilename";
+const String	 freac::Config::PlaylistFilenameDefault				= NIL;
+
+const String	 freac::Config::PlaylistCueSheetID				= "CueSheetFilename";
+const String	 freac::Config::PlaylistCueSheetDefault				= NIL;
 
 /* Category Tags
  */

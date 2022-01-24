@@ -11,8 +11,8 @@
   "sources": [
     {
         "type": "archive",
-        "url": "https://freac.org/patches/MAC_SDK_714.zip",
-        "sha256": "42b35472d8fb5704f694229399615069d155b5e13b8652ad922667845dbb2a96",
+        "url": "https://freac.org/patches/MAC_SDK_723.zip",
+        "sha256": "1d17d469dd2b4652e19cb91aa7cf76786fec999871a8f5729cd24064f989e9ae",
         "strip-components": 0
     }
   ]

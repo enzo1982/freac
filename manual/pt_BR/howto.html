@@ -1,0 +1,414 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>Como...? - Guia do usuário fre:ac</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+
+    <!-- Hack to avoid flash of unstyled content in IE -->
+    <script> </script>
+  </head>
+
+  <body id="onecolumn">
+    <div id="container">
+      <div class="wrapper">
+
+	<div id="header">
+	  <div class="wrapper">
+	    <h1 id="page-title">
+	      <div id="g_title">Como...? - Guia do usuário fre:ac</div>
+	    </h1>
+	    <p class="description"></p>
+	    <div id="g_description">
+	      <p>Gui das configurações e dos recursos especiais do fre:ac</p>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="main-content-oc">
+	  <div class="wrapper">
+	    <div class="content-item">
+	      <div id='g_body'>
+		<h4>Conteúdo</h4>
+		<blockquote>
+		  <p id="contents"><a href="#anchor_app">Como executar a AppImage do fre:ac?</a><br/> <a href="#anchor_scl">Como alterar o tamanho da fonte do fre:ac?</a><br/> <a href="#anchor_pat">Como usar os padrões para gerar os nomes dos arquivos no fre:ac?</a><br/> <a href="#anchor_out">Como configurar a pasta de saída para uso portátil?</a><br/> <a href="#anchor_enc">Como instalar um codificador/decodificador A ou B?</a><br/> <a href="#anchor_tra">Como adicionar uma nova tradução ao fre:ac?</a><br/> <a href="#anchor_src">Como compilar fre:ac a partir do código-fonte?</a><br/> <a href="#anchor_rem">Como excluir o fre:ac do meu computador?</a></p>
+		</blockquote>
+		<h4 id="anchor_app">Como executar a AppImage do fre:ac?</h4>
+		<blockquote>
+		  <p>Após baixar a Appmage do fre:ac, torne-a executável. No gerenciador gráfico de arquivos, isso pode ser feito clicando com o botão direito do mouse no AppImage e clicando em <b>Propriedades</b>. Na caixa de diálogo a seguir, mude para a guia <b>Permissões</b> e marque a opção <b>Executar como aplicativo</b>. As etiquetas individuais podem ter nomes um pouco diferentes dependendo da sua distro e do seu ambiente da área de trabalho.</p>
+		  <p>Ou você também pode definir o arquivo como executável direto no terminal. Vá até o diretório onde o AppImage está e digite:</p>
+		  <blockquote>
+		    <b>chmod a+x freac-v1.1.1-linux-x86_64.AppImage</b>
+		  </blockquote>
+		  <p>Depois rode o AppImage com o comando abaixo:</p>
+		  <blockquote>
+		    <b>./freac-v1.1.1-linux-x86_64.AppImage</b>
+		  </blockquote>
+		  <p>Também é possível rodar a interface de linha de comando do fre:ac e o aplicativo <b>smooth Translator</b> incluso usando o AppImage:</p>
+		  <blockquote>
+		    <ul>
+		      <li>freaccmd: <b>./freac-v1.1.1-linux-x86_64.AppImage freaccmd</b></li>
+		      <li>smooth Translator: <b>./freac-v1.1.1-linux-x86_64.AppImage translator</b></li>
+		    </ul>
+		  </blockquote>
+		  <p>Caso precise acessar o conteúdo do AppImage fre:ac, rode ele com a opção <b>--appimage-extract</b>:</p>
+		  <blockquote>
+		    <b>./freac-v1.1.1-linux-x86_64.AppImage --appimage-extract</b>
+		  </blockquote>
+		  <p>Após rodar o comando, o conteúdo do arquivo AppImage vai estar na pasta <b>squashfs-root</b>.</p>
+		</blockquote>
+		<h4 id="anchor_scl">Como mudar o tamanho da fonte de fre:ac?</h4>
+		<blockquote>
+		  <p>Caso as letras da interface estejam muito pequenas, você pode ativar o dimensionamento com a opção <b>--scale:n.n</b>. Defina <b>n.n</b> para o fator de escala desejado. Por exemplo, para que o texto 25% maiores, execute o fre:ac assim:</p>
+		  <blockquote>
+		    <b>freac --scale:1.25</b>
+		  </blockquote>
+		</blockquote>
+		<h4 id="anchor_pat">Como usar os padrões para gerar os nomes dos arquivos no fre:ac?</h4>
+		<blockquote>
+		  <p>O padrão para a nomenclatura dos arquivos gerados pode ser configurado na página do <b>Codificador</b>. É possível usar as barras invertidas para definir os diretórios e os marcadores de posição para se referir as metainformações. Os marcadores disponíveis são:</p>
+		  <ul>
+		    <li><b>&lt;artist&gt;</b> - O cantor</li>
+		    <li><b>&lt;title&gt;</b> - O título da música</li>
+		    <li><b>&lt;album&gt;</b> - O título do álbum</li>
+		    <li><b>&lt;disc&gt;</b> - O número do disco (caso tenha mais de um)</li>
+		    <li><b>&lt;track&gt;</b> - O número da faixa</li>
+		    <li><b>&lt;genre&gt;</b> - O gênero da música</li>
+		    <li><b>&lt;albumartist&gt;</b> - O artista do álbum</li>
+		    <li><b>&lt;composer&gt;</b> - O compositor da música</li>
+		    <li><b>&lt;conductor&gt;</b> - O condutor</li>
+		    <li><b>&lt;ano&gt;</b> - O ano em que a música foi publicada</li>
+		    <li><b>&lt;discid&gt;</b> - A identificação CDDB/freedb do disco</li>
+		    <li><b>&lt;currentdate&gt;</b> - O dia de hoje no formato aaaammdd</li>
+		    <li><b>&lt;currenttime&gt;</b> - A hora atual no formato hhmm</li>
+		  </ul>
+		  <p>Os marcadores para <b>&lt;disc&gt;</b> e para <b>&lt;track&gt;</b> podem ser alterados para <b>&lt;disc(n)&gt;</b> e <b>&lt;track(n)&gt; </b> onde a parte <b>(n)</b> define o tamanho mínimo do disco ou o número da faixa. Os zeros serão adicionais caso o número real seja pequeno demais. O <b>n</b> pode ser entre <b>1</b> a <b>4</b> onde <b>1</b> é o padrão para o disco e <b>2 </b> é o padrão para a quantidade das trilhas caso a parte <b>(n)</b> seja omitida.</p>
+		  <p>Os marcadores de posição acima se refere às informações da música e do álbum. O marcador a seguir define o tipo do arquivo gerado:</p>
+		  <ul>
+		    <li><b>&lt;filetype&gt;</b> - O tipo do arquivo gerado</li>
+		  </ul>
+		  <p>Um caso muito comum para o uso deste marcador é quando você converte toda hora para formatos diferentes (de FLAC para arquivamento e M4A para o seu tocador de música portátil por exemplo) e gostaria de manter os arquivos codificados em diretórios diferentes.</p>
+		  <p>Além do que foi dito acima, há dois marcadores que se referem ao nome original do arquivo que está sendo codificado no fre:ac:</p>
+		  <ul>
+		    <li><b>&lt;filename&gt;</b> - O nome do arquivo que será recebido</li>
+		    <li><b>&lt;directory&gt;</b> - A pasta onde o arquivo recebido pode ser encontrado</li>
+		  </ul>
+		  <p>O padrão <b>&lt;directory&gt;</b> é especial, pois é possível alterar o seu significado usando dois argumentos numéricos. Você pode usá-lo como <b>&lt;directory+n&gt;</b> ou <b>&lt;directory+n (m)&gt;</b>. Nessas expressões o <b>n</b> define a quantidade dos caminhos dos componentes que devem ser retirados desde o início. O <b>m</b> define a quantidade de componentes que serão usados a partir do que sobrar. A omissão do <b>(m)</b> usará todos os componentes deixados no caminho após a remoção de <b>n</b> componentes a partir do início. <b>&lt;directory&gt;</b> sem qualquer argumento apontará para o caminho completo.<p>
+		  <p>Então como fica? Supondo que você tenha a sua coleção de músicas ordenada desta maneira:</p>
+		  <blockquote>
+		    <p>C:\Music\[outro critério]\[artist]\[album]\[track] - [title]</p>
+		  </blockquote>
+		  <p>Você pode ter um arquivo chamado <b>C:\Music\Favorites\Starsailor\Silence is Easy\01 - Music was Saved.flac</b>.</p>
+		  <p>Agora, vamos supor que queira converter alguns arquivos de música para uso no seu reprodutor portátil e colocá-los em <b>C:\Encoded\</b>. Para manter seu campo <b>[outro critério]</b>, você precisa usar o padrão <b>&lt;directory&gt;</b>. Caso a pasta de destino do codificador esteja definido como <b>C:\Encoded\</b>, o padrão do nome do seu arquivo completo ficará assim:</p>
+		  <blockquote>
+		    <p>&lt;directory+1(1)&gt;\&lt;artist&gt; - &lt;album&gt;\&lt;artist&gt; - &lt;album&gt; - &lt;track&gt; - &lt;title&gt;</p>
+		  </blockquote>
+		  <p>Isso vai converter o arquivo mencionado anteriormente para <b>C:\Encoded\Favorites\Starsailor - Silence is Easy\Starsailor - Silence is Easy - 01 - Music was Saved.m4a</b>.</p>
+		</blockquote>
+		<h4 id="anchor_out">Como configurar a pasta destino para uso portátil?</h4>
+		<blockquote>
+		  <p>Ao usar o fre:ac a partir de uma unidade portátil como de um HDD externo ou uma unidade USB por exemplo, é preferível que a pasta de destino se ajuste automaticamente às circunstâncias encontradas nos diferentes computadores. As letras das unidades podem ser diferentes no seu drive portátil. O fre:ac é compatível com os seguintes marcadores para a definição da configuração da pasta de destino:</p>
+		  <ul>
+		    <li><b>&lt;installdrive&gt;</b> - É a letra da unidade onde o fre:ac está instalado (apenas no Windows)</li>
+		    <li><b>&lt;profile&gt;</b> - A pasta do perfil do usuário conectado atualmente</li>
+		  </ul>
+		  <p>Caso queira que os seus arquivos convertidos vá para a unidade portátil, independentemente da letra da unidade atribuída a ela, use a marcação <b>&lt;installdrive&gt;</b> e configure a pasta de destino como, por exemplo:</p>
+		  <blockquote>
+		    <p>&lt;installdrive&gt;\Music Files\</p>
+		  </blockquote>
+		  <p>Caso queira que os ser arquivos convertidos vá para a pasta <b>Minhas músicas</b> do usuário conectado atualmente, você pode usar a marcação <b>&lt;perfil&gt;</b> da seguinte maneira:</p>
+		  <blockquote>
+		    <p>&lt;profile&gt;\Music\</p>
+		  </blockquote>
+		  <p>Nos dois casos, o caminho exibido na parte inferior da janela principal do fre:ac refletirá a pasta real do destino com os marcadores já resolvidos.</p>
+		</blockquote>
+		<h4 id="anchor_enc">Como instalar um codificador/decodificador A ou B?</h4>
+		<script type="text/javascript">// <![CDATA[
+			function toggleVisible(id) { document.getElementById(id).style.display = (document.getElementById(id).style.display == 'none' ? 'inline' : 'none'); }
+		// ]]></script>
+		<blockquote>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('aften');">Aften AC-3 Encoder</script></a></h5>
+		  <div id="aften">
+		    <blockquote>
+		      <p>Para instalar o codificador Aften AC-3 por exemplo, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote ZIP binário Aften Win32</b> em <a href="https://sourceforge.net/projects/win32builds/files/">sourceforge.net</a>.</li>
+			<li>Copie o arquivo <b>aften.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('alac');">Decodificador Apple Lossless</a></h5>
+		  <div id="alac">
+		    <blockquote>
+		      <p>O decodificador Apple Lossless é originalmente fornecido junto com o fre:ac, assim sendo, você não precisa instalá-lo manualmente.</p>
+		      <p>Caso ainda precise instalar ou atualizar o decodificador manualmente, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote genérico de compilação do Win32</b> em <a href="https://www.rarewares.org/lossless.php#alac">www.rarewares.org</a>.</li>
+			<li>Copie o arquivo <b>alac.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('dca');">Codificador DTS Coherent Acoustics</a></h5>
+		  <div id="dca">
+		    <blockquote>
+		      <p>Para instalar o codificador DTS Coherent Audio, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote ZIP binário ffdcaenc</b> em <a href="https://github.com/filler56789/ffdcaenc-2/releases">GitHub</a>.</li>
+			<li>Copie o arquivo <b>ffdcaenc.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado..</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('exhale');">exhale xHE-AAC Encoder</a></h5>
+		  <div id="exhale">
+		    <blockquote>
+		      <p>Para instalar o codificador exhale xHE-AAC, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote exhale ZIP</b> em <a href="https://www.rarewares.org/aac-encoders.php#exhale-win">www.rarewares.org</a>.</li>
+			<li>Copie o arquivo <b>exhale.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado..</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('xmp');">Decodificador Extended Module Player (XMP)</a></h5>
+		  <div id="xmp">
+		    <blockquote>
+		      <p>Para instalar o decodificador Extended Module Player (XMP), siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote Extended Module Player 7z</b> em <a href="https://modland.com/pub/software/players/Windows/XMP%20(eXtended%20Module%20Player)/">modland.com</a>.</li>
+			<li>Copie os arquivos <b>XMP.exe</b> e <b>LibXMP.dll</b> do pacote 7z para a subpasta <b>codecs/cmdline</b> no diretório de instalação do fre:ac.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('flaccl');">Codificador FLACCL OpenCL FLAC</a></h5>
+		  <div id="flaccl">
+		    <blockquote>
+		      <p>Para instalar o codificador FLACCL OpenCL FLAC, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote FLACCL RAR</b> em <a href="http://cue.tools/wiki/FLACCL">cue.tools</a>.</li>
+			<li>Crie uma nova pasta chamada <b>flaccl</b> dentro da subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+			<li>Copie todos os arquivos do pacote RAR para a subpasta <b>codecs/cmdline/flaccl</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('flake');">Codificador Flake FLAC</a></h5>
+		  <div id="flake">
+		    <blockquote>
+		      <p>Para instalar o codificador Flake FLAC, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote ZIP binário do Flake Windows</b> em <a href="http://flake-enc.sourceforge.net/download.html">flake-enc.sourceforge.net</a>.</li>
+			<li>Copie o arquivo <b>flake.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('helix');">Codificador RealAudio Helix DNA Producer</a></h5>
+		  <div id="helix">
+		    <blockquote>
+		      <p>Para instalar o Codificador RealAudio Helix DNA Producer, siga estas etapas:</p>
+		      <ul>
+			<li>Crie uma <b>conta na Comunidade Helix</b> em <a href="https://helixcommunity.org/account/register">helixcommunity.org</a>. Você precisará dessa conta para fazer o download do aplicativo Helix DNA Producer.</li>
+			<li>Baixe o <b>pacote ZIP do aplicativo de linha de comando Helix DNA Producer</b> do <a href="https://helix-producer.helixcommunity.org/Downloads.htm">helix-producer.helixcommunity.org</a>.</li>
+			<li>Crie uma nova pasta chamada <b>helix</b> dentro da subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+			<li>Copie o conteúdo da pasta <b>producer</b> do pacote ZIP para a subpasta <b>codecs/cmdline/helix</b> que foi recém-criada no diretório onde o seu fre:ac está instalado. O arquivo <b>producer.exe</b> agora deve estar dentro da pasta <b>helix</b> junto com vários outros arquivos e diretórios do pacote Helix DNA Producer.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('la');">Codificador / Decodificador La Lossless Audio</a></h5>
+		  <div id="la">
+		    <blockquote>
+		      <p>Para instalar o codificador/decodificador de áudio La Lossless, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote de instalação do La Windows</b> em <a href="http://www.lossless-audio.com/download.htm">www.lossless-audio.com</a>.</li>
+			<li>Execute o executável de configuração e instale o codificador La numa pasta da sua escolha.</li>
+			<li>Copie o arquivo <b>la.exe</b> da pasta de instalação La para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+			<li>Observe que o codificador La deve permanecer instalado no seu sistema para que ele possa ser usado com o fre:ac.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('lame');">Codificador de linha de comando LAME MP3</a></h5>
+		  <div id="lame">
+		    <blockquote>
+		      <p>Para instalar o codificador de linha de comando LAME MP3, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote ZIP de lançamento do LAME</b> em <a href="https://rarewares.org/mp3-lame-bundle.php">rarewares.org</a>.</li>
+			<li>Copie o arquivo <b>lame.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('mp4als');">Codificador/Decodificador MPEG-4 Audio Lossless</a></h5>
+		  <div id="mp4als">
+		    <blockquote>
+		      <p>Para instalar o Codificador/Decodificador MPEG-4 Audio Lossless, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote ZIP do Codec do Windows MPEG-4 ALS</b> em <a href="https://www.nue.tu-berlin.de/menue/research/research_topic/compression_and_transmission/mpeg_4_audio_lossless_coding_als/parameter/en">www.nue.tu-berlin.de</a>.</li>
+			<li>Copie o arquivo .exe encontrado no pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado e <b>renomeie o executável para mp4als.exe</b>.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('musepack');">Codificador/Decodificador Musepack</a></h5>
+		  <div id="musepack">
+		    <blockquote>
+		      <p>O codificador/decodificador Musepack é originalmente fornecido junto com o fre:ac, assim sendo, você não precisa instalá-lo manualmente.</p>
+		      <p>Caso ainda precise instalar ou atualizar o Musepack manualmente, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote ZIP de ferramentas Musepack</b> em <a href="https://www.musepack.net/index.php?pg=win">www.musepack.net</a>.</li>
+			<li>Copie os arquivos <b>mpcenc.exe</b> e o <b>mpcdec.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('nero');">Codificador Nero Digital HE-AAC</a></h5>
+		  <div id="nero">
+		    <blockquote>
+		      <p>Para instalar o codificador Nero Digital HE-AAC, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote Nero AAC Codec ZIP</b> em <a href="https://www.free-codecs.com/download/nero_aac_codec.htm">www.free-codecs.com</a>.</li>
+		 	<li>Copie o arquivo <b>NeroAACEnc.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('optimfrog');">Codificador/Decodificador OptimFROG</a></h5>
+		  <div id="optimfrog">
+		    <blockquote>
+		      <p>Para instalar o codificador/decodificador OptimFROG, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote ZIP do console OptimFROG Win32</b> em <a href="http://losslessaudio.org/Downloads.php">losslessaudio.org</a>.</li>
+			<li>Copie o arquivo <b>ofr.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('qtaac');">Codificador QuickTime AAC</a></h5>
+		  <div id="qtaac">
+		    <blockquote>
+		      <p>Para instalar o Codificador QuickTime AAC, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote ZIP do codificador de linha de comando QuickTime AAC</b> em <a href="https://github.com/nu774/qaac/releases">github.com</a>.</li>
+			<li>Copie o arquivo <b>qaac.exe</b> ou <b>qaac64.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('rkau');">Codificador/Decodificador de Áudio RK</a></h5>
+		  <div id="rkau">
+		    <blockquote>
+		      <p>Para instalar o codificador/decodificador de áudio RK, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote ZIP do compressor de áudio RK</b> em <a href="https://www.free-codecs.com/download/rk_audio_compressor.htm">www.free-codecs.com</a>.</li>
+			<li>Copie o arquivo <b>rkau.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('shorten');">Codificador/Secodificador Shorten</a></h5>
+		  <div id="shorten">
+		    <blockquote>
+		      <p>Para instalar o codificador/decodificador Shorten, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote Shorten ZIP</b> em <a href="https://www.free-codecs.com/download/shorten.htm">www.free-codecs.com</a>.</li>
+			<li>Copie o arquivo <b>shorten.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('tak');">Codificador/Decodificador TAK</a></h5>
+		  <div id="tak">
+		    <blockquote>
+		      <p>O codificador/decodificador TAK é originalmente fornecido junto com o fre:ac, assim sendo, você não precisa instalá-lo manualmente.</p>
+		      <p>Caso ainda precise instalar ou atualizar o TAK, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote TAK ZIP</b> em <a href="http://thbeck.de/Tak/Tak.html">thbeck.de</a>.</li>
+			<li>Copie o arquivo <b>takc.exe</b> do pacote ZIP para a subpasta <b>codecs / cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('timidity');">TiMidity Software MIDI Synthesizer</a></h5>
+		  <div id="timidity">
+		    <blockquote>
+		      <p>Para instalar o TiMidity Software MIDI Synthesizer, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote ZIP binário TiMidity CVS</b> em <a href="https://sourceforge.net/projects/twsynth/files/">sourceforge.net</a>.</li>
+			<li>Baixe o <b>pacote ZIP do Freepats</b> em <a href="https://freepats.zenvoid.org/">freepats.zenvoid.org</a>.</li>
+			<li>Crie uma nova pasta chamada <b>timidity</b> dentro da subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+			<li>Copie o arquivo <b>timidity.exe</b> do pacote TiMidity ZIP para a subpasta <b>codecs/cmdline/timidity</b> no diretório recém-criado onde o seu fre:ac está instalado.</li>
+			<li>Copie o conteúdo da pasta <b>freepats</b> do pacote ZIP do Freepats para a recém-criada subpasta <b>codecs/cmdline/timidity</b> no diretório onde o seu fre:ac está instalado. O arquivo <b>crude.cfg</b> agora deve estar dentro da pasta <b>timidity</b> junto com vários outros arquivos e diretórios do pacote Freepats.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('trueaudio');">Codificador/Decodificador True Audio</a></h5>
+		  <div id="trueaudio">
+		    <blockquote>
+		      <p>Para instalar o codificador/decodificador True Audio, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>compressor TTA para pacote ZIP do Windows</b> em <a href="http://tausoft.org/wiki/Main_Page">tausoft.org</a>.</li>
+			<li>Copie o arquivo <b>ttaenc.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('twolame');">Codificador TwoLAME MP2</a></h5>
+		  <div id="twolame">
+		    <blockquote>
+		      <p>Para instalar o codificador TwoLAME MP2, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote ZIP binário TwoLAME</b> em <a href="https://rarewares.org/mp3-others.php#twolame">rarewares.org</a>.</li>
+			<li>Copie o arquivo <b>twolame.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('wavpack');">Codificador/Decodificador WavPack</a></h5>
+		  <div id="wavpack">
+		    <blockquote>
+		      <p>O codificador/decodificador WavPack é originalmente fornecido junto com o fre:ac, assim sendo, você não precisa instalá-lo manualmente.</p>
+		      <p>Caso ainda precise instalar ou atualizar o WavPack, siga estas etapas:</p>
+		      <ul>
+			<li>Baixe o <b>pacote WavPack Win32 ZIP</b> em <a href="http://www.wavpack.com/downloads.html">www.wavpack.com</a>.</li>
+			<li>Copie os arquivos <b>wavpack.exe</b> e <b>wvunpack.exe</b> do pacote ZIP para a subpasta <b>codecs/cmdline</b> no diretório onde o seu fre:ac está instalado.</li>
+		      </ul>
+		    </blockquote>
+		  </div>
+		</blockquote>
+		<script type="text/javascript">// <![CDATA[
+			toggleVisible('nero'); toggleVisible('qtaac'); toggleVisible('helix'); toggleVisible('timidity');
+			toggleVisible('mp4als'); toggleVisible('trueaudio'); toggleVisible('flake'); toggleVisible('flaccl');
+			toggleVisible('lame'); toggleVisible('twolame'); toggleVisible('aften'); toggleVisible('alac');
+			toggleVisible('tak'); toggleVisible('musepack'); toggleVisible('wavpack'); toggleVisible('optimfrog');
+			toggleVisible('shorten'); toggleVisible('la'); toggleVisible('rkau'); toggleVisible('dca');
+			toggleVisible('xmp'); toggleVisible('exhale');
+		// ]]></script>
+		<h4 id="anchor_tra">How to add a new translation to fre:ac?</script></h4>
+		<blockquote>
+		  <p>Use o utilitário <b>smooth Translator</b> que acompanha o fre:ac e abra um arquivo de tradução já existente (encontrado na pasta <b>freac/lang</b>). Em seguida, altere as configurações do idioma para refletir a tradução que você quer criar e comece a traduzir as sequências individuais dos textos. Salve a sua tradução como um novo arquivo no formato <b>freac_??.Xml</b> (substitua o ?? pelo código do seu idioma), reinicie o fre:ac e tente selecionar a nova tradução nas configurações.</p>
+		  <p>Encaminhe a sua tradução para <a href="mailto:translations@freac.org">translations@freac.org</a>, para que ela possa ser incluída na distribuição oficial.</p>
+		</blockquote>
+		<h4 id="anchor_src">Como compilar fre:ac a partir do código-fonte?</h4>
+		<blockquote>
+		  <p>Para compilar o fre:ac a partir do código-fonte, é preciso baixar a versão mais recente do <b>fre:ac Component Development Kit</b> (CDK) no site <a href="https://freac.org/">freac.org</a> primeiro.</p>
+		  <p>Você também vai precisar do código fonte mais atual do <b>Smooth Class Library</b> em <a href="http://smooth-project.org/">smooth-project.org</a> e claro, do pacote de <b>código-fonte do fre:ac</b> ou do código fonte oficial do fre:ac no Git.</p>
+		  <ul>
+		    <li>extraia o conteúdo do <b>freac-cdk-1.0.x-windows.zip</b> em qualquer lugar</li>
+		    <li>crie uma estrutura de pastas como esta:
+		      <blockquote>
+			/cdk (contém a pasta <b>system</b> e o <b>cdk.bat</b>)<br/> /cdk/freac (renomeie a pasta do pacote <b>freac-1.1.x.tar.gz</b>)<br/> /cdk/smooth (renomeie a pasta do pacote <b>smooth-0.9.x.tar.gz</b>)
+		      </blockquote>
+		    </li>
+		    <li>execute o <b>cdk.bat</b></li>
+		    <li>digite: <b>make &amp;&amp; cd smooth &amp;&amp; make &amp;&amp; cd ../freac &amp;&amp; make</b></li>
+		  </ul>
+		</blockquote>
+		<h4 id="anchor_rem">Como excluir o fre:ac do meu computador?</h4>
+		<blockquote>
+		  <p>Todas as versões mais recentes do fre:ac podem ser removidas através do painel <b>Aplicativos</b> nas <b>Configurações do Windows</b>. Localize fre:ac na lista de aplicativos instalados e selecione <b>Desinstalar</b> para excluir.</p>
+		  <p>Caso você não consiga encontrar o fre:ac lá, basta excluir a pasta do fre:ac. O fre:ac não cria nenhuma entrada no registro do Windows nem armazena qualquer componente ativo fora da sua pasta de instalação.</p>
+		</blockquote>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="footer">
+	  <div class="wrapper">
+	    <p></p>
+	    <div id='g_footer'>
+	      <p>Direitos autorais (C) 2006 Joseph Nahmias<br/> Direitos autorais (C) 2007-2021 projeto fre:ac</p>
+	    </div>
+	    <p></p>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+  </body>
+</html>

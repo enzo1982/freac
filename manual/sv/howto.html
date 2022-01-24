@@ -1,0 +1,612 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>Så här gör du ... - Användarhandbok för fre:ac</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+
+    <!-- Hack to avoid flash of unstyled content in IE -->
+    <script> </script>
+  </head>
+
+  <body id="onecolumn">
+    <div id="container">
+      <div class="wrapper">
+
+	<div id="header">
+	  <div class="wrapper">
+	    <h1 id="page-title">
+	      <div id="g_title">Så här gör du ... - Användarhandbok för fre:ac</div>
+	    </h1>
+	    <p class="description"></p>
+	    <div id="g_description">
+	      <p>Handledning till konfigurering av fre:ac och dess specialfunktioner</p>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="main-content-oc">
+	  <div class="wrapper">
+	    <div class="content-item">
+	      <div id='g_body'>
+		<h4>Innehållsförteckning</h4>
+		<blockquote>
+		  <p id="contents"><a href="#anchor_app">Hur kör jag fre:acs AppImage?</a><br/>
+		    <a href="#anchor_scl">Hur ändrar jag teckenstorleken i fre:ac?</a><br/>
+		    <a href="#anchor_pat">Hur använder jag filnamnsmönster för målfiler i fre:ac?</a><br/>
+		    <a href="#anchor_out">Hur konfigurerar jag målmappen vid användning av den flyttbara versionen?</a><br/>
+		    <a href="#anchor_enc">Hur installerar jag en viss kodare/avkodare?</a><br/>
+		    <a href="#anchor_tra">Hur gör jag för att översätta fre:ac till ett nytt språk?</a><br/>
+		    <a href="#anchor_src">Hur kompilerar jag fre:ac från källkod?</a><br/>
+		    <a href="#anchor_rem">Hur tar jag bort fre:ac från min dator?</a></p>
+		</blockquote>
+		<h4 id="anchor_app">Hur kör jag fre:acs AppImage?</h4>
+		<blockquote>
+		  <p>Efter att ha hämtat fre:acs AppImage behöver du göra den körbar. I grafiska filhanterare kan det vanligtvis göras
+		    genom att högerklicka på AppImage-filen och välja <b>Egenskaper</b>.
+			I dialogrutan som öppnas går du till fliken <b>Säkerhet</b>
+		    och kryssa i alternativet <b>Kör som program</b>. De enskilda
+			etiketterna kan ha olika namn beroende på din distribution och skrivbordsmiljö.</p>
+		  <p>Som ett alternativ kan du ange flaggan för körbar kod i terminalen. Gå till mappen som innehåller din hämtade AppImage och ange:</p>
+		  <blockquote>
+		    <b>chmod a+x freac-v1.1.1-linux-x86_64.AppImage</b>
+		  </blockquote>
+		  <p>Kör sedan AppImage-filen genom att använda:</p>
+		  <blockquote>
+		    <b>./freac-v1.1.1-linux-x86_64.AppImage</b>
+		  </blockquote>
+		  <p>Det är även möjligt att köra fre:acs kommandoradsgränssnitt och det inkluderade programmet <b>smooth Translator</b> via AppImage-filen:</p>
+		 <ul align="left" style="text-align: left; clear: both;">
+		 <table>
+		  <tr>
+		    <td style="padding: 0px 5px 0px 0px;">freaccmd:</td>
+		    <td><b>./freac-v1.1.1-linux-x86_64.AppImage freaccmd</b></td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 5px 0px 0px;">smooth Translator:</td>
+		    <td><b>./freac-v1.1.1-linux-x86_64.AppImage translator</b></td>
+		  </tr>
+		 </table>
+		 </ul>
+		  <p>Om du behöver få åtkomst till innehållet i fre:acs AppImage, kan du köra den med argumentet <b>--appimage-extract</b>:</p>
+		  <blockquote>
+		    <b>./freac-v1.1.1-linux-x86_64.AppImage --appimage-extract</b>
+		  </blockquote>
+		  <p>Efter att ha kört kommandot hittar du AppImage-filens innehåll i mappen <b>squashfs-root</b>.</p>
+		</blockquote>
+		<h4 id="anchor_scl">Hur ändrar jag teckenstorleken i fre:ac?</h4>
+		<blockquote>
+		  <p>Om standardstorleken för fre:acs användargränssnitt är för liten, kan du aktivera skalning via alternativet
+			<b>--scale:n.n</b>. Ange <b>n.n</b> till
+		    den skalningsfaktor du vill tillämpa. För att t.ex. göra teckensnitt och gränssnittselement 25% större, kör fre:ac så här:</p>
+		  <blockquote>
+		    <b>freac --scale:1.25</b>
+		  </blockquote>
+		</blockquote>
+		<h4 id="anchor_pat">Hur använder jag filnamnsmönster för målfiler i fre:ac?</h4>
+		<blockquote>
+		  <p>Filnamnsmönstret för målfiler kan konfigureras i panelen <b>Kodare</b> i de allmänna inställningarna. Du kan
+		    använda omvänt snedstreck (<b>&#8726;</b>) för att ange kataloger och platshållare för att referera till metainformation. Följande
+		    platshållare är tillgängliga:</p>
+		 <ul align="left" style="text-align: left; clear: both;">
+		 <table>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;artist&gt;</b></td>
+		    <td>Låtartisten</td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;title&gt;</b></td>
+		    <td>Låtens titel</td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;album&gt;</b></td>
+		    <td>Albumets titel</td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;disc&gt;</b></td>
+		    <td>Skivnumret</td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;track&gt;</b></td>
+		    <td>Låtens spårnummer</td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;genre&gt;</b></td>
+		    <td>Låtens genre</td>
+		  </tr>
+		  <tr>
+			<td style="padding: 8px 0px;"></td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;albumartist&gt;</b></td>
+		    <td>Albumartisten</td>
+		  </tr>
+		  <tr>
+			<td style="padding: 8px 0px;"></td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;composer&gt;</b></td>
+		    <td>Låtens/styckets kompositör</td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;conductor&gt;</b></td>
+		    <td>Framförandets dirigent</td>
+		  </tr>
+		  <tr>
+			<td style="padding: 8px 0px;"></td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;tempo&gt;</b></td>
+		    <td>Låtens/styckets tempo (bpm)</td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;initialkey&gt;</b></td>
+		    <td>Låtens/styckets inledande tonart</td>
+		  </tr>
+		  <tr>
+			<td style="padding: 8px 0px;"></td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;year&gt;</b></td>
+		    <td>Det år låten gavs ut</td>
+		  </tr>
+		  <tr>
+			<td style="padding: 8px 0px;"></td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;discid&gt;</b></td>
+		    <td>Skivans id enligt CDDB/freedb</td>
+		  </tr>
+		  <tr>
+			<td style="padding: 8px 0px;"></td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;currentdate&gt;</b></td>
+		    <td>Aktuellt datum i formatet <b>ååååmmdd</b></td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;currenttime&gt;</b></td>
+		    <td>Aktuellt klockslag i formatet <b>hhmm</b></td>
+		  </tr>
+		 </table>
+		 </ul>
+		  <p>Platshållarna <b>&lt;disc&gt;</b> och <b>&lt;track&gt;</b> kan
+			ändras med hjälp av tillägget <b>(n)</b>; <b>&lt;disc(n)&gt;</b> respektive
+			<b>&lt;track(n)&gt;</b>. Tillägget <b>(n)</b> anger
+			minimilängden på skiv- eller spårnumret, i antal siffror. Om numret är för kort läggs nollor till i början för att rätt nummerlängd skall uppnås. 
+			<b>n</b> måste vara inom intervallet <b>1</b> till
+			<b>4</b>. Om <b>(n)</b> inte anges,
+			är standardinställningen <b>1</b> (en siffra) för skivnummer och <b>2</b>
+			(två siffror) för spårnummer.</p>
+		  <p>De ovan angivna platshållarna gäller låt- och albuminformation. Platshållaren nedan gäller typen av målfil:</p>
+		 <ul align="left" style="text-align: left; clear: both;">
+		 <table>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;filetype&gt;</b></td>
+		    <td>Målfilens filtyp</td>
+		  </tr>
+		 </table>
+		 </ul>
+		  <p>Ett vanligt skäl att använda den platshållaren är om man regelbundet kodar till olika format (t.ex. FLAC för arkivering och M4A för den
+		    mobila musikspelaren) och vill hålla de kodade filerna i separata katalogträd.</p>
+		  <p>Utöver den ovan nämnda platshållaren, finns två platshållare som refererar
+		    till det ursprungliga filnamnet på en fil som kodas i fre:ac:</p>
+		 <ul align="left" style="text-align: left; clear: both;">
+		 <table>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;filename&gt;</b></td>
+		    <td>Källfilens filnamn</td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;directory&gt;</b></td>
+		    <td>Mappen där källfilen finns</td>
+		  </tr>
+		 </table>
+		 </ul>
+		  <p>Platshållaren <b>&lt;directory&gt;</b> är speciell, eftersom du kan ändra dess betydelse med hjälp av två numeriska argument.
+		    De anges som <b>&lt;directory+n&gt;</b> eller <b>&lt;directory+n(m)&gt;</b>.
+			I de här uttrycken anger <b>n</b> antalet inledande sökvägskomponenter som skall tas bort.
+			Argumentet <b>m</b> anger antalet komponenter som skall användas, av dem som finns kvar. Om
+			<b>(m)</b> utelämnas kommer alla kvarvarande komponenter i sökvägen att användas, efter att de
+		    <b>n</b> inledande komponenterna har tagits bort. Platshållaren <b>&lt;directory&gt;</b>
+			utan några tillagda argument kommer att omvandlas till den fullständiga sökvägen.</p>
+		  <p>Så hur används det här i praktiken? Antag att du har din musiksamling ordnad på det här viset:</p>
+		  <blockquote>
+		    <p><b>C:\Musik\[andra kriterier]\[artist]\[album]\[spår] - [titel]</b></p>
+		  </blockquote>
+		  <p>Du kanske har en fil som heter <b>C:\Musik\Favoriter\Endless Boogie\Admonitions\01 - The Offender.flac</b>.</p>
+		  <p>Låt oss nu säga, att du vill koda några musikfiler för att använda i din bärbara musikspelare och lägga dem i mappen <b>C:\Kodat\</b>.
+		    För att kunna behålla sökvägsfältet <b>[andra kriterier]</b>, måste du använda platshållaren
+			<b>&lt;directory&gt;</b>. Om din målmapp för kodade filer har angivits som
+		    <b>C:\Kodat\</b>, kommer ditt fullständiga filnamnsmönster att se ut så här:</p>
+		  <blockquote>
+		    <p><b>&lt;directory+1(1)&gt;\&lt;artist&gt; - &lt;album&gt;\&lt;artist&gt; - &lt;album&gt; - &lt;track&gt; - &lt;title&gt;</b></p>
+		  </blockquote>
+		  <p>Det skulle koda den ovan nämnda filen till sökvägen
+		  <b>C:\Kodat\Favoriter\Endless Boogie - Admonitions\Endless Boogie - Admonitions - 01 - The Offender.m4a</b>.</p>
+		</blockquote>
+		<h4 id="anchor_out">Hur konfigurerar jag målmappen vid användning av den flyttbara versionen?</h4>
+		<blockquote>
+		  <p>När du använder fre:ac från en flyttbar enhet, t.ex. en extern HDD- eller USB-enhet, är det ofta önskvärt att målmappen automatiskt
+		    anpassas till omständigheterna på olika datorer. Det kan t.ex. vara att den flyttbara enheten tilldelas olika enhetsbeteckningar.
+		    fre:ac stödjer följande platshållare i inställningarna för konfiguration av målmappen:</p>
+		 <ul align="left" style="text-align: left; clear: both;">
+		 <table>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;installdrive&gt;</b></td>
+		    <td>Enhetsbeteckningen för enheten där fre:ac är installerat (endast Windows)</td>
+		  </tr>
+		  <tr>
+		    <td style="padding: 0px 25px 0px 0px;"><b>&lt;profile&gt;</b></td>
+		    <td>Profilmappen till den för tillfället inloggade användaren</td>
+		  </tr>
+		 </table>
+		 </ul>
+		  <p>Om du vill att dina målfiler skall skrivas till den flyttbara enheten, oavsett vilken enhetsbeteckning den har tilldelats, använd
+			platshållaren <b>&lt;installdrive&gt;</b> och ange exempelvis målmappen till:
+		  </p>
+		  <blockquote>
+		    <p><b>&lt;installdrive&gt;\Musikfiler\</b></p>
+		  </blockquote>
+		  <p>Om du vill att dina målfiler istället skall skrivas till den inloggade användarens musikmapp,
+			kan du använda platshållaren <b>&lt;profile&gt;</b>
+		    på följande vis:</p>
+		  <blockquote>
+		    <p><b>&lt;profile&gt;\Musik\</b></p>
+		  </blockquote>
+		  <p>I bägge fallen kommer målsökvägen som visas i nederdelen av fre:acs huvudfönster att spegla den den faktiska målmappen, där platshållarna redan
+		    har omvandlats.</p>
+		</blockquote>
+		<h4 id="anchor_enc">Hur installerar jag en viss kodare/avkodare?</h4>
+		<script type="text/javascript">// <![CDATA[
+			function toggleVisible(id) { document.getElementById(id).style.display = (document.getElementById(id).style.display == 'none' ? 'inline' : 'none'); }
+		// ]]></script>
+		<blockquote>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('aften');">Aften AC-3 Encoder</a></h5>
+		  <div id="aften">
+		    <blockquote>
+		      <p>För att installera kodaren Aften AC-3 Encoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet för Aftens binära Win32-version</b> från <a href="https://sourceforge.net/projects/win32builds/files/">sourceforge.net</a>.</li>
+			<li>Kopiera filen <b>aften.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('alac');">Apple Lossless Decoder</a></h5>
+		  <div id="alac">
+		    <blockquote>
+		      <p>Avkodaren Apple Lossless Decoder medföljer fre:acs standarddistribution,
+			så du behöver normalt sett inte installera den manuellt.</p>
+		      <p>Om du trots det behöver installera eller uppdatera Apple Lossless Decoder
+			manuellt, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet Generic Win32 compile</b> från <a href="https://www.rarewares.org/lossless.php#alac">www.rarewares.org</a>.</li>
+			<li>Kopiera filen <b>alac.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('dca');">DTS Coherent Acoustics Encoder</a></h5>
+		  <div id="dca">
+		    <blockquote>
+		      <p>För att installera kodaren DTS Coherent Audio Encoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet för den binära versionen av ffdcaenc</b> från <a href="https://github.com/filler56789/ffdcaenc-2/releases">GitHub</a>.</li>
+			<li>Kopiera filen <b>ffdcaenc.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('exhale');">exhale xHE-AAC Encoder</a></h5>
+		  <div id="exhale">
+		    <blockquote>
+		      <p>För att installera kodaren exhale xHE-AAC Encoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet exhale</b> från <a href="https://www.rarewares.org/aac-encoders.php#exhale-win">www.rarewares.org</a>.</li>
+			<li>Kopiera filen <b>exhale.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('xmp');">Extended Module Player (XMP) Decoder</a></h5>
+		  <div id="xmp">
+		    <blockquote>
+		      <p>För att installera avkodaren Extended Module Player (XMP) Decoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>7z-paketet Extended Module Player</b> från <a href="https://modland.com/pub/software/players/Windows/XMP%20(eXtended%20Module%20Player)/">modland.com</a>.</li>
+			<li>Kopiera filerna <b>XMP.exe</b> och <b>LibXMP.dll</b>
+			  från 7z-paketet till undermappen <b>codecs/cmdline</b> i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('flaccl');">FLACCL OpenCL FLAC Encoder</a></h5>
+		  <div id="flaccl">
+		    <blockquote>
+		      <p>För att installera kodaren FLACCL OpenCL FLAC Encoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>RAR-paketet FLACCL</b> från <a href="http://cue.tools/wiki/FLACCL">cue.tools</a>.</li>
+			<li>Skapa en ny mapp med namnet <b>flaccl</b> i undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+			<li>Kopiera alla filer från RAR-paketet till undermappen <b>codecs/cmdline/flaccl</b> i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('flake');">Flake FLAC Encoder</a></h5>
+		  <div id="flake">
+		    <blockquote>
+		      <p>För att installera kodaren Flake FLAC Encoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet för Flakes binära Windows-version</b> från <a href="http://flake-enc.sourceforge.net/download.html">flake-enc.sourceforge.net</a>.</li>
+			<li>Kopiera filen <b>flake.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('helix');">Helix DNA Producer RealAudio Encoder</a></h5>
+		  <div id="helix">
+		    <blockquote>
+		      <p>För att installera kodaren Helix DNA Producer RealAudio Encoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Registrera ett <b>Helix Community-konto</b> på <a href="https://helixcommunity.org/account/register">helixcommunity.org</a>.
+			  Du behöver det här kontot för att kunna hämta programmet Helix DNA Producer.</li>
+			<li>Hämta <b>ZIP-paketet för kommandoradsprogrammet Helix DNA Producer</b> från <a href="https://helix-producer.helixcommunity.org/Downloads.htm">helix-producer.helixcommunity.org</a>.</li>
+			<li>Skapa en ny mapp med namnet <b>helix</b> i undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+			<li>Kopiera innehållet i mappen <b>producer</b> från ZIP-paketet till den nyligen skapade undermappen
+			  <b>codecs/cmdline/helix</b> i din installationssökväg för fre:ac.
+			  Filen <b>producer.exe</b> bör nu finnas i mappen <b>helix</b>
+			  tillsammans med flera andra filer och kataloger från Helix DNA Producer-paketet.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('la');">La Lossless Audio Encoder/Decoder</a></h5>
+		  <div id="la">
+		    <blockquote>
+		      <p>För att installera kodaren och avkodaren La Lossless Audio Encoder/Decoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>La:s installationsprogram för Windows</b> från <a href="http://www.lossless-audio.com/download.htm">www.lossless-audio.com</a>.</li>
+			<li>Kör installationsprogrammet och installera kodaren La till valfri mapp.</li>
+			<li>Kopiera filen <b>la.exe</b> från La:s installationsmapp till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+			<li>Observera att kodaren La måste fortsätta vara installerad på ditt system för att kunna användas i fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('lame');">LAME MP3 Command Line Encoder</a></h5>
+		  <div id="lame">
+		    <blockquote>
+		      <p>För att installera kodaren LAME MP3 Command Line Encoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet för LAME</b> från <a href="https://rarewares.org/mp3-lame-bundle.php">rarewares.org</a>.</li>
+			<li>Kopiera filen <b>lame.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('mp4als');">MPEG-4 Audio Lossless Encoder/Decoder</a></h5>
+		  <div id="mp4als">
+		    <blockquote>
+		      <p>För att installera kodaren och avkodaren MPEG-4 Audio Lossless Encoder/Decoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet MPEG-4 ALS codec for Windows</b> från <a href="https://www.nue.tu-berlin.de/menue/research/research_topic/compression_and_transmission/mpeg_4_audio_lossless_coding_als/parameter/en">www.nue.tu-berlin.de</a>.</li>
+			<li>Kopiera <b>.exe</b>-filen som du hittar i ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac och <b>byt namn på filen</b> till <b>mp4als.exe</b>.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('musepack');">Musepack Encoder/Decoder</a></h5>
+		  <div id="musepack">
+		    <blockquote>
+		      <p>Kodaren och avkodaren Musepack Encoder/Decoder medföljer fre:acs standarddistribution,
+			så du behöver normalt sett inte installera dem manuellt.</p>
+		      <p>Om du trots det behöver installera eller uppdatera Musepack Encoder/Decoder
+			manuellt, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet Musepack tools</b> från <a href="https://www.musepack.net/index.php?pg=win">www.musepack.net</a>.</li>
+			<li>Kopiera filerna <b>mpcenc.exe</b> och <b>mpcdec.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('nero');">Nero Digital HE-AAC Encoder</a></h5>
+		  <div id="nero">
+		    <blockquote>
+		      <p>För att installera kodaren Nero Digital HE-AAC Encoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet Nero AAC Codec</b> från <a href="https://www.free-codecs.com/download/nero_aac_codec.htm">www.free-codecs.com</a>.</li>
+		 	<li>Kopiera filen <b>NeroAACEnc.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('optimfrog');">OptimFROG Encoder/Decoder</a></h5>
+		  <div id="optimfrog">
+		    <blockquote>
+		      <p>För att installera kodaren och avkodaren OptimFROG Encoder/Decoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet för OptimFROGs Win32-konsol</b> från <a href="http://losslessaudio.org/Downloads.php">losslessaudio.org</a>.</li>
+			<li>Kopiera filen <b>ofr.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('qtaac');">QuickTime AAC Encoder</a></h5>
+		  <div id="qtaac">
+		    <blockquote>
+		      <p>För att installera kodaren QuickTime AAC Encoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet för QuickTime AAC:s kommandoradskodare</b> från <a href="https://github.com/nu774/qaac/releases">github.com</a>.</li>
+			<li>Kopiera filen <b>qaac.exe</b> eller <b>qaac64.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('rkau');">RK Audio Encoder/Decoder</a></h5>
+		  <div id="rkau">
+		    <blockquote>
+		      <p>För att installera kodaren och avkodaren RK Audio Encoder/Decoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet RK Audio compressor</b> från <a href="https://www.free-codecs.com/download/rk_audio_compressor.htm">www.free-codecs.com</a>.</li>
+			<li>Kopiera filen <b>rkau.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('shorten');">Shorten Encoder/Decoder</a></h5>
+		  <div id="shorten">
+		    <blockquote>
+		      <p>För att installera kodaren och avkodaren Shorten Encoder/Decoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet Shorten</b> från <a href="https://www.free-codecs.com/download/shorten.htm">www.free-codecs.com</a>.</li>
+			<li>Kopiera filen <b>shorten.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('tak');">TAK Encoder/Decoder</a></h5>
+		  <div id="tak">
+		    <blockquote>
+		      <p>Kodaren och avkodaren TAK Encoder/Decoder medföljer fre:acs standarddistribution,
+			så du behöver normalt sett inte installera dem manuellt.</p>
+		      <p>Om du trots det behöver installera eller uppdatera TAK Encoder/Decoder
+			manuellt, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet TAK</b> från <a href="http://thbeck.de/Tak/Tak.html">thbeck.de</a>.</li>
+			<li>Kopiera filen <b>takc.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('timidity');">TiMidity Software MIDI Synthesizer</a></h5>
+		  <div id="timidity">
+		    <blockquote>
+		      <p>För att installera synthesizern TiMidity Software MIDI Synthesizer för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet för TiMidity CVS binära version</b> från <a href="https://sourceforge.net/projects/twsynth/files/">sourceforge.net</a>.</li>
+			<li>Hämta <b>ZIP-paketet Freepats</b> från <a href="https://freepats.zenvoid.org/">freepats.zenvoid.org</a>.</li>
+			<li>Skapa en ny mapp med namnet <b>timidity</b> i undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+			<li>Kopiera filen <b>timidity.exe</b> från TiMidity ZIP-paketet till den nyligen skapade undermappen <b>codecs/cmdline/timidity</b>
+			  i din installationssökväg för fre:ac.</li>
+			<li>Kopiera innehållet i mappen <b>freepats</b> från Freepats ZIP-paketet till den nyligen skapade undermappen <b>codecs/cmdline/timidity</b>
+			  i din installationssökväg för fre:ac. Filen <b>crude.cfg</b> bör nu finnas i mappen <b>timidity</b>
+			  tillsammans med flera andra filer och kataloger från Freepats-paketet.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('trueaudio');">True Audio Encoder/Decoder</a></h5>
+		  <div id="trueaudio">
+		    <blockquote>
+		      <p>För att installera kodaren och avkodaren True Audio Encoder/Decoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet TTA compressor for Windows</b> från <a href="http://tausoft.org/wiki/Main_Page">tausoft.org</a>.</li>
+			<li>Kopiera filen <b>ttaenc.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('twolame');">TwoLAME MP2 Encoder</a></h5>
+		  <div id="twolame">
+		    <blockquote>
+		      <p>För att installera kodaren TwoLAME MP2 Encoder för användning med fre:ac, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet TwoLAME:s binära version</b> från <a href="https://rarewares.org/mp3-others.php#twolame">rarewares.org</a>.</li>
+			<li>Kopiera filen <b>twolame.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		  <h5><a href="javascript:void();" onclick="toggleVisible('wavpack');">WavPack Encoder/Decoder</a></h5>
+		  <div id="wavpack">
+		    <blockquote>
+		      <p>Kodaren och avkodaren WavPack Encoder/Decoder medföljer fre:acs standarddistribution,
+			så du behöver normalt sett inte installera dem manuellt.</p>
+		      <p>Om du trots det behöver installera eller uppdatera WavPack Encoder/Decoder
+			manuellt, följ dessa steg:</p>
+		      <ol>
+			<li>Hämta <b>ZIP-paketet WavPack för Win32</b> från <a href="http://www.wavpack.com/downloads.html">www.wavpack.com</a>.</li>
+			<li>Kopiera filerna <b>wavpack.exe</b> och <b>wvunpack.exe</b> från ZIP-paketet till undermappen <b>codecs/cmdline</b>
+			  i din installationssökväg för fre:ac.</li>
+		      </ol>
+		    </blockquote>
+		  </div>
+		</blockquote>
+		<script type="text/javascript">// <![CDATA[
+			toggleVisible('nero'); toggleVisible('qtaac'); toggleVisible('helix'); toggleVisible('timidity');
+			toggleVisible('mp4als'); toggleVisible('trueaudio'); toggleVisible('flake'); toggleVisible('flaccl');
+			toggleVisible('lame'); toggleVisible('twolame'); toggleVisible('aften'); toggleVisible('alac');
+			toggleVisible('tak'); toggleVisible('musepack'); toggleVisible('wavpack'); toggleVisible('optimfrog');
+			toggleVisible('shorten'); toggleVisible('la'); toggleVisible('rkau'); toggleVisible('dca');
+			toggleVisible('xmp'); toggleVisible('exhale');
+		// ]]></script>
+		<h4 id="anchor_tra">Hur gör jag för att översätta fre:ac till ett nytt språk?</h4>
+		<blockquote>
+		  <p>Använd verktyget <b>smooth Translator</b>, som medföljer fre:acs distribution och öppna en befintlig
+		    översättningsfil (du hittar dem i mappen <b>freac/lang</b>). Ändra därefter språkinställningarna, så att de speglar
+		    den översättning du vill skapa och börja översätta de enskilda textsträngarna. Spara din översättning
+		    som en ny fil, och namnge den enligt filnamnsmönstret <b>freac_??.xml</b>
+			(ersätt <b>??</b> med språkkoden för översättningens språk). Starta därefter om fre:ac
+		    och försök att välja den nya översättningen i inställningarna
+			(<b>Allmänna inställningar &gt; Gränssnitt &gt; Språk</b>).</p>
+		  <p>Skicka din översättning till <a href="mailto:translations@freac.org">translations@freac.org</a>, så att den kan inkuderas i den officiella distributionen.</p>
+		</blockquote>
+		<h4 id="anchor_src">Hur kompilerar jag fre:ac från källkod?</h4>
+		<blockquote>
+		  <p>För att kunna bygga fre:ac från källkod behöver du först hämta den senaste versionen av
+		    <b>fre:acs Component Development Kit</b> (CDK) from <a href="https://freac.org/">freac.org</a>.</p>
+		  <p>Du kommer också att behöva de senaste <b>smooth Class Library</b>-källorna från <a href="http://smooth-project.org/">smooth-project.org</a>
+		    och naturligtvis <b>fre:acs källkodspaket</b> eller fre:acs källkod utcheckad från Git.</p>
+		  <ol>
+		    <li>Packa upp innehållet i <b>freac-cdk-1.0.x-windows.zip</b> till en egenvald plats</li>
+		    <li>Skapa följande mappstruktur:
+			<ul align="left" style="text-align: left; clear: both;">
+		     <table>
+		      <tr>
+		       <td style="padding: 0px 15px 0px 0px;"><b>/cdk</b></td>
+		       <td>(innehåller mappen <b>system</b> och filen <b>cdk.bat</b>)</td>
+		      </tr>
+		      <tr>
+		       <td style="padding: 0px 15px 0px 0px;"><b>/cdk/freac</b></td>
+		       <td>(byt namn på mappen från <b>freac-1.1.x.tar.gz</b>-paketet)</td>
+		      </tr>
+		      <tr>
+		       <td style="padding: 0px 15px 0px 0px;"><b>/cdk/smooth</b></td>
+		       <td>(byt namn på mappen från <b>smooth-0.9.x.tar.gz</b>-paketet)</td>
+		      </tr>
+		     </table>
+		    </ul>
+		    </li>
+		    <li>Kör <b>cdk.bat</b></li>
+		    <li>Ange <b>make &amp;&amp; cd smooth &amp;&amp; make &amp;&amp; cd ../freac &amp;&amp; make</b></li>
+		  </ol>
+		</blockquote>
+		<h4 id="anchor_rem">Hur tar jag bort fre:ac från min dator?</h4>
+		<blockquote>
+		  <p>Alla senare versioner av fre:ac kan avinstalleras via panelen <b>Appar och funktioner</b>
+			i Windows inställningar (<b>Inställningar &gt; Appar &gt; Appar och funktioner</b>).
+		    Leta upp fre:acs post i listan över installerade program och välj <b>Avinstallera</b> för att ta bort det.</p>
+		  <p>Om du inte kan hitta fre:acs post där, så går det alldeles utmärkt att ta bort programmappen för att
+		    avinstallera fre:ac. fre:ac skapar vare sig registerposter i Windows eller lagrar några aktiva komponenter utanför sin
+		    installationsmapp.</p>
+		</blockquote>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="footer">
+	  <div class="wrapper">
+	    <p></p>
+	    <div id='g_footer'>
+	      <p>Copyright &#169; 2006 Joseph Nahmias<br/>
+		Copyright &#169; 2007-2021 the fre:ac project (<a href="https://www.freac.org/">hemsida</a>)</p>
+	    </div>
+	    <p></p>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+  </body>
+</html>

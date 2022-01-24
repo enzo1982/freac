@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -380,6 +380,8 @@ String freac::Utilities::GetOutputFileName(const BoCA::Config *config, const Tra
 			if	(key == INFO_ALBUMARTIST) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
 			else if	(key == INFO_CONDUCTOR)	  shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
 			else if	(key == INFO_COMPOSER)	  shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_BPM)	  shortOutFileName.Replace("<tempo>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_INITIALKEY)  shortOutFileName.Replace("<initialkey>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
 		}
 
 		if (info.artist.Length() > 0) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist));
@@ -387,6 +389,8 @@ String freac::Utilities::GetOutputFileName(const BoCA::Config *config, const Tra
 		shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
 		shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
 		shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
+		shortOutFileName.Replace("<tempo>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown tempo")));
+		shortOutFileName.Replace("<initialkey>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown key")));
 
 		/* Replace <directory> pattern.
 		 */
@@ -645,6 +649,8 @@ String freac::Utilities::GetPlaylistFileName(const BoCA::Config *config, const T
 			if	(key == INFO_ALBUMARTIST) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
 			else if	(key == INFO_CONDUCTOR)	  shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
 			else if	(key == INFO_COMPOSER)	  shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_BPM)	  shortOutFileName.Replace("<tempo>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_INITIALKEY)  shortOutFileName.Replace("<initialkey>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
 		}
 
 		if (info.artist.Length() > 0) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist));
@@ -652,6 +658,8 @@ String freac::Utilities::GetPlaylistFileName(const BoCA::Config *config, const T
 		shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
 		shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
 		shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
+		shortOutFileName.Replace("<tempo>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown tempo")));
+		shortOutFileName.Replace("<initialkey>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown key")));
 
 		playlistFileName.Append(BoCA::Utilities::ReplaceIncompatibleCharacters(shortOutFileName, useUnicode, False, replaceSpaces));
 	}

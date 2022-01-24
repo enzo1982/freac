@@ -38,6 +38,7 @@
     <entry id="313" string="Composer">Композитор</entry>
     <entry id="314" string="Tempo">Темпо</entry>
     <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key">Музичка нота</entry>
 
     <entry id="350" string="unknown artist">непознат извођач</entry>
     <entry id="351" string="unknown title">напознат назив</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">непознат диригент</entry>
     <entry id="356" string="unknown composer">непознат композитор</entry>
     <entry id="357" string="unknown album artist">непознат извођач на албуму</entry>
+    <entry id="358" string="unknown tempo">непознат темпо</entry>
+    <entry id="359" string="unknown key">непозната нота</entry>
 
     <entry id="380" string="hidden track">скривена песма</entry>
 
@@ -1371,14 +1374,16 @@
 	  <entry id="103200" string="Details">Детаљи</entry>
 	  <entry id="103201" string="Detailed information">Детаљна информација</entry>
 	  <entry id="103202" string="Band / orchestra">Група / оркестар</entry>
-	  <entry id="103205" string="Lyrics writer">Писац текста</entry>
+	  <entry id="103205" string="Lyrics writer">Писац текста песме</entry>
 	  <entry id="103206" string="Modified / remixed by">Мењао / ремиксовао</entry>
 	  <entry id="103207" string="Original information">Изворна информација</entry>
 	  <entry id="103208" string="Original artist">Изворни извођач</entry>
 	  <entry id="103209" string="Original album">Изворни албум</entry>
 	  <entry id="103210" string="Original lyrics writer">Изворни писац текста</entry>
 	  <entry id="103211" string="Original release year">Изворна година издања</entry>
+	  <entry id="103212" string="Musical key/tempo">Музичка нота/темпо</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key">Почетна нота</entry>
 	</section>
 
 	<section name="Publisher">
@@ -1398,12 +1403,12 @@
 	</section>
 
 	<section name="Lyrics">
-	  <entry id="103350" string="Lyrics"/>
+	  <entry id="103350" string="Lyrics">Текст песме</entry>
 	</section>
 
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Понашање</entry>
-	  <entry id="103401" string="Clear album artist field if it matches track artist">Уклоните податак из поља извођач када се поклопи извођач песме</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Уклоните податак из поља "Извођач" када се поклопи извођач песме</entry>
 	</section>
 
 	<section name="Errors">

@@ -38,6 +38,7 @@
     <entry id="313" string="Composer">作曲</entry>
     <entry id="314" string="Tempo">节奏</entry>
     <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key"/>
 
     <entry id="350" string="unknown artist">未知艺术家</entry>
     <entry id="351" string="unknown title">未知标题</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">未知指挥</entry>
     <entry id="356" string="unknown composer">未知作曲家</entry>
     <entry id="357" string="unknown album artist">未知专辑艺术家</entry>
+    <entry id="358" string="unknown tempo"/>
+    <entry id="359" string="unknown key"/>
 
     <entry id="380" string="hidden track">隐藏曲目</entry>
 
@@ -1378,7 +1381,9 @@
 	  <entry id="103209" string="Original album">原专辑</entry>
 	  <entry id="103210" string="Original lyrics writer">原作词</entry>
 	  <entry id="103211" string="Original release year">原发行时间</entry>
+	  <entry id="103212" string="Musical key/tempo"/>
 	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key"/>
 	</section>
 
 	<section name="Publisher">

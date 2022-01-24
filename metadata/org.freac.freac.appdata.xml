@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2021 Robert Kausch -->
+<!-- Copyright 2022 Robert Kausch -->
 <component type="desktop-application">
     <id>org.freac.freac</id>
     <launchable type="desktop-id">org.freac.freac.desktop</launchable>
@@ -48,6 +48,50 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.1.6" date="2022-01-21">
+            <description>
+                <p>New features:</p>
+                <ul>
+                    <li>Added support for editing lyrics in the tag editor</li>
+                    <li>Added support for creating cue sheets and playlists with freaccmd</li>
+                </ul>
+                <p>Improvements:</p>
+                <ul>
+                    <li>Improved performance of adding video and proprietary audio files (DTS, DSD etc.) to the joblist</li>
+                    <li>Playlists can now be added to the joblist by drag &amp; drop</li>
+                    <li>Added &lt;tempo&gt; and &lt;initialkey&gt; placeholders for use in filename patterns</li>
+                    <li>Added optional composer, conductor, tempo, musical key and ISRC columns to the joblist</li>
+                    <li>Added initial key field to tag editor</li>
+                    <li>Added support for lyrics in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags</li>
+                    <li>Added support for parsing OverDrive MediaMarkers in ID3v2 tags</li>
+                    <li>Added support for the pre-emphasis flag in cue sheets</li>
+                </ul>
+                <p>Bug fixes:</p>
+                <ul>
+                   <li>Fixed possible crash upon querying the CDDB database</li>
+                   <li>Fixed possible crash in FAAD2 decoder when trying to open unsupported files</li>
+                   <li>Fixed faulty decoding of certain AAC files caused by a bug in the FDK-AAC decoder</li>
+                   <li>Fixed possible faulty output when decoding from non-zero positions using external decoders</li>
+                   <li>Fixed issue ripping CD tracks when output filename pattern is &lt;filename&gt;</li>
+                   <li>Fixed AccurateRip reporting verification errors for hidden track one audio</li>
+                   <li>Fixed setting to replace spaces not being respected when writing cover art and log files</li>
+                   <li>Fixed setting to suppress Unicode characters not being respected when writing cover art and log files</li>
+                   <li>Fixed tag editor fields for media type, catalog number and barcode being limited to 12 characters</li>
+                </ul>
+                <p>New and updated codecs:</p>
+                <ul>
+                    <li>Added native Apple Lossless decoder</li>
+                    <li>Updated FFmpeg to version 5.0</li>
+                    <li>Updated Monkey's Audio to version 7.23</li>
+                    <li>Updated mpg123 to version 1.29.3</li>
+                    <li>Updated libsamplerate to version 0.2.2</li>
+                </ul>
+                <p>New translations:</p>
+                <ul>
+                    <li>Added Swedish and Portuguese (Brazilian) manuals</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1.5" date="2021-06-27">
             <description>
                 <p>New features:</p>

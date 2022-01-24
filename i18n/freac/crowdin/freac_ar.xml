@@ -38,6 +38,7 @@
     <entry id="313" string="Composer"/>
     <entry id="314" string="Tempo"/>
     <entry id="315" string="ISRC"/>
+    <entry id="316" string="Musical key"/>
 
     <entry id="350" string="unknown artist">فنان مجهول</entry>
     <entry id="351" string="unknown title">عنوان مجهول</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">مايسترو مجهول</entry>
     <entry id="356" string="unknown composer">مُلحّن مجهول</entry>
     <entry id="357" string="unknown album artist">فنان الألبوم مجهول</entry>
+    <entry id="358" string="unknown tempo"/>
+    <entry id="359" string="unknown key"/>
 
     <entry id="380" string="hidden track">مقطع مخفي</entry>
 
@@ -78,7 +81,7 @@
       <entry id="606" string="DVD"/>
       <entry id="607" string="LaserDisc"/>
       <entry id="608" string="TV"/>
-      <entry id="609" string="Video"/>
+      <entry id="609" string="Video">فيديو</entry>
       <entry id="610" string="Radio"/>
       <entry id="611" string="Telephone"/>
     </section>
@@ -1378,7 +1381,9 @@
 	  <entry id="103209" string="Original album"/>
 	  <entry id="103210" string="Original lyrics writer"/>
 	  <entry id="103211" string="Original release year"/>
+	  <entry id="103212" string="Musical key/tempo"/>
 	  <entry id="103213" string="BPM"/>
+	  <entry id="103214" string="Initial key"/>
 	</section>
 
 	<section name="Publisher">

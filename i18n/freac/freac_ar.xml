@@ -65,6 +65,10 @@
       <entry id="518" string="%1%">%1٪</entry>
     </section>
 
+    <section name="Media types">
+      <entry id="609" string="Video">فيديو</entry>
+    </section>
+
     <section name="Menu">
       <entry id="1000" string="File">ملف</entry>
       <entry id="1001" string="Options">خيارات</entry>

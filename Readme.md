@@ -40,7 +40,15 @@ fre:ac is available as a Snap, Flatpak or AppImage package. The Snap and Flatpak
 The AppImage can then be executed to start fre:ac.
 
 ### FreeBSD
-fre:ac is distributed as a .tar.gz archive. Please extract the contents to a location of your choice and execute the freac binary to start fre:ac.
+fre:ac is available as a FreeBSD port and can be installed using the following command:
+
+    sudo pkg install freac
+Alternatively, there is a binary version of fre:ac distributed as a .tar.gz archive. Please extract the contents to a location of your choice and execute the freac binary to start fre:ac.
+
+### Haiku
+fre:ac is available as a HaikuPorts package and can be installed using the following command:
+
+    pkgman install freac
 
 ## Compiling
 fre:ac depends on the [BoCA audio component framework](https://github.com/enzo1982/boca/) and the [smooth Class Library](https://github.com/enzo1982/smooth/). Please build and install those first.

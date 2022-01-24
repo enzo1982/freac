@@ -35,8 +35,8 @@ cd smooth
 
 CONFIG="release"
 
-make config=$CONFIG BUILD_V8=False -j$jobs
-sudo make config=$CONFIG BUILD_V8=False install
+make config=$CONFIG -j$jobs
+sudo make config=$CONFIG install
 
 cd ..
 
@@ -53,8 +53,8 @@ cd ..
 # Build fre:ac
 CONFIG="release"
 
-make config=$CONFIG USE_V8=False -j$jobs
-sudo make config=$CONFIG USE_V8=False install
+make config=$CONFIG -j$jobs
+sudo make config=$CONFIG install
 
 # Build codecs and DSP libraries
 cd tools
@@ -82,14 +82,14 @@ if [[ ${MACOSX_DEPLOYMENT_TARGET:0:2} = 11 ]]; then
   lipo -create faad2-2_10_0/libfaad/.libs/libfaad.2.dylib arm64/faad2-2_10_0/libfaad/.libs/libfaad.2.dylib -output libfaad.2.dylib
   lipo -create mp4v2-2.0.0/.libs/libmp4v2.2.dylib arm64/mp4v2-2.0.0/.libs/libmp4v2.2.dylib -output libmp4v2.2.dylib
   lipo -create lame-3.100/libmp3lame/.libs/libmp3lame.0.dylib arm64/lame-3.100/libmp3lame/.libs/libmp3lame.0.dylib -output libmp3lame.0.dylib
-  lipo -create mpg123-1.29.2/src/libmpg123/.libs/libmpg123.0.dylib arm64/mpg123-1.29.2/src/libmpg123/.libs/libmpg123.0.dylib -output libmpg123.0.dylib
+  lipo -create mpg123-1.29.3/src/libmpg123/.libs/libmpg123.0.dylib arm64/mpg123-1.29.3/src/libmpg123/.libs/libmpg123.0.dylib -output libmpg123.0.dylib
   lipo -create libogg-1.3.5/src/.libs/libogg.0.dylib arm64/libogg-1.3.5/src/.libs/libogg.0.dylib -output libogg.0.dylib
   lipo -create opus-1.3.1/.libs/libopus.0.dylib arm64/opus-1.3.1/.libs/libopus.0.dylib -output libopus.0.dylib
   lipo -create speex-1.2.0/libspeex/.libs/libspeex.1.dylib arm64/speex-1.2.0/libspeex/.libs/libspeex.1.dylib -output libspeex.1.dylib
   lipo -create libvorbis-1.3.7/lib/.libs/libvorbis.0.dylib arm64/libvorbis-1.3.7/lib/.libs/libvorbis.0.dylib -output libvorbis.0.dylib
   lipo -create libvorbis-1.3.7/lib/.libs/libvorbisenc.2.dylib arm64/libvorbis-1.3.7/lib/.libs/libvorbisenc.2.dylib -output libvorbisenc.2.dylib
   lipo -create flac-1.3.3/src/libFLAC/.libs/libFLAC.8.dylib arm64/flac-1.3.3/src/libFLAC/.libs/libFLAC.8.dylib -output libFLAC.8.dylib
-  lipo -create MAC_SDK_714/libMAC.8.dylib arm64/MAC_SDK_714/libMAC.8.dylib -output libMAC.8.dylib
+  lipo -create MAC_SDK_723/libMAC.8.dylib arm64/MAC_SDK_723/libMAC.8.dylib -output libMAC.8.dylib
   lipo -create libsndfile-1.0.31/src/.libs/libsndfile.1.dylib arm64/libsndfile-1.0.31/src/.libs/libsndfile.1.dylib -output libsndfile.1.dylib
   lipo -create libsamplerate-0.2.2/src/.libs/libsamplerate.0.dylib arm64/libsamplerate-0.2.2/src/.libs/libsamplerate.0.dylib -output libsamplerate.0.dylib
   lipo -create rnnoise-9acc1e5/.libs/librnnoise.0.dylib arm64/rnnoise-9acc1e5/.libs/librnnoise.0.dylib -output librnnoise.0.dylib
@@ -99,7 +99,7 @@ if [[ ${MACOSX_DEPLOYMENT_TARGET:0:2} = 11 ]]; then
   lipo -create musepack_src_r475/mpcenc/mpcenc arm64/musepack_src_r475/mpcenc/mpcenc -output mpcenc
   lipo -create wavpack-5.4.0/cli/wavpack arm64/wavpack-5.4.0/cli/wavpack -output wavpack
   lipo -create wavpack-5.4.0/cli/wvunpack arm64/wavpack-5.4.0/cli/wvunpack -output wvunpack
-  lipo -create ffmpeg-4.4.1/ffmpeg arm64/ffmpeg-4.4.1/ffmpeg -output ffmpeg
+  lipo -create ffmpeg-5.0/ffmpeg arm64/ffmpeg-5.0/ffmpeg -output ffmpeg
 
   sudo cp lib*.dylib /usr/local/lib
   sudo cp ffmpeg mpc* w*pack /usr/local/bin

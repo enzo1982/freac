@@ -38,6 +38,7 @@
     <entry id="313" string="Composer">Komponist</entry>
     <entry id="314" string="Tempo">Tempo</entry>
     <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key">Tonart</entry>
 
     <entry id="350" string="unknown artist">unbekannter Künstler</entry>
     <entry id="351" string="unknown title">unbekannter Titel</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">unbekannter Leiter</entry>
     <entry id="356" string="unknown composer">unbekannter Komponist</entry>
     <entry id="357" string="unknown album artist">unbekannter Albuminterpret</entry>
+    <entry id="358" string="unknown tempo">unbekanntes Tempo</entry>
+    <entry id="359" string="unknown key">unbekannte Tonart</entry>
 
     <entry id="380" string="hidden track">versteckter Track</entry>
 
@@ -1378,7 +1381,9 @@
 	  <entry id="103209" string="Original album">Originalalbum</entry>
 	  <entry id="103210" string="Original lyrics writer">Originaltexter</entry>
 	  <entry id="103211" string="Original release year">Originalerscheinungsjahr</entry>
+	  <entry id="103212" string="Musical key/tempo">Tonart/Tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key">Anfängliche Tonart</entry>
 	</section>
 
 	<section name="Publisher">

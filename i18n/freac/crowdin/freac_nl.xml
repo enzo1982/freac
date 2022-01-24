@@ -38,6 +38,7 @@
     <entry id="313" string="Composer">Componist</entry>
     <entry id="314" string="Tempo">Tempo</entry>
     <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key">Muziek-toonaard</entry>
 
     <entry id="350" string="unknown artist">onbekende artiest</entry>
     <entry id="351" string="unknown title">onbekende titel</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">onbekende dirigent</entry>
     <entry id="356" string="unknown composer">onbekende componist</entry>
     <entry id="357" string="unknown album artist">onbekende albumartiest</entry>
+    <entry id="358" string="unknown tempo">onbekend tempo</entry>
+    <entry id="359" string="unknown key">onbekende toonaard</entry>
 
     <entry id="380" string="hidden track">verborgen track</entry>
 
@@ -1378,7 +1381,9 @@
 	  <entry id="103209" string="Original album">Origineel album</entry>
 	  <entry id="103210" string="Original lyrics writer">Originele songtekst-schrijver</entry>
 	  <entry id="103211" string="Original release year">Origineel uitgavejaar</entry>
+	  <entry id="103212" string="Musical key/tempo">Muziek-toonaard/tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key">Begin-toonaard</entry>
 	</section>
 
 	<section name="Publisher">
@@ -1398,7 +1403,7 @@
 	</section>
 
 	<section name="Lyrics">
-	  <entry id="103350" string="Lyrics"/>
+	  <entry id="103350" string="Lyrics">Songteksten</entry>
 	</section>
 
 	<section name="Configuration">

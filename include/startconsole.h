@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -47,6 +47,7 @@ namespace freac
 			const Array<String>	&args;
 
 			String			 encoderID;
+			Bool			 firstFile;
 			Bool			 stopped;
 
 			BoCA::Picture		 coverFront;
@@ -58,6 +59,8 @@ namespace freac
 
 			Bool			 ParamHasArguments(const String &, Bool);
 			Bool			 TracksToFiles(const String &, Array<String> *);
+
+			String			 GetAbsolutePathName(const String &path) const;
 
 			BoCA::Picture		 LoadCoverArt(const String &, Int);
 
@@ -79,6 +82,7 @@ namespace freac
 			static Void		 Free();
 		slots:
 			Void			 OnEncodeTrack(const BoCA::Track &, const String &, const String &, ConversionStep);
+			Void			 OnFinishEncoding(Bool);
 	};
 };
 

@@ -25,7 +25,6 @@ cp $PREFIX/bin/freaccmd freac.app/Contents/MacOS/
 
 cp $PREFIX/lib/libboca-$BOCAVER.dylib freac.app/Contents/Frameworks/
 cp $PREFIX/lib/libsmooth-$SMOOTHVER.dylib freac.app/Contents/Frameworks/
-#cp $PREFIX/lib/libsmooth-js-$SMOOTHVER.dylib freac.app/Contents/Frameworks/
 
 cp $PREFIX/lib/libsmooth-$SMOOTHVER.dylib freac.app/Contents/Resources/translator.app/Contents/Frameworks/
 
@@ -36,6 +35,8 @@ cp $PREFIX/bin/smooth-translator freac.app/Contents/Resources/translator.app/Con
 cp -R $PREFIX/share/freac/icons freac.app/Contents/Resources/
 cp -R $PREFIX/share/freac/lang freac.app/Contents/Resources/
 cp -R $PREFIX/share/doc/freac/manual freac.app/Contents/Resources/
+
+cp -R $PREFIX/lib/boca/boca.dsp.rnnoise freac.app/Contents/Resources/boca/
 
 cp $PREFIX/lib/boca/boca_decoder_*.1.0.dylib freac.app/Contents/Resources/boca/
 cp $PREFIX/lib/boca/boca_deviceinfo_*.1.0.dylib freac.app/Contents/Resources/boca/
@@ -52,7 +53,6 @@ cp $PREFIX/lib/boca/boca_*.1.0.xml freac.app/Contents/Resources/boca/
 cp -R $PREFIX/lib/freac/freac.extension.donate freac.app/Contents/Resources/boca/
 cp -R $PREFIX/lib/freac/freac.extension.langnotify freac.app/Contents/Resources/boca/
 cp -R $PREFIX/lib/freac/freac.extension.notifier freac.app/Contents/Resources/boca/
-#cp -R $PREFIX/lib/freac/freac.extension.youtube freac.app/Contents/Resources/boca/
 
 cp $PREFIX/lib/freac/freac_extension_*.1.0.dylib freac.app/Contents/Resources/boca/
 cp $PREFIX/lib/freac/freac_verifier_*.1.0.dylib freac.app/Contents/Resources/boca/
@@ -90,13 +90,10 @@ rm freac.app/Contents/Resources/boca/boca_decoder_ffmpeg_mpc.1.0.xml
 rm freac.app/Contents/Resources/boca/boca_decoder_ffmpeg_wavpack.1.0.xml
 rm freac.app/Contents/Resources/boca/boca_encoder_ffmpeg_alac.1.0.xml
 
-rm freac.app/Contents/Resources/boca/freac_extension_youtube.1.0.dylib
-
 # Fix library names
 install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib freac.app/Contents/MacOS/freac
 install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib freac.app/Contents/MacOS/freaccmd
 install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib freac.app/Contents/Frameworks/libboca-$BOCAVER.dylib
-#install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib freac.app/Contents/Frameworks/libsmooth-js-$SMOOTHVER.dylib
 
 install_name_tool -change libboca-$BOCAVER.dylib @executable_path/../Frameworks/libboca-$BOCAVER.dylib freac.app/Contents/Resources/freac.dylib
 install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib freac.app/Contents/Resources/freac.dylib
@@ -112,8 +109,6 @@ install_name_tool -change $PREFIX/lib/libcdio.19.dylib @executable_path/../Resou
 
 find freac.app/Contents/Resources/boca -name freac_*.dylib | xargs -I $ install_name_tool -change libboca-$BOCAVER.dylib @executable_path/../Frameworks/libboca-$BOCAVER.dylib $
 find freac.app/Contents/Resources/boca -name freac_*.dylib | xargs -I $ install_name_tool -change libsmooth-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-$SMOOTHVER.dylib $
-
-#install_name_tool -change libsmooth-js-$SMOOTHVER.dylib @executable_path/../Frameworks/libsmooth-js-$SMOOTHVER.dylib freac.app/Contents/Resources/boca/freac_extension_youtube.1.0.dylib
 
 install_name_tool -change $PREFIX/lib/libcdio.19.dylib @executable_path/../Resources/cdio.dylib freac.app/Contents/Resources/cdio_cdda.dylib
 

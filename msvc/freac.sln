@@ -6,8 +6,14 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac DLL", "freac\freac.vcxproj", "{F121548C-5FD2-4E54-89AB-37671DE3CC76}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac", "freacGUI\freacGUI.vcxproj", "{92DE9054-BD7A-4D35-9E87-1B48C3F892FE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F121548C-5FD2-4E54-89AB-37671DE3CC76} = {F121548C-5FD2-4E54-89AB-37671DE3CC76}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Command Line Utility", "freacCMD\freacCMD.vcxproj", "{190BD1FD-37A3-4DC6-9CD8-D03599C2D86D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F121548C-5FD2-4E54-89AB-37671DE3CC76} = {F121548C-5FD2-4E54-89AB-37671DE3CC76}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freac Extension TagEdit", "Extensions\freac Extension TagEdit\freac Extension TagEdit.vcxproj", "{F2561807-A735-4ED5-93C7-74649D06A94B}"
 EndProject

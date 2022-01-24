@@ -38,6 +38,7 @@
     <entry id="313" string="Composer">Kompositör</entry>
     <entry id="314" string="Tempo">Tempo</entry>
     <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key">Tonart</entry>
 
     <entry id="350" string="unknown artist">okänd artist</entry>
     <entry id="351" string="unknown title">okänd titel</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">okänd dirigent</entry>
     <entry id="356" string="unknown composer">okänd kompositör</entry>
     <entry id="357" string="unknown album artist">okänd albumartist</entry>
+    <entry id="358" string="unknown tempo">okänt tempo</entry>
+    <entry id="359" string="unknown key">okänd tonart</entry>
 
     <entry id="380" string="hidden track">dolt spår</entry>
 
@@ -150,7 +153,7 @@
 	<entry id="1602" string="Check for updates now">Sök efter uppdateringar nu</entry>
 	<entry id="1603" string="Check for updates at startup">Sök efter uppdateringar vid programstart</entry>
 	<entry id="1604" string="About %1">Om %1</entry>
-	<entry id="1605" string="index_en.html">index.html</entry>
+	<entry id="1605" string="index_en.html">index_sv.html</entry>
 	<entry id="1606" string="Report an issue">Rapportera ett problem</entry>
 	<entry id="1607" string="Suggest a feature">Föreslå en funktion</entry>
       </section>
@@ -1371,7 +1374,6 @@
 	  <entry id="103200" string="Details">Information</entry>
 	  <entry id="103201" string="Detailed information">Detaljerad information</entry>
 	  <entry id="103202" string="Band / orchestra">Band/orkester</entry>
-	  <entry id="103303" string="Media type">Medietyp</entry>
 	  <entry id="103205" string="Lyrics writer">Textförfattare</entry>
 	  <entry id="103206" string="Modified / remixed by">Modifierad/ommixad av</entry>
 	  <entry id="103207" string="Original information">Ursprunglig information</entry>
@@ -1379,13 +1381,16 @@
 	  <entry id="103209" string="Original album">Ursprungligt album</entry>
 	  <entry id="103210" string="Original lyrics writer">Ursprunglig textförfattare</entry>
 	  <entry id="103211" string="Original release year">Ursprungligt utgivningsår</entry>
+	  <entry id="103212" string="Musical key/tempo">Tonart/tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key">Inledande tonart</entry>
 	</section>
 
 	<section name="Publisher">
 	  <entry id="103300" string="Publisher">Utgivare</entry>
 	  <entry id="103301" string="Publisher information">Information om utgivare</entry>
 	  <entry id="103302" string="Publisher / label">Utgivare/skivmärke</entry>
+	  <entry id="103303" string="Media type">Medietyp</entry>
 	  <entry id="103304" string="Catalog number">Katalognummer</entry>
 	  <entry id="103305" string="Barcode">Streckkod</entry>
 	  <entry id="103307" string="Webpage URLs">Webbside-URL:er</entry>

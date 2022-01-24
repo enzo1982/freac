@@ -86,10 +86,18 @@ Installation
 
 	FreeBSD:
 
-		fre:ac steht als .tar.gz-Archiv bereit.
+		fre:ac ist als FreeBSD-Port verfügbar und kann mit folgendem Befehl installiert werden:
 
-		Bitte entpacken Sie den Inhalt an einen Ort Ihrer Wahl und führen Sie anschließend die Binärdatei freac aus,
-		um fre:ac zu starten.
+			sudo pkg install freac
+
+		Alternativ wird eine Binärversion von fre:ac als .tar.gz-Archiv bereitgestellt. Bitte entpacken Sie den Inhalt
+		an einen Ort Ihrer Wahl und führen Sie anschließend die Binärdatei freac aus, um fre:ac zu starten.
+
+	Haiku:
+
+		fre:ac ist als HaikuPorts-Paket verfügbar und kann mit folgendem Befehl installiert werden:
+
+			sudo pkg install freac
 
 Voraussetzungen
 ---------------
@@ -97,7 +105,7 @@ Voraussetzungen
 	Voraussetzungen zum Ausführen von fre:ac:
 
 		Unterstützte Betriebsysteme:
-			- Windows XP/Vista/7/8.x/10
+			- Windows XP/Vista/7/8.x/10/11
 			- macOS 10.5 Leopard oder neuer
 			- Linux (die meisten modernen Distributionen werden unterstützt)
 			- FreeBSD/PC-BSD (getestet unter FreeBSD 13.0)
@@ -125,7 +133,7 @@ Voraussetzungen
 
 		Windows:
 
-			- MinGW GCC v4.0+ (http://www.mingw.org/) oder Visual Studio 2019
+			- MinGW GCC v4.0+ (http://www.mingw.org/) oder Visual Studio 2022
 
 		Alle Linux- und Unix-Systeme:
 
@@ -151,24 +159,32 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.6 (November 2021)
+	Version 1.1.6 (Januar 2022)
+
+		- Native Unterstützung für Windows auf der ARM64-Architektur hinzugefügt
 
 		- Neue Funktionen
 
 			- Unterstützung für die Bearbeitung von Liedtexten im Tag-Editor hinzugefügt
+			- Unterstützung für die Erzeugung von Cuesheets und Playlisten zu freaccmd hinzugefügt
 
 		- Verbesserungen
 
-			- Unterstützung für von rechts nach links geschriebene Sprachen verbessert
+			- Performance beim Hinzufügen von Video- und proprietären Audiodateien (DTS, DSD etc.) zur Jobliste verbessert 
 			- Playlisten können jetzt per Drag & Drop zur Jobliste hinzugefügt werden
-			- Optionale Spalten für Komponist, Dirigent, Tempo und ISRC zur Jobliste hinzugefügt
+			- Platzhalter <tempo> und <initialkey> zur Verwendung in Dateinamensvorlagen hinzugefügt
+			- Optionale Spalten für Komponist, Dirigent, Tempo, Tonart und ISRC zur Jobliste hinzugefügt
+			- Feld für anfängliche Tonart zum Tag-Editor hinzugefügt
 			- Unterstützung für Liedtexte in ID3v2-, MP4-, Vorbis Comment-, APEv2- und WMA-Tags hinzugefügt
 			- Unterstützung für das Einlesen von OverDrive MediaMarkers aus ID3v2-Tags hinzugefügt
+			- Unterstützung für das Pre-Emphasis-Flag in Cuesheets hinzugefügt
 
 		- Behobene Fehler
 
 			- Möglichen Absturz beim Abfragen der CDDB-Datenbank behoben
 			- Möglichen Absturz im FAAD2-Dekodierer beim Öffnen nicht unterstützter Dateien behoben
+			- Fehlerhafte Dekodierung einiger AAC-Dateien durch einen Fehler im FDK-AAC-Dekodierer behoben
+			- Mögliche fehlerhafte Ausgabe beim Dekodieren ab Positionen ungleich 0 mit externen Dekodern behoben
 			- Problem beim Rippen von CD-Tracks mit <filename> als Ausgabedateinamensvorlage behoben
 			- Problem mit Überprüfungsfehlermeldungen von AccurateRip beim Rippen von versteckten Tracks (HTOA) behoben
 			- Problem mit Einstellung zum Ersetzen von Leerzeichen beim Schreiben von Cover-Bildern und Log-Dateien behoben
@@ -176,19 +192,24 @@ Geschichte
 			- Fälschliche Begrenzung der Tag-Editor-Felder für Medienart, Katalognummer und Barcode auf 12 Zeichen behoben
 			- Einfrieren beim Dekodieren bestimmter WMA-Dateien unter Windows behoben
 			- Problem mit Drag & Drop nach Online-Update unter Windows behoben
-			- Problem mit Dialogen zum Öffnen/Speichern von Dateien unter macOS 12.0 Monterey behoben
 
 		- Neue und aktualisierte Codecs
 
 			- Nativen Apple Lossless-Dekodierer hinzugefügt
-			- FFmpeg auf Version 4.4.1 aktualisiert
-			- Monkey's Audio auf Version 7.14 aktualisiert
-			- mpg123 auf Version 1.29.2 aktualisiert
+			- FFmpeg auf Version 5.0 aktualisiert
+			- Monkey's Audio auf Version 7.23 aktualisiert
+			- mpg123 auf Version 1.29.3 aktualisiert
 			- libsamplerate auf Version 0.2.2 aktualisiert
 
 		- Neue Übersetzungen
 
-			- Persische Übersetzung hinzugefügt
+			- Schwedische und portugiesische (brasilianisch) Hilfeseiten hinzugefügt
+
+	Version 1.1.5a (Dezember 2021)
+
+		- Bug fixes
+
+			- Problem mit Dialogen zum Öffnen/Speichern von Dateien unter macOS 12.0 Monterey behoben
 
 	Version 1.1.5 (Juni 2021)
 

@@ -51,8 +51,8 @@ CONFIG="release,bundledlibbz2,bundledlibfribidi,bundledlibjpeg,bundledlibpng,bun
 
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/$HOST/pkgconfig
 
-make config=$CONFIG BUILD_V8=False -j$jobs
-sudo make config=$CONFIG BUILD_V8=False install
+make config=$CONFIG -j$jobs
+sudo make config=$CONFIG install
 
 unset PKG_CONFIG_PATH
 
@@ -90,8 +90,8 @@ cd ..
 # Build fre:ac
 CONFIG="release"
 
-make config=$CONFIG USE_V8=False -j$jobs
-sudo make config=$CONFIG USE_V8=False install
+make config=$CONFIG -j$jobs
+sudo make config=$CONFIG install
 
 # Build codecs and DSP libraries
 cd tools

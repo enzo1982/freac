@@ -1,7 +1,7 @@
 name: freac
 base: core18
-version: '1.1.5'
-version-script: echo 1.1.5~`date +"%Y%m%d"`
+version: '1.1.6'
+#version-script: echo 1.1.6~`date +"%Y%m%d"`
 summary: Audio converter and CD ripper
 description: |
   fre:ac is a free and open source audio converter. It comes with
@@ -51,8 +51,8 @@ parts:
 
   libcdio-paranoia:
     after: [ libcdio ]
-    source: https://github.com/rocky/libcdio-paranoia/archive/release-10.2+2.0.1.tar.gz
-    source-checksum: sha256/7a4e257c85f3f84129cca55cd097c397364c7a6f79b9701bbc593b13bd59eb95
+    source: https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+2.0.1.tar.bz2
+    source-checksum: sha256/33b1cf305ccfbfd03b43936975615000ce538b119989c4bec469577570b60e8a
     plugin: autotools
     configflags: [ --prefix=/usr, --disable-cxx, --disable-example-progs ]
     prime:
@@ -66,16 +66,24 @@ parts:
     build-environment:
       - PATH: "/usr/bin:$PATH"
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
+    override-build: |
+      autoreconf -i
+      snapcraftctl build
     prime:
       - usr/lib/libfaad.so*
 
   libfdk-aac:
+    after: [ patches ]
     source: https://github.com/mstorsjo/fdk-aac/archive/v2.0.2.tar.gz
     source-checksum: sha256/7812b4f0cf66acda0d0fe4302545339517e702af7674dd04e5fe22a5ade16a90
     plugin: autotools
     configflags: [ --prefix=/usr ]
     build-environment:
       - CXXFLAGS: "$CXXFLAGS -O3 -funroll-loops"
+    override-build: |
+      patch -p1 < $SNAPCRAFT_STAGE/fdk-aac-2.0.2-drcfix.patch
+      autoreconf -i
+      snapcraftctl build
     prime:
       - usr/lib/libfdk-aac.so*
 
@@ -91,8 +99,8 @@ parts:
       - usr/lib/libFLAC.so*
 
   libmac:
-    source: https://freac.org/patches/MAC_SDK_714.zip
-    source-checksum: sha256/42b35472d8fb5704f694229399615069d155b5e13b8652ad922667845dbb2a96
+    source: https://freac.org/patches/MAC_SDK_723.zip
+    source-checksum: sha256/1d17d469dd2b4652e19cb91aa7cf76786fec999871a8f5729cd24064f989e9ae
     source-subdir: .
     plugin: make
     make-parameters: [ -f, Source/Projects/NonWindows/Makefile, prefix=/usr ]
@@ -137,8 +145,8 @@ parts:
       - usr/lib/libmp4v2.so*
 
   libmpg123:
-    source: https://mpg123.de/download/mpg123-1.29.2.tar.bz2
-    source-checksum: sha256/9071214ebdfc1b6ed0c0a85d530010bbb8ebc044cfe5ae5930e83f7e6b7937e6
+    source: https://mpg123.de/download/mpg123-1.29.3.tar.bz2
+    source-checksum: sha256/963885d8cc77262f28b77187c7d189e32195e64244de2530b798ddf32183e847
     plugin: autotools
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
@@ -186,6 +194,9 @@ parts:
     configflags: [ --prefix=/usr ]
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
+    override-build: |
+      autoreconf -i
+      snapcraftctl build
     prime:
       - usr/lib/librnnoise.so*
 
@@ -217,8 +228,8 @@ parts:
       - usr/lib/libvorbis*.so*
 
   ffmpeg:
-    source: https://ffmpeg.org/releases/ffmpeg-4.4.1.tar.xz
-    source-checksum: sha256/eadbad9e9ab30b25f5520fbfde99fae4a92a1ae3c0257a8d68569a4651e30e02
+    source: https://ffmpeg.org/releases/ffmpeg-5.0.tar.xz
+    source-checksum: sha256/51e919f7d205062c0fd4fae6243a84850391115104ccf1efc451733bc0ac7298
     plugin: autotools
     configflags: [ --prefix=/usr, --disable-autodetect, --enable-gpl, --enable-small, --enable-runtime-cpudetect, --disable-vsx ]
     build-packages:

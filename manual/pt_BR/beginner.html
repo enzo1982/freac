@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <title>Guia do iniciante - fre:ac Guia do usuário</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+
+    <!-- Hack to avoid flash of unstyled content in IE -->
+    <script> </script>
+  </head>
+
+  <body id="onecolumn">
+    <div id="container">
+      <div class="wrapper">
+
+	<div id="header">
+	  <div class="wrapper">
+	    <h1 id="page-title">
+	      <div id="g_title">Guia do iniciante - fre:ac Guia do usuário</div>
+	    </h1>
+	    <p class="description"></p>
+	    <div id="g_description">
+	      <p>Guia do iniciante para extrair as músicas do CDs usando o fre:ac</p>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="main-content-oc">
+	  <div class="wrapper">
+	    <div class="content-item">
+	      <div id='g_body'>
+		<p>Baixe a versão mais recente de fre:ac no <a href="https://github.com/enzo1982/freac/releases">GitHub</a> ou da <a href="https://www.freac.org/">página oficial do fre:ac</a>. Instale o programa e o inicie. Insira um CD de áudio na unidade de CD/DVD do seu computador. As faixas do CD geralmente aparecem automaticamente na janela principal do fre:ac. Caso contrário, clique no botão "Adicionar o conteúdo de CD de áudio à lista de tarefas".</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/joblist_plain.png"/>
+		<p>É possível usar o freedb cd para não ter que inserir os nomes das faixas e o nome do álbum manualmente. Para isso, clique no botão "Consultar a base de dados CDDB". Assim teremos uma tela parecida com esta:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/query_cddb.png"/>
+		<p>Assim todos os nomes das faixas e do álbum serão preenchidos automaticamente:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/joblist_info.png"/>
+		<p>Agora precisamos definir as configurações gerais do programa. Clique em "Opções" e selecione "Configurações gerais". Isso fará com que a seguinte caixa de diálogo seja exibida:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/config_settings.png" width="100%"/>
+		<p>Nela podemos definir as configurações do codificador. As predefinições do fre:ac seleciona o codificador LAME MP3 automaticamente. É ele que usaremos neste tutorial. Confira se a opção "Codifique em tempo real" está selecionado. Insira também o caminho completo para onde os seus arquivos MP3 serão salvos. Eu usei este diretório para salvar as minhas músicas.</p>
+		<p>No campo "Modelo de nome de arquivo" é onde você pode definir como os nomes dos arquivos serão salvos. Neste exemplo o nome do álbum será definido como o nome da pasta, o artista aparece no cabeçalho do diretórios e os nomes dos arquivos serão salvos com o número da faixa seguido do título da música. A predefinição para o nome do arquivo é "<b>&lt;artist&gt; - &lt;album&gt;\&lt;track&gt; - &lt;title&gt;</b>". Assim os nomes dos arquivos ficarão assim:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/explorer.png"/>
+		<p>Para os usuários mais avançados, há diversas outras configurações que podem ser alteradas para atender todas as suas necessidades.</p>
+		<p>Agora vamos configurar o LAME para criar os MP3 com qualidade. No menu vá em "Opções" e selecione "Configurar o codificador".</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/configure_encoder.png"/>
+		<p>A tela será igual ao da imagem abaixo.</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/config_lame.png"/>
+		<p>O fre:ac já vem com diferentes configurações para o LAME. Elas servem para que você possa escolher diferentes pré-ajustes para o codificador e assim alterar a qualidade final da conversão. Quanto mais alto for o seu pré-ajuste ("Extremo" por exemplo), mais espaço o seu MP3 vai ocupar por causa da compressão menor e assim mais qualidade o seu MP3 terá. Eu prefiro personalizar as minhas configurações para otimizar a qualidade final dos meus arquivos. É possível visualizar estas configurações aqui. Neste exemplo, deixaremos com a predefinição em Padrão. Clique em Ok para aplicar as configurações, agora selecione quais as faixas que deseja extrair e converter.</p>
+		<p>Já na tela principal, podemos selecionar quais as faixas nós queremos extrair e converter. Do lado esquerde de cada trilha, há uma pequena caixa de seleção. Os que têm um × marcam as faixas que serão extraídas e convertidas. No exemplo vamos extrair todas as faixas, porém você pode selecionar quais as faixas deseja converter.</p>
+		<p>Clique no botão da imagem para iniciar o processo de conversão.</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/start_encoding.png"/>
+		<p>Na parte debaixo da janela aparece uma barra indicando todo o processo:</p>
+		<img style="margin-left: 1em; margin-right: 1em;" src="images/encoding.png" width="100%"/>
+		<p>À medida que cada música for convertida os títulos das músicas vão sendo eliminadas automaticamente da sua lista de tarefas (onde aparece todos os títulos).</p>
+		<p>Parabéns! Você extraiu e converteu o seu primeiro CD usando o fre:ac!</p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div id="footer">
+	  <div class="wrapper">
+	    <p></p>
+	    <div id='g_footer'>
+	      <p>Direitos autorais (C) 2006 Joseph Nahmias<br/> Direitos autorais (C) 2007-2021 projeto fre:ac</p>
+	    </div>
+	    <p></p>
+	  </div>
+	</div>
+
+      </div>
+    </div>
+  </body>
+</html>

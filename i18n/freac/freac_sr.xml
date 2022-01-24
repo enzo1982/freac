@@ -38,6 +38,7 @@
     <entry id="313" string="Composer">Kompozitor</entry>
     <entry id="314" string="Tempo">Tempo</entry>
     <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key">Muzička nota</entry>
 
     <entry id="350" string="unknown artist">nepoznat izvođač</entry>
     <entry id="351" string="unknown title">napoznat naziv</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">nepoznat dirigent</entry>
     <entry id="356" string="unknown composer">nepoznat kompozitor</entry>
     <entry id="357" string="unknown album artist">nepoznat izvođač na albumu</entry>
+    <entry id="358" string="unknown tempo">nepoznat tempo</entry>
+    <entry id="359" string="unknown key">nepoznata nota</entry>
 
     <entry id="380" string="hidden track">skrivena pesma</entry>
 
@@ -1371,14 +1374,16 @@
 	  <entry id="103200" string="Details">Detalji</entry>
 	  <entry id="103201" string="Detailed information">Detaljna informacija</entry>
 	  <entry id="103202" string="Band / orchestra">Grupa / orkestar</entry>
-	  <entry id="103205" string="Lyrics writer">Pisac teksta</entry>
+	  <entry id="103205" string="Lyrics writer">Pisac teksta pesme</entry>
 	  <entry id="103206" string="Modified / remixed by">Menjao / remiksovao</entry>
 	  <entry id="103207" string="Original information">Izvorna informacija</entry>
 	  <entry id="103208" string="Original artist">Izvorni izvođač</entry>
 	  <entry id="103209" string="Original album">Izvorni album</entry>
 	  <entry id="103210" string="Original lyrics writer">Izvorni pisac teksta</entry>
 	  <entry id="103211" string="Original release year">Izvorna godina izdanja</entry>
+	  <entry id="103212" string="Musical key/tempo">Muzička nota/tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key">Početna nota</entry>
 	</section>
 
 	<section name="Publisher">
@@ -1397,9 +1402,13 @@
 	  <entry id="103313" string="Commercial information">Komercijalna informacija</entry>
 	</section>
 
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics">Tekst pesme</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Ponašanje</entry>
-	  <entry id="103401" string="Clear album artist field if it matches track artist">Očistite polje izvođač kada se poklopi sa izvođačem pesme</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Očistite polje "Izvođač" albuma kada se poklopi sa izvođačem pesme</entry>
 	</section>
 
 	<section name="Errors">

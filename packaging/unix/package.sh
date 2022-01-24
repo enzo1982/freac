@@ -1,8 +1,8 @@
 #!/bin/bash
 PREFIX=/usr/local
 
-#RELEASE=1.1.5
-RELEASE=1.1.5-`date +"%Y%m%d"`
+RELEASE=1.1.6
+#RELEASE=1.1.6-`date +"%Y%m%d"`
 
 SMOOTHVER=0.9
 SMOOTHREV=0
@@ -39,6 +39,8 @@ cp ../../Readme.de freac/
 cp -R $PREFIX/share/freac/icons freac/
 cp -R $PREFIX/share/freac/lang freac/
 cp -R $PREFIX/share/doc/freac/manual freac/
+
+cp -R $PREFIX/lib/boca/boca.dsp.rnnoise freac/boca/
 
 cp $PREFIX/lib/boca/boca_decoder_*.1.0.so freac/boca/
 cp $PREFIX/lib/boca/boca_deviceinfo_*.1.0.so freac/boca/

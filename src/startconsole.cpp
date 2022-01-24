@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -82,7 +82,7 @@ Void freac::freacCommandline::Free()
 	if (instance != NIL) delete (freacCommandline *) instance;
 }
 
-freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args(arguments), stopped(False)
+freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args(arguments), firstFile(True), stopped(False)
 {
 	Registry	&boca	= Registry::Get();
 
@@ -172,7 +172,10 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	Bool		 ignoreChapters	 = ScanForProgramOption("--ignore-chapters");
 	Bool		 ignoreCoverArt	 = ScanForProgramOption("--ignore-coverart");
 
-	Bool		 quiet		 = ScanForProgramOption("--quiet");
+	String		 cueSheetFile;
+	String		 playlistFile;
+
+	String		 playlistFormat	 = Config::PlaylistFormatDefault;
 
 	encoderID = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 	encoderID = encoderID.Head(encoderID.Length() - 4);
@@ -183,9 +186,18 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	ScanForProgramOption("-d %VALUE", &outputFolder);
 	ScanForProgramOption("-o %VALUE", &outputFile);
 
+	if (outputFolder != NIL && BoCA::Utilities::IsRelativePath(outputFolder)) outputFolder = GetAbsolutePathName(outputFolder);
+	if (outputFile	 != NIL && BoCA::Utilities::IsRelativePath(outputFile))	  outputFile   = GetAbsolutePathName(outputFile);
+
 	if (!ScanForProgramOption("--pattern=%VALUE", &pattern))   ScanForProgramOption("-p %VALUE", &pattern);
 
 	ScanForProgramOption("--threads=%VALUE", &numberOfThreads);
+
+	ScanForProgramOption("--cuesheet=%VALUE", &cueSheetFile);
+	ScanForProgramOption("--playlist=%VALUE", &playlistFile);
+
+	if (cueSheetFile == NIL && ScanForProgramOption("--cuesheet")) cueSheetFile = "<default>";
+	if (playlistFile == NIL && ScanForProgramOption("--playlist")) playlistFile = "<default>";
 
 	encoderID = encoderID.ToLower();
 	helpenc	  = helpenc.ToLower();
@@ -349,6 +361,59 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	if (ripperTimeout   != NIL) config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, ripperTimeout.ToInt ());
 
+	if (cueSheetFile != NIL)
+	{
+		config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, True);
+
+		if (cueSheetFile != "<default>")
+		{
+			if (!cueSheetFile.ToLower().EndsWith(".cue")) cueSheetFile.Append(".cue");
+
+			config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistCueSheetID, File(cueSheetFile));
+		}
+		else
+		{
+			cueSheetFile = String(Directory(outputFolder)).Append(Directory::GetDirectoryDelimiter()).Append("cuesheet.cue");
+		}
+	}
+
+	if (playlistFile != NIL)
+	{
+		config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, True);
+
+		if (playlistFile != "<default>")
+		{
+			if (!playlistFile.Contains(".")) playlistFile.Append(".m3u8");
+
+			config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenameID, File(playlistFile));
+
+			/* Set playlist format based on file extension.
+			 */
+			for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+			{
+				if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_PLAYLIST) continue;
+
+				const Array<FileFormat *>	&formats = boca.GetComponentFormats(i);
+
+				foreach (FileFormat *format, formats)
+				{
+					const Array<String>	&formatExtensions = format->GetExtensions();
+
+					foreach (const String &formatExtension, formatExtensions)
+					{
+						if (playlistFile.ToLower().EndsWith(String(".").Append(formatExtension))) playlistFormat = boca.GetComponentID(i).Append("-").Append(formatExtension);
+					}
+				}
+			}
+
+			config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistFormatID, playlistFormat);
+		}
+		else
+		{
+			playlistFile = String(Directory(outputFolder)).Append(Directory::GetDirectoryDelimiter()).Append("playlist.").Append(playlistFormat.Tail(playlistFormat.Length() - playlistFormat.FindLast("-") - 1));
+		}
+	}
+
 	if (ignoreChapters)
 	{
 		config->SetIntValue(Config::CategoryTagsID, Config::TagsReadChaptersID, False);
@@ -365,10 +430,11 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	/* Perform actual conversion.
 	 */
-	if (files.Length() > 1 && outputFile != NIL)
-	{
-		JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
+	JobConvert::onEncodeTrack.Connect(&freacCommandline::OnEncodeTrack, this);
+	JobConvert::onFinishEncoding.Connect(&freacCommandline::OnFinishEncoding, this);
 
+	if (outputFile != NIL)
+	{
 		/* Check if input files exist.
 		 */
 		Array<String>	 jobFiles;
@@ -399,12 +465,6 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			/* Convert tracks in joblist.
 			 */
 			Converter().Convert(*joblist->GetTrackList(), False, False);
-
-			if (!quiet)
-			{
-				if (!stopped) Console::OutputString("done.\n");
-				else	      Console::OutputString("aborted.\n");
-			}
 		}
 		else
 		{
@@ -415,7 +475,12 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	}
 	else
 	{
-		JobList	*joblist = new JobList(Point(0, 0), Size(0, 0));
+		Array<Track>	 playlistTracks;
+
+		config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, False);
+		config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, False);
+
+		JobList		*joblist = new JobList(Point(0, 0), Size(0, 0));
 
 		foreach (const String &file, files)
 		{
@@ -443,7 +508,7 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			/* Handle splitting chapters and cue sheets.
 			 */
-			Bool	 splitFile = (splitChapters || currentFile.EndsWith(".cue")) && outputFile == NIL;
+			Bool	 splitFile = splitChapters || currentFile.EndsWith(".cue");
 			String	 pattern   = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, "<filename>");
 
 			config->SetIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, !splitFile);
@@ -466,28 +531,63 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 			/* Set output file name.
 			 */
-			if (outputFile == NIL)
-			{
-				Track	 track = joblist->GetNthTrack(0);
+			Track	 track = joblist->GetNthTrack(0);
 
-				config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Utilities::GetOutputFileName(config, track));
+			config->SetStringValue(Config::CategorySettingsID, Config::SettingsSingleFilenameID, Utilities::GetOutputFileName(config, track));
+
+			/* Add tracks to playlist tracks.
+			 */
+			const Array<Track>	*joblistTracks = joblist->GetTrackList();
+
+			foreach (Track playlistTrack, *joblistTracks)
+			{
+				playlistTrack.fileName	= Utilities::GetOutputFileName(config, playlistTrack);
+				playlistTrack.isCDTrack = False;
+
+				playlistTracks.Add(playlistTrack);
 			}
 
 			/* Convert tracks in joblist.
 			 */
-			if (!quiet) Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
+			firstFile = True;
 
 			Converter().Convert(*joblist->GetTrackList(), False, False);
 
 			joblist->RemoveAllTracks();
 
-			if (!quiet)
-			{
-				if (!stopped) Console::OutputString("done.\n");
-				else	      Console::OutputString("aborted.\n");
-			}
-
 			if (stopped) break;
+		}
+
+		/* Create playlist and cue sheet.
+		 */
+		if (!stopped && playlistTracks.Length() > 0 && playlistFile != NIL)
+		{
+			/* Write playlist.
+			 */
+			PlaylistComponent	*playlist = (PlaylistComponent *) boca.CreateComponentByID(playlistFormat.Head(playlistFormat.FindLast("-")));
+
+			if (playlist != NIL)
+			{
+				playlist->SetTrackList(playlistTracks);
+				playlist->WritePlaylist(File(playlistFile));
+
+				boca.DeleteComponent(playlist);
+			}
+		}
+
+		if (!stopped && playlistTracks.Length() > 0 && cueSheetFile != NIL)
+		{
+			/* Write cue sheet.
+			 */
+			PlaylistComponent	*cuesheet = (PlaylistComponent *) boca.CreateComponentByID("cuesheet-playlist");
+
+			if (cuesheet != NIL)
+			{
+				cuesheet->SetTrackList(playlistTracks);
+				cuesheet->WritePlaylist(File(cueSheetFile));
+
+				boca.DeleteComponent(cuesheet);
+			}
 		}
 
 		DeleteObject(joblist);
@@ -520,21 +620,34 @@ freac::freacCommandline::~freacCommandline()
 
 Void freac::freacCommandline::OnEncodeTrack(const Track &track, const String &decoderName, const String &encoderName, ConversionStep mode)
 {
-	static Bool	 firstTime = True;
-
 	BoCA::Config	*config = BoCA::Config::Get();
 	Bool		 quiet	= ScanForProgramOption("--quiet");
 
 	if (!quiet)
 	{
-		if (!firstTime) Console::OutputString("done.\n");
-		else		firstTime = False;
+		static String	 previousFile;
+		String		 currentFile = track.fileName;
 
-		String	 currentFile = track.fileName;
+		if (currentFile == previousFile) return;
+		else				 previousFile = currentFile;
 
 		if (currentFile.StartsWith("device://cdda:")) currentFile = String("Audio CD ").Append(String::FromInt(config->GetIntValue(Config::CategoryRipperID, Config::RipperActiveDriveID, Config::RipperActiveDriveDefault))).Append(" - Track ").Append(currentFile.Tail(currentFile.Length() - 16));
 
+		if (!firstFile) Console::OutputString("done.\n");
+		else		firstFile = False;
+
 		Console::OutputString(String("Processing file: ").Append(currentFile).Append("..."));
+	}
+}
+
+Void freac::freacCommandline::OnFinishEncoding(Bool success)
+{
+	Bool	 quiet = ScanForProgramOption("--quiet");
+
+	if (!quiet)
+	{
+		if (success) Console::OutputString("done.\n");
+		else	     Console::OutputString("aborted.\n");
 	}
 }
 
@@ -764,6 +877,19 @@ Bool freac::freacCommandline::TracksToFiles(const String &tracks, Array<String> 
 	}
 
 	return True;
+}
+
+String freac::freacCommandline::GetAbsolutePathName(const String &path) const
+{
+	String	 pathName = path;
+
+	/* Convert relative to absolute paths.
+	 */
+	if (BoCA::Utilities::IsRelativePath(pathName)) pathName = String(Directory::GetActiveDirectory()).Append(Directory::GetDirectoryDelimiter()).Append(pathName);
+
+	if (!pathName.EndsWith(Directory::GetDirectoryDelimiter())) pathName.Append(Directory::GetDirectoryDelimiter());
+
+	return pathName;
 }
 
 Picture freac::freacCommandline::LoadCoverArt(const String &file, Int type)
@@ -1021,7 +1147,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		Console::OutputString("  --help=<id>     | -h <id>\tPrint help for encoder specific options\n\n");
 		Console::OutputString("                    -d <dir>\tSpecify output directory for encoded files\n");
 		Console::OutputString("                    -o <file>\tSpecify output file name in single file mode\n");
-		Console::OutputString("  --pattern=<pat> | -p <pat>\tSpecify output file name pattern\n\n");
+		Console::OutputString("  --pattern=<pat> | -p <pat>\tSpecify output file name pattern (default is \"<filename>\")\n\n");
 
 		DeviceInfoComponent	*info = boca.CreateDeviceInfoComponent();
 
@@ -1047,6 +1173,14 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 
 		Console::OutputString("  --add-cover=<file>\t\tAdd front cover image from file (.png or .jpg)\n");
 		Console::OutputString("  --add-cover-back=<file>\tAdd back cover image from file (.png or .jpg)\n\n");
+
+		if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 0)
+		{
+			if (								      boca.ComponentExists("cuesheet-playlist")) Console::OutputString("  --cuesheet[=<file>]\t\tCreate a cue sheet of the conversion results\n");
+			if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 1 || !boca.ComponentExists("cuesheet-playlist")) Console::OutputString("  --playlist[=<file>]\t\tCreate a playlist containing the conversion results\n");
+
+			Console::OutputString("\n");
+		}
 
 		Console::OutputString("  --ignore-chapters\t\tDo not write chapter information to tags\n");
 		Console::OutputString("  --ignore-coverart\t\tDo not write cover images to tags\n\n");
@@ -1082,8 +1216,7 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 			list.Append(boca.GetComponentID(i).Head(boca.GetComponentID(i).FindLast("-enc")));
 		}
 
-		Console::OutputString(list.Append("\n\n"));
-		Console::OutputString("Default for <pat> is \"<filename>\".\n");
+		Console::OutputString(list.Append("\n"));
 	}
 	else
 	{
