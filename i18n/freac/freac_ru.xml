@@ -1121,6 +1121,11 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Голос (включая Смех и т.п.)</entry>
 	<entry id="50406" string="Speech">Речь</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Выходные каналы</entry>
+	<entry id="50501" string="Channel configuration">Конфигурация каналов</entry>
+      </section>
     </section>
 
     <section name="Taggers">

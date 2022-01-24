@@ -1123,6 +1123,11 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">głos (w tym śmiech itp.)</entry>
 	<entry id="50406" string="Speech">mowa</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Kanały wyjściowe</entry>
+	<entry id="50501" string="Channel configuration">Konfiguracja kanałów</entry>
+      </section>
     </section>
 
     <section name="Taggers">

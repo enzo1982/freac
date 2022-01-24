@@ -1115,6 +1115,11 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Voce (incl. rasete etc.)</entry>
 	<entry id="50406" string="Speech">Cuvantare</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Canale iesire</entry>
+	<entry id="50501" string="Channel configuration">Configurare canal</entry>
+      </section>
     </section>
 
     <section name="Taggers">

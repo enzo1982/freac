@@ -1093,6 +1093,11 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Stemme(inkl. latter osv.)</entry>
 	<entry id="50406" string="Speech">Tale</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Output kanaler</entry>
+	<entry id="50501" string="Channel configuration">Kanal indstillinger</entry>
+      </section>
     </section>
 
     <section name="Taggers">

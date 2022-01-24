@@ -1097,6 +1097,11 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">आवाज</entry>
 	<entry id="50406" string="Speech">भाषण</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">आउटपुट चैनल</entry>
+	<entry id="50501" string="Channel configuration">चैनल कॉन्फ़िगरेशन</entry>
+      </section>
     </section>
 
     <section name="Taggers">

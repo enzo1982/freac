@@ -1123,6 +1123,11 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Stem (incl lachen etc.)</entry>
 	<entry id="50406" string="Speech">Spraak</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Uitvoerkanalen</entry>
+	<entry id="50501" string="Channel configuration">Kanaalconfiguratie</entry>
+      </section>
     </section>
 
     <section name="Taggers">

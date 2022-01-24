@@ -1123,6 +1123,11 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Röst (inkl. skratt etc.)</entry>
 	<entry id="50406" string="Speech">Tal</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Utdatakanaler</entry>
+	<entry id="50501" string="Channel configuration">Kanalkonfiguration</entry>
+      </section>
     </section>
 
     <section name="Taggers">

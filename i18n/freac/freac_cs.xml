@@ -1120,6 +1120,11 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Hlas (včetně smíchu atd.)</entry>
 	<entry id="50406" string="Speech">Mluvený projev</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Výstupní kanály</entry>
+	<entry id="50501" string="Channel configuration">Konfigurace kanálu</entry>
+      </section>
     </section>
 
     <section name="Taggers">

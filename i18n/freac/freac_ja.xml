@@ -1123,6 +1123,11 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">声（笑い声など）</entry>
 	<entry id="50406" string="Speech">スピーチ</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">出力チャンネル</entry>
+	<entry id="50501" string="Channel configuration">チャネル設定</entry>
+      </section>
     </section>
 
     <section name="Taggers">

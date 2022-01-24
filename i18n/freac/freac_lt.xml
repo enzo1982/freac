@@ -1120,6 +1120,11 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Balsas (įsk. juoką ir t.t.)</entry>
 	<entry id="50406" string="Speech">Kalba</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Išvesties kanalai</entry>
+	<entry id="50501" string="Channel configuration">Kanalų konfigūracija</entry>
+      </section>
     </section>
 
     <section name="Taggers">

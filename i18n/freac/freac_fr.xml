@@ -1120,6 +1120,11 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Voix (incluant rires, etc...)</entry>
 	<entry id="50406" string="Speech">Discours</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Canaux de sortie</entry>
+	<entry id="50501" string="Channel configuration">Configuration des canaux</entry>
+      </section>
     </section>
 
     <section name="Taggers">

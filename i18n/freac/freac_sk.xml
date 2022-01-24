@@ -1120,6 +1120,11 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Reč (vrátane smiechu a pod.)</entry>
 	<entry id="50406" string="Speech">Hovorené slovo</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Output channels</entry>
+	<entry id="50501" string="Channel configuration">Nastavenie kanálov</entry>
+      </section>
     </section>
 
     <section name="Taggers">

@@ -163,6 +163,10 @@ History
 
 	Version 1.1.7 (January 2022)
 
+		- New features
+
+			- added a matrix surround decoder DSP component
+
 		- New translations
 
 			- added Persian translation

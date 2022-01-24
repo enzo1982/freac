@@ -728,6 +728,7 @@
 	<entry id="12003" string="RNNoise Noise Reduction"/>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer"/>
 	<entry id="12005" string="HDCD Decoder"/>
+	<entry id="12006" string="Matrix Surround Decoder"/>
       </section>
 
       <section name="Verifiers">
@@ -1122,6 +1123,12 @@
 	<entry id="50404" string="Recording"/>
 	<entry id="50405" string="Voice (incl. laughter etc.)"/>
 	<entry id="50406" string="Speech"/>
+      </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels"/>
+	<entry id="50501" string="Channel configuration"/>
+	<entry id="50502" string="Redirect bass content to LFE channel"/>
       </section>
     </section>
 
