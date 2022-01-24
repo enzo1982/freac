@@ -38,6 +38,7 @@
     <entry id="313" string="Composer">Композитор</entry>
     <entry id="314" string="Tempo">Темпо</entry>
     <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key">Музикален ключ</entry>
 
     <entry id="350" string="unknown artist">неизвестен изпълнител</entry>
     <entry id="351" string="unknown title">неизвестно заглавие</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">неизвестен диригент</entry>
     <entry id="356" string="unknown composer">неизвестен композитор</entry>
     <entry id="357" string="unknown album artist">неизвестен изпълнител на албума</entry>
+    <entry id="358" string="unknown tempo">неизвестно темпо</entry>
+    <entry id="359" string="unknown key">неизвестен ключ</entry>
 
     <entry id="380" string="hidden track">скрит запис/песен/</entry>
 
@@ -1378,7 +1381,9 @@
 	  <entry id="103209" string="Original album">Ориг. албум</entry>
 	  <entry id="103210" string="Original lyrics writer">Ориг. текст</entry>
 	  <entry id="103211" string="Original release year">Ориг. година на издаване</entry>
+	  <entry id="103212" string="Musical key/tempo">Музикален ключ/темпо</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key">Първоначален ключ</entry>
 	</section>
 
 	<section name="Publisher">
