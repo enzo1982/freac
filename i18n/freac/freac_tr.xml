@@ -657,7 +657,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">Paypal kullanarak %1 adresine direk bağış da yapabilirsiniz.</entry>
 	  <entry id="100102" string="usd">try</entry>
 	  <entry id="100103" string="$%1">₺%1</entry>
-	  <entry id="100104" string="5,10,20,other amount">25,50,100,diğer miktar</entry>
+	  <entry id="100104" string="5,10,20,other amount">50,100,200,diğer miktar</entry>
 	</section>
 
 	<section name="Donorbox">

@@ -639,7 +639,7 @@
 	<section name="PayPal">
 	  <entry id="100102" string="usd">vnd</entry>
 	  <entry id="100103" string="$%1">%1₫</entry>
-	  <entry id="100104" string="5,10,20,other amount">100000,200000,400000,số tiền khác</entry>
+	  <entry id="100104" string="5,10,20,other amount">50000,100000,200000,số tiền khác</entry>
 	</section>
 
 	<section name="Donorbox">
