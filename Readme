@@ -167,6 +167,10 @@ History
 
 			- added a matrix surround decoder DSP component
 
+		- Updated codecs
+
+			- updated Monkey's Audio to version 7.25e
+
 		- New translations
 
 			- added Persian translation
