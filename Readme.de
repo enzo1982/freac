@@ -129,7 +129,7 @@ Voraussetzungen
 
 		Alle Systeme:
 
-			- smooth v0.9.8 oder neuer (http://www.smooth-project.org/)
+			- smooth v0.9.10 oder neuer (http://www.smooth-project.org/)
 			- BoCA v1.0.6 oder neuer (https://www.freac.org/)
 
 		Windows:
@@ -160,11 +160,16 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.7 (Januar 2022)
+	Version 1.1.7 (Februar 2022)
 
 		- Neue Funktionen
 
 			- Matrix-Surround-Dekodierer DSP-Komponente hinzugefügt
+
+		- Behobene Fehler
+
+			- Umwandlung von langen Pfaden ins 8.3-Format unter neueren Windows-Versionen behoben
+			- Probleme beim Umgang mit langen Netzwerkpfaden unter manchen Windows-Versionen behoben
 
 		- Aktualisierte Codecs
 

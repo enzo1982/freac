@@ -130,7 +130,7 @@ Requirements
 
 		All platforms:
 
-			- smooth v0.9.8 or later (http://www.smooth-project.org/)
+			- smooth v0.9.10 or later (http://www.smooth-project.org/)
 			- BoCA v1.0.6 or later (https://www.freac.org/)
 
 		Windows:
@@ -161,11 +161,16 @@ Requirements
 History
 -------
 
-	Version 1.1.7 (January 2022)
+	Version 1.1.7 (February 2022)
 
 		- New features
 
 			- added a matrix surround decoder DSP component
+
+		- Bug fixes
+
+			- fixed long paths being converted to 8.3 format on recent versions of Windows
+			- fixed inability to handle long network paths on some versions of Windows
 
 		- Updated codecs
 

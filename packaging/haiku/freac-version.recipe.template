@@ -40,7 +40,7 @@ PROVIDES="
 REQUIRES="
 	haiku$secondaryArchSuffix
 	boca$secondaryArchSuffix >= 1.0.6
-	smooth$secondaryArchSuffix >= 0.9.6
+	smooth$secondaryArchSuffix >= 0.9.10
 	cmd:ffmpeg
 	cmd:mpcdec
 	cmd:mpcenc
@@ -70,7 +70,7 @@ REQUIRES="
 BUILD_REQUIRES="
 	haiku${secondaryArchSuffix}_devel
 	boca${secondaryArchSuffix}_devel >= 1.0.6
-	smooth${secondaryArchSuffix}_devel >= 0.9.6
+	smooth${secondaryArchSuffix}_devel >= 0.9.10
 	devel:libboca_1.0$secondaryArchSuffix >= 3
 	"
 BUILD_PREREQUIRES="
