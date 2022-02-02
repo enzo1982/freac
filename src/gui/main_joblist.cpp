@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -1788,15 +1788,13 @@ Void freac::LayerJoblist::OnSelectFolder()
 	 */
 	Directory	 outputDirectory(BoCA::Utilities::GetAbsolutePathName(edb_outdir->GetText()));
 
-	if (Directory::SetActiveDirectory(outputDirectory) != Success())
+	if (!outputDirectory.Exists())
 	{
 		Int	 selection = QuickMessage(i18n->TranslateString("The output folder does not exist! Do you want to create it?"), i18n->TranslateString("Error"), Message::Buttons::YesNoCancel, Message::Icon::Question);
 
 		if	(selection == Message::Button::Yes)	outputDirectory.Create();
 		else if (selection == Message::Button::Cancel)	{ UpdateOutputDir(); return; }
 	}
-
-	Directory::SetActiveDirectory(GUI::Application::GetApplicationDirectory());
 
 	/* Save output directory and list of last used folders.
 	 */

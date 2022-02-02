@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -351,8 +351,6 @@ Int freac::ConfigureEncoders::SaveSettings()
 		if	(selection == Message::Button::Yes)	outputDirectory.Create();
 		else if (selection == Message::Button::Cancel)	return Error();
 	}
-
-	Directory::SetActiveDirectory(GUI::Application::GetApplicationDirectory());
 
 	/* Save selected encoder.
 	 */
