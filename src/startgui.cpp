@@ -1587,6 +1587,12 @@ Void freac::freacGUI::ToggleSignalProcessing()
 
 	if (config->GetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault)) menu_processing->GetNthEntry(1)->Activate();
 	else																	menu_processing->GetNthEntry(1)->Deactivate();
+
+	/* Notify about changed setting state (main window
+	 * visibility is set to False in OnChangeConfiguration
+	 * so we know we were not called from there).
+	 */
+	if (mainWnd->IsVisible()) OnChangeConfiguration();
 }
 
 Void freac::freacGUI::ToggleUseInputDirectory()
