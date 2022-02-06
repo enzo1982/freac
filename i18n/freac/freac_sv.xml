@@ -728,6 +728,7 @@
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise &#x2013; brusreduktion</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band &#x2013; tempo-/tonhöjdsväxlare</entry>
 	<entry id="12005" string="HDCD Decoder">HDCD-avkodare</entry>
+	<entry id="12006" string="Matrix Surround Decoder">Matrissurroundavkodare</entry>
       </section>
 
       <section name="Verifiers">
@@ -1127,6 +1128,7 @@
       <section name="Surround">
 	<entry id="50500" string="Output channels">Utdatakanaler</entry>
 	<entry id="50501" string="Channel configuration">Kanalkonfiguration</entry>
+	<entry id="50502" string="Redirect bass content to LFE channel">Omdirigera basinnehåll till LFE-kanal</entry>
       </section>
     </section>
 
