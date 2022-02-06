@@ -1193,11 +1193,11 @@
 	<entry id="80105" string="reduced">riduttu</entry>
 	<entry id="80106" string="on">accesu</entry>
 	<entry id="80107" string="decoupled">scuppiatu</entry>
-	<entry id="80108" string="enhanced 1.5/3 dB">aummentatu 1.5/3 dB</entry>
-	<entry id="80109" string="enhanced 2/6 dB">aummentatu 2/6 dB</entry>
-	<entry id="80110" string="enhanced 2.5/9 dB">aummentatu 2.5/9 dB</entry>
-	<entry id="80111" string="enhanced 3/12 dB">aummentatu 3/12 dB</entry>
-	<entry id="80112" string="enhanced 3/inf dB">aummentatu 3/inf dB</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">aumentatu 1.5/3 dB</entry>
+	<entry id="80109" string="enhanced 2/6 dB">aumentatu 2/6 dB</entry>
+	<entry id="80110" string="enhanced 2.5/9 dB">aumentatu 2.5/9 dB</entry>
+	<entry id="80111" string="enhanced 3/12 dB">aumentatu 3/12 dB</entry>
+	<entry id="80112" string="enhanced 3/inf dB">aumentatu 3/inf dB</entry>
 	<entry id="80113" string="Adaptive noise shaping order">Ordine di fattura di trostu adattata</entry>
 	<entry id="80114" string="high">altu</entry>
 	<entry id="80115" string="Clear Voice Detection">Abbentata di voce chjara</entry>
