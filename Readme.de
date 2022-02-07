@@ -168,6 +168,7 @@ Geschichte
 
 		- Behobene Fehler
 
+			- Problem mit übermäßig hohen Bitraten bei der Kodierung von Vorbis auf nicht-x86 LP64-Systemen behoben
 			- Umwandlung von langen Pfaden ins 8.3-Format unter neueren Windows-Versionen behoben
 			- Probleme beim Umgang mit langen Netzwerkpfaden unter manchen Windows-Versionen behoben
 
