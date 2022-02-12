@@ -549,9 +549,9 @@
 	<entry id="5607" string="Show Jobs tab">Registerkarte Aufgaben anzeigen</entry>
 
 	<section name="Columns">
-	  <entry id="5650" string="Track artist">Künsler</entry>
+	  <entry id="5650" string="Track artist">Künstler</entry>
 	  <entry id="5651" string="Track title">Titel</entry>
-	  <entry id="5652" string="Track genre">Titelgenre</entry>
+	  <entry id="5652" string="Track genre">Genre</entry>
 	  <entry id="5653" string="Album title">Albumtitel</entry>
 	  <entry id="5654" string="Disc number">CD-Nummer</entry>
 	  <entry id="5655" string="Track number">Tracknummer</entry>
@@ -587,7 +587,7 @@
       <section name="Verification">
 	<entry id="5800" string="Verification">Verifikation</entry>
 	<entry id="5801" string="Enable input verification">Eingabeverifikation aktivieren</entry>
-	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Überprüfen, dass verlustfreie Quellen exakt den Daten&#10;entsprechen, aus den sie ursprünglich erzeugt wurden.</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Überprüfen, dass verlustfreie Quellen exakt den Daten&#10;entsprechen, aus denen sie ursprünglich erzeugt wurden.</entry>
 	<entry id="5803" string="Enable output verification">Ausgabeverifikation aktivieren</entry>
 	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Überprüfen, dass verlustfreie Ausgaben exakt den Daten&#10;entsprechen, die zum Kodieren verwendet wurden.</entry>
       </section>
