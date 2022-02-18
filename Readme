@@ -167,6 +167,12 @@ History
 
 			- added a matrix surround decoder DSP component
 
+		- Improvements
+
+			- added support for KDE color schemes (including dark mode)
+			- improved HiDPI scale factor detection in KDE desktop environments
+			- respect text scaling factor in addition to font size setting on X11 based systems
+
 		- Bug fixes
 
 			- fixed excessive bitrate when encoding Vorbis on non-x86 LP64 systems

@@ -166,6 +166,12 @@ Geschichte
 
 			- Matrix-Surround-Dekodierer DSP-Komponente hinzugefügt
 
+		- Verbesserungen
+
+			- Unterstützung für KDE-Farbschemata (inkl. Dark-Mode) hinzugefügt
+			- Erkennung des HiDPI-Skalierungsfaktors in KDE-Desktopumgebungen verbessert
+			- Berücksichtige Textskalierungsfaktor zusätzlich zur Schriftgröße unter X11-basierten Systemen
+
 		- Behobene Fehler
 
 			- Problem mit übermäßig hohen Bitraten bei der Kodierung von Vorbis auf nicht-x86 LP64-Systemen behoben
