@@ -38,6 +38,7 @@
     <entry id="313" string="Composer">作曲</entry>
     <entry id="314" string="Tempo">节奏</entry>
     <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key">音调</entry>
 
     <entry id="350" string="unknown artist">未知艺术家</entry>
     <entry id="351" string="unknown title">未知标题</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">未知指挥</entry>
     <entry id="356" string="unknown composer">未知作曲家</entry>
     <entry id="357" string="unknown album artist">未知专辑艺术家</entry>
+    <entry id="358" string="unknown tempo">未知节奏</entry>
+    <entry id="359" string="unknown key">未知音调</entry>
 
     <entry id="380" string="hidden track">隐藏曲目</entry>
 
@@ -66,6 +69,21 @@
       <entry id="516" string="%1 bytes">%1 字节</entry>
       <entry id="517" string="%1 kB">%1 千字节</entry>
       <entry id="518" string="%1%">%1%</entry>
+    </section>
+
+    <section name="Media types">
+      <entry id="600" string="CD">CD</entry>
+      <entry id="601" string="DAT">数字式录音带</entry>
+      <entry id="602" string="MiniDisc">迷你光碟</entry>
+      <entry id="603" string="Compact Cassette">小型盒式磁带</entry>
+      <entry id="604" string="Reel tape">开盘磁带</entry>
+      <entry id="605" string="Vinyl">黑胶唱片</entry>
+      <entry id="606" string="DVD">DVD</entry>
+      <entry id="607" string="LaserDisc">激光碟</entry>
+      <entry id="608" string="TV">电视</entry>
+      <entry id="609" string="Video">视频</entry>
+      <entry id="610" string="Radio">广播</entry>
+      <entry id="611" string="Telephone">电话</entry>
     </section>
 
     <section name="Menu">
@@ -205,6 +223,7 @@
       <entry id="3044" string="verifying">正在校验</entry>
       <entry id="3045" string="Open">打开</entry>
       <entry id="3046" string="CD drive">CD 驱动器</entry>
+      <entry id="3047" string="Disc ID">光盘 ID</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">编码文件</entry>
@@ -275,7 +294,7 @@
 	<entry id="3606" string="Removing all tracks">正在移除全部曲目</entry>
 	<entry id="3607" string="Removing tracks of disc in drive %1">正在移除驱动器 %1 中光盘上的曲目</entry>
 	<entry id="3608" string="Removed all tracks from joblist">已经移除任务列表中的全部曲目</entry>
-	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">已经从任务列表中移动驱动器 %1 中光盘上的曲目</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">已经从任务列表中删除驱动器 %1 中光盘上的曲目</entry>
       </section>
 
       <section name="Convert">
@@ -401,6 +420,7 @@
       <entry id="5023" string="Verifiers">校验器</entry>
       <entry id="5024" string="Taggers">标签器</entry>
       <entry id="5025" string="Processing">处理</entry>
+      <entry id="5026" string="Additional arguments">附加参数</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">设置编码器</entry>
@@ -546,6 +566,7 @@
 	  <entry id="5664" string="Channels">声道</entry>
 	  <entry id="5665" string="Sample resolution">采样分辨率</entry>
 	  <entry id="5666" string="CD drive">CD 驱动器</entry>
+	  <entry id="5667" string="Disc ID">光盘 ID</entry>
 	</section>
       </section>
 
@@ -618,7 +639,8 @@
       <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">无法设置 DSP 处理器：%1&#10;&#10;错误：%2</entry>
       <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">不能访问输入文件：%1&#10;&#10;文件：%1&#10;路径：%2</entry>
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">不能创建输出文件：%1&#10;&#10;文件：%1&#10;路径：%2</entry>
-      <entry id="7107" string="Failed to verify input file: %1">无法校验输入文件：%1</entry>
+      <entry id="7107" string="Failed to verify input file: %1">未能校验输入文件：%1</entry>
+      <entry id="7108" string="Failed to verify input track: %1">未能校验输入曲目：%1</entry>
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">校验输出文件时 Checksum 不匹配：%1&#10;&#10;编码 Checksum：%2&#10;校验 Checksum：%3</entry>
       <entry id="7110" string="File not found">未找到文件</entry>
       <entry id="7111" string="Unknown file type">未知文件类型</entry>
@@ -634,6 +656,7 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">访问 CD-ROM 光驱被 Windows 拒绝。&#10;请联系您的系统管理员以&#10;取得访问 CD-ROM 光驱的权限。</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">没有可用的配置对话框：&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">所选文件夹不存在</entry>
+      <entry id="7124" string="Access denied">访问被拒</entry>
     </section>
 
     <section name="Dialogs">
@@ -663,7 +686,7 @@
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">可用的 CD-ROM 驱动器</entry>
-      <entry id="9001" string="Set drive speed limit">限定驱动器速率</entry>
+      <entry id="9001" string="Set drive speed limit">设定驱动器速率限制</entry>
       <entry id="9002" string="CD information">CD 信息</entry>
       <entry id="9003" string="Read CD Text">读入 CD 文本</entry>
       <entry id="9004" string="Read cdplayer.ini">读入 cdplayer.ini</entry>
@@ -704,11 +727,18 @@
 	<entry id="12002" string="Sample Rate Converter">采样率转换器</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise 噪声消除</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">橡皮筋节奏 /音调 变换器</entry>
+	<entry id="12005" string="HDCD Decoder">HDCD 解码器</entry>
+      </section>
+
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier">AccurateRip 验证程序</entry>
       </section>
 
       <section name="Extensions">
 	<entry id="15000" string="Notifications">提示</entry>
 	<entry id="15001" string="Logging">日志</entry>
+	<entry id="15002" string="Video Downloader">视频下载器</entry>
+	<entry id="15003" string="Tag Editor">标签编辑器</entry>
       </section>
     </section>
 
@@ -1108,6 +1138,49 @@
       </section>
     </section>
 
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70000" string="Configure AccurateRip">配置 AccurateRip</entry>
+	<entry id="70001" string="General settings">常规设置</entry>
+	<entry id="70002" string="Enable AccurateRip">启用 AccurateRip</entry>
+	<entry id="70003" string="Database URL">数据库 URL</entry>
+	<entry id="70004" string="Cache">缓存</entry>
+	<entry id="70005" string="Enable cache">启用缓存</entry>
+	<entry id="70006" string="Expires after">过期于</entry>
+	<entry id="70007" string="%1 day(s)">%1 天后</entry>
+	<entry id="70008" string="%1 week(s)">%1 周后</entry>
+	<entry id="70009" string="%1 month(s)">%1 个月后</entry>
+	<entry id="70010" string="%1 year(s)">%1 年后</entry>
+	<entry id="70011" string="never">永不</entry>
+	<entry id="70012" string="Drives">驱动器</entry>
+	<entry id="70013" string="Drive">驱动器</entry>
+	<entry id="70014" string="Offset configuration">偏移配置</entry>
+	<entry id="70015" string="Offset in drive database">驱动器数据库中的偏移</entry>
+	<entry id="70016" string="Detected offset">检测到偏移</entry>
+	<entry id="70017" string="Configured offset">配置了偏移</entry>
+	<entry id="70018" string="Detect offset now">立即检测偏移</entry>
+	<entry id="70019" string="not configured">未配置</entry>
+	<entry id="70020" string="automatically configured">自动配置</entry>
+	<entry id="70021" string="configured by offset detection">按偏移检测进行了配置</entry>
+	<entry id="70022" string="manually configured">手动配置</entry>
+	<entry id="70023" string="not present">不存在</entry>
+	<entry id="70024" string="not detected">未检出</entry>
+	<entry id="70025" string="disabled">禁用</entry>
+
+	<section name="Messages">
+	  <entry id="70050" string="AccurateRip configuration">AccurateRip 配置</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">在 AccurateRip 数据库中找不到您的 CD 驱动器。&#10;&#10;驱动器名：%1&#10;&#10;你想马上运行自动的驱动器偏移检测吗？</entry>
+	  <entry id="70052" string="Do not ask again">不再询问</entry>
+	  <entry id="70053" string="AccurateRip offset detection">AccurateRip 偏移检测</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">在 AccurateRip 数据库中找不到插入的光盘。</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">请将另一张光盘插入 CD 驱动器并点击“好”。&#10;&#10;AccurateRip 数据库中必须有光盘的信息。已经被其他用户&#10;翻录过的 CD 最有可能符合这种情况。</entry>
+	  <entry id="70056" string="Offset detection needs to check another disc.">偏移检测需要检查另一张光盘。</entry>
+	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">成功检测驱动器偏移并配置为 %1 采样。</entry>
+	</section>
+      </section>
+    </section>
+
     <section name="External">
       <entry id="80000" string="Downmix multi-channel audio to stereo">缩混多声道音频为立体声</entry>
 
@@ -1313,20 +1386,34 @@
 	  <entry id="103209" string="Original album">原专辑</entry>
 	  <entry id="103210" string="Original lyrics writer">原作词</entry>
 	  <entry id="103211" string="Original release year">原发行时间</entry>
+	  <entry id="103212" string="Musical key/tempo">音调/节奏</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key">初始音调</entry>
 	</section>
 
 	<section name="Publisher">
 	  <entry id="103300" string="Publisher">出版商</entry>
 	  <entry id="103301" string="Publisher information">出版商信息</entry>
 	  <entry id="103302" string="Publisher / label">出版商 / 标签</entry>
+	  <entry id="103303" string="Media type">媒体类型</entry>
+	  <entry id="103304" string="Catalog number">目录编号</entry>
+	  <entry id="103305" string="Barcode">条形码</entry>
 	  <entry id="103307" string="Webpage URLs">网页地址</entry>
 	  <entry id="103308" string="Artist webpage">艺术家主页</entry>
 	  <entry id="103309" string="Publisher webpage">出版商主页</entry>
-	  <entry id="103310" string="Internet radio station">国际音乐电台</entry>
+	  <entry id="103310" string="Internet radio station">互联网电台</entry>
 	  <entry id="103311" string="Audio source webpage">音频资源网</entry>
 	  <entry id="103312" string="Copyright information">版权信息</entry>
 	  <entry id="103313" string="Commercial information">商业信息</entry>
+	</section>
+
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics">歌词</entry>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior">动作</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">清除专辑艺术家字段，如它匹配歌曲艺术家</entry>
 	</section>
 
 	<section name="Errors">
@@ -1357,6 +1444,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">保存转换日志至音频文件</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">仅音频 CD 翻录日志</entry>
 	  <entry id="104112" string="Filename pattern">文件名样式</entry>
+	  <entry id="104113" string="Log complete file paths">记录完整的文件路径</entry>
 	</section>
       </section>
 
