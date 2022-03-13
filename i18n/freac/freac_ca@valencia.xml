@@ -277,7 +277,6 @@
       <entry id="5001" string="Encoders">Compressors</entry>
       <entry id="5002" string="Playlists">Llistes de reproducció</entry>
       <entry id="5003" string="Language">Idioma</entry>
-      <entry id="5006" string="Tags">Etiquetes</entry>
       <entry id="5020" string="Ripper">Extractor</entry>
 
       <section name="Encoders">
@@ -301,12 +300,15 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Generar llistes de reproducció</entry>
-	<entry id="5201" string="Create cue sheets">Generar cue sheets</entry>
 	<entry id="5202" string="Output folder">Carpeta d'eixida</entry>
 	<entry id="5203" string="Select">Buscar</entry>
 	<entry id="5204" string="Use encoder output folder">Usar carpeta d'eixida del codificador</entry>
 	<entry id="5205" string="Filename pattern">Patró de nom d'arxiu</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Trie una carpeta per a guardar les llistes de reproducció</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5251" string="Create cue sheets">Generar cue sheets</entry>
       </section>
 
       <section name="CDDB">
@@ -355,8 +357,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Etiquetes</entry>
-	<entry id="5501" string="Tag formats">Etiqueta de Codificacio</entry>
+	<entry id="5500" string="Tag formats">Etiqueta de Codificacio</entry>
 	<entry id="5502" string="Default comment string">Comentari per defecte</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Reemplaçar comentaris previs per l'indicat</entry>
 	<entry id="5504" string="Filename pattern">Patró de nom d'arxiu</entry>

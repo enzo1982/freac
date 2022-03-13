@@ -277,7 +277,6 @@
       <entry id="5001" string="Encoders">Kodiloj</entry>
       <entry id="5002" string="Playlists">Leglistoj</entry>
       <entry id="5003" string="Language">Lingvo</entry>
-      <entry id="5006" string="Tags">Informetiketo</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Agordi kodilon</entry>
@@ -300,12 +299,15 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Krei leglistojn</entry>
-	<entry id="5201" string="Create cue sheets">Krei replikfolion</entry>
 	<entry id="5202" string="Output folder">Eliga dosierujo</entry>
 	<entry id="5203" string="Select">Elekti ujon</entry>
 	<entry id="5204" string="Use encoder output folder">Uzi elig-dosierujon de la kodilo</entry>
 	<entry id="5205" string="Filename pattern">Modelo por dosiernomo</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Elekti dosierujon por la leglist-dosieroj</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5251" string="Create cue sheets">Krei replikfolion</entry>
       </section>
 
       <section name="CDDB">
@@ -354,8 +356,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Informetiketo</entry>
-	<entry id="5501" string="Tag formats">Etiket-kodadoj</entry>
+	<entry id="5500" string="Tag formats">Etiket-kodadoj</entry>
 	<entry id="5502" string="Default comment string">Standardkomento</entry>
 	<entry id="5504" string="Filename pattern">Modelo por dosiernomo</entry>
 	<entry id="5505" string="Encoding">Signokodo</entry>

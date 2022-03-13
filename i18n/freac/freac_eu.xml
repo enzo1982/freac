@@ -301,12 +301,15 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Sortu irakur-zerrendak</entry>
-	<entry id="5201" string="Create cue sheets">Sortu cue orriak</entry>
 	<entry id="5202" string="Output folder">Irteera agiritegia</entry>
 	<entry id="5203" string="Select">Bilatu</entry>
 	<entry id="5204" string="Use encoder output folder">Erabili kodeatzailearen irteera agiritegia</entry>
 	<entry id="5205" string="Filename pattern">Agirizen eredua</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Hautatu irakur-zerrendak non jarri behar diren agiritegia</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5251" string="Create cue sheets">Sortu cue orriak</entry>
       </section>
 
       <section name="CDDB">

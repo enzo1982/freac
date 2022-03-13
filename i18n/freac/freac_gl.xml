@@ -277,7 +277,6 @@
       <entry id="5001" string="Encoders">Conversores</entry>
       <entry id="5002" string="Playlists">Listaxes de reprodución</entry>
       <entry id="5003" string="Language">Lingua</entry>
-      <entry id="5006" string="Tags">Tags de información</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar conversor</entry>
@@ -300,12 +299,15 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Xerar listaxes de reprodución</entry>
-	<entry id="5201" string="Create cue sheets">Xerar cue sheets</entry>
 	<entry id="5202" string="Output folder">Carpeta de saída</entry>
 	<entry id="5203" string="Select">Procurar</entry>
 	<entry id="5204" string="Use encoder output folder">Utilizar directorio de saída do conversor</entry>
 	<entry id="5205" string="Filename pattern">Patrón de nome de arquivo</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Seleccione un directorio para gardar as listaxes de reprodución</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5251" string="Create cue sheets">Xerar cue sheets</entry>
       </section>
 
       <section name="CDDB">
@@ -354,8 +356,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Tags de información</entry>
-	<entry id="5501" string="Tag formats">Codificación tag</entry>
+	<entry id="5500" string="Tag formats">Codificación tag</entry>
 	<entry id="5502" string="Default comment string">Comentario por defecto</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Substituír os comentarios existentes polo comentario por defecto</entry>
 	<entry id="5504" string="Filename pattern">Patrón de nome de arquivo</entry>

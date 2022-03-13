@@ -397,7 +397,6 @@
       <entry id="5003" string="Language">Jazyk</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Rozhranie</entry>
-      <entry id="5006" string="Tags">Tagy</entry>
       <entry id="5007" string="Components">Súčasti</entry>
       <entry id="5008" string="Decoders">Dekódery</entry>
       <entry id="5009" string="Output">Výstup</entry>
@@ -447,7 +446,6 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Vytvorť playlisty</entry>
-	<entry id="5201" string="Create cue sheets">Vytvoriť .cue hárky</entry>
 	<entry id="5202" string="Output folder">Výstupný priečinok</entry>
 	<entry id="5203" string="Select">Vybrať</entry>
 	<entry id="5204" string="Use encoder output folder">Použiť výstupný priečinok</entry>
@@ -456,6 +454,13 @@
 	<entry id="5207" string="Output filenames">Výstupné názvy súborov</entry>
 	<entry id="5208" string="Configure plugin">Nastaviť plugin</entry>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Z konverziu vytvoriť iba jeden zoznam skladieb (playlist) a/alebo cue zoznam</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets">Cue zoznamy</entry>
+	<entry id="5251" string="Create cue sheets">Vytvoriť .cue hárky</entry>
+	<entry id="5253" string="Read cue sheets embedded in metadata">Načítať cue zoznamy z vložených metadát</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">Uprednostniť cue zoznamy pred informáciami o kapitolách</entry>
       </section>
 
       <section name="CDDB">
@@ -505,8 +510,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Tagy</entry>
-	<entry id="5501" string="Tag formats">Kódovanie tagu</entry>
+	<entry id="5500" string="Tag formats">Kódovanie tagu</entry>
 	<entry id="5502" string="Default comment string">Predvolený komentár</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Nahradiť existujúce komentáre predvoleným komentárom</entry>
 	<entry id="5504" string="Filename pattern">Vzor súborovej cesty</entry>
@@ -527,9 +531,6 @@
 	<entry id="5519" string="Special fields">Špeciálne polia</entry>
 	<entry id="5520" string="Write CD table of contents">Zapísať obsah CD</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Zachovať informáciu o pôvodnom nastavení hlasitosti Replain Gain</entry>
-	<entry id="5522" string="Cue sheets">Cue zoznamy</entry>
-	<entry id="5523" string="Read cue sheets embedded in metadata">Načítať cue zoznamy z vložených metadát</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">Uprednostniť cue zoznamy pred informáciami o kapitolách</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Vložiť 0 pred čísla stôp menších ako 10 (01,02..09)</entry>
 	<entry id="5526" string="File size limit">Maximálna veľkosť súboru</entry>
 	<entry id="5527" string="unlimited">bez obmedzenia</entry>

@@ -277,7 +277,6 @@
       <entry id="5001" string="Encoders">Kodekid</entry>
       <entry id="5002" string="Playlists">Playlists</entry>
       <entry id="5003" string="Language">Keel</entry>
-      <entry id="5006" string="Tags">Tagid</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Kodeki sätted</entry>
@@ -300,11 +299,14 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Luua playlistid</entry>
-	<entry id="5201" string="Create cue sheets">Luua cue sheets</entry>
 	<entry id="5202" string="Output folder">Väljundi kaust</entry>
 	<entry id="5203" string="Select">Valik</entry>
 	<entry id="5205" string="Filename pattern">Faili nime formeerimine</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Valige kaust, kuhu paigutatakse playlistid</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5251" string="Create cue sheets">Luua cue sheets</entry>
       </section>
 
       <section name="CDDB">
@@ -353,8 +355,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Tagid</entry>
-	<entry id="5501" string="Tag formats">Tägide kodeerimine</entry>
+	<entry id="5500" string="Tag formats">Tägide kodeerimine</entry>
 	<entry id="5502" string="Default comment string">Komentaarid vaikimisi</entry>
 	<entry id="5504" string="Filename pattern">Faili nime formeerimine</entry>
 	<entry id="5505" string="Encoding">Kodeerimine</entry>

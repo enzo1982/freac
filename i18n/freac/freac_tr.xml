@@ -276,7 +276,6 @@
       <entry id="5001" string="Encoders">Çeviriciler</entry>
       <entry id="5002" string="Playlists">Çalma listesi</entry>
       <entry id="5003" string="Language">Dil</entry>
-      <entry id="5006" string="Tags">Bilgi etiketleri</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Çevirici ayarları</entry>
@@ -299,12 +298,15 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Çalma listesi oluştur</entry>
-	<entry id="5201" string="Create cue sheets">Cue dosyası oluştur</entry>
 	<entry id="5202" string="Output folder">Kaydetme dizini</entry>
 	<entry id="5203" string="Select">Gözat</entry>
 	<entry id="5204" string="Use encoder output folder">Çıkış dizini</entry>
 	<entry id="5205" string="Filename pattern">Dosya adı şablonu</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Çalma listesinin koyulacağı dizini seçin</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5251" string="Create cue sheets">Cue dosyası oluştur</entry>
       </section>
 
       <section name="CDDB">
@@ -353,8 +355,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Bilgi etiketleri</entry>
-	<entry id="5501" string="Tag formats">Etiket karakter kodları</entry>
+	<entry id="5500" string="Tag formats">Etiket karakter kodları</entry>
 	<entry id="5502" string="Default comment string">Varsayılan yorum metni</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Varolan yorumları varsayılan yorumla değiştir</entry>
 	<entry id="5504" string="Filename pattern">Dosya adı şablonu</entry>

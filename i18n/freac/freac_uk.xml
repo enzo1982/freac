@@ -277,7 +277,6 @@
       <entry id="5001" string="Encoders">Кодеки</entry>
       <entry id="5002" string="Playlists">Плейлисти</entry>
       <entry id="5003" string="Language">Мова</entry>
-      <entry id="5006" string="Tags">Заголовки</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Налаштувати кодек</entry>
@@ -300,12 +299,15 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Створити плейлисти</entry>
-	<entry id="5201" string="Create cue sheets">Створити командну сторінку</entry>
 	<entry id="5202" string="Output folder">Тека для збереження</entry>
 	<entry id="5203" string="Select">Відкрити</entry>
 	<entry id="5204" string="Use encoder output folder">Використовувати вихідну теку кодека</entry>
 	<entry id="5205" string="Filename pattern">Формування назви файлу</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Оберіть теку куди будуть записані файли плейлиста</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5251" string="Create cue sheets">Створити командну сторінку</entry>
       </section>
 
       <section name="CDDB">
@@ -354,8 +356,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Заголовки</entry>
-	<entry id="5501" string="Tag formats">Кодування тегів</entry>
+	<entry id="5500" string="Tag formats">Кодування тегів</entry>
 	<entry id="5502" string="Default comment string">Коментарі за замовчуванням</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Замінити існуючі коментарі на коментарі за замовчуванням</entry>
 	<entry id="5504" string="Filename pattern">Формування назви файлу</entry>

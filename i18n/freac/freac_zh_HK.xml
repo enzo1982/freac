@@ -321,7 +321,6 @@
       <entry id="5003" string="Language">語言</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">介面</entry>
-      <entry id="5006" string="Tags">標籤</entry>
       <entry id="5007" string="Components">元件</entry>
       <entry id="5008" string="Decoders">解碼器</entry>
       <entry id="5009" string="Output">輸出</entry>
@@ -367,7 +366,6 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">建立播放清單</entry>
-	<entry id="5201" string="Create cue sheets">建立CUE</entry>
 	<entry id="5202" string="Output folder">輸出路徑</entry>
 	<entry id="5203" string="Select">瀏覽</entry>
 	<entry id="5204" string="Use encoder output folder">使用編碼器輸出路徑</entry>
@@ -375,6 +373,10 @@
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">選取播放清單檔案的存放路徑</entry>
 	<entry id="5207" string="Output filenames">輸出檔名</entry>
 	<entry id="5208" string="Configure plugin">設定外掛程式</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5251" string="Create cue sheets">建立CUE</entry>
       </section>
 
       <section name="CDDB">
@@ -424,8 +426,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">標籤</entry>
-	<entry id="5501" string="Tag formats">標籤格式</entry>
+	<entry id="5500" string="Tag formats">標籤格式</entry>
 	<entry id="5502" string="Default comment string">預設評註字串</entry>
 	<entry id="5503" string="Replace existing comments with default comment">預設評註取代目前評註</entry>
 	<entry id="5504" string="Filename pattern">檔名式樣</entry>

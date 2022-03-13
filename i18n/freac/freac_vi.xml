@@ -277,7 +277,6 @@
       <entry id="5001" string="Encoders">Chuyển mã</entry>
       <entry id="5002" string="Playlists">Danh sách</entry>
       <entry id="5003" string="Language">Ngôn ngữ</entry>
-      <entry id="5006" string="Tags">Tab thông tin</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Chỉnh sửa chuyển mã</entry>
@@ -300,12 +299,15 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Tạo danh sách</entry>
-	<entry id="5201" string="Create cue sheets">Tạo cue sheets</entry>
 	<entry id="5202" string="Output folder">Thư mục xuất dữ liệu</entry>
 	<entry id="5203" string="Select">Duyệt</entry>
 	<entry id="5204" string="Use encoder output folder">Sử dụng thư mục xuất dữ liệu chuyển mã</entry>
 	<entry id="5205" string="Filename pattern">Tên file mẫu</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Chọn thư mục nơi tập tin danh sách sẽ được lưu</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5251" string="Create cue sheets">Tạo cue sheets</entry>
       </section>
 
       <section name="CDDB">
@@ -354,8 +356,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Tab thông tin</entry>
-	<entry id="5501" string="Tag formats">Chuyển mã Tag</entry>
+	<entry id="5500" string="Tag formats">Chuyển mã Tag</entry>
 	<entry id="5502" string="Default comment string">Chuỗi nhận xét mặc định</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Thay thế bình luận đã tồn tại bằng bình luận mặc định</entry>
 	<entry id="5504" string="Filename pattern">Tên file mẫu</entry>

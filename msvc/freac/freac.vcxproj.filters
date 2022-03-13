@@ -165,9 +165,6 @@
     <ClCompile Include="..\..\src\dialogs\config\config_playlists.cpp">
       <Filter>Quelldateien\dialogs\config</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\dialogs\config\config_tags.cpp">
-      <Filter>Quelldateien\dialogs\config</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\dialogs\config\configcomponent.cpp">
       <Filter>Quelldateien\dialogs\config</Filter>
     </ClCompile>
@@ -282,6 +279,18 @@
     <ClCompile Include="..\..\src\player.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_cuesheets.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_coverart.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_tagfields.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_tagformats.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\config.h">
@@ -351,9 +360,6 @@
       <Filter>Headerdateien\dialogs\config</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\dialogs\config\config_playlists.h">
-      <Filter>Headerdateien\dialogs\config</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\dialogs\config\config_tags.h">
       <Filter>Headerdateien\dialogs\config</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\dialogs\config\configcomponent.h">
@@ -481,6 +487,18 @@
     </ClInclude>
     <ClInclude Include="..\..\include\player.h">
       <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_cuesheets.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_coverart.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_tagfields.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_tagformats.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

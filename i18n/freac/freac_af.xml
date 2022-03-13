@@ -301,12 +301,15 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Skep speellyste</entry>
-	<entry id="5201" string="Create cue sheets">Skep wenkblaaie</entry>
 	<entry id="5202" string="Output folder">Uitsetgids</entry>
 	<entry id="5203" string="Select">Rondlees</entry>
 	<entry id="5204" string="Use encoder output folder">Gebruik enkodeerder se uitsetgids</entry>
 	<entry id="5205" string="Filename pattern">Lêernaammodel</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Kies die gids waarin die speellyslêers geplaas sal word</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5251" string="Create cue sheets">Skep wenkblaaie</entry>
       </section>
 
       <section name="CDDB">
@@ -355,8 +358,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Inligtingsetikette</entry>
-	<entry id="5501" string="Tag formats">Etiket-enkoderings</entry>
+	<entry id="5500" string="Tag formats">Etiket-enkoderings</entry>
 	<entry id="5502" string="Default comment string">Verstekkommentaarstring</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Vervang bestaande kommentaar met verstekkommentaar</entry>
 	<entry id="5504" string="Filename pattern">Lêernaammodel</entry>

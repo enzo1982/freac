@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -19,6 +19,8 @@ using namespace BoCA::AS;
 
 using namespace smooth::GUI::Dialogs;
 
+Signal1<Void, Bool>	 freac::ConfigurePlaylists::onToggleCreateCueSheets;
+
 freac::ConfigurePlaylists::ConfigurePlaylists()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
@@ -34,9 +36,9 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 	useEncOutdir	 = config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, Config::PlaylistUseEncoderOutputDirDefault);
 	createSingleFile = config->GetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateSingleFileID, Config::PlaylistCreateSingleFileDefault);
 
-	group_options		= new GroupBox(i18n->TranslateString("Playlists"), Point(7, 11), Size(552, 67));
+	group_options		= new GroupBox(i18n->TranslateString("Playlists"), Point(7, 11), Size(552, 44));
 
-	check_createPlaylists	= new CheckBox(i18n->TranslateString("Create playlists"), Point(10, 13), Size(157, 0), &createPlaylists);
+	check_createPlaylists	= new CheckBox(i18n->TranslateString("Create playlists"), Point(10, 14), Size(157, 0), &createPlaylists);
 	check_createPlaylists->onAction.Connect(&ConfigurePlaylists::ToggleCreatePlaylists, this);
 
 	Registry	&boca = Registry::Get();
@@ -48,22 +50,9 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 		check_createPlaylists->Deactivate();
 	}
 
-	check_createCueSheets	= new CheckBox(i18n->TranslateString("Create cue sheets"), Point(10, 39), Size(157, 0), &createCueSheets);
-	check_createCueSheets->onAction.Connect(&ConfigurePlaylists::ToggleCreatePlaylists, this);
+	check_createPlaylists->SetWidth(21 + check_createPlaylists->GetUnscaledTextWidth());
 
-	if (!boca.ComponentExists("cuesheet-playlist"))
-	{
-		createCueSheets = False;
-
-		check_createCueSheets->Deactivate();
-	}
-
-	Int	 maxTextSize = Math::Max(check_createPlaylists->GetUnscaledTextWidth(), check_createCueSheets->GetUnscaledTextWidth());
-
-	check_createPlaylists->SetWidth(21 + maxTextSize);
-	check_createCueSheets->SetWidth(21 + maxTextSize);
-
-	combo_formats	 = new ComboBox(Point(39 + maxTextSize, 12), Size(365 - maxTextSize, 0));
+	combo_formats	 = new ComboBox(Point(39 + check_createPlaylists->GetUnscaledTextWidth(), 13), Size(365 - check_createPlaylists->GetUnscaledTextWidth(), 0));
 
 	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
 	{
@@ -81,15 +70,14 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 		}
 	}
 
-	button_config	= new Button(i18n->TranslateString("Configure plugin"), Point(412, 11), Size(130, 0));
+	button_config	= new Button(i18n->TranslateString("Configure plugin"), Point(412, 12), Size(130, 0));
 	button_config->onAction.Connect(&ConfigurePlaylists::ConfigureFormat, this);
 
 	group_options->Add(check_createPlaylists);
-	group_options->Add(check_createCueSheets);
 	group_options->Add(combo_formats);
 	group_options->Add(button_config);
 
-	group_outdir		= new GroupBox(i18n->TranslateString("Output folder"), Point(7, 90), Size(552, 69));
+	group_outdir		= new GroupBox(i18n->TranslateString("Output folder"), Point(7, 67), Size(552, 70));
 
 	check_useEncOutdir	= new CheckBox(i18n->TranslateString("Use encoder output folder"), Point(10, 14), Size(444, 0), &useEncOutdir);
 	check_useEncOutdir->onAction.Connect(&ConfigurePlaylists::ToggleUseEncOutdir, this);
@@ -103,7 +91,7 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 	group_outdir->Add(edit_outdir);
 	group_outdir->Add(button_outdir_browse);
 
-	group_filename		= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 171), Size(552, 67));
+	group_filename		= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 149), Size(552, 66));
 
 	text_filename		= new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(10, 15));
 	edit_filename		= new EditBox(playlistOutputPattern, Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(525 - text_filename->GetUnscaledTextWidth(), 0), 0);
@@ -127,11 +115,16 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 	Add(group_filename);
 	Add(group_options);
 
-	SetSize(Size(566, 245));
+	SetSize(Size(566, 222));
+
+	onToggleCreateCueSheets.Connect(&ConfigurePlaylists::OnToggleCreateCueSheets, this);
 }
 
 freac::ConfigurePlaylists::~ConfigurePlaylists()
 {
+
+	onToggleCreateCueSheets.Disconnect(&ConfigurePlaylists::OnToggleCreateCueSheets, this);
+
 	DeleteObject(group_outdir);
 	DeleteObject(check_useEncOutdir);
 	DeleteObject(edit_outdir);
@@ -145,7 +138,6 @@ freac::ConfigurePlaylists::~ConfigurePlaylists()
 
 	DeleteObject(group_options);
 	DeleteObject(check_createPlaylists);
-	DeleteObject(check_createCueSheets);
 	DeleteObject(combo_formats);
 	DeleteObject(button_config);
 }
@@ -243,6 +235,13 @@ Void freac::ConfigurePlaylists::ToggleUseEncOutdir()
 	}
 }
 
+Void freac::ConfigurePlaylists::OnToggleCreateCueSheets(Bool createCueSheetsEnabled)
+{
+	createCueSheets = createCueSheetsEnabled;
+
+	ToggleCreatePlaylists();
+}
+
 Int freac::ConfigurePlaylists::SaveSettings()
 {
 	BoCA::Config	*config = BoCA::Config::Get();
@@ -253,7 +252,6 @@ Int freac::ConfigurePlaylists::SaveSettings()
 	if (!playlistOutputDir.EndsWith(Directory::GetDirectoryDelimiter())) playlistOutputDir.Append(Directory::GetDirectoryDelimiter());
 
 	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreatePlaylistID, createPlaylists);
-	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistCreateCueSheetID, createCueSheets);
 	config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistOutputDirID, playlistOutputDir);
 	config->SetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenamePatternID, playlistOutputPattern);
 	config->SetIntValue(Config::CategoryPlaylistID, Config::PlaylistUseEncoderOutputDirID, useEncOutdir);

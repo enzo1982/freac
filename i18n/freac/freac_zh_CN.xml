@@ -400,7 +400,6 @@
       <entry id="5003" string="Language">语言</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">界面</entry>
-      <entry id="5006" string="Tags">标签</entry>
       <entry id="5007" string="Components">插件</entry>
       <entry id="5008" string="Decoders">解码器</entry>
       <entry id="5009" string="Output">输出</entry>
@@ -450,7 +449,6 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">创建播放列表</entry>
-	<entry id="5201" string="Create cue sheets">创建 cue 表单</entry>
 	<entry id="5202" string="Output folder">输出文件夹</entry>
 	<entry id="5203" string="Select">浏览</entry>
 	<entry id="5204" string="Use encoder output folder">使用编码输出文件夹</entry>
@@ -459,6 +457,13 @@
 	<entry id="5207" string="Output filenames">输出文件名</entry>
 	<entry id="5208" string="Configure plugin">配置插件</entry>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">每次转换时只创建一个单独的播放列表 和/或 一个 cue 表单文件</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets">cue 表单</entry>
+	<entry id="5251" string="Create cue sheets">创建 cue 表单</entry>
+	<entry id="5253" string="Read cue sheets embedded in metadata">读取嵌入到元数据中的 cue 表单</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">用 cue 表单代替章节信息</entry>
       </section>
 
       <section name="CDDB">
@@ -508,8 +513,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">标签</entry>
-	<entry id="5501" string="Tag formats">标签编码</entry>
+	<entry id="5500" string="Tag formats">标签编码</entry>
 	<entry id="5502" string="Default comment string">默认注释</entry>
 	<entry id="5503" string="Replace existing comments with default comment">使用默认注释替换当前注释</entry>
 	<entry id="5504" string="Filename pattern">文件名样式</entry>
@@ -530,9 +534,6 @@
 	<entry id="5519" string="Special fields">特殊字段</entry>
 	<entry id="5520" string="Write CD table of contents">写入 CD 目录表</entry>
 	<entry id="5521" string="Preserve Replay Gain information">保留播放增益信息</entry>
-	<entry id="5522" string="Cue sheets">cue 表单</entry>
-	<entry id="5523" string="Read cue sheets embedded in metadata">读取嵌入到元数据中的 cue 表单</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">用 cue 表单代替章节信息</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">在小于10的曲目编号中添加0</entry>
 	<entry id="5526" string="File size limit">文件大小限制</entry>
 	<entry id="5527" string="unlimited">无限制</entry>

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -12,12 +12,15 @@
 
 #include <dialogs/config/config.h>
 #include <dialogs/config/config_cddb.h>
+#include <dialogs/config/config_coverart.h>
+#include <dialogs/config/config_cuesheets.h>
 #include <dialogs/config/config_encoders.h>
 #include <dialogs/config/config_interface.h>
 #include <dialogs/config/config_language.h>
 #include <dialogs/config/config_playlists.h>
 #include <dialogs/config/config_resources.h>
-#include <dialogs/config/config_tags.h>
+#include <dialogs/config/config_tagfields.h>
+#include <dialogs/config/config_tagformats.h>
 #include <dialogs/config/config_verification.h>
 #include <dialogs/config/config_dsp.h>
 
@@ -94,8 +97,9 @@ freac::ConfigDialog::ConfigDialog()
 
 	tree_freac		= new Tree(freac::appName);
 
-	tree_ripper		= new Tree(i18n->TranslateString("Ripper"));
 	tree_interface		= new Tree(i18n->TranslateString("Interface"));
+	tree_ripper		= new Tree(i18n->TranslateString("Ripper"));
+	tree_metadata		= new Tree(i18n->TranslateString("Metadata"));
 
 	tree_components		= new Tree(i18n->TranslateString("Components"));
 
@@ -127,8 +131,9 @@ freac::ConfigDialog::ConfigDialog()
 
 	tree_freac->Open();
 
-	tree_ripper->Open();
 	tree_interface->Open();
+	tree_ripper->Open();
+	tree_metadata->Open();
 
 	tree_extension->Open();
 	tree_components->Open();
@@ -176,8 +181,9 @@ freac::ConfigDialog::~ConfigDialog()
 
 	DeleteObject(tree_freac);
 
-	DeleteObject(tree_ripper);
 	DeleteObject(tree_interface);
+	DeleteObject(tree_ripper);
+	DeleteObject(tree_metadata);
 
 	DeleteObject(tree_components);
 
@@ -257,10 +263,11 @@ Void freac::ConfigDialog::AddLayers()
 	tree_interface->Add(entries.GetLast());
 
 	tree_freac->Add(tree_interface);
-	Component	*component = NIL;
 
 	/* Add ripper and CDDB configuration layers.
 	 */
+	Component	*component = NIL;
+
 	if (component == NIL) component = boca.CreateComponentByID("cdio-dec");
 	if (component == NIL) component = boca.CreateComponentByID("cdparanoia-dec");
 	if (component == NIL) component = boca.CreateComponentByID("cdrip-dec");
@@ -294,24 +301,42 @@ Void freac::ConfigDialog::AddLayers()
 
 	tree_freac->Add(tree_ripper);
 
-	/* Add playlist configuration layer.
+	/* Add metadata configuration layers.
 	 */
+	layers.Add(new ConfigureTagFormats());
+	createdLayers.Add(layers.GetLast());
+	entries.Add(new ConfigEntry(i18n->TranslateString("Tag formats"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_metadata->Add(entries.GetLast());
+
+	layers.Add(new ConfigureTagFields());
+	createdLayers.Add(layers.GetLast());
+	entries.Add(new ConfigEntry(i18n->TranslateString("Tag fields"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_metadata->Add(entries.GetLast());
+
+	layers.Add(new ConfigureCoverArt());
+	createdLayers.Add(layers.GetLast());
+	entries.Add(new ConfigEntry(i18n->TranslateString("Cover art"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_metadata->Add(entries.GetLast());
+
 	if (boca.GetNumberOfComponentsOfType(COMPONENT_TYPE_PLAYLIST) > 0)
 	{
 		layers.Add(new ConfigurePlaylists());
 		createdLayers.Add(layers.GetLast());
 		entries.Add(new ConfigEntry(i18n->TranslateString("Playlists"), layers.GetLast()));
 		entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-		tree_freac->Add(entries.GetLast());
+		tree_metadata->Add(entries.GetLast());
 	}
 
-	/* Add tags configuration layer.
-	 */
-	layers.Add(new ConfigureTags());
+	layers.Add(new ConfigureCueSheets());
 	createdLayers.Add(layers.GetLast());
-	entries.Add(new ConfigEntry(i18n->TranslateString("Tags"), layers.GetLast()));
+	entries.Add(new ConfigEntry(i18n->TranslateString("Cue sheets"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
-	tree_freac->Add(entries.GetLast());
+	tree_metadata->Add(entries.GetLast());
+
+	tree_freac->Add(tree_metadata);
 
 	/* Add component configuration layers.
 	 */
@@ -373,8 +398,9 @@ Void freac::ConfigDialog::DeleteLayers()
 	layers.RemoveAll();
 	entries.RemoveAll();
 
-	tree_freac->Remove(tree_ripper);
 	tree_freac->Remove(tree_interface);
+	tree_freac->Remove(tree_ripper);
+	tree_freac->Remove(tree_metadata);
 
 	Registry	&boca = Registry::Get();
 

@@ -254,12 +254,17 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\config.cpp" />
     <ClCompile Include="..\..\src\dialogs\charset.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config_coverart.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config_cuesheets.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_dsp.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_resources.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config_tagfields.cpp" />
+    <ClCompile Include="..\..\src\dialogs\config\config_tagformats.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_verification.cpp" />
     <ClCompile Include="..\..\src\dialogs\error.cpp" />
     <ClCompile Include="..\..\src\dialogs\format.cpp" />
     <ClCompile Include="..\..\src\dialogs\overwrite.cpp" />
+    <ClCompile Include="..\..\src\dialogs\splitter.cpp" />
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
     <ClCompile Include="..\..\src\engine\component.cpp" />
     <ClCompile Include="..\..\src\engine\locking.cpp" />
@@ -355,7 +360,6 @@
     <ClCompile Include="..\..\src\dialogs\config\config_interface.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_language.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\config_playlists.cpp" />
-    <ClCompile Include="..\..\src\dialogs\config\config_tags.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\configcomponent.cpp" />
     <ClCompile Include="..\..\src\dialogs\config\configentry.cpp" />
     <ClCompile Include="..\..\src\gui\layer_tooltip.cpp" />
@@ -370,8 +374,12 @@
   <ItemGroup>
     <ClInclude Include="..\..\include\config.h" />
     <ClInclude Include="..\..\include\dialogs\charset.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_coverart.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_cuesheets.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_dsp.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_resources.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_tagfields.h" />
+    <ClInclude Include="..\..\include\dialogs\config\config_tagformats.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_verification.h" />
     <ClInclude Include="..\..\include\dialogs\error.h" />
     <ClInclude Include="..\..\include\dialogs\format.h" />
@@ -417,7 +425,6 @@
     <ClInclude Include="..\..\include\dialogs\config\config_interface.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_language.h" />
     <ClInclude Include="..\..\include\dialogs\config\config_playlists.h" />
-    <ClInclude Include="..\..\include\dialogs\config\config_tags.h" />
     <ClInclude Include="..\..\include\dialogs\config\configcomponent.h" />
     <ClInclude Include="..\..\include\dialogs\config\configentry.h" />
     <ClInclude Include="..\..\include\cddb\cddb.h" />

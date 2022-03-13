@@ -400,7 +400,6 @@
       <entry id="5003" string="Language">Idioma</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Interface</entry>
-      <entry id="5006" string="Tags">Etiquetas</entry>
       <entry id="5007" string="Components">Componentes</entry>
       <entry id="5008" string="Decoders">Decodificadores</entry>
       <entry id="5009" string="Output">Saída</entry>
@@ -450,7 +449,6 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Crie listas de reprodução</entry>
-	<entry id="5201" string="Create cue sheets">Crie cue sheets</entry>
 	<entry id="5202" string="Output folder">Diretório de destino para os arquivos que forem convertidos</entry>
 	<entry id="5203" string="Select">Selecione</entry>
 	<entry id="5204" string="Use encoder output folder">Utilize o diretório de destino do codificador</entry>
@@ -459,6 +457,13 @@
 	<entry id="5207" string="Output filenames">Nomes dos arquivos gerados</entry>
 	<entry id="5208" string="Configure plugin">Configuração do plugin</entry>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Crie apenas uma única lista de reprodução ou arquivo cue sheet para cada conversão</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets">Folhas de instruções</entry>
+	<entry id="5251" string="Create cue sheets">Crie cue sheets</entry>
+	<entry id="5253" string="Read cue sheets embedded in metadata">Leia os cue sheets que estejam embutidos nos metadados</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">Priorizar os cue sheets às informações do capítulo</entry>
       </section>
 
       <section name="CDDB">
@@ -508,8 +513,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Etiquetas</entry>
-	<entry id="5501" string="Tag formats">Formatação da etiqueta</entry>
+	<entry id="5500" string="Tag formats">Formatação da etiqueta</entry>
 	<entry id="5502" string="Default comment string">Cadeia de comentário padrão</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Substituir comentários existentes por comentário padrão</entry>
 	<entry id="5504" string="Filename pattern">Modelo de nome de arquivo</entry>
@@ -530,9 +534,6 @@
 	<entry id="5519" string="Special fields">Campos especiais</entry>
 	<entry id="5520" string="Write CD table of contents">Escreva um índice do conteúdo do CD</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Preserve as informações do 'Replay Gain'</entry>
-	<entry id="5522" string="Cue sheets">Folhas de instruções</entry>
-	<entry id="5523" string="Read cue sheets embedded in metadata">Leia os cue sheets que estejam embutidos nos metadados</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">Priorizar os cue sheets às informações do capítulo</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Acrescentar zero à esquerda às faixas com numeração inferior à 10</entry>
 	<entry id="5526" string="File size limit">Limite do tamanho do arquivo</entry>
 	<entry id="5527" string="unlimited">ilimitado</entry>

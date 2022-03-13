@@ -328,7 +328,6 @@
       <entry id="5002" string="Playlists">قائمة الأغاني</entry>
       <entry id="5003" string="Language">اللغة</entry>
       <entry id="5004" string="CDDB">كدب</entry>
-      <entry id="5006" string="Tags">معلومات بطاقة</entry>
       <entry id="5020" string="Ripper">الممزق</entry>
 
       <section name="Encoders">
@@ -352,12 +351,15 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">إنشاء قائمة الأغاني</entry>
-	<entry id="5201" string="Create cue sheets">إنشاء بطاقات متلاصقة</entry>
 	<entry id="5202" string="Output folder">مجلد الناتج</entry>
 	<entry id="5203" string="Select">تصفح</entry>
 	<entry id="5204" string="Use encoder output folder">يستخدم التشفير مجلد الناتج</entry>
 	<entry id="5205" string="Filename pattern">نمط اسم ملف</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">حدد المجلد الذي ستضع فيه قائمة الأغاني</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5251" string="Create cue sheets">إنشاء بطاقات متلاصقة</entry>
       </section>
 
       <section name="CDDB">
@@ -406,8 +408,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">معلومات بطاقة</entry>
-	<entry id="5501" string="Tag formats">ترميز البطاقات</entry>
+	<entry id="5500" string="Tag formats">ترميز البطاقات</entry>
 	<entry id="5502" string="Default comment string">اصطفاف تعليق افتراضي</entry>
 	<entry id="5503" string="Replace existing comments with default comment">تعويض التعليقات الموجودة بالتعليق الإفتراضي</entry>
 	<entry id="5504" string="Filename pattern">نمط اسم ملف</entry>

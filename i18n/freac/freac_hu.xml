@@ -277,7 +277,6 @@
       <entry id="5001" string="Encoders">Tömörítök</entry>
       <entry id="5002" string="Playlists">Lejátszási lista</entry>
       <entry id="5003" string="Language">Nyelv</entry>
-      <entry id="5006" string="Tags">Info Tag-ek</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Tömörítö beállítása</entry>
@@ -300,12 +299,15 @@
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Lejátszási lista készítés</entry>
-	<entry id="5201" string="Create cue sheets">Vágólap készítés</entry>
 	<entry id="5202" string="Output folder">Célkönyvtár</entry>
 	<entry id="5203" string="Select">Keresés</entry>
 	<entry id="5204" string="Use encoder output folder">A tömörítő kimeneti könyvtárának használata</entry>
 	<entry id="5205" string="Filename pattern">Fájlnév minta</entry>
 	<entry id="5206" string="Select the folder in which the playlist files will be placed">Válassz könyvtárat a lejátszási listák elhelyezésére</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5251" string="Create cue sheets">Vágólap készítés</entry>
       </section>
 
       <section name="CDDB">
@@ -354,8 +356,7 @@
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Info Tag-ek</entry>
-	<entry id="5501" string="Tag formats">Megjegyzés kódolása</entry>
+	<entry id="5500" string="Tag formats">Megjegyzés kódolása</entry>
 	<entry id="5502" string="Default comment string">Alap megjegyzés</entry>
 	<entry id="5503" string="Replace existing comments with default comment">A létező megjegyzések cseréje az alap megjegyzésre</entry>
 	<entry id="5504" string="Filename pattern">Fájlnév minta</entry>
