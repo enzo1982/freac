@@ -99,8 +99,8 @@ parts:
       - usr/lib/libFLAC.so*
 
   libmac:
-    source: https://freac.org/patches/MAC_SDK_725e.zip
-    source-checksum: sha256/5de68b52892dfed8a84f01fa3b0781a00b84e3d9a57bcbda5cd8e50f384d2a60
+    source: https://freac.org/patches/MAC_SDK_750.zip
+    source-checksum: sha256/1d2b171e712869a682e765d4c507c945077a05c2be9fce3b1aeef390c00a63e2
     source-subdir: .
     plugin: make
     make-parameters: [ -f, Source/Projects/NonWindows/Makefile, prefix=/usr ]
