@@ -1,0 +1,12 @@
+diff -Naur mp4v2-2.1.0/src/atom_free.cpp mp4v2-2.1.0-patched/src/atom_free.cpp
+--- mp4v2-2.1.0/src/atom_free.cpp	2022-03-20 20:06:06.000000000 +0100
++++ mp4v2-2.1.0-patched/src/atom_free.cpp	2022-03-20 22:02:53.401559500 +0100
+@@ -43,7 +43,7 @@
+ 
+     static uint8_t freebuf[1024];
+     for (uint64_t ix = 0; ix < GetSize(); ix += sizeof(freebuf)) {
+-        m_File.WriteBytes(freebuf, min(GetSize() - ix, sizeof(freebuf)));
++        m_File.WriteBytes(freebuf, min(GetSize() - ix, (uint64_t) sizeof(freebuf)));
+     }
+ 
+     FinishWrite(use64);

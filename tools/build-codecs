@@ -82,7 +82,7 @@ fi
 
 # Set compiler and tools
 export CC=gcc
-export CXX=gcc
+export CXX=g++
 export MAKE=make
 export SUDO=sudo
 export DL="wget -O"
@@ -90,20 +90,20 @@ export PATCH="patch --binary"
 
 if [[ $uname == *MINGW* ]] && [[ $arm64 == true ]]; then
   export CC=aarch64-w64-mingw32-clang
-  export CXX=aarch64-w64-mingw32-clang
+  export CXX=aarch64-w64-mingw32-clang++
 fi
 
 if [[ $uname == Darwin ]]; then
   MACOSX_MINOR_VERSION=${MACOSX_TARGET#*.}
   if [[ ${MACOSX_TARGET%%.*} -ge 11 ]] || [[ ${MACOSX_MINOR_VERSION%%.*} -ge 7 ]]; then
     export CC=clang
-    export CXX=clang
+    export CXX=clang++
   fi
 fi
 
 if [[ $uname == *FreeBSD* ]]; then
   export CC=clang
-  export CXX=clang
+  export CXX=clang++
   export MAKE=gmake
   export PATCH=patch
 fi
@@ -150,7 +150,7 @@ libogg_version=1.3.5
 libsamplerate_version=0.2.2
 libsndfile_version=1.0.31
 mac_version=7.50
-mp4v2_version=2.0.0
+mp4v2_version=2.1.0
 mpg123_version=1.29.3
 musepack_version=4.75
 opus_version=1.3.1
@@ -175,7 +175,7 @@ libogg_location=https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-$libogg_vers
 libsamplerate_location=https://github.com/libsndfile/libsamplerate/releases/download/$libsamplerate_version/libsamplerate-$libsamplerate_version.tar.xz
 libsndfile_location=https://github.com/libsndfile/libsndfile/releases/download/$libsndfile_version/libsndfile-$libsndfile_version.tar.bz2
 mac_location=https://freac.org/patches/MAC_SDK_${mac_version%.*}${mac_version#*.}.zip
-mp4v2_location=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mp4v2/mp4v2-$mp4v2_version.tar.bz2
+mp4v2_location=https://github.com/enzo1982/mp4v2/releases/download/v$mp4v2_version/mp4v2-$mp4v2_version.tar.bz2
 mpg123_location=https://mpg123.org/download/mpg123-$mpg123_version.tar.bz2
 musepack_location=https://files.musepack.net/source/musepack_src_r${musepack_version%.*}${musepack_version#*.}.tar.gz
 opus_location=https://ftp.osuosl.org/pub/xiph/releases/opus/opus-$opus_version.tar.gz
@@ -203,9 +203,6 @@ mac_patch_levels=(1)
 
 mp4v2_patches=(https://freac.org/patches/mp4v2-$mp4v2_version-fixes.patch)
 mp4v2_patch_levels=(1)
-
-mp4v2_patches_win32=(https://freac.org/patches/mp4v2-$mp4v2_version-fixes.patch https://freac.org/patches/mp4v2-$mp4v2_version-win32.patch)
-mp4v2_patch_levels_win32=(1 1)
 
 rubberband_patches=(https://freac.org/patches/rubberband-$rubberband_version-fixed.diff)
 rubberband_patch_levels=(1)
@@ -537,9 +534,7 @@ for package in ${packages[@]}; do
     # Build libsndfile
     export CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=0"
     prepare="sed -i -e \"s/immintrin\.h/emmintrin.h/\" src/common.h"
-    if [[ $uname == Darwin ]]; then
-      configure_exports="CXX=g++"
-    elif [[ $uname == *MINGW* ]] && [[ $x86 == true ]]; then
+    if [[ $uname == *MINGW* ]] && [[ $x86 == true ]]; then
       configure_exports="RC=\"windres -F pe-i386\""
     fi
     configure_flags="--disable-external-libs --disable-alsa"
@@ -560,21 +555,16 @@ for package in ${packages[@]}; do
 
   elif [ $package == mp4v2 ]; then
     # Build mp4v2
-    configure_flags="--disable-gch"
+    configure_flags="--disable-optimize"
     export CXXFLAGS="$cflags -Os"
-    export LDFLAGS="$ldflags -lm -lstdc++"
-    if [[ $uname == *MINGW* ]]; then
-      patches=${mp4v2_patches_win32[@]}
-      patch_levels=(${mp4v2_patch_levels_win32[@]})
-    else
-      patches=${mp4v2_patches[@]}
-      patch_levels=(${mp4v2_patch_levels[@]})
+    if [[ $uname == *MINGW* ]] && [[ $x86 == true ]]; then
+      export LDFLAGS="$ldflags -lstdc++.static"
+    elif [[ $uname == *MINGW* ]] && [[ $arm64 == true ]]; then
+      export LDFLAGS="$ldflags -lclang_rt.builtins-aarch64"
     fi
-    prepare="$DL autoaux/config.guess 'https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.guess'; $DL autoaux/config.sub 'https://raw.githubusercontent.com/gcc-mirror/gcc/17bc331/config.sub'"
-    if [[ $uname == *MINGW* ]] && [[ $arm64 == true ]]; then
-      prepare="$prepare; sed -i -e \"s/#define snprintf.*//\" libplatform/platform_win32.h"
-    fi
-    build $mp4v2_location src/libmp4v2$sharedinfix.$sharedext MP4v2.$sharedext
+    patches=${mp4v2_patches[@]}
+    patch_levels=(${mp4v2_patch_levels[@]})
+    build $mp4v2_location .libs/libmp4v2$sharedinfix.$sharedext MP4v2.$sharedext
 
   elif [ $package == mpg123 ]; then
     # Build mpg123
