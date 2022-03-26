@@ -175,6 +175,7 @@ History
 
 		- Bug fixes
 
+			- fixed crashes when decoding ALAC files (especially with the Windows Store version)
 			- fixed excessive bitrate when encoding Vorbis on non-x86 LP64 systems
 			- fixed long paths being converted to 8.3 format on recent versions of Windows
 			- fixed inability to handle long network paths on some versions of Windows
