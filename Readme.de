@@ -32,7 +32,7 @@ von Audio-CDs sowie das Editieren von Tags und konvertiert folgende Audioformate
 	- Tom's Audiokompressor				(http://www.thbeck.de/)
 
 	- verschiedene weitere Formate
-		- mit der libsndfile Bibliothek		(http://www.mega-nerd.com/)
+		- mit der libsndfile Bibliothek		(http://libsndfile.github.io/libsndfile/)
 		- mit dem FFmpeg Konverter		(http://www.ffmpeg.org/)
 
 Weitere Codecs (z.B. Neros HE-AAC-Kodierer) können als externe Plug-Ins
@@ -184,6 +184,7 @@ Geschichte
 			- Monkey's Audio auf Version 7.50 aktualisiert
 			- FLAC auf Version 1.3.4 aktualisiert
 			- MP4v2 auf Version 2.1.1 aktualisiert
+			- libsndfile auf Version 1.1.0 aktualisiert
 
 		- Neue und aktualisierte Übersetzungen
 
