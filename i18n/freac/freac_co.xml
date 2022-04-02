@@ -1412,6 +1412,10 @@
 	  <entry id="103350" string="Lyrics">Parolle</entry>
 	</section>
 
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Valutazione</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Cumpurtamentu</entry>
 	  <entry id="103401" string="Clear album artist field if it matches track artist">Squassà u campu di l’artista di l’albumu s’ellu currisponde à quellu di a traccia</entry>

@@ -30,7 +30,7 @@
     <entry id="305" string="Comment">Kommentar</entry>
     <entry id="306" string="Year">År</entry>
     <entry id="307" string="Disc">Disk</entry>
-    <entry id="308" string="Rating">bedømmelse</entry>
+    <entry id="308" string="Rating">Bedømmelse</entry>
     <entry id="309" string="File name">Fil navn</entry>
     <entry id="310" string="File type">Fil type</entry>
     <entry id="311" string="Album artist">Album kunstner</entry>
@@ -1346,6 +1346,10 @@
 	  <entry id="103311" string="Audio source webpage">Lyd source hjemmeside</entry>
 	  <entry id="103312" string="Copyright information">Copyright Information</entry>
 	  <entry id="103313" string="Commercial information">Kommerciel information</entry>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Bedømmelse</entry>
 	</section>
 
 	<section name="Errors">

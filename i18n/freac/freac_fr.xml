@@ -1403,6 +1403,10 @@
 	  <entry id="103313" string="Commercial information">Informations commerciales</entry>
 	</section>
 
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Evaluation</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Comportement</entry>
 	  <entry id="103401" string="Clear album artist field if it matches track artist">Effacer le champ d'artiste de l'album quand il correspond à celui de la piste</entry>

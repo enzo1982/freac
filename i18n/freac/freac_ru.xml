@@ -1408,6 +1408,10 @@
 	  <entry id="103350" string="Lyrics">Тексты песен</entry>
 	</section>
 
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Рейтинг</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Поведение</entry>
 	  <entry id="103401" string="Clear album artist field if it matches track artist">Очищать поле исполнитель альбома, если оно совпадает с исполнителем дорожки</entry>

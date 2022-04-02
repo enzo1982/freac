@@ -1412,6 +1412,10 @@
 	  <entry id="103350" string="Lyrics">Текст песме</entry>
 	</section>
 
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Оцена</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Понашање</entry>
 	  <entry id="103401" string="Clear album artist field if it matches track artist">Уклоните податак из поља "Извођач" када се поклопи извођач песме</entry>

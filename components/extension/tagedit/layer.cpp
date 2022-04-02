@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -20,6 +20,7 @@
 #include "editor/editor_details.h"
 #include "editor/editor_lyrics.h"
 #include "editor/editor_publisher.h"
+#include "editor/editor_rating.h"
 
 #include "editor/editor_advanced.h"
 
@@ -57,6 +58,7 @@ BoCA::LayerTags::LayerTags() : Layer("Tags")
 	editors.Add(new LayerTagDetails());
 	editors.Add(new LayerTagPublisher());
 	editors.Add(new LayerTagLyrics());
+	editors.Add(new LayerTagRating());
 
 /* ToDo: Add advanced editor once it's ready.
  */

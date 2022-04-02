@@ -1403,6 +1403,10 @@
 	  <entry id="103313" string="Commercial information">Komercinė informacija</entry>
 	</section>
 
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Įvertis</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Elgsena</entry>
 	  <entry id="103401" string="Clear album artist field if it matches track artist">Valyti albumo atlikėjo laukelį, kai jis sutampa su takelio atlikėju</entry>

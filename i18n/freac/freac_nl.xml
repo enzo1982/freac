@@ -1412,6 +1412,10 @@
 	  <entry id="103350" string="Lyrics">Songteksten</entry>
 	</section>
 
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Waardering</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Gedrag</entry>
 	  <entry id="103401" string="Clear album artist field if it matches track artist">Veld album-artiest wissen wanneer het overeenkomt met de track-artiest</entry>

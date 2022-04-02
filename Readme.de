@@ -160,7 +160,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.7 (März 2022)
+	Version 1.1.7 (April 2022)
 
 		- Neue Funktionen
 
@@ -168,6 +168,8 @@ Geschichte
 
 		- Verbesserungen
 
+			- Unterstützung für Bewertung in Vorbis Comment, APEv2-, MP4- und LIST INFO-Tags hinzugefügt
+			- Feld für Bewertung zum Tag-Editor hinzugefügt
 			- Unterstützung für KDE-Farbschemata (inkl. Dark-Mode) hinzugefügt
 			- Erkennung des HiDPI-Skalierungsfaktors in KDE-Desktopumgebungen verbessert
 			- Berücksichtige Textskalierungsfaktor zusätzlich zur Schriftgröße unter X11-basierten Systemen

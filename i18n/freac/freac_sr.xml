@@ -1412,6 +1412,10 @@
 	  <entry id="103350" string="Lyrics">Tekst pesme</entry>
 	</section>
 
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Ocena</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Ponašanje</entry>
 	  <entry id="103401" string="Clear album artist field if it matches track artist">Očistite polje "Izvođač" albuma kada se poklopi sa izvođačem pesme</entry>

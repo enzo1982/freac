@@ -233,7 +233,7 @@
 
       <section name="Decoder">
 	<entry id="3060" string="Active decoder">当前使用的解码器</entry>
-	<entry id="3061" string="none">未知</entry>
+	<entry id="3061" string="none">无</entry>
       </section>
 
       <section name="Filters">
@@ -1410,6 +1410,11 @@
 
 	<section name="Lyrics">
 	  <entry id="103350" string="Lyrics">歌词</entry>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">码率</entry>
+	  <entry id="103361" string="none">无</entry>
 	</section>
 
 	<section name="Configuration">

@@ -1403,6 +1403,10 @@
 	  <entry id="103313" string="Commercial information">Obchodní informace</entry>
 	</section>
 
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Hodnocení</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Režim (chování)</entry>
 	  <entry id="103401" string="Clear album artist field if it matches track artist">Vymazat pole interpreta alba, pokud se shoduje s interpretem stopy </entry>

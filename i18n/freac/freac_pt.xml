@@ -1412,6 +1412,10 @@
 	  <entry id="103350" string="Lyrics">Letras</entry>
 	</section>
 
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Classificação</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Comportamento</entry>
 	  <entry id="103401" string="Clear album artist field if it matches track artist">Limpar campo de artista do álbum se coincidir com o artista da faixa</entry>

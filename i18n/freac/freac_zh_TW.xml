@@ -1403,6 +1403,11 @@
 	  <entry id="103313" string="Commercial information">商業資訊</entry>
 	</section>
 
+	<section name="Rating">
+	  <entry id="103360" string="Rating">評等</entry>
+	  <entry id="103361" string="none">無</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">行為</entry>
 	  <entry id="103401" string="Clear album artist field if it matches track artist">當專輯與音軌演出者相同時，清除專輯演出者欄位</entry>

@@ -194,7 +194,7 @@
 
       <section name="Decoder">
 	<entry id="3060" string="Active decoder">使用的解碼器</entry>
-	<entry id="3061" string="none">未知</entry>
+	<entry id="3061" string="none">無</entry>
       </section>
 
       <section name="Encoder">
@@ -1029,6 +1029,11 @@
 	  <entry id="103311" string="Audio source webpage">聲音來源網頁</entry>
 	  <entry id="103312" string="Copyright information">版權資訊</entry>
 	  <entry id="103313" string="Commercial information">廣告資訊</entry>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">評分</entry>
+	  <entry id="103361" string="none">無</entry>
 	</section>
 
 	<section name="Errors">

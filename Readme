@@ -161,7 +161,7 @@ Requirements
 History
 -------
 
-	Version 1.1.7 (March 2022)
+	Version 1.1.7 (April 2022)
 
 		- New features
 
@@ -169,6 +169,8 @@ History
 
 		- Improvements
 
+			- added support for rating field in Vorbis Comment, APEv2, MP4 and LIST INFO tags
+			- added rating field to the tag editor
 			- added support for KDE color schemes (including dark mode)
 			- improved HiDPI scale factor detection in KDE desktop environments
 			- respect text scaling factor in addition to font size setting on X11 based systems

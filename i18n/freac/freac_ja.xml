@@ -233,7 +233,7 @@
 
       <section name="Decoder">
 	<entry id="3060" string="Active decoder">処理中のデコーダ</entry>
-	<entry id="3061" string="none">不明</entry>
+	<entry id="3061" string="none">なし</entry>
       </section>
 
       <section name="Filters">
@@ -1410,6 +1410,11 @@
 
 	<section name="Lyrics">
 	  <entry id="103350" string="Lyrics">歌詞</entry>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">評価</entry>
+	  <entry id="103361" string="none">なし</entry>
 	</section>
 
 	<section name="Configuration">

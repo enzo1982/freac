@@ -1334,6 +1334,10 @@
 	  <entry id="103313" string="Commercial information">वाणिज्यिक जानकारी</entry>
 	</section>
 
+	<section name="Rating">
+	  <entry id="103360" string="Rating">दर्ज़ा</entry>
+	</section>
+
 	<section name="Errors">
 	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">फ़ाइल को खोलने में असमर्थ: %1&#10;&#10;त्रुटि: %2</entry>
 	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">टैग अपडेट करने में असमर्थ: %1&#10;&#10;त्रुटि: %2</entry>

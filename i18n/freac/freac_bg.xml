@@ -1408,6 +1408,10 @@
 	  <entry id="103313" string="Commercial information">Търговска информация</entry>
 	</section>
 
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Оценка</entry>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior">Поведение</entry>
 	  <entry id="103401" string="Clear album artist field if it matches track artist">Изчистване полето с изпълнител на албума, ако съответства на изпълнител на песента</entry>
