@@ -59,12 +59,16 @@ freac::ConfigureEncoders::ConfigureEncoders()
 		if (config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) == boca.GetComponentID(i)) combo_encoder->SelectNthEntry(combo_encoder->Length() - 1);
 	}
 
+	combo_encoder->onSelectEntry.Connect(&ConfigureEncoders::SelectEncoder, this);
+
 	button_config	= new Button(i18n->TranslateString("Configure encoder"), Point(412, 11), Size(130, 0));
 	button_config->SetOrientation(OR_UPPERRIGHT);
 	button_config->onAction.Connect(&ConfigureEncoders::ConfigureEncoder, this);
 
 	button_config->SetWidth(Math::Max(80, button_config->GetUnscaledTextWidth() + 14));
 	button_config->SetX(button_config->GetWidth() + 10);
+
+	SelectEncoder();
 
 	group_encoder->Add(combo_encoder);
 	group_encoder->Add(button_config);
@@ -271,28 +275,42 @@ Void freac::ConfigureEncoders::SelectDir()
 	}
 }
 
-Void freac::ConfigureEncoders::ConfigureEncoder()
+String freac::ConfigureEncoders::GetSelectedEncoder() const
 {
 	Registry	&boca = Registry::Get();
-	String		 encoderID;
 
 	for (Int i = 0, n = 0; i < boca.GetNumberOfComponents(); i++)
 	{
 		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_ENCODER) continue;
 
-		if (n++ == combo_encoder->GetSelectedEntryNumber())
-		{
-			encoderID = boca.GetComponentID(i);
-
-			break;
-		}
+		if (n++ == combo_encoder->GetSelectedEntryNumber()) return boca.GetComponentID(i);
 	}
 
-	Component	*component = boca.CreateComponentByID(encoderID);
+	return NIL;
+}
+
+Void freac::ConfigureEncoders::SelectEncoder()
+{
+	Registry	&boca	   = Registry::Get();
+	Component	*component = boca.CreateComponentByID(GetSelectedEncoder());
 
 	if (component != NIL)
 	{
-		if (ConfigComponentDialog(component).ShowDialog() == Error()) BoCA::Utilities::InfoMessage("No configuration dialog available for:\n\n%1", component->GetName());
+		if (component->GetConfigurationLayer() != NIL) button_config->Activate();
+		else					       button_config->Deactivate();
+
+		boca.DeleteComponent(component);
+	}
+}
+
+Void freac::ConfigureEncoders::ConfigureEncoder()
+{
+	Registry	&boca	   = Registry::Get();
+	Component	*component = boca.CreateComponentByID(GetSelectedEncoder());
+
+	if (component != NIL)
+	{
+		ConfigComponentDialog(component).ShowDialog();
 
 		boca.DeleteComponent(component);
 	}
@@ -354,19 +372,7 @@ Int freac::ConfigureEncoders::SaveSettings()
 
 	/* Save selected encoder.
 	 */
-	Registry	&boca = Registry::Get();
-
-	for (Int i = 0, n = 0; i < boca.GetNumberOfComponents(); i++)
-	{
-		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_ENCODER) continue;
-
-		if (n++ == combo_encoder->GetSelectedEntryNumber())
-		{
-			config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, boca.GetComponentID(i));
-
-			break;
-		}
-	}
+	config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, GetSelectedEncoder());
 
 	/* Save output directory and list of last used folders.
 	 */

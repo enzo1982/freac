@@ -70,8 +70,12 @@ freac::ConfigurePlaylists::ConfigurePlaylists()
 		}
 	}
 
+	combo_formats->onSelectEntry.Connect(&ConfigurePlaylists::SelectFormat, this);
+
 	button_config	= new Button(i18n->TranslateString("Configure plugin"), Point(412, 12), Size(130, 0));
 	button_config->onAction.Connect(&ConfigurePlaylists::ConfigureFormat, this);
+
+	SelectFormat();
 
 	group_options->Add(check_createPlaylists);
 	group_options->Add(combo_formats);
@@ -160,10 +164,9 @@ Void freac::ConfigurePlaylists::SelectDir()
 	}
 }
 
-Void freac::ConfigurePlaylists::ConfigureFormat()
+String freac::ConfigurePlaylists::GetSelectedComponent() const
 {
-	Registry	&boca = Registry::Get();
-	String		 componentID;
+	Registry	&boca  = Registry::Get();
 
 	Int		 index = combo_formats->GetSelectedEntryNumber();
 	Int		 count = 0;
@@ -178,19 +181,35 @@ Void freac::ConfigurePlaylists::ConfigureFormat()
 		{
 			if (count++ < index) continue;
 
-			componentID = boca.GetComponentID(i);
-
-			break;
+			return boca.GetComponentID(i);
 		}
-
-		if (count > index) break;
 	}
 
-	Component	*component = boca.CreateComponentByID(componentID);
+	return NIL;
+}
+
+Void freac::ConfigurePlaylists::SelectFormat()
+{
+	Registry	&boca	   = Registry::Get();
+	Component	*component = boca.CreateComponentByID(GetSelectedComponent());
 
 	if (component != NIL)
 	{
-		if (ConfigComponentDialog(component).ShowDialog() == Error()) BoCA::Utilities::InfoMessage("No configuration dialog available for:\n\n%1", component->GetName());
+		if (component->GetConfigurationLayer() != NIL) button_config->Activate();
+		else					       button_config->Deactivate();
+
+		boca.DeleteComponent(component);
+	}
+}
+
+Void freac::ConfigurePlaylists::ConfigureFormat()
+{
+	Registry	&boca	   = Registry::Get();
+	Component	*component = boca.CreateComponentByID(GetSelectedComponent());
+
+	if (component != NIL)
+	{
+		ConfigComponentDialog(component).ShowDialog();
 
 		boca.DeleteComponent(component);
 	}
@@ -212,7 +231,8 @@ Void freac::ConfigurePlaylists::ToggleCreatePlaylists()
 	if (createPlaylists)
 	{
 		combo_formats->Activate();
-		button_config->Activate();
+
+		SelectFormat();
 	}
 	else
 	{

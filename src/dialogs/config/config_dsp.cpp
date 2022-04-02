@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -161,6 +161,20 @@ Void freac::ConfigureDSP::AddComponents()
 	}
 }
 
+String freac::ConfigureDSP::GetSelectedComponent() const
+{
+	Registry	&boca = Registry::Get();
+
+	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
+	{
+		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_DSP) continue;
+
+		if (list_selected->GetSelectedEntry()->GetText() == boca.GetComponentName(i)) return boca.GetComponentID(i);
+	}
+
+	return NIL;
+}
+
 Void freac::ConfigureDSP::OnToggleProcessing()
 {
 	if (enableProcessing)
@@ -187,7 +201,17 @@ Void freac::ConfigureDSP::OnSelectAvailable()
 Void freac::ConfigureDSP::OnSelectComponent()
 {
 	btn_remove->Activate();
-	btn_configure->Activate();
+
+	Registry	&boca	   = Registry::Get();
+	Component	*component = boca.CreateComponentByID(GetSelectedComponent());
+
+	if (component != NIL)
+	{
+		if (component->GetConfigurationLayer() != NIL) btn_configure->Activate();
+		else					       btn_configure->Deactivate();
+
+		boca.DeleteComponent(component);
+	}
 }
 
 Void freac::ConfigureDSP::OnAddComponent()
@@ -238,26 +262,12 @@ Void freac::ConfigureDSP::OnRemoveComponent()
 
 Void freac::ConfigureDSP::OnConfigureComponent()
 {
-	Registry	&boca = Registry::Get();
-	String		 dspID;
-
-	for (Int i = 0; i < boca.GetNumberOfComponents(); i++)
-	{
-		if (boca.GetComponentType(i) != BoCA::COMPONENT_TYPE_DSP) continue;
-
-		if (list_selected->GetSelectedEntry()->GetText() == boca.GetComponentName(i))
-		{
-			dspID = boca.GetComponentID(i);
-
-			break;
-		}
-	}
-
-	Component	*component = boca.CreateComponentByID(dspID);
+	Registry	&boca	   = Registry::Get();
+	Component	*component = boca.CreateComponentByID(GetSelectedComponent());
 
 	if (component != NIL)
 	{
-		if (ConfigComponentDialog(component).ShowDialog() == Error()) BoCA::Utilities::InfoMessage("No configuration dialog available for:\n\n%1", component->GetName());
+		ConfigComponentDialog(component).ShowDialog();
 
 		boca.DeleteComponent(component);
 	}

@@ -43,10 +43,13 @@ namespace freac
 			Bool				 useEncOutdir;
 
 			Bool				 createSingleFile;
+
+			String				 GetSelectedComponent() const;
 		signals:
 			static Signal1<Void, Bool>	 onToggleCreateCueSheets;
 		slots:
 			Void				 SelectDir();
+			Void				 SelectFormat();
 			Void				 ConfigureFormat();
 
 			Void				 ToggleCreatePlaylists();
