@@ -534,7 +534,7 @@ for package in ${packages[@]}; do
     if [[ $uname == *MINGW* ]] && [[ $x86 == true ]]; then
       configure_exports="RC=\"windres -F pe-i386\""
     fi
-    configure_flags="--disable-external-libs --disable-alsa"
+    configure_flags="--disable-external-libs --disable-mpeg --disable-alsa"
     build $libsndfile_location src/.libs/libsndfile$sharedinfix.$sharedext SndFile.$sharedext
 
   elif [ $package == mac ]; then
