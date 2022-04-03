@@ -169,6 +169,7 @@ History
 
 		- Improvements
 
+			- added support for WavPack Hybrid Lossless compression with correction files
 			- added support for rating field in Vorbis Comment, APEv2, MP4 and LIST INFO tags
 			- added rating field to the tag editor
 			- added support for KDE color schemes (including dark mode)

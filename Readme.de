@@ -168,6 +168,7 @@ Geschichte
 
 		- Verbesserungen
 
+			- Unterstützung für WavPack Hybrid Lossless-Komprimierung mit Korrekturdateien hinzugefügt
 			- Unterstützung für Bewertung in Vorbis Comment, APEv2-, MP4- und LIST INFO-Tags hinzugefügt
 			- Feld für Bewertung zum Tag-Editor hinzugefügt
 			- Unterstützung für KDE-Farbschemata (inkl. Dark-Mode) hinzugefügt

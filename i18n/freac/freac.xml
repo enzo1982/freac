@@ -1250,6 +1250,7 @@
 	<entry id="80406" string="faster"/>
 	<entry id="80407" string="better"/>
 	<entry id="80408" string="%1 kbps"/>
+	<entry id="80409" string="Create correction file"/>
       </section>
 
       <section name="Nero AAC Encoder">
