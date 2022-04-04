@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -52,7 +52,8 @@ Bool freac::Decoder::Create(const String &streamURI, const Track &track)
 
 	if (stream->GetLastError() != IO_ERROR_OK)
 	{
-		SetErrorInfo(True, "Unable to access input file: %1\n\nFile: %1\nPath: %2", file.GetFileName(), file.GetFilePath());
+		SetErrorInfo(True, "Unable to access input file: %1\n\nFile: %1\nPath: %2", streamURI.Contains("://") ? streamURI : file.GetFileName(),
+											    streamURI.Contains("://") ? streamURI : file.GetFilePath());
 
 		delete stream;
 
@@ -76,7 +77,8 @@ Bool freac::Decoder::Create(const String &streamURI, const Track &track)
 
 	if (decoder == NIL)
 	{
-		SetErrorInfo(True, "Could not create decoder component for input file: %1\n\nFile: %1\nPath: %2", file.GetFileName(), file.GetFilePath());
+		SetErrorInfo(True, "Could not create decoder component for input file: %1\n\nFile: %1\nPath: %2", streamURI.Contains("://") ? streamURI : file.GetFileName(),
+														  streamURI.Contains("://") ? streamURI : file.GetFilePath());
 
 		delete stream;
 
@@ -100,7 +102,8 @@ Bool freac::Decoder::Create(const String &streamURI, const Track &track)
 
 	if (stream->SetFilter(decoder) == False)
 	{
-		SetErrorInfo(True, "Could not set up decoder for input file: %1\n\nFile: %1\nPath: %2\n\nError: %3", file.GetFileName(), file.GetFilePath(), decoder->GetErrorString());
+		SetErrorInfo(True, "Could not set up decoder for input file: %1\n\nFile: %1\nPath: %2\n\nError: %3", streamURI.Contains("://") ? streamURI : file.GetFileName(),
+														     streamURI.Contains("://") ? streamURI : file.GetFilePath(), decoder->GetErrorString());
 
 		UnlockComponent(decoder);
 
