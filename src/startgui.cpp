@@ -1163,7 +1163,9 @@ Void freac::freacGUI::FillMenus()
 	entry = menu_processing->AddEntry(i18n->TranslateString("Enable signal processing"), (Bool *) &config->GetPersistentIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault));
 	entry->onAction.Connect(&freacGUI::ToggleSignalProcessing, this);
 
-	menu_processing->AddEntry(i18n->TranslateString("Enable processing during playback"), (Bool *) &config->GetPersistentIntValue(Config::CategoryProcessingID, Config::ProcessingProcessPlaybackID, Config::ProcessingProcessPlaybackDefault));
+	entry = menu_processing->AddEntry(i18n->TranslateString("Enable processing during playback"), (Bool *) &config->GetPersistentIntValue(Config::CategoryProcessingID, Config::ProcessingProcessPlaybackID, Config::ProcessingProcessPlaybackDefault));
+
+	if (!config->GetIntValue(Config::CategoryProcessingID, Config::ProcessingEnableProcessingID, Config::ProcessingEnableProcessingDefault)) entry->Deactivate();
 
 	const Array<String>	&components = config->GetStringValue(Config::CategoryProcessingID, Config::ProcessingComponentsID, Config::ProcessingComponentsDefault).Explode(",");
 
@@ -1183,8 +1185,6 @@ Void freac::freacGUI::FillMenus()
 		menu_processing->AddEntry();
 		menu_processing->AddEntry(i18n->TranslateString("Selected signal processors"), menu_processors);
 	}
-
-	ToggleSignalProcessing();
 
 	/* Fill conversion menu.
 	 */
