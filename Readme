@@ -185,6 +185,7 @@ History
 
 		- Updated codecs
 
+			- updated FFmpeg to version 5.0.1
 			- updated Monkey's Audio to version 7.50
 			- updated FLAC to version 1.3.4
 			- updated MP4v2 to version 2.1.1
