@@ -17,7 +17,11 @@
     <entry id="102" string="Close">Закрити</entry>
 
     <entry id="200" string="Error">Помилка</entry>
+    <entry id="201" string="Warning">Попередження</entry>
     <entry id="202" string="Info">Інформація</entry>
+
+    <entry id="210" string="Do not display this warning again">Більше не показувати це попередження</entry>
+    <entry id="211" string="Do not display this note again">Більше не показувати це попередження</entry>
 
     <entry id="300" string="Artist">Артист</entry>
     <entry id="301" string="Title">Заголовок</entry>
@@ -26,12 +30,29 @@
     <entry id="304" string="Genre">Жанр</entry>
     <entry id="305" string="Comment">Коментар</entry>
     <entry id="306" string="Year">Рік</entry>
+    <entry id="307" string="Disc">Диск</entry>
+    <entry id="308" string="Rating">Рейтинг</entry>
+    <entry id="309" string="File name">Ім'я файлу</entry>
+    <entry id="310" string="File type">Тип файлу</entry>
+    <entry id="311" string="Album artist">Виконавець альбому</entry>
+    <entry id="312" string="Conductor">Диригент</entry>
+    <entry id="313" string="Composer">Композитор</entry>
+    <entry id="314" string="Tempo">Темп</entry>
+    <entry id="315" string="ISRC">ISRC-код</entry>
+    <entry id="316" string="Musical key">Музичний ключ</entry>
 
-    <entry id="350" string="unknown artist">артист невідомий</entry>
+    <entry id="350" string="unknown artist">виконавець невідомий</entry>
     <entry id="351" string="unknown title">заголовок невідомий</entry>
     <entry id="352" string="unknown album">невідомий альбом</entry>
     <entry id="353" string="unknown genre">невідомий жанр</entry>
     <entry id="354" string="unknown year">рік невідомий</entry>
+    <entry id="355" string="unknown conductor">невідомий диригент</entry>
+    <entry id="356" string="unknown composer">невідомий композитор</entry>
+    <entry id="357" string="unknown album artist">виконавець альбому невідомий</entry>
+    <entry id="358" string="unknown tempo">невідомий темп</entry>
+    <entry id="359" string="unknown key">невідомий ключ</entry>
+
+    <entry id="380" string="hidden track">прихована доріжка</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -47,6 +68,7 @@
       <entry id="514" string="%1 min">%1 мін</entry>
       <entry id="515" string="%1 bit">%1 біт</entry>
       <entry id="516" string="%1 bytes">%1 байтів</entry>
+      <entry id="517" string="%1 kB">%1 кБ</entry>
       <entry id="518" string="%1%">%1%</entry>
     </section>
 
@@ -54,6 +76,7 @@
       <entry id="1000" string="File">Файл</entry>
       <entry id="1001" string="Options">Налаштування</entry>
       <entry id="1002" string="Database">База даних</entry>
+      <entry id="1003" string="Processing">Обробка</entry>
       <entry id="1004" string="Encode">Кодування</entry>
       <entry id="1005" string="Help">Допомога</entry>
 
@@ -83,12 +106,22 @@
 
       <section name="Options">
 	<entry id="1300" string="General settings">Основні налаштування</entry>
+	<entry id="1301" string="Configure signal processing">Налаштувати обробку сигналу</entry>
 	<entry id="1302" string="Configure selected encoder">Налаштувати вибраний кодек</entry>
 	<entry id="1303" string="Active CD-ROM drive">Активний привід CD-ROM</entry>
+	<entry id="1304" string="Active configuration">Активна конфігурація</entry>
+	<entry id="1305" string="Default configuration">Конфігурація за замовчуванням</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">Розпочати обробку сигналу</entry>
+	<entry id="1401" string="Enable processing during playback">Дозволити обробку під час відтворення</entry>
+	<entry id="1402" string="Selected signal processors">Вибрані обробники сигналів</entry>
       </section>
 
       <section name="Encode">
 	<entry id="1500" string="Start encoding">Розпочати кодування</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">Початкове кодування (видалення оригінальних файлів)</entry>
 	<entry id="1502" string="Start encoding with">Розпочати кодування з</entry>
 	<entry id="1503" string="Pause/resume encoding">Призупинити/продовжити</entry>
 	<entry id="1504" string="Stop encoding">Зупинити кодування</entry>
@@ -107,6 +140,8 @@
 	<entry id="1603" string="Check for updates at startup">Перевіряти оновлення при старті</entry>
 	<entry id="1604" string="About %1">Про %1</entry>
 	<entry id="1605" string="index_en.html">index.html</entry>
+	<entry id="1606" string="Report an issue">Повідомити про проблему</entry>
+	<entry id="1607" string="Suggest a feature">Запропонувати функцію</entry>
       </section>
     </section>
 
@@ -118,8 +153,10 @@
       <entry id="2004" string="Query CDDB database">Запит у базу даних CDDB</entry>
       <entry id="2005" string="Submit CDDB data">Підтвердити CDDB дані</entry>
       <entry id="2006" string="Configure general settings">Конфігурувати основні налаштування</entry>
+      <entry id="2007" string="Configure signal processing">Налаштувати обробку сигналу</entry>
       <entry id="2008" string="Configure the selected audio encoder">Розпочати кодування</entry>
       <entry id="2009" string="Start the encoding process">Розпочати процес кодування</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Запустити процес кодування (видалення оригінальних файлів)</entry>
       <entry id="2011" string="Pause/resume encoding">Призупинити/продовжити</entry>
       <entry id="2012" string="Stop encoding">Зупинити кодування</entry>
     </section>
@@ -166,11 +203,29 @@
       <entry id="3038" string="Audio Files">Аудіо файли</entry>
       <entry id="3039" string="All Files">Всі файли</entry>
       <entry id="3040" string="Playlist Files">Файли плейлистів</entry>
+      <entry id="3041" string="Joblist">Список завдань</entry>
+      <entry id="3042" string="Other">Інше</entry>
+      <entry id="3043" string="Output file name">Ім'я вихідного файлу</entry>
+      <entry id="3044" string="verifying">перевірка</entry>
+      <entry id="3045" string="Open">Відкрити</entry>
+      <entry id="3046" string="CD drive">CD-привід</entry>
 
       <section name="File">
 	<entry id="3050" string="Current file">Файл для кодування</entry>
 	<entry id="3051" string="none">немає</entry>
 	<entry id="3052" string="Skip current file">Пропустити</entry>
+      </section>
+
+      <section name="Decoder">
+	<entry id="3060" string="Active decoder">Активний декодер</entry>
+	<entry id="3061" string="none">немає</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">Вибрані фільтри</entry>
+	<entry id="3071" string="none">немає</entry>
+	<entry id="3072" string="disabled">вимкнено</entry>
+	<entry id="3073" string="Configure signal processing">Налаштувати обробку сигналу</entry>
       </section>
 
       <section name="Encoder">
@@ -190,12 +245,43 @@
 	<entry id="3201" string="Pattern">Зразок</entry>
 	<entry id="3202" string="Start folder">Стартова тека</entry>
 	<entry id="3203" string="Filename pattern">Формування назви файлу</entry>
+	<entry id="3204" string="Search subfolders">Пошук в підтеках</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">Вибрати теку щоб додати її до списку завдань</entry>
+      </section>
+
+      <section name="Character set">
+	<entry id="3300" string="Character set">Набір символів</entry>
+	<entry id="3301" string="Choose character set">Виберіть набір символів</entry>
       </section>
 
       <section name="Errors">
 	<entry id="3400" string="You did not select a track!">Ви не обрали файл!</entry>
 	<entry id="3401" string="No files found matching pattern: %1">Не знайдено файлів, що відповідають зразку: %1</entry>
+      </section>
+    </section>
+
+    <section name="Jobs">
+      <entry id="3502" string="Errors / Warnings">Помилки / Попередження</entry>
+      <entry id="3503" string="Details">Докладно</entry>
+      <entry id="3504" string="Error details">Деталі помилки</entry>
+      <entry id="3505" string="Time left">Залишилось часу</entry>
+      <entry id="3506" string="Waiting for other jobs to finish">Очікування завершення інших операцій</entry>
+
+      <section name="Joblist">
+	<entry id="3600" string="Reading folders">Читання тек</entry>
+	<entry id="3601" string="Filtering duplicates">Фільтрування дублікатів</entry>
+	<entry id="3602" string="Adding files">Додавання файлів</entry>
+	<entry id="3603" string="Adding tracks">Додавання композицій</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">Додано %1 файлів, сталася %2 помилка</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">Додано %1 треків, помилок %2</entry>
+	<entry id="3606" string="Removing all tracks">Видалення всіх доріжок</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">Видалення доріжок з диску в пристрої %1</entry>
+	<entry id="3608" string="Removed all tracks from joblist">Видалити всі треки з плейлиста</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">Видалені доріжки диску в пристрої %1 зі списку завдань</entry>
+      </section>
+
+      <section name="Convert">
+	<entry id="3700" string="Checking sample formats">Перевірка форматів семплів</entry>
       </section>
     </section>
 
@@ -277,6 +363,11 @@
       <entry id="5001" string="Encoders">Кодеки</entry>
       <entry id="5002" string="Playlists">Плейлисти</entry>
       <entry id="5003" string="Language">Мова</entry>
+      <entry id="5006" string="Metadata">Заголовки</entry>
+      <entry id="5012" string="Other">Інше</entry>
+      <entry id="5013" string="Active configuration">Активна конфігурація</entry>
+      <entry id="5018" string="Default configuration">Конфігурація за замовчуванням</entry>
+      <entry id="5025" string="Processing">Обробка</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Налаштувати кодек</entry>
@@ -361,6 +452,27 @@
 	<entry id="5503" string="Replace existing comments with default comment">Замінити існуючі коментарі на коментарі за замовчуванням</entry>
 	<entry id="5504" string="Filename pattern">Формування назви файлу</entry>
 	<entry id="5505" string="Encoding">Кодування</entry>
+	<entry id="5515" string="Other">Інше</entry>
+      </section>
+
+      <section name="Joblist">
+	<entry id="5600" string="Joblist">Список завдань</entry>
+
+	<section name="Columns">
+	  <entry id="5659" string="File name">Ім'я файлу</entry>
+	  <entry id="5660" string="File type">Тип файлу</entry>
+	  <entry id="5661" string="Output file name">Ім'я вихідного файлу</entry>
+	  <entry id="5662" string="Bitrate">Бітрейт</entry>
+	  <entry id="5663" string="Sampling rate">Рівень дискретизації</entry>
+	  <entry id="5664" string="Channels">Канали</entry>
+	  <entry id="5665" string="Sample resolution">Роздільча здатність вибірки</entry>
+	  <entry id="5666" string="CD drive">CD-привід</entry>
+	</section>
+      </section>
+
+      <section name="Processing">
+	<entry id="5901" string="Enable signal processing">Розпочати обробку сигналу</entry>
+	<entry id="5902" string="Enable processing during playback">Дозволити обробку під час відтворення</entry>
       </section>
     </section>
 
@@ -406,6 +518,10 @@
       <section name="Overwrite">
 	<entry id="8006" string="Skip">Пропустити</entry>
       </section>
+
+      <section name="Format">
+	<entry id="8102" string="Select">Відкрити</entry>
+      </section>
     </section>
 
     <section name="Ripper">
@@ -427,6 +543,13 @@
       <entry id="9015" string="Start ripping automatically">Авт. розпочати захоплення</entry>
       <entry id="9016" string="Eject disk after ripping">Витягнути диск після роботи</entry>
       <entry id="9017" string="CD options">CD опції</entry>
+    </section>
+
+    <section name="Decoders">
+
+      <section name="mpg123">
+	<entry id="21001" string="Active decoder">Активний декодер</entry>
+      </section>
     </section>
 
     <section name="Encoders">
@@ -629,11 +752,14 @@
 	<entry id="39010" string="Options">Налаштування</entry>
 	<entry id="39016" string="VBR quality">VBR якість</entry>
 	<entry id="39017" string="ABR target bitrate">ABR(розрахунковий) бітрейт</entry>
+	<entry id="39018" string="Bitrate">Бітрейт</entry>
+	<entry id="39019" string="Quality">Якість</entry>
       </section>
 
       <section name="Opus">
 	<entry id="40002" string="auto">авто</entry>
 	<entry id="40015" string="Quality">Якість</entry>
+	<entry id="40016" string="Bitrate">Бітрейт</entry>
 	<entry id="40020" string="Options">Налаштування</entry>
       </section>
 
@@ -641,6 +767,69 @@
 	<entry id="41001" string="File format">Файловий формат</entry>
 	<entry id="41002" string="Audio format">Аудіо-формат</entry>
 	<entry id="41003" string="mono">моно</entry>
+      </section>
+
+      <section name="meh!">
+	<entry id="42000" string="Encoders">Кодеки</entry>
+	<entry id="42003" string="Configure encoder">Налаштувати кодек</entry>
+	<entry id="42004" string="Options">Налаштування</entry>
+      </section>
+    </section>
+
+    <section name="DSP">
+
+      <section name="Format">
+	<entry id="50002" string="Sample resolution">Роздільча здатність вибірки</entry>
+      </section>
+
+      <section name="Channels">
+	<entry id="50102" string="Mono">Моно</entry>
+	<entry id="50103" string="Stereo">Cтерео</entry>
+	<entry id="50104" string="Switch stereo channels">Поміняти канали місцями</entry>
+      </section>
+
+      <section name="Resample">
+	<entry id="50201" string="Sampling rate">Рівень дискретизації</entry>
+      </section>
+
+      <section name="RubberBand">
+	<entry id="50314" string="Standard">Стандартний</entry>
+      </section>
+    </section>
+
+    <section name="Verifiers">
+
+      <section name="AccurateRip">
+	<entry id="70001" string="General settings">Основні налаштування</entry>
+	<entry id="70025" string="disabled">вимкнено</entry>
+      </section>
+    </section>
+
+    <section name="External">
+      <section name="Musepack Audio Encoder">
+	<entry id="80100" string="Quality">Якість</entry>
+      </section>
+
+      <section name="OptimFROG Lossless Encoder">
+	<entry id="80214" string="disabled">вимкнено</entry>
+      </section>
+
+      <section name="WavPack Audio Encoder">
+	<entry id="80407" string="better">краща</entry>
+	<entry id="80408" string="%1 kbps">%1 кбіт</entry>
+      </section>
+
+      <section name="Nero AAC Encoder">
+	<entry id="80502" string="Quality">Якість</entry>
+	<entry id="80503" string="worse">гірша</entry>
+	<entry id="80504" string="better">краща</entry>
+	<entry id="80505" string="Bitrate">Бітрейт</entry>
+	<entry id="80507" string="%1 kbps">%1 кбіт</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">Бітрейт</entry>
+	<entry id="80601" string="%1 kbps">%1 кбіт</entry>
       </section>
     </section>
 
@@ -677,6 +866,7 @@
 	<entry id="102000" string="Video">Відео</entry>
 	<entry id="102014" string="Length">Довжина</entry>
 	<entry id="102015" string="Size">Розмір</entry>
+	<entry id="102018" string="Note">Примітка</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Автоматизація</entry>
@@ -692,12 +882,30 @@
 
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Основне</entry>
+	  <entry id="103102" string="Disc">Диск</entry>
 	  <entry id="103107" string="Add">Додати</entry>
 	  <entry id="103108" string="Remove">Видалити</entry>
 	</section>
 
+	<section name="Details">
+	  <entry id="103200" string="Details">Докладно</entry>
+	</section>
+
 	<section name="Errors">
 	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Не можу відкрити файл %1&#10;&#10;%2</entry>
+	</section>
+      </section>
+
+      <section name="Logging">
+	<section name="Configuration">
+	  <entry id="104105" string="Select">Відкрити</entry>
+	  <entry id="104112" string="Filename pattern">Формування назви файлу</entry>
+	</section>
+      </section>
+
+      <section name="Notifier">
+	<section name="Configuration">
+	  <entry id="105104" string="Select">Відкрити</entry>
 	</section>
       </section>
     </section>
