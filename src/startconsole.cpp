@@ -193,6 +193,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 
 	ScanForProgramOption("--threads=%VALUE", &numberOfThreads);
 
+	if (numberOfThreads != NIL) numberOfThreads = String::FromInt(numberOfThreads.ToInt());
+
 	ScanForProgramOption("--cuesheet=%VALUE", &cueSheetFile);
 	ScanForProgramOption("--playlist=%VALUE", &playlistFile);
 
@@ -355,8 +357,9 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	if (pattern	    != NIL) config->SetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, pattern);
 
 	if (enableSuperFast	  ) config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableSuperFastModeID, True);
+	if (numberOfThreads == "1") config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesEnableParallelConversionsID, False);
 	if (numberOfThreads != NIL) config->SetIntValue(Config::CategoryResourcesID, Config::ResourcesNumberOfConversionThreadsID, numberOfThreads.ToInt());
-
+	
 	if (enableCDDB		  ) config->SetIntValue(Config::CategoryFreedbID, Config::FreedbAutoQueryID, True);
 
 	if (ripperTimeout   != NIL) config->SetIntValue(Config::CategoryRipperID, Config::RipperTimeoutID, ripperTimeout.ToInt ());
