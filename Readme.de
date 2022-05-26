@@ -179,12 +179,14 @@ Geschichte
 		- Behobene Fehler
 
 			- Abstürze beim Dekodieren von ALAC-Dateien behoben (besonders mit der Windows Store-Version)
+			- Fehler (Einfrieren und Abbruch nach einigen Sekunden) beim Dekodieren von Kapiteln aus ALAC-Dateien behoben
 			- Problem mit übermäßig hohen Bitraten bei der Kodierung von Vorbis auf nicht-x86 LP64-Systemen behoben
 			- Umwandlung von langen Pfaden ins 8.3-Format unter neueren Windows-Versionen behoben
 			- Probleme beim Umgang mit langen Netzwerkpfaden unter manchen Windows-Versionen behoben
 
 		- Aktualisierte Codecs
 
+			- ALAC-Dekoder für Sicherheitskorrekturen und Geschwindigkeitsverbesserungen aktualisiert
 			- FFmpeg auf Version 5.0.1 aktualisiert
 			- Monkey's Audio auf Version 7.75 aktualisiert
 			- Tom's Audiokompressor auf Version 2.3.2 aktualisiert
