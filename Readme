@@ -161,7 +161,7 @@ Requirements
 History
 -------
 
-	Version 1.1.7 (May 2022)
+	Version 1.1.7 (July 2022)
 
 		- New features
 
@@ -193,6 +193,7 @@ History
 			- updated Tom's Audiokompressor to version 2.3.2
 			- updated FLAC to version 1.3.4
 			- updated MP4v2 to version 2.1.1
+			- updated mpg123 to version 1.30.0
 			- updated libsndfile to version 1.1.0
 
 		- New and updated translations
