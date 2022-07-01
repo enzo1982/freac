@@ -400,6 +400,7 @@
       <entry id="5003" string="Language">Język</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Interfejs</entry>
+      <entry id="5006" string="Metadata">Metadane</entry>
       <entry id="5007" string="Components">Komponenty</entry>
       <entry id="5008" string="Decoders">Dekodery</entry>
       <entry id="5009" string="Output">Wyjście</entry>
@@ -462,8 +463,12 @@
       <section name="Cue Sheets">
 	<entry id="5250" string="Cue sheets">Arkusze cue</entry>
 	<entry id="5251" string="Create cue sheets">Utwórz pliki cue</entry>
+	<entry id="5252" string="Embedded cue sheets">Osadzone arkusze cue</entry>
 	<entry id="5253" string="Read cue sheets embedded in metadata">Czytaj arkusze cue osadzone w metadanych</entry>
 	<entry id="5254" string="Prefer cue sheets over chapter information">Priorytet arkuszy cue nad informacjami o rozdziałach</entry>
+	<entry id="5255" string="Output folder and filenames">Folder wyjściowy i nazwy plików</entry>
+	<entry id="5256" string="Note">Informacja</entry>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section.">Ustawienia folderu wyjściowego i nazw plików cue są dostępne w sekcji List odtwarzania.</entry>
       </section>
 
       <section name="CDDB">
@@ -514,6 +519,7 @@
 
       <section name="Tags">
 	<entry id="5500" string="Tag formats">Formaty znaczników</entry>
+	<entry id="5501" string="Tag fields">Pola znaczników</entry>
 	<entry id="5502" string="Default comment string">Domyślny komentarz</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Zastąp istniejące komentarze domyślnym</entry>
 	<entry id="5504" string="Filename pattern">Wzór nazw plików</entry>
@@ -728,7 +734,8 @@
 	<entry id="12002" string="Sample Rate Converter">Konwerter częstotliwości próbkowania</entry>
 	<entry id="12003" string="RNNoise Noise Reduction">Redukcja szumów RNNoise</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band - zmiana tempa/tonacji</entry>
-	<entry id="12005" string="HDCD Decoder">Dekoder HDCD"</entry>
+	<entry id="12005" string="HDCD Decoder">Dekoder HDCD</entry>
+	<entry id="12006" string="Matrix Surround Decoder">Dekoder macierzowego dźwięku przestrzennego</entry>
       </section>
 
       <section name="Verifiers">
@@ -1128,6 +1135,7 @@
       <section name="Surround">
 	<entry id="50500" string="Output channels">Kanały wyjściowe</entry>
 	<entry id="50501" string="Channel configuration">Konfiguracja kanałów</entry>
+	<entry id="50502" string="Redirect bass content to LFE channel">Przekieruj basy do kanału LFE</entry>
       </section>
     </section>
 
@@ -1242,6 +1250,7 @@
 	<entry id="80406" string="faster">szybciej</entry>
 	<entry id="80407" string="better">lepiej</entry>
 	<entry id="80408" string="%1 kbps">%1 kb/s</entry>
+	<entry id="80409" string="Create correction file">Utwórz plik korekcji</entry>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1414,6 +1423,7 @@
 
 	<section name="Rating">
 	  <entry id="103360" string="Rating">Ocena</entry>
+	  <entry id="103361" string="none">brak</entry>
 	</section>
 
 	<section name="Configuration">
