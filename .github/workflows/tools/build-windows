@@ -79,6 +79,8 @@ make config=$CONFIG -j$jobs
 
 # Build codecs and DSP libraries
 cd tools
+PREVIOUS_PATH=$PATH
+export PATH=/usr/bin
 
 ./build-codecs faad2 fdk-aac mp4v2
 ./build-codecs lame mpg123
@@ -88,6 +90,7 @@ cd tools
 ./build-codecs libsamplerate rnnoise rubberband
 ./build-codecs libcdrip
 
+export PATH=$PREVIOUS_PATH
 cd ..
 
 # Get closed source codecs
