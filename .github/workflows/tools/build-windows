@@ -93,9 +93,9 @@ cd ..
 # Get closed source codecs
 cd tools
 
-wget https://freac.org/patches/TAK_2.3.2.zip
-unzip TAK_2.3.2.zip -d TAK-2.3.2
-cp TAK-2.3.2/Applications/takc.exe .
+wget https://freac.org/patches/TAK_2.3.3.zip
+unzip TAK_2.3.3.zip -d TAK-2.3.3
+cp TAK-2.3.3/Applications/takc.exe .
 
 if [ "$BUILD_X86_64" = True ]; then
   wget https://freac.org/patches/OptimFROG_Win_x64_5100.zip
