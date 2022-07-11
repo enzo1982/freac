@@ -1037,6 +1037,7 @@
 	<entry id="40020" string="Options">Optionen</entry>
 	<entry id="40021" string="Enable discontinous transmission">Discontinous Transmission aktivieren</entry>
 	<entry id="40022" string="Expected packet loss">Erwarteter Paketverlust</entry>
+	<entry id="40023" string="Disable intensity stereo phase inversion">Phasenumkehr bei Intensity Stereo deaktivieren</entry>
       </section>
 
       <section name="SndFile">
