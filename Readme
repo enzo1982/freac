@@ -173,6 +173,7 @@ History
 			- added support for decoding MPEG-4 DASH files
 			- added support for rating field in Vorbis Comment, APEv2, MP4 and LIST INFO tags
 			- added rating field to the tag editor
+			- improved compatibility with applications writing non-compliant LIST INFO tags (e.g. Traktor)
 			- added an option to disable intensity stereo phase inversion to Opus settings
 			- added support for KDE color schemes (including dark mode)
 			- improved HiDPI scale factor detection in KDE desktop environments
