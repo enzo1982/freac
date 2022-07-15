@@ -38,6 +38,7 @@
     <entry id="313" string="Composer">Compozitor</entry>
     <entry id="314" string="Tempo">Timpul</entry>
     <entry id="315" string="ISRC">ISRC</entry>
+    <entry id="316" string="Musical key">Nota muzicala</entry>
 
     <entry id="350" string="unknown artist">artist necunoscut</entry>
     <entry id="351" string="unknown title">titlu necunoscut</entry>
@@ -47,6 +48,8 @@
     <entry id="355" string="unknown conductor">coordonator necunoscut</entry>
     <entry id="356" string="unknown composer">compozitor necunoscut</entry>
     <entry id="357" string="unknown album artist">albumul artistului necunoscut</entry>
+    <entry id="358" string="unknown tempo">tempo necunoscut</entry>
+    <entry id="359" string="unknown key">nota necunoscuta</entry>
 
     <entry id="380" string="hidden track">melodie ascunsa</entry>
 
@@ -88,7 +91,7 @@
       <entry id="1001" string="Options">Optiuni</entry>
       <entry id="1002" string="Database">Baza de Date</entry>
       <entry id="1003" string="Processing">Proceseaza</entry>
-      <entry id="1004" string="Encode">Procesare</entry>
+      <entry id="1004" string="Encode">Codifica</entry>
       <entry id="1005" string="Help">Ajutor</entry>
 
       <section name="File">
@@ -101,7 +104,7 @@
 	<entry id="1106" string="Audio file(s)">Fisier(e) Audio</entry>
 	<entry id="1107" string="Audio CD contents">Continut CD Audio</entry>
 	<entry id="1108" string="By pattern">Dupa model</entry>
-	<entry id="1109" string="From folder">Din folderul</entry>
+	<entry id="1109" string="From folder">Din dosarul</entry>
       </section>
 
       <section name="Database">
@@ -138,7 +141,7 @@
 	<entry id="1504" string="Stop encoding">Stop procesare</entry>
 	<entry id="1505" string="Encoder options">Optiuni codec</entry>
 	<entry id="1506" string="Encode to a single file">Codare intr-un singur fisier</entry>
-	<entry id="1507" string="Encode to input file folder if possible">Codare in folderul de intrare daca e posibil</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Codare in dosarul de intrare daca e posibil</entry>
 	<entry id="1508" string="Allow overwriting input file">Permite suprascriere fisier intrare</entry>
 	<entry id="1509" string="Delete original files after encoding">Stergere fisiere originale dupa procesare</entry>
 	<entry id="1510" string="Shutdown after encoding">Oprire calculator dupa terminarea procesarii</entry>
@@ -175,7 +178,7 @@
     <section name="Joblist">
       <entry id="3000" string="Time left">Timp ramas</entry>
       <entry id="3001" string="File progress">Progres fisier</entry>
-      <entry id="3002" string="Output folder">Folder salvare</entry>
+      <entry id="3002" string="Output folder">Dosar salvare</entry>
       <entry id="3003" string="%1 file(s) in joblist">%1 fisier(e) in lista</entry>
       <entry id="3004" string="Show title info">Afisare titlu</entry>
       <entry id="3005" string="Play">Asculta</entry>
@@ -184,7 +187,7 @@
       <entry id="3008" string="Select none">Selecteaza niciunul</entry>
       <entry id="3009" string="Toggle selection">Inversare selectie</entry>
       <entry id="3010" string="ripping/decoding">extragere/decodare</entry>
-      <entry id="3011" string="encoding">procesare</entry>
+      <entry id="3011" string="encoding">codare</entry>
       <entry id="3012" string="Create playlist">Creeaza lista</entry>
       <entry id="3013" string="Create cue sheet">Creare pagina curata</entry>
       <entry id="3014" string="Select">Selecteaza</entry>
@@ -200,7 +203,7 @@
       <entry id="3024" string="first letter upper case">majuscula doar la prima litera</entry>
       <entry id="3025" string="all lower case">doar minuscule</entry>
       <entry id="3026" string="all upper case">doar majuscule</entry>
-      <entry id="3027" string="Select the folder in which the encoded files will be placed">Selectati folderul in care vor fi salvate fisierele</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Selectati dosarul in care vor fi salvate fisierele</entry>
       <entry id="3028" string="Sampling rate">Rata de esantionare</entry>
       <entry id="3029" string="Sample resolution">Rezolutie esantion</entry>
       <entry id="3030" string="Number of samples">Numarul de esantioane</entry>
@@ -246,16 +249,16 @@
       </section>
 
       <section name="Add folder">
-	<entry id="3100" string="Folder">Folder</entry>
-	<entry id="3101" string="Add folder">Adaugare folder</entry>
-	<entry id="3102" string="Choose folder">Selectie folder</entry>
-	<entry id="3103" string="Select the folder to add to the joblist">Selectie folder pentru adaugare la lista</entry>
+	<entry id="3100" string="Folder">Dosar</entry>
+	<entry id="3101" string="Add folder">Adaugare dosar</entry>
+	<entry id="3102" string="Choose folder">Selectie dosar</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Selectie dosar pentru adaugare la lista</entry>
       </section>
 
       <section name="Add by pattern">
 	<entry id="3200" string="Add files by pattern">Adaugare fisiere dupa model</entry>
 	<entry id="3201" string="Pattern">Model</entry>
-	<entry id="3202" string="Start folder">Folder de start</entry>
+	<entry id="3202" string="Start folder">Dosar de start</entry>
 	<entry id="3203" string="Filename pattern">Model nume fisier</entry>
 	<entry id="3204" string="Search subfolders">Cauta in subfoldere</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">Selectie folder pentru adaugare la lista</entry>
@@ -282,7 +285,7 @@
       <entry id="3506" string="Waiting for other jobs to finish">Asteapta sa se termine o activitate</entry>
 
       <section name="Joblist">
-	<entry id="3600" string="Reading folders">Citeste folderele</entry>
+	<entry id="3600" string="Reading folders">Citeste dosarele</entry>
 	<entry id="3601" string="Filtering duplicates">Filtreaza duplicatele</entry>
 	<entry id="3602" string="Adding files">Adauga fisierele</entry>
 	<entry id="3603" string="Adding tracks">Adauga melodiile</entry>
@@ -421,10 +424,10 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurare codec</entry>
 	<entry id="5101" string="Encoder">Codec</entry>
-	<entry id="5102" string="Output folder">Folder salvare</entry>
+	<entry id="5102" string="Output folder">Dosar salvare</entry>
 	<entry id="5103" string="Select">Rasfoire</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Selectati folderul in care vor fi salvate fisierele</entry>
-	<entry id="5105" string="Use input file folder if possible">Utilizare folder de intrare (daca e posibil)</entry>
+	<entry id="5104" string="Select the folder in which the encoded files will be placed">Selectati dosarul in care vor fi salvate fisierele</entry>
+	<entry id="5105" string="Use input file folder if possible">Utilizare dosar de intrare (daca e posibil)</entry>
 	<entry id="5106" string="Allow overwriting input file">Permite suprascriere fisier intrare</entry>
 	<entry id="5107" string="Options">Optiuni</entry>
 	<entry id="5108" string="Filename pattern">Model nume fisier</entry>
@@ -440,17 +443,17 @@
 	<entry id="5118" string="Keep time stamps of source files">Pastreaza timbrul ramas din fisierele sursa</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Folderul de iesire nu exista! Doriti sa fie creat?</entry>
+	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Dosarul de iesire nu exista! Doriti sa fie creat?</entry>
 	</section>
       </section>
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Creare lista</entry>
-	<entry id="5202" string="Output folder">Folder salvare</entry>
+	<entry id="5202" string="Output folder">Dosar salvare</entry>
 	<entry id="5203" string="Select">Rasfoire</entry>
-	<entry id="5204" string="Use encoder output folder">Utilizare folder iesire</entry>
+	<entry id="5204" string="Use encoder output folder">Utilizare dosar iesire</entry>
 	<entry id="5205" string="Filename pattern">Model nume fisier</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed">Selectati folderul in care lista de fisiere va fi salvata</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Selectati dosarul in care lista de fisiere va fi salvata</entry>
 	<entry id="5207" string="Output filenames">Nmele fisierului procesat</entry>
 	<entry id="5208" string="Configure plugin">Configurare plugin</entry>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Creaza doar un playlist si/sau fisier curat per conversie</entry>
@@ -466,9 +469,9 @@
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Activare baza locala CDDB</entry>
 	<entry id="5301" string="Enable remote CDDB database">Activare baza CDDB Internet</entry>
-	<entry id="5302" string="CDDB path">Folder CDDB</entry>
+	<entry id="5302" string="CDDB path">Dosar CDDB</entry>
 	<entry id="5303" string="Select">Rasfoire</entry>
-	<entry id="5304" string="Select the folder of the CDDB database">Selectati folderul bazei CDDB</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Selectati dosarul bazei CDDB</entry>
 	<entry id="5305" string="CDDB access mode">Mod acces CDDB</entry>
 	<entry id="5306" string="CDDB server">Server CDDB</entry>
 	<entry id="5307" string="Port">Port</entry>
@@ -728,10 +731,15 @@
 	<entry id="12005" string="HDCD Decoder">Decodor HDCD</entry>
       </section>
 
+      <section name="Verifiers">
+	<entry id="14000" string="AccurateRip Verifier">Verificator AccurateRip</entry>
+      </section>
+
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Notificari</entry>
 	<entry id="15001" string="Logging">Inregistrare</entry>
 	<entry id="15002" string="Video Downloader">Descarcare Video</entry>
+	<entry id="15003" string="Tag Editor">Editor Eticheta</entry>
       </section>
     </section>
 
@@ -1134,9 +1142,9 @@
     <section name="Verifiers">
 
       <section name="AccurateRip">
-	<entry id="70000" string="Configure AccurateRip">Configureaza Acuratetea Extragerii</entry>
+	<entry id="70000" string="Configure AccurateRip">Configureaza AccurateRip</entry>
 	<entry id="70001" string="General settings">Setari generale</entry>
-	<entry id="70002" string="Enable AccurateRip">Porneste Acuratetea Extragerii</entry>
+	<entry id="70002" string="Enable AccurateRip">Porneste AccurateRip</entry>
 	<entry id="70003" string="Database URL">URL baza de date</entry>
 	<entry id="70004" string="Cache">Memorie</entry>
 	<entry id="70005" string="Enable cache">Porneste memoria</entry>
@@ -1162,12 +1170,12 @@
 	<entry id="70025" string="disabled">inactiv</entry>
 
 	<section name="Messages">
-	  <entry id="70050" string="AccurateRip configuration">Configuratia Extragerii Curate</entry>
-	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">CD drive-ul dvs. nu poate fi gasit in baza de date a Extragerii Curate.&#10;&#10;Nume drive: %1</entry>
+	  <entry id="70050" string="AccurateRip configuration">Configuratia AccurateRip</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">CD drive-ul dvs. nu poate fi gasit in baza de date a AccurateRip.&#10;&#10;Nume drive: %1</entry>
 	  <entry id="70052" string="Do not ask again">Nu intreba din nou</entry>
-	  <entry id="70053" string="AccurateRip offset detection">Detectarea Extragerii Curate inchisa</entry>
-	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Discul introdus nu poate fi gasit in baza de date a Extragerii Curate.</entry>
-	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Va rugam introduceti alt disc in CD drive si apasati OK.&#10;&#10;Discul trebuie sa fie prezent in baza de date a Extragerii Curate. Sansele cresc&#10;ca discul dvs sa fie foarte popular si sa fi fost extras de alti utilizatori inaintea dvs.</entry>
+	  <entry id="70053" string="AccurateRip offset detection">Detectarea AccurateRip inchisa</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Discul introdus nu poate fi gasit in baza de date a AccurateRip.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Va rugam introduceti alt disc in CD drive si apasati OK.&#10;&#10;Discul trebuie sa fie prezent in baza de date a AccurateRip. Sansele cresc&#10;ca discul dvs sa fie foarte popular si sa fi fost extras de alti utilizatori inaintea dvs.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">Detectarea fara setari necesita verificarea unui alt disc.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Drive-ul fara setari a fost detectat cu succes si configurat la %1 prezentare.</entry>
 	</section>
@@ -1379,13 +1387,16 @@
 	  <entry id="103209" string="Original album">Origine album</entry>
 	  <entry id="103210" string="Original lyrics writer">Origine compozitor versuri</entry>
 	  <entry id="103211" string="Original release year">An realizare original</entry>
+	  <entry id="103212" string="Musical key/tempo">Nota muzicala/tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
+	  <entry id="103214" string="Initial key">Nota initiala</entry>
 	</section>
 
 	<section name="Publisher">
 	  <entry id="103300" string="Publisher">Producator</entry>
 	  <entry id="103301" string="Publisher information">Informatii producator</entry>
 	  <entry id="103302" string="Publisher / label">Producator / eticheta</entry>
+	  <entry id="103303" string="Media type">Tip media</entry>
 	  <entry id="103304" string="Catalog number">Numar de catalog</entry>
 	  <entry id="103305" string="Barcode">Cod de bare</entry>
 	  <entry id="103307" string="Webpage URLs">Pagina Web URL</entry>
@@ -1397,8 +1408,17 @@
 	  <entry id="103313" string="Commercial information">Informatii comerciale</entry>
 	</section>
 
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics">Versuri</entry>
+	</section>
+
 	<section name="Rating">
 	  <entry id="103360" string="Rating">Nota</entry>
+	</section>
+
+	<section name="Configuration">
+	  <entry id="103400" string="Behavior">Comportament</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Sterge campul artist din album daca se potriveste cu artistul melodiei</entry>
 	</section>
 
 	<section name="Errors">
@@ -1429,6 +1449,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Salveaza iinregistrarile conversiilor cu fisiere audio</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Inregistreaza doar Audio CD extrase</entry>
 	  <entry id="104112" string="Filename pattern">Model nume fisier</entry>
+	  <entry id="104113" string="Log complete file paths">Inregistrati caile complete ale fisierelor</entry>
 	</section>
       </section>
 

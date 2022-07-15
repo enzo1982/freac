@@ -79,6 +79,8 @@ make config=$CONFIG -j$jobs
 
 # Build codecs and DSP libraries
 cd tools
+PREVIOUS_PATH=$PATH
+export PATH=/usr/bin
 
 ./build-codecs faad2 fdk-aac mp4v2
 ./build-codecs lame mpg123
@@ -88,14 +90,15 @@ cd tools
 ./build-codecs libsamplerate rnnoise rubberband
 ./build-codecs libcdrip
 
+export PATH=$PREVIOUS_PATH
 cd ..
 
 # Get closed source codecs
 cd tools
 
-wget https://freac.org/patches/TAK_2.3.2.zip
-unzip TAK_2.3.2.zip -d TAK-2.3.2
-cp TAK-2.3.2/Applications/takc.exe .
+wget https://freac.org/patches/TAK_2.3.3.zip
+unzip TAK_2.3.3.zip -d TAK-2.3.3
+cp TAK-2.3.3/Applications/takc.exe .
 
 if [ "$BUILD_X86_64" = True ]; then
   wget https://freac.org/patches/OptimFROG_Win_x64_5100.zip

@@ -161,7 +161,7 @@ Requirements
 History
 -------
 
-	Version 1.1.7 (May 2022)
+	Version 1.1.7 (July 2022)
 
 		- New features
 
@@ -173,6 +173,7 @@ History
 			- added support for decoding MPEG-4 DASH files
 			- added support for rating field in Vorbis Comment, APEv2, MP4 and LIST INFO tags
 			- added rating field to the tag editor
+			- added an option to disable intensity stereo phase inversion to Opus settings
 			- added support for KDE color schemes (including dark mode)
 			- improved HiDPI scale factor detection in KDE desktop environments
 			- respect text scaling factor in addition to font size setting on X11 based systems
@@ -180,17 +181,21 @@ History
 		- Bug fixes
 
 			- fixed crashes when decoding ALAC files (especially with the Windows Store version)
+			- fixed failure (hang and abort after several seconds) to decode chapters from ALAC files
 			- fixed excessive bitrate when encoding Vorbis on non-x86 LP64 systems
 			- fixed long paths being converted to 8.3 format on recent versions of Windows
 			- fixed inability to handle long network paths on some versions of Windows
 
 		- Updated codecs
 
+			- updated ALAC decoder for security fixes and improved performance
 			- updated FFmpeg to version 5.0.1
 			- updated Monkey's Audio to version 7.75
-			- updated Tom's Audiokompressor to version 2.3.2
+			- updated Tom's Audiokompressor to version 2.3.3
 			- updated FLAC to version 1.3.4
+			- updated Speex to version 1.2.1
 			- updated MP4v2 to version 2.1.1
+			- updated mpg123 to version 1.30.0
 			- updated libsndfile to version 1.1.0
 
 		- New and updated translations
