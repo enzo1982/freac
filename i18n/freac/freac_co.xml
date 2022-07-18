@@ -191,7 +191,7 @@
       <entry id="3012" string="Create playlist">Creà a lista di lettura</entry>
       <entry id="3013" string="Create cue sheet">Creà u fogliu di mischiera cue</entry>
       <entry id="3014" string="Select">Selezziunà</entry>
-      <entry id="3015" string="Encode to a single file">Cudificà ver di un schedariu unicu</entry>
+      <entry id="3015" string="Encode to a single file">Cudificà in un schedariu unicu</entry>
       <entry id="3016" string="Remove">Caccià</entry>
       <entry id="3017" string="Clear joblist">Viutà a lista di travagliu</entry>
       <entry id="3018" string="Use for all selected tracks">Impiegà per tutte e traccie selezziunate</entry>
@@ -299,7 +299,7 @@
 
       <section name="Convert">
 	<entry id="3700" string="Checking sample formats">Cuntrollu di i furmati di campiunariu</entry>
-	<entry id="3701" string="Checking for lossy to lossless conversion">Cuntrollu di cunversione da un furmatu cù perdita d’infurmazione ver di un furmatu senza perdita</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">Cuntrollu di cunversione da un furmatu cù perdita d’infurmazione versu un furmatu senza perdita</entry>
 	<entry id="3702" string="Checking output file names">Cuntrollu di i nomi di schedarii d’esciuta</entry>
 	<entry id="3703" string="Converting %1">Cunversione di %1</entry>
 	<entry id="3704" string="Verifying %1">Verificazione di %1</entry>
@@ -400,6 +400,7 @@
       <entry id="5003" string="Language">Lingua</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Interfaccia</entry>
+      <entry id="5006" string="Metadata">Metadati</entry>
       <entry id="5007" string="Components">Cumpunenti</entry>
       <entry id="5008" string="Decoders">Discudificatori</entry>
       <entry id="5009" string="Output">Destinazione</entry>
@@ -433,7 +434,7 @@
 	<entry id="5108" string="Filename pattern">Mudellu di nome di schedariu</entry>
 	<entry id="5109" string="Encode 'On-The-Fly'">Cudificà da volu</entry>
 	<entry id="5110" string="Keep ripped Wave files">Cunservà i schedarii Wave estratti</entry>
-	<entry id="5111" string="Encode to a single file">Cudificà ver di un schedariu unicu</entry>
+	<entry id="5111" string="Encode to a single file">Cudificà in un schedariu unicu</entry>
 	<entry id="5112" string="Output filenames">Nomi di schedariu d’esciuta</entry>
 	<entry id="5113" string="Allow Unicode characters">Permette i caratteri Unicode</entry>
 	<entry id="5114" string="Replace spaces with underscores">Rimpiazzà i spazii cù lineette basse (spaziu sottulineatu)</entry>
@@ -461,9 +462,13 @@
 
       <section name="Cue Sheets">
 	<entry id="5250" string="Cue sheets">Foglii di mischiera Cue</entry>
-	<entry id="5251" string="Create cue sheets">Creà e foglii di mischiera cue</entry>
+	<entry id="5251" string="Create cue sheets">Creà i foglii di mischiera Cue</entry>
+	<entry id="5252" string="Embedded cue sheets">Foglii di mischiera Cue incurpurati</entry>
 	<entry id="5253" string="Read cue sheets embedded in metadata">Leghje i foglii di mischiera Cue incurpurati à i metadati</entry>
 	<entry id="5254" string="Prefer cue sheets over chapter information">Preferisce i foglii di mischiera Cue à l’infurmazione di capitulu</entry>
+	<entry id="5255" string="Output folder and filenames">Cartulare è schedarii d’esciuta</entry>
+	<entry id="5256" string="Note">Nota</entry>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section.">E preferenze di u cartulare è i schedarii d’esciuta di u fogliu di mischiera Cue sò cunfigurati in a sezzione Lista di lettura</entry>
       </section>
 
       <section name="CDDB">
@@ -514,6 +519,7 @@
 
       <section name="Tags">
 	<entry id="5500" string="Tag formats">Furmati d’etichetta</entry>
+	<entry id="5501" string="Tag fields">Campi d’etichetta</entry>
 	<entry id="5502" string="Default comment string">Cummentu predefinitu</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Rimpiazzà i cummenti chì esistenu da quellu predefinitu</entry>
 	<entry id="5504" string="Filename pattern">Mudellu di nome di schedariu</entry>
@@ -729,6 +735,7 @@
 	<entry id="12003" string="RNNoise Noise Reduction">Riduzzione di trostu RNNoise</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Cambià a tunalità/tempo di Rubber Band</entry>
 	<entry id="12005" string="HDCD Decoder">Discudificatore HDCD</entry>
+	<entry id="12006" string="Matrix Surround Decoder">Discudificatore Surround Matrix</entry>
       </section>
 
       <section name="Verifiers">
@@ -994,7 +1001,7 @@
 	<entry id="39008" string="VBR">VBR</entry>
 	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Ozzioni</entry>
-	<entry id="39011" string="Voice Activity Detection">Abbentata di l’attività vucale</entry>
+	<entry id="39011" string="Voice Activity Detection">Avventata di l’attività vucale</entry>
 	<entry id="39012" string="Discontinuous Transmission">Trasmissione discuntinua</entry>
 	<entry id="39013" string="Algorithm complexity">Cumplessità di cudificazione</entry>
 	<entry id="39014" string="Complexity">Cumplessità</entry>
@@ -1030,6 +1037,7 @@
 	<entry id="40020" string="Options">Ozzioni</entry>
 	<entry id="40021" string="Enable discontinous transmission">Attivà a trasmissione discuntinuu</entry>
 	<entry id="40022" string="Expected packet loss">Perdita aspettata di pacchettu</entry>
+	<entry id="40023" string="Disable intensity stereo phase inversion">Disattivà l’inversione di fasa per l’intensità stereo</entry>
       </section>
 
       <section name="SndFile">
@@ -1087,7 +1095,7 @@
 	<entry id="50302" string="Pitch">Tunalità</entry>
 	<entry id="50303" string="%1 Semitones">%1 semitoni</entry>
 	<entry id="50304" string="Advanced options">Ozzioni esperte</entry>
-	<entry id="50305" string="Transient detection">Abbentata transitoria</entry>
+	<entry id="50305" string="Transient detection">Avventata transitoria</entry>
 	<entry id="50306" string="Compound">Cumpostu</entry>
 	<entry id="50307" string="Percussive">Percutente</entry>
 	<entry id="50308" string="Soft">Dolce</entry>
@@ -1128,6 +1136,7 @@
       <section name="Surround">
 	<entry id="50500" string="Output channels">Canali d’esciuta</entry>
 	<entry id="50501" string="Channel configuration">Cunfigurazione di canale</entry>
+	<entry id="50502" string="Redirect bass content to LFE channel">Addirizzà u cuntenutu di u bassu versu u canale LFE</entry>
       </section>
     </section>
 
@@ -1201,7 +1210,7 @@
 	<entry id="80112" string="enhanced 3/inf dB">aumentatu 3/inf dB</entry>
 	<entry id="80113" string="Adaptive noise shaping order">Ordine di fattura di trostu adattata</entry>
 	<entry id="80114" string="high">altu</entry>
-	<entry id="80115" string="Clear Voice Detection">Abbentata di voce chjara</entry>
+	<entry id="80115" string="Clear Voice Detection">Avventata di voce chjara</entry>
 	<entry id="80116" string="dual">doppiu</entry>
       </section>
 
@@ -1242,6 +1251,7 @@
 	<entry id="80406" string="faster">più rapida</entry>
 	<entry id="80407" string="better">più bona</entry>
 	<entry id="80408" string="%1 kbps">%1 kbps</entry>
+	<entry id="80409" string="Create correction file">Creà un schedariu di currezzione</entry>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1414,6 +1424,7 @@
 
 	<section name="Rating">
 	  <entry id="103360" string="Rating">Valutazione</entry>
+	  <entry id="103361" string="none">nisuna</entry>
 	</section>
 
 	<section name="Configuration">
