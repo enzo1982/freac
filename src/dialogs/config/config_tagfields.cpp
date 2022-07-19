@@ -68,6 +68,10 @@ freac::ConfigureTagFields::ConfigureTagFields()
 
 	/* Adjust element widths.
 	 */
+	Int	 maxTextSize = Math::Max(Math::Max(check_read_chapters->GetUnscaledTextWidth(), check_write_chapters->GetUnscaledTextWidth()), Math::Max(check_mcdi->GetUnscaledTextWidth(), check_replaygain->GetUnscaledTextWidth()));
+
+	group_definfo->SetWidth(Math::Max(552, (maxTextSize + 21 + 20) * 2) + 8);
+
 	edit_defcomment->SetWidth(group_definfo->GetWidth() - edit_defcomment->GetX() - 10);
 	check_replace->SetWidth(group_definfo->GetWidth() - 20);
 

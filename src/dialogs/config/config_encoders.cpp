@@ -75,6 +75,8 @@ freac::ConfigureEncoders::ConfigureEncoders()
 
 	/* Options group.
 	 */
+	i18n->SetContext("Configuration::Encoders");
+
 	group_options		= new GroupBox(i18n->TranslateString("Options"), Point(7, 66), Size(552, 88));
 
 	check_onTheFly		= new CheckBox(i18n->TranslateString("Encode \'On-The-Fly\'"), Point(10, 37), Size(261, 0), &onTheFly);
