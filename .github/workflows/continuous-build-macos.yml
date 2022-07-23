@@ -12,11 +12,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: macos-10.15
-            target: 10.9
-
           - os: macos-11
-            target: 11.0
+            target: 10.9
 
     runs-on: ${{ matrix.os }}
 
