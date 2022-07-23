@@ -207,7 +207,8 @@ freac::JobAddFilesWorker::JobAddFilesWorker(const String &iFileName, Semaphore &
 
 Int freac::JobAddFilesWorker::Run()
 {
-	Registry	&boca = Registry::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
+	Registry	&boca	= Registry::Get();
 
 	/* Check access permission.
 	 */
@@ -266,6 +267,8 @@ Int freac::JobAddFilesWorker::Run()
 
 	/* Process track.
 	 */
+	Bool	 extractFromFileNames = config->GetIntValue(Config::CategoryTagsID, Config::TagsExtractFromFileNamesID, Config::TagsExtractFromFileNamesDefault);
+
 	if (!errorState)
 	{
 		/* Add disc ID to CD tracks.
@@ -276,7 +279,7 @@ Int freac::JobAddFilesWorker::Run()
 		 */
 		Info	 info = track.GetInfo();
 
-		if (!fileName.StartsWith("device://")) ExtractInfoFromPath(fileName, info);
+		if (extractFromFileNames && !fileName.StartsWith("device://")) ExtractInfoFromPath(fileName, info);
 
 		track.SetInfo(info);
 

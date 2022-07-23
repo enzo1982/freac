@@ -173,6 +173,7 @@ Geschichte
 			- Unterstützung für Bewertung in Vorbis Comment, APEv2-, MP4- und LIST INFO-Tags hinzugefügt
 			- Feld für Bewertung zum Tag-Editor hinzugefügt
 			- Kompatibilität mit Anwendungen, die fehlerhafte LIST INFO-Tags schreiben, verbessert (z.B. Traktor)
+			- Option zur Steuerung der Extraktion fehlender Metadaten aus Dateinamen hinzugefügt
 			- Option zum Deaktivieren der Phasenumkehr bei Intensity Stereo zu Opus-Einstellungen hinzugefügt
 			- Unterstützung für KDE-Farbschemata (inkl. Dark-Mode) hinzugefügt
 			- Erkennung des HiDPI-Skalierungsfaktors in KDE-Desktopumgebungen verbessert

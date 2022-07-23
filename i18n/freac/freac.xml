@@ -543,6 +543,8 @@
 	<entry id="5525" string="Prepend zero to track numbers below 10"/>
 	<entry id="5526" string="File size limit"/>
 	<entry id="5527" string="unlimited"/>
+	<entry id="5528" string="Miscellaneous"/>
+	<entry id="5529" string="Fill missing fields with information obtained from file names"/>
       </section>
 
       <section name="Joblist">

@@ -31,6 +31,8 @@ freac::ConfigureTagFields::ConfigureTagFields()
 	writeMCDI		= config->GetIntValue(Config::CategoryTagsID, Config::TagsWriteMCDIID, Config::TagsWriteMCDIDefault);
 	preserveReplayGain	= config->GetIntValue(Config::CategoryTagsID, Config::TagsPreserveReplayGainID, Config::TagsPreserveReplayGainDefault);
 
+	useFileNames		= config->GetIntValue(Config::CategoryTagsID, Config::TagsExtractFromFileNamesID, Config::TagsExtractFromFileNamesDefault);
+
 	replaceComments		= config->GetIntValue(Config::CategoryTagsID, Config::TagsReplaceExistingCommentsID, Config::TagsReplaceExistingCommentsDefault);
 
 	/* Create widgets.
@@ -54,30 +56,38 @@ freac::ConfigureTagFields::ConfigureTagFields()
 	Add(group_chapters);
 	Add(group_special);
 
-	group_definfo		= new GroupBox(i18n->TranslateString("Comments"), Point(7, 87), Size(552, 67));
+	group_misc		= new GroupBox(i18n->TranslateString("Miscellaneous"), Point(7, 87), Size(552, 41));
+
+	check_filenames		= new CheckBox(i18n->TranslateString("Fill missing fields with information obtained from file names"), Point(10, 14), Size(514, 0), &useFileNames);
+
+	group_misc->Add(check_filenames);
+
+	Add(group_misc);
+
+	group_comments		= new GroupBox(i18n->TranslateString("Comments"), Point(7, 140), Size(552, 67));
 
 	text_defcomment		= new Text(i18n->AddColon(i18n->TranslateString("Default comment string")), Point(10, 15));
 	edit_defcomment		= new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, NIL), Point(17 + text_defcomment->GetUnscaledTextWidth(), 12), Size(507 - text_defcomment->GetUnscaledTextWidth(), 0), 0);
 	check_replace		= new CheckBox(i18n->TranslateString("Replace existing comments with default comment"), Point(10, edit_defcomment->GetY() + 28), Size(514, 0), &replaceComments);
 
-	group_definfo->Add(text_defcomment);
-	group_definfo->Add(edit_defcomment);
-	group_definfo->Add(check_replace);
+	group_comments->Add(text_defcomment);
+	group_comments->Add(edit_defcomment);
+	group_comments->Add(check_replace);
 
-	Add(group_definfo);
+	Add(group_comments);
 
 	/* Adjust element widths.
 	 */
 	Int	 maxTextSize = Math::Max(Math::Max(check_read_chapters->GetUnscaledTextWidth(), check_write_chapters->GetUnscaledTextWidth()), Math::Max(check_mcdi->GetUnscaledTextWidth(), check_replaygain->GetUnscaledTextWidth()));
 
-	group_definfo->SetWidth(Math::Max(552, (maxTextSize + 21 + 20) * 2) + 8);
+	group_comments->SetWidth(Math::Max(552, (maxTextSize + 21 + 20) * 2) + 8);
 
-	edit_defcomment->SetWidth(group_definfo->GetWidth() - edit_defcomment->GetX() - 10);
-	check_replace->SetWidth(group_definfo->GetWidth() - 20);
+	edit_defcomment->SetWidth(group_comments->GetWidth() - edit_defcomment->GetX() - 10);
+	check_replace->SetWidth(group_comments->GetWidth() - 20);
 
-	group_chapters->SetWidth((group_definfo->GetWidth() - 8) / 2);
+	group_chapters->SetWidth((group_comments->GetWidth() - 8) / 2);
 	group_special->SetX(group_chapters->GetWidth() + 15);
-	group_special->SetWidth(group_chapters->GetWidth() + group_definfo->GetWidth() % 2);
+	group_special->SetWidth(group_chapters->GetWidth() + group_comments->GetWidth() % 2);
 
 	check_read_chapters->SetWidth(group_chapters->GetWidth() - 20);
 	check_write_chapters->SetWidth(group_chapters->GetWidth() - 20);
@@ -85,9 +95,13 @@ freac::ConfigureTagFields::ConfigureTagFields()
 	check_mcdi->SetWidth(group_special->GetWidth() - 20);
 	check_replaygain->SetWidth(group_special->GetWidth() - 20);
 
+	group_misc->SetWidth(group_comments->GetWidth());
+
+	check_filenames->SetWidth(group_misc->GetWidth() - 20);
+
 	/* Finish initialization.
 	 */
-	SetSize(group_definfo->GetSize() + Size(14, group_chapters->GetHeight() + 30));
+	SetSize(group_comments->GetSize() + Size(14, group_chapters->GetHeight() + group_misc->GetHeight() + 42));
 }
 
 freac::ConfigureTagFields::~ConfigureTagFields()
@@ -100,7 +114,10 @@ freac::ConfigureTagFields::~ConfigureTagFields()
 	DeleteObject(check_mcdi);
 	DeleteObject(check_replaygain);
 
-	DeleteObject(group_definfo);
+	DeleteObject(group_misc);
+	DeleteObject(check_filenames);
+
+	DeleteObject(group_comments);
 	DeleteObject(text_defcomment);
 	DeleteObject(edit_defcomment);
 	DeleteObject(check_replace);
@@ -115,6 +132,8 @@ Int freac::ConfigureTagFields::SaveSettings()
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsWriteMCDIID, writeMCDI);
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsPreserveReplayGainID, preserveReplayGain);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsExtractFromFileNamesID, useFileNames);
 
 	config->SetStringValue(Config::CategoryTagsID, Config::TagsDefaultCommentID, edit_defcomment->GetText());
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsReplaceExistingCommentsID, replaceComments);
