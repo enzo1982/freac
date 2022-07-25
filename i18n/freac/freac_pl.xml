@@ -1037,7 +1037,7 @@
 	<entry id="40020" string="Options">Opcje</entry>
 	<entry id="40021" string="Enable discontinous transmission">Włącz transmisję przerywaną (DTX)</entry>
 	<entry id="40022" string="Expected packet loss">Zakładana utrata pakietów</entry>
-  <entry id="40023" string="Disable intensity stereo phase inversion">Wyłącz odwrócenie fazy dla intensity stereo</entry>
+	<entry id="40023" string="Disable intensity stereo phase inversion">Wyłącz odwrócenie fazy dla intensity stereo</entry>
       </section>
 
       <section name="SndFile">
