@@ -21,11 +21,6 @@ namespace freac
 	class ConfigureTagFields : public BoCA::ConfigLayer
 	{
 		private:
-			GroupBox	*group_definfo;
-			Text		*text_defcomment;
-			EditBox		*edit_defcomment;
-			CheckBox	*check_replace;
-
 			GroupBox	*group_chapters;
 			CheckBox	*check_read_chapters;
 			CheckBox	*check_write_chapters;
@@ -34,11 +29,21 @@ namespace freac
 			CheckBox	*check_mcdi;
 			CheckBox	*check_replaygain;
 
+			GroupBox	*group_misc;
+			CheckBox	*check_filenames;
+
+			GroupBox	*group_comments;
+			Text		*text_defcomment;
+			EditBox		*edit_defcomment;
+			CheckBox	*check_replace;
+
 			Bool		 readChapters;
 			Bool		 writeChapters;
 
 			Bool		 writeMCDI;
 			Bool		 preserveReplayGain;
+
+			Bool		 useFileNames;
 
 			Bool		 replaceComments;
 		public:

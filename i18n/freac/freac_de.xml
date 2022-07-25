@@ -543,6 +543,8 @@
 	<entry id="5525" string="Prepend zero to track numbers below 10">Tracknummern unter 10 eine Null voranstellen</entry>
 	<entry id="5526" string="File size limit">Dateigrößenlimit</entry>
 	<entry id="5527" string="unlimited">unbegrenzt</entry>
+	<entry id="5528" string="Miscellaneous">Verschiedenes</entry>
+	<entry id="5529" string="Fill missing fields with information obtained from file names">Fehlende Felder mit aus Dateinamen extrahierten Informationen füllen</entry>
       </section>
 
       <section name="Joblist">

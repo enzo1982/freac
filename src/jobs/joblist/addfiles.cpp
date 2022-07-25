@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -207,7 +207,8 @@ freac::JobAddFilesWorker::JobAddFilesWorker(const String &iFileName, Semaphore &
 
 Int freac::JobAddFilesWorker::Run()
 {
-	Registry	&boca = Registry::Get();
+	BoCA::Config	*config = BoCA::Config::Get();
+	Registry	&boca	= Registry::Get();
 
 	/* Check access permission.
 	 */
@@ -266,6 +267,8 @@ Int freac::JobAddFilesWorker::Run()
 
 	/* Process track.
 	 */
+	Bool	 extractFromFileNames = config->GetIntValue(Config::CategoryTagsID, Config::TagsExtractFromFileNamesID, Config::TagsExtractFromFileNamesDefault);
+
 	if (!errorState)
 	{
 		/* Add disc ID to CD tracks.
@@ -276,7 +279,7 @@ Int freac::JobAddFilesWorker::Run()
 		 */
 		Info	 info = track.GetInfo();
 
-		if (info.artist == NIL && info.title == NIL && !fileName.StartsWith("device://")) ExtractInfoFromPath(fileName, info);
+		if (extractFromFileNames && !fileName.StartsWith("device://")) ExtractInfoFromPath(fileName, info);
 
 		track.SetInfo(info);
 
@@ -295,15 +298,21 @@ Int freac::JobAddFilesWorker::Run()
 
 Void freac::JobAddFilesWorker::ExtractInfoFromPath(const String &path, Info &info)
 {
+	/* Check if there is any metadata missing.
+	 */
+	if (info.artist != NIL && info.album != NIL && info.disc > 0 && info.track > 0 && info.title != NIL) return;
+
+	/* Get file and folder name and remove extension.
+	 */
 	String	 fileName   = File(path).GetFileName().Replace("_", " ");
 	String	 folderName = Directory(File(path).GetFilePath()).GetDirectoryName();
 
-	/* Remove file extension.
-	 */
 	if (fileName.FindLast(".") >= 0) fileName = fileName.Head(fileName.FindLast("."));
 
 	/* Check if folder might name a disc number.
 	 */
+	Info	 pathInfo;
+
 	if (!folderName.Contains(" - "))
 	{
 		BoCA::I18n	*i18n	 = BoCA::I18n::Get();
@@ -328,8 +337,8 @@ Void freac::JobAddFilesWorker::ExtractInfoFromPath(const String &path, Info &inf
 		 */
 		if (numbers == 1 && (keyword || words <= 2))
 		{
-			folderName = Directory(Directory(File(path).GetFilePath()).GetDirectoryPath()).GetDirectoryName();
-			info.disc  = number;
+			folderName    = Directory(Directory(File(path).GetFilePath()).GetDirectoryPath()).GetDirectoryName();
+			pathInfo.disc = number;
 		}
 	}
 
@@ -340,56 +349,56 @@ Void freac::JobAddFilesWorker::ExtractInfoFromPath(const String &path, Info &inf
 
 	/* Assume folder name contains artist and album name.
 	 */
-	info.artist = folderName;
+	pathInfo.artist = folderName;
 
 	if (folderElements.Length() >= 2)
 	{
-		info.artist = folderElements.GetFirst();
-		info.album  = folderName.Tail(folderName.Length() - info.artist.Length() - 3);
+		pathInfo.artist = folderElements.GetFirst();
+		pathInfo.album  = folderName.Tail(folderName.Length() - pathInfo.artist.Length() - 3);
 	}
 
 	/* Check file name contents.
 	 */
-	info.title = fileName;
+	pathInfo.title = fileName;
 
 	const String &first = fileElements.GetFirst();
 
 	if (first[0] >= '1' && first[0] <= '9' && (first[1] == ' ' || first[1] == '.' || first[1] == '-') && (first[2] < '0' || first[2] > '9'))
 	{
-		info.track = first.ToInt();
+		pathInfo.track = first.ToInt();
 
-		if	(fileElements.Length() == 1)   info.title  = first.Tail(first.Length() - 2).Trim();
-		else if (fileElements.Length() >= 2) { info.artist = first.Tail(first.Length() - 2).Trim(); info.title = fileElements.GetLast(); }
+		if	(fileElements.Length() == 1)   pathInfo.title  = first.Tail(first.Length() - 2).Trim();
+		else if (fileElements.Length() >= 2) { pathInfo.artist = first.Tail(first.Length() - 2).Trim(); pathInfo.title = fileElements.GetLast(); }
 	}
 	else if (first[0] >= '0' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && (first[2] == ' ' || first[2] == '.' || first[2] == '-') && (first[3] < '0' || first[3] > '9'))
 	{
-		info.track = first.ToInt();
+		pathInfo.track = first.ToInt();
 
-		if	(fileElements.Length() == 1)   info.title  = first.Tail(first.Length() - 3).Trim();
-		else if (fileElements.Length() >= 2) { info.artist = first.Tail(first.Length() - 3).Trim(); info.title = fileElements.GetLast(); }
+		if	(fileElements.Length() == 1)   pathInfo.title  = first.Tail(first.Length() - 3).Trim();
+		else if (fileElements.Length() >= 2) { pathInfo.artist = first.Tail(first.Length() - 3).Trim(); pathInfo.title = fileElements.GetLast(); }
 	}
 	else if (first[0] >= '0' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && first.Length() == 2)
 	{
-		info.track = first.ToInt();
+		pathInfo.track = first.ToInt();
 
-		if	(fileElements.Length() == 2)					     info.title = fileElements.GetLast();
-		else if (fileElements.Length() >= 3) { info.artist = fileElements.GetNth(1); info.title = fileElements.GetLast(); }
+		if	(fileElements.Length() == 2)						 pathInfo.title = fileElements.GetLast();
+		else if (fileElements.Length() >= 3) { pathInfo.artist = fileElements.GetNth(1); pathInfo.title = fileElements.GetLast(); }
 	}
 	else if (first[0] >= '1' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && first[2] >= '0' && first[2] <= '9' && (first[3] == ' ' || first[3] == '.' || first[3] == '-') && (first[4] < '0' || first[4] > '9'))
 	{
-		info.disc  = first.ToInt() / 100;
-		info.track = first.ToInt() % 100;
+		pathInfo.disc  = first.ToInt() / 100;
+		pathInfo.track = first.ToInt() % 100;
 
-		if	(fileElements.Length() == 1)   info.title  = first.Tail(first.Length() - 4).Trim();
-		else if (fileElements.Length() >= 2) { info.artist = first.Tail(first.Length() - 4).Trim(); info.title = fileElements.GetLast(); }
+		if	(fileElements.Length() == 1)   pathInfo.title  = first.Tail(first.Length() - 4).Trim();
+		else if (fileElements.Length() >= 2) { pathInfo.artist = first.Tail(first.Length() - 4).Trim(); pathInfo.title = fileElements.GetLast(); }
 	}
 	else if (first[0] >= '1' && first[0] <= '9' && first[1] >= '0' && first[1] <= '9' && first[2] >= '0' && first[2] <= '9' && first.Length() == 3)
 	{
-		info.disc  = first.ToInt() / 100;
-		info.track = first.ToInt() % 100;
+		pathInfo.disc  = first.ToInt() / 100;
+		pathInfo.track = first.ToInt() % 100;
 
-		if	(fileElements.Length() == 2)					     info.title = fileElements.GetLast();
-		else if (fileElements.Length() >= 3) { info.artist = fileElements.GetNth(1); info.title = fileElements.GetLast(); }
+		if	(fileElements.Length() == 2)						 pathInfo.title = fileElements.GetLast();
+		else if (fileElements.Length() >= 3) { pathInfo.artist = fileElements.GetNth(1); pathInfo.title = fileElements.GetLast(); }
 	}
 	else if (fileElements.Length() == 4)
 	{
@@ -398,34 +407,42 @@ Void freac::JobAddFilesWorker::ExtractInfoFromPath(const String &path, Info &inf
 
 		if (second[0] >= '0' && second[0] <= '9' && second[1] >= '0' && second[1] <= '9' && second.Length() == 2)
 		{
-			info.album  = fileElements.GetFirst();
-			info.track  = fileElements.GetNth(1).ToInt();
-			info.artist = fileElements.GetNth(2);
-			info.title  = fileElements.GetLast();
+			pathInfo.album  = fileElements.GetFirst();
+			pathInfo.track  = fileElements.GetNth(1).ToInt();
+			pathInfo.artist = fileElements.GetNth(2);
+			pathInfo.title  = fileElements.GetLast();
 		}
 		else if (third[0] >= '0' && third[0] <= '9' && third[1] >= '0' && third[1] <= '9' && third.Length() == 2)
 		{
-			info.artist = fileElements.GetFirst();
-			info.album  = fileElements.GetNth(1);
-			info.track  = fileElements.GetNth(2).ToInt();
-			info.title  = fileElements.GetLast();
+			pathInfo.artist = fileElements.GetFirst();
+			pathInfo.album  = fileElements.GetNth(1);
+			pathInfo.track  = fileElements.GetNth(2).ToInt();
+			pathInfo.title  = fileElements.GetLast();
 		}
 	}
 	else if (fileElements.Length() >= 2)
 	{
-		info.artist = fileElements.GetFirst();
-		info.title  = fileElements.GetLast();
+		pathInfo.artist = fileElements.GetFirst();
+		pathInfo.title  = fileElements.GetLast();
 
 		foreach (const String &element, fileElements)
 		{
-			if (element[0] >= '0' && element[0] <= '9' && element[1] >= '0' && element[1] <= '9' && element.Length() == 2) info.track = element.ToInt();
+			if (element[0] >= '0' && element[0] <= '9' && element[1] >= '0' && element[1] <= '9' && element.Length() == 2) pathInfo.track = element.ToInt();
 		}
 	}
 
 	/* Clean up title.
 	 */
-	Int	 length = info.title.Length();
+	Int	 length = pathInfo.title.Length();
 
-	if (info.title[length - 4] == '-' && info.title[length - 3] >= 'a' && info.title[length - 3] <= 'z' && info.title[length - 2] >= 'a' && info.title[length - 2] <= 'z' && info.title[length - 1] >= 'a' && info.title[length - 1] <= 'z') info.title = info.title.Head(info.title.Length() - 4);
-	if (info.title.ToLower().StartsWith(info.artist.ToLower().Append("-"))) info.title = info.title.Tail(info.title.Length() - info.artist.Length() - 1);
+	if (pathInfo.title[length - 4] == '-' && pathInfo.title[length - 3] >= 'a' && pathInfo.title[length - 3] <= 'z' && pathInfo.title[length - 2] >= 'a' && pathInfo.title[length - 2] <= 'z' && pathInfo.title[length - 1] >= 'a' && pathInfo.title[length - 1] <= 'z') pathInfo.title = pathInfo.title.Head(pathInfo.title.Length() - 4);
+	if (pathInfo.title.ToLower().StartsWith(pathInfo.artist.ToLower().Append("-"))) pathInfo.title = pathInfo.title.Tail(pathInfo.title.Length() - pathInfo.artist.Length() - 1);
+
+	/* Update file metadata.
+	 */
+	if (info.artist == NIL) info.artist = pathInfo.artist;
+	if (info.album	== NIL) info.album  = pathInfo.album;
+	if (info.disc	<=   0) info.disc   = pathInfo.disc;
+	if (info.track	<=   0) info.track  = pathInfo.track;
+	if (info.title	== NIL) info.title  = pathInfo.title;
 }

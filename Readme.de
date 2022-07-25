@@ -172,6 +172,8 @@ Geschichte
 			- Unterstützung für das Dekodieren von MPEG-4 DASH-Dateien hinzugefügt
 			- Unterstützung für Bewertung in Vorbis Comment, APEv2-, MP4- und LIST INFO-Tags hinzugefügt
 			- Feld für Bewertung zum Tag-Editor hinzugefügt
+			- Kompatibilität mit Anwendungen, die fehlerhafte LIST INFO-Tags schreiben, verbessert (z.B. Traktor)
+			- Option zur Steuerung der Extraktion fehlender Metadaten aus Dateinamen hinzugefügt
 			- Option zum Deaktivieren der Phasenumkehr bei Intensity Stereo zu Opus-Einstellungen hinzugefügt
 			- Unterstützung für KDE-Farbschemata (inkl. Dark-Mode) hinzugefügt
 			- Erkennung des HiDPI-Skalierungsfaktors in KDE-Desktopumgebungen verbessert
@@ -188,13 +190,14 @@ Geschichte
 		- Aktualisierte Codecs
 
 			- ALAC-Dekoder für Sicherheitskorrekturen und Geschwindigkeitsverbesserungen aktualisiert
-			- FFmpeg auf Version 5.0.1 aktualisiert
+			- FFmpeg auf Version 5.1 aktualisiert
 			- Monkey's Audio auf Version 7.75 aktualisiert
+			- WavPack auf Version 5.5.0 aktualisiert
 			- Tom's Audiokompressor auf Version 2.3.3 aktualisiert
 			- FLAC auf Version 1.3.4 aktualisiert
 			- Speex auf Version 1.2.1 aktualisiert
 			- MP4v2 auf Version 2.1.1 aktualisiert
-			- mpg123 auf Version 1.30.0 aktualisiert
+			- mpg123 auf Version 1.30.1 aktualisiert
 			- libsndfile auf Version 1.1.0 aktualisiert
 
 		- Neue und aktualisierte Übersetzungen

@@ -337,6 +337,9 @@ const Bool	 freac::Config::TagsWriteMCDIDefault				= True;
 const String	 freac::Config::TagsPreserveReplayGainID			= "PreserveReplayGain";
 const Bool	 freac::Config::TagsPreserveReplayGainDefault			= True;
 
+const String	 freac::Config::TagsExtractFromFileNamesID			= "ExtractFromFileNames";
+const Bool	 freac::Config::TagsExtractFromFileNamesDefault			= True;
+
 const String	 freac::Config::TagsReplaceExistingCommentsID			= "ReplaceExistingComments";
 const Bool	 freac::Config::TagsReplaceExistingCommentsDefault		= False;
 

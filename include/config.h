@@ -325,6 +325,9 @@ namespace freac
 			static const String	 TagsPreserveReplayGainID;
 			static const Bool	 TagsPreserveReplayGainDefault;
 
+			static const String	 TagsExtractFromFileNamesID;
+			static const Bool	 TagsExtractFromFileNamesDefault;
+
 			static const String	 TagsReplaceExistingCommentsID;
 			static const Bool	 TagsReplaceExistingCommentsDefault;
 
