@@ -59,7 +59,7 @@
 
       <section name="File">
 	<entry id="1100" string="Add">Lisää</entry>
-	<entry id="1101" string="Remove">Posta</entry>
+	<entry id="1101" string="Remove">Poista</entry>
 	<entry id="1102" string="Load joblist">Avaa työlista</entry>
 	<entry id="1103" string="Save joblist">Tallenna työlista</entry>
 	<entry id="1104" string="Clear joblist">Tyhjennä työlista</entry>
@@ -141,7 +141,7 @@
       <entry id="3013" string="Create cue sheet">Luo vihjetaso</entry>
       <entry id="3014" string="Select">Selaa</entry>
       <entry id="3015" string="Encode to a single file">Muunna yksittäinen tiedosto</entry>
-      <entry id="3016" string="Remove">Posta</entry>
+      <entry id="3016" string="Remove">Poista</entry>
       <entry id="3017" string="Clear joblist">Tyhjennä työlista</entry>
       <entry id="3018" string="Use for all selected tracks">Käytä kaikkia valittuja raitoja</entry>
       <entry id="3019" string="Interpret string as">Tulkita merkkijono</entry>
@@ -692,7 +692,7 @@
 	<section name="Basic">
 	  <entry id="103100" string="Basic">Perus</entry>
 	  <entry id="103107" string="Add">Lisää</entry>
-	  <entry id="103108" string="Remove">Posta</entry>
+	  <entry id="103108" string="Remove">Poista</entry>
 	</section>
 
 	<section name="Errors">
