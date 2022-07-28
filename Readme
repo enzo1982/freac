@@ -176,6 +176,7 @@ History
 			- improved compatibility with applications writing non-compliant LIST INFO tags (e.g. Traktor)
 			- added an option to control extraction of missing metadata from file names
 			- added an option to disable intensity stereo phase inversion to Opus settings
+			- added negative exit codes to indicate errors when running freaccmd
 			- added support for KDE color schemes (including dark mode)
 			- improved HiDPI scale factor detection in KDE desktop environments
 			- respect text scaling factor in addition to font size setting on X11 based systems

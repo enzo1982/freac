@@ -64,10 +64,12 @@ Int StartConsole(const Array<String> &args)
 	signal(SIGTERM, &ConsoleSignalHandler);
 #endif
 
-	freac::freacCommandline::Get(args);
+	freac::freacCommandline	*application = freac::freacCommandline::Get(args);
+	Int			 errorCode   = application->GetErrorCode();
+
 	freac::freacCommandline::Free();
 
-	return 0;
+	return errorCode;
 }
 
 freac::freacCommandline *freac::freacCommandline::Get(const Array<String> &args)
@@ -82,7 +84,7 @@ Void freac::freacCommandline::Free()
 	if (instance != NIL) delete (freacCommandline *) instance;
 }
 
-freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args(arguments), firstFile(True), stopped(False)
+freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args(arguments), firstFile(True), stopped(False), errorCode(0)
 {
 	Registry	&boca	= Registry::Get();
 
@@ -135,6 +137,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		if (!foundConfig)
 		{
 			Console::OutputString(String("Error: No such configuration: ").Append(configName).Append("\n"));
+
+			errorCode = -2;
 
 			return;
 		}
@@ -297,12 +301,18 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		{
 			Console::OutputString("Error: Invalid track(s) specified after --track.\n");
 
+			errorCode = -2;
+
 			return;
 		}
 	}
 	else if (tracks != NIL || ScanForProgramOption("--list-drives"))
 	{
 		Console::OutputString("Error: CD ripping disabled!");
+
+		errorCode = -4;
+
+		return;
 	}
 
 	Console::SetTitle(String(freac::appName).Append(" ").Append(freac::version));
@@ -311,12 +321,16 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 	{
 		ShowHelp(helpenc);
 
+		if (helpenc == NIL) errorCode = -2;
+
 		return;
 	}
 
 	if (!boca.ComponentExists(String(encoderID).Append("-enc")))
 	{
 		Console::OutputString(String("Encoder '").Append(encoderID).Append("' is not supported by ").Append(freac::appName).Append("!\n"));
+
+		errorCode = -2;
 
 		return;
 	}
@@ -453,6 +467,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			{
 				Console::OutputString(String("File not found: ").Append(file).Append("\n"));
 
+				errorCode = -3;
+
 				continue;
 			}
 
@@ -472,6 +488,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 		else
 		{
 			Console::OutputString("Could not process input files!\n");
+
+			errorCode = -1;
 		}
 
 		DeleteObject(joblist);
@@ -504,6 +522,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			{
 				Console::OutputString(String("File not found: ").Append(file).Append("\n"));
 
+				errorCode = -3;
+
 				continue;
 			}
 
@@ -528,6 +548,8 @@ freac::freacCommandline::freacCommandline(const Array<String> &arguments) : args
 			if (!AddToJoblist(jobFiles, addCDTrack))
 			{
 				Console::OutputString(String("Could not process file: ").Append(currentFile).Append("\n"));
+
+				errorCode = -1;
 
 				continue;
 			}
@@ -652,6 +674,8 @@ Void freac::freacCommandline::OnFinishEncoding(Bool success)
 		if (success) Console::OutputString("done.\n");
 		else	     Console::OutputString("aborted.\n");
 	}
+
+	if (!success) errorCode = -1;
 }
 
 Bool freac::freacCommandline::ScanForProgramOption(const String &option, String *value)
@@ -901,6 +925,8 @@ Picture freac::freacCommandline::LoadCoverArt(const String &file, Int type)
 	{
 		Console::OutputString(String("Cover art file not found: ").Append(file).Append("\n"));
 
+		errorCode = -3;
+
 		return Picture();
 	}
 
@@ -911,6 +937,8 @@ Picture freac::freacCommandline::LoadCoverArt(const String &file, Int type)
 	if (picture.GetBitmap() == NIL)
 	{
 		Console::OutputString(String("Invalid cover art file format: ").Append(file).Append("\n"));
+
+		errorCode = -1;
 
 		return Picture();
 	}
@@ -1038,6 +1066,8 @@ Bool freac::freacCommandline::SetEncoderDefaults(BoCA::Config *config, Bool user
 	{
 		Console::OutputString(String("Encoder '").Append(encoderID).Append("' could not be initialized!\n"));
 
+		errorCode = -1;
+
 		return False;
 	}
 
@@ -1132,7 +1162,12 @@ Bool freac::freacCommandline::SetEncoderDefaults(BoCA::Config *config, Bool user
 
 	boca.DeleteComponent(component);
 
-	if (broken) Console::OutputString(String("Invalid arguments for encoder '").Append(encoderID).Append("'!\n"));
+	if (broken)
+	{
+		Console::OutputString(String("Invalid arguments for encoder '").Append(encoderID).Append("'!\n"));
+
+		errorCode = -2;
+	}
 
 	return !broken;
 }
@@ -1227,6 +1262,8 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		{
 			Console::OutputString(String("Encoder '").Append(helpenc).Append("' is not supported by ").Append(freac::appName).Append("!\n"));
 
+			errorCode = -2;
+
 			return;
 		}
 
@@ -1235,6 +1272,8 @@ Void freac::freacCommandline::ShowHelp(const String &helpenc)
 		if (component == NIL)
 		{
 			Console::OutputString(String("Encoder '").Append(helpenc).Append("' could not be initialized!\n"));
+
+			errorCode = -1;
 
 			return;
 		}

@@ -49,6 +49,7 @@ namespace freac
 			String			 encoderID;
 			Bool			 firstFile;
 			Bool			 stopped;
+			Int			 errorCode;
 
 			BoCA::Picture		 coverFront;
 			BoCA::Picture		 coverBack;
@@ -69,7 +70,7 @@ namespace freac
 			Bool			 SetConfigDefaults(BoCA::Config *, Bool);
 			Bool			 SetEncoderDefaults(BoCA::Config *, Bool);
 		public:
-			Void			 ShowHelp(const String &);
+			Void			 ShowHelp(const String & = NIL);
 
 			Void			 Stop();
 
@@ -80,6 +81,8 @@ namespace freac
 			/* Destroys an existing instance of freacCommandline
 			 */
 			static Void		 Free();
+		accessors:
+			Int			 GetErrorCode() { return errorCode; }
 		slots:
 			Void			 OnEncodeTrack(const BoCA::Track &, const String &, const String &, ConversionStep);
 			Void			 OnFinishEncoding(Bool);
