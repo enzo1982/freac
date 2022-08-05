@@ -160,7 +160,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.7 (Juli 2022)
+	Version 1.1.7 (August 2022)
 
 		- Neue Funktionen
 
@@ -184,6 +184,9 @@ Geschichte
 
 			- Abstürze beim Dekodieren von ALAC-Dateien behoben (besonders mit der Windows Store-Version)
 			- Fehler (Einfrieren und Abbruch nach einigen Sekunden) beim Dekodieren von Kapiteln aus ALAC-Dateien behoben
+			- Interoperabilitätsprobleme von mit FDK-AAC erzeugten HE- und HEv2-AAC-Dateien mit foobar2000 behoben
+			- Problem mit falschen Gapless-Informationen beim Erzeugen von HE- und HEv2-AAC-Dateien mit FDK-AAC behoben
+			- Problem mit zurückbleibenden Altdaten nach dem Aktualisieren von WMA-Tags behoben
 			- Problem mit übermäßig hohen Bitraten bei der Kodierung von Vorbis auf nicht-x86 LP64-Systemen behoben
 			- Umwandlung von langen Pfaden ins 8.3-Format unter neueren Windows-Versionen behoben
 			- Probleme beim Umgang mit langen Netzwerkpfaden unter manchen Windows-Versionen behoben
