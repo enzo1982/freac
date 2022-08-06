@@ -543,6 +543,8 @@
 	<entry id="5525" string="Prepend zero to track numbers below 10">Principià da un zeru i numeri di traccia sottu 10</entry>
 	<entry id="5526" string="File size limit">Limitu di dimensione di schedariu</entry>
 	<entry id="5527" string="unlimited">senza limitu</entry>
+	<entry id="5528" string="Miscellaneous">Diversi</entry>
+	<entry id="5529" string="Fill missing fields with information obtained from file names">Riempie i campi assente cù l’infurmazione ottinuta da i nomi di schedariu</entry>
       </section>
 
       <section name="Joblist">
