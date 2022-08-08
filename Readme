@@ -171,6 +171,8 @@ History
 
 			- added support for WavPack Hybrid Lossless compression with correction files
 			- added support for decoding MPEG-4 DASH files
+			- added support for MusicBrainz metadata in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags
+			- added support for sort order fields in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags
 			- added support for rating field in Vorbis Comment, APEv2, MP4 and LIST INFO tags
 			- added rating field to the tag editor
 			- improved compatibility with applications writing non-compliant LIST INFO tags (e.g. Traktor)
