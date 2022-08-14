@@ -174,6 +174,7 @@ Geschichte
 			- Unterstützung für Sortierreihenfolgefelder in ID3v2-, MP4-, Vorbis Comment-, APEv2- und WMA-Tags hinzugefügt
 			- Unterstützung für Bewertung in Vorbis Comment, APEv2-, MP4- und LIST INFO-Tags hinzugefügt
 			- Feld für Bewertung zum Tag-Editor hinzugefügt
+			- Optionale Spalte für Veröffentlichungsjahr zur Jobliste hinzugefügt
 			- Kompatibilität mit Anwendungen, die fehlerhafte LIST INFO-Tags schreiben, verbessert (z.B. Traktor)
 			- Option zur Steuerung der Extraktion fehlender Metadaten aus Dateinamen hinzugefügt
 			- Option zum Deaktivieren der Phasenumkehr bei Intensity Stereo zu Opus-Einstellungen hinzugefügt

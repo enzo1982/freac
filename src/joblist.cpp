@@ -822,6 +822,7 @@ Void freac::JobList::OnClickTab(Int n)
 	Bool	 sortByGenre	   = (fields.GetNth(n) == "<genre>");
 	Bool	 sortByComposer	   = (fields.GetNth(n) == "<composer>");
 	Bool	 sortByConductor   = (fields.GetNth(n) == "<conductor>");
+	Bool	 sortByYear	   = (fields.GetNth(n) == "<year>");
 	Bool	 sortByDrive	   = (fields.GetNth(n) == "<drive>");
 	Bool	 sortByDiscID	   = (fields.GetNth(n) == "<discid>");
 	Bool	 sortByISRC	   = (fields.GetNth(n) == "<isrc>");
@@ -938,6 +939,7 @@ Void freac::JobList::OnClickTab(Int n)
 			    (sortByISRC	       &&  SortsAfter(compInfo.isrc, thisInfo.isrc)										) ||
 			    (sortByDrive       &&  compTrack.drive					       >  thisTrack.drive					) ||
 			    (sortByDiscID      &&  compTrack.discid					       >  thisTrack.discid					) ||
+			    (sortByYear	       &&  compInfo.year					       >  thisInfo.year						) ||
 			    (sortByDisc	       &&  compInfo.disc					       >  thisInfo.disc						) ||
 			    (sortByTrack       &&  compInfo.track					       >  thisInfo.track					) ||
 			    (sortByRating      &&  compInfo.rating					       >  thisInfo.rating					) ||
@@ -1101,6 +1103,7 @@ Void freac::JobList::AddHeaderTabs()
 		else if (field == "<genre>")	   { tabName = "Genre";					 tabSize = tabSize <= 0 ? 120 : tabSize; }
 		else if (field == "<composer>")	   { tabName = "Composer";				 tabSize = tabSize <= 0 ? 120 : tabSize; }
 		else if (field == "<conductor>")   { tabName = "Conductor";				 tabSize = tabSize <= 0 ? 120 : tabSize; }
+		else if (field == "<year>")	   { tabName = "Year";		    tabAlign = numAlign; tabSize = tabSize <= 0 ?  50 : tabSize; }
 		else if (field == "<tempo>")	   { tabName = "Tempo";		    tabAlign = numAlign; tabSize = tabSize <= 0 ?  50 : tabSize; }
 		else if (field == "<initialkey>")  { tabName = "Musical key";				 tabSize = tabSize <= 0 ?  50 : tabSize; }
 		else if (field == "<disc>")	   { tabName = "Disc";		    tabAlign = numAlign; tabSize = tabSize <= 0 ?  50 : tabSize; }
@@ -1170,6 +1173,8 @@ String freac::JobList::GetEntryText(const Track &track)
 
 		else if	(field == "<composer>")	   jlEntry.Append(info.GetOtherInfo(INFO_COMPOSER).Length() > 0 ? info.GetOtherInfo(INFO_COMPOSER) : i18n->TranslateString("unknown composer"));
 		else if	(field == "<conductor>")   jlEntry.Append(info.GetOtherInfo(INFO_CONDUCTOR).Length() > 0 ? info.GetOtherInfo(INFO_CONDUCTOR) : i18n->TranslateString("unknown conductor"));
+
+		else if (field == "<year>")	   jlEntry.Append(info.year > 0 ? String::FromInt(info.year) : String());
 
 		else if (field == "<tempo>")	   jlEntry.Append(info.GetOtherInfo(INFO_BPM));
 		else if (field == "<initialkey>")  jlEntry.Append(info.GetOtherInfo(INFO_INITIALKEY));
