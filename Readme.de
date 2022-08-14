@@ -164,6 +164,7 @@ Geschichte
 
 		- Neue Funktionen
 
+			- Unterstützung für Dithering beim Reduzieren der Sampleauflösung hinzugefügt
 			- Matrix-Surround-Dekodierer DSP-Komponente hinzugefügt
 
 		- Verbesserungen

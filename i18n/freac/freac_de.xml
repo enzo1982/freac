@@ -1075,6 +1075,9 @@
 	<entry id="50004" string="unsigned">vorzeichenlos</entry>
 	<entry id="50005" string="Integer">Ganzzahl</entry>
 	<entry id="50006" string="Float">Fließkomma</entry>
+	<entry id="50007" string="Dithering">Dithering</entry>
+	<entry id="50008" string="Apply dither when reducing sample resolution">Beim Reduzieren der Sampleauflösung Dithering anwenden</entry>
+	<entry id="50009" string="Dither type">Dithering-Typ</entry>
       </section>
 
       <section name="Channels">
