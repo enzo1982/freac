@@ -65,6 +65,11 @@ else
   x86=true
 fi
 
+# Include glibc version header on Linux to allow older glibc
+if [[ $uname == Linux ]]; then
+  export cflags="$cflags -include $(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/headers/glibc_version_header.h"
+fi
+
 cflags_unroll="-funroll-loops"
 
 # Set host triple on Linux
