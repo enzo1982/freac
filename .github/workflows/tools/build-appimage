@@ -180,12 +180,12 @@ cp /usr/local/lib/libcdio_cdda.so.2 appdir
 cp /usr/local/lib/libcdio_paranoia.so.2 appdir
 cp /usr/local/lib/libcurl.so.4 appdir
 
-if [ -f /usr/lib/$HOST/libssl.so.1.0* ]; then
-  cp -P /usr/lib/$HOST/libcrypto.so.1.0* appdir
-  cp -P /usr/lib/$HOST/libssl.so.1.0* appdir
+if [ -f /usr/lib/$HOST/libssl.so.1.1* ]; then
+  cp -P /usr/lib/$HOST/libcrypto.so.1.1* appdir
+  cp -P /usr/lib/$HOST/libssl.so.1.1* appdir
 else
-  cp -P /lib/$HOST/libcrypto.so.1.0* appdir
-  cp -P /lib/$HOST/libssl.so.1.0* appdir
+  cp -P /lib/$HOST/libcrypto.so.1.1* appdir
+  cp -P /lib/$HOST/libssl.so.1.1* appdir
 fi
 
 strip --strip-all appdir/lib*.so*

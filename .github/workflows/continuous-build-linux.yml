@@ -12,25 +12,25 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-18.04
+          - os: ubuntu-20.04
             arch: x86_64
             host: x86_64-linux-gnu
             pkgarch: amd64
-            dependencies: g++-multilib nasm wget wine1.6-dev wine64-tools yasm
+            dependencies: g++-multilib nasm wget wine64-tools yasm
 
-          - os: ubuntu-18.04
+          - os: ubuntu-20.04
             arch: i686
             host: i386-linux-gnu
             pkgarch: i386
-            dependencies: g++-multilib nasm wget wine1.6-dev:i386 wine32-tools yasm
+            dependencies: g++-multilib nasm wget wine32-tools yasm
 
-          - os: ubuntu-18.04
+          - os: ubuntu-20.04
             arch: armhf
             host: arm-linux-gnueabihf
             pkgarch: armhf
             dependencies: g++-arm-linux-gnueabihf nasm qemu qemu-user-static wget yasm
 
-          - os: ubuntu-18.04
+          - os: ubuntu-20.04
             arch: aarch64
             host: aarch64-linux-gnu
             pkgarch: arm64
@@ -50,16 +50,17 @@ jobs:
       - name: Prepare sources
         if: ${{ matrix.arch != 'i686' && matrix.arch != 'x86_64' }}
         run: |
-          echo "deb [arch=${{ matrix.pkgarch }}] http://ports.ubuntu.com/ubuntu-ports bionic main restricted" | sudo tee --append /etc/apt/sources.list > /dev/null
-          echo "deb [arch=${{ matrix.pkgarch }}] http://ports.ubuntu.com/ubuntu-ports bionic-updates main restricted" | sudo tee --append /etc/apt/sources.list > /dev/null
-          echo "deb [arch=${{ matrix.pkgarch }}] http://ports.ubuntu.com/ubuntu-ports bionic-security main restricted" | sudo tee --append /etc/apt/sources.list > /dev/null
+          echo "deb [arch=${{ matrix.pkgarch }}] http://ports.ubuntu.com/ubuntu-ports focal main restricted" | sudo tee --append /etc/apt/sources.list > /dev/null
+          echo "deb [arch=${{ matrix.pkgarch }}] http://ports.ubuntu.com/ubuntu-ports focal-updates main restricted" | sudo tee --append /etc/apt/sources.list > /dev/null
+          echo "deb [arch=${{ matrix.pkgarch }}] http://ports.ubuntu.com/ubuntu-ports focal-security main restricted" | sudo tee --append /etc/apt/sources.list > /dev/null
           sudo sed -i 's/deb http/deb \[arch=amd64,i386\] http/g' /etc/apt/sources.list
 
       - name: Install dependencies
         run: |
           sudo apt update
+          sudo apt install -y --allow-downgrades libgd3=2.2.5-5.2ubuntu2.1 libodbc1=2.3.6-0.1build1 libpcre2-8-0=10.34-7 libpcre2-16-0=10.34-7 libpcre2-32-0=10.34-7 libpcre2-dev=10.34-7
           sudo apt install -y ${{ matrix.dependencies }}
-          sudo apt install -y adwaita-icon-theme gnome-icon-theme libasound2-dev:${{ matrix.pkgarch }} libfuse2:${{ matrix.pkgarch }} libgdk-pixbuf2.0-dev:${{ matrix.pkgarch }} libgtk-3-dev:${{ matrix.pkgarch }} libncurses-dev:${{ matrix.pkgarch }} libpulse-dev:${{ matrix.pkgarch }} libssl1.0-dev:${{ matrix.pkgarch }} libudev-dev:${{ matrix.pkgarch }}
+          sudo apt install -y adwaita-icon-theme gnome-icon-theme libasound2-dev:${{ matrix.pkgarch }} libfuse2:${{ matrix.pkgarch }} libgdk-pixbuf2.0-dev:${{ matrix.pkgarch }} libgtk-3-dev:${{ matrix.pkgarch }} libncurses-dev:${{ matrix.pkgarch }} libpulse-dev:${{ matrix.pkgarch }} libssl-dev:${{ matrix.pkgarch }} libudev-dev:${{ matrix.pkgarch }}
 
       - name: Prepare toolchain
         if: ${{ matrix.arch != 'i686' && matrix.arch != 'x86_64' }}
