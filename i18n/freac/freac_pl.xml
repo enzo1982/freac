@@ -1075,6 +1075,9 @@
 	<entry id="50004" string="unsigned">niepodpisana</entry>
 	<entry id="50005" string="Integer">całkowita</entry>
 	<entry id="50006" string="Float">zmiennoprzecinkowa</entry>
+	<entry id="50007" string="Dithering"></entry>
+	<entry id="50008" string="Apply dither when reducing sample resolution">Zastosuj dithering podczas zmniejszania rozdzielczości próbki</entry>
+	<entry id="50009" string="Dither type">Rodzaj ditheringu</entry>
       </section>
 
       <section name="Channels">
