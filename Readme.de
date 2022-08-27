@@ -191,6 +191,7 @@ Geschichte
 			- Interoperabilitätsprobleme von mit FDK-AAC erzeugten HE- und HEv2-AAC-Dateien mit foobar2000 behoben
 			- Problem mit falschen Gapless-Informationen beim Erzeugen von HE- und HEv2-AAC-Dateien mit FDK-AAC behoben
 			- Problem mit zurückbleibenden Altdaten nach dem Aktualisieren von WMA-Tags behoben
+			- Problem mit Zurücksetzen der Formatauswahl beim Öffnen des WMA-Konfigurationsdialogs behoben
 			- Problem mit übermäßig hohen Bitraten bei der Kodierung von Vorbis auf nicht-x86 LP64-Systemen behoben
 			- Umwandlung von langen Pfaden ins 8.3-Format unter neueren Windows-Versionen behoben
 			- Probleme beim Umgang mit langen Netzwerkpfaden unter manchen Windows-Versionen behoben
