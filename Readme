@@ -161,7 +161,7 @@ Requirements
 History
 -------
 
-	Version 1.1.7 (August 2022)
+	Version 1.1.7 (September 2022)
 
 		- New features
 
@@ -201,7 +201,7 @@ History
 
 			- updated ALAC decoder for security fixes and improved performance
 			- updated FFmpeg to version 5.1
-			- updated Monkey's Audio to version 7.75
+			- updated Monkey's Audio to version 8.64
 			- updated WavPack to version 5.5.0
 			- updated Tom's Audiokompressor to version 2.3.3
 			- updated FLAC to version 1.3.4
