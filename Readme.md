@@ -26,6 +26,15 @@ Pre-built packages for Windows, macOS, Linux and FreeBSD are available at [freac
 ### Windows
 fre:ac is distributed in two variants, an .exe file containing a setup wizard or alternatively a .zip archive that contains just the application without an installer. If you downloaded the .exe installer, simply run it and the setup wizard will guide you through the installation process creating start menu icons that will run fre:ac. If you downloaded the .zip package, please extract/move the contents to a location of your choice and run freac.exe to start fre:ac.
 
+Alternatively, users of the package manager [**Scoop**](https://scoop.sh) may install a community-maintained pacakge for fre:ac using the following command:
+
+    scoop install freac
+    
+Users of the package manager [**chocolately**](https://chocolatey.org) may instead install fre:ac as packaged/maintained by @tunisiano187 using either of the following commands:
+
+    choco install freac
+    choco install freac.portable
+    
 ### macOS
 fre:ac is distributed as an Apple Disk Image (.dmg) file. To install it, open the .dmg image and drag the fre:ac application to a location of your choice like the desktop or the Applications folder. Then double click the application to start fre:ac.
 
