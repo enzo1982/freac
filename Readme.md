@@ -26,14 +26,13 @@ Pre-built packages for Windows, macOS, Linux and FreeBSD are available at [freac
 ### Windows
 fre:ac is distributed in two variants, an .exe file containing a setup wizard or alternatively a .zip archive that contains just the application without an installer. If you downloaded the .exe installer, simply run it and the setup wizard will guide you through the installation process creating start menu icons that will run fre:ac. If you downloaded the .zip package, please extract/move the contents to a location of your choice and run freac.exe to start fre:ac.
 
-Alternatively, users of the package manager [**Scoop**](https://scoop.sh) may install a community-maintained pacakge for fre:ac using the following command:
+Alternatively, fre:ac may be installed from the Microsoft Store under this link: [fre:ac on the Microsoft Store](https://apps.microsoft.com/store/detail/freac-free-audio-converter/9P1XD8ZQJ7JD)
 
-    scoop install freac
-    
-Users of the package manager [**chocolately**](https://chocolatey.org) may instead install fre:ac as packaged/maintained by @tunisiano187 using either of the following commands:
+As another alternative, users of Windows package managers may install community-maintained packages of fre:ac using the following commands:
 
-    choco install freac
-    choco install freac.portable
+- [Chocolatey](https://chocolatey.org): `choco install freac`
+- [Scoop](https://scoop.sh): `scoop install freac`
+- [Winget](https://winget.run): `winget install fre:ac`
     
 ### macOS
 fre:ac is distributed as an Apple Disk Image (.dmg) file. To install it, open the .dmg image and drag the fre:ac application to a location of your choice like the desktop or the Applications folder. Then double click the application to start fre:ac.
