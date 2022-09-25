@@ -89,8 +89,8 @@ parts:
 
   libflac:
     after: [ libogg ]
-    source: https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.4.0.tar.xz
-    source-checksum: sha256/af41c0733c93c237c3e52f64dd87e3b0d9af38259f1c7d11e8cbf583c48c2506
+    source: https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.4.1.tar.xz
+    source-checksum: sha256/91303c3e5dfde52c3e94e75976c0ab3ee14ced278ab8f60033a3a12db9209ae6
     plugin: autotools
     configflags: [ --prefix=/usr, --disable-cpp-libs, --disable-vsx ]
     build-environment:
