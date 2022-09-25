@@ -58,7 +58,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y --allow-downgrades libgd3=2.2.5-5.2ubuntu2.1 libodbc1=2.3.6-0.1build1 libpcre2-8-0=10.34-7 libpcre2-16-0=10.34-7 libpcre2-32-0=10.34-7 libpcre2-dev=10.34-7
+          sudo apt install -y --allow-downgrades libgd3=2.2.5-5.2ubuntu2.1 libodbc1=2.3.6-0.1build1 libpcre2-8-0=10.34-7ubuntu0.1 libpcre2-16-0=10.34-7ubuntu0.1 libpcre2-32-0=10.34-7ubuntu0.1 libpcre2-dev=10.34-7ubuntu0.1
           sudo apt install -y ${{ matrix.dependencies }}
           sudo apt install -y adwaita-icon-theme gnome-icon-theme libasound2-dev:${{ matrix.pkgarch }} libfuse2:${{ matrix.pkgarch }} libgdk-pixbuf2.0-dev:${{ matrix.pkgarch }} libgtk-3-dev:${{ matrix.pkgarch }} libncurses-dev:${{ matrix.pkgarch }} libpulse-dev:${{ matrix.pkgarch }} libssl-dev:${{ matrix.pkgarch }} libudev-dev:${{ matrix.pkgarch }}
 
