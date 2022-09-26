@@ -439,13 +439,13 @@ for package in ${packages[@]}; do
     patches=${flac_patches[@]}
     patch_levels=(${flac_patch_levels[@]})
     export CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=0"
+    prepare="sed -i -e \"s/.*cannot check for file existence.*/true/\" configure"
     configure_flags="--disable-cpplibs --disable-doxygen-docs"
     if [[ $x86_64 == true ]] || [[ $arm64 == true ]]; then
       if [[ $uname == *MINGW* ]]; then
-        prepare="sed -i -e \"s/#undef FLAC__CPU_IA32//\" config.h.in"
+        prepare="$prepare; sed -i -e \"s/#undef FLAC__CPU_IA32//\" config.h.in"
         prepare="$prepare; sed -i -e \"s/ARCH_SUBDIRS = ia32/ARCH_SUBDIRS =/\" src/libFLAC/Makefile.in"
         prepare="$prepare; sed -i -e \"s/LOCAL_EXTRA_LIBADD = ia32\/libFLAC-asm\.la/LOCAL_EXTRA_LIBADD =/\" src/libFLAC/Makefile.in"
-        prepare="$prepare; sed -i -e \"s/.*cannot check for file existence.*/true/\" configure"
         if [[ $x86_64 == true ]]; then
           prepare="$prepare; sed -i -e \"s/#undef FLAC__CPU_X86_64/#define FLAC__CPU_X86_64 1/\" config.h.in"
         else
