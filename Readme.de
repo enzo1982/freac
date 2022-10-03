@@ -179,6 +179,7 @@ Geschichte
 			- Kompatibilität mit Anwendungen, die fehlerhafte LIST INFO-Tags schreiben, verbessert (z.B. Traktor)
 			- Option zur Steuerung der Extraktion fehlender Metadaten aus Dateinamen hinzugefügt
 			- Option zum Deaktivieren der Phasenumkehr bei Intensity Stereo zu Opus-Einstellungen hinzugefügt
+			- Sample-Rate-Konvertierung wandelt nicht mehr nach 32 bit Float, wenn die Quellrate mit der Zielrate übereinstimmt
 			- Negative Exit-Codes bei Fehlern beim Ausführen von freaccmd hinzugefügt
 			- Unterstützung für KDE-Farbschemata (inkl. Dark-Mode) hinzugefügt
 			- Erkennung des HiDPI-Skalierungsfaktors in KDE-Desktopumgebungen verbessert

@@ -180,6 +180,7 @@ History
 			- improved compatibility with applications writing non-compliant LIST INFO tags (e.g. Traktor)
 			- added an option to control extraction of missing metadata from file names
 			- added an option to disable intensity stereo phase inversion to Opus settings
+			- sample rate conversion no longer converts to 32 bit float when the source rate matches the target
 			- added negative exit codes to indicate errors when running freaccmd
 			- added support for KDE color schemes (including dark mode)
 			- improved HiDPI scale factor detection in KDE desktop environments
