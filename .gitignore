@@ -1,0 +1,14 @@
+# Ignore artifacts created during build.
+BuildNumber
+bin/*
+bin64/*
+components/**/*.o
+lib/*
+lib64/*
+msvc/**/.vs/*
+msvc/**/Debug/*
+msvc/**/Release/*
+msvc/**/*.VC.*
+msvc/**/*.vcxproj.user
+objects/*
+packaging/windows/lang/*.xml
