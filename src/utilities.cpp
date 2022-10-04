@@ -25,6 +25,31 @@ using namespace BoCA::AS;
 using namespace smooth::GUI::Dialogs;
 using namespace smooth::IO;
 
+static const String	 kDot		     = ".";
+static const String	 kColon		     = ":";
+
+static const String	 kArtistPattern	     = "<artist>";
+static const String	 kTitlePattern	     = "<title>";
+static const String	 kAlbumPattern	     = "<album>";
+static const String	 kGenrePattern	     = "<genre>";
+static const String	 kYearPattern	     = "<year>";
+static const String	 kDiscIDPattern	     = "<discid>";
+static const String	 kFileNamePattern    = "<filename>";
+static const String	 kFileTypePattern    = "<filetype>";
+static const String	 kDirectoryPattern   = "<directory>";
+static const String	 kDirectoryExtStart  = "<directory+";
+static const String	 kCurrentDatePattern = "<currentdate>";
+static const String	 kCurrentTimePattern = "<currenttime>";
+static const String	 kTrackPattern	     = "<track>";
+static const String	 kTrackExtStart	     = "<track(";
+static const String	 kDiscPattern	     = "<disc>";
+static const String	 kDiscExtStart	     = "<disc(";
+static const String	 kAlbumArtistPattern = "<albumartist>";
+static const String	 kConductorPattern   = "<conductor>";
+static const String	 kComposerPattern    = "<composer>";
+static const String	 kTempoPattern	     = "<tempo>";
+static const String	 kInitialKeyPattern  = "<initialkey>";
+
 Void freac::Utilities::FillGenreList(List *list)
 {
 	BoCA::Config	*config = BoCA::Config::Get();
@@ -296,10 +321,6 @@ String freac::Utilities::GetOutputFileName(const Track &track, const String &fil
 
 	/* Check if input file folder is writable.
 	 */
-	String	 shortInFileName = File(track.fileName).GetFileName();
-
-	if (shortInFileName.Find(".") > 0) shortInFileName = shortInFileName.Head(shortInFileName.FindLast("."));
-
 	String	 inFileDirectory = track.isCDTrack ? String() : File(track.fileName).GetFilePath();
 
 	if (writeToInputDir && (track.isCDTrack || !BoCA::Utilities::IsFolderWritable(inFileDirectory))) writeToInputDir = False;
@@ -333,73 +354,97 @@ String freac::Utilities::GetOutputFileName(const Track &track, const String &fil
 
 	/* Replace patterns.
 	 */
-	if (info.HasBasicInfo() || filePattern.Contains("<filename>") || filePattern.Contains("<currentdate>") || filePattern.Contains("<currenttime>"))
+	if (info.HasBasicInfo() || filePattern.Contains(kFileNamePattern) || filePattern.Contains(kCurrentDatePattern) || filePattern.Contains(kCurrentTimePattern))
 	{
-		String		 shortOutFileName = filePattern;
+		String	 shortOutFileName = filePattern;
 
-		DateTime	 currentDateTime  = DateTime::Current();
-		String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(				      currentDateTime.GetYear()	     ))) .Append(String::FromInt(currentDateTime.GetYear()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(				      currentDateTime.GetMonth()     )))).Append(String::FromInt(currentDateTime.GetMonth()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(				      currentDateTime.GetDay()	     )))).Append(String::FromInt(currentDateTime.GetDay()));
-		String		 currentTime	  = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()	> 0 ? currentDateTime.GetHour()	  : 1))) .Append(String::FromInt(currentDateTime.GetHour()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute() > 0 ? currentDateTime.GetMinute() : 1)))).Append(String::FromInt(currentDateTime.GetMinute()));
-
-		shortOutFileName.Replace("<artist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
-		shortOutFileName.Replace("<title>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")));
-		shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
-		shortOutFileName.Replace("<genre>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
-		shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
-		shortOutFileName.Replace("<discid>", CDDB::DiscIDToString(track.discid));
-		shortOutFileName.Replace("<filename>", BoCA::Utilities::ReplaceIncompatibleCharacters(shortInFileName));
-		shortOutFileName.Replace("<filetype>", fileExtension.ToUpper());
-		shortOutFileName.Replace("<currentdate>", currentDate);
-		shortOutFileName.Replace("<currenttime>", currentTime);
+		if (shortOutFileName.Contains(kArtistPattern))	 shortOutFileName.Replace(kArtistPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
+		if (shortOutFileName.Contains(kTitlePattern))	 shortOutFileName.Replace(kTitlePattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.title.Length() > 0 ? info.title : i18n->TranslateString("unknown title")));
+		if (shortOutFileName.Contains(kAlbumPattern))	 shortOutFileName.Replace(kAlbumPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
+		if (shortOutFileName.Contains(kGenrePattern))	 shortOutFileName.Replace(kGenrePattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
+		if (shortOutFileName.Contains(kYearPattern))	 shortOutFileName.Replace(kYearPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
+		if (shortOutFileName.Contains(kDiscIDPattern))	 shortOutFileName.Replace(kDiscIDPattern, CDDB::DiscIDToString(track.discid));
+		if (shortOutFileName.Contains(kFileTypePattern)) shortOutFileName.Replace(kFileTypePattern, fileExtension.ToUpper());
 
 		/* Replace <track> pattern.
 		 */
-		shortOutFileName.Replace("<track>", String(info.track < 10 ? "0" : NIL).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
+		if (shortOutFileName.Contains(kTrackPattern)) shortOutFileName.Replace(kTrackPattern, String(info.track < 10 ? "0" : NIL).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
 
-		for (Int i = 1; i <= 4; i++)
+		for (Int i = 1; i <= 4 && shortOutFileName.Contains(kTrackExtStart); i++)
 		{
-			String	 pattern = String("<track(").Append(String::FromInt(i)).Append(")>");
+			String	 pattern = String(kTrackExtStart).Append(String::FromInt(i)).Append(")>");
 
 			shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.track > 0 ? info.track : 1) + 1)).Append(String::FromInt(info.track < 0 ? 0 : info.track)));
 		}
 
 		/* Replace <disc> pattern.
 		 */
-		shortOutFileName.Replace("<disc>", String::FromInt(Math::Max(1, info.disc)));
+		if (shortOutFileName.Contains(kDiscPattern)) shortOutFileName.Replace(kDiscPattern, String::FromInt(Math::Max(1, info.disc)));
 
-		for (Int i = 1; i <= 4; i++)
+		for (Int i = 1; i <= 4 && shortOutFileName.Contains(kDiscExtStart); i++)
 		{
-			String	 pattern = String("<disc(").Append(String::FromInt(i)).Append(")>");
+			String	 pattern = String(kDiscExtStart).Append(String::FromInt(i)).Append(")>");
 
 			shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(Math::Max(1, info.disc))));
+		}
+
+		/* Replace <currentdate> pattern.
+		 */
+		if (shortOutFileName.Contains(kCurrentDatePattern))
+		{
+			DateTime	 currentDateTime = DateTime::Current();
+			String		 currentDate	 = String().FillN('0', 3 - Math::Floor(Math::Log10(currentDateTime.GetYear() ))) .Append(String::FromInt(currentDateTime.GetYear()))
+						   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMonth())))).Append(String::FromInt(currentDateTime.GetMonth()))
+						   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetDay()  )))).Append(String::FromInt(currentDateTime.GetDay()));
+
+			shortOutFileName.Replace(kCurrentDatePattern, currentDate);
+		}
+
+		/* Replace <currenttime> pattern.
+		 */
+		if (shortOutFileName.Contains(kCurrentTimePattern))
+		{
+			DateTime	 currentDateTime = DateTime::Current();
+			String		 currentTime	 = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()   > 0 ? currentDateTime.GetHour()	 : 1))) .Append(String::FromInt(currentDateTime.GetHour()))
+						   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute() > 0 ? currentDateTime.GetMinute() : 1)))).Append(String::FromInt(currentDateTime.GetMinute()));
+
+			shortOutFileName.Replace(kCurrentTimePattern, currentTime);
 		}
 
 		/* Replace other text fields.
 		 */
 		foreach (const String &pair, info.other)
 		{
-			String	 key   = pair.Head(pair.Find(":"));
-			String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
+			String	 key   = pair.Head(pair.Find(kColon));
+			String	 value = pair.Tail(pair.Length() - pair.Find(kColon) - 1);
 
 			if (value == NIL) continue;
 
-			if	(key == INFO_ALBUMARTIST) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
-			else if	(key == INFO_CONDUCTOR)	  shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
-			else if	(key == INFO_COMPOSER)	  shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
-			else if	(key == INFO_BPM)	  shortOutFileName.Replace("<tempo>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
-			else if	(key == INFO_INITIALKEY)  shortOutFileName.Replace("<initialkey>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			if	(key == INFO_ALBUMARTIST && shortOutFileName.Contains(kAlbumArtistPattern)) shortOutFileName.Replace(kAlbumArtistPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_CONDUCTOR	 && shortOutFileName.Contains(kConductorPattern))   shortOutFileName.Replace(kConductorPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_COMPOSER	 && shortOutFileName.Contains(kComposerPattern))    shortOutFileName.Replace(kComposerPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_BPM	 && shortOutFileName.Contains(kTempoPattern))	    shortOutFileName.Replace(kTempoPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_INITIALKEY  && shortOutFileName.Contains(kInitialKeyPattern))  shortOutFileName.Replace(kInitialKeyPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(value));
 		}
 
-		if (info.artist.Length() > 0) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist));
+		if (info.artist.Length() > 0 && shortOutFileName.Contains(kAlbumArtistPattern)) shortOutFileName.Replace(kAlbumArtistPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist));
 
-		shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
-		shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
-		shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
-		shortOutFileName.Replace("<tempo>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown tempo")));
-		shortOutFileName.Replace("<initialkey>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown key")));
+		if (shortOutFileName.Contains(kAlbumArtistPattern)) shortOutFileName.Replace(kAlbumArtistPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
+		if (shortOutFileName.Contains(kConductorPattern))   shortOutFileName.Replace(kConductorPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
+		if (shortOutFileName.Contains(kComposerPattern))    shortOutFileName.Replace(kComposerPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
+		if (shortOutFileName.Contains(kTempoPattern))	    shortOutFileName.Replace(kTempoPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown tempo")));
+		if (shortOutFileName.Contains(kInitialKeyPattern))  shortOutFileName.Replace(kInitialKeyPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown key")));
+
+		/* Replace <filename> pattern.
+		 */
+		if (shortOutFileName.Contains(kFileNamePattern))
+		{
+			String	 shortInFileName = File(track.fileName).GetFileName();
+
+			if (shortInFileName.Find(kDot) > 0) shortInFileName = shortInFileName.Head(shortInFileName.FindLast(kDot));
+
+			shortOutFileName.Replace(kFileNamePattern, BoCA::Utilities::ReplaceIncompatibleCharacters(shortInFileName));
+		}
 
 		/* Replace <directory> pattern.
 		 */
@@ -408,11 +453,11 @@ String freac::Utilities::GetOutputFileName(const Track &track, const String &fil
 		if	(directory[1] == ':')	       directory = directory.Tail(directory.Length() - 3);
 		else if (directory.StartsWith("\\\\")) directory = directory.Tail(directory.Length() - 2);
 
-		shortOutFileName.Replace("<directory>", directory);
+		if (shortOutFileName.Contains(kDirectoryPattern)) shortOutFileName.Replace(kDirectoryPattern, directory);
 
-		for (Int i = 0; i < 10 && shortOutFileName.Contains("<directory+"); i++)
+		for (Int i = 0; i < 10 && shortOutFileName.Contains(kDirectoryExtStart); i++)
 		{
-			String	 pattern = String("<directory+").Append(String::FromInt(i)).Append(">");
+			String	 pattern = String(kDirectoryExtStart).Append(String::FromInt(i)).Append(">");
 
 			if (shortOutFileName.Contains(pattern))
 			{
@@ -423,9 +468,9 @@ String freac::Utilities::GetOutputFileName(const Track &track, const String &fil
 				shortOutFileName.Replace(pattern, value);
 			}
 
-			for (Int j = 0; j < 10 && shortOutFileName.Contains(String("<directory+").Append(String::FromInt(i)).Append("(")); j++)
+			for (Int j = 0; j < 10 && shortOutFileName.Contains(String(kDirectoryExtStart).Append(String::FromInt(i)).Append("(")); j++)
 			{
-				String	 pattern = String("<directory+").Append(String::FromInt(i)).Append("(").Append(String::FromInt(j + 1)).Append(")>");
+				String	 pattern = String(kDirectoryExtStart).Append(String::FromInt(i)).Append("(").Append(String::FromInt(j + 1)).Append(")>");
 
 				if (!shortOutFileName.Contains(pattern)) continue;
 
@@ -473,12 +518,16 @@ String freac::Utilities::GetOutputFileName(const Track &track, const String &fil
 	}
 	else
 	{
+		String	 shortInFileName = File(track.fileName).GetFileName();
+
+		if (shortInFileName.Find(kDot) > 0) shortInFileName = shortInFileName.Head(shortInFileName.FindLast(kDot));
+
 		outputFileName.Append(shortInFileName);
 	}
 
 	/* Append file extension.
 	 */
-	if (fileExtension != NIL) outputFileName.Append(".").Append(fileExtension);
+	if (fileExtension != NIL) outputFileName.Append(kDot).Append(fileExtension);
 
 	return outputFileName;
 }
@@ -589,7 +638,7 @@ String freac::Utilities::GetSingleOutputFileNameDefault(const BoCA::Config *conf
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
 
 	return BoCA::Utilities::NormalizeFileName(BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")).Append(" - ")
-					  .Append(BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length()  > 0 ? info.album  : i18n->TranslateString("unknown album")))).Append(fileExtension != NIL ? "." : NIL).Append(fileExtension);
+					  .Append(BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length()  > 0 ? info.album  : i18n->TranslateString("unknown album")))).Append(fileExtension != NIL ? kDot : String()).Append(fileExtension);
 }
 
 String freac::Utilities::GetPlaylistFileName(const BoCA::Config *config, const Track &track, const Array<Track> &originalTracks)
@@ -622,59 +671,73 @@ String freac::Utilities::GetPlaylistFileName(const BoCA::Config *config, const T
 
 	if (info.artist != NIL || info.album != NIL)
 	{
-		String		 shortOutFileName = config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenamePatternID, Config::PlaylistFilenamePatternDefault);
+		String	 shortOutFileName = config->GetStringValue(Config::CategoryPlaylistID, Config::PlaylistFilenamePatternID, Config::PlaylistFilenamePatternDefault);
 
 		if (shortOutFileName.Trim() == NIL) shortOutFileName = Config::PlaylistFilenamePatternDefault;
 
-		DateTime	 currentDateTime  = DateTime::Current();
-		String		 currentDate	  = String().FillN('0', 3 - Math::Floor(Math::Log10(				      currentDateTime.GetYear()      ))) .Append(String::FromInt(currentDateTime.GetYear()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(				      currentDateTime.GetMonth()     )))).Append(String::FromInt(currentDateTime.GetMonth()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(				      currentDateTime.GetDay()	     )))).Append(String::FromInt(currentDateTime.GetDay()));
-		String		 currentTime	  = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()	> 0 ? currentDateTime.GetHour()	  : 1))) .Append(String::FromInt(currentDateTime.GetHour()))
-					    .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute()	> 0 ? currentDateTime.GetMinute() : 1)))).Append(String::FromInt(currentDateTime.GetMinute()));
-
-		shortOutFileName.Replace("<artist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
-		shortOutFileName.Replace("<album>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
-		shortOutFileName.Replace("<genre>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
-		shortOutFileName.Replace("<year>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
-		shortOutFileName.Replace("<discid>", CDDB::DiscIDToString(track.discid));
-		shortOutFileName.Replace("<currentdate>", currentDate);
-		shortOutFileName.Replace("<currenttime>", currentTime);
+		if (shortOutFileName.Contains(kArtistPattern)) shortOutFileName.Replace(kArtistPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist.Length() > 0 ? info.artist : i18n->TranslateString("unknown artist")));
+		if (shortOutFileName.Contains(kAlbumPattern))  shortOutFileName.Replace(kAlbumPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.album.Length() > 0 ? info.album : i18n->TranslateString("unknown album")));
+		if (shortOutFileName.Contains(kGenrePattern))  shortOutFileName.Replace(kGenrePattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.genre.Length() > 0 ? info.genre : i18n->TranslateString("unknown genre")));
+		if (shortOutFileName.Contains(kYearPattern))   shortOutFileName.Replace(kYearPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.year > 0 ? String::FromInt(info.year) : i18n->TranslateString("unknown year")));
+		if (shortOutFileName.Contains(kDiscIDPattern)) shortOutFileName.Replace(kDiscIDPattern, CDDB::DiscIDToString(track.discid));
 
 		/* Replace <disc> pattern.
 		 */
-		shortOutFileName.Replace("<disc>", String::FromInt(Math::Max(1, info.disc)));
+		if (shortOutFileName.Contains(kDiscPattern)) shortOutFileName.Replace(kDiscPattern, String::FromInt(Math::Max(1, info.disc)));
 
-		for (Int i = 1; i <= 4; i++)
+		for (Int i = 1; i <= 4 && shortOutFileName.Contains(kDiscExtStart); i++)
 		{
-			String	 pattern = String("<disc(").Append(String::FromInt(i)).Append(")>");
+			String	 pattern = String(kDiscExtStart).Append(String::FromInt(i)).Append(")>");
 
 			shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(Math::Max(1, info.disc))));
+		}
+
+		/* Replace <currentdate> pattern.
+		 */
+		if (shortOutFileName.Contains(kCurrentDatePattern))
+		{
+			DateTime	 currentDateTime = DateTime::Current();
+			String		 currentDate	 = String().FillN('0', 3 - Math::Floor(Math::Log10(currentDateTime.GetYear() ))) .Append(String::FromInt(currentDateTime.GetYear()))
+						   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMonth())))).Append(String::FromInt(currentDateTime.GetMonth()))
+						   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetDay()  )))).Append(String::FromInt(currentDateTime.GetDay()));
+
+			shortOutFileName.Replace(kCurrentDatePattern, currentDate);
+		}
+
+		/* Replace <currenttime> pattern.
+		 */
+		if (shortOutFileName.Contains(kCurrentTimePattern))
+		{
+			DateTime	 currentDateTime = DateTime::Current();
+			String		 currentTime	 = String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetHour()   > 0 ? currentDateTime.GetHour()	 : 1))) .Append(String::FromInt(currentDateTime.GetHour()))
+						   .Append(String().FillN('0', 1 - Math::Floor(Math::Log10(currentDateTime.GetMinute() > 0 ? currentDateTime.GetMinute() : 1)))).Append(String::FromInt(currentDateTime.GetMinute()));
+
+			shortOutFileName.Replace(kCurrentTimePattern, currentTime);
 		}
 
 		/* Replace other text fields.
 		 */
 		foreach (const String &pair, info.other)
 		{
-			String	 key   = pair.Head(pair.Find(":"));
-			String	 value = pair.Tail(pair.Length() - pair.Find(":") - 1);
+			String	 key   = pair.Head(pair.Find(kColon));
+			String	 value = pair.Tail(pair.Length() - pair.Find(kColon) - 1);
 
 			if (value == NIL) continue;
 
-			if	(key == INFO_ALBUMARTIST) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
-			else if	(key == INFO_CONDUCTOR)	  shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
-			else if	(key == INFO_COMPOSER)	  shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
-			else if	(key == INFO_BPM)	  shortOutFileName.Replace("<tempo>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
-			else if	(key == INFO_INITIALKEY)  shortOutFileName.Replace("<initialkey>", BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			if	(key == INFO_ALBUMARTIST && shortOutFileName.Contains(kAlbumArtistPattern)) shortOutFileName.Replace(kAlbumArtistPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_CONDUCTOR	 && shortOutFileName.Contains(kConductorPattern))   shortOutFileName.Replace(kConductorPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_COMPOSER	 && shortOutFileName.Contains(kComposerPattern))    shortOutFileName.Replace(kComposerPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_BPM	 && shortOutFileName.Contains(kTempoPattern))	    shortOutFileName.Replace(kTempoPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(value));
+			else if	(key == INFO_INITIALKEY	 && shortOutFileName.Contains(kInitialKeyPattern))  shortOutFileName.Replace(kInitialKeyPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(value));
 		}
 
-		if (info.artist.Length() > 0) shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist));
+		if (info.artist.Length() > 0 && shortOutFileName.Contains(kAlbumArtistPattern)) shortOutFileName.Replace(kAlbumArtistPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(info.artist));
 
-		shortOutFileName.Replace("<albumartist>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
-		shortOutFileName.Replace("<conductor>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
-		shortOutFileName.Replace("<composer>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
-		shortOutFileName.Replace("<tempo>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown tempo")));
-		shortOutFileName.Replace("<initialkey>", BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown key")));
+		if (shortOutFileName.Contains(kAlbumArtistPattern)) shortOutFileName.Replace(kAlbumArtistPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown album artist")));
+		if (shortOutFileName.Contains(kConductorPattern))   shortOutFileName.Replace(kConductorPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown conductor")));
+		if (shortOutFileName.Contains(kComposerPattern))    shortOutFileName.Replace(kComposerPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown composer")));
+		if (shortOutFileName.Contains(kTempoPattern))	    shortOutFileName.Replace(kTempoPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown tempo")));
+		if (shortOutFileName.Contains(kInitialKeyPattern))  shortOutFileName.Replace(kInitialKeyPattern, BoCA::Utilities::ReplaceIncompatibleCharacters(i18n->TranslateString("unknown key")));
 
 		playlistFileName.Append(BoCA::Utilities::ReplaceIncompatibleCharacters(shortOutFileName, useUnicode, False, replaceSpaces));
 	}
