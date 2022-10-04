@@ -274,6 +274,20 @@ Void freac::Utilities::UpdateGenreList(List *list, const String &genre)
 
 String freac::Utilities::GetOutputFileName(const BoCA::Config *config, const Track &track)
 {
+	String	 filePattern	 = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
+	String	 outputDirectory = BoCA::Utilities::GetAbsolutePathName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault));
+	Bool	 writeToInputDir = config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
+	String	 encoderID	 = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+	Bool	 useUnicode	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
+	Bool	 replaceSpaces	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
+
+	if (filePattern.Trim() == NIL) filePattern = Config::SettingsEncoderFilenamePatternDefault;
+
+	return GetOutputFileName(track, filePattern, outputDirectory, writeToInputDir, encoderID, True, useUnicode, replaceSpaces);
+}
+
+String freac::Utilities::GetOutputFileName(const Track &track, const String &filePattern, const String &outputDirectory, Bool writeToInputDir, const String &encoderID, Bool normalizeFileName, Bool useUnicode, Bool replaceSpaces)
+{
 	if (track.outputFile != NIL) return track.outputFile;
 
 	BoCA::I18n	*i18n = BoCA::I18n::Get();
@@ -287,7 +301,6 @@ String freac::Utilities::GetOutputFileName(const BoCA::Config *config, const Tra
 	if (shortInFileName.Find(".") > 0) shortInFileName = shortInFileName.Head(shortInFileName.FindLast("."));
 
 	String	 inFileDirectory = track.isCDTrack ? String() : File(track.fileName).GetFilePath();
-	Bool	 writeToInputDir = config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 
 	if (writeToInputDir && (track.isCDTrack || !BoCA::Utilities::IsFolderWritable(inFileDirectory))) writeToInputDir = False;
 
@@ -296,7 +309,7 @@ String freac::Utilities::GetOutputFileName(const BoCA::Config *config, const Tra
 	String	 outputFileName;
 
 	if (writeToInputDir) outputFileName.Copy(inFileDirectory).Append(Directory::GetDirectoryDelimiter());
-	else		     outputFileName.Copy(BoCA::Utilities::GetAbsolutePathName(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderOutputDirectoryID, Config::SettingsEncoderOutputDirectoryDefault)));
+	else		     outputFileName.Copy(outputDirectory);
 
 	/* Get file extension from selected encoder component
 	 * caching the result for requests in quick succession.
@@ -305,13 +318,13 @@ String freac::Utilities::GetOutputFileName(const BoCA::Config *config, const Tra
 	static String		 selectedEncoder = NIL;
 	static UnsignedInt64	 lastRequest	 = 0;
 
-	if (selectedEncoder != config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault) || S::System::System::Clock() - lastRequest >= 750)
+	if (selectedEncoder != encoderID || S::System::System::Clock() - lastRequest >= 750)
 	{
 		Registry		&boca	 = Registry::Get();
-		EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault));
+		EncoderComponent	*encoder = (EncoderComponent *) boca.CreateComponentByID(encoderID);
 
 		fileExtension	= (encoder != NIL) ? encoder->GetOutputFileExtension() : "audio";
-		selectedEncoder	= config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
+		selectedEncoder	= encoderID;
 
 		boca.DeleteComponent(encoder);
 	}
@@ -320,10 +333,6 @@ String freac::Utilities::GetOutputFileName(const BoCA::Config *config, const Tra
 
 	/* Replace patterns.
 	 */
-	String	 filePattern = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault);
-
-	if (filePattern.Trim() == NIL) filePattern = Config::SettingsEncoderFilenamePatternDefault;
-
 	if (info.HasBasicInfo() || filePattern.Contains("<filename>") || filePattern.Contains("<currentdate>") || filePattern.Contains("<currenttime>"))
 	{
 		String		 shortOutFileName = filePattern;
@@ -442,11 +451,17 @@ String freac::Utilities::GetOutputFileName(const BoCA::Config *config, const Tra
 			}
 		}
 
-		Bool	 useUnicode    = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
-		Bool	 replaceSpaces = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
-
-		outputFileName.Append(BoCA::Utilities::ReplaceIncompatibleCharacters(shortOutFileName, useUnicode, False, replaceSpaces));
-		outputFileName = BoCA::Utilities::NormalizeFileName(outputFileName);
+		/* Replace incompatible characters and limit length of path components.
+		 */
+		if (normalizeFileName)
+		{
+			outputFileName.Append(BoCA::Utilities::ReplaceIncompatibleCharacters(shortOutFileName, useUnicode, False, replaceSpaces));
+			outputFileName = BoCA::Utilities::NormalizeFileName(outputFileName);
+		}
+		else
+		{
+			outputFileName.Append(shortOutFileName);
+		}
 	}
 	else if (track.isCDTrack)
 	{
