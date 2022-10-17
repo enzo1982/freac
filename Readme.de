@@ -192,6 +192,7 @@ Geschichte
 			- Fehler (Einfrieren und Abbruch nach einigen Sekunden) beim Dekodieren von Kapiteln aus ALAC-Dateien behoben
 			- Interoperabilitätsprobleme von mit FDK-AAC erzeugten HE- und HEv2-AAC-Dateien mit foobar2000 behoben
 			- Problem mit falschen Gapless-Informationen beim Erzeugen von HE- und HEv2-AAC-Dateien mit FDK-AAC behoben
+			- Problem mit fehlerhaften Indexzeiten bei Cue Sheets für sehr lange Multi-Track-Dateien behoben
 			- Problem mit zurückbleibenden Altdaten nach dem Aktualisieren von WMA-Tags behoben
 			- Problem mit Zurücksetzen der Formatauswahl beim Öffnen des WMA-Konfigurationsdialogs behoben
 			- Problem mit übermäßig hohen Bitraten bei der Kodierung von Vorbis auf nicht-x86 LP64-Systemen behoben
