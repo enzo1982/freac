@@ -89,7 +89,7 @@ if [[ ${MACOSX_DEPLOYMENT_TARGET:0:2} = 11 ]]; then
   lipo -create libvorbis-1.3.7/lib/.libs/libvorbis.0.dylib arm64/libvorbis-1.3.7/lib/.libs/libvorbis.0.dylib -output libvorbis.0.dylib
   lipo -create libvorbis-1.3.7/lib/.libs/libvorbisenc.2.dylib arm64/libvorbis-1.3.7/lib/.libs/libvorbisenc.2.dylib -output libvorbisenc.2.dylib
   lipo -create flac-1.4.1/src/libFLAC/.libs/libFLAC.12.dylib arm64/flac-1.4.1/src/libFLAC/.libs/libFLAC.12.dylib -output libFLAC.12.dylib
-  lipo -create MAC_890_SDK/libMAC.8.dylib arm64/MAC_890_SDK/libMAC.8.dylib -output libMAC.8.dylib
+  lipo -create MAC_892_SDK/libMAC.8.dylib arm64/MAC_892_SDK/libMAC.8.dylib -output libMAC.8.dylib
   lipo -create libsndfile-1.1.0/src/.libs/libsndfile.1.dylib arm64/libsndfile-1.1.0/src/.libs/libsndfile.1.dylib -output libsndfile.1.dylib
   lipo -create libsamplerate-0.2.2/src/.libs/libsamplerate.0.dylib arm64/libsamplerate-0.2.2/src/.libs/libsamplerate.0.dylib -output libsamplerate.0.dylib
   lipo -create rnnoise-9acc1e5/.libs/librnnoise.0.dylib arm64/rnnoise-9acc1e5/.libs/librnnoise.0.dylib -output librnnoise.0.dylib

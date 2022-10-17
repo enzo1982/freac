@@ -178,6 +178,7 @@ Geschichte
 			- Optionale Spalte für Veröffentlichungsjahr zur Jobliste hinzugefügt
 			- Kompatibilität mit Anwendungen, die fehlerhafte LIST INFO-Tags schreiben, verbessert (z.B. Traktor)
 			- Option zur Steuerung der Extraktion fehlender Metadaten aus Dateinamen hinzugefügt
+			- Option zum Einschränken der Dateinamen für das Einlesen von Cover-Bildern hinzugefügt
 			- Option zum Deaktivieren der Phasenumkehr bei Intensity Stereo zu Opus-Einstellungen hinzugefügt
 			- Sample-Rate-Konvertierung wandelt nicht mehr nach 32 bit Float, wenn die Quellrate mit der Zielrate übereinstimmt
 			- Negative Exit-Codes bei Fehlern beim Ausführen von freaccmd hinzugefügt
@@ -201,7 +202,7 @@ Geschichte
 
 			- ALAC-Dekoder für Sicherheitskorrekturen und Geschwindigkeitsverbesserungen aktualisiert
 			- FFmpeg auf Version 5.1.2 aktualisiert
-			- Monkey's Audio auf Version 8.90 aktualisiert
+			- Monkey's Audio auf Version 8.92 aktualisiert
 			- WavPack auf Version 5.5.0 aktualisiert
 			- Tom's Audiokompressor auf Version 2.3.3 aktualisiert
 			- FLAC auf Version 1.4.1 aktualisiert
