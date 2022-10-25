@@ -146,7 +146,7 @@ faac_version=1.30
 faad2_version=2.10.0
 fdk_aac_version=2.0.2
 ffmpeg_version=5.1.2
-flac_version=1.4.1
+flac_version=1.4.2
 lame_version=3.100
 libcdio_version=2.1.0
 libcdio_paranoia_version=10.2+2.0.1
@@ -439,11 +439,10 @@ for package in ${packages[@]}; do
     patches=${flac_patches[@]}
     patch_levels=(${flac_patch_levels[@]})
     export CFLAGS="$CFLAGS -D_FORTIFY_SOURCE=0"
-    prepare="sed -i -e \"s/.*cannot check for file existence.*/true/\" configure"
     configure_flags="--disable-cpplibs --disable-doxygen-docs"
     if [[ $x86_64 == true ]] || [[ $arm64 == true ]]; then
       if [[ $uname == *MINGW* ]]; then
-        prepare="$prepare; sed -i -e \"s/#undef FLAC__CPU_IA32//\" config.h.in"
+        prepare="sed -i -e \"s/#undef FLAC__CPU_IA32//\" config.h.in"
         prepare="$prepare; sed -i -e \"s/ARCH_SUBDIRS = ia32/ARCH_SUBDIRS =/\" src/libFLAC/Makefile.in"
         prepare="$prepare; sed -i -e \"s/LOCAL_EXTRA_LIBADD = ia32\/libFLAC-asm\.la/LOCAL_EXTRA_LIBADD =/\" src/libFLAC/Makefile.in"
         if [[ $x86_64 == true ]]; then
