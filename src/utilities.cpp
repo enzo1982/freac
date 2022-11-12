@@ -359,13 +359,13 @@ String freac::Utilities::GetOutputFileName(const BoCA::Config *config, const Tra
 
 		/* Replace <disc> pattern.
 		 */
-		shortOutFileName.Replace("<disc>", String::FromInt(info.disc < 0 ? 0 : info.disc));
+		shortOutFileName.Replace("<disc>", String::FromInt(Math::Max(1, info.disc)));
 
 		for (Int i = 1; i <= 4; i++)
 		{
 			String	 pattern = String("<disc(").Append(String::FromInt(i)).Append(")>");
 
-			shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
+			shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(Math::Max(1, info.disc))));
 		}
 
 		/* Replace other text fields.
@@ -628,13 +628,13 @@ String freac::Utilities::GetPlaylistFileName(const BoCA::Config *config, const T
 
 		/* Replace <disc> pattern.
 		 */
-		shortOutFileName.Replace("<disc>", String::FromInt(info.disc < 0 ? 0 : info.disc));
+		shortOutFileName.Replace("<disc>", String::FromInt(Math::Max(1, info.disc)));
 
 		for (Int i = 1; i <= 4; i++)
 		{
 			String	 pattern = String("<disc(").Append(String::FromInt(i)).Append(")>");
 
-			shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(info.disc < 0 ? 0 : info.disc)));
+			shortOutFileName.Replace(pattern, String().FillN('0', i - ((Int) Math::Log10(info.disc > 0 ? info.disc : 1) + 1)).Append(String::FromInt(Math::Max(1, info.disc))));
 		}
 
 		/* Replace other text fields.

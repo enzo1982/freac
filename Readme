@@ -161,7 +161,7 @@ Requirements
 History
 -------
 
-	Version 1.1.7 (October 2022)
+	Version 1.1.7 (November 2022)
 
 		- New features
 
@@ -177,6 +177,7 @@ History
 			- added support for rating field in Vorbis Comment, APEv2, MP4 and LIST INFO tags
 			- added rating field to the tag editor
 			- added optional release year column to the joblist
+			- changed <disc> filename placeholder to resolve to 1 if disc number is not set
 			- improved compatibility with applications writing non-compliant LIST INFO tags (e.g. Traktor)
 			- added an option to control extraction of missing metadata from file names
 			- added an option to restrict file names for reading cover art
