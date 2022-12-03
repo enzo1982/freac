@@ -166,6 +166,7 @@ Geschichte
 
 			- Unterstützung für Dithering beim Reduzieren der Sampleauflösung hinzugefügt
 			- Matrix-Surround-Dekodierer DSP-Komponente hinzugefügt
+			- DSP-Komponente für Lautstärkeanpassung hinzugefügt
 
 		- Verbesserungen
 

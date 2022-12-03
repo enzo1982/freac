@@ -167,6 +167,7 @@ History
 
 			- added support for dithering when reducing sample resolution
 			- added a matrix surround decoder DSP component
+			- added a volume adjustment DSP component
 
 		- Improvements
 

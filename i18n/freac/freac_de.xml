@@ -737,7 +737,8 @@
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise Geräuschreduzierung</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band Tempo-/Tonhöhenänderung</entry>
 	<entry id="12005" string="HDCD Decoder">HDCD-Dekodierer</entry>
-	<entry id="12005" string="Matrix Surround Decoder">Matrix-Surround-Dekodierer</entry>
+	<entry id="12006" string="Matrix Surround Decoder">Matrix-Surround-Dekodierer</entry>
+	<entry id="12007" string="Volume Adjustment">Lautstärkeanpassung</entry>
       </section>
 
       <section name="Verifiers">
@@ -1142,6 +1143,12 @@
 	<entry id="50500" string="Output channels">Ausgabekanäle</entry>
 	<entry id="50501" string="Channel configuration">Kanalkonfiguration</entry>
 	<entry id="50502" string="Redirect bass content to LFE channel">Bassanteile auf LFE-Kanal umleiten</entry>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment">Lautstärkeanpassung</entry>
+	<entry id="50601" string="Adjustment">Anpassung</entry>
+	<entry id="50602" string="%1 dB">%1 dB</entry>
       </section>
     </section>
 
