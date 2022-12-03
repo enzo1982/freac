@@ -73,16 +73,16 @@ jobs:
           sudo ln -s ${{ matrix.host }}-strip /usr/bin/strip
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Checkout smooth
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: enzo1982/smooth
           path: smooth
 
       - name: Checkout BoCA
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: enzo1982/BoCA
           path: boca
