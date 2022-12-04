@@ -28,6 +28,8 @@ freac::ConfigureCoverArt::ConfigureCoverArt()
 	enableCoverArtReadFromTags	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, Config::TagsCoverArtReadFromTagsDefault);
 	enableCoverArtReadFromFiles	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromFilesID, Config::TagsCoverArtReadFromFilesDefault);
 
+	coverArtUsePatterns		= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtUsePatternsID, Config::TagsCoverArtUsePatternsDefault);
+
 	coverArtMaxFileSize		= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtMaxFileSizeID, Config::TagsCoverArtMaxFileSizeDefault);
 
 	enableCoverArtWriteToTags	= config->GetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, Config::TagsCoverArtWriteToTagsDefault);
@@ -36,31 +38,43 @@ freac::ConfigureCoverArt::ConfigureCoverArt()
 
 	/* Create widgets.
 	 */
-	group_coverart_read		= new GroupBox(i18n->TranslateString("Read cover art"), Point(7, 11), Size(552, 64));
+	group_coverart_read		= new GroupBox(i18n->TranslateString("Read cover art"), Point(7, 11), Size(552, 118));
 
 	check_coverart_read_tags	= new CheckBox(i18n->TranslateString("Read cover art from tags"), Point(10, 14), Size(253, 0), &enableCoverArtReadFromTags);
 	check_coverart_read_files	= new CheckBox(i18n->TranslateString("Read cover art from files"), Point(271, 14), Size(253, 0), &enableCoverArtReadFromFiles);
 	check_coverart_read_files->onAction.Connect(&ConfigureCoverArt::ToggleReadCoverArtFiles, this);
 
+	check_coverart_read_patterns	= new CheckBox(i18n->TranslateString("Restrict file names"), Point(288, 39), Size(254, 0), &coverArtUsePatterns);
+	check_coverart_read_patterns->onAction.Connect(&ConfigureCoverArt::ToggleUsePatterns, this);
+
+	edit_coverart_read_patterns	= new EditBox(config->GetStringValue(Config::CategoryTagsID, Config::TagsCoverArtPatternsID, Config::TagsCoverArtPatternsDefault), Point(305, 64), Size(237, 0), 0);
+
+	list_coverart_read_patterns	= new List();
+	list_coverart_read_patterns->AddEntry(Config::TagsCoverArtPatternsDefault);
+
+	edit_coverart_read_patterns->SetDropDownList(list_coverart_read_patterns);
+
 	Int	 maxTextSize = Math::Max(Font().GetUnscaledTextSizeX(i18n->TranslateString("%1 kB", "Technical").Replace("%1", "250")), Font().GetUnscaledTextSizeX(i18n->TranslateString("unlimited")));
 
-	text_coverart_read_max		= new Text(i18n->AddColon(i18n->TranslateString("File size limit")), Point(288, 39));
+	text_coverart_read_max		= new Text(i18n->AddColon(i18n->TranslateString("File size limit")), Point(288, 93));
 
-	text_coverart_read_max_value	= new Text(NIL, Point(80, 39));
+	text_coverart_read_max_value	= new Text(NIL, Point(80, 93));
 	text_coverart_read_max_value->SetX(maxTextSize + 10);
 	text_coverart_read_max_value->SetOrientation(OR_UPPERRIGHT);
 
-	slider_coverart_read_max	= new Slider(Point(295 + text_coverart_read_max->GetUnscaledTextWidth(), 37), Size(221 - text_coverart_read_max->GetUnscaledTextWidth() - maxTextSize, 0), OR_HORZ, NIL, 1, 21);
+	slider_coverart_read_max	= new Slider(Point(295 + text_coverart_read_max->GetUnscaledTextWidth(), 91), Size(221 - text_coverart_read_max->GetUnscaledTextWidth() - maxTextSize, 0), OR_HORZ, NIL, 1, 21);
 	slider_coverart_read_max->SetValue(coverArtMaxFileSize == 0 ? 9999 : coverArtMaxFileSize / 25);
 	slider_coverart_read_max->onValueChange.Connect(&ConfigureCoverArt::ChangeMaxCoverArtSize, this);
 
 	group_coverart_read->Add(check_coverart_read_tags);
 	group_coverart_read->Add(check_coverart_read_files);
+	group_coverart_read->Add(check_coverart_read_patterns);
+	group_coverart_read->Add(edit_coverart_read_patterns);
 	group_coverart_read->Add(text_coverart_read_max);
 	group_coverart_read->Add(slider_coverart_read_max);
 	group_coverart_read->Add(text_coverart_read_max_value);
 
-	group_coverart_write		= new GroupBox(i18n->TranslateString("Write cover art"), Point(7, 87), Size(552, 120));
+	group_coverart_write		= new GroupBox(i18n->TranslateString("Write cover art"), Point(7, 141), Size(552, 120));
 
 	check_coverart_write_tags	= new CheckBox(i18n->TranslateString("Write cover art to tags"), Point(10, 14), Size(253, 0), &enableCoverArtWriteToTags);
 	check_coverart_write_tags->onAction.Connect(&ConfigureCoverArt::ToggleWriteCoverArt, this);
@@ -129,6 +143,8 @@ freac::ConfigureCoverArt::~ConfigureCoverArt()
 	DeleteObject(group_coverart_read);
 	DeleteObject(check_coverart_read_tags);
 	DeleteObject(check_coverart_read_files);
+	DeleteObject(check_coverart_read_patterns);
+	DeleteObject(edit_coverart_read_patterns);
 	DeleteObject(text_coverart_read_max);
 	DeleteObject(slider_coverart_read_max);
 	DeleteObject(text_coverart_read_max_value);
@@ -165,16 +181,29 @@ Void freac::ConfigureCoverArt::ToggleReadCoverArtFiles()
 {
 	if (enableCoverArtReadFromFiles)
 	{
+		check_coverart_read_patterns->Activate();
+
 		text_coverart_read_max->Activate();
 		slider_coverart_read_max->Activate();
 		text_coverart_read_max_value->Activate();
+
+		ToggleUsePatterns();
 	}
 	else
 	{
+		check_coverart_read_patterns->Deactivate();
+		edit_coverart_read_patterns->Deactivate();
+
 		text_coverart_read_max->Deactivate();
 		slider_coverart_read_max->Deactivate();
 		text_coverart_read_max_value->Deactivate();
 	}
+}
+
+Void freac::ConfigureCoverArt::ToggleUsePatterns()
+{
+	if (coverArtUsePatterns) edit_coverart_read_patterns->Activate();
+	else			 edit_coverart_read_patterns->Deactivate();
 }
 
 Void freac::ConfigureCoverArt::ChangeMaxCoverArtSize(Int value)
@@ -206,6 +235,10 @@ Int freac::ConfigureCoverArt::SaveSettings()
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromTagsID, enableCoverArtReadFromTags);
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtReadFromFilesID, enableCoverArtReadFromFiles);
+
+	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtUsePatternsID, coverArtUsePatterns);
+	config->SetStringValue(Config::CategoryTagsID, Config::TagsCoverArtPatternsID, edit_coverart_read_patterns->GetText());
+
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtMaxFileSizeID, slider_coverart_read_max->GetValue() % 21 * 25);
 
 	config->SetIntValue(Config::CategoryTagsID, Config::TagsCoverArtWriteToTagsID, enableCoverArtWriteToTags);

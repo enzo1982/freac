@@ -545,6 +545,7 @@
 	<entry id="5527" string="unlimited">unbegrenzt</entry>
 	<entry id="5528" string="Miscellaneous">Verschiedenes</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names">Fehlende Felder mit aus Dateinamen extrahierten Informationen füllen</entry>
+	<entry id="5530" string="Restrict file names">Dateinamen einschränken</entry>
       </section>
 
       <section name="Joblist">
