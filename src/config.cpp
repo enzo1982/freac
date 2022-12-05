@@ -304,8 +304,14 @@ const Bool	 freac::Config::TagsCoverArtReadFromTagsDefault			= True;
 const String	 freac::Config::TagsCoverArtReadFromFilesID			= "CoverArtReadFromFiles";
 const Bool	 freac::Config::TagsCoverArtReadFromFilesDefault		= True;
 
+const String	 freac::Config::TagsCoverArtUsePatternsID			= "CoverArtRestrictFilenames";
+const Bool	 freac::Config::TagsCoverArtUsePatternsDefault			= True;
+
+const String	 freac::Config::TagsCoverArtPatternsID				= "CoverArtFilenames";
+const String	 freac::Config::TagsCoverArtPatternsDefault			= "folder;*cover*;*albumart*;*front*;*back*;*inside*;*cd*;*disc*;*booklet*";
+
 const String	 freac::Config::TagsCoverArtMaxFileSizeID			= "CoverArtMaxFileSize";
-const Int	 freac::Config::TagsCoverArtMaxFileSizeDefault			= 100;
+const Int	 freac::Config::TagsCoverArtMaxFileSizeDefault			= 250;
 
 const String	 freac::Config::TagsCoverArtWriteToTagsID			= "CoverArtWriteToTags";
 const Bool	 freac::Config::TagsCoverArtWriteToTagsDefault			= True;

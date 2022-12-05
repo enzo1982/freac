@@ -545,6 +545,7 @@
 	<entry id="5527" string="unlimited"/>
 	<entry id="5528" string="Miscellaneous"/>
 	<entry id="5529" string="Fill missing fields with information obtained from file names"/>
+	<entry id="5530" string="Restrict file names"/>
       </section>
 
       <section name="Joblist">
@@ -738,6 +739,7 @@
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer"/>
 	<entry id="12005" string="HDCD Decoder"/>
 	<entry id="12006" string="Matrix Surround Decoder"/>
+	<entry id="12007" string="Volume Adjustment"/>
       </section>
 
       <section name="Verifiers">
@@ -1142,6 +1144,12 @@
 	<entry id="50500" string="Output channels"/>
 	<entry id="50501" string="Channel configuration"/>
 	<entry id="50502" string="Redirect bass content to LFE channel"/>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment"/>
+	<entry id="50601" string="Adjustment"/>
+	<entry id="50602" string="%1 dB"/>
       </section>
     </section>
 

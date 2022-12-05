@@ -161,25 +161,30 @@ Requirements
 History
 -------
 
-	Version 1.1.7 (August 2022)
+	Version 1.1.7 (December 2022)
 
 		- New features
 
 			- added support for dithering when reducing sample resolution
 			- added a matrix surround decoder DSP component
+			- added a volume adjustment DSP component
 
 		- Improvements
 
 			- added support for WavPack Hybrid Lossless compression with correction files
 			- added support for decoding MPEG-4 DASH files
+			- added support for downmixing 6.1 channel audio
 			- added support for MusicBrainz metadata in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags
 			- added support for sort order fields in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags
 			- added support for rating field in Vorbis Comment, APEv2, MP4 and LIST INFO tags
 			- added rating field to the tag editor
 			- added optional release year column to the joblist
+			- changed <disc> filename placeholder to resolve to 1 if disc number is not set
 			- improved compatibility with applications writing non-compliant LIST INFO tags (e.g. Traktor)
 			- added an option to control extraction of missing metadata from file names
+			- added an option to restrict file names for reading cover art
 			- added an option to disable intensity stereo phase inversion to Opus settings
+			- sample rate conversion no longer converts to 32 bit float when the source rate matches the target
 			- added negative exit codes to indicate errors when running freaccmd
 			- added support for KDE color schemes (including dark mode)
 			- improved HiDPI scale factor detection in KDE desktop environments
@@ -191,22 +196,25 @@ History
 			- fixed failure (hang and abort after several seconds) to decode chapters from ALAC files
 			- fixed interoperability issues of HE- and HEv2-AAC files created with FDK-AAC with foobar2000
 			- fixed incorrect gapless information when creating HE- and HEv2-AAC files with FDK-AAC
+			- fixed incorrect index times in cuesheets for very long multi-track files
 			- fixed old data remaining in place after updating WMA file tags
+			- fixed selected format resetting to first entry when opening WMA config dialog
 			- fixed excessive bitrate when encoding Vorbis on non-x86 LP64 systems
+			- fixed floating point samples being converted to integer when creating WavPack files
 			- fixed long paths being converted to 8.3 format on recent versions of Windows
 			- fixed inability to handle long network paths on some versions of Windows
 
 		- Updated codecs
 
 			- updated ALAC decoder for security fixes and improved performance
-			- updated FFmpeg to version 5.1
-			- updated Monkey's Audio to version 7.75
-			- updated WavPack to version 5.5.0
+			- updated FFmpeg to version 5.1.2
+			- updated Monkey's Audio to version 8.92
+			- updated WavPack to version 5.6.0
 			- updated Tom's Audiokompressor to version 2.3.3
-			- updated FLAC to version 1.3.4
+			- updated FLAC to version 1.4.2
 			- updated Speex to version 1.2.1
 			- updated MP4v2 to version 2.1.1
-			- updated mpg123 to version 1.30.2
+			- updated mpg123 to version 1.31.0
 			- updated libsndfile to version 1.1.0
 
 		- New and updated translations

@@ -1,7 +1,6 @@
 name: freac
-base: core18
-version: '1.1.6'
-version-script: echo 1.1.6~`date +"%Y%m%d"`
+base: core20
+adopt-info: freac
 summary: Audio converter and CD ripper
 description: |
   fre:ac is a free and open source audio converter. It comes with
@@ -14,9 +13,9 @@ icon: icons/freac.png
 
 apps:
   freac:
-    command: freac
+    command: bin/freac
     desktop: share/applications/org.freac.freac.desktop
-    extensions: [ gnome-3-28 ]
+    extensions: [ gnome-3-38 ]
     plugs:
       - gsettings
       - home
@@ -26,8 +25,8 @@ apps:
       - removable-media
 
   freaccmd:
-    command: freaccmd
-    extensions: [ gnome-3-28 ]
+    command: bin/freaccmd
+    extensions: [ gnome-3-38 ]
     plugs:
       - home
       - network
@@ -45,7 +44,7 @@ parts:
     source: https://ftp.gnu.org/gnu/libcdio/libcdio-2.1.0.tar.bz2
     source-checksum: sha256/8550e9589dbd594bfac93b81ecf129b1dc9d0d51e90f9696f1b2f9b2af32712b
     plugin: autotools
-    configflags: [ --prefix=/usr, --disable-cxx, --disable-example-progs, --without-cd-drive, --without-cd-info, --without-cd-read, --without-cdda-player, --without-iso-info, --without-iso-read ]
+    autotools-configure-parameters: [ --prefix=/usr, --disable-cxx, --disable-example-progs, --without-cd-drive, --without-cd-info, --without-cd-read, --without-cdda-player, --without-iso-info, --without-iso-read ]
     prime:
        - usr/lib/libcdio.so*
 
@@ -54,20 +53,22 @@ parts:
     source: https://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-10.2+2.0.1.tar.bz2
     source-checksum: sha256/33b1cf305ccfbfd03b43936975615000ce538b119989c4bec469577570b60e8a
     plugin: autotools
-    configflags: [ --prefix=/usr, --disable-cxx, --disable-example-progs ]
+    autotools-configure-parameters: [ --prefix=/usr, --disable-cxx, --disable-example-progs ]
     prime:
       - usr/lib/libcdio_*.so*
 
   libfaad:
+    after: [ patches ]
     source: https://github.com/knik0/faad2/archive/2_10_0.tar.gz
     source-checksum: sha256/0c6d9636c96f95c7d736f097d418829ced8ec6dbd899cc6cc82b728480a84bfb
     plugin: autotools
-    configflags: [ --prefix=/usr ]
+    autotools-configure-parameters: [ --prefix=/usr ]
     build-environment:
       - PATH: "/usr/bin:$PATH"
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
     override-build: |
-      autoreconf -i
+      patch -p1 < $SNAPCRAFT_STAGE/faad2-2.10.0-configure.patch
+      chmod a+x configure
       snapcraftctl build
     prime:
       - usr/lib/libfaad.so*
@@ -77,7 +78,7 @@ parts:
     source: https://github.com/mstorsjo/fdk-aac/archive/v2.0.2.tar.gz
     source-checksum: sha256/7812b4f0cf66acda0d0fe4302545339517e702af7674dd04e5fe22a5ade16a90
     plugin: autotools
-    configflags: [ --prefix=/usr ]
+    autotools-configure-parameters: [ --prefix=/usr ]
     build-environment:
       - CXXFLAGS: "$CXXFLAGS -O3 -funroll-loops"
     override-build: |
@@ -89,18 +90,18 @@ parts:
 
   libflac:
     after: [ libogg ]
-    source: https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.3.4.tar.xz
-    source-checksum: sha256/8ff0607e75a322dd7cd6ec48f4f225471404ae2730d0ea945127b1355155e737
+    source: https://ftp.osuosl.org/pub/xiph/releases/flac/flac-1.4.2.tar.xz
+    source-checksum: sha256/e322d58a1f48d23d9dd38f432672865f6f79e73a6f9cc5a5f57fcaa83eb5a8e4
     plugin: autotools
-    configflags: [ --prefix=/usr, --disable-cpp-libs, --disable-vsx ]
+    autotools-configure-parameters: [ --prefix=/usr, --disable-cpp-libs, --disable-vsx ]
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
     prime:
       - usr/lib/libFLAC.so*
 
   libmac:
-    source: https://freac.org/patches/MAC_SDK_775.zip
-    source-checksum: sha256/bf212f13a346ff0db1063a3908177ec5d88a5525c9a451190f9c7fbb9255c4b1
+    source: https://freac.org/patches/MAC_892_SDK.zip
+    source-checksum: sha256/ada511b5fe58e05a12440646a7d568f47aa9f6ec69f42b30f1f6e97084e241d3
     source-subdir: .
     plugin: make
     make-parameters: [ -f, Source/Projects/NonWindows/Makefile, prefix=/usr ]
@@ -118,7 +119,7 @@ parts:
     source: https://sourceforge.net/projects/lame/files/lame/3.100/lame-3.100.tar.gz
     source-checksum: sha256/ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e
     plugin: autotools
-    configflags: [ --prefix=/usr, --enable-nasm, --disable-frontend ]
+    autotools-configure-parameters: [ --prefix=/usr, --enable-nasm, --disable-frontend ]
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
     override-build: |
@@ -133,15 +134,15 @@ parts:
     source: https://github.com/enzo1982/mp4v2/releases/download/v2.1.1/mp4v2-2.1.1.tar.bz2
     source-checksum: sha256/29420c62e56a2e527fd8979d59d05ed6d83ebe27e0e2c782c1ec19a3a402eaee
     plugin: autotools
-    configflags: [ --prefix=/usr ]
+    autotools-configure-parameters: [ --prefix=/usr ]
     build-environment:
       - CXXFLAGS: "$CXXFLAGS -Os"
     prime:
       - usr/lib/libmp4v2.so*
 
   libmpg123:
-    source: https://mpg123.de/download/mpg123-1.30.2.tar.bz2
-    source-checksum: sha256/c7ea863756bb79daed7cba2942ad3b267a410f26d2dfbd9aaf84451ff28a05d7
+    source: https://mpg123.de/download/mpg123-1.31.0.tar.bz2
+    source-checksum: sha256/481bc0dd78904b28d7f8df7456603a71bdcbc7140716c0c3ec8a1a6635f58c81
     plugin: autotools
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
@@ -166,7 +167,7 @@ parts:
     source: https://ftp.osuosl.org/pub/xiph/releases/ogg/libogg-1.3.5.tar.xz
     source-checksum: sha256/c4d91be36fc8e54deae7575241e03f4211eb102afb3fc0775fbbc1b740016705
     plugin: autotools
-    configflags: [ --prefix=/usr ]
+    autotools-configure-parameters: [ --prefix=/usr ]
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
     prime:
@@ -176,7 +177,7 @@ parts:
     source: https://ftp.osuosl.org/pub/xiph/releases/opus/opus-1.3.1.tar.gz
     source-checksum: sha256/65b58e1e25b2a114157014736a3d9dfeaad8d41be1c8179866f144a2fb44ff9d
     plugin: autotools
-    configflags: [ --prefix=/usr, --enable-float-approx ]
+    autotools-configure-parameters: [ --prefix=/usr, --enable-float-approx ]
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
     prime:
@@ -186,7 +187,7 @@ parts:
     source: https://github.com/xiph/rnnoise.git
     source-commit: 9acc1e5a633e0961a5895a73204df24744f199b6
     plugin: autotools
-    configflags: [ --prefix=/usr ]
+    autotools-configure-parameters: [ --prefix=/usr ]
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
     override-build: |
@@ -199,7 +200,7 @@ parts:
     source: https://ftp.osuosl.org/pub/xiph/releases/speex/speex-1.2.1.tar.gz
     source-checksum: sha256/4b44d4f2b38a370a2d98a78329fefc56a0cf93d1c1be70029217baae6628feea
     plugin: autotools
-    configflags: [ --prefix=/usr ]
+    autotools-configure-parameters: [ --prefix=/usr ]
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
     prime:
@@ -210,7 +211,7 @@ parts:
     source: https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-1.3.7.tar.xz
     source-checksum: sha256/b33cc4934322bcbf6efcbacf49e3ca01aadbea4114ec9589d1b1e9d20f72954b
     plugin: autotools
-    configflags: [ --prefix=/usr ]
+    autotools-configure-parameters: [ --prefix=/usr ]
     build-environment:
       - CFLAGS: "$CFLAGS -O3"
     override-build: |
@@ -223,10 +224,10 @@ parts:
       - usr/lib/libvorbis*.so*
 
   ffmpeg:
-    source: https://ffmpeg.org/releases/ffmpeg-5.1.tar.xz
-    source-checksum: sha256/55eb6aab5ee235550fa54a33eaf8bf1b4ec66c01453182b12f6a993d75698b03
+    source: https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz
+    source-checksum: sha256/619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc
     plugin: autotools
-    configflags: [ --prefix=/usr, --disable-autodetect, --enable-gpl, --enable-small, --enable-runtime-cpudetect, --disable-vsx ]
+    autotools-configure-parameters: [ --prefix=/usr, --disable-autodetect, --enable-gpl, --enable-small, --enable-runtime-cpudetect, --disable-vsx ]
     build-packages:
       - yasm
     prime:
@@ -257,7 +258,7 @@ parts:
       - libjpeg8-dev
       - libxml2-dev
     stage-packages:
-      - libcurl4
+      - libcurl3-gnutls
       - libfribidi0
 
   boca:
@@ -289,6 +290,7 @@ parts:
       - CXXFLAGS: "$CXXFLAGS -g0 -Os -fno-rtti -fno-exceptions -DFREAC_DATE=\\\\\\\"`date +\"%Y%m%d\"`\\\\\\\""
     override-pull: |
       snapcraftctl pull
+      snapcraftctl set-version "$(echo 1.1.6~`date +"%Y%m%d"`)"
       sed -i -e 's|Icon=org.freac.freac|Icon=${SNAP}/share/icons/hicolor/128x128/apps/org.freac.freac.png|g' metadata/org.freac.freac.desktop
     override-build: |
       patch -p1 < $SNAPCRAFT_STAGE/freac-1.1.6-pre-snap.patch

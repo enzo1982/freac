@@ -24,6 +24,9 @@ namespace freac
 			GroupBox	*group_coverart_read;
 			CheckBox	*check_coverart_read_tags;
 			CheckBox	*check_coverart_read_files;
+			CheckBox	*check_coverart_read_patterns;
+			EditBox		*edit_coverart_read_patterns;
+			List		*list_coverart_read_patterns;
 			Text		*text_coverart_read_max;
 			Slider		*slider_coverart_read_max;
 			Text		*text_coverart_read_max_value;
@@ -39,6 +42,8 @@ namespace freac
 			Bool		 enableCoverArtReadFromTags;
 			Bool		 enableCoverArtReadFromFiles;
 
+			Bool		 coverArtUsePatterns;
+
 			Int		 coverArtMaxFileSize;
 
 			Bool		 enableCoverArtWriteToTags;
@@ -48,6 +53,7 @@ namespace freac
 		slots:
 			Void		 ToggleWriteCoverArt();
 			Void		 ToggleReadCoverArtFiles();
+			Void		 ToggleUsePatterns();
 
 			Void		 ChangeMaxCoverArtSize(Int);
 		public:

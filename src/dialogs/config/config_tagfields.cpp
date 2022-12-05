@@ -80,7 +80,7 @@ freac::ConfigureTagFields::ConfigureTagFields()
 	 */
 	Int	 maxTextSize = Math::Max(Math::Max(check_read_chapters->GetUnscaledTextWidth(), check_write_chapters->GetUnscaledTextWidth()), Math::Max(check_mcdi->GetUnscaledTextWidth(), check_replaygain->GetUnscaledTextWidth()));
 
-	group_comments->SetWidth(Math::Max(552, (maxTextSize + 21 + 20) * 2) + 8);
+	group_comments->SetWidth(Math::Max(552, (maxTextSize + 21 + 20) * 2 + 8));
 
 	edit_defcomment->SetWidth(group_comments->GetWidth() - edit_defcomment->GetX() - 10);
 	check_replace->SetWidth(group_comments->GetWidth() - 20);

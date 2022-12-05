@@ -264,7 +264,6 @@
     <ClCompile Include="..\..\src\dialogs\error.cpp" />
     <ClCompile Include="..\..\src\dialogs\format.cpp" />
     <ClCompile Include="..\..\src\dialogs\overwrite.cpp" />
-    <ClCompile Include="..\..\src\dialogs\splitter.cpp" />
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
     <ClCompile Include="..\..\src\engine\component.cpp" />
     <ClCompile Include="..\..\src\engine\locking.cpp" />
