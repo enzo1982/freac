@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -90,42 +90,36 @@ String freac::CDDB::QueryStringFromMCDI(const MCDI &mcdi)
 
 UnsignedInt32 freac::CDDB::DiscIDFromOffsets(const String &offsets)
 {
-	Int	 numTocEntries = (Int64) Number::FromHexString(offsets);
+	const Array<String>	&values = offsets.Explode("+");
+
 	Int	 n = 0;
 
-	String	 remaining = offsets.Tail(offsets.Length() - offsets.Find("+") - 1);
-
-	for (Int i = 0; i < numTocEntries; i++)
+	for (Int i = 1; i < values.Length() - 1; i++)
 	{
-		Int	 offset = (Int64) Number::FromHexString(remaining);
+		Int	 offset = (Int64) Number::FromHexString(values.GetNth(i));
 
 		n += cddb_sum(offset / 75);
-
-		remaining = remaining.Tail(remaining.Length() - remaining.Find("+") - 1);
 	}
 
-	Int	 t = (Int64) Number::FromHexString(remaining) / 75 - (Int64) Number::FromHexString(offsets.Tail(offsets.Length() - offsets.Find("+") - 1)) / 75;
+	Int	 t = (Int64) Number::FromHexString(values.GetLast()) / 75 - (Int64) Number::FromHexString(values.GetNth(1)) / 75;
 
-	return ((n % 0xff) << 24 | t << 8 | numTocEntries);
+	return ((n % 0xff) << 24 | t << 8 | values.Length() - 2);
 }
 
 String freac::CDDB::QueryStringFromOffsets(const String &offsets)
 {
-	Int	 numTocEntries = (Int64) Number::FromHexString(offsets);
+	const Array<String>	&values = offsets.Explode("+");
+
 	String	 str = String("cddb query ").Append(DiscIDToString(DiscIDFromOffsets(offsets)));
 
-	str.Append(" ").Append(String::FromInt(numTocEntries));
+	str.Append(" ").Append(String::FromInt(values.Length() - 2));
 
-	String	 remaining = offsets.Tail(offsets.Length() - offsets.Find("+") - 1);
-
-	for (Int i = 0; i < numTocEntries; i++)
+	for (Int i = 1; i < values.Length() - 1; i++)
 	{
-		str.Append(" ").Append(String::FromInt((Int64) Number::FromHexString(remaining)));
-
-		remaining = remaining.Tail(remaining.Length() - remaining.Find("+") - 1);
+		str.Append(" ").Append(String::FromInt((Int64) Number::FromHexString(values.GetNth(i))));
 	}
 
-	str.Append(" ").Append(String::FromInt((Int64) Number::FromHexString(remaining) / 75));
+	str.Append(" ").Append(String::FromInt((Int64) Number::FromHexString(values.GetLast()) / 75));
 
 	return str;
 }

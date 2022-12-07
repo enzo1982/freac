@@ -197,6 +197,7 @@ History
 			- fixed interoperability issues of HE- and HEv2-AAC files created with FDK-AAC with foobar2000
 			- fixed incorrect gapless information when creating HE- and HEv2-AAC files with FDK-AAC
 			- fixed incorrect index times in cuesheets for very long multi-track files
+			- fixed incorrect inclusion of data tracks in the audio track count of CD offset strings
 			- fixed old data remaining in place after updating WMA file tags
 			- fixed selected format resetting to first entry when opening WMA config dialog
 			- fixed excessive bitrate when encoding Vorbis on non-x86 LP64 systems
