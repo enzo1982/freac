@@ -103,7 +103,7 @@ UnsignedInt32 freac::CDDB::DiscIDFromOffsets(const String &offsets)
 
 	Int	 t = (Int64) Number::FromHexString(values.GetLast()) / 75 - (Int64) Number::FromHexString(values.GetNth(1)) / 75;
 
-	return ((n % 0xff) << 24 | t << 8 | values.Length() - 2);
+	return ((n % 0xff) << 24 | t << 8 | (values.Length() - 2));
 }
 
 String freac::CDDB::QueryStringFromOffsets(const String &offsets)
