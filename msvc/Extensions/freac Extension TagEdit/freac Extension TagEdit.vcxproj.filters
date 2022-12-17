@@ -123,10 +123,10 @@
     <ClInclude Include="..\..\..\components\extension\tagedit\config.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_lyrics.h">
-      <Filter>Quelldateien\editor</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_rating.h">
+      <Filter>Headerdateien\editor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\components\extension\tagedit\editor\editor_lyrics.h">
       <Filter>Headerdateien\editor</Filter>
     </ClInclude>
   </ItemGroup>
