@@ -545,6 +545,7 @@
 	<entry id="5527" string="unlimited">senza limitu</entry>
 	<entry id="5528" string="Miscellaneous">Diversi</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names">Riempie i campi assente cù l’infurmazione ottinuta da i nomi di schedariu</entry>
+	<entry id="5530" string="Restrict file names">Restringhje i nomi di schedariu</entry>
       </section>
 
       <section name="Joblist">
@@ -738,6 +739,7 @@
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Cambià a tunalità/tempo di Rubber Band</entry>
 	<entry id="12005" string="HDCD Decoder">Discudificatore HDCD</entry>
 	<entry id="12006" string="Matrix Surround Decoder">Discudificatore Surround Matrix</entry>
+	<entry id="12007" string="Volume Adjustment">Accumudata di vulume</entry>
       </section>
 
       <section name="Verifiers">
@@ -1075,6 +1077,9 @@
 	<entry id="50004" string="unsigned">senza segnu</entry>
 	<entry id="50005" string="Integer">Interu</entry>
 	<entry id="50006" string="Float">Decimale</entry>
+	<entry id="50007" string="Dithering">Tramatura</entry>
+	<entry id="50008" string="Apply dither when reducing sample resolution">Appiecà a trama quandu si riduce a risuluzione di campiunariu</entry>
+	<entry id="50009" string="Dither type">Tipu di trama</entry>
       </section>
 
       <section name="Channels">
@@ -1139,6 +1144,12 @@
 	<entry id="50500" string="Output channels">Canali d’esciuta</entry>
 	<entry id="50501" string="Channel configuration">Cunfigurazione di canale</entry>
 	<entry id="50502" string="Redirect bass content to LFE channel">Addirizzà u cuntenutu di u bassu versu u canale LFE</entry>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment">Accumudata di vulume</entry>
+	<entry id="50601" string="Adjustment">Accumudata</entry>
+	<entry id="50602" string="%1 dB">%1 dB</entry>
       </section>
     </section>
 
