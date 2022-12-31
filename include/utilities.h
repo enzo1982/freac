@@ -24,7 +24,7 @@ namespace freac
 			static Void	 UpdateGenreList(List *, const String &);
 
 			static String	 GetOutputFileName(const BoCA::Config *, const BoCA::Track &);
-			static String	 GetOutputFileName(const BoCA::Track &, const String &, const String &, Bool, const String &, Bool, Bool, Bool);
+			static String	 GetOutputFileName(const BoCA::Track &, const String &, const String &, Bool, const String &, Bool, Bool, Bool, Bool);
 
 			static String	 GetSingleOutputFileName(const BoCA::Config *, const Array<BoCA::Track> &);
 			static String	 GetSingleOutputFileNameDefault(const BoCA::Config *, const Array<BoCA::Track> &);

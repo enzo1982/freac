@@ -305,13 +305,14 @@ String freac::Utilities::GetOutputFileName(const BoCA::Config *config, const Tra
 	String	 encoderID	 = config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderID, Config::SettingsEncoderDefault);
 	Bool	 useUnicode	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
 	Bool	 replaceSpaces	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
+	Bool	 useFallback	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesUseFallbackID, Config::SettingsFilenamesUseFallbackDefault);
 
 	if (filePattern.Trim() == NIL) filePattern = Config::SettingsEncoderFilenamePatternDefault;
 
-	return GetOutputFileName(track, filePattern, outputDirectory, writeToInputDir, encoderID, True, useUnicode, replaceSpaces);
+	return GetOutputFileName(track, filePattern, outputDirectory, writeToInputDir, encoderID, True, useUnicode, replaceSpaces, useFallback);
 }
 
-String freac::Utilities::GetOutputFileName(const Track &track, const String &filePattern, const String &outputDirectory, Bool writeToInputDir, const String &encoderID, Bool normalizeFileName, Bool useUnicode, Bool replaceSpaces)
+String freac::Utilities::GetOutputFileName(const Track &track, const String &filePattern, const String &outputDirectory, Bool writeToInputDir, const String &encoderID, Bool normalizeFileName, Bool useUnicode, Bool replaceSpaces, Bool useFallback)
 {
 	if (track.outputFile != NIL) return track.outputFile;
 
@@ -352,9 +353,18 @@ String freac::Utilities::GetOutputFileName(const Track &track, const String &fil
 
 	lastRequest = S::System::System::Clock();
 
+	/* Check available metadata.
+	 */
+	Bool	 metadataAvailable = False;
+
+	if ((info.title	 != NIL &&  filePattern.Contains(kTitlePattern)						      ) ||
+	    (info.album	 != NIL &&  filePattern.Contains(kAlbumPattern)						      ) ||
+	    (info.artist != NIL && (filePattern.Contains(kArtistPattern) || filePattern.Contains(kAlbumArtistPattern))) ||
+	    (info.track	 >  0	&& (filePattern.Contains(kTrackPattern)	 || filePattern.Contains(kTrackExtStart)     ))) metadataAvailable = True;
+
 	/* Replace patterns.
 	 */
-	if (info.HasBasicInfo() || filePattern.Contains(kFileNamePattern) || filePattern.Contains(kCurrentDatePattern) || filePattern.Contains(kCurrentTimePattern))
+	if (metadataAvailable || !useFallback || filePattern.Contains(kFileNamePattern) || filePattern.Contains(kCurrentDatePattern) || filePattern.Contains(kCurrentTimePattern))
 	{
 		String	 shortOutFileName = filePattern;
 

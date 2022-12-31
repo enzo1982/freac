@@ -181,6 +181,7 @@ History
 			- added optional release year column to the joblist
 			- changed <disc> filename placeholder to resolve to 1 if disc number is not set
 			- improved compatibility with applications writing non-compliant LIST INFO tags (e.g. Traktor)
+			- added an option to use source file names as output file names if no metadata is present
 			- added an option to control extraction of missing metadata from file names
 			- added an option to restrict file names for reading cover art
 			- added an option to disable intensity stereo phase inversion to Opus settings

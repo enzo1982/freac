@@ -180,6 +180,7 @@ Geschichte
 			- Optionale Spalte für Veröffentlichungsjahr zur Jobliste hinzugefügt
 			- Dateinamensplatzhalter <disc> wird jetzt durch 1 ersetzt, wenn die Disk-Nummer nicht gesetzt ist
 			- Kompatibilität mit Anwendungen, die fehlerhafte LIST INFO-Tags schreiben, verbessert (z.B. Traktor)
+			- Option zur Verwendung von Quelldateinamen als Ausgabedateinamen, wenn keine Metadaten vorhanden sind, hinzugefügt
 			- Option zur Steuerung der Extraktion fehlender Metadaten aus Dateinamen hinzugefügt
 			- Option zum Einschränken der Dateinamen für das Einlesen von Cover-Bildern hinzugefügt
 			- Option zum Deaktivieren der Phasenumkehr bei Intensity Stereo zu Opus-Einstellungen hinzugefügt

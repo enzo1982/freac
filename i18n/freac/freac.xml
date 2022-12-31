@@ -446,6 +446,7 @@
 	<entry id="5158" string="Replace spaces with underscores"/>
 	<entry id="5159" string="Append sequential numbers to otherwise identical filenames"/>
 	<entry id="5160" string="Keep time stamps of source files"/>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available"/>
 
 	<section name="Errors">
 	  <entry id="5180" string="The output folder does not exist! Do you want to create it?"/>

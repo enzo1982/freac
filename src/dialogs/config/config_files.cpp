@@ -30,6 +30,7 @@ freac::ConfigureFiles::ConfigureFiles()
 	useInputDir	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, Config::SettingsWriteToInputDirectoryDefault);
 	allowOverwrite	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, Config::SettingsAllowOverwriteSourceDefault);
 
+	useFallback	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesUseFallbackID, Config::SettingsFilenamesUseFallbackDefault);
 	addSeqNumbers	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAddSequentialNumbersID, Config::SettingsFilenamesAddSequentialNumbersDefault);
 	unicodeFiles	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, Config::SettingsFilenamesAllowUnicodeDefault);
 	replaceSpaces	 = config->GetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, Config::SettingsFilenamesReplaceSpacesDefault);
@@ -70,7 +71,7 @@ freac::ConfigureFiles::ConfigureFiles()
 
 	/* Filename group.
 	 */
-	group_filename	= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 116), Size(100, 113));
+	group_filename	= new GroupBox(i18n->TranslateString("Output filenames"), Point(7, 116), Size(100, 159));
 
 	text_filename	= new Text(i18n->AddColon(i18n->TranslateString("Filename pattern")), Point(10, 15));
 	edit_filename	= new EditBox(config->GetStringValue(Config::CategorySettingsID, Config::SettingsEncoderFilenamePatternID, Config::SettingsEncoderFilenamePatternDefault), Point(17 + text_filename->GetUnscaledTextWidth(), 12), Size(), 0);
@@ -102,13 +103,15 @@ freac::ConfigureFiles::ConfigureFiles()
 
 	edit_filename->SetDropDownList(list_filename);
 
-	check_addSeqNumbers	= new CheckBox(i18n->TranslateString("Append sequential numbers to otherwise identical filenames"), Point(10, 39), Size(), &addSeqNumbers);
-	check_unicodeFiles	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 62), Size(), &unicodeFiles);
-	check_replaceSpaces	= new CheckBox(i18n->TranslateString("Replace spaces with underscores"), Point(10, 85), Size(), &replaceSpaces);
-	check_keepTimeStamps	= new CheckBox(i18n->TranslateString("Keep time stamps of source files"), Point(10, 62), Size(), &keepTimeStamps);
+	check_useFallback	= new CheckBox(i18n->TranslateString("Use <filename> when title information is not available"), Point(edit_filename->GetX(), 39), Size(), &useFallback);
+	check_addSeqNumbers	= new CheckBox(i18n->TranslateString("Append sequential numbers to otherwise identical filenames"), Point(10, 62), Size(), &addSeqNumbers);
+	check_unicodeFiles	= new CheckBox(i18n->TranslateString("Allow Unicode characters"), Point(10, 85), Size(), &unicodeFiles);
+	check_replaceSpaces	= new CheckBox(i18n->TranslateString("Replace spaces with underscores"), Point(10, 108), Size(), &replaceSpaces);
+	check_keepTimeStamps	= new CheckBox(i18n->TranslateString("Keep time stamps of source files"), Point(10, 131), Size(), &keepTimeStamps);
 
 	group_filename->Add(text_filename);
 	group_filename->Add(edit_filename);
+	group_filename->Add(check_useFallback);
 	group_filename->Add(check_addSeqNumbers);
 	group_filename->Add(check_unicodeFiles);
 	group_filename->Add(check_replaceSpaces);
@@ -130,14 +133,13 @@ freac::ConfigureFiles::ConfigureFiles()
 	group_filename->SetWidth(group_outdir->GetWidth());
 	edit_filename->SetWidth(group_filename->GetWidth() - text_filename->GetUnscaledTextWidth() - 27);
 
+	check_useFallback->SetWidth(edit_filename->GetWidth());
 	check_addSeqNumbers->SetWidth(group_filename->GetWidth() - 20);
-	check_unicodeFiles->SetWidth(Math::Max(261, maxTextSize + 21));
-	check_replaceSpaces->SetWidth(check_unicodeFiles->GetWidth());
+	check_unicodeFiles->SetWidth(check_addSeqNumbers->GetWidth());
+	check_replaceSpaces->SetWidth(check_addSeqNumbers->GetWidth());
+	check_keepTimeStamps->SetWidth(check_addSeqNumbers->GetWidth());
 
-	check_keepTimeStamps->SetX(check_unicodeFiles->GetWidth() + 19);
-	check_keepTimeStamps->SetWidth(check_unicodeFiles->GetWidth());
-
-	SetSize(Size(14 + group_outdir->GetWidth(), 236));
+	SetSize(Size(14 + group_outdir->GetWidth(), 282));
 }
 
 freac::ConfigureFiles::~ConfigureFiles()
@@ -153,6 +155,7 @@ freac::ConfigureFiles::~ConfigureFiles()
 	DeleteObject(text_filename);
 	DeleteObject(edit_filename);
 	DeleteObject(list_filename);
+	DeleteObject(check_useFallback);
 	DeleteObject(check_addSeqNumbers);
 	DeleteObject(check_unicodeFiles);
 	DeleteObject(check_replaceSpaces);
@@ -264,6 +267,7 @@ Int freac::ConfigureFiles::SaveSettings()
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsWriteToInputDirectoryID, useInputDir);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsAllowOverwriteSourceID, allowOverwrite);
 
+	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesUseFallbackID, useFallback);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAddSequentialNumbersID, addSeqNumbers);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesAllowUnicodeID, unicodeFiles);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsFilenamesReplaceSpacesID, replaceSpaces);

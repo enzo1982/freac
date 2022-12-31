@@ -32,6 +32,7 @@ namespace freac
 			Text		*text_filename;
 			EditBox		*edit_filename;
 			List		*list_filename;
+			CheckBox	*check_useFallback;
 			CheckBox	*check_addSeqNumbers;
 			CheckBox	*check_unicodeFiles;
 			CheckBox	*check_replaceSpaces;
@@ -40,6 +41,7 @@ namespace freac
 			Bool		 useInputDir;
 			Bool		 allowOverwrite;
 
+			Bool		 useFallback;
 			Bool		 addSeqNumbers;
 			Bool		 unicodeFiles;
 			Bool		 replaceSpaces;
