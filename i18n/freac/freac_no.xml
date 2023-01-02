@@ -363,25 +363,28 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Konfigurer koder</entry>
 	<entry id="5101" string="Encoder">Koder</entry>
-	<entry id="5102" string="Output folder">Målmappe</entry>
-	<entry id="5103" string="Select">Bla gjennom</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Velg mappe for kodede filer</entry>
-	<entry id="5105" string="Use input file folder if possible">Bruk inndatamålmappe om mulig</entry>
-	<entry id="5106" string="Allow overwriting input file">Tillat overskriving av inndatafil</entry>
-	<entry id="5107" string="Options">Alternativer</entry>
-	<entry id="5108" string="Filename pattern">Filnavnmønster</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Kod 'On-The-Fly'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Behold rippede wave-filer</entry>
-	<entry id="5111" string="Encode to a single file">Kod til enkelt fil</entry>
-	<entry id="5112" string="Output filenames">Målfil</entry>
-	<entry id="5113" string="Allow Unicode characters">Tillat unicode tegn</entry>
-	<entry id="5114" string="Replace spaces with underscores">Erstatt mellomrom med understrek</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Fjern fullførte spor fra jobb-listen</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Legg til nummersekvens til eller identiske filnavn</entry>
-	<entry id="5118" string="Keep time stamps of source files">Behold tidsstempel fra kildefiler</entry>
+	<entry id="5102" string="Options">Alternativer</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Kod 'On-The-Fly'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Behold rippede wave-filer</entry>
+	<entry id="5105" string="Encode to a single file">Kod til enkelt fil</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Fjern fullførte spor fra jobb-listen</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Målmappe</entry>
+	<entry id="5151" string="Use input file folder if possible">Bruk inndatamålmappe om mulig</entry>
+	<entry id="5152" string="Allow overwriting input file">Tillat overskriving av inndatafil</entry>
+	<entry id="5153" string="Select">Bla gjennom</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Velg mappe for kodede filer</entry>
+	<entry id="5155" string="Output filenames">Målfil</entry>
+	<entry id="5156" string="Filename pattern">Filnavnmønster</entry>
+	<entry id="5157" string="Allow Unicode characters">Tillat unicode tegn</entry>
+	<entry id="5158" string="Replace spaces with underscores">Erstatt mellomrom med understrek</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Legg til nummersekvens til eller identiske filnavn</entry>
+	<entry id="5160" string="Keep time stamps of source files">Behold tidsstempel fra kildefiler</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Målmappen eksisterer ikke! Vil du opprette den?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Målmappen eksisterer ikke! Vil du opprette den?</entry>
 	</section>
       </section>
 

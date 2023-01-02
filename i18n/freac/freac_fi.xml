@@ -327,19 +327,22 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Määritä muunnin</entry>
 	<entry id="5101" string="Encoder">Muunnin</entry>
-	<entry id="5102" string="Output folder">Tulosteen tallennuskohde</entry>
-	<entry id="5103" string="Select">Selaa</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Valitse kohde minne muunnetut tiedostot laitetaan</entry>
-	<entry id="5105" string="Use input file folder if possible">Käytä syötetiedoston kansiota jos mahdollista</entry>
-	<entry id="5106" string="Allow overwriting input file">Salli syötetiedoston korvaaminen</entry>
-	<entry id="5107" string="Options">Asetukset</entry>
-	<entry id="5108" string="Filename pattern">Mallitiedosto</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Muunna &quot;lennossa&quot;</entry>
-	<entry id="5110" string="Keep ripped Wave files">Pidä kopioidut aaltotiedostot</entry>
-	<entry id="5111" string="Encode to a single file">Muunna yksittäinen tiedosto</entry>
+	<entry id="5102" string="Options">Asetukset</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Muunna &quot;lennossa&quot;</entry>
+	<entry id="5104" string="Keep ripped Wave files">Pidä kopioidut aaltotiedostot</entry>
+	<entry id="5105" string="Encode to a single file">Muunna yksittäinen tiedosto</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Tulosteen tallennuskohde</entry>
+	<entry id="5151" string="Use input file folder if possible">Käytä syötetiedoston kansiota jos mahdollista</entry>
+	<entry id="5152" string="Allow overwriting input file">Salli syötetiedoston korvaaminen</entry>
+	<entry id="5153" string="Select">Selaa</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Valitse kohde minne muunnetut tiedostot laitetaan</entry>
+	<entry id="5156" string="Filename pattern">Mallitiedosto</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Tulostekansiota ei ole olemassa! Haluatko luoda sellaisen?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Tulostekansiota ei ole olemassa! Haluatko luoda sellaisen?</entry>
 	</section>
       </section>
 

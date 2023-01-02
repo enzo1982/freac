@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -32,44 +32,19 @@ namespace freac
 			CheckBox	*check_removeTracks;
 			CheckBox	*check_addEncodedTracks;
 
-			GroupBox	*group_outdir;
-			CheckBox	*check_useInputDir;
-			CheckBox	*check_allowOverwrite;
-			EditBox		*edit_outdir;
-			List		*list_outdir;
-			Button		*button_outdirBrowse;
-
-			GroupBox	*group_filename;
-			Text		*text_filename;
-			EditBox		*edit_filename;
-			List		*list_filename;
-			CheckBox	*check_addSeqNumbers;
-			CheckBox	*check_unicodeFiles;
-			CheckBox	*check_replaceSpaces;
-			CheckBox	*check_keepTimeStamps;
-
 			Bool		 singleFile;
 			Bool		 onTheFly;
 			Bool		 keepWaves;
 			Bool		 removeTracks;
 			Bool		 addEncodedTracks;
-			Bool		 useInputDir;
-			Bool		 allowOverwrite;
-
-			Bool		 addSeqNumbers;
-			Bool		 unicodeFiles;
-			Bool		 replaceSpaces;
-			Bool		 keepTimeStamps;
 
 			String		 GetSelectedEncoder() const;
 		slots:
-			Void		 SelectDir();
 			Void		 SelectEncoder();
 			Void		 ConfigureEncoder();
 
 			Void		 ToggleOnTheFly();
 			Void		 ToggleRemoveTracks();
-			Void		 ToggleUseInputDir();
 			Void		 ToggleEncodeToSingleFile();
 		public:
 					 ConfigureEncoders();

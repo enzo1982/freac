@@ -405,26 +405,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">تنظيم مبدل صوت</entry>
 	<entry id="5101" string="Encoder">مبدل فرمت</entry>
-	<entry id="5102" string="Output folder">پوشه خروجي</entry>
-	<entry id="5103" string="Select">انتخاب</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">پوشه اي که فايل هاي خروجي در آن قرار ميگيرند انتخاب کن</entry>
-	<entry id="5105" string="Use input file folder if possible">از پوشه فايلهاي اصلي در صورت امکان استفاده کن</entry>
-	<entry id="5106" string="Allow overwriting input file">بازنويسي روي فايل اصلي مجاز است</entry>
-	<entry id="5107" string="Options">تنظيمات</entry>
-	<entry id="5108" string="Filename pattern">الگوي نام فايل‌ها</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">تبديل به صورت لحظه اي</entry>
-	<entry id="5110" string="Keep ripped Wave files">فايل هاي Wave تبديل شده را نگهداري کن</entry>
-	<entry id="5111" string="Encode to a single file">همه صدا‌ها به يک فايل واحد تبديل شود</entry>
-	<entry id="5112" string="Output filenames">نام فايل‌هاي خروجي</entry>
-	<entry id="5113" string="Allow Unicode characters">استفاده از Unicode</entry>
-	<entry id="5114" string="Replace spaces with underscores">فواصل را به آندرلاين تبديل کن</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">قطعات پردازش شده را از ليست حذف کن</entry>
-	<entry id="5116" string="Add encoded files to joblist">فايل‌هاي تبديل شده را به ليست اضافه کن</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">جهت تمايز فايل هاي با نام مشابه، به آنها شماره هاي پيوسته اختصاص بده</entry>
-	<entry id="5118" string="Keep time stamps of source files">اطلاعات زماني و تاريخ را از فايل اصلي حفظ کن</entry>
+	<entry id="5102" string="Options">تنظيمات</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">تبديل به صورت لحظه اي</entry>
+	<entry id="5104" string="Keep ripped Wave files">فايل هاي Wave تبديل شده را نگهداري کن</entry>
+	<entry id="5105" string="Encode to a single file">همه صدا‌ها به يک فايل واحد تبديل شود</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">قطعات پردازش شده را از ليست حذف کن</entry>
+	<entry id="5107" string="Add encoded files to joblist">فايل‌هاي تبديل شده را به ليست اضافه کن</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">پوشه خروجي</entry>
+	<entry id="5151" string="Use input file folder if possible">از پوشه فايلهاي اصلي در صورت امکان استفاده کن</entry>
+	<entry id="5152" string="Allow overwriting input file">بازنويسي روي فايل اصلي مجاز است</entry>
+	<entry id="5153" string="Select">انتخاب</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">پوشه اي که فايل هاي خروجي در آن قرار ميگيرند انتخاب کن</entry>
+	<entry id="5155" string="Output filenames">نام فايل‌هاي خروجي</entry>
+	<entry id="5156" string="Filename pattern">الگوي نام فايل‌ها</entry>
+	<entry id="5157" string="Allow Unicode characters">استفاده از Unicode</entry>
+	<entry id="5158" string="Replace spaces with underscores">فواصل را به آندرلاين تبديل کن</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">جهت تمايز فايل هاي با نام مشابه، به آنها شماره هاي پيوسته اختصاص بده</entry>
+	<entry id="5160" string="Keep time stamps of source files">اطلاعات زماني و تاريخ را از فايل اصلي حفظ کن</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">پوشه خروجي تخصيص يافته موجود نيست! مايل به ايجاد آن هستيد؟</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">پوشه خروجي تخصيص يافته موجود نيست! مايل به ايجاد آن هستيد؟</entry>
 	</section>
       </section>
 

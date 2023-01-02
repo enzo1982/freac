@@ -424,26 +424,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar codificador</entry>
 	<entry id="5101" string="Encoder">Codificador</entry>
-	<entry id="5102" string="Output folder">Pasta de saída</entry>
-	<entry id="5103" string="Select">Escolher</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Selecione a pasta para os ficheiros codificados</entry>
-	<entry id="5105" string="Use input file folder if possible">Usar a pasta do ficheiro de entrada, se possível</entry>
-	<entry id="5106" string="Allow overwriting input file">Permitir sobrescrever o ficheiro de entrada</entry>
-	<entry id="5107" string="Options">Opções</entry>
-	<entry id="5108" string="Filename pattern">Padrão do nome do ficheiro</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Codificar 'On-The-Fly'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Manter os ficheiros ripados *.wav</entry>
-	<entry id="5111" string="Encode to a single file">Codificar num ficheiro único</entry>
-	<entry id="5112" string="Output filenames">Nomes dos ficheiros de saída</entry>
-	<entry id="5113" string="Allow Unicode characters">Permitir caracteres Unicode</entry>
-	<entry id="5114" string="Replace spaces with underscores">Substituir espaços por sublinhados</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Remover faixas processadas da lista de trabalho</entry>
-	<entry id="5116" string="Add encoded files to joblist">Adicionar ficheiros codificados à lista de trabalho</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Anexar números sequenciais a nomes de ficheiros idênticos</entry>
-	<entry id="5118" string="Keep time stamps of source files">Mantenha registros de data e hora dos ficheiros de origem</entry>
+	<entry id="5102" string="Options">Opções</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Codificar 'On-The-Fly'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Manter os ficheiros ripados *.wav</entry>
+	<entry id="5105" string="Encode to a single file">Codificar num ficheiro único</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Remover faixas processadas da lista de trabalho</entry>
+	<entry id="5107" string="Add encoded files to joblist">Adicionar ficheiros codificados à lista de trabalho</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Pasta de saída</entry>
+	<entry id="5151" string="Use input file folder if possible">Usar a pasta do ficheiro de entrada, se possível</entry>
+	<entry id="5152" string="Allow overwriting input file">Permitir sobrescrever o ficheiro de entrada</entry>
+	<entry id="5153" string="Select">Escolher</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Selecione a pasta para os ficheiros codificados</entry>
+	<entry id="5155" string="Output filenames">Nomes dos ficheiros de saída</entry>
+	<entry id="5156" string="Filename pattern">Padrão do nome do ficheiro</entry>
+	<entry id="5157" string="Allow Unicode characters">Permitir caracteres Unicode</entry>
+	<entry id="5158" string="Replace spaces with underscores">Substituir espaços por sublinhados</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Anexar números sequenciais a nomes de ficheiros idênticos</entry>
+	<entry id="5160" string="Keep time stamps of source files">Mantenha registros de data e hora dos ficheiros de origem</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">A pasta de saída não existe! Deseja criá-la?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">A pasta de saída não existe! Deseja criá-la?</entry>
 	</section>
       </section>
 

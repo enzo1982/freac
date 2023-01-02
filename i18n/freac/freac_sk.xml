@@ -421,26 +421,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Nastaviť kodek</entry>
 	<entry id="5101" string="Encoder">Kodek</entry>
-	<entry id="5102" string="Output folder">Výstupný priečinok</entry>
-	<entry id="5103" string="Select">Prehľadať</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Vyberte priečinok, v ktorom budú umiestnené zakódované súbory</entry>
-	<entry id="5105" string="Use input file folder if possible">Použiť vstupný priečinok ak je to možné</entry>
-	<entry id="5106" string="Allow overwriting input file">Povoliť prepisovanie vstupného súboru</entry>
-	<entry id="5107" string="Options">Možnosti</entry>
-	<entry id="5108" string="Filename pattern">Vzor súborovej cesty</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Kódovať &quot;On-The-Fly&quot;</entry>
-	<entry id="5110" string="Keep ripped Wave files">Uchovať rippnuté Wave súbory</entry>
-	<entry id="5111" string="Encode to a single file">Kódovať do jedného súboru</entry>
-	<entry id="5112" string="Output filenames">Výstupné názvy súborov</entry>
-	<entry id="5113" string="Allow Unicode characters">Povoliť znaky Unicode</entry>
-	<entry id="5114" string="Replace spaces with underscores">Nahradiť medzery podčiarkovníkmi</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Odstrániť spracované stopy zo zoznamu úloh</entry>
-	<entry id="5116" string="Add encoded files to joblist">Pridať zkódované súbory do zoznamu úloh</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Pridať poradové číslo k súborom s rovnakým názvom</entry>
-	<entry id="5118" string="Keep time stamps of source files">Zachovať rovnaký dátum a čas ako má vstupný súbor</entry>
+	<entry id="5102" string="Options">Možnosti</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Kódovať &quot;On-The-Fly&quot;</entry>
+	<entry id="5104" string="Keep ripped Wave files">Uchovať rippnuté Wave súbory</entry>
+	<entry id="5105" string="Encode to a single file">Kódovať do jedného súboru</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Odstrániť spracované stopy zo zoznamu úloh</entry>
+	<entry id="5107" string="Add encoded files to joblist">Pridať zkódované súbory do zoznamu úloh</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Výstupný priečinok</entry>
+	<entry id="5151" string="Use input file folder if possible">Použiť vstupný priečinok ak je to možné</entry>
+	<entry id="5152" string="Allow overwriting input file">Povoliť prepisovanie vstupného súboru</entry>
+	<entry id="5153" string="Select">Prehľadať</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Vyberte priečinok, v ktorom budú umiestnené zakódované súbory</entry>
+	<entry id="5155" string="Output filenames">Výstupné názvy súborov</entry>
+	<entry id="5156" string="Filename pattern">Vzor súborovej cesty</entry>
+	<entry id="5157" string="Allow Unicode characters">Povoliť znaky Unicode</entry>
+	<entry id="5158" string="Replace spaces with underscores">Nahradiť medzery podčiarkovníkmi</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Pridať poradové číslo k súborom s rovnakým názvom</entry>
+	<entry id="5160" string="Keep time stamps of source files">Zachovať rovnaký dátum a čas ako má vstupný súbor</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Výstupný priečinok neexistuje! Chcete ho vytvoriť?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Výstupný priečinok neexistuje! Chcete ho vytvoriť?</entry>
 	</section>
       </section>
 

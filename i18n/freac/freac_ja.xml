@@ -424,26 +424,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">エンコーダ設定</entry>
 	<entry id="5101" string="Encoder">エンコーダ</entry>
-	<entry id="5102" string="Output folder">出力先フォルダ</entry>
-	<entry id="5103" string="Select">参照</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">出力先フォルダを選択</entry>
-	<entry id="5105" string="Use input file folder if possible">可能なら入力ファイルのフォルダを用いる</entry>
-	<entry id="5106" string="Allow overwriting input file">入力ファイルへ上書きを許可</entry>
-	<entry id="5107" string="Options">オプション</entry>
-	<entry id="5108" string="Filename pattern">ファイル名パターン</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">即時エンコード</entry>
-	<entry id="5110" string="Keep ripped Wave files">取り込んだ Wave ファイルを保持</entry>
-	<entry id="5111" string="Encode to a single file">一つのファイルにエンコード</entry>
-	<entry id="5112" string="Output filenames">出力ファイル名</entry>
-	<entry id="5113" string="Allow Unicode characters">Unicode 文字を許可する</entry>
-	<entry id="5114" string="Replace spaces with underscores">スペースをアンダースコアに置き換える</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">ジョブリストから処理済みのトラックを削除する</entry>
-	<entry id="5116" string="Add encoded files to joblist">エンコードされたファイルをジョブリストに追加する</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">それ以外のファイル名に連番を付ける</entry>
-	<entry id="5118" string="Keep time stamps of source files">タイムスタンプを保持する</entry>
+	<entry id="5102" string="Options">オプション</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">即時エンコード</entry>
+	<entry id="5104" string="Keep ripped Wave files">取り込んだ Wave ファイルを保持</entry>
+	<entry id="5105" string="Encode to a single file">一つのファイルにエンコード</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">ジョブリストから処理済みのトラックを削除する</entry>
+	<entry id="5107" string="Add encoded files to joblist">エンコードされたファイルをジョブリストに追加する</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">出力先フォルダ</entry>
+	<entry id="5151" string="Use input file folder if possible">可能なら入力ファイルのフォルダを用いる</entry>
+	<entry id="5152" string="Allow overwriting input file">入力ファイルへ上書きを許可</entry>
+	<entry id="5153" string="Select">参照</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">出力先フォルダを選択</entry>
+	<entry id="5155" string="Output filenames">出力ファイル名</entry>
+	<entry id="5156" string="Filename pattern">ファイル名パターン</entry>
+	<entry id="5157" string="Allow Unicode characters">Unicode 文字を許可する</entry>
+	<entry id="5158" string="Replace spaces with underscores">スペースをアンダースコアに置き換える</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">それ以外のファイル名に連番を付ける</entry>
+	<entry id="5160" string="Keep time stamps of source files">タイムスタンプを保持する</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">出力先フォルダがありません！新規に作成しますか？</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">出力先フォルダがありません！新規に作成しますか？</entry>
 	</section>
       </section>
 

@@ -372,19 +372,22 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Налаштувати кодек</entry>
 	<entry id="5101" string="Encoder">Кодек</entry>
-	<entry id="5102" string="Output folder">Тека для збереження</entry>
-	<entry id="5103" string="Select">Відкрити</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Обрати теку, де будуть збережені закодовані файли</entry>
-	<entry id="5105" string="Use input file folder if possible">Викор. теку вхідного файлу якщо можливо</entry>
-	<entry id="5106" string="Allow overwriting input file">Дозволити перезаписувати вхідний файл</entry>
-	<entry id="5107" string="Options">Налаштування</entry>
-	<entry id="5108" string="Filename pattern">Формування назви файлу</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Кодувати 'На-Льоту'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Залишати Wave</entry>
-	<entry id="5111" string="Encode to a single file">Кодувати у єдиний файл</entry>
+	<entry id="5102" string="Options">Налаштування</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Кодувати 'На-Льоту'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Залишати Wave</entry>
+	<entry id="5105" string="Encode to a single file">Кодувати у єдиний файл</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Тека для збереження</entry>
+	<entry id="5151" string="Use input file folder if possible">Викор. теку вхідного файлу якщо можливо</entry>
+	<entry id="5152" string="Allow overwriting input file">Дозволити перезаписувати вхідний файл</entry>
+	<entry id="5153" string="Select">Відкрити</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Обрати теку, де будуть збережені закодовані файли</entry>
+	<entry id="5156" string="Filename pattern">Формування назви файлу</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Тека для збереження не існує! Створити її?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Тека для збереження не існує! Створити її?</entry>
 	</section>
       </section>
 

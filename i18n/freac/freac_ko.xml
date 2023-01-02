@@ -401,26 +401,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">인코더 설정</entry>
 	<entry id="5101" string="Encoder">인코더</entry>
-	<entry id="5102" string="Output folder">내보낼 위치</entry>
-	<entry id="5103" string="Select">찾아보기</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">인코딩된 파일을 내보낼 위치를 선택하십시오</entry>
-	<entry id="5105" string="Use input file folder if possible">기존 파일 경로에 내보내기</entry>
-	<entry id="5106" string="Allow overwriting input file">기존 파일 덮어쓰기 허용</entry>
-	<entry id="5107" string="Options">옵션</entry>
-	<entry id="5108" string="Filename pattern">파일명 패턴</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">실시간 패킷 인코딩</entry>
-	<entry id="5110" string="Keep ripped Wave files">리핑된 wav 파일 유지</entry>
-	<entry id="5111" string="Encode to a single file">단일 파일로 인코딩</entry>
-	<entry id="5112" string="Output filenames">내보낼 파일 이름</entry>
-	<entry id="5113" string="Allow Unicode characters">유니코드 허용</entry>
-	<entry id="5114" string="Replace spaces with underscores">공백을 _로 변환</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">처리된 트랙을 작업목록에서 제거</entry>
-	<entry id="5116" string="Add encoded files to joblist">인코딩된 파일을 작업목록에 추가</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">같은 이름의 파일이 존재할 시 숫자를 붙여서 구분하기</entry>
-	<entry id="5118" string="Keep time stamps of source files">원본 파일의 타임스탬프 유지</entry>
+	<entry id="5102" string="Options">옵션</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">실시간 패킷 인코딩</entry>
+	<entry id="5104" string="Keep ripped Wave files">리핑된 wav 파일 유지</entry>
+	<entry id="5105" string="Encode to a single file">단일 파일로 인코딩</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">처리된 트랙을 작업목록에서 제거</entry>
+	<entry id="5107" string="Add encoded files to joblist">인코딩된 파일을 작업목록에 추가</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">내보낼 위치</entry>
+	<entry id="5151" string="Use input file folder if possible">기존 파일 경로에 내보내기</entry>
+	<entry id="5152" string="Allow overwriting input file">기존 파일 덮어쓰기 허용</entry>
+	<entry id="5153" string="Select">찾아보기</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">인코딩된 파일을 내보낼 위치를 선택하십시오</entry>
+	<entry id="5155" string="Output filenames">내보낼 파일 이름</entry>
+	<entry id="5156" string="Filename pattern">파일명 패턴</entry>
+	<entry id="5157" string="Allow Unicode characters">유니코드 허용</entry>
+	<entry id="5158" string="Replace spaces with underscores">공백을 _로 변환</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">같은 이름의 파일이 존재할 시 숫자를 붙여서 구분하기</entry>
+	<entry id="5160" string="Keep time stamps of source files">원본 파일의 타임스탬프 유지</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">내보낼 폴더가 존재하지 않습니다! 폴더를 생성하시겠습니까?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">내보낼 폴더가 존재하지 않습니다! 폴더를 생성하시겠습니까?</entry>
 	</section>
       </section>
 

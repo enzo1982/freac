@@ -291,6 +291,9 @@
     <ClCompile Include="..\..\src\dialogs\config\config_tagformats.cpp">
       <Filter>Quelldateien\dialogs\config</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\config\config_files.cpp">
+      <Filter>Quelldateien\dialogs\config</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\config.h">
@@ -498,6 +501,9 @@
       <Filter>Headerdateien\dialogs\config</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\dialogs\config\config_tagformats.h">
+      <Filter>Headerdateien\dialogs\config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\config\config_files.h">
       <Filter>Headerdateien\dialogs\config</Filter>
     </ClInclude>
   </ItemGroup>

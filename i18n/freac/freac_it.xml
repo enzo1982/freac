@@ -421,26 +421,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Imposta...</entry>
 	<entry id="5101" string="Encoder">Codificatore</entry>
-	<entry id="5102" string="Output folder">Cartella di destinazione</entry>
-	<entry id="5103" string="Select">Sfoglia...</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Seleziona la cartella in cui memorizzare i file elaborati</entry>
-	<entry id="5105" string="Use input file folder if possible">Usa se possibile cartella dei file sorgente</entry>
-	<entry id="5106" string="Allow overwriting input file">Consenti sovrascrittura file sorgente</entry>
-	<entry id="5107" string="Options">Opzioni</entry>
-	<entry id="5108" string="Filename pattern">Modello nome file</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Codifica 'al volo'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Non eliminare file wave estratti</entry>
-	<entry id="5111" string="Encode to a single file">Codifica in un file singolo</entry>
-	<entry id="5112" string="Output filenames">File di destinazione</entry>
-	<entry id="5113" string="Allow Unicode characters">Consenti caratteri Unicode</entry>
-	<entry id="5114" string="Replace spaces with underscores">Sostituisci gli spazi con trattino basso</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Rimuovi dalla joblist le tracce elaborate</entry>
-	<entry id="5116" string="Add encoded files to joblist">Aggiungi file codificati alla joblist</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Aggiungi numero sequenziale ai nomi di file identici</entry>
-	<entry id="5118" string="Keep time stamps of source files">Mantieni data e ora dei file sorgente</entry>
+	<entry id="5102" string="Options">Opzioni</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Codifica 'al volo'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Non eliminare file wave estratti</entry>
+	<entry id="5105" string="Encode to a single file">Codifica in un file singolo</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Rimuovi dalla joblist le tracce elaborate</entry>
+	<entry id="5107" string="Add encoded files to joblist">Aggiungi file codificati alla joblist</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Cartella di destinazione</entry>
+	<entry id="5151" string="Use input file folder if possible">Usa se possibile cartella dei file sorgente</entry>
+	<entry id="5152" string="Allow overwriting input file">Consenti sovrascrittura file sorgente</entry>
+	<entry id="5153" string="Select">Sfoglia...</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Seleziona la cartella in cui memorizzare i file elaborati</entry>
+	<entry id="5155" string="Output filenames">File di destinazione</entry>
+	<entry id="5156" string="Filename pattern">Modello nome file</entry>
+	<entry id="5157" string="Allow Unicode characters">Consenti caratteri Unicode</entry>
+	<entry id="5158" string="Replace spaces with underscores">Sostituisci gli spazi con trattino basso</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Aggiungi numero sequenziale ai nomi di file identici</entry>
+	<entry id="5160" string="Keep time stamps of source files">Mantieni data e ora dei file sorgente</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">La cartella di destinazione non esiste. Vuoi crearla?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">La cartella di destinazione non esiste. Vuoi crearla?</entry>
 	</section>
       </section>
 

@@ -282,19 +282,22 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar compressor</entry>
 	<entry id="5101" string="Encoder">Compressor</entry>
-	<entry id="5102" string="Output folder">Carpeta d'eixida</entry>
-	<entry id="5103" string="Select">Buscar</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Seleccione la carpeta per als arxius comprimits</entry>
-	<entry id="5105" string="Use input file folder if possible">Usar carpeta d'origen, si és possible</entry>
-	<entry id="5106" string="Allow overwriting input file">Permetre sobreescriure l'arxiu d'entrada</entry>
-	<entry id="5107" string="Options">Opcions</entry>
-	<entry id="5108" string="Filename pattern">Patró de nom d'arxiu</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Codificar 'al vol'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Mantindre arxius Wav extrets</entry>
-	<entry id="5111" string="Encode to a single file">Unir en un sol arxiu</entry>
+	<entry id="5102" string="Options">Opcions</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Codificar 'al vol'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Mantindre arxius Wav extrets</entry>
+	<entry id="5105" string="Encode to a single file">Unir en un sol arxiu</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Carpeta d'eixida</entry>
+	<entry id="5151" string="Use input file folder if possible">Usar carpeta d'origen, si és possible</entry>
+	<entry id="5152" string="Allow overwriting input file">Permetre sobreescriure l'arxiu d'entrada</entry>
+	<entry id="5153" string="Select">Buscar</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Seleccione la carpeta per als arxius comprimits</entry>
+	<entry id="5156" string="Filename pattern">Patró de nom d'arxiu</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">La carpeta de destí no existix. Desitja crear-la?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">La carpeta de destí no existix. Desitja crear-la?</entry>
 	</section>
       </section>
 

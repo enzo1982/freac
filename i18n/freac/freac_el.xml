@@ -424,26 +424,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Ρύθμιση κωδικοποιητή</entry>
 	<entry id="5101" string="Encoder">Κωδικοποιητής</entry>
-	<entry id="5102" string="Output folder">Φάκελος αποθήκευσης</entry>
-	<entry id="5103" string="Select">Εξερεύνηση</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Επιλέξτε φάκελο τοποθέτησης των κωδικοποιημένων αρχέιων</entry>
-	<entry id="5105" string="Use input file folder if possible">Χρήση φακέλου εισόδου όπου είναι δυνατό</entry>
-	<entry id="5106" string="Allow overwriting input file">Αντικατάσταση αρχείου εισόδου</entry>
-	<entry id="5107" string="Options">Επιλογές</entry>
-	<entry id="5108" string="Filename pattern">Στυλ ονόματος αρχείου</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Κωδικοποίηση 'On-The-Fly'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Διατήρηση αποθηκευμένων αρχείων wave</entry>
-	<entry id="5111" string="Encode to a single file">Κωδικοποίηση ενός αρχείου</entry>
-	<entry id="5112" string="Output filenames">Ονόματα αρχείων εξόδου</entry>
-	<entry id="5113" string="Allow Unicode characters">Να επιτρέπονται χαρακτήρες Unicode</entry>
-	<entry id="5114" string="Replace spaces with underscores">Αντικατάσταση διαστημάτων με κάτω παύλες</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Αφαίρεση επεξεργασμένων κομματιών από τη λίστα εργασιών</entry>
-	<entry id="5116" string="Add encoded files to joblist">Προσθήκη κωδικοποιημένων αρχείων στη λίστα εργασιών</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Προσθήκη σειριακών αριθμών σε πανομοιότυπα ονόματα αρχείων</entry>
-	<entry id="5118" string="Keep time stamps of source files">Διατήρηση των χρονικών σφραγίδων των πηγαίων αρχείων</entry>
+	<entry id="5102" string="Options">Επιλογές</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Κωδικοποίηση 'On-The-Fly'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Διατήρηση αποθηκευμένων αρχείων wave</entry>
+	<entry id="5105" string="Encode to a single file">Κωδικοποίηση ενός αρχείου</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Αφαίρεση επεξεργασμένων κομματιών από τη λίστα εργασιών</entry>
+	<entry id="5107" string="Add encoded files to joblist">Προσθήκη κωδικοποιημένων αρχείων στη λίστα εργασιών</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Φάκελος αποθήκευσης</entry>
+	<entry id="5151" string="Use input file folder if possible">Χρήση φακέλου εισόδου όπου είναι δυνατό</entry>
+	<entry id="5152" string="Allow overwriting input file">Αντικατάσταση αρχείου εισόδου</entry>
+	<entry id="5153" string="Select">Εξερεύνηση</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Επιλέξτε φάκελο τοποθέτησης των κωδικοποιημένων αρχέιων</entry>
+	<entry id="5155" string="Output filenames">Ονόματα αρχείων εξόδου</entry>
+	<entry id="5156" string="Filename pattern">Στυλ ονόματος αρχείου</entry>
+	<entry id="5157" string="Allow Unicode characters">Να επιτρέπονται χαρακτήρες Unicode</entry>
+	<entry id="5158" string="Replace spaces with underscores">Αντικατάσταση διαστημάτων με κάτω παύλες</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Προσθήκη σειριακών αριθμών σε πανομοιότυπα ονόματα αρχείων</entry>
+	<entry id="5160" string="Keep time stamps of source files">Διατήρηση των χρονικών σφραγίδων των πηγαίων αρχείων</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Ο φάκελος εξόδου δεν υπάρχει! Θέλετε να δημιουργηθεί;</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Ο φάκελος εξόδου δεν υπάρχει! Θέλετε να δημιουργηθεί;</entry>
 	</section>
       </section>
 

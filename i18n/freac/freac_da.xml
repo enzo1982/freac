@@ -404,26 +404,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Indstil koder</entry>
 	<entry id="5101" string="Encoder">Koder</entry>
-	<entry id="5102" string="Output folder">Ud mappe</entry>
-	<entry id="5103" string="Select">Gennemse</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Vælg den mappe som de kodede filer vil blive lagt i</entry>
-	<entry id="5105" string="Use input file folder if possible">Brug inddata fil mappe om muligt</entry>
-	<entry id="5106" string="Allow overwriting input file">Tillad overskrivning af inddata filen</entry>
-	<entry id="5107" string="Options">Indstillinger</entry>
-	<entry id="5108" string="Filename pattern">Filnavn mønster</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Kod 'On-The-Fly'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Behold rippede Wave filer</entry>
-	<entry id="5111" string="Encode to a single file">Kod til enkelte filer</entry>
-	<entry id="5112" string="Output filenames">Output filnavne</entry>
-	<entry id="5113" string="Allow Unicode characters">Tillad Unicode karakterer</entry>
-	<entry id="5114" string="Replace spaces with underscores">Erstat mellemrum med underlinjer</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Fjen behandlede spor fra opgavelisten</entry>
-	<entry id="5116" string="Add encoded files to joblist">Tilføj kodede filer til opgavelisten</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Tilføj løbende numre ved identiske filnavne</entry>
-	<entry id="5118" string="Keep time stamps of source files">Behold tidstempling af kilde filerne</entry>
+	<entry id="5102" string="Options">Indstillinger</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Kod 'On-The-Fly'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Behold rippede Wave filer</entry>
+	<entry id="5105" string="Encode to a single file">Kod til enkelte filer</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Fjen behandlede spor fra opgavelisten</entry>
+	<entry id="5107" string="Add encoded files to joblist">Tilføj kodede filer til opgavelisten</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Ud mappe</entry>
+	<entry id="5151" string="Use input file folder if possible">Brug inddata fil mappe om muligt</entry>
+	<entry id="5152" string="Allow overwriting input file">Tillad overskrivning af inddata filen</entry>
+	<entry id="5153" string="Select">Gennemse</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Vælg den mappe som de kodede filer vil blive lagt i</entry>
+	<entry id="5155" string="Output filenames">Output filnavne</entry>
+	<entry id="5156" string="Filename pattern">Filnavn mønster</entry>
+	<entry id="5157" string="Allow Unicode characters">Tillad Unicode karakterer</entry>
+	<entry id="5158" string="Replace spaces with underscores">Erstat mellemrum med underlinjer</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Tilføj løbende numre ved identiske filnavne</entry>
+	<entry id="5160" string="Keep time stamps of source files">Behold tidstempling af kilde filerne</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Uddata mappen eksisterer ikke! Vil du oprette den?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Uddata mappen eksisterer ikke! Vil du oprette den?</entry>
 	</section>
       </section>
 

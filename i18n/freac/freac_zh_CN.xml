@@ -424,26 +424,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">设置编码器</entry>
 	<entry id="5101" string="Encoder">编码器</entry>
-	<entry id="5102" string="Output folder">输出文件夹</entry>
-	<entry id="5103" string="Select">浏览</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">选择存放编码文件的文件夹</entry>
-	<entry id="5105" string="Use input file folder if possible">使用输入文件夹</entry>
-	<entry id="5106" string="Allow overwriting input file">允许覆盖输入文件</entry>
-	<entry id="5107" string="Options">选项</entry>
-	<entry id="5108" string="Filename pattern">文件名样式</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">使用即时编码</entry>
-	<entry id="5110" string="Keep ripped Wave files">保留翻录的 WAVE 文件</entry>
-	<entry id="5111" string="Encode to a single file">编码为单独文件</entry>
-	<entry id="5112" string="Output filenames">输出文件名</entry>
-	<entry id="5113" string="Allow Unicode characters">允许 Unicode 字符</entry>
-	<entry id="5114" string="Replace spaces with underscores">用下划线替换空格</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">从任务列表中移除已处理的曲目</entry>
-	<entry id="5116" string="Add encoded files to joblist">添加编码文件到任务列表</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">为其他相同的文件名附加序列号</entry>
-	<entry id="5118" string="Keep time stamps of source files">保留源文件的时间戳</entry>
+	<entry id="5102" string="Options">选项</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">使用即时编码</entry>
+	<entry id="5104" string="Keep ripped Wave files">保留翻录的 WAVE 文件</entry>
+	<entry id="5105" string="Encode to a single file">编码为单独文件</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">从任务列表中移除已处理的曲目</entry>
+	<entry id="5107" string="Add encoded files to joblist">添加编码文件到任务列表</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">输出文件夹</entry>
+	<entry id="5151" string="Use input file folder if possible">使用输入文件夹</entry>
+	<entry id="5152" string="Allow overwriting input file">允许覆盖输入文件</entry>
+	<entry id="5153" string="Select">浏览</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">选择存放编码文件的文件夹</entry>
+	<entry id="5155" string="Output filenames">输出文件名</entry>
+	<entry id="5156" string="Filename pattern">文件名样式</entry>
+	<entry id="5157" string="Allow Unicode characters">允许 Unicode 字符</entry>
+	<entry id="5158" string="Replace spaces with underscores">用下划线替换空格</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">为其他相同的文件名附加序列号</entry>
+	<entry id="5160" string="Keep time stamps of source files">保留源文件的时间戳</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">输出文件夹不存在！您要创建此文件夹吗？</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">输出文件夹不存在！您要创建此文件夹吗？</entry>
 	</section>
       </section>
 

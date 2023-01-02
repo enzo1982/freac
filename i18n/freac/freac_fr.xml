@@ -421,26 +421,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurer l'encodeur</entry>
 	<entry id="5101" string="Encoder">Encodeur</entry>
-	<entry id="5102" string="Output folder">Répertoire de sortie</entry>
-	<entry id="5103" string="Select">Parcourir</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Sélectionnez le dossier de destination des fichiers encodés</entry>
-	<entry id="5105" string="Use input file folder if possible">Utiliser répertoire fichier entrée si possible</entry>
-	<entry id="5106" string="Allow overwriting input file">Autoriser remplacement fichier entrée</entry>
-	<entry id="5107" string="Options">Options</entry>
-	<entry id="5108" string="Filename pattern">Modèle de nom de fichier</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Encoder à la volée</entry>
-	<entry id="5110" string="Keep ripped Wave files">Conserver fichiers Wave extraits</entry>
-	<entry id="5111" string="Encode to a single file">Encoder dans fichier unique</entry>
-	<entry id="5112" string="Output filenames">Noms de fichiers résultants</entry>
-	<entry id="5113" string="Allow Unicode characters">Autoriser les caractères unicodes</entry>
-	<entry id="5114" string="Replace spaces with underscores">Remplacer les espaces par des souslignages</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Retirer les morceaux traités de la liste des taches</entry>
-	<entry id="5116" string="Add encoded files to joblist">Ajouter les morceaux encodés à la liste des taches</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Adjoindre des numéros séquentiels aux fichiers de mêmes noms</entry>
-	<entry id="5118" string="Keep time stamps of source files">Garder les index temporels des fichiers sources</entry>
+	<entry id="5102" string="Options">Options</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Encoder à la volée</entry>
+	<entry id="5104" string="Keep ripped Wave files">Conserver fichiers Wave extraits</entry>
+	<entry id="5105" string="Encode to a single file">Encoder dans fichier unique</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Retirer les morceaux traités de la liste des taches</entry>
+	<entry id="5107" string="Add encoded files to joblist">Ajouter les morceaux encodés à la liste des taches</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Répertoire de sortie</entry>
+	<entry id="5151" string="Use input file folder if possible">Utiliser répertoire fichier entrée si possible</entry>
+	<entry id="5152" string="Allow overwriting input file">Autoriser remplacement fichier entrée</entry>
+	<entry id="5153" string="Select">Parcourir</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Sélectionnez le dossier de destination des fichiers encodés</entry>
+	<entry id="5155" string="Output filenames">Noms de fichiers résultants</entry>
+	<entry id="5156" string="Filename pattern">Modèle de nom de fichier</entry>
+	<entry id="5157" string="Allow Unicode characters">Autoriser les caractères unicodes</entry>
+	<entry id="5158" string="Replace spaces with underscores">Remplacer les espaces par des souslignages</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Adjoindre des numéros séquentiels aux fichiers de mêmes noms</entry>
+	<entry id="5160" string="Keep time stamps of source files">Garder les index temporels des fichiers sources</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Le répertoire de sortie n'existe pas. Voulez-vous le créer ?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Le répertoire de sortie n'existe pas. Voulez-vous le créer ?</entry>
 	</section>
       </section>
 

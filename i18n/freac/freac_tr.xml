@@ -280,19 +280,22 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Çevirici ayarları</entry>
 	<entry id="5101" string="Encoder">Çevirici</entry>
-	<entry id="5102" string="Output folder">Kaydetme dizini</entry>
-	<entry id="5103" string="Select">Gözat</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Çevirilen dosyaların gönderileceği yeri seçin</entry>
-	<entry id="5105" string="Use input file folder if possible">Orjinal dosyaların bulunduğu dizini kullan</entry>
-	<entry id="5106" string="Allow overwriting input file">Orjinal dosyaların üstüne yazmaya izin ver</entry>
-	<entry id="5107" string="Options">Ayarlar</entry>
-	<entry id="5108" string="Filename pattern">Dosya adı şablonu</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Dinlerken Çevir</entry>
-	<entry id="5110" string="Keep ripped Wave files">Riplenmiş Wave dosyalarını sakla</entry>
-	<entry id="5111" string="Encode to a single file">Tek dosya haline getir</entry>
+	<entry id="5102" string="Options">Ayarlar</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Dinlerken Çevir</entry>
+	<entry id="5104" string="Keep ripped Wave files">Riplenmiş Wave dosyalarını sakla</entry>
+	<entry id="5105" string="Encode to a single file">Tek dosya haline getir</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Kaydetme dizini</entry>
+	<entry id="5151" string="Use input file folder if possible">Orjinal dosyaların bulunduğu dizini kullan</entry>
+	<entry id="5152" string="Allow overwriting input file">Orjinal dosyaların üstüne yazmaya izin ver</entry>
+	<entry id="5153" string="Select">Gözat</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Çevirilen dosyaların gönderileceği yeri seçin</entry>
+	<entry id="5156" string="Filename pattern">Dosya adı şablonu</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Dizin bulunamadı! Oluşturmak ister misiniz?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Dizin bulunamadı! Oluşturmak ister misiniz?</entry>
 	</section>
       </section>
 
