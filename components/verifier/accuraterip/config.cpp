@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -15,22 +15,28 @@
 #include "drive.h"
 #include "driveoffsets.h"
 
-const String	 BoCA::ConfigureAccurateRip::ConfigID		      = "AccurateRip";
-const String	 BoCA::ConfigureAccurateRip::ConfigCategoryRipperID   = "Ripper";
+const String	 BoCA::ConfigureAccurateRip::ConfigID			     = "AccurateRip";
+const String	 BoCA::ConfigureAccurateRip::ConfigCategoryRipperID	     = "Ripper";
 
-const String	 BoCA::ConfigureAccurateRip::ConfigEnabledID          = "Enabled";
-const Bool	 BoCA::ConfigureAccurateRip::ConfigEnabledDefault     = True;
+const String	 BoCA::ConfigureAccurateRip::ConfigEnabledID    	     = "Enabled";
+const Bool	 BoCA::ConfigureAccurateRip::ConfigEnabledDefault	     = True;
 
-const String	 BoCA::ConfigureAccurateRip::ConfigPathID	      = "Path";
-const String	 BoCA::ConfigureAccurateRip::ConfigPathDefault	      = "http://accuraterip.com/accuraterip/";
+const String	 BoCA::ConfigureAccurateRip::ConfigPathID		     = "Path";
+const String	 BoCA::ConfigureAccurateRip::ConfigPathDefault		     = "http://accuraterip.com/accuraterip/";
 
-const String	 BoCA::ConfigureAccurateRip::ConfigEnableCacheID      = "EnableCache";
-const Bool	 BoCA::ConfigureAccurateRip::ConfigEnableCacheDefault = True;
+const String	 BoCA::ConfigureAccurateRip::ConfigEnableCacheID	     = "EnableCache";
+const Bool	 BoCA::ConfigureAccurateRip::ConfigEnableCacheDefault	     = True;
 
-const String	 BoCA::ConfigureAccurateRip::ConfigExpireCacheID      = "ExpireCache";
-const Int	 BoCA::ConfigureAccurateRip::ConfigExpireCacheDefault = 30;
+const String	 BoCA::ConfigureAccurateRip::ConfigExpireCacheID	     = "ExpireCache";
+const Int	 BoCA::ConfigureAccurateRip::ConfigExpireCacheDefault	     = 30;
 
-const String	 BoCA::ConfigureAccurateRip::ResourcesFolder	      = "freac.verifier.accuraterip";
+const String	 BoCA::ConfigureAccurateRip::ConfigNotifyMissingEntryID	     = "NotifyMissingEntry";
+const Bool	 BoCA::ConfigureAccurateRip::ConfigNotifyMissingEntryDefault = False;
+
+const String	 BoCA::ConfigureAccurateRip::ConfigNotifySuccessID	     = "NotifySuccess";
+const Bool	 BoCA::ConfigureAccurateRip::ConfigNotifySuccessDefault	     = False;
+
+const String	 BoCA::ConfigureAccurateRip::ResourcesFolder		     = "freac.verifier.accuraterip";
 
 BoCA::ConfigureAccurateRip::ConfigureAccurateRip()
 {
@@ -45,6 +51,9 @@ BoCA::ConfigureAccurateRip::ConfigureAccurateRip()
 
 	enableCache	  = config->GetIntValue(ConfigID, ConfigEnableCacheID, ConfigEnableCacheDefault);
 	expireCache	  = CacheDaysToIndex(config->GetIntValue(ConfigID, ConfigExpireCacheID, ConfigExpireCacheDefault));
+
+	notifyMissing	  = config->GetIntValue(ConfigID, ConfigNotifyMissingEntryID, ConfigNotifyMissingEntryDefault);
+	notifySuccess	  = config->GetIntValue(ConfigID, ConfigNotifySuccessID, ConfigNotifySuccessDefault);
 
 	/* General settings group.
 	 */
@@ -129,9 +138,20 @@ BoCA::ConfigureAccurateRip::ConfigureAccurateRip()
 	group_cache->Add(slider_expire);
 	group_cache->Add(text_expire_value);
 
+	/* Options settings group.
+	 */
+	group_options		= new GroupBox(i18n->TranslateString("Options"), Point(7, 292), Size(450, 65));
+
+	check_notify_missing	= new CheckBox(i18n->TranslateString("Notify when a disc is not found in the database"), Point(10, 13), Size(430, 0), &notifyMissing);
+	check_notify_success	= new CheckBox(i18n->TranslateString("Notify when all tracks have been successfully verified"), Point(10, 38), Size(430, 0), &notifySuccess);
+
+	group_options->Add(check_notify_missing);
+	group_options->Add(check_notify_success);
+
 	Add(group_settings);
 	Add(group_drives);
 	Add(group_cache);
+	Add(group_options);
 
 	ToggleEnabled();
 	SetExpireTime();
@@ -150,6 +170,7 @@ BoCA::ConfigureAccurateRip::ConfigureAccurateRip()
 	group_settings->SetWidth(Math::Max(450, text_status_value->GetX() + Math::Max(line1Size, line3Size)));
 	group_drives->SetWidth(group_settings->GetWidth());
 	group_cache->SetWidth(group_settings->GetWidth());
+	group_options->SetWidth(group_settings->GetWidth());
 
 	edit_path->SetWidth(group_settings->GetWidth() - text_path->GetUnscaledTextWidth() - 44);
 	combo_drive->SetWidth(group_drives->GetWidth() - text_drive->GetUnscaledTextWidth() - 26);
@@ -166,7 +187,10 @@ BoCA::ConfigureAccurateRip::ConfigureAccurateRip()
 	check_enabled->SetWidth(maxTextSize + 20);
 	check_cache->SetWidth(maxTextSize + 20);
 
-	SetSize(Size(group_cache->GetWidth() + 14, 287));
+	check_notify_missing->SetWidth(group_options->GetWidth() - 20);
+	check_notify_success->SetWidth(check_notify_missing->GetWidth());
+
+	SetSize(Size(group_cache->GetWidth() + 14, 364));
 }
 
 BoCA::ConfigureAccurateRip::~ConfigureAccurateRip()
@@ -193,10 +217,13 @@ BoCA::ConfigureAccurateRip::~ConfigureAccurateRip()
 
 	DeleteObject(group_cache);
 	DeleteObject(check_cache);
-
 	DeleteObject(text_expire);
 	DeleteObject(slider_expire);
 	DeleteObject(text_expire_value);
+
+	DeleteObject(group_options);
+	DeleteObject(check_notify_missing);
+	DeleteObject(check_notify_success);
 }
 
 Int BoCA::ConfigureAccurateRip::CacheDaysToIndex(Int days)
@@ -408,6 +435,9 @@ Int BoCA::ConfigureAccurateRip::SaveSettings()
 
 	config->SetIntValue(ConfigID, ConfigEnableCacheID, enableCache);
 	config->SetIntValue(ConfigID, ConfigExpireCacheID, CacheIndexToDays(expireCache));
+
+	config->SetIntValue(ConfigID, ConfigNotifyMissingEntryID, notifyMissing);
+	config->SetIntValue(ConfigID, ConfigNotifySuccessID, notifySuccess);
 
 	return Success();
 }

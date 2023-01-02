@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -52,12 +52,19 @@ namespace BoCA
 			Slider			*slider_expire;
 			Text			*text_expire_value;
 
+			GroupBox		*group_options;
+			CheckBox		*check_notify_missing;
+			CheckBox		*check_notify_success;
+
 			Bool			 enableAccurateRip;
 
 			Bool			 enableCache;
 			Int			 expireCache;
 
 			String			 selectedDrivePath;
+
+			Bool			 notifyMissing;
+			Bool			 notifySuccess;
 
 			Void			 UpdateDriveList();
 
@@ -86,6 +93,12 @@ namespace BoCA
 
 			static const String	 ConfigExpireCacheID;
 			static const Int	 ConfigExpireCacheDefault;
+
+			static const String	 ConfigNotifyMissingEntryID;
+			static const Bool	 ConfigNotifyMissingEntryDefault;
+
+			static const String	 ConfigNotifySuccessID;
+			static const Bool	 ConfigNotifySuccessDefault;
 
 			static const String	 ResourcesFolder;
 

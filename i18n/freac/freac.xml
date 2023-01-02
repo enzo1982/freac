@@ -1190,6 +1190,9 @@
 	<entry id="70023" string="not present"/>
 	<entry id="70024" string="not detected"/>
 	<entry id="70025" string="disabled"/>
+	<entry id="70026" string="Options"/>
+	<entry id="70027" string="Notify when a disc is not found in the database"/>
+	<entry id="70028" string="Notify when all tracks have been successfully verified"/>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration"/>
@@ -1200,6 +1203,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
 	  <entry id="70056" string="Offset detection needs to check another disc."/>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples."/>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip."/>
 	</section>
       </section>
     </section>

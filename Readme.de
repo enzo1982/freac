@@ -160,7 +160,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.7 (Dezember 2022)
+	Version 1.1.7 (Januar 2023)
 
 		- Neue Funktionen
 
@@ -183,6 +183,7 @@ Geschichte
 			- Option zur Steuerung der Extraktion fehlender Metadaten aus Dateinamen hinzugefügt
 			- Option zum Einschränken der Dateinamen für das Einlesen von Cover-Bildern hinzugefügt
 			- Option zum Deaktivieren der Phasenumkehr bei Intensity Stereo zu Opus-Einstellungen hinzugefügt
+			- AccurateRip-Benachrichtigungsoptionen für erfolgreiche Überprüfung und fehlende Datenbankeinträge hinzugefügt
 			- Sample-Rate-Konvertierung wandelt nicht mehr nach 32 bit Float, wenn die Quellrate mit der Zielrate übereinstimmt
 			- Negative Exit-Codes bei Fehlern beim Ausführen von freaccmd hinzugefügt
 			- Unterstützung für KDE-Farbschemata (inkl. Dark-Mode) hinzugefügt

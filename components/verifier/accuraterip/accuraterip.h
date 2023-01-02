@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -26,6 +26,7 @@ namespace BoCA
 			Algorithm		 algorithm;
 
 			static Void		 ConfigureDrive(Int);
+			static Void		 NotifyMissingEntry();
 		public:
 			static const String	&GetComponentSpecs();
 
@@ -42,6 +43,7 @@ namespace BoCA
 
 			ConfigLayer		*GetConfigurationLayer();
 		slots:
+			Bool			 OnConfigureDrive();
 			Bool			 OnDiscInsert();
 	};
 };
