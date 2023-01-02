@@ -520,10 +520,8 @@
 	<entry id="5505" string="Encoding">Κωδικοποίηση</entry>
 	<entry id="5506" string="Comments">Σχόλια</entry>
 	<entry id="5507" string="Cover art">Εικόνα εξωφύλλου</entry>
-	<entry id="5508" string="Read cover art">Ανάγνωση εξωφύλλου</entry>
 	<entry id="5509" string="Read cover art from tags">Ανάγνωση εικόνας εξωφύλλου από ετικέτες.</entry>
 	<entry id="5510" string="Read cover art from files">Ανάγνωση εικόνας εξωφύλλου από αρχεία</entry>
-	<entry id="5511" string="Write cover art">Εγγραφή εικόνας εξωφύλλου</entry>
 	<entry id="5512" string="Write cover art to tags">Εγγραφή εικόνας εξωφύλλου σε ετικέτες</entry>
 	<entry id="5513" string="Write cover art to files">Εγγραφή εικόνας εξωφύλλου σε αρχεία</entry>
 	<entry id="5514" string="Add reference to audio file tag">Προσθήκη αναφοράς σε ετικέτα ακουστικού αρχείου</entry>

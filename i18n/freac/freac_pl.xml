@@ -526,10 +526,8 @@
 	<entry id="5505" string="Encoding">Kodowanie</entry>
 	<entry id="5506" string="Comments">Komentarze</entry>
 	<entry id="5507" string="Cover art">Okładka</entry>
-	<entry id="5508" string="Read cover art">Odczytaj okładkę</entry>
 	<entry id="5509" string="Read cover art from tags">Odczytaj okładkę ze znaczników</entry>
 	<entry id="5510" string="Read cover art from files">Odczytaj okładkę z plików</entry>
-	<entry id="5511" string="Write cover art">Zapisz okładkę</entry>
 	<entry id="5512" string="Write cover art to tags">Zapisz okładkę do znaczników</entry>
 	<entry id="5513" string="Write cover art to files">Zapisz okładkę do plików</entry>
 	<entry id="5514" string="Add reference to audio file tag">Dodaj odnośnik do znacznika pliku audio</entry>

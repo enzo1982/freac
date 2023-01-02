@@ -520,10 +520,8 @@
 	<entry id="5505" string="Encoding">编码</entry>
 	<entry id="5506" string="Comments">注释</entry>
 	<entry id="5507" string="Cover art">封面</entry>
-	<entry id="5508" string="Read cover art">读取封面</entry>
 	<entry id="5509" string="Read cover art from tags">从标签中读取封面</entry>
 	<entry id="5510" string="Read cover art from files">从文件中读取封面</entry>
-	<entry id="5511" string="Write cover art">写入封面</entry>
 	<entry id="5512" string="Write cover art to tags">写入封面到标签</entry>
 	<entry id="5513" string="Write cover art to files">写入封面到文件</entry>
 	<entry id="5514" string="Add reference to audio file tag">添加引用至音频文件标签</entry>

@@ -520,10 +520,8 @@
 	<entry id="5505" string="Encoding">Codificando</entry>
 	<entry id="5506" string="Comments">Comentários</entry>
 	<entry id="5507" string="Cover art">Imagens da capa</entry>
-	<entry id="5508" string="Read cover art">Leia as imagens da capa</entry>
 	<entry id="5509" string="Read cover art from tags">Leia as imagens da capa a partir das etiquetas</entry>
 	<entry id="5510" string="Read cover art from files">Leia as imagens da capa a partir dos arquivos</entry>
-	<entry id="5511" string="Write cover art">Escreva as imagens da capa</entry>
 	<entry id="5512" string="Write cover art to tags">Escreva as imagens da capa para as etiquetas</entry>
 	<entry id="5513" string="Write cover art to files">Escreva as imagens da capa para os arquivos</entry>
 	<entry id="5514" string="Add reference to audio file tag">Adicione a referência na etiqueta do arquivo de áudio</entry>

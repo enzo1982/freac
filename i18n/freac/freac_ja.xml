@@ -520,10 +520,8 @@
 	<entry id="5505" string="Encoding">エンコード</entry>
 	<entry id="5506" string="Comments">コメント</entry>
 	<entry id="5507" string="Cover art">カバーアート</entry>
-	<entry id="5508" string="Read cover art">カバーアートを読み込む</entry>
 	<entry id="5509" string="Read cover art from tags">カバーアートをタグから読み込む</entry>
 	<entry id="5510" string="Read cover art from files">カバーアートをファイルから読み込む</entry>
-	<entry id="5511" string="Write cover art">カバーアートを書き込む</entry>
 	<entry id="5512" string="Write cover art to tags">カバーアートをタグに書き込む</entry>
 	<entry id="5513" string="Write cover art to files">カバーアートをファイルに書き込む</entry>
 	<entry id="5514" string="Add reference to audio file tag">オーディオファイルタグへの参照を追加する</entry>

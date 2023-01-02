@@ -497,10 +497,8 @@
 	<entry id="5505" string="Encoding">인코딩</entry>
 	<entry id="5506" string="Comments">주석</entry>
 	<entry id="5507" string="Cover art">앨범 아트</entry>
-	<entry id="5508" string="Read cover art">앨범 아트 읽기</entry>
 	<entry id="5509" string="Read cover art from tags">태그에서 엘범 아트 읽어오기</entry>
 	<entry id="5510" string="Read cover art from files">파일에서 앨범 아트 읽어오기</entry>
-	<entry id="5511" string="Write cover art">앨범 아트 쓰기</entry>
 	<entry id="5512" string="Write cover art to tags">앨범 아트를 태그에 작성하기</entry>
 	<entry id="5513" string="Write cover art to files">앨범 아트를 파일에 작성하기</entry>
 	<entry id="5514" string="Add reference to audio file tag">오디오 파일에 태그 레퍼런스 추가하기</entry>

@@ -520,10 +520,8 @@
 	<entry id="5505" string="Encoding">Кодиране</entry>
 	<entry id="5506" string="Comments">Коментари</entry>
 	<entry id="5507" string="Cover art">Обложка</entry>
-	<entry id="5508" string="Read cover art">Прочитане на обложка</entry>
 	<entry id="5509" string="Read cover art from tags">Прочитане на обложка от тагове</entry>
 	<entry id="5510" string="Read cover art from files">Прочитане на обложка от файлове</entry>
-	<entry id="5511" string="Write cover art">Записване на обложка</entry>
 	<entry id="5512" string="Write cover art to tags">Записване на обложката в таговете</entry>
 	<entry id="5513" string="Write cover art to files">Записване на обложката във файловете</entry>
 	<entry id="5514" string="Add reference to audio file tag">Препратка към таг на аудио файл</entry>

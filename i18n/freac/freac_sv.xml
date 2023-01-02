@@ -526,10 +526,8 @@
 	<entry id="5505" string="Encoding">Teckenkodning</entry>
 	<entry id="5506" string="Comments">Kommentarer</entry>
 	<entry id="5507" string="Cover art">Skivomslag</entry>
-	<entry id="5508" string="Read cover art">Läs skivomslag</entry>
 	<entry id="5509" string="Read cover art from tags">Läs skivomslag från taggar</entry>
 	<entry id="5510" string="Read cover art from files">Läs skivomslag från filer</entry>
-	<entry id="5511" string="Write cover art">Skriv skivomslag</entry>
 	<entry id="5512" string="Write cover art to tags">Skriv skivomslag till taggar</entry>
 	<entry id="5513" string="Write cover art to files">Skriv skivomslag till filer</entry>
 	<entry id="5514" string="Add reference to audio file tag">Lägg till referens till ljudfiltagg</entry>

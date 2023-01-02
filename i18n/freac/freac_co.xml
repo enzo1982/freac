@@ -526,10 +526,8 @@
 	<entry id="5505" string="Encoding">Cudificazione</entry>
 	<entry id="5506" string="Comments">Cummenti</entry>
 	<entry id="5507" string="Cover art">Cuprendula</entry>
-	<entry id="5508" string="Read cover art">Lettura di a cuprendula</entry>
 	<entry id="5509" string="Read cover art from tags">Leghje a cuprendula da l’etichette</entry>
 	<entry id="5510" string="Read cover art from files">Leghje a cuprendula da i schedarii</entry>
-	<entry id="5511" string="Write cover art">Scrittura di a cuprendula</entry>
 	<entry id="5512" string="Write cover art to tags">Scrive a cuprendula in l’etichette</entry>
 	<entry id="5513" string="Write cover art to files">Scrive a cuprendula in i schedarii</entry>
 	<entry id="5514" string="Add reference to audio file tag">Aghjunghje una referenza à l’etichetta di u schedariu audio</entry>

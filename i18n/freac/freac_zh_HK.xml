@@ -433,10 +433,8 @@
 	<entry id="5505" string="Encoding">編碼</entry>
 	<entry id="5506" string="Comments">評註</entry>
 	<entry id="5507" string="Cover art">封面</entry>
-	<entry id="5508" string="Read cover art">讀取封面</entry>
 	<entry id="5509" string="Read cover art from tags">從標籤讀取封面</entry>
 	<entry id="5510" string="Read cover art from files">從檔案讀取封面</entry>
-	<entry id="5511" string="Write cover art">寫入封面</entry>
 	<entry id="5512" string="Write cover art to tags">寫入封面到標籤</entry>
 	<entry id="5513" string="Write cover art to files">寫入封面到檔案</entry>
 	<entry id="5514" string="Add reference to audio file tag">加入參考到聲音檔標籤</entry>

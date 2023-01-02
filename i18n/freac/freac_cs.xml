@@ -517,10 +517,8 @@
 	<entry id="5505" string="Encoding">Znaková sada</entry>
 	<entry id="5506" string="Comments">Kommentáře</entry>
 	<entry id="5507" string="Cover art">Obal alba</entry>
-	<entry id="5508" string="Read cover art">Obal alba - načíst</entry>
 	<entry id="5509" string="Read cover art from tags">Obal alba - načíst z tagu</entry>
 	<entry id="5510" string="Read cover art from files">Obal alba - načíst ze souboru</entry>
-	<entry id="5511" string="Write cover art">Obal alba - zapsat</entry>
 	<entry id="5512" string="Write cover art to tags">Obal alba - zapsat do tagu</entry>
 	<entry id="5513" string="Write cover art to files">Obal alba - zapsat do souboru</entry>
 	<entry id="5514" string="Add reference to audio file tag">Přidat reference do tagu audio souboru</entry>

@@ -501,10 +501,8 @@
 	<entry id="5505" string="Encoding">एन्कोडिंग</entry>
 	<entry id="5506" string="Comments">टिप्पणी</entry>
 	<entry id="5507" string="Cover art">कवर आर्ट</entry>
-	<entry id="5508" string="Read cover art">कवर आर्ट पढ़ें</entry>
 	<entry id="5509" string="Read cover art from tags">टैग से कवर आर्ट पढ़ें</entry>
 	<entry id="5510" string="Read cover art from files">फाइलों से कवर आर्ट पढ़ें</entry>
-	<entry id="5511" string="Write cover art">कवर आर्ट लिखिए</entry>
 	<entry id="5512" string="Write cover art to tags">टैग्स के लिए कवर आर्ट लिखें</entry>
 	<entry id="5513" string="Write cover art to files">फाइलों में कवर आर्ट लिखें</entry>
 	<entry id="5514" string="Add reference to audio file tag">ऑडियो फ़ाइल टैग के लिए संदर्भ जोड़ें</entry>

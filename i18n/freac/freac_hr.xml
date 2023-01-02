@@ -500,10 +500,8 @@
 	<entry id="5505" string="Encoding">Enkodiranje</entry>
 	<entry id="5506" string="Comments">Komentari</entry>
 	<entry id="5507" string="Cover art">Naslovnica</entry>
-	<entry id="5508" string="Read cover art">Učitaj naslovnicu</entry>
 	<entry id="5509" string="Read cover art from tags">Učitaj naslovnicu iz tagova</entry>
 	<entry id="5510" string="Read cover art from files">Učitaj naslovnicu iz datoteka</entry>
-	<entry id="5511" string="Write cover art">Zapiši naslovnicu</entry>
 	<entry id="5512" string="Write cover art to tags">Zapiši naslovnicu u tagove</entry>
 	<entry id="5513" string="Write cover art to files">Zapiši naslovnicu u datoteke</entry>
 	<entry id="5514" string="Add reference to audio file tag">Dodaj referencu na audio tag</entry>

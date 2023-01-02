@@ -517,10 +517,8 @@
 	<entry id="5505" string="Encoding">Codifica</entry>
 	<entry id="5506" string="Comments">Commenti</entry>
 	<entry id="5507" string="Cover art">Copertina</entry>
-	<entry id="5508" string="Read cover art">Lettura copertina</entry>
 	<entry id="5509" string="Read cover art from tags">Leggi copertina dai tag</entry>
 	<entry id="5510" string="Read cover art from files">Leggi copertina dai file</entry>
-	<entry id="5511" string="Write cover art">Scrittura copertina</entry>
 	<entry id="5512" string="Write cover art to tags">Scrivi copertina nel tag</entry>
 	<entry id="5513" string="Write cover art to files">Scrivi copertina nei file</entry>
 	<entry id="5514" string="Add reference to audio file tag">Aggiungi riferimento ai tag dei file audio</entry>

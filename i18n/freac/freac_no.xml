@@ -458,10 +458,8 @@
 	<entry id="5505" string="Encoding">Koder</entry>
 	<entry id="5506" string="Comments">Kommentarer</entry>
 	<entry id="5507" string="Cover art">Album bilde</entry>
-	<entry id="5508" string="Read cover art">Les album bilde</entry>
 	<entry id="5509" string="Read cover art from tags">Les album bilde fra etikett</entry>
 	<entry id="5510" string="Read cover art from files">Les album bilde fra filer</entry>
-	<entry id="5511" string="Write cover art">Skriv album bilde</entry>
 	<entry id="5512" string="Write cover art to tags">Skriv album bilde til etiketter</entry>
 	<entry id="5513" string="Write cover art to files">Skriv album bilde til fil</entry>
 	<entry id="5515" string="Other">Annet</entry>

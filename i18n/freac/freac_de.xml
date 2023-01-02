@@ -526,10 +526,8 @@
 	<entry id="5505" string="Encoding">Zeichensatz</entry>
 	<entry id="5506" string="Comments">Kommentare</entry>
 	<entry id="5507" string="Cover art">Cover-Bilder</entry>
-	<entry id="5508" string="Read cover art">Cover-Bilder lesen</entry>
 	<entry id="5509" string="Read cover art from tags">Cover-Bilder aus Tags lesen</entry>
 	<entry id="5510" string="Read cover art from files">Cover-Bilder aus Dateien lesen</entry>
-	<entry id="5511" string="Write cover art">Cover-Bilder schreiben</entry>
 	<entry id="5512" string="Write cover art to tags">Cover-Bilder in Tags schreiben</entry>
 	<entry id="5513" string="Write cover art to files">Cover-Bilder in Dateien schreiben</entry>
 	<entry id="5514" string="Add reference to audio file tag">Referenz zu Audiodatei-Tag hinzufügen</entry>
@@ -546,6 +544,8 @@
 	<entry id="5528" string="Miscellaneous">Verschiedenes</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names">Fehlende Felder mit aus Dateinamen extrahierten Informationen füllen</entry>
 	<entry id="5530" string="Restrict file names">Dateinamen einschränken</entry>
+	<entry id="5531" string="Cover art tags">Cover-Bild-Tags</entry>
+	<entry id="5532" string="Cover art files">Cover-Bild-Dateien</entry>
       </section>
 
       <section name="Joblist">

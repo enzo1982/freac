@@ -520,10 +520,8 @@
 	<entry id="5505" string="Encoding">Codare</entry>
 	<entry id="5506" string="Comments">Comentarii</entry>
 	<entry id="5507" string="Cover art">Copertă artistică</entry>
-	<entry id="5508" string="Read cover art">Citește coperta artistică</entry>
 	<entry id="5509" string="Read cover art from tags">Citește coperta artistică din etichete</entry>
 	<entry id="5510" string="Read cover art from files">Citește coperta artistică din fișiere</entry>
-	<entry id="5511" string="Write cover art">Scrie coperta artistică</entry>
 	<entry id="5512" string="Write cover art to tags">Scrie coperta artistică la etichete</entry>
 	<entry id="5513" string="Write cover art to files">Scrie coperta artistică la fișiere</entry>
 	<entry id="5514" string="Add reference to audio file tag">Adaugă referințe la eticheta fișierului audio</entry>

@@ -520,10 +520,8 @@
 	<entry id="5505" string="Encoding">Coderen</entry>
 	<entry id="5506" string="Comments">Opmerkingen</entry>
 	<entry id="5507" string="Cover art">Albumhoes</entry>
-	<entry id="5508" string="Read cover art">Albumhoes lezen</entry>
 	<entry id="5509" string="Read cover art from tags">Albumhoes lezen uit tags</entry>
 	<entry id="5510" string="Read cover art from files">Albumhoes lezen uit bestanden</entry>
-	<entry id="5511" string="Write cover art">Albumhoes schrijven</entry>
 	<entry id="5512" string="Write cover art to tags">Albumhoes schrijven naar tags</entry>
 	<entry id="5513" string="Write cover art to files">Albumhoes schrijven naar bestanden</entry>
 	<entry id="5514" string="Add reference to audio file tag">Referentie toevoegen aan audiobestand-tag</entry>
