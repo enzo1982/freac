@@ -172,6 +172,7 @@ Geschichte
 
 			- Unterstützung für WavPack Hybrid Lossless-Komprimierung mit Korrekturdateien hinzugefügt
 			- Unterstützung für das Dekodieren von MPEG-4 DASH-Dateien hinzugefügt
+			- Unterstützung für das Öffnen von WebM-Audiodateien mit der Dateiendung .weba hinzugefügt
 			- Unterstützung für das Downmixen von 6.1-Kanal-Audio hinzugefügt
 			- Unterstützung für MusicBrainz-Metadaten in ID3v2-, MP4-, Vorbis Comment-, APEv2- und WMA-Tags hinzugefügt
 			- Unterstützung für Sortierreihenfolgefelder in ID3v2-, MP4-, Vorbis Comment-, APEv2- und WMA-Tags hinzugefügt
