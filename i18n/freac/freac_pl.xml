@@ -421,6 +421,7 @@
       <entry id="5024" string="Taggers">Edytory znaczników</entry>
       <entry id="5025" string="Processing">Przetwarzanie</entry>
       <entry id="5026" string="Additional arguments">Parametry dodatkowe</entry>
+	  <entry id="5027" string="Output files">Pliki wyjściowe</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Ustawienia konwersji</entry>
@@ -445,6 +446,7 @@
 	<entry id="5158" string="Replace spaces with underscores">Zastąp spacje podkreśleniami</entry>
 	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Dołącz narastające liczby do plików, które inaczej miałyby identyczne nazwy</entry>
 	<entry id="5160" string="Keep time stamps of source files">Zachowaj sygnatury czasowe plików źródłowych</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available">Użyj &lt;nazwy pliku&gt;, gdy informacje o tytule są niedostępne</entry>
 
 	<section name="Errors">
 	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Katalog docelowy nie istnieje! Utworzyć go?</entry>
@@ -547,6 +549,8 @@
 	<entry id="5528" string="Miscellaneous">Różne</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names">Brakujące pola wypełnij informacjami pozyskanymi z nazw plików</entry>
 	<entry id="5530" string="Restrict file names">Ogranicz nazwy plików</entry>
+	<entry id="5531" string="Cover art tags">Znaczniki okładki</entry>
+	<entry id="5532" string="Cover art files">Pliki okładki</entry>
       </section>
 
       <section name="Joblist">
@@ -1191,6 +1195,9 @@
 	<entry id="70023" string="not present">nie występuje</entry>
 	<entry id="70024" string="not detected">nie wykryty</entry>
 	<entry id="70025" string="disabled">wyłączone</entry>
+	<entry id="70026" string="Options">Ustawienia</entry>
+	<entry id="70027" string="Notify when a disc is not found in the database">Powiadamiaj, gdy płyta nie zostanie odnaleziona w bazie</entry>
+	<entry id="70028" string="Notify when all tracks have been successfully verified">Powiadamiaj, gdy wszystkie utwory zostaną pozytywnie zweryfikowane</entry>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">Konfiguracja AccurateRip</entry>
@@ -1201,6 +1208,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Włóż inną płytę do stacji CD i kliknij OK.&#10;&#10;Płyta musi znajdować się w bazie danych AccurateRip. Szansa na to jest największa&#10;w przypadku popularnych płyt CD, które mogły być wcześniej zgrane przez innych użytkowników.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">Wykrywanie offsetu wymaga sprawdzenia innej płyty.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Offset napędu został pomyślnie wykryty i ustawiony na liczbę próbek równą %1.</entry>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip.">Wszystkie utwory zostały pozytywnie zweryfikowane przez AccurateRip.</entry>
 	</section>
       </section>
     </section>
