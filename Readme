@@ -161,7 +161,7 @@ Requirements
 History
 -------
 
-	Version 1.1.7 (December 2022)
+	Version 1.1.7 (January 2023)
 
 		- New features
 
@@ -173,6 +173,7 @@ History
 
 			- added support for WavPack Hybrid Lossless compression with correction files
 			- added support for decoding MPEG-4 DASH files
+			- added support for opening WebM audio files with the .weba extension
 			- added support for downmixing 6.1 channel audio
 			- added support for MusicBrainz metadata in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags
 			- added support for sort order fields in ID3v2, MP4, Vorbis Comment, APEv2 and WMA tags
@@ -181,9 +182,11 @@ History
 			- added optional release year column to the joblist
 			- changed <disc> filename placeholder to resolve to 1 if disc number is not set
 			- improved compatibility with applications writing non-compliant LIST INFO tags (e.g. Traktor)
+			- added an option to use source file names as output file names if no metadata is present
 			- added an option to control extraction of missing metadata from file names
 			- added an option to restrict file names for reading cover art
 			- added an option to disable intensity stereo phase inversion to Opus settings
+			- added AccurateRip notification options for successful verification and missing database entries
 			- sample rate conversion no longer converts to 32 bit float when the source rate matches the target
 			- added negative exit codes to indicate errors when running freaccmd
 			- added support for KDE color schemes (including dark mode)
@@ -197,6 +200,7 @@ History
 			- fixed interoperability issues of HE- and HEv2-AAC files created with FDK-AAC with foobar2000
 			- fixed incorrect gapless information when creating HE- and HEv2-AAC files with FDK-AAC
 			- fixed incorrect index times in cuesheets for very long multi-track files
+			- fixed incorrect inclusion of data tracks in the audio track count of CD offset strings
 			- fixed old data remaining in place after updating WMA file tags
 			- fixed selected format resetting to first entry when opening WMA config dialog
 			- fixed excessive bitrate when encoding Vorbis on non-x86 LP64 systems
@@ -215,7 +219,7 @@ History
 			- updated Speex to version 1.2.1
 			- updated MP4v2 to version 2.1.1
 			- updated mpg123 to version 1.31.0
-			- updated libsndfile to version 1.1.0
+			- updated libsndfile to version 1.2.0
 
 		- New and updated translations
 

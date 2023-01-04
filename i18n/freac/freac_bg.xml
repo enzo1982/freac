@@ -424,26 +424,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Конфигурация на енкодера</entry>
 	<entry id="5101" string="Encoder">Енкодер</entry>
-	<entry id="5102" string="Output folder">Изходна папка</entry>
-	<entry id="5103" string="Select">Избиране...</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Изберете папка, където кодираните файлове ще бъдат поставени</entry>
-	<entry id="5105" string="Use input file folder if possible">Папката на входящия файл (ако е възможно)</entry>
-	<entry id="5106" string="Allow overwriting input file">Презаписване на входящия файл</entry>
-	<entry id="5107" string="Options">Опции</entry>
-	<entry id="5108" string="Filename pattern">Шаблон за име на файла</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Паралелно Кодиране (в движение)</entry>
-	<entry id="5110" string="Keep ripped Wave files">Запазване на Wave файловете</entry>
-	<entry id="5111" string="Encode to a single file">Кодиране в един файл</entry>
-	<entry id="5112" string="Output filenames">Имена на изходните файлове</entry>
-	<entry id="5113" string="Allow Unicode characters">Разрешаване на Unicode символи</entry>
-	<entry id="5114" string="Replace spaces with underscores">Замяна на интервалите</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Премахване обработените песни от задачите</entry>
-	<entry id="5116" string="Add encoded files to joblist">Добавяне кодираните файлове в задачите</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Добавяне последователни номера към файловете с еднакви имена</entry>
-	<entry id="5118" string="Keep time stamps of source files">Запазване времето на оригиналните файлове</entry>
+	<entry id="5102" string="Options">Опции</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Паралелно Кодиране (в движение)</entry>
+	<entry id="5104" string="Keep ripped Wave files">Запазване на Wave файловете</entry>
+	<entry id="5105" string="Encode to a single file">Кодиране в един файл</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Премахване обработените песни от задачите</entry>
+	<entry id="5107" string="Add encoded files to joblist">Добавяне кодираните файлове в задачите</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Изходна папка</entry>
+	<entry id="5151" string="Use input file folder if possible">Папката на входящия файл (ако е възможно)</entry>
+	<entry id="5152" string="Allow overwriting input file">Презаписване на входящия файл</entry>
+	<entry id="5153" string="Select">Избиране...</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Изберете папка, където кодираните файлове ще бъдат поставени</entry>
+	<entry id="5155" string="Output filenames">Имена на изходните файлове</entry>
+	<entry id="5156" string="Filename pattern">Шаблон за име на файла</entry>
+	<entry id="5157" string="Allow Unicode characters">Разрешаване на Unicode символи</entry>
+	<entry id="5158" string="Replace spaces with underscores">Замяна на интервалите</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Добавяне последователни номера към файловете с еднакви имена</entry>
+	<entry id="5160" string="Keep time stamps of source files">Запазване времето на оригиналните файлове</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Изходната папка не съществува! Искате ли да я създадете?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Изходната папка не съществува! Искате ли да я създадете?</entry>
 	</section>
       </section>
 
@@ -520,10 +523,8 @@
 	<entry id="5505" string="Encoding">Кодиране</entry>
 	<entry id="5506" string="Comments">Коментари</entry>
 	<entry id="5507" string="Cover art">Обложка</entry>
-	<entry id="5508" string="Read cover art">Прочитане на обложка</entry>
 	<entry id="5509" string="Read cover art from tags">Прочитане на обложка от тагове</entry>
 	<entry id="5510" string="Read cover art from files">Прочитане на обложка от файлове</entry>
-	<entry id="5511" string="Write cover art">Записване на обложка</entry>
 	<entry id="5512" string="Write cover art to tags">Записване на обложката в таговете</entry>
 	<entry id="5513" string="Write cover art to files">Записване на обложката във файловете</entry>
 	<entry id="5514" string="Add reference to audio file tag">Препратка към таг на аудио файл</entry>

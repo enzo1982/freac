@@ -421,26 +421,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">編碼器組態</entry>
 	<entry id="5101" string="Encoder">編碼器</entry>
-	<entry id="5102" string="Output folder">輸出資料夾</entry>
-	<entry id="5103" string="Select">瀏覽</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">選擇儲存輸出檔案的資料夾</entry>
-	<entry id="5105" string="Use input file folder if possible">若可能，和輸入檔案使用相同資料夾</entry>
-	<entry id="5106" string="Allow overwriting input file">允許覆寫輸入檔案</entry>
-	<entry id="5107" string="Options">選項</entry>
-	<entry id="5108" string="Filename pattern">檔名規則</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">即時編碼</entry>
-	<entry id="5110" string="Keep ripped Wave files">轉檔完成後保留 Wave 檔案</entry>
-	<entry id="5111" string="Encode to a single file">編碼為單一檔案</entry>
-	<entry id="5112" string="Output filenames">輸出檔案名稱</entry>
-	<entry id="5113" string="Allow Unicode characters">允許 Unicode 字元</entry>
-	<entry id="5114" string="Replace spaces with underscores">使用底線取代空白符號</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">從工作清單移除已完成的項目</entry>
-	<entry id="5116" string="Add encoded files to joblist">將輸出檔案新增到工作清單</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">在名稱重複的檔案後方加上序號</entry>
-	<entry id="5118" string="Keep time stamps of source files">保留原始檔案的時間戳記</entry>
+	<entry id="5102" string="Options">選項</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">即時編碼</entry>
+	<entry id="5104" string="Keep ripped Wave files">轉檔完成後保留 Wave 檔案</entry>
+	<entry id="5105" string="Encode to a single file">編碼為單一檔案</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">從工作清單移除已完成的項目</entry>
+	<entry id="5107" string="Add encoded files to joblist">將輸出檔案新增到工作清單</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">輸出資料夾</entry>
+	<entry id="5151" string="Use input file folder if possible">若可能，和輸入檔案使用相同資料夾</entry>
+	<entry id="5152" string="Allow overwriting input file">允許覆寫輸入檔案</entry>
+	<entry id="5153" string="Select">瀏覽</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">選擇儲存輸出檔案的資料夾</entry>
+	<entry id="5155" string="Output filenames">輸出檔案名稱</entry>
+	<entry id="5156" string="Filename pattern">檔名規則</entry>
+	<entry id="5157" string="Allow Unicode characters">允許 Unicode 字元</entry>
+	<entry id="5158" string="Replace spaces with underscores">使用底線取代空白符號</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">在名稱重複的檔案後方加上序號</entry>
+	<entry id="5160" string="Keep time stamps of source files">保留原始檔案的時間戳記</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">輸出資料夾不存在！您想要建立該資料夾嗎？</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">輸出資料夾不存在！您想要建立該資料夾嗎？</entry>
 	</section>
       </section>
 
@@ -517,10 +520,8 @@
 	<entry id="5505" string="Encoding">編碼</entry>
 	<entry id="5506" string="Comments">註解</entry>
 	<entry id="5507" string="Cover art">封面藝術</entry>
-	<entry id="5508" string="Read cover art">讀取封面藝術</entry>
 	<entry id="5509" string="Read cover art from tags">從標籤讀取封面藝術</entry>
 	<entry id="5510" string="Read cover art from files">從檔案讀取封面藝術</entry>
-	<entry id="5511" string="Write cover art">寫入封面藝術</entry>
 	<entry id="5512" string="Write cover art to tags">將封面藝術寫入標籤</entry>
 	<entry id="5513" string="Write cover art to files">將封面藝術寫入檔案</entry>
 	<entry id="5514" string="Add reference to audio file tag">將參照資料新增到音訊檔案標籤</entry>

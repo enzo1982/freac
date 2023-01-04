@@ -281,19 +281,22 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Agordi kodilon</entry>
 	<entry id="5101" string="Encoder">Kodilo</entry>
-	<entry id="5102" string="Output folder">Eliga dosierujo</entry>
-	<entry id="5103" string="Select">Elekti ujon</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Elektu dosierujon por la kodita(j) dosiero(j)</entry>
-	<entry id="5105" string="Use input file folder if possible">Uzi enigan dosierujon se eblas</entry>
-	<entry id="5106" string="Allow overwriting input file">Permesi anstataŭigi la enigan dosieron</entry>
-	<entry id="5107" string="Options">Opcioj</entry>
-	<entry id="5108" string="Filename pattern">Modelo por dosiernomo</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Kodi 'On-The-Fly'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Konservi la wave-dosierojn</entry>
-	<entry id="5111" string="Encode to a single file">Kodi al solaj dosieroj</entry>
+	<entry id="5102" string="Options">Opcioj</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Kodi 'On-The-Fly'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Konservi la wave-dosierojn</entry>
+	<entry id="5105" string="Encode to a single file">Kodi al solaj dosieroj</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Eliga dosierujo</entry>
+	<entry id="5151" string="Use input file folder if possible">Uzi enigan dosierujon se eblas</entry>
+	<entry id="5152" string="Allow overwriting input file">Permesi anstataŭigi la enigan dosieron</entry>
+	<entry id="5153" string="Select">Elekti ujon</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Elektu dosierujon por la kodita(j) dosiero(j)</entry>
+	<entry id="5156" string="Filename pattern">Modelo por dosiernomo</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">La eliga dosierujo ne ekzistas! Ĉu vi volas krei ĝin?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">La eliga dosierujo ne ekzistas! Ĉu vi volas krei ĝin?</entry>
 	</section>
       </section>
 

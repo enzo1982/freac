@@ -1354,10 +1354,10 @@ Error freac::JobConvert::Perform()
 
 	delete progress;
 
-	/* Notify components and write log.
+	/* Finish log writing and notify components.
 	 */
-	if (abort) { engine->onCancelConversion.Emit(conversionID); log->Write("Conversion process cancelled.", MessageTypeWarning); }
-	else	   { engine->onFinishConversion.Emit(conversionID); log->Write("Conversion process finished."); }
+	if (abort) { log->Write("Conversion process cancelled.", MessageTypeWarning); engine->onCancelConversion.Emit(conversionID); }
+	else	   { log->Write("Conversion process finished.");		      engine->onFinishConversion.Emit(conversionID); }
 
 	/* Set progress to 100%.
 	 */

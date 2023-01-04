@@ -424,26 +424,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Encoder configureren</entry>
 	<entry id="5101" string="Encoder">Encoder</entry>
-	<entry id="5102" string="Output folder">Uitvoermap</entry>
-	<entry id="5103" string="Select">Bladeren</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Selecteer de map waarin de gecodeerde bestanden moeten terechtkomen</entry>
-	<entry id="5105" string="Use input file folder if possible">Map van invoerbestand gebruiken indien mogelijk</entry>
-	<entry id="5106" string="Allow overwriting input file">Overschijven van invoerbestand toestaan</entry>
-	<entry id="5107" string="Options">Opties</entry>
-	<entry id="5108" string="Filename pattern">Bestandspatroon</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">'On-The-Fly' coderen</entry>
-	<entry id="5110" string="Keep ripped Wave files">Geripte bestanden houden</entry>
-	<entry id="5111" string="Encode to a single file">Coderen naar enkel bestand</entry>
-	<entry id="5112" string="Output filenames">Uitvoerbestandsnamen</entry>
-	<entry id="5113" string="Allow Unicode characters">Unicode-tekens toestaan</entry>
-	<entry id="5114" string="Replace spaces with underscores">Spaties vervangen door underscores</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Verwerkte tracks verwijderen uit takenlijst</entry>
-	<entry id="5116" string="Add encoded files to joblist">Gecodeerde bestanden toevoegen aan takenlijst</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Opeenvolgende getallen toevoegen aan anders identieke bestandsnamen</entry>
-	<entry id="5118" string="Keep time stamps of source files">Tijdstempels van bronbestanden behouden</entry>
+	<entry id="5102" string="Options">Opties</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">'On-The-Fly' coderen</entry>
+	<entry id="5104" string="Keep ripped Wave files">Geripte bestanden houden</entry>
+	<entry id="5105" string="Encode to a single file">Coderen naar enkel bestand</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Verwerkte tracks verwijderen uit takenlijst</entry>
+	<entry id="5107" string="Add encoded files to joblist">Gecodeerde bestanden toevoegen aan takenlijst</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Uitvoermap</entry>
+	<entry id="5151" string="Use input file folder if possible">Map van invoerbestand gebruiken indien mogelijk</entry>
+	<entry id="5152" string="Allow overwriting input file">Overschijven van invoerbestand toestaan</entry>
+	<entry id="5153" string="Select">Bladeren</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Selecteer de map waarin de gecodeerde bestanden moeten terechtkomen</entry>
+	<entry id="5155" string="Output filenames">Uitvoerbestandsnamen</entry>
+	<entry id="5156" string="Filename pattern">Bestandspatroon</entry>
+	<entry id="5157" string="Allow Unicode characters">Unicode-tekens toestaan</entry>
+	<entry id="5158" string="Replace spaces with underscores">Spaties vervangen door underscores</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Opeenvolgende getallen toevoegen aan anders identieke bestandsnamen</entry>
+	<entry id="5160" string="Keep time stamps of source files">Tijdstempels van bronbestanden behouden</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">De uitvoermap bestaat niet. Wilt u ze aanmaken?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">De uitvoermap bestaat niet. Wilt u ze aanmaken?</entry>
 	</section>
       </section>
 
@@ -520,10 +523,8 @@
 	<entry id="5505" string="Encoding">Coderen</entry>
 	<entry id="5506" string="Comments">Opmerkingen</entry>
 	<entry id="5507" string="Cover art">Albumhoes</entry>
-	<entry id="5508" string="Read cover art">Albumhoes lezen</entry>
 	<entry id="5509" string="Read cover art from tags">Albumhoes lezen uit tags</entry>
 	<entry id="5510" string="Read cover art from files">Albumhoes lezen uit bestanden</entry>
-	<entry id="5511" string="Write cover art">Albumhoes schrijven</entry>
 	<entry id="5512" string="Write cover art to tags">Albumhoes schrijven naar tags</entry>
 	<entry id="5513" string="Write cover art to files">Albumhoes schrijven naar bestanden</entry>
 	<entry id="5514" string="Add reference to audio file tag">Referentie toevoegen aan audiobestand-tag</entry>

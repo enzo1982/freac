@@ -216,16 +216,19 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">הגדרות מקודד</entry>
 	<entry id="5101" string="Encoder">מקודד</entry>
-	<entry id="5102" string="Output folder">תקיית יעד</entry>
-	<entry id="5103" string="Select">דפדף</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">בחר בתקייה בה ישמרו הקבצים לאחר הקידוד</entry>
-	<entry id="5106" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
-	<entry id="5107" string="Options">אפשרויות</entry>
-	<entry id="5108" string="Filename pattern">צורת שם קובץ</entry>
-	<entry id="5111" string="Encode to a single file">המר לקובץ אחד</entry>
+	<entry id="5102" string="Options">אפשרויות</entry>
+	<entry id="5105" string="Encode to a single file">המר לקובץ אחד</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">תקיית יעד</entry>
+	<entry id="5152" string="Allow overwriting input file">אפשר דריסת קובץ מקור</entry>
+	<entry id="5153" string="Select">דפדף</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">בחר בתקייה בה ישמרו הקבצים לאחר הקידוד</entry>
+	<entry id="5156" string="Filename pattern">צורת שם קובץ</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">תקית היעד אינה קיימת, האם ליצור אותה?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">תקית היעד אינה קיימת, האם ליצור אותה?</entry>
 	</section>
       </section>
 

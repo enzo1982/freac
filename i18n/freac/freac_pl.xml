@@ -425,26 +425,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Ustawienia konwersji</entry>
 	<entry id="5101" string="Encoder">Konwerter</entry>
-	<entry id="5102" string="Output folder">Katalog docelowy</entry>
-	<entry id="5103" string="Select">Przeglądaj</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Wybierz katalog docelowy dla konwertowanych plików</entry>
-	<entry id="5105" string="Use input file folder if possible">Jeśli możliwe, wykorzystaj katalog wejściowy</entry>
-	<entry id="5106" string="Allow overwriting input file">Zezwól na zastąpienie pliku wejściowego</entry>
-	<entry id="5107" string="Options">Ustawienia</entry>
-	<entry id="5108" string="Filename pattern">Wzór nazw plików</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Konwertuj „w locie”</entry>
-	<entry id="5110" string="Keep ripped Wave files">Zachowaj zgrane pliki Wave</entry>
-	<entry id="5111" string="Encode to a single file">Konwertuj do jednego pliku</entry>
-	<entry id="5112" string="Output filenames">Nazwy plików wyjściowych</entry>
-	<entry id="5113" string="Allow Unicode characters">Zezwól na znaki Unicode</entry>
-	<entry id="5114" string="Replace spaces with underscores">Zastąp spacje podkreśleniami</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Usuń przetworzone utwory z listy zadań</entry>
-	<entry id="5116" string="Add encoded files to joblist">Dodaj skonwertowane pliki do listy zadań</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Dołącz narastające liczby do plików, które inaczej miałyby identyczne nazwy</entry>
-	<entry id="5118" string="Keep time stamps of source files">Zachowaj sygnatury czasowe plików źródłowych</entry>
+	<entry id="5102" string="Options">Ustawienia</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Konwertuj „w locie”</entry>
+	<entry id="5104" string="Keep ripped Wave files">Zachowaj zgrane pliki Wave</entry>
+	<entry id="5105" string="Encode to a single file">Konwertuj do jednego pliku</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Usuń przetworzone utwory z listy zadań</entry>
+	<entry id="5107" string="Add encoded files to joblist">Dodaj skonwertowane pliki do listy zadań</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Katalog docelowy</entry>
+	<entry id="5151" string="Use input file folder if possible">Jeśli możliwe, wykorzystaj katalog wejściowy</entry>
+	<entry id="5152" string="Allow overwriting input file">Zezwól na zastąpienie pliku wejściowego</entry>
+	<entry id="5153" string="Select">Przeglądaj</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Wybierz katalog docelowy dla konwertowanych plików</entry>
+	<entry id="5155" string="Output filenames">Nazwy plików wyjściowych</entry>
+	<entry id="5156" string="Filename pattern">Wzór nazw plików</entry>
+	<entry id="5157" string="Allow Unicode characters">Zezwól na znaki Unicode</entry>
+	<entry id="5158" string="Replace spaces with underscores">Zastąp spacje podkreśleniami</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Dołącz narastające liczby do plików, które inaczej miałyby identyczne nazwy</entry>
+	<entry id="5160" string="Keep time stamps of source files">Zachowaj sygnatury czasowe plików źródłowych</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Katalog docelowy nie istnieje! Utworzyć go?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Katalog docelowy nie istnieje! Utworzyć go?</entry>
 	</section>
       </section>
 
@@ -526,10 +529,8 @@
 	<entry id="5505" string="Encoding">Kodowanie</entry>
 	<entry id="5506" string="Comments">Komentarze</entry>
 	<entry id="5507" string="Cover art">Okładka</entry>
-	<entry id="5508" string="Read cover art">Odczytaj okładkę</entry>
 	<entry id="5509" string="Read cover art from tags">Odczytaj okładkę ze znaczników</entry>
 	<entry id="5510" string="Read cover art from files">Odczytaj okładkę z plików</entry>
-	<entry id="5511" string="Write cover art">Zapisz okładkę</entry>
 	<entry id="5512" string="Write cover art to tags">Zapisz okładkę do znaczników</entry>
 	<entry id="5513" string="Write cover art to files">Zapisz okładkę do plików</entry>
 	<entry id="5514" string="Add reference to audio file tag">Dodaj odnośnik do znacznika pliku audio</entry>

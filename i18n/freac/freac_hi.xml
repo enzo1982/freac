@@ -405,26 +405,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">एनकोडर कॉन्फ़िगर करें</entry>
 	<entry id="5101" string="Encoder">एनकोडर</entry>
-	<entry id="5102" string="Output folder">आउटपुट फ़ोल्डर</entry>
-	<entry id="5103" string="Select">चयन करें</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">उस फ़ोल्डर का चयन करें जिसमें एन्कोडेड फाइलें रखी जाएंगी</entry>
-	<entry id="5105" string="Use input file folder if possible">यदि संभव हो तो इनपुट फ़ाइल फ़ोल्डर का उपयोग करें</entry>
-	<entry id="5106" string="Allow overwriting input file">ओवरराइटिंग इनपुट फ़ाइल की अनुमति दें</entry>
-	<entry id="5107" string="Options">विकल्प</entry>
-	<entry id="5108" string="Filename pattern">फ़ाइल नाम पैटर्न</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">'ऑन-द-फ्लाई' एनकोड करें</entry>
-	<entry id="5110" string="Keep ripped Wave files">रिप्ड वेव फाइलें रखें</entry>
-	<entry id="5111" string="Encode to a single file">एक ही फाइल को एनकोड करें</entry>
-	<entry id="5112" string="Output filenames">आउटपुट फ़ाइल नाम</entry>
-	<entry id="5113" string="Allow Unicode characters">यूनिकोड वर्णों को अनुमति दें</entry>
-	<entry id="5114" string="Replace spaces with underscores">अंडरस्कोर के साथ रिक्त स्थान बदलें</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">जॉबलिस्ट से संसाधित ट्रैक निकालें</entry>
-	<entry id="5116" string="Add encoded files to joblist">जॉबलिस्ट में एन्कोडेड फ़ाइलों को जोड़ें</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">अन्यथा समान फ़ाइलनामों के लिए अनुक्रमिक संख्याएं जोड़ें</entry>
-	<entry id="5118" string="Keep time stamps of source files">स्रोत फ़ाइलों के समय टिकटों को रखें</entry>
+	<entry id="5102" string="Options">विकल्प</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">'ऑन-द-फ्लाई' एनकोड करें</entry>
+	<entry id="5104" string="Keep ripped Wave files">रिप्ड वेव फाइलें रखें</entry>
+	<entry id="5105" string="Encode to a single file">एक ही फाइल को एनकोड करें</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">जॉबलिस्ट से संसाधित ट्रैक निकालें</entry>
+	<entry id="5107" string="Add encoded files to joblist">जॉबलिस्ट में एन्कोडेड फ़ाइलों को जोड़ें</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">आउटपुट फ़ोल्डर</entry>
+	<entry id="5151" string="Use input file folder if possible">यदि संभव हो तो इनपुट फ़ाइल फ़ोल्डर का उपयोग करें</entry>
+	<entry id="5152" string="Allow overwriting input file">ओवरराइटिंग इनपुट फ़ाइल की अनुमति दें</entry>
+	<entry id="5153" string="Select">चयन करें</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">उस फ़ोल्डर का चयन करें जिसमें एन्कोडेड फाइलें रखी जाएंगी</entry>
+	<entry id="5155" string="Output filenames">आउटपुट फ़ाइल नाम</entry>
+	<entry id="5156" string="Filename pattern">फ़ाइल नाम पैटर्न</entry>
+	<entry id="5157" string="Allow Unicode characters">यूनिकोड वर्णों को अनुमति दें</entry>
+	<entry id="5158" string="Replace spaces with underscores">अंडरस्कोर के साथ रिक्त स्थान बदलें</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">अन्यथा समान फ़ाइलनामों के लिए अनुक्रमिक संख्याएं जोड़ें</entry>
+	<entry id="5160" string="Keep time stamps of source files">स्रोत फ़ाइलों के समय टिकटों को रखें</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">आउटपुट फ़ोल्डर मौजूद नहीं है! क्या आप इसे बनाना चाहते हैं?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">आउटपुट फ़ोल्डर मौजूद नहीं है! क्या आप इसे बनाना चाहते हैं?</entry>
 	</section>
       </section>
 
@@ -501,10 +504,8 @@
 	<entry id="5505" string="Encoding">एन्कोडिंग</entry>
 	<entry id="5506" string="Comments">टिप्पणी</entry>
 	<entry id="5507" string="Cover art">कवर आर्ट</entry>
-	<entry id="5508" string="Read cover art">कवर आर्ट पढ़ें</entry>
 	<entry id="5509" string="Read cover art from tags">टैग से कवर आर्ट पढ़ें</entry>
 	<entry id="5510" string="Read cover art from files">फाइलों से कवर आर्ट पढ़ें</entry>
-	<entry id="5511" string="Write cover art">कवर आर्ट लिखिए</entry>
 	<entry id="5512" string="Write cover art to tags">टैग्स के लिए कवर आर्ट लिखें</entry>
 	<entry id="5513" string="Write cover art to files">फाइलों में कवर आर्ट लिखें</entry>
 	<entry id="5514" string="Add reference to audio file tag">ऑडियो फ़ाइल टैग के लिए संदर्भ जोड़ें</entry>

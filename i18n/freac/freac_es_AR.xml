@@ -418,26 +418,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar codificador</entry>
 	<entry id="5101" string="Encoder">Codificador</entry>
-	<entry id="5102" string="Output folder">Carpeta de destino</entry>
-	<entry id="5103" string="Select">Examinar</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Seleccione la carpeta donde los archivos codificados serán guardados</entry>
-	<entry id="5105" string="Use input file folder if possible">Utilizar la carpeta de origen si es posible</entry>
-	<entry id="5106" string="Allow overwriting input file">Permitir sobreescribir el archivo de origen</entry>
-	<entry id="5107" string="Options">Opciones</entry>
-	<entry id="5108" string="Filename pattern">Patrón de nombre de archivo</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Codificar 'Al vuelo'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Mantener archs wav extraídos</entry>
-	<entry id="5111" string="Encode to a single file">Codificar a un solo archivo</entry>
-	<entry id="5112" string="Output filenames">Nombres de archivo de salida</entry>
-	<entry id="5113" string="Allow Unicode characters">Permitir caracteres Unicode</entry>
-	<entry id="5114" string="Replace spaces with underscores">Reemplazar espacios por guiones bajos</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Quitar pistas procesadas de la lista</entry>
-	<entry id="5116" string="Add encoded files to joblist">Agregar archivos codificados a la lista</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Anexar números secuenciales a nombres de archivo idénticos</entry>
-	<entry id="5118" string="Keep time stamps of source files">Guardar marcas de tiempo de archivos de origen</entry>
+	<entry id="5102" string="Options">Opciones</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Codificar 'Al vuelo'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Mantener archs wav extraídos</entry>
+	<entry id="5105" string="Encode to a single file">Codificar a un solo archivo</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Quitar pistas procesadas de la lista</entry>
+	<entry id="5107" string="Add encoded files to joblist">Agregar archivos codificados a la lista</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Carpeta de destino</entry>
+	<entry id="5151" string="Use input file folder if possible">Utilizar la carpeta de origen si es posible</entry>
+	<entry id="5152" string="Allow overwriting input file">Permitir sobreescribir el archivo de origen</entry>
+	<entry id="5153" string="Select">Examinar</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Seleccione la carpeta donde los archivos codificados serán guardados</entry>
+	<entry id="5155" string="Output filenames">Nombres de archivo de salida</entry>
+	<entry id="5156" string="Filename pattern">Patrón de nombre de archivo</entry>
+	<entry id="5157" string="Allow Unicode characters">Permitir caracteres Unicode</entry>
+	<entry id="5158" string="Replace spaces with underscores">Reemplazar espacios por guiones bajos</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Anexar números secuenciales a nombres de archivo idénticos</entry>
+	<entry id="5160" string="Keep time stamps of source files">Guardar marcas de tiempo de archivos de origen</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">La carpeta de destino no existe. ¿Desea crearla?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">La carpeta de destino no existe. ¿Desea crearla?</entry>
 	</section>
       </section>
 
@@ -514,10 +517,8 @@
 	<entry id="5505" string="Encoding">Codificación</entry>
 	<entry id="5506" string="Comments">Comentarios</entry>
 	<entry id="5507" string="Cover art">Imagen de portada</entry>
-	<entry id="5508" string="Read cover art">Leer imagen de portada</entry>
 	<entry id="5509" string="Read cover art from tags">Leer imagen de portada desde etiquetas</entry>
 	<entry id="5510" string="Read cover art from files">Leer imagen de portada desde archivos</entry>
-	<entry id="5511" string="Write cover art">Escribir imagen de portada</entry>
 	<entry id="5512" string="Write cover art to tags">Escribir imagen de portada hacia etiquetas</entry>
 	<entry id="5513" string="Write cover art to files">Escribir imagen de portada hacia archivos</entry>
 	<entry id="5514" string="Add reference to audio file tag">Agregar referencia a etiqueta de archvio de audio</entry>

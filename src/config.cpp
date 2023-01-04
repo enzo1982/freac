@@ -130,6 +130,9 @@ const Bool	 freac::Config::SettingsFilenamesKeepTimeStampsDefault		= False;
 const String	 freac::Config::SettingsFilenamesAddSequentialNumbersID		= "FilenamesAddSequentialNumbers";
 const Bool	 freac::Config::SettingsFilenamesAddSequentialNumbersDefault	= False;
 
+const String	 freac::Config::SettingsFilenamesUseFallbackID			= "UseFilenameFallback";
+const Bool	 freac::Config::SettingsFilenamesUseFallbackDefault		= True;
+
 const String	 freac::Config::SettingsEncoderID				= "Encoder";
 const String	 freac::Config::SettingsEncoderDefault				= "lame-enc";
 

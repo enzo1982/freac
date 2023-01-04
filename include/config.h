@@ -131,6 +131,9 @@ namespace freac
 			static const String	 SettingsFilenamesAddSequentialNumbersID;
 			static const Bool	 SettingsFilenamesAddSequentialNumbersDefault;
 
+			static const String	 SettingsFilenamesUseFallbackID;
+			static const Bool	 SettingsFilenamesUseFallbackDefault;
+
 			static const String	 SettingsEncoderID;
 			static const String	 SettingsEncoderDefault;
 

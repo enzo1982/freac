@@ -425,26 +425,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Cunfigurà u cudificatore</entry>
 	<entry id="5101" string="Encoder">Cudificatore</entry>
-	<entry id="5102" string="Output folder">Cartulare di destinazione</entry>
-	<entry id="5103" string="Select">Selezziunà</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Selezziunà u cartulare di destinazione di i schedarii cudificati</entry>
-	<entry id="5105" string="Use input file folder if possible">Impiegà s’ellu hè pussibule u cartulare di u schedariu d’origine</entry>
-	<entry id="5106" string="Allow overwriting input file">Permette di rimpiazzà u schedariu d’origine</entry>
-	<entry id="5107" string="Options">Ozzioni</entry>
-	<entry id="5108" string="Filename pattern">Mudellu di nome di schedariu</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Cudificà da volu</entry>
-	<entry id="5110" string="Keep ripped Wave files">Cunservà i schedarii Wave estratti</entry>
-	<entry id="5111" string="Encode to a single file">Cudificà in un schedariu unicu</entry>
-	<entry id="5112" string="Output filenames">Nomi di schedariu d’esciuta</entry>
-	<entry id="5113" string="Allow Unicode characters">Permette i caratteri Unicode</entry>
-	<entry id="5114" string="Replace spaces with underscores">Rimpiazzà i spazii cù lineette basse (spaziu sottulineatu)</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Caccià da a lista di travagliu e traccie trattate</entry>
-	<entry id="5116" string="Add encoded files to joblist">Aghjunghje à a lista di travagliu i schedarii cudificati</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Aghjunghje un numeru sequenziale à i nomi di schedariu uguali</entry>
-	<entry id="5118" string="Keep time stamps of source files">Cunservà a data è l’ora di i schedarii d’origine</entry>
+	<entry id="5102" string="Options">Ozzioni</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Cudificà da volu</entry>
+	<entry id="5104" string="Keep ripped Wave files">Cunservà i schedarii Wave estratti</entry>
+	<entry id="5105" string="Encode to a single file">Cudificà in un schedariu unicu</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Caccià da a lista di travagliu e traccie trattate</entry>
+	<entry id="5107" string="Add encoded files to joblist">Aghjunghje à a lista di travagliu i schedarii cudificati</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Cartulare di destinazione</entry>
+	<entry id="5151" string="Use input file folder if possible">Impiegà s’ellu hè pussibule u cartulare di u schedariu d’origine</entry>
+	<entry id="5152" string="Allow overwriting input file">Permette di rimpiazzà u schedariu d’origine</entry>
+	<entry id="5153" string="Select">Selezziunà</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Selezziunà u cartulare di destinazione di i schedarii cudificati</entry>
+	<entry id="5155" string="Output filenames">Nomi di schedariu d’esciuta</entry>
+	<entry id="5156" string="Filename pattern">Mudellu di nome di schedariu</entry>
+	<entry id="5157" string="Allow Unicode characters">Permette i caratteri Unicode</entry>
+	<entry id="5158" string="Replace spaces with underscores">Rimpiazzà i spazii cù lineette basse (spaziu sottulineatu)</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Aghjunghje un numeru sequenziale à i nomi di schedariu uguali</entry>
+	<entry id="5160" string="Keep time stamps of source files">Cunservà a data è l’ora di i schedarii d’origine</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">U cartulare di destinazione ùn esiste micca ! Vulete creallu ?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">U cartulare di destinazione ùn esiste micca ! Vulete creallu ?</entry>
 	</section>
       </section>
 
@@ -526,10 +529,8 @@
 	<entry id="5505" string="Encoding">Cudificazione</entry>
 	<entry id="5506" string="Comments">Cummenti</entry>
 	<entry id="5507" string="Cover art">Cuprendula</entry>
-	<entry id="5508" string="Read cover art">Lettura di a cuprendula</entry>
 	<entry id="5509" string="Read cover art from tags">Leghje a cuprendula da l’etichette</entry>
 	<entry id="5510" string="Read cover art from files">Leghje a cuprendula da i schedarii</entry>
-	<entry id="5511" string="Write cover art">Scrittura di a cuprendula</entry>
 	<entry id="5512" string="Write cover art to tags">Scrive a cuprendula in l’etichette</entry>
 	<entry id="5513" string="Write cover art to files">Scrive a cuprendula in i schedarii</entry>
 	<entry id="5514" string="Add reference to audio file tag">Aghjunghje una referenza à l’etichetta di u schedariu audio</entry>
@@ -545,6 +546,7 @@
 	<entry id="5527" string="unlimited">senza limitu</entry>
 	<entry id="5528" string="Miscellaneous">Diversi</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names">Riempie i campi assente cù l’infurmazione ottinuta da i nomi di schedariu</entry>
+	<entry id="5530" string="Restrict file names">Restringhje i nomi di schedariu</entry>
       </section>
 
       <section name="Joblist">
@@ -738,6 +740,7 @@
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Cambià a tunalità/tempo di Rubber Band</entry>
 	<entry id="12005" string="HDCD Decoder">Discudificatore HDCD</entry>
 	<entry id="12006" string="Matrix Surround Decoder">Discudificatore Surround Matrix</entry>
+	<entry id="12007" string="Volume Adjustment">Accumudata di vulume</entry>
       </section>
 
       <section name="Verifiers">
@@ -1075,6 +1078,9 @@
 	<entry id="50004" string="unsigned">senza segnu</entry>
 	<entry id="50005" string="Integer">Interu</entry>
 	<entry id="50006" string="Float">Decimale</entry>
+	<entry id="50007" string="Dithering">Tramatura</entry>
+	<entry id="50008" string="Apply dither when reducing sample resolution">Appiecà a trama quandu si riduce a risuluzione di campiunariu</entry>
+	<entry id="50009" string="Dither type">Tipu di trama</entry>
       </section>
 
       <section name="Channels">
@@ -1139,6 +1145,12 @@
 	<entry id="50500" string="Output channels">Canali d’esciuta</entry>
 	<entry id="50501" string="Channel configuration">Cunfigurazione di canale</entry>
 	<entry id="50502" string="Redirect bass content to LFE channel">Addirizzà u cuntenutu di u bassu versu u canale LFE</entry>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment">Accumudata di vulume</entry>
+	<entry id="50601" string="Adjustment">Accumudata</entry>
+	<entry id="50602" string="%1 dB">%1 dB</entry>
       </section>
     </section>
 

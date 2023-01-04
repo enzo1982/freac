@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -51,6 +51,7 @@ Void smooth::DetachDLL()
 	BoCA::DriveOffsets::Free();
 }
 
+using namespace smooth::GUI::Dialogs;
 using namespace smooth::IO;
 using namespace smooth::Net;
 
@@ -90,6 +91,7 @@ Bool BoCA::VerifierAccurateRip::Verify()
 	 */
 	const Config	*config = GetConfiguration();
 
+	if (config->GetIntValue(ConfigureAccurateRip::ConfigID, "ConfigureDrive", -1) != -1) return OnConfigureDrive();
 	if (config->GetIntValue(ConfigureAccurateRip::ConfigID, "DiscInsert", -1) != -1) return OnDiscInsert();
 
 	/* Calculate AccurateRip disc ID and query database.
@@ -146,11 +148,11 @@ Bool BoCA::VerifierAccurateRip::Verify()
 	return False;
 }
 
-Bool BoCA::VerifierAccurateRip::OnDiscInsert()
+Bool BoCA::VerifierAccurateRip::OnConfigureDrive()
 {
 	const Config	*config = GetConfiguration();
 
-	Int	 driveNumber = config->GetIntValue(ConfigureAccurateRip::ConfigID, "DiscInsert", -1);
+	Int	 driveNumber = config->GetIntValue(ConfigureAccurateRip::ConfigID, "ConfigureDrive", -1);
 
 	NonBlocking1<Int>(&ConfigureDrive).Call(driveNumber);
 
@@ -159,11 +161,51 @@ Bool BoCA::VerifierAccurateRip::OnDiscInsert()
 
 Void BoCA::VerifierAccurateRip::ConfigureDrive(Int driveNumber)
 {
-	const Config* config = Config::Get();
+	const Config	*config = Config::Get();
 
 	Drive	 drive(config, driveNumber);
 
 	if (drive.GetConfigurationLevel() < ConfigurationLevelAutomatic) drive.ConfigureOffset(True);
+}
+
+Bool BoCA::VerifierAccurateRip::OnDiscInsert()
+{
+	const Config	*config = GetConfiguration();
+
+	if (!config->GetIntValue(ConfigureAccurateRip::ConfigID, ConfigureAccurateRip::ConfigNotifyMissingEntryID, ConfigureAccurateRip::ConfigNotifyMissingEntryDefault)) return True;
+
+	AS::Registry		&boca	    = AS::Registry::Get();
+	AS::DeviceInfoComponent	*deviceInfo = boca.CreateDeviceInfoComponent();
+
+	if (deviceInfo != NIL)
+	{
+		Int	 driveNumber = config->GetIntValue(ConfigureAccurateRip::ConfigID, "DiscInsert", -1);
+		MCDI	 mcdi	     = deviceInfo->GetNthDeviceMCDI(driveNumber);
+
+		boca.DeleteComponent(deviceInfo);
+
+		String			 discID	= Algorithm::CalculateDiscID(mcdi);
+		const DatabaseEntry	&entry	= Database::Query(config, discID);
+
+		if (!entry.IsValid()) NonBlocking0<>(&NotifyMissingEntry).Call();
+	}
+
+	return True;
+}
+
+Void BoCA::VerifierAccurateRip::NotifyMissingEntry()
+{
+	Config	*config = Config::Get();
+	I18n	*i18n	= I18n::Get();
+
+	i18n->SetContext("Verifiers::AccurateRip::Messages");
+
+	Bool		 doNotDisplayAgain = False;
+	MessageDlg	 messageBox(i18n->TranslateString("The inserted disc could not be found in the AccurateRip database."), i18n->TranslateString("Warning"), Message::Buttons::Ok, Message::Icon::Warning, i18n->TranslateString("Do not display this warning again"), &doNotDisplayAgain);
+
+	messageBox.ShowDialog();
+
+	config->SetIntValue(ConfigureAccurateRip::ConfigID, ConfigureAccurateRip::ConfigNotifyMissingEntryID, !doNotDisplayAgain); 
 }
 
 ConfigLayer *BoCA::VerifierAccurateRip::GetConfigurationLayer()

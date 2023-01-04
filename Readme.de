@@ -160,7 +160,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.7 (Dezember 2022)
+	Version 1.1.7 (Januar 2023)
 
 		- Neue Funktionen
 
@@ -172,6 +172,7 @@ Geschichte
 
 			- Unterstützung für WavPack Hybrid Lossless-Komprimierung mit Korrekturdateien hinzugefügt
 			- Unterstützung für das Dekodieren von MPEG-4 DASH-Dateien hinzugefügt
+			- Unterstützung für das Öffnen von WebM-Audiodateien mit der Dateiendung .weba hinzugefügt
 			- Unterstützung für das Downmixen von 6.1-Kanal-Audio hinzugefügt
 			- Unterstützung für MusicBrainz-Metadaten in ID3v2-, MP4-, Vorbis Comment-, APEv2- und WMA-Tags hinzugefügt
 			- Unterstützung für Sortierreihenfolgefelder in ID3v2-, MP4-, Vorbis Comment-, APEv2- und WMA-Tags hinzugefügt
@@ -180,9 +181,11 @@ Geschichte
 			- Optionale Spalte für Veröffentlichungsjahr zur Jobliste hinzugefügt
 			- Dateinamensplatzhalter <disc> wird jetzt durch 1 ersetzt, wenn die Disk-Nummer nicht gesetzt ist
 			- Kompatibilität mit Anwendungen, die fehlerhafte LIST INFO-Tags schreiben, verbessert (z.B. Traktor)
+			- Option zur Verwendung von Quelldateinamen als Ausgabedateinamen, wenn keine Metadaten vorhanden sind, hinzugefügt
 			- Option zur Steuerung der Extraktion fehlender Metadaten aus Dateinamen hinzugefügt
 			- Option zum Einschränken der Dateinamen für das Einlesen von Cover-Bildern hinzugefügt
 			- Option zum Deaktivieren der Phasenumkehr bei Intensity Stereo zu Opus-Einstellungen hinzugefügt
+			- AccurateRip-Benachrichtigungsoptionen für erfolgreiche Überprüfung und fehlende Datenbankeinträge hinzugefügt
 			- Sample-Rate-Konvertierung wandelt nicht mehr nach 32 bit Float, wenn die Quellrate mit der Zielrate übereinstimmt
 			- Negative Exit-Codes bei Fehlern beim Ausführen von freaccmd hinzugefügt
 			- Unterstützung für KDE-Farbschemata (inkl. Dark-Mode) hinzugefügt
@@ -195,6 +198,7 @@ Geschichte
 			- Fehler (Einfrieren und Abbruch nach einigen Sekunden) beim Dekodieren von Kapiteln aus ALAC-Dateien behoben
 			- Interoperabilitätsprobleme von mit FDK-AAC erzeugten HE- und HEv2-AAC-Dateien mit foobar2000 behoben
 			- Problem mit falschen Gapless-Informationen beim Erzeugen von HE- und HEv2-AAC-Dateien mit FDK-AAC behoben
+			- Problem mit fehlerhafter Inklusion von Daten-Tracks in Audio-Track-Anzahl in CD-Offset-Strings behoben
 			- Problem mit fehlerhaften Indexzeiten bei Cue Sheets für sehr lange Multi-Track-Dateien behoben
 			- Problem mit zurückbleibenden Altdaten nach dem Aktualisieren von WMA-Tags behoben
 			- Problem mit Zurücksetzen der Formatauswahl beim Öffnen des WMA-Konfigurationsdialogs behoben
@@ -214,7 +218,7 @@ Geschichte
 			- Speex auf Version 1.2.1 aktualisiert
 			- MP4v2 auf Version 2.1.1 aktualisiert
 			- mpg123 auf Version 1.31.0 aktualisiert
-			- libsndfile auf Version 1.1.0 aktualisiert
+			- libsndfile auf Version 1.2.0 aktualisiert
 
 		- Neue und aktualisierte Übersetzungen
 

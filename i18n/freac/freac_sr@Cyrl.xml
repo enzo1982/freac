@@ -424,26 +424,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Подеси енкодер</entry>
 	<entry id="5101" string="Encoder">Енкодер</entry>
-	<entry id="5102" string="Output folder">Излазни фолдер</entry>
-	<entry id="5103" string="Select">Претражи</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Одабери фолдер за смештај енкодованих фајлова</entry>
-	<entry id="5105" string="Use input file folder if possible">Ако је могуће користи улазни фолдер</entry>
-	<entry id="5106" string="Allow overwriting input file">Дозволи преписивање улазних фајлова</entry>
-	<entry id="5107" string="Options">Опције</entry>
-	<entry id="5108" string="Filename pattern">Шаблон назива</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Енкодуј &quot;у-лету&quot;</entry>
-	<entry id="5110" string="Keep ripped Wave files">Задржи риповане Wave фајлове</entry>
-	<entry id="5111" string="Encode to a single file">Енкодуј у један фајл</entry>
-	<entry id="5112" string="Output filenames">Излазни називи фајлова</entry>
-	<entry id="5113" string="Allow Unicode characters">Дозволи Unikod карактере</entry>
-	<entry id="5114" string="Replace spaces with underscores">Замени размаке доњим цртама</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Уклони обрађене песме са листе задатака</entry>
-	<entry id="5116" string="Add encoded files to joblist">Додај енкодоване фајлове на листу задатака</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Додај секвенцијалне бројеве у иначе исте називе фајлова</entry>
-	<entry id="5118" string="Keep time stamps of source files">Задржи временски отисак изворних фајлова</entry>
+	<entry id="5102" string="Options">Опције</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Енкодуј &quot;у-лету&quot;</entry>
+	<entry id="5104" string="Keep ripped Wave files">Задржи риповане Wave фајлове</entry>
+	<entry id="5105" string="Encode to a single file">Енкодуј у један фајл</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Уклони обрађене песме са листе задатака</entry>
+	<entry id="5107" string="Add encoded files to joblist">Додај енкодоване фајлове на листу задатака</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Излазни фолдер</entry>
+	<entry id="5151" string="Use input file folder if possible">Ако је могуће користи улазни фолдер</entry>
+	<entry id="5152" string="Allow overwriting input file">Дозволи преписивање улазних фајлова</entry>
+	<entry id="5153" string="Select">Претражи</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Одабери фолдер за смештај енкодованих фајлова</entry>
+	<entry id="5155" string="Output filenames">Излазни називи фајлова</entry>
+	<entry id="5156" string="Filename pattern">Шаблон назива</entry>
+	<entry id="5157" string="Allow Unicode characters">Дозволи Unikod карактере</entry>
+	<entry id="5158" string="Replace spaces with underscores">Замени размаке доњим цртама</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Додај секвенцијалне бројеве у иначе исте називе фајлова</entry>
+	<entry id="5160" string="Keep time stamps of source files">Задржи временски отисак изворних фајлова</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Излазни фолдер не постоји! Да ли га желите креирати?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Излазни фолдер не постоји! Да ли га желите креирати?</entry>
 	</section>
       </section>
 
@@ -520,10 +523,8 @@
 	<entry id="5505" string="Encoding">Енкодовање</entry>
 	<entry id="5506" string="Comments">Коментари</entry>
 	<entry id="5507" string="Cover art">Слика омота</entry>
-	<entry id="5508" string="Read cover art">Очитај слику омота</entry>
 	<entry id="5509" string="Read cover art from tags">Очитај слику омота из тагова</entry>
 	<entry id="5510" string="Read cover art from files">Очитај слику омота из фајлова</entry>
-	<entry id="5511" string="Write cover art">Упиши слику омота</entry>
 	<entry id="5512" string="Write cover art to tags">Упиши слику омота у тагове</entry>
 	<entry id="5513" string="Write cover art to files">Упиши слику омота у фајлове</entry>
 	<entry id="5514" string="Add reference to audio file tag">Додај референцу у таг аудио фајла</entry>

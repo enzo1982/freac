@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -15,6 +15,7 @@
 #include <dialogs/config/config_coverart.h>
 #include <dialogs/config/config_cuesheets.h>
 #include <dialogs/config/config_encoders.h>
+#include <dialogs/config/config_files.h>
 #include <dialogs/config/config_interface.h>
 #include <dialogs/config/config_language.h>
 #include <dialogs/config/config_playlists.h>
@@ -39,7 +40,7 @@ freac::ConfigDialog::ConfigDialog()
 
 	initialConfig = config->GetConfigurationName();
 
-	mainWnd			= new Window(i18n->TranslateString("General settings setup"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(30, 30), Size(600, 332));
+	mainWnd			= new Window(i18n->TranslateString("General settings setup"), Point(config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosXID, Config::SettingsWindowPosXDefault), config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowPosYID, Config::SettingsWindowPosYDefault)) + Point(30, 30), Size(600, 512));
 	mainWnd->SetRightToLeft(i18n->IsActiveLanguageRightToLeft());
 	mainWnd->GetMainLayer()->onChangeSize.Connect(&ConfigDialog::OnChangeSize, this);
 
@@ -211,6 +212,14 @@ Void freac::ConfigDialog::AddLayers()
 	layers.Add(new ConfigureEncoders());
 	createdLayers.Add(layers.GetLast());
 	entries.Add(new ConfigEntry(i18n->TranslateString("Encoders"), layers.GetLast()));
+	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
+	tree_freac->Add(entries.GetLast());
+
+	/* Add output files configuration layer.
+	 */
+	layers.Add(new ConfigureFiles());
+	createdLayers.Add(layers.GetLast());
+	entries.Add(new ConfigEntry(i18n->TranslateString("Output files"), layers.GetLast()));
 	entries.GetLast()->onChangeLayer.Connect(&ConfigDialog::OnSelectEntry, this);
 	tree_freac->Add(entries.GetLast());
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -54,17 +54,19 @@ const String &BoCA::SystemInfo::GetOperatingSystem()
 
 		if (RegOpenKeyW(HKEY_LOCAL_MACHINE, L"Software\\Microsoft\\Windows NT\\CurrentVersion", &currentVersion) == ERROR_SUCCESS)
 		{
-			String	 productName = QueryStringValue(currentVersion, "ProductName");
-			String	 servicePack = QueryStringValue(currentVersion, "CSDVersion");
-			String	 releaseID   = QueryStringValue(currentVersion, "ReleaseID");
-			String	 buildNumber = QueryStringValue(currentVersion, "CurrentBuildNumber");
+			String	 productName	= QueryStringValue(currentVersion, "ProductName");
+			String	 servicePack	= QueryStringValue(currentVersion, "CSDVersion");
+			String	 displayVersion	= QueryStringValue(currentVersion, "DisplayVersion");
+			String	 buildNumber	= QueryStringValue(currentVersion, "CurrentBuildNumber");
 
 			RegCloseKey(currentVersion);
 
+			if (buildNumber.ToInt() >= 22000) productName.Replace("Windows 10", "Windows 11");
+
 			operatingSystem = String(productName)
-					 .Append(" (").Append(servicePack != NIL ? String(servicePack).Append(", ") : String())
-						      .Append(releaseID	  != NIL ? String("Release ").Append(releaseID).Append(", ") : String())
-						      .Append(buildNumber != NIL ? String("Build ").Append(buildNumber) : "unknown build").Append(")");
+					 .Append(" (").Append(servicePack    != NIL ? String(servicePack).Append(", ") : String())
+						      .Append(displayVersion != NIL ? String("Release ").Append(displayVersion).Append(", ") : String())
+						      .Append(buildNumber    != NIL ? String("Build ").Append(buildNumber) : "unknown build").Append(")");
 		}
 #else
 		Buffer<char>	 buffer(2048);

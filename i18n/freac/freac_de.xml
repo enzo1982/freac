@@ -421,30 +421,35 @@
       <entry id="5024" string="Taggers">Tagger</entry>
       <entry id="5025" string="Processing">Verarbeitung</entry>
       <entry id="5026" string="Additional arguments">Zusätzliche Parameter</entry>
+      <entry id="5027" string="Output files">Ausgabedateien</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Kodierer konfigurieren</entry>
 	<entry id="5101" string="Encoder">Kodierer</entry>
-	<entry id="5102" string="Output folder">Ausgabeordner</entry>
-	<entry id="5103" string="Select">Wählen</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Wählen sie einen Ordner für die Ausgabedateien</entry>
-	<entry id="5105" string="Use input file folder if possible">Verwende möglichst Eingabedateiordner</entry>
-	<entry id="5106" string="Allow overwriting input file">Überschreiben der Eingabedatei erlauben</entry>
-	<entry id="5107" string="Options">Optionen</entry>
-	<entry id="5108" string="Filename pattern">Vorlage für Dateinamen</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">'On-The-Fly' kodieren</entry>
-	<entry id="5110" string="Keep ripped Wave files">Wave-Dateien behalten</entry>
-	<entry id="5111" string="Encode to a single file">In eine einzige Datei kodieren</entry>
-	<entry id="5112" string="Output filenames">Ausgabedateinamen</entry>
-	<entry id="5113" string="Allow Unicode characters">Unicode-Zeichen erlauben</entry>
-	<entry id="5114" string="Replace spaces with underscores">Leerzeichen durch Unterstriche ersetzen</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Fertige Tracks aus Jobliste entfernen</entry>
-	<entry id="5116" string="Add encoded files to joblist">Ausgabedateien in Liste aufnehmen</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Laufende Nummern an ansonsten identische Dateinamen anhängen</entry>
-	<entry id="5118" string="Keep time stamps of source files">Zeitstempel von Quelldateien übernehmen</entry>
+	<entry id="5102" string="Options">Optionen</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">'On-The-Fly' kodieren</entry>
+	<entry id="5104" string="Keep ripped Wave files">Wave-Dateien behalten</entry>
+	<entry id="5105" string="Encode to a single file">In eine einzige Datei kodieren</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Fertige Tracks aus Jobliste entfernen</entry>
+	<entry id="5107" string="Add encoded files to joblist">Ausgabedateien in Liste aufnehmen</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Ausgabeordner</entry>
+	<entry id="5151" string="Use input file folder if possible">Verwende möglichst Eingabedateiordner</entry>
+	<entry id="5152" string="Allow overwriting input file">Überschreiben der Eingabedatei erlauben</entry>
+	<entry id="5153" string="Select">Wählen</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Wählen sie einen Ordner für die Ausgabedateien</entry>
+	<entry id="5155" string="Output filenames">Ausgabedateinamen</entry>
+	<entry id="5156" string="Filename pattern">Vorlage für Dateinamen</entry>
+	<entry id="5157" string="Allow Unicode characters">Unicode-Zeichen erlauben</entry>
+	<entry id="5158" string="Replace spaces with underscores">Leerzeichen durch Unterstriche ersetzen</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Laufende Nummern an ansonsten identische Dateinamen anhängen</entry>
+	<entry id="5160" string="Keep time stamps of source files">Zeitstempel von Quelldateien übernehmen</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available">Verwende &lt;filename&gt; wenn keine Titelinformationen vorhanden sind</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Der Ausgabeordner existiert nicht! Soll er erzeugt werden?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Der Ausgabeordner existiert nicht! Soll er erzeugt werden?</entry>
 	</section>
       </section>
 
@@ -526,10 +531,8 @@
 	<entry id="5505" string="Encoding">Zeichensatz</entry>
 	<entry id="5506" string="Comments">Kommentare</entry>
 	<entry id="5507" string="Cover art">Cover-Bilder</entry>
-	<entry id="5508" string="Read cover art">Cover-Bilder lesen</entry>
 	<entry id="5509" string="Read cover art from tags">Cover-Bilder aus Tags lesen</entry>
 	<entry id="5510" string="Read cover art from files">Cover-Bilder aus Dateien lesen</entry>
-	<entry id="5511" string="Write cover art">Cover-Bilder schreiben</entry>
 	<entry id="5512" string="Write cover art to tags">Cover-Bilder in Tags schreiben</entry>
 	<entry id="5513" string="Write cover art to files">Cover-Bilder in Dateien schreiben</entry>
 	<entry id="5514" string="Add reference to audio file tag">Referenz zu Audiodatei-Tag hinzufügen</entry>
@@ -546,6 +549,8 @@
 	<entry id="5528" string="Miscellaneous">Verschiedenes</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names">Fehlende Felder mit aus Dateinamen extrahierten Informationen füllen</entry>
 	<entry id="5530" string="Restrict file names">Dateinamen einschränken</entry>
+	<entry id="5531" string="Cover art tags">Cover-Bild-Tags</entry>
+	<entry id="5532" string="Cover art files">Cover-Bild-Dateien</entry>
       </section>
 
       <section name="Joblist">
@@ -1190,6 +1195,9 @@
 	<entry id="70023" string="not present">nicht vorhanden</entry>
 	<entry id="70024" string="not detected">nicht ermittelt</entry>
 	<entry id="70025" string="disabled">deaktiviert</entry>
+	<entry id="70026" string="Options">Optionen</entry>
+	<entry id="70027" string="Notify when a disc is not found in the database">Benachrichtigen, wenn eine CD nicht in der Datenbank gefunden wurde</entry>
+	<entry id="70028" string="Notify when all tracks have been successfully verified">Benachrichtigen, wenn alle Tracks erfolgreich überprüft wurden</entry>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">AccurateRip-Konfiguration</entry>
@@ -1200,6 +1208,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Bitte legen Sie eine weitere CD ins CD-Laufwerk ein und klicken Sie auf OK.&#10;&#10;Die CD muss in der AccurateRip-Datenbank vorhanden sein. Die Chance dafür ist bei&#10;populären CDs, die bereits von anderen Nutzern eingelesen wurden, am höchsten.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">Zur Offseterkennung wird eine weitere CD benötigt.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Das Laufwerksoffset wurde erfolgreich erkannt und auf %1 Samples eingestellt.</entry>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip.">Alle Tracks erfolgreich mit AccurateRip überprüft.</entry>
 	</section>
       </section>
     </section>

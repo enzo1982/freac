@@ -424,26 +424,29 @@
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar compresor</entry>
 	<entry id="5101" string="Encoder">Compresor</entry>
-	<entry id="5102" string="Output folder">Carpeta de salida</entry>
-	<entry id="5103" string="Select">Buscar</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Seleccione la carpeta para los archivos comprimidos</entry>
-	<entry id="5105" string="Use input file folder if possible">Usar carpeta de origen, si es posible</entry>
-	<entry id="5106" string="Allow overwriting input file">Permitir sobrescribir el archivo de entrada</entry>
-	<entry id="5107" string="Options">Opciones</entry>
-	<entry id="5108" string="Filename pattern">Patrón de nombre de archivo</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Codificar 'Al vuelo'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Mantener archivos Wav extraídos</entry>
-	<entry id="5111" string="Encode to a single file">Unir en un solo archivo</entry>
-	<entry id="5112" string="Output filenames">Nombre de archivos de salida</entry>
-	<entry id="5113" string="Allow Unicode characters">Permitir caracteres Unicode</entry>
-	<entry id="5114" string="Replace spaces with underscores">Reemplazar espacios</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Quitar archivos procesados de la lista</entry>
-	<entry id="5116" string="Add encoded files to joblist">Añadir archivos codificados a la lista</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Numerar consecutivamente nombres de archivo iguales</entry>
-	<entry id="5118" string="Keep time stamps of source files">Mantener la fecha de los archivos fuente</entry>
+	<entry id="5102" string="Options">Opciones</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Codificar 'Al vuelo'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Mantener archivos Wav extraídos</entry>
+	<entry id="5105" string="Encode to a single file">Unir en un solo archivo</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Quitar archivos procesados de la lista</entry>
+	<entry id="5107" string="Add encoded files to joblist">Añadir archivos codificados a la lista</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Carpeta de salida</entry>
+	<entry id="5151" string="Use input file folder if possible">Usar carpeta de origen, si es posible</entry>
+	<entry id="5152" string="Allow overwriting input file">Permitir sobrescribir el archivo de entrada</entry>
+	<entry id="5153" string="Select">Buscar</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Seleccione la carpeta para los archivos comprimidos</entry>
+	<entry id="5155" string="Output filenames">Nombre de archivos de salida</entry>
+	<entry id="5156" string="Filename pattern">Patrón de nombre de archivo</entry>
+	<entry id="5157" string="Allow Unicode characters">Permitir caracteres Unicode</entry>
+	<entry id="5158" string="Replace spaces with underscores">Reemplazar espacios</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Numerar consecutivamente nombres de archivo iguales</entry>
+	<entry id="5160" string="Keep time stamps of source files">Mantener la fecha de los archivos fuente</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">La carpeta de destino no existe. ¿Desea crearla?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">La carpeta de destino no existe. ¿Desea crearla?</entry>
 	</section>
       </section>
 
@@ -520,10 +523,8 @@
 	<entry id="5505" string="Encoding">Código</entry>
 	<entry id="5506" string="Comments">Comentarios</entry>
 	<entry id="5507" string="Cover art">Carátulas</entry>
-	<entry id="5508" string="Read cover art">Leer carátulas</entry>
 	<entry id="5509" string="Read cover art from tags">Leer carátulas de las etiquetas</entry>
 	<entry id="5510" string="Read cover art from files">Leer carátulas de los archivos</entry>
-	<entry id="5511" string="Write cover art">Escribir carátulas</entry>
 	<entry id="5512" string="Write cover art to tags">Escribir carátulas en las etiquetas</entry>
 	<entry id="5513" string="Write cover art to files">Escribir carátulas en los archivos</entry>
 	<entry id="5514" string="Add reference to audio file tag">Añadir referencia a la etiqueta del archivo de audio</entry>
