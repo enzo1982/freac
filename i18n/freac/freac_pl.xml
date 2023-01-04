@@ -421,7 +421,7 @@
       <entry id="5024" string="Taggers">Edytory znaczników</entry>
       <entry id="5025" string="Processing">Przetwarzanie</entry>
       <entry id="5026" string="Additional arguments">Parametry dodatkowe</entry>
-	  <entry id="5027" string="Output files">Pliki wyjściowe</entry>
+      <entry id="5027" string="Output files">Pliki wyjściowe</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Ustawienia konwersji</entry>
