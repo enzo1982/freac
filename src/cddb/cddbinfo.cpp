@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -162,7 +162,7 @@ Bool freac::CDDBInfo::UpdateTrack(BoCA::Track &track) const
 	{
 		/* Set basic title information.
 		 */
-		info.artist = dArtist;
+		info.artist = GetTrackArtist(track.cdTrack);
 
 		if (trackTitles.GetNth(track.cdTrack - 1) != NIL) info.title = trackTitles.GetNth(track.cdTrack - 1);
 
@@ -171,17 +171,10 @@ Bool freac::CDDBInfo::UpdateTrack(BoCA::Track &track) const
 		info.year  = dYear;
 		info.track = track.cdTrack;
 
-		/* Set album artist for compilation CDs.
+		/* Set album artist.
 		 */
-		if (dArtist == VariousArtistsID)
-		{
-			BoCA::I18n	*i18n = BoCA::I18n::Get();
-
-			i18n->SetContext("CDDB::Submit");
- 
-			info.artist = trackArtists.GetNth(track.cdTrack - 1);
-			info.SetOtherInfo(BoCA::INFO_ALBUMARTIST, i18n->TranslateString("Various artists"));
-		}
+		if (dArtist == VariousArtistsID) info.SetOtherInfo(BoCA::INFO_ALBUMARTIST, BoCA::I18n::Get()->TranslateString("Various artists", "CDDB::Submit"));
+		else				 info.SetOtherInfo(BoCA::INFO_ALBUMARTIST, dArtist);
 
 		track.SetInfo(info);
 

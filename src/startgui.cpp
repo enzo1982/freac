@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -836,12 +836,19 @@ Void freac::freacGUI::QueryCDDB()
 
 				if (trackNumber == -1) continue;
 
-				info.artist	 = cdInfo.GetTrackArtist(trackNumber);
-				info.title	 = cdInfo.trackTitles.GetNth(trackNumber - 1);
-				info.album	 = cdInfo.dTitle;
-				info.genre	 = cdInfo.dGenre;
-				info.year	 = cdInfo.dYear;
-				info.track	 = trackNumber;
+				info.artist = cdInfo.GetTrackArtist(trackNumber);
+
+				if (cdInfo.trackTitles.GetNth(trackNumber - 1) != NIL) info.title = cdInfo.trackTitles.GetNth(trackNumber - 1);
+
+				info.album = cdInfo.dTitle;
+				info.genre = cdInfo.dGenre;
+				info.year  = cdInfo.dYear;
+				info.track = trackNumber;
+
+				/* Set album artist.
+				 */
+				if (cdInfo.dArtist == CDDBInfo::VariousArtistsID) info.SetOtherInfo(BoCA::INFO_ALBUMARTIST, i18n->TranslateString("Various artists", "CDDB::Submit"));
+				else						  info.SetOtherInfo(BoCA::INFO_ALBUMARTIST, cdInfo.dArtist);
 
 				track.SetInfo(info);
 				track.SetOriginalInfo(info);
