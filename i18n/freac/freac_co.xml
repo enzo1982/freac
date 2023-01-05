@@ -421,6 +421,7 @@
       <entry id="5024" string="Taggers">Creatori d’etichetta</entry>
       <entry id="5025" string="Processing">Trattamentu</entry>
       <entry id="5026" string="Additional arguments">Parametri addiziunali</entry>
+      <entry id="5027" string="Output files">Schedarii d’esciuta</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Cunfigurà u cudificatore</entry>
@@ -445,6 +446,7 @@
 	<entry id="5158" string="Replace spaces with underscores">Rimpiazzà i spazii cù lineette basse (spaziu sottulineatu)</entry>
 	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Aghjunghje un numeru sequenziale à i nomi di schedariu uguali</entry>
 	<entry id="5160" string="Keep time stamps of source files">Cunservà a data è l’ora di i schedarii d’origine</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available">Impiegà &lt;filename&gt; quandu l’infurmazione di titulu ùn hè micca dispunibule</entry>
 
 	<section name="Errors">
 	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">U cartulare di destinazione ùn esiste micca ! Vulete creallu ?</entry>
@@ -547,6 +549,8 @@
 	<entry id="5528" string="Miscellaneous">Diversi</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names">Riempie i campi assente cù l’infurmazione ottinuta da i nomi di schedariu</entry>
 	<entry id="5530" string="Restrict file names">Restringhje i nomi di schedariu</entry>
+	<entry id="5531" string="Cover art tags">Etichette di a cuprendula</entry>
+	<entry id="5532" string="Cover art files">Schedarii di a cuprendula</entry>
       </section>
 
       <section name="Joblist">
@@ -1191,6 +1195,9 @@
 	<entry id="70023" string="not present">micca presente</entry>
 	<entry id="70024" string="not detected">micca scupertu</entry>
 	<entry id="70025" string="disabled">disattivatu</entry>
+	<entry id="70026" string="Options">Ozzioni</entry>
+	<entry id="70027" string="Notify when a disc is not found in the database">Affissà una nutificazione quandu un discu ùn si trova micca in a basa di dati</entry>
+	<entry id="70028" string="Notify when all tracks have been successfully verified">Affissà una nutificazione quandu a verificazione di tutte e traccie hè stata riesciuta</entry>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">Cunfigurazione d’AccurateRip</entry>
@@ -1201,6 +1208,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Ci vole à framette un altru discu dentru u lettore CD è cliccà Vai.&#10;&#10;U discu duve esse presente in a basa di dati AccurateRip. Sta pussibilità hè&#10;più maiò per i CD populari chì sò stati dighjà estratti da d’altri utilizatori.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">A scuperta di spiazzamentu hà bisognu di verificà un altru discu.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">U spiazzamentu di u lettore hè statu scupertu bè è cunfiguratu à %1 campioni.</entry>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip.">Tutte e traccie sò state verificate currettamente cù AccurateRip.</entry>
 	</section>
       </section>
     </section>
