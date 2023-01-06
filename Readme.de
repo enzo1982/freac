@@ -203,6 +203,7 @@ Geschichte
 			- Problem mit zurückbleibenden Altdaten nach dem Aktualisieren von WMA-Tags behoben
 			- Problem mit Zurücksetzen der Formatauswahl beim Öffnen des WMA-Konfigurationsdialogs behoben
 			- Problem mit übermäßig hohen Bitraten bei der Kodierung von Vorbis auf nicht-x86 LP64-Systemen behoben
+			- Problem mit HDCD-Erkennung bei Tracks behoben, die mit mehr als ca. einer Sekunde Stille beginnen
 			- Problem mit Konvertierung von Floating-Point-Samples zu Integer beim Erzeugen von WavPack-Dateien behoben
 			- Umwandlung von langen Pfaden ins 8.3-Format unter neueren Windows-Versionen behoben
 			- Probleme beim Umgang mit langen Netzwerkpfaden unter manchen Windows-Versionen behoben

@@ -204,6 +204,7 @@ History
 			- fixed old data remaining in place after updating WMA file tags
 			- fixed selected format resetting to first entry when opening WMA config dialog
 			- fixed excessive bitrate when encoding Vorbis on non-x86 LP64 systems
+			- fixed HDCD detection for tracks starting with more than about one second of silence
 			- fixed floating point samples being converted to integer when creating WavPack files
 			- fixed long paths being converted to 8.3 format on recent versions of Windows
 			- fixed inability to handle long network paths on some versions of Windows
