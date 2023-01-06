@@ -265,6 +265,7 @@
     <ClCompile Include="..\..\src\dialogs\error.cpp" />
     <ClCompile Include="..\..\src\dialogs\format.cpp" />
     <ClCompile Include="..\..\src\dialogs\overwrite.cpp" />
+    <ClCompile Include="..\..\src\dialogs\splitter.cpp" />
     <ClCompile Include="..\..\src\dllinterfaces.cpp" />
     <ClCompile Include="..\..\src\engine\component.cpp" />
     <ClCompile Include="..\..\src\engine\locking.cpp" />
@@ -385,6 +386,7 @@
     <ClInclude Include="..\..\include\dialogs\error.h" />
     <ClInclude Include="..\..\include\dialogs\format.h" />
     <ClInclude Include="..\..\include\dialogs\overwrite.h" />
+    <ClInclude Include="..\..\include\dialogs\splitter.h" />
     <ClInclude Include="..\..\include\dllinterfaces.h" />
     <ClInclude Include="..\..\include\engine\component.h" />
     <ClInclude Include="..\..\include\engine\locking.h" />

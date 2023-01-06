@@ -31,6 +31,8 @@
 #include <dialogs/adddirectory.h>
 #include <dialogs/addpattern.h>
 
+#include <dialogs/splitter.h>
+
 #include <dialogs/error.h>
 
 #include <cddb/cddbremote.h>
@@ -257,6 +259,12 @@ freac::freacGUI::freacGUI()
 
 	if (config->GetIntValue(Config::CategorySettingsID, Config::SettingsWindowMaximizedID, Config::SettingsWindowMaximizedDefault)) mainWnd->Maximize();
 
+	/* Listen to joblist changes.
+	 */
+	BoCA::JobList::Get()->onApplicationAddTrack.Connect(&freacGUI::OnAddTrack, this);
+	BoCA::JobList::Get()->onApplicationRemoveTrack.Connect(&freacGUI::OnRemoveTrack, this);
+	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Connect(&freacGUI::OnRemoveAllTracks, this);
+
 	/* Parse arguments and add files to joblist.
 	 */
 	ParseArguments(GetArguments());
@@ -268,6 +276,12 @@ freac::freacGUI::freacGUI()
 
 freac::freacGUI::~freacGUI()
 {
+	/* Disconnect joblist change slots.
+	 */
+	BoCA::JobList::Get()->onApplicationAddTrack.Disconnect(&freacGUI::OnAddTrack, this);
+	BoCA::JobList::Get()->onApplicationRemoveTrack.Disconnect(&freacGUI::OnRemoveTrack, this);
+	BoCA::JobList::Get()->onApplicationRemoveAllTracks.Disconnect(&freacGUI::OnRemoveAllTracks, this);
+
 	/* Free Notification instance.
 	 */
 	Notification::Free();
@@ -671,6 +685,39 @@ Void freac::freacGUI::OnChangeConfiguration()
 	mainWnd->Paint(SP_PAINT);
 
 	surface->EndPaint();
+}
+
+Void freac::freacGUI::OnUpdateTracks(Bool removed, Bool removedAll)
+{
+	if (joblist->GetNOfTracks() != 1 && !removedAll) return;
+
+	BoCA::I18n	*i18n = BoCA::I18n::Get();
+
+	for (Int i = 0; i < menu_encode->Length(); i++)
+	{
+		MenuEntry	*entry = menu_encode->GetNthEntry(i);
+
+		if (entry->GetText() == i18n->AddEllipsis(i18n->TranslateString("Output splitting tool", "Dialogs::Splitter")))
+		{
+			if (removed) entry->Deactivate();
+			else	     entry->Activate();
+
+			break;
+		}
+	}
+
+	for (Int i = 0; i < mainWnd_iconbar->Length(); i++)
+	{
+		MenuEntry	*entry = mainWnd_iconbar->GetNthEntry(i);
+
+		if (entry->GetTooltipText() == i18n->TranslateString("Open the output splitting tool", "Toolbar"))
+		{
+			if (removed) entry->Deactivate();
+			else	     entry->Activate();
+
+			break;
+		}
+	}
 }
 
 Void freac::freacGUI::OnDriveChange()
@@ -1248,6 +1295,12 @@ Void freac::freacGUI::FillMenus()
 		menu_encode->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Start encoding with")), menu_encoders);
 	}
 
+	menu_encode->AddEntry();
+	entry = menu_encode->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Output splitting tool", "Dialogs::Splitter")));
+	entry->onAction.Connect(&freacGUI::ShowSplitterTool, this);
+
+	if (joblist->GetNOfTracks() == 0) entry->Deactivate();
+
 	menu_encoder_options->AddEntry(i18n->TranslateString("Encode to a single file"), (Bool *) &config->GetPersistentIntValue(Config::CategorySettingsID, Config::SettingsEncodeToSingleFileID, Config::SettingsEncodeToSingleFileDefault));
 
 	menu_encoder_options->AddEntry();
@@ -1363,6 +1416,14 @@ Void freac::freacGUI::FillMenus()
 	entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/settings/settings-codec.png")));
 	entry->onAction.Connect(&freacGUI::ConfigureEncoder, this);
 	entry->SetTooltipText(i18n->TranslateString("Configure the selected audio encoder"));
+
+	mainWnd_iconbar->AddEntry();
+
+	entry = mainWnd_iconbar->AddEntry(ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/tools/splitter.png")));
+	entry->onAction.Connect(&freacGUI::ShowSplitterTool, this);
+	entry->SetTooltipText(i18n->TranslateString("Open the output splitting tool"));
+
+	if (joblist->GetNOfTracks() == 0) entry->Deactivate();
 
 	mainWnd_iconbar->AddEntry();
 
@@ -1711,6 +1772,21 @@ Void freac::freacGUI::ShowTipOfTheDay()
 
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsShowTipsID, showTips);
 	config->SetIntValue(Config::CategorySettingsID, Config::SettingsNextTipID, dialog.GetOffset());
+}
+
+Void freac::freacGUI::ShowSplitterTool()
+{
+	/* Build track list according to current order.
+	 */
+	Array<Track>	 trackList;
+
+	for (Int i = 0; i < joblist->GetNOfTracks(); i++) trackList.Add(joblist->GetNthTrack(i));
+
+	/* Open splitter dialog.
+	 */
+	DialogSplitter	 dialog(trackList);
+
+	dialog.ShowDialog();
 }
 
 Void freac::freacGUI::ReportIssue()

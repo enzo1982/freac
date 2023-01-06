@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -140,6 +140,12 @@ namespace freac
 			Void						 OnSelectConfiguration();
 			Void						 OnChangeConfiguration();
 
+			Void						 OnAddTrack()				{ OnUpdateTracks(); }
+			Void						 OnRemoveTrack()			{ OnUpdateTracks(True); }
+			Void						 OnRemoveAllTracks()			{ OnUpdateTracks(True, True); }
+
+			Void						 OnUpdateTracks(Bool = False, Bool = False);
+
 			Void						 OnDriveChange();
 			Void						 OnDiscInsert(Int);
 			Void						 OnDiscRemove(Int);
@@ -170,6 +176,8 @@ namespace freac
 			Void						 ConfigureProcessor();
 
 			Void						 ConfirmDeleteAfterEncoding();
+
+			Void						 ShowSplitterTool();
 		public:
 			Player						*GetPlayer()				{ return player; }
 

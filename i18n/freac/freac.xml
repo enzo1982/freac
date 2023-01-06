@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)"/>
       <entry id="2011" string="Pause/resume encoding"/>
       <entry id="2012" string="Stop encoding"/>
+      <entry id="2013" string="Open the output splitting tool"/>
     </section>
 
     <section name="Joblist">
@@ -696,6 +697,32 @@
 	<entry id="8200" string="Errors"/>
 	<entry id="8201" string="%1 errors while processing job"/>
 	<entry id="8202" string="select an entry for details"/>
+      </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool"/>
+	<entry id="8301" string="%1 track(s) in joblist"/>
+	<entry id="8302" string="Split mode"/>
+	<entry id="8303" string="Split by duration"/>
+	<entry id="8304" string="Duration per part"/>
+	<entry id="8305" string="at least"/>
+	<entry id="8306" string="approximately"/>
+	<entry id="8307" string="at most"/>
+	<entry id="8308" string="exactly"/>
+	<entry id="8309" string="second(s)"/>
+	<entry id="8310" string="minute(s)"/>
+	<entry id="8311" string="hour(s)"/>
+	<entry id="8312" string="Fixed number of parts"/>
+	<entry id="8313" string="Number of parts"/>
+	<entry id="8314" string="Split upon metadata change"/>
+	<entry id="8315" string="Metadata pattern to compare"/>
+	<entry id="8316" string="Split at track boundaries"/>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part"/>
+	<entry id="8318" string="Repeat duration"/>
+	<entry id="8319" string="Output filenames"/>
+	<entry id="8320" string="Filename pattern"/>
+	<entry id="8321" string="Convert"/>
+	<entry id="8322" string="Save"/>
       </section>
     </section>
 

@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -26,6 +26,7 @@ namespace freac
 			static const String	 CategoryDialogsID;
 			static const String	 CategoryResourcesID;
 			static const String	 CategoryJoblistID;
+			static const String	 CategorySplitterID;
 			static const String	 CategoryRipperID;
 			static const String	 CategoryPlaylistID;
 			static const String	 CategoryTagsID;
@@ -241,6 +242,48 @@ namespace freac
 
 			static const String	 JoblistFieldSizesID;
 			static const String	 JoblistFieldSizesDefault;
+
+			/* Category Splitter
+			 */
+			static const String	 SplitterSplitModeID;
+			static const Int	 SplitterSplitModeDefault;
+
+			static const String	 SplitterSplitAtTracksID;
+			static const Bool	 SplitterSplitAtTracksDefault;
+
+			static const String	 SplitterPartDurationModeID;
+			static const Int	 SplitterPartDurationModeDefault;
+
+			static const String	 SplitterPartDurationID;
+			static const Int	 SplitterPartDurationDefault;
+
+			static const String	 SplitterPartDurationUnitID;
+			static const Int	 SplitterPartDurationUnitDefault;
+
+			static const String	 SplitterNumberOfPartsID;
+			static const Int	 SplitterNumberOfPartsDefault;
+
+			static const String	 SplitterMetadataStringID;
+			static const String	 SplitterMetadataStringDefault;
+
+			static const String	 SplitterFileNamePatternID;
+			static const String	 SplitterFileNamePatternDefault;
+
+			static const String	 SplitterRepeatEndID;
+			static const Bool	 SplitterRepeatEndDefault;
+
+			static const String	 SplitterRepeatSecondsID;
+			static const Int	 SplitterRepeatSecondsDefault;
+
+			static const String	 SplitterWindowPosXID;
+
+			static const String	 SplitterWindowPosYID;
+
+			static const String	 SplitterWindowSizeXID;
+			static const Int	 SplitterWindowSizeXDefault;
+
+			static const String	 SplitterWindowSizeYID;
+			static const Int	 SplitterWindowSizeYDefault;
 
 			/* Category Ripper
 			 */

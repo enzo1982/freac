@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -25,6 +25,7 @@ const String	 freac::Config::CategorySettingsID				= "Settings";
 const String	 freac::Config::CategoryDialogsID				= "Dialogs";
 const String	 freac::Config::CategoryResourcesID				= "Resources";
 const String	 freac::Config::CategoryJoblistID				= "Joblist";
+const String	 freac::Config::CategorySplitterID				= "Splitter";
 const String	 freac::Config::CategoryRipperID				= "Ripper";
 const String	 freac::Config::CategoryPlaylistID				= "Playlist";
 const String	 freac::Config::CategoryTagsID					= "Tags";
@@ -253,6 +254,48 @@ const String	 freac::Config::JoblistFieldsDefault				= "<artist>,<title>,<track>
 
 const String	 freac::Config::JoblistFieldSizesID				= "FieldSizes";
 const String	 freac::Config::JoblistFieldSizesDefault			= "120,*,50,80,100";
+
+/* Category Splitter
+ */
+const String	 freac::Config::SplitterSplitModeID				= "SplitMode";
+const Int	 freac::Config::SplitterSplitModeDefault			= 0;
+
+const String	 freac::Config::SplitterSplitAtTracksID				= "SplitAtTracks";
+const Bool	 freac::Config::SplitterSplitAtTracksDefault			= True;
+
+const String	 freac::Config::SplitterPartDurationModeID			= "PartDurationMode";
+const Int	 freac::Config::SplitterPartDurationModeDefault			= 1;
+
+const String	 freac::Config::SplitterPartDurationID				= "PartDuration";
+const Int	 freac::Config::SplitterPartDurationDefault			= 15;
+
+const String	 freac::Config::SplitterPartDurationUnitID			= "PartDurationUnit";
+const Int	 freac::Config::SplitterPartDurationUnitDefault			= 1;
+
+const String	 freac::Config::SplitterNumberOfPartsID				= "NumberOfParts";
+const Int	 freac::Config::SplitterNumberOfPartsDefault			= 4;
+
+const String	 freac::Config::SplitterMetadataStringID			= "MetadataString";
+const String	 freac::Config::SplitterMetadataStringDefault			= "<albumartist>,<album>";
+
+const String	 freac::Config::SplitterFileNamePatternID			= "FileNamePattern";
+const String	 freac::Config::SplitterFileNamePatternDefault			= "<albumartist> - <album>";
+
+const String	 freac::Config::SplitterRepeatEndID				= "RepeatEnd";
+const Bool	 freac::Config::SplitterRepeatEndDefault			= False;
+
+const String	 freac::Config::SplitterRepeatSecondsID				= "RepeatSeconds";
+const Int	 freac::Config::SplitterRepeatSecondsDefault			= 10;
+
+const String	 freac::Config::SplitterWindowPosXID				= "WindowPosX";
+
+const String	 freac::Config::SplitterWindowPosYID				= "WindowPosY";
+
+const String	 freac::Config::SplitterWindowSizeXID				= "WindowSizeX";
+const Int	 freac::Config::SplitterWindowSizeXDefault			= 750;
+
+const String	 freac::Config::SplitterWindowSizeYID				= "WindowSizeY";
+const Int	 freac::Config::SplitterWindowSizeYDefault			= 500;
 
 /* Category Ripper
  */

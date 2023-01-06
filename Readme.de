@@ -164,6 +164,7 @@ Geschichte
 
 		- Neue Funktionen
 
+			- Möglichkeit zum Aufteilen der Ausgabe nach verschiedenen Parametern (z.B. Dauer oder Anzahl der Dateien) hinzugefügt
 			- Unterstützung für Dithering beim Reduzieren der Sampleauflösung hinzugefügt
 			- Matrix-Surround-Dekodierer DSP-Komponente hinzugefügt
 			- DSP-Komponente für Lautstärkeanpassung hinzugefügt

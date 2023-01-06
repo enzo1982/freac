@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">Den Kodierungsprozess starten (und Originaldateien löschen)</entry>
       <entry id="2011" string="Pause/resume encoding">Kodierung unterbrechen/fortsetzen</entry>
       <entry id="2012" string="Stop encoding">Kodierung abbrechen</entry>
+      <entry id="2013" string="Open the output splitting tool">Aufteilungswerkzeug öffnen</entry>
     </section>
 
     <section name="Joblist">
@@ -697,6 +698,32 @@
 	<entry id="8201" string="%1 errors while processing job">%1 Fehler bei der Jobverarbeitung</entry>
 	<entry id="8202" string="select an entry for details">für Details einen Eintrag auswählen</entry>
       </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool">Aufteilungswerkzeug</entry>
+	<entry id="8301" string="%1 track(s) in joblist">%1 Track(s) zu verarbeiten</entry>
+	<entry id="8302" string="Split mode">Aufteilungsmodus</entry>
+	<entry id="8303" string="Split by duration">Aufteilung nach Dauer</entry>
+	<entry id="8304" string="Duration per part">Dauer pro Datei</entry>
+	<entry id="8305" string="at least">mindestens</entry>
+	<entry id="8306" string="approximately">ungefähr</entry>
+	<entry id="8307" string="at most">höchstens</entry>
+	<entry id="8308" string="exactly">genau</entry>
+	<entry id="8309" string="second(s)">Sekunde(n)</entry>
+	<entry id="8310" string="minute(s)">Minute(n)</entry>
+	<entry id="8311" string="hour(s)">Stunde(n)</entry>
+	<entry id="8312" string="Fixed number of parts">Feste Anzahl an Dateien</entry>
+	<entry id="8313" string="Number of parts">Anzahl an Dateien</entry>
+	<entry id="8314" string="Split upon metadata change">Aufteilung bei Metadatenänderung</entry>
+	<entry id="8315" string="Metadata pattern to compare">Zu vergleichende Metadaten</entry>
+	<entry id="8316" string="Split at track boundaries">Nur an Track-Grenzen teilen</entry>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part">Ende des vorherigen Teils am Anfang jedes Teils wiederholen</entry>
+	<entry id="8318" string="Repeat duration">Wiederholungsdauer</entry>
+	<entry id="8319" string="Output filenames">Ausgabedateinamen</entry>
+	<entry id="8320" string="Filename pattern">Dateinamensvorlage</entry>
+	<entry id="8321" string="Convert">Konvertieren</entry>
+ 	<entry id="8322" string="Save">Speichern</entry>
+     </section>
     </section>
 
     <section name="Ripper">

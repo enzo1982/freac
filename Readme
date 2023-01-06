@@ -165,6 +165,7 @@ History
 
 		- New features
 
+			- added a tool for splitting output by various parameters (e.g. duration or number of files)
 			- added support for dithering when reducing sample resolution
 			- added a matrix surround decoder DSP component
 			- added a volume adjustment DSP component

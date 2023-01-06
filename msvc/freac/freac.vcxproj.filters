@@ -273,6 +273,9 @@
     <ClCompile Include="..\..\src\engine\component.cpp">
       <Filter>Quelldateien\engine</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\dialogs\splitter.cpp">
+      <Filter>Quelldateien\dialogs</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\gui\playback.cpp">
       <Filter>Quelldateien\gui</Filter>
     </ClCompile>
@@ -484,6 +487,9 @@
     </ClInclude>
     <ClInclude Include="..\..\include\engine\component.h">
       <Filter>Headerdateien\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\dialogs\splitter.h">
+      <Filter>Headerdateien\dialogs</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\gui\playback.h">
       <Filter>Headerdateien\gui</Filter>
