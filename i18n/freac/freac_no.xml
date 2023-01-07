@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">freac.xml</property>
-    <property name="author">Andreas Normann Aanonsen / Cato Grytten</property>
+    <property name="author">Andreas Normann Aanonsen &amp; Cato Grytten</property>
     <property name="url">https://www.freac.org/</property>
     <property name="incomplete">true</property>
   </info>
@@ -449,7 +449,7 @@
 	<entry id="5401" string="Edit language file">Rediger språkfil</entry>
 	<entry id="5402" string="Information">Informasjon</entry>
 	<entry id="5403" string="Encoding">Kode</entry>
-	<entry id="5404" string="Author">Forfatter</entry>
+	<entry id="5404" string="Author(s)">Forfatter(e)</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 

@@ -263,7 +263,7 @@
 	<entry id="5401" string="Edit language file">ערוך קובץ שפה</entry>
 	<entry id="5402" string="Information">מידע</entry>
 	<entry id="5403" string="Encoding">מבצע קידוד</entry>
-	<entry id="5404" string="Author">מחבר</entry>
+	<entry id="5404" string="Author(s)">מחבר</entry>
 	<entry id="5405" string="URL">‫URL</entry>
       </section>
 
@@ -275,7 +275,7 @@
 
     <section name="About">
       <entry id="6000" string="About %1">על התכנה</entry>
-      <entry id="6001" string="Translated by %1.">תורגם ע&quot;י %1.</entry>
+      <entry id="6001" string="Translated by %1.">תורגם ע %1.</entry>
     </section>
 
     <section name="Updates">

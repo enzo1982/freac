@@ -488,7 +488,7 @@
 	<entry id="5401" string="Edit language file">언어 파일 수정</entry>
 	<entry id="5402" string="Information">정보</entry>
 	<entry id="5403" string="Encoding">인코딩</entry>
-	<entry id="5404" string="Author">번역자</entry>
+	<entry id="5404" string="Author(s)">번역자</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 

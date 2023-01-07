@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">freac.xml</property>
-    <property name="author">Darek Rzeźnicki, Michał Trzebiatowski</property>
+    <property name="author">Darek Rzeźnicki &amp; Michał Trzebiatowski</property>
     <property name="url">https://www.freac.org/</property>
   </info>
   <data>
@@ -518,7 +518,7 @@
 	<entry id="5401" string="Edit language file">Edytuj plik językowy</entry>
 	<entry id="5402" string="Information">Informacje</entry>
 	<entry id="5403" string="Encoding">Kodowanie</entry>
-	<entry id="5404" string="Author">Autor</entry>
+	<entry id="5404" string="Author(s)">Autor</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 

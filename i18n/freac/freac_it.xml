@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">freac.xml</property>
-    <property name="author">Marco D'Amato &lt;md@mdtzone.it&gt;, FSoft &lt;fsoftwares@live.it&gt;</property>
+    <property name="author">Marco D'Amato &lt;md@mdtzone.it&gt;,&#10;FSoft &lt;fsoftwares@live.it&gt;</property>
     <property name="url">https://www.mdtzone.it/</property>
   </info>
   <data>
@@ -511,7 +511,7 @@
 	<entry id="5401" string="Edit language file">Modifica file della lingua</entry>
 	<entry id="5402" string="Information">Informazioni</entry>
 	<entry id="5403" string="Encoding">Codifica</entry>
-	<entry id="5404" string="Author">Autore</entry>
+	<entry id="5404" string="Author(s)">Autore</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 

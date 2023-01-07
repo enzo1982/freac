@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">freac.xml</property>
-    <property name="author">José María Vera Somoza &lt;jmvs@gmx.net&gt; &amp; Agustín Bou &lt;agusbou2015@outlook.com&gt;</property>
+    <property name="author">José María Vera Somoza &lt;jmvs@gmx.net&gt;,&#10;Agustín Bou &lt;agusbou2015@outlook.com&gt;</property>
     <property name="url">https://www.freac.org/</property>
     <property name="incomplete">true</property>
   </info>
@@ -505,7 +505,7 @@
 	<entry id="5401" string="Edit language file">Editar arhivo de idioma</entry>
 	<entry id="5402" string="Information">Información</entry>
 	<entry id="5403" string="Encoding">Codificación</entry>
-	<entry id="5404" string="Author">Autor</entry>
+	<entry id="5404" string="Author(s)">Autor(es)</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 

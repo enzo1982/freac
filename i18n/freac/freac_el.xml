@@ -511,7 +511,7 @@
 	<entry id="5401" string="Edit language file">Επεξεργασία αρχείου γλώσσας</entry>
 	<entry id="5402" string="Information">Πληροφορίες</entry>
 	<entry id="5403" string="Encoding">Κωδικοποίηση</entry>
-	<entry id="5404" string="Author">Μεταφραστής</entry>
+	<entry id="5404" string="Author(s)">Μεταφραστής</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 

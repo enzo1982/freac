@@ -353,7 +353,7 @@
 	<entry id="5401" string="Edit language file">Parandada keele faili</entry>
 	<entry id="5402" string="Information">Informatsioon</entry>
 	<entry id="5403" string="Encoding">Kodeerimine</entry>
-	<entry id="5404" string="Author">Автор</entry>
+	<entry id="5404" string="Author(s)">Autor(id)</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
@@ -367,7 +367,7 @@
 
     <section name="About">
       <entry id="6000" string="About %1">Info %1 kohta</entry>
-      <entry id="6001" string="Translated by %1.">Transleeritud %1</entry>
+      <entry id="6001" string="Translated by %1.">Transleeritud %1.</entry>
       <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">Seda programmi levitatakse GNU&#10;General Public License (GPL) raames.</entry>
     </section>
 

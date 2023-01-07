@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2019 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -31,11 +31,11 @@ freac::ConfigureLanguage::ConfigureLanguage()
 	group_info	= new GroupBox(i18n->TranslateString("Information"), Point(7, 66), Size(552, 77));
 
 	text_info	= new Text(NIL, Point(9, 11));
+	text_info_data	= new Text(NIL, Point(9, 11));
 	link_url	= new Hyperlink(String(), NIL, Point(37, text_info->GetFont().GetUnscaledTextSizeY() * 3 + 20));
 
-	group_info->SetHeight(text_info->GetFont().GetUnscaledTextSizeY() * 4 + 29);
-
 	group_info->Add(text_info);
+	group_info->Add(text_info_data);
 	group_info->Add(link_url);
 
 	group_language	= new GroupBox(i18n->TranslateString("Language"), Point(7, 11), Size(552, 43));
@@ -82,7 +82,7 @@ freac::ConfigureLanguage::ConfigureLanguage()
 	Add(group_language);
 	Add(group_info);
 
-	SetSize(Size(566, 150));
+	SetSize(Size(566, 180));
 }
 
 freac::ConfigureLanguage::~ConfigureLanguage()
@@ -94,6 +94,7 @@ freac::ConfigureLanguage::~ConfigureLanguage()
 
 	DeleteObject(group_info);
 	DeleteObject(text_info);
+	DeleteObject(text_info_data);
 	DeleteObject(link_url);
 }
 
@@ -105,16 +106,29 @@ Void freac::ConfigureLanguage::SelectLanguage()
 
 	if (combo_language->GetSelectedEntry() != NIL)
 	{
-		text_info->SetText(String(i18n->TranslateString("Language")).Append(": ").Append(i18n->GetNthLanguageName(combo_language->GetSelectedEntryNumber())).Append("\n")
-				  .Append(i18n->TranslateString("Encoding")).Append(": ").Append(i18n->GetNthLanguageEncoding(combo_language->GetSelectedEntryNumber())).Append("\n")
-				  .Append(i18n->TranslateString("Author")).Append(": ").Append(i18n->GetNthLanguageAuthor(combo_language->GetSelectedEntryNumber())).Append("\n")
-				  .Append(i18n->TranslateString("URL")).Append(": "));
+		Int	 numAuthorLines	  = i18n->GetNthLanguageAuthor(combo_language->GetSelectedEntryNumber()).Explode("\n").Length();
+		String	 authorLineBreaks = String().FillN('\n', numAuthorLines);
+
+		text_info->SetText(String(i18n->AddColon(i18n->TranslateString("Language"))).Append(" \n")
+				  .Append(i18n->AddColon(i18n->TranslateString("Encoding"))).Append(" \n")
+				  .Append(i18n->AddColon(i18n->TranslateString("Author(s)"))).Append(" ").Append(authorLineBreaks)
+				  .Append(i18n->AddColon(i18n->TranslateString("URL"))).Append(" "));
+
+		text_info_data->SetText(String(i18n->GetNthLanguageName(combo_language->GetSelectedEntryNumber())).Append("\n")
+				       .Append(i18n->GetNthLanguageEncoding(combo_language->GetSelectedEntryNumber())).Append("\n")
+				       .Append(i18n->GetNthLanguageAuthor(combo_language->GetSelectedEntryNumber())));
+
+		text_info_data->SetX(9 + text_info->GetUnscaledTextWidth());
+
+		Float	 scaleFactor = Surface().GetSurfaceDPI() / 96.0;
 
 		link_url->SetText(i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
 		link_url->SetURL(i18n->GetNthLanguageURL(combo_language->GetSelectedEntryNumber()));
-		link_url->SetX(9 + text_info->GetFont().GetUnscaledTextSizeX(i18n->TranslateString("URL").Append(": ")));
+		link_url->SetPosition(text_info->GetPosition() + Point(text_info->GetUnscaledTextWidth(), Math::Round((2 + numAuthorLines) * (text_info->GetScaledTextHeight() - text_info_data->GetScaledTextHeight()) / scaleFactor)));
 
 		link_url->Paint(SP_PAINT);
+
+		group_info->SetHeight(text_info->GetUnscaledTextHeight() + 20);
 
 		if (i18n->GetNthLanguageID(combo_language->GetSelectedEntryNumber()) == "internal") btn_edit->Deactivate();
 		else										    btn_edit->Activate();

@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">freac.xml</property>
-    <property name="author">Philippe Grivel &lt;phgrivel@gmail.com&gt;, Eric Le Carre &lt;e.lecarre@hotmail.com&gt;</property>
+    <property name="author">Philippe Grivel &lt;phgrivel@gmail.com&gt;,&#10;Eric Le Carre &lt;e.lecarre@hotmail.com&gt;</property>
     <property name="url">https://www.freac.org/</property>
   </info>
   <data>
@@ -508,7 +508,7 @@
 	<entry id="5401" string="Edit language file">Modifier fichier langue</entry>
 	<entry id="5402" string="Information">Informations</entry>
 	<entry id="5403" string="Encoding">Encodage</entry>
-	<entry id="5404" string="Author">Auteur</entry>
+	<entry id="5404" string="Author(s)">Auteur(s)</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
