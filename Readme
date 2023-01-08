@@ -208,6 +208,7 @@ History
 			- fixed floating point samples being converted to integer when creating WavPack files
 			- fixed long paths being converted to 8.3 format on recent versions of Windows
 			- fixed inability to handle long network paths on some versions of Windows
+			- fixed disc insert and removal detection working unreliably on Windows
 
 		- Updated codecs
 
