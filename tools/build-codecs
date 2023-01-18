@@ -188,7 +188,7 @@ rnnoise_location=https://codeload.github.com/xiph/rnnoise/zip/$rnnoise_version
 rubberband_location=https://breakfastquay.com/files/releases/rubberband-$rubberband_version.tar.bz2
 speex_location=https://ftp.osuosl.org/pub/xiph/releases/speex/speex-$speex_version.tar.gz
 vorbis_location=https://ftp.osuosl.org/pub/xiph/releases/vorbis/libvorbis-$vorbis_version.tar.xz
-wavpack_location=http://www.wavpack.com/wavpack-$wavpack_version.tar.bz2
+wavpack_location=https://www.wavpack.com/wavpack-$wavpack_version.tar.bz2
 
 # Patch locations
 fdk_aac_patches=(https://freac.org/patches/fdk-aac-2.0.2-drcfix.patch)
