@@ -40,8 +40,9 @@ static Int GetDriveNumber(const DEV_BROADCAST_VOLUME &dbcv)
 	return -1;
 }
 
-static Bool	 trayOpen[26]	= { False };
-static Bool	 discLoaded[26]	= { False };
+static Bool		 trayOpen[26]	    = { False };
+static Bool		 discLoaded[26]	    = { False };
+static UnsignedInt64	 discInsertTime[26] = { 0 };
 
 static Void InitDriveStatus()
 {
@@ -79,7 +80,8 @@ static Void CheckDriveStatus()
 				{
 					freac::Notification::Get()->onDiscRemove.Emit(drive);
 
-					discLoaded[drive] = False;
+					discLoaded[drive]     = False;
+					discInsertTime[drive] = 0;
 				}
 			}
 			else if (!trayOpen[drive] && !discLoaded[drive])
@@ -88,7 +90,8 @@ static Void CheckDriveStatus()
 				{
 					freac::Notification::Get()->onDiscInsert.Emit(drive);
 
-					discLoaded[drive] = True;
+					discLoaded[drive]     = True;
+					discInsertTime[drive] = S::System::System::Clock();
 				}
 			}
 		}
@@ -147,9 +150,6 @@ Void freac::Notification::ProcessSystemMessage(Int message, Int wParam, Int lPar
 {
 	if (message != WM_DEVICECHANGE) return;
 
-	static UnsignedInt64	 lastTime	 =  0;
-	static Int		 lastDrive	 = -1;
-
 	DEV_BROADCAST_HDR	*broadcastHeader = (DEV_BROADCAST_HDR *)    UINT_PTR(lParam);
 	DEV_BROADCAST_VOLUME	*broadcastVolume = (DEV_BROADCAST_VOLUME *) UINT_PTR(lParam);
 
@@ -165,21 +165,19 @@ Void freac::Notification::ProcessSystemMessage(Int message, Int wParam, Int lPar
 
 				if (drive >= 0)
 				{
-					/* Guard against double sent notifications.
+					/* Guard against duplicate and late notifications.
 					 */
-					if (drive == lastDrive && S::System::System::Clock() - lastTime <= 15000) break;
+					if (S::System::System::Clock() - discInsertTime[drive] <= 15000) break;
 
 					/* Fire disc insert event.
 					 */
 					onDiscInsert.Emit(drive);
 
-					trayOpen[drive]	  = False;
-					discLoaded[drive] = True;
-
-					/* Save message time and drive.
+					/* Update drive status.
 					 */
-					lastTime  = S::System::System::Clock();
-					lastDrive = drive;
+					trayOpen[drive]	      = False;
+					discLoaded[drive]     = True;
+					discInsertTime[drive] = S::System::System::Clock();
 				}
 			}
 
@@ -198,12 +196,11 @@ Void freac::Notification::ProcessSystemMessage(Int message, Int wParam, Int lPar
 					 */
 					onDiscRemove.Emit(drive);
 
-					trayOpen[drive]	  = True;
-					discLoaded[drive] = False;
-
-					/* Reset message time.
+					/* Update drive status.
 					 */
-					if (drive == lastDrive) lastTime = 0;
+					trayOpen[drive]	      = True;
+					discLoaded[drive]     = False;
+					discInsertTime[drive] = 0;
 				}
 			}
 
