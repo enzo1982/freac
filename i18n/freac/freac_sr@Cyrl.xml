@@ -429,7 +429,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Задржи риповане Wave фајлове</entry>
 	<entry id="5105" string="Encode to a single file">Енкодуј у један фајл</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Уклони обрађене песме са листе задатака</entry>
-	<entry id="5107" string="Add encoded files to joblist">Додај енкодоване фајлове на листу задатака</entry>
+	<entry id="5107" string="Add output files to joblist">Додај енкодоване фајлове на листу задатака</entry>
       </section>
 
       <section name="Files">

@@ -429,7 +429,7 @@
 	<entry id="5104" string="Keep ripped Wave files">取り込んだ Wave ファイルを保持</entry>
 	<entry id="5105" string="Encode to a single file">一つのファイルにエンコード</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">ジョブリストから処理済みのトラックを削除する</entry>
-	<entry id="5107" string="Add encoded files to joblist">エンコードされたファイルをジョブリストに追加する</entry>
+	<entry id="5107" string="Add output files to joblist">エンコードされたファイルをジョブリストに追加する</entry>
       </section>
 
       <section name="Files">

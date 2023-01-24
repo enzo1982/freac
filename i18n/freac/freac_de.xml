@@ -431,7 +431,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Wave-Dateien behalten</entry>
 	<entry id="5105" string="Encode to a single file">In eine einzige Datei kodieren</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Fertige Tracks aus Jobliste entfernen</entry>
-	<entry id="5107" string="Add encoded files to joblist">Ausgabedateien in Liste aufnehmen</entry>
+	<entry id="5107" string="Add output files to joblist">Ausgabedateien in Liste aufnehmen</entry>
       </section>
 
       <section name="Files">

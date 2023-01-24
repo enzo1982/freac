@@ -431,7 +431,7 @@
 	<entry id="5104" string="Keep ripped Wave files"/>
 	<entry id="5105" string="Encode to a single file"/>
 	<entry id="5106" string="Remove processed tracks from joblist"/>
-	<entry id="5107" string="Add encoded files to joblist"/>
+	<entry id="5107" string="Add output files to joblist"/>
       </section>
 
       <section name="Files">

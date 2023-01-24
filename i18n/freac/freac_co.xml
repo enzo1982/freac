@@ -431,7 +431,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Cunservà i schedarii Wave estratti</entry>
 	<entry id="5105" string="Encode to a single file">Cudificà in un schedariu unicu</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Caccià da a lista di travagliu e traccie trattate</entry>
-	<entry id="5107" string="Add encoded files to joblist">Aghjunghje à a lista di travagliu i schedarii cudificati</entry>
+	<entry id="5107" string="Add output files to joblist">Aghjunghje à a lista di travagliu i schedarii cudificati</entry>
       </section>
 
       <section name="Files">

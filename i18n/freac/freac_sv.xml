@@ -430,7 +430,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Behåll rippade wave-filer</entry>
 	<entry id="5105" string="Encode to a single file">Koda till en enda fil</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Ta bort bearbetade spår från jobblistan</entry>
-	<entry id="5107" string="Add encoded files to joblist">Lägg till kodade filer i jobblistan</entry>
+	<entry id="5107" string="Add output files to joblist">Lägg till kodade filer i jobblistan</entry>
       </section>
 
       <section name="Files">

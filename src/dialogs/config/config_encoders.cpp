@@ -86,7 +86,7 @@ freac::ConfigureEncoders::ConfigureEncoders()
 	check_removeTracks	= new CheckBox(i18n->TranslateString("Remove processed tracks from joblist"), Point(280, 37), Size(261, 0), &removeTracks);
 	check_removeTracks->onAction.Connect(&ConfigureEncoders::ToggleRemoveTracks, this);
 
-	check_addEncodedTracks	= new CheckBox(i18n->TranslateString("Add encoded files to joblist"), Point(297, 60), Size(244, 0), &addEncodedTracks);
+	check_addEncodedTracks	= new CheckBox(i18n->TranslateString("Add output files to joblist"), Point(297, 60), Size(244, 0), &addEncodedTracks);
 
 	ToggleRemoveTracks();
 

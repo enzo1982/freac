@@ -429,7 +429,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Mantener archivos Wav extraídos</entry>
 	<entry id="5105" string="Encode to a single file">Unir en un solo archivo</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Quitar archivos procesados de la lista</entry>
-	<entry id="5107" string="Add encoded files to joblist">Añadir archivos codificados a la lista</entry>
+	<entry id="5107" string="Add output files to joblist">Añadir archivos codificados a la lista</entry>
       </section>
 
       <section name="Files">

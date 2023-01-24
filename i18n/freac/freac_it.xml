@@ -426,7 +426,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Non eliminare file wave estratti</entry>
 	<entry id="5105" string="Encode to a single file">Codifica in un file singolo</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Rimuovi dalla joblist le tracce elaborate</entry>
-	<entry id="5107" string="Add encoded files to joblist">Aggiungi file codificati alla joblist</entry>
+	<entry id="5107" string="Add output files to joblist">Aggiungi file codificati alla joblist</entry>
       </section>
 
       <section name="Files">

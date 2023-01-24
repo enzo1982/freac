@@ -409,7 +409,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Zadrži ripane Wave datoteke</entry>
 	<entry id="5105" string="Encode to a single file">Enkodiraj u jednu datoteku</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Ukloni obrađene trake sa liste</entry>
-	<entry id="5107" string="Add encoded files to joblist">Dodaj enkodirane datoteke u listu</entry>
+	<entry id="5107" string="Add output files to joblist">Dodaj enkodirane datoteke u listu</entry>
       </section>
 
       <section name="Files">

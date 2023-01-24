@@ -429,7 +429,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Διατήρηση αποθηκευμένων αρχείων wave</entry>
 	<entry id="5105" string="Encode to a single file">Κωδικοποίηση ενός αρχείου</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Αφαίρεση επεξεργασμένων κομματιών από τη λίστα εργασιών</entry>
-	<entry id="5107" string="Add encoded files to joblist">Προσθήκη κωδικοποιημένων αρχείων στη λίστα εργασιών</entry>
+	<entry id="5107" string="Add output files to joblist">Προσθήκη κωδικοποιημένων αρχείων στη λίστα εργασιών</entry>
       </section>
 
       <section name="Files">

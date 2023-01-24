@@ -427,7 +427,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Оставлять Wave файлы</entry>
 	<entry id="5105" string="Encode to a single file">Кодировать в один файл</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Удалить обработанное из списка</entry>
-	<entry id="5107" string="Add encoded files to joblist">Добавить закодированное в список</entry>
+	<entry id="5107" string="Add output files to joblist">Добавить закодированное в список</entry>
       </section>
 
       <section name="Files">

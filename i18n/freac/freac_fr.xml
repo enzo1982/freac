@@ -426,7 +426,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Conserver fichiers Wave extraits</entry>
 	<entry id="5105" string="Encode to a single file">Encoder dans fichier unique</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Retirer les morceaux traités de la liste des taches</entry>
-	<entry id="5107" string="Add encoded files to joblist">Ajouter les morceaux encodés à la liste des taches</entry>
+	<entry id="5107" string="Add output files to joblist">Ajouter les morceaux encodés à la liste des taches</entry>
       </section>
 
       <section name="Files">

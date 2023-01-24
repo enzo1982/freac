@@ -426,7 +426,7 @@
 	<entry id="5104" string="Keep ripped Wave files">轉檔完成後保留 Wave 檔案</entry>
 	<entry id="5105" string="Encode to a single file">編碼為單一檔案</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">從工作清單移除已完成的項目</entry>
-	<entry id="5107" string="Add encoded files to joblist">將輸出檔案新增到工作清單</entry>
+	<entry id="5107" string="Add output files to joblist">將輸出檔案新增到工作清單</entry>
       </section>
 
       <section name="Files">

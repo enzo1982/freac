@@ -426,7 +426,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Palikti išskleistus Wave failus</entry>
 	<entry id="5105" string="Encode to a single file">Užkoduoti į vieną failą</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Pašalinti apdorotus takelius iš užduočių sąrašo</entry>
-	<entry id="5107" string="Add encoded files to joblist">Pridėti užkoduotus failus į užduočių sąrašą</entry>
+	<entry id="5107" string="Add output files to joblist">Pridėti užkoduotus failus į užduočių sąrašą</entry>
       </section>
 
       <section name="Files">

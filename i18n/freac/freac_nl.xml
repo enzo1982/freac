@@ -429,7 +429,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Geripte bestanden houden</entry>
 	<entry id="5105" string="Encode to a single file">Coderen naar enkel bestand</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Verwerkte tracks verwijderen uit takenlijst</entry>
-	<entry id="5107" string="Add encoded files to joblist">Gecodeerde bestanden toevoegen aan takenlijst</entry>
+	<entry id="5107" string="Add output files to joblist">Gecodeerde bestanden toevoegen aan takenlijst</entry>
       </section>
 
       <section name="Files">

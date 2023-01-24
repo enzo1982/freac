@@ -429,7 +429,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Pastreaza fisierele Wave copiate</entry>
 	<entry id="5105" string="Encode to a single file">Codare intr-un singur fisier</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Stergeti melodiile procesate din lista de lucru</entry>
-	<entry id="5107" string="Add encoded files to joblist">Adaugati fisierele plelucrate la lista de lucru</entry>
+	<entry id="5107" string="Add output files to joblist">Adaugati fisierele plelucrate la lista de lucru</entry>
       </section>
 
       <section name="Files">

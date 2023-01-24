@@ -426,7 +426,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Ponechat soubory wav</entry>
 	<entry id="5105" string="Encode to a single file">Kódovat do jediného souboru</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Odebrat hotové stopy ze seznamu úloh</entry>
-	<entry id="5107" string="Add encoded files to joblist">Přidat výstupní soubory do seznamu úloh</entry>
+	<entry id="5107" string="Add output files to joblist">Přidat výstupní soubory do seznamu úloh</entry>
       </section>
 
       <section name="Files">

@@ -406,7 +406,7 @@
 	<entry id="5104" string="Keep ripped Wave files">리핑된 wav 파일 유지</entry>
 	<entry id="5105" string="Encode to a single file">단일 파일로 인코딩</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">처리된 트랙을 작업목록에서 제거</entry>
-	<entry id="5107" string="Add encoded files to joblist">인코딩된 파일을 작업목록에 추가</entry>
+	<entry id="5107" string="Add output files to joblist">인코딩된 파일을 작업목록에 추가</entry>
       </section>
 
       <section name="Files">

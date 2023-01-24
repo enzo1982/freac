@@ -410,7 +410,7 @@
 	<entry id="5104" string="Keep ripped Wave files">रिप्ड वेव फाइलें रखें</entry>
 	<entry id="5105" string="Encode to a single file">एक ही फाइल को एनकोड करें</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">जॉबलिस्ट से संसाधित ट्रैक निकालें</entry>
-	<entry id="5107" string="Add encoded files to joblist">जॉबलिस्ट में एन्कोडेड फ़ाइलों को जोड़ें</entry>
+	<entry id="5107" string="Add output files to joblist">जॉबलिस्ट में एन्कोडेड फ़ाइलों को जोड़ें</entry>
       </section>
 
       <section name="Files">
