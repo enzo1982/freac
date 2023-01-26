@@ -1174,7 +1174,7 @@
 	  <entry id="70052" string="Do not ask again">Больше не спрашивать</entry>
 	  <entry id="70053" string="AccurateRip offset detection">Определение смещения AccurateRip</entry>
 	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Вставленный диск не найден в базе данных  AccurateRip.</entry>
-	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Пожалуйста, вставьте другой диск в привод CD и нажмите OK.&#10;&#10;Диск должен присутствовать в базе данных AccurateRip. Вероятность выше для &#10;популярных CD, которые могли быть скопированы другими пользователями раньше.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Пожалуйста, вставьте другой диск в привод CD и нажмите OK.&#10;&#10;Диск должен присутствовать в базе данных AccurateRip. Вероятность выше для&#10;популярных CD, которые могли быть скопированы другими пользователями раньше.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">Для определения смещения необходимо проверить другой диск.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Смещение привода успешно определено и установлено в %1 семплов.</entry>
 	</section>

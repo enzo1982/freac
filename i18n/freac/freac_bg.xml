@@ -852,7 +852,7 @@
 	<section name="Audio processing">
 	  <entry id="32400" string="Highpass filter">Филтър за ВИСОКИ честоти</entry>
 	  <entry id="32401" string="Set Highpass frequency (Hz)">Зададена висока честота (Hz)</entry>
-	  <entry id="32402" string="Set Highpass width (Hz)">Зад.ширина висока честота(Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Зад.ширина висока честота (Hz)</entry>
 	  <entry id="32403" string="Lowpass filter">Филтър за ниски честоти</entry>
 	  <entry id="32404" string="Set Lowpass frequency (Hz)">Зададена ниска честота (Hz)</entry>
 	  <entry id="32405" string="Set Lowpass width (Hz)">Зад.ширина ниска честота (Hz)</entry>

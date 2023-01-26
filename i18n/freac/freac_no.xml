@@ -1046,11 +1046,11 @@
 	</section>
 
 	<section name="Bitcoin">
-	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Vennligst skann eller trykk på QR-koden, eller kopier den&#10; følgende adressen for å donere Bitcoin:</entry>
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">Vennligst skann eller trykk på QR-koden, eller kopier den&#10;følgende adressen for å donere Bitcoin:</entry>
 	</section>
 
 	<section name="Ethereum">
-	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Vennligst skann eller trykk på QR-koden, eller kopier den&#10; følgende adressen for å donere Ethereum:</entry>
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">Vennligst skann eller trykk på QR-koden, eller kopier den&#10;følgende adressen for å donere Ethereum:</entry>
 	</section>
 
 	<section name="SEPA">
