@@ -480,7 +480,7 @@
 	<entry id="5310" string="Proxy settings">Proxy nuostatos</entry>
 	<entry id="5311" string="Options">Pasirinktys</entry>
 	<entry id="5312" string="Automatic CDDB queries">Automatinės CDDB užklausos</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Teikti pirmenybę CDDB vietoje CD teksto</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Teikti pirmenybę CDDB vietoje CD teksto</entry>
 	<entry id="5314" string="Enable CDDB cache">Įjungti CDDB podėlį</entry>
 	<entry id="5315" string="Automatization">Automatizavimas</entry>
 	<entry id="5316" string="Always select first entry">Visada parinkti pirmąjį įrašą</entry>
@@ -687,14 +687,14 @@
       <entry id="9000" string="Active CD-ROM drive">Aktyvus CD-ROM diskasukis</entry>
       <entry id="9001" string="Set drive speed limit">Nustatyti diskasukio greičio limitą</entry>
       <entry id="9002" string="CD information">CD informacija</entry>
-      <entry id="9003" string="Read CD Text">Nuskaityti CD tekstą</entry>
+      <entry id="9003" string="Read CD-Text">Nuskaityti CD tekstą</entry>
       <entry id="9004" string="Read cdplayer.ini">Nuskaityti cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Skleidėjo nuostatos</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Aktyvuoti „cdparanoia“ režimą</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Aktyvuoti cdparanoia režimą</entry>
       <entry id="9007" string="Overlap only">Tik persidengimas</entry>
       <entry id="9008" string="No verify">Jokio patikrinimo</entry>
       <entry id="9009" string="No scratch repair">Jokio įbrėžimų taisymo</entry>
-      <entry id="9010" string="Full cdparanoia mode">Pilnas „cdparanoia“ režimas</entry>
+      <entry id="9010" string="Full cdparanoia mode">Pilnas cdparanoia režimas</entry>
       <entry id="9011" string="Activate jitter correction">Aktyvuoti virpėjimų taisymą</entry>
       <entry id="9012" string="Switch stereo channels">Apkeisti kairį/dešinį kanalus</entry>
       <entry id="9013" string="Automatization">Automatizavimas</entry>

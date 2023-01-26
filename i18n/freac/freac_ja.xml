@@ -483,7 +483,7 @@
 	<entry id="5310" string="Proxy settings">プロキシ設定</entry>
 	<entry id="5311" string="Options">オプション</entry>
 	<entry id="5312" string="Automatic CDDB queries">自動 CDDB 問い合わせ</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">CD Text より CDDB を優先</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">CD-Text より CDDB を優先</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB キャッシュ有効</entry>
 	<entry id="5315" string="Automatization">自動化</entry>
 	<entry id="5316" string="Always select first entry">常に最初の項目を選択</entry>
@@ -690,10 +690,10 @@
       <entry id="9000" string="Active CD-ROM drive">アクティブな CD-ROM ドライブ</entry>
       <entry id="9001" string="Set drive speed limit">ドライブ速度制限の設定</entry>
       <entry id="9002" string="CD information">CD 情報</entry>
-      <entry id="9003" string="Read CD Text">CD 情報を読み込む</entry>
+      <entry id="9003" string="Read CD-Text">CD-Text を読み込む</entry>
       <entry id="9004" string="Read cdplayer.ini">cdplayer.ini を読み込む</entry>
       <entry id="9005" string="Ripper settings">取り込み設定</entry>
-      <entry id="9006" string="Activate cdparanoia mode">CD 詳細設定モード有効</entry>
+      <entry id="9006" string="Activate cdparanoia mode">cdparanoia モードを有効にする</entry>
       <entry id="9007" string="Overlap only">オーバーラップのみ</entry>
       <entry id="9008" string="No verify">ベリファイを行わない</entry>
       <entry id="9009" string="No scratch repair">破損部の修復をしない</entry>

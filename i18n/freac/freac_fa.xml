@@ -464,7 +464,7 @@
 	<entry id="5310" string="Proxy settings">تنظيمات پروکسي</entry>
 	<entry id="5311" string="Options">تنظيمات</entry>
 	<entry id="5312" string="Automatic CDDB queries">جستجوي پايگاه داده‌ي ديسک بصورت خودکار</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">اطلاعات پايگاه به ديسک ارجعيت داشته باشد</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">اطلاعات پايگاه به ديسک ارجعيت داشته باشد</entry>
 	<entry id="5314" string="Enable CDDB cache">کش پايگاه داده ديسک ها فعال باشد</entry>
 	<entry id="5315" string="Automatization">خودکارسازي</entry>
 	<entry id="5316" string="Always select first entry">هميشه اولين نتيجه انتخاب شود</entry>
@@ -670,7 +670,7 @@
       <entry id="9000" string="Active CD-ROM drive">سي دي درايو فعال</entry>
       <entry id="9001" string="Set drive speed limit">محدوديت سرعت درايو را تعيين کنيد</entry>
       <entry id="9002" string="CD information">اطلاعات CD</entry>
-      <entry id="9003" string="Read CD Text">متن ديسک را بخوان</entry>
+      <entry id="9003" string="Read CD-Text">متن ديسک را بخوان</entry>
       <entry id="9004" string="Read cdplayer.ini">فايل cdplayer.ini را بخوان</entry>
       <entry id="9005" string="Ripper settings">تنظيمات تبديل از روي ديسک</entry>
       <entry id="9006" string="Activate cdparanoia mode">حالت cdparanoia فعال شود</entry>

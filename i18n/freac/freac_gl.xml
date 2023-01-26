@@ -327,7 +327,7 @@
 	<entry id="5310" string="Proxy settings">Configuración do proxy</entry>
 	<entry id="5311" string="Options">Opcións</entry>
 	<entry id="5312" string="Automatic CDDB queries">Consultas CDDB automáticas</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Priorizar CDDB sobre o texto do CD</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Priorizar CDDB sobre CD-Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Usar caché de CDDB</entry>
 	<entry id="5315" string="Automatization">Automatización</entry>
 
@@ -415,14 +415,14 @@
       <entry id="9000" string="Active CD-ROM drive">Unidade de CD-ROM activa</entry>
       <entry id="9001" string="Set drive speed limit">Límite de velocidade da unidade</entry>
       <entry id="9002" string="CD information">Información do CD</entry>
-      <entry id="9003" string="Read CD Text">Ler o texto do CD</entry>
+      <entry id="9003" string="Read CD-Text">Ler CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Ler cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Configuracións de extracción de audio</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Activar modo CD paranoia</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Activar modo cdparanoia</entry>
       <entry id="9007" string="Overlap only">Só superpoñer</entry>
       <entry id="9008" string="No verify">Sen verificación</entry>
       <entry id="9009" string="No scratch repair">Non reparar chíos</entry>
-      <entry id="9010" string="Full cdparanoia mode">Modo CD paranoia completo</entry>
+      <entry id="9010" string="Full cdparanoia mode">Modo cdparanoia completo</entry>
       <entry id="9011" string="Activate jitter correction">Activar corrección Jitter</entry>
       <entry id="9012" string="Switch stereo channels">Intercambiar canais</entry>
       <entry id="9013" string="Automatization">Automatización</entry>

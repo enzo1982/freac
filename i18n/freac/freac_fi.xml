@@ -373,7 +373,7 @@
 	<entry id="5310" string="Proxy settings">Välityspalvelimen asetukset</entry>
 	<entry id="5311" string="Options">Asetukset</entry>
 	<entry id="5312" string="Automatic CDDB queries">Automaattinen CDDB-kysely</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Suosi CDDB CD-Tekstin yli</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Suosi CDDB CD-Tekstin yli</entry>
 	<entry id="5314" string="Enable CDDB cache">Ota CDDB-välimuisti käyttään</entry>
 	<entry id="5315" string="Automatization">Automaattinen</entry>
 
@@ -486,7 +486,7 @@
       <entry id="9000" string="Active CD-ROM drive">Valittu CD-asema</entry>
       <entry id="9001" string="Set drive speed limit">Aseta nopeusrajoitus ajurille</entry>
       <entry id="9002" string="CD information">CD-tiedot</entry>
-      <entry id="9003" string="Read CD Text">Lue CD-teksti</entry>
+      <entry id="9003" string="Read CD-Text">Lue CD-Teksti</entry>
       <entry id="9004" string="Read cdplayer.ini">Lue cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Kopiointiasetukset</entry>
       <entry id="9006" string="Activate cdparanoia mode">Ota käyttöön cdparanoia-tila</entry>

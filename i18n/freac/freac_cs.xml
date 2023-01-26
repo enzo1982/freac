@@ -480,7 +480,7 @@
 	<entry id="5310" string="Proxy settings">Proxy nastavení</entry>
 	<entry id="5311" string="Options">Volby</entry>
 	<entry id="5312" string="Automatic CDDB queries">Automatický dotaz na CDDB</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Přednost CDDB před CD-textem</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Přednost CDDB před CD-textem</entry>
 	<entry id="5314" string="Enable CDDB cache">Zapnout CDDB cache</entry>
 	<entry id="5315" string="Automatization">Automatizace</entry>
 	<entry id="5316" string="Always select first entry">Vždy zvolit první položku</entry>
@@ -687,14 +687,14 @@
       <entry id="9000" string="Active CD-ROM drive">Aktivní CD-ROM mechanika</entry>
       <entry id="9001" string="Set drive speed limit">Limit rychlosti mechaniky</entry>
       <entry id="9002" string="CD information">CD informace</entry>
-      <entry id="9003" string="Read CD Text">Číst CD text</entry>
+      <entry id="9003" string="Read CD-Text">Číst CD-text</entry>
       <entry id="9004" string="Read cdplayer.ini">Číst cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Nastavení riperu</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Aktivovat cd-paranoia režim</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Aktivovat cdparanoia režim</entry>
       <entry id="9007" string="Overlap only">Jen překrytí</entry>
       <entry id="9008" string="No verify">Neověřovat</entry>
       <entry id="9009" string="No scratch repair">Neopravovat škrábance</entry>
-      <entry id="9010" string="Full cdparanoia mode">Plný cd-paranoia režim</entry>
+      <entry id="9010" string="Full cdparanoia mode">Plný cdparanoia režim</entry>
       <entry id="9011" string="Activate jitter correction">Aktivovat Jitter korekci</entry>
       <entry id="9012" string="Switch stereo channels">Prohodit Levý/Pravý kanál</entry>
       <entry id="9013" string="Automatization">Automatizace</entry>

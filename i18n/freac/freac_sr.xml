@@ -483,7 +483,7 @@
 	<entry id="5310" string="Proxy settings">Proxy podešenja</entry>
 	<entry id="5311" string="Options">Opcije</entry>
 	<entry id="5312" string="Automatic CDDB queries">Automatski CDDB upiti</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Prednost CDDB nad CD tekstom</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Prednost CDDB nad CD tekstom</entry>
 	<entry id="5314" string="Enable CDDB cache">Omogući CDDB keš</entry>
 	<entry id="5315" string="Automatization">Automatizacija</entry>
 	<entry id="5316" string="Always select first entry">Uvek odaberi prvu stavku</entry>
@@ -690,7 +690,7 @@
       <entry id="9000" string="Active CD-ROM drive">Aktivan CD ROM uređaj</entry>
       <entry id="9001" string="Set drive speed limit">Podesi brzinu drajv uređaja</entry>
       <entry id="9002" string="CD information">CD info</entry>
-      <entry id="9003" string="Read CD Text">Čitaj CD tekst</entry>
+      <entry id="9003" string="Read CD-Text">Čitaj CD tekst</entry>
       <entry id="9004" string="Read cdplayer.ini">Čitaj iz cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Podešenja ripera</entry>
       <entry id="9006" string="Activate cdparanoia mode">Pokreni cdparanoia režim</entry>

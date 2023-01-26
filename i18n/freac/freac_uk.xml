@@ -418,7 +418,7 @@
 	<entry id="5310" string="Proxy settings">Налаштування проксі</entry>
 	<entry id="5311" string="Options">Налаштування</entry>
 	<entry id="5312" string="Automatic CDDB queries">Автоматичні CDDB запити</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Перевага CDDB над CD текстом</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Перевага CDDB над CD текстом</entry>
 	<entry id="5314" string="Enable CDDB cache">Включити CDDB кеш</entry>
 	<entry id="5315" string="Automatization">Автоматизація</entry>
 
@@ -531,14 +531,14 @@
       <entry id="9000" string="Active CD-ROM drive">Активний привід CD-ROM</entry>
       <entry id="9001" string="Set drive speed limit">Обмеження швид. приводу</entry>
       <entry id="9002" string="CD information">Інформація CD</entry>
-      <entry id="9003" string="Read CD Text">Читати CD текст</entry>
+      <entry id="9003" string="Read CD-Text">Читати CD текст</entry>
       <entry id="9004" string="Read cdplayer.ini">Читати cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Налаштування захоплення даних</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Активований СDparanoia режим</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Активований cdparanoia режим</entry>
       <entry id="9007" string="Overlap only">Тільки перекривати</entry>
       <entry id="9008" string="No verify">Без підтвердження</entry>
       <entry id="9009" string="No scratch repair">Без виправлення царапин</entry>
-      <entry id="9010" string="Full cdparanoia mode">Повний CDparanoia режим</entry>
+      <entry id="9010" string="Full cdparanoia mode">Повний cdparanoia режим</entry>
       <entry id="9011" string="Activate jitter correction">Активована jitter корекція</entry>
       <entry id="9012" string="Switch stereo channels">Поміняти канали місцями</entry>
       <entry id="9013" string="Automatization">Автоматизація</entry>

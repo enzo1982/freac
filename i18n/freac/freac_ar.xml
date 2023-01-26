@@ -379,7 +379,7 @@
 	<entry id="5310" string="Proxy settings">إعدادات الوكيل</entry>
 	<entry id="5311" string="Options">خيارات</entry>
 	<entry id="5312" string="Automatic CDDB queries">إستعلام تلقائي لقاعدة بيانات قرص مدمج</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">تفضيل قاعدة بيانات قرص مضغوط عبر النص لقرص مضغوط</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">تفضيل قاعدة بيانات قرص مضغوط عبر النص لقرص مضغوط</entry>
 	<entry id="5314" string="Enable CDDB cache">تمكين التخزين المؤقت لقاعدة بيانات قرص مدمج</entry>
 	<entry id="5315" string="Automatization">التلقائية</entry>
 
@@ -487,7 +487,7 @@
       <entry id="9000" string="Active CD-ROM drive">تنشيط محرك القراص المضغوطة</entry>
       <entry id="9001" string="Set drive speed limit">ثبت سرعة محرك الأقراص</entry>
       <entry id="9002" string="CD information">معلومات القرص المضغوط</entry>
-      <entry id="9003" string="Read CD Text">قراءة نص مضغوط</entry>
+      <entry id="9003" string="Read CD-Text">قراءة نص مضغوط</entry>
       <entry id="9004" string="Read cdplayer.ini">cdplayer.ini قراءة</entry>
       <entry id="9005" string="Ripper settings">إعدادات الإشتقاق</entry>
       <entry id="9006" string="Activate cdparanoia mode">تنشيط اسلوب تكبير قرص مضغوط</entry>

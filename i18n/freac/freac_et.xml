@@ -326,7 +326,7 @@
 	<entry id="5310" string="Proxy settings">Proxy sätted</entry>
 	<entry id="5311" string="Options">Sätted</entry>
 	<entry id="5312" string="Automatic CDDB queries">Automaatne CDDB päring</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Lugeda üle CDDB</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Eelista CDDB-d CD-tekstile</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB cacheerimine</entry>
 	<entry id="5315" string="Automatization">Automatiseerimine</entry>
 
@@ -412,7 +412,7 @@
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">CD-ROM-i valik</entry>
       <entry id="9002" string="CD information">CD informatsioon</entry>
-      <entry id="9003" string="Read CD Text">Lugeda CD Teksti</entry>
+      <entry id="9003" string="Read CD-Text">Lugeda CD-teksti</entry>
       <entry id="9004" string="Read cdplayer.ini">Lugeda cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Ripperi sätted</entry>
       <entry id="9006" string="Activate cdparanoia mode">Aktiveerida cdparanoia resiim</entry>

@@ -483,7 +483,7 @@
 	<entry id="5310" string="Proxy settings">Setări Proxy</entry>
 	<entry id="5311" string="Options">Opțiuni</entry>
 	<entry id="5312" string="Automatic CDDB queries">Interogare automată CDDB</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Alegeți CDDB în loc de CD Text</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Alegeți CDDB în loc de CD-Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Activare cache CDDB</entry>
 	<entry id="5315" string="Automatization">Automatizare</entry>
 	<entry id="5316" string="Always select first entry">Întotdeauna selectează prima intrare</entry>
@@ -690,7 +690,7 @@
       <entry id="9000" string="Active CD-ROM drive">CD-ROM activ</entry>
       <entry id="9001" string="Set drive speed limit">Setează limita de viteză pentru drive</entry>
       <entry id="9002" string="CD information">Informații CD</entry>
-      <entry id="9003" string="Read CD Text">Citire CD Text</entry>
+      <entry id="9003" string="Read CD-Text">Citire CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Citire cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Setări extragere</entry>
       <entry id="9006" string="Activate cdparanoia mode">Activare mod cdparanoia</entry>

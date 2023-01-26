@@ -480,7 +480,7 @@
 	<entry id="5310" string="Proxy settings">Proxy 設定</entry>
 	<entry id="5311" string="Options">選項</entry>
 	<entry id="5312" string="Automatic CDDB queries">自動查詢 CDDB</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">CDDB 資訊優先於 CD 資訊</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">CDDB 資訊優先於 CD 資訊</entry>
 	<entry id="5314" string="Enable CDDB cache">啟用 CDDB 快取</entry>
 	<entry id="5315" string="Automatization">自動化</entry>
 	<entry id="5316" string="Always select first entry">總是選擇第一個項目</entry>
@@ -687,10 +687,10 @@
       <entry id="9000" string="Active CD-ROM drive">使用中的 CD-ROM 光碟機</entry>
       <entry id="9001" string="Set drive speed limit">光碟機最大倍速</entry>
       <entry id="9002" string="CD information">CD 資訊</entry>
-      <entry id="9003" string="Read CD Text">讀取 CD 資訊</entry>
+      <entry id="9003" string="Read CD-Text">讀取 CD 資訊</entry>
       <entry id="9004" string="Read cdplayer.ini">讀取 cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">轉檔設定</entry>
-      <entry id="9006" string="Activate cdparanoia mode">啟用 CDParanoia 模式</entry>
+      <entry id="9006" string="Activate cdparanoia mode">啟用 cdparanoia 模式</entry>
       <entry id="9007" string="Overlap only">僅限重疊部分</entry>
       <entry id="9008" string="No verify">不驗證</entry>
       <entry id="9009" string="No scratch repair">不修復光碟刮傷</entry>

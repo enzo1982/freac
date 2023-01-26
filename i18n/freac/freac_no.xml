@@ -421,7 +421,7 @@
 	<entry id="5310" string="Proxy settings">Proxy-innstillinger</entry>
 	<entry id="5311" string="Options">Alternativer</entry>
 	<entry id="5312" string="Automatic CDDB queries">Automatisk CDDB-forespørsel</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Foretrekk CDDB over CD Text</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Foretrekk CDDB over CD-Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Aktiver CDDB-cache</entry>
 	<entry id="5315" string="Automatization">Automatisering</entry>
 	<entry id="5316" string="Always select first entry">Velg alltid første treff</entry>
@@ -606,14 +606,14 @@
       <entry id="9000" string="Active CD-ROM drive">Aktive CD-ROM-srasjoner</entry>
       <entry id="9001" string="Set drive speed limit">Velg hastighetsbegrensning for drev</entry>
       <entry id="9002" string="CD information">CD-informasjon</entry>
-      <entry id="9003" string="Read CD Text">Les CD-tekst</entry>
+      <entry id="9003" string="Read CD-Text">Les CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Les cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Ripperinnstillinger</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Aktiver paranoiamodus</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Aktiver cdparanoia-modus</entry>
       <entry id="9007" string="Overlap only">Bare overlapp</entry>
       <entry id="9008" string="No verify">Ingen verifikasjon</entry>
       <entry id="9009" string="No scratch repair">Ingen ripereperasjon</entry>
-      <entry id="9010" string="Full cdparanoia mode">Full CD-paranoia modus</entry>
+      <entry id="9010" string="Full cdparanoia mode">Full cdparanoia modus</entry>
       <entry id="9011" string="Activate jitter correction">Aktiver jitterkorrektur</entry>
       <entry id="9012" string="Switch stereo channels">Velg venstre/høyrekanal</entry>
       <entry id="9013" string="Automatization">Automatisering</entry>

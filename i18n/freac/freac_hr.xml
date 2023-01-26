@@ -463,7 +463,7 @@
 	<entry id="5310" string="Proxy settings">Proxy postavke</entry>
 	<entry id="5311" string="Options">Opcije</entry>
 	<entry id="5312" string="Automatic CDDB queries">Automatski CDDB upit</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Radije CDDB nego CD text</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Radije CDDB nego CD tekst</entry>
 	<entry id="5314" string="Enable CDDB cache">Omogući CDDB cache</entry>
 	<entry id="5315" string="Automatization">Automatizacija</entry>
 	<entry id="5316" string="Always select first entry">UVijek odaberi prvi unos</entry>
@@ -667,14 +667,14 @@
       <entry id="9000" string="Active CD-ROM drive">Aktivni CD-ROM pogon</entry>
       <entry id="9001" string="Set drive speed limit">Ograniči brzinu drivea</entry>
       <entry id="9002" string="CD information">CD info</entry>
-      <entry id="9003" string="Read CD Text">Pročitaj CD tekst</entry>
+      <entry id="9003" string="Read CD-Text">Pročitaj CD tekst</entry>
       <entry id="9004" string="Read cdplayer.ini">Pročitaj cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Postavke ripanja</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Aktiviraj CD paranoja mod</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Aktiviraj cdparanoia mod</entry>
       <entry id="9007" string="Overlap only">Samo preklop (overlap)</entry>
       <entry id="9008" string="No verify">Bez provjere</entry>
       <entry id="9009" string="No scratch repair">Bez popravka ogrebotina</entry>
-      <entry id="9010" string="Full cdparanoia mode">Puni CD paranoja mod</entry>
+      <entry id="9010" string="Full cdparanoia mode">Puni cdparanoia mod</entry>
       <entry id="9011" string="Activate jitter correction">Aktiviraj ispravak jittera</entry>
       <entry id="9012" string="Switch stereo channels">Zamijeni lijevi/desni kanal</entry>
       <entry id="9013" string="Automatization">Automatizacija</entry>

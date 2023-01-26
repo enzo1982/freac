@@ -460,7 +460,7 @@
 	<entry id="5310" string="Proxy settings">프록시 설정</entry>
 	<entry id="5311" string="Options">옵션</entry>
 	<entry id="5312" string="Automatic CDDB queries">자동으로 CDDB에 쿼리</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">CD 텍스트보다 CDDB를 우선</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">CD 텍스트보다 CDDB를 우선</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB 캐시 허용</entry>
 	<entry id="5315" string="Automatization">자동화</entry>
 	<entry id="5316" string="Always select first entry">항상 첫번째 항목을 선택</entry>

@@ -490,7 +490,7 @@
 	<entry id="5310" string="Proxy settings">Preferenze Proxy</entry>
 	<entry id="5311" string="Options">Ozzioni</entry>
 	<entry id="5312" string="Automatic CDDB queries">Richieste CDDB autumatiche</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Preferisce CDDB à u testu CD</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Preferisce CDDB à u testu CD</entry>
 	<entry id="5314" string="Enable CDDB cache">Attivà l’impiatta CDDB</entry>
 	<entry id="5315" string="Automatization">Autumatisazione</entry>
 	<entry id="5316" string="Always select first entry">Selezziunà sempre u primu elementu</entry>
@@ -703,7 +703,7 @@
       <entry id="9000" string="Active CD-ROM drive">Lettore CD-ROM attivu</entry>
       <entry id="9001" string="Set drive speed limit">Definisce u limitu di velocità di u lettore</entry>
       <entry id="9002" string="CD information">Infurmazione CD</entry>
-      <entry id="9003" string="Read CD Text">Leghje u testu di u CD</entry>
+      <entry id="9003" string="Read CD-Text">Leghje u testu CD</entry>
       <entry id="9004" string="Read cdplayer.ini">Leghje cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Preferenze d’estrazzione</entry>
       <entry id="9006" string="Activate cdparanoia mode">Attivà u modu cdparanoia</entry>

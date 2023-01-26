@@ -327,7 +327,7 @@
 	<entry id="5310" string="Proxy settings">Proxy beállítások</entry>
 	<entry id="5311" string="Options">Beállítások</entry>
 	<entry id="5312" string="Automatic CDDB queries">Automatikus CDDB lekérdezések</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">CDDB helyett CD Text használata</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">CDDB helyett CD-Text használata</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB Cache bekapcsolása</entry>
 	<entry id="5315" string="Automatization">Automatizálás</entry>
 
@@ -415,10 +415,10 @@
       <entry id="9000" string="Active CD-ROM drive">Aktív CD-ROM meghajtó</entry>
       <entry id="9001" string="Set drive speed limit">Meghajtó sebességlimit</entry>
       <entry id="9002" string="CD information">CI információ</entry>
-      <entry id="9003" string="Read CD Text">CD-Text beolvasás</entry>
+      <entry id="9003" string="Read CD-Text">CD-Text beolvasás</entry>
       <entry id="9004" string="Read cdplayer.ini">cdplayer.ini beolvasás</entry>
       <entry id="9005" string="Ripper settings">Másoló beállítások</entry>
-      <entry id="9006" string="Activate cdparanoia mode">CdParanoia mód be</entry>
+      <entry id="9006" string="Activate cdparanoia mode">cdparanoia mód be</entry>
       <entry id="9007" string="Overlap only">Csak Overlap</entry>
       <entry id="9008" string="No verify">Nincs ellenörzés</entry>
       <entry id="9009" string="No scratch repair">Pattogás nincs javítva</entry>

@@ -464,7 +464,7 @@
 	<entry id="5310" string="Proxy settings">प्रॉक्सी सेटिंग्स</entry>
 	<entry id="5311" string="Options">विकल्प</entry>
 	<entry id="5312" string="Automatic CDDB queries">आटोमेटिक सीडीडीबी क्वेरी</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">सीडी पाठ पर सीडीडीबी को प्राथमिकता दें</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">सीडी पाठ पर सीडीडीबी को प्राथमिकता दें</entry>
 	<entry id="5314" string="Enable CDDB cache">सीडीडीबी कैश सक्षम करें</entry>
 	<entry id="5315" string="Automatization">ऑटोमाइज़ेशन</entry>
 	<entry id="5316" string="Always select first entry">हमेशा पहली प्रविष्टि का चयन करें</entry>
@@ -670,10 +670,10 @@
       <entry id="9000" string="Active CD-ROM drive">सक्रिय सीडी-रोम ड्राइव</entry>
       <entry id="9001" string="Set drive speed limit">ड्राइव स्पीड लिमिट सेट करें</entry>
       <entry id="9002" string="CD information">सीडी की जानकारी</entry>
-      <entry id="9003" string="Read CD Text">सीडी पाठ पढ़ें</entry>
+      <entry id="9003" string="Read CD-Text">सीडी पाठ पढ़ें</entry>
       <entry id="9004" string="Read cdplayer.ini">Cdplayer.ini पढ़ें</entry>
       <entry id="9005" string="Ripper settings">रिपर सेटिंग्स</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Cdparanoia मोड सक्रिय करें</entry>
+      <entry id="9006" string="Activate cdparanoia mode">cdparanoia मोड सक्रिय करें</entry>
       <entry id="9007" string="Overlap only">केवल ओवरलैप करें</entry>
       <entry id="9008" string="No verify">कोई सत्यापन नहीं</entry>
       <entry id="9009" string="No scratch repair">कोई खरोंच की मरम्मत</entry>

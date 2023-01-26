@@ -326,7 +326,7 @@
 	<entry id="5310" string="Proxy settings">Proxy ayarları</entry>
 	<entry id="5311" string="Options">Ayarlar</entry>
 	<entry id="5312" string="Automatic CDDB queries">Otomatik CDDB sorgusu</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">CD Metni yerine CDDB bilgisini tercih et</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">CD-Metni yerine CDDB bilgisini tercih et</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB önbelleği aktif</entry>
 	<entry id="5315" string="Automatization">Otomatik olarak yap</entry>
 
@@ -413,15 +413,15 @@
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Aktif CD-ROM sürücü</entry>
       <entry id="9001" string="Set drive speed limit">Sürücü hız limiti seç</entry>
-      <entry id="9002" string="CD information">CD Bilgisi</entry>
-      <entry id="9003" string="Read CD Text">CD Metnini Oku</entry>
+      <entry id="9002" string="CD information">CD bilgisi</entry>
+      <entry id="9003" string="Read CD-Text">CD-Metnini oku</entry>
       <entry id="9004" string="Read cdplayer.ini">cdplayer.ini dosyasını oku</entry>
       <entry id="9005" string="Ripper settings">Ripper ayarları</entry>
-      <entry id="9006" string="Activate cdparanoia mode">CD paranoya modunu aktifleştir</entry>
+      <entry id="9006" string="Activate cdparanoia mode">cdparanoia modunu aktifleştir</entry>
       <entry id="9007" string="Overlap only">Sadece üstüne yaz</entry>
       <entry id="9008" string="No verify">Doğruluğunu kanıtlama</entry>
       <entry id="9009" string="No scratch repair">çizikleri onarma</entry>
-      <entry id="9010" string="Full cdparanoia mode">Cdparanoia modu tüm özellikler</entry>
+      <entry id="9010" string="Full cdparanoia mode">cdparanoia modu tüm özellikler</entry>
       <entry id="9011" string="Activate jitter correction">Jitter düzeltmesini aktifleştir</entry>
       <entry id="9012" string="Switch stereo channels">Sağ/sol kanalları tersine çevir</entry>
       <entry id="9013" string="Automatization">Otomatik olarak yap</entry>

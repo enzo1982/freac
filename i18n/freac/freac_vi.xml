@@ -327,7 +327,7 @@
 	<entry id="5310" string="Proxy settings">Thiết lập Proxy</entry>
 	<entry id="5311" string="Options">Tùy chọn</entry>
 	<entry id="5312" string="Automatic CDDB queries">Tự động truy vấn CDDB</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Ưu tiên CDDB hơn văn bản CD</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Ưu tiên CDDB hơn văn bản CD</entry>
 	<entry id="5314" string="Enable CDDB cache">Cho phép CDDB cache</entry>
 	<entry id="5315" string="Automatization">Tự động</entry>
 
@@ -414,7 +414,7 @@
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Cho phép CD-ROM drive</entry>
       <entry id="9002" string="CD information">Thông tin CD</entry>
-      <entry id="9003" string="Read CD Text">Đọc CD Text</entry>
+      <entry id="9003" string="Read CD-Text">Đọc CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Đọc cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Thiết lập Ripper</entry>
       <entry id="9006" string="Activate cdparanoia mode">Cho phép chế độ cdparanoia</entry>

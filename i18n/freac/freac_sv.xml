@@ -102,7 +102,7 @@
 	<entry id="1104" string="Clear joblist">Töm jobblista</entry>
 	<entry id="1105" string="Exit">Avsluta</entry>
 	<entry id="1106" string="Audio file(s)">Ljudfil(er)</entry>
-	<entry id="1107" string="Audio CD contents">Innehåll från ljud-cd</entry>
+	<entry id="1107" string="Audio CD contents">Innehåll från ljud-CD</entry>
 	<entry id="1108" string="By pattern">Enligt mönster</entry>
 	<entry id="1109" string="From folder">Från mapp</entry>
       </section>
@@ -122,7 +122,7 @@
 	<entry id="1300" string="General settings">Allmänna inställningar</entry>
 	<entry id="1301" string="Configure signal processing">Konfigurera signalbehandling</entry>
 	<entry id="1302" string="Configure selected encoder">Inställningar för aktuell kodare</entry>
-	<entry id="1303" string="Active CD-ROM drive">Aktiv cd-romenhet</entry>
+	<entry id="1303" string="Active CD-ROM drive">Aktiv CD-ROM-enhet</entry>
 	<entry id="1304" string="Active configuration">Aktiv konfiguration</entry>
 	<entry id="1305" string="Default configuration">Standardkonfiguration</entry>
       </section>
@@ -161,7 +161,7 @@
 
     <section name="Toolbar">
       <entry id="2000" string="Add audio file(s) to the joblist">Lägg till ljudfil(er) i jobblistan</entry>
-      <entry id="2001" string="Add audio CD contents to the joblist">Lägg till innehåll från ljud-cd i jobblistan</entry>
+      <entry id="2001" string="Add audio CD contents to the joblist">Lägg till innehåll från ljud-CD i jobblistan</entry>
       <entry id="2002" string="Remove the selected entry from the joblist">Ta bort det markerade objektet från jobblistan</entry>
       <entry id="2003" string="Clear the entire joblist">Töm jobblistan</entry>
       <entry id="2004" string="Query CDDB database">Sök i CDDB-databas</entry>
@@ -222,7 +222,7 @@
       <entry id="3043" string="Output file name">Målfilens namn</entry>
       <entry id="3044" string="verifying">verifierar</entry>
       <entry id="3045" string="Open">Öppna</entry>
-      <entry id="3046" string="CD drive">Cd-enhet</entry>
+      <entry id="3046" string="CD drive">CD-enhet</entry>
       <entry id="3047" string="Disc ID">Skivans id</entry>
 
       <section name="File">
@@ -322,16 +322,16 @@
       <section name="Submit">
 	<entry id="4000" string="CDDB data">CDDB-data</entry>
 	<entry id="4001" string="Submit">Registrera</entry>
-	<entry id="4002" string="No audio CD in drive!">Ingen ljud-cd i enheten!</entry>
-	<entry id="4003" string="Submitting CD information">Registrerar cd-information</entry>
+	<entry id="4002" string="No audio CD in drive!">Ingen ljud-CD i enheten!</entry>
+	<entry id="4003" string="Submitting CD information">Registrerar CD-information</entry>
 	<entry id="4004" string="Update joblist with this information">Uppdatera jobblistan med denna information</entry>
 	<entry id="4005" string="Status">Status</entry>
-	<entry id="4006" string="Successfully read CD!">Läsningen av cd-skivan har slutförts!</entry>
+	<entry id="4006" string="Successfully read CD!">Läsningen av CD-skivan har slutförts!</entry>
 	<entry id="4007" string="Save entry">Spara post</entry>
 	<entry id="4008" string="Various artists">Olika artister</entry>
 	<entry id="4009" string="Data track">Dataspår</entry>
 	<entry id="4010" string="Submit to online database later">Skicka till webbdatabas senare</entry>
-	<entry id="4011" string="Active CD-ROM drive">Aktiv cd-romenhet</entry>
+	<entry id="4011" string="Active CD-ROM drive">Aktiv CD-ROM-enhet</entry>
 
 	<section name="Errors">
 	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">Ett fel inträffade när programmet försökte ansluta till freedb-servern.</entry>
@@ -343,11 +343,11 @@
 	<entry id="4100" string="CDDB query">CDDB-sökning</entry>
 	<entry id="4101" string="No freedb entry for this disk.">Det finns ingen freedb-post för denna skiva.</entry>
 	<entry id="4102" string="Connecting to freedb server at">Ansluter till freedb-server på</entry>
-	<entry id="4103" string="Requesting CD information">Begär cd-information</entry>
+	<entry id="4103" string="Requesting CD information">Begär CD-information</entry>
 	<entry id="4104" string="No exact matches found">Inga exakta träffar hittades</entry>
 	<entry id="4105" string="Multiple matches found">Flera träffar hittades</entry>
 	<entry id="4106" string="Matches">Träffar</entry>
-	<entry id="4107" string="Select the entry that best fits your CD">Välj den post som bäst beskriver din cd-skiva</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">Välj den post som bäst beskriver din CD-skiva</entry>
 	<entry id="4108" string="Would you like to perform this query again later?">Vill du utföra denna sökning igen senare?</entry>
 	<entry id="4109" string="Would you like to perform the remaining queries again later?">Vill du utföra de återstående sökningarna igen senare?</entry>
 	<entry id="4110" string="none">ingen</entry>
@@ -366,7 +366,7 @@
 	<entry id="4203" string="Query all">Sök alla</entry>
 	<entry id="4204" string="Query string">Söksträng</entry>
 	<entry id="4205" string="CDDB queries to perform">CDDB-sökningar att utföra</entry>
-	<entry id="4206" string="Querying CD information">Söker efter cd-information</entry>
+	<entry id="4206" string="Querying CD information">Söker efter CD-information</entry>
       </section>
 
       <section name="Manage submits">
@@ -378,7 +378,7 @@
 	<entry id="4305" string="Disc name">Skivans namn</entry>
 	<entry id="4306" string="Preview">Förhandsvisning</entry>
 	<entry id="4307" string="Category">Kategori</entry>
-	<entry id="4308" string="Submitting CD information">Registrerar cd-information</entry>
+	<entry id="4308" string="Submitting CD information">Registrerar CD-information</entry>
       </section>
 
       <section name="Manage cache">
@@ -488,7 +488,7 @@
 	<entry id="5310" string="Proxy settings">Proxyinställningar</entry>
 	<entry id="5311" string="Options">Inställningar</entry>
 	<entry id="5312" string="Automatic CDDB queries">Automatisk CDDB-sökning</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Prioritera CDDB-info framför cd-text</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Prioritera CDDB-info framför CD-Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Aktivera CDDB-cache</entry>
 	<entry id="5315" string="Automatization">Automatisering</entry>
 	<entry id="5316" string="Always select first entry">Välj alltid första posten</entry>
@@ -539,7 +539,7 @@
 	<entry id="5517" string="Read chapters from files">Läs kapitel från filer</entry>
 	<entry id="5518" string="Write chapters to files">Skriv kapitel till filer</entry>
 	<entry id="5519" string="Special fields">Särskilda fält</entry>
-	<entry id="5520" string="Write CD table of contents">Skriv innehållsförteckning för cd</entry>
+	<entry id="5520" string="Write CD table of contents">Skriv innehållsförteckning för CD</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Behåll uppspelningsförstärkningsinfo</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Lägg till en inledande nolla till spårnummer lägre än 10</entry>
 	<entry id="5526" string="File size limit">Filstorleksbegränsning</entry>
@@ -575,7 +575,7 @@
 	  <entry id="5663" string="Sampling rate">Samplingshastighet</entry>
 	  <entry id="5664" string="Channels">Kanaler</entry>
 	  <entry id="5665" string="Sample resolution">Sampelupplösning</entry>
-	  <entry id="5666" string="CD drive">Cd-enhet</entry>
+	  <entry id="5666" string="CD drive">CD-enhet</entry>
 	  <entry id="5667" string="Disc ID">Skivans id</entry>
 	</section>
       </section>
@@ -657,13 +657,13 @@
       <entry id="7112" string="Invalid file format">Ogiltigt filformat</entry>
       <entry id="7113" string="Unsupported audio format">Ljudformatet stöds inte</entry>
       <entry id="7114" string="Unknown error">Okänt fel</entry>
-      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Det gick inte att läsa in NT SCSI-drivrutinerna! Cd-rippning har inaktiverats!</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">Det gick inte att läsa in NT SCSI-drivrutinerna! CD-rippning har inaktiverats!</entry>
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Det gick inte att öppna fil: %1&#10;&#10;Fel: %2</entry>
-      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Det går inte att spela ett cd-spår under rippning från samma enhet!</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Det går inte att spela ett CD-spår under rippning från samma enhet!</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Det går inte att påbörja rippning under uppspelning av spår på samma enhet!</entry>
       <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">CDDB-funktionen är inaktiverad! Aktivera stöd&#10;för lokal eller extern CDDB i inställningarna.</entry>
       <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Stöd för extern CDDB är inaktiverat! Aktivera&#10;stöd för extern CDDB i inställningarna.</entry>
-      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Åtkomst till cd-romenheter nekades av Windows.&#10;&#10;Kontakta din systemadministratör för att&#10;få åtkomst till cd-romenheten.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Åtkomst till CD-ROM-enheter nekades av Windows.&#10;&#10;Kontakta din systemadministratör för att&#10;få åtkomst till CD-ROM-enheten.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Det finns ingen konfigurationsdialog för:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">Den valda mappen finns inte längre!</entry>
       <entry id="7124" string="Access denied">Åtkomst nekad</entry>
@@ -695,10 +695,10 @@
     </section>
 
     <section name="Ripper">
-      <entry id="9000" string="Active CD-ROM drive">Aktiv cd-romenhet</entry>
+      <entry id="9000" string="Active CD-ROM drive">Aktiv CD-ROM-enhet</entry>
       <entry id="9001" string="Set drive speed limit">Begränsa enhetens hastighet</entry>
-      <entry id="9002" string="CD information">Cd-information</entry>
-      <entry id="9003" string="Read CD Text">Läs cd-text</entry>
+      <entry id="9002" string="CD information">CD-information</entry>
+      <entry id="9003" string="Read CD-Text">Läs CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Läs cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Rippningsinställningar</entry>
       <entry id="9006" string="Activate cdparanoia mode">Aktivera cdparanoia-läge</entry>
@@ -709,10 +709,10 @@
       <entry id="9011" string="Activate jitter correction">Aktivera jitterkorrigering</entry>
       <entry id="9012" string="Switch stereo channels">Kasta om vänster/höger kanal</entry>
       <entry id="9013" string="Automatization">Automatisering</entry>
-      <entry id="9014" string="Read CD contents on insert">Läs cd-innehåll vid inmatning</entry>
+      <entry id="9014" string="Read CD contents on insert">Läs CD-innehåll vid inmatning</entry>
       <entry id="9015" string="Start ripping automatically">Starta rippning automatiskt</entry>
-      <entry id="9016" string="Eject disk after ripping">Mata ut cd-skiva efter rippning</entry>
-      <entry id="9017" string="CD options">Cd-inställningar</entry>
+      <entry id="9016" string="Eject disk after ripping">Mata ut CD-skiva efter rippning</entry>
+      <entry id="9017" string="CD options">CD-inställningar</entry>
       <entry id="9018" string="Use read offset">Använd läsförskjutning</entry>
       <entry id="9019" string="samples">sampel</entry>
       <entry id="9020" string="Read ISRC when adding tracks to joblist">Läs ISRC när spår läggs till i jobblistan</entry>
@@ -1186,11 +1186,11 @@
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">AccurateRip-konfiguration</entry>
-	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Din cd-enhet hittades inte i AccurateRip-databasen.&#10;&#10;Enhetens namn: %1&#10;&#10;Vill du göra en automatisk identifiering av enhetsförskjutningen nu?</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">Din CD-enhet hittades inte i AccurateRip-databasen.&#10;&#10;Enhetens namn: %1&#10;&#10;Vill du göra en automatisk identifiering av enhetsförskjutningen nu?</entry>
 	  <entry id="70052" string="Do not ask again">Fråga inte igen</entry>
 	  <entry id="70053" string="AccurateRip offset detection">Förskjutningsidentifiering med AccurateRip</entry>
 	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Det gick inte att hitta den inmatade skivan i AccurateRip-databasen.</entry>
-	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Sätt in en annan skiva i cd-enheten och klicka på OK.&#10;&#10;Skivan måste finnas i AccurateRip-databasen. Sannolikheten för detta är högre för&#10;populära cd-skivor, eftersom dessa troligen redan har rippats av andra användare.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Sätt in en annan skiva i CD-enheten och klicka på OK.&#10;&#10;Skivan måste finnas i AccurateRip-databasen. Sannolikheten för detta är högre för&#10;populära CD-skivor, eftersom dessa troligen redan har rippats av andra användare.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">Förskjutningsidentifieringen behöver kontrollera en annan skiva.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Enhetsförskjutningen har identifierats och konfigurerats till %1 sampel.</entry>
 	</section>
@@ -1464,7 +1464,7 @@
 	  <entry id="104108" string="days">dagar</entry>
 	  <entry id="104109" string="Conversion logs">Konverteringsloggar</entry>
 	  <entry id="104110" string="Save conversion logs with audio files">Spara konverteringsloggar med ljudfiler</entry>
-	  <entry id="104111" string="Audio CD ripping logs only">Endast ljud-cd-rippningsloggar</entry>
+	  <entry id="104111" string="Audio CD ripping logs only">Endast ljud-CD-rippningsloggar</entry>
 	  <entry id="104112" string="Filename pattern">Filnamnsmönster</entry>
 	  <entry id="104113" string="Log complete file paths">Logga fullständiga filsökvägar</entry>
 	</section>

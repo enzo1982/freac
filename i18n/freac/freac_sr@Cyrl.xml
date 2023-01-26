@@ -483,7 +483,7 @@
 	<entry id="5310" string="Proxy settings">Прокси подешења</entry>
 	<entry id="5311" string="Options">Опције</entry>
 	<entry id="5312" string="Automatic CDDB queries">Аутоматски CDDB упити</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Предност CDDB над ЦД текстом</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Предност CDDB над ЦД текстом</entry>
 	<entry id="5314" string="Enable CDDB cache">Омогући CDDB кеш</entry>
 	<entry id="5315" string="Automatization">Аутоматизација</entry>
 	<entry id="5316" string="Always select first entry">Увек одабери прву ставку</entry>
@@ -690,14 +690,14 @@
       <entry id="9000" string="Active CD-ROM drive">Активан ЦД РОМ уређај</entry>
       <entry id="9001" string="Set drive speed limit">Подеси брзину драјв уређаја</entry>
       <entry id="9002" string="CD information">ЦД инфо</entry>
-      <entry id="9003" string="Read CD Text">Читај ЦД текст</entry>
+      <entry id="9003" string="Read CD-Text">Читај ЦД текст</entry>
       <entry id="9004" string="Read cdplayer.ini">Читај из cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Подешења рипера</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Покрени цдпараноја режим</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Покрени cdparanoia режим</entry>
       <entry id="9007" string="Overlap only">Само за пребачаје</entry>
       <entry id="9008" string="No verify">Без овере</entry>
       <entry id="9009" string="No scratch repair">Без поправки огреботина</entry>
-      <entry id="9010" string="Full cdparanoia mode">Пун цдпараноја режим</entry>
+      <entry id="9010" string="Full cdparanoia mode">Пун cdparanoia режим</entry>
       <entry id="9011" string="Activate jitter correction">Корекција преклапања (jittering)</entry>
       <entry id="9012" string="Switch stereo channels">Замени леви/десни канал</entry>
       <entry id="9013" string="Automatization">Аутоматизација</entry>

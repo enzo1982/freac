@@ -329,7 +329,7 @@
 	<entry id="5310" string="Proxy settings">Proksie-opstellings</entry>
 	<entry id="5311" string="Options">Opsies</entry>
 	<entry id="5312" string="Automatic CDDB queries">Outomatiese CDDB-navrae</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Verkies CDDB bo CD-teks</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Verkies CDDB bo CD-teks</entry>
 	<entry id="5314" string="Enable CDDB cache">Aktiveer CDDB-cache</entry>
 	<entry id="5315" string="Automatization">Outomatisasie</entry>
 
@@ -417,14 +417,14 @@
       <entry id="9000" string="Active CD-ROM drive">Aktiewe CD-ROM aandrywer</entry>
       <entry id="9001" string="Set drive speed limit">Stel aandrywerspoedlimiet</entry>
       <entry id="9002" string="CD information">CD-informasie</entry>
-      <entry id="9003" string="Read CD Text">Lees die CD-teks</entry>
+      <entry id="9003" string="Read CD-Text">Lees die CD-teks</entry>
       <entry id="9004" string="Read cdplayer.ini">Lees cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Stroopstellings (rip)</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Ativeer CD-paranoiamodus</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Ativeer cdparanoia modus</entry>
       <entry id="9007" string="Overlap only">Slegs oorvleueling</entry>
       <entry id="9008" string="No verify">Geen toets</entry>
       <entry id="9009" string="No scratch repair">Geen krap herstelwerk</entry>
-      <entry id="9010" string="Full cdparanoia mode">Volle CD-paranoiamodus</entry>
+      <entry id="9010" string="Full cdparanoia mode">Volle cdparanoia modus</entry>
       <entry id="9011" string="Activate jitter correction">Aktiveer rittelkorreksie</entry>
       <entry id="9012" string="Switch stereo channels">Wissel linker-/regterkanaal</entry>
       <entry id="9013" string="Automatization">Outomatisasie</entry>

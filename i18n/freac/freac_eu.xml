@@ -329,7 +329,7 @@
 	<entry id="5310" string="Proxy settings">Proxy ezarpenak</entry>
 	<entry id="5311" string="Options">Aukerak</entry>
 	<entry id="5312" string="Automatic CDDB queries">Berez CDDB eskaerak</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Hobetsi CDDB CD Text gain</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Hobetsi CDDB CD-Text gain</entry>
 	<entry id="5314" string="Enable CDDB cache">Gaitu CDDB katxea</entry>
 	<entry id="5315" string="Automatization">Berezgaitasuna</entry>
 
@@ -420,7 +420,7 @@
       <entry id="9000" string="Active CD-ROM drive">Erabiltzeko CD-ROM gidagailua</entry>
       <entry id="9001" string="Set drive speed limit">Hauta gidagailu abiada muga</entry>
       <entry id="9002" string="CD information">CD argibideak</entry>
-      <entry id="9003" string="Read CD Text">Irakurri CD Text</entry>
+      <entry id="9003" string="Read CD-Text">Irakurri CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Irakurri cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Erauzketa ezarpenak</entry>
       <entry id="9006" string="Activate cdparanoia mode">Gaitu cdparanoia modua</entry>

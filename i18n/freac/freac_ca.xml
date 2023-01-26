@@ -327,7 +327,7 @@
 	<entry id="5310" string="Proxy settings">Configuració del Proxy</entry>
 	<entry id="5311" string="Options">Opcions</entry>
 	<entry id="5312" string="Automatic CDDB queries">Consultes CDDB automàtiques</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Sobreescriure CD-Text-Infos</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Sobreescriure infos de CD-Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Usar cachè de CDDB</entry>
 	<entry id="5315" string="Automatization">Automatizació</entry>
 
@@ -415,14 +415,14 @@
       <entry id="9000" string="Active CD-ROM drive">Unitat CDROM activa</entry>
       <entry id="9001" string="Set drive speed limit">Selecciona el límit de velocitat del dispositiu</entry>
       <entry id="9002" string="CD information">Informacions del CD</entry>
-      <entry id="9003" string="Read CD Text">Llegir el CD-Text</entry>
+      <entry id="9003" string="Read CD-Text">Llegir el CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Llegir cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Configuracions de extracció d'àudio</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Activar Mode CD paranoia</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Activar mode cdparanoia</entry>
       <entry id="9007" string="Overlap only">Sols superposar</entry>
       <entry id="9008" string="No verify">Sense verificació</entry>
       <entry id="9009" string="No scratch repair">No reparar grinyols</entry>
-      <entry id="9010" string="Full cdparanoia mode">Mode CD paranoia complet</entry>
+      <entry id="9010" string="Full cdparanoia mode">Mode cdparanoia complet</entry>
       <entry id="9011" string="Activate jitter correction">Activar correcció Jitter</entry>
       <entry id="9012" string="Switch stereo channels">Intercanviar canals</entry>
       <entry id="9013" string="Automatization">Automatizació</entry>

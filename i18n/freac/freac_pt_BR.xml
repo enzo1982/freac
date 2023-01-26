@@ -483,7 +483,7 @@
 	<entry id="5310" string="Proxy settings">Configurações do proxy</entry>
 	<entry id="5311" string="Options">Opções</entry>
 	<entry id="5312" string="Automatic CDDB queries">Fazer consultas automáticas ao CDDB</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Prefira o CDDB em vez do CD-Text</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Prefira o CDDB em vez do CD-Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Ative o cache do CDDB</entry>
 	<entry id="5315" string="Automatization">Automatização</entry>
 	<entry id="5316" string="Always select first entry">Sempre selecione a primeira entrada</entry>
@@ -690,10 +690,10 @@
       <entry id="9000" string="Active CD-ROM drive">Unidade ativa do CD-ROM</entry>
       <entry id="9001" string="Set drive speed limit">Defina a velocidade máx. do drive</entry>
       <entry id="9002" string="CD information">Informações do CD</entry>
-      <entry id="9003" string="Read CD Text">Leia o CD-Text</entry>
+      <entry id="9003" string="Read CD-Text">Leia o CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Leia o cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Configurações da extração</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Ative o modo 'cdparanoia'</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Ative o modo cdparanoia</entry>
       <entry id="9007" string="Overlap only">Somente superposição</entry>
       <entry id="9008" string="No verify">Sem validação</entry>
       <entry id="9009" string="No scratch repair">Sem reparo</entry>

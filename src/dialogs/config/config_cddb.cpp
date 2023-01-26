@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -115,7 +115,7 @@ freac::ConfigureCDDB::ConfigureCDDB()
 
 	group_cddb_options = new GroupBox(i18n->TranslateString("Options"), Point(369, 91), Size(190, 68));
 
-	check_cdtext	= new CheckBox(i18n->TranslateString("Prefer CDDB over CD Text"), Point(10, 14), Size(170, 0), &cddb_cdtext);
+	check_cdtext	= new CheckBox(i18n->TranslateString("Prefer CDDB over CD-Text"), Point(10, 14), Size(170, 0), &cddb_cdtext);
 	check_cache	= new CheckBox(i18n->TranslateString("Enable CDDB cache"), Point(10, 40), Size(170, 0), &cddb_cache);
 
 	group_cddb_options->Add(check_cdtext);

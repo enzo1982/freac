@@ -483,7 +483,7 @@
 	<entry id="5310" string="Proxy settings">代理设置</entry>
 	<entry id="5311" string="Options">选项</entry>
 	<entry id="5312" string="Automatic CDDB queries">自动 CDDB 查询</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">使用 CDDB 代替 CD 文本</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">使用 CDDB 代替 CD 文本</entry>
 	<entry id="5314" string="Enable CDDB cache">启用 CDDB 缓存</entry>
 	<entry id="5315" string="Automatization">自动化</entry>
 	<entry id="5316" string="Always select first entry">总是选择第一条</entry>
@@ -690,7 +690,7 @@
       <entry id="9000" string="Active CD-ROM drive">可用的 CD-ROM 驱动器</entry>
       <entry id="9001" string="Set drive speed limit">设定驱动器速率限制</entry>
       <entry id="9002" string="CD information">CD 信息</entry>
-      <entry id="9003" string="Read CD Text">读入 CD 文本</entry>
+      <entry id="9003" string="Read CD-Text">读入 CD 文本</entry>
       <entry id="9004" string="Read cdplayer.ini">读入 cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">翻录设置</entry>
       <entry id="9006" string="Activate cdparanoia mode">激活 cdparanoia 模式</entry>

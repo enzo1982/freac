@@ -396,7 +396,7 @@
 	<entry id="5310" string="Proxy settings">代理選項</entry>
 	<entry id="5311" string="Options">設定</entry>
 	<entry id="5312" string="Automatic CDDB queries">自動CDDB查詢</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">CDDB取代CD文字</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">CDDB取代CD文字</entry>
 	<entry id="5314" string="Enable CDDB cache">啟用CDDB快存</entry>
 	<entry id="5315" string="Automatization">自動化</entry>
 	<entry id="5316" string="Always select first entry">總是選取首個項目</entry>
@@ -562,7 +562,7 @@
       <entry id="9000" string="Active CD-ROM drive">使用的CD-ROM機</entry>
       <entry id="9001" string="Set drive speed limit">限定光碟機速度</entry>
       <entry id="9002" string="CD information">CD資訊</entry>
-      <entry id="9003" string="Read CD Text">讀取CD文字</entry>
+      <entry id="9003" string="Read CD-Text">讀取CD文字</entry>
       <entry id="9004" string="Read cdplayer.ini">讀取cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">翻錄設定</entry>
       <entry id="9006" string="Activate cdparanoia mode">啟用cdparanoia模式</entry>

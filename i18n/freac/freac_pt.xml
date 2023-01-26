@@ -483,7 +483,7 @@
 	<entry id="5310" string="Proxy settings">Opções de proxy</entry>
 	<entry id="5311" string="Options">Opções</entry>
 	<entry id="5312" string="Automatic CDDB queries">Pesquisas CDDB automáticas</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">CDDB preferível ao CD-Text</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">CDDB preferível ao CD-Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Permitir cache do CDDB</entry>
 	<entry id="5315" string="Automatization">Automatização</entry>
 	<entry id="5316" string="Always select first entry">Selecionar sempre a primeira entrada</entry>
@@ -689,15 +689,15 @@
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Unidade de CD-ROM activa</entry>
       <entry id="9001" string="Set drive speed limit">Especificar velocidade limite do leitor</entry>
-      <entry id="9002" string="CD information">Informações do CD:</entry>
-      <entry id="9003" string="Read CD Text">Ler o Texto do CD</entry>
+      <entry id="9002" string="CD information">Informações do CD</entry>
+      <entry id="9003" string="Read CD-Text">Ler CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Ler cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Opções de extração</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Ativar modo 'paranóia'</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Ativar modo cdparanoia</entry>
       <entry id="9007" string="Overlap only">Apenas sobreposição</entry>
       <entry id="9008" string="No verify">Não verificar</entry>
       <entry id="9009" string="No scratch repair">Não reparar riscos</entry>
-      <entry id="9010" string="Full cdparanoia mode">Modo 'pananóia' completo</entry>
+      <entry id="9010" string="Full cdparanoia mode">Modo cdpananoia completo</entry>
       <entry id="9011" string="Activate jitter correction">Ativar correção de jitter</entry>
       <entry id="9012" string="Switch stereo channels">Inverter canais estéreo</entry>
       <entry id="9013" string="Automatization">Automatização</entry>

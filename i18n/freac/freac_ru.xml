@@ -481,7 +481,7 @@
 	<entry id="5310" string="Proxy settings">Установки прокси</entry>
 	<entry id="5311" string="Options">Настройки</entry>
 	<entry id="5312" string="Automatic CDDB queries">Авто запрос к CDDB</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Предпочитать CDDB</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Предпочитать CDDB CD-тексту</entry>
 	<entry id="5314" string="Enable CDDB cache">Кэширование CDDB</entry>
 	<entry id="5315" string="Automatization">Автоматизация</entry>
 	<entry id="5316" string="Always select first entry">Всегда выбирать первую запись</entry>
@@ -688,7 +688,7 @@
       <entry id="9000" string="Active CD-ROM drive">Выбор привода CD-ROM</entry>
       <entry id="9001" string="Set drive speed limit">Предел скорости привода</entry>
       <entry id="9002" string="CD information">Информация о CD</entry>
-      <entry id="9003" string="Read CD Text">Читать CD Текст</entry>
+      <entry id="9003" string="Read CD-Text">Читать CD-текст</entry>
       <entry id="9004" string="Read cdplayer.ini">Читать cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Настройки захвата данных (граббера)</entry>
       <entry id="9006" string="Activate cdparanoia mode">Режим cdparanoia</entry>

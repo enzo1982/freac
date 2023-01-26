@@ -491,7 +491,7 @@
 	<entry id="5310" string="Proxy settings">Proxy-Einstellungen</entry>
 	<entry id="5311" string="Options">Optionen</entry>
 	<entry id="5312" string="Automatic CDDB queries">Automatische CDDB-Abfrage</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">CD-Text-Infos überschreiben</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">CD-Text-Infos überschreiben</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB-Cache aktivieren</entry>
 	<entry id="5315" string="Automatization">Automatisierung</entry>
 	<entry id="5316" string="Always select first entry">Immer ersten Treffer wählen</entry>
@@ -730,10 +730,10 @@
       <entry id="9000" string="Active CD-ROM drive">Aktives CD-ROM-Laufwerk</entry>
       <entry id="9001" string="Set drive speed limit">Geschwindigkeit begrenzen</entry>
       <entry id="9002" string="CD information">CD-Informationen</entry>
-      <entry id="9003" string="Read CD Text">CD-Text lesen</entry>
+      <entry id="9003" string="Read CD-Text">CD-Text lesen</entry>
       <entry id="9004" string="Read cdplayer.ini">cdplayer.ini lesen</entry>
       <entry id="9005" string="Ripper settings">Ripper-Einstellungen</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Paranoia-Modus aktivieren</entry>
+      <entry id="9006" string="Activate cdparanoia mode">cdparanoia-Modus aktivieren</entry>
       <entry id="9007" string="Overlap only">Nur Overlap</entry>
       <entry id="9008" string="No verify">Keine Überprüfung</entry>
       <entry id="9009" string="No scratch repair">Keine Kratzer reparieren</entry>

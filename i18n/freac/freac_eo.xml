@@ -327,7 +327,7 @@
 	<entry id="5310" string="Proxy settings">Proxy-agordoj</entry>
 	<entry id="5311" string="Options">Opcioj</entry>
 	<entry id="5312" string="Automatic CDDB queries">Aŭtomata CDDB-pridemando</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Preferi CDDB ol KD-teksto</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Preferi CDDB ol KD-teksto</entry>
 	<entry id="5314" string="Enable CDDB cache">Aktivigi CDDB-konservejon</entry>
 	<entry id="5315" string="Automatization">Aŭtomatigo</entry>
 
@@ -407,14 +407,14 @@
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Aktiva KD-ROM-diskligilo</entry>
       <entry id="9002" string="CD information">KD-informoj</entry>
-      <entry id="9003" string="Read CD Text">Legi la KD-tekston</entry>
+      <entry id="9003" string="Read CD-Text">Legi la KD-tekston</entry>
       <entry id="9004" string="Read cdplayer.ini">Legi cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Ripilo-agordoj</entry>
-      <entry id="9006" string="Activate cdparanoia mode">Aktivigi paranojan moduson</entry>
+      <entry id="9006" string="Activate cdparanoia mode">Aktivigi cdparanoia moduson</entry>
       <entry id="9007" string="Overlap only">Nur kovri parte</entry>
       <entry id="9008" string="No verify">Ne kontroli</entry>
       <entry id="9009" string="No scratch repair">Ne ripari la grataĵoj</entry>
-      <entry id="9010" string="Full cdparanoia mode">Plena KD-paranoja moduso</entry>
+      <entry id="9010" string="Full cdparanoia mode">Plena cdparanoia moduso</entry>
       <entry id="9011" string="Activate jitter correction">Aktivigi Jiter-korekton</entry>
       <entry id="9012" string="Switch stereo channels">Interŝanĝi md/d ŝanelojn</entry>
       <entry id="9013" string="Automatization">Aŭtomatigo</entry>
