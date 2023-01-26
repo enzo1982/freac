@@ -523,7 +523,7 @@
 	<entry id="5505" string="Encoding">Κωδικοποίηση</entry>
 	<entry id="5506" string="Comments">Σχόλια</entry>
 	<entry id="5507" string="Cover art">Εικόνα εξωφύλλου</entry>
-	<entry id="5509" string="Read cover art from tags">Ανάγνωση εικόνας εξωφύλλου από ετικέτες.</entry>
+	<entry id="5509" string="Read cover art from tags">Ανάγνωση εικόνας εξωφύλλου από ετικέτες</entry>
 	<entry id="5510" string="Read cover art from files">Ανάγνωση εικόνας εξωφύλλου από αρχεία</entry>
 	<entry id="5512" string="Write cover art to tags">Εγγραφή εικόνας εξωφύλλου σε ετικέτες</entry>
 	<entry id="5513" string="Write cover art to files">Εγγραφή εικόνας εξωφύλλου σε αρχεία</entry>
@@ -705,10 +705,10 @@
       <entry id="9015" string="Start ripping automatically">Έναρξη ripping αυτόματα</entry>
       <entry id="9016" string="Eject disk after ripping">Εξαγωγή μετά το rip</entry>
       <entry id="9017" string="CD options">Επιλογές CD</entry>
-      <entry id="9018" string="Use read offset">Χρήση αναγνωσθέντος offset</entry>
+      <entry id="9018" string="Use read offset">Χρήση αναγνωσθέντος μετατόπιση</entry>
       <entry id="9019" string="samples">δείγματα</entry>
       <entry id="9020" string="Read ISRC when adding tracks to joblist">Ανάγνωση ISRC κατά την προσθήκη κομματιών στη λίστα εργασιών</entry>
-      <entry id="9021" string="Spin up before ripping">Επιτάχυνση περιστροφής πριν την αντιγραφή</entry>
+      <entry id="9021" string="Spin up before ripping">Επιτάχυνση πριν την αντιγραφή</entry>
       <entry id="9022" string="%1 seconds">%1 δευτερόλεπτα</entry>
     </section>
 
@@ -942,8 +942,8 @@
 
       <section name="Vorbis">
 	<entry id="35000" string="Encoding Mode">Μέθοδος κωδικοποίησης</entry>
-	<entry id="35001" string="Variable Bitrate">Μεταβλητός Ρυθμός Μετάδοσης (VBR)</entry>
-	<entry id="35002" string="Average Bitrate">Μέσος Ρυθμός Μετάδοσης (ABR)</entry>
+	<entry id="35001" string="Variable Bitrate">Μεταβλητός Ρυθμός Μετάδοσης</entry>
+	<entry id="35002" string="Average Bitrate">Μέσος Ρυθμός Μετάδοσης</entry>
 	<entry id="35003" string="Quality">Ποιότητα</entry>
 	<entry id="35004" string="Bitrate">Ρυθμός μετάδοσης</entry>
 	<entry id="35005" string="Minimum bitrate">Ελάχιστος ρυθμός μετάδοσης</entry>
@@ -1310,7 +1310,7 @@
 
       <section name="Winamp Adapter">
 	<entry id="101000" string="Configure">Ρύθμιση</entry>
-	<entry id="101001" string="About">Περί...</entry>
+	<entry id="101001" string="About">Περί</entry>
       </section>
 
       <section name="Video Downloader">
