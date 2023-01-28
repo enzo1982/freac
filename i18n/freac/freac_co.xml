@@ -698,7 +698,6 @@
 	<entry id="8201" string="%1 errors while processing job">%1 sbaglii trovi durante u travagliu di trattamentu</entry>
 	<entry id="8202" string="select an entry for details">selezziunà un elementu per avè più di detaglii</entry>
       </section>
-    </section>
 
       <section name="Splitter">
 	<entry id="8300" string="Output splitting tool">Attrezzu di frazziunamentu d’esciuta</entry>
