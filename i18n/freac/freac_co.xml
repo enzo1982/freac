@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">Principià u trattamentu di cudificazione (cù a squassatura di i schedarii uriginale)</entry>
       <entry id="2011" string="Pause/resume encoding">Interrompe / cuntinuà a cudificazione</entry>
       <entry id="2012" string="Stop encoding">Piantà a cudificazione</entry>
+      <entry id="2013" string="Open the output splitting tool">Apre l’attrezzu di frazziunamentu d’esciuta</entry>
     </section>
 
     <section name="Joblist">
@@ -431,7 +432,7 @@
 	<entry id="5104" string="Keep ripped Wave files">Cunservà i schedarii Wave estratti</entry>
 	<entry id="5105" string="Encode to a single file">Cudificà in un schedariu unicu</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Caccià da a lista di travagliu e traccie trattate</entry>
-	<entry id="5107" string="Add output files to joblist">Aghjunghje à a lista di travagliu i schedarii cudificati</entry>
+	<entry id="5107" string="Add output files to joblist">Aghjunghje i schedarii d’esciuta à a lista di travagliu</entry>
       </section>
 
       <section name="Files">
@@ -490,7 +491,7 @@
 	<entry id="5310" string="Proxy settings">Preferenze Proxy</entry>
 	<entry id="5311" string="Options">Ozzioni</entry>
 	<entry id="5312" string="Automatic CDDB queries">Richieste CDDB autumatiche</entry>
-	<entry id="5313" string="Prefer CDDB over CD-Text">Preferisce CDDB à u testu CD</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Preferisce CDDB à u CD-Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Attivà l’impiatta CDDB</entry>
 	<entry id="5315" string="Automatization">Autumatisazione</entry>
 	<entry id="5316" string="Always select first entry">Selezziunà sempre u primu elementu</entry>
@@ -518,8 +519,8 @@
 	<entry id="5401" string="Edit language file">Mudificà u schedariu di lingua</entry>
 	<entry id="5402" string="Information">Infurmazione</entry>
 	<entry id="5403" string="Encoding">Cudificazione</entry>
-	<entry id="5404" string="Author(s)">Autore</entry>
-	<entry id="5405" string="URL">URL</entry>
+	<entry id="5404" string="Author(s)">Autore(i)</entry>
+	<entry id="5405" string="URL">Indirizzu web</entry>
       </section>
 
       <section name="Tags">
@@ -699,11 +700,38 @@
       </section>
     </section>
 
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool">Attrezzu di frazziunamentu d’esciuta</entry>
+	<entry id="8301" string="%1 track(s) in joblist">%1 traccia(e) in a lista di travagliu</entry>
+	<entry id="8302" string="Split mode">Modu di frazziunamentu</entry>
+	<entry id="8303" string="Split by duration">Frazziunà da a durata</entry>
+	<entry id="8304" string="Duration per part">Durata à a parte</entry>
+	<entry id="8305" string="at least">omancu</entry>
+	<entry id="8306" string="approximately">più o menu</entry>
+	<entry id="8307" string="at most">à u più</entry>
+	<entry id="8308" string="exactly">esattamente</entry>
+	<entry id="8309" string="second(s)">seconda(e)</entry>
+	<entry id="8310" string="minute(s)">minutu(i)</entry>
+	<entry id="8311" string="hour(s)">ora(e)</entry>
+	<entry id="8312" string="Fixed number of parts">Numeru fissu di parti</entry>
+	<entry id="8313" string="Number of parts">Numeru di parti</entry>
+	<entry id="8314" string="Split upon metadata change">Frazziunà à u cambiamentu di metadati</entry>
+	<entry id="8315" string="Metadata pattern to compare">Mudellu di metadati per paragunà</entry>
+	<entry id="8316" string="Split at track boundaries">Frazziunà à e cunfine di a traccia</entry>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part">Ripete a fine di a parte precedente à u principiu d’ogni parte</entry>
+	<entry id="8318" string="Repeat duration">Durata di ripetizione</entry>
+	<entry id="8319" string="Output filenames">Nomi di schedariu d’esciuta</entry>
+	<entry id="8320" string="Filename pattern">Mudellu di nome di schedariu</entry>
+	<entry id="8321" string="Convert">Cunvertisce</entry>
+	<entry id="8322" string="Save">Arregistrà</entry>
+      </section>
+    </section>
+
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Lettore CD-ROM attivu</entry>
       <entry id="9001" string="Set drive speed limit">Definisce u limitu di velocità di u lettore</entry>
       <entry id="9002" string="CD information">Infurmazione CD</entry>
-      <entry id="9003" string="Read CD-Text">Leghje u testu CD</entry>
+      <entry id="9003" string="Read CD-Text">Leghje u CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Leghje cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Preferenze d’estrazzione</entry>
       <entry id="9006" string="Activate cdparanoia mode">Attivà u modu cdparanoia</entry>
@@ -1172,7 +1200,7 @@
 	<entry id="70000" string="Configure AccurateRip">Cunfigurà AccurateRip</entry>
 	<entry id="70001" string="General settings">Preferenze generale</entry>
 	<entry id="70002" string="Enable AccurateRip">Attivà AccurateRip</entry>
-	<entry id="70003" string="Database URL">URL di a basa di dati</entry>
+	<entry id="70003" string="Database URL">Indirizzu web di a basa di dati</entry>
 	<entry id="70004" string="Cache">Impiatta</entry>
 	<entry id="70005" string="Enable cache">Attivà l’impiatta</entry>
 	<entry id="70006" string="Expires after">Scadutu dopu à</entry>
@@ -1346,14 +1374,14 @@
 
       <section name="Video Downloader">
 	<entry id="102000" string="Video">Video</entry>
-	<entry id="102001" string="Enter video URL here">Indicà l’indirizzu di a video quì</entry>
+	<entry id="102001" string="Enter video URL here">Stampittate quì l’indirizzu web di a video</entry>
 	<entry id="102002" string="Download">Scaricà</entry>
-	<entry id="102003" string="Automatically download URLs copied to clipboard">Scaricà autumaticamente l’indirizzi cupiati in u preme’papei</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">Scaricà autumaticamente l’indirizzi web cupiati in u preme’papei</entry>
 	<entry id="102004" string="Save downloaded video files">Arregistrà i schedarii video scaricati</entry>
 	<entry id="102005" string="Video downloads">Scaricamenti video</entry>
 	<entry id="102006" string="Downloaded tracks">Traccie scaricate</entry>
 	<entry id="102007" string="Uploader">Incaricadore</entry>
-	<entry id="102008" string="Video URL">Indirizzu di a video</entry>
+	<entry id="102008" string="Video URL">Indirizzu web di a video</entry>
 	<entry id="102009" string="Video title">Titulu di a video</entry>
 	<entry id="102010" string="Video description">Discrizzione di a video</entry>
 	<entry id="102011" string="Site name">Nome di u situ</entry>
@@ -1377,7 +1405,7 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="102201" string="This URL is not supported or not a video page URL!">St’indirizzu ùn hè micca accettata o micca una pagina di video.</entry>
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">St’indirizzu web ùn hè micca accettatu o ùn currisponde micca à una pagina di video.</entry>
 	  <entry id="102202" string="Error downloading video!">Sbagliu durante u scaricamentu di a video !</entry>
 	  <entry id="102203" string="You are already downloading this video!">Site dighjà in treccia di scaricà sta video !</entry>
 	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Ùn si pò truvà certi discudificatori video chì sò richiesti.&#10;I schedarii video ùn ponu micca esse aghjunti à a lista di&#10;travagliu per una cunversione audio. Ci vole à installà&#10;FFmpeg o avconv per currege stu penseru !</entry>
