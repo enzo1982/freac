@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">Rozpocznij proces konwersji (z usuwaniem plików źródłowych)</entry>
       <entry id="2011" string="Pause/resume encoding">Wstrzymaj/wznów konwersję</entry>
       <entry id="2012" string="Stop encoding">Zatrzymaj konwersję</entry>
+	  <entry id="2013" string="Open the output splitting tool">Otwórz narzędzie dzielenia pliku wyjściowego</entry>
     </section>
 
     <section name="Joblist">
@@ -518,7 +519,7 @@
 	<entry id="5401" string="Edit language file">Edytuj plik językowy</entry>
 	<entry id="5402" string="Information">Informacje</entry>
 	<entry id="5403" string="Encoding">Kodowanie</entry>
-	<entry id="5404" string="Author(s)">Autor</entry>
+	<entry id="5404" string="Author(s)">Autor(zy)</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
@@ -696,6 +697,32 @@
 	<entry id="8200" string="Errors">Błędy</entry>
 	<entry id="8201" string="%1 errors while processing job">Liczba błędów podczas przetwarzania: %1</entry>
 	<entry id="8202" string="select an entry for details">zaznacz element, by uzyskać więcej informacji</entry>
+      </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool">Narzędzie dzielenia pliku wyjściowego</entry>
+	<entry id="8301" string="%1 track(s) in joblist">Liczba utworów na liście zadań: %1</entry>
+	<entry id="8302" string="Split mode">Tryb podziału</entry>
+	<entry id="8303" string="Split by duration">Podziel wg długości</entry>
+	<entry id="8304" string="Duration per part">Długość jednej części</entry>
+	<entry id="8305" string="at least">co najmniej</entry>
+	<entry id="8306" string="approximately">około</entry>
+	<entry id="8307" string="at most">maksymalnie</entry>
+	<entry id="8308" string="exactly">dokładnie</entry>
+	<entry id="8309" string="second(s)"/>s</entry>
+	<entry id="8310" string="minute(s)"/>min</entry>
+	<entry id="8311" string="hour(s)">h</entry>
+	<entry id="8312" string="Fixed number of parts">Stała liczba części</entry>
+	<entry id="8313" string="Number of parts">Liczba części</entry>
+	<entry id="8314" string="Split upon metadata change">Podziel w miejscu zmiany metadanych</entry>
+	<entry id="8315" string="Metadata pattern to compare">Wzorzec metadanych do porównania</entry>
+	<entry id="8316" string="Split at track boundaries">Podziel na krańcach utworu</entry>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part">Powtórz koniec poprzedniej części na początku nowej</entry>
+	<entry id="8318" string="Repeat duration">Długość powtórzenia</entry>
+	<entry id="8319" string="Output filenames">Nazwy plików wyjściowych</entry>
+	<entry id="8320" string="Filename pattern">Wzorzec nazwy plików</entry>
+	<entry id="8321" string="Convert">Konwertuj</entry>
+	<entry id="8322" string="Save">Zapisz</entry>
       </section>
     </section>
 
