@@ -173,7 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">Rozpocznij proces konwersji (z usuwaniem plików źródłowych)</entry>
       <entry id="2011" string="Pause/resume encoding">Wstrzymaj/wznów konwersję</entry>
       <entry id="2012" string="Stop encoding">Zatrzymaj konwersję</entry>
-	  <entry id="2013" string="Open the output splitting tool">Otwórz narzędzie dzielenia pliku wyjściowego</entry>
+      <entry id="2013" string="Open the output splitting tool">Otwórz narzędzie dzielenia pliku wyjściowego</entry>
     </section>
 
     <section name="Joblist">
