@@ -275,6 +275,12 @@ build () {
     else
       eval $configure_exports ./configure $host_flags $configure_flags $prefix
     fi
+  elif [[ -f CMakeLists.txt ]]; then
+    if [[ $uname == *MINGW* ]]; then
+      cmake . -G "MSYS Makefiles" $cmake_flags
+    else
+      cmake . $cmake_flags
+    fi
   fi
   $MAKE $make_flags -j$jobs
 
@@ -314,6 +320,7 @@ build () {
   unset prepare
   unset configure_exports
   unset configure_flags
+  unset cmake_flags
   unset host_flags
   unset make_flags
   unset install_script
@@ -556,7 +563,6 @@ for package in ${packages[@]}; do
     export CXXFLAGS="$cflags $cflags_unroll"
     patches=${mac_patches[@]}
     patch_levels=(${mac_patch_levels[@]})
-    prepare="cmake ."
     build $archive MACDll.$sharedext MACDll.$sharedext
 
   elif [ $package == mp4v2 ]; then
