@@ -1,18 +1,14 @@
 {
   "name": "libmac",
-  "subdir": "Source/Projects/NonWindows",
-  "no-autogen": true,
-  "make-install-args": [
-    "prefix=/app"
-  ],
+  "buildsystem": "cmake",
   "cleanup": [
     "/include/MAC"
   ],
   "sources": [
     {
         "type": "archive",
-        "url": "https://freac.org/patches/MAC_892_SDK.zip",
-        "sha256": "ada511b5fe58e05a12440646a7d568f47aa9f6ec69f42b30f1f6e97084e241d3",
+        "url": "https://freac.org/patches/MAC_910_SDK.zip",
+        "sha256": "a78180eb1ac8a2bc5d45db6416f349cb5a413600d193d3849261c173398ce4f5",
         "strip-components": 0
     }
   ]

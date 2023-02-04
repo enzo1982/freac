@@ -160,7 +160,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.7 (Januar 2023)
+	Version 1.1.7 (Februar 2023)
 
 		- Neue Funktionen
 
@@ -214,7 +214,7 @@ Geschichte
 
 			- ALAC-Dekoder für Sicherheitskorrekturen und Geschwindigkeitsverbesserungen aktualisiert
 			- FFmpeg auf Version 5.1.2 aktualisiert
-			- Monkey's Audio auf Version 8.92 aktualisiert
+			- Monkey's Audio auf Version 9.10 aktualisiert
 			- WavPack auf Version 5.6.0 aktualisiert
 			- Tom's Audiokompressor auf Version 2.3.3 aktualisiert
 			- FLAC auf Version 1.4.2 aktualisiert
