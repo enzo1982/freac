@@ -31,7 +31,7 @@ elif [[ $uname == Darwin ]] && [[ $BUILD_X86 == True ]]; then
   ldflags="-Wl,-x -arch i386"
   x86=true
 elif [[ $uname == Darwin ]] && [[ $BUILD_ARM64 == True ]]; then
-  cflags="$cflags -arch arm64"
+  cflags="$cflags -arch arm64 -mcpu=apple-m1"
   asflags="-arch arm64"
   ldflags="-Wl,-x -arch arm64"
   host="aarch64-apple-darwin20.1.0"
@@ -57,7 +57,7 @@ elif [[ $machine == *aarch64* ]]; then
   cflags="$cflags -I/usr/local/include -march=armv8-a+simd"
   arm64=true
 elif [[ $machine == *arm* ]]; then
-  cflags="$cflags -I/usr/local/include -march=armv7-a"
+  cflags="$cflags -I/usr/local/include -march=armv7-a+simd"
   arm=true
 else
   cflags="$cflags -m32 -march=pentium4"
