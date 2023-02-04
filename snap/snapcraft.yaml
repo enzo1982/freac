@@ -109,6 +109,7 @@ parts:
       - CXXFLAGS: "$CXXFLAGS -O3 -funroll-loops"
     override-build: |
       if [ `lscpu | grep -i 'byte order' | awk '{ print tolower($3) }'` = "little" ]; then
+        patch -p1 < $SNAPCRAFT_STAGE/mac-sdk-9.10-cmake.patch
         snapcraftctl build
       fi
     prime:

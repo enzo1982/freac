@@ -1,0 +1,25 @@
+diff -Naur mac-sdk-9.10/CMakeLists.txt mac-sdk-9.10-gcc/CMakeLists.txt
+--- mac-sdk-9.10/CMakeLists.txt	2023-02-01 02:27:00.000000000 +0100
++++ mac-sdk-9.10-gcc/CMakeLists.txt	2023-02-04 19:35:39.339532200 +0100
+@@ -234,8 +234,8 @@
+ # Set include folders
+ #
+ target_include_directories(objects PUBLIC
+-   ${CMAKE_CURRENT_BINARY_DIR}/Source/MACLib
+-   ${CMAKE_CURRENT_BINARY_DIR}/Source/Shared)
++   ${CMAKE_CURRENT_LIST_DIR}/Source/MACLib
++   ${CMAKE_CURRENT_LIST_DIR}/Source/Shared)
+ 
+ #
+ # Define utility target
+@@ -249,8 +249,8 @@
+ 
+     add_executable(macutil ${MAC_UTIL_HEADER_FILES} ${MAC_UTIL_SOURCE_FILES} $<TARGET_OBJECTS:objects>)
+     target_include_directories(macutil PUBLIC
+-       ${CMAKE_CURRENT_BINARY_DIR}/Source/MACLib
+-       ${CMAKE_CURRENT_BINARY_DIR}/Source/Shared)
++       ${CMAKE_CURRENT_LIST_DIR}/Source/MACLib
++       ${CMAKE_CURRENT_LIST_DIR}/Source/Shared)
+ 
+     if(WIN32)
+         target_compile_definitions(macutil PRIVATE PLATFORM_WINDOWS)
