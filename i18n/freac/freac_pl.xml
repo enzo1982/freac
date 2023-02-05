@@ -709,8 +709,8 @@
 	<entry id="8306" string="approximately">około</entry>
 	<entry id="8307" string="at most">maksymalnie</entry>
 	<entry id="8308" string="exactly">dokładnie</entry>
-	<entry id="8309" string="second(s)"/>s</entry>
-	<entry id="8310" string="minute(s)"/>min</entry>
+	<entry id="8309" string="second(s)">s</entry>
+	<entry id="8310" string="minute(s)">min</entry>
 	<entry id="8311" string="hour(s)">h</entry>
 	<entry id="8312" string="Fixed number of parts">Stała liczba części</entry>
 	<entry id="8313" string="Number of parts">Liczba części</entry>
