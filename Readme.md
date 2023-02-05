@@ -1,5 +1,5 @@
 # ![fre:ac logo](https://freac.org/images/stories/freac_icon_smaller.png) fre:ac - free audio converter
-[![Build Status](https://img.shields.io/github/workflow/status/enzo1982/freac/Verify%20build/master)](https://github.com/enzo1982/freac/actions?query=workflow%3A%22Verify+build%22+branch%3Amaster) [![Last commit](https://img.shields.io/github/last-commit/enzo1982/freac.svg)](https://github.com/enzo1982/freac/commits/master) [![License](https://img.shields.io/github/license/enzo1982/freac.svg)](https://github.com/enzo1982/freac/blob/master/COPYING)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/enzo1982/freac/continuous-build-linux.yml?branch=master)](https://github.com/enzo1982/freac/actions?query=branch%3Amaster) [![Last commit](https://img.shields.io/github/last-commit/enzo1982/freac.svg)](https://github.com/enzo1982/freac/commits/master) [![License](https://img.shields.io/github/license/enzo1982/freac.svg)](https://github.com/enzo1982/freac/blob/master/COPYING)
 
 fre:ac is a free and open source audio converter. It supports audio CD ripping and tag editing and converts between various audio file formats.
 
