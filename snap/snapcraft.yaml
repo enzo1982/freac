@@ -133,8 +133,8 @@ parts:
       - usr/lib/libmp3lame.so*
 
   libmp4v2:
-    source: https://github.com/enzo1982/mp4v2/releases/download/v2.1.1/mp4v2-2.1.1.tar.bz2
-    source-checksum: sha256/29420c62e56a2e527fd8979d59d05ed6d83ebe27e0e2c782c1ec19a3a402eaee
+    source: https://github.com/enzo1982/mp4v2/releases/download/v2.1.2/mp4v2-2.1.2.tar.bz2
+    source-checksum: sha256/0b943133673cffd4625247783e34080797de7386142061a6613e0c26285953ef
     plugin: autotools
     autotools-configure-parameters: [ --prefix=/usr ]
     build-environment:
