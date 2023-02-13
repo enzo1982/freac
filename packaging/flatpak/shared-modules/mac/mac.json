@@ -7,13 +7,9 @@
   "sources": [
     {
         "type": "archive",
-        "url": "https://freac.org/patches/MAC_910_SDK.zip",
-        "sha256": "a78180eb1ac8a2bc5d45db6416f349cb5a413600d193d3849261c173398ce4f5",
+        "url": "https://freac.org/patches/MAC_913_SDK.zip",
+        "sha256": "141285e105efc601c14a06e72741a5f97d4947610b68e9fbf64320f1d7910d6b",
         "strip-components": 0
-    },
-    {
-        "type": "patch",
-        "path": "mac-sdk-9.10-cmake.patch"
     }
   ]
 }

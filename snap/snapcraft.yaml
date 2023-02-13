@@ -100,9 +100,8 @@ parts:
       - usr/lib/libFLAC.so*
 
   libmac:
-    after: [ patches ]
-    source: https://freac.org/patches/MAC_910_SDK.zip
-    source-checksum: sha256/a78180eb1ac8a2bc5d45db6416f349cb5a413600d193d3849261c173398ce4f5
+    source: https://freac.org/patches/MAC_913_SDK.zip
+    source-checksum: sha256/141285e105efc601c14a06e72741a5f97d4947610b68e9fbf64320f1d7910d6b
     source-subdir: .
     plugin: cmake
     cmake-parameters: [ -DCMAKE_INSTALL_PREFIX=/usr ]
@@ -110,7 +109,6 @@ parts:
       - CXXFLAGS: "$CXXFLAGS -O3 -funroll-loops"
     override-build: |
       if [ `lscpu | grep -i 'byte order' | awk '{ print tolower($3) }'` = "little" ]; then
-        patch -p1 -d ../src < $SNAPCRAFT_STAGE/mac-sdk-9.10-cmake.patch
         snapcraftctl build
       fi
     prime:
