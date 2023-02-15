@@ -538,6 +538,9 @@
 	<entry id="5525" string="Prepend zero to track numbers below 10">Προσθήκη μηδενικού πριν από τους αριθμούς κομματιών που είναι μικρότεροι από 10</entry>
 	<entry id="5526" string="File size limit">Όριο μεγέθους αρχείου</entry>
 	<entry id="5527" string="unlimited">απεριόριστα</entry>
+	<entry id="5528" string="Miscellaneous">Διάφορα</entry>
+	<entry id="5529" string="Fill missing fields with information obtained from file names">Συμπληρώστε τα πεδία που λείπουν με πληροφορίες που λαμβάνονται από τα ονόματα αρχείων</entry>
+	<entry id="5530" string="Restrict file names">Περιορισμός ονομάτων αρχείων</entry>
       </section>
 
       <section name="Joblist">
@@ -1129,6 +1132,10 @@
       <section name="Surround">
 	<entry id="50500" string="Output channels">Κανάλια εξόδου</entry>
 	<entry id="50501" string="Channel configuration">Διαμόρφωση καναλιών</entry>
+      </section>
+
+      <section name="Volume">
+	<entry id="50602" string="%1 dB">%1 dB</entry>
       </section>
     </section>
 

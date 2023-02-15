@@ -16,11 +16,11 @@
     <entry id="102" string="Close">Sulje</entry>
 
     <entry id="200" string="Error">Virhe</entry>
-    <entry id="201" string="Warning"/>
+    <entry id="201" string="Warning">Varoitus</entry>
     <entry id="202" string="Info">Tiedot</entry>
 
-    <entry id="210" string="Do not display this warning again"/>
-    <entry id="211" string="Do not display this note again"/>
+    <entry id="210" string="Do not display this warning again">Älä näytä tätä varoitusta uudelleen</entry>
+    <entry id="211" string="Do not display this note again">Älä näytä tätä ilmoitusta uudelleen</entry>
 
     <entry id="300" string="Artist">Artisti</entry>
     <entry id="301" string="Title">Otsikko</entry>
@@ -29,13 +29,13 @@
     <entry id="304" string="Genre">Laji</entry>
     <entry id="305" string="Comment">Kommentti</entry>
     <entry id="306" string="Year">Vuosi</entry>
-    <entry id="307" string="Disc"/>
+    <entry id="307" string="Disc">Levy</entry>
     <entry id="308" string="Rating"/>
-    <entry id="309" string="File name"/>
-    <entry id="310" string="File type"/>
-    <entry id="311" string="Album artist"/>
+    <entry id="309" string="File name">Tiedoston nimi</entry>
+    <entry id="310" string="File type">Tiedoston tyyppi</entry>
+    <entry id="311" string="Album artist">Albumin artisti</entry>
     <entry id="312" string="Conductor"/>
-    <entry id="313" string="Composer"/>
+    <entry id="313" string="Composer">Säveltäjä</entry>
     <entry id="314" string="Tempo"/>
     <entry id="315" string="ISRC"/>
     <entry id="316" string="Musical key"/>
@@ -46,12 +46,12 @@
     <entry id="353" string="unknown genre">tuntematon laji</entry>
     <entry id="354" string="unknown year">tuntematon vuosi</entry>
     <entry id="355" string="unknown conductor"/>
-    <entry id="356" string="unknown composer"/>
+    <entry id="356" string="unknown composer">tuntematon säveltäjä</entry>
     <entry id="357" string="unknown album artist"/>
     <entry id="358" string="unknown tempo"/>
     <entry id="359" string="unknown key"/>
 
-    <entry id="380" string="hidden track"/>
+    <entry id="380" string="hidden track">piilotettu raita</entry>
 
     <section name="Characters">
       <entry id="500" string="%1:">%1:</entry>
@@ -77,7 +77,7 @@
       <entry id="602" string="MiniDisc"/>
       <entry id="603" string="Compact Cassette"/>
       <entry id="604" string="Reel tape"/>
-      <entry id="605" string="Vinyl"/>
+      <entry id="605" string="Vinyl">Vinyyli</entry>
       <entry id="606" string="DVD"/>
       <entry id="607" string="LaserDisc"/>
       <entry id="608" string="TV"/>
@@ -96,7 +96,7 @@
 
       <section name="File">
 	<entry id="1100" string="Add">Lisää</entry>
-	<entry id="1101" string="Remove">Posta</entry>
+	<entry id="1101" string="Remove">Poista</entry>
 	<entry id="1102" string="Load joblist">Avaa työlista</entry>
 	<entry id="1103" string="Save joblist">Tallenna työlista</entry>
 	<entry id="1104" string="Clear joblist">Tyhjennä työlista</entry>
@@ -154,8 +154,8 @@
 	<entry id="1603" string="Check for updates at startup">Tarkista päivitykset heti ohjelman käynnistyessä</entry>
 	<entry id="1604" string="About %1">Tietoja %1ista</entry>
 	<entry id="1605" string="index_en.html">index.html</entry>
-	<entry id="1606" string="Report an issue"/>
-	<entry id="1607" string="Suggest a feature"/>
+	<entry id="1606" string="Report an issue">Raportoi ongelmasta</entry>
+	<entry id="1607" string="Suggest a feature">Ehdota parannusta</entry>
       </section>
     </section>
 
@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)"/>
       <entry id="2011" string="Pause/resume encoding">Tauko/jatka muuntamista</entry>
       <entry id="2012" string="Stop encoding">Pysäytä muuntaminen</entry>
+      <entry id="2013" string="Open the output splitting tool"/>
     </section>
 
     <section name="Joblist">
@@ -192,7 +193,7 @@
       <entry id="3013" string="Create cue sheet">Luo vihjetaso</entry>
       <entry id="3014" string="Select">Selaa</entry>
       <entry id="3015" string="Encode to a single file">Muunna yksittäinen tiedosto</entry>
-      <entry id="3016" string="Remove">Posta</entry>
+      <entry id="3016" string="Remove">Poista</entry>
       <entry id="3017" string="Clear joblist">Tyhjennä työlista</entry>
       <entry id="3018" string="Use for all selected tracks">Käytä kaikkia valittuja raitoja</entry>
       <entry id="3019" string="Interpret string as">Tulkita merkkijono</entry>
@@ -217,12 +218,12 @@
       <entry id="3038" string="Audio Files">Äänitiedosto</entry>
       <entry id="3039" string="All Files">Kaikki tiedostot</entry>
       <entry id="3040" string="Playlist Files">Toistolistatiedosto</entry>
-      <entry id="3041" string="Joblist"/>
-      <entry id="3042" string="Other"/>
+      <entry id="3041" string="Joblist">Työlista</entry>
+      <entry id="3042" string="Other">Muu</entry>
       <entry id="3043" string="Output file name"/>
-      <entry id="3044" string="verifying"/>
-      <entry id="3045" string="Open"/>
-      <entry id="3046" string="CD drive"/>
+      <entry id="3044" string="verifying">tarkistus</entry>
+      <entry id="3045" string="Open">Avaa</entry>
+      <entry id="3046" string="CD drive">CD asema</entry>
       <entry id="3047" string="Disc ID"/>
 
       <section name="File">
@@ -232,14 +233,14 @@
       </section>
 
       <section name="Decoder">
-	<entry id="3060" string="Active decoder"/>
-	<entry id="3061" string="none"/>
+	<entry id="3060" string="Active decoder">Aktiivinen muunnin</entry>
+	<entry id="3061" string="none">ei mitään</entry>
       </section>
 
       <section name="Filters">
 	<entry id="3070" string="Selected filters"/>
-	<entry id="3071" string="none"/>
-	<entry id="3072" string="disabled"/>
+	<entry id="3071" string="none">ei mitään</entry>
+	<entry id="3072" string="disabled">ei käytössä</entry>
 	<entry id="3073" string="Configure signal processing"/>
       </section>
 
@@ -260,7 +261,7 @@
 	<entry id="3201" string="Pattern">Malli</entry>
 	<entry id="3202" string="Start folder">Kansio</entry>
 	<entry id="3203" string="Filename pattern">Mallitiedosto</entry>
-	<entry id="3204" string="Search subfolders"/>
+	<entry id="3204" string="Search subfolders">Etsi alikansioista</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">Valitse kansio</entry>
       </section>
 
@@ -276,12 +277,12 @@
     </section>
 
     <section name="Jobs">
-      <entry id="3500" string="Jobs"/>
+      <entry id="3500" string="Jobs">Työt</entry>
       <entry id="3501" string="Progress"/>
-      <entry id="3502" string="Errors / Warnings"/>
+      <entry id="3502" string="Errors / Warnings">Virheet / Varoitukset</entry>
       <entry id="3503" string="Details"/>
       <entry id="3504" string="Error details"/>
-      <entry id="3505" string="Time left"/>
+      <entry id="3505" string="Time left">Aikaa jäljellä</entry>
       <entry id="3506" string="Waiting for other jobs to finish"/>
 
       <section name="Joblist">
@@ -351,8 +352,8 @@
 	<entry id="4108" string="Would you like to perform this query again later?">Haluatko suorittaa tämän kysymyksen myöhemmin uudelleen?</entry>
 	<entry id="4109" string="Would you like to perform the remaining queries again later?"/>
 	<entry id="4110" string="none">ei mitään</entry>
-	<entry id="4111" string="Preview">Ennakkoesitys</entry>
-	<entry id="4112" string="loading preview"/>
+	<entry id="4111" string="Preview">Esikatselu</entry>
+	<entry id="4112" string="loading preview">ladataan esikatselua</entry>
 
 	<section name="Errors">
 	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">Sattui jokin virhe freedb-palvelimelle yhdistämisessä.</entry>
@@ -400,7 +401,7 @@
       <entry id="5003" string="Language">Kieli</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface"/>
-      <entry id="5006" string="Tags">Info-tagit</entry>
+      <entry id="5006" string="Metadata"/>
       <entry id="5007" string="Components"/>
       <entry id="5008" string="Decoders"/>
       <entry id="5009" string="Output"/>
@@ -408,49 +409,53 @@
       <entry id="5011" string="Extensions"/>
       <entry id="5012" string="Other"/>
       <entry id="5013" string="Active configuration"/>
-      <entry id="5014" string="New"/>
-      <entry id="5015" string="Delete"/>
+      <entry id="5014" string="New">Uusi</entry>
+      <entry id="5015" string="Delete">Poista</entry>
       <entry id="5016" string="Command line arguments"/>
       <entry id="5017" string="Resulting arguments string"/>
       <entry id="5018" string="Default configuration"/>
       <entry id="5019" string="New configuration"/>
       <entry id="5020" string="Ripper"/>
-      <entry id="5021" string="Settings"/>
-      <entry id="5022" string="Resources"/>
+      <entry id="5021" string="Settings">Asetukset</entry>
+      <entry id="5022" string="Resources">Resurssit</entry>
       <entry id="5023" string="Verifiers"/>
       <entry id="5024" string="Taggers"/>
       <entry id="5025" string="Processing"/>
       <entry id="5026" string="Additional arguments"/>
+      <entry id="5027" string="Output files"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Määritä muunnin</entry>
 	<entry id="5101" string="Encoder">Muunnin</entry>
-	<entry id="5102" string="Output folder">Tulosteen tallennuskohde</entry>
-	<entry id="5103" string="Select">Selaa</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Valitse kohde minne muunnetut tiedostot laitetaan</entry>
-	<entry id="5105" string="Use input file folder if possible">Käytä syötetiedoston kansiota jos mahdollista</entry>
-	<entry id="5106" string="Allow overwriting input file">Salli syötetiedoston korvaaminen</entry>
-	<entry id="5107" string="Options">Asetukset</entry>
-	<entry id="5108" string="Filename pattern">Mallitiedosto</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Muunna &quot;lennossa&quot;</entry>
-	<entry id="5110" string="Keep ripped Wave files">Pidä kopioidut aaltotiedostot</entry>
-	<entry id="5111" string="Encode to a single file">Muunna yksittäinen tiedosto</entry>
-	<entry id="5112" string="Output filenames"/>
-	<entry id="5113" string="Allow Unicode characters"/>
-	<entry id="5114" string="Replace spaces with underscores"/>
-	<entry id="5115" string="Remove processed tracks from joblist"/>
-	<entry id="5116" string="Add encoded files to joblist"/>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames"/>
-	<entry id="5118" string="Keep time stamps of source files"/>
+	<entry id="5102" string="Options">Asetukset</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Muunna &quot;lennossa&quot;</entry>
+	<entry id="5104" string="Keep ripped Wave files">Pidä kopioidut aaltotiedostot</entry>
+	<entry id="5105" string="Encode to a single file">Muunna yksittäinen tiedosto</entry>
+	<entry id="5106" string="Remove processed tracks from joblist"/>
+	<entry id="5107" string="Add output files to joblist"/>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Tulosteen tallennuskohde</entry>
+	<entry id="5151" string="Use input file folder if possible">Käytä syötetiedoston kansiota jos mahdollista</entry>
+	<entry id="5152" string="Allow overwriting input file">Salli syötetiedoston korvaaminen</entry>
+	<entry id="5153" string="Select">Selaa</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Valitse kohde minne muunnetut tiedostot laitetaan</entry>
+	<entry id="5155" string="Output filenames"/>
+	<entry id="5156" string="Filename pattern">Mallitiedosto</entry>
+	<entry id="5157" string="Allow Unicode characters"/>
+	<entry id="5158" string="Replace spaces with underscores"/>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames"/>
+	<entry id="5160" string="Keep time stamps of source files"/>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available"/>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Tulostekansiota ei ole olemassa! Haluatko luoda sellaisen?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Tulostekansiota ei ole olemassa! Haluatko luoda sellaisen?</entry>
 	</section>
       </section>
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Luo soittolistoja</entry>
-	<entry id="5201" string="Create cue sheets">Luo vihjetasoja</entry>
 	<entry id="5202" string="Output folder">Tulosteen tallennuskohde</entry>
 	<entry id="5203" string="Select">Selaa</entry>
 	<entry id="5204" string="Use encoder output folder">Käytä muuntimen tulostekansiota</entry>
@@ -459,6 +464,17 @@
 	<entry id="5207" string="Output filenames"/>
 	<entry id="5208" string="Configure plugin"/>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion"/>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets"/>
+	<entry id="5251" string="Create cue sheets">Luo vihjetasoja</entry>
+	<entry id="5252" string="Embedded cue sheets"/>
+	<entry id="5253" string="Read cue sheets embedded in metadata"/>
+	<entry id="5254" string="Prefer cue sheets over chapter information"/>
+	<entry id="5255" string="Output folder and filenames"/>
+	<entry id="5256" string="Note"/>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section."/>
       </section>
 
       <section name="CDDB">
@@ -475,7 +491,7 @@
 	<entry id="5310" string="Proxy settings">Välityspalvelimen asetukset</entry>
 	<entry id="5311" string="Options">Asetukset</entry>
 	<entry id="5312" string="Automatic CDDB queries">Automaattinen CDDB-kysely</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Suosi CDDB CD-Tekstin yli</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Suosi CDDB CD-Tekstin yli</entry>
 	<entry id="5314" string="Enable CDDB cache">Ota CDDB-välimuisti käyttään</entry>
 	<entry id="5315" string="Automatization">Automaattinen</entry>
 	<entry id="5316" string="Always select first entry"/>
@@ -503,23 +519,21 @@
 	<entry id="5401" string="Edit language file">Muokkaa kielitiedostoa</entry>
 	<entry id="5402" string="Information">Tietoja</entry>
 	<entry id="5403" string="Encoding">Muunnetaan</entry>
-	<entry id="5404" string="Author">Tekijä</entry>
+	<entry id="5404" string="Author(s)">Tekijä</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Info-tagit</entry>
-	<entry id="5501" string="Tag formats">Tagit muunnetaan</entry>
+	<entry id="5500" string="Tag formats">Tagit muunnetaan</entry>
+	<entry id="5501" string="Tag fields"/>
 	<entry id="5502" string="Default comment string">Kommentin merkkijonon oletusarvo</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Korvaa olemassaolevat kommentit alkuperäisillä kommenteilla</entry>
 	<entry id="5504" string="Filename pattern">Mallitiedosto</entry>
 	<entry id="5505" string="Encoding">Muunnetaan</entry>
 	<entry id="5506" string="Comments"/>
 	<entry id="5507" string="Cover art"/>
-	<entry id="5508" string="Read cover art"/>
 	<entry id="5509" string="Read cover art from tags"/>
 	<entry id="5510" string="Read cover art from files"/>
-	<entry id="5511" string="Write cover art"/>
 	<entry id="5512" string="Write cover art to tags"/>
 	<entry id="5513" string="Write cover art to files"/>
 	<entry id="5514" string="Add reference to audio file tag"/>
@@ -530,12 +544,14 @@
 	<entry id="5519" string="Special fields"/>
 	<entry id="5520" string="Write CD table of contents"/>
 	<entry id="5521" string="Preserve Replay Gain information"/>
-	<entry id="5522" string="Cue sheets"/>
-	<entry id="5523" string="Read cue sheets embedded in metadata"/>
-	<entry id="5524" string="Prefer cue sheets over chapter information"/>
 	<entry id="5525" string="Prepend zero to track numbers below 10"/>
 	<entry id="5526" string="File size limit"/>
 	<entry id="5527" string="unlimited"/>
+	<entry id="5528" string="Miscellaneous"/>
+	<entry id="5529" string="Fill missing fields with information obtained from file names"/>
+	<entry id="5530" string="Restrict file names"/>
+	<entry id="5531" string="Cover art tags"/>
+	<entry id="5532" string="Cover art files"/>
       </section>
 
       <section name="Joblist">
@@ -561,10 +577,10 @@
 	  <entry id="5659" string="File name"/>
 	  <entry id="5660" string="File type"/>
 	  <entry id="5661" string="Output file name"/>
-	  <entry id="5662" string="Bitrate"/>
-	  <entry id="5663" string="Sampling rate"/>
-	  <entry id="5664" string="Channels"/>
-	  <entry id="5665" string="Sample resolution"/>
+	  <entry id="5662" string="Bitrate">Bittivirran nopeus</entry>
+	  <entry id="5663" string="Sampling rate">Näytteen nopeus</entry>
+	  <entry id="5664" string="Channels">Kanavat</entry>
+	  <entry id="5665" string="Sample resolution">Näytteen resoluutio</entry>
 	  <entry id="5666" string="CD drive"/>
 	  <entry id="5667" string="Disc ID"/>
 	</section>
@@ -575,7 +591,7 @@
 	<entry id="5701" string="Enable parallel processing"/>
 	<entry id="5702" string="Enable SuperFast mode"/>
 	<entry id="5703" string="Number of conversion threads"/>
-	<entry id="5704" string="auto"/>
+	<entry id="5704" string="auto">automaattinen</entry>
 	<entry id="5705" string="Process priority"/>
 	<entry id="5706" string="lowest"/>
 	<entry id="5707" string="lower"/>
@@ -644,7 +660,7 @@
       <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3"/>
       <entry id="7110" string="File not found">Tiedostoa ei löydy</entry>
       <entry id="7111" string="Unknown file type">Tuntematon tiedostotyyppi</entry>
-      <entry id="7112" string="Invalid file format"/>
+      <entry id="7112" string="Invalid file format">Väärä tiedosto muoto</entry>
       <entry id="7113" string="Unsupported audio format">Äänimuotoa ei tueta</entry>
       <entry id="7114" string="Unknown error">Tuntematon virhe</entry>
       <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">NT SCSI-ajureiden lataaminen ei onnistu! CD:n kopiointi on pois käytöstä!</entry>
@@ -656,14 +672,14 @@
       <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Pääsy CD-ROM-ajureille on Windowsista evätty.&#10;&#10;Ole hyvä ja ota yhteys järjestelmänvalvojaasi&#10;saadaksesi pääsyn CD-ROM-ajuriisi.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1"/>
       <entry id="7123" string="The selected folder does not exist anymore!"/>
-      <entry id="7124" string="Access denied"/>
+      <entry id="7124" string="Access denied">Pääsy estetty</entry>
     </section>
 
     <section name="Dialogs">
 
       <section name="Overwrite">
 	<entry id="8000" string="Confirm overwrite"/>
-	<entry id="8001" string="Confirm"/>
+	<entry id="8001" string="Confirm">Vahvista</entry>
 	<entry id="8002" string="Skip all"/>
 	<entry id="8003" string="The following %1 files already exist or have duplicate file names"/>
 	<entry id="8004" string="Action"/>
@@ -674,13 +690,39 @@
       <section name="Format">
 	<entry id="8100" string="Select sample format"/>
 	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:"/>
-	<entry id="8102" string="Select"/>
+	<entry id="8102" string="Select">Selaa</entry>
       </section>
 
       <section name="Errors">
-	<entry id="8200" string="Errors"/>
+	<entry id="8200" string="Errors">Virheet</entry>
 	<entry id="8201" string="%1 errors while processing job"/>
 	<entry id="8202" string="select an entry for details"/>
+      </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool"/>
+	<entry id="8301" string="%1 track(s) in joblist"/>
+	<entry id="8302" string="Split mode"/>
+	<entry id="8303" string="Split by duration"/>
+	<entry id="8304" string="Duration per part"/>
+	<entry id="8305" string="at least"/>
+	<entry id="8306" string="approximately"/>
+	<entry id="8307" string="at most"/>
+	<entry id="8308" string="exactly"/>
+	<entry id="8309" string="second(s)"/>
+	<entry id="8310" string="minute(s)"/>
+	<entry id="8311" string="hour(s)"/>
+	<entry id="8312" string="Fixed number of parts"/>
+	<entry id="8313" string="Number of parts"/>
+	<entry id="8314" string="Split upon metadata change"/>
+	<entry id="8315" string="Metadata pattern to compare"/>
+	<entry id="8316" string="Split at track boundaries"/>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part"/>
+	<entry id="8318" string="Repeat duration"/>
+	<entry id="8319" string="Output filenames"/>
+	<entry id="8320" string="Filename pattern"/>
+	<entry id="8321" string="Convert"/>
+	<entry id="8322" string="Save"/>
       </section>
     </section>
 
@@ -688,7 +730,7 @@
       <entry id="9000" string="Active CD-ROM drive">Valittu CD-asema</entry>
       <entry id="9001" string="Set drive speed limit">Aseta nopeusrajoitus ajurille</entry>
       <entry id="9002" string="CD information">CD-tiedot</entry>
-      <entry id="9003" string="Read CD Text">Lue CD-teksti</entry>
+      <entry id="9003" string="Read CD-Text">Lue CD-Teksti</entry>
       <entry id="9004" string="Read cdplayer.ini">Lue cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Kopiointiasetukset</entry>
       <entry id="9006" string="Activate cdparanoia mode">Ota käyttöön cdparanoia-tila</entry>
@@ -704,10 +746,10 @@
       <entry id="9016" string="Eject disk after ripping">Posta levy kopioinnin jälkeen</entry>
       <entry id="9017" string="CD options">CD-asetukset</entry>
       <entry id="9018" string="Use read offset"/>
-      <entry id="9019" string="samples"/>
+      <entry id="9019" string="samples">näytteet</entry>
       <entry id="9020" string="Read ISRC when adding tracks to joblist"/>
       <entry id="9021" string="Spin up before ripping"/>
-      <entry id="9022" string="%1 seconds"/>
+      <entry id="9022" string="%1 seconds">%1 sekunttia</entry>
     </section>
 
     <section name="Components">
@@ -728,6 +770,8 @@
 	<entry id="12003" string="RNNoise Noise Reduction"/>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer"/>
 	<entry id="12005" string="HDCD Decoder"/>
+	<entry id="12006" string="Matrix Surround Decoder"/>
+	<entry id="12007" string="Volume Adjustment"/>
       </section>
 
       <section name="Verifiers">
@@ -751,7 +795,7 @@
 
       <section name="mpg123">
 	<entry id="21000" string="Decoder"/>
-	<entry id="21001" string="Active decoder"/>
+	<entry id="21001" string="Active decoder">Aktiivinen muunnin</entry>
 	<entry id="21002" string="auto select"/>
       </section>
 
@@ -917,7 +961,7 @@
 	<section name="Format">
 	  <entry id="34200" string="Use streamable subset">Käytä virroitettua osajoukkoa</entry>
 	  <entry id="34201" string="Blocksize">Lohkokoko</entry>
-	  <entry id="34202" string="%1 samples"/>
+	  <entry id="34202" string="%1 samples">%1 näytettä</entry>
 	</section>
 
 	<section name="Expert">
@@ -974,15 +1018,15 @@
       <section name="Monkey's Audio">
 	<entry id="38000" string="Compression"/>
 	<entry id="38001" string="Compression mode"/>
-	<entry id="38002" string="Fast"/>
-	<entry id="38003" string="Normal"/>
-	<entry id="38004" string="High"/>
-	<entry id="38005" string="Extra high"/>
-	<entry id="38006" string="Insane"/>
+	<entry id="38002" string="Fast">Nopea</entry>
+	<entry id="38003" string="Normal">Normaali</entry>
+	<entry id="38004" string="High">Korkea</entry>
+	<entry id="38005" string="Extra high">Erittäin korkea</entry>
+	<entry id="38006" string="Insane">Hullu</entry>
       </section>
 
       <section name="Speex">
-	<entry id="39000" string="Profile"/>
+	<entry id="39000" string="Profile">Profiili</entry>
 	<entry id="39001" string="Select encoding profile"/>
 	<entry id="39002" string="auto">automaattinen</entry>
 	<entry id="39003" string="Narrowband (8 kHz)"/>
@@ -1000,8 +1044,8 @@
 	<entry id="39015" string="CBR quality"/>
 	<entry id="39016" string="VBR quality">VBR:n laatu</entry>
 	<entry id="39017" string="ABR target bitrate">ABR:n kohdebittivirta</entry>
-	<entry id="39018" string="Bitrate"/>
-	<entry id="39019" string="Quality"/>
+	<entry id="39018" string="Bitrate">Bittivirran nopeus</entry>
+	<entry id="39019" string="Quality">Laatu</entry>
 	<entry id="39020" string="Max. bitrate"/>
       </section>
 
@@ -1010,7 +1054,7 @@
 	<entry id="40001" string="Encoding mode"/>
 	<entry id="40002" string="auto">automaattinen</entry>
 	<entry id="40003" string="Voice"/>
-	<entry id="40004" string="Music"/>
+	<entry id="40004" string="Music">Musiikki</entry>
 	<entry id="40005" string="Bandwidth"/>
 	<entry id="40006" string="Narrowband"/>
 	<entry id="40007" string="Mediumband"/>
@@ -1022,13 +1066,14 @@
 	<entry id="40013" string="Enable variable bitrate encoding"/>
 	<entry id="40014" string="Constrain bitrate to target value"/>
 	<entry id="40015" string="Quality">Laatu</entry>
-	<entry id="40016" string="Bitrate"/>
+	<entry id="40016" string="Bitrate">Bittivirran nopeus</entry>
 	<entry id="40017" string="Complexity"/>
 	<entry id="40018" string="Stream"/>
 	<entry id="40019" string="Frame length"/>
 	<entry id="40020" string="Options">Asetukset</entry>
 	<entry id="40021" string="Enable discontinous transmission"/>
 	<entry id="40022" string="Expected packet loss"/>
+	<entry id="40023" string="Disable intensity stereo phase inversion"/>
       </section>
 
       <section name="SndFile">
@@ -1045,11 +1090,11 @@
       </section>
 
       <section name="meh!">
-	<entry id="42000" string="Encoders"/>
+	<entry id="42000" string="Encoders">Muuntimet</entry>
 	<entry id="42001" string="Available"/>
 	<entry id="42002" string="Selected"/>
-	<entry id="42003" string="Configure encoder"/>
-	<entry id="42004" string="Options"/>
+	<entry id="42003" string="Configure encoder">Määritä muunnin</entry>
+	<entry id="42004" string="Options">Asetukset</entry>
 	<entry id="42005" string="Create a separate folder for each output format"/>
       </section>
     </section>
@@ -1059,24 +1104,27 @@
       <section name="Format">
 	<entry id="50000" string="Sample format"/>
 	<entry id="50001" string="Number format"/>
-	<entry id="50002" string="Sample resolution"/>
+	<entry id="50002" string="Sample resolution">Näytteen resoluutio</entry>
 	<entry id="50003" string="bit"/>
 	<entry id="50004" string="unsigned"/>
 	<entry id="50005" string="Integer"/>
 	<entry id="50006" string="Float"/>
+	<entry id="50007" string="Dithering"/>
+	<entry id="50008" string="Apply dither when reducing sample resolution"/>
+	<entry id="50009" string="Dither type"/>
       </section>
 
       <section name="Channels">
 	<entry id="50100" string="Output channels"/>
 	<entry id="50101" string="Channel configuration"/>
-	<entry id="50102" string="Mono"/>
-	<entry id="50103" string="Stereo"/>
-	<entry id="50104" string="Switch stereo channels"/>
+	<entry id="50102" string="Mono">Mono</entry>
+	<entry id="50103" string="Stereo">Stereo</entry>
+	<entry id="50104" string="Switch stereo channels">Vaihda vasen/oikea kanava</entry>
       </section>
 
       <section name="Resample">
 	<entry id="50200" string="Converter"/>
-	<entry id="50201" string="Sampling rate"/>
+	<entry id="50201" string="Sampling rate">Näytteen nopeus</entry>
 	<entry id="50202" string="Output sampling rate"/>
       </section>
 
@@ -1095,7 +1143,7 @@
 	<entry id="50311" string="Mixed"/>
 	<entry id="50312" string="Smooth"/>
 	<entry id="50313" string="Transformation window"/>
-	<entry id="50314" string="Standard"/>
+	<entry id="50314" string="Standard">Vakio</entry>
 	<entry id="50315" string="Short"/>
 	<entry id="50316" string="Long"/>
 	<entry id="50317" string="Use time-domain smoothing"/>
@@ -1123,6 +1171,18 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)"/>
 	<entry id="50406" string="Speech"/>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels"/>
+	<entry id="50501" string="Channel configuration"/>
+	<entry id="50502" string="Redirect bass content to LFE channel"/>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment"/>
+	<entry id="50601" string="Adjustment"/>
+	<entry id="50602" string="%1 dB"/>
+      </section>
     </section>
 
     <section name="Taggers">
@@ -1137,7 +1197,7 @@
 
       <section name="AccurateRip">
 	<entry id="70000" string="Configure AccurateRip"/>
-	<entry id="70001" string="General settings"/>
+	<entry id="70001" string="General settings">Yleiset asetukset</entry>
 	<entry id="70002" string="Enable AccurateRip"/>
 	<entry id="70003" string="Database URL"/>
 	<entry id="70004" string="Cache"/>
@@ -1161,7 +1221,10 @@
 	<entry id="70022" string="manually configured"/>
 	<entry id="70023" string="not present"/>
 	<entry id="70024" string="not detected"/>
-	<entry id="70025" string="disabled"/>
+	<entry id="70025" string="disabled">ei käytössä</entry>
+	<entry id="70026" string="Options"/>
+	<entry id="70027" string="Notify when a disc is not found in the database"/>
+	<entry id="70028" string="Notify when all tracks have been successfully verified"/>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration"/>
@@ -1172,6 +1235,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
 	  <entry id="70056" string="Offset detection needs to check another disc."/>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples."/>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip."/>
 	</section>
       </section>
     </section>
@@ -1180,9 +1244,9 @@
       <entry id="80000" string="Downmix multi-channel audio to stereo"/>
 
       <section name="Musepack Audio Encoder">
-	<entry id="80100" string="Quality"/>
-	<entry id="80101" string="poor"/>
-	<entry id="80102" string="excellent"/>
+	<entry id="80100" string="Quality">Laatu</entry>
+	<entry id="80101" string="poor">huono</entry>
+	<entry id="80102" string="excellent">erinomainen</entry>
 	<entry id="80103" string="Mid/Side stereo mode"/>
 	<entry id="80104" string="off"/>
 	<entry id="80105" string="reduced"/>
@@ -1194,7 +1258,7 @@
 	<entry id="80111" string="enhanced 3/12 dB"/>
 	<entry id="80112" string="enhanced 3/inf dB"/>
 	<entry id="80113" string="Adaptive noise shaping order"/>
-	<entry id="80114" string="high"/>
+	<entry id="80114" string="high">korkea</entry>
 	<entry id="80115" string="Clear Voice Detection"/>
 	<entry id="80116" string="dual"/>
       </section>
@@ -1214,7 +1278,7 @@
 	<entry id="80211" string="slow"/>
 	<entry id="80212" string="minimum"/>
 	<entry id="80213" string="Optimization"/>
-	<entry id="80214" string="disabled"/>
+	<entry id="80214" string="disabled">ei käytössä</entry>
 	<entry id="80215" string="low"/>
       </section>
 
@@ -1229,29 +1293,30 @@
       <section name="WavPack Audio Encoder">
 	<entry id="80400" string="Enable lossy compression"/>
 	<entry id="80401" string="Compression mode"/>
-	<entry id="80402" string="fast"/>
+	<entry id="80402" string="fast">nopea</entry>
 	<entry id="80403" string="high quality"/>
 	<entry id="80404" string="very high quality"/>
 	<entry id="80405" string="Extra encode processing"/>
-	<entry id="80406" string="faster"/>
-	<entry id="80407" string="better"/>
-	<entry id="80408" string="%1 kbps"/>
+	<entry id="80406" string="faster">nopeampi</entry>
+	<entry id="80407" string="better">parempi</entry>
+	<entry id="80408" string="%1 kbps">%1 kbps</entry>
+	<entry id="80409" string="Create correction file"/>
       </section>
 
       <section name="Nero AAC Encoder">
 	<entry id="80500" string="Encoding mode"/>
-	<entry id="80501" string="auto"/>
-	<entry id="80502" string="Quality"/>
-	<entry id="80503" string="worse"/>
-	<entry id="80504" string="better"/>
-	<entry id="80505" string="Bitrate"/>
+	<entry id="80501" string="auto">automaattinen</entry>
+	<entry id="80502" string="Quality">Laatu</entry>
+	<entry id="80503" string="worse">huonoin</entry>
+	<entry id="80504" string="better">parempi</entry>
+	<entry id="80505" string="Bitrate">Bittivirran nopeus</entry>
 	<entry id="80506" string="Bitrate (Streaming)"/>
-	<entry id="80507" string="%1 kbps"/>
+	<entry id="80507" string="%1 kbps">%1 kbps</entry>
       </section>
 
       <section name="Windows Media Audio Encoder">
-	<entry id="80600" string="Bitrate"/>
-	<entry id="80601" string="%1 kbps"/>
+	<entry id="80600" string="Bitrate">Bittivirran nopeus</entry>
+	<entry id="80601" string="%1 kbps">%1 kbps</entry>
       </section>
     </section>
 
@@ -1325,7 +1390,7 @@
 	<entry id="102015" string="Size">Koko</entry>
 	<entry id="102016" string="Cancel download"/>
 	<entry id="102017" string="unknown"/>
-	<entry id="102018" string="Note"/>
+	<entry id="102018" string="Note">Muistiinpanot</entry>
 
 	<section name="Configuration">
 	  <entry id="102101" string="Automatization">Automaattinen</entry>
@@ -1362,12 +1427,12 @@
 	  <entry id="103100" string="Basic">Perus</entry>
 	  <entry id="103101" string="Title information"/>
 	  <entry id="103102" string="Disc"/>
-	  <entry id="103103" string="Cover art"/>
-	  <entry id="103104" string="Covers"/>
-	  <entry id="103105" string="Type"/>
-	  <entry id="103106" string="Description"/>
+	  <entry id="103103" string="Cover art">Kansitaide</entry>
+	  <entry id="103104" string="Covers">Kannet</entry>
+	  <entry id="103105" string="Type">Tyyppi</entry>
+	  <entry id="103106" string="Description">Kuvaus</entry>
 	  <entry id="103107" string="Add">Lisää</entry>
-	  <entry id="103108" string="Remove">Posta</entry>
+	  <entry id="103108" string="Remove">Poista</entry>
 	</section>
 
 	<section name="Details">
@@ -1406,6 +1471,11 @@
 	  <entry id="103350" string="Lyrics"/>
 	</section>
 
+	<section name="Rating">
+	  <entry id="103360" string="Rating"/>
+	  <entry id="103361" string="none"/>
+	</section>
+
 	<section name="Configuration">
 	  <entry id="103400" string="Behavior"/>
 	  <entry id="103401" string="Clear album artist field if it matches track artist"/>
@@ -1431,14 +1501,14 @@
 	  <entry id="104102" string="Log files"/>
 	  <entry id="104103" string="Archive log files"/>
 	  <entry id="104104" string="Log file folder"/>
-	  <entry id="104105" string="Select"/>
+	  <entry id="104105" string="Select">Selaa</entry>
 	  <entry id="104106" string="Select the folder for saving log files"/>
 	  <entry id="104107" string="Delete old log files after"/>
 	  <entry id="104108" string="days"/>
 	  <entry id="104109" string="Conversion logs"/>
 	  <entry id="104110" string="Save conversion logs with audio files"/>
 	  <entry id="104111" string="Audio CD ripping logs only"/>
-	  <entry id="104112" string="Filename pattern"/>
+	  <entry id="104112" string="Filename pattern">Mallitiedosto</entry>
 	  <entry id="104113" string="Log complete file paths"/>
 	</section>
       </section>
@@ -1451,7 +1521,7 @@
 	  <entry id="105101" string="Notify on finished conversion"/>
 	  <entry id="105102" string="Play sound"/>
 	  <entry id="105103" string="Display message"/>
-	  <entry id="105104" string="Select"/>
+	  <entry id="105104" string="Select">Selaa</entry>
 	  <entry id="105105" string="Only for conversions running longer than"/>
 	  <entry id="105106" string="second(s)"/>
 	  <entry id="105107" string="minute(s)"/>

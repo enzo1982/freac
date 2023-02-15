@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">인코딩 작업 시작 (원본 파일 삭제)</entry>
       <entry id="2011" string="Pause/resume encoding">인코딩 일시 정지/재개</entry>
       <entry id="2012" string="Stop encoding">인코딩 정지</entry>
+      <entry id="2013" string="Open the output splitting tool"/>
     </section>
 
     <section name="Joblist">
@@ -400,7 +401,7 @@
       <entry id="5003" string="Language">언어</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">인터페이스</entry>
-      <entry id="5006" string="Tags">태그</entry>
+      <entry id="5006" string="Metadata"/>
       <entry id="5007" string="Components">구성 요소</entry>
       <entry id="5008" string="Decoders">디코더</entry>
       <entry id="5009" string="Output">내보내기</entry>
@@ -421,36 +422,40 @@
       <entry id="5024" string="Taggers">태그 옵션</entry>
       <entry id="5025" string="Processing">처리중</entry>
       <entry id="5026" string="Additional arguments"/>
+      <entry id="5027" string="Output files"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">인코더 설정</entry>
 	<entry id="5101" string="Encoder">인코더</entry>
-	<entry id="5102" string="Output folder">내보낼 위치</entry>
-	<entry id="5103" string="Select">찾아보기</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">인코딩된 파일을 내보낼 위치를 선택하십시오</entry>
-	<entry id="5105" string="Use input file folder if possible">기존 파일 경로에 내보내기</entry>
-	<entry id="5106" string="Allow overwriting input file">기존 파일 덮어쓰기 허용</entry>
-	<entry id="5107" string="Options">옵션</entry>
-	<entry id="5108" string="Filename pattern">파일명 패턴</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">실시간 패킷 인코딩</entry>
-	<entry id="5110" string="Keep ripped Wave files">리핑된 wav 파일 유지</entry>
-	<entry id="5111" string="Encode to a single file">단일 파일로 인코딩</entry>
-	<entry id="5112" string="Output filenames">내보낼 파일 이름</entry>
-	<entry id="5113" string="Allow Unicode characters">유니코드 허용</entry>
-	<entry id="5114" string="Replace spaces with underscores">공백을 _로 변환</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">처리된 트랙을 작업목록에서 제거</entry>
-	<entry id="5116" string="Add encoded files to joblist">인코딩된 파일을 작업목록에 추가</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">같은 이름의 파일이 존재할 시 숫자를 붙여서 구분하기</entry>
-	<entry id="5118" string="Keep time stamps of source files">원본 파일의 타임스탬프 유지</entry>
+	<entry id="5102" string="Options">옵션</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">실시간 패킷 인코딩</entry>
+	<entry id="5104" string="Keep ripped Wave files">리핑된 wav 파일 유지</entry>
+	<entry id="5105" string="Encode to a single file">단일 파일로 인코딩</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">처리된 트랙을 작업목록에서 제거</entry>
+	<entry id="5107" string="Add output files to joblist">인코딩된 파일을 작업목록에 추가</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">내보낼 위치</entry>
+	<entry id="5151" string="Use input file folder if possible">기존 파일 경로에 내보내기</entry>
+	<entry id="5152" string="Allow overwriting input file">기존 파일 덮어쓰기 허용</entry>
+	<entry id="5153" string="Select">찾아보기</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">인코딩된 파일을 내보낼 위치를 선택하십시오</entry>
+	<entry id="5155" string="Output filenames">내보낼 파일 이름</entry>
+	<entry id="5156" string="Filename pattern">파일명 패턴</entry>
+	<entry id="5157" string="Allow Unicode characters">유니코드 허용</entry>
+	<entry id="5158" string="Replace spaces with underscores">공백을 _로 변환</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">같은 이름의 파일이 존재할 시 숫자를 붙여서 구분하기</entry>
+	<entry id="5160" string="Keep time stamps of source files">원본 파일의 타임스탬프 유지</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available"/>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">내보낼 폴더가 존재하지 않습니다! 폴더를 생성하시겠습니까?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">내보낼 폴더가 존재하지 않습니다! 폴더를 생성하시겠습니까?</entry>
 	</section>
       </section>
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">재생목록 생성</entry>
-	<entry id="5201" string="Create cue sheets">큐시트 생성</entry>
 	<entry id="5202" string="Output folder">내보낼 폴더</entry>
 	<entry id="5203" string="Select">찾아보기</entry>
 	<entry id="5204" string="Use encoder output folder">인코더의 내보낼 폴더 설정 사용</entry>
@@ -459,6 +464,17 @@
 	<entry id="5207" string="Output filenames">내보낼 파일 이름</entry>
 	<entry id="5208" string="Configure plugin">플러그인 설정</entry>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">작업당 1개의 재생목록/큐시트만 생성</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets">큐시트</entry>
+	<entry id="5251" string="Create cue sheets">큐시트 생성</entry>
+	<entry id="5252" string="Embedded cue sheets"/>
+	<entry id="5253" string="Read cue sheets embedded in metadata">메타데이터에서 큐시트 읽어오기</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">챕터 정보보다 큐시트를 우선</entry>
+	<entry id="5255" string="Output folder and filenames"/>
+	<entry id="5256" string="Note"/>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section."/>
       </section>
 
       <section name="CDDB">
@@ -475,7 +491,7 @@
 	<entry id="5310" string="Proxy settings">프록시 설정</entry>
 	<entry id="5311" string="Options">옵션</entry>
 	<entry id="5312" string="Automatic CDDB queries">자동으로 CDDB에 쿼리</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">CD 텍스트보다 CDDB를 우선</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">CD 텍스트보다 CDDB를 우선</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB 캐시 허용</entry>
 	<entry id="5315" string="Automatization">자동화</entry>
 	<entry id="5316" string="Always select first entry">항상 첫번째 항목을 선택</entry>
@@ -503,23 +519,21 @@
 	<entry id="5401" string="Edit language file">언어 파일 수정</entry>
 	<entry id="5402" string="Information">정보</entry>
 	<entry id="5403" string="Encoding">인코딩</entry>
-	<entry id="5404" string="Author">번역자</entry>
+	<entry id="5404" string="Author(s)">번역자</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">태그</entry>
-	<entry id="5501" string="Tag formats">태그 포맷</entry>
+	<entry id="5500" string="Tag formats">태그 포맷</entry>
+	<entry id="5501" string="Tag fields"/>
 	<entry id="5502" string="Default comment string">주석 기본값</entry>
 	<entry id="5503" string="Replace existing comments with default comment">기존 주석이 존재할 경우 덮어쓰기</entry>
 	<entry id="5504" string="Filename pattern">파일명 패턴</entry>
 	<entry id="5505" string="Encoding">인코딩</entry>
 	<entry id="5506" string="Comments">주석</entry>
 	<entry id="5507" string="Cover art">앨범 아트</entry>
-	<entry id="5508" string="Read cover art">앨범 아트 읽기</entry>
 	<entry id="5509" string="Read cover art from tags">태그에서 엘범 아트 읽어오기</entry>
 	<entry id="5510" string="Read cover art from files">파일에서 앨범 아트 읽어오기</entry>
-	<entry id="5511" string="Write cover art">앨범 아트 쓰기</entry>
 	<entry id="5512" string="Write cover art to tags">앨범 아트를 태그에 작성하기</entry>
 	<entry id="5513" string="Write cover art to files">앨범 아트를 파일에 작성하기</entry>
 	<entry id="5514" string="Add reference to audio file tag">오디오 파일에 태그 레퍼런스 추가하기</entry>
@@ -530,12 +544,14 @@
 	<entry id="5519" string="Special fields">특수한 필드</entry>
 	<entry id="5520" string="Write CD table of contents">CD 목차 작성하기</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Replay Gain 정보 유지하기</entry>
-	<entry id="5522" string="Cue sheets">큐시트</entry>
-	<entry id="5523" string="Read cue sheets embedded in metadata">메타데이터에서 큐시트 읽어오기</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">챕터 정보보다 큐시트를 우선</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">10보다 작은 트랙 번호 앞에 0을 추가</entry>
 	<entry id="5526" string="File size limit">파일 크기 제한</entry>
 	<entry id="5527" string="unlimited">제한 없음</entry>
+	<entry id="5528" string="Miscellaneous"/>
+	<entry id="5529" string="Fill missing fields with information obtained from file names"/>
+	<entry id="5530" string="Restrict file names"/>
+	<entry id="5531" string="Cover art tags"/>
+	<entry id="5532" string="Cover art files"/>
       </section>
 
       <section name="Joblist">
@@ -682,13 +698,39 @@
 	<entry id="8201" string="%1 errors while processing job"/>
 	<entry id="8202" string="select an entry for details"/>
       </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool"/>
+	<entry id="8301" string="%1 track(s) in joblist"/>
+	<entry id="8302" string="Split mode"/>
+	<entry id="8303" string="Split by duration"/>
+	<entry id="8304" string="Duration per part"/>
+	<entry id="8305" string="at least"/>
+	<entry id="8306" string="approximately"/>
+	<entry id="8307" string="at most"/>
+	<entry id="8308" string="exactly"/>
+	<entry id="8309" string="second(s)"/>
+	<entry id="8310" string="minute(s)"/>
+	<entry id="8311" string="hour(s)"/>
+	<entry id="8312" string="Fixed number of parts"/>
+	<entry id="8313" string="Number of parts"/>
+	<entry id="8314" string="Split upon metadata change"/>
+	<entry id="8315" string="Metadata pattern to compare"/>
+	<entry id="8316" string="Split at track boundaries"/>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part"/>
+	<entry id="8318" string="Repeat duration"/>
+	<entry id="8319" string="Output filenames"/>
+	<entry id="8320" string="Filename pattern"/>
+	<entry id="8321" string="Convert"/>
+	<entry id="8322" string="Save"/>
+      </section>
     </section>
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">CD-ROM 드라이브 활성화</entry>
       <entry id="9001" string="Set drive speed limit"/>
       <entry id="9002" string="CD information"/>
-      <entry id="9003" string="Read CD Text"/>
+      <entry id="9003" string="Read CD-Text"/>
       <entry id="9004" string="Read cdplayer.ini"/>
       <entry id="9005" string="Ripper settings">리퍼 세팅</entry>
       <entry id="9006" string="Activate cdparanoia mode">CD 파라노어 모드</entry>
@@ -728,6 +770,8 @@
 	<entry id="12003" string="RNNoise Noise Reduction"/>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer"/>
 	<entry id="12005" string="HDCD Decoder"/>
+	<entry id="12006" string="Matrix Surround Decoder"/>
+	<entry id="12007" string="Volume Adjustment"/>
       </section>
 
       <section name="Verifiers">
@@ -1029,6 +1073,7 @@
 	<entry id="40020" string="Options">옵션</entry>
 	<entry id="40021" string="Enable discontinous transmission"/>
 	<entry id="40022" string="Expected packet loss"/>
+	<entry id="40023" string="Disable intensity stereo phase inversion"/>
       </section>
 
       <section name="SndFile">
@@ -1064,6 +1109,9 @@
 	<entry id="50004" string="unsigned"/>
 	<entry id="50005" string="Integer"/>
 	<entry id="50006" string="Float"/>
+	<entry id="50007" string="Dithering"/>
+	<entry id="50008" string="Apply dither when reducing sample resolution"/>
+	<entry id="50009" string="Dither type"/>
       </section>
 
       <section name="Channels">
@@ -1123,6 +1171,18 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)"/>
 	<entry id="50406" string="Speech"/>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels"/>
+	<entry id="50501" string="Channel configuration"/>
+	<entry id="50502" string="Redirect bass content to LFE channel"/>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment"/>
+	<entry id="50601" string="Adjustment"/>
+	<entry id="50602" string="%1 dB"/>
+      </section>
     </section>
 
     <section name="Taggers">
@@ -1162,6 +1222,9 @@
 	<entry id="70023" string="not present"/>
 	<entry id="70024" string="not detected"/>
 	<entry id="70025" string="disabled"/>
+	<entry id="70026" string="Options"/>
+	<entry id="70027" string="Notify when a disc is not found in the database"/>
+	<entry id="70028" string="Notify when all tracks have been successfully verified"/>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration"/>
@@ -1172,6 +1235,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
 	  <entry id="70056" string="Offset detection needs to check another disc."/>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples."/>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip."/>
 	</section>
       </section>
     </section>
@@ -1236,6 +1300,7 @@
 	<entry id="80406" string="faster"/>
 	<entry id="80407" string="better">저</entry>
 	<entry id="80408" string="%1 kbps">%1 kbps</entry>
+	<entry id="80409" string="Create correction file"/>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1404,6 +1469,11 @@
 
 	<section name="Lyrics">
 	  <entry id="103350" string="Lyrics"/>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">평점</entry>
+	  <entry id="103361" string="none">없음</entry>
 	</section>
 
 	<section name="Configuration">

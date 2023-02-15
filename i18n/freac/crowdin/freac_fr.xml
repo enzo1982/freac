@@ -7,7 +7,7 @@
     <property name="righttoleft">false</property>
     <property name="encoding">UTF-8</property>
     <property name="template">freac.xml</property>
-    <property name="author">Philippe Grivel &lt;phgrivel@gmail.com&gt;, Eric Le Carre &lt;e.lecarre@hotmail.com&gt;</property>
+    <property name="author">Philippe Grivel &lt;phgrivel@gmail.com&gt;,&#10;Eric Le Carre &lt;e.lecarre@hotmail.com&gt;</property>
     <property name="url">https://www.freac.org/</property>
   </info>
   <data>
@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">Commencer le processus d'encodage [éffacer les fichiers originaux]</entry>
       <entry id="2011" string="Pause/resume encoding">Interrompre/reprendre encodage</entry>
       <entry id="2012" string="Stop encoding">Arrêter l'encodage</entry>
+      <entry id="2013" string="Open the output splitting tool"/>
     </section>
 
     <section name="Joblist">
@@ -400,7 +401,7 @@
       <entry id="5003" string="Language">Langue</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Interface</entry>
-      <entry id="5006" string="Tags">Balises infos</entry>
+      <entry id="5006" string="Metadata"/>
       <entry id="5007" string="Components">Composants</entry>
       <entry id="5008" string="Decoders">Décodeurs</entry>
       <entry id="5009" string="Output">Résultat</entry>
@@ -421,36 +422,40 @@
       <entry id="5024" string="Taggers">Balisage</entry>
       <entry id="5025" string="Processing">Traitement</entry>
       <entry id="5026" string="Additional arguments">Paramètres supplémentaires</entry>
+      <entry id="5027" string="Output files"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurer l'encodeur</entry>
 	<entry id="5101" string="Encoder">Encodeur</entry>
-	<entry id="5102" string="Output folder">Répertoire de sortie</entry>
-	<entry id="5103" string="Select">Parcourir</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Sélectionnez le dossier de destination des fichiers encodés</entry>
-	<entry id="5105" string="Use input file folder if possible">Utiliser répertoire fichier entrée si possible</entry>
-	<entry id="5106" string="Allow overwriting input file">Autoriser remplacement fichier entrée</entry>
-	<entry id="5107" string="Options">Options</entry>
-	<entry id="5108" string="Filename pattern">Modèle de nom de fichier</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Encoder à la volée</entry>
-	<entry id="5110" string="Keep ripped Wave files">Conserver fichiers Wave extraits</entry>
-	<entry id="5111" string="Encode to a single file">Encoder dans fichier unique</entry>
-	<entry id="5112" string="Output filenames">Noms de fichiers résultants</entry>
-	<entry id="5113" string="Allow Unicode characters">Autoriser les caractères unicodes</entry>
-	<entry id="5114" string="Replace spaces with underscores">Remplacer les espaces par des souslignages</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Retirer les morceaux traités de la liste des taches</entry>
-	<entry id="5116" string="Add encoded files to joblist">Ajouter les morceaux encodés à la liste des taches</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Adjoindre des numéros séquentiels aux fichiers de mêmes noms</entry>
-	<entry id="5118" string="Keep time stamps of source files">Garder les index temporels des fichiers sources</entry>
+	<entry id="5102" string="Options">Options</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Encoder à la volée</entry>
+	<entry id="5104" string="Keep ripped Wave files">Conserver fichiers Wave extraits</entry>
+	<entry id="5105" string="Encode to a single file">Encoder dans fichier unique</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Retirer les morceaux traités de la liste des taches</entry>
+	<entry id="5107" string="Add output files to joblist">Ajouter les morceaux encodés à la liste des taches</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Répertoire de sortie</entry>
+	<entry id="5151" string="Use input file folder if possible">Utiliser répertoire fichier entrée si possible</entry>
+	<entry id="5152" string="Allow overwriting input file">Autoriser remplacement fichier entrée</entry>
+	<entry id="5153" string="Select">Parcourir</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Sélectionnez le dossier de destination des fichiers encodés</entry>
+	<entry id="5155" string="Output filenames">Noms de fichiers résultants</entry>
+	<entry id="5156" string="Filename pattern">Modèle de nom de fichier</entry>
+	<entry id="5157" string="Allow Unicode characters">Autoriser les caractères unicodes</entry>
+	<entry id="5158" string="Replace spaces with underscores">Remplacer les espaces par des souslignages</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Adjoindre des numéros séquentiels aux fichiers de mêmes noms</entry>
+	<entry id="5160" string="Keep time stamps of source files">Garder les index temporels des fichiers sources</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available"/>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Le répertoire de sortie n'existe pas. Voulez-vous le créer ?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Le répertoire de sortie n'existe pas. Voulez-vous le créer ?</entry>
 	</section>
       </section>
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Créer sélections</entry>
-	<entry id="5201" string="Create cue sheets">Créer feuille de repères</entry>
 	<entry id="5202" string="Output folder">Répertoire de sortie</entry>
 	<entry id="5203" string="Select">Parcourir</entry>
 	<entry id="5204" string="Use encoder output folder">Utiliser répertoire sortie encodeur</entry>
@@ -459,6 +464,17 @@
 	<entry id="5207" string="Output filenames">Nom des fichiers résultants</entry>
 	<entry id="5208" string="Configure plugin">Configurer le plugin</entry>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Créer une liste de lecture unique et/ou un fichier-liste de repères par conversion</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets">Liste des repères</entry>
+	<entry id="5251" string="Create cue sheets">Créer feuille de repères</entry>
+	<entry id="5252" string="Embedded cue sheets"/>
+	<entry id="5253" string="Read cue sheets embedded in metadata">Lire la liste des repères intégrée dans les métadonnées</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">Préfèrer la liste des repères aux informations de chapitre</entry>
+	<entry id="5255" string="Output folder and filenames"/>
+	<entry id="5256" string="Note"/>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section."/>
       </section>
 
       <section name="CDDB">
@@ -475,7 +491,7 @@
 	<entry id="5310" string="Proxy settings">Paramètres du proxy</entry>
 	<entry id="5311" string="Options">Options</entry>
 	<entry id="5312" string="Automatic CDDB queries">Requêtes CDDB automatiques</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Préférer CDDB au texte du CD</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Préférer CDDB à CD-Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Activer le cache CDDB</entry>
 	<entry id="5315" string="Automatization">Automatisation</entry>
 	<entry id="5316" string="Always select first entry">Toujours sélectionner la première entrée</entry>
@@ -503,23 +519,21 @@
 	<entry id="5401" string="Edit language file">Modifier fichier langue</entry>
 	<entry id="5402" string="Information">Informations</entry>
 	<entry id="5403" string="Encoding">Encodage</entry>
-	<entry id="5404" string="Author">Auteur</entry>
+	<entry id="5404" string="Author(s)">Auteur(s)</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Balises infos</entry>
-	<entry id="5501" string="Tag formats">Encodages des balises</entry>
+	<entry id="5500" string="Tag formats">Encodages des balises</entry>
+	<entry id="5501" string="Tag fields"/>
 	<entry id="5502" string="Default comment string">Commentaires par défaut</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Remplacer les commentaires existant par ceux par défaut</entry>
 	<entry id="5504" string="Filename pattern">Modèle de nom de fichier</entry>
 	<entry id="5505" string="Encoding">Encodage</entry>
 	<entry id="5506" string="Comments">Commentaires</entry>
 	<entry id="5507" string="Cover art">Illustration de couverture</entry>
-	<entry id="5508" string="Read cover art">Lire l'illustration de couverture</entry>
 	<entry id="5509" string="Read cover art from tags">Lire les illustrations à partir des balises</entry>
 	<entry id="5510" string="Read cover art from files">Lire les illustrations à partir des fichiers</entry>
-	<entry id="5511" string="Write cover art">Écrire les illustrations de couverture</entry>
 	<entry id="5512" string="Write cover art to tags">Écrire les illustrations dans les balises</entry>
 	<entry id="5513" string="Write cover art to files">Écrire les illustrations dans les fichiers</entry>
 	<entry id="5514" string="Add reference to audio file tag">Ajouter une référence à la balise d'un fichier audio</entry>
@@ -530,12 +544,14 @@
 	<entry id="5519" string="Special fields">Champs spéciaux</entry>
 	<entry id="5520" string="Write CD table of contents">Écrire la table des matières du CD</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Préserver l'information de volume de lecture</entry>
-	<entry id="5522" string="Cue sheets">Liste des repères</entry>
-	<entry id="5523" string="Read cue sheets embedded in metadata">Lire la liste des repères intégrée dans les métadonnées</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">Préfèrer la liste des repères aux informations de chapitre</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Ajout de zéros aux numéros de morceaux inférieurs à 10</entry>
 	<entry id="5526" string="File size limit">Limite de taille de fichier</entry>
 	<entry id="5527" string="unlimited">illimité</entry>
+	<entry id="5528" string="Miscellaneous"/>
+	<entry id="5529" string="Fill missing fields with information obtained from file names"/>
+	<entry id="5530" string="Restrict file names"/>
+	<entry id="5531" string="Cover art tags"/>
+	<entry id="5532" string="Cover art files"/>
       </section>
 
       <section name="Joblist">
@@ -682,13 +698,39 @@
 	<entry id="8201" string="%1 errors while processing job">%1 erreurs survenues pendant le traitement</entry>
 	<entry id="8202" string="select an entry for details">sélectionner une entrée pour le détail</entry>
       </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool"/>
+	<entry id="8301" string="%1 track(s) in joblist"/>
+	<entry id="8302" string="Split mode"/>
+	<entry id="8303" string="Split by duration"/>
+	<entry id="8304" string="Duration per part"/>
+	<entry id="8305" string="at least"/>
+	<entry id="8306" string="approximately"/>
+	<entry id="8307" string="at most"/>
+	<entry id="8308" string="exactly"/>
+	<entry id="8309" string="second(s)"/>
+	<entry id="8310" string="minute(s)"/>
+	<entry id="8311" string="hour(s)"/>
+	<entry id="8312" string="Fixed number of parts"/>
+	<entry id="8313" string="Number of parts"/>
+	<entry id="8314" string="Split upon metadata change"/>
+	<entry id="8315" string="Metadata pattern to compare"/>
+	<entry id="8316" string="Split at track boundaries"/>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part"/>
+	<entry id="8318" string="Repeat duration"/>
+	<entry id="8319" string="Output filenames"/>
+	<entry id="8320" string="Filename pattern"/>
+	<entry id="8321" string="Convert"/>
+	<entry id="8322" string="Save"/>
+      </section>
     </section>
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Lecteur de CD-ROM actif</entry>
       <entry id="9001" string="Set drive speed limit">Définir la vitesse limite du lecteur</entry>
       <entry id="9002" string="CD information">Informations sur le CD</entry>
-      <entry id="9003" string="Read CD Text">Lire texte du CD</entry>
+      <entry id="9003" string="Read CD-Text">Lire CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Lire fichier cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Paramètres de l'extracteur</entry>
       <entry id="9006" string="Activate cdparanoia mode">Activer le mode cdparanoia</entry>
@@ -728,6 +770,8 @@
 	<entry id="12003" string="RNNoise Noise Reduction">Réduction de bruit RNNoise</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Modificateur de tempo/tonalité</entry>
 	<entry id="12005" string="HDCD Decoder">Décodeur HDCD</entry>
+	<entry id="12006" string="Matrix Surround Decoder"/>
+	<entry id="12007" string="Volume Adjustment"/>
       </section>
 
       <section name="Verifiers">
@@ -1029,6 +1073,7 @@
 	<entry id="40020" string="Options">Options</entry>
 	<entry id="40021" string="Enable discontinous transmission">Activer la transmission intermitente</entry>
 	<entry id="40022" string="Expected packet loss">Perte de paquets attendue</entry>
+	<entry id="40023" string="Disable intensity stereo phase inversion"/>
       </section>
 
       <section name="SndFile">
@@ -1064,6 +1109,9 @@
 	<entry id="50004" string="unsigned">non signé</entry>
 	<entry id="50005" string="Integer">Entier</entry>
 	<entry id="50006" string="Float">Flottant</entry>
+	<entry id="50007" string="Dithering"/>
+	<entry id="50008" string="Apply dither when reducing sample resolution"/>
+	<entry id="50009" string="Dither type"/>
       </section>
 
       <section name="Channels">
@@ -1123,6 +1171,18 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Voix (incluant rires, etc...)</entry>
 	<entry id="50406" string="Speech">Discours</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Canaux de sortie</entry>
+	<entry id="50501" string="Channel configuration">Configuration des canaux</entry>
+	<entry id="50502" string="Redirect bass content to LFE channel"/>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment"/>
+	<entry id="50601" string="Adjustment"/>
+	<entry id="50602" string="%1 dB"/>
+      </section>
     </section>
 
     <section name="Taggers">
@@ -1162,6 +1222,9 @@
 	<entry id="70023" string="not present">absent</entry>
 	<entry id="70024" string="not detected">non détecté</entry>
 	<entry id="70025" string="disabled">désactivé</entry>
+	<entry id="70026" string="Options"/>
+	<entry id="70027" string="Notify when a disc is not found in the database"/>
+	<entry id="70028" string="Notify when all tracks have been successfully verified"/>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">Configuration AccurateRip</entry>
@@ -1172,6 +1235,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Veuillez insérer un autre disque dans le lecteur de CD et cliquer sur OK.&#10;Le disque doit être présent dans la base de données AccurateRip.&#10;La probabilité pour cela est plus élevée avec les CD populaires qui ont&#10;probablement déjà été extraits par d'autres utilisateurs.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">La détection de décalage nécessite de vérifier un autre disque.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Le décalage du lecteur a été détecté avec succès et configuré à %1 échantillons.</entry>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip."/>
 	</section>
       </section>
     </section>
@@ -1236,6 +1300,7 @@
 	<entry id="80406" string="faster">plus rapide</entry>
 	<entry id="80407" string="better">meilleure</entry>
 	<entry id="80408" string="%1 kbps">%1 kbps</entry>
+	<entry id="80409" string="Create correction file"/>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1404,6 +1469,11 @@
 
 	<section name="Lyrics">
 	  <entry id="103350" string="Lyrics"/>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Evaluation</entry>
+	  <entry id="103361" string="none"/>
 	</section>
 
 	<section name="Configuration">

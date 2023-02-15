@@ -38,7 +38,7 @@
     <entry id="313" string="Composer">Compozitor</entry>
     <entry id="314" string="Tempo">Timpul</entry>
     <entry id="315" string="ISRC">ISRC</entry>
-    <entry id="316" string="Musical key"/>
+    <entry id="316" string="Musical key">Notă muzicală</entry>
 
     <entry id="350" string="unknown artist">artist necunoscut</entry>
     <entry id="351" string="unknown title">titlu necunoscut</entry>
@@ -48,8 +48,8 @@
     <entry id="355" string="unknown conductor">coordonator necunoscut</entry>
     <entry id="356" string="unknown composer">compozitor necunoscut</entry>
     <entry id="357" string="unknown album artist">albumul artistului necunoscut</entry>
-    <entry id="358" string="unknown tempo"/>
-    <entry id="359" string="unknown key"/>
+    <entry id="358" string="unknown tempo">tempo necunoscut</entry>
+    <entry id="359" string="unknown key">notă necunoscută</entry>
 
     <entry id="380" string="hidden track">melodie ascunsă</entry>
 
@@ -91,7 +91,7 @@
       <entry id="1001" string="Options">Opțiuni</entry>
       <entry id="1002" string="Database">Bază de Date</entry>
       <entry id="1003" string="Processing">Procesează</entry>
-      <entry id="1004" string="Encode">Procesare</entry>
+      <entry id="1004" string="Encode">Codifică</entry>
       <entry id="1005" string="Help">Ajutor</entry>
 
       <section name="File">
@@ -104,7 +104,7 @@
 	<entry id="1106" string="Audio file(s)">Fișier(e) Audio</entry>
 	<entry id="1107" string="Audio CD contents">Conținut CD Audio</entry>
 	<entry id="1108" string="By pattern">După model</entry>
-	<entry id="1109" string="From folder">Din folderul</entry>
+	<entry id="1109" string="From folder">Din dosarul</entry>
       </section>
 
       <section name="Database">
@@ -141,7 +141,7 @@
 	<entry id="1504" string="Stop encoding">Stop procesare</entry>
 	<entry id="1505" string="Encoder options">Opțiuni codec</entry>
 	<entry id="1506" string="Encode to a single file">Codare într-un singur fișier</entry>
-	<entry id="1507" string="Encode to input file folder if possible">Codare în folderul de intrare dacă e posibil</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Codare în dosarul de intrare dacă e posibil</entry>
 	<entry id="1508" string="Allow overwriting input file">Permite suprascriere fișier intrare</entry>
 	<entry id="1509" string="Delete original files after encoding">Ștergere fișiere originale după procesare</entry>
 	<entry id="1510" string="Shutdown after encoding">Oprire calculator după terminarea procesării</entry>
@@ -173,12 +173,13 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">Pornește procesul de codare (șterge fișierele originale)</entry>
       <entry id="2011" string="Pause/resume encoding">Pauză/continuare procesare</entry>
       <entry id="2012" string="Stop encoding">Stop procesare</entry>
+      <entry id="2013" string="Open the output splitting tool"/>
     </section>
 
     <section name="Joblist">
       <entry id="3000" string="Time left">Timp rămas</entry>
       <entry id="3001" string="File progress">Progres fișier</entry>
-      <entry id="3002" string="Output folder">Folder salvare</entry>
+      <entry id="3002" string="Output folder">Dosar salvare</entry>
       <entry id="3003" string="%1 file(s) in joblist">%1 fișier(e) în listă</entry>
       <entry id="3004" string="Show title info">Afișare titlu</entry>
       <entry id="3005" string="Play">Ascultă</entry>
@@ -187,7 +188,7 @@
       <entry id="3008" string="Select none">Selectează niciunul</entry>
       <entry id="3009" string="Toggle selection">Inversare selecție</entry>
       <entry id="3010" string="ripping/decoding">extragere/decodare</entry>
-      <entry id="3011" string="encoding">procesare</entry>
+      <entry id="3011" string="encoding">codare</entry>
       <entry id="3012" string="Create playlist">Creează listă</entry>
       <entry id="3013" string="Create cue sheet">Creare pagină curată</entry>
       <entry id="3014" string="Select">Selectează</entry>
@@ -203,7 +204,7 @@
       <entry id="3024" string="first letter upper case">majuscula doar la prima literă</entry>
       <entry id="3025" string="all lower case">doar minuscule</entry>
       <entry id="3026" string="all upper case">doar majuscule</entry>
-      <entry id="3027" string="Select the folder in which the encoded files will be placed">Selectați folderul în care vor fi salvate fișierele</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">Selectați dosarul în care vor fi salvate fișierele</entry>
       <entry id="3028" string="Sampling rate">Rata de eșantionare</entry>
       <entry id="3029" string="Sample resolution">Rezoluție eșantion</entry>
       <entry id="3030" string="Number of samples">Numărul de eșantioane</entry>
@@ -249,16 +250,16 @@
       </section>
 
       <section name="Add folder">
-	<entry id="3100" string="Folder">Folder</entry>
-	<entry id="3101" string="Add folder">Adăugare folder</entry>
-	<entry id="3102" string="Choose folder">Selecție folder</entry>
-	<entry id="3103" string="Select the folder to add to the joblist">Selecție folder pentru adăugare la listă</entry>
+	<entry id="3100" string="Folder">Dosar</entry>
+	<entry id="3101" string="Add folder">Adăugare dosar</entry>
+	<entry id="3102" string="Choose folder">Selecție dosar</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">Selecție dosar pentru adăugare la listă</entry>
       </section>
 
       <section name="Add by pattern">
 	<entry id="3200" string="Add files by pattern">Adăugare fișiere după model</entry>
 	<entry id="3201" string="Pattern">Model</entry>
-	<entry id="3202" string="Start folder">Folder de start</entry>
+	<entry id="3202" string="Start folder">Dosar de start</entry>
 	<entry id="3203" string="Filename pattern">Model nume fișier</entry>
 	<entry id="3204" string="Search subfolders">Caută în subfoldere</entry>
 	<entry id="3205" string="Select the folder to add to the joblist">Selecție folder pentru adăugare la listă</entry>
@@ -285,7 +286,7 @@
       <entry id="3506" string="Waiting for other jobs to finish">Așteaptă să se termine o activitate</entry>
 
       <section name="Joblist">
-	<entry id="3600" string="Reading folders">Citește folderele</entry>
+	<entry id="3600" string="Reading folders">Citește dosarele</entry>
 	<entry id="3601" string="Filtering duplicates">Filtrează duplicatele</entry>
 	<entry id="3602" string="Adding files">Adaugă fișierele</entry>
 	<entry id="3603" string="Adding tracks">Adaugă melodiile</entry>
@@ -400,7 +401,7 @@
       <entry id="5003" string="Language">Limbă</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Interfață</entry>
-      <entry id="5006" string="Tags">Tag-uri Info</entry>
+      <entry id="5006" string="Metadata"/>
       <entry id="5007" string="Components">Componente</entry>
       <entry id="5008" string="Decoders">Decodoare</entry>
       <entry id="5009" string="Output">Ieșire</entry>
@@ -421,52 +422,67 @@
       <entry id="5024" string="Taggers">Urmăritori</entry>
       <entry id="5025" string="Processing">Procesează</entry>
       <entry id="5026" string="Additional arguments">Condiții suplimentare</entry>
+      <entry id="5027" string="Output files"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurare codec</entry>
 	<entry id="5101" string="Encoder">Codec</entry>
-	<entry id="5102" string="Output folder">Folder salvare</entry>
-	<entry id="5103" string="Select">Răsfoire</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Selectați folderul în care vor fi salvate fișierele</entry>
-	<entry id="5105" string="Use input file folder if possible">Utilizare folder de intrare (dacă e posibil)</entry>
-	<entry id="5106" string="Allow overwriting input file">Permite suprascriere fișier intrare</entry>
-	<entry id="5107" string="Options">Opțiuni</entry>
-	<entry id="5108" string="Filename pattern">Model nume fișier</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Codare 'Din-Zbor'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Păstrează fișierele Wave copiate</entry>
-	<entry id="5111" string="Encode to a single file">Codare într-un singur fișier</entry>
-	<entry id="5112" string="Output filenames">Numele fișierului procesat</entry>
-	<entry id="5113" string="Allow Unicode characters">Permiteți caracterele Unicode</entry>
-	<entry id="5114" string="Replace spaces with underscores">Îndepărtați spațiile cu sublinii</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Ștergeți melodiile procesate din lista de lucru</entry>
-	<entry id="5116" string="Add encoded files to joblist">Adăugați fișierele plelucrate la lista de lucru</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Adăugați numerele secvențial la alte nume de fișiere identice</entry>
-	<entry id="5118" string="Keep time stamps of source files">Păstrează timbrul rămas din fișierele sursă</entry>
+	<entry id="5102" string="Options">Opțiuni</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Codare 'Din-Zbor'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Păstrează fișierele Wave copiate</entry>
+	<entry id="5105" string="Encode to a single file">Codare într-un singur fișier</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Ștergeți melodiile procesate din lista de lucru</entry>
+	<entry id="5107" string="Add output files to joblist">Adăugați fișierele plelucrate la lista de lucru</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Dosar salvare</entry>
+	<entry id="5151" string="Use input file folder if possible">Utilizare dosar de intrare (dacă e posibil)</entry>
+	<entry id="5152" string="Allow overwriting input file">Permite suprascriere fișier intrare</entry>
+	<entry id="5153" string="Select">Răsfoire</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Selectați dosarul în care vor fi salvate fișierele</entry>
+	<entry id="5155" string="Output filenames">Numele fișierului procesat</entry>
+	<entry id="5156" string="Filename pattern">Model nume fișier</entry>
+	<entry id="5157" string="Allow Unicode characters">Permiteți caracterele Unicode</entry>
+	<entry id="5158" string="Replace spaces with underscores">Îndepărtați spațiile cu sublinii</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Adăugați numerele secvențial la alte nume de fișiere identice</entry>
+	<entry id="5160" string="Keep time stamps of source files">Păstrează timbrul rămas din fișierele sursă</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available"/>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Folderul de ieșire nu există! Doriți să fie creat?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Dosarul de ieșire nu există! Doriți să fie creat?</entry>
 	</section>
       </section>
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Creare listă</entry>
-	<entry id="5201" string="Create cue sheets">Creare program</entry>
-	<entry id="5202" string="Output folder">Folder salvare</entry>
+	<entry id="5202" string="Output folder">Dosar salvare</entry>
 	<entry id="5203" string="Select">Răsfoire</entry>
-	<entry id="5204" string="Use encoder output folder">Utilizare folder ieșire</entry>
+	<entry id="5204" string="Use encoder output folder">Utilizare dosar ieșire</entry>
 	<entry id="5205" string="Filename pattern">Model nume fișier</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed">Selectați folderul în care lista de fișiere va fi salvată</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Selectați dosarul în care lista de fișiere va fi salvată</entry>
 	<entry id="5207" string="Output filenames">Nmele fișierului procesat</entry>
 	<entry id="5208" string="Configure plugin">Configurare plugin</entry>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Crează doar un playlist și/sau fișier curat per conversie</entry>
       </section>
 
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets">Pagină curată</entry>
+	<entry id="5251" string="Create cue sheets">Creare program</entry>
+	<entry id="5252" string="Embedded cue sheets"/>
+	<entry id="5253" string="Read cue sheets embedded in metadata">Citește pagina curată îmbogatită cu metadate</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">Preferă pagina curată în locul capitolului informație</entry>
+	<entry id="5255" string="Output folder and filenames"/>
+	<entry id="5256" string="Note"/>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section."/>
+      </section>
+
       <section name="CDDB">
 	<entry id="5300" string="Enable local CDDB database">Activare baza locala CDDB</entry>
 	<entry id="5301" string="Enable remote CDDB database">Activare baza CDDB Internet</entry>
-	<entry id="5302" string="CDDB path">Folder CDDB</entry>
+	<entry id="5302" string="CDDB path">Dosar CDDB</entry>
 	<entry id="5303" string="Select">Răsfoire</entry>
-	<entry id="5304" string="Select the folder of the CDDB database">Selectați folderul bazei CDDB</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">Selectați dosarul bazei CDDB</entry>
 	<entry id="5305" string="CDDB access mode">Mod acces CDDB</entry>
 	<entry id="5306" string="CDDB server">Server CDDB</entry>
 	<entry id="5307" string="Port">Port</entry>
@@ -475,7 +491,7 @@
 	<entry id="5310" string="Proxy settings">Setări Proxy</entry>
 	<entry id="5311" string="Options">Opțiuni</entry>
 	<entry id="5312" string="Automatic CDDB queries">Interogare automată CDDB</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Alegeți CDDB în loc de CD Text</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Alegeți CDDB în loc de CD-Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Activare cache CDDB</entry>
 	<entry id="5315" string="Automatization">Automatizare</entry>
 	<entry id="5316" string="Always select first entry">Întotdeauna selectează prima intrare</entry>
@@ -503,23 +519,21 @@
 	<entry id="5401" string="Edit language file">Editare fișier limbă</entry>
 	<entry id="5402" string="Information">Informații</entry>
 	<entry id="5403" string="Encoding">Codare</entry>
-	<entry id="5404" string="Author">Autor</entry>
+	<entry id="5404" string="Author(s)">Autor(ii)</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Tag-uri Info</entry>
-	<entry id="5501" string="Tag formats">Codare Tag</entry>
+	<entry id="5500" string="Tag formats">Codare Tag</entry>
+	<entry id="5501" string="Tag fields"/>
 	<entry id="5502" string="Default comment string">Text implicit comentariu</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Înlocuiește comentariile existente cu comentariul de bază</entry>
 	<entry id="5504" string="Filename pattern">Model nume fișier</entry>
 	<entry id="5505" string="Encoding">Codare</entry>
 	<entry id="5506" string="Comments">Comentarii</entry>
 	<entry id="5507" string="Cover art">Copertă artistică</entry>
-	<entry id="5508" string="Read cover art">Citește coperta artistică</entry>
 	<entry id="5509" string="Read cover art from tags">Citește coperta artistică din etichete</entry>
 	<entry id="5510" string="Read cover art from files">Citește coperta artistică din fișiere</entry>
-	<entry id="5511" string="Write cover art">Scrie coperta artistică</entry>
 	<entry id="5512" string="Write cover art to tags">Scrie coperta artistică la etichete</entry>
 	<entry id="5513" string="Write cover art to files">Scrie coperta artistică la fișiere</entry>
 	<entry id="5514" string="Add reference to audio file tag">Adaugă referințe la eticheta fișierului audio</entry>
@@ -530,12 +544,14 @@
 	<entry id="5519" string="Special fields">Câmp special</entry>
 	<entry id="5520" string="Write CD table of contents">Scrie conținutul tabelului CD-ului</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Conservă informațiile Câstigului Redării</entry>
-	<entry id="5522" string="Cue sheets">Pagină curată</entry>
-	<entry id="5523" string="Read cue sheets embedded in metadata">Citește pagina curată îmbogatită cu metadate</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">Preferă pagina curată în locul capitolului informație</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Prepară zero la numărul melodiei sub 10</entry>
 	<entry id="5526" string="File size limit">Limita mărimii fișierului</entry>
 	<entry id="5527" string="unlimited">nelimitat</entry>
+	<entry id="5528" string="Miscellaneous"/>
+	<entry id="5529" string="Fill missing fields with information obtained from file names"/>
+	<entry id="5530" string="Restrict file names"/>
+	<entry id="5531" string="Cover art tags"/>
+	<entry id="5532" string="Cover art files"/>
       </section>
 
       <section name="Joblist">
@@ -682,13 +698,39 @@
 	<entry id="8201" string="%1 errors while processing job">%1 erori în timpul lucrului</entry>
 	<entry id="8202" string="select an entry for details">selectează o intrare pentru detalii</entry>
       </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool"/>
+	<entry id="8301" string="%1 track(s) in joblist"/>
+	<entry id="8302" string="Split mode"/>
+	<entry id="8303" string="Split by duration"/>
+	<entry id="8304" string="Duration per part"/>
+	<entry id="8305" string="at least"/>
+	<entry id="8306" string="approximately"/>
+	<entry id="8307" string="at most"/>
+	<entry id="8308" string="exactly"/>
+	<entry id="8309" string="second(s)"/>
+	<entry id="8310" string="minute(s)"/>
+	<entry id="8311" string="hour(s)"/>
+	<entry id="8312" string="Fixed number of parts"/>
+	<entry id="8313" string="Number of parts"/>
+	<entry id="8314" string="Split upon metadata change"/>
+	<entry id="8315" string="Metadata pattern to compare"/>
+	<entry id="8316" string="Split at track boundaries"/>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part"/>
+	<entry id="8318" string="Repeat duration"/>
+	<entry id="8319" string="Output filenames"/>
+	<entry id="8320" string="Filename pattern"/>
+	<entry id="8321" string="Convert"/>
+	<entry id="8322" string="Save"/>
+      </section>
     </section>
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">CD-ROM activ</entry>
       <entry id="9001" string="Set drive speed limit">Setează limita de viteză pentru drive</entry>
       <entry id="9002" string="CD information">Informații CD</entry>
-      <entry id="9003" string="Read CD Text">Citire CD Text</entry>
+      <entry id="9003" string="Read CD-Text">Citire CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Citire cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Setări extragere</entry>
       <entry id="9006" string="Activate cdparanoia mode">Activare mod cdparanoia</entry>
@@ -728,17 +770,19 @@
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise Reducerea Zgomotului</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Tempoul Benzii de Cauciuc/Schimbare Pas</entry>
 	<entry id="12005" string="HDCD Decoder">Decodor HDCD</entry>
+	<entry id="12006" string="Matrix Surround Decoder"/>
+	<entry id="12007" string="Volume Adjustment"/>
       </section>
 
       <section name="Verifiers">
-	<entry id="14000" string="AccurateRip Verifier"/>
+	<entry id="14000" string="AccurateRip Verifier">Verificator AccurateRip</entry>
       </section>
 
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Notificări</entry>
 	<entry id="15001" string="Logging">Înregistrare</entry>
 	<entry id="15002" string="Video Downloader">Descărcare Video</entry>
-	<entry id="15003" string="Tag Editor"/>
+	<entry id="15003" string="Tag Editor">Editor Etichetă</entry>
       </section>
     </section>
 
@@ -1029,6 +1073,7 @@
 	<entry id="40020" string="Options">Opțiuni</entry>
 	<entry id="40021" string="Enable discontinous transmission">Pornește transmiterea discontinuă</entry>
 	<entry id="40022" string="Expected packet loss">Așteptare pachete pierdute</entry>
+	<entry id="40023" string="Disable intensity stereo phase inversion"/>
       </section>
 
       <section name="SndFile">
@@ -1064,6 +1109,9 @@
 	<entry id="50004" string="unsigned">nesemnat</entry>
 	<entry id="50005" string="Integer">Integru</entry>
 	<entry id="50006" string="Float">Plutire</entry>
+	<entry id="50007" string="Dithering"/>
+	<entry id="50008" string="Apply dither when reducing sample resolution"/>
+	<entry id="50009" string="Dither type"/>
       </section>
 
       <section name="Channels">
@@ -1123,6 +1171,18 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Voce (incl. râsete etc.)</entry>
 	<entry id="50406" string="Speech">Cuvântare</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Canale ieșire</entry>
+	<entry id="50501" string="Channel configuration">Configurare canal</entry>
+	<entry id="50502" string="Redirect bass content to LFE channel"/>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment"/>
+	<entry id="50601" string="Adjustment"/>
+	<entry id="50602" string="%1 dB"/>
+      </section>
     </section>
 
     <section name="Taggers">
@@ -1136,9 +1196,9 @@
     <section name="Verifiers">
 
       <section name="AccurateRip">
-	<entry id="70000" string="Configure AccurateRip">Configurează Acuratețea Extragerii</entry>
+	<entry id="70000" string="Configure AccurateRip">Configurează AccurateRip</entry>
 	<entry id="70001" string="General settings">Setări generale</entry>
-	<entry id="70002" string="Enable AccurateRip">Pornește Acuratețea Extragerii</entry>
+	<entry id="70002" string="Enable AccurateRip">Pornește AccurateRip</entry>
 	<entry id="70003" string="Database URL">URL bază de date</entry>
 	<entry id="70004" string="Cache">Memorie</entry>
 	<entry id="70005" string="Enable cache">Pornește memoria</entry>
@@ -1162,16 +1222,20 @@
 	<entry id="70023" string="not present">absent</entry>
 	<entry id="70024" string="not detected">nedetectat</entry>
 	<entry id="70025" string="disabled">inactiv</entry>
+	<entry id="70026" string="Options"/>
+	<entry id="70027" string="Notify when a disc is not found in the database"/>
+	<entry id="70028" string="Notify when all tracks have been successfully verified"/>
 
 	<section name="Messages">
-	  <entry id="70050" string="AccurateRip configuration">Configuratia Extragerii Curate</entry>
-	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">CD drive-ul dvs. nu poate fi găsit în baza de date a Extragerii Curate.&#10;&#10;Nume drive: %1</entry>
+	  <entry id="70050" string="AccurateRip configuration">Configuratia AccurateRip</entry>
+	  <entry id="70051" string="Your CD drive could not be found in the AccurateRip database.&#10;&#10;Drive name: %1&#10;&#10;Would you like to run an automatic drive offset detection now?">CD drive-ul dvs. nu poate fi găsit în baza de date a AccurateRip.&#10;&#10;Nume drive: %1</entry>
 	  <entry id="70052" string="Do not ask again">Nu întreba din nou</entry>
-	  <entry id="70053" string="AccurateRip offset detection">Detectarea Extragerii Curate închisă</entry>
-	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Discul introdus nu poate fi găsit în baza de date a Extragerii Curate.</entry>
-	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Vă rugăm introduceți alt disc în CD drive și apăsați OK.&#10;&#10;Discul trebuie să fie prezent in baza de date a Extragerii Curate. Șansele cresc&#10;ca discul dvs să fie foarte popular și să fi fost extras de alti utilizatori înaintea dvs.</entry>
+	  <entry id="70053" string="AccurateRip offset detection">Detectarea AccurateRip închisă</entry>
+	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Discul introdus nu poate fi găsit în baza de date a AccurateRip.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Vă rugăm introduceți alt disc în CD drive și apăsați OK.&#10;&#10;Discul trebuie să fie prezent in baza de date a AccurateRip. Șansele cresc&#10;ca discul dvs să fie foarte popular și să fi fost extras de alti utilizatori înaintea dvs.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">Detectarea fără setări necesită verificarea unui alt disc.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Drive-ul fără setări a fost detectat cu succes și configurat la %1 prezentare.</entry>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip."/>
 	</section>
       </section>
     </section>
@@ -1236,6 +1300,7 @@
 	<entry id="80406" string="faster">rapidă</entry>
 	<entry id="80407" string="better">mai bună</entry>
 	<entry id="80408" string="%1 kbps">%1 kbps</entry>
+	<entry id="80409" string="Create correction file"/>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1381,16 +1446,16 @@
 	  <entry id="103209" string="Original album">Origine album</entry>
 	  <entry id="103210" string="Original lyrics writer">Origine compozitor versuri</entry>
 	  <entry id="103211" string="Original release year">An realizare original</entry>
-	  <entry id="103212" string="Musical key/tempo"/>
+	  <entry id="103212" string="Musical key/tempo">Notă muzicală/tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
-	  <entry id="103214" string="Initial key"/>
+	  <entry id="103214" string="Initial key">Notă inițială</entry>
 	</section>
 
 	<section name="Publisher">
 	  <entry id="103300" string="Publisher">Producător</entry>
 	  <entry id="103301" string="Publisher information">Informații producător</entry>
 	  <entry id="103302" string="Publisher / label">Producător / etichetă</entry>
-	  <entry id="103303" string="Media type"/>
+	  <entry id="103303" string="Media type">Tip media</entry>
 	  <entry id="103304" string="Catalog number">Număr de catalog</entry>
 	  <entry id="103305" string="Barcode">Cod de bare</entry>
 	  <entry id="103307" string="Webpage URLs">Pagină Web URL</entry>
@@ -1403,12 +1468,17 @@
 	</section>
 
 	<section name="Lyrics">
-	  <entry id="103350" string="Lyrics"/>
+	  <entry id="103350" string="Lyrics">Versuri</entry>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Notă</entry>
+	  <entry id="103361" string="none"/>
 	</section>
 
 	<section name="Configuration">
-	  <entry id="103400" string="Behavior"/>
-	  <entry id="103401" string="Clear album artist field if it matches track artist"/>
+	  <entry id="103400" string="Behavior">Comportament</entry>
+	  <entry id="103401" string="Clear album artist field if it matches track artist">Șterge câmpul artist din album dacă se potrivește cu artistul melodiei</entry>
 	</section>
 
 	<section name="Errors">
@@ -1439,7 +1509,7 @@
 	  <entry id="104110" string="Save conversion logs with audio files">Salvează îinregistrările conversiilor cu fișiere audio</entry>
 	  <entry id="104111" string="Audio CD ripping logs only">Înregistrează doar Audio CD extrase</entry>
 	  <entry id="104112" string="Filename pattern">Model nume fișier</entry>
-	  <entry id="104113" string="Log complete file paths"/>
+	  <entry id="104113" string="Log complete file paths">Înregistrați căile complete ale fișierelor</entry>
 	</section>
       </section>
 

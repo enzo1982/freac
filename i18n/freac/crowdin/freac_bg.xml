@@ -38,7 +38,7 @@
     <entry id="313" string="Composer">Композитор</entry>
     <entry id="314" string="Tempo">Темпо</entry>
     <entry id="315" string="ISRC">ISRC</entry>
-    <entry id="316" string="Musical key"/>
+    <entry id="316" string="Musical key">Музикален ключ</entry>
 
     <entry id="350" string="unknown artist">неизвестен изпълнител</entry>
     <entry id="351" string="unknown title">неизвестно заглавие</entry>
@@ -48,8 +48,8 @@
     <entry id="355" string="unknown conductor">неизвестен диригент</entry>
     <entry id="356" string="unknown composer">неизвестен композитор</entry>
     <entry id="357" string="unknown album artist">неизвестен изпълнител на албума</entry>
-    <entry id="358" string="unknown tempo"/>
-    <entry id="359" string="unknown key"/>
+    <entry id="358" string="unknown tempo">неизвестно темпо</entry>
+    <entry id="359" string="unknown key">неизвестен ключ</entry>
 
     <entry id="380" string="hidden track">скрит запис/песен/</entry>
 
@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">Старт на процеса кодиране (Изтриване на ориг. файлове)</entry>
       <entry id="2011" string="Pause/resume encoding">Пауза/Продължаване на кодирането</entry>
       <entry id="2012" string="Stop encoding">Стоп на кодирането</entry>
+      <entry id="2013" string="Open the output splitting tool"/>
     </section>
 
     <section name="Joblist">
@@ -400,7 +401,7 @@
       <entry id="5003" string="Language">Език</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Интерфейс</entry>
-      <entry id="5006" string="Tags">Тагове</entry>
+      <entry id="5006" string="Metadata"/>
       <entry id="5007" string="Components">Компоненти</entry>
       <entry id="5008" string="Decoders">Декодери</entry>
       <entry id="5009" string="Output">Изходен</entry>
@@ -421,36 +422,40 @@
       <entry id="5024" string="Taggers">Тагери</entry>
       <entry id="5025" string="Processing">Обработка</entry>
       <entry id="5026" string="Additional arguments">Допълнителни аргументи</entry>
+      <entry id="5027" string="Output files"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Конфигурация на енкодера</entry>
 	<entry id="5101" string="Encoder">Енкодер</entry>
-	<entry id="5102" string="Output folder">Изходна папка</entry>
-	<entry id="5103" string="Select">Избиране...</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Изберете папка, където кодираните файлове ще бъдат поставени</entry>
-	<entry id="5105" string="Use input file folder if possible">Папката на входящия файл (ако е възможно)</entry>
-	<entry id="5106" string="Allow overwriting input file">Презаписване на входящия файл</entry>
-	<entry id="5107" string="Options">Опции</entry>
-	<entry id="5108" string="Filename pattern">Шаблон за име на файла</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Паралелно Кодиране (в движение)</entry>
-	<entry id="5110" string="Keep ripped Wave files">Запазване на Wave файловете</entry>
-	<entry id="5111" string="Encode to a single file">Кодиране в един файл</entry>
-	<entry id="5112" string="Output filenames">Имена на изходните файлове</entry>
-	<entry id="5113" string="Allow Unicode characters">Разрешаване на Unicode символи</entry>
-	<entry id="5114" string="Replace spaces with underscores">Замяна на интервалите</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Премахване обработените песни от задачите</entry>
-	<entry id="5116" string="Add encoded files to joblist">Добавяне кодираните файлове в задачите</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Добавяне последователни номера към файловете с еднакви имена</entry>
-	<entry id="5118" string="Keep time stamps of source files">Запазване времето на оригиналните файлове</entry>
+	<entry id="5102" string="Options">Опции</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Паралелно Кодиране (в движение)</entry>
+	<entry id="5104" string="Keep ripped Wave files">Запазване на Wave файловете</entry>
+	<entry id="5105" string="Encode to a single file">Кодиране в един файл</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Премахване обработените песни от задачите</entry>
+	<entry id="5107" string="Add output files to joblist">Добавяне кодираните файлове в задачите</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Изходна папка</entry>
+	<entry id="5151" string="Use input file folder if possible">Папката на входящия файл (ако е възможно)</entry>
+	<entry id="5152" string="Allow overwriting input file">Презаписване на входящия файл</entry>
+	<entry id="5153" string="Select">Избиране...</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Изберете папка, където кодираните файлове ще бъдат поставени</entry>
+	<entry id="5155" string="Output filenames">Имена на изходните файлове</entry>
+	<entry id="5156" string="Filename pattern">Шаблон за име на файла</entry>
+	<entry id="5157" string="Allow Unicode characters">Разрешаване на Unicode символи</entry>
+	<entry id="5158" string="Replace spaces with underscores">Замяна на интервалите</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Добавяне последователни номера към файловете с еднакви имена</entry>
+	<entry id="5160" string="Keep time stamps of source files">Запазване времето на оригиналните файлове</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available"/>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Изходната папка не съществува! Искате ли да я създадете?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Изходната папка не съществува! Искате ли да я създадете?</entry>
 	</section>
       </section>
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Създаване на плейлисти</entry>
-	<entry id="5201" string="Create cue sheets">Създаване на CUE листи</entry>
 	<entry id="5202" string="Output folder">Изходна папка</entry>
 	<entry id="5203" string="Select">Избиране...</entry>
 	<entry id="5204" string="Use encoder output folder">Изходната папка на енкодера</entry>
@@ -459,6 +464,17 @@
 	<entry id="5207" string="Output filenames">Имена на изходните файлове</entry>
 	<entry id="5208" string="Configure plugin">Конфигуриране plugin</entry>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Създаване само на един плейлист и/или файл с CUE лист за преобразуване</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets">CUE листи</entry>
+	<entry id="5251" string="Create cue sheets">Създаване на CUE листи</entry>
+	<entry id="5252" string="Embedded cue sheets"/>
+	<entry id="5253" string="Read cue sheets embedded in metadata">Предпочитам CUE листи вградени в метаданните</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">Предпочитам CUE листи с информация за страницата</entry>
+	<entry id="5255" string="Output folder and filenames"/>
+	<entry id="5256" string="Note"/>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section."/>
       </section>
 
       <section name="CDDB">
@@ -475,7 +491,7 @@
 	<entry id="5310" string="Proxy settings">Прокси настройки</entry>
 	<entry id="5311" string="Options">Опции</entry>
 	<entry id="5312" string="Automatic CDDB queries">Автом. заявки към CDDB</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Предпоч. CDDB пред CD Текст</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Предпоч. CDDB пред CD-Текст</entry>
 	<entry id="5314" string="Enable CDDB cache">Включен CDDB кеш</entry>
 	<entry id="5315" string="Automatization">Автоматизация</entry>
 	<entry id="5316" string="Always select first entry">Винаги избор на 1-вия запис</entry>
@@ -503,23 +519,21 @@
 	<entry id="5401" string="Edit language file">Редакция на езиковия файл</entry>
 	<entry id="5402" string="Information">Информация</entry>
 	<entry id="5403" string="Encoding">Кодиране</entry>
-	<entry id="5404" string="Author">Автор</entry>
+	<entry id="5404" string="Author(s)">Автор(и)</entry>
 	<entry id="5405" string="URL">Адрес</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Тагове</entry>
-	<entry id="5501" string="Tag formats">Таг формати</entry>
+	<entry id="5500" string="Tag formats">Таг формати</entry>
+	<entry id="5501" string="Tag fields"/>
 	<entry id="5502" string="Default comment string">Подразбираем коментар</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Замяна на съществуващите коментари с подразбираемия</entry>
 	<entry id="5504" string="Filename pattern">Шаблон за име на файла</entry>
 	<entry id="5505" string="Encoding">Кодиране</entry>
 	<entry id="5506" string="Comments">Коментари</entry>
 	<entry id="5507" string="Cover art">Обложка</entry>
-	<entry id="5508" string="Read cover art">Прочитане на обложка</entry>
 	<entry id="5509" string="Read cover art from tags">Прочитане на обложка от тагове</entry>
 	<entry id="5510" string="Read cover art from files">Прочитане на обложка от файлове</entry>
-	<entry id="5511" string="Write cover art">Записване на обложка</entry>
 	<entry id="5512" string="Write cover art to tags">Записване на обложката в таговете</entry>
 	<entry id="5513" string="Write cover art to files">Записване на обложката във файловете</entry>
 	<entry id="5514" string="Add reference to audio file tag">Препратка към таг на аудио файл</entry>
@@ -530,12 +544,14 @@
 	<entry id="5519" string="Special fields">Специални полета</entry>
 	<entry id="5520" string="Write CD table of contents">Записване на CD таблица със съдържание</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Запазване информацията за сила на звука</entry>
-	<entry id="5522" string="Cue sheets">CUE листи</entry>
-	<entry id="5523" string="Read cue sheets embedded in metadata">Предпочитам CUE листи вградени в метаданните</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">Предпочитам CUE листи с информация за страницата</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Добавяне нула за проследяване номера на песен под 10</entry>
 	<entry id="5526" string="File size limit">Ограничение за размер на файла</entry>
 	<entry id="5527" string="unlimited">Без ограничение</entry>
+	<entry id="5528" string="Miscellaneous"/>
+	<entry id="5529" string="Fill missing fields with information obtained from file names"/>
+	<entry id="5530" string="Restrict file names"/>
+	<entry id="5531" string="Cover art tags"/>
+	<entry id="5532" string="Cover art files"/>
       </section>
 
       <section name="Joblist">
@@ -682,13 +698,39 @@
 	<entry id="8201" string="%1 errors while processing job">%1 грешки при обработката на задачата</entry>
 	<entry id="8202" string="select an entry for details">избиране на запис за подробни данни</entry>
       </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool"/>
+	<entry id="8301" string="%1 track(s) in joblist"/>
+	<entry id="8302" string="Split mode"/>
+	<entry id="8303" string="Split by duration"/>
+	<entry id="8304" string="Duration per part"/>
+	<entry id="8305" string="at least"/>
+	<entry id="8306" string="approximately"/>
+	<entry id="8307" string="at most"/>
+	<entry id="8308" string="exactly"/>
+	<entry id="8309" string="second(s)"/>
+	<entry id="8310" string="minute(s)"/>
+	<entry id="8311" string="hour(s)"/>
+	<entry id="8312" string="Fixed number of parts"/>
+	<entry id="8313" string="Number of parts"/>
+	<entry id="8314" string="Split upon metadata change"/>
+	<entry id="8315" string="Metadata pattern to compare"/>
+	<entry id="8316" string="Split at track boundaries"/>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part"/>
+	<entry id="8318" string="Repeat duration"/>
+	<entry id="8319" string="Output filenames"/>
+	<entry id="8320" string="Filename pattern"/>
+	<entry id="8321" string="Convert"/>
+	<entry id="8322" string="Save"/>
+      </section>
     </section>
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Активно CD-ROM устройство</entry>
       <entry id="9001" string="Set drive speed limit">Пределна скорост</entry>
       <entry id="9002" string="CD information">CD информация</entry>
-      <entry id="9003" string="Read CD Text">Четене на CD Текст</entry>
+      <entry id="9003" string="Read CD-Text">Четене на CD-Текст</entry>
       <entry id="9004" string="Read cdplayer.ini">Четене на cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Ripper настройки</entry>
       <entry id="9006" string="Activate cdparanoia mode">cdparanoia режим</entry>
@@ -728,6 +770,8 @@
 	<entry id="12003" string="RNNoise Noise Reduction">Намаляване шума RNNoise</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Промяна Темпо/Тоналност на звука</entry>
 	<entry id="12005" string="HDCD Decoder">HDCD декодер</entry>
+	<entry id="12006" string="Matrix Surround Decoder"/>
+	<entry id="12007" string="Volume Adjustment"/>
       </section>
 
       <section name="Verifiers">
@@ -850,7 +894,7 @@
 	<section name="Audio processing">
 	  <entry id="32400" string="Highpass filter">Филтър за ВИСОКИ честоти</entry>
 	  <entry id="32401" string="Set Highpass frequency (Hz)">Зададена висока честота (Hz)</entry>
-	  <entry id="32402" string="Set Highpass width (Hz)">Зад.ширина висока честота(Hz)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">Зад.ширина висока честота (Hz)</entry>
 	  <entry id="32403" string="Lowpass filter">Филтър за ниски честоти</entry>
 	  <entry id="32404" string="Set Lowpass frequency (Hz)">Зададена ниска честота (Hz)</entry>
 	  <entry id="32405" string="Set Lowpass width (Hz)">Зад.ширина ниска честота (Hz)</entry>
@@ -1029,6 +1073,7 @@
 	<entry id="40020" string="Options">Опции</entry>
 	<entry id="40021" string="Enable discontinous transmission">Включен непрекъснат трансфер</entry>
 	<entry id="40022" string="Expected packet loss">Очакван пакет loss(със загуба)</entry>
+	<entry id="40023" string="Disable intensity stereo phase inversion"/>
       </section>
 
       <section name="SndFile">
@@ -1064,6 +1109,9 @@
 	<entry id="50004" string="unsigned">неподписан</entry>
 	<entry id="50005" string="Integer">цяло число</entry>
 	<entry id="50006" string="Float">Плаващо</entry>
+	<entry id="50007" string="Dithering"/>
+	<entry id="50008" string="Apply dither when reducing sample resolution"/>
+	<entry id="50009" string="Dither type"/>
       </section>
 
       <section name="Channels">
@@ -1123,6 +1171,18 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Глас (вкл. смях и др.)</entry>
 	<entry id="50406" string="Speech">Говор</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Изходни канали</entry>
+	<entry id="50501" string="Channel configuration">Конфигурация на канала</entry>
+	<entry id="50502" string="Redirect bass content to LFE channel"/>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment"/>
+	<entry id="50601" string="Adjustment"/>
+	<entry id="50602" string="%1 dB"/>
+      </section>
     </section>
 
     <section name="Taggers">
@@ -1162,6 +1222,9 @@
 	<entry id="70023" string="not present">не присъства</entry>
 	<entry id="70024" string="not detected">не е открит</entry>
 	<entry id="70025" string="disabled">изключено</entry>
+	<entry id="70026" string="Options"/>
+	<entry id="70027" string="Notify when a disc is not found in the database"/>
+	<entry id="70028" string="Notify when all tracks have been successfully verified"/>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">AccurateRip конфигурация</entry>
@@ -1172,6 +1235,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Моля, поставете друг диск в CD устройството и натиснете OK.&#10;&#10;Дискът трябва да присъства в базата данни с AccurateRip. Шансът за това е най-висок&#10;за популярни CD-та, които са били Ripнати от други потребители преди това.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">Друг диск трябва да бъде проверен за откриване на отместване.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Отместването на устройството е успешно открито и конфигурирано с %1 проби.</entry>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip."/>
 	</section>
       </section>
     </section>
@@ -1236,6 +1300,7 @@
 	<entry id="80406" string="faster">по-бързо</entry>
 	<entry id="80407" string="better">по-добро</entry>
 	<entry id="80408" string="%1 kbps">%1 kbps</entry>
+	<entry id="80409" string="Create correction file"/>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1381,9 +1446,9 @@
 	  <entry id="103209" string="Original album">Ориг. албум</entry>
 	  <entry id="103210" string="Original lyrics writer">Ориг. текст</entry>
 	  <entry id="103211" string="Original release year">Ориг. година на издаване</entry>
-	  <entry id="103212" string="Musical key/tempo"/>
+	  <entry id="103212" string="Musical key/tempo">Музикален ключ/темпо</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
-	  <entry id="103214" string="Initial key"/>
+	  <entry id="103214" string="Initial key">Първоначален ключ</entry>
 	</section>
 
 	<section name="Publisher">
@@ -1404,6 +1469,11 @@
 
 	<section name="Lyrics">
 	  <entry id="103350" string="Lyrics"/>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Оценка</entry>
+	  <entry id="103361" string="none"/>
 	</section>
 
 	<section name="Configuration">

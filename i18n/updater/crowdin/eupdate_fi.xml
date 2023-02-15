@@ -26,12 +26,12 @@
     <entry id="13" string="unknown">tuntematon</entry>
     <entry id="14" string="Installing files...">Asennetaan tiedostoja...</entry>
     <entry id="15" string="Installing file:">Asennetaan tiedostoa:</entry>
-    <entry id="16" string="Downloading file:">Ladataan tietostoa:</entry>
-    <entry id="17" string="Extracting file:"/>
+    <entry id="16" string="Downloading file:">Ladataan tiedostoa:</entry>
+    <entry id="17" string="Extracting file:">Puretaan tiedostoa:</entry>
     <entry id="18" string="Update complete">Päivitys onnistui</entry>
     <entry id="19" string="Your application has been successfully updated!">Ohjelma on päivitetty onnistuneesti!</entry>
     <entry id="20" string="Error">Virhe</entry>
     <entry id="21" string="Error downloading package!">Ohjelman lataaminen epäonnistui!</entry>
-    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied."/>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Virhe asentaessa &quot;%1&quot;!</entry>
   </data>
 </LangFile>

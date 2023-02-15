@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">easyUpdate</property>
+    <property name="version">0.3</property>
+    <property name="language">Greek / Ελληνικά</property>
+    <property name="righttoleft">false</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">freac.xml</property>
+    <property name="author">Μάριος Μπαλασόπουλος &lt;thunderstrike116@gmail.com&gt;</property>
+    <property name="url">http://www.chapter0.net/easyUpdate/</property>
+  </info>
+  <data>
+    <entry id="1" string="Cancel">Άκυρο</entry>
+    <entry id="2" string="Install">Εγκατάσταση</entry>
+    <entry id="3" string="Show unstable releases">Εμφάνιση ασταθών εκδόσεων (unstable)</entry>
+    <entry id="4" string="Select the updated program version to be installed:">Επιλέξτε την ενημερωμένη έκδοση προγράμματος που θα εγκατασταθεί:</entry>
+    <entry id="5" string="You can select optional components to be installed:">Μπορείτε να επιλέξετε προαιρετικά στοιχεία που θα εγκατασταθούν:</entry>
+    <entry id="6" string="Version ID">Αναγνωριστικό Έκδοσης</entry>
+    <entry id="7" string="Package">Πακέτο</entry>
+    <entry id="8" string="Description">Περιγραφή</entry>
+    <entry id="9" string="Latest">Τελευταία</entry>
+    <entry id="10" string="Size">Μέγεθος</entry>
+    <entry id="11" string="Yes">Ναι</entry>
+    <entry id="12" string="No">Οχι</entry>
+    <entry id="13" string="unknown">άγνωστος</entry>
+    <entry id="14" string="Installing files...">Εγκατάσταση αρχείων...</entry>
+    <entry id="15" string="Installing file:">Εγκατάσταση αρχείου:</entry>
+    <entry id="16" string="Downloading file:">Λήψη αρχείου:</entry>
+    <entry id="17" string="Extracting file:">Εξαγωγή αρχείου:</entry>
+    <entry id="18" string="Update complete">Η ενημέρωση ολοκληρώθηκε</entry>
+    <entry id="19" string="Your application has been successfully updated!">Η εφαρμογή σας ενημερώθηκε με επιτυχία!</entry>
+    <entry id="20" string="Error">Σφάλμα</entry>
+    <entry id="21" string="Error downloading package!">Σφάλμα λήψης πακέτου!</entry>
+    <entry id="22" string="Error installing &quot;%1&quot;!&#10;&#10;Access to the application directory was denied.">Σφάλμα κατά την εγκατάσταση του &quot;%1&quot;!&#10;&#10;Δεν επιτράπηκε η πρόσβαση στον κατάλογο εφαρμογής.</entry>
+  </data>
+</LangFile>

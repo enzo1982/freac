@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">Start the encoding process (deleting original files)</entry>
       <entry id="2011" string="Pause/resume encoding">Pause/resume encoding</entry>
       <entry id="2012" string="Stop encoding">Stop encoding</entry>
+      <entry id="2013" string="Open the output splitting tool">Open the output splitting tool</entry>
     </section>
 
     <section name="Joblist">
@@ -400,7 +401,7 @@
       <entry id="5003" string="Language">Language</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Interface</entry>
-      <entry id="5006" string="Tags">Tags</entry>
+      <entry id="5006" string="Metadata">Metadata</entry>
       <entry id="5007" string="Components">Components</entry>
       <entry id="5008" string="Decoders">Decoders</entry>
       <entry id="5009" string="Output">Output</entry>
@@ -421,36 +422,40 @@
       <entry id="5024" string="Taggers">Taggers</entry>
       <entry id="5025" string="Processing">Processing</entry>
       <entry id="5026" string="Additional arguments">Additional arguments</entry>
+      <entry id="5027" string="Output files">Output files</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configure encoder</entry>
 	<entry id="5101" string="Encoder">Encoder</entry>
-	<entry id="5102" string="Output folder">Output folder</entry>
-	<entry id="5103" string="Select">Select</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Select the folder in which the encoded files will be placed</entry>
-	<entry id="5105" string="Use input file folder if possible">Use input file folder if possible</entry>
-	<entry id="5106" string="Allow overwriting input file">Allow overwriting input file</entry>
-	<entry id="5107" string="Options">Options</entry>
-	<entry id="5108" string="Filename pattern">Filename pattern</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Encode 'On-The-Fly'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Keep ripped Wave files</entry>
-	<entry id="5111" string="Encode to a single file">Encode to a single file</entry>
-	<entry id="5112" string="Output filenames">Output filenames</entry>
-	<entry id="5113" string="Allow Unicode characters">Allow Unicode characters</entry>
-	<entry id="5114" string="Replace spaces with underscores">Replace spaces with underscores</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Remove processed tracks from joblist</entry>
-	<entry id="5116" string="Add encoded files to joblist">Add encoded files to joblist</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Append sequential numbers to otherwise identical filenames</entry>
-	<entry id="5118" string="Keep time stamps of source files">Keep time stamps of source files</entry>
+	<entry id="5102" string="Options">Options</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Encode 'On-The-Fly'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Keep ripped Wave files</entry>
+	<entry id="5105" string="Encode to a single file">Encode to a single file</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Remove processed tracks from joblist</entry>
+	<entry id="5107" string="Add output files to joblist">Add output files to joblist</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Output folder</entry>
+	<entry id="5151" string="Use input file folder if possible">Use input file folder if possible</entry>
+	<entry id="5152" string="Allow overwriting input file">Allow overwriting input file</entry>
+	<entry id="5153" string="Select">Select</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Select the folder in which the encoded files will be placed</entry>
+	<entry id="5155" string="Output filenames">Output filenames</entry>
+	<entry id="5156" string="Filename pattern">Filename pattern</entry>
+	<entry id="5157" string="Allow Unicode characters">Allow Unicode characters</entry>
+	<entry id="5158" string="Replace spaces with underscores">Replace spaces with underscores</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Append sequential numbers to otherwise identical filenames</entry>
+	<entry id="5160" string="Keep time stamps of source files">Keep time stamps of source files</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available">Use &lt;filename&gt; when title information is not available</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">The output folder does not exist! Do you want to create it?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">The output folder does not exist! Do you want to create it?</entry>
 	</section>
       </section>
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Create playlists</entry>
-	<entry id="5201" string="Create cue sheets">Create cue sheets</entry>
 	<entry id="5202" string="Output folder">Output folder</entry>
 	<entry id="5203" string="Select">Select</entry>
 	<entry id="5204" string="Use encoder output folder">Use encoder output folder</entry>
@@ -459,6 +464,17 @@
 	<entry id="5207" string="Output filenames">Output filenames</entry>
 	<entry id="5208" string="Configure plugin">Configure plugin</entry>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Create only a single playlist and/or cue sheet file per conversion</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets">Cue sheets</entry>
+	<entry id="5251" string="Create cue sheets">Create cue sheets</entry>
+	<entry id="5252" string="Embedded cue sheets">Embedded cue sheets</entry>
+	<entry id="5253" string="Read cue sheets embedded in metadata">Read cue sheets embedded in metadata</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">Prefer cue sheets over chapter information</entry>
+	<entry id="5255" string="Output folder and filenames">Output folder and filenames</entry>
+	<entry id="5256" string="Note">Note</entry>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section.">Cue sheet output folder and filename settings are configured in the Playlists section.</entry>
       </section>
 
       <section name="CDDB">
@@ -475,7 +491,7 @@
 	<entry id="5310" string="Proxy settings">Proxy settings</entry>
 	<entry id="5311" string="Options">Options</entry>
 	<entry id="5312" string="Automatic CDDB queries">Automatic CDDB queries</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Prefer CDDB over CD Text</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Prefer CDDB over CD-Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Enable CDDB cache</entry>
 	<entry id="5315" string="Automatization">Automatization</entry>
 	<entry id="5316" string="Always select first entry">Always select first entry</entry>
@@ -503,23 +519,21 @@
 	<entry id="5401" string="Edit language file">Edit language file</entry>
 	<entry id="5402" string="Information">Information</entry>
 	<entry id="5403" string="Encoding">Encoding</entry>
-	<entry id="5404" string="Author">Author</entry>
+	<entry id="5404" string="Author(s)">Author(s)</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Tags</entry>
-	<entry id="5501" string="Tag formats">Tag formats</entry>
+	<entry id="5500" string="Tag formats">Tag formats</entry>
+	<entry id="5501" string="Tag fields">Tag fields</entry>
 	<entry id="5502" string="Default comment string">Default comment string</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Replace existing comments with default comment</entry>
 	<entry id="5504" string="Filename pattern">Filename pattern</entry>
 	<entry id="5505" string="Encoding">Encoding</entry>
 	<entry id="5506" string="Comments">Comments</entry>
 	<entry id="5507" string="Cover art">Cover art</entry>
-	<entry id="5508" string="Read cover art">Read cover art</entry>
 	<entry id="5509" string="Read cover art from tags">Read cover art from tags</entry>
 	<entry id="5510" string="Read cover art from files">Read cover art from files</entry>
-	<entry id="5511" string="Write cover art">Write cover art</entry>
 	<entry id="5512" string="Write cover art to tags">Write cover art to tags</entry>
 	<entry id="5513" string="Write cover art to files">Write cover art to files</entry>
 	<entry id="5514" string="Add reference to audio file tag">Add reference to audio file tag</entry>
@@ -530,12 +544,14 @@
 	<entry id="5519" string="Special fields">Special fields</entry>
 	<entry id="5520" string="Write CD table of contents">Write CD table of contents</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Preserve Replay Gain information</entry>
-	<entry id="5522" string="Cue sheets">Cue sheets</entry>
-	<entry id="5523" string="Read cue sheets embedded in metadata">Read cue sheets embedded in metadata</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">Prefer cue sheets over chapter information</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Prepend zero to track numbers below 10</entry>
 	<entry id="5526" string="File size limit">File size limit</entry>
 	<entry id="5527" string="unlimited">unlimited</entry>
+	<entry id="5528" string="Miscellaneous">Miscellaneous</entry>
+	<entry id="5529" string="Fill missing fields with information obtained from file names">Fill missing fields with information obtained from file names</entry>
+	<entry id="5530" string="Restrict file names">Restrict file names</entry>
+	<entry id="5531" string="Cover art tags">Cover art tags</entry>
+	<entry id="5532" string="Cover art files">Cover art files</entry>
       </section>
 
       <section name="Joblist">
@@ -682,13 +698,39 @@
 	<entry id="8201" string="%1 errors while processing job">%1 errors while processing job</entry>
 	<entry id="8202" string="select an entry for details">select an entry for details</entry>
       </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool">Output splitting tool</entry>
+	<entry id="8301" string="%1 track(s) in joblist">%1 track(s) in joblist</entry>
+	<entry id="8302" string="Split mode">Split mode</entry>
+	<entry id="8303" string="Split by duration">Split by duration</entry>
+	<entry id="8304" string="Duration per part">Duration per part</entry>
+	<entry id="8305" string="at least">at least</entry>
+	<entry id="8306" string="approximately">approximately</entry>
+	<entry id="8307" string="at most">at most</entry>
+	<entry id="8308" string="exactly">exactly</entry>
+	<entry id="8309" string="second(s)">second(s)</entry>
+	<entry id="8310" string="minute(s)">minute(s)</entry>
+	<entry id="8311" string="hour(s)">hour(s)</entry>
+	<entry id="8312" string="Fixed number of parts">Fixed number of parts</entry>
+	<entry id="8313" string="Number of parts">Number of parts</entry>
+	<entry id="8314" string="Split upon metadata change">Split upon metadata change</entry>
+	<entry id="8315" string="Metadata pattern to compare">Metadata pattern to compare</entry>
+	<entry id="8316" string="Split at track boundaries">Split at track boundaries</entry>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part">Repeat end of previous part at beginning of each part</entry>
+	<entry id="8318" string="Repeat duration">Repeat duration</entry>
+	<entry id="8319" string="Output filenames">Output filenames</entry>
+	<entry id="8320" string="Filename pattern">Filename pattern</entry>
+	<entry id="8321" string="Convert">Convert</entry>
+	<entry id="8322" string="Save">Save</entry>
+      </section>
     </section>
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Active CD-ROM drive</entry>
       <entry id="9001" string="Set drive speed limit">Set drive speed limit</entry>
       <entry id="9002" string="CD information">CD information</entry>
-      <entry id="9003" string="Read CD Text">Read CD Text</entry>
+      <entry id="9003" string="Read CD-Text">Read CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Read cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Ripper settings</entry>
       <entry id="9006" string="Activate cdparanoia mode">Activate cdparanoia mode</entry>
@@ -728,6 +770,8 @@
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise Noise Reduction</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band Tempo/Pitch Changer</entry>
 	<entry id="12005" string="HDCD Decoder">HDCD Decoder</entry>
+	<entry id="12006" string="Matrix Surround Decoder">Matrix Surround Decoder</entry>
+	<entry id="12007" string="Volume Adjustment">Volume Adjustment</entry>
       </section>
 
       <section name="Verifiers">
@@ -1029,6 +1073,7 @@
 	<entry id="40020" string="Options">Options</entry>
 	<entry id="40021" string="Enable discontinous transmission">Enable discontinous transmission</entry>
 	<entry id="40022" string="Expected packet loss">Expected packet loss</entry>
+	<entry id="40023" string="Disable intensity stereo phase inversion">Disable intensity stereo phase inversion</entry>
       </section>
 
       <section name="SndFile">
@@ -1064,6 +1109,9 @@
 	<entry id="50004" string="unsigned">unsigned</entry>
 	<entry id="50005" string="Integer">Integer</entry>
 	<entry id="50006" string="Float">Float</entry>
+	<entry id="50007" string="Dithering">Dithering</entry>
+	<entry id="50008" string="Apply dither when reducing sample resolution">Apply dither when reducing sample resolution</entry>
+	<entry id="50009" string="Dither type">Dither type</entry>
       </section>
 
       <section name="Channels">
@@ -1123,6 +1171,18 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Voice (incl. laughter etc.)</entry>
 	<entry id="50406" string="Speech">Speech</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Output channels</entry>
+	<entry id="50501" string="Channel configuration">Channel configuration</entry>
+	<entry id="50502" string="Redirect bass content to LFE channel">Redirect bass content to LFE channel</entry>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment">Volume adjustment</entry>
+	<entry id="50601" string="Adjustment">Adjustment</entry>
+	<entry id="50602" string="%1 dB">%1 dB</entry>
+      </section>
     </section>
 
     <section name="Taggers">
@@ -1162,6 +1222,9 @@
 	<entry id="70023" string="not present">not present</entry>
 	<entry id="70024" string="not detected">not detected</entry>
 	<entry id="70025" string="disabled">disabled</entry>
+	<entry id="70026" string="Options">Options</entry>
+	<entry id="70027" string="Notify when a disc is not found in the database">Notify when a disc is not found in the database</entry>
+	<entry id="70028" string="Notify when all tracks have been successfully verified">Notify when all tracks have been successfully verified</entry>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">AccurateRip configuration</entry>
@@ -1172,6 +1235,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">Offset detection needs to check another disc.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">The drive offset has been successfully detected and configured to %1 samples.</entry>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip.">All tracks successfully verified with AccurateRip.</entry>
 	</section>
       </section>
     </section>
@@ -1236,6 +1300,7 @@
 	<entry id="80406" string="faster">faster</entry>
 	<entry id="80407" string="better">better</entry>
 	<entry id="80408" string="%1 kbps">%1 kbps</entry>
+	<entry id="80409" string="Create correction file">Create correction file</entry>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1404,6 +1469,11 @@
 
 	<section name="Lyrics">
 	  <entry id="103350" string="Lyrics">Lyrics</entry>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Rating</entry>
+	  <entry id="103361" string="none">none</entry>
 	</section>
 
 	<section name="Configuration">

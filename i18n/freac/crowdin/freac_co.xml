@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">Principià u trattamentu di cudificazione (cù a squassatura di i schedarii uriginale)</entry>
       <entry id="2011" string="Pause/resume encoding">Interrompe / cuntinuà a cudificazione</entry>
       <entry id="2012" string="Stop encoding">Piantà a cudificazione</entry>
+      <entry id="2013" string="Open the output splitting tool">Apre l’attrezzu di frazziunamentu d’esciuta</entry>
     </section>
 
     <section name="Joblist">
@@ -191,7 +192,7 @@
       <entry id="3012" string="Create playlist">Creà a lista di lettura</entry>
       <entry id="3013" string="Create cue sheet">Creà u fogliu di mischiera cue</entry>
       <entry id="3014" string="Select">Selezziunà</entry>
-      <entry id="3015" string="Encode to a single file">Cudificà ver di un schedariu unicu</entry>
+      <entry id="3015" string="Encode to a single file">Cudificà in un schedariu unicu</entry>
       <entry id="3016" string="Remove">Caccià</entry>
       <entry id="3017" string="Clear joblist">Viutà a lista di travagliu</entry>
       <entry id="3018" string="Use for all selected tracks">Impiegà per tutte e traccie selezziunate</entry>
@@ -299,7 +300,7 @@
 
       <section name="Convert">
 	<entry id="3700" string="Checking sample formats">Cuntrollu di i furmati di campiunariu</entry>
-	<entry id="3701" string="Checking for lossy to lossless conversion">Cuntrollu di cunversione da un furmatu cù perdita d’infurmazione ver di un furmatu senza perdita</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">Cuntrollu di cunversione da un furmatu cù perdita d’infurmazione versu un furmatu senza perdita</entry>
 	<entry id="3702" string="Checking output file names">Cuntrollu di i nomi di schedarii d’esciuta</entry>
 	<entry id="3703" string="Converting %1">Cunversione di %1</entry>
 	<entry id="3704" string="Verifying %1">Verificazione di %1</entry>
@@ -400,7 +401,7 @@
       <entry id="5003" string="Language">Lingua</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Interfaccia</entry>
-      <entry id="5006" string="Tags">Etichette</entry>
+      <entry id="5006" string="Metadata">Metadati</entry>
       <entry id="5007" string="Components">Cumpunenti</entry>
       <entry id="5008" string="Decoders">Discudificatori</entry>
       <entry id="5009" string="Output">Destinazione</entry>
@@ -421,36 +422,40 @@
       <entry id="5024" string="Taggers">Creatori d’etichetta</entry>
       <entry id="5025" string="Processing">Trattamentu</entry>
       <entry id="5026" string="Additional arguments">Parametri addiziunali</entry>
+      <entry id="5027" string="Output files">Schedarii d’esciuta</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Cunfigurà u cudificatore</entry>
 	<entry id="5101" string="Encoder">Cudificatore</entry>
-	<entry id="5102" string="Output folder">Cartulare di destinazione</entry>
-	<entry id="5103" string="Select">Selezziunà</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Selezziunà u cartulare di destinazione di i schedarii cudificati</entry>
-	<entry id="5105" string="Use input file folder if possible">Impiegà s’ellu hè pussibule u cartulare di u schedariu d’origine</entry>
-	<entry id="5106" string="Allow overwriting input file">Permette di rimpiazzà u schedariu d’origine</entry>
-	<entry id="5107" string="Options">Ozzioni</entry>
-	<entry id="5108" string="Filename pattern">Mudellu di nome di schedariu</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Cudificà da volu</entry>
-	<entry id="5110" string="Keep ripped Wave files">Cunservà i schedarii Wave estratti</entry>
-	<entry id="5111" string="Encode to a single file">Cudificà ver di un schedariu unicu</entry>
-	<entry id="5112" string="Output filenames">Nomi di schedariu d’esciuta</entry>
-	<entry id="5113" string="Allow Unicode characters">Permette i caratteri Unicode</entry>
-	<entry id="5114" string="Replace spaces with underscores">Rimpiazzà i spazii cù lineette basse (spaziu sottulineatu)</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Caccià da a lista di travagliu e traccie trattate</entry>
-	<entry id="5116" string="Add encoded files to joblist">Aghjunghje à a lista di travagliu i schedarii cudificati</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Aghjunghje un numeru sequenziale à i nomi di schedariu uguali</entry>
-	<entry id="5118" string="Keep time stamps of source files">Cunservà a data è l’ora di i schedarii d’origine</entry>
+	<entry id="5102" string="Options">Ozzioni</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Cudificà da volu</entry>
+	<entry id="5104" string="Keep ripped Wave files">Cunservà i schedarii Wave estratti</entry>
+	<entry id="5105" string="Encode to a single file">Cudificà in un schedariu unicu</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Caccià da a lista di travagliu e traccie trattate</entry>
+	<entry id="5107" string="Add output files to joblist">Aghjunghje i schedarii d’esciuta à a lista di travagliu</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Cartulare di destinazione</entry>
+	<entry id="5151" string="Use input file folder if possible">Impiegà s’ellu hè pussibule u cartulare di u schedariu d’origine</entry>
+	<entry id="5152" string="Allow overwriting input file">Permette di rimpiazzà u schedariu d’origine</entry>
+	<entry id="5153" string="Select">Selezziunà</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Selezziunà u cartulare di destinazione di i schedarii cudificati</entry>
+	<entry id="5155" string="Output filenames">Nomi di schedariu d’esciuta</entry>
+	<entry id="5156" string="Filename pattern">Mudellu di nome di schedariu</entry>
+	<entry id="5157" string="Allow Unicode characters">Permette i caratteri Unicode</entry>
+	<entry id="5158" string="Replace spaces with underscores">Rimpiazzà i spazii cù lineette basse (spaziu sottulineatu)</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Aghjunghje un numeru sequenziale à i nomi di schedariu uguali</entry>
+	<entry id="5160" string="Keep time stamps of source files">Cunservà a data è l’ora di i schedarii d’origine</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available">Impiegà &lt;filename&gt; quandu l’infurmazione di titulu ùn hè micca dispunibule</entry>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">U cartulare di destinazione ùn esiste micca ! Vulete creallu ?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">U cartulare di destinazione ùn esiste micca ! Vulete creallu ?</entry>
 	</section>
       </section>
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Creà e liste di lettura</entry>
-	<entry id="5201" string="Create cue sheets">Creà e foglii di mischiera cue</entry>
 	<entry id="5202" string="Output folder">Cartulare di destinazione</entry>
 	<entry id="5203" string="Select">Selezziunà</entry>
 	<entry id="5204" string="Use encoder output folder">Impiegà u cartulare di destinazione di u cudificatore</entry>
@@ -459,6 +464,17 @@
 	<entry id="5207" string="Output filenames">Nomi di schedariu d’esciuta</entry>
 	<entry id="5208" string="Configure plugin">Cunfigurà l’estensione</entry>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Creà solu una lista di lettura è/o un fogliu di mischiera cue à a cunversione</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets">Foglii di mischiera Cue</entry>
+	<entry id="5251" string="Create cue sheets">Creà i foglii di mischiera Cue</entry>
+	<entry id="5252" string="Embedded cue sheets">Foglii di mischiera Cue incurpurati</entry>
+	<entry id="5253" string="Read cue sheets embedded in metadata">Leghje i foglii di mischiera Cue incurpurati à i metadati</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">Preferisce i foglii di mischiera Cue à l’infurmazione di capitulu</entry>
+	<entry id="5255" string="Output folder and filenames">Cartulare è schedarii d’esciuta</entry>
+	<entry id="5256" string="Note">Nota</entry>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section.">E preferenze di u cartulare è i schedarii d’esciuta di u fogliu di mischiera Cue&#10;sò cunfigurati in a sezzione Lista di lettura.</entry>
       </section>
 
       <section name="CDDB">
@@ -475,7 +491,7 @@
 	<entry id="5310" string="Proxy settings">Preferenze Proxy</entry>
 	<entry id="5311" string="Options">Ozzioni</entry>
 	<entry id="5312" string="Automatic CDDB queries">Richieste CDDB autumatiche</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Preferisce CDDB à u testu CD</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Preferisce CDDB à u CD-Text</entry>
 	<entry id="5314" string="Enable CDDB cache">Attivà l’impiatta CDDB</entry>
 	<entry id="5315" string="Automatization">Autumatisazione</entry>
 	<entry id="5316" string="Always select first entry">Selezziunà sempre u primu elementu</entry>
@@ -503,23 +519,21 @@
 	<entry id="5401" string="Edit language file">Mudificà u schedariu di lingua</entry>
 	<entry id="5402" string="Information">Infurmazione</entry>
 	<entry id="5403" string="Encoding">Cudificazione</entry>
-	<entry id="5404" string="Author">Autore</entry>
-	<entry id="5405" string="URL">URL</entry>
+	<entry id="5404" string="Author(s)">Autore(i)</entry>
+	<entry id="5405" string="URL">Indirizzu web</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Etichette</entry>
-	<entry id="5501" string="Tag formats">Furmati d’etichetta</entry>
+	<entry id="5500" string="Tag formats">Furmati d’etichetta</entry>
+	<entry id="5501" string="Tag fields">Campi d’etichetta</entry>
 	<entry id="5502" string="Default comment string">Cummentu predefinitu</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Rimpiazzà i cummenti chì esistenu da quellu predefinitu</entry>
 	<entry id="5504" string="Filename pattern">Mudellu di nome di schedariu</entry>
 	<entry id="5505" string="Encoding">Cudificazione</entry>
 	<entry id="5506" string="Comments">Cummenti</entry>
 	<entry id="5507" string="Cover art">Cuprendula</entry>
-	<entry id="5508" string="Read cover art">Lettura di a cuprendula</entry>
 	<entry id="5509" string="Read cover art from tags">Leghje a cuprendula da l’etichette</entry>
 	<entry id="5510" string="Read cover art from files">Leghje a cuprendula da i schedarii</entry>
-	<entry id="5511" string="Write cover art">Scrittura di a cuprendula</entry>
 	<entry id="5512" string="Write cover art to tags">Scrive a cuprendula in l’etichette</entry>
 	<entry id="5513" string="Write cover art to files">Scrive a cuprendula in i schedarii</entry>
 	<entry id="5514" string="Add reference to audio file tag">Aghjunghje una referenza à l’etichetta di u schedariu audio</entry>
@@ -530,12 +544,14 @@
 	<entry id="5519" string="Special fields">Campi speziali</entry>
 	<entry id="5520" string="Write CD table of contents">Scrive l’indice di cuntenutu di u CD</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Preservà l’infurmazione di guadagnu di ripruduzzione</entry>
-	<entry id="5522" string="Cue sheets">Foglii di mischiera Cue</entry>
-	<entry id="5523" string="Read cue sheets embedded in metadata">Leghje i foglii di mischiera Cue incurpurati à i metadati</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">Preferisce i foglii di mischiera Cue à l’infurmazione di capitulu</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Principià da un zeru i numeri di traccia sottu 10</entry>
 	<entry id="5526" string="File size limit">Limitu di dimensione di schedariu</entry>
 	<entry id="5527" string="unlimited">senza limitu</entry>
+	<entry id="5528" string="Miscellaneous">Diversi</entry>
+	<entry id="5529" string="Fill missing fields with information obtained from file names">Riempie i campi assente cù l’infurmazione ottinuta da i nomi di schedariu</entry>
+	<entry id="5530" string="Restrict file names">Restringhje i nomi di schedariu</entry>
+	<entry id="5531" string="Cover art tags">Etichette di a cuprendula</entry>
+	<entry id="5532" string="Cover art files">Schedarii di a cuprendula</entry>
       </section>
 
       <section name="Joblist">
@@ -587,9 +603,9 @@
       <section name="Verification">
 	<entry id="5800" string="Verification">Verificazione</entry>
 	<entry id="5801" string="Enable input verification">Attivà a verificazione di l’origine</entry>
-	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Verificà chì i schedarii d’entrata senza perdita di&#10;qualità discudificheghjinu esattamente cum’è i dati&#10;impiegati à l’origine per crealli.</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Verificà chì i schedarii d’entrata senza perdita di qualità discudificheghjinu&#10;esattamente cum’è i dati impiegati à l’origine per crealli.</entry>
 	<entry id="5803" string="Enable output verification">Attivà a verificazione di destinazione</entry>
-	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Verificà chì i schedarii di destinazione senza&#10;perdita di qualità discudificheghjinu esattamente&#10;cum’è i dati impiegati à l’origine per crealli.</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Verificà chì i schedarii di destinazione senza perdita di qualità discudificheghjinu&#10;esattamente cum’è i dati impiegati à l’origine per crealli.</entry>
       </section>
 
       <section name="Processing">
@@ -682,13 +698,39 @@
 	<entry id="8201" string="%1 errors while processing job">%1 sbaglii trovi durante u travagliu di trattamentu</entry>
 	<entry id="8202" string="select an entry for details">selezziunà un elementu per avè più di detaglii</entry>
       </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool">Attrezzu di frazziunamentu d’esciuta</entry>
+	<entry id="8301" string="%1 track(s) in joblist">%1 traccia(e) in a lista di travagliu</entry>
+	<entry id="8302" string="Split mode">Modu di frazziunamentu</entry>
+	<entry id="8303" string="Split by duration">Frazziunà da a durata</entry>
+	<entry id="8304" string="Duration per part">Durata à a parte</entry>
+	<entry id="8305" string="at least">omancu</entry>
+	<entry id="8306" string="approximately">più o menu</entry>
+	<entry id="8307" string="at most">à u più</entry>
+	<entry id="8308" string="exactly">esattamente</entry>
+	<entry id="8309" string="second(s)">seconda(e)</entry>
+	<entry id="8310" string="minute(s)">minutu(i)</entry>
+	<entry id="8311" string="hour(s)">ora(e)</entry>
+	<entry id="8312" string="Fixed number of parts">Numeru fissu di parti</entry>
+	<entry id="8313" string="Number of parts">Numeru di parti</entry>
+	<entry id="8314" string="Split upon metadata change">Frazziunà à u cambiamentu di metadati</entry>
+	<entry id="8315" string="Metadata pattern to compare">Mudellu di metadati per paragunà</entry>
+	<entry id="8316" string="Split at track boundaries">Frazziunà à e cunfine di a traccia</entry>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part">Ripete a fine di a parte precedente à u principiu d’ogni parte</entry>
+	<entry id="8318" string="Repeat duration">Durata di ripetizione</entry>
+	<entry id="8319" string="Output filenames">Nomi di schedariu d’esciuta</entry>
+	<entry id="8320" string="Filename pattern">Mudellu di nome di schedariu</entry>
+	<entry id="8321" string="Convert">Cunvertisce</entry>
+	<entry id="8322" string="Save">Arregistrà</entry>
+      </section>
     </section>
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Lettore CD-ROM attivu</entry>
       <entry id="9001" string="Set drive speed limit">Definisce u limitu di velocità di u lettore</entry>
       <entry id="9002" string="CD information">Infurmazione CD</entry>
-      <entry id="9003" string="Read CD Text">Leghje u testu di u CD</entry>
+      <entry id="9003" string="Read CD-Text">Leghje u CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Leghje cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Preferenze d’estrazzione</entry>
       <entry id="9006" string="Activate cdparanoia mode">Attivà u modu cdparanoia</entry>
@@ -728,6 +770,8 @@
 	<entry id="12003" string="RNNoise Noise Reduction">Riduzzione di trostu RNNoise</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Cambià a tunalità/tempo di Rubber Band</entry>
 	<entry id="12005" string="HDCD Decoder">Discudificatore HDCD</entry>
+	<entry id="12006" string="Matrix Surround Decoder">Discudificatore Surround Matrix</entry>
+	<entry id="12007" string="Volume Adjustment">Accumudata di vulume</entry>
       </section>
 
       <section name="Verifiers">
@@ -993,7 +1037,7 @@
 	<entry id="39008" string="VBR">VBR</entry>
 	<entry id="39009" string="ABR">ABR</entry>
 	<entry id="39010" string="Options">Ozzioni</entry>
-	<entry id="39011" string="Voice Activity Detection">Abbentata di l’attività vucale</entry>
+	<entry id="39011" string="Voice Activity Detection">Avventata di l’attività vucale</entry>
 	<entry id="39012" string="Discontinuous Transmission">Trasmissione discuntinua</entry>
 	<entry id="39013" string="Algorithm complexity">Cumplessità di cudificazione</entry>
 	<entry id="39014" string="Complexity">Cumplessità</entry>
@@ -1029,6 +1073,7 @@
 	<entry id="40020" string="Options">Ozzioni</entry>
 	<entry id="40021" string="Enable discontinous transmission">Attivà a trasmissione discuntinuu</entry>
 	<entry id="40022" string="Expected packet loss">Perdita aspettata di pacchettu</entry>
+	<entry id="40023" string="Disable intensity stereo phase inversion">Disattivà l’inversione di fasa per l’intensità stereo</entry>
       </section>
 
       <section name="SndFile">
@@ -1064,6 +1109,9 @@
 	<entry id="50004" string="unsigned">senza segnu</entry>
 	<entry id="50005" string="Integer">Interu</entry>
 	<entry id="50006" string="Float">Decimale</entry>
+	<entry id="50007" string="Dithering">Tramatura</entry>
+	<entry id="50008" string="Apply dither when reducing sample resolution">Appiecà a trama quandu si riduce a risuluzione di campiunariu</entry>
+	<entry id="50009" string="Dither type">Tipu di trama</entry>
       </section>
 
       <section name="Channels">
@@ -1086,7 +1134,7 @@
 	<entry id="50302" string="Pitch">Tunalità</entry>
 	<entry id="50303" string="%1 Semitones">%1 semitoni</entry>
 	<entry id="50304" string="Advanced options">Ozzioni esperte</entry>
-	<entry id="50305" string="Transient detection">Abbentata transitoria</entry>
+	<entry id="50305" string="Transient detection">Avventata transitoria</entry>
 	<entry id="50306" string="Compound">Cumpostu</entry>
 	<entry id="50307" string="Percussive">Percutente</entry>
 	<entry id="50308" string="Soft">Dolce</entry>
@@ -1123,6 +1171,18 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Voce (incl. risata, ecc.)</entry>
 	<entry id="50406" string="Speech">Parlatu</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Canali d’esciuta</entry>
+	<entry id="50501" string="Channel configuration">Cunfigurazione di canale</entry>
+	<entry id="50502" string="Redirect bass content to LFE channel">Addirizzà u cuntenutu di u bassu versu u canale LFE</entry>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment">Accumudata di vulume</entry>
+	<entry id="50601" string="Adjustment">Accumudata</entry>
+	<entry id="50602" string="%1 dB">%1 dB</entry>
+      </section>
     </section>
 
     <section name="Taggers">
@@ -1139,7 +1199,7 @@
 	<entry id="70000" string="Configure AccurateRip">Cunfigurà AccurateRip</entry>
 	<entry id="70001" string="General settings">Preferenze generale</entry>
 	<entry id="70002" string="Enable AccurateRip">Attivà AccurateRip</entry>
-	<entry id="70003" string="Database URL">URL di a basa di dati</entry>
+	<entry id="70003" string="Database URL">Indirizzu web di a basa di dati</entry>
 	<entry id="70004" string="Cache">Impiatta</entry>
 	<entry id="70005" string="Enable cache">Attivà l’impiatta</entry>
 	<entry id="70006" string="Expires after">Scadutu dopu à</entry>
@@ -1162,6 +1222,9 @@
 	<entry id="70023" string="not present">micca presente</entry>
 	<entry id="70024" string="not detected">micca scupertu</entry>
 	<entry id="70025" string="disabled">disattivatu</entry>
+	<entry id="70026" string="Options">Ozzioni</entry>
+	<entry id="70027" string="Notify when a disc is not found in the database">Affissà una nutificazione quandu un discu ùn si trova micca in a basa di dati</entry>
+	<entry id="70028" string="Notify when all tracks have been successfully verified">Affissà una nutificazione quandu a verificazione di tutte e traccie hè stata riesciuta</entry>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">Cunfigurazione d’AccurateRip</entry>
@@ -1172,6 +1235,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Ci vole à framette un altru discu dentru u lettore CD è cliccà Vai.&#10;&#10;U discu duve esse presente in a basa di dati AccurateRip. Sta pussibilità hè&#10;più maiò per i CD populari chì sò stati dighjà estratti da d’altri utilizatori.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">A scuperta di spiazzamentu hà bisognu di verificà un altru discu.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">U spiazzamentu di u lettore hè statu scupertu bè è cunfiguratu à %1 campioni.</entry>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip.">Tutte e traccie sò state verificate currettamente cù AccurateRip.</entry>
 	</section>
       </section>
     </section>
@@ -1188,14 +1252,14 @@
 	<entry id="80105" string="reduced">riduttu</entry>
 	<entry id="80106" string="on">accesu</entry>
 	<entry id="80107" string="decoupled">scuppiatu</entry>
-	<entry id="80108" string="enhanced 1.5/3 dB">aummentatu 1.5/3 dB</entry>
-	<entry id="80109" string="enhanced 2/6 dB">aummentatu 2/6 dB</entry>
-	<entry id="80110" string="enhanced 2.5/9 dB">aummentatu 2.5/9 dB</entry>
-	<entry id="80111" string="enhanced 3/12 dB">aummentatu 3/12 dB</entry>
-	<entry id="80112" string="enhanced 3/inf dB">aummentatu 3/inf dB</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">aumentatu 1.5/3 dB</entry>
+	<entry id="80109" string="enhanced 2/6 dB">aumentatu 2/6 dB</entry>
+	<entry id="80110" string="enhanced 2.5/9 dB">aumentatu 2.5/9 dB</entry>
+	<entry id="80111" string="enhanced 3/12 dB">aumentatu 3/12 dB</entry>
+	<entry id="80112" string="enhanced 3/inf dB">aumentatu 3/inf dB</entry>
 	<entry id="80113" string="Adaptive noise shaping order">Ordine di fattura di trostu adattata</entry>
 	<entry id="80114" string="high">altu</entry>
-	<entry id="80115" string="Clear Voice Detection">Abbentata di voce chjara</entry>
+	<entry id="80115" string="Clear Voice Detection">Avventata di voce chjara</entry>
 	<entry id="80116" string="dual">doppiu</entry>
       </section>
 
@@ -1236,6 +1300,7 @@
 	<entry id="80406" string="faster">più rapida</entry>
 	<entry id="80407" string="better">più bona</entry>
 	<entry id="80408" string="%1 kbps">%1 kbps</entry>
+	<entry id="80409" string="Create correction file">Creà un schedariu di currezzione</entry>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1308,14 +1373,14 @@
 
       <section name="Video Downloader">
 	<entry id="102000" string="Video">Video</entry>
-	<entry id="102001" string="Enter video URL here">Indicà l’indirizzu di a video quì</entry>
+	<entry id="102001" string="Enter video URL here">Stampittate quì l’indirizzu web di a video</entry>
 	<entry id="102002" string="Download">Scaricà</entry>
-	<entry id="102003" string="Automatically download URLs copied to clipboard">Scaricà autumaticamente l’indirizzi cupiati in u preme’papei</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">Scaricà autumaticamente l’indirizzi web cupiati in u preme’papei</entry>
 	<entry id="102004" string="Save downloaded video files">Arregistrà i schedarii video scaricati</entry>
 	<entry id="102005" string="Video downloads">Scaricamenti video</entry>
 	<entry id="102006" string="Downloaded tracks">Traccie scaricate</entry>
 	<entry id="102007" string="Uploader">Incaricadore</entry>
-	<entry id="102008" string="Video URL">Indirizzu di a video</entry>
+	<entry id="102008" string="Video URL">Indirizzu web di a video</entry>
 	<entry id="102009" string="Video title">Titulu di a video</entry>
 	<entry id="102010" string="Video description">Discrizzione di a video</entry>
 	<entry id="102011" string="Site name">Nome di u situ</entry>
@@ -1339,7 +1404,7 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="102201" string="This URL is not supported or not a video page URL!">St’indirizzu ùn hè micca accettata o micca una pagina di video.</entry>
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">St’indirizzu web ùn hè micca accettatu o ùn currisponde micca à una pagina di video.</entry>
 	  <entry id="102202" string="Error downloading video!">Sbagliu durante u scaricamentu di a video !</entry>
 	  <entry id="102203" string="You are already downloading this video!">Site dighjà in treccia di scaricà sta video !</entry>
 	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">Ùn si pò truvà certi discudificatori video chì sò richiesti.&#10;I schedarii video ùn ponu micca esse aghjunti à a lista di&#10;travagliu per una cunversione audio. Ci vole à installà&#10;FFmpeg o avconv per currege stu penseru !</entry>
@@ -1404,6 +1469,11 @@
 
 	<section name="Lyrics">
 	  <entry id="103350" string="Lyrics">Parolle</entry>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Valutazione</entry>
+	  <entry id="103361" string="none">nisuna</entry>
 	</section>
 
 	<section name="Configuration">

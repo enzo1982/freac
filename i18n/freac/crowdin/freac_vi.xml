@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)"/>
       <entry id="2011" string="Pause/resume encoding">Tạm dừng/làm lại chuyển mã</entry>
       <entry id="2012" string="Stop encoding">Dừng chuyển mã</entry>
+      <entry id="2013" string="Open the output splitting tool"/>
     </section>
 
     <section name="Joblist">
@@ -400,7 +401,7 @@
       <entry id="5003" string="Language">Ngôn ngữ</entry>
       <entry id="5004" string="CDDB"/>
       <entry id="5005" string="Interface"/>
-      <entry id="5006" string="Tags">Tab thông tin</entry>
+      <entry id="5006" string="Metadata"/>
       <entry id="5007" string="Components"/>
       <entry id="5008" string="Decoders"/>
       <entry id="5009" string="Output"/>
@@ -421,36 +422,40 @@
       <entry id="5024" string="Taggers"/>
       <entry id="5025" string="Processing"/>
       <entry id="5026" string="Additional arguments"/>
+      <entry id="5027" string="Output files"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Chỉnh sửa chuyển mã</entry>
 	<entry id="5101" string="Encoder">Chuyển mã</entry>
-	<entry id="5102" string="Output folder">Thư mục xuất dữ liệu</entry>
-	<entry id="5103" string="Select">Duyệt</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Chọn thư mục để lưu tập tin đã được chuyển mã</entry>
-	<entry id="5105" string="Use input file folder if possible">Sử dụng thư mục của tập tin nhập vào nếu được</entry>
-	<entry id="5106" string="Allow overwriting input file">Cho phép ghi đè lên tập tin nhập vào</entry>
-	<entry id="5107" string="Options">Tùy chọn</entry>
-	<entry id="5108" string="Filename pattern">Tên file mẫu</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Chuyển mã 'On-The-Fly'</entry>
-	<entry id="5110" string="Keep ripped Wave files">Giữ các tập tin wave đã rip</entry>
-	<entry id="5111" string="Encode to a single file">Chuyển mã thành 1 file</entry>
-	<entry id="5112" string="Output filenames"/>
-	<entry id="5113" string="Allow Unicode characters"/>
-	<entry id="5114" string="Replace spaces with underscores"/>
-	<entry id="5115" string="Remove processed tracks from joblist"/>
-	<entry id="5116" string="Add encoded files to joblist"/>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames"/>
-	<entry id="5118" string="Keep time stamps of source files"/>
+	<entry id="5102" string="Options">Tùy chọn</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Chuyển mã 'On-The-Fly'</entry>
+	<entry id="5104" string="Keep ripped Wave files">Giữ các tập tin wave đã rip</entry>
+	<entry id="5105" string="Encode to a single file">Chuyển mã thành 1 file</entry>
+	<entry id="5106" string="Remove processed tracks from joblist"/>
+	<entry id="5107" string="Add output files to joblist"/>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Thư mục xuất dữ liệu</entry>
+	<entry id="5151" string="Use input file folder if possible">Sử dụng thư mục của tập tin nhập vào nếu được</entry>
+	<entry id="5152" string="Allow overwriting input file">Cho phép ghi đè lên tập tin nhập vào</entry>
+	<entry id="5153" string="Select">Duyệt</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Chọn thư mục để lưu tập tin đã được chuyển mã</entry>
+	<entry id="5155" string="Output filenames"/>
+	<entry id="5156" string="Filename pattern">Tên file mẫu</entry>
+	<entry id="5157" string="Allow Unicode characters"/>
+	<entry id="5158" string="Replace spaces with underscores"/>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames"/>
+	<entry id="5160" string="Keep time stamps of source files"/>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available"/>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Thư mục xuất ra không tồn tại! Bạn có muốn tạo thư mục đó không?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Thư mục xuất ra không tồn tại! Bạn có muốn tạo thư mục đó không?</entry>
 	</section>
       </section>
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Tạo danh sách</entry>
-	<entry id="5201" string="Create cue sheets">Tạo cue sheets</entry>
 	<entry id="5202" string="Output folder">Thư mục xuất dữ liệu</entry>
 	<entry id="5203" string="Select">Duyệt</entry>
 	<entry id="5204" string="Use encoder output folder">Sử dụng thư mục xuất dữ liệu chuyển mã</entry>
@@ -459,6 +464,17 @@
 	<entry id="5207" string="Output filenames"/>
 	<entry id="5208" string="Configure plugin"/>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion"/>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets"/>
+	<entry id="5251" string="Create cue sheets">Tạo cue sheets</entry>
+	<entry id="5252" string="Embedded cue sheets"/>
+	<entry id="5253" string="Read cue sheets embedded in metadata"/>
+	<entry id="5254" string="Prefer cue sheets over chapter information"/>
+	<entry id="5255" string="Output folder and filenames"/>
+	<entry id="5256" string="Note"/>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section."/>
       </section>
 
       <section name="CDDB">
@@ -475,7 +491,7 @@
 	<entry id="5310" string="Proxy settings">Thiết lập Proxy</entry>
 	<entry id="5311" string="Options">Tùy chọn</entry>
 	<entry id="5312" string="Automatic CDDB queries">Tự động truy vấn CDDB</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Ưu tiên CDDB hơn văn bản CD</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Ưu tiên CDDB hơn văn bản CD</entry>
 	<entry id="5314" string="Enable CDDB cache">Cho phép CDDB cache</entry>
 	<entry id="5315" string="Automatization">Tự động</entry>
 	<entry id="5316" string="Always select first entry"/>
@@ -503,23 +519,21 @@
 	<entry id="5401" string="Edit language file">Chỉnh sửa tập tin ngôn ngữ</entry>
 	<entry id="5402" string="Information">Thông tin</entry>
 	<entry id="5403" string="Encoding">Đang chuyển mã</entry>
-	<entry id="5404" string="Author">Tác giả</entry>
+	<entry id="5404" string="Author(s)">Tác giả</entry>
 	<entry id="5405" string="URL">Website</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Tab thông tin</entry>
-	<entry id="5501" string="Tag formats">Chuyển mã Tag</entry>
+	<entry id="5500" string="Tag formats">Chuyển mã Tag</entry>
+	<entry id="5501" string="Tag fields"/>
 	<entry id="5502" string="Default comment string">Chuỗi nhận xét mặc định</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Thay thế bình luận đã tồn tại bằng bình luận mặc định</entry>
 	<entry id="5504" string="Filename pattern">Tên file mẫu</entry>
 	<entry id="5505" string="Encoding">Đang chuyển mã</entry>
 	<entry id="5506" string="Comments"/>
 	<entry id="5507" string="Cover art"/>
-	<entry id="5508" string="Read cover art"/>
 	<entry id="5509" string="Read cover art from tags"/>
 	<entry id="5510" string="Read cover art from files"/>
-	<entry id="5511" string="Write cover art"/>
 	<entry id="5512" string="Write cover art to tags"/>
 	<entry id="5513" string="Write cover art to files"/>
 	<entry id="5514" string="Add reference to audio file tag"/>
@@ -530,12 +544,14 @@
 	<entry id="5519" string="Special fields"/>
 	<entry id="5520" string="Write CD table of contents"/>
 	<entry id="5521" string="Preserve Replay Gain information"/>
-	<entry id="5522" string="Cue sheets"/>
-	<entry id="5523" string="Read cue sheets embedded in metadata"/>
-	<entry id="5524" string="Prefer cue sheets over chapter information"/>
 	<entry id="5525" string="Prepend zero to track numbers below 10"/>
 	<entry id="5526" string="File size limit"/>
 	<entry id="5527" string="unlimited"/>
+	<entry id="5528" string="Miscellaneous"/>
+	<entry id="5529" string="Fill missing fields with information obtained from file names"/>
+	<entry id="5530" string="Restrict file names"/>
+	<entry id="5531" string="Cover art tags"/>
+	<entry id="5532" string="Cover art files"/>
       </section>
 
       <section name="Joblist">
@@ -682,13 +698,39 @@
 	<entry id="8201" string="%1 errors while processing job"/>
 	<entry id="8202" string="select an entry for details"/>
       </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool"/>
+	<entry id="8301" string="%1 track(s) in joblist"/>
+	<entry id="8302" string="Split mode"/>
+	<entry id="8303" string="Split by duration"/>
+	<entry id="8304" string="Duration per part"/>
+	<entry id="8305" string="at least"/>
+	<entry id="8306" string="approximately"/>
+	<entry id="8307" string="at most"/>
+	<entry id="8308" string="exactly"/>
+	<entry id="8309" string="second(s)"/>
+	<entry id="8310" string="minute(s)"/>
+	<entry id="8311" string="hour(s)"/>
+	<entry id="8312" string="Fixed number of parts"/>
+	<entry id="8313" string="Number of parts"/>
+	<entry id="8314" string="Split upon metadata change"/>
+	<entry id="8315" string="Metadata pattern to compare"/>
+	<entry id="8316" string="Split at track boundaries"/>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part"/>
+	<entry id="8318" string="Repeat duration"/>
+	<entry id="8319" string="Output filenames"/>
+	<entry id="8320" string="Filename pattern"/>
+	<entry id="8321" string="Convert"/>
+	<entry id="8322" string="Save"/>
+      </section>
     </section>
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Cho phép CD-ROM drive</entry>
       <entry id="9001" string="Set drive speed limit"/>
       <entry id="9002" string="CD information">Thông tin CD</entry>
-      <entry id="9003" string="Read CD Text">Đọc CD Text</entry>
+      <entry id="9003" string="Read CD-Text">Đọc CD-Text</entry>
       <entry id="9004" string="Read cdplayer.ini">Đọc cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Thiết lập Ripper</entry>
       <entry id="9006" string="Activate cdparanoia mode">Cho phép chế độ cdparanoia</entry>
@@ -728,6 +770,8 @@
 	<entry id="12003" string="RNNoise Noise Reduction"/>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer"/>
 	<entry id="12005" string="HDCD Decoder"/>
+	<entry id="12006" string="Matrix Surround Decoder"/>
+	<entry id="12007" string="Volume Adjustment"/>
       </section>
 
       <section name="Verifiers">
@@ -1029,6 +1073,7 @@
 	<entry id="40020" string="Options">Tùy chọn</entry>
 	<entry id="40021" string="Enable discontinous transmission"/>
 	<entry id="40022" string="Expected packet loss"/>
+	<entry id="40023" string="Disable intensity stereo phase inversion"/>
       </section>
 
       <section name="SndFile">
@@ -1064,6 +1109,9 @@
 	<entry id="50004" string="unsigned"/>
 	<entry id="50005" string="Integer"/>
 	<entry id="50006" string="Float"/>
+	<entry id="50007" string="Dithering"/>
+	<entry id="50008" string="Apply dither when reducing sample resolution"/>
+	<entry id="50009" string="Dither type"/>
       </section>
 
       <section name="Channels">
@@ -1123,6 +1171,18 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)"/>
 	<entry id="50406" string="Speech"/>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels"/>
+	<entry id="50501" string="Channel configuration"/>
+	<entry id="50502" string="Redirect bass content to LFE channel"/>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment"/>
+	<entry id="50601" string="Adjustment"/>
+	<entry id="50602" string="%1 dB"/>
+      </section>
     </section>
 
     <section name="Taggers">
@@ -1162,6 +1222,9 @@
 	<entry id="70023" string="not present"/>
 	<entry id="70024" string="not detected"/>
 	<entry id="70025" string="disabled"/>
+	<entry id="70026" string="Options"/>
+	<entry id="70027" string="Notify when a disc is not found in the database"/>
+	<entry id="70028" string="Notify when all tracks have been successfully verified"/>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration"/>
@@ -1172,6 +1235,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before."/>
 	  <entry id="70056" string="Offset detection needs to check another disc."/>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples."/>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip."/>
 	</section>
       </section>
     </section>
@@ -1236,6 +1300,7 @@
 	<entry id="80406" string="faster"/>
 	<entry id="80407" string="better"/>
 	<entry id="80408" string="%1 kbps"/>
+	<entry id="80409" string="Create correction file"/>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1272,7 +1337,7 @@
 	  <entry id="100101" string="You can also send money directly to %1 with PayPal."/>
 	  <entry id="100102" string="usd">vnd</entry>
 	  <entry id="100103" string="$%1">%1₫</entry>
-	  <entry id="100104" string="5,10,20,other amount">100000,200000,400000,số tiền khác</entry>
+	  <entry id="100104" string="5,10,20,other amount">50000,100000,200000,số tiền khác</entry>
 	  <entry id="100105" string="monthly recurring"/>
 	  <entry id="100106" string="Donate"/>
 	</section>
@@ -1404,6 +1469,11 @@
 
 	<section name="Lyrics">
 	  <entry id="103350" string="Lyrics"/>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating"/>
+	  <entry id="103361" string="none"/>
 	</section>
 
 	<section name="Configuration">

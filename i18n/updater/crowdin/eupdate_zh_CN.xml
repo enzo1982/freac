@@ -27,7 +27,7 @@
     <entry id="14" string="Installing files...">正在安装文件...</entry>
     <entry id="15" string="Installing file:">正在安装文件：</entry>
     <entry id="16" string="Downloading file:">正在下载文件：</entry>
-    <entry id="17" string="Extracting file:"/>
+    <entry id="17" string="Extracting file:">正在提取文件：</entry>
     <entry id="18" string="Update complete">更新完成</entry>
     <entry id="19" string="Your application has been successfully updated!">应用程序已成功更新！</entry>
     <entry id="20" string="Error">错误</entry>

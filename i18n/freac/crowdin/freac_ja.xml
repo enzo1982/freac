@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">エンコードを開始（元のファイルを削除する）</entry>
       <entry id="2011" string="Pause/resume encoding">エンコードを中断/再開</entry>
       <entry id="2012" string="Stop encoding">エンコード停止</entry>
+      <entry id="2013" string="Open the output splitting tool"/>
     </section>
 
     <section name="Joblist">
@@ -233,7 +234,7 @@
 
       <section name="Decoder">
 	<entry id="3060" string="Active decoder">処理中のデコーダ</entry>
-	<entry id="3061" string="none">不明</entry>
+	<entry id="3061" string="none">なし</entry>
       </section>
 
       <section name="Filters">
@@ -400,7 +401,7 @@
       <entry id="5003" string="Language">言語</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">インターフェース</entry>
-      <entry id="5006" string="Tags">タグ情報</entry>
+      <entry id="5006" string="Metadata"/>
       <entry id="5007" string="Components">構成</entry>
       <entry id="5008" string="Decoders">デコーダ</entry>
       <entry id="5009" string="Output">出力</entry>
@@ -421,36 +422,40 @@
       <entry id="5024" string="Taggers">タグ</entry>
       <entry id="5025" string="Processing">処理</entry>
       <entry id="5026" string="Additional arguments">追加のパラメータ</entry>
+      <entry id="5027" string="Output files"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">エンコーダ設定</entry>
 	<entry id="5101" string="Encoder">エンコーダ</entry>
-	<entry id="5102" string="Output folder">出力先フォルダ</entry>
-	<entry id="5103" string="Select">参照</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">出力先フォルダを選択</entry>
-	<entry id="5105" string="Use input file folder if possible">可能なら入力ファイルのフォルダを用いる</entry>
-	<entry id="5106" string="Allow overwriting input file">入力ファイルへ上書きを許可</entry>
-	<entry id="5107" string="Options">オプション</entry>
-	<entry id="5108" string="Filename pattern">ファイル名パターン</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">即時エンコード</entry>
-	<entry id="5110" string="Keep ripped Wave files">取り込んだ Wave ファイルを保持</entry>
-	<entry id="5111" string="Encode to a single file">一つのファイルにエンコード</entry>
-	<entry id="5112" string="Output filenames">出力ファイル名</entry>
-	<entry id="5113" string="Allow Unicode characters">Unicode 文字を許可する</entry>
-	<entry id="5114" string="Replace spaces with underscores">スペースをアンダースコアに置き換える</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">ジョブリストから処理済みのトラックを削除する</entry>
-	<entry id="5116" string="Add encoded files to joblist">エンコードされたファイルをジョブリストに追加する</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">それ以外のファイル名に連番を付ける</entry>
-	<entry id="5118" string="Keep time stamps of source files">タイムスタンプを保持する</entry>
+	<entry id="5102" string="Options">オプション</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">即時エンコード</entry>
+	<entry id="5104" string="Keep ripped Wave files">取り込んだ Wave ファイルを保持</entry>
+	<entry id="5105" string="Encode to a single file">一つのファイルにエンコード</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">ジョブリストから処理済みのトラックを削除する</entry>
+	<entry id="5107" string="Add output files to joblist">エンコードされたファイルをジョブリストに追加する</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">出力先フォルダ</entry>
+	<entry id="5151" string="Use input file folder if possible">可能なら入力ファイルのフォルダを用いる</entry>
+	<entry id="5152" string="Allow overwriting input file">入力ファイルへ上書きを許可</entry>
+	<entry id="5153" string="Select">参照</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">出力先フォルダを選択</entry>
+	<entry id="5155" string="Output filenames">出力ファイル名</entry>
+	<entry id="5156" string="Filename pattern">ファイル名パターン</entry>
+	<entry id="5157" string="Allow Unicode characters">Unicode 文字を許可する</entry>
+	<entry id="5158" string="Replace spaces with underscores">スペースをアンダースコアに置き換える</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">それ以外のファイル名に連番を付ける</entry>
+	<entry id="5160" string="Keep time stamps of source files">タイムスタンプを保持する</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available"/>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">出力先フォルダがありません！新規に作成しますか？</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">出力先フォルダがありません！新規に作成しますか？</entry>
 	</section>
       </section>
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">プレイリスト作成</entry>
-	<entry id="5201" string="Create cue sheets">cue シート作成</entry>
 	<entry id="5202" string="Output folder">出力先フォルダ</entry>
 	<entry id="5203" string="Select">参照</entry>
 	<entry id="5204" string="Use encoder output folder">エンコーダの出力フォルダを使用</entry>
@@ -459,6 +464,17 @@
 	<entry id="5207" string="Output filenames">出力ファイル名</entry>
 	<entry id="5208" string="Configure plugin">プラグインの設定</entry>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">変換ごとに 1 つのプレイリストまたは cue シートファイルのみを作成する</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets">cue シート</entry>
+	<entry id="5251" string="Create cue sheets">cue シート作成</entry>
+	<entry id="5252" string="Embedded cue sheets"/>
+	<entry id="5253" string="Read cue sheets embedded in metadata">メタデータに埋め込まれた cue シートを読み込む</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">チャプター情報よりも cue シートを優先する</entry>
+	<entry id="5255" string="Output folder and filenames"/>
+	<entry id="5256" string="Note"/>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section."/>
       </section>
 
       <section name="CDDB">
@@ -475,7 +491,7 @@
 	<entry id="5310" string="Proxy settings">プロキシ設定</entry>
 	<entry id="5311" string="Options">オプション</entry>
 	<entry id="5312" string="Automatic CDDB queries">自動 CDDB 問い合わせ</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">CD Text より CDDB を優先</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">CD-Text より CDDB を優先</entry>
 	<entry id="5314" string="Enable CDDB cache">CDDB キャッシュ有効</entry>
 	<entry id="5315" string="Automatization">自動化</entry>
 	<entry id="5316" string="Always select first entry">常に最初の項目を選択</entry>
@@ -503,23 +519,21 @@
 	<entry id="5401" string="Edit language file">言語ファイルを編集</entry>
 	<entry id="5402" string="Information">情報</entry>
 	<entry id="5403" string="Encoding">エンコード</entry>
-	<entry id="5404" string="Author">作者</entry>
+	<entry id="5404" string="Author(s)">作者</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">タグ情報</entry>
-	<entry id="5501" string="Tag formats">タグの文字コード</entry>
+	<entry id="5500" string="Tag formats">タグの文字コード</entry>
+	<entry id="5501" string="Tag fields"/>
 	<entry id="5502" string="Default comment string">デフォルト コメント</entry>
 	<entry id="5503" string="Replace existing comments with default comment">既存のコメントをデフォルトのコメントに置き換え</entry>
 	<entry id="5504" string="Filename pattern">ファイル名パターン</entry>
 	<entry id="5505" string="Encoding">エンコード</entry>
 	<entry id="5506" string="Comments">コメント</entry>
 	<entry id="5507" string="Cover art">カバーアート</entry>
-	<entry id="5508" string="Read cover art">カバーアートを読み込む</entry>
 	<entry id="5509" string="Read cover art from tags">カバーアートをタグから読み込む</entry>
 	<entry id="5510" string="Read cover art from files">カバーアートをファイルから読み込む</entry>
-	<entry id="5511" string="Write cover art">カバーアートを書き込む</entry>
 	<entry id="5512" string="Write cover art to tags">カバーアートをタグに書き込む</entry>
 	<entry id="5513" string="Write cover art to files">カバーアートをファイルに書き込む</entry>
 	<entry id="5514" string="Add reference to audio file tag">オーディオファイルタグへの参照を追加する</entry>
@@ -530,12 +544,14 @@
 	<entry id="5519" string="Special fields">特別なフィールド</entry>
 	<entry id="5520" string="Write CD table of contents">CD の table of contents を書き込む</entry>
 	<entry id="5521" string="Preserve Replay Gain information">リプレイゲイン情報を保持する</entry>
-	<entry id="5522" string="Cue sheets">cue シート</entry>
-	<entry id="5523" string="Read cue sheets embedded in metadata">メタデータに埋め込まれた cue シートを読み込む</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">チャプター情報よりも cue シートを優先する</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">10 より小さいトラック番号に 0 を先頭に追加する</entry>
 	<entry id="5526" string="File size limit">ファイルサイズの制限</entry>
 	<entry id="5527" string="unlimited">無制限</entry>
+	<entry id="5528" string="Miscellaneous"/>
+	<entry id="5529" string="Fill missing fields with information obtained from file names"/>
+	<entry id="5530" string="Restrict file names"/>
+	<entry id="5531" string="Cover art tags"/>
+	<entry id="5532" string="Cover art files"/>
       </section>
 
       <section name="Joblist">
@@ -682,16 +698,42 @@
 	<entry id="8201" string="%1 errors while processing job">ジョブの処理中に %1 個のエラーが発生しました</entry>
 	<entry id="8202" string="select an entry for details">詳細の項目を選択</entry>
       </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool"/>
+	<entry id="8301" string="%1 track(s) in joblist"/>
+	<entry id="8302" string="Split mode"/>
+	<entry id="8303" string="Split by duration"/>
+	<entry id="8304" string="Duration per part"/>
+	<entry id="8305" string="at least"/>
+	<entry id="8306" string="approximately"/>
+	<entry id="8307" string="at most"/>
+	<entry id="8308" string="exactly"/>
+	<entry id="8309" string="second(s)"/>
+	<entry id="8310" string="minute(s)"/>
+	<entry id="8311" string="hour(s)"/>
+	<entry id="8312" string="Fixed number of parts"/>
+	<entry id="8313" string="Number of parts"/>
+	<entry id="8314" string="Split upon metadata change"/>
+	<entry id="8315" string="Metadata pattern to compare"/>
+	<entry id="8316" string="Split at track boundaries"/>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part"/>
+	<entry id="8318" string="Repeat duration"/>
+	<entry id="8319" string="Output filenames"/>
+	<entry id="8320" string="Filename pattern"/>
+	<entry id="8321" string="Convert"/>
+	<entry id="8322" string="Save"/>
+      </section>
     </section>
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">アクティブな CD-ROM ドライブ</entry>
       <entry id="9001" string="Set drive speed limit">ドライブ速度制限の設定</entry>
       <entry id="9002" string="CD information">CD 情報</entry>
-      <entry id="9003" string="Read CD Text">CD 情報を読み込む</entry>
+      <entry id="9003" string="Read CD-Text">CD-Text を読み込む</entry>
       <entry id="9004" string="Read cdplayer.ini">cdplayer.ini を読み込む</entry>
       <entry id="9005" string="Ripper settings">取り込み設定</entry>
-      <entry id="9006" string="Activate cdparanoia mode">CD 詳細設定モード有効</entry>
+      <entry id="9006" string="Activate cdparanoia mode">cdparanoia モードを有効にする</entry>
       <entry id="9007" string="Overlap only">オーバーラップのみ</entry>
       <entry id="9008" string="No verify">ベリファイを行わない</entry>
       <entry id="9009" string="No scratch repair">破損部の修復をしない</entry>
@@ -728,6 +770,8 @@
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise によるノイズ低減</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band テンポ/ピッチ チェンジャー</entry>
 	<entry id="12005" string="HDCD Decoder">HDCD デコーダー</entry>
+	<entry id="12006" string="Matrix Surround Decoder"/>
+	<entry id="12007" string="Volume Adjustment"/>
       </section>
 
       <section name="Verifiers">
@@ -1029,6 +1073,7 @@
 	<entry id="40020" string="Options">オプション</entry>
 	<entry id="40021" string="Enable discontinous transmission">不連続送信を有効にする</entry>
 	<entry id="40022" string="Expected packet loss">予想されるパケット損失</entry>
+	<entry id="40023" string="Disable intensity stereo phase inversion"/>
       </section>
 
       <section name="SndFile">
@@ -1064,6 +1109,9 @@
 	<entry id="50004" string="unsigned">符号化なし</entry>
 	<entry id="50005" string="Integer">整数</entry>
 	<entry id="50006" string="Float">浮動小数点数</entry>
+	<entry id="50007" string="Dithering"/>
+	<entry id="50008" string="Apply dither when reducing sample resolution"/>
+	<entry id="50009" string="Dither type"/>
       </section>
 
       <section name="Channels">
@@ -1123,6 +1171,18 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">声（笑い声など）</entry>
 	<entry id="50406" string="Speech">スピーチ</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">出力チャンネル</entry>
+	<entry id="50501" string="Channel configuration">チャネル設定</entry>
+	<entry id="50502" string="Redirect bass content to LFE channel"/>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment"/>
+	<entry id="50601" string="Adjustment"/>
+	<entry id="50602" string="%1 dB"/>
+      </section>
     </section>
 
     <section name="Taggers">
@@ -1162,6 +1222,9 @@
 	<entry id="70023" string="not present">存在しない</entry>
 	<entry id="70024" string="not detected">検出されませんでした</entry>
 	<entry id="70025" string="disabled">無効</entry>
+	<entry id="70026" string="Options"/>
+	<entry id="70027" string="Notify when a disc is not found in the database"/>
+	<entry id="70028" string="Notify when all tracks have been successfully verified"/>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">AccurateRip の設定</entry>
@@ -1172,6 +1235,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">CD ドライブに別のディスクを挿入して OK をクリックしてください。&#10;&#10;ディスクは AccurateRip データベースに存在する必要があります。この可能性は、以前に他の&#10;ユーザーによってリッピングされた可能性が高い人気のある CD の場合に最も高いです。</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">オフセット検出は、別のディスクをチェックする必要があります。</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">ドライブオフセットが正常に検出され、 %1 サンプルに設定されました。</entry>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip."/>
 	</section>
       </section>
     </section>
@@ -1236,6 +1300,7 @@
 	<entry id="80406" string="faster">より速く</entry>
 	<entry id="80407" string="better">高</entry>
 	<entry id="80408" string="%1 kbps">%1 kbps</entry>
+	<entry id="80409" string="Create correction file"/>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1404,6 +1469,11 @@
 
 	<section name="Lyrics">
 	  <entry id="103350" string="Lyrics">歌詞</entry>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">評価</entry>
+	  <entry id="103361" string="none">なし</entry>
 	</section>
 
 	<section name="Configuration">

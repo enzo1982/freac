@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">Начать процесс кодирования (удалить исходные файлы)</entry>
       <entry id="2011" string="Pause/resume encoding">Пауза/Возобновить кодирование</entry>
       <entry id="2012" string="Stop encoding">Остановить кодирование</entry>
+      <entry id="2013" string="Open the output splitting tool"/>
     </section>
 
     <section name="Joblist">
@@ -400,7 +401,7 @@
       <entry id="5003" string="Language">Язык</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Интерфейс</entry>
-      <entry id="5006" string="Tags">Тэги</entry>
+      <entry id="5006" string="Metadata"/>
       <entry id="5007" string="Components">Компоненты</entry>
       <entry id="5008" string="Decoders">Декодеры</entry>
       <entry id="5009" string="Output">Вывод</entry>
@@ -421,36 +422,40 @@
       <entry id="5024" string="Taggers">Указатели</entry>
       <entry id="5025" string="Processing">Обработка</entry>
       <entry id="5026" string="Additional arguments">Дополнительные аргументы</entry>
+      <entry id="5027" string="Output files"/>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Настроить кодек</entry>
 	<entry id="5101" string="Encoder">Кодек</entry>
-	<entry id="5102" string="Output folder">Папка для сохранения</entry>
-	<entry id="5103" string="Select">Выбрать</entry>
-	<entry id="5104" string="Select the folder in which the encoded files will be placed">Выбрать папку, в которую будут помещены кодируемые файлы</entry>
-	<entry id="5105" string="Use input file folder if possible">Исп. папку входного файла если возможно</entry>
-	<entry id="5106" string="Allow overwriting input file">Разрешить перезапись входного файла</entry>
-	<entry id="5107" string="Options">Настройки</entry>
-	<entry id="5108" string="Filename pattern">Формирование названия файла</entry>
-	<entry id="5109" string="Encode 'On-The-Fly'">Кодирование &quot;На лету&quot;</entry>
-	<entry id="5110" string="Keep ripped Wave files">Оставлять Wave файлы</entry>
-	<entry id="5111" string="Encode to a single file">Кодировать в один файл</entry>
-	<entry id="5112" string="Output filenames">Имена выходных файлов</entry>
-	<entry id="5113" string="Allow Unicode characters">Разрешить символы Юникод</entry>
-	<entry id="5114" string="Replace spaces with underscores">Заменить пробелы на символы подчеркивания</entry>
-	<entry id="5115" string="Remove processed tracks from joblist">Удалить обработанное из списка</entry>
-	<entry id="5116" string="Add encoded files to joblist">Добавить закодированное в список</entry>
-	<entry id="5117" string="Append sequential numbers to otherwise identical filenames">Добавить последовательные номера к идентичным именам файлов</entry>
-	<entry id="5118" string="Keep time stamps of source files">Сохранять временные метки исходных файлов</entry>
+	<entry id="5102" string="Options">Настройки</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">Кодирование &quot;На лету&quot;</entry>
+	<entry id="5104" string="Keep ripped Wave files">Оставлять Wave файлы</entry>
+	<entry id="5105" string="Encode to a single file">Кодировать в один файл</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">Удалить обработанное из списка</entry>
+	<entry id="5107" string="Add output files to joblist">Добавить закодированное в список</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">Папка для сохранения</entry>
+	<entry id="5151" string="Use input file folder if possible">Исп. папку входного файла если возможно</entry>
+	<entry id="5152" string="Allow overwriting input file">Разрешить перезапись входного файла</entry>
+	<entry id="5153" string="Select">Выбрать</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">Выбрать папку, в которую будут помещены кодируемые файлы</entry>
+	<entry id="5155" string="Output filenames">Имена выходных файлов</entry>
+	<entry id="5156" string="Filename pattern">Формирование названия файла</entry>
+	<entry id="5157" string="Allow Unicode characters">Разрешить символы Юникод</entry>
+	<entry id="5158" string="Replace spaces with underscores">Заменить пробелы на символы подчеркивания</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Добавить последовательные номера к идентичным именам файлов</entry>
+	<entry id="5160" string="Keep time stamps of source files">Сохранять временные метки исходных файлов</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available"/>
 
 	<section name="Errors">
-	  <entry id="5150" string="The output folder does not exist! Do you want to create it?">Директории для сохранения не существует! Создать?</entry>
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Директории для сохранения не существует! Создать?</entry>
 	</section>
       </section>
 
       <section name="Playlists">
 	<entry id="5200" string="Create playlists">Создавать плейлисты</entry>
-	<entry id="5201" string="Create cue sheets">Создавать cue sheets</entry>
 	<entry id="5202" string="Output folder">Папка для сохранения</entry>
 	<entry id="5203" string="Select">Выбрать</entry>
 	<entry id="5204" string="Use encoder output folder">Использовать выходную папку кодека</entry>
@@ -459,6 +464,17 @@
 	<entry id="5207" string="Output filenames">Имена выходных файлов</entry>
 	<entry id="5208" string="Configure plugin">Настроить плагин</entry>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Создавать только один плейлист и\или cue sheet файл</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets">Cue sheets</entry>
+	<entry id="5251" string="Create cue sheets">Создавать cue sheets</entry>
+	<entry id="5252" string="Embedded cue sheets"/>
+	<entry id="5253" string="Read cue sheets embedded in metadata">Читать cue sheets, включенные в метаданные</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">Предпочтительнее использовать cue sheets вместо информации о разделе</entry>
+	<entry id="5255" string="Output folder and filenames"/>
+	<entry id="5256" string="Note"/>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section."/>
       </section>
 
       <section name="CDDB">
@@ -475,7 +491,7 @@
 	<entry id="5310" string="Proxy settings">Установки прокси</entry>
 	<entry id="5311" string="Options">Настройки</entry>
 	<entry id="5312" string="Automatic CDDB queries">Авто запрос к CDDB</entry>
-	<entry id="5313" string="Prefer CDDB over CD Text">Предпочитать CDDB</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">Предпочитать CDDB CD-тексту</entry>
 	<entry id="5314" string="Enable CDDB cache">Кэширование CDDB</entry>
 	<entry id="5315" string="Automatization">Автоматизация</entry>
 	<entry id="5316" string="Always select first entry">Всегда выбирать первую запись</entry>
@@ -503,23 +519,21 @@
 	<entry id="5401" string="Edit language file">Править языковой файл</entry>
 	<entry id="5402" string="Information">Информация</entry>
 	<entry id="5403" string="Encoding">Кодировка</entry>
-	<entry id="5404" string="Author">Автор</entry>
+	<entry id="5404" string="Author(s)">Автор(ы)</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tags">Теги</entry>
-	<entry id="5501" string="Tag formats">Кодировка тегов</entry>
+	<entry id="5500" string="Tag formats">Кодировка тегов</entry>
+	<entry id="5501" string="Tag fields"/>
 	<entry id="5502" string="Default comment string">Комментарии по умолчанию</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Заменить существующий комментарий комментарием по умолчанию</entry>
 	<entry id="5504" string="Filename pattern">Формирование названия файла</entry>
 	<entry id="5505" string="Encoding">Кодировка</entry>
 	<entry id="5506" string="Comments">Комментарии</entry>
 	<entry id="5507" string="Cover art">Обложка</entry>
-	<entry id="5508" string="Read cover art">Читать обложку</entry>
 	<entry id="5509" string="Read cover art from tags">Читать обложку из тегов</entry>
 	<entry id="5510" string="Read cover art from files">Читать обложку из файлов</entry>
-	<entry id="5511" string="Write cover art">Записать обложку</entry>
 	<entry id="5512" string="Write cover art to tags">Записать обложку в теги</entry>
 	<entry id="5513" string="Write cover art to files">Записать обложку в файлы</entry>
 	<entry id="5514" string="Add reference to audio file tag">Добавить ссылку на тег аудио файла</entry>
@@ -530,12 +544,14 @@
 	<entry id="5519" string="Special fields">Специальные поля</entry>
 	<entry id="5520" string="Write CD table of contents">Записать содержание CD</entry>
 	<entry id="5521" string="Preserve Replay Gain information">Сохранять информацию Replay Gain</entry>
-	<entry id="5522" string="Cue sheets">Cue sheets</entry>
-	<entry id="5523" string="Read cue sheets embedded in metadata">Читать cue sheets, включенные в метаданные</entry>
-	<entry id="5524" string="Prefer cue sheets over chapter information">Предпочтительнее использовать cue sheets вместо информации о разделе</entry>
 	<entry id="5525" string="Prepend zero to track numbers below 10">Добавлять 0 в начало номеров дорожек меньше 10</entry>
 	<entry id="5526" string="File size limit">Ограничение размера файла</entry>
 	<entry id="5527" string="unlimited">неограниченный</entry>
+	<entry id="5528" string="Miscellaneous"/>
+	<entry id="5529" string="Fill missing fields with information obtained from file names"/>
+	<entry id="5530" string="Restrict file names"/>
+	<entry id="5531" string="Cover art tags"/>
+	<entry id="5532" string="Cover art files"/>
       </section>
 
       <section name="Joblist">
@@ -682,13 +698,39 @@
 	<entry id="8201" string="%1 errors while processing job">%1 ошибок при обработке задания</entry>
 	<entry id="8202" string="select an entry for details">выберите запись для просмотра подробностей</entry>
       </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool"/>
+	<entry id="8301" string="%1 track(s) in joblist"/>
+	<entry id="8302" string="Split mode"/>
+	<entry id="8303" string="Split by duration"/>
+	<entry id="8304" string="Duration per part"/>
+	<entry id="8305" string="at least"/>
+	<entry id="8306" string="approximately"/>
+	<entry id="8307" string="at most"/>
+	<entry id="8308" string="exactly"/>
+	<entry id="8309" string="second(s)"/>
+	<entry id="8310" string="minute(s)"/>
+	<entry id="8311" string="hour(s)"/>
+	<entry id="8312" string="Fixed number of parts"/>
+	<entry id="8313" string="Number of parts"/>
+	<entry id="8314" string="Split upon metadata change"/>
+	<entry id="8315" string="Metadata pattern to compare"/>
+	<entry id="8316" string="Split at track boundaries"/>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part"/>
+	<entry id="8318" string="Repeat duration"/>
+	<entry id="8319" string="Output filenames"/>
+	<entry id="8320" string="Filename pattern"/>
+	<entry id="8321" string="Convert"/>
+	<entry id="8322" string="Save"/>
+      </section>
     </section>
 
     <section name="Ripper">
       <entry id="9000" string="Active CD-ROM drive">Выбор привода CD-ROM</entry>
       <entry id="9001" string="Set drive speed limit">Предел скорости привода</entry>
       <entry id="9002" string="CD information">Информация о CD</entry>
-      <entry id="9003" string="Read CD Text">Читать CD Текст</entry>
+      <entry id="9003" string="Read CD-Text">Читать CD-текст</entry>
       <entry id="9004" string="Read cdplayer.ini">Читать cdplayer.ini</entry>
       <entry id="9005" string="Ripper settings">Настройки захвата данных (граббера)</entry>
       <entry id="9006" string="Activate cdparanoia mode">Режим cdparanoia</entry>
@@ -728,6 +770,8 @@
 	<entry id="12003" string="RNNoise Noise Reduction">Подавление шумов RNNoise</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Изменение темпа/высоты</entry>
 	<entry id="12005" string="HDCD Decoder">Декодер HDCD</entry>
+	<entry id="12006" string="Matrix Surround Decoder"/>
+	<entry id="12007" string="Volume Adjustment"/>
       </section>
 
       <section name="Verifiers">
@@ -1029,6 +1073,7 @@
 	<entry id="40020" string="Options">Настройки</entry>
 	<entry id="40021" string="Enable discontinous transmission">Разрешить непрерывную передачу</entry>
 	<entry id="40022" string="Expected packet loss">Ожидаемая потеря пакетов</entry>
+	<entry id="40023" string="Disable intensity stereo phase inversion"/>
       </section>
 
       <section name="SndFile">
@@ -1064,6 +1109,9 @@
 	<entry id="50004" string="unsigned">без знака</entry>
 	<entry id="50005" string="Integer">Целое</entry>
 	<entry id="50006" string="Float">С плавающей точкой</entry>
+	<entry id="50007" string="Dithering"/>
+	<entry id="50008" string="Apply dither when reducing sample resolution"/>
+	<entry id="50009" string="Dither type"/>
       </section>
 
       <section name="Channels">
@@ -1123,6 +1171,18 @@
 	<entry id="50405" string="Voice (incl. laughter etc.)">Голос (включая Смех и т.п.)</entry>
 	<entry id="50406" string="Speech">Речь</entry>
       </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">Выходные каналы</entry>
+	<entry id="50501" string="Channel configuration">Конфигурация каналов</entry>
+	<entry id="50502" string="Redirect bass content to LFE channel"/>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment"/>
+	<entry id="50601" string="Adjustment"/>
+	<entry id="50602" string="%1 dB"/>
+      </section>
     </section>
 
     <section name="Taggers">
@@ -1162,6 +1222,9 @@
 	<entry id="70023" string="not present">отсутствует</entry>
 	<entry id="70024" string="not detected">не обнаружено</entry>
 	<entry id="70025" string="disabled">отключено</entry>
+	<entry id="70026" string="Options"/>
+	<entry id="70027" string="Notify when a disc is not found in the database"/>
+	<entry id="70028" string="Notify when all tracks have been successfully verified"/>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">Настройка AccurateRip</entry>
@@ -1169,9 +1232,10 @@
 	  <entry id="70052" string="Do not ask again">Больше не спрашивать</entry>
 	  <entry id="70053" string="AccurateRip offset detection">Определение смещения AccurateRip</entry>
 	  <entry id="70054" string="The inserted disc could not be found in the AccurateRip database.">Вставленный диск не найден в базе данных  AccurateRip.</entry>
-	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Пожалуйста, вставьте другой диск в привод CD и нажмите OK.&#10;&#10;Диск должен присутствовать в базе данных AccurateRip. Вероятность выше для &#10;популярных CD, которые могли быть скопированы другими пользователями раньше.</entry>
+	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Пожалуйста, вставьте другой диск в привод CD и нажмите OK.&#10;&#10;Диск должен присутствовать в базе данных AccurateRip. Вероятность выше для&#10;популярных CD, которые могли быть скопированы другими пользователями раньше.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">Для определения смещения необходимо проверить другой диск.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Смещение привода успешно определено и установлено в %1 семплов.</entry>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip."/>
 	</section>
       </section>
     </section>
@@ -1236,6 +1300,7 @@
 	<entry id="80406" string="faster">быстрее</entry>
 	<entry id="80407" string="better">лучше</entry>
 	<entry id="80408" string="%1 kbps">%1 кбит</entry>
+	<entry id="80409" string="Create correction file"/>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1404,6 +1469,11 @@
 
 	<section name="Lyrics">
 	  <entry id="103350" string="Lyrics">Тексты песен</entry>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">Рейтинг</entry>
+	  <entry id="103361" string="none"/>
 	</section>
 
 	<section name="Configuration">
