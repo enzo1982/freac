@@ -20,6 +20,9 @@ if [[ "$1" == "translation" ]]; then
   shift
 fi
 
+APPLEID=robert.kausch@freac.org
+TEAMID=EY3MGX8Y96
+
 if [[ -n $1 ]]; then
   CERTNAME="Developer ID Application: $1"
 
@@ -59,33 +62,18 @@ if [[ -n $CERTNAME ]]; then
     zip -r freac.zip freac.app
 
     echo Uploading application for notarization...
-    if xcrun altool --notarize-app -f freac.zip --primary-bundle-id org.freac.freac -u robert.kausch@freac.org --password "$PASSWORD" > notarize.log 2>&1; then
+    if xcrun notarytool submit freac.zip --wait --apple-id $APPLEID --team-id $TEAMID --password $PASSWORD > notarize.log 2>&1; then
       cat notarize.log
-      RequestUUID=$(awk -F ' = ' '/RequestUUID/ {print $2}' notarize.log)
 
-      # Check status periodically
-      while sleep 30 && date; do
-        # Check notarization status
-        if xcrun altool --notarization-info "$RequestUUID" -u robert.kausch@freac.org --password "$PASSWORD" > notarize.info 2>&1; then
-          cat "notarize.info"
-
-          # Once notarization is complete, run stapler
-          if ! grep -q "Status: in progress" notarize.info; then
-            echo Stapling ticket to application...
-            xcrun stapler staple freac.app
-            break
-          fi
-        else
-          cat notarize.info 1>&2
-          exit 1
-        fi
-      done
+      # Once notarization is complete, run stapler
+      echo Stapling ticket to application...
+      xcrun stapler staple freac.app
     else
       cat notarize.log 1>&2
       exit 1
     fi
 
-    rm -f freac.zip notarize.log notarize.info
+    rm -f freac.zip notarize.log
   fi
 fi
 

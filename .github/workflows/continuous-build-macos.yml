@@ -12,10 +12,10 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: macos-11
+          - os: macos-12
             target: 10.9
 
-          - os: macos-11
+          - os: macos-12
             target: 11.0
 
     runs-on: ${{ matrix.os }}
