@@ -7,8 +7,8 @@
   "sources": [
     {
         "type": "archive",
-        "url": "https://freac.org/patches/MAC_915_SDK.zip",
-        "sha256": "be368cfa3c5837f6b6f523ee5a170e5466897b9b84a9318e710fb820f2c4c074",
+        "url": "https://freac.org/patches/MAC_918_SDK.zip",
+        "sha256": "780fbb526ff2e7c9fdaac898c1e00dd567230d87f0a847fb0a69f18e0fa282d5",
         "strip-components": 0
     }
   ]
