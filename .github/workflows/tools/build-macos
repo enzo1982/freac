@@ -4,7 +4,7 @@
 set -e
 
 # Number of parallel jobs
-jobs=$(sysctl -n hw.ncpu)
+jobs=$(sysctl -n hw.activecpu)
 
 # Build libcdio
 cd tools
@@ -36,7 +36,7 @@ cd smooth
 CONFIG="release"
 
 make config=$CONFIG -j$jobs
-sudo make config=$CONFIG install
+sudo make config=$CONFIG -j$jobs install
 
 cd ..
 
@@ -46,7 +46,7 @@ cd boca
 CONFIG="release"
 
 make config=$CONFIG -j$jobs
-sudo make config=$CONFIG install
+sudo make config=$CONFIG -j$jobs install
 
 cd ..
 
@@ -54,7 +54,7 @@ cd ..
 CONFIG="release"
 
 make config=$CONFIG -j$jobs
-sudo make config=$CONFIG install
+sudo make config=$CONFIG -j$jobs install
 
 # Build codecs and DSP libraries
 cd tools

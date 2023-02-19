@@ -3,13 +3,20 @@
 # Exit on error
 set -e
 
-# Number of parallel jobs
-jobs=12
-
 # Query OS and machine
 uname=`uname`
 machine=`gcc -dumpmachine`
 
+# Number of parallel jobs
+if [[ $uname == *MINGW* ]]; then
+  jobs=$NUMBER_OF_PROCESSORS
+elif [[ $uname == Darwin ]]; then
+  jobs=$(sysctl -n hw.activecpu)
+else
+  jobs=$(nproc)
+fi
+
+# macOS target version
 if [[ $uname == Darwin ]]; then
   MACOSX_TARGET=$MACOSX_DEPLOYMENT_TARGET
   if [[ -z $MACOSX_TARGET ]]; then
