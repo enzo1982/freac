@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">Έναρξη της διαδικασίας κωδικοποίησης (διαγραφή αρχικών αρχείων)</entry>
       <entry id="2011" string="Pause/resume encoding">Παύση/συνέχεια κωδικοποίησης</entry>
       <entry id="2012" string="Stop encoding">Διακοπή κωδικοποίησης</entry>
+      <entry id="2013" string="Open the output splitting tool">Ανοιγμα εργαλείου διαχωρισμού εξόδου</entry>
     </section>
 
     <section name="Joblist">
@@ -322,7 +323,7 @@
       <section name="Submit">
 	<entry id="4000" string="CDDB data">Δεδομένα CDDB</entry>
 	<entry id="4001" string="Submit">Καταχώρηση</entry>
-	<entry id="4002" string="No audio CD in drive!">Κανένα CD ήχου στον οδηγό!</entry>
+	<entry id="4002" string="No audio CD in drive!">Κανένα CD ήχου στην μονάδα δίσκου!</entry>
 	<entry id="4003" string="Submitting CD information">Καταχώρηση πληροφοριών CD</entry>
 	<entry id="4004" string="Update joblist with this information">Ενημέρωση λίστας εργασιών με αυτές τις πληροφορίες</entry>
 	<entry id="4005" string="Status">Κατάσταση</entry>
@@ -400,6 +401,7 @@
       <entry id="5003" string="Language">Γλώσσα</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Διεπαφή</entry>
+      <entry id="5006" string="Metadata">Ετικέτες</entry>
       <entry id="5007" string="Components">Στοιχεία</entry>
       <entry id="5008" string="Decoders">Αποκωδικωποιητές</entry>
       <entry id="5009" string="Output">Έξοδος</entry>
@@ -420,6 +422,7 @@
       <entry id="5024" string="Taggers">Τοποθετητής ετικετών</entry>
       <entry id="5025" string="Processing">Επεξεργασία</entry>
       <entry id="5026" string="Additional arguments">Πρόσθετες παράμετροι</entry>
+      <entry id="5027" string="Output files">Αρχεία εξόδου</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Ρύθμιση κωδικοποιητή</entry>
@@ -444,6 +447,7 @@
 	<entry id="5158" string="Replace spaces with underscores">Αντικατάσταση διαστημάτων με κάτω παύλες</entry>
 	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Προσθήκη σειριακών αριθμών σε πανομοιότυπα ονόματα αρχείων</entry>
 	<entry id="5160" string="Keep time stamps of source files">Διατήρηση των χρονικών σφραγίδων των πηγαίων αρχείων</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available">Χρήση &lt;filename&gt; όταν οι πληροφορίες τίτλου δεν είναι διαθέσιμες</entry>
 
 	<section name="Errors">
 	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Ο φάκελος εξόδου δεν υπάρχει! Θέλετε να δημιουργηθεί;</entry>
@@ -467,6 +471,7 @@
 	<entry id="5251" string="Create cue sheets">Δημιουργία φύλλων cue</entry>
 	<entry id="5253" string="Read cue sheets embedded in metadata">Ανάγνωση φύλλων cue ενσωματωμένων στα μεταδεδομένα</entry>
 	<entry id="5254" string="Prefer cue sheets over chapter information">Προτίμηση φύλλων cue αντί για τις πληροφορίες κεφαλαίων</entry>
+	<entry id="5256" string="Note">Σημείωση</entry>
       </section>
 
       <section name="CDDB">
@@ -686,6 +691,14 @@
 	<entry id="8200" string="Errors">Σφάλματα</entry>
 	<entry id="8201" string="%1 errors while processing job">%1 σφάλματα κατά την επεξεργασία της εργασίας</entry>
 	<entry id="8202" string="select an entry for details">επιλέξτε ένα αντικείμενο για λεπτομέρειες</entry>
+      </section>
+
+      <section name="Splitter">
+	<entry id="8309" string="second(s)">δευτερόλεπτο(α)</entry>
+	<entry id="8310" string="minute(s)">λεπτό(ά)</entry>
+	<entry id="8319" string="Output filenames">Ονόματα αρχείων εξόδου</entry>
+	<entry id="8320" string="Filename pattern">Στυλ ονόματος αρχείου</entry>
+	<entry id="8322" string="Save">Αποθήκευση</entry>
       </section>
     </section>
 
@@ -1176,6 +1189,7 @@
 	<entry id="70023" string="not present">μη παρόν</entry>
 	<entry id="70024" string="not detected">μη ανιχνευθέν</entry>
 	<entry id="70025" string="disabled">απενεργοποιημένο</entry>
+	<entry id="70026" string="Options">Επιλογές</entry>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">Διαμόρφωση AccurateRip</entry>
@@ -1422,6 +1436,7 @@
 
 	<section name="Rating">
 	  <entry id="103360" string="Rating">Αξιολόγηση</entry>
+	  <entry id="103361" string="none">κανένα</entry>
 	</section>
 
 	<section name="Configuration">
