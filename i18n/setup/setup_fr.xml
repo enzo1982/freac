@@ -18,17 +18,17 @@
     <entry id="104" string="Yes">Oui</entry>
     <entry id="105" string="No">Non</entry>
 
-    <entry id="200" string="Current file progress:">Progression du fichier actuel :</entry>
-    <entry id="201" string="Total installation progress:">Progression totale de l'installation :</entry>
-    <entry id="202" string="Do you really want to exit Setup now?&#10;&#10;If you quit now, the program will not be installed on your computer.&#10;You may run Setup again later to complete the installation.">Êtes-vous sûr de vouloir quitter l'installation?</entry>
+    <entry id="200" string="Current file progress:">Progression du fichier actuel :</entry>
+    <entry id="201" string="Total installation progress:">Progression totale de l'installation :</entry>
+    <entry id="202" string="Do you really want to exit Setup now?&#10;&#10;If you quit now, the program will not be installed on your computer.&#10;You may run Setup again later to complete the installation.">Êtes-vous sûr de vouloir quitter l'installation maintenant ?&#10;&#10;Si vous quittez maintenant, le programme ne sera pas installé sur votre ordinateur.&#10;Vous pourrez relancer l'installeur par après pour complèter l'installation.</entry>
     <entry id="203" string="Exit Setup">Installation interrompue</entry>
-    <entry id="204" string="The Setup will be cancelled now!">La désinstallation n'a pas été terminée.</entry>
+    <entry id="204" string="The Setup will be cancelled now!">L'installation va être annulée !</entry>
     <entry id="205" string="Info">Information</entry>
 
     <entry id="300" string="Destination directory">Dossier d'installation</entry>
     <entry id="301" string="Select">Parcourir</entry>
-    <entry id="302" string="Select the folder in which the program will be installed:">Choisissez le dossier d'installation:</entry>
-    <entry id="303" string="Available components">Composants</entry>
+    <entry id="302" string="Select the folder in which the program will be installed:">Choisissez le dossier d'installation :</entry>
+    <entry id="303" string="Available components">Composants disponibles</entry>
     <entry id="304" string="Description">Description</entry>
     <entry id="305" string="Move the mouse over a&#10;component entry to&#10;show a description">Passez le curseur de votre&#10;souris sur un composant pour&#10;en voir la description</entry>
     <entry id="306" string="Create Start Menu group">Créer un groupe dans le menu démarrer</entry>
@@ -36,7 +36,7 @@
     <entry id="308" string="Create Quick Launch icon">Ajouter une icône dans la barre de lancement rapide</entry>
 
     <entry id="1" string="%LONGNAME% Setup">Installation de %LONGNAME%</entry>
-    <entry id="2" string="Welcome to the %NAME% Setup Wizard&#10;&#10;&#10;This will install %NAME% %VERSION% on your computer.&#10;&#10;It is recommended that you close all other applications you have running&#10;before continuing. This will help avoiding possible conflicts during the&#10;installation process.&#10;&#10;Click Next to continue, or Cancel to exit Setup.">Bienvenue dans le programme d'installation de %NAME%&#10;&#10;&#10;Vous êtes sur le point d'installer %NAME% %VERSION% sur votre ordinateur.&#10;&#10;Avant de démarrer l'installation, il est recommandé de fermer&#10;toutes les autres applications. Cela permettra la mise à jour&#10;de certains fichiers système sans redémarrer votre ordinateur.</entry>
+    <entry id="2" string="Welcome to the %NAME% Setup Wizard&#10;&#10;&#10;This will install %NAME% %VERSION% on your computer.&#10;&#10;It is recommended that you close all other applications you have running&#10;before continuing. This will help avoiding possible conflicts during the&#10;installation process.&#10;&#10;Click Next to continue, or Cancel to exit Setup.">Bienvenue dans le programme d'installation de %NAME%&#10;&#10;&#10;Vous êtes sur le point d'installer %NAME% %VERSION% sur votre ordinateur.&#10;&#10;Avant de démarrer l'installation, il est recommandé de fermer toutes&#10;les autres applications. Cela permettra d'éviter de possibles conflits&#10;pendant l'installation.&#10;&#10;Cliquez sur Suivant pour continuer, ou Fermer pour annuler l'installation.</entry>
     <entry id="3" string="Setup - License Agreement">Installation - Licence utilisateur</entry>
     <entry id="4" string="Please read the following license agreement. Click Yes to accept&#10;the agreement, or No to cancel the Setup.">Veuillez examiner les termes de la licence avant d'installer %NAME%. Si vous&#10;acceptez les conditions de la licence utilisateur, cliquez sur Oui pour continuer.</entry>
     <entry id="5" string="Setup - Destination Directory">Installation - Dossier d'installation</entry>

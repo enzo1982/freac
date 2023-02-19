@@ -38,7 +38,7 @@
     <entry id="313" string="Composer">Compositeur</entry>
     <entry id="314" string="Tempo">Tempo</entry>
     <entry id="315" string="ISRC">ISRC</entry>
-    <entry id="316" string="Musical key"/>
+    <entry id="316" string="Musical key">Clef musicale</entry>
 
     <entry id="350" string="unknown artist">artiste inconnu</entry>
     <entry id="351" string="unknown title">titre inconnu</entry>
@@ -48,8 +48,8 @@
     <entry id="355" string="unknown conductor">chef d'orchestre inconnu</entry>
     <entry id="356" string="unknown composer">compositeur inconnu</entry>
     <entry id="357" string="unknown album artist">artiste de l'album inconnu</entry>
-    <entry id="358" string="unknown tempo"/>
-    <entry id="359" string="unknown key"/>
+    <entry id="358" string="unknown tempo">tempo inconnu</entry>
+    <entry id="359" string="unknown key">clef inconnue</entry>
 
     <entry id="380" string="hidden track">morceau caché</entry>
 
@@ -401,7 +401,7 @@
       <entry id="5003" string="Language">Langue</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Interface</entry>
-      <entry id="5006" string="Metadata"/>
+      <entry id="5006" string="Metadata">Balises infos</entry>
       <entry id="5007" string="Components">Composants</entry>
       <entry id="5008" string="Decoders">Décodeurs</entry>
       <entry id="5009" string="Output">Résultat</entry>
@@ -422,7 +422,7 @@
       <entry id="5024" string="Taggers">Balisage</entry>
       <entry id="5025" string="Processing">Traitement</entry>
       <entry id="5026" string="Additional arguments">Paramètres supplémentaires</entry>
-      <entry id="5027" string="Output files"/>
+      <entry id="5027" string="Output files">Fichiers de sortie</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurer l'encodeur</entry>
@@ -447,7 +447,7 @@
 	<entry id="5158" string="Replace spaces with underscores">Remplacer les espaces par des souslignages</entry>
 	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Adjoindre des numéros séquentiels aux fichiers de mêmes noms</entry>
 	<entry id="5160" string="Keep time stamps of source files">Garder les index temporels des fichiers sources</entry>
-	<entry id="5161" string="Use &lt;filename&gt; when title information is not available"/>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available">Utilisez &lt;filename&gt; lorsque les informations sur le titre ne sont pas disponibles</entry>
 
 	<section name="Errors">
 	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Le répertoire de sortie n'existe pas. Voulez-vous le créer ?</entry>
@@ -473,7 +473,7 @@
 	<entry id="5253" string="Read cue sheets embedded in metadata">Lire la liste des repères intégrée dans les métadonnées</entry>
 	<entry id="5254" string="Prefer cue sheets over chapter information">Préfèrer la liste des repères aux informations de chapitre</entry>
 	<entry id="5255" string="Output folder and filenames"/>
-	<entry id="5256" string="Note"/>
+	<entry id="5256" string="Note">Remarque</entry>
 	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section."/>
       </section>
 
@@ -516,7 +516,7 @@
 
       <section name="Language">
 	<entry id="5400" string="Select language">Sélectionner la langue</entry>
-	<entry id="5401" string="Edit language file">Modifier fichier langue</entry>
+	<entry id="5401" string="Edit language file">Modifier le fichier de langue</entry>
 	<entry id="5402" string="Information">Informations</entry>
 	<entry id="5403" string="Encoding">Encodage</entry>
 	<entry id="5404" string="Author(s)">Auteur(s)</entry>
@@ -547,9 +547,9 @@
 	<entry id="5525" string="Prepend zero to track numbers below 10">Ajout de zéros aux numéros de morceaux inférieurs à 10</entry>
 	<entry id="5526" string="File size limit">Limite de taille de fichier</entry>
 	<entry id="5527" string="unlimited">illimité</entry>
-	<entry id="5528" string="Miscellaneous"/>
+	<entry id="5528" string="Miscellaneous">Autres</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names"/>
-	<entry id="5530" string="Restrict file names"/>
+	<entry id="5530" string="Restrict file names">Restreindre les noms de fichiers</entry>
 	<entry id="5531" string="Cover art tags"/>
 	<entry id="5532" string="Cover art files"/>
       </section>
@@ -602,7 +602,7 @@
 
       <section name="Verification">
 	<entry id="5800" string="Verification">Vérification</entry>
-	<entry id="5801" string="Enable input verification">Activer la vériffication de la source</entry>
+	<entry id="5801" string="Enable input verification">Activer la vérification de la source</entry>
 	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Vérifier que l'encodage sans perte est fidèle&#10;aux données du fichier d'origine.</entry>
 	<entry id="5803" string="Enable output verification">Activer la vérification du résultat</entry>
 	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Vérifier que le décodage sans perte restitue&#10;exactement les données du fichier d'origine.</entry>
@@ -701,28 +701,28 @@
 
       <section name="Splitter">
 	<entry id="8300" string="Output splitting tool"/>
-	<entry id="8301" string="%1 track(s) in joblist"/>
+	<entry id="8301" string="%1 track(s) in joblist">%1 fichier(s) à traiter</entry>
 	<entry id="8302" string="Split mode"/>
-	<entry id="8303" string="Split by duration"/>
+	<entry id="8303" string="Split by duration">Filtrer par durée</entry>
 	<entry id="8304" string="Duration per part"/>
-	<entry id="8305" string="at least"/>
-	<entry id="8306" string="approximately"/>
-	<entry id="8307" string="at most"/>
-	<entry id="8308" string="exactly"/>
-	<entry id="8309" string="second(s)"/>
-	<entry id="8310" string="minute(s)"/>
-	<entry id="8311" string="hour(s)"/>
+	<entry id="8305" string="at least">au moins</entry>
+	<entry id="8306" string="approximately">environ</entry>
+	<entry id="8307" string="at most">au plus</entry>
+	<entry id="8308" string="exactly">exactement</entry>
+	<entry id="8309" string="second(s)">seconde(s)</entry>
+	<entry id="8310" string="minute(s)">minutes(s)</entry>
+	<entry id="8311" string="hour(s)">heure(s)</entry>
 	<entry id="8312" string="Fixed number of parts"/>
 	<entry id="8313" string="Number of parts"/>
 	<entry id="8314" string="Split upon metadata change"/>
 	<entry id="8315" string="Metadata pattern to compare"/>
 	<entry id="8316" string="Split at track boundaries"/>
 	<entry id="8317" string="Repeat end of previous part at beginning of each part"/>
-	<entry id="8318" string="Repeat duration"/>
-	<entry id="8319" string="Output filenames"/>
-	<entry id="8320" string="Filename pattern"/>
-	<entry id="8321" string="Convert"/>
-	<entry id="8322" string="Save"/>
+	<entry id="8318" string="Repeat duration">Durée de répétition</entry>
+	<entry id="8319" string="Output filenames">Noms de fichiers résultants</entry>
+	<entry id="8320" string="Filename pattern">Modèle de nom de fichier</entry>
+	<entry id="8321" string="Convert">Convertir</entry>
+	<entry id="8322" string="Save">Sauvegarder</entry>
       </section>
     </section>
 
@@ -771,7 +771,7 @@
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Modificateur de tempo/tonalité</entry>
 	<entry id="12005" string="HDCD Decoder">Décodeur HDCD</entry>
 	<entry id="12006" string="Matrix Surround Decoder"/>
-	<entry id="12007" string="Volume Adjustment"/>
+	<entry id="12007" string="Volume Adjustment">Réglage du volume</entry>
       </section>
 
       <section name="Verifiers">
@@ -1109,9 +1109,9 @@
 	<entry id="50004" string="unsigned">non signé</entry>
 	<entry id="50005" string="Integer">Entier</entry>
 	<entry id="50006" string="Float">Flottant</entry>
-	<entry id="50007" string="Dithering"/>
-	<entry id="50008" string="Apply dither when reducing sample resolution"/>
-	<entry id="50009" string="Dither type"/>
+	<entry id="50007" string="Dithering">Bruit de dispersion</entry>
+	<entry id="50008" string="Apply dither when reducing sample resolution">Appliquer du bruit de dispersion lors de la réduction de la résolution de l'échantillon</entry>
+	<entry id="50009" string="Dither type">Type de bruit de dispersion</entry>
       </section>
 
       <section name="Channels">
@@ -1179,9 +1179,9 @@
       </section>
 
       <section name="Volume">
-	<entry id="50600" string="Volume adjustment"/>
-	<entry id="50601" string="Adjustment"/>
-	<entry id="50602" string="%1 dB"/>
+	<entry id="50600" string="Volume adjustment">Réglage du volume</entry>
+	<entry id="50601" string="Adjustment">Réglage</entry>
+	<entry id="50602" string="%1 dB">%1 dB</entry>
       </section>
     </section>
 
@@ -1222,9 +1222,9 @@
 	<entry id="70023" string="not present">absent</entry>
 	<entry id="70024" string="not detected">non détecté</entry>
 	<entry id="70025" string="disabled">désactivé</entry>
-	<entry id="70026" string="Options"/>
-	<entry id="70027" string="Notify when a disc is not found in the database"/>
-	<entry id="70028" string="Notify when all tracks have been successfully verified"/>
+	<entry id="70026" string="Options">Options</entry>
+	<entry id="70027" string="Notify when a disc is not found in the database">Notifier lorsqu'un disque est introuvable dans la base de données</entry>
+	<entry id="70028" string="Notify when all tracks have been successfully verified">Notifier lorsque toutes les pistes ont été vérifiées avec succès</entry>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">Configuration AccurateRip</entry>
@@ -1235,7 +1235,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Veuillez insérer un autre disque dans le lecteur de CD et cliquer sur OK.&#10;Le disque doit être présent dans la base de données AccurateRip.&#10;La probabilité pour cela est plus élevée avec les CD populaires qui ont&#10;probablement déjà été extraits par d'autres utilisateurs.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">La détection de décalage nécessite de vérifier un autre disque.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Le décalage du lecteur a été détecté avec succès et configuré à %1 échantillons.</entry>
-	  <entry id="70058" string="All tracks successfully verified with AccurateRip."/>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip.">Toutes les pistes ont été vérifiées avec succès avec AccurateRip.</entry>
 	</section>
       </section>
     </section>
@@ -1446,9 +1446,9 @@
 	  <entry id="103209" string="Original album">Album original</entry>
 	  <entry id="103210" string="Original lyrics writer">Parolier original</entry>
 	  <entry id="103211" string="Original release year">Année de sortie originale</entry>
-	  <entry id="103212" string="Musical key/tempo"/>
+	  <entry id="103212" string="Musical key/tempo">Clef musicale/tempo</entry>
 	  <entry id="103213" string="BPM">BPM</entry>
-	  <entry id="103214" string="Initial key"/>
+	  <entry id="103214" string="Initial key">Clef initiale</entry>
 	</section>
 
 	<section name="Publisher">
@@ -1468,12 +1468,12 @@
 	</section>
 
 	<section name="Lyrics">
-	  <entry id="103350" string="Lyrics"/>
+	  <entry id="103350" string="Lyrics">Paroles</entry>
 	</section>
 
 	<section name="Rating">
-	  <entry id="103360" string="Rating">Evaluation</entry>
-	  <entry id="103361" string="none"/>
+	  <entry id="103360" string="Rating">Évaluation</entry>
+	  <entry id="103361" string="none">aucun</entry>
 	</section>
 
 	<section name="Configuration">
