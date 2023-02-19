@@ -173,7 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">开始编码处理（删除源文件）</entry>
       <entry id="2011" string="Pause/resume encoding">暂停/继续编码</entry>
       <entry id="2012" string="Stop encoding">停止编码</entry>
-      <entry id="2013" string="Open the output splitting tool"/>
+      <entry id="2013" string="Open the output splitting tool">打开输出分割工具</entry>
     </section>
 
     <section name="Joblist">
@@ -401,7 +401,7 @@
       <entry id="5003" string="Language">语言</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">界面</entry>
-      <entry id="5006" string="Metadata"/>
+      <entry id="5006" string="Metadata">标签</entry>
       <entry id="5007" string="Components">插件</entry>
       <entry id="5008" string="Decoders">解码器</entry>
       <entry id="5009" string="Output">输出</entry>
@@ -422,7 +422,7 @@
       <entry id="5024" string="Taggers">标签器</entry>
       <entry id="5025" string="Processing">处理</entry>
       <entry id="5026" string="Additional arguments">附加参数</entry>
-      <entry id="5027" string="Output files"/>
+      <entry id="5027" string="Output files">输出文件</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">设置编码器</entry>
@@ -447,7 +447,7 @@
 	<entry id="5158" string="Replace spaces with underscores">用下划线替换空格</entry>
 	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">为其他相同的文件名附加序列号</entry>
 	<entry id="5160" string="Keep time stamps of source files">保留源文件的时间戳</entry>
-	<entry id="5161" string="Use &lt;filename&gt; when title information is not available"/>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available">当标题信息不可用时使用 &lt;filename&gt;</entry>
 
 	<section name="Errors">
 	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">输出文件夹不存在！您要创建此文件夹吗？</entry>
@@ -469,12 +469,12 @@
       <section name="Cue Sheets">
 	<entry id="5250" string="Cue sheets">cue 表单</entry>
 	<entry id="5251" string="Create cue sheets">创建 cue 表单</entry>
-	<entry id="5252" string="Embedded cue sheets"/>
+	<entry id="5252" string="Embedded cue sheets">嵌入式提示表</entry>
 	<entry id="5253" string="Read cue sheets embedded in metadata">读取嵌入到元数据中的 cue 表单</entry>
 	<entry id="5254" string="Prefer cue sheets over chapter information">用 cue 表单代替章节信息</entry>
-	<entry id="5255" string="Output folder and filenames"/>
-	<entry id="5256" string="Note"/>
-	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section."/>
+	<entry id="5255" string="Output folder and filenames">输出文件夹和文件名</entry>
+	<entry id="5256" string="Note">提示</entry>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section.">Cue 工作表输出文件夹和文件名设置已在播放列表部分配置。</entry>
       </section>
 
       <section name="CDDB">
@@ -525,7 +525,7 @@
 
       <section name="Tags">
 	<entry id="5500" string="Tag formats">标签编码</entry>
-	<entry id="5501" string="Tag fields"/>
+	<entry id="5501" string="Tag fields">标签字段</entry>
 	<entry id="5502" string="Default comment string">默认注释</entry>
 	<entry id="5503" string="Replace existing comments with default comment">使用默认注释替换当前注释</entry>
 	<entry id="5504" string="Filename pattern">文件名样式</entry>
@@ -547,11 +547,11 @@
 	<entry id="5525" string="Prepend zero to track numbers below 10">在小于10的曲目编号中添加0</entry>
 	<entry id="5526" string="File size limit">文件大小限制</entry>
 	<entry id="5527" string="unlimited">无限制</entry>
-	<entry id="5528" string="Miscellaneous"/>
-	<entry id="5529" string="Fill missing fields with information obtained from file names"/>
-	<entry id="5530" string="Restrict file names"/>
-	<entry id="5531" string="Cover art tags"/>
-	<entry id="5532" string="Cover art files"/>
+	<entry id="5528" string="Miscellaneous">杂项</entry>
+	<entry id="5529" string="Fill missing fields with information obtained from file names">用从文件名获取的信息填充缺失的字段</entry>
+	<entry id="5530" string="Restrict file names">限制文件名</entry>
+	<entry id="5531" string="Cover art tags">封面艺术标签</entry>
+	<entry id="5532" string="Cover art files">封面艺术文件</entry>
       </section>
 
       <section name="Joblist">
@@ -700,29 +700,29 @@
       </section>
 
       <section name="Splitter">
-	<entry id="8300" string="Output splitting tool"/>
-	<entry id="8301" string="%1 track(s) in joblist"/>
-	<entry id="8302" string="Split mode"/>
-	<entry id="8303" string="Split by duration"/>
-	<entry id="8304" string="Duration per part"/>
-	<entry id="8305" string="at least"/>
-	<entry id="8306" string="approximately"/>
-	<entry id="8307" string="at most"/>
-	<entry id="8308" string="exactly"/>
-	<entry id="8309" string="second(s)"/>
-	<entry id="8310" string="minute(s)"/>
-	<entry id="8311" string="hour(s)"/>
-	<entry id="8312" string="Fixed number of parts"/>
-	<entry id="8313" string="Number of parts"/>
-	<entry id="8314" string="Split upon metadata change"/>
-	<entry id="8315" string="Metadata pattern to compare"/>
-	<entry id="8316" string="Split at track boundaries"/>
-	<entry id="8317" string="Repeat end of previous part at beginning of each part"/>
-	<entry id="8318" string="Repeat duration"/>
-	<entry id="8319" string="Output filenames"/>
-	<entry id="8320" string="Filename pattern"/>
-	<entry id="8321" string="Convert"/>
-	<entry id="8322" string="Save"/>
+	<entry id="8300" string="Output splitting tool">输出分割工具</entry>
+	<entry id="8301" string="%1 track(s) in joblist">在合并列表中 %1 首曲目</entry>
+	<entry id="8302" string="Split mode">分割模式</entry>
+	<entry id="8303" string="Split by duration">按时长分割</entry>
+	<entry id="8304" string="Duration per part">每个部分时长</entry>
+	<entry id="8305" string="at least">至少</entry>
+	<entry id="8306" string="approximately">大约</entry>
+	<entry id="8307" string="at most">最多</entry>
+	<entry id="8308" string="exactly">精确</entry>
+	<entry id="8309" string="second(s)">秒</entry>
+	<entry id="8310" string="minute(s)">分钟</entry>
+	<entry id="8311" string="hour(s)">小时</entry>
+	<entry id="8312" string="Fixed number of parts">固定数量</entry>
+	<entry id="8313" string="Number of parts">分段数量</entry>
+	<entry id="8314" string="Split upon metadata change">元数据变化时分割</entry>
+	<entry id="8315" string="Metadata pattern to compare">要比较的元数据模式</entry>
+	<entry id="8316" string="Split at track boundaries">在音轨边界处进行分割</entry>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part">在每个部分开头重复前一部分的结尾</entry>
+	<entry id="8318" string="Repeat duration">重复持续时间</entry>
+	<entry id="8319" string="Output filenames">输出文件名</entry>
+	<entry id="8320" string="Filename pattern">文件名样式</entry>
+	<entry id="8321" string="Convert">转换</entry>
+	<entry id="8322" string="Save">保存</entry>
       </section>
     </section>
 
@@ -770,8 +770,8 @@
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise 噪声消除</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">橡皮筋节奏 /音调 变换器</entry>
 	<entry id="12005" string="HDCD Decoder">HDCD 解码器</entry>
-	<entry id="12006" string="Matrix Surround Decoder"/>
-	<entry id="12007" string="Volume Adjustment"/>
+	<entry id="12006" string="Matrix Surround Decoder">矩阵环绕解码器</entry>
+	<entry id="12007" string="Volume Adjustment">音量调整</entry>
       </section>
 
       <section name="Verifiers">
@@ -1073,7 +1073,7 @@
 	<entry id="40020" string="Options">选项</entry>
 	<entry id="40021" string="Enable discontinous transmission">启用不连续传输</entry>
 	<entry id="40022" string="Expected packet loss">期望包损失</entry>
-	<entry id="40023" string="Disable intensity stereo phase inversion"/>
+	<entry id="40023" string="Disable intensity stereo phase inversion">禁用强度立体相反转</entry>
       </section>
 
       <section name="SndFile">
@@ -1109,9 +1109,9 @@
 	<entry id="50004" string="unsigned">无符号</entry>
 	<entry id="50005" string="Integer">整数</entry>
 	<entry id="50006" string="Float">浮点</entry>
-	<entry id="50007" string="Dithering"/>
-	<entry id="50008" string="Apply dither when reducing sample resolution"/>
-	<entry id="50009" string="Dither type"/>
+	<entry id="50007" string="Dithering">抖动</entry>
+	<entry id="50008" string="Apply dither when reducing sample resolution">减少样品分辨率时应用抖动</entry>
+	<entry id="50009" string="Dither type">抖动类型</entry>
       </section>
 
       <section name="Channels">
@@ -1175,13 +1175,13 @@
       <section name="Surround">
 	<entry id="50500" string="Output channels">输出声道</entry>
 	<entry id="50501" string="Channel configuration">声道配置</entry>
-	<entry id="50502" string="Redirect bass content to LFE channel"/>
+	<entry id="50502" string="Redirect bass content to LFE channel">将内容重定向到 LFE 声道</entry>
       </section>
 
       <section name="Volume">
-	<entry id="50600" string="Volume adjustment"/>
-	<entry id="50601" string="Adjustment"/>
-	<entry id="50602" string="%1 dB"/>
+	<entry id="50600" string="Volume adjustment">音量调整</entry>
+	<entry id="50601" string="Adjustment">调整</entry>
+	<entry id="50602" string="%1 dB">%1 分贝</entry>
       </section>
     </section>
 
@@ -1211,7 +1211,7 @@
 	<entry id="70012" string="Drives">驱动器</entry>
 	<entry id="70013" string="Drive">驱动器</entry>
 	<entry id="70014" string="Offset configuration">偏移配置</entry>
-	<entry id="70015" string="Offset in drive database">驱动器数据库中的偏移</entry>
+	<entry id="70015" string="Offset in drive database">驱动器数据库偏移</entry>
 	<entry id="70016" string="Detected offset">检测到偏移</entry>
 	<entry id="70017" string="Configured offset">配置了偏移</entry>
 	<entry id="70018" string="Detect offset now">立即检测偏移</entry>
@@ -1222,9 +1222,9 @@
 	<entry id="70023" string="not present">不存在</entry>
 	<entry id="70024" string="not detected">未检出</entry>
 	<entry id="70025" string="disabled">禁用</entry>
-	<entry id="70026" string="Options"/>
-	<entry id="70027" string="Notify when a disc is not found in the database"/>
-	<entry id="70028" string="Notify when all tracks have been successfully verified"/>
+	<entry id="70026" string="Options">选项</entry>
+	<entry id="70027" string="Notify when a disc is not found in the database">当在数据库中找不到光盘时通知</entry>
+	<entry id="70028" string="Notify when all tracks have been successfully verified">所有曲目已成功验证时通知</entry>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">AccurateRip 配置</entry>
@@ -1235,7 +1235,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">请将另一张光盘插入 CD 驱动器并点击“好”。&#10;&#10;AccurateRip 数据库中必须有光盘的信息。已经被其他用户&#10;翻录过的 CD 最有可能符合这种情况。</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">偏移检测需要检查另一张光盘。</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">成功检测驱动器偏移并配置为 %1 采样。</entry>
-	  <entry id="70058" string="All tracks successfully verified with AccurateRip."/>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip.">所有曲目通过 AccurateRip 成功验证。</entry>
 	</section>
       </section>
     </section>
@@ -1300,7 +1300,7 @@
 	<entry id="80406" string="faster">较快</entry>
 	<entry id="80407" string="better">较好</entry>
 	<entry id="80408" string="%1 kbps">%1 kbps</entry>
-	<entry id="80409" string="Create correction file"/>
+	<entry id="80409" string="Create correction file">创建校正文件</entry>
       </section>
 
       <section name="Nero AAC Encoder">
