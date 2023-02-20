@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2022 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -1115,6 +1115,12 @@ Error freac::JobConvert::Perform()
 
 			/* Delete processor and encoder.
 			 */
+			singleFileProcessor->Destroy();
+			singleFileEncoder->Destroy();
+
+			if (singleFileProcessor->GetErrorState()) BoCA::Utilities::ErrorMessage(singleFileProcessor->GetErrorString());
+			if (singleFileEncoder->GetErrorState())	  BoCA::Utilities::ErrorMessage(singleFileEncoder->GetErrorString());
+
 			delete singleFileProcessor;
 			delete singleFileEncoder;
 		}
