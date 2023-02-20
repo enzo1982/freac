@@ -131,12 +131,16 @@ parts:
       - usr/lib/libmp3lame.so*
 
   libmp4v2:
+    after: [ patches ]
     source: https://github.com/enzo1982/mp4v2/releases/download/v2.1.2/mp4v2-2.1.2.tar.bz2
     source-checksum: sha256/0b943133673cffd4625247783e34080797de7386142061a6613e0c26285953ef
     plugin: autotools
     autotools-configure-parameters: [ --prefix=/usr ]
     build-environment:
       - CXXFLAGS: "$CXXFLAGS -Os"
+    override-build: |
+      patch -p1 < $SNAPCRAFT_STAGE/mp4v2-2.1.2-sfocache.patch
+      snapcraftctl build
     prime:
       - usr/lib/libmp4v2.so*
 

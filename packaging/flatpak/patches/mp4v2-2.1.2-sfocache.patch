@@ -1,0 +1,43 @@
+diff -Naur mp4v2-2.1.2/src/mp4track.cpp mp4v2-2.1.2-sfocache/src/mp4track.cpp
+--- mp4v2-2.1.2/src/mp4track.cpp	2023-02-10 00:35:21.000000000 +0100
++++ mp4v2-2.1.2-sfocache/src/mp4track.cpp	2023-02-20 14:42:52.550884400 +0100
+@@ -999,11 +999,23 @@
+         sampleId - ((sampleId - firstSample) % samplesPerChunk);
+ 
+     // need cumulative samples sizes from firstSample to sampleId - 1
++    MP4SampleId startSample = firstSampleInChunk;
+     uint32_t sampleOffset = 0;
+-    for (MP4SampleId i = firstSampleInChunk; i < sampleId; i++) {
++
++    if (chunkId == m_cachedSfoChunkId && sampleId >= m_cachedSfoSampleId)
++    {
++        startSample = m_cachedSfoSampleId;
++        sampleOffset = m_cachedSfoSampleOffset;
++    }
++
++    for (MP4SampleId i = startSample; i < sampleId; i++) {
+         sampleOffset += GetSampleSize(i);
+     }
+ 
++    m_cachedSfoSampleId = sampleId;
++    m_cachedSfoChunkId = chunkId;
++    m_cachedSfoSampleOffset = sampleOffset;
++
+     return chunkOffset + sampleOffset;
+ }
+ 
+diff -Naur mp4v2-2.1.2/src/mp4track.h mp4v2-2.1.2-sfocache/src/mp4track.h
+--- mp4v2-2.1.2/src/mp4track.h	2023-02-10 00:35:21.000000000 +0100
++++ mp4v2-2.1.2-sfocache/src/mp4track.h	2023-02-20 14:46:48.859166400 +0100
+@@ -286,6 +286,11 @@
+     MP4Integer16Property* m_pElstRateProperty;
+     MP4Integer16Property* m_pElstReservedProperty;
+ 
++    // for improved sample file offset query performance
++    MP4SampleId m_cachedSfoSampleId;
++    MP4ChunkId  m_cachedSfoChunkId;
++    uint32_t    m_cachedSfoSampleOffset;
++
+     string m_sdtpLog; // records frame types for H264 samples
+ };
+ 

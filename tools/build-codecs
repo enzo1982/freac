@@ -210,6 +210,9 @@ lame_patch_levels_ppc=(0 1)
 libcdio_patches=(https://freac.org/patches/libcdio-$libcdio_version-cdtext-osx.patch https://freac.org/patches/libcdio-$libcdio_version-cdtext-win32.patch)
 libcdio_patch_levels=(1 1)
 
+mp4v2_patches=(https://freac.org/patches/mp4v2-2.1.2-sfocache.patch)
+mp4v2_patch_levels=(1)
+
 rubberband_patches=(https://freac.org/patches/rubberband-$rubberband_version-fixed.diff)
 rubberband_patch_levels=(1)
 
@@ -569,6 +572,8 @@ for package in ${packages[@]}; do
 
   elif [ $package == mp4v2 ]; then
     # Build mp4v2
+    patches=${mp4v2_patches[@]}
+    patch_levels=(${mp4v2_patch_levels[@]})
     configure_flags="--disable-optimize"
     export CXXFLAGS="$cflags -Os"
     if [[ $uname == *MINGW* ]] && [[ $x86 == true ]]; then
