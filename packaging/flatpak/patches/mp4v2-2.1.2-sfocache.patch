@@ -1,7 +1,18 @@
 diff -Naur mp4v2-2.1.2/src/mp4track.cpp mp4v2-2.1.2-sfocache/src/mp4track.cpp
 --- mp4v2-2.1.2/src/mp4track.cpp	2023-02-10 00:35:21.000000000 +0100
-+++ mp4v2-2.1.2-sfocache/src/mp4track.cpp	2023-02-20 14:42:52.550884400 +0100
-@@ -999,11 +999,23 @@
++++ mp4v2-2.1.2-sfocache/src/mp4track.cpp	2023-02-21 00:33:42.933598200 +0100
+@@ -67,6 +67,10 @@
+     m_cachedSttsSid = MP4_INVALID_SAMPLE_ID;
+     m_cachedCttsSid = MP4_INVALID_SAMPLE_ID;
+ 
++    m_cachedSfoChunkId = MP4_INVALID_CHUNK_ID;
++    m_cachedSfoSampleId = MP4_INVALID_SAMPLE_ID;
++    m_cachedSfoSampleOffset = 0;
++
+     bool success = true;
+ 
+     MP4Integer32Property* pTrackIdProperty;
+@@ -999,11 +1003,23 @@
          sampleId - ((sampleId - firstSample) % samplesPerChunk);
  
      // need cumulative samples sizes from firstSample to sampleId - 1
@@ -19,8 +30,8 @@ diff -Naur mp4v2-2.1.2/src/mp4track.cpp mp4v2-2.1.2-sfocache/src/mp4track.cpp
          sampleOffset += GetSampleSize(i);
      }
  
-+    m_cachedSfoSampleId = sampleId;
 +    m_cachedSfoChunkId = chunkId;
++    m_cachedSfoSampleId = sampleId;
 +    m_cachedSfoSampleOffset = sampleOffset;
 +
      return chunkOffset + sampleOffset;
@@ -28,14 +39,23 @@ diff -Naur mp4v2-2.1.2/src/mp4track.cpp mp4v2-2.1.2-sfocache/src/mp4track.cpp
  
 diff -Naur mp4v2-2.1.2/src/mp4track.h mp4v2-2.1.2-sfocache/src/mp4track.h
 --- mp4v2-2.1.2/src/mp4track.h	2023-02-10 00:35:21.000000000 +0100
-+++ mp4v2-2.1.2-sfocache/src/mp4track.h	2023-02-20 14:46:48.859166400 +0100
-@@ -286,6 +286,11 @@
++++ mp4v2-2.1.2-sfocache/src/mp4track.h	2023-02-21 00:33:07.900930000 +0100
+@@ -35,6 +35,8 @@
+ 
+ typedef uint32_t MP4ChunkId;
+ 
++#define MP4_INVALID_CHUNK_ID ((MP4ChunkId)0)
++
+ // forward declarations
+ class MP4File;
+ class MP4Atom;
+@@ -286,6 +288,11 @@
      MP4Integer16Property* m_pElstRateProperty;
      MP4Integer16Property* m_pElstReservedProperty;
  
 +    // for improved sample file offset query performance
-+    MP4SampleId m_cachedSfoSampleId;
 +    MP4ChunkId  m_cachedSfoChunkId;
++    MP4SampleId m_cachedSfoSampleId;
 +    uint32_t    m_cachedSfoSampleOffset;
 +
      string m_sdtpLog; // records frame types for H264 samples
