@@ -173,6 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">Starta kodning (ta bort originalfiler)</entry>
       <entry id="2011" string="Pause/resume encoding">Pausa/återuppta kodning</entry>
       <entry id="2012" string="Stop encoding">Stoppa kodning</entry>
+      <entry id="2013" string="Open the output splitting tool">Öppna delningsverktyget för målfiler</entry>
     </section>
 
     <section name="Joblist">
@@ -421,6 +422,7 @@
       <entry id="5024" string="Taggers">Taggare</entry>
       <entry id="5025" string="Processing">Signalbehandling</entry>
       <entry id="5026" string="Additional arguments">Ytterligare argument</entry>
+      <entry id="5027" string="Output files">Målfiler</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Inställningar för kodare</entry>
@@ -445,6 +447,7 @@
 	<entry id="5158" string="Replace spaces with underscores">Ersätt mellanslag</entry>
 	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Lägg till löpnummer för att skilja annars identiska filnamn</entry>
 	<entry id="5160" string="Keep time stamps of source files">Behåll källfilernas tidsstämplar</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available">Använd &lt;filename&gt; när titelinformation inte är tillgänglig</entry>
 
 	<section name="Errors">
 	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Målmappen finns inte! Vill du skapa den?</entry>
@@ -546,6 +549,9 @@
 	<entry id="5527" string="unlimited">obegränsad</entry>
 	<entry id="5528" string="Miscellaneous">Övrigt</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names">Fyll i saknade fält med information som hämtats från filnamn</entry>
+	<entry id="5530" string="Restrict file names">Begränsa filnamn</entry>
+	<entry id="5531" string="Cover art tags">Skivomslagstaggar</entry>
+	<entry id="5532" string="Cover art files">Skivomslagsfiler</entry>
       </section>
 
       <section name="Joblist">
@@ -692,6 +698,32 @@
 	<entry id="8201" string="%1 errors while processing job">%1 fel inträffade under bearbetningen</entry>
 	<entry id="8202" string="select an entry for details">markera en post för detaljerad information</entry>
       </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool">Delningsverktyg för målfiler</entry>
+	<entry id="8301" string="%1 track(s) in joblist">%1 spår i jobblistan</entry>
+	<entry id="8302" string="Split mode">Delningsläge</entry>
+	<entry id="8303" string="Split by duration">Dela efter tidslängd</entry>
+	<entry id="8304" string="Duration per part">Tidslängd per del</entry>
+	<entry id="8305" string="at least">åtminstone</entry>
+	<entry id="8306" string="approximately">ungefär</entry>
+	<entry id="8307" string="at most">som mest</entry>
+	<entry id="8308" string="exactly">exakt</entry>
+	<entry id="8309" string="second(s)">s</entry>
+	<entry id="8310" string="minute(s)">min</entry>
+	<entry id="8311" string="hour(s)">timme(-ar)</entry>
+	<entry id="8312" string="Fixed number of parts">Fast antal delar</entry>
+	<entry id="8313" string="Number of parts">Antal delar</entry>
+	<entry id="8314" string="Split upon metadata change">Dela vid ändring av metadata</entry>
+	<entry id="8315" string="Metadata pattern to compare">Metadatamönster att jämföra</entry>
+	<entry id="8316" string="Split at track boundaries">Dela vid spårgränser</entry>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part">Upprepa slutet av föregående del i början av varje del</entry>
+	<entry id="8318" string="Repeat duration">Upprepa tidslängd</entry>
+	<entry id="8319" string="Output filenames">Målfilernas namn</entry>
+	<entry id="8320" string="Filename pattern">Filnamnsmönster</entry>
+	<entry id="8321" string="Convert">Konvertera</entry>
+	<entry id="8322" string="Save">Spara</entry>
+      </section>
     </section>
 
     <section name="Ripper">
@@ -739,17 +771,18 @@
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band &#x2013; tempo-/tonhöjdsväxlare</entry>
 	<entry id="12005" string="HDCD Decoder">HDCD-avkodare</entry>
 	<entry id="12006" string="Matrix Surround Decoder">Matrissurroundavkodare</entry>
+	<entry id="12007" string="Volume Adjustment">Volymjustering</entry>
       </section>
 
       <section name="Verifiers">
-        <entry id="14000" string="AccurateRip Verifier">AccurateRip-verifierare</entry>
+	<entry id="14000" string="AccurateRip Verifier">AccurateRip-verifierare</entry>
       </section>
 
       <section name="Extensions">
 	<entry id="15000" string="Notifications">Aviseringar</entry>
 	<entry id="15001" string="Logging">Loggning</entry>
 	<entry id="15002" string="Video Downloader">Videohämtare</entry>
-        <entry id="15003" string="Tag Editor">Taggredigerare</entry>
+	<entry id="15003" string="Tag Editor">Taggredigerare</entry>
       </section>
     </section>
 
@@ -1144,6 +1177,12 @@
 	<entry id="50501" string="Channel configuration">Kanalkonfiguration</entry>
 	<entry id="50502" string="Redirect bass content to LFE channel">Omdirigera basinnehåll till LFE-kanal</entry>
       </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment">Volymjustering</entry>
+	<entry id="50601" string="Adjustment">Justering</entry>
+	<entry id="50602" string="%1 dB">%1 dB</entry>
+      </section>
     </section>
 
     <section name="Taggers">
@@ -1183,6 +1222,9 @@
 	<entry id="70023" string="not present">inte tillgänglig</entry>
 	<entry id="70024" string="not detected">inte identifierad</entry>
 	<entry id="70025" string="disabled">inaktiverad</entry>
+	<entry id="70026" string="Options">Inställningar</entry>
+	<entry id="70027" string="Notify when a disc is not found in the database">Meddela när en skiva inte finns i databasen</entry>
+	<entry id="70028" string="Notify when all tracks have been successfully verified">Meddela när alla spår har verifierats</entry>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">AccurateRip-konfiguration</entry>
@@ -1193,6 +1235,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Sätt in en annan skiva i CD-enheten och klicka på OK.&#10;&#10;Skivan måste finnas i AccurateRip-databasen. Sannolikheten för detta är högre för&#10;populära CD-skivor, eftersom dessa troligen redan har rippats av andra användare.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">Förskjutningsidentifieringen behöver kontrollera en annan skiva.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Enhetsförskjutningen har identifierats och konfigurerats till %1 sampel.</entry>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip.">Alla spår har verifierats med AccurateRip.</entry>
 	</section>
       </section>
     </section>
