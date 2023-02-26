@@ -469,12 +469,12 @@
       <section name="Cue Sheets">
 	<entry id="5250" string="Cue sheets">Φύλλα cue</entry>
 	<entry id="5251" string="Create cue sheets">Δημιουργία φύλλων cue</entry>
-	<entry id="5252" string="Embedded cue sheets"/>
+	<entry id="5252" string="Embedded cue sheets">Ενσωματωμένα φύλλα cue</entry>
 	<entry id="5253" string="Read cue sheets embedded in metadata">Ανάγνωση φύλλων cue ενσωματωμένων στα μεταδεδομένα</entry>
 	<entry id="5254" string="Prefer cue sheets over chapter information">Προτίμηση φύλλων cue αντί για τις πληροφορίες κεφαλαίων</entry>
-	<entry id="5255" string="Output folder and filenames"/>
+	<entry id="5255" string="Output folder and filenames">Φάκελος εξόδου και ονόματα αρχείων</entry>
 	<entry id="5256" string="Note">Σημείωση</entry>
-	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section."/>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section.">Οι ρυθμίσεις του φακέλου και του ονόματος αρχείου εξόδου φύλλου cue έχουν ρυθμιστεί στην ενότητα Λίστες αναπαραγωγής.</entry>
       </section>
 
       <section name="CDDB">
@@ -525,7 +525,7 @@
 
       <section name="Tags">
 	<entry id="5500" string="Tag formats">Μορφοποιήσεις ετικετών</entry>
-	<entry id="5501" string="Tag fields"/>
+	<entry id="5501" string="Tag fields">Πεδία ετικέτας</entry>
 	<entry id="5502" string="Default comment string">Προεπιλεγμένο σχόλιο</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Αντικατάσταση υπαρχόντων σχολίων με το προεπιλεγμένο αέρια</entry>
 	<entry id="5504" string="Filename pattern">Στυλ ονόματος αρχείου</entry>
@@ -550,8 +550,8 @@
 	<entry id="5528" string="Miscellaneous">Διάφορα</entry>
 	<entry id="5529" string="Fill missing fields with information obtained from file names">Συμπληρώστε τα πεδία που λείπουν με πληροφορίες που λαμβάνονται από τα ονόματα αρχείων</entry>
 	<entry id="5530" string="Restrict file names">Περιορισμός ονομάτων αρχείων</entry>
-	<entry id="5531" string="Cover art tags"/>
-	<entry id="5532" string="Cover art files"/>
+	<entry id="5531" string="Cover art tags">Ετικέτες εξώφυλλου</entry>
+	<entry id="5532" string="Cover art files">Αρχεία εξώφυλλου</entry>
       </section>
 
       <section name="Joblist">
@@ -700,28 +700,28 @@
       </section>
 
       <section name="Splitter">
-	<entry id="8300" string="Output splitting tool"/>
-	<entry id="8301" string="%1 track(s) in joblist"/>
-	<entry id="8302" string="Split mode"/>
-	<entry id="8303" string="Split by duration"/>
-	<entry id="8304" string="Duration per part"/>
-	<entry id="8305" string="at least"/>
-	<entry id="8306" string="approximately"/>
-	<entry id="8307" string="at most"/>
-	<entry id="8308" string="exactly"/>
+	<entry id="8300" string="Output splitting tool">Εργαλείο διαχωρισμού εξόδου σε κομμάτια</entry>
+	<entry id="8301" string="%1 track(s) in joblist">%1 κομμάτι(α) στη λίστα εργασιών</entry>
+	<entry id="8302" string="Split mode">Μέθοδος διαχωρισμού</entry>
+	<entry id="8303" string="Split by duration">Διαχωρισμός κατά διάρκεια</entry>
+	<entry id="8304" string="Duration per part">Διάρκεια ανά μέρος</entry>
+	<entry id="8305" string="at least">τουλάχιστον</entry>
+	<entry id="8306" string="approximately">περίπου</entry>
+	<entry id="8307" string="at most">το πολύ</entry>
+	<entry id="8308" string="exactly">ακριβώς</entry>
 	<entry id="8309" string="second(s)">δευτερόλεπτο(α)</entry>
 	<entry id="8310" string="minute(s)">λεπτό(ά)</entry>
-	<entry id="8311" string="hour(s)"/>
-	<entry id="8312" string="Fixed number of parts"/>
-	<entry id="8313" string="Number of parts"/>
-	<entry id="8314" string="Split upon metadata change"/>
-	<entry id="8315" string="Metadata pattern to compare"/>
-	<entry id="8316" string="Split at track boundaries"/>
-	<entry id="8317" string="Repeat end of previous part at beginning of each part"/>
-	<entry id="8318" string="Repeat duration"/>
+	<entry id="8311" string="hour(s)">ώρα(ες)</entry>
+	<entry id="8312" string="Fixed number of parts">Σταθερός αριθμός μερών</entry>
+	<entry id="8313" string="Number of parts">Αριθμός μερών</entry>
+	<entry id="8314" string="Split upon metadata change">Διαχωρισμός μετά την αλλαγή μεταδεδομένων</entry>
+	<entry id="8315" string="Metadata pattern to compare">Μοτίβο μεταδεδομένων για σύγκριση</entry>
+	<entry id="8316" string="Split at track boundaries">Διαχωρισμός στα όρια κομματιού</entry>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part">Επανάληψη του τέλους του προηγούμενου μέρους στην αρχή κάθε μέρους</entry>
+	<entry id="8318" string="Repeat duration">Διάρκεια επανάληψης</entry>
 	<entry id="8319" string="Output filenames">Ονόματα αρχείων εξόδου</entry>
-	<entry id="8320" string="Filename pattern">Στυλ ονόματος αρχείου</entry>
-	<entry id="8321" string="Convert"/>
+	<entry id="8320" string="Filename pattern">Υπόδειγμα ονόματος αρχείου</entry>
+	<entry id="8321" string="Convert">Μετατροπή</entry>
 	<entry id="8322" string="Save">Αποθήκευση</entry>
       </section>
     </section>
@@ -770,8 +770,8 @@
 	<entry id="12003" string="RNNoise Noise Reduction">Περιορισμός Θορύβου RNNoise</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band Διαφοροποιητής Τέμπο/Ύψους</entry>
 	<entry id="12005" string="HDCD Decoder">Αποκωδικοποιητής HDCD</entry>
-	<entry id="12006" string="Matrix Surround Decoder"/>
-	<entry id="12007" string="Volume Adjustment"/>
+	<entry id="12006" string="Matrix Surround Decoder">Αποκωδικοποιητής Surround Matrix</entry>
+	<entry id="12007" string="Volume Adjustment">Ρύθμιση Εντασης</entry>
       </section>
 
       <section name="Verifiers">
@@ -1073,7 +1073,7 @@
 	<entry id="40020" string="Options">Επιλογές</entry>
 	<entry id="40021" string="Enable discontinous transmission">Ενεργοποίηση ασυνεχούς μετάδοσης</entry>
 	<entry id="40022" string="Expected packet loss">Αναμενόμενη απώλεια πακέτων</entry>
-	<entry id="40023" string="Disable intensity stereo phase inversion"/>
+	<entry id="40023" string="Disable intensity stereo phase inversion">Απενεργοποίηση αντιστροφής στερεοφωνικής φάσης έντασης</entry>
       </section>
 
       <section name="SndFile">
@@ -1109,9 +1109,9 @@
 	<entry id="50004" string="unsigned">unsigned</entry>
 	<entry id="50005" string="Integer">Ακέραιος</entry>
 	<entry id="50006" string="Float">Float</entry>
-	<entry id="50007" string="Dithering"/>
-	<entry id="50008" string="Apply dither when reducing sample resolution"/>
-	<entry id="50009" string="Dither type"/>
+	<entry id="50007" string="Dithering">Dithering</entry>
+	<entry id="50008" string="Apply dither when reducing sample resolution">Εφαρμογή της μεθόδου Dithering κατά τη μείωση της ανάλυσης δείγματος</entry>
+	<entry id="50009" string="Dither type">Τύπος Dither</entry>
       </section>
 
       <section name="Channels">
@@ -1175,12 +1175,12 @@
       <section name="Surround">
 	<entry id="50500" string="Output channels">Κανάλια εξόδου</entry>
 	<entry id="50501" string="Channel configuration">Διαμόρφωση καναλιών</entry>
-	<entry id="50502" string="Redirect bass content to LFE channel"/>
+	<entry id="50502" string="Redirect bass content to LFE channel">Ανακατεύθυνση περιεχομένου μπάσων στο κανάλι LFE</entry>
       </section>
 
       <section name="Volume">
-	<entry id="50600" string="Volume adjustment"/>
-	<entry id="50601" string="Adjustment"/>
+	<entry id="50600" string="Volume adjustment">Ρύθμιση έντασης</entry>
+	<entry id="50601" string="Adjustment">Προσαρμογή</entry>
 	<entry id="50602" string="%1 dB">%1 dB</entry>
       </section>
     </section>
@@ -1223,8 +1223,8 @@
 	<entry id="70024" string="not detected">μη ανιχνευθέν</entry>
 	<entry id="70025" string="disabled">απενεργοποιημένο</entry>
 	<entry id="70026" string="Options">Επιλογές</entry>
-	<entry id="70027" string="Notify when a disc is not found in the database"/>
-	<entry id="70028" string="Notify when all tracks have been successfully verified"/>
+	<entry id="70027" string="Notify when a disc is not found in the database">Ειδοποίηση όταν ένας δίσκος δεν βρεθεί στη βάση δεδομένων</entry>
+	<entry id="70028" string="Notify when all tracks have been successfully verified">Ειδοποίηση όταν όλα τα κομμάτια έχουν επαληθευτεί με επιτυχία</entry>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">Διαμόρφωση AccurateRip</entry>
@@ -1235,7 +1235,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Παρακαλώ εισάγετε άλλον δίσκο στον οδηγό CD και πατήστε ΟΚ.&#10;&#10;Ο δίσκος πρέπει να υπάρχει στη βάση δεδομένων του AccurateRip. Η πιο&#10;μεγάλη πιθανότητα να συμβαίνει αυτό είναι με δημοφιλή CD που έχουν&#10;ήδη αντιγράψει άλλοι χρήστες.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">Η ανίχνευση μετατόπισης χρειάζεται να ελέγξει άλλον δίσκο.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Το μετατόπισης οδηγού ανιχνεύθηκε επιτυχώς και διαμορφώθηκε σε %1 δείγματα.</entry>
-	  <entry id="70058" string="All tracks successfully verified with AccurateRip."/>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip.">Ολα τα κομμάτια επαληθεύτηκαν επιτυχώς με το AccurateRip.</entry>
 	</section>
       </section>
     </section>
@@ -1300,7 +1300,7 @@
 	<entry id="80406" string="faster">ταχύτερη</entry>
 	<entry id="80407" string="better">καλύτερη</entry>
 	<entry id="80408" string="%1 kbps">%1 kbps</entry>
-	<entry id="80409" string="Create correction file"/>
+	<entry id="80409" string="Create correction file">Δημιουργία αρχείου διόρθωσης</entry>
       </section>
 
       <section name="Nero AAC Encoder">
