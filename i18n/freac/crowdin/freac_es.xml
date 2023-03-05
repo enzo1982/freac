@@ -173,7 +173,7 @@
       <entry id="2010" string="Start the encoding process (deleting original files)">Comenzar el proceso de compresión (borrando los archivos originales)</entry>
       <entry id="2011" string="Pause/resume encoding">Pausar/continuar la compresión</entry>
       <entry id="2012" string="Stop encoding">Parar compresión</entry>
-      <entry id="2013" string="Open the output splitting tool"/>
+      <entry id="2013" string="Open the output splitting tool">Abrir herramienta para dividir la salida</entry>
     </section>
 
     <section name="Joblist">
@@ -401,7 +401,7 @@
       <entry id="5003" string="Language">Idioma</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Interfaz</entry>
-      <entry id="5006" string="Metadata"/>
+      <entry id="5006" string="Metadata">Metadatos</entry>
       <entry id="5007" string="Components">Componentes</entry>
       <entry id="5008" string="Decoders">Decodificadores</entry>
       <entry id="5009" string="Output">Salida</entry>
@@ -422,7 +422,7 @@
       <entry id="5024" string="Taggers">Etiquetadores</entry>
       <entry id="5025" string="Processing">Procesando</entry>
       <entry id="5026" string="Additional arguments">Argumentos adicionales</entry>
-      <entry id="5027" string="Output files"/>
+      <entry id="5027" string="Output files">Archivos de salida</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Configurar compresor</entry>
@@ -447,7 +447,7 @@
 	<entry id="5158" string="Replace spaces with underscores">Reemplazar espacios</entry>
 	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Numerar consecutivamente nombres de archivo iguales</entry>
 	<entry id="5160" string="Keep time stamps of source files">Mantener la fecha de los archivos fuente</entry>
-	<entry id="5161" string="Use &lt;filename&gt; when title information is not available"/>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available">Usar &lt;filename&gt; cuando no se tiene el título</entry>
 
 	<section name="Errors">
 	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">La carpeta de destino no existe. ¿Desea crearla?</entry>
@@ -469,12 +469,12 @@
       <section name="Cue Sheets">
 	<entry id="5250" string="Cue sheets">Cue sheets</entry>
 	<entry id="5251" string="Create cue sheets">Generar cue sheets</entry>
-	<entry id="5252" string="Embedded cue sheets"/>
+	<entry id="5252" string="Embedded cue sheets">Cue sheets incrustadas</entry>
 	<entry id="5253" string="Read cue sheets embedded in metadata">Leer cue sheets integradas en los metadatos</entry>
 	<entry id="5254" string="Prefer cue sheets over chapter information">Preferir cue sheets a la información del capítulo</entry>
-	<entry id="5255" string="Output folder and filenames"/>
-	<entry id="5256" string="Note"/>
-	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section."/>
+	<entry id="5255" string="Output folder and filenames">Carpeta de salida y nombres de archivos</entry>
+	<entry id="5256" string="Note">Nota</entry>
+	<entry id="5257" string="Cue sheet output folder and filename settings are configured in the Playlists section.">Carpeta de salida para cue sheets y nombres de archivos se configuran en 'Listas de reproducción'.</entry>
       </section>
 
       <section name="CDDB">
@@ -525,7 +525,7 @@
 
       <section name="Tags">
 	<entry id="5500" string="Tag formats">Formatos de etiqueta</entry>
-	<entry id="5501" string="Tag fields"/>
+	<entry id="5501" string="Tag fields">Campos de etiqueta</entry>
 	<entry id="5502" string="Default comment string">Comentario por defecto</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Reemplazar comentarios previos por el indicado</entry>
 	<entry id="5504" string="Filename pattern">Patrón de nombre de archivo</entry>
@@ -547,11 +547,11 @@
 	<entry id="5525" string="Prepend zero to track numbers below 10">Anteponer cero a los números de pista menores que 10</entry>
 	<entry id="5526" string="File size limit">Tamaño límite del archivo</entry>
 	<entry id="5527" string="unlimited">ilimitado</entry>
-	<entry id="5528" string="Miscellaneous"/>
-	<entry id="5529" string="Fill missing fields with information obtained from file names"/>
-	<entry id="5530" string="Restrict file names"/>
-	<entry id="5531" string="Cover art tags"/>
-	<entry id="5532" string="Cover art files"/>
+	<entry id="5528" string="Miscellaneous">Miscelánea</entry>
+	<entry id="5529" string="Fill missing fields with information obtained from file names">Rellenar campos vacíos con información de los nombres de los archivos</entry>
+	<entry id="5530" string="Restrict file names">Limitar nombres de archivo</entry>
+	<entry id="5531" string="Cover art tags">Etiquetas de carátula</entry>
+	<entry id="5532" string="Cover art files">Archivos de carátula</entry>
       </section>
 
       <section name="Joblist">
@@ -700,29 +700,29 @@
       </section>
 
       <section name="Splitter">
-	<entry id="8300" string="Output splitting tool"/>
-	<entry id="8301" string="%1 track(s) in joblist"/>
-	<entry id="8302" string="Split mode"/>
-	<entry id="8303" string="Split by duration"/>
-	<entry id="8304" string="Duration per part"/>
-	<entry id="8305" string="at least"/>
-	<entry id="8306" string="approximately"/>
-	<entry id="8307" string="at most"/>
-	<entry id="8308" string="exactly"/>
-	<entry id="8309" string="second(s)"/>
-	<entry id="8310" string="minute(s)"/>
-	<entry id="8311" string="hour(s)"/>
-	<entry id="8312" string="Fixed number of parts"/>
-	<entry id="8313" string="Number of parts"/>
-	<entry id="8314" string="Split upon metadata change"/>
-	<entry id="8315" string="Metadata pattern to compare"/>
-	<entry id="8316" string="Split at track boundaries"/>
-	<entry id="8317" string="Repeat end of previous part at beginning of each part"/>
-	<entry id="8318" string="Repeat duration"/>
-	<entry id="8319" string="Output filenames"/>
-	<entry id="8320" string="Filename pattern"/>
-	<entry id="8321" string="Convert"/>
-	<entry id="8322" string="Save"/>
+	<entry id="8300" string="Output splitting tool">Herramienta para dividir la salida</entry>
+	<entry id="8301" string="%1 track(s) in joblist">%1 pista(s) en lista de tareas</entry>
+	<entry id="8302" string="Split mode">Modo de división</entry>
+	<entry id="8303" string="Split by duration">Dividir por duración</entry>
+	<entry id="8304" string="Duration per part">Duración por pieza</entry>
+	<entry id="8305" string="at least">al menos</entry>
+	<entry id="8306" string="approximately">aproximadamente</entry>
+	<entry id="8307" string="at most">como mucho</entry>
+	<entry id="8308" string="exactly">exactamente</entry>
+	<entry id="8309" string="second(s)">segundo(s)</entry>
+	<entry id="8310" string="minute(s)">minuto(s)</entry>
+	<entry id="8311" string="hour(s)">hora(s)</entry>
+	<entry id="8312" string="Fixed number of parts">Número fijo de piezas</entry>
+	<entry id="8313" string="Number of parts">Número de piezas</entry>
+	<entry id="8314" string="Split upon metadata change">Dividir al cambiar los metadatos</entry>
+	<entry id="8315" string="Metadata pattern to compare">Patrón de metadatos para comparar</entry>
+	<entry id="8316" string="Split at track boundaries">Dividir en los límites de la pista</entry>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part">Repetir el final de la parte anterior al principio de cada parte</entry>
+	<entry id="8318" string="Repeat duration">Duración de la repetición</entry>
+	<entry id="8319" string="Output filenames">Nombre de archivos de salida</entry>
+	<entry id="8320" string="Filename pattern">Patrón de nombre de archivo</entry>
+	<entry id="8321" string="Convert">Convertir</entry>
+	<entry id="8322" string="Save">Guardar</entry>
       </section>
     </section>
 
@@ -759,19 +759,19 @@
       </section>
 
       <section name="Encoders">
-	<entry id="11000" string="meh! - multi encoder hub">meh! - Concentrador multicodificador</entry>
-	<entry id="11001" string="SndFile Output Component">Componente de salida SndFile</entry>
+	<entry id="11000" string="meh! - multi encoder hub">meh! - concentrador multicodificador</entry>
+	<entry id="11001" string="SndFile Output Component">Componente de Salida SndFile</entry>
       </section>
 
       <section name="DSP">
-	<entry id="12000" string="Channel Converter">Conversor de canales</entry>
-	<entry id="12001" string="Sample Format Converter">Conversor de formato de muestras</entry>
-	<entry id="12002" string="Sample Rate Converter">Conversor de tasa de muestreo</entry>
-	<entry id="12003" string="RNNoise Noise Reduction">RNNoise Reducción de ruido</entry>
-	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Ajuste de tempo y tono Rubber Band</entry>
+	<entry id="12000" string="Channel Converter">Conversor de Canales</entry>
+	<entry id="12001" string="Sample Format Converter">Conversor de Formato de Muestras</entry>
+	<entry id="12002" string="Sample Rate Converter">Conversor de Tasa de Muestreo</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">RNNoise Reducción de Ruido</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Ajuste de Tempo y Tono Rubber Band</entry>
 	<entry id="12005" string="HDCD Decoder">Decodificador HDCD</entry>
-	<entry id="12006" string="Matrix Surround Decoder"/>
-	<entry id="12007" string="Volume Adjustment"/>
+	<entry id="12006" string="Matrix Surround Decoder">Decodificador Matrix Surround</entry>
+	<entry id="12007" string="Volume Adjustment">Ajuste de Volumen</entry>
       </section>
 
       <section name="Verifiers">
@@ -779,10 +779,10 @@
       </section>
 
       <section name="Extensions">
-	<entry id="15000" string="Notifications">Notificador de conversión</entry>
+	<entry id="15000" string="Notifications">Notificador de Conversión</entry>
 	<entry id="15001" string="Logging">Registros</entry>
-	<entry id="15002" string="Video Downloader">Descargador de vídeo</entry>
-	<entry id="15003" string="Tag Editor">Editor de etiquetas</entry>
+	<entry id="15002" string="Video Downloader">Descargador de Vídeo</entry>
+	<entry id="15003" string="Tag Editor">Editor de Etiquetas</entry>
       </section>
     </section>
 
@@ -1073,7 +1073,7 @@
 	<entry id="40020" string="Options">Opciones</entry>
 	<entry id="40021" string="Enable discontinous transmission">Permitir transmisión discontinua</entry>
 	<entry id="40022" string="Expected packet loss">Pérdida de paquete esperada</entry>
-	<entry id="40023" string="Disable intensity stereo phase inversion"/>
+	<entry id="40023" string="Disable intensity stereo phase inversion">Desactivar la inversión de fase en modo estéreo intensiva</entry>
       </section>
 
       <section name="SndFile">
@@ -1109,9 +1109,9 @@
 	<entry id="50004" string="unsigned">sin signo</entry>
 	<entry id="50005" string="Integer">Entero</entry>
 	<entry id="50006" string="Float">Flotante</entry>
-	<entry id="50007" string="Dithering"/>
-	<entry id="50008" string="Apply dither when reducing sample resolution"/>
-	<entry id="50009" string="Dither type"/>
+	<entry id="50007" string="Dithering">Dithering (difuminado)</entry>
+	<entry id="50008" string="Apply dither when reducing sample resolution">Aplicar dither al reducir la resolución de la muestra</entry>
+	<entry id="50009" string="Dither type">Tipo de dither</entry>
       </section>
 
       <section name="Channels">
@@ -1163,7 +1163,7 @@
       </section>
 
       <section name="RNNoise">
-	<entry id="50400" string="Signal/noise type">tipo señal/ruido</entry>
+	<entry id="50400" string="Signal/noise type">Tipo señal/ruido</entry>
 	<entry id="50401" string="Signal type">Tipo de señal</entry>
 	<entry id="50402" string="Noise type">Tipo de ruido</entry>
 	<entry id="50403" string="General">General</entry>
@@ -1175,13 +1175,13 @@
       <section name="Surround">
 	<entry id="50500" string="Output channels">Canales de salida</entry>
 	<entry id="50501" string="Channel configuration">Configuración del canal</entry>
-	<entry id="50502" string="Redirect bass content to LFE channel"/>
+	<entry id="50502" string="Redirect bass content to LFE channel">Redirigir los graves al canal LFE</entry>
       </section>
 
       <section name="Volume">
-	<entry id="50600" string="Volume adjustment"/>
-	<entry id="50601" string="Adjustment"/>
-	<entry id="50602" string="%1 dB"/>
+	<entry id="50600" string="Volume adjustment">Ajuste de volumen</entry>
+	<entry id="50601" string="Adjustment">Ajuste</entry>
+	<entry id="50602" string="%1 dB">%1 dB</entry>
       </section>
     </section>
 
@@ -1222,9 +1222,9 @@
 	<entry id="70023" string="not present">ausente</entry>
 	<entry id="70024" string="not detected">no detectado</entry>
 	<entry id="70025" string="disabled">desactivado</entry>
-	<entry id="70026" string="Options"/>
-	<entry id="70027" string="Notify when a disc is not found in the database"/>
-	<entry id="70028" string="Notify when all tracks have been successfully verified"/>
+	<entry id="70026" string="Options">Opciones</entry>
+	<entry id="70027" string="Notify when a disc is not found in the database">Notificar cuando un disco no aparece en la base de datos</entry>
+	<entry id="70028" string="Notify when all tracks have been successfully verified">Notificar cuando todas las pistas se han verificado correctamente</entry>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">Configuración AccurateRip</entry>
@@ -1235,7 +1235,7 @@
 	  <entry id="70055" string="Please insert another disc into the CD drive and click OK.&#10;&#10;The disc must be present in the AccurateRip database. The chance for this is&#10;highest for popular CDs that have likely been ripped by other users before.">Por favor, inserte otro disco en el lector de CD y pulse OK.&#10;&#10;El disco debería estar presente en la base de datos de AccurateRip. La probabilidad de que esto ocurra es&#10;más alta para los CDs populares que probablemente han sido copiados antes por otros usuarios.</entry>
 	  <entry id="70056" string="Offset detection needs to check another disc.">La detección de offset necesita probar otro disco.</entry>
 	  <entry id="70057" string="The drive offset has been successfully detected and configured to %1 samples.">Detectado y configurado satisfactoriamente el offset para %1 muestras.</entry>
-	  <entry id="70058" string="All tracks successfully verified with AccurateRip."/>
+	  <entry id="70058" string="All tracks successfully verified with AccurateRip.">Todas las pistas verificadas con AccurateRip.</entry>
 	</section>
       </section>
     </section>
@@ -1300,7 +1300,7 @@
 	<entry id="80406" string="faster">el más rápido</entry>
 	<entry id="80407" string="better">el mejor</entry>
 	<entry id="80408" string="%1 kbps">%1 kbps</entry>
-	<entry id="80409" string="Create correction file"/>
+	<entry id="80409" string="Create correction file">Crear archivo de correción</entry>
       </section>
 
       <section name="Nero AAC Encoder">
@@ -1473,7 +1473,7 @@
 
 	<section name="Rating">
 	  <entry id="103360" string="Rating">Puntuación</entry>
-	  <entry id="103361" string="none"/>
+	  <entry id="103361" string="none">ninguna</entry>
 	</section>
 
 	<section name="Configuration">
