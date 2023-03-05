@@ -161,7 +161,7 @@ Requirements
 History
 -------
 
-	Version 1.1.7 (February 2023)
+	Version 1.1.7 (March 2023)
 
 		- New features
 
@@ -208,6 +208,7 @@ History
 			- fixed decoding of MP4 files with a single chunk taking excessively long
 			- fixed HDCD detection for tracks starting with more than about one second of silence
 			- fixed floating point samples being converted to integer when creating WavPack files
+			- fixed inability to close cover art popup window on Linux
 			- fixed long paths being converted to 8.3 format on recent versions of Windows
 			- fixed inability to handle long network paths on some versions of Windows
 			- fixed disc insert and removal detection working unreliably on Windows

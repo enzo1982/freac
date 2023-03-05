@@ -160,7 +160,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.7 (Februar 2023)
+	Version 1.1.7 (März 2023)
 
 		- Neue Funktionen
 
@@ -207,6 +207,7 @@ Geschichte
 			- Problem mit übermäßig langer Dauer für das Dekodieren von MP4-Dateien mit einem einzigen Chunk behoben
 			- Problem mit HDCD-Erkennung bei Tracks behoben, die mit mehr als ca. einer Sekunde Stille beginnen
 			- Problem mit Konvertierung von Floating-Point-Samples zu Integer beim Erzeugen von WavPack-Dateien behoben
+			- Problem mit nicht schließbarem Cover-Bild-Popup-Fenster unter Linux behoben
 			- Umwandlung von langen Pfaden ins 8.3-Format unter neueren Windows-Versionen behoben
 			- Probleme beim Umgang mit langen Netzwerkpfaden unter manchen Windows-Versionen behoben
 			- Unzuverlässige Erkennung von eingelegten und entfernten CDs unter Windows behoben
