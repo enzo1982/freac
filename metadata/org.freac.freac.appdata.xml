@@ -48,6 +48,70 @@
         </screenshot>
     </screenshots>
     <releases>
+        <release version="1.1.7" date="2023-03-05">
+            <description>
+                <p>New features:</p>
+                <ul>
+                    <li>Added a tool for splitting output by various parameters (e.g. duration or number of files)</li>
+                    <li>Added support for dithering when reducing sample resolution</li>
+                    <li>Added a matrix surround decoder DSP component</li>
+                    <li>Added a volume adjustment DSP component</li>
+                </ul>
+                <p>Improvements:</p>
+                <ul>
+                    <li>Added support for WavPack Hybrid Lossless compression with correction files</li>
+                    <li>Added support for decoding MPEG-4 DASH files</li>
+                    <li>Added support for opening WebM audio files with the .weba extension</li>
+                    <li>Added support for downmixing 6.1 channel audio</li>
+                    <li>Added support for MusicBrainz metadata in ID3v2, MP4, Vorbis Comment and APEv2 tags</li>
+                    <li>Added support for sort order fields in ID3v2, MP4, Vorbis Comment and APEv2 tags</li>
+                    <li>Added support for rating field in Vorbis Comment, APEv2, MP4 and LIST INFO tags</li>
+                    <li>Added rating field to the tag editor</li>
+                    <li>Added optional release year column to the joblist</li>
+                    <li>Changed &lt;disc&gt; filename placeholder to resolve to 1 if disc number is not set</li>
+                    <li>Improved compatibility with applications writing non-compliant LIST INFO tags (e.g. Traktor)</li>
+                    <li>Added an option to use source file names as output file names if no metadata is present</li>
+                    <li>Added an option to control extraction of missing metadata from file names</li>
+                    <li>Added an option to restrict file names for reading cover art</li>
+                    <li>Added an option to disable intensity stereo phase inversion to Opus settings</li>
+                    <li>Added AccurateRip notification options for successful verification and missing database entries</li>
+                    <li>Sample rate conversion no longer converts to 32 bit float when the source rate matches the target</li>
+                    <li>Added negative exit codes to indicate errors when running freaccmd</li>
+                    <li>Added support for KDE color schemes (including dark mode)</li>
+                    <li>Improved HiDPI scale factor detection in KDE desktop environments</li>
+                    <li>Respect text scaling factor in addition to font size setting on X11 based systems</li>
+                </ul>
+                <p>Bug fixes:</p>
+                <ul>
+                   <li>Fixed failure (hang and abort after several seconds) to decode chapters from ALAC files</li>
+                   <li>Fixed interoperability issues of HE- and HEv2-AAC files created with FDK-AAC with foobar2000</li>
+                   <li>Fixed incorrect gapless information when creating HE- and HEv2-AAC files with FDK-AAC</li>
+                   <li>Fixed incorrect index times in cuesheets for very long multi-track files</li>
+                   <li>Fixed incorrect inclusion of data tracks in the audio track count of CD offset strings</li>
+                   <li>Fixed excessive bitrate when encoding Vorbis on non-x86 LP64 systems</li>
+                   <li>Fixed decoding of MP4 files with a single chunk taking excessively long</li>
+                   <li>Fixed HDCD detection for tracks starting with more than about one second of silence</li>
+                   <li>Fixed floating point samples being converted to integer when creating WavPack files</li>
+                   <li>Fixed inability to close cover art popup window on Linux</li>
+                </ul>
+                <p>Updated codecs:</p>
+                <ul>
+                    <li>Updated ALAC decoder for security fixes and improved performance</li>
+                    <li>Updated FFmpeg to version 6.0</li>
+                    <li>Updated Monkey's Audio to version 9.20</li>
+                    <li>Updated WavPack to version 5.6.0</li>
+                    <li>Updated FLAC to version 1.4.2</li>
+                    <li>Updated Speex to version 1.2.1</li>
+                    <li>Updated MP4v2 to version 2.1.2</li>
+                    <li>Updated mpg123 to version 1.31.2</li>
+                    <li>Updated libsndfile to version 1.2.0</li>
+                </ul>
+                <p>Updated translations:</p>
+                <ul>
+                    <li>Updated Greek translation</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1.6" date="2022-01-21">
             <description>
                 <p>New features:</p>
