@@ -124,8 +124,6 @@ cp smooth/$BIN/smooth.dll smooth/$BIN/iconv.dll smooth/$BIN/translator.exe $BIN
 
 # Copy BoCA
 cp boca/$BIN/*.dll $BIN/boca
-rm $BIN/boca/boca_decoder_aiff.1.0.dll $BIN/boca/boca_decoder_au.1.0.dll $BIN/boca/boca_decoder_bonk.1.0.dll $BIN/boca/boca_decoder_lame.1.0.dll $BIN/boca/boca_decoder_mad.1.0.dll $BIN/boca/boca_decoder_voc.1.0.dll $BIN/boca/boca_decoder_wave.1.0.dll
-rm $BIN/boca/boca_encoder_bonk.1.0.dll $BIN/boca/boca_encoder_wave.1.0.dll
 rm $BIN/boca/boca_output_waveout.1.0.dll
 
 if [ "$BUILD_X86" = True ]; then
