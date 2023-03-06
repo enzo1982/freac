@@ -112,7 +112,7 @@ parts:
         snapcraftctl build
       fi
     prime:
-      - usr/lib/libMAC.so*
+      - usr/lib/$SNAPCRAFT_ARCH_TRIPLET/libMAC.so*
 
   libmp3lame:
     after: [ patches ]
