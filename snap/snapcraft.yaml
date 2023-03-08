@@ -294,7 +294,7 @@ parts:
       - CXXFLAGS: "$CXXFLAGS -g0 -Os -fno-rtti -fno-exceptions -DFREAC_DATE=\\\\\\\"`date +\"%Y%m%d\"`\\\\\\\""
     override-pull: |
       snapcraftctl pull
-      snapcraftctl set-version "1.1.7"
+      snapcraftctl set-version "$(echo 1.1.7~`date +"%Y%m%d"`)"
       sed -i -e 's|Icon=org.freac.freac|Icon=${SNAP}/share/icons/hicolor/128x128/apps/org.freac.freac.png|g' metadata/org.freac.freac.desktop
     override-build: |
       patch -p1 < $SNAPCRAFT_STAGE/freac-1.1.6-pre-snap.patch

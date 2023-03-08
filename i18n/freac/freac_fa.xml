@@ -1,0 +1,1385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LangFile>
+  <info>
+    <property name="program">freac</property>
+    <property name="version">1.1</property>
+    <property name="language">Persian / فارسی</property>
+    <property name="righttoleft">true</property>
+    <property name="encoding">UTF-8</property>
+    <property name="template">freac.xml</property>
+    <property name="author">XilizaX ‪&lt;saqazadeh@cyberservices.com&gt;‬</property>
+    <property name="url">https://www.freac.org/</property>
+  </info>
+  <data>
+    <entry id="100" string="OK">تاييد</entry>
+    <entry id="101" string="Cancel">لغو</entry>
+    <entry id="102" string="Close">بستن</entry>
+
+    <entry id="200" string="Error">خطا</entry>
+    <entry id="201" string="Warning">اخطار</entry>
+    <entry id="202" string="Info">اطلاعات</entry>
+
+    <entry id="210" string="Do not display this warning again">اين اخطار را دوباره نشان نده</entry>
+    <entry id="211" string="Do not display this note again">اين نوشته را دوباره نشان نده</entry>
+
+    <entry id="300" string="Artist">نام هنرمند</entry>
+    <entry id="301" string="Title">نام اثر</entry>
+    <entry id="302" string="Album">آلبوم</entry>
+    <entry id="303" string="Track">قطعه</entry>
+    <entry id="304" string="Genre">سبک</entry>
+    <entry id="305" string="Comment">توضيحات</entry>
+    <entry id="306" string="Year">سال انتشار</entry>
+    <entry id="307" string="Disc">شماره ديسک</entry>
+    <entry id="308" string="Rating">امتياز</entry>
+    <entry id="309" string="File name">نام فايل</entry>
+    <entry id="310" string="File type">فرمت فايل</entry>
+    <entry id="311" string="Album artist">هنرمند آلبوم</entry>
+    <entry id="312" string="Conductor">رهبر اکستر</entry>
+    <entry id="313" string="Composer">آهنگساز</entry>
+    <entry id="314" string="Tempo">ضرب آهنگ</entry>
+    <entry id="315" string="ISRC">ISRC</entry>
+
+    <entry id="350" string="unknown artist">هنرمند ناشناس</entry>
+    <entry id="351" string="unknown title">بدون هنوان</entry>
+    <entry id="352" string="unknown album">آلبوم نامشخص</entry>
+    <entry id="353" string="unknown genre">سبک نامشخص</entry>
+    <entry id="354" string="unknown year">زمان انتشار نامشخص</entry>
+    <entry id="355" string="unknown conductor">رهبرارکستر نامشخص</entry>
+    <entry id="356" string="unknown composer">موسيقيدان نامشخص</entry>
+    <entry id="357" string="unknown album artist">هنرمند آلبوم نامشخص</entry>
+
+    <entry id="380" string="hidden track">قطعه پنهان</entry>
+
+    <section name="Characters">
+      <entry id="500" string="%1:">%1:</entry>
+      <entry id="501" string="%1...">%1...</entry>
+      <entry id="502" string="%1 (%2)">%1 (%2)</entry>
+    </section>
+
+    <section name="Technical">
+      <entry id="510" string="%1 kbps">%1 کيلوبيت بر ثانيه</entry>
+      <entry id="511" string="%1 Hz">%1 هرتز</entry>
+      <entry id="512" string="%1 kHz">%1 کيلوهرتز</entry>
+      <entry id="513" string="%1 ms">%1 ميلي‌ثانيه</entry>
+      <entry id="514" string="%1 min">%1 دقيقه</entry>
+      <entry id="515" string="%1 bit">%1 بيت</entry>
+      <entry id="516" string="%1 bytes">%1 بايت</entry>
+      <entry id="517" string="%1 kB">%1 کيلوبايت</entry>
+      <entry id="518" string="%1%">‭%1٪‬</entry>
+    </section>
+
+    <section name="Menu">
+      <entry id="1000" string="File">فايل</entry>
+      <entry id="1001" string="Options">تنظيمات</entry>
+      <entry id="1002" string="Database">پايگاه داده</entry>
+      <entry id="1003" string="Processing">در حالل پردازش</entry>
+      <entry id="1004" string="Encode">کدگذاري</entry>
+      <entry id="1005" string="Help">راهنما</entry>
+
+      <section name="File">
+	<entry id="1100" string="Add">افزودن</entry>
+	<entry id="1101" string="Remove">حذف کردن</entry>
+	<entry id="1102" string="Load joblist">بارگزاري فهرست وظايف</entry>
+	<entry id="1103" string="Save joblist">ذخيره فهرست وظايف</entry>
+	<entry id="1104" string="Clear joblist">پاک کردن فهرست وظايف</entry>
+	<entry id="1105" string="Exit">خروج</entry>
+	<entry id="1106" string="Audio file(s)">فايل(هاي) صوتي</entry>
+	<entry id="1107" string="Audio CD contents">محتواي ديسک</entry>
+	<entry id="1108" string="By pattern">براساس الگو</entry>
+	<entry id="1109" string="From folder">از پوشه‌ي</entry>
+      </section>
+
+      <section name="Database">
+	<entry id="1200" string="Query CDDB database">جستجوي پايگاه داده‌ي ديسک هاي فشرده</entry>
+	<entry id="1201" string="Submit CDDB data">ثبت در پايگاه داده‌ي ديسک هاي فشرده</entry>
+	<entry id="1202" string="Query CDDB database later">بررسي پايگاه داده‌ها را بعدا انجام بده</entry>
+	<entry id="1203" string="Show queued CDDB entries">نمايش محتواي پايگاه داده ديسک ها بصورت ليست</entry>
+	<entry id="1204" string="Show queued CDDB queries">نمايش جستارهاي پايگاه داده ديسک ها بصورت ليست</entry>
+	<entry id="1205" string="Enable CDDB cache">کش پايگاه داده ديسک ها فعال باشد</entry>
+	<entry id="1206" string="Manage CDDB cache entries">مديريت کش محتواي پايگاه داده ي ديسک هاي صوتي</entry>
+	<entry id="1207" string="Automatic CDDB queries">جستجوي پايگاه داده‌ي ديسک بصورت خودکار</entry>
+      </section>
+
+      <section name="Options">
+	<entry id="1300" string="General settings">تنظيمات عمومي</entry>
+	<entry id="1301" string="Configure signal processing">تنظيمات پردازش سيگنال</entry>
+	<entry id="1302" string="Configure selected encoder">تنظيمات سيستم تبديل کننده انتخاب شده</entry>
+	<entry id="1303" string="Active CD-ROM drive">سي دي درايو فعال</entry>
+	<entry id="1304" string="Active configuration">تنظيمات فعال</entry>
+	<entry id="1305" string="Default configuration">تنظيمات پيش‌فرض</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="1400" string="Enable signal processing">پردازش سيگنال را فعال کن</entry>
+	<entry id="1401" string="Enable processing during playback">پردازش در حين پخش انجام شود</entry>
+	<entry id="1402" string="Selected signal processors">پردازشگرهاي سيگنال انتخاب شده</entry>
+      </section>
+
+      <section name="Encode">
+	<entry id="1500" string="Start encoding">تبديل فرمت آغاز شود</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">آغاز تبديل فرمت (فايلهاي اصلي پاک شوند)</entry>
+	<entry id="1502" string="Start encoding with">شروع تبديل با اين روش</entry>
+	<entry id="1503" string="Pause/resume encoding">توقف /ادامه تبديل</entry>
+	<entry id="1504" string="Stop encoding">توقف عمليات تبديل</entry>
+	<entry id="1505" string="Encoder options">تنظيمات تبديل کننده ي فرمت</entry>
+	<entry id="1506" string="Encode to a single file">همه صوت ها درون يک فايل واحد تبديل شود</entry>
+	<entry id="1507" string="Encode to input file folder if possible">در صورت امکان فايل خروجي در پوشه فايل اصلي ذخيره شود</entry>
+	<entry id="1508" string="Allow overwriting input file">بازنويسي روي فايل اصلي مجاز است</entry>
+	<entry id="1509" string="Delete original files after encoding">فايل اصلي پس از تبديل حذف شود</entry>
+	<entry id="1510" string="Shutdown after encoding">سيستم بعد از تبديل خاموش شود</entry>
+      </section>
+
+      <section name="Help">
+	<entry id="1600" string="Help topics">مبحث‌هاي راهنما</entry>
+	<entry id="1601" string="Show Tip of the Day">نکته‌ي روزانه نمايش داده شود.</entry>
+	<entry id="1602" string="Check for updates now">بررسي بروزرساني نرم‌افزار</entry>
+	<entry id="1603" string="Check for updates at startup">بررسي بروزرساني نرم‌افزار با شروع برنامه</entry>
+	<entry id="1604" string="About %1">درباره</entry>
+	<entry id="1605" string="index_en.html">index.html</entry>
+	<entry id="1606" string="Report an issue">گزارش مشکلات</entry>
+	<entry id="1607" string="Suggest a feature">ارائه پيشنهادات شما</entry>
+      </section>
+    </section>
+
+    <section name="Toolbar">
+      <entry id="2000" string="Add audio file(s) to the joblist">افزودن فايل(هاي)صوتي به ليست کارها</entry>
+      <entry id="2001" string="Add audio CD contents to the joblist">افزودن محتواي يک ديسک صوتي به ليست کارها</entry>
+      <entry id="2002" string="Remove the selected entry from the joblist">حذف موارد انتخاب شده از ليست کارها</entry>
+      <entry id="2003" string="Clear the entire joblist">پاک‌کردن تمام ليست کارها</entry>
+      <entry id="2004" string="Query CDDB database">جستجو در پايگاه داده ديسک هاي‌صوتي</entry>
+      <entry id="2005" string="Submit CDDB data">ثبت اطلاعات در پايگاه داده‌ي ديسک ها</entry>
+      <entry id="2006" string="Configure general settings">تغيير تنظيمات عمومي</entry>
+      <entry id="2007" string="Configure signal processing">تنظيمات پردازش سيگنالها</entry>
+      <entry id="2008" string="Configure the selected audio encoder">تنظيم تبديل کننده صدا انتخاب شده</entry>
+      <entry id="2009" string="Start the encoding process">شروع فرايند تبديل فرمت</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">شروع فرايند تبديل فرمت (فايل‌هاي اصلي پاک شوند)</entry>
+      <entry id="2011" string="Pause/resume encoding">مکث/ادامه تبديل</entry>
+      <entry id="2012" string="Stop encoding">توقف تبديل فرمت</entry>
+    </section>
+
+    <section name="Joblist">
+      <entry id="3000" string="Time left">زمان باقيمانده</entry>
+      <entry id="3001" string="File progress">پيشرفت</entry>
+      <entry id="3002" string="Output folder">پوشه خروجي</entry>
+      <entry id="3003" string="%1 file(s) in joblist">%1 فايل در ليست کارها</entry>
+      <entry id="3004" string="Show title info">نمايش اطلاعات عنوان</entry>
+      <entry id="3005" string="Play">پخش صدا</entry>
+      <entry id="3006" string="Stop">توقف</entry>
+      <entry id="3007" string="Select all">انتخاب همه</entry>
+      <entry id="3008" string="Select none">انتخاب هيچکدام</entry>
+      <entry id="3009" string="Toggle selection">معکوس کردن انتخاب شده‌ها</entry>
+      <entry id="3010" string="ripping/decoding">در حال تبديل از روي ديسک</entry>
+      <entry id="3011" string="encoding">در حال تبديل</entry>
+      <entry id="3012" string="Create playlist">ايجاد يک ليست پخش</entry>
+      <entry id="3013" string="Create cue sheet">ساخت فايل گزارش</entry>
+      <entry id="3014" string="Select">انتخاب</entry>
+      <entry id="3015" string="Encode to a single file">تبديل به يک فايل واحد</entry>
+      <entry id="3016" string="Remove">حذف</entry>
+      <entry id="3017" string="Clear joblist">پاکسازي ليست کارها</entry>
+      <entry id="3018" string="Use for all selected tracks">براي همه قطعات انتخاب شده استفاده شود</entry>
+      <entry id="3019" string="Interpret string as">تفسير رشته به عنوان</entry>
+      <entry id="3020" string="selected tracks">قطعات انتخاب شده</entry>
+      <entry id="3021" string="Adjust upper/lower case">اعمال تغيير حروف بزرگ و کوچک</entry>
+      <entry id="3022" string="all words upper case">همه حروف کپيتال(بزرگ) باشد</entry>
+      <entry id="3023" string="long words upper case">همه حروف کوچک باشد</entry>
+      <entry id="3024" string="first letter upper case">حرف اول کپيتال(بزرگ) باشد</entry>
+      <entry id="3025" string="all lower case">همه حروف کوچک باشد</entry>
+      <entry id="3026" string="all upper case">همه حروف بزرگ باشد</entry>
+      <entry id="3027" string="Select the folder in which the encoded files will be placed">پوشه اي که فايل هاي خروجي در آن قرار ميگيرند انتخاب کن</entry>
+      <entry id="3028" string="Sampling rate">نرخ نمونه‌گذاري</entry>
+      <entry id="3029" string="Sample resolution">وضوح نمونه</entry>
+      <entry id="3030" string="Number of samples">تعداد نمونه ها</entry>
+      <entry id="3031" string="Channels">کانال‌ها</entry>
+      <entry id="3032" string="Mono">مونو (تک کانال)</entry>
+      <entry id="3033" string="Stereo">استريو</entry>
+      <entry id="3034" string="Length">طول</entry>
+      <entry id="3035" string="File">فايل</entry>
+      <entry id="3036" string="Size">اندازه</entry>
+      <entry id="3037" string="Bitrate">بيت‌ريت</entry>
+      <entry id="3038" string="Audio Files">فايل‌هاي صدا</entry>
+      <entry id="3039" string="All Files">همه فايل‌ها</entry>
+      <entry id="3040" string="Playlist Files">فايل‌هاي ليست پخش</entry>
+      <entry id="3041" string="Joblist">ليست کار‌ها</entry>
+      <entry id="3042" string="Other">غيره</entry>
+      <entry id="3043" string="Output file name">نام فايل خروجي</entry>
+      <entry id="3044" string="verifying">بررسي صحت فايل</entry>
+      <entry id="3045" string="Open">باز کردن</entry>
+      <entry id="3046" string="CD drive">درايو ديسک فشرده</entry>
+      <entry id="3047" string="Disc ID">ديسک ID</entry>
+
+      <section name="File">
+	<entry id="3050" string="Current file">فايل کنوني</entry>
+	<entry id="3051" string="none">هيچ</entry>
+	<entry id="3052" string="Skip current file">از فايل کنوني بگذر</entry>
+      </section>
+
+      <section name="Decoder">
+	<entry id="3060" string="Active decoder">کدگشاي فعال</entry>
+	<entry id="3061" string="none">هيچ</entry>
+      </section>
+
+      <section name="Filters">
+	<entry id="3070" string="Selected filters">فيلترهاي انتخاب شده</entry>
+	<entry id="3071" string="none">هيچ</entry>
+	<entry id="3072" string="disabled">غيرفعال</entry>
+	<entry id="3073" string="Configure signal processing">تنظيم پردازش سيگنال</entry>
+      </section>
+
+      <section name="Encoder">
+	<entry id="3080" string="Selected encoder">تبديل‌کننده انتخاب شده</entry>
+	<entry id="3081" string="Configure selected encoder">تنظيم کردن مبدل انتخاب شده</entry>
+      </section>
+
+      <section name="Add folder">
+	<entry id="3100" string="Folder">پوشه</entry>
+	<entry id="3101" string="Add folder">افزودن يک پوشه</entry>
+	<entry id="3102" string="Choose folder">انتخاب يک پوشه</entry>
+	<entry id="3103" string="Select the folder to add to the joblist">افزودن يک پوه به ليست کارها</entry>
+      </section>
+
+      <section name="Add by pattern">
+	<entry id="3200" string="Add files by pattern">افزودن فايل‌ها براساس الگو</entry>
+	<entry id="3201" string="Pattern">الگو</entry>
+	<entry id="3202" string="Start folder">پوشه آغازين</entry>
+	<entry id="3203" string="Filename pattern">الگوي نام فايل‌ها</entry>
+	<entry id="3204" string="Search subfolders">جستجوي زير پوشه‌ها</entry>
+	<entry id="3205" string="Select the folder to add to the joblist">افزودن يک پوشه به ليست کار‌ها</entry>
+      </section>
+
+      <section name="Character set">
+	<entry id="3300" string="Character set">مجموعه کارکترها</entry>
+	<entry id="3301" string="Choose character set">انتخاب يک مجموع کاراکتري</entry>
+      </section>
+
+      <section name="Errors">
+	<entry id="3400" string="You did not select a track!">هيچ قطعه‌اي انتخاب نکرده‌ايد</entry>
+	<entry id="3401" string="No files found matching pattern: %1">%1 :هيچ فايلي براساس اين الگو يافت نشد</entry>
+      </section>
+    </section>
+
+    <section name="Jobs">
+      <entry id="3500" string="Jobs">وظايف</entry>
+      <entry id="3501" string="Progress">پيشرفت</entry>
+      <entry id="3502" string="Errors / Warnings">خطا ها و اخطارها</entry>
+      <entry id="3503" string="Details">جزييات</entry>
+      <entry id="3504" string="Error details">جزييات خطا</entry>
+      <entry id="3505" string="Time left">زمان باقيمانده</entry>
+      <entry id="3506" string="Waiting for other jobs to finish">در انتظار پايان بقيه کارها</entry>
+
+      <section name="Joblist">
+	<entry id="3600" string="Reading folders">درحال خواندن پوشه‌ها</entry>
+	<entry id="3601" string="Filtering duplicates">درحال فيلتر تکراري‌ها</entry>
+	<entry id="3602" string="Adding files">درحال افزودن فايل‌ها</entry>
+	<entry id="3603" string="Adding tracks">درحال افزودن قطعات</entry>
+	<entry id="3604" string="Added %1 files, %2 errors occurred">تعداد %1 فايل اضافه شده و %2 خطا رخ داد</entry>
+	<entry id="3605" string="Added %1 tracks, %2 errors occurred">تعداد %1 قطعه اضافه شده و %2 خطا رخ داد</entry>
+	<entry id="3606" string="Removing all tracks">در حال حذف همه قطعه‌ها</entry>
+	<entry id="3607" string="Removing tracks of disc in drive %1">درحال حذف قطعه‌هاي ديسک در درايو %1</entry>
+	<entry id="3608" string="Removed all tracks from joblist">همه قطعه‌ها از ليست کاري حذف شد</entry>
+	<entry id="3609" string="Removed tracks of disc in drive %1 from joblist">قطعه‌هاي ديسک حذف شده در درايو %1 از ليست کاري</entry>
+      </section>
+
+      <section name="Convert">
+	<entry id="3700" string="Checking sample formats">درحال بررسي نمونه فرمت‌ها</entry>
+	<entry id="3701" string="Checking for lossy to lossless conversion">در حال بررسي امکان تبديل lossy به lossless</entry>
+	<entry id="3702" string="Checking output file names">در حال بررسي نام فايل‌هاي خروجي</entry>
+	<entry id="3703" string="Converting %1">درحال تبديل %1</entry>
+	<entry id="3704" string="Verifying %1">در حال بازبيني و بررسي %1</entry>
+	<entry id="3705" string="Conversion cancelled">عمليات تبديل لغو شد</entry>
+	<entry id="3706" string="Conversion finished">تبديل به اتمام رسيد</entry>
+	<entry id="3707" string="Conversion finished with %1 warnings">عمليات تبديل با %1 اخطار به اتمام رسيد</entry>
+	<entry id="3708" string="Conversion finished with %1 errors">عمليات تبديل با %1 خطا به اتمام رسيد</entry>
+      </section>
+
+      <section name="Update">
+	<entry id="3800" string="Preparing update check">درحال آماده‌سازي براي بررسي بروزرساني</entry>
+	<entry id="3801" string="Contacting update server">درحال ارتباط با مرکز بروز رساني</entry>
+	<entry id="3802" string="Updates found">بروزرساني يافت شد !</entry>
+	<entry id="3803" string="No updates found">هيچ بروزرساني يافت نگرديد</entry>
+      </section>
+    </section>
+
+    <section name="CDDB">
+
+      <section name="Submit">
+	<entry id="4000" string="CDDB data">اطلاعات پايگاه داده ديسک‌ها</entry>
+	<entry id="4001" string="Submit">ثبت</entry>
+	<entry id="4002" string="No audio CD in drive!">هيچ ديسک صوتي در درايو نيست!</entry>
+	<entry id="4003" string="Submitting CD information">در حال ثبت اطلاعات ديسک</entry>
+	<entry id="4004" string="Update joblist with this information">بروز رساني ليست کارها با اين اطلاعات</entry>
+	<entry id="4005" string="Status">وضعيت</entry>
+	<entry id="4006" string="Successfully read CD!">ديسک با موفقيت خوانده شد!</entry>
+	<entry id="4007" string="Save entry">ذخيره محتوا</entry>
+	<entry id="4008" string="Various artists">هنرمندان مختلف</entry>
+	<entry id="4009" string="Data track">قطعه اطلاعاتي</entry>
+	<entry id="4010" string="Submit to online database later">بعداً در پايگاه داده آنلاين ثبت شود</entry>
+	<entry id="4011" string="Active CD-ROM drive">سي دي درايو فعال</entry>
+
+	<section name="Errors">
+	  <entry id="4050" string="Some error occurred trying to connect to the freedb server.">خطاهايي به هنگام اتصال به پايگاه freedb رخ داد.</entry>
+	  <entry id="4051" string="Please fill all fields and track titles before submitting.">لطفا همه بخش‌هاي اطلاعاتي و عنوان قطعات را قبل از ثبت تکميل نماييد.</entry>
+	</section>
+      </section>
+
+      <section name="Query">
+	<entry id="4100" string="CDDB query">جستجو در پايگاه داده ديسک‌ها</entry>
+	<entry id="4101" string="No freedb entry for this disk.">هيچ اطلاعاتي براي اين ديسک در freedb يافت نشد.</entry>
+	<entry id="4102" string="Connecting to freedb server at">در حال اتصال به سرور freedb در</entry>
+	<entry id="4103" string="Requesting CD information">در حال درخواست اطلاعات ديسک</entry>
+	<entry id="4104" string="No exact matches found">هيچ يافته مطابقي پيدا نشد</entry>
+	<entry id="4105" string="Multiple matches found">چندين نتيجه مطابق يافته شد</entry>
+	<entry id="4106" string="Matches">يافته‌هاي مطابق</entry>
+	<entry id="4107" string="Select the entry that best fits your CD">بهترين يافته براي ديسک خود را انتخاب کنيد</entry>
+	<entry id="4108" string="Would you like to perform this query again later?">آيا تمايل داريد که اين جستجو را بعدا دوباره انجام دهيد؟</entry>
+	<entry id="4109" string="Would you like to perform the remaining queries again later?">آيا تمايل داريد که بقيه جستجوها را بعدا دوباره انجام دهيد؟</entry>
+	<entry id="4110" string="none">هيچ</entry>
+	<entry id="4111" string="Preview">پيش‌نمايش</entry>
+	<entry id="4112" string="loading preview">درحال بارگذاري پيش‌نمايش</entry>
+
+	<section name="Errors">
+	  <entry id="4150" string="Some error occurred trying to connect to the freedb server.">خطاهايي در زمان اتصال به سرور freedb رخ داد.</entry>
+	</section>
+      </section>
+
+      <section name="Manage queries">
+	<entry id="4200" string="Remove entry">حذف مورد</entry>
+	<entry id="4201" string="CDDB queries">جستجو‌هاي پايگاه داده ديسک‌ها</entry>
+	<entry id="4202" string="Query">جستجو</entry>
+	<entry id="4203" string="Query all">جستجوي همه</entry>
+	<entry id="4204" string="Query string">جستجوي رشته</entry>
+	<entry id="4205" string="CDDB queries to perform">جستجوهاي در صدد انجام</entry>
+	<entry id="4206" string="Querying CD information">جستجوي اطلاعات ديسک</entry>
+      </section>
+
+      <section name="Manage submits">
+	<entry id="4300" string="Remove entry">حذف مورد</entry>
+	<entry id="4301" string="CDDB entries to submit">يافته‌هاي پايگاه جهت ثبت</entry>
+	<entry id="4302" string="Submit all">ثبت همه</entry>
+	<entry id="4303" string="CDDB data">اطلاعات پايگاه اطلاعات ديسک‌ها</entry>
+	<entry id="4304" string="Submit">ثبت</entry>
+	<entry id="4305" string="Disc name">نام ديسک</entry>
+	<entry id="4306" string="Preview">پيش‌نمايش</entry>
+	<entry id="4307" string="Category">دسته‌بندي</entry>
+	<entry id="4308" string="Submitting CD information">در حال ثبت داده‌هاي ديسک</entry>
+      </section>
+
+      <section name="Manage cache">
+	<entry id="4400" string="CDDB data">اطلاعات پايگاه داده ديسک‌ها</entry>
+	<entry id="4401" string="Update joblist with this information">ليست‌ کاري را با اين اطلاعات بروز کن</entry>
+	<entry id="4402" string="Charset">ليست کاراکتري</entry>
+	<entry id="4403" string="Downloaded CDDB entries">داده‌هاي دانلود شده از پايگاه اطلاعاتي</entry>
+	<entry id="4404" string="Disc name">نام ديسک</entry>
+	<entry id="4405" string="Preview">پيش نمايش</entry>
+	<entry id="4406" string="Remove entry">حذف</entry>
+	<entry id="4407" string="Save entry">ذخيره</entry>
+      </section>
+    </section>
+
+    <section name="Configuration">
+      <entry id="5000" string="General settings setup">انجام تنظيمات عمومي</entry>
+      <entry id="5001" string="Encoders">مبدل‌‌ها</entry>
+      <entry id="5002" string="Playlists">ليست پخش</entry>
+      <entry id="5003" string="Language">زبان</entry>
+      <entry id="5004" string="CDDB">پايگاه اطلاعاتي ديسک ها</entry>
+      <entry id="5005" string="Interface">رابط</entry>
+      <entry id="5007" string="Components">اجزاء</entry>
+      <entry id="5008" string="Decoders">کد گشاها</entry>
+      <entry id="5009" string="Output">خروجي</entry>
+      <entry id="5010" string="DSP">DSP</entry>
+      <entry id="5011" string="Extensions">پسوند‌ها</entry>
+      <entry id="5012" string="Other">غيره</entry>
+      <entry id="5013" string="Active configuration">تنظيمات فعال</entry>
+      <entry id="5014" string="New">جديد</entry>
+      <entry id="5015" string="Delete">حذف</entry>
+      <entry id="5016" string="Command line arguments">آرگومان‌هاي خط فرمان</entry>
+      <entry id="5017" string="Resulting arguments string">نتايج آرگومان‌هاي رشته</entry>
+      <entry id="5018" string="Default configuration">تنظيمات پيش‌فرض</entry>
+      <entry id="5019" string="New configuration">تنظيمات جديد</entry>
+      <entry id="5020" string="Ripper">تبديل‌کننده ي ديسک</entry>
+      <entry id="5021" string="Settings">تنظيمات</entry>
+      <entry id="5022" string="Resources">منابع</entry>
+      <entry id="5023" string="Verifiers">تاييدگر ها</entry>
+      <entry id="5024" string="Taggers">تگ نويس ها</entry>
+      <entry id="5025" string="Processing">در حال پردازش</entry>
+
+      <section name="Encoders">
+	<entry id="5100" string="Configure encoder">تنظيم مبدل صوت</entry>
+	<entry id="5101" string="Encoder">مبدل فرمت</entry>
+	<entry id="5102" string="Options">تنظيمات</entry>
+	<entry id="5103" string="Encode 'On-The-Fly'">تبديل به صورت لحظه اي</entry>
+	<entry id="5104" string="Keep ripped Wave files">فايل هاي Wave تبديل شده را نگهداري کن</entry>
+	<entry id="5105" string="Encode to a single file">همه صدا‌ها به يک فايل واحد تبديل شود</entry>
+	<entry id="5106" string="Remove processed tracks from joblist">قطعات پردازش شده را از ليست حذف کن</entry>
+	<entry id="5107" string="Add output files to joblist">فايل‌هاي تبديل شده را به ليست اضافه کن</entry>
+      </section>
+
+      <section name="Files">
+	<entry id="5150" string="Output folder">پوشه خروجي</entry>
+	<entry id="5151" string="Use input file folder if possible">از پوشه فايلهاي اصلي در صورت امکان استفاده کن</entry>
+	<entry id="5152" string="Allow overwriting input file">بازنويسي روي فايل اصلي مجاز است</entry>
+	<entry id="5153" string="Select">انتخاب</entry>
+	<entry id="5154" string="Select the folder in which the encoded files will be placed">پوشه اي که فايل هاي خروجي در آن قرار ميگيرند انتخاب کن</entry>
+	<entry id="5155" string="Output filenames">نام فايل‌هاي خروجي</entry>
+	<entry id="5156" string="Filename pattern">الگوي نام فايل‌ها</entry>
+	<entry id="5157" string="Allow Unicode characters">استفاده از Unicode</entry>
+	<entry id="5158" string="Replace spaces with underscores">فواصل را به آندرلاين تبديل کن</entry>
+	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">جهت تمايز فايل هاي با نام مشابه، به آنها شماره هاي پيوسته اختصاص بده</entry>
+	<entry id="5160" string="Keep time stamps of source files">اطلاعات زماني و تاريخ را از فايل اصلي حفظ کن</entry>
+
+	<section name="Errors">
+	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">پوشه خروجي تخصيص يافته موجود نيست! مايل به ايجاد آن هستيد؟</entry>
+	</section>
+      </section>
+
+      <section name="Playlists">
+	<entry id="5200" string="Create playlists">ايجاد ليست هاي پخش</entry>
+	<entry id="5202" string="Output folder">پوشه خروجي</entry>
+	<entry id="5203" string="Select">انتخاب</entry>
+	<entry id="5204" string="Use encoder output folder">از پوشه خروجي تبديلگر استفاده کن</entry>
+	<entry id="5205" string="Filename pattern">الگوي نام فايل‌ها</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">پوشه اي براي قرار دادن ليست هاي پخش انتخاب کنيد</entry>
+	<entry id="5207" string="Output filenames">نام فايل‌هاي خروجي</entry>
+	<entry id="5208" string="Configure plugin">تنظيمات پلاگين</entry>
+	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">براي هر عمليات تبديل فقط يک فايل گزارش يا ليست پخش ايجاد شود</entry>
+      </section>
+
+      <section name="Cue Sheets">
+	<entry id="5250" string="Cue sheets">فايل‌هاي گزارش</entry>
+	<entry id="5251" string="Create cue sheets">ايجاد فايل گزارش</entry>
+	<entry id="5253" string="Read cue sheets embedded in metadata">گزارشات پيوست شده به متاديتا خوانده شود</entry>
+	<entry id="5254" string="Prefer cue sheets over chapter information">فايل هاي گزارشات به اطلاعات بخش ارجعيت دارد</entry>
+      </section>
+
+      <section name="CDDB">
+	<entry id="5300" string="Enable local CDDB database">پايگاه داده ديسک بصورت محلي باشد</entry>
+	<entry id="5301" string="Enable remote CDDB database">پايگاه داده ديسک بصورت ريموت باشد</entry>
+	<entry id="5302" string="CDDB path">مسير پايگاه داده ديسک</entry>
+	<entry id="5303" string="Select">انتخاب</entry>
+	<entry id="5304" string="Select the folder of the CDDB database">پوشه اي براي پايگاه داده ديسک انتخاب کنيد</entry>
+	<entry id="5305" string="CDDB access mode">حالت دسترسي به پايگاه داده</entry>
+	<entry id="5306" string="CDDB server">سرور پايگاه داده</entry>
+	<entry id="5307" string="Port">پورت</entry>
+	<entry id="5308" string="eMail address">آدرس ايميل</entry>
+	<entry id="5309" string="HTTP settings">تنظيمات HTTP</entry>
+	<entry id="5310" string="Proxy settings">تنظيمات پروکسي</entry>
+	<entry id="5311" string="Options">تنظيمات</entry>
+	<entry id="5312" string="Automatic CDDB queries">جستجوي پايگاه داده‌ي ديسک بصورت خودکار</entry>
+	<entry id="5313" string="Prefer CDDB over CD-Text">اطلاعات پايگاه به ديسک ارجعيت داشته باشد</entry>
+	<entry id="5314" string="Enable CDDB cache">کش پايگاه داده ديسک ها فعال باشد</entry>
+	<entry id="5315" string="Automatization">خودکارسازي</entry>
+	<entry id="5316" string="Always select first entry">هميشه اولين نتيجه انتخاب شود</entry>
+
+	<section name="Extended">
+	  <entry id="5330" string="Extended CDDB settings">تنظيمات اضافي پايگاه داده ديسک</entry>
+	  <entry id="5331" string="CGI scripts">اسکريپ هاي CGI</entry>
+	  <entry id="5332" string="CDDB query script">اسکريپت جستجو در پايگاه داده ديسک</entry>
+	  <entry id="5333" string="CDDB submit script">اسکريپت ثبت پايگاه داده ديسک</entry>
+	  <entry id="5334" string="no proxy">بدون پروکسي</entry>
+	  <entry id="5335" string="Proxy type">نوع پروکسي</entry>
+	  <entry id="5336" string="Proxy server">پروکسي سرور</entry>
+	  <entry id="5337" string="User name">نام کاربري</entry>
+	  <entry id="5338" string="Password">کلمه عبور</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="5350" string="Please enter a valid eMail address.">لطفا يک ايميل معتبر وارد کنيد</entry>
+	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">پروتکل freedb CDDBP با پروکسي هاي اختصاص يافته از طريق HTTP قابل دسترسي نيست!&#10;تمايل داريد پروتکل به HTTP تغيير يابد ؟</entry>
+	</section>
+      </section>
+
+      <section name="Language">
+	<entry id="5400" string="Select language">انتخاب زبان</entry>
+	<entry id="5401" string="Edit language file">ويرايش فايل زبان</entry>
+	<entry id="5402" string="Information">اطلاعات</entry>
+	<entry id="5403" string="Encoding">کدگذاري</entry>
+	<entry id="5404" string="Author(s)">نويسنده</entry>
+	<entry id="5405" string="URL">وبسايت</entry>
+      </section>
+
+      <section name="Tags">
+	<entry id="5500" string="Tag formats">فرمت تگ</entry>
+	<entry id="5502" string="Default comment string">توضيحات پيشفرض</entry>
+	<entry id="5503" string="Replace existing comments with default comment">توضيحات پيشفرض را جايگزين توضيحات فعلي کن</entry>
+	<entry id="5504" string="Filename pattern">الگوي نام فايل‌ها</entry>
+	<entry id="5505" string="Encoding">کدگذاري</entry>
+	<entry id="5506" string="Comments">توضيحات</entry>
+	<entry id="5507" string="Cover art">تصوير روي آلبوم</entry>
+	<entry id="5509" string="Read cover art from tags">تصوير آلبوم براساس تگ‌ها بارگذاري شود</entry>
+	<entry id="5510" string="Read cover art from files">تصوير آلبوم از روي فايلها بارگذاري شود</entry>
+	<entry id="5512" string="Write cover art to tags">تصوير آلبوم بروي تگ‌ها ثبت شود</entry>
+	<entry id="5513" string="Write cover art to files">تصوير آلبوم به روي فايل‌ها ثبت شود</entry>
+	<entry id="5514" string="Add reference to audio file tag">مرجع بروي تگ اضافه شود</entry>
+	<entry id="5515" string="Other">غيره</entry>
+	<entry id="5516" string="Chapters">بخش‌ها</entry>
+	<entry id="5517" string="Read chapters from files">بخش‌ها از روي فايلها بارگذاري شود</entry>
+	<entry id="5518" string="Write chapters to files">بخش‌ها بروي فايل ثبت شود</entry>
+	<entry id="5519" string="Special fields">قسمت‌هاي ويژه</entry>
+	<entry id="5520" string="Write CD table of contents">جدول محتواي ديسک نوشته شود</entry>
+	<entry id="5521" string="Preserve Replay Gain information">اطلاعات ReplayGain حفظ شود</entry>
+	<entry id="5525" string="Prepend zero to track numbers below 10">به قبل از شماره آهنگ‌هايي که تک رقمي هستند يه صفر اضافه شود</entry>
+	<entry id="5526" string="File size limit">محدوديت اندازه فايل</entry>
+	<entry id="5527" string="unlimited">نا محدود</entry>
+      </section>
+
+      <section name="Joblist">
+	<entry id="5600" string="Joblist">ليست کار‌ها</entry>
+	<entry id="5601" string="Columns">ستون ها</entry>
+	<entry id="5602" string="Name">نام</entry>
+	<entry id="5603" string="Description">توصيف</entry>
+	<entry id="5604" string="Up">بالا</entry>
+	<entry id="5605" string="Down">پايين</entry>
+	<entry id="5606" string="Jobs">وظايف</entry>
+	<entry id="5607" string="Show Jobs tab">نمايش تب وظايف</entry>
+
+	<section name="Columns">
+	  <entry id="5650" string="Track artist">هنرمند قطعه</entry>
+	  <entry id="5651" string="Track title">عنوان قطعه</entry>
+	  <entry id="5652" string="Track genre">سبک قطعه</entry>
+	  <entry id="5653" string="Album title">عنوان آلبوم</entry>
+	  <entry id="5654" string="Disc number">شماره ديسک</entry>
+	  <entry id="5655" string="Track number">شماره قطعه</entry>
+	  <entry id="5656" string="Track rating">رتبه بندي قطعه</entry>
+	  <entry id="5657" string="Track length">طول قطعه</entry>
+	  <entry id="5658" string="Track size">اندازه قطعه</entry>
+	  <entry id="5659" string="File name">نام فايل</entry>
+	  <entry id="5660" string="File type">فرمت فايل</entry>
+	  <entry id="5661" string="Output file name">نام فايل خروجي</entry>
+	  <entry id="5662" string="Bitrate">بيت‌ريت</entry>
+	  <entry id="5663" string="Sampling rate">نرخ نمونه‌گذاري</entry>
+	  <entry id="5664" string="Channels">کانال‌ها</entry>
+	  <entry id="5665" string="Sample resolution">وضوح نمونه</entry>
+	  <entry id="5666" string="CD drive">درايو ديسک فشرده</entry>
+	  <entry id="5667" string="Disc ID">ديسک ID</entry>
+	</section>
+      </section>
+
+      <section name="Resources">
+	<entry id="5700" string="Parallel processing">پردازش موازي</entry>
+	<entry id="5701" string="Enable parallel processing">پردازش موازي فعال شود</entry>
+	<entry id="5702" string="Enable SuperFast mode">حالت فوق سريع فعال شود</entry>
+	<entry id="5703" string="Number of conversion threads">تعداد رشته هاي عمليات تبديل</entry>
+	<entry id="5704" string="auto">خودکار</entry>
+	<entry id="5705" string="Process priority">اولويت پردازش</entry>
+	<entry id="5706" string="lowest">پايين ترين</entry>
+	<entry id="5707" string="lower">پايين تر</entry>
+	<entry id="5708" string="normal">عادي</entry>
+	<entry id="5709" string="higher">بالاتر</entry>
+	<entry id="5710" string="highest">بالاترين</entry>
+      </section>
+
+      <section name="Verification">
+	<entry id="5800" string="Verification">تاييديه</entry>
+	<entry id="5801" string="Enable input verification">فايل ورودي تاييديه بگيرد</entry>
+	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">بررسي کن که اطلاعات Lossless دقيقا به همان وضعيت اوريجينال کدگشايي شود.</entry>
+	<entry id="5803" string="Enable output verification">فايل خروجي تاييديه بگيرد</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">مطمئن شو که خروجي هاي Lossless دقيقا به&#10;اطلاعاتي که جهت تبديل استفاده شده کدگشايي شده است.</entry>
+      </section>
+
+      <section name="Processing">
+	<entry id="5900" string="Signal processing">پردازش سيگنال</entry>
+	<entry id="5901" string="Enable signal processing">پردازش سيگنال را فعال کن</entry>
+	<entry id="5902" string="Enable processing during playback">پردازش در حين پخش انجام شود</entry>
+	<entry id="5903" string="Components">اجزاء</entry>
+	<entry id="5904" string="Available">در دسترس</entry>
+	<entry id="5905" string="Selected">انتخاب شده</entry>
+	<entry id="5906" string="Configure component">تنظيمات اجزاء</entry>
+	<entry id="5907" string="Conversion to a single output file">تبديل به يک فايل خروجي واحد</entry>
+	<entry id="5908" string="Process each track individually">هر فايل به طور مجزا پردازش شود</entry>
+	<entry id="5909" string="Treat the combined tracks like a single track">قطعات ترکيب شده همچون يک فايل واحد در نظر گرفته شود</entry>
+      </section>
+    </section>
+
+    <section name="About">
+      <entry id="6000" string="About %1">درباره %1</entry>
+      <entry id="6001" string="Translated by %1.">ترجمه توسط %1</entry>
+      <entry id="6002" string="This program is being distributed under the terms&#10;of the GNU General Public License (GPL).">اين نرم افزار تحت قوانين و شرايط توزيع عمومي GNU قرار دارد.</entry>
+    </section>
+
+    <section name="Updates">
+      <entry id="6100" string="There are new updates for %1 available online!&#10;Would you like to see a list of available updates now?">بروزرساني براي %1 بطور آنلاين موجود است!&#10;مايل به مشاهده ليست اين بروزرساني ها هستيد ؟</entry>
+      <entry id="6101" string="There are no updates available at the moment!">هيچ بروزرساني در اين لحظه موجود نيست!</entry>
+      <entry id="6102" string="Check for updates at startup">بررسي بروزرساني نرم‌افزار با شروع برنامه</entry>
+      <entry id="6103" string="%1 can perform an automatic check for online&#10;program updates at startup.&#10;&#10;Would you like %1 to look for updates at startup?">%1 مي تواند با هر بار اجرا به طور خودکار وضعيت بروزرساني را بررسي کند.&#10;تمايل به فعال سازي اين امکان داريد؟</entry>
+    </section>
+
+    <section name="Messages">
+      <entry id="7000" string="Currently converting">در حال تبديل فرمت</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">هم اکنون يک عمليات تبديل فرمت در حال اجراست! آيا واقعا مايل به خروج از برنامه هستيد ؟</entry>
+      <entry id="7002" string="Delete original files after encoding">فايل اصلي پس از تبديل حذف شود</entry>
+      <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">اين گزينه فايل هاي اصلي را پس از عمليات تبديل از کامپيوتر حذف مي کند!&#10;آيا مايل هستيد اين قابليت فعال شود ؟</entry>
+      <entry id="7004" string="Keep this option enabled even after restarting %1">اين تنظيم را حتي پس از راه اندازي مجدد %1 فعال نگه دار</entry>
+      <entry id="7005" string="File already exists">فايل پيش از اين ساخته شده</entry>
+      <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">فايل خروجي %1 پيش از اين ساخته شده&#10;آيا مايل به بازنويسي آن هستيد ؟</entry>
+      <entry id="7007" string="Overwrite all further files">همه فايل هاي باقي مانده را باز نويسي کن</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">شما در حال تبديل به فرمت Lossy به Lossless هستيد.&#10;درنظر داشته باشيد کيفيت از دست رفته قابل بازيابي نيست بنابراين اين عمليات گرچه حجم فايل خروجي را بالا مي‌برد&#10;اما بر کيفيت آن نمي افزايد.&#10;&#10;مايل به ادامه هستيد ؟</entry>
+    </section>
+
+    <section name="Errors">
+      <entry id="7100" string="Could not create decoder component: %1&#10;&#10;File: %1&#10;Path: %2">مؤلفه کدگشا قابل ساخت نيست: %1&#10;&#10;فايل: %1&#10;مسير: %2</entry>
+      <entry id="7101" string="Could not create encoder component: %1">مؤلفه کدگذاري قابل ساخت نيست: %1</entry>
+      <entry id="7102" string="Could not set up decoder for input file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">تنظيم سيستم کدگشايي براي فايل مورد نظر ممکن نبود: %1&#10;&#10;فايل: %1&#10;مسير: %2</entry>
+      <entry id="7103" string="Could not set up encoder for output file: %1&#10;&#10;File: %1&#10;Path: %2&#10;&#10;Error: %3">تنظيم سيستم کدگذاري براي فايل موردنظر ممکن نبود: %1&#10;&#10;فايل: %1&#10;مسير: %2</entry>
+      <entry id="7104" string="Could not set up DSP processor: %1&#10;&#10;Error: %2">تنظيم پردازشگر DSP ممکن نشد: %1&#10;&#10;خطا: %2</entry>
+      <entry id="7105" string="Unable to access input file: %1&#10;&#10;File: %1&#10;Path: %2">دسترسي به فايل مورد نظر امکان پذير نيست: %1&#10;&#10;فايل: %1&#10;مسير: %2</entry>
+      <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">ساخت فايل خروجي امکان پذير نشد: %1&#10;&#10;فايل: %1&#10;مسير: %2</entry>
+      <entry id="7107" string="Failed to verify input file: %1">بررسي صحت فايل موردنظر ممکن نشد: %1</entry>
+      <entry id="7108" string="Failed to verify input track: %1">بررسي صحت قطعه موردنظر ممکن نشد: %1</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">بررسي محاسباتي صحت فايل (CheckSum) مورد تاييد نبود: %1&#10;&#10;محاسبات کدگذاري: %2&#10;محاسبات تاييد: %3</entry>
+      <entry id="7110" string="File not found">فايل يافت نشد</entry>
+      <entry id="7111" string="Unknown file type">فرمت فايل مورد نظر ناشناس است</entry>
+      <entry id="7112" string="Invalid file format">فرمت فايل صحيح نيست</entry>
+      <entry id="7113" string="Unsupported audio format">فرمت صوتي موردنظر پشتيباني نمي‌شود</entry>
+      <entry id="7114" string="Unknown error">خطاي ناشناخته</entry>
+      <entry id="7115" string="Unable to load NT SCSI drivers! CD ripping disabled!">بارگذاري درايور هاي NT SCSI ممکن نيست! تبديل از روي ديسک غيرفعال شد!</entry>
+      <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">فايل مورد نظر قابل دسترسي نيست: %1&#10;خطا: %2</entry>
+      <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">پخش قطعه از روي ديسک در حالي که تبديل از روي همان درايو انجام مي‌شود ممکن نيست!</entry>
+      <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">تبديل فرمت قطعه وقتي از روي همان درايو انجام مي‌شود ممکن نيست!</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">پشتيباني پايگاه داده ديسک غيرفعال شده!&#10;لطفا از بخش تنظيمات پشتيباني آنلاين يا آفلاين پايگاه را فعال کنيد.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">دسترسي از راه دور به پايگاه داده ديسک غير فعال است!&#10;لطفا اين ويژگي را از قسمت تنظيمات فعال کنيد.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">ويندوز اجازه دسترسي به درايو ديسک را نمي‌دهد.&#10;&#10;لطفا با مدير سيستم يا شبکه جهت دريافت اجازه دسترسي صحبت کنيد.</entry>
+      <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">هيچ قابليت محاوره اي براي تنظيمات در دسترس نيست:&#10;&#10;%1</entry>
+      <entry id="7123" string="The selected folder does not exist anymore!">پوشه انتخاب شده ديگر موجود نيست!</entry>
+    </section>
+
+    <section name="Dialogs">
+
+      <section name="Overwrite">
+	<entry id="8000" string="Confirm overwrite">بازنويسي را تاييد کنيد</entry>
+	<entry id="8001" string="Confirm">تاييديه</entry>
+	<entry id="8002" string="Skip all">همه را ناديده بگير</entry>
+	<entry id="8003" string="The following %1 files already exist or have duplicate file names">تعداد %1 فايل از پيش موجود بوده يا اسامي تکرار دارند</entry>
+	<entry id="8004" string="Action">فعاليت</entry>
+	<entry id="8005" string="Overwrite">بازنويسي</entry>
+	<entry id="8006" string="Skip">ناديده گيري</entry>
+      </section>
+
+      <section name="Format">
+	<entry id="8100" string="Select sample format">فرمت نمونه را انتخاب کن</entry>
+	<entry id="8101" string="The selected tracks have different sample formats. Please select&#10;the desired sample format of the output file:">قطعه هاي انتخاب شده نمونه فرمت هاي متفاوتي دارند.&#10;لطفا نمونه فرمت مدنظر براي فايل خروجي را انتخاب کنيد:&#10;</entry>
+	<entry id="8102" string="Select">انتخاب</entry>
+      </section>
+
+      <section name="Errors">
+	<entry id="8200" string="Errors">خطاها</entry>
+	<entry id="8201" string="%1 errors while processing job">تعداد %1 خطا به هنگام عمليات پردازش رخ داد</entry>
+	<entry id="8202" string="select an entry for details">يک مورد را براي جزييات انتخاب کنيد</entry>
+      </section>
+    </section>
+
+    <section name="Ripper">
+      <entry id="9000" string="Active CD-ROM drive">سي دي درايو فعال</entry>
+      <entry id="9001" string="Set drive speed limit">محدوديت سرعت درايو را تعيين کنيد</entry>
+      <entry id="9002" string="CD information">اطلاعات CD</entry>
+      <entry id="9003" string="Read CD-Text">متن ديسک را بخوان</entry>
+      <entry id="9004" string="Read cdplayer.ini">فايل cdplayer.ini را بخوان</entry>
+      <entry id="9005" string="Ripper settings">تنظيمات تبديل از روي ديسک</entry>
+      <entry id="9006" string="Activate cdparanoia mode">حالت cdparanoia فعال شود</entry>
+      <entry id="9007" string="Overlap only">فقط Overlap</entry>
+      <entry id="9008" string="No verify">بدون تاييديه صحت</entry>
+      <entry id="9009" string="No scratch repair">بدون تعمير خط و خش</entry>
+      <entry id="9010" string="Full cdparanoia mode">حالت Full cdparanoia</entry>
+      <entry id="9011" string="Activate jitter correction">فعال کردن Jitter Correction</entry>
+      <entry id="9012" string="Switch stereo channels">سوييچ کردن به کانال‌هاي استريو</entry>
+      <entry id="9013" string="Automatization">خودکارسازي</entry>
+      <entry id="9014" string="Read CD contents on insert">اطلاعات ديسک را به محض قرار گيري در درايو بخوان</entry>
+      <entry id="9015" string="Start ripping automatically">تبديل از روي ديسک به طور خودکار انجام شود</entry>
+      <entry id="9016" string="Eject disk after ripping">ديسک پس از اتمام تبديل از درايو خارج شود</entry>
+      <entry id="9017" string="CD options">تنظيمات ديسک</entry>
+      <entry id="9018" string="Use read offset">از آفست هاي خواندن استفاده کن</entry>
+      <entry id="9019" string="samples">نمونه ها</entry>
+      <entry id="9020" string="Read ISRC when adding tracks to joblist">به هنگام افزودن قطعات به ليست کاري ISRC را بررسي کن</entry>
+      <entry id="9021" string="Spin up before ripping">قبل از شروع تبديل سرعت دوران ديسک را بالا برود</entry>
+      <entry id="9022" string="%1 seconds">%1 ثانيه</entry>
+    </section>
+
+    <section name="Components">
+
+      <section name="Decoders">
+	<entry id="10000" string="Cue Sheet Reader">بررسي گر فايل لاگ</entry>
+      </section>
+
+      <section name="Encoders">
+	<entry id="11001" string="SndFile Output Component">مؤلفه خروجي SndFile</entry>
+      </section>
+
+      <section name="DSP">
+	<entry id="12000" string="Channel Converter">مبدل کانال‌ها</entry>
+	<entry id="12001" string="Sample Format Converter">مبدل فرمت نمونه برداي شده</entry>
+	<entry id="12002" string="Sample Rate Converter">مبدل نرخ نمونه برداري شده</entry>
+	<entry id="12003" string="RNNoise Noise Reduction">کاهش دهنده نويز RNNoise</entry>
+	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">ماژول Rubber Band Tempo/Pitch Changer</entry>
+      </section>
+
+      <section name="Extensions">
+	<entry id="15000" string="Notifications">تذکرات</entry>
+	<entry id="15001" string="Logging">گزارش نويسي</entry>
+	<entry id="15002" string="Video Downloader">دانلود کننده ويديو</entry>
+      </section>
+    </section>
+
+    <section name="Decoders">
+
+      <section name="MAD">
+	<entry id="20000" string="Decoding">کدگشايي</entry>
+	<entry id="20001" string="Enable 24 bit decoding">کدگشايي ۲۴ بيتي فعال شود</entry>
+      </section>
+
+      <section name="mpg123">
+	<entry id="21000" string="Decoder">کدگشا</entry>
+	<entry id="21001" string="Active decoder">کدگشاي فعال</entry>
+	<entry id="21002" string="auto select">انتخاب خودکار</entry>
+      </section>
+
+      <section name="CueSheet">
+	<entry id="22000" string="Title information">اطلاعات عنوان</entry>
+	<entry id="22001" string="Read tags from referenced files">تگ ها را از فايل مرجع بخوان</entry>
+	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">لاگ هاي متاديتا بر تگ فايل هاي مرجع اولويت دارد</entry>
+	<entry id="22003" string="Alternative files">فايل هاي جايگزين</entry>
+	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">اگر فايل هاي Wave مدنظر قابل جايگيري نبود به دنبال جايگزين هاي فشرده شده باش</entry>
+	<entry id="22005" string="Error handling">رسيدگي به خطا</entry>
+	<entry id="22006" string="Ignore errors during cue sheet processing">به هنگام پردازش فايل هاي لاگ خطاها را ناديده بگير</entry>
+      </section>
+    </section>
+
+    <section name="Encoders">
+
+      <section name="BladeEnc">
+	<entry id="30000" string="Bitrate">بيت‌ريت</entry>
+	<entry id="30001" string="Copyright bit">بيت کاپي رايت</entry>
+	<entry id="30002" string="CRC">CRC</entry>
+	<entry id="30003" string="Original bit">بيت فايل اصلي</entry>
+	<entry id="30004" string="Channels">کانال‌ها</entry>
+	<entry id="30005" string="Private bit">بيت فايل خصوصي</entry>
+	<entry id="30006" string="Set Copyright bit">بيت کاپي ريت را ثبت کن</entry>
+	<entry id="30007" string="Enable CRC">CRC را فعال کن</entry>
+	<entry id="30008" string="Set Original bit">بيت فايل اوريجينال را فعال کن</entry>
+	<entry id="30009" string="Dual channel encoding">کدگذاري دوکاناله</entry>
+	<entry id="30010" string="Set Private bit">بيت فايل خصوصي را ثبت کن</entry>
+      </section>
+
+      <section name="Bonk">
+	<entry id="31000" string="Encoder mode">حالت تبديل گر</entry>
+	<entry id="31001" string="Stereo mode">حالت استريو</entry>
+	<entry id="31002" string="Quantization">تصحيح خودکار (يک ويژگي تخصصي)</entry>
+	<entry id="31003" string="Downsampling ratio">نسبت Downsampling</entry>
+	<entry id="31004" string="Predictor size">تخمين زدن حجم فايل</entry>
+	<entry id="31005" string="Enable lossless encoding">تبديل بصورت Lossless</entry>
+	<entry id="31006" string="Enable Joint Stereo">فعال سازي فناوري Joint Stereo</entry>
+      </section>
+
+      <section name="LAME">
+	<entry id="32000" string="Basic">تنظيمات پايه</entry>
+	<entry id="32001" string="Misc">جزييات</entry>
+	<entry id="32002" string="Expert">تخصصي</entry>
+	<entry id="32003" string="Audio processing">پردازش صدا</entry>
+
+	<section name="Basic">
+	  <entry id="32100" string="Presets">پروفايل‌ هاي تعريف شده</entry>
+	  <entry id="32101" string="Use preset">استفاده از پروفايل هاي تعريف شده</entry>
+	  <entry id="32102" string="Custom settings">تنظيمات سفارشي</entry>
+	  <entry id="32103" string="Medium">کيفيت متوسط</entry>
+	  <entry id="32104" string="Standard">کيفيت استاندارد</entry>
+	  <entry id="32105" string="Extreme">کيفيت عالي</entry>
+	  <entry id="32106" string="Bitrate">بيت‌ريت</entry>
+	  <entry id="32107" string="Quality">کيفيت</entry>
+	  <entry id="32108" string="Set bitrate">تنظيم بيت‌ريت</entry>
+	  <entry id="32109" string="Set ratio">تنظيم نسبت</entry>
+	  <entry id="32110" string="Set quality">تنظيم کيفيت</entry>
+	  <entry id="32111" string="worse">بدتر</entry>
+	  <entry id="32112" string="better">بهتر</entry>
+	  <entry id="32113" string="VBR mode">حالت VBR</entry>
+	  <entry id="32114" string="no VBR">بدون VBR</entry>
+	  <entry id="32115" string="VBR quality">کيفيت VBR</entry>
+	  <entry id="32116" string="ABR target bitrate">بيت‌ريت مورد انتظار ABR</entry>
+	</section>
+
+	<section name="Misc">
+	  <entry id="32200" string="Control bits">کنترل بيت‌ها</entry>
+	  <entry id="32201" string="Set Copyright bit">بيت کاپي ريت را ثبت کن</entry>
+	  <entry id="32202" string="Set Original bit">بيت فايل اوريجينال را ثبت کن</entry>
+	  <entry id="32203" string="Set Private bit">بيت فايل خصوصي را ثبت کن</entry>
+	  <entry id="32204" string="CRC">CRC</entry>
+	  <entry id="32205" string="Enable CRC">CRC را فعال کن</entry>
+	  <entry id="32206" string="Stereo mode">حالت استريو</entry>
+	  <entry id="32207" string="auto">خودکار</entry>
+	  <entry id="32208" string="Stereo">استريو</entry>
+	  <entry id="32209" string="Joint Stereo">حالت Joint Stereo</entry>
+	  <entry id="32210" string="Force Joint Stereo">حالت Joint Setero تحميل شود</entry>
+	  <entry id="32211" string="VBR/ABR bitrate range">محدوده بيت‌ريت VBR/ABR</entry>
+	  <entry id="32212" string="Set minimum VBR/ABR bitrate">حداقل بيت‌ريت VBR/ABR</entry>
+	  <entry id="32213" string="Set maximum VBR/ABR bitrate">حداکثر بيت‌ريت VBR/ABR</entry>
+	</section>
+
+	<section name="Expert">
+	  <entry id="32300" string="ATH">ATH</entry>
+	  <entry id="32301" string="Enable ATH">فعال‌کردن ATH</entry>
+	  <entry id="32302" string="Use default setting">استفاده از تنظيمات پيشفرض</entry>
+	  <entry id="32303" string="Psycho acoustic model">حالت Psycho acoustic</entry>
+	  <entry id="32304" string="Use Temporal Masking Effect">استفاده از Temporal Masking Effect</entry>
+	  <entry id="32305" string="Stream format">فرمت Stream</entry>
+	  <entry id="32306" string="Enforce strict ISO compliance">تحميل رعايت دامنه فريم ها بر طبق ISO</entry>
+	  <entry id="32307" string="automatic">خودکار</entry>
+	  <entry id="32308" string="always">همیشه</entry>
+	</section>
+
+	<section name="Audio processing">
+	  <entry id="32400" string="Highpass filter">فيلتر Highpass</entry>
+	  <entry id="32401" string="Set Highpass frequency (Hz)">تنظيم فرکانس Highpass (هرتز)</entry>
+	  <entry id="32402" string="Set Highpass width (Hz)">تنظيم وسعت Highpass (هرتز)</entry>
+	  <entry id="32403" string="Lowpass filter">فيلتر Lowpass</entry>
+	  <entry id="32404" string="Set Lowpass frequency (Hz)">تنظيم فرکانس Lowpass (هرتز)</entry>
+	  <entry id="32405" string="Set Lowpass width (Hz)">تنظيم وسعت Lowpass (هرتز)</entry>
+	  <entry id="32406" string="Misc settings">تنظيمات متنوع و جزئي</entry>
+	  <entry id="32407" string="Disable all filtering">همه فيلترها غير فعال باشد</entry>
+	</section>
+      </section>
+
+      <section name="AAC">
+	<entry id="33000" string="Codec">سيستم کدگذاري</entry>
+	<entry id="33001" string="Quality">کيفيت</entry>
+	<entry id="33002" string="Format">فرمت</entry>
+
+	<section name="Codec">
+	  <entry id="33100" string="Audio codec">سيستم کدگذاري صدا</entry>
+	</section>
+
+	<section name="Quality">
+	  <entry id="33200" string="Bitrate">بيت‌ريت</entry>
+	  <entry id="33201" string="Bitrate / Quality">بيت‌ريت / کيفيت</entry>
+	  <entry id="33202" string="Bitrate per channel">مقدار بيت‌ريت بر هر کانال</entry>
+	  <entry id="33203" string="Set quality">تنظيم کيفيت</entry>
+	  <entry id="33204" string="Stereo mode">حالت استريو</entry>
+	  <entry id="33205" string="Allow Joint Stereo">حالت Joint Stereo مجاز باشد</entry>
+	  <entry id="33207" string="Use Temporal Noise Shaping">استفاده از Temporal Noise Shaping</entry>
+	  <entry id="33208" string="Maximum bandwidth">حداکثر پهناي باند</entry>
+	  <entry id="33209" string="Maximum AAC frequency bandwidth to use (Hz)">حداکثر فرکانس پهناي باند AAC (هرتز)</entry>
+	  <entry id="33210" string="worse">بدتر</entry>
+	  <entry id="33211" string="better">بهتر</entry>
+	  <entry id="33212" string="auto">خودکار</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="33300" string="MPEG version">نسخه‌ي MPEG</entry>
+	  <entry id="33302" string="File format">فرمت فايل</entry>
+	  <entry id="33303" string="File extension">پسوند فايل</entry>
+	  <entry id="33304" string="Tags">تگ‌ها</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">ثبت اطلاعات ID3v2 در تگ AAC مجاز باشد</entry>
+	  <entry id="33306" string="Note">نکته</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">بعضي پليرها ممکن است در اجراي فايل هاي AAC که داراي تگ ID3 هستند&#10;دچار مشکل شوند. فقط در صورتي از اين گزينه استفاده کنيد که از پشتياني&#10;سيستم پخش مطمئن هستيد.</entry>
+	</section>
+      </section>
+
+      <section name="FLAC">
+	<entry id="34000" string="Basic">تنظيمات پايه</entry>
+	<entry id="34001" string="Format">فرمت</entry>
+	<entry id="34002" string="Expert">تخصصي</entry>
+
+	<section name="Basic">
+	  <entry id="34100" string="Presets">پروفايل‌ هاي تعريف شده</entry>
+	  <entry id="34101" string="Use preset">استفاده از پروفايل هاي تعريف شده</entry>
+	  <entry id="34102" string="Custom settings">تنظيمات سفارشي</entry>
+	  <entry id="34103" string="Fastest encoding">سريع ترين تبديل</entry>
+	  <entry id="34104" string="Best compression">بهترين فشرده سازي</entry>
+	  <entry id="34105" string="Stereo mode">حالت استريو</entry>
+	  <entry id="34106" string="Joint Stereo">حالت Joint Stereo</entry>
+	  <entry id="34107" string="Adaptive Joint Stereo">Joint Stereo تطبيقي</entry>
+	  <entry id="34108" string="File format">فرمت فايل</entry>
+	  <entry id="34109" string="Default">پيشفرض</entry>
+	</section>
+
+	<section name="Format">
+	  <entry id="34201" string="Blocksize">سايز بلوک</entry>
+	  <entry id="34202" string="%1 samples">%1 نمونه</entry>
+	</section>
+
+	<section name="Expert">
+	  <entry id="34300" string="Signal processing">پردازش سيگنال</entry>
+	  <entry id="34301" string="Window function(s)">توابع پنجره</entry>
+	  <entry id="34302" string="Note">نکته</entry>
+	  <entry id="34303" string="You can specify multiple functions separated by semicolons.">مي‌توانيد چندين تابع مختلف را با استفاده از &quot;;&quot; جدا کرده و همزمان استفاده کنيد.</entry>
+	  <entry id="34304" string="Linear predictor">پيش بيني کننده خطي</entry>
+	  <entry id="34305" string="Maximum LPC order">حداکثر سفارش LPC</entry>
+	  <entry id="34306" string="disabled">غيرفعال</entry>
+	  <entry id="34307" string="Exhaustive model search">جستجوي جامع</entry>
+	  <entry id="34308" string="Quantized LPC precision">اندازه گيري دقيق LPC</entry>
+	  <entry id="34309" string="auto">خودکار</entry>
+	  <entry id="34310" string="Optimize LPC quantization">اندازگيري LPC را بهينه کن</entry>
+	  <entry id="34311" string="Residual coding">متد Residual coding مدنظر باشد</entry>
+	  <entry id="34312" string="Minimum partition order">حداقل درخواست پارتيشن</entry>
+	  <entry id="34313" string="Maximum partition order">حداکثر درخواست پارتيشن</entry>
+	</section>
+      </section>
+
+      <section name="Vorbis">
+	<entry id="35000" string="Encoding Mode">روش تبديل فرمت</entry>
+	<entry id="35001" string="Variable Bitrate">بيت‌ريت متغير</entry>
+	<entry id="35002" string="Average Bitrate">بيت ريت ميانگين</entry>
+	<entry id="35003" string="Quality">کيفيت</entry>
+	<entry id="35004" string="Bitrate">بيت‌ريت</entry>
+	<entry id="35005" string="Minimum bitrate">حداقل بيت ريت</entry>
+	<entry id="35006" string="Average bitrate">بيت ريت ميانگين</entry>
+	<entry id="35007" string="Maximum bitrate">حداکثر بيت‌ريت</entry>
+	<entry id="35008" string="File extension">پسوند فايل</entry>
+      </section>
+
+      <section name="WMA">
+	<entry id="36000" string="Select codec">انتخاب کدک</entry>
+	<entry id="36001" string="Select codec format">انتخاب فرمت کدک</entry>
+	<entry id="36002" string="Codec settings">تنظيمات کدک</entry>
+	<entry id="36003" string="Use codec">استفاده از کدک</entry>
+	<entry id="36004" string="Use format">استفاده از فرمت</entry>
+	<entry id="36005" string="Write uncompressed WMA files">فايل هاي WMA بصورت غير فشرده نوشته شوند</entry>
+	<entry id="36006" string="Automatically select format based on settings and input format">باتوجه به تنظيمات و فرمت ورودي، متد و فرمت مناسب براي تبديل انتخاب شود</entry>
+	<entry id="36007" string="Use VBR encoding">تبديل با بيت‌ريت متغير استفاده شود</entry>
+	<entry id="36008" string="Quality">کيفيت</entry>
+	<entry id="36009" string="Target bitrate">بيت‌ريت مورد انتظار</entry>
+	<entry id="36010" string="Use 2-pass encoding">استفاده از two-pass encoding</entry>
+      </section>
+
+      <section name="TwinVQ">
+	<entry id="37000" string="Bitrate">بيت‌ريت</entry>
+	<entry id="37001" string="Bitrate per channel">مقدار بيت‌ريت بر هر کانال</entry>
+	<entry id="37002" string="Preselection">انتخاب مقدماتي</entry>
+	<entry id="37003" string="Number of preselection candidates">تعداد کانديدهاي انتخاب مقدماتي</entry>
+      </section>
+
+      <section name="Monkey's Audio">
+	<entry id="38000" string="Compression">فشرده‌سازي</entry>
+	<entry id="38001" string="Compression mode">حالت فشرده سازي</entry>
+	<entry id="38002" string="Fast">سريع</entry>
+	<entry id="38003" string="Normal">عادي</entry>
+	<entry id="38004" string="High">بالا</entry>
+	<entry id="38005" string="Extra high">خيلي بالا</entry>
+	<entry id="38006" string="Insane">ديوانه وار!</entry>
+      </section>
+
+      <section name="Speex">
+	<entry id="39000" string="Profile">پروفايل</entry>
+	<entry id="39001" string="Select encoding profile">انتخاب پروفايل تبديل</entry>
+	<entry id="39002" string="auto">خودکار</entry>
+	<entry id="39003" string="Narrowband (8 kHz)">باند باريک (۸ کيلوهرتز)</entry>
+	<entry id="39004" string="Wideband (16 kHz)">باند وسيع (۱۶ کيلوهرتز)</entry>
+	<entry id="39005" string="Ultra-Wideband (32 kHz)">باند بسيار وسيع (۳۲ کيلوهرتز)</entry>
+	<entry id="39006" string="VBR mode">حالت VBR</entry>
+	<entry id="39007" string="CBR (no VBR)">حالت CBR</entry>
+	<entry id="39008" string="VBR">VBR</entry>
+	<entry id="39009" string="ABR">ABR</entry>
+	<entry id="39010" string="Options">تنظيمات</entry>
+	<entry id="39011" string="Voice Activity Detection">تشخيص فعاليت صدا</entry>
+	<entry id="39012" string="Discontinuous Transmission">ارسال ناپيوسته</entry>
+	<entry id="39013" string="Algorithm complexity">پيچيدگي الگوريتم</entry>
+	<entry id="39014" string="Complexity">پيچيدگي</entry>
+	<entry id="39015" string="CBR quality">کيفيت CBR</entry>
+	<entry id="39016" string="VBR quality">کيفيت VBR</entry>
+	<entry id="39017" string="ABR target bitrate">بيت‌ريت مورد انتظار ABR</entry>
+	<entry id="39018" string="Bitrate">بيت‌ريت</entry>
+	<entry id="39019" string="Quality">کيفيت</entry>
+	<entry id="39020" string="Max. bitrate">حداکثر بيت ريت</entry>
+      </section>
+
+      <section name="Opus">
+	<entry id="40000" string="Basic settings">تنظيمات پايه</entry>
+	<entry id="40001" string="Encoding mode">حالت کدگذاري</entry>
+	<entry id="40002" string="auto">خودکار</entry>
+	<entry id="40003" string="Voice">صدا</entry>
+	<entry id="40004" string="Music">موسيقي</entry>
+	<entry id="40005" string="Bandwidth">پهناي باند</entry>
+	<entry id="40006" string="Narrowband">باند باريک</entry>
+	<entry id="40007" string="Mediumband">باند عادي</entry>
+	<entry id="40008" string="Wideband">باند باز</entry>
+	<entry id="40009" string="Superwideband">باند بسيار وسيع</entry>
+	<entry id="40010" string="Fullband">باند بدون دامنه</entry>
+	<entry id="40011" string="File extension">پسوند فايل</entry>
+	<entry id="40012" string="Variable bitrate">بيت‌ريت متغير</entry>
+	<entry id="40013" string="Enable variable bitrate encoding">تبديل با بيت ريت متغير فعال باشد</entry>
+	<entry id="40014" string="Constrain bitrate to target value">بيت ريت به مقدار هدف تحميل شود</entry>
+	<entry id="40015" string="Quality">کيفيت</entry>
+	<entry id="40016" string="Bitrate">بيت‌ريت</entry>
+	<entry id="40017" string="Complexity">پيچيدگي</entry>
+	<entry id="40018" string="Stream">رشته</entry>
+	<entry id="40019" string="Frame length">طول فريم</entry>
+	<entry id="40020" string="Options">تنظيمات</entry>
+	<entry id="40021" string="Enable discontinous transmission">انتقال ناپيوسته فعال شود</entry>
+	<entry id="40022" string="Expected packet loss">Packet loss مورد انتظار</entry>
+      </section>
+
+      <section name="SndFile">
+	<entry id="41000" string="Output format">فرمت خروجي</entry>
+	<entry id="41001" string="File format">فرمت فايل</entry>
+	<entry id="41002" string="Audio format">فرمت صوتي</entry>
+	<entry id="41003" string="mono">مونو</entry>
+	<entry id="41004" string="auto select">انتخاب خودکار</entry>
+
+	<section name="Errors">
+	  <entry id="41100" string="Could not find suitable audio format.">فرمت صداي مناسب يافت نشد.</entry>
+	  <entry id="41101" string="Unable to use selected audio format.">امکان استفاده از فرمت صوتي انتخاب شده وجود ندارد.</entry>
+	</section>
+      </section>
+
+      <section name="meh!">
+	<entry id="42000" string="Encoders">مبدل‌‌ها</entry>
+	<entry id="42001" string="Available">در دسترس</entry>
+	<entry id="42002" string="Selected">انتخاب شده</entry>
+	<entry id="42003" string="Configure encoder">تنظيم مبدل صوت</entry>
+	<entry id="42004" string="Options">تنظيمات</entry>
+	<entry id="42005" string="Create a separate folder for each output format">براي هر فرمت خروجي يک پوشه جدا بساز</entry>
+      </section>
+    </section>
+
+    <section name="DSP">
+
+      <section name="Format">
+	<entry id="50000" string="Sample format">فرمت نمونه</entry>
+	<entry id="50001" string="Number format">شماره فرمت</entry>
+	<entry id="50002" string="Sample resolution">وضوح نمونه</entry>
+	<entry id="50003" string="bit">بيت</entry>
+	<entry id="50004" string="unsigned">بي علامت</entry>
+	<entry id="50005" string="Integer">عدد صحيح</entry>
+	<entry id="50006" string="Float">اعشاري</entry>
+      </section>
+
+      <section name="Channels">
+	<entry id="50100" string="Output channels">کانال هاي خروجي</entry>
+	<entry id="50101" string="Channel configuration">تنظيمات کانال</entry>
+	<entry id="50102" string="Mono">مونو (تک کانال)</entry>
+	<entry id="50103" string="Stereo">استريو</entry>
+	<entry id="50104" string="Switch stereo channels">سوييچ کردن به کانال‌هاي استريو</entry>
+      </section>
+
+      <section name="Resample">
+	<entry id="50200" string="Converter">تبديل کننده</entry>
+	<entry id="50201" string="Sampling rate">نرخ نمونه‌گذاري</entry>
+	<entry id="50202" string="Output sampling rate">نرخ نمونه برداري خروجي</entry>
+      </section>
+
+      <section name="RubberBand">
+	<entry id="50300" string="Basic controls">تنظيمات ابتدايي</entry>
+	<entry id="50301" string="Tempo">ضرب آهنگ</entry>
+	<entry id="50302" string="Pitch">زيرو بم صدا</entry>
+	<entry id="50303" string="%1 Semitones">%1 نيم گام</entry>
+	<entry id="50304" string="Advanced options">تنظيمات پيشرفته</entry>
+	<entry id="50305" string="Transient detection">تشخيص کوتاه</entry>
+	<entry id="50306" string="Compound">مرکب</entry>
+	<entry id="50307" string="Percussive">تصادمي</entry>
+	<entry id="50308" string="Soft">نرم</entry>
+	<entry id="50309" string="Transient handling">تنظيم و رسيدگي به بلندي صدا ناگهاني</entry>
+	<entry id="50310" string="Crisp">ترد</entry>
+	<entry id="50311" string="Mixed">ترکيب شده</entry>
+	<entry id="50312" string="Smooth">ملايم</entry>
+	<entry id="50313" string="Transformation window">پنجره تغيير شکل</entry>
+	<entry id="50314" string="Standard">استاندارد</entry>
+	<entry id="50315" string="Short">کوتاه</entry>
+	<entry id="50316" string="Long">بلند</entry>
+	<entry id="50317" string="Use time-domain smoothing">استفاده از time-domain smoothing</entry>
+	<entry id="50318" string="Phase handling">بررسي Phase</entry>
+	<entry id="50319" string="Laminar">لايه دار</entry>
+	<entry id="50320" string="Independent">مستقل</entry>
+	<entry id="50321" string="Formant handling">رسيدگي به سازند</entry>
+	<entry id="50322" string="Shift">Shift</entry>
+	<entry id="50323" string="Preserve">حفظ کردن</entry>
+	<entry id="50324" string="Pitch processing">پردازش زير و بم صدا</entry>
+	<entry id="50325" string="High quality">کيفيت بالا</entry>
+	<entry id="50326" string="High speed">سرعت بالا</entry>
+	<entry id="50327" string="High consistency">ثبات و سازگاري بالا</entry>
+	<entry id="50328" string="Stereo processing">پردازش استريو</entry>
+	<entry id="50329" string="Separate">جداگانه</entry>
+	<entry id="50330" string="Combined">ترکيب شده</entry>
+      </section>
+
+      <section name="RNNoise">
+	<entry id="50400" string="Signal/noise type">نوع سيگنال/ نويز</entry>
+	<entry id="50401" string="Signal type">نوع سيگنال</entry>
+	<entry id="50402" string="Noise type">نوع نويز</entry>
+	<entry id="50403" string="General">عمومي</entry>
+	<entry id="50404" string="Recording">در حال ضبط</entry>
+	<entry id="50405" string="Voice (incl. laughter etc.)">صدا (شامل خنده بلند يا هرچيز)</entry>
+	<entry id="50406" string="Speech">گفتگو</entry>
+      </section>
+
+      <section name="Surround">
+	<entry id="50500" string="Output channels">کانال هاي خروجي</entry>
+	<entry id="50501" string="Channel configuration">تنظيمات کانال</entry>
+      </section>
+    </section>
+
+    <section name="Taggers">
+
+      <section name="MP4">
+	<entry id="60000" string="Chapter format">فرمت بخش</entry>
+	<entry id="60001" string="both">هر دو</entry>
+      </section>
+    </section>
+
+    <section name="External">
+      <entry id="80000" string="Downmix multi-channel audio to stereo">Downmix صداي چند کاناله به استريو</entry>
+
+      <section name="Musepack Audio Encoder">
+	<entry id="80100" string="Quality">کيفيت</entry>
+	<entry id="80101" string="poor">ضعيف</entry>
+	<entry id="80102" string="excellent">عالي</entry>
+	<entry id="80103" string="Mid/Side stereo mode">حالت Mid/Side stereo</entry>
+	<entry id="80104" string="off">خاموش</entry>
+	<entry id="80105" string="reduced">کاهش يافته</entry>
+	<entry id="80106" string="on">روشن</entry>
+	<entry id="80107" string="decoupled">جداشده</entry>
+	<entry id="80108" string="enhanced 1.5/3 dB">۱٫۵\۳ دسيبل بهبود يافته</entry>
+	<entry id="80109" string="enhanced 2/6 dB">۲\۶ دسيبل بهبود يافته</entry>
+	<entry id="80110" string="enhanced 2.5/9 dB">۲٫۵\۹ دسيبل بهبود يافته</entry>
+	<entry id="80111" string="enhanced 3/12 dB">۳\۱۲ دسيبل بهبود يافته</entry>
+	<entry id="80112" string="enhanced 3/inf dB">۳\نامحدود دسيبل بهبود يافته</entry>
+	<entry id="80113" string="Adaptive noise shaping order">دستور Adaptive noise shaping</entry>
+	<entry id="80114" string="high">بالا</entry>
+	<entry id="80115" string="Clear Voice Detection">شناسايي صداي واضح</entry>
+	<entry id="80116" string="dual">دوگانه</entry>
+      </section>
+
+      <section name="OptimFROG Lossless Encoder">
+	<entry id="80200" string="Encoding mode">حالت تبديل و کدگذاري</entry>
+	<entry id="80201" string="fast">سريع</entry>
+	<entry id="80202" string="normal">عادي</entry>
+	<entry id="80203" string="high">بالا</entry>
+	<entry id="80204" string="extra">خيلي خوب</entry>
+	<entry id="80205" string="best">بهترين</entry>
+	<entry id="80206" string="high, new">بالا- جديد</entry>
+	<entry id="80207" string="extra, new">خيلي خوب - جديد</entry>
+	<entry id="80208" string="best, new">بهترين - جديد</entry>
+	<entry id="80209" string="Add MD5 checksum">محاسبات MD5 را اضافه کن</entry>
+	<entry id="80210" string="Seeking">در حال جستجو</entry>
+	<entry id="80211" string="slow">آهسته</entry>
+	<entry id="80212" string="minimum">حداقل</entry>
+	<entry id="80213" string="Optimization">بهينه سازي</entry>
+	<entry id="80214" string="disabled">غيرفعال</entry>
+	<entry id="80215" string="low">پايين</entry>
+      </section>
+
+      <section name="Tom's Audiokompressor">
+	<entry id="80300" string="Encoder preset">پروفايل هاي تبديل</entry>
+	<entry id="80301" string="fastest">سريعترين</entry>
+	<entry id="80302" string="strongest">قوي ترين</entry>
+	<entry id="80303" string="Frame size limit">محدوديت اندازه فريم</entry>
+	<entry id="80304" string="Add MD5 checksum">محاسبات MD5 را اضافه کن</entry>
+      </section>
+
+      <section name="WavPack Audio Encoder">
+	<entry id="80400" string="Enable lossy compression">فشرده سازي با افت کيفيت فعال شود</entry>
+	<entry id="80401" string="Compression mode">حالت فشرده سازي</entry>
+	<entry id="80402" string="fast">سريع</entry>
+	<entry id="80403" string="high quality">کيفيت بالا</entry>
+	<entry id="80404" string="very high quality">کيفيت بسيار بالا</entry>
+	<entry id="80405" string="Extra encode processing">پردازش کدگذاري اضافي</entry>
+	<entry id="80406" string="faster">سريعتر</entry>
+	<entry id="80407" string="better">بهتر</entry>
+	<entry id="80408" string="%1 kbps">کيلوبيت بر ثانيه</entry>
+      </section>
+
+      <section name="Nero AAC Encoder">
+	<entry id="80500" string="Encoding mode">حالت تبديل</entry>
+	<entry id="80501" string="auto">خودکار</entry>
+	<entry id="80502" string="Quality">کيفيت</entry>
+	<entry id="80503" string="worse">بدتر</entry>
+	<entry id="80504" string="better">بهتر</entry>
+	<entry id="80505" string="Bitrate">بيت‌ريت</entry>
+	<entry id="80506" string="Bitrate (Streaming)">بيت‌ريت (پخش رشته اي)</entry>
+	<entry id="80507" string="%1 kbps">کيلوبيت بر ثانيه</entry>
+      </section>
+
+      <section name="Windows Media Audio Encoder">
+	<entry id="80600" string="Bitrate">بيت‌ريت</entry>
+	<entry id="80601" string="%1 kbps">کيلوبيت بر ثانيه</entry>
+      </section>
+    </section>
+
+    <section name="Extensions">
+
+      <section name="Donate">
+	<entry id="100000" string="Support this project">حمايت از اين پروژه</entry>
+	<entry id="100001" string="Please support this project!">لطفا از اين پروژه حمايت کنيد!</entry>
+	<entry id="100002" string="Please help keep this software free by supporting the %1 project with a&#10;donation.">با حمايت مالي ناچيز به رايگان ماندن پروژه %1 کمک کنيد.</entry>
+	<entry id="100003" string="Please write to %1 if you would like to mail a check or send&#10;money by mail.">اگر مايل به ارسال چک يا وجه نقد براي حمايت هستيد به %1 اعلام کنيد.</entry>
+	<entry id="100004" string="Thank you very much!">از شما ممنونيم!</entry>
+	<entry id="100005" string="Remind me later">بعدا يادآوري کن</entry>
+	<entry id="100006" string="paypal,donorbox,bitcoin,ethereum">paypal,donorbox,bitcoin,ethereum</entry>
+	<entry id="100007" string="Donate to the %1 project">حمايت مالي از پروژه %1</entry>
+
+	<section name="PayPal">
+	  <entry id="100100" string="Choose an amount and click the button to make a donation with PayPal:">لطفا يک مقدار انتخاب کنيد و روي دکمه بزنيد تا از پي پل از ما حمايت کنيد:</entry>
+	  <entry id="100101" string="You can also send money directly to %1 with PayPal.">ارسال مستقيم پول توسط پي پل به %1 نيز ممکن است.</entry>
+	  <entry id="100102" string="usd">usd</entry>
+	  <entry id="100103" string="$%1">$%1</entry>
+	  <entry id="100104" string="5,10,20,other amount">5,10,20,ساير مبالغ</entry>
+	  <entry id="100105" string="monthly recurring">تکرار ماهانه</entry>
+	  <entry id="100106" string="Donate">حمايت مالي</entry>
+	</section>
+
+	<section name="Donorbox">
+	  <entry id="100200" string="Donorbox enables quick and simple donations by credit card. Click this&#10;button to make a donation with Donorbox:">با استفاده از Donorbox ميتوانيد از طريق کارت اعتباري از ما حمايت کنيد.&#10;لطفا بروي اين دکمه کليک کنيد:</entry>
+	  <entry id="100201" string="Donate">حمايت مالي</entry>
+	  <entry id="100202" string="usd">usd</entry>
+	</section>
+
+	<section name="Bitcoin">
+	  <entry id="100300" string="Please scan or click the QR code or copy the following&#10;address to donate Bitcoin:">با اسکن يا کليک بروي کد مي توانيد به&#10;شکل بيت کوين از برنامه نويس حمايت کنيد:</entry>
+	  <entry id="100301" string="This address also accepts Bitcoin Cash and other forks.">اين آدرس از BitCoin Cash و بقيه گزينه ها نيز پشتيباني مي‌کند.</entry>
+	</section>
+
+	<section name="Ethereum">
+	  <entry id="100400" string="Please scan or click the QR code or copy the following&#10;address to donate Ethereum:">با کليک بروي کد يا اسکن آن مي‌توانيد از برنامه حمايت کنيد:</entry>
+	  <entry id="100401" string="This address also accepts Ether Classic and ERC20 tokens.">اين آدرس از Ether Classic و ERC20 نيز حمايت مي‌کند.</entry>
+	</section>
+
+	<section name="SEPA">
+	  <entry id="100500" string="You can donate by making an electronic transfer to the&#10;following account:">مي‌توانيد با يک انتقال الکترونيکي ازنويسنده برنامه حمايت کنيد:</entry>
+	  <entry id="100501" string="Account holder:">دارنده حساب:</entry>
+	  <entry id="100502" string="IBAN:">IBAN:</entry>
+	  <entry id="100503" string="BIC:">BIC:</entry>
+	</section>
+      </section>
+
+      <section name="Winamp Adapter">
+	<entry id="101000" string="Configure">تنظيم</entry>
+	<entry id="101001" string="About">درباره</entry>
+      </section>
+
+      <section name="Video Downloader">
+	<entry id="102000" string="Video">ويدئو</entry>
+	<entry id="102001" string="Enter video URL here">آدرس وبسايت ويدئو را وارد کنيد</entry>
+	<entry id="102002" string="Download">دانلود</entry>
+	<entry id="102003" string="Automatically download URLs copied to clipboard">آدرس وبسايت هايي که روي کليپ بورد کپي مي‌شوند را خودکار دانلود کن</entry>
+	<entry id="102004" string="Save downloaded video files">ويدئوهاي دانلود شده را ذخيره کن</entry>
+	<entry id="102005" string="Video downloads">دانلود‌ ويدئوها</entry>
+	<entry id="102006" string="Downloaded tracks">قطعه‌هاي دانلود شده</entry>
+	<entry id="102007" string="Uploader">آپلود کننده</entry>
+	<entry id="102008" string="Video URL">آدرس ويدئو</entry>
+	<entry id="102009" string="Video title">عنوان ويدئو</entry>
+	<entry id="102010" string="Video description">توضيح ويدئو</entry>
+	<entry id="102011" string="Site name">نام وبسايت</entry>
+	<entry id="102012" string="Uploaded by">آپلود توسط</entry>
+	<entry id="102013" string="Uploaded on">آپلود شده بروي</entry>
+	<entry id="102014" string="Length">طول</entry>
+	<entry id="102015" string="Size">اندازه</entry>
+	<entry id="102016" string="Cancel download">دانلود لغو شود</entry>
+	<entry id="102017" string="unknown">ناشناس</entry>
+	<entry id="102018" string="Note">نکته</entry>
+
+	<section name="Configuration">
+	  <entry id="102101" string="Automatization">خودکارسازي</entry>
+	  <entry id="102102" string="Video files">فايل هاي ويدئويي</entry>
+	  <entry id="102103" string="Select">انتخاب</entry>
+	  <entry id="102104" string="Select the folder to save downloaded video files to">پوشه اي براي ذخيره فايل هاي ويدئويي دانلود شده انتخاب کنيد</entry>
+	  <entry id="102105" string="Downloads">دانلودها</entry>
+	  <entry id="102106" string="Maximum number of simultaneous downloads">حداکثر تعداد دانلودهاي همزمان</entry>
+	  <entry id="102107" string="Output format">فرمت خروجي</entry>
+	  <entry id="102108" string="keep original format">فرمت اصلي را نگه دار</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="102201" string="This URL is not supported or not a video page URL!">اين وبسايت پشتيباني نمي شود. ممکن است يک وبسايت ويدئويي نباشد!</entry>
+	  <entry id="102202" string="Error downloading video!">خطاي دانلود ويدئو!</entry>
+	  <entry id="102203" string="You are already downloading this video!">شما هم اکنون در حال دانلود اين ويدئو هستيد!</entry>
+	  <entry id="102204" string="Some required video decoders could not be found. Video files&#10;cannot be added to the joblist for conversion to audio files.&#10;&#10;Please install FFmpeg or avconv to fix this problem!">برخي کدگشا هاي مورد نياز يافت نشد بنابراين امکان افزودن ويدئو ها&#10;به ليست جهت تبديل به فايل صوتي وجود ندارد.&#10;&#10;براي حل اين مشکل مي‌توانيد اقدام به نصب FFmpeg يا avconv نماييد!</entry>
+	</section>
+      </section>
+
+      <section name="Tag Editor">
+	<entry id="103000" string="Tags">تگ‌ها</entry>
+	<entry id="103001" string="Length">طول</entry>
+	<entry id="103002" string="Size">اندازه</entry>
+	<entry id="103003" string="Albums">آلبوم‌ ها</entry>
+	<entry id="103004" string="Files">فايل‌ها</entry>
+	<entry id="103005" string="File">فايل</entry>
+	<entry id="103006" string="Tracks">قطعه‌ها</entry>
+	<entry id="103007" string="Save">ذخيره</entry>
+	<entry id="103008" string="Save all">ذخيره همه</entry>
+	<entry id="103009" string="no audio files found">هيچ فايل صوتي يافت نشد</entry>
+
+	<section name="Basic">
+	  <entry id="103100" string="Basic">تنظيمات پايه</entry>
+	  <entry id="103101" string="Title information">اطلاعات عنوان</entry>
+	  <entry id="103102" string="Disc">شماره ديسک</entry>
+	  <entry id="103103" string="Cover art">تصوير روي آلبوم</entry>
+	  <entry id="103104" string="Covers">تصاوير</entry>
+	  <entry id="103105" string="Type">نوع</entry>
+	  <entry id="103106" string="Description">توصيف</entry>
+	  <entry id="103107" string="Add">افزودن</entry>
+	  <entry id="103108" string="Remove">حذف کردن</entry>
+	</section>
+
+	<section name="Details">
+	  <entry id="103200" string="Details">جزييات</entry>
+	  <entry id="103201" string="Detailed information">اطلاعات تکميلي</entry>
+	  <entry id="103202" string="Band / orchestra">گروه / ارکستر</entry>
+	  <entry id="103205" string="Lyrics writer">شاعر</entry>
+	  <entry id="103206" string="Modified / remixed by">ريميکس يا بازنويسي توسط</entry>
+	  <entry id="103207" string="Original information">اطلاعات اوريجينال</entry>
+	  <entry id="103208" string="Original artist">هنرمند اصلي</entry>
+	  <entry id="103209" string="Original album">آلبوم اصلي</entry>
+	  <entry id="103210" string="Original lyrics writer">شاعر اصلي</entry>
+	  <entry id="103211" string="Original release year">سال انتشار اصلي</entry>
+	  <entry id="103213" string="BPM">BPM</entry>
+	</section>
+
+	<section name="Publisher">
+	  <entry id="103300" string="Publisher">ناشر</entry>
+	  <entry id="103301" string="Publisher information">اطلاعات ناشر</entry>
+	  <entry id="103302" string="Publisher / label">ناشر / سند</entry>
+	  <entry id="103307" string="Webpage URLs">وبسايت ها</entry>
+	  <entry id="103308" string="Artist webpage">وبسايت هنرمند</entry>
+	  <entry id="103309" string="Publisher webpage">وبسايت ناشر</entry>
+	  <entry id="103310" string="Internet radio station">ايستگاه راديو اينترنتي</entry>
+	  <entry id="103311" string="Audio source webpage">وبسايت منبع صدا</entry>
+	  <entry id="103312" string="Copyright information">اطلاعات حق کاپي رايت</entry>
+	  <entry id="103313" string="Commercial information">اطلاعات تجاري</entry>
+	</section>
+
+	<section name="Rating">
+	  <entry id="103360" string="Rating">امتياز</entry>
+	</section>
+
+	<section name="Errors">
+	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">فايل مورد نظر قابل دسترسي نيست: %1&#10;خطا: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">بروز رساني اين تگ ممکن نشد: %1&#10;&#10;خطا: %2</entry>
+	</section>
+      </section>
+
+      <section name="Logging">
+	<entry id="104000" string="Logs">گزارشات</entry>
+	<entry id="104001" string="Log">گزارش</entry>
+	<entry id="104002" string="Save as">ذخيره به عنوان</entry>
+	<entry id="104003" string="Log Files">فايل گزارشات</entry>
+	<entry id="104004" string="Time">زمان</entry>
+	<entry id="104005" string="Message">پيام</entry>
+
+	<section name="Configuration">
+	  <entry id="104100" string="User interface">رابط کاربري</entry>
+	  <entry id="104101" string="Show Logs tab in main window">تب گزارشات را در پنجره اصلي نمايش بده</entry>
+	  <entry id="104102" string="Log files">فايلهاي گزارشات</entry>
+	  <entry id="104103" string="Archive log files">فايل‌هاي گزارش را آرشيو کن</entry>
+	  <entry id="104104" string="Log file folder">پوشه گزارشات</entry>
+	  <entry id="104105" string="Select">انتخاب</entry>
+	  <entry id="104106" string="Select the folder for saving log files">پوشه اي براي ذخيره گزارشات انتخاب کن</entry>
+	  <entry id="104107" string="Delete old log files after">فايل‌هاي گزارش قديمي بعد از اين مدت حذف شوند:</entry>
+	  <entry id="104108" string="days">روز</entry>
+	  <entry id="104109" string="Conversion logs">گزارشات تبديل</entry>
+	  <entry id="104110" string="Save conversion logs with audio files">گزارشات تبديل را به همراه فايل هاي صدا ذخيره کن</entry>
+	  <entry id="104111" string="Audio CD ripping logs only">فقط گزارش تبديل از روي ديسک صوتي</entry>
+	  <entry id="104112" string="Filename pattern">الگوي نام فايل‌ها</entry>
+	</section>
+      </section>
+
+      <section name="Notifier">
+	<entry id="105000" string="Conversion process finished!">عمليات تبديل به اتمام رسيد!</entry>
+
+	<section name="Configuration">
+	  <entry id="105100" string="Notifications">تذکرات</entry>
+	  <entry id="105101" string="Notify on finished conversion">با پايان عمليات تبديل خبر بده</entry>
+	  <entry id="105102" string="Play sound">صدايي پخش شود</entry>
+	  <entry id="105103" string="Display message">پيامي نمايش داده شود</entry>
+	  <entry id="105104" string="Select">انتخاب</entry>
+	  <entry id="105105" string="Only for conversions running longer than">فقط براي تبديل هاي طولاني تر از</entry>
+	  <entry id="105106" string="second(s)">ثانيه</entry>
+	  <entry id="105107" string="minute(s)">دقيقه</entry>
+	</section>
+      </section>
+    </section>
+  </data>
+</LangFile>
