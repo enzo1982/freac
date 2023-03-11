@@ -12,6 +12,8 @@ if [[ $uname == *MINGW* ]]; then
   jobs=$NUMBER_OF_PROCESSORS
 elif [[ $uname == Darwin ]]; then
   jobs=$(sysctl -n hw.activecpu)
+elif [[ $uname == *FreeBSD* ]]; then
+  jobs=$(sysctl -n hw.ncpu)
 else
   jobs=$(nproc)
 fi
