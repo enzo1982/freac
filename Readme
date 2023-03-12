@@ -161,7 +161,11 @@ Requirements
 History
 -------
 
-	Version 1.1.8 (March 2022)
+	Version 1.1.8 (March 2023)
+
+		- Bug fixes
+
+			- fixed reading/writing of unencoded string fields from/to ID3v2 tags
 
 		- New translations
 

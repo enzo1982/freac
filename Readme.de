@@ -160,7 +160,11 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.8 (März 2022)
+	Version 1.1.8 (März 2023)
+
+		- Bug fixes
+
+			- Problem beim Lesen/Schreiben von unkodierten String-Feldern aus/in ID3v2-Tags behoben
 
 		- Neue Übersetzungen
 
