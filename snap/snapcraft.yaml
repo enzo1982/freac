@@ -147,7 +147,7 @@ parts:
   libmpg123:
     source: https://mpg123.de/download/mpg123-1.31.2.tar.bz2
     source-checksum: sha256/b17f22905e31f43b6b401dfdf6a71ed11bb7d056f68db449d70b9f9ae839c7de
-    plugin: autotools
+    plugin: make
     build-environment:
       - CFLAGS: "$CFLAGS -O3 -funroll-loops"
     override-build: |
@@ -162,7 +162,7 @@ parts:
       else
         ./configure --prefix=/usr
       fi
-      make && sudo make install
+      snapcraftctl build
     prime:
       - usr/lib/libmpg123.so*
 
