@@ -165,6 +165,7 @@ History
 
 		- Bug fixes
 
+			- fixed crash reading CD contents on macOS Ventura
 			- fixed reading/writing of unencoded string fields from/to ID3v2 tags
 
 		- New translations
