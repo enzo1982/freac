@@ -168,6 +168,10 @@ History
 			- fixed crash reading CD contents on macOS Ventura
 			- fixed reading/writing of unencoded string fields from/to ID3v2 tags
 
+		- Updated codecs
+
+			- updated mpg123 to version 1.31.3
+
 		- New translations
 
 			- added Persian translation

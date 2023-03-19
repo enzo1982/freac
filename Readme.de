@@ -167,6 +167,10 @@ Geschichte
 			- Absturz beim Einlesen von CD-Inhalten unter macOS Ventura behoben
 			- Problem beim Lesen/Schreiben von unkodierten String-Feldern aus/in ID3v2-Tags behoben
 
+		- Aktualisierte Codecs
+
+			- mpg123 auf Version 1.31.3 aktualisiert
+
 		- Neue Übersetzungen
 
 			- Persische Übersetzung hinzugefügt
