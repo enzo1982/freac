@@ -162,6 +162,10 @@ Geschichte
 
 	Version 1.1.8 (März 2023)
 
+		- Verbesserungen
+
+			- Unterstützung für das Einlesen von in UTF-16 kodierten Cuesheets hinzugefügt
+
 		- Bug fixes
 
 			- Absturz beim Einlesen von CD-Inhalten unter macOS Ventura behoben

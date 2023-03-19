@@ -163,6 +163,10 @@ History
 
 	Version 1.1.8 (March 2023)
 
+		- Improvements
+
+			- added support for reading UTF-16 encoded cue sheets
+
 		- Bug fixes
 
 			- fixed crash reading CD contents on macOS Ventura
