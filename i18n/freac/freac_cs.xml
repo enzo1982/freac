@@ -88,7 +88,7 @@
       <entry id="1001" string="Options">Volby</entry>
       <entry id="1002" string="Database">Databanka</entry>
       <entry id="1003" string="Processing">Zpracování</entry>
-      <entry id="1004" string="Encode">Kódovat</entry>
+      <entry id="1004" string="Encode">Zakódovat</entry>
       <entry id="1005" string="Help">Pomoc</entry>
 
       <section name="File">
@@ -131,16 +131,16 @@
       </section>
 
       <section name="Encode">
-	<entry id="1500" string="Start encoding">Spustit kódování</entry>
-	<entry id="1501" string="Start encoding (deleting original files)">Spustit kódování (a smazat původní soubory)</entry>
-	<entry id="1502" string="Start encoding with">Spustit kódování s</entry>
-	<entry id="1503" string="Pause/resume encoding">Pauza/Pokračovat v kódování</entry>
-	<entry id="1504" string="Stop encoding">Přerušit kódování</entry>
+	<entry id="1500" string="Start encoding">Spustit zakódování</entry>
+	<entry id="1501" string="Start encoding (deleting original files)">Spustit zakódování (smazat původní soubory)</entry>
+	<entry id="1502" string="Start encoding with">Spustit zakódování s</entry>
+	<entry id="1503" string="Pause/resume encoding">Pozastavit/pokračovat v zakódování</entry>
+	<entry id="1504" string="Stop encoding">Přerušit zakódování</entry>
 	<entry id="1505" string="Encoder options">Možnosti kodeku</entry>
-	<entry id="1506" string="Encode to a single file">Kódovat do jediného souboru</entry>
-	<entry id="1507" string="Encode to input file folder if possible">Kódovat do vstupní složky je-li to možné</entry>
+	<entry id="1506" string="Encode to a single file">Zakódovat do jediného souboru</entry>
+	<entry id="1507" string="Encode to input file folder if possible">Zakódovat do vstupní složky, je-li to možné</entry>
 	<entry id="1508" string="Allow overwriting input file">Povolit přepisování vstupního souboru</entry>
-	<entry id="1509" string="Delete original files after encoding">Po kódování smazat původní soubory</entry>
+	<entry id="1509" string="Delete original files after encoding">Po zakódování smazat původní soubory</entry>
 	<entry id="1510" string="Shutdown after encoding">Vypnout PC po kódování</entry>
       </section>
 
@@ -166,15 +166,16 @@
       <entry id="2006" string="Configure general settings">Konfigurovat obecná nastavení</entry>
       <entry id="2007" string="Configure signal processing">Konfigurace zpracování signálu</entry>
       <entry id="2008" string="Configure the selected audio encoder">Konfigurovat vybraný audio kodek</entry>
-      <entry id="2009" string="Start the encoding process">Spustit proces kódování</entry>
-      <entry id="2010" string="Start the encoding process (deleting original files)">Spustit proces kódování (a smazat původní soubory)</entry>
-      <entry id="2011" string="Pause/resume encoding">Pauza/Pokračovat v kódování</entry>
-      <entry id="2012" string="Stop encoding">Přerušit kódování</entry>
+      <entry id="2009" string="Start the encoding process">Spustit proces zakódování</entry>
+      <entry id="2010" string="Start the encoding process (deleting original files)">Spustit proces zakódování (smazat původní soubory)</entry>
+      <entry id="2011" string="Pause/resume encoding">Pozastavit/pokračovat v zakódování</entry>
+      <entry id="2012" string="Stop encoding">Přerušit zakódování</entry>
+      <entry id="2013" string="Open the output splitting tool">Otevřít nástroj rozdělení výstupu</entry>
     </section>
 
     <section name="Joblist">
       <entry id="3000" string="Time left">Zbývající čas</entry>
-      <entry id="3001" string="File progress">Postup kódování</entry>
+      <entry id="3001" string="File progress">Postup souborů</entry>
       <entry id="3002" string="Output folder">Výstupní složka</entry>
       <entry id="3003" string="%1 file(s) in joblist">%1 soubor(y/ů) ke zpracování</entry>
       <entry id="3004" string="Show title info">Zobrazit titulní info</entry>
@@ -184,11 +185,11 @@
       <entry id="3008" string="Select none">Nevybrat nic</entry>
       <entry id="3009" string="Toggle selection">Vybrat cíl</entry>
       <entry id="3010" string="ripping/decoding">ripování/dekódování</entry>
-      <entry id="3011" string="encoding">kódování</entry>
-      <entry id="3012" string="Create playlist">Vytvořit playlist</entry>
+      <entry id="3011" string="encoding">zakódování</entry>
+      <entry id="3012" string="Create playlist">Vytvořit seznam skladeb</entry>
       <entry id="3013" string="Create cue sheet">Vytvořit Cue sheet</entry>
       <entry id="3014" string="Select">Vyhledat</entry>
-      <entry id="3015" string="Encode to a single file">Kódovat do jediného souboru</entry>
+      <entry id="3015" string="Encode to a single file">Zakódovat do jediného souboru</entry>
       <entry id="3016" string="Remove">Odstranit</entry>
       <entry id="3017" string="Clear joblist">Vyprázdnit celý seznam</entry>
       <entry id="3018" string="Use for all selected tracks">Použít pro všechny vybrané skladby</entry>
@@ -213,7 +214,7 @@
       <entry id="3037" string="Bitrate">Datový tok</entry>
       <entry id="3038" string="Audio Files">Audio soubory</entry>
       <entry id="3039" string="All Files">Všechny soubory</entry>
-      <entry id="3040" string="Playlist Files">Playlist soubory</entry>
+      <entry id="3040" string="Playlist Files">Sobory seznamů skladeb</entry>
       <entry id="3041" string="Joblist">Seznam úloh</entry>
       <entry id="3042" string="Other">Další</entry>
       <entry id="3043" string="Output file name">Název výstupního souboru</entry>
@@ -223,7 +224,7 @@
       <entry id="3047" string="Disc ID">Disk ID</entry>
 
       <section name="File">
-	<entry id="3050" string="Current file">Kódovaný soubor</entry>
+	<entry id="3050" string="Current file">Současný soubor</entry>
 	<entry id="3051" string="none">žádný</entry>
 	<entry id="3052" string="Skip current file">Přeskočit</entry>
       </section>
@@ -298,7 +299,7 @@
 	<entry id="3700" string="Checking sample formats">Zkontrolovat vzorky (sample) formátu</entry>
 	<entry id="3701" string="Checking for lossy to lossless conversion">Zkontrolovat nastavení konverze</entry>
 	<entry id="3702" string="Checking output file names">Kontrola názvů výstupních souborů</entry>
-	<entry id="3703" string="Converting %1">Konvertovat %1</entry>
+	<entry id="3703" string="Converting %1">Převádění %1</entry>
 	<entry id="3704" string="Verifying %1">Zkontrolovat %1</entry>
 	<entry id="3705" string="Conversion cancelled">Konverze byla zrušena</entry>
 	<entry id="3706" string="Conversion finished">Konverze byla dokončena</entry>
@@ -393,10 +394,11 @@
     <section name="Configuration">
       <entry id="5000" string="General settings setup">Obecná nastavení</entry>
       <entry id="5001" string="Encoders">Enkodér</entry>
-      <entry id="5002" string="Playlists">Playlisty</entry>
+      <entry id="5002" string="Playlists">Seznamy skladeb</entry>
       <entry id="5003" string="Language">Jazyk</entry>
       <entry id="5004" string="CDDB">CDDB</entry>
       <entry id="5005" string="Interface">Rozhraní</entry>
+      <entry id="5006" string="Metadata">Metadata</entry>
       <entry id="5007" string="Components">Součásti</entry>
       <entry id="5008" string="Decoders">Dekodér</entry>
       <entry id="5009" string="Output">Výstup</entry>
@@ -417,6 +419,7 @@
       <entry id="5024" string="Taggers">Tagy</entry>
       <entry id="5025" string="Processing">Zpracování</entry>
       <entry id="5026" string="Additional arguments">Další parametry</entry>
+      <entry id="5027" string="Output files">Výstupní soubory</entry>
 
       <section name="Encoders">
 	<entry id="5100" string="Configure encoder">Konfigurovat enkodér</entry>
@@ -424,7 +427,7 @@
 	<entry id="5102" string="Options">Volby</entry>
 	<entry id="5103" string="Encode 'On-The-Fly'">Kódovat 'On-The-Fly' (přímo)</entry>
 	<entry id="5104" string="Keep ripped Wave files">Ponechat soubory wav</entry>
-	<entry id="5105" string="Encode to a single file">Kódovat do jediného souboru</entry>
+	<entry id="5105" string="Encode to a single file">Zakódovat do jediného souboru</entry>
 	<entry id="5106" string="Remove processed tracks from joblist">Odebrat hotové stopy ze seznamu úloh</entry>
 	<entry id="5107" string="Add output files to joblist">Přidat výstupní soubory do seznamu úloh</entry>
       </section>
@@ -441,6 +444,7 @@
 	<entry id="5158" string="Replace spaces with underscores">Nahradit mezery</entry>
 	<entry id="5159" string="Append sequential numbers to otherwise identical filenames">Připojit pořadová čísla ke stejným názvům souborů</entry>
 	<entry id="5160" string="Keep time stamps of source files">Použít časové údaje ze zdrojových souborů</entry>
+	<entry id="5161" string="Use &lt;filename&gt; when title information is not available">Použít &lt;filename&gt;, když informace o názvu nejsou k dispozici</entry>
 
 	<section name="Errors">
 	  <entry id="5180" string="The output folder does not exist! Do you want to create it?">Výstupní složka neexistuje! Chcete jej vytvořit?</entry>
@@ -453,7 +457,7 @@
 	<entry id="5203" string="Select">Vyhledat</entry>
 	<entry id="5204" string="Use encoder output folder">Použít výstupní složku kodéru</entry>
 	<entry id="5205" string="Filename pattern">Vzor názvu souboru</entry>
-	<entry id="5206" string="Select the folder in which the playlist files will be placed">Zvolte složku, kam se uloží playlisty</entry>
+	<entry id="5206" string="Select the folder in which the playlist files will be placed">Zvolte složku pro uložení seznamů skladeb</entry>
 	<entry id="5207" string="Output filenames">Jméno výstupního souboru</entry>
 	<entry id="5208" string="Configure plugin">Konfigurovat plugin</entry>
 	<entry id="5209" string="Create only a single playlist and/or cue sheet file per conversion">Po konverzi vytvořit pouze jeden seznam skladeb a/nebo soubor Cue sheet</entry>
@@ -464,6 +468,7 @@
 	<entry id="5251" string="Create cue sheets">Vytvořit Cue sheets</entry>
 	<entry id="5253" string="Read cue sheets embedded in metadata">Číst z metadat vložených do Cue sheets</entry>
 	<entry id="5254" string="Prefer cue sheets over chapter information">Preferovat Cue sheets před informacemi o kapitole</entry>
+	<entry id="5256" string="Note">Poznámka</entry>
       </section>
 
       <section name="CDDB">
@@ -498,7 +503,7 @@
 	</section>
 
 	<section name="Errors">
-	  <entry id="5350" string="Please enter a valid eMail address.">Prosím, zadejte platnou e-mail adresu.</entry>
+	  <entry id="5350" string="Please enter a valid eMail address.">Prosíme, zadejte platnou e-mailovou adresu.</entry>
 	  <entry id="5351" string="The freedb CDDBP protocol cannot be used over HTTP&#10;Forward proxies!&#10;&#10;Would you like to change the protocol to HTTP?">freedb CDDB protokol nemůže být použitý pro HTTP&#10;Proxy servery!&#10;&#10;Přejete si změnit protokol na HTTP?</entry>
 	</section>
       </section>
@@ -507,24 +512,25 @@
 	<entry id="5400" string="Select language">Vybrat jazyk</entry>
 	<entry id="5401" string="Edit language file">Editovat jazykový soubor</entry>
 	<entry id="5402" string="Information">Informace</entry>
-	<entry id="5403" string="Encoding">Kódování</entry>
+	<entry id="5403" string="Encoding">Zakódování</entry>
 	<entry id="5404" string="Author(s)">Autor(ů)</entry>
 	<entry id="5405" string="URL">URL</entry>
       </section>
 
       <section name="Tags">
-	<entry id="5500" string="Tag formats">Formát tagu</entry>
+	<entry id="5500" string="Tag formats">Formát štítků</entry>
+	<entry id="5501" string="Tag fields">Pole štítků</entry>
 	<entry id="5502" string="Default comment string">Standardní komentář</entry>
 	<entry id="5503" string="Replace existing comments with default comment">Nahradit stávající komentáře standardním komentářem</entry>
 	<entry id="5504" string="Filename pattern">Vzor názvu souboru</entry>
 	<entry id="5505" string="Encoding">Znaková sada</entry>
 	<entry id="5506" string="Comments">Kommentáře</entry>
 	<entry id="5507" string="Cover art">Obal alba</entry>
-	<entry id="5509" string="Read cover art from tags">Obal alba - načíst z tagu</entry>
+	<entry id="5509" string="Read cover art from tags">Načíst obal alba ze štítků</entry>
 	<entry id="5510" string="Read cover art from files">Obal alba - načíst ze souboru</entry>
-	<entry id="5512" string="Write cover art to tags">Obal alba - zapsat do tagu</entry>
+	<entry id="5512" string="Write cover art to tags">Zapsat obal alba do štítků</entry>
 	<entry id="5513" string="Write cover art to files">Obal alba - zapsat do souboru</entry>
-	<entry id="5514" string="Add reference to audio file tag">Přidat reference do tagu audio souboru</entry>
+	<entry id="5514" string="Add reference to audio file tag">Přidat reference do štítku audio souboru</entry>
 	<entry id="5515" string="Other">Další</entry>
 	<entry id="5516" string="Chapters">Kapitoly</entry>
 	<entry id="5517" string="Read chapters from files">Číst kapitoly ze souborů</entry>
@@ -535,6 +541,11 @@
 	<entry id="5525" string="Prepend zero to track numbers below 10">Přidat nulu k číslům stop menších než 10</entry>
 	<entry id="5526" string="File size limit">Limit velikosti souboru</entry>
 	<entry id="5527" string="unlimited">neomezený</entry>
+	<entry id="5528" string="Miscellaneous">Ostatní</entry>
+	<entry id="5529" string="Fill missing fields with information obtained from file names">Vyplnit chybějící pole informacemi získanými z nazvů soborů</entry>
+	<entry id="5530" string="Restrict file names">Omezit názvy souborů</entry>
+	<entry id="5531" string="Cover art tags">Štítky obalů alb</entry>
+	<entry id="5532" string="Cover art files">Soubory obalů alb</entry>
       </section>
 
       <section name="Joblist">
@@ -588,7 +599,7 @@
 	<entry id="5801" string="Enable input verification">Povolit ověření vstupu</entry>
 	<entry id="5802" string="Verify that lossless inputs decode to exactly the data&#10;they were originally created from.">Ověřit, že bezeztrátové zdroje přesně odpovídají datům,&#10;z nichž byly původně vygenerovány.</entry>
 	<entry id="5803" string="Enable output verification">Povolit ověření výstupu</entry>
-	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Ověřte, že bezeztrátové výstupy přesně odpovídají datům&#10;použitým pro kódování.</entry>
+	<entry id="5804" string="Verify that lossless outputs decode to exactly the data&#10;used when encoding them.">Ověřte, že bezeztrátové výstupy přesně odpovídají datům&#10;použitým pro zakódování.</entry>
       </section>
 
       <section name="Processing">
@@ -619,15 +630,15 @@
     </section>
 
     <section name="Messages">
-      <entry id="7000" string="Currently converting">Proces kódování je ještě aktivní</entry>
-      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Proces kódování ještě běží! Chcete přesto program ukončit?</entry>
-      <entry id="7002" string="Delete original files after encoding">Po kódování smazat původní soubory</entry>
+      <entry id="7000" string="Currently converting">Proces převádění je aktivní</entry>
+      <entry id="7001" string="A conversion process is still active! Do you really want to quit?">Proces zakódování ještě běží! Chcete přesto program ukončit?</entry>
+      <entry id="7002" string="Delete original files after encoding">Po zakódování smazat původní soubory</entry>
       <entry id="7003" string="This option will remove the original files from your computer&#10;after the encoding process!&#10;&#10;Are you sure you want to activate this function?">Tato volba smaže originální soubory po kódování z PC.&#10;&#10;Jste si jistý, že chcete pokračovat ve smazání souborů?</entry>
       <entry id="7004" string="Keep this option enabled even after restarting %1">Diese Funktion auch nach dem Neustart von %1 aktiviert lassen</entry>
       <entry id="7005" string="File already exists">soubor už existuje</entry>
       <entry id="7006" string="The output file %1&#10;already exists! Do you want to overwrite it?">Výstupní soubor %1&#10;již existuje! Chcete jej přepsat?</entry>
       <entry id="7007" string="Overwrite all further files">Přepsat všechny další soubory</entry>
-      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Zdá se, že konvertujete ze ztrátového do bezeztrátového formátu.&#10;&#10;Mějte na paměti, že ztrátu kvality nelze vrátit zpět, takže tento proces&#10;nijak nezlepší kvalitu a pravděpodobně zvětší velikost souboru.&#10;&#10;Chcete přesto pokračovat?</entry>
+      <entry id="7008" string="You seem to be converting from a lossy to a lossless format.&#10;&#10;Please be aware that quality loss cannot be undone, so this process&#10;will not improve quality in any way, and most likely increase file size.&#10;&#10;Would you like to continue anyway?">Zdá se, že převádíte ze ztrátového do bezeztrátového formátu.&#10;&#10;Mějte na paměti, že ztrátu kvality nelze vrátit zpět, takže tento proces&#10;nijak nezlepší kvalitu a pravděpodobně zvětší velikost souboru.&#10;&#10;Chcete přesto pokračovat?</entry>
     </section>
 
     <section name="Errors">
@@ -640,7 +651,7 @@
       <entry id="7106" string="Unable to create output file: %1&#10;&#10;File: %1&#10;Path: %2">Nejde vytvořit soubor: %1&#10;&#10;Soubor: %1&#10;Složka: %2</entry>
       <entry id="7107" string="Failed to verify input file: %1">Nepodařilo se ověřit vstupní soubor: %1</entry>
       <entry id="7108" string="Failed to verify input track: %1">Nepodařilo se ověřit vstupní stopu: %1</entry>
-      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Chyba kontrolního součtu při ověřování výstupního souboru: %1&#10;&#10;Kontrolní součet při kódování: %2&#10;Kontrolní součet při ověření: %3</entry>
+      <entry id="7109" string="Checksum mismatch verifying output file: %1&#10;&#10;Encode checksum: %2&#10;Verify checksum: %3">Chyba kontrolního součtu při ověřování výstupního souboru: %1&#10;&#10;Kontrolní součet při zakódování: %2&#10;Kontrolní součet při ověření: %3</entry>
       <entry id="7110" string="File not found">Soubor nebyl nalezen</entry>
       <entry id="7111" string="Unknown file type">Neznámý typ souboru</entry>
       <entry id="7112" string="Invalid file format">Neplatný formát souboru</entry>
@@ -650,9 +661,9 @@
       <entry id="7116" string="Unable to open file: %1&#10;&#10;Error: %2">Nemohu otevřít soubor: %1&#10;&#10;Chyba: %2</entry>
       <entry id="7117" string="Cannot play a CD track while ripping from the same drive!">Nelze přehrávat stopu CD při kopírování ze stejné jednotky!</entry>
       <entry id="7118" string="Cannot start ripping while playing a track from the same drive!">Nelze zahájit kopírování při přehrávání skladby ze stejné jednotky!</entry>
-      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Podpora CDDB je vypnutá! Prosím, povolte lokální&#10;nebo vzdálenou CDDB podporu v dialogu Volby.</entry>
-      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Vzdálená CDDB podpora je vypnutá! Prosím povolte&#10;vzdálenou CDDB podporu v dialogu Volby.</entry>
-      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Přístup k CD-ROM mechanice byl Windows zamítnut.&#10;&#10;Prosím, kontaktujte vašeho systémového administrátora pro&#10;získaní přístupu k CD-ROM mechanice.</entry>
+      <entry id="7119" string="CDDB support is disabled! Please enable local or&#10;remote CDDB support in the configuration dialog.">Podpora CDDB je vypnutá! Prosíme, povolte lokální&#10;nebo vzdálenou CDDB podporu v dialogu Volby.</entry>
+      <entry id="7120" string="Remote CDDB support is disabled! Please enable&#10;remote CDDB support in the configuration dialog.">Vzdálená CDDB podpora je vypnutá! Prosíme povolte&#10;vzdálenou CDDB podporu v dialogu Volby.</entry>
+      <entry id="7121" string="Access to CD-ROM drives was denied by Windows.&#10;&#10;Please contact your system administrator in order&#10;to be granted the right to access the CD-ROM drive.">Přístup k CD-ROM mechanice byl Windows zamítnut.&#10;&#10;Prosíme kontaktujte vašeho systémového administrátora pro&#10;získaní přístupu k CD-ROM mechanice.</entry>
       <entry id="7122" string="No configuration dialog available for:&#10;&#10;%1">Žádný konfigurační dialog pro:&#10;&#10;%1</entry>
       <entry id="7123" string="The selected folder does not exist anymore!">Vybraná složka již neexistuje!</entry>
       <entry id="7124" string="Access denied">Přístup odepřen</entry>
@@ -680,6 +691,31 @@
 	<entry id="8200" string="Errors">Chyba</entry>
 	<entry id="8201" string="%1 errors while processing job">%1 chyba(y) při zpracování úlohy</entry>
 	<entry id="8202" string="select an entry for details">pro podrobnosti vyberte záznam</entry>
+      </section>
+
+      <section name="Splitter">
+	<entry id="8300" string="Output splitting tool">Nástroj rozdělení výstupu</entry>
+	<entry id="8301" string="%1 track(s) in joblist">%1 skladeb ke zpracování</entry>
+	<entry id="8302" string="Split mode">Režim rozdělení</entry>
+	<entry id="8303" string="Split by duration">Rozdělit podle délky</entry>
+	<entry id="8304" string="Duration per part">Doba trvání na část</entry>
+	<entry id="8305" string="at least">nejméně</entry>
+	<entry id="8306" string="approximately">přibližně</entry>
+	<entry id="8307" string="at most">nejvíce</entry>
+	<entry id="8308" string="exactly">přesně</entry>
+	<entry id="8309" string="second(s)">s</entry>
+	<entry id="8310" string="minute(s)">min</entry>
+	<entry id="8311" string="hour(s)">hodin</entry>
+	<entry id="8312" string="Fixed number of parts">Přesný počet částí</entry>
+	<entry id="8313" string="Number of parts">Počet částí</entry>
+	<entry id="8314" string="Split upon metadata change">Rozdělit při změně metadat</entry>
+	<entry id="8315" string="Metadata pattern to compare">Vzor metadat pro porovnání</entry>
+	<entry id="8317" string="Repeat end of previous part at beginning of each part">Zopakovat konec předchozí části na začátku části další</entry>
+	<entry id="8318" string="Repeat duration">Doba opakování</entry>
+	<entry id="8319" string="Output filenames">Jméno výstupního souboru</entry>
+	<entry id="8320" string="Filename pattern">Vzor názvu souboru</entry>
+	<entry id="8321" string="Convert">Převést</entry>
+	<entry id="8322" string="Save">Uložit</entry>
       </section>
     </section>
 
@@ -727,6 +763,7 @@
 	<entry id="12003" string="RNNoise Noise Reduction">RNNoise redukce šumu</entry>
 	<entry id="12004" string="Rubber Band Tempo/Pitch Changer">Rubber Band změna Tempa/Výšky tónu</entry>
 	<entry id="12005" string="HDCD Decoder">HDCD dekodér</entry>
+	<entry id="12007" string="Volume Adjustment">Regulace hlasitosti</entry>
       </section>
 
       <section name="Verifiers">
@@ -737,7 +774,7 @@
 	<entry id="15000" string="Notifications">Oznámení</entry>
 	<entry id="15001" string="Logging">Protokolování</entry>
 	<entry id="15002" string="Video Downloader">Stahovač videa</entry>
-	<entry id="15003" string="Tag Editor">Editor tagů</entry>
+	<entry id="15003" string="Tag Editor">Editor štítků</entry>
       </section>
     </section>
 
@@ -756,7 +793,7 @@
 
       <section name="CueSheet">
 	<entry id="22000" string="Title information">Informace o titulu</entry>
-	<entry id="22001" string="Read tags from referenced files">Číst tagy z referenčních souborů</entry>
+	<entry id="22001" string="Read tags from referenced files">Číst štítky z referenčních souborů</entry>
 	<entry id="22002" string="Prefer cue sheet metadata over referenced files' tags">Preferovat metadata Cue sheetu před tagy z referenčních souborů</entry>
 	<entry id="22003" string="Alternative files">Alternativní soubory</entry>
 	<entry id="22004" string="Look for compressed alternatives if referenced Wave files cannot be located">Pokud nelze najít soubory Wave, vyhledat komprimované alternativy</entry>
@@ -777,17 +814,17 @@
 	<entry id="30006" string="Set Copyright bit">Vložit copyright</entry>
 	<entry id="30007" string="Enable CRC">Aktivovat CRC</entry>
 	<entry id="30008" string="Set Original bit">Vložit Original bit</entry>
-	<entry id="30009" string="Dual channel encoding">Dvou-kanálové kódování</entry>
+	<entry id="30009" string="Dual channel encoding">Dvoukanálové zakódování</entry>
 	<entry id="30010" string="Set Private bit">Vložit Private bit</entry>
       </section>
 
       <section name="Bonk">
-	<entry id="31000" string="Encoder mode">Režim kódování</entry>
+	<entry id="31000" string="Encoder mode">Režim zakódování</entry>
 	<entry id="31001" string="Stereo mode">Stereo-režim</entry>
 	<entry id="31002" string="Quantization">Velikost dávkování</entry>
 	<entry id="31003" string="Downsampling ratio">Poměr stažených vzorků</entry>
 	<entry id="31004" string="Predictor size">Prediktor (prognóza) - velikost</entry>
-	<entry id="31005" string="Enable lossless encoding">Bezztrátové kódování</entry>
+	<entry id="31005" string="Enable lossless encoding">Bezztrátové zakódování</entry>
 	<entry id="31006" string="Enable Joint Stereo">Aktivovat Joint Stereo</entry>
       </section>
 
@@ -888,10 +925,10 @@
 	  <entry id="33301" string="AAC object type">Objekt typu AAC</entry>
 	  <entry id="33302" string="File format">Formát souboru</entry>
 	  <entry id="33303" string="File extension">Přípona souboru</entry>
-	  <entry id="33304" string="Tags">Tagy</entry>
-	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Povolit ID3v2 tagy v AAC souborech</entry>
+	  <entry id="33304" string="Tags">Štítky</entry>
+	  <entry id="33305" string="Allow ID3v2 tags in AAC files">Povolit štítky ID3v2 v souborech AAC</entry>
 	  <entry id="33306" string="Note">Poznámka</entry>
-	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Některé přehrávače můžou mít problém při přehrávaní&#10;AAC souborů s ID3 tagy. Prosím, použijte tuto možnost&#10;jen jste-li si jistý, že váš přehrávač zvládne tyto tagy.</entry>
+	  <entry id="33307" string="Some players may have problems playing AAC&#10;files with ID3 tags attached. Please use this option only&#10;if you are sure that your player can handle these tags.">Některé přehrávače můžou mít problém při přehrávaní&#10;AAC souborů s ID3 tagy. Prosíme použijte tuto možnost&#10;jen jste-li si jistý, že váš přehrávač zvládne tyto tagy.</entry>
 	</section>
       </section>
 
@@ -904,7 +941,7 @@
 	  <entry id="34100" string="Presets">Předvolby</entry>
 	  <entry id="34101" string="Use preset">Použít předvolby</entry>
 	  <entry id="34102" string="Custom settings">Vlastní nastavení</entry>
-	  <entry id="34103" string="Fastest encoding">Nejrychlejší kódování</entry>
+	  <entry id="34103" string="Fastest encoding">Nejrychlejší zakódování</entry>
 	  <entry id="34104" string="Best compression">Nejlepší komprese</entry>
 	  <entry id="34105" string="Stereo mode">Stereo-režim</entry>
 	  <entry id="34106" string="Joint Stereo">Joint Stereo</entry>
@@ -938,8 +975,8 @@
       </section>
 
       <section name="Vorbis">
-	<entry id="35000" string="Encoding Mode">Režim kódování</entry>
-	<entry id="35001" string="Variable Bitrate">Variabilní datový tok</entry>
+	<entry id="35000" string="Encoding Mode">Režim zakódování</entry>
+	<entry id="35001" string="Variable Bitrate">Proměnlivý datový tok</entry>
 	<entry id="35002" string="Average Bitrate">Průměrný datový tok</entry>
 	<entry id="35003" string="Quality">Kvalita</entry>
 	<entry id="35004" string="Bitrate">Datový tok</entry>
@@ -957,10 +994,10 @@
 	<entry id="36004" string="Use format">Použít formát</entry>
 	<entry id="36005" string="Write uncompressed WMA files">Zapsat nekomprimované WMA soubory</entry>
 	<entry id="36006" string="Automatically select format based on settings and input format">Automaticky zvolit formát podle základního nastavení a vstupního formátu</entry>
-	<entry id="36007" string="Use VBR encoding">Použít VBR kódování</entry>
+	<entry id="36007" string="Use VBR encoding">Použít zakódování VBR</entry>
 	<entry id="36008" string="Quality">Kvalita</entry>
 	<entry id="36009" string="Target bitrate">Výsledný datový tok</entry>
-	<entry id="36010" string="Use 2-pass encoding">Použít 2-pass kódování</entry>
+	<entry id="36010" string="Use 2-pass encoding">Použít dvouprůchodové zakódování</entry>
       </section>
 
       <section name="TwinVQ">
@@ -1006,7 +1043,7 @@
 
       <section name="Opus">
 	<entry id="40000" string="Basic settings">Základní nastavení</entry>
-	<entry id="40001" string="Encoding mode">Režim kódování</entry>
+	<entry id="40001" string="Encoding mode">Režim zakódování</entry>
 	<entry id="40002" string="auto">automaticky</entry>
 	<entry id="40003" string="Voice">Hlas</entry>
 	<entry id="40004" string="Music">Hudba</entry>
@@ -1017,8 +1054,8 @@
 	<entry id="40009" string="Superwideband">Superširoké pásmo</entry>
 	<entry id="40010" string="Fullband">Celé pásmo</entry>
 	<entry id="40011" string="File extension">Přípona souboru</entry>
-	<entry id="40012" string="Variable bitrate">Variabilní datový tok</entry>
-	<entry id="40013" string="Enable variable bitrate encoding">Povolit kódování s variabilním datovým tokem</entry>
+	<entry id="40012" string="Variable bitrate">Proměnlivý datový tok</entry>
+	<entry id="40013" string="Enable variable bitrate encoding">Povolit zakódování s proměnlivým datovým tokem</entry>
 	<entry id="40014" string="Constrain bitrate to target value">Omezit datový tok na cílovou hodnotu</entry>
 	<entry id="40015" string="Quality">Kvalita</entry>
 	<entry id="40016" string="Bitrate">Datový tok</entry>
@@ -1074,7 +1111,7 @@
       </section>
 
       <section name="Resample">
-	<entry id="50200" string="Converter">Konvertor</entry>
+	<entry id="50200" string="Converter">Převaděč</entry>
 	<entry id="50201" string="Sampling rate">Vzorkovací frekvence</entry>
 	<entry id="50202" string="Output sampling rate">Výstupní vzorkovací frekvence</entry>
       </section>
@@ -1126,6 +1163,13 @@
       <section name="Surround">
 	<entry id="50500" string="Output channels">Výstupní kanály</entry>
 	<entry id="50501" string="Channel configuration">Konfigurace kanálu</entry>
+	<entry id="50502" string="Redirect bass content to LFE channel">Přesměrovat basový obsah do kanálu LFE</entry>
+      </section>
+
+      <section name="Volume">
+	<entry id="50600" string="Volume adjustment">Regulace hlasitosti</entry>
+	<entry id="50601" string="Adjustment">Posun</entry>
+	<entry id="50602" string="%1 dB">%1 dB</entry>
       </section>
     </section>
 
@@ -1166,6 +1210,7 @@
 	<entry id="70023" string="not present">není k dispozici</entry>
 	<entry id="70024" string="not detected">nezjištěn</entry>
 	<entry id="70025" string="disabled">deaktivovaný</entry>
+	<entry id="70026" string="Options">Volby</entry>
 
 	<section name="Messages">
 	  <entry id="70050" string="AccurateRip configuration">Konfigurace AccurateRip</entry>
@@ -1204,7 +1249,7 @@
       </section>
 
       <section name="OptimFROG Lossless Encoder">
-	<entry id="80200" string="Encoding mode">Nastavení kódování</entry>
+	<entry id="80200" string="Encoding mode">Nastavení zakódování</entry>
 	<entry id="80201" string="fast">rychlé</entry>
 	<entry id="80202" string="normal">normál</entry>
 	<entry id="80203" string="high">vysoké</entry>
@@ -1243,7 +1288,7 @@
       </section>
 
       <section name="Nero AAC Encoder">
-	<entry id="80500" string="Encoding mode">Režim kódování</entry>
+	<entry id="80500" string="Encoding mode">Režim zakódování</entry>
 	<entry id="80501" string="auto">auto</entry>
 	<entry id="80502" string="Quality">Kvalita</entry>
 	<entry id="80503" string="worse">horší</entry>
@@ -1351,7 +1396,7 @@
       </section>
 
       <section name="Tag Editor">
-	<entry id="103000" string="Tags">Tagy</entry>
+	<entry id="103000" string="Tags">Štítky</entry>
 	<entry id="103001" string="Length">Délka</entry>
 	<entry id="103002" string="Size">Velikost</entry>
 	<entry id="103003" string="Albums">Album</entry>
@@ -1404,8 +1449,13 @@
 	  <entry id="103313" string="Commercial information">Obchodní informace</entry>
 	</section>
 
+	<section name="Lyrics">
+	  <entry id="103350" string="Lyrics">Texty</entry>
+	</section>
+
 	<section name="Rating">
 	  <entry id="103360" string="Rating">Hodnocení</entry>
+	  <entry id="103361" string="none">žádný</entry>
 	</section>
 
 	<section name="Configuration">
@@ -1415,7 +1465,7 @@
 
 	<section name="Errors">
 	  <entry id="103500" string="Unable to open file: %1&#10;&#10;Error: %2">Nemohu otevřít soubor: %1&#10;&#10;Chyba: %2</entry>
-	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">Nelze aktualizovat tag: %1&#10;&#10;Chyba: %2</entry>
+	  <entry id="103501" string="Unable to update tag: %1&#10;&#10;Error: %2">Nelze aktualizovat štítek: %1&#10;&#10;Chyba: %2</entry>
 	</section>
       </section>
 
