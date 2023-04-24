@@ -160,7 +160,7 @@ Voraussetzungen
 Geschichte
 ----------
 
-	Version 1.1.8 (März 2023)
+	Version 1.1.8 (April 2023)
 
 		- Verbesserungen
 
@@ -173,6 +173,7 @@ Geschichte
 
 		- Aktualisierte Codecs
 
+			- Opus auf Version 1.4 aktualisiert
 			- mpg123 auf Version 1.31.3 aktualisiert
 
 		- Neue Übersetzungen
