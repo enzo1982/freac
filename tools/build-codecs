@@ -221,9 +221,9 @@ rubberband_patch_levels=(1)
 vorbis_patches=(https://freac.org/patches/libvorbis-$vorbis_version-aotuv-b6.03.patch https://freac.org/patches/libvorbis-$vorbis_version-aotuv-b6.03-lancer.patch)
 vorbis_patch_levels=(1 1)
 
-# Keep using FFmpeg 4.3.5 on macOS PPC
+# Keep using FFmpeg 4.3.6 on macOS PPC
 if [[ $uname == Darwin ]] && [[ $BUILD_PPC == True ]]; then
-  ffmpeg_version=4.3.5
+  ffmpeg_version=4.3.6
   ffmpeg_location=https://ffmpeg.org/releases/ffmpeg-$ffmpeg_version.tar.xz
 fi
 
