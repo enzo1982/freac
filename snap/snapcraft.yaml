@@ -131,16 +131,12 @@ parts:
       - usr/lib/libmp3lame.so*
 
   libmp4v2:
-    after: [ patches ]
-    source: https://github.com/enzo1982/mp4v2/releases/download/v2.1.2/mp4v2-2.1.2.tar.bz2
-    source-checksum: sha256/0b943133673cffd4625247783e34080797de7386142061a6613e0c26285953ef
+    source: https://github.com/enzo1982/mp4v2/releases/download/v2.1.3/mp4v2-2.1.3.tar.bz2
+    source-checksum: sha256/033185c17bf3c5fdd94020c95f8325be2e5356558e3913c3d6547a85dd61f7f1
     plugin: autotools
     autotools-configure-parameters: [ --prefix=/usr ]
     build-environment:
       - CXXFLAGS: "$CXXFLAGS -Os"
-    override-build: |
-      patch -p1 < $SNAPCRAFT_STAGE/mp4v2-2.1.2-sfocache.patch
-      snapcraftctl build
     prime:
       - usr/lib/libmp4v2.so*
 
@@ -273,7 +269,7 @@ parts:
     build-environment:
       - CXXFLAGS: "$CXXFLAGS -g0 -Os -fno-rtti -fno-exceptions"
     override-build: |
-      patch -p1 < $SNAPCRAFT_STAGE/boca-1.1.6-pre-snap.patch
+      patch -p1 < $SNAPCRAFT_STAGE/boca-1.1.8-pre-snap.patch
       snapcraftctl build
     build-packages:
       - libexpat1-dev
