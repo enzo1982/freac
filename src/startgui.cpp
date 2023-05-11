@@ -1296,7 +1296,7 @@ Void freac::freacGUI::FillMenus()
 	}
 
 	menu_encode->AddEntry();
-	entry = menu_encode->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Output splitting tool", "Dialogs::Splitter")));
+	entry = menu_encode->AddEntry(i18n->AddEllipsis(i18n->TranslateString("Output splitting tool", "Dialogs::Splitter")), ImageLoader::Load(String(currentConfig->resourcesPath).Append("icons/tools/splitter.png")));
 	entry->onAction.Connect(&freacGUI::ShowSplitterTool, this);
 
 	if (joblist->GetNOfTracks() == 0) entry->Deactivate();
