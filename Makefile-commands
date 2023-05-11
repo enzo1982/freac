@@ -10,10 +10,6 @@ ifneq ("$(CDK_INSTALL_PATH)","")
 	LDOPTS += -L"$(CDK_INSTALL_PATH)"/$(LIBDIR)
 endif
 
-ifeq (,$(findstring -lstdc++,$(LIBS)))
-	LDOPTS += -lstdc++
-endif
-
 ifeq ($(BUILD_WIN32),True)
 	LDOPTS += -lsmooth -lboca -Wl,--dynamicbase,--nxcompat,--enable-auto-import
 else

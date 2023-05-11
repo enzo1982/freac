@@ -124,7 +124,7 @@ ifndef OBJCXX
 endif
 
 ifeq ($(LD),ld)
-	LD	= $(CC)
+	LD	= $(CXX)
 endif
 
 LDCONFIG	= /sbin/ldconfig
@@ -172,18 +172,18 @@ endif
 ifeq ($(findstring release,$(config)),release)
 	ifeq ($(BUILD_FREEBSD),True)
 		override CC	= clang
-		override CXX	= clang
+		override CXX	= clang++
 		override OBJC	= clang
-		override OBJCXX	= clang
+		override OBJCXX	= clang++
 
-		override LD	= clang
+		override LD	= clang++
 	else ifeq ($(BUILD_OSX),True)
 		override CC	= gcc
-		override CXX	= gcc
+		override CXX	= g++
 		override OBJC	= gcc
-		override OBJCXX	= gcc
+		override OBJCXX	= g++
 
-		override LD	= gcc
+		override LD	= g++
 	endif
 
 	override CFLAGS	     = -pipe -g0 -Wall -Os -DFREAC_DATE=\"$(shell date +"%Y%m%d")\"

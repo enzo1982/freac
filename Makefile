@@ -51,7 +51,7 @@ DLLNAME	= $(BINDIR)/freac$(SHARED)
 LIBNAME	= $(OBJECTS)/libfreac.a
 
 CCOPTS	     = -I$(INCLUDE) -fvisibility=hidden -c
-LDOPTS	     = -lstdc++
+LDOPTS	     =
 
 REMOVER	     = rm
 REMOVER_OPTS = -f
