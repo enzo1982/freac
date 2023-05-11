@@ -165,6 +165,7 @@ History
 
 		- Improvements
 
+			- moved encoding to separate thread for improved performance
 			- added support for reading UTF-16 encoded cue sheets
 
 		- Bug fixes
