@@ -170,6 +170,7 @@ Geschichte
 		- Bug fixes
 
 			- Absturz beim Einlesen von CD-Inhalten unter macOS Ventura behoben
+			- Problem mit der Audiowiedergabe auf einigen Systemen/Konfigurationen behoben
 			- Problem beim Lesen/Schreiben von unkodierten String-Feldern aus/in ID3v2-Tags behoben
 
 		- Aktualisierte Codecs

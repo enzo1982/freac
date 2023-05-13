@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2020 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -188,21 +188,10 @@ Void freac::Player::Loop(Decoder *decoder, Processor *processor)
 	const Format		&format		= track.GetFormat();
 
 	Int64			 position	= 0;
-	UnsignedLong		 samplesSize	= format.rate / 4;
+	UnsignedLong		 samplesSize	= format.rate / 8;
 
 	Int			 bytesPerSample = format.bits / 8 * format.channels;
 	Buffer<UnsignedByte>	 buffer(samplesSize * bytesPerSample);
-
-	/* Calculate output chunk size.
-	 */
-	Int			 chunkSize	= samplesSize * bytesPerSample;
-
-	if (processor != NIL)
-	{
-		const Format	&format = processor->GetFormatInfo();
-
-		chunkSize = format.rate * format.channels * (format.bits / 8) / 4;
-	}
 
 	/* Enter playback loop.
 	 */
@@ -252,7 +241,7 @@ Void freac::Player::Loop(Decoder *decoder, Processor *processor)
 		else if (track.approxLength >= 0) onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / track.approxLength  * position : 1000.0 / track.approxLength  * position);
 		else				  onProgress.Emit(i18n->IsActiveLanguageRightToLeft() ? 1000 - 1000.0 / (240 * format.rate) * position : 1000.0 / (240 * format.rate) * position);
 
-		Write(buffer, chunkSize);
+		Write(buffer);
  	}
 
 	/* Finish sample transformations.
@@ -263,18 +252,18 @@ Void freac::Player::Loop(Decoder *decoder, Processor *processor)
 
 	/* Pass remaining samples to output.
 	 */
-	Write(buffer, samplesSize * bytesPerSample);
+	Write(buffer);
 
 	if (!stop) output->Finish();
 
 	while (!stop && output->IsPlaying()) S::System::System::Sleep(20);
 }
 
-Void freac::Player::Write(Buffer<UnsignedByte> &buffer, Int chunkSize)
+Void freac::Player::Write(Buffer<UnsignedByte> &buffer)
 {
 	while (buffer.Size() > 0)
 	{
-		while (!stop && (paused || output->CanWrite() < chunkSize)) S::System::System::Sleep(10);
+		while (!stop && (paused || output->CanWrite() == 0)) S::System::System::Sleep(10);
 
 		if (stop) break;
 
