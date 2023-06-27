@@ -155,7 +155,7 @@ faac_version=1.30
 faad2_version=2.10.0
 fdk_aac_version=2.0.2
 ffmpeg_version=6.0
-flac_version=1.4.2
+flac_version=1.4.3
 lame_version=3.100
 libcdio_version=2.1.0
 libcdio_paranoia_version=10.2+2.0.1
@@ -335,6 +335,8 @@ build () {
   export CFLAGS="$cflags $cflags_unroll"
   export ASFLAGS="$asflags"
   export LDFLAGS="$ldflags"
+
+  unset GNUTARGET
 }
 
 packages=$@
@@ -472,6 +474,9 @@ for package in ${packages[@]}; do
     elif [[ $uname == *MINGW* ]]; then
       export CFLAGS="$CFLAGS -I$(pwd)/libogg-$libogg_version/include"
       export LDFLAGS="$LDFLAGS -L$(pwd)/libogg-$libogg_version/src/.libs"
+      if [[ $x86 == true ]]; then
+        export GNUTARGET=pe-i386
+      fi
     fi
     build $flac_location src/libFLAC/.libs/libFLAC$sharedinfix.$sharedext FLAC.$sharedext
     if [[ $uname == *MINGW* ]]; then
