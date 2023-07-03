@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -45,6 +45,8 @@ namespace BoCA
 	class ProtocolWriter
 	{
 		private:
+			static String			 GetDisplayName(const Protocol *);
+
 			static String			 FormatHeader(const Protocol *);
 			static Void			 SaveProtocol(const Protocol *, OutStream *);
 

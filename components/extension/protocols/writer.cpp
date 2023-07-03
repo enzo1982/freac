@@ -1,5 +1,5 @@
  /* fre:ac - free audio converter
-  * Copyright (C) 2001-2021 Robert Kausch <robert.kausch@freac.org>
+  * Copyright (C) 2001-2023 Robert Kausch <robert.kausch@freac.org>
   *
   * This program is free software; you can redistribute it and/or
   * modify it under the terms of the GNU General Public License as
@@ -187,6 +187,15 @@ Void BoCA::ProtocolWriter::OnFinishConversion(Int conversionID)
 	}
 }
 
+String BoCA::ProtocolWriter::GetDisplayName(const Protocol *protocol)
+{
+	String	 protocolName = protocol->GetName();
+
+	if (protocolName.StartsWith("#")) protocolName = protocolName.Tail(protocolName.Length() - protocolName.Find(" ") - 1);
+
+	return protocolName;
+}
+
 String BoCA::ProtocolWriter::FormatHeader(const Protocol *protocol)
 {
 	Int		 index = Int64(protocol) & 0xFFFFFFFF;
@@ -205,7 +214,7 @@ String BoCA::ProtocolWriter::FormatHeader(const Protocol *protocol)
 	Application	*app		 = Application::Get();
 	DateTime	 date		 = DateTime::Current();
 
-	data.fileHeader.Append(protocol->GetName()).Append(newLine)
+	data.fileHeader.Append(GetDisplayName(protocol)).Append(newLine)
 		       .Append(newLine)
 		       .Append("Client:  ").Append(app->getScreenName.Call()).Append(newLine)
 		       .Append("Version: ").Append(app->getClientVersion.Call()).Append(" (").Append(architecture).Append(")").Append(newLine).Append(newLine)
@@ -245,7 +254,7 @@ String BoCA::ProtocolWriter::GetProtocolFileName(const Protocol *protocol)
 
 	data.fileName.Replace("<date>", String::FromInt(date.GetYear()).Append(date.GetMonth() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMonth())).Append(date.GetDay() < 10 ? "0" : NIL).Append(String::FromInt(date.GetDay())));
 	data.fileName.Replace("<time>", String(date.GetHour() < 10 ? "0" : NIL).Append(String::FromInt(date.GetHour())).Append(date.GetMinute() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMinute())).Append(date.GetSecond() < 10 ? "0" : NIL).Append(String::FromInt(date.GetSecond())));
-	data.fileName.Replace("<logname>", Utilities::ReplaceIncompatibleCharacters(protocol->GetName()));
+	data.fileName.Replace("<logname>", Utilities::ReplaceIncompatibleCharacters(GetDisplayName(protocol)));
 
 	data.fileName	= Utilities::NormalizeFileName(data.fileName);
 	data.fileStream	= new OutStream(STREAM_FILE, Utilities::CreateDirectoryForFile(data.fileName), OS_REPLACE);
@@ -301,7 +310,7 @@ String BoCA::ProtocolWriter::GetAdditionalCopyName(const Protocol *protocol)
 
 			data.copyName.Replace("<date>", String::FromInt(date.GetYear()).Append(date.GetMonth() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMonth())).Append(date.GetDay() < 10 ? "0" : NIL).Append(String::FromInt(date.GetDay())));
 			data.copyName.Replace("<time>", String(date.GetHour() < 10 ? "0" : NIL).Append(String::FromInt(date.GetHour())).Append(date.GetMinute() < 10 ? "0" : NIL).Append(String::FromInt(date.GetMinute())).Append(date.GetSecond() < 10 ? "0" : NIL).Append(String::FromInt(date.GetSecond())));
-			data.copyName.Replace("<logname>", Utilities::ReplaceIncompatibleCharacters(protocol->GetName()));
+			data.copyName.Replace("<logname>", Utilities::ReplaceIncompatibleCharacters(GetDisplayName(protocol)));
 
 			/* Replace <disc> pattern.
 			 */
@@ -336,7 +345,7 @@ String BoCA::ProtocolWriter::GetAdditionalCopyName(const Protocol *protocol)
 		}
 		else
 		{
-			data.copyName = protocol->GetName();
+			data.copyName = GetDisplayName(protocol);
 		}
 
 		Bool	 useUnicode    = config->GetIntValue("Settings", "UseUnicodeFilenames", True);

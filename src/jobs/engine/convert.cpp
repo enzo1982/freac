@@ -417,7 +417,7 @@ Error freac::JobConvert::Perform()
 
 	/* Setup conversion log.
 	 */
-	logName = String("Conversion #%1 - %2 tracks").Replace("%1", String::FromInt(conversionID)).Replace("%2", String::FromInt(tracks.Length()));
+	logName = String("#%1 Conversion of %2 tracks").Replace("%1", String::FromInt(conversionID)).Replace("%2", String::FromInt(tracks.Length()));
 
 	BoCA::Protocol	*log = BoCA::Protocol::Get(logName);
 
@@ -1591,11 +1591,11 @@ Format freac::JobConvert::GetSingleTrackSampleFormat() const
 Track freac::JobConvert::ConsolidateTrackInfo()
 {
 	/* This method consolidates information from tracks to
-	 * process into a toplevel track with chapters.
+	 * process into a top-level track with chapters.
 	 *
 	 * This is done in two steps. First, common information
-	 * is collected in a toplevel track structure. Then any
-	 * information that matches to toplevel information is
+	 * is collected in a top-level track structure. Then any
+	 * information that matches the top-level information is
 	 * removed from chapter tracks.
 	 */
 	const Track	&firstTrack	= tracks.GetFirst();
@@ -1628,7 +1628,7 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 
 	singleTrack.pictures	   = firstTrack.pictures;
 
-	/* Step 1: Collect common information in toplevel track.
+	/* Step 1: Collect common information in top-level track.
 	 */
 	foreach (const Track &chapterTrack, tracks)
 	{
@@ -1742,7 +1742,7 @@ Track freac::JobConvert::ConsolidateTrackInfo()
 		chapterTrack.SetInfo(chapterInfo);
 	}
 
-	/* Use album title as toplevel title if we have multiple titles.
+	/* Use album title as top-level title if we have multiple titles.
 	 */
 	if (singleTrackInfo.title == NIL) singleTrackInfo.title = singleTrackInfo.album;
 
